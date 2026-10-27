@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "meta-pipeline-courier-semantic-review-v1",
+  "examUid": "25_순천고_2학기_기말_고1_기출",
+  "requestId": "meta-pipeline-high-1-b0eefadb76ed-20261026",
+  "reviewActors": [
+    "OpenCode Go deepseek-v4.1-flash",
+    "CODEX_ROOT"
+  ],
+  "scope": "Audited concept storage/reuse and focused metadata type correction only; no student content edits or mathematics re-solve.",
+  "originalAuditRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.source.json",
+    "sha256": "0371c81e5fd6506df20ba8bb8c11a34746ecdbdcec0815c6690c4b066c20bd37"
+  },
+  "decisions": {
+    "conceptShards": {
+      "CC_ABSOLUTE_VALUE_GRAPH_FOLDING": "FUNCTIONS",
+      "CC_AM_GM_INEQUALITY": "ALGEBRA",
+      "CC_AXIS_INTERCEPT": "FUNCTIONS",
+      "CC_BIJECTION_CONDITION": "FUNCTIONS",
+      "CC_CASE_EXHAUSTION": "LOGIC_SET",
+      "CC_CIRCLE_INTERSECTION_CHORD": "COORDINATE_GEOMETRY",
+      "CC_CONTRAPOSITIVE_EQUIVALENCE": "LOGIC_SET",
+      "CC_CONVERSE_CONTRAPOSITIVE": "LOGIC_SET",
+      "CC_DIFFERENCE_OF_SQUARES": "ALGEBRA",
+      "CC_DISCRIMINANT": "ALGEBRA",
+      "CC_FIXED_POINT_LINE_ROTATION": "FUNCTIONS",
+      "CC_FUNCTION_COMPOSITION": "FUNCTIONS",
+      "CC_FUNCTION_MAPPING_DIAGRAM": "FUNCTIONS",
+      "CC_IDENTITY_LINE_REFLECTION": "COORDINATE_GEOMETRY",
+      "CC_INVERSE_EXISTENCE_CONDITION": "FUNCTIONS",
+      "CC_INVERSE_FUNCTION_EVALUATION": "FUNCTIONS",
+      "CC_INVERSE_GRAPH_SYMMETRY": "FUNCTIONS",
+      "CC_LINEAR_SUBSTITUTION": "ALGEBRA",
+      "CC_LOGICAL_IMPLICATION_CHAIN": "LOGIC_SET",
+      "CC_MONOTONICITY_BOUNDARY": "FUNCTIONS",
+      "CC_NECESSARY_SUFFICIENT_CONDITION": "LOGIC_SET",
+      "CC_PARITY_DIVISIBILITY": "NUMBER_THEORY",
+      "CC_PIECEWISE_FUNCTION": "FUNCTIONS",
+      "CC_PROOF_BY_CONTRADICTION": "LOGIC_SET",
+      "CC_PROPOSITION_DEFINITION": "LOGIC_SET",
+      "CC_QUADRANT_INTERSECTION_CONDITION": "FUNCTIONS",
+      "CC_QUADRATIC_EQUATION_ROOTS": "ALGEBRA",
+      "CC_QUADRATIC_ROOT_SEPARATION": "ALGEBRA",
+      "CC_QUANTIFIER_NEGATION": "LOGIC_SET",
+      "CC_RADICAL_FUNCTION_DOMAIN_RANGE": "FUNCTIONS",
+      "CC_RADICAL_LINE_INTERSECTION": "FUNCTIONS",
+      "CC_RADICAL_REAL_CONDITION": "ALGEBRA",
+      "CC_RATIONAL_EXPRESSION_TRANSFORM": "ALGEBRA",
+      "CC_RATIONAL_FUNCTION_ASYMPTOTE": "FUNCTIONS",
+      "CC_RATIONAL_FUNCTION_SYMMETRY": "FUNCTIONS",
+      "CC_SET_DIFFERENCE_COMPLEMENT": "LOGIC_SET",
+      "CC_SET_INTERSECTION_UNION": "LOGIC_SET",
+      "CC_SIMULTANEOUS_LINEAR_INEQUALITIES": "ALGEBRA",
+      "CC_SYMMETRIC_POLYNOMIAL_REDUCTION": "ALGEBRA",
+      "CC_TRUTH_SET_INCLUSION": "LOGIC_SET",
+      "CC_TRUTH_VALUE_JUDGMENT": "LOGIC_SET"
+    },
+    "reuseRationales": {
+      "CC_AM_GM_INEQUALITY": "q19 puts t=x-3>0 and uses the perfect-square/AM-GM bound 1/7 - t/(t^2+3t+4) = (t-2)^2/(7(t^2+3t+4)) >= 0 to get the maximum at t=2 (x=5); same 양수 조건 a+b>=2sqrt(ab) extremum concept as the ACTIVE canonical entry. Canonical label/definition and ALGEBRA shard stay unchanged; the distinct q19 key CC_RATIONAL_EXPRESSION_TRANSFORM is not merged into it.",
+      "CC_CONTRAPOSITIVE_EQUIVALENCE": "q11 uses P-R=∅ => P⊆R (p->r) and Q⊆R^c => q->~p, and q20 uses the (나)/(라) forward and contrapositive pair; same p->q <=> ~q->~p equivalence as the canonical entry. Canonical label/definition and LOGIC_SET shard unchanged; 역 handling remains the separate CC_CONVERSE_CONTRAPOSITIVE key.",
+      "CC_DIFFERENCE_OF_SQUARES": "q16 factors m-n=8a through 4(p+q)(p-q)=8a, i.e. (p+q)(p-q)=2a, then uses the factor parity; same A^2-B^2=(A-B)(A+B) formula as the ACTIVE 4-item canonical entry. Canonical label/definition and ALGEBRA shard unchanged.",
+      "CC_DISCRIMINANT": "q15 requires D=100-8a>0 for the two distinct intersections of x^2-10x+2a=0 and q23 uses the same discriminant/tangency boundary for the two-branch intersection count; same b^2-4ac sign criterion (D>0 two intersections, D=0 touch) as the ACTIVE 11-item canonical entry. Canonical definition and ALGEBRA shard unchanged.",
+      "CC_FUNCTION_COMPOSITION": "q4 evaluates (g∘f)(2)=g(f(2)), q10 (f∘f)(k), q21 (g∘f)(2) and (f∘g)(1), and q22 builds f(f(x)) piecewise; same composition concept as the canonical entry (alias 함수의 합성). Canonical label/definition/alias and FUNCTIONS shard unchanged.",
+      "CC_IDENTITY_LINE_REFLECTION": "q10 reads f(a)=b, f(b)=c, f(c)=d, f(d)=e from the graph against y=x to locate (f∘f)(c)=e; same y=x coordinate-transfer entry registered for q12 of 25_제일고. Canonical definition and COORDINATE_GEOMETRY shard unchanged.",
+      "CC_INVERSE_FUNCTION_EVALUATION": "q12 solves (3t+7)/2=14 for f^-1(14)=7 and q21 uses f(3)=3 => f^-1(3)=3; same f^-1(b)=a <=> f(a)=b principle as the ACTIVE 2-item canonical entry. Canonical definition and FUNCTIONS shard unchanged.",
+      "CC_NECESSARY_SUFFICIENT_CONDITION": "q6 equates 'p가 q이기 위한 충분조건' with p->q; same 충분/필요조건 relation as the canonical entry. Canonical definition and LOGIC_SET shard unchanged; the P⊆Q step is the separate CC_TRUTH_SET_INCLUSION key, not a redefinition of this entry.",
+      "CC_PIECEWISE_FUNCTION": "q9 (x<2 / x>=2), q22 (x<-1 / x>=-1) and q23 (x<=1 / x>=2) read range, composition and graph branch by branch; same 구간별 함수 concept as the canonical entry. Canonical label/definition and FUNCTIONS shard unchanged.",
+      "CC_PROOF_BY_CONTRADICTION": "q16 assumes both m and n are squares and derives the mod-4 contradiction from the odd hypotheses; same 귀류법 method as the canonical entry. Canonical label/definition and LOGIC_SET shard unchanged.",
+      "CC_PROPOSITION_DEFINITION": "q1 separates a 명제 from a 조건 because 2x+1=3 is true for x=1 and false for x=0; same definition concept as the canonical entry. Canonical definition and LOGIC_SET shard unchanged.",
+      "CC_QUANTIFIER_NEGATION": "q5 negates '어떤 실수 x' to '모든 실수 x' and <=0 to >0; same ∀/∃ swap negation law as the canonical entry. Canonical definition and LOGIC_SET shard unchanged.",
+      "CC_RATIONAL_FUNCTION_ASYMPTOTE": "q13 recovers b=1 and c=3 from the horizontal asymptote 1/b=1 and the vertical asymptote -c/b=-3, and q14 locates the asymptotes of 1/(2-x)+a; same standard-form asymptote entry as the ACTIVE 2-item canonical entry. Canonical definition and FUNCTIONS shard unchanged.",
+      "CC_TRUTH_SET_INCLUSION": "q2, q6 and q11 convert p->q into P⊆Q (q2 then bounds a<=-2); same 진리집합 포함관계 entry as the canonical entry. Canonical definition and LOGIC_SET shard unchanged.",
+      "CC_ABSOLUTE_VALUE_GRAPH_FOLDING": "q17 folds the negative part of sqrt(2x+2)-2 over the x-axis to obtain y=|...|; narrower than the ACTIVE CC_ABSOLUTE_VALUE_GRAPH entry (piecewise split plus intersection structure) and distinct from CC_FIXED_POINT_LINE_ROTATION and CC_RADICAL_LINE_INTERSECTION on the same item. New audited key stored in FUNCTIONS, no merge.",
+      "CC_AXIS_INTERCEPT": "q13 reads the x-intercept -5 (a=5) together with the asymptotes to fix a,b,c; a graph-feature key stored in FUNCTIONS beside CC_RATIONAL_FUNCTION_ASYMPTOTE. Distinct from ALGEBRA's CC_Y_INTERCEPT_COEFFICIENT_SOLVE (quadratic y-intercept) and not merged with the asymptote key, both of which are used on q13.",
+      "CC_BIJECTION_CONDITION": "q8/q9/q21 need one-to-one plus range=codomain (bijection); stored in FUNCTIONS beside CC_ONE_TO_ONE_FUNCTION. Distinct from CC_INVERSE_EXISTENCE_CONDITION (existence criterion, q9) and CC_MONOTONICITY_BOUNDARY (endpoint matching, q8).",
+      "CC_CASE_EXHAUSTION": "q20 enumerates the flip/no-flip branches and eliminates those violating (가)-(마); stored in LOGIC_SET. Distinct from CC_LOGICAL_IMPLICATION_CHAIN (implication plus count chain) on the same item and from canonical CC_LOGICAL_CASE_ELIMINATION (truth-count elimination).",
+      "CC_CIRCLE_INTERSECTION_CHORD": "q18 computes |P1P2|^2 = 2(u1^2+u2^2-2u1u2) = 14 for the circle (x-1)^2+(y-2)^2=9 after centering at (1,2); stored in COORDINATE_GEOMETRY (circle equation plus chord distance). Distinct from CC_RATIONAL_FUNCTION_SYMMETRY and CC_SYMMETRIC_POLYNOMIAL_REDUCTION, the other two keys bound to q18.",
+      "CC_CONVERSE_CONTRAPOSITIVE": "q2 uses the converse q->p of p->q (both roots -2 and 1 must satisfy x>=a) before the truth-set test; distinct from the existing CC_CONTRAPOSITIVE_EQUIVALENCE key (대우 동치) used on q11/q20. Stored in LOGIC_SET.",
+      "CC_FIXED_POINT_LINE_ROTATION": "q17 rotates y=k(x-1)+1 about the fixed point (1,1) and tracks the intersection count with the two branches; a FUNCTIONS graph-intersection technique. Distinct from CC_RADICAL_LINE_INTERSECTION (branch-wise count) and CC_ABSOLUTE_VALUE_GRAPH_FOLDING (folding) on the same item.",
+      "CC_FUNCTION_MAPPING_DIAGRAM": "q4 reads f(2)=6 and g(6)=8 directly from the arrow diagram; stored in FUNCTIONS. Closest canonical entry is CC_MAPPING_DIAGRAM_READING (값 읽기); the audited definition additionally covers 역상 추적, so the keys stay separate and are not merged (no exact collision).",
+      "CC_INVERSE_EXISTENCE_CONDITION": "q9 uses 역함수 존재 <=> 일대일대응 to force b=6 and a>0; stored in FUNCTIONS beside the existing CC_INVERSE_FUNCTION entry. Distinct wording from CC_BIJECTION_CONDITION (constructing a bijection) on the same item.",
+      "CC_INVERSE_GRAPH_SYMMETRY": "q15 places the two intersections of f and f^-1 on y=x, reducing to x^2-10x+2a=0 with x>=4; semantically the same y=x reduction as ACTIVE CC_INVERSE_GRAPH_INTERSECTION, registered under the audited new label as a distinct key per the no-merge rule and flagged in blockers for ROOT adjudication.",
+      "CC_LINEAR_SUBSTITUTION": "q12 substitutes t=2x+1 in f(2x+1)=3x+5 to recover f(t)=(3t+7)/2; an algebraic recovery technique stored in ALGEBRA, adjacent to CC_VARIABLE_SUBSTITUTION but specific to a composite linear input.",
+      "CC_LOGICAL_IMPLICATION_CHAIN": "q20 chains (나)/(라) as 2<->3 and (마) as 4->1 under the two-card count from (가)/(다); stored in LOGIC_SET. Distinct from CC_CASE_EXHAUSTION (branch enumeration) on the same item.",
+      "CC_MONOTONICITY_BOUNDARY": "q8 uses increasing f(x)=3x-a on x<=4 with endpoint 4 -> 4 (12-a=4); stored in FUNCTIONS beside CC_FUNCTION_MONOTONICITY. Distinct from CC_BIJECTION_CONDITION, which states the full bijection requirement.",
+      "CC_PARITY_DIVISIBILITY": "q16 uses odd/odd sums and the mod-4 property of squares ((p+q)(p-q)=2a cannot be a multiple of 4); stored in NUMBER_THEORY beside CC_NUMBER_PARITY. The parity facet overlaps CC_NUMBER_PARITY and the factorization is CC_DIFFERENCE_OF_SQUARES, but this key adds the divisibility/remainder claim and is not merged.",
+      "CC_QUADRANT_INTERSECTION_CONDITION": "q14 fixes -1/2<a<0 from the asymptote position and the y-intercept sign so the graph passes through every quadrant; stored in FUNCTIONS beside CC_QUADRANT_PASSAGE_CONDITION. The audited key adds the parameter condition (every quadrant), so the two keys stay separate.",
+      "CC_QUADRATIC_EQUATION_ROOTS": "q2 factors x^2+x-2=(x+2)(x-1) to get the truth-set roots -2 and 1; stored in ALGEBRA beside CC_QUADRATIC_EQUATION. Distinct from CC_TRUTH_SET_INCLUSION (P⊆Q test) also bound to q2.",
+      "CC_QUADRATIC_ROOT_SEPARATION": "q15 requires both roots of x^2-10x+2a=0 to satisfy x>=4 (25-2a>0 and 5-sqrt(25-2a)>=4); stored in ALGEBRA beside CC_ROOT_LOCATION_RESTRICTION, the general boundary-placement entry; this key keeps the audited discriminant/axis/endpoint conditions.",
+      "CC_RADICAL_FUNCTION_DOMAIN_RANGE": "q7 reads domain x>=5 and range y>=-3 from y=sqrt(x-5)-3; stored in FUNCTIONS. Subset of the broader ACTIVE CC_IRRATIONAL_FUNCTION_GRAPH (시작점·정의역·치역·개형); kept as the audited distinct key, no merge.",
+      "CC_RADICAL_LINE_INTERSECTION": "q17/q23 count the intersections of the radical branches with the line (endpoint (1,2) gives 3/4<k<=1, start (2,3) gives 1<=k<5/4); stored in FUNCTIONS beside CC_RATIONAL_RADICAL_GRAPH_INTERSECTION. Distinct from CC_FIXED_POINT_LINE_ROTATION on q17 and from CC_DISCRIMINANT (D sign).",
+      "CC_RADICAL_REAL_CONDITION": "q3 imposes x-3>=0 and 10-2x>=0 for both radicals to be real; stored in ALGEBRA beside CC_RADICAL_EXPRESSION. Distinct from CC_SIMULTANEOUS_LINEAR_INEQUALITIES (combining the resulting ranges and counting integers) on the same item.",
+      "CC_RATIONAL_EXPRESSION_TRANSFORM": "q19 substitutes t=x-3>0 and rewrites t/(t^2+3t+4) as 1/(t+4/t+3) to bound the maximum; stored in ALGEBRA. Distinct from the existing CC_AM_GM_INEQUALITY bound also used on q19; both keys retained.",
+      "CC_RATIONAL_FUNCTION_SYMMETRY": "q18 uses the point symmetry about the asymptote intersection (1,2) to pair the two circle intersections; stored in FUNCTIONS. The definition matches ACTIVE CC_GRAPH_SYMMETRY_CENTER (point symmetry about (p,q) plus line symmetry about slope ±1 lines); flagged in blockers, no merge performed.",
+      "CC_SET_DIFFERENCE_COMPLEMENT": "q11 converts (P-R)∪(Q-R^c)=∅ into P⊆R and Q⊆R^c; stored in LOGIC_SET beside CC_SET_DIFFERENCE_IDENTITY and CC_DEMORGAN_LAWS. Distinct from the CC_CONTRAPOSITIVE_EQUIVALENCE and CC_TRUTH_SET_INCLUSION conclusions drawn from it.",
+      "CC_SET_INTERSECTION_UNION": "q6 uses P⊆Q => P∩Q=P (and P∪Q=Q); stored in LOGIC_SET. Distinct from CC_TRUTH_SET_INCLUSION (the inclusion premise) also bound to q6; no merge.",
+      "CC_SIMULTANEOUS_LINEAR_INEQUALITIES": "q3 intersects x>=3 and x<=5 and counts the integers 3,4,5; stored in ALGEBRA beside CC_SYSTEM_OF_INEQUALITIES and CC_COMPOUND_LINEAR_INEQUALITY. Distinct from CC_RADICAL_REAL_CONDITION (A>=0 requirement) on the same item.",
+      "CC_SYMMETRIC_POLYNOMIAL_REDUCTION": "q18 uses u1u2=1 and (u1-u2)^2=u1^2+u2^2-2u1u2 with u1^2+u2^2=9; stored in ALGEBRA beside CC_RECIPROCAL_SUM_EXPANSION (x^m+1/x^m) and CC_SYMMETRIC_SUM_PRODUCT. Distinct from CC_RATIONAL_FUNCTION_SYMMETRY and CC_CIRCLE_INTERSECTION_CHORD on q18.",
+      "CC_TRUTH_VALUE_JUDGMENT": "q1 decides that 2x+1=3 is a 조건 (true for x=1, false for x=0), i.e. a truth-value call on the sentence itself; stored in LOGIC_SET. Distinct from CC_PROPOSITION_DEFINITION (the definition used to classify it) on the same item."
+    },
+    "conditionDefinitions": {
+      "COND_NATURAL": {
+        "conditionKey": "COND_NATURAL",
+        "labelKo": "자연수 조건",
+        "definition": "값이 자연수(양의 정수)여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+        "sourceOrdinals": [
+          15
+        ]
+      },
+      "COND_ODD": {
+        "conditionKey": "COND_ODD",
+        "labelKo": "홀수 조건",
+        "definition": "값이 홀수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+        "sourceOrdinals": [
+          16
+        ]
+      }
+    },
+    "subunitDefinitions": {},
+    "blockers": [],
+    "resolvedOverlapNotes": [
+      {
+        "type": "EXACT_SEMANTIC_COLLISION",
+        "newConceptKey": "CC_RATIONAL_FUNCTION_SYMMETRY",
+        "existingConceptKey": "CC_GRAPH_SYMMETRY_CENTER",
+        "existingOwnerConceptShard": "FUNCTIONS",
+        "existingStatus": "ACTIVE",
+        "detail": "Audited definition '유리함수 y = k/(x-p)+q의 그래프가 점근선의 교점 (p, q)에 대하여 점대칭이고 직선 y = ±(x-p)+q에 대하여 선대칭인 성질' states the same two symmetry properties as the ACTIVE canonical definition '유리함수 그래프가 두 점근선의 교점 (p, q) 및 기울기 ±1인 직선에 대하여 대칭인 성질'; only the label wording differs. The keys were not merged and the audited definition was not rewritten.",
+        "recommendedAction": "ROOT adjudication: register the audited new key, or direct reuse of the immutable ACTIVE CC_GRAPH_SYMMETRY_CENTER entry. Registration can proceed with the FUNCTIONS mapping above if distinct-key policy applies."
+      },
+      {
+        "type": "EXACT_SEMANTIC_COLLISION",
+        "newConceptKey": "CC_INVERSE_GRAPH_SYMMETRY",
+        "existingConceptKey": "CC_INVERSE_GRAPH_INTERSECTION",
+        "existingOwnerConceptShard": "FUNCTIONS",
+        "existingStatus": "ACTIVE",
+        "detail": "Audited definition '증가하는 함수 y=f(x)와 역함수 y=f^-1(x)의 교점은 직선 y=x 위에 놓이므로 f(x)=x의 실근으로 귀결되는 성질' states the same claims as the ACTIVE canonical definition '증가하는 함수 y=f(x)와 역함수 y=f^(-1)(x)의 교점이 직선 y=x 위에 존재함을 이용한 방정식 풀이' (intersections lie on y=x and the problem reduces to f(x)=x). The keys were not merged and the audited definition was not rewritten.",
+        "recommendedAction": "ROOT adjudication: register the audited new key, or direct reuse of the immutable ACTIVE CC_INVERSE_GRAPH_INTERSECTION entry. Registration can proceed with the FUNCTIONS mapping above if distinct-key policy applies."
+      }
+    ],
+    "rootAdjudication": "Keep distinct audited keys additively; no existing key is merged, renamed, redefined or retired. Different-key conceptual overlap is permitted by the user and not a same-key semantic collision."
+  }
+}

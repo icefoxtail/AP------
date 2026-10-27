@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "archive-meta-pipeline-audit-normalization-v1",
+  "sourceAuditSha256": "03edc86216fe4cd3fc565a143f4d1d4611128977db14a1fc2dc66e68ad9f1b86",
+  "sourceAuditSchemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "targetProofSchema": "meta-pipeline-audit-approval-v2",
+  "reason": "The Drive audit carries definition objects with flat per-record classification. Split it into the registrar-supported paired v2 proof without changing any audited value or definition.",
+  "packScopeCorrections": [],
+  "typeCorrections": [
+    {
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "reason": "중심에서 두 현 AB, AC까지의 거리가 같다는 조건으로 AB=AC(중심에서 같은 거리에 있는 두 현은 길이가 같다)를 얻고, 이등변삼각형의 밑각 58°에서 꼭지각 x를 구한다. 원주각·중심각 관계가 아니라 현의 길이/중심거리 조건을 쓰므로 PT_CIRCLE_LINE_RELATION·TM_CIRCLE_CHORD_LENGTH(현의 길이 조건을 이용하는 유형)가 정확하다.",
+      "sourceDecisiveExcerpt": "중심에서 두 현까지의 거리가 같으므로 AB=AC."
+    },
+    {
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH"
+      },
+      "reason": "두 접선 PA, PB에 대해 OA⊥PA, OB⊥PB, OA=OB로 직각삼각형 OAP, OBP가 합동이고 OP가 ∠APB를 이등분하며, 같은 점 P에서 그은 두 접선의 길이가 같다는 성질로 PA+PB를 구한다. 접선은 원과 직선의 접함·거리 조건이므로 PT_CIRCLE_LINE_RELATION이 맞으나, 제공된 ACTIVE 템플릿 7종에는 한 점에서 그은 두 접선의 길이 상등을 다루는 템플릿이 없다. GAP: PT_CIRCLE_LINE_RELATION 아래 중학 접선 길이 템플릿(레거시 TM_TANGENT_LENGTH 계열)의 ACTIVE canonical 정의가 필요하다. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+      "sourceDecisiveExcerpt": "OA⊥PA, OB⊥PB이고 OA=OB이므로 두 직각삼각형 OAP, OBP는 합동이다. 같은 점 P에서 그은 두 접선의 길이는 같다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+      },
+      "reason": "원의 중심은 서로 다른 두 현의 수직이등분선의 교점이라는 성질로 민재의 작도법만 옳다고 판정한다. 원의 각 관계나 정의 나열이 아니라 현의 수직이등분선 성질이 결정적이므로 PT_CIRCLE_LINE_RELATION·TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+      "sourceDecisiveExcerpt": "원의 중심은 서로 다른 두 현의 수직이등분선의 교점이다. 민재만 옳으므로 정답은 ①."
+    },
+    {
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH"
+      },
+      "reason": "직사각형 세 변에 접하는 원에서 점 D와 E에서 그은 두 접선의 길이가 같음(DT=AD−AT, ET=EV)을 이용해 DE를 만들고, 직각삼각형 DEC의 피타고라스 관계로 EC를 구한다. 접선 길이 상등이 결정적이므로 PT_CIRCLE_LINE_RELATION이 맞으나 ACTIVE 접선 길이 템플릿이 없다. GAP: 접선 길이 템플릿의 ACTIVE canonical 정의가 필요하다. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+      "sourceDecisiveExcerpt": "위쪽 변 AD도 접선이므로 점 D에서 그은 두 접선의 길이는 같다. 따라서 DT=9−3=6이다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH"
+      },
+      "reason": "삼각형 ABC의 내접원 접점 D, E, F에서 같은 꼭짓점에서 그은 두 접선의 길이가 같음(BD=BE, AD=AF, CE=CF)을 이용해 세 변과 둘레를 구한다. 접선 길이 상등이 핵심이며 ACTIVE 접선 길이 템플릿이 없다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+      "sourceDecisiveExcerpt": "같은 점에서 원에 그은 두 접선의 길이는 같다. 따라서 BD=BE=6 cm이다."
+    }
+  ]
+}

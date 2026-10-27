@@ -1,0 +1,1297 @@
+{
+  "schemaVersion": "META_AUDIT_ATOMIC_PACKAGE_v2",
+  "examTitle": "26_삼산중_2학기_중간_중3_기출",
+  "sourceFileDriveId": "1lSM9ZRDgPASVnfZY2AY7NAjhsM_RwIme",
+  "sourceSha256": "41a052f24f3f90cf5c1b66a89b38ef0bb8aeb958d545a20c23c205633e6fd0ae",
+  "auditedTimestamp": "2026-10-24T09:08:00Z",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 24,
+    "approved": 24,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 24,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 29,
+    "byPack": {
+      "MIDDLE_GEOMETRY": 24
+    },
+    "byStandardUnit": {
+      "M3-05": 16,
+      "M3-06": 8
+    },
+    "bySubUnit": {
+      "M3-05-TRIG_RATIO": 4,
+      "M3-06-CIRCLE_PROPERTY": 8,
+      "M3-05-TRIG_RATIO_APPLICATION": 12
+    },
+    "byDifficultyBucket": {
+      "1": 4,
+      "2": 4,
+      "3": 9,
+      "4": 7
+    },
+    "byProblemType": {
+      "PT_TRIG_RATIO": 4,
+      "PT_CIRCLE_LINE_RELATION": 5,
+      "PT_TRIG_RATIO_APPLICATION": 12,
+      "PT_CIRCLE_TANGENT": 2,
+      "PT_CIRCLE_ANGLE_RELATIONS": 1
+    },
+    "byTemplate": {
+      "TPL_TRIG_RATIO_BASIC_RELATION": 2,
+      "TPL_TRIG_RATIO_SPECIAL_ANGLE": 2,
+      "TM_CIRCLE_CHORD_LENGTH": 3,
+      "TPL_TRIG_APPLICATION_DIRECT_MEASURE": 3,
+      "TPL_TRIG_APPLICATION_CHAINED_MEASURE": 9,
+      "TM_CIRCLE_CHORD_PERP_BISECTOR": 2,
+      "TM_TANGENT_LENGTH": 2,
+      "TPL_CIRCLE_ANGLE_SECTOR_MEASURE": 1
+    }
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_TRIG_RATIO",
+      "labelKo": "삼각비의 정의",
+      "definition": "직각삼각형에서 직각이 아닌 한 각에 대한 두 변의 길이의 비(sin, cos, tan)",
+      "boundQuestionCount": 4
+    },
+    {
+      "conceptKey": "CC_RIGHT_TRIANGLE",
+      "labelKo": "직각삼각형의 성질",
+      "definition": "한 내각이 직각인 삼각형에서 빗변과 직각변 사이의 기하학적 관계",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_PYTHAGOREAN_THEOREM",
+      "labelKo": "피타고라스 정리",
+      "definition": "직각삼각형의 빗변의 길이의 제곱은 다른 두 변의 길이의 제곱의 합과 같다는 정리 (a²+b²=c²)",
+      "boundQuestionCount": 9
+    },
+    {
+      "conceptKey": "CC_SPECIAL_ANGLES",
+      "labelKo": "특수각의 삼각비",
+      "definition": "30°, 45°, 60° 등 특수각에 대한 사인, 코사인, 탄젠트의 정형화된 삼각비 값",
+      "boundQuestionCount": 10
+    },
+    {
+      "conceptKey": "CC_RADICAL_ARITHMETIC",
+      "labelKo": "근호를 포함한 식의 연산",
+      "definition": "제곱근의 사칙계산 및 분배법칙, 곱셈공식을 적용한 근호 수식의 정리",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_CIRCLE_CHORD_PROPERTY",
+      "labelKo": "원의 현의 성질",
+      "definition": "원의 중심에서 현에 내린 수선은 현을 이등분하고, 중심에서 같은 거리에 있는 현의 길이는 같다",
+      "boundQuestionCount": 5
+    },
+    {
+      "conceptKey": "CC_CIRCLE_CIRCUMFERENCE",
+      "labelKo": "원의 둘레와 넓이",
+      "definition": "반지름 r인 원의 둘레 2πr 및 넓이 πr² 산출",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_TRIG_TABLE_LOOKUP",
+      "labelKo": "삼각비표의 활용",
+      "definition": "0°부터 90°까지 각에 대한 삼각비의 근삿값이 정리된 표에서 필요한 값을 읽고 적용하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_TRIG_MEASUREMENT",
+      "labelKo": "삼각비를 이용한 측량",
+      "definition": "직각삼각형의 한 변의 길이와 예각의 삼각비를 이용하여 높이, 거리 등 다른 변의 길이를 구하는 방법",
+      "boundQuestionCount": 5
+    },
+    {
+      "conceptKey": "CC_QUADRILATERAL_AREA_TRIG",
+      "labelKo": "삼각비를 이용한 사각형의 넓이",
+      "definition": "사각형을 대각선으로 두 삼각형으로 분할하여 각각의 삼각비 넓이를 합산하는 기법",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_TRIG_RATIO_DEFINITIONS",
+      "labelKo": "삼각비의 정의 및 극한적 변화",
+      "definition": "0°부터 90°까지 각이 증가함에 따라 sin은 증가, cos은 감소, tan는 급격히 증가하는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_ISOSCELES_RIGHT_TRIANGLE",
+      "labelKo": "직각이등변삼각형의 삼각비",
+      "definition": "두 변의 길이가 같고 직각을 낀 45°-45°-90° 삼각형에서 세 변의 비 1:1:√2를 통한 45° 삼각비",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_AREA_TRIG",
+      "labelKo": "삼각비를 이용한 삼각형의 넓이",
+      "definition": "두 변 a, b와 그 끼인각 C의 크기를 알 때 S = 1/2 ab sin C 공식으로 넓이를 구하는 정리",
+      "boundQuestionCount": 4
+    },
+    {
+      "conceptKey": "CC_PARALLELOGRAM_AREA",
+      "labelKo": "평행사변형의 넓이와 삼각비",
+      "definition": "이웃하는 두 변 a, b와 그 끼인각 θ에 대한 평행사변형 넓이 S = ab sin θ 및 대각선 4등분 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PERPENDICULAR_CHORDS",
+      "labelKo": "원 내부의 수직 평행현",
+      "definition": "서로 수직인 평행현 쌍에서 원의 중심으로부터의 대칭적 거리와 피타고라스 정리를 이용한 현의 계산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_CIRCLE_TANGENT_PROPERTY",
+      "labelKo": "원의 접선의 성질",
+      "definition": "원 밖의 한 점에서 그은 두 접선의 길이는 같고, 접선은 접점을 지나는 반지름과 수직을 이룬다",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_ISOSCELES_TRIANGLE",
+      "labelKo": "이등변삼각형의 성질",
+      "definition": "두 변의 길이가 같은 삼각형에서 두 밑각의 크기가 같고 꼭지각의 이등분선은 밑변을 수직이등분한다",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_ANGLE_BISECTOR",
+      "labelKo": "삼각형의 내각의 이등분선",
+      "definition": "각의 이등분선이 마주보는 대변을 이웃한 두 변의 길이의 비로 내분하는 정리",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_SIMILARITY",
+      "labelKo": "삼각형의 닮음 조건과 성질",
+      "definition": "대응하는 두 각의 크기가 같을 때(AA) 성립하는 삼각형의 닮음 및 대응변의 길이의 비",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_FORMULA",
+      "labelKo": "이차방정식의 근의 공식",
+      "definition": "ax²+bx+c=0의 실근을 판별하고 기하학적 미지수의 양수해를 결정하는 공식",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_EQUILATERAL_TRIANGLE",
+      "labelKo": "정삼각형의 성질과 넓이",
+      "definition": "세 변의 길이가 같은 정삼각형에서 세 내각은 60°이며 한 변 a에 대한 넓이는 √3/4 a²이다",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_CIRCLE_SECTOR_AREA",
+      "labelKo": "부채꼴의 넓이",
+      "definition": "반지름 r, 중심각 x°인 부채꼴의 넓이 S = πr² × (x/360)",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INSCRIBED_CIRCLE",
+      "labelKo": "삼각형의 내접원",
+      "definition": "삼각형의 세 변에 접하는 원으로 중심에서 세 변에 이르는 거리가 내접반지름 r로 일정하다",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PAPER_FOLDING_SIMILARITY",
+      "labelKo": "종이접기의 대칭성과 각 관계",
+      "definition": "종이를 접었을 때 접힌 선은 대칭축이 되어 대응각과 대응변의 길이가 불변 보존된다",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_ELEVATION_ANGLE",
+      "labelKo": "올려다본각과 내려다본각",
+      "definition": "관측자의 수평선 시선과 목표물을 올려다보거나 내려다보는 시선이 이루는 각",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_LINEAR_EQUATIONS",
+      "labelKo": "일차방정식의 수립과 해결",
+      "definition": "삼각비로 표현된 기하량 사이의 선형 관계식을 미지수 x에 대해 풀어 수치를 확정하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RATIO",
+      "labelKo": "비와 비례식의 응용",
+      "definition": "두 기하량의 비를 비례상수나 분수비로 나타내어 곱셈 공식에 연쇄 대입하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_CONGRUENCE_RHS",
+      "labelKo": "직각삼각형의 RHS 합동",
+      "definition": "두 직각삼각형에서 빗변의 길이와 다른 한 변의 길이가 각각 같을 때 성립하는 합동 조건",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_GEOMETRIC_PROOF",
+      "labelKo": "기하학적 논증과 증명",
+      "definition": "주어진 조건과 기호, 공리 및 정리를 논리적으로 서술하여 결론을 이끌어내는 서술형 증명",
+      "boundQuestionCount": 1
+    }
+  ],
+  "totalAuditedCount": 24,
+  "zeroStubCertified": true,
+  "allVisualAssetsVerified": true,
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비의 뜻",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO",
+        "CC_RIGHT_TRIANGLE",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "직각삼각형의 두 변(빗변 5, 높이 4)에서 피타고라스 정리로 밑변 3을 구하고 tan C=3/4를 직접 대입해 확인하는 1단계 기초 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "직각삼각형 ABC에서 ∠A, ∠C의 삼각비의 값으로 옳은 것은? (3점)",
+        "solutionDecisiveExcerpt": "직각삼각형에서 $AC=5$는 빗변이고 $BC=4$이다.\n피타고라스 정리에 따라 $AB=\\sqrt{5^2-4^2}=3$이다.\n각 $C$에 대하여 맞은편 변은 $AB=3$, 이웃한 변",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q1.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "직각삼각형 ABC에서 ∠A, ∠C의 삼각비의 값으로 옳은 것은? (3점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "특수각의 삼각비",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES",
+        "CC_TRIG_RATIO",
+        "CC_RADICAL_ARITHMETIC"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "30°, 60°의 특수각 삼각비 값(sin 30°=1/2, cos 30°=√3/2, cos 60°=1/2, tan 60°=√3)을 대입하여 (1+√3)(1-√3)=-2로 단순 계산하는 1단계 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "(2 sin 30° + 2 cos 30°)(2 cos 60° − tan 60°)의 값은? (3점)",
+        "solutionDecisiveExcerpt": "$\\sin30^\\circ=\\dfrac12$, $\\cos30^\\circ=\\dfrac{\\sqrt3}{2}$, $\\cos60^\\circ=\\dfrac12$, $\\tan60^\\circ=\\s",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "(2 sin 30° + 2 cos 30°)(2 cos 60° − tan 60°)의 값은? (3점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "현의 수직이등분선과 원의 둘레",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "원의 중심에서 현에 내린 수선이 현을 이등분함을 이용하여 직각삼각형에서 반지름 r=15를 구하고 둘레 30π를 도출하는 1단계 기초 기하 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "원 O에서 현의 길이가 24cm이고, 원의 중심에서 현에 이르는 거리가 9cm일 때, 원 O의 둘레의 길이는? (3점)",
+        "solutionDecisiveExcerpt": "원의 중심에서 현에 내린 수선은 현을 이등분한다. 따라서 현의 절반은 $12\\rm\\,cm$이다.\n반지름을 $r$라 하면 직각삼각형에서\n$r^2=12^2+9^2=225$이므로 $r=",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q3.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "원 O에서 현의 길이가 24cm이고, 원의 중심에서 현에 이르는 거리가 9cm일 때, 원 O의 둘레의 길이는? (3점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비의 상호관계",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "tan A=3에서 밑변 1, 높이 3, 빗변 √10인 직각삼각형을 설정하고 sin B=1/√10=√10/10을 직접 구하는 1단계 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "∠C=90°인 직각삼각형 ABC에서 tan A=3일 때, sin B의 값은? (4점)",
+        "solutionDecisiveExcerpt": "$\\tan A=\\dfrac{BC}{AC}=3$이므로 $AC=x$, $BC=3x$라 하자.\n피타고라스 정리에서 $AB=\\sqrt{x^2+9x^2}=\\sqrt{10}x$이다.\n각 $B",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "∠C=90°인 직각삼각형 ABC에서 tan A=3일 때, sin B의 값은? (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비표를 이용한 길이 구하기",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIG_TABLE_LOOKUP",
+        "CC_TRIG_MEASUREMENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "주어진 삼각비 표에서 cos 42°=0.7431, sin 42°=0.6691을 찾아 빗변 2에 곱해 AC, BC의 길이를 구하고 합산(2.8244)하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "직각삼각형 ABC에서 AB=2, ∠A=42°일 때, AC+BC의 값은? (단, 주어진 삼각비의 표를 이용하여라.) (4점)",
+        "solutionDecisiveExcerpt": "그림에서 $\\angle C=90^\\circ$이므로 $AB=2$는 빗변이다. 표에서 $\\cos42^\\circ=0.7431$, $\\sin42^\\circ=0.6691$이다.\n$AC=AB",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q5.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "직각삼각형 ABC에서 AB=2, ∠A=42°일 때, AC+BC의 값은? (단, 주어진 삼각비의 표를 이용하여라.) (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "직각삼각형 분할과 사각형의 넓이",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES",
+        "CC_QUADRILATERAL_AREA_TRIG",
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "특수각 30°-60°-90° 직각삼각형과 직각이등변삼각형으로 사각형을 분할하여 공통변 BD=√3을 구하고 두 직각삼각형의 넓이를 합산((3+√3)/2)하는 2단계 연산 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "□ABCD에서 ∠A=45°, ∠C=60°, ∠ABD=∠BDC=90°일 때, □ABCD의 넓이는? (4점)",
+        "solutionDecisiveExcerpt": "$DC=1$이고 $\\angle BDC=90^\\circ$, $\\angle C=60^\\circ$이므로 직각삼각형 $BCD$에서\n$\\tan60^\\circ=\\dfrac{BD}{DC}$, ",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q6.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "□ABCD에서 ∠A=45°, ∠C=60°, ∠ABD=∠BDC=90°일 때, □ABCD의 넓이는? (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비의 개념과 성질 판별",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO_DEFINITIONS",
+        "CC_ISOSCELES_RIGHT_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "삼각비의 정의, 각의 변화에 따른 삼각비 값의 특징, 직각이등변삼각형을 통한 45° 삼각비 유도 과정을 전수 검토하여 진위를 판별하는 2단계 개념 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "삼각비의 값에 대한 학생들의 설명으로 옳은 것은? (4점)",
+        "solutionDecisiveExcerpt": "$\\tan0^\\circ=0$이므로 학생1의 설명은 옳지 않다.\n일반적으로 $\\sin61^\\circ\\ne\\cos61^\\circ$이므로 학생2는 옳지 않다. 표의 소수는 근삿값이므로 ",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "삼각비의 값에 대한 학생들의 설명으로 옳은 것은? (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비를 이용한 변의 길이 표현",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO",
+        "CC_TRIG_MEASUREMENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "빗변 √13과 기준각 a°에 대하여 대변 BC의 길이를 sin a°=BC/√13 관계식으로부터 BC=√13 sin a°로 나타내는 2단계 표현 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "직각삼각형 ABC에서 ∠C=90°, ∠A=a°이고 빗변 AB의 길이가 √13이다. (단, a≠45°) 이때 BC의 길이를 삼각비로 나타낸 것은? (4점)",
+        "solutionDecisiveExcerpt": "그림에서 AB는 빗변이고 BC는 ∠A=a°의 맞은편 변이다.\n따라서 사인비를 이용하면\n$\\sin a^\\circ=\\dfrac{BC}{AB}=\\dfrac{BC}{\\sqrt{13}}$이",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q8.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "직각삼각형 ABC에서 ∠C=90°, ∠A=a°이고 빗변 AB의 길이가 √13이다. (단, a≠45°) 이때 BC의 길이를 삼각비로 나타낸 것은? (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "빛의 반사와 삼각비 연쇄 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_TRIG_MEASUREMENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "입사각과 반사각이 30°로 같음을 이용하여 거울까지의 수평거리 2√3과 천장까지의 수평거리 √3을 각각 구한 후, 수평·수직 차이로 피타고라스 정리를 적용해 거리 2√3을 산출하는 3단계 연쇄 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음은 빛의 성질을 체험할 수 있는 높이가 3m인 직사각형 모양의 공간이다. A지점에서 30°의 각도로 거울이 있는 벽면의 B지점에 빛을 쏘았을 때, 빛이 거울에 반사되어 천장의 ",
+        "solutionDecisiveExcerpt": "벽에서 거울점 $B$까지의 높이는 $2\\rm\\,m$이고 입사각이 $30^\\circ$이므로, $A$에서 벽까지의 수평거리는 $2\\cot30^\\circ=2\\sqrt3$이다.\n천장까지 ",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q9.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "다음은 빛의 성질을 체험할 수 있는 높이가 3m인 직사각형 모양의 공간이다. A지점에서 30°의 각도로 거울이 있는 벽면의 B지점에 빛을 쏘았을 때, 빛이 거울에 반사되어 천장의 ",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "스파이크 궤적과 삼각비 연쇄 거리",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES",
+        "CC_TRIG_MEASUREMENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "A-D 구간의 높이차(0.5m)와 30° 각도로부터 직선거리 1m를 구하고, D-B 구간의 네트높이(2m)와 45° 각도로부터 2√2m를 구하여 합산(1+2√2m)하는 3단계 실생활 모델링 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "배구 선수가 A지점에서 스파이크를 한 공이 네트의 상단 끝인 D지점에 걸린 후, 꺾여서 바닥의 B지점에 떨어졌다. A지점의 높이는 2.5m, 네트의 높이는 2m일 때, 공이 이동한",
+        "solutionDecisiveExcerpt": "$A$와 $D$의 높이 차는 $2.5-2=0.5\\rm\\,m$이고 그림에서 $AD$는 수평선과 $30^\\circ$를 이룬다. 따라서 $AD=\\dfrac{0.5}{\\sin30^\\cir",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q10.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "배구 선수가 A지점에서 스파이크를 한 공이 네트의 상단 끝인 D지점에 걸린 후, 꺾여서 바닥의 B지점에 떨어졌다. A지점의 높이는 2.5m, 네트의 높이는 2m일 때, 공이 이동한",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각형의 넓이와 제2변 길이",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA_TRIG",
+        "CC_SPECIAL_ANGLES",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "삼각형 넓이 공식 S=1/2 ab sin A로부터 AC=3을 도출한 후, C에서 수선을 내리거나 피타고라스 정리를 적용해 BC=√21을 계산하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "△ABC의 넓이가 3√3cm²일 때, BC의 길이는? (4점)",
+        "solutionDecisiveExcerpt": "그림에서 AB=4√3 cm, ∠A=30°이다. 삼각형 넓이 공식으로\n3√3=1/2·AB·AC·sin30°=1/2·4√3·AC·1/2=√3·AC이므로 AC=3 cm이다.\n코사인 법칙",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q11.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "△ABC의 넓이가 3√3cm²일 때, BC의 길이는? (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "평행사변형 대각선 분할 넓이",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_AREA",
+        "CC_SPECIAL_ANGLES",
+        "CC_TRIANGLE_AREA_TRIG"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "대각의 합 180°와 각의 비 1:2에서 ∠A=60°를 구하고, 평행사변형 넓이(48√3)를 구한 뒤 대각선에 의해 사등분된 삼각형 중 마주보는 두 삼각형의 넓이(전체의 절반인 24√3)를 도출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "평행사변형 ABCD에서 두 대각선의 교점을 O라고 하자. ∠A:∠B=5:10이고, BC=12cm, CD=8cm일 때, 색칠된 부분의 넓이는? (4점)",
+        "solutionDecisiveExcerpt": "$\\angle A+\\angle B=180^\\circ$이고 $\\angle A:\\angle B=1:2$이므로 $\\angle A=60^\\circ$, $\\angle B=120^\\circ$",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q12.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "평행사변형 ABCD에서 두 대각선의 교점을 O라고 하자. ∠A:∠B=5:10이고, BC=12cm, CD=8cm일 때, 색칠된 부분의 넓이는? (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "둔각이 포함된 사각형의 분할 넓이",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_QUADRILATERAL_AREA_TRIG",
+        "CC_SPECIAL_ANGLES",
+        "CC_RADICAL_ARITHMETIC"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "대각선 BD로 사각형을 나누어 120° 둔각삼각형 넓이(8√3)와 135° 둔각삼각형 넓이(12√3-12)를 복잡한 근호 연산을 통해 각각 구하고 합산(20√3-12)하는 3단계 다단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "□ABCD에서 AB=4√2, BC=4√3, CD=6√2−2√6, DA=4√2일 때, □ABCD의 넓이는? (4점)",
+        "solutionDecisiveExcerpt": "대각선 $BD$를 그어 두 삼각형의 넓이를 더한다.\n$AB=AD=4\\sqrt2$, $\\angle A=120^\\circ$이므로\n$[ABD]=\\dfrac12(4\\sqrt2)^2\\sin",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q13.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "□ABCD에서 AB=4√2, BC=4√3, CD=6√2−2√6, DA=4√2일 때, □ABCD의 넓이는? (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "반지름의 수직이등분선과 현의 길이",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "반지름이 현에 의해 이등분되어 중심거리가 r/2가 됨을 파악하고, 직각삼각형에서 r^2=9^2+(r/2)^2 이차방정식을 수립해 r=6√3을 산출하는 3단계 대수-기하 융합 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "원 O에서 현 AB는 반지름 OC를 수직이등분한다. AB=18cm일 때, 원 O의 반지름의 길이는? (4점)",
+        "solutionDecisiveExcerpt": "현 $AB$가 반지름 $OC$를 수직이등분하므로 교점에서 $OC$가 반으로 나뉜다. 반지름을 $r$라 하면 중심에서 현까지의 거리는 $r/2$이고, 현의 절반은 $9$이다.\n직각삼",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q14.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "원 O에서 현 AB는 반지름 OC를 수직이등분한다. AB=18cm일 때, 원 O의 반지름의 길이는? (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "중심에서 같은 거리에 있는 현과 삼각형의 넓이",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "피타고라스 정리로 현의 반 AM=2√7과 전체 길이 AB=4√7을 구하고, 현의 길이가 같으면 중심거리가 같다는 원의 성질(OM=ON=6)을 결합하여 삼각형 넓이 12√7을 산출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "원 O에서 AB⊥OM이고 AB=CD이다. OD=8cm, OM=6cm일 때, △OCD의 넓이는? (4점)",
+        "solutionDecisiveExcerpt": "중심에서 현에 내린 수선은 현을 이등분한다. 직각삼각형 $OMA$에서 $OA=OD=8$, $OM=6$이므로\n$AM=\\sqrt{8^2-6^2}=2\\sqrt7$이다. 따라서 $AB=4",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q15.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "원 O에서 AB⊥OM이고 AB=CD이다. OD=8cm, OM=6cm일 때, △OCD의 넓이는? (4점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "수직인 두 쌍의 평행현과 현의 길이",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_PERPENDICULAR_CHORDS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "대칭성에 의해 중심에서 현 AB까지의 거리 5와 현 EF까지의 거리 3을 파악한 뒤, AB로부터 반지름 r=13을 역산하고 이를 EF에 재적용하여 EF=8√10을 구하는 고난도 4단계 복합 추론 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같이 원 O 내부에 길이가 각각 같은 두 쌍의 평행한 현 AB, CD와 현 EF, GH가 있다. 현 AB와 현 EF는 서로 수직이고, 두 현 AB, CD 사이의 거리는",
+        "solutionDecisiveExcerpt": "평행한 같은 길이의 두 현은 중심에서 같은 거리에 있고 중심을 사이에 둔다. 따라서 원의 중심에서 $AB$까지의 거리는 $10/2=5\\rm\\,cm$, 중심에서 $EF$까지의 거리는",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q16.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "다음 그림과 같이 원 O 내부에 길이가 각각 같은 두 쌍의 평행한 현 AB, CD와 현 EF, GH가 있다. 현 AB와 현 EF는 서로 수직이고, 두 현 AB, CD 사이의 거리는",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "원의 접선의 길이와 삼각형의 넓이",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_PROPERTY",
+        "CC_TRIANGLE_AREA_TRIG",
+        "CC_SPECIAL_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "원 밖의 한 점에서 그은 접선의 길이가 같음을 적용하여 접선 조각 BE=5, CE=3을 구해 밑변 BC=8을 도출한 뒤, 삼각비 넓이 공식으로 삼각형 ACB의 넓이 30√3을 구하는 4단계 복합 기하 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림에서 AD, BC, AF가 각각 세 점 D, E, F를 접점으로 하는 원 O의 접선일 때, AD=18cm, AC=15cm, AB=13cm, ∠ACB=60°일 때, △ACB",
+        "solutionDecisiveExcerpt": "한 점에서 원에 그은 두 접선의 길이는 같다. $AD=18$, $AB=13$이므로 $BD=5$, 따라서 $BE=5$이다.\n$AD=AF=18$, $AC=15$이므로 $CF=3$, 따",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q17.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "다음 그림에서 AD, BC, AF가 각각 세 점 D, E, F를 접점으로 하는 원 O의 접선일 때, AD=18cm, AC=15cm, AB=13cm, ∠ACB=60°일 때, △ACB",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "이등변삼각형 각의 이등분선과 sin 18° 유도",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_ANGLE_BISECTOR",
+        "CC_TRIANGLE_SIMILARITY",
+        "CC_QUADRATIC_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "36°-72°-72° 이등변삼각형에서 각의 이등분선에 의한 닮음과 이등변삼각형 성질을 이용해 변의 관계식을 세우고, 이차방정식 4x^2+2x-1=0을 풀어 sin 18°=(√5-1)/4를 정밀 유도하는 4단계 최고난도 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "AB=AC인 이등변삼각형 ABC에서 BC=1, ∠A=36°이고, ∠B의 이등분선과 AC의 교점을 D라고 할 때, sin18°의 값은? (5점)",
+        "solutionDecisiveExcerpt": "이등변삼각형 ABC에서 ∠B=∠C=(180°−36°)/2=72°이다. BD가 ∠B의 이등분선이므로 ∠CBD=∠ABD=36°이다.\n삼각형 BCD에서 ∠BDC=180°−72°−36°=",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q18.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "AB=AC인 이등변삼각형 ABC에서 BC=1, ∠A=36°이고, ∠B의 이등분선과 AC의 교점을 D라고 할 때, sin18°의 값은? (5점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "정삼각형과 원의 교차 영역 넓이",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "crossConceptKeys": [
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_CIRCLE_SECTOR_AREA",
+        "CC_SPECIAL_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "한 변이 16인 정삼각형의 넓이(64√3)와 원의 반지름 4√3을 구하고, 삼각형 내부에 포함된 중심각 120° 부채꼴의 넓이(16π)를 계산하여 차(64√3-16π)를 구하는 4단계 복합 면적 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같이 반지름의 길이가 4√3인 원과 AB=16인 정삼각형 ABC에 대하여 지름 AH와 BC가 직교할 때, 색칠된 부분의 넓이는? (5점)",
+        "solutionDecisiveExcerpt": "정삼각형의 넓이는 $\\dfrac{\\sqrt3}{4}\\cdot16^2=64\\sqrt3$이다. 원의 반지름은 $4\\sqrt3$이므로 넓이는 $\\pi(4\\sqrt3)^2=48\\pi$이다",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q19.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "다음 그림과 같이 반지름의 길이가 4√3인 원과 AB=16인 정삼각형 ABC에 대하여 지름 AH와 BC가 직교할 때, 색칠된 부분의 넓이는? (5점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "직각삼각형 내접원과 접선 길이",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_CIRCLE",
+        "CC_CIRCLE_TANGENT_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "직각 꼭짓점에서의 접선 길이 x를 두고 (x+5)^2+(x+12)^2=17^2 피타고라스 방정식을 풀어 내접원 반지름 r=3을 구한 뒤, 중심 O에서 세 꼭짓점까지의 거리 합(3√2+√34+3√17)을 각각 계산하는 4단계 융합 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림에서 원 O는 ∠A=90°인 직각삼각형 ABC의 내접원이고 세 점 D, E, F는 접점이다. BD=5, CE=12일 때, OA+OB+OC는? (5점)",
+        "solutionDecisiveExcerpt": "접선 길이 성질에서 $BE=BD=5$, $CF=CE=12$이다. $AF=AD=x$라 하면 $AB=x+5$, $AC=x+12$, $BC=17$이다.\n피타고라스 정리에 따라 $(x+5",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q20.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "다음 그림에서 원 O는 ∠A=90°인 직각삼각형 ABC의 내접원이고 세 점 D, E, F는 접점이다. BD=5, CE=12일 때, OA+OB+OC는? (5점)",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "정삼각형 종이접기와 삼각비 활용",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PAPER_FOLDING_SIMILARITY",
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_SPECIAL_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "정삼각형 종이접기에서 접힌 각과 직각 조건으로부터 15°-75° 각 분석을 수행하고, 보조선 수선을 내려 특수각 직각삼각형 45°-45°-90°와 30°-60°-90°를 연쇄 결합하여 접는 선 EF=3√2/4를 구하는 서술형 4단계 심화 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형1> 다음 그림과 같이 정삼각형 모양의 종이를 EF를 접는 선으로 하여 접었더니 CF=1cm, ∠CDF=90°이었다. 이 때 EF의 길이를 구하고, 풀이 과정을 서술하시오.",
+        "solutionDecisiveExcerpt": "삼각형 CDF에서 ∠D=90°, ∠C=60°, CF=1이므로\nCD=CF cos60°=1/2, DF=CF sin60°=√3/2이다.\nA가 D로 접혀 옮겨졌으므로 접는 선 위의 F에서",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q21.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "<서술형1> 다음 그림과 같이 정삼각형 모양의 종이를 EF를 접는 선으로 하여 접었더니 CF=1cm, ∠CDF=90°이었다. 이 때 EF의 길이를 구하고, 풀이 과정을 서술하시오.",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "피사의 사탑 기울기와 높이 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIG_MEASUREMENT",
+        "CC_ELEVATION_ANGLE",
+        "CC_LINEAR_EQUATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "기울기 4°로부터 지면과의 예각 86°를 구하고 tan 86°=14를 적용하여 CD=14BD 수립 후, 45° 올려다본 각에서 AD=CD 및 BD=60-CD 연립방정식을 세워 탑의 높이 56m를 완결 서술하는 서술형 4단계 실생활 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형2> 피사의 사탑은 이탈리아의 대표적인 랜드마크 중 하나로, 한쪽으로 기울어진 모습으로 잘 알려져 있다. A지점에서 B지점 사이의 거리는 60m이고, 피사의 사탑이 기울어진",
+        "solutionDecisiveExcerpt": "C에서 지면에 내린 수선의 발을 D라 하면 CD가 구하는 높이이다. 사탑은 수직선과 4° 기울어져 있으므로 사탑과 지면이 이루는 예각은 86°이다.\n직각삼각형 BCD에서 tan86",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q22.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "<서술형2> 피사의 사탑은 이탈리아의 대표적인 랜드마크 중 하나로, 한쪽으로 기울어진 모습으로 잘 알려져 있다. A지점에서 B지점 사이의 거리는 60m이고, 피사의 사탑이 기울어진",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 23,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "두 삼각형의 끼인각 공유 넓이비",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA_TRIG",
+        "CC_RATIO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "공통 끼인각 θ에 대한 삼각비 넓이 공식 S=1/2 ab sin θ를 두 삼각형에 각각 적용하고, 두 변의 길이비(3배, 1/2배)로부터 넓이비 3/2를 도출하여 △ADE=42√5를 서술하는 서술형 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형3> 다음 △ABC와 △ADE에 대하여 AC:AE=2:1, AB:AD=1:3이고 △ABC의 넓이가 28√5일 때, △ADE의 넓이를 구하고, <조건>에 맞게 풀이과정을 서술",
+        "solutionDecisiveExcerpt": "∠A를 θ라 하자. 삼각형의 넓이 공식으로\n[△ABC]=1/2·AB·AC·sinθ=28√5,\n[△ADE]=1/2·AD·AE·sinθ이다.\n주어진 비에서 AD/AB=3, AE/AC=",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q23.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "<서술형3> 다음 △ABC와 △ADE에 대하여 AC:AE=2:1, AB:AD=1:3이고 △ABC의 넓이가 28√5일 때, △ADE의 넓이를 구하고, <조건>에 맞게 풀이과정을 서술",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 24,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "수막새 중심 복원 작도 및 현의 수직이등분선 증명",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_TRIANGLE_CONGRUENCE_RHS",
+        "CC_GEOMETRIC_PROOF"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "원형 수막새의 중심을 복원하기 위한 현의 수직이등분선 작도 원리를 서술하고, 직각삼각형의 빗변과 한 변이 같은 RHS 합동 조건을 논리적으로 서술하여 현의 수직이등분 성질을 증명하는 서술형 3단계 논증 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형4> 다음 물음에 답하시오. (6점, 부분점수 있음.) (1) 다음 그림은 얼굴무늬 수막새로 원 모양이었으나 현재는 일부가 깨져 있다. 이 수막새를 복원하기 위해 수막새의 ",
+        "solutionDecisiveExcerpt": "(1) 원의 중심에서 현에 내린 수선은 그 현을 이등분한다. 원의 일부에서 서로 다른 두 현을 정하고 각 현에 대해 수직이등분선을 작도한 뒤, 두 수직이등분선의 교점을 원의 중심으",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/26_삼산중_2학기_중간_중3_기출/q24.svg"
+        ]
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "targetPack": "MIDDLE_GEOMETRY",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "sourceTextExcerpt": "<서술형4> 다음 물음에 답하시오. (6점, 부분점수 있음.) (1) 다음 그림은 얼굴무늬 수막새로 원 모양이었으나 현재는 일부가 깨져 있다. 이 수막새를 복원하기 위해 수막새의 ",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    }
+  ],
+  "courierMetadataCorrections": {
+    "author": "CODEX_ROOT_WITH_DEEPSEEK_TARGETED_METADATA_REVIEW",
+    "originalStatistics": {
+      "totalQuestions": 24,
+      "approved": 24,
+      "holdRemaining": 0,
+      "canonicalTemplatesReused": 6,
+      "newTemplatesCreated": 0,
+      "atomicCrossConceptsBound": 29,
+      "byPack": {
+        "MIDDLE_GEOMETRY": 24
+      },
+      "byStandardUnit": {
+        "M3-05": 16,
+        "M3-06": 8
+      },
+      "bySubUnit": {
+        "M3-05-TRIG_RATIO": 4,
+        "M3-06-CIRCLE_PROPERTY": 8,
+        "M3-05-TRIG_RATIO_APPLICATION": 12
+      },
+      "byDifficultyBucket": {
+        "1": 4,
+        "2": 4,
+        "3": 9,
+        "4": 7
+      },
+      "byProblemType": {
+        "PT_TRIG_RATIO": 4,
+        "PT_CIRCLE_ANGLE_RELATIONS": 7,
+        "PT_TRIG_RATIO_APPLICATION": 13
+      },
+      "byTemplate": {
+        "TPL_TRIG_RATIO_BASIC_RELATION": 2,
+        "TPL_TRIG_RATIO_SPECIAL_ANGLE": 2,
+        "TPL_CIRCLE_ANGLE_COMPOSITE": 6,
+        "TPL_TRIG_APPLICATION_DIRECT_MEASURE": 4,
+        "TPL_TRIG_APPLICATION_CHAINED_MEASURE": 9,
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE": 1
+      }
+    },
+    "typeCorrections": [
+      {
+        "sourceOrdinal": 3,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+        },
+        "reason": "현 24 cm와 중심에서 현까지의 거리 9 cm에서 중심에서 현에 내린 수선이 현을 이등분함을 이용해 반지름을 구하고 원둘레를 계산한다. 현의 길이와 중심거리 조건을 쓰는 PT_CIRCLE_LINE_RELATION·TM_CIRCLE_CHORD_LENGTH가 정확하다.",
+        "sourceDecisiveExcerpt": "원의 중심에서 현에 내린 수선은 현을 이등분한다. 따라서 현의 절반은 12 cm이다."
+      },
+      {
+        "sourceOrdinal": 14,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+        },
+        "reason": "현 AB가 반지름 OC를 수직이등분한다는 조건에서 교점까지의 중심거리가 r/2임을 파악하고 직각삼각형에서 반지름을 구한다. 현의 수직이등분선이 중심을 지나는 성질(중심에서 현에 내린 수선의 이등분)을 쓰므로 TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+        "sourceDecisiveExcerpt": "현 AB가 반지름 OC를 수직이등분하므로 교점에서 OC가 반으로 나뉜다."
+      },
+      {
+        "sourceOrdinal": 15,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+        },
+        "reason": "AB⊥OM에서 중심에서 현에 내린 수선이 현 AB를 이등분함을 이용해 AM을 구하고, AB=CD(같은 길이의 현은 중심에서 같은 거리) 조건으로 CD의 중심거리를 OM과 같게 적용해 삼각형 넓이를 구한다. 현 길이·거리 조건 유형이다.",
+        "sourceDecisiveExcerpt": "중심에서 현에 내린 수선은 현을 이등분한다. O에서 CD까지의 거리도 같은 길이의 현이므로 6이다."
+      },
+      {
+        "sourceOrdinal": 16,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+        },
+        "reason": "길이가 같은 두 쌍의 평행한 현 AB, CD와 EF, GH가 중심을 사이에 두고 대칭으로 놓인다는 성질로 중심거리 5와 3을 얻고, 한 현의 반과 중심거리로 반지름을 구한 뒤 다른 현의 길이를 구한다. 현의 길이·중심거리 조건 유형이다.",
+        "sourceDecisiveExcerpt": "평행한 같은 길이의 두 현은 중심에서 같은 거리에 있고 중심을 사이에 둔다."
+      },
+      {
+        "sourceOrdinal": 17,
+        "before": {
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH"
+        },
+        "reason": "한 점에서 원에 그은 두 접선의 길이가 같음으로 BD=BE, CF=CE를 구해 BC를 만들고, 삼각비 넓이 공식으로 △ACB의 넓이를 구한다. 원 단원의 접선 길이 상등이 결정적이므로 PT_CIRCLE_LINE_RELATION이 맞으나, ACTIVE 템플릿에 접선 길이 템플릿이 없고 삼각비 DIRECT 템플릿도 목표를 길이·높이·거리로 한정해 넓이를 명시하지 않는다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+        "sourceDecisiveExcerpt": "한 점에서 원에 그은 두 접선의 길이는 같다. AD=18, AB=13이므로 BD=5, 따라서 BE=5이다."
+      },
+      {
+        "sourceOrdinal": 20,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH"
+        },
+        "reason": "직각삼각형의 내접원 접점에서 접선 길이 상등(BE=BD, CF=CE)으로 변을 만들고 피타고라스로 내접원 반지름을 구한 뒤 중심에서 세 꼭짓점까지 거리를 계산한다. 접선 길이 성질이 결정적이나 ACTIVE 접선 길이 템플릿이 없다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+        "sourceDecisiveExcerpt": "접선 길이 성질에서 BE=BD=5, CF=CE=12이다. AF=AD=x라 하면 AB=x+5, AC=x+12, BC=17이다."
+      },
+      {
+        "sourceOrdinal": 24,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+        },
+        "reason": "(1) 서로 다른 두 현의 수직이등분선의 교점으로 원의 중심을 복원하고, (2) OA=OB, OM 공통, ∠OMA=∠OMB=90°로 RHS 합동을 보여 중심에서 현에 내린 수선이 현을 이등분함을 증명한다. 현의 수직이등분선 성질 그 자체이므로 TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+        "sourceDecisiveExcerpt": "원의 중심은 서로 다른 두 현의 수직이등분선의 교점이다. 두 직각삼각형 OMA, OMB는 RHS 합동이므로 AM=BM이다."
+      }
+    ],
+    "studentContentChanged": false,
+    "mathematicsReSolved": false
+  },
+  "normalization": {
+    "schemaVersion": "archive-meta-pipeline-audit-normalization-v1",
+    "sourceAuditSha256": "d5d9bb3d6d729deb564a80a7bbe6c264f75384ba6d2057dac06be82a69992c5f",
+    "sourceAuditSchemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+    "targetProofSchema": "meta-pipeline-audit-approval-v2",
+    "reason": "The Drive audit carries definition objects with flat per-record classification. Split it into the registrar-supported paired v2 proof without changing any audited value or definition.",
+    "packScopeCorrections": [],
+    "typeCorrections": [
+      {
+        "sourceOrdinal": 3,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+        },
+        "reason": "현 24 cm와 중심에서 현까지의 거리 9 cm에서 중심에서 현에 내린 수선이 현을 이등분함을 이용해 반지름을 구하고 원둘레를 계산한다. 현의 길이와 중심거리 조건을 쓰는 PT_CIRCLE_LINE_RELATION·TM_CIRCLE_CHORD_LENGTH가 정확하다.",
+        "sourceDecisiveExcerpt": "원의 중심에서 현에 내린 수선은 현을 이등분한다. 따라서 현의 절반은 12 cm이다."
+      },
+      {
+        "sourceOrdinal": 14,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+        },
+        "reason": "현 AB가 반지름 OC를 수직이등분한다는 조건에서 교점까지의 중심거리가 r/2임을 파악하고 직각삼각형에서 반지름을 구한다. 현의 수직이등분선이 중심을 지나는 성질(중심에서 현에 내린 수선의 이등분)을 쓰므로 TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+        "sourceDecisiveExcerpt": "현 AB가 반지름 OC를 수직이등분하므로 교점에서 OC가 반으로 나뉜다."
+      },
+      {
+        "sourceOrdinal": 15,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+        },
+        "reason": "AB⊥OM에서 중심에서 현에 내린 수선이 현 AB를 이등분함을 이용해 AM을 구하고, AB=CD(같은 길이의 현은 중심에서 같은 거리) 조건으로 CD의 중심거리를 OM과 같게 적용해 삼각형 넓이를 구한다. 현 길이·거리 조건 유형이다.",
+        "sourceDecisiveExcerpt": "중심에서 현에 내린 수선은 현을 이등분한다. O에서 CD까지의 거리도 같은 길이의 현이므로 6이다."
+      },
+      {
+        "sourceOrdinal": 16,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+        },
+        "reason": "길이가 같은 두 쌍의 평행한 현 AB, CD와 EF, GH가 중심을 사이에 두고 대칭으로 놓인다는 성질로 중심거리 5와 3을 얻고, 한 현의 반과 중심거리로 반지름을 구한 뒤 다른 현의 길이를 구한다. 현의 길이·중심거리 조건 유형이다.",
+        "sourceDecisiveExcerpt": "평행한 같은 길이의 두 현은 중심에서 같은 거리에 있고 중심을 사이에 둔다."
+      },
+      {
+        "sourceOrdinal": 17,
+        "before": {
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH"
+        },
+        "reason": "한 점에서 원에 그은 두 접선의 길이가 같음으로 BD=BE, CF=CE를 구해 BC를 만들고, 삼각비 넓이 공식으로 △ACB의 넓이를 구한다. 원 단원의 접선 길이 상등이 결정적이므로 PT_CIRCLE_LINE_RELATION이 맞으나, ACTIVE 템플릿에 접선 길이 템플릿이 없고 삼각비 DIRECT 템플릿도 목표를 길이·높이·거리로 한정해 넓이를 명시하지 않는다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+        "sourceDecisiveExcerpt": "한 점에서 원에 그은 두 접선의 길이는 같다. AD=18, AB=13이므로 BD=5, 따라서 BE=5이다."
+      },
+      {
+        "sourceOrdinal": 20,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH"
+        },
+        "reason": "직각삼각형의 내접원 접점에서 접선 길이 상등(BE=BD, CF=CE)으로 변을 만들고 피타고라스로 내접원 반지름을 구한 뒤 중심에서 세 꼭짓점까지 거리를 계산한다. 접선 길이 성질이 결정적이나 ACTIVE 접선 길이 템플릿이 없다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+        "sourceDecisiveExcerpt": "접선 길이 성질에서 BE=BD=5, CF=CE=12이다. AF=AD=x라 하면 AB=x+5, AC=x+12, BC=17이다."
+      },
+      {
+        "sourceOrdinal": 24,
+        "before": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "after": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+        },
+        "reason": "(1) 서로 다른 두 현의 수직이등분선의 교점으로 원의 중심을 복원하고, (2) OA=OB, OM 공통, ∠OMA=∠OMB=90°로 RHS 합동을 보여 중심에서 현에 내린 수선이 현을 이등분함을 증명한다. 현의 수직이등분선 성질 그 자체이므로 TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+        "sourceDecisiveExcerpt": "원의 중심은 서로 다른 두 현의 수직이등분선의 교점이다. 두 직각삼각형 OMA, OMB는 RHS 합동이므로 AM=BM이다."
+      }
+    ]
+  }
+}
