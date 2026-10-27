@@ -14,14 +14,15 @@
     "taxonomy": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
     "bindings": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json",
     "independentReview": "SETS_PROPOSITIONS independent 370-item review, 363 IN_SCOPE",
-    "reviewedExam_meta-pipeline-02-jeil-h1-2final-20261026-current": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json"
+    "reviewedExam_meta-pipeline-02-jeil-h1-2final-20261026-current": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json",
+    "reviewedExam_meta-pipeline-high-1-b0eefadb76ed-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json"
   },
   "counts": {
     "records": 377,
     "taxonomyRows": 134,
     "defaultSelectable": 377,
     "supplementary": 0,
-    "automaticEligibleExpected": 29,
+    "automaticEligibleExpected": 36,
     "sourceHold": 0,
     "catalogUnregisteredExcluded": 9
   },
@@ -2292,37 +2293,105 @@
       "questionUid": "qid_v1_0879e2c326564d076dffd1818f152847649d81ef73e2fc24b3d3578b7ac3298d",
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 16,
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceQuestionNo": "16",
+      "sourceFingerprint": "97866d232b7975887a830b4b47e891e34ed085fe4693436b7c0d2f256b5b38e1",
+      "contentFingerprint": "01824fc6a459d1fc6aedb31e5c02bb10c6bb8e0af1a5773079add8c95475e8e2",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-06",
       "standardUnit": "명제",
-      "standardUnitOrder": 6,
       "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "conceptClusterKey": "H22-C2-06-CORE",
       "problemTypeKey": "PT_CONTRADICTION_PROOF",
       "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+      "difficultyBucket": 4,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "집합과 명제",
       "L2": "명제",
       "L3": "귀류법",
       "L4": "홀짝·배수 성질의 귀류법 증명",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "level": "상",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "상",
+      "legacyStandardUnitKey": "H22-C2-06",
+      "legacySubUnitKey": "H22-C2-06-CORE",
+      "legacySubUnit": "명제 핵심 개념",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "증명",
+        "L4": "귀류법"
+      },
+      "primaryConcept": "홀수 조건 제곱수 명제의 귀류법",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The source is a proof-completion item using a contradiction from both expressions being squares; A's proof taxonomy is exact and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_PROOF_BY_CONTRADICTION",
+        "CC_PARITY_DIVISIBILITY",
+        "CC_DIFFERENCE_OF_SQUARES"
+      ],
+      "conditionKeys": [
+        "COND_ODD"
+      ],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "SETS_PROPOSITIONS",
-      "metaFoundationPackVersion": "1.0.0"
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#16",
+      "approvedSourceFingerprint": "97866d232b7975887a830b4b47e891e34ed085fe4693436b7c0d2f256b5b38e1",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_0a7001bd5d6bc35be81d8d5a8a799d317f995366e90870750bca2cc96e538d4e",
@@ -3286,37 +3355,101 @@
       "questionUid": "qid_v1_1cf51fc06a926bb10c83c567af4559fc00e46f4f3352ec8246a997db9d7f261b",
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 5,
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "2d318fd234b2cf19dd960921770b449ce01451b174b93e34e2401a6c5c83eb66",
+      "contentFingerprint": "1eb745164f0d0e52ed8d2bd6638271fc3c2f3b326d5af6464dc975de0223a123",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-06",
       "standardUnit": "명제",
-      "standardUnitOrder": 6,
       "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "conceptClusterKey": "H22-C2-06-CORE",
       "problemTypeKey": "PT_QUANTIFIER_NEGATION",
       "templateKey": "TPL_EXISTENTIAL_NEGATION_BASIC",
+      "difficultyBucket": 1,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "집합과 명제",
       "L2": "명제",
       "L3": "모든·어떤 명제와 부정",
       "L4": "존재명제의 부정",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "level": "하",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "legacyLevel": "하",
+      "legacyStandardUnitKey": "H22-C2-06",
+      "legacySubUnitKey": "H22-C2-06-CORE",
+      "legacySubUnit": "명제 핵심 개념",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "명제와 조건",
+        "L4": "명제 변환"
+      },
+      "primaryConcept": "명제와 조건",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A/B normalized fields are equal; common value selected for final candidate.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "하",
+      "crossConceptKeys": [
+        "CC_QUANTIFIER_NEGATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "SETS_PROPOSITIONS",
-      "metaFoundationPackVersion": "1.0.0"
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#5",
+      "approvedSourceFingerprint": "2d318fd234b2cf19dd960921770b449ce01451b174b93e34e2401a6c5c83eb66",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_1ead054f3ec5beae01b856e48e15efa33a3b80d723e977b324392042353bae27",
@@ -5351,37 +5484,105 @@
       "questionUid": "qid_v1_439174128b8392f7c1398989d4ceef80085344884a6e426491a77ff76d434a79",
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 11,
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceQuestionNo": "11",
+      "sourceFingerprint": "fb72a67451341773beb581680b877a4d3055ddf3c487b80cc6f758c270ea7118",
+      "contentFingerprint": "d4b3a667dedc15847dbfc1170216a656452dec62373f53bf4c43475258af3025",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-06",
       "standardUnit": "명제",
-      "standardUnitOrder": 6,
       "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "conceptClusterKey": "H22-C2-06-CORE",
       "problemTypeKey": "PT_TRUTH_SET_RELATION",
       "templateKey": "TPL_TRUTHSET_SET_OPERATION",
+      "difficultyBucket": 4,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "집합과 명제",
       "L2": "명제",
       "L3": "진리집합과 명제의 관계",
       "L4": "집합 연산과 명제",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "level": "상",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-      "metaFoundationCurriculumApplicability": "CORE",
+      "secondaryConceptKeys": [
+        "명제와 조건"
+      ],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "상",
+      "legacyStandardUnitKey": "H22-C2-06",
+      "legacySubUnitKey": "H22-C2-06-CORE",
+      "legacySubUnit": "명제 핵심 개념",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "집합과 명제",
+        "L2": "집합의 연산",
+        "L3": "집합의 연산법칙",
+        "L4": "복합 연산"
+      },
+      "primaryConcept": "진리집합의 차집합·합집합 조건",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The empty union directly yields P⊆R and Q⊆Rᶜ, which determines the truth statements; A's set-operation primary is more exact than B's generic proposition conversion.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_TRUTH_SET_INCLUSION",
+        "CC_SET_DIFFERENCE_COMPLEMENT",
+        "CC_CONTRAPOSITIVE_EQUIVALENCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "SETS_PROPOSITIONS",
-      "metaFoundationPackVersion": "1.0.0"
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#11",
+      "approvedSourceFingerprint": "fb72a67451341773beb581680b877a4d3055ddf3c487b80cc6f758c270ea7118",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_43b0e326c4eca737caaf1a7ac599d5a23f2595d7313574562105c25d8da4e83d",
@@ -9804,43 +10005,105 @@
       "questionUid": "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff",
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 2,
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceQuestionNo": "2",
+      "sourceFingerprint": "add6adabf9d4388203db844f9656587931de62ff596391fad51ecb89476f7999",
+      "contentFingerprint": "280f192cc80d129b5518f2dafdc4cb5369a8724320f2604c1ccd63c7070f395c",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-06",
       "standardUnit": "명제",
-      "standardUnitOrder": 6,
       "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "conceptClusterKey": "H22-C2-06-CORE",
       "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
       "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+      "difficultyBucket": 3,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "집합과 명제",
       "L2": "명제",
       "L3": "명제가 참이 되기 위한 조건",
       "L4": "역·대우와 방정식의 근 조건",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_EQUATION"
-      ],
       "secondaryConceptKeys": [
-        "CC_QUADRATIC_EQUATION"
+        "이차방정식의 근"
       ],
-      "conditionKeys": [
-        "COND_INTEGER"
-      ],
-      "integrationPattern": "SEQUENTIAL",
-      "level": "중",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H22-C2-06",
+      "legacySubUnitKey": "H22-C2-06-CORE",
+      "legacySubUnit": "명제 핵심 개념",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "필요조건·충분조건",
+        "L4": "조건 관계"
+      },
+      "primaryConcept": "역명제의 해집합 포함 조건",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The reverse q→p requires both roots of q to lie in x≥a; A records the root condition and the relation, while B omits the decisive root secondary.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CONVERSE_CONTRAPOSITIVE",
+        "CC_QUADRATIC_EQUATION_ROOTS",
+        "CC_TRUTH_SET_INCLUSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "SETS_PROPOSITIONS",
-      "metaFoundationPackVersion": "1.0.0"
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#2",
+      "approvedSourceFingerprint": "add6adabf9d4388203db844f9656587931de62ff596391fad51ecb89476f7999",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_8c45ff109f599edc7c519c60cf5bab9e873bac18c31829bdf792ba327b487dad",
@@ -14785,37 +15048,103 @@
       "questionUid": "qid_v1_dcb88df5c5637f4fe29502fe3601b66a64475cc28ed277b98fafb8d74943c878",
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 20,
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "d5b984cae4be7e14db44a96883e5e2b0053e7355d72de2c246891f7d81f09f5c",
+      "contentFingerprint": "1b1834064fba8c888655bf6a913becef7d1c274dbaeb2f407fea31fc11877c0b",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-06",
       "standardUnit": "명제",
-      "standardUnitOrder": 6,
       "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "conceptClusterKey": "H22-C2-06-CORE",
       "problemTypeKey": "PT_LOGIC_CHAIN",
       "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+      "difficultyBucket": 5,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "집합과 명제",
       "L2": "명제",
       "L3": "논리 관계와 추론",
       "L4": "논리 조건을 이용한 추론",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "CASE_BRANCH",
-      "level": "상",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B45",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "상",
+      "legacyStandardUnitKey": "H22-C2-06",
+      "legacySubUnitKey": "H22-C2-06-CORE",
+      "legacySubUnit": "명제 핵심 개념",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "명제와 조건",
+        "L4": "명제 변환"
+      },
+      "primaryConcept": "조건 논리와 카드 상태 전수 판정",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The conditions are logical implications about which cards are flipped, and the source requires enumerating admissible states for the maximum visible sum; A is the grounded semantic path and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_LOGICAL_IMPLICATION_CHAIN",
+        "CC_CONTRAPOSITIVE_EQUIVALENCE",
+        "CC_CASE_EXHAUSTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "SETS_PROPOSITIONS",
-      "metaFoundationPackVersion": "1.0.0"
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#20",
+      "approvedSourceFingerprint": "d5b984cae4be7e14db44a96883e5e2b0053e7355d72de2c246891f7d81f09f5c",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_ddb9aeac70f076e4d9ddf5b55624ff2a7bbb2ce3ace7f420fc70bfa13268b47a",
@@ -15984,37 +16313,105 @@
       "questionUid": "qid_v1_f1a98276b1bb5e0bdb3ed134dc92235fb8b5156ecbd208b6a364534da6d7af39",
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 6,
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceQuestionNo": "6",
+      "sourceFingerprint": "c35e214c7accf22a3b3e986c8d1811a8f40be48dd4d40081ec6885425e906fa1",
+      "contentFingerprint": "1ed1743fd42664fc971f1192c06e27b660aa8e70e6b0aaad174a2a31bcccb677",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-06",
       "standardUnit": "명제",
-      "standardUnitOrder": 6,
       "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "conceptClusterKey": "H22-C2-06-CORE",
       "problemTypeKey": "PT_NEC_SUFF_RELATION",
       "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+      "difficultyBucket": 2,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "집합과 명제",
       "L2": "명제",
       "L3": "필요조건·충분조건",
       "L4": "집합과 필요조건·충분조건",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "REINTERPRETATION",
-      "level": "하",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B12",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE",
+      "secondaryConceptKeys": [
+        "집합의 연산"
+      ],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "legacyLevel": "하",
+      "legacyStandardUnitKey": "H22-C2-06",
+      "legacySubUnitKey": "H22-C2-06-CORE",
+      "legacySubUnit": "명제 핵심 개념",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "필요조건·충분조건",
+        "L4": "조건 관계"
+      },
+      "primaryConcept": "충분조건과 진리집합 포함",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "p sufficient for q means P⊆Q, and the requested always-true relation is read from that inclusion; A's set-operation secondary is relevant.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "하",
+      "crossConceptKeys": [
+        "CC_NECESSARY_SUFFICIENT_CONDITION",
+        "CC_TRUTH_SET_INCLUSION",
+        "CC_SET_INTERSECTION_UNION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "SETS_PROPOSITIONS",
-      "metaFoundationPackVersion": "1.0.0"
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#6",
+      "approvedSourceFingerprint": "c35e214c7accf22a3b3e986c8d1811a8f40be48dd4d40081ec6885425e906fa1",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f49ab939db3582be0cba2fe3df84adc58349ea724078107edc3ed00bc1fe45f9",
@@ -16132,37 +16529,102 @@
       "questionUid": "qid_v1_f753fe1268fad99110f180a9fa81de60bfc1af309f49ba530035a85a681da76c",
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 1,
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "b27789afb01d21cc36d75e7d321cdd574eb80bddcb9202d4cc5bcd9f90a2c62d",
+      "contentFingerprint": "e05a9f859cc69728fb0d2075fa51c7c05a8513d923f838b81f9a6631cd2ab7a9",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-06",
       "standardUnit": "명제",
-      "standardUnitOrder": 6,
       "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "conceptClusterKey": "H22-C2-06-CORE",
       "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
       "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+      "difficultyBucket": 1,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "집합과 명제",
       "L2": "명제",
       "L3": "명제와 조건의 판정",
       "L4": "명제와 조건의 구별",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "level": "하",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B12",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "legacyLevel": "하",
+      "legacyStandardUnitKey": "H22-C2-06",
+      "legacySubUnitKey": "H22-C2-06-CORE",
+      "legacySubUnit": "명제 핵심 개념",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "명제와 조건",
+        "L4": "진리집합"
+      },
+      "primaryConcept": "변수 조건의 진리집합 판정",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The source asks which open sentence is a condition; its decisive object is the truth set depending on x, so B's 진리집합 L4 is more exact than A's truth-value wording.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "하",
+      "crossConceptKeys": [
+        "CC_PROPOSITION_DEFINITION",
+        "CC_TRUTH_VALUE_JUDGMENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "SETS_PROPOSITIONS",
-      "metaFoundationPackVersion": "1.0.0"
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#1",
+      "approvedSourceFingerprint": "b27789afb01d21cc36d75e7d321cdd574eb80bddcb9202d4cc5bcd9f90a2c62d",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f769d8c2f163eb5b683c15570d546ac23e74f54afb6da2b6a7ed81763ea61ed5",
@@ -18095,6 +18557,13 @@
         ]
       },
       {
+        "key": "CC_CASE_EXHAUSTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_dcb88df5c5637f4fe29502fe3601b66a64475cc28ed277b98fafb8d74943c878"
+        ]
+      },
+      {
         "key": "CC_CIRCLE_EQUATION",
         "count": 2,
         "questionUids": [
@@ -18123,9 +18592,25 @@
       },
       {
         "key": "CC_CONTRAPOSITIVE_EQUIVALENCE",
+        "count": 3,
+        "questionUids": [
+          "qid_v1_439174128b8392f7c1398989d4ceef80085344884a6e426491a77ff76d434a79",
+          "qid_v1_99c21975638c202e7427a20b95557efdd29be831fa8cc30fcc0ee066cf038513",
+          "qid_v1_dcb88df5c5637f4fe29502fe3601b66a64475cc28ed277b98fafb8d74943c878"
+        ]
+      },
+      {
+        "key": "CC_CONVERSE_CONTRAPOSITIVE",
         "count": 1,
         "questionUids": [
-          "qid_v1_99c21975638c202e7427a20b95557efdd29be831fa8cc30fcc0ee066cf038513"
+          "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff"
+        ]
+      },
+      {
+        "key": "CC_DIFFERENCE_OF_SQUARES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0879e2c326564d076dffd1818f152847649d81ef73e2fc24b3d3578b7ac3298d"
         ]
       },
       {
@@ -18218,10 +18703,18 @@
         ]
       },
       {
-        "key": "CC_NECESSARY_SUFFICIENT_CONDITION",
+        "key": "CC_LOGICAL_IMPLICATION_CHAIN",
         "count": 1,
         "questionUids": [
-          "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30"
+          "qid_v1_dcb88df5c5637f4fe29502fe3601b66a64475cc28ed277b98fafb8d74943c878"
+        ]
+      },
+      {
+        "key": "CC_NECESSARY_SUFFICIENT_CONDITION",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30",
+          "qid_v1_f1a98276b1bb5e0bdb3ed134dc92235fb8b5156ecbd208b6a364534da6d7af39"
         ]
       },
       {
@@ -18284,6 +18777,13 @@
         ]
       },
       {
+        "key": "CC_PARITY_DIVISIBILITY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0879e2c326564d076dffd1818f152847649d81ef73e2fc24b3d3578b7ac3298d"
+        ]
+      },
+      {
         "key": "CC_PARITY_MODULAR_ARITHMETIC",
         "count": 1,
         "questionUids": [
@@ -18300,21 +18800,23 @@
       },
       {
         "key": "CC_PROOF_BY_CONTRADICTION",
-        "count": 1,
+        "count": 2,
         "questionUids": [
-          "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b"
+          "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
+          "qid_v1_0879e2c326564d076dffd1818f152847649d81ef73e2fc24b3d3578b7ac3298d"
         ]
       },
       {
         "key": "CC_PROPOSITION_DEFINITION",
-        "count": 1,
+        "count": 2,
         "questionUids": [
-          "qid_v1_b3c13a9d1ee5ba7fc5d6d61320387ab5d1062eb84a1d43e04a41c94856e23a32"
+          "qid_v1_b3c13a9d1ee5ba7fc5d6d61320387ab5d1062eb84a1d43e04a41c94856e23a32",
+          "qid_v1_f753fe1268fad99110f180a9fa81de60bfc1af309f49ba530035a85a681da76c"
         ]
       },
       {
         "key": "CC_QUADRATIC_EQUATION",
-        "count": 14,
+        "count": 13,
         "questionUids": [
           "qid_v1_1a01eaaa4e1a675571d760906c036394daf8de34f6459b5b90caf618be89eddd",
           "qid_v1_1cdfc9db746a33d755c09b4e1983893e21882a050138e6a34c4ee899213376ea",
@@ -18323,13 +18825,19 @@
           "qid_v1_47a0ef4a2ab6415f17faaa680e27b7f6522039e0708e0dad630da5be698b3827",
           "qid_v1_59563098ac88c52496b6cae8aec7423fab6487357c018c6e04740a086d232cdf",
           "qid_v1_718c4d4848770d49ba8b1fafb4bd1bf14985b04b04e146977dd005d7c8358655",
-          "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff",
           "qid_v1_92d818b6613d71f388951563cb2d29e64927a559ed9b3088fe793760cd2b6002",
           "qid_v1_a577247540284733c65b922a7d8422d160149efba1facc907ecc24306f56e45b",
           "qid_v1_d1876338098362cbef6f11647697a33bc15a8e69a2174f04f314515a9ddc1f21",
           "qid_v1_d6388c845e85e6fe866bb419997799808f37459ca829e723e4fefd9d31b4c15a",
           "qid_v1_e37d36e8b5f36ca86fe6426fa3f693097deab48d31b50c47fab6026060ab3fd2",
           "qid_v1_f49ab939db3582be0cba2fe3df84adc58349ea724078107edc3ed00bc1fe45f9"
+        ]
+      },
+      {
+        "key": "CC_QUADRATIC_EQUATION_ROOTS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff"
         ]
       },
       {
@@ -18360,8 +18868,9 @@
       },
       {
         "key": "CC_QUANTIFIER_NEGATION",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_1cf51fc06a926bb10c83c567af4559fc00e46f4f3352ec8246a997db9d7f261b",
           "qid_v1_9f30615d65bdf06c4126f43f0d3f691f9d53622f18f4dbcf2ee01feb3fed7953"
         ]
       },
@@ -18380,6 +18889,20 @@
         ]
       },
       {
+        "key": "CC_SET_DIFFERENCE_COMPLEMENT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_439174128b8392f7c1398989d4ceef80085344884a6e426491a77ff76d434a79"
+        ]
+      },
+      {
+        "key": "CC_SET_INTERSECTION_UNION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f1a98276b1bb5e0bdb3ed134dc92235fb8b5156ecbd208b6a364534da6d7af39"
+        ]
+      },
+      {
         "key": "CC_TRIANGLE_AREA",
         "count": 1,
         "questionUids": [
@@ -18395,16 +18918,26 @@
       },
       {
         "key": "CC_TRUTH_SET_INCLUSION",
+        "count": 4,
+        "questionUids": [
+          "qid_v1_439174128b8392f7c1398989d4ceef80085344884a6e426491a77ff76d434a79",
+          "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30",
+          "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff",
+          "qid_v1_f1a98276b1bb5e0bdb3ed134dc92235fb8b5156ecbd208b6a364534da6d7af39"
+        ]
+      },
+      {
+        "key": "CC_TRUTH_VALUE_JUDGMENT",
         "count": 1,
         "questionUids": [
-          "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30"
+          "qid_v1_f753fe1268fad99110f180a9fa81de60bfc1af309f49ba530035a85a681da76c"
         ]
       }
     ],
     "conditions": [
       {
         "key": "COND_INTEGER",
-        "count": 11,
+        "count": 10,
         "questionUids": [
           "qid_v1_1ead054f3ec5beae01b856e48e15efa33a3b80d723e977b324392042353bae27",
           "qid_v1_215d455465ac55589f07350d2fa28e5c3761e525cbebd860079da784518ee11c",
@@ -18415,7 +18948,6 @@
           "qid_v1_6ba7324130c1346b29873047bb9a28f82fa6a6b06203ae6369c8bd11eb57d087",
           "qid_v1_718c4d4848770d49ba8b1fafb4bd1bf14985b04b04e146977dd005d7c8358655",
           "qid_v1_7c5bc7f238b4fee383ba98c6838c00275937619d7c49d5b3a6cb84acac143640",
-          "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff",
           "qid_v1_9305239cca6bc3a6b9ccbd8fab51b563dcd784c0b5068b71bc8c26d912566077"
         ]
       },
@@ -18461,6 +18993,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_96a95e3313d142cd8af5bd30c4140fc579300e571df5d55cf2ec06bb9f70aafb"
+        ]
+      },
+      {
+        "key": "COND_ODD",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0879e2c326564d076dffd1818f152847649d81ef73e2fc24b3d3578b7ac3298d"
         ]
       },
       {

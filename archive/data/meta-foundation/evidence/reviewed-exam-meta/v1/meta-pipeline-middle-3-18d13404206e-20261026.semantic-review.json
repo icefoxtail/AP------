@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "meta-pipeline-courier-semantic-review-v1",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "requestId": "meta-pipeline-middle-3-18d13404206e-20261026",
+  "reviewActors": [
+    "OpenCode Go deepseek-v4.1-flash",
+    "CODEX_ROOT"
+  ],
+  "scope": "Audited concept storage/reuse and focused metadata type correction only; no student content edits or mathematics re-solve.",
+  "originalAuditRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.source.json",
+    "sha256": "d5d9bb3d6d729deb564a80a7bbe6c264f75384ba6d2057dac06be82a69992c5f"
+  },
+  "decisions": {
+    "conceptShards": {
+      "CC_TRIG_RATIO": "TRIGONOMETRY",
+      "CC_RIGHT_TRIANGLE": "PLANE_GEOMETRY",
+      "CC_PYTHAGOREAN_THEOREM": "PLANE_GEOMETRY",
+      "CC_SPECIAL_ANGLES": "TRIGONOMETRY",
+      "CC_RADICAL_ARITHMETIC": "ALGEBRA",
+      "CC_CIRCLE_CHORD_PROPERTY": "PLANE_GEOMETRY",
+      "CC_CIRCLE_CIRCUMFERENCE": "PLANE_GEOMETRY",
+      "CC_TRIG_TABLE_LOOKUP": "TRIGONOMETRY",
+      "CC_TRIG_MEASUREMENT": "TRIGONOMETRY",
+      "CC_QUADRILATERAL_AREA_TRIG": "TRIGONOMETRY",
+      "CC_TRIG_RATIO_DEFINITIONS": "TRIGONOMETRY",
+      "CC_ISOSCELES_RIGHT_TRIANGLE": "TRIGONOMETRY",
+      "CC_TRIANGLE_AREA_TRIG": "TRIGONOMETRY",
+      "CC_PARALLELOGRAM_AREA": "TRIGONOMETRY",
+      "CC_PERPENDICULAR_CHORDS": "PLANE_GEOMETRY",
+      "CC_CIRCLE_TANGENT_PROPERTY": "PLANE_GEOMETRY",
+      "CC_ISOSCELES_TRIANGLE": "PLANE_GEOMETRY",
+      "CC_ANGLE_BISECTOR": "PLANE_GEOMETRY",
+      "CC_TRIANGLE_SIMILARITY": "PLANE_GEOMETRY",
+      "CC_QUADRATIC_FORMULA": "ALGEBRA",
+      "CC_EQUILATERAL_TRIANGLE": "PLANE_GEOMETRY",
+      "CC_CIRCLE_SECTOR_AREA": "PLANE_GEOMETRY",
+      "CC_INSCRIBED_CIRCLE": "PLANE_GEOMETRY",
+      "CC_PAPER_FOLDING_SIMILARITY": "PLANE_GEOMETRY",
+      "CC_ELEVATION_ANGLE": "TRIGONOMETRY",
+      "CC_LINEAR_EQUATIONS": "ALGEBRA",
+      "CC_RATIO": "ALGEBRA",
+      "CC_TRIANGLE_CONGRUENCE_RHS": "PLANE_GEOMETRY",
+      "CC_GEOMETRIC_PROOF": "PLANE_GEOMETRY"
+    },
+    "reuseRationales": {
+      "CC_TRIG_RATIO": "q1/q2/q4/q8 use sin/cos/tan as right-triangle side ratios, identical to the case1 definition. Preserve the earlier label/definition unchanged.",
+      "CC_RIGHT_TRIANGLE": "q1/q6 use hypotenuse-leg relations and right-angle area in a right triangle. The canonical broad 직각삼각형 entry is the same concept; preserve unchanged.",
+      "CC_PYTHAGOREAN_THEOREM": "q1/q3/q4/q9/q11/q14/q15/q16/q20 apply a²+b²=c² to a missing side or radius; same canonical theorem as case1. Preserve unchanged.",
+      "CC_SPECIAL_ANGLES": "q2/q6/q9/q11 and case1's special-angle questions evaluate the fixed 30°/45°/60° values. Same concept; preserve the earlier definition unchanged.",
+      "CC_RADICAL_ARITHMETIC": "q2/q13 expand and simplify radical expressions, including distributive multiplication. The canonical radical multiplication/division entry is the same radical-arithmetic concept; preserve unchanged.",
+      "CC_CIRCLE_TANGENT_PROPERTY": "q17/q20 use equal tangent lengths from an external point and the perpendicular radius; same concept as case2 q7, with the perpendicular-radius facet added. Preserve the case2 definition unchanged.",
+      "CC_ISOSCELES_TRIANGLE": "q18 uses equal sides AB=AC to get equal base angles; same canonical concept as cases1-2. Preserve unchanged.",
+      "CC_ANGLE_BISECTOR": "q18 uses the internal angle-bisector theorem. Same 각의 이등분선 concept as canonical/case2; preserve unchanged.",
+      "CC_EQUILATERAL_TRIANGLE": "q19/q21 use three equal sides/60° and the √3/4 a² area. The canonical equilateral-triangle entry is the same concept, with area as a facet; preserve unchanged.",
+      "CC_PAPER_FOLDING_SIMILARITY": "q21 folds an equilateral triangle with the fold line as a symmetry axis preserving corresponding angles/lengths. Same fold-symmetry concept as case1 q14; preserve the case1 key definition and PLANE_GEOMETRY shard unchanged.",
+      "CC_TRIG_TABLE_LOOKUP": "q5 reads a trig-value table to obtain a side/height; same concept as case1 q13. Preserve the earlier definition unchanged.",
+      "CC_QUADRILATERAL_AREA_TRIG": "q6/q13 split a quadrilateral along a diagonal and add the two sin-based triangle areas; same concept as case1 q22. Preserve the earlier definition unchanged.",
+      "CC_LINEAR_EQUATIONS": "q22 sets up and solves a linear equation for the tower height; same concept as case2 q7/q14. Preserve the case2 definition unchanged.",
+      "CC_RATIO": "q23 uses ratio/proportion equations for two triangle areas; same concept as case2 q18. Preserve the case2 definition unchanged."
+    },
+    "conditionDefinitions": {},
+    "subunitDefinitions": {
+      "M3-06-CIRCLE_PROPERTY": {
+        "labelKo": "원과 직선",
+        "definition": "원의 중심·반지름·현의 기본 성질, 중심에서 현에 내린 수선의 이등분, 중심에서 같은 거리에 있는 현의 길이, 원의 접선의 길이 및 내접원을 활용하는 중3 원의 성질 단원의 세부 개념.",
+        "standardUnitKey": "M3-06",
+        "sourceOrdinals": [
+          3,
+          14,
+          15,
+          16,
+          17,
+          19,
+          20,
+          24
+        ],
+        "evidenceLabels": [
+          "현의 수직이등분선과 원의 둘레",
+          "반지름의 수직이등분선과 현의 길이",
+          "중심에서 같은 거리에 있는 현과 삼각형의 넓이",
+          "수직인 두 쌍의 평행현과 현의 길이",
+          "원의 접선의 길이와 삼각형의 넓이",
+          "정삼각형과 원의 교차 영역 넓이",
+          "직각삼각형 내접원과 접선 길이",
+          "수막새 중심 복원 작도 및 현의 수직이등분선 증명"
+        ],
+        "originalAuditedDisplayLabel": "원의 기본 성질과 현·접선",
+        "canonicalParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "basis": "Actual reviewed center/radius/chord/perpendicular/tangent definitions belong to this exact canonical chapter; preserve all original display labels as evidence."
+        }
+      }
+    },
+    "parentNotes": [
+      {
+        "key": "M3-06-CIRCLE_PROPERTY",
+        "note": "Additive subunit with no exact basicParents row. An exact standardUnitKey M3-06 parent exists for both 2015 and 2022 (courseKey M3-2, L1 원의 성질; L2 원과 직선/원주각), and the current UID parent snapshot for these rows is M3-06-CIRCLE_LINE. Resolve via the exact unit parent or the current UID snapshot; do not rewrite M3-06-CIRCLE_LINE. No curriculum gap."
+      }
+    ],
+    "blockers": [],
+    "typeCorrections": {
+      "3": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "현 24 cm와 중심에서 현까지의 거리 9 cm에서 중심에서 현에 내린 수선이 현을 이등분함을 이용해 반지름을 구하고 원둘레를 계산한다. 현의 길이와 중심거리 조건을 쓰는 PT_CIRCLE_LINE_RELATION·TM_CIRCLE_CHORD_LENGTH가 정확하다.",
+        "decisiveExcerpt": "원의 중심에서 현에 내린 수선은 현을 이등분한다. 따라서 현의 절반은 12 cm이다.",
+        "disposition": "CORRECT"
+      },
+      "14": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "현 AB가 반지름 OC를 수직이등분한다는 조건에서 교점까지의 중심거리가 r/2임을 파악하고 직각삼각형에서 반지름을 구한다. 현의 수직이등분선이 중심을 지나는 성질(중심에서 현에 내린 수선의 이등분)을 쓰므로 TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+        "decisiveExcerpt": "현 AB가 반지름 OC를 수직이등분하므로 교점에서 OC가 반으로 나뉜다.",
+        "disposition": "CORRECT"
+      },
+      "15": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "AB⊥OM에서 중심에서 현에 내린 수선이 현 AB를 이등분함을 이용해 AM을 구하고, AB=CD(같은 길이의 현은 중심에서 같은 거리) 조건으로 CD의 중심거리를 OM과 같게 적용해 삼각형 넓이를 구한다. 현 길이·거리 조건 유형이다.",
+        "decisiveExcerpt": "중심에서 현에 내린 수선은 현을 이등분한다. O에서 CD까지의 거리도 같은 길이의 현이므로 6이다.",
+        "disposition": "CORRECT"
+      },
+      "16": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "길이가 같은 두 쌍의 평행한 현 AB, CD와 EF, GH가 중심을 사이에 두고 대칭으로 놓인다는 성질로 중심거리 5와 3을 얻고, 한 현의 반과 중심거리로 반지름을 구한 뒤 다른 현의 길이를 구한다. 현의 길이·중심거리 조건 유형이다.",
+        "decisiveExcerpt": "평행한 같은 길이의 두 현은 중심에서 같은 거리에 있고 중심을 사이에 둔다.",
+        "disposition": "CORRECT"
+      },
+      "17": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "한 점에서 원에 그은 두 접선의 길이가 같음으로 BD=BE, CF=CE를 구해 BC를 만들고, 삼각비 넓이 공식으로 △ACB의 넓이를 구한다. 원 단원의 접선 길이 상등이 결정적이므로 PT_CIRCLE_LINE_RELATION이 맞으나, ACTIVE 템플릿에 접선 길이 템플릿이 없고 삼각비 DIRECT 템플릿도 목표를 길이·높이·거리로 한정해 넓이를 명시하지 않는다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+        "decisiveExcerpt": "한 점에서 원에 그은 두 접선의 길이는 같다. AD=18, AB=13이므로 BD=5, 따라서 BE=5이다.",
+        "disposition": "ROOT_LOCATED_EXISTING_ACTIVE_TEMPLATE"
+      },
+      "19": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "labelReason": "정삼각형 내부에 포함된 중심각 120° 부채꼴의 넓이를 구해 삼각형 넓이에서 빼는 합성도형 넓이 문항이다. TPL_CIRCLE_ANGLE_SECTOR_MEASURE의 정의(중심각·반지름 비례로 부채꼴 넓이, 부채꼴 포함 합성도형 넓이)와 정확히 일치하므로 PT/TPL는 유지(KEEP)하고, 비정본 subUnitKey M3-06-CIRCLE_PROPERTY만 canonical M3-06-CIRCLE_INSCRIBED_ANGLE(원주각, 중심각·부채꼴 포함)로 정규화한다.",
+        "decisiveExcerpt": "그림에서 삼각형 안에 포함되는 원의 부분은 중심각 120°인 부채꼴로, 넓이는 16π이다.",
+        "disposition": "KEEP_PT_TPL_CORRECT_SUBUNIT"
+      },
+      "20": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "직각삼각형의 내접원 접점에서 접선 길이 상등(BE=BD, CF=CE)으로 변을 만들고 피타고라스로 내접원 반지름을 구한 뒤 중심에서 세 꼭짓점까지 거리를 계산한다. 접선 길이 성질이 결정적이나 ACTIVE 접선 길이 템플릿이 없다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+        "decisiveExcerpt": "접선 길이 성질에서 BE=BD=5, CF=CE=12이다. AF=AD=x라 하면 AB=x+5, AC=x+12, BC=17이다.",
+        "disposition": "ROOT_LOCATED_EXISTING_ACTIVE_TEMPLATE"
+      },
+      "24": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "(1) 서로 다른 두 현의 수직이등분선의 교점으로 원의 중심을 복원하고, (2) OA=OB, OM 공통, ∠OMA=∠OMB=90°로 RHS 합동을 보여 중심에서 현에 내린 수선이 현을 이등분함을 증명한다. 현의 수직이등분선 성질 그 자체이므로 TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+        "decisiveExcerpt": "원의 중심은 서로 다른 두 현의 수직이등분선의 교점이다. 두 직각삼각형 OMA, OMB는 RHS 합동이므로 AM=BM이다.",
+        "disposition": "CORRECT"
+      }
+    }
+  }
+}
