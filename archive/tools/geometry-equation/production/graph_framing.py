@@ -89,9 +89,25 @@ def _fit_cubic_quartic(plan,coefficients):
         result=float(polynomial.eval(S.Rational(str(value))))
         if not math.isfinite(result) or abs(result)>1e12:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
         return result
-    values=[evaluate(lo),evaluate(hi),0.0,*[row['y'] for row in math_features],*required_y,*[y for _,y in anchor_points]]
-    low,high=min(values),max(values);span=max(1.0,high-low,abs(low),abs(high));padding=.15*span
-    ymin=min(0.0,low)-padding;ymax=max(0.0,high)+padding
+    def display_y_bounds(left,right):
+        values=[evaluate(left),evaluate(right),0.0,*[row['y'] for row in math_features],*required_y,*[y for _,y in anchor_points]]
+        low,high=min(values),max(values);span=max(1.0,high-low,abs(low),abs(high));padding=.15*span
+        return min(0.0,low)-padding,max(0.0,high)+padding
+    ymin,ymax=display_y_bounds(lo,hi)
+    # The final overview audit requires each end arm to travel at least 18% of the plot height away from its outer
+    # stationary point. An asymmetric source (for example roots -2, 2, a with a>2) can leave one arm on a boundary only
+    # a fraction of a unit past the last critical point, so extend that short side of the display window (never both
+    # unconditionally) until the arm clears the audit with a small margin. The audit itself is unchanged.
+    critical_rows=[row for row in math_features if any(str(role).startswith('STATIONARY_') for role in row['roles'])] or [row for row in math_features if 'INFLECTION' in row['roles']]
+    if critical_rows:
+        left_anchor=min(critical_rows,key=lambda row:row['x']);right_anchor=max(critical_rows,key=lambda row:row['x'])
+        for _ in range(60):
+            total=ymax-ymin;step=max(.15,.05*(hi-lo));changed=False
+            if abs(evaluate(lo)-left_anchor['y'])<.182*total:lo-=step;changed=True
+            if abs(evaluate(hi)-right_anchor['y'])<.182*total:hi+=step;changed=True
+            if not changed:break
+            ymin,ymax=display_y_bounds(lo,hi)
+    if not all(math.isfinite(v) and abs(v)<=1e6 for v in (lo,hi)):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
     sign=1 if polynomial.LC()>0 else -1
     left_sign=sign if degree%2==0 else -sign
     end_directions={'left':'UP' if left_sign>0 else 'DOWN','right':'UP' if sign>0 else 'DOWN'}

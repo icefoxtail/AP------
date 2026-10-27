@@ -52,6 +52,18 @@ class CubicQuarticOverview(unittest.TestCase):
                 self.assertEqual(len([row for row in result['overview']['features'] if 'INFLECTION' in row['roles']]),1 if degree==3 else 2)
                 self.assertEqual(result['overview']['endDirections'],tail_directions)
 
+    def test_asymmetric_cubic_window_extends_only_the_short_arm(self):
+        # (x+2)(x-2)(x-3): the right outer arm sits only 0.6 units past its last stationary point, so the
+        # symmetric default window fails the 18% arm-travel audit. The framing extends that side (and only
+        # that side) until the audit passes; the audit itself is unchanged.
+        graph=framed(['12','-4','-3','1'])
+        self.assertGreater(graph['domain'][1],3.6)
+        self.assertAlmostEqual(graph['domain'][0],-3.6,places=9)
+        model=produce(graph)
+        result=audit(graph,model['svg'],scale_transform(model['transform'],1.0))
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertEqual(len(result['topology']['roots']),3)
+
     def test_stationary_inflection_and_inflection_are_one_feature_record(self):
         source=polynomial(['0','0','0','1'],4)
         zero_rows=[row for row in polynomial_feature_inventory(source,-1,1) if row.get('kind')=='POLYNOMIAL_FEATURE' and abs(row['x'])<1e-10]
