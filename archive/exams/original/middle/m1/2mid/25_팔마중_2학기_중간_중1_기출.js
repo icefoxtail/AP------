@@ -246,7 +246,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체에서 모서리 AB와 EF는 앞면 위에서 서로 평행하고, AB와 AE는 점 A에서 만나 앞면 ABFE를 정한다. AB와 CG는 만나지도 평행하지도 않은 꼬인 위치이다.",
+    "solutionImageCaption": "직육면체에서 모서리 AB와 EF는 앞면 위에서 서로 평행하고, AB와 AE는 점 A에서 만나 앞면 ABFE를 정한다. AB와 CG는 만나지도 평행하지도 않은 꼬인 위치이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
