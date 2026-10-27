@@ -321,6 +321,23 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 관측기(`plane_regions_observer.py`, `plane-marks-observer-worker.py`가 호출)는 Cindy 점에서 경계를 **다시 계산해** 최종 SVG의 even-odd `<path>`와 꼭짓점·호 끝점·호 중심·반지름·sweep을 맞춰 보고, 획이 없는지, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안에 있고 다른 라벨과 붙지 않았는지 확인한다(`REGION_VERTEX_MISMATCH`, `REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_NOT_BENEATH_STROKES`, `REGION_LABEL_OUTSIDE`, `REGION_LABEL_CROWDS_LABEL`, `UNDECLARED_MARK` 등).
 - **한계.** 관측기는 경계의 모양만 보고 **넓이 값 자체는 검산하지 않는다**: `label`의 수치는 원문·해설과 맞는지 사람이 확인한다(색칠이 넓이 계산을 대신하지 않는다). 한 영역은 even-odd path 하나이므로 도형이 겹치면 칠이 상쇄된다(겹침 금지). 같은 점에서 여러 획이 만나는 중심에 점 이름을 두면 자리가 없어 지시선이 붙을 수 있다. 영역 라벨이 들어갈 안쪽 여백이 없으면 `LAYOUT_INVENTORY_INCOMPLETE`로 실패하니 라벨을 줄이거나 값을 밖으로 뺀다.
 
+### 3-41. 두 원의 호로 이루어진 영역(렌즈·활꼴): 중심이 다른 호를 한 `loop`에 잇기
+
+두 원(또는 두 반원)의 호가 만드는 **렌즈(공통 부분)**·**활꼴(초승달)** 처럼 한 영역의 경계가 **중심이 다른 원호 두 개**인 경우에는 3-9절의 `loop`를 그대로 쓰되 각 `step.arc.center`에 다른 점을 적는다. `displayCircles`로 원을 통째로 그리면 원문에 없는 반대쪽 호까지 보이므로, 원문이 반원만 보여 주면 `planeMarks.arcs`를 `highlight:false`(일반 굵기 실선)로 써서 필요한 호만 긋고 그 호를 영역 경계로 쓴다. 정답지 `item39`(23_금당중 2학기 중간 중2 q21, 히포크라테스의 활꼴)가 이 구성을 실제로 검증한다.
+
+```json
+"arcs":[{"id":"arcAB","circle":"kAB","center":"MAB","from":"A","to":"B","side":"CCW","highlight":false}],
+"regions":[{"id":"lunes","fill":"MEDIUM","label":"54cm^2","factRole":"CONCLUSION","shapes":[
+ {"loop":{"start":"A","steps":[{"to":"B","arc":{"center":"MAB","side":"CCW"}},{"to":"A","arc":{"center":"MBC","side":"CW"}}]}},
+ {"loop":{"start":"A","steps":[{"to":"C","arc":{"center":"MAC","side":"CW"}},{"to":"A","arc":{"center":"MBC","side":"CCW"}}]}}]}]
+```
+
+- **경계.** 각 호의 두 끝점은 그 중심 원 위에 정확히 있어야 하고(`REGION_ARC_ENDPOINT_NOT_ON_CIRCLE`), 반원(180°)은 `MINOR`/`MAJOR`가 모호하므로 반드시 `CCW`/`CW`를 적는다(`REGION_ARC_SIDE_AMBIGUOUS`). 같은 두 점을 잇는 두 호가 서로 반대쪽으로 불룩하면 그 사이가 활꼴이고, 두 원의 교점을 잇는 두 호이면 렌즈다.
+- **중심은 화면 점이어야 한다.** `planeMarks.arcs.center`와 `loop`의 `arc.center`는 `displayPoints`에 있는 점 id만 가리킬 수 있다(`DISPLAY_ANNOTATION_POINT_NOT_VISIBLE`). 원문이 그 중심을 이름 붙이지 않으면 `MIDPOINT`·`CIRCLE_CENTER_RADIUS` 노드를 `DERIVED_INTERMEDIATE`로 만들고 `displayPoints`에 넣은 뒤 `hiddenPointNames`에 넣어 **이름 없는 점**으로 그린다(4절).
+- **여러 조각을 한 영역으로.** 떨어진 두 활꼴의 **합**을 한 값으로 적을 때는 서로 겹치지 않는 `shapes` 두 개를 한 region에 넣는다(even-odd, 겹치면 `REGION_SHAPES_OVERLAP`). 라벨은 가장 넓은 안쪽 지점(한 조각 안)에 놓이지만 값은 그 region 전체, 곧 두 조각의 합을 뜻하므로 `caption`과 원문의 뜻을 맞춘다.
+- **관측기.** `plane-marks-observer-worker.py` → `plane_regions_observer.py`가 Cindy 점에서 각 호의 중심·반지름·sweep을 다시 계산해 `<path>`의 `A` 명령과 맞추고, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안인지 확인한다(`REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_LABEL_OUTSIDE`). `highlight:false`인 호는 강조 표식으로 세지 않고 경계 획으로만 검사한다.
+- **한계.** 영역 라벨은 식 문법만 받으므로 `(가)`·`(나)` 같은 한글 선택 표지를 그릴 수 없고, 칠은 `LIGHT`/`MEDIUM` 단색뿐이라 빗금(해칭)이 없다. 두 부분을 구분해야 하는 원문은 색 구분과 `caption`으로만 표현하고 없는 기능을 흉내 내지 않는다. 넓이 값 자체는 관측기가 검산하지 않으므로 원문·해설과 직접 대조한다.
+
 ### 3-10. 좌표 그림의 각 표시: 축이 있는 작도에 같은 표식 (`SOURCE_COORDINATE_AXES_v1`, `planeMarks`)
 
 일반각·삼각함수의 정의, 두 동경이 이루는 각, 좌표평면 위 삼각형의 각처럼 **좌표축을 그대로 두고 각·직각·같은 길이·평행·호를 표시해야 하는** 문항에 쓴다. 그림은 이미 쓰고 있는 좌표 작도 plan(`construction-spike-v1` + `mathPlan.realization:{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false}`, `SOURCE_COORDINATES`, 축·눈금이 그려진다) 그대로이고, 3-8절의 `planeMarks`와 `displaySegments`의 `dashed`/`arrow`를 **같은 키·같은 관측기**로 쓸 수 있다. 별도의 축 없는 평면도형(`PLANE_FIGURE_v1`)으로 바꾸지 않는다: 점 좌표와 축은 원문 그대로 두고 표식만 더한다.

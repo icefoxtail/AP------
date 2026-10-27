@@ -1,0 +1,186 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "0" },
+      { "kind": "integer", "value": "0" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "12" },
+      { "kind": "integer", "value": "0" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "0" },
+      { "kind": "integer", "value": "9" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "MAB",
+    "op": "MIDPOINT",
+    "inputs": ["A", "B"],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "MAC",
+    "op": "MIDPOINT",
+    "inputs": ["A", "C"],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "MBC",
+    "op": "MIDPOINT",
+    "inputs": ["B", "C"],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "kAB",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": ["MAB"],
+    "args": { "radius": { "kind": "integer", "value": "6" } },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "kAC",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": ["MAC"],
+    "args": { "radius": { "kind": "rational", "numerator": "9", "denominator": "2" } },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "kBC",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": ["MBC"],
+    "args": { "radius": { "kind": "rational", "numerator": "15", "denominator": "2" } },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lenAB",
+    "op": "SEGMENT_LENGTH",
+    "inputs": ["A", "B"],
+    "args": {},
+    "outputType": "SCALAR",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "lenAC",
+    "op": "SEGMENT_LENGTH",
+    "inputs": ["A", "C"],
+    "args": {},
+    "outputType": "SCALAR",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lenBC",
+    "op": "SEGMENT_LENGTH",
+    "inputs": ["B", "C"],
+    "args": {},
+    "outputType": "SCALAR",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": ["A", "B", "C", "MAB", "MAC", "MBC"],
+ "hiddenPointNames": ["MAB", "MAC", "MBC"],
+ "displayCircles": [],
+ "displaySegments": [
+  { "id": "sAB", "refs": ["A", "B"] },
+  { "id": "sAC", "refs": ["A", "C"] },
+  { "id": "sBC", "refs": ["B", "C"] }
+ ],
+ "rightAngles": [
+  { "id": "rA", "refs": ["B", "A", "C"] }
+ ],
+ "scalarLabels": [
+  { "nodeId": "lenAB", "ownerSegment": "sAB", "prefix": "AB", "unit": "cm", "factRole": "GIVEN" },
+  { "nodeId": "lenAC", "ownerSegment": "sAC", "prefix": "AC", "unit": "cm", "factRole": "DERIVED_INTERMEDIATE" },
+  { "nodeId": "lenBC", "ownerSegment": "sBC", "prefix": "BC", "unit": "cm", "factRole": "GIVEN" }
+ ],
+ "planeMarks": {
+  "arcs": [
+   { "id": "arcAB", "circle": "kAB", "center": "MAB", "from": "A", "to": "B", "side": "CCW", "highlight": false, "factRole": "GIVEN" },
+   { "id": "arcAC", "circle": "kAC", "center": "MAC", "from": "A", "to": "C", "side": "CW", "highlight": false, "factRole": "GIVEN" },
+   { "id": "arcBC", "circle": "kBC", "center": "MBC", "from": "C", "to": "B", "side": "CCW", "highlight": false, "factRole": "GIVEN" }
+  ],
+  "regions": [
+   {
+    "id": "lunes",
+    "fill": "MEDIUM",
+    "label": "54cm^2",
+    "factRole": "CONCLUSION",
+    "shapes": [
+     {
+      "loop": {
+       "start": "A",
+       "steps": [
+        { "to": "B", "arc": { "center": "MAB", "side": "CCW" } },
+        { "to": "A", "arc": { "center": "MBC", "side": "CW" } }
+       ]
+      }
+     },
+     {
+      "loop": {
+       "start": "A",
+       "steps": [
+        { "to": "C", "arc": { "center": "MAC", "side": "CW" } },
+        { "to": "A", "arc": { "center": "MBC", "side": "CCW" } }
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "caption": "∠A=90°인 직각삼각형 ABC의 세 변을 각각 지름으로 하는 반원을 그리면, 색칠한 두 활꼴의 넓이의 합은 삼각형 ABC의 넓이 54cm²와 같다.",
+ "sourceConditions": [
+  { "id": "c1", "condition": "∠A=90°인 직각삼각형 ABC에서 AB=12cm, BC=15cm (따라서 AC=9cm)", "mappedTo": ["A", "B", "C"] },
+  { "id": "c2", "condition": "세 변 AB, AC, BC를 각각 지름으로 하는 반원을 그린다", "mappedTo": ["kAB", "kAC", "kBC"] }
+ ],
+ "newVisualInformation": [
+  "색칠한 두 활꼴의 넓이의 합은 삼각형 ABC의 넓이와 같으므로 54cm²이다.",
+  "피타고라스 정리로 AC=9cm임을 그림에 표시한다."
+ ],
+ "sourceQuote": "오른쪽 그림은 ∠A=90°인 직각삼각형 ABC의 세 변을 각각 지름으로 하는 반원을 그린 것이다. AB=12cm이고 BC=15cm일 때, 색칠한 부분의 넓이는? (정답 54cm²)",
+ "coordinateCanvas": { "width": 720, "height": 600 }
+}
