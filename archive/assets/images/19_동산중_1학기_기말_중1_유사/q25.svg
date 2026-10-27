@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="400" height="320" role="img" aria-labelledby="q25-title q25-desc">
+  <title id="q25-title">속력과 시간 사이의 반비례 관계 그래프</title>
+  <desc id="q25-desc">자동차의 속력 x와 걸리는 시간 y 사이의 반비례 곡선 y=120/x 그래프</desc>
+  <rect width="400" height="320" fill="#ffffff"/>
+
+  <!-- Coordinate Axes -->
+  <g stroke="#333333" stroke-width="1.5">
+    <!-- X axis -->
+    <line x1="60" y1="260" x2="375" y2="260"/>
+    <polyline points="367,255 375,260 367,265" fill="none"/>
+    <!-- Y axis -->
+    <line x1="60" y1="260" x2="60" y2="30"/>
+    <polyline points="55,38 60,30 65,38" fill="none"/>
+  </g>
+
+  <!-- Axis and Origin Labels -->
+  <g font-family="sans-serif" font-size="14" fill="#111111" font-weight="bold">
+    <text x="380" y="265">x</text>
+    <text x="60" y="22" text-anchor="middle">y</text>
+    <text x="46" y="275">O</text>
+  </g>
+
+  <!-- Dashed Guidelines -->
+  <g stroke="#777777" stroke-width="1.2" stroke-dasharray="4,4">
+    <!-- At (30, 4) -> (135, 140) -->
+    <line x1="135" y1="260" x2="135" y2="140"/>
+    <line x1="60" y1="140" x2="135" y2="140"/>
+    <!-- At (60, 2) -> (210, 200) -->
+    <line x1="210" y1="260" x2="210" y2="200"/>
+    <line x1="60" y1="200" x2="210" y2="200"/>
+  </g>
+
+  <!-- Axis Numbers & Ticks -->
+  <g font-family="sans-serif" font-size="12" fill="#333333">
+    <!-- X axis ticks -->
+    <text x="135" y="278" text-anchor="middle">30</text>
+    <text x="210" y="278" text-anchor="middle">60</text>
+    <!-- Y axis ticks -->
+    <text x="52" y="204" text-anchor="end">2</text>
+    <text x="52" y="144" text-anchor="end">4</text>
+  </g>
+
+  <!-- Tick Marks -->
+  <g stroke="#333333" stroke-width="1">
+    <line x1="135" y1="260" x2="135" y2="264"/>
+    <line x1="210" y1="260" x2="210" y2="264"/>
+    <line x1="56" y1="200" x2="60" y2="200"/>
+    <line x1="56" y1="140" x2="60" y2="140"/>
+  </g>
+
+  <!-- Inverse Proportion Curve -->
+  <path d="M 98,40 C 105,80 115,115 135,140 C 160,175 180,192 210,200 C 255,212 310,222 365,226" fill="none" stroke="#e65100" stroke-width="3"/>
+
+  <!-- Marked Points -->
+  <circle cx="135" cy="140" r="4.5" fill="#d32f2f"/>
+  <circle cx="210" cy="200" r="4.5" fill="#d32f2f"/>
+</svg>

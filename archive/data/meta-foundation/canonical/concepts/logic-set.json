@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "LOGIC_SET",
-  "shardVersion": "1.0.4",
+  "shardVersion": "1.0.5",
   "status": "ACTIVE",
-  "conceptCount": 18,
+  "conceptCount": 24,
   "concepts": [
     {
       "conceptKey": "CC_COUNTEREXAMPLE",
@@ -553,6 +553,216 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_CASE_EXHAUSTION",
+      "canonicalLabelKo": "유한 케이스 분류 및 모순 소거",
+      "definition": "가능한 이진 선택(뒤집음/안 뒤집음)이나 유한 대응 경우를 체계적으로 나누어 조건 위배 케이스를 소거하는 방법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_dcb88df5c5637f4fe29502fe3601b66a64475cc28ed277b98fafb8d74943c878"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_dcb88df5c5637f4fe29502fe3601b66a64475cc28ed277b98fafb8d74943c878",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_CASE_EXHAUSTION for PT_LOGIC_CHAIN/TPL_LOGIC_CONSTRAINT_PUZZLE at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LOGIC_CHAIN"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_CONVERSE_CONTRAPOSITIVE",
+      "canonicalLabelKo": "명제의 역과 대우",
+      "definition": "조건명제 p -> q에 대하여 가정과 결론을 바꾼 역(q -> p)과 부정하여 바꾼 대우(~q -> ~p)의 구조 및 진릿값 동치 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_CONVERSE_CONTRAPOSITIVE for PT_PROPOSITION_PARAMETER_CONDITION/TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 2 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROPOSITION_PARAMETER_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_LOGICAL_IMPLICATION_CHAIN",
+      "canonicalLabelKo": "복합 조건명제의 연쇄 추론",
+      "definition": "여러 개의 조건문(p -> q, ~r -> ~s 등)과 개수 제약을 결합하여 모순 없는 진릿값 조합을 결정하는 논리 추론",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_dcb88df5c5637f4fe29502fe3601b66a64475cc28ed277b98fafb8d74943c878"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_dcb88df5c5637f4fe29502fe3601b66a64475cc28ed277b98fafb8d74943c878",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_LOGICAL_IMPLICATION_CHAIN for PT_LOGIC_CHAIN/TPL_LOGIC_CONSTRAINT_PUZZLE at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LOGIC_CHAIN"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SET_DIFFERENCE_COMPLEMENT",
+      "canonicalLabelKo": "차집합과 여집합의 성질",
+      "definition": "A - B = A ∩ B^c = ∅ ⇔ A ⊆ B 및 드모르간·여집합 성질을 이용하여 복잡한 집합 등식을 포함관계로 변환하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_439174128b8392f7c1398989d4ceef80085344884a6e426491a77ff76d434a79"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_439174128b8392f7c1398989d4ceef80085344884a6e426491a77ff76d434a79",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_SET_DIFFERENCE_COMPLEMENT for PT_TRUTH_SET_RELATION/TPL_TRUTHSET_SET_OPERATION at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 11 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRUTH_SET_RELATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SET_INTERSECTION_UNION",
+      "canonicalLabelKo": "포함관계에 따른 교집합·합집합 동치 변형",
+      "definition": "P ⊆ Q일 때 P ∩ Q = P, P ∪ Q = Q, P - Q = ∅가 성립함을 이용하여 집합 연산식을 판별하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f1a98276b1bb5e0bdb3ed134dc92235fb8b5156ecbd208b6a364534da6d7af39"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f1a98276b1bb5e0bdb3ed134dc92235fb8b5156ecbd208b6a364534da6d7af39",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_SET_INTERSECTION_UNION for PT_NEC_SUFF_RELATION/TPL_NEC_SUFF_SET_RELATION at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 6 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NEC_SUFF_RELATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_TRUTH_VALUE_JUDGMENT",
+      "canonicalLabelKo": "명제의 참·거짓 판별",
+      "definition": "수식, 부등식, 판별식 또는 수 체계의 성질을 이용하여 주어진 문장의 진릿값을 확정하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f753fe1268fad99110f180a9fa81de60bfc1af309f49ba530035a85a681da76c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f753fe1268fad99110f180a9fa81de60bfc1af309f49ba530035a85a681da76c",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_TRUTH_VALUE_JUDGMENT for PT_PROPOSITION_JUDGMENT/TPL_PROPOSITION_CONDITION_IDENTIFICATION at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 1 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROPOSITION_JUDGMENT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
       ],
       "ownerConceptShard": "LOGIC_SET"
     }

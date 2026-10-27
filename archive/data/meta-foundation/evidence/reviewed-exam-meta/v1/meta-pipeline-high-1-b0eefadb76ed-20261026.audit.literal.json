@@ -1,0 +1,1493 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "25_순천고_2학기_기말_고1_기출",
+  "sourceFileDriveId": "1UBbF94ZYuhsfnHy0M1-I9f_h0ukvrQvd",
+  "sourceSha256": "d1a0c61e80a5fb9bb623b4d6b643ce5191c8c301623298063c5927ea08b16a43",
+  "auditedTimestamp": "2026-10-24T07:42:00Z",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 23,
+    "approved": 23,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 22,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 41,
+    "byPack": {
+      "SETS_PROPOSITIONS": 7,
+      "FUNCTIONS_GRAPHS": 16
+    },
+    "byStandardUnit": {
+      "H22-C2-06": 7,
+      "H22-C2-09": 4,
+      "H22-C2-07": 8,
+      "H22-C2-08": 4
+    },
+    "bySubUnit": {
+      "H22-C2-06-CORE": 7,
+      "H22-C2-09-FUNCTION_BASIC": 4,
+      "H22-C2-07-FUNCTION_COMPOSITION": 2,
+      "H22-C2-07-FUNCTION_BASIC": 4,
+      "H22-C2-07-FUNCTION_INVERSE": 2,
+      "H22-C2-08-FUNCTION_BASIC": 4
+    },
+    "byDifficultyBucket": {
+      "1": 5,
+      "2": 6,
+      "3": 8,
+      "4": 3,
+      "5": 1
+    }
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH_FOLDING",
+      "labelKo": "절댓값 기호를 포함한 함수의 접어 올린 그래프",
+      "definition": "y = |f(x)|의 그래프를 f(x) ≥ 0인 부분은 그대로 두고 f(x) < 0인 부분을 x축에 대하여 대칭이동하여 그리는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_AM_GM_INEQUALITY",
+      "labelKo": "산술평균과 기하평균의 관계(또는 완전제곱 부등식)",
+      "definition": "양수 조건에서 역수 합의 최솟값(t + 4/t ≥ 4) 또는 완전제곱식 차 비교를 통해 분수식의 최댓값·최솟값과 등호 성립 조건을 구하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_AXIS_INTERCEPT",
+      "labelKo": "함수 그래프의 x절편과 y절편",
+      "definition": "함수 그래프가 x축과 만나는 점(y=0일 때의 x값)과 y축과 만나는 점(x=0일 때의 y값)을 이용하여 미정계수와 개형을 결정하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_BIJECTION_CONDITION",
+      "labelKo": "일대일대응의 성립 조건",
+      "definition": "함수가 일대일함수(단조성 또는 서로 다른 입력에 서로 다른 출력)이면서 동시에 치역과 공역이 일치해야 하는 조건",
+      "boundQuestionCount": 3
+    },
+    {
+      "conceptKey": "CC_CASE_EXHAUSTION",
+      "labelKo": "유한 케이스 분류 및 모순 소거",
+      "definition": "가능한 이진 선택(뒤집음/안 뒤집음)이나 유한 대응 경우를 체계적으로 나누어 조건 위배 케이스를 소거하는 방법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_CIRCLE_INTERSECTION_CHORD",
+      "labelKo": "중심이 일치하는 원과 대칭 곡선의 교점 거리",
+      "definition": "유리함수의 대칭 중심을 중심으로 하는 원과 유리함수의 교점이 대칭축에 대하여 대칭임을 이용해 두 교점 사이의 거리를 구하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_CONTRAPOSITIVE_EQUIVALENCE",
+      "labelKo": "명제와 대우의 동치 및 삼단논법",
+      "definition": "명제 p -> q와 그 대우 ~q -> ~p의 진릿값이 같음과 p -> r, r -> ~q에서 p -> ~q를 도출하는 연쇄 추론",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_CONVERSE_CONTRAPOSITIVE",
+      "labelKo": "명제의 역과 대우",
+      "definition": "조건명제 p -> q에 대하여 가정과 결론을 바꾼 역(q -> p)과 부정하여 바꾼 대우(~q -> ~p)의 구조 및 진릿값 동치 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DIFFERENCE_OF_SQUARES",
+      "labelKo": "합차공식을 이용한 제곱수의 차 인수분해",
+      "definition": "4p^2 - 4q^2 = 4(p+q)(p-q)와 같이 제곱의 차를 인수분해하여 두 인수의 홀짝성 일치를 분석하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DISCRIMINANT",
+      "labelKo": "이차방정식의 판별식과 접선 조건",
+      "definition": "이차방정식 ax^2+bx+c=0의 판별식 D = b^2-4ac의 부호를 통해 서로 다른 두 교점(D>0) 또는 접함(D=0)을 판정하는 개념",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_FIXED_POINT_LINE_ROTATION",
+      "labelKo": "정점을 지나는 직선의 기울기 회전 분석",
+      "definition": "기울기 k에 관계없이 일정한 정점 (x_0, y_0)을 지나는 직선 y = k(x-x_0)+y_0을 회전시키며 곡선과의 교점 개수 변화를 찾는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_FUNCTION_COMPOSITION",
+      "labelKo": "함수의 합성",
+      "definition": "두 함수 f: X -> Y, g: Y -> Z에 대하여 (g ∘ f)(x) = g(f(x))로 정의되는 합성함수의 함숫값 및 함수식을 구하는 개념",
+      "boundQuestionCount": 4
+    },
+    {
+      "conceptKey": "CC_FUNCTION_MAPPING_DIAGRAM",
+      "labelKo": "벤다이어그램 대응도에서의 함숫값 판독",
+      "definition": "유한집합 사이의 화살표 대응 그림에서 각 원소가 대응하는 함숫값과 역상(원상)을 추적하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_IDENTITY_LINE_REFLECTION",
+      "labelKo": "항등함수 직선 y=x를 이용한 좌표 이동",
+      "definition": "그래프에서 직선 y=x 위의 점을 이용해 x축의 좌표를 y축의 눈금으로 옮기거나 역으로 옮겨 합성·역함숫값을 추적하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INVERSE_EXISTENCE_CONDITION",
+      "labelKo": "역함수의 존재 조건",
+      "definition": "함수 f의 역함수 f^-1가 존재하기 위한 필요충분조건이 f가 일대일대응임을 이용하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INVERSE_FUNCTION_EVALUATION",
+      "labelKo": "역함수의 함숫값 성질",
+      "definition": "f^-1(b) = a ⇔ f(a) = b 관계를 이용하여 역함수의 식을 직접 구하지 않고도 역함숫값을 계산하는 개념",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_INVERSE_GRAPH_SYMMETRY",
+      "labelKo": "원래 함수와 역함수 그래프의 y=x 대칭성",
+      "definition": "증가하는 함수 y=f(x)와 역함수 y=f^-1(x)의 교점은 직선 y=x 위에 놓이므로 f(x)=x의 실근으로 귀결되는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_LINEAR_SUBSTITUTION",
+      "labelKo": "일차식 치환을 통한 함수식 복원",
+      "definition": "합성된 입력 f(ax+b) = cx+d에서 t = ax+b로 치환하여 원래 함수 f(t)의 식을 구하는 대수 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_LOGICAL_IMPLICATION_CHAIN",
+      "labelKo": "복합 조건명제의 연쇄 추론",
+      "definition": "여러 개의 조건문(p -> q, ~r -> ~s 등)과 개수 제약을 결합하여 모순 없는 진릿값 조합을 결정하는 논리 추론",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_MONOTONICITY_BOUNDARY",
+      "labelKo": "단조함수의 구간 경계 대응",
+      "definition": "증가하거나 감소하는 연속함수가 제한된 구간에서 공역 전체에 일대일대응할 때 구간 끝점이 공역의 끝점에 대응하는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_NECESSARY_SUFFICIENT_CONDITION",
+      "labelKo": "충분조건·필요조건·필요충분조건",
+      "definition": "명제 p -> q가 참일 때 p는 q이기 위한 충분조건, q는 p이기 위한 필요조건이라 정의하고 진리집합 포함관계와 연결하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PARITY_DIVISIBILITY",
+      "labelKo": "정수의 홀짝성과 배수·나머지 성질",
+      "definition": "홀수와 짝수의 합·차·곱의 성질 및 짝수의 제곱수가 4의 배수(4k)가 되는 정수론적 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PIECEWISE_FUNCTION",
+      "labelKo": "구간별로 정의된 조각함수",
+      "definition": "정의역의 구간에 따라 서로 다른 함수식으로 정의된 함수의 치역, 합성, 그래프 개형을 구간별로 나누어 분석하는 개념",
+      "boundQuestionCount": 3
+    },
+    {
+      "conceptKey": "CC_PROOF_BY_CONTRADICTION",
+      "labelKo": "귀류법 증명",
+      "definition": "명제의 결론을 부정하여 가정이나 이미 알려진 수학적 사실(홀짝성, 배수 성질 등)에 모순이 생김을 보여 원명제가 참임을 증명하는 방법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PROPOSITION_DEFINITION",
+      "labelKo": "명제와 조건의 정의",
+      "definition": "참인지 거짓인지를 명확하게 판별할 수 있는 문장이나 식을 명제라 하고, 변수의 값에 따라 참·거짓이 결정되는 문장이나 식을 조건이라 하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRANT_INTERSECTION_CONDITION",
+      "labelKo": "그래프가 지나는 사분면 조건",
+      "definition": "유리·무리함수 그래프가 특정 사분면을 지나거나 모든 사분면을 지나기 위한 점근선의 위치 및 y절편의 부호 조건",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EQUATION_ROOTS",
+      "labelKo": "이차방정식의 해와 인수분해",
+      "definition": "이차방정식 ax^2+bx+c=0을 인수분해하여 진리집합의 원소(근)를 구하는 대수적 해법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_ROOT_SEPARATION",
+      "labelKo": "이차방정식의 근의 분리(실근의 위치)",
+      "definition": "이차방정식의 두 실근이 특정 값 이상인 제한 정의역에 존재하기 위한 판별식, 대칭축, 경계 함숫값 부호 조건",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUANTIFIER_NEGATION",
+      "labelKo": "'모든'이나 '어떤'을 포함한 명제의 부정",
+      "definition": "전체양화사 '모든(∀)'과 존재양화사 '어떤(∃)'을 서로 바꾸고 조건 p를 ~p로 부정하는 양화명제 부정 규칙",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RADICAL_FUNCTION_DOMAIN_RANGE",
+      "labelKo": "무리함수의 정의역과 치역",
+      "definition": "무리함수 y = ±√(a(x-p)) + q의 시작점 (p, q)와 부호 방향으로부터 정의역과 치역을 결정하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RADICAL_LINE_INTERSECTION",
+      "labelKo": "무리함수 그래프와 직선의 위치 관계",
+      "definition": "무리함수 그래프와 직선의 교점 개수를 시작점 통과 조건과 이차방정식 판별식(D=0 접선 조건)을 함께 고려하여 구하는 개념",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_RADICAL_REAL_CONDITION",
+      "labelKo": "무리식이 실수가 되기 위한 조건",
+      "definition": "제곱근이 포함된 무리식 √A의 값이 실수가 되기 위해서는 근호 안의 식 A ≥ 0이어야 하고 분모는 0이 아니어야 한다는 조건",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RATIONAL_EXPRESSION_TRANSFORM",
+      "labelKo": "유리식의 치환 및 분모·분자 나눗셈 변형",
+      "definition": "일차식을 t로 치환하여 유리식을 t/(t^2+at+b) = 1/(t + b/t + a) 꼴로 변형해 극값을 구하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RATIONAL_FUNCTION_ASYMPTOTE",
+      "labelKo": "유리함수의 점근선 방정식",
+      "definition": "유리함수 y = (cx+d)/(ax+b) 또는 y = k/(x-p) + q에서 분모가 0이 되는 수직점근선 x=p와 수평점근선 y=q를 구하는 개념",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_RATIONAL_FUNCTION_SYMMETRY",
+      "labelKo": "유리함수 그래프의 대칭점과 대칭축",
+      "definition": "유리함수 y = k/(x-p)+q의 그래프가 점근선의 교점 (p, q)에 대하여 점대칭이고 직선 y = ±(x-p)+q에 대하여 선대칭인 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SET_DIFFERENCE_COMPLEMENT",
+      "labelKo": "차집합과 여집합의 성질",
+      "definition": "A - B = A ∩ B^c = ∅ ⇔ A ⊆ B 및 드모르간·여집합 성질을 이용하여 복잡한 집합 등식을 포함관계로 변환하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SET_INTERSECTION_UNION",
+      "labelKo": "포함관계에 따른 교집합·합집합 동치 변형",
+      "definition": "P ⊆ Q일 때 P ∩ Q = P, P ∪ Q = Q, P - Q = ∅가 성립함을 이용하여 집합 연산식을 판별하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SIMULTANEOUS_LINEAR_INEQUALITIES",
+      "labelKo": "연립일차부등식의 해와 정수 개수",
+      "definition": "두 개 이상의 일차부등식을 동시에 만족시키는 수직선 위의 공통 범위를 구하고 그 구간 내의 정수 개수를 세는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_POLYNOMIAL_REDUCTION",
+      "labelKo": "역수 대칭식 u^2 + 1/u^2 변형",
+      "definition": "곱이 1인 두 역수 관계나 u^2 + 1/u^2 = k 조건에서 곱셈공식 변형 (u_1 - u_2)^2 = u_1^2 + u_2^2 - 2u_1u_2를 적용하는 대수 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_TRUTH_SET_INCLUSION",
+      "labelKo": "진리집합의 포함관계와 명제의 참·거짓",
+      "definition": "조건 p, q의 진리집합 P, Q에 대하여 명제 p -> q가 참일 필요충분조건이 P ⊆ Q임을 이용하는 개념",
+      "boundQuestionCount": 3
+    },
+    {
+      "conceptKey": "CC_TRUTH_VALUE_JUDGMENT",
+      "labelKo": "명제의 참·거짓 판별",
+      "definition": "수식, 부등식, 판별식 또는 수 체계의 성질을 이용하여 주어진 문장의 진릿값을 확정하는 개념",
+      "boundQuestionCount": 1
+    }
+  ],
+  "handOffToCourier": {
+    "status": "READY_FOR_COURIER_REGISTRATION",
+    "author": "META_PIPELINE_UNIFIED_AUTHOR",
+    "registrationProtocol": "DIRECT_ATOMIC_METADATA_BINDING",
+    "recordsToBindCount": 23,
+    "holdCount": 0
+  },
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "pack": "SETS_PROPOSITIONS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "SETS_PROPOSITIONS",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "problemTypeLabelKo": "명제와 조건의 판정",
+        "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+        "templateLabelKo": "명제와 조건의 구별",
+        "crossConceptKeys": [
+          "CC_PROPOSITION_DEFINITION",
+          "CC_TRUTH_VALUE_JUDGMENT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "문장 및 수식들 중 미지수 x의 값에 따라 참·거짓이 결정되는 조건을 찾는 유형이므로 PT_PROPOSITION_JUDGMENT / TPL_PROPOSITION_CONDITION_IDENTIFICATION에 매핑한다.",
+        "targetPack": "SETS_PROPOSITIONS",
+        "assignedPack": "SETS_PROPOSITIONS"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[명제와 조건의 정의]의 1단계 단순 판별 및 직접 대입: 변수의 값에 따라 참·거짓이 달라지는 조건($2x+1=3$)과 명제·감탄문을 구별하는 기초 문항이므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 조건인 것은? [3.2점]",
+        "solutionDecisiveExcerpt": "조건은 어떤 변수의 값에 따라 참과 거짓이 달라지는 문장이다.\n①의 이차방정식이 서로 다른 두 실근을 갖는지는 참·거짓이 정해지는 명제이다. ②도 순환소수에 대한 참인 명제이다.\n\n③ ‘한라산은 높다’는 변수의 값에 따라 참·거짓이 정해지는 문장이 아니다.\n\n④ $2x+1=3$은 $x$에 따라 달라진다. $x=1$이면 참이고 $x=0$이면 거짓이므로 조건이다.\n⑤는 변수가 없는 수의 비교로 참·거짓이 정해진다.\n\n따라서 조건인 것은 ④이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "다음 중 조건인 것은? ① 이차방정식 x^2+4x+2=0은 서로 다른 두 실근을 갖는다. ... ④ 2x+1=3",
+        "solutionDecisiveExcerpt": "④ 2x+1=3은 x에 따라 달라진다. x=1이면 참이고 x=0이면 거짓이므로 조건이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "pack": "SETS_PROPOSITIONS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "SETS_PROPOSITIONS",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "problemTypeLabelKo": "명제가 참이 되기 위한 조건",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+        "templateLabelKo": "역·대우와 방정식의 근 조건",
+        "crossConceptKeys": [
+          "CC_CONVERSE_CONTRAPOSITIVE",
+          "CC_QUADRATIC_EQUATION_ROOTS",
+          "CC_TRUTH_SET_INCLUSION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "방정식의 근으로 이루어진 진리집합이 부등식 구간에 포함되어 명제의 역이 참이 되도록 매개변수 범위를 구하므로 PT_PROPOSITION_PARAMETER_CONDITION / TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER에 매핑한다.",
+        "targetPack": "SETS_PROPOSITIONS",
+        "assignedPack": "SETS_PROPOSITIONS"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[명제의 역과 진리집합 포함관계]의 2단계 표준 연산: 이차방정식 x^2+x-2=0의 두 근(-2, 1)을 구한 뒤 역 q->p가 참이 되도록 두 근이 모두 x>=a에 속할 범위(a<=-2)를 구하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 조건 $p$, $q$가 $p:x\\ge a$, $q:x^2+x-2=0$일 때, 명제 $p\\to q$의 역이 참이 되도록 하는 정수 $a$의 최댓값은? [3.2점]",
+        "solutionDecisiveExcerpt": "$q$를 만족하는 $x$는\n$x^2+x-2=0$,\n$(x+2)(x-1)=0$에서\n$x=-2$ 또는 $x=1$이다.\n명제의 역은 $q\\to p$이므로 이 두 값 모두 $x\\ge a$를 만족해야 한다.\n따라서 $-2\\ge a$이고 $1\\ge a$이다. 두 조건을 함께 만족하려면 $a\\le-2$이다.\n가능한 정수 $a$의 최댓값은 $-2$이므로 정답은 ①이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "두 조건 p, q가 p:x>=a, q:x^2+x-2=0일 때, 명제 p->q의 역이 참이 되도록 하는 정수 a의 최댓값은?",
+        "solutionDecisiveExcerpt": "(x+2)(x-1)=0에서 x=-2 또는 x=1이다. 명제의 역은 q->p이므로 이 두 값 모두 x>=a를 만족해야 한다. 따라서 a<=-2이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RADICAL_EXPRESSION",
+        "problemTypeLabelKo": "무리식의 계산",
+        "templateKey": "TPL_RADICAL_REAL_VALUE_RANGE",
+        "templateLabelKo": "무리식이 실수가 되는 범위",
+        "crossConceptKeys": [
+          "CC_RADICAL_REAL_CONDITION",
+          "CC_SIMULTANEOUS_LINEAR_INEQUALITIES"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "두 무리식의 값이 모두 실수가 되도록 하는 미지수의 범위와 정수 개수를 구하는 유형이므로 PT_RADICAL_EXPRESSION / TPL_RADICAL_REAL_VALUE_RANGE에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[무리식이 실수가 될 조건]의 1단계 직접 대입 및 부등식 계산: 두 근호 안의 식이 0 이상일 조건(x-3>=0, 10-2x>=0)에서 3<=x<=5의 정수 개수를 구하므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 무리식 $\\sqrt{x-3}$, $\\sqrt{10-2x}$의 값이 모두 실수가 되도록 하는 정수 $x$의 개수는? [3.3점]",
+        "solutionDecisiveExcerpt": "두 근호의 값이 모두 실수가 되려면 각각 근호 안이 $0$ 이상이어야 한다.\n$\\sqrt{x-3}$에 대해\n$x-3\\ge0$이므로 $x\\ge3$이다.\n$\\sqrt{10-2x}$에 대해\n$10-2x\\ge0$,\n$-2x\\ge-10$이므로 $x\\le5$이다.\n\n두 조건의 공통 범위는 $3\\le x\\le5$이다.\n따라서 가능한 정수는 $3,4,5$이고,\n그 개수는 $5-3+1=3$이다.\n\n따라서 정답은 ③이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "두 무리식 sqrt(x-3), sqrt(10-2x)의 값이 모두 실수가 되도록 하는 정수 x의 개수는?",
+        "solutionDecisiveExcerpt": "x-3>=0이므로 x>=3이다. 10-2x>=0이므로 x<=5이다. 공통 범위는 3<=x<=5이므로 정수는 3, 4, 5의 3개이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "problemTypeLabelKo": "합성함수의 계산",
+        "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+        "templateLabelKo": "대응도에서 합성함숫값 계산",
+        "crossConceptKeys": [
+          "CC_FUNCTION_COMPOSITION",
+          "CC_FUNCTION_MAPPING_DIAGRAM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "유한집합 사이의 대응도(q4.png)에서 화살표를 따라 합성함숫값을 구하는 유형이므로 PT_COMPOSITION_EVALUATION / TPL_COMPOSITION_VALUE_MAPPING에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[대응도에서의 합성함숫값]의 1단계 단순 판별 및 직접 대입: 벤다이어그램 화살표를 따라 f(2)=6, g(6)=8을 차례대로 읽는 기본 문항이므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림은 두 함수 $f:X\\to Y$, $g:Y\\to Z$를 나타낸 것이다. $(g\\circ f)(2)$의 값은? [3.3점]",
+        "solutionDecisiveExcerpt": "먼저 그림에서 $f$의 화살표를 따라가면\n$f(2)=6$이다.\n이 값을 $g$에 넣는다. 그림에서\n$g(6)=8$이다.\n따라서\n$(g\\circ f)(2)=g(f(2))=g(6)=8$이다.\n정답은 ④이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q4.png"
+        ]
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "다음 그림은 두 함수 f:X->Y, g:Y->Z를 나타낸 것이다. (g∘f)(2)의 값은?",
+        "solutionDecisiveExcerpt": "그림에서 f의 화살표를 따라가면 f(2)=6이다. 그림에서 g(6)=8이다. 따라서 (g∘f)(2)=g(f(2))=8이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q4.png"
+        ]
+      }
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "pack": "SETS_PROPOSITIONS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "SETS_PROPOSITIONS",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "problemTypeLabelKo": "모든·어떤 명제와 부정",
+        "templateKey": "TPL_EXISTENTIAL_NEGATION_BASIC",
+        "templateLabelKo": "존재명제의 부정",
+        "crossConceptKeys": [
+          "CC_QUANTIFIER_NEGATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "'어떤'이 포함된 존재명제의 부정을 직접 구하는 기본 유형이므로 PT_QUANTIFIER_NEGATION / TPL_EXISTENTIAL_NEGATION_BASIC에 매핑한다.",
+        "targetPack": "SETS_PROPOSITIONS",
+        "assignedPack": "SETS_PROPOSITIONS"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[존재명제의 부정]의 1단계 단순 판별: '어떤 실수 x'를 '모든 실수 x'로, 부등호 '<=0'을 '>0'으로 바꾸는 기본 정의 확인 문항이므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "명제 ‘어떤 실수 $x$에 대하여 $x^2-1\\le0$이다.’의 부정은? [3.5점]",
+        "solutionDecisiveExcerpt": "주어진 명제는 ‘$x^2-1\\le0$인 실수 $x$가 하나 이상 있다’이다.\n‘어떤 실수’의 부정은 ‘모든 실수’이고, $\\le0$의 부정은 $>0$이다.\n따라서 부정은\n‘모든 실수 $x$에 대하여 $x^2-1>0$이다.’이다.\n정답은 ⑤이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "명제 ‘어떤 실수 x에 대하여 x^2-1<=0이다.’의 부정은?",
+        "solutionDecisiveExcerpt": "‘어떤 실수’의 부정은 ‘모든 실수’이고, <=0의 부정은 >0이다. 따라서 부정은 ‘모든 실수 x에 대하여 x^2-1>0이다.’이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "pack": "SETS_PROPOSITIONS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "SETS_PROPOSITIONS",
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "problemTypeLabelKo": "필요조건·충분조건",
+        "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+        "templateLabelKo": "집합과 필요조건·충분조건",
+        "crossConceptKeys": [
+          "CC_NECESSARY_SUFFICIENT_CONDITION",
+          "CC_TRUTH_SET_INCLUSION",
+          "CC_SET_INTERSECTION_UNION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "필요·충분조건을 진리집합의 포함관계로 바꾼 뒤 항상 성립하는 집합 연산 관계를 판정하는 유형이므로 PT_NEC_SUFF_RELATION / TPL_NEC_SUFF_SET_RELATION에 매핑한다.",
+        "targetPack": "SETS_PROPOSITIONS",
+        "assignedPack": "SETS_PROPOSITIONS"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[충분조건과 진리집합 연산]의 2단계 표준 연산: 충분조건 p=>q를 진리집합 포함관계 P⊆Q로 변환하고 동치인 집합 연산식(P∩Q=P)을 찾으므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "전체집합 $U$에 대하여 두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 하자. $p$가 $q$이기 위한 충분조건일 때, 다음 중 항상 옳은 것은? [3.5점]",
+        "solutionDecisiveExcerpt": "$p$가 $q$이기 위한 충분조건이라는 것은 $p\\to q$가 참이라는 뜻이다.\n따라서 $p$의 진리집합은 $q$의 진리집합에 포함되어\n$P\\subseteq Q$이다.\n\n이 포함관계에서 $P\\cap Q=P$, $P\\cup Q=Q$가 성립한다.\n\n① $P\\cap Q=\\varnothing$은 $P$가 공집합일 때만 성립한다.\n② $P\\cap Q=P$는 항상 성립한다.\n③ $P\\cup Q=P$는 추가로 $Q\\subseteq P$여야 성립한다.\n④ $Q-P=\\varnothing$도 $Q\\subseteq P$가 필요하다.\n⑤ $P\\cup Q^c=U$는 $Q\\subseteq P$일 때 성립하며, 주어진 조건만으로 보장되지 않는다.\n\n따라서 항상 옳은 것은 ②이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "전체집합 U에 대하여 두 조건 p, q의 진리집합을 각각 P, Q라 하자. p가 q이기 위한 충분조건일 때, 다음 중 항상 옳은 것은?",
+        "solutionDecisiveExcerpt": "p가 q이기 위한 충분조건이라는 것은 p->q가 참이라는 뜻이다. 따라서 P⊆Q이다. 이 포함관계에서 P∩Q=P가 항상 성립한다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+        "problemTypeLabelKo": "정의역·공역·치역",
+        "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+        "templateLabelKo": "정의역·치역 직접 구하기",
+        "crossConceptKeys": [
+          "CC_RADICAL_FUNCTION_DOMAIN_RANGE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "무리함수의 식에서 정의역과 치역의 경계 상수를 직접 구하는 유형이므로 PT_DOMAIN_RANGE_SURJECTIVITY / TPL_FUNCTION_DOMAIN_RANGE_DIRECT에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[무리함수의 정의역과 치역]의 1단계 직접 대입: 무리함수 y=sqrt(x-5)-3의 시작점 (5, -3)으로부터 a=5, b=-3을 바로 읽어 합산하므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "함수 $y=\\sqrt{x-5}-3$의 정의역이 $\\{x\\mid x\\ge a\\}$, 치역이 $\\{y\\mid y\\ge b\\}$일 때, $a+b$의 값은? (단, $a$, $b$는 상수이다.) [3.6점]",
+        "solutionDecisiveExcerpt": "함수는 근호 안이 $0$ 이상일 때 정의된다.\n$x-5\\ge0$에서 정의역은 $x\\ge5$이므로 $a=5$이다.\n또 $\\sqrt{x-5}\\ge0$이므로\n$y=\\sqrt{x-5}-3\\ge-3$이다.\n따라서 치역은 $y\\ge-3$이고 $b=-3$이다.\n\n그러므로 $a+b=5+(-3)=2$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "함수 y=sqrt(x-5)-3의 정의역이 {x|x>=a}, 치역이 {y|y>=b}일 때, a+b의 값은?",
+        "solutionDecisiveExcerpt": "x-5>=0에서 정의역은 x>=5이므로 a=5이다. 또 y=sqrt(x-5)-3>=-3이므로 치역은 y>=-3이고 b=-3이다. 그러므로 a+b=2이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "problemTypeLabelKo": "일대일함수와 일대일대응",
+        "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
+        "templateLabelKo": "일차함수의 구간 일대일대응",
+        "crossConceptKeys": [
+          "CC_BIJECTION_CONDITION",
+          "CC_MONOTONICITY_BOUNDARY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "제한된 구간에서 정의된 일차함수가 일대일대응이 되기 위한 상수 조건을 구하는 유형이므로 PT_ONE_TO_ONE_BIJECTION / TPL_AFFINE_INTERVAL_BIJECTION에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[구간에서의 일차함수 일대일대응]의 2단계 표준 연산: 증가함수 f(x)=3x-a가 A={x|x<=4}에서 A로의 일대일대응이 되기 위한 경계 조건 f(4)=4를 풀어 a=8을 구하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $A=\\{x\\mid x\\le4\\}$에 대하여 $A$에서 $A$로의 함수 $f(x)=3x-a$가 일대일 대응이 되도록 하는 상수 $a$의 값은? [3.6점]",
+        "solutionDecisiveExcerpt": "$x\\le4$이고 $f(x)=3x-a$는 기울기가 양수이므로 정의역에서 증가한다.\n가장 큰 입력 $x=4$에서 가장 큰 함숫값은\n$f(4)=12-a$이다.\n따라서 치역은 $y\\le12-a$이다. 공역도 $y\\le4$이므로 일대일대응이 되려면 두 범위가 같아야 한다.\n$12-a=4$에서 $a=8$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "집합 A={x|x<=4}에 대하여 A에서 A로의 함수 f(x)=3x-a가 일대일 대응이 되도록 하는 상수 a의 값은?",
+        "solutionDecisiveExcerpt": "x<=4이고 f(x)=3x-a는 기울기가 양수이므로 증가한다. 치역은 y<=f(4)=12-a이고 공역도 y<=4이므로 12-a=4에서 a=8이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "problemTypeLabelKo": "일대일함수와 일대일대응",
+        "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+        "templateLabelKo": "조각함수의 일대일대응 조건",
+        "crossConceptKeys": [
+          "CC_BIJECTION_CONDITION",
+          "CC_INVERSE_EXISTENCE_CONDITION",
+          "CC_PIECEWISE_FUNCTION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "구간별로 정의된 조각함수가 실수 전체에서 역함수(일대일대응)를 갖기 위한 경계 함숫값 일치 및 이차항 계수 부호 조건을 구하는 유형이므로 PT_ONE_TO_ONE_BIJECTION / TPL_PIECEWISE_RANGE_STITCH_BIJECTION에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[역함수 존재 조건과 조각함수 치역 접합]의 연립 계산: x=2 경계에서 치역이 빈틈없이 이어질 조건(b=6)과 단조 감소 연결 조건(a>0인 정수 최솟값 a=1)을 결합하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 정수 $a$, $b$에 대하여 함수\n$ f(x)=\\begin{cases}a(x-2)^2+b&(x\\lt2)\\\\-x+8&(x\\ge2)\\end{cases} $\n은 실수 전체의 집합에서 정의된 역함수를 갖는다. $a+b$의 최솟값은? [3.9점]",
+        "solutionDecisiveExcerpt": "$x\\ge2$인 구간에서\n$f(x)=-x+8$의 치역은 $(-\\infty,6]$이다.\n$x<2$인 구간에서 $(x-2)^2$는 모든 양수를 한 번씩 가지므로, $a>0$이면 첫째 식의 치역은 $(b,\\infty)$이다.\n두 치역이 겹치지 않고 실수 전체를 채우려면 경계가 맞아야 하므로\n$b=6$이다.\n$a<0$이면 첫째 식의 치역도 아래로 뻗어 두 구간의 함숫값이 겹친다. $a=0$이면 첫째 구간에서 같은 함숫값이 반복된다. 따라서 $a$는 양의 정수이고 최솟값은 1이다.\n\n그러므로 $a+b$의 최솟값은 $1+6=7$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "두 정수 a, b에 대하여 함수 f(x)={a(x-2)^2+b (x<2), -x+8 (x>=2)}은 실수 전체의 집합에서 정의된 역함수를 갖는다. a+b의 최솟값은?",
+        "solutionDecisiveExcerpt": "x>=2에서 f(x)=-x+8의 치역은 (-inf, 6]이다. 두 치역이 겹치지 않고 실수 전체를 채우려면 b=6이고 a>0이어야 하므로 정수 a의 최솟값은 1, a+b=7이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "problemTypeLabelKo": "합성함수의 계산",
+        "templateKey": "TPL_COMPOSITION_GRAPH_TRACE_VALUE",
+        "templateLabelKo": "그래프에서 합성함숫값 역추적",
+        "crossConceptKeys": [
+          "CC_FUNCTION_COMPOSITION",
+          "CC_IDENTITY_LINE_REFLECTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "직선 y=x와 점선 격자가 주어진 그래프(q10.png)에서 함숫값 대응을 따라 합성함수 방정식의 해를 역추적하는 유형이므로 PT_COMPOSITION_EVALUATION / TPL_COMPOSITION_GRAPH_TRACE_VALUE에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[직선 y=x와 그래프를 이용한 합성함숫값 역추적]의 2단계 표준 연산: y=x 점선을 따라 f(c)=d, f(d)=e임을 읽고 (f∘f)(k)=e를 만족하는 k=c를 역추적하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "함수 $y=f(x)$의 그래프와 직선 $y=x$가 다음 그림과 같을 때, $(f\\circ f)(k)=e$를 만족하는 $k$를 고르면? [3.9점]",
+        "solutionDecisiveExcerpt": "그래프의 점선을 따라 함수값을 차례로 읽는다.\n그림에서\n$f(a)=b$,\n$f(b)=c$,\n$f(c)=d$,\n$f(d)=e$이다.\n두 번 함수값을 취했을 때 $e$가 되려면\n$c\\to d\\to e$의 순서가 되어야 한다.\n실제로\n$(f\\circ f)(c)=f(f(c))$\n$=f(d)$\n$=e$이다.\n\n따라서 $k=c$이고, 정답은 ③이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q10.png"
+        ]
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "함수 y=f(x)의 그래프와 직선 y=x가 다음 그림과 같을 때, (f∘f)(k)=e를 만족하는 k를 고르면?",
+        "solutionDecisiveExcerpt": "그림에서 f(a)=b, f(b)=c, f(c)=d, f(d)=e이다. (f∘f)(c)=f(f(c))=f(d)=e이므로 k=c이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q10.png"
+        ]
+      }
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "pack": "SETS_PROPOSITIONS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "SETS_PROPOSITIONS",
+        "problemTypeKey": "PT_TRUTH_SET_RELATION",
+        "problemTypeLabelKo": "진리집합과 명제의 관계",
+        "templateKey": "TPL_TRUTHSET_SET_OPERATION",
+        "templateLabelKo": "집합 연산과 명제",
+        "crossConceptKeys": [
+          "CC_TRUTH_SET_INCLUSION",
+          "CC_SET_DIFFERENCE_COMPLEMENT",
+          "CC_CONTRAPOSITIVE_EQUIVALENCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "진리집합의 연산 조건((P-R)∪(Q-R^c)=∅)으로부터 집합 간 포함·서로소 관계를 도출하여 참인 조건명제를 고르는 유형이므로 PT_TRUTH_SET_RELATION / TPL_TRUTHSET_SET_OPERATION에 매핑한다.",
+        "targetPack": "SETS_PROPOSITIONS",
+        "assignedPack": "SETS_PROPOSITIONS"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[차집합 공집합 조건과 진리집합 삼단논법]의 3단계 연립 추론: (P-R)∪(Q-R^c)=∅에서 P⊆R과 Q⊆R^c를 유도하고 P∩Q=∅(Q⊆P^c)을 통해 ㄱ, ㄴ, ㄷ 명제의 진위를 판별하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "전체집합 $U$에 대하여 세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 하자. $(P-R)\\cup(Q-R^c)=\\varnothing$일 때, 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은? [3.9점]\n<div class=\"q-box\">&lt;보기&gt;<br>ㄱ. $p\\to r$<br>ㄴ. $q\\to r$<br>ㄷ. $q\\to\\neg p$</div>",
+        "solutionDecisiveExcerpt": "주어진 합집합이 공집합이므로\n$P-R=\\varnothing$,\n$Q-R^c=\\varnothing$이다.\n\nㄱ. $P-R=P\\cap R^c=\\varnothing$이므로\n$P\\subseteq R$이다.\n따라서 $p\\to r$는 항상 참이다.\n\nㄴ. $Q-R^c=Q\\cap R=\\varnothing$이므로\n$Q\\subseteq R^c$이다.\n이 조건만으로 $Q\\subseteq R$이라고 할 수 없으므로 $q\\to r$는 항상 참이라고 할 수 없다.\n\nㄷ. $P\\subseteq R$이고 $Q\\subseteq R^c$이므로\n$P\\cap Q=\\varnothing$이다.\n따라서 $Q\\subseteq P^c$이고, $q\\to\\neg p$는 항상 참이다.\n\n그러므로 항상 참인 것은 ㄱ, ㄷ이고 정답은 ③이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "전체집합 U에 대하여 세 조건 p, q, r의 진리집합을 각각 P, Q, R이라 하자. (P-R)∪(Q-R^c)=∅일 때, 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은?",
+        "solutionDecisiveExcerpt": "P-R=∅이므로 P⊆R(p->r 참). Q-R^c=Q∩R=∅이므로 Q⊆R^c. 따라서 P∩Q=∅이므로 Q⊆P^c이고 q->~p는 항상 참이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "problemTypeLabelKo": "역함수 구하기와 함수값",
+        "templateKey": "TPL_INVERSE_AFFINE_INPUT",
+        "templateLabelKo": "f(ax+b)의 역함수",
+        "crossConceptKeys": [
+          "CC_INVERSE_FUNCTION_EVALUATION",
+          "CC_LINEAR_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "f(ax+b)=cx+d 꼴의 관계식으로부터 역함숫값 f^-1(k)를 구하는 표준 유형이므로 PT_INVERSE_VALUE / TPL_INVERSE_AFFINE_INPUT에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[일차 합성 입력식의 역함숫값]의 2단계 표준 연산: f(2x+1)=3x+5에서 3x+5=14인 x=3을 구해 f^-1(14)=2(3)+1=7을 도출하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "일차함수 $f(x)$가 $f(2x+1)=3x+5$를 만족시킬 때, $f^{-1}(14)$의 값은? [4.2점]",
+        "solutionDecisiveExcerpt": "$t=2x+1$이라 놓으면 $x=\\dfrac{t-1}{2}$이다.\n주어진 식에 대입하면\n$f(t)=3\\cdot\\dfrac{t-1}{2}+5$\n$=\\dfrac{3t-3+10}{2}$\n$=\\dfrac{3t+7}{2}$이다.\n\n이 일차함수의 기울기는 $\\dfrac32\\ne0$이므로 일대일대응이며 역함수가 존재한다.\n$f^{-1}(14)$는 $f(t)=14$가 되게 하는 입력 $t$이다.\n\n$\\dfrac{3t+7}{2}=14$\n$3t+7=28$\n$3t=21$\n$t=7$이다.\n\n따라서 정답은 ①이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "일차함수 f(x)가 f(2x+1)=3x+5를 만족시킬 때, f^-1(14)의 값은?",
+        "solutionDecisiveExcerpt": "t=2x+1이라 놓으면 f(t)=(3t+7)/2이다. f^-1(14)는 (3t+7)/2=14가 되게 하는 입력 t이므로 3t=21, t=7이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_FUNCTION_RECOVERY",
+        "problemTypeLabelKo": "함수식 구하기",
+        "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+        "templateLabelKo": "점근선과 한 점으로 함수식 구하기",
+        "crossConceptKeys": [
+          "CC_RATIONAL_FUNCTION_ASYMPTOTE",
+          "CC_AXIS_INTERCEPT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "유리함수의 그래프(q13.png)에 주어진 두 점근선과 절편 좌표로부터 함수식의 계수를 복원하는 유형이므로 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[유리함수 점근선과 절편을 이용한 미정계수 결정]의 2단계 표준 연산: 그래프에서 점근선 x=-3, y=1과 x절편 (-5, 0)을 읽어 a=5, b=1, c=3을 구하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "함수 $y=\\dfrac{x+a}{bx+c}$의 그래프가 아래와 같을 때, 상수 $a$, $b$, $c$에 대하여 $a+b+c$의 값은? [4.2점]",
+        "solutionDecisiveExcerpt": "분자의 값이 $0$이 되는 곳이 $x$절편이므로\n$-5+a=0$,\n$a=5$이다.\n수평 점근선은 분자와 분모의 $x$의 계수의 비이므로\n$\\dfrac1b=1$,\n$b=1$이다.\n분모가 $0$이 되는 $x=-\\dfrac cb$가 수직 점근선이다. 따라서\n$-\\dfrac c1=-3$,\n$c=3$이다.\n그러므로\n$a+b+c=5+1+3=9$이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q13.png",
+          "assets/images/25_순천고_2학기_기말_고1_기출/q13-solution.svg"
+        ]
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "함수 y=(x+a)/(bx+c)의 그래프가 아래와 같을 때, 상수 a, b, c에 대하여 a+b+c의 값은?",
+        "solutionDecisiveExcerpt": "x절편이 -5이므로 -5+a=0, a=5. 수평 점근선 1/b=1에서 b=1. 수직 점근선 -c/b=-3에서 c=3. 따라서 a+b+c=9이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q13.png",
+          "assets/images/25_순천고_2학기_기말_고1_기출/q13-solution.svg"
+        ]
+      }
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "problemTypeLabelKo": "함수 그래프와 사분면",
+        "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+        "templateLabelKo": "매개변수에 따른 사분면 조건",
+        "crossConceptKeys": [
+          "CC_RATIONAL_FUNCTION_ASYMPTOTE",
+          "CC_QUADRANT_INTERSECTION_CONDITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "유리함수의 그래프가 모든 사분면을 지나도록 매개변수 범위를 결정하는 유형이므로 PT_FUNCTION_GRAPH_QUADRANT / TPL_FUNCTION_QUADRANT_PARAMETER에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[유리함수 모든 사분면 통과 조건]의 점근선·절편 연립 계산: y=-1/(x-2)+a가 제1~4사분면을 모두 지나기 위한 수평점근선 부호(a<0)와 y절편 부호(a+1/2>0)를 연립해 -1/2<a<0을 구하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 유리함수 $y=\\dfrac{1}{2-x}+a$의 그래프가 모든 사분면을 지나도록 하는 $a$의 값으로 옳은 것은? [4.2점]",
+        "solutionDecisiveExcerpt": "$x<0$일 때 $2-x>2$이므로\n$0<\\dfrac{1}{2-x}<\\dfrac12$이다.\n따라서 이 범위에서 함숫값은\n$a<y<a+\\dfrac12$이다.\n\n그래프가 제2사분면과 제3사분면을 모두 지나려면 $x<0$인 곳에서 $y>0$과 $y<0$이 모두 가능해야 한다.\n그러므로\n$a<0$, $a+\\dfrac12>0$,\n즉 $-\\dfrac12<a<0$이다.\n\n보기 중 이 조건을 만족하는 값은 $a=-\\dfrac14$뿐이다.\n이 값을 대입한 그래프의 사분면을 확인하자.\n$\\dfrac{1}{2-x}-\\dfrac14=0$에서\n$2-x=4$, $x=-2$이다.\n\n$x<-2$이면 $y<0$이므로 제3사분면,\n$-2<x<0$이면 $y>0$이므로 제2사분면을 지난다.\n$0<x<2$이면 $y>0$이므로 제1사분면,\n$x>2$이면 $y<0$이므로 제4사분면을 지난다.\n\n따라서 정답은 ④이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q14-solution.svg"
+        ]
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "다음 중 유리함수 y=1/(2-x)+a의 그래프가 모든 사분면을 지나도록 하는 a의 값으로 옳은 것은?",
+        "solutionDecisiveExcerpt": "그래프가 제2사분면과 제3사분면을 모두 지나려면 a<0, a+1/2>0, 즉 -1/2<a<0이다. 보기 중 이 조건을 만족하는 값은 a=-1/4뿐이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q14-solution.svg"
+        ]
+      }
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "problemTypeLabelKo": "역함수의 그래프",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "templateLabelKo": "함수와 역함수의 교점·접점",
+        "crossConceptKeys": [
+          "CC_INVERSE_GRAPH_SYMMETRY",
+          "CC_QUADRATIC_ROOT_SEPARATION",
+          "CC_DISCRIMINANT"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "제한된 정의역의 이차함수와 그 역함수 그래프가 서로 다른 두 점에서 만나기 위한 매개변수 조건을 구하는 유형이므로 PT_INVERSE_GRAPH / TPL_INVERSE_GRAPH_INTERSECTION에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[이차함수와 역함수의 두 교점 존재 조건]의 판별식·경계값 연립 계산: f(x)=x(x^2-10x+2a=0)가 x>=4에서 서로 다른 두 실근을 갖기 위한 D>0(a<25/2)과 f(4)>=4(a>=12)를 연립하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "함수 $f(x)=\\dfrac{1}{2}x^2-4x+a\\;(x\\ge4)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 $2$개의 점에서 만나도록 하는 자연수 $a$의 개수는? [4.5점]",
+        "solutionDecisiveExcerpt": "$x\\ge4$에서\n$f(x)=\\dfrac12(x-4)^2+a-8$은 증가한다. 실제로 $x-4$가 $0$ 이상에서 커지면 그 제곱도 커진다.\n두 그래프의 교점을 $(u,v)$라 하면\n$v=f(u)$,\n$u=f(v)$이다.\n만약 $u<v$라면 증가함수이므로\n$v=f(u)<f(v)=u$가 되어 모순이다.\n만약 $u>v$라면\n$v=f(u)>f(v)=u$가 되어 모순이다.\n따라서 두 교점은 모두 $y=x$ 위에 있고, 좌표는 $f(x)=x$를 풀어 구한다.\n$\\dfrac12x^2-4x+a=x$,\n$x^2-10x+2a=0$이다.\n두 근은\n$x=5\\pm\\sqrt{25-2a}$이다.\n서로 다른 두 근이 있으려면\n$25-2a>0$이다.\n또 작은 근이 정의역에 속하려면\n$5-\\sqrt{25-2a}\\ge4$,\n$25-2a\\le1$이어야 한다.\n\n따라서 $12\\le a<\\dfrac{25}{2}$이다. 자연수 $a$는 $12$뿐이다.\n이때 $x=5\\pm\\sqrt{25-24}=5\\pm1$이므로 두 교점은 $(4,4)$, $(6,6)$이다.\n따라서 가능한 자연수 $a$는 $1$개이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q15-solution.svg"
+        ]
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "함수 f(x)=1/2 x^2-4x+a (x>=4)의 그래프와 그 역함수 y=f^-1(x)의 그래프가 서로 다른 2개의 점에서 만나도록 하는 자연수 a의 개수는?",
+        "solutionDecisiveExcerpt": "두 교점은 모두 y=x 위에 있고 x^2-10x+2a=0의 서로 다른 두 근이 x>=4에 속해야 하므로 25-2a>0 및 5-sqrt(25-2a)>=4에서 12<=a<25/2, 자연수 a는 12(1개)뿐이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q15-solution.svg"
+        ]
+      }
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "pack": "SETS_PROPOSITIONS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "SETS_PROPOSITIONS",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "problemTypeLabelKo": "귀류법",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "templateLabelKo": "홀짝·배수 성질의 귀류법 증명",
+        "crossConceptKeys": [
+          "CC_PROOF_BY_CONTRADICTION",
+          "CC_PARITY_DIVISIBILITY",
+          "CC_DIFFERENCE_OF_SQUARES"
+        ],
+        "conditionKeys": [
+          "COND_ODD"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "정수의 홀짝성과 배수 성질을 이용한 귀류법 증명 과정(q16.png)의 빈칸을 완성하는 유형이므로 PT_CONTRADICTION_PROOF / TPL_DIVISIBILITY_PARITY_CONTRADICTION에 매핑한다.",
+        "targetPack": "SETS_PROPOSITIONS",
+        "assignedPack": "SETS_PROPOSITIONS"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[귀류법과 홀짝성·4의 배수 모순 추론]의 3단계 식 변형 및 빈칸 추론: m-n=8a와 4(p+q)(p-q)=8a에서 (p+q)(p-q)=2a를 도출하고 4의 배수 모순을 통해 (가) 8a, (나) 2a, (다) 4를 확정하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음은 명제 ‘$a$, $b$가 모두 홀수일 때, $m=11a+b$, $n=3a+b$ 중 적어도 하나는 제곱수가 아니다.’가 참임을 증명하는 과정이다.<br><img src=\"assets/images/25_순천고_2학기_기말_고1_기출/q16.png\" alt=\"증명 과정\"><br>위의 과정에서 □ 안의 (가), (나)에 알맞은 식을 각각 $f(a)$, $g(a)$, (다)에 알맞은 수를 $k$라 할 때, $f(k)+g(k)$의 값은? [4.5점]",
+        "solutionDecisiveExcerpt": "$a,b$가 홀수이므로 $m=11a+b$와 $n=3a+b$는 모두 짝수이다.\n둘 다 제곱수라고 가정하면 짝수의 제곱근은 짝수이므로 어떤 정수 $p,q$에 대하여\n$m=4p^2$,\n$n=4q^2$이다.\n한편\n$m-n=(11a+b)-(3a+b)=8a$이다.\n또\n$m-n=4p^2-4q^2=4(p+q)(p-q)$이다.\n두 식을 같게 두고 4로 나누면\n$(p+q)(p-q)=2a$이다.\n$p+q$와 $p-q$는 같은 짝홀성을 가진다. 둘 다 홀수이면 곱은 홀수이고, 둘 다 짝수이면 곱은 4의 배수이다.\n그런데 $a$가 홀수이면 $2a$는 4로 나누었을 때 나머지가 2이다. 위 두 경우와 모두 맞지 않아 모순이다.\n따라서 두 수가 모두 제곱수일 수는 없다. 빈칸은 (가) $8a$, (나) $2a$, (다) $4$이다.\n$f(4)+g(4)=8\\cdot4+2\\cdot4=40$이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q16.png"
+        ]
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "다음은 명제 ‘a, b가 모두 홀수일 때, m=11a+b, n=3a+b 중 적어도 하나는 제곱수가 아니다.’가 참임을 증명하는 과정이다. ... f(k)+g(k)의 값은?",
+        "solutionDecisiveExcerpt": "m-n=(11a+b)-(3a+b)=8a이고 4(p+q)(p-q)=8a에서 (p+q)(p-q)=2a이다. 둘 다 짝수이면 곱은 4의 배수인데 2a는 4로 나눈 나머지가 2이므로 모순이다. (가)=8a, (나)=2a, k=4에서 32+8=40이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q16.png"
+        ]
+      }
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "problemTypeLabelKo": "함수 그래프의 교점",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+        "templateLabelKo": "절댓값·조각함수 그래프의 교점",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_GRAPH_FOLDING",
+          "CC_FIXED_POINT_LINE_ROTATION",
+          "CC_RADICAL_LINE_INTERSECTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "절댓값이 포함된 무리함수 그래프와 정점을 지나는 직선이 서로 다른 두 점에서 만나기 위한 기울기의 최솟값을 구하는 유형이므로 PT_FUNCTION_GRAPH_INTERSECTION / TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyReason": "[절댓값 무리함수와 정점 회전 직선의 교점 개수]에 따른 케이스 분류 및 경계 추론: 접어 올린 두 무리함수 가지와 정점 (1, 1)을 지나는 직선이 서로 다른 두 점에서 만날 경계(왼쪽 끝점 (-1, 2) 통과 시 k=-1/2)를 도출하므로 Bucket 4를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "함수 $y=\\left|\\sqrt{2x+2}-2\\right|$의 그래프와 직선 $y=k(x-1)+1$이 서로 다른 두 점에서 만나도록 하는 실수 $k$의 최솟값은? (단, $a$, $b$는 상수이다.) [4.5점]",
+        "solutionDecisiveExcerpt": "$t=\\sqrt{2x+2}\\ge0$이라 놓으면\n$x=\\dfrac{t^2}{2}-1$,\n$y=|t-2|$이다.\n\n직선 $y=k(x-1)+1$에 대입하면\n$y=k\\left(\\dfrac{t^2}{2}-2\\right)+1$이다.\n\n① $0\\le t\\le2$인 가지에서는 $y=2-t$이므로\n$2-t=k\\left(\\dfrac{t^2}{2}-2\\right)+1$,\n$4-2t=kt^2-4k+2$이다.\n따라서 교점 조건은\n$A(t)=kt^2+2t-2-4k=0$이다.\n\n② $t\\ge2$인 가지에서는 $y=t-2$이므로\n$t-2=k\\left(\\dfrac{t^2}{2}-2\\right)+1$,\n$2t-4=kt^2-4k+2$이다.\n따라서 교점 조건은\n$B(t)=kt^2-2t+6-4k=0$이다.\n\n먼저 $k<-\\dfrac12$이면 $-k>\\dfrac12$이다.\n$0\\le t\\le2$에서\n$A(t)=(-k)(4-t^2)+2t-2$\n$\\ge\\dfrac12(4-t^2)+2t-2$\n$=t\\left(2-\\dfrac t2\\right)$이다.\n$0<t\\le2$이면 오른쪽이 양수이고,\n$t=0$에서도 $A(0)=-4k-2>0$이다.\n따라서 첫째 가지에는 교점이 없다.\n\n둘째 가지에서는 $k<0$이므로 $t\\ge2$에서 $B(t)$가 계속 감소한다.\n$B(2)=2>0$이고, $t$가 커지면 $B(t)<0$이 되므로 교점이 정확히 하나 존재한다.\n따라서 $k<-\\dfrac12$에서는 두 교점이 불가능하다.\n\n이제 $k=-\\dfrac12$이면\n$A(t)=-\\dfrac12t^2+2t=\\dfrac12t(4-t)$이다.\n$0\\le t\\le2$에서 근은 $t=0$ 하나이다.\n\n또\n$B(t)=-\\dfrac12t^2-2t+8=0$,\n$t^2+4t-16=0$이다.\n근은 $t=-2\\pm2\\sqrt5$이며,\n$t\\ge2$인 근은 $-2+2\\sqrt5$ 하나이다.\n\n따라서 $k=-\\dfrac12$에서 서로 다른 두 교점이 생기며, 그보다 작은 $k$에서는 불가능하다.\n그러므로 정답은 ②이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q17-solution.svg"
+        ]
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "함수 y=|sqrt(2x+2)-2|의 그래프와 직선 y=k(x-1)+1이 서로 다른 두 점에서 만나도록 하는 실수 k의 최솟값은?",
+        "solutionDecisiveExcerpt": "t=sqrt(2x+2)>=0이라 놓으면 0<=t<=2 가지와 t>=2 가지로 나뉜다. k=-1/2일 때 첫째 가지에서 t=0(왼쪽 끝점 (-1,2)) 한 점, 둘째 가지에서 t=-2+2sqrt(5) 한 점으로 서로 다른 두 교점이 생기며 그보다 작은 k에서는 불가능하다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q17-solution.svg"
+        ]
+      }
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "problemTypeLabelKo": "함수 그래프와 도형",
+        "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+        "templateLabelKo": "그래프 위 점의 거리·길이 구하기",
+        "crossConceptKeys": [
+          "CC_RATIONAL_FUNCTION_SYMMETRY",
+          "CC_CIRCLE_INTERSECTION_CHORD",
+          "CC_SYMMETRIC_POLYNOMIAL_REDUCTION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "유리함수 그래프와 원의 두 교점 사이의 거리를 대칭성과 곱셈공식 변형으로 구하는 도형·거리 결합 유형이므로 PT_FUNCTION_GRAPH_GEOMETRY / TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyReason": "[유리함수와 중심이 일치하는 원의 교점 거리]의 대칭 치환 및 곱셈공식 모델링: 점근선 교점 (1, 2)를 원점으로 평행이동(u=x-1>0)하여 u^2+1/u^2=9와 역수 대칭성(u_1u_2=1)으로부터 거리 sqrt(2(9-2))=sqrt(14)를 구하므로 Bucket 4를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "함수 $f(x)=\\dfrac{1}{x-1}+2\\;(x\\gt1)$의 그래프와 원 $(x-1)^2+(y-2)^2=9$가 만나는 두 점 사이의 거리를 구하시오. [부분 점수 없음, 5점]",
+        "solutionDecisiveExcerpt": "$u=x-1>0$으로 놓으면 두 교점은\n$(1+u,2+\\dfrac1u)$의 꼴이다.\n원 $(x-1)^2+(y-2)^2=9$에 대입하면\n$u^2+\\dfrac1{u^2}=9$이다.\n$v=u^2$로 놓으면\n$v^2-9v+1=0$이다. 판별식은 $81-4=77>0$이고, 두 근의 합은 9, 곱은 1이므로 두 근 $v_1,v_2$는 서로 다른 양수이다.\n이에 대응하는 양수 $u_1,u_2$는\n$u_1^2+u_2^2=9$,\n$u_1u_2=1$을 만족한다.\n또한 $1/u_1=u_2$, $1/u_2=u_1$이므로 두 교점의 좌표 차는 각각 $u_1-u_2$와 $u_2-u_1$이다.\n두 점 사이 거리의 제곱은\n$(u_1-u_2)^2+(u_2-u_1)^2$\n$=2(u_1^2+u_2^2-2u_1u_2)$\n$=2(9-2)=14$이다.\n\n따라서 거리는 $\\sqrt{14}$이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q18-solution.svg"
+        ]
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "함수 f(x)=1/(x-1)+2 (x>1)의 그래프와 원 (x-1)^2+(y-2)^2=9가 만나는 두 점 사이의 거리를 구하시오.",
+        "solutionDecisiveExcerpt": "u=x-1>0으로 놓으면 교점은 (1+u, 2+1/u)이고 원에 대입하면 u^2+1/u^2=9이다. u_1^2+u_2^2=9, u_1u_2=1이므로 두 점 사이 거리의 제곱은 2(u_1^2+u_2^2-2u_1u_2)=2(9-2)=14, 거리는 sqrt(14)이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q18-solution.svg"
+        ]
+      }
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "problemTypeLabelKo": "함수의 최댓값·최솟값",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+        "templateLabelKo": "매개변수 함수의 최댓값·최솟값",
+        "crossConceptKeys": [
+          "CC_RATIONAL_EXPRESSION_TRANSFORM",
+          "CC_AM_GM_INEQUALITY"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "제한된 범위(x>3)에서 유리식을 치환 변형하여 최댓값과 그때의 x값을 구하는 유형이므로 PT_FUNCTION_EXTREMUM / TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[유리식의 치환과 산술·기하평균(완전제곱식) 최댓값]의 3단계 식 변형 계산: t=x-3>0으로 치환하여 t/(t^2+3t+4)=1/(t+4/t+3)으로 변형한 뒤 t=2(x=5)에서 최댓값 b=1/7을 도출하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x\\gt3$일 때, $\\dfrac{x-3}{x^2-3x+4}$은 $x=a$에서 최댓값 $b$를 갖는다. $a+b$의 값을 구하시오. [부분 점수 없음, 5점]",
+        "solutionDecisiveExcerpt": "$t=x-3>0$으로 놓으면 분수는\n$\\dfrac{t}{t^2+3t+4}$이다.\n분모는 양수이므로 $\\dfrac17$과 비교한다.\n$\\dfrac17-\\dfrac{t}{t^2+3t+4}$\n$=\\dfrac{(t-2)^2}{7(t^2+3t+4)}\\ge0$이다.\n따라서 분수의 값은 항상 $\\dfrac17$ 이하이다. 등호는 $t=2$일 때 성립하므로\n$x=t+3=5$에서 최댓값 $b=\\dfrac17$을 갖는다.\n$a=5$이므로\n$a+b=5+\\dfrac17=\\dfrac{36}{7}$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "x>3일 때, (x-3)/(x^2-3x+4)은 x=a에서 최댓값 b를 갖는다. a+b의 값을 구하시오.",
+        "solutionDecisiveExcerpt": "t=x-3>0으로 놓으면 t/(t^2+3t+4)이고 1/7 - t/(t^2+3t+4) = (t-2)^2 / (7(t^2+3t+4)) >= 0이므로 t=2(x=5)일 때 최댓값 b=1/7을 갖는다. a+b=36/7이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "pack": "SETS_PROPOSITIONS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "SETS_PROPOSITIONS",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "problemTypeLabelKo": "논리 관계와 추론",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "templateLabelKo": "논리 조건을 이용한 추론",
+        "crossConceptKeys": [
+          "CC_LOGICAL_IMPLICATION_CHAIN",
+          "CC_CONTRAPOSITIVE_EQUIVALENCE",
+          "CC_CASE_EXHAUSTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "주어진 여러 개의 논리 조건명제(가~바)를 연쇄 추론하여 모순 없는 카드 상태를 결정하고 최댓값을 구하는 유형이므로 PT_LOGIC_CHAIN / TPL_LOGIC_CONSTRAINT_PUZZLE에 매핑한다.",
+        "targetPack": "SETS_PROPOSITIONS",
+        "assignedPack": "SETS_PROPOSITIONS"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyReason": "[복합 조건명제 퍼즐과 케이스 소거 추론]의 다단계 논리 분석: (나)·(라)에서 2번<=>3번 동치를 도출하고 (가)·(다)·(마)의 대우 및 매수 제약으로 {2,3} 뒤집기를 모순 소거한 뒤 {1,4}를 뒤집을 때 최댓값 15를 구하므로 Bucket 4를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "앞면에 숫자 $1$, $2$, $3$, $4$가 하나씩 적혀 있고 뒷면에 숫자 $5$가 모두 하나씩 적혀 있는 $4$장의 카드가 모두 앞면이 보이도록 놓여 있다. 다음 조건을 모두 만족시키도록 카드를 뒤집었을 때, 보이는 면에 적혀 있는 모든 수들의 합의 최댓값을 구하시오. [부분 점수 없음, 5점]\n<div class=\"q-box\">&lt;조건&gt;<br>(가) 1이 적힌 카드를 뒤집으면 총 두 장의 카드만 뒤집는다.<br>(나) 2가 적힌 카드를 뒤집지 않으면 3이 적힌 카드도 뒤집지 않는다.<br>(다) 총 두 장의 카드만 뒤집었다면 그중 한 장은 1이 적힌 카드이다.<br>(라) 2가 적힌 카드를 뒤집으면 3이 적힌 카드도 뒤집는다.<br>(마) 4가 적힌 카드를 뒤집으면 1이 적힌 카드도 뒤집는다.<br>(바) 보이는 면에 해당하는 숫자가 없으면 뒤집지 않는다.</div>",
+        "solutionDecisiveExcerpt": "뒤집은 카드를 그 앞면 숫자의 집합으로 나타내자.\n조건 (나)와 (라)를 함께 보면 2번 카드를 뒤집을 때에만 3번도 뒤집고, 2번을 안 뒤집을 때 3번도 안 뒤집는다. 따라서 2번과 3번은 함께 뒤집거나 둘 다 뒤집지 않는다.\n2번과 3번을 모두 뒤집으면 두 장만 뒤집은 경우 조건 (다)에 어긋난다. 한 장을 더 뒤집어 세 장 이상으로 만들려 해도, 1번을 뒤집으면 조건 (가)에서 총 두 장이어야 하고, 4번을 뒤집으면 조건 (마)에 따라 1번도 뒤집어야 하므로 불가능하다.\n따라서 2번과 3번은 뒤집지 않는다. 이때 4번을 뒤집으면 1번도 뒤집어야 한다. 1번을 뒤집으면 조건 (가)에 의해 총 두 장이어야 하므로 가능한 뒤집힘은 없거나 1번과 4번뿐이다.\n조건 (바)에 따라 보이는 숫자 5에 해당하는 카드는 더 뒤집지 않는다.\n아무것도 뒤집지 않으면 합은\n$1+2+3+4=10$이다.\n1번과 4번을 뒤집으면 보이는 수는 $5,2,3,5$이고 합은\n$5+2+3+5=15$이다.\n\n따라서 최댓값은 15이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "앞면에 숫자 1, 2, 3, 4가 하나씩 적혀 있고 뒷면에 숫자 5가 모두 하나씩 적혀 있는 4장의 카드가 모두 앞면이 보이도록 놓여 있다. 다음 조건을 모두 만족시키도록 카드를 뒤집었을 때, 보이는 면에 적혀 있는 모든 수들의 합의 최댓값을 구하시오.",
+        "solutionDecisiveExcerpt": "조건 (나)와 (라)에서 2번과 3번은 함께 뒤집거나 둘 다 뒤집지 않는다. 2번과 3번을 뒤집으면 (가), (다), (마)에 의해 모순이므로 뒤집지 않는다. 가능한 뒤집힘은 없거나 1번과 4번뿐이므로 최댓값은 5+2+3+5=15이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_FINITE_BIJECTION",
+        "problemTypeLabelKo": "유한집합의 일대일대응",
+        "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "templateLabelKo": "합성함수 조건으로 일대일대응 결정",
+        "crossConceptKeys": [
+          "CC_BIJECTION_CONDITION",
+          "CC_FUNCTION_COMPOSITION",
+          "CC_INVERSE_FUNCTION_EVALUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "유한집합 X={1,2,3}에서 합성함수 조건과 일대일대응 성질을 이용해 두 함수의 함숫값을 연쇄 결정하는 유형이므로 PT_FINITE_BIJECTION / TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[유한집합 일대일대응과 합성 조건 연립]의 3단계 서술형 추론: f(1)=2, g(3)=1, g(f(2))=2 조건으로부터 모순 경우(f(2)=3)를 소거해 f와 g의 전체 대응표를 확정하고 f^-1(3)+(f∘g)(1)=4를 구하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f$와 $g$가 모두 일대일대응이고, 아래 조건을 모두 만족시킬 때, 다음 물음에 답하여라. [부분 점수 있음, 6점]\n<div class=\"q-box\">(가) $f(1)=2$<br>(나) $g(3)=1$<br>(다) $(g\\circ f)(2)=2$</div>\n(1) $f(2)$가 얼마인지 구하고 그 이유를 간단히 쓰시오. [2점]<br>(2) $g(2)$가 얼마인지 구하고 그 이유를 간단히 쓰시오. [2점]<br>(3) $f^{-1}(3)+(f\\circ g)(1)$의 값을 구하시오. [2점]",
+        "solutionDecisiveExcerpt": "(1) $f(1)=2$이고 $f$는 일대일이므로 $f(2)\\ne2$이다.\n만약 $f(2)=3$이면\n$(g\\circ f)(2)=g(3)=1$이 되어 주어진 값 2와 다르다.\n따라서 $f(2)=1$이다.\n\n(2) 주어진 조건에서\n$g(f(2))=g(1)=2$이다.\n또 $g(3)=1$이다. $g$는 일대일대응이므로 남은 함숫값은\n$g(2)=3$이다.\n\n(3) $f(1)=2$, $f(2)=1$이므로 일대일대응 조건에서 $f(3)=3$이다. 따라서\n$f^{-1}(3)=3$이다.\n또\n$(f\\circ g)(1)=f(g(1))=f(2)=1$이다.\n그러므로 구하는 값은\n$3+1=4$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "집합 X={1,2,3}에 대하여 X에서 X로 가는 두 함수 f와 g가 모두 일대일대응이고, (가) f(1)=2 (나) g(3)=1 (다) (g∘f)(2)=2를 만족시킬 때 (1) f(2), (2) g(2), (3) f^-1(3)+(f∘g)(1)을 구하여라.",
+        "solutionDecisiveExcerpt": "(1) f(1)=2이고 f(2)=3이면 g(f(2))=g(3)=1!=2이므로 f(2)=1이다. (2) g(f(2))=g(1)=2이고 g(3)=1이므로 g(2)=3이다. (3) f(3)=3에서 f^-1(3)=3, f(g(1))=f(2)=1이므로 합은 4이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "problemTypeLabelKo": "합성함수의 그래프와 치역",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "templateLabelKo": "합성함수의 구간별 그래프 분석",
+        "crossConceptKeys": [
+          "CC_PIECEWISE_FUNCTION",
+          "CC_FUNCTION_COMPOSITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "구간별로 정의된 함수를 자기합성할 때 안쪽 함숫값의 범위에 따라 구간을 세분화하여 함수식을 구하는 유형이므로 PT_COMPOSITE_FUNCTION_ANALYSIS / TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[조각함수의 자기합성 구간 분할]의 3구간 분기 정리: 안쪽 함숫값 f(x)가 경계값 -1이 되는 x=-3과 원래 경계 x=-1을 기준으로 세 구간(x<-3, -3<=x<-1, x>=-1)의 합성함수식을 각각 유도하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "실수 전체의 집합에서 정의된 함수\n$ f(x)=\\begin{cases}x+2&(x\\lt-1)\\\\2x+3&(x\\ge-1)\\end{cases} $\n에 대하여 함수 $y=(f\\circ f)(x)$를 구하는 과정이다. [부분 점수 있음, 총 7점]\n(1)\n$ f(f(x))=\\begin{cases}f(x)+2&(\\boxed{\\phantom{f(x)}}\\lt-1)\\\\2f(x)+3&(\\boxed{\\phantom{f(x)}}\\ge-1)\\end{cases} $\n위 두 빈칸에 공통으로 알맞은 것은 무엇인지 간단히 쓰시오. [2점]<br>(2) 함수 $y=(f\\circ f)(x)$를 $x$의 범위에 따라 정리하면 다음과 같이 세 구간으로 나누어 쓸 수 있다.\n$ y=\\begin{cases}\\boxed{\\phantom{x+4}}&(x\\lt a)\\\\\\boxed{\\phantom{2x+7}}&(a\\le x\\lt b)\\\\\\boxed{\\phantom{4x+9}}&(x\\ge b)\\end{cases} $\n세 빈칸을 위에서부터 식1, 식2, 식3이라 할 때, 숫자 $a$와 $b$, 식1, 식2, 식3을 차례대로 구하여라. [5점]",
+        "solutionDecisiveExcerpt": "(1) 합성함수 $f(f(x))$에서 바깥 함수 $f$의 입력은 안쪽 함수의 값인 $f(x)$이다.\n따라서 두 빈칸은 모두 $f(x)$이다.\n\n(2) 먼저 $x<-1$이면 $f(x)=x+2$이다.\n바깥 함수의 어느 식을 사용할지는 $f(x)$와 $-1$을 비교하여 결정한다.\n\n$x+2<-1\\iff x<-3$일 때는 첫째 식을 사용하므로\n$f(f(x))=f(x)+2$\n$=(x+2)+2=x+4$이다.\n\n$-3\\le x<-1$일 때는 $x+2\\ge-1$이므로 둘째 식을 사용한다.\n$f(f(x))=2f(x)+3$\n$=2(x+2)+3=2x+7$이다.\n\n$x\\ge-1$이면 $f(x)=2x+3\\ge1$이다.\n따라서 바깥 함수의 둘째 식을 사용하여\n$f(f(x))=2(2x+3)+3=4x+9$이다.\n\n구간 경계 $x=-3$은 둘째 구간에, $x=-1$은 셋째 구간에 포함된다.\n그러므로\n$f(f(x))=\\begin{cases}x+4&(x\\lt-3)\\\\2x+7&(-3\\le x\\lt-1)\\\\4x+9&(x\\ge-1)\\end{cases}$이다.\n\n따라서 (1)의 빈칸은 $f(x)$,\n(2)의 $a=-3$, $b=-1$이며 식1, 식2, 식3은 차례로 $x+4$, $2x+7$, $4x+9$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "실수 전체의 집합에서 정의된 함수 f(x)={x+2 (x<-1), 2x+3 (x>=-1)}에 대하여 함수 y=(f∘f)(x)를 구하는 과정이다. ... 숫자 a와 b, 식1, 식2, 식3을 차례대로 구하여라.",
+        "solutionDecisiveExcerpt": "(1) 빈칸은 f(x)이다. (2) x<-3일 때 x+4, -3<=x<-1일 때 2(x+2)+3=2x+7, x>=-1일 때 2(2x+3)+3=4x+9이므로 a=-3, b=-1이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "pack": "FUNCTIONS_GRAPHS",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "problemTypeLabelKo": "함수 그래프의 교점",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+        "templateLabelKo": "절댓값·조각함수 그래프의 교점",
+        "crossConceptKeys": [
+          "CC_PIECEWISE_FUNCTION",
+          "CC_RADICAL_LINE_INTERSECTION",
+          "CC_DISCRIMINANT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "조각 무리함수의 두 가지와 기울기가 1인 직선이 총 4개의 교점을 갖기 위한 접선·끝점 경계 조건을 연립하는 심화 유형이므로 PT_FUNCTION_GRAPH_INTERSECTION / TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE에 매핑한다.",
+        "targetPack": "FUNCTIONS_GRAPHS",
+        "assignedPack": "FUNCTIONS_GRAPHS"
+      },
+      "difficulty": {
+        "difficultyBucket": 5,
+        "difficultyReason": "[조각 무리함수의 작도와 직선과의 4교점 동시 성립 조건]의 5단계 심화 추론: 서로 떨어진 두 정의역(x<=1, x>=2)의 무리함수 가지가 각각 직선 y=x+k와 서로 다른 두 점에서 만날 조건(3/4<k<=1 및 1<=k<5/4)을 각각 유도해 유일한 교집합 k=1을 구하는 최고난도 서술형 문항이므로 Bucket 5를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $\\{x\\mid x\\le1\\}\\cup\\{x\\mid x\\ge2\\}$에서 정의된 함수\n$ f(x)=\\begin{cases}2-\\sqrt{1-x}&(x\\le1)\\\\\\sqrt{x-2}+3&(x\\ge2)\\end{cases} $\n에 대하여 다음 물음에 답하시오. [부분 점수 있음, 총 7점]\n(1) 함수 $y=f(x)$의 그래프를 그리시오. [3점]<br>(2) 함수 $y=f(x)$의 그래프와 직선 $y=x+k$가 서로 다른 네 점에서 만나도록 하는 실수 $k$의 값을 구하는 풀이과정과 답을 서술하시오. [4점]",
+        "solutionDecisiveExcerpt": "(1) 먼저 정의역에 맞추어 두 그래프를 따로 그린다.\n\n$x\\le1$에서 $y=2-\\sqrt{1-x}$이다.\n오른쪽 끝점 $(1,2)$를 찍고,\n$x=0$일 때 $(0,1)$,\n$x=-3$일 때 $(-3,0)$을 지난다.\n따라서 끝점 $(1,2)$에서 왼쪽 아래로 뻗는 가지를 그린다.\n\n$x\\ge2$에서 $y=\\sqrt{x-2}+3$이다.\n왼쪽 시작점 $(2,3)$을 찍고,\n$(3,4)$, $(6,5)$를 지나는 오른쪽 위 가지를 그린다.\n$1<x<2$에는 정의된 점이 없다.\n\n(2) 직선 $y=x+k$와 각 가지가 서로 다른 두 점씩 만나야 총 네 교점이 된다.\n\n첫째 가지에서는 $t=\\sqrt{1-x}\\ge0$이라 두면\n$x=1-t^2$, $y=2-t$이다.\n$2-t=1-t^2+k$,\n즉 $t^2-t+(1-k)=0$이다.\n\n서로 다른 두 비음수 근을 가지려면\n판별식 $4k-3>0$이고,\n두 근의 합 $1>0$, 곱 $1-k\\ge0$이어야 한다.\n따라서 $\\dfrac34<k\\le1$이다.\n\n둘째 가지에서는 $s=\\sqrt{x-2}\\ge0$이라 두면\n$x=s^2+2$, $y=s+3$이다.\n$s+3=s^2+2+k$,\n즉 $s^2-s+(k-1)=0$이다.\n서로 다른 두 비음수 근 조건은\n판별식 $5-4k>0$과 곱 $k-1\\ge0$이므로\n$1\\le k<\\dfrac54$이다.\n\n두 범위를 동시에 만족하는 값은 $k=1$뿐이다.\n실제로 이때 첫째 식의 근은 $t=0,1$이고,\n둘째 식의 근은 $s=0,1$이다.\n교점은 각각\n$(1,2)$, $(0,1)$, $(2,3)$, $(3,4)$로 모두 서로 다르다.\n\n따라서 (1)의 그래프는 위의 두 가지이고, (2)의 구하는 값은 $k=1$이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q23-solution.svg"
+        ]
+      },
+      "originalReadingEvidence": {
+        "sourceTextExcerpt": "집합 {x|x<=1}∪{x|x>=2}에서 정의된 함수 f(x)={2-sqrt(1-x) (x<=1), sqrt(x-2)+3 (x>=2)}에 대하여 (1) 그래프를 그리시오. (2) 직선 y=x+k가 서로 다른 네 점에서 만나도록 하는 실수 k의 값을 구하시오.",
+        "solutionDecisiveExcerpt": "첫째 가지(끝점 (1,2))와 서로 다른 두 점에서 만나려면 3/4<k<=1이고, 둘째 가지(시작점 (2,3))와 서로 다른 두 점에서 만나려면 1<=k<5/4이다. 두 범위를 동시에 만족하는 값은 k=1뿐이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG",
+        "visualAssetFiles": [
+          "assets/images/25_순천고_2학기_기말_고1_기출/q23-solution.svg"
+        ]
+      }
+    }
+  ],
+  "courierLiteralEvidenceSupplement": {
+    "author": "CODEX_ROOT",
+    "originalAuditRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.source.json",
+      "sha256": "0371c81e5fd6506df20ba8bb8c11a34746ecdbdcec0815c6690c4b066c20bd37"
+    },
+    "actualDriveSourceSha256": "d1a0c61e80a5fb9bb623b4d6b643ce5191c8c301623298063c5927ea08b16a43",
+    "productionSourceSha256": "3190e277a7778f0c6ff14c7c183a29092de803b647f91f5a1ac14ee2437ca30f",
+    "sourcePropertyDiffs": [
+      {
+        "sourceOrdinal": 13,
+        "field": "solutionImageAlt",
+        "before": "유리함수의 점근선과 절편을 나타낸 해설 그래프",
+        "after": "유리함수 y=(x+5)/(x+3)의 그래프와 x절편 (−5,0), 수직점근선 x=−3, 수평점근선 y=1을 함께 표시한 좌표평면이다."
+      },
+      {
+        "sourceOrdinal": 14,
+        "field": "solutionImageAlt",
+        "before": "유리함수가 네 사분면을 지나는 모습을 나타낸 해설 그래프",
+        "after": "수직점근선 x=2, 수평점근선 y=−1/4를 가진 y=1/(2−x)−1/4의 그래프가 제1·2·3·4사분면을 모두 지나는 모습을 그린 좌표평면이다."
+      },
+      {
+        "sourceOrdinal": 15,
+        "field": "solutionImageAlt",
+        "before": "이차함수와 역함수의 두 교점을 나타낸 해설 그래프",
+        "after": "a=12일 때 y=f(x)=1/2(x−4)²+4(x≥4)와 그 역함수 y=4+√(2(x−4))가 직선 y=x에 대하여 대칭이며 (4,4), (6,6)에서 만나는 모습을 그린 그래프이다."
+      }
+    ],
+    "studentPayloadFieldsUnchanged": true,
+    "classificationUnchanged": true,
+    "reason": "Literal original source quotations replace paraphrases solely to verify the unchanged student payload across prior production alt-text revisions. Original audit bytes and reading evidence remain preserved."
+  }
+}

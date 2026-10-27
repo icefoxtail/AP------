@@ -2800,11 +2800,131 @@ def trigonometric_period_v2_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
+def multi_curve_audit(plan,svg,transform):
+    """Independent multi-curve audit: every curve and branch is rebuilt from the plan's exact coefficients, the frozen
+    inventory is compared, and every final SVG polyline tagged CURVE_<id>[_POS|_NEG] is checked against the recomputed
+    arc, its draw interval, its branch side, its endpoints and each segment midpoint. The frozen sampling expression is
+    never trusted."""
+    errors=[];unsupported=[]
+    try:
+        raw=plan.get('curves')
+        if not isinstance(raw,list) or not 3<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
+        curves=[];ids=set()
+        for entry in raw:
+            if not isinstance(entry,dict):raise ValueError('MULTI_CURVE_CURVE_INVALID')
+            ident=entry.get('id')
+            if not isinstance(ident,str) or ident in ids:raise ValueError('MULTI_CURVE_ID_INVALID')
+            ids.add(ident);kind=entry.get('kind');coefficients=entry.get('coefficients')
+            if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+            c0,c1,c2=(_pp_coeff(value) for value in coefficients)
+            if c2==0:raise ValueError('MULTI_CURVE_NOT_QUADRATIC:'+ident)
+            interval=entry.get('domain')
+            if not isinstance(interval,list) or len(interval)!=2:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+            lo,hi=(_pp_coeff(value) for value in interval)
+            if not lo<hi:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+            branches=[];branch_name=None
+            if kind=='Y_OF_X':
+                if 'branch' in entry:raise ValueError('MULTI_CURVE_BRANCH_INVALID:'+ident)
+                branches=[{'side':'FUNCTION','xInterval':(lo,hi),'yInterval':None}]
+            elif kind=='X_OF_Y':
+                branch_name=entry.get('branch','BOTH')
+                if branch_name not in ('BOTH','POSITIVE','NEGATIVE'):raise ValueError('MULTI_CURVE_BRANCH_INVALID:'+ident)
+                yv=-c1/(2*c2);xv=c0+c1*yv+c2*yv*yv
+                if branch_name in ('BOTH','POSITIVE') and hi>yv:
+                    xe=c0+c1*hi+c2*hi*hi
+                    branches.append({'side':'POSITIVE','xInterval':(min(xv,xe),max(xv,xe)),'yInterval':(yv,hi),'sign':1,'vertex':(xv,yv)})
+                if branch_name in ('BOTH','NEGATIVE') and lo<yv:
+                    xe=c0+c1*lo+c2*lo*lo
+                    branches.append({'side':'NEGATIVE','xInterval':(min(xv,xe),max(xv,xe)),'yInterval':(lo,yv),'sign':-1,'vertex':(xv,yv)})
+                if not branches:raise ValueError('MULTI_CURVE_BRANCH_EMPTY:'+ident)
+            else:raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
+            curves.append({'id':ident,'kind':kind,'branch':branch_name,'c':(c0,c1,c2),'interval':(lo,hi),'branches':branches})
+        features=plan.get('multiCurveFeatures')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='MULTI_CURVE_FEATURES_v1' or not isinstance(features.get('curves'),list):
+            return {'status':'FAIL','errors':['MULTI_CURVE_FEATURE_INVENTORY_REQUIRED'],'mathMethod':'INDEPENDENT_EXACT_COEFFICIENTS'}
+        frozen={row.get('id'):row for row in features['curves'] if isinstance(row,dict)}
+        if len(frozen)!=len(curves) or sorted(frozen)!=sorted(curve['id'] for curve in curves):errors.append('MULTI_CURVE_INVENTORY_MISMATCH')
+        def pair_same(row,key,left,right):
+            values=row.get(key)
+            try:return isinstance(values,list) and len(values)==2 and _pp_same(_pp_exact(values[0]),left) and _pp_same(_pp_exact(values[1]),right)
+            except (ValueError,TypeError,IndexError):return False
+        for curve in curves:
+            row=frozen.get(curve['id'])
+            if not isinstance(row,dict):errors.append('MULTI_CURVE_INVENTORY_MISMATCH');continue
+            c0,c1,c2=curve['c'];co=row.get('coefficients')
+            try:coefficients_same=isinstance(co,list) and len(co)==3 and all(_pp_same(_pp_exact(value),want) for value,want in zip(co,(c0,c1,c2)))
+            except (ValueError,TypeError):coefficients_same=False
+            if row.get('kind')!=curve['kind'] or not coefficients_same or not pair_same(row,'interval',*curve['interval']):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
+            if curve['kind']=='X_OF_Y' and row.get('branch','BOTH')!=curve['branch']:errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
+            rows=row.get('branches')
+            if not isinstance(rows,list) or len(rows)!=len(curve['branches']):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id']);continue
+            for got,want in zip(rows,curve['branches']):
+                if not isinstance(got,dict) or got.get('side')!=want['side'] or not pair_same(got,'xInterval',*want['xInterval']):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
+                if want['yInterval'] is None:
+                    if 'yInterval' in got:errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
+                elif not pair_same(got,'yInterval',*want['yInterval']):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not isinstance(value,(int,float)) or not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:
+            return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        if plan.get('equalUnits') is not True:errors.append('EQUAL_UNIT_DECLARATION_MISSING')
+        errors.extend(axis_ratio_errors(plan,transform))
+        sx,sy,display=transform['sx'],transform['sy'],transform['displayScale'];x_tol=.35/(sx*display);y_tol=.35/(sy*display)
+        xmin,xmax,ymin,ymax=plan['viewport']
+        root=ET.fromstring(svg);nodes={}
+        for node in root.iter():
+            if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve':
+                branch=node.get('data-branch') or ''
+                if branch.startswith('CURVE_'):nodes.setdefault(branch,[]).append(node)
+        def tag_of(curve,branch):
+            if branch['side']=='FUNCTION':return 'CURVE_'+curve['id']
+            return 'CURVE_'+curve['id']+'_'+('POS' if branch['side']=='POSITIVE' else 'NEG')
+        expected={tag_of(curve,branch) for curve in curves for branch in curve['branches']}
+        if set(nodes)!=expected or any(len(rows)!=1 for rows in nodes.values()):errors.append('MULTI_CURVE_PRIMITIVE_INVENTORY_MISMATCH')
+        for curve in curves:
+            f0,f1,f2=float(curve['c'][0]),float(curve['c'][1]),float(curve['c'][2])
+            for branch in curve['branches']:
+                tag=tag_of(curve,branch);found=nodes.get(tag) or []
+                if len(found)!=1:continue
+                values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',found[0].get('points',''))]
+                if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):errors.append('MULTI_CURVE_CURVE_POINTS_INVALID:'+tag);continue
+                points=[((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2)]
+                start,end=float(branch['xInterval'][0]),float(branch['xInterval'][1])
+                if any(right[0]<=left[0] for left,right in zip(points,points[1:])):errors.append('MULTI_CURVE_CURVE_NOT_INCREASING_X:'+tag)
+                if abs(points[0][0]-start)>x_tol or abs(points[-1][0]-end)>x_tol:errors.append('MULTI_CURVE_COVERAGE_FAIL:'+tag)
+                if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('MULTI_CURVE_CURVE_CROSSES_INTERVAL:'+tag)
+                yv=float(branch['vertex'][1]) if branch['side']!='FUNCTION' else None
+                if branch['side']=='FUNCTION':
+                    expected_y=lambda x_value:f0+f1*x_value+f2*x_value*x_value
+                else:
+                    vertex_x=float(branch['vertex'][0]);sign=1 if branch['sign']>0 else -1
+                    def expected_y(x_value,vertex_x=vertex_x,sign=sign):
+                        ratio=(x_value-vertex_x)/f2
+                        return yv+sign*math.sqrt(max(0.0,ratio))
+                for px,py in points:
+                    if not (xmin-x_tol<=px<=xmax+x_tol and ymin-y_tol<=py<=ymax+y_tol):errors.append('MULTI_CURVE_CURVE_OUTSIDE_VIEW:'+tag);break
+                    if branch['side']=='FUNCTION':
+                        if abs(py-expected_y(px))*sy*display>.35:errors.append('MULTI_CURVE_WRONG_CURVE:'+tag);break
+                    else:
+                        residual=px-(f0+f1*py+f2*py*py)
+                        if abs(residual)*sx*display>.35:errors.append('MULTI_CURVE_WRONG_CURVE:'+tag);break
+                        if branch['side']=='POSITIVE' and py<yv-y_tol or branch['side']=='NEGATIVE' and py>yv+y_tol:errors.append('MULTI_CURVE_WRONG_BRANCH:'+tag);break
+                        low_y,high_y=float(branch['yInterval'][0]),float(branch['yInterval'][1])
+                        if py<low_y-y_tol or py>high_y+y_tol:errors.append('MULTI_CURVE_OUTSIDE_BRANCH_INTERVAL:'+tag);break
+                else:
+                    for (ax,ay),(bx,by) in zip(points,points[1:]):
+                        midpoint=(ax+bx)/2
+                        if abs((ay+by)/2-expected_y(midpoint))*sy*display>.35:errors.append('MULTI_CURVE_INTERIOR_BOUND_FAIL:'+tag);break
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'curveCount':len(curves),'branchCount':sum(len(curve['branches']) for curve in curves),'mathMethod':'INDEPENDENT_EXACT_COEFFICIENTS_AND_FINAL_SVG_POLYLINES'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:
+        return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'MULTI_CURVE_SOURCE_SCHEMA_INVALID']}
+
 def _audit_family(plan,svg,transform):
     if plan.get('family')=='piecewise-polynomial':
         return piecewise_polynomial_audit(plan,svg,transform)
     if plan.get('family')=='piecewise-discontinuous':
         return piecewise_discontinuous_audit(plan,svg,transform)
+    if plan.get('family')=='multi-curve':
+        return multi_curve_audit(plan,svg,transform)
     if plan.get('family')=='piecewise-affine' and plan.get('shapeIntent')=='OVERVIEW':
         return piecewise_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='exponential-affine' and plan.get('shapeIntent')=='OVERVIEW':
