@@ -15,8 +15,9 @@ NS = '{http://www.w3.org/2000/svg}'
 YAW = math.radians(28.0)
 PITCH = math.radians(20.0)
 POS_TOL = 0.9        # px
-NAME = re.compile(r'^[A-Z]$')
+NAME = re.compile(r'^[A-Z]′?$')
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+NAME_TOKEN = re.compile(r'[A-Z]′?|\.')
 
 
 # --- vectors and the projection -----------------------------------------------------------------------------------------------------------
@@ -59,12 +60,12 @@ def _poly_names(kind, n, names):
     if names is None:
         return _letters(0, n), ([] if kind == 'PYRAMID' else _letters(n, n)), (LETTERS[n] if kind == 'PYRAMID' else None)
     if isinstance(names, (str, list)):
-        lst = _clean_names(list(names))
+        lst = _clean_names(NAME_TOKEN.findall(names) if isinstance(names, str) else list(names))
         need = n + 1 if kind == 'PYRAMID' else 2 * n
         if len(lst) != need: raise ValueError('SOLID_NAMES_INVALID')
         return (lst[:n], [], lst[n]) if kind == 'PYRAMID' else (lst[:n], lst[n:], None)
-    base = _letters(0, n) if names.get('base') is None else _clean_names(list(names['base']))
-    top = [] if kind == 'PYRAMID' else (_letters(n, n) if names.get('top') is None else _clean_names(list(names['top'])))
+    base = _letters(0, n) if names.get('base') is None else _clean_names(NAME_TOKEN.findall(names['base']) if isinstance(names['base'], str) else list(names['base']))
+    top = [] if kind == 'PYRAMID' else (_letters(n, n) if names.get('top') is None else _clean_names(NAME_TOKEN.findall(names['top']) if isinstance(names['top'], str) else list(names['top'])))
     apex = (names.get('apex') or LETTERS[n]) if kind == 'PYRAMID' else None
     return base, top, apex
 

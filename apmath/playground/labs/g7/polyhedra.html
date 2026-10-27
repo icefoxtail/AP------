@@ -33,8 +33,119 @@
       #rightPanel { width: 100% !important; height: auto !important; border-left: none !important; border-top: 1px solid #E2E8F0 !important; }
     }
   </style>
+
+  <!-- 중1 칠판 테마 복구: 인접 다크 실험실과 동일한 배경·패널·강조색 구조 -->
+  <style id="ap-g7-chalkboard-theme">
+    body.ap-chalk-restored {
+      background:#07130e!important; color:#e2e8f0!important;
+      color-scheme:dark;
+    }
+    body.ap-chalk-restored #canvasStage {
+      background:radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%)!important;
+      box-shadow:inset 0 0 100px rgba(0,0,0,.70);
+    }
+    body.ap-chalk-restored > header {
+      background:rgba(8,21,16,.97)!important;
+      border-color:#28503e!important; box-shadow:0 2px 15px rgba(0,0,0,.25);
+    }
+    body.ap-chalk-restored #rightPanel {
+      background:#081611!important;
+      border-color:#28503e!important;
+    }
+    body.ap-chalk-restored .bg-white { background-color:#10251c!important; }
+    body.ap-chalk-restored .bg-white\/95 { background-color:rgba(7,20,15,.96)!important; }
+    body.ap-chalk-restored .bg-slate-50 { background-color:#10241c!important; }
+    body.ap-chalk-restored .bg-slate-100 { background-color:#173529!important; }
+    body.ap-chalk-restored .bg-slate-200 { background-color:#254637!important; }
+    body.ap-chalk-restored .bg-blue-50,
+    body.ap-chalk-restored .bg-blue-50\/40 { background-color:#123232!important; }
+    body.ap-chalk-restored .bg-rose-50 { background-color:#351e29!important; }
+    body.ap-chalk-restored .bg-amber-50 { background-color:#372918!important; }
+    body.ap-chalk-restored .bg-emerald-50 { background-color:#123528!important; }
+    body.ap-chalk-restored .bg-slate-900 { background-color:#fbbf24!important; }
+    body.ap-chalk-restored .bg-blue-600 { background-color:#b45309!important; }
+    body.ap-chalk-restored .hover\:bg-slate-100:hover,
+    body.ap-chalk-restored .hover\:bg-slate-200:hover { background-color:#24513e!important; }
+    body.ap-chalk-restored .hover\:bg-blue-100:hover,
+    body.ap-chalk-restored .hover\:bg-blue-700:hover { background-color:#d97706!important; }
+    body.ap-chalk-restored .hover\:bg-rose-100:hover { background-color:#633143!important; }
+    body.ap-chalk-restored .hover\:bg-amber-100:hover { background-color:#654c24!important; }
+    body.ap-chalk-restored .text-slate-900,
+    body.ap-chalk-restored .text-slate-800 { color:#f1f5f9!important; }
+    body.ap-chalk-restored .text-slate-700 { color:#d1e6d9!important; }
+    body.ap-chalk-restored .text-slate-600 { color:#b4cfbe!important; }
+    body.ap-chalk-restored .text-slate-500,
+    body.ap-chalk-restored .text-slate-400 { color:#a7b9b0!important; }
+    body.ap-chalk-restored .text-blue-700,
+    body.ap-chalk-restored .text-blue-600,
+    body.ap-chalk-restored .text-blue-950 { color:#7dd3fc!important; }
+    body.ap-chalk-restored .text-rose-700,
+    body.ap-chalk-restored .text-rose-600 { color:#fda4af!important; }
+    body.ap-chalk-restored .text-emerald-700,
+    body.ap-chalk-restored .text-emerald-600 { color:#6ee7b7!important; }
+    body.ap-chalk-restored .text-amber-800,
+    body.ap-chalk-restored .text-amber-600 { color:#fcd34d!important; }
+    body.ap-chalk-restored .border-slate-200,
+    body.ap-chalk-restored .border-slate-200\/80 { border-color:#28503e!important; }
+    body.ap-chalk-restored .border-slate-300 { border-color:#3a6755!important; }
+    body.ap-chalk-restored .border-blue-200 { border-color:#356879!important; }
+    body.ap-chalk-restored .border-rose-200 { border-color:#774658!important; }
+    body.ap-chalk-restored .border-amber-300 { border-color:#90743c!important; }
+    body.ap-chalk-restored .border-emerald-200 { border-color:#387452!important; }
+    body.ap-chalk-restored .bg-slate-900.text-white,
+    body.ap-chalk-restored .bg-slate-900 > .text-white { color:#07130e!important; }
+    body.ap-chalk-restored .bg-blue-600.text-white,
+    body.ap-chalk-restored .bg-blue-600 > .text-white { color:#fff9e8!important; }
+    body.ap-chalk-restored .mode-tab {
+      background:#10261e!important; border-color:#24513e!important;
+      color:#bbebd0!important; box-shadow:none;
+    }
+    body.ap-chalk-restored .mode-tab.active {
+      background:linear-gradient(135deg,#f59e0b,#d97706)!important;
+      border-color:#fbbf24!important; color:#07130e!important;
+      box-shadow:0 0 12px rgba(245,158,11,.32)!important;
+    }
+    body.ap-chalk-restored .sub-pill.active {
+      background:rgba(52,211,153,.25)!important;
+      border-color:#34d399!important; color:white!important;
+    }
+    body.ap-chalk-restored .lens-btn.active,
+    body.ap-chalk-restored .step-btn.active {
+      background:rgba(251,191,36,.15)!important;
+      border-color:#fbbf24!important; color:#fef08a!important;
+    }
+    body.ap-chalk-restored .preset-chip.active {
+      background:#fbbf24!important; border-color:#fef08a!important; color:#07130e!important;
+    }
+    body.ap-chalk-restored input[type=range] {
+      background:#18382c!important; border:1px solid #35624d!important;
+    }
+    body.ap-chalk-restored input[type=range]::-webkit-slider-thumb {
+      background:#fbbf24!important; border-color:#07130e!important;
+      box-shadow:0 0 9px rgba(251,191,36,.55)!important;
+      width:19px!important; height:19px!important;
+    }
+    body.ap-chalk-restored input[type=range]::-moz-range-thumb {
+      background:#fbbf24!important; border:2px solid #07130e!important;
+      width:19px; height:19px;
+    }
+    body.ap-chalk-restored .katex { color:inherit; }
+    body.ap-chalk-restored #rightPanel .katex-display { max-width:100%; overflow-x:auto; }
+    body.ap-chalk-restored ::-webkit-scrollbar-track { background:#07130e; }
+    body.ap-chalk-restored ::-webkit-scrollbar-thumb { background:#28503e; }
+    @media(max-width:1023px) {
+      body.ap-chalk-restored #apMobileControls.ap-mobile-top {
+        background:#0b2019!important; border-bottom-color:#28503e!important;
+      }
+      body.ap-chalk-restored #apMobileTools.ap-mobile-tools {
+        background:#0a1b15!important; border-color:#28503e!important;
+      }
+      body.ap-chalk-restored #rightPanel { border-top-color:#28503e!important; }
+      body.ap-chalk-restored .mode-tab { min-height:44px!important; }
+    }
+  </style>
 </head>
-<body class="h-screen w-screen flex flex-col">
+<body class="h-screen w-screen flex flex-col ap-chalk-restored">
 
   <!-- 상단 헤더 & 4대 핵심 마스터 모드 탭 -->
   <header class="bg-white border-b border-slate-200 px-4 py-2 flex flex-wrap items-center justify-between gap-2 z-20 shrink-0 shadow-sm">
@@ -375,7 +486,7 @@
     function drawAcademicGrid(rect) {
       const step = 20;
       ctx.save();
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.035)';
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.07)';
       ctx.lineWidth = 1;
       for (let x = 0; x < rect.width; x += step) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
@@ -386,7 +497,7 @@
       ctx.restore();
     }
 
-    function draw3DLine(p1, p2, color = '#0F172A', width = 2.4, dashed = false) {
+    function draw3DLine(p1, p2, color = '#e2e8f0', width = 2.4, dashed = false) {
       const s1 = project3D(p1.x, p1.y, p1.z);
       const s2 = project3D(p2.x, p2.y, p2.z);
       ctx.save();
@@ -401,7 +512,7 @@
       ctx.restore();
     }
 
-    function draw3DPoint(pt, r = 5, color = '#E11D48', label = '', off = { x: 0, y: -12 }) {
+    function draw3DPoint(pt, r = 5, color = '#fb7185', label = '', off = { x: 0, y: -12 }) {
       const s = project3D(pt.x, pt.y, pt.z);
       ctx.save();
       ctx.beginPath();
@@ -416,7 +527,7 @@
         ctx.font = '800 11.5px Pretendard, sans-serif';
         const tw = ctx.measureText(label).width;
         const lx = s.x + off.x, ly = s.y + off.y;
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.90)';
+        ctx.fillStyle = 'rgba(10, 28, 21, 0.94)';
         ctx.strokeStyle = color;
         ctx.lineWidth = 1.2;
         ctx.beginPath();
@@ -424,7 +535,7 @@
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = '#0F172A';
+        ctx.fillStyle = '#e2e8f0';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(label, lx, ly);
@@ -441,7 +552,7 @@
         if (found) {
           if (!found.names.includes(item.name)) found.names.push(item.name);
         } else {
-          groups.push({ pt: item.pt, names: [item.name], color: item.color || '#E11D48' });
+          groups.push({ pt: item.pt, names: [item.name], color: item.color || '#fb7185' });
         }
       });
       groups.forEach((g) => {
@@ -471,7 +582,7 @@
           ctx.fillStyle = f.fillColor;
           ctx.fill();
         }
-        ctx.strokeStyle = state.lens === 'edges' ? '#2563EB' : (f.strokeColor || '#0F172A');
+        ctx.strokeStyle = state.lens === 'edges' ? '#38bdf8' : (f.strokeColor || '#e2e8f0');
         ctx.lineWidth = state.lens === 'edges' ? 3.0 : (f.lineWidth || 2.0);
         ctx.lineJoin = 'round';
         ctx.stroke();
@@ -479,7 +590,7 @@
         const lbl = f.label || (state.lens === 'faces' ? `F${idx + 1}` : '');
         if ((state.steps[1] || state.lens === 'faces') && lbl) {
           ctx.font = '800 12px Pretendard, sans-serif';
-          ctx.fillStyle = '#0F172A';
+          ctx.fillStyle = '#e2e8f0';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(lbl, f.c2.x, f.c2.y);
@@ -973,13 +1084,13 @@
               bPts.push({ x: md.xOff + R * Math.cos(a), y: R * Math.sin(a), z: zB });
               tPts.push({ x: md.xOff + R * Math.cos(a) * md.topS, y: R * Math.sin(a) * md.topS, z: zT });
             }
-            faces.push({ pts: bPts, fillColor: 'rgba(37, 99, 235, 0.22)', strokeColor: '#2563EB', label: md.title });
-            if (md.topS > 0) faces.push({ pts: tPts, fillColor: 'rgba(225, 29, 72, 0.22)', strokeColor: '#E11D48' });
+            faces.push({ pts: bPts, fillColor: 'rgba(56, 189, 248, 0.22)', strokeColor: '#38bdf8', label: md.title });
+            if (md.topS > 0) faces.push({ pts: tPts, fillColor: 'rgba(244, 63, 94, 0.22)', strokeColor: '#fb7185' });
             for (let i = 0; i < md.nB; i++) {
               const j = (i + 1) % md.nB;
               faces.push({
                 pts: md.topS === 0 ? [bPts[i], bPts[j], { x: md.xOff, y: 0, z: zT }] : [bPts[i], bPts[j], tPts[j], tPts[i]],
-                fillColor: 'rgba(16, 185, 129, 0.16)', strokeColor: '#0F172A'
+                fillColor: 'rgba(52, 211, 153, 0.16)', strokeColor: '#e2e8f0'
               });
             }
           });
@@ -998,8 +1109,8 @@
             tPts.push({ x: bx * topS, y: by * topS, z: (isFrus ? zC : zT) + exp });
             cPts.push({ x: bx * 0.52, y: by * 0.52, z: zC + t * 0.9 });
           }
-          const faces = [{ pts: bPts, fillColor: 'rgba(37, 99, 235, 0.24)', strokeColor: '#2563EB', label: '밑면(아래)' }];
-          if (!isPyr) faces.push({ pts: tPts, fillColor: 'rgba(225, 29, 72, 0.24)', strokeColor: '#E11D48', label: '밑면(위)' });
+          const faces = [{ pts: bPts, fillColor: 'rgba(56, 189, 248, 0.24)', strokeColor: '#38bdf8', label: '밑면(아래)' }];
+          if (!isPyr) faces.push({ pts: tPts, fillColor: 'rgba(244, 63, 94, 0.24)', strokeColor: '#fb7185', label: '밑면(위)' });
 
           for (let i = 0; i < n; i++) {
             const j = (i + 1) % n;
@@ -1010,7 +1121,7 @@
               const sp = (1 - t) * 1.1;
               faces.push({
                 pts: [bPts[i], bPts[j], { x: Math.cos(midA) * sp, y: Math.sin(midA) * sp, z: foldZ }],
-                fillColor: 'rgba(16, 185, 129, 0.22)', strokeColor: '#0F172A', label: `옆면${i + 1}`
+                fillColor: 'rgba(52, 211, 153, 0.22)', strokeColor: '#e2e8f0', label: `옆면${i + 1}`
               });
             } else {
               faces.push({
@@ -1020,21 +1131,21 @@
                   { x: tPts[j].x + exX, y: tPts[j].y + exY, z: isFrus ? zC : zT },
                   { x: tPts[i].x + exX, y: tPts[i].y + exY, z: isFrus ? zC : zT }
                 ],
-                fillColor: 'rgba(16, 185, 129, 0.18)', strokeColor: '#0F172A', label: `옆면${i + 1}`
+                fillColor: 'rgba(52, 211, 153, 0.18)', strokeColor: '#e2e8f0', label: `옆면${i + 1}`
               });
             }
           }
           if (isFrus && t > 0.03) {
             const apex = { x: 0, y: 0, z: zT + t * 0.9 };
             for (let i = 0; i < n; i++) {
-              faces.push({ pts: [cPts[i], cPts[(i + 1) % n], apex], fillColor: 'rgba(245, 158, 11, 0.24)', strokeColor: '#D97706', label: i === 0 ? '잘린 각뿔' : '' });
+              faces.push({ pts: [cPts[i], cPts[(i + 1) % n], apex], fillColor: 'rgba(245, 158, 11, 0.24)', strokeColor: '#fbbf24', label: i === 0 ? '잘린 각뿔' : '' });
             }
           }
           renderSortedFaces(faces);
           if (state.steps[3] || state.lens === 'verts') {
-            bPts.forEach((p, i) => draw3DPoint(p, 4.5, '#2563EB', `B${i + 1}`));
-            if (isPyr) draw3DPoint({ x: 0, y: 0, z: zT }, 6, '#E11D48', '각뿔 꼭짓점');
-            else tPts.forEach((p, i) => draw3DPoint(p, 4.5, '#E11D48', `A${i + 1}`));
+            bPts.forEach((p, i) => draw3DPoint(p, 4.5, '#38bdf8', `B${i + 1}`));
+            if (isPyr) draw3DPoint({ x: 0, y: 0, z: zT }, 6, '#fb7185', '각뿔 꼭짓점');
+            else tPts.forEach((p, i) => draw3DPoint(p, 4.5, '#fb7185', `A${i + 1}`));
           }
         }
       }
@@ -1054,7 +1165,7 @@
           const h = isOk ? Math.sqrt(Math.max(0, L * L - ringR * ringR)) : 0;
           const apex = { x: 0, y: 0, z: h };
           const ring = Array.from({ length: q + 1 }, (_, i) => ({ x: ringR * Math.cos(i * delta), y: ringR * Math.sin(i * delta), z: 0 }));
-          const cols = ['rgba(37,99,235,0.24)', 'rgba(16,185,129,0.24)', 'rgba(245,158,11,0.24)', 'rgba(225,29,72,0.24)', 'rgba(139,92,246,0.24)', 'rgba(236,72,153,0.24)'];
+          const cols = ['rgba(56,189,248,0.24)', 'rgba(52,211,153,0.24)', 'rgba(245,158,11,0.24)', 'rgba(244,63,94,0.24)', 'rgba(139,92,246,0.24)', 'rgba(236,72,153,0.24)'];
           const faces = [];
           for (let k = 0; k < q; k++) {
             const U = ring[k + 1], V = ring[k];
@@ -1067,10 +1178,10 @@
               xx += L * Math.cos(turn); yy += L * Math.sin(turn);
               poly.push(vAdd(apex, vAdd(vScale(eX, xx), vScale(eY, yy))));
             }
-            faces.push({ pts: poly, fillColor: cols[k % cols.length], strokeColor: '#0F172A', label: `정${KOR_N[p]}각(${oneDeg}°)` });
+            faces.push({ pts: poly, fillColor: cols[k % cols.length], strokeColor: '#e2e8f0', label: `정${KOR_N[p]}각(${oneDeg}°)` });
           }
           renderSortedFaces(faces);
-          draw3DPoint(apex, 6.5, isOk ? '#059669' : '#E11D48', isOk ? `O(${sumDeg}° < 360° 입체 가능!)` : `O(${sumDeg}° ≥ 360° 입체 불가!)`);
+          draw3DPoint(apex, 6.5, isOk ? '#34d399' : '#fb7185', isOk ? `O(${sumDeg}° < 360° 입체 가능!)` : `O(${sumDeg}° ≥ 360° 입체 불가!)`);
         } else if (sub === 'counterEx') {
           const isDipyr = p2 <= 2;
           const nB = p1 <= 4 ? 3 : 5;
@@ -1086,12 +1197,12 @@
             const faces = [];
             for (let i = 0; i < nB; i++) {
               const j = (i + 1) % nB;
-              faces.push({ pts: [{ ...mPts[i], z: sep }, { ...mPts[j], z: sep }, topA], fillColor: 'rgba(37,99,235,0.22)', strokeColor: '#0F172A', label: '정삼각형' });
-              faces.push({ pts: [{ ...mPts[j], z: -sep }, { ...mPts[i], z: -sep }, botA], fillColor: 'rgba(16,185,129,0.22)', strokeColor: '#0F172A', label: '정삼각형' });
+              faces.push({ pts: [{ ...mPts[i], z: sep }, { ...mPts[j], z: sep }, topA], fillColor: 'rgba(56,189,248,0.22)', strokeColor: '#e2e8f0', label: '정삼각형' });
+              faces.push({ pts: [{ ...mPts[j], z: -sep }, { ...mPts[i], z: -sep }, botA], fillColor: 'rgba(52,211,153,0.22)', strokeColor: '#e2e8f0', label: '정삼각형' });
             }
             renderSortedFaces(faces);
-            draw3DPoint(topA, 6, '#2563EB', `위 꼭짓점(${nB}개 모임)`);
-            draw3DPoint(mPts[0], 6.5, '#E11D48', `허리 꼭짓점(4개 모임 ≠ ${nB}개!)`);
+            draw3DPoint(topA, 6, '#38bdf8', `위 꼭짓점(${nB}개 모임)`);
+            draw3DPoint(mPts[0], 6.5, '#fb7185', `허리 꼭짓점(4개 모임 ≠ ${nB}개!)`);
           } else {
             const R = 1.85, zB = -1.1, zT = 1.1, exp = (1 - t) * 0.5;
             const bPts = [], tPts = [];
@@ -1101,12 +1212,12 @@
               tPts.push({ x: R * Math.cos(a), y: R * Math.sin(a), z: zT + exp });
             }
             const faces = [
-              { pts: bPts, fillColor: 'rgba(37,99,235,0.26)', strokeColor: '#2563EB', label: `밑면(정${KOR_N[nB]}각형)` },
-              { pts: tPts, fillColor: 'rgba(37,99,235,0.26)', strokeColor: '#2563EB', label: `윗면(정${KOR_N[nB]}각형)` }
+              { pts: bPts, fillColor: 'rgba(56,189,248,0.26)', strokeColor: '#38bdf8', label: `밑면(정${KOR_N[nB]}각형)` },
+              { pts: tPts, fillColor: 'rgba(56,189,248,0.26)', strokeColor: '#38bdf8', label: `윗면(정${KOR_N[nB]}각형)` }
             ];
             for (let i = 0; i < nB; i++) {
               const j = (i + 1) % nB;
-              faces.push({ pts: [bPts[i], bPts[j], tPts[j], tPts[i]], fillColor: 'rgba(225,29,72,0.18)', strokeColor: '#E11D48', label: '옆면(정사각형≠밑면)' });
+              faces.push({ pts: [bPts[i], bPts[j], tPts[j], tPts[i]], fillColor: 'rgba(244,63,94,0.18)', strokeColor: '#fb7185', label: '옆면(정사각형≠밑면)' });
             }
             renderSortedFaces(faces);
           }
@@ -1120,7 +1231,7 @@
             const fc = idxArr.reduce((acc, i) => vAdd(acc, vScale(mesh.verts[i], 1 / idxArr.length)), { x: 0, y: 0, z: 0 });
             return {
               pts: idxArr.map((i) => vAdd(mesh.verts[i], vScale(fc, exp))),
-              fillColor: 'rgba(37, 99, 235, 0.18)', strokeColor: '#0F172A', label: `F${fi + 1}`
+              fillColor: 'rgba(56, 189, 248, 0.18)', strokeColor: '#e2e8f0', label: `F${fi + 1}`
             };
           });
           renderSortedFaces(faces);
@@ -1133,14 +1244,14 @@
             for (let i = 0; i < mesh.facesIdx.length; i++) {
               for (let j = i + 1; j < mesh.facesIdx.length; j++) {
                 if (mesh.facesIdx[i].filter((v) => mesh.facesIdx[j].includes(v)).length === 2) {
-                  draw3DLine(fCenters[i], fCenters[j], '#E11D48', 3.0);
+                  draw3DLine(fCenters[i], fCenters[j], '#fb7185', 3.0);
                 }
               }
             }
-            fCenters.forEach((fc, i) => draw3DPoint(fc, 5, '#E11D48', i === 0 ? '쌍대 꼭짓점' : ''));
+            fCenters.forEach((fc, i) => draw3DPoint(fc, 5, '#fb7185', i === 0 ? '쌍대 꼭짓점' : ''));
           }
           if (state.steps[3] || state.lens === 'verts') {
-            mesh.verts.forEach((v, i) => draw3DPoint(v, 4.5, '#2563EB', `V${i + 1}`));
+            mesh.verts.forEach((v, i) => draw3DPoint(v, 4.5, '#38bdf8', `V${i + 1}`));
           }
         }
       }
@@ -1161,22 +1272,22 @@
           const f6 = [{ x: -s, y: s, z: bz }, { x: s, y: s, z: bz }, { x: s, y: 3*s, z: bz }, { x: -s, y: 3*s, z: bz }].map((p) => rotateAroundAxis(p, { x: 0, y: s, z: bz }, { x: -1, y: 0, z: 0 }, ang));
 
           renderSortedFaces([
-            { pts: f1, fillColor: 'rgba(37,99,235,0.22)', strokeColor: '#2563EB', label: '①(파랑쌍)' },
-            { pts: f3, fillColor: 'rgba(37,99,235,0.22)', strokeColor: '#2563EB', label: '③(파랑쌍)' },
-            { pts: f2, fillColor: 'rgba(16,185,129,0.22)', strokeColor: '#059669', label: '②바닥(초록쌍)' },
-            { pts: f4, fillColor: 'rgba(16,185,129,0.22)', strokeColor: '#059669', label: '④뚜껑(초록쌍)' },
-            { pts: f5, fillColor: 'rgba(225,29,72,0.22)', strokeColor: '#E11D48', label: '⑤앞(분홍쌍)' },
-            { pts: f6, fillColor: 'rgba(225,29,72,0.22)', strokeColor: '#E11D48', label: '⑥뒤(분홍쌍)' }
+            { pts: f1, fillColor: 'rgba(56,189,248,0.22)', strokeColor: '#38bdf8', label: '①(파랑쌍)' },
+            { pts: f3, fillColor: 'rgba(56,189,248,0.22)', strokeColor: '#38bdf8', label: '③(파랑쌍)' },
+            { pts: f2, fillColor: 'rgba(52,211,153,0.22)', strokeColor: '#34d399', label: '②바닥(초록쌍)' },
+            { pts: f4, fillColor: 'rgba(52,211,153,0.22)', strokeColor: '#34d399', label: '④뚜껑(초록쌍)' },
+            { pts: f5, fillColor: 'rgba(244,63,94,0.22)', strokeColor: '#fb7185', label: '⑤앞(분홍쌍)' },
+            { pts: f6, fillColor: 'rgba(244,63,94,0.22)', strokeColor: '#fb7185', label: '⑥뒤(분홍쌍)' }
           ]);
 
           // 전개도 14개 꼭짓점 알파벳(A~N) 및 접혔을 때 자동 합체 표시!
           drawMergedVertexLabels([
-            { pt: f1[0], name: 'A', color: '#E11D48' }, { pt: f1[1], name: 'B', color: '#2563EB' },
-            { pt: f1[2], name: 'C', color: '#2563EB' }, { pt: f1[3], name: 'D', color: '#059669' },
-            { pt: f5[0], name: 'I', color: '#E11D48' }, { pt: f5[1], name: 'J', color: '#D97706' },
-            { pt: f6[3], name: 'G', color: '#059669' }, { pt: f6[2], name: 'H', color: '#7C3AED' },
-            { pt: f3[1], name: 'E', color: '#D97706' }, { pt: f3[2], name: 'F', color: '#7C3AED' },
-            { pt: f4[1], name: 'K', color: '#E11D48' }, { pt: f4[2], name: 'M', color: '#059669' }
+            { pt: f1[0], name: 'A', color: '#fb7185' }, { pt: f1[1], name: 'B', color: '#38bdf8' },
+            { pt: f1[2], name: 'C', color: '#38bdf8' }, { pt: f1[3], name: 'D', color: '#34d399' },
+            { pt: f5[0], name: 'I', color: '#fb7185' }, { pt: f5[1], name: 'J', color: '#fbbf24' },
+            { pt: f6[3], name: 'G', color: '#34d399' }, { pt: f6[2], name: 'H', color: '#7C3AED' },
+            { pt: f3[1], name: 'E', color: '#fbbf24' }, { pt: f3[2], name: 'F', color: '#7C3AED' },
+            { pt: f4[1], name: 'K', color: '#fb7185' }, { pt: f4[2], name: 'M', color: '#34d399' }
           ]);
         } else if (sub === 'tetraNet') {
           // 정사면체 전개도 (바닥 △ABC + 날개 3개 끝점 D, E, F가 꼭대기에서 D=E=F로 합체!)
@@ -1195,24 +1306,24 @@
           const F = rotateAroundAxis(F_flat, C, vSub(A, C), foldAng);
 
           renderSortedFaces([
-            { pts: [A, B, C], fillColor: 'rgba(16,185,129,0.24)', strokeColor: '#059669', label: '①밑면(△ABC)' },
-            { pts: [A, B, D], fillColor: 'rgba(37,99,235,0.22)', strokeColor: '#2563EB', label: '②날개' },
-            { pts: [B, C, E], fillColor: 'rgba(245,158,11,0.22)', strokeColor: '#D97706', label: '③날개' },
-            { pts: [C, A, F], fillColor: 'rgba(225,29,72,0.22)', strokeColor: '#E11D48', label: '④날개' }
+            { pts: [A, B, C], fillColor: 'rgba(52,211,153,0.24)', strokeColor: '#34d399', label: '①밑면(△ABC)' },
+            { pts: [A, B, D], fillColor: 'rgba(56,189,248,0.22)', strokeColor: '#38bdf8', label: '②날개' },
+            { pts: [B, C, E], fillColor: 'rgba(245,158,11,0.22)', strokeColor: '#fbbf24', label: '③날개' },
+            { pts: [C, A, F], fillColor: 'rgba(244,63,94,0.22)', strokeColor: '#fb7185', label: '④날개' }
           ]);
 
           if (p1 === 4 || state.lens === 'magic') {
-            draw3DLine(A, B, '#2563EB', 4.5);
-            draw3DLine(C, E, '#E11D48', 4.5);
+            draw3DLine(A, B, '#38bdf8', 4.5);
+            draw3DLine(C, E, '#fb7185', 4.5);
           }
 
           drawMergedVertexLabels([
-            { pt: A, name: 'A', color: '#2563EB' },
-            { pt: B, name: 'B', color: '#2563EB' },
-            { pt: C, name: 'C', color: '#059669' },
-            { pt: D, name: 'D', color: '#E11D48' },
-            { pt: E, name: 'E', color: '#E11D48' },
-            { pt: F, name: 'F', color: '#E11D48' }
+            { pt: A, name: 'A', color: '#38bdf8' },
+            { pt: B, name: 'B', color: '#38bdf8' },
+            { pt: C, name: 'C', color: '#34d399' },
+            { pt: D, name: 'D', color: '#fb7185' },
+            { pt: E, name: 'E', color: '#fb7185' },
+            { pt: F, name: 'F', color: '#fb7185' }
           ]);
         } else if (sub === 'octaNet') {
           // [핵심 버그 완벽 해결!] 정팔면체 8개 정삼각형 전개도 + 꼭짓점 알파벳(A~J) & 100% 정확한 경첩 기구학!
@@ -1271,26 +1382,26 @@
           const f4Pts = [E_3d, H_3d, D_3d];
 
           renderSortedFaces([
-            { pts: f1Pts, fillColor: 'rgba(37,99,235,0.26)', strokeColor: '#2563EB', label: '①(파랑쌍)' },
-            { pts: f3Pts, fillColor: 'rgba(37,99,235,0.26)', strokeColor: '#2563EB', label: '③(파랑쌍)' },
-            { pts: f2Pts, fillColor: 'rgba(16,185,129,0.24)', strokeColor: '#059669', label: '②(초록쌍)' },
-            { pts: f4Pts, fillColor: 'rgba(16,185,129,0.24)', strokeColor: '#059669', label: '④(초록쌍)' },
-            { pts: f5Pts, fillColor: 'rgba(225,29,72,0.24)', strokeColor: '#E11D48', label: '⑤(분홍쌍)' },
-            { pts: f6Pts, fillColor: 'rgba(225,29,72,0.24)', strokeColor: '#E11D48', label: '⑥(분홍쌍)' },
-            { pts: f7Pts, fillColor: 'rgba(245,158,11,0.24)', strokeColor: '#D97706', label: '⑦(노랑쌍)' },
-            { pts: f8Pts, fillColor: 'rgba(245,158,11,0.24)', strokeColor: '#D97706', label: '⑧(노랑쌍)' }
+            { pts: f1Pts, fillColor: 'rgba(56,189,248,0.26)', strokeColor: '#38bdf8', label: '①(파랑쌍)' },
+            { pts: f3Pts, fillColor: 'rgba(56,189,248,0.26)', strokeColor: '#38bdf8', label: '③(파랑쌍)' },
+            { pts: f2Pts, fillColor: 'rgba(52,211,153,0.24)', strokeColor: '#34d399', label: '②(초록쌍)' },
+            { pts: f4Pts, fillColor: 'rgba(52,211,153,0.24)', strokeColor: '#34d399', label: '④(초록쌍)' },
+            { pts: f5Pts, fillColor: 'rgba(244,63,94,0.24)', strokeColor: '#fb7185', label: '⑤(분홍쌍)' },
+            { pts: f6Pts, fillColor: 'rgba(244,63,94,0.24)', strokeColor: '#fb7185', label: '⑥(분홍쌍)' },
+            { pts: f7Pts, fillColor: 'rgba(245,158,11,0.24)', strokeColor: '#fbbf24', label: '⑦(노랑쌍)' },
+            { pts: f8Pts, fillColor: 'rgba(245,158,11,0.24)', strokeColor: '#fbbf24', label: '⑧(노랑쌍)' }
           ]);
 
           // 정팔면체 전개도의 10개 꼭짓점(A ~ J) 알파벳 좌표 및 합체(A=I, B=H, C=G, D=J, E=F) 실시간 렌더링!
           drawMergedVertexLabels([
-            { pt: A0, name: 'A', color: '#E11D48' },
-            { pt: I_step1, name: 'I', color: '#E11D48' },
-            { pt: B0, name: 'B', color: '#2563EB' },
-            { pt: H_3d, name: 'H', color: '#2563EB' },
-            { pt: C0, name: 'C', color: '#059669' },
-            { pt: G_3d, name: 'G', color: '#059669' },
-            { pt: D_3d, name: 'D', color: '#D97706' },
-            { pt: J_3d, name: 'J', color: '#D97706' },
+            { pt: A0, name: 'A', color: '#fb7185' },
+            { pt: I_step1, name: 'I', color: '#fb7185' },
+            { pt: B0, name: 'B', color: '#38bdf8' },
+            { pt: H_3d, name: 'H', color: '#38bdf8' },
+            { pt: C0, name: 'C', color: '#34d399' },
+            { pt: G_3d, name: 'G', color: '#34d399' },
+            { pt: D_3d, name: 'D', color: '#fbbf24' },
+            { pt: J_3d, name: 'J', color: '#fbbf24' },
             { pt: E_3d, name: 'E', color: '#7C3AED' },
             { pt: F_3d, name: 'F', color: '#7C3AED' }
           ]);
@@ -1304,15 +1415,15 @@
           const pG = rotateAroundAxis({ x: 3*s, y: -s, z: zB }, pF, { x: 0, y: 0, z: 1 }, openA);
 
           renderSortedFaces([
-            { pts: [pA, pB, pF, pE], fillColor: 'rgba(37,99,235,0.20)', strokeColor: '#2563EB', label: '앞면(가로 a)' },
-            { pts: [pB, pC, pG, pF], fillColor: 'rgba(16,185,129,0.20)', strokeColor: '#059669', label: '오른면(가로 a)' }
+            { pts: [pA, pB, pF, pE], fillColor: 'rgba(56,189,248,0.20)', strokeColor: '#38bdf8', label: '앞면(가로 a)' },
+            { pts: [pB, pC, pG, pF], fillColor: 'rgba(52,211,153,0.20)', strokeColor: '#34d399', label: '오른면(가로 a)' }
           ]);
           const pM = { x: s, y: -s, z: 0 };
-          draw3DLine(pA, pM, '#E11D48', 4.0);
-          draw3DLine(pM, pG, '#E11D48', 4.0);
-          draw3DPoint(pA, 5.5, '#2563EB', '출발 A');
-          draw3DPoint(pM, 6, '#E11D48', `중점 P(높이 ${p2}cm)`);
-          draw3DPoint(pG, 5.5, '#059669', '도착 G(일직선!)');
+          draw3DLine(pA, pM, '#fb7185', 4.0);
+          draw3DLine(pM, pG, '#fb7185', 4.0);
+          draw3DPoint(pA, 5.5, '#38bdf8', '출발 A');
+          draw3DPoint(pM, 6, '#fb7185', `중점 P(높이 ${p2}cm)`);
+          draw3DPoint(pG, 5.5, '#34d399', '도착 G(일직선!)');
         }
       }
 
@@ -1327,7 +1438,7 @@
             { x: -s, y: -s, z: s }, { x: s, y: -s, z: s }, { x: s, y: s, z: s }, { x: -s, y: s, z: s }
           ];
           const faces = [[0,1,2,3],[4,5,6,7],[0,1,5,4],[2,3,7,6],[1,2,6,5],[3,0,4,7]].map((arr) => ({
-            pts: arr.map((i) => cV[i]), fillColor: 'rgba(148,163,184,0.10)', strokeColor: '#64748B', lineWidth: 1.8
+            pts: arr.map((i) => cV[i]), fillColor: 'rgba(148,163,184,0.10)', strokeColor: '#94a3b8', lineWidth: 1.8
           }));
 
           let secPts = [], lbl = '정육각형 단면';
@@ -1350,9 +1461,9 @@
             ];
             lbl = '✨ 정육각형 단면(6모서리 중점!)';
           }
-          faces.push({ pts: secPts, fillColor: 'rgba(225, 29, 72, 0.32)', strokeColor: '#E11D48', lineWidth: 3.5, label: lbl });
+          faces.push({ pts: secPts, fillColor: 'rgba(244, 63, 94, 0.32)', strokeColor: '#fb7185', lineWidth: 3.5, label: lbl });
           renderSortedFaces(faces);
-          secPts.forEach((p, i) => draw3DPoint(p, 5, '#E11D48', `M${i + 1}`));
+          secPts.forEach((p, i) => draw3DPoint(p, 5, '#fb7185', `M${i + 1}`));
         } else if (sub === 'cutCompare' || sub === 'soccer') {
           const isSoccer = sub === 'soccer';
           const keys = ['tetra', 'cube', 'octa'];
@@ -1372,8 +1483,8 @@
             }
             faces.push({
               pts: poly,
-              fillColor: isSoccer ? 'rgba(255, 255, 255, 0.90)' : 'rgba(37, 99, 235, 0.22)',
-              strokeColor: '#0F172A', lineWidth: 2.0
+              fillColor: isSoccer ? 'rgba(255, 255, 255, 0.90)' : 'rgba(56, 189, 248, 0.22)',
+              strokeColor: isSoccer ? '#0f172a' : '#e2e8f0', lineWidth: 2.0
             });
           });
 
@@ -1400,8 +1511,8 @@
                 );
                 faces.push({
                   pts: cPts,
-                  fillColor: isSoccer ? 'rgba(15, 23, 42, 0.90)' : 'rgba(225, 29, 72, 0.34)',
-                  strokeColor: '#0F172A', lineWidth: 2.2
+                  fillColor: isSoccer ? 'rgba(15, 23, 42, 0.90)' : 'rgba(244, 63, 94, 0.34)',
+                  strokeColor: '#e2e8f0', lineWidth: 2.2
                 });
               }
             });
@@ -1411,12 +1522,12 @@
           // cornerBlock
           const s = 1.75, c = 0.85, sh = t * 1.05;
           const faces = [
-            { pts: [{x:s-c,y:-s,z:s-c},{x:s,y:-s,z:s-c},{x:s,y:-s+c,z:s-c},{x:s-c,y:-s+c,z:s-c}], fillColor: 'rgba(225,29,72,0.35)', strokeColor: '#E11D48', label: '새 바닥(+1)' },
-            { pts: [{x:s-c,y:-s,z:s-c},{x:s-c,y:-s+c,z:s-c},{x:s-c,y:-s+c,z:s},{x:s-c,y:-s,z:s}], fillColor: 'rgba(16,185,129,0.35)', strokeColor: '#059669', label: '새 옆면(+1)' },
-            { pts: [{x:s-c,y:-s+c,z:s-c},{x:s,y:-s+c,z:s-c},{x:s,y:-s+c,z:s},{x:s-c,y:-s+c,z:s}], fillColor: 'rgba(245,158,11,0.35)', strokeColor: '#D97706', label: '새 뒷면(+1)' },
-            { pts: [{x:-s,y:-s,z:s},{x:s-c,y:-s,z:s},{x:s-c,y:-s+c,z:s},{x:s,y:-s+c,z:s},{x:s,y:s,z:s},{x:-s,y:s,z:s}], fillColor: 'rgba(37,99,235,0.20)', strokeColor: '#0F172A', label: '윗면(ㄱ자)' },
-            { pts: [{x:-s,y:-s,z:-s},{x:s,y:-s,z:-s},{x:s,y:-s,z:s-c},{x:s-c,y:-s,z:s-c},{x:s-c,y:-s,z:s},{x:-s,y:-s,z:s}], fillColor: 'rgba(37,99,235,0.20)', strokeColor: '#0F172A', label: '앞면(ㄱ자)' },
-            { pts: [{x:s,y:-s,z:-s},{x:s,y:s,z:-s},{x:s,y:s,z:s},{x:s,y:-s+c,z:s},{x:s,y:-s+c,z:s-c},{x:s,y:-s,z:s-c}], fillColor: 'rgba(37,99,235,0.20)', strokeColor: '#0F172A', label: '오른면(ㄱ자)' }
+            { pts: [{x:s-c,y:-s,z:s-c},{x:s,y:-s,z:s-c},{x:s,y:-s+c,z:s-c},{x:s-c,y:-s+c,z:s-c}], fillColor: 'rgba(244,63,94,0.35)', strokeColor: '#fb7185', label: '새 바닥(+1)' },
+            { pts: [{x:s-c,y:-s,z:s-c},{x:s-c,y:-s+c,z:s-c},{x:s-c,y:-s+c,z:s},{x:s-c,y:-s,z:s}], fillColor: 'rgba(52,211,153,0.35)', strokeColor: '#34d399', label: '새 옆면(+1)' },
+            { pts: [{x:s-c,y:-s+c,z:s-c},{x:s,y:-s+c,z:s-c},{x:s,y:-s+c,z:s},{x:s-c,y:-s+c,z:s}], fillColor: 'rgba(245,158,11,0.35)', strokeColor: '#fbbf24', label: '새 뒷면(+1)' },
+            { pts: [{x:-s,y:-s,z:s},{x:s-c,y:-s,z:s},{x:s-c,y:-s+c,z:s},{x:s,y:-s+c,z:s},{x:s,y:s,z:s},{x:-s,y:s,z:s}], fillColor: 'rgba(56,189,248,0.20)', strokeColor: '#e2e8f0', label: '윗면(ㄱ자)' },
+            { pts: [{x:-s,y:-s,z:-s},{x:s,y:-s,z:-s},{x:s,y:-s,z:s-c},{x:s-c,y:-s,z:s-c},{x:s-c,y:-s,z:s},{x:-s,y:-s,z:s}], fillColor: 'rgba(56,189,248,0.20)', strokeColor: '#e2e8f0', label: '앞면(ㄱ자)' },
+            { pts: [{x:s,y:-s,z:-s},{x:s,y:s,z:-s},{x:s,y:s,z:s},{x:s,y:-s+c,z:s},{x:s,y:-s+c,z:s-c},{x:s,y:-s,z:s-c}], fillColor: 'rgba(56,189,248,0.20)', strokeColor: '#e2e8f0', label: '오른면(ㄱ자)' }
           ];
           const bx = s - c/2 + sh, by = -s + c/2 - sh, bz = s - c/2 + sh, hs = c/2;
           const bV = [
@@ -1424,7 +1535,7 @@
             {x:bx-hs,y:by-hs,z:bz+hs},{x:bx+hs,y:by-hs,z:bz+hs},{x:bx+hs,y:by+hs,z:bz+hs},{x:bx-hs,y:by+hs,z:bz+hs}
           ];
           [[0,1,2,3],[4,5,6,7],[0,1,5,4],[2,3,7,6],[1,2,6,5],[3,0,4,7]].forEach((arr) => {
-            faces.push({ pts: arr.map((i) => bV[i]), fillColor: 'rgba(225,29,72,0.16)', strokeColor: '#E11D48', lineWidth: 1.5 });
+            faces.push({ pts: arr.map((i) => bV[i]), fillColor: 'rgba(244,63,94,0.16)', strokeColor: '#fb7185', lineWidth: 1.5 });
           });
           renderSortedFaces(faces);
         }

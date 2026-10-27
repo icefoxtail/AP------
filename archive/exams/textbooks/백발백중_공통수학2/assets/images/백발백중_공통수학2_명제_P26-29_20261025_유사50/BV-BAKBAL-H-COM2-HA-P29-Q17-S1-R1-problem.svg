@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 340" width="100%" height="100%">
+  <defs>
+    <style>
+      .node-start2 { fill: #fef3c7; stroke: #d97706; stroke-width: 2.2; }
+      .node-mid2 { fill: #ecfdf5; stroke: #059669; stroke-width: 2; }
+      .node-end2 { fill: #f8fafc; stroke: #334155; stroke-width: 1.8; }
+      .arrow2 { stroke: #475569; stroke-width: 1.8; fill: none; marker-end: url(#arrowhead2); }
+      .t-label2 { font-family: 'Noto Sans CJK KR', 'Malgun Gothic', sans-serif; font-size: 14px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+      .dir-text2 { font-family: 'Noto Sans CJK KR', 'Malgun Gothic', sans-serif; font-size: 11px; fill: #475569; font-weight: 600; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead2" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <polygon points="0 0, 7 3, 0 6" fill="#475569" />
+    </marker>
+  </defs>
+  <circle cx="50" cy="170" r="22" class="node-start2" />
+  <text x="50" y="170" class="t-label2">㉮</text>
+  <path d="M 72,160 L 208,80" class="arrow2" />
+  <text x="130" y="105" class="dir-text2">위</text>
+  <path d="M 72,170 L 208,170" class="arrow2" />
+  <text x="140" y="162" class="dir-text2">가운데</text>
+  <path d="M 72,180 L 208,260" class="arrow2" />
+  <text x="130" y="235" class="dir-text2">아래</text>
+  <circle cx="230" cy="70" r="20" class="node-mid2" /><text x="230" y="70" class="t-label2">㉯</text>
+  <circle cx="230" cy="170" r="20" class="node-mid2" /><text x="230" y="170" class="t-label2">㉯</text>
+  <circle cx="230" cy="270" r="20" class="node-mid2" /><text x="230" y="270" class="t-label2">㉯</text>
+  <path d="M 250,65 L 418,35" class="arrow2" />
+  <path d="M 250,70 L 418,65" class="arrow2" />
+  <path d="M 250,75 L 418,95" class="arrow2" />
+  <path d="M 250,165 L 418,140" class="arrow2" />
+  <path d="M 250,170 L 418,170" class="arrow2" />
+  <path d="M 250,175 L 418,200" class="arrow2" />
+  <path d="M 250,265 L 418,245" class="arrow2" />
+  <path d="M 250,270 L 418,275" class="arrow2" />
+  <path d="M 250,275 L 418,305" class="arrow2" />
+  <rect x="420" y="17" width="100" height="26" rx="8" class="node-end2" /><text x="470" y="30" class="t-label2" style="font-size:10px">위→위</text>
+  <rect x="420" y="52" width="100" height="26" rx="8" class="node-end2" /><text x="470" y="65" class="t-label2" style="font-size:10px">위→가운데</text>
+  <rect x="420" y="87" width="100" height="26" rx="8" class="node-end2" /><text x="470" y="100" class="t-label2" style="font-size:10px">위→아래</text>
+  <rect x="420" y="122" width="100" height="26" rx="8" class="node-end2" /><text x="470" y="135" class="t-label2" style="font-size:10px">가운데→위</text>
+  <rect x="420" y="157" width="100" height="26" rx="8" class="node-end2" /><text x="470" y="170" class="t-label2" style="font-size:10px">가운데→가운데</text>
+  <rect x="420" y="192" width="100" height="26" rx="8" class="node-end2" /><text x="470" y="205" class="t-label2" style="font-size:10px">가운데→아래</text>
+  <rect x="420" y="227" width="100" height="26" rx="8" class="node-end2" /><text x="470" y="240" class="t-label2" style="font-size:10px">아래→위</text>
+  <rect x="420" y="262" width="100" height="26" rx="8" class="node-end2" /><text x="470" y="275" class="t-label2" style="font-size:10px">아래→가운데</text>
+  <rect x="420" y="297" width="100" height="26" rx="8" class="node-end2" /><text x="470" y="310" class="t-label2" style="font-size:10px">아래→아래</text>
+</svg>

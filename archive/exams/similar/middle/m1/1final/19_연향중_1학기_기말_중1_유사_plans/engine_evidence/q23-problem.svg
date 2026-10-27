@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="400" height="320" role="img" aria-labelledby="q23-title q23-desc">
+  <title id="q23-title">이동 시간과 거리 사이의 관계 그래프</title>
+  <desc id="q23-desc">동시에 출발한 민우와 수현이의 시간에 따른 이동 거리 변화를 나타낸 두 직선 그래프</desc>
+  <rect width="400" height="320" fill="#ffffff"/>
+
+  <!-- Coordinate Axes -->
+  <g stroke="#333333" stroke-width="1.5">
+    <!-- Horizontal axis (Time) -->
+    <line x1="70" y1="260" x2="375" y2="260"/>
+    <polyline points="367,255 375,260 367,265" fill="none"/>
+    <!-- Vertical axis (Distance) -->
+    <line x1="70" y1="260" x2="70" y2="30"/>
+    <polyline points="65,38 70,30 75,38" fill="none"/>
+  </g>
+
+  <!-- Axis Titles -->
+  <g font-family="sans-serif" font-size="13" fill="#111111" font-weight="bold">
+    <text x="320" y="285">시간(분)</text>
+    <text x="70" y="22" text-anchor="middle">거리(m)</text>
+    <text x="56" y="274">O</text>
+  </g>
+
+  <!-- Dashed Guidelines -->
+  <g stroke="#777777" stroke-width="1.2" stroke-dasharray="4,4">
+    <!-- Guideline for 수현: at x=1 -> y=300: (200, 100) -->
+    <line x1="200" y1="260" x2="200" y2="100"/>
+    <line x1="70" y1="100" x2="200" y2="100"/>
+    <!-- Guideline for 민우: at x=1 -> y=60: (200, 220) -->
+    <line x1="70" y1="220" x2="200" y2="220"/>
+  </g>
+
+  <!-- Numbers and Ticks -->
+  <g font-family="sans-serif" font-size="13" fill="#333333">
+    <!-- X axis tick -->
+    <text x="200" y="278" text-anchor="middle">1</text>
+    <!-- Y axis ticks -->
+    <text x="62" y="224" text-anchor="end">60</text>
+    <text x="62" y="104" text-anchor="end">300</text>
+  </g>
+
+  <!-- Line for 수현 (Speed = 300 m/min) -->
+  <line x1="70" y1="260" x2="260" y2="26" stroke="#0066cc" stroke-width="2.5"/>
+  <!-- Label for 수현 -->
+  <g font-family="sans-serif" font-size="14" fill="#0066cc" font-weight="bold">
+    <text x="268" y="35">수현</text>
+  </g>
+
+  <!-- Line for 민우 (Speed = 60 m/min) -->
+  <line x1="70" y1="260" x2="330" y2="180" stroke="#2e7d32" stroke-width="2.5"/>
+  <!-- Label for 민우 -->
+  <g font-family="sans-serif" font-size="14" fill="#2e7d32" font-weight="bold">
+    <text x="338" y="185">민우</text>
+  </g>
+
+  <!-- Marked Points and Origin -->
+  <circle cx="70" cy="260" r="3" fill="#333333"/>
+  <circle cx="200" cy="100" r="4.5" fill="#d32f2f"/>
+  <circle cx="200" cy="220" r="4.5" fill="#d32f2f"/>
+</svg>

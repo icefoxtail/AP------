@@ -4,13 +4,13 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.4.13",
-      "conceptCount": 205
+      "version": "1.4.14",
+      "conceptCount": 235
     },
     {
       "shardId": "FUNCTIONS",
-      "version": "1.5.5",
-      "conceptCount": 64
+      "version": "1.5.6",
+      "conceptCount": 70
     },
     {
       "shardId": "LOGIC_SET",
@@ -24,8 +24,8 @@
     },
     {
       "shardId": "PLANE_GEOMETRY",
-      "version": "1.3.10",
-      "conceptCount": 81
+      "version": "1.3.11",
+      "conceptCount": 82
     },
     {
       "shardId": "COUNTING",
@@ -63,7 +63,7 @@
       "conceptCount": 64
     }
   ],
-  "conceptCount": 585,
+  "conceptCount": 622,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -6498,6 +6498,1080 @@
       "ownerConceptShard": "ALGEBRA"
     },
     {
+      "conceptKey": "CC_COMMON_ROOT",
+      "canonicalLabelKo": "공통근을 갖는 두 함수의 선형 결합",
+      "definition": "f(x)와 g(x)가 공통근 alpha를 가질 때 f(x)+2g(x)=0의 근 구조를 인수분해 형태로 해석",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6ebcdae9fbec019f2b20b3d4cad5be81d13cd03260363a93c56768fa836120e2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6ebcdae9fbec019f2b20b3d4cad5be81d13cd03260363a93c56768fa836120e2",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_COMMON_ROOT for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY at H15-SA-13-QUADRATIC_GRAPH.",
+          "decisiveEvidence": "f+2g=(x−α)(3x−β−2γ)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_CONJUGATE_PROPERTIES",
+      "canonicalLabelKo": "켤레복소수의 대수적 성질",
+      "definition": "z와 z_bar의 합과 곱이 항상 실수이며 역수와 켤레의 관계를 분석하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8c70290e30846f36503922bd07c55b66a07f2e7d009ea5d7b58b15760525e63b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8c70290e30846f36503922bd07c55b66a07f2e7d009ea5d7b58b15760525e63b",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_COMPLEX_CONJUGATE_PROPERTIES for PT_H1_COMPLEX_OPERATION/TPL_H1_COMPLEX_CONJUGATE_NORM at H15-SA-04-COMPLEX_OPERATION.",
+          "decisiveEvidence": "z=1을 넣으면 ④의 값은 2로 순허수가 아님",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_COMPLEX_OPERATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_CONJUGATE_ROOT",
+      "canonicalLabelKo": "허근의 켤레근 성질과 차수 축약",
+      "definition": "실수 계수 이차방정식의 허근 x로부터 x^2-x+1=0 관계식을 유도하여 고차식을 일차식으로 축약",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_277ad57d010a783f11edead553d253e4417dab7fce78a6b0000764fbfb203d23"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_277ad57d010a783f11edead553d253e4417dab7fce78a6b0000764fbfb203d23",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_COMPLEX_CONJUGATE_ROOT for PT_H1_COMPLEX_CONDITION_EQUATION/TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION at H15-SA-04-COMPLEX_OPERATION.",
+          "decisiveEvidence": "x²−x+1=0에서 x²=x−1",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_COMPLEX_CONDITION_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_EQUATION",
+      "canonicalLabelKo": "복소수의 상등과 연립방정식",
+      "definition": "a+bi = c+di에서 실수부와 허수부를 각각 비교하여 연립방정식을 세우는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fdcbb2021d4d508b99c5e62a3e21af4fe3ac925f99d5a99d1ab0c22b58384d5e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fdcbb2021d4d508b99c5e62a3e21af4fe3ac925f99d5a99d1ab0c22b58384d5e",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_COMPLEX_EQUATION for PT_H1_COMPLEX_CONDITION_EQUATION/TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT at H15-SA-04-COMPLEX_ROOT.",
+          "decisiveEvidence": "복소 제곱식에서 $a^2-b^2=65$, $ab=36$을 얻고, 범위 조건으로 근의 부호를 골라 $a-2b$를 계산한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_COMPLEX_CONDITION_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_NORM",
+      "canonicalLabelKo": "복소수의 크기와 노름",
+      "definition": "z*z_bar = x^2+y^2 성질을 활용하여 복소수의 절대값 제곱을 다루는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8c70290e30846f36503922bd07c55b66a07f2e7d009ea5d7b58b15760525e63b",
+        "qid_v1_c90db11dc939c68b84c746249bb9f948a77e5abaec88cf32dc7e25753d10ef07"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H15-SA-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8c70290e30846f36503922bd07c55b66a07f2e7d009ea5d7b58b15760525e63b",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_COMPLEX_NORM for PT_H1_COMPLEX_OPERATION/TPL_H1_COMPLEX_CONJUGATE_NORM at H15-SA-04-COMPLEX_OPERATION.",
+          "decisiveEvidence": "z=1을 넣으면 ④의 값은 2로 순허수가 아님",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c90db11dc939c68b84c746249bb9f948a77e5abaec88cf32dc7e25753d10ef07",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_COMPLEX_NORM for PT_H1_COMPLEX_OPERATION/TPL_H1_COMPLEX_CONJUGATE_NORM at H15-SA-04-COMPLEX_OPERATION.",
+          "decisiveEvidence": "a²+b²=1/(x²+y²)=3",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_COMPLEX_OPERATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_RECIPROCAL",
+      "canonicalLabelKo": "복소수 역수의 실수화",
+      "definition": "1/(x+yi)의 분모·분자에 켤레를 곱해 실수부분과 허수부분을 분리하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c90db11dc939c68b84c746249bb9f948a77e5abaec88cf32dc7e25753d10ef07"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c90db11dc939c68b84c746249bb9f948a77e5abaec88cf32dc7e25753d10ef07",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_COMPLEX_RECIPROCAL for PT_H1_COMPLEX_OPERATION/TPL_H1_COMPLEX_CONJUGATE_NORM at H15-SA-04-COMPLEX_OPERATION.",
+          "decisiveEvidence": "a²+b²=1/(x²+y²)=3",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_COMPLEX_OPERATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_CUBOID_DIAGONAL",
+      "canonicalLabelKo": "직육면체의 대각선의 길이 공식",
+      "definition": "세 모서리의 길이가 a, b, c일 때 공간 대각선 sqrt(a^2+b^2+c^2)을 대칭식 곱셈공식 변형으로 산출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c3e59dab59778eb44fda4b0630067017ada7eebcdb369ea64a8a910c0c046319"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c3e59dab59778eb44fda4b0630067017ada7eebcdb369ea64a8a910c0c046319",
+          "sourceOrdinal": 24,
+          "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_CUBOID_DIAGONAL for PT_H1_POLY_FORMULA_SYMMETRIC/TPL_H1_FORMULA_SYMMETRIC at H15-SA-07-HIGHER_EQUATION.",
+          "decisiveEvidence": "d²=(a+b+c)²−2(ab+bc+ca)=20",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_POLY_FORMULA_SYMMETRIC"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DEGREE_ANALYSIS",
+      "canonicalLabelKo": "몫과 나머지 항등식의 차수 분석",
+      "definition": "피제수가 4차식, 몫이 2차식일 때 제수 f(x)가 2차식임을 결정하고 미정계수를 비교",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_00cbea358b086f059de9dbc802b77a226bb68caaf17cac435605503b995c0472"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_00cbea358b086f059de9dbc802b77a226bb68caaf17cac435605503b995c0472",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_DEGREE_ANALYSIS for PT_H1_POLY_DIVISION/TPL_H1_POLY_DIVISION_EXECUTION at H15-SA-01-POLYNOMIAL_DIVISION.",
+          "decisiveEvidence": "나눗셈 등식의 계수 비교로 a+b+c=−3",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_POLY_DIVISION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DISCRIMINANT_PERFECT_SQUARE",
+      "canonicalLabelKo": "정수근 조건과 판별식의 제곱수 판정",
+      "definition": "이차방정식의 근이 정수이려면 판별식 D가 완전제곱수(정수의 제곱)이어야 하는 정수론적 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_cbb4e12105c835fc43c2e5b1ea0225702fe3759646d1fcf7b9808d9a1cc71e90"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_cbb4e12105c835fc43c2e5b1ea0225702fe3759646d1fcf7b9808d9a1cc71e90",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_DISCRIMINANT_PERFECT_SQUARE for PT_H1_QUADRATIC_DISCRIMINANT/TPL_H1_DISCRIMINANT_ROOT_EXISTENCE at H15-SA-05-DISCRIMINANT.",
+          "decisiveEvidence": "D=−3(a−3)²+4에서 a=2,3,4, 합 9",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_DISCRIMINANT"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DIVISION_ALGORITHM",
+      "canonicalLabelKo": "나눗셈 정리를 이용한 피제수 복원",
+      "definition": "나누는 식과 몫의 곱에 나머지를 더하여 원래 다항식을 전개 복원하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_af7e6caf1faf8335267685defaa70ae6826ee04d595acf0d42dc1f42a78a6fb1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_af7e6caf1faf8335267685defaa70ae6826ee04d595acf0d42dc1f42a78a6fb1",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_DIVISION_ALGORITHM for PT_H1_POLY_DIVISION/TPL_H1_POLY_DIVISION_EXECUTION at H15-SA-01-POLYNOMIAL_DIVISION.",
+          "decisiveEvidence": "(x+2)(2x²−x+1)+3=2x³+3x²−x+5",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_POLY_DIVISION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DOUBLE_ROOT",
+      "canonicalLabelKo": "중근 조건 D=0",
+      "definition": "이차방정식이 중근을 가질 때 판별식 D=0임을 이용하여 매개변수 사이의 관계식을 수립",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b73f873e99cbca91e0821696ffbc87fed6cb86936090f48337b9374b33e4cbd4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b73f873e99cbca91e0821696ffbc87fed6cb86936090f48337b9374b33e4cbd4",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_DOUBLE_ROOT for PT_H1_QUADRATIC_DISCRIMINANT/TPL_H1_DISCRIMINANT_ROOT_EXISTENCE at H15-SA-05-DISCRIMINANT.",
+          "decisiveEvidence": "첫 판별식 0으로 b를 구한 뒤 둘째 판별식은 항상 음수",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_DISCRIMINANT"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FACTORIZATION_SYMMETRY",
+      "canonicalLabelKo": "삼각형 변 조건 다항식의 인수분해",
+      "definition": "문자 a, b, c에 관한 대칭 복합식을 인수분해하여 변의 길이 관계를 도출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_d2c22154df02e50905b6729911d033682daf2bffaa0062f19c897e060a21e60d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d2c22154df02e50905b6729911d033682daf2bffaa0062f19c897e060a21e60d",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_FACTORIZATION_SYMMETRY for PT_H1_POLY_FACTORIZATION/TPL_H1_FACTORIZATION_STANDARD at H15-SA-03-FACTORIZATION.",
+          "decisiveEvidence": "(a²−b²)(c²−a²−b²)=0",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_TRANSFORMATION",
+      "canonicalLabelKo": "다항식 변수 평행이동과 나머지",
+      "definition": "x 자리에 x+1을 대입한 다항식의 나눗셈을 원 함수값으로 환원",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f15657643513f5e85c9cbd74ea7a0f3e636986dd6a858bc11d241ffc8440c84e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f15657643513f5e85c9cbd74ea7a0f3e636986dd6a858bc11d241ffc8440c84e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_FUNCTION_TRANSFORMATION for PT_H1_REMAINDER_THEOREM/TPL_H1_REMAINDER_COMPOSITE_DIVISOR at H15-SA-02-REMAINDER_FACTOR.",
+          "decisiveEvidence": "R(3)=f(3)=7",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_REMAINDER_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_HIGHER_DEGREE_EQUATION",
+      "canonicalLabelKo": "복이차식 형태 사차방정식의 해",
+      "definition": "x^4+ax^2+b=0의 짝수차 대칭성에서 r이 근이면 -r도 근임을 이용해 네 근을 복원",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_374fc42c4a5b42e4ad7bdc587a61a94922942b00b1dec5eb44bea2e8382364e5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_374fc42c4a5b42e4ad7bdc587a61a94922942b00b1dec5eb44bea2e8382364e5",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_HIGHER_DEGREE_EQUATION for PT_H1_HIGHER_DEGREE_EQUATION/TPL_H1_HIGHER_FACTOR_ROOT at H15-SA-07-HIGHER_EQUATION.",
+          "decisiveEvidence": "짝수차 식의 네 근은 −2,2,1,−1",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_HIGHER_DEGREE_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_IDENTITY_PARAMETER",
+      "canonicalLabelKo": "매개변수 a에 대한 항등식 계수비교",
+      "definition": "D(a) = A*a + B = 0 꼴에서 A=0, B=0을 만족하는 직선의 기울기와 절편 m, n 결정",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fc661fdcc60bde2b08ae3446e6d4f8e056bac2d18100de32be5a24ab4eede8ee"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fc661fdcc60bde2b08ae3446e6d4f8e056bac2d18100de32be5a24ab4eede8ee",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_IDENTITY_PARAMETER for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_INTERSECTION_TANGENCY at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "D=4a(m−3)+m²−4n+4≡0에서 4mn=39",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_INTEGER_ROOTS",
+      "canonicalLabelKo": "판별식 상한을 이용한 정수 매개변수 유한 탐색",
+      "definition": "-3(a-3)^2+4 >= 0 부등식으로 정수 a의 후보를 한정하고 완전제곱수를 검증",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_cbb4e12105c835fc43c2e5b1ea0225702fe3759646d1fcf7b9808d9a1cc71e90"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_cbb4e12105c835fc43c2e5b1ea0225702fe3759646d1fcf7b9808d9a1cc71e90",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_INTEGER_ROOTS for PT_H1_QUADRATIC_DISCRIMINANT/TPL_H1_DISCRIMINANT_ROOT_EXISTENCE at H15-SA-05-DISCRIMINANT.",
+          "decisiveEvidence": "D=−3(a−3)²+4에서 a=2,3,4, 합 9",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_DISCRIMINANT"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LIKE_TERMS",
+      "canonicalLabelKo": "동류항의 정리",
+      "definition": "문자와 차수가 같은 항들의 계수를 더하거나 빼서 식을 간단히 하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bf5e7a4da8422493b35ebda396174c47e2e0599ca64b4ee3f2d3004e241ff97f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bf5e7a4da8422493b35ebda396174c47e2e0599ca64b4ee3f2d3004e241ff97f",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_LIKE_TERMS for PT_H1_POLY_OPERATION_EXPANSION/TPL_H1_POLY_OPERATION_DIRECT at H15-SA-01-POLYNOMIAL_BASIC.",
+          "decisiveEvidence": "2A+B=7x²+5xy−6y²",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_POLY_OPERATION_EXPANSION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_CONSTRAINT",
+      "canonicalLabelKo": "일차 관계식의 소거 대입",
+      "definition": "등식 제약조건을 이용해 종속변수를 독립변수로 완전히 소거하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_50ba322bc464ed4cee6273ff14858d48a32f48e4f62784f53ff1d5e84310d1bf"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_50ba322bc464ed4cee6273ff14858d48a32f48e4f62784f53ff1d5e84310d1bf",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_LINEAR_CONSTRAINT for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_MODEL at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "−2x²+(x+2)²=−(x−2)²+8",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_DIVISOR",
+      "canonicalLabelKo": "일차식으로 나눈 나머지 계산",
+      "definition": "일차식이 0이 되는 값을 다항식에 직접 대입하여 미지의 계수를 결정하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f61484aedcdac891b5755d5a8c935ffa25f238ca1d826e542b995635180e55f4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f61484aedcdac891b5755d5a8c935ffa25f238ca1d826e542b995635180e55f4",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_LINEAR_DIVISOR for PT_H1_REMAINDER_THEOREM/TPL_H1_REMAINDER_DIRECT_SUBSTITUTION at H15-SA-02-REMAINDER_FACTOR.",
+          "decisiveEvidence": "P(1/2)=1에서 a=11",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_REMAINDER_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_REDUCTION",
+      "canonicalLabelKo": "고차식의 관계식 대입 축약",
+      "definition": "이차식 = 0 관계를 이용하여 목표 다항식의 차수를 낮추어 값을 구하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_277ad57d010a783f11edead553d253e4417dab7fce78a6b0000764fbfb203d23"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_277ad57d010a783f11edead553d253e4417dab7fce78a6b0000764fbfb203d23",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_POLYNOMIAL_REDUCTION for PT_H1_COMPLEX_CONDITION_EQUATION/TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION at H15-SA-04-COMPLEX_OPERATION.",
+          "decisiveEvidence": "x²−x+1=0에서 x²=x−1",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_COMPLEX_CONDITION_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_REAL_IMAG_PARTS",
+      "canonicalLabelKo": "복소수의 실수부와 허수부 분해",
+      "definition": "z^2 = (a+bi)^2 = (a^2-b^2) + 2abi 형태로 전개하여 실수 조건과 결합하는 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fdcbb2021d4d508b99c5e62a3e21af4fe3ac925f99d5a99d1ab0c22b58384d5e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fdcbb2021d4d508b99c5e62a3e21af4fe3ac925f99d5a99d1ab0c22b58384d5e",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_REAL_IMAG_PARTS for PT_H1_COMPLEX_CONDITION_EQUATION/TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT at H15-SA-04-COMPLEX_ROOT.",
+          "decisiveEvidence": "복소 제곱식에서 $a^2-b^2=65$, $ab=36$을 얻고, 범위 조건으로 근의 부호를 골라 $a-2b$를 계산한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_COMPLEX_CONDITION_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RECIPROCAL_SUM",
+      "canonicalLabelKo": "두 근의 역수의 합 계산",
+      "definition": "1/alpha + 1/beta = (alpha+beta)/(alpha*beta) 대칭식 변형을 적용하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_11002e502122f37be6681ab61ebf8009ce57aa2c87a8cb2bb7510cfda1e42f56"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_11002e502122f37be6681ab61ebf8009ce57aa2c87a8cb2bb7510cfda1e42f56",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_RECIPROCAL_SUM for PT_H1_ROOT_COEFFICIENT_RELATION/TPL_H1_VIETA_SYMMETRIC_VALUE at H15-SA-06-ROOT_COEFFICIENT_RELATION.",
+          "decisiveEvidence": "(α+β)/(αβ)=−1",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ROOT_COEFFICIENT_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_REMAINDER_THEOREM_COMPOSITE",
+      "canonicalLabelKo": "합성 다항식의 나머지정리",
+      "definition": "f(x+1)을 x-2로 나눈 나머지가 f(3)임을 변수 치환으로 해석하여 연립",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f15657643513f5e85c9cbd74ea7a0f3e636986dd6a858bc11d241ffc8440c84e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f15657643513f5e85c9cbd74ea7a0f3e636986dd6a858bc11d241ffc8440c84e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_REMAINDER_THEOREM_COMPOSITE for PT_H1_REMAINDER_THEOREM/TPL_H1_REMAINDER_COMPOSITE_DIVISOR at H15-SA-02-REMAINDER_FACTOR.",
+          "decisiveEvidence": "R(3)=f(3)=7",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_REMAINDER_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ROOT_RATIO",
+      "canonicalLabelKo": "두 근의 비가 주어진 이차방정식",
+      "definition": "두 근을 t, 3t로 두고 근과 계수의 관계와 연립하여 매개변수 이차식을 해결",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7e13bc85d9e2df5957fc9a279bed477d50078b7ac418b8efe3e5991b4086fafe"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7e13bc85d9e2df5957fc9a279bed477d50078b7ac418b8efe3e5991b4086fafe",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_ROOT_RATIO for PT_H1_ROOT_COEFFICIENT_RELATION/TPL_H1_VIETA_TRANSFORMED_ROOT at H15-SA-06-ROOT_CONDITION.",
+          "decisiveEvidence": "근을 t,3t로 두어 k²−3k+1=0, k의 합 3",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ROOT_COEFFICIENT_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SPECIAL_VALUE_METHOD",
+      "canonicalLabelKo": "수치대입법",
+      "definition": "항등식의 성질을 이용하여 복잡한 몫 f(x)를 소거할 수 있는 특수값 x=1, x^2=2를 대입",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c44b033b9b2d5a118ff1371f371b3985f6ee6c2e65819328118067799c264c17"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c44b033b9b2d5a118ff1371f371b3985f6ee6c2e65819328118067799c264c17",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_SPECIAL_VALUE_METHOD for PT_H1_POLY_IDENTITY_COEFFICIENT/TPL_H1_IDENTITY_SPECIAL_VALUE at H15-SA-02-IDENTITY.",
+          "decisiveEvidence": "x=1, x²=2 대입으로 a=−10,b=8, 답 40",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_POLY_IDENTITY_COEFFICIENT"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_GROUPING",
+      "canonicalLabelKo": "네 일차식의 공통부분 묶음 전개",
+      "definition": "(x+a)(x+b)(x+c)(x+d)에서 상수항의 합이 같도록 짝지어 공통부분 치환을 유도하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f02ed32fe7e2b6db049271ae775d33acb7704c906ecc10c0b9a042d48805bd4a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f02ed32fe7e2b6db049271ae775d33acb7704c906ecc10c0b9a042d48805bd4a",
+          "sourceOrdinal": 9,
+          "classificationRationale": "META_PIPELINE_AUDIT record 9 binds CC_SYMMETRIC_GROUPING for PT_H1_POLY_FORMULA_SYMMETRIC/TPL_H1_FORMULA_SYMMETRIC at H15-SA-03-FACTORIZATION.",
+          "decisiveEvidence": "u=(x+4)²로 두면 u²−10u+9+a가 (u−5)²가 되는 a=16",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_POLY_FORMULA_SYMMETRIC"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_ROOTS",
+      "canonicalLabelKo": "부호 대칭근의 곱과 합",
+      "definition": "근들의 쌍 (+r, -r)의 곱을 통해 상수항과 계수를 신속하게 결정하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_374fc42c4a5b42e4ad7bdc587a61a94922942b00b1dec5eb44bea2e8382364e5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_374fc42c4a5b42e4ad7bdc587a61a94922942b00b1dec5eb44bea2e8382364e5",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_SYMMETRIC_ROOTS for PT_H1_HIGHER_DEGREE_EQUATION/TPL_H1_HIGHER_FACTOR_ROOT at H15-SA-07-HIGHER_EQUATION.",
+          "decisiveEvidence": "짝수차 식의 네 근은 −2,2,1,−1",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_HIGHER_DEGREE_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_TANGENT_LINE_DISCRIMINANT",
+      "canonicalLabelKo": "포물선과 직선의 접선 판별식 D=0",
+      "definition": "실수 a의 값에 관계없이 항상 접한다는 조건을 a에 대한 항등식으로 전환",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fc661fdcc60bde2b08ae3446e6d4f8e056bac2d18100de32be5a24ab4eede8ee"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fc661fdcc60bde2b08ae3446e6d4f8e056bac2d18100de32be5a24ab4eede8ee",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_TANGENT_LINE_DISCRIMINANT for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_INTERSECTION_TANGENCY at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "D=4a(m−3)+m²−4n+4≡0에서 4mn=39",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_VIETA_FORMULA",
+      "canonicalLabelKo": "이차방정식의 근과 계수의 관계",
+      "definition": "이차방정식 ax^2+bx+c=0의 두 근의 합 -b/a와 두 근의 곱 c/a를 대수적으로 활용하는 공식",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_11002e502122f37be6681ab61ebf8009ce57aa2c87a8cb2bb7510cfda1e42f56",
+        "qid_v1_7e13bc85d9e2df5957fc9a279bed477d50078b7ac418b8efe3e5991b4086fafe"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H15-SA-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_11002e502122f37be6681ab61ebf8009ce57aa2c87a8cb2bb7510cfda1e42f56",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_VIETA_FORMULA for PT_H1_ROOT_COEFFICIENT_RELATION/TPL_H1_VIETA_SYMMETRIC_VALUE at H15-SA-06-ROOT_COEFFICIENT_RELATION.",
+          "decisiveEvidence": "(α+β)/(αβ)=−1",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7e13bc85d9e2df5957fc9a279bed477d50078b7ac418b8efe3e5991b4086fafe",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_VIETA_FORMULA for PT_H1_ROOT_COEFFICIENT_RELATION/TPL_H1_VIETA_TRANSFORMED_ROOT at H15-SA-06-ROOT_CONDITION.",
+          "decisiveEvidence": "근을 t,3t로 두어 k²−3k+1=0, k의 합 3",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ROOT_COEFFICIENT_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_VIETA_THIRD_DEGREE",
+      "canonicalLabelKo": "삼차방정식의 근과 계수의 관계",
+      "definition": "세 근 a, b, c에 대하여 합, 둘씩의 곱, 세 근의 곱을 계수로부터 유도",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c3e59dab59778eb44fda4b0630067017ada7eebcdb369ea64a8a910c0c046319"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c3e59dab59778eb44fda4b0630067017ada7eebcdb369ea64a8a910c0c046319",
+          "sourceOrdinal": 24,
+          "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_VIETA_THIRD_DEGREE for PT_H1_POLY_FORMULA_SYMMETRIC/TPL_H1_FORMULA_SYMMETRIC at H15-SA-07-HIGHER_EQUATION.",
+          "decisiveEvidence": "d²=(a+b+c)²−2(ab+bc+ca)=20",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_POLY_FORMULA_SYMMETRIC"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
       "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
       "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
@@ -8601,6 +9675,216 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_INTERVAL_BOUNDS",
+      "canonicalLabelKo": "닫힌 구간에서의 이차함수 양 끝값 비교",
+      "definition": "제한된 정의역 [a, b]에서 꼭짓점의 포함 여부와 양 끝점의 함숫값을 비교하여 최대·최소를 결정하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_102b2ac4082a8bd28e020f42d215c6f915f59ff3c6f3bc4ae7c21d7a5c5f1f11"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_102b2ac4082a8bd28e020f42d215c6f915f59ff3c6f3bc4ae7c21d7a5c5f1f11",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_INTERVAL_BOUNDS for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "(x+1)²−3의 꼭짓점과 닫힌구간 끝값으로 최솟값·최댓값 결정",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_MIDPOINT_SYMMETRY",
+      "canonicalLabelKo": "두 교점의 중점 x좌표에서의 함수값",
+      "definition": "x = (alpha+beta)/2를 대입하여 두 교점 간 거리와 포물선 깊이 관계를 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bb827d20f37d9e45cf5688ceb9206b601b143e07992609825aae3fd9847042e8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bb827d20f37d9e45cf5688ceb9206b601b143e07992609825aae3fd9847042e8",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_MIDPOINT_SYMMETRY for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY at H15-SA-13-QUADRATIC_GRAPH.",
+          "decisiveEvidence": "중점에서 g−f=3(β−α)²/4=3이므로 CD=2",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA",
+      "canonicalLabelKo": "이차함수의 최댓값과 최솟값",
+      "definition": "완전제곱식을 이용하여 꼭짓점의 좌표와 대칭축을 중심으로 함수의 극값을 구하는 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_102b2ac4082a8bd28e020f42d215c6f915f59ff3c6f3bc4ae7c21d7a5c5f1f11"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_102b2ac4082a8bd28e020f42d215c6f915f59ff3c6f3bc4ae7c21d7a5c5f1f11",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_QUADRATIC_EXTREMA for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "(x+1)²−3의 꼭짓점과 닫힌구간 끝값으로 최솟값·최댓값 결정",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA_MODEL",
+      "canonicalLabelKo": "조건식이 주어진 다변수 이차식의 최대·최소",
+      "definition": "일차 제약조건 y=x+2를 대입하여 한 변수의 위로 볼록한 이차함수로 변환 후 최댓값 도출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_50ba322bc464ed4cee6273ff14858d48a32f48e4f62784f53ff1d5e84310d1bf"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_50ba322bc464ed4cee6273ff14858d48a32f48e4f62784f53ff1d5e84310d1bf",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_QUADRATIC_EXTREMA_MODEL for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_MODEL at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "−2x²+(x+2)²=−(x−2)²+8",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "이차함수와 직선 또는 두 포물선의 교점",
+      "definition": "연립방정식 f(x) - g(x) = 0의 실근을 좌표평면 상의 교점의 x좌표로 해석하는 기하·대수 결합 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6ebcdae9fbec019f2b20b3d4cad5be81d13cd03260363a93c56768fa836120e2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6ebcdae9fbec019f2b20b3d4cad5be81d13cd03260363a93c56768fa836120e2",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_QUADRATIC_GRAPH_INTERSECTION for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY at H15-SA-13-QUADRATIC_GRAPH.",
+          "decisiveEvidence": "f+2g=(x−α)(3x−β−2γ)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_LINEAR_INTERSECTION",
+      "canonicalLabelKo": "포물선과 직선의 교점과 차의 함수",
+      "definition": "h(x) = f(x) - g(x) = 3(x-alpha)(x-beta)로 두고 대칭축과 중점의 수직선 좌표를 해석",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bb827d20f37d9e45cf5688ceb9206b601b143e07992609825aae3fd9847042e8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bb827d20f37d9e45cf5688ceb9206b601b143e07992609825aae3fd9847042e8",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_QUADRATIC_LINEAR_INTERSECTION for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY at H15-SA-13-QUADRATIC_GRAPH.",
+          "decisiveEvidence": "중점에서 g−f=3(β−α)²/4=3이므로 CD=2",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
       ],
       "ownerConceptShard": "FUNCTIONS"
     },
@@ -14497,6 +15781,41 @@
       ],
       "curriculumRefs": [
         "2015:중2 수학:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RIGHT_TRIANGLE_CONVERSE",
+      "canonicalLabelKo": "피타고라스 정리의 역",
+      "definition": "a^2 = b^2 + c^2 관계식을 직각삼각형으로, a=b 관계식을 이등변삼각형으로 기하학적 해석",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_d2c22154df02e50905b6729911d033682daf2bffaa0062f19c897e060a21e60d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d2c22154df02e50905b6729911d033682daf2bffaa0062f19c897e060a21e60d",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_RIGHT_TRIANGLE_CONVERSE for PT_H1_POLY_FACTORIZATION/TPL_H1_FACTORIZATION_STANDARD at H15-SA-03-FACTORIZATION.",
+          "decisiveEvidence": "(a²−b²)(c²−a²−b²)=0",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-03"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
