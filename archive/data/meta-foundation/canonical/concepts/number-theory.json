@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "NUMBER_THEORY",
-  "shardVersion": "1.1.6",
+  "shardVersion": "1.1.7",
   "status": "ACTIVE",
-  "conceptCount": 21,
+  "conceptCount": 25,
   "concepts": [
     {
       "conceptKey": "CC_NUMBER_DIVISOR_MULTIPLE",
@@ -696,6 +696,146 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_DIOPHANTINE_NATURAL_BOUND",
+      "canonicalLabelKo": "자연수 범위 조건에서의 부정방정식 순서쌍 탐색",
+      "definition": "미지수들이 특정 자연수 이하라는 범위 제약과 정수 배수 조건(b = 3/2 a^2)을 만족하는 순서쌍을 찾아 최댓값을 구하는 추론",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e0d6c4c70fa5761161f82cc48654aa716bde39e25ce971cc8ccaae78766c63f3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e0d6c4c70fa5761161f82cc48654aa716bde39e25ce971cc8ccaae78766c63f3",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_DIOPHANTINE_NATURAL_BOUND for PT_M3_POLY_FACTORIZATION/TPL_M3_PERFECT_SQUARE_CONDITION at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_DIVISOR_PAIR_CASE_ANALYSIS",
+      "canonicalLabelKo": "자연수 계수 다항식 곱의 약수 순서쌍 분류",
+      "definition": "ac=4, bd=5를 만족하는 자연수 순서쌍 (a,c)와 (b,d)의 모든 경우를 나누어 일차항 계수 A=ad+bc의 가능한 값을 구하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f05381f743c4b8b734a6020b2c980b1949193aeeaf9d892164dfdab2e0a471ca"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f05381f743c4b8b734a6020b2c980b1949193aeeaf9d892164dfdab2e0a471ca",
+          "sourceOrdinal": 24,
+          "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_DIVISOR_PAIR_CASE_ANALYSIS for PT_M3_POLY_MULTIPLICATION/TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 24 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_MULTIPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_PRIME_FACTORIZATION_SQUARE",
+      "canonicalLabelKo": "소인수분해를 이용한 제곱수 만들기",
+      "definition": "자연수를 소인수분해했을 때 모든 소인수의 지수가 짝수가 되도록 곱하거나 나누는 자연수를 결정하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7388b1b1dde38b6b664d2fbb3e6fc039fcd8e31daf1960bd6b604c9ab5267b75"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7388b1b1dde38b6b664d2fbb3e6fc039fcd8e31daf1960bd6b604c9ab5267b75",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_PRIME_FACTORIZATION_SQUARE for PT_M3_SQUARE_ROOT_PROPERTY/TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 21 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_PROPERTY"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_RADICAL_NATURAL_CONDITION",
+      "canonicalLabelKo": "제곱근이 자연수가 되기 위한 조건",
+      "definition": "√(N/x)가 자연수가 되기 위해서는 근호 안의 식 N/x가 1 이상의 자연수의 제곱수가 되어야 한다는 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7388b1b1dde38b6b664d2fbb3e6fc039fcd8e31daf1960bd6b604c9ab5267b75"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7388b1b1dde38b6b664d2fbb3e6fc039fcd8e31daf1960bd6b604c9ab5267b75",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_RADICAL_NATURAL_CONDITION for PT_M3_SQUARE_ROOT_PROPERTY/TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 21 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_PROPERTY"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
     }
