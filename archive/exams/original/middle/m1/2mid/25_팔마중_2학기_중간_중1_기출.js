@@ -329,7 +329,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
-    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q8-solution-fig.svg",
     "solutionImageAlt": "해설 그림: 왼쪽에서 l∥m이므로 꺾인 점의 각은 15°+45°=60°=x이고, 오른쪽에서 n∥o이므로 같은 쪽 안쪽각인 y와 z의 합은 180°이다. 따라서 x+y+z=240°이다.",
     "solutionImageCaption": "왼쪽에서 l∥m이므로 꺾인 점의 각은 15°+45°=60°=x이고, 오른쪽에서 n∥o이므로 같은 쪽 안쪽각인 y와 z의 합은 180°이다. 따라서 x+y+z=240°이다.",
     "solutionImageSize": "large"
