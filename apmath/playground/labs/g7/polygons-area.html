@@ -322,7 +322,7 @@
     function drawAcademicGrid(rect) {
       const step = 20 * state.scale;
       ctx.save();
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.035)';
+      ctx.strokeStyle = 'rgba(15, 23, 42, 0.075)';
       ctx.lineWidth = 1;
       for (let x = 0; x < rect.width; x += step) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
@@ -414,7 +414,7 @@
       ctx.font = '800 12px Pretendard, sans-serif';
       const w = ctx.measureText(text).width + 8;
       ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
-      ctx.strokeStyle = '#CBD5E1';
+      ctx.strokeStyle = '#94A3B8';
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.roundRect(lx - w / 2, ly - 8, w, 16, 4);
@@ -450,7 +450,7 @@
       const barX = (rect.width - barW) / 2, barY = rect.height - 64;
       ctx.save();
       ctx.fillStyle = 'rgba(255, 255, 255, 0.96)';
-      ctx.strokeStyle = '#CBD5E1';
+      ctx.strokeStyle = '#94A3B8';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.roundRect(barX - 12, barY - 24, barW + 24, 46, 10);
@@ -1028,7 +1028,7 @@
             const ax = cx + (state.dragXRatio - 0.35) * aPx * 2.0 + t * aPx * 0.65;
             const pA = { x: ax, y: yTop }, pH = { x: ax, y: yBot };
 
-            ctx.strokeStyle = '#94A3B8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+            ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
             ctx.beginPath(); ctx.moveTo(cx - 230, yBot); ctx.lineTo(cx + 230, yBot); ctx.stroke(); ctx.setLineDash([]);
 
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
@@ -1195,7 +1195,7 @@
             const pO = { x: pA.x + tI * (pC.x - pA.x), y: pA.y + tI * (pC.y - pA.y) };
 
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
-            ctx.strokeStyle = '#94A3B8'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.stroke();
             drawParallelArrows(pA.x, pA.y, pD.x, pD.y, 2); drawParallelArrows(pB.x, pB.y, pC.x, pC.y, 2);
 
             [[pA, pB, pO], [pD, pC, pO]].forEach((tr) => {
