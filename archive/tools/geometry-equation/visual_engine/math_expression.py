@@ -9,7 +9,7 @@ import re
 FUNCTIONS={'sqrt':math.sqrt,'sin':math.sin,'cos':math.cos,'tan':math.tan,
            'log':math.log,'ln':math.log,'exp':math.exp,'abs':abs}
 CALL_SYMBOLS=set('fghpq')|{'logb'}
-TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,])')
+TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,°])')
 
 @dataclass(frozen=True)
 class Expr:
@@ -54,6 +54,11 @@ class Parser:
         else:raise ValueError('UNEXPECTED_MATH_TOKEN:'+token)
         while True:
             op=self.peek()
+            if op=='°' and bp<=40:
+                # A degree sign is a postfix on the value it follows (15° = 15 degrees): the same degree node the angle marks use.
+                self.take()
+                left=self.node('degree',args=(left,))
+                continue
             if op in ("'",'_') and bp<=40:
                 self.take()
                 left=self.node('prime',args=(left,)) if op=="'" else self.node('subscript',args=(left,self.expr(41,depth+1)))

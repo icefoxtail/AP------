@@ -63,6 +63,37 @@ MAPPING_PLAN={'kind':'MAPPING','columns':[{'id':'X','elements':['1','2']},{'id':
               'arrows':[{'from':{'column':0,'element':0},'to':{'column':1,'element':1}}]}
 
 
+TABLE_PLAN={'kind':'MEMBERSHIP_TABLE','sets':[{'id':'A'},{'id':'B'},{'id':'C'},{'id':'D'}],
+            'elements':[{'text':'1','in':['A','D']},{'text':'2','in':['B','D']},{'text':'3','in':['A','B','C']},
+                        {'text':'4','in':['D']},{'text':'5','in':['A','B']},{'text':'6','in':['C']}]}
+TABLE_XS=[18,114,170,226,282,338]
+TABLE_YS=[18,60,100,140,180,220,260,300]
+
+
+def table_svg(marks=None,header_text='D',drop_grid=False):
+    """The four-set membership table from 19 매산여고 q5, hand-built from the layout (no producer numbers)."""
+    if marks is None:
+        marks=[(0,'A',142,80),(0,'D',310,80),(1,'B',198,120),(1,'D',310,120),(2,'A',142,160),(2,'B',198,160),
+               (2,'C',254,160),(3,'D',310,200),(4,'A',142,240),(4,'B',198,240),(5,'C',254,280)]
+    out=['<svg xmlns="%s" data-set-diagram="set-diagram-figure-v1" data-kind="MEMBERSHIP_TABLE">'%NS]
+    out.append('<rect id="table-frame" data-role="table-frame" x="18" y="18" width="320" height="282" fill="none"/>')
+    if not drop_grid:
+        for index,x in enumerate(TABLE_XS[1:-1],1):
+            out.append('<line id="grid-v-%d" data-role="grid-v" data-index="%d" x1="%d" y1="18" x2="%d" y2="300" stroke="#111" stroke-width="0.8"/>'%(index,index,x,x))
+        for index,y in enumerate(TABLE_YS[1:-1],1):
+            out.append('<line id="grid-h-%d" data-role="grid-h" data-index="%d" x1="18" y1="%d" x2="338" y2="%d" stroke="#111" stroke-width="0.8"/>'%(index,index,y,y))
+    for column,set_id in enumerate('ABCD'):
+        cx=142+column*56
+        text=header_text if (column==3 and header_text!='D') else set_id
+        out.append(label('col-set-'+set_id,'col-set',(cx-8,29,16,20),text,' data-set="%s"'%set_id,math=True))
+    for row,text in enumerate(('1','2','3','4','5','6')):
+        out.append(label('row-element-%d'%row,'row-element',(58,70+row*40,16,20),text,' data-element="%d"'%row,math=True))
+    for element,set_id,cx,cy in marks:
+        out.append('<circle id="mark-%d-%s" data-role="membership" data-element="%d" data-set="%s" cx="%d" cy="%d" r="5" fill="#111"/>'%(element,set_id,element,set_id,cx,cy))
+    out.append('</svg>')
+    return ''.join(out)
+
+
 class Exact(unittest.TestCase):
     def test_set_expression_truth_table(self):
         fn=S.parse_expression('(A∩B)∪(A∪B)ᶜ',['A','B'])
@@ -167,6 +198,34 @@ class MappingTamper(unittest.TestCase):
         self.assertIn('SD_ELEMENT_NOT_IN_OVAL:0:1',self.audit(svg)['errors'])
         wrong=mapping_svg().replace('data-text="Y" data-box','data-text="Z" data-box')
         self.assertIn('SD_COLUMN_NAME_TEXT:1',self.audit(wrong)['errors'])
+
+
+class TableTamper(unittest.TestCase):
+    def audit(self,svg,plan=None):
+        return S.audit(plan or TABLE_PLAN,svg)
+
+    def test_a_faithful_membership_table_passes(self):
+        result=self.audit(table_svg())
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertEqual(result['observed'],{'sets':4,'elements':6,'marks':11})
+
+    def test_a_mark_outside_its_cell_is_caught(self):
+        marks=[(0,'A',198,80),(0,'D',310,80),(1,'B',198,120),(1,'D',310,120),(2,'A',142,160),(2,'B',198,160),
+               (2,'C',254,160),(3,'D',310,200),(4,'A',142,240),(4,'B',198,240),(5,'C',254,280)]
+        self.assertIn('SD_TABLE_MARK_PLACE:0:A',self.audit(table_svg(marks=marks))['errors'])
+
+    def test_a_missing_or_extra_mark_is_caught(self):
+        missing=self.audit(table_svg(marks=[(0,'D',310,80),(1,'B',198,120),(1,'D',310,120),(2,'A',142,160),(2,'B',198,160),
+                                            (2,'C',254,160),(3,'D',310,200),(4,'A',142,240),(4,'B',198,240),(5,'C',254,280)]))
+        self.assertIn('SD_TABLE_MARK_SET',missing['errors'])
+        extra=self.audit(table_svg(marks=[(0,'A',142,80),(0,'B',198,80),(0,'D',310,80),(1,'B',198,120),(1,'D',310,120),
+                                          (2,'A',142,160),(2,'B',198,160),(2,'C',254,160),(3,'D',310,200),(4,'A',142,240),
+                                          (4,'B',198,240),(5,'C',254,280)]))
+        self.assertIn('SD_TABLE_MARK_SET',extra['errors'])
+
+    def test_a_wrong_header_and_a_missing_grid_are_caught(self):
+        self.assertIn('SD_TABLE_HEADER_TEXT:D',self.audit(table_svg(header_text='X'))['errors'])
+        self.assertIn('SD_TABLE_GRID',self.audit(table_svg(drop_grid=True))['errors'])
 
 
 if __name__=='__main__':

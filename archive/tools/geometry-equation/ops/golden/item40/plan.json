@@ -1,0 +1,31 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MEMBERSHIP_TABLE",
+  "sets": [
+   {"id": "A"},
+   {"id": "B"},
+   {"id": "C"},
+   {"id": "D"}
+  ],
+  "elements": [
+   {"text": "1", "in": ["A", "D"]},
+   {"text": "2", "in": ["B", "D"]},
+   {"text": "3", "in": ["A", "B", "C"]},
+   {"text": "4", "in": ["D"]},
+   {"text": "5", "in": ["A", "B"]},
+   {"text": "6", "in": ["C"]}
+  ]
+ },
+ "caption": "주사위 눈 1부터 6까지가 사건 A(홀수), B(소수), C(3의 배수), D(4의 약수)에 각각 속하는지를 한 표에 표시한 것이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "표본공간 {1,2,3,4,5,6}, A={1,3,5}, B={2,3,5}, C={3,6}, D={1,2,4}",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "각 눈이 네 사건에 속하는지를 같은 행에서 비교할 수 있어 두 사건의 교집합 원소를 바로 읽는다."
+ ]
+}

@@ -36,7 +36,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
-    "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+    "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 잘라 낸 입체도형의 교점은 A, B, C, D, E, F, G, I의 8개이고 교선은 12개이므로 a+b=20이다.",
+    "solutionImageCaption": "잘라 낸 입체도형의 교점은 A, B, C, D, E, F, G, I의 8개이고 교선은 12개이므로 a+b=20이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 2,
@@ -75,7 +79,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
-    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY"
+    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D이다. 직선은 양쪽으로 한없이 뻗으므로 AB와 CD는 같은 직선 l을 나타낸다.",
+    "solutionImageCaption": "직선 l 위의 네 점 A, B, C, D이다. 직선은 양쪽으로 한없이 뻗으므로 AB와 CD는 같은 직선 l을 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -113,7 +121,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
-    "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT"
+    "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 M은 AB의 중점, 점 N은 BC의 중점이고 AB=3BC이므로 AM=MB, BN=NC이다. MN=MB+BN=28cm이면 BC=14cm, AB=42cm이다.",
+    "solutionImageCaption": "점 M은 AB의 중점, 점 N은 BC의 중점이고 AB=3BC이므로 AM=MB, BN=NC이다. MN=MB+BN=28cm이면 BC=14cm, AB=42cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -153,7 +165,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
-    "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE"
+    "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l은 AB의 수직이등분선이므로 M에서 AB와 수직으로 만나고 AM=MB이다. 점 P에서 AB에 내린 수선의 발은 M이다.",
+    "solutionImageCaption": "직선 l은 AB의 수직이등분선이므로 M에서 AB와 수직으로 만나고 AM=MB이다. 점 P에서 AB에 내린 수선의 발은 M이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -191,7 +207,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO"
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: AD와 BE가 O에서 만나고 OC는 AD에 수직이다. ∠BOC=x, ∠DOE=2x이면 ∠BOD=120°이고 맞꼭지각이므로 ∠AOE=120°이다.",
+    "solutionImageCaption": "AD와 BE가 O에서 만나고 OC는 AD에 수직이다. ∠BOC=x, ∠DOE=2x이면 ∠BOD=120°이고 맞꼭지각이므로 ∠AOE=120°이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 6,
@@ -226,7 +246,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체에서 모서리 AB와 EF는 앞면 위에서 서로 평행하고, AB와 AE는 점 A에서 만나 앞면 ABFE를 정한다. AB와 CG는 만나지도 평행하지도 않은 꼬인 위치이다.",
+    "solutionImageCaption": "직육면체에서 모서리 AB와 EF는 앞면 위에서 서로 평행하고, AB와 AE는 점 A에서 만나 앞면 ABFE를 정한다. AB와 CG는 만나지도 평행하지도 않은 꼬인 위치이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -265,7 +289,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT"
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체에서 모서리 AB와 꼬인 위치에 있는 모서리는 4개, 평행한 모서리는 3개이므로 그 합은 7이다.",
+    "solutionImageCaption": "정육면체에서 모서리 AB와 꼬인 위치에 있는 모서리는 4개, 평행한 모서리는 3개이므로 그 합은 7이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 8,
@@ -304,7 +332,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE"
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q8-solution-fig.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에서 l∥m이므로 꺾인 점의 각은 15°+45°=60°=x이고, 오른쪽에서 n∥o이므로 같은 쪽 안쪽각인 y와 z의 합은 180°이다. 따라서 x+y+z=240°이다.",
+    "solutionImageCaption": "왼쪽에서 l∥m이므로 꺾인 점의 각은 15°+45°=60°=x이고, 오른쪽에서 n∥o이므로 같은 쪽 안쪽각인 y와 z의 합은 180°이다. 따라서 x+y+z=240°이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 9,
@@ -377,7 +409,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY"
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠XOY에서 O를 중심으로 호를 그어 두 변 위에 A, B를 잡고, 같은 반지름으로 P를 중심으로 호를 그어 PQ 위에 D, PR 위에 C를 잡으면 OA=OB=PC=PD이고 ∠AOB=∠CPD이다.",
+    "solutionImageCaption": "∠XOY에서 O를 중심으로 호를 그어 두 변 위에 A, B를 잡고, 같은 반지름으로 P를 중심으로 호를 그어 PQ 위에 D, PR 위에 C를 잡으면 OA=OB=PC=PD이고 ∠AOB=∠CPD이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 11,
@@ -454,7 +490,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: BC=EF이고 ∠C=∠F이다. 여기에 AC=DF를 더하면 SAS 합동, ∠A=∠D를 더하면 한 변과 그 양 끝 각이 같아 ASA 합동이 된다.",
+    "solutionImageCaption": "BC=EF이고 ∠C=∠F이다. 여기에 AC=DF를 더하면 SAS 합동, ∠A=∠D를 더하면 한 변과 그 양 끝 각이 같아 ASA 합동이 된다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -492,7 +532,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: △ABC≡△DEF이므로 ∠E=∠B=55°, ∠C=∠F=50°이고 a=∠A=75°이다. BC의 대응변 EF의 길이 b=5cm이다.",
+    "solutionImageCaption": "△ABC≡△DEF이므로 ∠E=∠B=55°, ∠C=∠F=50°이고 a=∠A=75°이다. BC의 대응변 EF의 길이 b=5cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -530,7 +574,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
-    "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_COMPOSITE_ANGLE_SUM"
+    "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_COMPOSITE_ANGLE_SUM",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD와 정삼각형 EBC에서 AB=BE, CD=CE이므로 △ABE와 △CDE는 이등변삼각형이다. ∠ABE=∠DCE=30°이므로 ∠EAB=∠DEC=75°이다.",
+    "solutionImageCaption": "정사각형 ABCD와 정삼각형 EBC에서 AB=BE, CD=CE이므로 △ABE와 △CDE는 이등변삼각형이다. ∠ABE=∠DCE=30°이므로 ∠EAB=∠DEC=75°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -646,7 +694,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-    "templateKey": "TPL_ISOSCELES_BASE_ANGLES"
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: l∥m이므로 DE∥AC이고 ∠ADE=∠DAC=50°이다. DA=DE인 이등변삼각형 ADE에서 두 밑각은 (180°-50°)/2=65°이므로 ∠AED=65°이다.",
+    "solutionImageCaption": "l∥m이므로 DE∥AC이고 ∠ADE=∠DAC=50°이다. DA=DE인 이등변삼각형 ADE에서 두 밑각은 (180°-50°)/2=65°이므로 ∠AED=65°이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 18,
@@ -717,7 +769,11 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위에 같은 간격으로 12개의 점이 있으므로 서로 다른 두 점을 고르는 수는 12×11÷2=66이다.",
+    "solutionImageCaption": "원 위에 같은 간격으로 12개의 점이 있으므로 서로 다른 두 점을 고르는 수는 12×11÷2=66이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -756,7 +812,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정오각형의 한 외각은 72°이다. 아래쪽 변이 직선 m과 19°를 이루고 변의 방향이 72°씩 두 번 바뀌므로 위쪽 변은 직선 l과 17°를 이룬다.",
+    "solutionImageCaption": "정오각형의 한 외각은 72°이다. 아래쪽 변이 직선 m과 19°를 이루고 변의 방향이 72°씩 두 번 바뀌므로 위쪽 변은 직선 l과 17°를 이룬다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -790,7 +850,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
-    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER"
+    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 삼각형 ABO에서 ∠AOB=64°이고, 맞꼭지각으로 ∠COD=64°이다. 삼각형 COD에서 x=180°-64°-54°=62°이다.",
+    "solutionImageCaption": "왼쪽 삼각형 ABO에서 ∠AOB=64°이고, 맞꼭지각으로 ∠COD=64°이다. 삼각형 COD에서 x=180°-64°-54°=62°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -823,7 +887,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 BAD에서 AB=AD, 정삼각형 ACE에서 AC=AE이고 ∠BAE=∠DAC이므로 △ABE≡△ADC(SAS 합동)이다.",
+    "solutionImageCaption": "정삼각형 BAD에서 AB=AD, 정삼각형 ACE에서 AC=AE이고 ∠BAE=∠DAC이므로 △ABE≡△ADC(SAS 합동)이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 23,
@@ -885,6 +953,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 정팔각형의 꼭짓점 A에서 두 대각선 AC, AF를 그으면 삼각형 ABC, 오각형 ACDEF, 사각형 AFGH로 나뉜다.",
+    "solutionImageCaption": "정팔각형의 꼭짓점 A에서 두 대각선 AC, AF를 그으면 삼각형 ABC, 오각형 ACDEF, 사각형 AFGH로 나뉜다.",
+    "solutionImageSize": "large"
   }
 ];

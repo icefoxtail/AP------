@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "meta-pipeline-courier-semantic-review-v1",
+  "examUid": "24_강남여고_1학기_중간_고1_기출",
+  "requestId": "meta-pipeline-gangnam-26f5b42d1b7a-20261027",
+  "reviewActors": [
+    "OpenCode Go deepseek-v4.1-flash",
+    "CODEX_ROOT"
+  ],
+  "scope": "Audited concept storage/reuse and focused metadata type correction only; no student content edits or mathematics re-solve.",
+  "originalAuditRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.source.json",
+    "sha256": "ccf8e16a81789eed9b77bda92f7fad1e5dbdb498a92e4f36d539902bfc2901a6"
+  },
+  "decisions": {
+    "exam": "24_강남여고_1학기_중간_고1_기출",
+    "n": 24,
+    "conceptShards": {
+      "CC_COEFFICIENT_COMPARISON": "ALGEBRA",
+      "CC_COMMON_ROOT": "ALGEBRA",
+      "CC_COMPLEX_CONJUGATE_PROPERTIES": "ALGEBRA",
+      "CC_COMPLEX_CONJUGATE_ROOT": "ALGEBRA",
+      "CC_COMPLEX_EQUATION": "ALGEBRA",
+      "CC_COMPLEX_NORM": "ALGEBRA",
+      "CC_COMPLEX_RECIPROCAL": "ALGEBRA",
+      "CC_CUBOID_DIAGONAL": "ALGEBRA",
+      "CC_DEGREE_ANALYSIS": "ALGEBRA",
+      "CC_DISCRIMINANT": "ALGEBRA",
+      "CC_DISCRIMINANT_PERFECT_SQUARE": "ALGEBRA",
+      "CC_DIVISION_ALGORITHM": "ALGEBRA",
+      "CC_DOUBLE_ROOT": "ALGEBRA",
+      "CC_FACTORIZATION_SYMMETRY": "ALGEBRA",
+      "CC_FUNCTION_TRANSFORMATION": "ALGEBRA",
+      "CC_HIGHER_DEGREE_EQUATION": "ALGEBRA",
+      "CC_IDENTITY_PARAMETER": "ALGEBRA",
+      "CC_INTEGER_ROOTS": "ALGEBRA",
+      "CC_INTERVAL_BOUNDS": "FUNCTIONS",
+      "CC_LIKE_TERMS": "ALGEBRA",
+      "CC_LINEAR_CONSTRAINT": "ALGEBRA",
+      "CC_LINEAR_DIVISOR": "ALGEBRA",
+      "CC_MIDPOINT_SYMMETRY": "FUNCTIONS",
+      "CC_PERFECT_SQUARE": "ALGEBRA",
+      "CC_POLYNOMIAL_DIVISION": "ALGEBRA",
+      "CC_POLYNOMIAL_EXPANSION": "ALGEBRA",
+      "CC_POLYNOMIAL_IDENTITY": "ALGEBRA",
+      "CC_POLYNOMIAL_REDUCTION": "ALGEBRA",
+      "CC_QUADRATIC_EXTREMA": "FUNCTIONS",
+      "CC_QUADRATIC_EXTREMA_MODEL": "FUNCTIONS",
+      "CC_QUADRATIC_GRAPH_INTERSECTION": "FUNCTIONS",
+      "CC_QUADRATIC_LINEAR_INTERSECTION": "FUNCTIONS",
+      "CC_REAL_IMAG_PARTS": "ALGEBRA",
+      "CC_RECIPROCAL_SUM": "ALGEBRA",
+      "CC_REMAINDER_THEOREM": "ALGEBRA",
+      "CC_REMAINDER_THEOREM_COMPOSITE": "ALGEBRA",
+      "CC_RIGHT_TRIANGLE_CONVERSE": "PLANE_GEOMETRY",
+      "CC_ROOT_RATIO": "ALGEBRA",
+      "CC_SPECIAL_VALUE_METHOD": "ALGEBRA",
+      "CC_SYMMETRIC_GROUPING": "ALGEBRA",
+      "CC_SYMMETRIC_ROOTS": "ALGEBRA",
+      "CC_TANGENT_LINE_DISCRIMINANT": "ALGEBRA",
+      "CC_VIETA_FORMULA": "ALGEBRA",
+      "CC_VIETA_THIRD_DEGREE": "ALGEBRA"
+    },
+    "reuseRationales": {
+      "CC_COEFFICIENT_COMPARISON": "Existing ACTIVE key reused. Audited label 계수비교법 and wording '항등식의 양변을 같은 차수의 항별로 전개하여 대응하는 계수를 서로 같다고 놓고 미정계수를 구하는' state the same operation as the canonical label 계수 비교 / definition '두 다항식이 항등적으로 같을 때 같은 차수의 계수를 대응시켜 미지수를 구하는 방법.' q2 source: x^2+ax+8=(bx+2)(x+c) is declared a 항등식 and the decisive excerpt is 'b=1, c=4, a=6이므로 a+b+c=11' (RHS expansion bx^2+(bc+2)x+2c compared term-by-term). Canonical key/label/definition and ALGEBRA shard unchanged; CC_POLYNOMIAL_IDENTITY remains the distinct identity premise on the same item.",
+      "CC_DISCRIMINANT": "Existing ACTIVE key reused. Audited label 이차방정식의 판별식 and definition 'D=b^2-4ac의 부호를 통해 실근, 중근, 허근의 개수를 판별' express the same sign criterion as the canonical 판별식 / '실근 개수·중근·접함 여부를 판정하는 개념.' q8 source: x^2+ax-b-5=0 has a 중근 and the decisive excerpt is '첫 판별식 0으로 b를 구한 뒤 둘째 판별식은 항상 음수', i.e. D=0 then D<0 on the second quadratic. Canonical definition and ALGEBRA shard unchanged; CC_DOUBLE_ROOT records the separate D=0 relation step on the same item and is not merged.",
+      "CC_PERFECT_SQUARE": "Existing ACTIVE key reused. Audited definition '치환된 이차식에 대해 판별식 D=0을 적용하여 완전제곱식이 되도록 상수를 결정' is the operational use of the canonical 완전제곱식 / '다항식의 제곱 꼴로 나타내어지는 식.' q9 source: (x+1)(x+3)(x+5)(x+7)+a must factor as a square of a quadratic, decisive excerpt 'u=(x+4)^2로 두면 u^2-10u+9+a가 (u-5)^2가 되는 a=16' — the outcome is literally a polynomial square, so the same concept. Canonical key/label/definition and ALGEBRA shard unchanged; CC_SYMMETRIC_GROUPING is the separate grouping step.",
+      "CC_POLYNOMIAL_DIVISION": "Existing ACTIVE key reused. Audited definition '피제수 = 제수 * 몫 + 나머지 (A = BQ + R, deg(R) < deg(B)) 항등식 표현' is the same division identity as the canonical '다항식의 나눗셈 항등식, 몫과 나머지, 제곱인수 나눗셈의 함수값·도함수 관계를 사용하는 개념.' q5 source excerpt '(x+2)(2x^2-x+1)+3=2x^3+3x^2-x+5' restores A from BQ+R and q12 excerpt '나눗셈 등식의 계수 비교로 a+b+c=-3' compares coefficients inside the same identity. Canonical definition and ALGEBRA shard unchanged; CC_DIVISION_ALGORITHM and CC_DEGREE_ANALYSIS are the separate steps on q5/q12.",
+      "CC_POLYNOMIAL_EXPANSION": "Existing ACTIVE key reused. Audited label 다항식의 전개와 동류항 결합 and wording '괄호를 풀고 같은 문자와 차수를 가진 항끼리 모아 정리' match the canonical 다항식의 전개 / '괄호를 풀어 동류항끼리 정리하는 계산.' q1 decisive excerpt '2A+B=7x^2+5xy-6y^2' is exactly bracket expansion plus like-term collection. Canonical key/label/definition and ALGEBRA shard unchanged; CC_LIKE_TERMS is the separate collection facet on the same item.",
+      "CC_POLYNOMIAL_IDENTITY": "Existing ACTIVE key reused. Audited definition '문자에 어떤 실수를 대입하여도 항상 성립하는 등식의 성질' is the same premise as canonical 다항식 항등식 / '모든 값에서 성립하는 다항식 등식의 계수 관계를 이용해 미지 다항식이나 계수를 결정하는 개념.' q2 source declares the equation a 항등식 in x (excerpt 'b=1, c=4, a=6이므로 a+b+c=11') and q21 source states 'x의 값에 관계없이 항상 성립' with excerpt 'x=1, x^2=2 대입으로 a=-10,b=8, 답 40'. Canonical definition and ALGEBRA shard unchanged; CC_SPECIAL_VALUE_METHOD and CC_COEFFICIENT_COMPARISON are the separate solving techniques.",
+      "CC_REMAINDER_THEOREM": "Existing ACTIVE key reused. Canonical definition names divisor x-a with remainder P(a); the audited wording '일차식 ax-b로 나누었을 때의 나머지가 P(b/a)' is the same theorem with a scaled linear divisor, not a different meaning. q6 source: P(x)=2x^3+ax^2-2x-1 divided by 2x-1 has remainder 1, decisive excerpt 'P(1/2)=1에서 a=11', i.e. P(b/a) with b=1, a=2. Canonical key/label/definition and ALGEBRA shard unchanged; CC_LINEAR_DIVISOR is retained as the audited distinct key on the same item under the add-only/no-merge instruction.",
+      "CC_COMMON_ROOT": "New audited key stored in ALGEBRA. q11 source shows two quadratics f, g with a common graph intersection at x=alpha, and the decisive excerpt 'f+2g=(x-alpha)(3x-beta-2gamma)' reads the shared root of the linear combination through factorization; this is a root/factorization concept, so ALGEBRA. Distinct from CC_QUADRATIC_GRAPH_INTERSECTION (graph-intersection reading) and CC_QUADRATIC_LINEAR_INTERSECTION bound to the same item.",
+      "CC_COMPLEX_CONJUGATE_PROPERTIES": "New audited key stored in ALGEBRA. q14 source asks for the false statement about z and z-bar, decisive excerpt 'z=1을 넣으면 4의 값은 2로 순허수가 아님' shows the option set is decided by algebraic properties of z and z-bar (sum/product real, reciprocal-conjugate relation). Distinct from CC_COMPLEX_CONJUGATE_ROOT (q10) and CC_COMPLEX_NORM (q14/q22 modulus facet).",
+      "CC_COMPLEX_CONJUGATE_ROOT": "New audited key stored in ALGEBRA. q10 source x=(1-sqrt3 i)/2 and decisive excerpt 'x^2-x+1=0에서 x^2=x-1' derive the quadratic satisfied by the imaginary root before reduction; the conjugate-root/dimension-reduction facet is kept separate from CC_POLYNOMIAL_REDUCTION (the substitution itself) on the same item.",
+      "CC_COMPLEX_EQUATION": "New audited key stored in ALGEBRA. q7 source z^2=65+72i with a>0, decisive excerpt '복소 제곱식에서 a^2-b^2=65, ab=36을 얻고, 범위 조건으로 근의 부호를 골라 a-2b를 계산한다' is complex equality turned into a real system; stored beside CC_REAL_IMAG_PARTS (the expansion producing the system) and CC_COMPLEX_NORM.",
+      "CC_COMPLEX_NORM": "New audited key stored in ALGEBRA. Bound to q14 and q22; q22 decisive excerpt 'a^2+b^2=1/(x^2+y^2)=3' uses z*z-bar=x^2+y^2 to invert the modulus squared. Distinct from CC_COMPLEX_RECIPROCAL (separating a and b) and CC_COMPLEX_CONJUGATE_PROPERTIES (algebraic identities) on the same items.",
+      "CC_COMPLEX_RECIPROCAL": "New audited key stored in ALGEBRA. q22 source 1/(x+yi) with real a, b, decisive excerpt 'a^2+b^2=1/(x^2+y^2)=3' follows from multiplying by the conjugate to separate real and imaginary parts. Stored beside CC_COMPLEX_NORM, which is applied afterwards; not merged.",
+      "CC_CUBOID_DIAGONAL": "New audited key stored in ALGEBRA (no solid-geometry shard is ACTIVE). q24 decisive excerpt 'd^2=(a+b+c)^2-2(ab+bc+ca)=20' computes the space diagonal sqrt(a^2+b^2+c^2) by the symmetric-product expansion; ALGEBRA is where the symmetric-identity and Vieta machinery lives, and CC_VIETA_THIRD_DEGREE supplies a+b+c and ab+bc+ca on the same item.",
+      "CC_DEGREE_ANALYSIS": "New audited key stored in ALGEBRA. q12 source has a degree-4 dividend and degree-2 quotient with f(x)=ax^2+bx+c asserted, decisive excerpt '나눗셈 등식의 계수 비교로 a+b+c=-3'; the degree bookkeeping inside A=BQ+R is an algebraic division step, distinct from CC_POLYNOMIAL_DIVISION and CC_COEFFICIENT_COMPARISON used in the same item.",
+      "CC_DISCRIMINANT_PERFECT_SQUARE": "New audited key stored in ALGEBRA. q19 source asks for integer a making both roots integers, decisive excerpt 'D=-3(a-3)^2+4에서 a=2,3,4, 합 9' requires D to be a perfect square; stored beside CC_DISCRIMINANT (sign criterion) and separate from CC_INTEGER_ROOTS (the bounded search) on the same item.",
+      "CC_DIVISION_ALGORITHM": "New audited key stored in ALGEBRA. q5 source gives quotient 2x^2-x+1 and remainder 3 for divisor x+2, decisive excerpt '(x+2)(2x^2-x+1)+3=2x^3+3x^2-x+5' reconstructs the dividend by BQ+R; this reconstruction step is kept as its own key next to the existing CC_POLYNOMIAL_DIVISION bound to q5.",
+      "CC_DOUBLE_ROOT": "New audited key stored in ALGEBRA. q8 source: x^2+ax-b-5=0 has a 중근, decisive excerpt '첫 판별식 0으로 b를 구한 뒤 둘째 판별식은 항상 음수'; imposing D=0 to relate a and b is a distinct step from the sign test recorded by CC_DISCRIMINANT on the same item.",
+      "CC_FACTORIZATION_SYMMETRY": "New audited key stored in ALGEBRA. q13 decisive excerpt '(a^2-b^2)(c^2-a^2-b^2)=0' comes from factoring the symmetric relation a^2(b^2+c^2-a^2)=b^2(a^2+c^2-b^2); the cyclic symmetric factorization is algebraic, while the geometric conclusion is CC_RIGHT_TRIANGLE_CONVERSE in PLANE_GEOMETRY.",
+      "CC_FUNCTION_TRANSFORMATION": "New audited key stored in ALGEBRA. q18 source gives f(x) mod (x+4) = -7 and f(x+1) mod (x-2) = 7, decisive excerpt 'R(3)=f(3)=7'; converting the shifted input into a plain function value is a polynomial-remainder manipulation, so ALGEBRA, not FUNCTIONS. Distinct from CC_REMAINDER_THEOREM_COMPOSITE on the same item.",
+      "CC_HIGHER_DEGREE_EQUATION": "New audited key stored in ALGEBRA. q17 source x^4+ax^2+b with factors (x+2)(x-1), decisive excerpt '짝수차 식의 네 근은 -2,2,1,-1' uses even symmetry of the biquadratic to recover all four roots; kept separate from CC_SYMMETRIC_ROOTS (the +/-r product step) on the same item.",
+      "CC_IDENTITY_PARAMETER": "New audited key stored in ALGEBRA. q23 source requires tangency for every real a, decisive excerpt 'D=4a(m-3)+m^2-4n+4=0에서 4mn=39' treats the discriminant as an identity in a and sets both the a-coefficient and the constant to zero; the parameter-identity comparison is algebraic. Closest ACTIVE entry CC_IDENTITY_IN_PARAMETER is noted, not merged.",
+      "CC_INTEGER_ROOTS": "New audited key stored in ALGEBRA. q19 decisive excerpt 'D=-3(a-3)^2+4에서 a=2,3,4, 합 9' bounds the integer candidates from the discriminant upper bound and then tests them; the finite search is a separate key from CC_DISCRIMINANT_PERFECT_SQUARE on the same item.",
+      "CC_INTERVAL_BOUNDS": "New audited key stored in FUNCTIONS. q4 source y=x^2+2x-2 on -1<=x<=2, decisive excerpt '(x+1)^2-3의 꼭짓점과 닫힌구간 끝값으로 최솟값·최댓값 결정' compares the vertex with both endpoints of the closed interval; FUNCTIONS is the ACTIVE shard for quadratic extrema, matching CC_QUADRATIC_EXTREMA_RESTRICTED_INTERVAL (noted, not merged).",
+      "CC_LIKE_TERMS": "New audited key stored in ALGEBRA. q1 decisive excerpt '2A+B=7x^2+5xy-6y^2' is the collection of terms with identical letters and degrees; stored beside CC_POLYNOMIAL_EXPANSION (bracket expansion) on the same item.",
+      "CC_LINEAR_CONSTRAINT": "New audited key stored in ALGEBRA. q16 source y=x+2, decisive excerpt '-2x^2+(x+2)^2=-(x-2)^2+8' fully eliminates y through the linear equality; the elimination technique is algebraic, while the extremum model built on it is CC_QUADRATIC_EXTREMA_MODEL in FUNCTIONS.",
+      "CC_LINEAR_DIVISOR": "New audited key stored in ALGEBRA. q6 source divisor 2x-1, decisive excerpt 'P(1/2)=1에서 a=11' evaluates the polynomial at the zero of a linear divisor to fix a coefficient; the direct-substitution computation is retained as the audited key on q6, with the existing CC_REMAINDER_THEOREM also bound there (different keys, not merged).",
+      "CC_MIDPOINT_SYMMETRY": "New audited key stored in FUNCTIONS. q20 decisive excerpt '중점에서 g-f=3(beta-alpha)^2/4=3이므로 CD=2' evaluates the gap at x=(alpha+beta)/2 using the parabola's axis; this is a graph/function evaluation, so FUNCTIONS, separate from CC_QUADRATIC_LINEAR_INTERSECTION (difference function) on the same item.",
+      "CC_POLYNOMIAL_REDUCTION": "New audited key stored in ALGEBRA. q10 decisive excerpt 'x^2-x+1=0에서 x^2=x-1' lowers the degree of 2x^2-2x+5 by substitution; the reduction is algebraic and is kept separate from CC_COMPLEX_CONJUGATE_ROOT (deriving the relation) on the same item.",
+      "CC_QUADRATIC_EXTREMA": "New audited key stored in FUNCTIONS. q4 decisive excerpt '(x+1)^2-3의 꼭짓점과 닫힌구간 끝값으로 최솟값·최댓값 결정' reads the extremum from the vertex form; FUNCTIONS already owns the ACTIVE CC_QUADRATIC_EXTREMUM entry (noted, not merged). Distinct from CC_INTERVAL_BOUNDS (endpoint comparison) on the same item.",
+      "CC_QUADRATIC_EXTREMA_MODEL": "New audited key stored in FUNCTIONS. q16 source is a constrained two-variable quadratic, decisive excerpt '-2x^2+(x+2)^2=-(x-2)^2+8' turns it into a single-variable concave quadratic and takes the vertex maximum; the modelling falls in FUNCTIONS beside ACTIVE CC_QUADRATIC_OPTIMIZATION_MODEL (noted, not merged), while the substitution itself is ALGEBRA's CC_LINEAR_CONSTRAINT.",
+      "CC_QUADRATIC_GRAPH_INTERSECTION": "New audited key stored in FUNCTIONS. q11 source shows two parabola graphs, decisive excerpt 'f+2g=(x-alpha)(3x-beta-2gamma)' reads the roots of f-g-type equation as intersection x-coordinates; the graphical reading of f-g=0 belongs with CC_LINE_PARABOLA_INTERSECTION and CC_GRAPH_INTERSECTION in FUNCTIONS. Distinct from CC_COMMON_ROOT (shared-root factorization) on the same item.",
+      "CC_QUADRATIC_LINEAR_INTERSECTION": "New audited key stored in FUNCTIONS. q20 decisive excerpt '중점에서 g-f=3(beta-alpha)^2/4=3이므로 CD=2' sets h=f-g=3(x-alpha)(x-beta) and uses the axis x=(alpha+beta)/2; the difference-function view of a parabola-line intersection pair is a FUNCTIONS concept, with CC_MIDPOINT_SYMMETRY as the evaluation step on the same item.",
+      "CC_REAL_IMAG_PARTS": "New audited key stored in ALGEBRA. q7 decisive excerpt '복소 제곱식에서 a^2-b^2=65, ab=36을 얻고...' is the expansion z^2=(a^2-b^2)+2abi; the real/imaginary split is algebraic, and the resulting system is the distinct CC_COMPLEX_EQUATION key on the same item.",
+      "CC_RECIPROCAL_SUM": "New audited key stored in ALGEBRA. q3 source x^2+3x+3=0 with roots alpha, beta, decisive excerpt '(alpha+beta)/(alpha*beta)=-1' applies the symmetric identity 1/alpha+1/beta=(alpha+beta)/(alpha*beta); stored beside CC_VIETA_FORMULA, which supplies the two elementary symmetric values.",
+      "CC_REMAINDER_THEOREM_COMPOSITE": "New audited key stored in ALGEBRA. q18 decisive excerpt 'R(3)=f(3)=7' comes from reading f(x+1) mod (x-2) as f(3) and combining with f(-4)=-7; the composite-argument remainder is algebraic and is kept separate from CC_FUNCTION_TRANSFORMATION on the same item.",
+      "CC_RIGHT_TRIANGLE_CONVERSE": "New audited key stored in PLANE_GEOMETRY. q13 decisive excerpt '(a^2-b^2)(c^2-a^2-b^2)=0' is interpreted as a=b (isosceles) or c^2=a^2+b^2 (right triangle); PLANE_GEOMETRY is the shard of the matching ACTIVE CC_RIGHT_TRIANGLE_CRITERION (피타고라스 정리의 역), which is noted as an overlap but not merged. The factorization step stays in ALGEBRA as CC_FACTORIZATION_SYMMETRY.",
+      "CC_ROOT_RATIO": "New audited key stored in ALGEBRA. q15 source two roots in ratio 1:3, decisive excerpt '근을 t,3t로 두어 k^2-3k+1=0, k의 합 3' parameterizes the roots and uses sum/product; stored beside CC_VIETA_FORMULA (the sum/product relations applied) on the same item.",
+      "CC_SPECIAL_VALUE_METHOD": "New audited key stored in ALGEBRA. q21 source (x-1)(x^2-2)f(x)=2x^8+ax^4+b holds for all x, decisive excerpt 'x=1, x^2=2 대입으로 a=-10,b=8, 답 40' chooses values that annihilate the f(x) factor; the substitution technique is separate from CC_POLYNOMIAL_IDENTITY (the identity premise) on the same item.",
+      "CC_SYMMETRIC_GROUPING": "New audited key stored in ALGEBRA. q9 source (x+1)(x+3)(x+5)(x+7)+a, decisive excerpt 'u=(x+4)^2로 두면 u^2-10u+9+a가 (u-5)^2가 되는 a=16' pairs the factors whose constants sum equally around x+4 and substitutes; the grouping is algebraic and precedes CC_PERFECT_SQUARE on the same item.",
+      "CC_SYMMETRIC_ROOTS": "New audited key stored in ALGEBRA. q17 decisive excerpt '짝수차 식의 네 근은 -2,2,1,-1' pairs +r with -r so the constant term follows from the products; the sign-symmetric root product is kept separate from CC_HIGHER_DEGREE_EQUATION on the same item.",
+      "CC_TANGENT_LINE_DISCRIMINANT": "New audited key stored in ALGEBRA. q23 decisive excerpt 'D=4a(m-3)+m^2-4n+4=0에서 4mn=39' sets the tangency discriminant to zero and converts 'for every a' into an identity; the discriminant/identity manipulation is ALGEBRA (same shard as the ACTIVE CC_DISCRIMINANT), with the identity step also recorded as CC_IDENTITY_PARAMETER on the same item.",
+      "CC_VIETA_FORMULA": "New audited key stored in ALGEBRA. q3 decisive excerpt '(alpha+beta)/(alpha*beta)=-1' uses alpha+beta=-3, alpha*beta=3 and q15 uses sum -4(k-1), product 3k for roots t,3t; the quadratic sum/product relations match ACTIVE CC_VIETA_FORMULAS_QUADRATIC in ALGEBRA (noted, not merged).",
+      "CC_VIETA_THIRD_DEGREE": "New audited key stored in ALGEBRA. q24 source cubic x^3-5sqrt2 x^2+15x+k, decisive excerpt 'd^2=(a+b+c)^2-2(ab+bc+ca)=20' reads a+b+c=5sqrt2 and ab+bc+ca=15 from the coefficients; the cubic root-coefficient relations are algebraic and are paired with CC_CUBOID_DIAGONAL on the same item."
+    },
+    "conditionDefinitions": {},
+    "subunitDefinitions": {
+      "H15-SA-06-ROOT_CONDITION": {
+        "subunitKey": "H15-SA-06-ROOT_CONDITION",
+        "labelKo": "근과 계수의 조건",
+        "definition": "두 근의 비·부호처럼 근 자체에 주어진 조건을 근과 계수의 관계에 적용하여 계수나 매개변수를 결정하는 단원.",
+        "curriculum": "2015",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-06",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "sourceOrdinals": [
+          15
+        ],
+        "basis": "Audit metadataBefore n=15 assigns subUnitKey H15-SA-06-ROOT_CONDITION with label 근과 계수의 조건 under standardUnitKey H15-SA-06; the key is absent from the supplied native basicParents rows and ACTIVE bindings, so the definition is supplied from the q15 constraint (두 근의 비가 1:3)."
+      }
+    },
+    "blockers": [],
+    "overlapNotes": [
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_RIGHT_TRIANGLE_CONVERSE",
+        "existingConceptKey": "CC_RIGHT_TRIANGLE_CRITERION",
+        "existingOwnerConceptShard": "PLANE_GEOMETRY",
+        "existingStatus": "ACTIVE",
+        "detail": "Both labels are 피타고라스 정리의 역; canonical definition '세 변의 길이의 제곱을 비교하여 직각삼각형임을 판정한다.' and the audited definition both classify a triangle from a squared side relation. The audited text additionally covers the a=b 이등변삼각형 branch from the same factorization. Keys are retained additively; no merge, rename or redefinition performed."
+      },
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_INTERVAL_BOUNDS",
+        "existingConceptKey": "CC_QUADRATIC_EXTREMA_RESTRICTED_INTERVAL",
+        "existingOwnerConceptShard": "FUNCTIONS",
+        "existingStatus": "ACTIVE",
+        "detail": "Canonical '축과 구간의 위치를 고려해 이차함수의 최댓값·최솟값을 구하는 개념.' states the same closed-interval extremum task as the audited '제한된 정의역 [a, b]에서 꼭짓점의 포함 여부와 양 끝점의 함숫값을 비교'. Distinct keys kept per no-merge instruction."
+      },
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_QUADRATIC_EXTREMA",
+        "existingConceptKey": "CC_QUADRATIC_EXTREMUM",
+        "existingOwnerConceptShard": "FUNCTIONS",
+        "existingStatus": "ACTIVE",
+        "detail": "Near-identical key name and the same vertex-form extremum meaning; the audited key is the audited label 이차함수의 최댓값과 최솟값 from q4, the canonical key holds the store entry. Keys are not merged."
+      },
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_QUADRATIC_EXTREMA_MODEL",
+        "existingConceptKey": "CC_QUADRATIC_OPTIMIZATION_MODEL",
+        "existingOwnerConceptShard": "FUNCTIONS",
+        "existingStatus": "ACTIVE",
+        "detail": "Canonical '기하 조건으로 변수를 소거해 넓이 등을 이차함수로 나타내고 꼭짓점으로 최댓값을 구하는 모델.' matches the audited '일차 제약조건 y=x+2를 대입하여 한 변수의 ... 이차함수로 변환 후 최댓값 도출' in the eliminate-then-vertex pattern. Retained as distinct audited key."
+      },
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_IDENTITY_PARAMETER",
+        "existingConceptKey": "CC_IDENTITY_IN_PARAMETER",
+        "existingOwnerConceptShard": "ALGEBRA",
+        "existingStatus": "ACTIVE",
+        "detail": "Canonical '모든 매개변수 값에서 성립하는 조건을 다항식 항등식으로 보고 각 계수를 비교하는 개념.' is the same operation the audited key applies to D(a)=4a(m-3)+m^2-4n+4=0 on q23. Also adjacent to CC_IDENTITY_PARAMETER_MATCHING (항등식의 매개변수 계수 비교). Distinct keys kept."
+      },
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_VIETA_FORMULA",
+        "existingConceptKey": "CC_VIETA_FORMULAS_QUADRATIC",
+        "existingOwnerConceptShard": "ALGEBRA",
+        "existingStatus": "ACTIVE",
+        "detail": "Canonical '이차방정식에서 두 근의 합과 곱을 계수와 연결하는 비에타 관계.' is the same quadratic sum/product relation used on q3 and q15; only the label wording differs (근과 계수의 관계 vs 근과 계수). Keys not merged."
+      },
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_REAL_IMAG_PARTS",
+        "existingConceptKey": "CC_COMPLEX_REAL_PART_IMAG_PART",
+        "existingOwnerConceptShard": "ALGEBRA",
+        "existingStatus": "ACTIVE",
+        "detail": "Labels are effectively identical (복소수의 실수부와 허수부 분해 vs 분리) and canonical '복소수 식을 실수부와 허수부로 나누어 각 부분의 조건을 따로 표현한다.' states the same split used when q7 expands z^2. Distinct audited key retained, no merge."
+      },
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_COMPLEX_RECIPROCAL",
+        "existingConceptKey": "CC_COMPLEX_DIVISION_RATIONALIZATION",
+        "existingOwnerConceptShard": "ALGEBRA",
+        "existingStatus": "ACTIVE",
+        "detail": "Canonical '복소수의 나눗셈에서 분모를 실수화하거나 켤레쌍의 분자·분모 관계를 이용해 ...' covers the denominator realization that q22 performs on 1/(x+yi). The audited key is the reciprocal-specific audited label 복소수 역수의 실수화; retained distinctly."
+      },
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_LINEAR_DIVISOR",
+        "existingConceptKey": "CC_REMAINDER_THEOREM_LINEAR",
+        "existingOwnerConceptShard": "ALGEBRA",
+        "existingStatus": "ACTIVE",
+        "detail": "Canonical '다항식을 x-a로 나눈 나머지가 P(a)임을 이용하는 개념.' is the same direct-substitution remainder computation used on q6 (P(1/2) for divisor 2x-1). Note that CC_REMAINDER_THEOREM_LINEAR already duplicates the ACTIVE CC_REMAINDER_THEOREM in meaning; that pre-existing duplication is reported, not altered. All three keys retained."
+      },
+      {
+        "type": "DIFFERENT_KEY_SEMANTIC_OVERLAP",
+        "newConceptKey": "CC_QUADRATIC_GRAPH_INTERSECTION",
+        "existingConceptKey": "CC_LINE_PARABOLA_INTERSECTION",
+        "existingOwnerConceptShard": "FUNCTIONS",
+        "existingStatus": "ACTIVE",
+        "detail": "Canonical '직선과 포물선의 교점을 두 함수의 연립으로 나타내고 교점 개수와 좌표 관계를 해석하는 개념.' is the line-parabola case of the audited '연립방정식 f(x)-g(x)=0의 실근을 교점의 x좌표로 해석'; the audited key covers the general curve-curve intersection read on q11. Distinct keys kept."
+      }
+    ],
+    "reviewNotes": [
+      "All four audited condition keys (COND_RANGE, COND_POSITIVE, COND_INTEGER, COND_NONZERO) already exist ACTIVE in CONDITION_CORE v7 with matching meaning; conditionDefinitions is empty and no condition is redefined.",
+      "H15-SA-13-QUADRATIC_GRAPH used by q11 and q20 is already ACTIVE in the native H1_FOUNDATION bindings; no subunit addition is made for it.",
+      "Only H15-SA-06-ROOT_CONDITION required a subunit definition; its parent standardUnitKey H15-SA-06 and L1/L2 come from the audit row and the native H15-SA-06 parent row, no parent inferred.",
+      "No same-key/different-meaning collision was found: every audited key is either an existing ACTIVE entry reused as-is or a key absent from the canonical concept set, so blockers is empty.",
+      "Shard choices follow the ACTIVE ownership already visible in the canonical entries (quadratic extrema and graph intersections in FUNCTIONS, Pythagoras converse in PLANE_GEOMETRY, all polynomial/equation/complex/Vieta work in ALGEBRA); CC_FUNCTION_TRANSFORMATION and CC_TANGENT_LINE_DISCRIMINANT were mapped by definition, not by key name.",
+      "Existing canonical keys, labels, definitions, supporting UIDs and shards are left unchanged; no solution, visual or mathematics content was reviewed or modified."
+    ],
+    "rootAdjudication": "Keep distinct audited keys additively; no existing key is merged, renamed, redefined or retired. Different-key conceptual overlap is recorded in overlapNotes and is not a blocker.",
+    "parentPromotions": {
+      "15": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "recordId": "H1-RPM-030",
+        "curriculum": "2015",
+        "scope": "수학_상",
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "이차방정식",
+        "requiresNewBinding": true,
+        "rationale": "Actual source asks the ratio of two quadratic roots and uses the existing ACTIVE Vieta transformed-root type/template. The exact RPM reference already declares its parent; only the native binding is marked missing. Add the audited H15-SA-06/ROOT_CONDITION binding without changing the reference or existing definitions."
+      }
+    }
+  }
+}

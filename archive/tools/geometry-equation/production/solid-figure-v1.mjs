@@ -41,8 +41,10 @@ const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 const EX=[cY,sY,0];// world direction of the screen's horizontal
 
 // --- the 3D model -----------------------------------------------------------------------------------------------------------------------------
-const NAME=/^[A-Z]$/;
+const NAME=/^[A-Z]′?$/u;
 const LETTERS='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+/** A names string is written letter by letter; a letter may be followed by one prime (A′, B′). '.' means "no name". */
+function nameTokens(text){return String(text).match(/[A-Z]′?|\./gu)??[];}
 function polygonArea2(points){let s=0;for(let i=0;i<points.length;i++){const [a,b]=[points[i],points[(i+1)%points.length]];s+=a[0]*b[1]-b[0]*a[1];}return s/2;}
 function segmentsCross(a,b,c,d){
   const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);
@@ -96,13 +98,13 @@ function polyNames(kind,n,names){
   const clean=list=>{if(!Array.isArray(list)||list.some(x=>x!==null&&x!=='.'&&!NAME.test(String(x))))bad('SOLID_NAMES_INVALID');return list.map(x=>x==='.'?null:x);};
   if(names===undefined)return {base:letters(0,n),top:kind==='PYRAMID'?[]:letters(n,n),apex:kind==='PYRAMID'?LETTERS[n]:null};
   if(typeof names==='string'||Array.isArray(names)){
-    const list=clean(typeof names==='string'?[...names]:names),need=kind==='PYRAMID'?n+1:2*n;
+    const list=clean(typeof names==='string'?nameTokens(names):names),need=kind==='PYRAMID'?n+1:2*n;
     if(list.length!==need)bad('SOLID_NAMES_INVALID');
     return kind==='PYRAMID'?{base:list.slice(0,n),top:[],apex:list[n]}:{base:list.slice(0,n),top:list.slice(n),apex:null};
   }
   onlyKeys(names,['base','top','apex'],'SOLID_NAMES_INVALID');
-  const base=names.base===undefined?letters(0,n):clean(typeof names.base==='string'?[...names.base]:names.base);
-  const top=kind==='PYRAMID'?[]:names.top===undefined?letters(n,n):clean(typeof names.top==='string'?[...names.top]:names.top);
+  const base=names.base===undefined?letters(0,n):clean(typeof names.base==='string'?nameTokens(names.base):names.base);
+  const top=kind==='PYRAMID'?[]:names.top===undefined?letters(n,n):clean(typeof names.top==='string'?nameTokens(names.top):names.top);
   if(base.length!==n||(kind!=='PYRAMID'&&top.length!==n))bad('SOLID_NAMES_INVALID');
   const apex=kind==='PYRAMID'?(names.apex===undefined?LETTERS[n]:names.apex):null;
   if(apex!==null&&apex!==undefined&&!NAME.test(apex))bad('SOLID_NAMES_INVALID');
@@ -543,7 +545,10 @@ function solveSolids(plan){
           if(which==='center'){z=solid.kind==='SPHERE'?solid.radius:0;rimR=solid.radius;}
           else if(which==='level'){
             if(!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
-            z=section.z;rimR=section.r;
+            // the radius comes from the exact fraction, not the rounded section.r, so a length such as 20/3 still has an exact label
+            const fm=/^([1-9]\d?)\/([1-9]\d?)$/.exec(section.at);
+            const f=Number(fm[1])/Number(fm[2]);
+            z=section.z;rimR=solid.r0+(solid.r1-solid.r0)*f;
           }else{
             if(which==='bottom'&&!(solid.r0>0))bad('SOLID_DIMS_INVALID');
             if(which==='top'&&!(solid.r1>0))bad('SOLID_DIMS_INVALID');
@@ -551,8 +556,13 @@ function solveSolids(plan){
           }
           dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z,r:r6(rimR),...dimLabel(d.label,rimR,unitName,code)});
         }else if(d.level!==undefined){
-          if(d.level!==true||!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
-          dims.push({id:'dim-'+(k+1),type:'LEVEL',solid:solid.id,...dimLabel(d.label,section.z,unitName,code)});
+          if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
+          // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
+          const fm=/^([1-9]\d?)\/([1-9]\d?)$/.exec(section.at);
+          const f=Number(fm[1])/Number(fm[2]);
+          const side=d.level==='top'?'TOP':'BOTTOM';
+          const value=side==='TOP'?solid.height*(1-f):solid.height*f;
+          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...dimLabel(d.label,value,unitName,code)});
         }else if(d.height!==undefined){
           if(d.height!==true)bad('SOLID_DIMS_INVALID');
           if(solid.category==='SPHERE'&&solid.kind==='SPHERE')bad('SOLID_DIMS_INVALID');
@@ -864,7 +874,8 @@ function spec3d(plan,model,ctx){
       }
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
-      line(d.id+'-line','dim-line',pt(project(sh)),pt(project(add([0,0,model.section.z],sh))),{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'hidden'});
+      const [z0,z1]=d.side==='TOP'?[model.section.z,solid.height]:[0,model.section.z];
+      line(d.id+'-line','dim-line',pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh))),{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'hidden'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       void solid;
@@ -909,7 +920,8 @@ function spec3d(plan,model,ctx){
       else{const sh=mulv(EX,solid.offset??0);labels.push({...label,segment:[pt(project(add([0,0,0],sh))),pt(project(add([0,0,solid.height],sh)))],segmentOf:'height'});}
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
-      labels.push({...label,segment:[pt(project(sh)),pt(project(add([0,0,model.section.z],sh)))],segmentOf:'level'});
+      const [z0,z1]=d.side==='TOP'?[model.section.z,solid.height]:[0,model.section.z];
+      labels.push({...label,segment:[pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh)))],segmentOf:'level'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       const apex=apexOf(solid);

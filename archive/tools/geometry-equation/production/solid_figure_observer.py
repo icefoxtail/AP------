@@ -15,8 +15,9 @@ NS = '{http://www.w3.org/2000/svg}'
 YAW = math.radians(28.0)
 PITCH = math.radians(20.0)
 POS_TOL = 0.9        # px
-NAME = re.compile(r'^[A-Z]$')
+NAME = re.compile(r'^[A-Z]′?$')
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+NAME_TOKEN = re.compile(r'[A-Z]′?|\.')
 
 
 # --- vectors and the projection -----------------------------------------------------------------------------------------------------------
@@ -59,12 +60,12 @@ def _poly_names(kind, n, names):
     if names is None:
         return _letters(0, n), ([] if kind == 'PYRAMID' else _letters(n, n)), (LETTERS[n] if kind == 'PYRAMID' else None)
     if isinstance(names, (str, list)):
-        lst = _clean_names(list(names))
+        lst = _clean_names(NAME_TOKEN.findall(names) if isinstance(names, str) else list(names))
         need = n + 1 if kind == 'PYRAMID' else 2 * n
         if len(lst) != need: raise ValueError('SOLID_NAMES_INVALID')
         return (lst[:n], [], lst[n]) if kind == 'PYRAMID' else (lst[:n], lst[n:], None)
-    base = _letters(0, n) if names.get('base') is None else _clean_names(list(names['base']))
-    top = [] if kind == 'PYRAMID' else (_letters(n, n) if names.get('top') is None else _clean_names(list(names['top'])))
+    base = _letters(0, n) if names.get('base') is None else _clean_names(NAME_TOKEN.findall(names['base']) if isinstance(names['base'], str) else list(names['base']))
+    top = [] if kind == 'PYRAMID' else (_letters(n, n) if names.get('top') is None else _clean_names(NAME_TOKEN.findall(names['top']) if isinstance(names['top'], str) else list(names['top'])))
     apex = (names.get('apex') or LETTERS[n]) if kind == 'PYRAMID' else None
     return base, top, apex
 
@@ -933,7 +934,8 @@ def check_dim_lines(plan, ctx):
             if not mm:
                 continue
             zl = int(mm.group(1)) / int(mm.group(2)) * solid['height']
-            want = ((Tx, y_of(0.0)), (Tx, y_of(zl)))
+            # level:"top" dimensions the part above the plane (apex/top down to the section)
+            want = ((Tx, y_of(zl)), (Tx, y_of(solid['height']))) if d.get('level') == 'top' else ((Tx, y_of(0.0)), (Tx, y_of(zl)))
         else:
             if d.get('radius') != 'level':
                 continue
@@ -1078,7 +1080,8 @@ def expected_dim_values(plan, ctx):
                     out[ident] = (val, None, symbolic)
                 elif d.get('level') is not None:
                     m = re.fullmatch(r'(\d+)/(\d+)', (plan.get('section') or {}).get('at') or '')
-                    out[ident] = (int(m.group(1)) / int(m.group(2)) * solid['height'], None, symbolic)
+                    f = int(m.group(1)) / int(m.group(2))
+                    out[ident] = (solid['height'] * (1 - f) if d.get('level') == 'top' else solid['height'] * f, None, symbolic)
                 elif d.get('height') is not None: out[ident] = (solid['height'], None, symbolic)
                 else: out[ident] = (math.hypot(solid['r1'] - solid['r0'], solid['height']), None, symbolic)
         except (KeyError, TypeError):

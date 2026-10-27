@@ -4,8 +4,11 @@
 // circle or highlighted arc), because the fill only colours what the picture bounds. The independent check of the FINAL SVG is the `regions`
 // section of plane-marks-observer-worker.py, which recomputes the boundary from the Cindy peer's points.
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={region:['id','fill','label','factRole','shapes','holes'],shape:['polygon','sector','segment','loop'],sector:['center','from','to','side'],loop:['start','steps'],step:['to','arc'],arc:['center','side']};
+const KEYS={region:['id','fill','pattern','label','labelKind','factRole','shapes','holes'],shape:['polygon','sector','segment','loop'],sector:['center','from','to','side'],loop:['start','steps'],step:['to','arc'],arc:['center','side']};
 const FILLS=['LIGHT','MEDIUM'];
+// A source that says 빗금친 (hatched) needs a real hatch pattern, not a second grey: PATTERNS adds diagonal strokes clipped to the region.
+const PATTERNS=['HATCH'];
+const LABEL_KINDS=['MATH','TEXT'];
 const SIDES=['MINOR','MAJOR','CCW','CW','FULL'];
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
 const bad=code=>{throw Error(code);};
@@ -208,11 +211,18 @@ export function regionSpec(plan,model,points,usedIds){
       }
     }
     const object={id:row.id,kind:'FILL_REGION',fill,loops:all.map(l=>({start:l.start,steps:l.steps}))};
+    if(row.pattern!==undefined){
+      if(!PATTERNS.includes(row.pattern))bad('REGION_PATTERN_UNSUPPORTED:'+row.id+':'+row.pattern);
+      object.pattern=row.pattern;
+    }
     if(row.label!==undefined){
       if(typeof row.label!=='string'||!row.label.trim()||row.label.length>40)bad('REGION_FIELD_INVALID:label:'+row.id);
+      const kind=row.labelKind??'MATH';
+      if(!LABEL_KINDS.includes(kind))bad('REGION_FIELD_INVALID:labelKind:'+row.id);
       const role=row.factRole??'GIVEN';if(!FACT_ROLES.includes(role))bad('REGION_FIELD_INVALID:factRole:'+row.id);
-      object.labelText=row.label;factRolesByLabel[row.id+'-label']=role;
+      object.labelText=row.label;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role;
     }
+    else if(row.labelKind!==undefined)bad('REGION_FIELD_INVALID:labelKind:'+row.id);
     objects.push(object);
   }
   return {objects,factRolesByLabel};

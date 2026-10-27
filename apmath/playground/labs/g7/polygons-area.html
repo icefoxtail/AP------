@@ -33,8 +33,119 @@
       #rightPanel { width: 100% !important; height: auto !important; border-left: none !important; border-top: 1px solid #E2E8F0 !important; }
     }
   </style>
+
+  <!-- 중1 칠판 테마 복구: 인접 다크 실험실과 동일한 배경·패널·강조색 구조 -->
+  <style id="ap-g7-chalkboard-theme">
+    body.ap-chalk-restored {
+      background:#07130e!important; color:#e2e8f0!important;
+      color-scheme:dark;
+    }
+    body.ap-chalk-restored #canvasStage {
+      background:radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%)!important;
+      box-shadow:inset 0 0 100px rgba(0,0,0,.70);
+    }
+    body.ap-chalk-restored > header {
+      background:rgba(8,21,16,.97)!important;
+      border-color:#28503e!important; box-shadow:0 2px 15px rgba(0,0,0,.25);
+    }
+    body.ap-chalk-restored #rightPanel {
+      background:#081611!important;
+      border-color:#28503e!important;
+    }
+    body.ap-chalk-restored .bg-white { background-color:#10251c!important; }
+    body.ap-chalk-restored .bg-white\/95 { background-color:rgba(7,20,15,.96)!important; }
+    body.ap-chalk-restored .bg-slate-50 { background-color:#10241c!important; }
+    body.ap-chalk-restored .bg-slate-100 { background-color:#173529!important; }
+    body.ap-chalk-restored .bg-slate-200 { background-color:#254637!important; }
+    body.ap-chalk-restored .bg-blue-50,
+    body.ap-chalk-restored .bg-blue-50\/40 { background-color:#123232!important; }
+    body.ap-chalk-restored .bg-rose-50 { background-color:#351e29!important; }
+    body.ap-chalk-restored .bg-amber-50 { background-color:#372918!important; }
+    body.ap-chalk-restored .bg-emerald-50 { background-color:#123528!important; }
+    body.ap-chalk-restored .bg-slate-900 { background-color:#fbbf24!important; }
+    body.ap-chalk-restored .bg-blue-600 { background-color:#b45309!important; }
+    body.ap-chalk-restored .hover\:bg-slate-100:hover,
+    body.ap-chalk-restored .hover\:bg-slate-200:hover { background-color:#24513e!important; }
+    body.ap-chalk-restored .hover\:bg-blue-100:hover,
+    body.ap-chalk-restored .hover\:bg-blue-700:hover { background-color:#d97706!important; }
+    body.ap-chalk-restored .hover\:bg-rose-100:hover { background-color:#633143!important; }
+    body.ap-chalk-restored .hover\:bg-amber-100:hover { background-color:#654c24!important; }
+    body.ap-chalk-restored .text-slate-900,
+    body.ap-chalk-restored .text-slate-800 { color:#f1f5f9!important; }
+    body.ap-chalk-restored .text-slate-700 { color:#d1e6d9!important; }
+    body.ap-chalk-restored .text-slate-600 { color:#b4cfbe!important; }
+    body.ap-chalk-restored .text-slate-500,
+    body.ap-chalk-restored .text-slate-400 { color:#a7b9b0!important; }
+    body.ap-chalk-restored .text-blue-700,
+    body.ap-chalk-restored .text-blue-600,
+    body.ap-chalk-restored .text-blue-950 { color:#7dd3fc!important; }
+    body.ap-chalk-restored .text-rose-700,
+    body.ap-chalk-restored .text-rose-600 { color:#fda4af!important; }
+    body.ap-chalk-restored .text-emerald-700,
+    body.ap-chalk-restored .text-emerald-600 { color:#6ee7b7!important; }
+    body.ap-chalk-restored .text-amber-800,
+    body.ap-chalk-restored .text-amber-600 { color:#fcd34d!important; }
+    body.ap-chalk-restored .border-slate-200,
+    body.ap-chalk-restored .border-slate-200\/80 { border-color:#28503e!important; }
+    body.ap-chalk-restored .border-slate-300 { border-color:#3a6755!important; }
+    body.ap-chalk-restored .border-blue-200 { border-color:#356879!important; }
+    body.ap-chalk-restored .border-rose-200 { border-color:#774658!important; }
+    body.ap-chalk-restored .border-amber-300 { border-color:#90743c!important; }
+    body.ap-chalk-restored .border-emerald-200 { border-color:#387452!important; }
+    body.ap-chalk-restored .bg-slate-900.text-white,
+    body.ap-chalk-restored .bg-slate-900 > .text-white { color:#07130e!important; }
+    body.ap-chalk-restored .bg-blue-600.text-white,
+    body.ap-chalk-restored .bg-blue-600 > .text-white { color:#fff9e8!important; }
+    body.ap-chalk-restored .mode-tab {
+      background:#10261e!important; border-color:#24513e!important;
+      color:#bbebd0!important; box-shadow:none;
+    }
+    body.ap-chalk-restored .mode-tab.active {
+      background:linear-gradient(135deg,#f59e0b,#d97706)!important;
+      border-color:#fbbf24!important; color:#07130e!important;
+      box-shadow:0 0 12px rgba(245,158,11,.32)!important;
+    }
+    body.ap-chalk-restored .sub-pill.active {
+      background:rgba(52,211,153,.25)!important;
+      border-color:#34d399!important; color:white!important;
+    }
+    body.ap-chalk-restored .lens-btn.active,
+    body.ap-chalk-restored .step-btn.active {
+      background:rgba(251,191,36,.15)!important;
+      border-color:#fbbf24!important; color:#fef08a!important;
+    }
+    body.ap-chalk-restored .preset-chip.active {
+      background:#fbbf24!important; border-color:#fef08a!important; color:#07130e!important;
+    }
+    body.ap-chalk-restored input[type=range] {
+      background:#18382c!important; border:1px solid #35624d!important;
+    }
+    body.ap-chalk-restored input[type=range]::-webkit-slider-thumb {
+      background:#fbbf24!important; border-color:#07130e!important;
+      box-shadow:0 0 9px rgba(251,191,36,.55)!important;
+      width:19px!important; height:19px!important;
+    }
+    body.ap-chalk-restored input[type=range]::-moz-range-thumb {
+      background:#fbbf24!important; border:2px solid #07130e!important;
+      width:19px; height:19px;
+    }
+    body.ap-chalk-restored .katex { color:inherit; }
+    body.ap-chalk-restored #rightPanel .katex-display { max-width:100%; overflow-x:auto; }
+    body.ap-chalk-restored ::-webkit-scrollbar-track { background:#07130e; }
+    body.ap-chalk-restored ::-webkit-scrollbar-thumb { background:#28503e; }
+    @media(max-width:1023px) {
+      body.ap-chalk-restored #apMobileControls.ap-mobile-top {
+        background:#0b2019!important; border-bottom-color:#28503e!important;
+      }
+      body.ap-chalk-restored #apMobileTools.ap-mobile-tools {
+        background:#0a1b15!important; border-color:#28503e!important;
+      }
+      body.ap-chalk-restored #rightPanel { border-top-color:#28503e!important; }
+      body.ap-chalk-restored .mode-tab { min-height:44px!important; }
+    }
+  </style>
 </head>
-<body class="h-screen w-screen flex flex-col">
+<body class="h-screen w-screen flex flex-col ap-chalk-restored">
 
   <!-- 상단 헤더 & 4대 핵심 마스터 모드 탭 (초등~중1 과정 100% 맞춤) -->
   <header class="bg-white border-b border-slate-200 px-4 py-2 flex flex-wrap items-center justify-between gap-2 z-20 shrink-0 shadow-sm">
@@ -322,7 +433,7 @@
     function drawAcademicGrid(rect) {
       const step = 20 * state.scale;
       ctx.save();
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.035)';
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.07)';
       ctx.lineWidth = 1;
       for (let x = 0; x < rect.width; x += step) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
@@ -333,7 +444,7 @@
       ctx.restore();
     }
 
-    function drawRightAngle(x, y, ang1, size = 12, color = '#2563EB') {
+    function drawRightAngle(x, y, ang1, size = 12, color = '#38bdf8') {
       if (!state.steps[1] && state.lens !== 'mark' && state.lens !== 'all') return;
       const ang2 = ang1 + Math.PI / 2;
       const p1 = { x: x + size * Math.cos(ang1), y: y + size * Math.sin(ang1) };
@@ -344,11 +455,11 @@
       ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.lineTo(p3.x, p3.y);
       ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
       ctx.lineTo(x, y); ctx.closePath();
-      ctx.fillStyle = 'rgba(37, 99, 235, 0.14)'; ctx.fill();
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.14)'; ctx.fill();
       ctx.restore();
     }
 
-    function drawParallelArrows(x1, y1, x2, y2, count = 2, color = '#059669') {
+    function drawParallelArrows(x1, y1, x2, y2, count = 2, color = '#34d399') {
       if (!state.steps[1] && state.lens !== 'mark' && state.lens !== 'all') return;
       const mx = (x1 + x2) / 2, my = (y1 + y2) / 2, ang = Math.atan2(y2 - y1, x2 - x1), sz = 7;
       ctx.save();
@@ -365,7 +476,7 @@
       ctx.restore();
     }
 
-    function drawTickMarks(x1, y1, x2, y2, count = 2, color = '#E11D48') {
+    function drawTickMarks(x1, y1, x2, y2, count = 2, color = '#fb7185') {
       if (!state.steps[1] && state.lens !== 'mark' && state.lens !== 'all') return;
       const mx = (x1 + x2) / 2, my = (y1 + y2) / 2, ang = Math.atan2(y2 - y1, x2 - x1), norm = ang + Math.PI / 2, len = 6.5;
       ctx.save();
@@ -397,7 +508,7 @@
       if (label) {
         const mid = (startAng + endAng) / 2;
         const tx = cx + (r + 16) * Math.cos(mid), ty = cy + (r + 16) * Math.sin(mid);
-        ctx.fillStyle = '#0F172A';
+        ctx.fillStyle = '#e2e8f0';
         ctx.font = '800 11.5px Pretendard, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -406,15 +517,15 @@
       ctx.restore();
     }
 
-    function drawSmartLabel(px, py, centerX, centerY, text, color = '#0F172A', dist = 19) {
+    function drawSmartLabel(px, py, centerX, centerY, text, color = '#e2e8f0', dist = 19) {
       if (!state.steps[3] && state.lens !== 'all') return;
       const dx = px - centerX, dy = py - centerY, len = Math.hypot(dx, dy) || 1;
       const lx = px + (dx / len) * dist, ly = py + (dy / len) * dist;
       ctx.save();
       ctx.font = '800 12px Pretendard, sans-serif';
       const w = ctx.measureText(text).width + 8;
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
-      ctx.strokeStyle = '#CBD5E1';
+      ctx.fillStyle = 'rgba(10, 28, 21, 0.93)';
+      ctx.strokeStyle = '#94A3B8';
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.roundRect(lx - w / 2, ly - 8, w, 16, 4);
@@ -431,13 +542,13 @@
       state.dragHandles.push({ id, x, y, label, onDrag });
       ctx.save();
       ctx.beginPath(); ctx.arc(x, y, 12, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(37, 99, 235, 0.16)'; ctx.fill();
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.16)'; ctx.fill();
       ctx.beginPath(); ctx.arc(x, y, 6.5, 0, Math.PI * 2);
-      ctx.fillStyle = '#2563EB'; ctx.fill();
+      ctx.fillStyle = '#38bdf8'; ctx.fill();
       ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 2; ctx.stroke();
       if (label) {
         ctx.font = '800 11px Pretendard, sans-serif';
-        ctx.fillStyle = '#1D4ED8';
+        ctx.fillStyle = '#7dd3fc';
         ctx.textAlign = 'center';
         ctx.fillText(label, x, y - 15);
       }
@@ -449,23 +560,23 @@
       const barW = Math.min(rect.width - 40, 480);
       const barX = (rect.width - barW) / 2, barY = rect.height - 64;
       ctx.save();
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.96)';
-      ctx.strokeStyle = '#CBD5E1';
+      ctx.fillStyle = 'rgba(10, 28, 21, 0.96)';
+      ctx.strokeStyle = '#94A3B8';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.roundRect(barX - 12, barY - 24, barW + 24, 46, 10);
       ctx.fill(); ctx.stroke();
       ctx.font = '800 11px Pretendard, sans-serif';
-      ctx.fillStyle = '#0F172A';
+      ctx.fillStyle = '#e2e8f0';
       ctx.textAlign = 'left';
       ctx.fillText(`🐜 [테두리 줄자 펼치기] ${titleNote}`, barX, barY - 9);
       let curX = barX;
       const nSeg = segLabels.length;
       for (let i = 0; i < nSeg; i++) {
         const w = (barW / nSeg) - 4;
-        ctx.fillStyle = segColors[i % segColors.length] || '#2563EB';
+        ctx.fillStyle = segColors[i % segColors.length] || '#38bdf8';
         ctx.fillRect(curX, barY + 2, w, 14);
-        ctx.fillStyle = '#FFFFFF';
+        ctx.fillStyle = '#0d241b';
         ctx.font = '800 10px Pretendard, sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText(segLabels[i], curX + w / 2, barY + 9);
@@ -1028,22 +1139,22 @@
             const ax = cx + (state.dragXRatio - 0.35) * aPx * 2.0 + t * aPx * 0.65;
             const pA = { x: ax, y: yTop }, pH = { x: ax, y: yBot };
 
-            ctx.strokeStyle = '#94A3B8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+            ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
             ctx.beginPath(); ctx.moveTo(cx - 230, yBot); ctx.lineTo(cx + 230, yBot); ctx.stroke(); ctx.setLineDash([]);
 
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.18)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
 
-            ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5;
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5;
             ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.stroke();
 
-            ctx.strokeStyle = '#059669'; ctx.lineWidth = 3; ctx.setLineDash([5, 4]);
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 3; ctx.setLineDash([5, 4]);
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pH.x, pH.y); ctx.stroke(); ctx.setLineDash([]);
-            drawRightAngle(pH.x, pH.y, Math.PI, 13, '#059669');
+            drawRightAngle(pH.x, pH.y, Math.PI, 13, '#34d399');
 
             drawSmartLabel(pB.x, pB.y, cx, cy, 'B'); drawSmartLabel(pC.x, pC.y, cx, cy, 'C');
-            drawSmartLabel(pH.x, pH.y + 8, pH.x, pH.y - 20, 'H(수선의 발)', '#059669', 16);
+            drawSmartLabel(pH.x, pH.y + 8, pH.x, pH.y - 20, 'H(수선의 발)', '#34d399', 16);
             registerDragHandle('A', pA.x, pA.y, '꼭짓점 A 드래그', (nx) => {
               state.dragXRatio = Math.max(0.05, Math.min(0.95, 0.35 + (nx - cx) / (aPx * 2.0)));
             });
@@ -1057,26 +1168,26 @@
             const pA = { x: xH, y: yTop }, pH = { x: xH, y: yBot };
 
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.18)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
 
             if (t > 0.02) {
               const piv = { x: (pA.x + pC.x) / 2, y: (pA.y + pC.y) / 2 };
               ctx.save(); ctx.translate(piv.x, piv.y); ctx.rotate(t * Math.PI); ctx.translate(-piv.x, -piv.y);
               ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-              ctx.fillStyle = 'rgba(16, 185, 129, 0.18)'; ctx.fill();
-              ctx.strokeStyle = '#059669'; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.restore();
+              ctx.fillStyle = 'rgba(52, 211, 153, 0.18)'; ctx.fill();
+              ctx.strokeStyle = '#34d399'; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.restore();
             }
 
-            drawRightAngle(pA.x, pA.y, Math.atan2(pB.y - pA.y, pB.x - pA.x), 12, '#2563EB');
-            drawRightAngle(pH.x, pH.y, Math.PI, 12, '#E11D48');
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 3.5;
+            drawRightAngle(pA.x, pA.y, Math.atan2(pB.y - pA.y, pB.x - pA.x), 12, '#38bdf8');
+            drawRightAngle(pH.x, pH.y, Math.PI, 12, '#fb7185');
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.5;
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pH.x, pH.y); ctx.stroke();
 
             drawSmartLabel(pA.x, pA.y, cx, cy, 'A(90°)');
             drawSmartLabel(pB.x, pB.y, cx, cy, `B`);
             drawSmartLabel(pC.x, pC.y, cx, cy, `C`);
-            drawSmartLabel(pH.x, pH.y + 8, pH.x, pH.y - 20, `h=${((a*b)/c).toFixed(1)}cm`, '#E11D48', 16);
+            drawSmartLabel(pH.x, pH.y + 8, pH.x, pH.y - 20, `h=${((a*b)/c).toFixed(1)}cm`, '#fb7185', 16);
           }
         } else if (sub === 'paraMove') {
           const aPx = p1 * px, hPx = 6 * px, cutW = aPx * 0.28;
@@ -1085,29 +1196,29 @@
           ctx.beginPath();
           ctx.moveTo(x0 + cutW, yBot); ctx.lineTo(x0 + aPx, yBot);
           ctx.lineTo(x0 + aPx + cutW, yTop); ctx.lineTo(x0 + cutW, yTop); ctx.closePath();
-          ctx.fillStyle = 'rgba(37, 99, 235, 0.18)'; ctx.fill();
-          ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
 
           const sh = t * aPx;
           ctx.beginPath();
           ctx.moveTo(x0 + sh, yBot); ctx.lineTo(x0 + cutW + sh, yBot); ctx.lineTo(x0 + cutW + sh, yTop); ctx.closePath();
-          ctx.fillStyle = 'rgba(225, 29, 72, 0.22)'; ctx.fill();
-          ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill();
+          ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5; ctx.stroke();
 
-          drawRightAngle(x0 + cutW + sh, yBot, Math.PI, 12, '#E11D48');
-          drawParallelArrows(x0 + cutW, yTop, x0 + aPx + cutW, yTop, 2, '#059669');
-          drawParallelArrows(x0, yBot, x0 + aPx, yBot, 2, '#059669');
+          drawRightAngle(x0 + cutW + sh, yBot, Math.PI, 12, '#fb7185');
+          drawParallelArrows(x0 + cutW, yTop, x0 + aPx + cutW, yTop, 2, '#34d399');
+          drawParallelArrows(x0, yBot, x0 + aPx, yBot, 2, '#34d399');
         } else if (sub === 'trapRot') {
           const b = Math.max(2, p1 - 4), aPx = p1 * px, bPx = b * px, hPx = 6 * px;
           const offL = (aPx - bPx) * 0.35, x0 = cx - (aPx + bPx * t) / 2, yBot = cy + hPx / 2, yTop = cy - hPx / 2;
           const trap = [{ x: x0, y: yBot }, { x: x0 + aPx, y: yBot }, { x: x0 + offL + bPx, y: yTop }, { x: x0 + offL, y: yTop }];
 
           ctx.beginPath(); ctx.moveTo(trap[0].x, trap[0].y); trap.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
-          ctx.fillStyle = 'rgba(37, 99, 235, 0.18)'; ctx.fill();
-          ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
 
           if (p2 === 2 || p2 === 3 || state.lens === 'aux') {
-            ctx.strokeStyle = '#059669'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
             ctx.beginPath(); ctx.moveTo(trap[3].x, trap[3].y); ctx.lineTo(trap[1].x, trap[1].y); ctx.stroke(); ctx.setLineDash([]);
           }
 
@@ -1115,22 +1226,22 @@
             const piv = { x: (trap[1].x + trap[2].x) / 2, y: (trap[1].y + trap[2].y) / 2 };
             ctx.save(); ctx.translate(piv.x, piv.y); ctx.rotate(t * Math.PI); ctx.translate(-piv.x, -piv.y);
             ctx.beginPath(); ctx.moveTo(trap[0].x, trap[0].y); trap.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
-            ctx.fillStyle = 'rgba(225, 29, 72, 0.18)'; ctx.fill();
-            ctx.strokeStyle = '#E11D48'; ctx.setLineDash([5, 4]); ctx.lineWidth = 2; ctx.stroke(); ctx.restore();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#fb7185'; ctx.setLineDash([5, 4]); ctx.lineWidth = 2; ctx.stroke(); ctx.restore();
           }
           drawParallelArrows(trap[3].x, trap[3].y, trap[2].x, trap[2].y, 1);
           drawParallelArrows(trap[0].x, trap[0].y, trap[1].x, trap[1].y, 1);
         } else {
           // boxFrame
           const wPx = p1 * px * 1.1, hPx = 6 * px * 1.1, x0 = cx - wPx / 2, y0 = cy - hPx / 2;
-          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
           ctx.strokeRect(x0, y0, wPx, hPx); ctx.setLineDash([]);
 
           if (p2 < 3) {
             const pA = { x: cx, y: y0 }, pB = { x: x0, y: cy }, pC = { x: cx, y: y0 + hPx }, pD = { x: x0 + wPx, y: cy };
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.22)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
             drawRightAngle(cx, cy, 0, 12);
             if (t > 0.02) {
               [
@@ -1142,15 +1253,15 @@
                 ctx.beginPath();
                 ctx.moveTo(cn.c.x + t * (cx - cn.c.x), cn.c.y + t * (cy - cn.c.y));
                 ctx.lineTo(cn.p1.x, cn.p1.y); ctx.lineTo(cn.p2.x, cn.p2.y); ctx.closePath();
-                ctx.fillStyle = 'rgba(225, 29, 72, 0.22)'; ctx.fill();
-                ctx.strokeStyle = '#E11D48'; ctx.stroke();
+                ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill();
+                ctx.strokeStyle = '#fb7185'; ctx.stroke();
               });
             }
           } else {
             const pA = { x: x0, y: y0 + hPx * 0.33 }, pB = { x: x0 + wPx * 0.38, y: y0 + hPx }, pC = { x: x0 + wPx, y: y0 };
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.24)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.24)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
             const sep = t * 20;
             [
               { pts: [{ x: x0, y: y0 }, pA, pC], dx: -sep, dy: -sep, l: '①' },
@@ -1159,8 +1270,8 @@
             ].forEach((cn) => {
               ctx.save(); ctx.translate(cn.dx, cn.dy);
               ctx.beginPath(); ctx.moveTo(cn.pts[0].x, cn.pts[0].y); ctx.lineTo(cn.pts[1].x, cn.pts[1].y); ctx.lineTo(cn.pts[2].x, cn.pts[2].y); ctx.closePath();
-              ctx.fillStyle = 'rgba(225, 29, 72, 0.20)'; ctx.fill();
-              ctx.strokeStyle = '#E11D48'; ctx.stroke();
+              ctx.fillStyle = 'rgba(244, 63, 94, 0.20)'; ctx.fill();
+              ctx.strokeStyle = '#fb7185'; ctx.stroke();
               ctx.restore();
             });
           }
@@ -1174,7 +1285,7 @@
         if (sub === 'railWing') {
           const aPx = p1 * px * 1.1, hPx = 6 * px * 1.1, yTop = cy - hPx / 2, yBot = cy + hPx / 2;
           if (p2 >= 3) {
-            ctx.strokeStyle = '#059669'; ctx.lineWidth = 2.2;
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2.2;
             ctx.beginPath(); ctx.moveTo(cx - 240, yTop); ctx.lineTo(cx + 240, yTop); ctx.moveTo(cx - 240, yBot); ctx.lineTo(cx + 240, yBot); ctx.stroke();
             drawParallelArrows(cx - 180, yTop, cx + 180, yTop, 2); drawParallelArrows(cx - 180, yBot, cx + 180, yBot, 2);
 
@@ -1183,10 +1294,10 @@
             const pA = { x: ax, y: yTop };
 
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.20)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.20)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
             registerDragHandle('A', pA.x, pA.y, '꼭짓점 A 드래그', (nx) => { state.dragXRatio = Math.max(0.1, Math.min(0.9, 0.5 + (nx - cx) / 280)); });
-            drawAntTape(rect, [pA, pB, pC], ['옆변 AB', `밑변 BC(${p1})`, '옆변 CA'], ['#E11D48', '#2563EB', '#059669'], `넓이는 ${(p1*6)/2}cm² 불변, 둘레는 변화!`);
+            drawAntTape(rect, [pA, pB, pC], ['옆변 AB', `밑변 BC(${p1})`, '옆변 CA'], ['#fb7185', '#38bdf8', '#34d399'], `넓이는 ${(p1*6)/2}cm² 불변, 둘레는 변화!`);
           } else {
             const pB = { x: cx - aPx / 2, y: yBot }, pC = { x: cx + aPx / 2, y: yBot };
             const pA = { x: cx - aPx / 6, y: yTop }, pD = { x: cx + aPx / 6, y: yTop };
@@ -1195,19 +1306,19 @@
             const pO = { x: pA.x + tI * (pC.x - pA.x), y: pA.y + tI * (pC.y - pA.y) };
 
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
-            ctx.strokeStyle = '#94A3B8'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
             drawParallelArrows(pA.x, pA.y, pD.x, pD.y, 2); drawParallelArrows(pB.x, pB.y, pC.x, pC.y, 2);
 
             [[pA, pB, pO], [pD, pC, pO]].forEach((tr) => {
               ctx.beginPath(); ctx.moveTo(tr[0].x, tr[0].y); ctx.lineTo(tr[1].x, tr[1].y); ctx.lineTo(tr[2].x, tr[2].y); ctx.closePath();
-              ctx.fillStyle = 'rgba(37, 99, 235, 0.25)'; ctx.fill();
-              ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 2.8; ctx.stroke();
+              ctx.fillStyle = 'rgba(56, 189, 248, 0.25)'; ctx.fill();
+              ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.8; ctx.stroke();
             });
 
             ctx.save(); ctx.translate(0, t * 42);
             ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(225, 29, 72, 0.22)'; ctx.fill();
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill();
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5; ctx.stroke();
             ctx.restore();
 
             drawSmartLabel(pA.x, pA.y, cx, cy, 'A'); drawSmartLabel(pB.x, pB.y, cx, cy, 'B');
@@ -1221,12 +1332,12 @@
 
           ctx.save(); ctx.translate(-sep, 0);
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
-          ctx.fillStyle = 'rgba(37, 99, 235, 0.22)'; ctx.fill(); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5; ctx.stroke();
           ctx.restore();
 
           ctx.save(); ctx.translate(sep, 0);
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-          ctx.fillStyle = 'rgba(225, 29, 72, 0.22)'; ctx.fill(); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5; ctx.stroke();
           ctx.restore();
 
           drawSmartLabel(pA.x, pA.y, cx, cy, 'A(높이 공유)');
@@ -1246,48 +1357,48 @@
             [{x:x0+w1+gap,y:y0+h1+gap},{x:x0+w1+w2+gap,y:y0+h1+gap},{x:x0+w1+w2+gap,y:y0+h1+h2+gap},{x:x0+w1+gap-sl,y:y0+h1+h2+gap}]
           ].forEach((q) => {
             ctx.beginPath(); ctx.moveTo(q[0].x, q[0].y); q.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
-            ctx.fillStyle = 'rgba(16, 185, 129, 0.26)'; ctx.fill();
-            ctx.strokeStyle = '#059669'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.26)'; ctx.fill();
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2.5; ctx.stroke();
           });
         } else {
           // stairFold
           if (p2 < 3) {
             const wPx = p1 * px * 0.78, hPx = 8 * px * 0.78, y0 = cy - hPx / 2, lx = cx - wPx - 20, cW = wPx * 0.4, cH = hPx * 0.4;
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.16)';
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.16)';
             ctx.beginPath(); ctx.moveTo(lx, y0); ctx.lineTo(lx+wPx-cW, y0); ctx.lineTo(lx+wPx-cW, y0+cH); ctx.lineTo(lx+wPx, y0+cH); ctx.lineTo(lx+wPx, y0+hPx); ctx.lineTo(lx, y0+hPx); ctx.closePath();
-            ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
 
-            ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4;
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4;
             ctx.beginPath();
             ctx.moveTo(lx+wPx-cW, y0+(1-t)*cH); ctx.lineTo(lx+wPx, y0+(1-t)*cH);
             ctx.moveTo(lx+wPx-(1-t)*cW, y0); ctx.lineTo(lx+wPx-(1-t)*cW, y0+cH);
             ctx.stroke();
 
             const rx = cx + 20, dW = wPx * 0.36, dH = 2 * px * 0.78, dx1 = rx + (wPx - dW) / 2, dx2 = dx1 + dW;
-            ctx.fillStyle = 'rgba(225, 29, 72, 0.14)';
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.14)';
             ctx.beginPath(); ctx.moveTo(rx, y0); ctx.lineTo(dx1, y0); ctx.lineTo(dx1, y0+dH); ctx.lineTo(dx2, y0+dH); ctx.lineTo(dx2, y0); ctx.lineTo(rx+wPx, y0); ctx.lineTo(rx+wPx, y0+hPx); ctx.lineTo(rx, y0+hPx); ctx.closePath();
-            ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
 
-            ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4;
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4;
             ctx.beginPath(); ctx.moveTo(dx1, y0+(1-t)*dH); ctx.lineTo(dx2, y0+(1-t)*dH); ctx.stroke();
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 4.5;
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4.5;
             ctx.beginPath(); ctx.moveTo(dx1, y0); ctx.lineTo(dx1, y0+dH); ctx.moveTo(dx2, y0); ctx.lineTo(dx2, y0+dH); ctx.stroke();
           } else {
             const ang = p1 <= 10 ? 55 + p1 : 65, wPx = 5 * px * 1.25, yTop = cy - wPx / 2, yBot = cy + wPx / 2;
             ctx.fillStyle = 'rgba(148, 163, 184, 0.14)'; ctx.fillRect(cx - 200, yTop, 400, wPx);
-            ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.strokeRect(cx - 200, yTop, 400, wPx);
+            ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.strokeRect(cx - 200, yTop, 400, wPx);
             drawParallelArrows(cx - 160, yTop, cx - 80, yTop, 2); drawParallelArrows(cx - 160, yBot, cx - 80, yBot, 2);
 
             const rad = (ang * Math.PI) / 180, halfB = wPx / Math.tan(rad);
             const pA = { x: cx, y: yTop }, pB = { x: cx - halfB, y: yBot }, pC = { x: cx + halfB, y: yBot };
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.24)'; ctx.fill();
-            ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 3; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.24)'; ctx.fill();
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
             drawTickMarks(pA.x, pA.y, pB.x, pB.y, 2); drawTickMarks(pA.x, pA.y, pC.x, pC.y, 2);
 
             drawSmartLabel(pA.x, pA.y, cx, cy, `A(${180 - 2*ang}°)`);
-            drawSmartLabel(pB.x, pB.y, cx, cy, `B(●${ang}°)`, '#2563EB');
-            drawSmartLabel(pC.x, pC.y, cx, cy, `C(●${ang}°)`, '#E11D48');
+            drawSmartLabel(pB.x, pB.y, cx, cy, `B(●${ang}°)`, '#38bdf8');
+            drawSmartLabel(pC.x, pC.y, cx, cy, `C(●${ang}°)`, '#fb7185');
           }
         }
       }
@@ -1304,38 +1415,38 @@
         });
 
         if (sub === 'oneDiag') {
-          const cols = ['rgba(37,99,235,0.20)', 'rgba(16,185,129,0.20)', 'rgba(245,158,11,0.20)', 'rgba(225,29,72,0.20)'];
+          const cols = ['rgba(56,189,248,0.20)', 'rgba(52,211,153,0.20)', 'rgba(245,158,11,0.20)', 'rgba(244,63,94,0.20)'];
           for (let i = 1; i < n - 1; i++) {
             const mx = (verts[0].x + verts[i].x + verts[i + 1].x) / 3, my = (verts[0].y + verts[i].y + verts[i + 1].y) / 3;
             ctx.save(); ctx.translate((mx - cx) * 0.14 * t, (my - cy) * 0.14 * t);
             ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); ctx.lineTo(verts[i].x, verts[i].y); ctx.lineTo(verts[i + 1].x, verts[i + 1].y); ctx.closePath();
             ctx.fillStyle = cols[(i - 1) % cols.length]; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
             ctx.restore();
           }
           for (let i = 2; i < n - 1; i++) {
             ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); ctx.lineTo(verts[i].x, verts[i].y);
-            ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 3.5; ctx.stroke();
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3.5; ctx.stroke();
           }
           verts.forEach((p, i) => {
             const bad = i === 0 || i === 1 || i === n - 1;
-            drawSmartLabel(p.x, p.y, cx, cy, bad ? '금지(✕)' : `대각선!`, bad ? '#E11D48' : '#2563EB', 20);
+            drawSmartLabel(p.x, p.y, cx, cy, bad ? '금지(✕)' : `대각선!`, bad ? '#fb7185' : '#38bdf8', 20);
           });
         } else if (sub === 'inPointO') {
           const pO = { x: cx + (state.dragXRatio - 0.35) * 70, y: cy + (state.dragYRatio - 0.45) * 70 };
           for (let i = 0; i < n; i++) {
             const v1 = verts[i], v2 = verts[(i + 1) % n];
             ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(v1.x, v1.y); ctx.lineTo(v2.x, v2.y); ctx.closePath();
-            ctx.fillStyle = i % 2 === 0 ? 'rgba(37,99,235,0.18)' : 'rgba(16,185,129,0.18)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.fillStyle = i % 2 === 0 ? 'rgba(56,189,248,0.18)' : 'rgba(52,211,153,0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
           }
           ctx.beginPath(); ctx.arc(pO.x, pO.y, 26 + t * 10, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(225, 29, 72, 0.32)'; ctx.fill();
-          ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = 'rgba(244, 63, 94, 0.32)'; ctx.fill();
+          ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5; ctx.stroke();
           registerDragHandle('O', pO.x, pO.y, '점 O (360° 빼기!)', (nx, ny) => { state.dragXRatio = 0.35 + (nx - cx) / 70; state.dragYRatio = 0.45 + (ny - cy) / 70; });
         } else if (sub === 'allDiag') {
           ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); verts.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
-          ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 3; ctx.stroke();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.stroke();
           const diags = [];
           for (let i = 0; i < n; i++) {
             for (let j = i + 2; j < n; j++) {
@@ -1346,7 +1457,7 @@
           const cnt = t > 0.04 ? Math.ceil(t * diags.length) : diags.length;
           for (let k = 0; k < cnt; k++) {
             ctx.beginPath(); ctx.moveTo(diags[k][0].x, diags[k][0].y); ctx.lineTo(diags[k][1].x, diags[k][1].y);
-            ctx.strokeStyle = k < n - 3 ? '#E11D48' : 'rgba(37,99,235,0.55)';
+            ctx.strokeStyle = k < n - 3 ? '#fb7185' : 'rgba(56,189,248,0.55)';
             ctx.lineWidth = k < n - 3 ? 3.2 : 1.8; ctx.stroke();
           }
           verts.forEach((p, i) => drawSmartLabel(p.x, p.y, cx, cy, `P${i + 1}`));
@@ -1357,7 +1468,7 @@
             const a = -Math.PI / 2 + (i * Math.PI * 2) / n;
             return { x: cx + curR * Math.cos(a), y: cy + curR * Math.sin(a) };
           });
-          const cols = ['#2563EB', '#E11D48', '#059669', '#D97706', '#7C3AED', '#DB2777', '#0891B2', '#4F46E5'];
+          const cols = ['#38bdf8', '#fb7185', '#34d399', '#fbbf24', '#7C3AED', '#DB2777', '#0891B2', '#4F46E5'];
           for (let i = 0; i < n; i++) {
             const aPrev = -Math.PI / 2 + ((i - 1) * Math.PI * 2) / n;
             const aCurr = -Math.PI / 2 + (i * Math.PI * 2) / n;
@@ -1371,8 +1482,8 @@
           }
           if (curR > 2) {
             ctx.beginPath(); ctx.moveTo(vCur[0].x, vCur[0].y); vCur.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
-            ctx.fillStyle = '#FFFFFF'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 3; ctx.stroke();
+            ctx.fillStyle = '#0d241b'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.stroke();
           }
         }
       }
@@ -1386,22 +1497,22 @@
             // 기본 삼각형 외각 색종이 이동
             const yBot = cy + 70, pB = { x: cx - 145, y: yBot }, pC = { x: cx + 30, y: yBot }, pD = { x: cx + 185, y: yBot }, pA = { x: cx - 60, y: cy - 90 };
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.16)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.8; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.16)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
             ctx.beginPath(); ctx.moveTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.stroke();
 
             const pE = { x: pC.x + (pA.x - pB.x), y: pC.y + (pA.y - pB.y) };
             if (state.steps[2] || t > 0.05 || state.lens === 'aux') {
-              ctx.strokeStyle = '#059669'; ctx.lineWidth = 2.2; ctx.setLineDash([5, 4]);
+              ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2.2; ctx.setLineDash([5, 4]);
               ctx.beginPath(); ctx.moveTo(pC.x, pC.y); ctx.lineTo(pE.x, pE.y); ctx.stroke(); ctx.setLineDash([]);
               drawParallelArrows(pB.x, pB.y, pA.x, pA.y, 2); drawParallelArrows(pC.x, pC.y, pE.x, pE.y, 2);
             }
             const angCA = Math.atan2(pA.y - pC.y, pA.x - pC.x), angCE = Math.atan2(pE.y - pC.y, pE.x - pC.x);
             const A = p1 <= 10 ? p1 * 6 : 50, B = 60;
-            drawAngleArc(pA.x + t*(pC.x - pA.x), pA.y + t*(pC.y - pA.y), 38, angCA, angCE, '#2563EB', `${A}°`);
-            drawAngleArc(pB.x + t*(pC.x - pB.x), pB.y + t*(pC.y - pB.y), 38, angCE, 0, '#E11D48', `${B}°`);
+            drawAngleArc(pA.x + t*(pC.x - pA.x), pA.y + t*(pC.y - pA.y), 38, angCA, angCE, '#38bdf8', `${A}°`);
+            drawAngleArc(pB.x + t*(pC.x - pB.x), pB.y + t*(pC.y - pB.y), 38, angCE, 0, '#fb7185', `${B}°`);
             drawSmartLabel(pA.x, pA.y, cx, cy, 'A'); drawSmartLabel(pB.x, pB.y, cx, cy, 'B');
-            drawSmartLabel(pC.x, pC.y + 10, pC.x, pC.y - 20, `외각 = ${A+B}°`, '#059669', 18);
+            drawSmartLabel(pC.x, pC.y + 10, pC.x, pC.y - 20, `외각 = ${A+B}°`, '#34d399', 18);
           } else {
             // 등변 사슬 AB=BC=CD(=DE)로 x, 2x, 3x, 4x 외각이 실제로 성립하도록 구성
             const stepsCnt = p2 === 2 ? 3 : 4;
@@ -1427,10 +1538,10 @@
 
             // 세 등변삼각형: ABC, BCD, 그리고 4단에서 CDE
             const tris = [
-              { pts: [pA, pB, pC], col: 'rgba(37, 99, 235, 0.18)' },
-              { pts: [pB, pC, pD], col: 'rgba(16, 185, 129, 0.18)' }
+              { pts: [pA, pB, pC], col: 'rgba(56, 189, 248, 0.18)' },
+              { pts: [pB, pC, pD], col: 'rgba(52, 211, 153, 0.18)' }
             ];
-            if (stepsCnt === 4) tris.push({ pts: [pC, pD, pE], col: 'rgba(225, 29, 72, 0.18)' });
+            if (stepsCnt === 4) tris.push({ pts: [pC, pD, pE], col: 'rgba(244, 63, 94, 0.18)' });
             for (const tr of tris) {
               ctx.beginPath(); ctx.moveTo(tr.pts[0].x, tr.pts[0].y); ctx.lineTo(tr.pts[1].x, tr.pts[1].y); ctx.lineTo(tr.pts[2].x, tr.pts[2].y); ctx.closePath();
               ctx.fillStyle = tr.col; ctx.fill();
@@ -1453,10 +1564,10 @@
             }
 
             // AB=BC=CD(=DE) 표식을 같은 한 개 틱으로 표시
-            drawTickMarks(pA.x, pA.y, pB.x, pB.y, 1, '#E11D48');
-            drawTickMarks(pB.x, pB.y, pC.x, pC.y, 1, '#E11D48');
-            drawTickMarks(pC.x, pC.y, pD.x, pD.y, 1, '#E11D48');
-            if (stepsCnt === 4) drawTickMarks(pD.x, pD.y, pE.x, pE.y, 1, '#E11D48');
+            drawTickMarks(pA.x, pA.y, pB.x, pB.y, 1, '#fb7185');
+            drawTickMarks(pB.x, pB.y, pC.x, pC.y, 1, '#fb7185');
+            drawTickMarks(pC.x, pC.y, pD.x, pD.y, 1, '#fb7185');
+            if (stepsCnt === 4) drawTickMarks(pD.x, pD.y, pE.x, pE.y, 1, '#fb7185');
 
             const aAB = Math.atan2(pB.y - pA.y, pB.x - pA.x);
             const aBD = Math.atan2(pD.y - pB.y, pD.x - pB.x);
@@ -1466,26 +1577,26 @@
             const aAD = Math.atan2(pD.y - pA.y, pD.x - pA.x);
             const aDE = Math.atan2(pE.y - pD.y, pE.x - pD.x);
             const arcR = Math.max(20, Math.min(29, side * 0.24));
-            drawAngleArc(pA.x, pA.y, arcR, aAB, 0, '#2563EB', `x=${xDeg}°`);
-            drawAngleArc(pB.x, pB.y, arcR, aBD, aBC, '#059669', `2x=${2 * xDeg}°`);
-            drawAngleArc(pC.x, pC.y, arcR, aCD, aCE, '#E11D48', `3x=${3 * xDeg}°`);
-            if (stepsCnt === 4) drawAngleArc(pD.x, pD.y, arcR, aAD, aDE, '#BE123C', `4x=${4 * xDeg}°`);
+            drawAngleArc(pA.x, pA.y, arcR, aAB, 0, '#38bdf8', `x=${xDeg}°`);
+            drawAngleArc(pB.x, pB.y, arcR, aBD, aBC, '#34d399', `2x=${2 * xDeg}°`);
+            drawAngleArc(pC.x, pC.y, arcR, aCD, aCE, '#fb7185', `3x=${3 * xDeg}°`);
+            if (stepsCnt === 4) drawAngleArc(pD.x, pD.y, arcR, aAD, aDE, '#fda4af', `4x=${4 * xDeg}°`);
 
             drawSmartLabel(pA.x, pA.y, pA.x + 18, pA.y, 'A');
             drawSmartLabel(pB.x, pB.y, pB.x, pB.y + 18, 'B');
             drawSmartLabel(pC.x, pC.y, pC.x - 18, pC.y, 'C');
-            drawSmartLabel(pD.x, pD.y, pD.x + 20, pD.y - 14, 'D', '#0F172A', 19);
+            drawSmartLabel(pD.x, pD.y, pD.x + 20, pD.y - 14, 'D', '#e2e8f0', 19);
             if (stepsCnt === 4) drawSmartLabel(pE.x, pE.y, pE.x - 18, pE.y, 'E');
           }
         } else if (sub === 'boomBow') {
           if (p2 < 3) {
             const pA = { x: cx, y: cy - 110 }, pB = { x: cx - 125, y: cy + 90 }, pC = { x: cx + 125, y: cy + 90 }, pD = { x: cx, y: cy + 12 };
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.18)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.8; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
 
             if (state.steps[2] || t > 0.05 || state.lens === 'aux') {
-              ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2.4; ctx.setLineDash([5, 4]);
+              ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.4; ctx.setLineDash([5, 4]);
               ctx.beginPath();
               if (p2 === 1) {
                 // BD 연장선과 AC의 교점 E
@@ -1497,23 +1608,23 @@
               ctx.stroke(); ctx.setLineDash([]);
             }
             const a = p1 * 4;
-            drawSmartLabel(pA.x, pA.y, cx, cy, `A(∠a=${a}°)`, '#2563EB');
-            drawSmartLabel(pB.x, pB.y, cx, cy, `B(∠b=30°)`, '#E11D48');
-            drawSmartLabel(pC.x, pC.y, cx, cy, `C(∠c=25°)`, '#059669');
-            drawSmartLabel(pD.x, pD.y + 22, pD.x, pD.y - 20, `🪃 ∠x = ${a}+30+25 = ${a+55}°!`, '#BE123C', 20);
+            drawSmartLabel(pA.x, pA.y, cx, cy, `A(∠a=${a}°)`, '#38bdf8');
+            drawSmartLabel(pB.x, pB.y, cx, cy, `B(∠b=30°)`, '#fb7185');
+            drawSmartLabel(pC.x, pC.y, cx, cy, `C(∠c=25°)`, '#34d399');
+            drawSmartLabel(pD.x, pD.y + 22, pD.x, pD.y - 20, `🪃 ∠x = ${a}+30+25 = ${a+55}°!`, '#fda4af', 20);
           } else {
             const pO = { x: cx, y: cy }, pA = { x: cx - 145, y: cy - 80 }, pB = { x: cx - 130, y: cy + 85 }, pC = { x: cx + 140, y: cy - 85 }, pD = { x: cx + 130, y: cy + 75 };
             ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.22)'; ctx.fill(); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 2.8; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.8; ctx.stroke();
 
             ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(225, 29, 72, 0.22)'; ctx.fill(); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2.8; ctx.stroke();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.8; ctx.stroke();
 
             const sumAB = p1 * 10;
-            drawSmartLabel(pA.x, pA.y, cx, cy, 'A(∠a)', '#2563EB');
-            drawSmartLabel(pB.x, pB.y, cx, cy, `B(∠a+∠b=${sumAB}°)`, '#2563EB');
-            drawSmartLabel(pC.x, pC.y, cx, cy, 'C(∠c=42°)', '#E11D48');
-            drawSmartLabel(pD.x, pD.y, cx, cy, `D(∠d=${sumAB-42}°)`, '#059669');
+            drawSmartLabel(pA.x, pA.y, cx, cy, 'A(∠a)', '#38bdf8');
+            drawSmartLabel(pB.x, pB.y, cx, cy, `B(∠a+∠b=${sumAB}°)`, '#38bdf8');
+            drawSmartLabel(pC.x, pC.y, cx, cy, 'C(∠c=42°)', '#fb7185');
+            drawSmartLabel(pD.x, pD.y, cx, cy, `D(∠d=${sumAB-42}°)`, '#34d399');
           }
         } else if (sub === 'starMaster') {
           const R = Math.min(rect.width, rect.height) * 0.30 * state.scale;
@@ -1522,10 +1633,10 @@
             const t1 = [0, 2, 4].map((i) => ({ x: cx + R * Math.cos(-Math.PI/2 + i*Math.PI/3), y: cy + R * Math.sin(-Math.PI/2 + i*Math.PI/3) }));
             const t2 = [1, 3, 5].map((i) => ({ x: cx + R * Math.cos(-Math.PI/2 + i*Math.PI/3), y: cy + R * Math.sin(-Math.PI/2 + i*Math.PI/3) }));
             ctx.beginPath(); ctx.moveTo(t1[0].x, t1[0].y); t1.forEach((p)=>ctx.lineTo(p.x,p.y)); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.18)'; ctx.fill(); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 3; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
             ctx.beginPath(); ctx.moveTo(t2[0].x, t2[0].y); t2.forEach((p)=>ctx.lineTo(p.x,p.y)); ctx.closePath();
-            ctx.fillStyle = 'rgba(225, 29, 72, 0.18)'; ctx.fill(); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 3; ctx.stroke();
-            drawSmartLabel(t1[0].x, t1[0].y, cx, cy, '✡ 육각별 = 삼각형 2개 (180°×2 = 360°!)', '#0F172A', 22);
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.18)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3; ctx.stroke();
+            drawSmartLabel(t1[0].x, t1[0].y, cx, cy, '✡ 육각별 = 삼각형 2개 (180°×2 = 360°!)', '#e2e8f0', 22);
           } else {
             // 오각별(☆) 해법 ①(외각 2개 이사) vs 해법 ②(아래쪽 나비넥타이 보조선 CD 연결!)
             const pts = Array.from({ length: 5 }, (_, i) => {
@@ -1535,7 +1646,7 @@
             // pts[0]=A(위), pts[1]=C(우상), pts[2]=D(우하), pts[3]=B(좌하), pts[4]=E(좌상)
             const order = [0, 2, 4, 1, 3, 0];
             ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); order.forEach((idx) => ctx.lineTo(pts[idx].x, pts[idx].y));
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.6; ctx.stroke();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.6; ctx.stroke();
 
             const rIn = R * 0.382;
             const pF = { x: cx + rIn * Math.cos(-Math.PI/2 - Math.PI/5), y: cy + rIn * Math.sin(-Math.PI/2 - Math.PI/5) };
@@ -1544,33 +1655,33 @@
             if (p2 === 2) {
               // 해법 ②: 아래쪽 두 끝점 B(pts[3])와 D(pts[2])를 잇는 나비넥타이 보조선!
               ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); ctx.lineTo(pts[3].x, pts[3].y); ctx.lineTo(pts[2].x, pts[2].y); ctx.closePath();
-              ctx.fillStyle = 'rgba(16, 185, 129, 0.22)'; ctx.fill();
-              ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 3.5; ctx.setLineDash([6, 4]);
+              ctx.fillStyle = 'rgba(52, 211, 153, 0.22)'; ctx.fill();
+              ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.5; ctx.setLineDash([6, 4]);
               ctx.beginPath(); ctx.moveTo(pts[3].x, pts[3].y); ctx.lineTo(pts[2].x, pts[2].y); ctx.stroke(); ctx.setLineDash([]);
-              drawSmartLabel(cx, (pts[3].y + pts[2].y) / 2 + 18, cx, cy, '🎀 나비넥타이 보조선 연결 ➔ 큰 삼각형 1개(180°) 완성!', '#E11D48', 10);
+              drawSmartLabel(cx, (pts[3].y + pts[2].y) / 2 + 18, cx, cy, '🎀 나비넥타이 보조선 연결 ➔ 큰 삼각형 1개(180°) 완성!', '#fb7185', 10);
             } else {
               // 해법 ①: 위쪽 작은 삼각형 ΔAFG로 외각 2개 이사!
               ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); ctx.lineTo(pF.x, pF.y); ctx.lineTo(pG.x, pG.y); ctx.closePath();
-              ctx.fillStyle = 'rgba(37, 99, 235, 0.24)'; ctx.fill();
-              ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 3; ctx.stroke();
+              ctx.fillStyle = 'rgba(56, 189, 248, 0.24)'; ctx.fill();
+              ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
 
               const bPt = { x: pts[4].x + t*(pF.x - pts[4].x), y: pts[4].y + t*(pF.y - pts[4].y) };
               const dPt = { x: pts[2].x + t*(pF.x - pts[2].x), y: pts[2].y + t*(pF.y - pts[2].y) };
               const cPt = { x: pts[1].x + t*(pG.x - pts[1].x), y: pts[1].y + t*(pG.y - pts[1].y) };
               const ePt = { x: pts[3].x + t*(pG.x - pts[3].x), y: pts[3].y + t*(pG.y - pts[3].y) };
               [
-                { p: pts[0], c: '#059669' }, { p: bPt, c: '#2563EB' }, { p: dPt, c: '#2563EB' }, { p: cPt, c: '#E11D48' }, { p: ePt, c: '#E11D48' }
+                { p: pts[0], c: '#34d399' }, { p: bPt, c: '#38bdf8' }, { p: dPt, c: '#38bdf8' }, { p: cPt, c: '#fb7185' }, { p: ePt, c: '#fb7185' }
               ].forEach((it) => {
                 ctx.beginPath(); ctx.arc(it.p.x, it.p.y, 7.5, 0, Math.PI * 2);
                 ctx.fillStyle = it.c; ctx.fill(); ctx.strokeStyle = '#FFF'; ctx.lineWidth = 2; ctx.stroke();
               });
             }
             const a = p1 * 4;
-            drawSmartLabel(pts[0].x, pts[0].y, cx, cy, `A(∠a=${a}°)`, '#059669', 20);
-            drawSmartLabel(pts[4].x, pts[4].y, cx, cy, 'E(∠b)', '#2563EB', 20);
-            drawSmartLabel(pts[1].x, pts[1].y, cx, cy, 'C(∠c)', '#E11D48', 20);
-            drawSmartLabel(pts[2].x, pts[2].y, cx, cy, 'D(∠d)', '#2563EB', 20);
-            drawSmartLabel(pts[3].x, pts[3].y, cx, cy, 'B(∠e)', '#E11D48', 20);
+            drawSmartLabel(pts[0].x, pts[0].y, cx, cy, `A(∠a=${a}°)`, '#34d399', 20);
+            drawSmartLabel(pts[4].x, pts[4].y, cx, cy, 'E(∠b)', '#38bdf8', 20);
+            drawSmartLabel(pts[1].x, pts[1].y, cx, cy, 'C(∠c)', '#fb7185', 20);
+            drawSmartLabel(pts[2].x, pts[2].y, cx, cy, 'D(∠d)', '#38bdf8', 20);
+            drawSmartLabel(pts[3].x, pts[3].y, cx, cy, 'B(∠e)', '#fb7185', 20);
           }
         } else {
           // bisect3 (내·외각 이등분선 3종 & 정오각형 대각선 교각)
@@ -1590,17 +1701,17 @@
               pP = { x: cx, y: yBot + halfB / tau };
             }
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.18)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.8; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
 
             ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pP.x, pP.y); ctx.lineTo(pC.x, pC.y);
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2.8; ctx.setLineDash([6, 4]); ctx.stroke(); ctx.setLineDash([]);
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.8; ctx.setLineDash([6, 4]); ctx.stroke(); ctx.setLineDash([]);
 
             const ans = p2 === 1 ? angA / 2 : p2 === 2 ? 90 + angA / 2 : 90 - angA / 2;
-            drawSmartLabel(pA.x, pA.y, cx, cy, `A(${angA}°)`, '#2563EB');
-            drawSmartLabel(pB.x, pB.y, cx, cy, 'B(●●)', '#059669');
-            drawSmartLabel(pC.x, pC.y, cx, cy, 'C(××)', '#E11D48');
-            drawSmartLabel(pP.x, pP.y, cx, cy, `P(∠x=${ans}°)`, '#BE123C', 20);
+            drawSmartLabel(pA.x, pA.y, cx, cy, `A(${angA}°)`, '#38bdf8');
+            drawSmartLabel(pB.x, pB.y, cx, cy, 'B(●●)', '#34d399');
+            drawSmartLabel(pC.x, pC.y, cx, cy, 'C(××)', '#fb7185');
+            drawSmartLabel(pP.x, pP.y, cx, cy, `P(∠x=${ans}°)`, '#fda4af', 20);
           } else {
             // 정오각형 속 두 대각선 교각 (36°, 72°, 108°)
             const R = Math.min(rect.width, rect.height) * 0.28 * state.scale;
@@ -1609,19 +1720,19 @@
               return { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) };
             });
             ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); verts.forEach((p)=>ctx.lineTo(p.x,p.y)); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.14)'; ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.8; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.14)'; ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
 
             ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); ctx.lineTo(verts[1].x, verts[1].y); ctx.lineTo(verts[2].x, verts[2].y); ctx.closePath();
-            ctx.fillStyle = 'rgba(16, 185, 129, 0.24)'; ctx.fill();
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.24)'; ctx.fill();
 
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 3.2;
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.2;
             ctx.beginPath();
             ctx.moveTo(verts[0].x, verts[0].y); ctx.lineTo(verts[2].x, verts[2].y);
             ctx.moveTo(verts[1].x, verts[1].y); ctx.lineTo(verts[3].x, verts[3].y);
             ctx.stroke();
 
-            ['A(36°)', 'B(108°)', 'C(36°)', 'D', 'E'].forEach((l, i) => drawSmartLabel(verts[i].x, verts[i].y, cx, cy, l, '#0F172A', 20));
-            drawSmartLabel(cx + R * 0.2, cy - R * 0.08, cx, cy, '교점 P (예각 72° / 둔각 108°)', '#E11D48', 10);
+            ['A(36°)', 'B(108°)', 'C(36°)', 'D', 'E'].forEach((l, i) => drawSmartLabel(verts[i].x, verts[i].y, cx, cy, l, '#e2e8f0', 20));
+            drawSmartLabel(cx + R * 0.2, cy - R * 0.08, cx, cy, '교점 P (예각 72° / 둔각 108°)', '#fb7185', 10);
           }
         }
       }

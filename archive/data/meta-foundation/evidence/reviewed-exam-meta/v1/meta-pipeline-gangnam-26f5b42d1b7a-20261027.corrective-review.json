@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "codex-corrective-metadata-audit-v1",
+  "author": "CODEX_ROOT",
+  "reviewerModel": "opencode-go/deepseek-v4.1-flash",
+  "scope": "Metadata correspondence with existing verified solution; no exam mathematics re-review",
+  "sourceBeforeSha256": "46eb05fbce8aef42e1eefacab77dcc5f44a089aa1a0b321617f6adfeff0b4481",
+  "sourceAfterSha256": "b8fd71a13bbd6cbd19dd1b238b8f69736b51b78ff0fe7b9cdfe11d8b25c5f9be",
+  "originalGeminiAuditSha256": "5c4d58001a36d11f2fc53a6bf5c81512233a9f58e828567a6a5e3e913bcf66ab",
+  "originalGeminiManifestSha256": "e33bca0366dd96276a5c40a50a5262837906b668ab2e17959131df9ba0e6be3f",
+  "originalGeminiNewTemplatesCreated": 0,
+  "codexCorrectiveTemplatesCreated": 1,
+  "statisticsScope": "Original statistics describe Gemini work only. One new primitive template is approved by this Codex corrective audit, not Gemini.",
+  "definition": {
+    "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+    "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+    "canonicalLabelKo": "나머지정리의 직접 대입",
+    "definition": "일차식 ax+b로 나눈 나머지 조건에서 그 일차식의 근을 다항식에 대입하여 나머지 또는 미정계수를 결정한다.",
+    "solutionSkeleton": "제수의 근을 정한다 → 그 값을 다항식에 대입한 값이 주어진 나머지와 같다는 조건을 세운다 → 필요한 계수 또는 나머지를 결정한다.",
+    "ownerPack": "H1_FOUNDATION",
+    "status": "ACTIVE",
+    "supportingQuestionUids": [
+      "qid_v1_f61484aedcdac891b5755d5a8c935ffa25f238ca1d826e542b995635180e55f4"
+    ],
+    "supportingItemCount": 1,
+    "sourceOrdinal": 6
+  },
+  "review": {
+    "verdict": "APPROVED",
+    "reason": "The already-verified source solution for 24 Gangnam H1 midterm q6 uses exactly one direct remainder-theorem evaluation: the root x=1/2 of the single linear divisor 2x-1 is substituted into P(x), P(1/2)=1 is set equal to the given remainder, and a is determined. The proposal's key, label, definition, and skeleton describe that same one-step primitive without adding composite-factor or nested-division structure. The gap is real and source-recorded: q6 has PT_H1_REMAINDER_THEOREM but no direct-substitution template; its own audit L4 is '일차식으로 나눈 나머지' and the source metadata explicitly preserves templateKey null with metaDebtStatus EVIDENCE_DEBT. The only registered remainder templates (TPL_H1_REMAINDER_COMPOSITE_DIVISOR and TPL_H1_REMAINDER_NESTED_DIVISION) require multiple factors/roots or nested division respectively, so neither is a faithful home. The proposal is therefore a needed missing primitive, not template inflation.",
+    "approvedDefinition": {
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "canonicalLabelKo": "나머지정리의 직접 대입",
+      "definition": "일차식 ax+b로 나눈 나머지 조건에서 그 일차식의 근을 다항식에 대입하여 나머지 또는 미정계수를 결정한다.",
+      "solutionSkeleton": "제수의 근을 정한다 → 그 값을 다항식에 대입한 값이 주어진 나머지와 같다는 조건을 세운다 → 필요한 계수 또는 나머지를 결정한다.",
+      "ownerPack": "H1_FOUNDATION",
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f61484aedcdac891b5755d5a8c935ffa25f238ca1d826e542b995635180e55f4"
+      ],
+      "supportingItemCount": 1,
+      "sourceOrdinal": 6
+    },
+    "evidence": [
+      {
+        "claim": "q6 is a single-linear-divisor remainder problem and the verified solution is one direct substitution.",
+        "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-context.json",
+        "lines": "1517, 1526, 1535-1536, 1570",
+        "sourceTextExcerpt": "6. 다항식 $P(x)=2x^3+ax^2-2x-1$을 $2x-1$로 나누었을 때 나머지가 1일 때, $a$ 값은? [3.5점]",
+        "solutionDecisiveExcerpt": "P(1/2)=1에서 a=11",
+        "solutionExcerpt": "나머지정리에 따라 $2x-1=0$의 해 $x=\\dfrac12$를 $P(x)$에 대입한다. ... $P\\left(\\dfrac12\\right)=1$이므로 ... $a=11$이다."
+      },
+      {
+        "claim": "The source itself records the missing direct-substitution template as metadata debt rather than hiding it under another template.",
+        "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-context.json",
+        "lines": "1532, 1536, 1551-1566",
+        "templateKeyAtSource": null,
+        "metaDebtFields": [
+          "L4",
+          "templateKey"
+        ],
+        "metaDebtStatus": "EVIDENCE_DEBT",
+        "metaDebtReason": "현재 H1 taxonomy rows에서 단순한 나머지값 직접 대입의 active PT는 PT_H1_REMAINDER_THEOREM이나 이 경로에 대응하는 active L4/templateKey가 없어 null로 보존."
+      },
+      {
+        "claim": "The audited source L4 is the direct-substitution meaning, while the audit's recorded COMPOSITE template contradicts that L4.",
+        "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-audit.json",
+        "lines": "471-474, 483-485",
+        "auditL4": "일차식으로 나눈 나머지",
+        "auditTemplateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "auditSolutionDecisiveExcerpt": "P(1/2)=1에서 a=11",
+        "note": "COMPOSITE_DIVISOR is therefore a misselection for q6; the context snapshot preserves templateKey null rather than falsely claiming a direct template."
+      },
+      {
+        "claim": "The existing COMPOSITE template is semantically different and remains intact.",
+        "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-context.json",
+        "lines": "6218-6250",
+        "existingTemplateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "existingCanonicalLabelKo": "합성 제수 나머지 조건 결합",
+        "existingDefinition": "여러 인수·근의 나머지 조건을 결합해 합성 제수의 나머지나 계수를 결정한다.",
+        "existingInternalSkeleton": "COMPOSITE_DIVISOR_REMAINDER_INTERPOLATION",
+        "existingSupportingItemCount": 10,
+        "note": "Requires multiple factors/roots and remainder-condition interpolation; q6 has one linear divisor and no condition combination."
+      },
+      {
+        "claim": "The proposed key is absent from the supplied current taxonomy/context snapshot and does not collide with an existing template.",
+        "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-context.json",
+        "search": "No occurrence of TPL_H1_REMAINDER_DIRECT_SUBSTITUTION or DIRECT_SUBSTITUTION other than the proposal file; the only PT_H1_REMAINDER_THEOREM template entry present is COMPOSITE_DIVISOR.",
+        "rootRegistryState": "ROOT reports the other active template under PT_H1_REMAINDER_THEOREM is TPL_H1_REMAINDER_NESTED_DIVISION; both are semantically distinct from direct substitution.",
+        "pathProposal": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/template-proposal.json"
+      },
+      {
+        "claim": "The proposal is faithful to the verified source method and does not require re-solving the question.",
+        "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/template-proposal.json",
+        "lines": "2-12",
+        "mapping": {
+          "skeletonStep1": "제수의 근을 정한다 = 2x-1=0 → x=1/2",
+          "skeletonStep2": "대입값이 주어진 나머지와 같다는 조건 = P(1/2)=1",
+          "skeletonStep3": "필요한 계수 결정 = a=11"
+        },
+        "note": "No numerical re-derivation was performed or needed; only correspondence with the already-verified decisive step was checked."
+      },
+      {
+        "claim": "No existing template meaning is merged, redefined, or renumbered by this approval.",
+        "changedExistingDefinitions": 0,
+        "mergedExistingTemplates": 0,
+        "action": "Add exactly one ACTIVE template and reassign only q6 from the erroneous COMPOSITE selection to the new key; leave COMPOSITE_DIVISOR's definition and 10 supports unchanged."
+      },
+      {
+        "claim": "Corrective disclosure and publication boundaries.",
+        "originalGeminiNewTemplatesCreated": 0,
+        "historicalStatus": "The original Gemini audit's newTemplatesCreated=0 remains historical and unchanged; it is not rewritten or retroactively altered by this corrective audit.",
+        "correctiveAuditCreates": 1,
+        "correctiveScope": "This Codex corrective metadata audit creates exactly one missing primitive template, TPL_H1_REMAINDER_DIRECT_SUBSTITUTION, tracked separately from the original Gemini audit count.",
+        "geminiApproval": "Gemini did not approve this new key; the original audit instead selected an existing composite template for q6.",
+        "rootMathematicsReview": "No claim is made that ROOT solved or reviewed the exam mathematics; the approved template mirrors the source's already-verified solution and decisive step.",
+        "userAuthorization": "The user explicitly authorized Codex to correct the audit metadata and register the related definition.",
+        "publication": "ROOT publishes one exam commit, preserving the original audit and source histories, metadata-only source corrections, and all student-facing fields."
+      }
+    ]
+  },
+  "sourceMetadataChanges": [
+    {
+      "sourceOrdinal": 6,
+      "field": "L4",
+      "before": null,
+      "after": "나머지정리의 직접 대입"
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "templateKey",
+      "before": null,
+      "after": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "L3",
+      "before": "복소수 근",
+      "after": "복소수 조건과 방정식"
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "L4",
+      "before": "허근",
+      "after": "실수·순허수 조건"
+    }
+  ],
+  "protectedStudentFieldsChanged": 0,
+  "primaryRpmFieldsChanged": 0,
+  "historicalDebtFieldsPreserved": true
+}

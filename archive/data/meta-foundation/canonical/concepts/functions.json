@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.5.5",
+  "shardVersion": "1.5.6",
   "status": "ACTIVE",
-  "conceptCount": 64,
+  "conceptCount": 70,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -2109,6 +2109,216 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_INTERVAL_BOUNDS",
+      "canonicalLabelKo": "닫힌 구간에서의 이차함수 양 끝값 비교",
+      "definition": "제한된 정의역 [a, b]에서 꼭짓점의 포함 여부와 양 끝점의 함숫값을 비교하여 최대·최소를 결정하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_102b2ac4082a8bd28e020f42d215c6f915f59ff3c6f3bc4ae7c21d7a5c5f1f11"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_102b2ac4082a8bd28e020f42d215c6f915f59ff3c6f3bc4ae7c21d7a5c5f1f11",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_INTERVAL_BOUNDS for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "(x+1)²−3의 꼭짓점과 닫힌구간 끝값으로 최솟값·최댓값 결정",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_MIDPOINT_SYMMETRY",
+      "canonicalLabelKo": "두 교점의 중점 x좌표에서의 함수값",
+      "definition": "x = (alpha+beta)/2를 대입하여 두 교점 간 거리와 포물선 깊이 관계를 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bb827d20f37d9e45cf5688ceb9206b601b143e07992609825aae3fd9847042e8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bb827d20f37d9e45cf5688ceb9206b601b143e07992609825aae3fd9847042e8",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_MIDPOINT_SYMMETRY for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY at H15-SA-13-QUADRATIC_GRAPH.",
+          "decisiveEvidence": "중점에서 g−f=3(β−α)²/4=3이므로 CD=2",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA",
+      "canonicalLabelKo": "이차함수의 최댓값과 최솟값",
+      "definition": "완전제곱식을 이용하여 꼭짓점의 좌표와 대칭축을 중심으로 함수의 극값을 구하는 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_102b2ac4082a8bd28e020f42d215c6f915f59ff3c6f3bc4ae7c21d7a5c5f1f11"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_102b2ac4082a8bd28e020f42d215c6f915f59ff3c6f3bc4ae7c21d7a5c5f1f11",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_QUADRATIC_EXTREMA for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "(x+1)²−3의 꼭짓점과 닫힌구간 끝값으로 최솟값·최댓값 결정",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA_MODEL",
+      "canonicalLabelKo": "조건식이 주어진 다변수 이차식의 최대·최소",
+      "definition": "일차 제약조건 y=x+2를 대입하여 한 변수의 위로 볼록한 이차함수로 변환 후 최댓값 도출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_50ba322bc464ed4cee6273ff14858d48a32f48e4f62784f53ff1d5e84310d1bf"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_50ba322bc464ed4cee6273ff14858d48a32f48e4f62784f53ff1d5e84310d1bf",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_QUADRATIC_EXTREMA_MODEL for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_MODEL at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "−2x²+(x+2)²=−(x−2)²+8",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "이차함수와 직선 또는 두 포물선의 교점",
+      "definition": "연립방정식 f(x) - g(x) = 0의 실근을 좌표평면 상의 교점의 x좌표로 해석하는 기하·대수 결합 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6ebcdae9fbec019f2b20b3d4cad5be81d13cd03260363a93c56768fa836120e2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6ebcdae9fbec019f2b20b3d4cad5be81d13cd03260363a93c56768fa836120e2",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_QUADRATIC_GRAPH_INTERSECTION for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY at H15-SA-13-QUADRATIC_GRAPH.",
+          "decisiveEvidence": "f+2g=(x−α)(3x−β−2γ)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_LINEAR_INTERSECTION",
+      "canonicalLabelKo": "포물선과 직선의 교점과 차의 함수",
+      "definition": "h(x) = f(x) - g(x) = 3(x-alpha)(x-beta)로 두고 대칭축과 중점의 수직선 좌표를 해석",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bb827d20f37d9e45cf5688ceb9206b601b143e07992609825aae3fd9847042e8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bb827d20f37d9e45cf5688ceb9206b601b143e07992609825aae3fd9847042e8",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_QUADRATIC_LINEAR_INTERSECTION for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY at H15-SA-13-QUADRATIC_GRAPH.",
+          "decisiveEvidence": "중점에서 g−f=3(β−α)²/4=3이므로 CD=2",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.audit.json",
+            "sha256": "9b9d92c7b4e69151ce587276a9dff15747101fcf361f33acf2beb3ec3264d48a"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
       ],
       "ownerConceptShard": "FUNCTIONS"
     }

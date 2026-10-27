@@ -59,6 +59,50 @@ def _sample_graph_boundary(rows,vp):
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 # A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
 SECTOR_FILL='#d9d9d9'
+# A source that says 빗금친 (hatched) is drawn with real diagonal strokes clipped to the region, not with a second grey:
+# up-right diagonals as in the textbook, about 9 px apart, at the thin indicator width.
+HATCH_ANGLE=math.radians(-45.0)
+HATCH_GAP=9.0
+HATCH_MIN_LENGTH=3.0
+HATCH_MAX_LINES=400
+
+def _region_hatch_spans(polygons):
+    """Straight hatch strokes (screen px) clipped exactly to the even-odd area of the region's own sampled loops.
+    The same dense polygons that the fill path uses are intersected with each diagonal, so no clip path is needed and
+    the strokes cannot leave the coloured area."""
+    if not polygons:return []
+    dx,dy=math.cos(HATCH_ANGLE),math.sin(HATCH_ANGLE)
+    nx,ny=-dy,dx
+    points=[p for poly in polygons for p in poly]
+    offsets=[nx*x+ny*y for x,y in points]
+    low,high=min(offsets),max(offsets)
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    spans=[]
+    first=math.ceil((low+1e-9)/HATCH_GAP)*HATCH_GAP
+    offset=first
+    while offset<=high-1e-9:
+        bx,by=nx*offset,ny*offset
+        hits=[]
+        for (p,q) in edges:
+            ex,ey=q[0]-p[0],q[1]-p[1]
+            det=-dx*ey+ex*dy
+            if abs(det)<=1e-12:continue
+            px,py=p[0]-bx,p[1]-by
+            t=(px*(-ey)-(-ex)*py)/det
+            s=(dx*py-dy*px)/det
+            if -1e-9<=s<=1+1e-9:hits.append(t)
+        if len(hits)>=2:
+            hits.sort()
+            unique=[]
+            for value in hits:
+                if not unique or abs(value-unique[-1])>1e-6:unique.append(value)
+            for start,end in zip(unique[0::2],unique[1::2]):
+                length=end-start
+                if length<HATCH_MIN_LENGTH:continue
+                spans.append(((bx+dx*start,by+dy*start),(bx+dx*end,by+dy*end)))
+                if len(spans)>HATCH_MAX_LINES:raise ValueError('REGION_HATCH_TOO_DENSE')
+        offset+=HATCH_GAP
+    return spans
 
 def _region_label_centres(polygons,obstacles,step=3.0,limit=900):
     """Interior points of an even-odd region (screen px), widest clearance first (from its boundary and from every stroke inside it): where a label has the most room."""
@@ -521,11 +565,22 @@ def prepare(spec):
                 dense.pop();d_parts.append('Z');polygons.append(dense)
             primitive({'id':oid,'kind':'path','d':' '.join(d_parts),'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS[obj['fill']],'noStroke':True,'fillRule':'evenodd',
                        'mark':'region','markId':oid,'ownerPoints':sorted(set(owners)),'fillPolygons':polygons})
+            if obj.get('pattern')=='HATCH':
+                # Real hatch strokes over the fill, clipped to the same even-odd area (no clip path, no second grey). They are part of the
+                # region's paint (role 'region', like the fill), so a label is allowed to stand on them; the region observer checks the clip.
+                for index,(start,end) in enumerate(_region_hatch_spans(polygons),1):
+                    primitive({'id':oid+'-hatch-'+str(index),'kind':'line','from':start,'to':end,'token':'indicator','layer':11,
+                               'role':'region','mark':'region-hatch','markId':oid,'markIndex':index})
             if obj.get('labelText') is not None:
-                tree=parse(obj['labelText']);markup=serialize(tree,'svg')
-                label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
-                       'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':14}
-                label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
+                if obj.get('labelKind','MATH')=='TEXT':
+                    # A visible Korean region name such as (가): plain text through the Korean typesetter, never parsed as math.
+                    label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'layoutText':obj['labelText'],'math':False,
+                           'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':14}
+                else:
+                    tree=parse(obj['labelText']);markup=serialize(tree,'svg')
+                    label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
+                           'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':14}
+                    label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
                 label['candidateCenters']=_region_label_centres(polygons,obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygons[0][0])
                 labels.append(label)
         elif kind=='GRAPH_REGION':
