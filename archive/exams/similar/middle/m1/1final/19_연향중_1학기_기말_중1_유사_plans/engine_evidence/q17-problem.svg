@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 340" width="380" height="340" role="img" aria-labelledby="q17-title q17-desc">
+  <title id="q17-title">반비례 관계의 그래프</title>
+  <desc id="q17-desc">원점 O를 중심으로 제2사분면과 제4사분면을 지나는 반비례 관계 곡선 그래프</desc>
+  <rect width="380" height="340" fill="#ffffff"/>
+
+  <!-- Coordinate Axes -->
+  <g stroke="#333333" stroke-width="1.5">
+    <!-- X axis -->
+    <line x1="30" y1="170" x2="350" y2="170"/>
+    <polyline points="342,165 350,170 342,175" fill="none"/>
+    <!-- Y axis -->
+    <line x1="190" y1="310" x2="190" y2="30"/>
+    <polyline points="185,38 190,30 195,38" fill="none"/>
+  </g>
+
+  <!-- Axis and Origin Labels -->
+  <g font-family="sans-serif" font-size="14" fill="#111111" font-weight="bold">
+    <text x="355" y="175">x</text>
+    <text x="190" y="22" text-anchor="middle">y</text>
+    <text x="176" y="186">O</text>
+  </g>
+
+  <!-- Dashed Guidelines for Point (-2, 6) -->
+  <g stroke="#777777" stroke-width="1.2" stroke-dasharray="4,4">
+    <line x1="154" y1="170" x2="154" y2="62"/>
+    <line x1="190" y1="62" x2="154" y2="62"/>
+  </g>
+
+  <!-- Axis Numbers & Ticks -->
+  <g font-family="sans-serif" font-size="13" fill="#333333">
+    <text x="154" y="188" text-anchor="middle">-2</text>
+    <text x="198" y="67" text-anchor="start">6</text>
+  </g>
+
+  <!-- Inverse Proportion Curve in Quadrant 2 -->
+  <path d="M 172,32 Q 166,54 154,62 Q 136,98 118,116 Q 82,134 32,154" fill="none" stroke="#e65100" stroke-width="2.5"/>
+
+  <!-- Inverse Proportion Curve in Quadrant 4 -->
+  <path d="M 208,308 Q 214,286 226,278 Q 244,242 262,224 Q 298,206 348,186" fill="none" stroke="#e65100" stroke-width="2.5"/>
+
+  <!-- Marked Point (-2, 6) and Origin -->
+  <circle cx="190" cy="170" r="3" fill="#333333"/>
+  <circle cx="154" cy="62" r="4.5" fill="#d32f2f"/>
+</svg>

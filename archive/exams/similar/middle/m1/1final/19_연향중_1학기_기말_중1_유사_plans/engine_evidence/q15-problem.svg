@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 340" width="380" height="340" role="img" aria-labelledby="q15-title q15-desc">
+  <title id="q15-title">정비례 관계의 그래프</title>
+  <desc id="q15-desc">원점 O와 점 (3, a), (b, -4)를 지나는 정비례 관계 y=(2/3)x의 직선 그래프</desc>
+  <rect width="380" height="340" fill="#ffffff"/>
+
+  <!-- Coordinate Axes -->
+  <g stroke="#333333" stroke-width="1.5">
+    <!-- X axis -->
+    <line x1="30" y1="170" x2="350" y2="170"/>
+    <polyline points="342,165 350,170 342,175" fill="none"/>
+    <!-- Y axis -->
+    <line x1="190" y1="310" x2="190" y2="30"/>
+    <polyline points="185,38 190,30 195,38" fill="none"/>
+  </g>
+
+  <!-- Axis and Origin Labels -->
+  <g font-family="sans-serif" font-size="14" fill="#111111" font-weight="bold">
+    <text x="355" y="175">x</text>
+    <text x="190" y="22" text-anchor="middle">y</text>
+    <text x="176" y="186">O</text>
+  </g>
+
+  <!-- Dashed Guidelines for Point (3, a) and (b, -4) -->
+  <g stroke="#777777" stroke-width="1.2" stroke-dasharray="4,4">
+    <!-- Point (3, a) where a=2 -->
+    <line x1="256" y1="170" x2="256" y2="126"/>
+    <line x1="190" y1="126" x2="256" y2="126"/>
+    <!-- Point (b, -4) where b=-6 -->
+    <line x1="58" y1="170" x2="58" y2="258"/>
+    <line x1="58" y1="258" x2="190" y2="258"/>
+  </g>
+
+  <!-- Axis Numbers & Ticks -->
+  <g font-family="sans-serif" font-size="13" fill="#333333">
+    <!-- X axis ticks -->
+    <text x="256" y="188" text-anchor="middle">3</text>
+    <text x="58" y="162" text-anchor="middle" font-weight="bold">b</text>
+    <!-- Y axis ticks -->
+    <text x="180" y="131" text-anchor="end" font-weight="bold">a</text>
+    <text x="198" y="262" text-anchor="start">-4</text>
+  </g>
+
+  <!-- Graph Line y = (2/3)x -->
+  <line x1="36" y1="273" x2="344" y2="67" stroke="#0066cc" stroke-width="2.5"/>
+
+  <!-- Line Formula Label -->
+  <g font-family="sans-serif" font-size="14" fill="#0066cc" font-weight="bold">
+    <text x="280" y="60">y = 2/3 x</text>
+  </g>
+
+  <!-- Points and Origin -->
+  <circle cx="190" cy="170" r="3" fill="#333333"/>
+  <circle cx="256" cy="126" r="4.5" fill="#d32f2f"/>
+  <circle cx="58" cy="258" r="4.5" fill="#d32f2f"/>
+</svg>
