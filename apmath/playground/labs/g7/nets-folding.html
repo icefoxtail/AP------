@@ -600,24 +600,29 @@
       const center2D = project3D(0, 0, 0.4);
       const viewport = canvas.parentElement.getBoundingClientRect();
       const occluders = opts.faces && state.fold > 0.52
-        ? opts.faces.map(face => {
-            const points = face.pts.map(p => project3D(p.x,p.y,p.z));
-            return { points, depth:points.reduce((sum,p)=>sum+p.depth,0)/points.length };
-          }) : [];
-      function insideProjectedFace(p, polygon) {
-        let yes = false;
-        for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){
-          const a=polygon[i],b=polygon[j];
-          if((a.y>p.y)!==(b.y>p.y) &&
-             p.x < (b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x) yes=!yes;
+        ? opts.faces.map(face => face.pts.map(p => project3D(p.x,p.y,p.z))) : [];
+      // 면의 평균 깊이 대신 투영된 해당 픽셀에서의 삼각형 보간 깊이를 사용한다.
+      // 이렇게 해야 실제 앞면의 꼭짓점까지 잘못 숨기는 현상을 막는다.
+      function projectedFaceDepth(p, polygon) {
+        let nearest = Infinity;
+        const A = polygon[0];
+        for (let i = 1; i < polygon.length - 1; i++) {
+          const B=polygon[i], C=polygon[i+1];
+          const d=(B.y-C.y)*(A.x-C.x)+(C.x-B.x)*(A.y-C.y);
+          if(Math.abs(d)<1e-5)continue;
+          const a=((B.y-C.y)*(p.x-C.x)+(C.x-B.x)*(p.y-C.y))/d;
+          const b=((C.y-A.y)*(p.x-C.x)+(A.x-C.x)*(p.y-C.y))/d;
+          const t=1-a-b;
+          if(a>=-0.002 && b>=-0.002 && t>=-0.002)
+            nearest=Math.min(nearest,a*A.depth+b*B.depth+t*C.depth);
         }
-        return yes;
+        return nearest;
       }
       const overlay = canvas.parentElement.querySelector('.absolute.top-3.left-3')?.getBoundingClientRect();
       const labelBoxes = [];
       groups.forEach((g) => {
         const s = project3D(g.pt.x, g.pt.y, g.pt.z);
-        if (occluders.some(f => f.depth < s.depth - 0.12 && insideProjectedFace(s,f.points))) return;
+        if (occluders.some(f => projectedFaceDepth(s,f) < s.depth - 0.12)) return;
         if (opts.avoidBanner && s.y > viewport.height - 118) return;
         const isMerged = g.labels.length > 1;
         const joined = isMerged ? g.labels.join('=') : g.labels[0];
@@ -1439,7 +1444,7 @@
         return {pt:netVisibleFaces[fi]?.pts[vi]||v.flat,label:v.label,
                 color:data.kind==='seam'?'#67e8f9':'#fef08a',highlight:false};
       });
-      renderMerged3DVertices(anchors,{faces:netVisibleFaces,avoidBanner:true});
+      renderMerged3DVertices(anchors,{faces:data.kind==='polyhedron'?netVisibleFaces:null,avoidBanner:true});
     }
 
     // =========================================================================
