@@ -368,7 +368,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 | `SPHERE` / `HEMISPHERE` | `radius` | 반구는 평평한 면이 아래. `inside:"s1"`이면 원기둥 안에 놓인다(꼭 맞는 구는 지름 = 원기둥 높이) |
 
 - **이름 `names`**: 대문자 한 글자씩 밑면 순서대로 이은 문자열 `"FGHEBCDA"`(밑면 먼저, 다음 위 밑면; 각뿔은 밑면 뒤에 꼭짓점 한 글자; `.`은 이름 없음), 또는 `{base,top,apex}`. 생략하면 A, B, C... 순서다. 한 그림에서 이름은 한 번만 쓴다. 이름은 밑면이 위에서 볼 때 반시계 방향이 되는 순서로 붙는다(직육면체는 앞-왼쪽에서 시작해 앞-오른쪽, 뒤-오른쪽, 뒤-왼쪽). 원기둥·원뿔 계열은 `names:{center,top,apex}`.
-- **길이 `dims`**(모두 모서리 옆에 놓인다): `{"edge":"AB"}` 또는 `{"from":"E","to":"G"}`(그려진 모서리나 `segments`의 선분), `{"radius":"bottom"|"top"|"center"|"level"}`, `{"height":true}`(각뿔, 각뿔대, 원기둥, 원뿔: 축을 따라 점선), `{"slant":true}`(원뿔·원뿔대의 모선), `{"level":true}`(아래 `LEVEL`의 높이). `radius:"level"`은 `LEVEL` 수면의 반지름이고, `bottom`·`top`은 각각 z=0·z=높이의 원(꼭짓점 쪽 반지름이 0이면 쓸 수 없다). 값은 엔진이 모델에서 계산해 정확히 쓴다(`5`, `7.5`, `5\sqrt{2}`, `8\pi`, `\frac{10}{3}`)와 `unit`. `label`을 쓰면 숫자일 때는 계산한 값과 같아야 하고(다르면 `SOLID_DIM_VALUE_MISMATCH`), `r`, `h`, `2r`, `\frac{1}{3}h`처럼 문자·식이면 기호 라벨이 된다. 정확한 짧은 꼴이 없는 길이는 `SOLID_DIM_NOT_EXPRESSIBLE`이니 `label`로 문자를 쓴다.
+- **길이 `dims`**(모두 모서리 옆에 놓인다): `{"edge":"AB"}` 또는 `{"from":"E","to":"G"}`(그려진 모서리나 `segments`의 선분), `{"radius":"bottom"|"top"|"center"|"level"}`, `{"height":true}`(각뿔, 각뿔대, 원기둥, 원뿔: 축을 따라 점선), `{"slant":true}`(원뿔·원뿔대의 모선), `{"level":true}` 또는 `{"level":"bottom"}`(아래 `LEVEL` 단면까지의 높이), `{"level":"top"}`(단면에서 꼭짓점·윗면까지의 높이). `radius:"level"`은 `LEVEL` 수면의 반지름이고, `bottom`·`top`은 각각 z=0·z=높이의 원(꼭짓점 쪽 반지름이 0이면 쓸 수 없다). 값은 엔진이 모델에서 계산해 정확히 쓴다(`5`, `7.5`, `5\sqrt{2}`, `8\pi`, `\frac{10}{3}`)와 `unit`. `label`을 쓰면 숫자일 때는 계산한 값과 같아야 하고(다르면 `SOLID_DIM_VALUE_MISMATCH`), `r`, `h`, `2r`, `\frac{1}{3}h`처럼 문자·식이면 기호 라벨이 된다. 정확한 짧은 꼴이 없는 길이는 `SOLID_DIM_NOT_EXPRESSIBLE`이니 `label`로 문자를 쓴다.
 - **`highlights`**: `[{"polygon":["E","G","C"]}]` 그려진 선분들로 이루어진 평면 다각형을 연하게 칠한다(직육면체 위의 직각삼각형 EGC처럼). 다각형의 변은 모서리이거나 `segments`에 있어야 한다.
 - **`segments`**: `[{"from":"E","to":"G","style":"SOLID"|"DASHED"|"AUTO","role":"REF"|"ACCENT"}]` 면의 대각선, 공간대각선, 또는 강조할 모서리(`REF` 굵게, `ACCENT` 빨강). `AUTO`는 입체가 가리는 선분이면 점선으로 그린다. 입체 안을 지나는 선분은 `SOLID`나 `DASHED`로 정한다.
 - **`section`**: `{"kind":"AXIAL"}` 원기둥·원뿔·원뿔대의 회전축을 지나는 평면(직사각형, 이등변삼각형, 사다리꼴)을 칠하고, `{"kind":"LEVEL","at":"1/3"}`은 밑면과 평행한 평면(높이의 1/3)을 타원으로 보인다(원뿔 모양 그릇의 수면). `orientation:"APEX_DOWN"` 그릇에서는 수면 아래의 **작은 닮은 그릇 전체**를 연하게 칠하고 그 옆선을 그려, 물이 찬 부분이 보이게 한다.
@@ -454,12 +454,21 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 |---|---|---|
 | `VENN` | 전체집합 U와 1~3개 집합의 벤다이어그램, 영역 색칠, 포함관계 | `sets`, `elements`(선택), `shade`(선택), `subset`(선택) |
 | `MAPPING` | 두 집합 X, Y(또는 X→Y→Z)의 원소를 화살표로 잇는 대응도 | `columns`, `arrows`, `highlight`(선택) |
+| `MEMBERSHIP_TABLE` | 유한집합 2~4개의 원소별 소속을 행·열 표로 정확히 표시(네 집합의 16개 영역을 원으로 그릴 수 없을 때) | `sets`, `elements` |
 
 **벤다이어그램.** `sets`는 1~3개이며 각 항목은 `{"id":"A","name":"A"}`다(id는 U가 아닌 대문자 한 글자, name은 생략하면 id). `elements`는 그림에 실제로 쓸 유한 원소이고, `in`에는 그 원소가 속한 집합 id를 **모두** 적는다(어디에도 속하지 않으면 `[]`). 엔진은 `in`으로 원자 영역을 정하고 그 영역 안에 원소 글자를 놓는다. 원소 글자가 구간·부등식처럼 보이면(`1≤x≤3`, `2<x<5` 등) 거절하니 유한 원소만 쓴다. `shade`는 U와 집합 id로 쓴 집합식이며 합집합 `∪`, 교집합 `∩`, 차집합 `-`, 괄호, 오른쪽 위 여집합 `^c`(또는 `ᶜ`)를 지원한다(예: `"(A∩B)∪(A∪B)^c"`, `"A-B"`, `"(A∪B)^c"`). 색칠할 영역이 없으면 `SET_SHADE_EMPTY`다. 두 집합의 포함관계 B⊂A는 `"subset":["B","A"]`(안쪽, 바깥쪽)로 쓰며, B는 A 안에 완전히 들어가게 그려지고 B만 있는 영역은 비어 있다(그 영역에 원소를 두면 `SET_ELEMENT_REGION_EMPTY`).
 
 **대응도.** `columns`는 2~3개이고 각 항목은 `{"id":"X","name":"X","elements":["1","2","3"]}`다. 열 id는 대문자+선택적 숫자(`X`, `Y`, `X2`)이고 이름은 생략하면 id다. 같은 집합에서 자기 자신으로 가는 함수는 열 두 개의 `name`을 같게 쓰고 id만 다르게 한다. 원소는 열마다 1~8개, 중복 없는 짧은 값이어야 한다. `arrows`는 `{"from":{"column":0,"element":0},"to":{"column":1,"element":1},"style":"SOLID"|"DASHED"}`이며 `column`·`element`는 0부터 세는 위치다. 화살표는 **이웃한 두 열 사이**를 어느 방향으로든 잇는다(X→Y와 Y→X를 한 그림에 같이 쓰면 함수와 그 역방향 대응을 대조할 수 있고, X→Y→Z 합성도 된다). 같은 쌍을 두 번 쓰면 `MAPPING_ARROW_DUPLICATE`, 멀리 떨어진 열을 이으면 `MAPPING_ARROW_DIRECTION_UNSUPPORTED`다. 한 원소에서 화살표가 둘 이상 나가도 되지만(함수가 아닌 대응) 그 사실을 caption에서 밝힌다. `highlight`는 `{"arrows":[0,2]}`로 화살표를 굵게, `{"elements":[{"column":1,"element":0}]}`로 원소 뒤에 옅은 바탕을 넣는다(합성 경로나 역함수 추적을 강조할 때).
 
-**오류와 한계.** 집합 4개 이상, 열 4개 이상, 열당 원소 9개 이상, 벤다이어그램 원소 13개 이상은 지원하지 않는다(`SET_COUNT_UNSUPPORTED`, `MAPPING_COLUMN_COUNT_UNSUPPORTED`, `MAPPING_TOO_MANY_ELEMENTS`, `SET_TOO_MANY_ELEMENTS`). 집합을 `{x|x≤10}` 같은 무한집합·구간 기호로 직접 쓰지 말고, 문제가 말한 유한 원소만 `elements`에 넣는다. 원소 글자가 영역에 들어갈 자리가 없으면 `SET_ELEMENT_NO_ROOM`/`SET_LABEL_NO_ROOM`, 집합 이름이 들어갈 자리가 없으면 `SET_LABEL_NO_ROOM`이니 원소 수나 집합 수를 줄인다. 대응도의 화살표가 다른 원소 글자를 가로지르면 `MAPPING_ARROW_BLOCKS_LABEL`, 원소 글자가 타원 밖으로 나가면 `MAPPING_ELEMENT_OUT_OF_OVAL`이다. 정답을 그림에 쓰지 말고 풀이에서 쓰는 값·영역·대응만 표시한다.
+**원소 소속 표(`MEMBERSHIP_TABLE`).** 유한한 전체집합의 원소가 2~4개 집합 각각에 속하는지를 원소마다 정확히 보여야 할 때 쓴다. 네 집합이면 겹친 원 16개 영역을 한 그림에서 읽을 수 없으므로, 이 표가 문제의 소속 관계를 그대로 드러내는 정확한 그림이다. `sets`는 2~4개이고 각 항목은 `{"id":"A","name":"A"}`(id는 U가 아닌 대문자 한 글자), `elements`는 1~12개이고 각 항목은 `{"text":"1","in":["A","D"]}`다. 엔진은 원소마다 한 행, 집합마다 한 열을 그리고 `in`에 적힌 칸에만 소속 표식을 찍는다. 표식은 엔진이 더하거나 빼지 않으며, 독립 관측기가 최종 SVG의 표 틀·구분선·행/열 라벨에서 각 칸의 소속을 다시 유도해 plan과 대조한다. 원소 글자는 서로 달라야 하고(`SET_ELEMENT_DUPLICATE`), 표에 없는 집합 id를 쓰면 `SET_ELEMENT_SET_UNKNOWN`이다. 예:
+```json
+{"capability":"set-diagram-figure-v1",
+ "diagram":{"kind":"MEMBERSHIP_TABLE","sets":[{"id":"A"},{"id":"B"},{"id":"C"},{"id":"D"}],
+            "elements":[{"text":"1","in":["A","D"]},{"text":"3","in":["A","B","C"]},{"text":"6","in":["C"]}]},
+ "caption":"...","sourceConditions":[{"id":"c1","condition":"...","mappedTo":"diagram"}],"newVisualInformation":["..."]}
+```
+
+**오류와 한계.** 벤다이어그램 집합 4개 이상, 소속 표 집합 5개 이상, 열 4개 이상, 열당 원소 9개 이상, 벤다이어그램·소속 표 원소 13개 이상은 지원하지 않는다(`SET_COUNT_UNSUPPORTED`, `MAPPING_COLUMN_COUNT_UNSUPPORTED`, `MAPPING_TOO_MANY_ELEMENTS`, `SET_TOO_MANY_ELEMENTS`). 집합을 `{x|x≤10}` 같은 무한집합·구간 기호로 직접 쓰지 말고, 문제가 말한 유한 원소만 `elements`에 넣는다. 원소 글자가 영역에 들어갈 자리가 없으면 `SET_ELEMENT_NO_ROOM`/`SET_LABEL_NO_ROOM`, 집합 이름이 들어갈 자리가 없으면 `SET_LABEL_NO_ROOM`이니 원소 수나 집합 수를 줄인다. 대응도의 화살표가 다른 원소 글자를 가로지르면 `MAPPING_ARROW_BLOCKS_LABEL`, 원소 글자가 타원 밖으로 나가면 `MAPPING_ELEMENT_OUT_OF_OVAL`이다. 정답을 그림에 쓰지 말고 풀이에서 쓰는 값·영역·대응만 표시한다.
 
 ### 3-13. 삼각함수 일반형: 진폭·주기·평행이동, π 계수, 탄젠트 가지: `ratePi`, `phase`, `keyPoints`, `axisTickPi`
 
@@ -577,6 +586,115 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - `overlays`(선택)는 다른 그래프 계열과 같은 보조 요소 층이다. `lines`(직선 `y=slope*x+intercept`, 세로선 `x=a`), `points`, `segments`, `guides`, `polygons`를 쓸 수 있고, 모든 좌표는 계산된 그림 안에 있어야 한다(엔진이 화면을 몰래 넓히지 않는다). 원문 그림에 그려진 대칭선·보조선은 `overlays.lines`로 그대로 살린다.
 - 엔진은 각 곡선·가지를 정확한 구간과 식으로 고정하고, 독립 관측기는 같은 계수에서 모든 가지를 다시 계산해 최종 SVG의 각 polyline(태그 `CURVE_<id>`, `CURVE_<id>_POS`/`_NEG`)이 그 곡선 위에 있는지, 자기 구간·가지를 벗어나지 않는지, 양 끝과 중간 호가 맞는지 확인한다. 하나라도 어긋나면 FAIL이다.
 - 오류 코드: `MULTI_CURVE_COUNT_INVALID`(3개 미만·6개 초과), `MULTI_CURVE_FIELD_UNKNOWN:<field>`, `MULTI_CURVE_CURVE_INVALID:<id>`, `MULTI_CURVE_ID_INVALID`, `MULTI_CURVE_KIND_INVALID:<id>`, `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `MULTI_CURVE_NOT_QUADRATIC:<id>`, `MULTI_CURVE_DOMAIN_INVALID:<id>`, `MULTI_CURVE_BRANCH_INVALID:<id>`, `MULTI_CURVE_BRANCH_EMPTY:<id>`, `MULTI_CURVE_LABEL_INVALID:<id>`, `MULTI_CURVE_FRAME_DEGENERATE`, `MULTI_CURVE_TOO_NARROW`.
+
+
+### 3-41. 두 원의 호로 이루어진 영역(렌즈·활꼴): 중심이 다른 호를 한 `loop`에 잇기
+
+두 원(또는 두 반원)의 호가 만드는 **렌즈(공통 부분)**·**활꼴(초승달)** 처럼 한 영역의 경계가 **중심이 다른 원호 두 개**인 경우에는 3-9절의 `loop`를 그대로 쓰되 각 `step.arc.center`에 다른 점을 적는다. `displayCircles`로 원을 통째로 그리면 원문에 없는 반대쪽 호까지 보이므로, 원문이 반원만 보여 주면 `planeMarks.arcs`를 `highlight:false`(일반 굵기 실선)로 써서 필요한 호만 긋고 그 호를 영역 경계로 쓴다. 정답지 `item39`(23_금당중 2학기 중간 중2 q21, 히포크라테스의 활꼴)가 이 구성을 실제로 검증한다.
+
+```json
+"arcs":[{"id":"arcAB","circle":"kAB","center":"MAB","from":"A","to":"B","side":"CCW","highlight":false}],
+"regions":[{"id":"lunes","fill":"MEDIUM","factRole":"CONCLUSION","shapes":[
+ {"loop":{"start":"A","steps":[{"to":"B","arc":{"center":"MAB","side":"CCW"}},{"to":"A","arc":{"center":"MBC","side":"CW"}}]}},
+ {"loop":{"start":"A","steps":[{"to":"C","arc":{"center":"MAC","side":"CW"}},{"to":"A","arc":{"center":"MBC","side":"CCW"}}]}}]}]
+```
+
+- **경계.** 각 호의 두 끝점은 그 중심 원 위에 정확히 있어야 하고(`REGION_ARC_ENDPOINT_NOT_ON_CIRCLE`), 반원(180°)은 `MINOR`/`MAJOR`가 모호하므로 반드시 `CCW`/`CW`를 적는다(`REGION_ARC_SIDE_AMBIGUOUS`). 같은 두 점을 잇는 두 호가 서로 반대쪽으로 불룩하면 그 사이가 활꼴이고, 두 원의 교점을 잇는 두 호이면 렌즈다.
+- **중심은 화면 점이어야 한다.** `planeMarks.arcs.center`와 `loop`의 `arc.center`는 `displayPoints`에 있는 점 id만 가리킬 수 있다(`DISPLAY_ANNOTATION_POINT_NOT_VISIBLE`). 원문이 그 중심을 이름 붙이지 않으면 `MIDPOINT`·`CIRCLE_CENTER_RADIUS` 노드를 `DERIVED_INTERMEDIATE`로 만들고 `displayPoints`에 넣은 뒤 `hiddenPointNames`에 넣어 **이름 없는 점**으로 그린다(4절).
+- **여러 조각을 한 영역으로.** 서로 겹치지 않는 두 활꼴은 같은 region의 shapes에 넣는다. 내부 라벨은 한 조각의 넓이로 오해될 수 있으므로 전체 합계 54 cm²를 한 조각 안에 쓰지 않는다. 바깥쪽 합계 표기가 지원되지 않으면 SVG에는 두 조각과 원래 조건을 남기고, 해설 본문에서 전체 합계를 설명한다.
+- **관측기.** `plane-marks-observer-worker.py` → `plane_regions_observer.py`가 Cindy 점에서 각 호의 중심·반지름·sweep을 다시 계산해 `<path>`의 `A` 명령과 맞추고, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안인지 확인한다(`REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_LABEL_OUTSIDE`). `highlight:false`인 호는 강조 표식으로 세지 않고 경계 획으로만 검사한다.
+- **한계.** 한글 영역 표지와 빗금이 필요한 원문은 현재 지원 한계로 기록한다. LIGHT/MEDIUM 색이나 접근성 caption만으로 이를 대체하고 시각 PASS를 주장하지 않는다. 넓이 자체는 원문·해설과 독립 대조한다.
+
+
+## 4. 이름과 표기 규칙 (자주 걸리는 것)
+
+- 그림에 나오는 점 이름은 노드 id다. 문항과 풀이 텍스트에 쓴 이름과 같아야 한다. 풀이가 점 이름을 쓰지 않으면 한 글자 대문자(A, B, P)만 쓰고, O0, Pp, C1 같은 내부식 이름은 쓰지 않는다. 풀이에 쓰지 않은 보조점은 숨김 필드를 쓴다.
+- **프라임·아래첨자 이름(A′, T₁, T₂):** id는 `A`, `T1`, `T2`처럼 간단하게 두고, plan 최상위에 `"pointNames":{"T1":"T_1","T2":"T_2","A":"A'"}`을 쓴다(작도 plan, 그래프 plan, 수직선 도형 plan 모두 같은 모양, 합성 패널이면 그 패널 plan 안). 키는 그림이 실제로 그리는 점의 id(작도 `displayPoints`, 그래프 `requiredPoints`와 `graphPlan.overlays.points`, 수직선 `POINTS` 행의 점)이고, 값은 **대문자 한 글자 + 프라임(`'` `′` `″`, 최대 2개) + 아래첨자 숫자 1~9(최대 2자리)** 순서다. `T_1`, `T_{1}`, `T₁`은 같은 이름이고 `A'`, `A′`도 같다. 그림에는 진짜 아래첨자와 ′가 그려지고(점 이름과 좌표 띠 `T₁(3, 2)` 모두), 풀이 글에는 같은 이름을 쓴다.
+  - 이름이 있는 그래프 점은 좌표가 있으면 좌표 띠로 올라간다(`T₁(x, y)`). 좌표가 없으면 점 옆에 이름만 그린다.
+  - 소문자·낱말·숫자 0·두 글자 이상·프라임보다 앞선 아래첨자는 쓸 수 없다. 두 점이 같은 이름을 보이면 안 되고, `hiddenPointNames`로 숨긴 점에는 이름을 못 붙인다. 점 id에는 ′나 아래첨자를 직접 쓰지 않는다.
+- 풀이가 치환(t=x²−2x)하고 그 변수의 그래프를 그리면 `graphPlan.axisVariable`에 그 문자를 쓴다(소문자 한 글자, y 제외). 판별식 D를 a에 대한 함수로 그리면 `"axisVariable":"a"`다. 축과 식이 그 문자로 나온다.
+- 수치는 정확한 정수나 분수 문자열로 쓴다("17/4", "-1/2"). 소수로 근사하지 않는다.
+- 직선의 식을 그림에 쓰려면 `lineLabels`를 쓴다(식이 직선 옆 지시선으로 붙는다). 식 라벨을 따로 띄우지 않는다. `SOURCE_LINE`의 계수는 정수·분수 외에 `p+q√r` 꼴(한 근호 하나, 예: `sqrt(3)`)도 된다: `y=√3x+6`처럼 쓰이고, 기울기형은 y의 계수가 유리수여야 한다(`LINE_LABEL_COEFFICIENT_NOT_RATIONAL`). 두 가지 다른 근호가 한 계수에 있으면 거절된다.
+- 점의 좌표를 그림에 쓰려면 `coordinateLabels`에 그 점을 넣는다. 점이 몰리면 `coordinatePlacement:"PANEL"`로 좌표를 띠로 올린다.
+- `caption`은 학생이 읽는 한국어 한 문장이다. 내부 용어, 디버그 문구, TeX 명령을 쓰지 않는다.
+- 이 plan이 어느 문항의 것인지 확인하기 위해 plan 최상위에 `"sourceQuote"`를 넣는다. 이 문항의 발문 또는 풀이에서 글자 그대로 복사한 12~40자다(다른 문항 것을 쓰지 않는다). 엔진은 이 필드를 무시한다. 작성 파이프라인의 실행기가 있으면 이 문항에 실제로 있는 문장인지 대조한다.
+
+## 5. 그래프 배율
+
+- 이차함수 그래프는 x축과 y축의 눈금 길이를 같게 그리는 것이 기본이다. viewport를 임의로 크게 잡아 납작하거나 길쭉하게 만들지 않는다.
+- 세로로 너무 길면 `graphPlan.axisSqueeze:true`로 세로를 최대 1/2까지 줄일 수 있다. 그 이상 찌그러뜨리는 요청은 하지 않는다.
+- x 범위에 비해 y 범위가 훨씬 커서 곡선이 너무 좁아지면 엔진이 거절한다. 두 축이 서로 다른 양인 문장제(횟수 대 금액)이면 3-5절의 `applicationAxes`를 쓴다. 순수 수학 그래프이면 그림을 포기하고 UNSUPPORTED를 쓴다.
+
+## 6. 오류가 오면 이렇게 고친다
+
+- `NAME_NOT_IN_SOLUTION`: 그림의 점 이름이 풀이에 없다. 풀이에 쓴 이름으로 id를 바꾼다.
+- `POINT_DISPLAY_NAME_INVALID:<id>`: `pointNames` 값이 허용 형식이 아니다(대문자 한 글자 + 프라임 + 아래첨자 1~9). `T_1`, `A'`, `T₁`처럼 고친다. `POINT_NAME_TARGET_UNKNOWN:<id>`: 키가 그림이 그리는 점의 id가 아니다. `POINT_DISPLAY_NAME_DUPLICATE:<이름>`: 두 점이 같은 이름을 보인다. `POINT_NAME_TARGET_HIDDEN:<id>`: 숨긴 점에는 이름을 못 붙인다. `POINT_DISPLAY_NAME_MISMATCH` / `POINT_DISPLAY_NAME_NOT_SHOWN`: 최종 SVG에 그려진 글자가 plan의 이름과 다르다(독립 관측기가 글리프에서 읽는다). 이 코드는 엔진 결함 신호이니 이름을 바꿔 보고, 그래도 나면 보고한다.
+- `SOURCE_QUOTE_MISSING` / `SOURCE_QUOTE_NOT_IN_ITEM` (작성 파이프라인의 실행기가 내는 코드): plan 최상위에 `sourceQuote`를 넣는다. 12~40자, 이 문항의 발문 또는 풀이에서 글자 그대로 복사한다.
+- `POLAR_POINT` 오류 `INVALID_POLAR_LENGTH`/`INVALID_POLAR_ANGLE`/`INVALID_POLAR_TURN`/`DEGENERATE_POLAR_REFERENCE`, 평면도형 오류 `PLANE_FIGURE_HAS_FRAME_HELPERS`/`PLANE_FIGURE_SOURCE_POINT_REQUIRED`/`REALIZATION_RECIPE_REQUIRED`: 3-8절의 모양으로 고친다.
+- 표식 오류(3-8절): `ANGLE_MARK_FACT_MISMATCH`(말한 각이 점들이 만드는 각과 다르다: 작도를 고친다), `ANGLE_MARK_DEGENERATE`/`ANGLE_ARC_TOO_SMALL`(세 점이 일직선이거나 5° 미만), `ANGLE_MARK_STYLE_INVALID`(`style`은 `SECTOR`·`ARC`), `ANGLE_MARK_LABEL_REQUIRED`, `ANGLE_EQUAL_GROUP_MISMATCH`/`_ARC_COUNT`/`_STYLE_MISMATCH`/`_AMBIGUOUS`, `EQUAL_MARK_LENGTH_MISMATCH`, `PARALLEL_MARK_NOT_PARALLEL`, `EQUAL_MARK_GROUP_AMBIGUOUS`/`PARALLEL_MARK_GROUP_AMBIGUOUS`, `MARK_COUNT_INVALID`, `MARK_SEGMENT_TOO_SHORT`, `MARK_TARGET_UNKNOWN:<id>`, `MARK_ID_DUPLICATE`, `MARK_FIELD_UNKNOWN`, `ARC_ENDPOINT_NOT_ON_CIRCLE`, `ARC_SIDE_AMBIGUOUS`, `ARC_CENTER_MISMATCH`, `FACT_TARGET_NOT_DRAWN`. 최종 SVG를 읽은 관측기 판정 `PLANE_MARKS_AUDIT_FAIL`(오류 목록의 `MARK_LABEL_OVERLAPS`, `ANGLE_LABEL_NOT_IN_ANGLE`, `ANGLE_SECTOR_*`, `UNDECLARED_MARK` 등)은 표식이나 라벨을 줄이고 그림을 키운다. 자리가 없으면 `LAYOUT_INVENTORY_INCOMPLETE`(점 이름·라벨 자리 부족)이니 같은 처방이다.
+- 좌표 그림의 표식(3-10절): 3-8절 오류가 그대로 나오고, 그래프 plan에 `planeMarks`나 점선·화살촉 `displaySegments`를 넣으면 `PLANE_MARKS_UNSUPPORTED_ON_GRAPH`다. 축을 그대로 두는 좌표 작도 plan으로 다시 쓴다(축 없는 `PLANE_FIGURE_v1`으로 바꾸지 않는다).
+- `INEQUALITY_SOLUTION_NOT_ONE_INTERVAL`: 해가 두 조각이다. 풀이의 조건을 `domain`으로 옮기거나 그림을 포기한다.
+- `NUMBER_LINE_LABELS_TOO_CLOSE` / `NUMBER_LINE_INTEGER_POINTS_TOO_DENSE`: 정수점 범위를 좁힌다. 수직선 그림이면 끝점이 너무 가까운 것이니 a의 표본값을 바꿔 끝점 사이를 벌린다.
+- `NUMBER_LINE_RESULT_EMPTY` / `NUMBER_LINE_RESULT_IS_A_POINT` / `NUMBER_LINE_TOO_MANY_PIECES`: 공통 범위가 공집합, 한 점, 세 조각 이상이다. 표본값 a를 풀이가 다루는 경우로 바꾸거나 그림을 포기한다.
+- `NUMBER_LINE_PARAMETER_MISSING` / `_UNUSED` / `_INVALID` / `_COEFFICIENT_ZERO`: `param` 끝이 있을 때만, 그리고 그때는 반드시 `parameter:{name,value}`를 쓴다. name은 소문자 한 글자(변수와 y 제외), value는 정확한 정수·분수 문자열, `mul`은 0이 아니다.
+- `NUMBER_LINE_PIECES_OVERLAP` / `_PIECES_TOUCH` / `_PIECE_INVALID` / `_PIECE_IS_A_POINT`: 한 줄의 조각은 서로 겹치지 않는 구간이어야 하고(끝이 닿으면 하나로 쓴다), 한 점짜리 조각은 쓸 수 없다. 아래 끝은 위 끝보다 작아야 한다.
+- `NUMBER_LINE_INTEGER_POINTS_NEED_RANGE` / `_TOO_MANY_INTEGER_POINTS`: 반직선 줄의 정수점은 `{"range":["lo","hi"]}`로 범위를 준다(25개까지).
+- `NUMBER_LINE_POINTS_COINCIDE` / `NUMBER_LINE_DIVISION_INVALID`: 점들의 값은 서로 달라야 하고, 내분점의 from, to는 값을 가진 다른 점이며 ratio는 양의 정수 두 개다.
+- `NUMBER_LINE_VALUE_INVALID`: 끝값은 소수가 아닌 정확한 정수나 분수 문자열이다.
+- `RENDERED_LAYOUT_FAIL` / `POLISH_REQUIRED`: 라벨이 겹치거나 자리가 없다. 엔진은 점 이름이 점에서 20px 이상 떨어지면 점과 이어 주는 지시선을 반드시 그리고, 지시선이 지나갈 빈 곳이 없으면 그림을 거절한다. 원, 접선, 반지름이 한 점에 모인 곳이 대표적이다. 표시할 점과 라벨 수를 줄이거나(풀이가 쓰지 않는 점의 좌표를 빼거나), 좌표를 띠로 올린다(`coordinatePlacement:"PANEL"`).
+- `INVALID_DIVISION_RATIO` / `EXTERNAL_DIVISION_EQUAL_RATIO` / `INVALID_DIVISION_MODE` / `DEGENERATE_DIVISION_SEGMENT`: `DIVISION_POINT`의 m, n은 양수여야 하고 외분은 m≠n, 두 끝점은 서로 달라야 한다. 문자 비나 음수 비는 UNSUPPORTED.
+- `DEGENERATE_TRIANGLE`: `CENTROID`의 세 점이 한 직선 위에 있다. 꼭짓점 좌표를 다시 확인한다.
+- `REFLECTION_POINT_AT_CENTER` / `REFLECTION_POINT_ON_LINE`: 대칭점이 원래 점과 같아진다. 두 점이 겹쳐 그릴 수 없으니 그 점만 그리지 않거나 그림을 포기한다.
+- `ZERO_TRANSLATION` / `UNSUPPORTED_SCALAR_REF`: 평행이동량은 0이 아닌 수 리터럴이어야 한다. 문자나 다른 노드를 가리키는 값은 UNSUPPORTED.
+- `EQUAL_UNIT_PARABOLA_TOO_NARROW` / `EQUAL_UNIT_CURVE_TOO_NARROW`: 이 풀이는 같은 배율로 못 그린다. 단위가 다른 두 축의 문장제이면 3-5절의 `applicationAxes`, 아니면 UNSUPPORTED를 쓴다.
+- `APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL` / `INVALID_APPLICATION_AXES` / `APPLICATION_AXES_TICKS_INVALID:x|y` / `APPLICATION_AXES_CURVE_TOO_NARROW`: 3-5절의 조건(이차함수, INTERVAL, 1·2·5 눈금)에 맞게 plan을 고친다.
+- 같은 오류가 반복되면 plan을 고치는 대신 EXEMPT 또는 UNSUPPORTED로 마무리한다. 다른 문항의 plan을 참고하지 않는다.
+
+## 7. 출력
+
+- 문항 JSON(발문, 보기, 정답, 풀이)과 그림마다 `plan.json` 한 개.
+- plan.json에는 `sourceQuote`(위 4), `sourceConditions`, `newVisualInformation`(그림이 새로 보여 주는 정보)을 넣는다.
+- 그림이 필요 없으면 plan 파일 없이 문항만 낸다. 이유는 notes에 한 줄로 쓴다.
+
+## 8. plan을 직접 그려 보기
+
+- 저장소 루트에서 `node archive/tools/geometry-equation/production/render-plan.mjs --item item.json --plan plan.json --out out/` 한 번으로 그린다. `item.json`은 `{"sourcePath":"archive/exams/....js","ordinal":3}`.
+- 결과는 `out/figure-result.json`의 `status`: `ARCHIVE_BOUND`(그림 `figure-solution.svg` 완성), `EXEMPT`/`UNSUPPORTED`(작성자 판단 그대로), `FAILED`(`stage`와 엔진 오류 `detail`을 보고 6에 따라 고친다).
+- 독립 관측기 검사는 이 안에서 함께 돈다. 시험지 해설 페이지 열림 검증은 하지 않는다.
+
+### 3-45. 축에 나란한 타원: 초점·꼭짓점·지름의 현·접선 (`ellipse-figure-v1`)
+
+원문 문항의 이차곡선이 **축에 나란한 타원**(장축이 x축 또는 y축)이고 저장된 풀이가 초점, 타원 위의 점, 중심을 지나는 현, 삼각형, 접선을 실제로 쓸 때 이 capability를 쓴다. **타원 하나만** 그린다. 회전한 타원, 원, 쌍곡선·포물선, 같은 그림의 두 타원은 대상이 아니다. `capability:"ellipse-figure-v1"`.
+
+```json
+{"capability":"ellipse-figure-v1",
+ "ellipse":{"center":["0","0"],"semiAxisSquared":{"major":"16","minor":"4"},"majorAxis":"X"},
+ "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},
+           {"id":"P","kind":"ON_ELLIPSE","x":"sqrt(3)","branch":"POS"},{"id":"Q","kind":"OPPOSITE","of":"P"},
+           {"id":"O","kind":"ORIGIN"}],
+ "segments":[{"id":"s1","from":"P","to":"F'"},{"id":"s2","from":"F'","to":"Q"},{"id":"s3","from":"P","to":"Q"}],
+ "polygons":[{"id":"t1","points":["P","F'","Q"],"fill":"LIGHT"}],
+ "caption":"타원 x²/16+y²/4=1에서 중심 O를 지나는 지름 PQ와 두 초점 F, F′로 만든 삼각형 PF′Q를 나타낸 그림",
+ "sourceConditions":[...],"newVisualInformation":[...]}
+```
+
+- `ellipse`는 `center`(정확한 값 두 개), `semiAxisSquared{major,minor}`(=a², b²), `majorAxis`(`"X"` 또는 `"Y"`)만 받는다. 모든 수는 정확한 문자열(`"-2"`, `"42/5"`, `"sqrt(3)"`)이고 소수를 쓰지 않는다.
+- **회전 타원은 표현할 필드가 없다.** `rotation`·`hyperbola` 같은 키를 넣으면 `ELLIPSE_PLAN_INVALID`, `majorAxis`가 X/Y가 아니면 `ELLIPSE_MAJOR_AXIS_UNSUPPORTED`다. 원(a=b)은 `ELLIPSE_AXES_INVALID`, major<minor도 같은 코드로 거절한다(원은 기존 작도·평면 경로를 쓴다).
+- 장반지름·단반지름·초점거리는 엔진이 SymPy로 계산한다(c²=a²−b², 초점 (cx±c, cy) 또는 (cx, cy±c)). **저자는 초점·꼭짓점 좌표를 직접 쓰지 않는다.** 그림 범위도 축·꼭짓점·선언한 점·접점에서 자동으로 잡는다.
+- `points`는 최대 10개다. `id`는 대문자 한 글자 + 선택적 숫자·프라임(`A`, `T1`, `F'`)이고 **id가 그대로 점 이름으로 그려진다**(아래첨자 이름·`pointNames`는 이 capability에 없다). `label:false`면 이름을 그리지 않는다. 종류는 다음과 같다.
+  - `FOCUS`: `side:1|-1`. 1은 장축의 양의 방향 초점이다.
+  - `VERTEX`: `end:"MAJOR_POS"|"MAJOR_NEG"|"MINOR_POS"|"MINOR_NEG"`.
+  - `ON_ELLIPSE`: `x` 또는 `y` 중 **정확히 하나**와 `branch:"POS"|"NEG"`(기본 POS). x를 주면 그 x에서의 위/아래 가지, y를 주면 좌/우 가지다. 타원 밖의 값이면 `ELLIPSE_POINT_NOT_ON_ELLIPSE`다.
+  - `OPPOSITE`: `of`에 다른 점 id. 타원 **중심**에 대한 대칭점이다(지름의 다른 끝).
+  - `ORIGIN`: 좌표평면의 원점 (0,0)이다(타원 중심이 아님).
+  - `POINT`: `x`,`y`를 직접 준다(접선의 접점 등).
+- `segments`는 `from`/`to`(선언한 점 id), 선택 `label`(길이·값, MathJax 수식 문자열), 선택 `dashed`다. 라벨은 선분 중점 곁에 놓이고 관측기가 중점에서 72 px 이내인지 확인한다.
+- `polygons`는 점 3~6개와 `fill:"LIGHT"|"MEDIUM"|"NONE"`(기본 LIGHT)이다. 넓이가 0인 다각형은 `ELLIPSE_POLYGON_INVALID`다. 영역 색칠은 이 다각형 채우기만 지원한다(타원 내부·외부 부등식 영역은 지원하지 않는다).
+- `lines`는 `slope`·`intercept` 정확값과 선택 `tangent:true`다. `tangent:true`이면 판별식이 0인지 엔진이 대수적으로 확인하고, 접점을 선언한 점과 대조한다(접점이 없으면 `TANGENCY_POINT_NOT_DECLARED`). **직선 식 라벨(`label`)은 지원하지 않는다**(`ELLIPSE_LINE_LABEL_UNSUPPORTED`). 직선은 그림 범위 안으로 잘리고, 화면 밖이면 `ELLIPSE_LINE_OUTSIDE_VIEWPORT`다.
+- 배치는 두 축 **같은 배율**이다(세로 압축 없음). 좌표축과 화살촉은 엔진이 그리고 눈금·좌표 띠는 없다. 그림 영역 상한(약 460×360 px, 가장자리 0.75단위 여백)보다 타원·점이 크면 `ELLIPSE_FIGURE_TOO_LARGE`다. 좌표가 큰 문항은 억지로 줄이지 말고 UNSUPPORTED로 남긴다.
+- 점 이름은 자기 점 옆에 붙되 곡선·선분·축·다른 이름을 피해 자동 배치된다. 놓을 자리가 없으면 `ELLIPSE_LABEL_NO_ROOM`이다. 이름·길이 라벨은 실제 조판 조각으로 그려지고 최종 SVG에 `data-tex`로 남는다.
+- **독립 검수.** `ellipse_figure_observer.py`는 plan만 보고 초점·꼭짓점·현·접선·접점을 자기 코드로 다시 계산해 **최종 SVG**와 대조한다: 축·화살촉 방향, 타원 중심·두 반지름·같은 배율, 모든 점 표식의 위치, 선분 끝점, 다각형 꼭짓점·채우기, 직선이 식 위에 있는지, 접선 주장의 재증명과 접점 선언, 이름·길이 라벨의 존재·문자·위치, 선언하지 않은 점·선·다각형이 없는지. 하나라도 어긋나면 FAIL이다.
+- 한계·오류 코드: `ELLIPSE_PLAN_INVALID`, `ELLIPSE_CENTER_INVALID`, `ELLIPSE_AXES_INVALID`, `ELLIPSE_MAJOR_AXIS_UNSUPPORTED`, `ELLIPSE_POINT_INVALID`, `ELLIPSE_POINT_ID_INVALID`, `ELLIPSE_POINT_ID_DUPLICATE`, `ELLIPSE_POINT_UNKNOWN`, `ELLIPSE_POINT_NOT_ON_ELLIPSE`, `ELLIPSE_SEGMENT_INVALID`, `ELLIPSE_POLYGON_INVALID`, `ELLIPSE_POLYGON_UNKNOWN_POINT`, `ELLIPSE_LINE_INVALID`, `ELLIPSE_LINE_LABEL_UNSUPPORTED`, `ELLIPSE_LINE_NOT_TANGENT`, `ELLIPSE_LINE_OUTSIDE_VIEWPORT`, `ELLIPSE_FIGURE_TOO_LARGE`, `ELLIPSE_LABEL_NO_ROOM`. 둘째 타원, 회전 타원, 원, 쌍곡선·포물선, 곡선 눈금, 벡터 화살표는 이 capability의 지원 범위가 아니다.
 
 
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)

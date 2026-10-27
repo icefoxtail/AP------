@@ -19,6 +19,9 @@ const venn2={kind:'VENN',sets:[{id:'A'},{id:'B'}],elements:[{text:'9',in:['A']},
 const subset={kind:'VENN',sets:[{id:'A'},{id:'B'}],subset:['B','A'],shade:'B'};
 // a three-set region with its elements in A∩B and outside
 const venn3={kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'}],elements:[{text:'1',in:['A','B']},{text:'2',in:[]}],shade:'A∪B'};
+// 19 매산여고 1학기 기말 고2 확률과통계 5: four events over {1,...,6}, shown as an explicit membership table
+const table4={kind:'MEMBERSHIP_TABLE',sets:[{id:'A'},{id:'B'},{id:'C'},{id:'D'}],
+  elements:[{text:'1',in:['A','D']},{text:'2',in:['B','D']},{text:'3',in:['A','B','C']},{text:'4',in:['D']},{text:'5',in:['A','B']},{text:'6',in:['C']}]};
 // 23 강남여고 2학기 중간 중1 7: 1→b, 2→b, 3→c
 const map2={kind:'MAPPING',columns:[{id:'X',elements:['1','2','3']},{id:'Y',elements:['a','b','c']}],
   arrows:[{from:{column:0,element:0},to:{column:1,element:1}},{from:{column:0,element:1},to:{column:1,element:1}},{from:{column:0,element:2},to:{column:1,element:2}}],
@@ -49,10 +52,23 @@ test('the engine derives every atomic region and the truth of the set expression
   assert.equal(solveDiagram({...map2,arrows:[...map2.arrows,{from:{column:0,element:0},to:{column:1,element:2}}]}).isFunction,false);
   assert.deepEqual(setDiagramSize(solveDiagram(venn2)),{width:470,height:330});
   assert.deepEqual(setDiagramSize(solveDiagram(map2)),{width:460,height:220});
+  // a four-set membership table keeps every declared membership as its own cell truth
+  const table=solveDiagram(table4);
+  assert.equal(table.kind,'MEMBERSHIP_TABLE');
+  assert.deepEqual(table.elements.map(e=>[e.text,e.in]),[['1',['A','D']],['2',['B','D']],['3',['A','B','C']],['4',['D']],['5',['A','B']],['6',['C']]]);
+  assert.deepEqual(setDiagramSize(table),{width:356,height:318});
+  assert.deepEqual(setDiagramSpec(plan(table4),table).prims.filter(p=>p.role==='membership').map(p=>`${p.data.element}:${p.data.set}`),
+    ['0:A','0:D','1:B','1:D','2:A','2:B','2:C','3:D','4:A','4:B','5:C']);
 });
 
 test('set figures that cannot be drawn faithfully are refused with their codes',()=>{
   refuse({kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'},{id:'D'}]},'SET_COUNT_UNSUPPORTED');
+  refuse({kind:'MEMBERSHIP_TABLE',sets:[{id:'A'},{id:'B'},{id:'C'},{id:'D'},{id:'E'}],elements:[{text:'1',in:[]}]},'SET_COUNT_UNSUPPORTED');
+  refuse({kind:'MEMBERSHIP_TABLE',sets:[{id:'A'},{id:'B'}],elements:[{text:'1',in:['C']}]},'SET_ELEMENT_SET_UNKNOWN');
+  refuse({kind:'MEMBERSHIP_TABLE',sets:[{id:'A'},{id:'B'}],elements:[{text:'1',in:[]},{text:'1',in:['A']}]},'SET_ELEMENT_DUPLICATE');
+  refuse({kind:'MEMBERSHIP_TABLE',sets:[{id:'A'},{id:'B'}],elements:Array.from({length:13},(_,i)=>({text:String(i),in:[]}))},'SET_TOO_MANY_ELEMENTS');
+  refuse({kind:'MEMBERSHIP_TABLE',sets:[{id:'U'},{id:'B'}],elements:[{text:'1',in:[]}]},'SET_ID_INVALID');
+  refuse({...table4,shade:'A'},'SET_DIAGRAM_PLAN_INVALID');
   refuse({kind:'VENN',sets:[{id:'A'},{id:'A'}]},'SET_ID_INVALID');
   refuse({kind:'VENN',sets:[{id:'U'}]},'SET_ID_INVALID');
   refuse({kind:'VENN',sets:[{id:'A'}],elements:[{text:'1',in:['B']}]},'SET_ELEMENT_SET_UNKNOWN');
@@ -111,6 +127,16 @@ test('every figure composes, the independent observer passes it, and it catches 
     svg=await compose(venn3,3);
     const three=await audit(venn3,svg);assert.equal(three.status,'PASS',JSON.stringify(three.errors));
     assert.ok(has(await audit({...venn3,shade:'A'},svg),'SD_SHADE_MISMATCH'));
+    // four sets as an explicit membership table (no four-circle claim)
+    svg=await compose(table4,7);
+    const tableAudit=await audit(table4,svg);assert.equal(tableAudit.status,'PASS',JSON.stringify(tableAudit.errors));
+    assert.equal(tableAudit.observed.marks,11);
+    const movedMark=svg.replace(/(id="mark-0-A"[^>]*?cx=")(-?[\d.]+)/,(m,head,x)=>`${head}${198}`);
+    assert.ok(has(await audit(table4,movedMark),'SD_TABLE_MARK_PLACE:0:A'));
+    assert.ok(has(await audit(table4,svg.replace(/<circle id="mark-5-C"[^>]*\/>/,'')),'SD_TABLE_MARK_SET'));
+    assert.ok(has(await audit(table4,svg.replace('</svg>','<circle id="mark-extra" data-role="membership" data-element="0" data-set="B" cx="198" cy="80" r="5" fill="#111"/></svg>')),'SD_TABLE_MARK_SET'));
+    assert.ok(has(await audit(table4,svg.replace('data-tex="D"','data-tex="X"')),'SD_TABLE_HEADER_TEXT:D'));
+    assert.ok(has(await audit(table4,svg.replaceAll('data-role="grid-v"','data-role="grid"')),'SD_TABLE_GRID'));
     // two columns, highlight
     svg=await compose(map2,4);
     const mapped=await audit(map2,svg);assert.equal(mapped.status,'PASS',JSON.stringify(mapped.errors));
