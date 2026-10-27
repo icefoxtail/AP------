@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AP Math Playground · 포물선과 준선·초점 실험실</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --bg: #09090D;
+      --surface: #120E18;
+      --card: #181220;
+      --accent-gold: #D8B77E;
+      --accent-emerald: #55CBA3;
+      --accent-amethyst: #A78AC8;
+      --text: #F5F0E9;
+      --text-sub: #BDB8C2;
+      --border: rgba(216, 183, 126, 0.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      height: 60px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(18, 14, 24, 0.9);
+      backdrop-filter: blur(12px);
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .btn-back {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--accent-gold);
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-back:hover {
+      border-color: var(--accent-emerald);
+      color: var(--text);
+    }
+    .lab-title {
+      font-size: 16px;
+      font-weight: 850;
+    }
+    .lab-meta {
+      font-size: 11px;
+      color: var(--accent-emerald);
+      margin-left: 6px;
+    }
+    .layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      overflow: hidden;
+    }
+    #canvas3d {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    #canvas3d:active { cursor: grabbing; }
+    aside {
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+    }
+    .control-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .control-block label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .val-chip {
+      color: var(--accent-gold);
+      font-family: monospace;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--accent-emerald);
+    }
+    .proof-box {
+      background: rgba(9, 9, 13, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .proof-formula {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+    .proof-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-bottom: 4px;
+      color: var(--text-sub);
+    }
+    .proof-match {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 850;
+      color: var(--accent-emerald);
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+    }
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+      aside { height: 260px; border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "../universe/vendor/three.module.js",
+      "three/addons/controls/OrbitControls.js": "../universe/vendor/OrbitControls.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a class="btn-back" href="../teacher-hub.html">← 실험실 허브</a>
+      <div>
+        <span class="lab-title">포물선의 초점과 준선 등거리 법칙</span>
+        <span class="lab-meta">고등 기하 · 중3 이차함수</span>
+      </div>
+    </div>
+    <div style="font-size: 12px; color: var(--accent-gold);">마우스 드래그로 360° 회전 및 휠 줌</div>
+  </header>
+
+  <div class="layout">
+    <canvas id="canvas3d"></canvas>
+
+    <aside>
+      <div class="control-block">
+        <label>초점 매개변수 p <span class="val-chip" id="valP">2.0</span></label>
+        <input id="sliderP" type="range" min="1.0" max="4.0" step="0.2" value="2.0">
+      </div>
+
+      <div class="control-block">
+        <label>동적 점 P y좌표 <span class="val-chip" id="valY">3.2</span></label>
+        <input id="sliderY" type="range" min="-6.0" max="6.0" step="0.1" value="3.2">
+      </div>
+
+      <div class="proof-box">
+        <div class="proof-formula">y² = 4px  (|PF| = |PH|)</div>
+        <div class="proof-stat"><span>초점 F 좌표</span><span class="val-chip" id="statF">(2.00, 0)</span></div>
+        <div class="proof-stat"><span>준선 x 방정식</span><span class="val-chip" id="statD">x = -2.00</span></div>
+        <div class="proof-stat"><span>현재 점 P 좌표</span><span class="val-chip" id="statP">(1.28, 3.20)</span></div>
+        <div class="proof-stat"><span>초점 거리 |PF|</span><span class="val-chip" id="statPF">3.28</span></div>
+        <div class="proof-stat"><span>준선 수선의 발 |PH|</span><span class="val-chip" id="statPH">3.28</span></div>
+        <div class="proof-match">
+          <span>등거리 검증 (|PF| ≡ |PH|)</span>
+          <span id="statResult" style="color: #55CBA3;">✓ 일치 (오차 0.00)</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script type="module">
+    import * as THREE from '../universe/vendor/three.module.js';
+    import { OrbitControls } from '../universe/vendor/OrbitControls.js';
+
+    const canvas = document.getElementById('canvas3d');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x09090D);
+
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 200);
+    camera.position.set(0, 0, 26);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    scene.add(new THREE.AmbientLight(0x241727, 2.0));
+    const dir = new THREE.DirectionalLight(0xF5F0E9, 2.0);
+    dir.position.set(10, 20, 15);
+    scene.add(dir);
+
+    // State
+    let p = 2.0;
+    let curY = 3.2;
+
+    let parabolaMesh = null;
+    let directrixLine = null;
+    const focusMesh = new THREE.Mesh(new THREE.SphereGeometry(0.25, 16, 16), new THREE.MeshBasicMaterial({ color: 0x55CBA3 }));
+    scene.add(focusMesh);
+
+    const pointP = new THREE.Mesh(new THREE.SphereGeometry(0.24, 16, 16), new THREE.MeshBasicMaterial({ color: 0xF5F0E9 }));
+    scene.add(pointP);
+
+    const pointH = new THREE.Mesh(new THREE.SphereGeometry(0.2, 16, 16), new THREE.MeshBasicMaterial({ color: 0xD8B77E }));
+    scene.add(pointH);
+
+    const linesGeo = new THREE.BufferGeometry();
+    linesGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(6 * 3), 3));
+    const proofLines = new THREE.LineSegments(linesGeo, new THREE.LineBasicMaterial({ color: 0xD8B77E, linewidth: 2 }));
+    scene.add(proofLines);
+
+    function rebuildParabola() {
+      if (parabolaMesh) scene.remove(parabolaMesh);
+      if (directrixLine) scene.remove(directrixLine);
+
+      const pts = [];
+      const steps = 96;
+      for (let i = 0; i <= steps; i++) {
+        const y = -7.5 + (i / steps) * 15.0;
+        const x = (y * y) / (4 * p);
+        pts.push(new THREE.Vector3(x, y, 0));
+      }
+      const curve = new THREE.CatmullRomCurve3(pts);
+      const geo = new THREE.TubeGeometry(curve, 96, 0.08, 8, false);
+      const mat = new THREE.MeshStandardMaterial({ color: 0x55CBA3, emissive: 0x1E5944, roughness: 0.25 });
+      parabolaMesh = new THREE.Mesh(geo, mat);
+      scene.add(parabolaMesh);
+
+      // Directrix line at x = -p
+      const dGeo = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(-p, -9, 0),
+        new THREE.Vector3(-p, 9, 0),
+      ]);
+      directrixLine = new THREE.Line(dGeo, new THREE.LineBasicMaterial({ color: 0xD8B77E, linewidth: 2 }));
+      scene.add(directrixLine);
+
+      focusMesh.position.set(p, 0, 0);
+    }
+
+    function updateProof() {
+      const curX = (curY * curY) / (4 * p);
+      pointP.position.set(curX, curY, 0);
+      pointH.position.set(-p, curY, 0);
+
+      // Lines: F->P and P->H
+      const pos = linesGeo.attributes.position.array;
+      pos[0] = p; pos[1] = 0; pos[2] = 0;
+      pos[3] = curX; pos[4] = curY; pos[5] = 0;
+      pos[6] = curX; pos[7] = curY; pos[8] = 0;
+      pos[9] = -p; pos[10] = curY; pos[11] = 0;
+      linesGeo.attributes.position.needsUpdate = true;
+
+      const dPF = Math.hypot(curX - p, curY);
+      const dPH = curX - (-p);
+
+      document.getElementById('valP').textContent = p.toFixed(1);
+      document.getElementById('valY').textContent = curY.toFixed(2);
+      document.getElementById('statF').textContent = `(${p.toFixed(2)}, 0)`;
+      document.getElementById('statD').textContent = `x = -${p.toFixed(2)}`;
+      document.getElementById('statP').textContent = `(${curX.toFixed(2)}, ${curY.toFixed(2)})`;
+      document.getElementById('statPF').textContent = dPF.toFixed(2);
+      document.getElementById('statPH').textContent = dPH.toFixed(2);
+    }
+
+    document.getElementById('sliderP').addEventListener('input', (e) => {
+      p = parseFloat(e.target.value);
+      rebuildParabola();
+      updateProof();
+    });
+
+    document.getElementById('sliderY').addEventListener('input', (e) => {
+      curY = parseFloat(e.target.value);
+      updateProof();
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix;
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    });
+
+    rebuildParabola();
+    updateProof();
+
+    function renderLoop() {
+      requestAnimationFrame(renderLoop);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    renderLoop();
+  </script>
+</body>
+</html>

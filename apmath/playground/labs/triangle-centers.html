@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AP Math Playground · 삼각형의 오심 (외심·내심·무게중심) 실험실</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --bg: #09090D;
+      --surface: #120E18;
+      --card: #181220;
+      --accent-gold: #D8B77E;
+      --accent-emerald: #55CBA3;
+      --accent-amethyst: #A78AC8;
+      --text: #F5F0E9;
+      --text-sub: #BDB8C2;
+      --border: rgba(216, 183, 126, 0.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      height: 60px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(18, 14, 24, 0.9);
+      backdrop-filter: blur(12px);
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .btn-back {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--accent-gold);
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-back:hover { border-color: var(--accent-emerald); color: var(--text); }
+    .lab-title { font-size: 16px; font-weight: 850; }
+    .lab-meta { font-size: 11px; color: var(--accent-emerald); margin-left: 6px; }
+    .layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      overflow: hidden;
+    }
+    #canvasView {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+      background: radial-gradient(circle at center, #1b1322 0%, #09090D 80%);
+    }
+    aside {
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+    }
+    .control-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .control-block label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .btn-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .btn-mode {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-sub);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-mode.active {
+      background: rgba(85, 203, 163, 0.2);
+      border-color: var(--accent-emerald);
+      color: var(--accent-emerald);
+    }
+    .proof-box {
+      background: rgba(9, 9, 13, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .proof-formula {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+    .proof-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-bottom: 4px;
+      color: var(--text-sub);
+    }
+    .proof-sum {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 850;
+      color: var(--accent-emerald);
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+    }
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+      aside { height: 260px; border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="../teacher-hub.html" class="btn-back">← 메인 허브로</a>
+      <div>
+        <span class="lab-title">삼각형의 오심 (외심·내심·무게중심)</span>
+        <span class="lab-meta">중2 · 기하</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <canvas id="canvasView"></canvas>
+    <aside>
+      <div class="control-block">
+        <label>표시할 중심 선택</label>
+        <div class="btn-group">
+          <button class="btn-mode active" data-center="circum">외심 (O)</button>
+          <button class="btn-mode" data-center="in">내심 (I)</button>
+          <button class="btn-mode" data-center="centroid">무게중심 (G)</button>
+          <button class="btn-mode" data-center="all">오일러선 (전체)</button>
+        </div>
+      </div>
+
+      <div class="proof-box">
+        <div class="proof-formula" id="formulaBox">외심: 세 변의 수직이등분선의 교점</div>
+        <div class="proof-stat"><span>외심 (O) 좌표</span><span id="statO">--</span></div>
+        <div class="proof-stat"><span>내심 (I) 좌표</span><span id="statI">--</span></div>
+        <div class="proof-stat"><span>무게중심 (G) 좌표</span><span id="statG">--</span></div>
+        <div class="proof-sum"><span>외접원 반지름 R</span><span id="statR">--</span></div>
+      </div>
+
+      <div class="proof-box" style="font-size: 12.5px; color: var(--text-sub);">
+        <strong>💡 드래그 안내:</strong><br>
+        캔버스 위의 세 꼭짓점 A, B, C를 마우스나 손가락으로 직접 끌어서 예각·직각·둔각 삼각형에 따른 중심의 위치 변화(삼각형 내부/외부)를 즉시 관찰할 수 있습니다.
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('canvasView');
+    const ctx = canvas.getContext('2d');
+    const formulaBox = document.getElementById('formulaBox');
+    const statO = document.getElementById('statO');
+    const statI = document.getElementById('statI');
+    const statG = document.getElementById('statG');
+    const statR = document.getElementById('statR');
+
+    let mode = 'circum';
+    document.querySelectorAll('.btn-mode').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.btn-mode').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        mode = btn.dataset.center;
+        updateFormulas();
+        draw();
+      });
+    });
+
+    let A = { x: 300, y: 120, label: 'A' };
+    let B = { x: 140, y: 380, label: 'B' };
+    let C = { x: 480, y: 380, label: 'C' };
+
+    let dragged = null;
+
+    canvas.addEventListener('mousedown', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX - rect.left) * window.devicePixelRatio;
+      const y = (e.clientY - rect.top) * window.devicePixelRatio;
+      [A, B, C].forEach(p => {
+        if (Math.hypot(p.x - x, p.y - y) < 25 * window.devicePixelRatio) dragged = p;
+      });
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!dragged) return;
+      const rect = canvas.getBoundingClientRect();
+      dragged.x = (e.clientX - rect.left) * window.devicePixelRatio;
+      dragged.y = (e.clientY - rect.top) * window.devicePixelRatio;
+      draw();
+    });
+
+    window.addEventListener('mouseup', () => { dragged = null; });
+
+    function resize() {
+      canvas.width = canvas.clientWidth * window.devicePixelRatio;
+      canvas.height = canvas.clientHeight * window.devicePixelRatio;
+      A = { x: canvas.width * 0.5, y: canvas.height * 0.22, label: 'A' };
+      B = { x: canvas.width * 0.25, y: canvas.height * 0.72, label: 'B' };
+      C = { x: canvas.width * 0.75, y: canvas.height * 0.72, label: 'C' };
+      draw();
+    }
+    window.addEventListener('resize', resize);
+
+    function getSides() {
+      const a = Math.hypot(B.x - C.x, B.y - C.y);
+      const b = Math.hypot(A.x - C.x, A.y - C.y);
+      const c = Math.hypot(A.x - B.x, A.y - B.y);
+      return { a, b, c };
+    }
+
+    function getCentroid() {
+      return { x: (A.x + B.x + C.x) / 3, y: (A.y + B.y + C.y) / 3 };
+    }
+
+    function getIncenter() {
+      const { a, b, c } = getSides();
+      const p = a + b + c;
+      const x = (a * A.x + b * B.x + c * C.x) / p;
+      const y = (a * A.y + b * B.y + c * C.y) / p;
+      const s = p / 2;
+      const area = Math.sqrt(Math.max(0, s * (s - a) * (s - b) * (s - c)));
+      const r = area / s;
+      return { x, y, r };
+    }
+
+    function getCircumcenter() {
+      const d = 2 * (A.x * (B.y - C.y) + B.x * (C.y - A.y) + C.x * (A.y - B.y));
+      if (Math.abs(d) < 1e-4) return { x: A.x, y: A.y, r: 0 };
+      const ux = ((A.x * A.x + A.y * A.y) * (B.y - C.y) + (B.x * B.x + B.y * B.y) * (C.y - A.y) + (C.x * C.x + C.y * C.y) * (A.y - B.y)) / d;
+      const uy = ((A.x * A.x + A.y * A.y) * (C.x - B.x) + (B.x * B.x + B.y * B.y) * (A.x - C.x) + (C.x * C.x + C.y * C.y) * (B.x - A.x)) / d;
+      const r = Math.hypot(A.x - ux, A.y - uy);
+      return { x: ux, y: uy, r };
+    }
+
+    function updateFormulas() {
+      if (mode === 'circum') formulaBox.textContent = '외심 (O): 세 변의 수직이등분선의 교점 (OA = OB = OC = R)';
+      else if (mode === 'in') formulaBox.textContent = '내심 (I): 세 내각의 이등분선의 교점 (세 변에 이르는 거리 r 동일)';
+      else if (mode === 'centroid') formulaBox.textContent = '무게중심 (G): 세 중선의 교점 (중선을 2:1로 내분)';
+      else formulaBox.textContent = '오일러선: 외심(O), 무게중심(G), 수심(H)은 항상 일직선 위에 존재';
+    }
+
+    function draw() {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const G = getCentroid();
+      const I = getIncenter();
+      const O = getCircumcenter();
+
+      statO.textContent = `(${Math.round(O.x)}, ${Math.round(O.y)})`;
+      statI.textContent = `(${Math.round(I.x)}, ${Math.round(I.y)})`;
+      statG.textContent = `(${Math.round(G.x)}, ${Math.round(G.y)})`;
+      statR.textContent = `${Math.round(O.r)} px`;
+
+      // Triangle fill & edges
+      ctx.beginPath();
+      ctx.moveTo(A.x, A.y);
+      ctx.lineTo(B.x, B.y);
+      ctx.lineTo(C.x, C.y);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(85, 203, 163, 0.08)';
+      ctx.fill();
+      ctx.strokeStyle = '#55CBA3';
+      ctx.lineWidth = 3 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // Mode-specific renderings
+      if (mode === 'circum' || mode === 'all') {
+        // Circumcircle
+        ctx.beginPath();
+        ctx.arc(O.x, O.y, O.r, 0, Math.PI * 2);
+        ctx.strokeStyle = '#D8B77E';
+        ctx.lineWidth = 1.5 * window.devicePixelRatio;
+        ctx.stroke();
+
+        // Dot O
+        ctx.beginPath();
+        ctx.arc(O.x, O.y, 6 * window.devicePixelRatio, 0, Math.PI * 2);
+        ctx.fillStyle = '#D8B77E';
+        ctx.fill();
+        ctx.font = `bold ${13 * window.devicePixelRatio}px Pretendard`;
+        ctx.fillText('외심 O', O.x + 8, O.y - 8);
+      }
+
+      if (mode === 'in' || mode === 'all') {
+        // Incircle
+        ctx.beginPath();
+        ctx.arc(I.x, I.y, I.r, 0, Math.PI * 2);
+        ctx.strokeStyle = '#A78AC8';
+        ctx.lineWidth = 1.5 * window.devicePixelRatio;
+        ctx.stroke();
+
+        // Dot I
+        ctx.beginPath();
+        ctx.arc(I.x, I.y, 6 * window.devicePixelRatio, 0, Math.PI * 2);
+        ctx.fillStyle = '#A78AC8';
+        ctx.fill();
+        ctx.font = `bold ${13 * window.devicePixelRatio}px Pretendard`;
+        ctx.fillText('내심 I', I.x + 8, I.y - 8);
+      }
+
+      if (mode === 'centroid' || mode === 'all') {
+        // Medians
+        ctx.save();
+        ctx.setLineDash([4 * window.devicePixelRatio, 3 * window.devicePixelRatio]);
+        ctx.strokeStyle = 'rgba(245, 240, 233, 0.4)';
+        ctx.lineWidth = 1.2 * window.devicePixelRatio;
+        ctx.beginPath();
+        ctx.moveTo(A.x, A.y); ctx.lineTo((B.x + C.x)/2, (B.y + C.y)/2);
+        ctx.moveTo(B.x, B.y); ctx.lineTo((A.x + C.x)/2, (A.y + C.y)/2);
+        ctx.moveTo(C.x, C.y); ctx.lineTo((A.x + B.x)/2, (A.y + B.y)/2);
+        ctx.stroke();
+        ctx.restore();
+
+        // Dot G
+        ctx.beginPath();
+        ctx.arc(G.x, G.y, 6 * window.devicePixelRatio, 0, Math.PI * 2);
+        ctx.fillStyle = '#F5F0E9';
+        ctx.fill();
+        ctx.font = `bold ${13 * window.devicePixelRatio}px Pretendard`;
+        ctx.fillText('무게중심 G (2:1)', G.x + 8, G.y - 8);
+      }
+
+      // Draw vertices A, B, C
+      [A, B, C].forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 8 * window.devicePixelRatio, 0, Math.PI * 2);
+        ctx.fillStyle = '#55CBA3';
+        ctx.fill();
+        ctx.strokeStyle = '#F5F0E9';
+        ctx.lineWidth = 2 * window.devicePixelRatio;
+        ctx.stroke();
+        ctx.font = `bold ${14 * window.devicePixelRatio}px Pretendard`;
+        ctx.fillStyle = '#F5F0E9';
+        ctx.fillText(p.label, p.x - 5, p.y - 12);
+      });
+    }
+
+    resize();
+    updateFormulas();
+  </script>
+</body>
+</html>
