@@ -81,7 +81,7 @@
     <footer class="bottom-bar">
       <div class="bottom-hint">
         <span class="hint-dot"></span>
-        <span>마우스 드래그로 360° 우주를 회전하고, 천체를 클릭해 상세 원리를 확인하세요.</span>
+        <span>하단 버튼을 누르면 해당 도형으로 이동합니다. 도형 자체를 클릭하면 실험실 허브로 들어갑니다.</span>
       </div>
 
       <nav class="celestial-selector-pills" aria-label="수학 천체 바로가기">
@@ -104,25 +104,6 @@
   <!-- Floating Hover Tooltip -->
   <div class="hover-tooltip" id="hoverTooltip" aria-hidden="true"></div>
 
-  <!-- Floating Celestial Detail Card (Modal) -->
-  <aside class="celestial-card" id="celestialCard" aria-hidden="true">
-    <div class="card-header">
-      <span class="card-badge" id="cardBadge">이차곡선</span>
-      <button class="card-close" id="cardClose" type="button" aria-label="창 닫기">×</button>
-    </div>
-    <h2 class="card-title" id="cardTitle">타원과 두 초점</h2>
-    <div class="card-subtitle" id="cardSubtitle">초점 거리 합 불변성</div>
-    <div class="card-formula" id="cardFormula">x²/a² + y²/b² = 1  (|PF₁| + |PF₂| = 2a)</div>
-    <p class="card-desc" id="cardDesc">두 초점으로부터의 거리의 합이 일정한 점들의 궤적. 행성의 공전 궤도와 원뿔곡선의 대표 천체입니다.</p>
-    <div class="card-actions">
-      <a class="card-btn-enter" id="cardBtnEnter" href="./teacher-hub.html">
-        <span>학년·과목별 실험실로 이동</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-      </a>
-      <button class="card-btn-back" id="cardBtnResetCam" type="button">전체 우주 보기</button>
-    </div>
-  </aside>
-
   <!-- WebGL Fallback Screen (Graceful Degradation) -->
   <noscript>
     <div class="webgl-fallback">
@@ -139,15 +120,12 @@
     const warpCurtain = document.getElementById('warpCurtain');
     const universeUi = document.getElementById('universeUi');
     const hoverTooltip = document.getElementById('hoverTooltip');
-    const celestialCard = document.getElementById('celestialCard');
     const btnEnterLab = document.getElementById('btnEnterLab');
     const btnToggleHud = document.getElementById('btnToggleHud');
     const hudBtnText = document.getElementById('hudBtnText');
     const btnToggleMotion = document.getElementById('btnToggleMotion');
     const motionBtnText = document.getElementById('motionBtnText');
     const motionIcon = document.getElementById('motionIcon');
-    const cardClose = document.getElementById('cardClose');
-    const cardBtnResetCam = document.getElementById('cardBtnResetCam');
 
     let universe = null;
 
@@ -164,9 +142,16 @@
           hoverTooltip.style.top = `${mouseY}px`;
           hoverTooltip.classList.add('visible');
         },
-        // 3D 쇼케이스의 천체 클릭은 학년·과목별 실험실 입구로 연결합니다.
+        // Clicking the 3D object enters the lab hub; clicking empty space returns the camera.
         onSelectNode: (meta) => {
-          if (meta) window.location.href = './teacher-hub.html';
+          if (meta) {
+            window.location.href = './teacher-hub.html';
+          } else {
+            document.querySelectorAll('.celestial-pill').forEach(p => {
+              p.classList.remove('active');
+              p.setAttribute('aria-pressed', 'false');
+            });
+          }
         },
       });
     } catch (err) {
@@ -228,44 +213,33 @@
         : '<polygon points="5,3 19,12 5,21"/>';
     });
 
-    // 4. Close Card / Reset Camera
-    function dismissCard() {
-      celestialCard.classList.remove('open');
-      celestialCard.setAttribute('aria-hidden', 'true');
-      document.querySelectorAll('.celestial-pill').forEach(p => p.classList.remove('active'));
-      if (universe) universe.resetFocus();
-    }
-    cardClose.addEventListener('click', dismissCard);
-    cardBtnResetCam.addEventListener('click', dismissCard);
-
-    // 5. Celestial Pills Click to Focus
+    // 4. Bottom selectors only move the camera; no detail modal.
+    // Selecting the same button again returns to the full universe view.
     document.querySelectorAll('.celestial-pill').forEach((pill) => {
+      pill.setAttribute('aria-pressed', 'false');
       pill.addEventListener('click', () => {
+        if (!universe) return;
         const id = pill.dataset.celestial;
-        if (universe) {
+        if (!universe.celestialRegistry.some(c => c.metadata.id === id)) return;
+
+        const alreadyActive = pill.classList.contains('active');
+        document.querySelectorAll('.celestial-pill').forEach(p => {
+          p.classList.remove('active');
+          p.setAttribute('aria-pressed', 'false');
+        });
+        hoverTooltip.classList.remove('visible');
+
+        if (alreadyActive) {
+          universe.resetFocus();
+        } else {
           universe.focusOnCelestial(id);
-          const found = universe.celestialRegistry.find(c => c.metadata.id === id);
-          if (found) {
-            document.getElementById('cardBadge').textContent = found.metadata.category || found.metadata.grade;
-            document.getElementById('cardTitle').textContent = found.metadata.title;
-            document.getElementById('cardSubtitle').textContent = found.metadata.subtitle || '';
-            document.getElementById('cardFormula').textContent = found.metadata.formula || '';
-            document.getElementById('cardDesc').textContent = found.metadata.description || '';
-            const enterBtn = document.getElementById('cardBtnEnter');
-            enterBtn.href = './teacher-hub.html';
-            enterBtn.querySelector('span').textContent = '학년·과목별 실험실로 이동';
-
-            document.querySelectorAll('.celestial-pill').forEach(p => p.classList.remove('active'));
-            pill.classList.add('active');
-
-            celestialCard.classList.add('open');
-            celestialCard.setAttribute('aria-hidden', 'false');
-          }
+          pill.classList.add('active');
+          pill.setAttribute('aria-pressed', 'true');
         }
       });
     });
 
-    // 6. Deep Link Support: ?celestial=id
+    // 5. Deep Link Support: ?celestial=id
     const urlParams = new URLSearchParams(window.location.search);
     const initialCelestial = urlParams.get('celestial');
     if (initialCelestial) {

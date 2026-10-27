@@ -419,6 +419,10 @@ export function createMathUniverse({
       toTarget: targetPos.clone(),
       startTime: performance.now(),
       duration: 1200,
+      onComplete: () => {
+        // The detail-card reset button is gone: keep orbit interaction usable.
+        controls.enabled = true;
+      },
     };
     controls.enabled = false;
   }
