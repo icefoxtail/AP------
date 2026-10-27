@@ -543,7 +543,10 @@ function solveSolids(plan){
           if(which==='center'){z=solid.kind==='SPHERE'?solid.radius:0;rimR=solid.radius;}
           else if(which==='level'){
             if(!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
-            z=section.z;rimR=section.r;
+            // the radius comes from the exact fraction, not the rounded section.r, so a length such as 20/3 still has an exact label
+            const fm=/^([1-9]\d?)\/([1-9]\d?)$/.exec(section.at);
+            const f=Number(fm[1])/Number(fm[2]);
+            z=section.z;rimR=solid.r0+(solid.r1-solid.r0)*f;
           }else{
             if(which==='bottom'&&!(solid.r0>0))bad('SOLID_DIMS_INVALID');
             if(which==='top'&&!(solid.r1>0))bad('SOLID_DIMS_INVALID');
@@ -551,8 +554,13 @@ function solveSolids(plan){
           }
           dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z,r:r6(rimR),...dimLabel(d.label,rimR,unitName,code)});
         }else if(d.level!==undefined){
-          if(d.level!==true||!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
-          dims.push({id:'dim-'+(k+1),type:'LEVEL',solid:solid.id,...dimLabel(d.label,section.z,unitName,code)});
+          if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
+          // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
+          const fm=/^([1-9]\d?)\/([1-9]\d?)$/.exec(section.at);
+          const f=Number(fm[1])/Number(fm[2]);
+          const side=d.level==='top'?'TOP':'BOTTOM';
+          const value=side==='TOP'?solid.height*(1-f):solid.height*f;
+          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...dimLabel(d.label,value,unitName,code)});
         }else if(d.height!==undefined){
           if(d.height!==true)bad('SOLID_DIMS_INVALID');
           if(solid.category==='SPHERE'&&solid.kind==='SPHERE')bad('SOLID_DIMS_INVALID');
@@ -864,7 +872,8 @@ function spec3d(plan,model,ctx){
       }
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
-      line(d.id+'-line','dim-line',pt(project(sh)),pt(project(add([0,0,model.section.z],sh))),{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'hidden'});
+      const [z0,z1]=d.side==='TOP'?[model.section.z,solid.height]:[0,model.section.z];
+      line(d.id+'-line','dim-line',pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh))),{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'hidden'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       void solid;
@@ -909,7 +918,8 @@ function spec3d(plan,model,ctx){
       else{const sh=mulv(EX,solid.offset??0);labels.push({...label,segment:[pt(project(add([0,0,0],sh))),pt(project(add([0,0,solid.height],sh)))],segmentOf:'height'});}
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
-      labels.push({...label,segment:[pt(project(sh)),pt(project(add([0,0,model.section.z],sh)))],segmentOf:'level'});
+      const [z0,z1]=d.side==='TOP'?[model.section.z,solid.height]:[0,model.section.z];
+      labels.push({...label,segment:[pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh)))],segmentOf:'level'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       const apex=apexOf(solid);
