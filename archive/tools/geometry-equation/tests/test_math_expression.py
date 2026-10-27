@@ -46,6 +46,13 @@ class MathTests(unittest.TestCase):
         for source,(tex,plain) in cases.items():
             with self.subTest(source=source):
                 self.assertEqual(serialize(parse(source),'tex'),tex);self.assertEqual(serialize(parse(source),'plain'),plain)
+    def test_degree_notation(self):
+        self.assertEqual(serialize(parse('15°')),r'15^{\circ}')
+        self.assertEqual(serialize(parse('15°'),'plain'),'15°')
+        self.assertEqual(serialize(parse('15°'),'svg'),'15°')
+        self.assertEqual(serialize(parse('-15°'),'plain'),'−15°')
+        self.assertEqual(serialize(parse('2x+15°'),'plain'),'2x+15°')
+        self.assertEqual(''.join(ET.fromstring('<text>'+serialize(parse('15°'),'svg')+'</text>').itertext()),'15°')
     def test_relation(self):
         self.assertTrue(evaluate(parse('x<=2'),{'x':1}))
         self.assertFalse(evaluate(parse('x=2'),{'x':1}))
