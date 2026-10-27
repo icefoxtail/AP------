@@ -8,11 +8,12 @@ from graph_framing import fit_overview
 from graph_spike import produce
 from graph_observer import audit,polynomial,polynomial_feature_inventory,resolve
 
-def plan(coefficients,domain=None,viewport=None,source_domain=None):
+def plan(coefficients,domain=None,viewport=None,source_domain=None,**extra):
     return {
         'family':'polynomial','coefficients':coefficients,
         'domain':domain or [-2,2],'viewport':viewport or [-2,2,-2,2],
-        **({'sourceDomain':source_domain} if source_domain is not None else {})
+        **({'sourceDomain':source_domain} if source_domain is not None else {}),
+        **extra
     }
 
 def framed(coefficients,**kwargs):
@@ -51,6 +52,42 @@ class CubicQuarticOverview(unittest.TestCase):
                 self.assertEqual(len([row for row in result['overview']['features'] if 'STATIONARY_EXTREMUM' in row['roles']]),2 if degree==3 else 3)
                 self.assertEqual(len([row for row in result['overview']['features'] if 'INFLECTION' in row['roles']]),1 if degree==3 else 2)
                 self.assertEqual(result['overview']['endDirections'],tail_directions)
+
+    def test_asymmetric_cubic_window_extends_only_the_short_arm(self):
+        # (x+2)(x-2)(x-3): the right outer arm sits only 0.6 units past its last stationary point, so the
+        # symmetric default window fails the 18% arm-travel audit. The framing extends that side (and only
+        # that side) until the audit passes; the audit itself is unchanged.
+        graph=framed(['12','-4','-3','1'])
+        self.assertGreater(graph['domain'][1],3.6)
+        self.assertAlmostEqual(graph['domain'][0],-3.6,places=9)
+        model=produce(graph)
+        result=audit(graph,model['svg'],scale_transform(model['transform'],1.0))
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertEqual(len(result['topology']['roots']),3)
+
+    def test_feature_band_window_zooms_extrema_that_the_tails_dwarf(self):
+        # y=x^3-3x^2-9x: the two extrema (5 and -27) are 32 y-units apart while the symmetric whole-curve
+        # window spans 378, so the compared values occupy 8.5% of the plot height. The opt-in feature-band
+        # window trims the display x-window (sourceDomain stays ALL_REALS) and the unchanged observer passes.
+        required=[{'id':'A','x':-1,'y':5},{'id':'B','x':3,'y':-27}]
+        base=framed(['0','-9','-3','1'],requiredPoints=required)
+        compact=framed(['0','-9','-3','1'],requiredPoints=required,overviewWindowPolicy='FEATURE_BAND')
+        self.assertNotIn('overviewWindowPolicy',base)
+        self.assertEqual(compact['overviewWindowPolicy'],'FEATURE_BAND')
+        self.assertLess(compact['domain'][1]-compact['domain'][0],.8*(base['domain'][1]-base['domain'][0]))
+        self.assertLess(compact['viewport'][3]-compact['viewport'][2],.5*(base['viewport'][3]-base['viewport'][2]))
+        base_model=produce(base);compact_model=produce(compact)
+        self.assertEqual(audit(base,base_model['svg'],scale_transform(base_model['transform'],1.0))['status'],'PASS')
+        compact_audit=audit(compact,compact_model['svg'],scale_transform(compact_model['transform'],1.0))
+        self.assertEqual(compact_audit['status'],'PASS',compact_audit['errors'])
+        self.assertGreater(compact_model['transform']['sy'],2.5*base_model['transform']['sy'])
+        self.assertGreater((5-(-27))*compact_model['transform']['sy'],100)
+        for side in ('LEFT','RIGHT'):
+            arm=next(row for row in compact_audit['overview']['arms'] if row['side']==side)
+            self.assertGreaterEqual(arm['verticalExcursionCssPx'],50)
+            self.assertGreaterEqual(arm['horizontalCssPx'],20)
+        with self.assertRaisesRegex(ValueError,'INVALID_OVERVIEW_WINDOW_POLICY'):
+            framed(['0','-3','0','1'],overviewWindowPolicy='UNKNOWN')
 
     def test_stationary_inflection_and_inflection_are_one_feature_record(self):
         source=polynomial(['0','0','0','1'],4)
