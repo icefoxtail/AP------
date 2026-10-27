@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {assetIdentity} from '../production/contracts.mjs';
-import {solveEllipseFigure,renderEllipseSvg,auditEllipseSvg,ellipseFigureSize,validateEllipseFigurePlan,FIGURE_CAPABILITY} from '../production/ellipse-figure-v1.mjs';
+import {solveEllipseFigure,renderEllipseSvg,auditEllipseSvg,ellipseFigureSize,ellipseFigureSpec,ellipseLabelObstacles,placeLabels,validateEllipseFigurePlan,FIGURE_CAPABILITY} from '../production/ellipse-figure-v1.mjs';
 
 const identity=assetIdentity('22_매산고_1학기_중간_고2_기하와벡터_기출|18','SOLUTION_VISUAL','decisive-relation');
 const policy={baseFontPx:15,displayScale:1,profile:'TEST'};
@@ -60,6 +60,45 @@ test('the engine derives the foci, the diameter chord and the tangent point exac
   const vector=await solveEllipseFigure(vectorPlan());
   assert.equal(vector.focalDistance.exact,'4');
   assert.equal(vector.points.find(row=>row.id==='P').y.exact,'sqrt(15)');
+});
+
+// 22 금당고 q21: the tangent y=-x+sqrt(5) meets the axes at the named points A and B, and triangle OAB
+// is filled, so a point name has to clear the tangent line and the polygon edges (a real render failed
+// with LABEL_GEOMETRY_COLLISION:point-A:line-l1 before those strokes were layout obstacles).
+test('point names clear the tangent line and polygon edges, not only the curve and segments',async()=>{
+  const plan={...base(),
+    ellipse:{center:['0','0'],semiAxisSquared:{major:'4',minor:'1'},majorAxis:'X'},
+    points:[{id:'T',kind:'POINT',x:'4*sqrt(5)/5',y:'sqrt(5)/5'},
+      {id:'A',kind:'POINT',x:'sqrt(5)',y:'0'},{id:'B',kind:'POINT',x:'0',y:'sqrt(5)'},{id:'O',kind:'ORIGIN'}],
+    polygons:[{id:'t1',points:['O','A','B'],fill:'LIGHT'}],
+    lines:[{id:'l1',slope:'-1',intercept:'sqrt(5)',tangent:true}]};
+  const model=await solveEllipseFigure(plan);
+  const spec=ellipseFigureSpec(plan,model);
+  const obstacles=ellipseLabelObstacles(spec);
+  const line=spec.prims.find(prim=>prim.role==='line'),polygon=spec.prims.find(prim=>prim.role==='polygon');
+  assert.ok(line&&polygon);
+  const has=segment=>obstacles.segments.some(row=>
+    row.a[0]===segment[0]&&row.a[1]===segment[1]&&row.b[0]===segment[2]&&row.b[1]===segment[3]);
+  assert.ok(has([line.x1,line.y1,line.x2,line.y2]),'tangent line is a label obstacle');
+  for(let index=0;index<polygon.points.length;index++){
+    const start=polygon.points[index],end=polygon.points[(index+1)%polygon.points.length];
+    assert.ok(has([start[0],start[1],end[0],end[1]]),`polygon edge ${index} is a label obstacle`);
+  }
+  const entries=spec.labels.map(label=>({...label,width:15,height:15}));
+  const placed=placeLabels(entries,{size:spec.size},obstacles);
+  assert.equal(placed.length,entries.length);
+  const inBox=(x,y,box,margin)=>x>=box.x-margin&&x<=box.x+box.width+margin&&y>=box.y-margin&&y<=box.y+box.height+margin;
+  for(const item of placed){
+    for(const segment of obstacles.segments){
+      const length=Math.hypot(segment.b[0]-segment.a[0],segment.b[1]-segment.a[1]);
+      const steps=Math.max(20,Math.ceil(length/2));
+      for(let step=0;step<=steps;step++){
+        const t=step/steps;
+        const x=segment.a[0]+(segment.b[0]-segment.a[0])*t,y=segment.a[1]+(segment.b[1]-segment.a[1])*t;
+        assert.ok(!inBox(x,y,item.box,2),`${item.key} overlaps a drawn stroke`);
+      }
+    }
+  }
 });
 
 test('rotated ellipses, circles, hyperbola-like input and a false tangency are refused with explicit codes',async()=>{
