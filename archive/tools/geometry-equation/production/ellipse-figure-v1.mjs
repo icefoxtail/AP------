@@ -34,21 +34,43 @@ const onlyKeys=(value,keys,code)=>{if(!isPlain(value)||Object.keys(value).some(k
 const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
 const px2=value=>String(Math.round(value*100)/100);
 const POINT_ID=/^[A-Z][0-9']?$/;
+const ELLIPSE_ID=/^[A-Za-z][A-Za-z0-9_]{0,7}$/;
 
-const TOP_KEYS=['capability','ellipse','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote'];
+const TOP_KEYS=['capability','ellipse','ellipses','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote'];
 const ELLIPSE_KEYS=['center','semiAxisSquared','majorAxis'];
-const POINT_KEYS=['id','kind','side','end','x','y','branch','of','label'];
+const PAIR_ELLIPSE_KEYS=[...ELLIPSE_KEYS,'id'];
+const POINT_KEYS=['id','kind','side','end','x','y','branch','of','label','ellipseId'];
 const SEGMENT_KEYS=['id','from','to','label','dashed'];
 const POLYGON_KEYS=['id','points','fill'];
-const LINE_KEYS=['id','slope','intercept','label','tangent'];
+const LINE_KEYS=['id','slope','intercept','label','tangent','ellipseId'];
+
+function validateEllipse(ellipse,keys){
+  onlyKeys(ellipse,keys,'ELLIPSE_PLAN_INVALID');
+  if(!Array.isArray(ellipse.center)||ellipse.center.length!==2)bad('ELLIPSE_CENTER_INVALID');
+  onlyKeys(ellipse.semiAxisSquared,['major','minor'],'ELLIPSE_AXES_INVALID');
+  if(!['X','Y'].includes(ellipse.majorAxis))bad('ELLIPSE_MAJOR_AXIS_UNSUPPORTED');
+}
+
+function validatePair(plan){
+  if('ellipse' in plan)bad('ELLIPSE_PLAN_INVALID');
+  if(!Array.isArray(plan.ellipses)||plan.ellipses.length!==2)bad('ELLIPSE_PAIR_COUNT_INVALID');
+  const ids=new Set();
+  for(const ellipse of plan.ellipses){
+    if(!ellipse||typeof ellipse!=='object'||Array.isArray(ellipse))bad('ELLIPSE_PLAN_INVALID');
+    if(typeof ellipse.id!=='string'||!ELLIPSE_ID.test(ellipse.id))bad('ELLIPSE_ELLIPSE_ID_INVALID');
+    if(ids.has(ellipse.id))bad('ELLIPSE_ELLIPSE_ID_DUPLICATE');
+    ids.add(ellipse.id);
+    validateEllipse(ellipse,PAIR_ELLIPSE_KEYS);
+  }
+  return ids;
+}
 
 export function validateEllipseFigurePlan(plan){
   onlyKeys(plan,TOP_KEYS,'ELLIPSE_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('ELLIPSE_PLAN_INVALID');
-  onlyKeys(plan.ellipse,ELLIPSE_KEYS,'ELLIPSE_PLAN_INVALID');
-  if(!Array.isArray(plan.ellipse.center)||plan.ellipse.center.length!==2)bad('ELLIPSE_CENTER_INVALID');
-  onlyKeys(plan.ellipse.semiAxisSquared,['major','minor'],'ELLIPSE_AXES_INVALID');
-  if(!['X','Y'].includes(plan.ellipse.majorAxis))bad('ELLIPSE_MAJOR_AXIS_UNSUPPORTED');
+  const pair='ellipses' in plan;
+  const ellipseIds=pair?validatePair(plan):null;
+  if(!pair)validateEllipse(plan.ellipse,ELLIPSE_KEYS);
   const points=plan.points??[];
   if(!Array.isArray(points)||points.length>10)bad('ELLIPSE_POINT_INVALID');
   const ids=new Set();
@@ -58,6 +80,9 @@ export function validateEllipseFigurePlan(plan){
     if(ids.has(point.id))bad('ELLIPSE_POINT_ID_DUPLICATE');
     ids.add(point.id);
     if(!['FOCUS','VERTEX','ON_ELLIPSE','OPPOSITE','ORIGIN','POINT'].includes(point.kind))bad('ELLIPSE_POINT_INVALID');
+    if(point.ellipseId!==undefined){
+      if(!pair||!ellipseIds.has(point.ellipseId))bad('ELLIPSE_POINT_ELLIPSE_ID_INVALID');
+    }else if(pair&&['FOCUS','VERTEX','ON_ELLIPSE'].includes(point.kind))bad('ELLIPSE_POINT_ELLIPSE_ID_REQUIRED');
   }
   for(const segment of plan.segments??[]){
     onlyKeys(segment,SEGMENT_KEYS,'ELLIPSE_SEGMENT_INVALID');
@@ -72,6 +97,7 @@ export function validateEllipseFigurePlan(plan){
     onlyKeys(line,LINE_KEYS,'ELLIPSE_LINE_INVALID');
     if(line.label!==undefined)bad('ELLIPSE_LINE_LABEL_UNSUPPORTED');
     if(typeof line.slope!=='string'||typeof line.intercept!=='string')bad('ELLIPSE_LINE_INVALID');
+    if(line.ellipseId!==undefined&&(!pair||!ellipseIds.has(line.ellipseId)))bad('ELLIPSE_LINE_ELLIPSE_ID_INVALID');
   }
   if(!Array.isArray(plan.sourceConditions))bad('ELLIPSE_PLAN_INVALID');
   if(!Array.isArray(plan.newVisualInformation))bad('ELLIPSE_PLAN_INVALID');
@@ -203,9 +229,14 @@ export function placeLabels(entries,layout,obstacles){
 export function ellipseFigureSpec(plan,model){
   if(plan?.capability!==FIGURE_CAPABILITY)bad('ELLIPSE_PLAN_INVALID');
   const layout=layoutOf(model);
-  const A=model.semiAxis.major.value,B=model.semiAxis.minor.value;
-  const alongX=model.majorAxis==='X'?A:B,alongY=model.majorAxis==='X'?B:A;
-  const center={x:layout.px(num(model.center.x)),y:layout.py(num(model.center.y))};
+  const pair=Array.isArray(model.ellipses);
+  const shapes=pair?model.ellipses:[{id:null,center:model.center,semiAxis:model.semiAxis,majorAxis:model.majorAxis}];
+  const shapeCenter=shape=>({x:layout.px(num(shape.center.x)),y:layout.py(num(shape.center.y))});
+  const along=shape=>{
+    const A=shape.semiAxis.major.value,B=shape.semiAxis.minor.value;
+    return shape.majorAxis==='X'?{x:A,y:B}:{x:B,y:A};
+  };
+  const center=shapeCenter(shapes[0]);
   const {width,height}=layout.size;
   const prims=[];
   const axisX={x1:r6(layout.rect.x0),y1:r6(layout.py(0)),x2:r6(layout.rect.x1),y2:r6(layout.py(0))};
@@ -224,8 +255,16 @@ export function ellipseFigureSpec(plan,model){
     prims.push({t:'polygon',id:`polygon-${polygon.id}`,role:'polygon',cls:'polygon',layer:20,
       points:points.map(([x,y])=>[r6(x),r6(y)]),fill:FILL[polygon.fill??'LIGHT'],data:{points:polygon.points.join(',')}});
   }
-  prims.push({t:'ellipse',id:'ellipse',role:'ellipse',cls:'curve',layer:25,
-    cx:r6(center.x),cy:r6(center.y),rx:r6(alongX*layout.scale),ry:r6(alongY*layout.scale),data:{}});
+  for(const shape of shapes){
+    const sc=shapeCenter(shape),ax=along(shape);
+    if(pair){
+      prims.push({t:'ellipse',id:`ellipse-${shape.id}`,role:'ellipse',cls:'curve',layer:25,
+        cx:r6(sc.x),cy:r6(sc.y),rx:r6(ax.x*layout.scale),ry:r6(ax.y*layout.scale),data:{ellipse:shape.id}});
+    }else{
+      prims.push({t:'ellipse',id:'ellipse',role:'ellipse',cls:'curve',layer:25,
+        cx:r6(sc.x),cy:r6(sc.y),rx:r6(ax.x*layout.scale),ry:r6(ax.y*layout.scale),data:{}});
+    }
+  }
   for(const segment of plan.segments??[]){
     const from=model.points.find(row=>row.id===segment.from),to=model.points.find(row=>row.id===segment.to);
     prims.push({t:'line',id:`segment-${segment.id}`,role:'segment',cls:segment.dashed?'segmentDashed':'segment',layer:30,
@@ -245,14 +284,21 @@ export function ellipseFigureSpec(plan,model){
       cx:r6(layout.px(num(point.x))),cy:r6(layout.py(num(point.y))),r:3.2,data:{point:point.id}});
   }
   const labels=[];
-  const obstacles={points:[],curve:ellipseSamples(center.x,center.y,alongX*layout.scale,alongY*layout.scale),
+  const curve=[];
+  for(const shape of shapes){
+    const sc=shapeCenter(shape),ax=along(shape);
+    curve.push(...ellipseSamples(sc.x,sc.y,ax.x*layout.scale,ax.y*layout.scale));
+  }
+  const obstacles={points:[],curve,
     segments:prims.filter(prim=>prim.role==='segment').map(prim=>({a:[prim.x1,prim.y1],b:[prim.x2,prim.y2]}))};
+  const centerOfPoint=point=>shapeCenter(shapes.find(shape=>shape.id===point.ellipseId)||shapes[0]);
   for(const point of model.points){
     const px=layout.px(num(point.x)),py=layout.py(num(point.y));
     obstacles.points.push({key:point.id,x:px,y:py});
     if(!point.labels)continue;
+    const lc=centerOfPoint(point);
     labels.push({key:`point-${point.id}`,role:'point',pointId:point.id,text:point.id,
-      pointX:px,pointY:py,centerX:px,centerY:py,candidates:labelCandidates({x:px,y:py},center.x,center.y)});
+      pointX:px,pointY:py,centerX:px,centerY:py,candidates:labelCandidates({x:px,y:py},lc.x,lc.y)});
   }
   for(const segment of plan.segments??[]){
     if(!segment.label)continue;
@@ -331,7 +377,10 @@ export async function auditEllipseSvg({plan,svg}){
 // Every drawn stroke a point name must stay clear of: the curve, the axes, the segments, the tangent
 // lines and the polygon edges (the Archive rendered-layout audit reads each of them as geometry).
 export function ellipseLabelObstacles(spec){
-  const curve=spec.prims.find(prim=>prim.id==='ellipse');
+  const curve=[];
+  for(const prim of spec.prims.filter(prim=>prim.role==='ellipse')){
+    curve.push(...ellipseSamples(prim.cx,prim.cy,prim.rx,prim.ry));
+  }
   const segments=[];
   for(const prim of spec.prims){
     if(prim.role==='segment'||prim.role==='axis'||prim.role==='line')segments.push({a:[prim.x1,prim.y1],b:[prim.x2,prim.y2]});
@@ -341,7 +390,7 @@ export function ellipseLabelObstacles(spec){
   }
   return {
     points:spec.prims.filter(prim=>prim.role==='point').map(prim=>({key:prim.data.point,x:prim.cx,y:prim.cy})),
-    curve:ellipseSamples(curve.cx,curve.cy,curve.rx,curve.ry),
+    curve,
     segments
   };
 }
