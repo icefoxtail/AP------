@@ -1,0 +1,1306 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "24_강남여고_1학기_중간_고1_기출",
+  "sourceFileDriveId": "1QKLhKVegwqqJNrybIwXCQcimhRoodAEY",
+  "sourceSha256": "b8fd71a13bbd6cbd19dd1b238b8f69736b51b78ff0fe7b9cdfe11d8b25c5f9be",
+  "auditedTimestamp": "2026-10-24T10:55:00Z",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 24,
+    "approved": 24,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 24,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 44,
+    "byPack": {
+      "H1_FOUNDATION": 24
+    },
+    "byDifficultyBucket": {
+      "1": 1,
+      "2": 3,
+      "3": 7,
+      "4": 13
+    }
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_COEFFICIENT_COMPARISON",
+      "labelKo": "계수비교법",
+      "definition": "항등식의 양변을 같은 차수의 항별로 전개하여 대응하는 계수를 서로 같다고 놓고 미정계수를 구하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_COMMON_ROOT",
+      "labelKo": "공통근을 갖는 두 함수의 선형 결합",
+      "definition": "f(x)와 g(x)가 공통근 alpha를 가질 때 f(x)+2g(x)=0의 근 구조를 인수분해 형태로 해석",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_COMPLEX_CONJUGATE_PROPERTIES",
+      "labelKo": "켤레복소수의 대수적 성질",
+      "definition": "z와 z_bar의 합과 곱이 항상 실수이며 역수와 켤레의 관계를 분석하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_COMPLEX_CONJUGATE_ROOT",
+      "labelKo": "허근의 켤레근 성질과 차수 축약",
+      "definition": "실수 계수 이차방정식의 허근 x로부터 x^2-x+1=0 관계식을 유도하여 고차식을 일차식으로 축약",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_COMPLEX_EQUATION",
+      "labelKo": "복소수의 상등과 연립방정식",
+      "definition": "a+bi = c+di에서 실수부와 허수부를 각각 비교하여 연립방정식을 세우는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_COMPLEX_NORM",
+      "labelKo": "복소수의 크기와 노름",
+      "definition": "z*z_bar = x^2+y^2 성질을 활용하여 복소수의 절대값 제곱을 다루는 기법",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_COMPLEX_RECIPROCAL",
+      "labelKo": "복소수 역수의 실수화",
+      "definition": "1/(x+yi)의 분모·분자에 켤레를 곱해 실수부분과 허수부분을 분리하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_CUBOID_DIAGONAL",
+      "labelKo": "직육면체의 대각선의 길이 공식",
+      "definition": "세 모서리의 길이가 a, b, c일 때 공간 대각선 sqrt(a^2+b^2+c^2)을 대칭식 곱셈공식 변형으로 산출",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DEGREE_ANALYSIS",
+      "labelKo": "몫과 나머지 항등식의 차수 분석",
+      "definition": "피제수가 4차식, 몫이 2차식일 때 제수 f(x)가 2차식임을 결정하고 미정계수를 비교",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DISCRIMINANT",
+      "labelKo": "이차방정식의 판별식",
+      "definition": "D = b^2 - 4ac의 부호를 통해 실근, 중근, 허근의 개수를 판별하는 공식",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DISCRIMINANT_PERFECT_SQUARE",
+      "labelKo": "정수근 조건과 판별식의 제곱수 판정",
+      "definition": "이차방정식의 근이 정수이려면 판별식 D가 완전제곱수(정수의 제곱)이어야 하는 정수론적 조건",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DIVISION_ALGORITHM",
+      "labelKo": "나눗셈 정리를 이용한 피제수 복원",
+      "definition": "나누는 식과 몫의 곱에 나머지를 더하여 원래 다항식을 전개 복원하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DOUBLE_ROOT",
+      "labelKo": "중근 조건 D=0",
+      "definition": "이차방정식이 중근을 가질 때 판별식 D=0임을 이용하여 매개변수 사이의 관계식을 수립",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_FACTORIZATION_SYMMETRY",
+      "labelKo": "삼각형 변 조건 다항식의 인수분해",
+      "definition": "문자 a, b, c에 관한 대칭 복합식을 인수분해하여 변의 길이 관계를 도출",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_FUNCTION_TRANSFORMATION",
+      "labelKo": "다항식 변수 평행이동과 나머지",
+      "definition": "x 자리에 x+1을 대입한 다항식의 나눗셈을 원 함수값으로 환원",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_HIGHER_DEGREE_EQUATION",
+      "labelKo": "복이차식 형태 사차방정식의 해",
+      "definition": "x^4+ax^2+b=0의 짝수차 대칭성에서 r이 근이면 -r도 근임을 이용해 네 근을 복원",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_IDENTITY_PARAMETER",
+      "labelKo": "매개변수 a에 대한 항등식 계수비교",
+      "definition": "D(a) = A*a + B = 0 꼴에서 A=0, B=0을 만족하는 직선의 기울기와 절편 m, n 결정",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INTEGER_ROOTS",
+      "labelKo": "판별식 상한을 이용한 정수 매개변수 유한 탐색",
+      "definition": "-3(a-3)^2+4 >= 0 부등식으로 정수 a의 후보를 한정하고 완전제곱수를 검증",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INTERVAL_BOUNDS",
+      "labelKo": "닫힌 구간에서의 이차함수 양 끝값 비교",
+      "definition": "제한된 정의역 [a, b]에서 꼭짓점의 포함 여부와 양 끝점의 함숫값을 비교하여 최대·최소를 결정하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_LIKE_TERMS",
+      "labelKo": "동류항의 정리",
+      "definition": "문자와 차수가 같은 항들의 계수를 더하거나 빼서 식을 간단히 하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_LINEAR_CONSTRAINT",
+      "labelKo": "일차 관계식의 소거 대입",
+      "definition": "등식 제약조건을 이용해 종속변수를 독립변수로 완전히 소거하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_LINEAR_DIVISOR",
+      "labelKo": "일차식으로 나눈 나머지 계산",
+      "definition": "일차식이 0이 되는 값을 다항식에 직접 대입하여 미지의 계수를 결정하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_MIDPOINT_SYMMETRY",
+      "labelKo": "두 교점의 중점 x좌표에서의 함수값",
+      "definition": "x = (alpha+beta)/2를 대입하여 두 교점 간 거리와 포물선 깊이 관계를 계산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PERFECT_SQUARE",
+      "labelKo": "이차식의 완전제곱식 조건",
+      "definition": "치환된 이차식에 대해 판별식 D=0을 적용하여 완전제곱식이 되도록 상수를 결정",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DIVISION",
+      "labelKo": "다항식의 나눗셈 관계식",
+      "definition": "피제수 = 제수 * 몫 + 나머지 (A = BQ + R, deg(R) < deg(B)) 항등식 표현",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_EXPANSION",
+      "labelKo": "다항식의 전개와 동류항 결합",
+      "definition": "주어진 다항식의 괄호를 풀고 같은 문자와 차수를 가진 항끼리 모아 정리하는 기본 연산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_IDENTITY",
+      "labelKo": "항등식의 성질",
+      "definition": "문자에 어떤 실수를 대입하여도 항상 성립하는 등식의 성질",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_REDUCTION",
+      "labelKo": "고차식의 관계식 대입 축약",
+      "definition": "이차식 = 0 관계를 이용하여 목표 다항식의 차수를 낮추어 값을 구하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA",
+      "labelKo": "이차함수의 최댓값과 최솟값",
+      "definition": "완전제곱식을 이용하여 꼭짓점의 좌표와 대칭축을 중심으로 함수의 극값을 구하는 원리",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA_MODEL",
+      "labelKo": "조건식이 주어진 다변수 이차식의 최대·최소",
+      "definition": "일차 제약조건 y=x+2를 대입하여 한 변수의 위로 볼록한 이차함수로 변환 후 최댓값 도출",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_GRAPH_INTERSECTION",
+      "labelKo": "이차함수와 직선 또는 두 포물선의 교점",
+      "definition": "연립방정식 f(x) - g(x) = 0의 실근을 좌표평면 상의 교점의 x좌표로 해석하는 기하·대수 결합 원리",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_LINEAR_INTERSECTION",
+      "labelKo": "포물선과 직선의 교점과 차의 함수",
+      "definition": "h(x) = f(x) - g(x) = 3(x-alpha)(x-beta)로 두고 대칭축과 중점의 수직선 좌표를 해석",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REAL_IMAG_PARTS",
+      "labelKo": "복소수의 실수부와 허수부 분해",
+      "definition": "z^2 = (a+bi)^2 = (a^2-b^2) + 2abi 형태로 전개하여 실수 조건과 결합하는 원리",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RECIPROCAL_SUM",
+      "labelKo": "두 근의 역수의 합 계산",
+      "definition": "1/alpha + 1/beta = (alpha+beta)/(alpha*beta) 대칭식 변형을 적용하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REMAINDER_THEOREM",
+      "labelKo": "나머지정리",
+      "definition": "다항식 P(x)를 일차식 ax-b로 나누었을 때의 나머지가 P(b/a)와 같음을 이용하는 정리",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REMAINDER_THEOREM_COMPOSITE",
+      "labelKo": "합성 다항식의 나머지정리",
+      "definition": "f(x+1)을 x-2로 나눈 나머지가 f(3)임을 변수 치환으로 해석하여 연립",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RIGHT_TRIANGLE_CONVERSE",
+      "labelKo": "피타고라스 정리의 역",
+      "definition": "a^2 = b^2 + c^2 관계식을 직각삼각형으로, a=b 관계식을 이등변삼각형으로 기하학적 해석",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_ROOT_RATIO",
+      "labelKo": "두 근의 비가 주어진 이차방정식",
+      "definition": "두 근을 t, 3t로 두고 근과 계수의 관계와 연립하여 매개변수 이차식을 해결",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SPECIAL_VALUE_METHOD",
+      "labelKo": "수치대입법",
+      "definition": "항등식의 성질을 이용하여 복잡한 몫 f(x)를 소거할 수 있는 특수값 x=1, x^2=2를 대입",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_GROUPING",
+      "labelKo": "네 일차식의 공통부분 묶음 전개",
+      "definition": "(x+a)(x+b)(x+c)(x+d)에서 상수항의 합이 같도록 짝지어 공통부분 치환을 유도하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_ROOTS",
+      "labelKo": "부호 대칭근의 곱과 합",
+      "definition": "근들의 쌍 (+r, -r)의 곱을 통해 상수항과 계수를 신속하게 결정하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_TANGENT_LINE_DISCRIMINANT",
+      "labelKo": "포물선과 직선의 접선 판별식 D=0",
+      "definition": "실수 a의 값에 관계없이 항상 접한다는 조건을 a에 대한 항등식으로 전환",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_VIETA_FORMULA",
+      "labelKo": "이차방정식의 근과 계수의 관계",
+      "definition": "이차방정식 ax^2+bx+c=0의 두 근의 합 -b/a와 두 근의 곱 c/a를 대수적으로 활용하는 공식",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_VIETA_THIRD_DEGREE",
+      "labelKo": "삼차방정식의 근과 계수의 관계",
+      "definition": "세 근 a, b, c에 대하여 합, 둘씩의 곱, 세 근의 곱을 계수로부터 유도",
+      "boundQuestionCount": 1
+    }
+  ],
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-01",
+      "standardUnit": "다항식의 연산",
+      "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+      "subUnit": "다항식의 기본 연산",
+      "level1": "다항식",
+      "level2": "다항식의 연산",
+      "level3": "다항식의 연산과 전개",
+      "level4": "다항식의 직접 연산",
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_EXPANSION",
+        "CC_LIKE_TERMS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "1단계 다항식의 동류항 계산으로 풀이 전략 선택이 거의 없다.",
+      "sourceTextExcerpt": "1. 두 다항식 $A=2x^2+3xy-5y^2$, $B=3x^2-xy+4y^2$에 대하여 $2A+B$를 간단히 하면? [2.7점]",
+      "solutionDecisiveExcerpt": "2A+B=7x²+5xy−6y²",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-02",
+      "standardUnit": "항등식과 나머지정리",
+      "subUnitKey": "H15-SA-02-IDENTITY",
+      "subUnit": "항등식과 계수비교",
+      "level1": "다항식",
+      "level2": "항등식과 나머지정리",
+      "level3": "항등식과 미정계수",
+      "level4": "항등식의 계수비교",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_IDENTITY",
+        "CC_COEFFICIENT_COMPARISON"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "항등식 전개 후 세 계수를 연쇄 비교해 값을 합해야 한다.",
+      "sourceTextExcerpt": "2. 다음 등식 $x^2+ax+8=(bx+2)(x+c)$가 $x$에 대한 항등식이 되도록 하는 상수 $a,b,c$에 대하여 $a+b+c$의 값은? [2.8점]",
+      "solutionDecisiveExcerpt": "b=1, c=4, a=6이므로 a+b+c=11",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-06",
+      "standardUnit": "이차방정식의 근과 계수",
+      "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+      "subUnit": "근과 계수의 관계",
+      "level1": "방정식과 부등식",
+      "level2": "이차방정식의 근과 계수",
+      "level3": "근과 계수의 관계",
+      "level4": "대칭식의 값 계산",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "crossConceptKeys": [
+        "CC_VIETA_FORMULA",
+        "CC_RECIPROCAL_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "근과 계수의 관계를 선택해 역수의 합으로 바꾸는 한 단계 변형이다.",
+      "sourceTextExcerpt": "3. 이차방정식 $x^2+3x+3=0$의 두 근을 $\\alpha$, $\\beta$라 할 때, $\\frac{1}{\\alpha}+\\frac{1}{\\beta}$의 값은? [3점]",
+      "solutionDecisiveExcerpt": "(α+β)/(αβ)=−1",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "level1": "방정식과 부등식",
+      "level2": "이차함수",
+      "level3": "이차함수의 최대·최소",
+      "level4": "제한된 범위에서의 최대·최소",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EXTREMA",
+        "CC_INTERVAL_BOUNDS"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "완전제곱으로 꼭짓점과 닫힌 구간 양 끝값을 비교해야 한다.",
+      "sourceTextExcerpt": "4. 주어진 범위에서 이차함수 $y=x^2+2x-2$ ($-1\\leq x\\leq 2$)의 최솟값과 최댓값을 구한 값은? [3.2점]",
+      "solutionDecisiveExcerpt": "(x+1)²−3의 꼭짓점과 닫힌구간 끝값으로 최솟값·최댓값 결정",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-01",
+      "standardUnit": "다항식의 연산",
+      "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+      "subUnit": "다항식의 나눗셈",
+      "level1": "다항식",
+      "level2": "다항식의 연산",
+      "level3": "다항식의 나눗셈",
+      "level4": "몫과 나머지의 관계식",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_DIVISION",
+        "CC_DIVISION_ALGORITHM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "몫·나머지 관계를 재구성하고 다항식 전개·동류항 계산을 한다.",
+      "sourceTextExcerpt": "5. 어떤 다항식을 $x+2$로 나누었을 때의 몫이 $2x^2-x+1$이고 나머지가 3일 때, 이 다항식을 구하면? [3.4점]",
+      "solutionDecisiveExcerpt": "(x+2)(2x²−x+1)+3=2x³+3x²−x+5",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-02",
+      "standardUnit": "항등식과 나머지정리",
+      "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+      "subUnit": "나머지정리와 인수정리",
+      "level1": "다항식",
+      "level2": "항등식과 나머지정리",
+      "level3": "나머지정리",
+      "level4": "일차식으로 나눈 나머지",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "crossConceptKeys": [
+        "CC_REMAINDER_THEOREM",
+        "CC_LINEAR_DIVISOR"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "나머지정리의 대입값을 선택하고 일차식으로 매개변수를 구한다.",
+      "sourceTextExcerpt": "6. 다항식 $P(x)=2x^3+ax^2-2x-1$을 $2x-1$로 나누었을 때 나머지가 1일 때, $a$ 값은? [3.5점]",
+      "solutionDecisiveExcerpt": "P(1/2)=1에서 a=11",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-04",
+      "standardUnit": "복소수",
+      "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+      "subUnit": "복소수와 이차방정식",
+      "level1": "방정식과 부등식",
+      "level2": "복소수",
+      "level3": "복소수의 상등과 연산",
+      "level4": "복소수 이차방정식의 조건식",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_COMPLEX_EQUATION",
+        "CC_REAL_IMAG_PARTS"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "복소수 이차방정식을 실수부·허수부의 연립조건으로 바꾸고, 두 식을 결합하는 항등식으로 제곱값을 복원한 뒤 부호를 판단한다. a>0과 ab>0 조건의 조합으로 목표값을 확정하므로 Bucket 4를 보존한다.",
+      "sourceTextExcerpt": "7. 실수 $a,b$에 대하여 복소수 $z=a+bi$가 이차방정식 $z^2=65+72i$의 근이고 $a>0$일 때, $a-2b$의 값은? [3.6점]",
+      "solutionDecisiveExcerpt": "복소 제곱식에서 $a^2-b^2=65$, $ab=36$을 얻고, 범위 조건으로 근의 부호를 골라 $a-2b$를 계산한다.",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-05",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "H15-SA-05-DISCRIMINANT",
+      "subUnit": "판별식과 근의 조건",
+      "level1": "방정식과 부등식",
+      "level2": "이차방정식",
+      "level3": "이차방정식의 판별식",
+      "level4": "판별식과 근의 판별",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_DOUBLE_ROOT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "중근 조건으로 첫 매개변수 관계를 얻고 둘째 판별식 부호를 분석하는 표준 구조화 문제다.",
+      "sourceTextExcerpt": "8. 이차방정식 $x^2+ax-b-5=0$이 중근을 가질 때, $x$에 대한 이차방정식 $x^2-2ax+b^2+4b=0$의 근을 판별하면? (단, $a,b$는 실수) [3.6점]",
+      "solutionDecisiveExcerpt": "첫 판별식 0으로 b를 구한 뒤 둘째 판별식은 항상 음수",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-03",
+      "standardUnit": "인수분해",
+      "subUnitKey": "H15-SA-03-FACTORIZATION",
+      "subUnit": "인수분해",
+      "level1": "다항식",
+      "level2": "인수분해",
+      "level3": "인수분해 공식의 활용",
+      "level4": "치환을 이용한 인수분해",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "crossConceptKeys": [
+        "CC_SYMMETRIC_GROUPING",
+        "CC_PERFECT_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "네 인수를 짝지어 대칭 치환을 만들고 완전제곱 조건을 판정한다.",
+      "sourceTextExcerpt": "9. 다항식 $(x+1)(x+3)(x+5)(x+7)+a$가 $x$에 대하여 이차식의 완전제곱꼴로 인수분해되기 위한 상수 $a$값은? [3.8점]",
+      "solutionDecisiveExcerpt": "u=(x+4)²로 두면 u²−10u+9+a가 (u−5)²가 되는 a=16",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-04",
+      "standardUnit": "복소수",
+      "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+      "subUnit": "복소수의 계산",
+      "level1": "방정식과 부등식",
+      "level2": "복소수",
+      "level3": "복소수의 연산",
+      "level4": "이차방정식을 이용한 차수 축약",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+      "crossConceptKeys": [
+        "CC_COMPLEX_CONJUGATE_ROOT",
+        "CC_POLYNOMIAL_REDUCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "복소수의 이차방정식 관계를 찾아 식을 축약한다.",
+      "sourceTextExcerpt": "10. $x=\\frac{1-\\sqrt{3}i}{2}$일 때, $2x^2-2x+5$의 값은? [4점]",
+      "solutionDecisiveExcerpt": "x²−x+1=0에서 x²=x−1",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "level1": "방정식과 부등식",
+      "level2": "이차함수",
+      "level3": "이차함수의 그래프와 직선",
+      "level4": "그래프의 교점과 연립방정식",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_GRAPH_INTERSECTION",
+        "CC_COMMON_ROOT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "그래프에서 두 근 구조를 읽고 일차 인수의 가중합으로 다른 근을 구한다.",
+      "sourceTextExcerpt": "11. 이차항의 계수가 1인 두 함수 $f(x)$, $g(x)$의 그래프가 그림과 같을 때, 방정식 $f(x)+2g(x)=0$의 근이 될 수 있는 $\\alpha$ 이외의 값은? [4.1점]",
+      "solutionDecisiveExcerpt": "f+2g=(x−α)(3x−β−2γ)",
+      "visualAssetChecked": true,
+      "visualType": "IMAGE",
+      "visualAssetFiles": [
+        "assets/images/24_강남여고_1학기_중간_고1_기출/q11.png"
+      ],
+      "visualVerificationNote": "시각자료 확인: assets/images/24_강남여고_1학기_중간_고1_기출/q11.png",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-01",
+      "standardUnit": "다항식의 연산",
+      "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+      "subUnit": "다항식의 나눗셈",
+      "level1": "다항식",
+      "level2": "다항식의 연산",
+      "level3": "다항식의 나눗셈",
+      "level4": "몫과 나머지의 관계식",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_DIVISION",
+        "CC_DEGREE_ANALYSIS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "몫·나머지 항등식을 전개해 여러 계수를 연립 비교한다.",
+      "sourceTextExcerpt": "12. $x^4-3x^3-3x^2+7x+3$을 다항식 $f(x)$로 나누었더니 몫이 $x^2-3x+1$이고 나머지가 $-5x+7$이었다. 다항식 $f(x)=ax^2+bx+c$라 할 때, $a+b+c$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "나눗셈 등식의 계수 비교로 a+b+c=−3",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-03",
+      "standardUnit": "인수분해",
+      "subUnitKey": "H15-SA-03-FACTORIZATION",
+      "subUnit": "인수분해",
+      "level1": "다항식",
+      "level2": "인수분해",
+      "level3": "인수분해",
+      "level4": "복잡한 식의 인수분해와 삼각형 판정",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "crossConceptKeys": [
+        "CC_FACTORIZATION_SYMMETRY",
+        "CC_RIGHT_TRIANGLE_CONVERSE"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "인수분해 결과의 두 경우를 삼각형의 변·직각 조건으로 해석한다.",
+      "sourceTextExcerpt": "13. 삼각형의 세 변의 길이 $a,b,c$ 사이에 $a^2(b^2+c^2-a^2)=b^2(a^2+c^2-b^2)$인 관계가 있다. 이 때, 이 삼각형은 어떤 삼각형인가? [4.4점]",
+      "solutionDecisiveExcerpt": "(a²−b²)(c²−a²−b²)=0",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-04",
+      "standardUnit": "복소수",
+      "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+      "subUnit": "복소수의 계산",
+      "level1": "방정식과 부등식",
+      "level2": "복소수",
+      "level3": "복소수의 연산",
+      "level4": "켤레복소수의 성질",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "crossConceptKeys": [
+        "CC_COMPLEX_CONJUGATE_PROPERTIES",
+        "CC_COMPLEX_NORM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "켤레 성질을 여러 주장에 적용하고 반례를 구성한다.",
+      "sourceTextExcerpt": "14. 복소수 $z$의 켤레복소수를 $\\bar{z}$라 할 때, 다음 중 옳지 않은 것을 고르면? [4.5점]",
+      "solutionDecisiveExcerpt": "z=1을 넣으면 ④의 값은 2로 순허수가 아님",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-06",
+      "standardUnit": "이차방정식의 근과 계수",
+      "subUnitKey": "H15-SA-06-ROOT_CONDITION",
+      "subUnit": "근과 계수의 조건",
+      "level1": "방정식과 부등식",
+      "level2": "이차방정식의 근과 계수",
+      "level3": "근과 계수의 관계",
+      "level4": "두 근의 비가 주어진 이차방정식",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "crossConceptKeys": [
+        "CC_VIETA_FORMULA",
+        "CC_ROOT_RATIO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "근비를 매개화한 뒤 근의 합·곱 관계와 매개변수 이차식을 결합한다.",
+      "sourceTextExcerpt": "15. 이차방정식 $x^2+4(k-1)x+3k=0$의 두 근의 비가 $1:3$일 때, 모든 실수 $k$의 값의 합은? [4.5점]",
+      "solutionDecisiveExcerpt": "근을 t,3t로 두어 k²−3k+1=0, k의 합 3",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "level1": "방정식과 부등식",
+      "level2": "이차함수",
+      "level3": "이차함수의 최대·최소",
+      "level4": "조건식이 주어진 경우의 최대·최소",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EXTREMA_MODEL",
+        "CC_LINEAR_CONSTRAINT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "선형 제약을 대입해 이차식을 만들고 완전제곱으로 최댓값을 구한다.",
+      "sourceTextExcerpt": "16. $y=x+2$를 만족시키는 두 실수 $x,y$에 대하여 $-2x^2+y^2$의 최댓값은? [4.6점]",
+      "solutionDecisiveExcerpt": "−2x²+(x+2)²=−(x−2)²+8",
+      "visualAssetChecked": true,
+      "visualType": "SVG",
+      "visualAssetFiles": [
+        "assets/images/24_강남여고_1학기_중간_고1_기출/q16-solution.svg"
+      ],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE",
+      "courierOriginalVisualEvidence": {
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "courierVisualCheck": {
+        "author": "CODEX_ROOT",
+        "scope": "Existing current-main reference/solution agreement; not a new visual-quality approval",
+        "svgSha256": "f8c002e0a9cc7219ac2097f1ea181f63afa52f09c8185bfbf8533f464f6b3838"
+      }
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-07",
+      "standardUnit": "여러 가지 방정식",
+      "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+      "subUnit": "고차방정식의 풀이",
+      "level1": "방정식과 부등식",
+      "level2": "여러 가지 방정식",
+      "level3": "삼차·사차방정식",
+      "level4": "복이차방정식의 해",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "crossConceptKeys": [
+        "CC_HIGHER_DEGREE_EQUATION",
+        "CC_SYMMETRIC_ROOTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "짝수차 다항식의 근 대칭성을 이용해 네 근 전체를 복원한다.",
+      "sourceTextExcerpt": "17. 사차식 $x^4+ax^2+b$가 $(x+2)(x-1)$을 인수로 가질 때, 사차식 $x^4+ax^2+b=0$의 네 근의 곱은? [4.7점]",
+      "solutionDecisiveExcerpt": "짝수차 식의 네 근은 −2,2,1,−1",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-02",
+      "standardUnit": "항등식과 나머지정리",
+      "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+      "subUnit": "나머지정리와 인수정리",
+      "level1": "다항식",
+      "level2": "항등식과 나머지정리",
+      "level3": "나머지정리",
+      "level4": "합성제수의 나머지정리",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "crossConceptKeys": [
+        "CC_REMAINDER_THEOREM_COMPOSITE",
+        "CC_FUNCTION_TRANSFORMATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평행이동된 나머지 조건을 원래 함수값으로 옮겨 합성 제수의 나머지 값을 구한다.",
+      "sourceTextExcerpt": "18. 다항식 $f(x)$를 $x+4$로 나누었을 때 나머지가 $-7$이고 $f(x+1)$을 $x-2$로 나누었을 때 나머지가 7이다. $f(x)$를 $(x+4)(x-3)$으로 나누었을 때의 나머지 $R(x)$라 할",
+      "solutionDecisiveExcerpt": "R(3)=f(3)=7",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-05",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "H15-SA-05-DISCRIMINANT",
+      "subUnit": "판별식과 근의 조건",
+      "level1": "방정식과 부등식",
+      "level2": "이차방정식",
+      "level3": "이차방정식의 판별식",
+      "level4": "판별식과 정수근 조건",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT_PERFECT_SQUARE",
+        "CC_INTEGER_ROOTS"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "판별식 완전제곱으로 정수 매개변수 범위를 좁힌 뒤 유한 후보를 확인하는 표준 조건처리 문제다.",
+      "sourceTextExcerpt": "19. 이차방정식 $x^2+(a+1)x+a^2-4a+6=0$의 두 근이 정수가 되도록 하는 정수 $a$의 값의 합은? [5.1점]",
+      "solutionDecisiveExcerpt": "D=−3(a−3)²+4에서 a=2,3,4, 합 9",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "questionType": "객관식",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "level1": "방정식과 부등식",
+      "level2": "이차함수",
+      "level3": "이차함수의 그래프와 직선",
+      "level4": "포물선과 직선의 교점과 거리",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_LINEAR_INTERSECTION",
+        "CC_MIDPOINT_SYMMETRY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "교점과 중점 수직선의 위치를 이용해 함수 차의 대칭값을 계산한다.",
+      "sourceTextExcerpt": "20. 이차식 $f(x)=3x^2+px+q$와 일차식 $g(x)$에 대하여 그림과 같이 이 두 함수 $y=f(x)$와 $y=g(x)$의 그래프가 두 점 $A(\\alpha,f(\\alpha))$, $B(\\beta,f(\\",
+      "solutionDecisiveExcerpt": "중점에서 g−f=3(β−α)²/4=3이므로 CD=2",
+      "visualAssetChecked": true,
+      "visualType": "IMAGE",
+      "visualAssetFiles": [
+        "assets/images/24_강남여고_1학기_중간_고1_기출/q20.png"
+      ],
+      "visualVerificationNote": "시각자료 확인: assets/images/24_강남여고_1학기_중간_고1_기출/q20.png",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "questionType": "서술형",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-02",
+      "standardUnit": "항등식과 나머지정리",
+      "subUnitKey": "H15-SA-02-IDENTITY",
+      "subUnit": "항등식과 계수비교",
+      "level1": "다항식",
+      "level2": "항등식과 나머지정리",
+      "level3": "항등식과 미정계수",
+      "level4": "수치대입법을 이용한 미정계수 결정",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_IDENTITY",
+        "CC_SPECIAL_VALUE_METHOD"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "다항식의 나눗셈 가능성을 특수값 조건 두 개로 바꾸어 미지 계수를 푼다.",
+      "sourceTextExcerpt": "[서·논술형1] 다항식 $f(x)$에 대하여 등식 $(x-1)(x^2-2)f(x)=2x^8+ax^4+b$가 $x$의 값에 관계없이 항상 성립하도록 상수 $a,b$의 값을 정할 때, $\\sqrt{(-20)ab}$의 값",
+      "solutionDecisiveExcerpt": "x=1, x²=2 대입으로 a=−10,b=8, 답 40",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "questionType": "서술형",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-04",
+      "standardUnit": "복소수",
+      "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+      "subUnit": "복소수의 계산",
+      "level1": "방정식과 부등식",
+      "level2": "복소수",
+      "level3": "복소수의 연산",
+      "level4": "복소수 역수의 실수화",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "crossConceptKeys": [
+        "CC_COMPLEX_RECIPROCAL",
+        "CC_COMPLEX_NORM"
+      ],
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "복소수 역수를 실수·허수부분으로 분리해 노름 조건을 계산한다.",
+      "sourceTextExcerpt": "[서·논술형2] 복소수 $\\frac{1}{x+yi}$의 실수부분을 $a$, 허수부분을 $b$라 할 때, $a^2+b^2=3$을 만족한다. 이 때, $x^2+y^2$의 값을 구하시오. (단, $x,y$는 실수) (단,",
+      "solutionDecisiveExcerpt": "a²+b²=1/(x²+y²)=3",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "questionType": "서술형",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "level1": "방정식과 부등식",
+      "level2": "이차함수",
+      "level3": "이차함수의 그래프와 직선",
+      "level4": "포물선과 직선의 접선 조건",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "crossConceptKeys": [
+        "CC_TANGENT_LINE_DISCRIMINANT",
+        "CC_IDENTITY_PARAMETER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "접선 조건을 판별식 항등식으로 바꾸고 a의 계수와 상수항을 맞추는 표준 매개변수 절차가 중심이다.",
+      "sourceTextExcerpt": "[서·논술형3] 이차함수 $y=x^2-2ax+a^2+3a-1$의 그래프가 실수 $a$의 값에 관계없이 직선 $y=mx-n$과 접할 때, 상수 $m,n$의 값에 대하여 $4mn$의 값을 구하시오. [5점]",
+      "solutionDecisiveExcerpt": "D=4a(m−3)+m²−4n+4≡0에서 4mn=39",
+      "visualAssetChecked": false,
+      "visualType": "NONE",
+      "visualAssetFiles": [],
+      "visualVerificationNote": "시각자료 생략 면제.",
+      "holdStatus": "NONE"
+    },
+    {
+      "questionId": 24,
+      "questionNo": 24,
+      "questionType": "서술형",
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-07",
+      "standardUnit": "여러 가지 방정식",
+      "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+      "subUnit": "고차방정식의 풀이",
+      "level1": "방정식과 부등식",
+      "level2": "여러 가지 방정식",
+      "level3": "곱셈 공식의 변형",
+      "level4": "세 수의 대칭식과 공간 대각선",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "crossConceptKeys": [
+        "CC_VIETA_THIRD_DEGREE",
+        "CC_CUBOID_DIAGONAL"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "삼차방정식의 근의 대칭합과 직육면체 공간 대각선 공식을 결합한다.",
+      "sourceTextExcerpt": "[서·논술형4] 어떤 직육면체의 가로, 세로의 길이와 높이를 세 근으로 하는 삼차방정식이 $x^3-5\\sqrt{2}x^2+15x+k=0$일 때, 이 직육면체의 서로 다른 두 꼭짓점 사이의 거리의 최댓값을 구하시오. ",
+      "solutionDecisiveExcerpt": "d²=(a+b+c)²−2(ab+bc+ca)=20",
+      "visualAssetChecked": true,
+      "visualType": "SVG",
+      "visualAssetFiles": [
+        "assets/images/24_강남여고_1학기_중간_고1_기출/q24-solution.svg"
+      ],
+      "visualVerificationNote": "시각자료 확인: assets/images/24_강남여고_1학기_중간_고1_기출/q24-solution.svg",
+      "holdStatus": "NONE"
+    }
+  ],
+  "courierSourceSupplement": {
+    "schemaVersion": "meta-pipeline-existing-visual-source-supplement-v1",
+    "author": "CODEX_ROOT",
+    "scope": "META_SOURCE_ASSET_REFERENCE_PARITY_ONLY",
+    "examUid": "24_강남여고_1학기_중간_고1_기출",
+    "originalAuditSha256": "5c4d58001a36d11f2fc53a6bf5c81512233a9f58e828567a6a5e3e913bcf66ab",
+    "originalManifestSha256": "e33bca0366dd96276a5c40a50a5262837906b668ab2e17959131df9ba0e6be3f",
+    "originalAuditSourceSha256": "4d341cbe20992c70d01a6ecc112c93b054f07c02cd93be5b698aad3a7b797fab",
+    "actualDriveBeforeSha256": "d9575259cdd668c8ab0069a3348d51e323ef73014de9ab7bd9d3c061c4df91ac",
+    "productionSourceSha256": "46eb05fbce8aef42e1eefacab77dcc5f44a089aa1a0b321617f6adfeff0b4481",
+    "studentMathTextAnswerSolutionChanged": false,
+    "sourceReferenceDiffs": [
+      {
+        "sourceOrdinal": 16,
+        "before": null,
+        "after": "assets/images/24_강남여고_1학기_중간_고1_기출/q16-solution.svg"
+      }
+    ],
+    "visual": {
+      "sourceOrdinal": 16,
+      "path": "archive/assets/images/24_강남여고_1학기_중간_고1_기출/q16-solution.svg",
+      "sha256": "f8c002e0a9cc7219ac2097f1ea181f63afa52f09c8185bfbf8533f464f6b3838",
+      "nativeRenderPngSha256": "c179f49677c0a888369ce87fa26450c15d9e70928769b5b906858debaa70effe",
+      "renderBackend": "existing archive/tools/pipeline-core/svg-native-render.mjs, bundled sharp, density 144",
+      "actualRenderViewed": true,
+      "existingSolutionQuote": "$y=x+2$를 식에 대입해 $x$에 대한 식으로 만든다.\n$-2x^2+y^2=-2x^2+(x+2)^2$\n$=-x^2+4x+4$\n$=-(x-2)^2+8$이다.\n제곱은 $0$ 이상이므로 최댓값은 $8$이고, $x=2$일 때 얻는다.\n그러므로 정답은 ①이다.",
+      "observedRelation": "Downward parabola labeled y=-(x-2)^2+8, vertex (2,8), symmetric marked points (0,4) and (4,4), matching the existing solution expression. No asset or answer was altered.",
+      "visibleLabels": [
+        "(2,8)",
+        "(0,4)",
+        "(4,4)"
+      ],
+      "svgTitle": "y=x+2를 대입하면 y=-x^2+4x+4이고, 꼭짓점 V(2, 8)에서 최댓값 8을 갖는다.",
+      "visualQualityApproval": "NOT_EVALUATED",
+      "examSampleCalibration": "EXAM_SAMPLE_NOT_APPLICABLE_META_ONLY",
+      "browserStudentUi": "NOT_RUN"
+    },
+    "existingSourceAssetCommit": "9ca2c91321",
+    "originalGeminiReviewPreserved": true
+  },
+  "codexCorrectiveAudit": {
+    "schemaVersion": "codex-corrective-metadata-audit-v1",
+    "author": "CODEX_ROOT",
+    "reviewerModel": "opencode-go/deepseek-v4.1-flash",
+    "scope": "Metadata correspondence with existing verified solution; no exam mathematics re-review",
+    "sourceBeforeSha256": "46eb05fbce8aef42e1eefacab77dcc5f44a089aa1a0b321617f6adfeff0b4481",
+    "sourceAfterSha256": "b8fd71a13bbd6cbd19dd1b238b8f69736b51b78ff0fe7b9cdfe11d8b25c5f9be",
+    "originalGeminiAuditSha256": "5c4d58001a36d11f2fc53a6bf5c81512233a9f58e828567a6a5e3e913bcf66ab",
+    "originalGeminiManifestSha256": "e33bca0366dd96276a5c40a50a5262837906b668ab2e17959131df9ba0e6be3f",
+    "originalGeminiNewTemplatesCreated": 0,
+    "codexCorrectiveTemplatesCreated": 1,
+    "statisticsScope": "Original statistics describe Gemini work only. One new primitive template is approved by this Codex corrective audit, not Gemini.",
+    "definition": {
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "canonicalLabelKo": "나머지정리의 직접 대입",
+      "definition": "일차식 ax+b로 나눈 나머지 조건에서 그 일차식의 근을 다항식에 대입하여 나머지 또는 미정계수를 결정한다.",
+      "solutionSkeleton": "제수의 근을 정한다 → 그 값을 다항식에 대입한 값이 주어진 나머지와 같다는 조건을 세운다 → 필요한 계수 또는 나머지를 결정한다.",
+      "ownerPack": "H1_FOUNDATION",
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f61484aedcdac891b5755d5a8c935ffa25f238ca1d826e542b995635180e55f4"
+      ],
+      "supportingItemCount": 1,
+      "sourceOrdinal": 6
+    },
+    "review": {
+      "verdict": "APPROVED",
+      "reason": "The already-verified source solution for 24 Gangnam H1 midterm q6 uses exactly one direct remainder-theorem evaluation: the root x=1/2 of the single linear divisor 2x-1 is substituted into P(x), P(1/2)=1 is set equal to the given remainder, and a is determined. The proposal's key, label, definition, and skeleton describe that same one-step primitive without adding composite-factor or nested-division structure. The gap is real and source-recorded: q6 has PT_H1_REMAINDER_THEOREM but no direct-substitution template; its own audit L4 is '일차식으로 나눈 나머지' and the source metadata explicitly preserves templateKey null with metaDebtStatus EVIDENCE_DEBT. The only registered remainder templates (TPL_H1_REMAINDER_COMPOSITE_DIVISOR and TPL_H1_REMAINDER_NESTED_DIVISION) require multiple factors/roots or nested division respectively, so neither is a faithful home. The proposal is therefore a needed missing primitive, not template inflation.",
+      "approvedDefinition": {
+        "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+        "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "canonicalLabelKo": "나머지정리의 직접 대입",
+        "definition": "일차식 ax+b로 나눈 나머지 조건에서 그 일차식의 근을 다항식에 대입하여 나머지 또는 미정계수를 결정한다.",
+        "solutionSkeleton": "제수의 근을 정한다 → 그 값을 다항식에 대입한 값이 주어진 나머지와 같다는 조건을 세운다 → 필요한 계수 또는 나머지를 결정한다.",
+        "ownerPack": "H1_FOUNDATION",
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_f61484aedcdac891b5755d5a8c935ffa25f238ca1d826e542b995635180e55f4"
+        ],
+        "supportingItemCount": 1,
+        "sourceOrdinal": 6
+      },
+      "evidence": [
+        {
+          "claim": "q6 is a single-linear-divisor remainder problem and the verified solution is one direct substitution.",
+          "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-context.json",
+          "lines": "1517, 1526, 1535-1536, 1570",
+          "sourceTextExcerpt": "6. 다항식 $P(x)=2x^3+ax^2-2x-1$을 $2x-1$로 나누었을 때 나머지가 1일 때, $a$ 값은? [3.5점]",
+          "solutionDecisiveExcerpt": "P(1/2)=1에서 a=11",
+          "solutionExcerpt": "나머지정리에 따라 $2x-1=0$의 해 $x=\\dfrac12$를 $P(x)$에 대입한다. ... $P\\left(\\dfrac12\\right)=1$이므로 ... $a=11$이다."
+        },
+        {
+          "claim": "The source itself records the missing direct-substitution template as metadata debt rather than hiding it under another template.",
+          "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-context.json",
+          "lines": "1532, 1536, 1551-1566",
+          "templateKeyAtSource": null,
+          "metaDebtFields": [
+            "L4",
+            "templateKey"
+          ],
+          "metaDebtStatus": "EVIDENCE_DEBT",
+          "metaDebtReason": "현재 H1 taxonomy rows에서 단순한 나머지값 직접 대입의 active PT는 PT_H1_REMAINDER_THEOREM이나 이 경로에 대응하는 active L4/templateKey가 없어 null로 보존."
+        },
+        {
+          "claim": "The audited source L4 is the direct-substitution meaning, while the audit's recorded COMPOSITE template contradicts that L4.",
+          "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-audit.json",
+          "lines": "471-474, 483-485",
+          "auditL4": "일차식으로 나눈 나머지",
+          "auditTemplateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+          "auditSolutionDecisiveExcerpt": "P(1/2)=1에서 a=11",
+          "note": "COMPOSITE_DIVISOR is therefore a misselection for q6; the context snapshot preserves templateKey null rather than falsely claiming a direct template."
+        },
+        {
+          "claim": "The existing COMPOSITE template is semantically different and remains intact.",
+          "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-context.json",
+          "lines": "6218-6250",
+          "existingTemplateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+          "existingCanonicalLabelKo": "합성 제수 나머지 조건 결합",
+          "existingDefinition": "여러 인수·근의 나머지 조건을 결합해 합성 제수의 나머지나 계수를 결정한다.",
+          "existingInternalSkeleton": "COMPOSITE_DIVISOR_REMAINDER_INTERPOLATION",
+          "existingSupportingItemCount": 10,
+          "note": "Requires multiple factors/roots and remainder-condition interpolation; q6 has one linear divisor and no condition combination."
+        },
+        {
+          "claim": "The proposed key is absent from the supplied current taxonomy/context snapshot and does not collide with an existing template.",
+          "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/work/0-context.json",
+          "search": "No occurrence of TPL_H1_REMAINDER_DIRECT_SUBSTITUTION or DIRECT_SUBSTITUTION other than the proposal file; the only PT_H1_REMAINDER_THEOREM template entry present is COMPOSITE_DIVISOR.",
+          "rootRegistryState": "ROOT reports the other active template under PT_H1_REMAINDER_THEOREM is TPL_H1_REMAINDER_NESTED_DIVISION; both are semantically distinct from direct substitution.",
+          "pathProposal": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/template-proposal.json"
+        },
+        {
+          "claim": "The proposal is faithful to the verified source method and does not require re-solving the question.",
+          "path": "C:/Users/USER/AppData/Local/Temp/MetaHeartbeat20261027T0301/template-proposal.json",
+          "lines": "2-12",
+          "mapping": {
+            "skeletonStep1": "제수의 근을 정한다 = 2x-1=0 → x=1/2",
+            "skeletonStep2": "대입값이 주어진 나머지와 같다는 조건 = P(1/2)=1",
+            "skeletonStep3": "필요한 계수 결정 = a=11"
+          },
+          "note": "No numerical re-derivation was performed or needed; only correspondence with the already-verified decisive step was checked."
+        },
+        {
+          "claim": "No existing template meaning is merged, redefined, or renumbered by this approval.",
+          "changedExistingDefinitions": 0,
+          "mergedExistingTemplates": 0,
+          "action": "Add exactly one ACTIVE template and reassign only q6 from the erroneous COMPOSITE selection to the new key; leave COMPOSITE_DIVISOR's definition and 10 supports unchanged."
+        },
+        {
+          "claim": "Corrective disclosure and publication boundaries.",
+          "originalGeminiNewTemplatesCreated": 0,
+          "historicalStatus": "The original Gemini audit's newTemplatesCreated=0 remains historical and unchanged; it is not rewritten or retroactively altered by this corrective audit.",
+          "correctiveAuditCreates": 1,
+          "correctiveScope": "This Codex corrective metadata audit creates exactly one missing primitive template, TPL_H1_REMAINDER_DIRECT_SUBSTITUTION, tracked separately from the original Gemini audit count.",
+          "geminiApproval": "Gemini did not approve this new key; the original audit instead selected an existing composite template for q6.",
+          "rootMathematicsReview": "No claim is made that ROOT solved or reviewed the exam mathematics; the approved template mirrors the source's already-verified solution and decisive step.",
+          "userAuthorization": "The user explicitly authorized Codex to correct the audit metadata and register the related definition.",
+          "publication": "ROOT publishes one exam commit, preserving the original audit and source histories, metadata-only source corrections, and all student-facing fields."
+        }
+      ]
+    },
+    "sourceMetadataChanges": [
+      {
+        "sourceOrdinal": 6,
+        "field": "L4",
+        "before": null,
+        "after": "나머지정리의 직접 대입"
+      },
+      {
+        "sourceOrdinal": 6,
+        "field": "templateKey",
+        "before": null,
+        "after": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+      },
+      {
+        "sourceOrdinal": 7,
+        "field": "L3",
+        "before": "복소수 근",
+        "after": "복소수 조건과 방정식"
+      },
+      {
+        "sourceOrdinal": 7,
+        "field": "L4",
+        "before": "허근",
+        "after": "실수·순허수 조건"
+      }
+    ],
+    "protectedStudentFieldsChanged": 0,
+    "primaryRpmFieldsChanged": 0,
+    "historicalDebtFieldsPreserved": true
+  }
+}
