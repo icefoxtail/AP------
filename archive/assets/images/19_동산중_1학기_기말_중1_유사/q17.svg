@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="q17-title q17-desc">
+  <title id="q17-title">자동차의 속력 변화 그래프</title>
+  <desc id="q17-desc">시간 x에 따른 자동차의 속력 y의 변화를 나타낸 꺾은선 그래프</desc>
+  <rect width="400" height="300" fill="#ffffff"/>
+
+  <!-- Coordinate Grid & Axes -->
+  <g stroke="#333333" stroke-width="1.5">
+    <!-- X axis -->
+    <line x1="50" y1="240" x2="360" y2="240"/>
+    <polyline points="352,235 360,240 352,245" fill="none"/>
+    <!-- Y axis -->
+    <line x1="50" y1="240" x2="50" y2="40"/>
+    <polyline points="45,48 50,40 55,48" fill="none"/>
+  </g>
+
+  <!-- Axis and Origin Labels -->
+  <g font-family="sans-serif" font-size="14" fill="#111111" font-weight="bold">
+    <text x="365" y="245">x</text>
+    <text x="50" y="30" text-anchor="middle">y</text>
+    <text x="36" y="255">O</text>
+  </g>
+
+  <!-- Dashed Guidelines -->
+  <g stroke="#777777" stroke-width="1.2" stroke-dasharray="4,4">
+    <line x1="150" y1="240" x2="150" y2="120"/>
+    <line x1="50" y1="120" x2="150" y2="120"/>
+  </g>
+
+  <!-- Axis Numbers & Ticks -->
+  <g font-family="sans-serif" font-size="12" fill="#333333" text-anchor="middle">
+    <!-- X axis ticks -->
+    <text x="100" y="258">5</text>
+    <text x="150" y="258">10</text>
+    <text x="200" y="258">15</text>
+    <text x="250" y="258">20</text>
+    <text x="300" y="258">25</text>
+    <!-- Y axis ticks -->
+    <text x="42" y="184" text-anchor="end">10</text>
+    <text x="42" y="124" text-anchor="end">20</text>
+  </g>
+
+  <!-- Tick Marks -->
+  <g stroke="#333333" stroke-width="1">
+    <line x1="100" y1="240" x2="100" y2="244"/>
+    <line x1="150" y1="240" x2="150" y2="244"/>
+    <line x1="200" y1="240" x2="200" y2="244"/>
+    <line x1="250" y1="240" x2="250" y2="244"/>
+    <line x1="300" y1="240" x2="300" y2="244"/>
+    <line x1="46" y1="180" x2="50" y2="180"/>
+    <line x1="46" y1="120" x2="50" y2="120"/>
+  </g>
+
+  <!-- Graph Lines -->
+  <!-- Flat speed from x=0 to x=10 (y=20), then decelerate to 0 at x=25 -->
+  <line x1="50" y1="120" x2="150" y2="120" stroke="#0066cc" stroke-width="3"/>
+  <line x1="150" y1="120" x2="300" y2="240" stroke="#0066cc" stroke-width="3"/>
+
+  <!-- Turning Point -->
+  <circle cx="150" cy="120" r="4.5" fill="#d32f2f"/>
+  <circle cx="300" cy="240" r="4" fill="#0066cc"/>
+</svg>

@@ -1,0 +1,503 @@
+{
+  "schemaVersion": "ALIVE_COURIER_INTAKE_MANIFEST_v3",
+  "examTitle": "23_이수중_2학기_중간_중2_수학",
+  "sourceFileDriveId": "1mdlOM2BMAPjrFbvzB-YimSI2o73TlMJ-",
+  "sourceSha256": "7f759f23fe802779d583fb93002fdc0b171f01c2c63c8481cc75b6fd9389fe36",
+  "status": "READY_FOR_COURIER_REGISTRATION",
+  "manifestTimestamp": "2026-10-24T09:25:00Z",
+  "totalQuestions": 24,
+  "totalHoldCount": 0,
+  "recordsToBind": [
+    {
+      "questionId": 1,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "이등변삼각형의 밑각",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_SUPPLEMENTARY_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "외각 120°로부터 밑각 60°를 구하고 두 밑각의 크기가 같음을 이용해 꼭지각 x=60°를 단순 계산하는 1단계 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "이등변삼각형의 판정",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_CONVERSE",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_CONVERSE",
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "삼각형의 내각의 합 180°로부터 남은 내각 ∠B=50°를 구하여 두 각이 같으므로 AB=AC=6cm임을 판정하는 1단계 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "직각삼각형의 합동 판별",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS",
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "5개의 직각삼각형 그림에서 빗변과 한 변(RHS) 또는 빗변과 한 예각(RHA) 조건을 각각 비교하여 유일하게 짝이 없는 도형을 가려내는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "RHS 합동 정리의 논리적 증명",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS",
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "두 직각삼각형을 맞붙여 이등변삼각형을 구성하고 평각(180°) 및 밑각 상등을 통해 RHA 합동으로 유도하는 증명 빈칸을 채우는 3단계 논증 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 내심과 각의 크기",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_INCENTER",
+        "CC_ANGLE_BISECTOR"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "내심 각 공식 ∠BIC = 90° + 1/2 ∠A에 114°를 대입하여 일차방정식을 풀어 ∠A=48°를 산출하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 외심과 중심각",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CIRCUMCENTER",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "외심에서 세 꼭짓점에 이르는 거리가 같아 생기는 이등변삼각형 성질로 밑각 ∠ABO=45°를 구하고, 전체 각 ∠B=80°로부터 중심각 ∠AOC=2∠B=160°를 도출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "내접원과 접선의 길이",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_INCENTER",
+        "CC_CIRCLE_TANGENT_PROPERTY",
+        "CC_LINEAR_EQUATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "원 밖의 한 점에서 그은 접선의 길이가 같음을 이용하여 AD=AF=x를 두고 (10-x)+(9-x)=13 일차방정식을 풀어 BE=7을 산출하는 3단계 대수-기하 연계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형 대각선과 둘레",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_PROPERTIES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평행사변형 대각선이 서로를 이등분함과 대변의 길이가 같음을 직접 적용해 OC=4, OD=6, CD=5를 더해 △OCD의 둘레 15cm를 구하는 1단계 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형 대각과 대변",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_PROPERTIES",
+        "CC_SUPPLEMENTARY_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평행사변형에서 이웃한 두 각의 합이 180°임을 이용해 x=65°를 구하고, 마주보는 대변이 같아 y=5를 바로 찾는 1단계 기초 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형이 되는 조건 판정",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_CRITERIA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평행사변형의 5가지 판정 조건(두 쌍 대변 평행, 대변 길이 상등, 대각 크기 상등, 대각선 이등분, 한 쌍 대변 평행&길이 상등)과 등변사다리꼴 반례를 비교하는 2단계 판별 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "마름모의 대각선과 각의 성질",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [
+        "CC_RHOMBUS_PROPERTIES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "마름모 대각선의 이등분 성질로 x=8을 구하고, 대각선이 꼭지각을 이등분하여 ∠A=50°에서 이웃각 y=180°-50°=130°를 산출해 x+y=138을 구하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "직사각형의 대각선과 각의 계산",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [
+        "CC_RECTANGLE_PROPERTIES",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "직사각형 대각선의 길이가 같고 서로를 이등분하여 생기는 이등변삼각형 OBC에서 각을 추적해 ∠BDC=48°를 산출하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "등변사다리꼴의 대각선과 각의 대칭성",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRAPEZOID",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "등변사다리꼴 대각선의 길이가 같음을 통해 y=4를 구하고, 좌우 대칭성으로 이등변삼각형 OBC의 밑각을 구해 x=32°를 산출한 뒤 x+y=36을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+      "subUnit": "평행선 사이의 선분의 길이의 비",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINES_RATIO",
+        "CC_LINEAR_EQUATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "세 평행선 사이의 비례식 x:(10-x)=5:7을 세우고 일차방정식 12x=50을 풀어 x=25/6을 구하는 2단계 연산 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-SIMILAR_FIGURES",
+      "subUnit": "닮은 도형의 성질 판별",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "crossConceptKeys": [
+        "CC_SIMILAR_FIGURES_RATIO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "닮은 도형에서 대응변의 길이는 닮음비를 이루지만 대응각의 크기는 서로 같아야 한다는 기본 원리를 판별하는 1단계 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-SIMILAR_FIGURES",
+      "subUnit": "닮은 입체도형의 겉넓이의 비",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "crossConceptKeys": [
+        "CC_SIMILAR_FIGURES_AREA_VOLUME"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "닮음비 m:n일 때 겉넓이비가 m^2:n^2임을 적용하여 27:S=9:16 비례식으로부터 S=48cm^2를 구하는 1단계 공식 대입 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-SIMILAR_FIGURES",
+      "subUnit": "닮은 삼각기둥의 밑넓이와 부피",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "crossConceptKeys": [
+        "CC_SIMILAR_FIGURES_AREA_VOLUME"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "닮음비 2:1로부터 밑넓이비 4:1을 적용해 큰 밑넓이 24를 구하고, 높이 10을 곱해 기둥의 부피 240을 산출하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+      "subUnit": "삼각형의 SAS 닮음과 변의 길이",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_SIMILARITY_SAS",
+        "CC_RATIO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "공통각 A와 대응변의 비 AD:AE=AC:AB=6:5를 파악하여 SAS 닮음을 보이고, 비례식 12:BC=6:4로부터 BC=8을 도출하는 3단계 기하 추론 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+      "subUnit": "삼각형 내부 평행선과 선분의 비",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINES_RATIO",
+        "CC_TRIANGLE_SIMILARITY_AA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "BC//DE 평행 조건으로부터 닮음비 6:15=2:5를 도출하고, 밑변의 비 2:5=4:x 비례식을 세워 x=10을 구하는 2단계 연산 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+      "subUnit": "삼각형의 무게중심의 성질",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CENTROID"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "무게중심이 중선의 2:1 내분점이며 삼각형 넓이를 6등분하는 성질을 바탕으로, 세 꼭짓점까지의 거리가 같다는 외심의 성질을 잘못 혼동한 선지를 판별하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "외심과 내심의 복합 각 계산",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CIRCUMCENTER",
+        "CC_TRIANGLE_INCENTER",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "꼭지각 80°에 대하여 외심 중심각 공식 x=2×80°=160°와 내심 각 공식 y=90°+1/2(80°)=130°를 모두 유도하여 서술하는 3단계 복합 서술형 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "정사각형 대각선과 SAS 합동을 이용한 각",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [
+        "CC_SQUARE_PROPERTIES",
+        "CC_TRIANGLE_CONGRUENCE_SAS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "정사각형 대각선 BD 위의 점 E에 대해 △ADE와 △CDE가 SAS 합동임을 증명하고, 직각삼각형 각 추적을 통해 ∠BEC=65°를 완결 서술하는 4단계 고난도 서술형 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 23,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형 각의 이등분선과 내부 넓이",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR",
+        "CC_TRIANGLE_AREA",
+        "CC_PARALLELOGRAM_PROPERTIES",
+        "CC_ANGLE_BISECTOR_PARALLEL",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "전체 넓이 78과 밑변 13에서 높이 h=6을 구하고, 엇각과 각이등분선으로 이등변삼각형을 찾아 내부 평행사변형 밑변 3을 확정한 뒤 넓이 18cm^2를 구하는 4단계 심화 서술형 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "questionId": 24,
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+      "subUnit": "직각삼각형의 사상 닮음비",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_SIMILARITY",
+        "CC_TRIANGLE_SIMILARITY_AA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "직각삼각형의 닮음 관계 △ABD ∽ △CBA를 증명하고 AB^2 = BD × BC 공식을 적용하여 36 = 8x에서 x=9/2를 산출하는 3단계 정형 서술형 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "MIDDLE_GEOMETRY"
+    }
+  ],
+  "courierNormalization": {
+    "originalManifestRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-2-d835bd2d8b27-20261026.manifest.source.json",
+      "sha256": "395fa614f4b1353c5acef8c351961f0702b87e121c430d3e8548680824591cf1"
+    },
+    "reason": "Per-record owner inherited from the audit's explicit full-N byPack declaration; no key or meaning changed.",
+    "packScopeCorrections": [],
+    "typeCorrections": []
+  },
+  "courierPreservedSourceTags": {
+    "reason": "Legacy partial metadata omitted crossConceptKeys. Preserve all explicit existing source tags in order and append the audited tags; original audit bytes unchanged."
+  }
+}

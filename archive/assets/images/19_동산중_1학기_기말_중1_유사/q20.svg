@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="q20-title q20-desc">
+  <title id="q20-title">하루 동안의 기온 변화 그래프</title>
+  <desc id="q20-desc">시간 x에 따른 기온 y의 변화를 나타낸 꺾은선 그래프</desc>
+  <rect width="400" height="300" fill="#ffffff"/>
+
+  <!-- Coordinate Axes -->
+  <g stroke="#333333" stroke-width="1.5">
+    <!-- X axis -->
+    <line x1="50" y1="240" x2="365" y2="240"/>
+    <polyline points="357,235 365,240 357,245" fill="none"/>
+    <!-- Y axis -->
+    <line x1="50" y1="240" x2="50" y2="40"/>
+    <polyline points="45,48 50,40 55,48" fill="none"/>
+  </g>
+
+  <!-- Axis and Origin Labels -->
+  <g font-family="sans-serif" font-size="14" fill="#111111" font-weight="bold">
+    <text x="370" y="245">x</text>
+    <text x="50" y="30" text-anchor="middle">y</text>
+    <text x="75" y="30">(°C)</text>
+    <text x="36" y="255">O</text>
+  </g>
+
+  <!-- Dashed Guidelines -->
+  <g stroke="#777777" stroke-width="1.2" stroke-dasharray="4,4">
+    <!-- Min at x=6, y=10 -->
+    <line x1="120" y1="240" x2="120" y2="180"/>
+    <line x1="50" y1="180" x2="120" y2="180"/>
+    <!-- Max at x=14, y=24 -->
+    <line x1="215" y1="240" x2="215" y2="96"/>
+    <line x1="50" y1="96" x2="215" y2="96"/>
+  </g>
+
+  <!-- Axis Numbers & Ticks -->
+  <g font-family="sans-serif" font-size="12" fill="#333333" text-anchor="middle">
+    <!-- X axis ticks -->
+    <text x="120" y="258">6</text>
+    <text x="215" y="258">14</text>
+    <text x="330" y="258">24</text>
+    <!-- Y axis ticks -->
+    <text x="42" y="184" text-anchor="end">10</text>
+    <text x="42" y="100" text-anchor="end">24</text>
+  </g>
+
+  <!-- Tick Marks -->
+  <g stroke="#333333" stroke-width="1">
+    <line x1="120" y1="240" x2="120" y2="244"/>
+    <line x1="215" y1="240" x2="215" y2="244"/>
+    <line x1="330" y1="240" x2="330" y2="244"/>
+    <line x1="46" y1="180" x2="50" y2="180"/>
+    <line x1="46" y1="96" x2="50" y2="96"/>
+  </g>
+
+  <!-- Graph Polyline -->
+  <polyline points="50,168 120,180 215,96 330,150" fill="none" stroke="#e65100" stroke-width="3"/>
+
+  <!-- Key Points -->
+  <circle cx="120" cy="180" r="4.5" fill="#1976d2"/>
+  <circle cx="215" cy="96" r="4.5" fill="#d32f2f"/>
+</svg>
