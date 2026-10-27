@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "archive-analysis-drive-root-receipt/v1",
+  "status": "FULL_BYTES_VERIFIED",
+  "cohort": "ap-work-residue-20261028",
+  "baselineCommit": "826d9608af015e0d0e04f3a76798fac6b246ef3b",
+  "baselineAnalysisTreeSha": "c7dfb63312f6c69cc1993a22961c9dc44225607e",
+  "baselineRootTreeShas": {
+    "archive-work": "a43c992321bfef702d709965cb0ec5ed39a71597",
+    "archive/_generated": "e5c9004b7f78f593dbb063369fc39f85f095f88e",
+    "archive/evidence": "f7ab16910a87cc3907bcb324893ec5a531ac72a7",
+    "artifacts": "6f24a458ef4c5f4dc2471be4ffe5dbc138b7fa07",
+    "output": "db0467767717e48b4ed1801e7bab61983b114f41",
+    "render_review": "1b0a8c3ac830b823c540ebbf315c281a326f1512",
+    "reports": "cd2d9bf3a085988b3b1c86a3a1e19143567f2417"
+  },
+  "allowedRoots": [
+    "archive-work/",
+    "archive/_generated/",
+    "archive/evidence/",
+    "artifacts/",
+    "output/",
+    "render_review/",
+    "reports/"
+  ],
+  "pathCount": 193,
+  "uniqueBlobCount": 183,
+  "pathBytes": 2700502,
+  "uniqueRawBytes": 2644196,
+  "indexSizeBytes": 137314,
+  "indexSha256": "f1740486060aba95c796b6fbe8206d51f973bd5ec4470caa49d8815631329bc9",
+  "index": {
+    "name": "ap-work-residue-20261028-fullpath-index.json",
+    "sizeBytes": 137314,
+    "sha256": "f1740486060aba95c796b6fbe8206d51f973bd5ec4470caa49d8815631329bc9",
+    "driveFileId": "1TnnoVK4Rc_Tq5TaCUYL3U1fvhE568P1r",
+    "driveParentId": "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4",
+    "driveName": "ap-work-residue-20261028-fullpath-index.json",
+    "driveMimeType": "application/json",
+    "driveSizeBytes": 137314,
+    "driveUrl": "https://drive.google.com/file/d/1TnnoVK4Rc_Tq5TaCUYL3U1fvhE568P1r/view?usp=drivesdk",
+    "sourceVersion": {
+      "id": "1TnnoVK4Rc_Tq5TaCUYL3U1fvhE568P1r",
+      "parentIds": [
+        "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4"
+      ],
+      "observedModifiedTime": "2026-10-27T15:52:21.589Z"
+    },
+    "driveReadback": {
+      "status": "FULL_BYTES_VERIFIED",
+      "sha256": "f1740486060aba95c796b6fbe8206d51f973bd5ec4470caa49d8815631329bc9",
+      "sizeBytes": 137314,
+      "verifiedAtUtc": "2026-10-27T15:53:15.131286+00:00",
+      "method": "Connector metadata and full raw download; exact bytes and all ZIP member size/SHA-256/Git blob SHA-1 checked."
+    }
+  },
+  "packCount": 1,
+  "packBytes": 788843,
+  "packs": [
+    {
+      "cohort": "ap-work-residue-20261028",
+      "name": "ap-work-residue-20261028-0001.zip",
+      "sizeBytes": 788843,
+      "sha256": "4c17587ca603d61aa24ff84018253d147dda1ac83215bc712675a78239f4f984",
+      "objectUnits": 183,
+      "pathAliases": 193,
+      "driveFileId": "1nXKYo_AGDDDAQe6MgXGAoCPtWbu8eMQV",
+      "driveParentId": "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4",
+      "driveName": "ap-work-residue-20261028-0001.zip",
+      "driveMimeType": "application/zip",
+      "driveSizeBytes": 788843,
+      "driveUrl": "https://drive.google.com/file/d/1nXKYo_AGDDDAQe6MgXGAoCPtWbu8eMQV/view?usp=drivesdk",
+      "sourceVersion": {
+        "id": "1nXKYo_AGDDDAQe6MgXGAoCPtWbu8eMQV",
+        "parentIds": [
+          "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4"
+        ],
+        "observedModifiedTime": "2026-10-27T15:52:18.375Z"
+      },
+      "driveReadback": {
+        "status": "FULL_BYTES_VERIFIED",
+        "sha256": "4c17587ca603d61aa24ff84018253d147dda1ac83215bc712675a78239f4f984",
+        "sizeBytes": 788843,
+        "verifiedAtUtc": "2026-10-27T15:53:15.131286+00:00",
+        "method": "Connector metadata and full raw download; exact bytes and all ZIP member size/SHA-256/Git blob SHA-1 checked."
+      }
+    }
+  ],
+  "hotAuthorityExclusion": {
+    "sourcePath": "archive/data/evidence-authority/v1/index.json",
+    "entryCount": 78,
+    "indexSha256": "9253131a9699981bb1de64bd4c42d9b52fecb28efaf1c25051084b12e5e59f8a",
+    "excludedPathBytes": 2897053
+  },
+  "audit": {
+    "method": "Basename references searched through runtime, code, workflows, contracts, tests, docs and data; retained cold file dependency closure preserved. Five generated files referenced only by past documentation also archived.",
+    "retainedColdPathCount": 64,
+    "productionSourceAssetChanges": 0
+  },
+  "historyRewrite": false,
+  "verifiedAtUtc": "2026-10-27T15:53:15.131286+00:00",
+  "method": "Complete Drive readback and raw object verification for unused work scripts, reports and generated checkpoints. Existing runtime sources, assets, contracts, active cold consumers and their dependency closure retained.",
+  "trackingRemovalSummary": {
+    "status": "EXACT_REMOVAL_AND_LOCAL_RECOVERY_VERIFIED",
+    "pathCount": 193,
+    "pathBytes": 2700502,
+    "productionSourceAssetChanges": 0,
+    "beforeTrackedPathCount": 26387,
+    "afterTrackedPathCount": 26195,
+    "localOriginalDisposition": "Moved to AP-local-recovery-20261028/retired-files with full SHA-256 verification",
+    "additionalPreviouslyUntrackedFilesMoved": 488,
+    "filesystemDeletion": false
+  }
+}
