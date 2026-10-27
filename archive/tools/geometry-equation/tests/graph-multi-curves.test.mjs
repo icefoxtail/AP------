@@ -45,6 +45,11 @@ const FOUR={
   caption:'네 포물선으로 둘러싸인 영역'
 };
 const observerScript=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
+// The source figure also draws the reflection lines y=x and y=-x and labels the original parabola y=2-x^2. Both use the
+// existing overlay lines and math EQUATION_LABEL machinery without changing any curve or its domain.
+const ANNOTATED=structuredClone(FOUR);
+ANNOTATED.graphPlan.curves[0].label='y=2-x^2';
+ANNOTATED.graphPlan.overlays={lines:[{id:'sym1',slope:'1',intercept:'0'},{id:'sym2',slope:'-1',intercept:'0'}]};
 const frame=graphPlan=>pythonWorker({action:'frame_graph',graphPlan});
 const model=graphPlan=>pythonWorker({action:'graph',graphPlan});
 const observe=(graphPlan,svg,transform)=>pythonWorker({graphPlan,svg,transform},{script:observerScript});
@@ -69,6 +74,27 @@ test('framing: four distinct curves become six exact branches at one scale',asyn
   assert.equal(gp.domain[0],gp.viewport[0]);assert.equal(gp.domain[1],gp.viewport[1]);
 });
 
+test('annotations: source reflection lines and the labelled curve use the existing overlay and math label machinery',async()=>{
+  const framed=(await frame(ANNOTATED.graphPlan)).result.graphPlan;
+  const features=framed.overlaysFeatures;
+  assert.equal(features.schemaVersion,'GRAPH_OVERLAYS_FEATURES_v1');
+  assert.deepEqual(features.lines.map(line=>line.text),['y=x','y=-x']);
+  assert.equal(framed.equalUnits,true);assert.equal(framed.axisRatio,1);
+  assert.deepEqual(framed.curves.map(curve=>curve.id),['top','bottom','right','left']);
+  const built=await model(framed);assert.equal(built.status,'OK',JSON.stringify(built.result));
+  assert.match(built.result.svg,/id="overlay-line-sym1"/);
+  assert.match(built.result.svg,/id="overlay-line-sym2"/);
+  const observed=await observe(framed,built.result.svg,built.result.transform);
+  assert.equal(observed.status,'OK',JSON.stringify(observed.result));assert.equal(observed.result.status,'PASS',JSON.stringify(observed.result));
+  const spec=specFor({...ANNOTATED,graphPlan:framed},built.result,'multi-curve-annotated');
+  assert.deepEqual(spec.objects.filter(object=>object.kind==='LINE').map(object=>object.id),['overlay-line-sym1','overlay-line-sym2']);
+  assert.deepEqual(spec.objects.filter(object=>object.kind==='EQUATION_LABEL').map(object=>[object.id,object.text]),[
+    ['curve-top-equation','y=2-x^2'],
+    ['overlay-line-sym1-equation','y=x'],
+    ['overlay-line-sym2-equation','y=-x']
+  ]);
+});
+
 test('framing refuses fewer than three curves, duplicates, bad kinds, bad domains and an empty branch',async()=>{
   const refuse=async(mutate,code)=>{
     const plan=structuredClone(FOUR.graphPlan);mutate(plan);
@@ -82,6 +108,7 @@ test('framing refuses fewer than three curves, duplicates, bad kinds, bad domain
   await refuse(plan=>{plan.curves[0].coefficients=['2','1','0'];},'MULTI_CURVE_NOT_QUADRATIC:top');
   await refuse(plan=>{plan.curves[0].domain=['1','-1'];},'MULTI_CURVE_DOMAIN_INVALID:top');
   await refuse(plan=>{plan.curves[0].branch='BOTH';},'MULTI_CURVE_BRANCH_INVALID:top');
+  await refuse(plan=>{plan.curves[0].label='\\frac{1}{2}';},'MULTI_CURVE_LABEL_INVALID:top');
   await refuse(plan=>{plan.curves[2].branch='SIDEWAYS';},'MULTI_CURVE_BRANCH_INVALID:right');
   await refuse(plan=>{plan.curves[2].branch='POSITIVE';plan.curves[2].domain=['-1','0'];},'MULTI_CURVE_BRANCH_EMPTY:right');
   await refuse(plan=>{plan.extra=true;},'MULTI_CURVE_FIELD_UNKNOWN');

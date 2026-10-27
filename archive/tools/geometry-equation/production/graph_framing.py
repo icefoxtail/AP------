@@ -2467,7 +2467,8 @@ def _overlay_anchor_points(plan):
 # (vertical squeeze at most 1/2), freezes every branch's exact x interval and sampling expression, and refuses a
 # curve it cannot represent. The independent observer recomputes every branch from the same coefficients and reads
 # the final SVG; it never trusts a frozen expression.
-MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit'}
+MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors'}
+MULTI_CURVE_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().^ ]{1,40}'
 MULTI_CURVE_MIN_CURVES=3
 MULTI_CURVE_MAX_CURVES=6
 MULTI_CURVE_OVERVIEW_POLICY='MULTI_CURVE_OVERVIEW_v1'
@@ -2514,7 +2515,8 @@ def multi_curve_source(plan):
         ids.add(ident)
         kind=entry.get('kind')
         if kind not in ('Y_OF_X','X_OF_Y'):raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
-        if set(entry)-{'id','kind','coefficients','domain','branch'}:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
+        if set(entry)-{'id','kind','coefficients','domain','branch','label'}:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
+        if 'label' in entry and (not isinstance(entry['label'],str) or not re.fullmatch(MULTI_CURVE_LABEL_PATTERN,entry['label'])):raise ValueError('MULTI_CURVE_LABEL_INVALID:'+ident)
         coefficients=_mc_coefficients(entry.get('coefficients'),'MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
         if coefficients[2]==0:raise ValueError('MULTI_CURVE_NOT_QUADRATIC:'+ident)
         interval=_mc_interval(entry.get('domain'),'MULTI_CURVE_DOMAIN_INVALID:'+ident)
@@ -2543,6 +2545,7 @@ def _mc_bbox_points(curves):
 def fit_multi_curve(plan):
     curves=multi_curve_source(plan)
     points=_mc_bbox_points(curves)
+    points.extend((float(x_value),float(y_value)) for x_value,y_value in plan.get('overlayAnchors',[]))
     xs=[point[0] for point in points];ys=[point[1] for point in points]
     xspan,yspan=max(xs)-min(xs),max(ys)-min(ys)
     if not math.isfinite(xspan) or not math.isfinite(yspan) or xspan<=0 or yspan<=0:raise ValueError('MULTI_CURVE_FRAME_DEGENERATE')
