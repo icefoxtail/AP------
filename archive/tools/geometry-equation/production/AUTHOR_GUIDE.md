@@ -369,7 +369,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 | `CONE_FRUSTUM` | `radius`, `topRadius`, `height` | `topRadius`는 `radius`보다 작아야 한다. `orientation:"APEX_DOWN"`이면 좁은 밑면이 아래, 넓은 윗면이 입구인 그릇이다. `inside:"s1"`은 원기둥 안에 놓을 때만 |
 | `SPHERE` / `HEMISPHERE` | `radius` | 반구는 평평한 면이 아래. `inside:"s1"`이면 원기둥 안에 놓인다(꼭 맞는 구는 지름 = 원기둥 높이) |
 
-- **이름 `names`**: 대문자 한 글자씩 밑면 순서대로 이은 문자열 `"FGHEBCDA"`(밑면 먼저, 다음 위 밑면; 각뿔은 밑면 뒤에 꼭짓점 한 글자; `.`은 이름 없음), 또는 `{base,top,apex}`. 생략하면 A, B, C... 순서다. 한 그림에서 이름은 한 번만 쓴다. 이름은 밑면이 위에서 볼 때 반시계 방향이 되는 순서로 붙는다(직육면체는 앞-왼쪽에서 시작해 앞-오른쪽, 뒤-오른쪽, 뒤-왼쪽). 원기둥·원뿔 계열은 `names:{center,top,apex}`.
+- **이름 `names`**: 대문자 한 글자(뒤에 프라임 `′`을 붙여 `A′`처럼 쓸 수 있다)씩 밑면 순서대로 이은 문자열 `"FGHEBCDA"`(밑면 먼저, 다음 위 밑면; 각뿔은 밑면 뒤에 꼭짓점 한 글자; `.`은 이름 없음), 또는 `{base,top,apex}`. 프라임이 붙은 이름은 문자열에서 한 글자로 묶이며(예: `"A′B′C′V′"`), 길이를 쓸 때는 `edge` 대신 `{"from":"V′","to":"C′"}`처럼 from/to로 쓴다. 생략하면 A, B, C... 순서다. 한 그림에서 이름은 한 번만 쓴다. 이름은 밑면이 위에서 볼 때 반시계 방향이 되는 순서로 붙는다(직육면체는 앞-왼쪽에서 시작해 앞-오른쪽, 뒤-오른쪽, 뒤-왼쪽). 원기둥·원뿔 계열은 `names:{center,top,apex}`.
 - **길이 `dims`**(모두 모서리 옆에 놓인다): `{"edge":"AB"}` 또는 `{"from":"E","to":"G"}`(그려진 모서리나 `segments`의 선분), `{"radius":"bottom"|"top"|"center"|"level"}`, `{"height":true}`(각뿔, 각뿔대, 원기둥, 원뿔: 축을 따라 점선), `{"slant":true}`(원뿔·원뿔대의 모선), `{"level":true}` 또는 `{"level":"bottom"}`(아래 `LEVEL` 단면까지의 높이), `{"level":"top"}`(단면에서 꼭짓점·윗면까지의 높이). `radius:"level"`은 `LEVEL` 수면의 반지름이고, `bottom`·`top`은 각각 z=0·z=높이의 원(꼭짓점 쪽 반지름이 0이면 쓸 수 없다). 값은 엔진이 모델에서 계산해 정확히 쓴다(`5`, `7.5`, `5\sqrt{2}`, `8\pi`, `\frac{10}{3}`)와 `unit`. `label`을 쓰면 숫자일 때는 계산한 값과 같아야 하고(다르면 `SOLID_DIM_VALUE_MISMATCH`), `r`, `h`, `2r`, `\frac{1}{3}h`처럼 문자·식이면 기호 라벨이 된다. 정확한 짧은 꼴이 없는 길이는 `SOLID_DIM_NOT_EXPRESSIBLE`이니 `label`로 문자를 쓴다.
 - **`highlights`**: `[{"polygon":["E","G","C"]}]` 그려진 선분들로 이루어진 평면 다각형을 연하게 칠한다(직육면체 위의 직각삼각형 EGC처럼). 다각형의 변은 모서리이거나 `segments`에 있어야 한다.
 - **`segments`**: `[{"from":"E","to":"G","style":"SOLID"|"DASHED"|"AUTO","role":"REF"|"ACCENT"}]` 면의 대각선, 공간대각선, 또는 강조할 모서리(`REF` 굵게, `ACCENT` 빨강). `AUTO`는 입체가 가리는 선분이면 점선으로 그린다. 입체 안을 지나는 선분은 `SOLID`나 `DASHED`로 정한다.
@@ -401,7 +401,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 | `SOLID_MARKS_INVALID`, `SOLID_MARK_ID_INVALID`, `SOLID_MARK_UNKNOWN`, `SOLID_MARK_RAY_NOT_DRAWN`, `SOLID_MARK_SEGMENT_NOT_DRAWN`, `SOLID_MARK_NOT_RIGHT_ANGLE`, `SOLID_MARK_LENGTH_MISMATCH`, `SOLID_MARK_GROUP_AMBIGUOUS`, `SOLID_MARK_GROUP_ARC_COUNT`, `SOLID_MARK_GROUP_MISMATCH`, `SOLID_MARK_ANGLE_MISMATCH`, `SOLID_MARK_ANGLE_DEGENERATE` | 표식은 이름 붙인 점과 **그려진** 모서리·선분에만 쓴다. 직각은 실제 90°, 같은 길이 모둠은 실제 길이가 같아야 하고, 눈금 수가 같은 두 모둠은 만들 수 없다. 각 표식은 3차원 각(5°~175°)과 `value`가 0.5° 안에서 같아야 한다 |
 | `SOLID_PARAM_INVALID`, `SOLID_BASE_INVALID`, `SOLID_BASE_NOT_SIMPLE`, `SOLID_BASE_NOT_CONVEX` | 매개변수는 양의 실수, 밑면은 스스로 교차하지 않는 점 8개 이하(각뿔·각뿔대는 볼록) |
 | `SOLID_COUNT_INVALID` | 한 그림에 입체는 3개까지다. 5개를 나란히 보이는 문항(다면체 고르기)은 UNSUPPORTED이거나 나누어 그린다 |
-| `SOLID_NAMES_INVALID`, `SOLID_NAME_DUPLICATE`, `SOLID_NAME_UNKNOWN` | 이름은 대문자 한 글자, 한 그림에서 한 번, 개수는 꼭짓점 수와 같다 |
+| `SOLID_NAMES_INVALID`, `SOLID_NAME_DUPLICATE`, `SOLID_NAME_UNKNOWN` | 이름은 대문자 한 글자(뒤에 프라임 `′` 가능), 한 그림에서 한 번, 개수는 꼭짓점 수와 같다 |
 | `SOLID_DIM_SEGMENT_NOT_DRAWN`, `SOLID_DIMS_INVALID` | 길이를 쓸 선분은 그려진 모서리나 `segments`여야 한다. `height`는 각뿔·각뿔대·원기둥·원뿔에만, `slant`는 원뿔·원뿔대에만, `radius:"level"`은 그 입체에 `LEVEL` 단면이 있을 때만 |
 | `SOLID_DIM_VALUE_MISMATCH` | 숫자 `label`이 그려진 길이와 다르다: 값을 고치거나 문자로 쓴다 |
 | `SOLID_HIGHLIGHT_NOT_PLANAR`, `SOLID_HIGHLIGHT_EDGE_NOT_DRAWN` | 한 평면의 점들만, 변은 모두 그려진 선분으로 |

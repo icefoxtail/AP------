@@ -41,8 +41,10 @@ const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 const EX=[cY,sY,0];// world direction of the screen's horizontal
 
 // --- the 3D model -----------------------------------------------------------------------------------------------------------------------------
-const NAME=/^[A-Z]$/;
+const NAME=/^[A-Z]′?$/u;
 const LETTERS='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+/** A names string is written letter by letter; a letter may be followed by one prime (A′, B′). '.' means "no name". */
+function nameTokens(text){return String(text).match(/[A-Z]′?|\./gu)??[];}
 function polygonArea2(points){let s=0;for(let i=0;i<points.length;i++){const [a,b]=[points[i],points[(i+1)%points.length]];s+=a[0]*b[1]-b[0]*a[1];}return s/2;}
 function segmentsCross(a,b,c,d){
   const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);
@@ -96,13 +98,13 @@ function polyNames(kind,n,names){
   const clean=list=>{if(!Array.isArray(list)||list.some(x=>x!==null&&x!=='.'&&!NAME.test(String(x))))bad('SOLID_NAMES_INVALID');return list.map(x=>x==='.'?null:x);};
   if(names===undefined)return {base:letters(0,n),top:kind==='PYRAMID'?[]:letters(n,n),apex:kind==='PYRAMID'?LETTERS[n]:null};
   if(typeof names==='string'||Array.isArray(names)){
-    const list=clean(typeof names==='string'?[...names]:names),need=kind==='PYRAMID'?n+1:2*n;
+    const list=clean(typeof names==='string'?nameTokens(names):names),need=kind==='PYRAMID'?n+1:2*n;
     if(list.length!==need)bad('SOLID_NAMES_INVALID');
     return kind==='PYRAMID'?{base:list.slice(0,n),top:[],apex:list[n]}:{base:list.slice(0,n),top:list.slice(n),apex:null};
   }
   onlyKeys(names,['base','top','apex'],'SOLID_NAMES_INVALID');
-  const base=names.base===undefined?letters(0,n):clean(typeof names.base==='string'?[...names.base]:names.base);
-  const top=kind==='PYRAMID'?[]:names.top===undefined?letters(n,n):clean(typeof names.top==='string'?[...names.top]:names.top);
+  const base=names.base===undefined?letters(0,n):clean(typeof names.base==='string'?nameTokens(names.base):names.base);
+  const top=kind==='PYRAMID'?[]:names.top===undefined?letters(n,n):clean(typeof names.top==='string'?nameTokens(names.top):names.top);
   if(base.length!==n||(kind!=='PYRAMID'&&top.length!==n))bad('SOLID_NAMES_INVALID');
   const apex=kind==='PYRAMID'?(names.apex===undefined?LETTERS[n]:names.apex):null;
   if(apex!==null&&apex!==undefined&&!NAME.test(apex))bad('SOLID_NAMES_INVALID');

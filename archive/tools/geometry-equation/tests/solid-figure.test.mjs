@@ -122,6 +122,17 @@ test('a pyramid height keeps its dashed axis inside and moves the dimension line
   assert.equal((await audit(plan,svg)).status,'PASS');
 });
 
+test('primed vertex names (A′) are solved, drawn and read back by the observer',async()=>{
+  const plan=figure({unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'POLYGON',points:[[0,0],[6,0],[4,3]]},height:5,names:'A′B′C′V′'}],dims:[{from:'A′',to:'B′'}]});
+  const model=solveSolidFigure(plan);
+  assert.deepEqual(model.solids[0].vertices.map(v=>v.name),['A′','B′','C′','V′']);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  assert.match(composed.svg,/data-value="V′"/u);
+  assert.equal((await audit(plan,composed.svg)).status,'PASS');
+});
+
 test('tamper: a hidden edge drawn solid, a visible edge drawn dashed, a moved vertex and a wrong label each fail the observer',async()=>{
   const plan=figure({solids:[cuboid()],dims:[{edge:'FG'}]});
   const composed=await panel(plan);
