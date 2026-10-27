@@ -1,0 +1,34 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "두 초점이 $F,F'$인 타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{4}=1$이 있다.",
+  "ellipse": {
+    "center": ["0", "0"],
+    "semiAxisSquared": { "major": "16", "minor": "4" },
+    "majorAxis": "X"
+  },
+  "points": [
+    { "id": "F", "kind": "FOCUS", "side": 1 },
+    { "id": "F'", "kind": "FOCUS", "side": -1 },
+    { "id": "P", "kind": "ON_ELLIPSE", "x": "sqrt(3)", "branch": "POS" },
+    { "id": "Q", "kind": "OPPOSITE", "of": "P" },
+    { "id": "O", "kind": "ORIGIN" }
+  ],
+  "segments": [
+    { "id": "s1", "from": "P", "to": "F'" },
+    { "id": "s2", "from": "F'", "to": "Q" },
+    { "id": "s3", "from": "P", "to": "Q" }
+  ],
+  "polygons": [
+    { "id": "t1", "points": ["P", "F'", "Q"], "fill": "LIGHT" }
+  ],
+  "caption": "타원 x제곱/16+y제곱/4=1에서 중심 O를 지나는 지름 PQ(OP=5/2)와 두 초점 F, F′로 만든 삼각형 PF′Q를 나타낸 그림",
+  "sourceConditions": [
+    { "id": "c1", "condition": "타원 x^2/16+y^2/4=1에서 a=4, b=2이므로 초점거리 c=2√3이고 두 초점은 (±2√3, 0)이다.", "mappedTo": ["ellipse", "points"] },
+    { "id": "c2", "condition": "직선 PQ가 중심 O를 지나므로 Q는 P를 O에 대하여 대칭이동한 점이다.", "mappedTo": ["points", "segments"] },
+    { "id": "c3", "condition": "삼각형 PF′Q의 둘레가 13이 되는 경우는 PQ=5, 즉 OP=5/2인 지름이고, 그림은 그중 P가 제1사분면에 있는 경우를 그린다.", "mappedTo": ["points", "segments", "polygons"] },
+    { "id": "c4", "condition": "문제 본문·보기·정답·해설은 바꾸지 않는다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+  ],
+  "newVisualInformation": [
+    "지름 PQ가 중심 O를 지나므로 F′Q=PF가 되어 삼각형 PF′Q의 둘레가 PF+PF′+PQ=8+PQ로 정해지는 관계를 보여 준다."
+  ]
+}
