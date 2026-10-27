@@ -15,7 +15,7 @@ const CAPABILITY='construction-spike-v1';
 const POLICY_VERSION='REQUESTED_PROFILE_TYPOGRAPHY_v1';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('primitive-observer-worker.py',import.meta.url));
 // Quadratic polynomial graphs and piecewise polynomial graphs (HEADER_BAND formula) follow the runPhase2 graph route: graph observer instead of the Cindy peer.
-const GRAPH_CAPABILITIES=new Set(['polynomial-spike-v1','piecewise-polynomial-spike-v1','rational-spike-v1','sqrt-affine-spike-v1','absolute-value-spike-v1','piecewise-affine-spike-v1','exponential-affine-spike-v1','logarithmic-affine-spike-v1','trigonometric-spike-v1','exp-log-pair-spike-v1','piecewise-discontinuous-spike-v1']);
+const GRAPH_CAPABILITIES=new Set(['polynomial-spike-v1','piecewise-polynomial-spike-v1','rational-spike-v1','sqrt-affine-spike-v1','absolute-value-spike-v1','piecewise-affine-spike-v1','exponential-affine-spike-v1','logarithmic-affine-spike-v1','trigonometric-spike-v1','exp-log-pair-spike-v1','piecewise-discontinuous-spike-v1','multi-curve-figure-v1']);
 const GRAPH_OBSERVER_SCRIPT=fileURLToPath(new URL('graph-observer-worker.py',import.meta.url));
 const PLANE_MARKS_OBSERVER_SCRIPT=fileURLToPath(new URL('plane-marks-observer-worker.py',import.meta.url));
 // A plan with plane marks (angle arcs, ticks, ...) or styled segments is also read back by the plane-marks observer.
@@ -23,6 +23,29 @@ const usesPlaneMarks=plan=>!!plan?.planeMarks||(plan?.displaySegments||[]).some(
 const observerFrame=({aspectPolicy,...frame}={})=>frame;
 // Same publication viewport display-profile-audit.mjs hands to captureAtDisplaySize.
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
+// multi-curve-figure-v1 needs its own CURVE_<id>[_POS|_NEG] branch tags for the graph observer, while the shared semantic
+// grammar only accepts LEFT/RIGHT/PIECE_n/REF_ tags. Reserve one exact REF_ tag per curve primitive for prepare/build, then
+// put the declared CURVE_ value back on the built bytes before any audit or capture reads them.
+function reserveCurveBranches(spec){
+  const taken=new Set((spec.objects??[]).map(object=>object?.branch).filter(value=>typeof value==='string'));
+  const tags=new Map();let index=1;
+  const objects=(spec.objects??[]).map(object=>{
+    if(typeof object?.branch!=='string'||!object.branch.startsWith('CURVE_'))return object;
+    let reserved;do{reserved='REF_MC'+String(index++);}while(taken.has(reserved));
+    taken.add(reserved);tags.set(reserved,object.branch);
+    return {...object,branch:reserved};
+  });
+  return {spec:{...spec,objects},tags};
+}
+function restoreCurveBranches(svg,tags){
+  if(!tags.size)return svg;
+  for(const [reserved,branch] of tags){
+    const token='data-branch="'+reserved+'"',count=svg.split(token).length-1;
+    if(count!==1)throw new Stop('WORKER_ERROR',{stage:'build',code:'CURVE_BRANCH_TAG_NOT_RESTORED'});
+    svg=svg.split(token).join('data-branch="'+branch+'"');
+  }
+  return svg;
+}
 const LINEAGE_KEYS=['planSha256','modelSha256','typographyPolicySha256','specSha256','fragmentSha256s','measurementsSha256','svgSha256','witnessSha256','staticAuditSha256','renderedLayoutSha256'];
 
 // Internal control flow only: every domain outcome is returned as a status; anything else is a defect and propagates.
@@ -117,9 +140,10 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     let spec;
     try{spec=specFor(plan,model,identity.assetId);}catch(error){if(!isDomainCode(error))throw error;throw new Stop('SPEC_ERROR',{code:error.message});}
     lineage.specSha256=digest(spec,'spec','OUTPUT_NOT_CANONICAL');
+    const bridged=reserveCurveBranches(spec);
     // runPhase2 633-670 widens the formula panel to the measured formula; here the panel keeps the spec width and the composed layout audit
     // (inventory + rendered layout) rejects a formula that does not fit, so graph families without a HEADER_BAND (cubic/quartic) compose too.
-    const prepared=await call(worker,'prepare',{action:'prepare',spec});
+    const prepared=await call(worker,'prepare',{action:'prepare',spec:bridged.spec});
 
     // Re-enactment of runPhase2 (phase2.mjs, base commit d0bd40de6) 622-628: owner-bound fragments at the policy base font.
     const typeset=typesetter(),fragments={};
@@ -147,8 +171,9 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     }finally{await page.close();}
     lineage.measurementsSha256=digest(measurements,'measurements','OUTPUT_NOT_CANONICAL');
 
-    const built=await call(worker,'build',{action:'build',spec,measurements,fragments});
+    const built=await call(worker,'build',{action:'build',spec:bridged.spec,measurements,fragments});
     if(typeof built.svg!=='string'||!built.svg.includes('<svg')||!built.witness?.layout)throw new Stop('WORKER_ERROR',{stage:'build',code:'BUILD_RESULT_INVALID'});
+    built.svg=restoreCurveBranches(built.svg,bridged.tags);
     const {svg,witness}=built,{unresolved,suppressed,repairs=[]}=witness.layout;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     lineage.witnessSha256=digest(witness,'witness','OUTPUT_NOT_CANONICAL');

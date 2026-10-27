@@ -67,6 +67,7 @@ def _produce(plan):
     if plan.get('family')=='piecewise-affine':return _produce_piecewise_affine(plan,vp)
     if plan.get('family')=='piecewise-polynomial':return _produce_piecewise_polynomial(plan,vp)
     if plan.get('family')=='piecewise-discontinuous':return _produce_piecewise_discontinuous(plan,vp)
+    if plan.get('family')=='multi-curve':return _produce_multi_curve(plan,vp)
     if plan.get('family')=='exp-log-pair':return _produce_exp_log_pair(plan,vp)
     critical=[p['x'] for p in plan.get('requiredPoints',[])]+[feature['x'] for feature in plan.get('overviewFeatures',[]) if feature.get('kind')!='TAIL_DIRECTION']
     if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')=='SQRT_AFFINE_GENERAL_OVERVIEW_v1':
@@ -354,6 +355,40 @@ def _region_parts(features,vp):
             cx,cy=(upper_at[0]+lower_at[0])/2,(upper_at[1]+lower_at[1])/2
             labels.append(f'<text id="region-{region["id"]}-label" x="{cx:.12g}" y="{cy:.12g}" text-anchor="middle" font-size="12">{html.escape(region["label"])}</text>')
     return fills,labels
+
+def _produce_multi_curve(plan,vp):
+    """Three to six independent quadratic arcs, each drawn only on its own branch interval, with the data-branch ids the
+    final composed figure uses (CURVE_<id> for y=f(x), CURVE_<id>_POS/_NEG for the two branches of x=g(y))."""
+    from graph_framing import pp_exact_float
+    from xml.sax.saxutils import escape
+    features=plan.get('multiCurveFeatures')
+    if not isinstance(features,dict) or features.get('schemaVersion')!='MULTI_CURVE_FEATURES_v1' or not isinstance(features.get('curves'),list):raise ValueError('MULTI_CURVE_FEATURE_INVENTORY_REQUIRED')
+    parts=[];sampling=[]
+    for curve in features['curves']:
+        ident=curve.get('id')
+        if curve.get('kind')=='Y_OF_X':
+            intervals=curve.get('branches') or []
+            if len(intervals)!=1:raise ValueError('MULTI_CURVE_BRANCH_INVENTORY_REQUIRED:'+str(ident))
+            branch=intervals[0];domain=[pp_exact_float(value) for value in branch['xInterval']]
+            result=sample(_polynomial_text(curve['coefficients']),domain,vp,critical_x=domain)
+            if len(result['branches'])!=1:raise ValueError('MULTI_CURVE_SAMPLING_FAILED:'+str(ident))
+            sampling.append({'id':'curve-'+str(ident),**{key:value for key,value in result.items() if key!='branches'}})
+            points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
+            parts.append(f'<polyline id="curve-{escape(str(ident))}" data-role="curve" data-branch="CURVE_{escape(str(ident))}" points="{points}" fill="none" stroke="black"/>')
+            continue
+        if curve.get('kind')!='X_OF_Y':raise ValueError('MULTI_CURVE_KIND_INVALID:'+str(ident))
+        for branch in curve.get('branches') or []:
+            side=branch.get('side')
+            if side not in ('POSITIVE','NEGATIVE') or not branch.get('expression'):raise ValueError('MULTI_CURVE_BRANCH_INVENTORY_REQUIRED:'+str(ident))
+            domain=[pp_exact_float(value) for value in branch['xInterval']]
+            result=sample(branch['expression'],domain,vp,critical_x=domain)
+            if len(result['branches'])!=1:raise ValueError('MULTI_CURVE_SAMPLING_FAILED:'+str(ident))
+            tag='POS' if side=='POSITIVE' else 'NEG'
+            sampling.append({'id':'curve-'+str(ident)+'-'+tag.lower(),**{key:value for key,value in result.items() if key!='branches'}})
+            points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
+            parts.append(f'<polyline id="curve-{escape(str(ident))}-{tag.lower()}" data-role="curve" data-branch="CURVE_{escape(str(ident))}_{tag}" points="{points}" fill="none" stroke="black"/>')
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
+    return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 
 def _produce_piecewise_polynomial(plan,vp):
     """The framed pieces (each on its draw interval), the key points, the horizontal lines and their intersection dots, with the ids the

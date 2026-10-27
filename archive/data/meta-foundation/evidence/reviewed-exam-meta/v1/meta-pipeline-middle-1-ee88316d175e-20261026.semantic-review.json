@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "meta-pipeline-courier-semantic-review-v1",
+  "examUid": "26_왕운중_2학기_중간_중3_기출",
+  "requestId": "meta-pipeline-middle-1-ee88316d175e-20261026",
+  "reviewActors": [
+    "OpenCode Go deepseek-v4.1-flash",
+    "CODEX_ROOT"
+  ],
+  "scope": "Audited concept storage/reuse and focused metadata type correction only; no student content edits or mathematics re-solve.",
+  "originalAuditRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.source.json",
+    "sha256": "03edc86216fe4cd3fc565a143f4d1d4611128977db14a1fc2dc66e68ad9f1b86"
+  },
+  "decisions": {
+    "conceptShards": {
+      "CC_TRIG_RATIO": "TRIGONOMETRY",
+      "CC_PYTHAGOREAN_THEOREM": "PLANE_GEOMETRY",
+      "CC_SPECIAL_ANGLES": "TRIGONOMETRY",
+      "CC_UNIT_QUARTER_CIRCLE": "TRIGONOMETRY",
+      "CC_COMPLEMENTARY_ANGLE_TRIG": "TRIGONOMETRY",
+      "CC_RADICAL_ABSOLUTE_VALUE": "ALGEBRA",
+      "CC_TRIG_RATIO_ORDER": "TRIGONOMETRY",
+      "CC_TRIANGLE_CENTROID": "PLANE_GEOMETRY",
+      "CC_COORDINATE_TRIG": "TRIGONOMETRY",
+      "CC_REGULAR_OCTAGON_AREA": "PLANE_GEOMETRY",
+      "CC_LINE_SLOPE_TANGENT": "TRIGONOMETRY",
+      "CC_OBLIQUE_TRIANGLE_MEASURE": "TRIGONOMETRY",
+      "CC_RECTANGLE_PERCENT_AREA": "PLANE_GEOMETRY",
+      "CC_TRIG_TABLE_LOOKUP": "TRIGONOMETRY",
+      "CC_PAPER_FOLDING_SIMILARITY": "PLANE_GEOMETRY",
+      "CC_CIRCLE_RADIUS_DEFINITION": "PLANE_GEOMETRY",
+      "CC_CIRCLE_CHORD_DISTANCE": "PLANE_GEOMETRY",
+      "CC_ISOSCELES_TRIANGLE": "PLANE_GEOMETRY",
+      "CC_CIRCLE_TANGENT_LENGTH": "PLANE_GEOMETRY",
+      "CC_CIRCLE_CENTER_CONSTRUCTION": "PLANE_GEOMETRY",
+      "CC_RECTANGLE_INSCRIBED_CIRCLE_TANGENT": "PLANE_GEOMETRY",
+      "CC_TRIANGLE_INSCRIBED_CIRCLE_PERIMETER": "PLANE_GEOMETRY",
+      "CC_QUADRILATERAL_AREA_TRIG": "TRIGONOMETRY",
+      "CC_CLINOMETER_ELEVATION_ANGLE": "TRIGONOMETRY"
+    },
+    "reuseRationales": {
+      "CC_PYTHAGOREAN_THEOREM": "case1 q1/q4/q7/q10/q11/q14/q15/q20 and case3 q1/q3/q4/q9/q11/q14/q15/q16/q20 all compute a missing right-triangle side or circle radius with a²+b²=c². Same theorem as the canonical entry; canonical short definition and PLANE_GEOMETRY shard stay unchanged.",
+      "CC_TRIANGLE_CENTROID": "q7 and case2 q20 use the centroid's 2:1 median division and its length consequences. The canonical entry's coordinate-relation wording is a narrower facet of the same 삼각형의 무게중심 concept; keep key, definition and shard unchanged, with no new centroid key.",
+      "CC_ISOSCELES_TRIANGLE": "case1 q17, case2 q1/q4/q6/q12/q13/q21/q23 and case3 q18 use equal radii/sides to obtain equal base angles. Same canonical equal-side/base-angle concept; preserve unchanged.",
+      "CC_TRIG_RATIO": "case1 q1/q2/q4/q8 and case3 q1/q2/q4/q8 define sin/cos/tan as right-triangle side ratios. Same concept as this audited definition; preserve it unchanged for case3 reuse.",
+      "CC_SPECIAL_ANGLES": "case1 and case3 evaluate the fixed 30°/45°/60° values (e.g. q2, q6, q9, q11). Same fixed-value concept; preserve this exact audited label/definition unchanged.",
+      "CC_TRIG_TABLE_LOOKUP": "case1 q13 and case3 q5 read a trig-value table to obtain a side or height. Same table-lookup concept; preserve unchanged.",
+      "CC_QUADRILATERAL_AREA_TRIG": "case1 q22 and case3 q6/q13 split a quadrilateral along a diagonal and add the two triangle areas using sin. Same concept; preserve unchanged.",
+      "CC_PAPER_FOLDING_SIMILARITY": "case1 q14 folds a rectangle so the fold line is a symmetry axis preserving PA=PC; case3 q21 folds an equilateral triangle with the same fold-line symmetry/angle preservation. Case3's broader audited label remains evidence; this case1 key definition and PLANE_GEOMETRY shard are preserved unchanged."
+    },
+    "conditionDefinitions": {},
+    "subunitDefinitions": {
+      "M3-06-CIRCLE_PROPERTY": {
+        "labelKo": "원과 직선",
+        "definition": "원의 중심·반지름·현의 기본 성질, 중심에서 현에 내린 수선의 이등분, 중심에서 같은 거리에 있는 현의 길이, 원의 접선의 길이 및 내접원을 활용하는 중3 원의 성질 단원의 세부 개념.",
+        "standardUnitKey": "M3-06",
+        "sourceOrdinals": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "evidenceLabels": [
+          "원의 중심과 반지름의 정의",
+          "중심에서 같은 거리에 있는 현",
+          "원의 두 접선이 이루는 각과 중심각",
+          "현의 수직이등분선을 이용한 원의 중심 작도",
+          "직사각형에 접하는 원과 접선의 길이",
+          "내접원과 삼각형의 둘레"
+        ],
+        "originalAuditedDisplayLabel": "원의 기본 성질과 현·접선",
+        "canonicalParentRef": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "basis": "Actual reviewed center/radius/chord/perpendicular/tangent definitions belong to this exact canonical chapter; preserve all original display labels as evidence."
+        }
+      }
+    },
+    "parentNotes": [
+      {
+        "key": "M3-06-CIRCLE_PROPERTY",
+        "note": "Additive subunit with no exact basicParents row. An exact standardUnitKey M3-06 parent exists for both 2015 and 2022 (courseKey M3-2, L1 원의 성질; L2 원과 직선/원주각), and the current UID parent snapshot for these rows is M3-06-CIRCLE_LINE. Resolve via the exact unit parent or the current UID snapshot; do not rewrite M3-06-CIRCLE_LINE. No curriculum gap."
+      }
+    ],
+    "blockers": [],
+    "typeCorrections": {
+      "16": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "그림에서 x cm 선분과 10 cm 선분이 모두 중심 O에서 원 위의 점까지의 반지름임을 이용하는 반지름 정의 확인 문항이다. TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT의 정의가 원의 중심·반지름 정의와 같은 원에서의 대응 성질 확인을 명시적으로 포함하므로 PT/TPL는 유지(KEEP)하고, 비정본 subUnitKey M3-06-CIRCLE_PROPERTY만 canonical M3-06-CIRCLE_LINE(원과 직선, 각 관계 아님)으로 정규화한다.",
+        "decisiveExcerpt": "그림의 x cm 선분과 10 cm 선분은 모두 중심 O에서 원 위의 점까지의 반지름이다.",
+        "disposition": "KEEP_PT_TPL_CORRECT_SUBUNIT"
+      },
+      "17": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "중심에서 두 현 AB, AC까지의 거리가 같다는 조건으로 AB=AC(중심에서 같은 거리에 있는 두 현은 길이가 같다)를 얻고, 이등변삼각형의 밑각 58°에서 꼭지각 x를 구한다. 원주각·중심각 관계가 아니라 현의 길이/중심거리 조건을 쓰므로 PT_CIRCLE_LINE_RELATION·TM_CIRCLE_CHORD_LENGTH(현의 길이 조건을 이용하는 유형)가 정확하다.",
+        "decisiveExcerpt": "중심에서 두 현까지의 거리가 같으므로 AB=AC.",
+        "disposition": "CORRECT"
+      },
+      "18": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "두 접선 PA, PB에 대해 OA⊥PA, OB⊥PB, OA=OB로 직각삼각형 OAP, OBP가 합동이고 OP가 ∠APB를 이등분하며, 같은 점 P에서 그은 두 접선의 길이가 같다는 성질로 PA+PB를 구한다. 접선은 원과 직선의 접함·거리 조건이므로 PT_CIRCLE_LINE_RELATION이 맞으나, 제공된 ACTIVE 템플릿 7종에는 한 점에서 그은 두 접선의 길이 상등을 다루는 템플릿이 없다. GAP: PT_CIRCLE_LINE_RELATION 아래 중학 접선 길이 템플릿(레거시 TM_TANGENT_LENGTH 계열)의 ACTIVE canonical 정의가 필요하다. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+        "decisiveExcerpt": "OA⊥PA, OB⊥PB이고 OA=OB이므로 두 직각삼각형 OAP, OBP는 합동이다. 같은 점 P에서 그은 두 접선의 길이는 같다.",
+        "disposition": "ROOT_LOCATED_EXISTING_ACTIVE_TEMPLATE"
+      },
+      "19": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "원의 중심은 서로 다른 두 현의 수직이등분선의 교점이라는 성질로 민재의 작도법만 옳다고 판정한다. 원의 각 관계나 정의 나열이 아니라 현의 수직이등분선 성질이 결정적이므로 PT_CIRCLE_LINE_RELATION·TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+        "decisiveExcerpt": "원의 중심은 서로 다른 두 현의 수직이등분선의 교점이다. 민재만 옳으므로 정답은 ①.",
+        "disposition": "CORRECT"
+      },
+      "20": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "직사각형 세 변에 접하는 원에서 점 D와 E에서 그은 두 접선의 길이가 같음(DT=AD−AT, ET=EV)을 이용해 DE를 만들고, 직각삼각형 DEC의 피타고라스 관계로 EC를 구한다. 접선 길이 상등이 결정적이므로 PT_CIRCLE_LINE_RELATION이 맞으나 ACTIVE 접선 길이 템플릿이 없다. GAP: 접선 길이 템플릿의 ACTIVE canonical 정의가 필요하다. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+        "decisiveExcerpt": "위쪽 변 AD도 접선이므로 점 D에서 그은 두 접선의 길이는 같다. 따라서 DT=9−3=6이다.",
+        "disposition": "ROOT_LOCATED_EXISTING_ACTIVE_TEMPLATE"
+      },
+      "21": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "labelReason": "삼각형 ABC의 내접원 접점 D, E, F에서 같은 꼭짓점에서 그은 두 접선의 길이가 같음(BD=BE, AD=AF, CE=CF)을 이용해 세 변과 둘레를 구한다. 접선 길이 상등이 핵심이며 ACTIVE 접선 길이 템플릿이 없다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+        "decisiveExcerpt": "같은 점에서 원에 그은 두 접선의 길이는 같다. 따라서 BD=BE=6 cm이다.",
+        "disposition": "ROOT_LOCATED_EXISTING_ACTIVE_TEMPLATE"
+      }
+    }
+  }
+}

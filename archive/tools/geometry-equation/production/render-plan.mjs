@@ -20,6 +20,7 @@ import * as nlf from './number-line-v1.mjs';
 import * as sol from './solid-figure-v1.mjs';
 import * as scf from './stat-chart-v1.mjs';
 import * as sdg from './set-diagram-v1.mjs';
+import * as ell from './ellipse-figure-v1.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
@@ -96,6 +97,23 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       row.status='ARCHIVE_BOUND';row.sizeClass='full';
       return finish();
     }
+    if(authored.capability===ell.FIGURE_CAPABILITY){
+      // A standalone axis-aligned ellipse figure: the exact foci/vertices/chords derived once, composed, read back by its own observer, then the same Archive capture.
+      stage='ellipse';
+      const model=await ell.solveEllipseFigure(authored),size=ell.ellipseFigureSize(model);
+      stage='measure';
+      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      stage='compose';
+      const composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
+      stage='capture';
+      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
+      await bind({plan:authored,model,composed,capture});
+      row.status='ARCHIVE_BOUND';row.sizeClass='full';
+      return finish();
+    }
     if(authored.capability==='composite-panels-v1'||authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY){
       // Panels: frame -> model -> spec each; one Archive policy for the stacked size; L1 per panel inside the composite; then the same capture.
       stage='composite-panels';
@@ -107,6 +125,17 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       for(let attempt=0;attempt<3;attempt++){
       checked=comp.compositePanels(current);framedPanels=[];panelModels=[];const panelSizes=[];
       for(const panel of checked){
+        if(comp.isPlanePanel(panel.plan)){
+          // A plane-figure panel keeps the single PLANE_FIGURE_v1 pipeline: exact SymPy model, the same spec and its own marks observer.
+          // A composite panel carries its caption beside the plan, so the plan gets it as its title like a graph panel does; without it
+          // spec.title is undefined and the spec cannot be canonicalized (OUTPUT_NOT_CANONICAL:spec).
+          const m=await pythonWorker({action:'construction',graph:panel.plan.mathPlan},{timeoutMs:90000});
+          if(m.status!=='OK')throw {stage:'model',detail:{panel:panel.index,result:m.result}};
+          const panelPlan={...panel.plan,caption:panel.plan.caption??comp.captionText(panel.caption)};
+          const spec=specFor(panelPlan,m.result,identity.assetId);
+          framedPanels.push({caption:panel.caption,plan:panelPlan});panelModels.push(m.result);
+          panelSizes.push({width:spec.viewport.width,height:spec.viewport.height});continue;
+        }
         if(comp.isSolidPanel(panel.plan)){
           const solved=sol.solveSolidFigure(panel.plan);
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(sol.figurePanelSize(solved));continue;
@@ -123,7 +152,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
         framedPanels.push({caption:panel.caption,plan:panelPlan});panelModels.push(m.result);
         panelSizes.push({width:spec.viewport.width,height:spec.viewport.height});
       }
-      plan={...current,panels:framedPanels};const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked));
+      plan={...current,panels:framedPanels};const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),comp.compositePanelLayout(checked));
       stage='measure';
       measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${attempt?'-retry'+attempt:''}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
@@ -131,6 +160,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       composed=await comp.composeCompositeCandidate({plan,panels:framedPanels.map((panel,i)=>({plan:panel.plan,model:panelModels[i]})),identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});
       const failed=composed.status==='COMPOSITE_PANEL_NOT_COMPOSED'&&composed.detail?.status==='LAYOUT_INVENTORY_INCOMPLETE'?composed.detail:null;
       if(!failed||attempt===2)break;
+      // A plane panel has no graph band or y-squeeze fallback: its own observer reports the label it could not place, and the panel fails as written.
+      if(comp.isPlanePanel(current.panels[failed.panel].plan))break;
       const panelPlan=current.panels[failed.panel].plan,gp=panelPlan.graphPlan,keys=gp.requiredPoints||[],exact=gp.exactCoordinates||{};
       const bandable=point=>(Number.isSafeInteger(point?.x)&&Number.isSafeInteger(point?.y)||Object.hasOwn(exact,point?.id??''))&&/^[A-Z][0-9']?$/.test(point?.id);
       const stuck=(failed.detail?.unresolved||[]).map(id=>/^required-point-(\d+)-coordinates$/.exec(id)).filter(Boolean).map(m=>keys[Number(m[1])-1]).filter(bandable).map(point=>point.id).filter(id=>!(panelPlan.coordinatePanel||[]).includes(id));
