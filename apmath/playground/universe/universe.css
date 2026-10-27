@@ -67,7 +67,15 @@ html, body {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(circle at 50% 30%, #1a1024 0%, #100b17 50%, var(--bg-obsidian) 100%);
+  /* Archived Universe deep-field: distant stars and nebula, never interactive. */
+  background-color: var(--bg-obsidian);
+  background-image:
+    radial-gradient(ellipse at 50% 44%, rgba(9, 9, 13, .18) 20%, rgba(9, 9, 13, .79) 100%),
+    linear-gradient(180deg, rgba(18, 12, 28, .30), rgba(9, 9, 13, .38)),
+    url('./assets/universe-deepfield.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Landing UI Overlay Container */
