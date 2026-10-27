@@ -126,12 +126,56 @@
       font-weight: 800;
       margin: 0 1px;
     }
+    /* AP 모바일 기준 정본 v1: PC DOM·학습 기능을 유지하고 화면 배치만 전환한다. */
     @media (max-width: 1023px) {
-      html, body { height: auto !important; overflow-y: auto !important; overflow-x: hidden !important; }
-      body { display: block !important; }
-      #workspace { display: flex !important; flex-direction: column !important; height: auto !important; }
-      #canvasStage { height: clamp(420px, 58svh, 580px) !important; flex: 0 0 auto !important; }
-      #rightPanel { width: 100% !important; height: auto !important; border-left: none !important; border-top: 1px solid #E2E8F0 !important; }
+      html, body { width:100%!important; max-width:100%!important; height:auto!important; min-height:100%!important; overflow-x:hidden!important; overflow-y:auto!important; }
+      body { display:block!important; margin:0!important; -webkit-overflow-scrolling:touch; }
+      body > header { display:flex!important; flex-direction:column!important; align-items:stretch!important; gap:6px!important; padding:8px 10px!important; }
+      body > header > nav { width:100%!important; max-width:100%!important; display:flex!important; flex-wrap:nowrap!important; overflow-x:auto!important; overflow-y:hidden!important; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+      body > header .mode-tab { min-height:44px!important; flex-shrink:0; }
+      #workspace { display:flex!important; flex-direction:column!important; width:100%!important; min-width:0!important; height:auto!important; min-height:0!important; overflow:visible!important; }
+      #canvasStage { position:relative!important; display:block!important; width:100%!important; min-width:0!important; height:clamp(300px,51svh,540px)!important; flex:0 0 auto!important; overflow:hidden!important; }
+      #boardCanvas { display:block!important; width:100%!important; height:100%!important; touch-action:none; }
+      #apMobileControls.ap-mobile-top, #apMobileTools.ap-mobile-tools {
+        position:relative!important; top:auto!important; right:auto!important; bottom:auto!important; left:auto!important;
+        width:100%!important; max-width:100%!important; min-width:0!important; box-sizing:border-box!important;
+        display:flex!important; z-index:3!important; pointer-events:auto!important; border-radius:0!important; margin:0!important;
+      }
+      #apMobileControls.ap-mobile-top {
+        padding:8px 10px!important; gap:6px!important; flex-direction:column!important;
+        max-height:190px!important; overflow-y:auto!important; overflow-x:hidden!important;
+        background:#F8FAFC!important; border-bottom:1px solid #CBD5E1!important;
+      }
+      #apMobileControls.ap-mobile-top > div { box-sizing:border-box; min-width:0!important; max-width:100%!important; width:100%!important; }
+      #apMobileControls.ap-mobile-top #subSelectorBar {
+        width:100%!important; max-width:100%!important; flex-wrap:nowrap!important;
+        overflow-x:auto!important; overflow-y:hidden!important; -webkit-overflow-scrolling:touch;
+      }
+      #apMobileControls.ap-mobile-top #subSelectorBar button { flex-shrink:0; }
+      #apMobileControls.ap-mobile-top .lens-btn,
+      #apMobileControls.ap-mobile-top #subSelectorBar button { min-height:44px!important; }
+      #apMobileControls.ap-mobile-top > div:nth-child(2) { gap:7px!important; }
+      #apMobileControls.ap-mobile-top > div:nth-child(2) > div:first-child { display:flex; flex-wrap:wrap; gap:5px; }
+      #apMobileTools.ap-mobile-tools {
+        padding:8px 10px!important; gap:7px!important; flex-wrap:wrap!important;
+        align-items:center!important; justify-content:flex-start!important;
+        background:#FFFFFF!important; border-top:1px solid #CBD5E1!important;
+        border-bottom:1px solid #CBD5E1!important; box-shadow:none!important;
+      }
+      #apMobileTools.ap-mobile-tools button { min-height:44px!important; min-width:44px!important; touch-action:manipulation; }
+      #apMobileTools.ap-mobile-tools > .h-4 { display:none!important; }
+      #rightPanel { width:100%!important; max-width:100%!important; height:auto!important; max-height:none!important; min-height:0!important; border-left:none!important; border-top:1px solid #E2E8F0!important; display:block!important; overflow:visible!important; }
+      #rightPanel > div { height:auto!important; max-height:none!important; overflow:visible!important; }
+      #rightPanel button { min-height:44px; touch-action:manipulation; }
+      #rightPanel input[type="range"] { height:24px; touch-action:pan-y; }
+      #rightPanel .katex-display { max-width:100%; overflow-x:auto; overflow-y:hidden; }
+    }
+    @media (max-width: 600px) {
+      #canvasStage { height:clamp(285px,48svh,480px)!important; }
+      #apMobileControls.ap-mobile-top { max-height:175px!important; }
+      #rightPanel > div { padding:10px!important; }
+      #rightPanel .grid.grid-cols-3 { gap:4px; }
+      #rightPanel .grid.grid-cols-4 { gap:4px; }
     }
   </style>
 </head>
@@ -179,7 +223,7 @@
       <canvas id="boardCanvas" class="w-full h-full block cursor-pointer"></canvas>
 
       <!-- 좌측 상단: 4대 서브 도형 버튼 + 원클릭 뷰 렌즈 + 핵심 등식 배지 -->
-      <div class="absolute top-3 left-3 right-3 pointer-events-none flex flex-col gap-1.5 max-w-2xl z-10">
+      <div id="apMobileControls" class="absolute top-3 left-3 right-3 pointer-events-none flex flex-col gap-1.5 max-w-2xl z-10">
         <!-- 4개 서브 도형 선택 버튼 -->
         <div id="subSelectorBar" class="pointer-events-auto bg-white/95 backdrop-blur border border-slate-200 rounded-xl p-1 shadow-sm flex flex-wrap items-center gap-1 w-fit"></div>
 
@@ -196,7 +240,7 @@
       </div>
 
       <!-- 좌측 하단: 플로팅 원클릭 작동 버튼 바 -->
-      <div class="absolute bottom-3.5 left-3.5 flex flex-wrap items-center gap-1.5 bg-white/95 backdrop-blur border border-slate-200 p-1.5 rounded-xl shadow-md z-10">
+      <div id="apMobileTools" class="absolute bottom-3.5 left-3.5 flex flex-wrap items-center gap-1.5 bg-white/95 backdrop-blur border border-slate-200 p-1.5 rounded-xl shadow-md z-10">
         <button onclick="triggerAnim()" id="btnAction" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold flex items-center gap-1.5 transition shadow-sm">
           <i class="fa-solid fa-play" id="iconAction"></i>
           <span id="txtAction">🎬 분해·합체 실행</span>
@@ -2026,52 +2070,104 @@
     }
 
     // -------------------------------------------------------------------------
-    // 6. 캔버스 핸들 드래그 & 원클릭 인터랙션
+    // 6. 마우스 / 터치 단일 Pointer 경로 (모바일 기준 정본).
+    // 손가락 1개: 조작점 드래그, 빈 칠판 드래그=이동, 짧은 탭=기존 애니메이션.
+    // 손가락 2개: 핀치 확대·축소. PC 클릭 동작은 이전과 동일.
     // -------------------------------------------------------------------------
     function getPos(e) {
       const rect = canvas.getBoundingClientRect();
-      if (e.touches && e.touches.length > 0) {
-        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
-      }
       return { x: e.clientX - rect.left, y: e.clientY - rect.top };
     }
-
-    function onDown(e) {
-      const pos = getPos(e);
-      if (state.handlePt && Math.hypot(pos.x - state.handlePt.x, pos.y - state.handlePt.y) <= 32) {
-        state.isDragging = true;
+    const activePointers = new Map();
+    let gesture = null;
+    const pointerDistance = (a,b) => Math.hypot(a.x-b.x,a.y-b.y);
+    function findHandle(pos) {
+      return state.handlePt && pointerDistance(pos,state.handlePt) <= 32;
+    }
+    function beginPinch() {
+      const pts = Array.from(activePointers.values()).slice(0,2);
+      if(pts.length!==2)return;
+      const mid={x:(pts[0].x+pts[1].x)/2,y:(pts[0].y+pts[1].y)/2};
+      gesture = {type:'pinch', distance:Math.max(8,pointerDistance(...pts)), scale:state.scale,
+        mid, offsetX:state.offsetX, offsetY:state.offsetY};
+      state.isDragging=false;
+    }
+    function onPointerDown(e) {
+      if(e.pointerType==='mouse' && e.button!==0)return;
+      const pos=getPos(e);
+      activePointers.set(e.pointerId,pos);
+      if(canvas.setPointerCapture)canvas.setPointerCapture(e.pointerId);
+      if(activePointers.size>=2 && e.pointerType!=='mouse'){beginPinch();return;}
+      if(findHandle(pos)){
+        state.isDragging=true;gesture={type:'handle',id:e.pointerId};
+        canvas.style.cursor='grabbing';
         return;
       }
-      triggerAnim();
+      const mouse=e.pointerType==='mouse';
+      gesture={type:mouse?'mouse-click':'pan',id:e.pointerId,from:pos,
+        offsetX:state.offsetX,offsetY:state.offsetY,moved:false};
+      if(mouse)triggerAnim(); // 기존 PC: 빈 칠판 클릭으로 애니메이션 시작
     }
-
-    function onMove(e) {
-      const pos = getPos(e);
-      if (!state.isDragging || !state.handlePt) {
-        if (state.handlePt) {
-          canvas.style.cursor = Math.hypot(pos.x - state.handlePt.x, pos.y - state.handlePt.y) <= 32 ? 'grab' : 'pointer';
+    function onPointerMove(e) {
+      const pos=getPos(e);
+      if(!activePointers.has(e.pointerId)){
+        if(e.pointerType==='mouse')canvas.style.cursor=findHandle(pos)?'grab':'pointer';
+        return;
+      }
+      activePointers.set(e.pointerId,pos);
+      if(gesture?.type==='pinch'){
+        const pts=Array.from(activePointers.values()).slice(0,2);
+        if(pts.length<2)return;
+        const d=Math.max(8,pointerDistance(...pts));
+        const mid={x:(pts[0].x+pts[1].x)/2,y:(pts[0].y+pts[1].y)/2};
+        state.scale=Math.max(0.65,Math.min(1.6,gesture.scale*d/gesture.distance));
+        state.offsetX=gesture.offsetX+mid.x-gesture.mid.x;
+        state.offsetY=gesture.offsetY+mid.y-gesture.mid.y;
+        render();
+        return;
+      }
+      if(!gesture || gesture.id!==e.pointerId)return;
+      if(gesture.type==='handle' && state.handlePt) {
+        const c=state.handlePt.center;
+        const rad=Math.atan2(pos.y-c.y,pos.x-c.x);
+        const deg=Math.round((Math.abs(rad*180/Math.PI)*2)/15)*15;
+        state.deg=Math.max(30,Math.min(300,deg));
+        render();
+      }else if(gesture.type==='pan'){
+        const dx=pos.x-gesture.from.x,dy=pos.y-gesture.from.y;
+        if(Math.hypot(dx,dy)>8)gesture.moved=true;
+        if(gesture.moved){
+          state.offsetX=gesture.offsetX+dx;
+          state.offsetY=gesture.offsetY+dy;
+          render();
         }
-        return;
       }
-      canvas.style.cursor = 'grabbing';
-      const c = state.handlePt.center;
-      const angRad = Math.atan2(pos.y - c.y, pos.x - c.x);
-      let deg = Math.round((Math.abs((angRad * 180) / Math.PI) * 2) / 15) * 15;
-      state.deg = Math.max(30, Math.min(300, deg));
-      render();
     }
-
-    function onUp() {
-      state.isDragging = false;
-      canvas.style.cursor = 'pointer';
+    function onPointerEnd(e){
+      const pos=getPos(e);
+      if(!activePointers.has(e.pointerId))return;
+      if(gesture?.type==='pan' && gesture.id===e.pointerId &&
+         !gesture.moved && pointerDistance(pos,gesture.from)<9 && e.type==='pointerup')triggerAnim();
+      activePointers.delete(e.pointerId);
+      if(gesture?.type==='pinch' && activePointers.size===1){
+        const [id,point]=Array.from(activePointers.entries())[0];
+        gesture={type:'pan',id,from:point,offsetX:state.offsetX,offsetY:state.offsetY,moved:true};
+      }else if(activePointers.size===0 || gesture?.id===e.pointerId){
+        gesture=null;state.isDragging=false;
+      }
+      if(canvas.hasPointerCapture?.(e.pointerId))canvas.releasePointerCapture(e.pointerId);
+      canvas.style.cursor='pointer';
     }
-
-    canvas.addEventListener('mousedown', onDown);
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseup', onUp);
-    canvas.addEventListener('touchstart', onDown, { passive: true });
-    window.addEventListener('touchmove', onMove, { passive: true });
-    window.addEventListener('touchend', onUp);
+    canvas.addEventListener('pointerdown',onPointerDown);
+    canvas.addEventListener('pointermove',onPointerMove);
+    canvas.addEventListener('pointerup',onPointerEnd);
+    canvas.addEventListener('pointercancel',onPointerEnd);
+    window.addEventListener('blur',()=>{
+      activePointers.clear();gesture=null;state.isDragging=false;
+    });
+    canvas.addEventListener('wheel',e=>{
+      e.preventDefault();zoomCanvas(e.deltaY<0?1.10:0.91);
+    },{passive:false});
 
     window.addEventListener('DOMContentLoaded', () => {
       if (new URLSearchParams(location.search).get('start') === 'basic') state.sub[1] = 'anatomy';
@@ -2079,6 +2175,36 @@
       resizeCanvas();
       requestAnimationFrame(animateLoop);
     });
+  </script>
+
+  <!-- 모바일에서는 원본 플로팅 도구 DOM을 칠판 밖으로 옮긴다. PC로 복귀 시 원래 자리로 돌린다. -->
+  <script id="ap-mobile-golden-adapter">
+  (() => {
+    const workspace=document.getElementById('workspace');
+    const stage=document.getElementById('canvasStage');
+    const top=document.getElementById('apMobileControls');
+    const tools=document.getElementById('apMobileTools');
+    if(!workspace||!stage||!top||!tools)return;
+    let previousMode=null;
+    function arrange(){
+      const mobile=window.innerWidth<1024;
+      if(mobile===previousMode)return;
+      previousMode=mobile;
+      top.classList.toggle('ap-mobile-top',mobile);
+      tools.classList.toggle('ap-mobile-tools',mobile);
+      if(mobile){
+        stage.before(top);
+        stage.after(tools);
+      }else{
+        stage.append(top,tools);
+      }
+      // reparent 후 캔버스 CSS 크기가 바뀌므로 DPR 좌표를 즉시 다시 맞춘다.
+      if(typeof resizeCanvas==='function')resizeCanvas();
+    }
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',arrange);
+    else arrange();
+    window.addEventListener('resize',arrange,{passive:true});
+  })();
   </script>
 </body>
 </html>
