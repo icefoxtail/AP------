@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" width="100%" height="100%">
+  <defs>
+    <style>
+      .axis { stroke: #334155; stroke-width: 1.5; }
+      .tri2 { fill: #fdf4ff; stroke: #4c1d95; stroke-width: 2.2; }
+      .rect2 { fill: #faf5ff; stroke: #6b21a8; stroke-width: 1.8; stroke-dasharray: 4,3; }
+      .s1-area2 { fill: #c7d2fe; stroke: #4338ca; stroke-width: 1.8; }
+      .s2-area2 { fill: #fecdd3; stroke: #e11d48; stroke-width: 1.8; }
+      .label2 { font-family: sans-serif; font-size: 15px; font-weight: bold; fill: #1e1b4b; }
+      .sublabel2 { font-family: sans-serif; font-size: 13px; fill: #581c87; }
+    </style>
+  </defs>
+  <polygon points="70,300 70,70 300,300" class="tri2" />
+  <polygon points="70,70 189.6,189.6 70,189.6" class="s1-area2" />
+  <polygon points="189.6,189.6 300,300 189.6,300" class="s2-area2" />
+  <rect x="70" y="189.6" width="119.6" height="110.4" class="rect2" />
+  <path d="M 70,285 L 85,285 L 85,300" fill="none" stroke="#1e1b4b" stroke-width="1.5" />
+  <path d="M 70,175 L 82,175 L 82,189.6" fill="none" stroke="#4338ca" stroke-width="1.5" />
+  <path d="M 189.6,288 L 201.6,288 L 201.6,300" fill="none" stroke="#e11d48" stroke-width="1.5" />
+  <circle cx="70" cy="70" r="4" fill="#1e1b4b" />
+  <text x="50" y="65" class="label2">A</text>
+  <circle cx="70" cy="300" r="4" fill="#1e1b4b" />
+  <text x="48" y="320" class="label2">C</text>
+  <circle cx="300" cy="300" r="4" fill="#1e1b4b" />
+  <text x="312" y="320" class="label2">B</text>
+  <circle cx="189.6" cy="189.6" r="4.5" fill="#9333ea" />
+  <text x="200" y="182" class="label2">P</text>
+  <circle cx="70" cy="189.6" r="3.5" fill="#4338ca" />
+  <text x="48" y="195" class="label2">D</text>
+  <circle cx="189.6" cy="300" r="3.5" fill="#e11d48" />
+  <text x="185" y="322" class="label2">E</text>
+  <text x="98" y="150" class="label2" fill="#312e81">S₁</text>
+  <text x="235" y="270" class="label2" fill="#881337">S₂</text>
+  <text x="50" y="250" class="sublabel2">2</text>
+  <text x="180" y="340" class="sublabel2">2</text>
+</svg>
