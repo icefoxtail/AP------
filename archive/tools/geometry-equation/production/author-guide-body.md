@@ -535,6 +535,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - **쓰지 않는 필드:** `formula`(불연속함수의 머리줄 식), `referenceCurves`(둘째 불연속 곡선), `domain`, `viewport`는 받지 않는다. 필요하면 caption에 식을 쓰고, 두 함수가 모두 필요하면 그림을 포기하거나 EXEMPT/UNSUPPORTED로 쓴다.
 - 수직선, 세로선, 차수 3 이상 조각, 색칠 영역, 기울어진 기준선은 지원하지 않는다. UNSUPPORTED.
 
+
 ### 3-16. 평면도형 여러 개를 한 그림에: `composite-panels-v1` 평면 패널 격자
 
 보기 ①~⑤의 서로 다른 사각형이나 서답형 ①·②의 두 도형처럼 **여러 평면도형을 나란히 비교**할 때, 각각을 지금까지와 같은 `PLANE_FIGURE_v1` plan으로 만든 뒤 `composite-panels-v1`의 패널로 묶는다. 각 패널은 3-8·3-9의 각·눈금·평행·식 라벨·호·영역·점선/화살촉을 그대로 쓰고, 엔진은 패널마다 같은 작도·표식·관측기 경로를 실행한다. 새 수학 primitive나 좌표 변환을 쓰지 않는다.
@@ -553,6 +554,30 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
   {"caption":{"text":"② BP:PC=5:3"},"plan":{ /* PLANE_FIGURE_v1 plan */ }}],
  "caption":"두 소문항을 나란히 비교한 해설 그림","sourceConditions":[...],"newVisualInformation":[...]}
 ```
+
+### 3-40. 서로 다른 비선형 곡선 세 개 이상을 한 그림에: `multi-curve-figure-v1`
+
+한 문항의 그림이 **서로 다른 비선형 곡선 3개 이상**으로 둘러싸이거나 이루어질 때만 쓴다. 곡선 2개, 곡선 2개+직선 1개, 한 곡선의 조각(가지)은 이 기능의 대상이 아니며 기존 family(`referenceCurves`, `piecewise-*`)를 쓴다. 실제 예: 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선.
+
+```json
+{"capability":"multi-curve-figure-v1","graphPlan":{"family":"multi-curve","curves":[
+  {"id":"top","kind":"Y_OF_X","coefficients":["2","0","-1"],"domain":["-1","1"],"label":"y=2-x^2"},
+  {"id":"bottom","kind":"Y_OF_X","coefficients":["-2","0","1"],"domain":["-1","1"]},
+  {"id":"right","kind":"X_OF_Y","coefficients":["2","0","-1"],"domain":["-1","1"],"branch":"BOTH"},
+  {"id":"left","kind":"X_OF_Y","coefficients":["-2","0","1"],"domain":["-1","1"],"branch":"BOTH"}],
+  "axisTickValues":{"x":["-1","1"],"y":["-1","1"]},
+  "overlays":{"lines":[{"id":"sym1","slope":"1","intercept":"0"},{"id":"sym2","slope":"-1","intercept":"0"}]}},
+ "caption":"위쪽 y=2-x^2, 오른쪽 x=2-y^2, 아래쪽 y=x^2-2, 왼쪽 x=y^2-2의 네 포물선으로 둘러싸인 영역이다."}
+```
+
+- `curves`는 3~6개다. 각 곡선은 `id`(영문 시작, 16자 이내), `kind`, `coefficients`(`[c0,c1,c2]`, x² 또는 y² 계수 `c2`는 0이 아님), `domain`(닫힌 구간의 두 끝)을 쓴다. 계수·끝은 정확한 정수·분수 문자열(또는 한 근호 `p+q*sqrt(r)`)이고 소수를 쓰지 않는다.
+- `label`(선택)은 그 곡선 옆에 그릴 정확한 ASCII 수식 문자열이다(`y=2-x^2`, `x=2-y^2`). 기존 수식 라벨 장치로 그려지며, 쓸 수 없는 글자·TeX는 `MULTI_CURVE_LABEL_INVALID:<id>`로 거절된다. 원문 그림이 곡선의 식을 보여 주면 그 식을 그대로 쓴다.
+- `kind:"Y_OF_X"`는 `y=c0+c1*x+c2*x^2`를 x 구간 위에 그린다. `kind:"X_OF_Y"`는 `x=c0+c1*y+c2*y^2`를 y 구간 위에 그리며, `branch`로 꼭짓점 위쪽(`POSITIVE`)·아래쪽(`NEGATIVE`)·둘 다(`BOTH`, 기본)를 고른다. 엔진은 이 가지들을 `y(x)` 식으로 정확히 바꿔 그리므로 옆으로 열린 포물선도 학생 화면에는 같은 곡선으로 보인다.
+- 가로·세로 배율은 같고, 세로가 너무 길면 최대 1/2까지 줄인다. 좌표축과 눈금은 엔진이 그리며, `axisTickValues`로 눈금을 직접 정할 수 있다. 점 이름·곡선 식 라벨·눈금 라벨이 하나도 없으면 출판 글자 게이트가 막히므로, 다른 라벨이 없을 때는 정확한 눈금 값을 하나 이상 준다.
+- `overlays`(선택)는 다른 그래프 계열과 같은 보조 요소 층이다. `lines`(직선 `y=slope*x+intercept`, 세로선 `x=a`), `points`, `segments`, `guides`, `polygons`를 쓸 수 있고, 모든 좌표는 계산된 그림 안에 있어야 한다(엔진이 화면을 몰래 넓히지 않는다). 원문 그림에 그려진 대칭선·보조선은 `overlays.lines`로 그대로 살린다.
+- 엔진은 각 곡선·가지를 정확한 구간과 식으로 고정하고, 독립 관측기는 같은 계수에서 모든 가지를 다시 계산해 최종 SVG의 각 polyline(태그 `CURVE_<id>`, `CURVE_<id>_POS`/`_NEG`)이 그 곡선 위에 있는지, 자기 구간·가지를 벗어나지 않는지, 양 끝과 중간 호가 맞는지 확인한다. 하나라도 어긋나면 FAIL이다.
+- 오류 코드: `MULTI_CURVE_COUNT_INVALID`(3개 미만·6개 초과), `MULTI_CURVE_FIELD_UNKNOWN:<field>`, `MULTI_CURVE_CURVE_INVALID:<id>`, `MULTI_CURVE_ID_INVALID`, `MULTI_CURVE_KIND_INVALID:<id>`, `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `MULTI_CURVE_NOT_QUADRATIC:<id>`, `MULTI_CURVE_DOMAIN_INVALID:<id>`, `MULTI_CURVE_BRANCH_INVALID:<id>`, `MULTI_CURVE_BRANCH_EMPTY:<id>`, `MULTI_CURVE_LABEL_INVALID:<id>`, `MULTI_CURVE_FRAME_DEGENERATE`, `MULTI_CURVE_TOO_NARROW`.
+
 
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
 

@@ -115,6 +115,7 @@ def _fit_overview_family(plan):
     if plan.get('family')=='trigonometric':return _fit_trigonometric_overview(plan)
     if plan.get('family')=='piecewise-polynomial':return fit_piecewise_polynomial(plan)
     if plan.get('family')=='piecewise-discontinuous':return fit_piecewise_discontinuous(plan)
+    if plan.get('family')=='multi-curve':return fit_multi_curve(plan)
     if plan.get('family')!='polynomial':raise ValueError('UNSUPPORTED_OVERVIEW_FAMILY')
     values=plan.get('coefficients')
     if not isinstance(values,list) or not 1<=len(values)<=5 or any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values):raise ValueError('INVALID_FRAMING_COEFFICIENTS')
@@ -2457,6 +2458,118 @@ def _overlay_anchor_points(plan):
             anchors.append((xf,yf))
         except (ValueError,KeyError,TypeError,ZeroDivisionError):continue
     return anchors
+
+# ---- multi-curve figure: three to six independent nonlinear curves in one plane ---------------------------------
+# A source figure bounded by THREE OR MORE distinct nonlinear curves (for example the four parabolas y=2-x^2,
+# x=2-y^2, y=x^2-2, x=y^2-2 of 22 효천고 2학기 기말 고2 수학II q10). Each curve is one explicit quadratic arc:
+# Y_OF_X is y=c0+c1*x+c2*x^2 on a closed x interval; X_OF_Y is x=c0+c1*y+c2*y^2 on a closed y interval and is
+# drawn as its monotone branch(es) above/below its vertex. The framer recomputes the bounding box at one scale
+# (vertical squeeze at most 1/2), freezes every branch's exact x interval and sampling expression, and refuses a
+# curve it cannot represent. The independent observer recomputes every branch from the same coefficients and reads
+# the final SVG; it never trusts a frozen expression.
+MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors'}
+MULTI_CURVE_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().^ ]{1,40}'
+MULTI_CURVE_MIN_CURVES=3
+MULTI_CURVE_MAX_CURVES=6
+MULTI_CURVE_OVERVIEW_POLICY='MULTI_CURVE_OVERVIEW_v1'
+MULTI_CURVE_BRANCHES=('BOTH','POSITIVE','NEGATIVE')
+
+def _mc_coefficients(values,code):
+    if not isinstance(values,list) or len(values)!=3:raise ValueError(code)
+    return [pp_surd(value,code) for value in values]
+
+def _mc_interval(value,code):
+    if not isinstance(value,list) or len(value)!=2:raise ValueError(code)
+    lo=pp_surd(value[0],code);hi=pp_surd(value[1],code)
+    if not lo<hi:raise ValueError(code)
+    return lo,hi
+
+def _mc_sideways_branches(curve):
+    """The monotone branches of x=c0+c1*y+c2*y^2 on its y interval. A branch is POSITIVE (y >= vertex) or NEGATIVE
+    (y <= vertex); its x interval is [vertexX, x(far y)] sorted, and its sampling expression is y(x) derived exactly."""
+    c0,c1,c2=curve['coefficients'];ylo,yhi=curve['interval'];side=curve.get('branch','BOTH')
+    yv=-c1/(2*c2);xv=c0+c1*yv+c2*yv*yv
+    rows=[]
+    if side in ('BOTH','POSITIVE') and yhi>yv:
+        xe=c0+c1*yhi+c2*yhi*yhi
+        rows.append({'side':'POSITIVE','xInterval':(min(xv,xe),max(xv,xe)),'yInterval':(yv,yhi),'sign':1,'vertex':(xv,yv)})
+    if side in ('BOTH','NEGATIVE') and ylo<yv:
+        xe=c0+c1*ylo+c2*ylo*ylo
+        rows.append({'side':'NEGATIVE','xInterval':(min(xv,xe),max(xv,xe)),'yInterval':(ylo,yv),'sign':-1,'vertex':(xv,yv)})
+    if not rows:raise ValueError('MULTI_CURVE_BRANCH_EMPTY:'+curve['id'])
+    for row in rows:
+        x_vertex,y_vertex=row['vertex']
+        row['expression']=f'({_pp_text(y_vertex)})+({row["sign"]})*sqrt((x-({_pp_text(x_vertex)}))/({_pp_text(c2)}))'
+    return rows
+
+def multi_curve_source(plan):
+    unknown=set(plan)-MULTI_CURVE_FIELDS
+    if unknown:raise ValueError('MULTI_CURVE_FIELD_UNKNOWN:'+sorted(unknown)[0])
+    raw=plan.get('curves')
+    if not isinstance(raw,list) or not MULTI_CURVE_MIN_CURVES<=len(raw)<=MULTI_CURVE_MAX_CURVES:raise ValueError('MULTI_CURVE_COUNT_INVALID')
+    curves=[];ids=set()
+    for entry in raw:
+        if not isinstance(entry,dict):raise ValueError('MULTI_CURVE_CURVE_INVALID')
+        ident=entry.get('id')
+        if not isinstance(ident,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,15}',ident) or ident in ids:raise ValueError('MULTI_CURVE_ID_INVALID')
+        ids.add(ident)
+        kind=entry.get('kind')
+        if kind not in ('Y_OF_X','X_OF_Y'):raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
+        if set(entry)-{'id','kind','coefficients','domain','branch','label'}:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
+        if 'label' in entry and (not isinstance(entry['label'],str) or not re.fullmatch(MULTI_CURVE_LABEL_PATTERN,entry['label'])):raise ValueError('MULTI_CURVE_LABEL_INVALID:'+ident)
+        coefficients=_mc_coefficients(entry.get('coefficients'),'MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+        if coefficients[2]==0:raise ValueError('MULTI_CURVE_NOT_QUADRATIC:'+ident)
+        interval=_mc_interval(entry.get('domain'),'MULTI_CURVE_DOMAIN_INVALID:'+ident)
+        branch=entry.get('branch','BOTH')
+        if kind=='Y_OF_X' and 'branch' in entry:raise ValueError('MULTI_CURVE_BRANCH_INVALID:'+ident)
+        if kind=='X_OF_Y' and branch not in MULTI_CURVE_BRANCHES:raise ValueError('MULTI_CURVE_BRANCH_INVALID:'+ident)
+        curve={'id':ident,'kind':kind,'coefficients':coefficients,'interval':interval,'branch':branch}
+        curve['branches']=_mc_sideways_branches(curve) if kind=='X_OF_Y' else [{'side':'FUNCTION','xInterval':interval,'yInterval':None}]
+        curves.append(curve)
+    return curves
+
+def _mc_bbox_points(curves):
+    points=[]
+    for curve in curves:
+        c0,c1,c2=curve['coefficients'];lo,hi=curve['interval']
+        if curve['kind']=='Y_OF_X':
+            points.extend([(lo,c0+c1*lo+c2*lo*lo),(hi,c0+c1*hi+c2*hi*hi)])
+            vertex=-c1/(2*c2)
+            if lo<vertex<hi:points.append((vertex,c0+c1*vertex+c2*vertex*vertex))
+        else:
+            points.extend([(c0+c1*lo+c2*lo*lo,lo),(c0+c1*hi+c2*hi*hi,hi)])
+            vertex=-c1/(2*c2)
+            if lo<vertex<hi:points.append((c0+c1*vertex+c2*vertex*vertex,vertex))
+    return [(float(x_value),float(y_value)) for x_value,y_value in points]
+
+def fit_multi_curve(plan):
+    curves=multi_curve_source(plan)
+    points=_mc_bbox_points(curves)
+    points.extend((float(x_value),float(y_value)) for x_value,y_value in plan.get('overlayAnchors',[]))
+    xs=[point[0] for point in points];ys=[point[1] for point in points]
+    xspan,yspan=max(xs)-min(xs),max(ys)-min(ys)
+    if not math.isfinite(xspan) or not math.isfinite(yspan) or xspan<=0 or yspan<=0:raise ValueError('MULTI_CURVE_FRAME_DEGENERATE')
+    limit=plot_height_limit(plan)
+    for ratio in axis_ratios(plan,points,limit):
+        viewport,height,scale=equal_unit_frame(points,limit,ratio)
+        if xspan*scale>=EQUAL_UNIT_MIN_CURVE_PX and yspan*scale*ratio>=EQUAL_UNIT_MIN_CURVE_PX:break
+    else:raise ValueError('MULTI_CURVE_TOO_NARROW')
+    rows=[]
+    for curve in curves:
+        row={'id':curve['id'],'kind':curve['kind'],'coefficients':[_pp_text(value) for value in curve['coefficients']],'interval':[_pp_text(value) for value in curve['interval']]}
+        if curve['kind']=='X_OF_Y':row['branch']=curve['branch']
+        row['branches']=[]
+        for branch in curve['branches']:
+            entry={'side':branch['side'],'xInterval':[_pp_text(value) for value in branch['xInterval']]}
+            if branch['yInterval'] is not None:entry['yInterval']=[_pp_text(value) for value in branch['yInterval']]
+            if branch.get('expression') is not None:entry['expression']=branch['expression']
+            row['branches'].append(entry)
+        rows.append(row)
+    features={'schemaVersion':'MULTI_CURVE_FEATURES_v1','curves':rows}
+    fitted={key:value for key,value in plan.items() if key not in ('domain','viewport')}
+    fitted.update({'domain':[viewport[0],viewport[1]],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':MULTI_CURVE_OVERVIEW_POLICY,
+                   'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height},'multiCurveFeatures':features})
+    return {'graphPlan':fitted,'policy':MULTI_CURVE_OVERVIEW_POLICY,'sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
 def fit_overview(plan):
     """The family framer, then the optional graph overlays: every overlay coordinate is recomputed exactly and must stay inside the
