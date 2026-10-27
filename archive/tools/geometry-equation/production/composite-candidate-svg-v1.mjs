@@ -7,8 +7,11 @@ import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {NUMBER_LINE_CAPABILITY,composeNumberLinePanel} from './quadratic-inequality-chain-v1.mjs';
 import {SOLID_CAPABILITY,composeSolidFigurePanel} from './solid-figure-v1.mjs';
+import {isPlaneFigure} from './plane-marks.mjs';
 export const isNumberLinePanel=plan=>plan?.capability===NUMBER_LINE_CAPABILITY;
 export const isSolidPanel=plan=>plan?.capability===SOLID_CAPABILITY;
+// A plane-figure panel: the same axis-free PLANE_FIGURE_v1 construction plan authors already use for one figure.
+export const isPlanePanel=plan=>plan?.capability==='construction-spike-v1'&&plan.graphPlan===undefined&&isPlaneFigure(plan);
 
 export const COMPOSITE_SVG_VERSION='composite-candidate-svg-v1';
 export const COMPOSITE_CAPABILITY='composite-panels-v1';
@@ -17,6 +20,15 @@ export const COMPOSITE_TOP_MARGIN=32;
 export const COMPOSITE_CAPTION_ROW=44;
 export const COMPOSITE_PANEL_GAP=8;
 const SIDE_MARGIN=32,CAPTION_GAP=4,FORMULA_GAP=16,MAX_PANELS=3;
+// A grid caption stays inside its own cell: 8 px of air on each side keeps two option captions from reading as one phrase.
+const GRID_CAPTION_PAD=8;
+// An all-plane stack is a grid: two or five option figures are the real cases (five options, two sub-items). The grid is never wider than
+// two columns: the Archive displays the solution image in an about 298 CSS px column, and the 11 CSS px label floor inside the 32 px base
+// font cap means the measured intrinsic width may not exceed about 848 SVG units. A panel is at least 384 units wide, so a three-column
+// row (3*384+2*8 = 1168) is refused at measure with UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE; two columns (776) pass.
+// Graph stacks never take this path.
+export const COMPOSITE_MAX_PLANE_PANELS=5;
+export const compositeGridColumns=count=>Math.min(Math.max(count,1),2);
 // Shared rows above a three-panel stack (line equations every panel draws the same): 34 apart, then a gap before the first caption.
 export const COMPOSITE_SHARED_ROW=56;// a shared line equation may carry a full-size fraction (about 41 px high)
 const TWO_PANEL_PLOT_HEIGHT=300,THREE_PANEL_PLOT_HEIGHT=220;
@@ -31,22 +43,47 @@ class Stop extends Error{constructor(status,detail=null){super(status);this.stat
 const isDomainCode=error=>error?.constructor===Error&&/^[A-Z][A-Z0-9_]*(?::|$)/.test(error.message);
 const digest=(value,reason)=>{try{return objectSha(value);}catch{throw new Stop('COMPOSITE_INPUT_NOT_CANONICAL',{reason});}};
 
-/** The panels of a composite plan, checked: 2-3 quadratic graph plans, each with a caption {math?, text?} (at least one part). */
+/** The panels of a composite plan, checked: 2-3 graph/number-line/solid panels stacked, or 2-5 PLANE_FIGURE_v1 panels in a grid. */
 export function compositePanels(plan){
   const bad=reason=>{throw new Stop('COMPOSITE_PLAN_INVALID',{reason});};
-  if(plan?.capability!==COMPOSITE_CAPABILITY||!Array.isArray(plan.panels)||plan.panels.length<(plan.chain==='number-line-figure-v1'||plan.chain===SOLID_CAPABILITY?1:2)||plan.panels.length>MAX_PANELS)bad('PANELS');
+  if(plan?.capability!==COMPOSITE_CAPABILITY||!Array.isArray(plan.panels))bad('PANELS');
+  const planePanels=plan.panels.map(panel=>isPlanePanel(panel?.plan));
+  const grid=planePanels.length>0&&planePanels.every(Boolean);
+  if(grid){
+    // An all-plane stack is a grid: no chain marker, 2-5 panels, every panel a PLANE_FIGURE_v1 construction plan.
+    if(plan.chain!==undefined)bad('CHAIN');
+    if(plan.panels.length<2||plan.panels.length>COMPOSITE_MAX_PLANE_PANELS)bad('PANELS');
+  }else{
+    // A plane panel is never mixed into a graph/number-line/solid stack: the two layouts use different geometry units.
+    if(planePanels.some(Boolean))bad('PANEL_PLANE_MIXED_'+planePanels.indexOf(true));
+    if(plan.panels.length<(plan.chain==='number-line-figure-v1'||plan.chain===SOLID_CAPABILITY?1:2)||plan.panels.length>MAX_PANELS)bad('PANELS');
+  }
   // Three panels with their own formula headers cannot fit the 640 CSS px stack: each formula moves to its caption row and a line every
   // panel draws identically (same id, slope and intercept) is written once above the stack (phase2 compositeHeader / COMPOSITE_PANEL_CANVAS).
-  const three=plan.panels.length===3,lineKey=line=>JSON.stringify([line.id,line.slope,line.intercept]);
+  const three=!grid&&plan.panels.length===3,lineKey=line=>JSON.stringify([line.id,line.slope,line.intercept]);
   const checked=plan.panels.map((panel,index)=>{
-    const caption=panel?.caption,numberLine=isNumberLinePanel(panel?.plan),solid=isSolidPanel(panel?.plan);
+    const caption=panel?.caption;
+    if(!caption||typeof caption!=='object'||Array.isArray(caption)||Object.keys(caption).some(key=>!['math','text'].includes(key))||(!caption.math&&!caption.text)
+      ||(caption.math!==undefined&&(typeof caption.math!=='string'||!CAPTION_MATH.test(caption.math)))||(caption.text!==undefined&&(typeof caption.text!=='string'||!caption.text||caption.text.length>24)))bad('PANEL_CAPTION_'+index);
+    if(grid){
+      // Same schema bounds the single PLANE_FIGURE_v1 path enforces; the panel keeps its own model, marks and observer audits.
+      const panelPlan=panel?.plan,math=panelPlan?.mathPlan;
+      if(!panelPlan||typeof panelPlan!=='object'||Array.isArray(panelPlan)||panelPlan.capability!=='construction-spike-v1'||panelPlan.graphPlan!==undefined||!isPlaneFigure(panelPlan))bad('PANEL_PLAN_'+index);
+      if(!math||typeof math!=='object'||Array.isArray(math)||math.schemaVersion!=='construction-spike-v1'||!Array.isArray(math.nodes)||!math.nodes.length)bad('PANEL_PLANE_MATH_'+index);
+      if(math.nodes.some(node=>!node||typeof node!=='object'||typeof node.op!=='string'||node.op.startsWith('NORMALIZATION_')))bad('PANEL_PLANE_FRAME_HELPERS_'+index);
+      if(!math.nodes.some(node=>node?.op==='SOURCE_POINT'))bad('PANEL_PLANE_SOURCE_POINT_'+index);
+      if(panelPlan.coordinateCanvas!==undefined){
+        const canvas=panelPlan.coordinateCanvas;
+        if(!canvas||typeof canvas!=='object'||Array.isArray(canvas)||!Number.isSafeInteger(canvas.width)||canvas.width<384||canvas.width>720||!Number.isSafeInteger(canvas.height)||canvas.height<320||canvas.height>600)bad('PANEL_PLANE_CANVAS_'+index);
+      }
+      return {index,plan:panelPlan,caption};
+    }
+    const numberLine=isNumberLinePanel(panel?.plan),solid=isSolidPanel(panel?.plan);
     // A solid figure (solid-figure-v1) is the only panel of its stack.
     if(solid&&(plan.chain!==SOLID_CAPABILITY||plan.panels.length!==1))bad('SOLID_PANEL_PLACEMENT_'+index);
     // A number line (quadratic-inequality-chain-v1) is the last panel of a two-panel stack, under its quadratic graph.
     if(numberLine&&(three||index!==plan.panels.length-1||!panel.plan.numberLine||typeof panel.plan.numberLine!=='object'||Object.keys(panel.plan).some(key=>!['capability','numberLine','pointNames'].includes(key))))bad('NUMBER_LINE_PANEL_PLACEMENT_'+index);
     if(!numberLine&&!solid&&(!panel?.plan||panel.plan.capability!=='polynomial-spike-v1'||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object'))bad('PANEL_PLAN_'+index);
-    if(!caption||typeof caption!=='object'||Array.isArray(caption)||Object.keys(caption).some(key=>!['math','text'].includes(key))||(!caption.math&&!caption.text)
-      ||(caption.math!==undefined&&(typeof caption.math!=='string'||!CAPTION_MATH.test(caption.math)))||(caption.text!==undefined&&(typeof caption.text!=='string'||!caption.text||caption.text.length>24)))bad('PANEL_CAPTION_'+index);
     if(numberLine||solid)return {index,plan:panel.plan,caption};
     // compositeHeader is the composite's own field: an author never writes it, and a two-panel stack keeps the standard formula header.
     if(!three&&Object.hasOwn(panel.plan.graphPlan,'compositeHeader'))bad('PANEL_COMPOSITE_HEADER_'+index);
@@ -57,6 +94,7 @@ export function compositePanels(plan){
     }
     return {index,plan:panel.plan,caption};
   });
+  if(grid)return checked;
   const sharedLines=three?(checked[0].plan.graphPlan.lines??[]).filter(line=>checked.every(item=>(item.plan.graphPlan.lines??[]).some(other=>lineKey(other)===lineKey(line)))).map(line=>line.id):[];
   // Two cubic/quartic cases: their long formula has no room inside the panel beside the y-axis, so each panel keeps its own plot and gains
   // an 80 px header band above it where the formula is written (overviewHeaderBand -> phase2 CUBIC_COMPOSITE_PANEL_CANVAS).
@@ -72,8 +110,19 @@ export function compositePanels(plan){
     return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three?{compositeHeader:{formula:'CAPTION',sharedLines}}:twoCubic?{overviewHeaderBand:true}:{})}}};
   });
 }
-/** The stacked size for panels of the given sizes (top margin, caption row per panel, gaps between panels): what the Archive policy must be measured for. */
-export const compositeStackSize=(sizes,sharedRows=0)=>({width:Math.max(...sizes.map(size=>size.width)),height:COMPOSITE_TOP_MARGIN+(sharedRows?sharedRows*COMPOSITE_SHARED_ROW+SHARED_ROWS_GAP:0)+sizes.reduce((sum,size)=>sum+COMPOSITE_CAPTION_ROW+size.height,0)+COMPOSITE_PANEL_GAP*(sizes.length-1)});
+/** The stack or grid layout of the checked panels: graph/number-line/solid stacks stay one column; all-plane panels become a grid. */
+export const compositePanelLayout=checked=>checked.length>1&&checked.every(item=>isPlanePanel(item.plan))
+  ?{kind:'GRID',columns:compositeGridColumns(checked.length),rows:Math.ceil(checked.length/compositeGridColumns(checked.length))}
+  :{kind:'STACK',columns:1,rows:checked.length};
+/** The stacked/gridded size for panels of the given sizes (top margin, caption row per panel, gaps between panels): what the Archive policy must be measured for. */
+export const compositeStackSize=(sizes,sharedRows=0,layout={columns:1})=>{
+  const columns=layout?.columns??1,shared=sharedRows?sharedRows*COMPOSITE_SHARED_ROW+SHARED_ROWS_GAP:0;
+  if(columns===1)return {width:Math.max(...sizes.map(size=>size.width)),height:COMPOSITE_TOP_MARGIN+shared+sizes.reduce((sum,size)=>sum+COMPOSITE_CAPTION_ROW+size.height,0)+COMPOSITE_PANEL_GAP*(sizes.length-1),columns:1,rows:sizes.length};
+  // A grid cell is as big as the largest panel of its row family: two panels share a column width and a row height, so no panel is
+  // resized or distorted, and the smaller ones are centred in their cell.
+  const cellWidth=Math.max(...sizes.map(size=>size.width)),cellHeight=Math.max(...sizes.map(size=>size.height)),rows=Math.ceil(sizes.length/columns);
+  return {width:cellWidth*columns+COMPOSITE_PANEL_GAP*(columns-1),height:COMPOSITE_TOP_MARGIN+shared+rows*(COMPOSITE_CAPTION_ROW+cellHeight)+COMPOSITE_PANEL_GAP*(rows-1),columns,rows,cellWidth,cellHeight};
+};
 /** The number of shared rows above the stack of checked panels (0 unless the panels carry a compositeHeader). */
 export const compositeSharedRowCount=checked=>checked[0]?.plan?.graphPlan?.compositeHeader?.sharedLines?.length??0;
 /**
@@ -121,12 +170,14 @@ export function compositePanelBytes(svg){
  */
 export async function composeCompositeCandidate({plan,panels,identity,typographyPolicy,repairContext=null,browser}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,panelSpecSha256s:[],panelSvgSha256s:[],captionFragmentSha256s:[],sharedRowFragmentSha256s:[],svgSha256:null,renderedLayoutSha256:null};
-  const state={svg:null,panels:[],renderedLayout:{status:'NOT_RUN'}};
-  const outcome=(status,detail=null)=>({schemaVersion:COMPOSITE_SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage,panelSpecSha256s:[...lineage.panelSpecSha256s],panelSvgSha256s:[...lineage.panelSvgSha256s],captionFragmentSha256s:[...lineage.captionFragmentSha256s],sharedRowFragmentSha256s:[...lineage.sharedRowFragmentSha256s]},panels:state.panels,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false,qualification:'NOT_RUN'});
+  const state={svg:null,panels:[],renderedLayout:{status:'NOT_RUN'},layout:null};
+  const outcome=(status,detail=null)=>({schemaVersion:COMPOSITE_SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage,panelSpecSha256s:[...lineage.panelSpecSha256s],panelSvgSha256s:[...lineage.panelSvgSha256s],captionFragmentSha256s:[...lineage.captionFragmentSha256s],sharedRowFragmentSha256s:[...lineage.sharedRowFragmentSha256s]},panels:state.panels,renderedLayout:state.renderedLayout,layout:state.layout,layoutRepairs:[],productionAuthorized:false,qualification:'NOT_RUN'});
   let ownBrowser=null;
   const chrome=async()=>browser??(ownBrowser??=await launchBrowser());
   try{
     const checked=compositePanels(plan);
+    const panelLayout=compositePanelLayout(checked);
+    state.layout={kind:panelLayout.kind,columns:panelLayout.columns,rows:panelLayout.rows};
     if(!Array.isArray(panels)||panels.length!==checked.length||panels.some(panel=>!panel||typeof panel!=='object'||!panel.plan||!panel.model))throw new Stop('COMPOSITE_PANEL_MODELS_MISSING');
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('COMPOSITE_TYPOGRAPHY_POLICY_INVALID');
     lineage.planSha256=digest(plan,'plan');lineage.modelSha256=digest({panels:panels.map(panel=>panel.model)},'model');lineage.typographyPolicySha256=digest(typographyPolicy,'typographyPolicy');
@@ -165,7 +216,8 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('COMPOSITE_SHARED_ROW_TYPESET_ERROR',{labelId:label.id,code:error.message});}
     }
     lineage.sharedRowFragmentSha256s.push(...sharedRows.map(fragment=>fragment.fragmentSha256));
-    const {width,height:stackHeight}=compositeStackSize(parts.map(part=>part.size),sharedRows.length);
+    if(panelLayout.kind==='GRID'&&sharedRows.length)throw new Stop('COMPOSITE_GRID_HEADER_UNSUPPORTED');
+    const {width,height:stackHeight,cellWidth,cellHeight}=compositeStackSize(parts.map(part=>part.size),sharedRows.length,panelLayout);
     if(stackHeight*typographyPolicy.displayScale>COMPOSITE_MAX_DISPLAY_HEIGHT_PX)throw new Stop('COMPOSITE_TOO_TALL',{displayHeightPx:stackHeight*typographyPolicy.displayScale,limitPx:COMPOSITE_MAX_DISPLAY_HEIGHT_PX});
     let y=COMPOSITE_TOP_MARGIN,body='';
     if(sharedRows.length)body+=`<g id="shared-rows" data-role="shared-rows" data-font-px="${typographyPolicy.baseFontPx}">`;
@@ -175,21 +227,42 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       y+=COMPOSITE_SHARED_ROW;
     });
     if(sharedRows.length)body+='</g>',y+=SHARED_ROWS_GAP;
-    parts.forEach((part,i)=>{
-      const fragments=captions[i],captionWidth=fragments.reduce((sum,fragment,k)=>sum+fragment.intrinsic.width+(k?fragment.formula?FORMULA_GAP:CAPTION_GAP:0),0);
-      if(captionWidth>width-2*SIDE_MARGIN||fragments.some(fragment=>fragment.intrinsic.height>COMPOSITE_CAPTION_ROW))throw new Stop('COMPOSITE_CAPTION_TOO_LARGE',{panel:i,width:captionWidth});
-      let x=(width-captionWidth)/2;
-      body+=`<g id="p${i+1}-caption" data-role="caption" data-panel="${i+1}" data-font-px="${typographyPolicy.baseFontPx}">`;
-      for(const fragment of fragments){
-        body+=`<g id="p${i+1}-${fragment.labelId}" transform="translate(${x} ${y+(COMPOSITE_CAPTION_ROW-fragment.intrinsic.height)/2})" data-label-kind="CAPTION" data-owner="panel-${i+1}" data-fragment-sha="${fragment.fragmentSha256}">${fragment.svg}</g>`;
-        x+=fragment.intrinsic.width+(fragments[fragments.indexOf(fragment)+1]?.formula?FORMULA_GAP:CAPTION_GAP);
-      }
-      body+='</g>';
-      y+=COMPOSITE_CAPTION_ROW;
-      body+=`<image id="p${i+1}-panel" data-panel="${i+1}" data-panel-svg-sha="${lineage.panelSvgSha256s[i]}" x="${(width-part.size.width)/2}" y="${y}" width="${part.size.width}" height="${part.size.height}" href="data:image/svg+xml;base64,${Buffer.from(part.svg,'utf8').toString('base64')}"/>`;
-      y+=part.size.height+(i<parts.length-1?COMPOSITE_PANEL_GAP:0);
-    });
-    if(y!==stackHeight)throw new Stop('COMPOSITE_STACK_SIZE_MISMATCH',{expected:stackHeight,actual:y});
+    if(panelLayout.kind==='GRID'){
+      // A grid: caption rows and panel boxes line up in equal cells; each panel keeps its audited SVG bytes and is only centred in its cell.
+      // A caption may not reach into the next cell, or two option labels would read as one.
+      const {columns}=panelLayout,captionLimit=cellWidth-2*GRID_CAPTION_PAD;
+      parts.forEach((part,i)=>{
+        const fragments=captions[i],captionWidth=fragments.reduce((sum,fragment,k)=>sum+fragment.intrinsic.width+(k?fragment.formula?FORMULA_GAP:CAPTION_GAP:0),0);
+        if(captionWidth>captionLimit||fragments.some(fragment=>fragment.intrinsic.height>COMPOSITE_CAPTION_ROW))throw new Stop('COMPOSITE_CAPTION_TOO_LARGE',{panel:i,width:captionWidth,limit:captionLimit});
+        const column=i%columns,row=Math.floor(i/columns),cellX=column*(cellWidth+COMPOSITE_PANEL_GAP),rowY=COMPOSITE_TOP_MARGIN+row*(COMPOSITE_CAPTION_ROW+cellHeight+COMPOSITE_PANEL_GAP);
+        let x=cellX+(cellWidth-captionWidth)/2;
+        body+=`<g id="p${i+1}-caption" data-role="caption" data-panel="${i+1}" data-font-px="${typographyPolicy.baseFontPx}">`;
+        for(const fragment of fragments){
+          body+=`<g id="p${i+1}-${fragment.labelId}" transform="translate(${x} ${rowY+(COMPOSITE_CAPTION_ROW-fragment.intrinsic.height)/2})" data-label-kind="CAPTION" data-owner="panel-${i+1}" data-fragment-sha="${fragment.fragmentSha256}">${fragment.svg}</g>`;
+          x+=fragment.intrinsic.width+(fragments[fragments.indexOf(fragment)+1]?.formula?FORMULA_GAP:CAPTION_GAP);
+        }
+        body+='</g>';
+        body+=`<image id="p${i+1}-panel" data-panel="${i+1}" data-panel-svg-sha="${lineage.panelSvgSha256s[i]}" x="${cellX+(cellWidth-part.size.width)/2}" y="${rowY+COMPOSITE_CAPTION_ROW+(cellHeight-part.size.height)/2}" width="${part.size.width}" height="${part.size.height}" href="data:image/svg+xml;base64,${Buffer.from(part.svg,'utf8').toString('base64')}"/>`;
+      });
+      y=COMPOSITE_TOP_MARGIN+panelLayout.rows*(COMPOSITE_CAPTION_ROW+cellHeight)+COMPOSITE_PANEL_GAP*(panelLayout.rows-1);
+      if(y!==stackHeight)throw new Stop('COMPOSITE_STACK_SIZE_MISMATCH',{expected:stackHeight,actual:y});
+    }else{
+      parts.forEach((part,i)=>{
+        const fragments=captions[i],captionWidth=fragments.reduce((sum,fragment,k)=>sum+fragment.intrinsic.width+(k?fragment.formula?FORMULA_GAP:CAPTION_GAP:0),0);
+        if(captionWidth>width-2*SIDE_MARGIN||fragments.some(fragment=>fragment.intrinsic.height>COMPOSITE_CAPTION_ROW))throw new Stop('COMPOSITE_CAPTION_TOO_LARGE',{panel:i,width:captionWidth});
+        let x=(width-captionWidth)/2;
+        body+=`<g id="p${i+1}-caption" data-role="caption" data-panel="${i+1}" data-font-px="${typographyPolicy.baseFontPx}">`;
+        for(const fragment of fragments){
+          body+=`<g id="p${i+1}-${fragment.labelId}" transform="translate(${x} ${y+(COMPOSITE_CAPTION_ROW-fragment.intrinsic.height)/2})" data-label-kind="CAPTION" data-owner="panel-${i+1}" data-fragment-sha="${fragment.fragmentSha256}">${fragment.svg}</g>`;
+          x+=fragment.intrinsic.width+(fragments[fragments.indexOf(fragment)+1]?.formula?FORMULA_GAP:CAPTION_GAP);
+        }
+        body+='</g>';
+        y+=COMPOSITE_CAPTION_ROW;
+        body+=`<image id="p${i+1}-panel" data-panel="${i+1}" data-panel-svg-sha="${lineage.panelSvgSha256s[i]}" x="${(width-part.size.width)/2}" y="${y}" width="${part.size.width}" height="${part.size.height}" href="data:image/svg+xml;base64,${Buffer.from(part.svg,'utf8').toString('base64')}"/>`;
+        y+=part.size.height+(i<parts.length-1?COMPOSITE_PANEL_GAP:0);
+      });
+      if(y!==stackHeight)throw new Stop('COMPOSITE_STACK_SIZE_MISMATCH',{expected:stackHeight,actual:y});
+    }
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${y}" viewBox="0 0 ${width} ${y}" data-composite="${COMPOSITE_CAPABILITY}">${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     const display={width:width*typographyPolicy.displayScale,height:y*typographyPolicy.displayScale};
