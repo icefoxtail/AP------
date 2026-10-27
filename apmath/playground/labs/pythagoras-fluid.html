@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AP Math Playground · 피타고라스 정리와 정사각형 분할 실험실</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --bg: #09090D;
+      --surface: #120E18;
+      --card: #181220;
+      --accent-gold: #D8B77E;
+      --accent-emerald: #55CBA3;
+      --accent-amethyst: #A78AC8;
+      --text: #F5F0E9;
+      --text-sub: #BDB8C2;
+      --border: rgba(216, 183, 126, 0.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      height: 60px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(18, 14, 24, 0.9);
+      backdrop-filter: blur(12px);
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .btn-back {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--accent-gold);
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-back:hover { border-color: var(--accent-emerald); color: var(--text); }
+    .lab-title { font-size: 16px; font-weight: 850; }
+    .lab-meta { font-size: 11px; color: var(--accent-emerald); margin-left: 6px; }
+    .layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      overflow: hidden;
+    }
+    #canvasView {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: radial-gradient(circle at center, #1b1322 0%, #09090D 80%);
+    }
+    aside {
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+    }
+    .control-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .control-block label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .val-chip { color: var(--accent-gold); font-family: monospace; font-size: 14px; }
+    input[type=range] { width: 100%; accent-color: var(--accent-emerald); }
+    .proof-box {
+      background: rgba(9, 9, 13, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .proof-formula {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+    .proof-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-bottom: 4px;
+      color: var(--text-sub);
+    }
+    .proof-sum {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 850;
+      color: var(--accent-emerald);
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+    }
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+      aside { height: 260px; border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="../teacher-hub.html" class="btn-back">← 메인 허브로</a>
+      <div>
+        <span class="lab-title">피타고라스 정리와 정사각형 분할</span>
+        <span class="lab-meta">중2 · 기하</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <canvas id="canvasView"></canvas>
+    <aside>
+      <div class="control-block">
+        <label>밑변 길이 a <span class="val-chip" id="valA">3.0</span></label>
+        <input type="range" id="sliderA" min="2.0" max="6.0" step="0.5" value="3.0">
+      </div>
+
+      <div class="control-block">
+        <label>높이 길이 b <span class="val-chip" id="valB">4.0</span></label>
+        <input type="range" id="sliderB" min="2.0" max="6.0" step="0.5" value="4.0">
+      </div>
+
+      <div class="proof-box">
+        <div class="proof-formula">a² + b² = c²</div>
+        <div class="proof-stat"><span>밑변 정사각형 넓이 (a²)</span><span id="statA2">9.00</span></div>
+        <div class="proof-stat"><span>높이 정사각형 넓이 (b²)</span><span id="statB2">16.00</span></div>
+        <div class="proof-stat"><span>빗변 길이 c = √(a² + b²)</span><span id="statC">5.00</span></div>
+        <div class="proof-sum"><span>빗변 정사각형 넓이 (c²)</span><span id="statC2">25.00</span></div>
+      </div>
+
+      <div class="proof-box" style="font-size: 12.5px; color: var(--text-sub);">
+        <strong>유클리드의 시각적 증명:</strong><br>
+        직각을 낀 두 변에 세운 정사각형 <span style="color:var(--accent-emerald);">A</span>와 <span style="color:var(--accent-amethyst);">B</span>의 넓이 합은 빗변 위에 세운 거대한 정사각형 <span style="color:var(--accent-gold);">C</span>의 넓이와 엄밀하게 일치합니다.
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('canvasView');
+    const ctx = canvas.getContext('2d');
+    const sliderA = document.getElementById('sliderA');
+    const sliderB = document.getElementById('sliderB');
+    const valA = document.getElementById('valA');
+    const valB = document.getElementById('valB');
+    const statA2 = document.getElementById('statA2');
+    const statB2 = document.getElementById('statB2');
+    const statC = document.getElementById('statC');
+    const statC2 = document.getElementById('statC2');
+
+    function resize() {
+      canvas.width = canvas.clientWidth * window.devicePixelRatio;
+      canvas.height = canvas.clientHeight * window.devicePixelRatio;
+      draw();
+    }
+    window.addEventListener('resize', resize);
+
+    function update() {
+      const a = parseFloat(sliderA.value);
+      const b = parseFloat(sliderB.value);
+      valA.textContent = a.toFixed(1);
+      valB.textContent = b.toFixed(1);
+
+      const a2 = a * a;
+      const b2 = b * b;
+      const c2 = a2 + b2;
+      const c = Math.sqrt(c2);
+
+      statA2.textContent = a2.toFixed(2);
+      statB2.textContent = b2.toFixed(2);
+      statC.textContent = c.toFixed(2);
+      statC2.textContent = c2.toFixed(2);
+
+      draw();
+    }
+
+    sliderA.addEventListener('input', update);
+    sliderB.addEventListener('input', update);
+
+    function draw() {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const a = parseFloat(sliderA.value);
+      const b = parseFloat(sliderB.value);
+      const c = Math.sqrt(a * a + b * b);
+
+      const scale = Math.min(w, h) / 18;
+      const ox = w * 0.42;
+      const oy = h * 0.58;
+
+      const pxA = a * scale;
+      const pxB = b * scale;
+
+      // Triangle vertices: Right angle at (ox, oy), A at (ox + pxA, oy), B at (ox, oy - pxB)
+      const pRight = { x: ox, y: oy };
+      const pA = { x: ox + pxA, y: oy };
+      const pB = { x: ox, y: oy - pxB };
+
+      // Square on side a (downwards)
+      ctx.beginPath();
+      ctx.rect(ox, oy, pxA, pxA);
+      ctx.fillStyle = 'rgba(85, 203, 163, 0.2)';
+      ctx.fill();
+      ctx.strokeStyle = '#55CBA3';
+      ctx.lineWidth = 2 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // Square on side b (leftwards)
+      ctx.beginPath();
+      ctx.rect(ox - pxB, oy - pxB, pxB, pxB);
+      ctx.fillStyle = 'rgba(167, 138, 200, 0.2)';
+      ctx.fill();
+      ctx.strokeStyle = '#A78AC8';
+      ctx.lineWidth = 2 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // Square on hypotenuse c (towards top-right)
+      // Vector from pB to pA is (pxA, pxB)
+      // Normal vector outwards is (-pxB, pxA) rotated counter-clockwise
+      const nx = pxB;
+      const ny = -pxA;
+      ctx.beginPath();
+      ctx.moveTo(pB.x, pB.y);
+      ctx.lineTo(pA.x, pA.y);
+      ctx.lineTo(pA.x + nx, pA.y + ny);
+      ctx.lineTo(pB.x + nx, pB.y + ny);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(216, 183, 126, 0.22)';
+      ctx.fill();
+      ctx.strokeStyle = '#D8B77E';
+      ctx.lineWidth = 2.5 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // Main right-angled triangle (Emerald outline)
+      ctx.beginPath();
+      ctx.moveTo(pRight.x, pRight.y);
+      ctx.lineTo(pA.x, pA.y);
+      ctx.lineTo(pB.x, pB.y);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(245, 240, 233, 0.15)';
+      ctx.fill();
+      ctx.strokeStyle = '#F5F0E9';
+      ctx.lineWidth = 3 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // Right angle marker
+      const sqSize = 12 * window.devicePixelRatio;
+      ctx.beginPath();
+      ctx.moveTo(ox, oy - sqSize);
+      ctx.lineTo(ox + sqSize, oy - sqSize);
+      ctx.lineTo(ox + sqSize, oy);
+      ctx.strokeStyle = '#F5F0E9';
+      ctx.lineWidth = 1.5 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // Labels inside squares
+      ctx.font = `bold ${13 * window.devicePixelRatio}px Pretendard`;
+      ctx.fillStyle = '#55CBA3';
+      ctx.fillText(`a² = ${(a*a).toFixed(1)}`, ox + pxA / 2 - 25, oy + pxA / 2 + 5);
+
+      ctx.fillStyle = '#A78AC8';
+      ctx.fillText(`b² = ${(b*b).toFixed(1)}`, ox - pxB / 2 - 25, oy - pxB / 2 + 5);
+
+      ctx.fillStyle = '#D8B77E';
+      ctx.fillText(`c² = ${(a*a + b*b).toFixed(1)}`, (pB.x + pA.x + nx) / 2 - 15, (pB.y + pA.y + ny) / 2);
+    }
+
+    resize();
+    update();
+  </script>
+</body>
+</html>

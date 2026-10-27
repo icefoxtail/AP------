@@ -1,0 +1,55 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "curves": [
+   {
+    "id": "top",
+    "kind": "Y_OF_X",
+    "coefficients": ["2", "0", "-1"],
+    "domain": ["-1", "1"],
+    "label": "y=2-x^2"
+   },
+   {
+    "id": "bottom",
+    "kind": "Y_OF_X",
+    "coefficients": ["-2", "0", "1"],
+    "domain": ["-1", "1"]
+   },
+   {
+    "id": "right",
+    "kind": "X_OF_Y",
+    "coefficients": ["2", "0", "-1"],
+    "domain": ["-1", "1"],
+    "branch": "BOTH"
+   },
+   {
+    "id": "left",
+    "kind": "X_OF_Y",
+    "coefficients": ["-2", "0", "1"],
+    "domain": ["-1", "1"],
+    "branch": "BOTH"
+   }
+  ],
+  "axisTickValues": {"x": ["-1", "1"], "y": ["-1", "1"]},
+  "overlays": {
+   "lines": [
+    {"id": "sym1", "slope": "1", "intercept": "0"},
+    {"id": "sym2", "slope": "-1", "intercept": "0"}
+   ]
+  }
+ },
+ "caption": "위쪽 y=2-x^2, 오른쪽 x=2-y^2, 아래쪽 y=x^2-2, 왼쪽 x=y^2-2의 네 포물선으로 둘러싸인 영역이다.",
+ "sourceQuote": "이 도형을 $y=x$와 $y=-x$ 대칭이동을 시켜 완성한 도형이 그림과 같을 때, 네 곡선으로 둘러싸인 부분의 넓이는?",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "y=-x^2+2와 두 직선 y=x, y=-x로 둘러싸인 도형을 두 직선에 대칭이동한 도형",
+   "mappedTo": "graphPlan.curves"
+  }
+ ],
+ "newVisualInformation": [
+  "네 경계가 y=2-x^2, x=2-y^2, y=x^2-2, x=y^2-2임을 보인다",
+  "네 곡선이 (1,1), (-1,1), (-1,-1), (1,-1)에서 만나고 축과 (0,±2), (±2,0)에서 만난다"
+ ]
+}

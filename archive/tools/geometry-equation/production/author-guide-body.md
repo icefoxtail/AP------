@@ -26,7 +26,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 좌표평면의 점, 직선, 원, 도형: `construction-spike-v1` (mathPlan 노드: SOURCE_POINT, SOURCE_LINE, MIDPOINT, PERPENDICULAR_FOOT, INTERSECTION 등). 주어진 점은 SOURCE_POINT, 풀이로 얻는 점은 파생 노드로 쓴다. 파생점에 좌표를 직접 쓰지 않는다.
 - 이차함수(필요하면 직선 포함): `polynomial-spike-v1`. **계수·직선의 기울기·절편이 무리수**(`k=-3±2√3`, `m=3-√7`처럼 접하는 조건으로 나온 값)이면 이 capability가 아니라 `piecewise-polynomial-spike-v1`의 조각 한 개로 쓴다(아래 3-4).
 - 두 이차함수(f와 g)가 만나는 풀이: `piecewise-polynomial-spike-v1`의 `referenceCurves`(아래 3-6).
-- 여러 경우(k=-2일 때, k=3일 때)를 비교하는 풀이: `composite-panels-v1` (경우마다 패널 하나, 2~3개). 삼차·사차 그래프 두 경우(예: a=-1과 a=1/8의 중근)도 2패널로 비교한다(3패널은 이차함수만).
+- 여러 경우(k=-2일 때, k=3일 때)를 비교하는 풀이: `composite-panels-v1` (경우마다 패널 하나, 2~3개). 삼차·사차 그래프 두 경우(예: a=-1과 a=1/8의 중근)도 2패널로 비교한다(3패널은 이차함수만). **평면도형 여러 개**(보기 ①~⑤, 서답형 ①·②)를 나란히 비교하면 그 패널들은 2~5개 격자로 묶는다(아래 3-16).
 - 사인·코사인과 수평선·직선의 교점 개수를 구간에서 세는 풀이: `trigonometric-spike-v1`의 `INTERVAL_PI`(아래 3-7).
 - 이어진 조각 그래프(이차식의 절댓값 등)와 수평선 또는 기울어진 직선: `piecewise-polynomial-spike-v1`(아래 3-3).
 - **끊어지는(불연속) 조각함수**: 조각마다 다른 종류(상수·일차·이차)이고 경계에서 점프하거나 함수값이 따로 정해진 경우, 고립점, 계단함수: `piecewise-discontinuous-spike-v1`(아래 3-15).
@@ -133,7 +133,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - **무리수 점 좌표는 정확한 문자열로:** `{"id":"V","x":"3/2-sqrt(3)","y":"-1/4+3*sqrt(3)"}`처럼 쓰면 엔진이 곡선 위의 점인지 정확히 확인하고, 그림에는 정확한 좌표(분수와 √이 제대로 나온 `V(3/2-√3, -1/4+3√3)`)가 띠에 쓰이며, 소수는 점 위치에만 쓰인다. 소수로 풀어 쓴 좌표(`-0.2320508`)도 받지만(오차 1e-8) 정확한 문자열을 권한다. 포물선의 꼭짓점, 접점, 꺾임점은 이전처럼 `requiredPoints`에 모두 넣는다.
 - **접점·교점:** `referenceLines`의 `intersectionX`에는 곡선과 직선의 교점 x를 하나도 빠짐없이 쓴다. 접하면 중근 하나(`["-sqrt(3)"]`). 교점의 x가 중첩 근호(`(10-2*sqrt(7)-sqrt(216-72*sqrt(7)))/4-2`)여도 되며 엔진과 독립 관측기가 각각 다시 계산해 맞춘다. 접점이 `requiredPoints`의 점과 같으면 그 점 하나로만 그려진다(예: 꼭짓점에서 접하는 수평선).
 - **라벨:** 직선 식은 띠에 `y=(6-2√7)x+(23-8√7)`처럼 쓰이고, 수평선은 `y=-11+4√7`이다. 점 좌표는 `coordinatePlacement:"PANEL"`로 띠에 쓰는 것을 권한다.
-- **두 값(`k=-3±2√3`)을 비교하는 풀이:** `composite-panels-v1`은 `polynomial-spike-v1` 패널만 받으므로 무리수 계수를 못 넣는다. 대표 값 하나를 그림 한 개로 그리고 caption에 값을 쓴다(둘 다 필요하면 plan 두 개).
+- **두 값(`k=-3±2√3`)을 비교하는 풀이:** `composite-panels-v1`의 **그래프 패널**은 `polynomial-spike-v1`만 받으므로 무리수 계수를 못 넣는다. 대표 값 하나를 그림 한 개로 그리고 caption에 값을 쓴다(둘 다 필요하면 plan 두 개). 평면도형 패널은 이 제한과 무관하다(3-16).
 - **구간이 있는 이차함수(`0≤x≤2`에서 최대·최소):** `sourceDomain:{"kind":"INTERVAL","range":[0,2]}`와 함께 쓴다. 끝점의 함수값이 무리수여도 점이 찍힌다. 최대·최소를 보이려면 `referenceLines`에 수평선 `y=M`, `y=m`을 넣는다.
 
 가장 작은 예(`y=x²+kx+5`가 `y=-3x+2`에 접하는 `k=-3+2√3`):
@@ -318,23 +318,6 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 오류 코드: `REGION_BOUNDARY_UNKNOWN`(모르는 점 또는 그리지 않은 변), `REGION_NOT_CLOSED`, `REGION_SELF_INTERSECTING`, `REGION_LOOPS_CROSS`, `REGION_SHAPES_OVERLAP`, `REGION_HOLE_OUTSIDE`, `REGION_ARC_SIDE_AMBIGUOUS`, `REGION_ARC_ENDPOINT_NOT_ON_CIRCLE`, `REGION_DEGENERATE`, `REGION_DEGENERATE_EDGE`, `REGION_FILL_UNSUPPORTED`, `REGION_FIELD_UNKNOWN`, `REGION_FIELD_INVALID`, `REGION_ID_INVALID`, `REGION_ID_DUPLICATE`, `REGION_REQUIRES_EQUAL_UNITS`.
 - 관측기(`plane_regions_observer.py`, `plane-marks-observer-worker.py`가 호출)는 Cindy 점에서 경계를 **다시 계산해** 최종 SVG의 even-odd `<path>`와 꼭짓점·호 끝점·호 중심·반지름·sweep을 맞춰 보고, 획이 없는지, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안에 있고 다른 라벨과 붙지 않았는지 확인한다(`REGION_VERTEX_MISMATCH`, `REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_NOT_BENEATH_STROKES`, `REGION_LABEL_OUTSIDE`, `REGION_LABEL_CROWDS_LABEL`, `UNDECLARED_MARK` 등).
 - **한계.** 관측기는 경계의 모양만 보고 **넓이 값 자체는 검산하지 않는다**: `label`의 수치는 원문·해설과 맞는지 사람이 확인한다(색칠이 넓이 계산을 대신하지 않는다). 한 영역은 even-odd path 하나이므로 도형이 겹치면 칠이 상쇄된다(겹침 금지). 같은 점에서 여러 획이 만나는 중심에 점 이름을 두면 자리가 없어 지시선이 붙을 수 있다. 영역 라벨이 들어갈 안쪽 여백이 없으면 `LAYOUT_INVENTORY_INCOMPLETE`로 실패하니 라벨을 줄이거나 값을 밖으로 뺀다.
-
-### 3-41. 두 원의 호로 이루어진 영역(렌즈·활꼴): 중심이 다른 호를 한 `loop`에 잇기
-
-두 원(또는 두 반원)의 호가 만드는 **렌즈(공통 부분)**·**활꼴(초승달)** 처럼 한 영역의 경계가 **중심이 다른 원호 두 개**인 경우에는 3-9절의 `loop`를 그대로 쓰되 각 `step.arc.center`에 다른 점을 적는다. `displayCircles`로 원을 통째로 그리면 원문에 없는 반대쪽 호까지 보이므로, 원문이 반원만 보여 주면 `planeMarks.arcs`를 `highlight:false`(일반 굵기 실선)로 써서 필요한 호만 긋고 그 호를 영역 경계로 쓴다. 정답지 `item39`(23_금당중 2학기 중간 중2 q21, 히포크라테스의 활꼴)가 이 구성을 실제로 검증한다.
-
-```json
-"arcs":[{"id":"arcAB","circle":"kAB","center":"MAB","from":"A","to":"B","side":"CCW","highlight":false}],
-"regions":[{"id":"lunes","fill":"MEDIUM","label":"54cm^2","factRole":"CONCLUSION","shapes":[
- {"loop":{"start":"A","steps":[{"to":"B","arc":{"center":"MAB","side":"CCW"}},{"to":"A","arc":{"center":"MBC","side":"CW"}}]}},
- {"loop":{"start":"A","steps":[{"to":"C","arc":{"center":"MAC","side":"CW"}},{"to":"A","arc":{"center":"MBC","side":"CCW"}}]}}]}]
-```
-
-- **경계.** 각 호의 두 끝점은 그 중심 원 위에 정확히 있어야 하고(`REGION_ARC_ENDPOINT_NOT_ON_CIRCLE`), 반원(180°)은 `MINOR`/`MAJOR`가 모호하므로 반드시 `CCW`/`CW`를 적는다(`REGION_ARC_SIDE_AMBIGUOUS`). 같은 두 점을 잇는 두 호가 서로 반대쪽으로 불룩하면 그 사이가 활꼴이고, 두 원의 교점을 잇는 두 호이면 렌즈다.
-- **중심은 화면 점이어야 한다.** `planeMarks.arcs.center`와 `loop`의 `arc.center`는 `displayPoints`에 있는 점 id만 가리킬 수 있다(`DISPLAY_ANNOTATION_POINT_NOT_VISIBLE`). 원문이 그 중심을 이름 붙이지 않으면 `MIDPOINT`·`CIRCLE_CENTER_RADIUS` 노드를 `DERIVED_INTERMEDIATE`로 만들고 `displayPoints`에 넣은 뒤 `hiddenPointNames`에 넣어 **이름 없는 점**으로 그린다(4절).
-- **여러 조각을 한 영역으로.** 떨어진 두 활꼴의 **합**을 한 값으로 적을 때는 서로 겹치지 않는 `shapes` 두 개를 한 region에 넣는다(even-odd, 겹치면 `REGION_SHAPES_OVERLAP`). 라벨은 가장 넓은 안쪽 지점(한 조각 안)에 놓이지만 값은 그 region 전체, 곧 두 조각의 합을 뜻하므로 `caption`과 원문의 뜻을 맞춘다.
-- **관측기.** `plane-marks-observer-worker.py` → `plane_regions_observer.py`가 Cindy 점에서 각 호의 중심·반지름·sweep을 다시 계산해 `<path>`의 `A` 명령과 맞추고, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안인지 확인한다(`REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_LABEL_OUTSIDE`). `highlight:false`인 호는 강조 표식으로 세지 않고 경계 획으로만 검사한다.
-- **한계.** 영역 라벨은 식 문법만 받으므로 `(가)`·`(나)` 같은 한글 선택 표지를 그릴 수 없고, 칠은 `LIGHT`/`MEDIUM` 단색뿐이라 빗금(해칭)이 없다. 두 부분을 구분해야 하는 원문은 색 구분과 `caption`으로만 표현하고 없는 기능을 흉내 내지 않는다. 넓이 값 자체는 관측기가 검산하지 않으므로 원문·해설과 직접 대조한다.
 
 ### 3-10. 좌표 그림의 각 표시: 축이 있는 작도에 같은 표식 (`SOURCE_COORDINATE_AXES_v1`, `planeMarks`)
 
@@ -551,6 +534,68 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 조각 7개 이상 `PIECEWISE_TOO_MANY_PIECES`, 잘못된 조각 `PIECEWISE_DISCONTINUOUS_PIECE_INVALID:<n>`, 계수 문법 오류 `PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID`, 잘못된 끝 상태 `PIECEWISE_ENDPOINT_STATE_INVALID:<n>`, 계단 구간 오류 `STEP_INTERVAL_INVALID`, 알 수 없는 필드 `PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:<field>`.
 - **쓰지 않는 필드:** `formula`(불연속함수의 머리줄 식), `referenceCurves`(둘째 불연속 곡선), `domain`, `viewport`는 받지 않는다. 필요하면 caption에 식을 쓰고, 두 함수가 모두 필요하면 그림을 포기하거나 EXEMPT/UNSUPPORTED로 쓴다.
 - 수직선, 세로선, 차수 3 이상 조각, 색칠 영역, 기울어진 기준선은 지원하지 않는다. UNSUPPORTED.
+
+
+### 3-16. 평면도형 여러 개를 한 그림에: `composite-panels-v1` 평면 패널 격자
+
+보기 ①~⑤의 서로 다른 사각형이나 서답형 ①·②의 두 도형처럼 **여러 평면도형을 나란히 비교**할 때, 각각을 지금까지와 같은 `PLANE_FIGURE_v1` plan으로 만든 뒤 `composite-panels-v1`의 패널로 묶는다. 각 패널은 3-8·3-9의 각·눈금·평행·식 라벨·호·영역·점선/화살촉을 그대로 쓰고, 엔진은 패널마다 같은 작도·표식·관측기 경로를 실행한다. 새 수학 primitive나 좌표 변환을 쓰지 않는다.
+
+- **패널 수와 종류.** 평면 패널은 **2~5개**이고 **모두** `construction-spike-v1` + `mathPlan.realization.recipeId:"PLANE_FIGURE_v1"`이어야 한다. 그래프·수직선·입체 패널과 섞으면 `PANEL_PLANE_MIXED_<index>`로 거절한다. 평면도형 하나는 합성이 아니라 단일 `PLANE_FIGURE_v1` plan으로 쓴다(1개는 `PANELS`).
+- **배치.** 자동이다: 2개는 2열 한 줄, 3개·5개는 2열(2줄·3줄), 4개는 2×2. **3열은 쓰지 않는다:** 가장 좁은 384 캔버스 세 개를 한 줄에 두면 가로가 1168 SVG 단위가 되는데, Archive 해설 칸(약 298 CSS px)에서 11 CSS px 하한을 지키려면 기본 글자 크기가 정책 상한 32 px를 넘어 측정 단계에서 `UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE`로 거절된다(2열 776은 통과). 각 패널 위에 caption 한 줄이 붙고, 패널은 열 너비·행 높이가 같은 칸 안에 가운데 놓인다. 캔버스가 다르면 가장 큰 패널에 칸을 맞추고 작은 패널을 가운데 둔다. 그래프 패널의 2~3개 세로 STACK 동작은 그대로이고 이 격자에 섞이지 않는다.
+- **2열일 때 패널 폭.** 격자 가로는 `열 수 × 칸 너비 + 8`이다. 위 시험지의 해설 칸에서 11.25 CSS px를 지키려면 합성 가로가 약 848 SVG 단위 이하여야 하므로(기본 글자 32 px 상한), 2열이면 각 패널 캔버스 폭을 **420 이하**로 잡는다. 384×560 같은 세로 캔버스는 마름모 두 개를 나란히 둘 때 안전하고, 640×560 두 개(합성 1288)는 측정 단계에서 `UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE`로 거절된다. 넓은 그림이 꼭 필요하면 캔버스를 384~416 폭으로 줄이거나, 합성하지 않고 단일 `PLANE_FIGURE_v1` plan으로 나눈다. 실제 상한은 시험지의 해설 칸 너비에 따라 달라지므로 최종 판정은 측정이 한다.
+- **각 패널 plan.** 3-8 그대로다: `SOURCE_POINT` 1개 이상, `NORMALIZATION_*` 없음, `coordinateCanvas`는 384~720 × 320~600(생략하면 384×320), `planeMarks`·`rightAngles`·점선/화살촉 사용 가능. 표식이 가리키는 점은 그 패널의 `displayPoints`에 있어야 한다(단일 그림과 같은 규칙).
+- **caption.** 패널마다 `{math?,text?}` 중 하나 이상이고 `text`는 24자 이내다. 그림 전체의 긴 설명은 합성 plan 최상위 `caption`에 한 번만 쓴다. 캡션이 칸 너비를 넘으면 `COMPOSITE_CAPTION_TOO_LARGE`다.
+- **페이지 상한.** 합성 전체 높이가 640 CSS px를 넘으면 `COMPOSITE_TOO_TALL`이다(Archive 해설 이미지 max-height). 5패널 2열·384×320 캔버스는 776×1140 SVG 단위이고, 표시 배율 약 0.384에서 높이 약 438 CSS px라 상한 안에 들어온다. 세로로 긴 패널이나 큰 캔버스는 높이가 넘칠 수 있으니 패널 수나 캔버스를 줄인다.
+- **검사.** 각 패널은 3-8·3-9의 표식 오류 코드와 독립 관측기(`PLANE_MARKS_AUDIT_FAIL`, `REGION_*`, `LAYOUT_INVENTORY_INCOMPLETE`)를 그대로 통과해야 한다. 합성은 패널 SVG 바이트를 그대로 넣고, 각 패널의 표식 사실을 다시 검사한다. 정적 검사·테스트 통과는 학생 그림 PASS가 아니다.
+
+```json
+{"capability":"composite-panels-v1","panels":[
+  {"caption":{"text":"① 두 대각선은 수직이등분"},"plan":{ /* PLANE_FIGURE_v1 plan */ }},
+  {"caption":{"text":"② BP:PC=5:3"},"plan":{ /* PLANE_FIGURE_v1 plan */ }}],
+ "caption":"두 소문항을 나란히 비교한 해설 그림","sourceConditions":[...],"newVisualInformation":[...]}
+```
+
+### 3-40. 서로 다른 비선형 곡선 세 개 이상을 한 그림에: `multi-curve-figure-v1`
+
+한 문항의 그림이 **서로 다른 비선형 곡선 3개 이상**으로 둘러싸이거나 이루어질 때만 쓴다. 곡선 2개, 곡선 2개+직선 1개, 한 곡선의 조각(가지)은 이 기능의 대상이 아니며 기존 family(`referenceCurves`, `piecewise-*`)를 쓴다. 실제 예: 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선.
+
+```json
+{"capability":"multi-curve-figure-v1","graphPlan":{"family":"multi-curve","curves":[
+  {"id":"top","kind":"Y_OF_X","coefficients":["2","0","-1"],"domain":["-1","1"],"label":"y=2-x^2"},
+  {"id":"bottom","kind":"Y_OF_X","coefficients":["-2","0","1"],"domain":["-1","1"]},
+  {"id":"right","kind":"X_OF_Y","coefficients":["2","0","-1"],"domain":["-1","1"],"branch":"BOTH"},
+  {"id":"left","kind":"X_OF_Y","coefficients":["-2","0","1"],"domain":["-1","1"],"branch":"BOTH"}],
+  "axisTickValues":{"x":["-1","1"],"y":["-1","1"]},
+  "overlays":{"lines":[{"id":"sym1","slope":"1","intercept":"0"},{"id":"sym2","slope":"-1","intercept":"0"}]}},
+ "caption":"위쪽 y=2-x^2, 오른쪽 x=2-y^2, 아래쪽 y=x^2-2, 왼쪽 x=y^2-2의 네 포물선으로 둘러싸인 영역이다."}
+```
+
+- `curves`는 3~6개다. 각 곡선은 `id`(영문 시작, 16자 이내), `kind`, `coefficients`(`[c0,c1,c2]`, x² 또는 y² 계수 `c2`는 0이 아님), `domain`(닫힌 구간의 두 끝)을 쓴다. 계수·끝은 정확한 정수·분수 문자열(또는 한 근호 `p+q*sqrt(r)`)이고 소수를 쓰지 않는다.
+- `label`(선택)은 그 곡선 옆에 그릴 정확한 ASCII 수식 문자열이다(`y=2-x^2`, `x=2-y^2`). 기존 수식 라벨 장치로 그려지며, 쓸 수 없는 글자·TeX는 `MULTI_CURVE_LABEL_INVALID:<id>`로 거절된다. 원문 그림이 곡선의 식을 보여 주면 그 식을 그대로 쓴다.
+- `kind:"Y_OF_X"`는 `y=c0+c1*x+c2*x^2`를 x 구간 위에 그린다. `kind:"X_OF_Y"`는 `x=c0+c1*y+c2*y^2`를 y 구간 위에 그리며, `branch`로 꼭짓점 위쪽(`POSITIVE`)·아래쪽(`NEGATIVE`)·둘 다(`BOTH`, 기본)를 고른다. 엔진은 이 가지들을 `y(x)` 식으로 정확히 바꿔 그리므로 옆으로 열린 포물선도 학생 화면에는 같은 곡선으로 보인다.
+- 가로·세로 배율은 같고, 세로가 너무 길면 최대 1/2까지 줄인다. 좌표축과 눈금은 엔진이 그리며, `axisTickValues`로 눈금을 직접 정할 수 있다. 점 이름·곡선 식 라벨·눈금 라벨이 하나도 없으면 출판 글자 게이트가 막히므로, 다른 라벨이 없을 때는 정확한 눈금 값을 하나 이상 준다.
+- `overlays`(선택)는 다른 그래프 계열과 같은 보조 요소 층이다. `lines`(직선 `y=slope*x+intercept`, 세로선 `x=a`), `points`, `segments`, `guides`, `polygons`를 쓸 수 있고, 모든 좌표는 계산된 그림 안에 있어야 한다(엔진이 화면을 몰래 넓히지 않는다). 원문 그림에 그려진 대칭선·보조선은 `overlays.lines`로 그대로 살린다.
+- 엔진은 각 곡선·가지를 정확한 구간과 식으로 고정하고, 독립 관측기는 같은 계수에서 모든 가지를 다시 계산해 최종 SVG의 각 polyline(태그 `CURVE_<id>`, `CURVE_<id>_POS`/`_NEG`)이 그 곡선 위에 있는지, 자기 구간·가지를 벗어나지 않는지, 양 끝과 중간 호가 맞는지 확인한다. 하나라도 어긋나면 FAIL이다.
+- 오류 코드: `MULTI_CURVE_COUNT_INVALID`(3개 미만·6개 초과), `MULTI_CURVE_FIELD_UNKNOWN:<field>`, `MULTI_CURVE_CURVE_INVALID:<id>`, `MULTI_CURVE_ID_INVALID`, `MULTI_CURVE_KIND_INVALID:<id>`, `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `MULTI_CURVE_NOT_QUADRATIC:<id>`, `MULTI_CURVE_DOMAIN_INVALID:<id>`, `MULTI_CURVE_BRANCH_INVALID:<id>`, `MULTI_CURVE_BRANCH_EMPTY:<id>`, `MULTI_CURVE_LABEL_INVALID:<id>`, `MULTI_CURVE_FRAME_DEGENERATE`, `MULTI_CURVE_TOO_NARROW`.
+
+
+### 3-41. 두 원의 호로 이루어진 영역(렌즈·활꼴): 중심이 다른 호를 한 `loop`에 잇기
+
+두 원(또는 두 반원)의 호가 만드는 **렌즈(공통 부분)**·**활꼴(초승달)** 처럼 한 영역의 경계가 **중심이 다른 원호 두 개**인 경우에는 3-9절의 `loop`를 그대로 쓰되 각 `step.arc.center`에 다른 점을 적는다. `displayCircles`로 원을 통째로 그리면 원문에 없는 반대쪽 호까지 보이므로, 원문이 반원만 보여 주면 `planeMarks.arcs`를 `highlight:false`(일반 굵기 실선)로 써서 필요한 호만 긋고 그 호를 영역 경계로 쓴다. 정답지 `item39`(23_금당중 2학기 중간 중2 q21, 히포크라테스의 활꼴)가 이 구성을 실제로 검증한다.
+
+```json
+"arcs":[{"id":"arcAB","circle":"kAB","center":"MAB","from":"A","to":"B","side":"CCW","highlight":false}],
+"regions":[{"id":"lunes","fill":"MEDIUM","label":"54cm^2","factRole":"CONCLUSION","shapes":[
+ {"loop":{"start":"A","steps":[{"to":"B","arc":{"center":"MAB","side":"CCW"}},{"to":"A","arc":{"center":"MBC","side":"CW"}}]}},
+ {"loop":{"start":"A","steps":[{"to":"C","arc":{"center":"MAC","side":"CW"}},{"to":"A","arc":{"center":"MBC","side":"CCW"}}]}}]}]
+```
+
+- **경계.** 각 호의 두 끝점은 그 중심 원 위에 정확히 있어야 하고(`REGION_ARC_ENDPOINT_NOT_ON_CIRCLE`), 반원(180°)은 `MINOR`/`MAJOR`가 모호하므로 반드시 `CCW`/`CW`를 적는다(`REGION_ARC_SIDE_AMBIGUOUS`). 같은 두 점을 잇는 두 호가 서로 반대쪽으로 불룩하면 그 사이가 활꼴이고, 두 원의 교점을 잇는 두 호이면 렌즈다.
+- **중심은 화면 점이어야 한다.** `planeMarks.arcs.center`와 `loop`의 `arc.center`는 `displayPoints`에 있는 점 id만 가리킬 수 있다(`DISPLAY_ANNOTATION_POINT_NOT_VISIBLE`). 원문이 그 중심을 이름 붙이지 않으면 `MIDPOINT`·`CIRCLE_CENTER_RADIUS` 노드를 `DERIVED_INTERMEDIATE`로 만들고 `displayPoints`에 넣은 뒤 `hiddenPointNames`에 넣어 **이름 없는 점**으로 그린다(4절).
+- **여러 조각을 한 영역으로.** 떨어진 두 활꼴의 **합**을 한 값으로 적을 때는 서로 겹치지 않는 `shapes` 두 개를 한 region에 넣는다(even-odd, 겹치면 `REGION_SHAPES_OVERLAP`). 라벨은 가장 넓은 안쪽 지점(한 조각 안)에 놓이지만 값은 그 region 전체, 곧 두 조각의 합을 뜻하므로 `caption`과 원문의 뜻을 맞춘다.
+- **관측기.** `plane-marks-observer-worker.py` → `plane_regions_observer.py`가 Cindy 점에서 각 호의 중심·반지름·sweep을 다시 계산해 `<path>`의 `A` 명령과 맞추고, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안인지 확인한다(`REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_LABEL_OUTSIDE`). `highlight:false`인 호는 강조 표식으로 세지 않고 경계 획으로만 검사한다.
+- **한계.** 영역 라벨은 식 문법만 받으므로 `(가)`·`(나)` 같은 한글 선택 표지를 그릴 수 없고, 칠은 `LIGHT`/`MEDIUM` 단색뿐이라 빗금(해칭)이 없다. 두 부분을 구분해야 하는 원문은 색 구분과 `caption`으로만 표현하고 없는 기능을 흉내 내지 않는다. 넓이 값 자체는 관측기가 검산하지 않으므로 원문·해설과 직접 대조한다.
+
 
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
 

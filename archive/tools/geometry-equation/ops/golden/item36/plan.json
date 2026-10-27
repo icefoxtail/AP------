@@ -1,0 +1,1258 @@
+{
+ "capability": "composite-panels-v1",
+ "caption": "보기 ①~⑤의 사각형에서 평행사변형이 되는 조건을 비교한다. ① 두 쌍의 대변의 길이, ② 두 쌍의 엇각, ③ AO=OC=2와 AD=BC=5에서 반직선 OB 위에 OE=OD인 E를 잡으면 AECD는 평행사변형이므로 EC=AD=5=BC이고 CO=2<5이므로 O는 중심 C, 반지름 5인 원의 내부이다. B와 E가 모두 그 원과 반직선 OB에서 만나므로 E=B이고 OB=OD이며 AO=OC이므로 ABCD는 평행사변형이다. ④ 한 쌍의 대변의 길이가 같고 엇각이므로 평행사변형, ⑤ 이웃한 두 각의 합이 180도인 것만으로는 두 쌍의 대변이 모두 평행함을 알 수 없다.",
+ "sourceQuote": "다음 사각형 중 평행사변형이 아닌 것은?",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "24_매산중_2학기_중간_중2_수학 q10 보기 ①~⑤의 사각형",
+   "mappedTo": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "보기 ①의 6, 4, 6, 4 길이 라벨과 보기 ②의 80도·20도 엇각, 보기 ③의 AO=OC=2, AD=BC=5, 중심 C 반지름 5인 원의 호와 그 내부의 O, 유도된 E=B와 CE=AD=5, OB=OD, 보기 ④의 6, 6과 70도 엇각, 보기 ⑤의 55도·125도"
+ ],
+ "panels": [
+  {
+   "caption": {
+    "text": "① 대변 두 쌍이 같다"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-3"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "27",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-6",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-6",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     }
+    ],
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "tAB",
+       "ownerSegment": "sAB",
+       "text": "6"
+      },
+      {
+       "id": "tBC",
+       "ownerSegment": "sBC",
+       "text": "4"
+      },
+      {
+       "id": "tCD",
+       "ownerSegment": "sCD",
+       "text": "6"
+      },
+      {
+       "id": "tDA",
+       "ownerSegment": "sDA",
+       "text": "4"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "② 엇각 80°, 20°"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "rational",
+          "numerator": "399",
+          "denominator": "100"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "10"
+         },
+         {
+          "kind": "rational",
+          "numerator": "399",
+          "denominator": "100"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "901",
+          "denominator": "100"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-99",
+          "denominator": "100"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     }
+    ],
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "D",
+        "A",
+        "C"
+       ],
+       "value": 80,
+       "label": "80",
+       "arcs": 2,
+       "equalGroup": 2
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "D"
+       ],
+       "value": 20,
+       "label": "20",
+       "noLabel": true,
+       "arcs": 1,
+       "equalGroup": 1
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "B",
+        "C",
+        "A"
+       ],
+       "value": 80,
+       "label": "80",
+       "arcs": 2,
+       "equalGroup": 2
+      },
+      {
+       "id": "aD",
+       "refs": [
+        "C",
+        "D",
+        "B"
+       ],
+       "value": 20,
+       "label": "20",
+       "noLabel": true,
+       "arcs": 1,
+       "equalGroup": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "③ E=B,CE=AD=5"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "-2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "MIDPOINT",
+       "inputs": [
+        "A",
+        "C"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "cCE",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "C"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "5"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "P",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "dy": {
+         "kind": "expression",
+         "op": "div",
+         "args": [
+          {
+           "kind": "expression",
+           "op": "sqrt",
+           "args": [
+            {
+             "kind": "integer",
+             "value": "3"
+            }
+           ]
+          },
+          {
+           "kind": "integer",
+           "value": "15"
+          }
+         ]
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "L",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "O",
+        "P"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "iB",
+       "op": "INTERSECTION",
+       "inputs": [
+        "L",
+        "cCE"
+       ],
+       "args": {},
+       "outputType": "POINT_SET",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "B",
+       "op": "SELECT_POINT",
+       "inputs": [
+        "iB"
+       ],
+       "args": {},
+       "branch": {
+        "kind": "SIDE_OF_ORIENTED_LINE",
+        "refs": [
+         "A",
+         "C"
+        ],
+        "sign": 1
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "cA5",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "A"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "5"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "iD",
+       "op": "INTERSECTION",
+       "inputs": [
+        "L",
+        "cA5"
+       ],
+       "args": {},
+       "outputType": "POINT_SET",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "SELECT_POINT",
+       "inputs": [
+        "iD"
+       ],
+       "args": {},
+       "branch": {
+        "kind": "SIDE_OF_ORIENTED_LINE",
+        "refs": [
+         "A",
+         "C"
+        ],
+        "sign": -1
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "POINT_REFLECTION",
+       "inputs": [
+        "D",
+        "O"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lAC",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "A",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "iH",
+       "op": "INTERSECTION",
+       "inputs": [
+        "lAC",
+        "cCE"
+       ],
+       "args": {},
+       "outputType": "POINT_SET",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "H",
+       "op": "SELECT_POINT",
+       "inputs": [
+        "iH"
+       ],
+       "args": {},
+       "branch": {
+        "kind": "SIDE_OF_ORIENTED_LINE",
+        "refs": [
+         "A",
+         "B"
+        ],
+        "sign": 1
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "conditionAudits": [
+      {
+       "id": "cAOOC",
+       "kind": "EQUAL_DISTANCE",
+       "refs": [
+        "A",
+        "O",
+        "O",
+        "C"
+       ],
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cCO2",
+       "kind": "DISTANCE_EQUALS",
+       "refs": [
+        "C",
+        "O"
+       ],
+       "expected": {
+        "kind": "integer",
+        "value": "2"
+       },
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cOMid",
+       "kind": "MIDPOINT_RATIO",
+       "refs": [
+        "A",
+        "O",
+        "C"
+       ],
+       "expected": {
+        "kind": "integer",
+        "value": "1"
+       },
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cBC5",
+       "kind": "DISTANCE_EQUALS",
+       "refs": [
+        "B",
+        "C"
+       ],
+       "expected": {
+        "kind": "integer",
+        "value": "5"
+       },
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cAD5",
+       "kind": "DISTANCE_EQUALS",
+       "refs": [
+        "A",
+        "D"
+       ],
+       "expected": {
+        "kind": "integer",
+        "value": "5"
+       },
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cADBC",
+       "kind": "EQUAL_DISTANCE",
+       "refs": [
+        "A",
+        "D",
+        "B",
+        "C"
+       ],
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cBOnCircle",
+       "kind": "CIRCLE_MEMBERSHIP",
+       "refs": [
+        "cCE",
+        "B"
+       ],
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cDOnCircleA",
+       "kind": "CIRCLE_MEMBERSHIP",
+       "refs": [
+        "cA5",
+        "D"
+       ],
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cEOnCircle",
+       "kind": "CIRCLE_MEMBERSHIP",
+       "refs": [
+        "cCE",
+        "E"
+       ],
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cECAD",
+       "kind": "EQUAL_DISTANCE",
+       "refs": [
+        "E",
+        "C",
+        "A",
+        "D"
+       ],
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cOEOD",
+       "kind": "EQUAL_DISTANCE",
+       "refs": [
+        "O",
+        "E",
+        "O",
+        "D"
+       ],
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cEB",
+       "kind": "DISTANCE_EQUALS",
+       "refs": [
+        "E",
+        "B"
+       ],
+       "expected": {
+        "kind": "integer",
+        "value": "0"
+       },
+       "sourceConditionId": "c1"
+      },
+      {
+       "id": "cOBOD",
+       "kind": "EQUAL_DISTANCE",
+       "refs": [
+        "O",
+        "B",
+        "O",
+        "D"
+       ],
+       "sourceConditionId": "c1"
+      }
+     ]
+    },
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sAO",
+      "refs": [
+       "A",
+       "O"
+      ]
+     },
+     {
+      "id": "sOC",
+      "refs": [
+       "O",
+       "C"
+      ]
+     },
+     {
+      "id": "sBO",
+      "refs": [
+       "B",
+       "O"
+      ]
+     },
+     {
+      "id": "sOD",
+      "refs": [
+       "O",
+       "D"
+      ]
+     }
+    ],
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "O",
+     "H"
+    ],
+    "hiddenPointNames": [
+     "H"
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "tAO",
+       "ownerSegment": "sAO",
+       "text": "2",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "tOC",
+       "ownerSegment": "sOC",
+       "text": "2",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "tAD",
+       "ownerSegment": "sDA",
+       "text": "5",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "tBC",
+       "ownerSegment": "sBC",
+       "text": "5",
+       "factRole": "GIVEN"
+      }
+     ],
+     "traces": [],
+     "arcs": [
+      {
+       "id": "arcCE",
+       "circle": "cCE",
+       "center": "C",
+       "from": "B",
+       "to": "H",
+       "side": "CCW",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "④ 엇각과 대변 6"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "11"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-7",
+          "denominator": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-37",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-2"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-113",
+          "denominator": "20"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     }
+    ],
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "D",
+        "A",
+        "C"
+       ],
+       "value": 70,
+       "label": "70"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "B",
+        "C",
+        "A"
+       ],
+       "value": 70,
+       "label": "70"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "tAD",
+       "ownerSegment": "sDA",
+       "text": "6"
+      },
+      {
+       "id": "tBC",
+       "ownerSegment": "sBC",
+       "text": "6"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "⑤ 이웃각 합 180도"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3442",
+          "denominator": "1000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "4915",
+          "denominator": "1000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "10"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "12294",
+          "denominator": "1000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "3277",
+          "denominator": "1000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     }
+    ],
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 55,
+       "label": "55"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "B",
+        "C",
+        "D"
+       ],
+       "value": 125,
+       "label": "125"
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

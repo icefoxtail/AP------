@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.10",
+  "shardVersion": "1.4.13",
   "status": "ACTIVE",
-  "conceptCount": 194,
+  "conceptCount": 205,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -6049,6 +6049,391 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_ABSOLUTE_VALUE",
+      "canonicalLabelKo": "근호와 절댓값의 정리",
+      "definition": "실수 A에 대하여 √(A²)=|A|임을 이용해 부호에 따라 근호를 벗겨내는 대수 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_RADICAL_ABSOLUTE_VALUE for PT_TRIG_RATIO/TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 5 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_FORMULA",
+      "canonicalLabelKo": "이차방정식의 근의 공식",
+      "definition": "ax²+bx+c=0의 실근을 판별하고 기하학적 미지수의 양수해를 결정하는 공식",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_QUADRATIC_FORMULA for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_EQUATIONS",
+      "canonicalLabelKo": "일차방정식의 수립과 해결",
+      "definition": "삼각비로 표현된 기하량 사이의 선형 관계식을 미지수 x에 대해 풀어 수치를 확정하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_LINEAR_EQUATIONS for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 22 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIO",
+      "canonicalLabelKo": "비와 비례식의 응용",
+      "definition": "두 기하량의 비를 비례상수나 분수비로 나타내어 곱셈 공식에 연쇄 대입하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_RATIO for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 23 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_SUBSTITUTION",
+      "canonicalLabelKo": "일차식 치환을 통한 함수식 복원",
+      "definition": "합성된 입력 f(ax+b) = cx+d에서 t = ax+b로 치환하여 원래 함수 f(t)의 식을 구하는 대수 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_LINEAR_SUBSTITUTION for PT_INVERSE_VALUE/TPL_INVERSE_AFFINE_INPUT at H22-C2-07-FUNCTION_INVERSE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 12 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_INVERSE_VALUE"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EQUATION_ROOTS",
+      "canonicalLabelKo": "이차방정식의 해와 인수분해",
+      "definition": "이차방정식 ax^2+bx+c=0을 인수분해하여 진리집합의 원소(근)를 구하는 대수적 해법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8bb1e2836e3088f74476754a6869d175146d90d874e912397fa53ec205e879ff",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_QUADRATIC_EQUATION_ROOTS for PT_PROPOSITION_PARAMETER_CONDITION/TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 2 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROPOSITION_PARAMETER_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_ROOT_SEPARATION",
+      "canonicalLabelKo": "이차방정식의 근의 분리(실근의 위치)",
+      "definition": "이차방정식의 두 실근이 특정 값 이상인 제한 정의역에 존재하기 위한 판별식, 대칭축, 경계 함숫값 부호 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_QUADRATIC_ROOT_SEPARATION for PT_INVERSE_GRAPH/TPL_INVERSE_GRAPH_INTERSECTION at H22-C2-07-FUNCTION_INVERSE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 15 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_INVERSE_GRAPH"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_REAL_CONDITION",
+      "canonicalLabelKo": "무리식이 실수가 되기 위한 조건",
+      "definition": "제곱근이 포함된 무리식 √A의 값이 실수가 되기 위해서는 근호 안의 식 A ≥ 0이어야 하고 분모는 0이 아니어야 한다는 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_90314d4905eaa98e930b510a2088ab7acef1edcf7a0486c64493309c28c926c9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-09"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_90314d4905eaa98e930b510a2088ab7acef1edcf7a0486c64493309c28c926c9",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_RADICAL_REAL_CONDITION for PT_RADICAL_EXPRESSION/TPL_RADICAL_REAL_VALUE_RANGE at H22-C2-09-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 3 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RADICAL_EXPRESSION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-09"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_EXPRESSION_TRANSFORM",
+      "canonicalLabelKo": "유리식의 치환 및 분모·분자 나눗셈 변형",
+      "definition": "일차식을 t로 치환하여 유리식을 t/(t^2+at+b) = 1/(t + b/t + a) 꼴로 변형해 극값을 구하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_df9e5e7e97f5f8e5f9d6d67a8c39cfc3376a0caee4cc75323cc8a4381178bf0b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_df9e5e7e97f5f8e5f9d6d67a8c39cfc3376a0caee4cc75323cc8a4381178bf0b",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_RATIONAL_EXPRESSION_TRANSFORM for PT_FUNCTION_EXTREMUM/TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL at H22-C2-08-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 19 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_EXTREMUM"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SIMULTANEOUS_LINEAR_INEQUALITIES",
+      "canonicalLabelKo": "연립일차부등식의 해와 정수 개수",
+      "definition": "두 개 이상의 일차부등식을 동시에 만족시키는 수직선 위의 공통 범위를 구하고 그 구간 내의 정수 개수를 세는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_90314d4905eaa98e930b510a2088ab7acef1edcf7a0486c64493309c28c926c9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-09"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_90314d4905eaa98e930b510a2088ab7acef1edcf7a0486c64493309c28c926c9",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_SIMULTANEOUS_LINEAR_INEQUALITIES for PT_RADICAL_EXPRESSION/TPL_RADICAL_REAL_VALUE_RANGE at H22-C2-09-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 3 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RADICAL_EXPRESSION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-09"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_POLYNOMIAL_REDUCTION",
+      "canonicalLabelKo": "역수 대칭식 u^2 + 1/u^2 변형",
+      "definition": "곱이 1인 두 역수 관계나 u^2 + 1/u^2 = k 조건에서 곱셈공식 변형 (u_1 - u_2)^2 = u_1^2 + u_2^2 - 2u_1u_2를 적용하는 대수 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_SYMMETRIC_POLYNOMIAL_REDUCTION for PT_FUNCTION_GRAPH_GEOMETRY/TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH at H22-C2-08-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_GEOMETRY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
       ],
       "ownerConceptShard": "ALGEBRA"
     }
