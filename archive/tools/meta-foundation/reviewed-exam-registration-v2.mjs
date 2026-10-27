@@ -95,7 +95,9 @@ const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, before
     auditedDifficulty.bucket >= 1 && auditedDifficulty.bucket <= 5 && final.difficultyBucket === auditedDifficulty.bucket &&
     final.difficultyConfidence === auditedDifficulty.confidence && Object.hasOwn(patch.sourceMetadataBefore || {}, "difficultyBucket") &&
     eq(patch.sourceMetadataBefore.difficultyBucket ?? null, question.difficultyBucket ?? null);
-  const existingConcepts = current.crossConceptKeys;
+  const legacySourceConcepts = current.metadataStatus === "approved_partial_with_explicit_holds" &&
+    current.crossConceptKeys == null && Array.isArray(question.crossConceptKeys);
+  const existingConcepts = legacySourceConcepts ? question.crossConceptKeys : current.crossConceptKeys;
   const nextConcepts = final.crossConceptKeys;
   const additiveApprovedConcepts = field === "crossConceptKeys" && approved(current) &&
     Array.isArray(existingConcepts) && Array.isArray(nextConcepts) && nextConcepts.length > existingConcepts.length &&
@@ -948,8 +950,10 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
       const doc = read(cross.path), rows = (doc.records || []).filter(r => r.id === cross.recordId);
       const r = rows[0];
       const normalizedScope = value => ({ 수학_상: "수학(상)", 수학_하: "수학(하)" })[value] || value;
+      const crosswalkCourseMatches = r && (compact(normalizedScope(r.scope)) === compact(resolved.course) ||
+        resolved.pack.meta.standardCourses.includes(row.courseKey) && compact(normalizedScope(r.scope)) === compact(row.courseKey));
       if (doc.status !== "ACTIVE_REFERENCE" || rows.length !== 1 || r.bindingStatus !== "ACTIVE" ||
-          r.curriculum !== resolved.curriculum || compact(normalizedScope(r.scope)) !== compact(resolved.course) ||
+          r.curriculum !== resolved.curriculum || !crosswalkCourseMatches ||
           r.problemTypeKey !== row.problemTypeKey || r.templateKey !== row.templateKey ||
           r.rpmPath?.majorUnit !== ref.majorUnit || r.rpmPath?.midUnit !== ref.midUnit)
         fail("canonical target crosswalk classification/parent mismatch");
