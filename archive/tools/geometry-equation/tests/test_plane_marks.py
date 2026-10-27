@@ -292,4 +292,87 @@ class EngineErrorTests(unittest.TestCase):
         with self.assertRaises(ValueError) as caught:build(spec_of(pts,objects))
         self.assertTrue(str(caught.exception).startswith('MARK_SEGMENT_TOO_SHORT'),str(caught.exception))
 
+# ---- visible region markers on the FINAL SVG: a real hatch clipped to its region, and a label owned by one region (no Chrome: label boxes are
+# synthetic fragment groups, glyph shapes are covered by tests/visible-region-markers.test.mjs)
+def rect_loop(a,b,c,d):return {'start':a,'steps':[{'to':b},{'to':c},{'to':d},{'to':a}]}
+HATCH_LINE=re.compile(r'<line id="ring-hatch-\d+"[^>]*data-mark="region-hatch"[^>]*/>')
+
+class HatchPatternTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.points={'A':(0.0,-3.0),'B':(8.0,-3.0),'C':(8.0,3.0),'D':(0.0,3.0),'E':(2.0,-1.0),'F':(5.0,-1.0),'G':(5.0,1.0),'H':(2.0,1.0)}
+        segments=[('sAB','A','B'),('sBC','B','C'),('sCD','C','D'),('sDA','D','A'),('sEF','E','F'),('sFG','F','G'),('sGH','G','H'),('sHE','H','E')]
+        objects=[seg(i,cls.points,a,b) for i,a,b in segments]
+        objects.append({'id':'ring','kind':'FILL_REGION','fill':'LIGHT','pattern':'HATCH','loops':[rect_loop('A','B','C','D'),rect_loop('E','F','G','H')]})
+        cls.result=build(spec_of(cls.points,objects));cls.svg=cls.result['svg'];cls.transform=cls.result['witness']['coordinateModel']
+        cls.segments=[{'id':i,'refs':[a,b]} for i,a,b in segments]
+        cls.marks={'regions':[{'id':'ring','fill':'LIGHT','pattern':'HATCH','shapes':[{'polygon':['A','B','C','D']}],'holes':[{'polygon':['E','F','G','H']}]}]}
+    def audit(self,svg=None,marks=None):
+        return OBSERVER.audit({'svg':svg or self.svg,'points':{k:list(v) for k,v in self.points.items()},
+                               'marks':marks if marks is not None else self.marks,'segments':self.segments,'transform':self.transform})
+    def codes(self,**kw):return [error.split(':')[0] for error in self.audit(**kw)['errors']]
+    def test_hatch_is_a_real_clipped_pattern_above_its_fill(self):
+        report=self.audit();self.assertEqual(report['errors'],[])
+        rows={row['id']:row for row in report['observations'] if row['type']=='REGION_HATCH'}
+        self.assertGreaterEqual(rows['ring']['strokes'],3)
+        tags=HATCH_LINE.findall(self.svg);self.assertEqual(len(tags),rows['ring']['strokes'])
+        self.assertTrue(all('stroke-width="0.8"' in tag for tag in tags))
+        self.assertLess(self.svg.index(tags[0]),self.svg.index('id="sAB"'))
+        self.assertGreater(self.svg.index(tags[0]),self.svg.index('id="ring"'))
+    def test_tamper_missing_outside_uneven_dashed_or_covered_hatch(self):
+        tags=HATCH_LINE.findall(self.svg)
+        stripped=self.svg
+        for tag in tags:stripped=stripped.replace(tag,'')
+        self.assertIn('REGION_HATCH_MISSING',self.codes(svg=stripped))
+        # one stroke's start pushed far outside the region
+        shifted=self.svg.replace(tags[1],re.sub(r'y1="([-\d.]+)"',lambda m:'y1="%s"'%(float(m.group(1))+400),tags[1]))
+        self.assertIn('REGION_HATCH_OUTSIDE',self.codes(svg=shifted))
+        # one stroke translated across its neighbours: every gap is no longer the same
+        uneven=self.svg.replace(tags[1],re.sub(r'(y[12])="([-\d.]+)"',lambda m:'%s="%s"'%(m.group(1),float(m.group(2))+2),tags[1]))
+        self.assertIn('REGION_HATCH_UNEVEN',self.codes(svg=uneven))
+        dashed=self.svg.replace(tags[0],tags[0].replace('/>',' stroke-dasharray="4 3"/>'))
+        self.assertIn('REGION_HATCH_DASHED',self.codes(svg=dashed))
+        fill=re.search(r'<path id="ring"[^>]*/>',self.svg).group(0)
+        sunk=stripped.replace(fill,''.join(tags)+fill)
+        self.assertIn('REGION_HATCH_COVERED_BY_FILL',self.codes(svg=sunk))
+    def test_engine_refuses_an_unknown_pattern_and_a_pattern_outside_a_region(self):
+        pts,objects=parallelogram()
+        objects.append({'id':'rg','kind':'FILL_REGION','fill':'LIGHT','pattern':'DOTS','loops':[rect_loop('A','B','C','A')]})
+        with self.assertRaises(ValueError) as caught:build(spec_of(pts,objects))
+        self.assertEqual(str(caught.exception),'REGION_PATTERN_UNSUPPORTED:rg')
+        pts,objects=parallelogram()
+        objects[0]['pattern']='HATCH'
+        with self.assertRaises(ValueError) as caught:build(spec_of(pts,objects))
+        self.assertEqual(str(caught.exception),'UNKNOWN_OR_MISSING_COMPONENT_FIELD')
+
+class RegionLabelOwnershipTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.points={'A':(0.0,-2.0),'B':(4.0,-2.0),'C':(4.0,2.0),'D':(0.0,2.0),'E':(6.0,-2.0),'F':(10.0,-2.0),'G':(10.0,2.0),'H':(6.0,2.0)}
+        segments=[('sAB','A','B'),('sBC','B','C'),('sCD','C','D'),('sDA','D','A'),('sEF','E','F'),('sFG','F','G'),('sGH','G','H'),('sHE','H','E')]
+        objects=[seg(i,cls.points,a,b) for i,a,b in segments]
+        objects.append({'id':'rLeft','kind':'FILL_REGION','fill':'LIGHT','loops':[rect_loop('A','B','C','D')]})
+        objects.append({'id':'rRight','kind':'FILL_REGION','fill':'MEDIUM','loops':[rect_loop('E','F','G','H')]})
+        result=build(spec_of(cls.points,objects));cls.svg=result['svg'];cls.transform=result['witness']['coordinateModel']
+        cls.segments=[{'id':i,'refs':[a,b]} for i,a,b in segments]
+        cls.marks={'regions':[{'id':'rLeft','fill':'LIGHT','label':'x','shapes':[{'polygon':['A','B','C','D']}]},
+                              {'id':'rRight','fill':'MEDIUM','label':'y','shapes':[{'polygon':['E','F','G','H']}]}]}
+    def at(self,point,width=30.0,height=14.0):
+        m=self.transform;ox,oy,sx,sy=m['originX'],m['originY'],m['sx'],m['sy']
+        return (ox+point[0]*sx-width/2,oy-point[1]*sy-height/2)
+    def fragment(self,label_id,owner,point):
+        x,y=self.at(point)
+        return ('<g id="'+label_id+'" data-owner="'+owner+'" data-fragment-sha="sha256:'+'0'*64+'" transform="translate('+('%.3f'%x)+' '+('%.3f'%y)+')">'
+                '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="14" viewBox="0 0 30 14"><path d="M0 0 L10 0"/></svg></g>')
+    def svg_with(self,left_at,right_at):
+        groups=self.fragment('rLeft-label','rLeft',left_at)+self.fragment('rRight-label','rRight',right_at)
+        return self.svg.replace('</svg>',groups+'</svg>')
+    def codes(self,svg):return [error.split(':')[0] for error in OBSERVER.audit({'svg':svg,'points':{k:list(v) for k,v in self.points.items()},'marks':self.marks,'segments':self.segments,'transform':self.transform})['errors']]
+    def test_each_label_belongs_to_its_own_region(self):
+        self.assertEqual([code for code in self.codes(self.svg_with((2.0,0.0),(8.0,0.0))) if code.startswith('REGION_LABEL')],[])
+    def test_tamper_a_label_moved_into_the_other_region(self):
+        codes=self.codes(self.svg_with((8.0,0.0),(8.0,0.0)))
+        self.assertIn('REGION_LABEL_OUTSIDE',codes)
+        self.assertIn('REGION_LABEL_IN_OTHER_REGION',codes)
+
 if __name__=='__main__':unittest.main()
