@@ -45,6 +45,92 @@ def simple_plan(**overrides):
     return value
 
 
+def pair_plan(points=None,segments=None,lines=None,ellipses=None):
+    return {'capability':'ellipse-figure-v1','caption':'c',
+            'sourceConditions':[{'id':'c1','condition':'c','mappedTo':['ellipses']}],
+            'newVisualInformation':['n'],
+            'ellipses':ellipses or [
+                {'id':'C1','center':['0','-4'],'semiAxisSquared':{'major':'81','minor':'45'},'majorAxis':'Y'},
+                {'id':'C2','center':['0','0'],'semiAxisSquared':{'major':'9','minor':'5'},'majorAxis':'Y'}],
+            'points':points if points is not None else [
+                {'id':'F','kind':'FOCUS','side':1,'ellipseId':'C1'},
+                {'id':"F'",'kind':'FOCUS','side':-1,'ellipseId':'C1'},
+                {'id':'P','kind':'ON_ELLIPSE','ellipseId':'C1','y':'-17/2','branch':'POS'},
+                {'id':'Q','kind':'ON_ELLIPSE','ellipseId':'C2','y':'-3/2','branch':'POS'},
+                {'id':'O','kind':'ORIGIN'}],
+            'segments':segments if segments is not None else [
+                {'id':'s1','from':"F'",'to':'F','label':'12'},
+                {'id':'s2','from':'F','to':'P','label':'12'}],
+            'polygons':[],'lines':lines or []}
+
+
+def pair_svg(extra='',scale=20,ox=100,oy=200,drop_c2=False,tamper_c2=0):
+    a1=str(3*5**0.5*scale);b1=str(9*scale)
+    a2=str(5**0.5*scale);b2=str(3*scale)
+    out=['<svg xmlns="%s" width="400" height="500" viewBox="0 0 400 500">'%NS,
+         '<line id="axis-x" data-role="axis" data-axis="x" x1="10" y1="%d" x2="390" y2="%d"/>'%(oy,oy),
+         '<line id="axis-y" data-role="axis" data-axis="y" x1="%d" y1="10" x2="%d" y2="490"/>'%(ox,ox),
+         '<polygon id="axis-x-head" data-role="axis-head" data-axis="x" points="390,%d 381,%d 381,%d"/>'%(oy,oy-3.6,oy+3.6),
+         '<polygon id="axis-y-head" data-role="axis-head" data-axis="y" points="%d,10 %d,19 %d,19"/>'%(ox,ox-3.6,ox+3.6),
+         '<ellipse id="ellipse-C1" data-role="ellipse" data-ellipse="C1" cx="%d" cy="%d" rx="%s" ry="%s" fill="none"/>'%(ox,oy+4*scale,a1,b1)]
+    if not drop_c2:
+        out.append('<ellipse id="ellipse-C2" data-role="ellipse" data-ellipse="C2" cx="%d" cy="%d" rx="%s" ry="%s" fill="none"/>'%(ox,oy,a2,float(b2)+tamper_c2))
+    out.append('<circle id="point-O" data-role="point" data-point="O" cx="%d" cy="%d" r="3"/>'%(ox,oy))
+    out.append('<g id="label-O" data-label-role="point" data-point="O" data-tex="O" data-box="%d,%d,10,12"/>'%(ox+6,oy-18))
+    out.append(extra)
+    out.append('</svg>')
+    return ''.join(out)
+
+
+class PairProduceTest(unittest.TestCase):
+    def test_pair_foci_and_points_are_exact(self):
+        model=E.produce(pair_plan())
+        self.assertEqual(model['mode'],'PAIR')
+        self.assertEqual([row['id'] for row in model['ellipses']],['C1','C2'])
+        first,second=model['ellipses']
+        self.assertEqual(first['semiAxis']['major']['exact'],'9')
+        self.assertEqual(first['semiAxis']['minor']['exact'],'3*sqrt(5)')
+        self.assertEqual(first['foci'][0]['y']['exact'],'2')
+        self.assertEqual(first['foci'][1]['y']['exact'],'-10')
+        self.assertEqual(second['semiAxis']['major']['exact'],'3')
+        self.assertEqual(second['semiAxis']['minor']['exact'],'sqrt(5)')
+        self.assertEqual(second['foci'][0]['y']['exact'],'2')
+        rows={row['id']:row for row in model['points']}
+        self.assertEqual((rows['P']['x']['exact'],rows['P']['y']['exact']),('3*sqrt(15)/2','-17/2'))
+        self.assertEqual((rows['Q']['x']['exact'],rows['Q']['y']['exact']),('sqrt(15)/2','-3/2'))
+        self.assertTrue(rows['P']['onEllipse'] and rows['Q']['onEllipse'])
+        self.assertEqual(rows['P']['ellipseId'],'C1')
+        self.assertEqual(rows['Q']['ellipseId'],'C2')
+
+    def test_pair_refuses_other_counts_missing_ids_and_the_single_field(self):
+        def refused(value,code):
+            with self.assertRaises(ValueError) as caught:
+                E.produce(value)
+            self.assertEqual(str(caught.exception),code)
+        base=pair_plan()
+        refused({**base,'ellipses':[base['ellipses'][0]]},'ELLIPSE_PAIR_COUNT_INVALID')
+        refused({**base,'ellipses':base['ellipses']+[base['ellipses'][0]]},'ELLIPSE_PAIR_COUNT_INVALID')
+        refused({**base,'ellipses':[base['ellipses'][0],{**base['ellipses'][1],'id':'C1'}]},'ELLIPSE_ELLIPSE_ID_DUPLICATE')
+        refused({**base,'ellipses':[base['ellipses'][0],{**base['ellipses'][1],'id':'C 2'}]},'ELLIPSE_ELLIPSE_ID_INVALID')
+        refused({**base,'points':[{'id':'F','kind':'FOCUS','side':1}]},'ELLIPSE_POINT_ELLIPSE_ID_REQUIRED')
+        refused({**base,'points':[{'id':'F','kind':'FOCUS','side':1,'ellipseId':'C9'}]},'ELLIPSE_POINT_ELLIPSE_ID_INVALID')
+        refused({**base,'ellipse':base['ellipses'][0]},'ELLIPSE_PLAN_INVALID')
+        refused({**base,'points':[{'id':'P','kind':'ON_ELLIPSE','ellipseId':'C2','y':'9/2'}]},'ELLIPSE_POINT_NOT_ON_ELLIPSE')
+
+
+class PairObserverTest(unittest.TestCase):
+    def test_a_faithful_pair_svg_passes(self):
+        result=O.audit(pair_plan(points=[{'id':'O','kind':'ORIGIN'}],segments=[]),pair_svg())
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertEqual(len(result['checks']['ellipses']),2)
+
+    def test_pair_tampering_fails(self):
+        value=pair_plan(points=[{'id':'O','kind':'ORIGIN'}],segments=[])
+        self.assertNotEqual(O.audit(value,pair_svg(drop_c2=True))['status'],'PASS')
+        self.assertNotEqual(O.audit(value,pair_svg(tamper_c2=9))['status'],'PASS')
+        self.assertNotEqual(O.audit(value,pair_svg(extra='<ellipse data-role="ellipse" data-ellipse="C3" cx="40" cy="40" rx="10" ry="20"/>'))['status'],'PASS')
+
+
 class ProduceTest(unittest.TestCase):
     def test_foci_and_semi_axes_are_exact(self):
         model=E.produce(plan())

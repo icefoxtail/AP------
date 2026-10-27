@@ -30,6 +30,7 @@ LABEL_DISTANCE=72.0
 LIGHT_FILL='#eeeeee'
 MEDIUM_FILL='#d8d8d8'
 POINT_ID=re.compile(r"^[A-Z][0-9']?$")
+ELLIPSE_ID=re.compile(r"^[A-Za-z][A-Za-z0-9_]{0,7}$")
 VALUE_CHARS=re.compile(r"^[0-9+\-*/(). a-z]+$")
 
 
@@ -80,15 +81,15 @@ def resolve(shape,raw):
     kind=raw.get('kind')
     cx,cy,A,B,c=shape['cx'],shape['cy'],shape['A'],shape['B'],shape['c']
     if kind=='ORIGIN':
-        if set(raw)!={'id','kind'}: raise Refuse('ELLIPSE_POINT_INVALID')
+        if set(raw)-{'id','kind','ellipseId'}: raise Refuse('ELLIPSE_POINT_INVALID')
         return S.Integer(0),S.Integer(0)
     if kind=='FOCUS':
-        if set(raw)-{'id','kind','side','label'} or raw.get('side') not in (1,-1):
+        if set(raw)-{'id','kind','side','label','ellipseId'} or raw.get('side') not in (1,-1):
             raise Refuse('ELLIPSE_POINT_INVALID')
         side=raw['side']
         return (cx+side*c,cy) if shape['orientation']=='X' else (cx,cy+side*c)
     if kind=='VERTEX':
-        extra=set(raw)-{'id','kind','end','label'}
+        extra=set(raw)-{'id','kind','end','label','ellipseId'}
         if extra: raise Refuse('ELLIPSE_POINT_INVALID')
         end=raw.get('end')
         table={'MAJOR_POS':(A,0) if shape['orientation']=='X' else (0,A),
@@ -99,7 +100,7 @@ def resolve(shape,raw):
         dx,dy=table[end]
         return cx+dx,cy+dy
     if kind=='ON_ELLIPSE':
-        if set(raw)-{'id','kind','x','y','branch','label'}: raise Refuse('ELLIPSE_POINT_INVALID')
+        if set(raw)-{'id','kind','x','y','branch','label','ellipseId'}: raise Refuse('ELLIPSE_POINT_INVALID')
         branch=raw.get('branch','POS')
         if branch not in ('POS','NEG'): raise Refuse('ELLIPSE_POINT_INVALID')
         sign=1 if branch=='POS' else -1
@@ -115,7 +116,7 @@ def resolve(shape,raw):
         if rest.is_negative: raise Refuse('ELLIPSE_POINT_NOT_ON_ELLIPSE')
         return cx+sign*shape['ax']*S.sqrt(rest),y
     if kind=='POINT':
-        if set(raw)-{'id','kind','x','y','label'}: raise Refuse('ELLIPSE_POINT_INVALID')
+        if set(raw)-{'id','kind','x','y','label','ellipseId'}: raise Refuse('ELLIPSE_POINT_INVALID')
         if 'x' not in raw or 'y' not in raw: raise Refuse('ELLIPSE_POINT_INVALID')
         return exact_scalar(raw['x']),exact_scalar(raw['y'])
     raise Refuse('ELLIPSE_POINT_INVALID')
@@ -126,8 +127,30 @@ def derive_all(plan):
         raise Refuse('ELLIPSE_PLAN_INVALID')
     if plan.get('capability')!='ellipse-figure-v1':
         raise Refuse('ELLIPSE_PLAN_INVALID')
-    shape=derive(plan['ellipse'])
+    if 'ellipses' in plan:
+        if 'ellipse' in plan:
+            raise Refuse('ELLIPSE_PLAN_INVALID')
+        raw_ellipses=plan['ellipses']
+        if not isinstance(raw_ellipses,list) or len(raw_ellipses)!=2:
+            raise Refuse('ELLIPSE_PAIR_COUNT_INVALID')
+        shapes={};ellipse_order=[]
+        for item in raw_ellipses:
+            if not isinstance(item,dict) or set(item)-{'id','center','semiAxisSquared','majorAxis'}:
+                raise Refuse('ELLIPSE_PLAN_INVALID')
+            eid=item.get('id')
+            if not isinstance(eid,str) or not ELLIPSE_ID.fullmatch(eid):
+                raise Refuse('ELLIPSE_ELLIPSE_ID_INVALID')
+            if eid in shapes:
+                raise Refuse('ELLIPSE_ELLIPSE_ID_DUPLICATE')
+            shapes[eid]=derive({key:item[key] for key in ('center','semiAxisSquared','majorAxis')})
+            ellipse_order.append(eid)
+        single=False
+    else:
+        shapes={'':derive(plan['ellipse'])}
+        ellipse_order=['']
+        single=True
     points={}
+    point_shape={}
     pending=[]
     order=[]
     for raw in plan.get('points',[]) or []:
@@ -135,20 +158,46 @@ def derive_all(plan):
         if not isinstance(pid,str) or not POINT_ID.fullmatch(pid) or pid in points or pid in order:
             raise Refuse('ELLIPSE_POINT_ID_INVALID')
         order.append(pid)
-        if raw.get('kind')=='OPPOSITE':
+        kind=raw.get('kind')
+        eid=raw.get('ellipseId')
+        if single:
+            if eid is not None: raise Refuse('ELLIPSE_POINT_INVALID')
+            if kind=='OPPOSITE':
+                pending.append(raw)
+            else:
+                points[pid]=resolve(shapes[''],raw)
+                point_shape[pid]=''
+            continue
+        if eid is not None and eid not in shapes:
+            raise Refuse('ELLIPSE_POINT_ELLIPSE_ID_INVALID')
+        if kind in ('FOCUS','VERTEX','ON_ELLIPSE'):
+            if eid is None:
+                raise Refuse('ELLIPSE_POINT_ELLIPSE_ID_REQUIRED')
+            points[pid]=resolve(shapes[eid],raw)
+            point_shape[pid]=eid
+        elif kind=='OPPOSITE':
             pending.append(raw)
         else:
-            points[pid]=resolve(shape,raw)
+            owner=eid or ellipse_order[0]
+            points[pid]=resolve(shapes[owner],raw)
+            point_shape[pid]=eid
     for _round in range(3):
         if not pending: break
         remaining=[]
         for raw in pending:
-            if set(raw)-{'id','kind','of','label'}: raise Refuse('ELLIPSE_POINT_INVALID')
+            if set(raw)-{'id','kind','of','label','ellipseId'}: raise Refuse('ELLIPSE_POINT_INVALID')
             target=raw.get('of')
             if target not in points:
                 remaining.append(raw);continue
+            target_shape=point_shape.get(target) or raw.get('ellipseId') or ellipse_order[0]
+            if target_shape not in shapes:
+                raise Refuse('ELLIPSE_POINT_ELLIPSE_ID_INVALID')
+            if raw.get('ellipseId') is not None and raw['ellipseId']!=target_shape:
+                raise Refuse('ELLIPSE_POINT_ELLIPSE_ID_INVALID')
+            shape=shapes[target_shape]
             px,py=points[target]
             points[raw['id']]=(2*shape['cx']-px,2*shape['cy']-py)
+            point_shape[raw['id']]=target_shape
         if len(remaining)==len(pending): raise Refuse('ELLIPSE_POINT_UNKNOWN')
         pending=remaining
     if pending: raise Refuse('ELLIPSE_POINT_UNKNOWN')
@@ -164,7 +213,7 @@ def derive_all(plan):
         if not isinstance(members,list) or not (3<=len(members)<=6) or len(set(members))!=len(members):
             raise Refuse('ELLIPSE_POLYGON_INVALID')
         if any(pid not in points for pid in members): raise Refuse('ELLIPSE_POLYGON_INVALID')
-    return shape,points,labels,segments,polygons,lines
+    return single,shapes,ellipse_order,points,point_shape,labels,segments,polygons,lines
 
 
 def _floats(value):
@@ -217,7 +266,7 @@ def audit(plan,svg):
     checks={'capability':'ellipse-figure-v1'}
     digest='sha256:'+hashlib.sha256(svg.encode('utf-8')).hexdigest()
     try:
-        shape,points,labels,segments,polygons,lines=derive_all(plan)
+        single,shapes,ellipse_order,points,point_shape,labels,segments,polygons,lines=derive_all(plan)
     except Refuse as error:
         return {'status':'FAIL','errors':['PLAN_REFUSED:%s'%error],'finalSvgSha256':digest,'checks':checks}
     try:
@@ -274,36 +323,70 @@ def audit(plan,svg):
     if len(errors):
         return {'status':'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
 
-    ellipses=_find(elements,'ellipse')
-    if len(ellipses)!=1:
-        errors.append('ELLIPSE_COUNT_INVALID:%d'%len(ellipses))
-        return {'status':'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
-    ellipse=ellipses[0]
-    if ellipse.get('transform'): errors.append('ELLIPSE_TRANSFORM_UNSUPPORTED')
-    ecx=_attr_float(ellipse,'cx',errors,'ELLIPSE_COORDINATE_INVALID')
-    ecy=_attr_float(ellipse,'cy',errors,'ELLIPSE_COORDINATE_INVALID')
-    erx=_attr_float(ellipse,'rx',errors,'ELLIPSE_COORDINATE_INVALID')
-    ery=_attr_float(ellipse,'ry',errors,'ELLIPSE_COORDINATE_INVALID')
-    if erx<=0 or ery<=0:
+    if single:
+        ellipses=_find(elements,'ellipse')
+        if len(ellipses)!=1:
+            errors.append('ELLIPSE_COUNT_INVALID:%d'%len(ellipses))
+            return {'status':'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
+        if ellipses[0].get('data-ellipse') is not None:
+            errors.append('ELLIPSE_ID_UNDECLARED')
+        drawn={'':ellipses[0]}
+    else:
+        all_ellipses=_find(elements,'ellipse')
+        declared=_find(elements,'ellipse','data-ellipse')
+        if len(all_ellipses)!=len(ellipse_order):
+            errors.append('ELLIPSE_COUNT_INVALID:%d'%len(all_ellipses))
+            return {'status':'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
+        drawn={}
+        for element in declared:
+            eid=element.get('data-ellipse')
+            if eid in drawn: errors.append('ELLIPSE_ID_DUPLICATE:%s'%eid)
+            drawn[eid]=element
+        for eid in ellipse_order:
+            if eid not in drawn: errors.append('ELLIPSE_MISSING:%s'%eid)
+        for eid in drawn:
+            if eid not in ellipse_order: errors.append('ELLIPSE_UNDECLARED:%s'%eid)
+        if len(errors):
+            return {'status':'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
+    scale=None
+    for eid in ellipse_order:
+        ellipse=drawn[eid]
+        if ellipse.get('transform'): errors.append('ELLIPSE_TRANSFORM_UNSUPPORTED')
+        ecx=_attr_float(ellipse,'cx',errors,'ELLIPSE_COORDINATE_INVALID')
+        ecy=_attr_float(ellipse,'cy',errors,'ELLIPSE_COORDINATE_INVALID')
+        erx=_attr_float(ellipse,'rx',errors,'ELLIPSE_COORDINATE_INVALID')
+        ery=_attr_float(ellipse,'ry',errors,'ELLIPSE_COORDINATE_INVALID')
+        if erx<=0 or ery<=0:
+            errors.append('ELLIPSE_RADII_INVALID')
+            return {'status':'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
+        shape=shapes[eid]
+        along_x=shape['A'] if shape['orientation']=='X' else shape['B']
+        along_y=shape['B'] if shape['orientation']=='X' else shape['A']
+        if scale is None:
+            scale=erx/float(along_x)
+            checks['scale']=scale
+        if abs(erx-float(along_x)*scale)>PIXEL_TOLERANCE:
+            errors.append('ELLIPSE_SCALE_MISMATCH:rx=%.3f expected=%.3f'%(erx,float(along_x)*scale))
+        if abs(ery-float(along_y)*scale)>PIXEL_TOLERANCE:
+            errors.append('ELLIPSE_SCALE_MISMATCH:ry=%.3f expected=%.3f'%(ery,float(along_y)*scale))
+        if shape['orientation']=='X' and erx<=ery:
+            errors.append('ELLIPSE_MAJOR_AXIS_MISMATCH:X major but rx<=ry')
+        if shape['orientation']=='Y' and ery<=erx:
+            errors.append('ELLIPSE_MAJOR_AXIS_MISMATCH:Y major but ry<=rx')
+        expected_cx=ox+float(shape['cx'])*scale
+        expected_cy=oy-float(shape['cy'])*scale
+        if abs(ecx-expected_cx)>PIXEL_TOLERANCE:
+            errors.append('ELLIPSE_CENTER_MISMATCH:x %.3f vs %.3f'%(ecx,expected_cx))
+        if abs(ecy-expected_cy)>PIXEL_TOLERANCE:
+            errors.append('ELLIPSE_CENTER_MISMATCH:y %.3f vs %.3f'%(ecy,expected_cy))
+        entry={'cx':ecx,'cy':ecy,'rx':erx,'ry':ery}
+        if single:
+            checks['ellipse']=entry
+        else:
+            checks.setdefault('ellipses',[]).append({'id':eid,**entry})
+    if scale is None:
         errors.append('ELLIPSE_RADII_INVALID')
         return {'status':'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
-    along_x=shape['A'] if shape['orientation']=='X' else shape['B']
-    along_y=shape['B'] if shape['orientation']=='X' else shape['A']
-    scale=erx/float(along_x)
-    checks['scale']=scale
-    if shape['orientation']=='X' and erx<=ery:
-        errors.append('ELLIPSE_MAJOR_AXIS_MISMATCH:X major but rx<=ry')
-    if shape['orientation']=='Y' and ery<=erx:
-        errors.append('ELLIPSE_MAJOR_AXIS_MISMATCH:Y major but ry<=rx')
-    if abs(ery-float(along_y)*scale)>PIXEL_TOLERANCE:
-        errors.append('ELLIPSE_SCALE_MISMATCH:ry=%.3f expected=%.3f'%(ery,float(along_y)*scale))
-    expected_cx=ox+float(shape['cx'])*scale
-    expected_cy=oy-float(shape['cy'])*scale
-    if abs(ecx-expected_cx)>PIXEL_TOLERANCE:
-        errors.append('ELLIPSE_CENTER_MISMATCH:x %.3f vs %.3f'%(ecx,expected_cx))
-    if abs(ecy-expected_cy)>PIXEL_TOLERANCE:
-        errors.append('ELLIPSE_CENTER_MISMATCH:y %.3f vs %.3f'%(ecy,expected_cy))
-    checks['ellipse']={'cx':ecx,'cy':ecy,'rx':erx,'ry':ery}
 
     def pixel(x,y):
         return ox+float(x)*scale,oy-float(y)*scale
@@ -377,6 +460,9 @@ def audit(plan,svg):
         found_lines[element.get('data-line')]=_line_coords(element,errors,'LINE_COORDINATE_INVALID')
     for raw in lines:
         lid=raw.get('id')
+        owner=raw.get('ellipseId') or ellipse_order[0]
+        if owner not in shapes:
+            errors.append('LINE_ELLIPSE_ID_INVALID:%s'%lid);continue
         if lid not in found_lines:
             errors.append('LINE_MISSING:%s'%lid);continue
         slope=exact_scalar(raw['slope']);intercept=exact_scalar(raw['intercept'])
@@ -386,6 +472,7 @@ def audit(plan,svg):
             if abs(float(slope)*mx+float(intercept)-my)>UNIT_TOLERANCE:
                 errors.append('LINE_OFF_EQUATION:%s'%lid);break
         if raw.get('tangent') is True:
+            shape=shapes[owner]
             expr=((symbol-shape['cx'])/shape['ax'])**2+((slope*symbol+intercept-shape['cy'])/shape['ay'])**2-1
             poly=S.Poly(S.expand(S.together(expr)),symbol)
             if S.discriminant(poly)!=0:
