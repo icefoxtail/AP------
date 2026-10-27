@@ -1264,7 +1264,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisVariable','valueVariable'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -1693,6 +1693,9 @@ def piecewise_polynomial_regions(plan,pieces,intervals,refs,line_specs):
     return rows
 
 def fit_piecewise_polynomial(plan):
+    # axisVariable/valueVariable only rename the horizontal/vertical axes (velocity v(t), a time t): the pieces keep their x powers.
+    if 'axisVariable' in plan and (not isinstance(plan['axisVariable'],str) or not re.fullmatch(r'[a-xz]',plan['axisVariable'])):raise ValueError('INVALID_AXIS_VARIABLE')
+    if 'valueVariable' in plan and (not isinstance(plan['valueVariable'],str) or not re.fullmatch(r'[a-wyz]',plan['valueVariable'])):raise ValueError('INVALID_VALUE_VARIABLE')
     if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_POLY_FUNCTION_NAME_INVALID')
     if 'sampleNote' in plan and (not isinstance(plan['sampleNote'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/(). ]{1,32}',plan['sampleNote']) or not plan['sampleNote'].strip()):raise ValueError('PIECEWISE_POLY_SAMPLE_NOTE_INVALID')
     pieces,breaks,source,intervals=piecewise_polynomial_source(plan)

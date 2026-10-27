@@ -223,7 +223,7 @@ def prepare(spec):
             p=vp.screen(at);primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
         axis_labels=[]
         if show_x:axis_labels.append(('axis-x',(xmax,0),spec['displayFacts'].get('axisVariable','x')))
-        if show_y:axis_labels.append(('axis-y',(0,ymax),'y'))
+        if show_y:axis_labels.append(('axis-y',(0,ymax),spec['displayFacts'].get('valueVariable','y')))
         for oid,at,text in axis_labels:
             labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
         visible_axes=[]

@@ -14,6 +14,8 @@ const CAPABILITY='piecewise-polynomial-spike-v1';
 const Q22={family:'piecewise-polynomial',pieces:[{coefficients:['-6','3','1']},{coefficients:['6','1','-1']},{coefficients:['-6','3','1']}],breakpoints:[{x:'-3',y:'-6'},{x:'2',y:'4'}],sourceDomain:{kind:'ALL_REALS'},formula:'abs(x^2+x-6)+2x',referenceLines:[{id:'k',y:'5',intersectionX:['(-3-sqrt(53))/2','(1-sqrt(5))/2','(1+sqrt(5))/2','(-3+sqrt(53))/2']}],requiredPoints:[{id:'A',x:-3,y:-6},{id:'B',x:0.5,y:6.25},{id:'C',x:2,y:4}],exactCoordinates:{B:['1/2','25/4']},axisTickValues:{x:[],y:[]}};
 const ABS_QUAD={family:'piecewise-polynomial',pieces:[{coefficients:['0','-4','1']},{coefficients:['0','4','-1']},{coefficients:['0','-4','1']}],breakpoints:[{x:'0',y:'0'},{x:'4',y:'0'}],sourceDomain:{kind:'ALL_REALS'},formula:'abs(x^2-4x)',referenceLines:[{id:'a',y:'4',intersectionX:['2-2*sqrt(2)','2','2+2*sqrt(2)']},{id:'b',y:'2',intersectionX:['2-sqrt(6)','2-sqrt(2)','2+sqrt(2)','2+sqrt(6)']}],requiredPoints:[{id:'O',x:0,y:0},{id:'M',x:2,y:4},{id:'P',x:4,y:0}],axisTickValues:{x:[],y:[]}};
 const INTERVAL={family:'piecewise-polynomial',pieces:[{coefficients:['0','0','1']},{coefficients:['2','-1']}],breakpoints:[{x:'1',y:'1'}],sourceDomain:{kind:'INTERVAL',range:['-2','3'],states:['CLOSED','OPEN']},referenceLines:[{id:'h',y:'1/2',intersectionX:['-sqrt(2)/2','sqrt(2)/2','3/2']},{id:'m',y:'-1/2',intersectionX:['5/2'],labelIntersections:true}],requiredPoints:[{id:'O',x:0,y:0},{id:'C',x:1,y:1}],axisTickValues:{x:[],y:[]}};
+// A velocity-time graph on [0,3]: v(t)=2|t-1|-2, three signed areas 1,1,1. The horizontal axis is t, not x.
+const VELOCITY={family:'piecewise-polynomial',pieces:[{coefficients:['0','-2']},{coefficients:['-4','2']}],breakpoints:[{x:'1',y:'-2'}],sourceDomain:{kind:'INTERVAL',range:['0','3'],states:['CLOSED','CLOSED']},formula:'2*abs(x-1)-2',axisVariable:'t',valueVariable:'v',functionName:'v',regions:[{id:'S1',upper:'axis',lower:'f',from:'0',to:'1',label:'S_1'},{id:'S2',upper:'axis',lower:'f',from:'1',to:'2',label:'S_2'},{id:'S3',upper:'f',lower:'axis',from:'2',to:'3',fill:'MEDIUM',label:'S_3'}],requiredPoints:[{id:'A',x:1,y:-2},{id:'B',x:2,y:0},{id:'C',x:3,y:2}],axisTickValues:{x:[],y:[]}};
 
 async function framed(graphPlan,extra={}){
   const frame=await pythonWorker({action:'frame_graph',graphPlan});assert.equal(frame.status,'OK',JSON.stringify(frame.result));
@@ -63,6 +65,29 @@ test('spec: a crossing at a marked key point is drawn once; an interval plan has
   assert.deepEqual(spec.objects.find(object=>object.id==='intersection-m-1-coordinates').exact,['5/2','-1/2']);
   const prepared=(await pythonWorker({action:'prepare',spec})).result;
   assert.deepEqual(prepared.prepared.primitives.filter(primitive=>primitive.role==='interval-endpoint').map(primitive=>[primitive.id,primitive.fill]),[['interval-endpoint-start','#111'],['interval-endpoint-end','#fff']]);
+});
+
+test('spec: axisVariable renames only the horizontal axis and the written labels',async()=>{
+  const {plan,model}=await framed(VELOCITY);
+  assert.equal(plan.graphPlan.axisVariable,'t');
+  const spec=specFor(plan,model,'piecewise-polynomial-velocity-fixture');
+  assert.equal(spec.displayFacts.axisVariable,'t');
+  assert.equal(spec.displayFacts.valueVariable,'v');
+  assert.equal(spec.objects.find(object=>object.id==='formula').text,'v(t)=2*abs(t-1)-2');
+  assert.deepEqual(spec.objects.filter(object=>object.kind==='FUNCTION_GRAPH').map(object=>object.expression),['-2*x','2*x-4']);
+  assert.deepEqual(spec.objects.filter(object=>object.kind==='GRAPH_REGION').map(object=>object.id),['region-S1','region-S2','region-S3']);
+  const prepared=(await pythonWorker({action:'prepare',spec})).result;
+  assert.equal(prepared.labels.find(label=>label.id==='axis-x').text,'t');
+  assert.equal(prepared.labels.find(label=>label.id==='axis-y').text,'v');
+  const formulaTex=prepared.labels.find(label=>label.id==='formula').tex;
+  assert.match(formulaTex,/^v\(t\)=/);
+  assert.equal(/x/.test(formulaTex),false);
+  const invalid=await pythonWorker({action:'frame_graph',graphPlan:{...VELOCITY,axisVariable:'y'}});
+  assert.equal(invalid.status,'ERROR');
+  assert.match(invalid.result.code,/INVALID_AXIS_VARIABLE/);
+  const invalidValue=await pythonWorker({action:'frame_graph',graphPlan:{...VELOCITY,valueVariable:'x'}});
+  assert.equal(invalidValue.status,'ERROR');
+  assert.match(invalidValue.result.code,/INVALID_VALUE_VARIABLE/);
 });
 
 test('L1 composes all three fixtures and the final SVG passes the static and graph observers',{timeout:600000},async()=>{

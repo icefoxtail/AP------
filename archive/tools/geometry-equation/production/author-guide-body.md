@@ -117,6 +117,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 교점이 `requiredPoints`의 점과 같으면(꺾임점 위, 꼭짓점 위, 또는 점을 일부러 `requiredPoints`에 넣은 경우) 그 점 하나로만 그려진다. **기울어진 직선의 교점에 좌표를 쓰고 싶으면 `labelIntersections`가 아니라 그 교점을 `requiredPoints`(id, x, y와 `exactCoordinates`)에 넣는다.** 좌표가 정수·분수인 교점에는 `exactCoordinates`로, 무리수 좌표의 교점에는 3-4처럼 `requiredPoints`의 정확한 문자열 좌표로 쓴다. `requiredPoints`에 넣지 않은 무리수 교점은 점만 찍힌다.
 - 직선 식은 띠에 `y=ax+b`로 세로분수와 함께 써지고, 교점마다 직선 위에 점이 찍힌다. 직선은 그림 영역 안에서 잘려서 그려지며 모든 교점을 지난다.
 - 그림은 가로·세로 같은 배율이 기본이다. 직선이 가파르거나 값이 크면 엔진이 세로를 최대 1/2까지 줄이는 대체(`AXIS_SQUEEZE`)로 다시 시도한다. 그래도 안 되면 `PIECEWISE_POLY_CURVE_TOO_NARROW`.
+- 가로축이 다른 문자인 그래프(속도-시간 그래프 `v(t)` 등)는 `graphPlan.axisVariable`에 y가 아닌 소문자 하나를 준다. 가로축 문자, 함수 라벨, 참조곡선 식이 그 문자로 쓰이고, 조각·계수·`requiredPoints`는 그 문자의 거듭제곱으로 그대로 준다. x 그래프이면 생략한다(`INVALID_AXIS_VARIABLE`). 세로축도 이름이 있는 양(속도 `v`)이면 `graphPlan.valueVariable`에 x가 아닌 소문자 하나를 준다. 기본은 y이다(`INVALID_VALUE_VARIABLE`).
 
 한계와 오류 코드(가짜 지원 없이 거절):
 - `PIECEWISE_POLY_SLANTED_LINE_SLOPE_ZERO`: 기울기 0은 수평선이다. `{"id","y",...}`로 쓴다.
