@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.3.12",
+  "shardVersion": "1.3.13",
   "status": "ACTIVE",
-  "conceptCount": 84,
+  "conceptCount": 85,
   "concepts": [
     {
       "conceptKey": "CC_ANGLE_BISECTOR",
@@ -3303,6 +3303,41 @@
       ],
       "curriculumRefs": [
         "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_INSCRIBED_RECTANGLE_QUADRATIC_MODEL",
+      "canonicalLabelKo": "직각삼각형에 내접하는 직사각형의 이차함수 모델",
+      "definition": "삼각형의 닮음비를 이용해 직사각형의 변을 미지수로 나타내고 넓이의 부등식을 해결하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_773c8f758719ee8715df34d71ccf1703b106f07f431ad208f9f06bc7238fd2f1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_773c8f758719ee8715df34d71ccf1703b106f07f431ad208f9f06bc7238fd2f1",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_INSCRIBED_RECTANGLE_QUADRATIC_MODEL for PT_H1_QUADRATIC_INEQUALITY/TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL at H22-C-06-HIGHER_INEQUALITY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_INEQUALITY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-06"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     }

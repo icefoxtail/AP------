@@ -1,0 +1,21 @@
+{
+  "author": "CODEX_ROOT",
+  "scope": "Metadata-only same-key meaning separation and omitted definition hydration",
+  "sourceOrdinal": 13,
+  "originalKey": "CC_PERFECT_SQUARE_TRINOMIAL",
+  "newKey": "CC_DISCRIMINANT_PERFECT_SQUARE_IDENTITY",
+  "preservedExistingDefinition": "최고차항 계수가 1인 완전제곱 이차식의 일차항과 상수항이 같은 제곱의 계수로 결정되는 구조를 사용한다.",
+  "newDefinition": "문자가 두 개인 판별식 D가 (a+b-c)²으로 묶여 0이 되는 조건 분석",
+  "reason": "The audit uses a discriminant perfect-square identity rather than determining the coefficients of a monic perfect-square quadratic. Preserve both meanings under distinct keys.",
+  "canonicalDefinitionHydratedFrom": "CC_QUADRATIC_DISCRIMINANT",
+  "hydratedCanonicalDefinition": "이차방정식의 판별식 부호를 이용해 실근의 개수와 그래프의 축 교점 수를 판정하는 개념.",
+  "originalGeminiNewTemplatesCreated": 0,
+  "canonicalTemplatesPromoted": 0,
+  "existingCanonicalMeaningsChanged": 0,
+  "studentPayloadChanged": 0,
+  "originalInputsPreserved": true,
+  "reviewActor": "CODEX_ROOT; no child model substitution. Prior OpenCode weekly quota remains recorded.",
+  "originalAtomicCrossConceptsBound": 34,
+  "correctedAtomicCrossConceptsBound": 35,
+  "countCorrectionReason": "Existing CC_QUADRATIC_DISCRIMINANT was already bound in q13 but omitted from the definition list and count; restore its exact canonical definition and count the actual distinct bound keys."
+}

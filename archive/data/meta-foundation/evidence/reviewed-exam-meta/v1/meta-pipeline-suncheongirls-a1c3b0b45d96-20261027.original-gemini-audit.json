@@ -1,0 +1,907 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "23_순천여고_1학기_중간_고1_기출",
+  "sourceFileDriveId": "1CKPlqxRTPoy-pkxAoLDxmUQ_YM8xsLN_",
+  "sourceSha256": "924f21353fb3841865ff1aa44227dec76005ad380cf86f808da6dd34178b3685",
+  "auditedTimestamp": "2026-10-24T09:35:00Z",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 23,
+    "approved": 23,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 19,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 34,
+    "byPack": {
+      "H1_FOUNDATION": 23
+    },
+    "byStandardUnit": {
+      "H22-C-04": 3,
+      "H22-C-05": 8,
+      "H22-C-06": 9,
+      "H22-C-02": 2,
+      "H22-C-03": 1
+    },
+    "bySubUnit": {
+      "H22-C-04-COMPLEX_BASIC": 3,
+      "H22-C-05-QUADRATIC_EQUATION": 3,
+      "H22-C-05-QUADRATIC_FUNCTION_APPLICATION": 1,
+      "H22-C-06-HIGHER_EQUATION": 2,
+      "H22-C-06-HIGHER_INEQUALITY": 6,
+      "H22-C-06-SYSTEM_OF_EQUATIONS": 1,
+      "H22-C-05-QUADRATIC_FUNCTION_GRAPH": 2,
+      "H22-C-02-REMAINDER": 2,
+      "H22-C-05-QUADRATIC_FUNCTION_MAXMIN": 2,
+      "H22-C-03-FACTORIZATION_APPLICATION": 1
+    },
+    "byDifficultyBucket": {
+      "2": 5,
+      "3": 9,
+      "4": 6,
+      "5": 3
+    },
+    "byProblemType": {
+      "PT_H1_COMPLEX_POWER_ROOT": 1,
+      "PT_H1_COMPLEX_OPERATION": 2,
+      "PT_H1_ROOT_COEFFICIENT_RELATION": 2,
+      "PT_H1_QUADRATIC_GRAPH_INTERSECTION": 2,
+      "PT_H1_HIGHER_DEGREE_EQUATION": 2,
+      "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY": 2,
+      "PT_H1_SYSTEM_EQUATION": 1,
+      "PT_H1_LINEAR_SYSTEM_INEQUALITY": 1,
+      "PT_H1_REMAINDER_THEOREM": 2,
+      "PT_H1_QUADRATIC_INEQUALITY": 3,
+      "PT_H1_QUADRATIC_DISCRIMINANT": 1,
+      "PT_H1_QUADRATIC_EXTREMA": 2,
+      "PT_H1_POLY_FACTORIZATION": 1,
+      "PT_H1_QUADRATIC_RECONSTRUCTION": 1
+    },
+    "byTemplate": {
+      "TPL_H1_COMPLEX_I_PERIOD": 1,
+      "TPL_H1_COMPLEX_CONJUGATE_NORM": 2,
+      "TPL_H1_VIETA_SYMMETRIC_VALUE": 1,
+      "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY": 1,
+      "TPL_H1_HIGHER_FACTOR_ROOT": 2,
+      "TPL_H1_ABSOLUTE_DIRECT_INTERVAL": 1,
+      "TPL_H1_SYSTEM_DIRECT": 1,
+      "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY": 1,
+      "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER": 1,
+      "TPL_H1_REMAINDER_NESTED_DIVISION": 2,
+      "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER": 2,
+      "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE": 1,
+      "TPL_H1_VIETA_TRANSFORMED_ROOT": 1,
+      "TPL_H1_ABSOLUTE_PIECEWISE_CASE": 1,
+      "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL": 1,
+      "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL": 1,
+      "TPL_H1_FACTORIZATION_APPLICATION": 1,
+      "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION": 1,
+      "TPL_H1_QUADRATIC_EXTREMA_MODEL": 1
+    }
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_IMAGINARY_UNIT_PERIODICITY",
+      "labelKo": "허수단위 거듭제곱의 주기성",
+      "definition": "허수단위 i의 거듭제곱이 i⁴=1을 주기로 반복되어 연속한 4개 거듭제곱의 합이 0이 되는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_COMPLEX_INVERSE",
+      "labelKo": "복소수의 역수와 분모의 실수화",
+      "definition": "분모에 허수단위가 포함된 식의 분모와 분자에 켤레복소수를 곱하여 분모를 실수로 바꾸는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_COMPLEX_CONJUGATE",
+      "labelKo": "켤레복소수의 성질",
+      "definition": "복소수 z=a+bi에 대하여 허수부의 부호를 바꾼 z̄=a-bi와의 합, 곱, 켤레 성질",
+      "boundQuestionCount": 3
+    },
+    {
+      "conceptKey": "CC_COMPLEX_DIVISION",
+      "labelKo": "복소수의 나눗셈",
+      "definition": "분수 꼴의 복소수에서 분모의 켤레복소수를 곱해 a+bi 꼴로 정리하는 연산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_ROOTS_COEFFICIENTS",
+      "labelKo": "이차방정식의 근과 계수의 관계",
+      "definition": "ax²+bx+c=0의 두 근 α, β에 대하여 α+β=-b/a, αβ=c/a가 성립한다는 관계",
+      "boundQuestionCount": 3
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_EXPRESSION",
+      "labelKo": "대칭식의 값 계산",
+      "definition": "두 근의 합과 곱을 곱셈공식 변형 식에 대입하여 α²+β², α³+β³ 등의 값을 구하는 방법",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_LINE_INTERSECTION",
+      "labelKo": "이차함수와 직선의 위치 관계",
+      "definition": "이차함수와 일차직선의 교점의 개수를 연립이차방정식의 판별식 부호로 판정하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DISCRIMINANT",
+      "labelKo": "이차방정식의 판별식",
+      "definition": "D = b²-4ac의 부호를 통해 서로 다른 두 실근, 중근, 허근을 판별하는 식",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_CONJUGATE_SURD_ROOTS",
+      "labelKo": "유리수 계수 방정식의 켤레무리수 근",
+      "definition": "유리수 계수 다항방정식에서 p+q√m이 근이면 p-q√m도 반드시 근이 된다는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_VIETA_CUBIC",
+      "labelKo": "삼차방정식의 근과 계수의 관계",
+      "definition": "삼차방정식의 세 근의 합, 두 근끼리의 곱의 합, 세 근의 곱과 계수 사이의 관계",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_COMPLEX_ALGEBRAIC_PROPERTIES",
+      "labelKo": "복소수의 대수적 연산 성질",
+      "definition": "실수와 허수부분의 분리 및 켤레복소수 연산에서 실수 여부 판별",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_INEQUALITY",
+      "labelKo": "절댓값을 포함한 부등식",
+      "definition": "|x-c|≤r의 해가 중심 c에서 반경 r 이하인 닫힌 구간 [c-r, c+r]이 되는 대칭적 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SYSTEM_SYMMETRIC_EXPRESSION",
+      "labelKo": "대칭형 연립이차방정식",
+      "definition": "x+y=u, xy=v로 치환하여 두 미지수의 합과 곱을 구하고 연립방정식을 해결하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PARABOLA_X_INTERCEPT_DISTANCE",
+      "labelKo": "포물선의 x절편 사이의 거리",
+      "definition": "이차방정식 두 실근의 차 |α-β| = √( (α+β)²-4αβ )로 x축 교점 거리를 산출하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_LINEAR_SYSTEM_INEQUALITY",
+      "labelKo": "연립일차부등식의 해의 존재 조건",
+      "definition": "수직선 위에서 두 일차부등식의 해 구간이 공통 범위를 가질 매개변수의 조건",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INTEGER_CONDITION",
+      "labelKo": "정수 조건에서의 미지수 결정",
+      "definition": "부등식의 범위를 만족하는 정수의 개수나 최솟값, 최댓값을 특정하는 이산적 판정",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REMAINDER_THEOREM_SQUARE_FACTOR",
+      "labelKo": "완전제곱식으로 나눈 나머지정리",
+      "definition": "다항식이 (x-a)²을 인수로 가질 때 f(a)=0 및 몫의 일차식 계수 비교 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DIVISION_ALGORITHM",
+      "labelKo": "다항식의 나눗셈 정리",
+      "definition": "A = BQ + R (차수 R < 차수 B)로 표현되는 다항식의 항등식 관계",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_INEQUALITY_RESTRICTED_DOMAIN",
+      "labelKo": "제한된 구간에서의 이차부등식 항상 성립 조건",
+      "definition": "구간 [p, q]에서 포물선의 꼭짓점 또는 양 끝점의 최솟값이 0 이상이 될 조건",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA",
+      "labelKo": "이차함수의 최대·최소",
+      "definition": "완전제곱식으로 표준형을 만들어 꼭짓점의 위치와 구간의 범위에 따른 최댓값·최솟값 결정",
+      "boundQuestionCount": 3
+    },
+    {
+      "conceptKey": "CC_PERFECT_SQUARE_TRINOMIAL",
+      "labelKo": "판별식의 완전제곱식 인수분해",
+      "definition": "문자가 두 개인 판별식 D가 (a+b-c)²으로 묶여 0이 되는 조건 분석",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_CUBIC_EQUATION_OMEGA",
+      "labelKo": "삼차방정식의 허근 오메가의 성질",
+      "definition": "인수분해된 이차식 x²-2x+3=0의 허근 ω에 대하여 ω+ω̄, ωω̄를 분수식에 대입하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_GLOBAL_QUADRATIC_INEQUALITY_NO_SOLUTION",
+      "labelKo": "이차부등식의 해가 존재하지 않을 조건",
+      "definition": "f(x)≥0의 해가 없으려면 모든 x에 대해 f(x)<0이어야 하므로 최고차항 음수 및 판별식 음수",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INTEGER_ROOTS_DIOPHANTINE",
+      "labelKo": "정수근을 갖는 이차방정식의 부정방정식",
+      "definition": "근과 계수의 관계에서 매개변수를 소거하여 (r-a)(s-b)=k 꼴의 약수 부정방정식 해결",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_PIECEWISE_FUNCTION",
+      "labelKo": "절댓값 기호를 포함한 꺾은선 함수의 최솟값",
+      "definition": "절댓값의 꺾인 점들을 대입하여 함수의 그래프 개형을 파악하고 최솟값을 도출하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INSCRIBED_RECTANGLE_QUADRATIC_MODEL",
+      "labelKo": "직각삼각형에 내접하는 직사각형의 이차함수 모델",
+      "definition": "삼각형의 닮음비를 이용해 직사각형의 변을 미지수로 나타내고 넓이의 부등식을 해결하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_SIMILARITY",
+      "labelKo": "직각삼각형의 닮음",
+      "definition": "평행선에 의해 생기는 직각삼각형들이 AA 닮음임을 이용한 변의 비례식 수립",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DEGREE_DEDUCTION",
+      "labelKo": "다항식 나눗셈에서의 차수 추론",
+      "definition": "나머지의 차수가 나누는 다항식의 차수보다 엄격히 작아야 함을 이용한 최고차항 계수 결정",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PIECEWISE_MAX_FUNCTION",
+      "labelKo": "대칭축의 변화에 따른 구간 최댓값 함수",
+      "definition": "이차함수의 대칭축 위치에 따라 양 끝점 중 최댓값을 선택하여 구간별 함수 g(t)를 구성하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_IDENTITY_FACTOR",
+      "labelKo": "항등식과 인수정리를 이용한 다항식 복원",
+      "definition": "(x-a)P(x)=(x-b)Q(x)에서 특정 값을 대입하여 근을 찾고 다항식을 인수분해 형태로 설정",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_VARIABLE_IDENTITY",
+      "labelKo": "모든 실수에 대한 항등식",
+      "definition": "미지수의 값에 관계없이 항상 성립하는 등식의 계수 비교",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_LINE_INEQUALITY_RECONSTRUCTION",
+      "labelKo": "부등식의 해로부터 두 함수의 식 복원",
+      "definition": "f(x)≥g(x)의 해가 구간 [α, β]일 때 f(x)-g(x)=a(x-α)(x-β)임을 이용한 식 구성",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PARABOLA_X_INTERCEPTS",
+      "labelKo": "x절편을 이용한 포물선의 식 구성",
+      "definition": "이차함수가 (α, 0), (β, 0)을 지날 때 y=a(x-α)(x-β)로 나타내는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RECTANGLE_PERIMETER_QUADRATIC_MAX",
+      "labelKo": "포물선에 내접하는 사각형 둘레의 최대",
+      "definition": "대칭성을 이용해 둘레를 일변수 t의 이차함수로 나타내고 꼭짓점에서 최댓값을 도출",
+      "boundQuestionCount": 1
+    }
+  ],
+  "totalAuditedCount": 23,
+  "zeroStubCertified": true,
+  "allVisualAssetsVerified": true,
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-04",
+      "standardUnit": "복소수와 이차방정식",
+      "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+      "subUnit": "복소수의 뜻과 표현",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+      "crossConceptKeys": [
+        "CC_IMAGINARY_UNIT_PERIODICITY",
+        "CC_COMPLEX_INVERSE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "i의 4주기 합 i+i²+i³+i⁴=0을 이용해 1부터 i⁹까지를 1+i로 소거하고 1/i=-i와 상쇄시켜 1을 도출하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$1+i+i^2+i^3+\\cdots+i^8+i^9+\\dfrac{1}{i}$의 값은? (단, $i=\\sqrt{-1}$이다.) [3.6점]",
+        "solutionDecisiveExcerpt": "$i$의 거듭제곱은 4주기이다.\n$i+i^2+i^3+i^4=0$이고 $i^5+i^6+i^7+i^8=0$이므로\n$1+i+i^2+\\cdots+i^8+i^9+\\dfrac1i=1+i-i=",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-04",
+      "standardUnit": "복소수와 이차방정식",
+      "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+      "subUnit": "복소수의 뜻과 표현",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "crossConceptKeys": [
+        "CC_COMPLEX_CONJUGATE",
+        "CC_COMPLEX_DIVISION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "방정식 (1+i)z̄=6i에서 양변을 1+i로 나누어 실수화함으로써 z̄=3+3i를 구하고 켤레복소수를 취해 z=3-3i를 구하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "복소수 $z=a+bi$와 켤레복소수 $\\overline{z}$에 대하여 $(1+i)\\overline{z}=6i$를 만족할 때, $z$의 값은? (단, $i=\\sqrt{-1}$이다.",
+        "solutionDecisiveExcerpt": "$(1+i)\\overline z=6i$에서\n$\\overline z=\\dfrac{6i}{1+i}=\\dfrac{6i(1-i)}2=3+3i$이다.\n따라서 $z$는 그 켤레복소수이므로\n$",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+      "subUnit": "이차방정식",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "crossConceptKeys": [
+        "CC_ROOTS_COEFFICIENTS",
+        "CC_SYMMETRIC_EXPRESSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이차방정식 x²-3x+5=0에서 합 α+β=3, 곱 αβ=5를 구하고 곱셈공식 변형 (α+β)²-2αβ에 대입해 9-10=-1을 산출하는 2단계 기본 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차방정식 $x^2-3x+5=0$의 두 근을 $\\alpha$, $\\beta$라고 할 때, $\\alpha^2+\\beta^2$의 값은? [3.7점]",
+        "solutionDecisiveExcerpt": "근과 계수의 관계에서\n$\\alpha+\\beta=3$, $\\alpha\\beta=5$이다.\n따라서\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_LINE_INTERSECTION",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이차함수와 직선의 연립방정식 2x²-4x+(a-2)=0을 세우고 접할 조건 판별식 D/4=(-2)²-2(a-2)=0을 풀어 a=4를 구하는 3단계 표준 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=2x^2+x+a$의 그래프와 직선 $y=5x+2$가 접하도록 하는 실수 $a$의 값은? [3.8점]",
+        "solutionDecisiveExcerpt": "접점의 $x$좌표는\n$2x^2+x+a=5x+2$의 중근이다.\n즉 $2x^2-4x+a-2=0$의 판별식이 $0$이므로\n$(-4)^2-4\\cdot2(a-2)=0$이다.\n$32-8a=0",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "subUnit": "삼차방정식과 사차방정식",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "crossConceptKeys": [
+        "CC_CONJUGATE_SURD_ROOTS",
+        "CC_VIETA_CUBIC"
+      ],
+      "conditionKeys": [
+        "COND_RATIONAL_COEFFICIENTS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "유리수 계수 삼차방정식에서 한 근이 √3이면 -√3도 근임을 이용해 (x²-3)(x-r)로 분해하고, 상수항 조건에서 r=-1을 결정하여 a=-1, b=-3, a+b=-4를 도출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "삼차방정식 $x^3+ax^2+bx-3=0$의 한 근이 $\\sqrt{3}$일 때, 유리수 $a$, $b$에 대하여 $a+b$의 값은? [3.8점]",
+        "solutionDecisiveExcerpt": "계수가 유리수이므로 $\\sqrt3$이 근이면 $-\\sqrt3$도 근이다.\n따라서 $(x^2-3)$이 인수이고, 나머지 한 근을 $r$라 하면\n세 근의 곱은 $3$이므로 $(-3)r",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-04",
+      "standardUnit": "복소수와 이차방정식",
+      "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+      "subUnit": "복소수의 뜻과 표현",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "crossConceptKeys": [
+        "CC_COMPLEX_ALGEBRAIC_PROPERTIES",
+        "CC_COMPLEX_CONJUGATE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "복소수 z와 켤레복소수 z̄의 5개 보기 성질을 전수 검토하여 z²+z̄²≥0이 성립하지 않는 반례(예: z=i이면 i²+(-i)²=-2<0)를 찾아내는 3단계 판별 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "복소수 $z$에 대하여 다음 설명 중 옳지 않은 것은? (단, $i=\\sqrt{-1}$, $z=a+bi$, $\\overline{z}=a-bi$이고, $a$, $b$는 실수이다.) ",
+        "solutionDecisiveExcerpt": "각 명제를 확인한다.\n① $(1+z)(1+\\overline z)=1+z+\\overline z+z\\overline z$이므로 실수이다.\n② $z\\ne0$이면 $\\dfrac1z+\\df",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+      "subUnit": "연립일차부등식",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_INEQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "절댓값 부등식 |x+a|≤b의 해 -a-b≤x≤-a+b를 주어진 구간 -1≤x≤3의 중심 1과 반경 2와 비교하여 a=-1, b=2, ab=-2를 도출하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "절댓값 부등식 $|x+a|\\le b$의 해가 $-1\\le x\\le3$일 때, 상수 $a$, $b$에 대하여 $ab$의 값은? [3.9점]",
+        "solutionDecisiveExcerpt": "$|x+a|\\le b$의 해는\n$-a-b\\le x\\le-a+b$이다.\n주어진 해 $-1\\le x\\le3$과 비교하면 중심이 $1$이므로 $-a=1$, 폭의 절반이 $2$이므로 $b",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
+      "subUnit": "연립이차방정식",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "crossConceptKeys": [
+        "CC_SYSTEM_SYMMETRIC_EXPRESSION",
+        "CC_SYMMETRIC_EXPRESSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "x-y=-2와 x²+y²=10에서 (x-y)²=x²+y²-2xy 공식을 적용해 xy=3을 구하고, (x+y)²=x²+y²+2xy=16으로부터 |x+y|=4를 도출하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "연립방정식 $\\begin{cases}x-y=-2\\\\x^2+y^2=10\\end{cases}$을 만족하는 $x$, $y$에 대하여 $|x+y|$의 값은? [4점]",
+        "solutionDecisiveExcerpt": "$x-y=-2$이므로 $(x-y)^2=4$이다.\n$x^2+y^2=10$을 이용하면\n$4=x^2+y^2-2xy=10-2xy$에서 $xy=3$이다.\n따라서\n$(x+y)^2=x^2+y^",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프와 이차방정식의 관계",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "crossConceptKeys": [
+        "CC_PARABOLA_X_INTERCEPT_DISTANCE",
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "x절편 사이의 거리 |α-β|=√( (α+β)²-4αβ )=√(k²+12)=4 방정식을 세워 k²=4, |k|=2를 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $f(x)=x^2-kx-3$의 그래프가 $x$축과 서로 다른 두 점에서 만나고, 그 두 점 사이의 거리가 4일 때, $|k|$의 값은? (단, $k$는 실수이다.) [4점",
+        "solutionDecisiveExcerpt": "$x$축과 만나는 두 점의 $x$좌표는\n$x^2-kx-3=0$의 두 근이다.\n두 근 사이의 거리는\n$\\sqrt{k^2+12}$이고 이것이 $4$이므로\n$k^2+12=16$이다.\n따",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+      "subUnit": "연립일차부등식",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+      "crossConceptKeys": [
+        "CC_LINEAR_SYSTEM_INEQUALITY",
+        "CC_INTEGER_CONDITION"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "두 일차부등식을 정리하여 1/3≤x≤(k-1)/2를 얻고, 해가 존재할 조건 1/3≤(k-1)/2로부터 k≥5/3를 유도하여 정수 k의 최솟값 2를 산출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "연립부등식 $\\begin{cases}x+1\\le k-x\\\\1-3x\\le3x-1\\end{cases}$의 해가 존재하기 위한 정수 $k$의 최솟값은? [4점]",
+        "solutionDecisiveExcerpt": "각 부등식을 정리하면\n$x\\le\\dfrac{k-1}{2}$,\n$x\\ge\\dfrac13$이다.\n공통해가 존재하려면\n$\\dfrac13\\le\\dfrac{k-1}{2}$이어야 한다.\n따라",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-02",
+      "standardUnit": "다항식의 연산",
+      "subUnitKey": "H22-C-02-REMAINDER",
+      "subUnit": "나머지정리와 인수정리",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+      "crossConceptKeys": [
+        "CC_REMAINDER_THEOREM_SQUARE_FACTOR",
+        "CC_POLYNOMIAL_DIVISION_ALGORITHM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "삼차식의 최고차항 계수 2와 (x-1)² 인수를 이용해 2x³-3x²+ax+b=(x-1)²(2x+c)로 설정하고 이차항 계수 비교 c-4=-3에서 c=1을 얻어 P(1)=2(1)+1=3을 도출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x$에 대한 다항식 $2x^3-3x^2+ax+b$가 $(x-1)^2$으로 나누어떨어질 때의 몫을 $P(x)$라 할 때, $P(1)$의 값은? (단, $a$, $b$는 상수이다.)",
+        "solutionDecisiveExcerpt": "주어진 다항식은 최고차항의 계수가 $2$이고 $(x-1)^2$으로 나누어떨어지므로\n$2x^3-3x^2+ax+b=(x-1)^2(2x+c)$로 둘 수 있다.\n오른쪽을 전개했을 때 $x",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+      "subUnit": "이차부등식",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_INEQUALITY_RESTRICTED_DOMAIN",
+        "CC_QUADRATIC_EXTREMA"
+      ],
+      "conditionKeys": [
+        "COND_RESTRICTED_INTERVAL",
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "주어진 제한 구간 [-1, 2]에서 대칭축 x=1이 포함되므로 꼭짓점 최솟값 4-a²≥0을 풀어 a²≤4에서 정수 a의 최댓값 2를 산출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$-1\\le x\\le2$에서 이차부등식 $x^2-2x-a^2+5\\ge0$이 성립하도록 하는 정수 $a$의 최댓값은? [4점]",
+        "solutionDecisiveExcerpt": "식을 완전제곱으로 만들면\n$x^2-2x-a^2+5=(x-1)^2+4-a^2$이다.\n$-1\\le x\\le2$에서 $(x-1)^2$의 최솟값은 $0$이므로\n부등식이 항상 성립하려면 $",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+      "subUnit": "이차방정식의 판별식",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_DISCRIMINANT",
+        "CC_PERFECT_SQUARE_TRINOMIAL"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이차방정식의 판별식 D=(a-b)²+4(a-2)(b-2)=(a+b-4)²=0을 대수적으로 정리하여 실수 조건에서 a+b=4를 유도하는 3단계 식 변형 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차방정식 $(a-2)x^2+(a-b)x-(b-2)=0$이 중근을 가질 때, $a+b$의 값은? (단, $a$, $b$는 실수이다.) [4.1점]",
+        "solutionDecisiveExcerpt": "중근을 가지므로 판별식이 $0$이다.\n$D=(a-b)^2+4(a-2)(b-2)$\n$=(a+b)^2-8(a+b)+16$\n$=(a+b-4)^2$이다.\n따라서 $a+b-4=0$이고\n$a",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "subUnit": "삼차방정식과 사차방정식",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "crossConceptKeys": [
+        "CC_CUBIC_EQUATION_OMEGA",
+        "CC_COMPLEX_CONJUGATE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "x³-x²+x+3=(x+1)(x²-2x+3)=0의 허근 성질 ω+ω̄=2, ωω̄=3을 적용해 z=ω/(ω-1)의 켤레곱 zz̄=ωω̄/( (ω-1)(ω̄-1) )=3/2를 산출하는 4단계 심화 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "삼차방정식 $x^3-x^2+x+3=0$의 한 허근 $\\omega$에 대하여 $z=\\dfrac{\\omega}{\\omega-1}$이라 할 때, $z+\\overline{z}$의 값은? ",
+        "solutionDecisiveExcerpt": "$x^3-x^2+x+3=(x+1)(x^2-2x+3)$이다.\n허근 $\\omega$와 $\\overline\\omega$는 $x^2-2x+3=0$의 두 근이므로\n$\\omega+\\overl",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+      "subUnit": "이차부등식",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+      "crossConceptKeys": [
+        "CC_GLOBAL_QUADRATIC_INEQUALITY_NO_SOLUTION",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "최고차항 계수 a=0일 때(-3≥0 해 없음)와 a<0 및 판별식 D/4=a²+3a<0일 때(-3<a<0)를 종합하여 -3<a≤0 범위의 정수 a=-2, -1, 0 (3개)를 도출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "부등식 $ax^2-2ax-3\\ge0$의 해가 존재하지 않도록 하는 정수 $a$의 개수는? [4.1점]",
+        "solutionDecisiveExcerpt": "$a=0$이면 부등식은 $-3\\ge0$이 되어 해가 없다.\n$a\\ne0$일 때 해가 전혀 없으려면 아래로 열린 이차식이고 최댓값도 음수여야 하므로 $a<0$이고 판별식이 음수여야 ",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+      "subUnit": "이차방정식의 근과 계수의 관계",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "crossConceptKeys": [
+        "CC_INTEGER_ROOTS_DIOPHANTINE",
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "두 정수근 r, s에 대하여 a를 소거해 (r+2)(s+2)=-1 부정방정식을 유도하고, 정수 순서쌍으로부터 구한 a=0, a=-4의 합 -4를 산출하는 4단계 고난도 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차방정식 $x^2-(a-3)x+1-2a=0$의 두 근이 모두 정수가 되도록 하는 모든 실수 $a$값의 합은? [4.1점]",
+        "solutionDecisiveExcerpt": "두 정수근을 $r,s$라 하자.\n근과 계수의 관계에서\n$r+s=a-3$, $rs=1-2a$이다.\n$a=r+s+3$을 둘째 식에 대입하면\n$rs=-2r-2s-5$이므로\n$(r+2)(",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+      "subUnit": "연립일차부등식",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_PIECEWISE_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "꺾은선 함수 F(x)=2|x-1|+|x+3|의 꺾인 점 x=-3(값 8), x=1(값 4)을 비교하여 함수의 최솟값 4를 구하고, 모든 실수에서 성립할 조건 k≤4로부터 k의 최댓값 4를 도출하는 4단계 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "부등식 $2|x-1|+|x+3|\\ge k$를 만족시키는 해가 모든 실수가 되도록 하는 실수 $k$의 최댓값은? [4.2점]",
+        "solutionDecisiveExcerpt": "$F(x)=2|x-1|+|x+3|$라 하자.\n구간별로 정리하면\n$x<-3$에서 $F(x)=-3x-1$,\n$-3\\le x<1$에서 $F(x)=5-x$,\n$x\\ge1$에서 $F(x)=",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+      "subUnit": "이차부등식의 활용",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_RECTANGLE_QUADRATIC_MODEL",
+        "CC_TRIANGLE_SIMILARITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "직각삼각형 닮음비(AC=12, BC=6)로부터 내접 직사각형의 세로 12-2a를 세우고 넓이 S=12a-2a² 및 잘린 두 삼각형 넓이와의 관계로부터 이차부등식을 세워 a의 범위를 완성하는 5단계 최고난도 기하 융합 문항이므로 원본 난이도 Bucket 5를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같이 $\\overline{AC}=12$, $\\overline{BC}=6$인 직각삼각형 $ABC$가 있다. 빗변 $AB$ 위의 점 $P$에서 변 $BC$와 변 $AC$에",
+        "solutionDecisiveExcerpt": "직각인 점 $C$를 원점으로 두고 $AC=12$, $BC=6$이라 생각한다.\n$QC=a$이면 빗변 $AB$의 직선 관계에서 $RC=12-2a$이다.\n\n직사각형 $PQCR$의 넓이는",
+        "visualAssetChecked": true,
+        "visualType": "PNG",
+        "visualAssetFiles": [
+          "assets/images/23_순천여고_1학기_중간_고1_기출/q18.png"
+        ]
+      }
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-02",
+      "standardUnit": "다항식의 연산",
+      "subUnitKey": "H22-C-02-REMAINDER",
+      "subUnit": "나머지정리와 인수정리",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_DIVISION_ALGORITHM",
+        "CC_DEGREE_DEDUCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "나눗셈 정리에서 몫과 나머지가 h(x)=g(x)+2x³로 같음을 이용해 차수 관계를 엄밀히 추론하고, 조건 (나)의 항등식을 연립하여 g(x)를 완전히 복원한 뒤 g(-1)을 구하는 5단계 최고난도 추론 문항이므로 원본 난이도 Bucket 5를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 $f(x)$, $g(x)$가 다음 조건을 만족시킬 때, $g(-1)$의 값은? (가) $f(x)$를 $g(x)$로 나눈 몫과 나머지가 모두 $g(x)+2x^3$이다. (나)",
+        "solutionDecisiveExcerpt": "$h(x)=g(x)+2x^3$라 하자.\n조건 (가)에서 몫과 나머지가 모두 $h(x)$이므로\n$f(x)=g(x)h(x)+h(x)=(g(x)+1)h(x)$이다.\n\n조건 (나)에서 $",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_MAXMIN",
+      "subUnit": "이차함수의 최대·최소",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "crossConceptKeys": [
+        "CC_PIECEWISE_MAX_FUNCTION",
+        "CC_QUADRATIC_EXTREMA"
+      ],
+      "conditionKeys": [
+        "COND_RESTRICTED_INTERVAL"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "구간 [-1, 3]에서 대칭축 2t의 위치에 따라 양 끝점의 함숫값을 비교하여 최댓값 함수 g(t)=max(4t-4, 4-12t)를 구간별로 정의하고, g(t)=t+1 방정식을 풀어 근의 합을 구하는 5단계 킬러 문항이므로 원본 난이도 Bucket 5를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$-1\\le x\\le3$에서 실수 $t$에 대하여 이차함수 $y=x^2-4tx-5$의 최댓값을 $g(t)$라 할 때, $t$에 대한 방정식 $g(t)=0$의 모든 근의 합은? [4",
+        "solutionDecisiveExcerpt": "이차함수는 위로 열린 포물선이므로 닫힌구간 $[-1,3]$에서 최댓값은 양 끝점 중 큰 값이다.\n$y(-1)=4t-4$, $y(3)=4-12t$이므로\n$g(t)=\\max(4t-4,",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-03",
+      "standardUnit": "다항식의 인수분해",
+      "subUnitKey": "H22-C-03-FACTORIZATION_APPLICATION",
+      "subUnit": "인수분해의 활용",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_IDENTITY_FACTOR",
+        "CC_INDEPENDENT_VARIABLE_IDENTITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "항등식 (x-1)P(x)=(x+2)Q(x)에서 P(-2)=0, Q(1)=0을 찾아 P(x)=(x+2)(x-r), Q(x)=(x-1)(x-r)로 설정하고, 조건식을 통해 r을 결정하여 P(0)+Q(2)=5를 서술하는 4단계 서술형 심화 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x^2$의 계수가 1인 두 이차식 $P(x)$, $Q(x)$가 모든 실수 $x$에 대하여 다음 조건을 만족시킬 때, $P(0)+Q(2)$의 값을 구하시오. [6점] (가) $(x",
+        "solutionDecisiveExcerpt": "$(x-1)P(x)=(x+2)Q(x)$에서 $x=-2$를 대입하면 $P(-2)=0$이고,\n$x=1$을 대입하면 $Q(1)=0$이다.\n두 식은 모두 최고차항의 계수가 $1$인 이차식",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      }
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프와 직선의 위치 관계",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_LINE_INEQUALITY_RECONSTRUCTION",
+        "CC_PARABOLA_X_INTERCEPTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "x절편 (-2, 3)으로부터 f(x)=a(x+2)(x-3)을 두고, 기울기 1인 직선 g(x)=x+b와의 부등식 f(x)-g(x)≥0의 해가 [-1, 1]임을 이용해 a=-1, b=5를 구하여 f(x)=-x²+x+6, g(x)=x+5를 완결 서술하는 4단계 서술형 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=f(x)$의 그래프와 기울기가 1인 직선 $y=g(x)$가 다음 그림과 같다. 부등식 $f(x)\\ge g(x)$의 해가 $-1\\le x\\le1$일 때, $f(x)$와",
+        "solutionDecisiveExcerpt": "$f(-2)=f(3)=0$이므로\n$f(x)=a(x+2)(x-3)$로 둘 수 있다.\n또 기울기가 $1$인 직선은 $g(x)=x+b$로 둔다.\n\n$f(x)\\ge g(x)$의 해가 정확",
+        "visualAssetChecked": true,
+        "visualType": "PNG",
+        "visualAssetFiles": [
+          "assets/images/23_순천여고_1학기_중간_고1_기출/q22.png"
+        ]
+      }
+    },
+    {
+      "questionId": 23,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_MAXMIN",
+      "subUnit": "이차함수의 최대·최소",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "crossConceptKeys": [
+        "CC_RECTANGLE_PERIMETER_QUADRATIC_MAX",
+        "CC_QUADRATIC_EXTREMA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "포물선 y=x²-9와 x축 사이의 직사각형 꼭짓점을 C(t, t²-9)로 잡아 둘레 L(t)=2(2t + 9-t²)=-2t²+4t+18을 세우고, t=1에서 최댓값 20을 산출하는 4단계 표준 서술형 기하 모델링 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림에서 직사각형 $ABCD$의 두 꼭짓점 $B$, $C$는 이차함수 $y=x^2-9$의 그래프 위에 있고, 두 꼭짓점 $A$, $D$는 $x$축 위에 있다. (단, 점 $C",
+        "solutionDecisiveExcerpt": "점 $C=(t,t^2-9)$가 제4사분면에 있으므로 $0<t<3$이다.\n직사각형의 윗변은 $x$축 위에 있고 포물선은 $y$축에 대칭이므로\n$B=(-t,t^2-9)$이다.\n따라서 ",
+        "visualAssetChecked": true,
+        "visualType": "PNG",
+        "visualAssetFiles": [
+          "assets/images/23_순천여고_1학기_중간_고1_기출/q23.png"
+        ]
+      }
+    }
+  ]
+}

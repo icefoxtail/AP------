@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.5.6",
+  "shardVersion": "1.5.7",
   "status": "ACTIVE",
-  "conceptCount": 70,
+  "conceptCount": 78,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -2319,6 +2319,286 @@
       ],
       "curriculumRefs": [
         "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_LINE_INTERSECTION",
+      "canonicalLabelKo": "이차함수와 직선의 위치 관계",
+      "definition": "이차함수와 일차직선의 교점의 개수를 연립이차방정식의 판별식 부호로 판정하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ad5844c9c7f6362ec8f4fe2e92945a7909530018e1f87688e5612c0bd290e2e8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ad5844c9c7f6362ec8f4fe2e92945a7909530018e1f87688e5612c0bd290e2e8",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_QUADRATIC_LINE_INTERSECTION for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_INTERSECTION_TANGENCY at H22-C-05-QUADRATIC_FUNCTION_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 4 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-05"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PARABOLA_X_INTERCEPT_DISTANCE",
+      "canonicalLabelKo": "포물선의 x절편 사이의 거리",
+      "definition": "이차방정식 두 실근의 차 |α-β| = √( (α+β)²-4αβ )로 x축 교점 거리를 산출하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_510b00f0ca5898151f3baee731282104f195e0fb10fd9e2e8944d04065cad1c5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_510b00f0ca5898151f3baee731282104f195e0fb10fd9e2e8944d04065cad1c5",
+          "sourceOrdinal": 9,
+          "classificationRationale": "META_PIPELINE_AUDIT record 9 binds CC_PARABOLA_X_INTERCEPT_DISTANCE for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY at H22-C-05-QUADRATIC_FUNCTION_GRAPH.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 9 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-05"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_INEQUALITY_RESTRICTED_DOMAIN",
+      "canonicalLabelKo": "제한된 구간에서의 이차부등식 항상 성립 조건",
+      "definition": "구간 [p, q]에서 포물선의 꼭짓점 또는 양 끝점의 최솟값이 0 이상이 될 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7bfeb87b9235c611240ca1fb13f4c7667760d81a9f8f7b255327f766f08cbfc0"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7bfeb87b9235c611240ca1fb13f4c7667760d81a9f8f7b255327f766f08cbfc0",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_QUADRATIC_INEQUALITY_RESTRICTED_DOMAIN for PT_H1_QUADRATIC_INEQUALITY/TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER at H22-C-06-HIGHER_INEQUALITY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 12 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_INEQUALITY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-06"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_PIECEWISE_FUNCTION",
+      "canonicalLabelKo": "절댓값 기호를 포함한 꺾은선 함수의 최솟값",
+      "definition": "절댓값의 꺾인 점들을 대입하여 함수의 그래프 개형을 파악하고 최솟값을 도출하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_072159577d022dceabc170a32628199b4e0a3512cf80d9626093224c41e39137"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_072159577d022dceabc170a32628199b4e0a3512cf80d9626093224c41e39137",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_ABSOLUTE_VALUE_PIECEWISE_FUNCTION for PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY/TPL_H1_ABSOLUTE_PIECEWISE_CASE at H22-C-06-HIGHER_INEQUALITY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 17 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-06"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PIECEWISE_MAX_FUNCTION",
+      "canonicalLabelKo": "대칭축의 변화에 따른 구간 최댓값 함수",
+      "definition": "이차함수의 대칭축 위치에 따라 양 끝점 중 최댓값을 선택하여 구간별 함수 g(t)를 구성하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_35298e31836615711722ee98155cee3927a1e039829253809ef5d3d9b331f84d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_35298e31836615711722ee98155cee3927a1e039829253809ef5d3d9b331f84d",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_PIECEWISE_MAX_FUNCTION for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL at H22-C-05-QUADRATIC_FUNCTION_MAXMIN.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-05"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_LINE_INEQUALITY_RECONSTRUCTION",
+      "canonicalLabelKo": "부등식의 해로부터 두 함수의 식 복원",
+      "definition": "f(x)≥g(x)의 해가 구간 [α, β]일 때 f(x)-g(x)=a(x-α)(x-β)임을 이용한 식 구성",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bda8acf3a786fec2d3987be2c69d6e397013a90fdb500924d2b4a79e0afc3b36"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bda8acf3a786fec2d3987be2c69d6e397013a90fdb500924d2b4a79e0afc3b36",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_QUADRATIC_LINE_INEQUALITY_RECONSTRUCTION for PT_H1_QUADRATIC_RECONSTRUCTION/TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION at H22-C-05-QUADRATIC_FUNCTION_GRAPH.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 22 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_RECONSTRUCTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-05"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PARABOLA_X_INTERCEPTS",
+      "canonicalLabelKo": "x절편을 이용한 포물선의 식 구성",
+      "definition": "이차함수가 (α, 0), (β, 0)을 지날 때 y=a(x-α)(x-β)로 나타내는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bda8acf3a786fec2d3987be2c69d6e397013a90fdb500924d2b4a79e0afc3b36"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bda8acf3a786fec2d3987be2c69d6e397013a90fdb500924d2b4a79e0afc3b36",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_PARABOLA_X_INTERCEPTS for PT_H1_QUADRATIC_RECONSTRUCTION/TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION at H22-C-05-QUADRATIC_FUNCTION_GRAPH.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 22 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_RECONSTRUCTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-05"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_RECTANGLE_PERIMETER_QUADRATIC_MAX",
+      "canonicalLabelKo": "포물선에 내접하는 사각형 둘레의 최대",
+      "definition": "대칭성을 이용해 둘레를 일변수 t의 이차함수로 나타내고 꼭짓점에서 최댓값을 도출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c1d00b9f4e4e763068e19418118c95f34586636af777169c40d9b33208410706"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c1d00b9f4e4e763068e19418118c95f34586636af777169c40d9b33208410706",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_RECTANGLE_PERIMETER_QUADRATIC_MAX for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_MODEL at H22-C-05-QUADRATIC_FUNCTION_MAXMIN.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 23 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-05"
       ],
       "ownerConceptShard": "FUNCTIONS"
     }
