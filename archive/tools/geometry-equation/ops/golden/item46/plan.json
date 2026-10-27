@@ -1,0 +1,97 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": { "coordinates": [ { "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" } ] },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": { "coordinates": [ { "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-1" } ] },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Q",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": { "coordinates": [ { "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-3" } ] },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "kInner",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [ "O" ],
+    "args": { "radius": { "kind": "integer", "value": "1" } },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "kOuter",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [ "O" ],
+    "args": { "radius": { "kind": "integer", "value": "3" } },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [ "O", "P", "Q" ],
+ "displayCircles": [ "kOuter", "kInner" ],
+ "displaySegments": [
+  { "id": "sOQ", "refs": [ "O", "Q" ] }
+ ],
+ "planeMarks": {
+  "regions": [
+   {
+    "id": "ring",
+    "fill": "LIGHT",
+    "pattern": "HATCH",
+    "label": "(가) 8πr²",
+    "labelKind": "TEXT",
+    "factRole": "CONCLUSION",
+    "shapes": [
+     { "loop": { "start": "Q", "steps": [ { "to": "Q", "arc": { "center": "O", "side": "FULL" } } ] } }
+    ],
+    "holes": [
+     { "loop": { "start": "P", "steps": [ { "to": "P", "arc": { "center": "O", "side": "FULL" } } ] } }
+    ]
+   },
+   {
+    "id": "inner",
+    "fill": "LIGHT",
+    "label": "(나)",
+    "labelKind": "TEXT",
+    "factRole": "CONCLUSION",
+    "shapes": [
+     { "loop": { "start": "P", "steps": [ { "to": "P", "arc": { "center": "O", "side": "FULL" } } ] } }
+    ]
+   }
+  ]
+ },
+ "caption": "OP=r이면 2OP=PQ에서 OQ=3r이다. 빗금친 고리 (가)의 넓이는 π(3r)²-πr²=8πr², 색칠한 부분 (나)의 넓이는 πr²이므로 넓이의 비는 8:1이다.",
+ "sourceConditions": [
+  { "id": "c1", "condition": "점 O는 두 원의 중심이고 2OP=PQ", "mappedTo": [ "O", "P", "Q" ] },
+  { "id": "c2", "condition": "빗금친 부분은 (가), 색칠한 부분은 (나)", "mappedTo": [ "ring", "inner" ] }
+ ],
+ "newVisualInformation": [
+  "왼쪽 고리 (가)는 빗금으로, 가운데 작은 원 (나)는 색칠로 구분해 보여 준다.",
+  "(가)는 빗금 위에 넓이 8πr²를 적고, (나)는 이름을 적어 caption의 πr²와 함께 비 8:1을 읽게 한다."
+ ],
+ "sourceQuote": "색칠한 부분 (나)의 넓이의 비를 구하시오.",
+ "coordinateCanvas": { "width": 520, "height": 520 }
+}
