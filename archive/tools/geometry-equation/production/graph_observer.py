@@ -148,7 +148,21 @@ def cubic_quartic_overview_audit(plan,poly,points,transform):
             if len(arm)<3:errors.append('OVERVIEW_'+side+'_END_ARM_MISSING');arms.append({'side':side,'status':'FAIL'});continue
             horizontal=max(abs(point[0]-anchor['x'])*transform['sx']*transform['displayScale'] for point in arm)
             vertical=max(abs(point[1]-anchor['y'])*transform['sy']*transform['displayScale'] for point in arm)
-            edge=arm[:3] if side=='LEFT' else arm[-3:];delta=edge[-1][1]-edge[0][1];trend=abs(delta)*transform['sy']*transform['displayScale']
+            # Read the end direction over a fixed 20 CSS px of horizontal travel instead of a fixed sample count:
+            # the sampler's step is dense on a tall cubic, so three samples can span under 5 CSS px and hide a
+            # perfectly readable arm. The same 5 px vertical threshold and the same slope direction are required.
+            if side=='LEFT':
+                edge=[arm[0]]
+                for point in arm[1:]:
+                    edge.append(point)
+                    if (point[0]-arm[0][0])*transform['sx']*transform['displayScale']>=20:break
+            else:
+                edge=[arm[-1]]
+                for point in reversed(arm[:-1]):
+                    edge.append(point)
+                    if (arm[-1][0]-point[0])*transform['sx']*transform['displayScale']>=20:break
+                edge.reverse()
+            delta=edge[-1][1]-edge[0][1];trend=abs(delta)*transform['sy']*transform['displayScale']
             tail=tails.get(side);direction=tail['direction'] if tail else None;slope=tail['slopeDirection'] if tail else None
             trend_matches=(delta>0 and slope=='UP') or (delta<0 and slope=='DOWN')
             if horizontal<max(20,width*.12):errors.append('OVERVIEW_'+side+'_ARM_TOO_NARROW')
