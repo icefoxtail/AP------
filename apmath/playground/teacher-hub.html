@@ -1,1207 +1,1816 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#1A5CFF">
-<title>AP Math Playground · 선생님 허브</title>
-<style>
-/* ── Design tokens (AP Math OS 라이트 모드 계열) ── */
-:root {
-  --bg: #F2F4F6;
-  --surface: #FFFFFF;
-  --surface2: #F8FAFC;
-  --border: #E5E8EB;
-  --text: #191F28;
-  --text-soft: #333D4B;
-  --muted: #64748B;
-  --accent: #1A5CFF;
-  --accent-soft: #EEF3FF;
-  --green: #1D9E75;
-  --green-soft: #EAFAF3;
-  --amber: #D97706;
-  --amber-soft: #FEF3C7;
-  --purple: #6E66C9;
-  --purple-soft: #F1F0FF;
-  --red: #DC2626;
-  --red-soft: #FEE2E2;
-  --radius: 12px;
-  --radius-sm: 8px;
-  --shadow: 0 2px 12px rgba(0,0,0,0.07);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
-}
-body.dark {
-  --bg: #0F1117;
-  --surface: #1A1D25;
-  --surface2: #22252F;
-  --border: #2E3240;
-  --text: #F0F4F8;
-  --text-soft: #C8D0DC;
-  --muted: #8892A4;
-  --accent: #5B9BFF;
-  --accent-soft: #1A2540;
-  --green-soft: #0D2B20;
-  --amber-soft: #2B1F08;
-  --purple-soft: #1D1A38;
-  --red-soft: #2B0D0D;
-}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#09090D">
+  <title>AP Math Playground · 메인 허브 (도형·함수 실험실)</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpolygon points='24,4 44,16 44,36 24,44 4,36 4,16' fill='none' stroke='%2355CBA3' stroke-width='3'/%3E%3Cellipse cx='24' cy='24' rx='16' ry='8' fill='none' stroke='%23D8B77E' stroke-width='2' stroke-dasharray='3 2'/%3E%3C/svg%3E" type="image/svg+xml">
+  <style>
+    /* ==========================================================================
+       AP MATH PLAYGROUND UNIVERSE - DESIGN SYSTEM (OBSIDIAN DARK LUXURY)
+       Palette: Obsidian (#09090D), Deep Plum (#241727), Warm Ivory (#F5F0E9),
+                Champagne Gold (#D8B77E), Emerald (#55CBA3), Soft Amethyst (#A78AC8),
+                Muted Silver (#BDB8C2)
+       ========================================================================== */
+    :root {
+      --bg-dark: #09090D;
+      --bg-plum: #17111c;
+      --surface-1: #15121b;
+      --surface-2: #1e1927;
+      --surface-3: #292235;
+      --border-dark: rgba(216, 183, 126, 0.16);
+      --border-focus: rgba(85, 203, 163, 0.45);
+      
+      --ivory: #F5F0E9;
+      --gold: #D8B77E;
+      --gold-soft: rgba(216, 183, 126, 0.12);
+      --emerald: #55CBA3;
+      --emerald-soft: rgba(85, 203, 163, 0.12);
+      --amethyst: #A78AC8;
+      --amethyst-soft: rgba(167, 138, 200, 0.14);
+      --muted: #9E96A6;
+      --text-sub: #C8C2CE;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      
+      --font-family: -apple-system, BlinkMacSystemFont, "Pretendard Variable", Pretendard, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    }
 
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; }
-img { display: block; max-width: 100%; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── Layout ── */
-.page { max-width: 1280px; margin: 0 auto; padding: 0 24px 60px; }
+    body {
+      background: radial-gradient(circle at 50% -20%, #2a1b32 0%, #0d0b13 45%, #09090D 100%) no-repeat fixed;
+      color: var(--ivory);
+      font-family: var(--font-family);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
 
-/* ── Topbar ── */
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  height: 58px;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  padding: 0 24px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
-}
-.topbar-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--muted);
-  border: none;
-  background: none;
-  padding: 7px 10px 7px 4px;
-  border-radius: 8px;
-  transition: background .15s, color .15s;
-  margin-right: 8px;
-}
-.topbar-back:hover { background: var(--bg); color: var(--text); }
-.topbar-back svg { flex-shrink: 0; }
-.topbar-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: -.025em;
-  flex: 1;
-}
-.topbar-logo {
-  width: 34px; height: 34px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 9px;
-  display: grid;
-  place-items: center;
-  font-weight: 900;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-.topbar-badge {
-  font-size: 11px;
-  font-weight: 700;
-  background: var(--green-soft);
-  color: var(--green);
-  border: 1px solid var(--green);
-  border-radius: 999px;
-  padding: 2px 8px;
-  letter-spacing: .02em;
-}
-.topbar-actions { display: flex; gap: 8px; align-items: center; }
-.topbar-search {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 7px 12px;
-  background: var(--surface2);
-  color: var(--text);
-  font-size: 13px;
-  width: 210px;
-  outline-offset: 2px;
-  transition: border-color .15s;
-}
-.topbar-search:focus { border-color: var(--accent); }
-.topbar-search::placeholder { color: var(--muted); }
-.btn-theme {
-  width: 34px; height: 34px;
-  border-radius: 9px;
-  border: 1px solid var(--border);
-  background: var(--surface2);
-  color: var(--text);
-  display: grid;
-  place-items: center;
-  font-size: 16px;
-  transition: background .15s;
-}
-.btn-theme:hover { background: var(--bg); }
+    /* ── Top Bar ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(9, 9, 13, 0.82);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .btn-nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-2);
+      color: var(--gold);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-nav-back:hover {
+      background: var(--surface-3);
+      border-color: var(--gold);
+      color: var(--ivory);
+      transform: translateX(-2px);
+    }
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .brand-logo-sigil {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--emerald));
+      color: #09090D;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 13px;
+    }
+    .topbar-badge {
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      border: 1px solid rgba(85, 203, 163, 0.3);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      max-width: 440px;
+    }
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 9px 14px 9px 38px;
+      color: var(--ivory);
+      font-size: 13.5px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: var(--emerald);
+      box-shadow: 0 0 0 3px rgba(85, 203, 163, 0.15);
+      background: var(--surface-3);
+    }
+    .search-input::placeholder {
+      color: var(--muted);
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--muted);
+      pointer-events: none;
+    }
 
-/* ── Hero ── */
-.hero {
-  margin: 32px 0 28px;
-  background: linear-gradient(135deg, var(--accent) 0%, #6C3FD4 100%);
-  border-radius: var(--radius);
-  padding: 36px 40px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='400' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='350' cy='50' r='120' fill='rgba(255,255,255,.06)'/%3E%3Ccircle cx='80' cy='180' r='80' fill='rgba(255,255,255,.04)'/%3E%3C/svg%3E") no-repeat right center;
-}
-.hero-text { position: relative; z-index: 1; }
-.hero-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .15em; opacity: .75; margin-bottom: 8px; }
-.hero h1 { font-size: clamp(22px, 3vw, 32px); font-weight: 900; letter-spacing: -.04em; margin: 0 0 10px; }
-.hero-desc { font-size: 14px; opacity: .85; max-width: 520px; line-height: 1.7; margin: 0; }
-.hero-stats {
-  display: flex;
-  gap: 20px;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-}
-.hero-stat {
-  background: rgba(255,255,255,.15);
-  border-radius: 12px;
-  padding: 14px 20px;
-  text-align: center;
-  min-width: 72px;
-  backdrop-filter: blur(8px);
-}
-.hero-stat b { display: block; font-size: 26px; font-weight: 900; letter-spacing: -.04em; }
-.hero-stat span { font-size: 11px; opacity: .8; }
+    /* ── Hero Banner ── */
+    .page-container {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .hero-banner {
+      margin: 28px 0 24px;
+      background: linear-gradient(135deg, rgba(36, 23, 39, 0.85) 0%, rgba(21, 18, 27, 0.95) 100%);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(85, 203, 163, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-title-group h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ivory);
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+    .hero-title-group h1 span {
+      color: var(--gold);
+    }
+    .hero-desc {
+      color: var(--text-sub);
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 680px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+    .hero-stat-card {
+      background: rgba(9, 9, 13, 0.5);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      text-align: center;
+      min-width: 90px;
+    }
+    .hero-stat-card strong {
+      display: block;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--emerald);
+      line-height: 1.1;
+    }
+    .hero-stat-card span {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
 
-/* ── Section heading ── */
-.section-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 32px 0 14px;
-}
-.section-title {
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -.03em;
-  margin: 0;
-}
-.section-grade {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.grade-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.grade-dot.g7 { background: var(--green); }
-.grade-dot.g8 { background: var(--amber); }
-.grade-dot.g9 { background: var(--red); }
-.grade-dot.gs { background: var(--purple); }
-.section-count {
-  font-size: 12px;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 3px 10px;
-}
+    /* ── Grade / Category Filter Bar ── */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 8px 0 16px;
+      margin-bottom: 24px;
+      scrollbar-width: thin;
+    }
+    .filter-btn {
+      background: var(--surface-1);
+      border: 1px solid var(--border-dark);
+      color: var(--text-sub);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .filter-btn:hover {
+      background: var(--surface-2);
+      border-color: var(--gold);
+      color: var(--ivory);
+    }
+    .filter-btn.active {
+      background: var(--surface-3);
+      border-color: var(--emerald);
+      color: var(--emerald);
+      box-shadow: 0 0 12px rgba(85, 203, 163, 0.2);
+    }
+    .filter-count {
+      font-size: 11px;
+      opacity: 0.75;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1px 6px;
+      border-radius: 8px;
+    }
 
-/* ── Cards grid ── */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 14px;
-}
-.lab-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: box-shadow .2s, transform .2s, border-color .2s;
-  display: flex;
-  flex-direction: column;
-}
-.lab-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-  border-color: var(--accent);
-}
-.card-visual {
-  height: 120px;
-  display: grid;
-  place-items: center;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-}
-.card-visual.g7 { background: linear-gradient(135deg, #EAFAF3, #D1F5E8); }
-.card-visual.g8 { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
-.card-visual.g9 { background: linear-gradient(135deg, #FEE2E2, #FECACA); }
-.card-visual.gs { background: linear-gradient(135deg, #F1F0FF, #E0E7FF); }
-body.dark .card-visual.g7 { background: linear-gradient(135deg, #0D2B20, #122B20); }
-body.dark .card-visual.g8 { background: linear-gradient(135deg, #2B1F08, #2B1800); }
-body.dark .card-visual.g9 { background: linear-gradient(135deg, #2B0D0D, #2B0808); }
-body.dark .card-visual.gs { background: linear-gradient(135deg, #1D1A38, #1A1650); }
-.card-visual svg { width: 80px; height: 76px; }
-.card-visual.g7 svg { stroke: var(--green); }
-.card-visual.g8 svg { stroke: var(--amber); }
-.card-visual.g9 svg { stroke: var(--red); }
-.card-visual.gs svg { stroke: var(--purple); }
-.card-body { padding: 14px 16px; display: flex; flex-direction: column; flex: 1; gap: 4px; }
-.card-meta { display: flex; justify-content: space-between; align-items: center; }
-.card-label {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.card-label.g7 { color: var(--green); }
-.card-label.g8 { color: var(--amber); }
-.card-label.g9 { color: var(--red); }
-.card-label.gs { color: var(--purple); }
-.card-badge {
-  font-size: 10px;
-  padding: 2px 7px;
-  border-radius: 6px;
-  background: var(--surface2);
-  color: var(--muted);
-  border: 1px solid var(--border);
-}
-.card-title { font-size: 14.5px; font-weight: 700; letter-spacing: -.025em; margin: 6px 0 2px; }
-.card-desc { font-size: 12px; color: var(--muted); flex: 1; line-height: 1.6; }
-.card-footer {
-  padding: 0 16px 14px;
-  display: flex;
-  gap: 8px;
-}
-.btn-open {
-  flex: 1;
-  height: 36px;
-  border-radius: 9px;
-  border: none;
-  background: var(--accent);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: opacity .15s;
-}
-.btn-open:hover { opacity: .88; }
-.btn-open-alt {
-  height: 36px;
-  border-radius: 9px;
-  border: 1px solid var(--border);
-  background: var(--surface2);
-  color: var(--text-soft);
-  font-size: 12px;
-  font-weight: 600;
-  padding: 0 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: background .15s;
-}
-.btn-open-alt:hover { background: var(--bg); }
+    /* 중학교 학년별 / 고등학교 과목별 탐색 */
+    .curriculum-nav { display: grid; gap: 10px; margin-bottom: 28px; }
+    .curriculum-row { display: flex; align-items: center; gap: 14px; min-height: 48px; }
+    .curriculum-label { flex: 0 0 130px; font-size: 12px; font-weight: 750; color: var(--gold); }
+    .curriculum-nav .filter-bar { flex: 1; margin: 0; padding: 4px 0; }
+    @media (max-width: 650px) {
+      .curriculum-row { display: block; }
+      .curriculum-label { display: block; margin: 0 0 6px; }
+      .curriculum-nav .filter-bar { width: 100%; }
+    }
 
-/* ── Package card (대수 마스터 패키지) ── */
-.package-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px 22px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  transition: box-shadow .2s, border-color .2s;
-}
-.package-card:hover { box-shadow: var(--shadow-lg); border-color: var(--purple); }
-.package-icon {
-  width: 52px; height: 52px;
-  background: var(--purple-soft);
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-size: 24px;
-  flex-shrink: 0;
-  color: var(--purple);
-}
-.package-info { flex: 1; min-width: 0; }
-.package-title { font-size: 15px; font-weight: 700; margin: 0 0 3px; }
-.package-desc { font-size: 12px; color: var(--muted); margin: 0; }
-.package-actions { display: flex; gap: 8px; flex-shrink: 0; }
+    /* ── Section Header ── */
+    .section-wrap {
+      margin-bottom: 40px;
+      transition: opacity 0.2s ease;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--ivory);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -0.02em;
+    }
+    .section-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      border: 1px solid var(--border-dark);
+      color: var(--gold);
+    }
+    .section-count {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
 
-/* ── Tip banner ── */
-.tip-banner {
-  background: var(--accent-soft);
-  border: 1px solid var(--accent);
-  border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  font-size: 13px;
-  color: var(--accent);
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 6px 0 20px;
-  line-height: 1.65;
-}
-.tip-banner .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    /* ── Lab Cards Grid ── */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 18px;
+    }
 
-/* ── Search empty state ── */
-.empty-state {
-  text-align: center;
-  padding: 48px 20px;
-  color: var(--muted);
-  display: none;
-}
-.empty-state.visible { display: block; }
-.empty-state-icon { font-size: 40px; margin-bottom: 12px; }
-.empty-state p { margin: 0; font-size: 14px; }
+    /* ── Lab Card (Entire Card Clickable!) ── */
+    .lab-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      outline: none;
+    }
+    .lab-card:hover, .lab-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 14px rgba(216, 183, 126, 0.2);
+    }
+    .lab-card:focus-visible {
+      outline: 2px solid var(--emerald);
+    }
 
-/* ── Footer ── */
-.footer {
-  margin-top: 48px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  font-size: 12px;
-  color: var(--muted);
-}
-.footer a { color: var(--accent); text-decoration: underline; }
+    /* Visual preview */
+    .card-visual {
+      height: 140px;
+      background: radial-gradient(ellipse at 50% 46%, rgba(85, 203, 163, 0.10) 0%, #1b1624 46%, #100d16 100%);
+      border-bottom: 1px solid var(--border-dark);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* The original 35 SVG previews had fill="none" but no inherited stroke,
+       leaving only filled point markers visible. Restore the actual geometry. */
+    .card-visual svg {
+      width: min(58%, 172px);
+      height: 112px;
+      color: var(--emerald);
+      stroke: currentColor;
+      filter: drop-shadow(0 0 9px rgba(85, 203, 163, 0.22));
+      transition: transform 0.22s ease, filter 0.22s ease;
+    }
+    .section-wrap[data-course="g8"] .card-visual svg,
+    .section-wrap[data-course="calc1"] .card-visual svg {
+      color: var(--gold);
+    }
+    .section-wrap[data-course="g9"] .card-visual svg {
+      color: #E6A756;
+    }
+    .section-wrap[data-course="common"] .card-visual svg {
+      color: var(--amethyst);
+    }
+    .lab-card:hover .card-visual svg,
+    .lab-card:focus-visible .card-visual svg {
+      transform: scale(1.07);
+      filter: drop-shadow(0 0 12px rgba(216, 183, 126, 0.32));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card-visual svg { transition: none; }
+      .lab-card:hover .card-visual svg,
+      .lab-card:focus-visible .card-visual svg { transform: none; }
+    }
+    .card-visual-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(9, 9, 13, 0.7);
+      border: 1px solid rgba(216, 183, 126, 0.25);
+      color: var(--gold);
+      backdrop-filter: blur(4px);
+    }
 
-/* ── No-print util ── */
-@media print {
-  .topbar, .hero, .topbar-actions, .card-footer, .btn-open, .btn-open-alt { display: none; }
-}
+    /* Card body */
+    .card-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 6px;
+    }
+    .card-meta-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-grade-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--emerald);
+      letter-spacing: 0.02em;
+    }
+    .card-unit-label {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--surface-2);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: -0.02em;
+      margin-top: 2px;
+    }
+    .card-formula {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11.5px;
+      color: var(--gold);
+      background: rgba(216, 183, 126, 0.08);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border-left: 2px solid var(--gold);
+      margin: 4px 0;
+      word-break: break-all;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--text-sub);
+      line-height: 1.5;
+      flex: 1;
+    }
 
-/* ── Responsive ── */
-@media (max-width: 760px) {
-  .page { padding: 0 14px 48px; }
-  .topbar { padding: 0 14px; }
-  .topbar-search { width: 150px; }
-  .hero { padding: 24px 22px; flex-direction: column; align-items: flex-start; }
-  .hero-stats { gap: 10px; }
-  .cards { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .package-card { flex-direction: column; align-items: flex-start; }
-  .package-actions { width: 100%; }
-  .package-actions .btn-open { flex: 1; }
-}
-@media (max-width: 480px) {
-  .cards { grid-template-columns: 1fr; }
-  .hero-stats { flex-wrap: wrap; }
-}
-</style>
+    /* Card Footer & Action Buttons */
+    .card-actions {
+      padding: 12px 16px 14px;
+      border-top: 1px solid rgba(216, 183, 126, 0.08);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .btn-card-open {
+      flex: 1;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #241c2c, #1a1522);
+      border: 1px solid var(--border-dark);
+      color: var(--ivory);
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .lab-card:hover .btn-card-open {
+      background: linear-gradient(135deg, var(--gold), #b39158);
+      color: #09090D;
+      border-color: var(--gold);
+    }
+    .btn-card-sub {
+      height: 36px;
+      padding: 0 12px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      border: 1px solid var(--border-dark);
+      color: var(--gold);
+      font-size: 11.5px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-card-sub:hover {
+      background: var(--surface-3);
+      border-color: var(--gold);
+      color: var(--ivory);
+    }
+
+    /* Package Card Dedicated Style */
+    .package-box {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #1b1424 0%, #15111b 100%);
+      border: 1px solid rgba(167, 138, 200, 0.35);
+      border-radius: var(--radius-md);
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+    .package-box:hover {
+      border-color: var(--amethyst);
+      box-shadow: 0 8px 24px rgba(167, 138, 200, 0.2);
+      transform: translateY(-2px);
+    }
+    .package-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .package-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--amethyst-soft);
+      border: 1px solid rgba(167, 138, 200, 0.3);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .package-info h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--ivory);
+      margin-bottom: 4px;
+    }
+    .package-info p {
+      font-size: 13px;
+      color: var(--text-sub);
+      max-width: 620px;
+    }
+    .package-btns {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    /* Empty state */
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--surface-1);
+      border: 1px dashed var(--border-dark);
+      border-radius: var(--radius-md);
+      margin: 20px 0;
+    }
+    .empty-state.show {
+      display: block;
+    }
+    .empty-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+    .empty-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ivory);
+      margin-bottom: 6px;
+    }
+    .empty-desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero-banner { flex-direction: column; align-items: flex-start; padding: 24px; }
+      .hero-stats { width: 100%; justify-content: flex-start; }
+      .topbar { padding: 10px 16px; }
+      .page-container { padding: 0 16px; }
+      .package-box { flex-direction: column; align-items: flex-start; }
+      .package-btns { width: 100%; }
+      .package-btns .btn-card-open { flex: 1; }
+    }
+    @media (max-width: 480px) {
+      .topbar-right { max-width: 170px; }
+      .lab-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ── Topbar ── -->
-<div class="topbar">
-  <button class="topbar-back" onclick="history.length > 1 ? history.back() : (window.location.href='../index.html')" title="대시보드로 돌아가기">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18L9 12L15 6"/></svg>
-    대시보드
-  </button>
-  <div class="topbar-title">
-    <span class="topbar-logo">AP</span>
-    Math Playground
-    <span class="topbar-badge">선생님 전용</span>
-  </div>
-  <div class="topbar-actions">
-    <input class="topbar-search" id="search-input" type="search" placeholder="단원 검색…" autocomplete="off" aria-label="단원 검색">
-    <button class="btn-theme" id="theme-btn" onclick="toggleDarkMode()" title="다크/라이트 모드">🌙</button>
-  </div>
-</div>
-
-<div class="page">
-
-  <!-- ── Hero ── -->
-  <div class="hero">
-    <div class="hero-text">
-      <div class="hero-eyebrow">TEACHER HUB · AP MATH PLAYGROUND</div>
-      <h1>수학 시각화 실험실<br>선생님 도구 모음</h1>
-      <p class="hero-desc">중1~고2 도형·함수·미적분 인터랙티브 실험실. 수업 중 바로 열어 학생들과 함께 보여주세요. 모든 실험실은 마우스·터치로 즉시 조작됩니다.</p>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <b>7</b>
-        <span>학년 구간</span>
-      </div>
-      <div class="hero-stat">
-        <b>35+</b>
-        <span>실험실</span>
-      </div>
-      <div class="hero-stat">
-        <b>147+</b>
-        <span>도형 장면</span>
+  <!-- ── Topbar Navigation ── -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="btn-nav-back" href="./index.html" title="3D 수학 우주 공간으로 이동">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        <span>3D Universe</span>
+      </a>
+      <div class="topbar-brand">
+        <div class="brand-logo-sigil">Ω</div>
+        <span>AP Math Playground</span>
+        <span class="topbar-badge">메인 허브</span>
       </div>
     </div>
-  </div>
 
-  <div class="tip-banner">
-    <span class="tip-icon">💡</span>
-    <span>수업 화면에 바로 띄우려면 카드의 <strong>수업용 열기</strong> 버튼을 누르세요. 새 탭에서 열려 대시보드를 가리지 않습니다. <strong>관계 탐구</strong> 버튼은 도형 관계 연습 전용 패널입니다.</span>
-  </div>
+    <div class="topbar-right">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="search-input" id="searchInput" type="search" placeholder="단원·공식·개념 검색… (예: 타원, 피타고라스)" autocomplete="off" aria-label="실험실 검색">
+      </div>
+      <a class="btn-nav-back" href="../index.html" title="AP Math OS 대시보드로 돌아가기" style="white-space: nowrap;">
+        <span>OS</span>
+      </a>
+    </div>
+  </header>
 
-  <!-- ── Empty search state ── -->
-  <div class="empty-state" id="empty-state">
-    <div class="empty-state-icon">🔍</div>
-    <p>일치하는 단원이 없어요. 다른 키워드로 검색해 보세요.</p>
-  </div>
+  <div class="page-container">
 
-  <!-- ==============================
-       중학교 1학년 (g7)
-       ============================== -->
-  <div class="section-row" data-section="g7">
-    <h2 class="section-title">
-      <span class="section-grade"><span class="grade-dot g7"></span> 중1 · 기하 기초</span>
-    </h2>
-    <span class="section-count">8개 실험실</span>
-  </div>
-  <div class="cards" id="cards-g7">
+    <!-- ── Hero Banner ── -->
+    <section class="hero-banner">
+      <div class="hero-title-group">
+        <h1>수학 시각화 실험실 <span>통합 메인 허브</span></h1>
+        <p class="hero-desc">
+          기존 수학 실험실을 중학교 학년별·고등학교 과목별로 정리했습니다.<br>
+          <strong>과정 선택 → 실험실 카드 클릭</strong>으로 바로 학습 화면으로 이동합니다.
+        </p>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-card">
+          <strong>7</strong>
+          <span>학년·과목 영역</span>
+        </div>
+        <div class="hero-stat-card">
+          <strong>36</strong>
+          <span>기존 실험실 카드</span>
+        </div>
+        <div class="hero-stat-card">
+          <strong>40</strong>
+          <span>기존 실험 링크</span>
+        </div>
+      </div>
+    </section>
 
-    <div class="lab-card" data-keywords="점 직선 반직선 선분 각 기초 도형">
-      <div class="card-visual g7">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <!-- ── Filter Tabs ── -->
+    <nav class="curriculum-nav" id="filterBar" aria-label="학년 및 과목별 실험실">
+      <div class="curriculum-row"><span class="curriculum-label">전체</span>
+        <div class="filter-bar"><button class="filter-btn active" type="button" data-filter="all">전체 실험실 <span class="filter-count">36</span></button></div></div>
+      <div class="curriculum-row"><span class="curriculum-label">중학교 · 학년별</span>
+        <div class="filter-bar">
+          <button class="filter-btn" type="button" data-filter="g7">중1 <span class="filter-count">8</span></button>
+          <button class="filter-btn" type="button" data-filter="g8">중2 <span class="filter-count">4</span></button>
+          <button class="filter-btn" type="button" data-filter="g9">중3 <span class="filter-count">2</span></button>
+        </div></div>
+      <div class="curriculum-row"><span class="curriculum-label">고등학교 · 과목별</span>
+        <div class="filter-bar">
+          <button class="filter-btn" type="button" data-filter="common">공통수학 <span class="filter-count">4</span></button>
+          <button class="filter-btn" type="button" data-filter="geom-vec">기하·벡터 <span class="filter-count">9</span></button>
+          <button class="filter-btn" type="button" data-filter="calc1">미적분Ⅰ <span class="filter-count">8</span></button>
+        </div></div>
+      <div class="curriculum-row"><span class="curriculum-label">통합 · 복습</span>
+        <div class="filter-bar"><button class="filter-btn" type="button" data-filter="package">대수 마스터 패키지 <span class="filter-count">1</span></button></div></div>
+    </nav>
+
+    <!-- ── Empty Search Results View ── -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">🔍</div>
+      <div class="empty-title">일치하는 실험실이 없습니다</div>
+      <div class="empty-desc">다른 키워드나 개념명(예: 타원, 정다면체, 피타고라스, 미분)으로 검색해 보세요.</div>
+    </div>
+
+    <!-- ── Section: 중1 · 수학 · 기하 기초 및 원과 부채꼴 ── -->
+    <section class="section-wrap" id="sec-g7" data-course="g7">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-tag" style="border-color:#55CBA355; color:#55CBA3;">기하 기초</span>
+          <span>중1 · 기하 기초 및 원과 부채꼴</span>
+        </h2>
+        <span class="section-count">8개 실험실</span>
+      </div>
+      <div class="lab-grid">
+
+        <article class="lab-card lab-card-item" data-href="labs/g7/points-lines.html" data-keywords="점 직선 반직선 선분 각 기초 도형 점 · 직선 · 반직선 · 선분 · 각 중1 · 단원 01 기초" data-course="g7" data-celestial="solid" tabindex="0" role="link" aria-label="점 · 직선 · 반직선 · 선분 · 각 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M10 52 L64 18"/><circle cx="16" cy="48" r="4" fill="currentColor" stroke="none"/><circle cx="58" cy="22" r="4" fill="currentColor" stroke="none"/><path d="M38 58 L70 58"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g7">중1 · 단원 01</span><span class="card-badge">기초</span></div>
-        <div class="card-title">점 · 직선 · 반직선 · 선분 · 각</div>
-        <div class="card-desc">도형 언어부터 시작하는 기초 실험. 반직선과 선분 차이, 각도 측정.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g7/points-lines.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">기초</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중1</span>
+              <span class="card-unit-label">중1 · 단원 01</span>
+            </div>
+            <h3 class="card-title">점 · 직선 · 반직선 · 선분 · 각</h3>
+            
+            <p class="card-desc">도형 언어부터 시작하는 기초 실험. 반직선과 선분 차이, 각도 측정.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g7/points-lines.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="위치관계 반례 평행 수직 꼬인 공간">
-      <div class="card-visual g7">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g7/spatial-relations.html" data-keywords="위치관계 반례 평행 수직 꼬인 공간 위치관계 · 반례 중1 · 단원 02 탐구" data-course="g7" data-celestial="solid" tabindex="0" role="link" aria-label="위치관계 · 반례 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M14 48 L60 48 L74 28 L30 28 Z"/><path d="M18 14 L18 62 M60 10 L60 54"/><circle cx="18" cy="48" r="3" fill="currentColor" stroke="none"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g7">중1 · 단원 02</span><span class="card-badge">탐구</span></div>
-        <div class="card-title">위치관계 · 반례</div>
-        <div class="card-desc">평면과 공간에서의 위치관계. 예상과 다른 반례 발견.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g7/spatial-relations.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">탐구</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중1</span>
+              <span class="card-unit-label">중1 · 단원 02</span>
+            </div>
+            <h3 class="card-title">위치관계 · 반례</h3>
+            
+            <p class="card-desc">평면과 공간에서의 위치관계. 예상과 다른 반례 발견.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g7/spatial-relations.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="평면도형 다각형 넓이 각도 오각형 육각형">
-      <div class="card-visual g7">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g7/polygons-area.html" data-keywords="평면도형 다각형 넓이 각도 오각형 육각형 평면도형 · 다각형 · 넓이 중1 · 단원 03 기초·응용" data-course="g7" data-celestial="solid" tabindex="0" role="link" aria-label="평면도형 · 다각형 · 넓이 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 44 L32 16 L66 30 L60 60 L24 62 Z"/><path d="M12 44 L60 60 M32 16 L60 60"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g7">중1 · 단원 03</span><span class="card-badge">기초·응용</span></div>
-        <div class="card-title">평면도형 · 다각형 · 넓이</div>
-        <div class="card-desc">다각형·각도와 넓이 변화. 내각의 합 동적 관찰.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g7/polygons-area.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">기초·응용</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중1</span>
+              <span class="card-unit-label">중1 · 단원 03</span>
+            </div>
+            <h3 class="card-title">평면도형 · 다각형 · 넓이</h3>
+            
+            <p class="card-desc">다각형·각도와 넓이 변화. 내각의 합 동적 관찰.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g7/polygons-area.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="원 부채꼴 호 중심각 넓이 56장면">
-      <div class="card-visual g7">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g7/원과_부채꼴_통합_마스터_스튜디오.html" data-keywords="원 부채꼴 호 중심각 넓이 56장면 원과 부채꼴 · 통합 마스터 중1 · 단원 04 56장면" data-course="g7" data-celestial="circle" tabindex="0" role="link" aria-label="원과 부채꼴 · 통합 마스터 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="40" cy="38" r="28"/><path d="M40 38 L40 10 A28 28 0 0 1 64 52 Z" fill="currentColor" fill-opacity=".15"/><path d="M40 38 L40 10 M40 38 L64 52"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g7">중1 · 단원 04</span><span class="card-badge">56장면</span></div>
-        <div class="card-title">원과 부채꼴 · 통합 마스터</div>
-        <div class="card-desc">56개 장면 도감. 원호·겹침·반원·끈·복합 색칠 모두 탐색.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g7/원과_부채꼴_통합_마스터_스튜디오.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-        <a class="btn-open-alt" href="labs/g7/원과_부채꼴_통합_마스터_스튜디오.html?start=basic" target="_blank" rel="noopener">기초판</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">56장면</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중1</span>
+              <span class="card-unit-label">중1 · 단원 04</span>
+            </div>
+            <h3 class="card-title">원과 부채꼴 · 통합 마스터</h3>
+            
+            <p class="card-desc">56개 장면 도감. 원호·겹침·반원·끈·복합 색칠 모두 탐색.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g7/원과_부채꼴_통합_마스터_스튜디오.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            <a class="btn-card-sub" href="labs/g7/원과_부채꼴_통합_마스터_스튜디오.html?start=basic" target="_blank" onclick="event.stopPropagation();">기초판 ↗</a>
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="다면체 정다면체 정육면체 정사면체 면 꼭짓점 모서리 3D">
-      <div class="card-visual g7">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g7/polyhedra.html" data-keywords="다면체 정다면체 정육면체 정사면체 면 꼭짓점 모서리 3D 다면체와 정다면체 중1 · 단원 05 3D" data-course="g7" data-celestial="polyhedra" tabindex="0" role="link" aria-label="다면체와 정다면체 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M40 8 L68 26 L60 58 L26 66 L10 34 Z"/><path d="M40 8 L40 38 L68 26 M40 38 L10 34 M40 38 L26 66 M40 38 L60 58"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g7">중1 · 단원 05</span><span class="card-badge">3D</span></div>
-        <div class="card-title">다면체와 정다면체</div>
-        <div class="card-desc">정다면체의 구조·절단·관계. 오일러 공식 시각화.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g7/polyhedra.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">3D</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중1</span>
+              <span class="card-unit-label">중1 · 단원 05</span>
+            </div>
+            <h3 class="card-title">다면체와 정다면체</h3>
+            
+            <p class="card-desc">정다면체의 구조·절단·관계. 오일러 공식 시각화.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g7/polyhedra.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="전개도 변환 접기 펼치기 육면체 3D">
-      <div class="card-visual g7">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g7/nets-folding.html" data-keywords="전개도 변환 접기 펼치기 육면체 3D 전개도 변환 중1 · 단원 06 3D" data-course="g7" data-celestial="solid" tabindex="0" role="link" aria-label="전개도 변환 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M26 10 H50 V36 H26 Z M26 36 H50 V58 H26 Z M2 36 H26 V58 H2 Z M50 36 H74 V58 H50 Z M26 58 H50 V72 H26 Z"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g7">중1 · 단원 06</span><span class="card-badge">3D</span></div>
-        <div class="card-title">전개도 변환</div>
-        <div class="card-desc">접고 펼치며 이해하는 3D 전개도. 관계 탐구 내장.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g7/nets-folding.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">3D</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중1</span>
+              <span class="card-unit-label">중1 · 단원 06</span>
+            </div>
+            <h3 class="card-title">전개도 변환</h3>
+            
+            <p class="card-desc">접고 펼치며 이해하는 3D 전개도. 관계 탐구 내장.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g7/nets-folding.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="겉넓이 부피 원기둥 원뿔 구 입체">
-      <div class="card-visual g7">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g7/입체도형의 겉넓이와 부피.html" data-keywords="겉넓이 부피 원기둥 원뿔 구 입체 겉넓이 · 부피 중1 · 단원 07 3D" data-course="g7" data-celestial="solid" tabindex="0" role="link" aria-label="겉넓이 · 부피 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 24 L48 14 L72 28 L72 58 L48 68 L22 54 Z"/><path d="M22 24 L48 38 L72 28 M48 38 L48 68"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g7">중1 · 단원 07</span><span class="card-badge">3D</span></div>
-        <div class="card-title">겉넓이 · 부피</div>
-        <div class="card-desc">실제 표면·단면과 부피의 관계. 입체를 슬라이스해서 확인.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g7/입체도형의 겉넓이와 부피.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">3D</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중1</span>
+              <span class="card-unit-label">중1 · 단원 07</span>
+            </div>
+            <h3 class="card-title">겉넓이 · 부피</h3>
+            
+            <p class="card-desc">실제 표면·단면과 부피의 관계. 입체를 슬라이스해서 확인.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g7/입체도형의 겉넓이와 부피.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="입체도형 종합 회전체 겨냥도 전개도 연결 비교">
-      <div class="card-visual g7">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g7/다면체·회전체&겨냥도·전개도.html" data-keywords="입체도형 종합 회전체 겨냥도 전개도 연결 비교 입체도형 종합 중1 · 단원 08 입체 비교" data-course="g7" data-celestial="polyhedra" tabindex="0" role="link" aria-label="입체도형 종합 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <ellipse cx="38" cy="18" rx="26" ry="10"/><path d="M12 18 V54 M64 18 V54"/><path d="M12 54 A26 10 0 0 0 64 54 M12 54 A26 10 0 0 1 64 54" stroke-dasharray="4 4"/>
         </svg>
+            <span class="card-visual-badge">입체 비교</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중1</span>
+              <span class="card-unit-label">중1 · 단원 08</span>
+            </div>
+            <h3 class="card-title">입체도형 종합</h3>
+            
+            <p class="card-desc">다면체·회전체 연결, 겨냥도·전개도 종합 탐색.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g7/다면체·회전체&겨냥도·전개도.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
+
       </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g7">중1 · 단원 08</span><span class="card-badge">입체 비교</span></div>
-        <div class="card-title">입체도형 종합</div>
-        <div class="card-desc">다면체·회전체 연결, 겨냥도·전개도 종합 탐색.</div>
+    </section>
+
+    <!-- ── Section: 중2 · 수학 · 삼각형·사각형·닮음과 피타고라스 ── -->
+    <section class="section-wrap" id="sec-g8" data-course="g8">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-tag" style="border-color:#D8B77E55; color:#D8B77E;">경험도감</span>
+          <span>중2 · 삼각형·사각형·닮음과 피타고라스</span>
+        </h2>
+        <span class="section-count">4개 실험실</span>
       </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g7/다면체·회전체&겨냥도·전개도.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+      <div class="lab-grid">
 
-  </div><!-- /#cards-g7 -->
-
-
-  <!-- ==============================
-       중학교 2학년 (g8)
-       ============================== -->
-  <div class="section-row" data-section="g8">
-    <h2 class="section-title"><span class="section-grade"><span class="grade-dot g8"></span> 중2 · 도형 경험도감</span></h2>
-    <span class="section-count">4개 실험실</span>
-  </div>
-  <div class="cards" id="cards-g8">
-
-    <div class="lab-card" data-keywords="삼각형 합동 내심 외심 수심 보조선 62장면">
-      <div class="card-visual g8">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g8/triangles-atlas.html" data-keywords="삼각형 합동 내심 외심 수심 보조선 62장면 삼각형 경험도감 중2 · 단원 01 62장면" data-course="g8" data-celestial="solid" tabindex="0" role="link" aria-label="삼각형 경험도감 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M38 8 L76 68 L6 68 Z"/><path d="M38 8 L38 68"/><path d="M30 68 V58 H38"/><circle cx="38" cy="38" r="3" fill="currentColor" stroke="none"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g8">중2 · 단원 01</span><span class="card-badge">62장면</span></div>
-        <div class="card-title">삼각형 경험도감</div>
-        <div class="card-desc">합동·각·내심과 외심·고난도 보조선 62개 배치 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g8/triangles-atlas.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">62장면</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중2</span>
+              <span class="card-unit-label">중2 · 단원 01</span>
+            </div>
+            <h3 class="card-title">삼각형 경험도감</h3>
+            
+            <p class="card-desc">합동·각·내심과 외심·고난도 보조선 62개 배치 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g8/triangles-atlas.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="사각형 평행사변형 마름모 직사각형 대각선 판별 넓이 41장면">
-      <div class="card-visual g8">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g8/quadrilaterals-atlas.html" data-keywords="사각형 평행사변형 마름모 직사각형 대각선 판별 넓이 41장면 사각형 경험도감 중2 · 단원 02 41장면" data-course="g8" data-celestial="solid" tabindex="0" role="link" aria-label="사각형 경험도감 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M10 24 L58 14 L74 58 L26 68 Z"/><path d="M10 24 L74 58 M58 14 L26 68"/><circle cx="42" cy="41" r="3" fill="currentColor" stroke="none"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g8">중2 · 단원 02</span><span class="card-badge">41장면</span></div>
-        <div class="card-title">사각형 경험도감</div>
-        <div class="card-desc">판별·넓이·대각선·반례·회전 41개 장면. 사각형 분류 완전 정복.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g8/quadrilaterals-atlas.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">41장면</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중2</span>
+              <span class="card-unit-label">중2 · 단원 02</span>
+            </div>
+            <h3 class="card-title">사각형 경험도감</h3>
+            
+            <p class="card-desc">판별·넓이·대각선·반례·회전 41개 장면. 사각형 분류 완전 정복.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g8/quadrilaterals-atlas.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="닮음 비 삼각형 분리 정렬 대응 44장면">
-      <div class="card-visual g8">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g8/similarity-atlas.html" data-keywords="닮음 비 삼각형 분리 정렬 대응 44장면 닮음 경험도감 중2 · 단원 03 44장면" data-course="g8" data-celestial="solid" tabindex="0" role="link" aria-label="닮음 경험도감 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 58 L28 20 L48 58 Z"/><path d="M50 68 L62 42 L76 68 Z"/><path d="M8 58 L50 68 M28 20 L62 42" stroke-dasharray="3 4"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g8">중2 · 단원 03</span><span class="card-badge">44장면</span></div>
-        <div class="card-title">닮음 경험도감</div>
-        <div class="card-desc">숨은 삼각형 분리·정렬·대응·비. 비율의 시각적 이해.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g8/similarity-atlas.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">44장면</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중2</span>
+              <span class="card-unit-label">중2 · 단원 03</span>
+            </div>
+            <h3 class="card-title">닮음 경험도감</h3>
+            
+            <p class="card-desc">숨은 삼각형 분리·정렬·대응·비. 비율의 시각적 이해.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g8/similarity-atlas.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="피타고라스 정리 직각삼각형 증명 활용">
-      <div class="card-visual g8">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g8/피타고라스.html" data-keywords="피타고라스 정리 직각삼각형 증명 활용 피타고라스 정리 중2 · 단원 04 탐구" data-course="g8" data-celestial="solid" tabindex="0" role="link" aria-label="피타고라스 정리 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 64 L12 16 L60 64 Z"/><path d="M12 16 L12 16 M12 16 L22 16 L22 26 L12 26"/>
           <path d="M12 64 L12 54 L22 54" stroke-dasharray="3 3"/>
         </svg>
+            <span class="card-visual-badge">탐구</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중2</span>
+              <span class="card-unit-label">중2 · 단원 04</span>
+            </div>
+            <h3 class="card-title">피타고라스 정리</h3>
+            
+            <p class="card-desc">직각삼각형·증명·활용 인터랙티브 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g8/피타고라스.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
+
       </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g8">중2 · 단원 04</span><span class="card-badge">탐구</span></div>
-        <div class="card-title">피타고라스 정리</div>
-        <div class="card-desc">직각삼각형·증명·활용 인터랙티브 탐구.</div>
+    </section>
+
+    <!-- ── Section: 중3 · 수학 · 삼각비와 원의 성질 ── -->
+    <section class="section-wrap" id="sec-g9" data-course="g9">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-tag" style="border-color:#E6A75655; color:#E6A756;">중등 완성</span>
+          <span>중3 · 삼각비와 원의 성질</span>
+        </h2>
+        <span class="section-count">2개 실험실</span>
       </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g8/피타고라스.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+      <div class="lab-grid">
 
-  </div><!-- /#cards-g8 -->
-
-
-  <!-- ==============================
-       중학교 3학년 (g9)
-       ============================== -->
-  <div class="section-row" data-section="g9">
-    <h2 class="section-title"><span class="section-grade"><span class="grade-dot g9"></span> 중3 · 고급 기하</span></h2>
-    <span class="section-count">2개 실험실</span>
-  </div>
-  <div class="cards" id="cards-g9">
-
-    <div class="lab-card" data-keywords="삼각비 sin cos tan 직각삼각형 고도">
-      <div class="card-visual g9">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g9/삼각비.html" data-keywords="삼각비 sin cos tan 직각삼각형 고도 삼각비 중3 · 단원 01 탐구" data-course="g9" data-celestial="solid" tabindex="0" role="link" aria-label="삼각비 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 64 L8 14 L64 64 Z"/><path d="M8 14 L8 24 L18 24"/>
           <path d="M28 64 L28 42" stroke-dasharray="3 3"/><text x="34" y="56" font-size="11" fill="currentColor" stroke="none">sinθ</text>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g9">중3 · 단원 01</span><span class="card-badge">탐구</span></div>
-        <div class="card-title">삼각비</div>
-        <div class="card-desc">sin·cos·tan을 직접 움직이며 탐구. 각도 변화에 따른 비율 변화.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g9/삼각비.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">탐구</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중3</span>
+              <span class="card-unit-label">중3 · 단원 01</span>
+            </div>
+            <h3 class="card-title">삼각비</h3>
+            
+            <p class="card-desc">sin·cos·tan을 직접 움직이며 탐구. 각도 변화에 따른 비율 변화.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g9/삼각비.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="원 접선 할선 원주각 중심각 내접 외접">
-      <div class="card-visual g9">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/g9/원.html" data-keywords="원 접선 할선 원주각 중심각 내접 외접 원의 성질 중3 · 단원 02 탐구" data-course="g9" data-celestial="circle" tabindex="0" role="link" aria-label="원의 성질 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="40" cy="38" r="28"/><path d="M12 38 L40 10 L68 38"/><circle cx="40" cy="38" r="3" fill="currentColor" stroke="none"/>
         </svg>
+            <span class="card-visual-badge">탐구</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">중3</span>
+              <span class="card-unit-label">중3 · 단원 02</span>
+            </div>
+            <h3 class="card-title">원의 성질</h3>
+            
+            <p class="card-desc">원주각·중심각·접선·할선 관계 인터랙티브 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/g9/원.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
+
       </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label g9">중3 · 단원 02</span><span class="card-badge">탐구</span></div>
-        <div class="card-title">원의 성질</div>
-        <div class="card-desc">원주각·중심각·접선·할선 관계 인터랙티브 탐구.</div>
+    </section>
+
+    <!-- ── Section: 고등 · 공통수학 · 도형의 방정식과 함수 ── -->
+    <section class="section-wrap" id="sec-common" data-course="common">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-tag" style="border-color:#A78AC855; color:#A78AC8;">고등 기초</span>
+          <span>공통수학 · 도형의 방정식과 함수</span>
+        </h2>
+        <span class="section-count">4개 실험실</span>
       </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/g9/원.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+      <div class="lab-grid">
 
-  </div><!-- /#cards-g9 -->
-
-
-  <!-- ==============================
-       공통수학
-       ============================== -->
-  <div class="section-row" data-section="gs">
-    <h2 class="section-title"><span class="section-grade"><span class="grade-dot gs"></span> 공통수학 · 함수·도형</span></h2>
-    <span class="section-count">4개 실험실</span>
-  </div>
-  <div class="cards" id="cards-gs1">
-
-    <div class="lab-card" data-keywords="원의 방정식 좌표 중심 반지름 교점">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/공통수학/원의 방정식.html" data-keywords="원의 방정식 좌표 중심 반지름 교점 원의 방정식 공통수학 좌표기하" data-course="common" data-celestial="circle" tabindex="0" role="link" aria-label="원의 방정식 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="40" cy="42" r="24"/><line x1="8" y1="42" x2="72" y2="42" stroke-dasharray="3 3"/><line x1="40" y1="8" x2="40" y2="72" stroke-dasharray="3 3"/><circle cx="40" cy="42" r="3" fill="currentColor" stroke="none"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">공통수학</span><span class="card-badge">좌표기하</span></div>
-        <div class="card-title">원의 방정식</div>
-        <div class="card-desc">원의 방정식 표준형·일반형, 좌표 위치와 교점 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/공통수학/원의 방정식.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">좌표기하</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">공통수학</span>
+              <span class="card-unit-label">공통수학</span>
+            </div>
+            <h3 class="card-title">원의 방정식</h3>
+            
+            <p class="card-desc">원의 방정식 표준형·일반형, 좌표 위치와 교점 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/공통수학/원의 방정식.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="이차함수 포물선 꼭짓점 축 판별식 그래프">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/공통수학/이차함수.html" data-keywords="이차함수 포물선 꼭짓점 축 판별식 그래프 이차함수 공통수학 함수" data-course="common" data-celestial="calculus" tabindex="0" role="link" aria-label="이차함수 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 68 Q40 8 72 68"/><line x1="40" y1="8" x2="40" y2="70" stroke-dasharray="3 3"/><circle cx="40" cy="24" r="3" fill="currentColor" stroke="none"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">공통수학</span><span class="card-badge">함수</span></div>
-        <div class="card-title">이차함수</div>
-        <div class="card-desc">이차함수 그래프 변환, 꼭짓점·축·판별식 동적 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/공통수학/이차함수.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">함수</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">공통수학</span>
+              <span class="card-unit-label">공통수학</span>
+            </div>
+            <h3 class="card-title">이차함수</h3>
+            
+            <p class="card-desc">이차함수 그래프 변환, 꼭짓점·축·판별식 동적 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/공통수학/이차함수.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="평면 직선 이동 평행이동 대칭이동 좌표">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/공통수학/평면·직선·이동.html" data-keywords="평면 직선 이동 평행이동 대칭이동 좌표 평면 · 직선 · 이동 공통수학 변환" data-course="common" data-celestial="solid" tabindex="0" role="link" aria-label="평면 · 직선 · 이동 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="8" y1="38" x2="72" y2="38"/><line x1="40" y1="8" x2="40" y2="68"/><path d="M18 18 L38 28 L58 18" stroke-dasharray="0"/><path d="M18 58 L38 48 L58 58" stroke-dasharray="3 3"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">공통수학</span><span class="card-badge">변환</span></div>
-        <div class="card-title">평면 · 직선 · 이동</div>
-        <div class="card-desc">평행이동·대칭이동 시각화. 직선의 방정식과 도형 이동.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/공통수학/평면·직선·이동.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">변환</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">공통수학</span>
+              <span class="card-unit-label">공통수학</span>
+            </div>
+            <h3 class="card-title">평면 · 직선 · 이동</h3>
+            
+            <p class="card-desc">평행이동·대칭이동 시각화. 직선의 방정식과 도형 이동.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/공통수학/평면·직선·이동.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="합성함수 유리함수 무리함수 역함수 그래프">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/공통수학/합성함수·유리함수·무리함수.html" data-keywords="합성함수 유리함수 무리함수 역함수 그래프 합성함수 · 유리 · 무리함수 공통수학 함수" data-course="common" data-celestial="calculus" tabindex="0" role="link" aria-label="합성함수 · 유리 · 무리함수 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 68 Q20 10 40 38 Q60 66 72 8"/><circle cx="8" cy="68" r="3" fill="currentColor" stroke="none"/><circle cx="72" cy="8" r="3" fill="currentColor" stroke="none"/>
         </svg>
+            <span class="card-visual-badge">함수</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">공통수학</span>
+              <span class="card-unit-label">공통수학</span>
+            </div>
+            <h3 class="card-title">합성함수 · 유리 · 무리함수</h3>
+            
+            <p class="card-desc">합성함수·유리함수·무리함수 그래프 인터랙티브 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/공통수학/합성함수·유리함수·무리함수.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
+
       </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">공통수학</span><span class="card-badge">함수</span></div>
-        <div class="card-title">합성함수 · 유리 · 무리함수</div>
-        <div class="card-desc">합성함수·유리함수·무리함수 그래프 인터랙티브 탐구.</div>
+    </section>
+
+    <!-- ── Section: 고등 · 기하·벡터 · 이차곡선과 공간도형 ── -->
+    <section class="section-wrap" id="sec-geom-vec" data-course="geom-vec">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-tag" style="border-color:#55CBA355; color:#55CBA3;">공간 & 곡선</span>
+          <span>기하와 벡터 · 이차곡선과 공간도형</span>
+        </h2>
+        <span class="section-count">9개 실험실</span>
       </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/공통수학/합성함수·유리함수·무리함수.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+      <div class="lab-grid">
 
-  </div><!-- /#cards-gs1 -->
-
-
-  <!-- ==============================
-       기하와벡터
-       ============================== -->
-  <div class="section-row" data-section="gs">
-    <h2 class="section-title"><span class="section-grade"><span class="grade-dot gs"></span> 기하와 벡터</span></h2>
-    <span class="section-count">9개 실험실</span>
-  </div>
-  <div class="cards" id="cards-gs2">
-
-    <div class="lab-card" data-keywords="공간도형 3D 직선 평면 이면각 정사영">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/기하와벡터/공간도형 3D.html" data-keywords="공간도형 3D 직선 평면 이면각 정사영 공간도형 3D 기하와벡터 3D" data-course="geom-vec" data-celestial="solid" tabindex="0" role="link" aria-label="공간도형 3D 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M40 8 L70 28 L60 62 L20 70 L8 36 Z"/><path d="M40 8 L38 40 L70 28 M38 40 L8 36 M38 40 L20 70 M38 40 L60 62"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">기하와벡터</span><span class="card-badge">3D</span></div>
-        <div class="card-title">공간도형 3D</div>
-        <div class="card-desc">공간에서 직선·평면 관계, 이면각 동적 3D 시각화.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/기하와벡터/공간도형 3D.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">3D</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">기하와벡터</span>
+              <span class="card-unit-label">기하와벡터</span>
+            </div>
+            <h3 class="card-title">공간도형 3D</h3>
+            
+            <p class="card-desc">공간에서 직선·평면 관계, 이면각 동적 3D 시각화.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/기하와벡터/공간도형 3D.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="공간좌표 3D 점 거리 중점 구의 방정식">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/기하와벡터/공간좌표_3D.html" data-keywords="공간좌표 3D 점 거리 중점 구의 방정식 공간좌표 3D 기하와벡터 3D" data-course="geom-vec" data-celestial="solid" tabindex="0" role="link" aria-label="공간좌표 3D 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="40" y1="68" x2="40" y2="8"/><line x1="8" y1="50" x2="72" y2="50"/><line x1="14" y1="20" x2="66" y2="62"/>
           <circle cx="52" cy="28" r="4" fill="currentColor" stroke="none"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">기하와벡터</span><span class="card-badge">3D</span></div>
-        <div class="card-title">공간좌표 3D</div>
-        <div class="card-desc">3차원 좌표계, 두 점 거리·중점·구의 방정식 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/기하와벡터/공간좌표_3D.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">3D</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">기하와벡터</span>
+              <span class="card-unit-label">기하와벡터</span>
+            </div>
+            <h3 class="card-title">공간좌표 3D</h3>
+            
+            <p class="card-desc">3차원 좌표계, 두 점 거리·중점·구의 방정식 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/기하와벡터/공간좌표_3D.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="벡터 도형 표현 직선 삼각형 내분 외분">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/기하와벡터/벡터로 나타낸 도형.html" data-keywords="벡터 도형 표현 직선 삼각형 내분 외분 벡터로 나타낸 도형 기하와벡터 벡터" data-course="geom-vec" data-celestial="vector" tabindex="0" role="link" aria-label="벡터로 나타낸 도형 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 58 L48 18" marker-end="url(#arr)"/><path d="M32 62 L68 30" stroke-dasharray="4 3" marker-end="url(#arr2)"/>
           <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="currentColor"/></marker>
           <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="currentColor"/></marker></defs>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">기하와벡터</span><span class="card-badge">벡터</span></div>
-        <div class="card-title">벡터로 나타낸 도형</div>
-        <div class="card-desc">벡터로 직선·삼각형·내분점·외분점 표현 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/기하와벡터/벡터로 나타낸 도형.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">벡터</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">기하와벡터</span>
+              <span class="card-unit-label">기하와벡터</span>
+            </div>
+            <h3 class="card-title">벡터로 나타낸 도형</h3>
+            
+            <p class="card-desc">벡터로 직선·삼각형·내분점·외분점 표현 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/기하와벡터/벡터로 나타낸 도형.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="벡터 성분 내적 각도 크기 방향">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/기하와벡터/벡터의 성분·내적.html" data-keywords="벡터 성분 내적 각도 크기 방향 벡터의 성분 · 내적 기하와벡터 벡터" data-course="geom-vec" data-celestial="vector" tabindex="0" role="link" aria-label="벡터의 성분 · 내적 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M16 58 L56 22"/><path d="M16 58 L64 50"/><path d="M44 28 A22 22 0 0 1 58 46"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">기하와벡터</span><span class="card-badge">벡터</span></div>
-        <div class="card-title">벡터의 성분 · 내적</div>
-        <div class="card-desc">벡터 성분 분해, 내적·각도 관계 동적 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/기하와벡터/벡터의 성분·내적.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">벡터</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">기하와벡터</span>
+              <span class="card-unit-label">기하와벡터</span>
+            </div>
+            <h3 class="card-title">벡터의 성분 · 내적</h3>
+            
+            <p class="card-desc">벡터 성분 분해, 내적·각도 관계 동적 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/기하와벡터/벡터의 성분·내적.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="벡터 덧셈 뺄셈 평행사변형 삼각형법">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/기하와벡터/벡터의덧셈과뺄셈.html" data-keywords="벡터 덧셈 뺄셈 평행사변형 삼각형법 벡터의 덧셈과 뺄셈 기하와벡터 벡터" data-course="geom-vec" data-celestial="vector" tabindex="0" role="link" aria-label="벡터의 덧셈과 뺄셈 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M16 60 L48 20 L68 44"/><path d="M16 60 L68 44" stroke-dasharray="4 3"/><path d="M48 20 L16 60"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">기하와벡터</span><span class="card-badge">벡터</span></div>
-        <div class="card-title">벡터의 덧셈과 뺄셈</div>
-        <div class="card-desc">평행사변형법·삼각형법 시각화. 벡터 합성 직접 조작.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/기하와벡터/벡터의덧셈과뺄셈.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">벡터</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">기하와벡터</span>
+              <span class="card-unit-label">기하와벡터</span>
+            </div>
+            <h3 class="card-title">벡터의 덧셈과 뺄셈</h3>
+            
+            <p class="card-desc">평행사변형법·삼각형법 시각화. 벡터 합성 직접 조작.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/기하와벡터/벡터의덧셈과뺄셈.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="쌍곡선 점근선 초점 이심률 표준형">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/기하와벡터/쌍곡선.html" data-keywords="쌍곡선 점근선 초점 이심률 표준형 쌍곡선 기하와벡터 이차곡선" data-course="geom-vec" data-celestial="hyperbola" tabindex="0" role="link" aria-label="쌍곡선 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 68 Q14 38 28 18"/><path d="M52 18 Q66 38 72 68"/><line x1="8" y1="8" x2="72" y2="68" stroke-dasharray="3 3"/><line x1="72" y1="8" x2="8" y2="68" stroke-dasharray="3 3"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">기하와벡터</span><span class="card-badge">이차곡선</span></div>
-        <div class="card-title">쌍곡선</div>
-        <div class="card-desc">쌍곡선 표준형, 초점·점근선·이심률 동적 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/기하와벡터/쌍곡선.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">이차곡선</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">기하와벡터</span>
+              <span class="card-unit-label">기하와벡터</span>
+            </div>
+            <h3 class="card-title">쌍곡선</h3>
+            
+            <p class="card-desc">쌍곡선 표준형, 초점·점근선·이심률 동적 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/기하와벡터/쌍곡선.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="정사영 3D 넓이 코사인 투영">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/기하와벡터/정사영 3D.html" data-keywords="정사영 3D 넓이 코사인 투영 정사영 3D 기하와벡터 3D" data-course="geom-vec" data-celestial="solid" tabindex="0" role="link" aria-label="정사영 3D 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 62 L48 14 L72 48 L32 70 Z" stroke-dasharray="0"/><path d="M8 62 L48 62 L72 62" stroke-dasharray="4 3"/><path d="M48 14 L48 62" stroke-dasharray="3 3"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">기하와벡터</span><span class="card-badge">3D</span></div>
-        <div class="card-title">정사영 3D</div>
-        <div class="card-desc">도형의 정사영, 넓이 공식(cosθ) 3D 시각화 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/기하와벡터/정사영 3D.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">3D</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">기하와벡터</span>
+              <span class="card-unit-label">기하와벡터</span>
+            </div>
+            <h3 class="card-title">정사영 3D</h3>
+            
+            <p class="card-desc">도형의 정사영, 넓이 공식(cosθ) 3D 시각화 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/기하와벡터/정사영 3D.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="타원 초점 장축 단축 이심률 방정식">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/기하와벡터/타원.html" data-keywords="타원 초점 장축 단축 이심률 방정식 타원 기하와벡터 이차곡선" data-course="geom-vec" data-celestial="circle" tabindex="0" role="link" aria-label="타원 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <ellipse cx="40" cy="38" rx="32" ry="20"/><circle cx="22" cy="38" r="3" fill="currentColor" stroke="none"/><circle cx="58" cy="38" r="3" fill="currentColor" stroke="none"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">기하와벡터</span><span class="card-badge">이차곡선</span></div>
-        <div class="card-title">타원</div>
-        <div class="card-desc">타원 표준형, 초점·장단축·이심률 동적 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/기하와벡터/타원.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">이차곡선</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">기하와벡터</span>
+              <span class="card-unit-label">기하와벡터</span>
+            </div>
+            <h3 class="card-title">타원</h3>
+            
+            <p class="card-desc">타원 표준형, 초점·장단축·이심률 동적 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/기하와벡터/타원.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="포물선 초점 준선 방정식 이차곡선">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/기하와벡터/포물선.html" data-keywords="포물선 초점 준선 방정식 이차곡선 포물선 기하와벡터 이차곡선" data-course="geom-vec" data-celestial="parabola" tabindex="0" role="link" aria-label="포물선 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 68 Q40 4 72 68"/><line x1="8" y1="52" x2="72" y2="52" stroke-dasharray="3 3"/><circle cx="40" cy="30" r="3" fill="currentColor" stroke="none"/>
         </svg>
+            <span class="card-visual-badge">이차곡선</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">기하와벡터</span>
+              <span class="card-unit-label">기하와벡터</span>
+            </div>
+            <h3 class="card-title">포물선</h3>
+            
+            <p class="card-desc">포물선 표준형, 초점·준선 관계 동적 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/기하와벡터/포물선.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
+
       </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">기하와벡터</span><span class="card-badge">이차곡선</span></div>
-        <div class="card-title">포물선</div>
-        <div class="card-desc">포물선 표준형, 초점·준선 관계 동적 탐구.</div>
+    </section>
+
+    <!-- ── Section: 고등 · 미적분Ⅰ · 함수의 극한·미분·적분 ── -->
+    <section class="section-wrap" id="sec-calc1" data-course="calc1">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-tag" style="border-color:#D8B77E55; color:#D8B77E;">해석학</span>
+          <span>미적분1 · 함수의 극한·미분·적분</span>
+        </h2>
+        <span class="section-count">8개 실험실</span>
       </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/기하와벡터/포물선.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+      <div class="lab-grid">
 
-  </div><!-- /#cards-gs2 -->
-
-
-  <!-- ==============================
-       미적분1
-       ============================== -->
-  <div class="section-row" data-section="gs">
-    <h2 class="section-title"><span class="section-grade"><span class="grade-dot gs"></span> 미적분1</span></h2>
-    <span class="section-count">8개 실험실</span>
-  </div>
-  <div class="cards" id="cards-calc">
-
-    <div class="lab-card" data-keywords="도함수 원함수 미분 그래프 관계">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/미적분1/도함수 ↔ 원함수.html" data-keywords="도함수 원함수 미분 그래프 관계 도함수 ↔ 원함수 미적분1 미분" data-course="calc1" data-celestial="circle" tabindex="0" role="link" aria-label="도함수 ↔ 원함수 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 58 Q20 10 40 38 Q60 66 72 18"/><path d="M8 50 Q20 46 40 40 Q60 34 72 30" stroke-dasharray="3 3"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">미적분1</span><span class="card-badge">미분</span></div>
-        <div class="card-title">도함수 ↔ 원함수</div>
-        <div class="card-desc">원함수와 도함수 그래프의 상호관계 동적 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/미적분1/도함수 ↔ 원함수.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">미분</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">미적분1</span>
+              <span class="card-unit-label">미적분1</span>
+            </div>
+            <h3 class="card-title">도함수 ↔ 원함수</h3>
+            
+            <p class="card-desc">원함수와 도함수 그래프의 상호관계 동적 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/미적분1/도함수 ↔ 원함수.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="사차함수 비율 극값 변곡점 그래프">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/미적분1/사차함수 비율관계.html" data-keywords="사차함수 비율 극값 변곡점 그래프 사차함수 비율관계 미적분1 고차함수" data-course="calc1" data-celestial="calculus" tabindex="0" role="link" aria-label="사차함수 비율관계 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 50 Q18 8 28 38 Q40 68 52 30 Q62 8 72 48"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">미적분1</span><span class="card-badge">고차함수</span></div>
-        <div class="card-title">사차함수 비율관계</div>
-        <div class="card-desc">사차함수 그래프와 극값·변곡점 비율 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/미적분1/사차함수 비율관계.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">고차함수</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">미적분1</span>
+              <span class="card-unit-label">미적분1</span>
+            </div>
+            <h3 class="card-title">사차함수 비율관계</h3>
+            
+            <p class="card-desc">사차함수 그래프와 극값·변곡점 비율 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/미적분1/사차함수 비율관계.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="삼차함수 비율 극값 변곡점 그래프">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/미적분1/삼차함수 비율관계.html" data-keywords="삼차함수 비율 극값 변곡점 그래프 삼차함수 비율관계 미적분1 고차함수" data-course="calc1" data-celestial="calculus" tabindex="0" role="link" aria-label="삼차함수 비율관계 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 60 Q24 12 40 38 Q56 64 72 16"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">미적분1</span><span class="card-badge">고차함수</span></div>
-        <div class="card-title">삼차함수 비율관계</div>
-        <div class="card-desc">삼차함수 극값·변곡점 비율의 규칙성 발견.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/미적분1/삼차함수 비율관계.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">고차함수</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">미적분1</span>
+              <span class="card-unit-label">미적분1</span>
+            </div>
+            <h3 class="card-title">삼차함수 비율관계</h3>
+            
+            <p class="card-desc">삼차함수 극값·변곡점 비율의 규칙성 발견.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/미적분1/삼차함수 비율관계.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="속도 가속도 이동거리 위치 함수 미분 적분">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/미적분1/속도·가속도·이동거리.html" data-keywords="속도 가속도 이동거리 위치 함수 미분 적분 속도 · 가속도 · 이동거리 미적분1 응용" data-course="calc1" data-celestial="solid" tabindex="0" role="link" aria-label="속도 · 가속도 · 이동거리 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 60 Q20 58 32 30 Q44 8 56 30 Q68 50 72 48"/><path d="M8 50 L72 50" stroke-dasharray="3 3"/><circle cx="44" cy="12" r="3" fill="currentColor" stroke="none"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">미적분1</span><span class="card-badge">응용</span></div>
-        <div class="card-title">속도 · 가속도 · 이동거리</div>
-        <div class="card-desc">위치함수·속도·가속도·이동거리 상호관계 시각화.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/미적분1/속도·가속도·이동거리.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">응용</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">미적분1</span>
+              <span class="card-unit-label">미적분1</span>
+            </div>
+            <h3 class="card-title">속도 · 가속도 · 이동거리</h3>
+            
+            <p class="card-desc">위치함수·속도·가속도·이동거리 상호관계 시각화.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/미적분1/속도·가속도·이동거리.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="접선 미분계수 기울기 극한 순간변화율">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/미적분1/접선과 미분계수.html" data-keywords="접선 미분계수 기울기 극한 순간변화율 접선과 미분계수 미적분1 미분" data-course="calc1" data-celestial="calculus" tabindex="0" role="link" aria-label="접선과 미분계수 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 64 Q40 4 72 48"/><line x1="16" y1="72" x2="64" y2="20"/>
           <circle cx="42" cy="32" r="3" fill="currentColor" stroke="none"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">미적분1</span><span class="card-badge">미분</span></div>
-        <div class="card-title">접선과 미분계수</div>
-        <div class="card-desc">접선의 기울기·미분계수·순간변화율 동적 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/미적분1/접선과 미분계수.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">미분</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">미적분1</span>
+              <span class="card-unit-label">미적분1</span>
+            </div>
+            <h3 class="card-title">접선과 미분계수</h3>
+            
+            <p class="card-desc">접선의 기울기·미분계수·순간변화율 동적 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/미적분1/접선과 미분계수.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="정적분 넓이 구분구적법 리만합 사다리꼴">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/미적분1/정적분과 넓이.html" data-keywords="정적분 넓이 구분구적법 리만합 사다리꼴 정적분과 넓이 미적분1 적분" data-course="calc1" data-celestial="calculus" tabindex="0" role="link" aria-label="정적분과 넓이 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 64 Q40 4 72 64 Z" fill="currentColor" fill-opacity=".12"/>
           <path d="M8 64 Q40 4 72 64"/>
           <line x1="8" y1="64" x2="72" y2="64"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">미적분1</span><span class="card-badge">적분</span></div>
-        <div class="card-title">정적분과 넓이</div>
-        <div class="card-desc">구분구적법·리만합으로 넓이 개념 시각적 이해.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/미적분1/정적분과 넓이.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">적분</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">미적분1</span>
+              <span class="card-unit-label">미적분1</span>
+            </div>
+            <h3 class="card-title">정적분과 넓이</h3>
+            
+            <p class="card-desc">구분구적법·리만합으로 넓이 개념 시각적 이해.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/미적분1/정적분과 넓이.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="함수 극한 연속 불연속 수렴 발산">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/미적분1/함수의 극한·연속.html" data-keywords="함수 극한 연속 불연속 수렴 발산 함수의 극한 · 연속 미적분1 극한·연속" data-course="calc1" data-celestial="calculus" tabindex="0" role="link" aria-label="함수의 극한 · 연속 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 52 Q24 52 36 28"/><path d="M44 28 Q56 52 72 52"/><circle cx="40" cy="28" r="4" stroke="currentColor" fill="var(--surface2)"/>
           <circle cx="40" cy="28" r="2" fill="currentColor" stroke="none" opacity=".3"/>
         </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">미적분1</span><span class="card-badge">극한·연속</span></div>
-        <div class="card-title">함수의 극한 · 연속</div>
-        <div class="card-desc">수렴·발산·연속·불연속 개념 그래프 인터랙티브 탐구.</div>
-      </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/미적분1/함수의 극한·연속.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
-      </div>
-    </div>
+            <span class="card-visual-badge">극한·연속</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">미적분1</span>
+              <span class="card-unit-label">미적분1</span>
+            </div>
+            <h3 class="card-title">함수의 극한 · 연속</h3>
+            
+            <p class="card-desc">수렴·발산·연속·불연속 개념 그래프 인터랙티브 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/미적분1/함수의 극한·연속.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
 
-    <div class="lab-card" data-keywords="합성함수 절댓값 그래프 변환 함수">
-      <div class="card-visual gs">
-        <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="lab-card lab-card-item" data-href="labs/미적분1/합성함수·절댓값 그래프.html" data-keywords="합성함수 절댓값 그래프 변환 함수 합성함수 · 절댓값 그래프 미적분1 함수" data-course="calc1" data-celestial="calculus" tabindex="0" role="link" aria-label="합성함수 · 절댓값 그래프 열기">
+          <div class="card-visual">
+            <svg viewBox="0 0 80 76" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 64 L24 24 L40 64 L56 24 L72 64"/>
         </svg>
+            <span class="card-visual-badge">함수</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta-line">
+              <span class="card-grade-tag">미적분1</span>
+              <span class="card-unit-label">미적분1</span>
+            </div>
+            <h3 class="card-title">합성함수 · 절댓값 그래프</h3>
+            
+            <p class="card-desc">합성함수·절댓값 변환 그래프 동적 탐구.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-card-open" href="labs/미적분1/합성함수·절댓값 그래프.html" target="_blank" onclick="event.stopPropagation();">
+              <span>실험실 열기</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+          </div>
+        </article>
+
       </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-label gs">미적분1</span><span class="card-badge">함수</span></div>
-        <div class="card-title">합성함수 · 절댓값 그래프</div>
-        <div class="card-desc">합성함수·절댓값 변환 그래프 동적 탐구.</div>
+    </section>
+
+    <!-- ── Section: 대수 전단원 마스터 패키지 ── -->
+    <section class="section-wrap" id="sec-package" data-course="package">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-tag" style="border-color:#A78AC855; color:#A78AC8;">통합 패키지</span>
+          <span>대수 전단원 마스터 패키지</span>
+        </h2>
+        <span class="section-count">1개 패키지 (4개 링크)</span>
       </div>
-      <div class="card-footer">
-        <a class="btn-open" href="labs/미적분1/합성함수·절댓값 그래프.html" target="_blank" rel="noopener">수업용 열기 ↗</a>
+      <div class="lab-grid">
+
+        <div class="package-box lab-card-item" data-href="labs/대수_전단원_마스터_패키지/index.html" data-keywords="대수 수와연산 방정식 부등식 함수 전단원 마스터 종합 패키지 Part1A Part2A Part3" data-course="package" tabindex="0" role="link" aria-label="대수 전단원 마스터 패키지 열기">
+          <div class="package-left">
+            <div class="package-icon">📦</div>
+            <div class="package-info">
+              <h3>대수 전단원 마스터 패키지 <span class="topbar-badge" style="vertical-align:middle; margin-left:6px;">멀티파트</span></h3>
+              <p>수와 연산, 식의 계산, 일차방정식, 연립방정식, 부등식, 일차·이차함수 전 과정을 관통하는 종합 인터랙티브 패키지.</p>
+            </div>
+          </div>
+          <div class="package-btns">
+            <a class="btn-card-open" href="labs/대수_전단원_마스터_패키지/index.html" target="_blank" onclick="event.stopPropagation();">패키지 홈 ↗</a>
+            <a class="btn-card-sub" href="labs/대수_전단원_마스터_패키지/part1a.html" target="_blank" onclick="event.stopPropagation();">Part 1A ↗</a><a class="btn-card-sub" href="labs/대수_전단원_마스터_패키지/part2a.html" target="_blank" onclick="event.stopPropagation();">Part 2A ↗</a><a class="btn-card-sub" href="labs/대수_전단원_마스터_패키지/part3.html" target="_blank" onclick="event.stopPropagation();">Part 3 ↗</a>
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
 
-  </div><!-- /#cards-calc -->
-
-
-  <!-- ==============================
-       대수 전단원 마스터 패키지 (special)
-       ============================== -->
-  <div class="section-row" data-section="gs">
-    <h2 class="section-title"><span class="section-grade"><span class="grade-dot gs"></span> 대수 전단원 마스터 패키지</span></h2>
-    <span class="section-count">멀티파트</span>
-  </div>
-  <div class="package-card" id="card-daesoo" data-keywords="대수 수와 식 방정식 부등식 함수 마스터">
-    <div class="package-icon">📦</div>
-    <div class="package-info">
-      <div class="package-title">대수 전단원 마스터 패키지</div>
-      <div class="package-desc">수와 식·방정식·부등식·함수를 단계별 파트(part1a → part3)로 구성한 통합 패키지. 인덱스 페이지에서 단원을 선택하거나 파트별로 직접 열 수 있습니다.</div>
-    </div>
-    <div class="package-actions">
-      <a class="btn-open" href="labs/대수_전단원_마스터_패키지/index.html" target="_blank" rel="noopener">패키지 홈 열기 ↗</a>
-      <a class="btn-open-alt" href="labs/대수_전단원_마스터_패키지/part1a.html" target="_blank" rel="noopener">Part 1A</a>
-      <a class="btn-open-alt" href="labs/대수_전단원_마스터_패키지/part2a.html" target="_blank" rel="noopener">Part 2A</a>
-      <a class="btn-open-alt" href="labs/대수_전단원_마스터_패키지/part3.html" target="_blank" rel="noopener">Part 3</a>
-    </div>
   </div>
 
-  <!-- ── Footer ── -->
-  <div class="footer">
-    <span>AP Math Playground · 선생님 허브 · <a href="index.html" target="_blank">학생용 홈 열기</a></span>
-    <span>수업 중 새 탭으로 열어 직접 조작하며 사용하세요.</span>
-  </div>
+  <script>
+    // ── Full Card Click Interaction ──
+    // Every card container is fully clickable and opens its target HTML directly!
+    document.querySelectorAll('.lab-card-item').forEach(card => {
+      const openTarget = () => {
+        const url = card.dataset.href;
+        if (url) window.open(url, '_blank', 'noopener');
+      };
 
-</div><!-- /.page -->
+      card.addEventListener('click', (e) => {
+        // If clicking directly on an inner <a> button, let the link handle it
+        if (e.target.closest('a')) return;
+        openTarget();
+      });
 
-<script>
-// ── Dark mode ──
-(function() {
-  const saved = localStorage.getItem('APMATH_PLAYGROUND_THEME') || localStorage.getItem('APMATH_THEME') || 'light';
-  if (saved === 'dark') { document.body.classList.add('dark'); }
-  const btn = document.getElementById('theme-btn');
-  if (btn) btn.textContent = (saved === 'dark') ? '☀️' : '🌙';
-})();
-
-function toggleDarkMode() {
-  const isDark = document.body.classList.toggle('dark');
-  const next = isDark ? 'dark' : 'light';
-  localStorage.setItem('APMATH_PLAYGROUND_THEME', next);
-  localStorage.setItem('APMATH_THEME', next);
-  const btn = document.getElementById('theme-btn');
-  if (btn) btn.textContent = isDark ? '☀️' : '🌙';
-}
-
-// ── Search ──
-(function() {
-  const input = document.getElementById('search-input');
-  const emptyState = document.getElementById('empty-state');
-  if (!input) return;
-
-  function runSearch() {
-    const q = input.value.toLocaleLowerCase('ko').trim();
-    const cards = document.querySelectorAll('.lab-card, .package-card');
-    let anyVisible = false;
-
-    cards.forEach(card => {
-      const kw = (card.dataset.keywords || '') + ' ' + card.textContent;
-      const visible = !q || kw.toLocaleLowerCase('ko').includes(q);
-      card.style.display = visible ? '' : 'none';
-      if (visible) anyVisible = true;
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openTarget();
+        }
+      });
     });
 
-    // Hide empty section rows
-    document.querySelectorAll('.section-row').forEach(row => {
-      const next = row.nextElementSibling;
-      if (!next) return;
-      const visibleCards = next.querySelectorAll('.lab-card:not([style*="display: none"]), .lab-card:not([style*="display:none"])');
-      // crude check: if all cards hidden
-      const cardEls = [...next.querySelectorAll('.lab-card, .package-card')];
-      const sectionVisible = !q || cardEls.some(c => c.style.display !== 'none');
-      row.style.display = sectionVisible ? '' : 'none';
-      next.style.display = sectionVisible ? '' : 'none';
+    // ── Search & Filter Logic ──
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const sections = document.querySelectorAll('.section-wrap');
+    const emptyState = document.getElementById('emptyState');
+    const allCards = document.querySelectorAll('.lab-card-item');
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    function applyFilters() {
+      let visibleTotal = 0;
+      const q = searchQuery.toLowerCase().trim();
+
+      sections.forEach(sec => {
+        const secCourse = sec.dataset.course;
+        let secVisibleCount = 0;
+        const cards = sec.querySelectorAll('.lab-card-item');
+
+        cards.forEach(card => {
+          const course = card.dataset.course;
+          const kw = (card.dataset.keywords || '').toLowerCase();
+          const title = card.querySelector('.card-title, h3')?.textContent.toLowerCase() || '';
+          const desc = card.querySelector('.card-desc, p')?.textContent.toLowerCase() || '';
+
+          // Filter check
+          let matchFilter = false;
+          if (activeFilter === 'all') {
+            matchFilter = true;
+          } else if (activeFilter === course) {
+            matchFilter = true;
+          }
+
+          // Search check
+          let matchSearch = true;
+          if (q) {
+            matchSearch = kw.includes(q) || title.includes(q) || desc.includes(q);
+          }
+
+          if (matchFilter && matchSearch) {
+            card.style.display = '';
+            secVisibleCount++;
+            visibleTotal++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Hide section entirely if it has 0 visible cards
+        if (secVisibleCount > 0) {
+          sec.style.display = '';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+
+      // Empty state toggle
+      if (visibleTotal === 0) {
+        emptyState.classList.add('show');
+      } else {
+        emptyState.classList.remove('show');
+      }
+    }
+
+    // Filter bar tab clicks
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        applyFilters();
+      });
     });
 
-    if (emptyState) emptyState.classList.toggle('visible', !!q && !anyVisible);
-  }
+    // Real-time search input
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      applyFilters();
+    });
 
-  input.addEventListener('input', runSearch);
-})();
-</script>
+    // Handle URL parameters (e.g. ?filter=polyhedra or ?filter=3d)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialFilter = urlParams.get('filter');
+    if (initialFilter) {
+      const selected = Array.from(filterButtons).find(btn => btn.dataset.filter === initialFilter);
+      if (selected) {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        selected.classList.add('active');
+        activeFilter = initialFilter;
+        applyFilters();
+      }
+    }
 
+    const initialQ = urlParams.get('q');
+    if (initialQ) {
+      searchInput.value = initialQ;
+      searchQuery = initialQ;
+      applyFilters();
+    }
+  </script>
 </body>
 </html>
