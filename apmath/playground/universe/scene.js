@@ -4,6 +4,7 @@
 import * as THREE from './vendor/three.module.js';
 import { OrbitControls } from './vendor/OrbitControls.js';
 import { getVisualProfile } from './visual-profile.js';
+import { createArchiveBackdrop } from './archive-backdrop.js';
 import {
   MATH_COLORS,
   createPolyhedronObject,
@@ -24,7 +25,6 @@ import { MathGalaxyMotionEngine } from './math-motion.js';
 export function createMathUniverse({
   canvas,
   onSelectNode,
-  onHoverNode,
   onTravelComplete,
 } = {}) {
   const profile = getVisualProfile();
@@ -46,13 +46,15 @@ export function createMathUniverse({
 
   // 2. Scene & Fog (Obsidian Black)
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(MATH_COLORS.obsidian);
+  // Reveal the original Archive deepfield beneath this transparent WebGL canvas.
+  scene.background = null;
   scene.fog = new THREE.FogExp2(MATH_COLORS.obsidian, 0.0032);
 
   // 3. Camera Setup
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.5, 600);
-  const initialCamPos = new THREE.Vector3(0, 10, isMobile ? 58 : 46);
-  const initialCamTarget = new THREE.Vector3(0, 0, 0);
+  // Slight oblique opening: add depth/parallax without changing the celestial layout or zoom.
+  const initialCamPos = new THREE.Vector3(isMobile ? -7.5 : -6, 11, isMobile ? 58 : 46);
+  const initialCamTarget = new THREE.Vector3(0.8, -0.4, 0);
   camera.position.copy(initialCamPos);
 
   // 4. Controls
@@ -119,52 +121,9 @@ export function createMathUniverse({
   }
   scene.environment = createCosmicEnvironmentMap();
 
-  // 6. Deep Space Background: Far & Near Starfields
-  function createStarfield(count, radiusMin, radiusMax, size, opacity) {
-    const geo = new THREE.BufferGeometry();
-    const pos = new Float32Array(count * 3);
-    const cols = new Float32Array(count * 3);
-    const starPalette = [
-      new THREE.Color(MATH_COLORS.warmIvory),
-      new THREE.Color(MATH_COLORS.champagneGold),
-      new THREE.Color(MATH_COLORS.emerald),
-      new THREE.Color(MATH_COLORS.softAmethyst),
-      new THREE.Color(MATH_COLORS.mutedSilver),
-    ];
-
-    for (let i = 0; i < count; i++) {
-      const r = radiusMin + Math.random() * (radiusMax - radiusMin);
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(Math.random() * 2 - 1);
-
-      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      pos[i * 3 + 2] = r * Math.cos(phi);
-
-      const color = starPalette[Math.floor(Math.random() * starPalette.length)];
-      cols[i * 3] = color.r;
-      cols[i * 3 + 1] = color.g;
-      cols[i * 3 + 2] = color.b;
-    }
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    geo.setAttribute('color', new THREE.BufferAttribute(cols, 3));
-
-    const mat = new THREE.PointsMaterial({
-      size,
-      vertexColors: true,
-      transparent: true,
-      opacity,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending,
-    });
-    return new THREE.Points(geo, mat);
-  }
-
-  const farStars = createStarfield(profile.backgroundFarStars, 80, 220, isMobile ? 0.45 : 0.65, 0.45);
-  scene.add(farStars);
-
-  const nearStars = createStarfield(profile.backgroundNearStars, 25, 75, isMobile ? 0.7 : 0.9, 0.7);
-  scene.add(nearStars);
+  // 6. Distant Archive sky: radial star sprites, faint spiral galaxies and gas.
+  // All mathematical celestial objects and their interaction logic remain intact.
+  const backdrop = createArchiveBackdrop({ scene, profile, isMobile });
 
   // Nebula Atmosphere Sphere
   const nebulaTexture = new THREE.TextureLoader().load(new URL('./assets/galaxy-atmosphere.png', import.meta.url).href);
@@ -359,47 +318,19 @@ export function createMathUniverse({
 
   // 9. Raycasting & User Interaction
   const raycaster = new THREE.Raycaster();
-  const mouse = new THREE.Vector2(-999, -999);
   let pointerDownPos = { x: 0, y: 0, time: 0 };
-  let hoveredNode = null;
   let selectedNode = null;
 
   // Camera flight interpolation state
   let flightState = null;
 
   function onPointerMove(e) {
+    // The universe is a visual showcase: update parallax only.
+    // Do not raycast or render hover labels over mathematical objects.
     const rect = canvas.getBoundingClientRect();
-    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-    motionEngine.setPointer(mouse.x, mouse.y);
-
-    if (flightState) return;
-
-    raycaster.setFromCamera(mouse, camera);
-    const meshes = [];
-    celestialRegistry.forEach((c) => {
-      c.group.traverse((ch) => {
-        if (ch.isMesh) meshes.push(ch);
-      });
-    });
-
-    const intersects = raycaster.intersectObjects(meshes, false);
-    if (intersects.length > 0) {
-      const hitMesh = intersects[0].object;
-      const id = hitMesh.userData.celestialId;
-      const meta = hitMesh.userData.celestialMeta;
-      if (hoveredNode !== id) {
-        hoveredNode = id;
-        canvas.style.cursor = 'pointer';
-        if (typeof onHoverNode === 'function') onHoverNode(meta, e.clientX, e.clientY);
-      }
-    } else {
-      if (hoveredNode !== null) {
-        hoveredNode = null;
-        canvas.style.cursor = 'default';
-        if (typeof onHoverNode === 'function') onHoverNode(null);
-      }
-    }
+    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+    motionEngine.setPointer(x, y);
   }
 
   function onPointerDown(e) {
@@ -460,6 +391,10 @@ export function createMathUniverse({
       toTarget: targetPos.clone(),
       startTime: performance.now(),
       duration: 1200,
+      onComplete: () => {
+        // The detail-card reset button is gone: keep orbit interaction usable.
+        controls.enabled = true;
+      },
     };
     controls.enabled = false;
   }
@@ -555,8 +490,7 @@ export function createMathUniverse({
     motionEngine.update(time, delta);
 
     // Subtle starfield counter-drift
-    farStars.rotation.y = time * 0.005;
-    nearStars.rotation.y = time * 0.009;
+    backdrop.update(time);
     nebulaSky.rotation.y = time * 0.002;
 
     renderer.render(scene, camera);
@@ -613,6 +547,7 @@ export function createMathUniverse({
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointerup', onPointerUp);
       controls.dispose();
+      backdrop.dispose();
       renderer.dispose();
       celestialRegistry.forEach((c) => c.dispose());
       motionEngine.dispose();

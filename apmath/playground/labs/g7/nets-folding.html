@@ -145,7 +145,7 @@
           <h1 class="text-sm md:text-base font-black tracking-tight text-emerald-50 chalk-text">전개도 폴딩 &amp; 입체 단면 3D 마스터 실험실</h1>
           <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">28종 전개도·단면 직접 해부</span>
         </div>
-        <p class="text-[10.5px] text-emerald-400/85 hidden 2xl:block">꼭짓점 합체(A=I=K) · 불량 전개도 충돌 · 각기둥/각뿔/각뿔대 · 정다면체 5총사 · 반원기둥/케이크/휴지심 · 원뿔 중심각 &amp; 원뿔·회전체·정육면체 절단 단면</p>
+        <p class="text-[10.5px] text-emerald-400/85 hidden 2xl:block">꼭짓점 합체(A=G=I (십자형 기준)) · 불량 전개도 충돌 · 각기둥/각뿔/각뿔대 · 정다면체 5총사 · 반원기둥/케이크/휴지심 · 원뿔 중심각 &amp; 원뿔·회전체·정육면체 절단 단면</p>
       </div>
     </div>
 
@@ -259,9 +259,9 @@
           <div>
             <div class="flex justify-between text-[11px] mb-1">
               <span id="sliderSubLabel" class="text-emerald-200 font-semibold">전개도 펼치기(0%) ↔ 입체로 접기(100%)</span>
-              <span id="valFold" class="font-mono font-black text-amber-300">25%</span>
+              <span id="valFold" class="font-mono font-black text-amber-300">0%</span>
             </div>
-            <input type="range" id="sliderFold" min="0" max="1" step="0.005" value="0.25" class="w-full" oninput="onFoldSlider()" />
+            <input type="range" id="sliderFold" min="0" max="1" step="0.005" value="0" class="w-full" oninput="onFoldSlider()" />
           </div>
 
           <!-- 원클릭 치수 / 단면 종류 프리셋 칩 -->
@@ -361,7 +361,7 @@
       conceptSwitch: 'all', // 'all' | 'def' | 'parallel' | 'zipper'
       activePartIdx: -1,
 
-      fold: 0.25,
+      fold: 0,
       foldTarget: null,
 
       cylR: 3,
@@ -369,8 +369,8 @@
       coneR: 3,
       coneA: 6,
 
-      yaw: (-32 * Math.PI) / 180,
-      pitch: (38 * Math.PI) / 180,
+      yaw: Math.PI,
+      pitch: (85 * Math.PI) / 180,
       scale: 46,
       offsetX: 0,
       offsetY: 12,
@@ -386,7 +386,7 @@
 
     const SUB_MENUS = {
       1: [
-        { id: 'cross', label: '➕ 1-4-1 기본형 (꼭짓점 A=I=K)' },
+        { id: 'cross', label: '➕ 1-4-1 기본형 (꼭짓점 A=G=I (십자형 기준))' },
         { id: 'T', label: '🎲 1-4-1 ㅗ자 (주사위 합=7)' },
         { id: 'net231', label: '⚡ 2-3-1 계단형 (Z자 평행면)' },
         { id: 'stairs', label: '🪜 2-2-2 계단형' },
@@ -509,6 +509,7 @@
     }
 
     function draw3DLine(p1, p2, color = '#ffffff', width = 2.2, dashed = false, glow = false) {
+      if (netFrameCapture) return;
       const s1 = project3D(p1.x, p1.y, p1.z);
       const s2 = project3D(p2.x, p2.y, p1.z !== undefined ? p2.z : 0);
       ctx.save();
@@ -525,6 +526,7 @@
     }
 
     function draw3DTickMarks(p1, p2, count = 1, color = '#fbbf24', size = 6.5) {
+      if (netFrameCapture) return;
       if (state.conceptSwitch !== 'zipper' && state.conceptSwitch !== 'all') return;
       const s1 = project3D(p1.x, p1.y, p1.z);
       const s2 = project3D(p2.x, p2.y, p2.z);
@@ -551,6 +553,7 @@
     }
 
     function draw3DRightAngle(P, A, B, ratio = 0.22, color = '#38bdf8') {
+      if (netFrameCapture) return;
       const vA = vecSub(A, P), vB = vecSub(B, P);
       const p1 = vecAdd(P, vecScale(vA, ratio));
       const p3 = vecAdd(P, vecScale(vB, ratio));
@@ -574,7 +577,8 @@
       ctx.restore();
     }
 
-    function renderMerged3DVertices(vertList) {
+    function renderMerged3DVertices(vertList, opts = {}) {
+      if (netFrameCapture) return;
       if (state.conceptSwitch !== 'def' && state.conceptSwitch !== 'zipper' && state.conceptSwitch !== 'all') return;
       const groups = [];
       vertList.forEach((v) => {
@@ -594,10 +598,36 @@
       });
 
       const center2D = project3D(0, 0, 0.4);
+      const viewport = canvas.parentElement.getBoundingClientRect();
+      const occluders = opts.faces && state.fold > 0.52
+        ? opts.faces.map(face => face.pts.map(p => project3D(p.x,p.y,p.z))) : [];
+      // 면의 평균 깊이 대신 투영된 해당 픽셀에서의 삼각형 보간 깊이를 사용한다.
+      // 이렇게 해야 실제 앞면의 꼭짓점까지 잘못 숨기는 현상을 막는다.
+      function projectedFaceDepth(p, polygon) {
+        let nearest = Infinity;
+        const A = polygon[0];
+        for (let i = 1; i < polygon.length - 1; i++) {
+          const B=polygon[i], C=polygon[i+1];
+          const d=(B.y-C.y)*(A.x-C.x)+(C.x-B.x)*(A.y-C.y);
+          if(Math.abs(d)<1e-5)continue;
+          const a=((B.y-C.y)*(p.x-C.x)+(C.x-B.x)*(p.y-C.y))/d;
+          const b=((C.y-A.y)*(p.x-C.x)+(A.x-C.x)*(p.y-C.y))/d;
+          const t=1-a-b;
+          if(a>=-0.002 && b>=-0.002 && t>=-0.002)
+            nearest=Math.min(nearest,a*A.depth+b*B.depth+t*C.depth);
+        }
+        return nearest;
+      }
+      const overlay = canvas.parentElement.querySelector('.absolute.top-3.left-3')?.getBoundingClientRect();
+      const labelBoxes = [];
       groups.forEach((g) => {
         const s = project3D(g.pt.x, g.pt.y, g.pt.z);
+        if (occluders.some(f => projectedFaceDepth(s,f) < s.depth - 0.12)) return;
+        if (opts.avoidBanner && s.y > viewport.height - 118) return;
         const isMerged = g.labels.length > 1;
-        const text = isMerged ? g.labels.join('=') : g.labels[0];
+        const joined = isMerged ? g.labels.join('=') : g.labels[0];
+        const text = joined.length > 18 ? joined.slice(0, 17) + '…' : joined;
+        if (s.x < 6 || s.y < 6 || s.x > viewport.width - 6 || s.y > viewport.height - 6) return;
 
         let dx = s.x - center2D.x, dy = s.y - center2D.y;
         const len = Math.hypot(dx, dy) || 1;
@@ -618,9 +648,21 @@
         ctx.stroke();
 
         const dist = isMerged ? 19 : 15;
-        const lx = s.x + dx * dist, ly = s.y + dy * dist;
+        const lx0 = s.x + dx * dist, ly0 = s.y + dy * dist;
+        const lx = Math.min(viewport.width - 15, Math.max(15, lx0));
+        const ly = Math.min(viewport.height - 13, Math.max(13, ly0));
 
-        ctx.font = `${isMerged || g.highlight ? '800 12.5px' : '700 11.5px'} Pretendard, sans-serif`;
+        ctx.font = (isMerged || g.highlight ? '800 12.5px' : '700 11.5px') + ' Pretendard, sans-serif';
+        const w = ctx.measureText(text).width + 12;
+        const b = { x0:lx-w/2, x1:lx+w/2, y0:ly-10, y1:ly+10 };
+        const behindControls = overlay && lx + viewport.left > overlay.left - 6 &&
+          lx + viewport.left < overlay.right + 6 && ly + viewport.top > overlay.top - 6 &&
+          ly + viewport.top < overlay.bottom + 6;
+        const overlaps = labelBoxes.some(a => b.x0 < a.x1+4 && b.x1 > a.x0-4 && b.y0 < a.y1+4 && b.y1 > a.y0-4);
+        if (b.x0 < 4 || b.x1 > viewport.width - 4 || behindControls || overlaps) {
+          ctx.restore(); return;
+        }
+        labelBoxes.push(b);
         if (isMerged) {
           const tw = ctx.measureText(text).width + 8;
           ctx.fillStyle = 'rgba(7, 20, 15, 0.92)';
@@ -642,6 +684,7 @@
     }
 
     function drawBottomTapeBanner(rect, titleStr, segments) {
+      if (netFrameCapture) return;
       const by = rect.height - 78;
       const bw = Math.min(530, rect.width - 36);
       const sx = (rect.width - bw) / 2;
@@ -659,12 +702,12 @@
         ctx.font = '800 12px Pretendard, sans-serif';
         ctx.fillStyle = '#fef08a';
         ctx.textAlign = 'center';
-        ctx.fillText(titleStr, rect.width / 2, by + 4);
+        ctx.fillText(titleStr, rect.width / 2, by + 4, bw - 16);
       } else {
         ctx.font = '800 11px Pretendard, sans-serif';
         ctx.fillStyle = '#a7f3d0';
         ctx.textAlign = 'left';
-        ctx.fillText(`📏 ${titleStr}`, sx - 2, by - 8);
+        ctx.fillText(`📏 ${titleStr}`, sx - 2, by - 8, bw - 16);
 
         let acc = 0;
         segments.forEach((seg) => {
@@ -684,7 +727,13 @@
       ctx.restore();
     }
 
+    let netFrameCapture = false;
+    let netCapturedFaces = null;
+    let netVisibleFaces = null;
+    let trackedNetCache = { key:null, data:null };
     function renderSortedFaces(faces) {
+      if (netFrameCapture) { netCapturedFaces = faces; return; }
+      netVisibleFaces = faces;
       window.APBoardRel?.captureFaces(faces);
       const projectedFaces = faces.map((f) => {
         const sPts = f.pts.map((p) => project3D(p.x, p.y, p.z));
@@ -730,13 +779,15 @@
         ctx.stroke();
 
         if (showFaceLabel && f.label) {
+          // 면 번호와 문구가 자기 면 밖으로 번지지 않도록 제한한다.
+          ctx.clip();
           ctx.font = '800 12.5px Pretendard, sans-serif';
           ctx.fillStyle = '#ffffff';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.shadowColor = 'rgba(0,0,0,0.95)';
           ctx.shadowBlur = 6;
-          ctx.fillText(f.label, f.center2D.x + (f.labelOffset?.x || 0), f.center2D.y + (f.labelOffset?.y || 0));
+          ctx.fillText(f.label, f.center2D.x + (f.labelOffset?.x || 0), f.center2D.y + (f.labelOffset?.y || 0), Math.max(15, Math.max(...f.sPts.map(p=>p.x))-Math.min(...f.sPts.map(p=>p.x))-8));
         }
         ctx.restore();
       });
@@ -754,6 +805,7 @@
     // 4. 우측 상단 2D 실제 단면 모양 도장 미리보기 창 (단면 스캐너 전용!)
     // -------------------------------------------------------------------------
     function draw2DCrossSectionOverlay(rect, kind, sliceIdx) {
+      if (netFrameCapture) return;
       if (rect.width < 500) return;
       const boxW = 210, boxH = 190;
       const bx = rect.width - boxW - 14;
@@ -911,18 +963,18 @@
         };
         return {
           badge: `탐구 1 · 정육면체 [${pNames[sub]}] — 평행면 3쌍 · 지퍼 모서리 · 꼭짓점 합체 추적`,
-          hint: `슬라이더로 전개도를 접어보세요! <strong class="text-amber-300">한 칸 건너뛴 면끼리 마주보는 평행면(같은 색)</strong>이 되고, <strong class="text-sky-300">90° 오목 모퉁이에서 출발한 두 변이 지퍼처럼 맞물리며 꼭짓점 3개(A=I=K)가 한 점으로 합체</strong>됩니다!`,
+          hint: `슬라이더로 전개도를 접어보세요! <strong class="text-amber-300">한 칸 건너뛴 면끼리 마주보는 평행면(같은 색)</strong>이 되고, <strong class="text-sky-300">90° 오목 모퉁이에서 출발한 두 변이 지퍼처럼 맞물리며 꼭짓점 3개(A=G=I (십자형 기준))가 한 점으로 합체</strong>됩니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 2D 전개도로 펼치기' : '🎬 3D 정육면체로 접기!',
           dim1Name: '한 모서리 길이', dim2Name: '비교 옵션',
           parts: [
             { id: 0, name: '🟡 평행면 쌍 ①: 면 ㈎ ↔ 면 ㈓', desc: '접었을 때 앞·뒤로 마주보는 평행면', val: '㈎ ∥ ㈓', color: '#fbbf24', ok: true },
             { id: 1, name: '🔵 평행면 쌍 ②: 면 ㈏ ↔ 면 ㈑', desc: '접었을 때 좌·우로 마주보는 평행면 (한 칸 건너뜀)', val: '㈏ ∥ ㈑', color: '#38bdf8', ok: true },
             { id: 2, name: '🩷 평행면 쌍 ③: 면 ㈐ ↔ 면 ㈒', desc: '접었을 때 바닥·뚜껑으로 마주보는 평행면', val: '㈐ ∥ ㈒', color: '#f472b6', ok: true },
-            { id: 3, name: '📌 한 꼭짓점으로 합체되는 점 그룹', desc: '90° 모퉁이 지퍼를 따라 3개 점이 한 꼭짓점에 모임!', val: 'A = I = K 합체!', color: '#34d399', ok: true }
+            { id: 3, name: '📌 한 꼭짓점으로 합체되는 점 그룹', desc: '90° 모퉁이 지퍼를 따라 3개 점이 한 꼭짓점에 모임!', val: sub === 'cross' ? 'A=G=I, H=L=K' : '접힌 좌표로 확인', color: '#34d399', ok: true }
           ],
-          totalRes: '평행면: (㈎↔㈓)·(㈏↔㈑)·(㈐↔㈒) | 합체 꼭짓점: A = I = K',
+          totalRes: '평행면: (㈎↔㈓)·(㈏↔㈑)·(㈐↔㈒) | 맞닿는 꼭짓점: 실제 3D 좌표 기준',
           rule: '① 평행면 = 한 칸 건너뛰기(I자) 또는 나이트 이동(Z자)  ② 모서리 = 90° 지퍼!',
-          formulaHTML: `• <strong>만나는 꼭짓점 2단계 지퍼 추적</strong>:<br/>&nbsp;&nbsp;① $90^\\circ$ 오목 모퉁이 점 $B$에서 1칸씩 가면 <strong class="text-amber-300">점 A = 점 I</strong>!<br/>&nbsp;&nbsp;② 다시 옆 모퉁이에서 1칸씩 가면 <strong class="text-emerald-300">점 I = 점 K</strong> $\\implies$ <strong>결국 점 A = 점 I = 점 K (3중 합체!)</strong>`,
+          formulaHTML: '• <strong>실제 점 합체 확인</strong>: 기본 십자형 전개도에서 접힌 점은 <strong class="text-amber-300">A = G = I</strong>, 또 다른 꼭짓점은 <strong class="text-emerald-300">H = L = K</strong>가 됩니다. 다른 전개도 유형은 실제 접힌 좌표에서 같아지는 알파벳을 확인하세요.',
           notes: `• 정육면체의 한 꼭짓점에는 면이 3개 모이므로, 전개도 바깥쪽에 있는 점은 접었을 때 최대 <strong>3개의 알파벳이 한 꼭짓점</strong>에서 만납니다!`
         };
       }
@@ -1288,6 +1340,7 @@
       const rect = canvas.parentElement.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
 
+      netVisibleFaces = null;
       drawFloorGrid();
 
       const m = state.mode;
@@ -1297,10 +1350,101 @@
       else if (m === 4) renderMode4Platonic(rect);
       else if (m === 5) renderMode5Cylinders(rect);
       else if (m === 6) renderMode6ConesAndSlices(rect);
+      renderTrackedNetVertices();
 
       const spec = getSpec();
       updateUI(spec);
       window.APBoardRel?.finish();
+    }
+
+
+    // 전개도(0%)와 완성 겨냥도(100%)를 같은 도형 생성기에서 계산한다.
+    // 한 면 안의 분할점이 아닌 실제 다면체 꼭짓점만 전체 표시한다.
+    // 곡면은 수학적 꼭짓점이 없으므로 이음매·밑면의 대표 경계점만 표시한다.
+    function trackedNetKind() {
+      const m=state.mode, sub=state.subType[m];
+      if (m===2 || m===3) return 'polyhedron';
+      if (m===5) return 'seam';
+      if (m===6 && sub==='frustumCone') return 'seam';
+      return null; // 기존 정육면체·정사면체·정팔면체 이름 보존 / 정십이·이십면체 제외
+    }
+    function capturedNetFrame(fold) {
+      const oldFold = state.fold;
+      netFrameCapture = true;
+      netCapturedFaces = null;
+      try {
+        state.fold=fold;
+        const bounds=canvas.parentElement.getBoundingClientRect();
+        if(state.mode===2) renderMode2Prisms(bounds);
+        else if(state.mode===3) renderMode3Pyramids(bounds);
+        else if(state.mode===5) renderMode5Cylinders(bounds);
+        else if(state.mode===6) renderMode6ConesAndSlices(bounds);
+        return (netCapturedFaces||[]).map(face=>face.pts.map(p=>({...p})));
+      } finally {
+        state.fold=oldFold;
+        netFrameCapture=false;
+        netCapturedFaces=null;
+      }
+    }
+    function distance3D(a,b) { return Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z); }
+    function trackedNetData() {
+      const kind=trackedNetKind();
+      if(!kind) return null;
+      const sub=state.subType[state.mode];
+      const key=[state.mode,sub,state.cylR,state.cylH,state.coneR,state.coneA].join('|');
+      if(trackedNetCache.key===key) return trackedNetCache.data;
+      const open=capturedNetFrame(0), closed=capturedNetFrame(1);
+      const verts=[];
+      open.forEach((face,fi)=>face.forEach((p,vi)=>{
+        let item=verts.find(q=>distance3D(q.flat,p)<0.0001);
+        if(!item){item={flat:p,refs:[]};verts.push(item);}
+        item.refs.push([fi,vi]);
+      }));
+      const chosen = new Set();
+      const choose=(fi,...indices)=>{
+        if(!open[fi])return;
+        indices.forEach(vi=>{
+          const v=verts.findIndex(q=>q.refs.some(([i,j])=>i===fi && j===vi));
+          if(v>=0)chosen.add(v);
+        });
+      };
+      if(kind==='polyhedron') verts.forEach((v,i)=>chosen.add(i));
+      else if(state.mode===5){
+        if(sub==='cylinder'){choose(0,0,3);choose(27,1,2);choose(28,0);choose(29,0);}
+        if(sub==='halfCyl'){choose(0,0,1,2,3);choose(1,0,3);choose(18,1,2);}
+        if(sub==='sectorCyl'){choose(0,0,1,2,3);choose(1,0,1,2,3);choose(2,0,3);choose(13,1,2);}
+        if(sub==='hollowCyl'){choose(0,0,3);choose(46,1,2);choose(1,0,3);choose(47,1,2);}
+      } else if(sub==='frustumCone'){
+        choose(0,0,3);choose(27,1,2);choose(28,0);choose(29,0);
+      }
+      const points=[...chosen].sort((a,b)=>a-b).map((i,order)=>{
+        const v=verts[i], [fi,vi]=v.refs[0];
+        return {label:order<26?String.fromCharCode(65+order):'A'+(order-25),flat:v.flat,refs:v.refs,closed:closed[fi]?.[vi]};
+      }).filter(p=>p.closed);
+      // 동일한 펼친 점은 여러 면에 붙어 있어도 반드시 한 글자만 쓴다.
+      // 완전히 접힌 위치가 실제로 일치하는 경우에만 'A=B' 관계를 인정한다.
+      const groups=[];
+      points.forEach(p=>{
+        let group=groups.find(g=>distance3D(g.center,p.closed)<0.025);
+        if(group)group.labels.push(p.label);
+        else groups.push({center:p.closed,labels:[p.label]});
+      });
+      const seams=groups.filter(g=>g.labels.length>1).map(g=>g.labels.join('='));
+      const mismatched = points.filter(p=>p.refs.some(([fi,vi])=>!closed[fi]||distance3D(closed[fi][vi],p.closed)>0.035));
+      const data={key,kind,points,seams,mismatched:mismatched.length,closedVertices:groups.length,
+        flatVertices:verts.length,frameCount:open.length,closed};
+      trackedNetCache={key,data};
+      return data;
+    }
+    function renderTrackedNetVertices() {
+      const data=trackedNetData();
+      if(!data || data.mismatched || !netVisibleFaces)return;
+      const anchors=data.points.map(v=>{
+        const [fi,vi]=v.refs[0];
+        return {pt:netVisibleFaces[fi]?.pts[vi]||v.flat,label:v.label,
+                color:data.kind==='seam'?'#67e8f9':'#fef08a',highlight:false};
+      });
+      renderMerged3DVertices(anchors,{faces:data.kind==='polyhedron'?netVisibleFaces:null,avoidBanner:true});
     }
 
     // =========================================================================
@@ -1493,7 +1637,7 @@
           ? '❌ 불량 전개도: 4칸 일렬 아래에만 2칸이 몰려 있으면 면 ㈎와 면 ㈓가 정면에서 겹칩니다!'
           : sub === 'shortest'
           ? '🧵 입체 겉면 최단거리 = 지나가는 면들을 평면 전개도로 펼쳤을 때 자로 곧게 이은 일직선!'
-          : '📌 평행면 3쌍: (㈎↔㈓) · (㈏↔㈑) · (㈐↔㈒) | 90° 오목 모퉁이 지퍼 합체: 점 A = 점 I = 점 K'
+          : (sub === 'cross' ? '📌 기본 십자형: A=G=I, H=L=K, D=E, M=N' : '📌 평행면 3쌍과 접힌 꼭짓점의 실제 좌표를 비교하세요')
       );
     }
 
@@ -1738,15 +1882,15 @@
         }
 
         renderSortedFaces(faces);
-        renderMerged3DVertices(allVerts);
-        drawBottomTapeBanner(rect, `정${n === 3 ? '삼' : n === 4 ? '사' : '오'}각뿔: 펼쳐진 꼭짓점 V₁~V${n}이 접히면 각뿔의 꼭짓점 V 하나로 합체!`);
+        // 모든 전개도 꼭짓점은 공통 좌표 추적기로 표시한다.
+        drawBottomTapeBanner(rect, `정${n === 3 ? '삼' : n === 4 ? '사' : '오'}각뿔: 펼친 꼭짓점 ${n}개가 접힐 때 하나의 꼭짓점으로 합체됩니다!`);
       }
     }
 
     // =========================================================================
     // [모드 4 렌더링] 정다면체 5총사 & 360° 평면 타일
     // =========================================================================
-    const RIGID_PLATONIC_MESHES = {"octa":{"vertices":[[0.975935687694,-0.261501179382,0.0],[-0.975935687694,0.261501179382,-1.428869016624],[-0.261501179382,0.975935687694,0.0],[0.261501179382,-0.975935687694,-1.428869016624],[-0.714434508312,-0.714434508312,0.0],[0.714434508312,0.714434508312,-1.428869016624]],"faces":[[0,2,4],[5,2,0],[4,3,0],[0,3,5],[4,2,1],[1,2,5],[1,3,4],[5,3,1]],"tree":[{"p":-1,"edge":null,"angle":0},{"p":0,"edge":[0,2],"angle":-1.230959417341},{"p":0,"edge":[0,4],"angle":1.230959417341},{"p":1,"edge":[0,5],"angle":-1.230959417341},{"p":0,"edge":[2,4],"angle":-1.230959417341},{"p":1,"edge":[2,5],"angle":1.230959417341},{"p":4,"edge":[1,4],"angle":-1.230959417341},{"p":6,"edge":[1,3],"angle":-1.230959417341}],"order":[0,2,1,4,3,6,5,7]},"dodeca":{"vertices":[[-1.537243679637,0.115114455244,-1.541547750928],[-0.81043961348,-0.50087922696,0.0],[-1.31131884044,-0.81043961348,-0.952728905354],[-0.584514774283,-1.426433295684,-1.541547750928],[-0.361249997433,-0.881584259417,-2.494276656282],[-0.225924839197,0.925554068724,-2.494276656282],[-0.950068843007,0.071144645937,-2.494276656282],[-0.726804066157,0.615993682204,0.0],[-1.175993682204,0.996698714661,-0.952728905354],[-0.365554068724,1.497577941621,-1.541547750928],[0.361249997433,0.881584259417,0.0],[0.584514774283,1.426433295684,-0.952728905354],[0.950068843007,-0.071144645937,0.0],[0.365554068724,-1.497577941621,-0.952728905354],[0.225924839197,-0.925554068724,0.0],[0.81043961348,0.50087922696,-2.494276656282],[1.31131884044,0.81043961348,-1.541547750928],[0.726804066157,-0.615993682204,-2.494276656282],[1.537243679637,-0.115114455244,-0.952728905354],[1.175993682204,-0.996698714661,-1.541547750928]],"faces":[[14,12,10,7,1],[12,18,16,11,10],[4,3,2,0,6],[17,4,6,5,15],[19,13,3,4,17],[13,19,18,12,14],[5,6,0,8,9],[7,10,11,9,8],[16,15,5,9,11],[18,19,17,15,16],[2,1,7,8,0],[3,13,14,1,2]],"tree":[{"p":-1,"edge":null,"angle":0},{"p":0,"edge":[10,12],"angle":1.107148717794},{"p":11,"edge":[2,3],"angle":-1.107148717794},{"p":2,"edge":[4,6],"angle":1.107148717794},{"p":11,"edge":[3,13],"angle":-1.107148717794},{"p":0,"edge":[12,14],"angle":1.107148717794},{"p":3,"edge":[5,6],"angle":1.107148717794},{"p":0,"edge":[10,7],"angle":-1.107148717794},{"p":7,"edge":[9,11],"angle":1.107148717794},{"p":1,"edge":[16,18],"angle":1.107148717794},{"p":0,"edge":[1,7],"angle":1.107148717794},{"p":0,"edge":[1,14],"angle":-1.107148717794}],"order":[0,10,5,1,11,2,7,4,9,3,8,6]},"icosa":{"vertices":[[-1.02632534709,0.780118105147,-1.289157855369],[-0.734697032831,-0.308253580594,-2.08590122685],[0.734697032831,0.308253580594,0.0],[1.02632534709,-0.780118105147,-0.796743371482],[1.188764770555,0.498764770555,-1.289157855369],[0.100393084814,0.790393084814,-2.08590122685],[-0.100393084814,-0.790393084814,0.0],[-1.188764770555,-0.498764770555,-0.796743371482],[-0.162439423464,-1.278882875702,-1.289157855369],[0.634303948017,-0.48213950422,-2.08590122685],[-0.634303948017,0.48213950422,0.0],[0.162439423464,1.278882875702,-0.796743371482]],"faces":[[6,2,10],[11,0,10],[10,2,11],[2,4,11],[3,4,2],[3,6,8],[2,6,3],[10,0,7],[7,6,10],[8,6,7],[0,1,7],[7,1,8],[5,1,0],[5,11,4],[0,11,5],[9,3,8],[8,1,9],[4,3,9],[1,5,9],[9,5,4]],"tree":[{"p":-1,"edge":null,"angle":0},{"p":2,"edge":[10,11],"angle":0.729727656227},{"p":0,"edge":[2,10],"angle":-0.729727656227},{"p":2,"edge":[2,11],"angle":-0.729727656227},{"p":3,"edge":[2,4],"angle":-0.729727656227},{"p":9,"edge":[8,6],"angle":-0.729727656227},{"p":0,"edge":[2,6],"angle":0.729727656227},{"p":8,"edge":[10,7],"angle":-0.729727656227},{"p":0,"edge":[10,6],"angle":-0.729727656227},{"p":8,"edge":[6,7],"angle":0.729727656227},{"p":11,"edge":[1,7],"angle":0.729727656227},{"p":9,"edge":[8,7],"angle":0.729727656227},{"p":14,"edge":[0,5],"angle":0.729727656227},{"p":3,"edge":[11,4],"angle":0.729727656227},{"p":1,"edge":[0,11],"angle":0.729727656227},{"p":5,"edge":[8,3],"angle":-0.729727656227},{"p":18,"edge":[1,9],"angle":0.729727656227},{"p":15,"edge":[9,3],"angle":-0.729727656227},{"p":19,"edge":[9,5],"angle":-0.729727656227},{"p":13,"edge":[4,5],"angle":-0.729727656227}],"order":[0,6,2,8,7,9,1,5,11,14,15,12,10,3,4,17,13,19,18,16]}};
+    const RIGID_PLATONIC_MESHES = {"octa":{"vertices":[[0.975935687694,-0.261501179382,0.0],[-0.975935687694,0.261501179382,-1.428869016624],[-0.261501179382,0.975935687694,0.0],[0.261501179382,-0.975935687694,-1.428869016624],[-0.714434508312,-0.714434508312,0.0],[0.714434508312,0.714434508312,-1.428869016624]],"faces":[[0,2,4],[5,2,0],[4,3,0],[0,3,5],[4,2,1],[1,2,5],[1,3,4],[5,3,1]],"tree":[{"p":-1,"edge":null,"angle":0},{"p":0,"edge":[0,2],"angle":-1.230959417341},{"p":3,"edge":[0,3],"angle":-1.230959417341},{"p":1,"edge":[0,5],"angle":-1.230959417341},{"p":0,"edge":[2,4],"angle":-1.230959417341},{"p":7,"edge":[1,5],"angle":-1.230959417341},{"p":4,"edge":[1,4],"angle":-1.230959417341},{"p":6,"edge":[1,3],"angle":-1.230959417341}],"order":[0,1,3,2,4,6,7,5]},"dodeca":{"vertices":[[-1.537243679637,0.115114455244,-1.541547750928],[-0.81043961348,-0.50087922696,0.0],[-1.31131884044,-0.81043961348,-0.952728905354],[-0.584514774283,-1.426433295684,-1.541547750928],[-0.361249997433,-0.881584259417,-2.494276656282],[-0.225924839197,0.925554068724,-2.494276656282],[-0.950068843007,0.071144645937,-2.494276656282],[-0.726804066157,0.615993682204,0.0],[-1.175993682204,0.996698714661,-0.952728905354],[-0.365554068724,1.497577941621,-1.541547750928],[0.361249997433,0.881584259417,0.0],[0.584514774283,1.426433295684,-0.952728905354],[0.950068843007,-0.071144645937,0.0],[0.365554068724,-1.497577941621,-0.952728905354],[0.225924839197,-0.925554068724,0.0],[0.81043961348,0.50087922696,-2.494276656282],[1.31131884044,0.81043961348,-1.541547750928],[0.726804066157,-0.615993682204,-2.494276656282],[1.537243679637,-0.115114455244,-0.952728905354],[1.175993682204,-0.996698714661,-1.541547750928]],"faces":[[14,12,10,7,1],[12,18,16,11,10],[4,3,2,0,6],[17,4,6,5,15],[19,13,3,4,17],[13,19,18,12,14],[5,6,0,8,9],[7,10,11,9,8],[16,15,5,9,11],[18,19,17,15,16],[2,1,7,8,0],[3,13,14,1,2]],"tree":[{"p":-1,"edge":null,"angle":0},{"p":0,"edge":[10,12],"angle":1.107148717794},{"p":11,"edge":[2,3],"angle":-1.107148717794},{"p":2,"edge":[4,6],"angle":1.107148717794},{"p":11,"edge":[3,13],"angle":-1.107148717794},{"p":0,"edge":[12,14],"angle":1.107148717794},{"p":3,"edge":[5,6],"angle":1.107148717794},{"p":0,"edge":[10,7],"angle":-1.107148717794},{"p":7,"edge":[9,11],"angle":1.107148717794},{"p":1,"edge":[16,18],"angle":1.107148717794},{"p":0,"edge":[1,7],"angle":1.107148717794},{"p":0,"edge":[1,14],"angle":-1.107148717794}],"order":[0,10,5,1,11,2,7,4,9,3,8,6]},"icosa":{"vertices":[[-1.02632534709,0.780118105147,-1.289157855369],[-0.734697032831,-0.308253580594,-2.08590122685],[0.734697032831,0.308253580594,0.0],[1.02632534709,-0.780118105147,-0.796743371482],[1.188764770555,0.498764770555,-1.289157855369],[0.100393084814,0.790393084814,-2.08590122685],[-0.100393084814,-0.790393084814,0.0],[-1.188764770555,-0.498764770555,-0.796743371482],[-0.162439423464,-1.278882875702,-1.289157855369],[0.634303948017,-0.48213950422,-2.08590122685],[-0.634303948017,0.48213950422,0.0],[0.162439423464,1.278882875702,-0.796743371482]],"faces":[[6,2,10],[11,0,10],[10,2,11],[2,4,11],[3,4,2],[3,6,8],[2,6,3],[10,0,7],[7,6,10],[8,6,7],[0,1,7],[7,1,8],[5,1,0],[5,11,4],[0,11,5],[9,3,8],[8,1,9],[4,3,9],[1,5,9],[9,5,4]],"tree":[{"p":-1,"edge":null,"angle":0},{"p":2,"edge":[10,11],"angle":0.729727656227},{"p":0,"edge":[2,10],"angle":-0.729727656227},{"p":2,"edge":[2,11],"angle":-0.729727656227},{"p":3,"edge":[2,4],"angle":-0.729727656227},{"p":9,"edge":[8,6],"angle":-0.729727656227},{"p":0,"edge":[2,6],"angle":0.729727656227},{"p":8,"edge":[10,7],"angle":-0.729727656227},{"p":0,"edge":[10,6],"angle":-0.729727656227},{"p":8,"edge":[6,7],"angle":0.729727656227},{"p":11,"edge":[1,7],"angle":0.729727656227},{"p":9,"edge":[8,7],"angle":0.729727656227},{"p":14,"edge":[0,5],"angle":0.729727656227},{"p":3,"edge":[11,4],"angle":0.729727656227},{"p":1,"edge":[0,11],"angle":0.729727656227},{"p":5,"edge":[8,3],"angle":-0.729727656227},{"p":18,"edge":[1,9],"angle":0.729727656227},{"p":15,"edge":[9,3],"angle":-0.729727656227},{"p":19,"edge":[9,5],"angle":-0.729727656227},{"p":13,"edge":[4,5],"angle":-0.729727656227}],"order":[0,6,2,8,7,9,1,5,11,14,15,12,10,3,4,17,13,19,18,16]}};
 
     function buildRigidPlatonicFaces(kind, foldAmount) {
       const mesh = RIGID_PLATONIC_MESHES[kind];
@@ -1773,6 +1917,35 @@
         };
       });
       return byFace;
+    }
+
+
+    // 접기 0%에서 경첩이 연결하는 같은 좌표는 알파벳 하나로 표시한다.
+    // 마지막에 만나는 알파벳 쌍은 3D 메시의 동일 vertex id를 비교해서 찾는다.
+    const RIGID_NET_LABEL_CACHE = {};
+    function getRigidNetVertexLabels(kind) {
+      if (RIGID_NET_LABEL_CACHE[kind]) return RIGID_NET_LABEL_CACHE[kind];
+      const mesh = RIGID_PLATONIC_MESHES[kind];
+      const flat = buildRigidPlatonicFaces(kind, 0);
+      const vertices = [];
+      flat.forEach((face, faceIdx) => face.pts.forEach((pt, cornerIdx) => {
+        let entry = vertices.find(v => Math.hypot(v.flat.x-pt.x, v.flat.y-pt.y, v.flat.z-pt.z) < 0.00001);
+        if (!entry) {
+          const k = vertices.length;
+          entry = { flat:pt, label:k < 26 ? String.fromCharCode(65+k) : 'A'+(k-25), positions:[] };
+          vertices.push(entry);
+        }
+        entry.positions.push({ faceIdx, cornerIdx, modelIdx:mesh.faces[faceIdx][cornerIdx] });
+      }));
+      const finalVertices = new Map();
+      vertices.forEach(v => {
+        const k = v.positions[0].modelIdx;
+        if (!finalVertices.has(k)) finalVertices.set(k, []);
+        finalVertices.get(k).push(v.label);
+      });
+      return RIGID_NET_LABEL_CACHE[kind] = {
+        vertices, pairs:[...finalVertices.values()].filter(g=>g.length>1), solidCount:finalVertices.size
+      };
     }
 
     function renderMode4Platonic(rect) {
@@ -1846,7 +2019,16 @@
         const p = topo[sub];
         const faces = buildRigidPlatonicFaces(sub, f);
         renderSortedFaces(faces);
-        drawBottomTapeBanner(rect, `${names[sub]}: ${p[2]}개 면 경첩 폴딩 · 꼭짓점 V=${p[0]}, 모서리 E=${p[1]}, 면 F=${p[2]} (V - E + F = 2)`);
+        const labels = getRigidNetVertexLabels(sub);
+        // 정팔면체는 A~J 전부 표시한다. 복잡한 정십이/이십면체는 꼭짓점 렌즈에서만 표시한다.
+        if (sub === 'octa' || state.conceptSwitch === 'def' || state.conceptSwitch === 'zipper') {
+          renderMerged3DVertices(labels.vertices.map(v => {
+            const p = v.positions[0];
+            return {pt:faces[p.faceIdx].pts[p.cornerIdx], label:v.label, color:'#fef08a'};
+          }));
+        }
+        const pairText = sub === 'octa' ? ' · 일치: ' + labels.pairs.map(g=>g.join('=')).join(', ') : '';
+        drawBottomTapeBanner(rect, names[sub] + ': F=' + p[2] + ', E=' + p[1] + ', V=' + p[0] + pairText);
       }
     }
 
@@ -2243,6 +2425,7 @@
           label: secLabel
         }]);
 
+        renderMerged3DVertices(Object.entries(V).map(([label,pt])=>({pt,label,color:'#fef08a'})));
         draw2DCrossSectionOverlay(rect, 'cubeSlice', sliceIdx);
         drawBottomTapeBanner(rect, '🔪 정육면체(6면체) 단면: 정삼각형 · 직사각형 · 등변사다리꼴 · 오각형 · 최대 정육각형 가능 (7각형 불가!)');
         return;
@@ -2427,7 +2610,19 @@
       document.getElementById('totalResultBadge').textContent = spec.totalRes;
       document.getElementById('ruleBadge').textContent = spec.rule;
       document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
-      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+      const solidNet = state.mode === 4 && ['octa','dodeca','icosa'].includes(state.subType[4]);
+      const pairNotes = solidNet ? getRigidNetVertexLabels(state.subType[4]).pairs : [];
+      const traced=trackedNetData();
+      const netNote = traced && !traced.mismatched
+        ? '<div class="mt-2 pt-2 border-t border-emerald-700 text-sky-200">' +
+          '<strong>'+(traced.kind==='polyhedron'?'전개도 → 겨냥도 꼭짓점':'곡면 경계 기준점')+'</strong>: ' +
+          (traced.seams.length?traced.seams.map(s=>s.replaceAll('=',' = ')).join(' / '):'맞닿는 점은 각 면의 경계에 표시') +
+          (traced.kind==='polyhedron'?' · 펼친 점 '+traced.flatVertices+'개 / 완성 꼭짓점 '+traced.closedVertices+'개':
+            ' · 곡면의 분할점 전체가 아닌 경계·이음매만 표시')+
+          '</div>' : '';
+      document.getElementById('intuitionNotes').innerHTML = spec.notes + netNote +
+        (solidNet ? '<div class="mt-2 pt-2 border-t border-emerald-700 text-sky-200"><strong>접었을 때 만나는 알파벳:</strong> '+
+         pairNotes.map(g=>g.join(' = ')).join(' / ') + '</div>' : '');
 
       renderPresetChips();
     }
@@ -2451,18 +2646,19 @@
       for (let i = 1; i <= 6; i++) {
         document.getElementById(`tab-${i}`).classList.toggle('active', i === m);
       }
-      state.fold = m === 6 && state.subType[6].includes('Slice') ? 0.15 : 0.25;
+      state.fold = m === 6 && state.subType[6].includes('Slice') ? 0.15 : 0;
       state.foldTarget = null;
       renderSubBar();
-      snapCamera('iso');
+      snapCamera(m === 6 && state.subType[6].includes('Slice') ? 'iso' : 'top');
     }
 
     function setSubType(mode, subId) {
       state.subType[mode] = subId;
       state.activePartIdx = -1;
-      state.fold = subId.includes('Slice') ? 0.15 : 0.25;
+      state.fold = subId.includes('Slice') ? 0.15 : 0;
       state.foldTarget = null;
       renderSubBar();
+      snapCamera(subId.includes('Slice') ? 'iso' : 'top');
       render();
     }
 
@@ -2494,7 +2690,9 @@
         state.foldTarget = Math.min(0.98, nextStep);
         return;
       }
-      state.foldTarget = state.fold > 0.5 ? 0.0 : 1.0;
+      const closing = state.fold <= 0.5;
+      state.foldTarget = closing ? 1.0 : 0.0;
+      snapCamera(closing ? "iso" : "top");
     }
 
     function snapCamera(preset) {
@@ -2503,9 +2701,9 @@
       let targetPitch = (36 * Math.PI) / 180;
 
       if (preset === 'top') {
-        targetYaw = 0;
+        targetYaw = Math.PI;
         targetPitch = (86 * Math.PI) / 180;
-        if (!state.subType[state.mode].includes('Slice')) state.foldTarget = 0.0;
+        // 카메라 변경과 접기 정도 변경은 별도의 조작이다.
       } else if (preset === 'front') {
         targetYaw = 0;
         targetPitch = (10 * Math.PI) / 180;
@@ -2532,10 +2730,10 @@
       state.offsetX = 0;
       state.offsetY = 12;
       state.activePartIdx = -1;
-      state.fold = 0.25;
+      state.fold = 0;
       state.foldTarget = null;
       setConceptSwitch('all');
-      snapCamera('iso');
+      snapCamera('top');
       resizeCanvas();
     }
 

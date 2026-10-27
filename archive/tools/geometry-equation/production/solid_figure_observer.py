@@ -933,7 +933,8 @@ def check_dim_lines(plan, ctx):
             if not mm:
                 continue
             zl = int(mm.group(1)) / int(mm.group(2)) * solid['height']
-            want = ((Tx, y_of(0.0)), (Tx, y_of(zl)))
+            # level:"top" dimensions the part above the plane (apex/top down to the section)
+            want = ((Tx, y_of(zl)), (Tx, y_of(solid['height']))) if d.get('level') == 'top' else ((Tx, y_of(0.0)), (Tx, y_of(zl)))
         else:
             if d.get('radius') != 'level':
                 continue
@@ -1078,7 +1079,8 @@ def expected_dim_values(plan, ctx):
                     out[ident] = (val, None, symbolic)
                 elif d.get('level') is not None:
                     m = re.fullmatch(r'(\d+)/(\d+)', (plan.get('section') or {}).get('at') or '')
-                    out[ident] = (int(m.group(1)) / int(m.group(2)) * solid['height'], None, symbolic)
+                    f = int(m.group(1)) / int(m.group(2))
+                    out[ident] = (solid['height'] * (1 - f) if d.get('level') == 'top' else solid['height'] * f, None, symbolic)
                 elif d.get('height') is not None: out[ident] = (solid['height'], None, symbolic)
                 else: out[ident] = (math.hypot(solid['r1'] - solid['r0'], solid['height']), None, symbolic)
         except (KeyError, TypeError):

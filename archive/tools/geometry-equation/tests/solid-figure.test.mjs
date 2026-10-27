@@ -228,6 +228,27 @@ test('an apex-down cone holds a liquid level: the smaller vessel is filled and i
   const r2=await audit(plan,svg.replace(ellipse,flat));
   assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_LEVEL_ELLIPSE_MISMATCH')));
 });
+test('a cone cut by a level plane labels the height below and above the section and the section radius exactly',async()=>{
+  const plan=figure({unit:'cm',solids:[{kind:'CONE',radius:10,height:18}],section:{kind:'LEVEL',at:'1/3'},
+    dims:[{radius:'bottom'},{level:true},{level:'top'},{radius:'level'}]});
+  const m=solveSolidFigure(plan);
+  assert.equal(m.section.z,6);assert.ok(Math.abs(m.section.r-20/3)<1e-5);
+  assert.deepEqual(m.dims.map(d=>d.type),['RADIUS','LEVEL','LEVEL','RADIUS']);
+  assert.equal(m.dims[1].side,'BOTTOM');assert.equal(m.dims[1].value,6);
+  assert.equal(m.dims[2].side,'TOP');assert.equal(m.dims[2].value,12);
+  assert.equal(m.dims[3].tex,'\\frac{20}{3}\\,\\mathrm{cm}');
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/data-dim="dim-2" data-kind="LEVEL"/);assert.match(svg,/data-dim="dim-3" data-kind="LEVEL"/);
+  assert.equal((await audit(plan,svg)).status,'PASS');
+  // tamper: the dimension line above the section is shortened so it no longer reaches the apex
+  const top=svg.match(/<line [^>]*data-dim="dim-3" data-kind="LEVEL"[^>]*\/>/)[0];
+  const cut=top.replace(/y1="([\d.]+)"/,(all,v)=>`y1="${Number(v)+9}"`);
+  const r=await audit(plan,svg.replace(top,cut));
+  assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_DIM_LINE_MISMATCH')),JSON.stringify(r.errors));
+});
 test('a sphere sits inscribed in a cylinder on the same axis; moving the inner curves off the axis fails',async()=>{
   const plan=figure({solids:[{id:'s1',kind:'CYLINDER',radius:3,height:6},{id:'s2',kind:'SPHERE',radius:3,inside:'s1'}],
     dims:[{solid:'s2',radius:'center',label:'r'},{solid:'s1',radius:'bottom',label:'r'},{solid:'s1',height:true,label:'2r'}]});

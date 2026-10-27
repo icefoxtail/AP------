@@ -26414,6 +26414,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "similar/middle/m1/1final/19_연향중_1학기_기말_중1_유사.js",
+      "school": "연향중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2019,
+      "semester": "1",
+      "examType": "final",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-04",
+      "rangeEndUnit": "좌표평면과 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-04",
+          "rangeEndUnit": "좌표평면과 그래프",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "similar/middle/m1/1mid/19_연향중_1학기_중간_중1_유사.js",
       "school": "연향중",
       "topic": "",
