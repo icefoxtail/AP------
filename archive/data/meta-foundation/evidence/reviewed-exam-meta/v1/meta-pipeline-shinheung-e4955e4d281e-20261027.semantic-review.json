@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "meta-pipeline-courier-semantic-review-v1",
+  "examUid": "25_신흥중_1학기_중간_중3_기출",
+  "requestId": "meta-pipeline-shinheung-e4955e4d281e-20261027",
+  "reviewActors": [
+    "OpenCode Go deepseek-v4.1-flash",
+    "CODEX_ROOT"
+  ],
+  "scope": "Audited concept storage/reuse and focused metadata type correction only; no student content edits or mathematics re-solve.",
+  "originalAuditRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+    "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+  },
+  "decisions": {
+    "conceptShards": {
+      "CC_COMMON_FACTOR_EXTRACTION": "ALGEBRA",
+      "CC_CONJUGATE_SURD": "ALGEBRA",
+      "CC_CROSS_MULTIPLICATION_FACTORIZATION": "ALGEBRA",
+      "CC_DENOMINATOR_RATIONALIZATION": "ALGEBRA",
+      "CC_DIFFERENCE_OF_SQUARES": "ALGEBRA",
+      "CC_DIOPHANTINE_NATURAL_BOUND": "NUMBER_THEORY",
+      "CC_DIVISOR_PAIR_CASE_ANALYSIS": "NUMBER_THEORY",
+      "CC_IRRATIONAL_CLOSURE_COUNTEREXAMPLE": "ALGEBRA",
+      "CC_IRRATIONAL_NUMBER_CLASSIFICATION": "NUMBER_THEORY",
+      "CC_MULTIPLICATION_FORMULAS": "ALGEBRA",
+      "CC_NUMERICAL_COMPUTATION_BY_FORMULA": "ALGEBRA",
+      "CC_PERFECT_SQUARE_TRINOMIAL": "ALGEBRA",
+      "CC_POLYNOMIAL_DIVISOR": "ALGEBRA",
+      "CC_POLYNOMIAL_EXPANSION": "ALGEBRA",
+      "CC_PRIME_FACTORIZATION_SQUARE": "NUMBER_THEORY",
+      "CC_PYTHAGOREAN_THEOREM": "PLANE_GEOMETRY",
+      "CC_QUADRATIC_TRINOMIAL_FACTORIZATION": "ALGEBRA",
+      "CC_RADICAL_ABSOLUTE_VALUE": "ALGEBRA",
+      "CC_RADICAL_ARITHMETIC": "ALGEBRA",
+      "CC_RADICAL_COMPARISON": "NUMBER_THEORY",
+      "CC_RADICAL_DECIMAL_SHIFT": "ALGEBRA",
+      "CC_RADICAL_NATURAL_CONDITION": "NUMBER_THEORY",
+      "CC_RADICAL_PERIMETER_SUM": "PLANE_GEOMETRY",
+      "CC_RADICAL_SIMPLIFICATION": "ALGEBRA",
+      "CC_RADICAL_SQUARE_SIMPLIFICATION": "ALGEBRA",
+      "CC_RATIONAL_CONDITION_FOR_SURD_EXPRESSION": "ALGEBRA",
+      "CC_REAL_NUMBER_CONTINUITY_NUMBER_LINE": "ALGEBRA",
+      "CC_REAL_NUMBER_INEQUALITY": "ALGEBRA",
+      "CC_REGULAR_HEXAGON_DIAGONAL": "PLANE_GEOMETRY",
+      "CC_REPEATING_DECIMAL_RATIONAL": "ALGEBRA",
+      "CC_SIGN_DETERMINATION": "ALGEBRA",
+      "CC_SQUARE_ROOT_APPROXIMATION": "ALGEBRA",
+      "CC_SQUARE_ROOT_DEFINITION": "NUMBER_THEORY",
+      "CC_SQUARE_ROOT_PROPERTY": "ALGEBRA",
+      "CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY": "ALGEBRA",
+      "CC_UNDETERMINED_COEFFICIENTS": "ALGEBRA"
+    },
+    "reuseRationales": {
+      "CC_DENOMINATOR_RATIONALIZATION": "Reviewed same-meaning use at source ordinal(s) 9,13,22: sqrt(32)=4*sqrt(2), 2*sqrt(12)=4*sqrt(3), sqrt(3)(2+4/sqrt(24))=2*sqrt(3)+sqrt(2)이므로 전체 식은 3*sqrt(2)-6*sqrt(3)이다. a=3, b=-6이므로 2a-b=12이다. / 공통분모는 (sqrt(6)+sqrt(2))(sqrt(6)-sqrt(2))=4이고 분자는 (sqrt(6)-sqrt(2))^2-(sqrt(6)+sqrt(2))^2=-8*sqrt(3)이므로 -2*sqrt(3)이다. / (10-2*sqrt(5))/sqrt(5)=2*sqrt(5)-2이므로 전체 식은 (3a-2)+(2-a)sqrt(5)이다. 유리수가 되려면 2-a=0이어야 하므로 a=2이다.. The existing definition (분모에 있는 근호를 제거하는 변형) is used for this decisive transformation; audit wording (분모에 무리수가 있을 때 분모와 분자에 0이 아닌 같은 무리수 또는 켤레무리수를 곱하여 분모를 유리수로 고치는 변형) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation.",
+      "CC_DIFFERENCE_OF_SQUARES": "Reviewed same-meaning use at source ordinal(s) 15,19: 48=50-2, 52=50+2이므로 48*52=(50-2)(50+2)이다. 따라서 (a+b)(a-b)=a^2-b^2 공식을 쓰는 것이 가장 편리하다. / x^2+2xy-3y^2=(x+3y)(x-y)이고 (x-1)^2-(y-1)^2=(x+y-2)(x-y)이므로 공통인수는 x-y이다.. The existing definition (A^2 - B^2 = (A-B)(A+B) 전개 및 인수분해) is used for this decisive transformation; audit wording (두 수 또는 두 식의 합과 차의 곱이 제곱의 차와 같다는 곱셈 및 인수분해 공식) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation.",
+      "CC_IRRATIONAL_NUMBER_CLASSIFICATION": "Reviewed same-meaning use at source ordinal(s) 3,6: ① 0.24(순환), ② 5, ③ 8은 유리수이다. ④ -sqrt(18)=-3sqrt(2), ⑤ pi는 무리수이다. / a-b, a+b, a^2+b는 유리수와 무리수의 차·합이므로 항상 무리수이다. 나머지는 a=0이거나 a=2, b=±sqrt(2)일 때 0이 될 수 있으므로 항상 무리수인 식은 3개이다.. The existing definition (유리수와 무리수를 구분하는 성질) is used for this decisive transformation; audit wording (분수 b/a(a, b는 정수, a≠0)로 나타낼 수 있는 유리수(유한소수, 순환소수)와 순환하지 않는 무한소수인 무리수를 판별하는 개념) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation.",
+      "CC_PERFECT_SQUARE_TRINOMIAL": "Reviewed same-meaning use at source ordinal(s) 18: 두 다항식을 더하면 x^2+6ax+6b이고 완전제곱식이 되려면 6b=9a^2, 즉 b=3/2 a^2이다. a, b<=100인 자연수에서 최대인 순서쌍은 (8, 96)이므로 최댓값은 104이다.. The existing definition (최고차항 계수가 1인 완전제곱 이차식의 일차항과 상수항이 같은 제곱의 계수로 결정되는 구조를 사용한다.) is used for this decisive transformation; audit wording (이차식 x^2 + Ax + B가 완전제곱식 (x + A/2)^2이 되기 위해서는 상수항 B가 일차항 계수의 절반의 제곱 (A/2)^2과 같아야 한다는 조건) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation.",
+      "CC_POLYNOMIAL_EXPANSION": "Reviewed same-meaning use at source ordinal(s) 12,16,23,24: 빈칸의 수는 차례로 ① 4, ② -3, ③ -9, ④ 8, ⑤ 2이다. 가장 작은 수는 -9이므로 정답은 ③이다. / (2x+a)(7x-3)=14x^2+(7a-6)x-3a에서 a=1이다. 바르게 계산하면 (2x+1)(3x-7)=6x^2-11x-7이므로 합은 -11+(-7)=-18이다. / (x+A)(x-2)=x^2+(A-2)x-2A=x^2+Bx-16이므로 A=8, B=6이다. 또 3x^2+2x-8=(3x-4)(x+2)이므로 C=4, D=2, 비밀번호는 8642이다. / ac=4, bd=5, A=ad+bc이다. (a,c)=(1,4),(2,2),(4,1)이고 (b,d)=(1,5),(5,1)이므로 모든 조합에서 A가 될 수 있는 수는 9, 12, 21이다.. The existing definition (괄호를 풀어 동류항끼리 정리하는 계산) is used for this decisive transformation; audit wording (분배법칙을 이용하여 두 다항식의 곱을 전개하고 동류항끼리 모아 각 차수의 계수를 구하는 대수 연산) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation.",
+      "CC_PYTHAGOREAN_THEOREM": "Reviewed same-meaning use at source ordinal(s) 11: 정육각형의 한 변은 2cm이고 짧은 대각선은 2*sqrt(3)cm이다. 그림에서 a=2*sqrt(3), b=2이고 새 도형의 둘레는 2a+4b=8+4*sqrt(3)이다.. The existing definition (직각삼각형의 빗변 길이 계산) is used for this decisive transformation; audit wording (직각삼각형의 세 변의 길이 관계 a^2+b^2=c^2 및 1:√3:2 변의 비를 이용해 무리수 변의 길이를 구하는 개념) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation.",
+      "CC_RADICAL_ABSOLUTE_VALUE": "Reviewed same-meaning use at source ordinal(s) 4: x<0, y>0이므로 sqrt(y^2)=y, sqrt((x-y)^2)=y-x, sqrt((-2x)^2)=-2x이다. 그러므로 y+(y-x)-(-2x)=x+2y이다.. The existing definition (실수 A에 대하여 √(A²)=|A|임을 이용해 부호에 따라 근호를 벗겨내는 대수 기법) is used for this decisive transformation; audit wording (실수 A에 대하여 √(A^2) = |A|임을 이용해 A≥0이면 A, A<0이면 -A로 근호를 벗겨 일차식을 정리하는 개념) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation.",
+      "CC_RADICAL_ARITHMETIC": "Reviewed same-meaning use at source ordinal(s) 9: sqrt(32)=4*sqrt(2), 2*sqrt(12)=4*sqrt(3), sqrt(3)(2+4/sqrt(24))=2*sqrt(3)+sqrt(2)이므로 전체 식은 3*sqrt(2)-6*sqrt(3)이다. a=3, b=-6이므로 2a-b=12이다.. The existing definition (제곱근을 포함한 수의 곱셈과 나눗셈) is used for this decisive transformation; audit wording (제곱근의 곱셈·나눗셈과 분배법칙을 적용한 뒤 근호 안의 수가 같은 항끼리 덧셈·뺄셈으로 정리하는 연산) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation.",
+      "CC_RADICAL_COMPARISON": "Reviewed same-meaning use at source ordinal(s) 5: ①, ②, ③, ⑤는 왼쪽이 더 크고(>), ④는 sqrt(7)<3이므로 3+sqrt(7)<6이다. 따라서 방향이 다른 것은 ④이다.. The existing definition (근호 안의 수 크기 비교) is used for this decisive transformation; audit wording (a>0, b>0일 때 a<b이면 √a < √b임을 이용하여 정수와 제곱근의 대소를 비교하는 개념) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation.",
+      "CC_SQUARE_ROOT_DEFINITION": "Reviewed same-meaning use at source ordinal(s) 1,7: (-8)^2=64이므로 a=8이다. 또 sqrt(16)=4이고, 4의 음의 제곱근은 b=-2이다. 따라서 a+b=6이다. / ① 순환소수는 유리수, ② 유리수에는 순환소수도 있음, ③ sqrt(10000)=100의 제곱근은 ±10, ④ sqrt(4)=2는 유리수. ⑤ 유리수와 무리수를 합친 실수가 수직선을 완전히 메우므로 참이다.. The existing definition (어떤 수를 제곱하여 a가 되는 수의 성질) is used for this decisive transformation; audit wording (어떤 수 x를 제곱하여 a(a≥0)가 될 때 x를 a의 제곱근이라 하고, 양의 제곱근을 √a, 음의 제곱근을 -√a로 나타내는 개념) provides the local formulation. Preserve the exact canonical definition and key; no semantic consolidation."
+    },
+    "conditionDefinitions": {},
+    "blockers": []
+  }
+}

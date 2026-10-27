@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.14",
+  "shardVersion": "1.4.15",
   "status": "ACTIVE",
-  "conceptCount": 235,
+  "conceptCount": 255,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -7508,6 +7508,743 @@
       ],
       "curriculumRefs": [
         "2015:수학(상):H15-SA-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COMMON_FACTOR_EXTRACTION",
+      "canonicalLabelKo": "공통인수로 묶어 인수분해하기",
+      "definition": "다항식의 모든 항에 공통으로 들어 있는 인수를 분배법칙의 역으로 묶어내어 MA+MB = M(A+B)로 인수분해하는 기본 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ffea1c0b0b71eef723c078988e813c9f4b286b2b9745767b3d0e059e21abb961"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ffea1c0b0b71eef723c078988e813c9f4b286b2b9745767b3d0e059e21abb961",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_COMMON_FACTOR_EXTRACTION for PT_M3_POLY_FACTORIZATION/TPL_M3_COMMON_FACTOR_IDENTIFICATION at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 17 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_CONJUGATE_SURD",
+      "canonicalLabelKo": "켤레무리수와 합차공식",
+      "definition": "(√a+√b)(√a-√b) = a-b임을 이용하여 분모가 두 제곱근의 합·차로 된 분수식을 유리화하거나 통분하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_eba6bca7f3b603d8c68832add19501a85a130192c6585b62ac265923fe1fdb78"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_eba6bca7f3b603d8c68832add19501a85a130192c6585b62ac265923fe1fdb78",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_CONJUGATE_SURD for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_RATIONALIZATION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 13 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_CROSS_MULTIPLICATION_FACTORIZATION",
+      "canonicalLabelKo": "최고차항 계수가 1이 아닌 이차식의 대각선 인수분해",
+      "definition": "acx^2+(ad+bc)x+bd = (ax+b)(cx+d)에서 이차항 계수와 상수항의 약수 쌍을 대각선으로 곱해 더하여 인수분해하는 방법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_33a8eaf80de755d95d935c86ff4afbb8b50665851c8dfa21a2405b9dbe8a719e",
+        "qid_v1_8a64e8372b5d427c7baa478120d6a9e245ddcbde3f91ec0c1255556fb64f6e2d"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_33a8eaf80de755d95d935c86ff4afbb8b50665851c8dfa21a2405b9dbe8a719e",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_CROSS_MULTIPLICATION_FACTORIZATION for PT_M3_POLY_FACTORIZATION/TPL_M3_QUADRATIC_FACTORIZATION_SUM at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8a64e8372b5d427c7baa478120d6a9e245ddcbde3f91ec0c1255556fb64f6e2d",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_CROSS_MULTIPLICATION_FACTORIZATION for PT_M3_POLY_FACTORIZATION/TPL_M3_FACTORIZATION_FORMULA_APPLICATION at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 23 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_IRRATIONAL_CLOSURE_COUNTEREXAMPLE",
+      "canonicalLabelKo": "유리수·무리수 연산의 반례 판별",
+      "definition": "유리수와 무리수의 사칙연산에서 합·차(a±b)는 항상 무리수이지만 곱·몫이나 제곱 결합은 0 또는 유리수가 되는 반례가 존재함을 판별하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2b16559b230f44e90a385c288aad595f92aa3d58583221ef18f3c32bd5ea25c8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2b16559b230f44e90a385c288aad595f92aa3d58583221ef18f3c32bd5ea25c8",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_IRRATIONAL_CLOSURE_COUNTEREXAMPLE for PT_M3_REAL_NUMBER_CLASSIFICATION/TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 6 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_REAL_NUMBER_CLASSIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_MULTIPLICATION_FORMULAS",
+      "canonicalLabelKo": "다항식의 곱셈공식",
+      "definition": "완전제곱식 (a±b)^2 = a^2±2ab+b^2, 합차공식 (a+b)(a-b)=a^2-b^2, 일차식의 곱 (ax+b)(cx+d) 전개 공식",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0f494208135954092cf8c9e557b76119d04c7cd9fbcc350fe4da937f197ab674",
+        "qid_v1_5834f6812d0650d5f7bd4485ef0a47676dbadaf6b080b80f34678b07cd3118bb"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5834f6812d0650d5f7bd4485ef0a47676dbadaf6b080b80f34678b07cd3118bb",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_MULTIPLICATION_FORMULAS for PT_M3_POLY_MULTIPLICATION/TPL_M3_POLY_EXPANSION_COEFFICIENT at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 12 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0f494208135954092cf8c9e557b76119d04c7cd9fbcc350fe4da937f197ab674",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_MULTIPLICATION_FORMULAS for PT_M3_POLY_MULTIPLICATION/TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 14 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_MULTIPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NUMERICAL_COMPUTATION_BY_FORMULA",
+      "canonicalLabelKo": "곱셈공식을 이용한 수의 간편 계산",
+      "definition": "두 수의 곱(예: 48×52)을 기준수와의 합·차((50-2)(50+2))로 변형하여 곱셈공식으로 빠르게 계산하는 방법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0d05000447e3749a1047f8d56e0caf307b723026e1c5544cbf1820854e7848c1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0d05000447e3749a1047f8d56e0caf307b723026e1c5544cbf1820854e7848c1",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_NUMERICAL_COMPUTATION_BY_FORMULA for PT_M3_POLY_MULTIPLICATION/TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 15 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_MULTIPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DIVISOR",
+      "canonicalLabelKo": "다항식의 인수의 뜻",
+      "definition": "하나의 다항식을 두 개 이상의 다항식의 곱으로 나타낼 때 각각의 식과 그들의 곱으로 만들어지는 약수 다항식",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ffea1c0b0b71eef723c078988e813c9f4b286b2b9745767b3d0e059e21abb961"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ffea1c0b0b71eef723c078988e813c9f4b286b2b9745767b3d0e059e21abb961",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_POLYNOMIAL_DIVISOR for PT_M3_POLY_FACTORIZATION/TPL_M3_COMMON_FACTOR_IDENTIFICATION at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 17 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_TRINOMIAL_FACTORIZATION",
+      "canonicalLabelKo": "이차삼항식의 인수분해",
+      "definition": "합이 일차항 계수이고 곱이 상수항인 두 수를 찾아 x^2+(a+b)x+ab = (x+a)(x+b)로 인수분해하는 방법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f2041f497441c0d4ae18a43909c6f1d4ed218afedca0b2cee1dfff8e3a0293c5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f2041f497441c0d4ae18a43909c6f1d4ed218afedca0b2cee1dfff8e3a0293c5",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_QUADRATIC_TRINOMIAL_FACTORIZATION for PT_M3_POLY_FACTORIZATION/TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 19 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_DECIMAL_SHIFT",
+      "canonicalLabelKo": "제곱근에서 100^k배와 소수점 자리 이동",
+      "definition": "근호 안의 수의 소수점이 두 자리씩 옮겨질 때마다 제곱근의 소수점은 같은 방향으로 한 자리씩 옮겨지는 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_19ed0b1a70cdd8bc787e9c8f0744ebf184694a445666eab00c515cdb29c5e1b8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_19ed0b1a70cdd8bc787e9c8f0744ebf184694a445666eab00c515cdb29c5e1b8",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_RADICAL_DECIMAL_SHIFT for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_LETTER_REPRESENTATION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 10 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_SIMPLIFICATION",
+      "canonicalLabelKo": "근호를 포함한 수의 변형",
+      "definition": "a>0, b>0일 때 √(a^2 b) = a√b로 근호 안의 제곱인 인수를 근호 밖으로 꺼내거나 근호 안으로 넣는 변형",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5b0ea2c732d263e4be77113d9ad5e5d624ef16c279e249ef2c46b03ba9ed922a",
+        "qid_v1_66f49237cc08e28b2a1eb1303de668a1c1d334ac9ca1a3c499d0074af1cb24b7"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5b0ea2c732d263e4be77113d9ad5e5d624ef16c279e249ef2c46b03ba9ed922a",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_RADICAL_SIMPLIFICATION for PT_M3_SQUARE_ROOT_PROPERTY/TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 1 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_66f49237cc08e28b2a1eb1303de668a1c1d334ac9ca1a3c499d0074af1cb24b7",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_RADICAL_SIMPLIFICATION for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_MIXED_OPERATION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 8 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION",
+        "PT_M3_SQUARE_ROOT_PROPERTY"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_SQUARE_SIMPLIFICATION",
+      "canonicalLabelKo": "음수의 제곱의 제곱근 부호 판별",
+      "definition": "근호 안의 음수를 제곱한 식 √((-a)^2)에서 부호를 양수로 바꾸어 |a|로 계산하고 근호 앞의 부호와 구별하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ec4686f245ac891e687878f60bd428d6a67da741edb287016338bb387a4517d1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ec4686f245ac891e687878f60bd428d6a67da741edb287016338bb387a4517d1",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_RADICAL_SQUARE_SIMPLIFICATION for PT_M3_SQUARE_ROOT_PROPERTY/TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 2 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_PROPERTY"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_CONDITION_FOR_SURD_EXPRESSION",
+      "canonicalLabelKo": "무리식이 유리수가 되기 위한 조건",
+      "definition": "유리수 a, b와 무리수 √m에 대하여 A + B√m(A, B는 유리수)이 유리수가 되려면 무리수 부분의 계수 B = 0이어야 한다는 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_89dab18657822d799a18e0805ba0b43958c49a77fbf74c08d88231f707d36569"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_89dab18657822d799a18e0805ba0b43958c49a77fbf74c08d88231f707d36569",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_RATIONAL_CONDITION_FOR_SURD_EXPRESSION for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_RATIONALIZATION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 22 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_REAL_NUMBER_CONTINUITY_NUMBER_LINE",
+      "canonicalLabelKo": "실수와 수직선의 일대일대응",
+      "definition": "수직선 위의 모든 점은 유리수와 무리수(즉, 실수)에 일대일로 대응하여 수직선을 빈틈없이 완전히 메운다는 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b77fd395511c5ab77ffcffc52bf759c719d80df7f26472d41f57fd80d28138de"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b77fd395511c5ab77ffcffc52bf759c719d80df7f26472d41f57fd80d28138de",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_REAL_NUMBER_CONTINUITY_NUMBER_LINE for PT_M3_REAL_NUMBER_CLASSIFICATION/TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 7 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_REAL_NUMBER_CLASSIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_REAL_NUMBER_INEQUALITY",
+      "canonicalLabelKo": "실수의 대소 관계 판별",
+      "definition": "두 실수 A, B의 차 A-B의 부호 또는 양변에서 공통인 수를 뺀 뒤 제곱근의 크기를 비교하여 부등호 방향을 정하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_48e67b9645076ab1f5c78ba0a26c0d515c1df0ea8b4cf75e4127a951b718773e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_48e67b9645076ab1f5c78ba0a26c0d515c1df0ea8b4cf75e4127a951b718773e",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_REAL_NUMBER_INEQUALITY for PT_M3_REAL_NUMBER_COMPARISON/TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 5 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_REAL_NUMBER_COMPARISON"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_REPEATING_DECIMAL_RATIONAL",
+      "canonicalLabelKo": "순환소수의 유리수 성질",
+      "definition": "순환소수는 항상 정수의 비(분수)로 나타낼 수 있으므로 무리수가 아닌 유리수에 속한다는 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_847d4aeaeb9c38a64f9c5170f06412cf43f7c801f2fab8fc172ec1714eac8fa3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_847d4aeaeb9c38a64f9c5170f06412cf43f7c801f2fab8fc172ec1714eac8fa3",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_REPEATING_DECIMAL_RATIONAL for PT_M3_REAL_NUMBER_CLASSIFICATION/TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 3 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_REAL_NUMBER_CLASSIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SIGN_DETERMINATION",
+      "canonicalLabelKo": "등식 조건으로부터 문자의 양·음 부호 추론",
+      "definition": "√(x^2) = -x에서 x<0(0이 아닐 때), √((-y)^2) = y에서 y>0임을 추론하고 일차 결합식 x-y의 부호를 결정하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e22d8fb497089431d346325df708d0d76ecce21ef391c309ec183363ef7d9b85"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e22d8fb497089431d346325df708d0d76ecce21ef391c309ec183363ef7d9b85",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_SIGN_DETERMINATION for PT_M3_SQUARE_ROOT_PROPERTY/TPL_M3_RADICAL_VARIABLE_SIMPLIFY at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 4 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_PROPERTY"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SQUARE_ROOT_APPROXIMATION",
+      "canonicalLabelKo": "제곱근의 어림값 계산",
+      "definition": "주어진 제곱근의 근삿값(√2, √20 등)을 이용하여 소수나 큰 수의 제곱근의 어림값을 구하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_19ed0b1a70cdd8bc787e9c8f0744ebf184694a445666eab00c515cdb29c5e1b8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_19ed0b1a70cdd8bc787e9c8f0744ebf184694a445666eab00c515cdb29c5e1b8",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_SQUARE_ROOT_APPROXIMATION for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_LETTER_REPRESENTATION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 10 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SQUARE_ROOT_PROPERTY",
+      "canonicalLabelKo": "제곱근의 성질",
+      "definition": "a>0일 때 (√a)^2 = (-√a)^2 = a이고 √(a^2) = √((-a)^2) = a가 성립하는 기본 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ec4686f245ac891e687878f60bd428d6a67da741edb287016338bb387a4517d1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ec4686f245ac891e687878f60bd428d6a67da741edb287016338bb387a4517d1",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_SQUARE_ROOT_PROPERTY for PT_M3_SQUARE_ROOT_PROPERTY/TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 2 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_PROPERTY"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY",
+      "canonicalLabelKo": "곱셈공식의 변형(대칭식)",
+      "definition": "x^2+y^2 = (x-y)^2 + 2xy = (x+y)^2 - 2xy 관계를 이용하여 두 수의 합(또는 차)과 곱으로부터 제곱의 합을 구하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0f494208135954092cf8c9e557b76119d04c7cd9fbcc350fe4da937f197ab674"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0f494208135954092cf8c9e557b76119d04c7cd9fbcc350fe4da937f197ab674",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY for PT_M3_POLY_MULTIPLICATION/TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 14 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_MULTIPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_UNDETERMINED_COEFFICIENTS",
+      "canonicalLabelKo": "전개식 계수 비교를 통한 미정계수 복원",
+      "definition": "다항식을 전개한 결과와 주어진 이차식의 일차항 계수·상수항을 비교하여 미지수를 구하는 방법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_823f0d6f15bee26549cf9b84a1c60c63e2be1f404d88c605832ebaf55c7816b4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_823f0d6f15bee26549cf9b84a1c60c63e2be1f404d88c605832ebaf55c7816b4",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_UNDETERMINED_COEFFICIENTS for PT_M3_POLY_MULTIPLICATION/TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION at M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_MULTIPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

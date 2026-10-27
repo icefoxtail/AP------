@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.3.11",
+  "shardVersion": "1.3.12",
   "status": "ACTIVE",
-  "conceptCount": 82,
+  "conceptCount": 84,
   "concepts": [
     {
       "conceptKey": "CC_ANGLE_BISECTOR",
@@ -3233,6 +3233,76 @@
       ],
       "curriculumRefs": [
         "2015:수학(상):H15-SA-03"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RADICAL_PERIMETER_SUM",
+      "canonicalLabelKo": "도형 재배열과 무리수 둘레 합산",
+      "definition": "잘라낸 조각들을 이어 붙여 만든 새로운 다각형의 외곽 경계를 이루는 변의 개수를 세어 둘레의 길이를 a+b√c 꼴로 구하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c4115ffd05bc2ae95d1a76c3bb3641efb812d18d606ca7eec8481846de0f9a62"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c4115ffd05bc2ae95d1a76c3bb3641efb812d18d606ca7eec8481846de0f9a62",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_RADICAL_PERIMETER_SUM for PT_M3_SQUARE_ROOT_APPLICATION/TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 11 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_REGULAR_HEXAGON_DIAGONAL",
+      "canonicalLabelKo": "정육각형의 분할과 대각선 길이",
+      "definition": "한 변의 길이가 b인 정육각형을 대각선으로 자를 때 30°-60°-90° 직각삼각형과 120° 이등변삼각형이 생기고 짧은 대각선 길이가 √3 b가 되는 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c4115ffd05bc2ae95d1a76c3bb3641efb812d18d606ca7eec8481846de0f9a62"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c4115ffd05bc2ae95d1a76c3bb3641efb812d18d606ca7eec8481846de0f9a62",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_REGULAR_HEXAGON_DIAGONAL for PT_M3_SQUARE_ROOT_APPLICATION/TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION at M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 11 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.audit.source.json",
+            "sha256": "c957e8e36d81f71213f581ba3ec2330b0d9dc36eac563234b8995b37ffa4caab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     }

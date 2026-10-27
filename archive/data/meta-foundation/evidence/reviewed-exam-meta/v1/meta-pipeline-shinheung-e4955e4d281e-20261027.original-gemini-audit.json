@@ -1,0 +1,1182 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "25_신흥중_1학기_중간_중3_기출",
+  "sourceFileDriveId": "1N3e2hoPBTFaj9GsANM8bn8ZWFkOB0Oft",
+  "sourceSha256": "662971fec9cf6370bf764d1185f8aaaa9f61ad25af92c432c19063af11140b4d",
+  "auditedTimestamp": "2026-10-24T08:02:00Z",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 24,
+    "approved": 24,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 17,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 36,
+    "byPack": {
+      "MIDDLE3": 24
+    },
+    "byStandardUnit": {
+      "M3-01": 14,
+      "M3-02": 10
+    },
+    "bySubUnit": {
+      "M3-01-REAL_NUMBER_OPERATIONS": 14,
+      "M3-02-POLYNOMIAL_MULTIPLICATION": 10
+    },
+    "byDifficultyBucket": {
+      "1": 8,
+      "3": 4,
+      "2": 9,
+      "4": 3
+    }
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_COMMON_FACTOR_EXTRACTION",
+      "labelKo": "공통인수로 묶어 인수분해하기",
+      "definition": "다항식의 모든 항에 공통으로 들어 있는 인수를 분배법칙의 역으로 묶어내어 MA+MB = M(A+B)로 인수분해하는 기본 원리",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_CONJUGATE_SURD",
+      "labelKo": "켤레무리수와 합차공식",
+      "definition": "(√a+√b)(√a-√b) = a-b임을 이용하여 분모가 두 제곱근의 합·차로 된 분수식을 유리화하거나 통분하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_CROSS_MULTIPLICATION_FACTORIZATION",
+      "labelKo": "최고차항 계수가 1이 아닌 이차식의 대각선 인수분해",
+      "definition": "acx^2+(ad+bc)x+bd = (ax+b)(cx+d)에서 이차항 계수와 상수항의 약수 쌍을 대각선으로 곱해 더하여 인수분해하는 방법",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_DENOMINATOR_RATIONALIZATION",
+      "labelKo": "분모의 유리화",
+      "definition": "분모에 무리수가 있을 때 분모와 분자에 0이 아닌 같은 무리수 또는 켤레무리수를 곱하여 분모를 유리수로 고치는 변형",
+      "boundQuestionCount": 3
+    },
+    {
+      "conceptKey": "CC_DIFFERENCE_OF_SQUARES",
+      "labelKo": "합차공식 (a+b)(a-b) = a^2 - b^2",
+      "definition": "두 수 또는 두 식의 합과 차의 곱이 제곱의 차와 같다는 곱셈 및 인수분해 공식",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_DIOPHANTINE_NATURAL_BOUND",
+      "labelKo": "자연수 범위 조건에서의 부정방정식 순서쌍 탐색",
+      "definition": "미지수들이 특정 자연수 이하라는 범위 제약과 정수 배수 조건(b = 3/2 a^2)을 만족하는 순서쌍을 찾아 최댓값을 구하는 추론",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_DIVISOR_PAIR_CASE_ANALYSIS",
+      "labelKo": "자연수 계수 다항식 곱의 약수 순서쌍 분류",
+      "definition": "ac=4, bd=5를 만족하는 자연수 순서쌍 (a,c)와 (b,d)의 모든 경우를 나누어 일차항 계수 A=ad+bc의 가능한 값을 구하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_IRRATIONAL_CLOSURE_COUNTEREXAMPLE",
+      "labelKo": "유리수·무리수 연산의 반례 판별",
+      "definition": "유리수와 무리수의 사칙연산에서 합·차(a±b)는 항상 무리수이지만 곱·몫이나 제곱 결합은 0 또는 유리수가 되는 반례가 존재함을 판별하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_IRRATIONAL_NUMBER_CLASSIFICATION",
+      "labelKo": "유리수와 무리수의 구별",
+      "definition": "분수 b/a(a, b는 정수, a≠0)로 나타낼 수 있는 유리수(유한소수, 순환소수)와 순환하지 않는 무한소수인 무리수를 판별하는 개념",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_MULTIPLICATION_FORMULAS",
+      "labelKo": "다항식의 곱셈공식",
+      "definition": "완전제곱식 (a±b)^2 = a^2±2ab+b^2, 합차공식 (a+b)(a-b)=a^2-b^2, 일차식의 곱 (ax+b)(cx+d) 전개 공식",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_NUMERICAL_COMPUTATION_BY_FORMULA",
+      "labelKo": "곱셈공식을 이용한 수의 간편 계산",
+      "definition": "두 수의 곱(예: 48×52)을 기준수와의 합·차((50-2)(50+2))로 변형하여 곱셈공식으로 빠르게 계산하는 방법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PERFECT_SQUARE_TRINOMIAL",
+      "labelKo": "완전제곱식이 될 조건",
+      "definition": "이차식 x^2 + Ax + B가 완전제곱식 (x + A/2)^2이 되기 위해서는 상수항 B가 일차항 계수의 절반의 제곱 (A/2)^2과 같아야 한다는 조건",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DIVISOR",
+      "labelKo": "다항식의 인수의 뜻",
+      "definition": "하나의 다항식을 두 개 이상의 다항식의 곱으로 나타낼 때 각각의 식과 그들의 곱으로 만들어지는 약수 다항식",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_EXPANSION",
+      "labelKo": "다항식의 전개와 동류항 정리",
+      "definition": "분배법칙을 이용하여 두 다항식의 곱을 전개하고 동류항끼리 모아 각 차수의 계수를 구하는 대수 연산",
+      "boundQuestionCount": 4
+    },
+    {
+      "conceptKey": "CC_PRIME_FACTORIZATION_SQUARE",
+      "labelKo": "소인수분해를 이용한 제곱수 만들기",
+      "definition": "자연수를 소인수분해했을 때 모든 소인수의 지수가 짝수가 되도록 곱하거나 나누는 자연수를 결정하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PYTHAGOREAN_THEOREM",
+      "labelKo": "피타고라스 정리와 특수 직각삼각형",
+      "definition": "직각삼각형의 세 변의 길이 관계 a^2+b^2=c^2 및 1:√3:2 변의 비를 이용해 무리수 변의 길이를 구하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_TRINOMIAL_FACTORIZATION",
+      "labelKo": "이차삼항식의 인수분해",
+      "definition": "합이 일차항 계수이고 곱이 상수항인 두 수를 찾아 x^2+(a+b)x+ab = (x+a)(x+b)로 인수분해하는 방법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RADICAL_ABSOLUTE_VALUE",
+      "labelKo": "문자의 부호에 따른 √(A^2) = |A| 정리",
+      "definition": "실수 A에 대하여 √(A^2) = |A|임을 이용해 A≥0이면 A, A<0이면 -A로 근호를 벗겨 일차식을 정리하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RADICAL_ARITHMETIC",
+      "labelKo": "근호를 포함한 식의 사칙혼합계산",
+      "definition": "제곱근의 곱셈·나눗셈과 분배법칙을 적용한 뒤 근호 안의 수가 같은 항끼리 덧셈·뺄셈으로 정리하는 연산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RADICAL_COMPARISON",
+      "labelKo": "제곱근의 크기 비교",
+      "definition": "a>0, b>0일 때 a<b이면 √a < √b임을 이용하여 정수와 제곱근의 대소를 비교하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RADICAL_DECIMAL_SHIFT",
+      "labelKo": "제곱근에서 100^k배와 소수점 자리 이동",
+      "definition": "근호 안의 수의 소수점이 두 자리씩 옮겨질 때마다 제곱근의 소수점은 같은 방향으로 한 자리씩 옮겨지는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RADICAL_NATURAL_CONDITION",
+      "labelKo": "제곱근이 자연수가 되기 위한 조건",
+      "definition": "√(N/x)가 자연수가 되기 위해서는 근호 안의 식 N/x가 1 이상의 자연수의 제곱수가 되어야 한다는 조건",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RADICAL_PERIMETER_SUM",
+      "labelKo": "도형 재배열과 무리수 둘레 합산",
+      "definition": "잘라낸 조각들을 이어 붙여 만든 새로운 다각형의 외곽 경계를 이루는 변의 개수를 세어 둘레의 길이를 a+b√c 꼴로 구하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RADICAL_SIMPLIFICATION",
+      "labelKo": "근호를 포함한 수의 변형",
+      "definition": "a>0, b>0일 때 √(a^2 b) = a√b로 근호 안의 제곱인 인수를 근호 밖으로 꺼내거나 근호 안으로 넣는 변형",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_RADICAL_SQUARE_SIMPLIFICATION",
+      "labelKo": "음수의 제곱의 제곱근 부호 판별",
+      "definition": "근호 안의 음수를 제곱한 식 √((-a)^2)에서 부호를 양수로 바꾸어 |a|로 계산하고 근호 앞의 부호와 구별하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_RATIONAL_CONDITION_FOR_SURD_EXPRESSION",
+      "labelKo": "무리식이 유리수가 되기 위한 조건",
+      "definition": "유리수 a, b와 무리수 √m에 대하여 A + B√m(A, B는 유리수)이 유리수가 되려면 무리수 부분의 계수 B = 0이어야 한다는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REAL_NUMBER_CONTINUITY_NUMBER_LINE",
+      "labelKo": "실수와 수직선의 일대일대응",
+      "definition": "수직선 위의 모든 점은 유리수와 무리수(즉, 실수)에 일대일로 대응하여 수직선을 빈틈없이 완전히 메운다는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REAL_NUMBER_INEQUALITY",
+      "labelKo": "실수의 대소 관계 판별",
+      "definition": "두 실수 A, B의 차 A-B의 부호 또는 양변에서 공통인 수를 뺀 뒤 제곱근의 크기를 비교하여 부등호 방향을 정하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REGULAR_HEXAGON_DIAGONAL",
+      "labelKo": "정육각형의 분할과 대각선 길이",
+      "definition": "한 변의 길이가 b인 정육각형을 대각선으로 자를 때 30°-60°-90° 직각삼각형과 120° 이등변삼각형이 생기고 짧은 대각선 길이가 √3 b가 되는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REPEATING_DECIMAL_RATIONAL",
+      "labelKo": "순환소수의 유리수 성질",
+      "definition": "순환소수는 항상 정수의 비(분수)로 나타낼 수 있으므로 무리수가 아닌 유리수에 속한다는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SIGN_DETERMINATION",
+      "labelKo": "등식 조건으로부터 문자의 양·음 부호 추론",
+      "definition": "√(x^2) = -x에서 x<0(0이 아닐 때), √((-y)^2) = y에서 y>0임을 추론하고 일차 결합식 x-y의 부호를 결정하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SQUARE_ROOT_APPROXIMATION",
+      "labelKo": "제곱근의 어림값 계산",
+      "definition": "주어진 제곱근의 근삿값(√2, √20 등)을 이용하여 소수나 큰 수의 제곱근의 어림값을 구하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SQUARE_ROOT_DEFINITION",
+      "labelKo": "제곱근의 뜻과 표현",
+      "definition": "어떤 수 x를 제곱하여 a(a≥0)가 될 때 x를 a의 제곱근이라 하고, 양의 제곱근을 √a, 음의 제곱근을 -√a로 나타내는 개념",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_SQUARE_ROOT_PROPERTY",
+      "labelKo": "제곱근의 성질",
+      "definition": "a>0일 때 (√a)^2 = (-√a)^2 = a이고 √(a^2) = √((-a)^2) = a가 성립하는 기본 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_POLYNOMIAL_IDENTITY",
+      "labelKo": "곱셈공식의 변형(대칭식)",
+      "definition": "x^2+y^2 = (x-y)^2 + 2xy = (x+y)^2 - 2xy 관계를 이용하여 두 수의 합(또는 차)과 곱으로부터 제곱의 합을 구하는 개념",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_UNDETERMINED_COEFFICIENTS",
+      "labelKo": "전개식 계수 비교를 통한 미정계수 복원",
+      "definition": "다항식을 전개한 결과와 주어진 이차식의 일차항 계수·상수항을 비교하여 미지수를 구하는 방법",
+      "boundQuestionCount": 1
+    }
+  ],
+  "handOffToCourier": {
+    "status": "READY_FOR_COURIER_REGISTRATION",
+    "author": "META_PIPELINE_UNIFIED_AUTHOR",
+    "registrationProtocol": "DIRECT_ATOMIC_METADATA_BINDING",
+    "recordsToBindCount": 24,
+    "holdCount": 0
+  },
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "problemTypeLabelKo": "제곱근의 성질 판별",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+        "templateLabelKo": "제곱근 명제의 참·거짓 판별",
+        "crossConceptKeys": [
+          "CC_SQUARE_ROOT_DEFINITION",
+          "CC_RADICAL_SIMPLIFICATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "거듭제곱과 근호로 표현된 수의 양·음의 제곱근을 구하는 기본 유형이므로 PT_M3_SQUARE_ROOT_PROPERTY / TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[제곱근의 뜻과 부호]의 1단계 직접 대입 및 합산: (-8)^2=64의 양의 제곱근 a=8과 sqrt(16)=4의 음의 제곱근 b=-2를 각각 구해 더하므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "(-8)^2의 양의 제곱근을 a, sqrt(16)의 음의 제곱근을 b라 할 때, a+b의 값을 구하면?",
+        "solutionDecisiveExcerpt": "(-8)^2=64이므로 a=8이다. 또 sqrt(16)=4이고, 4의 음의 제곱근은 b=-2이다. 따라서 a+b=6이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "problemTypeLabelKo": "제곱근의 성질 판별",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+        "templateLabelKo": "제곱근 명제의 참·거짓 판별",
+        "crossConceptKeys": [
+          "CC_SQUARE_ROOT_PROPERTY",
+          "CC_RADICAL_SQUARE_SIMPLIFICATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "제곱근의 제곱과 음수의 제곱의 제곱근 계산의 참·거짓을 판별하는 유형이므로 PT_M3_SQUARE_ROOT_PROPERTY / TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[제곱근의 성질]의 1단계 단순 판별: (sqrt(a))^2=a 및 sqrt((-a)^2)=|a| 공식을 5개 보기에 직접 적용하여 부호 오류(⑤ -sqrt((-21)^2)=-21)를 찾으므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 옳지 않은 것을 고르면? ① (sqrt(8))^2=8 ... ⑤ -sqrt((-21)^2)=21",
+        "solutionDecisiveExcerpt": "⑤는 -sqrt((-21)^2)=-21이므로 21이 아니다. 따라서 정답은 ⑤이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+        "problemTypeLabelKo": "유리수와 무리수의 판별",
+        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+        "templateLabelKo": "여러 수의 유리수·무리수 분류",
+        "crossConceptKeys": [
+          "CC_IRRATIONAL_NUMBER_CLASSIFICATION",
+          "CC_REPEATING_DECIMAL_RATIONAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "주어진 여러 실수들 중 무리수에 해당하는 수를 분류하는 유형이므로 PT_M3_REAL_NUMBER_CLASSIFICATION / TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[유리수와 무리수의 판별]의 1단계 단순 판별: 순환소수와 제곱수의 제곱근을 유리수로 소거하고 -sqrt(18)과 pi를 무리수로 고르는 기초 문항이므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 수 중에서 무리수를 모두 고르면? (정답 2개) ① 0.24(순환) ② (-sqrt(5))^2 ③ sqrt(64) ④ -sqrt(18) ⑤ pi",
+        "solutionDecisiveExcerpt": "① 0.24(순환), ② 5, ③ 8은 유리수이다. ④ -sqrt(18)=-3sqrt(2), ⑤ pi는 무리수이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "problemTypeLabelKo": "제곱근의 성질 판별",
+        "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+        "templateLabelKo": "부호 조건을 이용한 근호식 정리",
+        "crossConceptKeys": [
+          "CC_RADICAL_ABSOLUTE_VALUE",
+          "CC_SIGN_DETERMINATION"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "문자의 부호 조건을 추론하여 근호가 포함된 문자식을 간단히 하는 유형이므로 PT_M3_SQUARE_ROOT_PROPERTY / TPL_M3_RADICAL_VARIABLE_SIMPLIFY에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[근호 등식을 통한 부호 추론]과 [절댓값 기호 일차식 정리]의 연립 계산: sqrt(x^2)=-x, sqrt((-y)^2)=y에서 x<0, y>0을 먼저 추론한 뒤 세 근호식을 부호에 맞게 벗겨 동류항을 정리하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "0이 아닌 두 수 x, y에 대하여 sqrt(x^2)=-x, sqrt((-y)^2)=y일 때, sqrt(y^2)+sqrt((x-y)^2)-sqrt((-2x)^2)을 간단히 하면?",
+        "solutionDecisiveExcerpt": "x<0, y>0이므로 sqrt(y^2)=y, sqrt((x-y)^2)=y-x, sqrt((-2x)^2)=-2x이다. 그러므로 y+(y-x)-(-2x)=x+2y이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "problemTypeLabelKo": "실수의 대소와 범위 판단",
+        "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+        "templateLabelKo": "양수 근호의 대소 비교",
+        "crossConceptKeys": [
+          "CC_REAL_NUMBER_INEQUALITY",
+          "CC_RADICAL_COMPARISON"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "무리수와 정수가 결합된 두 실수의 대소를 비교하여 부등호 방향을 판별하는 유형이므로 PT_M3_REAL_NUMBER_COMPARISON / TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[제곱근을 포함한 실수의 대소 비교]의 2단계 표준 연산: 5개 보기의 양변에서 정수를 이항한 뒤 제곱근의 크기를 비교하여 부등호 방향이 다른 ④(3+sqrt(7)<6)를 찾으므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 네모 안에 알맞은 부등호를 써넣을 때, 나머지 넷과 다른 하나를 고르면?",
+        "solutionDecisiveExcerpt": "①, ②, ③, ⑤는 왼쪽이 더 크고(>), ④는 sqrt(7)<3이므로 3+sqrt(7)<6이다. 따라서 방향이 다른 것은 ④이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+        "problemTypeLabelKo": "유리수와 무리수의 판별",
+        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+        "templateLabelKo": "여러 수의 유리수·무리수 분류",
+        "crossConceptKeys": [
+          "CC_IRRATIONAL_CLOSURE_COUNTEREXAMPLE",
+          "CC_IRRATIONAL_NUMBER_CLASSIFICATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "유리수 a와 무리수 b로 이루어진 여러 대수식들 중 항상 무리수가 되는 식을 분류하는 유형이므로 PT_M3_REAL_NUMBER_CLASSIFICATION / TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[유리수·무리수 사칙연산의 무리수 판정과 반례 탐색]의 복합 추론: 9개의 식에 대해 유리수와 무리수의 합·차(a-b, a+b, a^2+b) 3개만 항상 무리수이고 나머지 6개는 a=0 또는 b=±sqrt(2) 반례로 유리수가 될 수 있음을 판별하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "a는 유리수이고 b는 무리수일 때, 다음 보기 중 항상 무리수인 식의 개수를 구하면?",
+        "solutionDecisiveExcerpt": "a-b, a+b, a^2+b는 유리수와 무리수의 차·합이므로 항상 무리수이다. 나머지는 a=0이거나 a=2, b=±sqrt(2)일 때 0이 될 수 있으므로 항상 무리수인 식은 3개이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+        "problemTypeLabelKo": "유리수와 무리수의 판별",
+        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+        "templateLabelKo": "여러 수의 유리수·무리수 분류",
+        "crossConceptKeys": [
+          "CC_REAL_NUMBER_CONTINUITY_NUMBER_LINE",
+          "CC_SQUARE_ROOT_DEFINITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "유리수, 무리수, 실수와 수직선에 관한 개념 진술의 참·거짓을 판별하는 유형이므로 PT_M3_REAL_NUMBER_CLASSIFICATION / TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[실수 체계와 수직선 성질]의 2단계 진위 판별: 무한소수·순환소수·제곱근의 정의와 실수의 수직선 완비성에 관한 5개 진술의 참·거짓을 판별하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중에서 옳은 것을 고르면? ... ⑤ 수직선은 유리수와 무리수로 완전히 메워져 있다.",
+        "solutionDecisiveExcerpt": "① 순환소수는 유리수, ② 유리수에는 순환소수도 있음, ③ sqrt(10000)=100의 제곱근은 ±10, ④ sqrt(4)=2는 유리수. ⑤ 유리수와 무리수를 합친 실수가 수직선을 완전히 메우므로 참이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypeLabelKo": "근호를 포함한 식의 계산",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "templateLabelKo": "근호가 포함된 식의 혼합 계산",
+        "crossConceptKeys": [
+          "CC_RADICAL_SIMPLIFICATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "근호 안의 제곱인 인수를 밖으로 꺼내거나 안으로 넣어 미지수를 구하는 기본 계산 유형이므로 PT_M3_RADICAL_CALCULATION / TPL_M3_RADICAL_MIXED_OPERATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[근호 안팎의 수 변형]의 1단계 직접 계산: sqrt(75)=5sqrt(3)에서 a=5, 2sqrt(3)=sqrt(12)에서 b=12를 구해 b-a=7을 바로 산출하므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "sqrt(75)=a*sqrt(3), 2*sqrt(3)=sqrt(b)일 때, b-a의 값을 구하면?",
+        "solutionDecisiveExcerpt": "sqrt(75)=5*sqrt(3)이므로 a=5이다. 또 2*sqrt(3)=sqrt(12)이므로 b=12이다. 따라서 b-a=12-5=7이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypeLabelKo": "근호를 포함한 식의 계산",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "templateLabelKo": "근호가 포함된 식의 혼합 계산",
+        "crossConceptKeys": [
+          "CC_RADICAL_ARITHMETIC",
+          "CC_DENOMINATOR_RATIONALIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "근호를 포함한 덧셈·뺄셈·곱셈·나눗셈 혼합식을 정리하여 계수를 비교하는 유형이므로 PT_M3_RADICAL_CALCULATION / TPL_M3_RADICAL_MIXED_OPERATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[근호를 포함한 식의 사칙혼합계산]의 2단계 표준 연산: 각 근호를 간소화하고 분배법칙으로 전개한 뒤 sqrt(2)항과 sqrt(3)항끼리 모아 a=3, b=-6 및 2a-b=12를 구하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "sqrt(32)-2*sqrt(12)-sqrt(3)(2+4/sqrt(24))=a*sqrt(2)+b*sqrt(3)이 성립할 때, 2a-b의 값을 구하면?",
+        "solutionDecisiveExcerpt": "sqrt(32)=4*sqrt(2), 2*sqrt(12)=4*sqrt(3), sqrt(3)(2+4/sqrt(24))=2*sqrt(3)+sqrt(2)이므로 전체 식은 3*sqrt(2)-6*sqrt(3)이다. a=3, b=-6이므로 2a-b=12이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypeLabelKo": "근호를 포함한 식의 계산",
+        "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+        "templateLabelKo": "근호식을 문자 곱으로 나타내기",
+        "crossConceptKeys": [
+          "CC_SQUARE_ROOT_APPROXIMATION",
+          "CC_RADICAL_DECIMAL_SHIFT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "주어진 제곱근 값을 이용해 10의 거듭제곱 배수 관계를 갖는 제곱근의 값을 구하는 유형이므로 PT_M3_RADICAL_CALCULATION / TPL_M3_RADICAL_LETTER_REPRESENTATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[제곱근의 어림값과 10의 거듭제곱 변형]의 2단계 표준 연산: 근호 안의 수를 소수점 두 자리 단위로 이동하거나 분모를 유리화하여 주어진 근삿값(sqrt(2), sqrt(20))으로 환산해 ⑤(sqrt(200)=14.14!=141.4)의 오류를 찾으므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "sqrt(2)=1.414, sqrt(20)=4.472일 때, 다음 중 옳지 않은 것을 고르면?",
+        "solutionDecisiveExcerpt": "⑤ sqrt(200)=10*sqrt(2)=14.14이므로 141.4가 아니다. 따라서 정답은 ⑤이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "problemTypeLabelKo": "제곱근의 기하 활용",
+        "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+        "templateLabelKo": "도형 재배열 및 둘레의 무리수 계산 응용",
+        "crossConceptKeys": [
+          "CC_REGULAR_HEXAGON_DIAGONAL",
+          "CC_PYTHAGOREAN_THEOREM",
+          "CC_RADICAL_PERIMETER_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "정육각형을 분할·재배열한 도형(인라인 SVG)에서 무리수 길이를 포함한 둘레를 구하는 기하 활용 유형이므로 PT_M3_SQUARE_ROOT_APPLICATION / TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyReason": "[정육각형 분할 조각의 무리수 변 길이 도출]과 [재배열 도형의 둘레 구성 변 분석]의 기하·대수 결합 추론: 한 변 b=2와 대각선 a=2sqrt(3)을 구하고 재배열된 도형 SVG에서 외곽 둘레가 2a+4b=8+4sqrt(3)임을 판독해야 하므로 Bucket 4를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "한 변의 길이가 2cm인 정육각형의 대각선을 따라 직각삼각형 두 조각과 이등변삼각형 두 조각으로 자른 것이다. 이 네 조각을 이용하여 만든 새로운 도형의 둘레의 길이를 구하면?",
+        "solutionDecisiveExcerpt": "정육각형의 한 변은 2cm이고 짧은 대각선은 2*sqrt(3)cm이다. 그림에서 a=2*sqrt(3), b=2이고 새 도형의 둘레는 2a+4b=8+4*sqrt(3)이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG"
+      }
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "problemTypeLabelKo": "다항식의 곱셈과 곱셈공식",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+        "templateLabelKo": "다항식 전개와 특정 항의 계수",
+        "crossConceptKeys": [
+          "CC_MULTIPLICATION_FORMULAS",
+          "CC_POLYNOMIAL_EXPANSION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "곱셈공식을 이용하여 다항식을 전개했을 때 특정 항의 계수를 구하고 비교하는 유형이므로 PT_M3_POLY_MULTIPLICATION / TPL_M3_POLY_EXPANSION_COEFFICIENT에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[곱셈공식의 전개]의 1단계 직접 대입: 5개 다항식의 곱을 전개하여 빈칸의 수(4, -3, -9, 8, 2)를 구하고 최솟값 -9(③)를 찾으므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 네모 안에 알맞은 수가 가장 작은 것을 고르면? ① (x+2)^2=x^2+4x+[] ... ③ (1+3x)(1-3x)=1+[]x^2",
+        "solutionDecisiveExcerpt": "빈칸의 수는 차례로 ① 4, ② -3, ③ -9, ④ 8, ⑤ 2이다. 가장 작은 수는 -9이므로 정답은 ③이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypeLabelKo": "근호를 포함한 식의 계산",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+        "templateLabelKo": "분모 유리화 후 근호식 비교",
+        "crossConceptKeys": [
+          "CC_DENOMINATOR_RATIONALIZATION",
+          "CC_CONJUGATE_SURD"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "합차공식을 이용한 분모의 유리화 및 근호 분수식의 뺄셈을 계산하는 유형이므로 PT_M3_RADICAL_CALCULATION / TPL_M3_RADICAL_RATIONALIZATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[켤레무리수 분모의 유리화와 식 정리]의 2단계 표준 연산: 합차공식으로 공통분모 4를 만들고 분자의 제곱식 차 (8-4sqrt(3))-(8+4sqrt(3))=-8sqrt(3)을 계산해 -2sqrt(3)을 얻으므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "(sqrt(6)-sqrt(2))/(sqrt(6)+sqrt(2)) - (sqrt(6)+sqrt(2))/(sqrt(6)-sqrt(2))를 계산하면?",
+        "solutionDecisiveExcerpt": "공통분모는 (sqrt(6)+sqrt(2))(sqrt(6)-sqrt(2))=4이고 분자는 (sqrt(6)-sqrt(2))^2-(sqrt(6)+sqrt(2))^2=-8*sqrt(3)이므로 -2*sqrt(3)이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "problemTypeLabelKo": "다항식의 곱셈과 곱셈공식",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+        "templateLabelKo": "곱셈공식을 이용한 수 계산과 타당성 판정",
+        "crossConceptKeys": [
+          "CC_SYMMETRIC_POLYNOMIAL_IDENTITY",
+          "CC_MULTIPLICATION_FORMULAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "곱셈공식의 변형식에 주어진 차와 곱의 값을 대입하여 시기의 값을 구하는 유형이므로 PT_M3_POLY_MULTIPLICATION / TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[곱셈공식의 변형]의 2단계 표준 연산: x^2+y^2=(x-y)^2+2xy 공식에 x-y=2sqrt(3), xy=8을 대입하여 12+16=28을 계산하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "x-y=2*sqrt(3), xy=8일 때, x^2+y^2의 값을 구하면?",
+        "solutionDecisiveExcerpt": "x^2+y^2=(x-y)^2+2xy이므로 (2*sqrt(3))^2+2*8=12+16=28이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "problemTypeLabelKo": "다항식의 곱셈과 곱셈공식",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+        "templateLabelKo": "곱셈공식을 이용한 수 계산과 타당성 판정",
+        "crossConceptKeys": [
+          "CC_DIFFERENCE_OF_SQUARES",
+          "CC_NUMERICAL_COMPUTATION_BY_FORMULA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "수의 곱셈을 기준수와의 합·차로 변형할 때 가장 알맞은 곱셈공식을 고르는 유형이므로 PT_M3_POLY_MULTIPLICATION / TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[수의 계산에 곱셈공식 활용]의 1단계 단순 판별: 48*52=(50-2)(50+2)에 합차공식 (a+b)(a-b)=a^2-b^2이 사용됨을 바로 판별하므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "곱셈공식을 이용하여 48*52을 계산하는데 이용되는 가장 편리한 곱셈공식을 고르면?",
+        "solutionDecisiveExcerpt": "48=50-2, 52=50+2이므로 48*52=(50-2)(50+2)이다. 따라서 (a+b)(a-b)=a^2-b^2 공식을 쓰는 것이 가장 편리하다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "problemTypeLabelKo": "다항식의 곱셈과 곱셈공식",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION",
+        "templateLabelKo": "다항식 전개와 미정계수 결정",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_EXPANSION",
+          "CC_UNDETERMINED_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "다항식의 전개 결과로부터 미정계수 a를 결정하고 바르게 전개한 식의 계수를 구하는 유형이므로 PT_M3_POLY_MULTIPLICATION / TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[잘못 곱한 식에서 미지수 복원 후 바른 식 계산]의 2단계 표준 연산: (2x+a)(7x-3)=14x^2+x-3에서 a=1을 구한 뒤 (2x+1)(3x-7)=6x^2-11x-7을 전개해 -11+(-7)=-18을 구하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "2x+a에 3x-7를 곱해야 할 것을 잘못하여 7x-3을 곱했더니 14x^2+x-3가 되었다. 이때 바르게 계산한 식에서의 x의 계수와 상수항의 합을 구하면?",
+        "solutionDecisiveExcerpt": "(2x+a)(7x-3)=14x^2+(7a-6)x-3a에서 a=1이다. 바르게 계산하면 (2x+1)(3x-7)=6x^2-11x-7이므로 합은 -11+(-7)=-18이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "problemTypeLabelKo": "다항식의 인수분해와 활용",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "templateLabelKo": "공통인수로 인수분해 후 인수 판별",
+        "crossConceptKeys": [
+          "CC_COMMON_FACTOR_EXTRACTION",
+          "CC_POLYNOMIAL_DIVISOR"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "다항식을 공통인수로 묶어 인수분해한 뒤 인수의 정의에 맞지 않는 식을 찾는 유형이므로 PT_M3_POLY_FACTORIZATION / TPL_M3_COMMON_FACTOR_IDENTIFICATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[공통인수로 묶기 및 인수 판별]의 1단계 단순 판별: x^3-7x^2=x^2(x-7)로 인수분해하여 약수 다항식이 아닌 7x(④)를 바로 찾으므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 x^3-7x^2의 인수가 아닌 것을 고르면? ① 1 ② x ③ x-7 ④ 7x ⑤ x^2-7x",
+        "solutionDecisiveExcerpt": "x^3-7x^2=x^2(x-7)이다. 따라서 인수가 아닌 것은 ④ 7x이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "problemTypeLabelKo": "다항식의 인수분해와 활용",
+        "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+        "templateLabelKo": "완전제곱식의 중간항 계수 결정",
+        "crossConceptKeys": [
+          "CC_PERFECT_SQUARE_TRINOMIAL",
+          "CC_DIOPHANTINE_NATURAL_BOUND"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "이차식이 완전제곱식이 되기 위한 계수 사이의 관계식을 세우고 자연수 범위 조건에서 최댓값을 구하는 유형이므로 PT_M3_POLY_FACTORIZATION / TPL_M3_PERFECT_SQUARE_CONDITION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyReason": "[완전제곱식 조건식 도출]과 [100 이하 자연수 부정방정식 순서쌍 탐색]의 다단계 추론: 합 다항식 x^2+6ax+6b가 완전제곱식이 될 조건 6b=(3a)^2 => b=3/2 a^2을 세우고 b<=100인 최대 자연수 순서쌍 (8, 96)을 찾아 합 104를 도출하므로 Bucket 4를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 x^2+5ax+4b에 다항식 ax+2b를 더한 후 인수분해하면 완전제곱식이 될 때, 이를 만족시키는 순서쌍 (a, b)에 대하여 a+b의 최댓값을 구하면? (단, a, b는 100이하의 자연수)",
+        "solutionDecisiveExcerpt": "두 다항식을 더하면 x^2+6ax+6b이고 완전제곱식이 되려면 6b=9a^2, 즉 b=3/2 a^2이다. a, b<=100인 자연수에서 최대인 순서쌍은 (8, 96)이므로 최댓값은 104이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "problemTypeLabelKo": "다항식의 인수분해와 활용",
+        "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
+        "templateLabelKo": "공통인수 조건으로 미정계수 결정",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_TRINOMIAL_FACTORIZATION",
+          "CC_DIFFERENCE_OF_SQUARES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "두 다항식을 각각 인수분해하여 공통으로 들어 있는 일차인수를 구하는 유형이므로 PT_M3_POLY_FACTORIZATION / TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[두 이차식의 인수분해와 공통인수 찾기]의 2단계 표준 연산: 첫째 식을 (x+3y)(x-y)로, 둘째 식을 합차공식으로 (x+y-2)(x-y)로 인수분해하여 공통인수 x-y를 찾으므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 두 다항식 x^2+2xy-3y^2, (x-1)^2-(y-1)^2을 각각 인수분해할 때, 공통으로 들어 있는 인수를 구하면?",
+        "solutionDecisiveExcerpt": "x^2+2xy-3y^2=(x+3y)(x-y)이고 (x-1)^2-(y-1)^2=(x+y-2)(x-y)이므로 공통인수는 x-y이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "problemTypeLabelKo": "다항식의 인수분해와 활용",
+        "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+        "templateLabelKo": "이차식 인수분해 후 일차식 합 계산",
+        "crossConceptKeys": [
+          "CC_CROSS_MULTIPLICATION_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "APPROVED_CANONICAL",
+        "justification": "이차다항식을 두 일차식의 곱으로 인수분해하여 나머지 인수를 찾는 유형이므로 PT_M3_POLY_FACTORIZATION / TPL_M3_QUADRATIC_FACTORIZATION_SUM에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "[이차삼항식의 인수분해]의 1단계 기초 연산: 6x^2-7x-20=(3x+4)(2x-5)로 직접 인수분해하여 다른 한 인수 2x-5를 찾으므로 Bucket 1을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "3x+4가 다항식 6x^2-7x-20의 인수일 때, 다음 중 이 다항식의 다른 한 인수를 구하면?",
+        "solutionDecisiveExcerpt": "6x^2-7x-20=(3x+4)(2x-5)이므로 다른 인수는 2x-5이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "problemTypeLabelKo": "제곱근의 성질 판별",
+        "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+        "templateLabelKo": "근호값이 자연수가 되는 조건",
+        "crossConceptKeys": [
+          "CC_PRIME_FACTORIZATION_SQUARE",
+          "CC_RADICAL_NATURAL_CONDITION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "분수 꼴의 근호식이 자연수가 되도록 소인수분해와 제곱수 조건을 적용하는 유형이므로 PT_M3_SQUARE_ROOT_PROPERTY / TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[제곱근이 자연수가 되기 위한 모든 자연수 x 구하기]의 3단계 서술형 연산: 108=2^2*3^3으로 소인수분해하고 108/x가 자연수의 제곱수(1, 4, 9, 36)가 되게 하는 x=3, 12, 27, 108의 4개 해를 전수 도출하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 1] sqrt(108/x)이 자연수가 되도록 하는 자연수 x의 값을 모두 구하는 과정과 답을 쓰시오.",
+        "solutionDecisiveExcerpt": "sqrt(108/x)가 자연수이려면 108/x가 자연수의 제곱이어야 한다. 108=2^2*3^3의 제곱수 약수는 1, 4, 9, 36이므로 x=3, 12, 27, 108이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypeLabelKo": "근호를 포함한 식의 계산",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+        "templateLabelKo": "분모 유리화 후 근호식 비교",
+        "crossConceptKeys": [
+          "CC_RATIONAL_CONDITION_FOR_SURD_EXPRESSION",
+          "CC_DENOMINATOR_RATIONALIZATION"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "근호식을 유리화·전개하여 유리수 부분과 무리수 부분으로 정리한 뒤 유리수가 될 조건을 구하는 유형이므로 PT_M3_RADICAL_CALCULATION / TPL_M3_RADICAL_RATIONALIZATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "[분모의 유리화와 무리식이 유리수가 될 조건]의 3단계 서술형 연산: 분모를 유리화하여 (3a-2)+(2-a)sqrt(5)로 정리한 뒤 무리수 항의 계수가 0일 조건(2-a=0)에서 a=2를 도출하므로 Bucket 3을 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 2] a(3-sqrt(5))+(10-sqrt(20))/sqrt(5)가 유리수일 때, 유리수 a의 값을 구하는 과정과 답을 쓰시오.",
+        "solutionDecisiveExcerpt": "(10-2*sqrt(5))/sqrt(5)=2*sqrt(5)-2이므로 전체 식은 (3a-2)+(2-a)sqrt(5)이다. 유리수가 되려면 2-a=0이어야 하므로 a=2이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "problemTypeLabelKo": "다항식의 인수분해와 활용",
+        "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
+        "templateLabelKo": "인수분해 공식의 빈칸 비교",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_EXPANSION",
+          "CC_CROSS_MULTIPLICATION_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "다항식의 전개식과 인수분해 공식의 미정계수를 비교하여 각 자리 숫자를 구하는 유형이므로 PT_M3_POLY_FACTORIZATION / TPL_M3_FACTORIZATION_FORMULA_APPLICATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "[다항식의 전개와 인수분해 계수 비교]의 2단계 서술형 연산: 첫째 식 전개에서 A=8, B=6을 구하고 둘째 식 인수분해 (3x-4)(x+2)에서 C=4, D=2를 구해 네 자리 수 8642를 확정하므로 Bucket 2를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 3] (x+A)(x-2)를 전개하면 x^2+Bx-16이고, 3x^2+2x-8를 인수분해하면 (3x-C)(x+D)야. 비밀번호 ABCD를 구하시오.",
+        "solutionDecisiveExcerpt": "(x+A)(x-2)=x^2+(A-2)x-2A=x^2+Bx-16이므로 A=8, B=6이다. 또 3x^2+2x-8=(3x-4)(x+2)이므로 C=4, D=2, 비밀번호는 8642이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 24,
+      "questionNo": 24,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "pack": "MIDDLE3",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "pack": "MIDDLE3",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "problemTypeLabelKo": "다항식의 곱셈과 곱셈공식",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION",
+        "templateLabelKo": "다항식 전개와 미정계수 결정",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_EXPANSION",
+          "CC_DIVISOR_PAIR_CASE_ANALYSIS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "일차식의 곱 전개에서 이차항 계수와 상수항의 자연수 약수 쌍을 분류하여 가능한 일차항 계수 A를 모두 구하는 유형이므로 PT_M3_POLY_MULTIPLICATION / TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION에 매핑한다."
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyReason": "[자연수 계수 일차식 곱의 약수 순서쌍 케이스 분류]의 4단계 서술형 추론: ac=4인 순서쌍 (1,4),(2,2),(4,1)과 bd=5인 순서쌍 (1,5),(5,1)을 조합하여 일차항 계수 A=ad+bc가 될 수 있는 모든 값(9, 12, 21)을 구하므로 Bucket 4를 부여한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 4] 네 자연수 a, b, c, d에 대하여 (ax+b)(cx+d)=4x^2+Ax+5일 때, A의 값이 될 수 있는 수를 모두 구하는 과정과 답을 쓰시오.",
+        "solutionDecisiveExcerpt": "ac=4, bd=5, A=ad+bc이다. (a,c)=(1,4),(2,2),(4,1)이고 (b,d)=(1,5),(5,1)이므로 모든 조합에서 A가 될 수 있는 수는 9, 12, 21이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    }
+  ]
+}
