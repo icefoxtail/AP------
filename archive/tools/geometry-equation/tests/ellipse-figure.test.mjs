@@ -206,9 +206,48 @@ test('two axis-aligned ellipses derive exact shared-focus facts on one plane',as
   const ellipsePrims=rendered.spec.prims.filter(prim=>prim.role==='ellipse');
   assert.equal(ellipsePrims.length,2);
   assert.deepEqual(ellipsePrims.map(prim=>prim.data.ellipse),['C1','C2']);
+  for(const id of ['s1','s2']){
+    const line=rendered.svg.match(new RegExp(`<line id="leader-measure-${id}"[^>]+/>`))?.[0];
+    assert.ok(line,`duplicate 12 on ${id} must have an owner leader`);
+    assert.match(line,new RegExp(`data-owner-label="measure-${id}"`));
+    assert.match(line,new RegExp(`data-owner-segment="${id}"`));
+    const attrs=Object.fromEntries([...line.matchAll(/([\w-]+)="([^"]*)"/g)].map(match=>[match[1],match[2]]));
+    const segment=rendered.spec.prims.find(prim=>prim.id===`segment-${id}`);
+    const visible=(value)=>Math.round(value*100)/100;
+    assert.ok(Math.abs(Number(attrs.x2)-(visible(segment.x1)+visible(segment.x2))/2)<1e-4,`${id} leader anchor x`);
+    assert.ok(Math.abs(Number(attrs.y2)-(visible(segment.y1)+visible(segment.y2))/2)<1e-4,`${id} leader anchor y`);
+  }
   const audit=await auditEllipseSvg({plan,svg:rendered.svg});
   assert.equal(audit.status,'PASS',JSON.stringify(audit.errors));
   assert.equal(audit.finalSvgSha256,rendered.lineage.svgSha256);
+});
+
+test('duplicate segment measure leaders fail closed when missing or rebound to another segment',async()=>{
+  const plan=pairPlan(),model=await solveEllipseFigure(plan);
+  const rendered=await renderEllipseSvg({plan,model,identity,typographyPolicy:policy});
+  const missing=rendered.svg.replace(/<g data-layer="50"><line id="leader-measure-s1"[^>]+\/><\/g>/,'');
+  assert.equal((await auditEllipseSvg({plan,svg:missing})).status,'FAIL');
+  const rebound=rendered.svg.replace('data-owner-segment="s2"','data-owner-segment="s1"');
+  const result=await auditEllipseSvg({plan,svg:rebound});
+  assert.equal(result.status,'FAIL');
+  assert.ok(result.errors.some(error=>error.startsWith('MEASURE_LEADER_OWNER_MISMATCH:s2')),
+    JSON.stringify(result.errors));
+  const line=rendered.svg.match(/<line id="leader-measure-s2"[^>]+\/>/)?.[0];
+  const label=rendered.svg.match(/<g id="measure-s2"[^>]*data-box="([^"]+)"/)?.[1].split(',').map(Number);
+  assert.ok(line&&label,'test fixture exposes the owner label and box');
+  const wrongStart=line.replace(/x1="[0-9.]+" y1="[0-9.]+"/,
+    `x1="${label[0]}" y1="${label[1]+label[3]/2}"`);
+  const ownBoxCrossing=rendered.svg.replace(line,wrongStart);
+  const ownBoxResult=await auditEllipseSvg({plan,svg:ownBoxCrossing});
+  assert.ok(ownBoxResult.errors.some(error=>error.startsWith('MEASURE_LEADER_CROSSES_OWN_LABEL:measure-s2')),
+    JSON.stringify(ownBoxResult.errors));
+  const leaderAttrs=Object.fromEntries([...line.matchAll(/([\w-]+)="([^"]*)"/g)].map(match=>[match[1],match[2]]));
+  const midX=(Number(leaderAttrs.x1)+Number(leaderAttrs.x2))/2,midY=(Number(leaderAttrs.y1)+Number(leaderAttrs.y2))/2;
+  const crossingStroke=`<g data-layer="30"><line id="intruder" data-role="line" x1="${midX}" y1="${midY-10}" x2="${midX}" y2="${midY+10}" fill="none" stroke="#111" stroke-width="1"/></g>`;
+  const crossed=rendered.svg.replace('</svg>',crossingStroke+'</svg>');
+  const crossingResult=await auditEllipseSvg({plan,svg:crossed});
+  assert.ok(crossingResult.errors.some(error=>error.startsWith('MEASURE_LEADER_CROSSES_STROKE:measure-s2:intruder')),
+    JSON.stringify(crossingResult.errors));
 });
 
 test('the pair observer rejects a moved second ellipse, a missing one and an undeclared one',async()=>{
