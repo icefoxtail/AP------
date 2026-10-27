@@ -369,7 +369,7 @@
       coneR: 3,
       coneA: 6,
 
-      yaw: 0,
+      yaw: Math.PI,
       pitch: (85 * Math.PI) / 180,
       scale: 46,
       offsetX: 0,
@@ -937,11 +937,11 @@
             { id: 0, name: '🟡 평행면 쌍 ①: 면 ㈎ ↔ 면 ㈓', desc: '접었을 때 앞·뒤로 마주보는 평행면', val: '㈎ ∥ ㈓', color: '#fbbf24', ok: true },
             { id: 1, name: '🔵 평행면 쌍 ②: 면 ㈏ ↔ 면 ㈑', desc: '접었을 때 좌·우로 마주보는 평행면 (한 칸 건너뜀)', val: '㈏ ∥ ㈑', color: '#38bdf8', ok: true },
             { id: 2, name: '🩷 평행면 쌍 ③: 면 ㈐ ↔ 면 ㈒', desc: '접었을 때 바닥·뚜껑으로 마주보는 평행면', val: '㈐ ∥ ㈒', color: '#f472b6', ok: true },
-            { id: 3, name: '📌 한 꼭짓점으로 합체되는 점 그룹', desc: '90° 모퉁이 지퍼를 따라 3개 점이 한 꼭짓점에 모임!', val: 'A = G = I (십자형 기준) 합체!', color: '#34d399', ok: true }
+            { id: 3, name: '📌 한 꼭짓점으로 합체되는 점 그룹', desc: '90° 모퉁이 지퍼를 따라 3개 점이 한 꼭짓점에 모임!', val: sub === 'cross' ? 'A=G=I, H=L=K' : '접힌 좌표로 확인', color: '#34d399', ok: true }
           ],
-          totalRes: '평행면: (㈎↔㈓)·(㈏↔㈑)·(㈐↔㈒) | 합체 꼭짓점: A = G = I (십자형 기준)',
+          totalRes: '평행면: (㈎↔㈓)·(㈏↔㈑)·(㈐↔㈒) | 맞닿는 꼭짓점: 실제 3D 좌표 기준',
           rule: '① 평행면 = 한 칸 건너뛰기(I자) 또는 나이트 이동(Z자)  ② 모서리 = 90° 지퍼!',
-          formulaHTML: `• <strong>만나는 꼭짓점 2단계 지퍼 추적</strong>:<br/>&nbsp;&nbsp;① $90^\\circ$ 오목 모퉁이 점 $B$에서 1칸씩 가면 <strong class="text-amber-300">점 A = 점 I</strong>!<br/>&nbsp;&nbsp;② 다시 옆 모퉁이에서 1칸씩 가면 <strong class="text-emerald-300">점 I = 점 K</strong> $\\implies$ <strong>결국 점 A = 점 I = 점 K (3중 합체!)</strong>`,
+          formulaHTML: '• <strong>실제 점 합체 확인</strong>: 기본 십자형 전개도에서 접힌 점은 <strong class="text-amber-300">A = G = I</strong>, 또 다른 꼭짓점은 <strong class="text-emerald-300">H = L = K</strong>가 됩니다. 다른 전개도 유형은 실제 접힌 좌표에서 같아지는 알파벳을 확인하세요.',
           notes: `• 정육면체의 한 꼭짓점에는 면이 3개 모이므로, 전개도 바깥쪽에 있는 점은 접었을 때 최대 <strong>3개의 알파벳이 한 꼭짓점</strong>에서 만납니다!`
         };
       }
@@ -1512,7 +1512,7 @@
           ? '❌ 불량 전개도: 4칸 일렬 아래에만 2칸이 몰려 있으면 면 ㈎와 면 ㈓가 정면에서 겹칩니다!'
           : sub === 'shortest'
           ? '🧵 입체 겉면 최단거리 = 지나가는 면들을 평면 전개도로 펼쳤을 때 자로 곧게 이은 일직선!'
-          : '📌 평행면 3쌍: (㈎↔㈓) · (㈏↔㈑) · (㈐↔㈒) | 90° 오목 모퉁이 지퍼 합체: 점 A = 점 I = 점 K'
+          : (sub === 'cross' ? '📌 기본 십자형: A=G=I, H=L=K, D=E, M=N' : '📌 평행면 3쌍과 접힌 꼭짓점의 실제 좌표를 비교하세요')
       );
     }
 
@@ -2567,7 +2567,7 @@
       let targetPitch = (36 * Math.PI) / 180;
 
       if (preset === 'top') {
-        targetYaw = 0;
+        targetYaw = Math.PI;
         targetPitch = (86 * Math.PI) / 180;
         // 카메라 변경과 접기 정도 변경은 별도의 조작이다.
       } else if (preset === 'front') {
