@@ -275,6 +275,17 @@
       border-radius: 8px;
     }
 
+    /* 중학교 학년별 / 고등학교 과목별 탐색 */
+    .curriculum-nav { display: grid; gap: 10px; margin-bottom: 28px; }
+    .curriculum-row { display: flex; align-items: center; gap: 14px; min-height: 48px; }
+    .curriculum-label { flex: 0 0 130px; font-size: 12px; font-weight: 750; color: var(--gold); }
+    .curriculum-nav .filter-bar { flex: 1; margin: 0; padding: 4px 0; }
+    @media (max-width: 650px) {
+      .curriculum-row { display: block; }
+      .curriculum-label { display: block; margin: 0 0 6px; }
+      .curriculum-nav .filter-bar { width: 100%; }
+    }
+
     /* ── Section Header ── */
     .section-wrap {
       margin-bottom: 40px;
@@ -608,37 +619,44 @@
       <div class="hero-title-group">
         <h1>수학 시각화 실험실 <span>통합 메인 허브</span></h1>
         <p class="hero-desc">
-          중1부터 고2까지 57개 전 단원 인터랙티브 기하·함수·미적분 실험실.<br>
-          어떤 카드든 <strong>박스 전체를 클릭</strong>하면 해당 실험실로 즉시 이동합니다.
+          기존 수학 실험실을 중학교 학년별·고등학교 과목별로 정리했습니다.<br>
+          <strong>과정 선택 → 실험실 카드 클릭</strong>으로 바로 학습 화면으로 이동합니다.
         </p>
       </div>
       <div class="hero-stats">
         <div class="hero-stat-card">
-          <strong>8</strong>
-          <span>과정·영역</span>
+          <strong>7</strong>
+          <span>학년·과목 영역</span>
         </div>
         <div class="hero-stat-card">
-          <strong>53</strong>
-          <span>실험실 카드</span>
+          <strong>36</strong>
+          <span>기존 실험실 카드</span>
         </div>
         <div class="hero-stat-card">
-          <strong>57</strong>
-          <span>총 실험 링크</span>
+          <strong>40</strong>
+          <span>기존 실험 링크</span>
         </div>
       </div>
     </section>
 
     <!-- ── Filter Tabs ── -->
-    <nav class="filter-bar" id="filterBar" aria-label="학년 및 영역 필터">
-      <button class="filter-btn active" type="button" data-filter="all">전체 <span class="filter-count">53</span></button>
-      <button class="filter-btn" type="button" data-filter="3d">🌌 3D 천체 <span class="filter-count">17</span></button>
-      <button class="filter-btn" type="button" data-filter="g7">중1 기하 <span class="filter-count">8</span></button>
-      <button class="filter-btn" type="button" data-filter="g8">중2 기하·함수 <span class="filter-count">4</span></button>
-      <button class="filter-btn" type="button" data-filter="g9">중3 기하 <span class="filter-count">2</span></button>
-      <button class="filter-btn" type="button" data-filter="common">공통수학 <span class="filter-count">4</span></button>
-      <button class="filter-btn" type="button" data-filter="geom-vec">기하와 벡터 <span class="filter-count">9</span></button>
-      <button class="filter-btn" type="button" data-filter="calc1">미적분1 <span class="filter-count">8</span></button>
-      <button class="filter-btn" type="button" data-filter="package">대수 패키지 <span class="filter-count">1</span></button>
+    <nav class="curriculum-nav" id="filterBar" aria-label="학년 및 과목별 실험실">
+      <div class="curriculum-row"><span class="curriculum-label">전체</span>
+        <div class="filter-bar"><button class="filter-btn active" type="button" data-filter="all">전체 실험실 <span class="filter-count">36</span></button></div></div>
+      <div class="curriculum-row"><span class="curriculum-label">중학교 · 학년별</span>
+        <div class="filter-bar">
+          <button class="filter-btn" type="button" data-filter="g7">중1 <span class="filter-count">8</span></button>
+          <button class="filter-btn" type="button" data-filter="g8">중2 <span class="filter-count">4</span></button>
+          <button class="filter-btn" type="button" data-filter="g9">중3 <span class="filter-count">2</span></button>
+        </div></div>
+      <div class="curriculum-row"><span class="curriculum-label">고등학교 · 과목별</span>
+        <div class="filter-bar">
+          <button class="filter-btn" type="button" data-filter="common">공통수학 <span class="filter-count">4</span></button>
+          <button class="filter-btn" type="button" data-filter="geom-vec">기하·벡터 <span class="filter-count">9</span></button>
+          <button class="filter-btn" type="button" data-filter="calc1">미적분Ⅰ <span class="filter-count">8</span></button>
+        </div></div>
+      <div class="curriculum-row"><span class="curriculum-label">통합 · 복습</span>
+        <div class="filter-bar"><button class="filter-btn" type="button" data-filter="package">대수 마스터 패키지 <span class="filter-count">1</span></button></div></div>
     </nav>
 
     <!-- ── Empty Search Results View ── -->
@@ -648,412 +666,7 @@
       <div class="empty-desc">다른 키워드나 개념명(예: 타원, 정다면체, 피타고라스, 미분)으로 검색해 보세요.</div>
     </div>
 
-    <!-- ── Section: 3D 수학 천체 인터랙티브 실험실 ── -->
-    <section class="section-wrap" id="sec-3d" data-course="3d">
-      <div class="section-header">
-        <h2 class="section-title">
-          <span class="section-tag" style="border-color:#55CBA355; color:#55CBA3;">Universe Hero</span>
-          <span>3D 수학 천체 인터랙티브 실험실</span>
-        </h2>
-        <span class="section-count">17개 실험실</span>
-      </div>
-      <div class="lab-grid">
-
-        <article class="lab-card lab-card-item" data-href="./labs/polyhedra-3d.html" data-keywords="정다면체 오일러 3D 다면체 입체도형 플라톤 정사면체 정육면체 정팔면체 정십이면체 정이십면체 전개도" data-course="3d" data-celestial="polyhedra" tabindex="0" role="link" aria-label="정다면체 결정과 전개도 3D 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="40,12 68,28 68,60 40,76 12,60 12,28" fill="none" stroke="#55CBA3" stroke-width="2.2"/><polyline points="40,12 40,76" stroke="#55CBA3" stroke-width="1.5" stroke-dasharray="2 2"/><polyline points="12,28 40,44 68,28" stroke="#55CBA3" stroke-width="2"/><polyline points="40,44 40,76" stroke="#55CBA3" stroke-width="2"/></svg>
-            <span class="card-visual-badge">3D 결정</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">입체도형의 성질</span>
-            </div>
-            <h3 class="card-title">정다면체 결정과 전개도 3D</h3>
-            <div class="card-formula">v - e + f = 2 (오일러 다면체 정리)</div>
-            <p class="card-desc">플라톤의 5대 정다면체 구조와 오일러 정리, 3차원 투과 및 전개도 접기.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/polyhedra-3d.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/ellipse-foci-3d.html" data-keywords="타원 초점 장축 단축 이심률 이차곡선 기하 PF PF' 2a" data-course="3d" data-celestial="ellipse" tabindex="0" role="link" aria-label="타원의 두 초점과 거리의 합 3D 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="40" cy="44" rx="30" ry="18" fill="none" stroke="#D8B77E" stroke-width="2.2"/><circle cx="26" cy="44" r="3" fill="#55CBA3"/><circle cx="54" cy="44" r="3" fill="#55CBA3"/><polyline points="26,44 48,27 54,44" stroke="#A78AC8" stroke-width="1.8" stroke-dasharray="3 2"/><circle cx="48" cy="27" r="3" fill="#D8B77E"/></svg>
-            <span class="card-visual-badge">거리 보존</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">기하</span>
-            </div>
-            <h3 class="card-title">타원의 두 초점과 거리의 합 3D</h3>
-            <div class="card-formula">PF + PF' = 2a, c² = a² - b²</div>
-            <p class="card-desc">두 초점으로부터 거리의 합이 일정한 점들의 궤적과 이심률 변화 3D 시뮬레이션.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/ellipse-foci-3d.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/parabola-directrix.html" data-keywords="포물선 초점 준선 이차곡선 등거리 반사 자취 y2=4px" data-course="3d" data-celestial="parabola" tabindex="0" role="link" aria-label="포물선의 초점과 준선 동적 궤적 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="68" stroke="#A78AC8" stroke-width="2" stroke-dasharray="3 2"/><circle cx="36" cy="44" r="3" fill="#55CBA3"/><path d="M68,20 Q16,44 68,68" fill="none" stroke="#55CBA3" stroke-width="2.2"/><line x1="12" y1="34" x2="40" y2="34" stroke="#D8B77E" stroke-width="1.5"/><line x1="40" y1="34" x2="36" y2="44" stroke="#D8B77E" stroke-width="1.5"/><circle cx="40" cy="34" r="3" fill="#D8B77E"/></svg>
-            <span class="card-visual-badge">동거리 궤적</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">기하</span>
-            </div>
-            <h3 class="card-title">포물선의 초점과 준선 동적 궤적</h3>
-            <div class="card-formula">y² = 4px, d(P, F) = d(P, l)</div>
-            <p class="card-desc">초점과 준선까지의 거리가 같은 점들의 자취와 반사경 반사 광선 원리.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/parabola-directrix.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/hyperbola-asymptotes.html" data-keywords="쌍곡선 초점 점근선 거리의차 이차곡선 극한 점근" data-course="3d" data-celestial="hyperbola" tabindex="0" role="link" aria-label="쌍곡선과 점근선의 수렴 극한 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14,18 Q30,44 14,70" fill="none" stroke="#A78AC8" stroke-width="2.2"/><path d="M66,18 Q50,44 66,70" fill="none" stroke="#A78AC8" stroke-width="2.2"/><line x1="16" y1="20" x2="64" y2="68" stroke="#D8B77E" stroke-width="1.2" stroke-dasharray="3 2"/><line x1="16" y1="68" x2="64" y2="20" stroke="#D8B77E" stroke-width="1.2" stroke-dasharray="3 2"/><circle cx="24" cy="44" r="2.5" fill="#55CBA3"/><circle cx="56" cy="44" r="2.5" fill="#55CBA3"/></svg>
-            <span class="card-visual-badge">점근선 극한</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">기하</span>
-            </div>
-            <h3 class="card-title">쌍곡선과 점근선의 수렴 극한</h3>
-            <div class="card-formula">|PF - PF'| = 2a, y = ±(b/a)x</div>
-            <p class="card-desc">두 초점 거리의 차가 일정한 쌍곡선 궤적과 점근선으로 무한히 접근하는 극한.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/hyperbola-asymptotes.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/spatial-geometry-3d.html" data-keywords="공간도형 구 원뿔 원기둥 단면 절단 3D 평면 원추곡선" data-course="3d" data-celestial="solid" tabindex="0" role="link" aria-label="공간도형과 절단 단면 3D 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="40" cy="58" rx="24" ry="10" fill="none" stroke="#55CBA3" stroke-width="2"/><line x1="16" y1="58" x2="40" y2="18" stroke="#55CBA3" stroke-width="2"/><line x1="64" y1="58" x2="40" y2="18" stroke="#55CBA3" stroke-width="2"/><ellipse cx="40" cy="42" rx="14" ry="6" fill="rgba(216,183,126,0.2)" stroke="#D8B77E" stroke-width="1.5" stroke-dasharray="2 2"/></svg>
-            <span class="card-visual-badge">3D 절단면</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">기하</span>
-            </div>
-            <h3 class="card-title">공간도형과 절단 단면 3D</h3>
-            <div class="card-formula">구 x² + y² + z² = r², 원뿔 단면</div>
-            <p class="card-desc">3차원 공간에서 구, 원뿔, 원기둥의 평면 절단에 따른 원·타원·포물선 단면 탐구.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/spatial-geometry-3d.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/vector-space-3d.html" data-keywords="벡터 공간벡터 내적 정사영 기저 선형결합 3D 방향 코사인" data-course="3d" data-celestial="vector" tabindex="0" role="link" aria-label="3차원 벡터 공간과 기저·내적 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="16" y1="62" x2="64" y2="62" stroke="#BDB8C2" stroke-width="1.5"/><line x1="16" y1="62" x2="16" y2="18" stroke="#BDB8C2" stroke-width="1.5"/><line x1="16" y1="62" x2="56" y2="26" stroke="#D8B77E" stroke-width="2.5"/><polygon points="56,26 48,27 52,35" fill="#D8B77E"/><line x1="56" y1="26" x2="56" y2="62" stroke="#55CBA3" stroke-width="1.5" stroke-dasharray="2 2"/><line x1="16" y1="26" x2="56" y2="26" stroke="#A78AC8" stroke-width="1.5" stroke-dasharray="2 2"/></svg>
-            <span class="card-visual-badge">공간 기저</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">기하</span>
-            </div>
-            <h3 class="card-title">3차원 벡터 공간과 기저·내적</h3>
-            <div class="card-formula">a · b = |a||b|cosθ, v = c₁e₁ + c₂e₂ + c₃e₃</div>
-            <p class="card-desc">3차원 기저 벡터의 선형 결합, 내적을 통한 각도 계산과 정사영 벡터 시각화.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/vector-space-3d.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/cubic-calculus.html" data-keywords="삼차함수 미분 접선 극값 변곡점 비율관계 도함수 이계도함수" data-course="3d" data-celestial="calculus" tabindex="0" role="link" aria-label="삼차함수 접선·극값·변곡점 미적분 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="44" x2="68" y2="44" stroke="#4a3e52" stroke-width="1.2"/><line x1="40" y1="16" x2="40" y2="72" stroke="#4a3e52" stroke-width="1.2"/><path d="M14,66 C28,14 52,74 66,22" fill="none" stroke="#55CBA3" stroke-width="2.2"/><circle cx="27" cy="33" r="3" fill="#D8B77E"/><circle cx="53" cy="55" r="3" fill="#D8B77E"/><circle cx="40" cy="44" r="2.5" fill="#A78AC8"/></svg>
-            <span class="card-visual-badge">동적 도함수</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">미적분</span>
-            </div>
-            <h3 class="card-title">삼차함수 접선·극값·변곡점 미적분</h3>
-            <div class="card-formula">f'(x) = 0 (극값), f''(x) = 0 (변곡점 점대칭)</div>
-            <p class="card-desc">삼차함수 곡선 위의 접선 기울기 변화, 극댓값·극솟값, 변곡점 1:2 비율관계.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/cubic-calculus.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/quadratic-parabola.html" data-keywords="이차함수 포물선 꼭짓점 대칭축 평행이동 계수 표준형" data-course="3d" data-celestial="calculus" tabindex="0" role="link" aria-label="이차함수의 꼭짓점과 축의 대칭 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="44" x2="68" y2="44" stroke="#4a3e52" stroke-width="1.2"/><line x1="40" y1="16" x2="40" y2="72" stroke="#4a3e52" stroke-width="1.2"/><path d="M14,66 C28,14 52,74 66,22" fill="none" stroke="#55CBA3" stroke-width="2.2"/><circle cx="27" cy="33" r="3" fill="#D8B77E"/><circle cx="53" cy="55" r="3" fill="#D8B77E"/><circle cx="40" cy="44" r="2.5" fill="#A78AC8"/></svg>
-            <span class="card-visual-badge">포물선 대칭</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">함수</span>
-            </div>
-            <h3 class="card-title">이차함수의 꼭짓점과 축의 대칭</h3>
-            <div class="card-formula">y = a(x - p)² + q</div>
-            <p class="card-desc">계수 a, p, q에 따른 포물선 개형 변화, 대칭축 x = p와 꼭짓점 (p, q) 관찰.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/quadratic-parabola.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/trig-unit-circle.html" data-keywords="삼각함수 단위원 호도법 라디안 사인 코사인 탄젠트 동경 회전" data-course="3d" data-celestial="circle" tabindex="0" role="link" aria-label="삼각함수 단위원과 호도법 동적 추적 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="40" cy="44" r="26" fill="none" stroke="#55CBA3" stroke-width="2.2"/><circle cx="40" cy="44" r="14" fill="rgba(85,203,163,0.15)" stroke="#D8B77E" stroke-width="1.8"/><circle cx="40" cy="44" r="2.5" fill="#F5F0E9"/><line x1="40" y1="44" x2="66" y2="44" stroke="#D8B77E" stroke-width="1.5"/></svg>
-            <span class="card-visual-badge">단위원 투영</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">삼각함수</span>
-            </div>
-            <h3 class="card-title">삼각함수 단위원과 호도법 동적 추적</h3>
-            <div class="card-formula">sin²θ + cos²θ = 1, tanθ = sinθ/cosθ</div>
-            <p class="card-desc">단위원 위를 회전하는 동경과 삼각비 sin, cos, tan 값의 부호 및 파동 연결.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/trig-unit-circle.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/trig-waves.html" data-keywords="삼각함수 파동 사인파 코사인 주기 진폭 위상 합성" data-course="3d" data-celestial="calculus" tabindex="0" role="link" aria-label="삼각함수 파동과 주기·진폭 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="44" x2="68" y2="44" stroke="#4a3e52" stroke-width="1.2"/><line x1="40" y1="16" x2="40" y2="72" stroke="#4a3e52" stroke-width="1.2"/><path d="M14,66 C28,14 52,74 66,22" fill="none" stroke="#55CBA3" stroke-width="2.2"/><circle cx="27" cy="33" r="3" fill="#D8B77E"/><circle cx="53" cy="55" r="3" fill="#D8B77E"/><circle cx="40" cy="44" r="2.5" fill="#A78AC8"/></svg>
-            <span class="card-visual-badge">주기 파동</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">삼각함수</span>
-            </div>
-            <h3 class="card-title">삼각함수 파동과 주기·진폭</h3>
-            <div class="card-formula">y = a sin(bx - c) + d, 주기 T = 2π/|b|</div>
-            <p class="card-desc">진폭 a, 주기 2π/b, 위상천이 c/b, y축 평행이동 d에 따른 사인·코사인 파동 합성.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/trig-waves.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/pythagoras-fluid.html" data-keywords="피타고라스 직각삼각형 빗변 면적보존 유체증명 물 a2+b2=c2" data-course="3d" data-celestial="polyhedra" tabindex="0" role="link" aria-label="피타고라스 정리 물 유체 면적 증명 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="40,12 68,28 68,60 40,76 12,60 12,28" fill="none" stroke="#55CBA3" stroke-width="2.2"/><polyline points="40,12 40,76" stroke="#55CBA3" stroke-width="1.5" stroke-dasharray="2 2"/><polyline points="12,28 40,44 68,28" stroke="#55CBA3" stroke-width="2"/><polyline points="40,44 40,76" stroke="#55CBA3" stroke-width="2"/></svg>
-            <span class="card-visual-badge">유체 보존</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">피타고라스</span>
-            </div>
-            <h3 class="card-title">피타고라스 정리 물 유체 면적 증명</h3>
-            <div class="card-formula">a² + b² = c²</div>
-            <p class="card-desc">두 직각변 위의 정사각형에 담긴 물이 빗변 위의 정사각형으로 완벽히 채워지는 동적 증명.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/pythagoras-fluid.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/triangle-centers.html" data-keywords="삼각형 외심 내심 무게중심 수심 4심 오일러직선 작도 기하" data-course="3d" data-celestial="polyhedra" tabindex="0" role="link" aria-label="삼각형의 4심 (외심·내심·무게중심·수심) 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="40,12 68,28 68,60 40,76 12,60 12,28" fill="none" stroke="#55CBA3" stroke-width="2.2"/><polyline points="40,12 40,76" stroke="#55CBA3" stroke-width="1.5" stroke-dasharray="2 2"/><polyline points="12,28 40,44 68,28" stroke="#55CBA3" stroke-width="2"/><polyline points="40,44 40,76" stroke="#55CBA3" stroke-width="2"/></svg>
-            <span class="card-visual-badge">오일러 직선</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">삼각형의 성질</span>
-            </div>
-            <h3 class="card-title">삼각형의 4심 (외심·내심·무게중심·수심)</h3>
-            <div class="card-formula">OG : GH = 1 : 2 (오일러 직선)</div>
-            <p class="card-desc">외심, 내심, 무게중심, 수심의 작도선과 꼭짓점 이동에 따른 오일러 직선 일치 증명.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/triangle-centers.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/linear-function.html" data-keywords="일차함수 직선 기울기 절편 평행이동 일차방정식 좌표평면" data-course="3d" data-celestial="calculus" tabindex="0" role="link" aria-label="일차함수 기울기와 y절편 평행이동 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="44" x2="68" y2="44" stroke="#4a3e52" stroke-width="1.2"/><line x1="40" y1="16" x2="40" y2="72" stroke="#4a3e52" stroke-width="1.2"/><path d="M14,66 C28,14 52,74 66,22" fill="none" stroke="#55CBA3" stroke-width="2.2"/><circle cx="27" cy="33" r="3" fill="#D8B77E"/><circle cx="53" cy="55" r="3" fill="#D8B77E"/><circle cx="40" cy="44" r="2.5" fill="#A78AC8"/></svg>
-            <span class="card-visual-badge">기울기 변화</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">일차함수</span>
-            </div>
-            <h3 class="card-title">일차함수 기울기와 y절편 평행이동</h3>
-            <div class="card-formula">y = ax + b, m = Δy/Δx</div>
-            <p class="card-desc">기울기 a의 양수/음수 변화에 따른 직선의 방향과 y절편 b에 따른 평행이동 관찰.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/linear-function.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/circle-sectors-donut.html" data-keywords="원 도넛 동심원 면적 넓이 부채꼴 반지름 S=pi(R2-r2)" data-course="3d" data-celestial="circle" tabindex="0" role="link" aria-label="도넛 영역 (동심원 면적 차) 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="40" cy="44" r="26" fill="none" stroke="#55CBA3" stroke-width="2.2"/><circle cx="40" cy="44" r="14" fill="rgba(85,203,163,0.15)" stroke="#D8B77E" stroke-width="1.8"/><circle cx="40" cy="44" r="2.5" fill="#F5F0E9"/><line x1="40" y1="44" x2="66" y2="44" stroke="#D8B77E" stroke-width="1.5"/></svg>
-            <span class="card-visual-badge">면 분리</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">평면도형</span>
-            </div>
-            <h3 class="card-title">도넛 영역 (동심원 면적 차)</h3>
-            <div class="card-formula">S = π(R² - r²)</div>
-            <p class="card-desc">큰 원에서 작은 원을 뺀 도넛형 영역의 면적 보존과 반지름 변화에 따른 넓이 실시간 계산.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/circle-sectors-donut.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/circle-sectors-snowman.html" data-keywords="원 둘레 호 반원 지름분할 원주보존 눈사람 기하증명" data-course="3d" data-celestial="circle" tabindex="0" role="link" aria-label="지름 위 작은 반원들의 둘레 합 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="40" cy="44" r="26" fill="none" stroke="#55CBA3" stroke-width="2.2"/><circle cx="40" cy="44" r="14" fill="rgba(85,203,163,0.15)" stroke="#D8B77E" stroke-width="1.8"/><circle cx="40" cy="44" r="2.5" fill="#F5F0E9"/><line x1="40" y1="44" x2="66" y2="44" stroke="#D8B77E" stroke-width="1.5"/></svg>
-            <span class="card-visual-badge">원주 보존</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">평면도형</span>
-            </div>
-            <h3 class="card-title">지름 위 작은 반원들의 둘레 합</h3>
-            <div class="card-formula">l₁ + l₂ + ... = L (둘레 보존)</div>
-            <p class="card-desc">지름을 여러 개로 분할한 반원 호들의 길이 합이 전체 반원의 호 길이와 정확히 같음을 증명.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/circle-sectors-snowman.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/circle-sectors-chord.html" data-keywords="호 현 활꼴 중심각 정비례 원 부채꼴 기하" data-course="3d" data-celestial="circle" tabindex="0" role="link" aria-label="호와 현, 활꼴의 중심각 비례 판정 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="40" cy="44" r="26" fill="none" stroke="#55CBA3" stroke-width="2.2"/><circle cx="40" cy="44" r="14" fill="rgba(85,203,163,0.15)" stroke="#D8B77E" stroke-width="1.8"/><circle cx="40" cy="44" r="2.5" fill="#F5F0E9"/><line x1="40" y1="44" x2="66" y2="44" stroke="#D8B77E" stroke-width="1.5"/></svg>
-            <span class="card-visual-badge">비례 판정</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">평면도형</span>
-            </div>
-            <h3 class="card-title">호와 현, 활꼴의 중심각 비례 판정</h3>
-            <div class="card-formula">호는 중심각에 정비례, 현은 비례하지 않음</div>
-            <p class="card-desc">중심각 2배 시 호 길이는 2배가 되지만 현 길이는 2배가 되지 않는 삼각비 기하 원리.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/circle-sectors-chord.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-        <article class="lab-card lab-card-item" data-href="./labs/circle-sectors-01b.html" data-keywords="엄마원 아기원 원 부채꼴 둘레 넓이 경계전개 선면분리" data-course="3d" data-celestial="circle" tabindex="0" role="link" aria-label="엄마 원 안의 아기 원 (경계 전개) 열기">
-          <div class="card-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="40" cy="44" r="26" fill="none" stroke="#55CBA3" stroke-width="2.2"/><circle cx="40" cy="44" r="14" fill="rgba(85,203,163,0.15)" stroke="#D8B77E" stroke-width="1.8"/><circle cx="40" cy="44" r="2.5" fill="#F5F0E9"/><line x1="40" y1="44" x2="66" y2="44" stroke="#D8B77E" stroke-width="1.5"/></svg>
-            <span class="card-visual-badge">선·면 분리</span>
-          </div>
-          <div class="card-content">
-            <div class="card-meta-line">
-              <span class="card-grade-tag">3D 천체</span>
-              <span class="card-unit-label">평면도형</span>
-            </div>
-            <h3 class="card-title">엄마 원 안의 아기 원 (경계 전개)</h3>
-            <div class="card-formula">l = 2πr, S = πr²</div>
-            <p class="card-desc">선은 둘레, 면은 넓이. 큰 원과 작은 원의 경계 전개 및 면 분리·합체 증명.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-card-open" href="./labs/circle-sectors-01b.html" target="_blank" onclick="event.stopPropagation();">
-              <span>실험실 열기</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ── Section: 중1 · 기하 기초 및 원과 부채꼴 ── -->
+    <!-- ── Section: 중1 · 수학 · 기하 기초 및 원과 부채꼴 ── -->
     <section class="section-wrap" id="sec-g7" data-course="g7">
       <div class="section-header">
         <h2 class="section-title">
@@ -1267,7 +880,7 @@
       </div>
     </section>
 
-    <!-- ── Section: 중2 · 삼각형·사각형·닮음과 피타고라스 ── -->
+    <!-- ── Section: 중2 · 수학 · 삼각형·사각형·닮음과 피타고라스 ── -->
     <section class="section-wrap" id="sec-g8" data-course="g8">
       <div class="section-header">
         <h2 class="section-title">
@@ -1382,7 +995,7 @@
       </div>
     </section>
 
-    <!-- ── Section: 중3 · 삼각비와 원의 성질 ── -->
+    <!-- ── Section: 중3 · 수학 · 삼각비와 원의 성질 ── -->
     <section class="section-wrap" id="sec-g9" data-course="g9">
       <div class="section-header">
         <h2 class="section-title">
@@ -1447,7 +1060,7 @@
       </div>
     </section>
 
-    <!-- ── Section: 공통수학 · 도형의 방정식과 함수 ── -->
+    <!-- ── Section: 고등 · 공통수학 · 도형의 방정식과 함수 ── -->
     <section class="section-wrap" id="sec-common" data-course="common">
       <div class="section-header">
         <h2 class="section-title">
@@ -1561,7 +1174,7 @@
       </div>
     </section>
 
-    <!-- ── Section: 기하와 벡터 · 이차곡선과 공간도형 ── -->
+    <!-- ── Section: 고등 · 기하·벡터 · 이차곡선과 공간도형 ── -->
     <section class="section-wrap" id="sec-geom-vec" data-course="geom-vec">
       <div class="section-header">
         <h2 class="section-title">
@@ -1803,7 +1416,7 @@
       </div>
     </section>
 
-    <!-- ── Section: 미적분1 · 함수의 극한·미분·적분 ── -->
+    <!-- ── Section: 고등 · 미적분Ⅰ · 함수의 극한·미분·적분 ── -->
     <section class="section-wrap" id="sec-calc1" data-course="calc1">
       <div class="section-header">
         <h2 class="section-title">
@@ -2095,7 +1708,6 @@
 
         cards.forEach(card => {
           const course = card.dataset.course;
-          const celestial = card.dataset.celestial || '';
           const kw = (card.dataset.keywords || '').toLowerCase();
           const title = card.querySelector('.card-title, h3')?.textContent.toLowerCase() || '';
           const desc = card.querySelector('.card-desc, p')?.textContent.toLowerCase() || '';
@@ -2104,18 +1716,14 @@
           let matchFilter = false;
           if (activeFilter === 'all') {
             matchFilter = true;
-          } else if (activeFilter === '3d') {
-            matchFilter = (course === '3d');
           } else if (activeFilter === course) {
-            matchFilter = true;
-          } else if (activeFilter === celestial) {
             matchFilter = true;
           }
 
           // Search check
           let matchSearch = true;
           if (q) {
-            matchSearch = kw.includes(q) || title.includes(q) || desc.includes(q) || celestial.includes(q);
+            matchSearch = kw.includes(q) || title.includes(q) || desc.includes(q);
           }
 
           if (matchFilter && matchSearch) {
@@ -2163,17 +1771,13 @@
     const urlParams = new URLSearchParams(window.location.search);
     const initialFilter = urlParams.get('filter');
     if (initialFilter) {
-      activeFilter = initialFilter;
-      let matchedTab = false;
-      filterButtons.forEach(btn => {
-        if (btn.dataset.filter === initialFilter) {
-          filterButtons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          matchedTab = true;
-        }
-      });
-      // If celestial id like 'ellipse' or 'polyhedra', keep activeFilter and filter items directly
-      applyFilters();
+      const selected = Array.from(filterButtons).find(btn => btn.dataset.filter === initialFilter);
+      if (selected) {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        selected.classList.add('active');
+        activeFilter = initialFilter;
+        applyFilters();
+      }
     }
 
     const initialQ = urlParams.get('q');

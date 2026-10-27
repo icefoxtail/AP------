@@ -116,7 +116,7 @@
     <p class="card-desc" id="cardDesc">두 초점으로부터의 거리의 합이 일정한 점들의 궤적. 행성의 공전 궤도와 원뿔곡선의 대표 천체입니다.</p>
     <div class="card-actions">
       <a class="card-btn-enter" id="cardBtnEnter" href="./teacher-hub.html">
-        <span>해당 단원 실험실로 이동</span>
+        <span>학년·과목별 실험실로 이동</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
       </a>
       <button class="card-btn-back" id="cardBtnResetCam" type="button">전체 우주 보기</button>
@@ -164,34 +164,9 @@
           hoverTooltip.style.top = `${mouseY}px`;
           hoverTooltip.classList.add('visible');
         },
+        // 3D 쇼케이스의 천체 클릭은 학년·과목별 실험실 입구로 연결합니다.
         onSelectNode: (meta) => {
-          if (!meta) {
-            celestialCard.classList.remove('open');
-            celestialCard.setAttribute('aria-hidden', 'true');
-            document.querySelectorAll('.celestial-pill').forEach(p => p.classList.remove('active'));
-            return;
-          }
-          document.getElementById('cardBadge').textContent = meta.category || meta.grade;
-          document.getElementById('cardTitle').textContent = meta.title;
-          document.getElementById('cardSubtitle').textContent = meta.subtitle || '';
-          document.getElementById('cardFormula').textContent = meta.formula || '';
-          document.getElementById('cardDesc').textContent = meta.description || '';
-          const hasDedicatedFilter = ['polyhedra', 'ellipse', 'parabola', 'hyperbola', 'circle', 'solid', 'vector', 'calculus'].includes(meta.id);
-          const enterBtn = document.getElementById('cardBtnEnter');
-          if (hasDedicatedFilter) {
-            enterBtn.href = `./teacher-hub.html?filter=${encodeURIComponent(meta.id)}`;
-            enterBtn.querySelector('span').textContent = '해당 단원 실험실로 이동';
-          } else {
-            enterBtn.href = './teacher-hub.html';
-            enterBtn.querySelector('span').textContent = '전체 실험실 허브로 이동';
-          }
-
-          document.querySelectorAll('.celestial-pill').forEach(p => {
-            p.classList.toggle('active', p.dataset.celestial === meta.id);
-          });
-
-          celestialCard.classList.add('open');
-          celestialCard.setAttribute('aria-hidden', 'false');
+          if (meta) window.location.href = './teacher-hub.html';
         },
       });
     } catch (err) {
@@ -276,15 +251,9 @@
             document.getElementById('cardSubtitle').textContent = found.metadata.subtitle || '';
             document.getElementById('cardFormula').textContent = found.metadata.formula || '';
             document.getElementById('cardDesc').textContent = found.metadata.description || '';
-            const hasDedicatedFilter = ['polyhedra', 'ellipse', 'parabola', 'hyperbola', 'circle', 'solid', 'vector', 'calculus'].includes(id);
             const enterBtn = document.getElementById('cardBtnEnter');
-            if (hasDedicatedFilter) {
-              enterBtn.href = `./teacher-hub.html?filter=${encodeURIComponent(id)}`;
-              enterBtn.querySelector('span').textContent = '해당 단원 실험실로 이동';
-            } else {
-              enterBtn.href = './teacher-hub.html';
-              enterBtn.querySelector('span').textContent = '전체 실험실 허브로 이동';
-            }
+            enterBtn.href = './teacher-hub.html';
+            enterBtn.querySelector('span').textContent = '학년·과목별 실험실로 이동';
 
             document.querySelectorAll('.celestial-pill').forEach(p => p.classList.remove('active'));
             pill.classList.add('active');
