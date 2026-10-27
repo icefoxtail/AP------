@@ -275,7 +275,7 @@ window.questionBank = [
       "중단원 마무리"
     ],
     "wide": false,
-    "content": "오른쪽 그림은 지하철 노선도의 일부를 나타낸 것이다. 이 지하철 노선도를 나타내는 $4\\times 4$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$를 다음과 같이 정하려고 한다.\n$$a_{ij}=\\begin{cases} 1 & (i\\text{에서 한 번에 } j\\text{로 이동할 수 있을 때}) \\\\ 0 & (i\\text{에서 한 번에 } j\\text{로 이동할 수 없을 때}) \\end{cases}$$\n행렬 $A$의 제2행의 모든 성분의 합을 구하시오. (단, $i$와 $j$는 역의 번호를 나타내며, $i=j$이면 $a_{ij}=0$)\n<img src=\"assets/images/미래엔_공통수학1_행렬과연산_중단원마무리_고1/q10.png\" />",
+    "content": "오른쪽 그림은 지하철 노선도의 일부를 나타낸 것이다. 이 지하철 노선도를 나타내는 $4\\times 4$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$를 다음과 같이 정하려고 한다.\n$$a_{ij}=\\begin{cases} 1 & (i\\text{에서 한 번에 } j\\text{로 이동할 수 있을 때}) \\\\ 0 & (i\\text{에서 한 번에 } j\\text{로 이동할 수 없을 때}) \\end{cases}$$\n행렬 $A$의 제2행의 모든 성분의 합을 구하시오. (단, $i$와 $j$는 역의 번호를 나타내며, $i=j$이면 $a_{ij}=0$)\n<img src=\"q10.png\" />",
     "choices": [],
     "answer": "",
     "solution": "",

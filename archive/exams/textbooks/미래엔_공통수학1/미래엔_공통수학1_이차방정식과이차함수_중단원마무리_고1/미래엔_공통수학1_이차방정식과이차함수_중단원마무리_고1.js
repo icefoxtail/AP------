@@ -276,7 +276,7 @@ window.questionBank = [
       "중단원 마무리"
     ],
     "wide": false,
-    "content": "오른쪽 그림의 직사각형 $\\mathrm{ABCD}$에서 두 점 $\\mathrm{A}$와 $\\mathrm{B}$는 $x$축 위에 있고, 두 점 $\\mathrm{C}$와 $\\mathrm{D}$는 이차함수 $y=-2x^2+6x$의 그래프 위에 있다. 이때 직사각형 $\\mathrm{ABCD}$의 둘레의 길이의 최댓값을 구하는 풀이 과정과 답을 쓰시오.\n<img src=\"assets/images/미래엔_공통수학1_이차방정식과이차함수_중단원마무리_고1/q10.png\" />",
+    "content": "오른쪽 그림의 직사각형 $\\mathrm{ABCD}$에서 두 점 $\\mathrm{A}$와 $\\mathrm{B}$는 $x$축 위에 있고, 두 점 $\\mathrm{C}$와 $\\mathrm{D}$는 이차함수 $y=-2x^2+6x$의 그래프 위에 있다. 이때 직사각형 $\\mathrm{ABCD}$의 둘레의 길이의 최댓값을 구하는 풀이 과정과 답을 쓰시오.\n<img src=\"q10.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""

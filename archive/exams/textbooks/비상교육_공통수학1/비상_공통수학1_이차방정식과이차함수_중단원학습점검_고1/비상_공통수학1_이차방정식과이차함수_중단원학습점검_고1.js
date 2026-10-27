@@ -304,7 +304,7 @@ window.questionBank = [
       "중단원 학습 점검"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 직사각형 $\\mathrm{ABCD}$의 두 꼭짓점 $\\mathrm{A}$, $\\mathrm{B}$는 이차함수 $y=-\\dfrac{1}{2}x^2+2$의 그래프 위에 있고, 두 꼭짓점 $\\mathrm{C}$, $\\mathrm{D}$는 이차함수 $y=x^2-4$의 그래프 위에 있다. 이때 직사각형 $\\mathrm{ABCD}$의 둘레의 길이에 대한 최댓값을 구하시오. (단, 점 $\\mathrm{A}$는 제1사분면, 점 $\\mathrm{D}$는 제4사분면 위의 점이다.)\n<img src=\"assets/images/비상_공통수학1_이차방정식과이차함수_중단원학습점검_고1/q11.png\" />",
+    "content": "다음 그림과 같이 직사각형 $\\mathrm{ABCD}$의 두 꼭짓점 $\\mathrm{A}$, $\\mathrm{B}$는 이차함수 $y=-\\dfrac{1}{2}x^2+2$의 그래프 위에 있고, 두 꼭짓점 $\\mathrm{C}$, $\\mathrm{D}$는 이차함수 $y=x^2-4$의 그래프 위에 있다. 이때 직사각형 $\\mathrm{ABCD}$의 둘레의 길이에 대한 최댓값을 구하시오. (단, 점 $\\mathrm{A}$는 제1사분면, 점 $\\mathrm{D}$는 제4사분면 위의 점이다.)\n<img src=\"q11.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""
