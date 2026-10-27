@@ -497,7 +497,7 @@
     function drawAcademicGrid(rect) {
       const step = 20 * state.scale;
       ctx.save();
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.035)';
+      ctx.strokeStyle = 'rgba(15, 23, 42, 0.075)';
       ctx.lineWidth = 1;
       for (let x = 0; x < rect.width; x += step) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
@@ -1122,7 +1122,7 @@
           const pB = { x: oPt.x + R * Math.cos(eA), y: oPt.y + R * Math.sin(eA) };
 
           ctx.beginPath(); ctx.arc(oPt.x, oPt.y, R, 0, Math.PI * 2);
-          ctx.strokeStyle = '#CBD5E1'; ctx.lineWidth = 1.8; ctx.setLineDash([5, 5]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 1.8; ctx.setLineDash([5, 5]); ctx.stroke(); ctx.setLineDash([]);
 
           if (showArea) {
             ctx.beginPath(); ctx.moveTo(oPt.x, oPt.y); ctx.arc(oPt.x, oPt.y, R, sA, eA); ctx.closePath();
@@ -1212,7 +1212,7 @@
           const pB = { x: lx + Rsec * Math.cos(eA), y: cy + Rsec * Math.sin(eA) };
 
           ctx.beginPath(); ctx.arc(lx, cy, Rsec, 0, Math.PI * 2);
-          ctx.strokeStyle = '#CBD5E1'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#64748B'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
 
           if (showArea) {
             ctx.beginPath(); ctx.moveTo(lx, cy); ctx.arc(lx, cy, Rsec, sA, eA); ctx.closePath();
@@ -1280,7 +1280,7 @@
           const pC = { x: cx + R * Math.cos(rad1), y: cy + R * Math.sin(rad1) };
 
           ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
-          ctx.strokeStyle = '#CBD5E1'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#64748B'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
 
           ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, -rad1, 0); ctx.closePath();
           ctx.fillStyle = 'rgba(37, 99, 235, 0.16)'; ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.stroke();
@@ -1318,7 +1318,7 @@
       else if (m === 2) {
         if (sub === 'leaf') {
           const x0 = cx - R / 2 - t * 38, y0 = cy - R / 2;
-          ctx.strokeStyle = '#94A3B8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
           ctx.strokeRect(x0, y0, R, R); ctx.setLineDash([]);
 
           if (showArea) {
@@ -1464,7 +1464,7 @@
           }
 
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pO.x, pO.y);
-          ctx.strokeStyle = '#94A3B8'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#64748B'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
 
           if (showPerim) {
             ctx.beginPath(); ctx.arc(pO.x, pO.y, R, Math.PI, 0); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5; ctx.stroke();
@@ -1565,7 +1565,7 @@
           }
 
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pD.x, pD.y); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y);
-          ctx.strokeStyle = '#94A3B8'; ctx.lineWidth = 2; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
           drawRightAngle(pD, pA, pC, 11);
 
           if (showPerim) {
@@ -1600,7 +1600,7 @@
           const pP = { x: pO.x - 2 * R * Math.cos(th), y: pO.y };
 
           ctx.beginPath(); ctx.arc(pO.x, pO.y, R, Math.PI, 0);
-          ctx.strokeStyle = '#94A3B8'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.stroke();
 
           ctx.beginPath(); ctx.moveTo(pP.x - 15, pP.y); ctx.lineTo(pD.x + 15, pD.y);
           ctx.moveTo(pP.x, pP.y); ctx.lineTo(pA.x, pA.y);
