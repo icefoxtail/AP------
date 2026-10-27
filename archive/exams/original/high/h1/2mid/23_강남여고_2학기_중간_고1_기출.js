@@ -245,6 +245,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q7-solution-mapping.svg",
+    "solutionImageAlt": "집합 X의 원소 1, 2는 b로, 3은 c로 향하는 화살표가 있는 대응도. b와 c 뒤에 옅은 강조 상자가 있다.",
+    "solutionImageCaption": "정의역의 모든 원소가 한 값에 대응하므로 함수이고, 실제 함숫값을 모은 치역은 {b, c}이다.",
+    "solutionImageSize": "large",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
@@ -314,6 +318,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q9-solution-composition.svg",
+    "solutionImageAlt": "X에서 Y로 가는 f와 Y에서 X로 가는 g를 세 열로 이은 대응도. 1→5, 4→3, 5→4 화살표가 굵게 표시되어 있다.",
+    "solutionImageCaption": "1→5→4를 따라 (g∘f)(1)=4이고, 5→4→3을 따라 (f∘g)(5)=3이다.",
+    "solutionImageSize": "full",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
@@ -485,6 +493,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q14-solution-cycle.svg",
+    "solutionImageAlt": "집합 X의 네 원소가 1→3, 2→4, 3→2, 4→1로 이어지는 대응도. 네 화살표가 모두 굵게 표시되어 있다.",
+    "solutionImageCaption": "f는 1→3→2→4→1의 4-순환이므로 2023번 합성한 값은 세 번 합성한 값과 같다.",
+    "solutionImageSize": "large",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
@@ -622,6 +634,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q18-solution-inverse-pair.svg",
+    "solutionImageAlt": "일대일대응 f와 g를 세 열로 이은 대응도. f의 3→1과 g의 4→2 화살표가 굵게 표시되어 있다.",
+    "solutionImageCaption": "f(3)=1, g(4)=2이므로 1에 대응하는 f의 정의역 원소는 3, 2에 대응하는 g의 정의역 원소는 4이다.",
+    "solutionImageSize": "full",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
@@ -691,6 +707,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q20-solution-inverse-area.svg",
+    "solutionImageAlt": "좌표평면에 (2, 0)에서 꺾이는 함수 f의 그래프와 (0, 2)에서 꺾이는 역함수 g의 그래프, 직선 y=x, 교점 A, M, B, 두 그래프 사이의 색칠한 두 영역을 나타낸 그림.",
+    "solutionImageCaption": "두 그래프는 A(-4, 3), M, B(3, -4)에서 만나고 y=x에 대하여 대칭이다. 색칠한 두 영역의 넓이는 각각 3분의 7이다.",
+    "solutionImageSize": "medium",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
