@@ -149,7 +149,7 @@ function labelCandidates(point,cx,cy){
   return rows;
 }
 
-function placeLabels(entries,layout,obstacles){
+export function placeLabels(entries,layout,obstacles){
   // entries: {key,width,height,anchorX,anchorY,pointX,pointY,role,...}; returns boxes in place.
   const placed=[];
   const placedBoxes=[];const placedPoints=[];
@@ -301,16 +301,7 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy}){
     catch(error){if(!isDomainCode(error))throw error;throw new Stop('ELLIPSE_TYPESET_ERROR',{labelId:label.key,code:error.message});}
     prepared.push({...label,width:fragment.intrinsic.width,height:fragment.intrinsic.height,fragment});
   }
-  const placed=placeLabels(prepared,layoutOf(model),{
-    points:model.points.map(point=>({key:point.id,x:spec.prims.find(prim=>prim.id===`point-${point.id}`).cx,
-      y:spec.prims.find(prim=>prim.id===`point-${point.id}`).cy})),
-    curve:ellipseSamples(spec.prims.find(prim=>prim.id==='ellipse').cx,spec.prims.find(prim=>prim.id==='ellipse').cy,
-      spec.prims.find(prim=>prim.id==='ellipse').rx,spec.prims.find(prim=>prim.id==='ellipse').ry),
-    // A name must stay clear of the axes as well as of the curve and the drawn segments (the Archive
-    // rendered-layout audit reads an axis as geometry like any other).
-    segments:spec.prims.filter(prim=>prim.role==='segment'||prim.role==='axis')
-      .map(prim=>({a:[prim.x1,prim.y1],b:[prim.x2,prim.y2]}))
-  });
+  const placed=placeLabels(prepared,layoutOf(model),ellipseLabelObstacles(spec));
   const {width,height}=spec.size;
   let body=`<rect width="${width}" height="${height}" fill="#fff"/>`;
   for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
@@ -335,6 +326,24 @@ export async function auditEllipseSvg({plan,svg}){
   catch(error){throw new Stop('WORKER_ERROR',{stage:'ellipseAudit',code:String(error?.message??error)});}
   if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'ellipseAudit',code:response?.result?.code??null});
   return response.result;
+}
+
+// Every drawn stroke a point name must stay clear of: the curve, the axes, the segments, the tangent
+// lines and the polygon edges (the Archive rendered-layout audit reads each of them as geometry).
+export function ellipseLabelObstacles(spec){
+  const curve=spec.prims.find(prim=>prim.id==='ellipse');
+  const segments=[];
+  for(const prim of spec.prims){
+    if(prim.role==='segment'||prim.role==='axis'||prim.role==='line')segments.push({a:[prim.x1,prim.y1],b:[prim.x2,prim.y2]});
+    if(prim.role==='polygon')prim.points.forEach((start,index)=>{
+      const end=prim.points[(index+1)%prim.points.length];segments.push({a:start,b:end});
+    });
+  }
+  return {
+    points:spec.prims.filter(prim=>prim.role==='point').map(prim=>({key:prim.data.point,x:prim.cx,y:prim.cy})),
+    curve:ellipseSamples(curve.cx,curve.cy,curve.rx,curve.ry),
+    segments
+  };
 }
 
 export async function composeEllipseFigure({plan,model,identity,typographyPolicy,browser}){
