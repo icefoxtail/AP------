@@ -216,11 +216,39 @@ function solveMapping(diagram){
   for(const arrow of arrows){const key=`${arrow.from.column}:${arrow.from.element}`;out.set(key,(out.get(key)??0)+1);}
   return {schemaVersion:MODEL_VERSION,kind:'MAPPING',columns,arrows,highlight,isFunction:[...out.values()].every(count=>count===1)};
 }
+function solveTable(diagram){
+  // An explicit membership table: every finite element is a row and every set a column. This is the faithful figure for a
+  // four-set question over a finite universe, where overlapping-circles geometry cannot show all 16 regions.
+  onlyKeys(diagram,['kind','sets','elements'],'SET_DIAGRAM_PLAN_INVALID');
+  if(!Array.isArray(diagram.sets)||diagram.sets.length<2||diagram.sets.length>4)bad(diagram.sets?.length>4?'SET_COUNT_UNSUPPORTED':'SET_DIAGRAM_PLAN_INVALID');
+  const sets=diagram.sets.map(raw=>{
+    onlyKeys(raw,['id','name'],'SET_DIAGRAM_PLAN_INVALID');
+    if(typeof raw.id!=='string'||!/^[A-Z]$/.test(raw.id)||raw.id==='U')bad('SET_ID_INVALID');
+    if(raw.name!==undefined)cleanText(raw.name,8,'SET_NAME_INVALID');
+    return {id:raw.id,name:raw.name??raw.id};
+  });
+  const ids=sets.map(s=>s.id);
+  if(new Set(ids).size!==ids.length)bad('SET_ID_INVALID');
+  if(!Array.isArray(diagram.elements)||diagram.elements.length<1)bad('SET_ELEMENT_INVALID');
+  if(diagram.elements.length>12)bad('SET_TOO_MANY_ELEMENTS');
+  const texts=new Set();
+  const elements=diagram.elements.map((raw,index)=>{
+    if(!isPlain(raw)||Object.keys(raw).some(key=>!['text','math','in'].includes(key)))bad('SET_ELEMENT_INVALID');
+    const {text,math}=elementText({text:raw.text,math:raw.math},32,'SET_ELEMENT_INVALID');
+    if(texts.has(text))bad('SET_ELEMENT_DUPLICATE');
+    texts.add(text);
+    if(!Array.isArray(raw.in)||raw.in.length>ids.length||new Set(raw.in).size!==raw.in.length)bad('SET_ELEMENT_INVALID');
+    for(const id of raw.in)if(!ids.includes(id))bad('SET_ELEMENT_SET_UNKNOWN');
+    return {index,text,math,in:ids.filter(id=>raw.in.includes(id))};
+  });
+  return {schemaVersion:MODEL_VERSION,kind:'MEMBERSHIP_TABLE',sets,elements};
+}
 export function solveDiagram(diagram){
   if(!isPlain(diagram))bad('SET_DIAGRAM_PLAN_INVALID');
   switch(diagram.kind){
     case 'VENN':return solveVenn(diagram);
     case 'MAPPING':return solveMapping(diagram);
+    case 'MEMBERSHIP_TABLE':return solveTable(diagram);
     default:return bad('SET_KIND_UNSUPPORTED');
   }
 }
@@ -249,6 +277,18 @@ function mappingLayout(model){
   return {size:{width,height},top,ovalH,rowMax,
     columns:model.columns.map((column,index)=>({cx:centers[index],cy:top+ovalH/2,ry:(rows[index]*MAPPING_ROW+2*MAPPING_PAD)/2,rx:MAPPING_RX,
       nameY:MAPPING_TOP-18,elementY:top+MAPPING_PAD+MAPPING_ROW*0.5}))};
+}
+const TABLE_MARGIN=18,TABLE_HEADER=42,TABLE_ROW=40,TABLE_ELEMENT_COL=96,TABLE_SET_COL=56;
+function tableLayout(model){
+  const columnCount=model.sets.length,rowCount=model.elements.length;
+  const width=TABLE_MARGIN*2+TABLE_ELEMENT_COL+columnCount*TABLE_SET_COL;
+  const height=TABLE_MARGIN*2+TABLE_HEADER+rowCount*TABLE_ROW;
+  const x0=TABLE_MARGIN,y0=TABLE_MARGIN,x1=width-TABLE_MARGIN,y1=height-TABLE_MARGIN;
+  const vertical=[x0,x0+TABLE_ELEMENT_COL];
+  for(let k=1;k<=columnCount;k++)vertical.push(x0+TABLE_ELEMENT_COL+k*TABLE_SET_COL);
+  const horizontal=[y0,y0+TABLE_HEADER];
+  for(let k=1;k<=rowCount;k++)horizontal.push(y0+TABLE_HEADER+k*TABLE_ROW);
+  return {size:{width,height},columnCount,rowCount,frame:{x:x0,y:y0,width:x1-x0,height:y1-y0},vertical,horizontal};
 }
 
 // --- geometry helpers -----------------------------------------------------------------------------------------------------------------------
@@ -400,7 +440,10 @@ const STYLE={
   arrow:'stroke="#111" stroke-width="1.4" fill="none"',
   arrowHi:'stroke="#111" stroke-width="2.4" fill="none"',
   head:'fill="#111" stroke="none"',
-  elementHi:'fill="#ececec" stroke="none"'
+  elementHi:'fill="#ececec" stroke="none"',
+  tableFrame:'fill="none" stroke="#111" stroke-width="1.4"',
+  grid:'stroke="#111" stroke-width="0.8"',
+  mark:'fill="#111" stroke="none"'
 };
 const rect=(id,role,cls,x,y,width,height,data={},layer=30)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
 const ellipse=(id,role,cls,cx,cy,rx,ry,data={},layer=30)=>({t:'ellipse',id,role,cls,cx:r6(cx),cy:r6(cy),rx:r6(rx),ry:r6(ry),data,layer});
@@ -468,12 +511,39 @@ function mappingSpec(model,layout){
   }
   return {size,prims,labels,kind:'MAPPING',layout,geometry:{columns:columns.map(c=>({...c})),top,ovalH},elements:elementBox,highlightedElements};
 }
-const sizeOf=model=>model.kind==='VENN'?{...vennLayout(model).size}:{...mappingLayout(model).size};
+function tableSpec(model,layout){
+  const prims=[],labels=[];
+  const {frame,vertical,horizontal}=layout;
+  prims.push(rect('table-frame','table-frame','tableFrame',frame.x,frame.y,frame.width,frame.height,{},20));
+  vertical.slice(1,-1).forEach((x,k)=>prims.push({t:'line',id:`grid-v-${k+1}`,role:'grid-v',cls:'grid',x1:r6(x),y1:r6(frame.y),x2:r6(x),y2:r6(frame.y+frame.height),data:{index:k+1},layer:22}));
+  horizontal.slice(1,-1).forEach((y,k)=>prims.push({t:'line',id:`grid-h-${k+1}`,role:'grid-h',cls:'grid',x1:r6(frame.x),y1:r6(y),x2:r6(frame.x+frame.width),y2:r6(y),data:{index:k+1},layer:22}));
+  const cellX=column=>[vertical[column],vertical[column+1]];
+  const rowY=row=>[horizontal[row],horizontal[row+1]];
+  const centre=(a,b)=>(a+b)/2;
+  labels.push(textLabel('table-corner','table-corner','table','원소','center','middle',centre(...cellX(0)),centre(horizontal[0],horizontal[1]),{}));
+  model.sets.forEach((set,column)=>{
+    const x=centre(...cellX(column+1)),y=centre(horizontal[0],horizontal[1]);
+    labels.push(labelMath(set.name)
+      ?math(`col-set-${set.id}`,'col-set','table',set.name,set.name,'center','middle',x,y,{set:set.id})
+      :textLabel(`col-set-${set.id}`,'col-set','table',set.name,'center','middle',x,y,{set:set.id}));
+  });
+  model.elements.forEach((element,row)=>{
+    const x=centre(...cellX(0)),y=centre(...rowY(row+1));
+    labels.push(elementLabel(`row-element-${element.index}`,'row-element','table',element,'center','middle',x,y,{element:element.index}));
+    model.sets.forEach((set,column)=>{
+      if(!element.in.includes(set.id))return;
+      const cx=centre(...cellX(column+1)),cy=centre(...rowY(row+1));
+      prims.push({t:'circle',id:`mark-${element.index}-${set.id}`,role:'membership',cls:'mark',cx:r6(cx),cy:r6(cy),r:5,data:{element:element.index,set:set.id},layer:30});
+    });
+  });
+  return {size:layout.size,prims,labels,kind:'MEMBERSHIP_TABLE',layout,geometry:{frame:{...frame},vertical:[...vertical],horizontal:[...horizontal]}};
+}
+const sizeOf=model=>model.kind==='VENN'?{...vennLayout(model).size}:model.kind==='MAPPING'?{...mappingLayout(model).size}:{...tableLayout(model).size};
 export const setDiagramSize=model=>({...sizeOf(model)});
 export function setDiagramSpec(plan,model){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.diagram))bad('SET_DIAGRAM_PLAN_INVALID');
   if(objectSha(solveDiagram(plan.diagram))!==objectSha(model))bad('SET_MODEL_MISMATCH');
-  const spec=model.kind==='VENN'?vennSpec(model,vennLayout(model)):mappingSpec(model,mappingLayout(model));
+  const spec=model.kind==='VENN'?vennSpec(model,vennLayout(model)):model.kind==='MAPPING'?mappingSpec(model,mappingLayout(model)):tableSpec(model,tableLayout(model));
   return {schemaVersion:SPEC_VERSION,...spec};
 }
 
@@ -625,6 +695,8 @@ function printPrim(p){
     case 'path':tag=`<path ${head} d="${p.d}" ${style}/>`;break;
     case 'polyline':tag=`<polyline ${head} points="${p.points.map(([x,y])=>px2(x)+','+px2(y)).join(' ')}" ${style}${p.dashed?' stroke-dasharray="7 5"':''}/>`;break;
     case 'polygon':tag=`<polygon ${head} points="${p.points.map(([x,y])=>px2(x)+','+px2(y)).join(' ')}" ${style}/>`;break;
+    case 'line':tag=`<line ${head} x1="${px2(p.x1)}" y1="${px2(p.y1)}" x2="${px2(p.x2)}" y2="${px2(p.y2)}" ${style}/>`;break;
+    case 'circle':tag=`<circle ${head} cx="${px2(p.cx)}" cy="${px2(p.cy)}" r="${px2(p.r)}" ${style}/>`;break;
     default:throw Error('SET_PRIMITIVE_UNKNOWN');
   }
   return `<g data-layer="${p.layer}">${tag}</g>`;
@@ -660,7 +732,7 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
         if(!loops.length)throw new Stop('SET_SPEC_ERROR',{code:'SET_ELEMENT_REGION_EMPTY'});
       }
       resolveVenn(spec,placed);
-    }else resolveMapping(spec,placed);
+    }else if(spec.kind==='MAPPING')resolveMapping(spec,placed);
     const {width,height}=spec.size;
     for(const item of placed){
       const b=item.box;
