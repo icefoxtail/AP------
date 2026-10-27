@@ -25,7 +25,6 @@ import { MathGalaxyMotionEngine } from './math-motion.js';
 export function createMathUniverse({
   canvas,
   onSelectNode,
-  onHoverNode,
   onTravelComplete,
 } = {}) {
   const profile = getVisualProfile();
@@ -318,47 +317,19 @@ export function createMathUniverse({
 
   // 9. Raycasting & User Interaction
   const raycaster = new THREE.Raycaster();
-  const mouse = new THREE.Vector2(-999, -999);
   let pointerDownPos = { x: 0, y: 0, time: 0 };
-  let hoveredNode = null;
   let selectedNode = null;
 
   // Camera flight interpolation state
   let flightState = null;
 
   function onPointerMove(e) {
+    // The universe is a visual showcase: update parallax only.
+    // Do not raycast or render hover labels over mathematical objects.
     const rect = canvas.getBoundingClientRect();
-    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-    motionEngine.setPointer(mouse.x, mouse.y);
-
-    if (flightState) return;
-
-    raycaster.setFromCamera(mouse, camera);
-    const meshes = [];
-    celestialRegistry.forEach((c) => {
-      c.group.traverse((ch) => {
-        if (ch.isMesh) meshes.push(ch);
-      });
-    });
-
-    const intersects = raycaster.intersectObjects(meshes, false);
-    if (intersects.length > 0) {
-      const hitMesh = intersects[0].object;
-      const id = hitMesh.userData.celestialId;
-      const meta = hitMesh.userData.celestialMeta;
-      if (hoveredNode !== id) {
-        hoveredNode = id;
-        canvas.style.cursor = 'pointer';
-        if (typeof onHoverNode === 'function') onHoverNode(meta, e.clientX, e.clientY);
-      }
-    } else {
-      if (hoveredNode !== null) {
-        hoveredNode = null;
-        canvas.style.cursor = 'default';
-        if (typeof onHoverNode === 'function') onHoverNode(null);
-      }
-    }
+    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+    motionEngine.setPointer(x, y);
   }
 
   function onPointerDown(e) {

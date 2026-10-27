@@ -70,16 +70,13 @@
         <button class="celestial-pill" type="button" data-celestial="golden-spiral">🌀 황금 나선</button>
         <button class="celestial-pill" type="button" data-celestial="hyperboloid">⏳ 일엽쌍곡면</button>
         <button class="celestial-pill" type="button" data-celestial="torus">🍩 비야르소 원</button>
-        <button class="celestial-pill" type="button" data-celestial="circle">🔘 원과 부채꼴</button>
+        <button class="celestial-pill" type="button" data-celestial="circle-sector">🔘 원과 부채꼴</button>
         <button class="celestial-pill" type="button" data-celestial="solid">🌐 공간도형</button>
         <button class="celestial-pill" type="button" data-celestial="vector">↗️ 벡터</button>
         <button class="celestial-pill" type="button" data-celestial="calculus">📈 미적분</button>
       </nav>
     </footer>
   </div>
-
-  <!-- Floating Hover Tooltip -->
-  <div class="hover-tooltip" id="hoverTooltip" aria-hidden="true"></div>
 
   <!-- WebGL Fallback Screen (Graceful Degradation) -->
   <noscript>
@@ -96,7 +93,6 @@
     const canvas = document.getElementById('space');
     const warpCurtain = document.getElementById('warpCurtain');
     const universeUi = document.getElementById('universeUi');
-    const hoverTooltip = document.getElementById('hoverTooltip');
     const btnEnterLab = document.getElementById('btnEnterLab');
     const btnToggleHud = document.getElementById('btnToggleHud');
     const hudBtnText = document.getElementById('hudBtnText');
@@ -109,16 +105,6 @@
     try {
       universe = createMathUniverse({
         canvas,
-        onHoverNode: (meta, mouseX, mouseY) => {
-          if (!meta) {
-            hoverTooltip.classList.remove('visible');
-            return;
-          }
-          hoverTooltip.textContent = `${meta.title} (${meta.grade})`;
-          hoverTooltip.style.left = `${mouseX}px`;
-          hoverTooltip.style.top = `${mouseY}px`;
-          hoverTooltip.classList.add('visible');
-        },
         // Clicking the 3D object enters the lab hub; clicking empty space returns the camera.
         onSelectNode: (meta) => {
           if (meta) {
@@ -204,7 +190,6 @@
           p.classList.remove('active');
           p.setAttribute('aria-pressed', 'false');
         });
-        hoverTooltip.classList.remove('visible');
 
         if (alreadyActive) {
           universe.resetFocus();
@@ -221,7 +206,10 @@
     const initialCelestial = urlParams.get('celestial');
     if (initialCelestial) {
       setTimeout(() => {
-        const targetPill = document.querySelector(`.celestial-pill[data-celestial="${initialCelestial}"]`);
+        // Accept older links using ?celestial=circle, while the real object id is circle-sector.
+        const id = initialCelestial === 'circle' ? 'circle-sector' : initialCelestial;
+        const targetPill = Array.from(document.querySelectorAll('.celestial-pill'))
+          .find(pill => pill.dataset.celestial === id);
         if (targetPill) targetPill.click();
       }, 350);
     }
