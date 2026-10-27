@@ -588,6 +588,41 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 오류 코드: `MULTI_CURVE_COUNT_INVALID`(3개 미만·6개 초과), `MULTI_CURVE_FIELD_UNKNOWN:<field>`, `MULTI_CURVE_CURVE_INVALID:<id>`, `MULTI_CURVE_ID_INVALID`, `MULTI_CURVE_KIND_INVALID:<id>`, `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `MULTI_CURVE_NOT_QUADRATIC:<id>`, `MULTI_CURVE_DOMAIN_INVALID:<id>`, `MULTI_CURVE_BRANCH_INVALID:<id>`, `MULTI_CURVE_BRANCH_EMPTY:<id>`, `MULTI_CURVE_LABEL_INVALID:<id>`, `MULTI_CURVE_FRAME_DEGENERATE`, `MULTI_CURVE_TOO_NARROW`.
 
 
+### 3-45. 축에 나란한 타원: 초점·꼭짓점·지름의 현·접선 (`ellipse-figure-v1`)
+
+원문 문항의 이차곡선이 **축에 나란한 타원**(장축이 x축 또는 y축)이고 저장된 풀이가 초점, 타원 위의 점, 중심을 지나는 현, 삼각형, 접선을 실제로 쓸 때 이 capability를 쓴다. **타원 하나만** 그린다. 회전한 타원, 원, 쌍곡선·포물선, 같은 그림의 두 타원은 대상이 아니다. `capability:"ellipse-figure-v1"`.
+
+```json
+{"capability":"ellipse-figure-v1",
+ "ellipse":{"center":["0","0"],"semiAxisSquared":{"major":"16","minor":"4"},"majorAxis":"X"},
+ "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},
+           {"id":"P","kind":"ON_ELLIPSE","x":"sqrt(3)","branch":"POS"},{"id":"Q","kind":"OPPOSITE","of":"P"},
+           {"id":"O","kind":"ORIGIN"}],
+ "segments":[{"id":"s1","from":"P","to":"F'"},{"id":"s2","from":"F'","to":"Q"},{"id":"s3","from":"P","to":"Q"}],
+ "polygons":[{"id":"t1","points":["P","F'","Q"],"fill":"LIGHT"}],
+ "caption":"타원 x²/16+y²/4=1에서 중심 O를 지나는 지름 PQ와 두 초점 F, F′로 만든 삼각형 PF′Q를 나타낸 그림",
+ "sourceConditions":[...],"newVisualInformation":[...]}
+```
+
+- `ellipse`는 `center`(정확한 값 두 개), `semiAxisSquared{major,minor}`(=a², b²), `majorAxis`(`"X"` 또는 `"Y"`)만 받는다. 모든 수는 정확한 문자열(`"-2"`, `"42/5"`, `"sqrt(3)"`)이고 소수를 쓰지 않는다.
+- **회전 타원은 표현할 필드가 없다.** `rotation`·`hyperbola` 같은 키를 넣으면 `ELLIPSE_PLAN_INVALID`, `majorAxis`가 X/Y가 아니면 `ELLIPSE_MAJOR_AXIS_UNSUPPORTED`다. 원(a=b)은 `ELLIPSE_AXES_INVALID`, major<minor도 같은 코드로 거절한다(원은 기존 작도·평면 경로를 쓴다).
+- 장반지름·단반지름·초점거리는 엔진이 SymPy로 계산한다(c²=a²−b², 초점 (cx±c, cy) 또는 (cx, cy±c)). **저자는 초점·꼭짓점 좌표를 직접 쓰지 않는다.** 그림 범위도 축·꼭짓점·선언한 점·접점에서 자동으로 잡는다.
+- `points`는 최대 10개다. `id`는 대문자 한 글자 + 선택적 숫자·프라임(`A`, `T1`, `F'`)이고 **id가 그대로 점 이름으로 그려진다**(아래첨자 이름·`pointNames`는 이 capability에 없다). `label:false`면 이름을 그리지 않는다. 종류는 다음과 같다.
+  - `FOCUS`: `side:1|-1`. 1은 장축의 양의 방향 초점이다.
+  - `VERTEX`: `end:"MAJOR_POS"|"MAJOR_NEG"|"MINOR_POS"|"MINOR_NEG"`.
+  - `ON_ELLIPSE`: `x` 또는 `y` 중 **정확히 하나**와 `branch:"POS"|"NEG"`(기본 POS). x를 주면 그 x에서의 위/아래 가지, y를 주면 좌/우 가지다. 타원 밖의 값이면 `ELLIPSE_POINT_NOT_ON_ELLIPSE`다.
+  - `OPPOSITE`: `of`에 다른 점 id. 타원 **중심**에 대한 대칭점이다(지름의 다른 끝).
+  - `ORIGIN`: 좌표평면의 원점 (0,0)이다(타원 중심이 아님).
+  - `POINT`: `x`,`y`를 직접 준다(접선의 접점 등).
+- `segments`는 `from`/`to`(선언한 점 id), 선택 `label`(길이·값, MathJax 수식 문자열), 선택 `dashed`다. 라벨은 선분 중점 곁에 놓이고 관측기가 중점에서 72 px 이내인지 확인한다.
+- `polygons`는 점 3~6개와 `fill:"LIGHT"|"MEDIUM"|"NONE"`(기본 LIGHT)이다. 넓이가 0인 다각형은 `ELLIPSE_POLYGON_INVALID`다. 영역 색칠은 이 다각형 채우기만 지원한다(타원 내부·외부 부등식 영역은 지원하지 않는다).
+- `lines`는 `slope`·`intercept` 정확값과 선택 `tangent:true`다. `tangent:true`이면 판별식이 0인지 엔진이 대수적으로 확인하고, 접점을 선언한 점과 대조한다(접점이 없으면 `TANGENCY_POINT_NOT_DECLARED`). **직선 식 라벨(`label`)은 지원하지 않는다**(`ELLIPSE_LINE_LABEL_UNSUPPORTED`). 직선은 그림 범위 안으로 잘리고, 화면 밖이면 `ELLIPSE_LINE_OUTSIDE_VIEWPORT`다.
+- 배치는 두 축 **같은 배율**이다(세로 압축 없음). 좌표축과 화살촉은 엔진이 그리고 눈금·좌표 띠는 없다. 그림 영역 상한(약 460×360 px, 가장자리 0.75단위 여백)보다 타원·점이 크면 `ELLIPSE_FIGURE_TOO_LARGE`다. 좌표가 큰 문항은 억지로 줄이지 말고 UNSUPPORTED로 남긴다.
+- 점 이름은 자기 점 옆에 붙되 곡선·선분·축·다른 이름을 피해 자동 배치된다. 놓을 자리가 없으면 `ELLIPSE_LABEL_NO_ROOM`이다. 이름·길이 라벨은 실제 조판 조각으로 그려지고 최종 SVG에 `data-tex`로 남는다.
+- **독립 검수.** `ellipse_figure_observer.py`는 plan만 보고 초점·꼭짓점·현·접선·접점을 자기 코드로 다시 계산해 **최종 SVG**와 대조한다: 축·화살촉 방향, 타원 중심·두 반지름·같은 배율, 모든 점 표식의 위치, 선분 끝점, 다각형 꼭짓점·채우기, 직선이 식 위에 있는지, 접선 주장의 재증명과 접점 선언, 이름·길이 라벨의 존재·문자·위치, 선언하지 않은 점·선·다각형이 없는지. 하나라도 어긋나면 FAIL이다.
+- 한계·오류 코드: `ELLIPSE_PLAN_INVALID`, `ELLIPSE_CENTER_INVALID`, `ELLIPSE_AXES_INVALID`, `ELLIPSE_MAJOR_AXIS_UNSUPPORTED`, `ELLIPSE_POINT_INVALID`, `ELLIPSE_POINT_ID_INVALID`, `ELLIPSE_POINT_ID_DUPLICATE`, `ELLIPSE_POINT_UNKNOWN`, `ELLIPSE_POINT_NOT_ON_ELLIPSE`, `ELLIPSE_SEGMENT_INVALID`, `ELLIPSE_POLYGON_INVALID`, `ELLIPSE_POLYGON_UNKNOWN_POINT`, `ELLIPSE_LINE_INVALID`, `ELLIPSE_LINE_LABEL_UNSUPPORTED`, `ELLIPSE_LINE_NOT_TANGENT`, `ELLIPSE_LINE_OUTSIDE_VIEWPORT`, `ELLIPSE_FIGURE_TOO_LARGE`, `ELLIPSE_LABEL_NO_ROOM`. 둘째 타원, 회전 타원, 원, 쌍곡선·포물선, 곡선 눈금, 벡터 화살표는 이 capability의 지원 범위가 아니다.
+
+
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
 
 - 그림에 나오는 점 이름은 노드 id다. 문항과 풀이 텍스트에 쓴 이름과 같아야 한다. 풀이가 점 이름을 쓰지 않으면 한 글자 대문자(A, B, P)만 쓰고, O0, Pp, C1 같은 내부식 이름은 쓰지 않는다. 풀이에 쓰지 않은 보조점은 숨김 필드를 쓴다.
