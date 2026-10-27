@@ -178,8 +178,119 @@
       #rightPanel .grid.grid-cols-4 { gap:4px; }
     }
   </style>
+
+  <!-- 중1 칠판 테마 복구: 인접 다크 실험실과 동일한 배경·패널·강조색 구조 -->
+  <style id="ap-g7-chalkboard-theme">
+    body.ap-chalk-restored {
+      background:#07130e!important; color:#e2e8f0!important;
+      color-scheme:dark;
+    }
+    body.ap-chalk-restored #canvasStage {
+      background:radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%)!important;
+      box-shadow:inset 0 0 100px rgba(0,0,0,.70);
+    }
+    body.ap-chalk-restored > header {
+      background:rgba(8,21,16,.97)!important;
+      border-color:#28503e!important; box-shadow:0 2px 15px rgba(0,0,0,.25);
+    }
+    body.ap-chalk-restored #rightPanel {
+      background:#081611!important;
+      border-color:#28503e!important;
+    }
+    body.ap-chalk-restored .bg-white { background-color:#10251c!important; }
+    body.ap-chalk-restored .bg-white\/95 { background-color:rgba(7,20,15,.96)!important; }
+    body.ap-chalk-restored .bg-slate-50 { background-color:#10241c!important; }
+    body.ap-chalk-restored .bg-slate-100 { background-color:#173529!important; }
+    body.ap-chalk-restored .bg-slate-200 { background-color:#254637!important; }
+    body.ap-chalk-restored .bg-blue-50,
+    body.ap-chalk-restored .bg-blue-50\/40 { background-color:#123232!important; }
+    body.ap-chalk-restored .bg-rose-50 { background-color:#351e29!important; }
+    body.ap-chalk-restored .bg-amber-50 { background-color:#372918!important; }
+    body.ap-chalk-restored .bg-emerald-50 { background-color:#123528!important; }
+    body.ap-chalk-restored .bg-slate-900 { background-color:#fbbf24!important; }
+    body.ap-chalk-restored .bg-blue-600 { background-color:#b45309!important; }
+    body.ap-chalk-restored .hover\:bg-slate-100:hover,
+    body.ap-chalk-restored .hover\:bg-slate-200:hover { background-color:#24513e!important; }
+    body.ap-chalk-restored .hover\:bg-blue-100:hover,
+    body.ap-chalk-restored .hover\:bg-blue-700:hover { background-color:#d97706!important; }
+    body.ap-chalk-restored .hover\:bg-rose-100:hover { background-color:#633143!important; }
+    body.ap-chalk-restored .hover\:bg-amber-100:hover { background-color:#654c24!important; }
+    body.ap-chalk-restored .text-slate-900,
+    body.ap-chalk-restored .text-slate-800 { color:#f1f5f9!important; }
+    body.ap-chalk-restored .text-slate-700 { color:#d1e6d9!important; }
+    body.ap-chalk-restored .text-slate-600 { color:#b4cfbe!important; }
+    body.ap-chalk-restored .text-slate-500,
+    body.ap-chalk-restored .text-slate-400 { color:#a7b9b0!important; }
+    body.ap-chalk-restored .text-blue-700,
+    body.ap-chalk-restored .text-blue-600,
+    body.ap-chalk-restored .text-blue-950 { color:#7dd3fc!important; }
+    body.ap-chalk-restored .text-rose-700,
+    body.ap-chalk-restored .text-rose-600 { color:#fda4af!important; }
+    body.ap-chalk-restored .text-emerald-700,
+    body.ap-chalk-restored .text-emerald-600 { color:#6ee7b7!important; }
+    body.ap-chalk-restored .text-amber-800,
+    body.ap-chalk-restored .text-amber-600 { color:#fcd34d!important; }
+    body.ap-chalk-restored .border-slate-200,
+    body.ap-chalk-restored .border-slate-200\/80 { border-color:#28503e!important; }
+    body.ap-chalk-restored .border-slate-300 { border-color:#3a6755!important; }
+    body.ap-chalk-restored .border-blue-200 { border-color:#356879!important; }
+    body.ap-chalk-restored .border-rose-200 { border-color:#774658!important; }
+    body.ap-chalk-restored .border-amber-300 { border-color:#90743c!important; }
+    body.ap-chalk-restored .border-emerald-200 { border-color:#387452!important; }
+    body.ap-chalk-restored .bg-slate-900.text-white,
+    body.ap-chalk-restored .bg-slate-900 > .text-white { color:#07130e!important; }
+    body.ap-chalk-restored .bg-blue-600.text-white,
+    body.ap-chalk-restored .bg-blue-600 > .text-white { color:#fff9e8!important; }
+    body.ap-chalk-restored .mode-tab {
+      background:#10261e!important; border-color:#24513e!important;
+      color:#bbebd0!important; box-shadow:none;
+    }
+    body.ap-chalk-restored .mode-tab.active {
+      background:linear-gradient(135deg,#f59e0b,#d97706)!important;
+      border-color:#fbbf24!important; color:#07130e!important;
+      box-shadow:0 0 12px rgba(245,158,11,.32)!important;
+    }
+    body.ap-chalk-restored .sub-pill.active {
+      background:rgba(52,211,153,.25)!important;
+      border-color:#34d399!important; color:white!important;
+    }
+    body.ap-chalk-restored .lens-btn.active,
+    body.ap-chalk-restored .step-btn.active {
+      background:rgba(251,191,36,.15)!important;
+      border-color:#fbbf24!important; color:#fef08a!important;
+    }
+    body.ap-chalk-restored .preset-chip.active {
+      background:#fbbf24!important; border-color:#fef08a!important; color:#07130e!important;
+    }
+    body.ap-chalk-restored input[type=range] {
+      background:#18382c!important; border:1px solid #35624d!important;
+    }
+    body.ap-chalk-restored input[type=range]::-webkit-slider-thumb {
+      background:#fbbf24!important; border-color:#07130e!important;
+      box-shadow:0 0 9px rgba(251,191,36,.55)!important;
+      width:19px!important; height:19px!important;
+    }
+    body.ap-chalk-restored input[type=range]::-moz-range-thumb {
+      background:#fbbf24!important; border:2px solid #07130e!important;
+      width:19px; height:19px;
+    }
+    body.ap-chalk-restored .katex { color:inherit; }
+    body.ap-chalk-restored #rightPanel .katex-display { max-width:100%; overflow-x:auto; }
+    body.ap-chalk-restored ::-webkit-scrollbar-track { background:#07130e; }
+    body.ap-chalk-restored ::-webkit-scrollbar-thumb { background:#28503e; }
+    @media(max-width:1023px) {
+      body.ap-chalk-restored #apMobileControls.ap-mobile-top {
+        background:#0b2019!important; border-bottom-color:#28503e!important;
+      }
+      body.ap-chalk-restored #apMobileTools.ap-mobile-tools {
+        background:#0a1b15!important; border-color:#28503e!important;
+      }
+      body.ap-chalk-restored #rightPanel { border-top-color:#28503e!important; }
+      body.ap-chalk-restored .mode-tab { min-height:44px!important; }
+    }
+  </style>
 </head>
-<body class="h-screen w-screen flex flex-col">
+<body class="h-screen w-screen flex flex-col ap-chalk-restored">
 
   <!-- ===================================================================== -->
   <!-- 상단 헤더 & 4대 핵심 마스터 모드 탭 바 (기초 + 심화 통합) -->
@@ -452,7 +563,7 @@
     const canvas = document.getElementById('boardCanvas');
     const ctx = canvas.getContext('2d');
 
-    function drawCanvasFraction(px, py, numStr, denStr, color = '#0F172A', fontSize = 12) {
+    function drawCanvasFraction(px, py, numStr, denStr, color = '#e2e8f0', fontSize = 12) {
       ctx.save();
       ctx.font = `800 ${fontSize}px Pretendard, monospace`;
       ctx.fillStyle = color;
@@ -541,7 +652,7 @@
     function drawAcademicGrid(rect) {
       const step = 20 * state.scale;
       ctx.save();
-      ctx.strokeStyle = 'rgba(15, 23, 42, 0.075)';
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.07)';
       ctx.lineWidth = 1;
       for (let x = 0; x < rect.width; x += step) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
@@ -552,7 +663,7 @@
       ctx.restore();
     }
 
-    function drawPointLabel(pt, txt, centerPt, dist = 19, color = '#0F172A') {
+    function drawPointLabel(pt, txt, centerPt, dist = 19, color = '#e2e8f0') {
       if (!state.steps[1] && state.lens !== 'all') return;
       let dx = pt.x - (centerPt ? centerPt.x : pt.x);
       let dy = pt.y - (centerPt ? centerPt.y : pt.y - 1);
@@ -562,9 +673,9 @@
       ctx.save();
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, 3.8, 0, Math.PI * 2);
-      ctx.fillStyle = '#FFFFFF';
+      ctx.fillStyle = '#0d241b';
       ctx.fill();
-      ctx.strokeStyle = '#0F172A';
+      ctx.strokeStyle = '#e2e8f0';
       ctx.lineWidth = 2;
       ctx.stroke();
 
@@ -576,7 +687,7 @@
       ctx.restore();
     }
 
-    function drawRightAngle(P, A, B, size = 12, color = '#2563EB') {
+    function drawRightAngle(P, A, B, size = 12, color = '#38bdf8') {
       if (!state.steps[1] && state.lens !== 'aux' && state.lens !== 'all') return;
       const v1x = A.x - P.x, v1y = A.y - P.y;
       const v2x = B.x - P.x, v2y = B.y - P.y;
@@ -592,12 +703,12 @@
       ctx.strokeStyle = color;
       ctx.lineWidth = 2;
       ctx.stroke();
-      ctx.fillStyle = 'rgba(37, 99, 235, 0.14)';
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.14)';
       ctx.fill();
       ctx.restore();
     }
 
-    function drawTicks(A, B, count = 1, color = '#E11D48', size = 6.5) {
+    function drawTicks(A, B, count = 1, color = '#fb7185', size = 6.5) {
       if (!state.steps[1] && state.lens !== 'aux' && state.lens !== 'all') return;
       const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2;
       const dx = B.x - A.x, dy = B.y - A.y;
@@ -624,12 +735,12 @@
       ctx.save();
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, 13, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(37, 99, 235, 0.16)';
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.16)';
       ctx.fill();
 
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, 7, 0, Math.PI * 2);
-      ctx.fillStyle = '#2563EB';
+      ctx.fillStyle = '#38bdf8';
       ctx.fill();
       ctx.lineWidth = 2;
       ctx.strokeStyle = '#FFFFFF';
@@ -637,7 +748,7 @@
 
       if (label) {
         ctx.font = '800 11px Pretendard, sans-serif';
-        ctx.fillStyle = '#1D4ED8';
+        ctx.fillStyle = '#7dd3fc';
         ctx.textAlign = 'center';
         ctx.fillText(label, pt.x, pt.y - 16);
       }
@@ -653,8 +764,8 @@
       const startX = rect.width / 2 - tapeW / 2;
 
       ctx.save();
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.96)';
-      ctx.strokeStyle = '#CBD5E1';
+      ctx.fillStyle = 'rgba(10, 28, 21, 0.96)';
+      ctx.strokeStyle = '#7ba494';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.roundRect(startX - 14, by - 26, tapeW + 28, 48, 10);
@@ -662,7 +773,7 @@
       ctx.stroke();
 
       ctx.font = '800 11px Pretendard, sans-serif';
-      ctx.fillStyle = '#0F172A';
+      ctx.fillStyle = '#e2e8f0';
       ctx.textAlign = 'left';
       ctx.fillText(`📏 개미 둘레 줄자 (무조건 더하기+) : 총 둘레 = ${totalStr}`, startX - 4, by - 11);
 
@@ -683,18 +794,18 @@
             curPt = seg.ptAt(fill);
           }
         }
-        ctx.fillStyle = '#F1F5F9';
+        ctx.fillStyle = '#10241c';
         ctx.fillRect(x0 + 2, by - 4, w - 4, 16);
         if (fill > 0) {
           ctx.fillStyle = seg.color;
           ctx.fillRect(x0 + 2, by - 4, (w - 4) * fill, 16);
         }
-        ctx.fillStyle = '#FFFFFF';
+        ctx.fillStyle = '#0d241b';
         ctx.font = '800 10px Pretendard, monospace';
         ctx.textAlign = 'center';
         if (w > 34) ctx.fillText(`${seg.label}:${seg.len}`, x0 + w / 2, by + 7);
         if (idx < segments.length - 1) {
-          ctx.fillStyle = '#0F172A';
+          ctx.fillStyle = '#e2e8f0';
           ctx.fillText('+', x0 + w, by + 7);
         }
         acc = s1;
@@ -703,7 +814,7 @@
       if (state.antActive && curPt) {
         ctx.beginPath();
         ctx.arc(curPt.x, curPt.y, 8, 0, Math.PI * 2);
-        ctx.fillStyle = '#E11D48';
+        ctx.fillStyle = '#fb7185';
         ctx.fill();
         ctx.lineWidth = 2;
         ctx.strokeStyle = '#FFFFFF';
@@ -1166,26 +1277,26 @@
           const pB = { x: oPt.x + R * Math.cos(eA), y: oPt.y + R * Math.sin(eA) };
 
           ctx.beginPath(); ctx.arc(oPt.x, oPt.y, R, 0, Math.PI * 2);
-          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 1.8; ctx.setLineDash([5, 5]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.8; ctx.setLineDash([5, 5]); ctx.stroke(); ctx.setLineDash([]);
 
           if (showArea) {
             ctx.beginPath(); ctx.moveTo(oPt.x, oPt.y); ctx.arc(oPt.x, oPt.y, R, sA, eA); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.16)'; ctx.fill();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.16)'; ctx.fill();
 
             ctx.beginPath(); ctx.arc(oPt.x + sep, oPt.y, R, sA, eA); ctx.closePath();
-            ctx.fillStyle = 'rgba(16, 185, 129, 0.24)'; ctx.fill();
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.24)'; ctx.fill();
           }
 
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(oPt.x, oPt.y); ctx.lineTo(pB.x, pB.y);
-          ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
-          drawTicks(oPt, pA, 1, '#2563EB'); drawTicks(oPt, pB, 1, '#2563EB');
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+          drawTicks(oPt, pA, 1, '#38bdf8'); drawTicks(oPt, pB, 1, '#38bdf8');
 
           if (showPerim) {
             ctx.beginPath(); ctx.moveTo(pA.x + sep, pA.y); ctx.lineTo(pB.x + sep, pB.y);
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 3.5; ctx.stroke();
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.5; ctx.stroke();
 
             ctx.beginPath(); ctx.arc(oPt.x + sep, oPt.y, R, sA, eA);
-            ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5; ctx.stroke();
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
           }
 
           drawPointLabel(oPt, `O(${deg}°)`, { x: oPt.x + 40, y: oPt.y }, 26);
@@ -1196,9 +1307,9 @@
 
           const lTxt = fmtPiTxt(2 * r * deg, 360);
           drawTapeMeasure(rect, [
-            { label: '①호AB', len: lTxt, weight: 0.46, color: '#2563EB', ptAt: (u) => ({ x: oPt.x + sep + R * Math.cos(sA + u * (eA - sA)), y: oPt.y + R * Math.sin(sA + u * (eA - sA)) }) },
-            { label: '②반지름BO', len: `${r}`, weight: 0.27, color: '#E11D48', ptAt: (u) => ({ x: pB.x + u * (oPt.x - pB.x), y: pB.y + u * (oPt.y - pB.y) }) },
-            { label: '③반지름OA', len: `${r}`, weight: 0.27, color: '#E11D48', ptAt: (u) => ({ x: oPt.x + u * (pA.x - oPt.x), y: oPt.y + u * (pA.y - oPt.y) }) }
+            { label: '①호AB', len: lTxt, weight: 0.46, color: '#38bdf8', ptAt: (u) => ({ x: oPt.x + sep + R * Math.cos(sA + u * (eA - sA)), y: oPt.y + R * Math.sin(sA + u * (eA - sA)) }) },
+            { label: '②반지름BO', len: `${r}`, weight: 0.27, color: '#fb7185', ptAt: (u) => ({ x: pB.x + u * (oPt.x - pB.x), y: pB.y + u * (oPt.y - pB.y) }) },
+            { label: '③반지름OA', len: `${r}`, weight: 0.27, color: '#fb7185', ptAt: (u) => ({ x: oPt.x + u * (pA.x - oPt.x), y: oPt.y + u * (pA.y - oPt.y) }) }
           ], `${lTxt} + ${2 * r} cm`);
         } else if (sub === 'pizza') {
           const N = 16, halfN = 8, dAng = (Math.PI * 2) / N;
@@ -1225,25 +1336,25 @@
 
             ctx.beginPath(); ctx.moveTo(vx, vy); ctx.arc(vx, vy, pR, curA - dAng / 2, curA + dAng / 2); ctx.closePath();
             if (showArea) {
-              ctx.fillStyle = isTop ? 'rgba(37, 99, 235, 0.18)' : 'rgba(16, 185, 129, 0.18)';
+              ctx.fillStyle = isTop ? 'rgba(56, 189, 248, 0.18)' : 'rgba(52, 211, 153, 0.18)';
               ctx.fill();
             }
-            ctx.strokeStyle = '#64748B'; ctx.lineWidth = 1; ctx.stroke();
+            ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.stroke();
 
             if (showPerim) {
               ctx.beginPath(); ctx.arc(vx, vy, pR, curA - dAng / 2, curA + dAng / 2);
-              ctx.strokeStyle = isTop ? '#2563EB' : '#059669'; ctx.lineWidth = 3.5; ctx.stroke();
+              ctx.strokeStyle = isTop ? '#38bdf8' : '#34d399'; ctx.lineWidth = 3.5; ctx.stroke();
             }
           }
           if (t > 0.25) {
             const rx0 = cxR - rectW / 2, rx1 = cxR + rectW / 2;
             const ry0 = cy - pR / 2, ry1 = cy + pR / 2;
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 4;
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4;
             ctx.beginPath(); ctx.moveTo(rx0, ry0); ctx.lineTo(rx0, ry1); ctx.moveTo(rx1, ry0); ctx.lineTo(rx1, ry1); ctx.stroke();
             drawRightAngle({ x: rx0, y: ry1 }, { x: rx1, y: ry1 }, { x: rx0, y: ry0 }, 11);
-            ctx.fillStyle = '#0F172A'; ctx.font = '800 12px Pretendard, sans-serif'; ctx.textAlign = 'center';
+            ctx.fillStyle = '#e2e8f0'; ctx.font = '800 12px Pretendard, sans-serif'; ctx.textAlign = 'center';
             ctx.fillText(`가로 = πr (${r}π cm)`, cxR, ry0 - 14);
-            ctx.fillStyle = '#E11D48';
+            ctx.fillStyle = '#fb7185';
             ctx.fillText(`세로 = r (${r}cm) × 2개`, rx1 + 52, cy);
           }
         } else if (sub === 'sector') {
@@ -1256,23 +1367,23 @@
           const pB = { x: lx + Rsec * Math.cos(eA), y: cy + Rsec * Math.sin(eA) };
 
           ctx.beginPath(); ctx.arc(lx, cy, Rsec, 0, Math.PI * 2);
-          ctx.strokeStyle = '#64748B'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
 
           if (showArea) {
             ctx.beginPath(); ctx.moveTo(lx, cy); ctx.arc(lx, cy, Rsec, sA, eA); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.18)'; ctx.fill();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
           }
           if (showPerim) {
             ctx.beginPath(); ctx.arc(lx, cy, Rsec, sA, eA);
-            ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5; ctx.stroke();
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(lx, cy); ctx.lineTo(pB.x, pB.y);
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 3.5; ctx.stroke();
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.5; ctx.stroke();
           }
 
           if (state.steps[3]) {
             const g = gcd(deg, 360);
-            drawCanvasFraction(lx - Rsec * 0.45, cy - 4, `${deg}°`, '360°', '#0F172A', 11);
-            ctx.fillStyle = '#2563EB'; ctx.font = '800 11.5px Pretendard, monospace';
+            drawCanvasFraction(lx - Rsec * 0.45, cy - 4, `${deg}°`, '360°', '#e2e8f0', 11);
+            ctx.fillStyle = '#38bdf8'; ctx.font = '800 11.5px Pretendard, monospace';
             ctx.fillText(`= ${deg / g}/${360 / g}원`, lx - Rsec * 0.45 + 32, cy);
           }
 
@@ -1289,30 +1400,30 @@
             ctx.save();
             ctx.globalAlpha = t;
             ctx.beginPath(); ctx.moveTo(rx, topY); ctx.lineTo(rx + baseW / 2, botY); ctx.lineTo(rx - baseW / 2, botY); ctx.closePath();
-            ctx.fillStyle = 'rgba(16, 185, 129, 0.20)'; ctx.fill();
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.20)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
 
             ctx.beginPath(); ctx.moveTo(rx - baseW / 2, botY); ctx.lineTo(rx + baseW / 2, botY);
-            ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4; ctx.stroke();
 
             ctx.beginPath(); ctx.moveTo(rx, topY); ctx.lineTo(rx, botY);
-            ctx.strokeStyle = '#E11D48'; ctx.setLineDash([4, 4]); ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
+            ctx.strokeStyle = '#fb7185'; ctx.setLineDash([4, 4]); ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
             drawRightAngle({ x: rx, y: botY }, { x: rx, y: topY }, { x: rx + baseW / 2, y: botY }, 10);
 
-            ctx.fillStyle = '#0F172A'; ctx.font = '800 12px Pretendard, sans-serif'; ctx.textAlign = 'center';
+            ctx.fillStyle = '#e2e8f0'; ctx.font = '800 12px Pretendard, sans-serif'; ctx.textAlign = 'center';
             ctx.fillText(`밑변 l = ${fmtPiTxt(2 * r * deg, 360)}`, rx, botY + 18);
-            ctx.fillStyle = '#E11D48';
+            ctx.fillStyle = '#fb7185';
             ctx.fillText(`높이 r = ${r}`, rx + 36, (topY + botY) / 2);
-            ctx.fillStyle = '#059669';
+            ctx.fillStyle = '#34d399';
             ctx.fillText(`S = ½rl = ${fmtPiTxt(r * r * deg, 360)} cm²`, rx, topY - 12);
             ctx.restore();
           }
 
           const lTxt = fmtPiTxt(2 * r * deg, 360);
           drawTapeMeasure(rect, [
-            { label: '①호l', len: lTxt, weight: 0.46, color: '#2563EB', ptAt: (u) => ({ x: lx + Rsec * Math.cos(sA + u * (eA - sA)), y: cy + Rsec * Math.sin(sA + u * (eA - sA)) }) },
-            { label: '②반지름r', len: `${r}`, weight: 0.27, color: '#E11D48', ptAt: (u) => ({ x: pB.x + u * (lx - pB.x), y: pB.y + u * (cy - pB.y) }) },
-            { label: '③반지름r', len: `${r}`, weight: 0.27, color: '#E11D48', ptAt: (u) => ({ x: lx + u * (pA.x - lx), y: cy + u * (pA.y - cy) }) }
+            { label: '①호l', len: lTxt, weight: 0.46, color: '#38bdf8', ptAt: (u) => ({ x: lx + Rsec * Math.cos(sA + u * (eA - sA)), y: cy + Rsec * Math.sin(sA + u * (eA - sA)) }) },
+            { label: '②반지름r', len: `${r}`, weight: 0.27, color: '#fb7185', ptAt: (u) => ({ x: pB.x + u * (lx - pB.x), y: pB.y + u * (cy - pB.y) }) },
+            { label: '③반지름r', len: `${r}`, weight: 0.27, color: '#fb7185', ptAt: (u) => ({ x: lx + u * (pA.x - lx), y: cy + u * (pA.y - cy) }) }
           ], `${lTxt} + ${2 * r} cm`);
         } else {
           // chordOx
@@ -1324,13 +1435,13 @@
           const pC = { x: cx + R * Math.cos(rad1), y: cy + R * Math.sin(rad1) };
 
           ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
-          ctx.strokeStyle = '#64748B'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
 
           ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, -rad1, 0); ctx.closePath();
-          ctx.fillStyle = 'rgba(37, 99, 235, 0.16)'; ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.16)'; ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
 
           ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, -rad1 + t * rad1, t * rad1); ctx.closePath();
-          ctx.fillStyle = 'rgba(16, 185, 129, 0.18)'; ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.18)'; ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
 
           if (t > 0.2) {
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
@@ -1338,14 +1449,14 @@
           }
 
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y);
-          ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 2.5; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]);
-          drawTicks(pA, pB, 2, '#2563EB'); drawTicks(pB, pC, 2, '#2563EB');
+          ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]);
+          drawTicks(pA, pB, 2, '#38bdf8'); drawTicks(pB, pC, 2, '#38bdf8');
 
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pC.x, pC.y);
-          ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 4; ctx.stroke();
+          ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4; ctx.stroke();
 
           ctx.beginPath(); ctx.arc(cx, cy, R, -rad1, -rad1 + (1 + t) * rad1);
-          ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5; ctx.stroke();
+          ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
 
           drawPointLabel(pO, `O(${bDeg}°×2)`, { x: cx + R, y: cy }, 42);
           drawPointLabel(pA, 'A', pO, 18);
@@ -1362,7 +1473,7 @@
       else if (m === 2) {
         if (sub === 'leaf') {
           const x0 = cx - R / 2 - t * 38, y0 = cy - R / 2;
-          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
           ctx.strokeRect(x0, y0, R, R); ctx.setLineDash([]);
 
           if (showArea) {
@@ -1370,16 +1481,16 @@
             ctx.arc(x0, y0 + R, R, -Math.PI / 2, 0);
             ctx.arc(x0 + R, y0, R, Math.PI / 2, Math.PI);
             ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.22)';
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.22)';
             ctx.fill();
           }
           if (showPerim) {
-            ctx.beginPath(); ctx.arc(x0, y0 + R, R, -Math.PI / 2, 0); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4; ctx.stroke();
-            ctx.beginPath(); ctx.arc(x0 + R, y0, R, Math.PI / 2, Math.PI); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.beginPath(); ctx.arc(x0, y0 + R, R, -Math.PI / 2, 0); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.beginPath(); ctx.arc(x0 + R, y0, R, Math.PI / 2, Math.PI); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4; ctx.stroke();
           }
           if (showAux) {
             ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + R, y0 + R);
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
             drawRightAngle({ x: x0, y: y0 + R }, { x: x0, y: y0 }, { x: x0 + R, y: y0 + R }, 11);
           }
 
@@ -1391,32 +1502,32 @@
 
           if (t > 0.1) {
             const bx = cx + R * 0.42;
-            ctx.fillStyle = '#FFFFFF'; ctx.strokeStyle = '#CBD5E1'; ctx.lineWidth = 1.5;
+            ctx.fillStyle = '#0d241b'; ctx.strokeStyle = '#7ba494'; ctx.lineWidth = 1.5;
             ctx.beginPath(); ctx.roundRect(bx, cy - 52, 195, 104, 10); ctx.fill(); ctx.stroke();
-            ctx.fillStyle = '#0F172A'; ctx.font = '800 12px Pretendard, sans-serif'; ctx.textAlign = 'left';
+            ctx.fillStyle = '#e2e8f0'; ctx.font = '800 12px Pretendard, sans-serif'; ctx.textAlign = 'left';
             ctx.fillText(`🍃 반쪽 활꼴 × 2배`, bx + 12, cy - 28);
-            ctx.fillStyle = '#2563EB';
+            ctx.fillStyle = '#38bdf8';
             ctx.fillText(`• 사분원×2 = ${fmtPiTxt(r * r, 2)}`, bx + 12, cy - 4);
-            ctx.fillStyle = '#E11D48';
+            ctx.fillStyle = '#fb7185';
             ctx.fillText(`• 정사각형 = -${r * r}`, bx + 12, cy + 18);
-            ctx.fillStyle = '#059669';
+            ctx.fillStyle = '#34d399';
             ctx.fillText(`⇒ 정답: ${fmtPiTxt(r * r, 2)} - ${r * r} cm²`, bx + 12, cy + 40);
           }
 
           const qTxt = fmtPiTxt(2 * r * 90, 360);
           drawTapeMeasure(rect, [
-            { label: '①위쪽호', len: qTxt, weight: 0.5, color: '#2563EB', ptAt: (u) => ({ x: x0 + R * Math.cos(-Math.PI / 2 + u * (Math.PI / 2)), y: y0 + R + R * Math.sin(-Math.PI / 2 + u * (Math.PI / 2)) }) },
-            { label: '②아래쪽호', len: qTxt, weight: 0.5, color: '#E11D48', ptAt: (u) => ({ x: x0 + R + R * Math.cos(Math.PI / 2 + u * (Math.PI / 2)), y: y0 + R * Math.sin(Math.PI / 2 + u * (Math.PI / 2)) }) }
+            { label: '①위쪽호', len: qTxt, weight: 0.5, color: '#38bdf8', ptAt: (u) => ({ x: x0 + R * Math.cos(-Math.PI / 2 + u * (Math.PI / 2)), y: y0 + R + R * Math.sin(-Math.PI / 2 + u * (Math.PI / 2)) }) },
+            { label: '②아래쪽호', len: qTxt, weight: 0.5, color: '#fb7185', ptAt: (u) => ({ x: x0 + R + R * Math.cos(Math.PI / 2 + u * (Math.PI / 2)), y: y0 + R * Math.sin(Math.PI / 2 + u * (Math.PI / 2)) }) }
           ], `${r}π cm`);
         } else if (sub === 'inOutSq') {
           ctx.fillStyle = 'rgba(148, 163, 184, 0.12)';
           ctx.fillRect(cx - R, cy - R, 2 * R, 2 * R);
-          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
           ctx.strokeRect(cx - R, cy - R, 2 * R, 2 * R); ctx.setLineDash([]);
 
           ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
-          if (showArea) { ctx.fillStyle = 'rgba(37, 99, 235, 0.20)'; ctx.fill(); }
-          ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 3.5; ctx.stroke();
+          if (showArea) { ctx.fillStyle = 'rgba(56, 189, 248, 0.20)'; ctx.fill(); }
+          ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3.5; ctx.stroke();
 
           const rot = (t * Math.PI) / 4;
           const pts = [0, 1, 2, 3].map((i) => {
@@ -1427,35 +1538,35 @@
           ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
           pts.slice(1).forEach((p) => ctx.lineTo(p.x, p.y));
           ctx.closePath();
-          ctx.fillStyle = '#FFFFFF'; ctx.fill();
-          ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 3; ctx.stroke();
+          ctx.fillStyle = '#0d241b'; ctx.fill();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.stroke();
 
           if (showAux) {
             ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); ctx.lineTo(pts[2].x, pts[2].y);
             ctx.moveTo(pts[1].x, pts[1].y); ctx.lineTo(pts[3].x, pts[3].y);
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2.5; ctx.stroke();
-            drawRightAngle({ x: cx, y: cy }, pts[0], pts[1], 12, '#E11D48');
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5; ctx.stroke();
+            drawRightAngle({ x: cx, y: cy }, pts[0], pts[1], 12, '#fb7185');
           }
           ['A', 'B', 'C', 'D'].forEach((l, i) => drawPointLabel(pts[i], l, { x: cx, y: cy }, 18));
         } else if (sub === 'equalArea') {
           const x0 = cx - R * 0.6, y0 = cy + R * 0.45;
           const rw = (Math.PI / 4) * R;
 
-          ctx.fillStyle = t > 0.5 ? 'rgba(225, 29, 72, 0.30)' : 'rgba(225, 29, 72, 0.16)';
+          ctx.fillStyle = t > 0.5 ? 'rgba(244, 63, 94, 0.30)' : 'rgba(244, 63, 94, 0.16)';
           ctx.fillRect(x0, y0 - R, rw, R);
-          ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2.5;
+          ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5;
           ctx.strokeRect(x0, y0 - R, rw, R);
 
           ctx.beginPath(); ctx.moveTo(x0, y0); ctx.arc(x0, y0, R, -Math.PI / 2, 0); ctx.closePath();
-          ctx.fillStyle = t > 0.5 ? 'rgba(37, 99, 235, 0.30)' : 'rgba(37, 99, 235, 0.16)';
+          ctx.fillStyle = t > 0.5 ? 'rgba(56, 189, 248, 0.30)' : 'rgba(56, 189, 248, 0.16)';
           ctx.fill();
-          ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5; ctx.stroke();
 
           drawRightAngle({ x: x0, y: y0 }, { x: x0, y: y0 - R }, { x: x0 + R, y: y0 }, 12);
-          ctx.fillStyle = '#0F172A'; ctx.font = '800 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
+          ctx.fillStyle = '#e2e8f0'; ctx.font = '800 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
           ctx.fillText('공통 W', x0 + rw * 0.45, y0 - R * 0.35);
-          ctx.fillStyle = '#1D4ED8'; ctx.fillText('S₁', x0 + rw * 0.35, y0 - R * 0.8);
-          ctx.fillStyle = '#BE123C'; ctx.fillText('S₂', x0 + rw * 0.88, y0 - R * 0.18);
+          ctx.fillStyle = '#7dd3fc'; ctx.fillText('S₁', x0 + rw * 0.35, y0 - R * 0.8);
+          ctx.fillStyle = '#fda4af'; ctx.fillText('S₂', x0 + rw * 0.88, y0 - R * 0.18);
         } else {
           // lunule
           const a = r, b = (r * 4) / 3, c = Math.hypot(a, b);
@@ -1468,21 +1579,21 @@
           const mAC = { x: (pA.x + pC.x) / 2, y: (pA.y + pC.y) / 2 };
           const angAC = Math.atan2(pC.y - pA.y, pC.x - pA.x);
           ctx.beginPath(); ctx.arc(mAC.x, mAC.y, bPx / 2, angAC + Math.PI, angAC); ctx.closePath();
-          ctx.fillStyle = 'rgba(37, 99, 235, 0.22)'; ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
 
           const mBC = { x: (pB.x + pC.x) / 2, y: (pB.y + pC.y) / 2 };
           const angCB = Math.atan2(pB.y - pC.y, pB.x - pC.x);
           ctx.beginPath(); ctx.arc(mBC.x, mBC.y, aPx / 2, angCB + Math.PI, angCB); ctx.closePath();
-          ctx.fillStyle = 'rgba(37, 99, 235, 0.22)'; ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
 
           ctx.beginPath(); ctx.arc(cx, yB, cPx / 2, Math.PI, 0); ctx.closePath();
-          ctx.fillStyle = t > 0.5 ? 'rgba(225, 29, 72, 0.14)' : '#F8FAFC';
-          ctx.fill(); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.fillStyle = t > 0.5 ? 'rgba(244, 63, 94, 0.14)' : '#07130e';
+          ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]);
 
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
-          ctx.fillStyle = 'rgba(16, 185, 129, 0.24)'; ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.24)'; ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
 
-          drawRightAngle(pC, pA, pB, 12, '#059669');
+          drawRightAngle(pC, pA, pB, 12, '#34d399');
           drawPointLabel(pA, 'A', { x: cx, y: cy }, 18);
           drawPointLabel(pB, 'B', { x: cx, y: cy }, 18);
           drawPointLabel(pC, 'C(90°)', { x: cx, y: yB }, 22);
@@ -1503,17 +1614,17 @@
             ctx.lineTo(pO.x, pO.y);
             ctx.arc(pM.x, pM.y, Rsm, 0, Math.PI, true);
             ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.18)';
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)';
             ctx.fill();
           }
 
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pO.x, pO.y);
-          ctx.strokeStyle = '#64748B'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
 
           if (showPerim) {
-            ctx.beginPath(); ctx.arc(pO.x, pO.y, R, Math.PI, 0); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5; ctx.stroke();
-            ctx.beginPath(); ctx.arc(pM.x, pM.y, Rsm, Math.PI, 0); ctx.strokeStyle = '#059669'; ctx.lineWidth = 4; ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pB.x, pB.y); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.beginPath(); ctx.arc(pO.x, pO.y, R, Math.PI, 0); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
+            ctx.beginPath(); ctx.arc(pM.x, pM.y, Rsm, Math.PI, 0); ctx.strokeStyle = '#34d399'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pB.x, pB.y); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4; ctx.stroke();
           }
 
           drawPointLabel(pA, 'A', pO, 18);
@@ -1522,9 +1633,9 @@
           drawPointLabel(pB, 'B', pO, 18);
 
           drawTapeMeasure(rect, [
-            { label: '①큰호', len: `${r}π`, weight: 0.45, color: '#2563EB', ptAt: (u) => ({ x: pO.x + R * Math.cos(Math.PI + u * Math.PI), y: pO.y + R * Math.sin(Math.PI + u * Math.PI) }) },
-            { label: '③직선OB', len: `${r}`, weight: 0.25, color: '#E11D48', ptAt: (u) => ({ x: pB.x + u * (pO.x - pB.x), y: pO.y }) },
-            { label: '②작은호', len: fmtPiTxt(r, 2), weight: 0.30, color: '#059669', ptAt: (u) => ({ x: pM.x + Rsm * Math.cos(-u * Math.PI), y: pM.y + Rsm * Math.sin(-u * Math.PI) }) }
+            { label: '①큰호', len: `${r}π`, weight: 0.45, color: '#38bdf8', ptAt: (u) => ({ x: pO.x + R * Math.cos(Math.PI + u * Math.PI), y: pO.y + R * Math.sin(Math.PI + u * Math.PI) }) },
+            { label: '③직선OB', len: `${r}`, weight: 0.25, color: '#fb7185', ptAt: (u) => ({ x: pB.x + u * (pO.x - pB.x), y: pO.y }) },
+            { label: '②작은호', len: fmtPiTxt(r, 2), weight: 0.30, color: '#34d399', ptAt: (u) => ({ x: pM.x + Rsm * Math.cos(-u * Math.PI), y: pM.y + Rsm * Math.sin(-u * Math.PI) }) }
           ], `${fmtPiTxt(r + r / 2, 1)} + ${r} cm`);
         } else if (sub === 'yin') {
           if (showArea) {
@@ -1533,29 +1644,29 @@
             ctx.lineTo(cx, cy);
             ctx.arc(cx - Rsm, cy, Rsm, 0, Math.PI, true);
             ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.18)';
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)';
             ctx.fill();
 
             const px = (1 - t) * (cx + Rsm) + t * (cx - Rsm);
             const sA = (1 - t) * 0 + t * Math.PI;
             const eA = (1 - t) * Math.PI + t * Math.PI * 2;
             ctx.beginPath(); ctx.arc(px, cy, Rsm, sA, eA); ctx.closePath();
-            ctx.fillStyle = 'rgba(16, 185, 129, 0.28)';
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.28)';
             ctx.fill();
           }
           if (showPerim) {
-            ctx.beginPath(); ctx.arc(cx, cy, R, Math.PI, 0); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5; ctx.stroke();
-            ctx.beginPath(); ctx.arc(cx - Rsm, cy, Rsm, Math.PI, 0); ctx.strokeStyle = '#059669'; ctx.lineWidth = 4; ctx.stroke();
-            ctx.beginPath(); ctx.arc(cx + Rsm, cy, Rsm, 0, Math.PI); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.beginPath(); ctx.arc(cx, cy, R, Math.PI, 0); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
+            ctx.beginPath(); ctx.arc(cx - Rsm, cy, Rsm, Math.PI, 0); ctx.strokeStyle = '#34d399'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.beginPath(); ctx.arc(cx + Rsm, cy, Rsm, 0, Math.PI); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4; ctx.stroke();
           }
           drawPointLabel({ x: cx - R, y: cy }, 'A', { x: cx, y: cy }, 18);
           drawPointLabel({ x: cx, y: cy }, 'O', { x: cx, y: cy + 25 }, 16);
           drawPointLabel({ x: cx + R, y: cy }, 'B', { x: cx, y: cy }, 18);
 
           drawTapeMeasure(rect, [
-            { label: '①큰호', len: `${r}π`, weight: 0.5, color: '#2563EB', ptAt: (u) => ({ x: cx + R * Math.cos(Math.PI + u * Math.PI), y: cy + R * Math.sin(Math.PI + u * Math.PI) }) },
-            { label: '②오른작은호', len: `${r / 2}π`, weight: 0.25, color: '#E11D48', ptAt: (u) => ({ x: cx + Rsm + Rsm * Math.cos(u * Math.PI), y: cy + Rsm * Math.sin(u * Math.PI) }) },
-            { label: '③왼작은호', len: `${r / 2}π`, weight: 0.25, color: '#059669', ptAt: (u) => ({ x: cx - Rsm + Rsm * Math.cos(-u * Math.PI), y: cy + Rsm * Math.sin(-u * Math.PI) }) }
+            { label: '①큰호', len: `${r}π`, weight: 0.5, color: '#38bdf8', ptAt: (u) => ({ x: cx + R * Math.cos(Math.PI + u * Math.PI), y: cy + R * Math.sin(Math.PI + u * Math.PI) }) },
+            { label: '②오른작은호', len: `${r / 2}π`, weight: 0.25, color: '#fb7185', ptAt: (u) => ({ x: cx + Rsm + Rsm * Math.cos(u * Math.PI), y: cy + Rsm * Math.sin(u * Math.PI) }) },
+            { label: '③왼작은호', len: `${r / 2}π`, weight: 0.25, color: '#34d399', ptAt: (u) => ({ x: cx - Rsm + Rsm * Math.cos(-u * Math.PI), y: cy + Rsm * Math.sin(-u * Math.PI) }) }
           ], `${2 * r}π cm`);
         } else if (sub === 'babyCircle') {
           const baseCx = cx - t * R * 0.45;
@@ -1566,30 +1677,30 @@
             ctx.beginPath();
             ctx.arc(baseCx, cy, R, 0, Math.PI * 2);
             ctx.arc(holeX, cy, Rsm, 0, Math.PI * 2, true);
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.18)';
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)';
             ctx.fill('evenodd');
           }
           if (t > 0.03) {
             ctx.beginPath(); ctx.arc(sepX, cy, Rsm, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(225, 29, 72, 0.16)'; ctx.fill();
-            ctx.strokeStyle = '#E11D48'; ctx.setLineDash([4, 4]); ctx.lineWidth = 2.5; ctx.stroke(); ctx.setLineDash([]);
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.16)'; ctx.fill();
+            ctx.strokeStyle = '#fb7185'; ctx.setLineDash([4, 4]); ctx.lineWidth = 2.5; ctx.stroke(); ctx.setLineDash([]);
           }
           if (showPerim) {
-            ctx.beginPath(); ctx.arc(baseCx, cy, R, 0, Math.PI * 2); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5; ctx.stroke();
-            ctx.beginPath(); ctx.arc(holeX, cy, Rsm, 0, Math.PI * 2); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.beginPath(); ctx.arc(baseCx, cy, R, 0, Math.PI * 2); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
+            ctx.beginPath(); ctx.arc(holeX, cy, Rsm, 0, Math.PI * 2); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4; ctx.stroke();
           }
           if (showAux) {
             ctx.beginPath(); ctx.moveTo(baseCx, cy); ctx.lineTo(baseCx + R, cy);
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
-            drawTicks({ x: baseCx, y: cy }, { x: holeX, y: cy }, 1, '#0F172A');
-            drawTicks({ x: holeX, y: cy }, { x: baseCx + R, y: cy }, 1, '#0F172A');
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+            drawTicks({ x: baseCx, y: cy }, { x: holeX, y: cy }, 1, '#e2e8f0');
+            drawTicks({ x: holeX, y: cy }, { x: baseCx + R, y: cy }, 1, '#e2e8f0');
           }
           drawPointLabel({ x: baseCx, y: cy }, `O(R=${r})`, { x: baseCx - 30, y: cy + 25 }, 20);
-          drawPointLabel({ x: holeX, y: cy }, `O'(r=${r / 2})`, { x: holeX, y: cy + 25 }, 20, '#E11D48');
+          drawPointLabel({ x: holeX, y: cy }, `O'(r=${r / 2})`, { x: holeX, y: cy + 25 }, 20, '#fb7185');
 
           drawTapeMeasure(rect, [
-            { label: '①큰원둘레', len: `${2 * r}π`, weight: 0.67, color: '#2563EB', ptAt: (u) => ({ x: baseCx + R * Math.cos(u * Math.PI * 2), y: cy + R * Math.sin(u * Math.PI * 2) }) },
-            { label: '②작은원둘레', len: `${r}π`, weight: 0.33, color: '#E11D48', ptAt: (u) => ({ x: holeX + Rsm * Math.cos(u * Math.PI * 2), y: cy + Rsm * Math.sin(u * Math.PI * 2) }) }
+            { label: '①큰원둘레', len: `${2 * r}π`, weight: 0.67, color: '#38bdf8', ptAt: (u) => ({ x: baseCx + R * Math.cos(u * Math.PI * 2), y: cy + R * Math.sin(u * Math.PI * 2) }) },
+            { label: '②작은원둘레', len: `${r}π`, weight: 0.33, color: '#fb7185', ptAt: (u) => ({ x: holeX + Rsm * Math.cos(u * Math.PI * 2), y: cy + Rsm * Math.sin(u * Math.PI * 2) }) }
           ], `${3 * r}π cm`);
         } else {
           // track (운동장 트랙 합체)
@@ -1598,25 +1709,25 @@
           const pB = { x: cx + halfW, y: cy - R }, pC = { x: cx + halfW, y: cy + R };
 
           if (showArea) {
-            ctx.fillStyle = 'rgba(16, 185, 129, 0.18)';
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.18)';
             ctx.fillRect(cx - halfW, cy - R, halfW * 2, R * 2);
 
             ctx.beginPath(); ctx.arc(cx - halfW, cy, R, Math.PI / 2, (Math.PI * 3) / 2); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.22)'; ctx.fill();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill();
 
             ctx.beginPath(); ctx.arc(cx + halfW, cy, R, -Math.PI / 2, Math.PI / 2); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.22)'; ctx.fill();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill();
           }
 
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pD.x, pD.y); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y);
-          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
           drawRightAngle(pD, pA, pC, 11);
 
           if (showPerim) {
-            ctx.beginPath(); ctx.arc(cx - halfW, cy, R, Math.PI / 2, (Math.PI * 3) / 2); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5; ctx.stroke();
-            ctx.beginPath(); ctx.arc(cx + halfW, cy, R, -Math.PI / 2, Math.PI / 2); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4.5; ctx.stroke();
+            ctx.beginPath(); ctx.arc(cx - halfW, cy, R, Math.PI / 2, (Math.PI * 3) / 2); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
+            ctx.beginPath(); ctx.arc(cx + halfW, cy, R, -Math.PI / 2, Math.PI / 2); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.moveTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y);
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4; ctx.stroke();
           }
           drawPointLabel(pA, 'A', { x: cx, y: cy }, 16);
           drawPointLabel(pB, 'B', { x: cx, y: cy }, 16);
@@ -1624,8 +1735,8 @@
           drawPointLabel(pD, 'D', { x: cx, y: cy }, 16);
 
           drawTapeMeasure(rect, [
-            { label: '①+②반원호2개', len: `${2 * r}π`, weight: 0.55, color: '#2563EB', ptAt: (u) => ({ x: cx + halfW + R * Math.cos(-Math.PI / 2 + u * Math.PI), y: cy + R * Math.sin(-Math.PI / 2 + u * Math.PI) }) },
-            { label: '③+④위아래직선', len: `${4 * r}`, weight: 0.45, color: '#E11D48', ptAt: (u) => ({ x: pA.x + u * (pB.x - pA.x), y: pA.y }) }
+            { label: '①+②반원호2개', len: `${2 * r}π`, weight: 0.55, color: '#38bdf8', ptAt: (u) => ({ x: cx + halfW + R * Math.cos(-Math.PI / 2 + u * Math.PI), y: cy + R * Math.sin(-Math.PI / 2 + u * Math.PI) }) },
+            { label: '③+④위아래직선', len: `${4 * r}`, weight: 0.45, color: '#fb7185', ptAt: (u) => ({ x: pA.x + u * (pB.x - pA.x), y: pA.y }) }
           ], `${2 * r}π + ${4 * r} cm`);
         }
       }
@@ -1644,28 +1755,28 @@
           const pP = { x: pO.x - 2 * R * Math.cos(th), y: pO.y };
 
           ctx.beginPath(); ctx.arc(pO.x, pO.y, R, Math.PI, 0);
-          ctx.strokeStyle = '#64748B'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.stroke();
 
           ctx.beginPath(); ctx.moveTo(pP.x - 15, pP.y); ctx.lineTo(pD.x + 15, pD.y);
           ctx.moveTo(pP.x, pP.y); ctx.lineTo(pA.x, pA.y);
-          ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
 
           ctx.beginPath(); ctx.arc(pO.x, pO.y, R, Math.PI, Math.PI - th, true);
-          ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 5; ctx.stroke();
+          ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5; ctx.stroke();
 
           ctx.beginPath(); ctx.arc(pO.x, pO.y, R, -3 * th, 0);
-          ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 5; ctx.stroke();
+          ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 5; ctx.stroke();
 
           if (showAux || t > 0.05) {
             ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pC.x, pC.y); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pA.x, pA.y);
-            ctx.strokeStyle = '#059669'; ctx.lineWidth = 3; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]);
-            drawTicks(pP, pC, 1, '#059669'); drawTicks(pO, pC, 1, '#059669'); drawTicks(pO, pA, 1, '#059669');
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 3; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]);
+            drawTicks(pP, pC, 1, '#34d399'); drawTicks(pO, pC, 1, '#34d399'); drawTicks(pO, pA, 1, '#34d399');
           }
 
           ctx.font = '800 12px Pretendard, monospace';
-          ctx.fillStyle = '#2563EB'; ctx.fillText(`θ=${thetaDeg}°`, pP.x + 42, pP.y - 10);
-          ctx.fillStyle = '#059669'; ctx.fillText(`2θ=${2 * thetaDeg}°`, pC.x + 28, pC.y + 20);
-          ctx.fillStyle = '#E11D48'; ctx.fillText(`외각 3θ=${3 * thetaDeg}° (3배!)`, pO.x + 70, pO.y - 16);
+          ctx.fillStyle = '#38bdf8'; ctx.fillText(`θ=${thetaDeg}°`, pP.x + 42, pP.y - 10);
+          ctx.fillStyle = '#34d399'; ctx.fillText(`2θ=${2 * thetaDeg}°`, pC.x + 28, pC.y + 20);
+          ctx.fillStyle = '#fb7185'; ctx.fillText(`외각 3θ=${3 * thetaDeg}° (3배!)`, pO.x + 70, pO.y - 16);
 
           drawPointLabel(pP, 'P', pO, 18); drawPointLabel(pB, 'B', { x: pB.x, y: pB.y - 25 }, 16);
           drawPointLabel(pO, 'O', { x: pO.x, y: pO.y - 25 }, 16); drawPointLabel(pD, 'D', pO, 18);
@@ -1679,29 +1790,29 @@
           const pA = { x: pB.x, y: pO.y }, pC = { x: pO.x, y: pB.y };
 
           ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.arc(pO.x, pO.y, Rq, -Math.PI / 2, 0); ctx.closePath();
-          if (showArea) { ctx.fillStyle = 'rgba(37, 99, 235, 0.16)'; ctx.fill(); }
-          ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4; ctx.stroke();
+          if (showArea) { ctx.fillStyle = 'rgba(56, 189, 248, 0.16)'; ctx.fill(); }
+          ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4; ctx.stroke();
 
-          ctx.fillStyle = 'rgba(16, 185, 129, 0.18)';
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.18)';
           ctx.fillRect(pO.x, pC.y, pA.x - pO.x, pO.y - pC.y);
-          ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 2.5;
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5;
           ctx.strokeRect(pO.x, pC.y, pA.x - pO.x, pO.y - pC.y);
           drawRightAngle(pO, pC, pA, 11);
 
           ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pC.x, pC.y);
-          ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 4; ctx.stroke();
-          drawTicks(pA, pC, 2, '#2563EB');
+          ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4; ctx.stroke();
+          drawTicks(pA, pC, 2, '#38bdf8');
 
           if (showAux || t > 0.05) {
             ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pB.x, pB.y);
-            ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 4.5; ctx.setLineDash([6, 4]); ctx.stroke(); ctx.setLineDash([]);
-            drawTicks(pO, pB, 2, '#E11D48');
-            ctx.fillStyle = '#BE123C'; ctx.font = '800 12.5px Pretendard, sans-serif';
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4.5; ctx.setLineDash([6, 4]); ctx.stroke(); ctx.setLineDash([]);
+            drawTicks(pO, pB, 2, '#fb7185');
+            ctx.fillStyle = '#fda4af'; ctx.font = '800 12.5px Pretendard, sans-serif';
             ctx.fillText(`🎯 반지름 OB = 대각선 AC = ${r}cm!`, pB.x + 12, pB.y);
           }
 
           drawPointLabel(pO, 'O', { x: pO.x + 25, y: pO.y - 25 }, 18);
-          drawPointLabel(pA, 'A', pO, 16); drawPointLabel(pB, 'B', pO, 18, '#E11D48');
+          drawPointLabel(pA, 'A', pO, 16); drawPointLabel(pB, 'B', pO, 18, '#fb7185');
           drawPointLabel(pC, 'C', pO, 16); drawPointLabel(pE, 'E', pO, 16); drawPointLabel(pF, 'F', pO, 16);
         } else if (sub === 'rolling') {
           const n = [3, 4, 5, 6][Math.min(3, Math.max(0, Math.round((deg - 60) / 40)))];
@@ -1724,35 +1835,35 @@
 
             ctx.beginPath(); ctx.moveTo(v1.x, v1.y); ctx.lineTo(v2.x, v2.y);
             ctx.lineTo(v2.x + nx * sweepR, v2.y + ny * sweepR); ctx.lineTo(v1.x + nx * sweepR, v1.y + ny * sweepR); ctx.closePath();
-            ctx.fillStyle = 'rgba(37, 99, 235, 0.16)'; ctx.fill(); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 1.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.16)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.5; ctx.stroke();
 
             ctx.beginPath(); ctx.moveTo(v1.x + nx * coinR, v1.y + ny * coinR); ctx.lineTo(v2.x + nx * coinR, v2.y + ny * coinR);
-            ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 3; ctx.stroke();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.stroke();
 
             ctx.beginPath(); ctx.moveTo(v2.x, v2.y); ctx.arc(v2.x, v2.y, sweepR, normA, normA + extAng); ctx.closePath();
-            ctx.fillStyle = 'rgba(225, 29, 72, 0.18)'; ctx.fill(); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 1.8; ctx.stroke();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.18)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 1.8; ctx.stroke();
 
             ctx.beginPath(); ctx.arc(v2.x, v2.y, coinR, normA, normA + extAng);
-            ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 3.5; ctx.stroke();
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3.5; ctx.stroke();
 
             if (state.cornerGather) {
               const gx = rect.width * 0.76 + state.offsetX;
               ctx.beginPath(); ctx.moveTo(gx, cy); ctx.arc(gx, cy, sweepR * 0.85, normA, normA + extAng); ctx.closePath();
-              ctx.fillStyle = 'rgba(225, 29, 72, 0.24)'; ctx.fill(); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 2; ctx.stroke();
+              ctx.fillStyle = 'rgba(244, 63, 94, 0.24)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2; ctx.stroke();
               ctx.beginPath(); ctx.arc(gx, cy, coinR * 0.85, normA, normA + extAng);
-              ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 3.5; ctx.stroke();
+              ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3.5; ctx.stroke();
             }
           }
 
           if (state.cornerGather) {
             const gx = rect.width * 0.76 + state.offsetX;
-            ctx.fillStyle = '#0F172A'; ctx.font = '800 12px Pretendard, sans-serif'; ctx.textAlign = 'center';
+            ctx.fillStyle = '#e2e8f0'; ctx.font = '800 12px Pretendard, sans-serif'; ctx.textAlign = 'center';
             ctx.fillText(`🧲 모퉁이 ${n}개 합 = 360° 원 1개!`, gx, cy - sweepR - 12);
           }
 
           ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y);
           verts.slice(1).forEach((v) => ctx.lineTo(v.x, v.y));
-          ctx.closePath(); ctx.fillStyle = '#FFFFFF'; ctx.fill(); ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 3; ctx.stroke();
+          ctx.closePath(); ctx.fillStyle = '#0d241b'; ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.stroke();
 
           const sIdx = Math.min(n - 1, Math.floor(t * n)), locT = t * n - sIdx;
           const v1 = verts[sIdx], v2 = verts[(sIdx + 1) % n];
@@ -1763,7 +1874,7 @@
             : { x: v2.x + coinR * Math.cos(normA + ((locT - 0.65) / 0.35) * extAng), y: v2.y + coinR * Math.sin(normA + ((locT - 0.65) / 0.35) * extAng) };
 
           ctx.beginPath(); ctx.arc(cPt.x, cPt.y, coinR, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(16, 185, 129, 0.32)'; ctx.fill(); ctx.strokeStyle = '#059669'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.32)'; ctx.fill(); ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2.5; ctx.stroke();
         } else {
           // dogRotate (울타리에 걸려 꺾이는 강아지 목줄)
           const L = r, side = Math.max(1, Math.round(r * 0.5)), rem = Math.max(0, L - side);
@@ -1773,18 +1884,18 @@
           const pO = { x: ox, y: oy }, pA = { x: ox - sidePx, y: oy }, pB = { x: ox, y: oy + sidePx };
 
           ctx.beginPath(); ctx.moveTo(ox, oy); ctx.arc(ox, oy, LPx, -Math.PI, Math.PI / 2); ctx.closePath();
-          ctx.fillStyle = 'rgba(37, 99, 235, 0.18)'; ctx.fill(); ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5; ctx.stroke();
 
           if (remPx > 1) {
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.arc(pA.x, pA.y, remPx, Math.PI / 2, Math.PI); ctx.closePath();
-            ctx.fillStyle = 'rgba(225, 29, 72, 0.22)'; ctx.fill(); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 3; ctx.stroke();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3; ctx.stroke();
 
             ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.arc(pB.x, pB.y, remPx, Math.PI / 2, Math.PI); ctx.closePath();
-            ctx.fillStyle = 'rgba(225, 29, 72, 0.22)'; ctx.fill(); ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 3; ctx.stroke();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3; ctx.stroke();
           }
 
-          ctx.fillStyle = '#FFFFFF'; ctx.fillRect(ox - sidePx, oy, sidePx, sidePx);
-          ctx.strokeStyle = '#0F172A'; ctx.lineWidth = 3; ctx.strokeRect(ox - sidePx, oy, sidePx, sidePx);
+          ctx.fillStyle = '#0d241b'; ctx.fillRect(ox - sidePx, oy, sidePx, sidePx);
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.strokeRect(ox - sidePx, oy, sidePx, sidePx);
           drawRightAngle(pA, pO, { x: pA.x, y: pA.y + sidePx }, 10);
 
           let dogPt;
@@ -1800,15 +1911,15 @@
           ctx.beginPath(); ctx.moveTo(pO.x, pO.y);
           if (t > 0.65) ctx.lineTo(pB.x, pB.y);
           ctx.lineTo(dogPt.x, dogPt.y);
-          ctx.strokeStyle = '#E11D48'; ctx.lineWidth = 3.5; ctx.stroke();
+          ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.5; ctx.stroke();
 
           ctx.beginPath(); ctx.arc(dogPt.x, dogPt.y, 9, 0, Math.PI * 2);
-          ctx.fillStyle = '#0F172A'; ctx.fill();
+          ctx.fillStyle = '#e2e8f0'; ctx.fill();
           ctx.font = '12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🐕', dogPt.x, dogPt.y + 4);
 
           drawPointLabel(pO, 'O(묶인점)', { x: ox + 25, y: oy - 25 }, 20);
-          drawPointLabel(pA, 'A(모퉁이)', { x: pA.x - 20, y: pA.y - 20 }, 18, '#E11D48');
-          drawPointLabel(pB, 'B(모퉁이)', { x: pB.x + 25, y: pB.y + 20 }, 18, '#E11D48');
+          drawPointLabel(pA, 'A(모퉁이)', { x: pA.x - 20, y: pA.y - 20 }, 18, '#fb7185');
+          drawPointLabel(pB, 'B(모퉁이)', { x: pB.x + 25, y: pB.y + 20 }, 18, '#fb7185');
         }
       }
 
