@@ -454,12 +454,21 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 |---|---|---|
 | `VENN` | 전체집합 U와 1~3개 집합의 벤다이어그램, 영역 색칠, 포함관계 | `sets`, `elements`(선택), `shade`(선택), `subset`(선택) |
 | `MAPPING` | 두 집합 X, Y(또는 X→Y→Z)의 원소를 화살표로 잇는 대응도 | `columns`, `arrows`, `highlight`(선택) |
+| `MEMBERSHIP_TABLE` | 유한집합 2~4개의 원소별 소속을 행·열 표로 정확히 표시(네 집합의 16개 영역을 원으로 그릴 수 없을 때) | `sets`, `elements` |
 
 **벤다이어그램.** `sets`는 1~3개이며 각 항목은 `{"id":"A","name":"A"}`다(id는 U가 아닌 대문자 한 글자, name은 생략하면 id). `elements`는 그림에 실제로 쓸 유한 원소이고, `in`에는 그 원소가 속한 집합 id를 **모두** 적는다(어디에도 속하지 않으면 `[]`). 엔진은 `in`으로 원자 영역을 정하고 그 영역 안에 원소 글자를 놓는다. 원소 글자가 구간·부등식처럼 보이면(`1≤x≤3`, `2<x<5` 등) 거절하니 유한 원소만 쓴다. `shade`는 U와 집합 id로 쓴 집합식이며 합집합 `∪`, 교집합 `∩`, 차집합 `-`, 괄호, 오른쪽 위 여집합 `^c`(또는 `ᶜ`)를 지원한다(예: `"(A∩B)∪(A∪B)^c"`, `"A-B"`, `"(A∪B)^c"`). 색칠할 영역이 없으면 `SET_SHADE_EMPTY`다. 두 집합의 포함관계 B⊂A는 `"subset":["B","A"]`(안쪽, 바깥쪽)로 쓰며, B는 A 안에 완전히 들어가게 그려지고 B만 있는 영역은 비어 있다(그 영역에 원소를 두면 `SET_ELEMENT_REGION_EMPTY`).
 
 **대응도.** `columns`는 2~3개이고 각 항목은 `{"id":"X","name":"X","elements":["1","2","3"]}`다. 열 id는 대문자+선택적 숫자(`X`, `Y`, `X2`)이고 이름은 생략하면 id다. 같은 집합에서 자기 자신으로 가는 함수는 열 두 개의 `name`을 같게 쓰고 id만 다르게 한다. 원소는 열마다 1~8개, 중복 없는 짧은 값이어야 한다. `arrows`는 `{"from":{"column":0,"element":0},"to":{"column":1,"element":1},"style":"SOLID"|"DASHED"}`이며 `column`·`element`는 0부터 세는 위치다. 화살표는 **이웃한 두 열 사이**를 어느 방향으로든 잇는다(X→Y와 Y→X를 한 그림에 같이 쓰면 함수와 그 역방향 대응을 대조할 수 있고, X→Y→Z 합성도 된다). 같은 쌍을 두 번 쓰면 `MAPPING_ARROW_DUPLICATE`, 멀리 떨어진 열을 이으면 `MAPPING_ARROW_DIRECTION_UNSUPPORTED`다. 한 원소에서 화살표가 둘 이상 나가도 되지만(함수가 아닌 대응) 그 사실을 caption에서 밝힌다. `highlight`는 `{"arrows":[0,2]}`로 화살표를 굵게, `{"elements":[{"column":1,"element":0}]}`로 원소 뒤에 옅은 바탕을 넣는다(합성 경로나 역함수 추적을 강조할 때).
 
-**오류와 한계.** 집합 4개 이상, 열 4개 이상, 열당 원소 9개 이상, 벤다이어그램 원소 13개 이상은 지원하지 않는다(`SET_COUNT_UNSUPPORTED`, `MAPPING_COLUMN_COUNT_UNSUPPORTED`, `MAPPING_TOO_MANY_ELEMENTS`, `SET_TOO_MANY_ELEMENTS`). 집합을 `{x|x≤10}` 같은 무한집합·구간 기호로 직접 쓰지 말고, 문제가 말한 유한 원소만 `elements`에 넣는다. 원소 글자가 영역에 들어갈 자리가 없으면 `SET_ELEMENT_NO_ROOM`/`SET_LABEL_NO_ROOM`, 집합 이름이 들어갈 자리가 없으면 `SET_LABEL_NO_ROOM`이니 원소 수나 집합 수를 줄인다. 대응도의 화살표가 다른 원소 글자를 가로지르면 `MAPPING_ARROW_BLOCKS_LABEL`, 원소 글자가 타원 밖으로 나가면 `MAPPING_ELEMENT_OUT_OF_OVAL`이다. 정답을 그림에 쓰지 말고 풀이에서 쓰는 값·영역·대응만 표시한다.
+**원소 소속 표(`MEMBERSHIP_TABLE`).** 유한한 전체집합의 원소가 2~4개 집합 각각에 속하는지를 원소마다 정확히 보여야 할 때 쓴다. 네 집합이면 겹친 원 16개 영역을 한 그림에서 읽을 수 없으므로, 이 표가 문제의 소속 관계를 그대로 드러내는 정확한 그림이다. `sets`는 2~4개이고 각 항목은 `{"id":"A","name":"A"}`(id는 U가 아닌 대문자 한 글자), `elements`는 1~12개이고 각 항목은 `{"text":"1","in":["A","D"]}`다. 엔진은 원소마다 한 행, 집합마다 한 열을 그리고 `in`에 적힌 칸에만 소속 표식을 찍는다. 표식은 엔진이 더하거나 빼지 않으며, 독립 관측기가 최종 SVG의 표 틀·구분선·행/열 라벨에서 각 칸의 소속을 다시 유도해 plan과 대조한다. 원소 글자는 서로 달라야 하고(`SET_ELEMENT_DUPLICATE`), 표에 없는 집합 id를 쓰면 `SET_ELEMENT_SET_UNKNOWN`이다. 예:
+```json
+{"capability":"set-diagram-figure-v1",
+ "diagram":{"kind":"MEMBERSHIP_TABLE","sets":[{"id":"A"},{"id":"B"},{"id":"C"},{"id":"D"}],
+            "elements":[{"text":"1","in":["A","D"]},{"text":"3","in":["A","B","C"]},{"text":"6","in":["C"]}]},
+ "caption":"...","sourceConditions":[{"id":"c1","condition":"...","mappedTo":"diagram"}],"newVisualInformation":["..."]}
+```
+
+**오류와 한계.** 벤다이어그램 집합 4개 이상, 소속 표 집합 5개 이상, 열 4개 이상, 열당 원소 9개 이상, 벤다이어그램·소속 표 원소 13개 이상은 지원하지 않는다(`SET_COUNT_UNSUPPORTED`, `MAPPING_COLUMN_COUNT_UNSUPPORTED`, `MAPPING_TOO_MANY_ELEMENTS`, `SET_TOO_MANY_ELEMENTS`). 집합을 `{x|x≤10}` 같은 무한집합·구간 기호로 직접 쓰지 말고, 문제가 말한 유한 원소만 `elements`에 넣는다. 원소 글자가 영역에 들어갈 자리가 없으면 `SET_ELEMENT_NO_ROOM`/`SET_LABEL_NO_ROOM`, 집합 이름이 들어갈 자리가 없으면 `SET_LABEL_NO_ROOM`이니 원소 수나 집합 수를 줄인다. 대응도의 화살표가 다른 원소 글자를 가로지르면 `MAPPING_ARROW_BLOCKS_LABEL`, 원소 글자가 타원 밖으로 나가면 `MAPPING_ELEMENT_OUT_OF_OVAL`이다. 정답을 그림에 쓰지 말고 풀이에서 쓰는 값·영역·대응만 표시한다.
 
 ### 3-13. 삼각함수 일반형: 진폭·주기·평행이동, π 계수, 탄젠트 가지: `ratePi`, `phase`, `keyPoints`, `axisTickPi`
 
