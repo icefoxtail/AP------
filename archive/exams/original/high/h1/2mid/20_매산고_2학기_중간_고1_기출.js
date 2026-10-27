@@ -64,9 +64,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 좋아하지 않는 학생 수를 이용해 네 영역을 채운다.\n\n[조건 정리] 수학을 좋아하지 않는 학생은 50명이고, 그중 영어도 좋아하지 않는 학생이 20명이므로 영어만 좋아하는 학생은 $50-20=30$명이다. 영어를 좋아하는 학생이 60명이므로 둘 다 좋아하는 학생은 $60-30=30$명이다.\n\n[정석 풀이] 수학을 좋아하는 학생은 전체 100명 중 수학을 좋아하지 않는 50명을 제외한 50명이다. 이 가운데 둘 다 좋아하는 학생이 30명이므로 수학만 좋아하는 학생은 $50-30=20$명이다.\n\n[결론] 정답은 ②, 20명이다.",
-    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "수학과 영어 선호를 네 영역으로 나눈 벤다이어그램",
-    "solutionImageCaption": "수학만 20명, 둘 다 30명, 영어만 30명, 둘 다 좋아하지 않음 20명",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q2-solution-venn.svg",
+    "solutionImageAlt": "수학(A)만 20명, 둘 다 30명, 영어(B)만 30명, 어느 쪽도 좋아하지 않는 20명을 네 영역에 적은 벤다이어그램",
+    "solutionImageCaption": "수학을 좋아하는 학생의 집합을 A, 영어를 좋아하는 학생의 집합을 B라 하면 A만 20명, A와 B 모두 30명, B만 30명, 어느 쪽도 좋아하지 않는 20명이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_COUNT",
     "subUnit": "집합의 원소의 개수",
@@ -173,6 +173,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "candidate_evidence",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q5-solution-composition.svg",
+    "solutionImageAlt": "f를 두 번 적용하는 경로 1→2→3을 굵게 표시한 대응도",
+    "solutionImageCaption": "f를 두 번 적용하면 1→2→3이므로 (f∘f)(1)=3이고, g(1)=2이므로 (f∘g)(1)=f(2)=3이다.",
+    "solutionImageSize": "medium",
     "subUnitClassificationDepth": "complete_candidate"
   },
   {
@@ -311,7 +315,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 충분조건을 진리집합의 포함관계로 바꾼다.\n\n[조건 정리] $q$가 $p$의 충분조건이므로 $Q\\subset P$이다. 또 $\\sim q$가 $\\sim r$의 충분조건이므로 $Q^c\\subset R^c$이고, 여집합의 포함관계를 뒤집으면 $R\\subset Q$이다. 따라서 $R\\subset Q\\subset P$이다.\n\n[정석 풀이] ㄱ의 $P-Q=\\varnothing$은 $P\\subset Q$를 뜻하므로 주어진 조건만으로는 성립하지 않는다. ㄴ은 $R\\subset Q\\subset P$이므로 참이다. ㄷ은 $Q\\subset P$에서 $P^c\\subset Q^c$, $R\\subset P$에서 $P^c\\subset R^c$이므로 $P^c\\subset Q^c\\cap R^c$가 되어 참이다.\n\n[결론] 옳은 것은 ㄴ, ㄷ이므로 정답은 ④이다.",
-    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q09-solution.svg",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q9-solution-inclusion.svg",
     "solutionImageAlt": "진리집합 R이 Q 안에, Q가 P 안에 놓인 포함관계 그림",
     "solutionImageCaption": "조건으로부터 R⊂Q⊂P가 된다.",
     "solutionImageSize": "full",
@@ -353,6 +357,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "candidate_evidence",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q10-solution-cycle.svg",
+    "solutionImageAlt": "1→4→2→1의 순환과 고정점 3을 나타낸 대응도",
+    "solutionImageCaption": "f(1)=4, f(4)=2, f(2)=1이고 3은 자기 자신에 대응하는 경우이다. 이때 f(3)=3, g(3)=3이므로 f(3)+g(3)=6으로 최댓값이 된다.",
+    "solutionImageSize": "medium",
     "subUnitClassificationDepth": "complete_candidate"
   },
   {
@@ -461,6 +469,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "candidate_evidence",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q13-solution-swap.svg",
+    "solutionImageAlt": "1과 3이 서로 자리를 바꾸고 2가 고정된 함수 f의 대응도",
+    "solutionImageCaption": "f(1)=3, f(3)=1, f(2)=2이고 g는 항등함수이다. 따라서 (f∘f)(3)=f(1)=3, f의 역함수에서 1에 대응하는 정의역 원소는 3, g(2)=2이므로 합은 8이다.",
+    "solutionImageSize": "medium",
     "subUnitClassificationDepth": "complete_candidate"
   },
   {
@@ -558,6 +570,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "candidate_evidence",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q16-solution-negative-interval.svg",
+    "solutionImageAlt": "f(t)=(t+2)(t+4)의 그래프에서 음수가 되는 구간을 색칠한 그림",
+    "solutionImageCaption": "f(t)=(t+2)(t+4)는 -4<t<-2에서만 음수이므로, g의 치역 [최솟값, ∞)이 이 구간과 만나지 않도록 g의 최솟값은 -2 이상이어야 한다.",
+    "solutionImageSize": "full",
     "subUnitClassificationDepth": "complete_candidate"
   },
   {
@@ -612,7 +628,7 @@ window.questionBank = [
     "choices": [],
     "answer": "21",
     "solution": "[키포인트] $f(x)$가 1을 기준으로 어느 구간에 들어가는지에 따라 $g(f(x))$를 네 구간으로 나눈다.\n\n[정석 풀이] $0\\le x\\le\\tfrac12$에서는 $g(f(x))=-4x+2$, $\\tfrac12\\le x\\le1$에서는 $4x-2$, $1\\le x\\le\\tfrac32$에서는 $-4x+6$, $\\tfrac32\\le x\\le2$에서는 $4x-6$이다. 이를 $-2x^2+4x$와 각각 같게 두면 각 구간에서 얻는 서로 다른 해는 $2-\\sqrt3$, $1$, $\\sqrt3$이다. 따라서 $\\alpha=(2-\\sqrt3)+1+\\sqrt3=3$이고 $7\\alpha=21$이다.\n\n[결론] 답은 21이다.",
-    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고1_기출/q18-solution-intersections.svg",
     "solutionImageAlt": "합성함수 g(f(x))와 이차함수 y=-2x^2+4x의 그래프와 세 교점을 나타낸 그림",
     "solutionImageCaption": "교점의 x좌표는 2-√3, 1, √3이므로 합은 3이다.",
     "solutionImageSize": "full",
