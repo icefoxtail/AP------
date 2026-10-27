@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "NUMBER_THEORY",
-  "shardVersion": "1.1.7",
+  "shardVersion": "1.1.8",
   "status": "ACTIVE",
-  "conceptCount": 25,
+  "conceptCount": 27,
   "concepts": [
     {
       "conceptKey": "CC_NUMBER_DIVISOR_MULTIPLE",
@@ -836,6 +836,76 @@
       ],
       "curriculumRefs": [
         "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_INTEGER_CONDITION",
+      "canonicalLabelKo": "정수 조건에서의 미지수 결정",
+      "definition": "부등식의 범위를 만족하는 정수의 개수나 최솟값, 최댓값을 특정하는 이산적 판정",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5355a18b564844e156d7592faaa0157903f5cbb9538ff86eb44c7cbe7b37a2c9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5355a18b564844e156d7592faaa0157903f5cbb9538ff86eb44c7cbe7b37a2c9",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_INTEGER_CONDITION for PT_H1_LINEAR_SYSTEM_INEQUALITY/TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER at H22-C-06-HIGHER_INEQUALITY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 10 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_LINEAR_SYSTEM_INEQUALITY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-06"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_INTEGER_ROOTS_DIOPHANTINE",
+      "canonicalLabelKo": "정수근을 갖는 이차방정식의 부정방정식",
+      "definition": "근과 계수의 관계에서 매개변수를 소거하여 (r-a)(s-b)=k 꼴의 약수 부정방정식 해결",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fa748702bfa8f6c8c27b6e1054a3d6c93638b619323dd899172bcda3219118e7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fa748702bfa8f6c8c27b6e1054a3d6c93638b619323dd899172bcda3219118e7",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_INTEGER_ROOTS_DIOPHANTINE for PT_H1_ROOT_COEFFICIENT_RELATION/TPL_H1_VIETA_TRANSFORMED_ROOT at H22-C-05-QUADRATIC_EQUATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.audit.json",
+            "sha256": "ea8a746014c94c66e56897ad85ba338fc3514753df18a5d436f9690eff4d6c09"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ROOT_COEFFICIENT_RELATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학1:H22-C-05"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
     }

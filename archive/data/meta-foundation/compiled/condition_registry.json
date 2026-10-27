@@ -2,7 +2,7 @@
   "schemaVersion": "meta-foundation-condition-registry-v1",
   "owner": "CONDITION_CORE",
   "status": "DERIVED_READ_ONLY",
-  "conditionCount": 54,
+  "conditionCount": 56,
   "conditions": [
     {
       "conditionKey": "COND_INTEGER",
@@ -3125,6 +3125,53 @@
           "sourceOrdinal": 22,
           "sourceTextExcerpt": "[서술형 2] $a(3-\\sqrt{5})+\\frac{10-\\sqrt{20}}{\\sqrt{5}}$ 가 유리수일 때, 유리수 $a$의 값을 구하는 과정과 답을 쓰시오. [4점]",
           "solutionDecisiveExcerpt": "$\\sqrt{20}=2\\sqrt5$이므로 $\\frac{10-\\sqrt{20}}{\\sqrt5}=2\\sqrt5-2$이다.\n전체 식은 $(3a-2)+(2-a)\\sqrt5$이다. 유리수가 되려면 $2-a=0$이어야 하므로 $a=2$이다."
+        }
+      ]
+    },
+    {
+      "conditionKey": "COND_RATIONAL_COEFFICIENTS",
+      "canonicalLabelKo": "유리수 계수 조건",
+      "definition": "방정식의 지정된 계수들이 유리수 집합에 속한다는 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "owner": "CONDITION_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_48c68eb2eb654c33f4c8921d4bf578984530a24d712a92d3ebbc7565ea419aee"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "questionUid": "qid_v1_48c68eb2eb654c33f4c8921d4bf578984530a24d712a92d3ebbc7565ea419aee",
+          "sourceOrdinal": 5,
+          "sourceTextExcerpt": "삼차방정식 $x^3+ax^2+bx-3=0$의 한 근이 $\\sqrt{3}$일 때, 유리수 $a$, $b$에 대하여 $a+b$의 값은? [3.8점]",
+          "solutionDecisiveExcerpt": "계수가 유리수이므로 $\\sqrt3$이 근이면 $-\\sqrt3$도 근이다.\n따라서 $(x^2-3)$이 인수이고, 나머지 한 근을 $r$라 하면\n세 근의 곱은 $3$이므로 $(-3)r=3$, 즉 $r=-1$이다.\n그러므로\n$x^3+ax^2+bx-3=(x^2-3)(x+1)=x^3+x^2-3x-3$이다.\n$a=1$, $b=-3$이므로 $a+b=-2$이다.\n따라서 정답은 ①이다."
+        }
+      ]
+    },
+    {
+      "conditionKey": "COND_RESTRICTED_INTERVAL",
+      "canonicalLabelKo": "제한된 구간 조건",
+      "definition": "변수가 문제에서 지정한 유한 구간 안에서만 변한다는 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "owner": "CONDITION_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_35298e31836615711722ee98155cee3927a1e039829253809ef5d3d9b331f84d",
+        "qid_v1_7bfeb87b9235c611240ca1fb13f4c7667760d81a9f8f7b255327f766f08cbfc0"
+      ],
+      "supportingItemCount": 2,
+      "evidenceProvenance": [
+        {
+          "questionUid": "qid_v1_7bfeb87b9235c611240ca1fb13f4c7667760d81a9f8f7b255327f766f08cbfc0",
+          "sourceOrdinal": 12,
+          "sourceTextExcerpt": "$-1\\le x\\le2$에서 이차부등식 $x^2-2x-a^2+5\\ge0$이 성립하도록 하는 정수 $a$의 최댓값은? [4점]",
+          "solutionDecisiveExcerpt": "식을 완전제곱으로 만들면\n$x^2-2x-a^2+5=(x-1)^2+4-a^2$이다.\n$-1\\le x\\le2$에서 $(x-1)^2$의 최솟값은 $0$이므로\n부등식이 항상 성립하려면 $4-a^2\\ge0$이어야 한다.\n즉 $-2\\le a\\le2$이고,\n정수 $a$의 최댓값은 $2$이다.\n정답은 ⑤이다."
+        },
+        {
+          "questionUid": "qid_v1_35298e31836615711722ee98155cee3927a1e039829253809ef5d3d9b331f84d",
+          "sourceOrdinal": 20,
+          "sourceTextExcerpt": "$-1\\le x\\le3$에서 실수 $t$에 대하여 이차함수 $y=x^2-4tx-5$의 최댓값을 $g(t)$라 할 때, $t$에 대한 방정식 $g(t)=0$의 모든 근의 합은? [4.4점]",
+          "solutionDecisiveExcerpt": "이차함수는 위로 열린 포물선이므로 닫힌구간 $[-1,3]$에서 최댓값은 양 끝점 중 큰 값이다.\n$y(-1)=4t-4$, $y(3)=4-12t$이므로\n$g(t)=\\max(4t-4,\\ 4-12t)$이다.\n\n$g(t)=0$이려면 두 값이 모두 $0$ 이하이고 그중 하나가 $0$이어야 한다.\n$4t-4=0$에서 $t=1$이고, 이때 다른 값은 $-8$이다.\n$4-12t=0$에서 $t=\\dfrac13$이고, 이때 다른 값은 $-\\dfrac83$이다.\n따라서 두 근은 $1$, $\\dfrac13$이고 합은 $\\dfrac43$이다.\n정답은 ④이다."
         }
       ]
     }

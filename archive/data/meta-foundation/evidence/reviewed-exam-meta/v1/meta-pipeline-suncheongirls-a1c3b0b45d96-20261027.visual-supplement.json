@@ -1,0 +1,60 @@
+{
+  "author": "CODEX_ROOT",
+  "scope": "META_SOURCE_ASSET_REFERENCE_PARITY_ONLY",
+  "originalAuditSha256": "5dd5f823a500ae638496c308efb77e0d0d3701f77c0ab6477b2494599c3c2f49",
+  "originalManifestSha256": "9d9eebc2c3a7ebd1e0b33878393ca84090024861a852159521c28edc1380a734",
+  "originalAuditSourceSha256": "924f21353fb3841865ff1aa44227dec76005ad380cf86f808da6dd34178b3685",
+  "actualDriveSourceBeforeSha256": "924f21353fb3841865ff1aa44227dec76005ad380cf86f808da6dd34178b3685",
+  "productionSourceSha256": "f1bb45d068f1e0a357e8ed0d7f7980cdf4f9b92d9efba23df1f3b4f4cc60bff3",
+  "protectedTextChoiceAnswerSolutionChanged": false,
+  "referenceChanges": [
+    {
+      "ordinal": 9,
+      "field": "solutionImage"
+    },
+    {
+      "ordinal": 12,
+      "field": "solutionImage"
+    },
+    {
+      "ordinal": 20,
+      "field": "solutionImage"
+    }
+  ],
+  "assets": [
+    {
+      "sourceOrdinal": 9,
+      "path": "archive/assets/images/23_순천여고_1학기_중간_고1_기출/q9-solution.svg",
+      "sha256": "466280967552111af757c008cf42fe64f45c7717941fd6e9526685ddc3a6ed92",
+      "nativeRenderPngSha256": "e15ec44355b00afccdbd5a008880f793672d894b76107422a3499918060b3226",
+      "actualRenderViewed": true,
+      "backend": "bundled sharp direct composite SVG display at density110; production asset untouched",
+      "observation": "The two panels show k=2 and k=-2, x-intercepts (-1,0)/(3,0) and (-3,0)/(1,0), each separated by 4; this illustrates the existing solution |k|=2.",
+      "existingSolution": "$x$축과 만나는 두 점의 $x$좌표는\n$x^2-kx-3=0$의 두 근이다.\n두 근 사이의 거리는\n$\\sqrt{k^2+12}$이고 이것이 $4$이므로\n$k^2+12=16$이다.\n따라서 $k^2=4$이고 $|k|=2$이다.\n정답은 ②이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "path": "archive/assets/images/23_순천여고_1학기_중간_고1_기출/q12-solution.svg",
+      "sha256": "5ba89d516446844c65fd2f985144a507cba98cdc1b8be05f5cbc095614df357b",
+      "nativeRenderPngSha256": "8396003342f1866db164cb016696a04b8bb475974285e36536f188f36a7efc7f",
+      "actualRenderViewed": true,
+      "backend": "bundled sharp direct composite SVG display at density110; production asset untouched",
+      "observation": "The graph y=(x-1)^2 on [-1,2] shows (1,0), endpoints (-1,4) and (2,1), illustrating the existing minimum-zero argument.",
+      "existingSolution": "식을 완전제곱으로 만들면\n$x^2-2x-a^2+5=(x-1)^2+4-a^2$이다.\n$-1\\le x\\le2$에서 $(x-1)^2$의 최솟값은 $0$이므로\n부등식이 항상 성립하려면 $4-a^2\\ge0$이어야 한다.\n즉 $-2\\le a\\le2$이고,\n정수 $a$의 최댓값은 $2$이다.\n정답은 ⑤이다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "path": "archive/assets/images/23_순천여고_1학기_중간_고1_기출/q20-solution.svg",
+      "sha256": "ac76ca3013a069392d6690f50654eea4d69ac4a651923c378dec5af9608b29d3",
+      "nativeRenderPngSha256": "e66c9fdcdb86cef2d73b4ccaa08a2177442c03ec8865dcb51fc89f8b43cbfb30",
+      "actualRenderViewed": true,
+      "backend": "bundled sharp direct composite SVG display at density110; production asset untouched",
+      "observation": "The panels for t=1 and t=1/3 show endpoints (-1,0)/(3,-8) and (-1,-8/3)/(3,0), matching the existing endpoint-max solution.",
+      "existingSolution": "이차함수는 위로 열린 포물선이므로 닫힌구간 $[-1,3]$에서 최댓값은 양 끝점 중 큰 값이다.\n$y(-1)=4t-4$, $y(3)=4-12t$이므로\n$g(t)=\\max(4t-4,\\ 4-12t)$이다.\n\n$g(t)=0$이려면 두 값이 모두 $0$ 이하이고 그중 하나가 $0$이어야 한다.\n$4t-4=0$에서 $t=1$이고, 이때 다른 값은 $-8$이다.\n$4-12t=0$에서 $t=\\dfrac13$이고, 이때 다른 값은 $-\\dfrac83$이다.\n따라서 두 근은 $1$, $\\dfrac13$이고 합은 $\\dfrac43$이다.\n정답은 ④이다."
+    }
+  ],
+  "standaloneRendererDiagnostic": "Existing svg-native-render.mjs rejected embedded data: SVG references with SVG_NATIVE_STANDALONE_REQUIRED. Preserved; composite display used without modifying renderer or asset.",
+  "visualQualityApproval": "NOT_EVALUATED",
+  "examSampleCalibration": "EXAM_SAMPLE_NOT_APPLICABLE_META_ONLY",
+  "browserStudentUi": "NOT_RUN"
+}
