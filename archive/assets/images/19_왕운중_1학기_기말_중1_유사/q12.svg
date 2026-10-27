@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 250" width="340" height="250" role="img" aria-labelledby="q12-title q12-desc">
+  <title id="q12-title">밑변의 길이가 a, 높이가 h인 삼각형</title>
+  <desc id="q12-desc">밑변의 길이가 a이고 꼭짓점에서 밑변에 내린 수선의 높이가 h인 삼각형의 모습</desc>
+  <rect width="340" height="250" fill="#ffffff"/>
+
+  <!-- Triangle Polygon -->
+  <polygon points="50,190 290,190 140,50" fill="#e8f4fd" stroke="#0275d8" stroke-width="2"/>
+
+  <!-- Perpendicular Height Line -->
+  <line x1="140" y1="50" x2="140" y2="190" stroke="#d9534f" stroke-width="1.8" stroke-dasharray="4,4"/>
+
+  <!-- Right Angle Symbol -->
+  <polyline points="140,176 154,176 154,190" fill="none" stroke="#d9534f" stroke-width="1.5"/>
+
+  <!-- Base Dimension -->
+  <g stroke="#333333" stroke-width="1.2">
+    <!-- Extension lines -->
+    <line x1="50" y1="195" x2="50" y2="225"/>
+    <line x1="290" y1="195" x2="290" y2="225"/>
+    <!-- Dimension line with arrows -->
+    <line x1="55" y1="215" x2="285" y2="215"/>
+    <polyline points="63,211 55,215 63,219" fill="none"/>
+    <polyline points="277,211 285,215 277,219" fill="none"/>
+  </g>
+
+  <!-- Dimension Labels -->
+  <g font-family="sans-serif" font-size="16" font-style="italic" fill="#111111" font-weight="bold">
+    <text x="170" y="235" text-anchor="middle">a</text>
+    <text x="125" y="125" text-anchor="end" fill="#d9534f">h</text>
+  </g>
+</svg>

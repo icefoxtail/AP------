@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" width="420" height="360" role="img" aria-labelledby="q20-title q20-desc">
+  <title id="q20-title">직사각형 ABCD와 두 함수의 그래프</title>
+  <desc id="q20-desc">y축 위의 변 AB, 직선 y=(1/4)x 위의 점 D, 반비례 곡선 y=a/x 위의 점 C로 이루어진 직사각형 ABCD의 모습</desc>
+  <rect width="420" height="360" fill="#ffffff"/>
+
+  <!-- Coordinate Axes -->
+  <g stroke="#333333" stroke-width="1.5">
+    <!-- X axis -->
+    <line x1="40" y1="300" x2="390" y2="300"/>
+    <polyline points="382,295 390,300 382,305" fill="none"/>
+    <!-- Y axis -->
+    <line x1="60" y1="330" x2="60" y2="30"/>
+    <polyline points="55,38 60,30 65,38" fill="none"/>
+  </g>
+
+  <!-- Axis and Origin Labels -->
+  <g font-family="sans-serif" font-size="14" fill="#111111" font-weight="bold">
+    <text x="395" y="305">x</text>
+    <text x="60" y="22" text-anchor="middle">y</text>
+    <text x="46" y="316">O</text>
+  </g>
+
+  <!-- Dashed Vertical Projection from D to X axis -->
+  <line x1="300" y1="240" x2="300" y2="300" stroke="#888888" stroke-width="1.2" stroke-dasharray="4,4"/>
+
+  <!-- Rectangle ABCD Fill and Stroke -->
+  <polygon points="60,240 60,165 300,165 300,240" fill="#e8f4fd" stroke="#0275d8" stroke-width="2"/>
+
+  <!-- Direct Proportion Line y = (1/4)x -->
+  <line x1="60" y1="300" x2="360" y2="225" stroke="#28a745" stroke-width="2.5"/>
+
+  <!-- Inverse Proportion Curve y = a/x (smooth path) -->
+  <path d="M 120,60 Q 180,110 300,165 T 380,185" fill="none" stroke="#d9534f" stroke-width="2.5"/>
+
+  <!-- Key Vertices -->
+  <g fill="#0275d8">
+    <circle cx="60" cy="240" r="4"/>
+    <circle cx="60" cy="165" r="4"/>
+    <circle cx="300" cy="165" r="4"/>
+    <circle cx="300" cy="240" r="4"/>
+  </g>
+
+  <!-- Vertex Labels A, B, C, D -->
+  <g font-family="sans-serif" font-size="14" font-weight="bold" fill="#111111">
+    <text x="44" y="245">A</text>
+    <text x="44" y="170">B</text>
+    <text x="310" y="160">C</text>
+    <text x="310" y="252">D</text>
+  </g>
+
+  <!-- Equation Labels -->
+  <g font-family="sans-serif" font-size="13" font-style="italic" font-weight="bold">
+    <text x="365" y="220" fill="#28a745">y = 1/4 x</text>
+    <text x="320" y="135" fill="#d9534f">y = a/x</text>
+  </g>
+
+  <!-- X axis tick at 8 -->
+  <text x="300" y="318" font-family="sans-serif" font-size="12" fill="#222222" text-anchor="middle">8</text>
+</svg>
