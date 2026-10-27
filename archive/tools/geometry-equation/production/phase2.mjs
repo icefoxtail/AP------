@@ -37,7 +37,8 @@ const QUADRATIC_OVERVIEW_CANVAS=Object.freeze({width:384,height:320,panel:140});
 const QUADRATIC_HEADER_CANVAS=Object.freeze({width:512,height:400,panel:0,topInset:80});
 // A panel of a three-panel composite: its formula and shared line rows sit outside the panel (composite-candidate-svg-v1), so no formula header.
 const COMPOSITE_PANEL_CANVAS=Object.freeze({width:512,height:286,panel:0,topInset:0});
-// A cubic/quartic panel of a two-panel composite keeps the overview plot and gains a header band above it for its (long) formula.
+// A cubic/quartic overview (standalone, or a panel of a two-panel composite) keeps the overview plot and gains an 80 px header band
+// above it for its (long) formula when graphPlan.overviewHeaderBand is true.
 const CUBIC_COMPOSITE_PANEL_CANVAS=Object.freeze({width:610,height:480,panel:140,topInset:80});
 // A quadratic framed at one scale (graph_framing equal_unit_frame) carries its plot size: the canvas is that plot plus the 32 px margins and,
 // unless the composite writes the formula outside the panel, the 80 px formula header.
@@ -511,7 +512,7 @@ function specForFamily(plan,model,id){
   if(plan.capability==='polynomial-spike-v1'){
     const p=plan.graphPlan,v=p.viewport;const terms=p.coefficients.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');
     const expr=terms.map(({c,i},index)=>{const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c;const coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join('');
-    const degree=p.coefficients.reduce((highest,coefficient,index)=>coefficient==='0'?highest:index,0),cubicBand=degree>=3&&p.overviewHeaderBand===true&&p.plotHeightLimit!==undefined,canvas=degree>=3?(cubicBand?CUBIC_COMPOSITE_PANEL_CANVAS:GRAPH_OVERVIEW_CANVAS):p.plotCanvas!==undefined?equalUnitCanvas(p):p.compositeHeader!==undefined?COMPOSITE_PANEL_CANVAS:{...QUADRATIC_HEADER_CANVAS,...(p.overviewCanvasHeight!==undefined?{height:p.overviewCanvasHeight}:{})};
+    const degree=p.coefficients.reduce((highest,coefficient,index)=>coefficient==='0'?highest:index,0),cubicBand=degree>=3&&p.overviewHeaderBand===true,canvas=degree>=3?(cubicBand?CUBIC_COMPOSITE_PANEL_CANVAS:GRAPH_OVERVIEW_CANVAS):p.plotCanvas!==undefined?equalUnitCanvas(p):p.compositeHeader!==undefined?COMPOSITE_PANEL_CANVAS:{...QUADRATIC_HEADER_CANVAS,...(p.overviewCanvasHeight!==undefined?{height:p.overviewCanvasHeight}:{})};
     // compositeHeader {formula:'CAPTION',sharedLines:[line IDs]} is set by composite-candidate-svg-v1 for a three-panel stack, never by an author: the
     // composite typesets the formula in the panel's caption row and the shared line equations once above the stack, so the panel leaves them out.
     const header=p.compositeHeader;

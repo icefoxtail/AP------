@@ -21,6 +21,21 @@ test('Phase 2 final graph spec samples every frozen cubic/quartic feature and ig
   assert.match(spec.objects[1].text,/x\^3/);
 });
 
+test('cubic overviewHeaderBand alone gives a 610x480 formula header and leaves the default overview untouched',()=>{
+  const graphPlan={family:'polynomial',coefficients:['12','-4','-3','1'],domain:[-3.6,3.6],viewport:[-3.6,3.6,-70,24],sourceDomain:{kind:'ALL_REALS'},
+    requiredPoints:[{id:'A',x:-2,y:0},{id:'B',x:2,y:0},{id:'C',x:3,y:0}],axisTickValues:{x:[],y:[]}};
+  const base={capability:'polynomial-spike-v1',caption:'서로 다른 세 근 -2, 2, 3을 갖는 삼차함수',graphPlan};
+  const band=specFor({...base,graphPlan:{...graphPlan,overviewHeaderBand:true}},{},'cubic-header-band');
+  assert.equal(band.viewport.width,610);assert.equal(band.viewport.height,480);
+  assert.equal(band.viewport.topInset,80);assert.equal(band.viewport.height-band.viewport.topInset,400);
+  assert.equal(band.displayFacts.formulaPlacement,'HEADER_BAND');
+  assert.deepEqual(band.displayFacts.equationLabelCenters.formula,[305,72]);
+  const plain=specFor(base,{},'cubic-default-overview');
+  assert.equal(plain.viewport.width,610);assert.equal(plain.viewport.height,420);
+  assert.equal(plain.viewport.topInset,undefined);
+  assert.equal(plain.displayFacts.formulaPlacement,undefined);
+});
+
 test('quadratic equation header preserves the full plot height and source vertex instead of consuming plot width',()=>{
   const plan={capability:'polynomial-spike-v1',caption:'이차함수',graphPlan:{
     family:'polynomial',coefficients:['-1','0','3'],domain:[-2,2],viewport:[-2,2,-1,5],overviewFeatures:[],requiredPoints:[{id:'vertex',x:0,y:-1}]
