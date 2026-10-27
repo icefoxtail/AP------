@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "meta-pipeline-semantic-review-correction-v1",
+  "examUid": "25_신흥중_1학기_중간_중3_기출",
+  "requestId": "meta-pipeline-shinheung-e4955e4d281e-20261027",
+  "corrects": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.semantic-review.json",
+  "originalReviewFilePreserved": true,
+  "correctedReviewActors": ["CODEX_ROOT"],
+  "incorrectActorEntry": "OpenCode Go deepseek-v4.1-flash",
+  "reason": "The restricted OpenCode task was attempted but returned provider.quota HTTP 429 (GoUsageLimitError, weekly limit) before producing any reviewer output. No other child model was substituted. The earlier semantic-review actor array therefore overstated the actual review evidence.",
+  "actualScope": "ROOT reviewed the audited CC definitions, their source/solution excerpts, canonical collisions, condition evidence, and the metadata-only key correction. No mathematical re-solve was performed.",
+  "impact": "The registrar request, canonical changes, student source, and merged metadata are unchanged. This file corrects only the identity/scope record for semantic review.",
+  "recordedDate": "2026-10-28"
+}
+
