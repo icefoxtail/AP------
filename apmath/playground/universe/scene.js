@@ -52,8 +52,9 @@ export function createMathUniverse({
 
   // 3. Camera Setup
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.5, 600);
-  const initialCamPos = new THREE.Vector3(0, 10, isMobile ? 58 : 46);
-  const initialCamTarget = new THREE.Vector3(0, 0, 0);
+  // Slight oblique opening: add depth/parallax without changing the celestial layout or zoom.
+  const initialCamPos = new THREE.Vector3(isMobile ? -7.5 : -6, 11, isMobile ? 58 : 46);
+  const initialCamTarget = new THREE.Vector3(0.8, -0.4, 0);
   camera.position.copy(initialCamPos);
 
   // 4. Controls
