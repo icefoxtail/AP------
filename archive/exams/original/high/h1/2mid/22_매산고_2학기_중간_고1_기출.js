@@ -271,6 +271,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고1_기출/q8-solution-range.svg",
+    "solutionImageAlt": "a=2, b=-2일 때 두 조각이 점 V(0, -2)에서 만난다. 왼쪽 반직선의 치역은 -2보다 작은 실수 전체이고 오른쪽 포물선의 치역은 -2 이상이므로 두 치역이 겹치지 않고 실수 전체를 덮는다.",
+    "solutionImageCaption": "a=2, b=-2일 때 두 조각이 점 V(0, -2)에서 만난다. 왼쪽 반직선의 치역은 -2보다 작은 실수 전체이고 오른쪽 포물선의 치역은 -2 이상이므로 두 치역이 겹치지 않고 실수 전체를 덮는다.",
+    "solutionImageSize": "medium",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
@@ -345,6 +349,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고1_기출/q10-solution-slope-sign.svg",
+    "solutionImageAlt": "a=1/5일 때 y=f(x)는 x=3에서 꺾이고 왼쪽 기울기는 -9/5, 오른쪽 기울기는 1/5로 부호가 서로 다르다. 수평선 y=-7이 그래프와 두 점 (25/9, -7), (5, -7)에서 만나므로 일대일대응이 아니고 역함수가 존재하지 않는다. 그림은 x=3 근처를 확대한 것이다.",
+    "solutionImageCaption": "a=1/5일 때 y=f(x)는 x=3에서 꺾이고 왼쪽 기울기는 -9/5, 오른쪽 기울기는 1/5로 부호가 서로 다르다. 수평선 y=-7이 그래프와 두 점 (25/9, -7), (5, -7)에서 만나므로 일대일대응이 아니고 역함수가 존재하지 않는다. 그림은 x=3 근처를 확대한 것이다.",
+    "solutionImageSize": "medium",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
@@ -413,6 +421,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고1_기출/q12-solution-range.svg",
+    "solutionImageAlt": "k=3/4일 때 p의 진리집합은 (-5/4, 11/4), q의 진리집합은 (1/2, 7/2)이다. p이면서 q가 아닌 범위는 (-5/4, 1/2]이고 이 안의 정수는 -1, 0의 두 개이다.",
+    "solutionImageCaption": "k=3/4일 때 p의 진리집합은 (-5/4, 11/4), q의 진리집합은 (1/2, 7/2)이다. p이면서 q가 아닌 범위는 (-5/4, 1/2]이고 이 안의 정수는 -1, 0의 두 개이다.",
+    "solutionImageSize": "large",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
@@ -515,6 +527,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고1_기출/q15-solution-inverse-curve.svg",
+    "solutionImageAlt": "a=-49/8일 때 꺾인 직선 y=f(x)와 포물선이 점 (7/4, 7/4)에서만 만난다. 포물선의 꼭짓점 (2, 15/8)은 꺾임점 (2, 2)보다 살짝 아래에 있다.",
+    "solutionImageCaption": "a=-49/8일 때 꺾인 직선 y=f(x)와 포물선이 점 (7/4, 7/4)에서만 만난다. 포물선의 꼭짓점 (2, 15/8)은 꺾임점 (2, 2)보다 살짝 아래에 있다.",
+    "solutionImageSize": "medium",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
