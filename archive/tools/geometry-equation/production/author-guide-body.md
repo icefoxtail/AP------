@@ -535,6 +535,32 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - **쓰지 않는 필드:** `formula`(불연속함수의 머리줄 식), `referenceCurves`(둘째 불연속 곡선), `domain`, `viewport`는 받지 않는다. 필요하면 caption에 식을 쓰고, 두 함수가 모두 필요하면 그림을 포기하거나 EXEMPT/UNSUPPORTED로 쓴다.
 - 수직선, 세로선, 차수 3 이상 조각, 색칠 영역, 기울어진 기준선은 지원하지 않는다. UNSUPPORTED.
 
+### 3-43. 두 집단 비교 통계 다각형: 도수·상대도수를 두 개의 꺾은선으로 (`FREQUENCY_POLYGON` 두 series)
+
+두 집단(남학생·여학생, A반·B반, 두 학교)의 **같은 계급** 자료를 한 그림에서 비교할 때 쓴다. 3-11절의 `stat-chart-figure-v1`에서 `kind`를 `FREQUENCY_POLYGON`으로 두고 `series`를 두 개 쓰는 형태이며, 히스토그램 막대 없이 꺾은선 두 개와 범례만 그린다. 자료값은 문제에 나온 그대로 쓰고, 비교해서 계산한 정답(차이·비율)은 그림에 쓰지 않는다.
+
+```json
+{"capability":"stat-chart-figure-v1",
+ "chart":{"kind":"FREQUENCY_POLYGON","yKind":"RELATIVE",
+  "boundaries":["30","40","50","60","70","80","90"],
+  "series":[{"name":"남학생","relativeFrequencies":["0.10","0.25","0.30","0.20","0.10","0.05"]},
+            {"name":"여학생","relativeFrequencies":["0.05","0.10","0.15","0.25","0.35","0.10"]}],
+  "xTitle":"시간(분)","yTitle":"상대도수","grid":true},
+ "caption":"남학생 300명과 여학생 200명의 상대도수 분포를 두 개의 꺾은선으로 함께 나타낸 그림",
+ "sourceConditions":[{"id":"c1","condition":"...","mappedTo":"chart.boundaries"}],
+ "newVisualInformation":["..."]}
+```
+
+- 이 capability의 plan은 `capability`, `chart`, `caption`, `sourceConditions`, `newVisualInformation` **다섯 키만** 받는다. 다른 키(`sourceQuote` 등)를 넣으면 `STAT_CHART_PLAN_INVALID`이므로 넣지 않는다.
+- `series`는 1~2개다. 두 집단이면 각 series에 `name`이 **반드시** 있어야 하고(14자 이내, 서로 달라야 함, `STAT_SERIES_NAME_REQUIRED`·`STAT_SERIES_INVALID`), 첫 series는 실선·둘째는 점선으로 그려지고 위쪽에 범례가 붙는다. 범례 자리가 좁으면 이름을 짧게(`"한별네"`) 쓰고 두 집단의 정식 이름은 `caption`에 쓴다.
+- **도수 비교**는 계급마다 정수 `frequencies`를 쓴다. `total`은 한 series일 때만 받으므로(`STAT_SERIES_INVALID`) 두 집단의 합계 대조는 그림이 아니라 plan의 `sourceConditions`에 적는다. 히스토그램(`HISTOGRAM`)은 한 집단만 되고(`STAT_HISTOGRAM_ONE_SERIES`), 두 집단은 반드시 `FREQUENCY_POLYGON`이다.
+- **상대도수 비교**는 계급마다 정확한 문자열 `relativeFrequencies`를 쓰고 **각 series의 합이 정확히 1**이어야 한다(아니면 `STAT_RELATIVE_SUM_NOT_ONE`). `yKind`를 생략하면 상대도수가 든 series가 있을 때 `RELATIVE`로 본다. 한 그림에서 `frequencies`와 `relativeFrequencies`를 섞으면 `STAT_SERIES_INVALID`이며, 주어진 도수를 총합으로 나누는 방식은 한 series에서만 쓴다.
+- **누적도수**는 별도 그래프이고 이 capability는 누적도수 그래프를 지원하지 않는다. 누적도수 자료를 도수분포다각형으로 바꿔 그리지 말고 EXEMPT나 UNSUPPORTED로 마무리한다.
+- 계급 경계값 n+1개는 크기가 같고 0 이상이며 12계급 이하다. 도수분포다각형의 양 끝 도수 0인 계급은 엔진이 자동으로 붙이므로 plan에 쓰지 않는다. 가로축 눈금은 두 번째 경계값부터 쓰이므로 첫 경계값은 축 시작으로만 보인다.
+- 두 series에서는 `showValues`를 쓸 수 없다(`STAT_VALUES_NEED_ONE_SERIES`). 값 라벨 없이 꼭짓점만 찍고, 풀이가 읽는 값은 caption이나 풀이 글에서 설명한다.
+- 라벨이 겹치거나 자리가 모자라면 `STAT_CHART_RENDERED_LAYOUT_FAIL`/`STAT_LABEL_OUT_OF_BOUNDS`/`STAT_LABELS_TOO_CLOSE`이니 제목을 줄이거나 계급 수를 줄인다. 계급 크기가 다르면 `STAT_CLASS_WIDTH_UNEQUAL`, 도수 개수가 계급 수와 다르면 `STAT_FREQUENCY_COUNT_MISMATCH`이다.
+- 독립 관측기가 같은 plan에서 두 series의 모든 꼭짓점·양 끝 0점·눈금·범례 이름을 다시 계산해 최종 SVG와 대조한다. 문제 그림의 점 위치와 다른 계급 귀속이 보이면 자료값을 먼저 확인하고, 원본 풀이 글과 그림이 어긋나는 경우는 그림을 원본 그림 쪽에 맞춘 뒤 그 불일치를 handoff에 적는다.
+
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
 
 - 그림에 나오는 점 이름은 노드 id다. 문항과 풀이 텍스트에 쓴 이름과 같아야 한다. 풀이가 점 이름을 쓰지 않으면 한 글자 대문자(A, B, P)만 쓰고, O0, Pp, C1 같은 내부식 이름은 쓰지 않는다. 풀이에 쓰지 않은 보조점은 숨김 필드를 쓴다.
