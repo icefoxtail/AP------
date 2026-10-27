@@ -178,12 +178,42 @@ function labelCandidates(point,cx,cy){
 export function placeLabels(entries,layout,obstacles){
   // entries: {key,width,height,anchorX,anchorY,pointX,pointY,role,...}; returns boxes in place.
   const placed=[];
-  const placedBoxes=[];const placedPoints=[];
+  const placedBoxes=[];const placedPoints=[];const placedLeaders=[];
   const hitsBox=(box,other,gap=2)=>!(box.x+box.width+gap<other.x||other.x+other.width+gap<box.x||box.y+box.height+gap<other.y||other.y+other.height+gap<box.y);
   const pointInBox=(x,y,box,margin=2)=>x>=box.x-margin&&x<=box.x+box.width+margin&&y>=box.y-margin&&y<=box.y+box.height+margin;
   const boxDistance=(x,y,box)=>{
     const dx=Math.max(box.x-x,0,x-(box.x+box.width)),dy=Math.max(box.y-y,0,y-(box.y+box.height));
     return Math.hypot(dx,dy);
+  };
+  const pointSegmentDistance=(point,a,b)=>{
+    const dx=b[0]-a[0],dy=b[1]-a[1],length2=dx*dx+dy*dy||1;
+    const t=Math.max(0,Math.min(1,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/length2));
+    return Math.hypot(point[0]-(a[0]+t*dx),point[1]-(a[1]+t*dy));
+  };
+  const nearestBoxPoint=(point,box)=>[
+    Math.max(box.x,Math.min(point[0],box.x+box.width)),
+    Math.max(box.y,Math.min(point[1],box.y+box.height))];
+  const leaderFor=(box,entry)=>{
+    if(!entry.requiresLeader)return null;
+    const anchor=[entry.pointX,entry.pointY],start=nearestBoxPoint(anchor,box),length=Math.hypot(anchor[0]-start[0],anchor[1]-start[1]);
+    if(length<8||length>64)return false;
+    const leader={a:start,b:anchor,ownerSegment:entry.ownerSegment};
+    const steps=Math.max(2,Math.ceil(Math.max(0,length-3)/2));
+    for(let i=0;i<=steps;i++){
+      const along=Math.min(length-3,length*i/steps),t=length?along/length:0;
+      const x=start[0]+(anchor[0]-start[0])*t,y=start[1]+(anchor[1]-start[1])*t;
+      if(obstacles.points.some(point=>Math.hypot(point.x-x,point.y-y)<3.5))return false;
+      if(obstacles.curve.some(sample=>Math.hypot(sample[0]-x,sample[1]-y)<2.5))return false;
+      for(const segment of obstacles.segments){
+        if(pointSegmentDistance([x,y],segment.a,segment.b)<2.5)return false;
+      }
+      for(const placedBox of placedBoxes){if(pointInBox(x,y,placedBox,1.5))return false;}
+      for(const other of placedLeaders){if(pointSegmentDistance([x,y],other.a,other.b)<2.5)return false;}
+    }
+    // The connector must meet the owner segment only at its midpoint, not run along it.
+    if(pointSegmentDistance([start[0]+(anchor[0]-start[0])*Math.max(0,(length-4)/length),
+      start[1]+(anchor[1]-start[1])*Math.max(0,(length-4)/length)],entry.ownerSegment.a,entry.ownerSegment.b)<2)return false;
+    return leader;
   };
   const blocked=(box,entry)=>{
     if(box.x<4||box.y<4||box.x+box.width>layout.size.width-4||box.y+box.height>layout.size.height-4)return true;
@@ -212,15 +242,17 @@ export function placeLabels(entries,layout,obstacles){
     for(const delta of entry.candidates){
       const box={x:r6(entry.centerX+delta.dx-entry.width/2),y:r6(entry.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
       if(blocked(box,entry))continue;
+      const leader=leaderFor(box,entry);if(leader===false)continue;
       const clearance=Math.min(...obstacles.points.filter(point=>point.key!==entry.pointId)
         .map(point=>boxDistance(point.x,point.y,box)).concat([40]));
       const score=clearance*0.5-delta.distance*0.15;
-      if(!best||score>best.score)best={box,score};
+      if(!best||score>best.score)best={box,score,leader};
     }
     if(!best)throw new Stop('ELLIPSE_LABEL_NO_ROOM',{label:entry.key});
-    placed.push({...entry,box:best.box});
+    placed.push({...entry,box:best.box,leader:best.leader??null});
     placedBoxes.push(best.box);
     placedPoints.push({x:entry.pointX,y:entry.pointY});
+    if(best.leader)placedLeaders.push(best.leader);
   }
   return placed;
 }
@@ -265,6 +297,8 @@ export function ellipseFigureSpec(plan,model){
         cx:r6(sc.x),cy:r6(sc.y),rx:r6(ax.x*layout.scale),ry:r6(ax.y*layout.scale),data:{}});
     }
   }
+  const segmentLabelCounts=new Map();
+  for(const segment of plan.segments??[])if(segment.label)segmentLabelCounts.set(segment.label,(segmentLabelCounts.get(segment.label)||0)+1);
   for(const segment of plan.segments??[]){
     const from=model.points.find(row=>row.id===segment.from),to=model.points.find(row=>row.id===segment.to);
     prims.push({t:'line',id:`segment-${segment.id}`,role:'segment',cls:segment.dashed?'segmentDashed':'segment',layer:30,
@@ -304,7 +338,11 @@ export function ellipseFigureSpec(plan,model){
     if(!segment.label)continue;
     const from=model.points.find(row=>row.id===segment.from),to=model.points.find(row=>row.id===segment.to);
     const ax=layout.px(num(from.x)),ay=layout.py(num(from.y)),bx=layout.px(num(to.x)),by=layout.py(num(to.y));
-    const mx=(ax+bx)/2,my=(ay+by)/2;
+    // The primitive is serialized to 0.01 px. Anchor owner leaders to those visible endpoint bytes,
+    // so the rendered-layout audit sees the leader touch the owner only at its endpoint.
+    const visible=(value)=>Math.round(value*100)/100;
+    const va=[visible(ax),visible(ay)],vb=[visible(bx),visible(by)];
+    const mx=(va[0]+vb[0])/2,my=(va[1]+vb[1])/2;
     const length=Math.hypot(bx-ax,by-ay)||1;
     const nx=-(by-ay)/length,ny=(bx-ax)/length;
     const candidates=[];
@@ -316,6 +354,7 @@ export function ellipseFigureSpec(plan,model){
       candidates.push({dx:dx*distance,dy:dy*distance,distance});
     }
     labels.push({key:`measure-${segment.id}`,role:'measure',segmentId:segment.id,text:segment.label,
+      requiresLeader:segmentLabelCounts.get(segment.label)>1,ownerSegment:{a:va,b:vb},
       pointX:mx,pointY:my,centerX:mx,centerY:my,candidates});
   }
   return {schemaVersion:SPEC_VERSION,size:{width,height},prims,labels,layout:{
@@ -354,6 +393,9 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy}){
   const lineage={planSha256:objectSha(plan),modelSha256:objectSha(model),typographyPolicySha256:objectSha(typographyPolicy),
     specSha256:null,fragmentSha256s:{},svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   lineage.specSha256=objectSha(spec);
+  for(const item of placed)if(item.leader){
+    body+=`<g data-layer="50"><line id="leader-${item.key}" data-role="leader" data-owner-label="${item.key}" data-owner-segment="${item.segmentId}" data-label="${item.key}" stroke="#555" stroke-width="0.9" fill="none" x1="${r6(item.leader.a[0])}" y1="${r6(item.leader.a[1])}" x2="${r6(item.leader.b[0])}" y2="${r6(item.leader.b[1])}"/></g>`;
+  }
   for(const item of placed){
     const box=item.box;
     const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:` data-segment="${esc(item.segmentId)}"`;

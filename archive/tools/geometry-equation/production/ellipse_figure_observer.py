@@ -260,6 +260,29 @@ def _box_distance(x,y,box):
     return math.hypot(dx,dy)
 
 
+def _point_segment_distance(point,a,b):
+    dx,dy=b[0]-a[0],b[1]-a[1]
+    length2=dx*dx+dy*dy or 1.0
+    t=max(0.0,min(1.0,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/length2))
+    return math.hypot(point[0]-(a[0]+t*dx),point[1]-(a[1]+t*dy))
+
+
+def _box_boundary_distance(point,box):
+    if not _point_in_box(point[0],point[1],box,2.5):
+        return math.inf
+    return min(abs(point[0]-box['x']),abs(point[0]-(box['x']+box['width'])),
+               abs(point[1]-box['y']),abs(point[1]-(box['y']+box['height'])))
+
+
+def _line_interior_points(a,b,end_margin=3.0,step=1.5):
+    length=math.hypot(b[0]-a[0],b[1]-a[1])
+    if length<=end_margin:
+        return []
+    count=max(1,int(math.ceil((length-end_margin)/step)))
+    return [(a[0]+(b[0]-a[0])*min(1.0,(index*step)/length),
+             a[1]+(b[1]-a[1])*min(1.0,(index*step)/length)) for index in range(count)]
+
+
 def audit(plan,svg):
     """Return {status, errors, finalSvgSha256, checks} for one plan against one final SVG."""
     errors=[]
@@ -518,9 +541,70 @@ def audit(plan,svg):
     for pid in label_elements:
         if pid not in points: errors.append('LABEL_UNDECLARED:%s'%pid)
 
-    # measure labels must sit beside the midpoint of their own segment
+    # measure labels are tied to their declared segment; duplicate values require a visible owner leader.
     segment_labels={element.get('data-segment'):element for element in elements
                     if element.get('data-label-role')=='measure'}
+    label_counts={}
+    for raw in segments:
+        if raw.get('label'):
+            label_counts[raw['label']]=label_counts.get(raw['label'],0)+1
+    required_leaders={raw.get('id') for raw in segments if raw.get('label') and label_counts.get(raw['label'],0)>1}
+    leader_elements=[element for element in elements
+                     if element.tag==NS+'line' and element.get('data-role')=='leader']
+    leaders_by_label={}
+    for element in leader_elements:
+        key=element.get('data-owner-label')
+        if not key or key in leaders_by_label:
+            errors.append('MEASURE_LEADER_DUPLICATE_OR_UNOWNED')
+        else:
+            leaders_by_label[key]=element
+    expected_leader_keys={'measure-'+sid for sid in required_leaders}
+    for key in leaders_by_label:
+        if key not in expected_leader_keys:
+            errors.append('MEASURE_LEADER_UNDECLARED:%s'%key)
+
+    geometry_strokes=[]
+    for element in elements:
+        if element.tag!=NS+'line' or element.get('data-role') not in ('axis','segment','line'):
+            continue
+        stroke=_line_coords(element,errors,'LEADER_STROKE_COORDINATE_INVALID')
+        geometry_strokes.append((element.get('data-role'),element.get('id'),((stroke[0],stroke[1]),(stroke[2],stroke[3]))))
+
+    def leader_clear(leader_key,leader,owner_box):
+        x1,y1,x2,y2=_line_coords(leader,errors,'MEASURE_LEADER_COORDINATE_INVALID')
+        a,b=(x1,y1),(x2,y2)
+        samples=_line_interior_points(a,b)
+        for role,lid,stroke in geometry_strokes:
+            for sample in samples:
+                if _point_segment_distance(sample,*stroke)<2.4:
+                    errors.append('MEASURE_LEADER_CROSSES_STROKE:%s:%s'%(leader_key,lid or role));break
+        for pid,(px,py) in points.items():
+            if _point_segment_distance(pixel(px,py),a,b)<3.0:
+                errors.append('MEASURE_LEADER_CROSSES_POINT:%s:%s'%(leader_key,pid))
+        curve_samples=[]
+        for shape in shapes.values():
+            for index in range(720):
+                angle=2*math.pi*index/720
+                curve_samples.append(pixel(shape['cx']+shape['ax']*math.cos(angle),
+                                           shape['cy']+shape['ay']*math.sin(angle)))
+        if any(_point_segment_distance(sample,a,b)<2.2 for sample in curve_samples):
+            errors.append('MEASURE_LEADER_CROSSES_ELLIPSE:%s'%leader_key)
+        for element in elements:
+            if element.get('data-box') is None:
+                continue
+            box=_box_of(element)
+            if not box: continue
+            if element.get('id')==leader_key:
+                if any(_point_in_box(px,py,box,-0.5) for px,py in samples):
+                    errors.append('MEASURE_LEADER_CROSSES_OWN_LABEL:%s'%leader_key)
+            elif any(_point_in_box(px,py,box,1.2) for px,py in samples):
+                errors.append('MEASURE_LEADER_CROSSES_LABEL:%s:%s'%(leader_key,element.get('id')))
+        for other_key,other in leaders_by_label.items():
+            if other_key==leader_key: continue
+            ox1,oy1,ox2,oy2=_line_coords(other,errors,'MEASURE_LEADER_COORDINATE_INVALID')
+            if any(_point_segment_distance(sample,(ox1,oy1),(ox2,oy2))<2.5 for sample in samples):
+                errors.append('MEASURE_LEADER_CROSSES_LEADER:%s:%s'%(leader_key,other_key))
+
     for raw in segments:
         if not raw.get('label'): continue
         element=segment_labels.get(raw.get('id'))
@@ -534,6 +618,29 @@ def audit(plan,svg):
         mx,my=pixel((ax+bx)/2,(ay+by)/2)
         if _box_distance(mx,my,box)>LABEL_DISTANCE:
             errors.append('MEASURE_LABEL_TOO_FAR:%s'%raw.get('id'))
+        sid=raw.get('id');leader_key='measure-'+str(sid)
+        if sid in required_leaders:
+            leader=leaders_by_label.get(leader_key)
+            if leader is None:
+                errors.append('MEASURE_LEADER_MISSING:%s'%sid);continue
+            if leader.get('id')!='leader-'+leader_key or leader.get('data-owner-segment')!=sid or leader.get('data-label')!=leader_key:
+                errors.append('MEASURE_LEADER_OWNER_MISMATCH:%s'%sid)
+            coords=_line_coords(leader,errors,'MEASURE_LEADER_COORDINATE_INVALID')
+            x1,y1,x2,y2=coords
+            if math.hypot(x2-mx,y2-my)>1.5:
+                errors.append('MEASURE_LEADER_NOT_AT_OWNER_MIDPOINT:%s'%sid)
+            if _box_boundary_distance((x1,y1),box)>2.5:
+                errors.append('MEASURE_LEADER_NOT_AT_LABEL_BOX:%s'%sid)
+            length=math.hypot(x2-x1,y2-y1)
+            if length<8 or length>64:
+                errors.append('MEASURE_LEADER_LENGTH_INVALID:%s'%sid)
+            owner_start=pixel(*points[raw['from']]);owner_end=pixel(*points[raw['to']])
+            cross=abs((x2-x1)*(owner_end[1]-owner_start[1])-(y2-y1)*(owner_end[0]-owner_start[0]))
+            if cross<0.2*max(1.0,length*math.hypot(owner_end[0]-owner_start[0],owner_end[1]-owner_start[1])):
+                errors.append('MEASURE_LEADER_OVERLAPS_OWNER_SEGMENT:%s'%sid)
+            leader_clear(leader_key,leader,box)
+        elif leader_key in leaders_by_label:
+            errors.append('MEASURE_LEADER_UNEXPECTED:%s'%sid)
 
     returns={'status':'PASS' if not errors else 'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
     return returns

@@ -729,7 +729,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
   - `OPPOSITE`: `of`에 다른 점 id. 타원 **중심**에 대한 대칭점이다(지름의 다른 끝).
   - `ORIGIN`: 좌표평면의 원점 (0,0)이다(타원 중심이 아님).
   - `POINT`: `x`,`y`를 직접 준다(접선의 접점 등).
-- `segments`는 `from`/`to`(선언한 점 id), 선택 `label`(길이·값, MathJax 수식 문자열), 선택 `dashed`다. 라벨은 선분 중점 곁에 놓이고 관측기가 중점에서 72 px 이내인지 확인한다.
+- `segments`는 `from`/`to`(선언한 점 id), 선택 `label`(길이·값, MathJax 수식 문자열), 선택 `dashed`다. 라벨은 선분 중점 곁에 놓인다. 같은 값이 둘 이상의 선분에 반복되면 각 라벨에서 자기 선분 중점까지 1:1 leader를 그리며, 독립 관측기가 소유 선분·라벨 상자 anchor와 connector 교차를 최종 SVG에서 확인한다.
 - `polygons`는 점 3~6개와 `fill:"LIGHT"|"MEDIUM"|"NONE"`(기본 LIGHT)이다. 넓이가 0인 다각형은 `ELLIPSE_POLYGON_INVALID`다. 영역 색칠은 이 다각형 채우기만 지원한다(타원 내부·외부 부등식 영역은 지원하지 않는다).
 - `lines`는 `slope`·`intercept` 정확값과 선택 `tangent:true`다. `tangent:true`이면 판별식이 0인지 엔진이 대수적으로 확인하고, 접점을 선언한 점과 대조한다(접점이 없으면 `TANGENCY_POINT_NOT_DECLARED`). **직선 식 라벨(`label`)은 지원하지 않는다**(`ELLIPSE_LINE_LABEL_UNSUPPORTED`). 직선은 그림 범위 안으로 잘리고, 화면 밖이면 `ELLIPSE_LINE_OUTSIDE_VIEWPORT`다.
 - 배치는 두 축 **같은 배율**이다(세로 압축 없음). 좌표축과 화살촉은 엔진이 그리고 눈금·좌표 띠는 없다. 그림 영역 상한(약 460×360 px, 가장자리 0.75단위 여백)보다 타원·점이 크면 `ELLIPSE_FIGURE_TOO_LARGE`다. 좌표가 큰 문항은 억지로 줄이지 말고 UNSUPPORTED로 남긴다.
