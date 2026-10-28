@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.5.7",
+  "shardVersion": "1.5.8",
   "status": "ACTIVE",
-  "conceptCount": 78,
+  "conceptCount": 83,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -2599,6 +2599,181 @@
       ],
       "curriculumRefs": [
         "2022:공통수학1:H22-C-05"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PARABOLA_ABOVE_LINE",
+      "canonicalLabelKo": "포물선이 직선보다 항상 위에 있을 조건",
+      "definition": "두 식의 차로 만든 이차함수의 최솟값이 0보다 크거나 연립방정식의 판별식 D<0인 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b94a2571dfde6fff656c6fb870b537efe48ff15ae38de9b01006bcabae36d158"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b94a2571dfde6fff656c6fb870b537efe48ff15ae38de9b01006bcabae36d158",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_PARABOLA_ABOVE_LINE for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 11 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-maesan20-8c976117425d-20261027.audit.json",
+            "sha256": "0cf57f39dce2cf915effc2cfc82840d96ceba22b0917068510e0e4e2ca636df4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PARABOLA_X_INTERCEPT_EXISTENCE",
+      "canonicalLabelKo": "이차함수 그래프와 x축의 교점 존재",
+      "definition": "이차함수 y=f(x)가 x축과 만나기 위해 판별식 D≥0을 만족해야 한다는 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b1f3543f53d01ce76ebcc1a9601819ad82640784eead0d65a7bc4efea354d08c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b1f3543f53d01ce76ebcc1a9601819ad82640784eead0d65a7bc4efea354d08c",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_PARABOLA_X_INTERCEPT_EXISTENCE for PT_H1_QUADRATIC_DISCRIMINANT/TPL_H1_DISCRIMINANT_ROOT_EXISTENCE at H15-SA-13-QUADRATIC_GRAPH.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 15 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-maesan20-8c976117425d-20261027.audit.json",
+            "sha256": "0cf57f39dce2cf915effc2cfc82840d96ceba22b0917068510e0e4e2ca636df4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_DISCRIMINANT"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_LINE_INTERSECTIONS",
+      "canonicalLabelKo": "이차함수와 직선의 교점의 x좌표",
+      "definition": "두 식을 연립한 이차방정식의 두 실근이 곧 두 그래프의 교점의 x좌표가 된다는 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_392559d593329aed1eaea027e31a4c1aa35dbc8d91803feb953348dffdfd5bb7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_392559d593329aed1eaea027e31a4c1aa35dbc8d91803feb953348dffdfd5bb7",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_QUADRATIC_LINE_INTERSECTIONS for PT_H1_QUADRATIC_GRAPH_INTERSECTION/TPL_H1_QUADRATIC_INTERSECTION_TANGENCY at H15-SA-13-QUADRATIC_GRAPH.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-maesan20-8c976117425d-20261027.audit.json",
+            "sha256": "0cf57f39dce2cf915effc2cfc82840d96ceba22b0917068510e0e4e2ca636df4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA_RESTRICTED_DOMAIN",
+      "canonicalLabelKo": "제한된 구간에서의 이차함수 최대·최소",
+      "definition": "주어진 닫힌 구간에서 꼭짓점의 위치와 양 끝점의 거리를 비교하여 최대·최소를 구하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bd6646f88e30a66d27ed17b8c01891d69c1f1bd093ca098c0bcb3d8c68ef4e18"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bd6646f88e30a66d27ed17b8c01891d69c1f1bd093ca098c0bcb3d8c68ef4e18",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_QUADRATIC_EXTREMA_RESTRICTED_DOMAIN for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL at H15-SA-13-QUADRATIC_MAXMIN.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 17 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-maesan20-8c976117425d-20261027.audit.json",
+            "sha256": "0cf57f39dce2cf915effc2cfc82840d96ceba22b0917068510e0e4e2ca636df4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_RECTANGLE_CROSS_SECTION_MAX",
+      "canonicalLabelKo": "물받이 단면적의 이차함수 최댓값",
+      "definition": "일정한 폭의 판을 접어 만든 직사각형의 단면적을 일변수 x의 이차함수로 모델링하여 최대화",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b8e2ce546032e207bea17a6e041470547d3b869d65f341fce2371ffef00ee1c4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SA-13"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b8e2ce546032e207bea17a6e041470547d3b869d65f341fce2371ffef00ee1c4",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_RECTANGLE_CROSS_SECTION_MAX for PT_H1_QUADRATIC_EXTREMA/TPL_H1_QUADRATIC_EXTREMA_MODEL at H15-SA-13-QUADRATIC_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 22 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-maesan20-8c976117425d-20261027.audit.json",
+            "sha256": "0cf57f39dce2cf915effc2cfc82840d96ceba22b0917068510e0e4e2ca636df4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13"
       ],
       "ownerConceptShard": "FUNCTIONS"
     }
