@@ -149,6 +149,29 @@
     }
     @media (min-width:1024px) and (max-width:1100px) {#pcStatement {font-size:15px!important;line-height:1.6!important}}
     #miniChalkboard [hidden] {display:none!important}
+
+    .board-intro,.explore-notice {font-size:14px;line-height:1.5;padding:10px;border-radius:8px;background:#071b12;color:#d8f8e3;border:1px solid #397350}
+    .explore-notice {color:#fde68a;border-color:#a77c28}
+    #pcStatement {font-size:16px!important;line-height:1.6!important}
+    .step-btn,#btnChalkToggle,.group-button,.board-tabs button {min-height:42px;font-size:14px}
+    .canvas-box button {min-width:40px;min-height:40px}
+    #snapChipBox button {min-height:40px;font-size:13px}
+    @media (min-width:768px) and (max-width:1100px) {
+      body {height:auto;min-height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+      .workspace-layout {display:grid;grid-template-columns:minmax(0,60fr) minmax(270px,40fr);align-items:start;overflow:visible}
+      .left-stage-col {display:contents}.left-stage-col > div:first-child {grid-column:1/-1}
+      #compactProblem {display:block!important} #wideProblem {display:none!important}
+      .canvas-box {grid-column:1;grid-row:2 / span 2;width:100%;height:min(65vh,700px);min-height:420px}
+      .left-stage-col > div:last-child {grid-column:2;grid-row:2;min-width:0}
+      .right-panel-col {grid-column:2;grid-row:3;height:auto;overflow:visible;min-width:0} #miniChalkboard {max-height:55vh}
+      #snapChipBox {max-width:100%} #sliderTitle {white-space:normal} #paramSlider {min-width:35px}
+    }
+    @media(max-width:767px) {#snapChipBox {display:flex;max-width:100%;overflow-x:auto} #paramSlider {min-width:35px} #sliderTitle {max-width:38%;white-space:normal} #sliderReadout {width:3em} }
+    @media (min-width:768px) and (max-width:1100px) {
+      div:has(> #snapChipBox) {flex-direction:column!important;align-items:stretch!important;min-width:0}
+      #sliderTitle {max-width:38%;white-space:normal} #sliderReadout {width:3em}
+    }
+    @media(max-width:767px) {body.mobile-chalk-open #miniChalkboard {max-height:34vh}}
   </style>
 </head>
 <body>
@@ -191,7 +214,7 @@
     <div class="left-stage-col">
 
       <!-- 모바일·태블릿 상시 노출 문제 카드 (숨기지 않고 도형 바로 위에 선명하게 표시) -->
-      <div class="lg:hidden bg-[#091b14] border-b border-emerald-800/80 px-3.5 py-2.5">
+      <div id="compactProblem" class="lg:hidden bg-[#091b14] border-b border-emerald-800/80 px-3.5 py-2.5">
         <div class="flex items-center justify-between gap-2 mb-1">
           <div class="flex items-center gap-1.5">
             <span id="mobBadge" class="text-[10.5px] font-black px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/50"></span>
@@ -265,7 +288,7 @@
     <aside class="right-panel-col bg-[#06130e] p-3.5 space-y-3">
 
       <!-- PC 전용 상시 노출 문제 & 조건 카드 -->
-      <section class="hidden lg:block bg-[#0b1f18] border border-emerald-800/80 rounded-xl p-3.5 shadow-md space-y-2">
+      <section id="wideProblem" class="hidden lg:block bg-[#0b1f18] border border-emerald-800/80 rounded-xl p-3.5 shadow-md space-y-2">
         <div class="flex items-center justify-between gap-2">
           <span id="pcBadge" class="text-[11px] font-black px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/50"></span>
           <span id="pcUnit" class="text-[11px] font-bold text-emerald-300"></span>
@@ -304,7 +327,7 @@
         </div>
 
         <!-- 기하 보조선 Step 1·2·3 판서 카드 -->
-        <div id="boardTabs" class="board-tabs"></div><div id="chalkStepsContainer" class="space-y-2"></div>
+        <div id="boardTabs" class="board-tabs"></div><div id="boardIntro" class="board-intro">단계를 선택하면 해당 그림과 풀이가 함께 나타납니다.</div><div id="exploreNotice" class="explore-notice" hidden></div><div id="chalkStepsContainer" class="space-y-2"></div>
 
         <!-- 일반 대수 풀이 비교 박스 -->
         <div id="chalkAlgContainer" class="hidden bg-[#05100c]/95 border border-rose-500/40 rounded-xl p-3 space-y-2 text-xs text-slate-200 leading-relaxed"></div>
@@ -365,9 +388,9 @@
         sliderTitle: '점 P·Q 대칭 간격 조작:',
         defaultT: 0.65,
         snaps: [
-          { t: 0.3, label: '좁은 간격 (b-a=2)' },
-          { t: 0.65, label: '🎯 조건만족 (PQ=4√2, 넓이=16)' },
-          { t: 0.9, label: '넓은 간격 (b-a=5.5)' }
+          { t: (3.46-(Math.sqrt(52)-2)/2)/2.25, label: '좁은 간격 (b-a=2)' },
+          { t: (3.46-2)/2.25, label: '🎯 조건만족 (PQ=4√2, 넓이=16)' },
+          { t: (3.46-(Math.sqrt(78.25)-5.5)/2)/2.25, label: '넓은 간격 (b-a=5.5)' }
         ],
         auxHints: [
           '💡 [탐구 시작] 캔버스의 점 P를 드래그하거나 슬라이더를 움직여 기울기 -1인 직선 위의 두 교점 P, Q를 관찰하세요.',
@@ -569,9 +592,9 @@
         sliderTitle: '곡선 위 점 P 위치 드래그:',
         defaultT: 0.45,
         snaps: [
-          { t: 0.18, label: '위쪽 점 P(1.8, 7)' },
-          { t: 0.45, label: '🎯 최단거리 꼭짓점 P(3, 4)' },
-          { t: 0.85, label: '오른쪽 점 P(4.6, 3.1)' }
+          { t: 2/31, label: '위쪽 점 P(1.8, 7)' },
+          { t: 14/31, label: '🎯 최단거리 꼭짓점 P(3, 4)' },
+          { t: 30/31, label: '오른쪽 점 P(4.6, 3.1)' }
         ],
         auxHints: [
           '💡 [탐구 시작] 유리함수 위의 점 P를 움직이며 원 위의 점 Q까지의 거리가 언제 최소가 되는지 확인해 보세요.',
@@ -617,9 +640,9 @@
         sliderTitle: '가로선 y = t 높이 살펴보기:',
         defaultT: 0.4,
         snaps: [
-          { t: 0.4, label: '🎯 t = 1 (AB = 8/3 만족!)' },
+          { t: 1/3, label: '🎯 t = 1 (AB = 8/3 만족!)' },
           { t: 0.75, label: '🔥 t = 2 (절댓값 그래프의 점근선 k=2!)' },
-          { t: 0.92, label: 't = 2.5 (위쪽 두 교점)' }
+          { t: 23/24, label: 't = 2.5 (위쪽 두 교점)' }
         ],
         auxHints: [
           '💡 [탐구 시작] 가로선 y = t를 위아래로 움직여 교점이 오직 1개뿐인 특별한 높이(t = k)를 찾아보세요!',
@@ -766,7 +789,7 @@
         defaultT: 0.75,
         snaps: [
           { t: 0.15, label: '❌ 기울기 음수 (V자 꺾임: 역함수 불가)' },
-          { t: 0.43, label: '❌ 기울기 0 (상수함수: 역함수 불가)' },
+          { t: 3/7, label: '❌ 기울기 0 (상수함수: 역함수 불가)' },
           { t: 0.75, label: '⭕ 기울기 양수 (일대일대응 성공!)' }
         ],
         auxHints: [
@@ -798,7 +821,7 @@
         sliderTitle: '바깥 상수 k (1차 가로선 높이) 조절:',
         defaultT: 0.5,
         snaps: [
-          { t: 0.25, label: 'k = 1 (실근 4개, 합=8)' },
+          { t: 1/6, label: 'k = 1 (실근 4개, 합=8)' },
           { t: 0.5, label: '🎯 k = 2 (실근 4개, 합=8)' },
           { t: 1.0, label: '✨ k = 4 꼭대기 (실근 2개, 합=4)' }
         ],
@@ -944,7 +967,7 @@
         steps: [
           { step: 1, title: 'Step 1. 증가함수 vs 감소함수 교점 정리', desc: `증가함수는 $f(x)=f^{-1}(x) \\iff f(x)=x$가 항상 성립하지만, 감소함수는 성립하지 않습니다.` },
           { step: 2, title: 'Step 2. 바깥 교점 쌍의 조건: f(a) = b 이고 f(b) = a', desc: `$a \\ne b$이면서 $f(a)=b, f(b)=a$인 두 점 $(a,b), (b,a)$는 모두 원함수와 역함수의 교점입니다!` },
-          { step: 3, title: 'Step 3. 바깥 교점의 기하적 성질 (기울기 = -1, 홀수 개 교점)', desc: `바깥 교점은 항상 $(a,b), (b,a)$ 2개씩 짝지어 생기므로 전체 교점 개수는 **홀수 개(3개, 5개...)**가 됩니다.` }
+          { step: 3, title: 'Step 3. 바깥 교점 쌍을 잇는 직선의 기울기', desc: `직선 $y=x$ 밖의 교점은 $(a,b), (b,a)$처럼 대칭쌍으로 나타납니다. 전체 교점의 개수는 직선 $y=x$ 위의 교점과 무한히 많은 교점의 가능성까지 살펴야 합니다.` }
         ],
         alg: `특히 직선 $f(x) = -x + k$ (기울기가 $-1$인 모든 직선)는 자기 자신이 곧 역함수($f = f^{-1}$)이므로 직선 전체의 무수히 많은 점이 교점이 됩니다!`,
         answer: '명제 거짓(❌) — 감소함수는 y=x 바깥 대칭쌍 (a,b),(b,a) 교점 존재!'
@@ -1100,25 +1123,25 @@
         sliderTitle: '정점 (0, 1) 고정 직선 기울기 m 회전:',
         defaultT: 0.5,
         snaps: [
-          { t: 0.0, label: '🩷 점 B(4,3) 통과 (최소 m = 1/2)' },
-          { t: 0.5, label: '🎯 구간 내부 관통 (m = 1.25)' },
+          { t: 0.0, label: '🩷 점 B(4,7/3) 통과 (최소 m = 1/3)' },
+          { t: 0.5, label: '🎯 구간 내부 관통 (m = 7/6)' },
           { t: 1.0, label: '🟦 점 A(2,5) 통과 (최대 m = 2)' }
         ],
         auxHints: [
           '💡 [탐구 시작] 직선 y = mx + 1 은 m값에 관계없이 항상 정점 P₀(0, 1)에 못이 박혀 회전합니다! 슬라이더로 회전시켜 보세요.',
-          '🪄 [보조선 1단계 · 정점 P₀(0,1)과 구간 양 끝점 A(2,5), B(4,3)] 정의역 [2, 4]에 해당하는 유리함수 곡선 조각과 양 끝점을 표시합니다.',
+          '🪄 [보조선 1단계 · 정점 P₀(0,1)과 구간 양 끝점 A(2,5), B(4,7/3)] 정의역 [2, 4]에 해당하는 유리함수 곡선 조각과 양 끝점을 표시합니다.',
           '🪄 [보조선 2단계 · 왼쪽 끝점 A(2, 5) 통과 (최대 기울기)] 직선이 점 A(2, 5)를 지날 때 5 = 2m + 1 에서 최대 기울기 m = 2 가 됩니다!',
-          '🪄 [보조선 3단계 · 오른쪽 끝점 B(4, 3) 통과 (최소 기울기)] 직선이 점 B(4, 3)을 지날 때 3 = 4m + 1 에서 최소 기울기 m = 1/2 이 되어 부채꼴 영역이 완성됩니다!',
-          '✨ [전체 보조선 보기] 회전 중심 P₀(0,1)에서 뻗어 나가는 부채꼴 영역(1/2 ≤ m ≤ 2)과 양 끝 경계선이 모두 표시됩니다.'
+          '🪄 [보조선 3단계 · 오른쪽 끝점 B(4, 7/3) 통과 (최소 기울기)] 직선이 점 B(4, 7/3)을 지날 때 7/3 = 4m + 1 에서 최소 기울기 m = 1/3 이 되어 부채꼴 영역이 완성됩니다!',
+          '✨ [전체 보조선 보기] 회전 중심 P₀(0,1)에서 뻗어 나가는 부채꼴 영역(1/3 ≤ m ≤ 2)과 양 끝 경계선이 모두 표시됩니다.'
         ],
-        aha: `제한된 구간 $[a, b]$에서 유리함수와 직선이 만날 조건은 판별식 $D$를 쓰는 것이 아니라 **구간 양 끝점 $(a, f(a)), (b, f(b))$를 대입한 두 기울기 사이**입니다!`,
+        aha: `이 문제에서 $m=\\dfrac{4}{x(x-1)}$은 $2 \\le x \\le 4$에서 감소하므로 양 끝점의 기울기로 범위를 정합니다.`,
         steps: [
           { step: 1, title: 'Step 1. 직선의 회전 중심(정점) (0, 1) 확인', desc: `$y = mx + 1$은 기울기 $m$에 관계없이 항상 $(0, 1)$을 지납니다.` },
           { step: 2, title: 'Step 2. 왼쪽 끝점 A(2, 5) 대입 ➔ 최대 기울기 m = 2', desc: `$5 = 2m + 1 \\implies \\mathbf{m_{\\max} = 2}$` },
-          { step: 3, title: 'Step 3. 오른쪽 끝점 B(4, 3) 대입 ➔ 최소 기울기 m = 1/2', desc: `$3 = 4m + 1 \\implies \\mathbf{m_{\\min} = \\dfrac{1}{2}} \\implies \\mathbf{\\dfrac{1}{2} \\le m \\le 2}$` }
+          { step: 3, title: 'Step 3. 오른쪽 끝점 B(4, 7/3) 대입 ➔ 최소 기울기 m = 1/3', desc: `$7/3 = 4m + 1 \\implies \\mathbf{m_{\\min} = \\dfrac{1}{3}} \\implies \\mathbf{\\dfrac{1}{3} \\le m \\le 2}$` }
         ],
         alg: `이 유형에서 판별식 $D \\ge 0$을 쓰면 계산도 복잡할뿐더러 구간 $[2, 4]$ 바깥에서 만나는 기울기까지 포함되어 오답이 됩니다.`,
-        answer: '만날 기울기 범위: 1/2 ≤ m ≤ 2'
+        answer: '만날 기울기 범위: 1/3 ≤ m ≤ 2'
       },
 
       {
@@ -1236,9 +1259,9 @@
         sliderTitle: '직선 y = x + k 상하 살펴보기:',
         defaultT: 0.55,
         snaps: [
-          { t: 0.25, label: '✨ k = 0 (오른쪽 접선: 교점 2개)' },
+          { t: 2/9, label: '✨ k = 0 (오른쪽 접선: 교점 2개)' },
           { t: 0.55, label: '🎯 -1 < k < 0 (교점 3개!)' },
-          { t: 0.8, label: '📌 k = -1 (뾰족점 (1,0) 통과: 교점 2개)' }
+          { t: 7/9, label: '📌 k = -1 (뾰족점 (1,0) 통과: 교점 2개)' }
         ],
         auxHints: [
           '💡 [탐구 시작] 대칭축 x = 1을 기준으로 양쪽으로 날개를 펼친 갈매기 그래프에 직선 y = x + k를 살펴보기해 보세요!',
@@ -1489,6 +1512,7 @@
       ctx.restore();
     }
 
+    let placedDotLabels = [];
     function dDot(p, label = '', col = C.white, off = { x: 8, y: -8 }, isHandle = false) {
       if (state.auxStep === 0) return;
       if (state.auxStep < 3) label = '';
@@ -1516,9 +1540,22 @@
         ctx.font = `800 ${innerWidth <= 1100 ? 13 : 12}px Pretendard, sans-serif`;
         ctx.lineWidth = 3.5;
         ctx.strokeStyle = 'rgba(4, 14, 10, 0.94)';
-        ctx.strokeText(label, p.x + off.x, p.y + off.y);
+        let lx = p.x + off.x, ly = p.y + off.y;
+        if (window.innerWidth <= 1100) {
+          const bounds = canvas.parentElement.getBoundingClientRect();
+          const width = ctx.measureText(label).width, height = 16;
+          lx = Math.max(3, Math.min(bounds.width - width - 3, lx));
+          ly = Math.max(height, Math.min(bounds.height - 3, ly));
+          for (let tries=0; tries<12; tries++) {
+            const box = {left:lx, right:lx+width, top:ly-height, bottom:ly+3};
+            if (!placedDotLabels.some(r => box.left < r.right && box.right > r.left && box.top < r.bottom && box.bottom > r.top)) break;
+            ly = ly + height + 4 <= bounds.height - 3 ? ly + height + 4 : Math.max(height, ly - height - 4);
+          }
+          placedDotLabels.push({left:lx,right:lx+width,top:ly-height,bottom:ly+3});
+        }
+        ctx.strokeText(label, lx, ly);
         ctx.fillStyle = col;
-        ctx.fillText(label, p.x + off.x, p.y + off.y);
+        ctx.fillText(label, lx, ly);
       }
       ctx.restore();
     }
@@ -1545,6 +1582,7 @@
       const rect = canvas.parentElement.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
       ctx.clearRect(0, 0, rect.width, rect.height);
+      placedDotLabels = [];
 
       const prob = curProb();
       const id = prob.id;
@@ -1588,7 +1626,7 @@
           dPoly([P, H, Q], 'rgba(251, 191, 36, 0.22)', C.gold, 2.4, true);
           drawRightAngle(H, P, Q, 11, C.gold);
           drawRightAngle(M, Cpt, P, 10, C.gold);
-          drawDimension(P, Q, -26, `PQ = ${(Math.SQRT2 * (b - a)).toFixed(1)} (4√2≈5.7)`, C.gold);
+          drawDimension(P, Q, -26, `현재 PQ = ${(Math.SQRT2 * (b - a)).toFixed(2)}`, C.gold);
           drawDimension(H, Q, 22, `b - a = ${(b - a).toFixed(1)}`, C.gold);
         }
 
@@ -1740,9 +1778,9 @@
         dLine(toScr(-4.5, -4.5 + k, ox, oy, sc), toScr(5.8, 5.8 + k, ox, oy, sc), lineCol, 3.8, [], true);
         dDot(toScr(0, k, ox, oy, sc), `y절편 k=${k.toFixed(2)} [드래그]`, lineCol, { x: -115, y: -8 }, true);
 
-        dDot(S, '시작점 S(1,1) [k=0]', C.white, { x: 10, y: 15 });
-        dDot(P, '무리 접점 P(2,3) [k=1]', C.cyan, { x: 10, y: -8 });
-        dDot(Q, '유리 접점 Q(0,2) [k=2]', C.pink, { x: -135, y: -8 });
+        if (Math.abs(k) > 1e-9) dDot(S, '시작점 S(1,1)', C.white, { x: 10, y: 15 });
+        if (Math.abs(k-1) > 1e-9) dDot(P, '접점 P(2,3)', C.cyan, { x: 10, y: -8 });
+        if (Math.abs(k-2) > 1e-9) dDot(Q, '접점 Q(0,2)', C.pink, { x: -110, y: -8 });
 
         setMetric(`직선 y = x + (${k.toFixed(2)}) ➔ 실제 교점 개수 g(k) = ${cnt}개! (1<k<2일 때 0개, 0≤k<1일 때 2개)`);
         return;
@@ -1883,7 +1921,7 @@
         const yT = 0.2 + t * 2.4; // t=0.4 -> yT=1.16, t=0.75 -> yT=2.0
         dLine(toScr(-2, yT, ox, oy, sc), toScr(9.5, yT, ox, oy, sc), C.gold, 3.2, [], true);
 
-        if (yT < 1.98) {
+        if (yT < 2 - 1e-9) {
           const x1 = 3 + 4 / (2 + yT);
           const x2 = 3 + 4 / (2 - yT);
           const A = toScr(x1, yT, ox, oy, sc);
@@ -2002,8 +2040,12 @@
       selectProb(next);
     }
 
+    function solutionSlider(id) { const values = {'adv-1':(3.46-2)/2.25,'adv-2':0.35,'adv-5':(3-1.6)/3.1,'adv-6':1/3,'adv-7':1,'bas-3':0.5,'bas-10':0.35}; return Object.hasOwn(values,id) ? values[id] : null; }
+
     function setAuxStep(step) {
       state.auxStep = step;
+      if (step > 0) { const solutionT = solutionSlider(curProb().id); if (solutionT !== null) { state.sliderT = solutionT; document.getElementById('paramSlider').value = solutionT; } }
+      state.solutionAnchor = state.sliderT;
       boardPage = step >= 1 && step <= 3 ? step - 1 : (step === 4 ? 2 : -1);
       state.solMode = 'geo';
       state.animT = 0; // 단계 전환 시 이동 애니메이션 시작!
@@ -2022,6 +2064,7 @@
       state.sliderT = num;
       document.getElementById('paramSlider').value = num;
       syncSliderReadout();
+      updateExploreNotice();
       drawScene();
     }
 
@@ -2029,7 +2072,16 @@
       state.sliderT = t;
       document.getElementById('paramSlider').value = t;
       syncSliderReadout();
+      updateExploreNotice();
       drawScene();
+    }
+
+    function updateExploreNotice() {
+      const el = document.getElementById('exploreNotice');
+      const target = state.solutionAnchor;
+      const different = state.auxStep > 0 && typeof target === 'number' && Math.abs(state.sliderT - target) > 0.015;
+      el.hidden = !different;
+      el.textContent = different ? '현재 그림은 슬라이더로 바꾼 탐구 상태입니다. 아래 풀이는 원래 문제의 조건을 기준으로 합니다. 그림의 값과 조건이 같은지 확인하세요.' : '';
     }
 
     function syncSliderReadout() {
@@ -2050,7 +2102,7 @@
 
       requestAnimationFrame(() => {
         resizeCanvas();
-
+        if (state.chalkOpen && window.innerWidth < 768) canvas.scrollIntoView({behavior: "smooth", block: "start"});
       });
     }
 
@@ -2130,7 +2182,8 @@
         const sc = u * 0.95;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        const m2 = -1.5 + t * 3.5; // t=0.75 -> m2 = +1.125
+        const m2raw = -1.5 + t * 3.5;
+        const m2 = Math.abs(m2raw) < 1e-9 ? 0 : m2raw; // t=0.75 -> m2 = +1.125
         const P0 = toScr(0, 1, ox, oy, sc);
         const PLeft = toScr(-3.5, -6, ox, oy, sc);
         const PRight = toScr(3.8, 1 + 3.8 * m2, ox, oy, sc);
@@ -2247,9 +2300,9 @@
         dLine(q1, q2, C.pink, 3.8, [], true);
         dLine(q2, q3, C.pink, 3.8, [], true);
         dLine(q3, q4, C.pink, 3.8, [], true);
-        dDot(q1, '(1, 4)', C.pink, { x: -18, y: -12 }, true);
-        dDot(q2, '(2, 0)', C.pink, { x: -18, y: 18 });
-        dDot(q3, '(3, 4)', C.pink, { x: -18, y: -12 });
+        dDot(q1, `(1, ${(2 + 2*mT).toFixed(2)})`, C.pink, { x: -18, y: -12 }, true);
+        dDot(q2, `(2, ${(4 - 4*mT).toFixed(2)})`, C.pink, { x: -18, y: 18 });
+        dDot(q3, `(3, ${(2 + 2*mT).toFixed(2)})`, C.pink, { x: -18, y: -12 });
         setMetric('합성함수 y = f(f(x)) 작도: x = 1, 2, 3 에서 꺾여 봉우리가 2개인 M자 모양이 됩니다!');
         return;
       }
@@ -2326,7 +2379,7 @@
         const isInv = id === 'bas-9' && t > 0.5;
         const p = isInv ? 2 : 1;
         const q = isInv ? 1 : 2;
-        const kVal = id === 'bas-9' ? 3 : id === 'bas-8' && t < 0.35 ? -4 : 4;
+        const kVal = id === 'bas-9' ? 3 : t < 0.35 ? -4 : t > 0.8 ? 8 : 4;
 
         const Cpt = toScr(p, q, ox, oy, sc);
         dLine(toScr(p, -5, ox, oy, sc), toScr(p, 7, ox, oy, sc), C.gold, 2.2, [5, 4]);
@@ -2423,23 +2476,23 @@
 
         const P0 = toScr(0, 1, ox, oy, sc);
         const A = toScr(2, 5, ox, oy, sc);
-        const B = toScr(4, 3, ox, oy, sc);
+        const B = toScr(4, 7 / 3, ox, oy, sc);
 
         if (step >= 2) {
-          dPoly([P0, toScr(3, 7, ox, oy, sc), toScr(6, 4, ox, oy, sc)], 'rgba(251, 191, 36, 0.15)', null, 0);
+          dPoly([P0, toScr(3, 7, ox, oy, sc), toScr(6, 3, ox, oy, sc)], 'rgba(251, 191, 36, 0.15)', null, 0);
           dLine(P0, toScr(3, 7, ox, oy, sc), C.cyan, 2.4, [5, 4], true);
         }
         if (step >= 3) {
-          dLine(P0, toScr(6, 4, ox, oy, sc), C.pink, 2.4, [5, 4], true);
+          dLine(P0, toScr(6, 3, ox, oy, sc), C.pink, 2.4, [5, 4], true);
         }
 
-        const m = 0.5 + t * 1.5;
+        const m = 1 / 3 + t * 5 / 3;
         dLine(toScr(-1, 1 - m, ox, oy, sc), toScr(6, 1 + 6 * m, ox, oy, sc), C.green, 3.8, [], true);
         dDot(P0, '회전정점 P₀(0,1)', C.white, { x: -105, y: -6 });
         dDot(A, '끝점 A(2,5) [최대 m=2]', C.cyan, { x: 10, y: -8 }, true);
-        dDot(B, '끝점 B(4,3) [최소 m=1/2]', C.pink, { x: 10, y: 15 });
+        dDot(B, '끝점 B(4,7/3) [최소 m=1/3]', C.pink, { x: 10, y: 15 });
 
-        setMetric(`현재 기울기 m = ${m.toFixed(2)} | 구간 [2, 4]의 곡선과 만날 범위: 1/2 ≤ m ≤ 2`);
+        setMetric(`현재 기울기 m = ${m.toFixed(2)} | 구간 [2, 4]의 곡선과 만날 범위: 1/3 ≤ m ≤ 2`);
         return;
       }
 
@@ -2615,6 +2668,7 @@
       document.getElementById('chalkAhaText').parentElement.hidden = state.auxStep < 3;
       document.getElementById('tabAlg').disabled = state.auxStep < 3;
       document.getElementById('tabAlg').style.opacity = state.auxStep < 3 ? '0.5' : '1';
+      updateExploreNotice();
       refreshBoardTabs();
     }
 
@@ -2625,6 +2679,7 @@
       document.getElementById('tabAlg').textContent=p.id==='adv-3'?'⚠️ 오답 함정 분석':'📖 풀이 비교';
       const tabs=document.getElementById('boardTabs');
       tabs.innerHTML=[1,2,3].map((n,i)=>`<button type="button" onclick="boardPage=${i};refreshBoardTabs();setAuxStep(${n})" class="${boardPage===i?'chosen':''}">Step ${n}</button>`).join('')+`<button type="button" ${state.auxStep < 3 ? 'disabled title="3단계를 먼저 확인하세요"' : ''} onclick="boardPage=3;refreshBoardTabs()" class="${boardPage===3?'chosen':''}">풀이 비교</button>`;
+      document.getElementById('boardIntro').hidden = boardPage !== -1;
       const cards=document.querySelectorAll('#chalkStepsContainer > div'); cards.forEach((el,i)=>el.style.display=(state.solMode==='geo' && boardPage===i)?'':'none');
       if(boardPage===3){document.getElementById('chalkStepsContainer').classList.add('hidden');document.getElementById('chalkAlgContainer').classList.remove('hidden');}
       else if(state.solMode==='geo'){document.getElementById('chalkStepsContainer').classList.remove('hidden');document.getElementById('chalkAlgContainer').classList.add('hidden');}
