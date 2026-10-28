@@ -31087,6 +31087,281 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_교재완결_P158-160_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 158~160쪽 교재완결 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 도형의 이동·집합 102~105쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_명제_P10-13_20261024_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 명제 10~13쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_명제_P14-17_20261024_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 명제 14~17쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_명제_P18-21_20261024_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 명제 18~21쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_명제_P22-25_20261024_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 명제 22~25쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_명제_P26-29_20261025_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 명제 26~29쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 실전 모의고사 4회 152~155쪽 고1 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 실전 모의고사 5회 156~159쪽 고1 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 원의 방정식 교재GPT BATCH04 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 원의 방정식 50~53쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 원의 방정식 54~57쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(상) 원의 방정식·도형의 이동 26~29쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 106~109쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P134-137_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 134~137쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P30-33_20261025_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 명제 30~33쪽 고1 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P34-37_20261025_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 34~37쪽 고1 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(상) 평면좌표·직선의 방정식 30~33쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 함수 54~57쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P62-65_20261026_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 함수 62~65쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P66-69_20261026_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 함수 66~69쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수와그래프_P42-45_20261025_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 함수와 그래프 42~45쪽 고1 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수와그래프_P46-49_20261025_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 함수와 그래프 46~49쪽 고1 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수와그래프_P50-53_20261025_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 함수와 그래프 50~53쪽 고1 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수와그래프_P58-61_20261026_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 함수와 그래프 58~61쪽 고1 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
     }
   ]
 };
