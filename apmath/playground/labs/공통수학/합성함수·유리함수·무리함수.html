@@ -95,13 +95,13 @@
     }
 
     /* 데스크톱: 좌우 와이드 분할 | 모바일·태블릿: 상하 동시 비교 뷰 */
-    @media (min-width: 1024px) {
+    @media (min-width: 1200px) {
       body { height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
       .workspace-layout { flex: 1; display: grid; grid-template-columns: 1fr 470px; overflow: hidden; }
       .left-stage-col { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
       .right-panel-col { height: 100%; overflow-y: auto; border-left: 1px solid rgba(16, 185, 129, 0.28); }
     }
-    @media (max-width: 1023px) {
+    @media (max-width: 1199px) {
       body { min-height: 100vh; overflow-y: auto; display: flex; flex-direction: column; }
       .workspace-layout { display: flex; flex-direction: column; }
       .canvas-box { height: clamp(340px, 50svh, 500px); width: 100%; transition: height 0.25s ease; }
@@ -114,8 +114,8 @@
     .board-tabs button.chosen { background:#fbbf24; color:#06130e; font-weight:800; }
     #scaffoldList, #auxHintBox {display:none!important}
     #miniChalkboard {overflow:auto; max-height:calc(100vh - 340px)}
-    @media (min-width:1024px) { .workspace-layout {grid-template-columns:minmax(0, 68fr) minmax(310px,32fr)} }
-    @media (min-width:768px) and (max-width:1023px) {
+    @media (min-width:1200px) { .workspace-layout {grid-template-columns:minmax(0, 68fr) minmax(310px,32fr)} }
+    @media (min-width:768px) and (max-width:1199px) {
       .workspace-layout {display:grid; grid-template-columns:minmax(0, 60fr) minmax(270px,40fr); align-items:start;overflow:hidden} .workspace-layout > * {min-width:0} #snapChipBox {max-width:100%}
       .left-stage-col {display:contents} .left-stage-col > div:first-child {grid-column:1 / -1}
       .canvas-box {grid-column:1; grid-row:2 / span 2; height: min(65vh,700px); min-height:420px}
@@ -149,6 +149,24 @@
     }
     @media (min-width:1024px) and (max-width:1100px) {#pcStatement {font-size:15px!important;line-height:1.6!important}}
     #miniChalkboard [hidden] {display:none!important}
+    #pcStatement {font-size:16px!important;line-height:1.75!important}
+    #pcTitle {font-size:17px!important;line-height:1.45!important}
+    #miniChalkboard .text-xs {font-size:14px!important;line-height:1.65!important}
+    #miniChalkboard .board-tabs button {min-height:44px;font-size:14px}
+    #btnChalkToggle,.step-btn,.group-button,.problem-list-toggle,.problem-item {min-height:44px}
+    #sliderTitle,#sliderReadout {font-size:14px!important}
+    @media(max-width:1199px) {
+      #mobStatement,#pcStatement {font-size:16px!important;line-height:1.7!important}
+      #mobTitle,#pcTitle {font-size:16px!important}
+      .step-btn,#btnChalkToggle,.group-button,.problem-list-toggle,.problem-item {min-height:44px!important}
+    }
+    @media(max-width:767px) {
+      #snapChipBox {display:flex!important;width:100%;max-width:100%;overflow-x:auto;flex-wrap:nowrap;min-height:0}
+      #snapChipBox:empty {display:none!important}
+      #snapChipBox button {min-height:42px;font-size:12px!important;padding:7px 10px}
+      .canvas-box {min-height:280px}
+      #miniChalkboard {max-height:55svh}
+    }
   </style>
 </head>
 <body>
@@ -365,9 +383,9 @@
         sliderTitle: '점 P·Q 대칭 간격 조작:',
         defaultT: 0.65,
         snaps: [
-          { t: 0.3, label: '좁은 간격 (b-a=2)' },
+          { t: 0.3, label: '좁은 간격 탐구' },
           { t: 0.65, label: '🎯 조건만족 (PQ=4√2, 넓이=16)' },
-          { t: 0.9, label: '넓은 간격 (b-a=5.5)' }
+          { t: 0.9, label: '넓은 간격 탐구' }
         ],
         auxHints: [
           '💡 [탐구 시작] 캔버스의 점 P를 드래그하거나 슬라이더를 움직여 기울기 -1인 직선 위의 두 교점 P, Q를 관찰하세요.',
@@ -569,9 +587,9 @@
         sliderTitle: '곡선 위 점 P 위치 드래그:',
         defaultT: 0.45,
         snaps: [
-          { t: 0.18, label: '위쪽 점 P(1.8, 7)' },
+          { t: 0.18, label: '위쪽 점 탐구' },
           { t: 0.45, label: '🎯 최단거리 꼭짓점 P(3, 4)' },
-          { t: 0.85, label: '오른쪽 점 P(4.6, 3.1)' }
+          { t: 0.85, label: '오른쪽 점 탐구' }
         ],
         auxHints: [
           '💡 [탐구 시작] 유리함수 위의 점 P를 움직이며 원 위의 점 Q까지의 거리가 언제 최소가 되는지 확인해 보세요.',
@@ -944,7 +962,7 @@
         steps: [
           { step: 1, title: 'Step 1. 증가함수 vs 감소함수 교점 정리', desc: `증가함수는 $f(x)=f^{-1}(x) \\iff f(x)=x$가 항상 성립하지만, 감소함수는 성립하지 않습니다.` },
           { step: 2, title: 'Step 2. 바깥 교점 쌍의 조건: f(a) = b 이고 f(b) = a', desc: `$a \\ne b$이면서 $f(a)=b, f(b)=a$인 두 점 $(a,b), (b,a)$는 모두 원함수와 역함수의 교점입니다!` },
-          { step: 3, title: 'Step 3. 바깥 교점의 기하적 성질 (기울기 = -1, 홀수 개 교점)', desc: `바깥 교점은 항상 $(a,b), (b,a)$ 2개씩 짝지어 생기므로 전체 교점 개수는 **홀수 개(3개, 5개...)**가 됩니다.` }
+          { step: 3, title: 'Step 3. 바깥 교점의 기하적 성질 (기울기 = -1, 홀수 개 교점)', desc: `바깥 교점은 $(a,b), (b,a)$로 짝지어 생깁니다. 따라서 대각선 $y=x$ 위의 교점이 정확히 1개이고 전체 교점 수가 유한할 때에만 홀수 개입니다.` }
         ],
         alg: `특히 직선 $f(x) = -x + k$ (기울기가 $-1$인 모든 직선)는 자기 자신이 곧 역함수($f = f^{-1}$)이므로 직선 전체의 무수히 많은 점이 교점이 됩니다!`,
         answer: '명제 거짓(❌) — 감소함수는 y=x 바깥 대칭쌍 (a,b),(b,a) 교점 존재!'
@@ -1100,25 +1118,25 @@
         sliderTitle: '정점 (0, 1) 고정 직선 기울기 m 회전:',
         defaultT: 0.5,
         snaps: [
-          { t: 0.0, label: '🩷 점 B(4,3) 통과 (최소 m = 1/2)' },
-          { t: 0.5, label: '🎯 구간 내부 관통 (m = 1.25)' },
+          { t: 0.0, label: '🩷 점 B(4,7/3) 통과 (최소 m = 1/3)' },
+          { t: 0.5, label: '🎯 구간 내부 관통 (m = 7/6)' },
           { t: 1.0, label: '🟦 점 A(2,5) 통과 (최대 m = 2)' }
         ],
         auxHints: [
           '💡 [탐구 시작] 직선 y = mx + 1 은 m값에 관계없이 항상 정점 P₀(0, 1)에 못이 박혀 회전합니다! 슬라이더로 회전시켜 보세요.',
-          '🪄 [보조선 1단계 · 정점 P₀(0,1)과 구간 양 끝점 A(2,5), B(4,3)] 정의역 [2, 4]에 해당하는 유리함수 곡선 조각과 양 끝점을 표시합니다.',
+          '🪄 [보조선 1단계 · 정점 P₀(0,1)과 구간 양 끝점 A(2,5), B(4,7/3)] 정의역 [2, 4]에 해당하는 유리함수 곡선 조각과 양 끝점을 표시합니다.',
           '🪄 [보조선 2단계 · 왼쪽 끝점 A(2, 5) 통과 (최대 기울기)] 직선이 점 A(2, 5)를 지날 때 5 = 2m + 1 에서 최대 기울기 m = 2 가 됩니다!',
-          '🪄 [보조선 3단계 · 오른쪽 끝점 B(4, 3) 통과 (최소 기울기)] 직선이 점 B(4, 3)을 지날 때 3 = 4m + 1 에서 최소 기울기 m = 1/2 이 되어 부채꼴 영역이 완성됩니다!',
-          '✨ [전체 보조선 보기] 회전 중심 P₀(0,1)에서 뻗어 나가는 부채꼴 영역(1/2 ≤ m ≤ 2)과 양 끝 경계선이 모두 표시됩니다.'
+          '🪄 [보조선 3단계 · 오른쪽 끝점 B(4, 7/3) 통과 (최소 기울기)] 직선이 점 B(4, 7/3)을 지날 때 7/3 = 4m + 1 에서 최소 기울기 m = 1/3 이 되어 부채꼴 영역이 완성됩니다!',
+          '✨ [전체 보조선 보기] 회전 중심 P₀(0,1)에서 뻗어 나가는 부채꼴 영역(1/3 ≤ m ≤ 2)과 양 끝 경계선이 모두 표시됩니다.'
         ],
         aha: `제한된 구간 $[a, b]$에서 유리함수와 직선이 만날 조건은 판별식 $D$를 쓰는 것이 아니라 **구간 양 끝점 $(a, f(a)), (b, f(b))$를 대입한 두 기울기 사이**입니다!`,
         steps: [
           { step: 1, title: 'Step 1. 직선의 회전 중심(정점) (0, 1) 확인', desc: `$y = mx + 1$은 기울기 $m$에 관계없이 항상 $(0, 1)$을 지납니다.` },
           { step: 2, title: 'Step 2. 왼쪽 끝점 A(2, 5) 대입 ➔ 최대 기울기 m = 2', desc: `$5 = 2m + 1 \\implies \\mathbf{m_{\\max} = 2}$` },
-          { step: 3, title: 'Step 3. 오른쪽 끝점 B(4, 3) 대입 ➔ 최소 기울기 m = 1/2', desc: `$3 = 4m + 1 \\implies \\mathbf{m_{\\min} = \\dfrac{1}{2}} \\implies \\mathbf{\\dfrac{1}{2} \\le m \\le 2}$` }
+          { step: 3, title: 'Step 3. 오른쪽 끝점 B(4, 7/3) 대입 ➔ 최소 기울기 m = 1/3', desc: `$7/3 = 4m + 1 \\implies \\mathbf{m_{\\min} = \\dfrac{1}{3}} \\implies \\mathbf{\\dfrac{1}{3} \\le m \\le 2}$` }
         ],
         alg: `이 유형에서 판별식 $D \\ge 0$을 쓰면 계산도 복잡할뿐더러 구간 $[2, 4]$ 바깥에서 만나는 기울기까지 포함되어 오답이 됩니다.`,
-        answer: '만날 기울기 범위: 1/2 ≤ m ≤ 2'
+        answer: '만날 기울기 범위: 1/3 ≤ m ≤ 2'
       },
 
       {
@@ -1489,7 +1507,9 @@
       ctx.restore();
     }
 
+    let activeHandles = [];
     function dDot(p, label = '', col = C.white, off = { x: 8, y: -8 }, isHandle = false) {
+      if (isHandle && state.auxStep > 0) activeHandles.push({x:p.x,y:p.y});
       if (state.auxStep === 0) return;
       if (state.auxStep < 3) label = '';
       ctx.save();
@@ -1545,6 +1565,7 @@
       const rect = canvas.parentElement.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
       ctx.clearRect(0, 0, rect.width, rect.height);
+      activeHandles = [];
 
       const prob = curProb();
       const id = prob.id;
@@ -1569,7 +1590,7 @@
         dLine(toScr(-1, 2, ox, oy, sc), toScr(10.5, 2, ox, oy, sc), 'rgba(251,191,36,0.45)', 2, [5, 4]);
         dCurve((x) => k / (x - 2) + 2, 2.32, 10.2, ox, oy, sc, C.cyan, 3.8);
 
-        const a = 3.46 - t * 2.25; // t=0.65 -> a=2, b=6
+        const a = 3.4625 - t * 2.25; // t=0.65 -> a=2, b=6
         const b = k / a;
         const Cpt = toScr(2, 2, ox, oy, sc);
         const P = toScr(2 + a, 2 + b, ox, oy, sc);
@@ -1837,7 +1858,7 @@
           drawRightAngle(toScr(3, 2, ox, oy, sc), toScr(1, 2, ox, oy, sc), toScr(3, 4, ox, oy, sc), 10, C.green);
         }
 
-        const px = 1.6 + t * 3.1; // t=0.45 -> px=3.0
+        const px = 1.605 + t * 3.1; // t=0.45 -> px=3 exactly
         const py = 4 / (px - 1) + 2;
         const P = toScr(px, py, ox, oy, sc);
         const distAP = Math.hypot(px + 1, py);
@@ -1847,7 +1868,7 @@
 
         dLine(P, Q, C.green, 3.8, [], true);
         if (step >= 3) {
-          drawDimension(Q, P, -24, `최단거리 m = 3√2`, C.green);
+          drawDimension(Q, P, -24, `현재 PQ = ${(distAP - Math.SQRT2).toFixed(2)} (최솟값 3√2)`, C.green);
         }
 
         dDot(centerA, '원 중심 A(-1,0)', C.pink, { x: -95, y: 18 });
@@ -1880,21 +1901,21 @@
         dCurve((x) => 4 / (x - 3) - 2, 3.6, 5.0, ox, oy, sc, C.cyan, 3.8);
         dCurve((x) => -(4 / (x - 3) - 2), 5.0, 9.5, ox, oy, sc, colFold, 3.8);
 
-        const yT = 0.2 + t * 2.4; // t=0.4 -> yT=1.16, t=0.75 -> yT=2.0
+        const yT = t <= 0.4 ? 0.2 + 2 * t : t <= 0.75 ? 1 + (t - 0.4) / 0.35 : 2 + 0.5 * (t - 0.75) / 0.17;
         dLine(toScr(-2, yT, ox, oy, sc), toScr(9.5, yT, ox, oy, sc), C.gold, 3.2, [], true);
 
-        if (yT < 1.98) {
-          const x1 = 3 + 4 / (2 + yT);
-          const x2 = 3 + 4 / (2 - yT);
+        if (Math.abs(yT - 2) > 1e-8) {
+          const x1 = yT < 2 ? 3 + 4 / (2 + yT) : 3 + 4 / (2 - yT);
+          const x2 = yT < 2 ? 3 + 4 / (2 - yT) : 3 + 4 / (2 + yT);
           const A = toScr(x1, yT, ox, oy, sc);
           const B = toScr(x2, yT, ox, oy, sc);
           dLine(A, B, C.green, 4.2, [], step >= 2);
           if (step >= 2) {
-            drawDimension(A, B, -22, `AB = ${(x2 - x1).toFixed(2)} (t=1일 때 8/3≈2.67)`, C.green);
+            drawDimension(A, B, -22, `AB = ${Math.abs(x2 - x1).toFixed(2)} (t=1일 때 8/3≈2.67)`, C.green);
           }
           dDot(A, 'A', C.cyan, { x: -14, y: -10 });
           dDot(B, 'B [드래그]', C.pink, { x: 8, y: -10 }, true);
-        }
+        } else { dDot(toScr(4, 2, ox, oy, sc), '유일한 교점 (4,2)', C.green, { x: 9, y: -12 }); }
 
         dDot(toScr(5, 0, ox, oy, sc), '(5, 0)', C.white, { x: -12, y: 18 });
         setMetric(`가로선 y = ${yT.toFixed(2)} | 절댓값 그래프의 점근선 k = 2 (교점 1개), t = 1 일 때 AB = 8/3 ➔ k+t = 3`);
@@ -1981,7 +2002,7 @@
     }
     function selectProblemGroup(idx) { problemListOpen = true; selectProb(idx); }
 
-    function initialSlider(p) { return ({'adv-1':0.2,'adv-2':0.25,'adv-5':0.2,'bas-4':0,'bas-7':0,'bas-10':0.25})[p.id] ?? p.defaultT; }
+    function initialSlider(p) { return ({'adv-1':0.65,'adv-2':0.35,'adv-5':0.45,'bas-4':0,'bas-7':0,'bas-10':0.35})[p.id] ?? p.defaultT; }
 
     function selectProb(idx) {
       state.probIdx = idx; boardPage=-1; state.solMode='geo';
@@ -2028,8 +2049,7 @@
     function setSnapVal(t) {
       state.sliderT = t;
       document.getElementById('paramSlider').value = t;
-      syncSliderReadout();
-      drawScene();
+      syncAllUI();
     }
 
     function syncSliderReadout() {
@@ -2047,6 +2067,7 @@
       board.classList.toggle('hidden', !state.chalkOpen);
       document.body.classList.toggle('mobile-chalk-open', state.chalkOpen);
       txt.textContent = state.chalkOpen ? '📕 소형 풀이 칠판 접기' : '📗 소형 풀이 칠판 꺼내기';
+      if (state.chalkOpen && boardPage < 0) setAuxStep(1);
 
       requestAnimationFrame(() => {
         resizeCanvas();
@@ -2326,7 +2347,7 @@
         const isInv = id === 'bas-9' && t > 0.5;
         const p = isInv ? 2 : 1;
         const q = isInv ? 1 : 2;
-        const kVal = id === 'bas-9' ? 3 : id === 'bas-8' && t < 0.35 ? -4 : 4;
+        const kVal = id === 'bas-9' ? 3 : id === 'bas-8' ? (t < 0.4 ? -4 : t >= 0.8 ? 8 : 4) : 4;
 
         const Cpt = toScr(p, q, ox, oy, sc);
         dLine(toScr(p, -5, ox, oy, sc), toScr(p, 7, ox, oy, sc), C.gold, 2.2, [5, 4]);
@@ -2423,23 +2444,23 @@
 
         const P0 = toScr(0, 1, ox, oy, sc);
         const A = toScr(2, 5, ox, oy, sc);
-        const B = toScr(4, 3, ox, oy, sc);
+        const B = toScr(4, 7 / 3, ox, oy, sc);
 
         if (step >= 2) {
-          dPoly([P0, toScr(3, 7, ox, oy, sc), toScr(6, 4, ox, oy, sc)], 'rgba(251, 191, 36, 0.15)', null, 0);
+          dPoly([P0, toScr(3, 7, ox, oy, sc), toScr(6, 3, ox, oy, sc)], 'rgba(251, 191, 36, 0.15)', null, 0);
           dLine(P0, toScr(3, 7, ox, oy, sc), C.cyan, 2.4, [5, 4], true);
         }
         if (step >= 3) {
           dLine(P0, toScr(6, 4, ox, oy, sc), C.pink, 2.4, [5, 4], true);
         }
 
-        const m = 0.5 + t * 1.5;
+        const m = 1 / 3 + t * (5 / 3);
         dLine(toScr(-1, 1 - m, ox, oy, sc), toScr(6, 1 + 6 * m, ox, oy, sc), C.green, 3.8, [], true);
         dDot(P0, '회전정점 P₀(0,1)', C.white, { x: -105, y: -6 });
         dDot(A, '끝점 A(2,5) [최대 m=2]', C.cyan, { x: 10, y: -8 }, true);
-        dDot(B, '끝점 B(4,3) [최소 m=1/2]', C.pink, { x: 10, y: 15 });
+        dDot(B, '끝점 B(4,7/3) [최소 m=1/3]', C.pink, { x: 10, y: 15 });
 
-        setMetric(`현재 기울기 m = ${m.toFixed(2)} | 구간 [2, 4]의 곡선과 만날 범위: 1/2 ≤ m ≤ 2`);
+        setMetric(`현재 기울기 m = ${m.toFixed(2)} | 구간 [2, 4]의 곡선과 만날 범위: 1/3 ≤ m ≤ 2`);
         return;
       }
 
@@ -2657,6 +2678,9 @@
 
     // 캔버스 마우스/터치 직접 드래그 이벤트
     function startDrag(x, y) {
+      const r = canvas.getBoundingClientRect();
+      const cx = x-r.left, cy=y-r.top;
+      state.dragMode = activeHandles.some(h=>Math.hypot(h.x-cx,h.y-cy)<28) ? 'handle' : 'pan';
       state.dragging = true;
       state.lastPt = { x, y };
     }
@@ -2668,13 +2692,18 @@
       state.lastPt = { x, y };
 
       const rect = canvas.getBoundingClientRect();
-      const deltaT = (dx - dy * 0.65) / Math.max(200, rect.width * 0.6);
-      const nextT = Math.max(0, Math.min(1, state.sliderT + deltaT));
-      onSliderInput(nextT);
+      if (state.dragMode === 'pan') {
+        state.panX += dx; state.panY += dy; drawScene();
+      } else {
+        const deltaT = (dx - dy * 0.65) / Math.max(200, rect.width * 0.6);
+        const nextT = Math.max(0, Math.min(1, state.sliderT + deltaT));
+        onSliderInput(nextT);
+      }
     }
 
     function endDrag() {
       state.dragging = false;
+      state.dragMode = null;
     }
 
     canvas.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY));
