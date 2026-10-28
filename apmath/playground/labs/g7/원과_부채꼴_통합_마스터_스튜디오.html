@@ -5,6 +5,8 @@
 <title>원과 부채꼴 | AP Math Concept Lab</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin="anonymous">
 <link rel="stylesheet" href="../../assets/geometry-relations.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
 <style>
 :root{color-scheme:dark;--bg:#07130e;--panel:#0d241a;--card:#112d21;--line:#315846;--fg:#ecf8ef;--muted:#b0c9bd;--sky:#38bdf8;--rose:#fb7185;--mint:#34d399;--amber:#fbbf24}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:"Pretendard Variable",Pretendard,"Noto Sans KR","Malgun Gothic",system-ui,sans-serif;line-height:1.45}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
@@ -23,21 +25,113 @@
 #scene.lens-area .math-aux{opacity:.15!important}
 #scene.lens-area .math-area{fill-opacity:.62!important;stroke-opacity:.25!important}
 .progress{border-radius:8px;height:18px;display:flex;gap:2px;overflow:hidden;border:1px solid #426f57;background:#08170f}.progress span{min-width:0;transition:width .3s ease}.compare-bars{display:grid;gap:5px}.compare-bar-row{display:flex;align-items:center;gap:8px;font-size:11px}.compare-bar-track{flex:1;height:12px;background:#08170f;border:1px solid #355f49;border-radius:6px;overflow:hidden}.compare-bar-fill{height:100%;border-radius:5px;transition:width .3s ease}.progress-legend{display:flex;gap:6px;flex-wrap:wrap}.progress-legend button{min-height:36px;font-size:11px;background:#153125;color:#edf8f2;border:1px solid #35614b;border-radius:9px;padding:5px 8px}.progress-legend button.active{outline:2px solid #fbd874}
-.card{background:#112d21;border:1px solid #315d47;border-radius:14px;padding:13px}.card h2{font-size:15px;margin:0 0 8px;color:#d5fce4}.card h3{font-size:12px;color:#8de8b8;margin:0 0 7px}.card p{font-size:13px;margin:6px 0;line-height:1.65}.card ul{padding-left:18px;margin:7px 0}.card li{font-size:12px;margin:5px 0}.eyebrow{font-size:11px;color:#fcd34d;font-weight:800;letter-spacing:.2px}.formula{border-radius:10px;padding:11px;background:#081e14;border:1px solid #37664b;margin-top:10px;font-size:13.5px;font-weight:800;color:#ffe8a8;overflow-x:auto;line-height:1.6}.f-frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.85em;line-height:1.1;margin:0 2px}.f-frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}.f-frac>span:last-child{padding:0 3px}.fact{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid #3d634922;font-size:12px}.fact:last-child{border:0}.fact strong{color:#d9fddf;text-align:right}.step-title{color:#fcd34d;font-size:13px;font-weight:800}.step-explain{font-size:12px;color:#ccded1}.alert{background:#3d2630;border:1px solid #915267;border-radius:10px;color:#ffd4dc;padding:9px;font-size:12px;margin-top:9px}.compare{display:grid;grid-template-columns:1fr 1fr;gap:7px}.compare .chip{background:#092319;border:1px solid #2f5843;border-radius:10px;padding:9px;font-size:11px}.chip strong{font-size:14px;display:block;padding-top:6px}.tiny{font-size:11px;color:#b1cab8}.answer{margin-top:10px;border-radius:8px;border:1px solid #5a6846;padding:9px;background:#162c1d;color:#ffeaba;font-size:12px;display:none}.answer.visible{display:block}.hidden{display:none!important}
+.card{background:#112d21;border:1px solid #315d47;border-radius:14px;padding:13px}.card h2{font-size:15px;margin:0 0 8px;color:#d5fce4}.card h3{font-size:12px;color:#8de8b8;margin:0 0 7px}.card p{font-size:13px;margin:6px 0;line-height:1.65}.card ul{padding-left:18px;margin:7px 0}.card li{font-size:12px;margin:5px 0}.eyebrow{font-size:11px;color:#fcd34d;font-weight:800;letter-spacing:.2px}.formula{border-radius:10px;padding:11px;background:#081e14;border:1px solid #37664b;margin-top:10px;font-size:13.5px;font-weight:800;color:#ffe8a8;overflow-x:auto;line-height:1.6}.f-frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.85em;line-height:1.1;margin:0 2px}.f-frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}.f-frac>span:last-child{padding:0 3px}.fact{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid #3d634922;font-size:12px}.fact:last-child{border:0}.fact strong{color:#d9fddf;text-align:right}.step-title{color:#fcd34d;font-size:13px;font-weight:800}.step-explain{font-size:12px;color:#ccded1}.alert{background:#3d2630;border:1px solid #915267;border-radius:10px;color:#ffd4dc;padding:9px;font-size:12px;margin-top:9px}.compare{display:grid;grid-template-columns:1fr 1fr;gap:7px}.compare .chip{background:#092319;border:1px solid #2f5843;border-radius:10px;padding:9px;font-size:11px}.chip strong{font-size:14px;display:block;padding-top:6px}.tiny{font-size:11px;color:#b1cab8}.answer{margin-top:10px;border-radius:8px;border:1px solid #5a6846;padding:9px;background:#162c1d;color:#ffeaba;font-size:12px;display:none}.answer.visible{display:block}.hidden{display:none!important}.katex{font-size:1.05em}.compare .chip strong{line-height:1.85;overflow-wrap:anywhere}.formula .katex{font-size:1.07em}.progress-legend button .katex{font-size:1em}.step-explain .katex{font-size:1.04em}
 @media(max-width:950px){.layout{display:flex;flex-direction:column}.left{border-right:0}.right{border-top:1px solid var(--line)}.board-shell{min-height:0}.board{flex:auto;min-height:345px}.board svg{min-height:345px;height:clamp(345px,56svh,550px)}.brand b{font-size:17px}.top{padding:9px 10px 4px}.toolbar,.controls{padding:9px}.right{padding:10px}.row.actions{justify-content:flex-start}.scenarios{flex:1}}
 @media(max-width:420px){.board svg{height:365px;min-height:365px}.legend{font-size:10px;gap:6px}.board-caption{font-size:13px}.controls .button{padding:8px 10px}.brand small{font-size:10px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+.svg-rich-math{display:flex;align-items:center;justify-content:center;white-space:nowrap;line-height:1.15;font-family:"Pretendard Variable",Pretendard,"Malgun Gothic",sans-serif;font-weight:850;text-shadow:0 1px 2px #02170d}.svg-rich-math .katex{font-size:1.06em}.svg-rich-math .f-frac{font-size:1em;line-height:1.16;vertical-align:middle;flex-shrink:0;margin:0 3px}.svg-rich-math .f-frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}.svg-rich-math .f-frac>span:last-child{padding:0 4px}.svg-rich-math .math-fallback{display:inline-flex;align-items:center;gap:3px;font-size:1.04em}
+
+/* F01-02 원 안의 작은 원: 첫 고리 부채꼴 실험과 동일한 4버튼 / 분리 구조 */
+.tl-family{display:flex;gap:8px;flex-wrap:wrap;margin:9px 0 10px}
+.tl-family button{min-height:44px;padding:9px 15px;border-radius:12px;border:1px solid #56866b;background:#163728;color:#d7ffe6;font-weight:800}
+.tl-family button.active{border-color:#ffe1a3;background:#eabf57;color:#123020}
+.tl-circle-only[hidden]{display:none!important}
+/* ⑦ 도형 변환 실험: 기존 26개 실험과 격리 */
+[hidden]{display:none!important}
+#transformLab{max-width:1590px;margin:0 auto;padding:15px 18px 32px}
+.tl-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.tl-heading h1{margin:0;color:#e8ffec;font-size:clamp(19px,2vw,27px);letter-spacing:-.7px}
+.tl-heading p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.tl-kicker{color:#fddc86;font-size:11px;letter-spacing:.12em;font-weight:900}
+.tl-reset{min-height:44px;background:#1f4433;color:#ecffed;border:1px solid #53866b;border-radius:11px;padding:9px 14px;font-weight:800}
+.tl-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(330px,.9fr);gap:13px;align-items:start}
+.tl-stage,.tl-info-card{background:#0d261b;border:1px solid #335d48;border-radius:16px;min-width:0;overflow:hidden}
+.tl-stage-head{padding:11px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:#102f22;border-bottom:1px solid #335d48}
+.tl-stage-head strong{font-size:14px;color:#f1fff6}
+.tl-stage-head span{font-size:12px;color:#b2d2bd}
+.tl-stage-svg{background:radial-gradient(ellipse at 35% 41%,#1c4531,#0b2118 67%);width:100%;display:block;aspect-ratio:760/520;touch-action:pan-y}
+.tl-controls{padding:12px 14px 14px;display:grid;gap:13px;background:#0c2117;border-top:1px solid #345942}
+.tl-mode-row{display:flex;gap:7px;flex-wrap:wrap}
+.tl-btn{min-height:44px;border:1px solid #497359;background:#153a2a;color:#d8f3e3;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:800}
+.tl-btn.active{background:#f6bf42;color:#15251b;border-color:#ffe199}
+.tl-btn:disabled{opacity:.43;cursor:not-allowed}
+.tl-range{display:grid;grid-template-columns:116px minmax(90px,1fr) 75px;align-items:center;gap:12px}
+.tl-range label{font-weight:800;font-size:13px;color:#e1fbe8}
+.tl-range input{width:100%;accent-color:#4adea2;min-height:36px;cursor:pointer}
+.tl-range output{text-align:right;color:#ffe3a1;font-weight:900;font-variant-numeric:tabular-nums;font-size:14px}
+.tl-presets{display:flex;flex-wrap:wrap;gap:7px;padding-left:128px}
+.tl-presets .tl-btn{min-height:44px;padding:6px 12px}
+.tl-divider{height:1px;background:#32533f}
+.tl-action-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tl-action-row .tl-btn{flex:0 1 auto}
+.tl-action-hint{font-size:12px;color:#a9cfb6}
+.tl-observation{display:grid;gap:12px}
+.tl-info-card{padding:14px}
+.tl-info-card h2{font-size:15px;margin:0 0 9px;color:#e8fff1}
+.tl-info-card h3{font-size:12px;margin:12px 0 5px;color:#a9f1c7}
+.tl-info-card p{font-size:13px;line-height:1.7;color:#c6dfcf;margin:6px 0}
+.tl-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.tl-metric{padding:9px;background:#0a1e15;border:1px solid #386b4d;border-radius:12px;min-width:0}
+.tl-metric small{display:block;color:#bdd6c3;font-size:12px}
+.tl-metric strong{font-size:19px;color:#ddfff0;display:block;overflow-x:auto;white-space:nowrap;line-height:1.85}
+.tl-metric .katex{font-size:1.03em}
+.tl-formula{padding:10px 11px;background:#071a12;border-radius:11px;border:1px solid #2b6349;font-size:15px;line-height:1.9;overflow-x:auto;white-space:nowrap}
+.tl-formula .katex{font-size:1.1em}
+.tl-split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.tl-split-part{background:#071c14;border:1px solid #28513c;border-radius:11px;padding:6px;text-align:center;min-width:0}
+.tl-split-part svg{width:100%;aspect-ratio:1.5;display:block}
+.tl-split-part b{font-size:11px;color:#d0efdd;display:block;margin-top:3px}
+.tl-legend{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0}
+.tl-legend button{min-height:44px;display:inline-flex;align-items:center;gap:5px;border:1px solid #3e7053;background:#173b29;color:#d7f6e0;padding:6px 9px;border-radius:9px;font-size:12px;font-weight:800}
+.tl-legend button.active{border-color:#ffe08b;outline:2px solid #fcd34d}
+.tl-dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--sky)}
+.tl-note{padding:10px 11px;border-left:3px solid #fbbf24;background:#2d2a19;border-radius:8px;font-size:13px;line-height:1.7;color:#f8e7bd}
+.tl-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tl-compare>div{background:#091e15;border:1px solid #2e5942;border-radius:11px;padding:8px;min-width:0}
+.tl-compare svg{width:100%;aspect-ratio:1.65;display:block}
+.tl-compare b{display:block;font-size:12px;color:#d5ffe5}
+.tl-compare small{font-size:11px;color:#aec9b8}
+.tl-compare-stat{font-size:13px;margin-top:8px;color:#d7ecdd}
+.tl-help{font-size:12px;color:#b9d6c7;margin:0;line-height:1.7}
+@media(max-width:1040px){.tl-grid{grid-template-columns:minmax(0,1fr)}#transformLab{padding:11px}.tl-stage-svg{max-height:540px}.tl-observation{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.tl-observation .tl-wide{grid-column:1/-1}}
+@media(max-width:660px){.tl-observation{grid-template-columns:1fr}.tl-stage-svg{aspect-ratio:480/400}.tl-range{grid-template-columns:95px minmax(70px,1fr) 62px;gap:7px}.tl-range label,.tl-range output{font-size:12px}.tl-presets{padding-left:0}.tl-presets .tl-btn{flex:1;padding:5px 6px}.tl-mode-row .tl-btn{flex:1}.tl-stage-head{padding:9px 11px}.tl-controls{padding:10px}.tl-metric strong{font-size:16px}.tl-legend button{flex:1;justify-content:center}}
+
+/* 4-button header & tall stacked fractions: no tiny scroll strips */
+.tl-mode-row{display:grid;grid-template-columns:repeat(4,minmax(0,max-content));align-items:center;gap:8px}
+.tl-mode-row .tl-btn{white-space:nowrap}
+.tl-mode-row .tl-play{background:#257455;border-color:#51b98b;color:#fff1c3;min-width:92px}
+.tl-mode-row .tl-play.playing{background:#f6bf42;color:#172b1e;border-color:#ffe29b}
+.tl-metric{min-height:98px;display:flex;flex-direction:column;justify-content:center;gap:7px;padding:14px 11px}
+.tl-metric strong{min-height:52px;display:flex;align-items:center;justify-content:flex-start;overflow:visible;white-space:normal;line-height:2.45;flex-wrap:wrap}
+.tl-metric .katex{font-size:1.14em}
+.tl-formula{min-height:108px;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:17px 14px;line-height:2.25;overflow:visible;white-space:normal;overflow-wrap:anywhere}
+.tl-formula .katex{font-size:1.1em}
+.tl-formula .f-frac,.tl-metric .f-frac{font-size:1em;line-height:1.25}
+.tl-mathline{display:block;min-height:34px;line-height:2.3}
+.tl-formula-label{font-size:12px;color:#a9d7bc;font-weight:800;line-height:1.25}
+.tl-compare small{display:block;min-height:48px;line-height:2.1;white-space:normal;overflow:visible}
+.tl-compare-stat{line-height:2.2;padding-top:8px}
+@media(max-width:660px){
+ .tl-mode-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+ .tl-mode-row .tl-btn{padding:7px 3px;font-size:12px;min-width:0}
+ .tl-mode-row .tl-play{min-width:0}
+ .tl-metric{min-height:92px;padding:11px 8px}
+ .tl-metric strong{min-height:52px;font-size:17px}
+ .tl-formula{min-height:112px;padding:16px 12px;gap:9px;font-size:14px}
+ .tl-compare small{min-height:48px}
+}
+
 </style>
 <style id="ap-mobile-bridge">
 @media(max-width:768px){body{overflow-x:hidden}}
 </style>
 </head>
 <body>
-<header class="top"><div class="brand"><div class="brand-left"><a href="../../teacher-hub.html" class="ap-back-home" aria-label="전체 단원 목록으로 돌아가기">← 전체 단원</a><div><b>AP MATH <span style="color:var(--amber)">원과 부채꼴</span></b><small>개념 → 기본형 → 둘레 → 넓이 → 조각 실험 → 문제 적용</small></div></div><span class="pill">원과 부채꼴 · 26가지 움직이는 실험</span></div><nav id="tabs" class="tabs" aria-label="학습 단계"></nav></header>
-<main class="layout">
+<header class="top"><div class="brand"><div class="brand-left"><a href="../../teacher-hub.html" class="ap-back-home" aria-label="전체 단원 목록으로 돌아가기">← 전체 단원</a><div><b>AP MATH <span style="color:var(--amber)">원과 부채꼴</span></b><small>개념 → 기본형 → 둘레 → 넓이 → 조각 실험 → 문제 적용</small></div></div><span class="pill">원과 부채꼴 · 27가지 움직이는 실험</span></div><nav id="tabs" class="tabs" aria-label="학습 단계"></nav></header>
+<main class="layout" id="mainLayout">
 <section class="left" aria-label="움직이는 수학 칠판">
 <div class="toolbar"><div id="scenarios" class="scenarios"></div><span class="tiny" id="zoneLabel">원 알아보기</span></div>
-<div class="board-shell"><div class="board-top"><div id="boardCaption" class="board-caption">원의 요소를 눌러보세요</div><div class="board-hint" id="boardHint">선은 길이, 면은 넓이</div></div><div class="board"><svg id="scene" viewBox="0 0 900 530" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="직접 조작하는 원과 부채꼴 도형"></svg></div><div id="legend" class="legend"></div><div class="lenses" aria-label="둘레와 넓이 관찰 렌즈"><button type="button" class="active" data-lens="both">선과 면 함께</button><button type="button" data-lens="perimeter">둘레(선)만 강조</button><button type="button" data-lens="area">넓이(면)만 강조</button></div></div>
+<div class="board-shell"><div class="board-top"><div id="boardCaption" class="board-caption">원의 요소를 눌러보세요</div><div class="board-hint" id="boardHint">선은 길이, 면은 넓이</div></div><div class="board"><svg id="scene" viewBox="0 0 900 530" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="직접 조작하는 원과 부채꼴 도형"></svg></div><div id="legend" class="legend"></div></div>
 <div class="controls">
 <div class="row actions"><div class="row"><button class="button" id="prev">◀ 이전</button><button class="button primary" id="next">다음 단계 ▶</button><button class="button" id="reset">처음으로</button><button class="button" id="play">▶ 자동</button></div><div class="tiny" id="stepCounter">1 / 4</div></div>
 <div class="range-line" id="morphLine"><label for="morph">조각 분리·이동</label><input id="morph" type="range" min="0" max="100" step="1" value="0"><output id="morphVal">0%</output><span id="pieceWrap" class="hidden" style="display:inline-flex;align-items:center;gap:6px;margin-left:8px"><label for="pieceCount">분할 수</label><select id="pieceCount" aria-label="원 분할 조각 수" style="background:#183a29;color:white;border:1px solid #5e886d;border-radius:8px;padding:4px 8px"><option value="8">8조각</option><option value="16" selected>16조각</option><option value="32">32조각</option><option value="64">64조각</option></select></span></div>
@@ -46,6 +140,32 @@
 </div></section>
 <aside class="right"><section class="card"><span class="eyebrow" id="tag">1. 개념의 시작</span><h2 id="title">원의 기본 요소</h2><p id="description"></p><div class="compare"><div class="chip"><span style="color:var(--sky)" id="periLabel">둘레 · 선 (cm)</span><strong id="periNum">—</strong></div><div class="chip"><span style="color:var(--mint)" id="areaLabel">넓이 · 면 (cm²)</span><strong id="areaNum">—</strong></div></div><div class="formula" id="formula">—</div></section><section class="card"><h3>현재 조작 · 왜 그런가?</h3><div class="step-title" id="stepTitle"></div><p class="step-explain" id="stepText"></p><div class="alert" id="warning"></div></section><section class="card"><h3>스스로 확인</h3><p id="question"></p><button class="button" id="showAnswer">정답·해설 보기</button><div class="answer" id="answer"></div></section><div class="tiny">원과 부채꼴 통합 실험실 · 각 도형의 수치와 색상은 현재 선택과 연동됩니다.</div></aside>
 </main>
+<section id="transformLab" hidden aria-label="중심각과 반지름이 변하는 도형 실험실">
+  <div class="tl-heading"><div><div class="tl-kicker">CHAPTER 01 · 선과 면을 움직여 발견하기</div><h1>도형 넣기·파내기 · 선과 면의 변환</h1><p>문제를 풀기보다 중심각과 반지름을 직접 바꾸고, 선·면·분할을 관찰하세요.</p></div><button type="button" class="tl-reset" id="tlReset">↺ 처음 모양으로</button></div>
+  <div class="tl-family" id="tlFamily" aria-label="파내기 유형 선택"><button type="button" data-tl-family="sector" class="active">① 고리 부채꼴</button><button type="button" data-tl-family="circle">② 원 안의 작은 원</button></div>
+  <div class="tl-grid">
+    <div class="tl-stage">
+      <div class="tl-stage-head"><strong id="tlShapeName">고리 모양 부채꼴</strong><span id="tlStageHint">노란 손잡이를 움직여 중심각을 바꿔보세요.</span></div>
+      <svg id="tlScene" class="tl-stage-svg" viewBox="0 0 760 520" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="중심각과 두 반지름을 변경하는 실시간 부채꼴 실험"></svg>
+      <div class="tl-controls">
+        <div class="tl-mode-row" id="tlModes" aria-label="관찰 및 재생"><button class="tl-btn active" type="button" data-tl-mode="both">선과 면</button><button class="tl-btn" type="button" data-tl-mode="area">넓이</button><button class="tl-btn" type="button" data-tl-mode="perimeter">둘레</button><button class="tl-btn tl-play" type="button" id="tlPlay" aria-label="선택한 관찰 재생">▶ 재생</button></div>
+        <div class="tl-range" id="tlAngleRow"><label for="tlAngle">중심각</label><input id="tlAngle" type="range" min="30" max="360" step="5" value="90"><output id="tlAngleVal" for="tlAngle">90°</output></div>
+        <div id="tlAnglePresets" class="tl-presets" aria-label="중심각 빠른 변경"><button type="button" class="tl-btn" data-tl-angle="60">60°</button><button type="button" class="tl-btn active" data-tl-angle="90">90°</button><button type="button" class="tl-btn" data-tl-angle="120">120°</button><button type="button" class="tl-btn" data-tl-angle="180">180°</button><button type="button" class="tl-btn" data-tl-angle="270">270°</button><button type="button" class="tl-btn" data-tl-angle="360">360°</button></div>
+        <div class="tl-range"><label for="tlOuter">큰 반지름</label><input id="tlOuter" type="range" min="2" max="9" step="0.5" value="6"><output id="tlOuterVal" for="tlOuter">6 cm</output></div>
+        <div class="tl-range tl-circle-only" id="tlOffsetRow" hidden><label for="tlOffset">작은 원 위치</label><input id="tlOffset" type="range" min="0" max="3" step="0.5" value="0"><output id="tlOffsetVal">중심 일치</output></div>
+        <div class="tl-range"><label for="tlInner">작은 반지름</label><input id="tlInner" type="range" min="0" max="5.5" step="0.5" value="3"><output id="tlInnerVal" for="tlInner">3 cm</output></div>
+
+      </div>
+    </div>
+    <aside class="tl-observation">
+      <section class="tl-info-card"><h2>실시간으로 달라지는 넓이와 둘레</h2><div class="tl-metrics"><div class="tl-metric"><small>색칠한 면의 넓이</small><strong id="tlAreaNum">—</strong></div><div class="tl-metric"><small>실제 경계선의 둘레</small><strong id="tlPeriNum">—</strong></div></div><div id="tlFormulaArea" class="tl-formula"></div><div id="tlFormulaPeri" class="tl-formula" style="margin-top:7px"></div><p class="tl-help">※ 정확한 값은 π를 그대로 두고 계산합니다. 유리수 항과 π 항은 더할 수 있지만 동류항으로 합칠 수 없습니다.</p></section>
+      <section class="tl-info-card"><h2>면을 나누면 어떻게 될까?</h2><div id="tlSplit" class="tl-split"></div><p id="tlSplitText">큰 부채꼴에서 작은 부채꼴을 정확히 제거한 부분이 색칠한 면입니다.</p><div class="tl-note" id="tlAreaObservation">중심각을 바꾸면 두 조각의 중심각도 동시에 바뀝니다.</div></section>
+      <section class="tl-info-card"><h2>어떤 선이 둘레일까?</h2><div class="tl-legend" id="tlLegend"></div><div id="tlBoundaryExpr" class="tl-formula"></div><p id="tlBoundaryNote">파란색 원호와 주황색 직선을 차례대로 확인하세요.</p></section>
+      <section class="tl-info-card tl-wide"><h2>처음과 지금 비교하기</h2><div class="tl-compare"><div><b id="tlBeforeTitle">처음 상태</b><svg id="tlBeforeSVG" viewBox="0 0 270 170" aria-label="처음 도형"></svg><small id="tlBeforeValue"></small></div><div><b id="tlAfterTitle">현재 상태</b><svg id="tlAfterSVG" viewBox="0 0 270 170" aria-label="현재 도형"></svg><small id="tlAfterValue"></small></div></div><div class="tl-compare-stat" id="tlDiff"></div><p class="tl-help">같은 중심각이라도 반지름이 달라지면 넓이는 제곱에 따라 변합니다. 도형의 위치나 크기를 바꿔도 실제 모양과 계산식이 일치하도록 설계했습니다.</p></section>
+    </aside>
+  </div>
+</section>
+
 <script>
 'use strict';
 const NS='http://www.w3.org/2000/svg';
@@ -57,14 +177,65 @@ const zones=[
  {name:'③ 길이·둘레',short:'외곽 경계',items:[['semi','반원 둘레'],['quarter','사분원 둘레'],['sector','부채꼴 둘레'],['segment','활꼴 둘레'],['cutout','파낸 반원'],['track','운동장 트랙']]},
  {name:'④ 넓이 원리',short:'넓이의 원리',items:[['circleProof','원을 잘게 나누기'],['sectorProof','부채꼴 넓이']]},
  {name:'⑤ 색칠한 넓이',short:'조각 실험',items:[['subtract','전체에서 빼기'],['split','보조선으로 두 조각'],['move','조각 옮겨 채우기'],['combine','면 더하고 빼기']]},
- {name:'⑥ 응용 문제',short:'구조로 풀기',items:[['leaf','나뭇잎'],['cutout','파낸 반원'],['track','운동장 트랙'],['combine','반원 합·차']]}
+ {name:'⑥ 응용 문제',short:'구조로 풀기',items:[['leaf','나뭇잎'],['cutout','파낸 반원'],['track','운동장 트랙'],['combine','반원 합·차']]},
+ {name:'⑦ 도형 변환 실험',short:'변화 관찰',items:[['transform','중심각·반지름 변환']]}
 ];
 const S={zone:0,item:0,step:0,r:6,angle:90,morph:0,selected:-1,pan:{x:0,y:0},drag:null,manual:{},circleCount:16,trace:0,lens:'both'};
 const $=id=>document.getElementById(id);
 const round=(n,d=2)=>Number(n.toFixed(d)).toLocaleString('ko-KR',{maximumFractionDigits:d});
-const fmt=n=>round(n,2);
-const cm=n=>`${fmt(n)} cm`;
-const cm2=n=>`${fmt(n)} cm²`;
+const fmt=n=>round(n,2); // Percent/comparison only, never a mathematical result.
+const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){const t=a%b;a=b;b=t}return a||1};
+const frac=(n,d=1)=>{if(!Number.isInteger(n)||!Number.isInteger(d)||d===0)throw Error('Exact rational required');if(d<0){n=-n;d=-d}const g=gcd(n,d);return [n/g,d/g]};
+const addFrac=(a,b)=>frac(a[0]*b[1]+b[0]*a[1],a[1]*b[1]);
+// Exact answer consists of (rational coefficient of π, rational constant).
+// This is created from the figure definition, not by guessing a coefficient from Math.PI.
+const sx=(pn=0,pd=1,cn=0,cd=1)=>({pi:frac(pn,pd),constant:frac(cn,cd)});
+const plusEx=(a,b)=>({pi:addFrac(a.pi,b.pi),constant:addFrac(a.constant,b.constant)});
+const sumEx=xs=>xs.reduce((a,b)=>plusEx(a,b),sx());
+const ratLatex=([n,d],withPi=false)=>{
+ if(n===0)return '';
+ const sign=n<0?'-':'';const mag=Math.abs(n);
+ const numerator=withPi?(mag===1?'\\pi':`${mag}\\pi`):String(mag);
+ return sign+(d===1?numerator:`\\dfrac{${numerator}}{${d}}`);
+};
+const exLatex=e=>{
+ if(!e)return '';
+ const parts=[ratLatex(e.pi,true),ratLatex(e.constant) ].filter(Boolean);
+ return parts.reduce((s,t)=>s+(s&&t[0]!=='-'?'+':'')+t,'')||'0';
+};
+const ratPlain=([n,d],pi=false)=>n===0?'':(d===1?(pi?(Math.abs(n)===1?(n<0?'-π':'π'):`${n}π`):String(n)):(pi?`${n}π/${d}`:`${n}/${d}`));
+const exPlain=e=>!e?'계산하지 않음':[ratPlain(e.pi,true),ratPlain(e.constant)].filter(Boolean).reduce((s,t)=>s+(s&&t[0]!=='-'?'+':'')+t,'')||'0';
+const mathToken=(e,unit='cm')=>!e?'중1 범위에서는 계산하지 않음':`\\(${exLatex(e)}\\,\\mathrm{cm}${unit==='cm^{2}'?'^{2}':''}\\)`;
+const cm=n=>Number.isInteger(n)?`${n} cm`:Number.isInteger(n*2)?`${n} cm`:'길이는 관찰만';
+const cm2=n=>Number.isInteger(n)?`${n} cm²`:Number.isInteger(n*2)?`${n} cm²`:'넓이는 구조만 관찰';
+const exactCm=e=>mathToken(e,'cm');
+const exactCm2=e=>mathToken(e,'cm^{2}');
+const svgCm=e=>e?`${exPlain(e)} cm`:'길이 계산 생략';
+const svgCm2=e=>e?`${exPlain(e)} cm²`:'넓이 계산 생략';
+const escapeText=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function fallbackMath(tex){
+ // In a blocked-CDN environment, use unicode and stacked fractions instead of exposing raw TeX.
+ let s=escapeText(tex).replace(/\\,|\\;/g,' ');
+ s=s.replace(/\\(?:dfrac|frac)\{([^{}]+)\}\{([^{}]+)\}/g,(_,num,den)=>`<span class="f-frac"><span>${num}</span><span>${den}</span></span>`);
+ s=s.replace(/\\(?:dfrac|frac)(\d)([a-zA-Z])/g,(_,a,b)=>`<span class="f-frac"><span>${a}</span><span>${b}</span></span>`);
+ s=s.replace(/\\(?:dfrac|frac)(\d)(\d)/g,(_,a,b)=>`<span class="f-frac"><span>${a}</span><span>${b}</span></span>`);
+ s=s.replace(/\\mathrm\{cm\}\^\{2\}/g,'cm²').replace(/\\mathrm\{cm\}/g,'cm');
+ s=s.replace(/\^\\circ/g,'°').replace(/\\circ/g,'°').replace(/\\pi/g,'π').replace(/\\times/g,'×').replace(/\\theta/g,'θ').replace(/\^\{2\}/g,'²').replace(/\^2/g,'²');
+ return `<span class="math-fallback">${s}</span>`;
+}
+function mathHTML(s){
+ return escapeText(s).replace(/\\\(([\s\S]*?)\\\)/g,(_,tex)=>{
+   try{return window.katex?window.katex.renderToString(tex,{throwOnError:true,output:'htmlAndMathml'}):fallbackMath(tex)}
+   catch(e){return fallbackMath(tex)}
+ });
+}
+const setMath=(id,s)=>$(id).innerHTML=mathHTML(s);
+function mathifyNode(el){ // make inline mathematics inside generated ruler buttons too
+ if(!el)return;
+ const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const nodes=[];
+ while(walker.nextNode())if(walker.currentNode.textContent.includes('\\('))nodes.push(walker.currentNode);
+ nodes.forEach(node=>{const span=document.createElement('span');span.innerHTML=mathHTML(node.textContent);node.replaceWith(...span.childNodes)});
+}
 const p=(x,y)=>({x,y});
 const pt=(cx,cy,R,a)=>p(cx+R*Math.cos(a),cy+R*Math.sin(a));
 const rad=d=>d*PI/180;
@@ -73,8 +244,27 @@ const pointStr=q=>`${q.x.toFixed(3)} ${q.y.toFixed(3)}`;
 const svgPath=(d,{fill='none',stroke='none',width=0,opacity=1,dash='',cls='',extra=''}={})=>`<path d="${d}" ${cls?`class="${cls}"`:''} fill="${fill}" stroke="${stroke}" stroke-width="${width}" opacity="${opacity}" ${dash?`stroke-dasharray="${dash}"`:''} stroke-linejoin="round" stroke-linecap="round" ${extra}/>`;
 const circle=(x,y,R,stroke=COL.arc,fill='none',w=3,cls='')=>`<circle cx="${x}" cy="${y}" r="${R}" ${cls?`class="${cls}"`:''} stroke="${stroke}" stroke-width="${w}" fill="${fill}"/>`;
 const line=(x1,y1,x2,y2,color=COL.line,w=3,dash='',cls='')=>svgPath(`M${x1} ${y1} L${x2} ${y2}`,{stroke:color,width:w,dash,cls:cls||(dash?'math-aux':'')});
-const label=(x,y,t,fill='#fff',size=15)=>`<text x="${x}" y="${y}" text-anchor="middle" class="svg-label" style="fill:${fill};font-size:${size}px">${t}</text>`;
-const badge=(x,y,w,h,t,bg='rgba(9,30,21,.92)',border='#3d6b52',color='#ffe8a8',size=13)=>`<g class="math-aux"><rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="8" fill="${bg}" stroke="${border}" stroke-width="1.3"/>${label(x,y+5,t,color,size)}</g>`;
+const svgHasFraction=t=>/\d+°?\s*\/\s*\d+°?|(?:\d+)?π(?:r²?|²)?\s*\/\s*\d+/.test(String(t));
+const label=(x,y,t,fill='#fff',size=15)=>svgHasFraction(t)?svgHtmlMath(x,y-5,Math.max(210,Math.min(740,String(t).length*Math.max(16,size)*.76)),Math.max(46,size*2.8),t,fill,Math.max(16,size)):`<text x="${x}" y="${y}" text-anchor="middle" class="svg-label" style="fill:${fill};font-size:${size}px">${escapeText(t)}</text>`;
+// In-SVG exact math: fractions are HTML/MathML in foreignObject (not flattened 1/2 text).
+const svgInlineMath = text => {
+ const chunks=String(text).split(/(\d+°?\s*\/\s*\d+°?|(?:\d+)?π(?:r²?|²)?\s*\/\s*\d+)/g);
+ return chunks.map(part=>{
+  const match=part.trim().match(/^(\d+°?|(?:\d+)?π(?:r²?|²)?)\s*\/\s*(\d+°?)$/);
+  if(!match)return escapeText(part);
+  const toTex=v=>v.replace(/π/g,'\\pi ').replace(/²/g,'^2').replace(/°/g,'^\\circ');
+  const tex=`\\dfrac{${toTex(match[1])}}{${toTex(match[2])}}`;
+  try{return window.katex?window.katex.renderToString(tex,{throwOnError:true,output:'htmlAndMathml'}):fallbackMath(tex)}
+  catch(_){return fallbackMath(tex)}
+ }).join('');
+};
+const svgHtmlMath=(x,y,w,h,t,color,size=13)=>{const fs=svgHasFraction(t)?Math.max(16,size):size;return `<foreignObject x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" style="overflow:visible;pointer-events:none"><div xmlns="http://www.w3.org/1999/xhtml" class="svg-rich-math" style="color:${color};font-size:${fs}px;width:${w}px;height:${h}px">${svgInlineMath(t)}</div></foreignObject>`};
+const badge=(x,y,w,h,t,bg='rgba(9,30,21,.92)',border='#3d6b52',color='#ffe8a8',size=13)=>{
+ const hasFrac=svgHasFraction(t),H=hasFrac?Math.max(h,46):h,W=hasFrac?Math.max(w,Math.min(720,String(t).length*9.1+30)):w;
+ // Grow tall fraction badges upward: keep the lower edge in the original position.
+ const Y=y-(H-h)/2;
+ return `<g class="math-aux"><rect x="${x-W/2}" y="${Y-H/2}" width="${W}" height="${H}" rx="8" fill="${bg}" stroke="${border}" stroke-width="1.3"/>${svgHtmlMath(x,Y,W-12,H-4,t,color,hasFrac?Math.max(16,size):size)}</g>`;
+};
 const edgeTick=(a,b,color=COL.white,len=7)=>{
  const mx=(a.x+b.x)/2,my=(a.y+b.y)/2,dx=b.x-a.x,dy=b.y-a.y,L=Math.hypot(dx,dy)||1;
  const nx=-dy/L*len,ny=dx/L*len;
@@ -99,16 +289,6 @@ const current=()=>zones[S.zone].items[S.item];
 const visualScale=r=>Math.max(.8,Math.min(1.22,.72+.042*r));
 const basicRadius=()=>(S.zone===2?114:132)*visualScale(S.r);
 const usesAngle=()=>['arc','sector','segment','sectorProof'].includes(current()[0]);
-const formatFormulaHtml=str=>String(str)
- .replace(/πr²\s*÷\s*(\d+)/g,'<span class="f-frac"><span>πr²</span><span>$1</span></span>')
- .replace(/(\d+°?)\/(\d+°?)/g,'<span class="f-frac"><span>$1</span><span>$2</span></span>')
- .replace(/πr²\/(\d+)/g,'<span class="f-frac"><span>πr²</span><span>$1</span></span>')
- .replace(/πr\/(\d+)/g,'<span class="f-frac"><span>πr</span><span>$1</span></span>')
- .replace(/1\/2/g,'<span class="f-frac"><span>1</span><span>2</span></span>')
- .replace(/1\/4/g,'<span class="f-frac"><span>1</span><span>4</span></span>')
- .replace(/3\/8/g,'<span class="f-frac"><span>3</span><span>8</span></span>')
- .replace(/π\/4/g,'<span class="f-frac"><span>π</span><span>4</span></span>')
- .replace(/π\/2/g,'<span class="f-frac"><span>π</span><span>2</span></span>');
 let model=null;
 
 function maxStep(){
@@ -155,9 +335,9 @@ function drawAngleMarker(cx,cy,R,a0,a1,deg){
  return mark+label(lblPos.x,lblPos.y+5,`${deg}°`,COL.amber,deg<=45?12:13);
 }
 
-function drawUnrolledTape(segs,totalCm){
+function drawUnrolledTape(segs,totalCm,exactTotal=null){
  if(S.zone!==2||!segs?.length)return '';
- const barW=430,x0=215,y0=482;
+ const barW=360,x0=215,y0=482;
  let curX=x0;
  let bg=`<rect x="68" y="454" width="764" height="66" rx="12" fill="rgba(7,22,15,.94)" stroke="#35624b" stroke-width="1.4"/>`;
  let lines='',dots='',labels='';
@@ -168,11 +348,11 @@ function drawUnrolledTape(segs,totalCm){
   lines+=svgPath(segPath,{stroke:s.color,width:chosen?8.5:5.5,opacity:chosen?1:.82,cls:'math-peri'});
   lines+=svgPath(segPath,{stroke:'transparent',width:24,extra:`data-segment="${i}" style="cursor:pointer"`});
   dots+=circle(curX,y0,4.2,COL.white,s.color,1.8);
-  if(w>=34)labels+=`<g data-segment="${i}" style="cursor:pointer"><title>${s.name}: ${cm(s.len)}</title>${label(curX+w/2,y0+23,String(i+1),s.color,13)}</g>`;
+  if(w>=34)labels+=`<g data-segment="${i}" style="cursor:pointer"><title>${s.name}: ${svgCm(s.exact)}</title>${label(curX+w/2,y0+23,String(i+1),s.color,13)}</g>`;
   curX+=w;
  });
  dots+=circle(curX,y0,4.2,COL.white,COL.amber,1.8);
- return `<g id="unrolledHud">${bg}${label(140,y0+5,'펼친 둘레(1D)',COL.amber,12.5)}${lines}${dots}${labels}${label(x0+barW+68,y0+5,`합계 ${cm(totalCm)}`,COL.amber,13)}</g>`;
+ return `<g id="unrolledHud">${bg}${label(140,y0+5,'펼친 둘레(1D)',COL.amber,12.5)}${lines}${dots}${labels}${label(x0+barW+140,y0+5,(exactTotal?`합계 ${svgCm(exactTotal)}`:'현 길이는 계산하지 않음'),COL.amber,13)}</g>`;
 }
 
 function buildAutoStepTexts(segs,intro,periVal,areaVal){
@@ -207,24 +387,24 @@ function baseGeometry(type,ctx){
    const Rpt=p(cx+R,cy);
    segs=[boundaryLine(O,Rpt,COL.line,'반지름 r'),arc(0,2*PI,COL.arc,'원주(2πr)')];
    over=edgeTick(O,Rpt,COL.white)+crossAt(O)+crossAt(Rpt)+label(cx+R/2,cy-18,`r = ${r} cm`,COL.line,14)+label(cx-24,cy+24,'중심 O',COL.white,14)+badge(cx,cy-R-24,250,26,'개념: 중심 O에서 같은 거리의 점들의 모임');
-   periText=`r=${cm(r)} / 원주 ${cm(2*PI*r)}`;
+   periText=`r=${cm(r)} / 원주 ${svgCm(sx(2*r))}`;
    formula='반지름 = r,  원주 = 2πr (반지름의 약 6.28배),  넓이 = πr²';
    stepTexts=[
     `원의 중심 O와 원 위의 한 점을 이은 선분이 반지름(r = ${r} cm)입니다.`,
     `1번 요소 [반지름 r]: 중심 O에서 원주까지 거리는 어느 방향이든 ${cm(r)}로 일정합니다.`,
-    `2번 요소 [원주 2πr]: 원을 한 바퀴 도는 곡선 길이는 반지름의 2π배인 ${cm(2*PI*r)}입니다.`
+    `2번 요소 [원주 2πr]: 원을 한 바퀴 도는 곡선 길이는 반지름의 2π배인 ${svgCm(sx(2*r))}입니다.`
    ];
   }
   if(type==='diameter'){
    const Lpt=p(cx-R,cy),Rpt=p(cx+R,cy);
    segs=[boundaryLine(Lpt,Rpt,COL.line,'지름 2r'),arc(0,2*PI,COL.arc,'원주(2πr)')];
    over=edgeTick(Lpt,O,COL.white)+edgeTick(O,Rpt,COL.white)+crossAt(Lpt)+crossAt(O)+crossAt(Rpt)+label(cx,cy-18,`지름 2r = ${2*r} cm`,COL.line,14)+label(cx,cy+24,'O',COL.white,14)+badge(cx,cy-R-24,240,26,'원주율 π = 원주 ÷ 지름 ≈ 3.14');
-   periText=`지름 ${cm(2*r)} / 원주 ${cm(2*PI*r)}`;
+   periText=`지름 ${cm(2*r)} / 원주 ${svgCm(sx(2*r))}`;
    formula='지름 = 2r,  원주 = π × 지름 = 2πr (지름의 약 3.14배)';
    stepTexts=[
     `원의 중심 O를 지나도록 원 위의 두 점을 이은 선분이 지름(2r = ${2*r} cm)입니다.`,
     `1번 요소 [지름 2r]: 원 안에서 그을 수 있는 가장 긴 현으로 길이는 ${cm(2*r)}입니다.`,
-    `2번 요소 [원주 2πr]: 원주(${cm(2*PI*r)})를 지름(${cm(2*r)})으로 나눈 일정한 비율이 원주율 π입니다.`
+    `2번 요소 [원주 2πr]: 원주(${svgCm(sx(2*r))})를 지름(${cm(2*r)})으로 나눈 일정한 비율이 원주율 π입니다.`
    ];
   }
  }
@@ -233,13 +413,13 @@ function baseGeometry(type,ctx){
   d+=svgPath(wedgeD(cx,cy,R,PI,2*PI),{fill:'rgba(52,211,153,.2)',stroke:'none',cls:'math-area'});
   segs=[arc(PI,2*PI,COL.arc,'반원호 (πr)'),boundaryLine(right,left,COL.line,'지름 (2r)')];
   area=PI*r*r/2;
-  formula=S.zone===2?`반원 둘레 = 반원호(πr = ${cm(PI*r)}) + 지름(2r = ${cm(2*r)}) = ${cm(PI*r+2*r)}`:'둘레 = πr + 2r,  넓이 = πr² × (180°/360°) = πr²/2';
+  formula=S.zone===2?`반원 둘레 = 반원호(πr = ${svgCm(sx(r))}) + 지름(2r = ${cm(2*r)}) = ${svgCm(sx(r,1,2*r))}`:'둘레 = πr + 2r,  넓이 = πr² × (180°/360°) = πr²/2';
   info=S.zone===2?'반원의 외곽 경계는 위쪽 굽은 반원호(πr)와 아래쪽 곧은 지름(2r)을 합친 길이입니다.':'반원은 중심각이 180°인 부채꼴(원의 1/2)입니다. 점선 원 전체와 비교해 보세요.';
   question='반원 둘레를 πr이라고 하면 무엇을 빠뜨렸나요?';
   answer='아래쪽을 막아주는 직선인 지름 2r를 빠뜨렸습니다. 반원의 둘레는 πr + 2r입니다.';
   over+=edgeTick(left,O,COL.white)+edgeTick(O,right,COL.white)+crossAt(O)+label(cx,cy+22,'O',COL.white);
   if(S.zone===1)over+=badge(cx,cy-R-24,230,26,`원 전체의 180°/360° = 1/2 (50%)`);
-  else over+=label(cx,cy-R-14,`① 반원호 πr = ${cm(PI*r)}`,COL.arc,14)+label(cx,cy+42,`② 지름 2r = ${cm(2*r)}`,COL.line,14);
+  else over+=label(cx,cy-R-14,`① 반원호 πr = ${svgCm(sx(r))}`,COL.arc,14)+label(cx,cy+42,`② 지름 2r = ${cm(2*r)}`,COL.line,14);
  }
  else if(type==='quarter'){
   const pTop=pt(cx,cy,R,-PI/2),pRight=pt(cx,cy,R,0);
@@ -247,13 +427,13 @@ function baseGeometry(type,ctx){
   segs=[arc(-PI/2,0,COL.arc,'사분원호 (πr/2)'),boundaryLine(pRight,O,COL.line,'반지름 OB (r)'),boundaryLine(O,pTop,COL.line,'반지름 OA (r)')];
   area=PI*r*r/4;
   const posO=pt(cx,cy,24,-PI/4+PI);
-  formula=S.zone===2?`사분원 둘레 = 호(${cm(PI*r/2)}) + 반지름 2개(${cm(2*r)}) = ${cm(PI*r/2+2*r)}`:'둘레 = πr/2 + 2r,  넓이 = πr² × (90°/360°) = πr²/4';
+  formula=S.zone===2?`사분원 둘레 = 호(${svgCm(sx(r,2))}) + 반지름 2개(${cm(2*r)}) = ${svgCm(sx(r,2,2*r))}`:'둘레 = πr/2 + 2r,  넓이 = πr² × (90°/360°) = πr²/4';
   info=S.zone===2?'사분원의 둘레를 따라가면 90° 호 1개와 수직으로 만나는 반지름 2개를 지나갑니다.':'사분원은 중심각이 90°인 부채꼴로, 점선 원 전체의 1/4(25%)에 해당합니다.';
   question='사분원의 반지름 두 개는 둘레에 포함될까요?';
   answer='네. 사분원 면을 감싸는 외곽 경계선이므로 반지름 2개(2r)를 반드시 더해야 합니다.';
   over+=edgeTick(O,pTop,COL.white)+edgeTick(O,pRight,COL.white)+drawAngleMarker(cx,cy,R,-PI/2,0,90)+crossAt(O)+label(posO.x,posO.y+5,'O',COL.white);
   if(S.zone===1)over+=badge(cx,cy-R-24,230,26,`원 전체의 90°/360° = 1/4 (25%)`);
-  else over+=label(cx+R*.68,cy-R*.68,`① 호 πr/2 = ${cm(PI*r/2)}`,COL.arc,13.5);
+  else over+=label(cx+R*.68,cy-R-38,`① 호 πr/2 = ${svgCm(sx(r,2))}`,COL.arc,13.5);
  }
  else if(type==='sector'){
   d+=svgPath(wedgeD(cx,cy,R,a0,a1),{fill:'rgba(52,211,153,.2)',stroke:'none',cls:'math-area'});
@@ -261,13 +441,13 @@ function baseGeometry(type,ctx){
   area=PI*r*r*S.angle/360;
   const arcLen=2*PI*r*S.angle/360;
   const posO=pt(cx,cy,S.angle>=240?28:24,aMid+PI);
-  formula=S.zone===0?'부채꼴 OAB: 두 반지름 OA, OB와 호 AB로 둘러싸인 도형':S.zone===2?`부채꼴 둘레 = 호 AB(${cm(arcLen)}) + 2r(${cm(2*r)}) = ${cm(arcLen+2*r)}`:'호 l = 2πr×(θ/360°),  둘레 = l + 2r,  넓이 = πr²×(θ/360°)';
-  info=S.zone===0?'부채꼴은 원에서 두 반지름(OA, OB)과 한 호(AB)로 이루어진 부채 모양의 도형입니다.':S.zone===1?`중심각이 ${S.angle}°이므로 점선 원 전체(360°)의 ${fmt(S.angle/360*100,1)}%만큼의 호와 넓이를 가집니다.`:'부채꼴의 둘레는 굽은 호의 길이(l)에 양쪽 반지름 2개(2r)를 더한 값입니다.';
+  formula=S.zone===0?'부채꼴 OAB: 두 반지름 OA, OB와 호 AB로 둘러싸인 도형':S.zone===2?`부채꼴 둘레 = 호 AB(${svgCm(sx(r*S.angle,180))}) + 2r(${cm(2*r)}) = ${svgCm(sx(r*S.angle,180,2*r))}`:'호 l = 2πr×(θ/360°),  둘레 = l + 2r,  넓이 = πr²×(θ/360°)';
+  info=S.zone===0?'부채꼴은 원에서 두 반지름(OA, OB)과 한 호(AB)로 이루어진 부채 모양의 도형입니다.':S.zone===1?`중심각이 ${S.angle}°이므로 원 전체의 ${frac(S.angle,360).join('/')}만큼의 호와 넓이를 가집니다.`:'부채꼴의 둘레는 굽은 호의 길이(l)에 양쪽 반지름 2개(2r)를 더한 값입니다.';
   question='같은 반지름에서 중심각이 2배이면 무엇이 2배인가요?';
   answer='호의 길이와 부채꼴의 넓이가 각각 2배가 됩니다. 현의 길이는 중심각에 정비례하지 않습니다.';
   over+=edgeTick(O,st,COL.white)+edgeTick(O,ex,COL.white)+drawAngleMarker(cx,cy,R,a0,a1,S.angle)+crossAt(O)+label(posO.x,posO.y+5,'O',COL.white);
   if(S.zone===0)over+=badge(cx,cy+R+45,230,26,'부채꼴 = 반지름 2개 + 호 AB');
-  if(S.zone===1)over+=badge(cx,cy+R+45,245,26,`원 전체의 ${S.angle}°/360° (${fmt(S.angle/360*100,1)}%)`);
+  if(S.zone===1)over+=badge(cx,cy+R+45,245,26,`원 전체의 ${S.angle}°/360° = ${frac(S.angle,360).join('/')}`);
  }
  else if(type==='segment'||type==='arc'){
   const chordLen=2*r*Math.sin(theta/2),arcLen=r*theta;
@@ -279,20 +459,20 @@ function baseGeometry(type,ctx){
    over+=label(cx-115,cy+R+44,'호 AB (곡선)',COL.arc,13)+label(cx+115,cy+R+44,'현 AB (선분)',COL.line,13);
    area=NaN;
    areaText='선 요소 (면 없음)';
-   periText=`호 ${cm(arcLen)} / 현 ${cm(chordLen)}`;
+   periText=`호 ${svgCm(sx(r*S.angle,180))} / 현 ${(S.angle===60?svgCm(sx(0,1,r)):S.angle===180?svgCm(sx(0,1,2*r)):'길이 계산 생략')}`;
    formula='호 AB = 2πr × (θ/360°),  현 AB = 두 끝점 A, B를 곧게 이은 선분';
    info='호(Arc)는 원주 위의 굽은 곡선이고, 현(Chord)은 두 끝점 A, B를 곧게 이은 선분입니다.';
    question='원 위의 두 점 A, B를 잇는 가장 짧은 길은 호일까요, 현일까요?';
    answer='현 AB입니다. 두 점을 잇는 선 중 가장 짧은 것은 직선 거리인 현입니다.';
    stepTexts=[
     `원 위의 두 점 A, B를 잇는 두 가지 선(호 AB와 현 AB)의 모양과 길이를 비교합니다.`,
-    `1번 요소 [호 AB]: 원주를 따라 굽어 있는 곡선으로 길이는 ${cm(arcLen)}입니다.`,
-    `2번 요소 [현 AB]: 두 점 A, B를 곧게 이은 선분으로 길이는 ${cm(chordLen)}입니다 (중심각 180°일 때 지름이 됨).`
+    `1번 요소 [호 AB]: 원주를 따라 굽어 있는 곡선으로 길이는 ${svgCm(sx(r*S.angle,180))}입니다.`,
+    `2번 요소 [현 AB]: 두 점 A, B를 곧게 이은 선분으로 길이는 ${(S.angle===60?svgCm(sx(0,1,r)):S.angle===180?svgCm(sx(0,1,2*r)):'길이 계산 생략')}입니다 (중심각 180°일 때 지름이 됨).`
    ];
   }else{
    d+=svgPath(segD(cx,cy,R,a0,a1),{fill:'rgba(52,211,153,.24)',stroke:'none',cls:'math-area'});
    area=(r*r/2)*(theta-Math.sin(theta));
-   formula=S.zone===2?`활꼴 둘레 = 호 AB(${cm(arcLen)}) + 현 AB(${cm(chordLen)}) = ${cm(arcLen+chordLen)}`:'둘레 = 호 AB + 현 AB,  넓이 = 부채꼴 OAB − △OAB';
+   formula=S.zone===2?`활꼴 둘레 = 호 AB(${svgCm(sx(r*S.angle,180))}) + 현 AB(${(S.angle===60?svgCm(sx(0,1,r)):S.angle===180?svgCm(sx(0,1,2*r)):'길이 계산 생략')}) = ${(S.angle===60?svgCm(sx(r*S.angle,180,r)):S.angle===180?svgCm(sx(r*S.angle,180,2*r)):'둘레 계산 생략')}`:'둘레 = 호 AB + 현 AB,  넓이 = 부채꼴 OAB − △OAB';
    info=S.zone===0?'호 AB와 현 AB로 둘러싸인 활 모양의 도형이 활꼴입니다. 부채꼴과 달리 중심 O를 꼭짓점으로 갖지 않습니다.':S.zone===1?'활꼴의 넓이는 부채꼴 OAB의 넓이에서 이등변삼각형 OAB의 넓이를 뺀 구조입니다.':'활꼴의 둘레는 호 AB와 현 AB의 합이며, 점선으로 표시된 두 반지름은 포함되지 않습니다.';
    question='활꼴 둘레는 어떤 선으로 만들어질까요?';
    answer='호 AB와 현 AB입니다. 점선으로 표시된 두 반지름은 활꼴의 경계가 아니므로 둘레에 포함되지 않습니다.';
@@ -311,7 +491,7 @@ function baseGeometry(type,ctx){
  const marked=markSegments(segs,R);
  const periVal=marked.reduce((t,v)=>t+v.len,0);
  if(!stepTexts)stepTexts=buildAutoStepTexts(marked,info,periVal,area);
- const hud=drawUnrolledTape(marked,periVal);
+ const hud='';
  return {draw:d+over,hud,handle,segs:marked,area,peri:periVal,periText,areaText,formula,info,warn,question,answer,stepTexts};
 }
 
@@ -322,12 +502,12 @@ function compositeGeometry(type){
   d=`M${pointStr(left)} A${R} ${R} 0 0 1 ${pointStr(right)} L${pointStr(mid)} A${small} ${small} 0 0 0 ${pointStr(left)} Z`;
   segments=[boundaryArc(cx,cy,R,PI,2*PI,COL.arc,'큰 반원호 (πr)'),boundaryLine(right,mid,COL.line,'반지름 직선 (r)'),boundaryArc(cx-R/2,cy,small,0,-PI,COL.arc2,'파낸 작은 반원호 (πr/2)')];
   area=PI*r*r/2-PI*(r/2)**2/2;
-  over=edgeTick(mid,right,COL.white)+crossAt(mid)+label(cx+R/2,cy+26,`큰 반원 r = ${r} cm`,COL.line,13)+label(cx-R/2,cy+63,`파낸 반원 지름 = ${r} cm`,COL.arc2,12.5);
+  over=line(left.x,cy,mid.x,cy,COL.aux,2.4,'6 5','math-aux')+edgeTick(mid,right,COL.white)+crossAt(mid)+label(cx+R/2,cy+26,`큰 반원 r = ${r} cm`,COL.line,13)+label(cx-R/2,cy+63,`파낸 반원 지름 = ${r} cm`,COL.arc2,12.5);
   if(S.zone===5){
-   over+=dimLine(left.x,cy+107,right.x,cy+107,`전체 지름 2r = ${2*r} cm`,COL.amber,cy)+badge(cx,cy-R-26,330,28,`넓이 구조: 큰 반원(${cm2(PI*r*r/2)}) − 작은 반원(${cm2(PI*(r/2)**2/2)})`);
+   over+=dimLine(left.x,cy+107,right.x,cy+107,`전체 지름 2r = ${2*r} cm`,COL.amber,cy)+badge(cx,cy-R-26,330,28,`넓이 구조: 큰 반원 − 작은 반원`);
   }
   info=S.zone===5?`[응용 풀이] 큰 반원(반지름 ${r}cm)에서 작은 반원(반지름 ${r/2}cm)을 뺀 도형입니다. 넓이는 빼지만 둘레는 경계선 3개를 모두 더합니다.`:'큰 반원(반지름 r)에서 작은 반원(반지름 r/2)을 도려냈습니다. 안쪽으로 파인 곡선도 실제 도형의 바깥 경계이므로 둘레에 더해집니다.';
-  formula=`넓이 = 큰 반원 − 작은 반원 = 3/8 πr² = ${cm2(area)},  둘레 = πr + πr/2 + r = ${cm(PI*r*1.5+r)}`;
+  formula=`넓이 = 큰 반원 − 작은 반원 = 3/8 πr² = ${cm2(area)},  둘레 = πr + πr/2 + r = ${svgCm(sx(3*r,2,r))}`;
   question='파인 부분의 작은 반원호는 둘레에 포함되나요?';
   answer='네. 넓이에서는 작은 반원을 빼지만, 둘레는 색칠된 면의 모든 경계 길이이므로 안쪽으로 파인 호도 반드시 더합니다.';
  }
@@ -340,10 +520,10 @@ function compositeGeometry(type){
   area=4*r*r+PI*r*r;
   over=line(left,cy-h,left,cy+h,COL.aux,2,'6 6','math-aux')+line(right,cy-h,right,cy+h,COL.aux,2,'6 6','math-aux')+line(right,cy,right+h,cy,COL.aux,1.8,'4 4','math-aux')+crossAt(p(right,cy))+label(cx,cy-h-14,`직선 구간 2r = ${2*r} cm`,COL.line,14)+label(right+h/2,cy-10,`r=${r}cm`,COL.amber,13)+label(cx,cy+5,`지름 2r = ${2*r} cm`,COL.aux,13);
   if(S.zone===5){
-   over+=dimLine(left,cy+h+38,right,cy+h+38,`정사각형 가로 2r = ${2*r} cm`,COL.amber,cy+h)+badge(cx,cy-h-44,340,28,`합성 구조: 정사각형(${cm2(4*r*r)}) + 원 1개(${cm2(PI*r*r)})`);
+   over+=dimLine(left,cy+h+38,right,cy+h+38,`정사각형 가로 2r = ${2*r} cm`,COL.amber,cy+h)+badge(cx,cy-h-44,340,28,`넓이 구조: 정사각형 + 원 1개`);
   }
   info=S.zone===5?`[응용 풀이] 가로·세로가 ${2*r}cm인 정사각형 양옆에 반지름 ${r}cm인 반원 2개(원 1개)를 붙인 트랙입니다.`:'양쪽 두 반원을 합치면 반지름 r인 원 1개이고, 가운데는 한 변이 2r인 정사각형입니다. 내부 세로 점선은 둘레에 포함되지 않습니다.';
-  formula=`둘레 = 원주(2πr) + 직선 2개(4r) = ${cm(2*PI*r+4*r)},  넓이 = 원(πr²) + 정사각형(4r²) = ${cm2(area)}`;
+  formula=`둘레 = 원주(2πr) + 직선 2개(4r) = ${svgCm(sx(2*r,1,4*r))},  넓이 = 원(πr²) + 정사각형(4r²) = ${cm2(area)}`;
   question='운동장 안쪽 직사각형의 세로 점선을 둘레에 더하나요?';
   answer='아닙니다. 내부 보조선(접합선)이므로 도형의 외곽 둘레가 아닙니다. 둘레는 위·아래 직선(4r)과 양쪽 반원호 합(2πr)뿐입니다.';
  }
@@ -354,7 +534,7 @@ function compositeGeometry(type){
   area=(PI/2-1)*r*r;
   over=svgPath(`M${A.x} ${A.y} H${D.x} V${C.y} H${B.x} Z`,{fill:'none',stroke:COL.aux,width:1.6,dash:'5 5',cls:'math-aux'})+line(A.x,A.y,C.x,C.y,COL.aux,2,'6 6','math-aux')+dimLine(B.x,B.y+36,C.x,C.y+36,`정사각형 한 변 r = ${r} cm`,COL.amber,B.y)+badge(cx,A.y-30,310,28,`나뭇잎 = 활꼴 2개 = 2 × (사분원 − 삼각형)`);
   info='나뭇잎 모양은 사분원에서 직각삼각형을 뺀 활꼴 2개를 합친 면입니다. 안쪽 대각선은 넓이를 구할 때 쓰는 보조선일 뿐 둘레가 아닙니다.';
-  formula=`넓이 = 2×(사분원 − 삼각형) = (π/2 − 1)r² = ${cm2(area)},  둘레 = 사분원호 2개 = πr = ${cm(PI*r)}`;
+  formula=`넓이 = 2×(사분원 − 삼각형) = (π/2 − 1)r² = ${cm2(area)},  둘레 = 사분원호 2개 = πr = ${svgCm(sx(r))}`;
   question='나뭇잎 안의 대각선은 둘레일까요?';
   answer='아닙니다. 나뭇잎의 바깥 경계는 위·아래 두 사분원호뿐이므로 둘레는 πr입니다.';
  }
@@ -368,16 +548,16 @@ function compositeGeometry(type){
    boundaryArc(cx-small,cy,small,0,-PI,COL.line,'왼 위 파낸 반원호 (πr/2)')
   ];
   area=PI*r*r/2;
-  over=line(left.x,cy,right.x,cy,COL.aux,1.8,'6 6','math-aux')+crossAt(mid)+badge(cx,cy-R-26,330,28,`등적 상쇄: 큰 반원(${cm2(area)}) − 작은 반원 + 작은 반원`)+dimLine(mid.x,cy+small+38,right.x,cy+small+38,`작은 지름 r = ${r} cm (반지름 ${r/2} cm)`,COL.arc2,cy);
+  over=line(left.x,cy,right.x,cy,COL.aux,1.8,'6 6','math-aux')+crossAt(mid)+badge(cx,cy-R-26,330,28,`등적 상쇄: 큰 반원 − 작은 반원 + 작은 반원`)+dimLine(mid.x,cy+small+38,right.x,cy+small+38,`작은 지름 r = ${r} cm (반지름 ${r/2} cm)`,COL.arc2,cy);
   info='큰 반원(반지름 r)에서 왼쪽 작은 반원(반지름 r/2)을 빼고 오른쪽 아래에 같은 작은 반원을 붙인 도형입니다. 넓이는 큰 반원과 같고, 둘레는 곡선 3개의 합(2πr)입니다.';
-  formula=`넓이 = 큰 반원 = πr²/2 = ${cm2(area)},  둘레 = 큰 호(πr) + 작은 호 2개(πr) = 2πr = ${cm(2*PI*r)}`;
+  formula=`넓이 = 큰 반원 = πr²/2 = ${cm2(area)},  둘레 = 큰 호(πr) + 작은 호 2개(πr) = 2πr = ${svgCm(sx(2*r))}`;
   question='왼쪽 위에서 파낸 반원을 오른쪽 아래에 붙이면 넓이와 둘레는 어떻게 될까요?';
   answer='더하고 뺀 작은 반원의 넓이가 상쇄되어 넓이는 큰 반원(πr²/2)과 같고, 둘레는 직선 없이 호 3개로 이루어져 원주 전체(2πr)와 같아집니다.';
  }
  const marked=markSegments(segments,refPx);
  const periVal=marked.reduce((t,s)=>t+s.len,0);
  stepTexts=buildAutoStepTexts(marked,info,periVal,area);
- const hud=drawUnrolledTape(marked,periVal);
+ const hud='';
  return {draw:svgPath(d,{fill:'rgba(52,211,153,.2)',cls:'math-area'})+over,hud,segs:marked,area,peri:periVal,formula,info,question,answer,warn:'',stepTexts};
 }
 
@@ -414,16 +594,16 @@ function areaExperiment(type){
   refPx=R;
   segs=[boundaryArc(cx,cy,R,-PI/2,0,COL.arc,'사분원호 (πr/2)'),boundaryLine(B,A,COL.line,'현 AB (빗변)')];
   const man=S.manual['0']||p(0,0);
-  draw=svgPath(W,{fill:'rgba(56,189,248,.13)',stroke:'#94a3b8',width:1.8,cls:'math-aux'})+svgPath(G,{fill:'rgba(52,211,153,.45)',stroke:COL.arc,width:2.5,cls:'math-area'});
+  draw=svgPath(W,{fill:'none',stroke:'#94a3b8',width:1.6,opacity:t>.08?.28:.7,dash:'5 5',cls:'math-aux'})+svgPath(G,{fill:'rgba(52,211,153,.48)',stroke:COL.arc,width:2.5,cls:'math-area'});
   draw+=drawAngleMarker(cx,cy,R,-PI/2,0,90)+edgeTick(O,A,COL.white)+edgeTick(O,B,COL.white);
   draw+=svgPiece(T,'rgba(251,113,133,.45)',190*t+man.x,10*t+man.y,0);
   if(showAux)draw+=line(A.x,A.y,B.x,B.y,COL.amber,2.6,'6 5','math-aux');
   draw+=svgPath(G,{fill:'none',stroke:COL.arc,width:3.8,cls:'math-peri'});
   draw+=badge(450+ox,66+oy,330,28,'사분원 전체에서 직각이등변삼각형(½r²) 빼기');
   if(showAux)draw+=label(cx+52+190*t+man.x,cy-45+10*t+man.y,'빼는 삼각형 (−)',COL.line,14);
-  if(step===4||t>.95)draw+=badge(cx+R*.58,cy-R*.62,190,28,`활꼴 넓이 = ${cm2((PI/4-.5)*r*r)}`);
+  if((step===4||t>.95)&&Math.hypot(man.x,man.y)<3)draw+=badge(450+ox,453+oy,335,32,`남은 활꼴 = ${svgCm2(sx(r*r,4,-r*r,2))}`);
   area=(PI/4-.5)*r*r;per=r*(PI/2+Math.SQRT2);
-  formula=`활꼴 넓이 = 사분원(${cm2(PI*r*r/4)}) − 직각삼각형(${cm2(r*r/2)}) = ${cm2(area)}`;
+  formula=`활꼴 넓이 = 사분원(${svgCm2(sx(r*r,4))}) − 직각삼각형(${svgCm2(sx(0,1,r*r,2))}) = ${cm2(area)}`;
   info='전체 사분원에서 직각삼각형 면을 실제로 떼어냅니다. 떼어낸 빨간 삼각형 조각을 마우스나 손가락으로 직접 끌어 움직여 보세요.';
   question='삼각형을 제거한 뒤, 남은 초록색 활꼴의 바깥 경계는 무엇일까요?';
   answer='사분원호와 삼각형의 빗변(현 AB)입니다.';
@@ -432,38 +612,66 @@ function areaExperiment(type){
    `1단계 [원본 관찰]: 반지름 ${r}cm인 사분원 안에서 초록색 활꼴의 넓이를 구하려고 합니다.`,
    `2단계 [보조선 파악]: 현 AB를 그으면 전체 사분원이 [구하려는 활꼴]과 [직각이등변삼각형]으로 나뉩니다.`,
    `3단계 [조각 분리]: 사분원 전체에서 필요 없는 빨간 직각삼각형 조각을 떼어내기 시작합니다.`,
-   `4단계 [조각 이동]: 직각삼각형(넓이 1/2 r² = ${cm2(r*r/2)})을 완전히 밖으로 들어냅니다.`,
-   `5단계 [수식 결론]: 사분원(${cm2(PI*r*r/4)}) − 삼각형(${cm2(r*r/2)}) = 남은 활꼴 넓이 ${cm2(area)} 완성!`
+   `4단계 [조각 이동]: 직각삼각형(넓이 1/2 r² = ${svgCm2(sx(0,1,r*r,2))})을 완전히 밖으로 들어냅니다.`,
+   `5단계 [수식 결론]: 사분원(${svgCm2(sx(r*r,4))}) − 삼각형(${svgCm2(sx(0,1,r*r,2))}) = 남은 활꼴 넓이 ${cm2(area)} 완성!`
   ];
  }
  else if(type==='split'){
   const R=158*visualScale(r),x=445-R/2+ox,y=272-R/2+oy,A=p(x,y),C=p(x+R,y+R),B=p(x,y+R),D=p(x+R,y);
   refPx=R;
   segs=[boundaryArc(B.x,B.y,R,-PI/2,0,COL.arc,'위쪽 사분원호 (πr/2)'),boundaryArc(D.x,D.y,R,PI/2,PI,COL.arc2,'아래쪽 사분원호 (πr/2)')];
+  // True area decomposition: leaf = (upper quarter-sector - upper right triangle)
+  //                            + (lower quarter-sector - lower right triangle).
   const upper=`M${pointStr(A)} A${R} ${R} 0 0 1 ${pointStr(C)} L${pointStr(A)} Z`;
   const lower=`M${pointStr(C)} A${R} ${R} 0 0 1 ${pointStr(A)} L${pointStr(C)} Z`;
   const leafPath=`M${pointStr(A)} A${R} ${R} 0 0 1 ${pointStr(C)} A${R} ${R} 0 0 1 ${pointStr(A)} Z`;
-  draw+=svgPath(`M${A.x} ${A.y} H${D.x} V${C.y} H${B.x} Z`,{fill:'none',stroke:COL.aux,width:1.4,dash:'4 4',cls:'math-aux'});
-  draw+=svgPath(leafPath,{fill:'none',stroke:COL.arc,width:3.5,dash:t>.05?'6 6':'',cls:'math-peri'});
-  const shift=115*t;
-  const manualA=S.manual['0']||p(0,0),manualB=S.manual['1']||p(0,0);
-  draw+=svgPiece(upper,'rgba(56,189,248,.42)',shift+manualA.x,-shift*.32+manualA.y,0);
-  draw+=svgPiece(lower,'rgba(52,211,153,.42)',-shift+manualB.x,shift*.32+manualB.y,1);
-  if(showAux)draw+=line(A.x,A.y,C.x,C.y,COL.amber,2.8,'7 5','math-aux');
-  draw+=badge(450+ox,66+oy,330,28,'대각선 보조선으로 합동인 두 활꼴 조각 분리');
-  if(step===4||t>.95)draw+=badge(x+R/2,y+R+36,295,28,`나뭇잎 넓이 = 2 × ${cm2((PI/4-.5)*r*r)} = ${cm2((PI/2-1)*r*r)}`);
+  const qUpper=`M${pointStr(B)} L${pointStr(A)} A${R} ${R} 0 0 1 ${pointStr(C)} Z`;
+  const qLower=`M${pointStr(D)} L${pointStr(C)} A${R} ${R} 0 0 1 ${pointStr(A)} Z`;
+  const triUpper=`M${pointStr(A)} L${pointStr(B)} L${pointStr(C)} Z`;
+  const triLower=`M${pointStr(A)} L${pointStr(D)} L${pointStr(C)} Z`;
+  const clamp01=v=>Math.max(0,Math.min(1,v));
+  const splitT=clamp01((t-.10)/.48), removeT=clamp01((t-.66)/.30);
+  const upperPos=p(-165*splitT,-14*splitT),lowerPos=p(165*splitT,14*splitT);
+  const manualA=S.manual['0']||p(0,0), manualB=S.manual['1']||p(0,0);
+  const inPlace=Math.hypot(manualA.x,manualA.y)<3&&Math.hypot(manualB.x,manualB.y)<3;
+  const pair=(shape,dx,dy,color,idx)=>`<g transform="translate(${dx} ${dy})">${svgPath(shape,{fill:color,stroke:'#e2fcef',width:2.3,cls:'math-peri-piece',extra:`data-piece="${idx}"`})}</g>`;
+  draw+=svgPath(`M${A.x} ${A.y} H${D.x} V${C.y} H${B.x} Z`,{stroke:COL.aux,width:1.5,dash:'4 6',cls:'math-aux'});
+  draw+=svgPath(leafPath,{fill:'rgba(52,211,153,.035)',stroke:'#7b9b8b',width:1.7,dash:splitT>.05?'6 5':'',cls:'math-aux'});
+  if(t>.04)draw+=line(A.x,A.y,C.x,C.y,COL.amber,2.4,'6 5','math-aux');
+  draw+=`<g transform="translate(${upperPos.x+manualA.x} ${upperPos.y+manualA.y})">`+
+      svgPath(qUpper,{fill:'none',stroke:'#6d9b99',width:1.5,dash:'6 5',opacity:t>.30?.8:0,cls:'math-aux'})+
+      svgPiece(upper,'rgba(56,189,248,.44)',0,0,0)+`</g>`;
+  draw+=`<g transform="translate(${lowerPos.x+manualB.x} ${lowerPos.y+manualB.y})">`+
+      svgPath(qLower,{fill:'none',stroke:'#6d9b99',width:1.5,dash:'6 5',opacity:t>.30?.8:0,cls:'math-aux'})+
+      svgPiece(lower,'rgba(52,211,153,.48)',0,0,1)+`</g>`;
+  // For each quarter-sector: show the missing right triangle, then actually lift it away.
+  // Triangle shapes are never counted as part of the green/blue remaining area.
+  if(t>.38){
+   const triOpacity=clamp01((t-.38)/.13);
+   const t1=p(upperPos.x+manualA.x-66*removeT,upperPos.y+manualA.y+70*removeT);
+   const t2=p(lowerPos.x+manualB.x+66*removeT,lowerPos.y+manualB.y-70*removeT);
+   draw+=`<g opacity="${triOpacity}">`+
+    svgPath(triUpper,{fill:'rgba(251,113,133,.42)',stroke:COL.line,width:1.7,extra:`transform="translate(${t1.x} ${t1.y})"`})+
+    svgPath(triLower,{fill:'rgba(251,113,133,.42)',stroke:COL.line,width:1.7,extra:`transform="translate(${t2.x} ${t2.y})"`})+`</g>`;
+   if(t>.78){
+    draw+=badge(x+R/2-180,y+R+76,235,28,'① 사분원 − 직각삼각형');
+    draw+=badge(x+R/2+180,y+R+76,235,28,'② 사분원 − 직각삼각형');
+   }
+  }
+  draw+=badge(450+ox,67+oy,480,32,'사분원 두 개에서 직각삼각형을 하나씩 실제로 제거');
+  if(step===4&&inPlace)draw+=badge(x+R/2,y+R+115,380,31,`나뭇잎 넓이 = ${svgCm2(sx(r*r,2,-r*r))}`);
   area=(PI/2-1)*r*r;per=PI*r;
-  formula=`나뭇잎 넓이 = 2 × (사분원 − 직각삼각형) = 2 × ${cm2(area/2)} = ${cm2(area)}`;
-  info='보조선(대각선 AC)을 그어 나뭇잎을 합동인 두 활꼴 조각으로 나누었습니다. 각 조각을 직접 드래그해 비교해 보세요.';
+  formula=`나뭇잎 넓이 = 2 × (사분원 − 직각삼각형) = 2 × ${svgCm2(sx(r*r,4,-r*r,2))} = ${cm2(area)}`;
+  info='대각선으로 나눈 두 활꼴은 각각 사분원에서 직각이등변삼각형을 뺀 부분입니다. 사분원의 점선 경계를 살펴본 뒤 빨간 삼각형이 실제로 빠져나가는 모습을 확인하세요.';
   question='대각선이 두 조각의 경계일 때, 원래 나뭇잎 전체의 둘레에도 포함될까요?';
   answer='아닙니다. 대각선은 내부 보조선이므로 원래 나뭇잎 전체의 둘레는 두 사분원호의 합(πr)뿐입니다.';
   title='두 활꼴 분리';
   stepTexts=[
-   `1단계 [원본 관찰]: 정사각형 안에 그려진 나뭇잎 모양은 한 번에 넓이를 구하기 어렵습니다.`,
-   `2단계 [보조선 긋기]: 양 끝점을 잇는 대각선 보조선을 그으면 나뭇잎이 정확히 반으로 갈라집니다.`,
-   `3단계 [조각 분리]: 대각선을 기준으로 위쪽 활꼴과 아래쪽 활꼴 두 조각을 떼어냅니다.`,
-   `4단계 [합동 확인]: 두 조각은 모양과 크기가 같은 합동(각각 사분원 − 직각삼각형)입니다.`,
-   `5단계 [수식 결론]: 활꼴 1개 넓이(${cm2(area/2)}) × 2 = 전체 나뭇잎 넓이 ${cm2(area)} 완성!`
+   `1단계 [원래 나뭇잎]: 같은 두 활꼴이 대각선으로 만납니다.`,
+   `2단계 [보조선]: 각각의 활꼴을 사분원과 직각삼각형의 차로 생각합니다.`,
+   `3단계 [두 사분원]: 두 활꼴을 나누고 각 사분원의 경계(점선)를 복원합니다.`,
+   `4단계 [삼각형 제거]: 각 사분원에서 빨간 직각삼각형을 분리해 이동시킵니다.`,
+   `5단계 [남은 넓이]: 두 활꼴의 넓이의 합은 ${svgCm2(sx(r*r,2,-r*r))}입니다.`
   ];
  }
  else if(type==='move'){
@@ -483,21 +691,21 @@ function areaExperiment(type){
   draw+=svgPiece(piece,t>.02?'rgba(251,191,36,.55)':'rgba(56,189,248,.34)',-w*t+man.x,man.y,0);
   draw+=svgPath(originalOutline,{fill:'none',stroke:COL.arc,width:t>.02?2:3.8,dash:t>.02?'6 6':'',cls:'math-peri'});
   if(showAux)draw+=line(rt,y,rt,bot,COL.amber,2.6,'6 5','math-aux');
-  if(step===4||t>.88){
+  if((step===4||t>.88)&&Math.hypot(man.x,man.y)<3){
    draw+=svgPath(`M${x} ${y} H${rt} V${bot} H${x} Z`,{fill:'none',stroke:COL.amber,width:3.6,dash:'7 5',cls:'math-peri'});
-   draw+=badge(x+w/2,bot+34,330,28,`직사각형 가로 3r(${3*r}cm) × 세로 2r(${2*r}cm) = ${cm2(6*r*r)}`);
+   draw+=badge(x+w/2,bot+34,330,28,`직사각형 가로 3r × 세로 2r = ${svgCm2(sx(0,1,6*r*r))}`);
   }
   draw+=badge(450+ox,66+oy,350,28,'오른쪽 볼록 반원을 잘라 왼쪽 빈 홈으로 평행이동');
   area=6*r*r;per=6*r+2*PI*r;
-  periText=t>.9?`원본 ${cm(per)} → 변형 후 ${cm(10*r)}`:cm(per);
-  formula=`넓이 = 직사각형(3r × 2r) = 6r² = ${cm2(area)} (원래 둘레 = 6r + 2πr = ${cm(per)})`;
+  periText=t>.9?`원본 ${svgCm(sx(2*r,1,6*r))} → 변형 후 ${svgCm(sx(0,1,10*r))}`:svgCm(sx(2*r,1,6*r));
+  formula=`넓이 = 직사각형(3r × 2r) = 6r² = ${cm2(area)} (원래 둘레 = 6r + 2πr = ${svgCm(sx(2*r,1,6*r))})`;
   info='오른쪽에 볼록 튀어나온 반원 조각(반지름 r)을 왼쪽으로 3r만큼 평행이동하면 왼쪽의 오목한 반원 홈에 빈틈없이 들어맞아 직사각형이 됩니다.';
   question='곡선 조각을 옮겨 직사각형이 된 뒤, 둘레도 직사각형의 둘레와 같을까요?';
   answer='아닙니다! 조각을 옮기면 넓이(면)는 그대로 보존되지만, 곡선(2πr)이 직선(4r)으로 바뀌었으므로 원래 둘레(6r+2πr)와 직사각형 둘레(10r)는 다릅니다.';
   warn='등적변형(조각 옮기기)은 넓이를 구할 때만 사용합니다. 둘레는 반드시 이동 전 원래 도형의 바깥 경계에서 구해야 합니다.';
   title='곡선 조각으로 직사각형 만들기';
   stepTexts=[
-   `1단계 [원본 관찰]: 왼쪽은 반원만큼 파여 있고 오른쪽은 반원만큼 튀어나온 도형입니다 (원래 둘레 ${cm(per)}).`,
+   `1단계 [원본 관찰]: 왼쪽은 반원만큼 파여 있고 오른쪽은 반원만큼 튀어나온 도형입니다 (원래 둘레 ${svgCm(sx(2*r,1,6*r))}).`,
    `2단계 [보조선 절단]: 오른쪽 반원이 시작되는 세로 보조선(점선)을 따라 볼록한 반원 조각을 구분합니다.`,
    `3단계 [조각 분리]: 오른쪽 볼록 반원 조각(반지름 ${r}cm)을 본체에서 떼어냅니다.`,
    `4단계 [평행이동]: 떼어낸 반원 조각을 왼쪽 빈 반원 홈을 향해 3r(${3*r}cm)만큼 옮깁니다.`,
@@ -521,13 +729,13 @@ function areaExperiment(type){
   draw+=svgPiece(localSemi,t>.02?'rgba(52,211,153,.52)':'rgba(56,189,248,.32)',px,py,0,rot,0,0);
   draw+=svgPath(origOutline,{fill:'none',stroke:COL.arc,width:t>.02?1.8:3.8,dash:t>.02?'6 6':'',cls:'math-peri'});
   if(showAux)draw+=line(left,cy,right,cy,COL.amber,2.4,'6 5','math-aux');
-  if(step===4||t>.9){
+  if((step===4||t>.9)&&Math.hypot(man.x,man.y)<3){
    draw+=svgPath(`M${left} ${cy} A${R} ${R} 0 0 1 ${right} ${cy} Z`,{fill:'none',stroke:COL.amber,width:3.6,dash:'7 5',cls:'math-peri'});
-   draw+=badge(cx,cy+38,330,28,`큰 반원 1개로 합체 완성! 넓이 = πr²/2 = ${cm2(PI*r*r/2)}`);
+   draw+=badge(cx,cy+R+45,370,30,`큰 반원 1개로 합체 완성! 넓이 = ${svgCm2(sx(r*r,2))}`);
   }
   draw+=badge(450+ox,66+oy,360,28,'오른쪽 아래 작은 반원을 회전·이동해 왼쪽 위 빈 홈 채우기');
   area=PI*r*r/2;per=2*PI*r;
-  periText=t>.9?`원본 ${cm(2*PI*r)} → 반원 ${cm(PI*r+2*r)}`:cm(2*PI*r);
+  periText=t>.9?`원본 ${svgCm(sx(2*r))} → 반원 ${svgCm(sx(r,1,2*r))}`:svgCm(sx(2*r));
   formula=`넓이 = 큰 반원(πr²/2) + 작은 반원 − 작은 반원 = πr²/2 = ${cm2(area)}`;
   info='원래 도형에서 오른쪽 아래로 볼록한 작은 반원(반지름 r/2)을 잘라 180° 회전해 왼쪽 위의 파인 반원 홈에 끼우면 반지름 r인 큰 반원 1개가 됩니다.';
   question='더하는 작은 반원과 빼는 작은 반원의 반지름이 같을 때 최종 넓이는 무엇과 같나요?';
@@ -541,7 +749,9 @@ function areaExperiment(type){
    `5단계 [큰 반원 완성]: 빈 홈이 완벽히 메워져 반지름 ${r}cm인 큰 반원 1개의 넓이(${cm2(area)})가 됩니다!`
   ];
  }
- return {draw,segs:markSegments(segs,refPx),area,peri:per,periText,formula,info,question,answer,warn,title,stepTexts};
+ const manualMoved=Object.values(S.manual).some(q=>Math.hypot(q.x,q.y)>=3);
+ const placementReady=t>=.995&&!manualMoved;
+ return {draw,segs:markSegments(segs,refPx),area,peri:per,periText,formula,info,question,answer,warn,title,stepTexts,placementReady};
 }
 
 function renderProof(type){
@@ -564,7 +774,7 @@ function renderProof(type){
   out+=circle(sourceX,sourceY,R,COL.arc,'none',2,'math-aux')+paths;
   if(t>.82){
    out+=svgPath(`M${startX} ${topY} H${startX+totalW} V${botY} H${startX} Z`,{fill:'none',stroke:COL.amber,width:2.2,dash:'5 4',cls:'math-peri'});
-   out+=line(startX,topY-16,startX+totalW,topY-16,COL.amber,2.5,'','math-peri')+label(startX+totalW/2,topY-26,`가로 ≈ 원주의 절반 (πr = ${fmt(PI*r)} cm)`,COL.amber,14);
+   out+=line(startX,topY-16,startX+totalW,topY-16,COL.amber,2.5,'','math-peri')+label(startX+totalW/2,topY-26,`가로 ≈ 원주의 절반 (πr = ${svgCm(sx(r))})`,COL.amber,14);
    out+=line(startX-14,topY,startX-14,botY,COL.line,2.5,'','math-peri')+label(startX-42,(topY+botY)/2+5,`세로 r`,COL.line,13.5);
   }
   out+=label(sourceX,445,'원판 → 합동 부채꼴 분할',COL.white,14)+label(startX+totalW/2,445,`조각 ${N}개 맞물림: 직사각형(πr × r)에 수렴`,COL.white,14);
@@ -577,44 +787,155 @@ function renderProof(type){
    `1단계 [원본 원]: 반지름 ${r}cm인 원을 합동인 부채꼴 ${N}조각으로 똑같이 나눕니다.`,
    `2단계 [조각 분리]: 위쪽 조각(파랑)과 아래쪽 조각(초록)을 최단 회전 경로로 이동하기 시작합니다.`,
    `3단계 [엇갈려 맞물림]: 조각들을 위·아래로 지그재그로 맞물려 평행사변형 모양으로 배열합니다.`,
-   `4단계 [공식 유도]: 조각 수가 많아질수록 가로가 πr(${fmt(PI*r)}cm), 세로가 r(${r}cm)인 직사각형이 되어 넓이 πr²(${cm2(area)})이 유도됩니다!`
+   `4단계 [공식 유도]: 조각 수가 많아질수록 가로가 πr(${svgCm(sx(r))}), 세로가 r(${r}cm)인 직사각형이 되어 넓이 πr²(${cm2(area)})이 유도됩니다!`
   ];
  }else{
   const R=72*visualScale(r),cx=135+S.pan.x,cy=262+S.pan.y,a0=-PI/2,a1=a0+theta;
-  const K=Math.max(2,Math.round(S.angle/15)),d=theta/K;
-  const chord=2*R*Math.sin(d/2),totalBase=K*chord;
-  const startX=Math.max(302+S.pan.x,Math.min(820-totalBase+S.pan.x,565-totalBase/2+S.pan.x)),baseY=326+S.pan.y;
-  out+=circle(cx,cy,R,'#819d8e','rgba(52,211,153,.07)',1.5,'math-aux');
-  out+=svgPath(wedgeD(cx,cy,R,a0,a1),{fill:'rgba(52,211,153,.18)',stroke:COL.arc,width:2.2,cls:'math-aux'});
-  const local=wedgeD(0,0,R,-d/2,d/2),localArc=arcD(0,0,R,-d/2,d/2);
-  for(let i=0;i<K;i++){
-   const midAng=a0+(i+.5)*d;
-   const startRot=midAng*180/PI;
-   const tarX=startX+(i+.5)*chord,tarY=baseY-R*Math.cos(d/2);
-   const ang=shortAngle(startRot,90,t);
-   const px=cx+(tarX-cx)*t,py=cy+(tarY-cy)*t;
-   const edgeR=(i===0?line(0,0,R*Math.cos(-d/2),R*Math.sin(-d/2),COL.line,2.5,'','math-peri'):'')+(i===K-1?line(0,0,R*Math.cos(d/2),R*Math.sin(d/2),COL.line,2.5,'','math-peri'):'');
-   out+=`<g transform="translate(${px} ${py}) rotate(${ang})">${svgPath(local,{fill:'rgba(52,211,153,.42)',stroke:COL.arc,width:1.3,cls:'math-area'})}${svgPath(localArc,{stroke:COL.arc,width:3,cls:'math-peri'})}${edgeR}</g>`;
-  }
-  const arcLen=r*theta;
-  if(t>.75)out+=line(startX,baseY,startX+totalBase,baseY,COL.arc,3.5,'','math-peri')+label(startX+totalBase/2,baseY+37,`밑변(현의 합) ≈ 호의 길이 l = ${cm(arcLen)}`,COL.arc,13.5);
-  if(t>.75){
-   out+=line(startX-14,baseY-R*Math.cos(d/2),startX-14,baseY,COL.line,2.8,'','math-peri')+label(startX-38,baseY-R/2+5,`높이 ≈ r`,COL.line,13.5);
-  }
-  out+=label(cx,445,`중심각 비율: ${S.angle}° / 360°`,COL.amber,14.5)+label(startX+totalBase/2,140,`합동 부채꼴 ${K}개(크기 불변 강체 이동): S = 1/2 × r × l`,COL.white,14);
+   // Alternating equal wedge pieces: paired up/down wedges approximate a rectangle
+   // of width arc/2 and height r, not a row of one-way teeth.
+   const K=Math.max(2,2*Math.ceil(Math.max(2,Math.round(S.angle/15))/2)),d=theta/K;
+   const chord=2*R*Math.sin(d/2),totalBase=(K/2)*chord;
+   const startX=535-totalBase/2+S.pan.x,topY=208+S.pan.y;
+   const height=R*Math.cos(d/2),bottomY=topY+height;
+   out+=circle(cx,cy,R,'#819d8e','none',1.5,'math-aux');
+   out+=svgPath(wedgeD(cx,cy,R,a0,a1),{fill:'rgba(52,211,153,.09)',stroke:COL.arc,width:2.2,cls:'math-aux'});
+   const local=wedgeD(0,0,R,-d/2,d/2),localArc=arcD(0,0,R,-d/2,d/2);
+   for(let i=0;i<K;i++){
+    const midAng=a0+(i+.5)*d,down=i%2===0,j=Math.floor(i/2);
+    const startRot=midAng*180/PI,endRot=down?90:-90;
+    const tarX=startX+(j+(down?.5:1))*chord,tarY=down?topY:bottomY;
+    const ang=shortAngle(startRot,endRot,t);
+    const px=cx+(tarX-cx)*t,py=cy+(tarY-cy)*t;
+    const edgeR=(i===0?line(0,0,R*Math.cos(-d/2),R*Math.sin(-d/2),COL.line,2.2,'','math-peri'):'')+(i===K-1?line(0,0,R*Math.cos(d/2),R*Math.sin(d/2),COL.line,2.2,'','math-peri'):'');
+    out+=`<g transform="translate(${px} ${py}) rotate(${ang})">${svgPath(local,{fill:down?'rgba(56,189,248,.46)':'rgba(52,211,153,.46)',stroke:down?COL.arc:COL.arc2,width:1.4,cls:'math-area'})}${svgPath(localArc,{stroke:down?COL.arc:COL.arc2,width:2.6,cls:'math-peri'})}${edgeR}</g>`;
+   }
+   const arcLen=r*theta;
+   if(t>.75){
+    out+=svgPath(`M${startX} ${topY} H${startX+totalBase} V${bottomY} H${startX} Z`,{fill:'none',stroke:COL.amber,width:2,dash:'6 5',cls:'math-aux'});
+    out+=line(startX,topY-18,startX+totalBase,topY-18,COL.arc,2.2,'','math-peri');
+    out+=label(startX+totalBase/2,topY-31,`가로 ≈ 호의 길이 ÷ 2 = ${svgCm(sx(r*S.angle,360))}`,COL.arc,13.2);
+    out+=line(startX-15,topY,startX-15,bottomY,COL.line,2.2,'','math-peri');
+    out+=label(startX-45,(topY+bottomY)/2+6,'세로 ≈ r',COL.line,13);
+   }
+   out+=badge(cx,442,250,30,`중심각: ${S.angle}°/360°`,'rgba(9,30,21,.92)','#3d6b52',COL.amber,13);
+   out+=badge(584+S.pan.x,136+S.pan.y,410,30,`조각 ${K}개를 위·아래 교대로 배열 → 넓이 ≈ (l ÷ 2) × r`);
   area=PI*r*r*S.angle/360;peri=arcLen+2*r;
   formula=`부채꼴 넓이 S = πr² × (${S.angle}°/360°) = 1/2 × r × l = ${cm2(area)}`;
-  info='부채꼴 조각들의 크기(반지름 r)를 그대로 유지한 채 나란히 펼치면, 밑변 합이 호의 길이(l), 높이가 반지름(r)인 삼각형들의 합(1/2 rl)이 됩니다.';
+  info='부채꼴을 같은 크기로 나눈 뒤 조각을 위·아래로 번갈아 돌려 맞물리게 합니다. 조각이 작을수록 가로가 호의 길이의 절반(l/2), 세로가 반지름(r)에 가까워져 넓이를 이해할 수 있습니다.';
   question='부채꼴 넓이 공식 S = 1/2 rl에서 l은 무엇을 뜻하나요?';
   answer='부채꼴의 호의 길이(l = 2πr × θ/360°)입니다. 중심각을 몰라도 반지름(r)과 호의 길이(l)를 알면 넓이를 바로 구할 수 있습니다.';
   stepTexts=[
    `1단계 [원본 부채꼴]: 반지름 ${r}cm, 중심각 ${S.angle}°인 부채꼴을 합동인 ${K}개의 작은 부채꼴 조각으로 나눕니다.`,
    `2단계 [강체 이동]: 각 부채꼴 조각의 넓이와 반지름(${r}cm)을 그대로 유지한 채 오른쪽으로 펼칩니다.`,
-   `3단계 [삼각형 근사]: 잘게 나뉜 각 조각은 높이가 반지름 r(${r}cm)인 이등변삼각형에 가까워집니다.`,
-   `4단계 [공식 S = 1/2 rl]: 삼각형들의 밑변 합이 호의 길이 l(${cm(arcLen)})이므로 총 넓이는 1/2 × r × l = ${cm2(area)}입니다!`
+   `3단계 [엇갈린 배치]: 조각을 위·아래로 번갈아 놓아 서로 맞물리게 합니다.`,
+   `4단계 [넓이 원리]: 가로가 호의 절반 ${svgCm(sx(r*S.angle,360))}, 높이가 반지름 ${r}cm에 가까워지므로 넓이 = 1/2 × r × l입니다.`
   ];
  }
  return {draw:out,area,peri,formula,info,question,answer,warn:'',stepTexts};
+}
+
+// Stage-1 middle-school curriculum contract. Geometry coordinates remain numeric,
+// but every visible measurement is emitted from an independent exact definition.
+function stage1Exact(m){
+ const z=S.zone,t=m.type,r=S.r,a=S.angle, rr=r*r;
+ const pi=(n,d=1)=>sx(n,d), rational=(n,d=1)=>sx(0,1,n,d);
+ const arc=pi(r*a,180), sector=pi(rr*a,360);
+ const descriptors={};let pieces=[],area=null,peri=null;
+ switch(t){
+  case 'circle':pieces=[pi(2*r)];area=pi(rr);peri=pi(2*r);break;
+  case 'center':pieces=[rational(r),pi(2*r)];area=pi(rr);peri=pi(2*r);break;
+  case 'diameter':pieces=[rational(2*r),pi(2*r)];area=pi(rr);peri=pi(2*r);break;
+  case 'semi':pieces=[pi(r),rational(2*r)];area=pi(rr,2);peri=sx(r,1,2*r);break;
+  case 'quarter':pieces=[pi(r,2),rational(r),rational(r)];area=pi(rr,4);peri=sx(r,2,2*r);break;
+  case 'sector':pieces=[arc,rational(r),rational(r)];area=sector;peri=sx(r*a,180,2*r);break;
+  case 'arc':
+  case 'segment':{
+   const chord=a===60?rational(r):a===180?rational(2*r):null;
+   pieces=[arc,chord];
+   area=t==='segment'?(a===90?sx(rr,4,-rr,2):a===180?pi(rr,2):null):null;
+   peri=t==='segment'&&chord?plusEx(arc,chord):null;
+   break;
+  }
+  case 'cutout':pieces=[pi(r),rational(r),pi(r,2)];area=pi(3*rr,8);peri=sx(3*r,2,r);break;
+  case 'track':pieces=[rational(2*r),pi(r),rational(2*r),pi(r)];area=sx(rr,1,4*rr);peri=sx(2*r,1,4*r);break;
+  case 'leaf':pieces=[pi(r,2),pi(r,2)];area=sx(rr,2,-rr);peri=pi(r);break;
+  case 'combine':pieces=[pi(r),pi(r,2),pi(r,2)];area=pi(rr,2);peri=pi(2*r);break;
+  case 'subtract':pieces=[pi(r,2),null];area=sx(rr,4,-rr,2);peri=null;break;
+  case 'split':pieces=[pi(r,2),pi(r,2)];area=sx(rr,2,-rr);peri=pi(r);break;
+  case 'move':pieces=[rational(3*r),pi(r),rational(3*r),pi(r)];area=rational(6*rr);peri=sx(2*r,1,6*r);break;
+  case 'circleProof':area=pi(rr);peri=pi(2*r);break;
+  case 'sectorProof':area=sector;peri=sx(r*a,180,2*r);break;
+ }
+ m.exactArea=area;m.exactPeri=peri;
+ for(let i=0;i<m.segs.length;i++)m.segs[i].exact=pieces[i]??null;
+ const P=e=>exactCm(e),A=e=>exactCm2(e),X=e=>`\\(${exLatex(e)}\\)`;
+ const arca=P(arc), fullP=P(peri), fullA=A(area);
+ const areaLine=area?`넓이 ${fullA}`:'넓이는 도형의 구조만 관찰합니다.';
+ const periLine=peri?`둘레 ${fullP}`:'현 길이를 구해야 하므로 둘레는 계산하지 않습니다.';
+ const exactCircle=pi(2*r),exactCircleArea=pi(rr);
+ const chord=pieces[1];
+ const caseFormula={
+  center:`반지름 ${P(rational(r))}, 원주 ${P(exactCircle)}, 원의 넓이 ${A(exactCircleArea)}. 반지름은 원의 외곽 둘레에 더하지 않습니다.`,
+  diameter:`지름 ${P(rational(2*r))}, 원주 ${P(exactCircle)}. 원주율은 원주를 지름으로 나눈 일정한 값 \\(\\pi\\)입니다.`,
+  circle:`원주 \\(2\\pi r\\) = ${P(exactCircle)}, 넓이 \\(\\pi r^2\\) = ${A(exactCircleArea)}`,
+  semi:`반원 둘레 = 반원호 ${P(pi(r))} + 지름 ${P(rational(2*r))} = ${fullP}. 넓이 ${fullA}`,
+  quarter:`사분원 둘레 = 호 ${P(pi(r,2))} + 두 반지름 ${P(rational(2*r))} = ${fullP}. 넓이 ${fullA}`,
+  sector:`호의 길이 \\(2\\pi r\\times\\frac{${a}}{360}\\) = ${arca}. 둘레 = 호 + 두 반지름 = ${fullP}. 넓이 ${fullA}`,
+  arc:`호의 길이 ${arca}. 현은 두 끝점을 이은 직선입니다.${chord?` 현의 길이 ${P(chord)}.`:' 현의 길이는 중1 범위에서 계산하지 않습니다.'}`,
+  segment:`활꼴의 경계 = 호 + 현. 호의 길이 ${arca}. ${periLine} ${areaLine}`,
+  cutout:`넓이 = 큰 반원 − 작은 반원 = ${fullA}. 둘레 = 큰 반원호 + 파인 작은 반원호 + 남은 직선 = ${fullP}`,
+  track:`넓이 = 정사각형 + 양쪽 반원 2개 = ${fullA}. 둘레 = 두 직선 + 반원호 두 개 = ${fullP}`,
+  leaf:`넓이 = 사분원 2개 − 직각삼각형 2개 = ${fullA}. 둘레 = 사분원호 2개 = ${fullP}`,
+  combine:`넓이 = 큰 반원 − 작은 반원 + 같은 작은 반원 = ${fullA}. 원래 도형의 둘레 = 곡선 3개 = ${fullP}`,
+  subtract:`활꼴 넓이 = 사분원 ${A(pi(rr,4))} − 직각이등변삼각형 ${A(rational(rr,2))} = ${fullA}. 현의 길이는 계산하지 않습니다.`,
+  split:`나뭇잎 넓이 = 두 활꼴의 합 = ${fullA}. 둘레 = 사분원호 2개 = ${fullP}`,
+  move:`넓이 = \\(3r\\times2r=6r^2\\) = ${fullA}. 원래 둘레 ${fullP}. 옮긴 후 직사각형의 둘레는 ${P(rational(10*r))}입니다.`,
+  circleProof:`원판을 잘게 나누어 넓이를 관찰합니다. 원의 넓이 \\(\\pi r\\times r=\\pi r^2\\) = ${fullA}`,
+  sectorProof:`부채꼴 넓이 \\(\\frac12 rl=\\pi r^2\\times\\frac{${a}}{360}\\) = ${fullA}. 호의 길이 ${arca}`
+ };
+ m.formula=caseFormula[t]||m.formula;
+ const start=m.info||'도형의 구성 요소를 살펴봅니다.';
+ if(z===3){
+  if(t==='circleProof')m.stepTexts=[
+   `반지름 ${P(rational(r))}인 원을 크기가 같은 부채꼴 조각으로 나눕니다.`,
+   '조각들을 위아래로 번갈아 회전·이동시켜 모양의 변화를 관찰합니다.',
+   '조각 수가 많아지면 가로가 원주의 절반, 세로가 반지름에 가까워집니다.',
+   `원주의 절반은 ${P(pi(r))}, 세로는 ${P(rational(r))}이므로 원의 넓이는 ${fullA}입니다.`
+  ];
+  else m.stepTexts=[
+   `반지름 ${P(rational(r))}, 중심각 ${a}°인 부채꼴을 관찰합니다.`,
+   '부채꼴을 짝수 개의 크기가 같은 조각으로 나눕니다.',
+   '조각을 위·아래 교대로 회전해 맞물립니다. 가로는 호의 절반에 가까워집니다.',
+   `호의 길이는 ${arca}, 부채꼴 넓이는 ${fullA}입니다. 이 조각 배열은 근사적 관찰입니다.`
+  ];
+ }else if(z===4){
+  const focus=t==='subtract'?`사분원의 넓이 ${A(pi(rr,4))}에서 삼각형의 넓이 ${A(rational(rr,2))}를 뺍니다.`:
+   t==='split'?`합동인 두 활꼴의 넓이를 합하면 ${fullA}입니다.`:
+   t==='move'?`곡선 조각을 옮기면 넓이는 ${fullA}로 보존되지만 둘레는 달라집니다.`:
+   `같은 반원 조각을 더하고 빼면 넓이는 ${fullA}입니다.`;
+  m.stepTexts=[
+   start,
+   t==='subtract'?'현을 그어 사분원과 직각이등변삼각형으로 나눕니다.':t==='split'?'대각선을 그리고 각 활꼴에 해당하는 사분원을 찾습니다.':'보조선을 통해 옮길 조각과 남길 조각을 구분합니다.',
+   t==='split'?'합동인 두 활꼴을 벌려 사분원의 윤곽과 직각삼각형을 확인합니다.':'색칠된 조각을 원래 도형에서 분리합니다.',
+   t==='split'?'각 사분원에서 빨간 직각삼각형을 실제로 떼어 이동시킵니다.':'분리한 조각을 드래그하거나 단계 버튼으로 이동시킵니다.',
+   focus
+  ];
+ }else if(m.segs.length){
+  if(z===0&&(t==='center'||t==='diameter'||t==='arc')){
+   m.stepTexts=[start,...m.segs.map((s,i)=>`${i+1}번 선 요소 [${s.name}]: ${s.exact?`길이 ${P(s.exact)}`:'이 단계에서는 현의 길이를 계산하지 않습니다.'}. 원의 구성 요소를 비교합니다.`)];
+  }else{
+   m.stepTexts=[start,...m.segs.map((s,i)=>`${i+1}번 경계 [${s.name}]: ${s.exact?`길이 ${P(s.exact)}`:'길이는 관찰만 합니다.'}.${i===m.segs.length-1?` ${periLine} ${areaLine}`:''}`)];
+  }
+ }
+ // Student-facing short result cards. A segment without a permitted value never receives a decimal.
+ if(z===0&&(t==='center'||t==='diameter'))m.periTextExact=t==='center'?`반지름 ${P(rational(r))} / 원주 ${P(exactCircle)}`:`지름 ${P(rational(2*r))} / 원주 ${P(exactCircle)}`;
+ if(t==='arc')m.periTextExact=`호 ${arca} / 현 ${chord?P(chord):'길이는 구하지 않음'}`;
+ if(t==='move'&&S.morph>.9&&!Object.values(S.manual).some(q=>Math.hypot(q.x,q.y)>=3))m.periTextExact=`원래 ${fullP} → 이동 후 ${P(rational(10*r))}`;
+ if(t==='combine'&&z===4&&S.morph>.9&&!Object.values(S.manual).some(q=>Math.hypot(q.x,q.y)>=3))m.periTextExact=`원래 ${fullP} → 반원 ${P(sx(r,1,2*r))}`;
+ m.areaTextExact=area?fullA:(t==='arc'?'면 요소 없음':'넓이는 구조만 관찰');
+ m.periTextExact=m.periTextExact||(peri?fullP:'길이는 구조만 관찰');
+ // Older numeric strings from the animation layer are never used as numeric results.
+ return m;
 }
 
 function buildModel(){
@@ -624,6 +945,8 @@ function buildModel(){
  else if(['cutout','track','leaf','combine'].includes(type))m=compositeGeometry(type);
  else m=baseGeometry(type,{...basicCenter(),cx:basicCenter().x,cy:basicCenter().y,R:basicRadius(),r});
  m.type=type;m.name=current()[1];m.segs=m.segs||[];
+ stage1Exact(m);
+ if(S.zone===2&&m.segs.length)m.hud=drawUnrolledTape(m.segs,m.peri,m.exactPeri);
  return m;
 }
 
@@ -644,14 +967,12 @@ function traceMarker(segments){
 }
 
 function showModel(m){
- const noArea=m.type==='arc';
- if(noArea&&S.lens==='area')S.lens='both';
  const arcShapes=m.segs?.length?boundaryLayer(m.segs,S.zone===4):'';
  const geometry=`<defs><pattern id="mesh" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#6e9a7c" stroke-opacity=".13" stroke-width=".7"/></pattern></defs><rect x="0" y="0" width="900" height="530" fill="url(#mesh)" data-bg="1"/>`;
  const isMob=window.innerWidth<=600;
  const vb=isMob&&(S.zone===0||S.zone===1||S.zone===5)?'130 30 640 480':isMob&&S.zone===2?'55 25 790 500':isMob&&S.zone===4?'65 35 770 475':isMob&&S.zone===3?'35 45 835 450':'0 0 900 530';
  $('scene').setAttribute('viewBox',vb);
- $('scene').setAttribute('class','lens-'+S.lens);
+ $('scene').setAttribute('class','lens-both');
  $('scene').innerHTML=geometry+`<g id="geomLayer">${m.draw}</g><g id="boundaryLayer">${arcShapes}</g>`+traceMarker(m.segs)+(m.hud||'')+`<g id="handleLayer">${m.handle||''}</g>`;
  const name=current()[1];
  $('boardCaption').textContent=`${zones[S.zone].short} · ${name}`;
@@ -662,9 +983,9 @@ function showModel(m){
  const isLineConcept=S.zone===0&&['center','diameter','arc'].includes(m.type);
  $('periLabel').textContent=isLineConcept?'선 요소 길이 (cm)':'둘레 · 선 (cm)';
  $('areaLabel').textContent='넓이 · 면 (cm²)';
- $('areaNum').textContent=m.areaText||(Number.isFinite(m.area)?cm2(m.area):'구성별 확인');
- $('periNum').textContent=m.periText||(Number.isFinite(m.peri)?cm(m.peri):'조각 이동 중 변화');
- $('formula').innerHTML=formatFormulaHtml(m.formula||'도형을 선택해 보세요.');
+ setMath('areaNum',m.areaTextExact);
+ setMath('periNum',m.periTextExact);
+ setMath('formula',m.formula||'도형을 선택해 보세요.');
  $('question').textContent=m.question||'색칠된 면과 바깥 경계선의 차이를 설명해 보세요.';
  $('answer').textContent=m.answer||'도형을 직접 확인해 보세요.';
  const mStep=maxStep(),n=mStep+1;
@@ -677,13 +998,12 @@ function showModel(m){
   ?['전체 도형과 경계 관찰']
   :[`경계 구간 ${S.step}번 (${m.segs[S.selected]?.name||'선분/호'}) 집중 관찰`];
  $('stepTitle').textContent=titles[Math.min(titles.length-1,S.step)]||titles[0];
- const defaultStepExplain=m.segs?.length&&S.selected>=0
-  ?`선택된 경계: [${m.segs[S.selected].name}] 길이 = ${cm(m.segs[S.selected].len)} (전체 둘레의 ${fmt(m.segs[S.selected].len/m.peri*100,1)}%). 칠판에서 빛나는 선과 하단 줄자 비율을 확인하세요.`
-  :'선은 1차원 길이(cm)이고, 색칠된 내부는 2차원 넓이(cm²)입니다. 다음 단계 버튼이나 줄자 버튼을 눌러 각 구간을 차례대로 확인하세요.';
+ if(S.zone===4&&S.step===4&&!m.placementReady)$('stepTitle').textContent='조각 위치가 달라졌습니다 · 다시 맞춰 보세요';
+ const defaultStepExplain='선은 길이(cm), 색칠한 면은 넓이(cm²)입니다. 단계 버튼이나 줄자 버튼으로 확인하세요.';
  const selectedRulerNote=S.zone===4&&S.selected>=0&&m.segs?.[S.selected]
-  ?` [선택된 원래 경계: ${m.segs[S.selected].name} = ${cm(m.segs[S.selected].len)}]`
+  ?` [선택된 원래 경계: ${m.segs[S.selected].name} = ${svgCm(m.segs[S.selected].exact)}]`
   :'';
- $('stepText').textContent=(m.stepTexts?.[S.step]||defaultStepExplain)+selectedRulerNote;
+ setMath('stepText',S.zone===4&&S.step===4&&!m.placementReady?'조각이 정답 위치에서 벗어났습니다. 처음으로 또는 다음 단계로 다시 배치하거나 조각을 원래 위치로 이동하세요.':(m.stepTexts?.[S.step]||defaultStepExplain)+selectedRulerNote);
  $('warning').classList.toggle('hidden',!m.warn);
  $('warning').textContent=m.warn||'';
  $('prev').disabled=S.step===0;
@@ -697,11 +1017,6 @@ function showModel(m){
  renderRuler(m);
  $('legend').innerHTML=`<span><i class="bar-color" style="background:${COL.arc}"></i>호·곡선</span><span><i class="bar-color" style="background:${COL.line}"></i>외곽 선분</span><span><i class="bar-color" style="background:${COL.arc2}"></i>다른 호 / 색칠 면</span><span><i class="bar-color dashed"></i>보조선(둘레 제외)</span>`;
  $('zoneLabel').textContent=`${S.zone+1}/6 구역`;
- document.querySelectorAll('[data-lens]').forEach(b=>{
-  if(b.dataset.lens==='area')b.disabled=noArea;
-  b.classList.toggle('active',b.dataset.lens===S.lens);
-  b.setAttribute('aria-pressed',b.dataset.lens===S.lens);
- });
  if(S.zone===3&&m.type==='circleProof')$('boardHint').textContent=`조각 ${S.circleCount}개 · 최단 회전 경로 부채꼴 맞물림`;
 }
 
@@ -713,14 +1028,15 @@ function renderRuler(m){
  $('compareBars').classList.toggle('hidden',!isCompareOnly);
  if(isCompareOnly){
   const maxL=Math.max(...list.map(s=>s.len),1);
-  $('compareBars').innerHTML=list.map((s,i)=>`<div class="compare-bar-row"><span style="min-width:78px;color:${s.color};font-weight:700">${s.name}</span><div class="compare-bar-track"><div class="compare-bar-fill" style="width:${(s.len/maxL)*100}%;background:${s.color};opacity:${S.selected<0||S.selected===i?1:.35}"></div></div><span style="min-width:62px;text-align:right;font-weight:800;color:${s.color}">${cm(s.len)}</span></div>`).join('');
+  $('compareBars').innerHTML=list.map((s,i)=>`<div class="compare-bar-row"><span style="min-width:78px;color:${s.color};font-weight:700">${s.name}</span><div class="compare-bar-track"><div class="compare-bar-fill" style="width:${(s.len/maxL)*100}%;background:${s.color};opacity:${S.selected<0||S.selected===i?1:.35}"></div></div><span style="min-width:62px;text-align:right;font-weight:800;color:${s.color}">${svgCm(s.exact)}</span></div>`).join('');
   $('rulerTitle').textContent=`실제 길이 비례 선 요소 개별 비교 (합산 둘레 아님 · 버튼을 눌러 강조)`;
  }else{
   const total=list.reduce((a,s)=>a+s.len,0);
-  $('ruler').innerHTML=list.map((s,i)=>`<span style="width:${(s.len/total)*100}%;background:${s.color};opacity:${S.selected<0||S.selected===i?1:.32}" title="${s.name}: ${cm(s.len)}"></span>`).join('');
-  $('rulerTitle').textContent=`실제 길이 비례 둘레 줄자 · 외곽 둘레 합계 ${cm(total)} (내부 보조선 제외)`;
+  $('ruler').innerHTML=list.map((s,i)=>`<span style="width:${(s.len/total)*100}%;background:${s.color};opacity:${S.selected<0||S.selected===i?1:.32}" title="${s.name}: ${svgCm(s.exact)}"></span>`).join('');
+  setMath('rulerTitle',`실제 길이 비례 경계 구성 · ${m.exactPeri?`전체 둘레 ${exactCm(m.exactPeri)}`:'현 길이 계산은 제외'} (보조선 제외)`);
  }
- $('rulerLegend').innerHTML=list.map((s,i)=>`<button type="button" data-ruler="${i}" class="${S.selected===i?'active':''}" style="color:${s.color}">${i+1}. ${s.name} ${cm(s.len)}</button>`).join('');
+ $('rulerLegend').innerHTML=list.map((s,i)=>`<button type="button" data-ruler="${i}" class="${S.selected===i?'active':''}" style="color:${s.color}">${i+1}. ${s.name} ${exactCm(s.exact)}</button>`).join('');
+  mathifyNode($('rulerLegend'));
 }
 
 function resetAnswerBox(){
@@ -732,6 +1048,9 @@ function render(){
  const z=zones[S.zone];
  $('tabs').innerHTML=zones.map((v,i)=>`<button type="button" data-zone="${i}" class="${S.zone===i?'active':''}" aria-pressed="${S.zone===i}">${v.name}</button>`).join('');
  $('scenarios').innerHTML=z.items.map((it,i)=>`<button type="button" data-item="${i}" class="${S.item===i?'active':''}" aria-pressed="${S.item===i}">${it[1]}</button>`).join('');
+ $('mainLayout').hidden=S.zone===6;
+ $('transformLab').hidden=S.zone!==6;
+ if(S.zone===6){renderTransformLab();return;}
  $('radiusVal').textContent=S.r+' cm';
  const maxAng=current()[0]==='segment'?180:300;
  if(S.angle>maxAng)S.angle=maxAng;
@@ -748,6 +1067,7 @@ function render(){
 }
 
 function changeZone(i){
+ if(S.zone===6)tlStop();
  S.zone=i;S.item=0;S.selected=-1;S.step=0;S.morph=0;S.pan=p(0,0);S.manual={};S.trace=0;S.angle=90;
  resetAnswerBox();stop();render();
 }
@@ -756,7 +1076,6 @@ function changeItem(i){
  resetAnswerBox();stop();render();
 }
 
-document.querySelector('.lenses').addEventListener('click',e=>{const b=e.target.closest('[data-lens]');if(b&&!b.disabled){S.lens=b.dataset.lens;render()}});
 $('tabs').addEventListener('click',e=>{const b=e.target.closest('button[data-zone]');if(b)changeZone(+b.dataset.zone)});
 $('scenarios').addEventListener('click',e=>{const b=e.target.closest('button[data-item]');if(b)changeItem(+b.dataset.item)});
 $('rulerLegend').addEventListener('click',e=>{
@@ -845,6 +1164,416 @@ $('play').addEventListener('click',()=>{
  animationId=requestAnimationFrame(tick);
 });
 
+// ── ⑦ 실시간 도형 변환: 원본 26개 실험과 독립된 상태·그리기 ──
+const TL={family:'sector',offset:0,R:6,r:3,angle:90,mode:'both',detach:0,trace:0,focus:-1,
+ baseline:{R:6,r:3,angle:90},animation:null,animationType:null,dragging:false};
+const tlGet=id=>document.getElementById(id);
+const tlFixed=n=>Number(Number(n).toFixed(4));
+const tlData=state=>({R:state.R,r:state.r,angle:state.angle});
+const tlRad=deg=>deg*Math.PI/180;
+const tlPolar=(x,y,r,deg)=>({x:x+r*Math.cos(tlRad(deg)),y:y+r*Math.sin(tlRad(deg))});
+const tlXY=q=>`${q.x.toFixed(4)} ${q.y.toFixed(4)}`;
+function tlCircularPath(cx,cy,r){
+ const t=tlPolar(cx,cy,r,-90),b=tlPolar(cx,cy,r,90);
+ return `M ${tlXY(t)} A ${r} ${r} 0 1 1 ${tlXY(b)} A ${r} ${r} 0 1 1 ${tlXY(t)} Z`;
+}
+function tlSector(cx,cy,large,small,angle){
+ // SVG circular arcs cannot draw a full 360-degree turn in one A command.
+ if(angle>=360){
+  const outer=tlCircularPath(cx,cy,large);
+  const inner=small>0?tlCircularPath(cx,cy,small):'';
+  return outer+(inner?' '+inner:''); // fill-rule="evenodd" cuts the exact interior hole.
+ }
+ const a=-90,b=-90+angle,flag=angle>180?1:0;
+ const o0=tlPolar(cx,cy,large,a),o1=tlPolar(cx,cy,large,b);
+ if(small===0)return `M ${cx} ${cy} L ${tlXY(o0)} A ${large} ${large} 0 ${flag} 1 ${tlXY(o1)} Z`;
+ const i0=tlPolar(cx,cy,small,a),i1=tlPolar(cx,cy,small,b);
+ return `M ${tlXY(o0)} A ${large} ${large} 0 ${flag} 1 ${tlXY(o1)} L ${tlXY(i1)} A ${small} ${small} 0 ${flag} 0 ${tlXY(i0)} Z`;
+}
+function tlParts(cx,cy,scale){
+ const {R,r,angle}=TL,full=angle===360,a=-90,b=a+angle,outer=R*scale,inner=r*scale,ang=tlRad(angle);
+ const o0=tlPolar(cx,cy,outer,a),o1=tlPolar(cx,cy,outer,b),i0=tlPolar(cx,cy,inner,a),i1=tlPolar(cx,cy,inner,b);
+ const arc=(rr,start,end,clock,name,color)=>({name,color,kind:'arc',length:rr/scale*ang,lenPx:rr*ang,
+  d:angle===360?(()=>{const p0=tlPolar(cx,cy,rr,start),p1=tlPolar(cx,cy,rr,start+(clock?180:-180));return `M ${tlXY(p0)} A ${rr} ${rr} 0 1 ${clock?1:0} ${tlXY(p1)} A ${rr} ${rr} 0 1 ${clock?1:0} ${tlXY(p0)}`;})():`M ${tlXY(tlPolar(cx,cy,rr,start))} A ${rr} ${rr} 0 ${angle>180?1:0} ${clock?1:0} ${tlXY(tlPolar(cx,cy,rr,end))}`,
+  at:t=>tlPolar(cx,cy,rr,start+(end-start)*t)});
+ const segment=(start,end,name)=>({name,color:'#fbbf24',kind:'straight',length:R-r,lenPx:(R-r)*scale,
+  d:`M ${tlXY(start)} L ${tlXY(end)}`,at:t=>({x:start.x+(end.x-start.x)*t,y:start.y+(end.y-start.y)*t})});
+ const result=[arc(outer,a,b,true,'바깥 호','#38bdf8')];
+ if(!full)result.push(segment(o1,i1,r>0?'끝쪽 직선':'끝쪽 반지름'));
+ if(r>0)result.push(arc(inner,b,a,false,'안쪽 호','#34d399'));
+ if(!full)result.push(segment(i0,o0,r>0?'시작쪽 직선':'시작쪽 반지름'));
+ return result;
+}
+function tlGeometry(){
+ const mobile=window.innerWidth<=660;
+ // Reserve room for both separated shapes AND the subtraction symbol.
+ const vw=mobile?480:760,vh=mobile?400:420;
+ const cx=mobile?141:215,cy=mobile?212:215;
+ const gap=mobile?53:67,margin=mobile?20:29;
+ const scale=mobile?Math.min(20,142/TL.R,(vw-cx-gap-margin)/(TL.R+2*TL.r)):
+  Math.min(23,170/TL.R,(vw-cx-gap-margin)/(TL.R+2*TL.r));
+ return {scale,cx,cy,outer:TL.R*scale,inner:TL.r*scale,mobile,vw,vh,gap};
+}
+function tlTextSvg(text,x,y,color='#dcfce7',size=15,anchor='start'){
+ return `<text x="${x.toFixed(2)}" y="${y.toFixed(2)}" text-anchor="${anchor}" font-size="${size}" fill="${color}" font-weight="750" paint-order="stroke" stroke="#091c14" stroke-width="3.4" stroke-linejoin="round">${text}</text>`;
+}
+function tlAtTrace(parts){
+ const total=parts.reduce((s,p)=>s+p.lenPx,0),covered=TL.trace*total;
+ let remaining=covered,focus=parts.length-1,point=parts[parts.length-1].at(1);
+ for(let i=0;i<parts.length;i++){
+  const p=parts[i];if(remaining<=p.lenPx || i===parts.length-1){focus=i;point=p.at(Math.min(1,Math.max(0,remaining/p.lenPx)));break;}
+  remaining-=p.lenPx;
+ }
+ return {point,focus,total,covered};
+}
+function tlDrawScene(){
+ if(TL.family==='circle'){tlDrawCircle();return;}
+ const stage=tlGet('tlScene');if(!stage)return;
+ const g=tlGeometry(),{cx,cy,scale,outer,inner}=g;
+ stage.setAttribute('viewBox',`0 0 ${g.vw} ${g.vh}`);
+ stage.style.aspectRatio=`${g.vw}/${g.vh}`;
+ const parts=tlParts(cx,cy,scale),full=TL.angle===360;
+ const areaMode=TL.mode!=='perimeter';
+ const ringPath=tlSector(cx,cy,outer,inner,TL.angle);
+ const smallPath=TL.r>0?tlSector(cx,cy,inner,0,TL.angle):'';
+ const endpoint=cx+outer+inner+g.gap;
+ const offset=TL.detach*(outer+inner+g.gap);
+ const pieceCenter=cx+offset;
+ const splitting=TL.detach>.002&&TL.r>0&&areaMode;
+ let markup=`<defs><pattern id="tlGrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#5d886a" stroke-opacity=".13" stroke-width=".6"/></pattern></defs><rect x="0" y="0" width="${g.vw}" height="${g.vh}" fill="url(#tlGrid)"/>`;
+ // The inner part is an actual transparent hole (never a painted cyan sector).
+ markup+=`<path d="${ringPath}" fill="#38bdf8" fill-opacity="${areaMode?.53:.13}" fill-rule="evenodd" stroke="#38bdf8" stroke-opacity="${areaMode?.83:.45}" stroke-width="2.4"/>`;
+ if(areaMode&&TL.r>0){
+  const arcStart=tlPolar(cx,cy,inner,-90),arcEnd=tlPolar(cx,cy,inner,-90+TL.angle);
+  const innerArc=full?tlCircularPath(cx,cy,inner):`M ${tlXY(arcStart)} A ${inner} ${inner} 0 ${TL.angle>180?1:0} 1 ${tlXY(arcEnd)}`;
+  markup+=`<path d="${innerArc}" fill="none" stroke="#34d399" stroke-width="2.6"/>`;
+  if(splitting){
+   markup+=`<g transform="translate(${offset.toFixed(3)} 0)" pointer-events="none"><path d="${smallPath}" fill="#fbbf24" fill-opacity=".87" stroke="#fbbf24" stroke-width="2.5"/></g>`;
+  }
+ }
+ // Boundary highlighting uses the unchanged geometric perimeter path.
+ if(TL.mode==='perimeter'||TL.mode==='both'){
+  parts.forEach((part,index)=>{
+   const opacity=TL.focus===-1||TL.focus===index?1:.20;
+   markup+=`<path d="${part.d}" fill="none" stroke="${part.color}" stroke-opacity="${opacity}" stroke-width="${TL.focus===index?6:4}" stroke-linecap="round"/>`;
+   markup+=`<path d="${part.d}" fill="none" stroke="transparent" stroke-width="22" data-tl-part="${index}" style="cursor:pointer"/>`;
+  });
+ }
+ if(TL.trace>0){
+  let remaining=TL.trace*parts.reduce((sum,p)=>sum+p.lenPx,0);
+  parts.forEach(part=>{
+   const visible=Math.max(0,Math.min(part.lenPx,remaining));remaining-=part.lenPx;
+   if(visible>.01)markup+=`<path d="${part.d}" fill="none" stroke="#ffe59c" stroke-width="7" stroke-linecap="round" stroke-dasharray="${visible.toFixed(3)} ${(part.lenPx+5).toFixed(3)}"/>`;
+  });
+ }
+ if(!full){
+  const tip=tlPolar(cx,cy,outer,-90+TL.angle);
+  markup+=`<path d="M ${cx} ${cy} L ${cx} ${cy-outer} M ${cx} ${cy} L ${tlXY(tip)}" fill="none" stroke="#b3c8b6" stroke-opacity=".28" stroke-dasharray="4 6" stroke-width="1.4"/>`;
+  markup+=`<circle cx="${tip.x.toFixed(3)}" cy="${tip.y.toFixed(3)}" r="${g.mobile?5:7}" fill="#fbbf24" stroke="#fff6cb" stroke-width="2" pointer-events="none"/>`;
+  markup+=`<circle cx="${tip.x.toFixed(3)}" cy="${tip.y.toFixed(3)}" r="23" fill="transparent" data-tl-handle="angle" style="cursor:grab;touch-action:none"/>`;
+ }
+ markup+=`<circle cx="${cx}" cy="${cy}" r="3.2" fill="#ffe6a0" stroke="#071a13" stroke-width="1.2"/>`;
+ if(!full){
+  const a=-90,b=a+TL.angle,ar=Math.max(15,Math.min(29,inner*.43||25)),flag=TL.angle>180?1:0;
+  const p0=tlPolar(cx,cy,ar,a),p1=tlPolar(cx,cy,ar,b);
+  markup+=`<path d="M ${tlXY(p0)} A ${ar} ${ar} 0 ${flag} 1 ${tlXY(p1)}" fill="none" stroke="#ffe8a6" stroke-width="2.5" stroke-linecap="round"/>`;
+  const mid=a+TL.angle/2,label=tlPolar(cx,cy,ar+(g.mobile?14:17),mid);
+  markup+=tlTextSvg(`${TL.angle}°`,label.x,label.y+3,'#ffe6a0',g.mobile?12:14,'middle');
+ }
+ const start=-90,finish=-90+TL.angle;
+ const ro=tlPolar(cx,cy,Math.min(outer*.88,inner+(outer-inner)*.7),start);
+ markup+=tlTextSvg(g.mobile?`R=${TL.R}`:`R=${TL.R} cm`,ro.x+(g.mobile?10:11),ro.y+3,'#c5efff',g.mobile?12:14,'start');
+ if(TL.r>0){
+  if(!splitting){
+   const inPos=tlPolar(cx,cy,Math.max(13,inner*.68),finish);
+   const dx=TL.angle<=95?11:-10,dy=TL.angle<=95?-8:15;
+   markup+=tlTextSvg(g.mobile?`r=${TL.r}`:`r=${TL.r} cm`,inPos.x+dx,inPos.y+dy,'#baf8d4',g.mobile?11:13,TL.angle<=95?'start':'end');
+  }else{
+   // The small radius measurement stays attached to its moving sector.
+   const midRay=tlPolar(pieceCenter,cy,inner*.60,-90+TL.angle/2);
+   markup+=tlTextSvg(g.mobile?`r=${TL.r}`:`r=${TL.r} cm`,midRay.x,midRay.y,'#fff1b0',g.mobile?11:13,'middle');
+  }
+ }
+ if(splitting){
+  const angle=TL.angle;
+  const outerRight=cx+outer*(angle<90?Math.sin(tlRad(angle)):1);
+  const pieceLeft=pieceCenter-(angle>180?inner:0);
+  const clearGap=pieceLeft-outerRight;
+  if(clearGap>23){
+   const symbolX=(outerRight+pieceLeft)/2;
+   markup+=tlTextSvg('−',symbolX,cy+8,'#ffe7a1',g.mobile?31:40,'middle');
+  }
+  if(TL.detach>.55){
+   // Labels live above both shapes: never on top of the moving curves.
+   const labelY=Math.max(17,cy-outer-21);
+   markup+=tlTextSvg('큰 부채꼴',cx,labelY,'#c5efff',g.mobile?12:14,'middle');
+   markup+=tlTextSvg('작은 부채꼴',pieceCenter,labelY,'#ffe4a1',g.mobile?12:14,'middle');
+  }
+ }
+ stage.innerHTML=markup;
+}
+const tlRatTex=(n,d=1,withPi=false)=>ratLatex(frac(n,d),withPi)||'0';
+function tlValues(s){
+ const u=Math.round(s.R*2),v=Math.round(s.r*2),theta=s.angle;
+ return {area:frac(theta*(u*u-v*v),1440),outer:frac(theta*u,360),inner:frac(theta*v,360),
+  totalArc:frac(theta*(u+v),360),straight:theta===360?frac(0):frac(u-v),
+  areaNum:theta/360*Math.PI*(s.R*s.R-s.r*s.r),
+  periNum:theta/180*Math.PI*(s.R+s.r)+(theta===360?0:2*(s.R-s.r))};
+}
+function tlPeriTex(v){
+ const a=tlRatTex(...v.straight),b=tlRatTex(...v.totalArc,true);
+ return v.straight[0]===0?b:(v.totalArc[0]===0?a:`${a}+${b}`);
+}
+function tlMiniShape(s,kind,viewBox){
+ const radius=(kind==='small'?s.r:s.R);
+ if(kind==='small'&&s.r===0)return `<text x="135" y="96" text-anchor="middle" font-size="13" fill="#cbd5cb">작은 부채꼴 없음</text>`;
+ const scale=Math.min(9.5,64/s.R),cx=135,cy=101;
+ const path=tlSector(cx,cy,radius*scale,kind==='remain'?s.r*scale:0,s.angle);
+ const color=kind==='small'?'#fbbf24':'#38bdf8';
+ return `<path d="${path}" fill="${color}" fill-opacity=".45" fill-rule="evenodd" stroke="${color}" stroke-width="2"/>`;
+}
+function tlMiniFor(s,kind){
+ const g=kind==='small'?'#fbbf24':'#38bdf8';
+ return `<svg viewBox="0 0 270 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${kind==='big'?'큰 부채꼴':kind==='small'?'작은 부채꼴':'남은 고리 부채꼴'}"><circle cx="135" cy="101" r="2" fill="#cde9da"/>${tlMiniShape(s,kind)}</svg>`;
+}
+function renderTransformLab(){
+ if(TL.family==='circle'){tlRenderCircle();return;}
+ if(!tlGet('tlScene'))return;
+ const v=tlValues(TL),base=tlValues(TL.baseline),full=TL.angle===360;
+ tlGet('tlAngle').value=TL.angle;tlGet('tlAngleVal').textContent=TL.angle+'°';
+ tlGet('tlOuter').value=TL.R;tlGet('tlOuterVal').textContent=TL.R+' cm';
+ tlGet('tlInner').max=String(Math.max(0,tlFixed(TL.R-.5)));
+ tlGet('tlInner').value=TL.r;tlGet('tlInnerVal').textContent=TL.r+' cm';
+ const play=tlGet('tlPlay');
+ play.textContent=TL.animationType?'❚❚ 정지':'▶ 재생';
+ play.classList.toggle('playing',Boolean(TL.animationType));
+ play.setAttribute('aria-label',TL.animationType?'애니메이션 정지':TL.mode==='area'?'넓이 애니메이션 재생':TL.mode==='perimeter'?'둘레 애니메이션 재생':'넓이와 둘레 애니메이션 재생');
+ tlGet('tlShapeName').textContent=TL.r===0?(full?'원':TL.angle===180?'반원':TL.angle===90?'사분원':'부채꼴'):(full?'고리 모양 원':TL.angle===180?'고리 모양 반원':TL.angle===90?'고리 모양 사분원':'고리 모양 부채꼴');
+ tlGet('tlStageHint').textContent=full?'360°에서는 양끝 직선 경계가 없어집니다.':'노란 손잡이를 드래그해 중심각을 조절할 수 있습니다.';
+ document.querySelectorAll('[data-tl-angle]').forEach(b=>b.classList.toggle('active',+b.dataset.tlAngle===TL.angle));
+ document.querySelectorAll('[data-tl-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.tlMode===TL.mode);b.setAttribute('aria-pressed',String(b.dataset.tlMode===TL.mode))});
+ tlGet('tlAreaNum').innerHTML=mathHTML(`\\(${tlRatTex(...v.area,true)}\\,\\mathrm{cm}^{2}\\)`);
+ tlGet('tlPeriNum').innerHTML=mathHTML(`\\(${tlPeriTex(v)}\\,\\mathrm{cm}\\)`);
+ const aTex=tlRatTex(...v.area,true);
+ tlGet('tlFormulaArea').innerHTML=
+  '<div class="tl-formula-label">색칠한 넓이</div>'+
+  `<div class="tl-mathline">${mathHTML(`\\(S=\\dfrac{${TL.angle}}{360}\\pi(${TL.R}^{2}-${TL.r}^{2})\\)`)}</div>`+
+  `<div class="tl-mathline">${mathHTML(`\\(=${aTex}\\,\\mathrm{cm}^{2}\\)`)}</div>`;
+ const straightTex=tlRatTex(...v.straight),outerTex=tlRatTex(...v.outer,true),innerTex=tlRatTex(...v.inner,true);
+ tlGet('tlFormulaPeri').innerHTML=
+  '<div class="tl-formula-label">실제 경계선의 둘레</div>'+
+  `<div class="tl-mathline">${mathHTML(`\\(L=${outerTex}${v.inner[0]?`+${innerTex}`:''}${full?'':`+${straightTex}`}\\)`)}</div>`+
+  `<div class="tl-mathline">${mathHTML(`\\(=${tlPeriTex(v)}\\,\\mathrm{cm}\\)`)}</div>`;
+ tlGet('tlSplit').innerHTML=`<div class="tl-split-part">${tlMiniFor(TL,'big')}<b>① 큰 부채꼴</b></div><div class="tl-split-part">${tlMiniFor(TL,'small')}<b>② 작은 부채꼴</b></div><div class="tl-split-part">${tlMiniFor(TL,'remain')}<b>① − ② = 남은 면</b></div>`;
+ tlGet('tlSplitText').textContent=TL.r===0?'작은 부채꼴의 반지름이 0이므로 큰 부채꼴 전체가 색칠한 면입니다.':'세 그림은 같은 비율과 같은 중심각으로 그려졌습니다. 작은 부채꼴을 그대로 제거하면 정확히 고리 모양 부채꼴이 남습니다.';
+ tlGet('tlAreaObservation').textContent=TL.angle===360?
+  '완전한 고리에서는 안쪽 원을 제거한 넓이만 남습니다. 360°는 부채꼴 경계의 직선 두 개가 사라지는 특별한 순간입니다.':
+  `현재 중심각 ${TL.angle}°. 각도를 늘리면 큰 부채꼴과 작은 부채꼴 모두 같은 비율로 넓어집니다. 넓이는 반지름의 제곱에 비례합니다.`;
+ const parts=tlParts(0,0,1);
+ const pieceTypes=parts.map((p,i)=>({p,i}));
+ tlGet('tlLegend').innerHTML=pieceTypes.map(({p,i})=>{
+  const val=p.kind==='straight'?tlRatTex(Math.round((TL.R-TL.r)*2),2):tlRatTex(...(p.name==='바깥 호'?v.outer:v.inner),true);
+  return `<button type="button" data-tl-focus="${i}" class="${TL.focus===i?'active':''}"><span class="tl-dot" style="background:${p.color}"></span>${p.name} · ${val} cm</button>`;
+ }).join('');
+ tlGet('tlBoundaryExpr').innerHTML=mathHTML(`\\(L=${tlPeriTex(v)}\\ \\mathrm{cm}\\)`);
+ tlGet('tlBoundaryNote').textContent=full?
+  (TL.r===0?'완전한 원의 경계는 바깥 원주 하나뿐입니다. 반지름은 둘레가 아닙니다.':'완전한 고리의 둘레는 서로 떨어진 바깥 원주와 안쪽 원주입니다. 두 원을 잇는 선은 둘레가 아닙니다.'):
+  (TL.r===0?'곡선 한 개와 반지름 두 개를 합칩니다. 중심에서 그은 보조선은 색칠 영역의 경계일 때만 둘레입니다.':'바깥 호와 안쪽 호, 두 끝의 직선이 모두 경계입니다. 중심을 향한 점선 보조선은 둘레가 아닙니다.');
+ tlGet('tlBeforeTitle').textContent=`처음 · ${TL.baseline.angle}°`;
+ tlGet('tlAfterTitle').textContent=`현재 · ${TL.angle}°`;
+ tlGet('tlBeforeSVG').innerHTML=tlMiniShape(TL.baseline,'remain');
+ tlGet('tlAfterSVG').innerHTML=tlMiniShape(TL,'remain');
+ tlGet('tlBeforeValue').innerHTML=mathHTML(`넓이 \\(${tlRatTex(...base.area,true)}\\) · 둘레 \\(${tlPeriTex(base)}\\)`);
+ tlGet('tlAfterValue').innerHTML=mathHTML(`넓이 \\(${tlRatTex(...v.area,true)}\\) · 둘레 \\(${tlPeriTex(v)}\\)`);
+ const deltaA=frac(v.area[0]*base.area[1]-base.area[0]*v.area[1],v.area[1]*base.area[1]);
+ const approxDeltaP=v.periNum-base.periNum;
+ const deltaText=deltaA[0]===0?'넓이 변화 없음':`${deltaA[0]>0?'넓이 증가':'넓이 감소'}: ${tlRatTex(Math.abs(deltaA[0]),deltaA[1],true)} cm²`;
+ tlGet('tlDiff').innerHTML=mathHTML(`${deltaA[0]===0?'넓이 변화 없음':`${deltaA[0]>0?'넓이 증가':'넓이 감소'}: \\(${tlRatTex(Math.abs(deltaA[0]),deltaA[1],true)}\\) cm²`} · 둘레 변화 ${Math.abs(approxDeltaP)<1e-8?'없음':(approxDeltaP>0?'증가':'감소')}. 정확한 둘레는 위 수식으로 비교하세요.`);
+ tlDrawScene();
+}
+function tlStop(){
+ if(TL.animation!==null){cancelAnimationFrame(TL.animation);TL.animation=null}
+ TL.animationType=null;
+}
+function tlSetGeometry(key,value){
+ tlStop();TL[key]=value;if(TL.r>=TL.R)TL.r=Math.max(0,tlFixed(TL.R-.5));
+ if(TL.offset>TL.R-TL.r)TL.offset=tlFixed(TL.R-TL.r);
+ TL.trace=0;TL.detach=0;TL.focus=-1;renderTransformLab();
+}
+function tlPlay(){
+ if(TL.animationType){tlStop();renderTransformLab();return}
+ tlStop();
+ const kind=TL.mode==='area'?'detach':TL.mode==='perimeter'?'trace':'combined';
+ TL.animationType=kind;TL.trace=0;TL.detach=0;
+ const start=performance.now(),duration=kind==='trace'?4300:kind==='detach'?1700:6300;
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reduced){TL.detach=kind==='trace'?0:1;TL.trace=kind==='detach'?0:1;tlStop();renderTransformLab();return}
+ function frame(now){
+  const t=Math.min(1,(now-start)/duration);
+  const smooth=x=>x*x*(3-2*x);
+  if(kind==='trace')TL.trace=t;
+  else if(kind==='detach')TL.detach=smooth(t);
+  else if(t<=.33){TL.detach=smooth(t/.33);TL.trace=0;}
+  else {TL.detach=1;TL.trace=(t-.33)/.67;}
+  tlDrawScene();
+  if(t<1)TL.animation=requestAnimationFrame(frame);
+  else {tlStop();renderTransformLab()}
+ }
+ TL.animation=requestAnimationFrame(frame);renderTransformLab();
+}
+function tlInitEvents(){
+ tlGet('tlFamily').addEventListener('click',e=>{
+  const b=e.target.closest('[data-tl-family]');if(!b)return;
+  tlStop();TL.family=b.dataset.tlFamily;TL.trace=0;TL.detach=0;TL.focus=-1;
+  if(TL.family==='circle'&&!TL.baselineCircle)TL.baselineCircle={R:TL.R,r:TL.r,offset:TL.offset};
+  tlGet('tlAngleRow').hidden=TL.family==='circle';
+  tlGet('tlAnglePresets').hidden=TL.family==='circle';
+  tlGet('tlOffsetRow').hidden=TL.family!=='circle';
+  document.querySelectorAll('[data-tl-family]').forEach(x=>x.classList.toggle('active',x.dataset.tlFamily===TL.family));
+  renderTransformLab();
+ });
+ tlGet('tlOffset').addEventListener('input',e=>tlSetGeometry('offset',+e.target.value));
+ tlGet('tlModes').addEventListener('click',e=>{
+  const b=e.target.closest('[data-tl-mode]');if(!b)return;
+  tlStop();TL.mode=b.dataset.tlMode;TL.trace=0;TL.detach=0;TL.focus=-1;renderTransformLab();
+ });
+ tlGet('tlAnglePresets').addEventListener('click',e=>{const b=e.target.closest('[data-tl-angle]');if(b)tlSetGeometry('angle',+b.dataset.tlAngle)});
+ [['tlAngle','angle'],['tlOuter','R'],['tlInner','r']].forEach(([id,key])=>tlGet(id).addEventListener('input',e=>tlSetGeometry(key,+e.target.value)));
+ tlGet('tlPlay').addEventListener('click',tlPlay);
+ tlGet('tlReset').addEventListener('click',()=>{tlStop();Object.assign(TL,{offset:0,R:6,r:3,angle:90,mode:'both',detach:0,trace:0,focus:-1,baseline:{R:6,r:3,angle:90}});renderTransformLab()});
+ tlGet('tlLegend').addEventListener('click',e=>{const b=e.target.closest('[data-tl-focus]');if(!b)return;TL.mode='perimeter';TL.trace=0;TL.detach=0;TL.focus=TL.focus===+b.dataset.tlFocus?-1:+b.dataset.tlFocus;tlStop();renderTransformLab()});
+ const svg=tlGet('tlScene');
+ svg.addEventListener('click',e=>{const b=e.target.closest('[data-tl-part]');if(!b||TL.dragging)return;TL.focus=TL.focus===+b.dataset.tlPart?-1:+b.dataset.tlPart;TL.mode='perimeter';tlStop();renderTransformLab()});
+ svg.addEventListener('pointerdown',e=>{if(TL.family==='circle'||!e.target.closest('[data-tl-handle]'))return;TL.dragging=true;tlStop();svg.setPointerCapture(e.pointerId);e.preventDefault()});
+ svg.addEventListener('pointermove',e=>{if(!TL.dragging)return;
+  const point=svg.createSVGPoint();point.x=e.clientX;point.y=e.clientY;
+  const matrix=svg.getScreenCTM();if(!matrix)return;
+  const q=point.matrixTransform(matrix.inverse()),g=tlGeometry();
+  let theta=(Math.atan2(q.y-g.cy,q.x-g.cx)*180/Math.PI+90+360)%360;
+  if(theta<28&&TL.angle>295)theta=360;
+  tlSetGeometry('angle',Math.min(360,Math.max(30,Math.round(theta/5)*5)));
+  e.preventDefault();
+ });
+ const finish=e=>{if(TL.dragging){TL.dragging=false;if(svg.hasPointerCapture(e.pointerId))svg.releasePointerCapture(e.pointerId)}};
+ svg.addEventListener('pointerup',finish);svg.addEventListener('pointercancel',finish);
+}
+
+// F01-02: circle-with-hole. Geometry is computed from R, r and an offset d,
+// with 0 <= d <= R-r; it is not a stretched ring or a decorative approximation.
+function tlCircleParams(){
+ const mobile=innerWidth<=660;
+ const vw=mobile?480:760,vh=mobile?400:420;
+ const cx=mobile?143:218,cy=mobile?193:201;
+ const gap=mobile?54:68,margin=mobile?20:28;
+ const scale=mobile?Math.min(19,133/TL.R,(vw-cx-gap-margin)/(TL.R+2*TL.r)):
+  Math.min(23,163/TL.R,(vw-cx-gap-margin)/(TL.R+2*TL.r));
+ return {mobile,scale,cx,cy,R:TL.R*scale,r:TL.r*scale,d:TL.offset*scale,vw,vh,gap};
+}
+function tlCircleRingPath(cx,cy,R,r,dx){
+ return tlCircularPath(cx,cy,R)+(r>0?' '+tlCircularPath(cx+dx,cy,r):'');
+}
+function tlCircleCalc(st){
+ const R2=Math.round(st.R*2),r2=Math.round(st.r*2);
+ return {A:frac(R2*R2-r2*r2,4),out:frac(R2),inside:frac(r2),
+   P:frac(R2+r2),areaNum:Math.PI*(st.R**2-st.r**2),
+   perNum:2*Math.PI*(st.R+st.r)};
+}
+function tlCircleMini(st,kind){
+ const sc=Math.min(11,64/st.R),cx=135,cy=84;
+ const R=st.R*sc,r=st.r*sc,dx=Math.min(st.offset||0,st.R-st.r)*sc;
+ if(kind==='small'&&st.r===0)return `<text x="135" y="92" text-anchor="middle" fill="#cbd5cb" font-size="13">작은 원 없음</text>`;
+ const shape=kind==='big'?tlCircularPath(cx,cy,R):kind==='small'?tlCircularPath(cx,cy,r):tlCircleRingPath(cx,cy,R,r,dx);
+ return `<path d="${shape}" fill="${kind==='small'?'#fbbf24':'#38bdf8'}" fill-opacity=".45" fill-rule="evenodd" stroke="${kind==='small'?'#fbbf24':'#38bdf8'}" stroke-width="2"/>`;
+}
+function tlDrawCircle(){
+ const svg=tlGet('tlScene');if(!svg)return;
+ const {mobile,scale,cx,cy,R,r,d,vw,vh,gap}=tlCircleParams();
+ svg.setAttribute('viewBox',`0 0 ${vw} ${vh}`);svg.style.aspectRatio=`${vw}/${vh}`;
+ const ring=tlCircleRingPath(cx,cy,R,r,d),areaMode=TL.mode!=='perimeter';
+ const target=cx+R+r+gap,offset=TL.detach*(target-(cx+d)),pieceX=cx+d+offset;
+ const split=TL.detach>.002&&TL.r>0&&areaMode;
+ let out=`<defs><pattern id="tlGrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#5d886a" stroke-opacity=".13" stroke-width=".6"/></pattern></defs><rect width="${vw}" height="${vh}" fill="url(#tlGrid)"/>`;
+ // Two concentric-or-offset subpaths with evenodd fill produce a truly hollow hole.
+ out+=`<path d="${ring}" fill="#38bdf8" fill-opacity="${areaMode?.53:.14}" fill-rule="evenodd" stroke="#38bdf8" stroke-width="2.4"/>`;
+ if(r>0)out+=`<circle cx="${cx+d}" cy="${cy}" r="${r}" fill="none" stroke="#34d399" stroke-width="${areaMode?2.8:3.5}"/>`;
+ if(split){
+  out+=`<circle cx="${pieceX}" cy="${cy}" r="${r}" fill="#fbbf24" fill-opacity=".88" stroke="#fbbf24" stroke-width="2.5"/>`;
+ }
+ const arcs=[{cx,rad:R,color:'#38bdf8',name:'바깥 원주'},...(r>0?[{cx:cx+d,rad:r,color:'#34d399',name:'안쪽 원주'}]:[])];
+ if(TL.mode!=='area')arcs.forEach((a,i)=>{
+  const opacity=TL.focus<0||TL.focus===i?1:.20;
+  out+=`<circle cx="${a.cx}" cy="${cy}" r="${a.rad}" fill="none" stroke="${a.color}" stroke-opacity="${opacity}" stroke-width="${TL.focus===i?6:4}"/>`;
+  out+=`<circle cx="${a.cx}" cy="${cy}" r="${a.rad}" fill="none" stroke="transparent" stroke-width="20" data-tl-part="${i}" style="cursor:pointer"/>`;
+ });
+ if(TL.trace>0){
+  let remain=TL.trace*2*Math.PI*(R+r);
+  arcs.forEach(a=>{
+   const len=2*Math.PI*a.rad,shown=Math.min(len,Math.max(0,remain));remain-=len;
+   if(shown>0)out+=`<circle cx="${a.cx}" cy="${cy}" r="${a.rad}" fill="none" stroke="#ffe59c" stroke-width="7" stroke-dasharray="${shown.toFixed(3)} ${(len+2).toFixed(3)}" transform="rotate(-90 ${a.cx} ${cy})"/>`;
+  });
+ }
+ // Keep radius labels and their guide lines with the moving piece.
+ out+=`<circle cx="${cx}" cy="${cy}" r="3.2" fill="#ffe6a0"/>`;
+ out+=`<path d="M${cx} ${cy}L${cx} ${cy-R}" stroke="#c6d8cb" stroke-dasharray="4 5" stroke-opacity=".64"/>`;
+ out+=tlTextSvg(`R=${TL.R} cm`,cx+9,cy-R*.55,'#c5efff',mobile?12:14);
+ if(r>0){
+  const move=split?offset:0;
+  out+=`<g transform="translate(${move.toFixed(3)} 0)"><circle cx="${cx+d}" cy="${cy}" r="3" fill="#ffe6a0"/><path d="M${cx+d} ${cy}L${cx+d} ${cy-r}" stroke="#c6d8cb" stroke-dasharray="4 5" stroke-opacity=".65"/>`;
+  out+=tlTextSvg(`r=${TL.r} cm`,cx+d+9,cy-r*.55,'#ffe4a1',mobile?12:13);
+  out+=`</g>`;
+ }
+ if(split){
+  const clearGap=pieceX-r-(cx+R);
+  if(clearGap>24)out+=tlTextSvg('−',(cx+R+pieceX-r)/2,cy+8,'#ffe7a1',mobile?30:40,'middle');
+  if(TL.detach>.55){
+   out+=tlTextSvg('큰 원',cx,Math.min(vh-15,cy+R+30),'#c5efff',mobile?12:14,'middle');
+   out+=tlTextSvg('작은 원',pieceX,Math.min(vh-15,cy+r+30),'#ffe4a1',mobile?12:14,'middle');
+  }
+ }
+ svg.innerHTML=out;
+}
+function tlRenderCircle(){
+ if(!tlGet('tlScene'))return;
+ TL.offset=Math.min(TL.offset,Math.max(0,TL.R-TL.r));
+ const v=tlCircleCalc(TL),base=tlCircleCalc(TL.baselineCircle||{R:6,r:3,offset:0});
+ tlGet('tlOuter').value=TL.R;tlGet('tlOuterVal').textContent=TL.R+' cm';
+ tlGet('tlInner').max=String(Math.max(0,tlFixed(TL.R-.5)));
+ tlGet('tlInner').value=TL.r;tlGet('tlInnerVal').textContent=TL.r+' cm';
+ tlGet('tlOffset').max=String(Math.max(0,tlFixed(TL.R-TL.r)));
+ tlGet('tlOffset').value=TL.offset;
+ tlGet('tlOffsetVal').textContent=TL.offset===0?'중심 일치':`${TL.offset} cm`;
+ const play=tlGet('tlPlay');play.textContent=TL.animationType?'❚❚ 정지':'▶ 재생';play.classList.toggle('playing',!!TL.animationType);
+ tlGet('tlShapeName').textContent=TL.offset===0?'동심원 파내기':'중심이 어긋난 작은 원 파내기';
+ tlGet('tlStageHint').textContent='작은 원의 위치를 바꾸어도 남는 면의 넓이와 둘레는 일정합니다.';
+ document.querySelectorAll('[data-tl-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.tlMode===TL.mode);b.setAttribute('aria-pressed',String(b.dataset.tlMode===TL.mode))});
+ const av=tlRatTex(...v.A,true),pv=tlRatTex(...v.P,true);
+ tlGet('tlAreaNum').innerHTML=mathHTML(`\\(${av}\\,\\mathrm{cm}^{2}\\)`);
+ tlGet('tlPeriNum').innerHTML=mathHTML(`\\(${pv}\\,\\mathrm{cm}\\)`);
+ tlGet('tlFormulaArea').innerHTML='<div class="tl-formula-label">색칠한 넓이: 큰 원 − 작은 원</div>'+
+  `<div class="tl-mathline">${mathHTML(`\\(S=\\pi(${TL.R}^{2}-${TL.r}^{2})\\)`)}</div>`+
+  `<div class="tl-mathline">${mathHTML(`\\(=${av}\\,\\mathrm{cm}^{2}\\)`)}</div>`;
+ tlGet('tlFormulaPeri').innerHTML='<div class="tl-formula-label">실제 둘레: 바깥 원주 + 안쪽 원주</div>'+
+  `<div class="tl-mathline">${mathHTML(`\\(L=2\\pi\\times${TL.R}${TL.r>0?`+2\\pi\\times${TL.r}`:''}\\)`)}</div>`+
+  `<div class="tl-mathline">${mathHTML(`\\(=${pv}\\,\\mathrm{cm}\\)`)}</div>`;
+ tlGet('tlSplit').innerHTML=['big','small','remain'].map((kind,i)=>`<div class="tl-split-part"><svg viewBox="0 0 270 170">${tlCircleMini(TL,kind)}</svg><b>${['① 큰 원','② 작은 원','① − ② = 남은 면'][i]}</b></div>`).join('');
+ tlGet('tlSplitText').textContent='큰 원에서 작은 원을 정확한 크기로 제거합니다. 안쪽 원을 옮겨도 넓이는 변하지 않습니다.';
+ tlGet('tlAreaObservation').textContent=TL.offset===0?'두 원의 중심이 같습니다. 작은 원을 빼면 동심원 고리 모양이 남습니다.':'두 원의 중심이 달라졌습니다. 중심 위치가 바뀌어도 반지름이 같으면 남은 넓이는 변하지 않습니다.';
+ const parts=[['바깥 원주',TL.R,'#38bdf8'],...(TL.r>0?[['안쪽 원주',TL.r,'#34d399']]:[])];
+ tlGet('tlLegend').innerHTML=parts.map(([name,rad,color],i)=>`<button type="button" data-tl-focus="${i}" class="${TL.focus===i?'active':''}"><span class="tl-dot" style="background:${color}"></span>${name} · ${tlRatTex(2*rad,1,true)} cm</button>`).join('');
+ tlGet('tlBoundaryExpr').innerHTML=mathHTML(`\\(L=${pv}\\,\\mathrm{cm}\\)`);
+ tlGet('tlBoundaryNote').textContent=TL.r>0?'작은 원의 원주도 구멍의 경계이므로 둘레에 포함됩니다. 반지름 안내선은 둘레가 아닙니다.':'작은 원이 없으면 바깥 원주 하나만 둘레입니다.';
+ const b=TL.baselineCircle||{R:6,r:3,offset:0};
+ tlGet('tlBeforeTitle').textContent='처음 · 원 안의 원';tlGet('tlAfterTitle').textContent='현재 · 원 안의 원';
+ tlGet('tlBeforeSVG').innerHTML=tlCircleMini(b,'remain');tlGet('tlAfterSVG').innerHTML=tlCircleMini(TL,'remain');
+ tlGet('tlBeforeValue').innerHTML=mathHTML(`넓이 \\(${tlRatTex(...base.A,true)}\\) · 둘레 \\(${tlRatTex(...base.P,true)}\\)`);
+ tlGet('tlAfterValue').innerHTML=mathHTML(`넓이 \\(${av}\\) · 둘레 \\(${pv}\\)`);
+ const dA=frac(v.A[0]*base.A[1]-base.A[0]*v.A[1],v.A[1]*base.A[1]);
+ tlGet('tlDiff').textContent=(dA[0]===0?'넓이 변화 없음':`넓이 ${dA[0]>0?'증가':'감소'}`)+'. 작은 원의 중심만 움직이면 넓이와 둘레가 모두 일정합니다.';
+ tlDrawCircle();
+}
+
+tlInitEvents();
+
 const scene=$('scene');
 function coords(e){
  const pt=scene.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;
@@ -905,6 +1634,7 @@ window.APBoardRelHost={
  reset:()=>$('reset').click()
 };
 if(new URLSearchParams(location.search).get("start")==="basic"){S.zone=1;S.item=0;}
+if(new URLSearchParams(location.search).get("start")==="transform")S.zone=6;
 render();
 </script>
 <script id="ap-mobile-adapter">
