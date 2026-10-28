@@ -33,9 +33,16 @@
 
 /* F01-02 원 안의 작은 원: 첫 고리 부채꼴 실험과 동일한 4버튼 / 분리 구조 */
 .tl-family{display:flex;gap:8px;flex-wrap:wrap;margin:9px 0 10px}
+.tl-family-label{flex:0 0 100%;margin-top:4px;color:#ffd98a;font-size:12px;font-weight:900;letter-spacing:.02em}
+.tl-group-select{flex:0 0 100%;min-height:44px;padding:8px 12px;border-radius:10px;border:1px solid #56866b;background:#163728;color:#ecfff2;font-weight:800}
 .tl-family button{min-height:44px;padding:9px 15px;border-radius:12px;border:1px solid #56866b;background:#163728;color:#d7ffe6;font-weight:800}
 .tl-family button.active{border-color:#ffe1a3;background:#eabf57;color:#123020}
 .tl-circle-only[hidden]{display:none!important}
+.tl-family-controls{display:grid;gap:9px}
+.tl-family-controls[hidden]{display:none!important}
+.tl-f03-row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.tl-f03-choice{min-height:42px;border:1px solid #4c775d;border-radius:10px;background:#163728;color:#e7f8eb;padding:7px 11px;font-weight:800;font-size:12px}
+.tl-f03-choice.active{border-color:#ffe1a3;background:#eabf57;color:#123020}
 /* ⑦ 도형 변환 실험: 기존 26개 실험과 격리 */
 [hidden]{display:none!important}
 #transformLab{max-width:1590px;margin:0 auto;padding:15px 18px 32px}
@@ -140,9 +147,14 @@
 </div></section>
 <aside class="right"><section class="card"><span class="eyebrow" id="tag">1. 개념의 시작</span><h2 id="title">원의 기본 요소</h2><p id="description"></p><div class="compare"><div class="chip"><span style="color:var(--sky)" id="periLabel">둘레 · 선 (cm)</span><strong id="periNum">—</strong></div><div class="chip"><span style="color:var(--mint)" id="areaLabel">넓이 · 면 (cm²)</span><strong id="areaNum">—</strong></div></div><div class="formula" id="formula">—</div></section><section class="card"><h3>현재 조작 · 왜 그런가?</h3><div class="step-title" id="stepTitle"></div><p class="step-explain" id="stepText"></p><div class="alert" id="warning"></div></section><section class="card"><h3>스스로 확인</h3><p id="question"></p><button class="button" id="showAnswer">정답·해설 보기</button><div class="answer" id="answer"></div></section><div class="tiny">원과 부채꼴 통합 실험실 · 각 도형의 수치와 색상은 현재 선택과 연동됩니다.</div></aside>
 </main>
-<section id="transformLab" hidden aria-label="중심각과 반지름이 변하는 도형 실험실">
-  <div class="tl-heading"><div><div class="tl-kicker">CHAPTER 01 · 선과 면을 움직여 발견하기</div><h1>도형 넣기·파내기 · 선과 면의 변환</h1><p>문제를 풀기보다 중심각과 반지름을 직접 바꾸고, 선·면·분할을 관찰하세요.</p></div><button type="button" class="tl-reset" id="tlReset">↺ 처음 모양으로</button></div>
-  <div class="tl-family" id="tlFamily" aria-label="파내기 유형 선택"><button type="button" data-tl-family="sector" class="active">① 고리 부채꼴</button><button type="button" data-tl-family="circle">② 원 안의 작은 원</button></div>
+<section id="transformLab" hidden aria-label="원과 부채꼴 변환군 시각 실험실">
+  <div class="tl-heading"><div><div class="tl-kicker" id="tlKicker">CHAPTER 01 · 선과 면을 움직여 발견하기</div><h1 id="tlLabTitle">도형 넣기·파내기 · 선과 면의 변환</h1><p id="tlLabDescription">문제를 풀기보다 중심각과 반지름을 직접 바꾸고, 선·면·분할을 관찰하세요.</p></div><button type="button" class="tl-reset" id="tlReset">↺ 처음 모양으로</button></div>
+  <div class="tl-family" id="tlFamily" aria-label="변환군과 경험 선택">
+    <span class="tl-family-label">F01 · 넣기·파내기</span>
+    <button type="button" data-tl-family="sector" class="active">① 고리 부채꼴</button><button type="button" data-tl-family="circle">② 원 안의 작은 원</button><button type="button" data-tl-family="f01-03">③ 반원 둘</button><button type="button" data-tl-family="f01-04">④ 사분원과 반원</button><button type="button" data-tl-family="f01-05">⑤ 정사각형과 사분원</button><button type="button" data-tl-family="f01-06">⑥ 활꼴</button><button type="button" data-tl-family="f01-07">⑦ 30° 부채꼴</button><button type="button" data-tl-family="f01-08">⑧ 분리된 두 영역</button>
+    <span class="tl-family-label">F03 · 겹치기·상쇄</span>
+    <button type="button" data-tl-family="f03-01">① 같은 반원</button><button type="button" data-tl-family="f03-02">② 반원과 직사각형</button><button type="button" data-tl-family="f03-03">③ 정사각형과 사분원</button><button type="button" data-tl-family="f03-04">④ 마주 보는 사분원</button><button type="button" data-tl-family="f03-05">⑤ 같은 중심 부채꼴</button><button type="button" data-tl-family="f03-06">⑥ 반원과 45° 부채꼴</button><button type="button" data-tl-family="f03-07">⑦ 같은 넓이 상쇄</button><button type="button" data-tl-family="f03-08">⑧ 선택한 면의 경계</button>
+  </div>
   <div class="tl-grid">
     <div class="tl-stage">
       <div class="tl-stage-head"><strong id="tlShapeName">고리 모양 부채꼴</strong><span id="tlStageHint">노란 손잡이를 움직여 중심각을 바꿔보세요.</span></div>
@@ -151,9 +163,10 @@
         <div class="tl-mode-row" id="tlModes" aria-label="관찰 및 재생"><button class="tl-btn active" type="button" data-tl-mode="both">선과 면</button><button class="tl-btn" type="button" data-tl-mode="area">넓이</button><button class="tl-btn" type="button" data-tl-mode="perimeter">둘레</button><button class="tl-btn tl-play" type="button" id="tlPlay" aria-label="선택한 관찰 재생">▶ 재생</button></div>
         <div class="tl-range" id="tlAngleRow"><label for="tlAngle">중심각</label><input id="tlAngle" type="range" min="30" max="360" step="5" value="90"><output id="tlAngleVal" for="tlAngle">90°</output></div>
         <div id="tlAnglePresets" class="tl-presets" aria-label="중심각 빠른 변경"><button type="button" class="tl-btn" data-tl-angle="60">60°</button><button type="button" class="tl-btn active" data-tl-angle="90">90°</button><button type="button" class="tl-btn" data-tl-angle="120">120°</button><button type="button" class="tl-btn" data-tl-angle="180">180°</button><button type="button" class="tl-btn" data-tl-angle="270">270°</button><button type="button" class="tl-btn" data-tl-angle="360">360°</button></div>
-        <div class="tl-range"><label for="tlOuter">큰 반지름</label><input id="tlOuter" type="range" min="2" max="9" step="0.5" value="6"><output id="tlOuterVal" for="tlOuter">6 cm</output></div>
+        <div class="tl-range" id="tlOuterRow"><label for="tlOuter" id="tlOuterLabel">큰 반지름</label><input id="tlOuter" type="range" min="2" max="9" step="0.5" value="6"><output id="tlOuterVal" for="tlOuter">6 cm</output></div>
         <div class="tl-range tl-circle-only" id="tlOffsetRow" hidden><label for="tlOffset">작은 원 위치</label><input id="tlOffset" type="range" min="0" max="3" step="0.5" value="0"><output id="tlOffsetVal">중심 일치</output></div>
-        <div class="tl-range"><label for="tlInner">작은 반지름</label><input id="tlInner" type="range" min="0" max="5.5" step="0.5" value="3"><output id="tlInnerVal" for="tlInner">3 cm</output></div>
+        <div class="tl-range" id="tlInnerRow"><label for="tlInner" id="tlInnerLabel">작은 반지름</label><input id="tlInner" type="range" min="0" max="5.5" step="0.5" value="3"><output id="tlInnerVal" for="tlInner">3 cm</output></div>
+        <div class="tl-family-controls" id="tlFamilyControls" hidden></div>
 
       </div>
     </div>
@@ -1165,7 +1178,7 @@ $('play').addEventListener('click',()=>{
 });
 
 // ── ⑦ 실시간 도형 변환: 원본 26개 실험과 독립된 상태·그리기 ──
-const TL={family:'sector',offset:0,R:6,r:3,angle:90,mode:'both',detach:0,trace:0,focus:-1,
+const TL={family:'sector',offset:0,R:6,r:3,angle:90,mode:'both',detach:0,trace:0,focus:-1,f01ByFamily:{},f03ByFamily:{},f03Progress:1,
  baseline:{R:6,r:3,angle:90},animation:null,animationType:null,dragging:false};
 const tlGet=id=>document.getElementById(id);
 const tlFixed=n=>Number(Number(n).toFixed(4));
@@ -1227,6 +1240,8 @@ function tlAtTrace(parts){
  return {point,focus,total,covered};
 }
 function tlDrawScene(){
+ if(TL.family.startsWith('f03-')){tlDrawF03();return;}
+ if(TL.family.startsWith('f01-')){tlDrawF01();return;}
  if(TL.family==='circle'){tlDrawCircle();return;}
  const stage=tlGet('tlScene');if(!stage)return;
  const g=tlGeometry(),{cx,cy,scale,outer,inner}=g;
@@ -1336,7 +1351,536 @@ function tlMiniFor(s,kind){
  const g=kind==='small'?'#fbbf24':'#38bdf8';
  return `<svg viewBox="0 0 270 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${kind==='big'?'큰 부채꼴':kind==='small'?'작은 부채꼴':'남은 고리 부채꼴'}"><circle cx="135" cy="101" r="2" fill="#cde9da"/>${tlMiniShape(s,kind)}</svg>`;
 }
+
+// F01-03~08 use the same four controls and scene, with one exact model per experience.
+function tlF01Defaults(id){
+ if(id==='f01-03')return {R:6,ratio:.5};
+ if(id==='f01-04')return {R:6};
+ if(id==='f01-05')return {a:6};
+ if(id==='f01-06')return {R:6};
+ if(id==='f01-07')return {a:6};
+ return {R:5};
+}
+function tlF01Current(){
+ if(!TL.f01ByFamily[TL.family])TL.f01ByFamily[TL.family]=tlF01Defaults(TL.family);
+ return TL.f01ByFamily[TL.family];
+}
+function tlF01Config(id){
+ const cfg={
+  'f01-03':{outerKey:'R',outerLabel:'큰 반지름 R',innerKey:'ratio',innerLabel:'작은 반원 비율 r₁/R',min:4,max:9,step:1,innerMin:.2,innerMax:.8,innerStep:.05},
+  'f01-04':{outerKey:'R',outerLabel:'사분원 반지름 R',min:4,max:9,step:1},
+  'f01-05':{outerKey:'a',outerLabel:'정사각형 한 변 a',min:4,max:9,step:1},
+  'f01-06':{outerKey:'R',outerLabel:'부채꼴 반지름 R',min:4,max:8,step:1},
+  'f01-07':{outerKey:'a',outerLabel:'정사각형 한 변 a',min:4,max:8,step:1},
+  'f01-08':{}
+ };
+ return cfg[id]||{};
+}
+function tlUpdateFamilyControls(){
+ const f01=TL.family.startsWith('f01-'),f03=TL.family.startsWith('f03-'),cfg=f01?tlF01Config(TL.family):{};
+ tlGet('tlAngleRow').hidden=TL.family==='circle'||f01||f03;
+ tlGet('tlAnglePresets').hidden=TL.family==='circle'||f01||f03;
+ tlGet('tlOffsetRow').hidden=TL.family!=='circle';
+ tlGet('tlOuterRow').hidden=f03||(f01&&!cfg.outerKey);
+ tlGet('tlInnerRow').hidden=f03||(f01&&!cfg.innerKey);
+ tlGet('tlFamilyControls').hidden=!f03;
+ if(!f01&&!f03){
+  tlGet('tlOuterLabel').textContent='큰 반지름';
+  Object.assign(tlGet('tlOuter'),{min:'2',max:'9',step:'0.5',value:String(TL.R)});
+  tlGet('tlOuterVal').textContent=`${TL.R} cm`;
+  tlGet('tlInnerLabel').textContent='작은 반지름';
+  Object.assign(tlGet('tlInner'),{min:'0',max:String(Math.max(0,tlFixed(TL.R-.5))),step:'0.5',value:String(TL.r)});
+  tlGet('tlInnerVal').textContent=`${TL.r} cm`;
+ }
+}
+function tlSetF01Control(which,value){
+ const st=tlF01Current(),cfg=tlF01Config(TL.family);
+ if(which==='R'&&cfg.outerKey)st[cfg.outerKey]=Math.round(value);
+ if(which==='r'&&cfg.innerKey==='ratio')st.ratio=Math.max(cfg.innerMin,Math.min(cfg.innerMax,Math.round(value*100)/100));
+ tlStop();TL.detach=0;TL.trace=0;TL.focus=-1;renderTransformLab();
+}
+function tlF01Num(n,digits=2){
+ const k=10**digits,v=Math.round((n+Number.EPSILON)*k)/k;
+ return Number(v.toFixed(digits)).toString();
+}
+function tlF01Pi(n,d=1){
+ if(Number.isInteger(n)&&Number.isInteger(d))return tlRatTex(n,d,true);
+ return tlRatTex(Math.round(n*10000),10000*d,true);
+}
+function tlF01Rat(n){return tlRatTex(Math.round(n*10000),10000,false);}
+function tlF01ArcD(cx,cy,r,a,b){
+ const p0=tlPolar(cx,cy,r,a),p1=tlPolar(cx,cy,r,b),span=Math.abs(b-a);
+ return `M ${tlXY(p0)} A ${r} ${r} 0 ${span>180?1:0} ${b>=a?1:0} ${tlXY(p1)}`;
+}
+function tlF01Angle(cx,cy,r,start,end,label,color='#ffe6a0',size=11){
+ const mid=(start+end)/2,pos=tlPolar(cx,cy,r+10,mid);
+ return `<path d="${tlF01ArcD(cx,cy,r,start,end)}" fill="none" stroke="${color}" stroke-width="2.2" stroke-linecap="round"/>`+tlTextSvg(label,pos.x,pos.y,color,size,'middle');
+}
+function tlF01SemiPath(x,y,r){return `M ${x-r} ${y} A ${r} ${r} 0 0 1 ${x+r} ${y} L ${x-r} ${y} Z`;}
+function tlF01Part(name,color,length,label,d,at){return {name,color,length,lenPx:length, label,d,at};}
+function tlF01Model(id,st,g){
+ const {mobile,vw,vh,s,baseY,x0,gap}=g,parts=[],cutPaths=[];
+ let outer='',result='',pieceAux='',baseAux='',rightOffset=0,shapeRight=x0,leftLabel='큰 도형',pieceLabel='꺼낸 조각';
+ let areaLines=[],periLines=[],areaMetric='',periMetric='',note='',observation='',originalMetric='',areaNum=0,originalAreaNum=0,removedAreaNum=0,perimeterNum=0;
+ const line=(x1,y1,x2,y2,color='#d4e5d8',dash='5 5',opacity='.76')=>`<path d="M ${x1} ${y1} L ${x2} ${y2}" fill="none" stroke="${color}" stroke-width="1.7" stroke-dasharray="${dash}" stroke-opacity="${opacity}"/>`;
+ const dot=(x,y)=>`<circle cx="${x}" cy="${y}" r="3.2" fill="#ffe6a0" stroke="#081910" stroke-width="1.2"/>`;
+ const arcPart=(name,color,rad,start,end,label,cx,cy)=>tlF01Part(name,color,rad*Math.abs(tlRad(end-start)),label,tlF01ArcD(cx,cy,rad,start,end),t=>tlPolar(cx,cy,rad,start+(end-start)*t));
+ const straight=(name,color,a,b,label)=>tlF01Part(name,color,Math.hypot(b.x-a.x,b.y-a.y),label,`M ${tlXY(a)} L ${tlXY(b)}`,t=>({x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t}));
+ const fmt=tlF01Num;
+ if(id==='f01-03'){
+  const R=st.R,r1=Math.round(R*st.ratio*100)/100,r2=Math.round((R-r1)*100)/100,rp=R*s,p1=r1*s,p2=r2*s;
+  const left=x0,right=left+2*rp,cx=left+rp,y=baseY,c1=left+p1,c2=left+2*p1+p2;
+  outer=tlF01SemiPath(cx,y,rp);cutPaths.push(tlF01SemiPath(c1,y,p1),tlF01SemiPath(c2,y,p2));result=outer+' '+cutPaths.join(' ');
+  rightOffset=2*rp+gap;shapeRight=right;
+  baseAux=dot(cx,y)+line(cx,y,cx,y-rp)+tlTextSvg(`R=${R} cm`,cx+8,y-rp*.55,'#c5efff',mobile?11:13)+tlF01Angle(cx,y,Math.min(20,rp*.25),180,360,'180°','#ffe6a0',mobile?10:12);
+  pieceAux=dot(c1,y)+line(c1,y,c1,y-p1,'#ffe6a0')+tlTextSvg(`r₁=${fmt(r1)} cm`,c1,y-p1*.52,'#fff1b0',mobile?10:12)+tlF01Angle(c1,y,Math.max(4,Math.min(12,p1*.35)),180,360,'180°','#ffe6a0',mobile?9:10)+dot(c2,y)+line(c2,y,c2,y-p2,'#ffe6a0')+tlTextSvg(`r₂=${fmt(r2)} cm`,c2,y-p2*.52,'#fff1b0',mobile?10:12)+tlF01Angle(c2,y,Math.max(4,Math.min(12,p2*.35)),180,360,'180°','#ffe6a0',mobile?9:10);
+  parts.push(arcPart('큰 반원호','#38bdf8',rp,180,360,'πR',cx,y),arcPart('첫째 작은 반원호','#34d399',p1,180,360,'πr₁',c1,y),arcPart('둘째 작은 반원호','#fbbf24',p2,180,360,'πr₂',c2,y));
+  areaLines=[`S=\\dfrac{\\pi R^2}{2}-\\dfrac{\\pi r_1^2}{2}-\\dfrac{\\pi r_2^2}{2}`,`=\\pi r_1r_2=${tlF01Pi(r1*r2)}\\,\\mathrm{cm}^{2}`];
+  originalAreaNum=Math.PI*R*R/2;removedAreaNum=Math.PI*(r1*r1+r2*r2)/2;areaNum=Math.PI*r1*r2;perimeterNum=2*Math.PI*R;
+  periLines=[`L=\\pi R+\\pi r_1+\\pi r_2=2\\pi R`,`=${tlF01Pi(2*R)}\\,\\mathrm{cm}`];
+  areaMetric=`${tlF01Pi(r1*r2)}\\,\\mathrm{cm}^{2}`;periMetric=`${tlF01Pi(2*R)}\\,\\mathrm{cm}`;originalMetric=`\\dfrac{\\pi R^2}{2}`;
+  note=`큰 반원의 지름 전체를 작은 반원 두 개의 지름이 채웁니다. 지름선은 남은 면의 둘레가 아닙니다.`;
+  observation=`r₁+r₂=${R} cm로 고정됩니다. 작은 반원의 비율을 바꾸면 넓이는 달라지지만 둘레는 항상 ${2*R}π cm입니다.`;
+ }else if(id==='f01-04'){
+  const R=st.R,rp=R*s,ri=rp/2,x=x0,y=baseY,ox=x+rp,oy=y-rp;
+  outer=`M ${x} ${y} L ${x} ${y-rp} A ${rp} ${rp} 0 0 1 ${x+rp} ${y} Z`;
+  const inner=tlF01SemiPath(x+ri,y,ri);cutPaths.push(inner);result=outer+' '+inner;rightOffset=rp+gap;shapeRight=x+rp;
+  baseAux=dot(x,y)+line(x,y,x,y-rp)+tlTextSvg(`R=${R} cm`,x+7,y-rp*.55,'#c5efff',mobile?11:13)+tlF01Angle(x,y,22,-90,0,'90°','#ffe6a0',mobile?10:12);
+  pieceAux=dot(x+ri,y)+line(x+ri,y,x+ri,y-ri,'#ffe6a0')+tlTextSvg(`r=${fmt(R/2)} cm`,x+ri+6,y-ri*.52,'#fff1b0',mobile?10:12)+tlF01Angle(x+ri,y,Math.min(15,ri*.42),180,360,'180°','#ffe6a0',mobile?9:11);
+  parts.push(arcPart('사분원호','#38bdf8',rp,-90,0,'πR/2',x,y),arcPart('안쪽 반원호','#34d399',ri,180,360,'πR/2',x+ri,y),straight('남아 있는 반지름','#fbbf24',{x,y},{x,y:y-rp},'R'));
+  areaLines=[`S=\\dfrac{\\pi R^2}{4}-\\dfrac{\\pi(R/2)^2}{2}`,`=\\dfrac{\\pi R^2}{8}=${tlF01Pi(R*R/8)}\\,\\mathrm{cm}^{2}`];
+  originalAreaNum=Math.PI*R*R/4;removedAreaNum=Math.PI*R*R/8;areaNum=Math.PI*R*R/8;perimeterNum=R+Math.PI*R;
+  periLines=[`L=\\dfrac{\\pi R}{2}+\\dfrac{\\pi R}{2}+R=R+\\pi R`,`=${R}+${tlF01Pi(R)}\\,\\mathrm{cm}`];
+  areaMetric=`${tlF01Pi(R*R/8)}\\,\\mathrm{cm}^{2}`;periMetric=`${R}+${tlF01Pi(R)}\\,\\mathrm{cm}`;originalMetric=`\\dfrac{\\pi R^2}{4}`;
+  note='작은 반원의 지름은 사분원의 가로 반지름입니다. 그 지름은 파낸 뒤 경계에서 사라지고, 세 곡선·직선 경계만 남습니다.';
+  observation=`남는 둘레는 사분원호 πR/2, 안쪽 반원호 πR/2, 왼쪽 반지름 R입니다. 작은 반원의 지름선은 더하지 않습니다.`;
+ }else if(id==='f01-05'){
+  const a=st.a,ap=a*s,x=x0,y=baseY-ap,x1=x+ap,y1=y+ap;
+  outer=`M ${x} ${y} L ${x1} ${y} L ${x1} ${y1} L ${x} ${y1} Z`;
+  const cut=`M ${x} ${y} L ${x1} ${y} A ${ap} ${ap} 0 0 1 ${x} ${y1} Z`;cutPaths.push(cut);result=outer+' '+cut;rightOffset=ap+gap;shapeRight=x1;
+  baseAux=dot(x,y)+line(x,y,x1,y,'#c6d8cb')+line(x,y,x,y1,'#c6d8cb')+tlTextSvg(`a=${a} cm`,x+ap*.48,y+18,'#c5efff',mobile?11:13,'middle')+tlF01Angle(x,y,22,0,90,'90°','#ffe6a0',mobile?10:12);
+  pieceAux=dot(x,y)+line(x,y,x1,y,'#ffe6a0')+line(x,y,x,y1,'#ffe6a0')+tlTextSvg(`반지름 a=${a} cm`,x+ap*.55,y+24,'#fff1b0',mobile?10:12,'middle')+tlF01Angle(x,y,Math.min(18,ap*.28),0,90,'90°','#ffe6a0',mobile?9:11);
+  parts.push(straight('오른쪽 변','#38bdf8',{x:x1,y},{x:x1,y:y1},'a'),straight('아래쪽 변','#38bdf8',{x:x1,y:y1},{x,y:y1},'a'),arcPart('사분원호','#34d399',ap,0,90,'πa/2',x,y));
+  areaLines=[`S=a^2-\\dfrac{\\pi a^2}{4}`,`=${a}^2-\\dfrac{\\pi\\times${a}^2}{4}=${a*a}-\\dfrac{${a*a}\\pi}{4}\\,\\mathrm{cm}^{2}`];
+  originalAreaNum=a*a;removedAreaNum=Math.PI*a*a/4;areaNum=a*a-removedAreaNum;perimeterNum=2*a+Math.PI*a/2;
+  periLines=[`L=2a+\\dfrac{\\pi a}{2}`,`=${2*a}+${tlF01Pi(a/2)}\\,\\mathrm{cm}`];
+  areaMetric=`${a*a}-\\dfrac{${a*a}\\pi}{4}\\,\\mathrm{cm}^{2}`;periMetric=`${2*a}+${tlF01Pi(a/2)}\\,\\mathrm{cm}`;originalMetric=`${a}^2`;
+  note='정사각형에서 꼭짓점 중심의 사분원을 제거합니다. 잘린 두 변은 경계에서 빠지고 사분원호가 그 자리를 잇습니다.';
+  observation=`남는 경계는 오른쪽 변과 아래쪽 변, 그리고 사분원호입니다. 위쪽·왼쪽 변은 잘려 나갔습니다.`;
+ }else if(id==='f01-06'){
+  const R=st.R,rp=R*s,x=x0,y=baseY,A=tlPolar(x,y,rp,-90),B=tlPolar(x,y,rp,0);
+  outer=tlSector(x,y,rp,0,90);const tri=`M ${x} ${y} L ${tlXY(A)} L ${tlXY(B)} Z`;cutPaths.push(tri);
+  const seg=`${tlF01ArcD(x,y,rp,-90,0)} L ${tlXY(A)} Z`;result=seg;rightOffset=rp+gap;shapeRight=x+rp;
+  baseAux=dot(x,y)+line(x,y,A.x,A.y)+line(x,y,B.x,B.y)+tlTextSvg(`R=${R} cm`,x+rp*.26,y-rp*.62,'#c5efff',mobile?11:13)+tlF01Angle(x,y,22,-90,0,'90°','#ffe6a0',mobile?10:12)+tlTextSvg('현 AB',x+rp*.56,y-rp*.53,'#ffe5a0',mobile?10:12,'middle');
+  pieceAux=dot(x,y)+line(x,y,A.x,A.y,'#ffe6a0')+line(x,y,B.x,B.y,'#ffe6a0')+tlTextSvg(`R=${R} cm`,x+rp*.20,y-rp*.48,'#fff1b0',mobile?10:12)+tlF01Angle(x,y,18,-90,0,'90°','#ffe6a0',mobile?9:10)+tlTextSvg('△OAB',x+rp*.58,y-rp*.48,'#fff1b0',mobile?10:12,'middle');
+  parts.push(arcPart('호 AB','#38bdf8',rp,-90,0,'πR/2',x,y),straight('현 AB','#fbbf24',A,B,'AB'));
+  areaLines=[`S=\\dfrac{\\pi R^2}{4}-\\dfrac{R^2}{2}`,`=${tlF01Pi(R*R/4)}-${tlF01Rat(R*R/2)}\\,\\mathrm{cm}^{2}`];
+  originalAreaNum=Math.PI*R*R/4;removedAreaNum=R*R/2;areaNum=originalAreaNum-removedAreaNum;perimeterNum=Math.PI*R/2+R*Math.SQRT2;
+  periLines=[`L=\\dfrac{\\pi R}{2}+AB \\quad(AB=R\\sqrt2)`,`=${tlF01Pi(R/2)}+${R}\\sqrt2\\,\\mathrm{cm}`];
+  areaMetric=`${tlF01Pi(R*R/4)}-${tlF01Rat(R*R/2)}\\,\\mathrm{cm}^{2}`;periMetric=`${tlF01Pi(R/2)}+${R}\\sqrt2\\,\\mathrm{cm}`;originalMetric=`\\dfrac{\\pi R^2}{4}`;
+  note='90° 부채꼴에서 중심 삼각형 OAB를 제거합니다. 남은 활꼴의 경계는 현 AB와 원호 AB입니다.';
+  observation='현 AB는 직선이고 호 AB는 곡선입니다. 둘은 모두 활꼴의 실제 경계입니다. AB=R√2이지만 길이를 계산하는 풀이를 요구하지 않습니다.';
+ }else if(id==='f01-07'){
+  const a=st.a,ap=a*s,x=x0,y=baseY,B={x:x+ap,y},D={x,y:y-ap},C={x:x+ap,y:y-ap},E=tlPolar(x,y,ap,-60);
+  outer=`M ${x} ${y} L ${B.x} ${B.y} L ${C.x} ${C.y} L ${D.x} ${D.y} Z`;
+  const wedge=`M ${x} ${y} L ${D.x} ${D.y} ${tlF01ArcD(x,y,ap,-90,-60).slice(tlF01ArcD(x,y,ap,-90,-60).indexOf(' A'))} L ${x} ${y} Z`;
+  cutPaths.push(wedge);result=outer+' '+wedge;rightOffset=ap+gap;shapeRight=x+ap;
+  baseAux=dot(x,y)+line(x,y,B.x,B.y)+line(x,y,D.x,D.y)+line(x,y,E.x,E.y,'#8fc9a2','5 5','.8')+line(E.x,E.y,B.x,B.y,'#8fc9a2','5 5','.8')+tlTextSvg(`a=${a} cm`,x+ap*.48,y+19,'#c5efff',mobile?11:13,'middle')+tlF01Angle(x,y,15,0,-60,'60°','#fff1b0',mobile?9:10)+tlF01Angle(x,y,30,0,-90,'90°','#ffe6a0',mobile?9:10)+tlF01Angle(x,y,45,-90,-60,'30°','#ffe6a0',mobile?9:10)+tlTextSvg('△ABE 보조',x+ap*.56,y-ap*.64,'#c8ead4',mobile?9:11,'middle');
+  pieceAux=dot(x,y)+line(x,y,D.x,D.y,'#ffe6a0')+line(x,y,E.x,E.y,'#ffe6a0')+tlTextSvg(`a=${a} cm`,x+ap*.22,y-ap*.44,'#fff1b0',mobile?10:12,'middle')+tlF01Angle(x,y,14,-90,-60,'30°','#ffe6a0',mobile?9:10);
+  parts.push(straight('밑변 AB','#38bdf8',{x,y},{x:B.x,y:B.y},'a'),straight('오른쪽 변 BC','#38bdf8',B,C,'a'),straight('윗변 CD','#38bdf8',C,D,'a'),straight('새 반지름 AE','#fbbf24',{x,y},E,'a'),arcPart('30° 부채꼴 호 ED','#34d399',ap,-90,-60,'πa/6',x,y));
+  areaLines=[`S=a^2-\\dfrac{30}{360}\\pi a^2`,`=a^2-\\dfrac{\\pi a^2}{12}=${a*a}-\\dfrac{${a*a}\\pi}{12}\\,\\mathrm{cm}^{2}`];
+  originalAreaNum=a*a;removedAreaNum=Math.PI*a*a/12;areaNum=originalAreaNum-removedAreaNum;perimeterNum=4*a+Math.PI*a/6;
+  periLines=[`L=3a+AE+\\dfrac{\\pi a}{6}=4a+\\dfrac{\\pi a}{6}`,`=${4*a}+${tlF01Pi(a,6)}\\,\\mathrm{cm}`];
+  areaMetric=`${a*a}-\\dfrac{${a*a}\\pi}{12}\\,\\mathrm{cm}^{2}`;periMetric=`${4*a}+${tlF01Pi(a,6)}\\,\\mathrm{cm}`;originalMetric=`${a}^2`;
+  note='정삼각형 ABE는 각을 찾는 보조 도형입니다. 제거하는 것은 정삼각형이 아니라 중심 A, 중심각 30°인 부채꼴 DAE입니다.';
+  observation='AB=AE=AD=a입니다. 정삼각형의 60°와 정사각형 꼭짓점의 90° 차이가 30°를 만들며, 잘린 변 AD 대신 AE와 원호 ED가 경계가 됩니다.';
+ }else{
+  const R=5,rp=R*s,x=x0,y=baseY,A={x:x,y},B={x:x+2*rp,y},O={x:x+rp,y},C={x:x+3.6*s,y:y-4.8*s};
+  outer=tlF01SemiPath(O.x,y,rp);const tri=`M ${A.x} ${A.y} L ${C.x} ${C.y} L ${B.x} ${B.y} Z`;cutPaths.push(tri);result=outer+' '+tri;rightOffset=2*rp+gap;shapeRight=B.x;
+  const acAngle=(Math.atan2(C.y-y,C.x-O.x)*180/Math.PI+360)%360;
+  const leftArc=arcPart('왼쪽 원호','#38bdf8',rp,180,acAngle,'원호',O.x,y),rightArc=arcPart('오른쪽 원호','#34d399',rp,acAngle,360,'원호',O.x,y);
+  parts.push(leftArc,rightArc,straight('현 AC','#fbbf24',A,C,'6'),straight('현 CB','#fbbf24',C,B,'8'));
+  const ca=(Math.atan2(A.y-C.y,A.x-C.x)*180/Math.PI+360)%360,cb=(Math.atan2(B.y-C.y,B.x-C.x)*180/Math.PI+360)%360;
+  baseAux=dot(O.x,y)+line(O.x,y,O.x,y-rp)+tlTextSvg('R=5 cm',O.x+8,y-rp*.56,'#c5efff',mobile?11:13)+tlF01Angle(O.x,y,Math.min(20,rp*.22),180,360,'180°','#ffe6a0',mobile?10:12)+dot(C.x,C.y);
+  pieceAux=line(A.x,A.y,C.x,C.y,'#ffe6a0')+line(C.x,C.y,B.x,B.y,'#ffe6a0')+tlTextSvg('AC=6 cm',(A.x+C.x)/2-10,(A.y+C.y)/2-7,'#fff1b0',mobile?10:12,'middle')+tlTextSvg('BC=8 cm',(B.x+C.x)/2+10,(B.y+C.y)/2-7,'#fff1b0',mobile?10:12,'middle')+tlTextSvg('AB=10 cm',(A.x+B.x)/2,y+18,'#fff1b0',mobile?10:12,'middle')+tlF01Angle(C.x,C.y,14,cb,ca,'90°','#ffe6a0',mobile?9:10);
+  areaLines=[`S=\\dfrac{\\pi R^2}{2}-\\dfrac{6\\times8}{2}`,`R=5: \\quad S=\\dfrac{\\pi\\times5^2}{2}-24`,`=\\dfrac{25\\pi}{2}-24\\,\\mathrm{cm}^{2}`];
+  originalAreaNum=25*Math.PI/2;removedAreaNum=24;areaNum=originalAreaNum-removedAreaNum;perimeterNum=5*Math.PI+14;
+  periLines=[`L=5\\pi+AC+CB`,`=5\\pi+6+8=5\\pi+14\\,\\mathrm{cm}`];
+  areaMetric=`\\dfrac{25\\pi}{2}-24\\,\\mathrm{cm}^{2}`;periMetric=`5\\pi+14\\,\\mathrm{cm}`;originalMetric=`\\dfrac{25\\pi}{2}`;
+  note='반원에서 6-8-10 직각삼각형을 제거하면 원호 양쪽에 서로 떨어진 곡선 영역 두 개가 남습니다. 지름 AB는 남은 둘레가 아닙니다.';
+  observation='남은 왼쪽·오른쪽 영역의 원호 두 개를 합하면 반원호 5π cm입니다. 새로 드러난 두 현의 길이 합은 AC+CB=14 cm입니다.';
+ }
+ const angleParts=parts.reduce((sum,p)=>sum+p.lenPx,0);
+ return {outer,result,cutPaths,pieceAux,baseAux,rightOffset,shapeRight,parts,areaLines,periLines,areaMetric,periMetric,note,observation,originalMetric,areaNum,originalAreaNum,removedAreaNum,perimeterNum,pieceLabel,leftLabel,totalLen:angleParts};
+}
+function tlF01Layout(id,st){
+ const mobile=innerWidth<=660,vw=mobile?480:760,vh=mobile?400:420,baseY=mobile?284:314,x0=mobile?24:38,gap=mobile?46:72;
+ const span=id==='f01-03'?4*st.R:id==='f01-08'?4*st.R:2*(st.R||st.a);
+ const scale=Math.min(mobile?18:27,(vw-x0-24-gap)/span);
+ return {mobile,vw,vh,baseY,x0,gap,s:scale};
+}
+function tlF01Mini(model,g,kind){
+ let body='';
+ if(kind==='big')body=`<path d="${model.outer}" fill="#38bdf8" fill-opacity=".65" stroke="#38bdf8" stroke-width="3"/>`;
+ else if(kind==='piece')body=model.cutPaths.map(d=>`<path d="${d}" fill="#fbbf24" fill-opacity=".85" stroke="#fbbf24" stroke-width="3" transform="translate(${model.rightOffset} 0)"/>`).join('');
+ else body=`<path d="${model.result}" fill="#38bdf8" fill-opacity=".65" fill-rule="evenodd" stroke="#38bdf8" stroke-width="3"/>`;
+ return `<svg viewBox="0 0 ${g.vw} ${g.vh}" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
+}
+function tlDrawF01(){
+ const st=tlF01Current(),id=TL.family,g=tlF01Layout(id,st),m=tlF01Model(id,st,g),svg=tlGet('tlScene');
+ svg.setAttribute('viewBox',`0 0 ${g.vw} ${g.vh}`);svg.style.aspectRatio=`${g.vw}/${g.vh}`;
+ const areaMode=TL.mode!=='perimeter',detached=areaMode&&TL.detach>.015;
+ let out=`<defs><pattern id="tlGrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#5d886a" stroke-opacity=".13" stroke-width=".6"/></pattern></defs><rect width="${g.vw}" height="${g.vh}" fill="url(#tlGrid)"/>`;
+ if(!areaMode)out+=`<path d="${m.result}" fill="#38bdf8" fill-opacity=".12" fill-rule="evenodd"/>`;
+ else if(detached)out+=`<path d="${m.result}" fill="#38bdf8" fill-opacity=".62" fill-rule="evenodd"/>`;
+ else out+=`<path d="${m.outer}" fill="#38bdf8" fill-opacity=".58"/>`;
+ if(areaMode&&!detached)m.cutPaths.forEach(d=>out+=`<path d="${d}" fill="#fbbf24" fill-opacity=".88" stroke="#fbbf24" stroke-width="2.4"/>`);
+ out+=m.baseAux;
+ if(areaMode){
+  const shift=m.rightOffset*TL.detach;
+  out+=`<g transform="translate(${shift.toFixed(3)} 0)">${m.cutPaths.map(d=>`<path d="${d}" fill="#fbbf24" fill-opacity=".9" stroke="#fbbf24" stroke-width="2.5"/>`).join('')}${m.pieceAux}</g>`;
+ }
+ if(TL.mode==='both'||TL.mode==='perimeter')m.parts.forEach((part,index)=>{
+  const opacity=TL.focus<0||TL.focus===index?1:.2;
+  out+=`<path d="${part.d}" fill="none" stroke="${part.color}" stroke-opacity="${opacity}" stroke-width="${TL.focus===index?6:4}" stroke-linecap="round"/>`;
+  out+=`<path d="${part.d}" fill="none" stroke="transparent" stroke-width="22" data-tl-part="${index}" style="cursor:pointer"/>`;
+ });
+ if(TL.trace>0){
+  let remain=TL.trace*m.totalLen;
+  m.parts.forEach(part=>{const visible=Math.max(0,Math.min(part.lenPx,remain));remain-=part.lenPx;if(visible>.01)out+=`<path d="${part.d}" fill="none" stroke="#ffe59c" stroke-width="7" stroke-linecap="round" stroke-dasharray="${visible.toFixed(3)} ${(part.lenPx+5).toFixed(3)}"/>`;});
+ }
+ if(TL.detach>.55&&areaMode){
+  const pieceMin=g.x0+m.rightOffset*TL.detach,minusX=(m.shapeRight+pieceMin)/2;
+  if(pieceMin-m.shapeRight>22)out+=tlTextSvg('−',minusX,g.baseY+8,'#ffe7a1',g.mobile?30:40,'middle');
+  out+=tlTextSvg(m.leftLabel,(g.x0+m.shapeRight)/2,g.baseY+29,'#c5efff',g.mobile?11:13,'middle');
+  out+=tlTextSvg(m.pieceLabel,pieceMin+m.rightOffset*.35,g.baseY+29,'#ffe4a1',g.mobile?11:13,'middle');
+ }
+ svg.innerHTML=out;
+}
+function tlRenderF01(){
+ const id=TL.family,st=tlF01Current(),cfg=tlF01Config(id),g=tlF01Layout(id,st),m=tlF01Model(id,st,g),play=tlGet('tlPlay');
+ tlUpdateFamilyControls();
+ if(cfg.outerKey){tlGet('tlOuterLabel').textContent=cfg.outerLabel;tlGet('tlOuter').min=cfg.min;tlGet('tlOuter').max=cfg.max;tlGet('tlOuter').step=cfg.step;tlGet('tlOuter').value=st[cfg.outerKey];tlGet('tlOuterVal').textContent=`${st[cfg.outerKey]} cm`}
+ if(cfg.innerKey){tlGet('tlInnerLabel').textContent=cfg.innerLabel;tlGet('tlInner').min=cfg.innerMin;tlGet('tlInner').max=cfg.innerMax;tlGet('tlInner').step=cfg.innerStep;tlGet('tlInner').value=st.ratio;tlGet('tlInnerVal').textContent=`${Math.round(st.ratio*100)}%`}
+ const titles={'f01-03':['큰 반원에서 작은 반원 둘을 빼기','작은 반원의 반지름 합은 큰 반원의 반지름과 같습니다.'],
+  'f01-04':['사분원 안의 반원 파내기','작은 반원의 지름은 사분원의 가로 반지름입니다.'],
+  'f01-05':['정사각형 안의 사분원 파내기','정사각형의 두 변이 원호로 바뀝니다.'],
+  'f01-06':['부채꼴에서 삼각형을 빼 활꼴 만들기','중심각 90°는 고정하고 반지름만 바꿉니다.'],
+  'f01-07':['정사각형에서 30° 부채꼴 파내기','정삼각형은 보조 도형이며, 작은 부채꼴만 제거합니다.'],
+  'f01-08':['반원에서 삼각형을 빼 두 영역 남기기','삼각형을 빼면 원호 양쪽에 분리된 면이 남습니다.']}[id];
+ tlGet('tlShapeName').textContent=titles[0];tlGet('tlStageHint').textContent=titles[1];
+ play.textContent=TL.animationType?'❚❚ 정지':'▶ 재생';play.classList.toggle('playing',Boolean(TL.animationType));
+ play.setAttribute('aria-label',TL.animationType?'애니메이션 정지':TL.mode==='area'?'넓이 애니메이션 재생':TL.mode==='perimeter'?'둘레 애니메이션 재생':'넓이와 둘레 애니메이션 재생');
+ document.querySelectorAll('[data-tl-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.tlMode===TL.mode);b.setAttribute('aria-pressed',String(b.dataset.tlMode===TL.mode))});
+ tlGet('tlAreaNum').innerHTML=mathHTML(`\\(${m.areaMetric}\\)`);tlGet('tlPeriNum').innerHTML=mathHTML(`\\(${m.periMetric}\\)`);
+ tlGet('tlFormulaArea').innerHTML='<div class="tl-formula-label">넓이 분해 · 원래 면 − 꺼낸 조각</div>'+m.areaLines.map(x=>`<div class="tl-mathline">${mathHTML(`\\(${x}\\)`)}</div>`).join('');
+ tlGet('tlFormulaPeri').innerHTML='<div class="tl-formula-label">남은 도형의 실제 경계</div>'+m.periLines.map(x=>`<div class="tl-mathline">${mathHTML(`\\(${x}\\)`)}</div>`).join('');
+ tlGet('tlSplit').innerHTML=[['big','원래 큰 도형'],['piece','꺼낸 조각'],['remain','남은 면']].map(([kind,label])=>`<div class="tl-split-part">${tlF01Mini(m,g,kind)}<b>${label}</b></div>`).join('');
+ tlGet('tlSplitText').textContent=m.note;tlGet('tlAreaObservation').textContent=m.observation;
+ tlGet('tlLegend').innerHTML=m.parts.map((part,i)=>`<button type="button" data-tl-focus="${i}" class="${TL.focus===i?'active':''}"><span class="tl-dot" style="background:${part.color}"></span>${part.name} · ${part.label}</button>`).join('');
+ tlGet('tlBoundaryExpr').innerHTML=mathHTML(`\\(L=${m.periMetric}\\)`);tlGet('tlBoundaryNote').textContent=m.observation;
+ tlGet('tlBeforeTitle').textContent='처음 · 전체 도형';tlGet('tlAfterTitle').textContent='현재 · 남은 도형';
+ tlGet('tlBeforeSVG').innerHTML=tlF01Mini(m,g,'big');tlGet('tlAfterSVG').innerHTML=tlF01Mini(m,g,'remain');
+ tlGet('tlBeforeValue').innerHTML=mathHTML(`넓이 \\(${m.originalMetric}\\)`);tlGet('tlAfterValue').innerHTML=mathHTML(`넓이 \\(${m.areaMetric}\\) · 둘레 \\(${m.periMetric}\\)`);
+ tlGet('tlDiff').textContent=m.note;tlDrawF01();
+}
+// F03 overlap/cancellation scenes share the same four-button lesson shell as F01.
+function tlF03Defaults(id){
+ if(id==='f03-01')return {shift:6};
+ if(id==='f03-02')return {top:-3};
+ if(id==='f03-03')return {covered:true};
+ if(id==='f03-04')return {second:false};
+ if(id==='f03-05')return {turn:60};
+ if(id==='f03-06')return {turn:25};
+ if(id==='f03-07')return {showCommon:true};
+ return {distance:7,selection:'union'};
+}
+function tlF03Current(){
+ if(!TL.f03ByFamily[TL.family])TL.f03ByFamily[TL.family]=tlF03Defaults(TL.family);
+ return TL.f03ByFamily[TL.family];
+}
+function tlF03Layout(id){
+ const mobile=innerWidth<=660,vw=mobile?480:760,vh=mobile?400:420,margin=mobile?24:38;
+ const span={'f03-01':24,'f03-02':12,'f03-03':8,'f03-04':8,'f03-05':14,'f03-06':14,'f03-07':20,'f03-08':28}[id]||14;
+ const cap={'f03-01':mobile?17.8:25,'f03-02':mobile?17:25,'f03-03':mobile?18:25,'f03-04':mobile?18:25,'f03-05':mobile?18:25,'f03-06':mobile?18:25,'f03-07':mobile?18:25,'f03-08':mobile?13:22}[id]||20;
+ const s=Math.min(cap,(vw-margin*2)/span);
+ return {mobile,vw,vh,s,margin,baseY:Math.round(vh*.72),centerX:vw/2,centerY:vh/2};
+}
+function tlF03Rect(x,y,w,h){return `M ${x} ${y} H ${x+w} V ${y+h} H ${x} Z`;}
+function tlF03Circle(cx,cy,r){return `M ${cx-r} ${cy} A ${r} ${r} 0 1 1 ${cx+r} ${cy} A ${r} ${r} 0 1 1 ${cx-r} ${cy} Z`;}
+function tlF03Sector(cx,cy,r,start,end){
+ const p0=tlPolar(cx,cy,r,start),p1=tlPolar(cx,cy,r,end),span=end-start;
+ return `M ${cx} ${cy} L ${tlXY(p0)} A ${r} ${r} 0 ${Math.abs(span)>180?1:0} ${span>=0?1:0} ${tlXY(p1)} Z`;
+}
+function tlF03LinePart(name,color,a,b,g){
+ const len=Math.hypot(b.x-a.x,b.y-a.y),length=len/g.s;
+ return {name,color,length,lenPx:len,d:`M ${tlXY(a)} L ${tlXY(b)}`};
+}
+function tlF03ArcPart(name,color,cx,cy,r,start,end,g){
+ const lenPx=r*Math.abs(tlRad(end-start));
+ return {name,color,length:lenPx/g.s,lenPx,d:tlF01ArcD(cx,cy,r,start,end)};
+}
+function tlF03Range(id,label,min,max,step,value,suffix=' cm'){
+ return `<div class="tl-range"><label for="tlF03-${id}">${label}</label><input id="tlF03-${id}" type="range" min="${min}" max="${max}" step="${step}" value="${value}" data-tl-f03-control="${id}"><output id="tlF03-${id}-value">${value}${suffix}</output></div>`;
+}
+function tlF03Action(text,action,pressed=false){return `<button type="button" class="tl-f03-choice" data-tl-f03-action="${action}" aria-pressed="${pressed}">${text}</button>`;}
+function tlF03Selection(text,selection,active){return `<button type="button" class="tl-f03-choice${active?' active':''}" data-tl-f03-selection="${selection}" aria-pressed="${active}">${text}</button>`;}
+function tlF03ControlMarkup(id,st){
+ if(id==='f03-01')return tlF03Range('shift','두 중심 사이 거리',0,12,1,st.shift);
+ if(id==='f03-02')return tlF03Range('top','직사각형의 윗변 위치',-6,0,3,st.top);
+ if(id==='f03-03')return tlF03Action(st.covered?'사분원 걷어내기':'사분원 다시 덮기','quarter',st.covered);
+ if(id==='f03-04')return tlF03Action(st.second?'두 번째 사분원 다시 걷기':'마주 보는 사분원 놓기','opposite',st.second);
+ if(id==='f03-05')return tlF03Range('turn','B 부채꼴 회전',0,180,15,st.turn,'°');
+ if(id==='f03-06')return tlF03Range('turn','45° 부채꼴 회전',0,160,5,st.turn,'°');
+ if(id==='f03-07')return tlF03Action(st.showCommon?'공통 부분을 양쪽에서 빼기':'공통 부분 되돌리기','equal',!st.showCommon);
+ return `<div class="tl-f03-row" aria-label="선택할 영역">${tlF03Selection('합친 면','union',st.selection==='union')}${tlF03Selection('공통 면','common',st.selection==='common')}${tlF03Selection('한쪽만','xor',st.selection==='xor')}</div>${tlF03Range('distance','두 중심 사이 거리',3,14,.5,st.distance)}`;
+}
+function tlF03Regions(a,b,id,{mode='all',bg='',opacity=.58,commonOpacity=1,outlineOpacity=.48}={}){
+ if(!b)return `${bg}<path d="${a}" fill="#38bdf8" fill-opacity="${opacity}" stroke="#38bdf8" stroke-width="2.4"/>`;
+ const suffix=id.replace(/[^a-z0-9]/gi,'');
+ const defs=`<defs><clipPath id="f03clip${suffix}" clipPathUnits="userSpaceOnUse"><path d="${b}"/></clipPath>
+  <mask id="f03onlyA${suffix}" maskUnits="userSpaceOnUse" x="0" y="0" width="760" height="520" style="mask-type:luminance"><rect width="760" height="520" fill="#fff"/><path d="${b}" fill="#000"/></mask>
+  <mask id="f03onlyB${suffix}" maskUnits="userSpaceOnUse" x="0" y="0" width="760" height="520" style="mask-type:luminance"><rect width="760" height="520" fill="#fff"/><path d="${a}" fill="#000"/></mask></defs>`;
+ let fill='';
+ if(mode!=='common')fill+=`<path d="${a}" fill="#38bdf8" fill-opacity="${opacity}" mask="url(#f03onlyA${suffix})"/><path d="${b}" fill="#fb7185" fill-opacity="${opacity}" mask="url(#f03onlyB${suffix})"/>`;
+ if(mode!=='exclusive')fill+=`<path d="${a}" fill="#fbbf24" fill-opacity="${commonOpacity}" clip-path="url(#f03clip${suffix})"/>`;
+ return `${bg}${defs}${fill}<path d="${a}" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-dasharray="6 4" opacity="${outlineOpacity}"/><path d="${b}" fill="none" stroke="#fb7185" stroke-width="2.2" stroke-dasharray="6 4" opacity="${outlineOpacity}"/>`;
+}
+function tlF03Model(id,st,g){
+ const {mobile,vw,vh,s,centerX,centerY,baseY}=g,parts=[];
+ const fmt=tlF01Num,areaText=n=>`${fmt(n)}\\,\\mathrm{cm}^{2}`;
+ const linePart=(name,color,a,b)=>tlF03LinePart(name,color,a,b,g);
+ const arcPart=(name,color,cx,cy,r,a,b)=>tlF03ArcPart(name,color,cx,cy,r,a,b,g);
+ const R=6,rp=R*s;
+ let shapeA='',shapeB='',commonPath='',regionMode='all',bg='',labels='',partsOut=parts;
+ let title='',stage='',hint='',areaLines=[],periLines=[],areaMetric='',periMetric='',areaNum=0,perimeterNum=0,originalMetric='',note='',observation='',splitText='A, B와 공통 부분을 같은 크기 기준으로 비교합니다.';
+ let commonArea=0,unionArea=0,commonPerimeter=0,unionPerimeter=0;
+ if(id==='f03-01'){
+  const d=st.shift*s,cxA=(vw-4*rp)/2+rp,cxB=cxA+d,cy=baseY,beta=Math.acos(Math.max(-1,Math.min(1,d/(2*rp)))),betaDeg=beta*180/PI;
+  shapeA=tlF01SemiPath(cxA,cy,rp);shapeB=tlF01SemiPath(cxB,cy,rp);commonPath=shapeA;
+  const semi=PI*R*R/2;
+  commonArea=d>=2*R?0:d===0?semi:R*R*Math.acos(d/(2*rp))-(d/(4*s*s))*Math.sqrt(Math.max(0,4*rp*rp-d*d));
+  // The common boundary is two exact circle arcs and the shared part of the diameter.
+  commonPerimeter=2*R*beta+Math.max(0,2*R-st.shift);
+  unionArea=2*semi-commonArea;
+  unionPerimeter=2*R*(PI-beta)+2*R+st.shift;
+  const pA={x:cxA-rp,y:cy},pA2={x:cxA+rp,y:cy},pB={x:cxB-rp,y:cy},pB2={x:cxB+rp,y:cy};
+  if(betaDeg<179.999){partsOut.push(arcPart('A의 바깥 원호','#38bdf8',cxA,cy,rp,180,360-betaDeg),arcPart('B의 바깥 원호','#34d399',cxB,cy,rp,180+betaDeg,360));}
+  partsOut.push(linePart('두 반원의 합친 지름 경계','#fbbf24',pA,pB2));
+  title='같은 반원 두 개를 옆으로 움직여 겹치기';stage='합동인 반원을 옆으로 옮겨 포개기';hint='A만 · B만 · 공통 부분은 항상 같은 색';
+  labels=tlTextSvg('A',cxA,cy-rp-13,'#8fe3ff',mobile?11:13,'middle')+tlTextSvg('B',cxB,cy-rp-13,'#ffb4c0',mobile?11:13,'middle');
+  if(st.shift===0){areaLines=[`S_A=S_B=\\dfrac{\\pi r^2}{2}`,`S_{A\\cap B}=\\dfrac{\\pi r^2}{2}`,`S_{A\\cup B}=\\dfrac{\\pi r^2}{2}`];periLines=[`L_{A\\cup B}=\\pi r+2r`];}
+  else if(st.shift===R){areaLines=[`S_{A\\cap B}=\\left(\\dfrac{\\pi}{3}-\\dfrac{\\sqrt3}{4}\\right)r^2`,`S_{A\\cup B}=S_A+S_B-S_{A\\cap B}`,`=24\\pi+9\\sqrt3\\,\\mathrm{cm}^{2}`];periLines=[`L_{A\\cup B}=2r\\left(\\pi-\\dfrac{\\pi}{3}\\right)+2r+r`,`=\\dfrac{4\\pi r}{3}+3r=8\\pi+18\\,\\mathrm{cm}`];}
+  else if(st.shift===2*R){areaLines=[`S_{A\\cap B}=0`,`S_{A\\cup B}=2\\cdot\\dfrac{\\pi r^2}{2}=\\pi r^2`];periLines=[`L_{A\\cup B}=2(\\pi r+2r)`];}
+  else {areaLines=[`S_{A\\cap B}=${areaText(commonArea)}`,`S_{A\\cup B}=S_A+S_B-S_{A\\cap B}`];periLines=[`L_{A\\cup B}=2r(\\pi-\\beta)+2r+d`];}
+  areaMetric=st.shift===0?'18\\pi\\,\\mathrm{cm}^{2}':st.shift===R?'24\\pi+9\\sqrt3\\,\\mathrm{cm}^{2}':st.shift===2*R?'36\\pi\\,\\mathrm{cm}^{2}':`${fmt(unionArea)}\\,\\mathrm{cm}^{2}`;
+  periMetric=st.shift===0?'6\\pi+12\\,\\mathrm{cm}':st.shift===R?'8\\pi+18\\,\\mathrm{cm}':st.shift===2*R?'12\\pi+24\\,\\mathrm{cm}':`${fmt(unionPerimeter)}\\,\\mathrm{cm}`;
+  areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`\\pi r^2`;note='두 반원의 넓이를 더하면 겹친 부분을 두 번 세게 됩니다. 공통 부분을 한 번 빼면 실제 합친 넓이가 됩니다.';
+  observation=st.shift===R?'중심 사이 거리가 반지름일 때 교점은 60° 관계를 만들어 공통 넓이를 정확히 나타낼 수 있습니다.':'중심 사이 거리를 바꾸면 공통 면이 실제 교점에 따라 커지거나 작아집니다.';
+  splitText='각 반원의 전체 넓이는 같고, A만·B만 남는 두 부분도 서로 같습니다.';
+  bg=`<path d="M ${pA.x} ${cy} H ${pA2.x} M ${pB.x} ${cy} H ${pB2.x}" fill="none" stroke="#cbded2" stroke-opacity=".28" stroke-width="1.5"/>`;
+ }else if(id==='f03-02'){
+  const cx=centerX,cy=centerY,top=st.top*s,height=rp,w=Math.sqrt(Math.max(0,rp*rp-top*top)),lo=Math.max(-rp,top),hi=Math.min(0,top+height);
+  const F=y=>y*Math.sqrt(Math.max(0,rp*rp-y*y))+rp*rp*Math.asin(Math.max(-1,Math.min(1,y/rp)));
+  commonArea=hi>lo?(F(hi)-F(lo))/(s*s):0;
+  const semi=PI*R*R/2,rect=2*R*R;unionArea=semi+rect-commonArea;
+  const gamma=Math.asin(Math.max(0,Math.min(1,-top/rp)));
+  unionPerimeter=R*(PI-2*gamma)+6*R-2*w/s;
+  shapeA=tlF01SemiPath(cx,cy,rp);shapeB=tlF03Rect(cx-rp,cy+top,2*rp,height);
+  if(top>-rp+1e-6){partsOut.push(arcPart('반원의 노출 원호','#38bdf8',cx,cy,rp,180+gamma*180/PI,360-gamma*180/PI));}
+  const leftX=cx-rp,rightX=cx+rp,leftW=rp-w,rightW=rp-w,yTop=cy+top,yBottom=yTop+height;
+  if(leftW>1e-5)partsOut.push(linePart('직사각형 윗변 왼쪽', '#fbbf24',{x:leftX,y:yTop},{x:cx-w,y:yTop}));
+  if(rightW>1e-5)partsOut.push(linePart('직사각형 윗변 오른쪽','#fbbf24',{x:cx+w,y:yTop},{x:rightX,y:yTop}));
+  partsOut.push(linePart('직사각형 왼쪽 변','#fb7185',{x:leftX,y:yTop},{x:leftX,y:yBottom}),linePart('직사각형 아랫변','#fb7185',{x:leftX,y:yBottom},{x:rightX,y:yBottom}),linePart('직사각형 오른쪽 변','#fb7185',{x:rightX,y:yBottom},{x:rightX,y:yTop}));
+  title='반원과 직사각형을 지름 기준으로 올리고 내리기';stage='직사각형을 위아래로 움직여 공통 면 찾기';hint='실제 원호와 직사각형의 교점으로 면을 나눔';
+  labels=tlTextSvg('반원 A',cx,cy-rp-14,'#8fe3ff',mobile?11:13,'middle')+tlTextSvg('직사각형 B',cx,Math.min(vh-18,yBottom+19),'#ffb4c0',mobile?11:13,'middle');
+  const commonTex=st.top===-6?'\\dfrac{\\pi r^2}{2}':st.top===-3?'\\left(\\dfrac{\\pi}{6}+\\dfrac{\\sqrt3}{4}\\right)r^2':'0';
+  areaLines=[`S_{A\\cup B}=S_A+S_B-S_{A\\cap B}`,`S_{A\\cap B}=${commonTex}`,`S_{A\\cap B}=${areaText(commonArea)}`];
+  if(st.top===-6)periLines=[`L_{A\\cup B}=2(2r+r)=6r`];
+  else if(st.top===-3)periLines=[`L_{A\\cup B}=\\dfrac{2\\pi r}{3}+6r-\\sqrt3r`];
+  else periLines=[`L_{A\\cup B}=\\pi r+4r`];
+  areaMetric=st.top===-6?'72\\,\\mathrm{cm}^{2}':st.top===-3?'12\\pi+72-9\\sqrt3\\,\\mathrm{cm}^{2}':'18\\pi+72\\,\\mathrm{cm}^{2}';
+  periMetric=st.top===-6?'36\\,\\mathrm{cm}':st.top===-3?'4\\pi+36-6\\sqrt3\\,\\mathrm{cm}':'6\\pi+24\\,\\mathrm{cm}';
+  areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric='18\\pi';note='A만 있는 원호 부분, 직사각형에만 있는 부분, 두 도형의 공통 부분을 서로 다른 색으로 확인합니다.';
+  observation=st.top===-3?'직사각형 윗변과 반원 원호가 만나는 두 교점이 공통 면의 실제 경계를 정합니다.':'직사각형 위치가 끝에 닿으면 공통 부분이 반원 전체 또는 0이 됩니다.';
+  splitText='반원 A와 직사각형 B를 각각 확인한 뒤 가운데 공통 면이 어떻게 달라지는지 비교합니다.';
+ }else if(id==='f03-03'){
+  const side=8,sp=side*s,x=(vw-sp)/2,y=(vh-sp)/2,cx=x,cy=y+sp;
+  shapeA=tlF03Sector(cx,cy,sp,-90,0);shapeB=tlF03Rect(x,y,sp,sp);commonPath=shapeA;
+  const square=side*side,quarter=PI*side*side/4;unionArea=square;commonArea=st.covered?quarter:0;unionPerimeter=4*side;
+  partsOut.push(linePart('정사각형 윗변','#fbbf24',{x,y},{x:x+sp,y}),linePart('정사각형 오른쪽 변','#fbbf24',{x:x+sp,y},{x:x+sp,y:y+sp}),linePart('정사각형 아랫변','#fbbf24',{x:x+sp,y:y+sp},{x,y:y+sp}),linePart('정사각형 왼쪽 변','#fbbf24',{x,y:y+sp},{x,y}));
+  title='정사각형 모서리에 사분원을 덮었다 걷기';stage='정사각형과 사분원의 공통 면';hint='공통 면과 정사각형에만 남는 면을 비교';
+  labels=tlTextSvg('정사각형 B',centerX,y-13,'#c8dfd0',mobile?11:13,'middle')+tlTextSvg('사분원 A',x+sp*.72,y+sp*.68,'#d6f4ff',mobile?10:12,'middle');
+  areaLines=st.covered?[`S_{A\\cap B}=\\dfrac{\\pi s^2}{4}`,`S_{B\\setminus A}=s^2-\\dfrac{\\pi s^2}{4}`,`S_B=S_{A\\cap B}+S_{B\\setminus A}`]:[`S_B=s^2=64\\,\\mathrm{cm}^{2}`,`사분원을 걷으면 공통 부분은 색칠되지 않음`];
+  periLines=[`L_{A\\cup B}=4s`];
+  areaMetric=`${side*side}\\,\\mathrm{cm}^{2}`;periMetric=`${4*side}\\,\\mathrm{cm}`;areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`${side}^2`;
+  note=st.covered?'정사각형을 먼저 채운 뒤 사분원을 덮어 공통 면과 정사각형에만 있는 면을 봅니다.':'사분원을 걷어 내면 공통 면이 빠지고, 정사각형 전체가 다시 드러납니다.';
+  observation=st.covered?'공통 면은 사분원 전체입니다. 정사각형의 나머지는 넓이에서 사분원만큼 빠집니다.':'점선은 사분원을 덮었던 자리입니다. 사분원과 겹치던 면을 제거 전후로 비교하세요.';splitText=st.covered?'사분원은 정사각형 안에 완전히 포함됩니다.':'점선 사분원은 덮었던 위치를 가리키고, 색칠 면은 정사각형 전체입니다.';
+  if(st.covered)bg=`<rect x="${x}" y="${y}" width="${sp}" height="${sp}" fill="#143a2b" fill-opacity=".38" stroke="#c5dccd" stroke-width="2.3"/>`;
+  else {shapeA='';shapeB=tlF03Rect(x,y,sp,sp);commonPath='';regionMode='all';bg=`<rect x="${x}" y="${y}" width="${sp}" height="${sp}" fill="#143a2b" fill-opacity=".28" stroke="#c5dccd" stroke-width="2.3"/><path d="${tlF03Sector(cx,cy,sp,-90,0)}" fill="none" stroke="#38bdf8" stroke-width="2.4" stroke-dasharray="7 5"/>`;}
+ }else if(id==='f03-04'){
+  const side=8,sp=side*s,x=(vw-sp)/2,y=(vh-sp)/2,q1=tlF03Sector(x,y,sp,0,90),q2=tlF03Sector(x+sp,y+sp,sp,180,270),square=tlF03Rect(x,y,sp,sp),bgRect=`<rect x="${x}" y="${y}" width="${sp}" height="${sp}" fill="#143a2b" fill-opacity=".33" stroke="#c5dccd" stroke-width="2.3"/>`;
+  shapeA=q1;shapeB=st.second?q2:'';commonPath=q1;
+  commonArea=st.second?(PI/2-1)*side*side:0;unionArea=st.second?side*side:PI*side*side/4;unionPerimeter=st.second?4*side:PI*side/2+2*side;
+  if(st.second){partsOut.push(linePart('정사각형 윗변','#fbbf24',{x,y},{x:x+sp,y}),linePart('정사각형 오른쪽 변','#fbbf24',{x:x+sp,y},{x:x+sp,y:y+sp}),linePart('정사각형 아랫변','#fbbf24',{x:x+sp,y:y+sp},{x,y:y+sp}),linePart('정사각형 왼쪽 변','#fbbf24',{x,y:y+sp},{x,y}));}
+  else {partsOut.push(arcPart('첫째 사분원호','#38bdf8',x,y,sp,0,90),linePart('첫째 반지름','#fbbf24',{x,y},{x:x+sp,y}),linePart('둘째 반지름','#fbbf24',{x,y},{x,y:y+sp}));}
+  title='정사각형의 마주 보는 사분원 둘을 차례로 놓기';stage='두 사분원이 덮는 공통 부분';hint='사분원 둘의 합집합이 정사각형을 덮어요';
+  labels=tlTextSvg('사분원 A',x+sp*.34,y+sp*.34,'#a9eaff',mobile?10:12,'middle')+(st.second?tlTextSvg('사분원 B',x+sp*.67,y+sp*.67,'#ffc2cb',mobile?10:12,'middle'):'');
+  areaLines=st.second?[`S_{A\\cap B}=S_A+S_B-S_{A\\cup B}`,`=(\\dfrac{\\pi}{2}-1)s^2`,`S_{A\\cup B}=s^2`]:[`S_A=\\dfrac{\\pi s^2}{4}`];
+  periLines=st.second?[`L_{A\\cup B}=4s`]:[`L_A=2s+\\dfrac{\\pi s}{2}`];
+  areaMetric=st.second?`${side*side}\\,\\mathrm{cm}^{2}`:`\\dfrac{\\pi\\times${side}^2}{4}\\,\\mathrm{cm}^{2}`;periMetric=st.second?`${4*side}\\,\\mathrm{cm}`:`${2*side}+${tlF01Pi(side/2)}\\,\\mathrm{cm}`;areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`${side}^2`;
+  note='서로 반대인 꼭짓점을 중심으로 만든 사분원 두 개는 정사각형 전체를 덮습니다. 두 넓이의 합에서 정사각형 넓이를 빼면 공통 면이 남습니다.';
+  observation='마주 보는 꼭짓점 사이 거리가 정사각형의 대각선이므로 공통 렌즈의 두 원호가 정확히 만납니다.';splitText=st.second?'공통 부분은 두 사분원 넓이의 합에서 정사각형 넓이를 뺀 값입니다.':'먼저 한 사분원을 놓고, 반대쪽 꼭짓점의 사분원을 올려 겹침을 만듭니다.';
+  bg=bgRect+(st.second?'':`<path d="${square}" fill="none" stroke="#c5dccd" stroke-opacity=".45" stroke-width="1.5"/>`);
+ }else if(id==='f03-05'){
+  const r=7,rr=r*s,cx=centerX,cy=centerY,t=st.turn,commonDeg=Math.max(0,120-t),unionDeg=t<=120?120+t:240;
+  shapeA=tlF03Sector(cx,cy,rr,-60,60);shapeB=tlF03Sector(cx,cy,rr,-60+t,60+t);commonPath=commonDeg>0?tlF03Sector(cx,cy,rr,-60+t,60):'';
+  const sectorArea=PI*r*r/3;commonArea=PI*r*r*commonDeg/360;unionArea=t<=120?PI*r*r*unionDeg/360:2*sectorArea;
+  unionPerimeter=t<=120?2*r+r*unionDeg*PI/180:4*r+4*PI*r/3;
+  if(t<=120){partsOut.push(arcPart('합친 바깥 원호','#38bdf8',cx,cy,rr,-60,60+t),linePart('첫째 바깥 반지름','#fbbf24',{x:cx,y:cy},tlPolar(cx,cy,rr,-60)),linePart('둘째 바깥 반지름','#fbbf24',{x:cx,y:cy},tlPolar(cx,cy,rr,60+t)));}
+  else {[-60,60,-60+t,60+t].forEach((ang,i)=>partsOut.push(linePart(`부채꼴 경계 반지름 ${i+1}`,i<2?'#38bdf8':'#fb7185',{x:cx,y:cy},tlPolar(cx,cy,rr,ang))));partsOut.push(arcPart('A의 원호','#38bdf8',cx,cy,rr,-60,60),arcPart('B의 원호','#fb7185',cx,cy,rr,-60+t,60+t));}
+  title='같은 중심의 부채꼴 하나를 회전하기';stage='공통 중심각을 바꾸어 겹친 면 보기';hint='공통 중심각 · 호 길이 · 넓이가 같이 변해요';
+  labels=tlTextSvg('A',cx+rr*.62,cy-rr*.29,'#9de9ff',mobile?11:13,'middle')+tlTextSvg('B',cx+rr*.67,cy+rr*.38,'#ffbac5',mobile?11:13,'middle');
+  areaLines=[`\\theta_c=\\max(120^\\circ-${t}^\\circ,0^\\circ)`,`S_{A\\cap B}=\\dfrac{\\theta_c}{360^\\circ}\\pi r^2`,`l_{A\\cap B}=\\dfrac{\\theta_c}{360^\\circ}2\\pi r`];
+  periLines=[`L_{합집합}=${t<=120?`2r+\\dfrac{${unionDeg}}{360}2\\pi r`:`2(2r+\\dfrac{120}{360}2\\pi r)`}`];
+  areaMetric=t<=120?`${tlF01Pi(r*r*unionDeg,360)}\\,\\mathrm{cm}^{2}`:`${tlF01Pi(2*r*r,3)}\\,\\mathrm{cm}^{2}`;periMetric=t<=120?`${2*r}+${tlF01Pi(r*unionDeg,180)}\\,\\mathrm{cm}`:`${4*r}+${tlF01Pi(4*r,3)}\\,\\mathrm{cm}`;areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`\\dfrac{\\pi r^2}{3}`;
+  note='반지름이 같은 두 부채꼴을 같은 중심에서 돌립니다. 겹친 중심각이 줄어드는 만큼 공통 호와 공통 넓이도 줄어듭니다.';
+  observation=`현재 공통 중심각은 ${commonDeg}°입니다. 각도 비율을 호 길이와 넓이에 각각 적용합니다.`;splitText='같은 중심과 같은 반지름을 고정하고 회전각만 바꾸어 공통 중심각의 변화를 봅니다.';
+ }else if(id==='f03-06'){
+  const r=7,rr=r*s,cx=centerX,cy=centerY,start=-120+st.turn,end=start+45,commonDeg=Math.max(0,Math.min(0,end)-Math.max(-180,start));
+  shapeA=tlF01SemiPath(cx,cy,rr);shapeB=tlF03Sector(cx,cy,rr,start,end);commonPath=commonDeg>0?tlF03Sector(cx,cy,rr,Math.max(-180,start),Math.min(0,end)):'';
+  const semi=PI*r*r/2,sector=PI*r*r/8;commonArea=PI*r*r*commonDeg/360;unionArea=semi+sector-commonArea;
+  if(end<=0){partsOut.push(arcPart('반원 바깥 원호','#38bdf8',cx,cy,rr,180,360),linePart('반원 지름','#fbbf24',{x:cx-rr,y:cy},{x:cx+rr,y:cy}));unionPerimeter=PI*r+2*r;}
+  else if(start<=0){partsOut.push(arcPart('합쳐진 바깥 원호','#38bdf8',cx,cy,rr,-180,end),linePart('첫째 바깥 반지름','#fbbf24',{x:cx,y:cy},tlPolar(cx,cy,rr,-180)),linePart('둘째 바깥 반지름','#fbbf24',{x:cx,y:cy},tlPolar(cx,cy,rr,end)));unionPerimeter=2*r+r*(180+end)*PI/180;}
+  else {partsOut.push(arcPart('반원 원호','#38bdf8',cx,cy,rr,180,360),linePart('반원 지름','#38bdf8',{x:cx-rr,y:cy},{x:cx+rr,y:cy}),arcPart('45° 부채꼴 원호','#fb7185',cx,cy,rr,start,end),linePart('45° 부채꼴 반지름 1','#fb7185',{x:cx,y:cy},tlPolar(cx,cy,rr,start)),linePart('45° 부채꼴 반지름 2','#fb7185',{x:cx,y:cy},tlPolar(cx,cy,rr,end)));unionPerimeter=PI*r+2*r+PI*r/4+2*r;}
+  title='반원과 45° 부채꼴을 같은 중심에서 돌리기';stage='완전히 포함 · 부분 겹침 · 겹침 없음';hint='색칠 면과 공통 중심각의 경계 상태를 확인';
+  labels=tlTextSvg('반원 A',cx,cy-rr-14,'#9de9ff',mobile?11:13,'middle')+tlTextSvg('45° 부채꼴 B',cx+rr*.56,cy+rr*.34,'#ffbac5',mobile?10:12,'middle');
+  const relation=commonDeg===45?'완전히 포함':commonDeg>0?'부분 겹침':'겹침 없음';
+  areaMetric=`${tlF01Pi(r*r*(225-commonDeg),360)}\\,\\mathrm{cm}^{2}`;
+  periMetric=end<=0?`${tlF01Pi(r)}+${2*r}\\,\\mathrm{cm}`:start<=0?`${2*r}+${tlF01Pi(r*(180+end),180)}\\,\\mathrm{cm}`:`${4*r}+${tlF01Pi(5*r,4)}\\,\\mathrm{cm}`;
+  areaLines=[`\\theta_c=${commonDeg}^\\circ`,`S_{A\\cap B}=\\dfrac{${commonDeg}}{360}\\pi r^2`,`S_{A\\cup B}=S_A+S_B-S_{A\\cap B}`,`=${areaMetric}`];
+  periLines=[`L_{A\\cup B}=${periMetric}`];
+  areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`\\dfrac{\\pi r^2}{2}`;
+  note='45° 부채꼴을 같은 중심에서 돌리면 반원에 완전히 들어 있다가 경계를 가로질러 부분 겹침, 겹침 없음으로 바뀝니다.';
+  observation=`현재 관계: ${relation}. 공통 중심각이 ${commonDeg}°일 때만 공통 부채꼴 면이 남습니다.`;splitText='반원은 180°, 작은 부채꼴은 45°입니다. 회전 위치에 따라 겹친 중심각이 달라집니다.';
+ }else if(id==='f03-07'){
+  const u=2,up=u*s,x=(vw-20*s)/2,y=(vh-8*s)/2,sq=4*up,rectX=x+2*up,rectY=y+2*up,rectW=8*up,rectH=2*up;
+  shapeA=tlF03Rect(x,y,sq,sq);shapeB=tlF03Rect(rectX,rectY,rectW,rectH);commonPath=tlF03Rect(rectX,rectY,2*up,2*up);
+  commonArea=4*u*u;unionArea=16*u*u+16*u*u-commonArea;const exclusive=12*u*u;
+  const aOnly=`M ${x} ${y} H ${x+sq} V ${y+2*up} H ${x+2*up} V ${y+sq} H ${x} Z`,bOnly=tlF03Rect(rectX+2*up,rectY,6*up,rectH);
+  const aOnlyLen=16*u,bOnlyLen=16*u;
+  partsOut.push({name:'A에만 남는 L자 경계',color:'#38bdf8',length:aOnlyLen,lenPx:aOnlyLen*s,d:aOnly},{name:'B에만 남는 직사각형 경계',color:'#fb7185',length:bOnlyLen,lenPx:bOnlyLen*s,d:bOnly});
+  title='넓이가 같은 두 도형에서 공통 부분 빼기';stage='정사각형과 긴 직사각형의 공통 면';hint='공통 부분을 양쪽에서 빼고 남은 넓이 비교';
+  labels=tlTextSvg('A · 정사각형 4u×4u',x+sq/2,y-13,'#9de9ff',mobile?10:12,'middle')+tlTextSvg('B · 직사각형 8u×2u',rectX+rectW/2,rectY+rectH+20,'#ffbac5',mobile?10:12,'middle');
+  areaLines=[`S_A=S_B=16u^2=64\\,\\mathrm{cm}^{2}`,`S_{A\\cap B}=4u^2=16\\,\\mathrm{cm}^{2}`,`S_{A\\setminus B}=S_{B\\setminus A}=12u^2=48\\,\\mathrm{cm}^{2}`];
+  periLines=[`L_{A\\setminus B}=L_{B\\setminus A}=16u=32\\,\\mathrm{cm}`,`두 조각의 둘레 합=64\\,\\mathrm{cm}`];
+  areaMetric=st.showCommon?'48+48=96\\,\\mathrm{cm}^{2}':'48\\,\\mathrm{cm}^{2}';periMetric='32+32=64\\,\\mathrm{cm}';areaNum=st.showCommon?2*exclusive:exclusive;perimeterNum=2*aOnlyLen;originalMetric='64\\,\\mathrm{cm}^{2}';
+  note='A는 4u×4u 정사각형, B는 8u×2u 직사각형으로 넓이가 같습니다. 두 도형에서 공통인 2u×2u 면을 함께 빼면 남은 넓이도 같습니다.';
+  observation='A에만 남는 부분은 L자이고 B에만 남는 부분은 직사각형입니다. 모양이 달라도 두 넓이는 각각 12u²입니다.';splitText=st.showCommon?'노란 공통 부분을 양쪽에서 제거하면 파란 L자와 분홍 직사각형이 남습니다.':'공통 부분을 뺀 뒤 두 도형의 남은 부분만 비교합니다.';
+  if(!st.showCommon)regionMode='exclusive';
+ }else{
+  const r=7,rr=r*s,d=st.distance*s,cxA=centerX-d/2,cxB=centerX+d/2,cy=centerY,beta=Math.acos(Math.max(-1,Math.min(1,d/(2*rr)))),betaDeg=beta*180/PI;
+  shapeA=tlF03Circle(cxA,cy,rr);shapeB=tlF03Circle(cxB,cy,rr);commonPath=shapeA;
+  commonArea=2*r*r*beta-(st.distance/2)*Math.sqrt(Math.max(0,4*r*r-st.distance*st.distance));
+  commonPerimeter=4*r*beta;unionArea=2*PI*r*r-commonArea;unionPerimeter=4*PI*r-4*r*beta;
+  const xorArea=2*(PI*r*r-commonArea),xorPerimeter=4*PI*r;
+  const selection=st.selection;regionMode=selection==='common'?'common':selection==='xor'?'exclusive':'all';
+  if(selection==='common'&&betaDeg>0){partsOut.push(arcPart('A 원의 공통 원호','#38bdf8',cxA,cy,rr,360-betaDeg,360+betaDeg),arcPart('B 원의 공통 원호','#34d399',cxB,cy,rr,180+betaDeg,180-betaDeg));}
+  else if(selection==='union'&&betaDeg<=.001){partsOut.push(arcPart('A 원의 윗반원호','#38bdf8',cxA,cy,rr,0,180),arcPart('A 원의 아랫반원호','#38bdf8',cxA,cy,rr,180,360),arcPart('B 원의 윗반원호','#34d399',cxB,cy,rr,0,180),arcPart('B 원의 아랫반원호','#34d399',cxB,cy,rr,180,360));}
+  else if(selection==='union'&&betaDeg<180){partsOut.push(arcPart('A 원의 바깥 원호','#38bdf8',cxA,cy,rr,betaDeg,360-betaDeg),arcPart('B 원의 바깥 원호','#34d399',cxB,cy,rr,180+betaDeg,540-betaDeg));}
+  else if(selection==='xor'){partsOut.push(arcPart('A 원 전체 둘레','#38bdf8',cxA,cy,rr,0,180),arcPart('A 원 나머지 둘레','#38bdf8',cxA,cy,rr,180,360),arcPart('B 원 전체 둘레','#fb7185',cxB,cy,rr,0,180),arcPart('B 원 나머지 둘레','#fb7185',cxB,cy,rr,180,360));}
+  title='같은 원 배치에서 합친 면·공통 면·한쪽만 선택';stage='선택한 면의 실제 경계만 굵게 보기';hint='색칠할 영역을 바꾸면 둘레에 포함되는 원호도 바뀜';
+  labels=tlTextSvg('A',cxA,cy-rr-13,'#9de9ff',mobile?11:13,'middle')+tlTextSvg('B',cxB,cy-rr-13,'#ffbac5',mobile?11:13,'middle');
+  areaNum=selection==='common'?commonArea:selection==='union'?unionArea:xorArea;
+  perimeterNum=selection==='common'?commonPerimeter:selection==='union'?unionPerimeter:xorPerimeter;
+  if(selection==='common'){
+   areaMetric=Math.abs(st.distance-r)<1e-8?'(2\\pi/3-\\sqrt3/2)r^2\\,\\mathrm{cm}^{2}':`${fmt(commonArea)}\\,\\mathrm{cm}^{2}`;
+   periMetric=Math.abs(st.distance-r)<1e-8?'4\\pi r/3\\,\\mathrm{cm}':`${fmt(commonPerimeter)}\\,\\mathrm{cm}`;
+   areaLines=[Math.abs(st.distance-r)<1e-8?'S_{A\\cap B}=(\\dfrac{2\\pi}{3}-\\dfrac{\\sqrt3}{2})r^2\\,\\mathrm{cm}^{2}':`S_{A\\cap B}=${fmt(commonArea)}\\,\\mathrm{cm}^{2}`];
+   periLines=[Math.abs(st.distance-r)<1e-8?'L_{A\\cap B}=\\dfrac{4\\pi r}{3}\\,\\mathrm{cm}':`L_{A\\cap B}=4r\\beta\\,\\mathrm{cm}`];
+  }else if(selection==='union'){
+   areaMetric=Math.abs(st.distance-r)<1e-8?'(4\\pi/3+\\sqrt3/2)r^2\\,\\mathrm{cm}^{2}':Math.abs(st.distance-2*r)<1e-8?'2\\pi r^2\\,\\mathrm{cm}^{2}':`${fmt(unionArea)}\\,\\mathrm{cm}^{2}`;
+   periMetric=Math.abs(st.distance-r)<1e-8?'8\\pi r/3\\,\\mathrm{cm}':Math.abs(st.distance-2*r)<1e-8?'4\\pi r\\,\\mathrm{cm}':`${fmt(unionPerimeter)}\\,\\mathrm{cm}`;
+   areaLines=[`S_{A\\cup B}=2\\pi r^2-S_{A\\cap B}`,Math.abs(st.distance-r)<1e-8?'=(\\dfrac{4\\pi}{3}+\\dfrac{\\sqrt3}{2})r^2\\,\\mathrm{cm}^{2}':`=${fmt(unionArea)}\\,\\mathrm{cm}^{2}`];
+   periLines=[Math.abs(st.distance-r)<1e-8?'L_{A\\cup B}=\\dfrac{8\\pi r}{3}\\,\\mathrm{cm}':'L_{A\\cup B}=4\\pi r-4r\\beta\\,\\mathrm{cm}'];
+  }else{
+   areaMetric=Math.abs(st.distance-2*r)<1e-8?'2\\pi r^2\\,\\mathrm{cm}^{2}':`${fmt(xorArea)}\\,\\mathrm{cm}^{2}`;periMetric='4\\pi r\\,\\mathrm{cm}';
+   areaLines=[`S_{A\\setminus B}+S_{B\\setminus A}=2(\\pi r^2-S_{A\\cap B})`,`=${fmt(xorArea)}\\,\\mathrm{cm}^{2}`];
+   periLines=['L_{A\\setminus B}+L_{B\\setminus A}=4\\pi r','안쪽 원호도 각 초승달의 경계'];
+  }
+  note='같은 원 두 개를 고정한 채 합친 면, 공통 면, 한쪽만 남긴 면을 선택해 보세요. 선택한 영역의 외곽선만 둘레에 포함됩니다.';
+  observation=selection==='union'?'합친 면에서는 겹친 안쪽 원호가 내부 구분선이므로 둘레에서 빠집니다.':selection==='common'?'공통 렌즈의 둘레는 두 원호가 이어져 만들어집니다.':'한쪽만 남긴 두 초승달에는 안쪽 원호도 각각 경계로 포함됩니다.';
+  splitText='A만, B만, 공통 부분의 색은 고정입니다. 아래 선택 버튼은 어떤 면을 합칠지와 어떤 선을 둘레로 셀지를 바꿉니다.';
+ }
+ const selectionOpacity=TL.mode==='perimeter'?.14:.60,commonOpacity=TL.animationType==='f03-area'?.18+.42*TL.f03Progress:1;
+ const svg=tlF03Regions(shapeA,shapeB,id,{mode:regionMode,bg,opacity:selectionOpacity,commonOpacity,outlineOpacity:TL.mode==='perimeter'?.2:.48});
+ return {title,stage,hint,svg:svg+labels,parts:partsOut,areaLines,periLines,areaMetric,periMetric,areaNum,perimeterNum,originalMetric,note,observation,splitText,
+  shapeA,shapeB,commonPath,regionMode,selection:st.selection||'union',commonArea,unionArea,commonPerimeter,unionPerimeter};
+}
+let tlF03MiniCounter=0;
+function tlF03Mini(m,g,kind){
+ const uid=`f03Mini${++tlF03MiniCounter}`,fill=kind==='a'?'#38bdf8':kind==='b'?'#fb7185':'#fbbf24';let body='',defs='';
+ if(kind==='a'&&m.shapeA)body=`<path d="${m.shapeA}" fill="${fill}" fill-opacity=".72"/>`;
+ else if(kind==='b'&&m.shapeB)body=`<path d="${m.shapeB}" fill="${fill}" fill-opacity=".72"/>`;
+ else if(kind==='source'&&m.shapeA&&m.shapeB){defs=`<defs><clipPath id="${uid}Clip"><path d="${m.shapeB}"/></clipPath></defs>`;body=`<path d="${m.shapeA}" fill="#38bdf8" fill-opacity=".62"/><path d="${m.shapeB}" fill="#fb7185" fill-opacity=".62"/><path d="${m.shapeA}" fill="#fbbf24" fill-opacity=".82" clip-path="url(#${uid}Clip)"/>`;}
+ else if(kind==='source'&&m.shapeA)body=`<path d="${m.shapeA}" fill="#38bdf8" fill-opacity=".72"/>`;
+ else if(kind==='source'&&m.shapeB)body=`<path d="${m.shapeB}" fill="#fb7185" fill-opacity=".72"/>`;
+ else if(kind==='common'&&m.shapeA&&m.shapeB){defs=`<defs><clipPath id="${uid}Clip"><path d="${m.shapeB}"/></clipPath></defs>`;body=`<path d="${m.shapeA}" fill="${fill}" fill-opacity=".78" clip-path="url(#${uid}Clip)"/>`;}
+ else if(kind==='common'&&m.commonPath)body=`<path d="${m.commonPath}" fill="${fill}" fill-opacity=".78"/>`;
+ else if(kind==='selected'&&m.shapeA&&m.shapeB){
+  defs=`<defs><clipPath id="${uid}Clip"><path d="${m.shapeB}"/></clipPath><mask id="${uid}A" maskUnits="userSpaceOnUse" x="0" y="0" width="760" height="520" style="mask-type:luminance"><rect width="760" height="520" fill="#fff"/><path d="${m.shapeB}" fill="#000"/></mask><mask id="${uid}B" maskUnits="userSpaceOnUse" x="0" y="0" width="760" height="520" style="mask-type:luminance"><rect width="760" height="520" fill="#fff"/><path d="${m.shapeA}" fill="#000"/></mask></defs>`;
+  if(m.regionMode!=='common')body+=`<path d="${m.shapeA}" fill="#38bdf8" fill-opacity=".72" mask="url(#${uid}A)"/><path d="${m.shapeB}" fill="#fb7185" fill-opacity=".72" mask="url(#${uid}B)"/>`;
+  if(m.regionMode!=='exclusive')body+=`<path d="${m.shapeA}" fill="#fbbf24" fill-opacity=".8" clip-path="url(#${uid}Clip)"/>`;
+ }else if(kind==='selected'&&m.shapeA)body=`<path d="${m.shapeA}" fill="#38bdf8" fill-opacity=".72"/>`;
+ else if(kind==='selected'&&m.shapeB)body=`<path d="${m.shapeB}" fill="#fb7185" fill-opacity=".72"/>`;
+ return `<svg viewBox="0 0 ${g.vw} ${g.vh}" xmlns="http://www.w3.org/2000/svg">${defs}${body}</svg>`;
+}
+function tlDrawF03(){
+ const id=TL.family,st=tlF03Current(),g=tlF03Layout(id),m=tlF03Model(id,st,g),stage=tlGet('tlScene');
+ stage.setAttribute('viewBox',`0 0 ${g.vw} ${g.vh}`);stage.style.aspectRatio=`${g.vw}/${g.vh}`;
+ stage.setAttribute('aria-label',`${m.stage}. ${m.observation}`);
+ let out=`<defs><pattern id="tlF03Grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#5d886a" stroke-opacity=".13" stroke-width=".6"/></pattern></defs><rect width="${g.vw}" height="${g.vh}" fill="url(#tlF03Grid)"/>${m.svg}`;
+ if(TL.mode==='both'||TL.mode==='perimeter')m.parts.forEach((part,index)=>{
+  if(part.lenPx<.01)return;
+  const opacity=TL.focus===-1||TL.focus===index?1:.2;
+  out+=`<path d="${part.d}" fill="none" stroke="${part.color}" stroke-opacity="${opacity}" stroke-width="${TL.focus===index?6:4}" stroke-linecap="round"/>`;
+  out+=`<path d="${part.d}" fill="none" stroke="transparent" stroke-width="22" data-tl-part="${index}" style="cursor:pointer"/>`;
+ });
+ if(TL.trace>0){
+  let remain=TL.trace*m.parts.reduce((sum,p)=>sum+p.lenPx,0);
+  m.parts.forEach(part=>{const visible=Math.max(0,Math.min(part.lenPx,remain));remain-=part.lenPx;if(visible>.01)out+=`<path d="${part.d}" fill="none" stroke="#ffe59c" stroke-width="7" stroke-linecap="round" stroke-dasharray="${visible.toFixed(3)} ${(part.lenPx+5).toFixed(3)}"/>`;});
+ }
+ stage.innerHTML=out;
+}
+function tlRenderF03(){
+ const id=TL.family,st=tlF03Current(),g=tlF03Layout(id),m=tlF03Model(id,st,g),play=tlGet('tlPlay'),controls=tlGet('tlFamilyControls');
+ tlUpdateFamilyControls();
+ if(controls.dataset.family!==id){controls.dataset.family=id;controls.innerHTML=tlF03ControlMarkup(id,st);}
+ tlGet('tlKicker').textContent='F03 · 세 영역을 겹쳐 넓이와 경계 발견하기';
+ tlGet('tlLabTitle').textContent='겹치기·상쇄 · 공통 면의 관계';
+ tlGet('tlLabDescription').textContent='A만 있는 부분 · B만 있는 부분 · 공통 부분을 같은 색으로 구분하고, 실제 교점과 경계를 관찰합니다.';
+ tlGet('tlShapeName').textContent=m.stage;tlGet('tlStageHint').textContent=m.hint;
+ play.textContent=TL.animationType?'❚❚ 정지':'▶ 재생';play.classList.toggle('playing',Boolean(TL.animationType));
+ play.setAttribute('aria-label',TL.animationType?'애니메이션 정지':TL.mode==='area'?'겹친 넓이 강조 재생':TL.mode==='perimeter'?'선택한 경계 추적 재생':'공통 면과 경계 재생');
+ document.querySelectorAll('[data-tl-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.tlMode===TL.mode);b.setAttribute('aria-pressed',String(b.dataset.tlMode===TL.mode))});
+ tlGet('tlAreaNum').innerHTML=mathHTML(`\\(${m.areaMetric}\\)`);tlGet('tlPeriNum').innerHTML=mathHTML(`\\(${m.periMetric}\\)`);
+ tlGet('tlFormulaArea').innerHTML='<div class="tl-formula-label">넓이 관계 · 실제 공통 면</div>'+m.areaLines.map(x=>`<div class="tl-mathline">${mathHTML(`\\(${x}\\)`)}</div>`).join('');
+ tlGet('tlFormulaPeri').innerHTML='<div class="tl-formula-label">선택한 합집합의 실제 바깥 경계</div>'+m.periLines.map(x=>`<div class="tl-mathline">${mathHTML(`\\(${x}\\)`)}</div>`).join('');
+ tlGet('tlSplit').innerHTML=[['a','A 도형'],['b','B 도형'],['selected','현재 색칠 면']].map(([kind,label])=>`<div class="tl-split-part">${tlF03Mini(m,g,kind)}<b>${label}</b></div>`).join('');
+ tlGet('tlSplitText').textContent=`${m.splitText} 색은 파랑=A만, 분홍=B만, 노랑=공통 부분입니다.`;tlGet('tlAreaObservation').textContent=m.observation;
+ tlGet('tlLegend').innerHTML=m.parts.map((part,i)=>`<button type="button" data-tl-focus="${i}" class="${TL.focus===i?'active':''}"><span class="tl-dot" style="background:${part.color}"></span>${part.name} · ${part.length<.01?'0':tlF01Num(part.length)} cm</button>`).join('');
+ tlGet('tlBoundaryExpr').innerHTML=mathHTML(`\\(L=${m.periMetric}\\)`);tlGet('tlBoundaryNote').textContent=m.observation;
+ tlGet('tlBeforeTitle').textContent='A와 B 원래 도형';tlGet('tlAfterTitle').textContent='현재 색칠 면';
+ tlGet('tlBeforeSVG').innerHTML=tlF03Mini(m,g,'source');tlGet('tlAfterSVG').innerHTML=tlF03Mini(m,g,'selected');
+ tlGet('tlBeforeValue').textContent='A만 · B만 · 공통 부분';tlGet('tlAfterValue').innerHTML=mathHTML(`넓이 \\(${m.areaMetric}\\) · 둘레 \\(${m.periMetric}\\)`);
+ tlGet('tlDiff').textContent=m.note;tlDrawF03();
+}
 function renderTransformLab(){
+ if(TL.family.startsWith('f03-')){tlRenderF03();return;}
+ tlGet('tlKicker').textContent='CHAPTER 01 · 선과 면을 움직여 발견하기';
+ tlGet('tlLabTitle').textContent='도형 넣기·파내기 · 선과 면의 변환';
+ tlGet('tlLabDescription').textContent='문제를 풀기보다 중심각과 반지름을 직접 바꾸고, 선·면·분할을 관찰하세요.';
+ if(TL.family.startsWith('f01-')){tlRenderF01();return;}
  if(TL.family==='circle'){tlRenderCircle();return;}
  if(!tlGet('tlScene'))return;
  const v=tlValues(TL),base=tlValues(TL.baseline),full=TL.angle===360;
@@ -1401,6 +1945,16 @@ function tlSetGeometry(key,value){
  TL.trace=0;TL.detach=0;TL.focus=-1;renderTransformLab();
 }
 function tlPlay(){
+ if(TL.family.startsWith('f03-')){
+  if(TL.animationType){tlStop();renderTransformLab();return}
+  tlStop();TL.trace=0;TL.f03Progress=0;
+  const kind=TL.mode==='perimeter'?'f03-trace':'f03-area',start=performance.now(),duration=kind==='f03-trace'?4300:2400;
+  TL.animationType=kind;
+  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){if(kind==='f03-trace')TL.trace=1;else TL.f03Progress=1;tlStop();renderTransformLab();return}
+  function frame(now){const t=Math.min(1,(now-start)/duration),smooth=x=>x*x*(3-2*x);if(kind==='f03-trace')TL.trace=t;else TL.f03Progress=smooth(t);tlDrawF03();if(t<1)TL.animation=requestAnimationFrame(frame);else{tlStop();renderTransformLab()}}
+  TL.animation=requestAnimationFrame(frame);renderTransformLab();return;
+ }
  if(TL.animationType){tlStop();renderTransformLab();return}
  tlStop();
  const kind=TL.mode==='area'?'detach':TL.mode==='perimeter'?'trace':'combined';
@@ -1424,23 +1978,50 @@ function tlPlay(){
 function tlInitEvents(){
  tlGet('tlFamily').addEventListener('click',e=>{
   const b=e.target.closest('[data-tl-family]');if(!b)return;
+  const leavingF01=TL.family.startsWith('f01-'),leavingF03=TL.family.startsWith('f03-');
   tlStop();TL.family=b.dataset.tlFamily;TL.trace=0;TL.detach=0;TL.focus=-1;
+  TL.f03Progress=1;
+  if(leavingF01||leavingF03||TL.family.startsWith('f01-')||TL.family.startsWith('f03-'))TL.mode='both';
   if(TL.family==='circle'&&!TL.baselineCircle)TL.baselineCircle={R:TL.R,r:TL.r,offset:TL.offset};
-  tlGet('tlAngleRow').hidden=TL.family==='circle';
-  tlGet('tlAnglePresets').hidden=TL.family==='circle';
-  tlGet('tlOffsetRow').hidden=TL.family!=='circle';
+  if(TL.family.startsWith('f01-'))tlF01Current();
+  if(TL.family.startsWith('f03-'))tlF03Current();
+  tlUpdateFamilyControls();
   document.querySelectorAll('[data-tl-family]').forEach(x=>x.classList.toggle('active',x.dataset.tlFamily===TL.family));
   renderTransformLab();
  });
  tlGet('tlOffset').addEventListener('input',e=>tlSetGeometry('offset',+e.target.value));
  tlGet('tlModes').addEventListener('click',e=>{
   const b=e.target.closest('[data-tl-mode]');if(!b)return;
-  tlStop();TL.mode=b.dataset.tlMode;TL.trace=0;TL.detach=0;TL.focus=-1;renderTransformLab();
+  tlStop();TL.mode=b.dataset.tlMode;TL.trace=0;if(!TL.family.startsWith('f02-'))TL.detach=0;TL.focus=-1;TL.f03Progress=1;renderTransformLab();
+ });
+ tlGet('tlFamilyControls').addEventListener('input',e=>{
+  const control=e.target.closest('[data-tl-f03-control]');if(!control)return;
+  const st=tlF03Current(),key=control.dataset.tlF03Control,value=+control.value;
+  st[key]=value;
+  const output=tlGet(`tlF03-${key}-value`);if(output)output.textContent=`${value}${key==='turn'?'°':' cm'}`;
+  tlStop();TL.trace=0;TL.detach=0;TL.focus=-1;TL.f03Progress=1;renderTransformLab();
+ });
+ tlGet('tlFamilyControls').addEventListener('click',e=>{
+  const action=e.target.closest('[data-tl-f03-action]'),selection=e.target.closest('[data-tl-f03-selection]');if(!action&&!selection)return;
+  const st=tlF03Current();
+  if(action?.dataset.tlF03Action==='quarter')st.covered=!st.covered;
+  if(action?.dataset.tlF03Action==='opposite')st.second=!st.second;
+  if(action?.dataset.tlF03Action==='equal')st.showCommon=!st.showCommon;
+  if(selection)st.selection=selection.dataset.tlF03Selection;
+  tlGet('tlFamilyControls').dataset.family='';tlStop();TL.trace=0;TL.detach=0;TL.focus=-1;TL.f03Progress=1;renderTransformLab();
  });
  tlGet('tlAnglePresets').addEventListener('click',e=>{const b=e.target.closest('[data-tl-angle]');if(b)tlSetGeometry('angle',+b.dataset.tlAngle)});
- [['tlAngle','angle'],['tlOuter','R'],['tlInner','r']].forEach(([id,key])=>tlGet(id).addEventListener('input',e=>tlSetGeometry(key,+e.target.value)));
+ [['tlAngle','angle'],['tlOuter','R'],['tlInner','r']].forEach(([id,key])=>tlGet(id).addEventListener('input',e=>{
+  if(TL.family.startsWith('f01-'))tlSetF01Control(key,+e.target.value);else tlSetGeometry(key,+e.target.value);
+ }));
  tlGet('tlPlay').addEventListener('click',tlPlay);
- tlGet('tlReset').addEventListener('click',()=>{tlStop();Object.assign(TL,{offset:0,R:6,r:3,angle:90,mode:'both',detach:0,trace:0,focus:-1,baseline:{R:6,r:3,angle:90}});renderTransformLab()});
+ tlGet('tlReset').addEventListener('click',()=>{
+  tlStop();
+  if(TL.family.startsWith('f01-'))delete TL.f01ByFamily[TL.family];
+  else if(TL.family.startsWith('f03-')){delete TL.f03ByFamily[TL.family];tlGet('tlFamilyControls').dataset.family='';}
+  else Object.assign(TL,{offset:0,R:6,r:3,angle:90,baseline:{R:6,r:3,angle:90}});
+  Object.assign(TL,{mode:'both',detach:0,trace:0,focus:-1,f03Progress:1});tlUpdateFamilyControls();renderTransformLab();
+ });
  tlGet('tlLegend').addEventListener('click',e=>{const b=e.target.closest('[data-tl-focus]');if(!b)return;TL.mode='perimeter';TL.trace=0;TL.detach=0;TL.focus=TL.focus===+b.dataset.tlFocus?-1:+b.dataset.tlFocus;tlStop();renderTransformLab()});
  const svg=tlGet('tlScene');
  svg.addEventListener('click',e=>{const b=e.target.closest('[data-tl-part]');if(!b||TL.dragging)return;TL.focus=TL.focus===+b.dataset.tlPart?-1:+b.dataset.tlPart;TL.mode='perimeter';tlStop();renderTransformLab()});
@@ -1637,6 +2218,8 @@ if(new URLSearchParams(location.search).get("start")==="basic"){S.zone=1;S.item=
 if(new URLSearchParams(location.search).get("start")==="transform")S.zone=6;
 render();
 </script>
+<script src="circle-transform-f02.js?v=20261028-f02"></script>
+<script src="circle-transform-f04-f06.js?v=20261028-f04-f06"></script>
 <script id="ap-mobile-adapter">
 (function(){
  window.addEventListener('orientationchange',function(){setTimeout(function(){window.dispatchEvent(new Event('resize'));},150);});
