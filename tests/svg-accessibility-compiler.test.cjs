@@ -310,6 +310,8 @@ test('student SVG accessibility index tracks the manifest hash and current Q03 m
   const current = Array.from(index.records).find(record => record.assetRef === assetRef && record.visualRole === 'solution');
   assert.ok(current);
   assert.equal(index.manifestSha256, `sha256:${sha256(Buffer.from(manifestText, 'utf8'))}`);
+  assert.equal(current.svgSha256, source.svgSha256);
+  assert.equal(current.gitBlobSha, source.gitBlobSha);
   assert.equal(current.titleKo, source.titleKo);
   assert.equal(current.descriptionKo, source.descriptionKo);
 });
