@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "meta-pipeline-existing-solution-visual-source-supplement-v1",
+  "author": "CODEX_ROOT",
+  "scope": "META_SOURCE_ASSET_REFERENCE_PARITY_ONLY",
+  "examUid": "20_매산여고_1학기_중간_고1_기출",
+  "originalAuditSha256": "ec46a430a0b85d2368b8cbb6a0a62a517dd5f66c7384cd2de05f2b56688cf081",
+  "originalManifestSha256": "7c8c1e2f256b617c30718667bc19149994b678e5639fca97119306c930812dcd",
+  "originalAuditSourceSha256": "7dd334aeb444d8a2ae328176ff8a3082463474cd9adee4a44631228d254b8244",
+  "actualDriveSourceBeforeSha256": "7dd334aeb444d8a2ae328176ff8a3082463474cd9adee4a44631228d254b8244",
+  "productionSourceSha256": "7dd334aeb444d8a2ae328176ff8a3082463474cd9adee4a44631228d254b8244",
+  "studentTextChoiceAnswerSolutionChanged": false,
+  "sourceReferenceChanges": [
+    {
+      "ordinal": 11,
+      "field": "solutionImage"
+    },
+    {
+      "ordinal": 17,
+      "field": "solutionImage"
+    }
+  ],
+  "assets": [
+    {
+      "sourceOrdinal": 11,
+      "path": "archive/assets/images/20_매산여고_1학기_중간_고1_기출/q11-solution.svg",
+      "sha256": "72d09cdc56e4be93dc5a6634e79b10bd0d29e27339e479f86b017c2c9172ca0a",
+      "nativeRenderPngSha256": "e269d590e2cd2bb91ba30fd441d1d2aceef73025ef419724faffaf8ae7b79a75",
+      "actualRenderViewed": true,
+      "backend": "Bundled sharp composite SVG render; asset and renderer unchanged",
+      "solution": "포물선이 직선보다 항상 위에 있으려면 두 식의 차가 모든 실수 $x$에서 양수여야 한다.\n$(x^2-2x+6)-(-x+k)=x^2-x+6-k$이다.\n완전제곱식으로 정리하면\n$x^2-x+6-k=\\left(x-\\dfrac12\\right)^2+\\dfrac{23}{4}-k$이다.\n제곱항의 최소값은 $0$이므로 차의 최소값은 $\\dfrac{23}{4}-k$이다.\n항상 위쪽에 있으려면 $\\dfrac{23}{4}-k>0$, 즉 $k<\\dfrac{23}{4}$이다.\n이 조건을 만족하는 자연수 중 최대는 $5$이다. 정답은 ④이다.",
+      "observation": "The parabola, tangent point T(1/2,21/4), and vertex V(1,5) match the existing complete-square comparison."
+    },
+    {
+      "sourceOrdinal": 17,
+      "path": "archive/assets/images/20_매산여고_1학기_중간_고1_기출/q17-solution.svg",
+      "sha256": "e3af1d3d0f3275e3aa22b599d817732e5fb9afe33c7c84dfea09e41698277e34",
+      "nativeRenderPngSha256": "1d870b2f58b5976f29681fd73402d8016934a71e501dd3a27aecb30fc847ef37",
+      "actualRenderViewed": true,
+      "backend": "Bundled sharp composite SVG render; asset and renderer unchanged",
+      "solution": "주어진 함수식을 완전제곱식으로 바꾼다.\n$y=x^2-4x+a=(x-2)^2+a-4$이다.\n주어진 범위 $-1\\le x\\le3$에는 꼭짓점의 $x$좌표 $2$가 포함된다.\n따라서 최솟값은 $a-4$이고 이 값이 $2$이다.\n$a-4=2$이므로 $a=6$이다.\n그러면 $y=(x-2)^2+2$이다.\n범위의 끝점에서 제곱항을 비교하면\n$x=-1$일 때 $y=(-3)^2+2=11$이다.\n$x=3$일 때 $y=1^2+2=3$이다.\n따라서 최댓값은 $11$이다. 정답은 ⑤이다.",
+      "observation": "The parabola y=(x-2)^2+2 and endpoint values (-1,11),(3,3) match the existing interval solution."
+    }
+  ],
+  "visualQuality": "NOT_EVALUATED",
+  "browserStudentUi": "NOT_RUN"
+}
