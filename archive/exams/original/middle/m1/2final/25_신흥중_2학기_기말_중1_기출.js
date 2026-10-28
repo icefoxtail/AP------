@@ -461,7 +461,7 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q11.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q11-solution.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
-    "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+    "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "difficultyBucket": 3,
@@ -505,7 +505,7 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q12.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q12-solution.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
-    "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+    "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "difficultyBucket": 4,
@@ -677,7 +677,7 @@ window.questionBank = [
       "계급의 크기는 10 km이다.",
       "20 km 미만을 걸은 회원은 8명이다.",
       "도수가 가장 작은 계급은 60 km 이상 70 km 미만이다.",
-      "걸은 거리가 4번째로 많은 학생이 속하는 계급의 도수는 2명이다."
+      "걸은 거리가 4번째로 많은 회원이 속하는 계급의 도수는 2명이다."
     ],
     "answer": "③, ⑤",
     "solution": "[키포인트] 히스토그램에서는 막대의 너비가 계급의 크기이고 막대의 높이가 도수이다. '몇 번째로 많이'는 오른쪽 계급부터 센다.\n\n그림의 계급은 $0$ 이상 $10$ 미만부터 $60$ 이상 $70$ 미만까지 7개이고, 계급의 크기는 모두 $10\\rm\\,km$이다.\n왼쪽부터 도수는 $2,5,8,4,2,3,1$명이다.\n\n① 계급이 7개이므로 참이다.\n② 계급 너비가 $10\\rm\\,km$이므로 참이다.\n③ $20\\rm\\,km$ 미만은 앞 두 계급이므로 $2+5=7$명이다. 8명이라는 설명은 거짓이다.\n④ 가장 작은 도수는 $1$명이며 $60$ 이상 $70$ 미만 계급이므로 참이다.\n⑤ 거리 순서로 가장 큰 계급에 1명, 그다음 계급인 $50$ 이상 $60$ 미만에 3명이 있다. 따라서 4번째로 많이 걸은 회원은 두 번째 계급에 속하고 그 계급의 도수는 3명이다. 2명이 아니므로 거짓이다.\n\n따라서 정답은 ③, ⑤이다.",
@@ -803,7 +803,8 @@ window.questionBank = [
     "layoutTag": "fullwidth",
     "wide": true,
     "tags": [
-      "도형"
+      "도형",
+      "서술형"
     ],
     "content": "오른쪽 그림과 같이 한 변의 길이가 $10\\rm\\,cm$인 정사각형에서 색칠한 부분의 넓이를 구하시오. (5점)",
     "choices": [],
@@ -841,7 +842,8 @@ window.questionBank = [
     "layoutTag": "fullwidth",
     "wide": true,
     "tags": [
-      "도형"
+      "도형",
+      "서술형"
     ],
     "content": "다음 입체도형은 합동인 정삼각형 10개로 이루어진 다면체이다. 이 다면체가 정다면체인지 아닌지 판단하고, 정다면체가 아닌 경우에는 그 이유를 말하시오. (3점)",
     "choices": [],
@@ -879,7 +881,8 @@ window.questionBank = [
     "layoutTag": "fullwidth",
     "wide": true,
     "tags": [
-      "도형"
+      "도형",
+      "서술형"
     ],
     "content": "다음 그림과 같은 평면도형을 직선 $l$을 회전축으로 하여 1회전시켜 만든 입체도형이다. 만들어진 입체도형의 이름을 쓰고, 그 입체도형의 겉넓이를 구하시오. (6점)",
     "choices": [],
@@ -918,7 +921,8 @@ window.questionBank = [
     "wide": true,
     "tags": [
       "통계",
-      "표"
+      "표",
+      "서술형"
     ],
     "content": "다음은 민서네 반 학생 10명이 하루 동안 보낸 문자 메시지 개수를 조사하여 나타낸 자료이다. 물음에 답하시오. (9점)\n\n(1) 문자 메시지 개수의 평균, 중앙값, 최빈값을 각각 구하시오. (6점)\n(2) (1)에서 구한 값 중 이 자료의 대표값으로 더 적절한 것을 한 가지 선택하고, 나머지 두 값이 대표값으로 적절하지 않은 이유를 각각 서술하시오. (3점)",
     "choices": [],
@@ -927,7 +931,7 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q22.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q22-solution.svg",
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
-    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "difficultyBucket": 4,
