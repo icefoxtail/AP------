@@ -28,6 +28,24 @@ function groupByFile(rows, field) {
   return map;
 }
 
+function listOriginalSourceFiles(sourceRoot) {
+  if (!fs.existsSync(sourceRoot) || !fs.statSync(sourceRoot).isDirectory()) {
+    throw new Error('original source directory missing: ' + sourceRoot);
+  }
+  const files = [];
+  function visit(directory) {
+    const entries = fs.readdirSync(directory, { withFileTypes: true })
+      .sort((a, b) => a.name.localeCompare(b.name, 'en'));
+    for (const entry of entries) {
+      const absolute = path.join(directory, entry.name);
+      if (entry.isDirectory()) visit(absolute);
+      else if (entry.isFile() && entry.name.toLowerCase().endsWith('.js')) files.push(absolute);
+    }
+  }
+  visit(sourceRoot);
+  return files.map(file => normalizeFile(path.relative(path.dirname(sourceRoot), file)));
+}
+
 const exams = loadDb();
 const identity = JSON.parse(fs.readFileSync(path.join(archiveDir, 'data', 'question_identity_map.json'), 'utf8'));
 const metadata = JSON.parse(fs.readFileSync(path.join(archiveDir, 'data', 'question_metadata.json'), 'utf8'));
@@ -38,6 +56,24 @@ const metadataByUid = new Map((metadata.records || []).map(r => [r.questionUid, 
 const catalogRecordsByFile = groupByFile(catalog.records, 'sourceFile');
 const catalogExamByFile = new Map((catalog.exams || []).map(e => [normalizeFile(e.file), e]));
 const dbFiles = new Set();
+const originalSourceFiles = listOriginalSourceFiles(path.join(archiveDir, 'exams', 'original'));
+const originalSourceFileSet = new Set(originalSourceFiles);
+const dbOriginalFileSet = new Set(exams
+  .map(exam => normalizeFile(exam.file))
+  .filter(file => file.startsWith('original/')));
+if (!originalSourceFiles.length) throw new Error('original source inventory is empty');
+const sourceMissingFromDb = [...originalSourceFileSet].filter(file => !dbOriginalFileSet.has(file)).sort();
+const dbOriginalMissingSource = [...dbOriginalFileSet].filter(file => !originalSourceFileSet.has(file)).sort();
+if (sourceMissingFromDb.length || dbOriginalMissingSource.length) {
+  const sample = (label, files) => files.length
+    ? `${label}=${files.length} [${files.slice(0, 10).join(', ')}${files.length > 10 ? ', ...' : ''}]`
+    : `${label}=0`;
+  throw new Error(
+    'original source/DB inventory mismatch: ' +
+    sample('source missing from db', sourceMissingFromDb) + '; ' +
+    sample('db original missing source', dbOriginalMissingSource),
+  );
+}
 let questionCount = 0;
 let pendingSemantic = 0;
 
@@ -85,6 +121,7 @@ if (catalog.health?.questions !== questionCount) throw new Error('catalog health
 
 console.log(JSON.stringify({
   status: 'PASS',
+  originalSourceExams: originalSourceFileSet.size,
   exams: exams.length,
   questions: questionCount,
   identityRecords: identity.records.length,
