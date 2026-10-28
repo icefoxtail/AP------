@@ -7,26 +7,29 @@ const { spawnSync } = require('node:child_process');
 
 const root = path.join(__dirname, '..');
 
-test('archive/exams questionBank inline image inventory validates referenced production asset paths', async () => {
-  // Production image references use the student-facing assets/images contract;
-  // the inventory validates those paths and their physical asset files.
+test('archive/exams questionBank inline image inventory validates production image references', async () => {
+  // Original exams use the student-facing assets/images contract. Textbook
+  // source folders keep qNN image files beside their source JS.
   const { buildInlineImageInventoryReport } = await import('../archive/tools/build-inline-image-inventory.mjs');
   const generated = buildInlineImageInventoryReport();
   const report = JSON.parse(fs.readFileSync(path.join(root, 'docs', 'reports', 'archive-inline-image-inventory-20260915.json'), 'utf8'));
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 1483);
-  assert.equal(generated.productionTotal, 1479);
+  assert.equal(generated.total, 1603);
+  assert.equal(generated.productionTotal, 1599);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 1425, '.svg': 58 });
-  assert.equal(generated.qImageAndInlineTotal, 246);
+  assert.deepEqual(generated.extensionCounts, { '.png': 1533, '.svg': 70 });
+  assert.equal(generated.qImageAndInlineTotal, 258);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
     missingProductionAssetCount: 238,
     errorCount: 0
   });
-  assert.ok(generated.records.every(row => row.relativePathValid && row.src.startsWith('assets/images/')));
+  assert.ok(generated.records.every(row => row.relativePathValid));
+  const textbookRows = generated.records.filter(row => row.file.startsWith('textbooks/'));
+  assert.ok(textbookRows.length > 0);
+  assert.ok(textbookRows.every(row => /^q\d+\.(?:png|jpe?g|webp|svg)$/i.test(row.src) && row.assetExists));
   const knownMissing = JSON.parse(fs.readFileSync(path.join(root, 'archive', 'data', 'inline-image-known-missing-v1.json'), 'utf8'));
   assert.equal(knownMissing.baselineMainSha, '96b40a5039d2457885b35f53e0482f334d110033');
   assert.deepEqual(generated.records.filter(row => !row.testFixture && !row.assetExists)
@@ -60,7 +63,7 @@ test('archive/exams questionBank inline image inventory validates referenced pro
   assert.equal(q8?.assetExists, true);
 
   const qImageRecords = generated.records.filter(record => record.qImagePresent);
-  assert.equal(qImageRecords.length, 246);
+  assert.equal(qImageRecords.length, 258);
   assert.ok(qImageRecords.every(record => record.relativePathValid));
 
   assert.deepEqual(reportData, generatedData);

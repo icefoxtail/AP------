@@ -41,6 +41,7 @@ const { spawnSync } = require("child_process");
     unregisteredL4Count: 0,
     unregisteredCrossConceptCount: 0,
     unregisteredConditionCount: 0,
+    approvedSourceMappingOverrideCount: 5,
     foundationAssignmentCount: 400,
     runtimeRecordCount: 400,
     runtimeMappingMismatchCount: 0

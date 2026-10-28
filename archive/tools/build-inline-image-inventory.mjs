@@ -20,13 +20,28 @@ function examFiles(directory, out = []) {
   return out;
 }
 
-function isArchiveRelativeAssetPath(src) {
+function archiveRelativeImagePath(src) {
   if (typeof src !== 'string' || !src.startsWith('assets/images/') || src.includes('\\')) return false;
   const pathname = src.split(/[?#]/, 1)[0];
   const segments = pathname.split('/');
   if (segments.some(segment => !segment || segment === '.' || segment === '..')) return false;
   const resolved = path.resolve(archiveDir, pathname);
-  return resolved.startsWith(path.join(archiveDir, 'assets', 'images') + path.sep);
+  return resolved.startsWith(path.join(archiveDir, 'assets', 'images') + path.sep) ? resolved : null;
+}
+
+function resolveInlineImageAsset(src, examFile, relativeExamPath) {
+  const archiveImage = archiveRelativeImagePath(src);
+  if (archiveImage) return { path: archiveImage, relativePathValid: true };
+
+  // Textbook questionBank sources intentionally keep qNN image files beside
+  // their JS source; resolving these against archive/assets/images is wrong.
+  if (!relativeExamPath.startsWith('textbooks/') || !/^q\d+\.(?:png|jpe?g|webp|svg)$/i.test(src)) {
+    return { path: null, relativePathValid: false };
+  }
+  const resolved = path.resolve(path.dirname(examFile), src);
+  const textbookRoot = path.resolve(examsDir, 'textbooks') + path.sep;
+  if (!resolved.startsWith(textbookRoot)) return { path: null, relativePathValid: false };
+  return { path: resolved, relativePathValid: true };
 }
 
 export function buildInlineImageInventory() {
@@ -61,12 +76,11 @@ export function buildInlineImageInventory() {
         const tag = match[0];
         const src = tag.match(/\bsrc\s*=\s*(["'])(.*?)\1/i)?.[2] || '';
         const pathname = src.split(/[?#]/, 1)[0];
-        const relativePathValid = isArchiveRelativeAssetPath(src);
-        const assetPath = relativePathValid ? path.resolve(archiveDir, pathname) : null;
+        const { path: assetPath, relativePathValid } = resolveInlineImageAsset(src, file, relative);
         const assetExists = Boolean(assetPath && fs.existsSync(assetPath) && fs.statSync(assetPath).isFile());
         const testFixture = relative.startsWith('test-fixtures/');
 
-        if (!relativePathValid) errors.push(`${relative} q${question?.id ?? index + 1}: image src is not an Archive-relative assets/images path: ${src}`);
+        if (!relativePathValid) errors.push(`${relative} q${question?.id ?? index + 1}: image src is not a supported archive image reference: ${src}`);
         else if (!assetExists && !testFixture) {
           const reference = { file: relative, questionId: question?.id ?? index + 1, src };
           const key = keyFor(reference);

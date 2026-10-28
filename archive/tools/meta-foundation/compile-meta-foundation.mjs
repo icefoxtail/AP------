@@ -216,11 +216,67 @@ function collectKeyDuplicates(compiled) {
     .map(([key, kinds]) => ({ key, kinds }));
 }
 
+function findQuestionUidRows(value, questionUid, rows = [], seen = new Set()) {
+  if (!value || typeof value !== "object" || seen.has(value)) return rows;
+  seen.add(value);
+  if (!Array.isArray(value) && value.questionUid === questionUid) rows.push(value);
+  for (const child of Object.values(value)) findQuestionUidRows(child, questionUid, rows, seen);
+  return rows;
+}
+
+function sameArray(a, b) {
+  return JSON.stringify(a || []) === JSON.stringify(b || []);
+}
+
+function sameGeometryMapping(a, b) {
+  return a.subUnitKey === b.subUnitKey &&
+    a.problemTypeKey === b.problemTypeKey &&
+    a.templateKey === b.templateKey &&
+    sameArray(a.crossConceptKeys, b.crossConceptKeys) &&
+    sameArray(a.conditionKeys, b.conditionKeys);
+}
+
+function approvedSourceBoundGeometryMetadata(metadata, actual, runtimePackVersion) {
+  if (!metadata || !actual ||
+      metadata.metadataStatus !== "approved_semantic_review" ||
+      metadata.metadataApprovalType !== "META_PIPELINE_AUDIT" ||
+      metadata.sourceMetadataVerification !== "MOTHER_SOURCE_BOUND_FINAL" ||
+      metadata.metaFoundationPackId !== "GEOMETRY_EQUATIONS" ||
+      metadata.metaFoundationPackVersion !== runtimePackVersion ||
+      metadata.sourceArchiveFile !== actual.sourceArchiveFile ||
+      Number(metadata.sourceOrdinal) !== Number(actual.sourceOrdinal) ||
+      !metadata.sourceFingerprint ||
+      metadata.sourceFingerprint !== actual.sourceFingerprint ||
+      metadata.sourceFingerprint !== actual.approvedSourceFingerprint ||
+      metadata.metadataRevision !== actual.metadataRevision ||
+      !sameGeometryMapping(metadata, actual)) return false;
+
+  const evidence = Array.isArray(metadata.approvalEvidence) ? metadata.approvalEvidence : [];
+  const reviewPath = evidence.find((item) =>
+    typeof item === "string" && item.startsWith("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/") &&
+    item.endsWith(".json") && !item.endsWith(".source-parity.json") && !item.includes("ATOMIC_PACKAGE")
+  );
+  const parityPath = evidence.find((item) =>
+    typeof item === "string" && item.startsWith("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/") &&
+    item.endsWith(".source-parity.json")
+  );
+  if (!reviewPath || !parityPath || !fs.existsSync(abs(reviewPath)) || !fs.existsSync(abs(parityPath))) return false;
+
+  const reviewed = findQuestionUidRows(readJson(reviewPath), metadata.questionUid)
+    .find((row) => row.metadataRevision === metadata.metadataRevision && sameGeometryMapping(row, metadata));
+  const parity = findQuestionUidRows(readJson(parityPath), metadata.questionUid)
+    .find((row) => Number(row.sourceOrdinal) === Number(metadata.sourceOrdinal) && row.studentPayloadEqual === true);
+  return Boolean(reviewed && parity);
+}
+
 function buildGeometryRegression(canonical, compiled) {
   const assignmentPath = rel(geometryEvidenceRoot, "item_metadata_assignments_400.json");
   const runtimePath = geometryRuntimePath;
   const assignments = readJson(assignmentPath);
   const runtime = readJson(runtimePath);
+  const questionMetadata = readJson("archive/data/question_metadata.json");
+  const metadataByUid = new Map((questionMetadata.records || []).map((row) => [row.questionUid, row]));
+  if (metadataByUid.size !== (questionMetadata.records || []).length) throw new Error("duplicate current question metadata UID");
   const problemTypes = new Set(compiled.taxonomy.problemTypes.map((x) => x.problemTypeKey));
   const templates = new Map(compiled.taxonomy.templates.map((x) => [x.templateKey, x]));
   const concepts = new Set(compiled.conceptRegistry.concepts.map((x) => x.conceptKey));
@@ -246,6 +302,7 @@ function buildGeometryRegression(canonical, compiled) {
     unregisteredL4Count: 0,
     unregisteredCrossConceptCount: 0,
     unregisteredConditionCount: 0,
+    approvedSourceMappingOverrideCount: 0,
     runtimeMappingMismatchCount: 0
   };
 
@@ -263,15 +320,14 @@ function buildGeometryRegression(canonical, compiled) {
 
   const runtimeByUid = new Map(runtime.records.map((record) => [record.questionUid, record]));
   if (runtimeByUid.size !== runtime.records.length) throw new Error("duplicate geometry runtime UID");
-  const sameArray = (a, b) => JSON.stringify(a || []) === JSON.stringify(b || []);
   for (const record of assignments.records) {
     const actual = runtimeByUid.get(record.questionUid);
-    if (!actual ||
-        actual.subUnitKey !== record.subUnitKey ||
-        actual.problemTypeKey !== record.problemTypeKey ||
-        actual.templateKey !== record.templateKey ||
-        !sameArray(actual.crossConceptKeys, record.crossConceptKeys) ||
-        !sameArray(actual.conditionKeys, record.conditionKeys)) {
+    const currentMetadata = metadataByUid.get(record.questionUid);
+    const frozenMappingChanged = actual && currentMetadata && !sameGeometryMapping(record, currentMetadata);
+    const sourceOverride = frozenMappingChanged &&
+      approvedSourceBoundGeometryMetadata(currentMetadata, actual, runtime.packVersion);
+    if (sourceOverride) counts.approvedSourceMappingOverrideCount += 1;
+    if (!actual || !sameGeometryMapping(actual, sourceOverride ? currentMetadata : record)) {
       counts.runtimeMappingMismatchCount += 1;
     }
   }
@@ -297,6 +353,8 @@ function assertGate(regression) {
   ]) {
     if (c[key] !== 0) failures.push(`${key}=${c[key]}`);
   }
+  if (c.approvedSourceMappingOverrideCount !== 5)
+    failures.push(`approvedSourceMappingOverrideCount=${c.approvedSourceMappingOverrideCount}`);
   if (failures.length) throw new Error("Meta Foundation compile gate failed: " + failures.join(", "));
 }
 
@@ -400,8 +458,10 @@ function expectedRuntime(canonical) {
   const geometryPack = canonical.packs.find((pack) => pack.meta.packId === "GEOMETRY_EQUATIONS");
   const version = geometryPack.meta.packVersion;
   const runtime = readJson(geometryRuntimePath);
+  const runtimeVersionMatch = String(runtime.runtimeVersion || "").match(/^GEOMETRY_EQUATIONS@[0-9.]+\/(runtime-bridge-v1|reviewed-exam-v2)$/);
+  if (!runtimeVersionMatch) throw new Error(`unsupported geometry runtime version: ${runtime.runtimeVersion}`);
   runtime.packVersion = version;
-  runtime.runtimeVersion = `GEOMETRY_EQUATIONS@${version}/runtime-bridge-v1`;
+  runtime.runtimeVersion = `GEOMETRY_EQUATIONS@${version}/${runtimeVersionMatch[1]}`;
   const revision = `meta-foundation:GEOMETRY_EQUATIONS@${version}`;
   for (const record of runtime.records) {
     // Reviewed-apply appends provenance to this revision; preserve it while checking the pack version.
@@ -484,6 +544,7 @@ function main() {
     unregisteredL4Count: regression.counts.unregisteredL4Count,
     unregisteredCrossConceptCount: regression.counts.unregisteredCrossConceptCount,
     unregisteredConditionCount: regression.counts.unregisteredConditionCount,
+    approvedSourceMappingOverrideCount: regression.counts.approvedSourceMappingOverrideCount,
     foundationAssignmentCount: regression.counts.assignmentCount,
     runtimeRecordCount: regression.counts.runtimeRecordCount,
     runtimeMappingMismatchCount: regression.counts.runtimeMappingMismatchCount
