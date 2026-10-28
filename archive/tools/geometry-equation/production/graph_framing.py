@@ -85,13 +85,43 @@ def _fit_cubic_quartic(plan,coefficients):
     else:
         lo,hi=-radius,radius
     if not all(math.isfinite(v) and abs(v)<=1e6 for v in (lo,hi)):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
+    window_policy=plan.get('overviewWindowPolicy')
+    if window_policy not in (None,'FEATURE_BAND'):raise ValueError('INVALID_OVERVIEW_WINDOW_POLICY')
     def evaluate(value):
         result=float(polynomial.eval(S.Rational(str(value))))
         if not math.isfinite(result) or abs(result)>1e12:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
         return result
-    values=[evaluate(lo),evaluate(hi),0.0,*[row['y'] for row in math_features],*required_y,*[y for _,y in anchor_points]]
-    low,high=min(values),max(values);span=max(1.0,high-low,abs(low),abs(high));padding=.15*span
-    ymin=min(0.0,low)-padding;ymax=max(0.0,high)+padding
+    def display_y_bounds(left,right):
+        values=[evaluate(left),evaluate(right),0.0,*[row['y'] for row in math_features],*required_y,*[y for _,y in anchor_points]]
+        low,high=min(values),max(values);span=max(1.0,high-low,abs(low),abs(high));padding=.15*span
+        return min(0.0,low)-padding,max(0.0,high)+padding
+    ymin,ymax=display_y_bounds(lo,hi)
+    # An opt-in feature-band window for a source whose whole-curve tails dwarf the compared key values (for
+    # example a cubic whose two extrema are 11% of the overview height apart): trim the display x-window to a
+    # small margin beyond the outer recorded features instead of the default 20% of the largest feature
+    # coordinate. The source domain stays ALL_REALS; the observer floors and the sampling are unchanged. The
+    # default window is untouched, so previously reviewed overviews keep their exact bytes.
+    if window_policy=='FEATURE_BAND':
+        focus=[0.0,*[row['x'] for row in math_features],*required_x,*[x for x,_ in anchor_points]]
+        focus_lo,focus_hi=min(focus),max(focus)
+        margin=max(.5,.12*(focus_hi-focus_lo))
+        lo,hi=focus_lo-margin,focus_hi+margin
+        if not all(math.isfinite(v) and abs(v)<=1e6 for v in (lo,hi)):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
+        ymin,ymax=display_y_bounds(lo,hi)
+    # The final overview audit requires each end arm to travel at least 18% of the plot height away from its outer
+    # stationary point. An asymmetric source (for example roots -2, 2, a with a>2) can leave one arm on a boundary only
+    # a fraction of a unit past the last critical point, so extend that short side of the display window (never both
+    # unconditionally) until the arm clears the audit with a small margin. The audit itself is unchanged.
+    critical_rows=[row for row in math_features if any(str(role).startswith('STATIONARY_') for role in row['roles'])] or [row for row in math_features if 'INFLECTION' in row['roles']]
+    if critical_rows:
+        left_anchor=min(critical_rows,key=lambda row:row['x']);right_anchor=max(critical_rows,key=lambda row:row['x'])
+        for _ in range(60):
+            total=ymax-ymin;step=max(.15,.05*(hi-lo));changed=False
+            if abs(evaluate(lo)-left_anchor['y'])<.182*total:lo-=step;changed=True
+            if abs(evaluate(hi)-right_anchor['y'])<.182*total:hi+=step;changed=True
+            if not changed:break
+            ymin,ymax=display_y_bounds(lo,hi)
+    if not all(math.isfinite(v) and abs(v)<=1e6 for v in (lo,hi)):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
     sign=1 if polynomial.LC()>0 else -1
     left_sign=sign if degree%2==0 else -sign
     end_directions={'left':'UP' if left_sign>0 else 'DOWN','right':'UP' if sign>0 else 'DOWN'}
@@ -99,7 +129,7 @@ def _fit_cubic_quartic(plan,coefficients):
     tail_features=[{'id':'tail-left','kind':'TAIL_DIRECTION','side':'LEFT','endpointX':lo,'direction':end_directions['left'],'slopeDirection':end_slope_directions['left']},{'id':'tail-right','kind':'TAIL_DIRECTION','side':'RIGHT','endpointX':hi,'direction':end_directions['right'],'slopeDirection':end_slope_directions['right']}]
     features=[*math_features,*tail_features]
     feature_policy={'schemaVersion':'POLYNOMIAL_CUBIC_QUARTIC_FEATURE_POLICY_v1','repeatedSourceRootPolicy':'EXACT_MULTIPLICITY','tangencyPolicy':'TOUCHES_AXIS_EVEN_CROSSES_ODD','minimumDistinctFeatureSeparationCssPx':1,'stationaryInflectionPolicy':'MERGE_ROLES_AT_SAME_POINT'}
-    fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','overviewFeatures':features,'overviewFeaturePolicy':feature_policy,'overviewEndDirections':end_directions}
+    fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','overviewFeatures':features,'overviewFeaturePolicy':feature_policy,'overviewEndDirections':end_directions,**({'overviewWindowPolicy':'FEATURE_BAND'} if window_policy else {})}
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 def _fit_overview_family(plan):
