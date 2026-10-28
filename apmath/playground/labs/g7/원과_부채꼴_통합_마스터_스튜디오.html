@@ -1992,7 +1992,7 @@ function tlInitEvents(){
  tlGet('tlOffset').addEventListener('input',e=>tlSetGeometry('offset',+e.target.value));
  tlGet('tlModes').addEventListener('click',e=>{
   const b=e.target.closest('[data-tl-mode]');if(!b)return;
-  tlStop();TL.mode=b.dataset.tlMode;TL.trace=0;TL.detach=0;TL.focus=-1;TL.f03Progress=1;renderTransformLab();
+  tlStop();TL.mode=b.dataset.tlMode;TL.trace=0;if(!TL.family.startsWith('f02-'))TL.detach=0;TL.focus=-1;TL.f03Progress=1;renderTransformLab();
  });
  tlGet('tlFamilyControls').addEventListener('input',e=>{
   const control=e.target.closest('[data-tl-f03-control]');if(!control)return;
@@ -2218,6 +2218,7 @@ if(new URLSearchParams(location.search).get("start")==="basic"){S.zone=1;S.item=
 if(new URLSearchParams(location.search).get("start")==="transform")S.zone=6;
 render();
 </script>
+<script src="circle-transform-f02.js?v=20261028-f02"></script>
 <script src="circle-transform-f04-f06.js?v=20261028-f04-f06"></script>
 <script id="ap-mobile-adapter">
 (function(){
