@@ -295,23 +295,30 @@ test('production compiler derives a new Generated problem row from the current s
   assert.equal(generated.semanticClearanceOrigin, 'GENERATED_PRODUCTION_SOURCE_IMAGE_BINDING');
 });
 
-test('student SVG accessibility index tracks the manifest hash and current Q03 metadata', () => {
+test('student SVG accessibility index tracks the manifest hash and current Geumdang metadata', () => {
   const manifestPath = path.join(__dirname, '..', 'archive', 'data', 'svg-accessibility-manifest.v1.json');
   const indexPath = path.join(__dirname, '..', 'archive', 'data', 'svg-accessibility-index.js');
-  const assetRef = 'assets/images/24_금당고_2학기_중간_고1_기출/q03-solution.svg';
+  const assetRefs = [
+    'assets/images/24_금당고_2학기_중간_고1_기출/q03-solution.svg',
+    'assets/images/24_금당고_2학기_중간_고1_기출/q16-solution.svg'
+  ];
   const manifestText = fs.readFileSync(manifestPath, 'utf8').replace(/\r\n/g, '\n');
   const manifest = JSON.parse(manifestText);
-  const source = manifest.records.find(record => record.assetRef === assetRef && record.visualRole === 'solution');
-  assert.ok(source);
-
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(indexPath, 'utf8'), context);
   const index = context.window.APSvgAccessibilityIndex;
-  const current = Array.from(index.records).find(record => record.assetRef === assetRef && record.visualRole === 'solution');
-  assert.ok(current);
   assert.equal(index.manifestSha256, `sha256:${sha256(Buffer.from(manifestText, 'utf8'))}`);
-  assert.equal(current.svgSha256, source.svgSha256);
-  assert.equal(current.gitBlobSha, source.gitBlobSha);
-  assert.equal(current.titleKo, source.titleKo);
-  assert.equal(current.descriptionKo, source.descriptionKo);
+  for (const assetRef of assetRefs) {
+    const source = manifest.records.find(record => record.assetRef === assetRef && record.visualRole === 'solution');
+    const current = Array.from(index.records).find(record => record.assetRef === assetRef && record.visualRole === 'solution');
+    assert.ok(source);
+    assert.ok(current);
+    const bytes = execFileSync('git', ['show', `HEAD:archive/${assetRef}`], { cwd: path.join(__dirname, '..') });
+    assert.equal(source.svgSha256, `sha256:${sha256(bytes)}`);
+    assert.equal(source.gitBlobSha, gitBlobSha(bytes));
+    assert.equal(current.svgSha256, source.svgSha256);
+    assert.equal(current.gitBlobSha, source.gitBlobSha);
+    assert.equal(current.titleKo, source.titleKo);
+    assert.equal(current.descriptionKo, source.descriptionKo);
+  }
 });
