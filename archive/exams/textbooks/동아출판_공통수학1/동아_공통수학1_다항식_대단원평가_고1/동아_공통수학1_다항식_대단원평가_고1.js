@@ -164,7 +164,7 @@ window.questionBank = [
       "대단원 평가"
     ],
     "wide": false,
-    "content": "다음은 조립제법을 이용하여 다항식 $P(x)=3x^3+ax^2+bx-1$을 일차식 $3x+2$로 나누었을 때의 몫 $Q(x)$와 나머지를 구하는 과정이다. $P(1)+Q(-1)$의 값을 구하시오. (단, $a, b, c, d, e$는 상수이다.)\n<img src=\"assets/images/동아_공통수학1_다항식_대단원평가_고1/q06.png\" />",
+    "content": "다음은 조립제법을 이용하여 다항식 $P(x)=3x^3+ax^2+bx-1$을 일차식 $3x+2$로 나누었을 때의 몫 $Q(x)$와 나머지를 구하는 과정이다. $P(1)+Q(-1)$의 값을 구하시오. (단, $a, b, c, d, e$는 상수이다.)\n<img src=\"q06.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""
@@ -360,7 +360,7 @@ window.questionBank = [
       "대단원 평가"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같은 직육면체의 모든 모서리의 길이의 합이 $20$이고 삼각형 $\\mathrm{AFC}$의 세 변의 길이의 제곱의 합이 $20$일 때, 이 직육면체의 겉넓이를 구하시오.\n<img src=\"assets/images/동아_공통수학1_다항식_대단원평가_고1/q13.png\" />",
+    "content": "오른쪽 그림과 같은 직육면체의 모든 모서리의 길이의 합이 $20$이고 삼각형 $\\mathrm{AFC}$의 세 변의 길이의 제곱의 합이 $20$일 때, 이 직육면체의 겉넓이를 구하시오.\n<img src=\"q13.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""
