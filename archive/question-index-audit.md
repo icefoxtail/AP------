@@ -2,12 +2,12 @@
 
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated)
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(1004파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(1037파일).
   - 교과서 파일은 `textbooks/<book>/<title>.js` 경로와 db.js의 명시 등록이 모두 있을 때만 포함한다.
   - DB 미등록 교재 파일과 미추적 _pro 드래프트는 제외한다.
 - 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
-- 원본 문항 수: 24083
-- 최종 인덱스 문항 수: 24083
+- 원본 문항 수: 25525
+- 최종 인덱스 문항 수: 25525
 - 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -38,8 +38,9 @@
 
 > 공식 마스터(142) 에 없고 RAW- 규약도 아닌 키. 검색/자동출제에서 mixer 의 getStandardizedUnit 이 "미분류"로 처리한다.
 > 원문 standardUnitKey 값은 인덱스에 보존한다(별도 치환/보정 없음).
-> distinct 25종 / 183건
+> distinct 27종 / 540건
 
+- `H22-C3-01` — 350건 (예: textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-T1-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S1-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S2-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S3-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S4-R1)
 - `M2-09` — 37건 (예: original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#18, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#19, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#20, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#22, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#24)
 - `M2-10` — 26건 (예: original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#17, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#21, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#11, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#12, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#13)
 - `M2-11` — 21건 (예: original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#15, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#16, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#17, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#18, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#19)
@@ -48,6 +49,7 @@
 - `H22-C-11` — 10건 (예: original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#16, original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#18, original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js#16, original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js#19, original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js#9)
 - `HH15-SA-01` — 10건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#1, types/high/h1/항등식과나머지정리_고1_유형.js#2, types/high/h1/항등식과나머지정리_고1_유형.js#4, types/high/h1/항등식과나머지정리_고1_유형.js#6, types/high/h1/항등식과나머지정리_고1_유형.js#8)
 - `H22-A-03-02` — 10건 (예: types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#2, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#3, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#6, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#7, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#12)
+- `H22-C2-SET` — 7건 (예: textbooks/백발백중_공통수학2/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50.js#BV-BAKBAL-H-COM2-P151-Q10-T1-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50.js#BV-BAKBAL-H-COM2-P151-Q10-S1-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50.js#BV-BAKBAL-H-COM2-P151-Q10-S2-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50.js#BV-BAKBAL-H-COM2-P152-Q11-T1-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50.js#BV-BAKBAL-H-COM2-P152-Q11-S1-R1)
 - `H22-C-10` — 6건 (예: original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#12, original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#13, original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#19, original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js#14, original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js#9)
 - `M2-03-INEQUALITY` — 5건 (예: original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js#11, original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js#12, original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js#14, original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js#15, original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js#16)
 - `HH15-SA-03` — 4건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#11, types/high/h1/항등식과나머지정리_고1_유형.js#16, types/high/h1/항등식과나머지정리_고1_유형.js#21, types/high/h1/항등식과나머지정리_고1_유형.js#31)
@@ -83,7 +85,7 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 24083건 기준)
+## 5. 필드 누락 (최종 인덱스 25525건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
@@ -101,10 +103,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 3735 |
-| content <img> | 1061 |
+| q.image 보유 | 3773 |
+| content <img> | 1073 |
 | content <svg> | 77 |
-| content <table> | 364 |
-| 시각요소 보유(hasImage=true) | 5064 |
+| content <table> | 367 |
+| 시각요소 보유(hasImage=true) | 5105 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
