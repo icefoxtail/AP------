@@ -5,10 +5,12 @@ on:
     branches: [main]
     paths:
       - 'archive/**'
+      - '.github/workflows/ci.yml'
   pull_request:
     branches: [main]
     paths:
       - 'archive/**'
+      - '.github/workflows/ci.yml'
   workflow_dispatch:
     inputs:
       base_sha:
