@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "meta-pipeline-courier-semantic-review-v1",
+  "examUid": "20_매산여고_1학기_중간_고1_기출",
+  "requestId": "meta-pipeline-maesan20-8c976117425d-20261027",
+  "reviewActors": [
+    "CODEX_ROOT"
+  ],
+  "scope": "Audited CC definitions, exact canonical reuse, source-image reference parity and one evidence-bound L1/L2 parent resolution; no math re-solve or visual-quality PASS.",
+  "openCodeChild": "NOT_RUN_KNOWN_WEEKLY_QUOTA; NO MODEL SUBSTITUTION",
+  "decisions": {
+    "conceptShards": {
+      "CC_SYNTHETIC_DIVISION": "ALGEBRA",
+      "CC_NEGATIVE_RADICAL_OPERATION": "ALGEBRA",
+      "CC_COMPLEX_NUMBER_EQUALITY": "ALGEBRA",
+      "CC_ROOTS_RATIO_VIETA": "ALGEBRA",
+      "CC_DISCRIMINANT_IDENTITY": "ALGEBRA",
+      "CC_DISCRIMINANT_SQUARE_ROOT": "ALGEBRA",
+      "CC_ROOT_REDUCTION_SYMMETRIC": "ALGEBRA",
+      "CC_REMAINDER_THEOREM_QUADRATIC_DIVISOR": "ALGEBRA",
+      "CC_COMPLEX_UNIT_CIRCLE_REAL_CONDITION": "ALGEBRA",
+      "CC_CUBIC_FACTOR_NATURAL_BOUND": "ALGEBRA",
+      "CC_TRIANGLE_SIDE_FACTORIZATION": "PLANE_GEOMETRY",
+      "CC_CUBOID_DIAGONAL_SYMMETRIC": "PLANE_GEOMETRY",
+      "CC_PARABOLA_ABOVE_LINE": "FUNCTIONS",
+      "CC_PARABOLA_X_INTERCEPT_EXISTENCE": "FUNCTIONS",
+      "CC_QUADRATIC_LINE_INTERSECTIONS": "FUNCTIONS",
+      "CC_QUADRATIC_EXTREMA_RESTRICTED_DOMAIN": "FUNCTIONS",
+      "CC_RECTANGLE_CROSS_SECTION_MAX": "FUNCTIONS"
+    },
+    "reuseRationales": {
+      "CC_REMAINDER_THEOREM_LINEAR": "Source ordinals 2 show the same canonical concept in their audited decisive steps; retain the exact existing definition and key unchanged. 다항식을 x-a로 나눈 나머지가 P(a)임을 이용하는 개념.",
+      "CC_COMPLEX_CONJUGATE_PROPERTIES": "Source ordinals 9 show the same canonical concept in their audited decisive steps; retain the exact existing definition and key unchanged. z와 z_bar의 합과 곱이 항상 실수이며 역수와 켤레의 관계를 분석하는 개념",
+      "CC_POLYNOMIAL_DIVISION_ALGORITHM": "Source ordinals 3 show the same canonical concept in their audited decisive steps; retain the exact existing definition and key unchanged. A = BQ + R (차수 R < 차수 B)로 표현되는 다항식의 항등식 관계",
+      "CC_INDEPENDENT_VARIABLE_IDENTITY": "Source ordinals 4 show the same canonical concept in their audited decisive steps; retain the exact existing definition and key unchanged. 미지수의 값에 관계없이 항상 성립하는 등식의 계수 비교",
+      "CC_INSCRIBED_RECTANGLE_QUADRATIC_MODEL": "Source ordinals 14 show the same canonical concept in their audited decisive steps; retain the exact existing definition and key unchanged. 삼각형의 닮음비를 이용해 직사각형의 변을 미지수로 나타내고 넓이의 부등식을 해결하는 기법"
+    },
+    "conditionDefinitions": {
+      "COND_TRIANGLE_SIDES": {
+        "labelKo": "삼각형 세 변의 양수 조건",
+        "definition": "삼각형의 세 변 a,b,c는 양수이며 삼각부등식을 만족한다. 인수분해 후 나머지 인수가 양수임을 판정하는 데 사용한다."
+      }
+    },
+    "parentLabels": {
+      "15": {
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2015",
+        "scope": "수학_상",
+        "standardUnitKey": "H15-SA-13",
+        "supportingSubUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+        "reason": "Unique canonical BPL parent for the same H15-SA-13 standard unit: 2015 / 수학(상) / 방정식과 부등식 / 이차방정식과 이차함수; the RPM master has the same unique course scope and parent row."
+      }
+    },
+    "blockers": []
+  }
+}
