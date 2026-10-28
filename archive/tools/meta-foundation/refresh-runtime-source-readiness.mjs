@@ -207,6 +207,43 @@ const activeRuntimePacks = core.Canonical.RUNTIME_INPUT_PATHS.map((relative) => 
   };
 }).sort((a, b) => a.packId.localeCompare(b.packId, "en"));
 
+const runtimeJoinByPack = new Map();
+for (const pack of activeRuntimePacks) {
+  let directUidJoinCount = 0;
+  let sourceIdentityRepairJoinCount = 0;
+  let joinMismatchCount = 0;
+  for (const overlay of pack.records) {
+    const base = packedBySource.get(sourceKey(overlay.sourceArchiveFile, overlay.sourceOrdinal));
+    const identity = catalog.canonicalAuthority.identityByUid?.[overlay.questionUid];
+    if (!base || !identity || identity.status !== "VERIFIED" ||
+        normalizeSourceFile(identity.sourceArchiveFile) !== normalizeSourceFile(overlay.sourceArchiveFile) ||
+        Number(identity.sourceOrdinal) !== Number(overlay.sourceOrdinal)) {
+      joinMismatchCount += 1;
+    } else if (base.questionUid === overlay.questionUid) {
+      directUidJoinCount += 1;
+    } else if (base.questionUid === "" && overlay.catalogIdentityRepairVerified === true) {
+      sourceIdentityRepairJoinCount += 1;
+    } else {
+      joinMismatchCount += 1;
+    }
+  }
+  if (directUidJoinCount + sourceIdentityRepairJoinCount + joinMismatchCount !== pack.records.length || joinMismatchCount !== 0)
+    throw new Error(`Per-pack canonical source identity join failed: ${pack.packId}`);
+  runtimeJoinByPack.set(pack.packId, { directUidJoinCount, sourceIdentityRepairJoinCount, joinMismatchCount });
+}
+
+const middleGeometryPack = activeRuntimePacks.find((pack) => pack.packId === "MIDDLE_GEOMETRY");
+if (middleGeometryPack) {
+  const joins = runtimeJoinByPack.get("MIDDLE_GEOMETRY");
+  const relative = "archive/data/meta-foundation/runtime/middle-geometry-v1.json";
+  const runtime = readJson(path.join(repoRoot, relative));
+  runtime.counts.catalogUidDirectJoin = joins.directUidJoinCount;
+  runtime.counts.catalogSourceIdentityRepairJoin = joins.sourceIdentityRepairJoinCount;
+  const text = writeJson(path.join(repoRoot, relative), runtime);
+  outputFiles.set(relative, text);
+  middleGeometryPack.runtimeSha256 = sha256(text);
+}
+
 const receiptPath = path.join(runtimeDir, "runtime-bridge-receipt.json");
 const receipt = readJson(receiptPath);
 receipt.checked = { ...(receipt.checked || {}) };
@@ -236,6 +273,12 @@ const packRecordCountFields = {
 for (const pack of activeRuntimePacks) {
   const field = packRecordCountFields[pack.packId];
   if (field) receipt.checked[field] = pack.records.length;
+}
+const middleGeometryJoins = runtimeJoinByPack.get("MIDDLE_GEOMETRY");
+if (middleGeometryJoins) {
+  receipt.checked.middleGeometryCatalogJoin =
+    middleGeometryJoins.directUidJoinCount + middleGeometryJoins.sourceIdentityRepairJoinCount;
+  receipt.checked.middleGeometryCatalogJoinMismatch = middleGeometryJoins.joinMismatchCount;
 }
 for (const pack of packs) {
   const report = packReports[pack.id];
