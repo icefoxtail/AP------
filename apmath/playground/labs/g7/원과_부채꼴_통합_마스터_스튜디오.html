@@ -1227,6 +1227,7 @@ function tlAtTrace(parts){
  return {point,focus,total,covered};
 }
 function tlDrawScene(){
+ if(TL.family.startsWith('f01-')){tlDrawF01();return;}
  if(TL.family==='circle'){tlDrawCircle();return;}
  const stage=tlGet('tlScene');if(!stage)return;
  const g=tlGeometry(),{cx,cy,scale,outer,inner}=g;
@@ -1368,6 +1369,14 @@ function tlUpdateFamilyControls(){
  tlGet('tlOffsetRow').hidden=TL.family!=='circle';
  tlGet('tlOuterRow').hidden=f01&&!cfg.outerKey;
  tlGet('tlInnerRow').hidden=f01&&!cfg.innerKey;
+ if(!f01){
+  tlGet('tlOuterLabel').textContent='큰 반지름';
+  Object.assign(tlGet('tlOuter'),{min:'2',max:'9',step:'0.5',value:String(TL.R)});
+  tlGet('tlOuterVal').textContent=`${TL.R} cm`;
+  tlGet('tlInnerLabel').textContent='작은 반지름';
+  Object.assign(tlGet('tlInner'),{min:'0',max:String(Math.max(0,tlFixed(TL.R-.5))),step:'0.5',value:String(TL.r)});
+  tlGet('tlInnerVal').textContent=`${TL.r} cm`;
+ }
 }
 function tlSetF01Control(which,value){
  const st=tlF01Current(),cfg=tlF01Config(TL.family);
@@ -1379,7 +1388,10 @@ function tlF01Num(n,digits=2){
  const k=10**digits,v=Math.round((n+Number.EPSILON)*k)/k;
  return Number(v.toFixed(digits)).toString();
 }
-function tlF01Pi(n){return tlRatTex(Math.round(n*10000),10000,true);}
+function tlF01Pi(n,d=1){
+ if(Number.isInteger(n)&&Number.isInteger(d))return tlRatTex(n,d,true);
+ return tlRatTex(Math.round(n*10000),10000*d,true);
+}
 function tlF01Rat(n){return tlRatTex(Math.round(n*10000),10000,false);}
 function tlF01ArcD(cx,cy,r,a,b){
  const p0=tlPolar(cx,cy,r,a),p1=tlPolar(cx,cy,r,b),span=Math.abs(b-a);
@@ -1463,8 +1475,8 @@ function tlF01Model(id,st,g){
   parts.push(straight('밑변 AB','#38bdf8',{x,y},{x:B.x,y:B.y},'a'),straight('오른쪽 변 BC','#38bdf8',B,C,'a'),straight('윗변 CD','#38bdf8',C,D,'a'),straight('새 반지름 AE','#fbbf24',{x,y},E,'a'),arcPart('30° 부채꼴 호 ED','#34d399',ap,-90,-60,'πa/6',x,y));
   areaLines=[`S=a^2-\\dfrac{30}{360}\\pi a^2`,`=a^2-\\dfrac{\\pi a^2}{12}=${a*a}-\\dfrac{${a*a}\\pi}{12}\\,\\mathrm{cm}^{2}`];
   originalAreaNum=a*a;removedAreaNum=Math.PI*a*a/12;areaNum=originalAreaNum-removedAreaNum;perimeterNum=4*a+Math.PI*a/6;
-  periLines=[`L=3a+AE+\\dfrac{\\pi a}{6}=4a+\\dfrac{\\pi a}{6}`,`=${4*a}+${tlF01Pi(a/6)}\\,\\mathrm{cm}`];
-  areaMetric=`${a*a}-\\dfrac{${a*a}\\pi}{12}\\,\\mathrm{cm}^{2}`;periMetric=`${4*a}+${tlF01Pi(a/6)}\\,\\mathrm{cm}`;originalMetric=`${a}^2`;
+  periLines=[`L=3a+AE+\\dfrac{\\pi a}{6}=4a+\\dfrac{\\pi a}{6}`,`=${4*a}+${tlF01Pi(a,6)}\\,\\mathrm{cm}`];
+  areaMetric=`${a*a}-\\dfrac{${a*a}\\pi}{12}\\,\\mathrm{cm}^{2}`;periMetric=`${4*a}+${tlF01Pi(a,6)}\\,\\mathrm{cm}`;originalMetric=`${a}^2`;
   note='정삼각형 ABE는 각을 찾는 보조 도형입니다. 제거하는 것은 정삼각형이 아니라 중심 A, 중심각 30°인 부채꼴 DAE입니다.';
   observation='AB=AE=AD=a입니다. 정삼각형의 60°와 정사각형 꼭짓점의 90° 차이가 30°를 만들며, 잘린 변 AD 대신 AE와 원호 ED가 경계가 됩니다.';
  }else{
@@ -1476,7 +1488,7 @@ function tlF01Model(id,st,g){
   const ca=(Math.atan2(A.y-C.y,A.x-C.x)*180/Math.PI+360)%360,cb=(Math.atan2(B.y-C.y,B.x-C.x)*180/Math.PI+360)%360;
   baseAux=dot(O.x,y)+line(O.x,y,O.x,y-rp)+tlTextSvg('R=5 cm',O.x+8,y-rp*.56,'#c5efff',mobile?11:13)+tlF01Angle(O.x,y,Math.min(20,rp*.22),180,360,'180°','#ffe6a0',mobile?10:12)+dot(C.x,C.y);
   pieceAux=line(A.x,A.y,C.x,C.y,'#ffe6a0')+line(C.x,C.y,B.x,B.y,'#ffe6a0')+tlTextSvg('AC=6 cm',(A.x+C.x)/2-10,(A.y+C.y)/2-7,'#fff1b0',mobile?10:12,'middle')+tlTextSvg('BC=8 cm',(B.x+C.x)/2+10,(B.y+C.y)/2-7,'#fff1b0',mobile?10:12,'middle')+tlTextSvg('AB=10 cm',(A.x+B.x)/2,y+18,'#fff1b0',mobile?10:12,'middle')+tlF01Angle(C.x,C.y,14,cb,ca,'90°','#ffe6a0',mobile?9:10);
-  areaLines=[`S=\\dfrac{\\pi\\times10^2}{2}-\\dfrac{6\\times8}{2}`,`=\\dfrac{25\\pi}{2}-24\\,\\mathrm{cm}^{2}`];
+  areaLines=[`S=\\dfrac{\\pi R^2}{2}-\\dfrac{6\\times8}{2}`,`R=5: \\quad S=\\dfrac{\\pi\\times5^2}{2}-24`,`=\\dfrac{25\\pi}{2}-24\\,\\mathrm{cm}^{2}`];
   originalAreaNum=25*Math.PI/2;removedAreaNum=24;areaNum=originalAreaNum-removedAreaNum;perimeterNum=5*Math.PI+14;
   periLines=[`L=5\\pi+AC+CB`,`=5\\pi+6+8=5\\pi+14\\,\\mathrm{cm}`];
   areaMetric=`\\dfrac{25\\pi}{2}-24\\,\\mathrm{cm}^{2}`;periMetric=`5\\pi+14\\,\\mathrm{cm}`;originalMetric=`\\dfrac{25\\pi}{2}`;
