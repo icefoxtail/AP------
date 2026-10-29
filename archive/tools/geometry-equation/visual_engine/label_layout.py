@@ -631,6 +631,20 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                             label={**label,'at':list(start)};tie_to_owner(end);chosen=box;default_gaps=()
                             theta=math.degrees(ws['bisector'])%360;method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)];break
                     radius+=2
+            if 'pathOwned' in label:
+                # A path total-length label (E7): off the path, on a visible leader from a point of the path; the leader touches only the path's own segments, at its start.
+                default_gaps=()
+                site=label['pathOwned'];owner_ids=set(site['ids'])
+                for anchor in site['anchors']:
+                    for gap in site['gaps']:
+                        for direction in DIRECTIONS:
+                            box=candidate(anchor,w,h,direction,gap)
+                            if not acceptable(box,owner_check=False):continue
+                            end=visible_owner_leader(tuple(anchor),box,occupied,owner_ids)
+                            if end is None:continue
+                            label={**label,'at':list(anchor)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                        if chosen is not None:break
+                    if chosen is not None:break
             if 'dimensionPlacement' in label:
                 # A dimension line's length label (E7): the box stands on the outer side of the line (of the brace's tip), touching none of it, centred on the
                 # line or slid along it; no other place would read as that dimension's value, so there is no leader and no fallback search.

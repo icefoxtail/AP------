@@ -29,6 +29,7 @@ export function planNameTexts(plan){
   for(const row of Array.isArray(marks.regions)?marks.regions:[])add(row?.label);
   for(const row of Array.isArray(marks.expressionLabels)?marks.expressionLabels:[])add(row?.text);
   for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])add(row?.label);
+  for(const row of Array.isArray(marks.pathLabels)?marks.pathLabels:[])add(row?.label);
   for(const row of Array.isArray(plan?.scalarLabels)?plan.scalarLabels:[]){add(row?.prefix);add(row?.unit);}
   return out;
 }
@@ -42,6 +43,7 @@ export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels'],
   dimensions:['id','from','to','label','labelKind','unit','side','style','offset','value','factRole'],
+  pathLabels:['id','points','label','labelKind','unit','value','factRole'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit','labelAt'],
@@ -243,6 +245,34 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     factRolesByLabel[row.id+'-label']=role(row);
   }
 
+  // --- path total-length labels (E7): one label for the length of a whole bent path (three to eight points joined by drawn segments), tied to the path by a leader
+  for(const row of list(marks.pathLabels,'pathLabels')){
+    if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:pathLabels');
+    keysOk(row,KEYS.pathLabels,'pathLabels');claim(row.id,'pathLabels');
+    if(!Array.isArray(row.points)||row.points.length<3||row.points.length>8||row.points.some(id=>typeof id!=='string')||new Set(row.points).size!==row.points.length)bad('PATH_LABEL_POINTS_INVALID:'+row.id);
+    const coords=row.points.map(at),pathSegments=[];let total=0;
+    for(let i=0;i+1<row.points.length;i++){
+      const a=row.points[i],b=row.points[i+1];
+      const hit=(plan.displaySegments||[]).find(s=>segmentIds.has(s.id)&&Array.isArray(s.refs)&&((s.refs[0]===a&&s.refs[1]===b)||(s.refs[0]===b&&s.refs[1]===a)));
+      if(!hit)bad('PATH_LABEL_SEGMENT_NOT_DRAWN:'+row.id+':'+a+'-'+b);
+      pathSegments.push(hit.id);total+=norm(sub(coords[i+1],coords[i]));
+    }
+    const parts=dimensionLabelParts(row);
+    if(parts.conflict)bad('MARK_UNIT_INVALID:pathLabels:'+row.id);
+    const kind=row.labelKind??'MATH';
+    if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:pathLabels.labelKind:'+row.id);
+    if(typeof parts.label!=='string'||!parts.label.trim()||parts.label.length>40)bad('PATH_LABEL_LABEL_REQUIRED:'+row.id);
+    if(kind==='TEXT')plainTextOk(parts.label,'pathLabels.label',row.id);
+    const unit=unitOf({...row,unit:parts.unit},kind,true,'pathLabels');
+    if(row.value!==undefined){
+      const declared=numberOf(row.value);
+      if(declared===null||declared<=0)bad('MARK_FIELD_INVALID:pathLabels.value:'+row.id);
+      if(Math.abs(declared-total)>1e-6*Math.max(1,declared))bad('PATH_LABEL_FACT_MISMATCH:'+row.id+':declared='+declared+':drawn='+total.toFixed(6));
+    }
+    objects.push({id:row.id,kind:'PATH_LABEL',refs:[...row.points],segments:pathSegments,labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
+    factRolesByLabel[row.id+'-label']=role(row);
+  }
+
   // --- highlighted circle arcs
   for(const row of list(marks.arcs,'arcs')){
     if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:arcs');
@@ -354,6 +384,7 @@ export function planeMarkPointRefs(plan){
   for(const row of Array.isArray(marks.angles)?marks.angles:[])if(Array.isArray(row?.refs))refs.push(...row.refs);
   for(const row of Array.isArray(marks.arcs)?marks.arcs:[])refs.push(row?.center,row?.from,row?.to);
   for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])refs.push(row?.from,row?.to);
+  for(const row of Array.isArray(marks.pathLabels)?marks.pathLabels:[])if(Array.isArray(row?.points))refs.push(...row.points);
   for(const row of Array.isArray(marks.traces)?marks.traces:[]){refs.push(row?.center,row?.radius?.point,...(Array.isArray(row?.through)?row.through:[]));}
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
   return [...refs,...regionPointRefs(plan)].filter(id=>typeof id==='string');

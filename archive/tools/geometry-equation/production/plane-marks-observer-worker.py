@@ -492,6 +492,30 @@ def audit(p):
             if sid.startswith(oid+'-') or re.fullmatch(r'.+-ext-(?:from|to)',sid):continue
             if any(properly_cross(c,e,q0,q1) for c,e in zip(line,line[1:]) for q0,q1 in zip(pts,pts[1:])):errors.append('DIMENSION_CROSSES_STROKE:'+oid+':'+sid)
 
+    # ---- path total-length labels: one label for a bent path (consecutive drawn segments), tied to the path by a visible leader that starts on it
+    for row in marks.get('pathLabels',[]):
+        oid=row['id'];ids=row.get('points') or []
+        if len(ids)<3 or len(set(ids))!=len(ids):errors.append('PATH_LABEL_POINTS_INVALID:'+oid);continue
+        path=[forward(peer_point(pid)) for pid in ids];owned=[]
+        for a_id,b_id in zip(ids,ids[1:]):
+            hit=next((s for s in p.get('segments',[]) if set(s.get('refs') or [])=={a_id,b_id}),None)
+            if hit is None or drawn_segment(hit['id']) is None:errors.append('PATH_LABEL_SEGMENT_NOT_DRAWN:'+oid+':'+a_id+'-'+b_id)
+            else:owned.append(hit['id'])
+        total=sum(norm(sub(peer_point(b_id),peer_point(a_id))) for a_id,b_id in zip(ids,ids[1:]))
+        if row.get('value') is not None and abs(total-float(row['value']))>1e-6*max(1.0,float(row['value'])):errors.append('PATH_LABEL_FACT_MISMATCH:'+oid+':declared=%s:drawn=%.6f'%(row['value'],total))
+        box=label_clear(oid+'-label')
+        if box is not None:
+            node=leaders.get(oid+'-label')
+            if node is None:errors.append('PATH_LABEL_LEADER_MISSING:'+oid)
+            else:
+                leader_ok(oid+'-label',box,lambda q:min(point_segment_distance(q,c,d) for c,d in zip(path,path[1:]))<=1.0)
+                la=(float(node.get('x1')),float(node.get('y1')));lb=(float(node.get('x2')),float(node.get('y2')))
+                for sid,pts in strokes:
+                    if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('PATH_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+        label,unit=dimension_label_parts(row)
+        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit)
+        observations.append({'id':oid,'type':'PATH_LABEL','points':ids,'lengthModel':total,'segments':owned})
+
     # ---- highlighted circle arcs
     def arc_span(row):
         """(centre, radius, start direction in degrees, signed sweep in degrees) of a declared arc, from the peer points and the declared side only."""

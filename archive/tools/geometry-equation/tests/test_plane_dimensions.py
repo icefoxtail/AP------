@@ -237,4 +237,70 @@ class ObserverTests(unittest.TestCase):
         self.assertEqual(OBSERVER.dimension_label_parts({'label':'24','unit':'cm'}),('24','cm'))
         self.assertEqual(OBSERVER.dimension_label_parts({'label':'24'}),('24',None))
 
+# ---- path total-length labels: one label for a bent path, on a leader that starts on the path
+PATH_POINTS={'A':(0.0,0.0),'P':(34.0,-8.0),'Q':(14.0,-16.0),'B':(60.0,40.0)}
+PATH_SEGMENTS=[{'id':'sAP','refs':['A','P']},{'id':'sPQ','refs':['P','Q']},{'id':'sQB','refs':['Q','B']}]
+def path_object(**extra):return {'id':'road','kind':'PATH_LABEL','refs':['A','P','Q','B'],'segments':['sAP','sPQ','sQB'],'labelText':'총거리 305 m','labelKind':'TEXT',**extra}
+def path_marks(**extra):return {'pathLabels':[{'id':'road','points':['A','P','Q','B'],'label':'총거리 305 m','labelKind':'TEXT',**extra}]}
+def text_group(label_id,box,text):
+    return ('<g id="'+label_id+'" data-owner="x" data-fragment-sha="sha256:'+'0'*64+'" data-text="'+text+'" transform="translate(%.6f %.6f)">'%(box['x'],box['y'])+
+            '<svg xmlns="http://www.w3.org/2000/svg" width="%.3f" height="%.3f" viewBox="0 0 %.3f %.3f"><path d="M0 0 L5 0" fill="#111"/></svg></g>'%(box['width'],box['height'],box['width'],box['height']))
+
+class PathLabelTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        objects=[seg(s['id'],PATH_POINTS,*s['refs']) for s in PATH_SEGMENTS]+[path_object()]
+        cls.result=build(spec_of(PATH_POINTS,objects,width=640,height=420));cls.transform=cls.result['witness']['coordinateModel'];cls.layout=cls.result['witness']['layout']
+        cls.box={row['id']:row['box'] for row in cls.layout['labels']}['road-label']
+        cls.base=re.sub(r'<text\s[^>]*id="road-label"[^>]*>.*?</text>','',cls.result['svg'],flags=re.S)
+    def svg(self,box=None,leader=None):
+        svg=self.base
+        if leader is not None:svg=re.sub(r'<line\s[^>]*data-role="leader"[^>]*data-owner-label="road-label"[^>]*/>',leader,svg)
+        return svg.replace('</svg>',text_group('road-label',box or self.box,'총거리 305 m')+'</svg>')
+    def audit(self,svg=None,marks=None):
+        return OBSERVER.audit({'svg':svg or self.svg(),'points':{k:list(v) for k,v in PATH_POINTS.items()},'marks':marks or path_marks(),'segments':PATH_SEGMENTS,'transform':self.transform})
+    def codes(self,**kw):return [error.split(':')[0] for error in self.audit(**kw)['errors']]
+    def leader(self):return re.search(r'<line\s[^>]*data-role="leader"[^>]*data-owner-label="road-label"[^>]*/>',self.base).group(0)
+    def test_the_label_stands_off_the_path_on_a_leader_that_starts_on_it(self):
+        self.assertEqual(self.layout['unresolved'],[])
+        row=next(item for item in self.layout['labels'] if item['id']=='road-label');self.assertTrue(row['placement'].startswith('OWNER_LEADER_'),row['placement'])
+        leader=next(item for item in self.layout['leaders'] if item['ownerLabelId']=='road-label')
+        m=self.transform
+        def screen(p):return (m['originX']+p[0]*m['sx'],m['originY']-p[1]*m['sy'])
+        path=[screen(PATH_POINTS[k]) for k in ('A','P','Q','B')]
+        self.assertLess(min(OBSERVER.point_segment_distance(leader['from'],a,b) for a,b in zip(path,path[1:])),1e-6)
+        self.assertGreaterEqual(math.dist(leader['from'],leader['to']),20.0)
+    def test_the_genuine_label_passes(self):
+        report=self.audit();self.assertEqual(report['errors'],[],report['errors'])
+        row=next(item for item in report['observations'] if item['type']=='PATH_LABEL');self.assertEqual(row['segments'],['sAP','sPQ','sQB']);self.assertAlmostEqual(row['lengthModel'],math.dist((0,0),(34,-8))+math.dist((34,-8),(14,-16))+math.dist((14,-16),(60,40)),places=9)
+    def test_tamper_a_missing_leader_or_one_that_leaves_the_path(self):
+        self.assertIn('PATH_LABEL_LEADER_MISSING',self.codes(svg=self.svg(leader='')))
+        leader=self.leader();x1=float(re.search(r'\sx1="([^"]*)"',leader).group(1))
+        moved=re.sub(r'(\sx1=")[^"]*(")',lambda m:m.group(1)+str(x1+12)+m.group(2),leader,count=1)
+        self.assertIn('MARK_LEADER_NOT_ON_OWNER',self.codes(svg=self.svg(leader=moved)))
+    def test_tamper_a_leader_that_crosses_the_path(self):
+        # a leader from the path end A to A reflected across the line of the path's last segment Q-B: it starts on the path and runs straight across sQB
+        leader=self.leader();m=self.transform
+        def screen(p):return (m['originX']+p[0]*m['sx'],m['originY']-p[1]*m['sy'])
+        a,q,b=PATH_POINTS['A'],PATH_POINTS['Q'],PATH_POINTS['B'];d=(b[0]-q[0],b[1]-q[1]);t=((a[0]-q[0])*d[0]+(a[1]-q[1])*d[1])/(d[0]**2+d[1]**2)
+        foot=(q[0]+t*d[0],q[1]+t*d[1]);mirrored=(2*foot[0]-a[0],2*foot[1]-a[1]);start,end=screen(a),screen(mirrored)
+        across=leader
+        for name,value in (('x1',start[0]),('y1',start[1]),('x2',end[0]),('y2',end[1])):across=re.sub(r'(\s'+name+'=")[^"]*(")',lambda mm,v=value:mm.group(1)+str(v)+mm.group(2),across,count=1)
+        self.assertIn('PATH_LABEL_LEADER_CROSSES',self.codes(svg=self.svg(leader=across)))
+    def test_tamper_the_path_is_not_all_drawn_or_the_declared_length_is_wrong(self):
+        errors=self.audit(marks=path_marks(points=['A','P','B']))['errors']
+        self.assertTrue([e for e in errors if e.startswith('PATH_LABEL_SEGMENT_NOT_DRAWN:road:P-B')],errors)
+        self.assertTrue([e for e in self.audit(marks=path_marks(value=300))['errors'] if e.startswith('PATH_LABEL_FACT_MISMATCH:road')])
+        self.assertIn('LABEL_TEXT_MISMATCH',self.codes(marks=path_marks(label='총거리 306 m')))
+    def test_refusals(self):
+        def error(**extra):
+            objects=[seg(s['id'],PATH_POINTS,*s['refs']) for s in PATH_SEGMENTS]+[path_object(**extra)]
+            with self.assertRaises(ValueError) as caught:build(spec_of(PATH_POINTS,objects))
+            return str(caught.exception)
+        self.assertEqual(error(refs=['A','P']),'PATH_LABEL_POINTS_INVALID:road')
+        self.assertEqual(error(refs=['A','P','A','B']),'PATH_LABEL_POINTS_INVALID:road')
+        self.assertEqual(error(segments=['sAP','sPQ']),'PATH_LABEL_SEGMENT_NOT_DRAWN:road')
+        self.assertEqual(error(segments=['sAP','sQB','sPQ']),'PATH_LABEL_SEGMENT_NOT_DRAWN:road:P-Q')
+        self.assertEqual(error(labelText=''),'PATH_LABEL_LABEL_REQUIRED:road')
+
 if __name__=='__main__':unittest.main()

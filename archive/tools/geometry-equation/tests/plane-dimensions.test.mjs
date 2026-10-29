@@ -129,6 +129,40 @@ test('E7: the observer refuses a dimension line moved off its offset, on the wro
   assert.ok(codes(await run(composed.svg,{dimensions:[lineDimensions[0]]})).includes('UNDECLARED_MARK'));
 });
 
+// ---- a path total-length label: the road of 25 풍덕중 q4 (a zigzag A - P - Q - B) with the straight distance AB
+const pathGraph=plane([source('A',0,0),source('P',34,-8),source('Q',14,-16),source('B',60,40)]);
+const pathSegments=[{id:'sAP',refs:['A','P'],dashed:true},{id:'sPQ',refs:['P','Q'],dashed:true},{id:'sQB',refs:['Q','B'],dashed:true},{id:'sAB',refs:['A','B']}];
+const pathPlan=(planeMarks,extra={})=>({capability:'construction-spike-v1',caption:'A에서 B까지의 도로 경로와 직선 거리를 나타낸 그림이다.',mathPlan:pathGraph,displayPoints:['A','P','Q','B'],displayLines:[],displayCircles:[],
+  displaySegments:pathSegments,coordinateCanvas:{width:640,height:420},hiddenPointNames:['P','Q'],hiddenPointStyle:'NONE',planeMarks,...extra});
+
+test('E7: a path label ties one total length to a bent path with a leader that starts on the path; every audit passes',async()=>{
+  const model=await modelOf(pathGraph),marks={pathLabels:[{id:'road',points:['A','P','Q','B'],label:'305',unit:'m'}],dimensions:[{id:'dAB',from:'A',to:'B',label:'193',unit:'m',side:'LEFT',style:'ARROW'}]};
+  const plan=pathPlan(marks),composed=await composeOf(plan,model);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.planeMarks.status,'PASS',JSON.stringify(composed.staticAudit.planeMarks.errors));
+  assert.equal(composed.renderedLayout.status,'PASS',JSON.stringify(composed.renderedLayout.errors));
+  const leader=/<line\s[^>]*data-role="leader"[^>]*data-owner-label="road-label"[^>]*\/>/.exec(composed.svg)?.[0];
+  assert.ok(leader,'the label is tied to its path by a leader');
+  const prepared=await pythonWorker({action:'prepare',spec:specFor(plan,model,identity.assetId)});assert.equal(prepared.status,'OK');
+  const run=svg=>observe(svg,pathGraph,marks,plan.displaySegments,prepared.result.coordinateModel);
+  assert.deepEqual((await run(composed.svg)).errors,[]);
+  assert.ok(codes(await run(composed.svg.replace(leader,''))).includes('PATH_LABEL_LEADER_MISSING'));
+  const off=composed.svg.replace(leader,leader.replace(/\sx1="[^"]*"/,' x1="'+(Number(attr(leader,'x1'))+12).toFixed(3)+'"'));
+  assert.ok(codes(await run(off)).includes('MARK_LEADER_NOT_ON_OWNER'));
+});
+
+test('E7: path label plan errors',async()=>{
+  const model=await modelOf(pathGraph),row={id:'road',points:['A','P','Q','B'],label:'305',unit:'m'};
+  const err=(change,extra)=>specError(pathPlan({pathLabels:[{...row,...change}]},extra),model);
+  assert.equal(err({points:['A','P']}),'PATH_LABEL_POINTS_INVALID:road');
+  assert.equal(err({points:['A','P','A']}),'PATH_LABEL_POINTS_INVALID:road');
+  assert.equal(err({points:['A','Q','P','B']}),'PATH_LABEL_SEGMENT_NOT_DRAWN:road:A-Q');
+  assert.equal(err({label:''}),'PATH_LABEL_LABEL_REQUIRED:road');
+  assert.match(err({value:300}),/^PATH_LABEL_FACT_MISMATCH:road:declared=300:drawn=/);
+  assert.equal(err({unit:'km'}),'MARK_UNIT_INVALID:pathLabels:road');
+  assert.equal(err({style:'BRACKET'}),'MARK_FIELD_UNKNOWN:pathLabels.style');
+});
+
 // ---- the same marks on a coordinate construction plan (SOURCE_COORDINATE_AXES_v1, axes drawn): O(0,0), A(5,0) on the x axis, P(3,3)
 test('E7: a dimension also works on a coordinate construction plan, below the x axis',async()=>{
   const derived=(id,op,inputs,type,args={})=>({...node(id,op,inputs,type,args),factRole:'DERIVED_INTERMEDIATE'});

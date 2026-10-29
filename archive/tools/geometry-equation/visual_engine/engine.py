@@ -20,7 +20,7 @@ def _exact_float(text):
 from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
-from .label_layout import Box,layout,approximate_size,DIRECTIONS
+from .label_layout import Box,layout,approximate_size,DIRECTIONS,point_segment_distance
 from .svg_composer import compose,num as _num
 from .style_tokens import load
 from .config import resolve_output
@@ -185,6 +185,10 @@ DIM_SIDE_VECTORS={'BELOW':(0.0,1.0),'ABOVE':(0.0,-1.0),'LEFT':(-1.0,0.0),'RIGHT'
 DIM_SIDE_MIN_DOT=0.2             # the chosen side must point at least this much (cosine) along the named screen direction
 DIM_LABEL_GAPS=(8,12,18,26)
 DIM_LABEL_SLIDES=(0.0,0.12,-0.12,0.24,-0.24)   # fractions of the dimension's length a label may slide along it when the middle is taken
+
+PATH_LABEL_ANCHOR_FRACTIONS=(0.5,0.4,0.6,0.3,0.7,0.2,0.8)   # where along the path (by length) the leader may start, the middle first
+PATH_LABEL_GAPS=(24,32,44,60)                                  # distance from the anchor to the label box: always far enough to need a visible leader
+PATH_LABEL_CLEAR_PX=28.0                                       # an anchor farther than this from every other stroke is as good as any
 
 def dimension_frame(p,q,side,offset,oid):
     """(length, unit direction p->q, outward unit normal, distance of the dimension line from p-q) in screen px. The normal is the one of the two
@@ -790,6 +794,35 @@ def prepare(spec):
             # The label stands on the outer side of the dimension line (of the brace's tip), centred on it; the layout slides it along the line when the middle is taken.
             anchor=at(p,length/2,dist)
             labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'dimensionPlacement':{'anchor':list(anchor),'normal':list(n),'tangent':list(d),'length':length,'gaps':DIM_LABEL_GAPS,'slides':DIM_LABEL_SLIDES}},obj.get('unit')))
+        elif kind=='PATH_LABEL':
+            # One label for the whole length of a bent path: it stands off the path, tied to it by a visible leader that starts ON a drawn segment of the path.
+            path=[vp.screen(p) for p in value['points']];lengths=[math.dist(a,b) for a,b in zip(path,path[1:])];total=sum(lengths)
+            def along(distance):
+                for (a,b),length in zip(zip(path,path[1:]),lengths):
+                    if distance<=length+1e-9:t=distance/length;return (a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t)
+                    distance-=length
+                return path[-1]
+            anchors=[]
+            for fraction in PATH_LABEL_ANCHOR_FRACTIONS:
+                anchor=along(total*fraction)
+                if all(math.dist(anchor,other)>=1.0 for other in anchors):anchors.append(anchor)
+            for (a,b),length in sorted(zip(zip(path,path[1:]),lengths),key=lambda row:-row[1]):          # then the middle of every segment, longest first
+                anchor=((a[0]+b[0])/2,(a[1]+b[1])/2)
+                if all(math.dist(anchor,other)>=1.0 for other in anchors):anchors.append(anchor)
+            # A leader that starts where the path crosses or nears another stroke would read as that stroke's label: anchors that stand clear of every other stroke
+            # (the segment the anchor is on excepted) come first; within that, the order above (the middle of the path first) stays.
+            def clearance(anchor):
+                nearest=PATH_LABEL_CLEAR_PX
+                for o in obstacles:
+                    geometry_o=o.get('geometry')
+                    if o.get('kind') in {'line','curve','auxiliary','axis'} and isinstance(geometry_o,(list,tuple)):
+                        for c,e in zip(geometry_o,geometry_o[1:]):
+                            gap=point_segment_distance(anchor,c,e)
+                            if gap>1e-6:nearest=min(nearest,gap)
+                    elif o.get('kind')=='point' and isinstance(geometry_o,(list,tuple)) and len(geometry_o)>=3:nearest=min(nearest,math.dist(anchor,geometry_o[:2])-geometry_o[2])
+                return nearest
+            anchors.sort(key=lambda anchor:-clearance(anchor))
+            labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchors[0],{'pathOwned':{'ids':list(obj['segments']),'anchors':[list(a) for a in anchors],'gaps':PATH_LABEL_GAPS}},obj.get('unit')))
         elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
             ends=[(vp.screen(geometry[r][0]),vp.screen(geometry[r][1])) for r in obj['refs']];count=obj['count']
             reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1])
