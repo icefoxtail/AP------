@@ -142,7 +142,7 @@
       <div>
         <div class="flex items-center gap-2 flex-wrap">
           <h1 class="text-sm md:text-base font-black tracking-tight text-emerald-50 chalk-text">중3 삼각비 · 사분원 · 길이와 넓이 마스터 실험실</h1>
-          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">8대 탐구관 · 41종 직접 해부</span>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">8대 탐구관 · 38종 직접 해부</span>
         </div>
         <p class="text-[10.5px] text-emerald-400/85 hidden 2xl:block">sin·cos·tan 기준각 역전 · 특수각(30°·45°·60°) 도형 절단 · 사분원 점 P 드래그 &amp; 대소 비교 · 시계추 높이 L(1-cosθ) · 특수각 보존 수선 · 높이 h = a/(tan x ± tan y) · 넓이 ½bc sin A &amp; 대각선 ½pq sin θ</p>
       </div>
@@ -336,7 +336,7 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- 중3 삼각비 8대 탐구관 × 41종 시나리오 마스터 엔진 스크립트 -->
+  <!-- 중3 삼각비 8대 탐구관 × 38종 시나리오 마스터 엔진 스크립트 -->
   <!-- ===================================================================== -->
   <script>
     function tex(latexStr) {
@@ -382,7 +382,7 @@
     }
 
     // -------------------------------------------------------------------------
-    // 1. 전역 상태 관리 (8대 탐구관 × 41종 시나리오)
+    // 1. 전역 상태 관리 (8대 탐구관 × 38종 시나리오)
     // -------------------------------------------------------------------------
     const state = {
       mode: 1, // 1~8
@@ -782,7 +782,7 @@
     }
 
     // -------------------------------------------------------------------------
-    // 3. 8대 탐구관 × 41종 시나리오별 실시간 명세 생성기 (getSpec)
+    // 3. 8대 탐구관 × 38종 시나리오별 실시간 명세 생성기 (getSpec)
     // -------------------------------------------------------------------------
     function getSpec() {
       const m = state.mode;
@@ -1668,7 +1668,7 @@
 
       if (sub === 'pendulumSwing') {
         const R = 175 * s;
-        const O = pt(cx - 20 * s, cy - 115 * s);
+        const O = pt(cx - 20 * s, cy - 62 * s);
         const B = pt(O.x, O.y + R);
         const curRad = rad * (state.fold === 0 ? 1 : state.fold);
         const A = pt(O.x + R * Math.sin(curRad), O.y + R * Math.cos(curRad));
@@ -1696,7 +1696,12 @@
         pdot(O, 'O(매달린 점)', TCOL.white, null, { x: -30, y: -12 });
         pdot(B, 'B(최하점)', TCOL.gold, null, { x: -25, y: 20 });
         pdot(H, 'H(수선의 발)', TCOL.cyan, null, { x: -75, y: 4 });
-        pdot(A, `A(줄 길이 L=${L})`, TCOL.pink, null, { x: 14, y: 4 });
+        // 좁은 화면에서 각도가 커져 A가 오른쪽 끝에 가까워지면 이름표가 잘리므로, 그때만 이름표를 A 아래쪽으로 옮겨 화면 안에 둡니다
+        const aTxt = `A(줄 길이 L=${L})`;
+        ctx.save(); ctx.font = '800 12.5px Pretendard, sans-serif';
+        const aTxtW = ctx.measureText(aTxt).width;
+        ctx.restore();
+        pdot(A, aTxt, TCOL.pink, null, A.x + 14 + aTxtW > rect.width - 10 ? { x: rect.width - 10 - aTxtW - A.x, y: 22 } : { x: 14, y: 4 });
 
         const ohVal = (L * Math.cos(rad)).toFixed(2);
         const hVal = (L * (1 - Math.cos(rad))).toFixed(2);
@@ -2006,6 +2011,52 @@
         pdot(O, 'O(중심)', TCOL.gold, null, { x: -20, y: -12 });
         ptag(O.x + R / 2 + 12, O.y - 18, 'R = 6', TCOL.gold, 13.5);
         drawBottomTapeBanner(rect, '정팔각형 넓이 = 중심각(360°÷8 = 45°)인 이등변삼각형(½ × 6 × 6 × sin 45°) × 8개 = 72√2!');
+        return;
+      }
+
+      if (sub === 'equilFormula') {
+        // 정삼각형(AB = BC = CA = a)을 수선 AM으로 반 자르기: 30°-60°-90° 삼각형 (a/2 : h : a = 1 : √3 : 2)
+        const L = state.baseLen;
+        const h = 175 * s;
+        const a = (2 * h) / Math.sqrt(3);
+        const A = pt(cx, cy - 60 * s);
+        const B = pt(cx - a / 2, A.y + h), C = pt(cx + a / 2, A.y + h);
+        const M = mid(B, C);
+
+        const sep = state.fold * 22 * s; // 조각 분할: 두 직각삼각형을 양옆으로 벌림
+        const Al = pt(A.x - sep, A.y), Bl = pt(B.x - sep, B.y), Ml = pt(M.x - sep, M.y);
+        const Ar = pt(A.x + sep, A.y), Mr = pt(M.x + sep, M.y), Cr = pt(C.x + sep, C.y);
+
+        ppoly([Al, Bl, Ml], 'rgba(251, 191, 36, 0.22)', TCOL.gold, 3.4, 1);
+        ppoly([Ar, Mr, Cr], 'rgba(251, 191, 36, 0.22)', TCOL.gold, 3.4, 1);
+        pline(Al, Ml, TCOL.cyan, 4.6, [], true, 0, 'def ratio aux');
+        if (sep > 0) pline(Ar, Mr, TCOL.cyan, 4.6, [], true, 0, 'def ratio aux');
+
+        pright(Ml, Al, Bl, 14, TCOL.green, 'aux');
+        pright(Mr, Ar, Cr, 14, TCOL.green, 'aux');
+        pangle(Bl, Al, Ml, TCOL.gold, 30, 1, '60°');
+        pangle(Cr, Ar, Mr, TCOL.gold, 30, 1, '60°');
+        pangle(Al, Bl, Ml, TCOL.pink, 40, 1, '30°');
+        pangle(Ar, Mr, Cr, TCOL.pink, 40, 1, '30°');
+        ptick(Al, Bl, 1, TCOL.gold); ptick(Ar, Cr, 1, TCOL.gold);
+        ptick(Bl, Ml, 2, TCOL.cyan); ptick(Mr, Cr, 2, TCOL.cyan);
+
+        pdot(Al, 'A(60°)', TCOL.gold, null, { x: -22, y: -14 });
+        pdot(Bl, 'B(60°)', TCOL.gold, null, { x: -42, y: 18 });
+        pdot(Cr, 'C(60°)', TCOL.gold, null, { x: 10, y: 18 });
+        pdot(Ml, 'M(수선의 발)', TCOL.green, null, { x: -10, y: 22 });
+        if (sep > 0) { pdot(Ar, '', TCOL.gold); pdot(Mr, '', TCOL.green); }
+
+        ptag((Al.x + Bl.x) / 2 - 38, (Al.y + Bl.y) / 2, `a = ${L}`, TCOL.gold, 13.5, 'def');
+        ptag((Ar.x + Cr.x) / 2 + 38, (Ar.y + Cr.y) / 2, `a = ${L}`, TCOL.gold, 13.5, 'def');
+        ptag((Bl.x + Ml.x) / 2 + 8, B.y + 24, `밑변 a = ${L}`, TCOL.white, 13.5);
+        ptag(Al.x - 42 * s, A.y + 135 * s, `S = ${(L * L) / 4}√3`, TCOL.gold, 13.5);
+        ptag(Ar.x + 48 * s, A.y + 135 * s, `높이 h = ${L / 2}√3`, TCOL.cyan, 13.5);
+
+        drawBottomTapeBanner(rect, `수선이 밑변 a(②)를 ①+①로 반 가름 ➔ 높이 h = (√3/2)a`, [
+          { text: 'BM = a/2 (①)', weight: 0.5, color: TCOL.cyan },
+          { text: 'MC = a/2 (①)', weight: 0.5, color: TCOL.cyan }
+        ]);
         return;
       }
 
