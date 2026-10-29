@@ -124,6 +124,10 @@ const requiredCommands = [
     args: ['--check', 'archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs']
   },
   {
+    label: 'tests/archive-pages-release-gate.test.mjs',
+    args: ['--test', 'tests/archive-pages-release-gate.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-apply-bridge.test.mjs',
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
   },
