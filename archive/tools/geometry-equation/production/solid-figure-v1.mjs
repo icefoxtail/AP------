@@ -359,19 +359,23 @@ function dimLabel(raw,value,unit,code,{angle=false}={}){
 }
 
 // --- solving the figure ---------------------------------------------------------------------------------------------------------------------
+const MAX_SEGMENTS=10;
 const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
 const UNIT=/^(cm|mm|m|km)$/;
 export function solveSolidFigure(plan){
   if(!isPlain(plan)||plan.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
-  onlyKeys(plan,['capability','unit','solids','net','dims','highlights','segments','section','marks','solidCaption','caption','sourceConditions','newVisualInformation'],'SOLID_PLAN_INVALID');
+  onlyKeys(plan,['capability','unit','solids','net','dims','highlights','segments','section','marks','solidCaption','caption','sourceConditions','newVisualInformation','sourceQuote','panelWidth'],'SOLID_PLAN_INVALID');
   if((plan.solids===undefined)===(plan.net===undefined))bad('SOLID_PLAN_INVALID');
+  // sourceQuote is provenance only (the item sentence the plan was written from): it never reaches the figure
+  if(plan.sourceQuote!==undefined&&(typeof plan.sourceQuote!=='string'||!plan.sourceQuote.trim()||plan.sourceQuote.length>200))bad('SOLID_SOURCE_QUOTE_INVALID');
+  if(plan.panelWidth!==undefined&&plan.panelWidth!==GRID_PANEL_WIDTH)bad('SOLID_PLAN_INVALID');
   if(plan.unit!==undefined&&(typeof plan.unit!=='string'||!UNIT.test(plan.unit)))bad('SOLID_UNIT_INVALID');
   const model=plan.net!==undefined?solveNet(plan):solveSolids(plan);
   // the Archive publication check reads text: a figure with no name and no length at all cannot be published
   const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)
     :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
   if(names+model.dims.length===0)bad('SOLID_FIGURE_NEEDS_A_LABEL');
-  return model;
+  return plan.panelWidth===undefined?model:{...model,panelWidth:plan.panelWidth};
 }
 function solveSolids(plan){
   if(!Array.isArray(plan.solids)||plan.solids.length<1||plan.solids.length>3)bad('SOLID_COUNT_INVALID');
@@ -422,7 +426,7 @@ function solveSolids(plan){
   // segments (aux) between named points
   const segments=[];
   if(plan.segments!==undefined){
-    if(!Array.isArray(plan.segments)||plan.segments.length>8)bad('SOLID_SEGMENTS_INVALID');
+    if(!Array.isArray(plan.segments)||plan.segments.length>MAX_SEGMENTS)bad('SOLID_SEGMENTS_INVALID');
     for(const s of plan.segments){
       onlyKeys(s,['from','to','style','role'],'SOLID_SEGMENTS_INVALID');
       if(!named.has(s.from)||!named.has(s.to)||s.from===s.to)bad('SOLID_NAME_UNKNOWN');
@@ -804,6 +808,10 @@ function solveNet(plan){
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
 const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70;
+// A solid panel of a composite grid (composite-panels-v1 with two columns) is narrower: two of them plus the 8 unit gap stay at 776 SVG units (the narrowest plane canvas pair: a Korean caption row still fits 44 units at the measured base font),
+// the width the Archive solution column keeps its 11 CSS px label floor at. The composite sets it (plan.panelWidth); an author never writes it.
+export const GRID_PANEL_WIDTH=384;
+const GRID_MARGIN_X=40;
 function figureExtent(model){
   const pts=[];
   if(model.mode==='SOLIDS'){for(const solid of model.solids)pts.push(...solidScreenPoints(solid));}
@@ -820,9 +828,10 @@ function figureExtent(model){
 /** Scale, origin and size of the panel; known from the model alone (the Archive policy is measured before anything is composed). */
 export function figureFrame(model){
   const e=figureExtent(model),bw=e.x1-e.x0,bh=e.y1-e.y0;
-  const scale=r6(Math.min((WIDTH-2*MARGIN_X)/bw,MAX_FIG_H/bh,MAX_SCALE));
+  const grid=model.panelWidth!==undefined,W=grid?model.panelWidth:WIDTH,MX=grid?GRID_MARGIN_X:MARGIN_X;
+  const scale=r6(Math.min((W-2*MX)/bw,MAX_FIG_H/bh,MAX_SCALE));
   const height=Math.ceil(bh*scale+2*MARGIN_Y);
-  return {scale,width:WIDTH,height,origin:[r6(WIDTH/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
+  return {scale,width:W,height,origin:[r6(W/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
 }
 export const figurePanelSize=model=>{const f=figureFrame(model);return {width:f.width,height:f.height};};
 
@@ -1446,6 +1455,7 @@ export function expandSolidFigure(plan){
   const model=solveSolidFigure(plan);
   const cap=plan.solidCaption;
   if(cap!==undefined&&(!isPlain(cap)||Object.keys(cap).some(k=>k!=='text')||typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))bad('SOLID_CAPTION_INVALID');
-  const {caption,sourceConditions,newVisualInformation,solidCaption,...figure}=plan;void solidCaption;
-  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':'입체도형'},plan:figure}],caption,sourceConditions,newVisualInformation};
+  if(plan.panelWidth!==undefined)bad('SOLID_PLAN_INVALID');
+  const {caption,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;
+  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':'입체도형'},plan:figure}],caption,sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
 }

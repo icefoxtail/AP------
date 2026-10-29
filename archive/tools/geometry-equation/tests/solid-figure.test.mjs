@@ -4,8 +4,8 @@ import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
-import {compositePanels} from '../production/composite-candidate-svg-v1.mjs';
-import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled} from '../production/solid-figure-v1.mjs';
+import {compositePanels,compositePanelLayout,compositeStackSize,composeCompositeCandidate,isGridPanel,COMPOSITE_MAX_SOLID_GRID_PANELS} from '../production/composite-candidate-svg-v1.mjs';
+import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH} from '../production/solid-figure-v1.mjs';
 
 const observer=fileURLToPath(new URL('../production/solid_figure_observer_worker.py',import.meta.url));
 const code=expected=>error=>String(error.message).startsWith(expected);
@@ -475,4 +475,76 @@ test('a counted figure with no room for its numbers is refused, and counting is 
   // a slender pillar: its 8 vertices and 12 edge midpoints lie only a few px apart, so no number can stay nearest to its own target
   const crowded=await panel(figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:1,depth:1},height:30,names:'.'.repeat(8),count:{vertices:true,edges:true}}]}));
   assert.equal(crowded.status,'SOLID_LABELS_NO_ROOM',JSON.stringify([crowded.status,crowded.detail]).slice(0,300));
+});
+
+// --- E5: solid panels in a composite grid -------------------------------------------------------------------------------------------------------
+const hexPrism=segments=>({capability:'solid-figure-v1',unit:'cm',solids:[{kind:'PRISM',base:{kind:'REGULAR',n:6,side:2},height:4,names:'IJKLGHCDEFAB'}],segments});
+const seg=(from,to,role='ACCENT')=>({from,to,style:'AUTO',role});
+const gridOf=(panels,extra={})=>({capability:'composite-panels-v1',panels,caption:'같은 육각기둥에서 모서리를 그룹별로 나눈 그림',...extra});
+const solidPanel=(plan,text)=>({caption:{text},plan});
+const triPlane=()=>({capability:'construction-spike-v1',
+  mathPlan:{schemaVersion:'construction-spike-v1',realization:{recipeId:'PLANE_FIGURE_v1',unit:'source-length',reflectionEquivalent:false},
+    nodes:['A','B','C'].map((id,k)=>({id,op:'SOURCE_POINT',inputs:[],args:{coordinates:[{kind:'integer',value:String([0,4,0][k])},{kind:'integer',value:String([0,0,4][k])}]},outputType:'POINT',factRole:'GIVEN'}))},
+  axisTickValues:{x:[],y:[]},displayLines:[],displayCircles:[],displaySegments:[{id:'sAB',refs:['A','B']},{id:'sBC',refs:['B','C']},{id:'sCA',refs:['C','A']}],rightAngles:[],displayPoints:['A','B','C']});
+const reason=error=>error?.detail?.reason;
+test('E5: two to four solid panels (and solids mixed with plane figures) are a two-column grid; the grid sets the panel width, idempotently',()=>{
+  const three=gridOf([solidPanel(hexPrism([seg('B','H','REF'),seg('B','A')]),'만나는 모서리'),solidPanel(hexPrism([seg('B','H','REF'),seg('I','C')]),'평행한 모서리'),solidPanel(hexPrism([seg('B','H','REF'),seg('C','D')]),'꼬인 모서리')]);
+  const checked=compositePanels(three);
+  assert.equal(checked.length,3);
+  assert.ok(checked.every(item=>isGridPanel(item.plan)&&item.plan.panelWidth===GRID_PANEL_WIDTH));
+  assert.deepEqual(compositePanelLayout(checked),{kind:'GRID',columns:2,rows:2});
+  // the width only narrows the figure; the author's own keys are kept
+  assert.deepEqual(checked.map(item=>({...item.plan,panelWidth:undefined})),three.panels.map(item=>({...item.plan,panelWidth:undefined})));
+  // checking the checked plans again changes nothing (the render path hands the checked panels back to the composer)
+  const again=compositePanels({...three,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))});
+  assert.deepEqual(again,checked);
+  const model=solveSolidFigure(checked[0].plan);
+  assert.equal(figurePanelSize(model).width,GRID_PANEL_WIDTH);
+  assert.equal(figurePanelSize(solveSolidFigure(hexPrism([seg('B','H')]))).width,480);// a standalone solid keeps the 480 wide panel
+  const stack=compositeStackSize(checked.map(item=>figurePanelSize(solveSolidFigure(item.plan))),0,compositePanelLayout(checked));
+  assert.equal(stack.width,2*GRID_PANEL_WIDTH+8);assert.ok(stack.width<=776);
+  // a solid next to a plane figure, and four panels
+  const mixed=compositePanels(gridOf([{caption:{text:'오각형'},plan:triPlane()},solidPanel(hexPrism([seg('B','H')]),'육각기둥')]));
+  assert.deepEqual(compositePanelLayout(mixed),{kind:'GRID',columns:2,rows:1});
+  assert.equal(mixed[0].plan.panelWidth,undefined);assert.equal(mixed[1].plan.panelWidth,GRID_PANEL_WIDTH);
+  assert.equal(COMPOSITE_MAX_SOLID_GRID_PANELS,4);
+  assert.equal(compositePanels(gridOf(Array.from({length:4},()=>solidPanel(hexPrism([seg('B','H')]),'육각기둥')))).length,4);
+  // a net is a solid panel too
+  const netPanel={capability:'solid-figure-v1',net:{solid:{kind:'PRISM',base:{kind:'RECT',width:2,depth:3},height:4,names:'........'},root:'side0',joins:[['side0','side1'],['side1','side2'],['side2','side3'],['side1','top'],['side3','bottom']],corners:{side0:['B','C','N','A']}}};
+  assert.equal(compositePanels(gridOf([solidPanel(netPanel,'전개도'),solidPanel(hexPrism([seg('B','H')]),'육각기둥')])).length,2);
+});
+test('E5: solid panels are refused with explicit codes where the grid cannot hold them',()=>{
+  const one=()=>solidPanel(hexPrism([seg('B','H')]),'육각기둥');
+  assert.throws(()=>compositePanels(gridOf([one()])),error=>reason(error)==='PANELS');
+  assert.throws(()=>compositePanels(gridOf(Array.from({length:5},one))),error=>reason(error)==='PANELS');
+  assert.throws(()=>compositePanels(gridOf([one(),one()],{chain:'solid-figure-v1'})),error=>reason(error)==='SOLID_PANEL_PLACEMENT_0');
+  const graph={caption:{text:'그래프'},plan:{capability:'polynomial-spike-v1',graphPlan:{family:'polynomial',coefficients:['0','0','1']}}};
+  assert.throws(()=>compositePanels(gridOf([one(),graph])),error=>reason(error)==='PANEL_SOLID_MIXED_0');
+  assert.throws(()=>compositePanels(gridOf([graph,one()])),error=>reason(error)==='PANEL_SOLID_MIXED_1');
+  const withKey=(key,value)=>gridOf([one(),solidPanel({...hexPrism([seg('B','H')]),[key]:value},'육각기둥')]);
+  for(const [key,value] of [['caption','가'],['solidCaption',{text:'가'}],['sourceConditions',[]],['newVisualInformation',[]],['sourceQuote','가']])assert.throws(()=>compositePanels(withKey(key,value)),error=>reason(error)==='PANEL_SOLID_PLAN_1',key);
+  assert.throws(()=>compositePanels(withKey('panelWidth',300)),error=>reason(error)==='PANEL_SOLID_PLAN_1');
+  assert.throws(()=>compositePanels(gridOf([one(),{caption:{text:''},plan:hexPrism([seg('B','H')])}])),error=>reason(error)==='PANEL_CAPTION_1');
+  // the width belongs to the grid: a standalone solid plan may not write it, and a bad value is refused by the solver
+  assert.throws(()=>expandSolidFigure(figure({solids:[cuboid()],panelWidth:GRID_PANEL_WIDTH})),code('SOLID_PLAN_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],panelWidth:300})),code('SOLID_PLAN_INVALID'));
+});
+test('E5: ten segments are allowed, eleven are not',()=>{
+  const names='FGHEBCDA',edges=['FG','GH','HE','EF','BC','CD','DA','AB','FB','GC','HD','EA'];
+  const withSegments=count=>figure({solids:[cuboid({names})],segments:edges.slice(0,count).map(pair=>seg(pair[0],pair[1]))});
+  assert.equal(solveSolidFigure(withSegments(10)).segments.length,10);
+  assert.throws(()=>solveSolidFigure(withSegments(11)),code('SOLID_SEGMENTS_INVALID'));
+});
+test('E5: three solid panels of one hexagonal prism compose in one grid, each panel passes its own observer',async()=>{
+  const identityC=assetIdentity('solid-grid-fixture|1','SOLUTION_VISUAL','decisive-relation');
+  const plan=gridOf([solidPanel(hexPrism([seg('B','H','REF'),seg('B','A'),seg('B','C'),seg('H','G'),seg('H','I')]),'만나는 모서리 4개'),
+    solidPanel(hexPrism([seg('B','H','REF'),seg('I','C'),seg('J','D'),seg('K','E'),seg('L','F'),seg('G','A')]),'평행한 모서리 5개'),
+    solidPanel(hexPrism([seg('B','H','REF'),seg('C','D'),seg('D','E'),seg('E','F'),seg('F','A'),seg('I','J'),seg('J','K'),seg('K','L'),seg('L','G')]),'꼬인 모서리 8개')]);
+  const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+  const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:identityC,typographyPolicy:{baseFontPx:30,displayScale:0.375,fontFloorCssPx:11}});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,400));
+  assert.deepEqual(composed.layout,{kind:'GRID',columns:2,rows:2});
+  assert.equal(composed.panels.length,3);
+  assert.ok(composed.panels.every(item=>item.status==='COMPOSED'&&item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+  assert.match(composed.svg,/<svg [^>]*width="776"/);
 });
