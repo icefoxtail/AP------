@@ -40,7 +40,11 @@ window.questionBank = [
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 1,
     "sourceQuestionNo": "1",
-    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60"
+    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 원 O에서 부채꼴 OAB와 중심각 ∠AOB, 현 AB와 그 위쪽 활꼴, 지름 CD와 반원을 세 그림으로 나누어 색으로 구분해 보여 준다.",
+    "solutionImageCaption": "부채꼴, 활꼴, 현, 지름, 반원의 뜻을 한 원에서 비교한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
