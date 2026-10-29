@@ -17,6 +17,10 @@ TICK_LENGTH_PX=11.0
 LABEL_CLEARANCE=1.0          # px between a label box and any drawn line or mark
 SECTOR_FILL='#d9d9d9'        # style SECTOR: the light wedge; must never be one of the region fills
 SECTOR_TOLERANCE=0.02        # px: a sector vertex/radius against the vertex and the outermost arc stroke
+EMPHASIS_WIDTH=3.0           # px: an emphasized segment's stroke (the default segment stroke is 1.6)
+DEFAULT_STROKE='#111'
+ACCENT_STROKE='#c0392b'      # emphasis ACCENT: the red of a singled-out segment
+ANGLE_GROUP_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle: the colour of every arc of the group (red, blue, green)
 
 def tag(node):return node.tag.split('}')[-1]
 def sub(p,q):return (p[0]-q[0],p[1]-q[1])
@@ -27,6 +31,16 @@ def angle_between(a,v,c):
     return math.degrees(math.acos(max(-1.0,min(1.0,(u[0]*w[0]+u[1]*w[1])/(nu*nw)))))
 def direction_degrees(v):return math.degrees(math.atan2(v[1],v[0]))
 def wrap180(x):return (x+180.0)%360.0-180.0
+ANGLE_LABEL_MAX_DISTANCE_PX=90.0    # an angle label without a leader stands within this distance of its vertex (its nearest edge: the label reads as that arc's value)
+ANGLE_LEADER_END_TOLERANCE=0.5      # degrees: a leader may start at an end of its arc, where the arc meets a ray
+
+def properly_cross(a,b,c,d):
+    """True when the segments a-b and c-d cross at a point inside both (touching at an end does not count)."""
+    u=(b[0]-a[0],b[1]-a[1]);v=(d[0]-c[0],d[1]-c[1]);w=(c[0]-a[0],c[1]-a[1])
+    determinant=u[0]*v[1]-u[1]*v[0]
+    if abs(determinant)<1e-9:return False
+    t=(w[0]*v[1]-w[1]*v[0])/determinant;s=(w[0]*u[1]-w[1]*u[0])/determinant
+    return 1e-6<t<1-1e-6 and 1e-6<s<1-1e-6
 def point_segment_distance(p,a,b):
     d=sub(b,a);length2=d[0]*d[0]+d[1]*d[1]
     if length2<=1e-18:return norm(sub(p,a))
@@ -117,8 +131,40 @@ def audit(p):
         if min(point_segment_distance(b,e0,e1) for e0,e1 in edges)>1.5:errors.append('MARK_LEADER_NOT_ON_LABEL:'+label_id)
         return True
 
+    def glyph_codes(node):
+        """The MathJax glyph codes (data-c, upper-case hex) of a typeset math label, in reading order; empty for plain text outlines."""
+        return [n.get('data-c','').upper() for n in node.iter() if tag(n)=='path' and n.get('data-c')]
+    def code_variants(ch):
+        """A character's own code and, for a Latin letter, the italic math code MathJax uses for a variable."""
+        out={format(ord(ch),'X')}
+        if 'a'<=ch<='z':out.add(format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X'))
+        if 'A'<=ch<='Z':out.add(format(0x1D434+ord(ch)-65,'X'))
+        return out
+    def label_content(label_id,kind,text,unit):
+        """What a plain-text (labelKind TEXT) or unit-bearing label of the plan says, read back from the final SVG. A TEXT label is plain outlines (no math glyphs)
+        whose text the typesetting step left on its group as data-text; a unit label is checked glyph by glyph (the unit letters last, a plain number's digits first)
+        and, for a simple expression, against the exact TeX spacing: a number takes the unit attached (3cm), a letter one thin space (x cm)."""
+        node=elements.get(label_id)
+        if node is None:return
+        codes=glyph_codes(node)
+        if kind=='TEXT':
+            if codes or node.get('data-tex') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
+            if node.get('data-text')!=str(text):errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+            return
+        if node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
+        if not unit:return
+        tail=[format(ord(ch),'X') for ch in unit]
+        if len(codes)<len(tail)+1 or codes[-len(tail):]!=tail:errors.append('LABEL_UNIT_MISMATCH:'+label_id)
+        value=str(text)
+        if re.fullmatch(r'[0-9]+(?:\.[0-9]+)?',value):
+            if codes!=[format(ord(ch),'X') for ch in value]+tail:errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+        elif re.fullmatch(r'[A-Za-z]',value):
+            if len(codes)!=1+len(tail) or codes[0] not in code_variants(value):errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+        else:return          # any other expression: the unit glyphs above are all this observer can read back
+        if node.get('data-tex')!=value+(r'\,' if value[-1].isalpha() else '')+r'\mathrm{'+unit+'}':errors.append('LABEL_UNIT_SPACING_MISMATCH:'+label_id)
+
     # ---- angle marks: 1-3 stroke arcs and, for style SECTOR (the default), the filled wedge beneath them
-    drawn_angles={}
+    drawn_angles={};angle_geometry={}   # id -> (vertex, first ray direction, signed sweep, outermost arc radius) in model units
     document=list(root.iter());order={id(n):i for i,n in enumerate(document)}
     def stroke_before(node):
         """True when some drawn stroke, point or label comes before the node in the document (a fill would cover it)."""
@@ -153,10 +199,18 @@ def audit(p):
             radii.append(mean);sweeps.append(abs(total));signed=total
         if not sweeps:continue
         drawn=sweeps[0]
+        angle_geometry[oid]=(v,direction_degrees(sub(a,v)),signed,max(radii))
         if any(abs(s-drawn)>1e-6 for s in sweeps):errors.append('ANGLE_ARC_SWEEPS_DIFFER:'+oid)
         if abs(drawn-expected)>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:points=%.3f'%(drawn,expected))
         if row.get('value') is not None and abs(drawn-float(row['value']))>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:declared=%s'%(drawn,row['value']))
         if len(radii)>1 and any(r1-r0<=1e-9 for r0,r1 in zip(radii,radii[1:])):errors.append('ANGLE_ARCS_NOT_CONCENTRIC_INCREASING:'+oid)
+        # emphasisGroup: every arc of the angle is drawn in its group's colour; an angle without a group keeps the default stroke
+        group=row.get('emphasisGroup')
+        if group is not None and group not in ANGLE_GROUP_STROKES:errors.append('ANGLE_EMPHASIS_GROUP_INVALID:'+oid)
+        else:
+            want=ANGLE_GROUP_STROKES[group] if group is not None else DEFAULT_STROKE
+            for n in arcs:
+                if str(n.get('stroke') or '').lower()!=want:errors.append(('ANGLE_EMPHASIS_COLOR_MISMATCH:' if group is not None else 'ANGLE_EMPHASIS_UNDECLARED:')+oid);break
         if sectors:
             node=sectors[0]
             if node.get('stroke') not in (None,'none'):errors.append('ANGLE_SECTOR_STROKE_PRESENT:'+oid)
@@ -183,9 +237,38 @@ def audit(p):
                 # inside the angle: seen from the vertex, the label centre lies within the swept wedge, counted from the first ray in the sweep's direction
                 offset=((direction_degrees(sub(centre_model,v))-direction_degrees(sub(a,v)))*(1 if signed>0 else -1))%360.0
                 inside=0.0<offset<abs(signed)
-                def on_arc(q):return any(abs(norm(sub(inverse(*q),v))-r)*sx<=1.5 for r in radii)
-                if not inside and not leader_ok(oid+'-label',box,on_arc):errors.append('ANGLE_LABEL_NOT_IN_ANGLE:'+oid)
-                elif inside and norm(sub(centre_model,v))*sx<=max(radii)*sx-1:errors.append('ANGLE_LABEL_INSIDE_ARC:'+oid)
+                def on_arc(q):
+                    # the leader starts ON one of the angle's own arcs: at an arc's radius AND within its sweep (an end of the arc, where it meets a ray, counts)
+                    d=sub(inverse(*q),v)
+                    if not any(abs(norm(d)-r)*sx<=1.5 for r in radii):return False
+                    along=((direction_degrees(d)-direction_degrees(sub(a,v)))*(1 if signed>0 else -1))%360.0
+                    if along>360.0-ANGLE_LEADER_END_TOLERANCE:along-=360.0
+                    return -ANGLE_LEADER_END_TOLERANCE<=along<=abs(signed)+ANGLE_LEADER_END_TOLERANCE
+                has_leader=oid+'-label' in leaders
+                if has_leader:
+                    leader_ok(oid+'-label',box,on_arc)
+                    # a leader never crosses a drawn stroke (its own arcs excepted, and a ray it starts on)
+                    leader=leaders[oid+'-label'];la=(float(leader.get('x1')),float(leader.get('y1')));lb=(float(leader.get('x2')),float(leader.get('y2')))
+                    own_arcs={n.get('id') for n in arcs}
+                    for sid,pts in strokes:
+                        if sid in own_arcs:continue
+                        if any(properly_cross(la,lb,p,q) for p,q in zip(pts,pts[1:])):errors.append('ANGLE_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+                if not inside and not has_leader:errors.append('ANGLE_LABEL_NOT_IN_ANGLE:'+oid)
+                elif inside and not has_leader and norm(sub(centre_model,v))*sx<=max(radii)*sx-1:errors.append('ANGLE_LABEL_INSIDE_ARC:'+oid)
+                elif inside and not has_leader:
+                    vx,vy=forward(v)   # the vertex in svg px; the distance to the label box's nearest point
+                    if math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:errors.append('ANGLE_LABEL_TOO_FAR:'+oid)
+    # a label never stands inside another angle mark's sector (the wedge up to that mark's outermost arc): it would read as that angle's value
+    for row in marks.get('angles',[]):
+        oid=row['id'];box=label_boxes.get(oid+'-label')
+        if oid not in angle_geometry or box is None or row.get('noLabel') is True:continue
+        centre=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
+        for other,(vo,first_o,sweep_o,radius_o) in angle_geometry.items():
+            if other==oid:continue
+            d=sub(centre,vo)
+            if norm(d)*sx>radius_o*sx+2.0 or sweep_o==0:continue
+            along=((direction_degrees(d)-first_o)*(1 if sweep_o>0 else -1))%360.0
+            if along<=abs(sweep_o):errors.append('ANGLE_LABEL_IN_OTHER_ANGLE:'+oid+':'+other)
     groups={}
     for row in marks.get('angles',[]):
         if row.get('equalGroup') is not None and row['id'] in drawn_angles:groups.setdefault(row['equalGroup'],[]).append(row)
@@ -247,9 +330,34 @@ def audit(p):
             qm=inverse(*q);return point_segment_distance(qm,*own)*sx<=1.0
         if leader_ok(oid,box,anchored):pass
         elif any(distance_to(sid)+1e-9<mine for sid in segment_lines if sid!=row['ownerSegment']):errors.append('SEGMENT_LABEL_AMBIGUOUS_OWNER:'+oid)
-        observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx})
+        label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'))
+        observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx,**({'labelKind':row['labelKind']} if row.get('labelKind') else {}),**({'unit':row['unit']} if row.get('unit') else {})})
 
     # ---- highlighted circle arcs
+    def arc_span(row):
+        """(centre, radius, start direction in degrees, signed sweep in degrees) of a declared arc, from the peer points and the declared side only."""
+        center=peer_point(row['center']);start=peer_point(row['from']);end=peer_point(row['to'])
+        ccw=(direction_degrees(sub(end,center))-direction_degrees(sub(start,center)))%360.0
+        side=row.get('side')
+        counter=side=='CCW' or (side not in ('CW',) and (ccw<180.0)==((side or 'MINOR')=='MINOR'))
+        return center,norm(sub(start,center)),direction_degrees(sub(start,center)),ccw if counter else -(360.0-ccw)
+    def arc_gap(row,angle):
+        """Degrees from a direction (seen from the arc's centre) to the arc's span: 0 inside it."""
+        _c,_r,first,sweep=arc_span(row)
+        offset=((angle-first)*(1 if sweep>0 else -1))%360.0
+        return 0.0 if offset<=abs(sweep) else min(offset-abs(sweep),360.0-offset)
+    def audit_arc_label(row):
+        oid=row['id'];center,radius,_first,_sweep=arc_span(row)
+        box=label_clear(oid+'-label')
+        if box is None:return
+        c=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
+        if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
+        if not leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5):
+            # no leader: the label must be nearer its own arc than another arc of the same circle
+            angle=direction_degrees(sub(c,center));mine=arc_gap(row,angle)
+            if any(other is not row and other.get('circle')==row.get('circle') and other.get('center')==row.get('center') and arc_gap(other,angle)+1e-9<mine for other in marks.get('arcs',[])):errors.append('ARC_LABEL_AMBIGUOUS_OWNER:'+oid)
+        kind=row.get('labelKind','MATH' if row.get('unit') else 'DEGREE')
+        if kind=='TEXT' or row.get('unit'):label_content(oid+'-label',kind,row['label'],row.get('unit'))
     for row in marks.get('arcs',[]):
         oid=row['id'];nodes=by_mark.get(('arc',oid),[])
         if row.get('highlight',True) is not True and row.get('highlight') is not None:continue
@@ -267,12 +375,10 @@ def audit(p):
         if want is None:want=min(ccw,360.0-ccw) if row.get('side','MINOR')=='MINOR' else max(ccw,360.0-ccw)
         if abs(abs(total)-want)>ANGLE_TOLERANCE:errors.append('ARC_SIDE_MISMATCH:'+oid+':drawn=%.3f:expected=%.3f'%(abs(total),want))
         observations.append({'id':oid,'type':'ARC','drawnDegrees':abs(total),'radius':radius})
-        if row.get('label') is not None:
-            box=label_clear(oid+'-label')
-            if box is not None:
-                c=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
-                if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
-                leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
+        if row.get('label') is not None:audit_arc_label(row)
+    # a label on an arc that is only part of the drawn circle (highlight false) still stands beside its own arc
+    for row in marks.get('arcs',[]):
+        if row.get('highlight',True) is False and row.get('label') is not None:audit_arc_label(row)
 
     # ---- construction traces: thin solid compass arcs around the declared intersections
     for row in marks.get('traces',[]):
@@ -314,10 +420,12 @@ def audit(p):
                 middle=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
                 if norm(sub(middle,center))<radius:errors.append('TRACE_LABEL_INSIDE_CIRCLE:'+oid)
                 leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
-            node=elements.get(oid+'-label')
-            codes=[] if node is None else [n.get('data-c','').upper() for n in node.iter() if tag(n)=='path' and n.get('data-c')]
-            want=[format(ord(ch),'X') for ch in str(row['label'])]
-            if codes and codes!=want:errors.append('TRACE_LABEL_MISMATCH:'+oid)
+            if row.get('labelKind')=='TEXT' or row.get('unit'):label_content(oid+'-label',row.get('labelKind','MATH'),row['label'],row.get('unit'))
+            else:
+                node=elements.get(oid+'-label')
+                codes=[] if node is None else glyph_codes(node)
+                want=[format(ord(ch),'X') for ch in str(row['label'])]
+                if codes and codes!=want:errors.append('TRACE_LABEL_MISMATCH:'+oid)
 
     # ---- filled regions (plane_regions_observer.py)
     audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes)
@@ -344,6 +452,31 @@ def audit(p):
             if point_segment_distance(dots[row['contact']],a,b)*sx>0.01 and abs((dots[row['contact']][0]-a[0])*d[1]-(dots[row['contact']][1]-a[1])*d[0])/norm(d)*sx>0.01:errors.append('TANGENT_NOT_THROUGH_CONTACT:'+row['tangent'])
             if abs(radial[0]*d[0]+radial[1]*d[1])/(norm(radial)*norm(d))>math.sin(math.radians(0.1)):errors.append('TANGENT_NOT_PERPENDICULAR_TO_RADIUS:'+row['tangent'])
             observations.append({'type':'TANGENT_PERPENDICULAR','tangent':row['tangent']})
+
+    # ---- segment emphasis: exactly the declared segments are heavy (BOLD) or heavy and red (ACCENT); every other segment keeps the default style
+    segment_ids={s['id'] for s in p.get('segments',[])}
+    drawn_lines=[]   # (a, b) in svg px of every axis and every drawn line that is not one of the plan's segments: a segment lying on one is painted heavier by the engine
+    for n in root.iter():
+        if tag(n)=='line' and (n.get('data-role')=='axis' or (n.get('data-role')=='line' and n.get('id') not in segment_ids)):
+            drawn_lines.append(((float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2')))))
+    def lies_on_drawn_line(node):
+        ends=[(float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2')))]
+        for a,b in drawn_lines:
+            d=sub(b,a)
+            if norm(d)>1e-9 and all(abs((q[0]-a[0])*d[1]-(q[1]-a[1])*d[0])/norm(d)<=0.5 for q in ends):return True
+        return False
+    for s in p.get('segments',[]):
+        node=elements.get(s['id'])
+        if node is None:continue
+        try:width=float(node.get('stroke-width'))
+        except (TypeError,ValueError):width=0.0
+        stroke=str(node.get('stroke') or '').lower();emphasis=s.get('emphasis')
+        if emphasis in ('BOLD','ACCENT'):
+            if width<EMPHASIS_WIDTH:errors.append('SEGMENT_EMPHASIS_MISSING:'+s['id'])
+            if stroke!=(ACCENT_STROKE if emphasis=='ACCENT' else DEFAULT_STROKE):errors.append('SEGMENT_EMPHASIS_COLOR_MISMATCH:'+s['id'])
+            observations.append({'id':s['id'],'type':'SEGMENT_EMPHASIS','emphasis':emphasis,'strokeWidth':width,'stroke':stroke})
+        elif emphasis is not None:errors.append('SEGMENT_EMPHASIS_INVALID:'+s['id'])
+        elif stroke!=DEFAULT_STROKE or (width>=EMPHASIS_WIDTH and not lies_on_drawn_line(node)):errors.append('SEGMENT_EMPHASIS_UNDECLARED:'+s['id'])
 
     # ---- segment styles: dashes and arrowheads
     for s in p.get('segments',[]):

@@ -43,7 +43,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m을 세로 직선과 비스듬한 직선이 가로지르는 그림이다. m 위의 140°와 100°를 l 위의 같은 위치로 옮겨 y=80°, x=60°, x+y=140°를 표시했다.",
+    "solutionImageCaption": "l∥m이므로 m 위의 100°와 140°를 l 위의 같은 위치로 옮기면 y=80°, x+y=140°, x=60°임을 알 수 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로선과 두 비스듬한 직선이 만나는 그림이다. 두 비스듬한 직선의 교점에서의 ∠a, 오른쪽 교점의 55°, 왼쪽 교점의 115°와 e=65°를 표시했다.",
+    "solutionImageCaption": "∠a의 동위각은 오른쪽 교점의 55°와 왼쪽 교점의 ∠e=65°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -132,7 +140,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l, m, n과 세로 직선 p, q, r이 만나는 그림이다. 89°끼리 호 한 개, 91°끼리 호 두 개로 묶어 l∥n, p∥q 화살표를 표시하고, q 위에서 m의 91°와 n의 89°가 다름을 보였다.",
+    "solutionImageCaption": "동위각 89°끼리 같아 l∥n, 동위각 91°끼리 같아 p∥q이고, q 위에서 m의 91°와 n의 89°는 서로 다르다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -176,7 +188,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 ∠XOY와 오른쪽 반직선 PQ를 한 변으로 작도한 같은 크기의 각 그림이다. 작도 순서 ㉠~㉤가 표시되어 있고, 반지름 OA=OB=PC=PD를 눈금 한 개로, 옮겨 온 길이 AB=CD를 눈금 두 개(점선 현)로 표시했다.",
+    "solutionImageCaption": "같은 반지름의 호로 OA=OB=PC=PD이고, 컴퍼스로 옮긴 길이로 AB=CD이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -264,7 +280,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행선 l, m 사이의 꺾인 도형에서 꺾인 점 P, Q를 지나는 평행 보조선 두 개를 점선으로 그리고 엇각 a, 135°-a, 35°-a와 b를 표시한 그림이다.",
+    "solutionImageCaption": "P, Q를 지나 l, m과 평행한 보조선을 긋고 엇각을 따라 a, 135°-a, 35°-a를 차례로 옮긴다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -308,7 +328,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동인 두 삼각형 ABC와 FED에서 AB=FE=10을 같은 눈금으로, ∠C=∠D=40°를 같은 호로 표시하고 DE=8, ∠E=110°, ∠F=30°를 나타낸 그림이다.",
+    "solutionImageCaption": "합동인 두 삼각형에서 AB=FE=10이고 ∠C=∠D=40°이므로 ∠F=180°-110°-40°=30°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -352,7 +376,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 삼각형 ABC와 DEF에서 AB와 DE, AC와 DF에 각각 같은 눈금을 표시하고, 그 끼인각 ∠A와 ∠D에 같은 호를 그려 SAS 합동 조건을 보여 준다.",
+    "solutionImageCaption": "AB=DE, AC=DF이고 끼인각 ∠A=∠D이면 SAS 합동이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -396,7 +424,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ACD와 CBE가 선분 AB 위의 점 C에서 만나는 그림에서 합동인 △ACE와 △DCB를 칠하고 ∠DAE=34°, ∠DAC=60°, ∠EAC=∠BDC=26°, ∠ACE=∠DCB=120°를 표시한다.",
+    "solutionImageCaption": "△ACE≡△DCB이므로 ∠EAC=∠BDC=26°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -604,7 +636,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD의 두 대각선 AC, BD가 점 O에서 직각으로 만나고 AO=OC, BO=OD를 같은 눈금으로 표시했다. 선분 AO는 빨간 선으로 강조되어, O가 AO의 끝점이므로 BD가 AO를 이등분하지 못함을 보여 준다.",
+    "solutionImageCaption": "BD는 AC의 수직이등분선이지만, 선분 AO(빨간 선)의 수직이등분선은 아니다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -647,7 +683,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 세 점 A, B, C와 l 밖의 점 P로 만든 도형을 다섯 칸으로 나누어 그렸다. 첫째 칸은 양쪽 화살표인 직선 l, PA, PB, PC 4개, 둘째~넷째 칸은 한쪽 화살표인 반직선 BA(검정), BC(빨강) / AB, AP, BP, CP / CB, PA, PB, PC 10개, 다섯째 칸은 화살표 없는 선분 AB, BC, AC, PA, PB, PC 6개를 나타낸다. 둘째 칸의 반직선 BA와 BC는 같은 점 B에서 시작하지만 방향이 반대인 서로 다른 반직선이다.",
+    "solutionImageCaption": "직선, 반직선, 선분을 화살표와 시작점으로 구분해 센다. 반직선 BA(검정)와 BC(빨강)는 B에서 시작하는 서로 다른 반직선이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -677,7 +717,7 @@ window.questionBank = [
       "모서리 $EF$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 면의 교선은 두 면이 공유하는 모서리이다.\n면 $ABCD$와 면 $AEHD$가 공유하는 모서리는 $\\overline{AD}$이므로 두 면의 교선은 $\\overline{AD}$이다.\n$\\overline{AD}$와 한 점에서 만나는 모서리는 점 $A$를 지나는 $\\overline{AB}$, $\\overline{AE}$와 점 $D$를 지나는 $\\overline{DC}$, $\\overline{DH}$이다.\n모서리 $BC$와 모서리 $EF$는 $\\overline{AD}$와 평행하고, 모서리 $CG$와 모서리 $GH$는 $\\overline{AD}$와 꼬인 위치에 있으므로 만나지 않는다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 두 면의 교선은 두 면이 공유하는 모서리이다.\n면 $ABCD$와 면 $AEHD$가 공유하는 모서리는 $\\overline{AD}$이므로 두 면의 교선은 $\\overline{AD}$이다.\n$\\overline{AD}$와 한 점에서 만나는 모서리는 점 $A$를 지나는 $\\overline{AB}$, $\\overline{AE}$와 점 $D$를 지나는 $\\overline{DC}$, $\\overline{DH}$이다.\n모서리 $BC$는 $\\overline{AD}$와 평행하고, 모서리 $CG$, 모서리 $GH$, 모서리 $EF$는 $\\overline{AD}$와 꼬인 위치에 있으므로 만나지 않는다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중1_수학/q16.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -691,7 +731,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 사각기둥을 세 번 그리고 교선 AD를 굵게 표시했다. 첫째 그림은 AD와 평행한 모서리 BC, EH, FG, 둘째 그림은 AD와 한 점에서 만나는 모서리 AB, AE, DC, DH, 셋째 그림은 AD와 꼬인 위치의 모서리 BF, CG, EF, GH를 빨간 선으로 나타냈고 보이지 않는 모서리는 점선이다.",
+    "solutionImageCaption": "AD와 한 점에서 만나는 모서리는 AB, AE, DC, DH (EF는 꼬인 위치)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -735,7 +779,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 위의 다섯 점 A, M', M, B, C에서 M'M=9 cm, MB=6 cm를 표시하고, M'이 AB의 중점이라 AM'=M'B(15 cm), M이 AC의 중점이라 AM=MC(24 cm)임을 눈금이 있는 괄호선으로 보여 준다.",
+    "solutionImageCaption": "AM'=M'B=15 cm, AM=MC=24 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -822,7 +870,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각기둥으로 모서리 DE가 굵게, DE와 꼬인 위치에 있는 모서리 BC, CA, CF가 빨간 선으로 강조되어 있다. 오른쪽은 오각기둥으로 면 CDIH가 연하게 칠해지고, 이 면과 평행한 옆모서리 AF, BG, EJ가 빨간 선으로 강조되어 있다.",
+    "solutionImageCaption": "삼각기둥에서 DE와 꼬인 위치의 모서리, 오각기둥에서 면 CDIH와 평행한 모서리",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -904,7 +956,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나 이루는 네 각 중 맞꼭지각인 두 각이 같은 호로 표시되어 각각 33°이고, 33°의 이웃한 각은 147°로 표시되어 한 직선 위에서 두 각의 합이 180°임을 보여 준다.",
+    "solutionImageCaption": "맞꼭지각 33°와 33°, 이웃한 각 147°를 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -981,7 +1037,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 선분 AD와 BC가 점 O에서 만나 삼각형 OAB와 ODC가 생기고, OA=OD, OB=OC는 같은 눈금으로, 맞꼭지각 ∠AOB=∠DOC는 같은 호로, 대응변 AB=DC는 눈금 세 개로 표시되며 DC에 10 km가 적혀 있다.",
+    "solutionImageCaption": "두 삼각형 OAB, ODC의 같은 변과 맞꼭지각 표시",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -1019,6 +1079,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD를 선분 EF로 접은 그림에서 ∠AEF는 116°이고, ∠FED, ∠EFB, ∠EFG가 같은 두 겹 호로 표시된 64°이며, 삼각형 EFI에서 점 I의 각이 x로 표시되어 있다.",
+    "solutionImageCaption": "접은 종이에서 같은 크기 64°인 세 각과 삼각형 EFI의 각 x",
+    "solutionImageSize": "medium"
   }
 ];

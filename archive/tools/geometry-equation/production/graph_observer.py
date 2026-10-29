@@ -490,9 +490,101 @@ def absolute_value_overview_audit(plan,poly,points,transform,topology,svg_root):
         if 2*marker['radius']*transform['displayScale']<policy['minimumCornerMarkerDiameterCssPx']:unsupported.append('ABSOLUTE_VALUE_CORNER_MARKER_BELOW_PROFILE_FLOOR')
     return {'status':'UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS','errors':sorted(set(errors+unsupported)),'features':expected,'plotCssSize':[width,height],'arms':[{'side':'LEFT','spanCssPx':left_span,'riseCssPx':left_rise},{'side':'RIGHT','spanCssPx':right_span,'riseCssPx':right_rise}],'observedCornerMarkers':len(markers),'topology':{'corner':topology.get('corners'),'roots':topology.get('roots')},'mathMethod':'EXACT_ABS_AFFINE_CORNER_AND_BRANCHES'}
 
+def rational_constant_overview_audit(plan,points,transform,topology,svg_root):
+    """Inverse proportion y=k/(d0+d1*x) (a nonzero constant numerator over a linear denominator), recomputed from the plan's exact coefficients
+    (never the producer's features) and read back from the SVG: the single pole and its two branches, the asymptote that lies on an axis NOT drawn
+    (y=0 is the x-axis; x=0 is the y-axis) and an off-axis vertical asymptote drawn dashed over the full height, one scale on both axes and the
+    required points as dots on the curve."""
+    errors=[]
+    try:
+        numerator=polynomial(plan.get('numerator'),1);denominator=polynomial(plan.get('denominator'),1)
+    except (ValueError,TypeError):return {'status':'UNSUPPORTED','errors':['RATIONAL_CONSTANT_OVER_LINEAR_GRAMMAR_REQUIRED']}
+    if numerator.is_zero or numerator.degree()!=0 or denominator.degree()!=1:return {'status':'UNSUPPORTED','errors':['RATIONAL_CONSTANT_OVER_LINEAR_GRAMMAR_REQUIRED']}
+    k=numerator.nth(0);d0=denominator.nth(0);d1=denominator.nth(1)
+    pole_exact=-d0/d1;residue=k/d1;pole=float(pole_exact)
+    drawn_vertical=pole_exact!=0
+    expected={'schemaVersion':'RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1','constant':str(k),'singularity':{'kind':'VERTICAL_POLE','x':str(pole_exact)},'horizontalAsymptoteY':'0','xIntercept':None,
+              'poleDirection':{'left':'DOWN' if residue>0 else 'UP','right':'UP' if residue>0 else 'DOWN'},
+              'asymptotes':{'horizontal':{'y':'0','drawn':False,'reason':'ON_X_AXIS'},'vertical':{'x':str(pole_exact),'drawn':drawn_vertical,**({} if drawn_vertical else {'reason':'ON_Y_AXIS'})}}}
+    policy={'schemaVersion':'RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'CONSTANT_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE','horizontalAsymptotePolicy':'Y_EQUALS_ZERO_IS_THE_X_AXIS_NOT_DRAWN','asymptoteOnAxisPolicy':'AXIS_IS_THE_ASYMPTOTE_NO_DASHED_LINE','minimumFeatureSeparationCssPx':1}
+    if plan.get('rationalFeatures')!=expected:errors.append('RATIONAL_FEATURE_INVENTORY_MISMATCH')
+    if plan.get('rationalFeaturePolicy')!=policy:errors.append('RATIONAL_FEATURE_POLICY_MISMATCH')
+    if plan.get('equalUnits') is not True:errors.append('EQUAL_UNIT_DECLARATION_MISSING')
+    errors.extend(axis_ratio_errors(plan,transform))
+    x0,x1,y0,y1=plan['viewport'];sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale']
+    width=(x1-x0)*sx;height=(y1-y0)*sy
+    if not x0+.05*(x1-x0)<pole<x1-.05*(x1-x0):errors.append('RATIONAL_SINGULARITY_OUTSIDE_OVERVIEW')
+    if not x0<0<x1 or not y0<0<y1:errors.append('RATIONAL_AXES_ORIGIN_NOT_VISIBLE')
+    pole_list=topology.get('poles',[]);hole_list=topology.get('holes',[])
+    if len(pole_list)!=1 or abs(pole_list[0]-pole)>.00000001 or hole_list:errors.append('RATIONAL_POLE_TOPOLOGY_MISMATCH')
+    left_points=[point for point in points if point[0]<pole];right_points=[point for point in points if point[0]>pole]
+    if not left_points or not right_points:errors.append('RATIONAL_BRANCH_SIDE_MISSING')
+    branch_width_floor=max(20,width*.10)
+    if left_points and (pole-min(point[0] for point in left_points))*sx<branch_width_floor:errors.append('RATIONAL_LEFT_BRANCH_TOO_NARROW')
+    if right_points and (max(point[0] for point in right_points)-pole)*sx<branch_width_floor:errors.append('RATIONAL_RIGHT_BRANCH_TOO_NARROW')
+    if left_points and right_points:
+        # Near the pole each branch runs off the frame on the side the sign of k/d1 dictates (clipped at the frame edge); far away it flattens onto y=0.
+        left_edge=y1 if residue<0 else y0
+        right_edge=y1 if residue>0 else y0
+        nearest_left=max(left_points,key=lambda point:point[0]);nearest_right=min(right_points,key=lambda point:point[0])
+        if abs(nearest_left[1]-left_edge)*sy>1.25:errors.append('RATIONAL_LEFT_POLE_BRANCH_WRONG_SIDE')
+        if abs(nearest_right[1]-right_edge)*sy>1.25:errors.append('RATIONAL_RIGHT_POLE_BRANCH_WRONG_SIDE')
+        if max(abs(point[1]) for point in left_points)*sy<max(18,height*.12):errors.append('RATIONAL_LEFT_BRANCH_TOO_SHORT')
+        if max(abs(point[1]) for point in right_points)*sy<max(18,height*.12):errors.append('RATIONAL_RIGHT_BRANCH_TOO_SHORT')
+        left_end=min(points,key=lambda point:point[0]);right_end=max(points,key=lambda point:point[0])
+        if abs(left_end[1])*sy>height*.35 or abs(right_end[1])*sy>height*.35:errors.append('RATIONAL_HORIZONTAL_TAIL_NOT_VISIBLE')
+        # No point may sit in the wrong quadrant pair: every point has the sign of k/(d0+d1*x).
+        for point in points:
+            if point[1]*(float(residue)*(point[0]-pole))<0 and abs(point[1])*sy>.35:errors.append('RATIONAL_BRANCH_IN_WRONG_QUADRANT');break
+    # Asymptote cues: the vertical one only when it is off the y-axis; never one over an axis (y=0 always, x=0 for k/x).
+    px_tolerance=.5/max(1e-12,sx);py_tolerance=.5/max(1e-12,sy);asymptote_lines=[]
+    for node in svg_root.iter():
+        if node.tag.split('}')[-1]=='line' and node.get('data-role')=='asymptote':
+            if not node.get('stroke-dasharray'):errors.append('RATIONAL_ASYMPTOTE_MUST_BE_DASHED')
+            try:asymptote_lines.append(tuple(float(node.get(key)) for key in ('x1','y1','x2','y2')))
+            except (TypeError,ValueError):errors.append('RATIONAL_ASYMPTOTE_LINE_INVALID')
+    seen_vertical=0
+    for x_a,y_a,x_b,y_b in asymptote_lines:
+        mx_a,mx_b=(x_a-transform['originX'])/transform['sx'],(x_b-transform['originX'])/transform['sx']
+        my_a,my_b=(transform['originY']-y_a)/transform['sy'],(transform['originY']-y_b)/transform['sy']
+        if abs(my_a)<=py_tolerance and abs(my_b)<=py_tolerance:errors.append('RATIONAL_ASYMPTOTE_DRAWN_ON_X_AXIS')
+        elif abs(mx_a)<=px_tolerance and abs(mx_b)<=px_tolerance:errors.append('RATIONAL_ASYMPTOTE_DRAWN_ON_Y_AXIS')
+        elif drawn_vertical and abs(mx_a-pole)<=px_tolerance and abs(mx_b-pole)<=px_tolerance and min(my_a,my_b)<=y0+py_tolerance and max(my_a,my_b)>=y1-py_tolerance:seen_vertical+=1
+        else:errors.append('RATIONAL_ASYMPTOTE_GEOMETRY_MISMATCH')
+    if len(asymptote_lines)!=(1 if drawn_vertical else 0):errors.append('RATIONAL_ASYMPTOTE_INVENTORY_MISMATCH')
+    if drawn_vertical and seen_vertical!=1:errors.append('RATIONAL_VERTICAL_ASYMPTOTE_MISSING_OR_WRONG')
+    if any(node.tag.split('}')[-1]=='circle' and node.get('data-role')=='hole' for node in svg_root.iter()):errors.append('UNEXPECTED_RATIONAL_HOLE_MARKER')
+    # Required points: exactly on the curve (exact arithmetic), one dot each at its place, and the drawn curve passes through it.
+    required=plan.get('requiredPoints',[]) or []
+    dots={node.get('id'):node for node in svg_root.iter() if node.tag.split('}')[-1]=='circle' and (node.get('id') or '').startswith('required-point-')}
+    if len(dots)!=len(required):errors.append('RATIONAL_REQUIRED_POINT_INVENTORY_MISMATCH')
+    labels_expected=[]
+    for index,point in enumerate(required,1):
+        try:
+            px=S.Rational(str(point['x']));denominator_value=denominator.eval(px)
+            if denominator_value==0 or abs(float(k/denominator_value)-float(point['y']))>1e-8:errors.append('RATIONAL_REQUIRED_POINT_NOT_ON_CURVE:'+str(point.get('id')));continue
+        except (KeyError,TypeError,ValueError,AttributeError):errors.append('RATIONAL_REQUIRED_POINT_NOT_ON_CURVE');continue
+        wx,wy=float(point['x']),float(point['y'])
+        if not any(abs(x-wx)*sx<=.35 and abs(y-wy)*sy<=.35 for x,y in points):errors.append('RATIONAL_REQUIRED_POINT_NOT_OBSERVED:'+str(point.get('id')))
+        node=dots.get('required-point-'+str(index))
+        try:got=None if node is None else ((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy'])
+        except (TypeError,ValueError):got=None
+        if got is None or node.get('data-role')!='point' or abs(got[0]-wx)*sx>.35 or abs(got[1]-wy)*sy>.35:errors.append('RATIONAL_REQUIRED_POINT_DOT_MISSING:'+str(point.get('id')))
+        exact=(plan.get('exactCoordinates') or {}).get(point.get('id'))
+        if exact is not None or all(isinstance(point.get(key),int) and not isinstance(point.get(key),bool) for key in ('x','y')):labels_expected.append((index,point.get('id')))
+    # In the composed figure every printed coordinate belongs to its own dot.
+    if labels_expected and any((node.get('data-label-kind') is not None) for node in svg_root.iter()):
+        groups={node.get('id'):node for node in svg_root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
+        for index,ident in labels_expected:
+            group=groups.get('required-point-'+str(index)+'-coordinates')
+            if group is None:errors.append('RATIONAL_REQUIRED_POINT_COORDINATES_MISSING:'+str(ident))
+            elif group.get('data-owner')!='required-point-'+str(index):errors.append('RATIONAL_REQUIRED_POINT_COORDINATES_OWNER_MISMATCH:'+str(ident))
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'features':expected,'plotCssSize':[width,height],'topology':{'poles':pole_list,'holes':hole_list,'visibleIntervals':topology.get('visibleIntervals')},'asymptoteLines':len(asymptote_lines),'branchSideCounts':[len(left_points),len(right_points)],'mathMethod':'EXACT_CONSTANT_OVER_LINEAR_RATIONAL_TOPOLOGY'}
+
 def rational_overview_audit(plan,poly,points,transform,topology,svg_root):
     errors=[]
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:return {'status':'UNSUPPORTED','errors':['RATIONAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS']}
+    if plan.get('overviewPolicy')=='RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1':return rational_constant_overview_audit(plan,points,transform,topology,svg_root)
     if plan.get('overviewPolicy')!='RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1':return {'status':'UNSUPPORTED','errors':['RATIONAL_OVERVIEW_POLICY_REQUIRED']}
     try:
         numerator=polynomial(plan.get('numerator'),1);denominator=polynomial(plan.get('denominator'),1)
@@ -2357,7 +2449,14 @@ def _ov_expected(plan):
     polygons=[]
     for entry in raw.get('polygons',[]):
         if not isinstance(entry,dict) or not isinstance(entry.get('points'),list) or not 3<=len(entry['points'])<=6:raise ValueError('OVERLAY_POLYGON_INVALID')
-        polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT')})
+        label=entry.get('label');label_kind=entry.get('labelKind')
+        if label is None:
+            if label_kind is not None:raise ValueError('OVERLAY_POLYGON_LABEL_KIND_WITHOUT_LABEL')
+        else:
+            if label_kind is None:label_kind='MATH'
+            if label_kind not in ('MATH','TEXT'):raise ValueError('OVERLAY_POLYGON_LABEL_KIND_INVALID')
+            if not isinstance(label,str) or not label.strip() or len(label)>40 or any(ord(char)<32 for char in label) or (label_kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',label)):raise ValueError('OVERLAY_POLYGON_LABEL_INVALID')
+        polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT'),'label':label,'labelKind':label_kind})
     return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons}
 
 def _ov_clip(viewport,line):
@@ -2443,6 +2542,7 @@ def overlays_audit(plan,svg,transform):
             if polygon['fill']!='NONE':
                 claimed.add(ident+'-fill');fill=polylines.get(ident+'-fill',None) or root.find(f'.//*[@id="{ident}-fill"]')
                 if fill is None:errors.append('OVERLAY_FILL_MISSING:'+str(polygon['id']))
+            if polygon['label'] is not None:claimed.add(ident+'-label')
         # Labels: in the composed figure every overlay line has its equation label, owned by that line. (The model SVG has no labels.)
         if 'data-label-kind' in svg:
             groups={}
@@ -2454,6 +2554,19 @@ def overlays_audit(plan,svg,transform):
                 if node is None:errors.append('OVERLAY_LABEL_MISSING:'+str(line['id']))
                 elif node.get('data-owner')!='overlay-line-'+str(line['id']):errors.append('OVERLAY_LABEL_OWNER_MISMATCH:'+str(line['id']))
                 elif not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_LABEL_EMPTY:'+str(line['id']))
+            # A polygon's own label belongs to that polygon and stands wholly inside it (centre and all four corners of the label box).
+            for polygon in expected['polygons']:
+                if polygon['label'] is None:continue
+                label_id='overlay-polygon-'+str(polygon['id'])+'-label';node=groups.get(label_id)
+                if node is None:errors.append('OVERLAY_POLYGON_LABEL_MISSING:'+str(polygon['id']));continue
+                if node.get('data-owner')!='overlay-polygon-'+str(polygon['id']):errors.append('OVERLAY_POLYGON_LABEL_OWNER_MISMATCH:'+str(polygon['id']));continue
+                if not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_POLYGON_LABEL_EMPTY:'+str(polygon['id']));continue
+                box=_region_label_box(groups,label_id)
+                if box is None:errors.append('OVERLAY_POLYGON_LABEL_BOX_UNREADABLE:'+str(polygon['id']));continue
+                bx,by,bw,bh=box
+                shape=[(float(S.N(x,30)),float(S.N(y,30))) for x,y in polygon['points']]
+                corners=[to_data(bx,by),to_data(bx+bw,by),to_data(bx,by+bh),to_data(bx+bw,by+bh),to_data(bx+bw/2,by+bh/2)]
+                if not all(_region_inside(shape,corner) for corner in corners):errors.append('OVERLAY_POLYGON_LABEL_OUTSIDE:'+str(polygon['id']))
         # No undeclared overlay element may sneak into the figure.
         for node in root.iter():
             ident=node.get('id') or ''

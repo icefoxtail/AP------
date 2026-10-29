@@ -332,12 +332,16 @@ def _fit_quadratic_interval(plan,c,source_domain,required,line_points):
     fitted={**plan,'domain':[float(lo),float(hi)],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_INTERVAL_OVERVIEW_v1','intervalFeatures':features,'intervalFeaturePolicy':policy,'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_INTERVAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
-def _rational_coefficients(values,name):
+def _rational_coefficients(values,name,allow_constant=False):
     if not isinstance(values,list) or len(values)!=2 or any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values):
         raise ValueError('UNSUPPORTED_RATIONAL_'+name.upper()+'_GRAMMAR')
     try:coefficients=[Fraction(value) for value in values]
     except (ValueError,ZeroDivisionError):raise ValueError('INVALID_RATIONAL_'+name.upper()+'_COEFFICIENT') from None
-    if coefficients[1]==0:raise ValueError('UNSUPPORTED_RATIONAL_'+name.upper()+'_DEGREE')
+    if coefficients[1]==0:
+        # A nonzero constant numerator (inverse proportion y=k/(d0+d1*x)) is its own grammar; zero is not a function to draw.
+        if allow_constant and coefficients[0]!=0:return coefficients
+        if allow_constant:raise ValueError('UNSUPPORTED_RATIONAL_NUMERATOR_ZERO')
+        raise ValueError('UNSUPPORTED_RATIONAL_'+name.upper()+'_DEGREE')
     return coefficients
 
 def _fraction_text(value):
@@ -351,8 +355,10 @@ def _fit_rational_overview(plan):
         raise ValueError('INVALID_RATIONAL_DRAW_INTERVAL')
     if not isinstance(original_viewport,list) or len(original_viewport)!=4 or not all(isinstance(v,(int,float)) and not isinstance(v,bool) and math.isfinite(v) for v in original_viewport) or not original_viewport[0]<original_viewport[1] or not original_viewport[2]<original_viewport[3]:
         raise ValueError('INVALID_RATIONAL_VIEWPORT')
-    numerator=_rational_coefficients(plan.get('numerator'),'numerator')
+    numerator=_rational_coefficients(plan.get('numerator'),'numerator',allow_constant=True)
     denominator=_rational_coefficients(plan.get('denominator'),'denominator')
+    if numerator[1]==0:return _fit_rational_constant_numerator(plan,numerator[0],denominator,original_domain,original_viewport)
+    if plan.get('formulaLabel') is not None:raise ValueError('RATIONAL_FORMULA_LABEL_REQUIRES_CONSTANT_NUMERATOR')
     pole_or_hole=-denominator[0]/denominator[1]
     numerator_root=-numerator[0]/numerator[1]
     horizontal=numerator[1]/denominator[1]
@@ -363,18 +369,7 @@ def _fit_rational_overview(plan):
     else:
         singularity={'kind':'VERTICAL_POLE','x':_fraction_text(pole_or_hole)}
         x_intercept=_fraction_text(numerator_root)
-    required=plan.get('requiredPoints',[])
-    if not isinstance(required,list) or len(required)>16:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
-    ids=set();required_x=[];required_y=[]
-    for point in required:
-        if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids or any(isinstance(point[k],bool) or not isinstance(point[k],(int,float)) or not math.isfinite(point[k]) or abs(point[k])>1e6 for k in ('x','y')):
-            raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
-        ids.add(point['id']);exact_x=Fraction(str(point['x']))
-        exact_denominator=denominator[0]+denominator[1]*exact_x
-        if exact_denominator==0:raise ValueError('REQUIRED_GRAPH_POINT_OUTSIDE_RATIONAL_DOMAIN')
-        expected=(numerator[0]+numerator[1]*exact_x)/exact_denominator
-        if abs(float(expected)-float(point['y']))>1e-8:raise ValueError('REQUIRED_GRAPH_POINT_NOT_ON_CURVE')
-        required_x.append(float(exact_x));required_y.append(float(point['y']))
+    required_x,required_y=_rational_required_points(plan,numerator,denominator)
     singularity_x=float(pole_or_hole);root_x=float(numerator_root)
     if any(not math.isfinite(value) or abs(value)>1e6 for value in (singularity_x,root_x,float(horizontal))):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
     # Keep the singularity, intercept and unit ticks in one readable local
@@ -400,6 +395,54 @@ def _fit_rational_overview(plan):
     policy={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'LINEAR_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE_OR_ONE_REMOVABLE_HOLE','horizontalAsymptotePolicy':'EXACT_LEADING_COEFFICIENT_RATIO','minimumFeatureSeparationCssPx':1,'holeMarkerRadiusIntrinsicPx':4,'minimumHoleMarkerDiameterCssPx':4.5}
     fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','rationalFeatures':features,'rationalFeaturePolicy':policy}
     return {'graphPlan':fitted,'policy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
+
+# ---- inverse proportion y=k/(d0+d1*x): a nonzero CONSTANT numerator over a linear denominator (middle school 반비례, y=k/x) ----------------
+# The curve is the rectangular hyperbola y=c/(x-p) with c=k/d1 and p=-d0/d1: one vertical pole at x=p and the horizontal asymptote y=0, which is
+# the x-axis itself (the numerator never vanishes, so no x-intercept and no hole). An asymptote that coincides with a coordinate axis is the axis:
+# no dashed line is drawn over it (always the case for y=0; for the pole only when p=0, i.e. y=k/x). It is framed like every other graph that
+# keeps its true shape: one scale on both axes (a vertical squeeze of at most 1/2 only after a failure), the frame centred on the pole with the
+# half-window RATIONAL_CONSTANT_WINDOW_VERTEX_MULTIPLES vertex distances (sqrt|c|) wide, widened to hold the origin, every required point and
+# every overlay point, so both branches are always visible.
+RATIONAL_CONSTANT_WINDOW_VERTEX_MULTIPLES=3.0
+RATIONAL_CONSTANT_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().\^ ]{1,40}'
+
+def _rational_required_points(plan,numerator,denominator):
+    """The required points of a rational plan, each checked exactly against the curve: (x list, y list). Shared by both rational grammars."""
+    required=plan.get('requiredPoints',[])
+    if not isinstance(required,list) or len(required)>16:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
+    ids=set();required_x=[];required_y=[]
+    for point in required:
+        if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids or any(isinstance(point[k],bool) or not isinstance(point[k],(int,float)) or not math.isfinite(point[k]) or abs(point[k])>1e6 for k in ('x','y')):
+            raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        ids.add(point['id']);exact_x=Fraction(str(point['x']))
+        exact_denominator=denominator[0]+denominator[1]*exact_x
+        if exact_denominator==0:raise ValueError('REQUIRED_GRAPH_POINT_OUTSIDE_RATIONAL_DOMAIN')
+        expected=(numerator[0]+numerator[1]*exact_x)/exact_denominator
+        if abs(float(expected)-float(point['y']))>1e-8:raise ValueError('REQUIRED_GRAPH_POINT_NOT_ON_CURVE')
+        required_x.append(float(exact_x));required_y.append(float(point['y']))
+    return required_x,required_y
+
+def _fit_rational_constant_numerator(plan,k,denominator,original_domain,original_viewport):
+    label=plan.get('formulaLabel')
+    if label is not None and (not isinstance(label,str) or not re.fullmatch(RATIONAL_CONSTANT_LABEL_PATTERN,label)):raise ValueError('RATIONAL_FORMULA_LABEL_INVALID')
+    pole=-denominator[0]/denominator[1];c=k/denominator[1]
+    required_x,required_y=_rational_required_points(plan,[k,Fraction(0)],denominator)
+    pole_x=float(pole);c_value=float(c)
+    if any(not math.isfinite(value) or abs(value)>1e6 for value in (pole_x,c_value)):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
+    half=RATIONAL_CONSTANT_WINDOW_VERTEX_MULTIPLES*math.sqrt(abs(c_value))
+    points=[(0.0,0.0),(pole_x-half,-half),(pole_x+half,half),*zip(required_x,required_y),*[(ax,ay) for ax,ay in plan.get('overlayAnchors',[])]]
+    limit=plot_height_limit(plan)
+    for ratio in axis_ratios(plan,points,limit):
+        viewport,height,scale=equal_unit_frame(points,limit,ratio)
+        if min(pole_x-viewport[0],viewport[1]-pole_x)*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
+    else:raise ValueError('EQUAL_UNIT_CURVE_TOO_NARROW')
+    drawn_vertical=pole!=0
+    features={'schemaVersion':'RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1','constant':_fraction_text(k),'singularity':{'kind':'VERTICAL_POLE','x':_fraction_text(pole)},
+              'horizontalAsymptoteY':'0','xIntercept':None,'poleDirection':{'left':'DOWN' if c>0 else 'UP','right':'UP' if c>0 else 'DOWN'},
+              'asymptotes':{'horizontal':{'y':'0','drawn':False,'reason':'ON_X_AXIS'},'vertical':{'x':_fraction_text(pole),'drawn':drawn_vertical,**({} if drawn_vertical else {'reason':'ON_Y_AXIS'})}}}
+    policy={'schemaVersion':'RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'CONSTANT_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE','horizontalAsymptotePolicy':'Y_EQUALS_ZERO_IS_THE_X_AXIS_NOT_DRAWN','asymptoteOnAxisPolicy':'AXIS_IS_THE_ASYMPTOTE_NO_DASHED_LINE','minimumFeatureSeparationCssPx':1}
+    fitted={**plan,'domain':[viewport[0],viewport[1]],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1','rationalFeatures':features,'rationalFeaturePolicy':policy,'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}
+    return {'graphPlan':fitted,'policy':'RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 def _sqrt_coefficients(values):
     if not isinstance(values,list) or len(values)!=2 or any(not isinstance(value,str) or len(value)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',value) for value in values):
@@ -2203,6 +2246,8 @@ def fit_piecewise_discontinuous(plan):
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
 OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2}
+OVERLAY_POLYGON_LABEL_KINDS=('MATH','TEXT')
+OVERLAY_POLYGON_MATH_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().\^ ]{1,40}'
 
 def _overlay_fail(code,ident=None):
     raise ValueError(code if ident is None else code+':'+str(ident))
@@ -2430,7 +2475,7 @@ def _overlay_features(plan):
     polygons=[]
     for entry in raw.get('polygons',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_POLYGON_INVALID','polygon')
-        if set(entry)-{'id','points','fill'}:_overlay_fail('OVERLAY_POLYGON_INVALID',entry.get('id'))
+        if set(entry)-{'id','points','fill','label','labelKind'}:_overlay_fail('OVERLAY_POLYGON_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'polygon');claim('polygon:'+ident)
         refs=entry.get('points')
         if not isinstance(refs,list) or not 3<=len(refs)<=6 or len(set(refs))!=len(refs):_overlay_fail('OVERLAY_POLYGON_INVALID',ident)
@@ -2440,7 +2485,17 @@ def _overlay_features(plan):
         coords=[(by_point[value]['x'],by_point[value]['y']) for value in refs]
         area=sum(coords[i][0]*coords[(i+1)%len(coords)][1]-coords[(i+1)%len(coords)][0]*coords[i][1] for i in range(len(coords)))
         if abs(area)<1e-9:_overlay_fail('OVERLAY_POLYGON_DEGENERATE',ident)
-        polygons.append({'id':ident,'points':refs,'fill':fill})
+        row={'id':ident,'points':refs,'fill':fill}
+        # An optional short label (a formula such as b, or plain Korean text) goes inside the polygon, where it has the most room.
+        label=entry.get('label');label_kind=entry.get('labelKind')
+        if label is None:
+            if label_kind is not None:_overlay_fail('OVERLAY_POLYGON_LABEL_KIND_WITHOUT_LABEL',ident)
+        else:
+            if label_kind is None:label_kind='MATH'
+            if label_kind not in OVERLAY_POLYGON_LABEL_KINDS:_overlay_fail('OVERLAY_POLYGON_LABEL_KIND_INVALID',ident)
+            if not isinstance(label,str) or not label.strip() or len(label)>40 or any(ord(char)<32 for char in label) or (label_kind=='MATH' and not re.fullmatch(OVERLAY_POLYGON_MATH_LABEL_PATTERN,label)):_overlay_fail('OVERLAY_POLYGON_LABEL_INVALID',ident)
+            row['label']=label;row['labelKind']=label_kind
+        polygons.append(row)
     return {'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
 
 def _overlay_anchor_points(plan):

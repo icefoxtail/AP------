@@ -25,7 +25,7 @@ window.questionBank = [
       "$\\overrightarrow{YX}$"
     ],
     "answer": "③",
-    "solution": "\\overrightarrow{XY}는 점 X에서 시작하여 Y를 지나 같은 방향으로 뻗는 반직선이다.\n\n세 점의 순서가\nX-Y-Z\n이므로\n\\overrightarrow{XY}=\\overrightarrow{XZ}\n\n따라서 정답은 ③이다.",
+    "solution": "$\\overrightarrow{XY}$는 점 $X$에서 시작하여 $Y$를 지나 같은 방향으로 뻗는 반직선이다.\n\n세 점의 순서가\n$X-Y-Z$\n이므로\n$\\overrightarrow{XY}=\\overrightarrow{XZ}$\n\n따라서 정답은 ③이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q1.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -39,7 +39,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 위의 세 점 X, Y, Z에서 점 X에서 시작하여 Y와 Z를 지나 한 방향으로 뻗는 반직선을 화살표로 나타낸 그림이다. X의 반대쪽 연장은 점선이다.",
+    "solutionImageCaption": "점 X에서 시작해 Y, Z를 지나는 반직선",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -65,7 +69,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "⑤",
-    "solution": "그림의 꼭짓점을 세면\na=8\n\n모서리를 세면\nb=12\n\n따라서\nb-a=12-8=4\n\n정답은 ⑤이다.",
+    "solution": "그림의 꼭짓점을 세면\n$a=8$\n\n모서리를 세면\n$b=12$\n\n따라서\n$b-a=12-8=4$\n\n정답은 ⑤이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q2.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -79,7 +83,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각뿔대의 꼭짓점에 1부터 8까지, 모서리에 ①부터 ⑫까지 번호를 붙여(보이지 않는 모서리는 점선) 교점 8개와 교선 12개를 하나씩 센다.",
+    "solutionImageCaption": "사각뿔대의 꼭짓점(교점) 8개와 모서리(교선) 12개를 번호로 세었다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -105,7 +113,7 @@ window.questionBank = [
       "$\\overline{BN}=\\overline{NC}$"
     ],
     "answer": "①",
-    "solution": "M은 \\overline{AB}의 중점이므로\nAM=MB\n\nN은 \\overline{BC}의 중점이므로\nBN=NC\n\n따라서\nMN=MB+BN\n=\\dfrac12AB+\\dfrac12BC\n=\\dfrac12AC\n\n또\nCN=\\dfrac12BC,\\quad BN=NC\n\n반면 MB와 NB의 길이는 항상\nMB=2NB\n가 되는 것은 아니다.\n\n따라서 옳지 않은 것은 ①이다.",
+    "solution": "$M$은 $\\overline{AB}$의 중점이므로\n$AM=MB$\n\n$N$은 $\\overline{BC}$의 중점이므로\n$BN=NC$\n\n따라서\n$MN=MB+BN$\n$=\\dfrac{1}{2}AB+\\dfrac{1}{2}BC$\n$=\\dfrac{1}{2}AC$\n\n또\n$CN=\\dfrac{1}{2}BC,\\quad BN=NC$\n\n반면 $MB$와 $NB$의 길이는 항상\n$MB=2NB$\n가 되는 것은 아니다.\n\n따라서 옳지 않은 것은 ①이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q3.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -119,7 +127,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 위에 점 A, M, B, N, C가 놓여 있고 AM=MB는 두 눈금, BN=NC는 한 눈금으로 표시되며, 위쪽 양방향 화살표로 MN의 길이가 AC의 절반임을 보여 준다.",
+    "solutionImageCaption": "M, N이 AB, BC의 중점이므로 MN은 AC의 절반이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -145,7 +157,7 @@ window.questionBank = [
       "$BE$"
     ],
     "answer": "③",
-    "solution": "삼각기둥에서 모서리 DE와 한 점에서 만나는 모서리는\nAD,\\ BE,\\ DF,\\ EF\n\n모서리 BC는 DE와 만나지 않는다.\n\n따라서 옳지 않은 것은 ③이다.",
+    "solution": "삼각기둥에서 모서리 $DE$와 한 점에서 만나는 모서리는\n$AD,\\ BE,\\ DF,\\ EF$\n\n모서리 $BC$는 $DE$와 만나지 않는다.\n\n따라서 옳지 않은 것은 ③이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q4.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -159,7 +171,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑면이 직각삼각형 DEF, ABC인 삼각기둥에서 모서리 DE를 빨간색으로, 모서리 BC를 굵은 선으로 표시해 DE와 만나는 AD, BE, DF, EF와 만나지 않는 BC를 구분해 보여 준다.",
+    "solutionImageCaption": "모서리 DE와 만나는 모서리는 AD, BE, DF, EF이고 BC는 만나지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -222,7 +238,7 @@ window.questionBank = [
       "$l\\parallel m$, $p\\parallel q$"
     ],
     "answer": "⑤",
-    "solution": "그림의 각을 각각 대조한다.\n\n표시된 60^\\circ 관계에서\nl\\parallel m\n\n표시된 120^\\circ와 이웃한 각은\n180^\\circ-120^\\circ=60^\\circ\n이므로\np\\parallel q\n\n반면 n은 이 두 평행 관계에 포함되지 않는다.\n\n따라서\nl\\parallel m,\\quad p\\parallel q\n\n정답은 ⑤이다.",
+    "solution": "그림의 각을 각각 대조한다.\n\n표시된 $60^\\circ$ 관계에서\n$p\\parallel q$\n\n표시된 $120^\\circ$와 이웃한 각은\n$180^\\circ-120^\\circ=60^\\circ$\n이므로\n$l\\parallel m$\n\n반면 $n$은 이 두 평행 관계에 포함되지 않는다.\n\n따라서\n$l\\parallel m,\\quad p\\parallel q$\n\n정답은 ⑤이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q6.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -236,7 +252,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l, m, n과 p, q가 만나는 그림에서 p, m이 이루는 60°와 같은 위치의 각, 120°의 이웃한 각 60°를 같은 두 겹 호로 묶어 l∥m, p∥q를 보이고 n은 이웃한 각이 61°라서 평행하지 않음을 보여 준다.",
+    "solutionImageCaption": "같은 위치의 각이 60°로 같아 l∥m, p∥q이고 n은 평행하지 않다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -277,7 +297,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴 ABED에서 AF는 CD에 수직이고 AF=4, DE는 BE에 수직이다. 점 C에서 직선 AD에 내린 수선은 점선으로 길이 8이다.",
+    "solutionImageCaption": "수선과 거리를 나타낸 사다리꼴 ABED",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -340,7 +364,7 @@ window.questionBank = [
       "$\\overline{BC}=\\overline{ED}$"
     ],
     "answer": "③",
-    "solution": "\\triangle ABC에서\n\\angle A=180^\\circ-75^\\circ-60^\\circ=45^\\circ\n\n\\triangle DEF에서\n\\angle E=180^\\circ-60^\\circ-45^\\circ=75^\\circ\n\n따라서 대응은\nA\\leftrightarrow F,\\quad\nB\\leftrightarrow E,\\quad\nC\\leftrightarrow D\n\n즉\n\\triangle ABC\\equiv\\triangle FED\n\n따라서 \\angle B의 대응각은 \\angle E이다.\n\\angle F라고 한 ③이 옳지 않다.",
+    "solution": "$\\triangle ABC$에서\n$\\angle A=180^\\circ-75^\\circ-60^\\circ=45^\\circ$\n\n$\\triangle DEF$에서\n$\\angle E=180^\\circ-60^\\circ-45^\\circ=75^\\circ$\n\n따라서 대응은\n$A\\leftrightarrow F,\\quad$\n$B\\leftrightarrow E,\\quad$\n$C\\leftrightarrow D$\n\n즉\n$\\triangle ABC\\equiv\\triangle FED$\n\n따라서 $\\angle B$의 대응각은 $\\angle E$이다.\n$\\angle F$라고 한 ③이 옳지 않다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q9.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -354,7 +378,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 삼각형 ABC와 DEF에서 크기가 같은 각을 같은 개수의 호로 표시했다. 45도(A와 F), 75도(B와 E), 60도(C와 D)가 대응하고 AC와 DF는 6이다.",
+    "solutionImageCaption": "대응각을 표시한 두 삼각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -374,7 +402,7 @@ window.questionBank = [
     "content": "다음은 $\\angle XOY$와 크기가 같은 각을, 반직선 $PQ$를 한 변으로 하는 각으로 작도하는 과정을 나타낸 그림이다. 순서대로 배열했을 때, 3번째 과정에 해당하는 것은? (4점)",
     "choices": [],
     "answer": "②",
-    "solution": "같은 크기의 각을 옮기는 작도 순서는\n\n④ \\rightarrow ⑤ \\rightarrow ② \\rightarrow ① \\rightarrow ③\n\n따라서 세 번째 과정은\n②\n\n정답은 ②이다.",
+    "solution": "같은 크기의 각을 옮기는 작도 순서는\n\n④ $\\rightarrow$ ⑤ $\\rightarrow$ ② $\\rightarrow$ ① $\\rightarrow$ ③\n\n따라서 세 번째 과정은\n②\n\n정답은 ②이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q10.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -393,7 +421,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:6a1ac5b0d18e7cefcbc5e4f87b0c7e671d0bc2cab9df5245fab7db62239c2904",
-    "difficultyEvidenceSha": "sha256:224c7d2b1634015fb7a6210dfdbd5e39967d4c21cef5daeb42f2d08ff7a63683"
+    "difficultyEvidenceSha": "sha256:224c7d2b1634015fb7a6210dfdbd5e39967d4c21cef5daeb42f2d08ff7a63683",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 XOY와 반직선 PQ 위에 작도한 같은 크기의 각 A'PB'이다. 같은 반지름의 호 OA, OB, PA', PB'와 옮긴 길이 AB, A'B'(점선)를 같은 표식으로 나타냈다. 문제 그림의 작도 기호를 작도 순서대로 ④(O 중심 호), ⑤(P 중심 호), ②(AB 길이 재기), ①(B' 중심 호), ③(반직선 PA')에 붙였다.",
+    "solutionImageCaption": "각을 옮기는 작도 결과: 작도 순서는 ④ → ⑤ → ② → ① → ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -419,7 +451,7 @@ window.questionBank = [
       "$\\angle h$"
     ],
     "answer": "④",
-    "solution": "l\\parallel m이다.\n\n동위각·엇각과 맞꼭지각을 이용하면\n\\angle b,\\angle d,\\angle f,\\angle h\n는 서로 같은 크기이다.\n\n\\angle e는 이들과 한 직선 위의 이웃한 각이므로\n크기가 다르다.\n\n따라서 정답은 ④이다.",
+    "solution": "$l\\parallel m$이다.\n\n동위각·엇각과 맞꼭지각을 이용하면\n$\\angle b,\\angle d,\\angle f,\\angle h$\n는 서로 같은 크기이다.\n\n$\\angle e$는 이들과 한 직선 위의 이웃한 각이므로\n크기가 다르다.\n\n따라서 정답은 ④이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q11.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -433,7 +465,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m과 이를 가로지르는 직선이 만나 생기는 여덟 각 a~h이다. b, d, f, h는 호 2개, a, c, e, g는 호 1개로 같은 크기끼리 묶여 있다.",
+    "solutionImageCaption": "평행선과 한 직선이 만드는 여덟 각",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -457,7 +493,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "①",
-    "solution": "가장 긴 변이 9\\,\\mathrm{cm}이므로\n삼각형이 되려면\n\n4+x>9\n\nx>5\n\n보기 중 이 조건을 만족하지 않는 값은\nx=5\n\n따라서 정답은 ①이다.",
+    "solution": "가장 긴 변이 $9\\,\\mathrm{cm}$이므로\n삼각형이 되려면\n\n$4+x>9$\n\n$x>5$\n\n보기 중 이 조건을 만족하지 않는 값은\n$x=5$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -496,7 +532,7 @@ window.questionBank = [
       "$\\angle B$와 $\\angle C$"
     ],
     "answer": "⑤",
-    "solution": "\\angle A가 이미 주어져 있다.\n\n① AB,AC → 두 변과 끼인각\n② BC,\\angle C → 한 변과 그 양 끝 각\n③ AB,\\angle B → 한 변과 그 양 끝 각\n④ AC,\\angle C → 한 변과 그 양 끝 각\n\n⑤ \\angle B,\\angle C를 더 주면\n세 각만 정해질 뿐 크기는 정해지지 않는다.\n\n따라서 더 필요한 조건이 아닌 것은 ⑤이다.",
+    "solution": "$\\angle A$가 이미 주어져 있다.\n\n① $AB,AC$ → 두 변과 끼인각\n② $BC,\\angle C$ → 한 변과 그 양 끝 각\n③ $AB,\\angle B$ → 한 변과 그 양 끝 각\n④ $AC,\\angle C$ → 한 변과 그 양 끝 각\n\n⑤ $\\angle B,\\angle C$를 더 주면\n세 각만 정해질 뿐 크기는 정해지지 않는다.\n\n따라서 더 필요한 조건이 아닌 것은 ⑤이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q13.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -510,7 +546,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 각의 크기가 각각 같지만 한 삼각형은 크고 다른 삼각형은 절반 크기인 두 삼각형을 나란히 그렸다. 세 각만으로는 삼각형의 크기가 정해지지 않음을 보여 준다.",
+    "solutionImageCaption": "세 각이 같아도 크기가 다른 삼각형이 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -536,7 +576,7 @@ window.questionBank = [
       "$80^\\circ$"
     ],
     "answer": "④",
-    "solution": "접기 전과 접은 뒤의 대응각은 접는 선을 기준으로 크기가 같다.\n\n일직선 위에서 남는 각은\n180^\\circ-40^\\circ=140^\\circ\n\n이 각이 같은 두 각으로 나뉘므로\n2x=140^\\circ\n\nx=70^\\circ\n\n따라서 정답은 ④이다.",
+    "solution": "접기 전과 접은 뒤의 대응각은 접는 선을 기준으로 크기가 같다.\n\n일직선 위에서 남는 각은\n$180^\\circ-40^\\circ=140^\\circ$\n\n이 각이 같은 두 각으로 나뉘므로\n$2x=140^\\circ$\n\n$x=70^\\circ$\n\n따라서 정답은 ④이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q14.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -554,7 +594,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:eec124b6a429d10c3e6a2608e51c874a40aebbb3b9fed3b791089223572d4a50",
-    "difficultyEvidenceSha": "sha256:9bb4153036c54e2136e8074d0313bc8fa7221986ef724ad2e4e4d1a3b9b06dac"
+    "difficultyEvidenceSha": "sha256:9bb4153036c54e2136e8074d0313bc8fa7221986ef724ad2e4e4d1a3b9b06dac",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 일직선 위의 한 점에서 접는 선(점선)이 접은 뒤의 변과의 사이를 두 개의 같은 각 x로 나누고, 남은 각 40°와 함께 일직선 180°를 이루는 그림이다.",
+    "solutionImageCaption": "일직선에서 40°를 뺀 140°가 같은 두 각 x로 나뉘므로 2x=140°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -580,7 +624,7 @@ window.questionBank = [
       "ㄹ, ㅁ"
     ],
     "answer": "①",
-    "solution": "전개도를 접은 뒤 모서리 BC의 방향과 각 면의 위치를 확인한다.\n\nㄱ. 면 JEDK — 평행\nㄴ. 면 GHEF — 평행하지 않음\nㄷ. 면 NCDK — 만남\nㄹ. 면 IHEJ — 만남\nㅁ. 면 NMLK — 평행\n\n따라서\nㄱ, ㅁ\n\n정답은 ①이다.",
+    "solution": "전개도를 접은 뒤 모서리 $BC$의 방향과 각 면의 위치를 확인한다.\n\nㄱ. 면 $JEDK$ — 평행\nㄴ. 면 $GHEF$ — 평행하지 않음\nㄷ. 면 $NCDK$ — 만남\nㄹ. 면 $IHEJ$ — 만남\nㅁ. 면 $NMLK$ — 평행\n\n따라서\nㄱ, ㅁ\n\n정답은 ①이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q15.png",
     "imageSize": "tall",
     "subUnitKey": "M1-07-SOLID_FIGURE",
@@ -595,7 +639,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체의 전개도에서 모서리 BC를 빨간색으로 표시하고, 접었을 때 BC와 평행한 면 JEDK와 NMLK를 색칠했다.",
+    "solutionImageCaption": "전개도를 접으면 모서리 BC와 평행한 면은 JEDK와 NMLK이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -621,7 +669,7 @@ window.questionBank = [
       "$\\overline{PB}$"
     ],
     "answer": "④",
-    "solution": "\\triangle PAM과 \\triangle PBM에서\n\nAM=BM\n(M은 AB의 중점)\n\n\\angle PMA=\\angle PMB=90^\\circ\n\nPM은 공통인 변\n\n따라서\n\\triangle PAM\\equiv\\triangle PBM\n(SAS 합동)\n\n그러므로 빈칸 ④에 들어갈 것은 SAS이다.\n\nSSS라고 한 ④가 옳지 않다.",
+    "solution": "$\\triangle PAM$과 $\\triangle PBM$에서\n\n$AM=BM$\n($M$은 $AB$의 중점)\n\n$\\angle PMA=\\angle PMB=90^\\circ$\n\n$PM$은 공통인 변\n\n따라서\n$\\triangle PAM\\equiv\\triangle PBM$\n(SAS 합동)\n\n그러므로 빈칸 ④에 들어갈 것은 SAS이다.\n\nSSS라고 한 ④가 옳지 않다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q16.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -636,7 +684,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P가 AB의 수직이등분선 l 위에 있을 때 두 삼각형 PAM과 PBM을 다른 음영으로 나누어, AM=BM 눈금, M에서의 두 직각 표시, 두 삼각형이 공유하는 변 PM을 보여 준다.",
+    "solutionImageCaption": "AM=BM, ∠PMA=∠PMB=90°, PM 공통이므로 △PAM≡△PBM(SAS 합동)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -662,7 +714,7 @@ window.questionBank = [
       "$205^\\circ$"
     ],
     "answer": "③",
-    "solution": "그림의 다섯 꼭짓점에서 생기는 각을 한 바퀴 돌아 합하면\n360^\\circ이다.\n\n45^\\circ+40^\\circ+55^\\circ+25^\\circ+x+y=360^\\circ\n\nx+y\n=360^\\circ-165^\\circ\n=195^\\circ\n\n따라서 정답은 ③이다.",
+    "solution": "그림의 다섯 꼭짓점에서 생기는 각을 한 바퀴 돌아 합하면\n$360^\\circ$이다.\n\n$45^\\circ+40^\\circ+55^\\circ+25^\\circ+x+y=360^\\circ$\n\n$x+y$\n$=360^\\circ-165^\\circ$\n$=195^\\circ$\n\n따라서 정답은 ③이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q17.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -680,7 +732,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:1d5aceff464d9ec2ca65383193b5b30b53694c64a17468d41cb7f57e6a9a4584",
-    "difficultyEvidenceSha": "sha256:bd7289671ce1b52fa49c70b192b59c9b04af1299fa32290c4f2db473ba22b8d1"
+    "difficultyEvidenceSha": "sha256:bd7289671ce1b52fa49c70b192b59c9b04af1299fa32290c4f2db473ba22b8d1",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 여섯 개가 한 번에 이어진 닫힌 별 모양 경로에서 꼭짓점마다 25°, 45°, 40°, 55°, x, y가 표시되어 있다. 이 여섯 각을 한 바퀴 돌아 더하면 360°임을 보여 준다.",
+    "solutionImageCaption": "닫힌 경로의 꼭짓점 각을 모두 더하면 360°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -704,7 +760,7 @@ window.questionBank = [
       "정십각형 → $145^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "정n각형의 한 내각은\n\n\\dfrac{(n-2)180^\\circ}{n}\n\n정오각형:108^\\circ\n정육각형:120^\\circ\n정팔각형:135^\\circ\n정구각형:140^\\circ\n정십각형:144^\\circ\n\n따라서 정십각형의 한 내각을 145^\\circ라고 한 ⑤가 옳지 않다.",
+    "solution": "정$n$각형의 한 내각은\n\n$\\dfrac{(n-2)180^\\circ}{n}$\n\n정오각형:$108^\\circ$\n정육각형:$120^\\circ$\n정팔각형:$135^\\circ$\n정구각형:$140^\\circ$\n정십각형:$144^\\circ$\n\n따라서 정십각형의 한 내각을 $145^\\circ$라고 한 ⑤가 옳지 않다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -743,7 +799,7 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "②",
-    "solution": "다각형의 외각의 합은\n360^\\circ\n\n(180^\\circ-100^\\circ)\n+(180^\\circ-70^\\circ)\n+45^\\circ\n+(180^\\circ-x)\n+y\n=360^\\circ\n\n80+110+45+180-x+y=360\n\nx-y=55^\\circ\n\n따라서 정답은 ②이다.",
+    "solution": "다각형의 외각의 합은\n$360^\\circ$\n\n$(180^\\circ-100^\\circ)$\n$+(180^\\circ-70^\\circ)$\n$+45^\\circ$\n$+(180^\\circ-x)$\n$+y$\n$=360^\\circ$\n\n$80+110+45+180-x+y=360$\n\n$x-y=55^\\circ$\n\n따라서 정답은 ②이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q19-source-repaired.svg",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
@@ -762,7 +818,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:d99c1a1dfe165f01d1f8d95f3cd2af6a9749e8f4fa47031f96445818d79bc25b",
-    "difficultyEvidenceSha": "sha256:20031f1fc8d5c95535e8d7efe6c89980c3b0f32f9a035386906fc9e2ed3efc6f"
+    "difficultyEvidenceSha": "sha256:20031f1fc8d5c95535e8d7efe6c89980c3b0f32f9a035386906fc9e2ed3efc6f",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각형의 각 꼭짓점에서 변을 연장해 외각 180°-100°, 45°, 180°-70°, y, 180°-x를 표시하고 내각 100°, 70°, x와 함께 보여 준다.",
+    "solutionImageCaption": "오각형의 외각의 합 (180°-100°)+(180°-70°)+45°+(180°-x)+y=360°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -788,7 +848,7 @@ window.questionBank = [
       "$24^\\circ$"
     ],
     "answer": "①",
-    "solution": "\\angle DBC=t^\\circ라 하자.\n\n\\angle ABD=2t^\\circ이므로\n\\angle ABC=3t^\\circ\n\n또\n\\angle DCE=s^\\circ라 하면\n\\angle ACD=2s^\\circ\n\nB,C,E가 한 직선 위이므로\n\\angle ACB+2s+s=180^\\circ\n\n\\angle ACB=180^\\circ-3s\n\n\\triangle ABC에서\n60^\\circ+3t+(180^\\circ-3s)=180^\\circ\n\n3(s-t)=60^\\circ\n\ns-t=20^\\circ\n\n\\triangle BCD에서\n\\angle BCD=180^\\circ-s\n\nt+(180^\\circ-s)+x=180^\\circ\n\nx=s-t=20^\\circ\n\n따라서 정답은 ①이다.",
+    "solution": "$\\angle DBC=t^\\circ$라 하자.\n\n$\\angle ABD=2t^\\circ$이므로\n$\\angle ABC=3t^\\circ$\n\n또\n$\\angle DCE=s^\\circ$라 하면\n$\\angle ACD=2s^\\circ$\n\n$B,C,E$가 한 직선 위이므로\n$\\angle ACB+2s+s=180^\\circ$\n\n$\\angle ACB=180^\\circ-3s$\n\n$\\triangle ABC$에서\n$60^\\circ+3t+(180^\\circ-3s)=180^\\circ$\n\n$3(s-t)=60^\\circ$\n\n$s-t=20^\\circ$\n\n$\\triangle BCD$에서\n$\\angle BCD=180^\\circ-s$\n\n$t+(180^\\circ-s)+x=180^\\circ$\n\n$x=s-t=20^\\circ$\n\n따라서 정답은 ①이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q20.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -802,7 +862,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 BCE 위의 점 C에서 CA와 CD가 갈라진 그림이다. B에서는 ∠DBC=t, ∠ABD=2t, C에서는 ∠DCE=s, ∠ACD=2s, ∠ACB=180°−3s, A에서는 60°, D에서는 x가 표시되어 s−t=20°와 x=s−t를 보여 준다.",
+    "solutionImageCaption": "각을 t, s로 놓으면 s−t=20°이고 x=s−t이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -823,7 +887,7 @@ window.questionBank = [
     "content": "[서답형 1]<br>[서술형] 다음 그림과 같이 삼각기둥에 대하여 모서리 $AB$와 한 점에서 만나면서 모서리 $CF$와 평행하는 모서리를 모두 구하는 풀이과정과 답을 서술하시오. (5점)",
     "choices": [],
     "answer": "$\\overline{AD},\\ \\overline{BE}$",
-    "solution": "모서리 AB와 한 점에서 만나는 모서리를 먼저 찾는다.\n\n그중 모서리 CF와 평행한 것은\n\n\\overline{AD},\\quad \\overline{BE}\n\n따라서 답은\n\\overline{AD},\\ \\overline{BE}이다.",
+    "solution": "모서리 $AB$와 한 점에서 만나는 모서리를 먼저 찾는다.\n\n그중 모서리 $CF$와 평행한 것은\n\n$\\overline{AD},\\quad \\overline{BE}$\n\n따라서 답은\n$\\overline{AD},\\ \\overline{BE}$이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q21.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -837,7 +901,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥에서 모서리 AB는 굵게, 모서리 CF와 이에 평행한 모서리 AD, BE는 같은 붉은색으로 표시한 그림이며, 보이지 않는 모서리는 점선이다.",
+    "solutionImageCaption": "모서리 AB와 점 A, B에서 만나면서 모서리 CF와 평행한 모서리 AD, BE",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -858,7 +926,7 @@ window.questionBank = [
     "content": "[서답형 2]<br>[서술형] 다음 그림과 같이 $l\\parallel m$이고 다른 직선과 만날 때, $x$의 값을 구하는 풀이과정과 답을 서술하시오. (5점)",
     "choices": [],
     "answer": "$50$",
-    "solution": "l\\parallel m이므로 표시된 두 각은 같은 쪽 내각 관계이다.\n\n(2x-20^\\circ)+(x+50^\\circ)=180^\\circ\n\n3x+30=180\n\n3x=150\n\nx=50\n\n따라서 답은 50이다.",
+    "solution": "$l\\parallel m$이므로 한 각의 동위각과 다른 각이 직선 $m$ 위에서 이웃한다. 따라서 두 각의 합은 $180^\\circ$이다.\n\n$(2x-20^\\circ)+(x+50^\\circ)=180^\\circ$\n\n$3x+30=180$\n\n$3x=150$\n\n$x=50$\n\n따라서 답은 $50$이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q22.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -872,7 +940,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m을 한 직선이 비스듬히 지나는 그림이다. l 아래쪽 오른쪽 각 2x−20°와, m 아래쪽 왼쪽 각 x+50°와 그 맞꼭지각이 표시되어 한 각의 동위각과 다른 각이 직선 m 위에서 이웃해 두 각의 합이 180°임을 보여 준다.",
+    "solutionImageCaption": "l∥m이므로 한 각의 동위각과 다른 각이 직선 m 위에서 이웃하여 두 각의 합은 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -893,7 +965,7 @@ window.questionBank = [
     "content": "[서답형 3]<br>[서술형] 다음 그림의 정사각형 $ABCD$에서 $\\overline{BE}=\\overline{CF}$일 때, $\\angle BFC+\\angle GEC$의 크기를 구하려고 한다. 단계에 따라 풀이과정과 답을 서술하시오. (5점)",
     "choices": [],
     "answer": "(1) $\\triangle ABE\\equiv\\triangle BCF$, SAS 합동 (2) $180^\\circ$",
-    "solution": "(1)\n정사각형 ABCD에서\nAB=BC,\\quad \\angle ABE=\\angle BCF=90^\\circ\n\n또\nBE=CF\n\n따라서\n\\triangle ABE\\equiv\\triangle BCF\n(SAS 합동)\n\n(2)\n합동에 의해 대응각이 같고,\n정사각형의 서로 이웃한 두 변은 수직이다.\n\n따라서\n\\angle BFC와 \\angle GEC는 서로 보각이므로\n\n\\angle BFC+\\angle GEC=180^\\circ",
+    "solution": "(1)\n정사각형 $ABCD$에서\n$AB=BC,\\quad \\angle ABE=\\angle BCF=90^\\circ$\n\n또\n$BE=CF$\n\n따라서\n$\\triangle ABE\\equiv\\triangle BCF$\n(SAS 합동)\n\n(2)\n합동에 의해 대응각이 같고,\n정사각형의 서로 이웃한 두 변은 수직이다.\n\n따라서\n$\\angle BFC$와 $\\angle GEC$는 서로 보각이므로\n\n$\\angle BFC+\\angle GEC=180^\\circ$",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q23.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -908,7 +980,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 BC 위의 점 E, CD 위의 점 F를 잡고 AE와 BF가 만나는 점을 G로 나타낸 그림이다. BE와 CF에 같은 길이 표시, B와 C에 직각 표시가 있고 ∠AEB와 ∠BFC는 같은 각, ∠GEC는 그 보각으로 표시되어 합이 180°임을 보여 준다.",
+    "solutionImageCaption": "∠BFC=∠AEB이고 ∠GEC는 그 보각이므로 합은 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -928,7 +1004,7 @@ window.questionBank = [
     "content": "[서답형 4]<br>[서술형] 대각선의 총 개수가 $90$개인 다각형의 내각의 크기의 합은 몇 도인지 구하는 풀이과정과 답을 서술하시오. (5점)",
     "choices": [],
     "answer": "$2340^\\circ$",
-    "solution": "n각형의 대각선의 개수는\n\n\\dfrac{n(n-3)}{2}=90\n\nn(n-3)=180\n\nn^2-3n-180=0\n\n(n-15)(n+12)=0\n\nn=15\n\n따라서 내각의 크기의 합은\n\n(15-2)\\times180^\\circ\n=13\\times180^\\circ\n=2340^\\circ",
+    "solution": "$n$각형의 대각선의 개수는\n\n$\\dfrac{n(n-3)}{2}=90$\n\n$n(n-3)=180$\n\n$n^2-3n-180=0$\n\n$(n-15)(n+12)=0$\n\n$n=15$\n\n따라서 내각의 크기의 합은\n\n$(15-2)\\times180^\\circ$\n$=13\\times180^\\circ$\n$=2340^\\circ$",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",

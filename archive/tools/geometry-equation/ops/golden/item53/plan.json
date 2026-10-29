@@ -1,0 +1,35 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "subdivisions": [
+          {"from": "-3", "to": "-2", "parts": 3},
+          {"from": "-1", "to": "0", "parts": 4},
+          {"from": "1", "to": "2", "parts": 2},
+          {"from": "3", "to": "4", "parts": 3}
+        ],
+        "points": [
+          {"id": "ㄱ", "value": "-4", "showValue": false},
+          {"id": "ㄴ", "value": "-8/3", "showValue": false},
+          {"id": "ㄷ", "value": "-3/4"},
+          {"id": "ㄹ", "value": "3/2"},
+          {"id": "ㅁ", "value": "10/3"}
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {"text": "수직선 위의 점 ㄱ~ㅁ"},
+  "caption": "수직선에서 -3과 -2 사이를 3등분한 눈금 한 칸은 1/3이므로 ㄴ은 -3에서 오른쪽으로 한 칸 간 점이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "수직선 -4~+4에서 -3~-2와 +3~+4는 3등분, -1~0은 4등분, +1~+2는 2등분한 눈금이다", "mappedTo": ["numberLine.rows"]},
+    {"id": "c2", "condition": "ㄱ~ㅁ은 수직선 위의 다섯 점이고 ㄴ에 대응하는 수는 묻는 값이므로 그림에 쓰지 않는다", "mappedTo": ["numberLine.rows"]},
+    {"id": "c9", "condition": "문제 본문, 보기, 정답, 풀이는 변경하지 않는다", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ],
+  "newVisualInformation": [
+    "정수 사이를 등분한 눈금 위에서 ㄱ~ㅁ의 위치를 읽는 수직선을 보인다"
+  ]
+}

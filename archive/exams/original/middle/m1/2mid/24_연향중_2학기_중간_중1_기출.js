@@ -23,7 +23,7 @@ window.questionBank = [
       "선분 $AB$ 위의 점 $M$에 대하여 $\\overline{AM}=\\overline{MB}$일 때, 점 $M$을 선분 $AB$의 중점이라고 한다."
     ],
     "answer": "③",
-    "solution": "① 점, 선, 면은 도형의 기본 요소이다.\n\n② 삼각형의 꼭짓점은 세 선이 만나는 교점 3개이다.\n\n③ 직육면체의 교선은 모서리이므로\n12개이다.\n8개가 아니다.\n\n④ 서로 다른 두 점을 지나는 직선은 하나이다.\n\n⑤ AM=MB이면 M은 AB의 중점이다.\n\n따라서 옳지 않은 것은 ③이다.",
+    "solution": "① 점, 선, 면은 도형의 기본 요소이다.\n\n② 삼각형의 꼭짓점은 세 선이 만나는 교점 $3$개이다.\n\n③ 직육면체의 교선은 모서리이므로\n$12$개이다.\n$8$개가 아니다.\n\n④ 서로 다른 두 점을 지나는 직선은 하나이다.\n\n⑤ $AM=MB$이면 $M$은 $AB$의 중점이다.\n\n따라서 옳지 않은 것은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -62,7 +62,7 @@ window.questionBank = [
       "$12$개"
     ],
     "answer": "⑤",
-    "solution": "한 점을 시작점으로 잡으면\n나머지 3개 점을 향하는 반직선을 만들 수 있다.\n\n시작점은 4개이므로\n4\\times3=12\n\n따라서 서로 다른 반직선은 12개이고\n정답은 ⑤이다.",
+    "solution": "한 점을 시작점으로 잡으면\n나머지 $3$개 점을 향하는 반직선을 만들 수 있다.\n\n시작점은 $4$개이므로\n$4\\times3=12$\n\n따라서 서로 다른 반직선은 $12$개이고\n정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q2.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -76,7 +76,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A에서 시작해 B, C, D를 각각 지나는 반직선 세 개를 화살표로 그린 그림. 시작점 하나에서 반직선이 3개씩 나온다는 것을 보여 준다.",
+    "solutionImageCaption": "점 A에서 시작하는 반직선 3개",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -102,7 +106,7 @@ window.questionBank = [
       "$100^\\circ$"
     ],
     "answer": "④",
-    "solution": "맞꼭지각의 크기는 서로 같다.\n\nx+40=70\nx=30\n\n또 y와 70^\\circ는 한 직선 위의 이웃한 각이므로\ny=180-70=110\n\n따라서\ny-x=110-30=80\n\n정답은 ④이다.",
+    "solution": "맞꼭지각의 크기는 서로 같다.\n\n$x+40=70$\n$x=30$\n\n또 $y$와 $70^\\circ$는 한 직선 위의 이웃한 각이므로\n$y=180-70=110$\n\n따라서\n$y-x=110-30=80$\n\n정답은 ④이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q3.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -116,7 +120,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나는 그림. 왼쪽 각 x+40°와 오른쪽 각 70°는 맞꼭지각으로 같은 색 호이고, 위쪽 각 y°는 70°와 한 직선 위의 이웃한 각임을 보여 준다.",
+    "solutionImageCaption": "맞꼭지각 x+40°=70°, 이웃한 각 y°+70°=180°",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -142,7 +150,7 @@ window.questionBank = [
       "$6\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "M은 AB의 중점이므로\nAM=MB=\\dfrac{16}{2}=8\\,\\mathrm{cm}\n\nN은 AM의 중점이므로\nNM=\\dfrac{8}{2}=4\\,\\mathrm{cm}\n\n따라서 정답은 ③이다.",
+    "solution": "$M$은 $AB$의 중점이므로\n$AM=MB=\\dfrac{16}{2}=8\\,\\mathrm{cm}$\n\n$N$은 $AM$의 중점이므로\n$NM=\\dfrac{8}{2}=4\\,\\mathrm{cm}$\n\n따라서 정답은 ③이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q4.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -219,7 +227,7 @@ window.questionBank = [
       "$270^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "꺾인 두 점을 지나 l,m과 평행한 보조선을 각각 그린다.\n\n가운데 선분이 보조선과 이루는 각을 \\alpha^\\circ라 하자.\n\n위쪽 꺾인 점에서\nx=220^\\circ-\\alpha\n\n아래쪽 꺾인 점에서\ny=\\alpha+50^\\circ\n\n따라서\nx+y=(220-\\alpha)+(\\alpha+50)\n=270^\\circ\n\n정답은 ⑤이다.",
+    "solution": "꺾인 두 점을 지나 $l,m$과 평행한 보조선을 각각 그린다.\n\n가운데 선분이 보조선과 이루는 각을 $\\alpha^\\circ$라 하자.\n\n위쪽 꺾인 점에서\n$x=220^\\circ-\\alpha$\n\n아래쪽 꺾인 점에서\n$y=\\alpha+50^\\circ$\n\n따라서\n$x+y=(220-\\alpha)+(\\alpha+50)$\n$=270^\\circ$\n\n정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q6.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -233,7 +241,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이에 두 번 꺾인 선이 있고, 꺾인 두 점에서 l, m과 평행한 점선 보조선을 그어 40°, 50°, 가운데 선분과 보조선이 이루는 각 α를 같은 색 호로 표시한 그림.",
+    "solutionImageCaption": "보조선으로 엇각 40°, α, 50°를 옮겨 x와 y를 구한다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -259,7 +271,7 @@ window.questionBank = [
       "$\\overline{DE}$"
     ],
     "answer": "⑤",
-    "solution": "전개도를 접어 \\overline{AB}의 위치를 먼저 잡는다.\n\n\\overline{CD},\\overline{DM},\\overline{EF},\\overline{EL}은\n\\overline{AB}와 만나지 않고 평행하지도 않아서\n꼬인 위치가 된다.\n\n반면 \\overline{DE}는\n접은 뒤 \\overline{AB}와 꼬인 위치가 아니다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "전개도를 접어 $\\overline{AB}$의 위치를 먼저 잡는다.\n\n$\\overline{CD},\\overline{DM},\\overline{EF},\\overline{EL}$은\n$\\overline{AB}$와 만나지 않고 평행하지도 않아서\n꼬인 위치가 된다.\n\n반면 $\\overline{DE}$는\n접은 뒤 $\\overline{AB}$와 꼬인 위치가 아니다.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q7.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -299,7 +311,7 @@ window.questionBank = [
       "$155^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "각 꺾인 점을 지나 l,m과 평행한 보조선을 그리면\n동위각과 엇각으로 표시된 각들을 한 직선 위에 차례로 옮길 수 있다.\n\n그 결과\na+b+c+d+25^\\circ=180^\\circ\n\n따라서\na+b+c+d=155^\\circ\n\n정답은 ⑤이다.",
+    "solution": "각 꺾인 점을 지나 $l,m$과 평행한 보조선을 그리면\n동위각과 엇각으로 표시된 각들을 한 직선 위에 차례로 옮길 수 있다.\n\n그 결과\n$a+b+c+d+25^\\circ=180^\\circ$\n\n따라서\n$a+b+c+d=155^\\circ$\n\n정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q8.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -313,7 +325,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이에 점 A, B, C, D, S를 지나는 꺾인 선이 있고, B, C, D에서 l, m에 평행한 점선 보조선을 그어 a, a+b, a+b+c 와 d, 25°가 차례로 쌓이는 것을 각 호로 표시한 그림.",
+    "solutionImageCaption": "보조선으로 a, b, c, d, 25°를 점 D의 한 직선 위에 모은다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -370,7 +386,7 @@ window.questionBank = [
     "content": "그림에서 ㉠~㉥은 점 $P$를 지나고 직선 $l$에 평행한 직선을 작도하는 과정을 나타낸 것이다. 작도 순서를 바르게 나타낸 것은? [4점]",
     "choices": [],
     "answer": "②",
-    "solution": "점 P를 지나 l과 평행한 직선을 만들기 위해\n먼저 보조선을 긋고,\n아래 교점에서 만든 호와 현의 길이를\n점 P로 그대로 옮긴다.\n\n그림의 ㉠~㉥을 실제 작도 순서대로 따르면\n선택지 ②의 순서가 된다.\n\n따라서 정답은 ②이다.",
+    "solution": "점 $P$를 지나 $l$과 평행한 직선을 만들기 위해\n먼저 보조선을 긋고,\n아래 교점에서 만든 호와 현의 길이를\n점 $P$로 그대로 옮긴다.\n\n그림의 ㉠~㉥을 실제 작도 순서대로 따르면\n선택지 ②의 순서가 된다.\n\n따라서 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q10.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-POSITION_RELATION",
@@ -389,7 +405,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:2c8187ac376be0acddc8039244a725b49e3765c43a5ed80e0c24ea703ce523f8",
-    "difficultyEvidenceSha": "sha256:52cfdf6be5878d23f9fc7e39e4488eb54e9645edf2dc7b61828b77f7800ea09d"
+    "difficultyEvidenceSha": "sha256:52cfdf6be5878d23f9fc7e39e4488eb54e9645edf2dc7b61828b77f7800ea09d",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l과 점 P를 지나는 보조선, 두 개의 호와 현의 길이를 옮기는 작은 호, 점 P를 지나는 평행선이 그려진 작도 그림. 작도 흔적마다 순서 번호 1~6과 원문자 ㉠~㉥이 붙어 있다.",
+    "solutionImageCaption": "평행선 작도의 순서를 번호 1~6으로 표시",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -413,7 +433,7 @@ window.questionBank = [
       "$AB=3\\,\\mathrm{cm},\\ BC=9\\,\\mathrm{cm},\\ CA=7\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "① AB, AC와 그 끼인각 \\angle A가 주어져 하나로 정해진다.\n\n② 한 변 AB와 그 양 끝 각 \\angle A,\\angle B가 주어져 하나로 정해진다.\n\n③ AB=8,\\ BC=9와 \\angle C=40^\\circ는\n두 변과 끼인각이 아닌 한 각이 주어진 경우라\n하나로 결정된다고 할 수 없다.\n\n④ 한 변 AB와 두 각이 주어져 하나로 정해진다.\n\n⑤ 세 변 3,9,7은\n3+7>9이므로 삼각형이 만들어지고 SSS로 하나로 정해진다.\n\n따라서 정답은 ③이다.",
+    "solution": "① $AB, AC$와 그 끼인각 $\\angle A$가 주어져 하나로 정해진다.\n\n② 한 변 $AB$와 그 양 끝 각 $\\angle A,\\angle B$가 주어져 하나로 정해진다.\n\n③ $AB=8,\\ BC=9$와 $\\angle C=40^\\circ$는\n두 변과 끼인각이 아닌 한 각이 주어진 경우라\n하나로 결정된다고 할 수 없다.\n\n④ 한 변 $AB$와 두 각이 주어져 하나로 정해진다.\n\n⑤ 세 변 $3,9,7$은\n$3+7>9$이므로 삼각형이 만들어지고 SSS로 하나로 정해진다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -452,7 +472,7 @@ window.questionBank = [
       "$\\angle E$"
     ],
     "answer": "②",
-    "solution": "\\triangle ABC\\equiv\\triangle DEF이므로\nA\\leftrightarrow D,\\quad\nB\\leftrightarrow E,\\quad\nC\\leftrightarrow F\n\n따라서\nDE=AB,\nDF=AC,\n\\angle E=\\angle B,\n\\angle F=\\angle C\n는 그림의 표시와 합동 관계로 바로 알 수 있다.\n\n하지만 EF는 BC에 대응하고\nBC의 길이는 그림에 직접 주어져 있지 않다.\n\n따라서 추가 계산 없이 알 수 없는 것은\n\\overline{EF}이고 정답은 ②이다.",
+    "solution": "$\\triangle ABC\\equiv\\triangle DEF$이므로\n$A\\leftrightarrow D$,\n$B\\leftrightarrow E$,\n$C\\leftrightarrow F$\n\n따라서\n$DE=AB$,\n$DF=AC$,\n$\\angle E=\\angle B$,\n$\\angle F=\\angle C$\n는 그림의 표시와 합동 관계로 바로 알 수 있다.\n\n하지만 $EF$는 $BC$에 대응하고\n$BC$의 길이는 그림에 직접 주어져 있지 않다.\n\n따라서 추가 계산 없이 알 수 없는 것은\n$\\overline{EF}$이고 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q12.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -490,7 +510,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "①",
-    "solution": "삼각형의 세 변이 4,9,x이므로\n\n9-4<x<9+4\n\n5<x<13\n\n보기에서 이 범위를 만족하지 않는 값은\nx=4\n\n따라서 정답은 ①이다.",
+    "solution": "삼각형의 세 변이 $4,9,x$이므로\n\n$9-4<x<9+4$\n\n$5<x<13$\n\n보기에서 이 범위를 만족하지 않는 값은\n$x=4$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -529,7 +549,7 @@ window.questionBank = [
       "알 수 없다."
     ],
     "answer": "②",
-    "solution": "\\triangle ABC가 정삼각형이므로\nAC=BC,\\quad \\angle ACB=60^\\circ\n\n\\triangle ECD가 정삼각형이므로\nCD=CE,\\quad \\angle DCE=60^\\circ\n\nB,C,D가 한 직선 위에 있으므로\n\\angle ACD=180^\\circ-60^\\circ=120^\\circ\n\n또\n\\angle BCE=180^\\circ-60^\\circ=120^\\circ\n\n따라서\nAC=BC,\nCD=CE,\n\\angle ACD=\\angle BCE\n\n두 변과 그 끼인각이 각각 같으므로\n\\triangle ACD\\equiv\\triangle BCE\n(SAS 합동)\n\n정답은 ②이다.",
+    "solution": "$\\triangle ABC$가 정삼각형이므로\n$AC=BC,\\quad \\angle ACB=60^\\circ$\n\n$\\triangle ECD$가 정삼각형이므로\n$CD=CE,\\quad \\angle DCE=60^\\circ$\n\n$B,C,D$가 한 직선 위에 있으므로\n$\\angle ACD=180^\\circ-60^\\circ=120^\\circ$\n\n또\n$\\angle BCE=180^\\circ-60^\\circ=120^\\circ$\n\n따라서\n$AC=BC$,\n$CD=CE$,\n$\\angle ACD=\\angle BCE$\n\n두 변과 그 끼인각이 각각 같으므로\n$\\triangle ACD\\equiv\\triangle BCE$\n(SAS 합동)\n\n정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q14.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -569,7 +589,7 @@ window.questionBank = [
       "$34$"
     ],
     "answer": "④",
-    "solution": "원자료를 줄기와 잎 그림에 맞춰 정렬한다.\n\n20대:\n24,25,25,27,29\n이므로 a=5\n\n30대:\n30,32,33,33,36,38\n이므로 b=8\n\n40대:\n41,42,42,47,47,48,49\n이므로 c=7\n\n따라서\na\\times b-c\n=5\\times8-7\n=33\n\n정답은 ④이다.",
+    "solution": "원자료를 줄기와 잎 그림에 맞춰 정렬한다.\n\n$20$대:\n$24,25,25,27,29$\n이므로 $a=5$\n\n$30$대:\n$30,32,33,33,36,38$\n이므로 $b=8$\n\n$40$대:\n$41,42,42,47,47,48,49$\n이므로 $c=7$\n\n따라서\n$a\\times b-c$\n$=5\\times8-7$\n$=33$\n\n정답은 ④이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q15.png",
     "imageSize": "tall",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
@@ -610,7 +630,7 @@ window.questionBank = [
       "$35\\%$"
     ],
     "answer": "⑤",
-    "solution": "40대 선생님은\n41,42,42,47,47,48,49\n의 7명이다.\n\n전체는 20명이므로\n\\dfrac7{20}\\times100=35\\%\n\n따라서 정답은 ⑤이다.",
+    "solution": "$40$대 선생님은\n$41,42,42,47,47,48,49$\n의 $7$명이다.\n\n전체는 $20$명이므로\n$\\dfrac{7}{20}\\times100=35\\%$\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -649,7 +669,7 @@ window.questionBank = [
       "$85$세"
     ],
     "answer": "③",
-    "solution": "가장 적은 나이는\n24세\n\n가장 많은 나이는\n56세\n\n따라서\n24+56=80\n\n정답은 ③이다.",
+    "solution": "가장 적은 나이는\n$24$세\n\n가장 많은 나이는\n$56$세\n\n따라서\n$24+56=80$\n\n정답은 ③이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -688,7 +708,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "전체 30명의 20\\%는\n30\\times0.2=6명\n\n160\\,\\mathrm{cm} 이상인 학생은\n160\\sim170 계급과\n170\\sim180 계급이다.\n\n170\\sim180의 도수가 3명이므로\n160\\sim170의 도수는\n6-3=3명\n\n따라서 정답은 ①이다.",
+    "solution": "전체 $30$명의 $20\\%$는\n$30\\times0.2=6$명\n\n$160\\,\\mathrm{cm}$ 이상인 학생은\n$160\\sim170$ 계급과\n$170\\sim180$ 계급이다.\n\n$170\\sim180$의 도수가 $3$명이므로\n$160\\sim170$의 도수는\n$6-3=3$명\n\n따라서 정답은 ①이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q18.png",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
@@ -728,7 +748,7 @@ window.questionBank = [
       "$17$"
     ],
     "answer": "④",
-    "solution": "도수의 합은 30명이다.\n\n알고 있는 도수는\n130\\sim140:4명\n150\\sim160:9명\n160\\sim170:3명\n170\\sim180:3명\n\n따라서\n140\\sim150의 도수는\n30-(4+9+3+3)=11명\n\n150\\,\\mathrm{cm} 미만은\n4+11=15명\n\n따라서 정답은 ④이다.",
+    "solution": "도수의 합은 $30$명이다.\n\n알고 있는 도수는\n$130\\sim140:4$명\n$150\\sim160:9$명\n$160\\sim170:3$명\n$170\\sim180:3$명\n\n따라서\n$140\\sim150$의 도수는\n$30-(4+9+3+3)=11$명\n\n$150\\,\\mathrm{cm}$ 미만은\n$4+11=15$명\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -762,7 +782,7 @@ window.questionBank = [
     "content": "서논술형 1. 다음 그림에서 $\\overline{BD}=3\\overline{AB}$이고 $C$는 $\\overline{AD}$의 중점이고 $\\overline{BC}=6\\,\\mathrm{cm}$일 때, $\\overline{AD}$의 길이를 구하고 구하는 방법을 서술하시오. [6점]",
     "choices": [],
     "answer": "$24\\,\\mathrm{cm}$",
-    "solution": "AB=x\\,\\mathrm{cm}라 하자.\n\nBD=3AB이므로\nBD=3x\n\n따라서\nAD=AB+BD=4x\n\nC는 AD의 중점이므로\nAC=CD=2x\n\nBC=AC-AB=2x-x=x\n\nBC=6이므로\nx=6\n\n따라서\nAD=4x=24\\,\\mathrm{cm}",
+    "solution": "$AB=x\\,\\mathrm{cm}$라 하자.\n\n$BD=3AB$이므로\n$BD=3x$\n\n따라서\n$AD=AB+BD=4x$\n\n$C$는 $AD$의 중점이므로\n$AC=CD=2x$\n\n$BC=AC-AB=2x-x=x$\n\n$BC=6$이므로\n$x=6$\n\n따라서\n$AD=4x=24\\,\\mathrm{cm}$",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q20.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -797,7 +817,7 @@ window.questionBank = [
     "content": "서논술형 2. 다음 그림에서 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\overline{AB}\\parallel\\overline{CD}$일 때, 합동인 두 삼각형을 찾아 합동 기호를 사용하여 나타내고, 합동인 이유를 평행선의 성질을 이용하여 구체적으로 서술하시오. (단, 평행사변형의 대변의 길이가 같음은 이용하지 마시오.) [7점]",
     "choices": [],
     "answer": "$\\triangle ABC\\equiv\\triangle CDA$ (ASA 합동)",
-    "solution": "AD\\parallel BC이므로\n\\angle BCA=\\angle DAC\n(엇각)\n\nAB\\parallel CD이므로\n\\angle BAC=\\angle DCA\n(엇각)\n\nAC는 공통인 변이다.\n\n따라서 한 변 AC와 그 양 끝 각이 각각 같으므로\n\\triangle ABC\\equiv\\triangle CDA\n(ASA 합동)이다.",
+    "solution": "$AD\\parallel BC$이므로\n$\\angle BCA=\\angle DAC$\n(엇각)\n\n$AB\\parallel CD$이므로\n$\\angle BAC=\\angle DCA$\n(엇각)\n\n$AC$는 공통인 변이다.\n\n따라서 한 변 $AC$와 그 양 끝 각이 각각 같으므로\n$\\triangle ABC\\equiv\\triangle CDA$\n(ASA 합동)이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q21.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -832,7 +852,7 @@ window.questionBank = [
     "content": "서논술형 3. 다음 그림과 같이 직사각형 모양의 종이를 $\\angle EGF=120^\\circ$가 되도록 접었을 때, $\\angle GFE$의 크기를 구하고 구하는 과정을 서술하시오. (풀이를 그림을 그려 나타내시오.) [7점]",
     "choices": [],
     "answer": "$30^\\circ$",
-    "solution": "접은 뒤 서로 포개지는 대응선분의 길이는 같으므로\nGE=GF\n\n따라서 \\triangle EGF는 이등변삼각형이다.\n\n\\angle EGF=120^\\circ이므로\n두 밑각의 합은\n180^\\circ-120^\\circ=60^\\circ\n\n두 밑각의 크기는 같으므로\n\\angle GFE=\\dfrac{60^\\circ}{2}=30^\\circ",
+    "solution": "직사각형 모양의 종이를 $EF$를 접는 선으로 접었으므로\n접힌 각의 크기는 같다.\n$\\angle GEF=\\angle FEC$\n\n$AD\\parallel BC$이므로\n엇각의 크기는 같다.\n$\\angle GFE=\\angle FEC$\n\n따라서 $\\angle GEF=\\angle GFE$이므로\n$\\triangle EGF$는 $GE=GF$인 이등변삼각형이다.\n\n$\\angle EGF=120^\\circ$이므로\n두 밑각의 합은\n$180^\\circ-120^\\circ=60^\\circ$\n\n두 밑각의 크기는 같으므로\n$\\angle GFE=\\dfrac{60^\\circ}{2}=30^\\circ$",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q22.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",

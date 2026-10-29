@@ -1,0 +1,121 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "FGHEBCDA",
+      "cuts": [
+        {
+          "through": [
+            [
+              "AD",
+              "1/2",
+              "M"
+            ],
+            [
+              "BC",
+              "1/2",
+              "N"
+            ],
+            [
+              "CG",
+              "1/2",
+              "P"
+            ],
+            [
+              "DH",
+              "1/2",
+              "Q"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "M",
+        "N",
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "N",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "F",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "F",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "G",
+      "to": "P",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "G",
+      "to": "H",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ],
+  "solidCaption": {
+    "text": "잘라 낸 입체와 절단면"
+  },
+  "caption": "정육면체를 네 모서리의 중점 M, N, P, Q를 지나는 평면으로 잘라 낸 입체에서 절단면 MNPQ(직사각형)를 칠하고, MQ를 굵은 선으로, MQ와 꼬인 위치에 있는 모서리 AB, BN, BF, EF, FG, GP, GH 7개를 빨간색으로 나타낸 그림",
+  "sourceQuote": "절단면 $MNPQ$는 직사각형입니다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체를 네 모서리의 중점 M, N, P, Q를 지나는 평면으로 잘라낸 입체도형",
+      "mappedTo": "solids"
+    },
+    {
+      "id": "c2",
+      "condition": "모서리 MQ와 수직인 모서리의 개수 a, 꼬인 위치에 있는 모서리의 개수 b",
+      "mappedTo": "segments"
+    }
+  ],
+  "newVisualInformation": [
+    "절단면 MNPQ가 직사각형이므로 MQ와 수직인 모서리는 MN, PQ이고, MQ와 꼬인 위치인 모서리는 7개"
+  ]
+}

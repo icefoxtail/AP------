@@ -124,6 +124,13 @@ pole and large for the hole. Both families remain `EXPERIMENTAL / CONTROLLED
 FIXTURE ONLY`; neither establishes real-UID publication support or canonical
 qualification.
 
+The same `rational` family also takes a nonzero constant numerator
+(`numerator:[k,'0']`, inverse proportion y=k/(d0+d1*x)). That grammar is framed at
+one scale on both axes, shows both branches of the hyperbola, and draws no dashed
+asymptote over a coordinate axis (y=0 is the x-axis; the pole is drawn only when it
+is off the y-axis). The observer recomputes the pole, the branch sides, which
+asymptotes are drawn and every required point from the exact coefficients.
+
 The separate `sqrt-affine-spike-v1` experiment accepts `sqrt(a*x+b)` with exact
 rational coefficient strings and `a>0`. Its source domain is either the natural
 nonnegative-radicand domain or an explicit finite closed rational interval whose

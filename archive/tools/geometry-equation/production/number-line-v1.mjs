@@ -16,7 +16,11 @@ export const FIGURE_MODEL_VERSION='NUMBER_LINE_FIGURE_MODEL_v1',FIGURE_SPEC_VERS
 const OBSERVER_SCRIPT=fileURLToPath(new URL('number-line-observer-worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
 const bad=code=>{throw Error(code);};
-const MAX_ROWS=4,MAX_POINTS=4,MAX_INTEGERS=25;
+const MAX_ROWS=4,MAX_POINTS=8,MAX_INTEGERS=25,MAX_TICK_INTEGERS=24,MAX_SUBDIVISIONS=8,MIN_TICK_GAP=6;
+// A point may be named by one Hangul consonant letter (ㄱ..ㅎ) in place of a capital letter.
+const JAMO=/^[\u3131-\u314E]$/u,CAPITAL=/^[A-Z]$/;
+const pointSlug=id=>CAPITAL.test(id)?id:'u'+id.codePointAt(0).toString(16);
+const numSlug=text=>text.replace('-','m').replace('/','d');
 const isPlain=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 const onlyKeys=(value,keys,code)=>{if(!isPlain(value)||Object.keys(value).some(key=>!keys.includes(key)))bad(code);};
 // An end value is a rational [n,d] or, for an end such as sqrt(10) or 1+sqrt(2), a real {p,q,s} = p+q*sqrt(s) (one radical s per plan; the chain module's exact numbers).
@@ -114,14 +118,57 @@ function integersOf(pieces,request){
   return out;
 }
 
+/** The optional display flags of one marked point: name (null, or one Hangul consonant letter), hideName, showValue (false: the point's value is not written). */
+function pointFlags(raw){
+  const flags={};
+  if(raw.hideName!==undefined&&typeof raw.hideName!=='boolean')bad('NUMBER_LINE_POINT_NAME_INVALID');
+  if(raw.showValue!==undefined&&typeof raw.showValue!=='boolean')bad('NUMBER_LINE_POINTS_INVALID');
+  const hidden=raw.hideName===true||raw.name===null;
+  if(raw.name!==undefined&&raw.name!==null){
+    if(typeof raw.name!=='string'||!JAMO.test(raw.name)||raw.hideName===true)bad('NUMBER_LINE_POINT_NAME_INVALID');
+    flags.jamoName=raw.name;
+  }else if(!hidden&&JAMO.test(raw.id))flags.jamoName=raw.id;
+  if(hidden)flags.hideName=true;
+  if(raw.showValue===false)flags.hideValue=true;
+  return flags;
+}
+const ceilR=r=>-floorR(sub(ZERO,r));
+/**
+ * The graduated axis of a POINTS row: subdivisions=[{from,to,parts}] (integer strings from<to, parts 2..10) split every unit between from and to into
+ * equal parts; every integer from the lowest to the highest of (the points, the subdivisions) gets a labelled tick. Exact: the minor values are rationals.
+ */
+function solveScale(raw,values){
+  if(!Array.isArray(raw)||raw.length<1||raw.length>MAX_SUBDIVISIONS)bad('NUMBER_LINE_SUBDIVISIONS_INVALID');
+  const specs=raw.map(item=>{
+    onlyKeys(item,['from','to','parts'],'NUMBER_LINE_SUBDIVISIONS_INVALID');
+    if(typeof item.from!=='string'||typeof item.to!=='string'||!/^-?\d{1,4}$/.test(item.from)||!/^-?\d{1,4}$/.test(item.to))bad('NUMBER_LINE_SUBDIVISIONS_INVALID');
+    const from=BigInt(item.from),to=BigInt(item.to),parts=typeof item.parts==='string'&&/^\d{1,2}$/.test(item.parts)?Number(item.parts):item.parts;
+    if(from>=to||to-from>BigInt(MAX_TICK_INTEGERS)||!Number.isInteger(parts)||parts<2||parts>10)bad('NUMBER_LINE_SUBDIVISIONS_INVALID');
+    return {from,to,parts};
+  }).sort((a,b)=>a.from<b.from?-1:a.from>b.from?1:0);
+  for(let k=1;k<specs.length;k++)if(specs[k].from<specs[k-1].to)bad('NUMBER_LINE_SUBDIVISIONS_INVALID');
+  const lo=[...values.map(floorR),...specs.map(spec=>spec.from)].reduce((x,y)=>x<y?x:y),hi=[...values.map(ceilR),...specs.map(spec=>spec.to)].reduce((x,y)=>x>y?x:y);
+  if(hi-lo>BigInt(MAX_TICK_INTEGERS))bad('NUMBER_LINE_SUBDIVISIONS_INVALID');
+  const integers=[];for(let n=lo;n<=hi;n++)integers.push(String(n));
+  const minor=[];
+  for(const spec of specs)for(let k=spec.from;k<spec.to;k++)for(let j=1;j<spec.parts;j++){
+    const v=div(rat(k*BigInt(spec.parts)+BigInt(j)),rat(BigInt(spec.parts)));
+    minor.push({value:ratText(v),approx:num(v),unit:String(k),part:j,parts:spec.parts});
+  }
+  return {subdivisions:specs.map(spec=>({from:String(spec.from),to:String(spec.to),parts:spec.parts})),integers,minor};
+}
+
 // --- solving the figure -----------------------------------------------------------------------------------------------------------------------
 /**
  * numberLine = {variable?, parameter?:{name,value}, rows:[row...]}; a row is {kind:'SET',pieces:[{lo,hi}...],integerPoints?} (one or two disjoint
  * pieces, an end null for a ray; an end {value,state} or {param:{mul,add},state}), {kind:'RESULT',integerPoints?} (the exact intersection of
- * every SET row above it, last SET/RESULT row) or {kind:'POINTS',points:[{id,value}|{id,divides:{from,to,ratio:[m,n]}}]}.
+ * every SET row above it, last SET/RESULT row) or {kind:'POINTS',points:[{id,value}|{id,divides:{from,to,ratio:[m,n]}}],band?,subdivisions?}.
+ * A point id is a capital letter or one Hangul consonant letter; a point may also carry name (null or one Hangul letter), hideName and showValue:false.
+ * numberLine.axisVariable:false leaves out the variable at the axis end; subdivisions:[{from,to,parts}] gives the row a graduated axis (see solveScale).
  */
 export function solveNumberLineFigure(numberLine){
-  onlyKeys(numberLine,['variable','parameter','rows'],'NUMBER_LINE_FIGURE_PLAN_INVALID');
+  onlyKeys(numberLine,['variable','parameter','rows','axisVariable'],'NUMBER_LINE_FIGURE_PLAN_INVALID');
+  if(numberLine.axisVariable!==undefined&&typeof numberLine.axisVariable!=='boolean')bad('NUMBER_LINE_AXIS_VARIABLE_INVALID');
   const variable=checkVariable(numberLine.variable);
   let parameter=null;
   if(numberLine.parameter!==undefined){
@@ -135,6 +182,7 @@ export function solveNumberLineFigure(numberLine){
   const used={used:false},solved=[],sets=[];
   for(const [index,row] of rows.entries()){
     if(!isPlain(row))bad('NUMBER_LINE_ROWS_INVALID');
+    if(row.kind!=='POINTS'&&row.subdivisions!==undefined)bad('NUMBER_LINE_SUBDIVISIONS_INVALID');
     if(row.kind==='SET'){
       onlyKeys(row,['kind','pieces','integerPoints'],'NUMBER_LINE_ROWS_INVALID');
       if(!Array.isArray(row.pieces)||row.pieces.length<1||row.pieces.length>2)bad('NUMBER_LINE_PIECE_INVALID');
@@ -152,15 +200,18 @@ export function solveNumberLineFigure(numberLine){
       if(result.length>2)bad('NUMBER_LINE_TOO_MANY_PIECES');
       solved.push({kind:'RESULT',pieces:result,request:row.integerPoints});
     }else if(row.kind==='POINTS'){
-      onlyKeys(row,['kind','points'],'NUMBER_LINE_ROWS_INVALID');
+      onlyKeys(row,['kind','points','subdivisions','band'],'NUMBER_LINE_ROWS_INVALID');
+      if(row.band!==undefined&&typeof row.band!=='boolean')bad('NUMBER_LINE_ROWS_INVALID');
       if(!Array.isArray(row.points)||row.points.length<2||row.points.length>MAX_POINTS)bad('NUMBER_LINE_POINTS_INVALID');
       const byId=new Map(),points=[];
       for(const raw of row.points){
-        onlyKeys(raw,['id','value','divides'],'NUMBER_LINE_POINTS_INVALID');
-        if(typeof raw.id!=='string'||!/^[A-Z]$/.test(raw.id)||byId.has(raw.id))bad('NUMBER_LINE_POINTS_INVALID');
+        onlyKeys(raw,['id','value','divides','name','hideName','showValue'],'NUMBER_LINE_POINTS_INVALID');
+        if(typeof raw.id!=='string'||!(CAPITAL.test(raw.id)||JAMO.test(raw.id))||byId.has(raw.id))bad('NUMBER_LINE_POINTS_INVALID');
         if((raw.value===undefined)===(raw.divides===undefined))bad('NUMBER_LINE_POINTS_INVALID');
-        const point={id:raw.id,raw};byId.set(raw.id,point);points.push(point);
+        const point={id:raw.id,raw,flags:pointFlags(raw)};byId.set(raw.id,point);points.push(point);
       }
+      const shownJamo=points.map(point=>point.flags.jamoName).filter(Boolean);
+      if(new Set(shownJamo).size!==shownJamo.length)bad('NUMBER_LINE_POINT_NAME_DUPLICATE');
       for(const point of points){
         if(point.raw.value!==undefined){point.v=parseRat(point.raw.value,'NUMBER_LINE_VALUE_INVALID');continue;}
         onlyKeys(point.raw.divides,['from','to','ratio'],'NUMBER_LINE_DIVISION_INVALID');
@@ -172,11 +223,12 @@ export function solveNumberLineFigure(numberLine){
       }
       const values=points.map(point=>point.v);
       if(values.some((x,i)=>values.slice(i+1).some(y=>cmpR(x,y)===0)))bad('NUMBER_LINE_POINTS_COINCIDE');
-      solved.push({kind:'POINTS',points:points.map(point=>({id:point.id,value:ratText(point.v),tex:valueTex(asReal(point.v)),text:valueText(asReal(point.v)),approx:num(point.v),...(point.division?{division:point.division}:{})}))});
+      solved.push({kind:'POINTS',points:points.map(point=>({id:point.id,value:ratText(point.v),tex:valueTex(asReal(point.v)),text:valueText(asReal(point.v)),approx:num(point.v),...(point.division?{division:point.division}:{}),...point.flags})),
+        ...(row.band===false?{band:false}:{}),...(row.subdivisions!==undefined?{scale:solveScale(row.subdivisions,points.map(point=>point.v))}:{})});
     }else bad('NUMBER_LINE_ROWS_INVALID');
   }
   if(parameter&&!used.used)bad('NUMBER_LINE_PARAMETER_UNUSED');
-  return {schemaVersion:FIGURE_MODEL_VERSION,variable,parameter:parameter&&{name:parameter.name,value:ratText(parameter.v)},
+  return {schemaVersion:FIGURE_MODEL_VERSION,variable,...(numberLine.axisVariable===false?{axisVariable:false}:{}),parameter:parameter&&{name:parameter.name,value:ratText(parameter.v)},
     rows:solved.map(row=>row.kind==='POINTS'?row:{kind:row.kind,pieces:row.pieces.map(piece=>({lower:sideModel(piece.lo),upper:sideModel(piece.hi)})),integers:row.request===undefined?null:integersOf(row.pieces,row.request)})};
 }
 
@@ -185,9 +237,11 @@ export function solveNumberLineFigure(numberLine){
 const WIDTH=512,SAFE=12,AXIS_LEFT=32,ARROW_TIP=WIDTH-32-20,MAP_LEFT=AXIS_LEFT+14,MAP_RIGHT=ARROW_TIP-22;
 const DISPLAY='\\displaystyle ',END_RADIUS=5,DOT_RADIUS=3.2,TICK_HALF=6,LABEL_GAP=5,ZERO_TICK_CLEARANCE=56,NOTE_ROW=36,ROW_GAP=8;
 const HEAD_TALL=52,HEAD_SHORT=38,BELOW_TALL=48,BELOW_SHORT=34,POINT_HEAD=36,INTEGER_ZONE=64,PLAIN_ZONE=24,INTEGER_LABEL_ROW=26;
+const NAME_ROW=30,NAME_ROW_JAMO=34,VALUE_STACK_GAP=2,MINOR_TICK_HALF=3.5;
 const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
 const frac=tex=>tex.includes('\\frac');
 const piecesOf=row=>row.pieces.map(piece=>({lo:piece.lower,hi:piece.upper}));
+const customPoints=row=>!!row.scale||row.points.some(point=>point.hideName||point.hideValue||point.jamoName);
 function pieceTex(variable,piece){
   const rel=e=>e.state==='CLOSED'?'\\le ':'<',relText=e=>e.state==='CLOSED'?'≤':'<';
   if(piece.lo&&piece.hi)return {tex:piece.lo.tex+rel(piece.lo)+variable+rel(piece.hi)+piece.hi.tex,plain:piece.lo.text+relText(piece.lo)+variable+relText(piece.hi)+piece.hi.text};
@@ -201,9 +255,17 @@ export function figureLayout(model){
     const points=row.kind==='POINTS',ends=points?[]:row.pieces.flatMap(piece=>[piece.lower,piece.upper]).filter(Boolean);
     const tallHead=!points&&row.pieces.some(piece=>frac(piece.lower?.tex??'')||frac(piece.upper?.tex??'')),
       tallBelow=points?row.points.some(point=>frac(point.tex)):ends.some(end=>frac(end.tex));
-    const head=points?POINT_HEAD:tallHead?HEAD_TALL:HEAD_SHORT,belowRow=tallBelow?BELOW_TALL:BELOW_SHORT,zone=points?10:row.integers?.length?INTEGER_ZONE:PLAIN_ZONE;
+    let head=points?POINT_HEAD:tallHead?HEAD_TALL:HEAD_SHORT,belowRow=tallBelow?BELOW_TALL:BELOW_SHORT;const zone=points?10:row.integers?.length?INTEGER_ZONE:PLAIN_ZONE;
+    let custom=null;
+    if(points&&customPoints(row)){
+      // A row with a graduated axis, Hangul/hidden names or hidden values: names (and ratios) in the head; values below the axis, or stacked above the name on a graduated axis (its ticks use the space below).
+      const named=row.points.some(point=>!point.hideName||point.division),nameRow=named?(row.points.some(point=>point.jamoName)?NAME_ROW_JAMO:NAME_ROW):0;
+      const shown=row.points.filter(point=>!point.hideValue),valueRow=shown.length?(shown.some(point=>frac(point.tex))?BELOW_TALL:BELOW_SHORT):0;
+      head=7+nameRow+(row.scale?valueRow+(nameRow&&valueRow?VALUE_STACK_GAP:0):0);belowRow=row.scale?BELOW_SHORT:valueRow;
+      custom={nameRow,valueRow};
+    }
     const axisY=y+head+zone;
-    rows.push({top:y,head,axisY,belowRow,zone});
+    rows.push({top:y,head,axisY,belowRow,zone,...(custom??{})});
     y=axisY+END_RADIUS+LABEL_GAP+belowRow+ROW_GAP;
   }
   return {rows,height:y-ROW_GAP+SAFE};
@@ -214,13 +276,13 @@ export const figurePanelSize=model=>({width:WIDTH,height:figureLayout(model).hei
  * Deterministic: the same plan and model give the same spec.
  */
 /** plan.pointNames checked against the POINTS rows of the solved figure (an unknown target or an invalid display name is an explicit error). */
-export const figurePointNames=(plan,model)=>pointNameModel(plan,model.rows.flatMap(row=>row.kind==='POINTS'?row.points.map(point=>point.id):[]));
+export const figurePointNames=(plan,model)=>pointNameModel(plan,model.rows.flatMap(row=>row.kind==='POINTS'?row.points.map(point=>point.id).filter(id=>CAPITAL.test(id)):[]));
 export function numberLineFigureSpec(plan,model){
   if(plan?.capability!==NUMBER_LINE_CAPABILITY||!plan.numberLine)bad('NUMBER_LINE_PLAN_INVALID');
   if(objectSha(solveNumberLineFigure(plan.numberLine))!==objectSha(model))bad('NUMBER_LINE_MODEL_MISMATCH');
   const names=figurePointNames(plan,model),finite=[];
   for(const row of model.rows){
-    if(row.kind==='POINTS')finite.push(...row.points.map(point=>point.approx));
+    if(row.kind==='POINTS')finite.push(...row.points.map(point=>point.approx),...(row.scale?.integers??[]).map(Number));
     else{for(const piece of row.pieces)for(const end of [piece.lower,piece.upper])if(end)finite.push(end.approx);finite.push(...(row.integers??[]).map(Number));}
   }
   let lo=Math.min(...finite),hi=Math.max(...finite);
@@ -239,17 +301,30 @@ export function numberLineFigureSpec(plan,model){
     const spec={n,kind:row.kind,axis:{x1:AXIS_LEFT,x2:ARROW_TIP,y:axisY},bands,dots,ticks};
     if(row.kind==='POINTS'){
       const placed=row.points.map(point=>({...point,x:px(point.approx)}));
-      const sorted=[...placed].sort((a,b)=>a.x-b.x);
-      bands.push({id:`r${n}-band-1`,piece:1,x1:sorted[0].x,x2:sorted[sorted.length-1].x,y:axisY,from:sorted[0].value,to:sorted[sorted.length-1].value});
+      const sorted=[...placed].sort((a,b)=>a.x-b.x),{nameRow=NAME_ROW,valueRow=belowRow}=layout.rows[r],stacked=!!row.scale;
+      if(row.band!==false)bands.push({id:`r${n}-band-1`,piece:1,x1:sorted[0].x,x2:sorted[sorted.length-1].x,y:axisY,from:sorted[0].value,to:sorted[sorted.length-1].value});
+      if(row.scale){
+        // the graduated axis: a labelled tick at every integer, shorter ticks at the equal parts of the subdivided units
+        for(const s of row.scale.integers){
+          const id=`r${n}-tick-${numSlug(s)}`;
+          ticks.push({id,role:'major',value:s,x:px(Number(s)),y1:r6(axisY-TICK_HALF),y2:r6(axisY+TICK_HALF)});
+          labels.push({id:id+'-label',role:'tick',owner:id,kind:'MATH',tex:s,plain:s,value:s,anchor:{x:px(Number(s)),y:r6(axisY+END_RADIUS+LABEL_GAP),align:'below'},rowHeight:belowRow,row:n});
+        }
+        for(const m of row.scale.minor)ticks.push({id:`r${n}-subtick-${numSlug(m.value)}`,role:'minor',value:m.value,parts:m.parts,x:px(m.approx),y1:r6(axisY-MINOR_TICK_HALF),y2:r6(axisY+MINOR_TICK_HALF)});
+      }
       for(const point of placed){
-        dots.push({id:`r${n}-pt-${point.id}`,role:'point',value:point.value,state:'CLOSED',x:point.x,y:axisY,r:END_RADIUS,pointId:point.id});
-        labels.push({id:`r${n}-pt-${point.id}-name`,role:'point-name',owner:`r${n}-pt-${point.id}`,kind:'MATH',tex:names.tex(point.id),plain:names.text(point.id),value:point.id,anchor:{x:point.x,y:r6(axisY-END_RADIUS-4),align:'above'},rowHeight:30,row:n});
-        labels.push({id:`r${n}-pt-${point.id}-value`,role:'point-value',owner:`r${n}-pt-${point.id}`,kind:'MATH',tex:DISPLAY+point.tex,plain:point.text,value:point.value,anchor:{x:point.x,y:r6(axisY+END_RADIUS+LABEL_GAP),align:'below'},rowHeight:belowRow,row:n});
+        const dotId=`r${n}-pt-${pointSlug(point.id)}`;
+        dots.push({id:dotId,role:'point',value:point.value,state:'CLOSED',x:point.x,y:axisY,r:END_RADIUS,pointId:point.id,...(point.hideValue?{valueHidden:true}:{})});
+        if(!point.hideName)labels.push(point.jamoName
+          ?{id:`${dotId}-name`,role:'point-name',owner:dotId,kind:'TEXT',text:point.jamoName,plain:point.jamoName,value:point.id,anchor:{x:point.x,y:r6(axisY-END_RADIUS-4),align:'above'},rowHeight:nameRow,row:n}
+          :{id:`${dotId}-name`,role:'point-name',owner:dotId,kind:'MATH',tex:names.tex(point.id),plain:names.text(point.id),value:point.id,anchor:{x:point.x,y:r6(axisY-END_RADIUS-4),align:'above'},rowHeight:customPoints(row)?nameRow:30,row:n});
+        if(!point.hideValue)labels.push({id:`${dotId}-value`,role:'point-value',owner:dotId,kind:'MATH',tex:DISPLAY+point.tex,plain:point.text,value:point.value,
+          anchor:stacked?{x:point.x,y:r6(axisY-END_RADIUS-4-(point.hideName?0:nameRow+VALUE_STACK_GAP)),align:'above'}:{x:point.x,y:r6(axisY+END_RADIUS+LABEL_GAP),align:'below'},rowHeight:stacked?valueRow:belowRow,row:n});
       }
       // The ratio of an internal division: m over A..P and n over P..B (the numbers the author gave).
       for(const point of placed.filter(item=>item.division)){
-        const a=placed.find(item=>item.id===point.division.from),b=placed.find(item=>item.id===point.division.to);
-        [[a,point,point.division.ratio[0],'first'],[point,b,point.division.ratio[1],'second']].forEach(([left,right,text,which])=>labels.push({id:`r${n}-ratio-${point.id}-${which}`,role:'ratio',owner:`r${n}-pt-${point.id}`,kind:'MATH',tex:text,plain:text,value:text,anchor:{x:r6((left.x+right.x)/2),y:r6(axisY-END_RADIUS-4),align:'above'},rowHeight:30,row:n,span:[left.id,right.id]}));
+        const a=placed.find(item=>item.id===point.division.from),b=placed.find(item=>item.id===point.division.to),dotId=`r${n}-pt-${pointSlug(point.id)}`;
+        [[a,point,point.division.ratio[0],'first'],[point,b,point.division.ratio[1],'second']].forEach(([left,right,text,which])=>labels.push({id:`r${n}-ratio-${pointSlug(point.id)}-${which}`,role:'ratio',owner:dotId,kind:'MATH',tex:text,plain:text,value:text,anchor:{x:r6((left.x+right.x)/2),y:r6(axisY-END_RADIUS-4),align:'above'},rowHeight:30,row:n,span:[left.id,right.id]}));
       }
     }else{
       const result=row.kind==='RESULT';
@@ -280,7 +355,7 @@ export function numberLineFigureSpec(plan,model){
         labels.push({id:id+'-label',role:'integer',owner:id,kind:'MATH',tex:s,plain:s,value:s,anchor:{x:px(Number(s)),y:r6(dotY-DOT_RADIUS-4),align:'above'},rowHeight:INTEGER_LABEL_ROW,row:n});
       }
     }
-    labels.push({id:`r${n}-axis-variable`,role:'variable',owner:`r${n}-axis`,kind:'MATH',tex:v,plain:v,anchor:{x:ARROW_TIP+6,y:axisY,align:'right'},rowHeight:30,row:n});
+    if(model.axisVariable!==false)labels.push({id:`r${n}-axis-variable`,role:'variable',owner:`r${n}-axis`,kind:'MATH',tex:v,plain:v,anchor:{x:ARROW_TIP+6,y:axisY,align:'right'},rowHeight:30,row:n});
     rows.push(spec);
   }
   return {schemaVersion:FIGURE_SPEC_VERSION,size:figurePanelSize(model),map:{unitLeft:r6(lo),unitRight:r6(hi),pxLeft:MAP_LEFT,pxRight:MAP_RIGHT},rows,labels};
@@ -299,6 +374,7 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
     let spec;
     try{spec=numberLineFigureSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='NUMBER_LINE_MODEL_MISMATCH'?error.message:'NUMBER_LINE_SPEC_ERROR',{code:error.message});}
     lineage.specSha256=objectSha(spec);
+    for(const row of spec.rows){const xs=row.ticks.map(tick=>tick.x).sort((a,b)=>a-b);if(xs.some((x,i)=>i&&x-xs[i-1]<MIN_TICK_GAP))throw new Stop('NUMBER_LINE_TICKS_TOO_DENSE',{row:row.n});}
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
     for(const label of spec.labels){
       let fragment;
@@ -320,18 +396,18 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
       const {axis,n}=row;
       body+=`<g data-layer="30"><line id="r${n}-axis" data-role="axis" data-axis="x" data-row="${n}" stroke="#111" stroke-width="1.2" fill="none" x1="${axis.x1}" y1="${axis.y}" x2="${axis.x2-6}" y2="${axis.y}"/>`;
       body+=`<polygon id="r${n}-axis-arrow" data-role="arrow" data-row="${n}" fill="#111" stroke="none" points="${axis.x2},${axis.y} ${axis.x2-9},${r6(axis.y-4)} ${axis.x2-9},${r6(axis.y+4)}"/></g>`;
-      for(const tick of row.ticks)body+=`<g data-layer="30"><line id="${tick.id}" data-role="tick" data-axis="x" data-row="${n}" data-value="${tick.value}" stroke="#111" stroke-width="1.2" fill="none" x1="${tick.x}" y1="${tick.y1}" x2="${tick.x}" y2="${tick.y2}"/></g>`;
+      for(const tick of row.ticks){const minor=tick.role==='minor';body+=`<g data-layer="30"><line id="${tick.id}" data-role="${minor?'subtick':'tick'}" data-axis="x" data-row="${n}" data-value="${tick.value}"${tick.role?` data-scale="${tick.role}"`:''}${minor?` data-parts="${tick.parts}"`:''} stroke="#111" stroke-width="${minor?1:1.2}" fill="none" x1="${tick.x}" y1="${tick.y1}" x2="${tick.x}" y2="${tick.y2}"/></g>`;}
       for(const band of row.bands)body+=`<g data-layer="40"><line id="${band.id}" data-role="solution-band" data-row="${n}" data-piece="${band.piece}" data-from="${esc(band.from)}" data-to="${esc(band.to)}" stroke="#111" stroke-width="${band.result?4.8:3.2}" stroke-linecap="butt" fill="none" x1="${band.x1}" y1="${band.y}" x2="${band.x2}" y2="${band.y}"/></g>`;
       for(const dot of row.dots){
         const open=dot.state==='OPEN';
-        body+=`<g data-layer="70"><circle id="${dot.id}" data-role="point" data-row="${n}" data-dot="${dot.role}" data-value="${esc(dot.value)}" data-state="${dot.state}"${dot.piece?` data-piece="${dot.piece}" data-end="${dot.side}"`:''}${dot.pointId?` data-point-id="${dot.pointId}"`:''} stroke="#111" stroke-width="${open?1.6:.8}" fill="${open?'#fff':'#111'}" cx="${dot.x}" cy="${dot.y}" r="${dot.r}"/></g>`;
+        body+=`<g data-layer="70"><circle id="${dot.id}" data-role="point" data-row="${n}" data-dot="${dot.role}" data-value="${esc(dot.value)}" data-state="${dot.state}"${dot.piece?` data-piece="${dot.piece}" data-end="${dot.side}"`:''}${dot.pointId?` data-point-id="${dot.pointId}"`:''}${dot.valueHidden?' data-value-shown="false"':''} stroke="#111" stroke-width="${open?1.6:.8}" fill="${open?'#fff':'#111'}" cx="${dot.x}" cy="${dot.y}" r="${dot.r}"/></g>`;
       }
     }
     for(const {label,fragment,box} of placed){
       body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='set'?'EQUATION_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${label.row?` data-row="${label.row}"`:''}${label.value!==undefined?` data-value="${esc(label.value)}"`:''}${label.span?` data-span="${label.span.join(',')}"`:''}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
     const integerModes=spec.rows.map(row=>row.integerLabels?`${row.n}:${row.integerLabels}`:null).filter(Boolean).join(',');
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-number-line="${NUMBER_LINE_CAPABILITY}" data-figure="${FIGURE_CAPABILITY}" data-variable="${model.variable}" data-unit-left="${map.unitLeft}" data-unit-right="${map.unitRight}" data-px-left="${map.pxLeft}" data-px-right="${map.pxRight}"${integerModes?` data-integer-labels="${integerModes}"`:''} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-number-line="${NUMBER_LINE_CAPABILITY}" data-figure="${FIGURE_CAPABILITY}" data-variable="${model.variable}"${model.axisVariable===false?' data-axis-variable="false"':''} data-unit-left="${map.unitLeft}" data-unit-right="${map.unitRight}" data-px-left="${map.pxLeft}" data-px-right="${map.pxRight}"${integerModes?` data-integer-labels="${integerModes}"`:''} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-number-line-'+Date.now()+'.svg',svg);
     let response;

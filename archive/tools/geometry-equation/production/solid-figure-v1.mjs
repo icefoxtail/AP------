@@ -5,6 +5,7 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
+import {sphereCutModel,arcPoint,SPHERE_PLANES,AXES as CUT_AXES} from './sphere-parts.mjs';
 
 // A solid figure (solid-figure-v1): prisms, pyramids, pyramid frusta, cylinders, cones, cone frusta, spheres and hemispheres drawn in ONE fixed
 // orthographic projection (yaw 28 deg, pitch 20 deg: a textbook "dimetric" look; circles become axis-aligned ellipses), with hidden edges dashed by
@@ -13,7 +14,7 @@ import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mj
 // drawn on named points. Or the NET of such a solid (polyhedra unfolded along a spanning tree of faces, cylinder and cone nets). The engine builds
 // the 3D model from the plan; solid_figure_observer.py re-derives the same model from the plan alone (never from the engine's numbers) and checks
 // the final SVG: visible/hidden per edge, vertex positions, ellipse axes and tangent lines, the liquid region, marks, nesting, net face congruence
-// and adjacency, label values and places.
+// and adjacency, label values and places. A sphere may be cut by planes through its centre (cut:{kind}: half, quarter, eighth, 3/4, 7/8; sphere-parts.mjs).
 export const SOLID_CAPABILITY='solid-figure-v1';
 export const SOLID_MODEL_VERSION='SOLID_FIGURE_MODEL_v2',SOLID_SPEC_VERSION='SOLID_FIGURE_SPEC_v2',SOLID_SVG_VERSION='solid-figure-svg-v2';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('solid_figure_observer_worker.py',import.meta.url));
@@ -39,9 +40,14 @@ const len=a=>Math.hypot(a[0],a[1],a[2]);
 const unit=a=>{const l=len(a);return l===0?a:mulv(a,1/l);};
 const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 const EX=[cY,sY,0];// world direction of the screen's horizontal
+const EY=[-sP*sY,sP*cY,cP];// world direction of the screen's vertical
+const CUT_FRAME={view:VIEW,ex:EX,ey:EY};
 
 // --- the 3D model -----------------------------------------------------------------------------------------------------------------------------
 const NAME=/^[A-Z]′?$/u;
+// One vertex may carry several names (the corners of a net that fold onto one point): written "M,A,I" as an entry of a names list, 2 to 4 names.
+const NAME_MULTI=/^[A-Z]′?(?:,[A-Z]′?){1,3}$/u;
+const nameOk=x=>NAME.test(x)||NAME_MULTI.test(x);
 const LETTERS='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 /** A names string is written letter by letter; a letter may be followed by one prime (A′, B′). '.' means "no name". */
 function nameTokens(text){return String(text).match(/[A-Z]′?|\./gu)??[];}
@@ -95,7 +101,7 @@ function basePolygon(base){
 function letters(start,count){return [...Array(count).keys()].map(k=>LETTERS[start+k]??null);}
 /** Vertex names of a polyhedron: a string / array in base,top|apex order, an object {base,top,apex}, or consecutive letters. */
 function polyNames(kind,n,names){
-  const clean=list=>{if(!Array.isArray(list)||list.some(x=>x!==null&&x!=='.'&&!NAME.test(String(x))))bad('SOLID_NAMES_INVALID');return list.map(x=>x==='.'?null:x);};
+  const clean=list=>{if(!Array.isArray(list)||list.some(x=>x!==null&&x!=='.'&&!nameOk(String(x))))bad('SOLID_NAMES_INVALID');return list.map(x=>x==='.'?null:x);};
   if(names===undefined)return {base:letters(0,n),top:kind==='PYRAMID'?[]:letters(n,n),apex:kind==='PYRAMID'?LETTERS[n]:null};
   if(typeof names==='string'||Array.isArray(names)){
     const list=clean(typeof names==='string'?nameTokens(names):names),need=kind==='PYRAMID'?n+1:2*n;
@@ -107,7 +113,7 @@ function polyNames(kind,n,names){
   const top=kind==='PYRAMID'?[]:names.top===undefined?letters(n,n):clean(typeof names.top==='string'?nameTokens(names.top):names.top);
   if(base.length!==n||(kind!=='PYRAMID'&&top.length!==n))bad('SOLID_NAMES_INVALID');
   const apex=kind==='PYRAMID'?(names.apex===undefined?LETTERS[n]:names.apex):null;
-  if(apex!==null&&apex!==undefined&&!NAME.test(apex))bad('SOLID_NAMES_INVALID');
+  if(apex!==null&&apex!==undefined&&!nameOk(apex))bad('SOLID_NAMES_INVALID');
   return {base,top,apex:apex??null};
 }
 const faceNormal=pts=>{let n=[0,0,0];for(let i=0;i<pts.length;i++)n=add(n,cross(pts[i],pts[(i+1)%pts.length]));return unit(n);};
@@ -115,7 +121,7 @@ const faceNormal=pts=>{let n=[0,0,0];for(let i=0;i<pts.length;i++)n=add(n,cross(
 /** One polyhedron: prism, pyramid or pyramid frustum. Faces are cycles of vertex indices oriented counter-clockwise seen from OUTSIDE. */
 function buildPolyhedron(spec){
   const kind=spec.kind;
-  const allowed={PRISM:['id','kind','base','height','names'],PYRAMID:['id','kind','base','height','apex','names'],FRUSTUM:['id','kind','base','height','topScale','foot','names']}[kind];
+  const allowed={PRISM:['id','kind','base','height','names','count','cuts'],PYRAMID:['id','kind','base','height','apex','names','count','cuts'],FRUSTUM:['id','kind','base','height','topScale','foot','names','count','cuts']}[kind];
   onlyKeys(spec,allowed,'SOLID_PARAM_INVALID');
   const {points,plane}=basePolygon(spec.base);
   const n=points.length,height=pos(spec.height,'SOLID_PARAM_INVALID');
@@ -150,8 +156,10 @@ function buildPolyhedron(spec){
   const baseRunsUp=dot(faceNormal(bottom),axis)>0;// the cycle b0..bn-1 runs counter-clockwise about +axis
   const nm=polyNames(kind,n,spec.names);
   const vertices=[];
-  bottom.forEach((p,i)=>vertices.push({name:nm.base[i],p:p.map(r6)}));
-  if(kind==='PYRAMID')vertices.push({name:nm.apex,p:apex.map(r6)});else top.forEach((p,i)=>vertices.push({name:nm.top[i],p:p.map(r6)}));
+  // a vertex with several names keeps the first as its name (edges and labels are keyed by it) and lists all of them as aliases
+  const vertexOf=(raw,p)=>typeof raw==='string'&&raw.includes(',')?{name:raw.split(',')[0],aliases:raw.split(','),p:p.map(r6)}:{name:raw,p:p.map(r6)};
+  bottom.forEach((p,i)=>vertices.push(vertexOf(nm.base[i],p)));
+  if(kind==='PYRAMID')vertices.push(vertexOf(nm.apex,apex));else top.forEach((p,i)=>vertices.push(vertexOf(nm.top[i],p)));
   const faces=[];
   const orient=(id,idx,expected)=>{
     const normal=faceNormal(idx.map(i=>vertices[i].p));
@@ -172,15 +180,152 @@ function buildPolyhedron(spec){
     orient('bottom',baseCycle,[0,0,-1]);orient('top',baseCycle.map(i=>i+n),[0,0,1]);
     for(let i=0;i<n;i++){const j=(i+1)%n;orient('side'+i,[i,j,j+n,i+n],sub(mulv(add(add(vertices[i].p,vertices[j].p),add(vertices[i+n].p,vertices[j+n].p)),0.25),interior));}
   }
-  const edgeKey=new Map();
-  for(const face of faces)for(let k=0;k<face.idx.length;k++){const a=face.idx[k],b=face.idx[(k+1)%face.idx.length];edgeKey.set(a<b?a+','+b:b+','+a,[Math.min(a,b),Math.max(a,b)]);}
-  const edges=[...edgeKey.values()].sort((x,y)=>x[0]-y[0]||x[1]-y[1]);
+  const edges=edgesOfFaces(faces);
   // every face must be planar
   for(const face of faces){
     const pts=face.idx.map(i=>vertices[i].p),nrm=faceNormal(pts);
     if(pts.some(p=>Math.abs(dot(nrm,sub(p,pts[0])))>1e-6))bad('SOLID_FACE_NOT_PLANAR');
   }
-  return {id:spec.id,kind,category:'POLY',vertices,faces,edges,height};
+  if(spec.cuts!==undefined){
+    // planes that cut convex parts off the polyhedron: the solid that remains is what is drawn (its own vertices, faces and edges)
+    if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:CUT');
+    if(!isConvex(points))bad('SOLID_CUT_NOT_CONVEX');
+    const cut=applyCuts({vertices,faces},spec.cuts);
+    return {id:spec.id,kind,category:'POLY',vertices:cut.vertices,faces:cut.faces,edges:edgesOfFaces(cut.faces),height,cuts:cut.record};
+  }
+  const count=parseCount(spec.count,vertices,edges);
+  return {id:spec.id,kind,category:'POLY',vertices,faces,edges,height,...(count?{count}:{})};
+}
+/** The distinct edges (vertex index pairs, low first) of a set of faces, sorted. */
+function edgesOfFaces(faces){
+  const edgeKey=new Map();
+  for(const face of faces)for(let k=0;k<face.idx.length;k++){const a=face.idx[k],b=face.idx[(k+1)%face.idx.length];edgeKey.set(a<b?a+','+b:b+','+a,[Math.min(a,b),Math.max(a,b)]);}
+  return [...edgeKey.values()].sort((x,y)=>x[0]-y[0]||x[1]-y[1]);
+}
+
+// --- planes cutting a convex polyhedron ---------------------------------------------------------------------------------------------------------------
+// solids[].cuts:[{through:[[edge,"1/2",name?],...],keep?}] (one or two planes, one after the other). A plane is fixed by 3 to 6 points, each the point
+// at a fraction p/q (from the first named vertex towards the second) of an EDGE of the solid as it is when that cut is made (the edge is written as its
+// two vertex names, "AD"); all must be coplanar. The solid keeps the side that has more of its vertices (strictly); with equally many, keep:"<vertex>"
+// names a vertex that stays. A vertex of the solid on the plane stays; every edge that crosses the plane gets a new vertex there (named by the
+// through entry that lies on it, otherwise unnamed), and the plane's section becomes one new face. New vertices follow the kept ones, ordered by the
+// edge they lie on (the lower, then the higher index of the edge's ends in the solid before the cut). Only convex polyhedra are cut.
+const MAX_CUTS=2,CUT_EPS=1e-6,CUT_AT=/^([1-9]\d?)\/([1-9]\d?)$/;
+function applyCuts(poly,cuts){
+  if(!Array.isArray(cuts)||cuts.length<1||cuts.length>MAX_CUTS)bad('SOLID_CUT_COUNT_INVALID');
+  let current=poly;const record=[];
+  cuts.forEach((cut,k)=>{const made=cutOnce(current,cut,k+1);current=made;record.push(made.record);});
+  return {vertices:current.vertices,faces:current.faces,record};
+}
+function cutOnce(poly,cut,number){
+  if(!isPlain(cut))bad('SOLID_CUT_INVALID');
+  onlyKeys(cut,['through','keep'],'SOLID_CUT_INVALID');
+  if(!Array.isArray(cut.through)||cut.through.length<3||cut.through.length>6)bad('SOLID_CUT_INVALID');
+  const {vertices,faces}=poly;
+  const indexOf=name=>vertices.findIndex(v=>v.name===name||(v.aliases?.includes(name)??false));
+  const edgeSet=new Set();
+  for(const f of faces)for(let k=0;k<f.idx.length;k++){const a=f.idx[k],b=f.idx[(k+1)%f.idx.length];edgeSet.add(Math.min(a,b)+','+Math.max(a,b));}
+  const through=cut.through.map(entry=>{
+    if(!Array.isArray(entry)||entry.length<2||entry.length>3||typeof entry[0]!=='string'||typeof entry[1]!=='string')bad('SOLID_CUT_INVALID');
+    const toks=nameTokens(entry[0]);
+    if(toks.length!==2||toks.join('')!==entry[0]||toks.includes('.'))bad('SOLID_CUT_INVALID');
+    const a=indexOf(toks[0]),b=indexOf(toks[1]);
+    if(a<0||b<0||a===b||!edgeSet.has(Math.min(a,b)+','+Math.max(a,b)))bad('SOLID_CUT_EDGE_UNKNOWN:'+entry[0]);
+    const m=CUT_AT.exec(entry[1]);
+    if(!m||Number(m[1])>=Number(m[2]))bad('SOLID_CUT_INVALID');
+    const name=entry.length===3?entry[2]:null;
+    if(name!==null&&name!=='.'&&!NAME.test(name))bad('SOLID_NAMES_INVALID');
+    return {key:Math.min(a,b)+','+Math.max(a,b),edge:entry[0],at:entry[1],name:name===null||name==='.'?null:name,p:lerp(vertices[a].p,vertices[b].p,Number(m[1])/Number(m[2]))};
+  });
+  if(new Set(through.map(x=>x.key)).size!==through.length)bad('SOLID_CUT_INVALID');
+  // the plane: the widest triple of the through points; the others must lie on it
+  let normal=null,widest=0;
+  for(let i=0;i<through.length;i++)for(let j=i+1;j<through.length;j++)for(let k=j+1;k<through.length;k++){
+    const c=cross(sub(through[j].p,through[i].p),sub(through[k].p,through[i].p)),l=len(c);
+    if(l>widest){widest=l;normal=c;}
+  }
+  if(normal===null||widest<1e-9)bad('SOLID_CUT_DEGENERATE');
+  const n=unit(normal),d=dot(n,through[0].p);
+  if(through.some(x=>Math.abs(dot(n,x.p)-d)>2*CUT_EPS))bad('SOLID_CUT_NOT_PLANAR');
+  // the side that stays
+  const dist=vertices.map(v=>dot(n,v.p)-d);
+  const pos=dist.filter(x=>x>CUT_EPS).length,neg=dist.filter(x=>x<-CUT_EPS).length;
+  if(pos===0||neg===0)bad('SOLID_CUT_NO_EFFECT');
+  let keepSign;
+  if(cut.keep!==undefined){
+    if(typeof cut.keep!=='string')bad('SOLID_CUT_INVALID');
+    const i=indexOf(cut.keep);
+    if(i<0)bad('SOLID_NAME_UNKNOWN');
+    if(Math.abs(dist[i])<=CUT_EPS)bad('SOLID_CUT_KEEP_INVALID');
+    keepSign=Math.sign(dist[i]);
+  }else if(pos!==neg)keepSign=pos>neg?1:-1;
+  else bad('SOLID_CUT_KEEP_AMBIGUOUS');
+  const k=dist.map(x=>keepSign*x);// positive on the side that stays
+  const crossing=(a,b)=>(k[a]>CUT_EPS&&k[b]<-CUT_EPS)||(k[a]<-CUT_EPS&&k[b]>CUT_EPS);
+  const crossings=[];
+  for(const key of edgeSet){
+    const [lo,hi]=key.split(',').map(Number);
+    if(crossing(lo,hi))crossings.push({key,lo,hi,p:lerp(vertices[lo].p,vertices[hi].p,k[lo]/(k[lo]-k[hi])).map(r6)});
+  }
+  crossings.sort((x,y)=>x.lo-y.lo||x.hi-y.hi);
+  // a through point is a vertex of the section: its edge must cross the plane (an edge lying in the plane has no such point)
+  for(const x of through)if(!crossings.some(c=>c.key===x.key))bad('SOLID_CUT_INVALID');
+  const kept=[...vertices.keys()].filter(i=>k[i]>=-CUT_EPS);
+  const newOf=new Map(kept.map((i,j)=>[i,j])),crossOf=new Map(crossings.map((c,j)=>[c.key,kept.length+j]));
+  const out=kept.map(i=>({...vertices[i],p:[...vertices[i].p]}));
+  for(const c of crossings)out.push({name:through.find(x=>x.key===c.key)?.name??null,p:c.p});
+  // every face is clipped to the side that stays; a face left with fewer than three corners is gone
+  const clipped=[];
+  for(const f of faces){
+    const m=f.idx.length,cycle=[];
+    for(let i=0;i<m;i++){
+      const a=f.idx[i],b=f.idx[(i+1)%m],key=Math.min(a,b)+','+Math.max(a,b);
+      if(k[a]>=-CUT_EPS)cycle.push(newOf.get(a));
+      if(crossOf.has(key)&&crossing(a,b))cycle.push(crossOf.get(key));
+    }
+    if(new Set(cycle).size>=3)clipped.push({id:f.id,idx:cycle});
+  }
+  // the section: the new vertices and the vertices that lie on the plane, in counter-clockwise order seen from outside (from the removed side)
+  const section=[...kept.filter(i=>Math.abs(k[i])<=CUT_EPS).map(i=>newOf.get(i)),...crossings.map(c=>crossOf.get(c.key))];
+  if(section.length<3)bad('SOLID_CUT_DEGENERATE');
+  const u=mulv(n,-keepSign),helper=Math.abs(u[0])<0.9?[1,0,0]:[0,1,0],e1=unit(cross(u,helper)),e2=cross(u,e1);
+  const centre=section.reduce((sum,i)=>add(sum,mulv(out[i].p,1/section.length)),[0,0,0]);
+  const angle=i=>{const q=sub(out[i].p,centre);return Math.atan2(dot(q,e2),dot(q,e1));};
+  section.sort((x,y)=>angle(x)-angle(y));
+  const result={vertices:out,faces:[...clipped,{id:'cut'+number,idx:section}]};
+  for(const face of result.faces){
+    const pts=face.idx.map(i=>out[i].p),nrm=faceNormal(pts);
+    if(pts.some(q=>Math.abs(dot(nrm,sub(q,pts[0])))>1e-5))bad('SOLID_FACE_NOT_PLANAR');
+  }
+  result.record={number,plane:{n:n.map(r6),d:r6(d)},keepSign,through:through.map(x=>({edge:x.edge,at:x.at,name:x.name})),removed:vertices.length-kept.length,added:crossings.length};
+  return result;
+}
+const COUNT_EDGES_MAX=20,CIRCLED_ONE=0x2460;
+/** The circled number of a counting label: 1 -> the circled digit one, up to 20. */
+export const circled=k=>String.fromCodePoint(CIRCLED_ONE+k-1);
+/**
+ * count:{vertices?,edges?,faces?} asks for counting numbers: 1, 2, ... beside the vertices and the circled numbers beside the edge midpoints.
+ * Vertices are numbered in model order (the base ring, then the top ring or the apex). Edges are numbered around the base ring (edge i joins base vertex i
+ * and i+1, the closing edge last), then the side edges by their base vertex, then around the top ring. Faces are not supported; a numbered vertex
+ * cannot also carry a name.
+ */
+function parseCount(raw,vertices,edges){
+  if(raw===undefined)return null;
+  if(!isPlain(raw))bad('SOLID_COUNT_REQUEST_INVALID');
+  onlyKeys(raw,['vertices','edges','faces'],'SOLID_COUNT_REQUEST_INVALID');
+  for(const key of Object.keys(raw))if(typeof raw[key]!=='boolean')bad('SOLID_COUNT_REQUEST_INVALID');
+  if(raw.faces===true)bad('SOLID_COUNT_FACES_UNSUPPORTED');
+  const count={vertices:raw.vertices===true,edges:raw.edges===true};
+  if(!count.vertices&&!count.edges)bad('SOLID_COUNT_REQUEST_INVALID');
+  if(count.vertices&&vertices.some(v=>v.name))bad('SOLID_COUNT_NAMES_CONFLICT');
+  if(count.edges&&edges.length>COUNT_EDGES_MAX)bad('SOLID_COUNT_TOO_MANY:edges');
+  return count;
+}
+/** The edges of a polyhedron in counting order (see parseCount). */
+export function countedEdges(solid){
+  const n=solid.kind==='PYRAMID'?solid.vertices.length-1:solid.vertices.length/2;
+  const slot=([a,b])=>a<n&&b<n?[0,b===a+1?a:b]:a>=n&&b>=n?[2,b===a+1?a-n:b-n]:[1,a];
+  return [...solid.edges].sort((x,y)=>{const u=slot(x),v=slot(y);return u[0]-v[0]||u[1]-v[1];});
 }
 
 /**
@@ -191,7 +336,12 @@ function buildPolyhedron(spec){
 function buildRound(spec){
   const kind=spec.kind;
   const baseKeys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
-  onlyKeys(spec,[...baseKeys,'orientation','inside'],'SOLID_PARAM_INVALID');
+  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut'],'SOLID_PARAM_INVALID');
+  if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:'+kind);
+  if(spec.cuts!==undefined)bad('SOLID_CUT_UNSUPPORTED:'+kind);
+  // cut:{kind,facing?} cuts a SPHERE by planes through its centre (sphere-parts.mjs); no other round solid, and a cut sphere does not sit inside a cylinder
+  if(spec.cut!==undefined&&kind!=='SPHERE')bad('SOLID_SPHERE_CUT_UNSUPPORTED:'+kind);
+  if(spec.cut!==undefined&&spec.inside!==undefined)bad('SOLID_SPHERE_CUT_NEST_UNSUPPORTED');
   const r=pos(spec.radius,'SOLID_PARAM_INVALID');
   const cone=kind==='CONE'||kind==='CONE_FRUSTUM';
   const orientation=spec.orientation??'APEX_UP';
@@ -215,7 +365,8 @@ function buildRound(spec){
     else points.push({name:names.apex??null,id:'apex',p:[0,0,down?0:height]});
   }
   if(spec.inside!==undefined&&(typeof spec.inside!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(spec.inside)))bad('SOLID_NEST_INVALID');
-  return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null};
+  return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,
+    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{})};
 }
 
 const shiftSolid=(solid,s)=>{
@@ -330,19 +481,25 @@ function dimLabel(raw,value,unit,code,{angle=false}={}){
 }
 
 // --- solving the figure ---------------------------------------------------------------------------------------------------------------------
+const MAX_SEGMENTS=10;
+// highlight tints: a fill colour and its opacity (LIGHT is the original blue shade of every highlight)
+const HIGHLIGHT_FILLS={LIGHT:['#7fa6e8',0.32],MEDIUM:['#7fa6e8',0.55],WARM:['#f2a65a',0.42],GREEN:['#6fcf97',0.42],ROSE:['#e98aa8',0.42],VIOLET:['#a78bdb',0.42]};
 const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
 const UNIT=/^(cm|mm|m|km)$/;
 export function solveSolidFigure(plan){
   if(!isPlain(plan)||plan.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
-  onlyKeys(plan,['capability','unit','solids','net','dims','highlights','segments','section','marks','solidCaption','caption','sourceConditions','newVisualInformation'],'SOLID_PLAN_INVALID');
+  onlyKeys(plan,['capability','unit','solids','net','dims','highlights','segments','section','marks','solidCaption','caption','sourceConditions','newVisualInformation','sourceQuote','panelWidth'],'SOLID_PLAN_INVALID');
   if((plan.solids===undefined)===(plan.net===undefined))bad('SOLID_PLAN_INVALID');
+  // sourceQuote is provenance only (the item sentence the plan was written from): it never reaches the figure
+  if(plan.sourceQuote!==undefined&&(typeof plan.sourceQuote!=='string'||!plan.sourceQuote.trim()||plan.sourceQuote.length>200))bad('SOLID_SOURCE_QUOTE_INVALID');
+  if(plan.panelWidth!==undefined&&plan.panelWidth!==GRID_PANEL_WIDTH)bad('SOLID_PLAN_INVALID');
   if(plan.unit!==undefined&&(typeof plan.unit!=='string'||!UNIT.test(plan.unit)))bad('SOLID_UNIT_INVALID');
   const model=plan.net!==undefined?solveNet(plan):solveSolids(plan);
   // the Archive publication check reads text: a figure with no name and no length at all cannot be published
-  const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length,0)
+  const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)
     :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
   if(names+model.dims.length===0)bad('SOLID_FIGURE_NEEDS_A_LABEL');
-  return model;
+  return plan.panelWidth===undefined?model:{...model,panelWidth:plan.panelWidth};
 }
 function solveSolids(plan){
   if(!Array.isArray(plan.solids)||plan.solids.length<1||plan.solids.length>3)bad('SOLID_COUNT_INVALID');
@@ -388,12 +545,12 @@ function solveSolids(plan){
   const named=new Map();
   for(const solid of solids){
     const list=solid.category==='POLY'?solid.vertices:solid.points;
-    for(const q of list){if(q.name===null||q.name===undefined)continue;if(named.has(q.name))bad('SOLID_NAME_DUPLICATE:'+q.name);named.set(q.name,{solid:solid.id,p:q.p});}
+    for(const q of list){if(q.name===null||q.name===undefined)continue;for(const alias of q.aliases??[q.name]){if(named.has(alias))bad('SOLID_NAME_DUPLICATE:'+alias);named.set(alias,{solid:solid.id,p:q.p});}}
   }
   // segments (aux) between named points
   const segments=[];
   if(plan.segments!==undefined){
-    if(!Array.isArray(plan.segments)||plan.segments.length>8)bad('SOLID_SEGMENTS_INVALID');
+    if(!Array.isArray(plan.segments)||plan.segments.length>MAX_SEGMENTS)bad('SOLID_SEGMENTS_INVALID');
     for(const s of plan.segments){
       onlyKeys(s,['from','to','style','role'],'SOLID_SEGMENTS_INVALID');
       if(!named.has(s.from)||!named.has(s.to)||s.from===s.to)bad('SOLID_NAME_UNKNOWN');
@@ -403,7 +560,7 @@ function solveSolids(plan){
       segments.push({from:s.from,to:s.to,style,role:s.role??'ACCENT'});
     }
   }
-  const drawnPair=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=solid.vertices[i].name,y=solid.vertices[j].name;return (x===a&&y===b)||(x===b&&y===a);}));
+  const drawnPair=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=solid.vertices[i],y=solid.vertices[j],has=(v,n)=>v.name===n||(v.aliases?.includes(n)??false);return (has(x,a)&&has(y,b))||(has(x,b)&&has(y,a));}));
   // auto visibility of an AUTO segment: depth test at several points
   for(const s of segments)if(s.style==='AUTO'){
     const solid=solids.find(x=>x.id===named.get(s.from).solid);
@@ -413,18 +570,35 @@ function solveSolids(plan){
     const hiddenSamples=[0.2,0.4,0.6,0.8].map(t=>occluded(planes,lerp(A,B,t),new Set()));
     s.hidden=hiddenSamples.filter(Boolean).length>=2;
   }
-  // highlights: planar polygons of named vertices
-  const highlights=[];
+  // highlights: planar polygons of named vertices, or whole faces of a polyhedron by their face name (bottom, top, side0, ...: named vertices not needed); fill picks the tint
+  const highlights=[],faceKeys=new Set();
   if(plan.highlights!==undefined){
-    if(!Array.isArray(plan.highlights)||plan.highlights.length>3)bad('SOLID_HIGHLIGHT_INVALID');
+    if(!Array.isArray(plan.highlights)||plan.highlights.length>8)bad('SOLID_HIGHLIGHT_INVALID');
     for(const h of plan.highlights){
-      onlyKeys(h,['polygon'],'SOLID_HIGHLIGHT_INVALID');
+      onlyKeys(h,['polygon','face','solid','fill'],'SOLID_HIGHLIGHT_INVALID');
+      if((h.polygon===undefined)===(h.face===undefined))bad('SOLID_HIGHLIGHT_INVALID');
+      const fill=h.fill??'LIGHT';
+      if(typeof fill!=='string'||!Object.hasOwn(HIGHLIGHT_FILLS,fill))bad('SOLID_HIGHLIGHT_FILL_INVALID');
+      const tint=fill==='LIGHT'?{}:{fill};
+      if(h.face!==undefined){
+        if(typeof h.face!=='string')bad('SOLID_HIGHLIGHT_INVALID');
+        const polys=solids.filter(x=>x.category==='POLY'),owner=h.solid!==undefined?polys.find(x=>x.id===h.solid):polys.length===1?polys[0]:undefined;
+        if(!owner)bad('SOLID_HIGHLIGHT_INVALID');// several polyhedra need the solid id; a round solid has no named faces
+        if(owner.cuts)bad('SOLID_HIGHLIGHT_FACE_UNSUPPORTED:CUT');
+        if(!owner.faces.some(f=>f.id===h.face))bad('SOLID_HIGHLIGHT_FACE_UNKNOWN:'+h.face.slice(0,12));
+        const key=owner.id+'|'+h.face;
+        if(faceKeys.has(key))bad('SOLID_HIGHLIGHT_INVALID');
+        faceKeys.add(key);
+        highlights.push({solid:owner.id,face:h.face,...tint});
+        continue;
+      }
+      if(h.solid!==undefined)bad('SOLID_HIGHLIGHT_INVALID');
       if(!Array.isArray(h.polygon)||h.polygon.length<3||h.polygon.length>6||new Set(h.polygon).size!==h.polygon.length)bad('SOLID_HIGHLIGHT_INVALID');
       const pts=h.polygon.map(name=>{if(!named.has(name))bad('SOLID_NAME_UNKNOWN');return named.get(name).p;});
       const nrm=faceNormal(pts);
       if(pts.some(p=>Math.abs(dot(nrm,sub(p,pts[0])))>1e-6)||len(nrm)<0.5)bad('SOLID_HIGHLIGHT_NOT_PLANAR');
       for(let k=0;k<h.polygon.length;k++){const a=h.polygon[k],b=h.polygon[(k+1)%h.polygon.length];if(!drawnPair(a,b))bad('SOLID_HIGHLIGHT_EDGE_NOT_DRAWN:'+a+b);}
-      highlights.push({polygon:[...h.polygon]});
+      highlights.push({polygon:[...h.polygon],...tint});
     }
   }
   // marks on named points: right angles, equal-length groups and angle arcs (the plan states the fact; the model checks it in 3D)
@@ -499,12 +673,12 @@ function solveSolids(plan){
   // axial section of a round solid
   let section=null;
   if(plan.section!==undefined){
-    onlyKeys(plan.section,['solid','kind','at'],'SOLID_SECTION_INVALID');
+    onlyKeys(plan.section,['solid','kind','at','fill'],'SOLID_SECTION_INVALID');
     if(plan.section.kind!=='AXIAL'&&plan.section.kind!=='LEVEL')bad('SOLID_SECTION_UNSUPPORTED');
     const target=plan.section.solid??solids.find(s=>s.category==='REV')?.id;
     const solid=solids.find(s=>s.id===target);
     if(!solid||solid.category!=='REV')bad('SOLID_SECTION_UNSUPPORTED');
-    if(plan.section.kind==='AXIAL'){if(plan.section.at!==undefined)bad('SOLID_SECTION_INVALID');section={solid:solid.id,kind:'AXIAL'};}
+    if(plan.section.kind==='AXIAL'){if(plan.section.at!==undefined||plan.section.fill!==undefined)bad('SOLID_SECTION_INVALID');section={solid:solid.id,kind:'AXIAL'};}
     else{
       // a plane parallel to the base at the fraction `at` ("1/3") of the height: the water level of a vessel
       const m=/^([1-9]\d?)\/([1-9]\d?)$/.exec(plan.section.at??'');
@@ -512,7 +686,13 @@ function solveSolids(plan){
       const f=Number(m[1])/Number(m[2]),z=f*solid.height,r=solid.r0+(solid.r1-solid.r0)*f;
       if(!(r>0))bad('SOLID_SECTION_INVALID');
       if(solid.orientation==='APEX_DOWN'&&!(z*cP>r*sP))bad('SOLID_LEVEL_APEX_HIDDEN');
-      section={solid:solid.id,kind:'LEVEL',at:plan.section.at,z:r6(z),r:r6(r)};
+      // fill:"BOTTOM"|"TOP" shades the body of the solid below or above the plane (an apex-up solid: a frustum below a cone, the small cone above); an apex-down vessel already shades its liquid
+      const fill=plan.section.fill;
+      if(fill!==undefined){
+        if(fill!=='BOTTOM'&&fill!=='TOP')bad('SOLID_SECTION_FILL_INVALID');
+        if(solid.orientation==='APEX_DOWN')bad('SOLID_SECTION_FILL_UNSUPPORTED:APEX_DOWN');
+      }
+      section={solid:solid.id,kind:'LEVEL',at:plan.section.at,z:r6(z),r:r6(r),...(fill!==undefined?{fill}:{})};
     }
   }
   // dimensions
@@ -554,7 +734,9 @@ function solveSolids(plan){
             if(which==='top'&&!(solid.r1>0))bad('SOLID_DIMS_INVALID');
             z=which==='top'?solid.height:0;rimR=which==='top'?solid.r1:solid.r0;
           }
-          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z,r:r6(rimR),...dimLabel(d.label,rimR,unitName,code)});
+          // a cut sphere's radius lies along one of its seen half axes (sphere-parts.mjs picks it), not along the screen's horizontal
+          if(solid.cut&&!solid.cut.radiusAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN');
+          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z,r:r6(rimR),...(solid.cut?{axis:solid.cut.radiusAxis}:{}),...dimLabel(d.label,rimR,unitName,code)});
         }else if(d.level!==undefined){
           if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
           // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
@@ -566,6 +748,7 @@ function solveSolids(plan){
         }else if(d.height!==undefined){
           if(d.height!==true)bad('SOLID_DIMS_INVALID');
           if(solid.category==='SPHERE'&&solid.kind==='SPHERE')bad('SOLID_DIMS_INVALID');
+          if(solid.cuts)bad('SOLID_DIMS_INVALID');
           const h=solid.height;
           dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...dimLabel(d.label,h,unitName,code)});
         }else{
@@ -592,6 +775,7 @@ function solidScreenPoints(solid){
   if(solid.category==='POLY')return solid.vertices.map(v=>project(v.p));
   const r=solid.radius,pts=[];
   const ox=solid.offset??0;
+  if(solid.cut)return cutSphereScreenPoints(solid);
   const ell=(rad,z)=>{const c=project([0,0,z]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+rad*Math.cos(u),c[1]+rad*sP*Math.sin(u)]);}};
   if(solid.kind==='SPHERE'){const c=project([0,0,r]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}}
   else if(solid.kind==='HEMISPHERE'){const c=project([0,0,0]);c[0]+=ox;for(let k=0;k<=12;k++){const u=Math.PI*k/12;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}ell(r,0);}
@@ -600,6 +784,21 @@ function solidScreenPoints(solid){
     if(solid.r1>0)ell(solid.r1,solid.height);
     if(solid.r0===0||solid.r1===0){const q=project([0,0,solid.r0===0?0:solid.height]);pts.push([q[0]+ox,q[1]]);}
   }
+  return pts;
+}
+
+/** The drawn extent of a cut sphere: the stretches of its limb, its rim arcs and radii, and its centre (the whole sphere is not drawn). */
+function cutSphereScreenPoints(solid){
+  const r=solid.radius,ox=solid.offset??0,c=project([0,0,r]),cut=solid.cut;
+  const at=q=>{const p=project(q);return [c[0]+ox+p[0],c[1]+p[1]];};
+  const pts=[[c[0]+ox,c[1]]];
+  for(const piece of cut.limb){
+    for(let k=0;k<=24;k++){const u=piece.phi0+(piece.phi1-piece.phi0)*k/24;pts.push([c[0]+ox+r*Math.cos(u),c[1]+r*Math.sin(u)]);}
+    // the extreme points of the circle (right, top, left, bottom) are the extent when they lie on a drawn stretch
+    for(let u=0;u<=4*Math.PI;u+=Math.PI/2)if(u>=piece.phi0&&u<=piece.phi1)pts.push([c[0]+ox+r*Math.cos(u),c[1]+r*Math.sin(u)]);
+  }
+  for(const arc of cut.arcs)for(let k=0;k<=24;k++)pts.push(at(arcPoint(r,arc,Math.PI/2*k/24)));
+  for(const crease of cut.creases)pts.push(at(CUT_AXES[crease.axis].map(v=>v*crease.sign*r)));
   return pts;
 }
 
@@ -618,12 +817,105 @@ function polyOverlap(a,b){
   const shrink=(p)=>{const c=cen(p);return p.map(q=>[c[0]+(q[0]-c[0])*0.9,c[1]+(q[1]-c[1])*0.9]);};
   return shrink(a).some(q=>inside2(b,q))||shrink(b).some(q=>inside2(a,q))||inside2(b,cen(a))||inside2(a,cen(b));
 }
+const NET_FILLS=['LIGHT','MEDIUM'],NET_ROLES=['ACCENT','REF'];
+const sameNetSegment=(p,q)=>{
+  const near=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1])<1e-3;
+  return (near(p[0],q[0])&&near(p[1],q[1]))||(near(p[0],q[1])&&near(p[1],q[0]));
+};
+/**
+ * Faces to tint and edges to stress on a polyhedron net. A face is named (bottom, side0, ...); an edge is the `edge`-th side of a face in its cycle order
+ * or the pair of corner names written on the net. A corner-name pair that finds no drawn edge, or finds several different ones, is refused.
+ * A diagonal of one face (two corners of a face that are not neighbours) is stressed the same two ways: {face,diagonal:[i,j]} by corner index in the
+ * face's cycle order, or {from,to} when the two names are no drawn edge but stand at two non-neighbouring corners of one face.
+ */
+function netEmphasis(net,faces){
+  const highlights=[],segments=[];
+  const byId=new Map(faces.map(f=>[f.id,f]));
+  if(net.highlights!==undefined){
+    if(!Array.isArray(net.highlights)||net.highlights.length<1||net.highlights.length>faces.length)bad('SOLID_NET_HIGHLIGHT_INVALID');
+    for(const h of net.highlights){
+      onlyKeys(h,['face','fill'],'SOLID_NET_HIGHLIGHT_INVALID');
+      if(typeof h.face!=='string')bad('SOLID_NET_HIGHLIGHT_INVALID');
+      if(!byId.has(h.face))bad('SOLID_NET_FACE_UNKNOWN');
+      const fill=h.fill??'LIGHT';
+      if(!NET_FILLS.includes(fill)||highlights.some(x=>x.face===h.face))bad('SOLID_NET_HIGHLIGHT_INVALID');
+      highlights.push({face:h.face,fill});
+    }
+  }
+  if(net.segments!==undefined){
+    if(!Array.isArray(net.segments)||net.segments.length<1||net.segments.length>8)bad('SOLID_NET_SEGMENT_INVALID');
+    for(const s of net.segments){
+      onlyKeys(s,['face','edge','diagonal','from','to','role'],'SOLID_NET_SEGMENT_INVALID');
+      const role=s.role??'ACCENT';
+      if(!NET_ROLES.includes(role))bad('SOLID_NET_SEGMENT_INVALID');
+      const byIndex=s.face!==undefined||s.edge!==undefined||s.diagonal!==undefined,byName=s.from!==undefined||s.to!==undefined;
+      if(byIndex===byName)bad('SOLID_NET_SEGMENT_INVALID');
+      let face,edge,record;
+      const diagonalOf=(f,i,j)=>{
+        // two corners of one face that are not neighbours in its cycle
+        const n=f.idx.length;
+        if(!Number.isInteger(i)||!Number.isInteger(j)||i<0||j<0||i>=n||j>=n||i===j||(i+1)%n===j||(j+1)%n===i)bad('SOLID_NET_SEGMENT_INVALID');
+        return [Math.min(i,j),Math.max(i,j)];
+      };
+      const addDiagonal=(f,pair,rec)=>{
+        const seg=[f.poly[pair[0]],f.poly[pair[1]]];
+        if(segments.some(x=>x.diagonal&&sameNetSegment([byId.get(x.face).poly[x.diagonal[0]],byId.get(x.face).poly[x.diagonal[1]]],seg)))bad('SOLID_NET_SEGMENT_DUPLICATE');
+        segments.push(rec);
+      };
+      if(s.diagonal!==undefined){
+        if(typeof s.face!=='string'||s.edge!==undefined||!Array.isArray(s.diagonal)||s.diagonal.length!==2)bad('SOLID_NET_SEGMENT_INVALID');
+        if(!byId.has(s.face))bad('SOLID_NET_FACE_UNKNOWN');
+        const f=byId.get(s.face),pair=diagonalOf(f,s.diagonal[0],s.diagonal[1]);
+        addDiagonal(f,pair,{face:s.face,diagonal:pair,role});
+        continue;
+      }
+      if(byIndex){
+        if(typeof s.face!=='string'||s.edge===undefined)bad('SOLID_NET_SEGMENT_INVALID');
+        if(!byId.has(s.face))bad('SOLID_NET_FACE_UNKNOWN');
+        if(!Number.isInteger(s.edge)||s.edge<0||s.edge>=byId.get(s.face).idx.length)bad('SOLID_NET_SEGMENT_INVALID');
+        face=s.face;edge=s.edge;record={face,edge,role};
+      }else{
+        if(typeof s.from!=='string'||typeof s.to!=='string'||s.from===s.to||!NAME.test(s.from)||!NAME.test(s.to))bad('SOLID_NET_SEGMENT_INVALID');
+        const found=[];
+        for(const f of faces){
+          const n=f.corners.length;
+          for(let k=0;k<n;k++){
+            const a=f.corners[k],b=f.corners[(k+1)%n];
+            if((a===s.from&&b===s.to)||(a===s.to&&b===s.from))found.push({face:f.id,edge:k,seg:[f.poly[k],f.poly[(k+1)%n]]});
+          }
+        }
+        if(!found.length){
+          // no drawn edge carries the two names: a diagonal of one face does (both corners written on that face, not neighbours)
+          const diagonals=[];
+          for(const f of faces){
+            const i=f.corners.indexOf(s.from),j=f.corners.indexOf(s.to);
+            if(i<0||j<0)continue;
+            const n=f.corners.length;
+            if((i+1)%n===j||(j+1)%n===i)continue;
+            diagonals.push({face:f,pair:[Math.min(i,j),Math.max(i,j)],seg:[f.poly[i],f.poly[j]]});
+          }
+          if(!diagonals.length)bad('SOLID_NET_EDGE_UNKNOWN:'+s.from+s.to);
+          if(diagonals.some(x=>!sameNetSegment(x.seg,diagonals[0].seg)))bad('SOLID_NET_EDGE_AMBIGUOUS:'+s.from+s.to);
+          addDiagonal(diagonals[0].face,diagonals[0].pair,{face:diagonals[0].face.id,diagonal:diagonals[0].pair,role,from:s.from,to:s.to});
+          continue;
+        }
+        if(found.some(x=>!sameNetSegment(x.seg,found[0].seg)))bad('SOLID_NET_EDGE_AMBIGUOUS:'+s.from+s.to);
+        face=found[0].face;edge=found[0].edge;record={face,edge,role,from:s.from,to:s.to};
+      }
+      const f=byId.get(face),seg=[f.poly[edge],f.poly[(edge+1)%f.poly.length]];
+      if(segments.some(x=>{if(x.diagonal)return false;const g=byId.get(x.face);return sameNetSegment([g.poly[x.edge],g.poly[(x.edge+1)%g.poly.length]],seg);}))bad('SOLID_NET_SEGMENT_DUPLICATE');
+      segments.push(record);
+    }
+  }
+  return {highlights,segments};
+}
 function solveNet(plan){
   const net=plan.net;
   if(plan.dims!==undefined||plan.highlights!==undefined||plan.segments!==undefined||plan.section!==undefined)bad('SOLID_PLAN_INVALID');
-  onlyKeys(net,['solid','root','joins','corners','dims','kind','radius','height','slant'],'SOLID_NET_INVALID');
+  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','height','slant'],'SOLID_NET_INVALID');
   const unit=plan.unit??null;
   if(net.kind==='CYLINDER'||net.kind==='CONE'){
+    if(net.highlights!==undefined||net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
     const r=pos(net.radius,'SOLID_PARAM_INVALID');
     const dims=[];
     if(net.kind==='CYLINDER'){
@@ -653,6 +945,7 @@ function solveNet(plan){
   }
   if(net.kind!==undefined)bad('SOLID_NET_UNSUPPORTED:'+String(net.kind).slice(0,24));
   if(!isPlain(net.solid)||!POLY_KINDS.includes(net.solid.kind))bad('SOLID_NET_INVALID');
+  if(net.solid.cuts!==undefined)bad('SOLID_NET_UNSUPPORTED:CUT');
   const solid=buildPolyhedron({...net.solid,id:'s1'});
   const faceById=new Map(solid.faces.map(f=>[f.id,f]));
   if(typeof net.root!=='string'||!faceById.has(net.root))bad('SOLID_NET_FACE_UNKNOWN');
@@ -708,12 +1001,18 @@ function solveNet(plan){
     const value=len(sub(solid.vertices[a].p,solid.vertices[b].p));
     dims.push({id:'dim-'+(k+1),type:'NETEDGE',face:d.face,edge:d.edge,...dimLabel(d.label,value,unit,'d'+(k+1))});
   }
+  const faces=solid.faces.map(f=>({id:f.id,idx:f.idx,poly:placed.get(f.id).poly,corners:corners[f.id]}));
+  const {highlights,segments}=netEmphasis(net,faces);
   return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'POLYHEDRON',solid:{kind:solid.kind,vertices:solid.vertices,faces:solid.faces},root:net.root,joins:joinsOut,
-    faces:solid.faces.map(f=>({id:f.id,idx:f.idx,poly:placed.get(f.id).poly,corners:corners[f.id]})),dims};
+    faces,dims,...(highlights.length?{highlights}:{}),...(segments.length?{segments}:{})};
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
 const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70;
+// A solid panel of a composite grid (composite-panels-v1 with two columns) is narrower: two of them plus the 8 unit gap stay at 776 SVG units (the narrowest plane canvas pair: a Korean caption row still fits 44 units at the measured base font),
+// the width the Archive solution column keeps its 11 CSS px label floor at. The composite sets it (plan.panelWidth); an author never writes it.
+export const GRID_PANEL_WIDTH=384;
+const GRID_MARGIN_X=40;
 function figureExtent(model){
   const pts=[];
   if(model.mode==='SOLIDS'){for(const solid of model.solids)pts.push(...solidScreenPoints(solid));}
@@ -730,9 +1029,10 @@ function figureExtent(model){
 /** Scale, origin and size of the panel; known from the model alone (the Archive policy is measured before anything is composed). */
 export function figureFrame(model){
   const e=figureExtent(model),bw=e.x1-e.x0,bh=e.y1-e.y0;
-  const scale=r6(Math.min((WIDTH-2*MARGIN_X)/bw,MAX_FIG_H/bh,MAX_SCALE));
+  const grid=model.panelWidth!==undefined,W=grid?model.panelWidth:WIDTH,MX=grid?GRID_MARGIN_X:MARGIN_X;
+  const scale=r6(Math.min((W-2*MX)/bw,MAX_FIG_H/bh,MAX_SCALE));
   const height=Math.ceil(bh*scale+2*MARGIN_Y);
-  return {scale,width:WIDTH,height,origin:[r6(WIDTH/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
+  return {scale,width:W,height,origin:[r6(W/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
 }
 export const figurePanelSize=model=>{const f=figureFrame(model);return {width:f.width,height:f.height};};
 
@@ -761,14 +1061,17 @@ function spec3d(plan,model,ctx){
   const {S,X,Y,pt,prims,labels,line}=ctx;
   const named=new Map();
   for(const solid of model.solids){
-    if(solid.category==='POLY')solid.vertices.forEach(v=>{if(v.name)named.set(v.name,v.p);});
+    if(solid.category==='POLY')solid.vertices.forEach(v=>{if(v.name)for(const alias of v.aliases??[v.name])named.set(alias,v.p);});
     else for(const q of solid.points)if(q.name)named.set(q.name,q.p);
   }
   const arcPrim=(id,role,e,u0,u1,vis,attrs={})=>prims.push({t:'arc',id,role,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b),u0:r6(u0),u1:r6(u1),vis,...attrs});
   const outline=[];// polylines for label obstacles are derived from prims later
   const fillFirst=[];
   for(const h of model.highlights){
-    fillFirst.push({t:'poly',id:'highlight-'+h.polygon.join(''),role:'highlight-face',points:h.polygon.map(n=>pt(project(named.get(n)))),polygon:h.polygon.join('')});
+    if(h.face!==undefined){
+      const owner=model.solids.find(x=>x.id===h.solid),face=owner.faces.find(f=>f.id===h.face);
+      fillFirst.push({t:'poly',id:`highlight-${h.solid}-${h.face}`,role:'highlight-face',solid:h.solid,face:h.face,fill:h.fill??'LIGHT',points:face.idx.map(i=>pt(project(owner.vertices[i].p)))});
+    }else fillFirst.push({t:'poly',id:'highlight-'+h.polygon.join(''),role:'highlight-face',points:h.polygon.map(n=>pt(project(named.get(n)))),polygon:h.polygon.join(''),fill:h.fill??'LIGHT'});
   }
   prims.push(...fillFirst);
   void outline;
@@ -785,6 +1088,7 @@ function spec3d(plan,model,ctx){
         });
       }
     }else if(solid.category==='REV')specRev(solid,ctx,arcPrim);
+    else if(solid.cut)specCutSphere(solid,ctx,arcPrim);
     else specSphere(solid,ctx,arcPrim);
   }
   for(const [k,s] of model.segments.entries()){
@@ -837,6 +1141,7 @@ function spec3d(plan,model,ctx){
     prims.push({t:'poly',id:'section-'+solid.id,role:'section',solid:solid.id,points:pts.map(q=>pt(project(q))),polygon:'axial'});
   }else if(model.section?.kind==='LEVEL'){
     const solid=model.solids.find(s=>s.id===model.section.solid),e=ellipseOf(S,solid,model.section.r,model.section.z);
+    if(model.section.fill)prims.push({t:'poly',id:'body-'+solid.id,role:'body-fill',solid:solid.id,side:model.section.fill,points:bodyHull(solid,model.section).map(pt)});
     prims.push({t:'ellipse',id:'level-'+solid.id,role:'level-fill',solid:solid.id,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b)});
     if(solid.orientation==='APEX_DOWN'){
       // The liquid fills the similar (smaller) vessel below the level: its projected outline is shaded and its two inner sides are drawn, so the
@@ -852,6 +1157,11 @@ function spec3d(plan,model,ctx){
   for(const d of model.dims){
     if(d.type==='RADIUS'){
       const solid=model.solids.find(s=>s.id===d.solid);
+      if(solid.cut){
+        const scr=cutScreen(solid,pt),tip=CUT_AXES[d.axis.axis].map(v=>v*d.axis.sign*solid.radius);
+        line(d.id+'-line','dim-line',scr([0,0,0]),scr(tip),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+        continue;
+      }
       const c=project([solid.offset?EX[0]*solid.offset:0,solid.offset?EX[1]*solid.offset:0,d.z]);
       const rim=[c[0]+d.r,c[1]];// screen-horizontal radius: ends at the ellipse's right extreme
       line(d.id+'-line','dim-line',pt(c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
@@ -885,9 +1195,9 @@ function spec3d(plan,model,ctx){
   const centroidScreen=(()=>{const pts=model.solids.flatMap(solidScreenPoints);return [pts.reduce((s,p)=>s+p[0],0)/pts.length,pts.reduce((s,p)=>s+p[1],0)/pts.length];})();
   for(const solid of model.solids){
     if(solid.category==='POLY'){
-      solid.vertices.forEach((v,i)=>{
-        if(!v.name)return;
-        const here=project(v.p);let dir=[0,0];
+      // the open side of a vertex: away from the edges that meet there
+      const outward=(i)=>{
+        const here=project(solid.vertices[i].p);let dir=[0,0];
         for(const [a,b] of solid.edges){
           const other=a===i?b:b===i?a:-1;if(other<0)continue;
           const q=project(solid.vertices[other].p),d=[q[0]-here[0],q[1]-here[1]],l=Math.hypot(d[0],d[1]);
@@ -895,13 +1205,43 @@ function spec3d(plan,model,ctx){
         }
         let l=Math.hypot(dir[0],dir[1]);
         if(l<0.35){dir=[here[0]-centroidScreen[0],here[1]-centroidScreen[1]];l=Math.hypot(dir[0],dir[1])||1;}
-        labels.push({id:'name-'+v.name,role:'vertex-name',owner:'vertex-'+v.name,kind:'MATH',tex:v.name,plain:v.name,value:v.name,anchor:pt(here),dir:[r6(dir[0]/l),r6(dir[1]/l)]});
+        return {here,dir:[r6(dir[0]/l),r6(dir[1]/l)]};
+      };
+      solid.vertices.forEach((v,i)=>{
+        if(!v.name)return;
+        const {here,dir}=outward(i);
+        const text=v.aliases?v.aliases.join(','):v.name;
+        labels.push({id:'name-'+v.name,role:'vertex-name',owner:'vertex-'+v.name,kind:'MATH',tex:text,plain:text,value:text,anchor:pt(here),dir});
       });
+      if(solid.count?.vertices){
+        const spots=solid.vertices.map(v=>pt(project(v.p)));
+        solid.vertices.forEach((v,i)=>{
+          const {here,dir}=outward(i),n=String(i+1);
+          labels.push({id:`count-v-${solid.id}-${n}`,role:'count-vertex',owner:`count-vertex-${solid.id}-${n}`,kind:'MATH',tex:n,plain:n,value:n,countKind:'vertex',countN:i+1,solid:solid.id,anchor:pt(here),dir,near:{own:spots[i],others:spots.filter((q,j)=>j!==i),margin:COUNT_MARGIN}});
+        });
+      }
+      if(solid.count?.edges){
+        const list=countedEdges(solid);
+        const ends=list.map(([a,b])=>[pt(project(solid.vertices[a].p)),pt(project(solid.vertices[b].p))]);
+        const mids=ends.map(([a,b])=>[r6((a[0]+b[0])/2),r6((a[1]+b[1])/2)]);
+        list.forEach((e,k)=>{
+          const n=String(k+1),text=circled(k+1);
+          labels.push({id:`count-e-${solid.id}-${n}`,role:'count-edge',owner:`count-edge-${solid.id}-${n}`,kind:'TEXT',text,plain:text,value:n,countKind:'edge',countN:k+1,solid:solid.id,segment:ends[k],near:{own:mids[k],others:mids.filter((q,j)=>j!==k),margin:COUNT_MARGIN}});
+        });
+      }
     }else{
       for(const q of solid.points){
         if(!q.name)continue;
         const here=project(q.p),up=q.p[2]>solid.height/2;
-        labels.push({id:'name-'+q.name,role:'vertex-name',owner:'point-'+q.name,kind:'MATH',tex:q.name,plain:q.name,value:q.name,anchor:pt(here),dir:up?[0,1]:[0,-1]});
+        let dir=up?[0,1]:[0,-1];
+        if(solid.cut){
+          // the centre of a cut sphere is a corner: its name sits away from the radii (creases) that meet there
+          const scr=cutScreen(solid,pt),o=scr([0,0,0]);let sum=[0,0];
+          for(const crease of solid.cut.creases){const t=scr(CUT_AXES[crease.axis].map(v=>v*crease.sign*solid.radius)),l=Math.hypot(t[0]-o[0],t[1]-o[1]);sum=[sum[0]+(t[0]-o[0])/l,sum[1]+(t[1]-o[1])/l];}
+          const l=Math.hypot(sum[0],sum[1]);
+          if(l>0.35)dir=[r6(-sum[0]/l),r6(sum[1]/l)];// screen y points down in the figure, up in the label request
+        }
+        labels.push({id:'name-'+q.name,role:'vertex-name',owner:'point-'+q.name,kind:'MATH',tex:q.name,plain:q.name,value:q.name,anchor:pt(here),dir});
       }
     }
   }
@@ -912,6 +1252,11 @@ function spec3d(plan,model,ctx){
       labels.push({...label,segment:[a,b],segmentOf:d.from+d.to});
     }else if(d.type==='RADIUS'){
       const solid=model.solids.find(s=>s.id===d.solid);
+      if(solid.cut){
+        const scr=cutScreen(solid,pt);
+        labels.push({...label,segment:[scr([0,0,0]),scr(CUT_AXES[d.axis.axis].map(v=>v*d.axis.sign*solid.radius))],segmentOf:'radius'});
+        continue;
+      }
       const c=project([EX[0]*(solid.offset??0),EX[1]*(solid.offset??0),d.z]);
       labels.push({...label,segment:[pt(c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
     }else if(d.type==='HEIGHT'){
@@ -933,6 +1278,30 @@ function spec3d(plan,model,ctx){
       labels.push({...label,segment:[p0,p1],segmentOf:'slant',preferredSide:side});
     }
   }
+}
+/** Convex hull (counter-clockwise, monotone chain) of screen points. */
+function convexHull(points){
+  const pts=[...points].sort((p,q)=>p[0]-q[0]||p[1]-q[1]);
+  const cross=(o,a,b)=>(a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0]);
+  const lower=[],upper=[];
+  for(const p of pts){while(lower.length>=2&&cross(lower.at(-2),lower.at(-1),p)<=0)lower.pop();lower.push(p);}
+  for(const p of [...pts].reverse()){while(upper.length>=2&&cross(upper.at(-2),upper.at(-1),p)<=0)upper.pop();upper.push(p);}
+  return [...lower.slice(0,-1),...upper.slice(0,-1)];
+}
+const BODY_SAMPLES=72;
+/**
+ * The projected outline (screen units) of the part of a solid of revolution on one side of its level plane: the convex hull of the two circles that bound it
+ * (the base and the level circle below; the level circle and the top circle or the apex above), each circle sampled every 5 degrees.
+ */
+function bodyHull(solid,section){
+  const ox=solid.offset??0,pts=[];
+  const ring=(rad,z)=>{const c=project([0,0,z]);for(let k=0;k<BODY_SAMPLES;k++){const u=2*Math.PI*k/BODY_SAMPLES;pts.push([c[0]+ox+rad*Math.cos(u),c[1]+rad*sP*Math.sin(u)]);}};
+  if(section.fill==='BOTTOM'){ring(solid.r0,0);ring(section.r,section.z);}
+  else{
+    ring(section.r,section.z);
+    if(solid.r1>0)ring(solid.r1,solid.height);else{const c=project([0,0,solid.height]);pts.push([c[0]+ox,c[1]]);}
+  }
+  return convexHull(pts).map(q=>[r6(q[0]),r6(q[1])]);
 }
 function apexOf(solid){
   // the screen point of the (virtual) apex of a cone or cone frustum; an apex-down vessel has it on the base plane
@@ -1048,6 +1417,73 @@ function specSphere(solid,ctx,arcPrim){
   }
   void X;void Y;void S;void prims;
 }
+/** World vector relative to the centre of a cut sphere -> px (the solid's own shift along the screen's horizontal included). */
+function cutScreen(solid,pt){
+  const c=project([0,0,solid.radius]),shift=solid.offset??0;
+  return q=>{const p=project(q);return pt([c[0]+shift+p[0],c[1]+p[1]]);};
+}
+const CUT_FACE_STEPS=24,CUT_ARC_SAMPLES=16;
+/** The projected ellipse of a circle through the screen vectors p1, p2 (screen units, y up) of two perpendicular radii, at scale S: SVG arc radii, tilt (deg) and sweep. */
+function projectedEllipse(S,r,p1,p2){
+  const a=S*r*p1[0],b=S*r*p2[0],c=-S*r*p1[1],d=-S*r*p2[1];// svg coordinates: y grows down
+  const m11=a*a+b*b,m22=c*c+d*d,m12=a*c+b*d,tr=m11+m22,diff=m11-m22,root=Math.hypot(diff,2*m12);
+  return {rx:r6(Math.sqrt((tr+root)/2)),ry:r6(Math.sqrt(Math.max(0,(tr-root)/2))),rot:r6(0.5*Math.atan2(2*m12,diff)*180/Math.PI),sweep:a*d-b*c>0?1:0};
+}
+/**
+ * A sphere cut by planes through its centre: the flat faces that face the viewer (one filled path per plane and side), the stretches of the limb
+ * circle that belong to the piece, the rim arcs of the cut faces and the radii where cut faces meet, each cut where the depth test changes
+ * (solid in front, dashed behind), and a dot at a named centre.
+ */
+function specCutSphere(solid,ctx,arcPrim){
+  const {S,pt,prims,line}=ctx,sid=solid.id,r=solid.radius,cut=solid.cut,sh=solid.offset??0;
+  const scr=cutScreen(solid,pt),c0=project([0,0,r]);
+  const centre=scr([0,0,0]);
+  // faces: the quarter-disks that stand on one plane, face the same way and touch along a radius are one fill (a half-disk, three quarters, a whole disk),
+  // so no seam runs through it and a label may lie across it
+  const groups=new Map();
+  for(const face of cut.faces){
+    if(!face.visible)continue;
+    const key=face.plane+face.outward.join(',');
+    if(!groups.has(key))groups.set(key,[]);
+    groups.get(key).push(face);
+  }
+  const quadrant={'++':0,'-+':1,'--':2,'+-':3};
+  for(const list of groups.values()){
+    const plane=SPHERE_PLANES.find(pl=>pl.id===list[0].plane),have=new Set(list.map(f=>quadrant[f.quad]));
+    const runs=[];
+    if(have.size===4)runs.push([0,4]);
+    else for(const k of [...have].sort())if(!have.has((k+3)%4)){let n=1;while(have.has((k+n)%4))n++;runs.push([k,n]);}
+    for(const [k0,n] of runs){
+      const ids=[...Array(n).keys()].map(m=>list.find(f=>quadrant[f.quad]===(k0+m)%4).id);
+      const at=psi=>scr([0,1,2].map(k=>r*(Math.cos(psi)*CUT_AXES[plane.i][k]+Math.sin(psi)*CUT_AXES[plane.j][k])));
+      const steps=CUT_FACE_STEPS*n,psi0=Math.PI/2*k0,points=n===4?[]:[centre];
+      for(let m=0;m<(n===4?steps:steps+1);m++)points.push(at(psi0+Math.PI/2*n*m/steps));
+      let area=0;for(let i=0;i<points.length;i++){const [a,b]=[points[i],points[(i+1)%points.length]];area+=a[0]*b[1]-b[0]*a[1];}
+      if(area<0)points.reverse();
+      prims.push({t:'cutface',id:'cut-face-'+sid+'-'+ids.join('-'),role:'cut-face',solid:sid,faces:ids.join(' '),points});
+    }
+  }
+  cut.limb.forEach((piece,k)=>arcPrim(`${sid}-limb-${k+1}`,'sphere-limb',{cx:c0[0]+sh,cy:c0[1],a:r,b:r},piece.phi0,piece.phi1,'solid',{solid:sid,part:'LIMB',octant:piece.octant}));
+  for(const arc of cut.arcs){
+    const plane=SPHERE_PLANES.find(p=>p.id===arc.plane),si=arc.quad[0]==='+'?1:-1,sj=arc.quad[1]==='+'?1:-1;
+    const p1=project(CUT_AXES[plane.i].map(v=>v*si)),p2=project(CUT_AXES[plane.j].map(v=>v*sj)),ellipse=projectedEllipse(S,r,p1,p2);
+    arc.runs.forEach((run,k)=>{
+      const at=t=>scr(arcPoint(r,arc,Math.PI/2*t)),p0=at(run.t0),p1x=at(run.t1);
+      if(Math.hypot(p1x[0]-p0[0],p1x[1]-p0[1])<0.4)return;
+      const samples=[...Array(CUT_ARC_SAMPLES+1).keys()].map(m=>at(run.t0+(run.t1-run.t0)*m/CUT_ARC_SAMPLES));
+      prims.push({t:'earc',id:`${sid}-rim-${arc.id}-${k+1}`,role:'cut-arc',solid:sid,arc:arc.id,t0:run.t0,t1:run.t1,vis:run.hidden?'hidden':'solid',p0,p1:p1x,samples,...ellipse});
+    });
+  }
+  for(const crease of cut.creases){
+    const at=t=>scr(CUT_AXES[crease.axis].map(v=>v*crease.sign*r*t));
+    crease.runs.forEach((run,k)=>{
+      const a=at(run.t0),b=at(run.t1);
+      if(Math.hypot(b[0]-a[0],b[1]-a[1])<0.4)return;
+      line(`${sid}-crease-${crease.id}-${k+1}`,'cut-crease',a,b,{solid:sid,edge:crease.id,vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1});
+    });
+  }
+  if(solid.points.some(q=>q.name))prims.push({t:'dot',id:'centre-'+sid,role:'center-dot',solid:sid,cx:centre[0],cy:centre[1],r:2.4});
+}
 function specNet(plan,model,ctx){
   const {S,pt,prims,labels,line}=ctx;
   const fold='hidden';
@@ -1062,6 +1498,10 @@ function specNet(plan,model,ctx){
       void fp;void fc;
     }
     for(const f of model.faces)prims.push({t:'poly',id:'net-face-'+f.id,role:'net-face',face:f.id,points:f.poly.map(pt)});
+    for(const h of model.highlights??[])prims.push({t:'poly',id:'net-highlight-'+h.face,role:'net-highlight',face:h.face,fill:h.fill,points:byId.get(h.face).poly.map(pt)});
+    // a stressed edge is found by the drawn line it lies on: one shared line for a fold, the face's own line for a cut edge
+    const lineKey=(f,k)=>{const n=f.idx.length,a=f.idx[k],b=f.idx[(k+1)%n],lo=Math.min(a,b),hi=Math.max(a,b);return lo+'-'+hi+(foldEdges.has(f.id+':'+lo+'-'+hi)?'-fold':'-'+f.id);};
+    const stressed=new Map((model.segments??[]).filter(s=>!s.diagonal).map(s=>[lineKey(byId.get(s.face),s.edge),s.role]));
     const drawn=new Set();
     for(const f of model.faces){
       const n=f.idx.length;
@@ -1070,8 +1510,13 @@ function specNet(plan,model,ctx){
         const pairKey=Math.min(a,b)+'-'+Math.max(a,b)+(isFold?'-fold':'-'+f.id);
         if(isFold&&drawn.has(pairKey))continue;
         drawn.add(pairKey);
-        line(`net-edge-${f.id}-${k}`,'net-edge',pt(f.poly[k]),pt(f.poly[(k+1)%n]),{face:f.id,edgeIndex:k,vis:isFold?fold:'solid',fold:isFold?1:0});
+        line(`net-edge-${f.id}-${k}`,'net-edge',pt(f.poly[k]),pt(f.poly[(k+1)%n]),{face:f.id,edgeIndex:k,vis:isFold?fold:'solid',fold:isFold?1:0,...(stressed.has(pairKey)?{accent:stressed.get(pairKey)}:{})});
       }
+    }
+    // a stressed face diagonal is one more drawn line, on top of the edges (it ends on two corners of its face)
+    for(const s of (model.segments??[]).filter(x=>x.diagonal)){
+      const f=byId.get(s.face),[i,j]=s.diagonal;
+      line(`net-diagonal-${f.id}-${i}-${j}`,'net-diagonal',pt(f.poly[i]),pt(f.poly[j]),{face:f.id,diagonal:i+'-'+j,vis:'solid',accent:s.role});
     }
     const cen=model.faces.flatMap(f=>f.poly);const mean=[cen.reduce((s,p)=>s+p[0],0)/cen.length,cen.reduce((s,p)=>s+p[1],0)/cen.length];
     // corner names: corners that coincide in the net are one place (a name is written once there); the name sits where no edge runs
@@ -1153,8 +1598,11 @@ function obstacleSegments(spec){
     if(p.t==='line')segs.push([[p.x1,p.y1],[p.x2,p.y2]]);
     else if(p.t==='arc')poly(arcPoints(p),false);
     else if(p.t==='circle'){const pts=[];for(let k=0;k<ELL_SAMPLES;k++){const u=2*Math.PI*k/ELL_SAMPLES;pts.push([p.cx+p.r*Math.cos(u),p.cy-p.r*Math.sin(u)]);}poly(pts,true);}
-    else if(p.t==='poly'&&(p.role==='net-face'||p.role==='liquid-region'))poly(p.points,true);
+    else if(p.t==='poly'&&(p.role==='net-face'||p.role==='liquid-region'||p.role==='body-fill'))poly(p.points,true);
     else if(p.t==='polyline')poly(p.points,false);
+    else if(p.t==='earc')poly(p.samples,false);
+    // the outline of a filled cut face is geometry the rendered layout check keeps labels off
+    else if(p.t==='cutface')poly(p.points,true);
     else if(p.t==='sector'){
       // The drawn arc runs from p1 to p2 with sweep-flag 0 (the short way round in screen coordinates): keep the signed angle difference.
       const pts=[p.apex],a=Math.atan2(p.p1[1]-p.apex[1],p.p1[0]-p.apex[0]),b=Math.atan2(p.p2[1]-p.apex[1],p.p2[0]-p.apex[0]),d=b-a;
@@ -1174,22 +1622,44 @@ function segmentHitsBox(a,b,box,pad){
     return (o(a,b,c)*o(a,b,d)<0)&&(o(c,d,a)*o(c,d,b)<0);
   });
 }
-const BOX_PAD=2.2;
-/** Place every label near its anchor: names on the open side of their corner, lengths beside their segment, never over a stroke or another label. */
+// a counting number's centre stays within COUNT_FAR px of its own vertex or edge midpoint (the observer's bound is 48; one half px less here, so a rounding never crosses it)
+const BOX_PAD=2.2,COUNT_MARGIN=4,COUNT_FAR=47.5;
+/**
+ * Place every label near its anchor: names on the open side of their corner, lengths beside their segment, never over a stroke or another label.
+ * A label that finds no place because the labels placed before it took the room around it goes first on the next try (a few tries); the fewest-failures try is kept.
+ */
+const rankOf=l=>l.role==='vertex-name'||l.role==='count-vertex'?0:l.role==='count-edge'?2:1;
 function placeLabels(spec,fragments,errors){
-  const obstacles=obstacleSegments(spec),placed=[];
+  let order=[...spec.labels].sort((a,b)=>rankOf(a)-rankOf(b)),best=null;
+  for(let attempt=0;attempt<6;attempt++){
+    const result=placeLabelsOnce(spec,fragments,order);
+    if(!best||result.failed.length<best.failed.length)best=result;
+    if(!result.failed.length)break;
+    const failed=new Set(result.failed);
+    order=[...order.filter(l=>failed.has(l.id)),...order.filter(l=>!failed.has(l.id))];
+  }
+  errors.push(...best.failed);
+  return best.placed;
+}
+function placeLabelsOnce(spec,fragments,order){
+  const obstacles=obstacleSegments(spec),placed=[],failedIds=[];
   const {width,height}=spec.size,SAFE_MARGIN=SAFE;
   const free=(box,ignoreOwn)=>{
     if(box.x<SAFE_MARGIN||box.y<SAFE_MARGIN||box.x+box.width>width-SAFE_MARGIN||box.y+box.height>height-SAFE_MARGIN)return false;
     if(placed.some(p=>overlaps({x:p.box.x-BOX_PAD,y:p.box.y-BOX_PAD,width:p.box.width+2*BOX_PAD,height:p.box.height+2*BOX_PAD},box)))return false;
     return !obstacles.some(([a,b])=>segmentHitsBox(a,b,box,BOX_PAD)&&!(ignoreOwn&&false));
   };
-  const order=[...spec.labels].sort((a,b)=>(a.role==='vertex-name'?0:1)-(b.role==='vertex-name'?0:1));
+  // a counting number stays nearer to its own vertex or edge midpoint than to any other by a margin, so no number can be read as another's
+  const nearest=(label,box)=>{
+    if(!label.near)return true;
+    const cx=box.x+box.width/2,cy=box.y+box.height/2,own=Math.hypot(cx-label.near.own[0],cy-label.near.own[1]);
+    return own<=COUNT_FAR&&label.near.others.every(o=>own+label.near.margin<Math.hypot(cx-o[0],cy-o[1]));
+  };
   for(const label of order){
     const frag=fragments.get(label.id),{width:w,height:h}=frag.intrinsic;
     let chosen=null;
     const candidates=[];
-    if(label.role==='vertex-name'){
+    if(label.role==='vertex-name'||label.role==='count-vertex'){
       const base=Math.atan2(label.dir[1],label.dir[0]);
       for(const dist of [5,8,12,17,24])for(const da of [0,0.5,-0.5,1.0,-1.0,1.6,-1.6,2.3,-2.3,Math.PI]){
         const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
@@ -1208,7 +1678,13 @@ function placeLabels(spec,fragments,errors){
       }
       if(label.inside){candidates.unshift({x:(a[0]+b[0])/2-w/2,y:(a[1]+b[1])/2-h/2+30});}
     }
-    for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)){chosen=box;break;}}
+    // a counting number that found no place beside its edge or vertex may stand anywhere around its own target, nearest first (tried after the others, so a figure that
+    // had a place keeps it)
+    if(label.near)for(let dist=2;dist<=COUNT_FAR;dist+=1.5){
+      const n=Math.max(8,Math.ceil(2*Math.PI*dist/3));
+      for(let k=0;k<n;k++){const ang=2*Math.PI*k/n;candidates.push({x:label.near.own[0]+Math.cos(ang)*dist-w/2,y:label.near.own[1]-Math.sin(ang)*dist-h/2});}
+    }
+    for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)&&nearest(label,box)){chosen=box;break;}}
     let leader=null;
     if(!chosen&&label.role==='dim'){
       // no room beside the segment: the label goes to the nearest free place and a thin leader line joins it to the middle of its segment
@@ -1223,10 +1699,10 @@ function placeLabels(spec,fragments,errors){
         chosen=box;leader=[[r6(nx),r6(ny)],[r6(mx),r6(my)]];obstacles.push(leader);break search;
       }
     }
-    if(!chosen){errors.push(label.id);continue;}
+    if(!chosen){failedIds.push(label.id);continue;}
     placed.push({label,fragment:frag,box:chosen,leader});
   }
-  return placed;
+  return {placed,failed:failedIds};
 }
 const strokeFor=p=>p.vis==='hidden'?' stroke-dasharray="5 4"':'';
 function renderPrims(spec,model){
@@ -1236,21 +1712,31 @@ function renderPrims(spec,model){
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-face'))body+=`<g data-layer="10"><polygon id="${p.id}" data-role="net-face" data-face="${p.face}" fill="#f4f6fa" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
-  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face" data-polygon="${p.polygon}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="#7fa6e8" fill-opacity="${p.fill==='MEDIUM'?0.55:0.32}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face')){
+    const [color,opacity]=HIGHLIGHT_FILLS[p.fill??'LIGHT'];
+    body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face"${p.polygon?` data-polygon="${p.polygon}"`:` data-solid="${p.solid}" data-face="${p.face}"`}${p.fill&&p.fill!=='LIGHT'?` data-fill="${p.fill}"`:''} fill="${color}" fill-opacity="${opacity}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  }
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='body-fill'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="body-fill" data-solid="${p.solid}" data-side="${p.side}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='liquid-region'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="liquid-region" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='ellipse'))body+=`<g data-layer="20"><ellipse id="${p.id}" data-role="level-fill" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='cutface'))body+=`<g data-layer="20"><path id="${p.id}" data-role="cut-face" data-solid="${p.solid}" data-faces="${p.faces}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" d="M ${p.points.map(q=>q.join(' ')).join(' L ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='section'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="section" data-section="axial" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="#2457b8" stroke-width="1.6" stroke-dasharray="6 3" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
-      const w=p.role==='dim-line'||p.role==='dim-ext'?1.1:p.role==='segment'?2.4:p.role==='silhouette'?1.7:1.6;
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:''].filter(Boolean).join(' ');
+      const w=p.role==='dim-line'||p.role==='dim-ext'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal')&&p.accent?`data-accent="${p.accent}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
     }else if(p.t==='arc'){
       const A=[p.cx+p.rx*Math.cos(p.u0),p.cy-p.ry*Math.sin(p.u0)].map(r6),B=[p.cx+p.rx*Math.cos(p.u1),p.cy-p.ry*Math.sin(p.u1)].map(r6);
       const large=(p.u1-p.u0)>Math.PI+1e-9?1:0;
-      body+=`<g data-layer="40"><path id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" ${p.circle?`data-circle="${p.circle}" data-half="${p.half}"`:`data-part="${p.part}"`} data-vis="${p.vis}" stroke="#111" stroke-width="1.6"${strokeFor(p)} fill="none" d="M ${A.join(' ')} A ${p.rx} ${p.ry} 0 ${large} 0 ${B.join(' ')}"/></g>`;
+      body+=`<g data-layer="40"><path id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" ${p.circle?`data-circle="${p.circle}" data-half="${p.half}"`:`data-part="${p.part}"`} data-vis="${p.vis}"${p.octant?` data-octant="${p.octant}"`:''} stroke="#111" stroke-width="1.6"${strokeFor(p)} fill="none" d="M ${A.join(' ')} A ${p.rx} ${p.ry} 0 ${large} 0 ${B.join(' ')}"/></g>`;
+    }else if(p.t==='earc'){
+      body+=`<g data-layer="40"><path id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" data-arc="${p.arc}" data-t0="${p.t0}" data-t1="${p.t1}" data-vis="${p.vis}" stroke="#111" stroke-width="1.6"${strokeFor(p)} fill="none" d="M ${p.p0.join(' ')} A ${p.rx} ${p.ry} ${p.rot} 0 ${p.sweep} ${p.p1.join(' ')}"/></g>`;
+    }else if(p.t==='dot'){
+      body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
     }else if(p.t==='polyline'){
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="55"><polyline ${attrs} stroke="#111" stroke-width="1.2" fill="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
@@ -1273,7 +1759,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     lineage.specSha256=objectSha(spec);
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,fragments=new Map();
     for(const label of spec.labels){
-      try{fragments.set(label.id,typeset({id:label.id,owner:label.owner,factRole:label.role==='dim'?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'solid',kind:'MATH',tex:label.role==='dim'?label.tex:label.tex},identity));}
+      try{fragments.set(label.id,typeset({id:label.id,owner:label.owner,factRole:label.role==='dim'?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'solid',...(label.kind==='TEXT'?{kind:'TEXT',text:label.text}:{kind:'MATH',tex:label.tex})},identity));}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('SOLID_TYPESET_ERROR',{labelId:label.id,code:error.message});}
     }
     const failed=[];
@@ -1284,7 +1770,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`+renderPrims(spec,model);
     for(const {label,leader} of placed)if(leader)body+=`<g data-layer="40"><line id="leader-${label.id}" data-role="leader" data-owner-label="${label.id}" data-label="${label.id}" stroke="#555" stroke-width="0.9" fill="none" x1="${leader[0][0]}" y1="${leader[0][1]}" x2="${leader[1][0]}" y2="${leader[1][1]}"/></g>`;
     for(const {label,fragment,box,leader} of placed){
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''} data-tex="${esc(label.tex)}" data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
     const dataAttrs=` data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
@@ -1323,6 +1809,7 @@ export function expandSolidFigure(plan){
   const model=solveSolidFigure(plan);
   const cap=plan.solidCaption;
   if(cap!==undefined&&(!isPlain(cap)||Object.keys(cap).some(k=>k!=='text')||typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))bad('SOLID_CAPTION_INVALID');
-  const {caption,sourceConditions,newVisualInformation,solidCaption,...figure}=plan;void solidCaption;
-  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':'입체도형'},plan:figure}],caption,sourceConditions,newVisualInformation};
+  if(plan.panelWidth!==undefined)bad('SOLID_PLAN_INVALID');
+  const {caption,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;
+  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':'입체도형'},plan:figure}],caption,sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
 }

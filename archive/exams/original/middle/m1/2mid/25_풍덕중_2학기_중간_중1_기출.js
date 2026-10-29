@@ -32,7 +32,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각뿔(도형 3)의 꼭짓점에 1부터 5까지, 모서리에 ①부터 ⑧까지 번호를 붙였다. 교점은 꼭짓점 1~5의 5개이고 교선은 모서리 ①~⑧의 8개이며, 보이지 않는 모서리 ③, ④, ⑧은 점선이다.",
+    "solutionImageCaption": "도형 3(사각뿔)의 교점은 꼭짓점 5개, 교선은 모서리 8개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -67,7 +71,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, B, C에서 반직선 CA와 반직선 CB는 시작점 C에서 왼쪽으로 뻗어 같고, 반직선 BA는 시작점이 B여서 C를 포함하지 않는 것을 두 그림으로 비교한다.",
+    "solutionImageCaption": "반직선은 시작점과 방향이 모두 같아야 같은 도형이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -101,7 +109,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB 위에서 AM=MB=6, MN=NB=3의 같은 길이 표시를 보여 주어 AN=AM+MN으로 이어지는 관계를 나타낸다.",
+    "solutionImageCaption": "중점 M, N으로 AM=MB=6 cm, MN=NB=3 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -169,7 +181,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 점 O에서 맞꼭지각 ∠AOE와 ∠BOC가 모두 77°이고, ∠AOF=x°, ∠FOE=2x-7°, ∠EOD=3x-10°이며 구하는 ∠COD의 위치를 보여 준다.",
+    "solutionImageCaption": "∠AOE와 ∠BOC는 맞꼭지각이므로 크기가 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -216,7 +232,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:ae544ca90e4eadd7bf52059b109170887231fd82716abf68c182150f76f8819a",
-    "difficultyEvidenceSha": "sha256:0efd249441def63d31a3e2ba777dcce1a95b66073280f2bf054227605d7dd4ab"
+    "difficultyEvidenceSha": "sha256:0efd249441def63d31a3e2ba777dcce1a95b66073280f2bf054227605d7dd4ab",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 직각이 C에 있고 BD=DC=8 cm, AC=7 cm이며 A에서 직선 BD에 내린 수선의 발이 C임을 보여 준다.",
+    "solutionImageCaption": "AC⊥BC이므로 점 A와 직선 BD 사이의 거리는 AC=7 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -250,7 +270,11 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 사각기둥을 세 번 그리고 각각 기준 모서리 하나를 굵게 표시했다. 왼쪽 위는 HG와 평행한 모서리 AB, CD, EF, 오른쪽 위는 CD와 만나는 모서리 BC, CG, AD, DH, 아래는 BC와 꼬인 위치인 모서리 AE, DH, EF, GH를 빨간색으로 나타냈고 보이지 않는 모서리는 점선이다.",
+    "solutionImageCaption": "같은 사각기둥에서 HG와 평행한 모서리, CD와 만나는 모서리, BC와 꼬인 위치인 모서리를 각각 표시했다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -285,7 +309,11 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 전개도로 윗면의 대각선 NL(검정)과 아랫면의 대각선 FH(빨강)가 그어져 있고, 오른쪽은 이를 접은 직육면체이다. 접으면 겹치는 꼭짓점은 M,A,I와 L,J와 F,D와 H,B와 C,G처럼 한 점에 이름을 함께 썼고, NL과 꼬인 위치인 선분을 빨간색으로 나타냈다.",
+    "solutionImageCaption": "NL과 꼬인 위치인 선분은 세로 모서리 2개, 아랫면의 모서리 4개, 대각선 FH이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -355,7 +383,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 n이 두 직선 l, m과 만나는 그림. 위 교점의 각은 89°, ∠a, ∠d, ∠c이고 아래 교점의 각은 130°, ∠f, ∠e, ∠h이다. ∠d와 ∠h는 색칠해 동위각으로, ∠c와 ∠e는 호 2개로 엇각으로 표시했고, 호 표시는 위치 관계만 나타낸다.",
+    "solutionImageCaption": "색칠한 ∠d와 ∠h는 동위각, 호 2개로 표시한 ∠c와 ∠e는 엇각이다(l, m은 평행하지 않으므로 크기가 같다는 뜻은 아니다).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -389,7 +421,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 선에서 62°, 18°, 18°, 108°가 표시되어 있다. 평행선과 같은 방향의 점선으로 둘째 사선과 평행선이 이루는 각 44°와, 가운데 선분이 평행선에 수직(직각)임을 보여 ∠x가 직각에서 44°를 뺀 각임을 나타낸 그림.",
+    "solutionImageCaption": "62°-18°=44°이고 가운데 선분이 수직이므로 ∠x는 90°에서 44°를 뺀 각이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -455,7 +491,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: BC=5cm인 선분 위 점 C에서 100°로 그은 반직선이 B를 중심으로 하는 반지름 8cm인 원과 한 점 A에서만 만나, 삼각형 ABC의 점 A가 하나로 정해짐을 보이는 그림.",
+    "solutionImageCaption": "C에서 100°로 그은 반직선과 반지름 8cm인 원의 교점 A가 하나로 정해진다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -489,7 +529,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동인 두 직각삼각형 ABC와 PQR. BC=5cm이고 QR=x cm에 같은 눈금, ∠Q=25°이므로 ∠R=65°이며 대응각 ∠C=y와 ∠R에 같은 호 2개를 표시한 그림.",
+    "solutionImageCaption": "대응변 BC와 QR, 대응각 ∠C와 ∠R(=65°)이 각각 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -523,7 +567,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: AD와 BC가 점 M에서 만나고 AB∥CD, AM=DM인 그림. 엇각 ∠BAM=∠CDM에 호 1개, 맞꼭지각 ∠BMA=∠CMD에 호 2개, AM=DM에 눈금 2개를 표시해 △ABM≡△DCM이 ASA 합동임을 보인다.",
+    "solutionImageCaption": "엇각, 맞꼭지각, 한 변이 같아 △ABM≡△DCM은 ASA 합동이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -557,7 +605,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC와 정삼각형 ADE에서 B, E, D가 한 직선 위에 있고 AD=4cm, BD=13cm이다. △ABE와 △ACD를 칠하고 AB=AC, AE=AD, 두 60° 각, 대응변 BE=CD를 같은 표식으로 나타낸 그림.",
+    "solutionImageCaption": "△ABE와 △ACD는 SAS 합동이므로 BE=CD이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -592,7 +644,11 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD에서 ∠A=145°, ∠B=80°, ∠D=70°이고 점 C의 내각 65°와, 변 BC의 연장선 위에서 이웃한 외각 ∠x가 한 직선 위의 이웃한 각으로 표시된 그림.",
+    "solutionImageCaption": "점 C의 내각 65°와 외각 ∠x는 한 직선 위에서 이웃한 각이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -627,7 +683,11 @@ window.questionBank = [
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 10cm인 원 O를 8개의 같은 조각으로 나누고, 그중 이웃한 3조각을 색칠해 원 전체의 3/8을 차지함을 보여 준다.",
+    "solutionImageCaption": "원을 8등분한 조각 중 3조각을 색칠한 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -662,7 +722,11 @@ window.questionBank = [
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 ∠AOB를 반지름 OE로 30°씩 나누어 합동인 △AOE, △EOB, △COD(각 30°)를 만들고, 원 위의 점 E와 △AEB를 점선과 색칠로 보여 준다.",
+    "solutionImageCaption": "∠AOB를 반지름 OE로 30°씩 나눈 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -696,7 +760,11 @@ window.questionBank = [
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심각 135°인 부채꼴에서 안쪽 반지름 4cm, 띠의 두께 4cm, 바깥쪽 호 6π를 표시하고 두 호 사이의 띠를 색칠해 두 부채꼴의 넓이의 차임을 보여 준다.",
+    "solutionImageCaption": "바깥 호가 6π인 부채꼴에서 두 호 사이를 색칠한 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -749,7 +817,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 O에서 만나는 네 선분 OA, OB, OC, OD와 ∠AOD=141°, ∠COD=44°, ∠AOB=44°를 호로 표시해 A, O, C가 곧은 일직선을 이루지 않음을 보여 준다.",
+    "solutionImageCaption": "점 O 둘레의 각 141°, 44°, 44°를 표시한 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -778,7 +850,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l이 두 직선 m, n과 만나서 이루는 동위각 40°, 40°를 같은 위치에 표시하고 m과 n이 평행임을 화살표로 나타낸다.",
+    "solutionImageCaption": "동위각 40°가 같아 m∥n임을 보이는 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -806,7 +882,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 점 A를 지나 BC에 평행한 직선 l을 점선으로 그리고, 엇각 35°와 35°, ∠A=21°, ∠B=124°, 바깥각 x를 표시한다.",
+    "solutionImageCaption": "평행한 보조선 l로 엇각 35°를 옮긴 삼각형 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 25,
@@ -834,6 +914,10 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 칠각형의 꼭짓점 7개를 팀으로 보고, 이웃한 팀의 쌍인 변 7개는 실선으로, 이웃하지 않은 팀의 쌍인 대각선은 점선으로 구분해 그린다.",
+    "solutionImageCaption": "칠각형의 변(실선)과 대각선(점선)을 구분한 그림",
+    "solutionImageSize": "medium"
   }
 ];

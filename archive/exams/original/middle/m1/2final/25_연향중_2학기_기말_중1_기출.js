@@ -29,7 +29,11 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 정팔각형 세 개를 나란히 보여 준다. 첫째는 한 꼭짓점에서 그은 대각선 5개와 그것이 나누는 삼각형 6개, 둘째는 한 변을 연장해 만든 한 외각 45°, 셋째는 내부의 한 점과 8개의 꼭짓점을 이어 생긴 삼각형 8개이다.",
+    "solutionImageCaption": "정팔각형의 대각선, 한 외각, 내부의 점과 꼭짓점을 이은 삼각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -73,7 +77,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:484501079d31ab68813abe742124421432c46440dfed61ba1963e330ac53fb29",
-    "difficultyEvidenceSha": "sha256:42aa166ed0cb0c8a059f046ef27de4b7c08f091c8fe7a13df4a5672c350ab7e2"
+    "difficultyEvidenceSha": "sha256:42aa166ed0cb0c8a059f046ef27de4b7c08f091c8fe7a13df4a5672c350ab7e2",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위에 이웃한 두 각의 쌍이 두 곳에 있다. 아래쪽 점의 85°와 x, 위쪽 점의 95°와 y이며, 호의 개수로 x와 95°, y와 85°가 같은 크기임이 짝지어 보인다.",
+    "solutionImageCaption": "한 직선 위의 이웃한 두 각의 합은 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -117,7 +125,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:c7b826bd3f9f81a211e0cdb6839e0571485e5cebee8f69eb05898056d666c3f7",
-    "difficultyEvidenceSha": "sha256:7a27036ca06b8cbf90d36512fcf106ba850d3c8d061c1a9fe8f2bd6194dbbe52"
+    "difficultyEvidenceSha": "sha256:7a27036ca06b8cbf90d36512fcf106ba850d3c8d061c1a9fe8f2bd6194dbbe52",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 별 모양의 다섯 꼭짓점의 각이 30°, 40°, 40°, 40°, z로 표시되어 있고, 오른쪽 삼각형(색칠)의 세 각이 40°, 180°-x, y로 표시되어 있어 x-y의 관계를 삼각형의 내각의 합으로 읽게 한다.",
+    "solutionImageCaption": "꼭짓점의 각의 합과 오른쪽 삼각형의 내각의 합을 이용한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -244,7 +256,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:74ae052f4d1c3868377858f42e5f249a4e2b66bbd27f063214b830feb06c5f14",
-    "difficultyEvidenceSha": "sha256:799efb15a661979a31668ad350b8b234bd034792e81fdb8965337515ec438a5d"
+    "difficultyEvidenceSha": "sha256:799efb15a661979a31668ad350b8b234bd034792e81fdb8965337515ec438a5d",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 세 호 AB, BC, CPA 곁에 호의 길이의 비 1, 3, 5가 적혀 있고, 각 호의 중심각이 40°, 120°, 200°로 표시되어 있다. 현 AB와 BC는 점선으로 그려 호와 현을 구별한다.",
+    "solutionImageCaption": "호의 길이의 비와 같은 비로 중심각이 40°, 120°, 200°이지만 현의 길이의 비는 같지 않다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -416,7 +432,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:a41c3fefd4185fd6edec31a063f0cb80be41c7f24e9692b1d6d38a1ff01eddd7",
-    "difficultyEvidenceSha": "sha256:20fdd027bed0ffb9f8c6ebc94ace6ce9e44e111e1a668178f0db806717354310"
+    "difficultyEvidenceSha": "sha256:20fdd027bed0ffb9f8c6ebc94ace6ce9e44e111e1a668178f0db806717354310",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 회전축에 붙은 직각사다리꼴 ⑤(큰 밑면, 작은 밑면, 옆면)와, 이를 1회전시켜 얻은 원뿔대의 두 밑면과 회전축을 지나는 단면(사다리꼴)을 나란히 보인 그림",
+    "solutionImageCaption": "직각사다리꼴 ⑤를 회전축으로 1회전시키면 크기가 다른 두 밑면을 가진 원뿔대가 된다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -488,7 +508,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:e507c0dfa948f7469e752101e34bd5a2c13c053b5a99220d4f07776667661648",
-    "difficultyEvidenceSha": "sha256:4b4d6073f1776c1f1badabc99cc2f37e2f6e337f4d2cc01af99a7934cf30c423"
+    "difficultyEvidenceSha": "sha256:4b4d6073f1776c1f1badabc99cc2f37e2f6e337f4d2cc01af99a7934cf30c423",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O, 반지름 l인 원이 지름으로 두 반원 호로 나뉘고, 각 호에 밑면의 둘레와 같은 6π cm가 적혀 있어 원뿔을 두 바퀴 굴린 자국의 둘레가 6π+6π임을 보여 준다.",
+    "solutionImageCaption": "반지름 l인 원의 둘레가 밑면의 둘레 6π인 두 호로 나뉜다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -532,7 +556,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:1d3342545ae87baa5e0e24dca4b55c8b37a92480b0f0f0e17ec5de9c8db4cf20",
-    "difficultyEvidenceSha": "sha256:ab12f719cdbde8a604022fd4d888a05d69e594fa0c3f997b0466801ef0c277c4"
+    "difficultyEvidenceSha": "sha256:ab12f719cdbde8a604022fd4d888a05d69e594fa0c3f997b0466801ef0c277c4",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 3cm, 높이 8cm인 원기둥 두 개: 왼쪽은 축에 수직인 평면으로 자른 단면 원, 오른쪽은 축을 포함하는 평면으로 자른 직사각형 단면을 칠해 보인 그림",
+    "solutionImageCaption": "축에 수직인 단면은 반지름 3cm인 원, 축을 포함하는 단면은 가로 6cm 세로 8cm인 직사각형인 원기둥",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -576,7 +604,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:8f54ce392519a2e44dab170df0bfc87225af97492438a5fb17784810bf900d0a",
-    "difficultyEvidenceSha": "sha256:7f1247b7140d38a4b1bcbf9d813bd9ce26bc0e30fd989e045fcf4c39b7f140b3"
+    "difficultyEvidenceSha": "sha256:7f1247b7140d38a4b1bcbf9d813bd9ce26bc0e30fd989e045fcf4c39b7f140b3",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 6cm인 구에서 8등분 한 조각을 잘라 내고 남은 7/8 입체도형으로, 잘라 낸 자리에 중심에서 서로 수직으로 만나는 4분원 모양의 평면 3개(색칠)가 보이고 반지름 6cm가 표시된 그림이다.",
+    "solutionImageCaption": "구의 1/8을 잘라낸 입체도형 (반지름 6 cm)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -620,7 +652,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:414ee05203f23896224668c832809dc523b34adca3fefbfa444e853d30d5dfb4",
-    "difficultyEvidenceSha": "sha256:00a53834fc7504c6834c6e03c537f34984ac701c09bbf0149f65b91ec5af69c5"
+    "difficultyEvidenceSha": "sha256:00a53834fc7504c6834c6e03c537f34984ac701c09bbf0149f65b91ec5af69c5",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: (가)는 밑면이 두 변 6cm, 7cm인 직각삼각형이고 높이가 4cm인 삼각뿔 모양의 물, (나)는 밑면이 두 변 6cm, x cm인 직각삼각형이고 높이가 4cm인 삼각기둥 모양의 물을 나란히 보인 그림",
+    "solutionImageCaption": "(가)의 물은 삼각뿔, (나)의 물은 삼각기둥 모양이며 각 모서리의 길이를 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -652,10 +688,10 @@ window.questionBank = [
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q16-solution.svg",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "중심각 240도, 반지름 3 cm, 높이 6 cm인 원기둥 조각을 옆 곡면, 두 부채꼴 면, 두 절단 직사각형 면으로 나눈 그림",
-    "solutionImageCaption": "옆 곡면 24π, 위아래 부채꼴 면 12π, 절단면 36을 더해 겉넓이는 36π+36 cm²이다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q16-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 입체의 겉면을 세 부분으로 나눈 그림: 반지름 3cm, 중심각 240°인 부채꼴(넓이 6π, 2개), 가로 4π cm 세로 6cm인 곡면 직사각형(넓이 24π), 가로 3cm 세로 6cm인 직사각형 면 2개(넓이 각 18)",
+    "solutionImageCaption": "겉면을 부채꼴 2개, 곡면 직사각형, 직사각형 면 2개로 나누어 각각의 크기와 넓이를 나타낸 그림",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
     "crossConceptKeys": [],
@@ -699,7 +735,11 @@ window.questionBank = [
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 수영반 수강생 20명의 나이를 줄기와 잎 그림으로 나타내고, 빈칸 a, b, c 자리에 들어가는 잎 5(줄기 2), 8(줄기 3), 7(줄기 4)을 동그라미로 표시한 그림",
+    "solutionImageCaption": "자료를 작은 수부터 비교해 빈칸 a, b, c에 들어갈 잎을 동그라미로 나타낸 줄기와 잎 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -742,7 +782,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:e2f7bc42b431cb2ba8823233fd5e1a19047a26ead56d7657259e6356a6c6ff94",
-    "difficultyEvidenceSha": "sha256:65f877432cce107744d8b71c9d8d65c1613ac5ad90c9dcdf6be55a2de2966da1"
+    "difficultyEvidenceSha": "sha256:65f877432cce107744d8b71c9d8d65c1613ac5ad90c9dcdf6be55a2de2966da1",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수영반 수강생 20명의 나이를 나타낸 줄기와 잎 그림에서 작은 쪽부터 10번째 잎(줄기 3의 6)과 11번째 잎(줄기 3의 8)을 순번과 함께 동그라미로 표시한 그림",
+    "solutionImageCaption": "20개 자료를 작은 수부터 셌을 때 10번째와 11번째 값의 위치를 보인 줄기와 잎 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -803,7 +847,11 @@ window.questionBank = [
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 100 m 달리기 기록의 도수분포다각형에서 지워졌던 17.5초(6명)와 18.5초(4명) 계급을 채워 40명 전체를 완성하고, 18초 이상인 세 계급(4명, 2명, 1명)의 점을 동그라미로 표시해 괄호로 묶은 그림",
+    "solutionImageCaption": "지워진 두 계급의 도수를 채워 완성한 도수분포다각형에서 18초 이상인 세 계급을 묶어 보인 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -854,10 +902,10 @@ window.questionBank = [
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q22-solution.svg",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "지름 AB와 중심 O가 있는 원에서 C, D가 원 위에 있고 secant CD의 연장선이 지름 연장선과 P에서 만난다. 호 AC는 12 cm, 중심각 AOC는 48도이며 DO와 DP가 같은 그림",
-    "solutionImageCaption": "각의 관계로 ∠BOD=16°, ∠COD=116°를 구하고, 호 AC의 길이 비례로 BD=4 cm, CD=29 cm를 얻는다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q22-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB의 연장선 위 점 P와 현 CD의 연장선에서 DO=DP 표식, ∠AOC=48°, ∠COD=116°, ∠DOP=∠OPD=16°, ∠ODC=∠OCD=32° 각 표식을 나타내고 호 AC=12cm와 호 BD·CD를 굵게 보인 그림",
+    "solutionImageCaption": "DO=DP로 ∠DOP=∠OPD=16°, ∠ODC=∠OCD=32°, ∠COD=116°를 표시하고 호 BD, CD를 굵게 나타낸 그림",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
@@ -896,10 +944,10 @@ window.questionBank = [
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q23-solution.svg",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "높이가 2r인 원기둥에 꼭 맞는 반지름 r의 구와 같은 밑면 반지름 r, 높이 2r인 원뿔을 나란히 비교하는 그림",
-    "solutionImageCaption": "세 부피는 각각 2/3πr³, 4/3πr³, 2πr³이므로 비는 1:2:3이다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q23-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 반지름이 모두 r인 원뿔, 구, 원기둥을 나란히 그리고, 원뿔과 원기둥의 높이가 구의 지름과 같은 2r임을 치수로 보인 그림",
+    "solutionImageCaption": "원뿔, 구, 원기둥의 반지름은 모두 r이고 원뿔과 원기둥의 높이는 2r이다",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
     "crossConceptKeys": [],
