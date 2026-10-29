@@ -125,7 +125,7 @@ def build_solid(spec):
         if spec.get('cuts') is not None:
             # planes cutting parts off a convex polyhedron: the solid that is drawn is what remains (derived here from the plan alone)
             if spec.get('count') is not None: raise ValueError('SOLID_COUNT_UNSUPPORTED:CUT')
-            verts, faces, aliases = apply_cuts(verts, faces, aliases, spec['cuts'])
+            verts, faces, aliases = apply_cuts(verts, faces, aliases, spec['cuts'], kind)
             return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases, 'cut': True}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases}
     if kind in ('CYLINDER', 'CONE', 'CONE_FRUSTUM', 'SPHERE', 'HEMISPHERE'):
@@ -304,20 +304,22 @@ CUT_EPS = 1e-6
 CUT_AT = re.compile(r'^([1-9]\d?)/([1-9]\d?)$')
 
 
-def apply_cuts(verts, faces, aliases, cuts):
+def apply_cuts(verts, faces, aliases, cuts, kind=None):
     """The polyhedron left after cutting by one or two planes, one after the other. A plane is given by 3-6 points, each at the fraction p/q of an edge
     (written as its two vertex names) of the solid as it is at that cut; the side with strictly more vertices stays (keep:"<vertex>" decides a tie).
     The remaining vertices keep their order, the new vertices (one per edge crossing the plane) follow, ordered by the (low, high) indices of their edge in
     the solid before the cut; the section is one more face. Re-derived here independently of the producer."""
     if not isinstance(cuts, list) or not 1 <= len(cuts) <= 2: raise ValueError('SOLID_CUT_COUNT_INVALID')
     for number, cut in enumerate(cuts, 1):
-        verts, faces, aliases = _cut_once(verts, faces, aliases, cut)
+        verts, faces, aliases = _cut_once(verts, faces, aliases, cut, number, kind)
     return verts, faces, aliases
 
 
-def _cut_once(verts, faces, aliases, cut):
-    entries = cut.get('through')
-    if not isinstance(entries, list) or not 3 <= len(entries) <= 6: raise ValueError('SOLID_CUT_INVALID')
+def _cut_once(verts, faces, aliases, cut, number=1, kind=None):
+    entries = cut.get('through', [])
+    corner_tokens = cut.get('vertices', [])
+    if cut.get('through') is None and cut.get('vertices') is None: raise ValueError('SOLID_CUT_INVALID')
+    if not isinstance(entries, list) or not isinstance(corner_tokens, list) or not 3 <= len(entries) + len(corner_tokens) <= 6: raise ValueError('SOLID_CUT_INVALID')
 
     def index_of(name):
         for i, (n, _) in enumerate(verts):
@@ -327,6 +329,29 @@ def _cut_once(verts, faces, aliases, cut):
     for f in faces:
         for i in range(len(f)):
             edges.add((min(f[i], f[(i + 1) % len(f)]), max(f[i], f[(i + 1) % len(f)])))
+    # corners of the solid the plane passes through: a name, or (first cut only) a reference to a slot of the uncut solid: "#b0", "#t2", "#apex", "#v5"
+    corners = []
+    for token in corner_tokens:
+        if not isinstance(token, str): raise ValueError('SOLID_CUT_INVALID')
+        if '#' in token:
+            if number != 1: raise ValueError('SOLID_CUT_VERTEX_REF_UNSUPPORTED')
+            m = VREF.fullmatch(token)
+            if not m or m.group(1) is not None: raise ValueError('SOLID_VREF_INVALID')
+            ring, idx, apex = m.group(2), m.group(3), m.group(4)
+            total = len(verts)
+            n_ring = total - 1 if kind == 'PYRAMID' else total - 2 if kind == 'BIPYRAMID' else total // 2
+            if ring == 'v': i = int(idx) if int(idx) < total else None
+            elif kind == 'REGULAR_POLYHEDRON': i = None
+            elif apex == 'apex': i = n_ring if kind in ('PYRAMID', 'BIPYRAMID') else None
+            elif apex == 'apex2': i = n_ring + 1 if kind == 'BIPYRAMID' else None
+            elif ring == 'b': i = int(idx) if int(idx) < n_ring else None
+            else: i = None if kind in ('PYRAMID', 'BIPYRAMID') else (n_ring + int(idx) if int(idx) < n_ring else None)
+            if i is None: raise ValueError('SOLID_VREF_UNKNOWN')
+        else:
+            i = index_of(token)
+            if i < 0: raise ValueError('SOLID_CUT_VERTEX_UNKNOWN')
+        corners.append({'index': i, 'p': verts[i][1]})
+    if len({x['index'] for x in corners}) != len(corners): raise ValueError('SOLID_CUT_INVALID')
     through = []
     for entry in entries:
         text, at = entry[0], entry[1]
@@ -343,15 +368,16 @@ def _cut_once(verts, faces, aliases, cut):
     if len({x['key'] for x in through}) != len(through): raise ValueError('SOLID_CUT_INVALID')
     # the plane from the first three points that are not on one line (the producer takes the widest triple; coplanar points give the same plane)
     normal = None
-    for i in range(len(through)):
-        for j in range(i + 1, len(through)):
-            for k in range(j + 1, len(through)):
-                c = vcross(vsub(through[j]['p'], through[i]['p']), vsub(through[k]['p'], through[i]['p']))
+    pts = [x['p'] for x in through] + [x['p'] for x in corners]
+    for i in range(len(pts)):
+        for j in range(i + 1, len(pts)):
+            for k in range(j + 1, len(pts)):
+                c = vcross(vsub(pts[j], pts[i]), vsub(pts[k], pts[i]))
                 if normal is None and vlen(c) > 1e-9: normal = c
     if normal is None: raise ValueError('SOLID_CUT_DEGENERATE')
     n = vunit(normal)
-    d = vdot(n, through[0]['p'])
-    if any(abs(vdot(n, x['p']) - d) > 2 * CUT_EPS for x in through): raise ValueError('SOLID_CUT_NOT_PLANAR')
+    d = vdot(n, pts[0])
+    if any(abs(vdot(n, p) - d) > 2 * CUT_EPS for p in pts): raise ValueError('SOLID_CUT_NOT_PLANAR')
     dist = [vdot(n, v[1]) - d for v in verts]
     pos, neg = sum(1 for x in dist if x > CUT_EPS), sum(1 for x in dist if x < -CUT_EPS)
     if pos == 0 or neg == 0: raise ValueError('SOLID_CUT_NO_EFFECT')

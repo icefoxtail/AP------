@@ -1023,3 +1023,43 @@ class EqualSlantOfACone(unittest.TestCase):
         for bad in (True, {'solid': 's9'}):
             self.assertRaises(ValueError, O.planned_slant_marks, {'marks': {'equalSlant': bad}}, both)
         self.assertRaises(ValueError, O.planned_slant_marks, {'marks': {'equalSlant': True}}, self.solids({'kind': 'CYLINDER', 'radius': 2, 'height': 3}))
+
+
+class CutsThroughCorners(unittest.TestCase):
+    """E28c: a plane through corners of the solid, cut by the observer's own construction"""
+    base = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 3}, 'height': 2, 'names': 'EFGHABCD', 'id': 's1'}
+
+    def cut(self, cuts, **over):
+        return O.build_solid({**self.base, 'cuts': cuts, **over})
+
+    def test_three_corners_cut_the_corner_off(self):
+        solid = self.cut([{'vertices': ['A', 'C', 'F']}])
+        names = sorted(n for n, _ in solid['verts'])
+        self.assertEqual(names, ['A', 'C', 'D', 'E', 'F', 'G', 'H'])
+        self.assertEqual((len(solid['verts']), len(O.poly_edges(solid)), len(solid['faces'])), (7, 12, 7))
+        self.assertEqual(sorted(len(f) for f in solid['faces']), [3, 3, 3, 3, 4, 4, 4])
+        section = solid['faces'][-1]
+        self.assertEqual(sorted(solid['verts'][i][0] for i in section), ['A', 'C', 'F'])
+
+    def test_corners_can_be_named_by_slot_in_the_first_cut_only(self):
+        named = self.cut([{'vertices': ['A', 'C', 'F']}])
+        by_slot = self.cut([{'vertices': ['#t0', '#t2', '#b1']}], names='.' * 8)
+        self.assertEqual([p for _, p in by_slot['verts']], [p for _, p in named['verts']])
+        for bad in (['#t0', '#t2', '#b9'], ['#apex', '#t2', '#b1'], ['s2#b0', '#t2', '#b1'], ['#t0', '#t2', 'Z']):
+            self.assertRaises(ValueError, self.cut, [{'vertices': bad}], names='.' * 8)
+        self.assertRaises(ValueError, self.cut, [{'vertices': ['#t0', '#t2', '#b1']}, {'vertices': ['#t0', '#t3', '#b0']}], names='.' * 8)
+
+    def test_a_second_cut_names_the_corners_that_are_left(self):
+        self.assertRaises(ValueError, self.cut, [{'vertices': ['A', 'C', 'F']}, {'vertices': ['B', 'D', 'G']}])
+
+    def test_corners_and_edge_points_make_one_plane(self):
+        solid = self.cut([{'vertices': ['F'], 'through': [['AD', '1/2', 'P'], ['BC', '1/2', 'Q']], 'keep': 'G'}])
+        self.assertEqual(sorted(n for n, _ in solid['verts'] if n), ['C', 'D', 'E', 'F', 'G', 'H', 'P', 'Q'])
+
+    def test_a_diagonal_plane_needs_keep_and_the_refusals_are_explicit(self):
+        self.assertRaises(ValueError, self.cut, [{'vertices': ['A', 'C', 'G', 'E']}])
+        half = self.cut([{'vertices': ['A', 'C', 'G', 'E'], 'keep': 'B'}])
+        self.assertEqual((len(half['verts']), len(O.poly_edges(half)), len(half['faces'])), (6, 9, 5))
+        for cuts in ([{'vertices': ['A', 'C']}], [{'vertices': []}], [{}], [{'vertices': ['A', 'A', 'C']}], [{'vertices': ['A', 'C', 'F', 'D']}], [{'vertices': ['E', 'F', 'G']}],
+                     [{'vertices': ['A', 'C', 'F'], 'keep': 'A'}], [{'vertices': 'ACF'}], [{'vertices': ['A', 'C', 7]}]):
+            self.assertRaises(ValueError, self.cut, cuts)

@@ -1599,3 +1599,91 @@ test('E28c: slant ticks are drawn on the silhouettes at their middle and the obs
   await failingAudit(figure({solids:[{kind:'CONE',radius:3,height:6},{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],marks:{equalSlant:[{solid:'s1',count:2},{solid:'s2',count:3}]},solidCaption:{text:'원뿔과 원뿔대'}}),svg,'SOLID_SLANT_MARK_COUNT');
   await failingAudit(figure({solids:[{kind:'CONE',radius:3,height:6},{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],marks:{equalSlant:[{solid:'s1',count:1}]},solidCaption:{text:'원뿔과 원뿔대'}}),svg,'SOLID_SLANT_MARK_SET_MISMATCH');
 });
+
+// --- E28c-4: a plane through corners of the solid (cuts:[{vertices:["A","C","F"]}]) ---------------------------------------------------------------------
+// A cuboid with the top ring A B C D over the bottom ring E F G H (A over E, ...); the plane A C F cuts the corner B off.
+const cornerBox=(cuts,over={},solidOver={})=>figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:3},height:2,names:'EFGHABCD',cuts,...solidOver}],...over});
+const namesOf=solid=>solid.vertices.map(v=>v.name);
+const faceNamesOf=(solid,id)=>solid.faces.find(f=>f.id===id).idx.map(i=>solid.vertices[i].name).sort();
+test('E28c: a plane through three corners cuts the corner off: 7 vertices, 12 edges, 7 faces, the section is a face with those corners',()=>{
+  const m=solveSolidFigure(cornerBox([{vertices:['A','C','F']}])),solid=m.solids[0];
+  assert.deepEqual(namesOf(solid).sort(),['A','C','D','E','F','G','H']);// B is gone, and no vertex was added
+  assert.equal(solid.edges.length,12);assert.equal(solid.faces.length,7);
+  assert.deepEqual(faceNamesOf(solid,'cut1'),['A','C','F']);
+  assert.equal(solid.cuts[0].removed,1);assert.equal(solid.cuts[0].added,0);assert.deepEqual(solid.cuts[0].vertices,['A','C','F']);assert.deepEqual(solid.cuts[0].through,[]);
+  // the faces next to B shrink to triangles, the others stay (Euler: 7 - 12 + 7 = 2)
+  assert.deepEqual(solid.faces.map(f=>f.idx.length).sort(),[3,3,3,3,4,4,4]);
+  // the edges A-C, C-F and F-A are new; the edges of B are gone
+  const edge=(a,b)=>solid.edges.some(([i,j])=>[namesOf(solid)[i],namesOf(solid)[j]].sort().join('')===[a,b].sort().join(''));
+  assert.ok(edge('A','C')&&edge('C','F')&&edge('A','F')&&!edge('A','B'));
+  // hidden edges follow the depth test: seen from the front right, the cut face ACF faces the viewer
+  assert.ok(solid.runs.every(e=>e.runs.length===1));
+  // a plane through four corners (a diagonal plane) cuts the cuboid in two equal halves: keep says which one
+  assert.throws(()=>solveSolidFigure(cornerBox([{vertices:['A','C','G','E']}])),code('SOLID_CUT_KEEP_AMBIGUOUS'));
+  const half=solveSolidFigure(cornerBox([{vertices:['A','C','G','E'],keep:'B'}])).solids[0];
+  assert.deepEqual(namesOf(half).sort(),['A','B','C','E','F','G']);assert.equal(half.faces.length,5);assert.equal(half.edges.length,9);
+  // corners and edge points together: the plane through F and the middles of AD' ... (three points, one a corner)
+  const mixed=solveSolidFigure(cornerBox([{vertices:['F'],through:[['AD','1/2','P'],['BC','1/2','Q']],keep:'G'}])).solids[0];
+  assert.ok(namesOf(mixed).includes('P')&&namesOf(mixed).includes('Q')&&namesOf(mixed).includes('F'));
+  // the same cut written with references of an unnamed solid is the same solid
+  const refs=solveSolidFigure(cornerBox([{vertices:['#t0','#t2','#b1']}],{},{names:'........'})).solids[0];
+  assert.deepEqual(refs.vertices.map(v=>v.p),solid.vertices.map(v=>v.p));
+  // a pyramid cut through its apex and a base diagonal
+  const pyramid=solveSolidFigure(figure({solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:6,names:'ABCDE',cuts:[{vertices:['A','C','E'],keep:'B'}]}]})).solids[0];
+  assert.deepEqual(namesOf(pyramid).sort(),['A','B','C','E']);assert.equal(pyramid.faces.length,4);
+  // a plan without the field keeps its model
+  assert.equal('vertices' in solveSolidFigure(cutCube([{through:midCut}])).solids[0].cuts[0],false);
+});
+test('E28c: cuts through corners are refused with explicit codes',()=>{
+  const bad=(cuts,expected,solidOver={})=>assert.throws(()=>solveSolidFigure(cornerBox(cuts,{},solidOver)),code(expected),expected);
+  bad([{vertices:['A','C']}],'SOLID_CUT_INVALID');
+  bad([{vertices:[]}],'SOLID_CUT_INVALID');
+  bad([{}],'SOLID_CUT_INVALID');
+  bad([{vertices:'ACF'}],'SOLID_CUT_INVALID');
+  bad([{vertices:['A','C',7]}],'SOLID_CUT_INVALID');
+  bad([{vertices:['A','A','C']}],'SOLID_CUT_INVALID');
+  bad([{vertices:['A','C','F'],size:1}],'SOLID_CUT_INVALID');
+  bad([{vertices:['A','C','F','D','E','H','B']}],'SOLID_CUT_INVALID');// seven points
+  bad([{vertices:['A','C','Z']}],'SOLID_CUT_VERTEX_UNKNOWN:Z');
+  bad([{vertices:['A','C','F','D']}],'SOLID_CUT_NOT_PLANAR');
+  bad([{vertices:['E','F','G']}],'SOLID_CUT_NO_EFFECT');// the plane of a face leaves nothing on one side
+  bad([{vertices:['A','C','F'],keep:'A'}],'SOLID_CUT_KEEP_INVALID');// a corner on the plane stays and cannot name a side
+  bad([{vertices:['A','C','F'],keep:'Z'}],'SOLID_NAME_UNKNOWN');
+  bad([{vertices:['#t0','#t2','#b1']},{vertices:['#t0','#t3','#b0']}],'SOLID_CUT_VERTEX_REF_UNSUPPORTED',{names:'........'});
+  bad([{vertices:['s2#b0','#t2','#b1']}],'SOLID_VREF_INVALID',{names:'........'});
+  bad([{vertices:['#b9','#t2','#b1']}],'SOLID_VREF_UNKNOWN',{names:'........'});
+  bad([{vertices:['#apex','#t2','#b1']}],'SOLID_VREF_UNKNOWN',{names:'........'});
+  bad([{vertices:['#q1','#t2','#b1']}],'SOLID_VREF_INVALID',{names:'........'});
+  // a corner that was cut away is no corner of the next cut
+  assert.throws(()=>solveSolidFigure(cornerBox([{vertices:['A','C','F']},{vertices:['B','D','G']}])),code('SOLID_CUT_VERTEX_UNKNOWN:B'));
+  // a cut solid still takes no references afterwards
+  assert.throws(()=>solveSolidFigure(cornerBox([{vertices:['#t0','#t2','#b1']}],{segments:[{from:'s1#b0',to:'s1#t0',style:'AUTO'}]},{names:'........'})),code('SOLID_VREF_UNSUPPORTED:CUT'));
+});
+test('E28c: a cut corner is drawn with its hidden edges dashed, the section shaded, and the observer re-derives the cut from the plan',async()=>{
+  const plan=cornerBox([{vertices:['A','C','F']}],{highlights:[{polygon:['A','C','F']}],segments:[{from:'A',to:'C',style:'SOLID',role:'REF'}]});
+  const svg=await sphereSvg(plan);
+  assert.match(svg,/<polygon id="highlight-ACF" data-role="highlight-face" data-polygon="ACF"/);
+  assert.equal((svg.match(/data-role="edge"/g)??[]).length>=12,true);
+  // no corner B anywhere in the drawing, and the new edges are drawn
+  assert.doesNotMatch(svg,/data-edge="[A-Z]*B[A-Z]*"/);
+  assert.match(svg,/data-edge="AC"/);
+  // the observer cuts the solid itself: a figure drawn for another cut fails against this plan
+  await failingAudit(cornerBox([{vertices:['B','D','G']}],{highlights:[{polygon:['B','D','G']}]}),svg,'SOLID_');
+  await failingAudit(cornerBox([{vertices:['A','C','F'],keep:'B'}],{highlights:[{polygon:['A','C','F']}]}),svg,'SOLID_');
+  // a hidden edge drawn solid is caught
+  const hidden=svg.match(/<line id="s1-edge-[^"]*" data-role="edge"[^>]*data-vis="hidden"[^>]*\/>/);
+  if(hidden)await failingAudit(plan,svg.replace(hidden[0],hidden[0].replace(/ stroke-dasharray="[^"]*"/,'').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  // the unnamed form composes as well: only the new vertices of a cut are unnamed
+  const refs=cornerBox([{vertices:['#t0','#t2','#b1']}],{},{names:'........'});
+  await sphereSvg({...refs,solidCaption:{text:'한 꼭짓점을 자른 직육면체'}});
+});
+test('E28c: the two pieces of a cut cuboid are drawn side by side: the piece that is left and the corner pyramid that was cut off',async()=>{
+  // the cut-off piece is a pyramid on the triangle B A C with its apex F straight above the right-angle corner B: BF is perpendicular to BA and BC (lengths 4, 3 and 2 as in the cuboid)
+  const left={capability:'solid-figure-v1',unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:3},height:2,names:'EFGHABCD',cuts:[{vertices:['A','C','F']}]}],highlights:[{polygon:['A','C','F']}]};
+  const off={capability:'solid-figure-v1',unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'POLYGON',points:[[0,0],[4,0],[0,3]]},height:2,apex:[0,0],names:'BACF'}]};
+  const plan=gridOf([solidPanel(left,'남은 입체'),solidPanel(off,'잘라 낸 삼각뿔')],{caption:'세 꼭짓점 A, C, F를 지나는 평면으로 직육면체의 한 꼭짓점 B를 자른다'});
+  const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+  const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-cut-corner|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:16,displayScale:0.7,fontFloorCssPx:11}});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
+  assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+});

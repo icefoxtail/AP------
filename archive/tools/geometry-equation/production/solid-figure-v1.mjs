@@ -192,7 +192,7 @@ function buildPolyhedron(spec){
     // planes that cut convex parts off the polyhedron: the solid that remains is what is drawn (its own vertices, faces and edges)
     if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:CUT');
     if(!isConvex(points))bad('SOLID_CUT_NOT_CONVEX');
-    const cut=applyCuts({vertices,faces},spec.cuts);
+    const cut=applyCuts({vertices,faces,kind},spec.cuts);
     return {id:spec.id,kind,category:'POLY',vertices:cut.vertices,faces:cut.faces,edges:edgesOfFaces(cut.faces),height,cuts:cut.record};
   }
   const count=parseCount(spec.count,vertices,edges);
@@ -303,9 +303,10 @@ function edgesOfFaces(faces){
 }
 
 // --- planes cutting a convex polyhedron ---------------------------------------------------------------------------------------------------------------
-// solids[].cuts:[{through:[[edge,"1/2",name?],...],keep?}] (one or two planes, one after the other). A plane is fixed by 3 to 6 points, each the point
+// solids[].cuts:[{through?:[[edge,"1/2",name?],...],vertices?:["A","C","F"],keep?}] (one or two planes, one after the other). A plane is fixed by 3 to 6 points, each the point
 // at a fraction p/q (from the first named vertex towards the second) of an EDGE of the solid as it is when that cut is made (the edge is written as its
-// two vertex names, "AD"); all must be coplanar. The solid keeps the side that has more of its vertices (strictly); with equally many, keep:"<vertex>"
+// two vertex names, "AD"), or a vertex of the solid as it is when that cut is made (`vertices`: its name, or in the first cut a reference "#b0" of the
+// uncut solid: a plane through three corners cuts a corner off, a pyramid with the three corners as its base); all must be coplanar. The solid keeps the side that has more of its vertices (strictly); with equally many, keep:"<vertex>"
 // names a vertex that stays. A vertex of the solid on the plane stays; every edge that crosses the plane gets a new vertex there (named by the
 // through entry that lies on it, otherwise unnamed), and the plane's section becomes one new face. New vertices follow the kept ones, ordered by the
 // edge they lie on (the lower, then the higher index of the edge's ends in the solid before the cut). Only convex polyhedra are cut.
@@ -313,18 +314,37 @@ const MAX_CUTS=2,CUT_EPS=1e-6,CUT_AT=/^([1-9]\d?)\/([1-9]\d?)$/;
 function applyCuts(poly,cuts){
   if(!Array.isArray(cuts)||cuts.length<1||cuts.length>MAX_CUTS)bad('SOLID_CUT_COUNT_INVALID');
   let current=poly;const record=[];
-  cuts.forEach((cut,k)=>{const made=cutOnce(current,cut,k+1);current=made;record.push(made.record);});
+  cuts.forEach((cut,k)=>{const made=cutOnce(current,cut,k+1,poly.kind);current=made;record.push(made.record);});
   return {vertices:current.vertices,faces:current.faces,record};
 }
-function cutOnce(poly,cut,number){
+function cutOnce(poly,cut,number,kind){
   if(!isPlain(cut))bad('SOLID_CUT_INVALID');
-  onlyKeys(cut,['through','keep'],'SOLID_CUT_INVALID');
-  if(!Array.isArray(cut.through)||cut.through.length<3||cut.through.length>6)bad('SOLID_CUT_INVALID');
+  onlyKeys(cut,['through','vertices','keep'],'SOLID_CUT_INVALID');
+  const throughList=cut.through??[],vertexList=cut.vertices??[];
+  if(!Array.isArray(throughList)||!Array.isArray(vertexList)||(cut.through===undefined&&cut.vertices===undefined))bad('SOLID_CUT_INVALID');
+  if(throughList.length+vertexList.length<3||throughList.length+vertexList.length>6)bad('SOLID_CUT_INVALID');
   const {vertices,faces}=poly;
   const indexOf=name=>vertices.findIndex(v=>v.name===name||(v.aliases?.includes(name)??false));
   const edgeSet=new Set();
   for(const f of faces)for(let k=0;k<f.idx.length;k++){const a=f.idx[k],b=f.idx[(k+1)%f.idx.length];edgeSet.add(Math.min(a,b)+','+Math.max(a,b));}
-  const through=cut.through.map(entry=>{
+  // corners of the solid the plane passes through: a name, or (first cut only, where the solid still has its base / top / apex slots) a reference "#b0", "#t2", "#apex", "#v5"
+  const corners=vertexList.map(token=>{
+    if(typeof token!=='string')bad('SOLID_CUT_INVALID');
+    let i;
+    if(token.includes('#')){
+      if(number!==1)bad('SOLID_CUT_VERTEX_REF_UNSUPPORTED');
+      const m=VREF.exec(token);
+      if(!m||m[1]!==undefined)bad('SOLID_VREF_INVALID:'+token.slice(0,16));
+      i=slotIndex({kind,vertices},m[2],m[3],m[4]);
+      if(i===null)bad('SOLID_VREF_UNKNOWN:'+token.slice(0,16));
+    }else{
+      i=indexOf(token);
+      if(i<0)bad('SOLID_CUT_VERTEX_UNKNOWN:'+token.slice(0,12));
+    }
+    return {index:i,token,p:vertices[i].p};
+  });
+  if(new Set(corners.map(x=>x.index)).size!==corners.length)bad('SOLID_CUT_INVALID');
+  const through=throughList.map(entry=>{
     if(!Array.isArray(entry)||entry.length<2||entry.length>3||typeof entry[0]!=='string'||typeof entry[1]!=='string')bad('SOLID_CUT_INVALID');
     const toks=nameTokens(entry[0]);
     if(toks.length!==2||toks.join('')!==entry[0]||toks.includes('.'))bad('SOLID_CUT_INVALID');
@@ -337,15 +357,16 @@ function cutOnce(poly,cut,number){
     return {key:Math.min(a,b)+','+Math.max(a,b),edge:entry[0],at:entry[1],name:name===null||name==='.'?null:name,p:lerp(vertices[a].p,vertices[b].p,Number(m[1])/Number(m[2]))};
   });
   if(new Set(through.map(x=>x.key)).size!==through.length)bad('SOLID_CUT_INVALID');
-  // the plane: the widest triple of the through points; the others must lie on it
+  // the plane: the widest triple of the through points and corners; the others must lie on it
+  const pts=[...through.map(x=>x.p),...corners.map(x=>x.p)];
   let normal=null,widest=0;
-  for(let i=0;i<through.length;i++)for(let j=i+1;j<through.length;j++)for(let k=j+1;k<through.length;k++){
-    const c=cross(sub(through[j].p,through[i].p),sub(through[k].p,through[i].p)),l=len(c);
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++)for(let k=j+1;k<pts.length;k++){
+    const c=cross(sub(pts[j],pts[i]),sub(pts[k],pts[i])),l=len(c);
     if(l>widest){widest=l;normal=c;}
   }
   if(normal===null||widest<1e-9)bad('SOLID_CUT_DEGENERATE');
-  const n=unit(normal),d=dot(n,through[0].p);
-  if(through.some(x=>Math.abs(dot(n,x.p)-d)>2*CUT_EPS))bad('SOLID_CUT_NOT_PLANAR');
+  const n=unit(normal),d=dot(n,pts[0]);
+  if(pts.some(p=>Math.abs(dot(n,p)-d)>2*CUT_EPS))bad('SOLID_CUT_NOT_PLANAR');
   // the side that stays
   const dist=vertices.map(v=>dot(n,v.p)-d);
   const pos=dist.filter(x=>x>CUT_EPS).length,neg=dist.filter(x=>x<-CUT_EPS).length;
@@ -396,7 +417,7 @@ function cutOnce(poly,cut,number){
     const pts=face.idx.map(i=>out[i].p),nrm=faceNormal(pts);
     if(pts.some(q=>Math.abs(dot(nrm,sub(q,pts[0])))>1e-5))bad('SOLID_FACE_NOT_PLANAR');
   }
-  result.record={number,plane:{n:n.map(r6),d:r6(d)},keepSign,through:through.map(x=>({edge:x.edge,at:x.at,name:x.name})),removed:vertices.length-kept.length,added:crossings.length};
+  result.record={number,plane:{n:n.map(r6),d:r6(d)},keepSign,through:through.map(x=>({edge:x.edge,at:x.at,name:x.name})),...(corners.length?{vertices:corners.map(x=>x.token)}:{}),removed:vertices.length-kept.length,added:crossings.length};
   return result;
 }
 const COUNT_EDGES_MAX=20,CIRCLED_ONE=0x2460;
