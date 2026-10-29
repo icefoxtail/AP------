@@ -50,6 +50,31 @@
       padding-bottom: 80px;
     }
 
+    /* ── New Hub Notice ── */
+    .new-hub-notice {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      padding: 8px 16px;
+      background: var(--bg-plum);
+      border-bottom: 1px solid var(--border-dark);
+      color: var(--text-sub);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .new-hub-notice:hover {
+      background: var(--surface-2);
+      color: var(--ivory);
+    }
+    .new-hub-notice:focus-visible {
+      outline: 2px solid var(--emerald);
+      outline-offset: -2px;
+    }
+
     /* ── Top Bar ── */
     .topbar {
       position: sticky;
@@ -276,7 +301,7 @@
     }
 
     /* 중학교 학년별 / 고등학교 과목별 탐색 */
-    .curriculum-nav { display: grid; gap: 10px; margin-bottom: 28px; }
+    .curriculum-nav { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-bottom: 28px; }
     .curriculum-row { display: flex; align-items: center; gap: 14px; min-height: 48px; }
     .curriculum-label { flex: 0 0 130px; font-size: 12px; font-weight: 750; color: var(--gold); }
     .curriculum-nav .filter-bar { flex: 1; margin: 0; padding: 4px 0; }
@@ -626,9 +651,19 @@
       .topbar-right { max-width: 170px; }
       .lab-grid { grid-template-columns: 1fr; }
     }
+    @media (max-width: 380px) {
+      .topbar, .topbar-left { gap: 10px; }
+      .topbar-brand .topbar-badge { display: none; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- ── New Hub Notice ── -->
+  <a class="new-hub-notice" href="./next/index.html">
+    <span class="topbar-badge">NEW</span>
+    <span>새 실험실 허브(2.0)로 이동 →</span>
+  </a>
 
   <!-- ── Topbar Navigation ── -->
   <header class="topbar">
@@ -666,15 +701,15 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat-card">
-          <strong>7</strong>
+          <strong data-count="sections">7</strong>
           <span>학년·과목 영역</span>
         </div>
         <div class="hero-stat-card">
-          <strong>44</strong>
+          <strong data-count="cards">43</strong>
           <span>실험실·자료 카드</span>
         </div>
         <div class="hero-stat-card">
-          <strong>45</strong>
+          <strong data-count="links">44</strong>
           <span>전체 바로가기</span>
         </div>
       </div>
@@ -683,7 +718,7 @@
     <!-- ── Filter Tabs ── -->
     <nav class="curriculum-nav" id="filterBar" aria-label="학년 및 과목별 실험실">
       <div class="curriculum-row"><span class="curriculum-label">전체</span>
-        <div class="filter-bar"><button class="filter-btn active" type="button" data-filter="all">전체 실험실 <span class="filter-count">44</span></button></div></div>
+        <div class="filter-bar"><button class="filter-btn active" type="button" data-filter="all">전체 실험실 <span class="filter-count">43</span></button></div></div>
       <div class="curriculum-row"><span class="curriculum-label">중학교 · 학년별</span>
         <div class="filter-bar">
           <button class="filter-btn" type="button" data-filter="g7">중1 <span class="filter-count">8</span></button>
@@ -693,7 +728,7 @@
       <div class="curriculum-row"><span class="curriculum-label">고등학교 · 과목별</span>
         <div class="filter-bar">
           <button class="filter-btn" type="button" data-filter="common">공통수학 <span class="filter-count">4</span></button>
-          <button class="filter-btn" type="button" data-filter="algebra">대수 <span class="filter-count">9</span></button>
+          <button class="filter-btn" type="button" data-filter="algebra">대수 <span class="filter-count">8</span></button>
           <button class="filter-btn" type="button" data-filter="geom-vec">기하·벡터 <span class="filter-count">9</span></button>
           <button class="filter-btn" type="button" data-filter="calc1">미적분Ⅰ <span class="filter-count">8</span></button>
         </div></div>
@@ -1221,7 +1256,7 @@
           <span class="section-tag" style="border-color:#D8B77E66;color:#D8B77E;">고등 · 대수</span>
           <span>대수 · 함수와 도형 시각화</span>
         </h2>
-        <span class="section-count">실험실 8개 · 종합 포털 1개</span>
+        <span class="section-count">8개 실험실</span>
       </div>
       <div class="lab-grid algebra-lab-grid">
 
@@ -1919,6 +1954,23 @@
       searchQuery = initialQ;
       applyFilters();
     }
+
+    // ── Live Counts ──
+    // Hero stats, filter counts and section counts are counted from the cards and links
+    // themselves, so adding or removing a card never leaves a stale number behind.
+    // "Shortcuts" = every link inside a card that opens a lab (open button + extras like 기초판).
+    const setCount = (el, text) => { if (el) el.textContent = text; };
+    setCount(document.querySelector('[data-count="sections"]'), sections.length);
+    setCount(document.querySelector('[data-count="cards"]'), allCards.length);
+    setCount(document.querySelector('[data-count="links"]'), document.querySelectorAll('.lab-card-item a[href]').length);
+    filterButtons.forEach(btn => {
+      const f = btn.dataset.filter;
+      const n = f === 'all' ? allCards.length : document.querySelectorAll(`.lab-card-item[data-course="${f}"]`).length;
+      setCount(btn.querySelector('.filter-count'), n);
+    });
+    sections.forEach(sec => {
+      setCount(sec.querySelector('.section-count'), `${sec.querySelectorAll('.lab-card-item').length}개 실험실`);
+    });
   </script>
 </body>
 </html>

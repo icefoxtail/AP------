@@ -1,6 +1,6 @@
 // AP Math Lab 2.0 · 카탈로그·키트 정합성 검사 (브라우저 없이 수 초 안에 끝남)
 // 실행: node --test apmath/playground/next/tools/catalog.test.mjs
-// 2.0 구조를 채택하면 tools/run-tests.js 의 requiredCommands 에 등록해 CI에서 막도록 합니다.
+// tools/run-tests.js 의 requiredCommands 에 등록되어 있어 CI에서 막습니다.
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -8,6 +8,7 @@ import path from 'node:path';
 import test from 'node:test';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { renderManifest } from './gen-manifest.mjs';
 
 const NEXT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PLAYGROUND = path.resolve(NEXT, '..');
@@ -91,4 +92,27 @@ test('2.0 파일이 .gitignore에 걸려 배포에서 빠지지 않는다', () =
     if (e.status !== 1) throw e; // 1 = 걸린 파일 없음
   }
   assert.equal(ignored.trim(), '', `.gitignore에 걸린 파일: ${ignored.trim()}`);
+});
+
+test('manifest.json이 카탈로그와 같고 가리키는 파일이 모두 존재한다', () => {
+  // 실험실을 더하거나 고쳤다면: node apmath/playground/next/tools/gen-manifest.mjs
+  const text = fs.readFileSync(path.join(PLAYGROUND, 'manifest.json'), 'utf8').replace(/\r\n/g, '\n');
+  const manifest = JSON.parse(text);
+  // 생성기와 따로, 개수·id·제목·경로를 카탈로그에서 직접 대조합니다 (생성기가 틀려도 검사가 통과해 버리지 않도록).
+  assert.equal(manifest.lab_count, cat.labs.length, 'lab_count 가 카탈로그 실험실 수와 다름');
+  assert.deepEqual(manifest.labs.map((l) => l.id), Array.from(cat.labs, (l) => l.id), 'manifest 의 실험실 목록·순서가 카탈로그와 다름');
+  cat.labs.forEach((lab, i) => {
+    const m = manifest.labs[i];
+    assert.equal(m.title, lab.title, `${lab.id}: 제목`);
+    assert.equal(m.course, lab.course, `${lab.id}: 과정`);
+    assert.equal(m.unit, lab.unit, `${lab.id}: 단원`);
+    assert.equal(m.path, strip(lab.legacy), `${lab.id}: 경로`);
+    assert.equal(m.next, lab.next ? strip(lab.next) : undefined, `${lab.id}: 2.0 경로`);
+  });
+  for (const m of manifest.labs) {
+    assert.ok(fs.existsSync(path.join(PLAYGROUND, m.path)), `${m.id}: manifest 경로 없음 ${m.path}`);
+    if (m.next) assert.ok(fs.existsSync(path.join(PLAYGROUND, m.next)), `${m.id}: manifest 2.0 경로 없음 ${m.next}`);
+  }
+  // 글자 하나까지 같아야 합니다: 생성기를 다시 돌려도 diff가 없다는 뜻입니다.
+  assert.equal(text, renderManifest(cat), 'manifest.json 이 낡았습니다 → node apmath/playground/next/tools/gen-manifest.mjs');
 });
