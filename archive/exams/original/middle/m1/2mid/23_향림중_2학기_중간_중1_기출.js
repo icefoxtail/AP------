@@ -39,7 +39,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체의 꼭짓점 8개에 번호 1~8을, 모서리 12개에 번호 ①~⑫를 붙이고, 세로 모서리는 빨강, 위 모서리는 굵게, 보이지 않는 모서리는 점선으로 구분해 센 그림이다.",
+    "solutionImageCaption": "직육면체의 꼭짓점 8개와 모서리 12개를 번호로 센다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -255,7 +259,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥 ABC-DEF를 네 번 그려 두 밑면과 모서리 BE, BE와 평행한 AD·CF, EF와 수직인 DE·BE·CF, AB와 꼬인 위치의 CF·DF·EF를 각각 빨강과 굵은 선으로 구분해 보여 준다.",
+    "solutionImageCaption": "삼각기둥에서 모서리 사이의 평행, 수직, 꼬인 위치 관계를 모서리별로 구분한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
