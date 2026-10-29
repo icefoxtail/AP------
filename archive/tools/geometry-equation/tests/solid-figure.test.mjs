@@ -1330,3 +1330,139 @@ test('E29: every regular polyhedron and a bipyramid compose, hidden edges dashed
   const n1=textOf(bipSvg,'count-e-s1-1');
   await failingAudit(bip,bipSvg.replace(n1,n1.replace(/translate\(([\d.]+) ([\d.]+)\)/,'translate(0 0)')),'SOLID_COUNT_');
 });
+
+// --- E28c: a figure with nothing written on it, words on a figure (labels, axis) ---------------------------------------------------------------------
+const unnamedCuboid=(over={})=>cuboid({names:'........',...over});
+const dropGroup=(svg,id)=>svg.replace(new RegExp(`<g data-layer="90"><g id="${id}"[\\s\\S]*?</svg></g></g>`),'');
+test('E28c: a figure with no name, length or word is accepted when something in it is stressed or it is captioned; a bare one is still refused',()=>{
+  const bare=[{kind:'CYLINDER',radius:1,height:2}];
+  assert.throws(()=>solveSolidFigure(figure({solids:bare})),code('SOLID_FIGURE_NEEDS_A_LABEL'));
+  assert.equal(solveSolidFigure(figure({solids:bare,solidCaption:{text:'원기둥'}})).solids.length,1);
+  assert.equal(solveSolidFigure(figure({solids:bare,panelWidth:GRID_PANEL_WIDTH})).panelWidth,GRID_PANEL_WIDTH);
+  // stressed: a shaded face, a drawn segment, a mark, a section, an axis
+  for(const over of [{highlights:[{face:'top'}]},{segments:[{from:'#b0',to:'#t2',style:'AUTO',role:'ACCENT'}]},{marks:{rightAngles:[{at:'#b0',refs:['#b1','#b3']}]}}])
+    assert.equal(solveSolidFigure(figure({solids:[unnamedCuboid()],...over})).mode,'SOLIDS');
+  assert.equal(solveSolidFigure(figure({solids:bare,section:{kind:'AXIAL'}})).section.kind,'AXIAL');
+  assert.equal(solveSolidFigure(figure({solids:[{...bare[0],axis:true}]})).solids[0].axis.label,null);
+  // a net: a shaded face or a right angle stresses it, the bare cylinder net is refused as before
+  const netOf=over=>figure({unit:'cm',net:{solid:{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2,names:'........'},root:'side0',joins:[['side0','side1'],['side1','side2'],['side2','side3'],['side1','top'],['side3','bottom']],...over}});
+  assert.throws(()=>solveSolidFigure(netOf({})),code('SOLID_FIGURE_NEEDS_A_LABEL'));
+  assert.equal(solveSolidFigure(netOf({highlights:[{face:'top'}]})).highlights.length,1);
+  assert.equal(solveSolidFigure(netOf({rightAngles:[{face:'top',corner:0}]})).rightAngles.length,1);
+});
+test('E28c: words on a figure: a vertex, the axis, a face that faces the viewer, a drawn edge, the slant of a cone; refusals have their own codes',()=>{
+  const cone={kind:'CONE',radius:3,height:6,names:{apex:'A'}};
+  const m=solveSolidFigure(figure({solids:[cone,{kind:'CYLINDER',radius:2,height:4,axis:{label:'회전축'}}],labels:[{text:'모선',at:{slant:true,solid:'s1'}},{text:'꼭짓점',at:'A'}]}));
+  // the axis word of a solid comes first, then the labels in the order written
+  assert.deepEqual(m.labels.map(l=>[l.id,l.text,l.at.kind]),[['tl1','회전축','AXIS'],['tl2','모선','SLANT'],['tl3','꼭짓점','VERTEX']]);
+  assert.equal(m.solids[1].axis.label,'회전축');assert.equal(m.solids[0].axis,undefined);
+  const w=solveSolidFigure(figure({solids:[unnamedCuboid()],labels:[{text:'앞면',at:{face:'side0'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b1','#b2']}},{text:'꼭짓점',at:'#t2'}]}));
+  assert.deepEqual(w.labels.map(l=>l.at.kind),['FACE','FACE','EDGE','VERTEX']);
+  // a labelled axis is drawn even where the solid does not ask for one
+  const ax=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:2,height:4}],labels:[{text:'회전축',at:{axis:true}}]}));
+  assert.deepEqual(ax.solids[0].axis,{label:null});
+  // a plan without the fields has none of them in its model
+  assert.equal('labels' in solveSolidFigure(figure({solids:[cuboid()]})),false);assert.equal('axis' in solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:1,height:2}],dims:[{height:true}]})).solids[0],false);
+  const bad=(over,expected,solids=[unnamedCuboid()])=>assert.throws(()=>solveSolidFigure(figure({solids,...over})),code(expected),expected);
+  bad({labels:[]},'SOLID_LABELS_INVALID');
+  bad({labels:'앞면'},'SOLID_LABELS_INVALID');
+  bad({labels:Array.from({length:7},(_,k)=>({text:'가'+k,at:'#b0'}))},'SOLID_LABELS_INVALID');
+  bad({labels:[{text:'앞면',at:'#b0',size:2}]},'SOLID_LABELS_INVALID');
+  for(const text of ['','앞면 ','$x$','가나다라마바사아자차카타파','a\\b',5])bad({labels:[{text,at:'#b0'}]},'SOLID_LABEL_TEXT_INVALID');
+  bad({labels:[{text:'앞',at:'Z'}]},'SOLID_LABEL_AT_UNKNOWN:Z');
+  bad({labels:[{text:'앞',at:'#b9'}]},'SOLID_VREF_UNKNOWN');
+  bad({labels:[{text:'앞',at:7}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{face:'top',axis:true}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{face:'top',edge:['#b0','#b1']}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{edge:['#b0','#b1'],solid:'s1'}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{edge:['#b0','#b0']}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{edge:['#b0','#t2']}}]},'SOLID_LABEL_EDGE_NOT_DRAWN:s1.b0-s1.t2');// a space diagonal is no drawn edge
+  bad({labels:[{text:'앞',at:{face:'bottom'}}]},'SOLID_LABEL_FACE_HIDDEN:bottom');
+  bad({labels:[{text:'앞',at:{face:'side2'}}]},'SOLID_LABEL_FACE_HIDDEN:side2');
+  bad({labels:[{text:'앞',at:{face:'nope'}}]},'SOLID_LABEL_FACE_UNKNOWN:nope');
+  bad({labels:[{text:'앞',at:{axis:true}}]},'SOLID_LABEL_AXIS_UNSUPPORTED');
+  bad({labels:[{text:'앞',at:{slant:true}}]},'SOLID_LABEL_SLANT_UNSUPPORTED');
+  bad({labels:[{text:'앞',at:{face:'top'}},{text:'뒤',at:{face:'top'}}]},'SOLID_LABEL_DUPLICATE_TARGET:face:s1|top');
+  bad({labels:[{text:'앞',at:'#b0'},{text:'뒤',at:'#b0'}]},'SOLID_LABEL_DUPLICATE_TARGET');
+  bad({labels:[{text:'앞',at:{face:'top'}}]},'SOLID_LABEL_FACE_UNSUPPORTED:CUT',[unnamedCuboid({names:'ABCDEFGH',cuts:[{through:[['AD','1/2','M'],['BC','1/2','N'],['CG','1/2','P'],['DH','1/2','Q']]}]})]);
+  bad({labels:[{text:'앞',at:{face:'top'}}]},'SOLID_LABEL_FACE_UNSUPPORTED',[{kind:'CYLINDER',radius:1,height:2}]);
+  bad({labels:[{text:'앞',at:{axis:true}}]},'SOLID_LABEL_AXIS_UNSUPPORTED',[{kind:'SPHERE',radius:2},{kind:'CYLINDER',radius:1,height:2},{kind:'CONE',radius:1,height:2}]);// two rotation solids and no id
+  bad({axis:true},'SOLID_PLAN_INVALID');
+  const badAxis=(solid,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[solid]})),code(expected),expected);
+  badAxis({kind:'SPHERE',radius:2,axis:true,names:{center:'O'}},'SOLID_AXIS_UNSUPPORTED:SPHERE');
+  badAxis({kind:'HEMISPHERE',radius:2,axis:true,names:{center:'O'}},'SOLID_AXIS_UNSUPPORTED:HEMISPHERE');
+  badAxis({kind:'CYLINDER',radius:2,height:3,axis:false},'SOLID_AXIS_INVALID');
+  badAxis({kind:'CYLINDER',radius:2,height:3,axis:{label:'회전축',color:'red'}},'SOLID_AXIS_INVALID');
+  badAxis({kind:'CYLINDER',radius:2,height:3,axis:{label:'$l$'}},'SOLID_LABEL_TEXT_INVALID');
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',id:'s1',radius:3,height:4},{kind:'SPHERE',radius:2,inside:'s1',axis:true}]})),code('SOLID_AXIS_UNSUPPORTED:SPHERE'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',id:'s1',radius:3,height:4},{kind:'CONE',radius:2,height:2,inside:'s1',axis:true}]})),code('SOLID_AXIS_UNSUPPORTED:NESTED'));
+  assert.throws(()=>solveSolidFigure(figure({net:{kind:'CYLINDER',radius:2,height:3,dims:[{part:'rect-height'}]},labels:[{text:'앞',at:'A'}]})),code('SOLID_LABELS_UNSUPPORTED:NET'));
+});
+test('E28c: the axis of a rotation solid is a dash-dot line beyond both ends and its word stands beside it; the observer reads both back',async()=>{
+  // a frustum and a cylinder cut along the axis (the section is shaded): the word 회전축 stands inside the section
+  const plan=figure({solids:[{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5,axis:{label:'회전축'}}],section:{kind:'AXIAL'},panelWidth:GRID_PANEL_WIDTH});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-role="axis-line"/g)??[]).length,1);
+  assert.match(svg,/<line id="s1-axis" data-role="axis-line" data-solid="s1" stroke="#111" stroke-width="1.1" stroke-dasharray="10 3 2 3" fill="none"/);
+  assert.match(svg,/<g id="text-tl1" data-label-kind="COORDINATE_LABEL" data-label-role="text-label"[^>]* data-text-id="tl1" data-at-kind="AXIS" data-target="s1" data-text="회전축"/);
+  // the line runs 14 % of the height beyond the bottom centre and the top centre of the solid
+  const axis=svg.match(/<line id="s1-axis"[^>]*\/>/)[0],num=name=>Number(axis.match(new RegExp(`${name}="([-\\d.]+)"`))[1]);
+  const scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]);
+  assert.ok(Math.abs((num('y1')-num('y2'))-scale*Math.cos(20*Math.PI/180)*5*1.28)<0.02*scale*5);
+  assert.equal(num('x1'),num('x2'));
+  // tampering: the word changed, moved onto the axis, far away, missing; the line moved, made solid, missing
+  const label=textOf(svg,'text-tl1');
+  await failingAudit(plan,svg.replace(label,label.replace('data-text="회전축"','data-text="대칭축"')),'SOLID_TEXT_LABEL_TEXT_MISMATCH');
+  await failingAudit(plan,svg.replace(label,label.replace('data-target="s1"','data-target="s2"')),'SOLID_TEXT_LABEL_TARGET_MISMATCH');
+  const at=label.match(/translate\(([-\d.]+) ([-\d.]+)\)/);
+  const moved=(dx,dy)=>label.replace(at[0],`translate(${Number(at[1])+dx} ${Number(at[2])+dy})`);
+  await failingAudit(plan,svg.replace(label,moved(-400,0)),'SOLID_TEXT_LABEL_FAR_FROM_TARGET');
+  await failingAudit(plan,svg.replace(label,moved(num('x1')-Number(at[1])-1,0)),'SOLID_TEXT_LABEL_ON_TARGET');
+  await failingAudit(plan,dropGroup(svg,'text-tl1'),'SOLID_TEXT_LABEL_SET_MISMATCH');
+  await failingAudit(plan,svg.replace(axis,axis.replace(/y2="[-\d.]+"/,`y2="${num('y2')+9}"`)),'SOLID_AXIS_LINE_MISMATCH');
+  await failingAudit(plan,svg.replace(axis,axis.replace(' stroke-dasharray="10 3 2 3"','')),'SOLID_AXIS_NOT_DASH_DOT');
+  await failingAudit(plan,svg.replace(`<g data-layer="40">${axis}</g>`,''),'SOLID_AXIS_SET_MISMATCH');
+  // the plan against another figure: an axis the plan does not ask for, and a word the plan does not have
+  await failingAudit(figure({solids:[{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],section:{kind:'AXIAL'},dims:[{height:true}],panelWidth:GRID_PANEL_WIDTH}),svg,'SOLID_AXIS_SET_MISMATCH');
+  await failingAudit(figure({solids:[{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5,axis:true}],section:{kind:'AXIAL'},panelWidth:GRID_PANEL_WIDTH}),svg,'SOLID_TEXT_LABEL_SET_MISMATCH');
+});
+test('E28c: words on a vertex, a face, an edge and a slant stand where their target is; a vertex word with no room beside it gets a leader; the observer re-derives each target',async()=>{
+  const plan=figure({solids:[unnamedCuboid({base:{kind:'RECT',width:5,depth:3},height:3})],labels:[{text:'앞면',at:{face:'side0'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b1','#b2']}},{text:'꼭짓점',at:'#t2'}],panelWidth:GRID_PANEL_WIDTH});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-label-role="text-label"/g)??[]).length,4);
+  assert.match(svg,/data-at-kind="FACE" data-target="s1\|side0" data-text="앞면"/);
+  assert.match(svg,/data-at-kind="EDGE" data-target="s1.b1-s1.b2" data-text="모서리"/);
+  assert.match(svg,/data-at-kind="VERTEX" data-target="s1.t2" data-text="꼭짓점"/);
+  const shift=(id,dx,dy)=>{const g=textOf(svg,id),at=g.match(/translate\(([-\d.]+) ([-\d.]+)\)/);return svg.replace(g,g.replace(at[0],`translate(${Number(at[1])+dx} ${Number(at[2])+dy})`));};
+  await failingAudit(plan,shift('text-tl1',-300,0),'SOLID_TEXT_LABEL_OUTSIDE_FACE');
+  await failingAudit(plan,shift('text-tl2',0,-120),'SOLID_TEXT_LABEL_OUTSIDE_FACE');
+  await failingAudit(plan,shift('text-tl3',-400,0),'SOLID_TEXT_LABEL_FAR_FROM_TARGET');
+  // a long word on the back corner finds no room beside the vertex in the narrow panel: a leader joins it to the vertex, and the observer checks both ends of the leader
+  const long=figure({solids:[unnamedCuboid({base:{kind:'RECT',width:5,depth:3},height:3})],labels:[{text:'가나다라마바사아자',at:'#t2'}],panelWidth:GRID_PANEL_WIDTH});
+  const longSvg=await sphereSvg(long);
+  const leader=longSvg.match(/<line id="leader-text-tl1"[^>]*\/>/)[0];
+  assert.match(longSvg,/data-label-role="text-label"[^>]* data-leader="1"/);
+  await failingAudit(long,longSvg.replace(leader,leader.replace(/x2="[-\d.]+"/,all=>`x2="${Number(all.match(/[-\d.]+/)[0])+20}"`)),'SOLID_LEADER_NOT_ATTACHED');
+  await failingAudit(long,longSvg.replace(`<g data-layer="40">${leader}</g>`,''),'SOLID_LEADER_MISMATCH');
+  // the observer re-derives each target from the plan: a plan that puts the word on another face, edge or vertex fails against this figure
+  const other=labels=>figure({solids:[unnamedCuboid({base:{kind:'RECT',width:5,depth:3},height:3})],labels,panelWidth:GRID_PANEL_WIDTH});
+  await failingAudit(other([{text:'앞면',at:{face:'side1'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b1','#b2']}},{text:'꼭짓점',at:'#t2'}]),svg,'SOLID_TEXT_LABEL_TARGET_MISMATCH');
+  await failingAudit(other([{text:'앞면',at:{face:'side0'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b0','#b1']}},{text:'꼭짓점',at:'#t2'}]),svg,'SOLID_TEXT_LABEL_TARGET_MISMATCH');
+  await failingAudit(other([{text:'앞면',at:{face:'side0'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b1','#b2']}}]),svg,'SOLID_TEXT_LABEL_SET_MISMATCH');
+  // a cone: the slant word beside the right silhouette, the apex word on its name
+  const cone=figure({solids:[{kind:'CONE',radius:3,height:6,names:{apex:'A'},axis:true}],labels:[{text:'모선',at:{slant:true}},{text:'꼭짓점',at:'A'}],panelWidth:GRID_PANEL_WIDTH});
+  const coneSvg=await sphereSvg(cone);
+  assert.match(coneSvg,/data-at-kind="SLANT" data-target="s1" data-text="모선"/);
+  await failingAudit(cone,coneSvg.replace(textOf(coneSvg,'text-tl1'),textOf(coneSvg,'text-tl1').replace(/translate\(([-\d.]+) ([-\d.]+)\)/,'translate(5 5)')),'SOLID_TEXT_LABEL_FAR_FROM_TARGET');
+});
+test('E28c: a figure with nothing written on it composes (its caption carries the text) and a plan with no new field keeps its bytes',async()=>{
+  const plan=figure({solids:[unnamedCuboid()],highlights:[{face:'top'},{face:'side0',fill:'WARM'}],panelWidth:GRID_PANEL_WIDTH});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]));
+  assert.equal(composed.renderedLayout.status,'PASS');
+  assert.equal((composed.svg.match(/data-label-role=/g)??[]).length,0);
+  // a text-free figure is accepted by the layout check only when it says so: the plain check still wants a label
+  const bytes=await sphereSvg(figure({solids:[cuboid()],dims:[{edge:'FG'}],panelWidth:GRID_PANEL_WIDTH}));
+  assert.doesNotMatch(bytes,/axis-line|text-label|data-text-id/);
+});

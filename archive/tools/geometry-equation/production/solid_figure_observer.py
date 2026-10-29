@@ -154,9 +154,13 @@ def build_solid(spec):
         if spec.get('cut') is not None:
             if kind != 'SPHERE': raise ValueError('SOLID_SPHERE_CUT_UNSUPPORTED')
             check_cut_spec(spec['cut'])
+        axis = spec.get('axis')
+        if axis is not None:
+            if kind not in ('CYLINDER', 'CONE', 'CONE_FRUSTUM') or spec.get('inside') is not None: raise ValueError('SOLID_AXIS_UNSUPPORTED:' + kind)
+            axis = {'label': axis.get('label') if isinstance(axis, dict) else None}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV',
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
-                'inside': spec.get('inside'), 'cut': spec.get('cut')}
+                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
 
 
@@ -844,6 +848,7 @@ def audit_solids(plan, ctx):
         if el.get('data-role') == 'dim-line':
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
     check_dim_lines(plan, ctx)
+    check_axes_and_text_labels(plan, ctx)
 
 
 def solids_with_ids(plan):
@@ -1482,6 +1487,166 @@ def check_dim_lines(plan, ctx):
         got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
         if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)):
             ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':' + str(kind))
+
+
+# --- the axis of a rotation solid and the words written on the figure (labels:[{text,at}], axis:{label}) ----------------------------------------------------
+# The axis is a dash-dot line along the solid's own axis, AXIS_EXT of the height beyond the bottom and beyond the top. A text label stands on one target: a vertex
+# (open side), the axis / a drawn edge / the slant of a cone (beside the segment, or at the end of a leader that reaches its middle) or a visible face (wholly inside).
+# Written here from the plan and the final SVG alone: the targets are re-derived from the plan, never read back from the SVG's own attributes.
+AXIS_EXT = 0.14
+AXIS_DASH = '10 3 2 3'
+TEXT_LABEL = re.compile(r'^[가-힣A-Za-z0-9 ·()]{1,12}$')
+TEXT_NEAR_VERTEX = 34.0   # px from the vertex to the nearest edge of its word's box
+TEXT_NEAR_SEGMENT = 34.0  # px from the segment to the nearest edge of its word's box
+
+
+def planned_text_labels(plan, solids, norm):
+    """([(id, kind, text, target, extra)], the ids of the solids whose axis is drawn): the axis words of the solids first, then labels:[...], numbered tl1, tl2, ..."""
+    out, axes = [], set()
+    rev = [x for x in solids if x['cat'] == 'REV']
+    polys = [x for x in solids if x['cat'] == 'POLY']
+    for solid in solids:
+        if solid.get('axis') is not None:
+            axes.add(solid['id'])
+            if solid['axis'].get('label') is not None: out.append(('AXIS', solid['axis']['label'], solid['id'], {'solid': solid['id']}))
+
+    def pick(pool, sid, code):
+        found = next((x for x in pool if x['id'] == sid), None) if sid is not None else (pool[0] if len(pool) == 1 else None)
+        if found is None: raise ValueError(code)
+        return found
+    for entry in plan.get('labels') or []:
+        text, at = entry['text'], entry['at']
+        if not isinstance(text, str) or not TEXT_LABEL.fullmatch(text) or text.strip() != text: raise ValueError('SOLID_LABEL_TEXT_INVALID')
+        if isinstance(at, str):
+            key = norm(at, 'SOLID_LABEL_AT_UNKNOWN:' + at[:16])
+            out.append(('VERTEX', text, key, {'key': key}))
+        elif at.get('edge') is not None:
+            pair = at['edge']
+            a, b = norm(pair[0], 'SOLID_LABEL_AT_UNKNOWN'), norm(pair[1], 'SOLID_LABEL_AT_UNKNOWN')
+            out.append(('EDGE', text, join_keys([a, b]), {'a': a, 'b': b}))
+        elif at.get('axis') is not None:
+            owner = pick(rev, at.get('solid'), 'SOLID_LABEL_AXIS_UNSUPPORTED')
+            axes.add(owner['id'])
+            out.append(('AXIS', text, owner['id'], {'solid': owner['id']}))
+        elif at.get('slant') is not None:
+            owner = pick([x for x in rev if x['kind'] in ('CONE', 'CONE_FRUSTUM')], at.get('solid'), 'SOLID_LABEL_SLANT_UNSUPPORTED')
+            out.append(('SLANT', text, owner['id'], {'solid': owner['id']}))
+        elif at.get('face') is not None:
+            owner = pick(polys, at.get('solid'), 'SOLID_LABEL_FACE_UNSUPPORTED')
+            out.append(('FACE', text, owner['id'] + '|' + at['face'], {'solid': owner['id'], 'face': at['face']}))
+        else: raise ValueError('SOLID_LABEL_AT_INVALID')
+    return [('text-tl%d' % (k + 1),) + item for k, item in enumerate(out)], axes
+
+
+def _face_polygon_px(solid, face, frame, scale):
+    """the outline of a face of a polyhedron in px and whether it faces the viewer (outward normal, taken away from the solid's middle, against the viewing direction)"""
+    names = face_names(solid)
+    if face not in names: raise ValueError('SOLID_LABEL_FACE_UNKNOWN')
+    cycle = solid['faces'][names.index(face)]
+    P = [solid['verts'][i][1] for i in cycle]
+    n = (0.0, 0.0, 0.0)
+    for i in range(len(P)): n = vadd(n, vcross(P[i], P[(i + 1) % len(P)]))
+    n = vunit(n)
+    middle = vmul(tuple(sum(v[1][k] for v in solid['verts']) for k in range(3)), 1.0 / len(solid['verts']))
+    centre = vmul(tuple(sum(q[k] for q in P) for k in range(3)), 1.0 / len(P))
+    if vdot(n, vsub(centre, middle)) < 0: n = vmul(n, -1.0)
+    Tx, Ty = frame
+    pts = []
+    for q in P:
+        pr = project(q)
+        pts.append((Tx + scale * pr[0], Ty - scale * pr[1]))
+    return pts, vdot(n, VIEW) > 0.02
+
+
+def check_axes_and_text_labels(plan, ctx):
+    errors, root, boxes = ctx['errors'], ctx['root'], ctx['boxes']
+    frames, scale = ctx.get('px') or {}, ctx.get('scale')
+    solids = ctx.get('solids') or []
+    by_id = {x['id']: x for x in solids}
+    norm = ctx.get('norm') or (lambda x, unknown='SOLID_NAME_UNKNOWN': x)
+    try: planned, axes = planned_text_labels(plan, solids, norm)
+    except (ValueError, KeyError, TypeError, IndexError) as error:
+        errors.append('SOLID_TEXT_LABEL_PLAN_UNRESOLVED:' + str(error)[:60])
+        return
+    if scale is None: return
+    # axis lines: one per solid whose axis is drawn, on the solid's own axis, dash-dot
+    drawn_axis = {}
+    for el in root.iter(NS + 'line'):
+        if el.get('data-role') == 'axis-line': drawn_axis.setdefault(el.get('data-solid'), []).append(el)
+    if set(drawn_axis) != axes or any(len(v) != 1 for v in drawn_axis.values()): errors.append('SOLID_AXIS_SET_MISMATCH')
+    axis_px = {}
+    cos_p = math.cos(PITCH)
+    for sid in axes:
+        solid = by_id.get(sid)
+        if solid is None or solid['cat'] != 'REV' or sid not in frames:
+            errors.append('SOLID_AXIS_SOLID_UNKNOWN:' + str(sid))
+            continue
+        Tx, Ty = frames[sid]
+        ext = AXIS_EXT * solid['height']
+        want = ((Tx, Ty - scale * (-ext) * cos_p), (Tx, Ty - scale * (solid['height'] + ext) * cos_p))
+        axis_px[sid] = want
+        els = drawn_axis.get(sid)
+        if not els: continue
+        got = ((_num(els[0], 'x1'), _num(els[0], 'y1')), (_num(els[0], 'x2'), _num(els[0], 'y2')))
+        if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): errors.append('SOLID_AXIS_LINE_MISMATCH:' + sid)
+        if els[0].get('stroke-dasharray') != AXIS_DASH: errors.append('SOLID_AXIS_NOT_DASH_DOT:' + sid)
+    drawn = {g.get('id'): g for g in ctx['labels'] if g.get('data-label-role') == 'text-label'}
+    if sorted(drawn) != sorted(item[0] for item in planned): errors.append('SOLID_TEXT_LABEL_SET_MISMATCH')
+    named = ctx.get('named') or {}
+    for lid, kind, text, target, extra in planned:
+        g = drawn.get(lid)
+        if g is None: continue
+        if g.get('data-text') != text or g.get('data-value') != text: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)
+        if g.get('data-at-kind') != kind or g.get('data-target') != target: errors.append('SOLID_TEXT_LABEL_TARGET_MISMATCH:' + lid)
+        box = boxes.get(lid)
+        if box is None: continue
+        if kind == 'VERTEX':
+            if target not in named:
+                errors.append('SOLID_TEXT_LABEL_TARGET_UNKNOWN:' + lid)
+                continue
+            anchor = named[target][1]
+            leader = next((e for e in root.iter(NS + 'line') if e.get('data-role') == 'leader' and e.get('data-label') == lid), None)
+            if (g.get('data-leader') == '1') != (leader is not None): errors.append('SOLID_LEADER_MISMATCH:' + lid)
+            if leader is not None:
+                p0, p1 = (_num(leader, 'x1'), _num(leader, 'y1')), (_num(leader, 'x2'), _num(leader, 'y2'))
+                if math.hypot(p1[0] - anchor[0], p1[1] - anchor[1]) > 1.5 or _box_seg_dist(box, p0, p0) > 2.5: errors.append('SOLID_LEADER_NOT_ATTACHED:' + lid)
+                continue
+            d = _box_seg_dist(box, anchor, anchor)
+            if d < 1.5: errors.append('SOLID_TEXT_LABEL_ON_TARGET:' + lid)
+            if d > TEXT_NEAR_VERTEX: errors.append('SOLID_TEXT_LABEL_FAR_FROM_TARGET:' + lid)
+            continue
+        if kind == 'FACE':
+            solid = by_id.get(extra['solid'])
+            if solid is None or extra['solid'] not in frames:
+                errors.append('SOLID_TEXT_LABEL_TARGET_UNKNOWN:' + lid)
+                continue
+            try: pts, front = _face_polygon_px(solid, extra['face'], frames[extra['solid']], scale)
+            except ValueError as error:
+                errors.append(str(error) + ':' + lid)
+                continue
+            if not front: errors.append('SOLID_TEXT_LABEL_FACE_HIDDEN:' + lid)
+            x, y, w, h = box
+            if not all(_inside_region(('poly', pts), c, 1.0) for c in ((x, y), (x + w, y), (x, y + h), (x + w, y + h), (x + w / 2, y + h / 2))): errors.append('SOLID_TEXT_LABEL_OUTSIDE_FACE:' + lid)
+            continue
+        if kind == 'AXIS': seg = axis_px.get(extra['solid'])
+        elif kind == 'EDGE': seg = (named[extra['a']][1], named[extra['b']][1]) if extra['a'] in named and extra['b'] in named else None
+        else:
+            sil = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'silhouette' and e.get('data-side') == 'RIGHT' and e.get('data-solid') == extra['solid']]
+            seg = ((_num(sil[0], 'x1'), _num(sil[0], 'y1')), (_num(sil[0], 'x2'), _num(sil[0], 'y2'))) if sil else None
+        if seg is None:
+            errors.append('SOLID_TEXT_LABEL_TARGET_UNKNOWN:' + lid)
+            continue
+        leader = next((e for e in root.iter(NS + 'line') if e.get('data-role') == 'leader' and e.get('data-label') == lid), None)
+        if (g.get('data-leader') == '1') != (leader is not None): errors.append('SOLID_LEADER_MISMATCH:' + lid)
+        if leader is not None:
+            p0, p1 = (_num(leader, 'x1'), _num(leader, 'y1')), (_num(leader, 'x2'), _num(leader, 'y2'))
+            if _seg_dist(p1, seg[0], seg[1]) > 1.5 or _box_seg_dist(box, p0, p0) > 2.5: errors.append('SOLID_LEADER_NOT_ATTACHED:' + lid)
+            mid = ((seg[0][0] + seg[1][0]) / 2, (seg[0][1] + seg[1][1]) / 2)
+            if _seg_dist(mid, p1, p1) > 1.5: errors.append('SOLID_LEADER_NOT_AT_MIDDLE:' + lid)
+        else:
+            dist = _box_seg_dist(box, seg[0], seg[1])
+            if dist > TEXT_NEAR_SEGMENT: errors.append('SOLID_TEXT_LABEL_FAR_FROM_TARGET:' + lid)
+            if dist < 1.0: errors.append('SOLID_TEXT_LABEL_ON_TARGET:' + lid)
 
 
 # --- a sphere cut by planes through its centre (cut:{kind,facing?}) -----------------------------------------------------------------------------

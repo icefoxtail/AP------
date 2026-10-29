@@ -434,10 +434,23 @@ export function countedEdges(solid){
  * CONE and CONE_FRUSTUM accept orientation:"APEX_DOWN": the point (or the narrow end) rests on the base plane, the wide circle is the rim at
  * height h. r0/r1 are the radii at z=0 and z=h; radius is still the wide one (topRadius the narrow one).
  */
+// A short word the author writes on the figure (labels:[{text,at}], axis:{label}): Korean syllables, letters, digits, spaces, parentheses and a middle dot, no TeX.
+const MAX_TEXT_LABELS=6,TEXT_LABEL=/^[가-힣A-Za-z0-9 ·()]{1,12}$/u;
+const textLabelOk=text=>typeof text==='string'&&TEXT_LABEL.test(text)&&text.trim()===text&&text.length>0;
+/** The axis of a rotation solid (axis:true | axis:{label?}): drawn as a dash-dot line, extended beyond both ends of the solid, optionally with a word beside it. */
+export const AXIS_EXTENSION=0.14;// of the solid's height, above the top and below the bottom
+function parseAxis(axis,kind,nested){
+  if(kind!=='CYLINDER'&&kind!=='CONE'&&kind!=='CONE_FRUSTUM')bad('SOLID_AXIS_UNSUPPORTED:'+kind);
+  if(nested)bad('SOLID_AXIS_UNSUPPORTED:NESTED');
+  if(axis===true)return {label:null};
+  if(!isPlain(axis)||Object.keys(axis).some(k=>k!=='label'))bad('SOLID_AXIS_INVALID');
+  if(axis.label!==undefined&&!textLabelOk(axis.label))bad('SOLID_LABEL_TEXT_INVALID');
+  return {label:axis.label??null};
+}
 function buildRound(spec){
   const kind=spec.kind;
   const baseKeys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
-  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut'],'SOLID_PARAM_INVALID');
+  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis'],'SOLID_PARAM_INVALID');
   if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:'+kind);
   if(spec.cuts!==undefined)bad('SOLID_CUT_UNSUPPORTED:'+kind);
   // cut:{kind,facing?} cuts a SPHERE by planes through its centre (sphere-parts.mjs); no other round solid, and a cut sphere does not sit inside a cylinder
@@ -466,8 +479,9 @@ function buildRound(spec){
     else points.push({name:names.apex??null,id:'apex',p:[0,0,down?0:height]});
   }
   if(spec.inside!==undefined&&(typeof spec.inside!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(spec.inside)))bad('SOLID_NEST_INVALID');
+  const axis=spec.axis!==undefined?parseAxis(spec.axis,kind,spec.inside!==undefined):undefined;
   return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,
-    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{})};
+    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{})};
 }
 
 const shiftSolid=(solid,s)=>{
@@ -662,8 +676,9 @@ const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM','REGULAR_POLYHEDRON','BIPYRAMID'],
 const UNIT=/^(cm|mm|m|km)$/;
 export function solveSolidFigure(plan){
   if(!isPlain(plan)||plan.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
-  onlyKeys(plan,['capability','unit','solids','net','dims','highlights','segments','section','marks','solidCaption','caption','sourceConditions','newVisualInformation','sourceQuote','panelWidth'],'SOLID_PLAN_INVALID');
+  onlyKeys(plan,['capability','unit','solids','net','dims','highlights','segments','section','marks','labels','solidCaption','caption','sourceConditions','newVisualInformation','sourceQuote','panelWidth'],'SOLID_PLAN_INVALID');
   if((plan.solids===undefined)===(plan.net===undefined))bad('SOLID_PLAN_INVALID');
+  if(plan.labels!==undefined&&plan.net!==undefined)bad('SOLID_LABELS_UNSUPPORTED:NET');
   // sourceQuote is provenance only (the item sentence the plan was written from): it never reaches the figure
   if(plan.sourceQuote!==undefined&&(typeof plan.sourceQuote!=='string'||!plan.sourceQuote.trim()||plan.sourceQuote.length>200))bad('SOLID_SOURCE_QUOTE_INVALID');
   if(plan.panelWidth!==undefined&&plan.panelWidth!==GRID_PANEL_WIDTH)bad('SOLID_PLAN_INVALID');
@@ -672,7 +687,13 @@ export function solveSolidFigure(plan){
   // the Archive publication check reads text: a figure with no name and no length at all cannot be published
   const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)
     :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
-  if(names+model.dims.length+(model.faceLabels?.length??0)===0)bad('SOLID_FIGURE_NEEDS_A_LABEL');
+  // A figure with no name, length or label is still readable when something in it is stressed (a highlighted face, a drawn segment, a section, a mark, a cut) or when it
+  // carries a caption: the author's solidCaption, or the panel caption of a composite grid (the grid sets panelWidth, and every composite panel has a caption).
+  // Only a bare, uncaptioned figure is refused: there nothing tells the reader which part matters.
+  const stressed=model.mode==='SOLIDS'
+    ?model.highlights.length+model.segments.length+(model.section?1:0)+model.marks.rightAngles.length+model.marks.equalLengths.length+model.marks.angles.length+(model.marks.equalSlant?.length??0)+model.solids.filter(s=>s.cuts||s.cut||s.axis).length
+    :(model.highlights?.length??0)+(model.segments?.length??0)+(model.rightAngles?.length??0)+(model.excluded?.length??0);
+  if(names+model.dims.length+(model.faceLabels?.length??0)+(model.labels?.length??0)+stressed===0&&plan.solidCaption===undefined&&plan.panelWidth===undefined)bad('SOLID_FIGURE_NEEDS_A_LABEL');
   return plan.panelWidth===undefined?model:{...model,panelWidth:plan.panelWidth};
 }
 function solveSolids(plan){
@@ -955,7 +976,67 @@ function solveSolids(plan){
       d.top=topP.map(r6);d.foot=[topP[0],topP[1],0].map(r6);
     }
   }
-  return {schemaVersion:SOLID_MODEL_VERSION,mode:'SOLIDS',unit:unitName,yawDeg:YAW_DEG,pitchDeg:PITCH_DEG,solids,segments,highlights,section,marks,dims};
+  // text labels: a short word on a vertex, on the axis of a rotation solid, on a visible face, on a drawn edge or on the slant of a cone (labels:[{text,at}] and axis:{label})
+  const labels=textLabels(plan,solids,named,vref,drawnPair);
+  return {schemaVersion:SOLID_MODEL_VERSION,mode:'SOLIDS',unit:unitName,yawDeg:YAW_DEG,pitchDeg:PITCH_DEG,solids,segments,highlights,section,marks,dims,...(labels.length?{labels}:{})};
+}
+/**
+ * The text labels of a plan: labels:[{text,at}] with at a vertex name or reference ("A", "#apex"), {axis:true,solid?}, {face:"top",solid?} (a visible face of a polyhedron),
+ * {edge:["#b0","#b1"]} (a drawn edge or segment) or {slant:true,solid?} (the slant of a cone or cone frustum), plus the axis labels of solids written axis:{label}.
+ * Every label stands on one target, and a target takes one label.
+ */
+function textLabels(plan,solids,named,vref,drawnPair){
+  const out=[],targets=new Set();
+  const add=(text,at,target)=>{
+    if(targets.has(target))bad('SOLID_LABEL_DUPLICATE_TARGET:'+target.slice(0,24));
+    targets.add(target);
+    out.push({id:'tl'+(out.length+1),text,at});
+  };
+  const rev=solids.filter(s=>s.category==='REV'),polys=solids.filter(s=>s.category==='POLY');
+  const pick=(list,id,code)=>{const owner=id!==undefined?list.find(s=>s.id===id):list.length===1?list[0]:undefined;if(!owner)bad(code);return owner;};
+  for(const solid of solids)if(solid.axis&&solid.axis.label!==null)add(solid.axis.label,{kind:'AXIS',solid:solid.id},'axis:'+solid.id);
+  if(plan.labels===undefined)return out;
+  if(!Array.isArray(plan.labels)||plan.labels.length<1||plan.labels.length>MAX_TEXT_LABELS)bad('SOLID_LABELS_INVALID');
+  for(const entry of plan.labels){
+    onlyKeys(entry,['text','at'],'SOLID_LABELS_INVALID');
+    if(!textLabelOk(entry.text))bad('SOLID_LABEL_TEXT_INVALID');
+    const at=entry.at;
+    if(typeof at==='string'){
+      const key=vref(at,'SOLID_LABEL_AT_UNKNOWN:'+at.slice(0,16));
+      add(entry.text,{kind:'VERTEX',key},'vertex:'+key);
+      continue;
+    }
+    if(!isPlain(at))bad('SOLID_LABEL_AT_INVALID');
+    const kinds=['axis','face','edge','slant'].filter(k=>at[k]!==undefined);
+    if(kinds.length!==1)bad('SOLID_LABEL_AT_INVALID');
+    const kind=kinds[0];
+    onlyKeys(at,kind==='edge'?['edge']:[kind,'solid'],'SOLID_LABEL_AT_INVALID');
+    if(kind==='edge'){
+      const [pa,pb]=edgePair(at.edge,'SOLID_LABEL_AT_INVALID'),a=vref(pa,'SOLID_LABEL_AT_UNKNOWN:'+String(pa).slice(0,16)),b=vref(pb,'SOLID_LABEL_AT_UNKNOWN:'+String(pb).slice(0,16));
+      if(a===b)bad('SOLID_LABEL_AT_INVALID');
+      if(!drawnPair(a,b))bad('SOLID_LABEL_EDGE_NOT_DRAWN:'+joinKeys([a,b]));
+      add(entry.text,{kind:'EDGE',from:a,to:b},'edge:'+[a,b].sort().join('|'));
+    }else if(kind==='axis'){
+      if(at.axis!==true)bad('SOLID_LABEL_AT_INVALID');
+      const owner=pick(rev,at.solid,'SOLID_LABEL_AXIS_UNSUPPORTED');
+      if(owner.axis===undefined)owner.axis={label:null};// a labelled axis is drawn
+      add(entry.text,{kind:'AXIS',solid:owner.id},'axis:'+owner.id);
+    }else if(kind==='slant'){
+      if(at.slant!==true)bad('SOLID_LABEL_AT_INVALID');
+      const owner=pick(rev.filter(s=>s.kind==='CONE'||s.kind==='CONE_FRUSTUM'),at.solid,'SOLID_LABEL_SLANT_UNSUPPORTED');
+      add(entry.text,{kind:'SLANT',solid:owner.id},'slant:'+owner.id);
+    }else{
+      if(typeof at.face!=='string')bad('SOLID_LABEL_AT_INVALID');
+      const owner=pick(polys,at.solid,'SOLID_LABEL_FACE_UNSUPPORTED');
+      if(owner.cuts)bad('SOLID_LABEL_FACE_UNSUPPORTED:CUT');
+      const face=owner.faces.find(f=>f.id===at.face);
+      if(!face)bad('SOLID_LABEL_FACE_UNKNOWN:'+at.face.slice(0,12));
+      // a face is labelled inside its own outline, so it has to face the viewer (the front faces of a convex solid are wholly visible)
+      if(dot(faceNormal(face.idx.map(i=>owner.vertices[i].p)),VIEW)<=0.02)bad('SOLID_LABEL_FACE_HIDDEN:'+at.face.slice(0,12));
+      add(entry.text,{kind:'FACE',solid:owner.id,face:face.id},'face:'+owner.id+'|'+face.id);
+    }
+  }
+  return out;
 }
 function solidScreenPoints(solid){
   if(solid.category==='POLY')return solid.vertices.map(v=>project(v.p));
@@ -969,6 +1050,7 @@ function solidScreenPoints(solid){
     if(solid.r0>0)ell(solid.r0,0);
     if(solid.r1>0)ell(solid.r1,solid.height);
     if(solid.r0===0||solid.r1===0){const q=project([0,0,solid.r0===0?0:solid.height]);pts.push([q[0]+ox,q[1]]);}
+    if(solid.axis)pts.push(...axisEnds(solid));
   }
   return pts;
 }
@@ -1349,6 +1431,11 @@ function spec3d(plan,model,ctx){
     line(`segment-${joinKeys([s.from,s.to])}`,'segment',a,b,{edge:joinKeys([s.from,s.to]),vis:s.style==='AUTO'?(s.hidden?'hidden':'solid'):s.style==='DASHED'?'hidden':'solid',accent:s.role,style:s.style});
     void k;
   }
+  // the axis of a rotation solid: a dash-dot line a little longer than the solid
+  for(const solid of model.solids)if(solid.axis){
+    const [a,b]=axisEnds(solid);
+    line(solid.id+'-axis','axis-line',pt(a),pt(b),{solid:solid.id});
+  }
   // marks: a right angle is a small square in the plane of its two (truly perpendicular) edges, projected; an angle is an arc in its own plane.
   for(const m of model.marks.rightAngles){
     const V=named.get(m.at),A=named.get(m.refs[0]),B=named.get(m.refs[1]);
@@ -1446,6 +1533,7 @@ function spec3d(plan,model,ctx){
   }
   // label requests
   const centroidScreen=(()=>{const pts=model.solids.flatMap(solidScreenPoints);return [pts.reduce((s,p)=>s+p[0],0)/pts.length,pts.reduce((s,p)=>s+p[1],0)/pts.length];})();
+  const vertexSpot=new Map();// key of a vertex or named point -> {here,dir}: where a word written on it stands (open side of the corner)
   for(const solid of model.solids){
     if(solid.category==='POLY'){
       // the open side of a vertex: away from the edges that meet there
@@ -1461,6 +1549,7 @@ function spec3d(plan,model,ctx){
         return {here,dir:[r6(dir[0]/l),r6(dir[1]/l)]};
       };
       solid.vertices.forEach((v,i)=>{
+        for(const key of vertexKeys(solid,i))vertexSpot.set(key,()=>outward(i));
         if(!v.name)return;
         const {here,dir}=outward(i);
         const text=v.aliases?v.aliases.join(','):v.name;
@@ -1495,6 +1584,7 @@ function spec3d(plan,model,ctx){
           if(l>0.35)dir=[r6(-sum[0]/l),r6(sum[1]/l)];// screen y points down in the figure, up in the label request
         }
         labels.push({id:'name-'+q.name,role:'vertex-name',owner:'point-'+q.name,kind:'MATH',tex:q.name,plain:q.name,value:q.name,anchor:pt(here),dir});
+        vertexSpot.set(q.name,()=>({here,dir}));
       }
     }
   }
@@ -1522,15 +1612,45 @@ function spec3d(plan,model,ctx){
       labels.push({...label,segment:[pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh)))],segmentOf:'level'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
-      const apex=apexOf(solid);
-      let seg;
-      if(solid.kind==='CONE'){const rim=ellipseOf(S,solid,solid.r0===0?solid.r1:solid.r0,solid.r0===0?solid.height:0);seg=[apex,tangentPoints(rim,apex)[1]];}
-      else{const br=tangentPoints(ellipseOf(S,solid,solid.r0,0),apex)[1],tr=tangentPoints(ellipseOf(S,solid,solid.r1,solid.height),apex)[1];seg=[br,tr];}
+      const seg=slantSegment(S,solid);
       const p0=pt(seg[0]),p1=pt(seg[1]),cs=pt(centroidScreen),n=[-(p1[1]-p0[1]),p1[0]-p0[0]];
       const mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2],side=Math.sign(n[0]*(mid[0]-cs[0])+n[1]*(mid[1]-cs[1]))||1;
       labels.push({...label,segment:[p0,p1],segmentOf:'slant',preferredSide:side});
     }
   }
+  // text labels: a word on a vertex (its open side), on the axis / an edge / a cone's slant (beside the segment, with a leader when there is no room) or inside a visible face
+  for(const tl of model.labels??[]){
+    const label={id:'text-'+tl.id,role:'text-label',owner:'text-'+tl.id,kind:'TEXT',text:tl.text,plain:tl.text,value:tl.text,textId:tl.id,atKind:tl.at.kind};
+    const at=tl.at;
+    if(at.kind==='VERTEX'){
+      const {here,dir}=vertexSpot.get(at.key)();
+      labels.push({...label,place:'VERTEX',target:at.key,anchor:pt(here),dir});
+    }else if(at.kind==='FACE'){
+      const solid=model.solids.find(s=>s.id===at.solid),face=solid.faces.find(f=>f.id===at.face);
+      labels.push({...label,place:'FACE',target:at.solid+'|'+at.face,region:face.idx.map(i=>pt(project(solid.vertices[i].p)))});
+    }else if(at.kind==='EDGE'){
+      const a=pt(project(named.get(at.from))),b=pt(project(named.get(at.to)));
+      labels.push({...label,place:'SEGMENT',target:joinKeys([at.from,at.to]),segment:[a,b]});
+    }else if(at.kind==='AXIS'){
+      const solid=model.solids.find(s=>s.id===at.solid),[a,b]=axisEnds(solid);
+      labels.push({...label,place:'SEGMENT',target:at.solid,segment:[pt(a),pt(b)]});
+    }else{
+      const solid=model.solids.find(s=>s.id===at.solid),seg=slantSegment(S,solid),p0=pt(seg[0]),p1=pt(seg[1]),cs=pt(centroidScreen),n=[-(p1[1]-p0[1]),p1[0]-p0[0]];
+      const mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2],side=Math.sign(n[0]*(mid[0]-cs[0])+n[1]*(mid[1]-cs[1]))||1;
+      labels.push({...label,place:'SEGMENT',target:at.solid,segment:[p0,p1],preferredSide:side});
+    }
+  }
+}
+/** The two ends (screen units, y up) of the drawn axis of a rotation solid: the solid's own axis, a little beyond its bottom and its top. */
+function axisEnds(solid){
+  const ext=AXIS_EXTENSION*solid.height,sh=mulv(EX,solid.offset??0);
+  return [project(add([0,0,-ext],sh)),project(add([0,0,solid.height+ext],sh))];
+}
+/** The slant (generator) of a cone or cone frustum on its right-hand silhouette, in screen units (the same segment the slant length is written beside). */
+function slantSegment(S,solid){
+  const apex=apexOf(solid);
+  if(solid.kind==='CONE'){const rim=ellipseOf(S,solid,solid.r0===0?solid.r1:solid.r0,solid.r0===0?solid.height:0);return [apex,tangentPoints(rim,apex)[1]];}
+  return [tangentPoints(ellipseOf(S,solid,solid.r0,0),apex)[1],tangentPoints(ellipseOf(S,solid,solid.r1,solid.height),apex)[1]];
 }
 /** Convex hull (counter-clockwise, monotone chain) of screen points. */
 function convexHull(points){
@@ -1906,7 +2026,7 @@ function polygonCentroid(poly){
   for(let i=0;i<poly.length;i++){const [p,q]=[poly[i],poly[(i+1)%poly.length]],w=p[0]*q[1]-q[0]*p[1];a+=w;cx+=(p[0]+q[0])*w;cy+=(p[1]+q[1])*w;}
   return Math.abs(a)<1e-9?[poly.reduce((s,p)=>s+p[0],0)/poly.length,poly.reduce((s,p)=>s+p[1],0)/poly.length]:[cx/(3*a),cy/(3*a)];
 }
-const rankOf=l=>l.role==='vertex-name'||l.role==='count-vertex'?0:l.role==='count-edge'?2:1;
+const rankOf=l=>l.role==='vertex-name'||l.role==='count-vertex'||l.place==='VERTEX'?0:l.role==='count-edge'?2:1;
 function placeLabels(spec,fragments,errors){
   let order=[...spec.labels].sort((a,b)=>rankOf(a)-rankOf(b)),best=null;
   for(let attempt=0;attempt<6;attempt++){
@@ -1937,7 +2057,7 @@ function placeLabelsOnce(spec,fragments,order){
     const frag=fragments.get(label.id),{width:w,height:h}=frag.intrinsic;
     let chosen=null;
     const candidates=[];
-    if(label.role==='face-label'){
+    if(label.role==='face-label'||label.place==='FACE'){
       // inside the face, nearest its centre of area first: rings of growing radius; the box has to stand clear of every stroke, so a box whose centre is inside is wholly inside
       const c=polygonCentroid(label.region);
       candidates.push({x:c[0]-w/2,y:c[1]-h/2});
@@ -1945,7 +2065,7 @@ function placeLabelsOnce(spec,fragments,order){
         const n=Math.max(8,Math.ceil(2*Math.PI*dist/4));
         for(let k=0;k<n;k++){const ang=2*Math.PI*k/n;candidates.push({x:c[0]+Math.cos(ang)*dist-w/2,y:c[1]-Math.sin(ang)*dist-h/2});}
       }
-    }else if(label.role==='vertex-name'||label.role==='count-vertex'){
+    }else if(label.role==='vertex-name'||label.role==='count-vertex'||label.place==='VERTEX'){
       const base=Math.atan2(label.dir[1],label.dir[0]);
       for(const dist of [5,8,12,17,24])for(const da of [0,0.5,-0.5,1.0,-1.0,1.6,-1.6,2.3,-2.3,Math.PI]){
         const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
@@ -1972,9 +2092,9 @@ function placeLabelsOnce(spec,fragments,order){
     }
     for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)&&nearest(label,box)&&(!label.region||inside2(label.region,[box.x+w/2,box.y+h/2]))){chosen=box;break;}}
     let leader=null;
-    if(!chosen&&label.role==='dim'){
-      // no room beside the segment: the label goes to the nearest free place and a thin leader line joins it to the middle of its segment
-      const [a,b]=label.segment,mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
+    if(!chosen&&(label.role==='dim'||label.place==='SEGMENT'||label.place==='VERTEX')){
+      // no room beside the segment (or the vertex): the label goes to the nearest free place and a thin leader line joins it to the middle of its segment (to the vertex)
+      const [a,b]=label.place==='VERTEX'?[label.anchor,label.anchor]:label.segment,mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
       search:for(const dist of [24,34,46,60,76])for(let k=0;k<16;k++){
         const ang=k*Math.PI/8,dx=Math.cos(ang),dy=Math.sin(ang);
         const box={x:r6(mx+dx*(dist+Math.abs(dx)*w/2)-w/2),y:r6(my+dy*(dist+Math.abs(dy)*h/2)-h/2),width:w,height:h};
@@ -1990,7 +2110,7 @@ function placeLabelsOnce(spec,fragments,order){
   }
   return {placed,failed:failedIds};
 }
-const strokeFor=p=>p.vis==='hidden'?' stroke-dasharray="5 4"':'';
+const strokeFor=p=>p.vis==='hidden'?' stroke-dasharray="5 4"':p.role==='axis-line'?' stroke-dasharray="10 3 2 3"':'';
 function renderPrims(spec,model){
   let body='';
   const f=spec.frame;
@@ -2011,7 +2131,7 @@ function renderPrims(spec,model){
   for(const p of spec.prims){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
-      const w=p.role==='dim-line'||p.role==='dim-ext'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
+      const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal')&&p.accent?`data-accent="${p.accent}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
@@ -2056,7 +2176,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`+renderPrims(spec,model);
     for(const {label,leader} of placed)if(leader)body+=`<g data-layer="40"><line id="leader-${label.id}" data-role="leader" data-owner-label="${label.id}" data-label="${label.id}" stroke="#555" stroke-width="0.9" fill="none" x1="${leader[0][0]}" y1="${leader[0][1]}" x2="${leader[1][0]}" y2="${leader[1][1]}"/></g>`;
     for(const {label,fragment,box,leader} of placed){
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':label.role==='face-label'?'AREA_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''}${label.faceOf?` data-face-of="${label.faceOf}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':label.role==='face-label'?'AREA_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''}${label.faceOf?` data-face-of="${label.faceOf}"`:''}${label.textId?` data-text-id="${label.textId}" data-at-kind="${label.atKind}" data-target="${esc(label.target)}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
     const dataAttrs=` data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
@@ -2073,7 +2193,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     const display={width:width*typographyPolicy.displayScale,height:height*typographyPolicy.displayScale};
     const page=await (browser??(ownBrowser=await launchBrowser())).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});
     let layout;
-    try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
+    try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}),{textFreeFigure:spec.labels.length===0});}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors};
     if(layout.status!=='PASS')throw new Stop('SOLID_RENDERED_LAYOUT_FAIL',{errors:layout.errors});

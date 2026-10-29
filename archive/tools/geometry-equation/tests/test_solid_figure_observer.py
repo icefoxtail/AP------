@@ -924,3 +924,57 @@ class RegularPolyhedraAndBipyramids(unittest.TestCase):
         for bad in ('#b0', '#t0', '#apex', '#apex2', '#v12'): self.assertRaises(ValueError, norm, bad)
         self.assertEqual(O.face_names(self.regular(12)), ['f%d' % i for i in range(12)])
         self.assertEqual(O.count_order(self.regular(8)), O.poly_edges(self.regular(8)))
+
+
+class WordsOnTheFigure(unittest.TestCase):
+    """E28c: the axis of a rotation solid and the words written on a vertex, an axis, an edge, a slant or a visible face: targets re-derived from the plan"""
+    cuboid = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 5, 'depth': 3}, 'height': 3, 'names': UNNAMED}
+
+    def solids(self, *specs):
+        return [O.build_solid({**spec, 'id': 's%d' % (i + 1)}) for i, spec in enumerate(specs)]
+
+    def norm_of(self, solids):
+        named = {key: ('x', (0.0, 0.0), (0.0, 0.0, 0.0)) for s in solids if s['cat'] == 'POLY' for i in range(len(s['verts'])) for key in O.vertex_keys(s, i)}
+        named.update({n: ('x', (0.0, 0.0), p) for s in solids if s['cat'] != 'POLY' for n, _, p in s['points'] if n})
+        return O.make_norm(solids, named)
+
+    def test_the_axis_of_a_rotation_solid_is_kept_by_the_construction_and_refused_elsewhere(self):
+        self.assertEqual(self.solids({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'axis': {'label': '회전축'}})[0]['axis'], {'label': '회전축'})
+        self.assertEqual(self.solids({'kind': 'CONE', 'radius': 2, 'height': 3, 'axis': True})[0]['axis'], {'label': None})
+        self.assertIsNone(self.solids({'kind': 'CONE', 'radius': 2, 'height': 3})[0]['axis'])
+        for kind in ('SPHERE', 'HEMISPHERE'):
+            self.assertRaises(ValueError, O.build_solid, {'kind': kind, 'radius': 2, 'axis': True, 'id': 's1'})
+        self.assertRaises(ValueError, O.build_solid, {'kind': 'CONE', 'radius': 2, 'height': 3, 'axis': True, 'inside': 's0', 'id': 's2'})
+
+    def test_labels_are_numbered_axis_words_first_then_in_the_order_written(self):
+        solids = self.solids({'kind': 'CONE', 'radius': 3, 'height': 6, 'names': {'apex': 'A'}}, {'kind': 'CYLINDER', 'radius': 2, 'height': 4, 'axis': {'label': '회전축'}})
+        plan = {'labels': [{'text': '모선', 'at': {'slant': True, 'solid': 's1'}}, {'text': '꼭짓점', 'at': 'A'}]}
+        planned, axes = O.planned_text_labels(plan, solids, self.norm_of(solids))
+        self.assertEqual([(i, k, t, g) for i, k, t, g, _ in planned], [('text-tl1', 'AXIS', '회전축', 's2'), ('text-tl2', 'SLANT', '모선', 's1'), ('text-tl3', 'VERTEX', '꼭짓점', 'A')])
+        self.assertEqual(axes, {'s2'})
+        # a labelled axis is a drawn axis, even where the solid does not ask for one
+        solids = self.solids({'kind': 'CYLINDER', 'radius': 2, 'height': 4})
+        planned, axes = O.planned_text_labels({'labels': [{'text': '회전축', 'at': {'axis': True}}]}, solids, self.norm_of(solids))
+        self.assertEqual((planned[0][:4], axes), (('text-tl1', 'AXIS', '회전축', 's1'), {'s1'}))
+
+    def test_edges_and_faces_are_resolved_from_the_plan(self):
+        solids = self.solids(self.cuboid)
+        norm = self.norm_of(solids)
+        planned, _ = O.planned_text_labels({'labels': [{'text': '모서리', 'at': {'edge': ['#b1', '#b2']}}, {'text': '앞면', 'at': {'face': 'side0'}}, {'text': '꼭짓점', 'at': '#t2'}]}, solids, norm)
+        self.assertEqual([(k, g) for _, k, _, g, _ in planned], [('EDGE', 's1.b1-s1.b2'), ('FACE', 's1|side0'), ('VERTEX', 's1.t2')])
+        for bad in ({'text': '앞', 'at': {}}, {'text': '앞', 'at': {'axis': True}}, {'text': '앞', 'at': {'slant': True}}, {'text': '앞', 'at': 'Z'}, {'text': '$x$', 'at': '#b0'}, {'text': '앞 ', 'at': '#b0'}):
+            self.assertRaises(ValueError, O.planned_text_labels, {'labels': [bad]}, solids, norm)
+
+    def test_a_face_is_labelled_only_when_it_faces_the_viewer(self):
+        solid = self.solids(self.cuboid)[0]
+        frame = (0.0, 300.0)
+        facing = {face: O._face_polygon_px(solid, face, frame, 40.0)[1] for face in O.face_names(solid)}
+        self.assertEqual(facing, {'bottom': False, 'top': True, 'side0': True, 'side1': True, 'side2': False, 'side3': False})
+        pts, front = O._face_polygon_px(solid, 'side0', frame, 40.0)
+        self.assertTrue(front)
+        self.assertEqual(len(pts), 4)
+        # the polygon is the projected outline, scaled: the first two corners are the front-bottom edge b0 -> b1
+        b0, b1 = O.project(solid['verts'][0][1]), O.project(solid['verts'][1][1])
+        self.assertAlmostEqual(pts[0][0], 0.0 + 40.0 * b0[0])
+        self.assertAlmostEqual(pts[1][1], 300.0 - 40.0 * b1[1])
+        self.assertRaises(ValueError, O._face_polygon_px, solid, 'nope', frame, 40.0)

@@ -252,7 +252,8 @@ function isOwnRegionExit(leader,other,geometry) {
   const near=(p,q)=>Math.hypot(p[0]-q[0],p[1]-q[1])<.01;
   return region.points.some((p,i)=>i>0&&((near(region.points[i-1],other.points[0])&&near(p,other.points[1]))||(near(region.points[i-1],other.points[1])&&near(p,other.points[0]))));
 }
-export function analyzeRenderedLayout(capture) {
+// textFreeFigure: a panel that draws no label of its own (its caption, outside the panel, carries the text) is not refused for having none; its fonts must still be loaded.
+export function analyzeRenderedLayout(capture,{textFreeFigure=false}={}) {
   if(capture.synthetic!==false||capture.runtime!=='playwright-chromium')throw Error('ACTUAL_BROWSER_CAPTURE_REQUIRED');
   const errors=[];let labelCollisionCount=0,criticalCollisionCount=0,observedLabelCollisionCount=0,observedCriticalCollisionCount=0,clippedTextCount=0,overflowCount=0;
   const scale=Number.isFinite(capture.coordinateScale)?capture.coordinateScale:capture.svg.width/capture.viewBox.width;const pad=capture.safeMargin*scale;
@@ -392,7 +393,7 @@ export function analyzeRenderedLayout(capture) {
     const desktopPublication=!capture.publicationViewport||Number.isFinite(capture.publicationViewport?.width)&&capture.publicationViewport.width>=1280;
     const kinds=new Set(['POINT_NAME','ANGLE_LABEL','LENGTH_LABEL','AREA_LABEL','COORDINATE_LABEL','EQUATION_LABEL','TICK_LABEL']);
     const labels=capture.labels.filter(v=>kinds.has(v.kind));
-    if(!labels.length||capture.fontStatus!=='loaded')errors.push('PUBLICATION_TEXT_NOT_READY');
+    if((!labels.length&&!textFreeFigure)||capture.fontStatus!=='loaded')errors.push('PUBLICATION_TEXT_NOT_READY');
     for(const label of capture.labels) {
       if(desktopPublication&&(!Number.isFinite(label.effectiveFontPx)||label.effectiveFontPx<11-1e-7))errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
       if(![label.client.x,label.client.y,label.client.width,label.client.height].every(Number.isFinite)||label.client.width<=0||label.client.height<=0)errors.push('PUBLICATION_TEXT_BOUNDS_INVALID:'+label.id);
