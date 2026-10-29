@@ -84,7 +84,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 세 점 A, B, C와 그 밖의 점 D. 왼쪽은 서로 다른 직선 4개(직선 ABC와 DA, DB, DC), 오른쪽은 선분 6개(AB, BC, AC와 DA, DB, DC)를 나타낸 그림.",
+    "solutionImageCaption": "서로 다른 직선은 4개, 선분은 6개",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -121,7 +125,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 네 점 A, B, C, D에서 CD=x cm, BC=x/3 cm, AB=2x/3 cm를 아래쪽에, BD=4x/3 cm와 전체 AD=24 cm를 위쪽 치수선으로 나타낸 그림.",
+    "solutionImageCaption": "CD=x로 두고 각 선분 길이를 x로 나타낸다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -162,7 +170,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 한 점에서 위로 뻗은 두 반직선이 세 각을 이룬다. 왼쪽 각은 2x+10°, 가운데 각은 직각, 오른쪽 각은 x+20°이고, 일직선 전체가 180°임을 아래 괄호로 나타낸 그림.",
+    "solutionImageCaption": "일직선 위의 세 각의 합은 180°",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -203,7 +215,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 일직선 AOE 위의 점 O에서 반직선 OB, OC, OD로 나뉜 네 각 27t, 18t, 12t, 8t, 오른쪽은 같은 그림에서 ∠AOD=57t를 빨강 호로, ∠BOE=38t를 파랑 호로 나타낸 그림.",
+    "solutionImageCaption": "네 각을 27t, 18t, 12t, 8t로 두면 ∠AOD=57t, ∠BOE=38t",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -284,7 +300,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 평면 위의 세 직선 l, m, n을 세 그림으로 나타냈다. ㄱ은 l과 n이 평행하고 둘 다 m에 수직, ㄴ은 m과 n이 평행하고 둘 다 l에 수직, ㄷ은 l과 m이 평행하고 둘 다 n에 수직이다.",
+    "solutionImageCaption": "보기 ㄱ, ㄴ, ㄷ의 세 직선 위치 관계",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -407,7 +427,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 직선 AD와 BE를 직선 AB가 지나고 점 C에서 CA, CB를 그은 그림. A에서 ∠BAC=2u, ∠BAD=3u, B에서 ∠ABC=120-2u, ∠ABE=180-3u로 표시하고 ∠ACB는 표시 없이 호만 그렸다.",
+    "solutionImageCaption": "∠BAD=3u로 두고 각을 u로 나타낸다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
