@@ -745,7 +745,16 @@ function specForFamily(plan,model,id){
     const scalarNode=plan.mathPlan.nodes.find(n=>n.id===label.nodeId),role=scalarNode.factRole;
     const sourceLength=(!!label.unit||(!label.prefix&&scalarNode.op==='SEGMENT_LENGTH'))&&role!=='CONCLUSION';
     const prefix=normalizeScalarLabelPrefix(label.prefix);
-    const id=label.nodeId+'-value';objects.push({id,kind:sourceLength?'LENGTH_LABEL':'EQUATION_LABEL',target:label.ownerSegment,...(sourceLength?{refs:[label.ownerSegment],value:scalar.approximation}:{}),text:(sourceLength||!prefix?'':prefix+'=')+unwrapParentheses(scalarExpression(scalar.exact)),at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
+    // `value` (SEGMENT_LENGTH only): the author's exact text of a length whose construction has no closed form (a segment between intersection points).
+    // It is parsed here and must equal the engine's own value, so a wrong text never reaches the picture; without it that length is UNSUPPORTED_SCALAR_NOTATION.
+    let valueText;
+    if(label.value!==undefined){
+      if(scalarNode.op!=='SEGMENT_LENGTH')throw Error('SCALAR_LABEL_VALUE_REQUIRES_SEGMENT_LENGTH:'+label.nodeId);
+      let declared;try{declared=exactValue(label.value);}catch{throw Error('SCALAR_LABEL_VALUE_INVALID:'+label.nodeId);}
+      if(!(Math.abs(declared-scalar.approximation)<=1e-9))throw Error('SCALAR_LABEL_VALUE_MISMATCH:'+label.nodeId+':declared='+declared+':computed='+scalar.approximation);
+      valueText=unwrapParentheses(label.value.replace(/\s+/g,''));
+    }else valueText=unwrapParentheses(scalarExpression(scalar.exact));
+    const id=label.nodeId+'-value';objects.push({id,kind:sourceLength?'LENGTH_LABEL':'EQUATION_LABEL',target:label.ownerSegment,...(sourceLength?{refs:[label.ownerSegment],value:scalar.approximation}:{}),text:(sourceLength||!prefix?'':prefix+'=')+valueText,at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
     notationByLabel[id]={...(!sourceLength&&/^[A-Z]{2}$/.test(label.prefix)?{entity:label.prefix}:{}),...(label.unit?{unit:label.unit}:{})};factRolesByLabel[id]=role;
   }
   for(const label of plan.segmentLabels||[]){
