@@ -494,7 +494,7 @@ window.questionBank = [
       "$16\\pi\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "부채꼴의 호 $AB$의 길이는\n$\\dfrac{90}{360}\\times2\\pi\\times8=4\\pi\\,\\mathrm{cm}$이다.\n처음에는 점 $A$를 중심으로 부채꼴이 $90^\\circ$ 돌아가므로 점 $O$는 반지름 $8\\,\\mathrm{cm}$인 원의 $\\dfrac14$만큼 움직인다.\n이때 이동 거리는 $4\\pi\\,\\mathrm{cm}$이다.\n그다음 호 $AB$가 직선 $l$ 위를 구르는 동안 점 $O$는 호의 길이만큼 곧게 이동하므로 $4\\pi\\,\\mathrm{cm}$를 움직인다.\n마지막에는 점 $B$를 중심으로 다시 $90^\\circ$ 돌아가므로 $4\\pi\\,\\mathrm{cm}$를 움직인다.\n따라서 점 $O$가 움직인 거리는\n$4\\pi+4\\pi+4\\pi=12\\pi\\,\\mathrm{cm}$이므로 정답은 ③이다.",
+    "solution": "부채꼴의 호 $AB$의 길이는\n$\\dfrac{90}{360}\\times2\\pi\\times8=4\\pi\\,\\mathrm{cm}$이다.\n처음에는 점 $B$를 중심으로 부채꼴이 $90^\\circ$ 돌아가므로 점 $O$는 반지름 $8\\,\\mathrm{cm}$인 원의 $\\dfrac14$만큼 움직인다.\n이때 이동 거리는 $4\\pi\\,\\mathrm{cm}$이다.\n그다음 호 $AB$가 직선 $l$ 위를 구르는 동안 점 $O$는 호의 길이만큼 곧게 이동하므로 $4\\pi\\,\\mathrm{cm}$를 움직인다.\n마지막에는 점 $A$를 중심으로 다시 $90^\\circ$ 돌아가므로 $4\\pi\\,\\mathrm{cm}$를 움직인다.\n따라서 점 $O$가 움직인 거리는\n$4\\pi+4\\pi+4\\pi=12\\pi\\,\\mathrm{cm}$이므로 정답은 ③이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중1_기출/q15-solution.svg",
     "solutionImageSize": "large",
     "solutionImageAlt": "점 O의 이동 경로를 사분원 4π, 직선 4π, 사분원 4π로 나눈 그림",
