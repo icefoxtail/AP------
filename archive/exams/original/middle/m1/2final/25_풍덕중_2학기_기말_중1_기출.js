@@ -585,7 +585,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:75f0b542c5e9b1714cdf6dba79fca99d80b3a047ad1a63bdf349bccf707a4f68",
-    "difficultyEvidenceSha": "sha256:8385fc24db13094dbb5b7acdfca1c9cb8e12ad984e91191a8e0cb10949824372"
+    "difficultyEvidenceSha": "sha256:8385fc24db13094dbb5b7acdfca1c9cb8e12ad984e91191a8e0cb10949824372",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 a가 6 이상인 범위와 a가 10 이하인 범위를 겹쳐 그리고, 두 범위의 공통 범위가 6 이상 10 이하이며 그 안의 자연수가 6, 7, 8, 9, 10임을 보여 주는 그림이다.",
+    "solutionImageCaption": "두 조건을 모두 만족시키는 a의 범위는 6 이상 10 이하이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -944,7 +948,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:c65672dab9daf6cde3339a873aa3a723a303fa73a23f2eb0ad3ae64ee6537964",
-    "difficultyEvidenceSha": "sha256:508e85f7fa69786a3b1d9c634b3684788a16ca6582121cac1313384ee74c5fa7"
+    "difficultyEvidenceSha": "sha256:508e85f7fa69786a3b1d9c634b3684788a16ca6582121cac1313384ee74c5fa7",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 꼭짓점에 정삼각형을 3개, 4개, 5개, 6개 모은 네 그림으로, 각 삼각형의 꼭지각 60°를 더한 각의 합이 180°, 240°, 300°, 360°임을 보여 주는 그림이다.",
+    "solutionImageCaption": "한 꼭짓점에 모인 정삼각형이 3~6개일 때 각의 합은 180°, 240°, 300°, 360°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -984,7 +992,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:0a67ec66266881f496e404f4c2ca78ed3cf9b434faf36566ca23208c26dcecff",
-    "difficultyEvidenceSha": "sha256:1460b6a348f4f0690cadf6980d624ddd30d0cd1ddfd6aadce0d2444695fb2b99"
+    "difficultyEvidenceSha": "sha256:1460b6a348f4f0690cadf6980d624ddd30d0cd1ddfd6aadce0d2444695fb2b99",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 3cm인 반구의 곡면(넓이 18π cm²)과 평평한 밑면인 반지름 3cm의 원(넓이 9π cm²)을 나란히 보여 주는 그림이다.",
+    "solutionImageCaption": "반구의 겉넓이를 이루는 곡면 18π cm²와 밑면 9π cm²",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
