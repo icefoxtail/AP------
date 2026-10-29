@@ -38,7 +38,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 점 C에서 x축, y축으로 내린 점선이 x축의 4와 y축의 -1에 닿는 모습. 다섯 점 A~E의 위치도 함께 보인다.",
+    "solutionImageCaption": "점 C에서 두 축에 점선을 내려 눈금 4와 -1을 읽는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -375,7 +379,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위에서 AN, NM이 각각 3cm, MB와 BC가 각각 6cm임을 같은 길이 표시와 함께 점 A, N, M, B, C가 놓인 선분 위에 나타낸 그림.",
+    "solutionImageCaption": "AN=NM=3cm, MB=BC=6cm로 구간별 길이를 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -419,7 +427,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선이 한 점에서 만나는 그림. 직각과 30°인 두 각을 합친 각을 같은 색 호로 표시하고, 그 맞꼭지각을 a로 표시해 두 각의 크기가 같음을 보인다.",
+    "solutionImageCaption": "직각과 30°를 합한 각의 맞꼭지각이 ∠a이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -548,7 +560,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "STRONG_CONFLICT"
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: l과 m이 평행할 때, 꺾인 선의 두 꺾인 점에서 l에 평행한 점선을 그어 엇각 40°, 70°, 30°를 표시하고 ∠x가 70°와 30°를 합한 각임을 보이는 그림.",
+    "solutionImageCaption": "평행선과 엇각으로 70°와 30°를 얻어 ∠x를 구한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -632,7 +648,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 종이를 접은 모양에서 C의 직각과 ∠DCF=18°로부터 ∠DFC=72°, ∠CFE=54°, ∠CEF=36°를 차례로 구하고, 삼각형 GCE에서 ∠GCE=72°, ∠CEG=58°를 나타낸 그림.",
+    "solutionImageCaption": "접은 모양에서 각을 72°, 54°, 36°, 58° 순서로 구하는 과정.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -675,7 +695,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P를 지나 직선 l과 평행한 직선을 작도한 그림. PA, PB, QC, QD는 같은 반지름(눈금 한 개), AB와 CD는 옮긴 같은 길이(눈금 두 개)이고 엇각 ∠APB와 ∠DQC가 같다.",
+    "solutionImageCaption": "같은 반지름과 옮긴 길이 AB=CD로 엇각이 같음을 나타낸 작도 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -715,7 +739,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 B에서 30°로 뻗은 반직선과 점 A를 중심으로 반지름 5인 호가 두 점에서 만나, AB=6cm, AC=5cm, ∠B=30°인 삼각형 ABC가 두 가지로 그려지는 것을 나란히 보인 그림.",
+    "solutionImageCaption": "같은 조건에서 삼각형 ABC가 두 가지로 그려진다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -758,7 +786,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: BC=EF인 두 삼각형 ABC, DEF에 보기 ①~⑤의 두 조건을 같은 눈금과 같은 호 표시로 각각 나타낸 다섯 개의 그림.",
+    "solutionImageCaption": "보기 ①~⑤의 추가 조건을 표식으로 비교한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -802,7 +834,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 EB=FC, BC=CD와 직각 B, C 표시로 합동인 삼각형 EBC, FCD를 나타내고, ∠BCE=∠CDF=15°와 구하는 ∠DCE를 표시한 그림.",
+    "solutionImageCaption": "합동인 두 삼각형의 대응각 15°로 ∠DCE를 구하는 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -846,7 +882,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC, CDE에서 같은 변과 같은 각 표시로 합동인 삼각형 ACD, BCE를 나타내고, ∠CAD=∠CBE=α, ∠DBE=70°, 삼각형 ABD의 ∠BAD=60°-α, ∠ABD=α-10°와 구하는 ∠x를 세 그림으로 보인 것.",
+    "solutionImageCaption": "합동과 각의 정리로 삼각형 ABD의 각을 α로 나타내는 과정.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
