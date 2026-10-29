@@ -352,4 +352,36 @@ class AngleLabelOutsideTests(unittest.TestCase):
             self.assertFalse(box_in_other_sectors(Box(**row['box']),[sectors[other]]),row['id'])
 
 
+class TickLabelSlideTests(unittest.TestCase):
+    """E20: two tick labels meeting near the origin (x=-1 and y=1) may leave one of them no clean centred box on its axis-normal sides: it then slides
+    along its axis by at most the owner-alignment tolerance and still names its own tick. A label that fits centred is placed exactly as before."""
+    def fixtures(self,blocker=True):
+        tick={'id':'model-y-unit','kind':'line','role':'tick','axis':'y','value':1,'geometry':[(100,100),(96,100)]}
+        axis={'id':'y-axis','kind':'axis','role':'axis','axis':'y','geometry':[(100,0),(100,200)]}
+        wall={'id':'wall','kind':'line','geometry':[(110,0),(110,200)]}                      # nothing fits east of the tick
+        other={'id':'tick-x--1-label','kind':'label','geometry':Box(70,109,30,10)}              # the neighbouring tick label, just below the west boxes
+        item=label('tick-y-1-label',(100,100),'1','TICK_LABEL',0,tickId='model-y-unit',tickAxis='y',tickValue=1,tickDisplayValue='1',directions=('W','E'),gaps=(8,12,16),allowSuppress=False)
+        return item,[tick,axis,wall,*([other] if blocker else [])]
+    def test_a_blocked_centred_label_slides_along_its_axis(self):
+        item,obstacles=self.fixtures()
+        result=layout([item],obstacles,Box(0,0,300,220),measurements={item['id']:(14,12)},require_measurements=True)
+        self.assertEqual(result['unresolved'],[],result)
+        placed=result['labels'][0];box=Box(**placed['box'])
+        self.assertTrue(placed['placement'].startswith('TICK_SLIDE_'),placed['placement'])
+        self.assertTrue(tick_box_respects_owner(box,item['at'],'y'))
+        self.assertLessEqual(abs(box.y+box.height/2-100),TICK_LABEL_ALIGNMENT_TOLERANCE)
+        self.assertGreater(abs(box.y+box.height/2-100),0)
+        self.assertFalse(any(collision(box,o) for o in obstacles))
+    def test_a_label_that_fits_centred_is_placed_as_before(self):
+        item,obstacles=self.fixtures(blocker=False)
+        placed=layout([item],obstacles,Box(0,0,300,220),measurements={item['id']:(14,12)},require_measurements=True)['labels'][0]
+        self.assertEqual(placed['placement'],'AUTO_W')
+        self.assertAlmostEqual(placed['box']['y']+placed['box']['height']/2,100)
+    def test_a_slide_never_leaves_the_owner_alignment(self):
+        item,obstacles=self.fixtures()
+        obstacles[-1]['geometry']=Box(70,100,30,40)                                        # a tall neighbour: no slide within the tolerance clears it
+        result=layout([item],obstacles,Box(0,0,300,220),measurements={item['id']:(14,12)},require_measurements=True)
+        self.assertEqual(result['unresolved'],['tick-y-1-label'])
+
+
 if __name__=='__main__':unittest.main()

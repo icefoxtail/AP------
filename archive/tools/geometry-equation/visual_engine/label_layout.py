@@ -17,6 +17,7 @@ NARROW_WEDGE_MAX_DEGREES=30.0
 TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
+TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
 
 @dataclass(frozen=True)
 class Box:
@@ -647,6 +648,17 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
                     break
                 if chosen:break
+            if chosen is None and tick_owner is not None and tick_callout is None:
+                # Two tick labels meeting near the origin (x=-1 and y=1) can leave one of them no clean box on its axis-normal sides. It may then slide along its
+                # axis by up to the owner-alignment tolerance (it still names its own tick); the nearest slide that clears every other label and mark wins.
+                for gap in default_gaps:
+                    for direction in directions:
+                        base=candidate(label['at'],w,h,direction,gap)
+                        for slide in TICK_LABEL_SLIDES:
+                            box=Box(base.x+slide,base.y,w,h) if label['tickAxis']=='x' else Box(base.x,base.y+slide,w,h)
+                            if acceptable(box):chosen=box;method='TICK_SLIDE_'+direction;break
+                        if chosen:break
+                    if chosen:break
             if chosen is None and owner_marker is not None:
                 # With another point close by, a box straight above/below/beside its point can reach into that point's cell. On those four
                 # sides the box may slide along the side, in eighths of its size, at the near gaps that need no leader.
