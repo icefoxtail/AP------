@@ -18,6 +18,8 @@ TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
 TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
+# Gaps tried from each alternate anchor of a lineFallback label (nearest first; from NEAR_RELOCATION_LEADER_MIN_GAP on, a visible leader is needed).
+LINE_FALLBACK_GAPS=(8,6,10,20,32,48)
 
 @dataclass(frozen=True)
 class Box:
@@ -705,6 +707,29 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         label={**label,'at':list(alternate)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                     if chosen:break
                 if chosen:break
+        if chosen is None and line_owner is None and label.get('lineFallback') and label.get('alternateAt'):
+            # lineFallback: a label that was placed the ordinary way (no ownership rule) and found no room; the same line may be written from the other
+            # anchors on it, now under the line-owned rules (its own line clearly the nearest, or a visible leader from the anchor on the line).
+            # Labels that already fit never get here, so their placement is exactly the ordinary one.
+            fallback_owner=next((o for o in obstacles if o.get('kind')=='line' and o.get('id')==label.get('target')),None)
+            if fallback_owner is not None:
+                fallback_others=[o for o in obstacles if o.get('kind')=='line' and o is not fallback_owner]
+                def acceptable_fallback(box,owner_check=True):
+                    return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
+                        and (not owner_check or line_label_unambiguous(box,fallback_owner,fallback_others)))
+                for alternate in label['alternateAt']:
+                    for gap in LINE_FALLBACK_GAPS:
+                        for direction in DIRECTIONS:
+                            box=candidate(alternate,w,h,direction,gap)
+                            if gap<NEAR_RELOCATION_LEADER_MIN_GAP:
+                                if not acceptable_fallback(box):continue
+                                label={**label,'at':list(alternate)};chosen=box;method='AUTO_'+direction;break
+                            if not acceptable_fallback(box,owner_check=False):continue
+                            end=visible_owner_leader(tuple(alternate),box,occupied,{fallback_owner['id']})
+                            if end is None:continue
+                            label={**label,'at':list(alternate)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                        if chosen:break
+                    if chosen:break
         repair=None
         if (chosen is None and require_measurements and owner_marker is not None and label['kind'] in OWNER_BOUND_POINT_LABELS
             and not label.get('candidateCenters') and isinstance(label.get('measuredFragmentSha256'),str)

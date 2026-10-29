@@ -135,6 +135,7 @@ def _fit_cubic_quartic(plan,coefficients):
 def _fit_overview_family(plan):
     if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
+    if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if plan.get('family')=='rational':return _fit_rational_overview(plan)
     if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan)
     if plan.get('family')=='absolute-value':return _fit_absolute_value_overview(plan)
@@ -358,6 +359,7 @@ def _fit_rational_overview(plan):
     numerator=_rational_coefficients(plan.get('numerator'),'numerator',allow_constant=True)
     denominator=_rational_coefficients(plan.get('denominator'),'denominator')
     if numerator[1]==0:return _fit_rational_constant_numerator(plan,numerator[0],denominator,original_domain,original_viewport)
+    if plan.get('displayWindow') is not None:raise ValueError('DISPLAY_WINDOW_REQUIRES_INVERSE_PROPORTION')
     if plan.get('formulaLabel') is not None:raise ValueError('RATIONAL_FORMULA_LABEL_REQUIRES_CONSTANT_NUMERATOR')
     pole_or_hole=-denominator[0]/denominator[1]
     numerator_root=-numerator[0]/numerator[1]
@@ -422,7 +424,64 @@ def _rational_required_points(plan,numerator,denominator):
         required_x.append(float(exact_x));required_y.append(float(point['y']))
     return required_x,required_y
 
+# ---- author display window (E22): graphPlan.displayWindow = [xmin,xmax,ymin,ymax] ------------------------------------------------------
+# The automatic frame centres the pole and shows both branches, which makes a small figure (a square of side 4 near the origin) tiny. An
+# author may instead name the window to show: the frame is exactly that window at one scale on both axes (the plot is 448 px wide and as tall
+# as the window's aspect needs, the y range is widened by less than one pixel to a whole pixel height), the curve is clipped to it, a pole or
+# a branch outside it is simply not drawn, and nothing is enlarged silently (a point or line outside is refused). The origin must be inside so
+# both axes are drawn. Inverse proportion (nonzero constant numerator) only; the independent observer recomputes which parts of the curve
+# must be visible from the exact coefficients.
+DISPLAY_WINDOW_POLICY='AUTHOR_DISPLAY_WINDOW_EQUAL_UNITS_v1'
+
+def _display_window(plan):
+    window=plan.get('displayWindow')
+    if window is None:return None
+    if not isinstance(window,list) or len(window)!=4 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or abs(v)>1e6 for v in window):raise ValueError('DISPLAY_WINDOW_INVALID')
+    xmin,xmax,ymin,ymax=(float(v) for v in window)
+    if not xmin<xmax or not ymin<ymax:raise ValueError('DISPLAY_WINDOW_INVALID')
+    if not (xmin<0<xmax and ymin<0<ymax):raise ValueError('DISPLAY_WINDOW_MUST_CONTAIN_ORIGIN')
+    return [xmin,xmax,ymin,ymax]
+
+def _fit_rational_constant_window(plan,k,denominator,original_domain,original_viewport,window):
+    if plan.get('axisSqueeze') not in (None,False):raise ValueError('DISPLAY_WINDOW_FORBIDS_AXIS_SQUEEZE')
+    label=plan.get('formulaLabel')
+    if label is not None and (not isinstance(label,str) or not re.fullmatch(RATIONAL_CONSTANT_LABEL_PATTERN,label)):raise ValueError('RATIONAL_FORMULA_LABEL_INVALID')
+    pole=-denominator[0]/denominator[1];c=k/denominator[1]
+    required_x,required_y=_rational_required_points(plan,[k,Fraction(0)],denominator)
+    pole_x=float(pole);c_value=float(c)
+    if any(not math.isfinite(value) or abs(value)>1e6 for value in (pole_x,c_value)):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
+    xmin,xmax,ymin,ymax=window
+    scale=QUADRATIC_PLOT_WIDTH/(xmax-xmin)
+    exact_height=(ymax-ymin)*scale
+    if exact_height<QUADRATIC_PLOT_HEIGHT[0]-1e-9:raise ValueError('DISPLAY_WINDOW_TOO_FLAT')
+    if exact_height>plot_height_limit(plan)+1e-9:raise ValueError('DISPLAY_WINDOW_TOO_TALL')
+    height=float(math.ceil(exact_height-1e-9));center=(ymin+ymax)/2;half_height=height/scale/2
+    viewport=[xmin,xmax,center-half_height,center+half_height]
+    for index,(px,py) in enumerate(zip(required_x,required_y)):
+        if not (viewport[0]<px<viewport[1] and viewport[2]<py<viewport[3]):raise ValueError('REQUIRED_GRAPH_POINT_OUTSIDE_DISPLAY_WINDOW:'+str(plan['requiredPoints'][index]['id']))
+    # Some part of the curve must be in the window (a window that shows no curve at all is a mistake, not a figure).
+    visible=False
+    for step in range(1,400):
+        x_value=xmin+(xmax-xmin)*step/400
+        if abs(x_value-pole_x)<1e-9:continue
+        y_value=c_value/(x_value-pole_x)
+        if viewport[2]<=y_value<=viewport[3]:visible=True;break
+    if not visible:raise ValueError('DISPLAY_WINDOW_CURVE_NOT_VISIBLE')
+    if abs(pole_x-xmin)<1e-9 or abs(pole_x-xmax)<1e-9:raise ValueError('DISPLAY_WINDOW_POLE_ON_EDGE')
+    pole_inside=xmin<pole_x<xmax
+    drawn_vertical=pole!=0 and pole_inside
+    vertical={'x':_fraction_text(pole),'drawn':drawn_vertical}
+    if not drawn_vertical:vertical['reason']='ON_Y_AXIS' if pole==0 else 'OUTSIDE_WINDOW'
+    features={'schemaVersion':'RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1','constant':_fraction_text(k),'singularity':{'kind':'VERTICAL_POLE','x':_fraction_text(pole)},
+              'horizontalAsymptoteY':'0','xIntercept':None,'poleDirection':{'left':'DOWN' if c>0 else 'UP','right':'UP' if c>0 else 'DOWN'},
+              'asymptotes':{'horizontal':{'y':'0','drawn':False,'reason':'ON_X_AXIS'},'vertical':vertical}}
+    policy={'schemaVersion':'RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'CONSTANT_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE','horizontalAsymptotePolicy':'Y_EQUALS_ZERO_IS_THE_X_AXIS_NOT_DRAWN','asymptoteOnAxisPolicy':'AXIS_IS_THE_ASYMPTOTE_NO_DASHED_LINE','minimumFeatureSeparationCssPx':1,'windowPolicy':DISPLAY_WINDOW_POLICY}
+    fitted={**plan,'domain':[viewport[0],viewport[1]],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1','rationalFeatures':features,'rationalFeaturePolicy':policy,'equalUnits':True,'axisRatio':1.0,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}
+    return {'graphPlan':fitted,'policy':'RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
+
 def _fit_rational_constant_numerator(plan,k,denominator,original_domain,original_viewport):
+    window=_display_window(plan)
+    if window is not None:return _fit_rational_constant_window(plan,k,denominator,original_domain,original_viewport,window)
     label=plan.get('formulaLabel')
     if label is not None and (not isinstance(label,str) or not re.fullmatch(RATIONAL_CONSTANT_LABEL_PATTERN,label)):raise ValueError('RATIONAL_FORMULA_LABEL_INVALID')
     pole=-denominator[0]/denominator[1];c=k/denominator[1]
@@ -2246,6 +2305,10 @@ def fit_piecewise_discontinuous(plan):
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
 OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2}
+OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
+OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve'}
+OVERLAY_LATTICE_MAX_POINTS=40
+OVERLAY_LATTICE_MAX_COLUMNS=12
 OVERLAY_POLYGON_LABEL_KINDS=('MATH','TEXT')
 OVERLAY_POLYGON_MATH_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().\^ ]{1,40}'
 
@@ -2379,10 +2442,100 @@ def _overlay_line_crosses_view(viewport,line):
     x_bottom=(ymin-q)/m;x_top=(ymax-q)/m
     return max(xmin,min(x_bottom,x_top))<min(xmax,max(x_bottom,x_top))
 
+def _overlay_clip_chord(viewport,line):
+    """The two ends of an overlay line inside the viewport rectangle (data coordinates), or None."""
+    xmin,xmax,ymin,ymax=viewport
+    if line['kind']=='VERTICAL':return ((line['xValue'],ymin),(line['xValue'],ymax))
+    m=line['slopeValue'];q=line['interceptValue'];ends=[]
+    for x in (xmin,xmax):
+        y=m*x+q
+        if ymin-1e-9<=y<=ymax+1e-9:ends.append((x,max(ymin,min(ymax,y))))
+    if m!=0:
+        for y in (ymin,ymax):
+            x=(y-q)/m
+            if xmin-1e-9<=x<=xmax+1e-9 and not any(abs(x-a)<1e-9 and abs(y-b)<1e-9 for a,b in ends):ends.append((max(xmin,min(xmax,x)),y))
+    return (ends[0],ends[1]) if len(ends)>=2 else None
+
+def _overlay_label_alternates(plan,line,lines,points):
+    """Anchors on the visible part of an overlay line where its equation could stand when the first anchor found no room: the chord is sampled and
+    the places farthest (in px) from the frame edge, the axes, the other overlay lines and the overlay points come first. Used only after the
+    first anchor failed (the layout asks for them then), so a figure that already fits keeps its label where it was."""
+    viewport=plan['viewport'];chord=_overlay_clip_chord(viewport,line)
+    if chord is None:return []
+    xmin,xmax,ymin,ymax=viewport;canvas=plan.get('plotCanvas') if isinstance(plan.get('plotCanvas'),dict) else {}
+    px=float(canvas.get('width',448))/(xmax-xmin);py=float(canvas.get('height',448))/(ymax-ymin)
+    others=[other for other in lines if other['id']!=line['id']]
+    def line_distance(point,other):
+        if other['kind']=='VERTICAL':return abs(point[0]-other['xValue'])*px
+        m=other['slopeValue'];q=other['interceptValue']
+        return py*abs(m*point[0]-point[1]+q)/math.sqrt(1+(m*py/px)**2)
+    rows=[]
+    for step in range(1,20):
+        t=step/20;point=(chord[0][0]+(chord[1][0]-chord[0][0])*t,chord[0][1]+(chord[1][1]-chord[0][1])*t)
+        edge=min((point[0]-xmin)*px,(xmax-point[0])*px,(point[1]-ymin)*py,(ymax-point[1])*py)
+        score=min([edge,abs(point[0])*px,abs(point[1])*py,*[line_distance(point,other) for other in others],*[math.hypot((point[0]-p['x'])*px,(point[1]-p['y'])*py) for p in points]])
+        if edge<24:continue
+        rows.append((-score,t,point))
+    rows.sort()
+    chosen=[]
+    for _score,_t,point in rows:
+        if all(math.hypot((point[0]-other[0])*px,(point[1]-other[1])*py)>=40 for other in chosen):chosen.append(point)
+        if len(chosen)==6:break
+    return [[round(point[0],9),round(point[1],9)] for point in chosen]
+
+def _overlay_length_row(value,ident):
+    """A segment length as the label text the figure shows: an integer (4) or a square-root surd (2*sqrt(5)); nothing else is read back reliably."""
+    value=value if value.is_Integer else S.simplify(value)
+    if value.is_Integer:return {'text':str(int(value)),'value':float(value)}
+    coefficient,radical=value.as_coeff_Mul()
+    if coefficient.is_Integer and coefficient>0 and radical.is_Pow and radical.exp==S.Rational(1,2) and radical.base.is_Integer and radical.base>1:
+        base=int(radical.base);return {'text':(str(int(coefficient))+'*' if coefficient!=1 else '')+'sqrt('+str(base)+')','value':float(S.N(value,30))}
+    _overlay_fail('OVERLAY_SEGMENT_LENGTH_UNSUPPORTED',ident)
+
+def _overlay_lattice(plan,entry,exact_points):
+    """graphPlan.overlays.latticePoints: every integer point strictly (or not) below / above the drawn curve in a column range, enumerated exactly.
+    Returns the frozen feature row; every failure is an explicit OVERLAY_LATTICE_* code."""
+    if not isinstance(entry,dict) or set(entry)-OVERLAY_LATTICE_FIELDS:_overlay_fail('OVERLAY_LATTICE_INVALID')
+    region=entry.get('region')
+    if region not in OVERLAY_LATTICE_REGIONS:_overlay_fail('OVERLAY_LATTICE_REGION_INVALID')
+    span=entry.get('xRange')
+    if not isinstance(span,list) or len(span)!=2 or any(isinstance(v,bool) or not isinstance(v,int) for v in span) or span[0]>span[1]:_overlay_fail('OVERLAY_LATTICE_RANGE_INVALID')
+    if span[1]-span[0]+1>OVERLAY_LATTICE_MAX_COLUMNS:_overlay_fail('OVERLAY_LATTICE_TOO_MANY')
+    strict=entry.get('strict',True);counts=entry.get('counts',False)
+    if not isinstance(strict,bool) or not isinstance(counts,bool):_overlay_fail('OVERLAY_LATTICE_INVALID')
+    bound_key='yMin' if region=='BELOW_CURVE' else 'yMax';other_key='yMax' if region=='BELOW_CURVE' else 'yMin'
+    bound=entry.get(bound_key)
+    if other_key in entry or isinstance(bound,bool) or not isinstance(bound,int):_overlay_fail('OVERLAY_LATTICE_BOUND_INVALID')
+    curve_id=entry.get('curve')
+    if plan.get('family')=='exp-log-pair' and curve_id is None:_overlay_fail('OVERLAY_CURVE_REQUIRED','lattice')
+    if plan.get('family')!='exp-log-pair' and curve_id is not None:_overlay_fail('OVERLAY_CURVE_UNKNOWN','lattice')
+    domain_lo,domain_hi=plan['domain'];xmin,xmax,ymin,ymax=plan['viewport'];points=[];columns=[]
+    for x in range(span[0],span[1]+1):
+        if not domain_lo<=x<=domain_hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN','lattice')
+        try:y_curve=_overlay_curve_exact(plan,S.Integer(x),curve_id)
+        except ValueError:_overlay_fail('OVERLAY_LATTICE_COLUMN_UNDEFINED',str(x))
+        if not y_curve.is_real or not y_curve.is_finite:_overlay_fail('OVERLAY_LATTICE_COLUMN_UNDEFINED',str(x))
+        if region=='BELOW_CURVE':
+            top=int(S.ceiling(y_curve))-1 if strict else int(S.floor(y_curve))
+            ys=list(range(bound,top+1)) if top-bound+1<=OVERLAY_LATTICE_MAX_POINTS else None
+        else:
+            low=int(S.floor(y_curve))+1 if strict else int(S.ceiling(y_curve))
+            ys=list(range(low,bound+1)) if bound-low+1<=OVERLAY_LATTICE_MAX_POINTS else None
+        if ys is None:_overlay_fail('OVERLAY_LATTICE_TOO_MANY')
+        if not ys:continue
+        columns.append({'x':x,'count':len(ys),'topY':max(ys)})
+        points.extend({'x':x,'y':y} for y in ys)
+        if len(points)>OVERLAY_LATTICE_MAX_POINTS:_overlay_fail('OVERLAY_LATTICE_TOO_MANY')
+    if not points:_overlay_fail('OVERLAY_LATTICE_EMPTY')
+    for point in points:
+        if not (xmin<point['x']<xmax and ymin<point['y']<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT','lattice')
+        if any(abs(point['x']-ex)<1e-9 and abs(point['y']-ey)<1e-9 for ex,ey in exact_points):_overlay_fail('OVERLAY_LATTICE_POINT_COINCIDES',str(point['x'])+','+str(point['y']))
+    return {'region':region,'strict':strict,'counts':counts,'xRange':list(span),bound_key:bound,'points':points,'columns':columns}
+
 def _overlay_features(plan):
     raw=plan.get('overlays')
     if raw is None:return None
-    if not isinstance(raw,dict) or set(raw)-set(OVERLAY_LIMITS):_overlay_fail('OVERLAY_PLAN_INVALID')
+    if not isinstance(raw,dict) or set(raw)-set(OVERLAY_LIMITS)-{'latticePoints'}:_overlay_fail('OVERLAY_PLAN_INVALID')
     for key,limit in OVERLAY_LIMITS.items():
         rows=raw.get(key,[])
         if not isinstance(rows,list) or len(rows)>limit:_overlay_fail('OVERLAY_TOO_MANY',key)
@@ -2408,11 +2561,11 @@ def _overlay_features(plan):
         line['labelAt']=_overlay_label_anchor(plan['viewport'],line)
         lines.append(line)
     by_line={line['id']:line for line in lines}
-    points=[];by_point={}
+    points=[];by_point={};exact_by_point={}
     required_ids={point.get('id') for point in plan.get('requiredPoints',[]) if isinstance(point,dict)}
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_POINT_INVALID','point')
-        if set(entry)-{'id','curveX','curve','x','y','axis','value','intersect'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
+        if set(entry)-{'id','curveX','curve','x','y','axis','value','intersect','coordinates','labelDirection'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'point')
         if ident in required_ids:_overlay_fail('OVERLAY_POINT_ID_CONFLICT',ident)
         claim('point:'+ident)
@@ -2448,20 +2601,40 @@ def _overlay_features(plan):
         xmin,xmax,ymin,ymax=plan['viewport'];xf,yf=_overlay_number(x),_overlay_number(y)
         if not (xmin<xf<xmax and ymin<yf<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT',ident)
         row={'id':ident,'x':xf,'y':yf,'xExact':pp_surd_text(x),'yExact':pp_surd_text(y)}
-        points.append(row);by_point[ident]=row
+        # coordinates:true writes the point's coordinates beside it (A(-6,-3), or (x,y) for an unnamed point): integers only, which the observer reads back.
+        if 'coordinates' in entry:
+            if not isinstance(entry['coordinates'],bool):_overlay_fail('OVERLAY_COORDINATES_INVALID',ident)
+            if entry['coordinates']:
+                if not (x.is_integer and y.is_integer):_overlay_fail('OVERLAY_COORDINATES_REQUIRE_INTEGERS',ident)
+                row['coordinates']=[str(int(x)),str(int(y))]
+        if 'labelDirection' in entry:
+            # A layout hint only (the side to try first); it needs the label it is a hint for.
+            if not row.get('coordinates') or entry['labelDirection'] not in ('N','NE','E','SE','S','SW','W','NW'):_overlay_fail('OVERLAY_LABEL_DIRECTION_INVALID',ident)
+            row['labelDirection']=entry['labelDirection']
+        points.append(row);by_point[ident]=row;exact_by_point[ident]=(x,y)
     def point_ref(value,ident):
         if not isinstance(value,str) or value not in by_point:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
         return value
     segments=[]
     for entry in raw.get('segments',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_SEGMENT_INVALID','segment')
-        if set(entry)-{'id','from','to','dashed'}:_overlay_fail('OVERLAY_SEGMENT_INVALID',entry.get('id'))
+        if set(entry)-{'id','from','to','dashed','length','labelDirection'}:_overlay_fail('OVERLAY_SEGMENT_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'segment');claim('segment:'+ident)
         start=point_ref(entry.get('from'),ident);end=point_ref(entry.get('to'),ident)
         if start==end:_overlay_fail('OVERLAY_SEGMENT_DEGENERATE',ident)
         dashed=entry.get('dashed',False)
         if not isinstance(dashed,bool):_overlay_fail('OVERLAY_SEGMENT_INVALID',ident)
-        segments.append({'id':ident,'from':start,'to':end,'dashed':dashed})
+        row={'id':ident,'from':start,'to':end,'dashed':dashed}
+        # length:true writes the segment's exact length beside it: an integer or p*sqrt(q), recomputed from its end points.
+        if 'length' in entry:
+            if not isinstance(entry['length'],bool):_overlay_fail('OVERLAY_SEGMENT_LENGTH_INVALID',ident)
+            if entry['length']:
+                (x1,y1),(x2,y2)=exact_by_point[start],exact_by_point[end]
+                row['length']=_overlay_length_row(S.sqrt(S.expand((x2-x1)**2+(y2-y1)**2)),ident)
+        if 'labelDirection' in entry:
+            if not row.get('length') or entry['labelDirection'] not in ('N','NE','E','SE','S','SW','W','NW'):_overlay_fail('OVERLAY_LABEL_DIRECTION_INVALID',ident)
+            row['labelDirection']=entry['labelDirection']
+        segments.append(row)
     guides=[]
     for entry in raw.get('guides',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_GUIDE_INVALID','guide')
@@ -2496,7 +2669,10 @@ def _overlay_features(plan):
             if not isinstance(label,str) or not label.strip() or len(label)>40 or any(ord(char)<32 for char in label) or (label_kind=='MATH' and not re.fullmatch(OVERLAY_POLYGON_MATH_LABEL_PATTERN,label)):_overlay_fail('OVERLAY_POLYGON_LABEL_INVALID',ident)
             row['label']=label;row['labelKind']=label_kind
         polygons.append(row)
-    return {'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
+    for line in lines:line['labelAlternates']=_overlay_label_alternates(plan,line,lines,points)
+    features={'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
+    if raw.get('latticePoints') is not None:features['latticePoints']=_overlay_lattice(plan,raw['latticePoints'],[(point['x'],point['y']) for point in points])
+    return features
 
 def _overlay_anchor_points(plan):
     """Best-effort exact coordinates of every declared overlay point, computed before framing so the family framer can put the whole
@@ -2542,6 +2718,15 @@ def _overlay_anchor_points(plan):
             if isinstance(viewport,list) and len(viewport)==4 and not (viewport[0]-1e-9<=xf<=viewport[1]+1e-9 and viewport[2]-1e-9<=yf<=viewport[3]+1e-9):continue
             anchors.append((xf,yf))
         except (ValueError,KeyError,TypeError,ZeroDivisionError):continue
+    # The lattice points are part of the figure: the family framer must reach them (a bad entry is refused later with its own code).
+    lattice=raw.get('latticePoints')
+    if isinstance(lattice,dict) and isinstance(plan.get('domain'),list) and len(plan['domain'])==2:
+        try:
+            wide={**plan,'viewport':[-1e9,1e9,-1e9,1e9]}
+            row=_overlay_lattice(wide,lattice,[])
+            xs=[point['x'] for point in row['points']];ys=[point['y'] for point in row['points']]
+            anchors.extend([(float(min(xs)),float(min(ys))),(float(max(xs)),float(max(ys))),(float(min(xs)),float(max(ys))),(float(max(xs)),float(min(ys)))])
+        except (ValueError,KeyError,TypeError,ZeroDivisionError):pass
     return anchors
 
 # ---- multi-curve figure: three to six independent nonlinear curves in one plane ---------------------------------
