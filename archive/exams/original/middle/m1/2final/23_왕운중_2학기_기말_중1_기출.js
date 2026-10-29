@@ -78,16 +78,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q02-solution.svg",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q2-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d06d9822df550c81a42bcf10d4ede36b4896af7346e34f44b5341f7b9d2929b5",
       "difficultyEvidenceSha": "sha256:1eca0c415fa870acd995faf6b01db1681749c528ef317d591bdc0bf8871dbbc0",
-      "solutionImageAlt": "원 O에서 중심각 40°에 대한 호 길이가 8 cm이고 중심각 80°에 대한 호 길이가 x cm인 그림",
-      "solutionImageCaption": "같은 원에서 두 호의 길이와 중심각의 비례 관계를 쓴다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원 O에서 중심각 40°인 부채꼴(호 8cm)과 중심각 80°인 부채꼴(호 x cm)을 서로 떨어뜨려 색칠하고, 각 호의 길이를 표시한 그림.",
+      "solutionImageCaption": "같은 원에서 호의 길이는 중심각에 비례하므로 8 : x = 40 : 80이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 3,
@@ -126,16 +126,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q03-solution.svg",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q3-solution-v2.svg",
       "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
       "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:aae19781ff20d3625deb25d705c801b1aea3d9b574e47e51e099d7a6c5b94839",
       "difficultyEvidenceSha": "sha256:99cf2c8947f594124132a2a0c19df4496aff54d1f4601459ef2871674b9284a5",
-      "solutionImageAlt": "삼각형의 세 외각이 x°, (x−14)°, 124°인 외각 관계 그림",
-      "solutionImageCaption": "삼각형 외각의 합 360°로 x를 결정한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 삼각형의 두 변을 연장해 세 꼭짓점의 외각 x°, (x-14)°, 124°를 호로 표시하고, 오른쪽 아래 내각 56°의 외각이 124°임을 보인 그림.",
+      "solutionImageCaption": "삼각형의 세 외각의 합은 360°이고 오른쪽 아래 외각은 180°-56°=124°이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 4,
@@ -174,16 +174,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q04-solution.svg",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q4-solution-v2.svg",
       "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
       "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:18080274d0809650f5eb4c697915d7c4ec426015245b191a0ee917cae6af150d",
       "difficultyEvidenceSha": "sha256:5ee2bfdb9e122191d795a09a89ab13e669bdae098426f79e76829c64dd560727",
-      "solutionImageAlt": "오각형의 내각 85°, 110°, 2x°, 90°, (195−x)°를 표시한 그림",
-      "solutionImageCaption": "오각형 내각의 합 540°에 주어진 다섯 내각을 넣는다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 오각형의 내각 85°, 110°, 2x°, 직각, (195-x)°를 표시하고, 위쪽 꼭짓점에서 변을 연장해 외각 (x-15)°를 호로 보인 그림.",
+      "solutionImageCaption": "위쪽 꼭짓점의 외각이 (x-15)°이므로 그 내각은 (195-x)°이고 다섯 내각의 합은 540°이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 5,
@@ -266,7 +266,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:0265bf685eeceff0f519fd4aa0b73828f6fde109b44eb27274d008fe54380048",
-      "difficultyEvidenceSha": "sha256:c0b39dae294d20f80d063e5516425d3b2caa962ea486502e72d976531062d2a1"
+      "difficultyEvidenceSha": "sha256:c0b39dae294d20f80d063e5516425d3b2caa962ea486502e72d976531062d2a1",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q6-solution.svg",
+      "solutionImageAlt": "해설 그림: 정구각형의 각 꼭짓점에서 한 변을 연장해 아홉 외각을 모두 40°로 표시하고, 한 꼭짓점의 내각 140°를 함께 보인 그림.",
+      "solutionImageCaption": "정구각형의 외각은 모두 40°이고 한 내각은 180°-40°=140°이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 7,
@@ -382,7 +386,11 @@ window.questionBank = [
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
-      "legacyLevelCompatibility": "NORMAL"
+      "legacyLevelCompatibility": "NORMAL",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 원탁의 7명을 정칠각형의 꼭짓점으로 나타내고, 한 꼭짓점에서 양옆(점선)을 뺀 나머지 네 꼭짓점으로 가는 악수 상대 4명을 선 ①~④로 보인 그림.",
+      "solutionImageCaption": "한 사람은 자신과 양옆의 두 사람을 뺀 4명과 악수한다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 10,
@@ -421,7 +429,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:b3b8966750197fa858456198df6d73f045f134f8565b32c49903afb69772b549",
-      "difficultyEvidenceSha": "sha256:98c4ad8f67d4e6b4c24db4e86c1a9cc038b39acec1881bb74133e40288693962"
+      "difficultyEvidenceSha": "sha256:98c4ad8f67d4e6b4c24db4e86c1a9cc038b39acec1881bb74133e40288693962",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 회전축에서 떨어진 삼각형을 회전시킨 입체의 축 단면은 가운데가 빈 두 삼각형이고, 그림의 입체의 단면은 축까지 꽉 찬 마름모임을 나란히 비교한 그림.",
+      "solutionImageCaption": "삼각형이 회전축과 떨어져 있으면 회전축 둘레에 빈 공간이 생겨 그림처럼 축까지 채워진 입체가 되지 않는다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 11,
