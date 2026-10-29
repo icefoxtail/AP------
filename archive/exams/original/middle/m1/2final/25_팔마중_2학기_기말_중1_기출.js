@@ -1005,7 +1005,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:78e65762f00c91e633d4842181a325b43178082f7656d1eb6e3212882250fb5b",
-      "difficultyEvidenceSha": "sha256:c1c7d61ffbb9e79dd3561757b55765648512942e748f89e96adbbe53a2fd79ca"
+      "difficultyEvidenceSha": "sha256:c1c7d61ffbb9e79dd3561757b55765648512942e748f89e96adbbe53a2fd79ca",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 3cm인 구를 중심을 지나는 평면으로 한 번 자르면 두 조각에 원판 모양의 단면이 하나씩 생기고, 서로 수직인 세 평면으로 자른 8조각 중 한 조각에는 4분원 모양의 단면 3개가 있음을 나란히 보여 주는 그림이다.",
+      "solutionImageCaption": "한 번 자른 두 조각과 8조각 중 한 조각의 단면 (반지름 3 cm)",
+      "solutionImageSize": "medium"
     },
     {
       "id": 23,

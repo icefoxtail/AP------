@@ -489,7 +489,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:325030cda8b3f9e21e8d2b38becee56dc827eb92c2774c444a93f7a5d104944f",
-      "difficultyEvidenceSha": "sha256:49bbfc280cfe9aa6b5b19f1de3d1aa50c88a04d78f6f8ada4b4ccb33a2cb2e37"
+      "difficultyEvidenceSha": "sha256:49bbfc280cfe9aa6b5b19f1de3d1aa50c88a04d78f6f8ada4b4ccb33a2cb2e37",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 5cm인 구를 중심 O를 지나는 서로 수직인 두 평면으로 4등분한 입체도형으로, 곡면의 일부와 반원 모양의 단면 2개(색칠)가 겉면을 이루는 모습을 보여 주는 그림이다.",
+      "solutionImageCaption": "구를 4등분한 입체도형 (반지름 5 cm)",
+      "solutionImageSize": "medium"
     },
     {
       "id": 12,

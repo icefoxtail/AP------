@@ -131,9 +131,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:40356361b5a0a4dbc6b0f77db2af8dd40a89abef0de6f06059aaec77af2cd135",
     "difficultyEvidenceSha": "sha256:148b23ff065f278357dc3db764f3d1b2ea39ec91bfdca89c8bc05a4f654c99d1",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 정사각형 하나에 이등변삼각형 4개가 붙은 전개도와, 이를 접어 만든 사각뿔(꼭짓점 A~E 5개, 밑면 모서리 4개와 옆모서리 4개)을 나란히 보여 주는 그림이다.",
-    "solutionImageCaption": "전개도와 접은 사각뿔의 꼭짓점·모서리",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 하나에 이등변삼각형 4개가 붙은 전개도와, 접어 만든 사각뿔의 꼭짓점 A~E 5개와 번호를 붙인 모서리 8개(밑면 4개 ①~④, 옆모서리 4개 ⑤~⑧)를 나란히 보여 주는 그림이다.",
+    "solutionImageCaption": "전개도와 모서리 번호를 붙인 사각뿔",
     "solutionImageSize": "medium"
   },
   {
@@ -369,9 +369,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:f31ba2cc88b7949f16f088d040ffd737003c638a54be48fd3a49065cfad9be71",
     "difficultyEvidenceSha": "sha256:540f2eabaae59511f925e49eb9af88576fc09d8a0d889de0000554f5acfc1bdd",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 반지름 6cm, 높이 8cm인 큰 원뿔을 높이의 절반에서 자른 그림으로, 위의 작은 원뿔은 반지름 3cm·높이 4cm이고 아래 남는 원뿔대의 높이는 4cm임을 보여 준다.",
-    "solutionImageCaption": "큰 원뿔에서 작은 원뿔을 떼고 남는 원뿔대 (높이 4 cm + 4 cm)",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반지름 6cm, 높이 8cm인 큰 원뿔에서 높이의 절반에서 잘라 낸 작은 원뿔(반지름 3cm, 높이 4cm)을 빼고 남는 높이 4cm의 원뿔대를 색칠해 보여 주는 그림이다.",
+    "solutionImageCaption": "큰 원뿔에서 작은 원뿔을 뺀 원뿔대 (높이 4 cm)",
     "solutionImageSize": "medium"
   },
   {
