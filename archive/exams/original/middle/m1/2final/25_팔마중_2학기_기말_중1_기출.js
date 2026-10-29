@@ -40,7 +40,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:f5f06ff1424cceed4a9180580749f5151f6a29fc2a277541143e889d7e606fea",
-      "difficultyEvidenceSha": "sha256:2b95e27ed6490637581fdfa9747fffc17a14d96582c4cf27e1d246174045c68d"
+      "difficultyEvidenceSha": "sha256:2b95e27ed6490637581fdfa9747fffc17a14d96582c4cf27e1d246174045c68d",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 오각기둥의 꼭짓점에 1부터 10까지, 모서리에 ①부터 ⑮까지 번호를 붙이고 보이지 않는 모서리는 점선으로 나타낸 그림. 밑면 모서리 ①~⑤, 옆모서리 ⑥~⑩, 윗면 모서리 ⑪~⑮이다.",
+      "solutionImageCaption": "오각기둥의 꼭짓점 10개와 모서리 15개를 번호로 센다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 2,
@@ -217,7 +221,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:8e759587ee2239d348cc1cd660e23df26792063c2508ee60fca26fbdab8f27ec",
-      "difficultyEvidenceSha": "sha256:26f3fe9fa96c54e820484dfd573c09abc62522717af299fefa061f9a3693e7c0"
+      "difficultyEvidenceSha": "sha256:26f3fe9fa96c54e820484dfd573c09abc62522717af299fefa061f9a3693e7c0",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 회전축을 포함하는 평면으로 원뿔을 자른 단면은 밑변 2r, 높이 h인 이등변삼각형이고, 원뿔대를 자른 단면은 사다리꼴임을 두 입체에 색칠해 나란히 보인 그림.",
+      "solutionImageCaption": "회전축을 포함하는 평면으로 자른 단면은 원뿔은 이등변삼각형, 원뿔대는 사다리꼴이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 6,
@@ -256,16 +264,16 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q6-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q6-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:743b5a2ff90e86618d6a92c29c914528bb73dc9a12ea97411cf4e4191c8b171d",
       "difficultyEvidenceSha": "sha256:136ae04d2441895ddc66b2742967f44bbe4e9631cf0dbec733030bbb57ebe95c",
-      "solutionImageAlt": "반원기둥의 겉넓이를 양쪽 반원, 반원호가 만든 곡면, 지름이 만든 직사각형으로 나눈 도식",
-      "solutionImageCaption": "겉넓이는 양쪽 반원 9π, 곡면 36π, 직사각형 72 cm²를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 반원기둥의 겉넓이를 이루는 세 부분을 나란히 보인 그림. 지름 6cm(반지름 3cm)인 합동인 반원 2개, 가로 12cm 세로 6cm인 지름이 만든 직사각형, 가로 12cm 세로 3π cm인 반원호가 만든 곡면의 직사각형이다.",
+      "solutionImageCaption": "반원기둥의 겉넓이는 반원 2개, 지름이 만든 직사각형 6×12, 곡면 직사각형 3π×12를 더한 것이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 7,
@@ -357,7 +365,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:6398c086747116a3dae1290bce2a495726680b5060b95f692553d1818813a90b",
-      "difficultyEvidenceSha": "sha256:8365b056bcb29b453bc456da3661a0a8f259a951520316b898056bf866d04e0a"
+      "difficultyEvidenceSha": "sha256:8365b056bcb29b453bc456da3661a0a8f259a951520316b898056bf866d04e0a",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 모서리가 x인 정육면체에서 면의 대각선 AC, CF, FA를 이어 잘라 낸 삼각뿔 B-ACF를 보이고, 꼭짓점 B에서 만나는 세 모서리 BA, BC, BF를 빨갛게 강조한 그림. 세 모서리는 길이가 같고 서로 수직이다.",
+      "solutionImageCaption": "잘려 나간 부분은 B에서 만나는 서로 수직인 세 모서리의 길이가 모두 x인 삼각뿔이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 9,
@@ -401,7 +413,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:b920be036a24aa0354bd651b631832f913f31b94593251c55dad9ca7f1a42c33",
-      "difficultyEvidenceSha": "sha256:c1e379cb001a10c9b319491f9f659d4dc7339c1911988ab28f4ca18772415402"
+      "difficultyEvidenceSha": "sha256:c1e379cb001a10c9b319491f9f659d4dc7339c1911988ab28f4ca18772415402",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 반구 2개를 합쳐 반지름 3cm인 구 하나(부피 36π)로 보고, 가운데 반지름 3cm 높이 5cm인 원기둥(부피 45π)과 나란히 분해해 보인 그림.",
+      "solutionImageCaption": "반구 2개는 구 하나(부피 36π)이고 가운데는 원기둥(부피 45π)이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 10,
@@ -921,16 +937,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q21-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q21-solution-v2.svg",
       "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
       "templateKey": "TPL_M1_ROTATION_SOLID_FRUSTUM_NET_AXIS_SECTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:cb4b7fba0c7d6ef121554db97b2dcc75879516e3804ca50e143d28fd74dc9368",
       "difficultyEvidenceSha": "sha256:868826eaa1a84d0018426877b25967d2614b7936cec7e130a3184aaf8ba8a0c6",
-      "solutionImageAlt": "원뿔대의 고리 모양 부채꼴 전개도와 회전축을 포함하는 사다리꼴 단면",
-      "solutionImageCaption": "단면의 평행한 변은 10 cm와 4 cm이고 높이는 4 cm라 넓이는 28 cm²다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원뿔대(윗면 반지름 5cm, 아랫면 반지름 2cm, 높이 4cm, 모선 5cm)와 회전축을 포함하는 평면으로 자른 단면 사다리꼴을 색칠해 보인 그림.",
+      "solutionImageCaption": "회전축을 포함하는 평면으로 원뿔대를 자른 단면은 윗변 10cm, 아랫변 4cm, 높이 4cm인 사다리꼴이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 22,
