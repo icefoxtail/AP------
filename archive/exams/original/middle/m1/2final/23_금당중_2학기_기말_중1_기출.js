@@ -1069,10 +1069,10 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q22-solution.svg",
-      "solutionImageSize": "large",
-      "solutionImageAlt": "삼각형의 한 변을 연장해 생긴 외각 2x−10°, 내각 x−30°와 80°가 표시된 그림.",
-      "solutionImageCaption": "삼각형 외각 정리로 2x−10=(x−30)+80, 따라서 x=60°이다.",
+      "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q22-solution-v2.svg",
+      "solutionImageSize": "medium",
+      "solutionImageAlt": "해설 그림: 삼각형의 한 변을 위 꼭짓점 너머로 연장했을 때 생기는 외각 (2x-10)°(빨강 호)와, 그와 이웃하지 않는 두 내각 (x-30)°, 80°(파랑 호)를 나타낸 그림이다.",
+      "solutionImageCaption": "삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같다.",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:533ee801669ec7ee110b395e1222949a87cb8825c0d15a415ec622ceca1da06b",
@@ -1116,7 +1116,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:b56a6c52ba7dbdcdf7eea9c065968fb18620fc3a53908be129c9e1db5855c2a9",
-      "difficultyEvidenceSha": "sha256:d17c1508fe2699af255660ca490d7a87b30b1d93ce0f1f06da8057f0a1b8b6e1"
+      "difficultyEvidenceSha": "sha256:d17c1508fe2699af255660ca490d7a87b30b1d93ce0f1f06da8057f0a1b8b6e1",
+      "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽은 정다각형의 한 꼭짓점에서 내각 140°와 외각 40°를 표시한 그림이고, 오른쪽은 같은 꼭짓점에서 다른 꼭짓점들로 그을 수 있는 대각선(빨강)을 모두 그린 그림이다.",
+      "solutionImageCaption": "정다각형의 한 꼭짓점에서 내각은 140°, 외각은 40°이고 그 꼭짓점에서 그을 수 있는 대각선을 모두 그렸다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 24,

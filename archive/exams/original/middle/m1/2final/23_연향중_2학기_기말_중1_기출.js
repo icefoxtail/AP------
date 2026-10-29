@@ -268,7 +268,7 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q6-solution.svg",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q6-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "crossConceptKeys": [],
@@ -278,9 +278,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:2161aaddc24abaf7cbe979f1a57163305a87413da42f5c80539c4b0f4945a2e9",
       "difficultyEvidenceSha": "sha256:9b7e030166456afaa79e4613ccd1f4da97c78aa0768f9e00134572b50faf1e75",
-      "solutionImageAlt": "윗변 2 cm, 아랫변 5 cm, 사다리꼴 높이 4 cm인 밑면과 높이 10 cm인 사각기둥",
-      "solutionImageCaption": "사다리꼴 밑넓이에 기둥 높이 10 cm를 곱한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 왼쪽은 윗변 2cm, 아랫변 5cm, 높이 4cm, 빗변 5cm인 직각사다리꼴 밑면(넓이 14로 색칠)이고, 오른쪽은 그 사다리꼴을 밑면으로 하고 높이가 10cm인 사각기둥이다.",
+      "solutionImageCaption": "밑넓이 14인 사다리꼴 밑면에 기둥의 높이 10을 곱해 부피를 구한다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 7,
