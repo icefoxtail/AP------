@@ -273,6 +273,69 @@ def vname(solid, i):
     return n if n else 'v%d' % i
 
 
+# --- vertex references: "#b0" "#t2" "#apex" "#v5" (optionally "s2#b0") stand for a vertex wherever a name does ---------------------------------------
+# A vertex without a name is known by the key "<solid id>.<slot>" ("s1.b0"); a key is the name when there is one. Keys are joined "AB" while they are plain
+# names and "s1.b0-s1.b1" as soon as one is a canonical key. Written here from the grammar alone (not from the producer).
+VREF = re.compile(r'^([a-z][a-z0-9]{0,7})?#(?:([btv])(\d{1,2})|(apex))$')
+PLAIN_KEY = re.compile(r'^[A-Z]′?$')
+
+
+def join_keys(keys):
+    keys = list(keys)
+    return ''.join(keys) if all(PLAIN_KEY.fullmatch(k) for k in keys) else '-'.join(keys)
+
+
+def split_edge(edge):
+    """the two keys of a data-edge written by join_keys"""
+    if '-' in edge:
+        a, b = edge.split('-', 1)
+        return a, b
+    parts = re.findall(r'[A-Z]′?', edge)
+    return (parts[0], parts[1]) if len(parts) == 2 else (None, None)
+
+
+def _ring_size(solid):
+    n = len(solid['verts'])
+    return n - 1 if solid['kind'] == 'PYRAMID' else n // 2
+
+
+def vertex_slot(solid, i):
+    n = _ring_size(solid)
+    if solid['kind'] == 'PYRAMID': return 'b%d' % i if i < n else 'apex'
+    return 'b%d' % i if i < n else 't%d' % (i - n)
+
+
+def vertex_keys(solid, i):
+    """the keys a polyhedron vertex answers to: its names, or its canonical key when it has none (a solid with cuts renumbers: names only)"""
+    name = solid['verts'][i][0]
+    if name: return solid['aliases'].get(i, [name])
+    return [] if solid.get('cut') else ['%s.%s' % (solid['id'], vertex_slot(solid, i))]
+
+
+def make_norm(solids, named):
+    """name or reference -> key of its vertex (the name when it has one); ValueError with the plan's error code otherwise"""
+    def norm(x, unknown='SOLID_NAME_UNKNOWN'):
+        if not isinstance(x, str): raise ValueError(unknown)
+        if '#' not in x:
+            if x not in named: raise ValueError(unknown)
+            return x
+        m = VREF.fullmatch(x)
+        if not m: raise ValueError('SOLID_VREF_INVALID:' + x[:16])
+        prefix, ring, index, apex = m.groups()
+        found = []
+        for solid in solids:
+            if solid['cat'] != 'POLY' or solid.get('cut') or (prefix is not None and solid['id'] != prefix): continue
+            total, n = len(solid['verts']), _ring_size(solid)
+            if apex: i = n if solid['kind'] == 'PYRAMID' else None
+            elif ring == 'v': i = int(index) if int(index) < total else None
+            elif ring == 'b': i = int(index) if int(index) < n else None
+            else: i = None if solid['kind'] == 'PYRAMID' else (n + int(index) if int(index) < n else None)
+            if i is not None: found.append((solid, i))
+        if len(found) != 1: raise ValueError('SOLID_VREF_UNKNOWN:' + x[:16] if not found else 'SOLID_VREF_AMBIGUOUS:' + x[:16])
+        return vertex_keys(found[0][0], found[0][1])[0]
+    return norm
+
+
 # --- depth test ---------------------------------------------------------------------------------------------------------------------------
 def _winding_inside(poly, q):
     """winding number of a planar polygon (2D) around q: non-zero means inside"""
@@ -518,6 +581,8 @@ def audit_solids(plan, ctx):
                 if name:
                     for alias in solid['aliases'].get(i, [name]): named[alias] = (sid, px(p), p)
                     if i in solid['aliases']: ctx['label_text'][name] = ','.join(solid['aliases'][i])
+                else:
+                    for key in vertex_keys(solid, i): named[key] = (sid, px(p), p)
             check_poly_edges(solid, root, px, scale, errors)
             audit_counts(solid, (specs_by_id.get(sid) or {}).get('count') or {}, px, ctx)
             counted.add(sid)
@@ -530,8 +595,10 @@ def audit_solids(plan, ctx):
         if g.get('data-label-role') in COUNT_ROLES and g.get('data-solid') not in counted: errors.append('SOLID_COUNT_LABEL_UNEXPECTED:' + str(g.get('id')))
     ctx['named'] = named
     ctx['px'] = {sid: frames[sid] for sid in frames}
+    norm = ctx['norm'] = make_norm(solids, named)
     # aux segments, highlights, section
-    declared_pairs = {s_['from'] + s_['to']: (s_['from'], s_['to']) for s_ in plan.get('segments') or []}
+    plan_segments = [(norm(s_['from']), norm(s_['to'])) for s_ in plan.get('segments') or []]
+    declared_pairs = {join_keys(pair): pair for pair in plan_segments}
     for el in root.iter(NS + 'line'):
         if el.get('data-role') == 'segment':
             ident = el.get('data-edge') or ''
@@ -551,22 +618,23 @@ def audit_solids(plan, ctx):
                 _stroke_ok(el, hid, errors, 'segment-' + ident)
             else: _stroke_ok(el, style == 'DASHED', errors, 'segment-' + ident)
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
-    declared_segments = {s['from'] + s['to'] for s in plan.get('segments') or []}
+    declared_segments = {join_keys(pair) for pair in plan_segments}
     drawn_segments = {el.get('data-edge') for el in root.iter(NS + 'line') if el.get('data-role') == 'segment'}
     if declared_segments != drawn_segments: errors.append('SOLID_SEGMENT_SET_MISMATCH')
     all_highlights = plan.get('highlights') or []
-    highlights = [h['polygon'] for h in all_highlights if h.get('polygon') is not None]
+    highlights = [[norm(n) for n in h['polygon']] for h in all_highlights if h.get('polygon') is not None]
     drawn = {el.get('data-polygon'): el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'highlight-face' and el.get('data-polygon') is not None}
-    if sorted(''.join(h) for h in highlights) != sorted(drawn): errors.append('SOLID_HIGHLIGHT_SET_MISMATCH')
+    if sorted(join_keys(h) for h in highlights) != sorted(drawn): errors.append('SOLID_HIGHLIGHT_SET_MISMATCH')
     for entry in all_highlights:
         if entry.get('polygon') is None: continue
-        el = drawn.get(''.join(entry['polygon']))
-        if el is not None and (el.get('data-fill') or 'LIGHT') != (entry.get('fill') or 'LIGHT'): errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + ''.join(entry['polygon']))
+        key = join_keys([norm(n) for n in entry['polygon']])
+        el = drawn.get(key)
+        if el is not None and (el.get('data-fill') or 'LIGHT') != (entry.get('fill') or 'LIGHT'): errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + key)
     for h in highlights:
-        el = drawn.get(''.join(h))
+        el = drawn.get(join_keys(h))
         if el is None: continue
         pts = _points(el.get('points'))
-        if len(pts) != len(h): errors.append('SOLID_HIGHLIGHT_POINTS_MISMATCH:' + ''.join(h)); continue
+        if len(pts) != len(h): errors.append('SOLID_HIGHLIGHT_POINTS_MISMATCH:' + join_keys(h)); continue
         for name, q in zip(h, pts):
             if name not in named or math.hypot(named[name][1][0] - q[0], named[name][1][1] - q[1]) > POS_TOL: errors.append('SOLID_HIGHLIGHT_VERTEX_OFF:' + name)
         # planar in 3D: the named vertices must be coplanar
@@ -630,7 +698,7 @@ def audit_solids(plan, ctx):
     elif liquid_els:
         errors.append('SOLID_LIQUID_REGION_WITHOUT_SECTION')
     check_body_fill(plan, solids, frames, scale, root, errors)
-    audit_marks(plan, solid_named=named, frames=frames, scale=scale, root=root, errors=errors, px_by_id=ctx.get('px'))
+    audit_marks(plan, solid_named=named, frames=frames, scale=scale, root=root, errors=errors, px_by_id=ctx.get('px'), norm=norm)
     for el in root.iter(NS + 'line'):
         if el.get('data-role') == 'dim-line':
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
@@ -1064,17 +1132,18 @@ def _parallel(u, v):
     return abs(u[0] * v[1] - u[1] * v[0]) <= 1e-6 * max(1.0, math.hypot(*u) * math.hypot(*v))
 
 
-def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id):
+def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id, norm=None):
     marks = plan.get('marks') or {}
     named = solid_named or {}
-    right = {(m.get('id') or 'ra%d' % (k + 1)): m for k, m in enumerate(marks.get('rightAngles') or [])}
+    norm = norm or (lambda x: x)
+    right = {(m.get('id') or 'ra%d' % (k + 1)): {**m, 'at': norm(m['at']), 'refs': [norm(r) for r in m['refs']]} for k, m in enumerate(marks.get('rightAngles') or [])}
     equal = {}
     for k, g in enumerate(marks.get('equalLengths') or []):
         segs = []
         for pair in g.get('segments') or []:
-            segs.append(list(pair) if isinstance(pair, (list, tuple)) else [pair[0], pair[1]])
+            segs.append([norm(x) for x in (list(pair) if isinstance(pair, (list, tuple)) else [pair[0], pair[1]])])
         equal[g.get('id') or 'eq%d' % (k + 1)] = {**g, 'segments': segs}
-    angles = {(m.get('id') or 'an%d' % (k + 1)): m for k, m in enumerate(marks.get('angles') or [])}
+    angles = {(m.get('id') or 'an%d' % (k + 1)): {**m, 'refs': [norm(r) for r in m['refs']]} for k, m in enumerate(marks.get('angles') or [])}
     drawn_right, drawn_equal, drawn_angles = set(), {}, {}
     for el in root.iter(NS + 'polyline'):
         role = el.get('data-role')
@@ -1086,7 +1155,7 @@ def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id):
                 errors.append('SOLID_RIGHT_ANGLE_MARK_UNKNOWN:' + str(mid))
                 continue
             m = right[mid]
-            if el.get('data-at') != m['at'] or el.get('data-refs') != ''.join(m['refs']):
+            if el.get('data-at') != m['at'] or el.get('data-refs') != join_keys(m['refs']):
                 errors.append('SOLID_RIGHT_ANGLE_MARK_OWNER:' + mid)
                 continue
             V, A, B = named[m['at']][2], named[m['refs'][0]][2], named[m['refs'][1]][2]
@@ -1178,7 +1247,7 @@ def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id):
             errors.append('SOLID_EQUAL_MARK_UNKNOWN:' + str(mid))
             continue
         g = equal[mid]
-        a, b = edge[0], edge[1]
+        a, b = split_edge(edge)
         if a not in named or b not in named or [a, b] not in g['segments'] and [b, a] not in g['segments']:
             errors.append('SOLID_EQUAL_MARK_SEGMENT:' + mid)
             continue
@@ -1211,7 +1280,7 @@ def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id):
             errors.append('SOLID_EQUAL_MARK_COUNT:' + mid)
     for mid, g in equal.items():
         for a, b in g['segments']:
-            if (mid, a + b) not in groups and (mid, b + a) not in groups:
+            if (mid, join_keys([a, b])) not in groups and (mid, join_keys([b, a])) not in groups:
                 errors.append('SOLID_EQUAL_MARK_MISSING:%s:%s%s' % (mid, a, b))
 
 
@@ -1746,7 +1815,8 @@ def expected_dim_values(plan, ctx):
         try:
             if d.get('edge') is not None or d.get('from') is not None:
                 a, b = (d['edge'][0], d['edge'][1]) if d.get('edge') is not None else (d['from'], d['to'])
-                A, B = named[a], named[b]
+                norm = ctx.get('norm') or (lambda x: x)
+                A, B = named[norm(a)], named[norm(b)]
                 out[ident] = (vlen(vsub(A[2], B[2])), (A[1], B[1]), symbolic)
             else:
                 solid = None
@@ -1776,7 +1846,7 @@ def expected_dim_values(plan, ctx):
                     out[ident] = (solid['height'] * (1 - f) if d.get('level') == 'top' else solid['height'] * f, None, symbolic)
                 elif d.get('height') is not None: out[ident] = (solid['height'], None, symbolic)
                 else: out[ident] = (math.hypot(solid['r1'] - solid['r0'], solid['height']), None, symbolic)
-        except (KeyError, TypeError):
+        except (KeyError, TypeError, ValueError):
             ctx['errors'].append('SOLID_DIM_PLAN_UNRESOLVED:' + ident)
     # the segments of radius / height / slant dimensions come from the drawn dim-lines (data-dim) or the silhouette; resolved in px by the dim line
     for e in ctx['root'].iter(NS + 'line'):

@@ -689,3 +689,62 @@ class BodyFill(unittest.TestCase):
         square = [(0.0, 0.0), (4.0, 0.0), (4.0, 4.0), (0.0, 4.0), (2.0, 2.0), (1.0, 3.0)]
         self.assertEqual(sorted(O._hull(square)), sorted(square[:4]))
         self.assertAlmostEqual(O._area(O._hull(square)), 16.0)
+
+
+class VertexReferences(unittest.TestCase):
+    """E28b: "#b0", "#t2", "#apex", "#v5" (and "s2#b0") stand for a vertex wherever a name does; the observer resolves them from the grammar alone."""
+
+    def table(self, solids):
+        named = {}
+        for s in solids:
+            for i, (name, p) in enumerate(s['verts']):
+                for key in (s['aliases'].get(i, [name]) if name else O.vertex_keys(s, i)): named[key] = (s['id'], (0.0, 0.0), p)
+        return named
+
+    def norm(self, specs):
+        solids = [O.build_solid({**spec, 'id': 's%d' % (i + 1)}) for i, spec in enumerate(specs)]
+        return O.make_norm(solids, self.table(solids)), solids
+
+    def test_slots_of_a_prism_a_pyramid_and_the_model_order(self):
+        prism = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 3}, 'height': 2, 'names': UNNAMED}
+        norm, _ = self.norm([prism])
+        self.assertEqual([norm(x) for x in ('#b0', '#b3', '#t0', '#t3', '#v0', '#v4', '#v7')], ['s1.b0', 's1.b3', 's1.t0', 's1.t3', 's1.b0', 's1.t0', 's1.t3'])
+        for bad in ('#apex', '#b4', '#t4', '#v8'): self.assertRaises(ValueError, norm, bad)
+        pyramid = {'kind': 'PYRAMID', 'base': {'kind': 'REGULAR', 'n': 5, 'side': 2}, 'height': 4, 'names': '.' * 6}
+        norm, _ = self.norm([pyramid])
+        self.assertEqual([norm(x) for x in ('#b4', '#apex', '#v5', '#v0')], ['s1.b4', 's1.apex', 's1.apex', 's1.b0'])
+        for bad in ('#t0', '#b5', '#v6'): self.assertRaises(ValueError, norm, bad)
+
+    def test_a_named_vertex_keeps_its_name_and_a_plain_name_must_exist(self):
+        norm, _ = self.norm([{'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 2, 'names': {'base': 'FGHE', 'top': 'BCDA'}}])
+        self.assertEqual([norm(x) for x in ('#b0', '#t2', 'G', '#v6')], ['F', 'D', 'G', 'D'])
+        self.assertRaises(ValueError, norm, 'Z')
+        self.assertRaises(ValueError, norm, 5)
+        self.assertRaises(ValueError, norm, '#q1')
+        self.assertRaises(ValueError, norm, 'b0')
+
+    def test_several_polyhedra_need_the_solid_id_and_a_cut_solid_has_no_slots(self):
+        prism = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 2, 'names': UNNAMED}
+        pyramid = {'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 3, 'names': '.....'}
+        norm, _ = self.norm([prism, pyramid])
+        self.assertRaises(ValueError, norm, '#b0')           # fits both
+        self.assertEqual(norm('s2#b0'), 's2.b0')
+        self.assertEqual(norm('#t0'), 's1.t0')                # only the prism has a top ring
+        self.assertEqual(norm('#apex'), 's2.apex')            # only the pyramid has an apex
+        self.assertRaises(ValueError, norm, 's9#b0')
+        cut = {**prism, 'names': {'base': 'FGHE', 'top': 'BCDA'}, 'cuts': [{'through': [['AD', '1/2', 'M'], ['BC', '1/2', 'N'], ['CG', '1/2', 'P'], ['DH', '1/2', 'Q']]}]}
+        norm, _ = self.norm([cut])
+        self.assertRaises(ValueError, norm, '#b0')
+        self.assertEqual(norm('F'), 'F')
+
+    def test_keys_are_joined_plain_or_with_a_dash_and_split_back(self):
+        self.assertEqual(O.join_keys(['A', 'B']), 'AB')
+        self.assertEqual(O.join_keys(['A′', 'B']), 'A′B')
+        self.assertEqual(O.join_keys(['s1.b0', 's1.b1']), 's1.b0-s1.b1')
+        self.assertEqual(O.join_keys(['A', 's1.b1']), 'A-s1.b1')
+        self.assertEqual(O.join_keys(['s1.b0', 'B', 'C']), 's1.b0-B-C')
+        self.assertEqual(O.split_edge('AB'), ('A', 'B'))
+        self.assertEqual(O.split_edge('A′B'), ('A′', 'B'))
+        self.assertEqual(O.split_edge('s1.b0-s1.b1'), ('s1.b0', 's1.b1'))
+        self.assertEqual(O.split_edge('A-s2.apex'), ('A', 's2.apex'))
+        self.assertEqual(O.split_edge('ABC'), (None, None))

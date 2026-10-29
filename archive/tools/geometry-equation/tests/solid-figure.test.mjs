@@ -1035,3 +1035,85 @@ test('E28: a level fill is refused where it has no body to shade',()=>{
   bad({kind:'CONE',radius:4,height:6},{kind:'AXIAL',fill:'BOTTOM'},'SOLID_SECTION_INVALID');
   bad({kind:'CONE',radius:4,height:6},{kind:'LEVEL',at:'1/2',colour:'blue'},'SOLID_SECTION_INVALID');
 });
+
+// --- E28b: the vertices of a solid with no names are written by reference (#b0, #t2, #apex, #v5) -------------------------------------------------
+const bare=(over={})=>figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:4},height:4,names:'........'}],...over});
+const segmentLines=(plan)=>solidFigureSpec(plan,solveSolidFigure(plan)).prims.filter(p=>p.role==='segment').map(p=>[p.x1,p.y1,p.x2,p.y2]);
+test('E28b: a reference is the same vertex as its name; the model keys an unnamed vertex "<solid>.<slot>" and a named one by its name',()=>{
+  const byName=figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:4},height:4,names:'ABCDEFGH'}],segments:[{from:'B',to:'E',style:'SOLID'},{from:'C',to:'H',style:'SOLID'}],dims:[{edge:'AB'}]});
+  const byRef=bare({segments:[{from:'#b1',to:'#t0',style:'SOLID'},{from:'#b2',to:'#v7',style:'SOLID'}],dims:[{edge:['#b0','#b1']}]});
+  assert.deepEqual(segmentLines(byRef),segmentLines(byName));
+  const model=solveSolidFigure(byRef);
+  assert.deepEqual(model.segments.map(s=>[s.from,s.to]),[['s1.b1','s1.t0'],['s1.b2','s1.t3']]);// #v7 is the 8th vertex: the top ring's last
+  assert.deepEqual([model.dims[0].from,model.dims[0].to,model.dims[0].tex],['s1.b0','s1.b1','4\\,\\mathrm{cm}']);
+  // a name and a reference may be mixed, and a named vertex written by reference keeps its name as its key
+  const mixed=figure({unit:'cm',solids:[cuboid()],segments:[{from:'#b0',to:'#t2'}],dims:[{edge:['F','#b1']},{from:'#t0',to:'C'}]});// base FGHE, top BCDA
+  const m=solveSolidFigure(mixed);
+  assert.deepEqual(m.segments.map(s=>[s.from,s.to]),[['F','D']]);
+  assert.deepEqual(m.dims.map(d=>[d.from,d.to]),[['F','G'],['B','C']]);
+  // a pyramid has #b<i> and #apex (and #v<i> in model order); a frustum, like a prism, has two rings
+  const pyramid=figure({unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:5,names:'.....'}],dims:[{edge:['#b0','#apex']},{edge:['#v4','#v1']}]});
+  assert.deepEqual(solveSolidFigure(pyramid).dims.map(d=>[d.from,d.to]),[['s1.b0','s1.apex'],['s1.apex','s1.b1']]);
+  const frustum=frustum5({segments:[{from:'#b0',to:'#t0',style:'AUTO'}]});
+  assert.deepEqual(solveSolidFigure(frustum).segments.map(s=>[s.from,s.to]),[['s1.b0','s1.t0']]);
+});
+test('E28b: references name the solid when there are several, and each refusal has its own code',()=>{
+  const bad=(over,expected,solids)=>assert.throws(()=>solveSolidFigure(solids?figure({unit:'cm',solids,...over}):bare(over)),code(expected),expected);
+  bad({segments:[{from:'#x0',to:'#b1'}]},'SOLID_VREF_INVALID');
+  bad({segments:[{from:'b0',to:'#b1x'}]},'SOLID_NAME_UNKNOWN');// a plain word is a name, and no such name exists
+  bad({segments:[{from:'#b0#',to:'#b1'}]},'SOLID_VREF_INVALID');
+  bad({segments:[{from:'#b4',to:'#b1'}]},'SOLID_VREF_UNKNOWN:#b4');
+  bad({segments:[{from:'#t4',to:'#b1'}]},'SOLID_VREF_UNKNOWN:#t4');
+  bad({segments:[{from:'#v8',to:'#b1'}]},'SOLID_VREF_UNKNOWN:#v8');
+  bad({segments:[{from:'#apex',to:'#b1'}]},'SOLID_VREF_UNKNOWN:#apex');// a prism has no apex
+  bad({segments:[{from:'#b1',to:'#b1'}]},'SOLID_NAME_UNKNOWN');
+  bad({dims:[{edge:['#b0','#t2']}]},'SOLID_DIM_SEGMENT_NOT_DRAWN:s1.b0-s1.t2');// a face diagonal is no drawn edge
+  bad({dims:[{edge:['#b0']}]},'SOLID_DIMS_INVALID');
+  bad({dims:[{edge:5}]},'SOLID_DIMS_INVALID');
+  bad({marks:{rightAngles:[{at:'#b0',refs:['#b1','#b1']}]}},'SOLID_MARKS_INVALID');
+  bad({marks:{equalLengths:[{segments:[['#b0','#b1'],['#b0','#t0','#t1']]}]}},'SOLID_MARKS_INVALID');
+  bad({marks:{rightAngles:[{at:'#b0',refs:['#b1','#b9']}]}},'SOLID_VREF_UNKNOWN:#b9');
+  bad({highlights:[{polygon:['#b0','#b1','#b2','#t0']}]},'SOLID_HIGHLIGHT_NOT_PLANAR');
+  bad({highlights:[{polygon:['#b0','#b1','#b2']}]},'SOLID_HIGHLIGHT_EDGE_NOT_DRAWN:s1.b2-s1.b0');
+  // two polyhedra: an unprefixed reference that fits both is ambiguous; the solid id settles it, and a missing solid or a round one is refused
+  const two=[{id:'s1',kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:3,names:'........'},{id:'s2',kind:'PYRAMID',base:{kind:'RECT',width:2,depth:2},height:3,names:'.....'},{id:'s3',kind:'CYLINDER',radius:1,height:2}];
+  bad({segments:[{from:'#b0',to:'#b1'}]},'SOLID_VREF_AMBIGUOUS:#b0',two);
+  bad({segments:[{from:'#apex',to:'#b1'}]},'SOLID_VREF_AMBIGUOUS:#b1',two);
+  bad({segments:[{from:'s9#b0',to:'s1#b1'}]},'SOLID_VREF_SOLID_UNKNOWN:s9',two);
+  bad({segments:[{from:'s3#b0',to:'s1#b1'}]},'SOLID_VREF_UNSUPPORTED:CYLINDER',two);
+  const model=solveSolidFigure(figure({unit:'cm',solids:two,segments:[{from:'#t0',to:'s1#b1'},{from:'#apex',to:'s2#b1'}],dims:[{edge:['s1#b0','s1#b1']}]}));
+  assert.deepEqual(model.segments.map(s=>[s.from,s.to]),[['s1.t0','s1.b1'],['s2.apex','s2.b1']]);// #t0 and #apex fit one solid each
+  // a solid with cuts has no base ring any more: its vertices are named or nothing
+  const cut=cutCube([{through:midCut}],{unit:'cm',segments:[{from:'#b0',to:'#b1'}]});
+  assert.throws(()=>solveSolidFigure(cut),code('SOLID_VREF_UNKNOWN'));
+  assert.throws(()=>solveSolidFigure(cutCube([{through:midCut}],{unit:'cm',segments:[{from:'s1#b0',to:'F'}]})),code('SOLID_VREF_UNSUPPORTED:CUT'));
+});
+test('E28b: an unnamed cube with a corner pyramid composes with every reference kind and the observer reads each back',async()=>{
+  const plan=bare({
+    segments:[{from:'#b1',to:'#b3',style:'AUTO',role:'REF'},{from:'#b1',to:'#t0',style:'AUTO',role:'REF'},{from:'#b3',to:'#t0',style:'AUTO',role:'REF'}],
+    highlights:[{polygon:['#b0','#b1','#b3'],fill:'WARM'}],
+    marks:{rightAngles:[{at:'#b0',refs:['#b1','#b3']}],equalLengths:[{count:1,segments:[['#b0','#b1'],['#b0','#b3'],['#b0','#t0']]}],angles:[{refs:['#b1','#b3','#t0'],arcs:1}]},
+    dims:[{edge:['#b0','#t0'],label:'a'},{edge:['#b0','#b1'],label:'a'}]
+  });
+  const svg=await sphereSvg(plan);
+  assert.match(svg,/<line id="segment-s1\.b1-s1\.b3" data-role="segment" data-edge="s1\.b1-s1\.b3"/);
+  assert.match(svg,/id="highlight-s1\.b0-s1\.b1-s1\.b3" data-role="highlight-face" data-polygon="s1\.b0-s1\.b1-s1\.b3"/);
+  assert.match(svg,/data-role="right-angle-mark" data-mark="ra1" data-at="s1\.b0" data-refs="s1\.b1-s1\.b3"/);
+  assert.match(svg,/data-mark="eq1" data-edge="s1\.b0-s1\.b1" data-mark-index="1"/);
+  assert.match(svg,/data-segment="s1\.b0-s1\.t0"/);
+  // tampering: an end of a segment moved, a segment named after other vertices, a shaded corner moved, a right angle at another vertex
+  const seg=svg.match(/<line id="segment-s1\.b1-s1\.b3"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(seg,seg.replace(/x2="([\d.]+)"/,(all,v)=>`x2="${Number(v)+8}"`)),'SOLID_SEGMENT_ENDPOINT_OFF');
+  await failingAudit(plan,svg.replace(seg,seg.replace('data-edge="s1.b1-s1.b3"','data-edge="s1.b1-s1.t3"')),'SOLID_SEGMENT_');
+  const poly=svg.match(/<polygon id="highlight-s1\.b0-s1\.b1-s1\.b3"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(poly,poly.replace(/points="([\d.]+),([\d.]+)/,(all,x,y)=>`points="${Number(x)+9},${y}`)),'SOLID_HIGHLIGHT_VERTEX_OFF');
+  const ra=svg.match(/<polyline id="ra1"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(ra,ra.replace('data-at="s1.b0"','data-at="s1.b1"')),'SOLID_RIGHT_ANGLE_MARK_OWNER');
+  // the same figure against a plan that points at other vertices
+  await failingAudit({...plan,segments:[{from:'#b1',to:'#b3',style:'AUTO',role:'REF'},{from:'#b2',to:'#t0',style:'AUTO',role:'REF'},{from:'#b3',to:'#t0',style:'AUTO',role:'REF'}]},svg,'SOLID_SEGMENT_');
+  // the lengths are read back too: a plan that swaps two dimensioned edges of different length fails against the figure it did not make
+  const box=dims=>figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:3},height:2,names:'........'}],dims});
+  const boxSvg=await sphereSvg(box([{edge:['#b0','#b1']},{edge:['#b1','#b2']},{edge:['#b1','#t1']}]));
+  assert.match(boxSvg,/data-tex="4\\,\\mathrm\{cm\}"/);assert.match(boxSvg,/data-segment="s1\.b1-s1\.t1"/);
+  await failingAudit(box([{edge:['#b0','#b1']},{edge:['#b1','#t1']},{edge:['#b1','#b2']}]),boxSvg,'SOLID_DIM_VALUE_MISMATCH');
+});

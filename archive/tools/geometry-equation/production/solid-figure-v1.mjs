@@ -480,6 +480,75 @@ function dimLabel(raw,value,unit,code,{angle=false}={}){
   return {tex:numeric&&unit&&!angle?tex+'\\,\\mathrm{'+unit+'}':tex,text,numeric,value:r6(value)};
 }
 
+// --- vertex references --------------------------------------------------------------------------------------------------------------------------
+// A figure whose source shows no vertex names writes the vertices of a polyhedron by a reference instead of inventing letters: "#b0" the i-th vertex of the
+// base ring (the order of the base polygon), "#t2" the i-th of the top ring (prism, frustum), "#apex" the apex of a pyramid, "#v5" the 6th vertex of the model
+// (any polyhedron: the same order as the counting numbers 1, 2, ...). "s2#b0" names the solid when the plan has several polyhedra. A reference stands wherever a
+// name does (segments, dims edge/from/to, highlights polygon, marks) and works whether the vertex has a name or not. A vertex without a name is known in the model
+// by its canonical key "<solid id>.<slot>" ("s1.b0"); a key is the name when there is one.
+const VREF=/^([a-z][a-z0-9]{0,7})?#(?:([btv])(\d{1,2})|(apex))$/;
+const PLAIN_KEY=/^[A-Z]′?$/u;
+/** Keys written together: "AB" for plain vertex names, "s1.b0-s1.b1" (joined by '-') as soon as one is a canonical key; used in ids and data-* of the SVG. */
+export const joinKeys=keys=>keys.every(k=>PLAIN_KEY.test(k))?keys.join(''):keys.join('-');
+const ringSize=solid=>solid.kind==='PYRAMID'?solid.vertices.length-1:solid.vertices.length/2;
+/** The slot of vertex i of a polyhedron in the reference grammar. */
+function vertexSlot(solid,i){
+  if(solid.kind==='PYRAMID'){const n=ringSize(solid);return i<n?'b'+i:'apex';}
+  const n=ringSize(solid);
+  return i<n?'b'+i:'t'+(i-n);
+}
+/** The keys a polyhedron vertex answers to: its names, or the one canonical key when it has none (a solid with cuts renumbers its vertices: only names). */
+const vertexKeys=(solid,i)=>{const v=solid.vertices[i];return v.name?(v.aliases??[v.name]):solid.cuts?[]:[solid.id+'.'+vertexSlot(solid,i)];};
+/** The vertex index of a slot written in a reference, or null when this polyhedron has no such vertex. */
+function slotIndex(solid,ring,index,apex){
+  const total=solid.vertices.length,n=ringSize(solid);
+  if(apex)return solid.kind==='PYRAMID'?n:null;
+  const i=Number(index);
+  if(ring==='v')return i<total?i:null;
+  if(ring==='b')return i<n?i:null;
+  return solid.kind==='PYRAMID'?null:i<n?n+i:null;
+}
+/** The reference resolver of a plan: a name is checked against the named points; a reference becomes the key of the vertex it stands for (the name when it has one). */
+function vertexResolver(solids,named){
+  return (x,unknown='SOLID_NAME_UNKNOWN')=>{
+    if(typeof x!=='string')bad(unknown);
+    if(!x.includes('#')){if(!named.has(x))bad(unknown);return x;}
+    const m=VREF.exec(x);
+    if(!m)bad('SOLID_VREF_INVALID:'+x.slice(0,16));
+    const [,prefix,ring,index,apex]=m;
+    if(prefix!==undefined){
+      const owner=solids.find(s=>s.id===prefix);
+      if(!owner)bad('SOLID_VREF_SOLID_UNKNOWN:'+prefix);
+      if(owner.category!=='POLY')bad('SOLID_VREF_UNSUPPORTED:'+owner.kind);
+      if(owner.cuts)bad('SOLID_VREF_UNSUPPORTED:CUT');
+    }
+    const found=[];
+    for(const solid of solids){
+      if(solid.category!=='POLY'||solid.cuts||(prefix!==undefined&&solid.id!==prefix))continue;
+      const i=slotIndex(solid,ring,index,apex);
+      if(i!==null)found.push([solid,i]);
+    }
+    if(!found.length)bad('SOLID_VREF_UNKNOWN:'+x.slice(0,16));
+    if(found.length>1)bad('SOLID_VREF_AMBIGUOUS:'+x.slice(0,16));
+    return vertexKeys(found[0][0],found[0][1])[0];
+  };
+}
+/** An edge written as a two-letter string ("AB") or as a list of two names / references. */
+function edgePair(e,code){
+  if(Array.isArray(e)){if(e.length!==2)bad(code);return [e[0],e[1]];}
+  if(typeof e!=='string'||e.length!==2)bad(code);
+  return [...e];
+}
+/** Key -> the 3D point, for the names and the canonical keys of the solids of a model. */
+function pointTable(solids){
+  const table=new Map();
+  for(const solid of solids){
+    if(solid.category==='POLY')solid.vertices.forEach((v,i)=>{for(const key of vertexKeys(solid,i))table.set(key,v.p);});
+    else for(const q of solid.points)if(q.name)table.set(q.name,q.p);
+  }
+  return table;
+}
+
 // --- solving the figure ---------------------------------------------------------------------------------------------------------------------
 const MAX_SEGMENTS=10;
 // highlight tints: a fill colour and its opacity (LIGHT is the original blue shade of every highlight)
@@ -544,23 +613,26 @@ function solveSolids(plan){
   // names are global; points are read after the placement
   const named=new Map();
   for(const solid of solids){
-    const list=solid.category==='POLY'?solid.vertices:solid.points;
-    for(const q of list){if(q.name===null||q.name===undefined)continue;for(const alias of q.aliases??[q.name]){if(named.has(alias))bad('SOLID_NAME_DUPLICATE:'+alias);named.set(alias,{solid:solid.id,p:q.p});}}
+    if(solid.category==='POLY')solid.vertices.forEach((v,i)=>{for(const key of vertexKeys(solid,i)){if(named.has(key))bad('SOLID_NAME_DUPLICATE:'+key);named.set(key,{solid:solid.id,p:v.p});}});
+    else for(const q of solid.points){if(q.name===null||q.name===undefined)continue;if(named.has(q.name))bad('SOLID_NAME_DUPLICATE:'+q.name);named.set(q.name,{solid:solid.id,p:q.p});}
   }
+  // a name or a vertex reference ("#b0", "#t2", "#apex", "#v5"; see above) becomes the key of its vertex
+  const vref=vertexResolver(solids,named);
   // segments (aux) between named points
   const segments=[];
   if(plan.segments!==undefined){
     if(!Array.isArray(plan.segments)||plan.segments.length>MAX_SEGMENTS)bad('SOLID_SEGMENTS_INVALID');
     for(const s of plan.segments){
       onlyKeys(s,['from','to','style','role'],'SOLID_SEGMENTS_INVALID');
-      if(!named.has(s.from)||!named.has(s.to)||s.from===s.to)bad('SOLID_NAME_UNKNOWN');
+      const from=vref(s.from),to=vref(s.to);
+      if(from===to)bad('SOLID_NAME_UNKNOWN');
       const style=s.style??'SOLID';
       if(!['SOLID','DASHED','AUTO'].includes(style))bad('SOLID_SEGMENTS_INVALID');
       if(s.role!==undefined&&!['ACCENT','REF'].includes(s.role))bad('SOLID_SEGMENTS_INVALID');
-      segments.push({from:s.from,to:s.to,style,role:s.role??'ACCENT'});
+      segments.push({from,to,style,role:s.role??'ACCENT'});
     }
   }
-  const drawnPair=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=solid.vertices[i],y=solid.vertices[j],has=(v,n)=>v.name===n||(v.aliases?.includes(n)??false);return (has(x,a)&&has(y,b))||(has(x,b)&&has(y,a));}));
+  const drawnPair=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=vertexKeys(solid,i),y=vertexKeys(solid,j);return (x.includes(a)&&y.includes(b))||(x.includes(b)&&y.includes(a));}));
   // auto visibility of an AUTO segment: depth test at several points
   for(const s of segments)if(s.style==='AUTO'){
     const solid=solids.find(x=>x.id===named.get(s.from).solid);
@@ -594,11 +666,13 @@ function solveSolids(plan){
       }
       if(h.solid!==undefined)bad('SOLID_HIGHLIGHT_INVALID');
       if(!Array.isArray(h.polygon)||h.polygon.length<3||h.polygon.length>6||new Set(h.polygon).size!==h.polygon.length)bad('SOLID_HIGHLIGHT_INVALID');
-      const pts=h.polygon.map(name=>{if(!named.has(name))bad('SOLID_NAME_UNKNOWN');return named.get(name).p;});
+      const keys=h.polygon.map(name=>vref(name));
+      if(new Set(keys).size!==keys.length)bad('SOLID_HIGHLIGHT_INVALID');
+      const pts=keys.map(key=>named.get(key).p);
       const nrm=faceNormal(pts);
       if(pts.some(p=>Math.abs(dot(nrm,sub(p,pts[0])))>1e-6)||len(nrm)<0.5)bad('SOLID_HIGHLIGHT_NOT_PLANAR');
-      for(let k=0;k<h.polygon.length;k++){const a=h.polygon[k],b=h.polygon[(k+1)%h.polygon.length];if(!drawnPair(a,b))bad('SOLID_HIGHLIGHT_EDGE_NOT_DRAWN:'+a+b);}
-      highlights.push({polygon:[...h.polygon],...tint});
+      for(let k=0;k<keys.length;k++){const a=keys[k],b=keys[(k+1)%keys.length];if(!drawnPair(a,b))bad('SOLID_HIGHLIGHT_EDGE_NOT_DRAWN:'+joinKeys([a,b]));}
+      highlights.push({polygon:keys,...tint});
     }
   }
   // marks on named points: right angles, equal-length groups and angle arcs (the plan states the fact; the model checks it in 3D)
@@ -610,17 +684,20 @@ function solveSolids(plan){
     const markId=(given,prefix,k)=>{const id=given??prefix+(k+1);if(typeof id!=='string'||!/^[a-zA-Z][a-zA-Z0-9-]{0,15}$/.test(id)||used.has(id))bad('SOLID_MARK_ID_INVALID:'+String(id).slice(0,24));used.add(id);return id;};
     const cosAngle=(a,v,b)=>{const u=unit(sub(a,v)),w=unit(sub(b,v));return Math.max(-1,Math.min(1,dot(u,w)));};
     const angleDeg=(a,v,b)=>Math.acos(cosAngle(a,v,b))*180/Math.PI;
-    const pointOf=name=>{if(!named.has(name))bad('SOLID_MARK_UNKNOWN:'+String(name).slice(0,24));return named.get(name).p;};
+    const keyOf=x=>vref(x,'SOLID_MARK_UNKNOWN:'+String(x).slice(0,24));
+    const pointOf=key=>named.get(key).p;
     if(plan.marks.rightAngles!==undefined){
       if(!Array.isArray(plan.marks.rightAngles)||plan.marks.rightAngles.length>4)bad('SOLID_MARKS_INVALID');
       for(const [k,m] of plan.marks.rightAngles.entries()){
         onlyKeys(m,['id','at','refs'],'SOLID_MARKS_INVALID');
         const id=markId(m.id,'ra',k);
         if(typeof m.at!=='string'||!Array.isArray(m.refs)||m.refs.length!==2||m.refs[0]===m.refs[1]||m.refs.includes(m.at))bad('SOLID_MARKS_INVALID');
-        const V=pointOf(m.at),A=pointOf(m.refs[0]),B=pointOf(m.refs[1]);
+        const at=keyOf(m.at),r0=keyOf(m.refs[0]),r1=keyOf(m.refs[1]);
+        if(r0===r1||at===r0||at===r1)bad('SOLID_MARKS_INVALID');
+        const V=pointOf(at),A=pointOf(r0),B=pointOf(r1);
         if(Math.abs(cosAngle(A,V,B))>1e-6)bad('SOLID_MARK_NOT_RIGHT_ANGLE:'+id);
-        if(!drawnPair(m.at,m.refs[0])||!drawnPair(m.at,m.refs[1]))bad('SOLID_MARK_RAY_NOT_DRAWN:'+id);
-        marks.rightAngles.push({id,at:m.at,refs:[m.refs[0],m.refs[1]]});
+        if(!drawnPair(at,r0)||!drawnPair(at,r1))bad('SOLID_MARK_RAY_NOT_DRAWN:'+id);
+        marks.rightAngles.push({id,at,refs:[r0,r1]});
       }
     }
     if(plan.marks.equalLengths!==undefined){
@@ -634,11 +711,11 @@ function solveSolids(plan){
         if(!Array.isArray(g.segments)||g.segments.length<2||g.segments.length>4)bad('SOLID_MARKS_INVALID');
         const segs=[];
         for(const pair of g.segments){
-          if(typeof pair!=='string'||pair.length!==2)bad('SOLID_MARKS_INVALID');
-          const [a,b]=[...pair];
+          const [pa,pb]=edgePair(pair,'SOLID_MARKS_INVALID');
+          if(pa===pb)bad('SOLID_MARKS_INVALID');
+          const a=keyOf(pa),b=keyOf(pb),label=Array.isArray(pair)?pair.join(','):pair;
           if(a===b)bad('SOLID_MARKS_INVALID');
-          if(!named.has(a)||!named.has(b))bad('SOLID_MARK_UNKNOWN:'+pair);
-          if(!drawnPair(a,b))bad('SOLID_MARK_SEGMENT_NOT_DRAWN:'+pair);
+          if(!drawnPair(a,b))bad('SOLID_MARK_SEGMENT_NOT_DRAWN:'+label);
           segs.push([a,b]);
         }
         const lengths=segs.map(([a,b])=>len(sub(named.get(a).p,named.get(b).p)));
@@ -654,7 +731,9 @@ function solveSolids(plan){
         onlyKeys(m,['id','refs','value','arcs','equalGroup'],'SOLID_MARKS_INVALID');
         const id=markId(m.id,'an',k);
         if(!Array.isArray(m.refs)||m.refs.length!==3||new Set(m.refs).size!==3)bad('SOLID_MARKS_INVALID');
-        const [a,v,b]=m.refs,A=pointOf(a),V=pointOf(v),B=pointOf(b);
+        const a=keyOf(m.refs[0]),v=keyOf(m.refs[1]),b=keyOf(m.refs[2]);
+        if(new Set([a,v,b]).size!==3)bad('SOLID_MARKS_INVALID');
+        const A=pointOf(a),V=pointOf(v),B=pointOf(b);
         if(!drawnPair(v,a)||!drawnPair(v,b))bad('SOLID_MARK_RAY_NOT_DRAWN:'+id);
         const measured=angleDeg(A,V,B);
         if(!(measured>5&&measured<175))bad('SOLID_MARK_ANGLE_DEGENERATE:'+id);
@@ -707,9 +786,11 @@ function solveSolids(plan){
       const code='d'+(k+1);
       if(d.edge!==undefined||d.from!==undefined){
         let a,b;
-        if(d.edge!==undefined){if(typeof d.edge!=='string'||d.edge.length!==2)bad('SOLID_DIMS_INVALID');[a,b]=[...d.edge];}else{a=d.from;b=d.to;}
-        if(!named.has(a)||!named.has(b)||a===b)bad('SOLID_NAME_UNKNOWN');
-        if(!drawnPair(a,b))bad('SOLID_DIM_SEGMENT_NOT_DRAWN:'+a+b);
+        // the edge is a two-letter string "AB", or a list of two names / vertex references ["#b1","#t1"]; from/to take either too
+        if(d.edge!==undefined)[a,b]=edgePair(d.edge,'SOLID_DIMS_INVALID');else{a=d.from;b=d.to;}
+        a=vref(a);b=vref(b);
+        if(a===b)bad('SOLID_NAME_UNKNOWN');
+        if(!drawnPair(a,b))bad('SOLID_DIM_SEGMENT_NOT_DRAWN:'+joinKeys([a,b]));
         const value=len(sub(named.get(a).p,named.get(b).p));
         dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...dimLabel(d.label,value,unitName,code)});
       }else{
@@ -1059,11 +1140,7 @@ function ellipseOf(S,solid,rad,z){
 const heightDimX=(solid,X)=>r6(Math.max(SAFE+2,Math.min(...solid.vertices.map(v=>X(project(v.p)[0])))-26));
 function spec3d(plan,model,ctx){
   const {S,X,Y,pt,prims,labels,line}=ctx;
-  const named=new Map();
-  for(const solid of model.solids){
-    if(solid.category==='POLY')solid.vertices.forEach(v=>{if(v.name)for(const alias of v.aliases??[v.name])named.set(alias,v.p);});
-    else for(const q of solid.points)if(q.name)named.set(q.name,q.p);
-  }
+  const named=pointTable(model.solids);
   const arcPrim=(id,role,e,u0,u1,vis,attrs={})=>prims.push({t:'arc',id,role,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b),u0:r6(u0),u1:r6(u1),vis,...attrs});
   const outline=[];// polylines for label obstacles are derived from prims later
   const fillFirst=[];
@@ -1071,7 +1148,7 @@ function spec3d(plan,model,ctx){
     if(h.face!==undefined){
       const owner=model.solids.find(x=>x.id===h.solid),face=owner.faces.find(f=>f.id===h.face);
       fillFirst.push({t:'poly',id:`highlight-${h.solid}-${h.face}`,role:'highlight-face',solid:h.solid,face:h.face,fill:h.fill??'LIGHT',points:face.idx.map(i=>pt(project(owner.vertices[i].p)))});
-    }else fillFirst.push({t:'poly',id:'highlight-'+h.polygon.join(''),role:'highlight-face',points:h.polygon.map(n=>pt(project(named.get(n)))),polygon:h.polygon.join(''),fill:h.fill??'LIGHT'});
+    }else fillFirst.push({t:'poly',id:'highlight-'+joinKeys(h.polygon),role:'highlight-face',points:h.polygon.map(n=>pt(project(named.get(n)))),polygon:joinKeys(h.polygon),fill:h.fill??'LIGHT'});
   }
   prims.push(...fillFirst);
   void outline;
@@ -1093,7 +1170,7 @@ function spec3d(plan,model,ctx){
   }
   for(const [k,s] of model.segments.entries()){
     const a=pt(project(named.get(s.from))),b=pt(project(named.get(s.to)));
-    line(`segment-${s.from}${s.to}`,'segment',a,b,{edge:s.from+s.to,vis:s.style==='AUTO'?(s.hidden?'hidden':'solid'):s.style==='DASHED'?'hidden':'solid',accent:s.role,style:s.style});
+    line(`segment-${joinKeys([s.from,s.to])}`,'segment',a,b,{edge:joinKeys([s.from,s.to]),vis:s.style==='AUTO'?(s.hidden?'hidden':'solid'):s.style==='DASHED'?'hidden':'solid',accent:s.role,style:s.style});
     void k;
   }
   // marks: a right angle is a small square in the plane of its two (truly perpendicular) edges, projected; an angle is an arc in its own plane.
@@ -1105,7 +1182,7 @@ function spec3d(plan,model,ctx){
     const kWorld=Math.min(0.4*Math.min(len(sub(A,V)),len(sub(B,V))),20/(S*Math.max(l1,l2)));
     if(kWorld*S*Math.min(l1,l2)<3)bad('SOLID_MARK_ANGLE_DEGENERATE:'+m.id);
     const pts=[add(V,mulv(e1,kWorld)),add(V,mulv(add(e1,e2),kWorld)),add(V,mulv(e2,kWorld))].map(q=>pt(project(q)));
-    prims.push({t:'polyline',id:m.id,role:'right-angle-mark',points:pts,mark:m.id,at:m.at,refs:m.refs.join('')});
+    prims.push({t:'polyline',id:m.id,role:'right-angle-mark',points:pts,mark:m.id,at:m.at,refs:joinKeys(m.refs)});
   }
   for(const g of model.marks.equalLengths){
     for(const [a,b] of g.segments){
@@ -1115,7 +1192,7 @@ function spec3d(plan,model,ctx){
       const ux=dx/l,uy=dy/l,nx=-uy,ny=ux,mx=(pa[0]+pb[0])/2,my=(pa[1]+pb[1])/2;
       for(let i=0;i<g.count;i++){
         const shift=(i-(g.count-1)/2)*5,c=[mx+ux*shift,my+uy*shift];
-        line(`${g.id}-${a}${b}-${i+1}`,'equal-mark',[c[0]-nx*5.5,c[1]-ny*5.5],[c[0]+nx*5.5,c[1]+ny*5.5],{mark:g.id,markEdge:a+b,markIndex:i+1,markCount:g.count});
+        line(`${g.id}-${joinKeys([a,b])}-${i+1}`,'equal-mark',[c[0]-nx*5.5,c[1]-ny*5.5],[c[0]+nx*5.5,c[1]+ny*5.5],{mark:g.id,markEdge:joinKeys([a,b]),markIndex:i+1,markCount:g.count});
       }
     }
   }
@@ -1132,7 +1209,7 @@ function spec3d(plan,model,ctx){
       if(kWorld*S*Math.min(l1,l2)<3)bad('SOLID_MARK_ANGLE_DEGENERATE:'+m.id);
       const pts=[];
       for(let k=0;k<=24;k++){const t=theta*k/24;pts.push(pt(project(add(V,mulv(add(mulv(e1,Math.cos(t)),mulv(w,Math.sin(t))),kWorld)))));}
-      prims.push({t:'polyline',id:m.id+'-arc-'+(ring+1),role:'angle-mark',points:pts,mark:m.id,refs:m.refs.join(''),index:ring+1,count:m.arcs});
+      prims.push({t:'polyline',id:m.id+'-arc-'+(ring+1),role:'angle-mark',points:pts,mark:m.id,refs:joinKeys(m.refs),index:ring+1,count:m.arcs});
     }
   }
   if(model.section?.kind==='AXIAL'){
@@ -1249,7 +1326,7 @@ function spec3d(plan,model,ctx){
     const label={id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id};
     if(d.type==='SEGMENT'){
       const a=pt(project(named.get(d.from))),b=pt(project(named.get(d.to)));
-      labels.push({...label,segment:[a,b],segmentOf:d.from+d.to});
+      labels.push({...label,segment:[a,b],segmentOf:joinKeys([d.from,d.to])});
     }else if(d.type==='RADIUS'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.cut){
