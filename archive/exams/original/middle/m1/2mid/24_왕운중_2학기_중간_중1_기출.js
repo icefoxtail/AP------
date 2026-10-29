@@ -39,7 +39,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 l, m이 만나 이루는 각 61°와 그 보각 x=119°, m에 수직인 선과 l 사이의 각 y=29°를 각 표식으로 나타낸 그림",
+    "solutionImageCaption": "61°의 보각이 x=119°이고, m에 수직인 선과 l이 이루는 각이 y=29°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -163,7 +167,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=16일 때 수직선 위에 A=0, E=6, C=8, D=12, B=16의 위치를 나타내어 EC=2, CD=4, AE=ED임을 눈금 값으로 읽게 한 그림",
+    "solutionImageCaption": "AB=16이면 C는 AB의 중점(8), D는 CB의 중점(12), E는 AD의 중점(6)이므로 EC=2, CD=4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
