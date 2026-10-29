@@ -135,13 +135,53 @@
     if (isHighSemanticSubjectGrade(grade)) return highSemanticSubjectOptions();
     return [];
   };
+  // resolveSubjectProjection is a pure function of the policy and five record
+  // fields, but compose evaluates it for every catalog record several times
+  // per render (~25k records, multi-second for 고2/고3). Memoize per policy
+  // object by the exact resolver inputs. The cache is dropped when the policy
+  // arrays the resolver reads are replaced or resized, and resolver outputs are
+  // never altered.
+  const subjectProjectionCaches = new WeakMap();
+  function subjectProjectionCacheFor(policy) {
+    if (!policy || typeof policy !== "object") return null;
+    const arrays = [
+      policy.gradeCourseAllowlist,
+      policy.allowedGradeCourses,
+      policy.high1CompatibilityProjections,
+      policy.high23SharedSubjects,
+    ];
+    const signature = [policy.canonicalMasterSha256, canonical, ...arrays,
+      ...arrays.map((rows) => (Array.isArray(rows) ? rows.length : -1))];
+    let entry = subjectProjectionCaches.get(policy);
+    if (entry && entry.signature.length === signature.length &&
+        entry.signature.every((value, index) => value === signature[index]))
+      return entry.values;
+    entry = { signature, values: new Map() };
+    subjectProjectionCaches.set(policy, entry);
+    return entry.values;
+  }
+  function resolveSubjectProjectionCached(record, policy) {
+    const resolve = canonical?.resolveSubjectProjection;
+    if (!resolve) return "";
+    const cache = subjectProjectionCacheFor(policy);
+    if (!cache) return resolve(record, policy) || "";
+    const key = `${record.sourceGrade ?? ""}\u0000${record.curriculumKey ?? ""}\u0000${
+      record.courseKey ?? ""}\u0000${record.standardUnitKey ?? ""}\u0000${
+      record.legacyStandardUnitKey ?? ""}`;
+    let value = cache.get(key);
+    if (value === undefined) {
+      value = resolve(record, policy) || "";
+      cache.set(key, value);
+    }
+    return value;
+  }
   function subjectProjectionForRecord(record = {}, grade = "", projectionPolicy = null) {
     const sourceGrade = text(record.sourceGrade);
     if (!sourceGrade || (grade && text(grade) !== sourceGrade)) return "";
-    return canonical?.resolveSubjectProjection?.(
+    return resolveSubjectProjectionCached(
       record,
       projectionPolicy || record.projectionPolicy || null,
-    ) || "";
+    );
   }
   function browseGradeMatchesRecord(record = {}, grade = "", projectionPolicy = null) {
     const sourceGrade = text(record.sourceGrade),
@@ -554,16 +594,31 @@
       (advancedAuthority(record) !== "mf" || !record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
       !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   }
+  // Overlays are rebuilt only when the fallback taxonomy object or its values
+  // change; every other field is read live from the record via the prototype.
+  const generalOverlays = new WeakMap();
+  const GENERAL_FALLBACK_FIELDS = ["curriculumKey", "courseKey", "L1", "L2"];
   function generalFilterRecord(record, options = {}) {
     if (options.useMode !== "general") return record;
     const fallback = record?.unverifiedTaxonomy;
-    const fields = ["curriculumKey", "courseKey", "L1", "L2"];
+    const fields = GENERAL_FALLBACK_FIELDS;
     if (!fallback || fields.some((field) => text(record[field]))) return record;
     if (fields.some((field) => !text(fallback[field]))) return record;
-    return {
-      ...record,
-      ...Object.fromEntries(fields.map((field) => [field, fallback[field]])),
-    };
+    const cached = generalOverlays.get(record);
+    if (cached && cached.fallback === fallback &&
+        fields.every((field, index) => cached.values[index] === fallback[field]))
+      return cached.overlay;
+    // Read-only overlay: filters only read properties, so inherit the record
+    // through the prototype instead of copying every field for every record.
+    const overlay = Object.create(record);
+    for (const field of fields)
+      Object.defineProperty(overlay, field, {
+        value: fallback[field], enumerable: true, writable: true, configurable: true,
+      });
+    generalOverlays.set(record, {
+      fallback, overlay, values: fields.map((field) => fallback[field]),
+    });
+    return overlay;
   }
   function matches(record, filters = {}, options = {}) {
     const filterRecord = options.useMode === "general"
