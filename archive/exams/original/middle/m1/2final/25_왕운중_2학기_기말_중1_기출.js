@@ -738,7 +738,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:b5a38f6744827b75f2302815d8c16a09d2228a70503545b509a9da5e9da35c30",
-      "difficultyEvidenceSha": "sha256:5912cb243dd632332a2af9cff3e6f80d974ad32ada776d97583be34665cf0e9d"
+      "difficultyEvidenceSha": "sha256:5912cb243dd632332a2af9cff3e6f80d974ad32ada776d97583be34665cf0e9d",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 50m 달리기 기록(7~12초)의 도수분포 히스토그램으로 각 막대에 도수 2, 6, 3, 5, 4를 쓰고, 6번째로 빠른 기록이 속한 8초 이상 9초 미만 막대와 10초 이상인 두 막대를 서로 다른 진하기로 표시하며 10초 이상은 9명으로 묶는다.",
+      "solutionImageCaption": "도수 2, 6, 3, 5, 4에서 6번째 기록의 계급과 10초 이상인 계급을 확인하는 그림이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 17,
@@ -781,7 +785,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9bd70b3cce1dab28e8e506e4653d9b65f7d56fafad0ffe2574ceb73a643032c2",
-      "difficultyEvidenceSha": "sha256:8c0d904688bf03666636ec7ac05779728edbacc5e31ae638db1315874b361599"
+      "difficultyEvidenceSha": "sha256:8c0d904688bf03666636ec7ac05779728edbacc5e31ae638db1315874b361599",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 수학 공부시간 28명의 히스토그램으로 각 막대에 도수 4, 3, 7, 9, 5를 쓰고, 120분 이상인 두 막대를 진하게 칠해 합 14명으로 묶어 보인다.",
+      "solutionImageCaption": "각 막대의 도수를 읽고 120분 이상인 두 막대의 도수를 더하는 그림이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 18,
@@ -825,7 +833,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:098d00cd6f562d5981613664240c53634efbbef29cff1ff9cac86d8c232fcb57",
-      "difficultyEvidenceSha": "sha256:9e3505c4e2d17f663b188a6369acd68d5fb6e4935da72851af23d41cb7669599"
+      "difficultyEvidenceSha": "sha256:9e3505c4e2d17f663b188a6369acd68d5fb6e4935da72851af23d41cb7669599",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 줄넘기 횟수의 도수분포다각형에서 50회 이상인 두 계급의 꼭짓점을 큰 점으로 표시하고 도수 5명, 3명을 쓰며 50회부터 60회까지를 괄호로 묶어 보인다.",
+      "solutionImageCaption": "50회 이상인 두 계급의 도수를 읽어 더하는 그림이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 19,
