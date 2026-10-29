@@ -448,7 +448,7 @@ def _parse_arc(d):
 
 
 def label_number(tex):
-    t = re.sub(r'\\,?\\mathrm\{[a-z]+\}', '', tex or '')
+    t = re.sub(r'\\,?\\mathrm\{[a-z]+\}(\^2)?', '', tex or '')
     t = t.replace('\\,', '').replace(' ', '')
     m = re.fullmatch(r'(\d+(?:\.\d+)?)', t)
     if m: return float(m.group(1))
@@ -1768,6 +1768,8 @@ def audit_labels(plan, ctx):
             # a vertex with several names ("M,A,I") is one wide label: its centre is half its width farther out; a single name keeps the 48 px bound
             far = 48 + (box[2] / 2 if ',' in (value or '') else 0)
             if math.hypot(cx - anchor[0], cy - anchor[1]) > far: errors.append('SOLID_NAME_FAR_FROM_VERTEX:' + lid)
+        elif role == 'face-label':
+            check_face_label(g, box, ctx)
         elif role == 'dim':
             dim = g.get('data-dim')
             seen_dims.add(dim)
@@ -1794,10 +1796,48 @@ def audit_labels(plan, ctx):
                     if dist < 1.0 and not g.get('data-segment', '').startswith('net-part:angle'): errors.append('SOLID_DIM_ON_SEGMENT:' + dim)
     for dim in expected_dims:
         if dim not in seen_dims: errors.append('SOLID_DIM_LABEL_MISSING:' + dim)
+    drawn_face_labels = sorted(str(g.get('data-face-of')) for g in ctx['labels'] if g.get('data-label-role') == 'face-label')
+    if drawn_face_labels != sorted(ctx.get('face_label_plan') or {}): errors.append('SOLID_FACE_LABEL_SET_MISMATCH')
     plan_names = ctx.get('expected_name_labels')
     if plan_names is not None:
         got = sorted(g.get('id') for g in ctx['labels'] if g.get('data-label-role') == 'vertex-name')
         if got != sorted(plan_names): errors.append('SOLID_NAME_LABEL_SET_MISMATCH')
+
+
+def _inside_region(region, q, margin=0.0):
+    """q lies inside a region: ('poly', points) or ('circle', cx, cy, r), at least `margin` px from its outline"""
+    if region[0] == 'circle':
+        return math.hypot(q[0] - region[1], q[1] - region[2]) <= region[3] - margin
+    pts = region[1]
+    return _winding_inside(pts, q) and min(_seg_dist(q, pts[i], pts[(i + 1) % len(pts)]) for i in range(len(pts))) >= margin
+
+
+def check_face_label(g, box, ctx):
+    """net.faceLabels: the label of a face writes that face's area (a number is checked against the area worked out from the plan, a symbol is not) and lies wholly inside the face"""
+    errors = ctx['errors']
+    fid = g.get('data-face-of')
+    entry = (ctx.get('face_label_plan') or {}).get(fid)
+    lid = str(g.get('id'))
+    if entry is None or g.get('id') != 'face-label-%s' % fid:
+        errors.append('SOLID_FACE_LABEL_UNKNOWN:' + lid)
+        return
+    want = (ctx.get('face_areas') or {}).get(fid)
+    tex = g.get('data-tex') or ''
+    number = label_number(tex)
+    symbolic = entry.get('text') is not None and label_number(entry['text']) is None
+    if want is None:
+        errors.append('SOLID_FACE_LABEL_UNKNOWN:' + lid)
+        return
+    if symbolic:
+        if number is not None: errors.append('SOLID_FACE_LABEL_VALUE_MISMATCH:%s:%s' % (fid, tex))
+    else:
+        if g.get('data-numeric') != '1' or number is None: errors.append('SOLID_FACE_LABEL_NOT_NUMERIC:' + str(fid))
+        elif abs(number - want) > 1e-6 * max(1.0, want): errors.append('SOLID_FACE_LABEL_VALUE_MISMATCH:%s:%s' % (fid, tex))
+        if ctx.get('unit') and number is not None and '\\mathrm{%s}^2' % ctx['unit'] not in tex: errors.append('SOLID_FACE_LABEL_UNIT_MISSING:' + str(fid))
+    region = (ctx.get('face_regions') or {}).get(fid)
+    if region is None or box is None: return
+    x, y, w, h = box
+    if not all(_inside_region(region, c, 1.0) for c in ((x, y), (x + w, y), (x, y + h), (x + w, y + h), (x + w / 2, y + h / 2))): errors.append('SOLID_FACE_LABEL_OUTSIDE_FACE:' + str(fid))
 
 
 def expected_dim_values(plan, ctx):
@@ -1924,6 +1964,12 @@ def audit_cylinder_net(plan, ctx, declared):
     if cy_b < max(ys) or cy_t > min(ys): errors.append('SOLID_NET_CIRCLE_ON_WRONG_SIDE')
     table = {'rect-width': (2 * math.pi * r, ((min(xs), min(ys)), (max(xs), min(ys)))), 'rect-height': (h, ((max(xs), min(ys)), (max(xs), max(ys)))),
              'radius-top': (r, None), 'radius-bottom': (r, None)}
+    check_excluded_circles(net, circles, ['bottom', 'top'], errors)
+    ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
+    ctx['face_areas'] = {'rect': 2 * math.pi * r * h, 'bottom': math.pi * r * r, 'top': math.pi * r * r}
+    ctx['face_regions'] = {'rect': ('poly', [(min(xs), min(ys)), (max(xs), min(ys)), (max(xs), max(ys)), (min(xs), max(ys))]),
+                           'bottom': ('circle', _num(circles['bottom'], 'cx'), _num(circles['bottom'], 'cy'), _num(circles['bottom'], 'r')),
+                           'top': ('circle', _num(circles['top'], 'cx'), _num(circles['top'], 'cy'), _num(circles['top'], 'r'))}
     ctx['net_dims'] = _dim_defs(plan, ctx, table)
     _fill_dim_lines(ctx)
     ctx['segments'] += [((min(xs), min(ys)), (max(xs), min(ys))), ((min(xs), max(ys)), (max(xs), max(ys)))]
@@ -1964,6 +2010,10 @@ def audit_cone_net(plan, ctx, declared):
     axis = (mid[0] / ml, mid[1] / ml) if ml > 1e-6 else (0.0, 1.0)
     if want > 180: axis = (-axis[0], -axis[1])
     if abs(math.hypot(cx - ax, cy - ay) - (R1 + cr)) > POS_TOL * 1.5 or abs((cx - ax) * axis[1] - (cy - ay) * axis[0]) > POS_TOL * 1.5: errors.append('SOLID_NET_CIRCLE_NOT_TANGENT:base')
+    check_excluded_circles(net, {'base': base}, ['base'], errors)
+    ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
+    ctx['face_areas'] = {'sector': math.pi * r * l, 'base': math.pi * r * r}
+    ctx['face_regions'] = {'base': ('circle', cx, cy, cr)}
     table = {'slant': (l, ((ax, ay), (x2, y2))), 'arc': (2 * math.pi * r, ((ax + axis[0] * R1 - 0.12 * R1 * axis[1], ay + axis[1] * R1 + 0.12 * R1 * axis[0]), (ax + axis[0] * R1 + 0.12 * R1 * axis[1], ay + axis[1] * R1 - 0.12 * R1 * axis[0]))), 'radius': (r, None), 'angle': (want, ((ax, ay), (ax + axis[0] * R1 * 0.35, ay + axis[1] * R1 * 0.35)))}
     ctx['net_dims'] = _dim_defs(plan, ctx, table)
     _fill_dim_lines(ctx)
@@ -1973,8 +2023,22 @@ def audit_cone_net(plan, ctx, declared):
     d = (a2 - a1) % (2 * math.pi)
     if want > 180 and d < math.pi: d = d - 2 * math.pi
     pts = [(ax + R1 * math.cos(a1 + d * k / 32), ay + R1 * math.sin(a1 + d * k / 32)) for k in range(33)]
+    ctx['face_regions']['sector'] = ('poly', [(ax, ay)] + pts)
     ctx['segments'] += [((ax, ay), pts[0])] + [(pts[k], pts[k + 1]) for k in range(32)] + [(pts[-1], (ax, ay))]
     ctx['segments'] += _circle_segments(cx, cy, cr)
+
+
+def check_excluded_circles(net, circles, parts, errors):
+    """net.excluded: exactly the listed circles are drawn dashed and grey (not part of the surface), the others are plain"""
+    want = set(net.get('excluded') or [])
+    if len(want) != len(net.get('excluded') or []) or not want <= set(parts): errors.append('SOLID_NET_EXCLUDED_PLAN_INVALID')
+    for part in parts:
+        el = circles.get(part)
+        if el is None: continue
+        excluded = el.get('data-excluded') == '1'
+        if excluded != (part in want): errors.append('SOLID_NET_EXCLUDED_SET_MISMATCH:' + part)
+        style_ok = (_dashed(el) and (el.get('stroke') or '').lower() == '#888') if part in want else (not _dashed(el) and (el.get('stroke') or '').lower() == '#111')
+        if not style_ok: errors.append('SOLID_NET_EXCLUDED_STYLE_MISMATCH:' + part)
 
 
 def _circle_segments(cx, cy, r, n=32):
@@ -2027,6 +2091,13 @@ def orient_cycles(solid, spec, ids):
                 want = vsub(c, interior)
         out[fid] = list(cyc) if vdot(newell(cyc), want) >= 0 else list(reversed(cyc))
     return out
+
+
+def area3(cyc, P3):
+    """the area of a planar face given as a cycle of vertex indices (half the length of the sum of cross products)"""
+    nrm = (0.0, 0.0, 0.0)
+    for i in range(len(cyc)): nrm = vadd(nrm, vcross(P3(cyc[i]), P3(cyc[(i + 1) % len(cyc)])))
+    return vlen(nrm) / 2
 
 
 def audit_polyhedron_net(plan, ctx, declared):
@@ -2161,6 +2232,9 @@ def audit_polyhedron_net(plan, ctx, declared):
         symbolic = d.get('label') is not None and label_number(d['label']) is None
         dims[ident] = (value, (a, b), symbolic)
     ctx['net_dims'] = dims
+    ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
+    ctx['face_areas'] = {fid: area3(cyc, P3) for fid, cyc in cycles.items()}
+    ctx['face_regions'] = {fid: ('poly', polys[fid]) for fid in ids}
     segs = []
     for fid in ids:
         poly = polys[fid]
@@ -2358,6 +2432,46 @@ def audit_net_layout_and_emphasis(net, ctx, cycles, polys, P3, root_id, joins, s
         if _dashed(e): errors.append('SOLID_NET_DIAGONAL_STYLE_MISMATCH:' + label)
     for e in diag_els:
         if id(e) not in used: errors.append('SOLID_NET_DIAGONAL_UNEXPECTED:' + str(e.get('id')))
+    check_net_right_angles(net, root, errors, cycles, expected_px, P3)
+
+
+def check_net_right_angles(net, root, errors, cycles, expected_px, P3):
+    """net.rightAngles: a small square at a corner whose two edges are truly perpendicular (3D), its legs along the two edges of the drawn face, equally long, nothing else drawn"""
+    want = []
+    for m in net.get('rightAngles') or []:
+        fid, ci = m.get('face'), m.get('corner')
+        if fid not in cycles or not isinstance(ci, int) or isinstance(ci, bool) or not 0 <= ci < len(cycles[fid]) or (fid, ci) in want:
+            errors.append('SOLID_NET_RIGHT_ANGLE_PLAN_INVALID')
+            continue
+        cyc, n = cycles[fid], len(cycles[fid])
+        V, A, B = P3(cyc[ci]), P3(cyc[(ci - 1) % n]), P3(cyc[(ci + 1) % n])
+        if abs(vdot(vunit(vsub(A, V)), vunit(vsub(B, V)))) > 1e-6: errors.append('SOLID_NET_RIGHT_ANGLE_NOT_RIGHT:%s:%d' % (fid, ci))
+        want.append((fid, ci))
+    drawn = {}
+    for el in root.iter(NS + 'polyline'):
+        if el.get('data-role') != 'net-right-angle': continue
+        try: key = (el.get('data-face'), int(el.get('data-corner')))
+        except (TypeError, ValueError):
+            errors.append('SOLID_NET_RIGHT_ANGLE_UNREADABLE:' + str(el.get('id')))
+            continue
+        if key in drawn: errors.append('SOLID_NET_RIGHT_ANGLE_DUPLICATE:%s:%d' % key)
+        drawn[key] = el
+    if sorted(want) != sorted(drawn): errors.append('SOLID_NET_RIGHT_ANGLE_SET_MISMATCH')
+    for (fid, ci), el in drawn.items():
+        if (fid, ci) not in want or fid not in expected_px: continue
+        pts_px, n = expected_px[fid], len(expected_px[fid])
+        V, A, B = pts_px[ci], pts_px[(ci - 1) % n], pts_px[(ci + 1) % n]
+        pts = _points(el.get('points'))
+        if len(pts) != 3:
+            errors.append('SOLID_NET_RIGHT_ANGLE_GEOMETRY:%s:%d' % (fid, ci))
+            continue
+        p0, p1, p2 = pts
+        la, lb = math.hypot(A[0] - V[0], A[1] - V[1]), math.hypot(B[0] - V[0], B[1] - V[1])
+        l0, l2 = math.hypot(p0[0] - V[0], p0[1] - V[1]), math.hypot(p2[0] - V[0], p2[1] - V[1])
+        on_a = l0 > 0 and abs((p0[0] - V[0]) * (A[1] - V[1]) - (p0[1] - V[1]) * (A[0] - V[0])) <= POS_TOL * la and (p0[0] - V[0]) * (A[0] - V[0]) + (p0[1] - V[1]) * (A[1] - V[1]) > 0
+        on_b = l2 > 0 and abs((p2[0] - V[0]) * (B[1] - V[1]) - (p2[1] - V[1]) * (B[0] - V[0])) <= POS_TOL * lb and (p2[0] - V[0]) * (B[0] - V[0]) + (p2[1] - V[1]) * (B[1] - V[1]) > 0
+        corner_ok = math.hypot(p1[0] - (p0[0] + p2[0] - V[0]), p1[1] - (p0[1] + p2[1] - V[1])) <= POS_TOL
+        if not (on_a and on_b and corner_ok and abs(l0 - l2) <= POS_TOL and l0 >= 3.0 and l0 <= 0.5 * min(la, lb)): errors.append('SOLID_NET_RIGHT_ANGLE_GEOMETRY:%s:%d' % (fid, ci))
 
 
 def _polys_overlap(a, b):

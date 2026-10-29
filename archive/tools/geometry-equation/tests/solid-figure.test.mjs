@@ -1117,3 +1117,102 @@ test('E28b: an unnamed cube with a corner pyramid composes with every reference 
   assert.match(boxSvg,/data-tex="4\\,\\mathrm\{cm\}"/);assert.match(boxSvg,/data-segment="s1\.b1-s1\.t1"/);
   await failingAudit(box([{edge:['#b0','#b1']},{edge:['#b1','#t1']},{edge:['#b1','#b2']}]),boxSvg,'SOLID_DIM_VALUE_MISMATCH');
 });
+
+// --- E28b: net face labels, right angles at net corners, circles left out of a cylinder / cone net -----------------------------------------------------
+const triPrismNet=(net={},over={})=>figure({unit:'cm',net:{solid:{kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[4,0],[0,3]]},height:6,names:'......'},root:'side2',
+  joins:[['side2','side1'],['side1','side0'],['side1','top'],['side1','bottom']],dims:[{face:'side2',edge:0}],...net},...over});
+test('E28b: net face labels write a face area exactly, a number is checked against it, a symbol is not; right angles need a true right corner',()=>{
+  const m=solveSolidFigure(triPrismNet({faceLabels:[{face:'top'},{face:'bottom',text:'6'},{face:'side1',text:'S'},{face:'side0',text:'2\\pi r h'}],rightAngles:[{face:'top',corner:0},{face:'bottom',corner:2}]}));
+  assert.deepEqual(m.faceLabels.map(f=>[f.face,f.tex,f.numeric]),[['top','6\\,\\mathrm{cm}^2',true],['bottom','6\\,\\mathrm{cm}^2',true],['side1','S',false],['side0','2\\pi r h',false]]);
+  assert.deepEqual(m.rightAngles,[{face:'top',corner:0},{face:'bottom',corner:2}]);
+  assert.equal(labelNumber('6\\,\\mathrm{cm}^2'),6);assert.ok(Math.abs(labelNumber('48\\pi\\,\\mathrm{cm}^2')-48*Math.PI)<1e-9);
+  // a net with no dims and no names is readable text when it carries face labels; without them it is refused
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6}})),code('SOLID_FIGURE_NEEDS_A_LABEL'));
+  assert.equal(solveSolidFigure(figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,faceLabels:[{face:'rect'}]}})).faceLabels[0].tex,'48\\pi\\,\\mathrm{cm}^2');
+  assert.equal(solveSolidFigure(figure({unit:'cm',net:{kind:'CONE',radius:3,slant:5,faceLabels:[{face:'sector'},{face:'base',text:'9\\pi'}]}})).faceLabels.map(f=>f.tex).join('|'),'15\\pi\\,\\mathrm{cm}^2|9\\pi\\,\\mathrm{cm}^2');
+  // the plan without the new fields has none of them in its model
+  assert.deepEqual(['faceLabels','rightAngles','excluded'].map(k=>k in solveSolidFigure(triPrismNet())),[false,false,false]);
+});
+test('E28b: net face labels, right angles and excluded circles are refused with explicit codes',()=>{
+  const bad=(net,expected,over)=>assert.throws(()=>solveSolidFigure(triPrismNet(net,over)),code(expected),expected);
+  bad({faceLabels:'top'},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[]},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[{face:'top',tone:'x'}]},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[{face:3}]},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[{face:'top'},{face:'top'}]},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[{face:'nope'}]},'SOLID_NET_FACE_UNKNOWN');
+  bad({faceLabels:[{face:'top',text:'7'}]},'SOLID_FACE_LABEL_VALUE_MISMATCH:f1');
+  bad({faceLabels:[{face:'top',text:'6 cm²'}]},'SOLID_FACE_LABEL_INVALID:f1');
+  bad({faceLabels:[{face:'top',text:5}]},'SOLID_FACE_LABEL_INVALID:f1');
+  bad({solid:{kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[2,0],[0,Math.E]]},height:6,names:'......'},dims:[{face:'side2',edge:0,label:'a'}],faceLabels:[{face:'top'}]},'SOLID_FACE_LABEL_NOT_EXPRESSIBLE:f1');// an area with no short exact form
+  bad({rightAngles:[]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'top',corner:3}]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'top',corner:0.5}]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'top',corner:0},{face:'top',corner:0}]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'top',corner:0,size:2}]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'nope',corner:0}]},'SOLID_NET_FACE_UNKNOWN');
+  bad({rightAngles:[{face:'top',corner:1}]},'SOLID_NET_RIGHT_ANGLE_NOT_RIGHT:top:1:right_at=0');// the message names the corner that is right
+  bad({rightAngles:[{face:'bottom',corner:0}]},'SOLID_NET_RIGHT_ANGLE_NOT_RIGHT:bottom:0:right_at=2');
+  bad({excluded:['bottom']},'SOLID_NET_EXCLUDED_UNSUPPORTED:POLYHEDRON');
+  const round=(net,expected)=>assert.throws(()=>solveSolidFigure(figure({unit:'cm',net:{...net}})),code(expected),expected);
+  round({kind:'CYLINDER',radius:4,height:6,excluded:['rect'],faceLabels:[{face:'rect'}]},'SOLID_NET_EXCLUDED_INVALID');
+  round({kind:'CYLINDER',radius:4,height:6,excluded:['top','top'],faceLabels:[{face:'rect'}]},'SOLID_NET_EXCLUDED_INVALID');
+  round({kind:'CYLINDER',radius:4,height:6,excluded:[],faceLabels:[{face:'rect'}]},'SOLID_NET_EXCLUDED_INVALID');
+  round({kind:'CONE',radius:3,slant:5,excluded:['bottom'],faceLabels:[{face:'sector'}]},'SOLID_NET_EXCLUDED_INVALID');
+  round({kind:'CYLINDER',radius:4,height:6,rightAngles:[{face:'rect',corner:0}],faceLabels:[{face:'rect'}]},'SOLID_NET_RIGHT_ANGLE_UNSUPPORTED:CYLINDER');
+  round({kind:'CYLINDER',radius:4,height:6,faceLabels:[{face:'side0'}]},'SOLID_NET_FACE_UNKNOWN');
+  round({kind:'CONE',radius:3,slant:5,faceLabels:[{face:'rect'}]},'SOLID_NET_FACE_UNKNOWN');
+});
+const textOf=(svg,id)=>svg.match(new RegExp(`<g data-layer="90"><g id="${id}"[^>]*>`))[0];
+test('E28b: a prism net with face areas and right-angle squares composes, and the observer reads each label and square back',async()=>{
+  const plan=triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top'},{face:'bottom',text:'6'},{face:'side1',text:'S'}],rightAngles:[{face:'top',corner:0},{face:'bottom',corner:2}]});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-label-role="face-label"/g)??[]).length,3);
+  assert.match(svg,/<g id="face-label-top" data-label-kind="AREA_LABEL" data-label-role="face-label"/);
+  assert.match(svg,/data-face-of="bottom" data-tex="6\\,\\mathrm\{cm\}\^2"/);
+  assert.match(svg,/<polyline id="net-ra-top-0" data-role="net-right-angle" data-face="top" data-corner="0" stroke="#111"/);
+  // tampering: a number that is not the area, a label moved out of its face, a missing label, a square moved, wrongly placed, missing or extra
+  const top=textOf(svg,'face-label-top');
+  await failingAudit(plan,svg.replace(top,top.replace('data-tex="6\\,\\mathrm{cm}^2"','data-tex="7\\,\\mathrm{cm}^2"')),'SOLID_FACE_LABEL_VALUE_MISMATCH');
+  await failingAudit(plan,svg.replace(top,top.replace('data-tex="6\\,\\mathrm{cm}^2"','data-tex="6"')),'SOLID_FACE_LABEL_UNIT_MISSING');
+  await failingAudit(plan,svg.replace(top,top.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${Number(x)+110} ${y})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  const side=textOf(svg,'face-label-side1');
+  await failingAudit(plan,svg.replace(side,'<g data-layer="90"><g id="face-label-side1x" data-label-role="face-label" data-face-of="side1x">'),'SOLID_FACE_LABEL_');
+  await failingAudit(triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top'},{face:'bottom',text:'6'}],rightAngles:[{face:'top',corner:0},{face:'bottom',corner:2}]}),svg,'SOLID_FACE_LABEL_SET_MISMATCH');
+  const ra=svg.match(/<polyline id="net-ra-top-0"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(ra,ra.replace(/points="([\d.]+),([\d.]+) ([\d.]+),([\d.]+)/,(all,a,b,c,d)=>`points="${a},${b} ${Number(c)+5},${Number(d)+3}`)),'SOLID_NET_RIGHT_ANGLE_GEOMETRY');
+  await failingAudit(plan,svg.replace(ra,ra.replace('data-corner="0"','data-corner="1"')),'SOLID_NET_RIGHT_ANGLE_');
+  await failingAudit(plan,svg.replace(`<g data-layer="55">${ra}</g>`,''),'SOLID_NET_RIGHT_ANGLE_SET_MISMATCH');
+  await failingAudit(triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top'},{face:'bottom',text:'6'},{face:'side1',text:'S'}],rightAngles:[{face:'top',corner:0}]}),svg,'SOLID_NET_RIGHT_ANGLE_SET_MISMATCH');
+  // the observer re-derives the right corner from the 3D solid: a plan that names a corner that is no right angle fails against this figure
+  await failingAudit(triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top'},{face:'bottom',text:'6'},{face:'side1',text:'S'}],rightAngles:[{face:'top',corner:1},{face:'bottom',corner:2}]}),svg,'SOLID_NET_RIGHT_ANGLE_NOT_RIGHT:top:1');
+});
+test('E28b: a cylinder net and a cone net leave out the circles that are not part of the surface; face labels sit inside their faces',async()=>{
+  const cyl=figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,dims:[{part:'rect-width',label:'8\\pi'},{part:'rect-height'}],excluded:['bottom','top'],faceLabels:[{face:'rect',text:'S'}]}});
+  const svg=await sphereSvg(cyl);
+  assert.equal((svg.match(/data-excluded="1"/g)??[]).length,2);
+  assert.match(svg,/<circle id="net-circle-top" data-role="net-circle" data-part="top" data-excluded="1" fill="#fff" stroke="#888" stroke-width="1.6" stroke-dasharray="5 4"/);
+  const one=figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,dims:[{part:'rect-width',label:'8\\pi'},{part:'rect-height'}],excluded:['top'],faceLabels:[{face:'rect',text:'S'},{face:'bottom'}]}});
+  const oneSvg=await sphereSvg(one);
+  assert.equal((oneSvg.match(/data-excluded="1"/g)??[]).length,1);
+  assert.match(oneSvg,/<circle id="net-circle-bottom" data-role="net-circle" data-part="bottom" fill="#f4f6fa" stroke="#111"/);
+  assert.match(oneSvg,/data-face-of="bottom" data-tex="16\\pi\\,\\mathrm\{cm\}\^2"/);
+  // a net without the field keeps its bytes: plain circles, no data-excluded
+  const plainSvg=await sphereSvg(figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,dims:[{part:'rect-height'}]}}));
+  assert.doesNotMatch(plainSvg,/data-excluded|#888|data-face-of/);
+  // tampering: a circle drawn solid again, a circle dashed that the plan keeps, a face label moved into the neighbouring circle
+  const circle=svg.match(/<circle id="net-circle-top"[^>]*\/>/)[0];
+  await failingAudit(cyl,svg.replace(circle,circle.replace(' stroke-dasharray="5 4"','')),'SOLID_NET_EXCLUDED_STYLE_MISMATCH:top');
+  await failingAudit(cyl,svg.replace(circle,circle.replace(' data-excluded="1"','')),'SOLID_NET_EXCLUDED_SET_MISMATCH:top');
+  await failingAudit(figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,dims:[{part:'rect-width',label:'8\\pi'},{part:'rect-height'}],excluded:['bottom'],faceLabels:[{face:'rect',text:'S'}]}}),svg,'SOLID_NET_EXCLUDED_SET_MISMATCH');
+  const label=textOf(svg,'face-label-rect');
+  await failingAudit(cyl,svg.replace(label,label.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${x} ${Number(y)-95})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  // a cone: the base is left out, both faces are labelled (the sector area is exact: pi r l)
+  const cone=figure({unit:'cm',net:{kind:'CONE',radius:3,slant:5,dims:[{part:'slant'},{part:'radius'}],excluded:['base'],faceLabels:[{face:'sector'},{face:'base',text:'\\pi r^2'}]}});
+  const coneSvg=await sphereSvg(cone);
+  assert.match(coneSvg,/data-part="base" data-excluded="1"/);assert.match(coneSvg,/data-face-of="sector" data-tex="15\\pi\\,\\mathrm\{cm\}\^2"/);
+  const baseCircle=coneSvg.match(/<circle id="net-circle-base"[^>]*\/>/)[0];
+  await failingAudit(cone,coneSvg.replace(baseCircle,baseCircle.replace('stroke="#888"','stroke="#111"')),'SOLID_NET_EXCLUDED_STYLE_MISMATCH:base');
+  const sector=textOf(coneSvg,'face-label-sector');
+  await failingAudit(cone,coneSvg.replace(sector,sector.replace('data-tex="15\\pi\\,\\mathrm{cm}^2"','data-tex="16\\pi\\,\\mathrm{cm}^2"')),'SOLID_FACE_LABEL_VALUE_MISMATCH');
+});

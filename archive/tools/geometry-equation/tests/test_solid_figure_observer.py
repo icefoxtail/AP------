@@ -748,3 +748,99 @@ class VertexReferences(unittest.TestCase):
         self.assertEqual(O.split_edge('s1.b0-s1.b1'), ('s1.b0', 's1.b1'))
         self.assertEqual(O.split_edge('A-s2.apex'), ('A', 's2.apex'))
         self.assertEqual(O.split_edge('ABC'), (None, None))
+
+
+class NetFaceLabelsAndMarks(unittest.TestCase):
+    """E28b: face-area labels, right-angle squares at net corners and circles left out of a net, read back from hand-built SVG pieces."""
+
+    SVG = '<svg xmlns="http://www.w3.org/2000/svg">%s</svg>'
+
+    def root(self, body):
+        import xml.etree.ElementTree as ET
+        return ET.fromstring(self.SVG % body)
+
+    def test_a_label_number_reads_a_squared_unit(self):
+        self.assertEqual(O.label_number('6\\,\\mathrm{cm}^2'), 6.0)
+        self.assertEqual(O.label_number('6\\,\\mathrm{cm}'), 6.0)
+        self.assertAlmostEqual(O.label_number('48\\pi\\,\\mathrm{cm}^2'), 48 * math.pi)
+        self.assertIsNone(O.label_number('S'))
+
+    def test_a_point_is_inside_a_polygon_or_a_circle_by_a_margin(self):
+        square = ('poly', [(0.0, 0.0), (10.0, 0.0), (10.0, 10.0), (0.0, 10.0)])
+        self.assertTrue(O._inside_region(square, (5.0, 5.0), 1.0))
+        self.assertFalse(O._inside_region(square, (0.5, 5.0), 1.0))
+        self.assertFalse(O._inside_region(square, (11.0, 5.0)))
+        circle = ('circle', 0.0, 0.0, 5.0)
+        self.assertTrue(O._inside_region(circle, (3.0, 0.0), 1.0))
+        self.assertFalse(O._inside_region(circle, (4.5, 0.0), 1.0))
+
+    def test_the_area_of_a_face_is_half_the_cross_sum(self):
+        P = {0: (0.0, 0.0, 0.0), 1: (4.0, 0.0, 0.0), 2: (0.0, 3.0, 0.0), 3: (4.0, 3.0, 5.0)}
+        self.assertAlmostEqual(O.area3([0, 1, 2], P.get), 6.0)
+        self.assertAlmostEqual(O.area3([2, 1, 0], P.get), 6.0)
+
+    def label_ctx(self, plan_entry, value_area=6.0, region=None, unit='cm'):
+        return {'errors': [], 'face_label_plan': {'top': plan_entry}, 'face_areas': {'top': value_area}, 'face_regions': {'top': region or ('poly', [(0.0, 0.0), (100.0, 0.0), (100.0, 100.0), (0.0, 100.0)])}, 'unit': unit}
+
+    def label_group(self, tex, numeric='1', lid='face-label-top', face='top'):
+        return self.root('<g id="%s" data-label-role="face-label" data-face-of="%s" data-numeric="%s" data-tex="%s"/>' % (lid, face, numeric, tex)).find(O.NS + 'g')
+
+    def test_a_face_label_is_checked_against_the_area_and_the_face(self):
+        box = (40.0, 40.0, 20.0, 12.0)
+        ctx = self.label_ctx({'face': 'top'})
+        O.check_face_label(self.label_group('6\\,\\mathrm{cm}^2'), box, ctx)
+        self.assertEqual(ctx['errors'], [])
+        for tex, expected in (('7\\,\\mathrm{cm}^2', 'SOLID_FACE_LABEL_VALUE_MISMATCH'), ('6', 'SOLID_FACE_LABEL_UNIT_MISSING')):
+            ctx = self.label_ctx({'face': 'top'})
+            O.check_face_label(self.label_group(tex), box, ctx)
+            self.assertTrue(any(e.startswith(expected) for e in ctx['errors']), (tex, ctx['errors']))
+        ctx = self.label_ctx({'face': 'top'})
+        O.check_face_label(self.label_group('6\\,\\mathrm{cm}^2'), (95.0, 40.0, 20.0, 12.0), ctx)    # sticks out of the face
+        self.assertTrue(any(e.startswith('SOLID_FACE_LABEL_OUTSIDE_FACE') for e in ctx['errors']), ctx['errors'])
+        ctx = self.label_ctx({'face': 'top', 'text': 'S'})
+        O.check_face_label(self.label_group('S', numeric='0'), box, ctx)                               # a symbol is not compared with the area
+        self.assertEqual(ctx['errors'], [])
+        ctx = self.label_ctx({'face': 'top', 'text': 'S'})
+        O.check_face_label(self.label_group('9', numeric='0'), box, ctx)
+        self.assertTrue(any(e.startswith('SOLID_FACE_LABEL_VALUE_MISMATCH') for e in ctx['errors']), ctx['errors'])
+        ctx = self.label_ctx({'face': 'top'})
+        O.check_face_label(self.label_group('6\\,\\mathrm{cm}^2', face='side0', lid='face-label-side0'), box, ctx)
+        self.assertTrue(any(e.startswith('SOLID_FACE_LABEL_UNKNOWN') for e in ctx['errors']), ctx['errors'])
+
+    def right_angle_case(self, points, corner=0, plan_corner=0):
+        P = {0: (0.0, 0.0, 0.0), 1: (4.0, 0.0, 0.0), 2: (0.0, 3.0, 0.0)}
+        root = self.root('<polyline id="net-ra-top-%d" data-role="net-right-angle" data-face="top" data-corner="%d" points="%s"/>' % (corner, corner, points))
+        errors = []
+        O.check_net_right_angles({'rightAngles': [{'face': 'top', 'corner': plan_corner}]}, root, errors, {'top': [0, 1, 2]}, {'top': [(10.0, 10.0), (50.0, 10.0), (10.0, 40.0)]}, P.get)
+        return errors
+
+    def test_a_right_angle_square_has_equal_legs_along_the_two_edges_at_a_true_right_corner(self):
+        self.assertEqual(self.right_angle_case('10,20 20,20 20,10'), [])
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('10,20 22,23 20,10')))   # corner not the sum of the legs
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('10,16 24,16 24,10')))   # unequal legs
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('12,20 22,20 20,10')))   # a leg off its edge
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('10,12 11,12 11,10')))     # too small
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('10,40 40,40 40,10')))     # larger than half an edge
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_NOT_RIGHT') for e in self.right_angle_case('10,20 20,20 20,10', corner=1, plan_corner=1)))
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_SET_MISMATCH') for e in self.right_angle_case('10,20 20,20 20,10', corner=0, plan_corner=2)))
+
+    def circles(self, part, extra):
+        root = self.root('<circle id="c" data-role="net-circle" data-part="%s" %s fill="#fff" cx="1" cy="1" r="5"/>' % (part, extra))
+        return {part: root.find(O.NS + 'circle')}
+
+    def test_the_circles_left_out_are_exactly_the_listed_ones_and_look_so(self):
+        errors = []
+        O.check_excluded_circles({'excluded': ['top']}, self.circles('top', 'data-excluded="1" stroke="#888" stroke-dasharray="5 4"'), ['bottom', 'top'], errors)
+        self.assertEqual(errors, [])
+        for net, circles, expected in (
+                ({'excluded': ['top']}, self.circles('top', 'stroke="#888" stroke-dasharray="5 4"'), 'SOLID_NET_EXCLUDED_SET_MISMATCH'),
+                ({'excluded': ['top']}, self.circles('top', 'data-excluded="1" stroke="#111"'), 'SOLID_NET_EXCLUDED_STYLE_MISMATCH'),
+                ({}, self.circles('top', 'data-excluded="1" stroke="#888" stroke-dasharray="5 4"'), 'SOLID_NET_EXCLUDED_SET_MISMATCH'),
+                ({}, self.circles('top', 'stroke="#111" stroke-dasharray="5 4"'), 'SOLID_NET_EXCLUDED_STYLE_MISMATCH'),
+                ({'excluded': ['rect']}, self.circles('top', 'stroke="#111"'), 'SOLID_NET_EXCLUDED_PLAN_INVALID')):
+            errors = []
+            O.check_excluded_circles(net, circles, ['bottom', 'top'], errors)
+            self.assertTrue(any(e.startswith(expected) for e in errors), (expected, errors))
+        errors = []
+        O.check_excluded_circles({}, self.circles('top', 'stroke="#111"'), ['bottom', 'top'], errors)
+        self.assertEqual(errors, [])

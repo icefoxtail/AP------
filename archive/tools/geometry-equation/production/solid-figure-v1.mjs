@@ -451,7 +451,7 @@ export function lengthTex(L){
 }
 /** The number a numeric label text stands for (units stripped), or null when it is symbolic. */
 export function labelNumber(tex){
-  const t=String(tex).replace(/\\,?\\mathrm\{[a-z]+\}/g,'').replace(/\\,/g,'').replace(/\s+/g,'');
+  const t=String(tex).replace(/\\,?\\mathrm\{[a-z]+\}(\^2)?/g,'').replace(/\\,/g,'').replace(/\s+/g,'');
   let m;
   if((m=/^(\d+(?:\.\d+)?)$/.exec(t)))return Number(m[1]);
   if((m=/^(\d*)\\sqrt\{(\d+)\}$/.exec(t)))return (m[1]===''?1:Number(m[1]))*Math.sqrt(Number(m[2]));
@@ -567,7 +567,7 @@ export function solveSolidFigure(plan){
   // the Archive publication check reads text: a figure with no name and no length at all cannot be published
   const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)
     :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
-  if(names+model.dims.length===0)bad('SOLID_FIGURE_NEEDS_A_LABEL');
+  if(names+model.dims.length+(model.faceLabels?.length??0)===0)bad('SOLID_FIGURE_NEEDS_A_LABEL');
   return plan.panelWidth===undefined?model:{...model,panelWidth:plan.panelWidth};
 }
 function solveSolids(plan){
@@ -990,13 +990,79 @@ function netEmphasis(net,faces){
   }
   return {highlights,segments};
 }
+/** The label of a face area: undefined `raw` writes the exact area, a number must equal it, anything else is a symbol; a numeric label carries the unit squared. */
+function areaLabel(raw,value,unit,code){
+  let tex,numeric=true;
+  if(raw===undefined){
+    tex=lengthTex(value);
+    if(tex===null)bad('SOLID_FACE_LABEL_NOT_EXPRESSIBLE:'+code);
+  }else{
+    if(typeof raw!=='string'||!SYMBOLIC.test(raw))bad('SOLID_FACE_LABEL_INVALID:'+code);
+    tex=raw;
+    const n=labelNumber(tex);
+    if(n===null)numeric=false;
+    else if(Math.abs(n-value)>1e-6*Math.max(1,Math.abs(value)))bad('SOLID_FACE_LABEL_VALUE_MISMATCH:'+code);
+  }
+  return {tex:numeric&&unit?tex+'\\,\\mathrm{'+unit+'}^2':tex,text:tex,numeric,value:r6(value)};
+}
+/**
+ * net.faceLabels:[{face,text?}] writes one label in the middle of each listed net face: the face's area, exactly (text omitted), a number that must equal
+ * the area, or a symbol such as S or 2\\pi r h. `areas` maps a face id to its area in plan units.
+ */
+function netFaceLabels(net,areas,unit){
+  if(net.faceLabels===undefined)return [];
+  const list=net.faceLabels;
+  if(!Array.isArray(list)||list.length<1||list.length>areas.size)bad('SOLID_FACE_LABEL_INVALID');
+  const seen=new Set(),out=[];
+  list.forEach((entry,k)=>{
+    onlyKeys(entry,['face','text'],'SOLID_FACE_LABEL_INVALID');
+    if(typeof entry.face!=='string')bad('SOLID_FACE_LABEL_INVALID');
+    if(!areas.has(entry.face))bad('SOLID_NET_FACE_UNKNOWN');
+    if(seen.has(entry.face))bad('SOLID_FACE_LABEL_INVALID');
+    seen.add(entry.face);
+    out.push({face:entry.face,...areaLabel(entry.text,areas.get(entry.face),unit,'f'+(k+1))});
+  });
+  return out;
+}
+const NET_RIGHT_ANGLES_MAX=6;
+/** net.rightAngles:[{face,corner}] marks the corner (an index in the face's cycle order) of a net face where the two edges are perpendicular. */
+function netRightAngles(net,faces){
+  if(net.rightAngles===undefined)return [];
+  const list=net.rightAngles;
+  if(!Array.isArray(list)||list.length<1||list.length>NET_RIGHT_ANGLES_MAX)bad('SOLID_NET_RIGHT_ANGLE_INVALID');
+  const byId=new Map(faces.map(f=>[f.id,f])),seen=new Set(),out=[];
+  for(const m of list){
+    onlyKeys(m,['face','corner'],'SOLID_NET_RIGHT_ANGLE_INVALID');
+    if(typeof m.face!=='string')bad('SOLID_NET_RIGHT_ANGLE_INVALID');
+    if(!byId.has(m.face))bad('SOLID_NET_FACE_UNKNOWN');
+    const f=byId.get(m.face),n=f.poly.length;
+    if(!Number.isInteger(m.corner)||m.corner<0||m.corner>=n)bad('SOLID_NET_RIGHT_ANGLE_INVALID');
+    const key=m.face+':'+m.corner;
+    if(seen.has(key))bad('SOLID_NET_RIGHT_ANGLE_INVALID');
+    seen.add(key);
+    const cosAt=i=>{const V=f.poly[i],A=f.poly[(i+n-1)%n],B=f.poly[(i+1)%n],u=[A[0]-V[0],A[1]-V[1]],w=[B[0]-V[0],B[1]-V[1]];return (u[0]*w[0]+u[1]*w[1])/(Math.hypot(...u)*Math.hypot(...w));};
+    // the message lists the corners of that face that are right angles (corner indices follow the face's cycle order)
+    if(Math.abs(cosAt(m.corner))>1e-6)bad('SOLID_NET_RIGHT_ANGLE_NOT_RIGHT:'+m.face+':'+m.corner+':right_at='+[...Array(n).keys()].filter(i=>Math.abs(cosAt(i))<=1e-6).join(','));
+    out.push({face:m.face,corner:m.corner});
+  }
+  return out;
+}
+/** net.excluded:["bottom","top"] (a cylinder net) or ["base"] (a cone net): circles that are not part of the surface are drawn dashed and grey. */
+function netExcluded(net,parts){
+  if(net.excluded===undefined)return [];
+  const list=net.excluded;
+  if(!Array.isArray(list)||list.length<1||list.length>parts.length||list.some(x=>typeof x!=='string'||!parts.includes(x))||new Set(list).size!==list.length)bad('SOLID_NET_EXCLUDED_INVALID');
+  return parts.filter(x=>list.includes(x));
+}
+const polygonArea=poly=>Math.abs(polygonArea2(poly));
 function solveNet(plan){
   const net=plan.net;
   if(plan.dims!==undefined||plan.highlights!==undefined||plan.segments!==undefined||plan.section!==undefined)bad('SOLID_PLAN_INVALID');
-  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','height','slant'],'SOLID_NET_INVALID');
+  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','height','slant','faceLabels','rightAngles','excluded'],'SOLID_NET_INVALID');
   const unit=plan.unit??null;
   if(net.kind==='CYLINDER'||net.kind==='CONE'){
     if(net.highlights!==undefined||net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
+    if(net.rightAngles!==undefined)bad('SOLID_NET_RIGHT_ANGLE_UNSUPPORTED:'+net.kind);
     const r=pos(net.radius,'SOLID_PARAM_INVALID');
     const dims=[];
     if(net.kind==='CYLINDER'){
@@ -1009,7 +1075,8 @@ function solveNet(plan){
         if(spec===undefined)bad('SOLID_DIMS_INVALID');
         dims.push({id:'dim-'+(k+1),type:'NETPART',part:d.part,...dimLabel(d.label,spec,unit,code)});
       }
-      return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CYLINDER',radius:r,height:h,shapes,dims};
+      const faceLabels=netFaceLabels(net,new Map([['rect',W*h],['bottom',Math.PI*r*r],['top',Math.PI*r*r]]),unit),excluded=netExcluded(net,['bottom','top']);
+      return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CYLINDER',radius:r,height:h,shapes,dims,...(faceLabels.length?{faceLabels}:{}),...(excluded.length?{excluded}:{})};
     }
     const l=net.slant!==undefined?pos(net.slant,'SOLID_PARAM_INVALID'):Math.hypot(r,pos(net.height,'SOLID_PARAM_INVALID'));
     if(!(l>r))bad('SOLID_CONE_SLANT_TOO_SHORT');
@@ -1022,7 +1089,8 @@ function solveNet(plan){
       if(value===undefined)bad('SOLID_DIMS_INVALID');
       dims.push({id:'dim-'+(k+1),type:'NETPART',part:d.part,...dimLabel(d.label,value,unit,code,{angle:d.part==='angle'})});
     }
-    return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CONE',radius:r,slant:r6(l),shapes,dims};
+    const faceLabels=netFaceLabels(net,new Map([['sector',Math.PI*r*l],['base',Math.PI*r*r]]),unit),excluded=netExcluded(net,['base']);
+    return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CONE',radius:r,slant:r6(l),shapes,dims,...(faceLabels.length?{faceLabels}:{}),...(excluded.length?{excluded}:{})};
   }
   if(net.kind!==undefined)bad('SOLID_NET_UNSUPPORTED:'+String(net.kind).slice(0,24));
   if(!isPlain(net.solid)||!POLY_KINDS.includes(net.solid.kind))bad('SOLID_NET_INVALID');
@@ -1084,8 +1152,10 @@ function solveNet(plan){
   }
   const faces=solid.faces.map(f=>({id:f.id,idx:f.idx,poly:placed.get(f.id).poly,corners:corners[f.id]}));
   const {highlights,segments}=netEmphasis(net,faces);
+  if(net.excluded!==undefined)bad('SOLID_NET_EXCLUDED_UNSUPPORTED:POLYHEDRON');
+  const faceLabels=netFaceLabels(net,new Map(faces.map(f=>[f.id,polygonArea(f.poly)])),unit),rightAngles=netRightAngles(net,faces);
   return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'POLYHEDRON',solid:{kind:solid.kind,vertices:solid.vertices,faces:solid.faces},root:net.root,joins:joinsOut,
-    faces,dims,...(highlights.length?{highlights}:{}),...(segments.length?{segments}:{})};
+    faces,dims,...(highlights.length?{highlights}:{}),...(segments.length?{segments}:{}),...(faceLabels.length?{faceLabels}:{}),...(rightAngles.length?{rightAngles}:{})};
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
@@ -1561,9 +1631,13 @@ function specCutSphere(solid,ctx,arcPrim){
   }
   if(solid.points.some(q=>q.name))prims.push({t:'dot',id:'centre-'+sid,role:'center-dot',solid:sid,cx:centre[0],cy:centre[1],r:2.4});
 }
+/** A circle (plan units) as a polygon in px, for the region a face label must stay inside. */
+const circleRegion=(c,pt)=>[...Array(36).keys()].map(k=>{const u=2*Math.PI*k/36;return pt([c.cx+c.r*Math.cos(u),c.cy+c.r*Math.sin(u)]);});
 function specNet(plan,model,ctx){
   const {S,pt,prims,labels,line}=ctx;
   const fold='hidden';
+  // one label in the middle of a net face (net.faceLabels): it must lie wholly inside the region of its face
+  const faceLabel=(fl,region)=>labels.push({id:'face-label-'+fl.face,role:'face-label',owner:'face-'+fl.face,kind:'MATH',tex:fl.tex,plain:fl.text,value:String(fl.value),numeric:fl.numeric,faceOf:fl.face,region});
   if(model.netKind==='POLYHEDRON'){
     const byId=new Map(model.faces.map(f=>[f.id,f]));
     const joinOf=new Map();
@@ -1630,9 +1704,19 @@ function specNet(plan,model,ctx){
       const f=byId.get(d.face),n=f.poly.length,a=f.poly[d.edge],b=f.poly[(d.edge+1)%n];
       labels.push({id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(a),pt(b)],segmentOf:'net-edge:'+d.face+':'+d.edge});
     }
+    // a right angle at a corner of a face: a small square inside the face, its legs along the two edges
+    for(const m of model.rightAngles??[]){
+      const f=byId.get(m.face),n=f.poly.length,V=f.poly[m.corner],A=f.poly[(m.corner+n-1)%n],B=f.poly[(m.corner+1)%n];
+      const la=Math.hypot(A[0]-V[0],A[1]-V[1]),lb=Math.hypot(B[0]-V[0],B[1]-V[1]),k=Math.min(0.3*Math.min(la,lb),14/S);
+      if(k*S<4)bad('SOLID_NET_RIGHT_ANGLE_TOO_SMALL:'+m.face+':'+m.corner);
+      const ua=[(A[0]-V[0])/la,(A[1]-V[1])/la],ub=[(B[0]-V[0])/lb,(B[1]-V[1])/lb];
+      const pts=[[V[0]+ua[0]*k,V[1]+ua[1]*k],[V[0]+(ua[0]+ub[0])*k,V[1]+(ua[1]+ub[1])*k],[V[0]+ub[0]*k,V[1]+ub[1]*k]].map(pt);
+      prims.push({t:'polyline',id:`net-ra-${m.face}-${m.corner}`,role:'net-right-angle',points:pts,face:m.face,corner:m.corner});
+    }
+    for(const fl of model.faceLabels??[])faceLabel(fl,byId.get(fl.face).poly.map(pt));
     return;
   }
-  const circle=(id,part,c)=>prims.push({t:'circle',id,role:'net-circle',part,cx:ctx.X(c.cx),cy:ctx.Y(c.cy),r:r6(S*c.r)});
+  const circle=(id,part,c)=>prims.push({t:'circle',id,role:'net-circle',part,cx:ctx.X(c.cx),cy:ctx.Y(c.cy),r:r6(S*c.r),...((model.excluded??[]).includes(part)?{excluded:true}:{})});
   if(model.netKind==='CYLINDER'){
     const {rect,bottom,top}=model.shapes;
     const x0=rect.x,x1=rect.x+rect.w,y0=rect.y,y1=rect.y+rect.h;
@@ -1647,6 +1731,7 @@ function specNet(plan,model,ctx){
       if(d.part.startsWith('radius'))line(d.id+'-line','dim-line',pt(seg[0]),pt(seg[1]),{dim:d.id,kind:d.part,vis:'solid'});
       labels.push({id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(seg[0]),pt(seg[1])],segmentOf:'net-part:'+d.part});
     }
+    for(const fl of model.faceLabels??[])faceLabel(fl,fl.face==='rect'?[[x0,y0],[x1,y0],[x1,y1],[x0,y1]].map(pt):circleRegion(fl.face==='bottom'?bottom:top,pt));
     return;
   }
   // cone
@@ -1663,6 +1748,10 @@ function specNet(plan,model,ctx){
     if(d.part==='radius')line(d.id+'-line','dim-line',pt(seg[0]),pt(seg[1]),{dim:d.id,kind:'radius',vis:'solid'});
     if(d.part==='slant')line(d.id+'-line','dim-line',pt(seg[0]),pt(seg[1]),{dim:d.id,kind:'slant',vis:'solid'});
     labels.push({id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(seg[0]),pt(seg[1])],segmentOf:'net-part:'+d.part,inside:d.part==='angle'});
+  }
+  for(const fl of model.faceLabels??[]){
+    const arc=[...Array(33).keys()].map(k=>{const a=-Math.PI/2-half+2*half*k/32;return pt([L*Math.cos(a),L*Math.sin(a)]);});
+    faceLabel(fl,fl.face==='sector'?[pt([0,0]),...arc]:circleRegion(base,pt));
   }
 }
 
@@ -1705,6 +1794,12 @@ const BOX_PAD=2.2,COUNT_MARGIN=4,COUNT_FAR=47.5;
  * Place every label near its anchor: names on the open side of their corner, lengths beside their segment, never over a stroke or another label.
  * A label that finds no place because the labels placed before it took the room around it goes first on the next try (a few tries); the fewest-failures try is kept.
  */
+/** The centre of area of a simple polygon (px). */
+function polygonCentroid(poly){
+  let a=0,cx=0,cy=0;
+  for(let i=0;i<poly.length;i++){const [p,q]=[poly[i],poly[(i+1)%poly.length]],w=p[0]*q[1]-q[0]*p[1];a+=w;cx+=(p[0]+q[0])*w;cy+=(p[1]+q[1])*w;}
+  return Math.abs(a)<1e-9?[poly.reduce((s,p)=>s+p[0],0)/poly.length,poly.reduce((s,p)=>s+p[1],0)/poly.length]:[cx/(3*a),cy/(3*a)];
+}
 const rankOf=l=>l.role==='vertex-name'||l.role==='count-vertex'?0:l.role==='count-edge'?2:1;
 function placeLabels(spec,fragments,errors){
   let order=[...spec.labels].sort((a,b)=>rankOf(a)-rankOf(b)),best=null;
@@ -1736,7 +1831,15 @@ function placeLabelsOnce(spec,fragments,order){
     const frag=fragments.get(label.id),{width:w,height:h}=frag.intrinsic;
     let chosen=null;
     const candidates=[];
-    if(label.role==='vertex-name'||label.role==='count-vertex'){
+    if(label.role==='face-label'){
+      // inside the face, nearest its centre of area first: rings of growing radius; the box has to stand clear of every stroke, so a box whose centre is inside is wholly inside
+      const c=polygonCentroid(label.region);
+      candidates.push({x:c[0]-w/2,y:c[1]-h/2});
+      for(let dist=3;dist<=120;dist+=3){
+        const n=Math.max(8,Math.ceil(2*Math.PI*dist/4));
+        for(let k=0;k<n;k++){const ang=2*Math.PI*k/n;candidates.push({x:c[0]+Math.cos(ang)*dist-w/2,y:c[1]-Math.sin(ang)*dist-h/2});}
+      }
+    }else if(label.role==='vertex-name'||label.role==='count-vertex'){
       const base=Math.atan2(label.dir[1],label.dir[0]);
       for(const dist of [5,8,12,17,24])for(const da of [0,0.5,-0.5,1.0,-1.0,1.6,-1.6,2.3,-2.3,Math.PI]){
         const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
@@ -1761,7 +1864,7 @@ function placeLabelsOnce(spec,fragments,order){
       const n=Math.max(8,Math.ceil(2*Math.PI*dist/3));
       for(let k=0;k<n;k++){const ang=2*Math.PI*k/n;candidates.push({x:label.near.own[0]+Math.cos(ang)*dist-w/2,y:label.near.own[1]-Math.sin(ang)*dist-h/2});}
     }
-    for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)&&nearest(label,box)){chosen=box;break;}}
+    for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)&&nearest(label,box)&&(!label.region||inside2(label.region,[box.x+w/2,box.y+h/2]))){chosen=box;break;}}
     let leader=null;
     if(!chosen&&label.role==='dim'){
       // no room beside the segment: the label goes to the nearest free place and a thin leader line joins it to the middle of its segment
@@ -1788,7 +1891,7 @@ function renderPrims(spec,model){
   // fills first
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-face'))body+=`<g data-layer="10"><polygon id="${p.id}" data-role="net-face" data-face="${p.face}" fill="#f4f6fa" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
-  for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}"${p.excluded?' data-excluded="1"':''} fill="${p.excluded?'#fff':'#f4f6fa'}" stroke="${p.excluded?'#888':'#111'}" stroke-width="1.6"${p.excluded?' stroke-dasharray="5 4"':''} cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="#7fa6e8" fill-opacity="${p.fill==='MEDIUM'?0.55:0.32}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face')){
     const [color,opacity]=HIGHLIGHT_FILLS[p.fill??'LIGHT'];
@@ -1815,7 +1918,7 @@ function renderPrims(spec,model){
     }else if(p.t==='dot'){
       body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
     }else if(p.t==='polyline'){
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.role==='net-right-angle'?`data-face="${p.face}" data-corner="${p.corner}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="55"><polyline ${attrs} stroke="#111" stroke-width="1.2" fill="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
     }
   }
@@ -1847,7 +1950,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`+renderPrims(spec,model);
     for(const {label,leader} of placed)if(leader)body+=`<g data-layer="40"><line id="leader-${label.id}" data-role="leader" data-owner-label="${label.id}" data-label="${label.id}" stroke="#555" stroke-width="0.9" fill="none" x1="${leader[0][0]}" y1="${leader[0][1]}" x2="${leader[1][0]}" y2="${leader[1][1]}"/></g>`;
     for(const {label,fragment,box,leader} of placed){
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':label.role==='face-label'?'AREA_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''}${label.faceOf?` data-face-of="${label.faceOf}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
     const dataAttrs=` data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
