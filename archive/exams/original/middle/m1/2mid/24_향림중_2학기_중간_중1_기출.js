@@ -76,7 +76,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나고, 마주 보는 두 각을 같은 빨간 호로 표시해 110°인 각과 a가 맞꼭지각 관계임을 보여 준다.",
+    "solutionImageCaption": "마주 보는 두 각(맞꼭지각)은 크기가 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -116,7 +120,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m을 한 직선이 가로지르고, 45°로 표시한 각과 a를 같은 빨간 호로 표시해 두 각이 엇각 관계임을 보여 준다.",
+    "solutionImageCaption": "l∥m이므로 엇각의 크기는 서로 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -193,7 +201,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑변 위의 한 점에서 꼭대기로 그은 선이 삼각형을 나누고, 오른쪽 밑점의 바깥각 120°와 이웃한 안쪽 각 60°, 꼭대기 40°, 직선 위에서 서로 이웃한 두 각 x와 y를 표시한다.",
+    "solutionImageCaption": "직선 위의 이웃한 두 각 x, y와 오른쪽 밑점의 바깥각·안쪽 각을 표시한 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -233,7 +245,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각형의 네 내각 110°, 110°, 120°, 78°를 표시하고, 나머지 꼭짓점에서 내각 y와 바깥쪽 이웃각 x가 한 직선 위에 이웃해 있음을 보여 준다.",
+    "solutionImageCaption": "오각형의 나머지 내각 y와 직선 위에서 이웃한 각 x를 표시한 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -273,7 +289,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, M, B, N, C에서 AM=18cm와 BC 구간의 길이를 표시하고, 중점 M, N 때문에 같은 구간을 같은 눈금으로 나타내며 구하는 MN 구간을 빨간 굵은 선으로 보여 준다.",
+    "solutionImageCaption": "중점으로 나뉜 같은 길이의 구간(같은 눈금)과 구하는 MN 구간(빨간 선)을 표시한 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -313,7 +333,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 그림. 왼쪽은 OE⊥AB로 직각 EOB 안에서 ∠EOD=48°와 ∠DOB를 나타내고, 오른쪽은 OF⊥CD로 직각 DOF, ∠DOB, 구하는 ∠AOF를 점 O 둘레에 표시한다.",
+    "solutionImageCaption": "수선 OE, OF를 이용해 ∠DOB를 거쳐 구하는 ∠AOF를 두 그림으로 보인 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
