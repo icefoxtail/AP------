@@ -72,3 +72,54 @@ test('E18: a plan without emphasisGroup is the old figure (no colour anywhere)',
   assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
   assert.ok(!/#c0392b|#1f5fa8|#2e7d32/.test(composed.svg));
 });
+
+// ---- E12: a 20 degree angle at V with a dashed line splitting it (no clean place inside, none for a leader from the middle of its arc)
+const narrowGraph=plane([source('V',0,0),source('R',6,0),polar('T','V','R',6,20),polar('M','V','R',6,10)]);
+const narrowSegments=[{id:'sVR',refs:['V','R']},{id:'sVT',refs:['V','T']},{id:'sVM',refs:['V','M'],dashed:true}];
+const narrowPlan=(planeMarks,extra={})=>({capability:'construction-spike-v1',caption:'20도 각을 점선이 둘로 나눈다.',mathPlan:narrowGraph,displayPoints:['V','R','T','M'],displayLines:[],displayCircles:[],
+  displaySegments:narrowSegments,coordinateCanvas:{width:640,height:380},planeMarks,...extra});
+const narrowMarks={angles:[{id:'a20',refs:['R','V','T'],value:20,label:'20',arcs:1,factRole:'GIVEN'}]};
+const observe=async(svg,graph,planeMarks,segments,transform)=>{
+  const response=await pythonWorker({action:'planeMarksAudit',svg,points:reconstruct(graph).points,marks:planeMarks,segments,transform},{script:OBSERVER});
+  assert.equal(response.status,'OK',JSON.stringify(response.result));return response.result;
+};
+const codes=report=>report.errors.map(error=>error.split(':')[0]);
+
+test('E12: a narrow angle with no room inside takes a leader from the end of its own arc, and every audit passes',async()=>{
+  const model=await modelOf(narrowGraph),composed=await composeOf(narrowPlan(narrowMarks),model);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.planeMarks.status,'PASS',JSON.stringify(composed.staticAudit.planeMarks.errors));
+  assert.equal(composed.renderedLayout.status,'PASS',JSON.stringify(composed.renderedLayout.errors));
+  const leader=/<line\s[^>]*data-role="leader"[^>]*data-owner-label="a20-label"[^>]*\/>/.exec(composed.svg)?.[0];
+  assert.ok(leader,'the label is tied to its arc by a leader');
+  // the leader starts on the arc: at the arc's radius from the vertex and within (here: at an end of) its sweep
+  const arc=points(tagOf(composed.svg,'a20-arc-1')),vertex=points(tagOf(composed.svg,'a20-sector'))[0];
+  const start=[Number(attr(leader,'x1')),Number(attr(leader,'y1'))],radius=Math.hypot(arc[0][0]-vertex[0],arc[0][1]-vertex[1]);
+  assert.ok(Math.abs(Math.hypot(start[0]-vertex[0],start[1]-vertex[1])-radius)<1e-3);
+  const angleOf=p=>Math.atan2(p[1]-vertex[1],p[0]-vertex[0]),ends=[arc[0],arc[arc.length-1]].map(angleOf);
+  assert.ok(ends.some(a=>Math.abs(angleOf(start)-a)<1e-3),'at an end of the arc, where it meets a ray');
+});
+
+test('E12: the observer refuses a leader that does not start on its own arc, one that crosses a line, and a far label without a leader',async()=>{
+  const model=await modelOf(narrowGraph),plan=narrowPlan(narrowMarks),composed=await composeOf(plan,model);
+  const prepared=await pythonWorker({action:'prepare',spec:specFor(plan,model,identity.assetId)});assert.equal(prepared.status,'OK');
+  const run=svg=>observe(svg,narrowGraph,narrowMarks,narrowSegments,prepared.result.coordinateModel);
+  assert.deepEqual((await run(composed.svg)).errors,[]);
+  const leader=/<line\s[^>]*data-owner-label="a20-label"[^>]*\/>/.exec(composed.svg)[0];
+  const moved=composed.svg.replace(leader,leader.replace(/\sx1="[^"]*"/,' x1="'+(Number(attr(leader,'x1'))+9).toFixed(3)+'"'));
+  assert.ok(codes(await run(moved)).includes('MARK_LEADER_NOT_ON_OWNER'));
+  // the leader stretched to the other end of the arc crosses the dashed splitting line that runs along the bisector
+  const arc=points(tagOf(composed.svg,'a20-arc-1')),start=[Number(attr(leader,'x1')),Number(attr(leader,'y1'))];
+  const far=[arc[0],arc[arc.length-1]].sort((p,q)=>Math.hypot(q[0]-start[0],q[1]-start[1])-Math.hypot(p[0]-start[0],p[1]-start[1]))[0];
+  const across=composed.svg.replace(leader,leader.replace(/\sx2="[^"]*"/,' x2="'+far[0].toFixed(3)+'"').replace(/\sy2="[^"]*"/,' y2="'+far[1].toFixed(3)+'"'));
+  assert.ok(codes(await run(across)).includes('ANGLE_LABEL_LEADER_CROSSES'));
+  // without its leader the label stands outside its angle: refused
+  assert.ok(codes(await run(composed.svg.replace(leader,''))).includes('ANGLE_LABEL_NOT_IN_ANGLE'));
+});
+
+test('E12: a label that fits inside its angle keeps its old place (no leader)',async()=>{
+  const model=await modelOf(triangleGraph),composed=await composeOf(trianglePlan([{id:'aA',refs:['B','A','C'],value:70,label:'70',arcs:1,factRole:'GIVEN'}]),model);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.planeMarks.status,'PASS',JSON.stringify(composed.staticAudit.planeMarks.errors));
+  assert.ok(!/data-owner-label="aA-label"/.test(composed.svg));
+});

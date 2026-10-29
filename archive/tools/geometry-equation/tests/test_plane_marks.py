@@ -590,4 +590,84 @@ class AngleEmphasisGroupTests(unittest.TestCase):
         self.assertEqual(str(caught.exception),'INVALID_ANGLE_EMPHASIS_GROUP')
 
 
+class AngleLabelOwnershipTests(unittest.TestCase):
+    """E12: the observer reads, from the final SVG, that an angle label belongs to its own arc: a leader starts ON that arc (radius and sweep), never crosses a
+    drawn line, the label is not inside another angle's sector, and a label without a leader is not far from its vertex. Label boxes are synthetic here
+    (their measuring needs Chrome; the end-to-end case is tests/plane-angle-labels.test.mjs)."""
+    @classmethod
+    def setUpClass(cls):
+        cls.points,objects=parallelogram();result=build(spec_of(cls.points,objects));cls.svg=result['svg'];cls.transform=result['witness']['coordinateModel']
+        t=cls.transform;cls.forward=lambda self,q:(t['originX']+q[0]*t['sx'],t['originY']-q[1]*t['sy'])
+        cls.vertex=cls.forward(cls,cls.points['D'])
+        arc=re.search(r'<polyline\s(?:[^>]*\s)?id="aD-arc-1"[^>]*/>',cls.svg).group(0)
+        pairs=[tuple(map(float,part.split(','))) for part in re.search(r'\spoints="([^"]*)"',arc).group(1).split()]
+        cls.radius=math.dist(pairs[0],cls.vertex)
+        cls.marks=json.loads(json.dumps(MARKS));cls.marks['angles'][0].pop('noLabel');cls.marks['angles'][0]['label']='70'   # aD carries a label
+    def on_circle(self,degrees,radius=None):
+        radius=self.radius if radius is None else radius;a=math.radians(degrees)
+        return (self.vertex[0]+radius*math.cos(a),self.vertex[1]-radius*math.sin(a))      # math degrees: the wedge of aD runs from 0 to 70
+    def with_label(self,center,leader_from=None,size=(30.0,18.0),leader=True):
+        x,y=center[0]-size[0]/2,center[1]-size[1]/2
+        group='<g id="aD-label" data-fragment-sha="sha256:test" transform="translate(%.6f,%.6f)"><svg xmlns="http://www.w3.org/2000/svg" width="%.3f" height="%.3f"></svg></g>'%(x,y,size[0],size[1])
+        if leader_from is not None:
+            # the leader ends on the label box edge nearest to its start
+            ex=min(max(leader_from[0],x),x+size[0]);ey=min(max(leader_from[1],y),y+size[1])
+            if x<leader_from[0]<x+size[0] and y<leader_from[1]<y+size[1]:ex=x
+            group+='<line id="aD-label-owner-leader" data-role="leader" data-owner-label="aD-label" data-owner="aD" x1="%.6f" y1="%.6f" x2="%.6f" y2="%.6f" stroke="#666" stroke-width="0.8" fill="none"/>'%(leader_from[0],leader_from[1],ex,ey)
+        return self.svg.replace('</svg>',group+'</svg>')
+    def codes(self,svg,marks=None):
+        report=OBSERVER.audit({'svg':svg,'points':{k:list(v) for k,v in self.points.items()},'marks':marks or self.marks,'segments':SEGMENTS,'transform':self.transform})
+        return report['errors']
+    def only(self,errors,prefix):return [e for e in errors if e.startswith(prefix)]
+    def test_a_label_beside_its_arc_passes(self):
+        self.assertEqual(self.codes(self.with_label(self.on_circle(35,60))),[])
+    def test_a_leader_from_the_middle_of_the_arc_passes(self):
+        self.assertEqual(self.codes(self.with_label(self.on_circle(35,70),leader_from=self.on_circle(35))),[])
+    def test_a_leader_from_an_end_of_the_arc_passes(self):
+        # the arc meets the ray DC at 0 degrees: the leader leaves from there, to a label below the ray
+        label=(self.vertex[0]+self.radius+30,self.vertex[1]+26)
+        errors=self.codes(self.with_label(label,leader_from=self.on_circle(0)))
+        self.assertEqual([e for e in errors if e.startswith('MARK_LEADER')],[],errors)      # (the reflex angle aOut's arcs share this vertex, so the leader does cross those)
+    def test_a_leader_from_outside_the_sweep_of_the_arc_is_not_on_the_arc(self):
+        # the arc's radius, but at -40 degrees: that point is not on the arc of this angle
+        label=(self.vertex[0]+self.radius+30,self.vertex[1]+60)
+        self.assertIn('MARK_LEADER_NOT_ON_OWNER:aD-label',self.codes(self.with_label(label,leader_from=self.on_circle(-40))))
+    def test_a_leader_from_another_radius_is_not_on_the_arc(self):
+        self.assertIn('MARK_LEADER_NOT_ON_OWNER:aD-label',self.codes(self.with_label(self.on_circle(35,90),leader_from=self.on_circle(35,self.radius+9))))
+    def test_a_leader_never_crosses_a_drawn_line(self):
+        # from the middle of the arc across the ray DA (70 degrees) to a label outside the angle
+        label=self.on_circle(95,90)
+        self.assertIn('ANGLE_LABEL_LEADER_CROSSES:aD:sDA',self.codes(self.with_label(label,leader_from=self.on_circle(35))))
+    def test_a_label_without_a_leader_far_from_its_vertex_is_refused(self):
+        errors=self.codes(self.with_label(self.on_circle(35,170)))
+        self.assertIn('ANGLE_LABEL_TOO_FAR:aD',errors)
+        # the same far label tied to its arc by a leader along the bisector is fine
+        self.assertEqual(self.only(self.codes(self.with_label(self.on_circle(35,170),leader_from=self.on_circle(35))),'ANGLE_LABEL_TOO_FAR'),[])
+    def test_a_label_inside_another_angles_sector_is_refused(self):
+        # aOut (the reflex side of the same vertex, ring 2) has a sector up to its outer arc: a label standing there reads as aOut's value
+        errors=self.codes(self.with_label(self.on_circle(200,20),leader_from=self.on_circle(35)))
+        self.assertTrue(self.only(errors,'ANGLE_LABEL_IN_OTHER_ANGLE:aD:aOut'),errors)
+    def test_the_old_figure_without_labels_is_unchanged(self):
+        self.assertEqual(self.codes(self.svg,marks=MARKS),[])
+    def test_the_label_of_a_reflex_angle_is_placed_outside_on_a_leader_from_its_arc(self):
+        # aOut is the 290 degree side of the vertex D (ring 2, three arcs): its label cannot sit inside next to aD's, so it goes outside on a leader
+        points,objects=parallelogram()
+        for row in objects:
+            if row['id']=='aOut':row['labelText']='290'
+            if row['id']=='aD':row['labelText']='70'
+        layout=build(spec_of(points,objects))['witness']['layout']
+        self.assertEqual(layout['unresolved'],[])
+        placed={row['id']:row for row in layout['labels']}
+        outer=placed['aOut-label'];self.assertTrue(outer['placement'].startswith('OWNER_LEADER_'),outer['placement'])
+        ws=outer['wedgeSearch'];leader=next(row for row in layout['leaders'] if row['ownerLabelId']=='aOut-label')
+        a=leader['from'];self.assertAlmostEqual(math.dist(a,ws['vertex']),ws['arcRadius'],places=6)                      # on the outermost arc's radius ...
+        theta=math.atan2(a[1]-ws['vertex'][1],a[0]-ws['vertex'][0]);along=((theta-ws['start'])*(1 if ws['delta']>0 else -1))%(2*math.pi)
+        self.assertLessEqual(along,abs(ws['delta'])+1e-9)                                                                  # ... and within its sweep
+        box=outer['box'];centre=(box['x']+box['width']/2,box['y']+box['height']/2)
+        for other in ('aD',):
+            sector=[placed[other+'-label']['wedgeSearch']['vertex'],placed[other+'-label']['wedgeSearch']['start'],placed[other+'-label']['wedgeSearch']['delta'],placed[other+'-label']['wedgeSearch']['arcRadius']]
+            from visual_engine.label_layout import sector_contains
+            self.assertFalse(sector_contains(centre,sector))
+
+
 if __name__=='__main__':unittest.main()

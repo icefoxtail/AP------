@@ -31,6 +31,16 @@ def angle_between(a,v,c):
     return math.degrees(math.acos(max(-1.0,min(1.0,(u[0]*w[0]+u[1]*w[1])/(nu*nw)))))
 def direction_degrees(v):return math.degrees(math.atan2(v[1],v[0]))
 def wrap180(x):return (x+180.0)%360.0-180.0
+ANGLE_LABEL_MAX_DISTANCE_PX=90.0    # an angle label without a leader stands within this distance of its vertex (its nearest edge: the label reads as that arc's value)
+ANGLE_LEADER_END_TOLERANCE=0.5      # degrees: a leader may start at an end of its arc, where the arc meets a ray
+
+def properly_cross(a,b,c,d):
+    """True when the segments a-b and c-d cross at a point inside both (touching at an end does not count)."""
+    u=(b[0]-a[0],b[1]-a[1]);v=(d[0]-c[0],d[1]-c[1]);w=(c[0]-a[0],c[1]-a[1])
+    determinant=u[0]*v[1]-u[1]*v[0]
+    if abs(determinant)<1e-9:return False
+    t=(w[0]*v[1]-w[1]*v[0])/determinant;s=(w[0]*u[1]-w[1]*u[0])/determinant
+    return 1e-6<t<1-1e-6 and 1e-6<s<1-1e-6
 def point_segment_distance(p,a,b):
     d=sub(b,a);length2=d[0]*d[0]+d[1]*d[1]
     if length2<=1e-18:return norm(sub(p,a))
@@ -154,7 +164,7 @@ def audit(p):
         if node.get('data-tex')!=value+(r'\,' if value[-1].isalpha() else '')+r'\mathrm{'+unit+'}':errors.append('LABEL_UNIT_SPACING_MISMATCH:'+label_id)
 
     # ---- angle marks: 1-3 stroke arcs and, for style SECTOR (the default), the filled wedge beneath them
-    drawn_angles={}
+    drawn_angles={};angle_geometry={}   # id -> (vertex, first ray direction, signed sweep, outermost arc radius) in model units
     document=list(root.iter());order={id(n):i for i,n in enumerate(document)}
     def stroke_before(node):
         """True when some drawn stroke, point or label comes before the node in the document (a fill would cover it)."""
@@ -189,6 +199,7 @@ def audit(p):
             radii.append(mean);sweeps.append(abs(total));signed=total
         if not sweeps:continue
         drawn=sweeps[0]
+        angle_geometry[oid]=(v,direction_degrees(sub(a,v)),signed,max(radii))
         if any(abs(s-drawn)>1e-6 for s in sweeps):errors.append('ANGLE_ARC_SWEEPS_DIFFER:'+oid)
         if abs(drawn-expected)>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:points=%.3f'%(drawn,expected))
         if row.get('value') is not None and abs(drawn-float(row['value']))>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:declared=%s'%(drawn,row['value']))
@@ -226,9 +237,38 @@ def audit(p):
                 # inside the angle: seen from the vertex, the label centre lies within the swept wedge, counted from the first ray in the sweep's direction
                 offset=((direction_degrees(sub(centre_model,v))-direction_degrees(sub(a,v)))*(1 if signed>0 else -1))%360.0
                 inside=0.0<offset<abs(signed)
-                def on_arc(q):return any(abs(norm(sub(inverse(*q),v))-r)*sx<=1.5 for r in radii)
-                if not inside and not leader_ok(oid+'-label',box,on_arc):errors.append('ANGLE_LABEL_NOT_IN_ANGLE:'+oid)
-                elif inside and norm(sub(centre_model,v))*sx<=max(radii)*sx-1:errors.append('ANGLE_LABEL_INSIDE_ARC:'+oid)
+                def on_arc(q):
+                    # the leader starts ON one of the angle's own arcs: at an arc's radius AND within its sweep (an end of the arc, where it meets a ray, counts)
+                    d=sub(inverse(*q),v)
+                    if not any(abs(norm(d)-r)*sx<=1.5 for r in radii):return False
+                    along=((direction_degrees(d)-direction_degrees(sub(a,v)))*(1 if signed>0 else -1))%360.0
+                    if along>360.0-ANGLE_LEADER_END_TOLERANCE:along-=360.0
+                    return -ANGLE_LEADER_END_TOLERANCE<=along<=abs(signed)+ANGLE_LEADER_END_TOLERANCE
+                has_leader=oid+'-label' in leaders
+                if has_leader:
+                    leader_ok(oid+'-label',box,on_arc)
+                    # a leader never crosses a drawn stroke (its own arcs excepted, and a ray it starts on)
+                    leader=leaders[oid+'-label'];la=(float(leader.get('x1')),float(leader.get('y1')));lb=(float(leader.get('x2')),float(leader.get('y2')))
+                    own_arcs={n.get('id') for n in arcs}
+                    for sid,pts in strokes:
+                        if sid in own_arcs:continue
+                        if any(properly_cross(la,lb,p,q) for p,q in zip(pts,pts[1:])):errors.append('ANGLE_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+                if not inside and not has_leader:errors.append('ANGLE_LABEL_NOT_IN_ANGLE:'+oid)
+                elif inside and not has_leader and norm(sub(centre_model,v))*sx<=max(radii)*sx-1:errors.append('ANGLE_LABEL_INSIDE_ARC:'+oid)
+                elif inside and not has_leader:
+                    vx,vy=forward(v)   # the vertex in svg px; the distance to the label box's nearest point
+                    if math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:errors.append('ANGLE_LABEL_TOO_FAR:'+oid)
+    # a label never stands inside another angle mark's sector (the wedge up to that mark's outermost arc): it would read as that angle's value
+    for row in marks.get('angles',[]):
+        oid=row['id'];box=label_boxes.get(oid+'-label')
+        if oid not in angle_geometry or box is None or row.get('noLabel') is True:continue
+        centre=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
+        for other,(vo,first_o,sweep_o,radius_o) in angle_geometry.items():
+            if other==oid:continue
+            d=sub(centre,vo)
+            if norm(d)*sx>radius_o*sx+2.0 or sweep_o==0:continue
+            along=((direction_degrees(d)-first_o)*(1 if sweep_o>0 else -1))%360.0
+            if along<=abs(sweep_o):errors.append('ANGLE_LABEL_IN_OTHER_ANGLE:'+oid+':'+other)
     groups={}
     for row in marks.get('angles',[]):
         if row.get('equalGroup') is not None and row['id'] in drawn_angles:groups.setdefault(row['equalGroup'],[]).append(row)
