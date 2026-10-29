@@ -1001,7 +1001,22 @@
     // -------------------------------------------------------------------------
     // 6. 메인 캔버스 렌더링 파이프라인
     // -------------------------------------------------------------------------
+    // 해설에 사용되는 값이 달라질 때만 다시 조판한다. 펼침 상태는 유지한다.
+    let explanationStateKey = '';
+    function syncLiveExplanations() {
+      const key = JSON.stringify([state.mode, state.A1.x, state.B1.x, state.B1.y, state.r34]);
+      if (key === explanationStateKey) return;
+      explanationStateKey = key;
+      const data = examData[state.mode];
+      const tb = data.textbook(), sc = data.shortcut();
+      document.getElementById('textbookSteps').innerHTML = tb.steps;
+      document.getElementById('textbookWarning').innerHTML = tb.warning;
+      document.getElementById('shortcutSteps').innerHTML = sc.steps;
+      document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
+    }
+
     function render() {
+      syncLiveExplanations();
       const rect = canvas.parentElement.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
 
