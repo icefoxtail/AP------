@@ -1,5 +1,6 @@
 // Plane-figure label kinds (E8): plain Korean TEXT labels (labelKind:'TEXT') and units (cm, m, mm) on expression labels, circular-arc labels and
-// construction traces, with the independent observer reading what each label says back from the final SVG (and its tamper cases).
+// construction traces, with the independent observer reading what each label says back from the final SVG (and its tamper cases); segment
+// emphasis (E10: displaySegments[].emphasis BOLD / ACCENT); framing room for labels on arcs outside their circle (E11).
 // Real SymPy/Cindy workers and real Chrome; the typography policy is the same FIXTURE as plane-marks.test.mjs. Run with --test-concurrency=1.
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
@@ -124,4 +125,32 @@ test('error codes: a bad kind, unit or label is refused with an explicit code',(
   // the defaults are unchanged: no labelKind and no unit is the old math label
   assert.doesNotThrow(()=>specFor(planOf({arcs:[SEMICIRCLE,{id:'arcAC',circle:'k',center:'O',from:'A',to:'C',label:'50'}]}),model,identity.assetId));
   assert.doesNotThrow(()=>specFor(planOf({arcs:[SEMICIRCLE],traces:[{id:'tO',center:'O',radius:{point:'C'},through:['C'],label:'3'}]}),model,identity.assetId));
+});
+
+test('E10: displaySegments emphasis singles out the declared segments; the observer fails an undeclared or missing emphasis',async()=>{
+  const segments=SEGMENTS.map(row=>row.id==='sOB'?{...row,emphasis:'BOLD'}:row.id==='sOC'?{...row,emphasis:'ACCENT'}:row);
+  const plan=planOf({arcs:[SEMICIRCLE]},{segments}),result=await composeConstructionCandidate({plan,model,identity,typographyPolicy:policy,browser});
+  assert.equal(result.status,'COMPOSED',JSON.stringify(result.detail));assert.equal(result.staticAudit.planeMarks.status,'PASS',JSON.stringify(result.staticAudit.planeMarks.errors));
+  const style=id=>{const tag=new RegExp('<line\\s(?:[^>]*\\s)?id="'+id+'"[^>]*/>').exec(result.svg)[0];return [/stroke="([^"]*)"/.exec(tag)[1],Number(/stroke-width="([^"]*)"/.exec(tag)[1])];};
+  assert.deepEqual(style('sOB'),['#111',3.2]);assert.deepEqual(style('sOC'),['#c0392b',3.2]);
+  assert.deepEqual(style('sAO'),['#111',1.6]);assert.deepEqual(style('sBD'),['#111',1.6]);
+  const rows=result.staticAudit.planeMarks.observations.filter(row=>row.type==='SEGMENT_EMPHASIS').map(row=>[row.id,row.emphasis]);
+  assert.deepEqual(rows,[['sOB','BOLD'],['sOC','ACCENT']]);
+  const observeSegments=async(svg,list)=>observe(svg,{planeMarks:{arcs:[SEMICIRCLE]},segments:list});
+  assert.deepEqual(codes(await observeSegments(result.svg,segments)),[]);
+  assert.ok(codes(await observeSegments(result.svg,SEGMENTS)).filter(code=>code==='SEGMENT_EMPHASIS_UNDECLARED').length===2,'the plan no longer singles them out');
+  assert.ok(codes(await observeSegments(result.svg,segments.map(row=>row.id==='sAO'?{...row,emphasis:'BOLD'}:row))).includes('SEGMENT_EMPHASIS_MISSING'));
+  assert.ok(codes(await observeSegments(result.svg,segments.map(row=>row.id==='sOB'?{...row,emphasis:'ACCENT'}:row))).includes('SEGMENT_EMPHASIS_COLOR_MISMATCH'));
+  // a plan without emphasis keeps its old frame, segment styles and bytes
+  const plain=await composeConstructionCandidate({plan:planOf({arcs:[SEMICIRCLE]}),model,identity,typographyPolicy:policy,browser});
+  assert.ok(!plain.svg.includes('c0392b')&&!/stroke-width="3\.2"/.test(plain.svg.replace(/<polyline[^>]*>/g,'')));
+});
+
+test('E10 error codes: a bad emphasis is refused with an explicit code',()=>{
+  const bad=value=>{try{specFor(planOf({arcs:[SEMICIRCLE]},{segments:SEGMENTS.map(row=>row.id==='sOB'?{...row,emphasis:value}:row)}),model,identity.assetId);}catch(error){return String(error.message);}assert.fail('specFor accepted the emphasis');};
+  expectCode(bad('RED'),'DISPLAY_SEGMENT_EMPHASIS_INVALID');expectCode(bad(true),'DISPLAY_SEGMENT_EMPHASIS_INVALID');expectCode(bad('bold'),'DISPLAY_SEGMENT_EMPHASIS_INVALID');
+  assert.doesNotThrow(()=>specFor(planOf({arcs:[SEMICIRCLE]},{segments:SEGMENTS.map(row=>row.id==='sOB'?{...row,emphasis:'ACCENT'}:row)}),model,identity.assetId));
+  // not on a graph plan: the plane styles need a plane figure or a coordinate construction
+  const notPlane={...planOf({arcs:[SEMICIRCLE]}),mathPlan:{...graph,realization:undefined}};delete notPlane.mathPlan.realization;
+  assert.throws(()=>specFor({...notPlane,displaySegments:SEGMENTS.map(row=>row.id==='sOB'?{...row,emphasis:'BOLD'}:row)},model,identity.assetId));
 });

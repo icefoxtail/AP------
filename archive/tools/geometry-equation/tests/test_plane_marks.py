@@ -479,4 +479,59 @@ class LabelKindTests(unittest.TestCase):
         self.assertEqual(self.codes(self.group('n','',['36']),{'id':'n','ownerSegment':'sAB','text':'6'}),[])
 
 
+class SegmentEmphasisTests(unittest.TestCase):
+    """displaySegments emphasis (BOLD, ACCENT): the declared segment is heavy (and red), every other segment keeps the default style; the observer reads the final SVG."""
+    def setUp(self):
+        self.points={'A':(0.0,0.0),'B':(6.0,0.0),'C':(3.0,4.0)}
+        self.segments=[{'id':'sAB','refs':['A','B'],'emphasis':'BOLD'},{'id':'sBC','refs':['B','C'],'emphasis':'ACCENT','arrow':'END'},{'id':'sCA','refs':['C','A']}]
+        objects=[seg('sAB',self.points,'A','B',emphasis='BOLD'),seg('sBC',self.points,'B','C',emphasis='ACCENT',arrow='END'),seg('sCA',self.points,'C','A')]
+        result=build(spec_of(self.points,objects));self.svg=result['svg'];self.transform=result['witness']['coordinateModel']
+    def tag(self,identifier,svg=None):return re.search(r'<line\s(?:[^>]*\s)?id="'+re.escape(identifier)+r'"[^>]*/>',svg or self.svg).group(0)
+    def audit(self,svg=None,segments=None):
+        return OBSERVER.audit({'svg':svg or self.svg,'points':{k:list(v) for k,v in self.points.items()},'marks':{},'segments':segments if segments is not None else self.segments,'transform':self.transform})
+    def codes(self,**kw):return [error.split(':')[0] for error in self.audit(**kw)['errors']]
+    def test_only_the_declared_segments_are_emphasized(self):
+        self.assertEqual(self.audit()['errors'],[])
+        self.assertIn('stroke-width="3.2"',self.tag('sAB'));self.assertIn('stroke="#111"',self.tag('sAB'))
+        self.assertIn('stroke-width="3.2"',self.tag('sBC'));self.assertIn('stroke="#c0392b"',self.tag('sBC'))
+        self.assertIn('stroke-width="1.6"',self.tag('sCA'));self.assertIn('stroke="#111"',self.tag('sCA'))
+        rows={row['id']:row for row in self.audit()['observations'] if row.get('type')=='SEGMENT_EMPHASIS'}
+        self.assertEqual({k:v['emphasis'] for k,v in rows.items()},{'sAB':'BOLD','sBC':'ACCENT'})
+    def test_the_arrowhead_of_an_accent_segment_is_red(self):
+        head=re.search(r'<polygon\s(?:[^>]*\s)?id="sBC-arrow-end"[^>]*/>',self.svg).group(0)
+        self.assertIn('fill="#c0392b"',head);self.assertIn('stroke="#c0392b"',head)
+    def test_an_emphasized_segment_is_above_the_plain_ones(self):
+        self.assertLess(self.svg.index('id="sCA"'),self.svg.index('id="sAB"'))
+    def test_tamper_missing_wrong_or_undeclared_emphasis(self):
+        plain=json.loads(json.dumps(self.segments))
+        for row in plain:row.pop('emphasis',None)
+        undeclared=[error.split(':')[1] for error in self.audit(segments=plain)['errors'] if error.startswith('SEGMENT_EMPHASIS_UNDECLARED')]
+        self.assertEqual(sorted(undeclared),['sAB','sBC'])
+        more=json.loads(json.dumps(self.segments));more[2]['emphasis']='BOLD'
+        self.assertIn('SEGMENT_EMPHASIS_MISSING',self.codes(segments=more))
+        swapped=json.loads(json.dumps(self.segments));swapped[0]['emphasis']='ACCENT';swapped[1]['emphasis']='BOLD'
+        self.assertEqual(self.codes(segments=swapped).count('SEGMENT_EMPHASIS_COLOR_MISMATCH'),2)
+        thin=self.svg.replace(self.tag('sAB'),self.tag('sAB').replace('stroke-width="3.2"','stroke-width="1.6"'))
+        self.assertIn('SEGMENT_EMPHASIS_MISSING',self.codes(svg=thin))
+        red=self.svg.replace(self.tag('sCA'),self.tag('sCA').replace('stroke="#111"','stroke="#c0392b"'))
+        self.assertIn('SEGMENT_EMPHASIS_UNDECLARED',self.codes(svg=red))
+        heavy=self.svg.replace(self.tag('sCA'),self.tag('sCA').replace('stroke-width="1.6"','stroke-width="3.2"'))
+        self.assertIn('SEGMENT_EMPHASIS_UNDECLARED',self.codes(svg=heavy))
+    def test_a_segment_on_an_axis_is_heavy_without_being_emphasis(self):
+        spec=spec_of(self.points,[seg('sAB',self.points,'A','B'),seg('sBC',self.points,'B','C',emphasis='BOLD')]);spec['axes']=True
+        result=build(spec);segments=[{'id':'sAB','refs':['A','B']},{'id':'sBC','refs':['B','C'],'emphasis':'BOLD'}]
+        self.assertIn('stroke-width="3.2"',self.tag('sAB',result['svg']))
+        report=OBSERVER.audit({'svg':result['svg'],'points':{k:list(v) for k,v in self.points.items()},'marks':{},'segments':segments,'transform':result['witness']['coordinateModel']})
+        self.assertEqual(report['errors'],[])
+    def test_no_emphasis_is_the_old_figure_byte_for_byte(self):
+        plain=build(spec_of(self.points,[seg('sAB',self.points,'A','B'),seg('sBC',self.points,'B','C'),seg('sCA',self.points,'C','A')]))['svg']
+        self.assertNotIn('c0392b',plain);self.assertEqual(plain.count('stroke-width="1.6"'),3)
+    def test_engine_refuses_a_bad_emphasis(self):
+        for extra in ({'emphasis':'RED'},{'emphasis':True},{'emphasis':'BOLD'}):
+            kind={'kind':'LEADER_LINE'} if extra['emphasis']=='BOLD' else {}
+            with self.assertRaises(ValueError,msg=str(extra)) as caught:build(spec_of(self.points,[{**seg('sAB',self.points,'A','B'),**kind,**extra}]))
+            self.assertEqual(str(caught.exception),'INVALID_SEGMENT_EMPHASIS')
+        with self.assertRaises(ValueError):build(spec_of(self.points,[{'id':'q','kind':'EQUATION_LABEL','text':'x','at':[1.0,1.0],'emphasis':'BOLD'}]))
+
+
 if __name__=='__main__':unittest.main()

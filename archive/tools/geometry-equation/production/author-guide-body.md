@@ -270,7 +270,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 숨긴 점을 `pointNames`·`coordinateLabels`에 넣거나 `caption`·표식 라벨(`angles`/`arcs`/`regions`의 `label`, `expressionLabels`, `scalarLabels`)이 그 id를 글자로 쓰면 거절된다: `INVALID_HIDDEN_POINT_NAMES`, `POINT_NAME_TARGET_HIDDEN:<id>`, `HIDDEN_POINT_NAMED_IN_TEXT:<id>`. `hiddenPointStyle`은 `"DOT"`·`"NONE"`만 되고(`INVALID_HIDDEN_POINT_STYLE`) `"NONE"`은 평면도형에 숨긴 점이 있을 때만 쓴다(`HIDDEN_POINT_STYLE_REQUIRES_PLANE_FIGURE`, `HIDDEN_POINT_STYLE_WITHOUT_HIDDEN_POINTS`).
 - 독립 관측기는 plan에서 숨긴 점을 따로 읽어 그 위치에 점 표식이 있으면 `HIDDEN_POINT_MARKER_PRESENT`/`HIDDEN_POINT_MARKER_AT_POINT`, 숨기지 않은 점에 표식이 없으면 `POINT_MISSING`, 남는 표식이 있으면 `UNEXPECTED_POINT_MARKER`로 FAIL한다.
 
-**`displaySegments` 추가 필드.** `dashed:true`(보조선 점선), `arrow:"START"|"END"|"BOTH"`(반직선·연장선의 화살촉, 끝점에 정확히 놓인다). 축 없는 평면도형과 축이 있는 좌표 작도 plan(3-10절)에서 된다(`DISPLAY_SEGMENT_STYLE_INVALID`, `DISPLAY_SEGMENT_STYLE_REQUIRES_PLANE_FIGURE`).
+**`displaySegments` 추가 필드.** `dashed:true`(보조선 점선), `arrow:"START"|"END"|"BOTH"`(반직선·연장선의 화살촉, 끝점에 정확히 놓인다). 축 없는 평면도형과 축이 있는 좌표 작도 plan(3-10절)에서 된다(`DISPLAY_SEGMENT_STYLE_INVALID`, `DISPLAY_SEGMENT_STYLE_REQUIRES_PLANE_FIGURE`). `emphasis:"BOLD"|"ACCENT"`는 **그 선분만** 굵게(BOLD) 또는 굵은 빨강(ACCENT)으로 그린다: 수선 AB, 6cm 변처럼 문제가 가리키는 변에 쓰고, 나머지 선분은 기본 모양이다(굵은 선분은 다른 선분 위에 그려진다. 알 수 없는 값은 `DISPLAY_SEGMENT_EMPHASIS_INVALID`). 관측기는 plan이 말한 선분만 굵기(3.0px 이상)·색이 강조 스타일이고 나머지는 기본 스타일인지 최종 SVG에서 읽는다(`SEGMENT_EMPHASIS_MISSING`, `SEGMENT_EMPHASIS_COLOR_MISMATCH`, `SEGMENT_EMPHASIS_UNDECLARED`; 좌표축이나 그려진 직선 위에 놓인 선분이 엔진 규칙으로 굵게 그려지는 것은 강조가 아니다).
 
 **`planeMarks`** (plan 최상위, 모든 항목은 plan이 말하는 사실이고 엔진과 관측기가 점들에서 다시 확인한다):
 

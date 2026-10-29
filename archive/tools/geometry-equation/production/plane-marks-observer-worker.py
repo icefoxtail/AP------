@@ -17,6 +17,9 @@ TICK_LENGTH_PX=11.0
 LABEL_CLEARANCE=1.0          # px between a label box and any drawn line or mark
 SECTOR_FILL='#d9d9d9'        # style SECTOR: the light wedge; must never be one of the region fills
 SECTOR_TOLERANCE=0.02        # px: a sector vertex/radius against the vertex and the outermost arc stroke
+EMPHASIS_WIDTH=3.0           # px: an emphasized segment's stroke (the default segment stroke is 1.6)
+DEFAULT_STROKE='#111'
+ACCENT_STROKE='#c0392b'      # emphasis ACCENT: the red of a singled-out segment
 
 def tag(node):return node.tag.split('}')[-1]
 def sub(p,q):return (p[0]-q[0],p[1]-q[1])
@@ -401,6 +404,31 @@ def audit(p):
             if point_segment_distance(dots[row['contact']],a,b)*sx>0.01 and abs((dots[row['contact']][0]-a[0])*d[1]-(dots[row['contact']][1]-a[1])*d[0])/norm(d)*sx>0.01:errors.append('TANGENT_NOT_THROUGH_CONTACT:'+row['tangent'])
             if abs(radial[0]*d[0]+radial[1]*d[1])/(norm(radial)*norm(d))>math.sin(math.radians(0.1)):errors.append('TANGENT_NOT_PERPENDICULAR_TO_RADIUS:'+row['tangent'])
             observations.append({'type':'TANGENT_PERPENDICULAR','tangent':row['tangent']})
+
+    # ---- segment emphasis: exactly the declared segments are heavy (BOLD) or heavy and red (ACCENT); every other segment keeps the default style
+    segment_ids={s['id'] for s in p.get('segments',[])}
+    drawn_lines=[]   # (a, b) in svg px of every axis and every drawn line that is not one of the plan's segments: a segment lying on one is painted heavier by the engine
+    for n in root.iter():
+        if tag(n)=='line' and (n.get('data-role')=='axis' or (n.get('data-role')=='line' and n.get('id') not in segment_ids)):
+            drawn_lines.append(((float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2')))))
+    def lies_on_drawn_line(node):
+        ends=[(float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2')))]
+        for a,b in drawn_lines:
+            d=sub(b,a)
+            if norm(d)>1e-9 and all(abs((q[0]-a[0])*d[1]-(q[1]-a[1])*d[0])/norm(d)<=0.5 for q in ends):return True
+        return False
+    for s in p.get('segments',[]):
+        node=elements.get(s['id'])
+        if node is None:continue
+        try:width=float(node.get('stroke-width'))
+        except (TypeError,ValueError):width=0.0
+        stroke=str(node.get('stroke') or '').lower();emphasis=s.get('emphasis')
+        if emphasis in ('BOLD','ACCENT'):
+            if width<EMPHASIS_WIDTH:errors.append('SEGMENT_EMPHASIS_MISSING:'+s['id'])
+            if stroke!=(ACCENT_STROKE if emphasis=='ACCENT' else DEFAULT_STROKE):errors.append('SEGMENT_EMPHASIS_COLOR_MISMATCH:'+s['id'])
+            observations.append({'id':s['id'],'type':'SEGMENT_EMPHASIS','emphasis':emphasis,'strokeWidth':width,'stroke':stroke})
+        elif emphasis is not None:errors.append('SEGMENT_EMPHASIS_INVALID:'+s['id'])
+        elif stroke!=DEFAULT_STROKE or (width>=EMPHASIS_WIDTH and not lies_on_drawn_line(node)):errors.append('SEGMENT_EMPHASIS_UNDECLARED:'+s['id'])
 
     # ---- segment styles: dashes and arrowheads
     for s in p.get('segments',[]):

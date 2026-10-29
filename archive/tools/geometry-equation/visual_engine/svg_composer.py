@@ -89,6 +89,7 @@ def compose(prepared,layout,viewport,fragments=None):
         if p.get('requiredLabelId'):attrs+=' data-required-label-id="'+esc(p['requiredLabelId'])+'"'
         if p.get('fill'):attrs=attrs.replace('fill="none"','fill="'+esc(p['fill'])+'"')
         if p.get('noStroke'):attrs=attrs.replace('stroke="'+tokens['primary']+'"','stroke="none"')
+        if p.get('stroke'):attrs=attrs.replace('stroke="'+tokens['primary']+'"','stroke="'+esc(p['stroke'])+'"',1)
         if p.get('dash'):attrs+=' stroke-dasharray="'+esc(p['dash'])+'"'
         if p.get('fillRule'):attrs+=' fill-rule="'+esc(p['fillRule'])+'"'
         if kind=='circle':

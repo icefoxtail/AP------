@@ -20,7 +20,7 @@ const GRAPH_CAPABILITIES=new Set(['polynomial-spike-v1','piecewise-polynomial-sp
 const GRAPH_OBSERVER_SCRIPT=fileURLToPath(new URL('graph-observer-worker.py',import.meta.url));
 const PLANE_MARKS_OBSERVER_SCRIPT=fileURLToPath(new URL('plane-marks-observer-worker.py',import.meta.url));
 // A plan with plane marks (angle arcs, ticks, ...) or styled segments is also read back by the plane-marks observer.
-const usesPlaneMarks=plan=>!!plan?.planeMarks||(plan?.displaySegments||[]).some(segment=>segment.dashed||segment.arrow);
+const usesPlaneMarks=plan=>!!plan?.planeMarks||(plan?.displaySegments||[]).some(segment=>segment.dashed||segment.arrow||segment.emphasis);
 const observerFrame=({aspectPolicy,...frame}={})=>frame;
 // Same publication viewport display-profile-audit.mjs hands to captureAtDisplaySize.
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
