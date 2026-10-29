@@ -31,6 +31,7 @@ def angle_between(a,v,c):
     return math.degrees(math.acos(max(-1.0,min(1.0,(u[0]*w[0]+u[1]*w[1])/(nu*nw)))))
 def direction_degrees(v):return math.degrees(math.atan2(v[1],v[0]))
 def wrap180(x):return (x+180.0)%360.0-180.0
+TRACE_LABEL_AT_TOLERANCE=45.0       # degrees: a trace label's direction from the centre against the place its labelAt names
 ANGLE_LABEL_MAX_DISTANCE_PX=90.0    # an angle label without a leader stands within this distance of its vertex (its nearest edge: the label reads as that arc's value)
 ANGLE_LEADER_END_TOLERANCE=0.5      # degrees: a leader may start at an end of its arc, where the arc meets a ray
 
@@ -384,6 +385,12 @@ def audit(p):
         if leader_ok(oid,box,anchored):pass
         elif any(distance_to(sid)+1e-9<mine for sid in segment_lines if sid!=row['ownerSegment']):errors.append('SEGMENT_LABEL_AMBIGUOUS_OWNER:'+oid)
         label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'))
+        if row.get('labelAt') is not None:
+            # labelAt START / END: the label stands nearer the first / second end of its segment than the other end (its projection on the segment, 0 = first end, 1 = second)
+            if row['labelAt'] not in ('START','MID','END'):errors.append('SEGMENT_LABEL_AT_INVALID:'+oid)
+            else:
+                a,b=own;d=sub(b,a);fraction=((centre_model[0]-a[0])*d[0]+(centre_model[1]-a[1])*d[1])/(norm(d)**2)
+                if (row['labelAt']=='START' and fraction>0.3) or (row['labelAt']=='END' and fraction<0.7):errors.append('SEGMENT_LABEL_NOT_AT_END:'+oid)
         observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx,**({'labelKind':row['labelKind']} if row.get('labelKind') else {}),**({'unit':row['unit']} if row.get('unit') else {})})
 
     # ---- dimension lines: the bar, arrows or brace between two displayed points, every part recomputed from the peer points, the label on the outer side
@@ -545,10 +552,34 @@ def audit(p):
             radius=norm(sub(peer_point(seg['refs'][1]),peer_point(seg['refs'][0])))
         through=list(row.get('through') or [])
         span=float(row.get('spanDeg',24))
+        join=row.get('span')=='JOIN' and len(through)>1
+        if row.get('span') not in (None,'JOIN'):errors.append('TRACE_SPAN_INVALID:'+oid);continue
         if not nodes:errors.append('TRACE_ARC_MISSING:'+oid);continue
-        if len(nodes)!=len(through):errors.append('TRACE_ARC_COUNT_MISMATCH:'+oid);continue
+        if len(nodes)!=(1 if join else len(through)):errors.append('TRACE_ARC_COUNT_MISMATCH:'+oid);continue
         arcs=sorted(nodes,key=lambda n:int(n.get('data-mark-index','0')))
-        for arc,pid in zip(arcs,through):
+        if join:
+            # span JOIN: one continuous arc, counter-clockwise, from spanDeg/2 before the first stated intersection to spanDeg/2 past the last one; the smallest arc that holds them all
+            points=poly_model(arcs[0])
+            if len(points)<8:errors.append('TRACE_ARC_MISSING:'+oid);continue
+            if max(abs(norm(sub(q,center))-radius) for q in points)>1e-6*max(1.0,radius):errors.append('TRACE_ARC_RADIUS_MISMATCH:'+oid)
+            targets=sorted(direction_degrees(sub(peer_point(pid),center))%360.0 for pid in through)
+            gaps=[(targets[(i+1)%len(targets)]-targets[i])%360.0 or 360.0 for i in range(len(targets))]
+            largest=max(range(len(gaps)),key=lambda i:gaps[i])
+            want_start=targets[(largest+1)%len(targets)]-span/2;want_sweep=360.0-gaps[largest]+span
+            drawn_start=direction_degrees(sub(points[0],center))
+            drawn_sweep=sum(wrap180(direction_degrees(sub(q1,center))-direction_degrees(sub(q0,center))) for q0,q1 in zip(points,points[1:]))
+            if abs(wrap180(drawn_start-want_start))>1.0 or abs(drawn_sweep-want_sweep)>1.0:errors.append('TRACE_JOIN_SPAN_MISMATCH:'+oid+':drawn=%.2f+%.2f:expected=%.2f+%.2f'%(drawn_start,drawn_sweep,want_start,want_sweep))
+            for pid in through:
+                offset=(direction_degrees(sub(peer_point(pid),center))-drawn_start)%360.0
+                if drawn_sweep<=0 or offset>drawn_sweep+RAY_TOLERANCE:errors.append('TRACE_ARC_DOES_NOT_PASS_THROUGH:'+oid+':'+pid)
+            if arcs[0].get('stroke-dasharray'):errors.append('TRACE_ARC_DASHED:'+oid+':'+through[0])
+            try:width=float(arcs[0].get('stroke-width'))
+            except (TypeError,ValueError):width=math.inf
+            if width>1.2:errors.append('TRACE_ARC_TOO_THICK:'+oid+':'+through[0])
+            if str(arcs[0].get('fill','none')).lower() not in ('none',''):errors.append('TRACE_ARC_HAS_FILL:'+oid+':'+through[0])
+            arcs_to_check=[]
+        else:arcs_to_check=list(zip(arcs,through))
+        for arc,pid in arcs_to_check:
             points=poly_model(arc)
             if len(points)<8:errors.append('TRACE_ARC_MISSING:'+oid);continue
             distances=[norm(sub(q,center)) for q in points]
@@ -565,12 +596,18 @@ def audit(p):
             except (TypeError,ValueError):width=math.inf
             if width>1.2:errors.append('TRACE_ARC_TOO_THICK:'+oid+':'+pid)
             if str(arc.get('fill','none')).lower() not in ('none',''):errors.append('TRACE_ARC_HAS_FILL:'+oid+':'+pid)
-        observations.append({'id':oid,'type':'TRACE','center':row['center'],'radius':radius,'arcs':len(arcs),'through':through,'spanDeg':span})
+        observations.append({'id':oid,'type':'TRACE','center':row['center'],'radius':radius,'arcs':len(arcs),'through':through,'spanDeg':span,**({'span':'JOIN'} if join else {})})
         if row.get('label') is not None:
             box=label_clear(oid+'-label')
             if box is not None:
                 middle=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
                 if norm(sub(middle,center))<radius:errors.append('TRACE_LABEL_INSIDE_CIRCLE:'+oid)
+                if row.get('labelAt') is not None:
+                    # labelAt: the label's direction from the centre is near the declared place round the circle (the start / middle / end of the DRAWN first arc, or the stated direction)
+                    pts=poly_model(arcs[0]);first=direction_degrees(sub(pts[0],center))
+                    sweep=sum(wrap180(direction_degrees(sub(q1,center))-direction_degrees(sub(q0,center))) for q0,q1 in zip(pts,pts[1:]))
+                    at=row['labelAt'];anchor=first if at=='START' else first+sweep if at=='END' else first+sweep/2 if at=='MID' else float(at)
+                    if abs(wrap180(direction_degrees(sub(middle,center))-anchor))>TRACE_LABEL_AT_TOLERANCE:errors.append('TRACE_LABEL_NOT_AT_ANCHOR:'+oid)
                 leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
             if row.get('labelKind')=='TEXT' or row.get('unit'):label_content(oid+'-label',row.get('labelKind','MATH'),row['label'],row.get('unit'))
             else:

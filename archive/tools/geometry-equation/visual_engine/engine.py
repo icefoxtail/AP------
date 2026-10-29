@@ -195,6 +195,14 @@ def dimension_frame(p,q,side,offset,oid):
     if n[0]*want[0]+n[1]*want[1]<DIM_SIDE_MIN_DOT:raise ValueError('DIMENSION_SIDE_AMBIGUOUS:'+oid)
     return length,d,n,DIM_FIRST_PX+DIM_STEP_PX*(offset-1)
 
+def outward_direction_order(anchor,centre):
+    """The eight compass directions (screen: N is up), the one that points most away from `centre` first, for a label hung outside a circle at `anchor`."""
+    ox,oy=anchor[0]-centre[0],anchor[1]-centre[1];norm=math.hypot(ox,oy) or 1.0
+    def alignment(direction):
+        dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
+        return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
+    return tuple(sorted(DIRECTIONS,key=alignment))
+
 def brace_points(length,start,tip):
     """A curly brace along u in [0,length]: its two ends at v=start (vertical tangent), a horizontal run at start+r, and the tip at v=tip in the middle (both
     halves arrive vertically), as (u,v) pairs from the left end to the right end. The depth tip-start must be twice the radius."""
@@ -603,7 +611,16 @@ def prepare(spec):
             if not vp.equal:raise ValueError('TRACE_ARC_REQUIRES_EQUAL_UNITS')
             centre=value['center'];radius=value['radius'];span_degrees=value['spanDeg'];span=math.radians(span_degrees)
             steps=max(8,math.ceil(span_degrees/3))
-            for index,(_pid,_target,angle) in enumerate(value['through'],1):
+            join=value.get('join')
+            if join:
+                # span JOIN: one continuous arc round the centre, counter-clockwise from its start
+                steps=max(8,math.ceil(math.degrees(join['sweep'])/3))
+                points=[vp.screen((centre[0]+radius*math.cos(join['start']+join['sweep']*i/steps),centre[1]+radius*math.sin(join['start']+join['sweep']*i/steps))) for i in range(steps+1)]
+                primitive({'id':oid+'-1','kind':'polyline','points':points,'token':'auxiliary','layer':48,'role':'traceArc',
+                           'mark':'trace','markId':oid,'markIndex':1,'markCount':1,
+                           'centerPoint':obj['centerPoint'],'ownerRadius':radius,'sweep':'CCW','ownerPoints':[obj['centerPoint']]},'curve')
+            else:
+              for index,(_pid,_target,angle) in enumerate(value['through'],1):
                 points=[vp.screen((centre[0]+radius*math.cos(angle-span/2+span*i/steps),centre[1]+radius*math.sin(angle-span/2+span*i/steps))) for i in range(steps+1)]
                 primitive({'id':oid+'-'+str(index),'kind':'polyline','points':points,'token':'auxiliary','layer':48,'role':'traceArc',
                            'mark':'trace','markId':oid,'markIndex':index,'markCount':len(value['through']),
@@ -611,16 +628,22 @@ def prepare(spec):
             if obj.get('labelText') is not None:
                 _pid,_target,angle=value['through'][0]
                 gap=10.0
+                # labelAt (E8b): the label stands at the start / middle / end of the drawn arc or in a stated direction; a joined arc defaults to its middle.
+                label_at=obj.get('labelAt');anchored=label_at is not None or bool(join)
+                if label_at is not None or join:
+                    arc_start,arc_sweep=(join['start'],join['sweep']) if join else (angle-span/2,span)
+                    angle={'START':arc_start,'END':arc_start+arc_sweep,'MID':arc_start+arc_sweep/2,None:arc_start+arc_sweep/2}[label_at] if label_at in {'START','END','MID',None} else math.radians(label_at)
                 anchor=vp.screen((centre[0]+(radius+gap/vp.sx)*math.cos(angle),centre[1]+(radius+gap/vp.sy)*math.sin(angle)))
+                directions=outward_direction_order(anchor,vp.screen(centre)) if anchored else ('E','NE','N','SE','S','NW','W','SW')
                 if obj.get('labelKind')=='TEXT' or obj.get('unit') is not None:
                     # a plain Korean order sign such as ㉠, or a radius length with its unit (3cm): the same owner-bound label as an arc's
-                    label=mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'directions':('E','NE','N','SE','S','NW','W','SW'),'gaps':(8,12,18,26)},obj.get('unit'))
+                    label=mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'directions':directions,'gaps':(8,12,18,26)},obj.get('unit'))
                     label['font']=tokens['tickLabel']
                     labels.append(label)
                 else:
                     labels.append({'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'tex':obj['labelText'],'math':True,'sourceMath':obj['labelText'],
                                    'font':tokens['tickLabel'],'priority':0,'at':list(anchor),'allowSuppress':False,
-                                   'directions':('E','NE','N','SE','S','NW','W','SW'),'gaps':(8,12,18,26)})
+                                   'directions':directions,'gaps':(8,12,18,26)})
         elif kind=='FILL_REGION':
             # A filled region: one even-odd <path> (shapes minus holes) with exact SVG arcs, drawn beneath every stroke. The label is placed inside it.
             if not vp.equal:raise ValueError('REGION_REQUIRES_EQUAL_UNITS')

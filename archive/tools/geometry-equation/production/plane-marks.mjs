@@ -44,15 +44,16 @@ const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','
   dimensions:['id','from','to','label','labelKind','unit','side','style','offset','value','factRole'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
-  expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit'],
+  expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit','labelAt'],
   arcs:['id','circle','center','from','to','side','label','labelKind','unit','highlight','factRole'],
-  traces:['id','center','radius','through','spanDeg','label','labelKind','unit','factRole'],
+  traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','unit','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
 // emphasisGroup (angles): angles of one group draw their arcs in one colour (group 1 red, 2 blue, 3 green), so an angle that belongs to two relations
 // (a pair of corresponding angles AND a pair of vertical angles) shows which relation each arc belongs to; equalGroup (the arc count) is independent of it.
 export const ANGLE_EMPHASIS_GROUPS=3;
 export const ANGLE_LABEL_PLACEMENTS=['AUTO','LEADER'];
+export const TRACE_JOIN_MAX_DEGREES=300;   // a joined trace arc (the stated intersections plus spanDeg) may sweep at most this far round its centre
 // A label's `unit` (cm, m, mm) is written after a MATH label's expression; a TEXT label is plain Korean text and takes none.
 export const LABEL_UNITS=['cm','m','mm'];
 const bad=code=>{throw Error(code);};
@@ -201,9 +202,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:expressionLabels.labelKind:'+row.id);
     if(kind==='TEXT')plainTextOk(row.text,'expressionLabels.text',row.id);
     const unit=unitOf(row,kind,true,'expressionLabels');
-    const mid=[(p[0]+q[0])/2,(p[1]+q[1])/2];
+    // labelAt (E8b): START / END write the label at the first / second end of its segment (the order of the segment's refs), MID (default) at its middle.
+    if(row.labelAt!==undefined&&!['START','MID','END'].includes(row.labelAt))bad('SEGMENT_LABEL_AT_INVALID:'+row.id);
+    const lerp=t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];
+    const mid=row.labelAt==='START'?lerp(0):row.labelAt==='END'?lerp(1):[(p[0]+q[0])/2,(p[1]+q[1])/2];
+    const others=(row.labelAt==='START'?[0.06,0.15,0.3]:row.labelAt==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
     objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:mid,lineOwned:true,
-      alternateAt:[0.3,0.7].map(t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t]),gaps:[8,6,10,20,32,48],priority:1,
+      alternateAt:others,gaps:[8,6,10,20,32,48],priority:1,
       ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
     factRolesByLabel[row.id]=role(row);
   }
@@ -292,6 +297,21 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     }
     const span=row.spanDeg===undefined?24:numberOf(row.spanDeg);
     if(span===null||span<2||span>120)bad('TRACE_SPAN_INVALID:'+row.id);
+    // span JOIN (E8b): one continuous arc from the first to the last of the stated intersections (spanDeg/2 past each end) instead of a short arc around each.
+    if(row.span!==undefined&&row.span!=='JOIN')bad('TRACE_SPAN_INVALID:'+row.id);
+    const join=row.span==='JOIN'&&row.through.length>1;
+    if(join){
+      const angles=row.through.map(id=>{const p=at(id);return Math.atan2(p[1]-center[1],p[0]-center[0]);}).sort((p,q)=>p-q);
+      let gap=2*Math.PI-(angles[angles.length-1]-angles[0]);
+      for(let i=1;i<angles.length;i++)gap=Math.max(gap,angles[i]-angles[i-1]);
+      if((2*Math.PI-gap)*180/Math.PI+span>TRACE_JOIN_MAX_DEGREES)bad('TRACE_JOIN_TOO_WIDE:'+row.id);
+    }
+    // labelAt (E8b): where around the circle the label stands: START / MID / END of the drawn arc (the counter-clockwise start, its middle, its other end) or a direction in degrees (0 = right, 90 = up).
+    if(row.labelAt!==undefined){
+      const named=['START','MID','END'].includes(row.labelAt),degrees=typeof row.labelAt==='number'&&Number.isFinite(row.labelAt);
+      if(!named&&!degrees)bad('TRACE_LABEL_AT_INVALID:'+row.id);
+      if(row.label===undefined)bad('TRACE_LABEL_AT_NEEDS_LABEL:'+row.id);
+    }
     const label=row.label===undefined?null:String(row.label);
     const kind=row.labelKind??'MATH';
     if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:traces.labelKind:'+row.id);
@@ -302,7 +322,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(kind==='TEXT'){if(label.trim()===''||label.length>40||/[\r\n\t\\$]/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);}
       else if(unit?!/^(?:[0-9]+(?:\.[0-9]+)?|[A-Za-z])$/.test(label)||/^0+(?:\.0+)?$/.test(label):!/^[1-9][0-9]?$/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);
     }
-    const object={id:row.id,kind:'TRACE_ARC',centerPoint:row.center,through:[...row.through],spanDeg:span,...(radiusPoint?{radiusPoint}:{radiusSegment})};
+    const object={id:row.id,kind:'TRACE_ARC',centerPoint:row.center,through:[...row.through],spanDeg:span,...(radiusPoint?{radiusPoint}:{radiusSegment}),...(join?{span:'JOIN'}:{}),...(row.labelAt!==undefined?{labelAt:row.labelAt}:{})};
     if(label!==null){object.labelText=label;if(kind==='TEXT')object.labelKind='TEXT';if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
@@ -375,9 +395,57 @@ export function arcLabelSites(plan,model,points){
   }
   return sites;
 }
+// ---- joined trace arcs (E8b): the frame includes the whole arc, and room for its order label ----------------------------------------------------
+// A trace arc with span JOIN (or a label with labelAt) may reach well past the displayed points, so a plane frame fitted to the points would clip it.
+// Only a trace that uses one of those two new fields adds frame room; a plan with the old trace keeps its frame byte for byte.
+/** The arcs a trace draws and the circle they lie on, from the displayed points (model units, angles in radians, counter-clockwise): {center,radius,arcs:[{start,sweep}],anchor}. */
+function traceGeometry(plan,row,points){
+  const center=points[row.center].approximation;let radius;
+  if(row.radius?.point!==undefined)radius=norm(sub(points[row.radius.point].approximation,center));
+  else{const s=(plan.displaySegments||[]).find(x=>x.id===row.radius?.segment);const [p,q]=s.refs.map(id=>points[id].approximation);radius=norm(sub(q,p));}
+  const span=row.spanDeg===undefined?24:numberOf(row.spanDeg),pad=span*Math.PI/360,full=2*Math.PI;
+  const angles=row.through.map(id=>{const p=points[id].approximation;return Math.atan2(p[1]-center[1],p[0]-center[0]);});
+  let arcs;
+  if(row.span==='JOIN'&&angles.length>1){
+    const sorted=angles.map(a=>((a%full)+full)%full).sort((p,q)=>p-q);
+    const gaps=sorted.map((a,i)=>(((sorted[(i+1)%sorted.length]-a)%full)+full)%full||full);
+    const largest=gaps.indexOf(Math.max(...gaps));
+    arcs=[{start:sorted[(largest+1)%sorted.length]-pad,sweep:full-gaps[largest]+2*pad}];
+  }else arcs=angles.map(a=>({start:a-pad,sweep:2*pad}));
+  const first=arcs[0],at=row.labelAt;
+  const anchor=at==='START'?first.start:at==='END'?first.start+first.sweep:typeof at==='number'?at*Math.PI/180:(row.span==='JOIN'&&angles.length>1)||at==='MID'?first.start+first.sweep/2:angles[0];
+  return {center,radius,arcs,anchor};
+}
+const traceExtremes=(geometry,arc)=>{
+  const {center,radius}=geometry,full=2*Math.PI,out=[arc.start,arc.start+arc.sweep].map(a=>[center[0]+radius*Math.cos(a),center[1]+radius*Math.sin(a)]);
+  for(let k=0;k<4;k++){const a=k*Math.PI/2;if((((a-arc.start)%full)+full)%full<=arc.sweep)out.push([center[0]+radius*Math.cos(a),center[1]+radius*Math.sin(a)]);}
+  return out;
+};
+/** Model points a joined trace arc reaches (its ends and the axis extremes it passes), for the plane frame. */
+export function traceJoinExtentPoints(plan,points){
+  const rows=Array.isArray(plan?.planeMarks?.traces)?plan.planeMarks.traces:[],out=[];
+  for(const row of rows){
+    if(!row||typeof row!=='object'||row.span!=='JOIN'||!Array.isArray(row.through)||row.through.length<2)continue;
+    try{const geometry=traceGeometry(plan,row,points);for(const arc of geometry.arcs)out.push(...traceExtremes(geometry,arc));}catch{/* planeMarkSpec reports the real error */}
+  }
+  return out;
+}
+/** The label sites of traces with a joined arc or a labelAt, in the shape arcLabelSites gives (anchor on the circle, outward unit vector, the arc's extreme points, label size). */
+export function traceLabelSites(plan,points){
+  const rows=Array.isArray(plan?.planeMarks?.traces)?plan.planeMarks.traces:[],sites=[];
+  for(const row of rows){
+    if(!row||typeof row!=='object'||row.label===undefined||(row.span!=='JOIN'&&row.labelAt===undefined)||!Array.isArray(row.through)||!row.through.length)continue;
+    try{
+      const geometry=traceGeometry(plan,row,points),{center,radius,anchor}=geometry;
+      sites.push({id:row.id,anchor:[center[0]+radius*Math.cos(anchor),center[1]+radius*Math.sin(anchor)],outward:[Math.cos(anchor),Math.sin(anchor)],
+        extremes:geometry.arcs.flatMap(arc=>traceExtremes(geometry,arc)),...arcLabelBoxEstimate({label:String(row.label),labelKind:row.labelKind??'MATH',unit:row.unit})});
+    }catch{/* planeMarkSpec reports the real error */}
+  }
+  return sites;
+}
 export function arcLabelFraming(plan,model,points,bounds,canvas){
   if(!isPlaneFigure(plan))return bounds;
-  const sites=arcLabelSites(plan,model,points);
+  const sites=[...arcLabelSites(plan,model,points),...traceLabelSites(plan,points)];
   if(!sites.length)return bounds;
   let {xMin,xMax,yMin,yMax}=bounds;
   for(const site of sites)for(const [x,y] of [site.anchor,...site.extremes]){xMin=Math.min(xMin,x);xMax=Math.max(xMax,x);yMin=Math.min(yMin,y);yMax=Math.max(yMax,y);}

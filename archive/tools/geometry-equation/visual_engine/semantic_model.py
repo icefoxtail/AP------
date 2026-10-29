@@ -12,7 +12,7 @@ KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRC
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION','DIMENSION_LINE'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
-FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement'}
+FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt'}
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'}}
 
 def parity(a,b):
@@ -131,7 +131,22 @@ def validate(spec):
             target=geometry[pid];distance=math.dist(center,target)
             if abs(distance-radius)>1e-6*max(1,radius):raise ValueError('TRACE_TARGET_NOT_ON_ARC:'+pid)
             rows.append((pid,target,math.atan2(target[1]-center[1],target[0]-center[0])))
-        geometry[obj['id']]={'center':center,'radius':radius,'through':rows,'spanDeg':float(span)}
+        # span JOIN: one continuous arc covering every stated intersection (the smallest arc of the circle that holds them) with spanDeg/2 past each end.
+        join=None
+        if obj.get('span') not in (None,'JOIN'):raise ValueError('TRACE_SPAN_INVALID:'+obj['id'])
+        if obj.get('span')=='JOIN' and len(rows)>1:
+            angles=sorted(angle%(2*math.pi) for _pid,_target,angle in rows)
+            gaps=[(angles[(i+1)%len(angles)]-angles[i])%(2*math.pi) or 2*math.pi for i in range(len(angles))]
+            largest=max(range(len(gaps)),key=lambda i:gaps[i])
+            pad=math.radians(span)/2
+            sweep=2*math.pi-gaps[largest]+2*pad
+            if math.degrees(sweep)>300.0:raise ValueError('TRACE_JOIN_TOO_WIDE:'+obj['id'])
+            join={'start':angles[(largest+1)%len(angles)]-pad,'sweep':sweep}
+        label_at=obj.get('labelAt')
+        if label_at is not None:
+            if not (label_at in {'START','MID','END'} or (isinstance(label_at,(int,float)) and not isinstance(label_at,bool) and math.isfinite(label_at))):raise ValueError('TRACE_LABEL_AT_INVALID:'+obj['id'])
+            if obj.get('labelText') is None:raise ValueError('TRACE_LABEL_AT_NEEDS_LABEL:'+obj['id'])
+        geometry[obj['id']]={'center':center,'radius':radius,'through':rows,'spanDeg':float(span),'join':join}
         relations.append({'id':obj['id'],'kind':'TRACE_ARC','status':'PASS','observed':radius})
     for obj in spec['objects']:
         if obj['kind'] != 'DIMENSION_LINE': continue

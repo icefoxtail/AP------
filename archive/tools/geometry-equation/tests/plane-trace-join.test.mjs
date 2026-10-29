@@ -36,6 +36,63 @@ let browser;
 before(async()=>{browser=await launchBrowser();});
 after(async()=>{await browser?.close();});
 
+// ---- copying an angle's first step: the arc round O through A (on OX) and B (on OY), a second arc round A through B, and the rays
+const hidden=node=>({...node,factRole:'DERIVED_INTERMEDIATE'});
+const arcGraph=plane([source('O',0,0),source('A',5,0),hidden(polar('B','O','A',5,50)),hidden(polar('Y','O','A',8,50)),source('Z',8,0)]);
+const arcSegments=[{id:'sOZ',refs:['O','Z']},{id:'sOY',refs:['O','Y']}];
+const arcPlan=(traces,extra={},expressionLabels)=>({capability:'construction-spike-v1',caption:'각의 작도 과정이다.',mathPlan:arcGraph,displayPoints:['O','A','B','Y','Z'],displayLines:[],displayCircles:[],
+  displaySegments:arcSegments,coordinateCanvas:{width:640,height:460},hiddenPointNames:['A','B','Z','Y'],hiddenPointStyle:'NONE',
+  planeMarks:{traces,...(expressionLabels?{expressionLabels}:{})},...extra});
+const joinTrace={id:'t1',center:'O',radius:{point:'A'},through:['A','B'],span:'JOIN',spanDeg:50,labelAt:'END',label:'㉠',labelKind:'TEXT'};
+
+test('E8b: a joined trace is one arc through both intersections, its label stands at the named end, and every audit passes',async()=>{
+  const model=await modelOf(arcGraph);
+  const plan=arcPlan([joinTrace]),composed=await composeOf(plan,model);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.planeMarks.status,'PASS',JSON.stringify(composed.staticAudit.planeMarks.errors));
+  assert.equal(composed.renderedLayout.status,'PASS',JSON.stringify(composed.renderedLayout.errors));
+  assert.ok(tagOf(composed.svg,'t1-1')&&!tagOf(composed.svg,'t1-2'),'one arc, not one per intersection');
+  assert.match(tagOf(composed.svg,'t1-1'),/data-mark-count="1"/);
+  const prepared=await pythonWorker({action:'prepare',spec:specFor(plan,model,identity.assetId)});assert.equal(prepared.status,'OK');
+  const run=(svg,marks=plan.planeMarks)=>observe(svg,arcGraph,marks,plan.displaySegments,prepared.result.coordinateModel);
+  assert.deepEqual((await run(composed.svg)).errors,[]);
+  // the same figure read against another place for its label, another spanDeg and as separate arcs is refused
+  assert.ok(codes(await run(composed.svg,{traces:[{...joinTrace,labelAt:'START'}]})).includes('TRACE_LABEL_NOT_AT_ANCHOR'));
+  assert.ok(codes(await run(composed.svg,{traces:[{...joinTrace,spanDeg:90}]})).includes('TRACE_JOIN_SPAN_MISMATCH'));
+  const {span:_s,labelAt:_l,...separate}=joinTrace;
+  assert.ok(codes(await run(composed.svg,{traces:[separate]})).includes('TRACE_ARC_COUNT_MISMATCH'));
+});
+
+test('E8b: the old trace (one short arc per intersection, label at the first) is unchanged when span and labelAt are not written',async()=>{
+  // the old trace keeps the old frame (fitted to the displayed points): a hidden point below the figure leaves room for the short arcs, as the existing plans do
+  const graph=plane([source('O',0,0),source('A',5,0),hidden(polar('B','O','A',5,50)),hidden(polar('Y','O','A',8,50)),source('Z',8,0),hidden(source('W',4,-3))]);
+  const {span,labelAt,...plain}=joinTrace;
+  const plan={...arcPlan([{...plain,spanDeg:30}]),mathPlan:graph,displayPoints:['O','A','B','Y','Z','W'],hiddenPointNames:['A','B','Z','Y','W']};
+  const composed=await composeOf(plan,await modelOf(graph));
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.ok(tagOf(composed.svg,'t1-1')&&tagOf(composed.svg,'t1-2'));
+  assert.equal(composed.staticAudit.planeMarks.status,'PASS',JSON.stringify(composed.staticAudit.planeMarks.errors));
+});
+
+test('E8b: trace and segment-label plan errors',async()=>{
+  const model=await modelOf(arcGraph),err=(trace,extra,labels)=>specError(arcPlan([trace],extra,labels),model);
+  assert.equal(err({...joinTrace,span:'LONG'}),'TRACE_SPAN_INVALID:t1');
+  assert.equal(err({...joinTrace,labelAt:'MIDDLE'}),'TRACE_LABEL_AT_INVALID:t1');
+  assert.equal(err({...joinTrace,labelAt:'END',label:undefined}),'TRACE_LABEL_AT_NEEDS_LABEL:t1');
+  assert.equal(specError(arcPlan([joinTrace],{},[{id:'e1',ownerSegment:'sOY',text:'㉤',labelKind:'TEXT',labelAt:'MIDDLE'}]),model),'SEGMENT_LABEL_AT_INVALID:e1');
+});
+
+test('E8b: a segment label can stand at the end of its segment',async()=>{
+  const model=await modelOf(arcGraph);
+  const labels=[{id:'e5',ownerSegment:'sOY',text:'㉤',labelKind:'TEXT',labelAt:'END'},{id:'e6',ownerSegment:'sOZ',text:'㉥',labelKind:'TEXT',labelAt:'START'}];
+  const plan=arcPlan([joinTrace],{},labels),composed=await composeOf(plan,model);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.planeMarks.status,'PASS',JSON.stringify(composed.staticAudit.planeMarks.errors));
+  const prepared=await pythonWorker({action:'prepare',spec:specFor(plan,model,identity.assetId)});assert.equal(prepared.status,'OK');
+  const run=marks=>observe(composed.svg,arcGraph,marks,plan.displaySegments,prepared.result.coordinateModel);
+  assert.ok(codes(await run({traces:[joinTrace],expressionLabels:[{...labels[0],labelAt:'START'},labels[1]]})).includes('SEGMENT_LABEL_NOT_AT_END'));
+});
+
 // ---- an angle label forced onto a leader
 const triangleGraph=plane([source('V',0,0),source('R',8,0),polar('T','V','R',8,70)]);
 const trianglePlan=angles=>({capability:'construction-spike-v1',caption:'각 V이다.',mathPlan:triangleGraph,displayPoints:['V','R','T'],displayLines:[],displayCircles:[],
