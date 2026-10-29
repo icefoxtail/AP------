@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "25_금당고_2학기_기말_고2_확률과통계_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.meta-q01-q20.json",
+  "candidateGitBlobSha1": "7c81204ef63d21eb8d8b059dd13a2a144fdc31bb",
+  "reviewTimestamp": "2026-10-29T20:30:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS",
+  "executiveSummary": {
+    "blindFirstPass": {
+      "status": "PASS",
+      "totalSolved": 20,
+      "answerMatches": 20,
+      "answerMismatches": 0,
+      "ambiguousStems": 0,
+      "freezeOrder": "student-visible fields (content/choices/tables/figure description) extracted to scratch first; all 20 answers frozen (scratch rev3/freeze.md) before viewing answer/solution/meta; Q14 enumerated by script, Q1-13/15-20 by hand with sympy-free arithmetic checks"
+    },
+    "correctionsByReviewer": [],
+    "originalComparison": "1:1 type/points/format correspondence for 20 items; point tags identical (sum 100); no answer value equals the original's; Q7 redesigned without a figure (O,A,B,C vertices stated; no ambiguity); Q12 asks 'x or fewer' (original 'x or more') with symmetric distractor 36/64.",
+    "structure": {
+      "questionCount": 20,
+      "mc": 15,
+      "short": 2,
+      "essay": 3,
+      "scoreSum": 100,
+      "mcAnswerDistribution": "3/3/3/3/3 over ①..⑤",
+      "choicesAscendingAndFive": true,
+      "katexDollarPairs": "OK",
+      "nodeCheck": "OK"
+    },
+    "planAndSvg": {
+      "plans": "40 plan files valid JSON: 35 EXEMPT, 4 UNSUPPORTED (q07 problem/solution, q08 solution, q13 solution; engine lacks asymmetric-scale pdf graph and normal-curve shading), 1 active (q16 problem, number-line-figure-v1)",
+      "unsupportedFallbackJudgement": "q07 problem is complete without a figure (vertices O(0,0),A(2,a),B(3,a),C(5,0) given, range 0<=X<=5); q08/q13/q07 solution figures would help but are not required for completeness",
+      "q16Svg": "engine output bytes == engineEvidence svg (cmp equal); rendered in headless Chrome and viewed: x-axis arrow, points O(0) and Q(4) labelled, caption 출발점 O와 도착점 Q; no answer leak; text is outlined glyph paths (>=11px nominal 20px, no raw LaTeX).",
+      "q16SvgAccessibilityGap": "SVG has no <title>/<desc>/role=\"img\" (only role=\"caption\" on a sub-group). It is engine-generated composite output; hand-editing would break byte binding, so left unchanged and recorded as an engine limitation (report to engine owner). Student content not affected."
+    },
+    "metaCoverage": {
+      "items": 20,
+      "fieldsCheckedPerItem": 25,
+      "fieldsFilled": "500/500",
+      "judgementFieldsFilled": "140/140",
+      "jsMetaMirrorMismatch": 0,
+      "canonicalProblemTypeKeys": "9/9 exist in compiled taxonomy_registry",
+      "canonicalTemplateKeys": "12/12 exist and parent PT matches",
+      "canonicalCrossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING",
+        "CC_NORMAL_CURVE_SYMMETRY",
+        "CC_NUMBER_DIVISOR_MULTIPLE",
+        "CC_SAMPLE_MEAN_MOMENTS"
+      ],
+      "canonicalConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "extensionKeysReused": 0,
+      "newExtensionKeys": 0,
+      "newExtensionParentsVerified": "n/a",
+      "aliasProposals": 0,
+      "EVIDENCE_DEBT": 0,
+      "rpmRecordsUsed": "H2-PS-RPM-015,022,023,025,026,027,028,029,031,065 all exist in crosswalk high2-probability-statistics; empty rpm on q1,q10,q12,q16,q20 = no exact RPM template (ACTIVE_BINDING_NO_EXACT_RPM_TEMPLATE)",
+      "inheritance": "unit/PT/TPL/L1-L4 identical to the original's registered exam-scoped meta for 16/20; the 4 deviations (q5 +COND_POSITIVE, q11 subUnit→PROBABILITY_DISTRIBUTION, q12/q19 +CC and SEQUENTIAL, q16 CC prime→divisor/multiple) are justified by the new final solutions.",
+      "note": "q16 standardUnit H15-PS-05 is inherited from the original; canonical crosswalk also places 독립시행 (RPM-018/019) under H15-PS-04 and canonical runtime is inconsistent (both used). Left as the original's registered binding; no evidence debt created."
+    },
+    "harness": {
+      "command": "verify_similar_exam.mjs --phase=draft",
+      "result": "GATE_FAIL 75 errors, all classified as tool limitations: 'invalid points(undefined)' x20 + total score 0 (script requires a points field; scores live in [N점] tags, sum verified 100), 'invalid questionType 단답형' (middle taxonomy), 'unregistered PT/TPL' x38 (harness checks middle taxonomy; all keys verified present in high compiled registry), q16 SVG title/desc/role + glyph-path label/primitive complaints (engine outlined text), q16 'engine output/status mismatch' (state.plan.capability is composite-panels wrapper while guide-sanctioned plan says number-line-figure-v1; bytes equal), UNSUPPORTED x4 (judged above). No content defect found by harness."
+    },
+    "notRun": [
+      "browser/print actual-screen rendering of the exam engine (only q16.svg rendered standalone)",
+      "CI/registration/Consumer parity (merge stage)"
+    ]
+  },
+  "defects": [],
+  "questionsReview": [
+    {
+      "qid": 1,
+      "type": "객관식",
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "level": "하",
+      "difficultyBucket": 1
+    },
+    {
+      "qid": 2,
+      "type": "객관식",
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "level": "하",
+      "difficultyBucket": 1
+    },
+    {
+      "qid": 3,
+      "type": "객관식",
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "level": "하",
+      "difficultyBucket": 1
+    },
+    {
+      "qid": 4,
+      "type": "객관식",
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "level": "하",
+      "difficultyBucket": 1
+    },
+    {
+      "qid": 5,
+      "type": "객관식",
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 6,
+      "type": "객관식",
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 7,
+      "type": "객관식",
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 8,
+      "type": "객관식",
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 9,
+      "type": "객관식",
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 10,
+      "type": "객관식",
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 11,
+      "type": "객관식",
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 12,
+      "type": "객관식",
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "level": "상",
+      "difficultyBucket": 4
+    },
+    {
+      "qid": 13,
+      "type": "객관식",
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 3
+    },
+    {
+      "qid": 14,
+      "type": "객관식",
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "level": "상",
+      "difficultyBucket": 4
+    },
+    {
+      "qid": 15,
+      "type": "객관식",
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "level": "상",
+      "difficultyBucket": 4
+    },
+    {
+      "qid": 16,
+      "type": "단답형",
+      "derivedAnswer": "80/243",
+      "candidateAnswer": "80/243",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 17,
+      "type": "단답형",
+      "derivedAnswer": "80",
+      "candidateAnswer": "80",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 18,
+      "type": "서술형",
+      "derivedAnswer": "P(X=0..3)=1/35,12/35,18/35,4/35; E=12/7; V=24/49; sd=2√6/7",
+      "candidateAnswer": "P(X=0)=1/35, P(X=1)=12/35, P(X=2)=18/35, P(X=3)=4/35; E(X)=12/7, V(X)=24/49, σ(X)=2√6/7",
+      "match": true,
+      "level": "중",
+      "difficultyBucket": 3
+    },
+    {
+      "qid": 19,
+      "type": "서술형",
+      "derivedAnswer": "116",
+      "candidateAnswer": "116",
+      "match": true,
+      "level": "상",
+      "difficultyBucket": 4
+    },
+    {
+      "qid": 20,
+      "type": "서술형",
+      "derivedAnswer": "6/31",
+      "candidateAnswer": "6/31",
+      "match": true,
+      "level": "상",
+      "difficultyBucket": 4
+    }
+  ]
+}
