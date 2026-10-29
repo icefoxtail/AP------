@@ -699,7 +699,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O(0주)에 기준 9 kg을 표시하고, 1주부터 6주까지 여섯 점에 몸무게 8.5, 8, 8, 9, 10, 10.5(kg)를 표시하며 1주 후의 점을 빨간 선으로 강조한 그림",
+    "solutionImageCaption": "원점 O는 12개월 때의 기준 9 kg이고, 세로축 y는 9 kg에서 변한 양이므로 몸무게는 9+y이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

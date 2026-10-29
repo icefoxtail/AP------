@@ -473,7 +473,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: BC, ∠C, AB가 같을 때 B를 중심으로 반지름 AB인 원이 C에서 나간 반직선과 두 점에서 만나, 점 A가 C에 가까운 경우와 먼 경우의 서로 다른 삼각형 ABC 두 개를 나란히 보인 그림(길이와 각의 크기는 예).",
+    "solutionImageCaption": "같은 BC, ∠C, AB에서 점 A가 두 곳에 놓여 삼각형이 두 개 생기는 모습(그린 크기는 예).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -800,7 +804,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "STRONG_CONFLICT"
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 예로 든 정오각형과 정육각형의 아래 변 위의 점에서 나머지 꼭짓점으로 빨간 선분을 그어 번호 1부터의 삼각형으로 나눈 그림이다. 5각형은 삼각형 4개, 6각형은 5개로 n각형이면 n−1개이다.",
+    "solutionImageCaption": "한 변 위의 점에서 n각형의 꼭짓점으로 선분을 그으면 삼각형이 n−1개 생긴다(그림은 5각형, 6각형의 예). 문제의 삼각형 14개는 n−1=14에 해당한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -837,7 +845,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 꼭짓점에서 그은 빨간 대각선이 5각형, 6각형, 또 다른 다각형을 번호 붙은 삼각형으로 나누는 세 그림이다. 5각형은 대각선 2개와 삼각형 3개, 6각형은 대각선 3개와 삼각형 4개이고, 셋째 그림에 n각형이면 대각선 n−3개, 삼각형 n−2개라고 적었다.",
+    "solutionImageCaption": "n각형이면 꼭짓점의 개수 A=n, 한 꼭짓점에서 그을 수 있는 대각선 B=n−3, 이 대각선들이 나누는 삼각형 C=n−2이다(그림은 5각형, 6각형의 예와 확인용 그림).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
