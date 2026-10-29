@@ -537,12 +537,13 @@ test('the compose screen keeps only grade, subject, scope and 난이도 outside 
   assert.match(w.renderComposition(), /세부 조건 <span class="badge"[^>]*>1개 적용 중/);
 });
 
-test('고2/고3 open on the grade\'s largest subject, other grades keep the full list, 전체 과목 stays selectable', async () => {
+test('고2/고3 open on 대수 (first subject in curriculum order) with enough questions, other grades keep the full list, 전체 과목 stays selectable', async () => {
   const data = await catalog();
   const view = harness(data);
   const index = view.w.unifiedIndex();
   for (const grade of ['고2', '고3']) {
     const expected = Unified.defaultSubject(index, grade);
+    assert.equal(expected, 'ALGEBRA', grade);
     assert.ok(Unified.subjectsForGrade(grade).some(subject => subject.value === expected), grade);
     const { w, change } = harness(data);
     w.state.filters = { grade: '고1' };
@@ -551,6 +552,11 @@ test('고2/고3 open on the grade\'s largest subject, other grades keep the full
     const scopes = w.scopeOptions();
     assert.ok(scopes.length >= 5 && scopes.every(scope => scope.L1 === Unified.subjectByValue(grade, expected).label ||
       scope.L1 === Unified.NO_SUBJECT_LABEL), grade);
+    // usable out of the box: the first two listed units of the default subject can supply the
+    // default 10 questions per unit
+    const real = scopes.filter(scope => !scope.unclassified);
+    assert.ok(real.length >= 2, grade);
+    for (const scope of real.slice(0, 2)) assert.ok(scope.count >= 10, `${grade} ${scope.L2 || scope.label} ${scope.count}`);
     // choosing 전체 과목 explicitly is kept
     await change('compose', 'semanticSubject', '');
     assert.equal(w.state.filters.semanticSubject, '');

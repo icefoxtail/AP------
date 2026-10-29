@@ -183,7 +183,7 @@
     next.family = "";
     return next;
   }
-  // 고2/고3 start on the grade's largest subject instead of a long all-subject list (the
+  // 고2/고3 start on the grade's first subject (대수) instead of a long all-subject list (the
   // subject select still offers "전체 과목"). Only applied when the grade is chosen or compose is
   // opened from the finder without a subject, never while whole exams are selected as sources.
   function withDefaultComposeSubject(filters) {

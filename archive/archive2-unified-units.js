@@ -356,23 +356,20 @@
   const subjectForFamily = (family) => FAMILY_SUBJECT[text(family)] || "";
 
   // Default subject for grades whose list would otherwise be long (고2/고3 have five subjects):
-  // the subject with the most questions of that grade itself. Ties keep the curriculum order.
+  // the first subject in curriculum order (대수 first) that has questions in the grade's compose
+  // list, i.e. the whole grade view a teacher can pick from (not only questions whose own grade is
+  // that grade). Curriculum order is predictable for teachers; a data-driven "largest subject"
+  // picked 미적분Ⅱ for 고3, a subject with only a few questions.
   const defaultSubjectCache = new WeakMap();
   function defaultSubject(index, grade) {
     if (grade !== "고2" && grade !== "고3") return "";
     let byGrade = defaultSubjectCache.get(index);
     if (!byGrade) defaultSubjectCache.set(index, (byGrade = new Map()));
     if (byGrade.has(grade)) return byGrade.get(grade);
-    const counts = new Map();
+    const present = new Set();
     for (const entry of index.views[grade] || [])
-      if (entry.grade === grade && entry.subject && !entry.unclassified)
-        counts.set(entry.subject, (counts.get(entry.subject) || 0) + 1);
-    let best = "", bestCount = 0;
-    for (const subject of subjectsForGrade(grade))
-      if ((counts.get(subject.value) || 0) > bestCount) {
-        best = subject.value;
-        bestCount = counts.get(subject.value);
-      }
+      if (entry.subject && !entry.unclassified) present.add(entry.subject);
+    const best = subjectsForGrade(grade).find((subject) => present.has(subject.value))?.value || "";
     byGrade.set(grade, best);
     return best;
   }
