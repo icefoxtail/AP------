@@ -290,9 +290,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, M, B, N, C에서 AM=18cm와 BC 구간의 길이를 표시하고, 중점 M, N 때문에 같은 구간을 같은 눈금으로 나타내며 구하는 MN 구간을 빨간 굵은 선으로 보여 준다.",
-    "solutionImageCaption": "중점으로 나뉜 같은 길이의 구간(같은 눈금)과 구하는 MN 구간(빨간 선)을 표시한 그림",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, M, B, N, C에서 AM=18cm와 BC=24cm를 치수선으로 표시하고, 중점 M, N 때문에 같은 구간을 같은 눈금으로 나타내며 구하는 MN 구간을 빨간 굵은 선으로 보여 준다.",
+    "solutionImageCaption": "중점으로 나뉜 같은 길이의 구간(같은 눈금)과 AM=18cm, BC=24cm, 구하는 MN 구간(빨간 선)을 표시한 그림",
     "solutionImageSize": "medium"
   },
   {

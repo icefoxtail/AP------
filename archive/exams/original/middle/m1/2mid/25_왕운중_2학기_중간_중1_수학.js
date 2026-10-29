@@ -919,7 +919,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 y=24/x와 정비례 y=ax, y=-x/2, y=cx의 그래프와 직선 x=4가 그려져 있고, x=4 위의 세 점 A(4,6), B(4,-2), C와 원점 O로 이루어진 삼각형 AOB와 AOC가 색칠되어 있는 그림.",
+    "solutionImageCaption": "직선 x=4 위의 세 점 A(4,6), B(4,-2), C와 삼각형 AOB, AOC",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -999,7 +1003,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 y=42/x의 그래프(제3사분면 가지)와 좌표축이 있고, 한 변이 4인 정사각형 ABCD의 꼭짓점이 A(-6,-3), B(-6,-7), C(-2,-7), D(-2,-3)로 표시되며 점 B가 곡선 위에 놓이고 선분 OA가 그려져 있는 그림.",
+    "solutionImageCaption": "한 변이 4인 정사각형 ABCD의 꼭짓점 좌표, 선분 OA, 반비례 y=42/x 위의 점 B",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
