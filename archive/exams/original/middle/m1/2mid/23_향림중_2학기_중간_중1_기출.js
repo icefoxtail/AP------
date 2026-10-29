@@ -225,7 +225,7 @@ window.questionBank = [
       "모서리 $AB$와 꼬인 위치에 있는 모서리는 $2$개이다."
     ],
     "answer": "④",
-    "solution": "삼각기둥의 모서리와 면의 관계를 하나씩 확인한다.\n\n① 면 $ABC$와 평행한 면은 $1$개\n② $BE$와 수직인 면이 $3$개는 아님\n③ $BE$와 평행한 모서리가 $3$개는 아님\n④ $EF$와 수직으로 만나는 모서리는 $3$개\n⑤ $AB$와 꼬인 위치인 모서리가 $2$개는 아님\n\n따라서 옳은 것은 ④이다.",
+    "solution": "삼각기둥의 모서리와 면의 관계를 하나씩 확인한다.\n\n① 면 $ABC$와 평행한 면은 다른 밑면 $DEF$ 하나뿐이므로 $1$개이다.\n② 모서리 $BE$는 두 밑면 $ABC$, $DEF$에만 수직이므로 수직인 면은 $2$개이다.\n③ 모서리 $BE$와 평행한 모서리는 옆모서리 $AD$, $CF$뿐이므로 $2$개이다.\n④ $\\angle DEF=90^\\circ$이므로 $DE\\perp EF$이고, 옆모서리 $BE$, $CF$는 밑면에 수직이므로 $EF$와 수직이다. 따라서 $EF$와 수직으로 만나는 모서리는 $DE$, $BE$, $CF$의 $3$개이다.\n⑤ $AB$와 만나는 모서리($AC$, $AD$, $BC$, $BE$)와 평행한 모서리($DE$)를 뺀 $CF$, $DF$, $EF$가 꼬인 위치이므로 $3$개이다.\n\n따라서 옳은 것은 ④이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q6.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -346,7 +346,7 @@ window.questionBank = [
       "$36^\\circ$"
     ],
     "answer": "②",
-    "solution": "$AD\\parallel BC$이다.\n\n접는 선 $FG$가 윗변과 이루는 각에서\n$GF$와 수평 방향이 이루는 각은 $70^\\circ$\n\n평행선이므로\n$x=70^\\circ$\n\n접으면 원래 윗변과 접힌 변이 $FG$를 기준으로 같은 각을 이루므로\n$G$에서 접힌 변의 방향은 대칭이다.\n\n따라서\n$y=40^\\circ$\n\n그러므로\n$x-y=70^\\circ-40^\\circ=30^\\circ$\n\n정답은 ②이다.",
+    "solution": "$AD\\parallel BC$이다.\n\n$x$의 크기를 구한다.\n평행선에서 동측내각의 크기의 합은 $180^\\circ$이므로\n$\\angle DGF+\\angle GFC=180^\\circ$\n$110^\\circ+x=180^\\circ$, 즉 $x=70^\\circ$이다.\n\n$y$의 크기를 구한다.\n접은 각이므로 $\\angle GFE=\\angle GFC=x=70^\\circ$이다.\n또 $\\angle EGF=180^\\circ-\\angle DGF=180^\\circ-110^\\circ=70^\\circ$이다.\n삼각형 $EFG$의 세 내각의 합은 $180^\\circ$이므로\n$y=\\angle GEF=180^\\circ-70^\\circ-70^\\circ=40^\\circ$이다.\n\n그러므로\n$x-y=70^\\circ-40^\\circ=30^\\circ$\n\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q9.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",

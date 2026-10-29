@@ -673,7 +673,7 @@ window.questionBank = [
       "subUnit": "평면도형의 측정",
       "subUnitConfidence": "rule_inferred",
       "subUnitClassificationDepth": "complete_rule",
-      "solution": "[키포인트] 세 부채꼴의 반지름은 모두 $9\\rm\\,cm$이고, 각 부채꼴의 중심각을 정확히 잡는다.\n정삼각형의 한 내각은 $60^\\circ$이다.\n그림에서 각 부채꼴의 두 반지름이 만드는 작은 각은\n$180^\\circ-60^\\circ=120^\\circ$이므로,\n표시된 큰 부채꼴의 중심각은\n$360^\\circ-120^\\circ=240^\\circ$이다.\n\n부채꼴 하나의 호의 길이는\n$2\\pi\\times9\\times\\dfrac{240}{360}=12\\pi\\rm\\,cm$이다.\n\n세 부채꼴의 호의 길이의 합은\n$12\\pi\\times3=36\\pi\\rm\\,cm$이다.\n\n따라서 정답은 ①이다.",
+      "solution": "[키포인트] 세 부채꼴의 중심각은 모두 $120^\\circ$이고, 반지름은 $9\\rm\\,cm$, $18\\rm\\,cm$, $27\\rm\\,cm$로 차례로 커진다.\n정삼각형의 한 내각은 $60^\\circ$이므로 각 꼭짓점에서 한 변의 연장선과 다음 변이 이루는 각은\n$180^\\circ-60^\\circ=120^\\circ$이다.\n따라서 세 부채꼴의 중심각은 모두 $120^\\circ$이다.\n\n그림에서 부채꼴 $P$는 중심이 $A$이고 반지름은 정삼각형의 한 변의 길이인 $9\\rm\\,cm$이다.\n부채꼴 $Q$는 중심이 $B$이고 반지름은 $\\overline{AB}$의 길이 $9\\rm\\,cm$에 $P$의 반지름 $9\\rm\\,cm$를 더한 $18\\rm\\,cm$이다.\n부채꼴 $R$는 중심이 $C$이고 반지름은 $\\overline{BC}$의 길이 $9\\rm\\,cm$에 $Q$의 반지름 $18\\rm\\,cm$를 더한 $27\\rm\\,cm$이다.\n\n각 부채꼴의 호의 길이는\n$P:\\ 2\\pi\\times9\\times\\dfrac{120}{360}=6\\pi\\rm\\,cm$\n$Q:\\ 2\\pi\\times18\\times\\dfrac{120}{360}=12\\pi\\rm\\,cm$\n$R:\\ 2\\pi\\times27\\times\\dfrac{120}{360}=18\\pi\\rm\\,cm$이다.\n\n세 부채꼴의 호의 길이의 합은\n$6\\pi+12\\pi+18\\pi=36\\pi\\rm\\,cm$이다.\n\n따라서 정답은 ①이다.",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
