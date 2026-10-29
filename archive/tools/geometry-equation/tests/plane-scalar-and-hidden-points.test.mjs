@@ -58,3 +58,36 @@ test('E17: value is for SEGMENT_LENGTH only',async()=>{
     scalarLabels:[{nodeId:'sq',ownerSegment:'sBC',prefix:'BC',factRole:'DERIVED_INTERMEDIATE',value:'9'}]};
   assert.equal(specError(plan,model).split(':')[0],'SCALAR_LABEL_VALUE_REQUIRES_SEGMENT_LENGTH');
 });
+
+// ---- E19: a coordinate figure hides point names, and a point can be drawn with no dot
+const sourceX=(id,x,y)=>source(id,x,y);
+const coordGraph={schemaVersion:'construction-spike-v1',realization:{recipeId:'SOURCE_COORDINATE_AXES_v1',unit:'source-coordinate',reflectionEquivalent:false},nodes:[
+  derived('O','NORMALIZATION_ORIGIN',[],'POINT'),derived('X','NORMALIZATION_AXIS',[],'POINT',{length:int(1)}),
+  sourceX('P',3,2),derived('xax','SOURCE_LINE',[],'LINE',{a:int(0),b:int(1),c:int(0)}),derived('Fx','PERPENDICULAR_FOOT',['P','xax'],'POINT')]};
+const coordPlan=(extra={})=>({capability:'construction-spike-v1',caption:'점선을 따라 좌표를 읽는다.',mathPlan:coordGraph,displayPoints:['O','P','Fx'],displayLines:[],displayCircles:[],coordinateCanvas:{width:640,height:480},
+  displaySegments:[{id:'sPF',refs:['P','Fx'],dashed:true}],axisTickValues:{x:[1,2,3],y:[1,2]},hiddenPointNames:['P','Fx'],...extra});
+const dotsOf=svg=>[...svg.matchAll(/<circle\b[^>]*data-role="point"[^>]*>/gu)].length;
+test('E19: on a coordinate figure hiddenPointStyle NONE draws the hidden points with no dot (a SOURCE_POINT may be hidden too)',async()=>{
+  const model=await modelOf(coordGraph);
+  const base=await composeOf(coordPlan(),model);
+  assert.equal(base.status,'COMPOSED',JSON.stringify(base.detail));
+  const dotted=dotsOf(base.svg);assert.ok(dotted>=3);
+  const none=await composeOf(coordPlan({hiddenPointStyle:'NONE'}),model);
+  assert.equal(none.status,'COMPOSED',JSON.stringify(none.detail));
+  assert.equal(none.staticAudit.status,'PASS',JSON.stringify(none.staticAudit.errors));
+  assert.equal(dotsOf(none.svg),dotted-2,'P (a SOURCE_POINT) and Fx lose their dots; the origin keeps its own');
+  const partial=await composeOf(coordPlan({unmarkedPointNames:['Fx']}),model);
+  assert.equal(partial.status,'COMPOSED',JSON.stringify(partial.detail));
+  assert.equal(partial.staticAudit.status,'PASS',JSON.stringify(partial.staticAudit.errors));
+  assert.equal(dotsOf(partial.svg),dotted-1,'only Fx loses its dot, P keeps its own');
+  assert.deepEqual(unmarkedPointIds(coordPlan({hiddenPointStyle:'NONE'})),['P','Fx']);assert.deepEqual(unmarkedPointIds(coordPlan({unmarkedPointNames:['Fx']})),['Fx']);assert.deepEqual(unmarkedPointIds(coordPlan()),[]);
+});
+test('E19: refusals (a hidden point named in a text, unmarked names that are not hidden, both ways at once)',async()=>{
+  const model=await modelOf(coordGraph);
+  assert.equal(specError(coordPlan({caption:'점 P의 좌표를 읽는다.'}),model),'HIDDEN_POINT_NAMED_IN_TEXT:P');
+  assert.equal(specError(coordPlan({unmarkedPointNames:['O']}),model),'INVALID_UNMARKED_POINT_NAMES');
+  assert.equal(specError(coordPlan({unmarkedPointNames:[]}),model),'INVALID_UNMARKED_POINT_NAMES');
+  assert.equal(specError(coordPlan({unmarkedPointNames:['Fx','Fx']}),model),'INVALID_UNMARKED_POINT_NAMES');
+  assert.equal(specError(coordPlan({hiddenPointStyle:'NONE',unmarkedPointNames:['Fx']}),model),'UNMARKED_POINT_NAMES_WITH_STYLE_NONE');
+  assert.equal(specError({...coordPlan({hiddenPointStyle:'NONE'}),hiddenPointNames:undefined},model),'HIDDEN_POINT_STYLE_WITHOUT_HIDDEN_POINTS');
+});

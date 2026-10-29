@@ -139,14 +139,14 @@ test('plan checks: what a SOURCE_POINT may be hidden for, and every explicit rej
   assert.equal(specError({...planOf({hiddenPointStyle:'NONE'}),hiddenPointNames:undefined}),'HIDDEN_POINT_STYLE_WITHOUT_HIDDEN_POINTS');
 });
 
-test('plan checks: the derived-point rule and the coordinate figures behave as before',async()=>{
+test('plan checks: the derived-point rule is unchanged; a coordinate figure (axes) now also hides a SOURCE_POINT and takes hiddenPointStyle NONE (E19)',async()=>{
   // a DERIVED_INTERMEDIATE point on a plane figure is still hidden as before; a GIVEN/CONCLUSION derived point is still refused
   const given={...graph,nodes:graph.nodes.map(item=>item.id==='T'?{...item,factRole:'GIVEN'}:item)};
   const givenModel=(await pythonWorker({action:'construction',graph:given},{timeoutMs:90000})).result;
   const refused=plan=>{try{specFor(plan,givenModel,identity.assetId);}catch(error){return String(error.message);}return null;};
   assert.equal(refused({...planOf(),mathPlan:given}),'INVALID_HIDDEN_POINT_NAMES');
   assert.equal(refused({...planOf({hiddenPointNames:['F','R','L','E']}),mathPlan:given}),null);
-  // a coordinate figure (axes) keeps the old rule: a SOURCE_POINT is never a hidden point there, and NONE is a plane-figure option
+  // a coordinate figure (axes) hides points the same way (E19): a SOURCE_POINT may be a hidden point there, and NONE draws no dot
   const derived=(id,op,inputs,type,args={})=>({...node(id,op,inputs,type,args),factRole:'DERIVED_INTERMEDIATE'});
   const coordinate={schemaVersion:'construction-spike-v1',realization:{recipeId:'SOURCE_COORDINATE_AXES_v1',unit:'source-coordinate',reflectionEquivalent:false},nodes:[
     derived('O','NORMALIZATION_ORIGIN',[],'POINT'),derived('X','NORMALIZATION_AXIS',[],'POINT',{length:int(1)}),source('A',5,0),source('P',3,3),
@@ -156,10 +156,11 @@ test('plan checks: the derived-point rule and the coordinate figures behave as b
     displaySegments:[{id:'sOA',refs:['O','A']},{id:'sOP',refs:['O','P']},{id:'sPH',refs:['P','H']}],axisTickValues:{x:[],y:[]},...extra});
   const refusedCoordinate=plan=>{try{specFor(plan,coordinateModel,identity.assetId);}catch(error){return String(error.message);}return null;};
   assert.equal(refusedCoordinate(coordinatePlan({hiddenPointNames:['H']})),null,'a derived hidden point on a coordinate figure is unchanged');
-  assert.equal(refusedCoordinate(coordinatePlan({hiddenPointNames:['A']})),'INVALID_HIDDEN_POINT_NAMES','a SOURCE_POINT is still never hidden on a coordinate figure');
-  assert.equal(refusedCoordinate(coordinatePlan({hiddenPointNames:['H'],hiddenPointStyle:'NONE'})),'HIDDEN_POINT_STYLE_REQUIRES_PLANE_FIGURE');
+  assert.equal(refusedCoordinate(coordinatePlan({hiddenPointNames:['A']})),null,'a SOURCE_POINT may be a hidden point on a coordinate figure (its name only is hidden)');
+  assert.equal(refusedCoordinate({...coordinatePlan({hiddenPointNames:['A']}),caption:'점 A는 x축 위에 있다.'}),'HIDDEN_POINT_NAMED_IN_TEXT:A','... and a text still naming it is refused, as on a plane figure');
+  assert.equal(refusedCoordinate(coordinatePlan({hiddenPointNames:['H'],hiddenPointStyle:'NONE'})),null);
   assert.equal(refusedCoordinate(coordinatePlan({hiddenPointNames:['H'],hiddenPointStyle:'DOT'})),null);
-  assert.deepEqual(unmarkedPointIds(coordinatePlan({hiddenPointNames:['H'],hiddenPointStyle:'NONE'})),[],'the observer is never told to expect a missing dot on a coordinate figure');
+  assert.deepEqual(unmarkedPointIds(coordinatePlan({hiddenPointNames:['H'],hiddenPointStyle:'NONE'})),['H'],'the observer is told to expect no dot at the hidden point of a coordinate figure');
 });
 
 test('text helpers: a point id is named only as a name, never inside words, numbers or TeX commands',()=>{

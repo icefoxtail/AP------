@@ -9,9 +9,16 @@ export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_R
 export const COORDINATE_RECIPE='SOURCE_COORDINATE_AXES_v1';
 export const isCoordinateFigure=(plan,model)=>plan?.mathPlan?.realization?.recipeId===COORDINATE_RECIPE&&model?.coordinateMode==='SOURCE_COORDINATES';
 export const planeMarksAllowed=(plan,model)=>isPlaneFigure(plan)||isCoordinateFigure(plan,model);
-// hiddenPointStyle "NONE" (a plane figure only): the points listed in hiddenPointNames are drawn with no dot and no name. The independent
-// observer is told these ids from the PLAN, never from the engine, and expects no marker at them (every other point must keep its dot).
-export const unmarkedPointIds=plan=>plan?.hiddenPointStyle==='NONE'&&isPlaneFigure(plan)&&Array.isArray(plan.hiddenPointNames)?[...plan.hiddenPointNames]:[];
+// hiddenPointStyle "NONE" (a plane figure or a coordinate figure with axes): the points listed in hiddenPointNames are drawn with no dot and no name.
+// The independent observer is told these ids from the PLAN, never from the engine, and expects no marker at them (every other point must keep its dot).
+// A coordinate figure is recognised by its recipe here; phase2 also checks the model's coordinate mode and refuses the style on any other figure.
+// `unmarkedPointNames` (with the default style) picks single hidden points that get no dot, the others keeping theirs (the four read points of a coordinate
+// figure keep their dots while the feet of the perpendiculars that only guide the dashed segments draw none).
+export const unmarkedPointIds=plan=>{
+  if(!(isPlaneFigure(plan)||plan?.mathPlan?.realization?.recipeId===COORDINATE_RECIPE))return [];
+  if(plan?.hiddenPointStyle==='NONE')return Array.isArray(plan.hiddenPointNames)?[...plan.hiddenPointNames]:[];
+  return Array.isArray(plan?.unmarkedPointNames)?[...plan.unmarkedPointNames]:[];
+};
 // Texts of a plan that write point names (caption and the labels of marks/lengths), for the check that a nameless point is never named in text.
 export function planNameTexts(plan){
   const out=[],add=value=>{if(typeof value==='string')out.push(value);else if(value&&typeof value==='object'&&!Array.isArray(value)){add(value.text);add(value.math);}};

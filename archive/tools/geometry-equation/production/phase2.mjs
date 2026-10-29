@@ -661,17 +661,24 @@ function specForFamily(plan,model,id){
   // A plane figure (no axes) is fitted tightly: the engine's own margin already leaves room for the point names.
   const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1e-9),pad=span*(isPlaneFigure(plan)?.06:.35);
   // hiddenPointNames:[point IDs] draws derived helper points as bare dots: never a GIVEN/CONCLUSION point or a coordinate-labelled one.
-  // A plane figure (axis-free PLANE_FIGURE_v1) may also list a SOURCE_POINT (a point the source figure does not name): it is drawn without its name and
-  // is refused when pointNames, coordinateLabels or a caption/label text still names it. hiddenPointStyle 'DOT' (default) draws the hidden point as a bare
-  // dot, 'NONE' (plane figure only) draws no dot at all (a textbook line crossing or polygon vertex).
-  const hiddenNames=new Set(plan.hiddenPointNames??[]),planeFigure=isPlaneFigure(plan);
-  if(!Array.isArray(plan.hiddenPointNames??[])||[...hiddenNames].some(id=>{const node=plan.mathPlan.nodes.find(n=>n.id===id);return !Object.hasOwn(points,id)||!node||(node.op==='SOURCE_POINT'?!planeFigure:node.factRole!=='DERIVED_INTERMEDIATE')||(plan.coordinateLabels||[]).includes(id);}))throw Error('INVALID_HIDDEN_POINT_NAMES');
+  // A plane figure (axis-free PLANE_FIGURE_v1) or a coordinate figure with axes (SOURCE_COORDINATE_AXES_v1) may also list a SOURCE_POINT (a point the
+  // source figure does not name): it is drawn without its name and is refused when pointNames, coordinateLabels or a caption/label text still names it.
+  // hiddenPointStyle 'DOT' (default) draws the hidden point as a bare dot, 'NONE' (plane or coordinate figure only) draws no dot at all (a textbook line
+  // crossing or polygon vertex, the foot of a perpendicular that only guides a dashed segment).
+  const hiddenNames=new Set(plan.hiddenPointNames??[]),planeFigure=isPlaneFigure(plan),markFigure=planeFigure||isCoordinateFigure(plan,model);
+  if(!Array.isArray(plan.hiddenPointNames??[])||[...hiddenNames].some(id=>{const node=plan.mathPlan.nodes.find(n=>n.id===id);return !Object.hasOwn(points,id)||!node||(node.op==='SOURCE_POINT'?!markFigure:node.factRole!=='DERIVED_INTERMEDIATE')||(plan.coordinateLabels||[]).includes(id);}))throw Error('INVALID_HIDDEN_POINT_NAMES');
   if(plan.hiddenPointStyle!==undefined&&!['DOT','NONE'].includes(plan.hiddenPointStyle))throw Error('INVALID_HIDDEN_POINT_STYLE');
   if(plan.hiddenPointStyle==='NONE'){
-    if(!planeFigure)throw Error('HIDDEN_POINT_STYLE_REQUIRES_PLANE_FIGURE');
+    if(!markFigure)throw Error('HIDDEN_POINT_STYLE_REQUIRES_PLANE_FIGURE');
     if(!hiddenNames.size)throw Error('HIDDEN_POINT_STYLE_WITHOUT_HIDDEN_POINTS');
   }
-  if(planeFigure)for(const id of hiddenNames)if(plan.mathPlan.nodes.find(n=>n.id===id)?.op==='SOURCE_POINT'&&planNameTexts(plan).some(text=>textNamesPoint(text,id)))throw Error('HIDDEN_POINT_NAMED_IN_TEXT:'+id);
+  // unmarkedPointNames:[ids] (default style): those hidden points alone are drawn with no dot; the other hidden points keep their dot.
+  if(plan.unmarkedPointNames!==undefined){
+    if(!markFigure)throw Error('HIDDEN_POINT_STYLE_REQUIRES_PLANE_FIGURE');
+    if(plan.hiddenPointStyle==='NONE')throw Error('UNMARKED_POINT_NAMES_WITH_STYLE_NONE');
+    if(!Array.isArray(plan.unmarkedPointNames)||!plan.unmarkedPointNames.length||new Set(plan.unmarkedPointNames).size!==plan.unmarkedPointNames.length||plan.unmarkedPointNames.some(id=>!hiddenNames.has(id)))throw Error('INVALID_UNMARKED_POINT_NAMES');
+  }
+  if(markFigure)for(const id of hiddenNames)if(plan.mathPlan.nodes.find(n=>n.id===id)?.op==='SOURCE_POINT'&&planNameTexts(plan).some(text=>textNamesPoint(text,id)))throw Error('HIDDEN_POINT_NAMED_IN_TEXT:'+id);
   const unmarked=new Set(unmarkedPointIds(plan));
   const pointNames=pointNameModel(plan,Object.keys(points));
   for(const entry of pointNames.entries())if(hiddenNames.has(entry.id))throw Error('POINT_NAME_TARGET_HIDDEN:'+entry.id);
