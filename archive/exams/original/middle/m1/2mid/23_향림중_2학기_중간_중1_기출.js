@@ -873,7 +873,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:bffbe6096c969bf47ce7b425c09f9fafd230ad6ff5fa72870243016a315279f1",
-    "difficultyEvidenceSha": "sha256:a2b68fcadcff088a700ff2d4fe9aafb32ce91fc813ff3f4cf6d9d4d7d0234eac"
+    "difficultyEvidenceSha": "sha256:a2b68fcadcff088a700ff2d4fe9aafb32ce91fc813ff3f4cf6d9d4d7d0234eac",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각형의 각 꼭짓점에서 한 변씩을 연장해 외각 60°, x, 80°, 65°, 90°를 빨간 호로 표시한 그림이다.",
+    "solutionImageCaption": "오각형의 외각 다섯 개를 호로 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -917,7 +921,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:806a60acf41eaf40dc2df285cce9aa349e4e689dec99310a4f92bd5f64804124",
-    "difficultyEvidenceSha": "sha256:c3f75801b12b5ed3b7285bec5cee0fe36dc671fb6651b3547fd24d137dad7723"
+    "difficultyEvidenceSha": "sha256:c3f75801b12b5ed3b7285bec5cee0fe36dc671fb6651b3547fd24d137dad7723",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변을 공유한 정오각형과 정육각형의 공통 꼭짓점 둘레에 a=108°, b=120°, c=132°가 있고, 두 변의 연장선이 만든 사각형의 나머지 각 d=72°, e=60°, f=96°가 표시된 그림이다.",
+    "solutionImageCaption": "정오각형과 정육각형의 각 a~f의 크기를 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -952,7 +960,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m과 한 직선이 만나는 그림에서 위쪽 교점의 2x+50°와 그 맞꼭지각, 아래쪽 교점의 x-20°를 표시해 맞꼭지각과 x-20°가 같은 쪽 내각(빨강)임을 보여 준다.",
+    "solutionImageCaption": "2x+50°의 맞꼭지각과 x-20°가 같은 쪽 내각임을 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -988,7 +1000,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: B, F, C, E가 한 직선 위에 있고 AB∥ED, AC∥FD인 두 삼각형에서 BF=CE 눈금, 공통 변 FC(굵은 선), 같은 호로 묶인 엇각 두 쌍이 표시된 그림이다.",
+    "solutionImageCaption": "합동인 △ABC와 △DEF의 대응 변과 각을 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 25,
