@@ -73,7 +73,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 y=-12/x의 쌍곡선이 제2·4사분면에 놓이고, 곡선 위의 점 (-3,4), (3,-4)와 곡선 위에 있지 않은 점 (-3,-4)를 점선으로 이어 비교한 그림",
+    "solutionImageCaption": "y=-12/x의 그래프는 제2사분면과 제4사분면에 있고 (-3,-4)는 그래프 위의 점이 아니다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -224,7 +228,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:79cf48f81296c4aa063d4bc6c344bb7ed2f5ed00f1bcdb06f6365fd0dc6b119f",
-    "difficultyEvidenceSha": "sha256:29f26065348b625cba10c799ef3127d21debff67176d323f992a086f68abc056"
+    "difficultyEvidenceSha": "sha256:29f26065348b625cba10c799ef3127d21debff67176d323f992a086f68abc056",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠AOB와 같은 각을 O'X를 한 변으로 옮기는 작도 그림으로, 같은 반지름의 호(OC=OD=O'E=O'F)와 옮긴 현의 길이 CD=EF, 기호 ㉠~㉤ 위치를 보여 준다.",
+    "solutionImageCaption": "같은 반지름의 호와 옮긴 현 길이 CD=EF로 ∠AOB와 크기가 같은 각이 작도된다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -264,7 +272,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 점에서 만나는 세 직선에서, 아래쪽 2x°와 (2x+10)°의 맞꼭지각을 같은 색의 호로 위쪽에 옮겨 놓아 한 직선 위에 2x°, (4x+50)°, (2x+10)°가 이어짐을 보여 주는 그림",
+    "solutionImageCaption": "맞꼭지각을 위쪽에 옮기면 한 직선 위의 세 각 2x°, (4x+50)°, (2x+10)°의 합이 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -303,7 +315,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 AB=11cm 선분에 4cm와 6cm 괄호를 놓아 합이 11cm에 못 미침을 보이고, 오른쪽에는 BC=11cm, ∠B=28°에서 반지름 8cm인 원호가 반직선과 두 점에서 만나 삼각형이 두 개 생김을 보이는 그림",
+    "solutionImageCaption": "①은 6+4<11이라 삼각형이 만들어지지 않고, ④는 원호가 반직선과 두 점에서 만나 삼각형이 두 개 생긴다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -343,7 +359,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D에서 반직선 AB·AC, BC, CD가 각각 어느 점에서 시작해 오른쪽으로 뻗는지 네 칸으로 나누어 빨간색으로 보이고, 반직선 AD와 CD가 겹치는 부분을 함께 보여 주는 그림",
+    "solutionImageCaption": "반직선은 시작점과 뻗는 방향으로 정해지며, 반직선 AD와 CD가 겹치는 부분은 C에서 시작한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -383,7 +403,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 종이를 접은 그림에서 접는 선(빨강), 150°의 보각 30°와 접어서 생긴 같은 크기의 30°, 그리고 이 둘과 삼각형을 이루는 ∠x를 표시한 그림",
+    "solutionImageCaption": "150°의 보각 30°와 접어서 생긴 같은 크기의 30°가 ∠x와 함께 삼각형을 이룬다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
