@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {specFor} from '../production/phase2.mjs';
+import {arcLabelFraming,arcLabelSites} from '../production/plane-marks.mjs';
 import {reconstruct} from '../production/cindy-observer.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {requestedProfileTypographyPolicy} from '../production/display-envelope.mjs';
@@ -153,4 +154,67 @@ test('E10 error codes: a bad emphasis is refused with an explicit code',()=>{
   // not on a graph plan: the plane styles need a plane figure or a coordinate construction
   const notPlane={...planOf({arcs:[SEMICIRCLE]}),mathPlan:{...graph,realization:undefined}};delete notPlane.mathPlan.realization;
   assert.throws(()=>specFor({...notPlane,displaySegments:SEGMENTS.map(row=>row.id==='sOB'?{...row,emphasis:'BOLD'}:row)},model,identity.assetId));
+});
+
+// ---- E11: framing room for a label on an arc outside its circle
+const TIGHT={width:384,height:320};
+const LABELLED_ARCS=[SEMICIRCLE,{id:'arcAC',circle:'k',center:'O',from:'A',to:'C',side:'MINOR',label:'10',labelKind:'MATH',unit:'cm'},
+  {id:'arcCD',circle:'k',center:'O',from:'C',to:'D',side:'MINOR',label:'6',labelKind:'MATH',unit:'cm'},{id:'arcBD',circle:'k',center:'O',from:'B',to:'D',side:'MINOR',label:'16',labelKind:'MATH',unit:'cm'}];
+const viewportOf=(planeMarks,canvas)=>specFor(planOf(planeMarks,{canvas}),model,identity.assetId).viewport;
+const boundsOf=viewport=>({xMin:viewport.xMin,xMax:viewport.xMax,yMin:viewport.yMin,yMax:viewport.yMax});
+
+test('E11: a plan without an arc label keeps the tight plane frame (6% of the span around the displayed points)',()=>{
+  const points=['A','O','B','C','D'].map(id=>model.points[id].approximation),xs=points.map(p=>p[0]),ys=points.map(p=>p[1]);
+  const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys)),pad=span*.06;
+  const legacy={xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad};
+  assert.deepEqual(boundsOf(viewportOf({arcs:[SEMICIRCLE]},TIGHT)),legacy);
+  assert.deepEqual(boundsOf(viewportOf({arcs:[SEMICIRCLE]},{width:640,height:380})),legacy);
+  assert.deepEqual(boundsOf(viewportOf({arcs:[SEMICIRCLE],expressionLabels:[{id:'nOB',ownerSegment:'sOB',text:'6',unit:'cm'}]},TIGHT)),legacy,'a segment label does not widen the frame');
+  // an arc without a label does not either
+  assert.deepEqual(boundsOf(viewportOf({arcs:[SEMICIRCLE,{id:'arcAC',circle:'k',center:'O',from:'A',to:'C'}]},TIGHT)),legacy);
+});
+
+test('E11: labelled arcs widen the frame only on the sides their labels hang, and leave every label its room',()=>{
+  const plain=boundsOf(viewportOf({arcs:[SEMICIRCLE]},TIGHT)),framed=boundsOf(viewportOf({arcs:LABELLED_ARCS},TIGHT));
+  assert.ok(framed.xMin<plain.xMin&&framed.xMax>plain.xMax,JSON.stringify([plain,framed]));
+  assert.ok(framed.yMin>=plain.yMin-1e-9&&framed.yMax>=plain.yMax-1e-9,'the frame never shrinks');
+  assert.ok(framed.yMin===plain.yMin,'nothing hangs below the diameter: no room is added there');
+  // recompute the screen position of every label anchor from the returned frame and check the room (independently of the growth loop)
+  const sites=arcLabelSites(planOf({arcs:LABELLED_ARCS},{canvas:TIGHT}),model,Object.fromEntries(['A','O','B','C','D'].map(id=>[id,model.points[id]])));
+  assert.equal(sites.length,3);
+  const M=32,plotW=TIGHT.width-2*M,plotH=TIGHT.height-2*M,sx=Math.min(plotW/(framed.xMax-framed.xMin),plotH/(framed.yMax-framed.yMin));
+  const left=M+(plotW-sx*(framed.xMax-framed.xMin))/2,top=M+(plotH-sx*(framed.yMax-framed.yMin))/2;
+  for(const site of sites){
+    const X=left+(site.anchor[0]-framed.xMin)*sx,Y=top+(framed.yMax-site.anchor[1])*sx;
+    if(site.outward[0]>.38)assert.ok(X+18+site.width<=TIGHT.width-12+.06,site.id+' right');
+    if(site.outward[0]<-.38)assert.ok(X-18-site.width>=12-.06,site.id+' left');
+    if(site.outward[1]>.38)assert.ok(Y-18-site.height>=12-.06,site.id+' top');
+    assert.ok(site.width>0&&site.height>0);
+  }
+});
+
+test('E11: the framing function is exact about what it changes (pure unit checks)',()=>{
+  const plan=planOf({arcs:LABELLED_ARCS},{canvas:TIGHT}),points=Object.fromEntries(['A','O','B','C','D'].map(id=>[id,model.points[id]]));
+  const bounds={xMin:-6.72,xMax:6.72,yMin:-.72,yMax:6.63};
+  assert.deepEqual(arcLabelFraming({...plan,planeMarks:{arcs:[SEMICIRCLE]}},model,points,bounds,TIGHT),bounds,'no labelled arc: unchanged');
+  const notPlane={...plan,mathPlan:{...plan.mathPlan,realization:{...plan.mathPlan.realization,recipeId:'SOURCE_COORDINATE_AXES_v1'}}};
+  assert.deepEqual(arcLabelFraming(notPlane,model,points,bounds,TIGHT),bounds,'only a plane figure is reframed');
+  const framed=arcLabelFraming(plan,model,points,bounds,TIGHT);
+  assert.ok(framed.xMin<=bounds.xMin&&framed.xMax>=bounds.xMax&&framed.yMin<=bounds.yMin&&framed.yMax>=bounds.yMax,'bounds only grow');
+  assert.deepEqual(arcLabelFraming(plan,model,points,framed,TIGHT),framed,'a framed plan is already framed (idempotent)');
+  // a wider canvas needs less widening
+  const wide=arcLabelFraming(plan,model,points,bounds,{width:720,height:380});
+  assert.ok(wide.xMax-wide.xMin<=framed.xMax-framed.xMin+1e-9);
+  // an arc label that cannot be placed (an unknown circle) is left to planeMarkSpec's own error
+  assert.deepEqual(arcLabelFraming({...plan,planeMarks:{arcs:[{id:'x',circle:'nope',center:'O',from:'A',to:'C',label:'3'}]}},model,points,bounds,TIGHT),bounds);
+});
+
+test('E11: labels hung outside the half circle compose on a tight canvas and pass the observer',async()=>{
+  const plan=planOf({arcs:LABELLED_ARCS},{canvas:TIGHT}),result=await composeConstructionCandidate({plan,model,identity,typographyPolicy:policy,browser});
+  assert.equal(result.status,'COMPOSED',JSON.stringify(result.detail));
+  assert.equal(result.staticAudit.planeMarks.status,'PASS',JSON.stringify(result.staticAudit.planeMarks.errors));
+  for(const id of ['arcAC-label','arcCD-label','arcBD-label']){
+    const match=new RegExp('<g id="'+id+'"[^>]*transform="translate\\(([-\\d.]+) ([-\\d.]+)\\)"').exec(result.svg);assert.ok(match,id);
+    assert.ok(Number(match[1])>=12-1e-6&&Number(match[2])>=12-1e-6,id+' inside the safe area');
+  }
 });

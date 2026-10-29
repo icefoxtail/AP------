@@ -268,3 +268,62 @@ export function planeMarkPointRefs(plan){
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
   return [...refs,...regionPointRefs(plan)].filter(id=>typeof id==='string');
 }
+
+// ---- framing room for arc labels (E11) -------------------------------------------------------------------------------------------------
+// A label on a circular arc stands OUTSIDE its circle (the layout tries the directions that point away from the centre, gap 14 px and up).
+// The tight plane-figure frame leaves too little canvas there, so a plan with labelled arcs widens its model bounds until every label has
+// room on the sides its arc faces. Sizes are px estimates at a conservative font (the policy font is 20 to 32 px, measured later); a plan
+// without a labelled arc is returned unchanged, so every other figure keeps its frame byte for byte.
+export const ARC_LABEL_FONT_ESTIMATE_PX=26;
+const ARC_LABEL_FIRST_GAP_PX=18,ARC_LABEL_SAFE_PX=12,ARC_LABEL_VIEW_MARGIN_PX=32,ARC_LABEL_FACING=0.38;
+export function arcLabelBoxEstimate(row){
+  const text=String(row.label),font=ARC_LABEL_FONT_ESTIMATE_PX,kind=row.labelKind??(row.unit!==undefined?'MATH':'DEGREE');
+  const hangul=/[ᄀ-ᇿ㄰-㆏㈀-㋿가-힯]/;
+  let em;
+  if(kind==='TEXT')em=[...text].reduce((sum,ch)=>sum+(hangul.test(ch)?1.05:0.6),0);
+  else{
+    em=[...text.replace(/\s+/g,'')].length*0.62+(kind==='DEGREE'?0.45:kind==='NAME'?0.8:0);
+    if(row.unit!==undefined)em+=String(row.unit).length*0.6+(/[A-Za-z]$/.test(text)?0.25:0);
+  }
+  return {width:Math.ceil(em*font),height:Math.ceil(font*(kind!=='TEXT'&&/[\/^_]|sqrt/.test(text)?2.0:1.1))};
+}
+// Where each labelled arc's label hangs: the arc's middle (model units), the outward unit vector, the arc's own extreme points and the label size estimate.
+export function arcLabelSites(plan,model,points){
+  const rows=Array.isArray(plan?.planeMarks?.arcs)?plan.planeMarks.arcs:[],sites=[];
+  for(const row of rows){
+    if(!row||typeof row!=='object'||row.label===undefined)continue;
+    try{
+      const [cx,cy,r]=model.circles[row.circle].approximation,center=points[row.center].approximation,start=points[row.from].approximation,end=points[row.to].approximation;
+      const a0=Math.atan2(start[1]-center[1],start[0]-center[0]);
+      const ccw=(((Math.atan2(end[1]-center[1],end[0]-center[0])-a0)%(2*Math.PI))+2*Math.PI)%(2*Math.PI);
+      if(!(ccw>1e-9)||(Math.abs(ccw-Math.PI)<1e-9&&(row.side===undefined||row.side==='MINOR'||row.side==='MAJOR')))continue;
+      const counter=row.side==='CCW'||(row.side!=='CW'&&(row.side==='MAJOR')!==(ccw<Math.PI));
+      const span=counter?ccw:2*Math.PI-ccw,direction=counter?1:-1,middle=a0+direction*span/2;
+      const extremes=[0,1,2,3].map(k=>k*Math.PI/2).filter(angle=>(((angle-a0)*direction)%(2*Math.PI)+2*Math.PI)%(2*Math.PI)<=span).map(angle=>[cx+r*Math.cos(angle),cy+r*Math.sin(angle)]);
+      sites.push({id:row.id,anchor:[cx+r*Math.cos(middle),cy+r*Math.sin(middle)],outward:[Math.cos(middle),Math.sin(middle)],extremes,...arcLabelBoxEstimate(row)});
+    }catch{/* planeMarkSpec reports the real error */}
+  }
+  return sites;
+}
+export function arcLabelFraming(plan,model,points,bounds,canvas){
+  if(!isPlaneFigure(plan))return bounds;
+  const sites=arcLabelSites(plan,model,points);
+  if(!sites.length)return bounds;
+  let {xMin,xMax,yMin,yMax}=bounds;
+  for(const site of sites)for(const [x,y] of [site.anchor,...site.extremes]){xMin=Math.min(xMin,x);xMax=Math.max(xMax,x);yMin=Math.min(yMin,y);yMax=Math.max(yMax,y);}
+  const M=ARC_LABEL_VIEW_MARGIN_PX,plotW=canvas.width-2*M,plotH=canvas.height-2*M;
+  for(let pass=0;pass<80;pass++){
+    const sx=Math.min(plotW/(xMax-xMin),plotH/(yMax-yMin)),left=M+(plotW-sx*(xMax-xMin))/2,top=M+(plotH-sx*(yMax-yMin))/2;
+    const grow={left:0,right:0,top:0,bottom:0};
+    for(const site of sites){
+      const X=left+(site.anchor[0]-xMin)*sx,Y=top+(yMax-site.anchor[1])*sx,[ux,uy]=site.outward,gap=ARC_LABEL_FIRST_GAP_PX,safe=ARC_LABEL_SAFE_PX;
+      if(ux>ARC_LABEL_FACING)grow.right=Math.max(grow.right,X+gap+site.width-(canvas.width-safe));
+      if(ux<-ARC_LABEL_FACING)grow.left=Math.max(grow.left,safe-(X-gap-site.width));
+      if(uy>ARC_LABEL_FACING)grow.top=Math.max(grow.top,safe-(Y-gap-site.height));
+      if(uy<-ARC_LABEL_FACING)grow.bottom=Math.max(grow.bottom,Y+gap+site.height-(canvas.height-safe));
+    }
+    if(Math.max(grow.left,grow.right,grow.top,grow.bottom)<=0.05)break;
+    xMin-=Math.max(grow.left,0)/sx;xMax+=Math.max(grow.right,0)/sx;yMin-=Math.max(grow.bottom,0)/sx;yMax+=Math.max(grow.top,0)/sx;
+  }
+  return {xMin,xMax,yMin,yMax};
+}
