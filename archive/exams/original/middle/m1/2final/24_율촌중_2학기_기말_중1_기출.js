@@ -601,7 +601,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:e4bfc3bbed8d5f63196838dd42c635c114b691458beb9a4cffa69d8f71e77e34",
-      "difficultyEvidenceSha": "sha256:c337fb62c950a7e43cee0486fc35a07f0ef9a82f2ed1754a371813aa537622b6"
+      "difficultyEvidenceSha": "sha256:c337fb62c950a7e43cee0486fc35a07f0ef9a82f2ed1754a371813aa537622b6",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 윗몸 일으키기 기록의 줄기와 잎 그림이다. 줄기 4에서 41을 뺀 42부터 오른쪽 잎들과 줄기 5의 모든 잎을 동그라미로 표시해 42회 이상인 기록을 구분해 보여 준다.",
+      "solutionImageCaption": "42회 이상인 기록의 잎을 동그라미로 표시한 줄기와 잎 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 14,
@@ -691,7 +695,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:ef5db2e5e2c4452f50816d3e3b8b592f6beefb4f0723b199f2c1f373d80535b4",
-      "difficultyEvidenceSha": "sha256:bf95d7648363b2b64063017382b27494c59247af374606b27a58b1e68c38a481"
+      "difficultyEvidenceSha": "sha256:bf95d7648363b2b64063017382b27494c59247af374606b27a58b1e68c38a481",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 드론 비행시간 히스토그램이다. 3초 이상 24초 미만 일곱 계급의 막대 위에 도수 3, 9, 7, 6, 4, 2, 1을 쓰고, 일곱 계급 전체를 한 괄호로 묶어 도수를 모두 더하면 드론 수가 됨을 보여 준다.",
+      "solutionImageCaption": "각 막대의 높이가 계급의 도수임을 나타낸 히스토그램",
+      "solutionImageSize": "medium"
     },
     {
       "id": 16,
@@ -736,7 +744,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d9d6cb794d32071ef12d4e17c243aa367798ed19492168646c5dace41711347c",
-      "difficultyEvidenceSha": "sha256:35e4d1ffca9dc6a1444e83f451cbb835eaa7f929b388effc3cac90c1ae36355b"
+      "difficultyEvidenceSha": "sha256:35e4d1ffca9dc6a1444e83f451cbb835eaa7f929b388effc3cac90c1ae36355b",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 저축 금액의 도수분포다각형이다. 1만 원 이상 7만 원 미만 여섯 계급의 도수 2, 3, 13, 19, 12, 1을 점 위에 쓰고, 가장 높은 점인 4만 원 이상 5만 원 미만 계급을 동그라미로 표시했다.",
+      "solutionImageCaption": "각 점의 높이로 계급의 도수를 읽는 도수분포다각형",
+      "solutionImageSize": "medium"
     },
     {
       "id": 17,
@@ -781,7 +793,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:ee9a00ba86c58b363bc869509d1e95b66a245c406616f4a0877b7fe179c9b801",
-      "difficultyEvidenceSha": "sha256:1093190d21a5bd5b5303b931f6c6cc9546b2a02f43dbd3e4e22a167f434ba264"
+      "difficultyEvidenceSha": "sha256:1093190d21a5bd5b5303b931f6c6cc9546b2a02f43dbd3e4e22a167f434ba264",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 남학생 300명과 여학생 200명의 휴대 전화 사용 시간 상대도수 분포를 나타낸 두 꺾은선이다. 60분 이상 70분 미만 계급에서 남학생(0.20)과 여학생(0.25)의 점을 동그라미로 표시하고 상대도수를 썼다.",
+      "solutionImageCaption": "60분 이상 70분 미만 계급에서 두 집단의 상대도수를 짚은 도수분포다각형",
+      "solutionImageSize": "medium"
     },
     {
       "id": 18,
