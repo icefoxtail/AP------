@@ -578,6 +578,135 @@
     return normalizeDifficulty(value);
   }
 
+  // ---- 난이도 단계 (S13) ----------------------------------------------------------------------
+  // Numeric difficulty step 1..5 comes ONLY from a numeric difficultyBucket / difficultyStep. The legacy
+  // three-level label (하/중/상) is kept apart as display-only information and is never converted into,
+  // inferred as, or stored as a numeric step. Records without a numeric step are '단계 미지정'; they are
+  // never excluded.
+  const DIFFICULTY_STEPS = Object.freeze([1, 2, 3, 4, 5]);
+  const STEP_NONE = 'none';
+  const STEP_TOKENS = Object.freeze(['1', '2', '3', '4', '5', STEP_NONE]);
+  const LEGACY_LABELS = Object.freeze(['하', '중', '상']);
+  const LEGACY_NONE = '없음';
+  const LEGACY_RANK = Object.freeze({ '하': 0, '중': 1, '상': 2, [LEGACY_NONE]: 3 });
+  const STEP_LABEL_NONE = '단계 미지정';
+
+  function parseNumericStep(value) {
+    if (typeof value === 'number') return Number.isInteger(value) && value >= 1 && value <= 5 ? value : null;
+    const text = String(value ?? '').trim();
+    return /^[1-5]$/.test(text) ? Number(text) : null;
+  }
+
+  function getDifficultyStep(record) {
+    if (!record) return null;
+    const direct = parseNumericStep(record.difficultyStep);
+    if (direct) return direct;
+    return parseNumericStep(record.difficultyBucket);
+  }
+
+  function getLegacyDifficultyLabel(record) {
+    if (!record) return LEGACY_NONE;
+    const explicit = String(record.legacyDifficultyLabel ?? '').trim();
+    if (LEGACY_LABELS.includes(explicit)) return explicit;
+    for (const value of [record.difficultyBucket, record.level]) {
+      const text = String(value ?? '').trim().replace(/^\[|\]$/g, '').trim();
+      if (LEGACY_LABELS.includes(text)) return text;
+    }
+    return LEGACY_NONE;
+  }
+
+  function getStepToken(record) {
+    const step = getDifficultyStep(record);
+    return step ? String(step) : STEP_NONE;
+  }
+
+  function stepTokenLabel(token) {
+    return token === STEP_NONE ? STEP_LABEL_NONE : `${token}단계`;
+  }
+
+  function normalizeStepSelection(input) {
+    const list = Array.isArray(input) ? input : typeof input === 'string' ? input.split(',') : input instanceof Set ? [...input] : [];
+    const tokens = new Set(list.map(value => String(value ?? '').trim()).filter(value => STEP_TOKENS.includes(value)));
+    // Empty or complete selection == every step (the default; titles and snapshot keys stay unchanged).
+    if (!tokens.size || tokens.size === STEP_TOKENS.length) return [];
+    return STEP_TOKENS.filter(token => tokens.has(token));
+  }
+
+  function stepSelectionLabel(selection) {
+    const tokens = normalizeStepSelection(selection);
+    if (!tokens.length) return '';
+    const numeric = tokens.filter(token => token !== STEP_NONE);
+    const parts = [];
+    if (numeric.length) parts.push(`${numeric.join('·')}단계`);
+    if (tokens.includes(STEP_NONE)) parts.push(STEP_LABEL_NONE);
+    return parts.join(' · ');
+  }
+
+  // Sort keys are computed once per record: step 1..5 then 단계 미지정; inside 단계 미지정 the legacy
+  // label 하 -> 중 -> 상 -> 없음; then the existing recency order (2025 -> 2024 -> ... -> current year
+  // -> unknown), exam period, source file and question number.
+  const stepSortKeys = new WeakMap();
+  function getStepSortKey(record) {
+    let key = record && typeof record === 'object' ? stepSortKeys.get(record) : null;
+    if (key) return key;
+    const step = getDifficultyStep(record);
+    key = {
+      step: step || 6,
+      legacy: step ? 0 : LEGACY_RANK[getLegacyDifficultyLabel(record)],
+      recency: recencyRankOf(record),
+      period: ({ '1mid': 1, '1final': 2, '2mid': 3, '2final': 4 })[getPeriod(record.sourceFile)] || 99,
+      file: normalizePath(record.sourceFile),
+      no: getQuestionNo(record)
+    };
+    if (record && typeof record === 'object') stepSortKeys.set(record, key);
+    return key;
+  }
+
+  function compareStepRecords(a, b) {
+    const ka = getStepSortKey(a);
+    const kb = getStepSortKey(b);
+    return ka.step - kb.step || ka.legacy - kb.legacy || ka.recency - kb.recency || ka.period - kb.period ||
+      compareText(ka.file, kb.file) || ka.no - kb.no;
+  }
+
+  function summarizeSteps(records) {
+    const steps = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, [STEP_NONE]: 0 };
+    const legacy = { '하': 0, '중': 0, '상': 0, [LEGACY_NONE]: 0 };
+    for (const record of Array.isArray(records) ? records : []) {
+      const token = getStepToken(record);
+      steps[token] += 1;
+      if (token === STEP_NONE) legacy[getLegacyDifficultyLabel(record)] += 1;
+    }
+    return { steps, legacy, total: Object.values(steps).reduce((sum, value) => sum + value, 0) };
+  }
+
+  // Section headings for a step-ordered paper: one heading at the first question of every step; inside
+  // 단계 미지정 an extra sub-heading '기존 분류: 하/중/상/없음' at each legacy-label change. `at` is the
+  // 0-based question index, `uid` guards against a reordered paper (renderers ignore a stale heading).
+  function buildStepSections(records) {
+    const list = Array.isArray(records) ? records : [];
+    const sections = [];
+    let previousToken = null;
+    let previousLegacy = null;
+    list.forEach((record, index) => {
+      const token = getStepToken(record);
+      const uid = getQuestionUid(record);
+      if (token !== previousToken) {
+        sections.push({ at: index, uid, title: stepTokenLabel(token), level: 1 });
+        previousToken = token;
+        previousLegacy = null;
+      }
+      if (token === STEP_NONE) {
+        const legacy = getLegacyDifficultyLabel(record);
+        if (legacy !== previousLegacy) {
+          sections.push({ at: index, uid, title: `기존 분류: ${legacy}`, level: 2 });
+          previousLegacy = legacy;
+        }
+      }
+    });
+    return sections;
+  }
+
   function getQuestionUid(record) {
     return String(record && (record.questionUid || record.question_uid) || '').trim();
   }
@@ -1253,6 +1382,8 @@
       subUnitKey: safeSubUnitKey,
        subUnit: safeSubUnitKey ? getSubUnitLabel(record) : '',
       difficultyBucket: getDifficultyBucket(record),
+      difficultyStep: getDifficultyStep(record),
+      legacyDifficultyLabel: getLegacyDifficultyLabel(record),
       problemTypeKey: getProblemTypeKey(record),
       templateKey: getTemplateKey(record),
       L3: getProblemTypeLabel(record),
@@ -1303,6 +1434,38 @@
     return papers;
   }
 
+  // Papers of one unit for a difficulty-step selection (default: every step). The selected records are
+  // ordered step 1 -> 5 -> 단계 미지정 (legacy 하 -> 중 -> 상 -> 없음 inside it), recency order inside every
+  // step, then split by the same paper size rule (target / hard max, one exam kept together) as before.
+  function buildStepPapers(unit, records, scope, options = {}) {
+    const tokens = normalizeStepSelection(options.difficultySteps);
+    const selected = tokens.length ? records.filter(record => tokens.includes(getStepToken(record))) : records;
+    const split = splitIntoPapers(selected, {
+      target: options.target || scope.targetQuestionsPerPaper,
+      max: options.max || scope.hardMaxQuestionsPerPaper,
+      compare: compareStepRecords
+    });
+    const label = stepSelectionLabel(tokens);
+    const base = label ? `${unit.name} · ${label}` : unit.name;
+    return split.map((paperRecords, index) => ({
+      index: index + 1,
+      title: split.length === 1 ? base : `${base} · 문제지 ${index + 1}`,
+      count: paperRecords.length,
+      sourceCount: new Set(paperRecords.map(record => record.sourceFile)).size,
+      records: paperRecords,
+      stepGrouped: true,
+      difficultySteps: tokens,
+      stepSummary: summarizeSteps(paperRecords),
+      sections: buildStepSections(paperRecords),
+      snapshotKey: buildSnapshotKey(unit.key, paperRecords, scope, { difficultySteps: tokens })
+    }));
+  }
+
+  function buildUnitPapers(unit, options = {}) {
+    if (!unit || !Array.isArray(unit.selectableRecords)) return [];
+    return buildStepPapers(unit, unit.selectableRecords, options.scope || unit.paperScope || COMMON_SCOPE, options);
+  }
+
   function fnv1a(text) {
     let hash = 0x811c9dc5;
     for (let i = 0; i < text.length; i += 1) {
@@ -1322,6 +1485,7 @@
       templateKeys: selection.templateKeys || [],
       difficultyPlan: selection.difficultyPlan || [],
       taxonomyPlan: selection.taxonomyPlan || [],
+      ...(normalizeStepSelection(selection.difficultySteps).length ? { difficultySteps: normalizeStepSelection(selection.difficultySteps) } : {}),
       seed: selection.seed || '',
       collection: selection.collection || null,
       paperKey: selection.paperKey || ''
@@ -1352,15 +1516,7 @@
     const units = profile.units.map(unit => {
       const unitRecords = byUnit[unit.key].sort(compareRecords);
       const selectableRecords = unitRecords.filter(isAutomaticSelectable);
-      const split = splitIntoPapers(selectableRecords, { ...options, target: options.target || scope.targetQuestionsPerPaper, max: options.max || scope.hardMaxQuestionsPerPaper });
-      const papers = split.map((paperRecords, index) => ({
-        index: index + 1,
-        title: split.length === 1 ? unit.name : `${unit.name} · 문제지 ${index + 1}`,
-        count: paperRecords.length,
-        sourceCount: new Set(paperRecords.map(record => record.sourceFile)).size,
-        records: paperRecords,
-        snapshotKey: buildSnapshotKey(unit.key, paperRecords, scope)
-      }));
+      const papers = buildStepPapers(unit, selectableRecords, scope, options);
       return {
         ...unit,
         count: unitRecords.length,
@@ -1368,6 +1524,10 @@
         approvedCount: selectableRecords.filter(isMetadataApproved).length,
         excludedFromAutomaticCount: unitRecords.length - selectableRecords.length,
         records: unitRecords,
+        // Shared with the paper rebuild for a chosen difficulty-step subset (buildUnitPapers).
+        selectableRecords,
+        paperScope: scope,
+        stepSummary: summarizeSteps(selectableRecords),
         papers
       };
     });
@@ -1418,6 +1578,18 @@
     compareRecords,
     normalizeDifficulty,
     getDifficultyBucket,
+    DIFFICULTY_STEPS,
+    STEP_TOKENS,
+    getDifficultyStep,
+    getLegacyDifficultyLabel,
+    getStepToken,
+    stepTokenLabel,
+    normalizeStepSelection,
+    stepSelectionLabel,
+    compareStepRecords,
+    summarizeSteps,
+    buildStepSections,
+    buildUnitPapers,
     getSubUnitKey,
     getSubUnitParentKey,
     getSubUnitLabel,

@@ -27,8 +27,8 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(controls, /studentReturnTo/);
   assert.match(controls, /target\.origin === location\.origin/);
   assert.match(controls, /target\.pathname\.startsWith\("\/apmath\/student\/"\)/);
-  assert.match(engine, /solution-render-executor\.js\?v=20261010-qpp1-fullwidth-2/);
-  assert.match(mixed, /solution-render-executor\.js\?v=20261010-qpp1-fullwidth-2/);
+  assert.match(engine, /solution-render-executor\.js\?v=20261029-sections-1/);
+  assert.match(mixed, /solution-render-executor\.js\?v=20261029-sections-1/);
   assert.match(engine, /outputUrl\.searchParams\.set\('outputRequestId', envelope\.outputRequestId\)/);
   assert.match(engine, /payload: \{ printHeaderOptions, outputEnvelope: runtimeEnvelope, outputUrl: outputUrl\.href \}/);
   assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);

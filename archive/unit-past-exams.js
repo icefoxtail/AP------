@@ -17,7 +17,7 @@
     metadataLoaded: false, metadataError: false, filterState: null, collectionState: null, generatedPapers: [],
     workflowStep: 1, sourceMode: 'archive', previewPaperPosition: 0, previewLoadToken: 0, qpp: '4',
     questionEditMode: false, selectedQuestionIndex: -1, replacementCandidates: [], replacementCandidatePage: 0,
-    replacementFilter: null
+    replacementFilter: null, shelfSteps: [], shelfPaperCache: new Map()
   };
 
   function escapeHtml(value) {
@@ -215,7 +215,25 @@
         || state.generatedPapers.find(paper => paper.unitKey === unitKey && paper.generated)
         || state.generatedPapers.find(paper => paper.unitKey === unitKey);
     }
-    return getUnit(unitKey)?.papers.find(paper => paper.index === Number(paperIndex));
+    const unit = getUnit(unitKey);
+    return unit ? getShelfPapers(unit).find(paper => paper.index === Number(paperIndex)) : undefined;
+  }
+
+  // 단원별 기출 papers for the chosen difficulty steps (default: every step -> the catalog papers, already
+  // ordered step 1 -> 5 -> 단계 미지정). A subset is rebuilt once from the unit's selectable records and cached.
+  function getShelfPapers(unit) {
+    const tokens = core.normalizeStepSelection(state.shelfSteps);
+    if (!tokens.length) return unit.papers;
+    const cacheKey = `${state.profileId}|${unit.key}|${tokens.join(',')}`;
+    let papers = state.shelfPaperCache.get(cacheKey);
+    if (!papers) {
+      papers = core.buildUnitPapers(unit, { difficultySteps: tokens });
+      state.shelfPaperCache.set(cacheKey, papers);
+    }
+    return papers;
+  }
+  function readStepsFromUrl() {
+    return core.normalizeStepSelection(new URLSearchParams(window.location.search).get('steps') || '');
   }
   function resetQuestionReplacementState(options = {}) {
     state.selectedQuestionIndex = -1;
@@ -388,6 +406,14 @@
       metadataRevision: [...new Set(paper.records.map(record => record.metadataRevision).filter(Boolean))].join(',') || '',
       printHeaderOptions: { ...printHeaderOptions }
     };
+    // Step-ordered papers carry optional section headings ('1단계' ... '단계 미지정' / '기존 분류: 하');
+    // older output consumers ignore the unknown field. Recomputed from the current records so a
+    // replaced question never leaves a stale heading.
+    if (paper.stepGrouped) {
+      meta.sections = core.buildStepSections(paper.records);
+      const stepLabel = core.stepSelectionLabel(paper.difficultySteps);
+      if (stepLabel) meta.difficultyStepLabel = stepLabel;
+    }
     if (!readyShelf()) {
       localStorage.setItem(`mixedQuestions_${paper.snapshotKey}`, JSON.stringify(questions));
       localStorage.setItem(`mixedMeta_${paper.snapshotKey}`, JSON.stringify(meta));
@@ -570,6 +596,7 @@
     if (filter.count !== 12) url.searchParams.set('count', String(filter.count)); else url.searchParams.delete('count');
     if (filter.subUnitKeys.length) url.searchParams.set('subUnit', filter.subUnitKeys.join(',')); else url.searchParams.delete('subUnit');
     if (filter.difficultyBuckets.length) url.searchParams.set('difficulty', filter.difficultyBuckets.join(',')); else url.searchParams.delete('difficulty');
+    if (selectedStepTokens().length) url.searchParams.set('steps', selectedStepTokens().join(',')); else url.searchParams.delete('steps');
     if (filter.includeUnclassified) url.searchParams.set('includeUnclassified', '1'); else url.searchParams.delete('includeUnclassified');
     if (filter.allowAdjacentDifficulty) url.searchParams.set('adjacentDifficulty', '1'); else url.searchParams.delete('adjacentDifficulty');
     if (filter.mode === 'advanced') url.searchParams.set('blueprint', JSON.stringify(filter.advancedRows)); else url.searchParams.delete('blueprint');
@@ -1207,10 +1234,60 @@
     root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit)}<div class="unit-step-panel"><div class="unit-step-heading"><div><h2>어디에서 문항을 가져올까요?</h2><p>출처만 고르면 이후 소단원·난이도·문항 수는 같은 화면에서 설정합니다.</p></div><button type="button" class="unit-btn ghost" onclick="UnitPastExams.goToStep(1)">단원 변경</button></div><div class="unit-source-switch" role="radiogroup" aria-label="문항 출처"><label><input type="radio" name="unit-source-mode" value="archive"${archiveSelected ? ' checked' : ''} onchange="UnitPastExams.selectSourceMode('archive')"><span>전체 아카이브</span></label><label><input type="radio" name="unit-source-mode" value="school"${archiveSelected ? '' : ' checked'} onchange="UnitPastExams.selectSourceMode('school')"><span>학교·연도 지정</span></label></div><p class="unit-source-note">${archiveSelected ? '현재 단원의 모든 기출에서 조건에 맞는 문제를 고릅니다. 가장 빠른 기본 방식입니다.' : '특정 연도와 학교를 먼저 좁힌 뒤, 같은 구성 화면에서 문제지를 만듭니다.'}</p>${archiveSelected ? '' : renderCollectionSourceFields(unit)}<div class="unit-actionbar"><div class="unit-action-summary"><strong>${archiveSelected ? unit.count.toLocaleString() : getSharedRecords(unit).length.toLocaleString()}문항</strong>에서 구성</div><div class="unit-action-buttons"><button type="button" class="unit-btn" onclick="UnitPastExams.goToStep(1)">이전</button><button type="button" class="unit-btn primary unit-btn-large" onclick="UnitPastExams.continueSource()">구성으로 이동 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></div></div></section>`;
   }
 
+  // ---- 난이도 단계 선택 (바로 쓰는 문제지) -------------------------------------------------------
+  function selectedStepTokens() { return core.normalizeStepSelection(state.shelfSteps); }
+  function renderShelfPaperButtons(unit) {
+    const papers = getShelfPapers(unit);
+    if (!papers.length) return '<p class="unit-help">선택한 단계에 해당하는 문항이 없습니다. 다른 단계를 선택해 주세요.</p>';
+    return papers.map(paper => `<button type="button" class="unit-ready-paper" onclick="UnitPastExams.previewExistingPaper('${unit.key}', ${paper.index})"><span class="unit-ready-number">${String(paper.index).padStart(2, '0')}</span><span class="unit-ready-info"><strong>${escapeHtml(paper.title)}</strong><small>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개 · ${escapeHtml(describeStepComposition(paper.stepSummary))}</small></span><span class="unit-ready-action">시험지 확인 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></button>`).join('');
+  }
+  function describeStepComposition(summary) {
+    if (!summary) return '';
+    const parts = core.STEP_TOKENS.filter(token => summary.steps[token]).map(token => `${core.stepTokenLabel(token)} ${summary.steps[token]}`);
+    return parts.join(' · ');
+  }
+  function renderStepSummaryText(unit) {
+    const tokens = selectedStepTokens();
+    const papers = getShelfPapers(unit);
+    const total = papers.reduce((sum, paper) => sum + paper.count, 0);
+    const label = tokens.length ? core.stepSelectionLabel(tokens) : '전체 단계';
+    return `${label} · ${total.toLocaleString()}문항 · 문제지 ${papers.length}개 (쉬운 단계부터 정리)`;
+  }
+  function renderStepSelector(unit) {
+    const summary = unit.stepSummary || core.summarizeSteps(unit.selectableRecords || []);
+    const selected = new Set(selectedStepTokens());
+    const chips = core.STEP_TOKENS.map(token => {
+      const count = summary.steps[token] || 0;
+      const checked = !selected.size || selected.has(token);
+      return `<label class="unit-chip unit-step-chip${count ? '' : ' is-empty'}"><input type="checkbox" name="unit-step" value="${token}"${checked ? ' checked' : ''} onchange="UnitPastExams.updateStepSelection()"><span>${escapeHtml(core.stepTokenLabel(token))} <span class="unit-chip-count">${count.toLocaleString()}</span></span></label>`;
+    }).join('');
+    const none = summary.steps[core.STEP_TOKENS[5]] || 0;
+    const legacy = ['하', '중', '상', '없음'].map(label => `${label} ${(summary.legacy[label] || 0).toLocaleString()}`).join(' · ');
+    const legacyNote = none
+      ? `<p class="unit-help unit-step-legacy">단계 미지정 ${none.toLocaleString()}문항은 기존 분류(참고용) ${legacy} 순으로 묶어 표시합니다. 숫자 단계로 바꾸지 않으며 제외하지 않습니다.</p>`
+      : '';
+    return `<section class="unit-step-selector" aria-labelledby="unit-step-selector-title"><div class="unit-step-selector-head"><h3 id="unit-step-selector-title">난이도 단계</h3><span class="unit-help">여러 단계를 함께 고를 수 있습니다. 문제지는 1단계부터 쉬운 순서로 정리하고 단계마다 제목을 붙입니다.</span></div><div class="unit-chip-list" id="unit-steps" role="group" aria-label="난이도 단계 선택">${chips}</div>${legacyNote}<div class="unit-step-summary unit-help" id="unit-step-summary" aria-live="polite">${escapeHtml(renderStepSummaryText(unit))}</div></section>`;
+  }
+  function updateStepSelection() {
+    const unit = getUnit(state.selectedUnitKey);
+    if (!unit) return;
+    const checked = [...document.querySelectorAll('input[name="unit-step"]:checked')].map(input => input.value);
+    // Nothing checked is treated as every step so the shelf never goes blank by accident.
+    state.shelfSteps = core.normalizeStepSelection(checked);
+    const url = new URL(window.location.href);
+    if (state.shelfSteps.length) url.searchParams.set('steps', state.shelfSteps.join(',')); else url.searchParams.delete('steps');
+    history.replaceState(null, '', url.toString());
+    const list = document.getElementById('unit-shelf-papers');
+    if (list) list.innerHTML = renderShelfPaperButtons(unit);
+    const summary = document.getElementById('unit-step-summary');
+    if (summary) summary.textContent = renderStepSummaryText(unit);
+    if (!checked.length) document.querySelectorAll('input[name="unit-step"]').forEach(input => { input.checked = true; });
+  }
+
   function renderConfigStep(unit) {
     const root = document.getElementById('unit-content');
     if (readyShelf()) {
-      root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: "바로 쓰는 문제지", count: unit.count })}<div class="unit-step-panel"><div class="unit-step-heading"><div><h2>바로 쓰는 문제지</h2><p>기존 단원별 기출 문제지입니다. 시험지를 확인한 뒤 출력하거나 반·학생에게 출제하세요.</p></div><div class="unit-filter-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.openFineBuilder()">세분 출제</button><button class="unit-btn" onclick="UnitPastExams.goToStep(1)">단원 변경</button></div></div><div class="unit-existing-list">${unit.papers.map(paper => `<button type="button" class="unit-ready-paper" onclick="UnitPastExams.previewExistingPaper('${unit.key}', ${paper.index})"><span class="unit-ready-number">${String(paper.index).padStart(2, '0')}</span><span class="unit-ready-info"><strong>${escapeHtml(paper.title)}</strong><small>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</small></span><span class="unit-ready-action">시험지 확인 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></button>`).join('')}</div></div></section>`;
+      root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: "바로 쓰는 문제지", count: unit.count })}<div class="unit-step-panel"><div class="unit-step-heading"><div><h2>바로 쓰는 문제지</h2><p>기존 단원별 기출 문제지입니다. 시험지를 확인한 뒤 출력하거나 반·학생에게 출제하세요.</p></div><div class="unit-filter-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.openFineBuilder()">세분 출제</button><button class="unit-btn" onclick="UnitPastExams.goToStep(1)">단원 변경</button></div></div>${renderStepSelector(unit)}<div class="unit-existing-list" id="unit-shelf-papers">${renderShelfPaperButtons(unit)}</div></div></section>`;
       return;
     }
     const filter = state.filterState;
@@ -1222,7 +1299,7 @@
     const selectedDifficulty = new Set(filter.difficultyBuckets);
     const subUnitChips = subUnitOptions.map(item => `<label class="unit-chip"><input type="checkbox" name="unit-subunit" value="${escapeHtml(item.key)}"${filter.subUnitKeys.includes(item.key) ? ' checked' : ''} onchange="UnitPastExams.updateDetailFilter()"><span>${escapeHtml(item.label)} <span class="unit-chip-count">${item.count}</span></span></label>`).join('');
     const difficultyChips = LEVELS.map(level => `<label class="unit-choice"><input type="checkbox" name="unit-difficulty" value="${level}"${selectedDifficulty.has(level) ? ' checked' : ''} onchange="UnitPastExams.updateDetailFilter()"><span>${level}</span></label>`).join('');
-    const existingPapers = state.sourceMode === 'archive' && unit.papers.length ? `<section class="unit-existing-section"><h3>바로 쓰는 문제지</h3><div class="unit-existing-list">${unit.papers.map(paper => renderExistingPaperCompact(paper, unit)).join('')}</div></section>` : '';
+    const existingPapers = state.sourceMode === 'archive' && getShelfPapers(unit).length ? `<section class="unit-existing-section"><h3>바로 쓰는 문제지</h3><div class="unit-existing-list">${getShelfPapers(unit).map(paper => renderExistingPaperCompact(paper, unit)).join('')}</div></section>` : '';
     const modeControls = state.sourceMode === 'archive' ? `<section class="unit-advanced-section"><h3>구성 방식</h3><div class="unit-mode-toggle"><label><input type="radio" name="unit-mode" value="quick"${filter.mode === 'quick' ? ' checked' : ''} onchange="UnitPastExams.updateDetailFilter()"><span>빠른 구성</span></label><label><input type="radio" name="unit-mode" value="advanced"${filter.mode === 'advanced' ? ' checked' : ''} onchange="UnitPastExams.updateDetailFilter()"><span>세부 조합</span></label></div><div class="unit-advanced-fields${filter.mode === 'advanced' ? '' : ' is-hidden'}"><div class="unit-advanced-head"><strong>출제 조합</strong><button type="button" class="unit-btn" onclick="UnitPastExams.addBlueprintRow()"><i class="fa-solid fa-plus" aria-hidden="true"></i>조합 추가</button></div><div id="unit-advanced-rows"></div><p class="unit-help">각 행의 소단원·난이도·문항 수를 그대로 반영합니다.</p></div></section>` : '';
     root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit)}<div class="unit-step-panel"><div class="unit-step-heading"><div><h2>문제지 구성을 정하세요</h2><p>공통 조건은 한 번만 설정합니다. 선택하지 않은 항목은 전체로 적용됩니다.</p></div><button type="button" class="unit-btn ghost" onclick="UnitPastExams.goToStep(2)">출처 수정</button></div><div class="unit-config-list"><div class="unit-config-row"><div class="unit-config-label">소단원</div><div class="unit-config-control"><div class="unit-chip-list" id="unit-subunits" aria-label="소단원 선택">${subUnitChips || '<span class="unit-help">선택 가능한 소단원 정보가 없습니다.</span>'}</div><span class="unit-help">선택하지 않으면 현재 출처 범위의 모든 소단원을 사용합니다.</span></div></div><div class="unit-config-row"><div class="unit-config-label">난이도</div><div class="unit-config-control"><div class="unit-choice-list" id="unit-difficulty">${difficultyChips}</div><span class="unit-help">선택하지 않으면 전체 난이도를 사용합니다.</span></div></div><div class="unit-config-row"><div class="unit-config-label">구성</div><div class="unit-config-control"><div class="unit-quick-fields"><label>출제 프리셋<select id="unit-quick-preset" onchange="UnitPastExams.updateDetailFilter()">${Object.entries(QUICK_PRESETS).map(([key, preset]) => `<option value="${key}"${filter.preset === key ? ' selected' : ''}>${preset.label}</option>`).join('')}</select></label><label>문항 수<input id="unit-quick-count" type="number" min="1" max="80" value="${filter.count}" onchange="UnitPastExams.updateDetailFilter()"></label></div><div class="unit-filter-summary unit-help" id="unit-filter-summary" aria-live="polite"></div></div></div></div>${existingPapers}<details class="unit-advanced-panel"${filter.mode === 'advanced' ? ' open' : ''}><summary>고급 설정</summary><div class="unit-advanced-body">${modeControls}<section class="unit-advanced-section"><h3>문항 부족 시 완화</h3><div class="unit-choice-list"><label class="unit-relax-choice"><input id="unit-include-unclassified" type="checkbox"${filter.includeUnclassified ? ' checked' : ''} onchange="UnitPastExams.updateDetailFilter()"><span>미분류 문항 포함</span></label><label class="unit-relax-choice"><input id="unit-allow-adjacent" type="checkbox"${filter.allowAdjacentDifficulty ? ' checked' : ''} onchange="UnitPastExams.updateDetailFilter()"><span>인접 난이도 허용</span></label></div></section><section class="unit-advanced-section"><h3>인쇄 배치</h3><label>페이지당 문항 수<select class="unit-qpp-control" id="unit-qpp-control" onchange="UnitPastExams.updateDetailFilter()"><option value="4"${getQpp() === '4' ? ' selected' : ''}>4문항</option><option value="6"${getQpp() === '6' ? ' selected' : ''}>6문항</option><option value="8"${getQpp() === '8' ? ' selected' : ''}>8문항</option></select></label></section></div></details><div id="unit-selection-report" class="unit-inline-report" aria-live="polite"></div><div id="unit-collection-report" class="unit-inline-report" aria-live="polite"></div><div class="unit-actionbar"><div class="unit-action-summary"><strong id="unit-action-count">${filter.count}문항</strong> · ${state.sourceMode === 'school' ? '학교·연도 지정' : '전체 아카이브'}</div><div class="unit-action-buttons"><button type="button" class="unit-btn" onclick="UnitPastExams.resetDetailFilter()">조건 초기화</button><button type="button" class="unit-btn primary unit-btn-large" onclick="UnitPastExams.generateUnifiedPreview(this)">미리보기로 이동 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></div></div></section>`;
     renderAdvancedRows(unit);
@@ -1282,7 +1359,7 @@
 
   function previewExistingPaper(unitKey, paperIndex) {
     const unit = getUnit(unitKey);
-    const source = unit?.papers.find(paper => paper.index === Number(paperIndex));
+    const source = unit ? getShelfPapers(unit).find(paper => paper.index === Number(paperIndex)) : null;
     if (!source) return;
     resetQuestionReplacementState({ disableEditMode: true });
     // Reuse the exact existing paper, including its order and snapshot key.
@@ -1561,7 +1638,7 @@
       ? `${getCollectionYearLabel(state.collectionState)} · ${state.collectionState.outputMode === 'combined' ? '학교 통합' : paper.school || '학교별'}`
       : '전체 아카이브';
     const available = readyShelf() ? paper.count : state.sourceMode === 'school' ? getSharedRecords(unit).length : core.filterUnitRecords(unit.records, state.filterState).length;
-    const difficultyText = readyShelf() ? [1,2,3,4,5].map(level => { const n = paper.records.filter(record => Number(record.difficultyBucket) === level).length; return n ? `${level}단계 ${n}문항` : ''; }).filter(Boolean).join(' · ') || '난이도 정보 없음' : LEVELS.filter(level => levels[level]).map(level => `${level} ${levels[level]}문항`).join(' · ') || '난이도 정보 없음';
+    const difficultyText = readyShelf() ? describeStepComposition(core.summarizeSteps(paper.records)) || '난이도 정보 없음' : LEVELS.filter(level => levels[level]).map(level => `${level} ${levels[level]}문항`).join(' · ') || '난이도 정보 없음';
     const bars = readyShelf() ? '' : LEVELS.map(level => `<span style="width:${(Number(levels[level] || 0) / total * 100).toFixed(2)}%"></span>`).join('');
     const pager = state.generatedPapers.length > 1 ? `<div class="unit-preview-pager"><button class="unit-btn" type="button" aria-label="이전 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition - 1})"${state.previewPaperPosition <= 0 ? ' disabled' : ''}><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button><span>${state.previewPaperPosition + 1} / ${state.generatedPapers.length}</span><button class="unit-btn" type="button" aria-label="다음 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition + 1})"${state.previewPaperPosition >= state.generatedPapers.length - 1 ? ' disabled' : ''}><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></div>` : '';
     root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: readyShelf() ? '바로 쓰는 문제지' : state.sourceMode === 'school' ? paper.school || '학교별 문제지' : QUICK_PRESETS[state.filterState?.preset]?.label, count: paper.count })}<div class="unit-confirmation"><div class="unit-preview-pane"><div class="unit-preview-toolbar"><div class="unit-preview-title"><strong>${escapeHtml(paper.title)}</strong><span>${paper.count}문항 · 원본 ${paper.sourceCount}개 시험지</span></div></div><div class="unit-preview-frame" id="unit-preview-frame"><div class="unit-preview-loading"><span><i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> 실제 문제지를 준비하는 중입니다.</span></div></div>${pager}</div><aside class="unit-confirm-pane"><h2>출제 요약</h2><dl class="unit-summary-list"><div class="unit-summary-row"><dt>단원</dt><dd>${escapeHtml(profile.gradeLabel)} · ${escapeHtml(unit.course)} · ${escapeHtml(unit.name)}</dd></div><div class="unit-summary-row"><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div><div class="unit-summary-row"><dt>선택 소단원</dt><dd>${escapeHtml(subUnits.slice(0, 6).join(' · ') || '전체 소단원')}</dd></div><div class="unit-summary-row"><dt>난이도</dt><dd>${escapeHtml(difficultyText)}<div class="unit-difficulty-bar" aria-hidden="true">${bars}</div></dd></div><div class="unit-summary-row"><dt>문항 수</dt><dd>${paper.count}문항</dd></div><div class="unit-summary-row"><dt>원본 시험지</dt><dd>원본 ${paper.sourceCount}개 시험지</dd></div></dl><div class="unit-summary-emphasis">${readyShelf() ? "수록 문항" : "조건에 맞는 문항"}<strong>${available.toLocaleString()}문항</strong></div><section class="unit-print-header-editor" aria-labelledby="unit-print-header-title"><h3 id="unit-print-header-title">시험지 헤더</h3><div class="unit-print-header-fields"><label>제목<input id="unit-print-header-title-input" type="text" maxlength="80" value="${escapeHtml(printHeaderOptions.title)}" oninput="UnitPastExams.updatePrintHeaderOption('title', this.value)"></label><label>우측 문구<input type="text" maxlength="60" value="${escapeHtml(printHeaderOptions.metaRight)}" oninput="UnitPastExams.updatePrintHeaderOption('metaRight', this.value)"></label><label>보조 문구<input type="text" maxlength="120" value="${escapeHtml(printHeaderOptions.subtitle)}" oninput="UnitPastExams.updatePrintHeaderOption('subtitle', this.value)"></label></div><div class="unit-print-header-checks"><label><input type="checkbox"${printHeaderOptions.showNameLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showNameLine', this.checked)"> 이름칸</label><label><input type="checkbox"${printHeaderOptions.showScoreLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showScoreLine', this.checked)"> 점수칸</label></div></section><div class="unit-confirm-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.goToStep(3)">${readyShelf() ? "문제지 목록" : "구성 수정"}</button><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-print" aria-hidden="true"></i>일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>학생에게 출제</button></div></aside></div></section>`;
@@ -1634,6 +1711,7 @@
     const params = new URLSearchParams(window.location.search);
     if (options.restore || !state.filterState || state.filterState.unitKey !== unitKey) {
       state.filterState = { ...getDefaultFilterState(unit), unitKey };
+      state.shelfSteps = options.restore ? readStepsFromUrl() : [];
       state.collectionState = getCollectionDefaultState(unit);
       state.sourceMode = params.get('collection') === '1' ? 'school' : 'archive';
       clearSelectionPreview();
@@ -1736,7 +1814,7 @@
     resetQuestionReplacementState({ disableEditMode: true });
     state.workflowStep = 1;
     const url = new URL(window.location.href);
-    ['grade','semanticSubject','unit','step','subUnit','difficulty','mode','preset','count','seed','includeUnclassified','adjacentDifficulty','blueprint'].forEach(key => url.searchParams.delete(key));
+    ['grade','semanticSubject','unit','step','steps','subUnit','difficulty','mode','preset','count','seed','includeUnclassified','adjacentDifficulty','blueprint'].forEach(key => url.searchParams.delete(key));
     if (!options.fromPopstate) history.pushState(null, '', url.toString());
     document.title = '단원별 기출 · JS 아카이브';
     const kicker = document.getElementById('unit-kicker'); if (kicker) kicker.textContent = '2022 개정 교육과정';
@@ -1752,7 +1830,7 @@
     state.collectionState = null;
     state.generatedPapers = [];
     const url = new URL(window.location.href);
-    ['semanticSubject','unit','step','subUnit','difficulty','mode','preset','count','seed','includeUnclassified','adjacentDifficulty','blueprint'].forEach(key => url.searchParams.delete(key));
+    ['semanticSubject','unit','step','steps','subUnit','difficulty','mode','preset','count','seed','includeUnclassified','adjacentDifficulty','blueprint'].forEach(key => url.searchParams.delete(key));
     if (!options.fromPopstate) history.pushState(null, '', url.toString());
     renderCatalog();
   }
@@ -1767,7 +1845,7 @@
     state.generatedPapers = [];
     const url = new URL(window.location.href);
     url.searchParams.set('semanticSubject', subjectValue);
-    ['unit','step','subUnit','difficulty','mode','preset','count','seed','includeUnclassified','adjacentDifficulty','blueprint'].forEach(key => url.searchParams.delete(key));
+    ['unit','step','steps','subUnit','difficulty','mode','preset','count','seed','includeUnclassified','adjacentDifficulty','blueprint'].forEach(key => url.searchParams.delete(key));
     if (!options.fromPopstate) history.pushState(null, '', url.toString());
     renderCatalog();
   }
@@ -1788,7 +1866,7 @@
     state.previewLoadToken += 1;
     const url = new URL(window.location.href);
     url.searchParams.set('grade', profileId);
-    if (profileChangedAfterInitialLoad) ['semanticSubject','unit','step','subUnit','difficulty','mode','preset','count','seed','includeUnclassified','adjacentDifficulty','blueprint','collection','collectionScope','collectionStart','collectionEnd','collectionYearMode','collectionYear','collectionYearCount','collectionYearFrom','collectionYearTo','collectionSemester','collectionExamType','collectionSchools','collectionOutput','collectionCountMode','collectionCount','collectionSubUnit','collectionDifficulty','collectionIncludeUnclassified'].forEach(key => url.searchParams.delete(key));
+    if (profileChangedAfterInitialLoad) ['semanticSubject','unit','step','steps','subUnit','difficulty','mode','preset','count','seed','includeUnclassified','adjacentDifficulty','blueprint','collection','collectionScope','collectionStart','collectionEnd','collectionYearMode','collectionYear','collectionYearCount','collectionYearFrom','collectionYearTo','collectionSemester','collectionExamType','collectionSchools','collectionOutput','collectionCountMode','collectionCount','collectionSubUnit','collectionDifficulty','collectionIncludeUnclassified'].forEach(key => url.searchParams.delete(key));
     if (!options.fromPopstate) {
       const updateHistory = profileChangedAfterInitialLoad ? history.pushState.bind(history) : history.replaceState.bind(history);
       updateHistory(null, '', url.toString());
@@ -1862,6 +1940,6 @@
     else { state.profileId = ''; state.catalog = null; renderCatalog(); }
   }
   window.addEventListener('popstate', restoreFromUrl);
-  window.UnitPastExams = { init, selectProfile, clearProfileSelection, selectSemanticSubject, clearSemanticSubject, openFineBuilder, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, previewExistingPaper, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
+  window.UnitPastExams = { init, selectProfile, clearProfileSelection, selectSemanticSubject, clearSemanticSubject, openFineBuilder, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, updateStepSelection, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, previewExistingPaper, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
   window.High1UnitPastExams = window.UnitPastExams;
 })();

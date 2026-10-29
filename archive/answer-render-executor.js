@@ -40,7 +40,9 @@
                     if (num % 4 === 0) u.classList.add('group-end');
                     const sourceRef = deps.getArchiveQuestionSourceRef(chunk[idx], start + idx);
                     if (sourceRef) u.dataset.sourceRef = sourceRef;
-                    u.innerHTML = `<div class="ans-n">${num}.</div><div class="ans-v">${deps.formatGridAnswer(chunk[idx].answer)}</div>`;
+                    const sectionHtml = typeof deps.getSectionHeadingHtml === 'function' ? deps.getSectionHeadingHtml(chunk[idx], start + idx, 'cell') : '';
+                    if (sectionHtml) u.classList.add('ans-cell-section');
+                    u.innerHTML = `${sectionHtml}<div class="ans-n">${num}.</div><div class="ans-v">${deps.formatGridAnswer(chunk[idx].answer)}</div>`;
                     grid.appendChild(u);
                 });
             }
