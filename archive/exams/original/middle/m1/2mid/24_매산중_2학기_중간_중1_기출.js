@@ -222,7 +222,7 @@ window.questionBank = [
       "$l\\parallel m$, $p\\parallel q$"
     ],
     "answer": "⑤",
-    "solution": "그림의 각을 각각 대조한다.\n\n표시된 60^\\circ 관계에서\nl\\parallel m\n\n표시된 120^\\circ와 이웃한 각은\n180^\\circ-120^\\circ=60^\\circ\n이므로\np\\parallel q\n\n반면 n은 이 두 평행 관계에 포함되지 않는다.\n\n따라서\nl\\parallel m,\\quad p\\parallel q\n\n정답은 ⑤이다.",
+    "solution": "그림의 각을 각각 대조한다.\n\n표시된 60^\\circ 관계에서\np\\parallel q\n\n표시된 120^\\circ와 이웃한 각은\n180^\\circ-120^\\circ=60^\\circ\n이므로\nl\\parallel m\n\n반면 n은 이 두 평행 관계에 포함되지 않는다.\n\n따라서\nl\\parallel m,\\quad p\\parallel q\n\n정답은 ⑤이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q6.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -858,7 +858,7 @@ window.questionBank = [
     "content": "[서답형 2]<br>[서술형] 다음 그림과 같이 $l\\parallel m$이고 다른 직선과 만날 때, $x$의 값을 구하는 풀이과정과 답을 서술하시오. (5점)",
     "choices": [],
     "answer": "$50$",
-    "solution": "l\\parallel m이므로 표시된 두 각은 같은 쪽 내각 관계이다.\n\n(2x-20^\\circ)+(x+50^\\circ)=180^\\circ\n\n3x+30=180\n\n3x=150\n\nx=50\n\n따라서 답은 50이다.",
+    "solution": "l\\parallel m이므로 한 각의 동위각과 다른 각이 직선 m 위에서 이웃한다. 따라서 두 각의 합은 180^\\circ이다.\n\n(2x-20^\\circ)+(x+50^\\circ)=180^\\circ\n\n3x+30=180\n\n3x=150\n\nx=50\n\n따라서 답은 50이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q22.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
