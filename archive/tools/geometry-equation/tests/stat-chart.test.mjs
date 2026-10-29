@@ -221,6 +221,25 @@ test('the observer passes letter leaves, rank circles and class brackets, and ca
   }finally{await browser.close();}
 });
 
+// The key text "1 | 4는 14분": the particle follows how the leaf digit is read (영 일 삼 육 칠 팔 end in a final consonant: 은; 이 사 오 구 do not: 는)
+test('the key text takes 은 or 는 from the reading of the leaf digit, and the observer derives the particle on its own',async()=>{
+  const particle={0:'은',1:'은',2:'는',3:'은',4:'는',5:'는',6:'은',7:'은',8:'은',9:'는'};
+  for(const [digit,p] of Object.entries(particle)){
+    const leaf=Number(digit),m=solveStatChart({kind:'STEM_LEAF',unitText:'분',values:[10+leaf,22],key:{stem:1,leaf}});
+    assert.equal(m.key.text,`1 | ${leaf}${p} ${10+leaf}분`);
+  }
+  const browser=await launchBrowser();
+  try{
+    const chart={kind:'STEM_LEAF',unitText:'개',values:[5,7,12,15,23],key:{stem:0,leaf:5}};
+    const composed=await composeStatChartFigure({plan:plan(chart),model:solveStatChart(chart),identity:assetIdentity('26_테스트|21','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
+    assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+    assert.ok(composed.svg.includes('data-text="0 | 5는 5개"'));
+    const audit=async text=>(await pythonWorker({chart,svg:text},{script:observer})).result;
+    const pass=await audit(composed.svg);assert.equal(pass.status,'PASS',JSON.stringify(pass.errors));
+    assert.ok(has(await audit(composed.svg.replace('0 | 5는 5개','0 | 5은 5개')),'SC_KEY_TEXT'));
+  }finally{await browser.close();}
+});
+
 test('render-plan routes a stat-chart plan and reports an unfaithful chart at its stage with the engine code',async()=>{
   const out=fs.mkdtempSync(path.join(os.tmpdir(),'stat-chart-'));
   const r=await renderPlan({item:{sourcePath:'archive/exams/test-exam.js',ordinal:3,dir:'t'},plan:plan({...hist,boundaries:['20','25','31','35']}),outDir:out});

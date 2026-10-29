@@ -197,5 +197,20 @@ class StemLetterLeaves(unittest.TestCase):
         self.assertIn('SC_MARK_NOT_ON_LEAF:4',self.errors(stem_svg(self.rows,marks=[(4,1,1,None,12)],brackets=[(0,5,0,0,1,'2')]),chart))
 
 
+class StemKeyParticle(unittest.TestCase):
+    # the particle after the leaf digit follows how the digit is read: 영 일 삼 육 칠 팔 end in a final consonant (은), 이 사 오 구 do not (는)
+    particle={0:'은',1:'은',2:'는',3:'은',4:'는',5:'는',6:'은',7:'은',8:'은',9:'는'}
+
+    def test_the_key_text_takes_its_particle_from_the_reading_of_the_leaf_digit(self):
+        for digit,particle in self.particle.items():
+            self.assertEqual(S.leaf_particle(digit),particle)
+            chart={'kind':'STEM_LEAF','unitText':'분','values':[10+digit],'key':{'stem':1,'leaf':digit}}
+            good=stem_svg({1:[digit]},key='1 | %d%s %d분'%(digit,particle,10+digit))
+            self.assertEqual(S.audit(chart,good)['errors'],[])
+            other='는' if particle=='은' else '은'
+            wrong=stem_svg({1:[digit]},key='1 | %d%s %d분'%(digit,other,10+digit))
+            self.assertIn('SC_KEY_TEXT',S.audit(chart,wrong)['errors'])
+
+
 if __name__=='__main__':
     unittest.main()

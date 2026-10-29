@@ -137,6 +137,8 @@ function solveFreq(c){
 // A stem-and-leaf leaf is a whole number 0..999 (stem = tens, leaf = ones) or a letter leaf {symbol:'a',stem:1,order:3}: a value the problem names with a letter
 // instead of giving it. The engine never invents the letter's value; the author fixes only its place in the row (order = 1-based position among that stem's leaves
 // in ascending order), and the engine refuses a place the row cannot hold. Ranks (marks) count positions in that ascending order, so a letter leaf can be ranked.
+// The key text "1 | 4는 14분": the particle after the leaf digit follows how that digit is read. 영 일 삼 육 칠 팔 end in a final consonant (은); 이 사 오 구 do not (는).
+const LEAF_PARTICLE=['은','은','는','은','는','는','은','은','은','는'];
 const STEM_SYMBOL=/^[a-z]$/;
 const stemRow=(g,s)=>{ // the leaves (ones digits, or {symbol}) of stem s in ascending order, the letter leaves put where the author says
   const row=g.numbers.filter(v=>Math.floor(v/10)===s).map(v=>v%10);
@@ -183,7 +185,7 @@ function solveStem(c){
     key={stem:c.key.stem,leaf:c.key.leaf};
   }else if(first===undefined)bad('STAT_STEM_KEY_INVALID');
   else key={stem:Math.floor(first/10),leaf:first%10};
-  key.value=key.stem*10+key.leaf;key.text=`${key.stem} | ${key.leaf}은 ${key.value}${unitText}`;
+  key.value=key.stem*10+key.leaf;key.text=`${key.stem} | ${key.leaf}${LEAF_PARTICLE[key.leaf]} ${key.value}${unitText}`;
   const marks=[];
   if(c.marks!==undefined){
     if(!Array.isArray(c.marks)||c.marks.length>4)bad('STAT_STEM_MARK_INVALID');

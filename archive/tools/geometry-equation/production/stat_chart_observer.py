@@ -33,6 +33,12 @@ def frac(raw, code):
     fail(code)
 
 
+def leaf_particle(digit):
+    """The particle after a leaf digit in the key text, from the digit's Korean reading: a syllable with a final consonant (영 일 삼 육 칠 팔) takes 은, one without (이 사 오 구) takes 는."""
+    reading = '영일이삼사오육칠팔구'[digit]
+    return '은' if (ord(reading) - 0xAC00) % 28 else '는'
+
+
 def tex_number(tex):
     """A label's TeX read back as one exact number: an integer, a decimal or a stacked fraction."""
     tex = re.sub(r'^\\displaystyle\s*', '', tex or '').replace(' ', '')
@@ -438,7 +444,7 @@ def audit_stem(chart, doc):
     ks, kl = (key['stem'], key['leaf']) if key else (first // 10, first % 10)
     if key and ks * 10 + kl not in numeric: doc.err('SC_KEY_NOT_IN_DATA')
     keys = doc.label_role('key')
-    if len(keys) != 1 or keys[0].get('data-text') != '%d | %d은 %d%s' % (ks, kl, ks * 10 + kl, unit): doc.err('SC_KEY_TEXT')
+    if len(keys) != 1 or keys[0].get('data-text') != '%d | %d%s %d%s' % (ks, kl, leaf_particle(kl), ks * 10 + kl, unit): doc.err('SC_KEY_TEXT')
     heads = {l.get('data-text') for l in doc.label_role('header')}
     want_heads = {'줄기'} | ({g['name'] for g in groups} if two else {'잎'})
     if heads != want_heads: doc.err('SC_HEADERS')
