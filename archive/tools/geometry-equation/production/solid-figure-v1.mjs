@@ -115,7 +115,7 @@ const faceNormal=pts=>{let n=[0,0,0];for(let i=0;i<pts.length;i++)n=add(n,cross(
 /** One polyhedron: prism, pyramid or pyramid frustum. Faces are cycles of vertex indices oriented counter-clockwise seen from OUTSIDE. */
 function buildPolyhedron(spec){
   const kind=spec.kind;
-  const allowed={PRISM:['id','kind','base','height','names'],PYRAMID:['id','kind','base','height','apex','names'],FRUSTUM:['id','kind','base','height','topScale','foot','names']}[kind];
+  const allowed={PRISM:['id','kind','base','height','names','count'],PYRAMID:['id','kind','base','height','apex','names','count'],FRUSTUM:['id','kind','base','height','topScale','foot','names','count']}[kind];
   onlyKeys(spec,allowed,'SOLID_PARAM_INVALID');
   const {points,plane}=basePolygon(spec.base);
   const n=points.length,height=pos(spec.height,'SOLID_PARAM_INVALID');
@@ -180,7 +180,35 @@ function buildPolyhedron(spec){
     const pts=face.idx.map(i=>vertices[i].p),nrm=faceNormal(pts);
     if(pts.some(p=>Math.abs(dot(nrm,sub(p,pts[0])))>1e-6))bad('SOLID_FACE_NOT_PLANAR');
   }
-  return {id:spec.id,kind,category:'POLY',vertices,faces,edges,height};
+  const count=parseCount(spec.count,vertices,edges);
+  return {id:spec.id,kind,category:'POLY',vertices,faces,edges,height,...(count?{count}:{})};
+}
+const COUNT_EDGES_MAX=20,CIRCLED_ONE=0x2460;
+/** The circled number of a counting label: 1 -> the circled digit one, up to 20. */
+export const circled=k=>String.fromCodePoint(CIRCLED_ONE+k-1);
+/**
+ * count:{vertices?,edges?,faces?} asks for counting numbers: 1, 2, ... beside the vertices and the circled numbers beside the edge midpoints.
+ * Vertices are numbered in model order (the base ring, then the top ring or the apex). Edges are numbered around the base ring (edge i joins base vertex i
+ * and i+1, the closing edge last), then the side edges by their base vertex, then around the top ring. Faces are not supported; a numbered vertex
+ * cannot also carry a name.
+ */
+function parseCount(raw,vertices,edges){
+  if(raw===undefined)return null;
+  if(!isPlain(raw))bad('SOLID_COUNT_REQUEST_INVALID');
+  onlyKeys(raw,['vertices','edges','faces'],'SOLID_COUNT_REQUEST_INVALID');
+  for(const key of Object.keys(raw))if(typeof raw[key]!=='boolean')bad('SOLID_COUNT_REQUEST_INVALID');
+  if(raw.faces===true)bad('SOLID_COUNT_FACES_UNSUPPORTED');
+  const count={vertices:raw.vertices===true,edges:raw.edges===true};
+  if(!count.vertices&&!count.edges)bad('SOLID_COUNT_REQUEST_INVALID');
+  if(count.vertices&&vertices.some(v=>v.name))bad('SOLID_COUNT_NAMES_CONFLICT');
+  if(count.edges&&edges.length>COUNT_EDGES_MAX)bad('SOLID_COUNT_TOO_MANY:edges');
+  return count;
+}
+/** The edges of a polyhedron in counting order (see parseCount). */
+export function countedEdges(solid){
+  const n=solid.kind==='PYRAMID'?solid.vertices.length-1:solid.vertices.length/2;
+  const slot=([a,b])=>a<n&&b<n?[0,b===a+1?a:b]:a>=n&&b>=n?[2,b===a+1?a-n:b-n]:[1,a];
+  return [...solid.edges].sort((x,y)=>{const u=slot(x),v=slot(y);return u[0]-v[0]||u[1]-v[1];});
 }
 
 /**
@@ -191,7 +219,8 @@ function buildPolyhedron(spec){
 function buildRound(spec){
   const kind=spec.kind;
   const baseKeys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
-  onlyKeys(spec,[...baseKeys,'orientation','inside'],'SOLID_PARAM_INVALID');
+  onlyKeys(spec,[...baseKeys,'orientation','inside','count'],'SOLID_PARAM_INVALID');
+  if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:'+kind);
   const r=pos(spec.radius,'SOLID_PARAM_INVALID');
   const cone=kind==='CONE'||kind==='CONE_FRUSTUM';
   const orientation=spec.orientation??'APEX_UP';
@@ -339,7 +368,7 @@ export function solveSolidFigure(plan){
   if(plan.unit!==undefined&&(typeof plan.unit!=='string'||!UNIT.test(plan.unit)))bad('SOLID_UNIT_INVALID');
   const model=plan.net!==undefined?solveNet(plan):solveSolids(plan);
   // the Archive publication check reads text: a figure with no name and no length at all cannot be published
-  const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length,0)
+  const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)
     :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
   if(names+model.dims.length===0)bad('SOLID_FIGURE_NEEDS_A_LABEL');
   return model;
@@ -946,9 +975,9 @@ function spec3d(plan,model,ctx){
   const centroidScreen=(()=>{const pts=model.solids.flatMap(solidScreenPoints);return [pts.reduce((s,p)=>s+p[0],0)/pts.length,pts.reduce((s,p)=>s+p[1],0)/pts.length];})();
   for(const solid of model.solids){
     if(solid.category==='POLY'){
-      solid.vertices.forEach((v,i)=>{
-        if(!v.name)return;
-        const here=project(v.p);let dir=[0,0];
+      // the open side of a vertex: away from the edges that meet there
+      const outward=(i)=>{
+        const here=project(solid.vertices[i].p);let dir=[0,0];
         for(const [a,b] of solid.edges){
           const other=a===i?b:b===i?a:-1;if(other<0)continue;
           const q=project(solid.vertices[other].p),d=[q[0]-here[0],q[1]-here[1]],l=Math.hypot(d[0],d[1]);
@@ -956,8 +985,29 @@ function spec3d(plan,model,ctx){
         }
         let l=Math.hypot(dir[0],dir[1]);
         if(l<0.35){dir=[here[0]-centroidScreen[0],here[1]-centroidScreen[1]];l=Math.hypot(dir[0],dir[1])||1;}
-        labels.push({id:'name-'+v.name,role:'vertex-name',owner:'vertex-'+v.name,kind:'MATH',tex:v.name,plain:v.name,value:v.name,anchor:pt(here),dir:[r6(dir[0]/l),r6(dir[1]/l)]});
+        return {here,dir:[r6(dir[0]/l),r6(dir[1]/l)]};
+      };
+      solid.vertices.forEach((v,i)=>{
+        if(!v.name)return;
+        const {here,dir}=outward(i);
+        labels.push({id:'name-'+v.name,role:'vertex-name',owner:'vertex-'+v.name,kind:'MATH',tex:v.name,plain:v.name,value:v.name,anchor:pt(here),dir});
       });
+      if(solid.count?.vertices){
+        const spots=solid.vertices.map(v=>pt(project(v.p)));
+        solid.vertices.forEach((v,i)=>{
+          const {here,dir}=outward(i),n=String(i+1);
+          labels.push({id:`count-v-${solid.id}-${n}`,role:'count-vertex',owner:`count-vertex-${solid.id}-${n}`,kind:'MATH',tex:n,plain:n,value:n,countKind:'vertex',countN:i+1,solid:solid.id,anchor:pt(here),dir,near:{own:spots[i],others:spots.filter((q,j)=>j!==i),margin:COUNT_MARGIN}});
+        });
+      }
+      if(solid.count?.edges){
+        const list=countedEdges(solid);
+        const ends=list.map(([a,b])=>[pt(project(solid.vertices[a].p)),pt(project(solid.vertices[b].p))]);
+        const mids=ends.map(([a,b])=>[r6((a[0]+b[0])/2),r6((a[1]+b[1])/2)]);
+        list.forEach((e,k)=>{
+          const n=String(k+1),text=circled(k+1);
+          labels.push({id:`count-e-${solid.id}-${n}`,role:'count-edge',owner:`count-edge-${solid.id}-${n}`,kind:'TEXT',text,plain:text,value:n,countKind:'edge',countN:k+1,solid:solid.id,segment:ends[k],near:{own:mids[k],others:mids.filter((q,j)=>j!==k),margin:COUNT_MARGIN}});
+        });
+      }
     }else{
       for(const q of solid.points){
         if(!q.name)continue;
@@ -1239,7 +1289,7 @@ function segmentHitsBox(a,b,box,pad){
     return (o(a,b,c)*o(a,b,d)<0)&&(o(c,d,a)*o(c,d,b)<0);
   });
 }
-const BOX_PAD=2.2;
+const BOX_PAD=2.2,COUNT_MARGIN=4;
 /** Place every label near its anchor: names on the open side of their corner, lengths beside their segment, never over a stroke or another label. */
 function placeLabels(spec,fragments,errors){
   const obstacles=obstacleSegments(spec),placed=[];
@@ -1249,12 +1299,19 @@ function placeLabels(spec,fragments,errors){
     if(placed.some(p=>overlaps({x:p.box.x-BOX_PAD,y:p.box.y-BOX_PAD,width:p.box.width+2*BOX_PAD,height:p.box.height+2*BOX_PAD},box)))return false;
     return !obstacles.some(([a,b])=>segmentHitsBox(a,b,box,BOX_PAD)&&!(ignoreOwn&&false));
   };
-  const order=[...spec.labels].sort((a,b)=>(a.role==='vertex-name'?0:1)-(b.role==='vertex-name'?0:1));
+  const rank=l=>l.role==='vertex-name'||l.role==='count-vertex'?0:l.role==='count-edge'?2:1;
+  const order=[...spec.labels].sort((a,b)=>rank(a)-rank(b));
+  // a counting number stays nearer to its own vertex or edge midpoint than to any other by a margin, so no number can be read as another's
+  const nearest=(label,box)=>{
+    if(!label.near)return true;
+    const cx=box.x+box.width/2,cy=box.y+box.height/2,own=Math.hypot(cx-label.near.own[0],cy-label.near.own[1]);
+    return label.near.others.every(o=>own+label.near.margin<Math.hypot(cx-o[0],cy-o[1]));
+  };
   for(const label of order){
     const frag=fragments.get(label.id),{width:w,height:h}=frag.intrinsic;
     let chosen=null;
     const candidates=[];
-    if(label.role==='vertex-name'){
+    if(label.role==='vertex-name'||label.role==='count-vertex'){
       const base=Math.atan2(label.dir[1],label.dir[0]);
       for(const dist of [5,8,12,17,24])for(const da of [0,0.5,-0.5,1.0,-1.0,1.6,-1.6,2.3,-2.3,Math.PI]){
         const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
@@ -1273,7 +1330,7 @@ function placeLabels(spec,fragments,errors){
       }
       if(label.inside){candidates.unshift({x:(a[0]+b[0])/2-w/2,y:(a[1]+b[1])/2-h/2+30});}
     }
-    for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)){chosen=box;break;}}
+    for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)&&nearest(label,box)){chosen=box;break;}}
     let leader=null;
     if(!chosen&&label.role==='dim'){
       // no room beside the segment: the label goes to the nearest free place and a thin leader line joins it to the middle of its segment
@@ -1339,7 +1396,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     lineage.specSha256=objectSha(spec);
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,fragments=new Map();
     for(const label of spec.labels){
-      try{fragments.set(label.id,typeset({id:label.id,owner:label.owner,factRole:label.role==='dim'?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'solid',kind:'MATH',tex:label.role==='dim'?label.tex:label.tex},identity));}
+      try{fragments.set(label.id,typeset({id:label.id,owner:label.owner,factRole:label.role==='dim'?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'solid',...(label.kind==='TEXT'?{kind:'TEXT',text:label.text}:{kind:'MATH',tex:label.tex})},identity));}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('SOLID_TYPESET_ERROR',{labelId:label.id,code:error.message});}
     }
     const failed=[];
@@ -1350,7 +1407,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`+renderPrims(spec,model);
     for(const {label,leader} of placed)if(leader)body+=`<g data-layer="40"><line id="leader-${label.id}" data-role="leader" data-owner-label="${label.id}" data-label="${label.id}" stroke="#555" stroke-width="0.9" fill="none" x1="${leader[0][0]}" y1="${leader[0][1]}" x2="${leader[1][0]}" y2="${leader[1][1]}"/></g>`;
     for(const {label,fragment,box,leader} of placed){
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''} data-tex="${esc(label.tex)}" data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
     const dataAttrs=` data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;

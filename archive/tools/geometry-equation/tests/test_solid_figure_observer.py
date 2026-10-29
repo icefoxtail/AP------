@@ -320,3 +320,69 @@ class NetLayout(unittest.TestCase):
         self.assertIsNone(O._net_line_role(el('#111', '1.6')))
         self.assertEqual(O._net_line_role(el('#ff0000', '1.6')), '?')
         self.assertEqual(O._net_line_role(el('#c0392b', '1.6')), '?')
+
+
+class Counting(unittest.TestCase):
+    FRUSTUM = {'kind': 'FRUSTUM', 'base': {'kind': 'RECT', 'width': 6, 'depth': 6}, 'height': 5, 'topScale': 0.6, 'names': '.' * 8, 'id': 's1'}
+
+    def test_counting_order_goes_around_the_base_up_the_sides_and_around_the_top(self):
+        solid = O.build_solid(self.FRUSTUM)
+        self.assertEqual(O.count_order(solid), [(0, 1), (1, 2), (2, 3), (0, 3), (0, 4), (1, 5), (2, 6), (3, 7), (4, 5), (5, 6), (6, 7), (4, 7)])
+        pyramid = O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 4, 'depth': 4}, 'height': 5, 'names': '.' * 5, 'id': 's1'})
+        self.assertEqual(O.count_order(pyramid), [(0, 1), (1, 2), (2, 3), (0, 3), (0, 4), (1, 4), (2, 4), (3, 4)])
+        prism = O.build_solid({'kind': 'PRISM', 'base': {'kind': 'REGULAR', 'n': 3, 'side': 2}, 'height': 3, 'names': '.' * 6, 'id': 's1'})
+        self.assertEqual(O.count_order(prism), [(0, 1), (1, 2), (0, 2), (0, 3), (1, 4), (2, 5), (3, 4), (4, 5), (3, 5)])
+        self.assertEqual(len(O.CIRCLED), 20)
+        self.assertEqual(O.CIRCLED[0], '①')
+        self.assertEqual(O.CIRCLED[19], '⑳')
+
+    def labels_for(self, solid, px, shift=None, text=None, move=None):
+        """hand-built counting labels 6 px right of every vertex and edge midpoint; the optional hooks tamper them"""
+        import xml.etree.ElementTree as ET
+        els, boxes = [], {}
+        verts = [px(p) for _, p in solid['verts']]
+        mids = [px(O.vmul(O.vadd(solid['verts'][a][1], solid['verts'][b][1]), 0.5)) for a, b in O.count_order(solid)]
+        for role, kind, targets, attr, texts in (('count-vertex', 'vertex', verts, 'data-tex', [str(k + 1) for k in range(len(verts))]),
+                                                 ('count-edge', 'edge', mids, 'data-text', O.CIRCLED[:len(mids)])):
+            for k, (x, y) in enumerate(targets):
+                n = k + 1
+                if move and (role, n) in move: x, y = targets[move[(role, n)] - 1]
+                lid = 'count-%s-%d' % (kind[0], n)
+                g = ET.Element('g', {'id': lid, 'data-label-role': role, 'data-solid': 's1', 'data-count-n': str(n), 'data-count': kind, 'data-value': str(n), attr: texts[k]})
+                if text and (role, n) in text: g.set(attr, text[(role, n)])
+                els.append(g)
+                boxes[lid] = (x + 4.0, y - 2.0, 4.0, 4.0)
+        return els, boxes
+
+    def audit_with(self, flags, **hooks):
+        solid = O.build_solid(self.FRUSTUM)
+        px = lambda p: (60 + 40 * O.project(p)[0], 300 - 40 * O.project(p)[1])
+        els, boxes = self.labels_for(solid, px, **hooks)
+        ctx = {'errors': [], 'boxes': boxes, 'labels': els}
+        O.audit_counts(solid, flags, px, ctx)
+        return ctx['errors']
+
+    def test_complete_and_nearest_numbers_pass(self):
+        self.assertEqual(self.audit_with({'vertices': True, 'edges': True}), [])
+
+    def test_a_number_nearer_to_another_target_is_confused(self):
+        errors = self.audit_with({'vertices': True, 'edges': True}, move={('count-edge', 1): 11})
+        self.assertTrue(any(e.startswith('SOLID_COUNT_LABEL_CONFUSED') for e in errors), errors)
+        errors = self.audit_with({'vertices': True, 'edges': True}, move={('count-vertex', 2): 7})
+        self.assertTrue(any(e.startswith('SOLID_COUNT_LABEL_CONFUSED') for e in errors), errors)
+
+    def test_wrong_text_is_read_back(self):
+        errors = self.audit_with({'vertices': True, 'edges': True}, text={('count-edge', 3): O.CIRCLED[3]})
+        self.assertTrue(any(e.startswith('SOLID_COUNT_TEXT_MISMATCH') for e in errors), errors)
+        errors = self.audit_with({'vertices': True, 'edges': True}, text={('count-vertex', 3): '4'})
+        self.assertTrue(any(e.startswith('SOLID_COUNT_TEXT_MISMATCH') for e in errors), errors)
+
+    def test_numbers_nobody_asked_for_and_missing_numbers_fail(self):
+        errors = self.audit_with({'vertices': True})
+        self.assertTrue(any(e.startswith('SOLID_COUNT_LABEL_UNEXPECTED') for e in errors), errors)
+        solid = O.build_solid(self.FRUSTUM)
+        px = lambda p: (60 + 40 * O.project(p)[0], 300 - 40 * O.project(p)[1])
+        els, boxes = self.labels_for(solid, px)
+        ctx = {'errors': [], 'boxes': boxes, 'labels': [g for g in els if g.get('id') != 'count-e-7']}
+        O.audit_counts(solid, {'vertices': True, 'edges': True}, px, ctx)
+        self.assertTrue(any(e.startswith('SOLID_COUNT_NUMBERS_NOT_COMPLETE') for e in ctx['errors']), ctx['errors'])

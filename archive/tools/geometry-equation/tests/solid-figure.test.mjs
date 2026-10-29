@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {compositePanels} from '../production/composite-candidate-svg-v1.mjs';
-import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber} from '../production/solid-figure-v1.mjs';
+import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled} from '../production/solid-figure-v1.mjs';
 
 const observer=fileURLToPath(new URL('../production/solid_figure_observer_worker.py',import.meta.url));
 const code=expected=>error=>String(error.message).startsWith(expected);
@@ -400,4 +400,79 @@ test('the re-derived net layout holds for a pyramid, a triangular prism and a fr
     assert.equal(composed.status,'COMPOSED',net.solid.kind+JSON.stringify(composed.detail));
     assert.equal(composed.staticAudit.status,'PASS',net.solid.kind+JSON.stringify(composed.staticAudit.errors));
   }
+});
+
+// --- E3: counting numbers on a polyhedron -----------------------------------------------------------------------------------------------------
+const countedFrustum=(count={vertices:true,edges:true},over={})=>figure({solids:[{kind:'FRUSTUM',base:{kind:'RECT',width:6,depth:6},height:5,topScale:0.6,names:'........',count,...over}],solidCaption:{text:'사각뿔대'}});
+test('counting numbers: edges are numbered around the base, up the sides, around the top; a plan without count has none',async()=>{
+  const m=solveSolidFigure(countedFrustum());
+  assert.deepEqual(m.solids[0].count,{vertices:true,edges:true});
+  assert.deepEqual(countedEdges(m.solids[0]),[[0,1],[1,2],[2,3],[0,3],[0,4],[1,5],[2,6],[3,7],[4,5],[5,6],[6,7],[4,7]]);
+  const pyramid=solveSolidFigure(figure({solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:5,names:'.....',count:{edges:true}}]}));
+  assert.deepEqual(countedEdges(pyramid.solids[0]),[[0,1],[1,2],[2,3],[0,3],[0,4],[1,4],[2,4],[3,4]]);
+  assert.equal(circled(1),'①');assert.equal(circled(12),'⑫');assert.equal(circled(20),'⑳');
+  const plain=solveSolidFigure(figure({solids:[cuboid()]}));
+  assert.equal('count' in plain.solids[0],false);
+  const composed=await panel(figure({solids:[cuboid()]}));
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.doesNotMatch(composed.svg,/count-|data-count|data-text/);
+});
+test('a counted frustum numbers all 8 vertices and all 12 edges, hidden ones too, and the observer reads every number back',async()=>{
+  const plan=countedFrustum();
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.equal((svg.match(/data-label-role="count-vertex"/g)??[]).length,8);
+  assert.equal((svg.match(/data-label-role="count-edge"/g)??[]).length,12);
+  for(let n=1;n<=12;n++)assert.ok(svg.includes(`id="count-e-s1-${n}"`)&&svg.includes(`data-text="${circled(n)}"`),'edge '+n);
+  // the hidden edges (the back and left base edges, the back vertical) are numbered like the rest
+  const hidden=[...svg.matchAll(/data-role="edge" data-solid="s1" data-edge="(v\d+v\d+)" data-vis="hidden"/g)].map(m=>m[1]);
+  assert.deepEqual([...new Set(hidden)].sort(),['v0v3','v2v3','v3v7']);
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const group=id=>svg.match(new RegExp(`<g id="${id}"[^>]*>`))[0];
+  const place=id=>group(id).match(/transform="translate\(([^)]+)\)"/)[1];
+  const swap=(a,b)=>svg.replace(group(a),group(a).replace(/transform="translate\([^)]+\)"/,`transform="translate(${place(b)})"`)).replace(group(b),group(b).replace(/transform="translate\([^)]+\)"/,`transform="translate(${place(a)})"`));
+  // two edge numbers exchanged: each is nearest to another edge now
+  await failing(swap('count-e-s1-1','count-e-s1-11'),'SOLID_COUNT_LABEL_CONFUSED');
+  await failing(swap('count-v-s1-1','count-v-s1-8'),'SOLID_COUNT_LABEL_CONFUSED');
+  // a number written twice, one missing; a wrong glyph or text
+  await failing(svg.replace(group('count-v-s1-3'),group('count-v-s1-3').replace('data-count-n="3"','data-count-n="4"')),'SOLID_COUNT_NUMBERS_NOT_COMPLETE');
+  await failing(svg.replace(group('count-e-s1-2'),group('count-e-s1-2').replace(`data-text="${circled(2)}"`,`data-text="${circled(3)}"`)),'SOLID_COUNT_TEXT_MISMATCH');
+  await failing(svg.replace(group('count-v-s1-5'),group('count-v-s1-5').replace('data-tex="5"','data-tex="6"')),'SOLID_COUNT_TEXT_MISMATCH');
+  // counting numbers in a figure that asked for none, or for the other kind only
+  const r=await audit(countedFrustum({edges:true},{names:'ABCDEFGH'}),svg);
+  assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_COUNT_LABEL_UNEXPECTED')),JSON.stringify(r.errors));
+  const r2=await audit(figure({solids:[{kind:'FRUSTUM',base:{kind:'RECT',width:6,depth:6},height:5,topScale:0.6,names:'........'}],dims:[{height:true}]}),svg);
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_COUNT_LABEL_UNEXPECTED')),JSON.stringify(r2.errors));
+});
+test('only edges or only vertices can be counted, beside letters or other lengths',async()=>{
+  const edgesOnly=figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:3},height:2,names:'ABCDEFGH',count:{edges:true}}],dims:[{edge:'AB'}]});
+  const c1=await panel(edgesOnly);
+  assert.equal(c1.status,'COMPOSED',JSON.stringify(c1.detail));assert.equal(c1.staticAudit.status,'PASS',JSON.stringify(c1.staticAudit.errors));
+  assert.equal((c1.svg.match(/data-label-role="count-edge"/g)??[]).length,12);assert.doesNotMatch(c1.svg,/count-vertex/);
+  const verticesOnly=figure({solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:5,names:'.....',count:{vertices:true,edges:false}}]});
+  const c2=await panel(verticesOnly);
+  assert.equal(c2.status,'COMPOSED',JSON.stringify(c2.detail));assert.equal(c2.staticAudit.status,'PASS',JSON.stringify(c2.staticAudit.errors));
+  assert.equal((c2.svg.match(/data-label-role="count-vertex"/g)??[]).length,5);assert.doesNotMatch(c2.svg,/count-edge/);
+});
+test('a counted figure with no room for its numbers is refused, and counting is refused with explicit codes',async()=>{
+  const bad=(solid,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[solid]})),code(expected),expected);
+  const base={kind:'PRISM',base:{kind:'RECT',width:4,depth:3},height:2};
+  bad({...base,count:{vertices:true}},'SOLID_COUNT_NAMES_CONFLICT');// the default letters are names
+  bad({...base,names:'ABCDEFGH',count:{vertices:true}},'SOLID_COUNT_NAMES_CONFLICT');
+  bad({...base,names:'........',count:{faces:true}},'SOLID_COUNT_FACES_UNSUPPORTED');
+  bad({...base,names:'........',count:{}},'SOLID_COUNT_REQUEST_INVALID');
+  bad({...base,names:'........',count:{vertices:false}},'SOLID_COUNT_REQUEST_INVALID');
+  bad({...base,names:'........',count:{vertices:1}},'SOLID_COUNT_REQUEST_INVALID');
+  bad({...base,names:'........',count:{edges:true,colour:true}},'SOLID_COUNT_REQUEST_INVALID');
+  bad({...base,names:'........',count:[true]},'SOLID_COUNT_REQUEST_INVALID');
+  bad({kind:'CYLINDER',radius:2,height:3,count:{edges:true}},'SOLID_COUNT_UNSUPPORTED:CYLINDER');
+  bad({kind:'SPHERE',radius:2,count:{vertices:true}},'SOLID_COUNT_UNSUPPORTED:SPHERE');
+  bad({kind:'PRISM',base:{kind:'REGULAR',n:8,side:2},height:3,names:'.'.repeat(16),count:{edges:true}},'SOLID_COUNT_TOO_MANY:edges');
+  // 6-gon prism: 18 edges are still countable
+  assert.equal(solveSolidFigure(figure({solids:[{kind:'PRISM',base:{kind:'REGULAR',n:6,side:2},height:3,names:'.'.repeat(12),count:{edges:true}}]})).solids[0].count.edges,true);
+  // a slender pillar: its 8 vertices and 12 edge midpoints lie only a few px apart, so no number can stay nearest to its own target
+  const crowded=await panel(figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:1,depth:1},height:30,names:'.'.repeat(8),count:{vertices:true,edges:true}}]}));
+  assert.equal(crowded.status,'SOLID_LABELS_NO_ROOM',JSON.stringify([crowded.status,crowded.detail]).slice(0,300));
 });

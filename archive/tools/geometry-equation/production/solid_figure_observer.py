@@ -357,6 +357,8 @@ def audit_solids(plan, ctx):
     root, errors = ctx['root'], ctx['errors']
     solids = [build_solid({**spec, 'id': spec.get('id') or 's%d' % (i + 1)}) for i, spec in enumerate(plan['solids'])]
     ctx['solids'] = solids
+    specs_by_id = {s_['id']: s_ for s_ in solids_with_ids(plan)}
+    counted = set()
     declared = float(root.get('data-scale') or 0)
     if root.get('data-yaw') != '28' or root.get('data-pitch') != '20': errors.append('SOLID_PROJECTION_NOT_DECLARED_FIXED')
     scale = None
@@ -402,11 +404,15 @@ def audit_solids(plan, ctx):
             for i, (name, p) in enumerate(solid['verts']):
                 if name: named[name] = (sid, px(p), p)
             check_poly_edges(solid, root, px, scale, errors)
+            audit_counts(solid, (specs_by_id.get(sid) or {}).get('count') or {}, px, ctx)
+            counted.add(sid)
             # the solid's drawn extent, for the overlap check
         else:
             for name, pid, p in solid['points']:
                 if name: named[name] = (sid, px(p), p)
             check_round(solid, root, px, scale, errors, ctx['segments'], (plan.get('section') if (plan.get('section') or {}).get('kind') == 'LEVEL' and (plan['section'].get('solid') or next((x['id'] for x in solids if x['cat'] == 'REV'), None)) == solid['id'] else None))
+    for g in ctx['labels']:
+        if g.get('data-label-role') in COUNT_ROLES and g.get('data-solid') not in counted: errors.append('SOLID_COUNT_LABEL_UNEXPECTED:' + str(g.get('id')))
     ctx['named'] = named
     ctx['px'] = {sid: frames[sid] for sid in frames}
     # aux segments, highlights, section
@@ -506,6 +512,67 @@ def audit_solids(plan, ctx):
         if el.get('data-role') == 'dim-line':
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
     check_dim_lines(plan, ctx)
+
+
+def solids_with_ids(plan):
+    return [{**spec, 'id': spec.get('id') or 's%d' % (i + 1)} for i, spec in enumerate(plan['solids'])]
+
+
+# --- counting numbers: 1, 2, ... beside the vertices and circled numbers beside the edge midpoints -------------------------------------------------------
+COUNT_ROLES = ('count-vertex', 'count-edge')
+COUNT_MARGIN = 2.0   # px: a counting number is nearer to its own target than to any other by at least this
+COUNT_FAR = 48.0     # px: a counting number's centre is never farther than this from its own target
+CIRCLED = [chr(0x2460 + k) for k in range(20)]
+
+
+def count_order(solid):
+    """the edges (vertex index pairs) in counting order: around the base ring (edge i joins vertices i and i+1, the closing edge last), then the side
+    edges by their base vertex, then around the top ring"""
+    n = len(solid['verts']) - 1 if solid['kind'] == 'PYRAMID' else len(solid['verts']) // 2
+
+    def slot(e):
+        a, b = e
+        if a < n and b < n: return (0, a if b == a + 1 else b)
+        if a >= n and b >= n: return (2, a - n if b == a + 1 else b - n)
+        return (1, a)
+    return sorted(poly_edges(solid), key=slot)
+
+
+def audit_counts(solid, flags, px, ctx):
+    """every vertex / edge of a solid that asked for counting numbers has exactly one number 1..N, written as such, nearest to its own target"""
+    errors, boxes = ctx['errors'], ctx['boxes']
+    sid = solid['id']
+    mine_all = [g for g in ctx['labels'] if g.get('data-solid') == sid and g.get('data-label-role') in COUNT_ROLES]
+    for role, want in (('count-vertex', bool(flags.get('vertices'))), ('count-edge', bool(flags.get('edges')))):
+        mine = [g for g in mine_all if g.get('data-label-role') == role]
+        if not want:
+            if mine: errors.append('SOLID_COUNT_LABEL_UNEXPECTED:%s:%s' % (sid, role))
+            continue
+        if role == 'count-vertex':
+            targets = [px(p) for _, p in solid['verts']]
+            texts, attr = [str(k + 1) for k in range(len(targets))], 'data-tex'
+            if any(name for name, _ in solid['verts']): errors.append('SOLID_COUNT_NAMES_CONFLICT:' + sid)
+        else:
+            order = count_order(solid)
+            targets = [px(vmul(vadd(solid['verts'][a][1], solid['verts'][b][1]), 0.5)) for a, b in order]
+            texts, attr = [CIRCLED[k] if k < len(CIRCLED) else '?' for k in range(len(targets))], 'data-text'
+        numbers = []
+        for g in mine:
+            try: numbers.append(int(g.get('data-count-n')))
+            except (TypeError, ValueError): errors.append('SOLID_COUNT_LABEL_UNREADABLE:' + str(g.get('id')))
+        if sorted(numbers) != list(range(1, len(targets) + 1)): errors.append('SOLID_COUNT_NUMBERS_NOT_COMPLETE:%s:%s:%s' % (sid, role, sorted(numbers)[:24]))
+        for g in mine:
+            lid = str(g.get('id'))
+            try: n = int(g.get('data-count-n'))
+            except (TypeError, ValueError): continue
+            box = boxes.get(g.get('id'))
+            if not 1 <= n <= len(targets) or box is None: continue
+            if g.get(attr) != texts[n - 1] or g.get('data-value') != str(n) or g.get('data-count') != ('vertex' if role == 'count-vertex' else 'edge'): errors.append('SOLID_COUNT_TEXT_MISMATCH:' + lid)
+            cx, cy = box[0] + box[2] / 2, box[1] + box[3] / 2
+            own = math.hypot(cx - targets[n - 1][0], cy - targets[n - 1][1])
+            if own > COUNT_FAR: errors.append('SOLID_COUNT_LABEL_FAR:' + lid)
+            if any(own + COUNT_MARGIN >= math.hypot(cx - t[0], cy - t[1]) for k, t in enumerate(targets) if k != n - 1): errors.append('SOLID_COUNT_LABEL_CONFUSED:' + lid)
+            if role == 'count-vertex' and _box_seg_dist(box, targets[n - 1], targets[n - 1]) < 1.5: errors.append('SOLID_COUNT_ON_VERTEX:' + lid)
 
 
 def check_poly_edges(solid, root, px, scale, errors):
