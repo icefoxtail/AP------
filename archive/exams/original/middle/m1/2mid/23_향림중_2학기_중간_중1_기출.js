@@ -79,7 +79,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 다섯 점 A, B, C, D, E에서 두 점씩 이은 선분을 빠짐없이 그어 보인 그림.",
+    "solutionImageCaption": "원 위의 다섯 점 중 두 점씩 이은 직선을 모두 그린 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -119,7 +123,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나 생긴 마주 보는 두 각 a, b가 각각 60°로 같은 호로 표시되고, 위쪽의 이웃한 각은 x로 표시된 그림.",
+    "solutionImageCaption": "맞꼭지각 a, b는 크기가 같고 각 x는 이웃한 각이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -159,7 +167,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 점 A(5,4)에서 x축까지, 점 B(2,7)에서 y축까지 점선 수선을 내려 길이 a=4, b=2를 표시한 그림.",
+    "solutionImageCaption": "점에서 축까지의 거리는 수선의 길이이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -199,7 +211,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 AD 위의 점 O에서 OF가 수직이고 각 EOD=60°, 각 AOE=120°이며, 같은 호로 표시한 맞꼭지각 FOE와 BOC를 나타낸 그림.",
+    "solutionImageCaption": "각 EOD, AOE의 크기와 맞꼭지각 FOE, BOC의 관계를 보인 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -360,7 +376,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 종이테이프의 접는 선 FG에서 동측내각 x=70°, 접은 각 GFE=70°, 각 EGF=70°, 삼각형 EFG의 각 y=40°를 표시한 그림.",
+    "solutionImageCaption": "종이를 접었을 때 같아지는 각과 삼각형 EFG의 각을 보인 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
