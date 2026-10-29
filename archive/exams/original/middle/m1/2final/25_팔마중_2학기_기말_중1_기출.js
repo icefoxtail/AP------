@@ -83,16 +83,16 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q2-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q2-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d3737c91e955173519eb985278eed2db615060b3bfe201ec8e4130524e19a243",
       "difficultyEvidenceSha": "sha256:62448c61b15efbbc1a55115992f208d692ff340768710c7afda04e25cc81f961",
-      "solutionImageAlt": "호의 길이와 중심각을 비례로 대응시킨 표: 1 cm에 20°, 140°에 x cm, 4 cm에 y°",
-      "solutionImageCaption": "같은 원에서 호의 길이와 중심각이 비례하는 관계를 표의 대응값으로 읽는다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 한 원의 중심 O에서 중심각 20°에는 호 1cm, 중심각 140°에는 호 x cm, 중심각 y°에는 호 4cm가 대응하도록 반지름과 호를 표시한 그림이다.",
+      "solutionImageCaption": "같은 원에서 호의 길이는 중심각의 크기에 비례한다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 3,
@@ -136,7 +136,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:6080d19d7d0990e0b3acf21355942ee2f8d368c86a1774b545b759baef3738d8",
-      "difficultyEvidenceSha": "sha256:d190b88dc9bea39fc48d946b741722297cf3e0f19ca5d207e8d5c553a2dddef6"
+      "difficultyEvidenceSha": "sha256:d190b88dc9bea39fc48d946b741722297cf3e0f19ca5d207e8d5c553a2dddef6",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q3-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 6cm인 두 원 O, O'가 서로의 중심을 지나고, 중심 O'에서 지름 AB와 교점 방향의 두 반지름으로 이루어진 중심각 60°의 부채꼴(호 2π cm)을 색칠해 보인 그림이다.",
+      "solutionImageCaption": "O'를 중심으로 한 색칠한 부채꼴은 두 반지름과 중심각 60°의 호로 이루어진다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 4,
@@ -312,16 +316,16 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q7-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q7-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:59a45a5ba8f0805f75d9748595b6440768aed75d6145fca7ce04df34709e8f82",
       "difficultyEvidenceSha": "sha256:57adf611e0c5e896c036ecc288be95d8d8cc607d7609a5af29f44980a2ffffa7",
-      "solutionImageAlt": "사각기둥 밑면을 대각선으로 나누고 두 삼각형의 변과 높이를 표시한 도식",
-      "solutionImageCaption": "밑면 넓이는 3×4÷2와 5×4÷2의 합이며 기둥 높이는 6 cm다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 밑면 사각형을 대각선 5cm로 나눈 그림으로, 3cm와 4cm가 직각을 이루는 직각삼각형(넓이 6cm²)과 대각선에 내린 높이가 4cm인 삼각형(넓이 10cm²)을 색을 달리해 보인다.",
+      "solutionImageCaption": "사각형을 대각선으로 나눈 두 삼각형의 넓이는 각각 6cm²와 10cm²이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 8,
