@@ -610,7 +610,11 @@ window.questionBank = [
     "imageStatus": "not_required",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 AB=6 cm, BC=7 cm가 일직선 위에 이어져 AC=13 cm가 되어 삼각형이 만들어지지 않는 모양이고, 오른쪽은 ∠A=20°, AB=7 cm일 때 B 중심 반지름 5 cm인 호가 반직선 AC와 두 점 C1, C2에서 만나는 그림이다.",
+    "solutionImageCaption": "①은 6+7=13이라 일직선이고, ④는 BC=5인 점 C가 두 개 생긴다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -949,7 +953,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 일곱 꼭짓점을 가진 별 모양 경로에서 각 꼭짓점의 표시된 각 a~g와, 변을 연장해 얻은 바깥각 180°-(표시각)이 각각 호로 그려져 있다.",
+    "solutionImageCaption": "각 꼭짓점의 바깥각은 180°에서 표시각을 뺀 값이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

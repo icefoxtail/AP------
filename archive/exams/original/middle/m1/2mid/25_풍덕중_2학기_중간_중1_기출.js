@@ -421,7 +421,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 선에서 62°, 18°, 18°, 108°가 표시되어 있다. 평행선과 같은 방향의 점선으로 둘째 사선과 평행선이 이루는 각 44°와, 가운데 선분이 평행선에 수직(직각)임을 보여 ∠x가 직각에서 44°를 뺀 각임을 나타낸 그림.",
+    "solutionImageCaption": "62°-18°=44°이고 가운데 선분이 수직이므로 ∠x는 90°에서 44°를 뺀 각이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,

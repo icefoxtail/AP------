@@ -1301,7 +1301,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 별 모양 오각형에서 두 직선 AD와 BE의 교점 X를 잡고 보조선 XF를 점선으로 그은 그림. 맞꼭지각 ∠BXD와 ∠AXE는 t°로 표시하고 사각형 BXDC를 색칠했으며 ∠AFE=20°를 나타낸다.",
+    "solutionImageCaption": "교점 X와 보조선 XF로 사각형 BXDC와 두 삼각형 AXF, EXF의 각을 나누어 본다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

@@ -878,7 +878,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:94bf77e2c039a1535d8e42e8f36fd7376bb3089997a51ffc9f190f4ae72fc7ad",
-      "difficultyEvidenceSha": "sha256:dda4011424b46ae3db915c20f575fe41028a146fffed49772dee3505b4a24e66"
+      "difficultyEvidenceSha": "sha256:dda4011424b46ae3db915c20f575fe41028a146fffed49772dee3505b4a24e66",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 일부가 지워진 인터넷 이용 시간의 도수분포다각형과 히스토그램. 13시간 미만의 세 계급(도수 1, 5, 8명)을 진하게 칠하고 그 합 14명을 괄호로 묶었으며, 지워진 13시간 이상 15시간 미만의 두 계급은 막대와 꺾은선 없이 합을 묻는 괄호(?)만 그린 그림",
+      "solutionImageCaption": "13시간 미만 세 계급의 합과 지워진 두 계급의 합을 괄호로 나타낸 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 20,

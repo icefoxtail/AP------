@@ -596,7 +596,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 줄기와 잎 그림에서는 잎 하나가 학생 한 명을 뜻하고, 줄기는 십의 자리, 잎은 일의 자리를 나타낸다.\n\n잎의 개수는 줄기 $0,1,2,3,4$에서 차례로 $6,8,4,1,1$개이므로 전체는 $6+8+4+1+1=20$명이다.\n\n① 잎이 가장 많은 줄기는 $1$이므로 참이다.\n② 학생은 모두 $20$명으로 참이다.\n③ $20$권 이상은 줄기 $2,3,4$에 해당하므로 $4+1+1=6$명으로 참이다.\n④ 최댓값은 $42$권, 최솟값은 $2$권이므로 차는 $42-2=40$권으로 참이다.\n\n⑤ '10번째로 많이'는 큰 값부터 세어 10번째이다. 학생이 20명이므로 작은 값부터는 $20-10+1=11$번째이다. 줄기 0에 6명이 있으므로 줄기 1의 5번째 잎을 찾는다.\n줄기 1의 잎을 작은 순서로 나열하면 $0,0,1,1,2,2,2,3$이다. 5번째 잎은 $2$이므로 기록은 $12$권이다.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q14.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q14-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -606,9 +606,9 @@ window.questionBank = [
     "sourcePage": 4,
     "sourceQuestionNo": "14",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "큰 수부터 열 번째: 전체 학생 = 20명, 10번째 큰 수는, 11번째 작은 수",
-    "solutionImageCaption": "12권"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 대출한 책의 수를 나타낸 줄기와 잎 그림. 큰 값부터 10번째까지의 잎 10개를 동그라미로 묶고 큰 값부터 센 순번 1~10을 동그라미 위에 썼으며, 줄기 4, 3, 2의 잎 1개, 1개, 4개와 줄기 1에서 큰 쪽 4개를 괄호로 묶어 개수를 쓴 그림",
+    "solutionImageCaption": "큰 값부터 10번째까지의 잎에 순번을 쓰고 줄기별 개수를 묶은 줄기와 잎 그림"
   },
   {
     "id": 15,
@@ -776,7 +776,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 상대도수는 '그 학교 전체 학생 중 해당 계급에 속한 비율'이다. 실제 학생 수와 상대도수는 구별해야 한다.\n\n① 각 학교의 전체 학생 수는 그래프에 주어져 있지 않다. 상대도수 그래프만 보고 같다고 할 수 없으므로 거짓이다.\n\n② $20$시간 미만의 상대도수 합은 A 학교가 $0.10+0.25+0.35=0.70$, B 학교가 $0.10+0.15+0.25=0.50$이다. A의 비율이 오히려 더 크고 두 학교의 전체 학생 수도 모르므로 A의 실제 인원이 적다고 단정할 수 없다. 거짓이다.\n\n③ A는 $10$시간 이상 $20$시간 미만에 상대도수가 많이 모여 있고, B는 $20$시간 이상인 계급 쪽의 상대도수가 상대적으로 더 크다. 따라서 A가 더 긴 시간에 몰려 있다는 말은 거짓이다.\n\n④ A 학교에서 $20$시간 이상인 비율은 $0.20+0.10=0.30$이다. 전체가 200명이면 $200\\times0.30=60$명이므로 참이다.\n\n⑤ B 학교의 $20$시간 이상 $25$시간 미만 상대도수 $0.30$을 백분율로 바꾸면 $0.30\\times100=30\\%$이다. $0.3\\%$가 아니므로 거짓이다.\n\n따라서 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q18.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q18-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -786,9 +786,9 @@ window.questionBank = [
     "sourcePage": 5,
     "sourceQuestionNo": "18",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "상대도수의 합: A: 20시간 이상, 0.20+0.10 = 0.30, 200×0.30",
-    "solutionImageCaption": "60명"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: A, B 두 중학교의 여가 활동 시간에 대한 상대도수 분포를 나타낸 두 도수분포다각형. A 중학교(실선)에서 20시간 이상인 두 계급의 점을 동그라미로 표시해 상대도수 0.2, 0.1을 쓰고 그 합 0.30을 괄호로 묶은 그림",
+    "solutionImageCaption": "A 중학교의 20시간 이상 두 계급의 상대도수와 합을 나타낸 두 도수분포다각형"
   },
   {
     "id": 19,

@@ -36,7 +36,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_COORDINATE_POINT_READING",
-    "templateKey": "TPL_COORDINATE_POINT_READING_CORE"
+    "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: x축과 y축이 그려진 좌표평면에 점 A, B, C, D, E가 찍혀 있다. C를 제외한 각 점에서 x축과 y축으로 점선을 내려 축 위의 눈금 값으로 x좌표와 y좌표를 읽는 방법을 보여 준다.",
+    "solutionImageCaption": "각 점에서 x축, y축에 내린 점선으로 좌표를 읽는다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
