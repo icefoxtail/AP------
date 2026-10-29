@@ -576,9 +576,9 @@ test('all changed browser scripts use new cache versions', () => {
   for (const [file, version] of [
     ['archive2-canonical.js', '20261029-authority-index-1'],
     ['archive2-core.js', '20261029-subject-projection-memo-1'],
-    ['meta-foundation-runtime.js', '20261021-reviewed-runtime-1'],
+    ['meta-foundation-runtime.js', '20261029-health-reasons-1'],
     ['archive2-history.js', '20261004-class-grade-fallback-1'],
-    ['archive2-workspace.js', '20261029-render-memo-1'],
+    ['archive2-workspace.js', '20261029-health-status-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /problem-bank-meta\.js\?v=20261021-reviewed-registration-1/);

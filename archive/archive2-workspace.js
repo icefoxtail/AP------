@@ -340,6 +340,7 @@
     busy: false,
     view: "home",
     useMode: "strict",
+    healthComposeScope: null,
     assessmentRecipe: "",
     page: 0,
     savedPaperId: "",
@@ -2632,37 +2633,70 @@
       throw error;
     }
   }
+  // Korean labels for every exclusion reason code that basicEligibility and the
+  // canonical assignment validator can emit. An unknown code is still shown
+  // (with its raw code) so a nonzero reason can never be hidden.
+  const HEALTH_REASON_LABELS = {
+    identity: "문항 식별 정보 확인 필요",
+    source: "원본 무결성 확인 필요",
+    source_release: "승인된 원본 버전과 불일치",
+    source_issue: "원본 문제 의심(보류)",
+    solution: "정답·해설 수리 필요",
+    SOURCE_GRADE_UNRESOLVED: "출처 학년 확인 불가",
+    SOURCE_GRADE_CONFLICT: "출처 학년과 문항 학년 충돌",
+    taxonomy: "승인된 단원 분류 없음(분류 항목 종합)",
+    course_namespace_invalid: "학년·교육과정·과목 조합 확인 필요",
+    assignment_missing: "승인된 단원 배정 없음",
+    assignment_conflict: "단원 배정이 둘 이상",
+    assignment_identity_mismatch: "단원 배정과 문항 식별 불일치",
+    assignment_fingerprint_mismatch: "단원 배정 지문 불일치",
+    assignment_not_approved: "단원 배정 미승인",
+    assignment_review_evidence_missing: "단원 배정 검수 근거 없음",
+    assignment_taxonomy_version_mismatch: "단원 배정의 분류 버전 불일치",
+    assignment_target_mismatch: "단원 배정과 문항 분류 불일치",
+    canonical_parent_missing: "기준 단원 목록에 없음",
+    canonical_authority_missing: "기준 분류 정보 없음",
+    canonical_validator_unavailable: "기준 분류 검사기 사용 불가",
+    source_identity_unverified: "문항 식별 미검증",
+    source_identity_conflict: "문항 식별 충돌",
+    review: "검수 보류·제외",
+    semantic: "의미 분류 보류·제외",
+    applicability: "기본 출력 범위 밖",
+    conflict: "원본 분류 정보 충돌",
+  };
+  function healthExclusionRows(reasons) {
+    return Object.entries(reasons || {})
+      .filter(([, count]) => Number(count) > 0)
+      .sort((a, b) => Number(b[1]) - Number(a[1]) || a[0].localeCompare(b[0]))
+      .map(([code, count]) => ({ code, count: Number(count), label: HEALTH_REASON_LABELS[code] || "" }));
+  }
   function renderHealth() {
     const h = state.catalog.health,
-      reasons = {
-        identity: "문항 등록 확인 필요",
-        grade: "출처·단원 학년 충돌",
-        source: "원본 일치 여부 확인 필요",
-        taxonomy: "단원 분류 확인 필요",
-        review: "검수 승인 전",
-        difficulty: "난이도 규칙 확인 필요",
-        applicability: "기본 출력 범위 밖",
-        conflict: "원본 분류 정보 충돌",
-      };
-    return `<div class="intro"><div><h1>데이터 상태</h1><p class="muted">전체 자료와 문제지 만들기에 사용 가능 범위를 구분합니다. 제외 사유는 서로 중복될 수 있습니다.</p></div>${button("health-export", "진단 JSON 내보내기")}</div><div class="metrics">${[
+      total = Number(h.questions) || 0,
+      fmt = (n) => Number(n || 0).toLocaleString(),
+      composeScope = state.healthComposeScope,
+      rows = healthExclusionRows(h.exclusionReasons);
+    return `<div class="intro"><div><h1>데이터 상태</h1><p class="muted">전체 자료, 자동출제 승인 범위, 문제지 만들기 범위를 구분합니다. 제외 사유는 서로 중복될 수 있습니다.</p></div>${button("health-export", "진단 JSON 내보내기")}</div><div class="metrics">${[
       ["시험", h.exams],
       ["전체 문항", h.questions],
-      ["자동출제 가능", h.automatic],
+      ["자동출제 승인", h.automatic],
+      ["문제지 만들기 범위에 포함", composeScope],
       ["metadata records", h.metadataRecords],
     ]
       .map(
         ([l, n]) =>
-          `<div class="metric"><span class="muted">${l}</span><strong>${Number(n || 0).toLocaleString()}</strong></div>`,
+          `<div class="metric"><span class="muted">${l}</span><strong>${n == null ? "확인 불가" : fmt(n)}</strong></div>`,
       )
       .join(
         "",
-      )}</div><section class="panel"><h2>자동출제 제외 근거</h2><table class="health-table"><tbody>${Object.entries(
-      reasons,
-    )
-      .map(([k, l]) => `<tr><th>${l}</th><td>${h[k] || 0}</td></tr>`)
-      .join(
-        "",
-      )}</tbody></table><div class="callout">미분류는 보류와 다른 상태입니다. 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않으며 문제지 자동 선택에서 제외합니다.</div><div class="callout">교육과정 간 연결 검수: 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. 문제지 자동 선택은 선택한 교육과정 안에서 수행합니다. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>catalog ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
+      )}</div><section class="panel"><h2>자동출제 승인 제외 근거</h2><table class="health-table"><tbody>${rows.length
+      ? rows
+          .map(
+            ({ code, count, label }) =>
+              `<tr><th>${label ? `${esc(label)} <span class="muted">(${esc(code)})</span>` : esc(code)}</th><td>${fmt(count)}${total ? ` <span class="muted">· ${((count / total) * 100).toFixed(1)}%</span>` : ""}</td></tr>`,
+          )
+          .join("")
+      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">자동출제 승인은 단원 분류와 검수까지 모두 승인된 문항입니다. 문제지 만들기는 원본 식별·무결성이 확인된 문항 중 단원 범위에 연결되는 문항을 제공하므로 위 사유로 막히지 않습니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">교육과정 간 연결 검수: 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. 문제지 자동 선택은 선택한 교육과정 안에서 수행합니다. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>catalog ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
   }
   function applyFiveMinuteViewGuard() {
     if (!isAssessmentRecipeMode()) return;
@@ -4616,6 +4650,11 @@
         .catch(() => null);
       state.indexVersion = state.catalog.indexVersion;
       state.finderIndex = C.buildFinderIndex(state.catalog);
+      // Compose runs in general mode: it offers records with general-use
+      // eligibility AND a scope parent. Count them once here (this also warms
+      // workspaceScopeParent's per-record cache) for the status line and health view.
+      state.healthComposeScope = state.catalog.records.reduce(
+        (n, record) => n + (C.generalUseEligibility(record).ok && workspaceScopeParent(record) ? 1 : 0), 0);
       state.byUid = new Map(
         state.catalog.records
           .filter((r) => r.questionUid)
@@ -4626,7 +4665,7 @@
       if (!(savedOnBoot && state.view === "saved")) render();
       status(state.view === "saved"
         ? "저장한 시험지를 불러왔습니다."
-        : `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 문제지 만들기에 사용 가능 ${state.catalog.health.automatic.toLocaleString()}문항`);
+        : `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 자동출제 승인 ${state.catalog.health.automatic.toLocaleString()} · 문제지 만들기 범위에 포함 ${state.healthComposeScope.toLocaleString()}`);
       const previous = drafts();
       if (state.view === "recent") {
         const selectedAssignmentId = state.recentSelectedAssignmentId;
