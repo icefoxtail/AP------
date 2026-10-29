@@ -499,7 +499,10 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q7.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반비례 관계 y=b/x의 그래프 위의 점 P에서 x축, y축에 내린 수선의 발 A, B와 원점 O로 만든 직사각형 OAPB를 색칠하고 그 넓이 b를 안에 적은 그림.",
+    "solutionImageCaption": "직사각형 OAPB의 넓이는 b이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 8,
@@ -568,7 +571,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": []
+    "itemHoldReasons": [],
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 관계 y=-80/x의 그래프가 제2사분면과 제4사분면을 지나며 점 (-4, 20)과 (4, -20)을 지나는 그림.",
+    "solutionImageCaption": "y=-80/x의 그래프",
+    "solutionImageSize": "large"
   },
   {
     "id": 9,

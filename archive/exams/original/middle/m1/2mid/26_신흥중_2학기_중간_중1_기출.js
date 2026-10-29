@@ -872,7 +872,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정오각형 ABCDE와 정팔각형 DEFGHIJK가 변 DE를 공유하고, BC와 JK의 연장선이 점 L에서 만난다. 오각형의 내각 a=108°, 팔각형의 내각 b=135°, 사각형 CDKL의 한 각 ∠CDK=117°를 표시했고, 사각형의 나머지 각 c, d, e는 이름만 표시했다.",
+    "solutionImageCaption": "내각 a, b와 사각형 CDKL의 각 c, d, e",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
