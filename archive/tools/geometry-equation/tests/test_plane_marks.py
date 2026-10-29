@@ -13,6 +13,7 @@ PRODUCTION=GEOMETRY/'production'
 sys.path.insert(0,str(GEOMETRY))
 sys.path.insert(0,str(PRODUCTION))
 from visual_engine.engine import build
+from visual_engine.semantic_model import validate
 import construction
 
 def observer_module():
@@ -374,5 +375,41 @@ class RegionLabelOwnershipTests(unittest.TestCase):
         codes=self.codes(self.svg_with((8.0,0.0),(8.0,0.0)))
         self.assertIn('REGION_LABEL_OUTSIDE',codes)
         self.assertIn('REGION_LABEL_IN_OTHER_REGION',codes)
+
+class UnmarkedPointTests(unittest.TestCase):
+    """A POINT with marker NONE (a plane figure's hiddenPointStyle NONE) stays in the geometry but draws neither a dot nor a name."""
+    points={'F':(0.0,0.0),'R':(6.0,0.0),'T':(3.0,4.0)}
+    def objects(self,marker=None):
+        points=self.points
+        rows=[{'id':k,'kind':'POINT','at':list(v),'name':None,**({'marker':marker} if marker else {})} for k,v in points.items()]
+        return rows+[seg('sFR',points,'F','R'),seg('sFT',points,'F','T'),{'id':'aF','kind':'ANGLE_MARK','refs':['R','F','T'],'value':53.13010235415598,'arcs':1}]
+    def svg(self,objects):
+        spec=spec_of(self.points,[])
+        spec['objects']=objects
+        return build(spec)['svg']
+    def circles(self,svg):return re.findall(r'<circle\s(?:[^>]*\s)?id="([^"]+)"',svg)
+    def test_default_hidden_point_is_a_bare_dot(self):
+        self.assertEqual(sorted(self.circles(self.svg(self.objects()))),['F','R','T'])
+    def test_marker_none_draws_no_dot_and_the_marks_still_stand(self):
+        svg=self.svg(self.objects('NONE'))
+        self.assertEqual(self.circles(svg),[])
+        self.assertIn('id="sFR"',svg);self.assertIn('id="sFT"',svg);self.assertIn('data-mark="angle"',svg)
+    def test_marker_none_on_some_points_keeps_the_others(self):
+        rows=self.objects()
+        for row in rows:
+            if row['id']=='T':row['marker']='NONE'
+        self.assertEqual(sorted(self.circles(self.svg(rows))),['F','R'])
+    def test_marker_contract(self):
+        rows=self.objects();rows[0].pop('at');rows[0].update({'kind':'LINE','coefficients':[1,0,0],'marker':'NONE'})   # only a POINT carries a marker
+        with self.assertRaisesRegex(ValueError,'INVALID_POINT_MARKER'):validate(spec_of(self.points,[])|{'objects':rows})
+        for bad in ('DOT','none',True,None):
+            rows=self.objects();rows[0]['marker']=bad
+            with self.assertRaisesRegex(ValueError,'INVALID_POINT_MARKER'):validate(spec_of(self.points,[])|{'objects':rows})
+        rows=self.objects();rows[0]['marker']='NONE';rows[0]['name']='F'   # a markerless point cannot carry a name
+        with self.assertRaisesRegex(ValueError,'INVALID_POINT_MARKER'):validate(spec_of(self.points,[])|{'objects':rows})
+        rows=self.objects();rows[0]['marker']='NONE';del rows[0]['name']
+        with self.assertRaisesRegex(ValueError,'INVALID_POINT_MARKER'):validate(spec_of(self.points,[])|{'objects':rows})
+        rows=self.objects();rows[0]['marker']='NONE'
+        self.assertEqual(validate(spec_of(self.points,[])|{'objects':rows})['semanticStatus'],'PASS')
 
 if __name__=='__main__':unittest.main()

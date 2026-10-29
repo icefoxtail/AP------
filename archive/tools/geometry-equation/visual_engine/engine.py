@@ -456,7 +456,8 @@ def prepare(spec):
         for pole in trig_interval_features.get('poles',[]):
             x=float(Fraction(pole['x']))*factor
             primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4','poleSide':pole.get('side','RIGHT')},'line')
-    point_marks=[vp.screen(geometry[v['id']]) for v in spec['objects'] if v['kind']=='POINT']
+    # A POINT with marker 'NONE' (hiddenPointStyle NONE on a plane figure) stays in the geometry for marks and segments but draws no dot and no name.
+    point_marks=[vp.screen(geometry[v['id']]) for v in spec['objects'] if v['kind']=='POINT' and v.get('marker')!='NONE']
     mark_spots=[]   # where equal ticks / parallel arrows already stand: a second mark on the same segment keeps clear of the first
     by_id={v['id']:v for v in spec['objects']}
     tangent_lines={v['refs'][0] for v in spec['objects'] if v['kind']=='TANGENT'}
@@ -466,7 +467,8 @@ def prepare(spec):
     named={v.get('target') for v in spec['objects'] if v['kind'] in {'POINT_NAME','COORDINATE_LABEL'}}
     for obj in spec['objects']:
         oid=obj['id'];kind=obj['kind'];value=geometry.get(oid)
-        if kind=='POINT':
+        if kind=='POINT' and obj.get('marker')=='NONE':pass   # an unmarked point: it draws neither a dot nor a name
+        elif kind=='POINT':
             primitive({'id':oid,'kind':'circle','at':vp.screen(value),'radius':tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'],'layer':70,'role':'point','token':'indicator'},'point')
             point_names=semantic.get('publication',{}).get('sourcePointLabels',{})
             point_name=point_names.get(oid,obj.get('name',oid))

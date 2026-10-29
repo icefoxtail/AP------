@@ -9,6 +9,27 @@ export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_R
 export const COORDINATE_RECIPE='SOURCE_COORDINATE_AXES_v1';
 export const isCoordinateFigure=(plan,model)=>plan?.mathPlan?.realization?.recipeId===COORDINATE_RECIPE&&model?.coordinateMode==='SOURCE_COORDINATES';
 export const planeMarksAllowed=(plan,model)=>isPlaneFigure(plan)||isCoordinateFigure(plan,model);
+// hiddenPointStyle "NONE" (a plane figure only): the points listed in hiddenPointNames are drawn with no dot and no name. The independent
+// observer is told these ids from the PLAN, never from the engine, and expects no marker at them (every other point must keep its dot).
+export const unmarkedPointIds=plan=>plan?.hiddenPointStyle==='NONE'&&isPlaneFigure(plan)&&Array.isArray(plan.hiddenPointNames)?[...plan.hiddenPointNames]:[];
+// Texts of a plan that write point names (caption and the labels of marks/lengths), for the check that a nameless point is never named in text.
+export function planNameTexts(plan){
+  const out=[],add=value=>{if(typeof value==='string')out.push(value);else if(value&&typeof value==='object'&&!Array.isArray(value)){add(value.text);add(value.math);}};
+  add(plan?.caption);
+  const marks=plan?.planeMarks&&typeof plan.planeMarks==='object'?plan.planeMarks:{};
+  for(const row of Array.isArray(marks.angles)?marks.angles:[])add(row?.label);
+  for(const row of Array.isArray(marks.arcs)?marks.arcs:[])add(row?.label);
+  for(const row of Array.isArray(marks.regions)?marks.regions:[])add(row?.label);
+  for(const row of Array.isArray(marks.expressionLabels)?marks.expressionLabels:[])add(row?.text);
+  for(const row of Array.isArray(plan?.scalarLabels)?plan.scalarLabels:[]){add(row?.prefix);add(row?.unit);}
+  return out;
+}
+/** True when `text` writes the point id as a name (a capital letter run such as AB or an id beside non-letters); TeX commands such as \angle are ignored. */
+export function textNamesPoint(text,id){
+  const plain=String(text).replace(/\\[A-Za-z]+/gu,' ');
+  const escaped=id.replace(/[.*+?^${}()|[\]\\]/gu,'\\$&');
+  return new RegExp('(?<![a-z0-9_])'+escaped+"(?![a-z0-9_\u2032\u2033'])",'u').test(plain);
+}
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts'],

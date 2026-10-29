@@ -261,6 +261,9 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 30°, 45°, 60°처럼 닫힌 꼴이 있는 각은 정확한 근호로, 40°, 75°처럼 없는 각은 엔진이 22자리 유리수로 계산한다(모델에는 34자리 `decimal`로 나오고 가짜 정확값은 만들지 않는다). 독립 관측기(Cindy)는 `Math.cos/sin`으로 따로 다시 계산한다.
 - 기준 방향이 필요하면 숨은 보조점을 쓴다: `TRANSLATE_POINT`로 중심을 (1,0)만큼 옮긴 점(`factRole:DERIVED_INTERMEDIATE`, `displayPoints`에서 뺀다, 평행선·수직선과 같은 방식). 각이 주어진 문항은 반직선을 `POLAR_POINT(길이 1)`로 만들고 `LINE_THROUGH` 두 개의 `LINE_INTERSECTION`으로 꼭짓점을 얻으면 길이가 무리수여도 정확히 그려진다.
 - 보조 선·점은 `displayLines`, `displayPoints`에서 빼서 숨긴다. 화면에 나오는 선분은 `displaySegments`가 정한다.
+- **이름 없는 점**(원문 그림에 점 이름이 없을 때 이름 "A"를 지어 붙이지 않는다): 축 없는 평면도형에서는 `SOURCE_POINT`도 `hiddenPointNames`에 넣을 수 있다(점은 `displayPoints`에 남고 `planeMarks`·`displaySegments`가 참조해도 되며 이름만 숨는다). 최상위 `"hiddenPointStyle":"NONE"`(기본 `"DOT"`=이름 없는 점 표식)이면 숨긴 점에 점 표식도 그리지 않는다(교과서식 교점·꼭짓점).
+- 숨긴 점을 `pointNames`·`coordinateLabels`에 넣거나 `caption`·표식 라벨(`angles`/`arcs`/`regions`의 `label`, `expressionLabels`, `scalarLabels`)이 그 id를 글자로 쓰면 거절된다: `INVALID_HIDDEN_POINT_NAMES`, `POINT_NAME_TARGET_HIDDEN:<id>`, `HIDDEN_POINT_NAMED_IN_TEXT:<id>`. `hiddenPointStyle`은 `"DOT"`·`"NONE"`만 되고(`INVALID_HIDDEN_POINT_STYLE`) `"NONE"`은 평면도형에 숨긴 점이 있을 때만 쓴다(`HIDDEN_POINT_STYLE_REQUIRES_PLANE_FIGURE`, `HIDDEN_POINT_STYLE_WITHOUT_HIDDEN_POINTS`).
+- 독립 관측기는 plan에서 숨긴 점을 따로 읽어 그 위치에 점 표식이 있으면 `HIDDEN_POINT_MARKER_PRESENT`/`HIDDEN_POINT_MARKER_AT_POINT`, 숨기지 않은 점에 표식이 없으면 `POINT_MISSING`, 남는 표식이 있으면 `UNEXPECTED_POINT_MARKER`로 FAIL한다.
 
 **`displaySegments` 추가 필드.** `dashed:true`(보조선 점선), `arrow:"START"|"END"|"BOTH"`(반직선·연장선의 화살촉, 끝점에 정확히 놓인다). 축 없는 평면도형과 축이 있는 좌표 작도 plan(3-10절)에서 된다(`DISPLAY_SEGMENT_STYLE_INVALID`, `DISPLAY_SEGMENT_STYLE_REQUIRES_PLANE_FIGURE`).
 
