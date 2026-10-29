@@ -679,7 +679,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 세 점 A, B, C와 l 밖의 점 P로 만든 도형을 다섯 칸으로 나누어 그렸다. 첫째 칸은 양쪽 화살표인 직선 l, PA, PB, PC 4개, 둘째~넷째 칸은 한쪽 화살표인 반직선 BA(검정), BC(빨강) / AB, AP, BP, CP / CB, PA, PB, PC 10개, 다섯째 칸은 화살표 없는 선분 AB, BC, AC, PA, PB, PC 6개를 나타낸다. 둘째 칸의 반직선 BA와 BC는 같은 점 B에서 시작하지만 방향이 반대인 서로 다른 반직선이다.",
+    "solutionImageCaption": "직선, 반직선, 선분을 화살표와 시작점으로 구분해 센다. 반직선 BA(검정)와 BC(빨강)는 B에서 시작하는 서로 다른 반직선이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,

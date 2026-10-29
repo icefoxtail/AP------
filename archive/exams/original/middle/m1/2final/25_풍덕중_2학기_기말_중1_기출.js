@@ -460,7 +460,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:f04a3555f7178dea1f20bdd77d0bf7b51499b99fe1fa8294dd6c08e13ed55bd7",
-    "difficultyEvidenceSha": "sha256:177090fdfba335178a80369ff46ce6109d791a1c2eef4d28c57e27c4c8794eb9"
+    "difficultyEvidenceSha": "sha256:177090fdfba335178a80369ff46ce6109d791a1c2eef4d28c57e27c4c8794eb9",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원뿔 모양 고깔모자의 전개도로 옆면인 부채꼴만 그린 그림이다. 부채꼴의 반지름 (나)는 모선의 길이 20cm이고, 호 (가)의 길이는 밑면의 둘레 2π×8=16π cm이다.",
+    "solutionImageCaption": "고깔모자의 전개도(옆면): 반지름 (나) 20cm, 호의 길이 (가) 16π cm",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,

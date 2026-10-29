@@ -383,7 +383,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 n이 두 직선 l, m과 만나는 그림. 위 교점의 각은 89°, ∠a, ∠d, ∠c이고 아래 교점의 각은 130°, ∠f, ∠e, ∠h이다. ∠d와 ∠h는 색칠해 동위각으로, ∠c와 ∠e는 호 2개로 엇각으로 표시했고, 호 표시는 위치 관계만 나타낸다.",
+    "solutionImageCaption": "색칠한 ∠d와 ∠h는 동위각, 호 2개로 표시한 ∠c와 ∠e는 엇각이다(l, m은 평행하지 않으므로 크기가 같다는 뜻은 아니다).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,

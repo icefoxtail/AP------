@@ -498,7 +498,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:8b6596aac6577db2a5eb361d33ce8b84a52265f7340024050bc1cf4d9a807120",
-    "difficultyEvidenceSha": "sha256:71fc1e1da5f22bb5cc0a349b5388e85219637f12bcc3e97874b69e90197d977c"
+    "difficultyEvidenceSha": "sha256:71fc1e1da5f22bb5cc0a349b5388e85219637f12bcc3e97874b69e90197d977c",
+    "solutionImage": "assets/images/25_동산중_2학기_중간_중1_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -4부터 +4까지 정수 눈금이 있고 -3과 -2 사이, +3과 +4 사이는 3등분, -1과 0 사이는 4등분, +1과 +2 사이는 2등분한 눈금이 있다. 눈금 위에 점 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ이 찍혀 있고 ㄷ은 -3/4, ㄹ은 3/2, ㅁ은 10/3이라고 적혀 있다.",
+    "solutionImageCaption": "수직선에서 -3과 -2 사이를 3등분한 눈금 한 칸은 1/3이므로 ㄴ은 -3에서 오른쪽으로 한 칸 간 점이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -580,7 +584,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_동산중_2학기_중간_중1_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -7, -2, 0에 대응하는 점이 찍혀 있고 -7에 대응하는 점이 -2에 대응하는 점보다 왼쪽에 있다.",
+    "solutionImageCaption": "수직선 위에서 -7에 대응하는 점은 -2에 대응하는 점보다 왼쪽에 있으므로 -7<-2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
