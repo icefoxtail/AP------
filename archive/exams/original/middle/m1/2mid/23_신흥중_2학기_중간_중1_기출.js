@@ -511,7 +511,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 XOY를 반직선 PQ 위로 옮기는 작도에서 ㉢ O 중심 호로 A, B, ㉠ P 중심 호로 D, ㉡ D 중심 반지름 AB 호로 C를 잡고 ㉣ 반직선 PC를 긋는 과정과 OA=PD, AB=DC 표시.",
+    "solutionImageCaption": "각 XOY를 옮기는 작도의 순서 ㉢→㉠→㉡→㉣",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -670,7 +674,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: AC=5cm, 각 C=30도에서 ㄱ은 A를 중심으로 반지름 3cm인 원이 반직선과 두 점에서 만나 B가 두 곳, ㄴ은 BC=6cm, ㄷ과 ㄹ은 각 A=95도와 각 B=55도로 삼각형이 하나로 정해지는 모습.",
+    "solutionImageCaption": "조건별로 삼각형이 정해지는 개수",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -748,7 +756,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: AB, AC, CD, DE의 길이가 같은 그림에서 각 ABC와 각 ACB, 각 CAD와 각 ADC(x), 각 DCE와 각 DEC가 각각 같고 각 FDE가 80도임을 표시한 그림.",
+    "solutionImageCaption": "길이가 같은 네 선분과 같은 각의 표시",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -911,7 +923,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정오각형의 한 변 위에 정삼각형이, 아래 변 위에 정사각형이 겹친 그림에서 108도, 60도, 직각, 보조각 48도와 36도를 표시해 각 x를 구하는 과정을 보여 주는 그림.",
+    "solutionImageCaption": "정오각형·정삼각형·정사각형의 각을 이용한 각 x 구하기",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
