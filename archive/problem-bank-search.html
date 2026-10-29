@@ -37,8 +37,8 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 </main>
 <script src="mixer-selector.js?v=20261009-meta1"></script>
 <script src="archive2-canonical.js?v=20261029-authority-index-1"></script>
-<script src="archive2-core.js?v=20261029-recency-1"></script>
-<script src="problem-bank-meta.js?v=20261021-reviewed-registration-1"></script>
+<script src="archive2-core.js?v=20261029-s14-1"></script>
+<script src="problem-bank-meta.js?v=20261029-s14-1"></script>
 <script src="archive2-source.js?v=20261029-source-meta-conflict-1"></script>
 <script>
 'use strict';
@@ -105,6 +105,7 @@ function render(){
   if(row.metaProjectionStatus==='SOURCE_META_STALE_OR_UNAVAILABLE'){
    const stale=document.createElement('p');stale.textContent='원본 Meta 분류가 현재 자료와 연결되지 않아 표시되지 않습니다.';card.append(stale);
   }
+  if(row.metaBindingMode==='CONTENT_BOUND_SOURCE_REVISED'){const note=document.createElement('p');note.textContent='분류는 문제 본문·보기·그림 기준으로 기록되었고, 이후 정답·해설이 갱신되었습니다.';card.append(note);}
   const pendingMeta=Object.entries(row.metadataAssignmentEvidence?.fieldStatus||{}).filter(([,status])=>status==='manual_review_pending').map(([field])=>field);
   if(pendingMeta.length){const pending=document.createElement('p');pending.textContent=`메타 검토 대기: ${pendingMeta.join(', ')}`;card.append(pending);}
   if(row.rpmSemanticStatus&&row.rpmSemanticStatus!=='FINAL'){

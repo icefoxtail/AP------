@@ -531,7 +531,9 @@ test('the compose screen keeps only grade, subject, scope and 난이도 outside 
   assert.ok(/class="compose-difficulty"/.test(outside) && /data-action="bucket-all"/.test(outside));
   assert.ok(!/data-filter=/.test(outside));
   const fields = [...detail.matchAll(/data-filter="(\w+)"/g)].map(match => match[1]);
-  for (const field of ['originalCurriculum', 'school', 'axis', 'yearFrom', 'yearTo', 'L3', 'L4']) assert.ok(fields.includes(field), field);
+  for (const field of ['originalCurriculum', 'school', 'axis', 'yearFrom', 'yearTo', 'metaL3', 'metaPT', 'metaTPL', 'metaApprovedOnly']) assert.ok(fields.includes(field), field);
+  // the strict concept/type pair is only shown for an older draft that still carries it
+  assert.ok(!fields.includes('L3') && !fields.includes('L4'));
   assert.ok(!/2015·2022 통합|통합\)/.test(composition));
   w.state.filters = { grade: '고2', semanticSubject: 'ALGEBRA', school: Object.keys(Object.fromEntries(data.records.map(r => [r.school, 1])))[0] };
   assert.match(w.renderComposition(), /세부 조건 <span class="badge"[^>]*>1개 적용 중/);

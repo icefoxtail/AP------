@@ -183,13 +183,19 @@
   const HIGH_2015_SUBJECTS = /^(?:수학\(상\)|수학\(하\)|수학I|수학II|기하와벡터|미적분|미적분I|미적분II)$/;
   const HIGH_2022_ONLY_SUBJECTS = /^(?:공통수학1|공통수학2)$/;
   // Original curriculum is evidence about the SOURCE, never a key conversion. Order of evidence:
-  // 1) a validated canonical curriculumKey, 2) the exam-year roll-out rule (2022 curriculum:
+  // 1) a validated canonical curriculumKey, 1b) the curriculum recorded in approved metadata,
+  // 2) the exam-year roll-out rule (2022 curriculum:
   // 중1 2025, 중2 2026, 중3 2027, 고1 2025, 고2 2026, 고3 2027), 3) the exam subject name, 4) a
   // curriculum-specific legacy key prefix. Legacy "H22-*" unit keys are a 2022-based unit
   // vocabulary that also tags 2015-era exams, so a key prefix alone is the weakest evidence.
   function originalCurriculum(record, grade) {
     const canonical = text(record.curriculumKey);
     if (canonical === "2015" || canonical === "2022") return { value: canonical, basis: "canonical-key" };
+    // The curriculum RECORDED in approved metadata (catalog lane metaHintCurriculum, bound to the
+    // question's content fingerprint) is explicit evidence about the source and outranks the
+    // roll-out year rule. It is read as recorded: never converted between 2015 and 2022.
+    const recorded = text(record.metaHintCurriculum);
+    if (recorded === "2015" || recorded === "2022") return { value: recorded, basis: "approved-metadata" };
     const year = Number(record.year);
     if (isMiddle(grade)) {
       const value = Core.middleCurriculumFromYear(grade, year);

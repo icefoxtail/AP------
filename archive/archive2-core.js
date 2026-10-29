@@ -601,8 +601,13 @@
     return { ok: reasons.length === 0, reasons: [...new Set(reasons)] };
   }
   const eligibility = basicEligibility;
-  function difficultyEligible(record) {
-    return record.sourceStatus === "VERIFIED" &&
+  // metaBinding "content": only the answer/solution bytes changed after the metadata was approved;
+  // the stem/choices/image the difficulty describes are byte-identical (see build-archive2-catalog).
+  // In general use mode that still counts as a recorded difficulty; strict mode and every other
+  // caller (APMS recommendations) keep requiring the exactly verified source.
+  function difficultyEligible(record, options = {}) {
+    return (record.sourceStatus === "VERIFIED" ||
+      (options.useMode === "general" && record.metaBinding === "content")) &&
       Number.isInteger(record.difficultyBucket) && record.difficultyBucket >= 1 && record.difficultyBucket <= 5 &&
       ["high", "medium", "low"].includes(record.difficultyConfidence) &&
       ["NONE", "B12", "B23", "B34", "B45"].includes(record.difficultyBoundaryFlag) &&
@@ -618,6 +623,104 @@
       (advancedAuthority(record) !== "mf" || !record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
       !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   }
+  // ---- S14: recorded concept (L3) / problem type (PT) / solution template (TPL) facets ----------
+  // The catalog carries the recorded values in an additive, content-bound lane (metaHint*). They
+  // are DISPLAY/SELECTION facets: never canonical assignments, never an approval. Every value keeps
+  // its own status ("approved" = approved field status, "pending" = recorded, not approved) so the
+  // UI can label it 승인 / 검토 대기. Records whose metadata row is not bound to the current stem,
+  // choices and image carry no facets (they stay usable, only meta-based filtering skips them).
+  const META_FACET_KEYS = Object.freeze(["metaL3", "metaPT", "metaTPL", "metaApprovedOnly"]);
+  const META_STATUS_LABEL = Object.freeze({ approved: "승인", pending: "검토 대기" });
+  const facetStatusOf = (code) => (code === "A" ? "approved" : code === "P" ? "pending" : "");
+  const metaFacetCache = new WeakMap();
+  function metaFacetsOf(record) {
+    if (!record || typeof record !== "object") return null;
+    if (metaFacetCache.has(record)) return metaFacetCache.get(record);
+    const code = text(record.metaHintStatus);
+    // Canonically validated values (the strict path) are approved by construction and win.
+    const strictPt = text(record.problemTypeKey), strictTpl = text(record.templateKey);
+    const hintL3 = text(record.metaHintL3);
+    const pt = strictPt || text(record.metaHintPT);
+    const tpl = strictTpl || text(record.metaHintTPL);
+    const l3 = hintL3 || text(record.L3);
+    let result = null;
+    if (l3 || pt || tpl) {
+      result = {
+        l3, pt, tpl,
+        l3Status: hintL3 ? facetStatusOf(code[0]) : l3 ? "approved" : "",
+        ptStatus: strictPt ? "approved" : pt ? facetStatusOf(code[1]) : "",
+        tplStatus: strictTpl ? "approved" : tpl ? facetStatusOf(code[2]) : "",
+        binding: text(record.metaBinding),
+      };
+      // A hint without a readable status code is never shown as approved.
+      for (const facet of ["l3", "pt", "tpl"])
+        if (result[facet] && !result[facet + "Status"]) result[facet + "Status"] = "pending";
+    }
+    metaFacetCache.set(record, result);
+    return result;
+  }
+  const hasMetaFacetFilter = (filters = {}) =>
+    META_FACET_KEYS.some((key) => filters[key]);
+  const approvedOnlyOn = (filters = {}) =>
+    filters.metaApprovedOnly === true || filters.metaApprovedOnly === "1" || filters.metaApprovedOnly === "true";
+  // skip: a facet name whose own selection is ignored (faceted option counts).
+  function metaFacetPasses(facets, filters = {}, skip = "") {
+    const selected = {
+      l3: skip === "l3" ? "" : text(filters.metaL3),
+      pt: skip === "pt" ? "" : text(filters.metaPT),
+      tpl: skip === "tpl" ? "" : text(filters.metaTPL),
+    };
+    const any = selected.l3 || selected.pt || selected.tpl;
+    const approvedOnly = approvedOnlyOn(filters);
+    if (!any && !approvedOnly) return true;
+    if (!facets) return false;
+    for (const name of ["l3", "pt", "tpl"])
+      if (selected[name] && facets[name] !== selected[name]) return false;
+    if (approvedOnly) {
+      const required = any ? ["l3", "pt", "tpl"].filter((name) => selected[name])
+        : ["l3", "pt", "tpl"].filter((name) => facets[name]);
+      if (!required.length || required.some((name) => facets[name + "Status"] !== "approved")) return false;
+    }
+    return true;
+  }
+  const metaFacetMatches = (record, filters = {}) =>
+    !hasMetaFacetFilter(filters) || metaFacetPasses(metaFacetsOf(record), filters);
+  // Option lists for the three facet selectors over an already scope/eligibility filtered list.
+  // Selections are faceted: each list ignores its own selection but honours the others.
+  // labelOf(kind, key) names PT/TPL keys; keys without a name are skipped, never invented.
+  function metaFacetOptions(records, filters = {}, labelOf = () => "") {
+    const buckets = { l3: new Map(), pt: new Map(), tpl: new Map() };
+    let facetRecords = 0;
+    for (const record of records) {
+      const facets = metaFacetsOf(record);
+      if (!facets) continue;
+      facetRecords++;
+      for (const name of ["l3", "pt", "tpl"]) {
+        const key = facets[name];
+        if (!key || !metaFacetPasses(facets, filters, name)) continue;
+        const bucket = buckets[name];
+        let option = bucket.get(key);
+        if (!option) {
+          const label = name === "l3" ? key : text(labelOf(name, key));
+          if (!label) continue;
+          option = { value: key, label, total: 0, approved: 0, pending: 0 };
+          bucket.set(key, option);
+        }
+        option.total++;
+        if (facets[name + "Status"] === "approved") option.approved++; else option.pending++;
+      }
+    }
+    const sort = (map) => [...map.values()].sort((a, b) => a.label.localeCompare(b.label, "ko"));
+    return { l3: sort(buckets.l3), pt: sort(buckets.pt), tpl: sort(buckets.tpl), facetRecords };
+  }
+  // "12문항 · 승인 5 · 검토 대기 7": the status mix of one facet option, "승인" only if all are.
+  function metaFacetStatusText(option) {
+    const mix = option.pending === 0 ? "승인" : option.approved === 0 ? "검토 대기"
+      : `승인 ${option.approved} · 검토 대기 ${option.pending}`;
+    return `${option.total}문항 · ${mix}`;
+  }
+  // Problem-type key used to spread one paper over different types (no type = never repeats).
+  const selectionTypeKey = (record) => metaFacetsOf(record)?.pt || "";
   // Overlays are rebuilt only when the fallback taxonomy object or its values
   // change; every other field is read live from the record via the prototype.
   const generalOverlays = new WeakMap();
@@ -693,6 +796,7 @@
         (selected.startsWith("mf:") || selected.startsWith("rpm:") ? selected : `rpm:${selected}`)))
         return false;
     }
+    if (hasMetaFacetFilter(filters) && !metaFacetMatches(record, filters)) return false;
     for (const field of PATH_FIELDS) {
       if (field === "L3" || field === "L4") continue;
       if (
@@ -705,7 +809,7 @@
     }
     if (
       filters.difficultyBuckets?.length &&
-      (!difficultyEligible(record) || !filters.difficultyBuckets.includes(record.difficultyBucket))
+      (!difficultyEligible(record, options) || !filters.difficultyBuckets.includes(record.difficultyBucket))
     )
       return false;
     if (
@@ -783,7 +887,7 @@
     return (
       pathsMatch &&
       (!row.difficultyBuckets?.length ||
-        (difficultyEligible(record) && row.difficultyBuckets.includes(record.difficultyBucket)))
+        (difficultyEligible(record, options) && row.difficultyBuckets.includes(record.difficultyBucket)))
     );
   }
   function validatePlan(request) {
@@ -823,6 +927,43 @@
       errors.push("선택 학생의 출제 이력을 먼저 확인해야 합니다.");
     return errors;
   }
+  // S14 type diversity. The recency order is untouched: this only reorders WITHIN the year being
+  // consumed, replacing a pick whose problem type was already chosen (earlier in the paper, in an
+  // earlier row or by a pin) by another candidate of the same year whose type is new, when one
+  // exists. Questions without a recorded type never count as repeats, and when no new type is
+  // left the originally chosen questions stay, so the count and the year spread never change.
+  function diversifyByType(picked, yearPool, usedTypes, seed) {
+    const seen = new Set(usedTypes);
+    const kept = [], repeats = [];
+    for (const record of picked) {
+      const type = selectionTypeKey(record);
+      if (type && seen.has(type)) repeats.push(record);
+      else { kept.push(record); if (type) seen.add(type); }
+    }
+    if (!repeats.length) return picked;
+    const pickedUids = new Set(picked.map((record) => record.questionUid));
+    const isNewType = (record) => { const type = selectionTypeKey(record); return !type || !seen.has(type); };
+    let rest = yearPool.filter((record) => !pickedUids.has(record.questionUid) && isNewType(record));
+    let need = repeats.length;
+    while (need > 0 && rest.length) {
+      const more = selector.selectCandidates(rest, { count: need }, { selectionSeed: seed }).selected;
+      if (!more.length) break;
+      const moreUids = new Set(more.map((record) => record.questionUid));
+      for (const record of more) {
+        const type = selectionTypeKey(record);
+        if (type && seen.has(type)) continue;
+        kept.push(record);
+        if (type) seen.add(type);
+        need--;
+      }
+      rest = rest.filter((record) => !moreUids.has(record.questionUid) && isNewType(record));
+    }
+    for (const record of repeats) {
+      if (kept.length >= picked.length) break;
+      kept.push(record);
+    }
+    return kept;
+  }
   function selectBlueprint(records, request, context = {}, options = {}) {
     const started = Date.now();
     const errors = validatePlan(request);
@@ -847,6 +988,8 @@
     );
     if (byUid.size !== candidates.length) errors.push("후보 UID가 중복됩니다.");
     const selected = [];
+    const usedTypes = new Set();
+    const noteType = (record) => { const type = selectionTypeKey(record); if (type) usedTypes.add(type); };
     const rows = request.rows || [];
     const rowResults = rows.map((row) => ({
       id: row.id,
@@ -873,6 +1016,7 @@
       }
       selected.push({ ...record, rowId: row.id });
       used.add(record.questionUid);
+      noteType(record);
       result.selected++;
     }
     // Constrained rows go first; each UID is consumed at most once across rows.
@@ -925,6 +1069,7 @@
           if (!record || used.has(record.questionUid)) continue;
           selected.push({ ...record, rowId: row.id });
           used.add(record.questionUid);
+          noteType(record);
           result.selected++;
           selectedGroups.add(group.key);
           conceptCounts.set(group.concept, (conceptCounts.get(group.concept) || 0) + 1);
@@ -936,14 +1081,13 @@
       for (const year of sortYearsByRecency(new Set(pool.map(sourceYear)))) {
         const remaining = row.count - result.selected;
         if (!remaining) break;
-        const selection = selector.selectCandidates(
-          pool.filter((record) => !used.has(record.questionUid) && sourceYear(record) === year),
-          { count: remaining },
-          { selectionSeed: request.seed || VERSION },
-        );
-        for (const record of selection.selected) {
+        const yearPool = pool.filter((record) => !used.has(record.questionUid) && sourceYear(record) === year);
+        const seed = request.seed || VERSION;
+        const selection = selector.selectCandidates(yearPool, { count: remaining }, { selectionSeed: seed });
+        for (const record of diversifyByType(selection.selected, yearPool, usedTypes, seed)) {
           selected.push({ ...record, rowId: row.id });
           used.add(record.questionUid);
+          noteType(record);
           result.selected++;
         }
       }
@@ -980,10 +1124,22 @@
         excludedByReason: reasons,
         elapsedMs: Date.now() - started,
         representativeCoverage,
+        typeCoverage: typeCoverage(selected),
       },
       seed: request.seed,
       selectorVersion: VERSION,
     };
+  }
+  // Problem-type spread of a paper: how many questions carry a recorded type and how many distinct
+  // types they cover (informational; questions without a type are neither repeats nor coverage).
+  function typeCoverage(selected) {
+    const counts = new Map();
+    for (const record of selected || []) {
+      const type = selectionTypeKey(record);
+      if (type) counts.set(type, (counts.get(type) || 0) + 1);
+    }
+    const typed = [...counts.values()].reduce((sum, n) => sum + n, 0);
+    return { typedCount: typed, distinctTypes: counts.size, repeatedCount: typed - counts.size };
   }
   function review(selected, request, context = {}) {
     const hardFailures = validatePlan(request);
@@ -1100,6 +1256,15 @@
     advancedEligible,
     advancedAuthority,
     advancedFilterValue,
+    META_FACET_KEYS,
+    META_STATUS_LABEL,
+    metaFacetsOf,
+    metaFacetPasses,
+    metaFacetMatches,
+    metaFacetOptions,
+    metaFacetStatusText,
+    selectionTypeKey,
+    typeCoverage,
     matches,
     migrateLegacyAdvancedFilters,
     composeExclusions,

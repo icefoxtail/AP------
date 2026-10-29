@@ -154,6 +154,21 @@
     for (const key of UNIFIED_ONLY_FILTERS) delete stripped[key];
     return stripped;
   }
+  // S14 recorded concept / problem type / solution template facets (display and selection only).
+  // They are applied by the shared matcher, but the saved-paper server contract does not know
+  // them: the selection they produce travels as the scope UID list, never as a filter key.
+  const META_FACET_FILTERS = C.META_FACET_KEYS || [];
+  const hasMetaFacetFilter = (filters) => META_FACET_FILTERS.some((key) => filters?.[key]);
+  function withoutMetaFacets(filters) {
+    if (!hasMetaFacetFilter(filters)) return filters;
+    const stripped = { ...filters };
+    for (const key of META_FACET_FILTERS) delete stripped[key];
+    return stripped;
+  }
+  const META_FOUNDATION_LABELS = () => window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
+  const metaFacetLabel = (kind, key) => kind === "pt"
+    ? META_FOUNDATION_LABELS().problemTypes?.[key] || ""
+    : META_FOUNDATION_LABELS().templates?.[key]?.label || "";
   // The matcher treats empty values as "no constraint", so a copy is only needed while one of
   // the unified-only filters actually carries a value. Filter objects are mutated in place by
   // the filter controls, so nothing here may be cached by object identity.
@@ -1084,6 +1099,10 @@
       difficultyBuckets: state.buckets,
     };
     delete selectionFilters.scopeQuestionUids;
+    // Facet filters decide scopeQuestionUids and the unit counts; the facet OPTION pool ignores
+    // them (faceted search), so it is kept separately as facetQuestionUids.
+    const metaActive = hasMetaFacetFilter(selectionFilters);
+    const preMetaFilters = withoutMetaFacets(selectionFilters);
     const recipeUids = activeAssessmentRecipeUids();
     const seenUids = new Set();
     const drafts = new Map();
@@ -1097,7 +1116,7 @@
         const uid = record.questionUid;
         if (!uid || seenUids.has(uid)) continue;
         if (recipeUids && !recipeUids.has(uid)) continue;
-        if (!composeMetaMatches(record) || !workspaceMatches(record, selectionFilters) ||
+        if (!composeMetaMatches(record) || !workspaceMatches(record, preMetaFilters) ||
             !workspaceEligibility(record).ok || excluded.has(uid)) continue;
         seenUids.add(uid);
         const key = Unified.scopeKey(grade, entry.subject, entry.unitKey);
@@ -1106,10 +1125,12 @@
           const subjectIndex = structure.findIndex((group) => group.subject === entry.subject);
           draft = {
             key, entry, subjectIndex: subjectIndex < 0 ? structure.length : subjectIndex,
-            uids: [], paths: new Set(),
+            uids: [], facetUids: metaActive ? [] : null, paths: new Set(),
           };
           drafts.set(key, draft);
         }
+        if (draft.facetUids) draft.facetUids.push(uid);
+        if (metaActive && !C.metaFacetMatches(record, selectionFilters)) continue;
         draft.uids.push(uid);
         draft.paths.add(C.generalPathKey(record));
       }
@@ -1130,6 +1151,7 @@
         unclassified: draft.entry.unclassified,
         paths: [...draft.paths],
         scopeQuestionUids: draft.uids,
+        facetQuestionUids: draft.facetUids || draft.uids,
         count: draft.uids.length,
         eligibleCount: draft.uids.length,
         supplemental: false,
@@ -1146,7 +1168,7 @@
     const units = new Map();
     for (const row of canonicalRows) {
       const key = scopeParentKey(row);
-      if (!units.has(key)) units.set(key, { ...row, records: new Map() });
+      if (!units.has(key)) units.set(key, { ...row, records: new Map(), facetRecords: new Map() });
     }
     const excluded = C.composeExclusions(context()).union;
     const selectionFilters = {
@@ -1154,12 +1176,14 @@
       sourceFiles: state.sources,
       difficultyBuckets: state.buckets,
     };
+    const metaActive = hasMetaFacetFilter(selectionFilters);
+    const preMetaFilters = withoutMetaFacets(selectionFilters);
     const seenUids = new Set();
       const recipeUids = activeAssessmentRecipeUids();
     for (const record of state.catalog.records || []) {
       if (!record.questionUid || seenUids.has(record.questionUid)) continue;
       if (recipeUids && !recipeUids.has(record.questionUid)) continue;
-      if (!composeMetaMatches(record) || !workspaceMatches(record, selectionFilters) || !workspaceEligibility(record).ok) continue;
+      if (!composeMetaMatches(record) || !workspaceMatches(record, preMetaFilters) || !workspaceEligibility(record).ok) continue;
       // workspaceMatches already applies the selected difficulty buckets.
       if (excluded.has(record.questionUid)) continue;
       const parent = workspaceScopeParent(record);
@@ -1175,12 +1199,14 @@
         if (candidates.length === 1) unit = candidates[0];
       }
       if (!unit) continue;
-      unit.records.set(record.questionUid, record);
+      unit.facetRecords.set(record.questionUid, record);
+      if (!metaActive || C.metaFacetMatches(record, selectionFilters))
+        unit.records.set(record.questionUid, record);
       unit.supplemental = unit.supplemental || parent.supplemental === true;
       seenUids.add(record.questionUid);
     }
     for (const [key, unit] of units)
-      if (!unit.records.size) units.delete(key);
+      if (!unit.records.size && !(metaActive && unit.facetRecords.size)) units.delete(key);
 
     const semanticGroups = new Map();
     const displayGroups = state.catalog.basicScopeGroups || [];
@@ -1236,6 +1262,7 @@
         basicScope: true,
         paths,
         scopeQuestionUids: unique(sources.map(r => r.questionUid)),
+        facetQuestionUids: unique(group.units.flatMap((unit) => [...unit.facetRecords.keys()])),
         count: sources.length,
         eligibleCount: sources.length,
         supplemental,
@@ -1254,7 +1281,7 @@
     );
   }
   function selectedScopeOptions() {
-    return scopeOptions().filter(scopeIsSelected);
+    return scopeOptions().filter((scope) => scopeIsSelected(scope) && scope.count > 0);
   }
   function selectedScopePaths() {
     const scopes = selectedScopeOptions();
@@ -1367,7 +1394,7 @@
         : state.filters;
     return {
       filters: {
-        ...routedFilters,
+        ...withoutMetaFacets(routedFilters),
         sourceFiles: state.sources,
         primaryPaths: paths,
         scopeQuestionUids,
@@ -2280,10 +2307,49 @@
     const sort = rows => [...rows.values()].sort((a, b) => a.label.localeCompare(b.label, "ko"));
     return { concepts: sort(concepts), types: sort(types) };
   }
-  const displayTemplate = record =>
-    C.advancedAuthority(record) === "mf"
+  // Recorded concept/type/template facets (S14) over the questions of the selected units, or of
+  // every listed unit while none is selected, with per-option status mixes (승인 / 검토 대기).
+  // Faceted: each list ignores its own selection and honours the other selections.
+  function composeMetaFacets() {
+    const scopes = scopeOptions();
+    const picked = scopes.filter(scopeIsSelected);
+    const uids = new Set((picked.length ? picked : scopes).flatMap((scope) => scope.facetQuestionUids || scope.scopeQuestionUids || []));
+    const index = unifiedIndex();
+    const records = index
+      ? [...uids].map((uid) => index.byUid.get(uid)?.record).filter(Boolean)
+      : (state.catalog.records || []).filter((record) => uids.has(record.questionUid));
+    const options = C.metaFacetOptions(records, state.filters, metaFacetLabel);
+    // A stored selection that no longer exists in the current units is dropped (never silently
+    // kept as an invisible zero-result filter).
+    let cleared = false;
+    for (const [key, list] of [["metaL3", options.l3], ["metaPT", options.pt], ["metaTPL", options.tpl]])
+      if (state.filters[key] && !list.some((option) => option.value === state.filters[key])) {
+        state.filters[key] = "";
+        cleared = true;
+      }
+    return { ...options, poolSize: records.length, cleared };
+  }
+  const facetOptionMarkup = (list, current, emptyLabel) =>
+    `<option value="">${esc(emptyLabel)}</option>${list.map((option) =>
+      `<option value="${esc(option.value)}"${current === option.value ? " selected" : ""}>${esc(option.label)} · ${esc(C.metaFacetStatusText(option))}</option>`).join("")}`;
+  // Recorded concept / type / template of one question for the preview rows and replacement
+  // candidates, each tagged "(검토 대기)" unless its field status is approved.
+  function metaTypeText(record) {
+    const facets = C.metaFacetsOf(record);
+    if (!facets) return "";
+    const tag = (status) => (status === "approved" ? "" : " (검토 대기)");
+    const parts = [];
+    if (facets.l3) parts.push(`개념 ${facets.l3}${tag(facets.l3Status)}`);
+    const pt = facets.pt && (metaFacetLabel("pt", facets.pt) || (C.advancedAuthority(record) === "rpm" ? record.L3 : ""));
+    if (pt) parts.push(`유형 ${pt}${tag(facets.ptStatus)}`);
+    const tpl = facets.tpl && (metaFacetLabel("tpl", facets.tpl) || (C.advancedAuthority(record) === "rpm" ? record.L4 : ""));
+    if (tpl) parts.push(`풀이 ${tpl}${tag(facets.tplStatus)}`);
+    return parts.join(" · ");
+  }
+  const displayTemplate = record => metaTypeText(record) ||
+    (C.advancedAuthority(record) === "mf"
       ? window.ARCHIVE_META_FOUNDATION_LABELS?.templates?.[record.templateKey]?.label || record.L4
-      : record.L4;
+      : record.L4);
   function renderDerivedComposition() {
     const sourceTitle = state.derivationSource?.parentDisplayName || "저장한 시험지";
     return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>원본 저장 시험지의 고정된 범위</h2></div><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 Draft를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 Saved Paper로 저장할 수 있습니다.</p><p class="muted">변경하지 않은 문항은 기존 immutable snapshot의 내용을 그대로 사용합니다. 원본 Saved Paper는 수정되지 않습니다.</p></section>`;
@@ -2316,12 +2382,22 @@
         available: candidates.filter((r) => C.rowMatches(r, row, workspaceMatchOptions())).length,
       }))
       .filter((item) => item.available < item.row.count);
-    const advanced = composeAdvancedChoices(selectionFilters);
+    // Older drafts may still carry the strict concept/type pair; it is only shown while set.
+    const legacyAdvanced = state.filters.L3 || state.filters.L4 ? composeAdvancedChoices(selectionFilters) : null;
+    const facets = composeMetaFacets();
+    if (facets.cleared) queueMicrotask(render);
     const detailFilters = state.filters;
     const detailCount = [
       detailFilters.originalCurriculum, detailFilters.school, detailFilters.axis,
       detailFilters.yearFrom || detailFilters.yearTo, detailFilters.L3, detailFilters.L4,
+      detailFilters.metaL3, detailFilters.metaPT, detailFilters.metaTPL, detailFilters.metaApprovedOnly,
     ].filter(Boolean).length;
+    const facetDisabled = state.sealed ? "disabled" : "";
+    const facetNote = !facets.poolSize
+      ? "선택할 수 있는 단원이 없습니다."
+      : facets.l3.length || facets.pt.length || facets.tpl.length
+        ? `이 범위 ${facets.poolSize}문항 중 기록된 분류가 있는 문항에서 고를 수 있습니다. ‘검토 대기’는 아직 승인되지 않은 분류이며, 승인된 분류와 같은 방식으로 사용할 수 있습니다.`
+        : "이 범위의 문항에는 기록된 개념·유형·풀이 분류가 아직 없습니다.";
     return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>구성</h2><span class="muted">문항 수 · 난이도</span></div><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
       [
         { value: "equal", label: "단원별 균등" },
@@ -2333,7 +2409,7 @@
       null,
     )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label></div>
       <div class="compose-difficulty"><strong id="compose-difficulty-label">난이도</strong>${bucketButtons(state.buckets)}<p class="muted">고르지 않으면 전체에서 출제합니다. 난이도를 고르면 해당 난이도가 확인된 문항만 선택합니다.</p></div>
-      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.types, state.filters.L4, "전체 유형")}</select></label></div></div></details>
+      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy" data-meta-facets><strong>개념·유형·풀이로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="metaL3" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.l3, state.filters.metaL3, "전체 개념")}</select></label><label>유형<select data-filter="metaPT" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.pt, state.filters.metaPT, "전체 유형")}</select></label><label>풀이<select data-filter="metaTPL" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.tpl, state.filters.metaTPL, "전체 풀이")}</select></label><label class="check"><input type="checkbox" data-filter="metaApprovedOnly" data-group="compose" ${state.filters.metaApprovedOnly ? "checked" : ""} ${facetDisabled}>승인된 분류만</label></div><p class="muted">${esc(facetNote)}</p>${legacyAdvanced ? `<div class="compose-detail-fields"><label>기존 개념 조건<select data-filter="L3" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>기존 유형 조건<select data-filter="L4" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.types, state.filters.L4, "전체 유형")}</select></label></div>` : ""}</div></details>
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ") || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
       <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 문항을 완결된 최근 연도부터(2025년, 2024년, 2023년 순) 선택하고, 올해 시험은 그다음, 연도를 알 수 없는 자료는 마지막에 선택합니다. 같은 연도 안에서는 문항을 섞습니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
@@ -2348,10 +2424,19 @@
     return C.sortYearsByRecency(counts.keys())
       .map((year) => ({ year, label: year ? `${year}년` : "연도 미상", count: counts.get(year) }));
   }
+  // Problem-type spread of the generated paper (only questions with a recorded type count).
+  function typeCoverageLine() {
+    if (!state.selected.length || !C.typeCoverage) return "";
+    const coverage = C.typeCoverage(state.selected);
+    if (!coverage.typedCount) return "";
+    const repeated = coverage.repeatedCount ? ` (같은 유형 중복 ${coverage.repeatedCount}문항)` : "";
+    return `<div class="summary-line" data-type-coverage><span>기록된 유형</span><strong>${coverage.typedCount}문항 · 서로 다른 유형 ${coverage.distinctTypes}가지${repeated}</strong></div>`;
+  }
   function renderInspector() {
     const r = state.selected.length ? review() : null;
     const summary = `<h2>${state.round}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
       <div class="summary-line"><span>선택 범위</span><strong>${state.derivationSource ? "원본 유지" : `${selectedScopeOptions().length}개`}</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
+      ${typeCoverageLine()}
       ${state.selected.length ? `<div class="summary-line" data-year-distribution><span>출제 연도</span><strong>${yearDistribution(state.selected).map((item) => `${esc(item.label)} ${item.count}문항`).join(" · ")}</strong></div>` : ""}
       ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
       ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
@@ -3900,6 +3985,7 @@
     if (state.selected.length) save();
     delete state.filters.L3;
     delete state.filters.L4;
+    for (const key of META_FACET_FILTERS) state.filters[key] = "";
     Object.assign(state, {
       draftId: crypto.randomUUID(),
       selected: [],
@@ -4180,6 +4266,7 @@
         state.scopes = [];
         delete state.filters.L3;
         delete state.filters.L4;
+        for (const key of META_FACET_FILTERS) state.filters[key] = "";
         urlState();
         render();
       } else if (a === "finder-search") {
@@ -4504,9 +4591,11 @@
           return;
         }
         const dest = el.dataset.group === "find" ? state.find : state.filters;
-        dest[el.dataset.filter] = el.value;
+        dest[el.dataset.filter] = el.type === "checkbox" ? (el.checked ? "1" : "") : el.value;
         if (el.dataset.group === "compose") {
           if (el.dataset.filter === "L3") delete state.filters.L4;
+          // PT -> TPL: a template belongs to one problem type, so a new type resets the template.
+          if (el.dataset.filter === "metaPT") state.filters.metaTPL = "";
           if (
             ["grade", "curriculumKey", "courseKey", "semanticSubject", "originalCurriculum"].includes(
               el.dataset.filter,
@@ -4516,6 +4605,7 @@
             state.scopeNotice = "";
             delete state.filters.L3;
             delete state.filters.L4;
+            for (const key of META_FACET_FILTERS) state.filters[key] = "";
             if (el.dataset.filter === "grade") {
               state.sources = [];
               state.buckets = [];

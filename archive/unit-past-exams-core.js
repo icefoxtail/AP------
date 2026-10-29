@@ -739,17 +739,45 @@
     return String(record && (record.templateKey || record.template_key) || '').trim();
   }
 
+  // An explicit registry label (set from the recorded-meta facets) names the key; the legacy
+  // L3/L4 text remains the label for records that carry no explicit one.
   function getProblemTypeLabel(record) {
-    return String(record && (record.L3 || record.problemType || record.problemTypeLabel || '') || '').trim();
+    return String(record && (record.problemTypeLabel || record.L3 || record.problemType || '') || '').trim();
   }
 
   function getTemplateLabel(record) {
-    return String(record && (record.L4 || record.template || record.templateLabel || '') || '').trim();
+    return String(record && (record.templateLabel || record.L4 || record.template || '') || '').trim();
+  }
+
+  // S14 recorded concept (L3) / problem type (PT) / solution template (TPL) facets. The page joins
+  // them from the final catalog's content-bound usable-meta lane: conceptLabel, problemTypeKey,
+  // templateKey and metaFacetStatus {l3, pt, tpl} = 'approved' | 'pending'. Status is shown, never
+  // upgraded: only an approved field status counts as 승인.
+  function getConceptLabel(record) {
+    return String(record && record.conceptLabel || '').trim();
+  }
+
+  function getFacetStatus(record, facet) {
+    const status = record && record.metaFacetStatus && record.metaFacetStatus[facet];
+    return status === 'approved' ? 'approved' : status ? 'pending' : '';
+  }
+
+  function facetStatusText(option) {
+    const mix = option.pending === 0 ? '승인' : option.approved === 0 ? '검토 대기' : `승인 ${option.approved} · 검토 대기 ${option.pending}`;
+    return `${option.count}문항 · ${mix}`;
+  }
+
+  function addFacetCount(group, record, facet) {
+    group.count += 1;
+    if (getFacetStatus(record, facet) === 'approved') group.approved += 1; else group.pending += 1;
   }
 
   function getProblemTypeOptions(records, filters = {}) {
     const source = filterUnitRecords(records, {
       subUnitKeys: filters.subUnitKeys || [],
+      conceptLabels: filters.conceptLabels || [],
+      templateKeys: filters.templateKeys || [],
+      approvedOnly: filters.approvedOnly === true,
       difficultyBuckets: filters.difficultyBuckets || [],
       includeUnclassified: filters.includeUnclassified === true
     });
@@ -758,8 +786,8 @@
       const key = getProblemTypeKey(record);
       const label = getProblemTypeLabel(record);
       if (!key || !label || !isProblemTypeSelectable(record)) continue;
-      const group = groups.get(key) || { key, label, count: 0 };
-      group.count += 1;
+      const group = groups.get(key) || { key, label, count: 0, approved: 0, pending: 0 };
+      addFacetCount(group, record, 'pt');
       groups.set(key, group);
     }
     return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
@@ -768,7 +796,9 @@
   function getTemplateOptions(records, filters = {}) {
     const source = filterUnitRecords(records, {
       subUnitKeys: filters.subUnitKeys || [],
+      conceptLabels: filters.conceptLabels || [],
       problemTypeKeys: filters.problemTypeKeys || [],
+      approvedOnly: filters.approvedOnly === true,
       difficultyBuckets: filters.difficultyBuckets || [],
       includeUnclassified: filters.includeUnclassified === true
     });
@@ -777,9 +807,29 @@
       const key = getTemplateKey(record);
       const label = getTemplateLabel(record);
       if (!key || !label || !isProblemTypeSelectable(record)) continue;
-      const group = groups.get(key) || { key, label, count: 0, parentProblemTypeKey: getProblemTypeKey(record) };
-      group.count += 1;
+      const group = groups.get(key) || { key, label, count: 0, approved: 0, pending: 0, parentProblemTypeKey: getProblemTypeKey(record) };
+      addFacetCount(group, record, 'tpl');
       groups.set(key, group);
+    }
+    return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
+  }
+
+  function getConceptOptions(records, filters = {}) {
+    const source = filterUnitRecords(records, {
+      subUnitKeys: filters.subUnitKeys || [],
+      problemTypeKeys: filters.problemTypeKeys || [],
+      templateKeys: filters.templateKeys || [],
+      approvedOnly: filters.approvedOnly === true,
+      difficultyBuckets: filters.difficultyBuckets || [],
+      includeUnclassified: filters.includeUnclassified === true
+    });
+    const groups = new Map();
+    for (const record of source) {
+      const label = getConceptLabel(record);
+      if (!label) continue;
+      const group = groups.get(label) || { key: label, label, count: 0, approved: 0, pending: 0 };
+      addFacetCount(group, record, 'l3');
+      groups.set(label, group);
     }
     return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
   }
@@ -876,8 +926,11 @@
   }
 
   // A broken or missing L2/L3/L4 chain only disables L3/L4-based selection for that record.
+  // Records whose type/template come from the content-bound recorded-meta lane (metaFacetBound) are
+  // selectable by those facets: the lane already requires ACTIVE registry keys with a consistent
+  // PT -> TPL parent, and the status is shown instead of being a gate.
   function isProblemTypeSelectable(record) {
-    return isTaxonomySelectable(record);
+    return record && record.metaFacetBound === true ? true : isTaxonomySelectable(record);
   }
 
   function getSubUnitOptions(records) {
@@ -898,6 +951,8 @@
     const subUnitKeys = new Set((filters.subUnitKeys || []).map(value => String(value || '').trim()).filter(Boolean));
     const problemTypeKeys = new Set((filters.problemTypeKeys || []).map(value => String(value || '').trim()).filter(Boolean));
     const templateKeys = new Set((filters.templateKeys || []).map(value => String(value || '').trim()).filter(Boolean));
+    const conceptLabels = new Set((filters.conceptLabels || []).map(value => String(value || '').trim()).filter(Boolean));
+    const approvedOnly = filters.approvedOnly === true;
     const difficultyBuckets = new Set((filters.difficultyBuckets || []).map(normalizeDifficulty));
     return source.filter(record => {
       if (filters.includeNonSelectable !== true && !isAutomaticSelectable(record)) return false;
@@ -906,9 +961,18 @@
       const templateKey = getTemplateKey(record);
       const difficulty = getDifficultyBucket(record);
       if (subUnitKeys.size && !subUnitKeys.has(subUnitKey)) return false;
-      if ((problemTypeKeys.size || templateKeys.size) && !isProblemTypeSelectable(record)) return false;
+      if ((problemTypeKeys.size || templateKeys.size || conceptLabels.size) && !isProblemTypeSelectable(record)) return false;
+      if (conceptLabels.size && !conceptLabels.has(getConceptLabel(record))) return false;
       if (problemTypeKeys.size && !problemTypeKeys.has(problemTypeKey)) return false;
       if (templateKeys.size && !templateKeys.has(templateKey)) return false;
+      if (approvedOnly) {
+        // Selected facets must be approved; with none selected, every recorded facet must be.
+        const required = [];
+        if (conceptLabels.size || (!problemTypeKeys.size && !templateKeys.size && getConceptLabel(record))) required.push('l3');
+        if (problemTypeKeys.size || (!conceptLabels.size && !templateKeys.size && problemTypeKey)) required.push('pt');
+        if (templateKeys.size || (!conceptLabels.size && !problemTypeKeys.size && templateKey)) required.push('tpl');
+        if (!required.length || required.some(facet => getFacetStatus(record, facet) !== 'approved')) return false;
+      }
       if (difficultyBuckets.size && !difficultyBuckets.has(difficulty)) return false;
       if (filters.includeUnclassified !== true && (subUnitKey === '__unclassified__' || difficulty === '미분류')) return false;
       return true;
@@ -1279,8 +1343,10 @@
     const limit = selectionLimit(options);
     const pool = dedupeRecords(filterUnitRecords(records, {
       subUnitKeys: options.subUnitKeys || [],
+      conceptLabels: options.conceptLabels || [],
       problemTypeKeys: options.problemTypeKeys || [],
       templateKeys: options.templateKeys || [],
+      approvedOnly: options.approvedOnly === true,
       difficultyBuckets: options.allowAdjacentDifficulty ? [] : (options.difficultyBuckets || []),
       includeUnclassified: options.includeUnclassified === true
     }));
@@ -1290,6 +1356,7 @@
         rows: normalizedRows.map((row, index) => ({
           index,
           subUnitKey: String(row.subUnitKey || '').trim(),
+          conceptLabel: String(row.conceptLabel || '').trim(),
           problemTypeKey: String(row.problemTypeKey || '').trim(),
           templateKey: String(row.templateKey || '').trim(),
           difficultyBucket: row.difficultyBucket ? normalizeDifficulty(row.difficultyBucket) : '',
@@ -1307,6 +1374,7 @@
     normalizedRows.forEach((row, index) => {
       const requestedCount = Math.max(0, Number(row.count || 0));
       const rowSubUnitKeys = row.subUnitKeys || (row.subUnitKey ? [row.subUnitKey] : []);
+      const rowConceptLabels = row.conceptLabels || (row.conceptLabel ? [row.conceptLabel] : []);
       const rowProblemTypeKeys = row.problemTypeKeys || (row.problemTypeKey ? [row.problemTypeKey] : []);
       const rowTemplateKeys = row.templateKeys || (row.templateKey ? [row.templateKey] : []);
       const rowDifficultyBuckets = row.difficultyBuckets || (row.difficultyBucket ? [row.difficultyBucket] : []);
@@ -1314,6 +1382,7 @@
       const strictBuckets = hasRowDifficulty ? rowDifficultyBuckets : (options.difficultyBuckets || []);
       const rowCandidates = dedupeRecords(filterUnitRecords(pool, {
         subUnitKeys: rowSubUnitKeys,
+        conceptLabels: rowConceptLabels,
         problemTypeKeys: rowProblemTypeKeys,
         templateKeys: rowTemplateKeys,
         difficultyBuckets: strictBuckets,
@@ -1327,6 +1396,7 @@
           if (availableCandidates.length >= requestedCount) break;
           const fallback = dedupeRecords(filterUnitRecords(pool, {
             subUnitKeys: rowSubUnitKeys,
+            conceptLabels: rowConceptLabels,
             problemTypeKeys: rowProblemTypeKeys,
             templateKeys: rowTemplateKeys,
             difficultyBuckets: [bucket],
@@ -1344,6 +1414,7 @@
       reports.push({
         index,
         subUnitKey: String(row.subUnitKey || '').trim(),
+        conceptLabel: String(row.conceptLabel || '').trim(),
         problemTypeKey: String(row.problemTypeKey || '').trim(),
         templateKey: String(row.templateKey || '').trim(),
         difficultyBucket: row.difficultyBucket ? normalizeDifficulty(row.difficultyBucket) : '',
@@ -1595,6 +1666,10 @@
     getSubUnitLabel,
     getProblemTypeKey,
     getProblemTypeLabel,
+    getConceptLabel,
+    getFacetStatus,
+    facetStatusText,
+    getConceptOptions,
     getProblemTypeOptions,
     getTemplateKey,
     getTemplateLabel,
