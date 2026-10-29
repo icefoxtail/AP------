@@ -252,7 +252,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체의 한 꼭짓점에서 만나는 세 면 P(앞면), Q(윗면), R(오른쪽 옆면)을 서로 다른 색으로 칠한 그림으로, P와 Q, Q와 R이 각각 수직이어도 P와 R은 평행하지 않고 수직으로 만나는 모습",
+    "solutionImageCaption": "P와 Q, Q와 R이 각각 수직이어도 P와 R은 평행하지 않다. 직육면체의 한 꼭짓점에서 만나는 세 면이 그 예이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,

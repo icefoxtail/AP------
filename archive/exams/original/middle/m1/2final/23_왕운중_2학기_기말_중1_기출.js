@@ -1019,7 +1019,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:7090042a2b419cc672bca1770dd5a7b3522ca80ce54e7c5803ff5e616f4abccb",
-      "difficultyEvidenceSha": "sha256:96f57fa5751f84cb3e5b53c43d70a25a989fbad6a57dfbd2994b5d44f26d5e0d"
+      "difficultyEvidenceSha": "sha256:96f57fa5751f84cb3e5b53c43d70a25a989fbad6a57dfbd2994b5d44f26d5e0d",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 정다각형의 한 꼭짓점에서 내각 3k와 외각 k가 한 직선 위에서 이루는 평각, 그리고 같은 정다각형의 한 꼭짓점에서 다른 꼭짓점으로 그은 대각선들과 한 외각 k를 나타낸 두 그림",
+      "solutionImageCaption": "한 꼭짓점에서 내각 3k와 외각 k의 합은 180°이고, 정다각형의 한 꼭짓점에서는 대각선을 여러 개 그을 수 있다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 24,
