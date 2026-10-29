@@ -53,7 +53,8 @@ jobs:
     timeout-minutes: 10
     outputs:
       ready: ${{ steps.inbox.outputs.ready }}
-      needed: ${{ steps.deployed.outputs.needed }}
+      # Fail open: a probe that crashed before writing its output must never skip a build.
+      needed: ${{ steps.deployed.outputs.needed || 'true' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -79,7 +80,9 @@ jobs:
           fi
       - id: deployed
         # Scheduled self-heal runs build only when the live site does not already serve main; all other
-        # events always build. The probe fails open (needed=true) on any doubt.
+        # events always build (answered before any git/network access). The probe fails open (needed=true) on any
+        # doubt; continue-on-error + the `|| 'true'` default above keep even a crash of node itself from skipping a build.
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ github.token }}
         shell: bash

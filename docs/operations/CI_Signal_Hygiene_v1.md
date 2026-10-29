@@ -14,6 +14,17 @@ Goal: a red `CI` run on `main` must mean "something is wrong with this commit". 
 | 5 | Archive Progress Observer: 234 of 237 runs cancelled. `reconcile()` asked `GET /compare/{mergeSha}...{runSha}` for every distinct pair: the live state has 175 merge SHAs x 32 runs = about 4,900 sequential, payload-heavy calls (simulated on the real state file: 4,869 distinct pairs, about 41 min at 0.5 s). The status is stored only at the end, so every timeout lost all progress; the last stored status is from 10-28 03:09. | unbounded work | Ancestry answered from a full-history blob-less checkout (`localAncestorResolver`, 1.3 s for the same state), every request has an abort deadline, evidence collection stops at a 12 min budget (deferred runs keep their state and consume no retry attempt), step timeout 20 min, job 25 min. `cancel-in-progress` stays `false`: cancelling a running observer discards its work. |
 | 6 | Four observer test files (`tests/archive-progress-{cache-targets,realpaths,recovery}.test.mjs` and the nested tool test) were not part of any CI command and had drifted from the Contents API fixture shape (13 + 2 + 4 failures). | dark tests | Fixtures now return `encoding: "base64"` like GitHub does; all observer tests are in `tools/run-tests.js`. |
 
+## Hardening of the S4/S5/S16 infra code (SB2, 2026-10-29)
+
+| Defect in our own code | Fix |
+|---|---|
+| `reviewed-meta-register-pass.sh`: a failing `--verify-projection` that printed no `...Error: ` line (signal kill, non-Error throw, `AssertionError [ERR_...]`) made `grep` exit 1 inside the array assignment and aborted the whole pass under `set -euo pipefail`, so per-request isolation was lost. | Exit status captured explicitly, `grep` made non-fatal, generic rejection message `consumer projection verification failed (exit status N)`. |
+| `ci.yml` group `ci-main-tip` had `cancel-in-progress: true`: the second `workflow_run` for the same tip cancelled the in-flight test, while its own plan could see the dying run as "in progress" and skip, leaving the tip untested. | `cancel-in-progress: false`; re-tests are serialised (an older waiting run is replaced by the newer one, which re-plans from the live tip). |
+| `ci.yml` planner: a transient API error returned `run=true` with an empty base and the footprint guard exited 2 (false red). | The guard falls back to the checked-out tip's first parent (warning annotation) when the planned base is empty, malformed or not an available commit; a root commit stays fail-closed. |
+| `archive-pages-deploy-needed.mjs`: `git rev-parse HEAD` ran outside the try/catch and on every event; a crash skipped the build (empty `needed`). | Non-schedule events answer `needed=true` before touching git or the network; `probe()` never throws; the step is `continue-on-error` and the job output defaults to `'true'`. |
+
+`NOT_RUN` until merged to `main`: all four workflow/script paths against real GitHub runs (only the shell/Node logic is executed by tests).
+
 ## Verified vs not
 
 Verified locally: syntax and structure tests, observer tests, planner tests, simulated reconcile timing, derive-script run on a checkout of the real `main` tip.

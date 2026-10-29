@@ -61,14 +61,31 @@ function makeGet(token) {
   };
 }
 
-async function main() {
-  const args = process.argv.slice(2);
-  const mainSha = args[0] === "--main-sha" && args[1] ? args[1] : execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-  const result = await decideDeployNeeded({
-    get: makeGet(process.env.GITHUB_TOKEN || ""), repo: process.env.GITHUB_REPOSITORY || "", eventName: process.env.GITHUB_EVENT_NAME || "", mainSha
-  });
-  console.log(`needed=${result.needed} (${result.reason})`);
-  if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `needed=${result.needed}\nreason=${result.reason.replace(/[\r\n]/g, " ")}\n`);
+// Never throws and never returns needed=false unless decideDeployNeeded proved the live site serves main:
+// a crash of this probe must not be able to skip a push build. Non-schedule events answer needed=true before
+// touching git or the network.
+export async function probe({ args = [], env = process.env, headSha = () => execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(), makeGetFn = makeGet } = {}) {
+  try {
+    const eventName = env.GITHUB_EVENT_NAME || "";
+    if (eventName !== "schedule") return { needed: true, reason: `event ${eventName} always builds` };
+    const mainSha = args[0] === "--main-sha" && args[1] ? args[1] : headSha();
+    return await decideDeployNeeded({ get: makeGetFn(env.GITHUB_TOKEN || ""), repo: env.GITHUB_REPOSITORY || "", eventName, mainSha });
+  } catch (error) {
+    return { needed: true, reason: `probe crashed (${String(error?.message || error).slice(0, 120)}); building to be safe` };
+  }
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();
+async function main() {
+  const result = await probe({ args: process.argv.slice(2) });
+  console.log(`needed=${result.needed} (${result.reason})`);
+  try {
+    if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `needed=${result.needed}\nreason=${result.reason.replace(/[\r\n]/g, " ")}\n`);
+  } catch (error) {
+    // The workflow also defaults an empty `needed` output to true.
+    console.error(`could not write GITHUB_OUTPUT: ${error?.message || error}`);
+  }
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  try { await main(); } catch (error) { console.log(`needed=true (probe crashed: ${String(error?.message || error).slice(0, 120)})`); }
+}

@@ -159,6 +159,7 @@ test('--reject records an already-applied request, --reset-derived restores ever
 // ---- the whole pass with stubbed heavy steps ---------------------------------------------------------------
 // Real tools/ci pass + isolating script; the registrar, build_db and validators are stubs driven by request JSON:
 //   behavior ok | fail (registrar refuses) | verify-fail (applies, then projection verification refuses)
+//   verify-fail-silent (refuses with exit 7 and no "Error:" line) | verify-fail-assert ("AssertionError [ERR_ASSERTION]: ..." only)
 //   verifyNeeds: "<name>" (verification refuses when derived/<name>.out is absent)
 function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'register-pass-'));
@@ -184,6 +185,8 @@ const args = process.argv.slice(2); const req = args[args.indexOf('--request') +
 const name = path.basename(req, '.json');
 if (args.includes('--verify-projection')) {
   const missing = body.verifyNeeds && !fs.existsSync('derived/' + body.verifyNeeds + '.out');
+  if (body.behavior === 'verify-fail-silent' && fs.existsSync('derived/' + name + '.out')) { process.stderr.write('no error line here\\n'); process.exit(7); }
+  if (body.behavior === 'verify-fail-assert' && fs.existsSync('derived/' + name + '.out')) { console.error('AssertionError [ERR_ASSERTION]: projection differs'); process.exit(1); }
   if ((body.behavior === 'verify-fail' && fs.existsSync('derived/' + name + '.out')) || missing) { console.error('at x (y:1:1)\\nError: Consumer metadata mismatch: qid_' + name + '.curriculumKey'); process.exit(1); }
   process.exit(0);
 }
@@ -256,4 +259,21 @@ test('pass: every request refused -> green, nothing built, rejections recorded',
   assert.equal(r.status, 0, r.stdout + r.stderr);
   assert.equal(r.builds, 0);
   assert.deepEqual(fs.readdirSync(path.join(f.dir, '.archive-meta-register/rejected')).sort(), ['a.json', 'a.rejection.json', 'b.json', 'b.rejection.json']);
+});
+
+test('pass: a projection refusal that prints no recognisable Error line is still isolated per request (no abort under set -e)', t => {
+  const f = passFixture(t, { '1-good': 'ok', '2-silent': 'verify-fail-silent', '3-assert': 'verify-fail-assert', '4-good': 'ok' });
+  const r = f.run();
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.equal(r.builds, 2, 'one rebuild after dropping both refused requests');
+  assert.ok(f.exists('derived/1-good.out') && f.exists('derived/4-good.out'));
+  assert.ok(!f.exists('derived/2-silent.out') && !f.exists('derived/3-assert.out'), 'refused requests were undone');
+  const silent = f.readJson('.archive-meta-register/rejected/2-silent.rejection.json');
+  assert.equal(silent.stage, 'projection-verify');
+  assert.equal(silent.error, 'consumer projection verification failed (exit status 7)');
+  const assertion = f.readJson('.archive-meta-register/rejected/3-assert.rejection.json');
+  assert.equal(assertion.stage, 'projection-verify');
+  assert.equal(assertion.error, 'consumer projection verification failed (exit status 1)', 'AssertionError [ERR_...] does not match the Error: pattern, so the generic message is used');
+  assert.deepEqual(r.inbox, []);
+  assert.deepEqual(r.copies, ['1-good.json', '4-good.json']);
 });

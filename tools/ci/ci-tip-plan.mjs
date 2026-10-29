@@ -15,6 +15,8 @@
 //     has its own push-event run, so the extra run only happens for tips that have no verdict.
 //   * run=true otherwise; base = the SHA the finished workflow ran on (the footprint guard audits
 //     base..tip, i.e. exactly the bot commit(s)); if that equals the tip, the tip's first parent.
+// Probe failure: run=true with empty checkout_ref/base_sha; the workflow falls back to the tip's first parent
+// as footprint base (see `Guard changed Git objects`), never to a red run for a transient API error.
 // Any other event: run=true, nothing is overridden (checkout_ref and base_sha stay empty).
 //
 //   GITHUB_TOKEN=... GITHUB_REPOSITORY=o/r EVENT_NAME=workflow_run WORKFLOW_RUN_HEAD_SHA=<sha> \
@@ -69,6 +71,8 @@ export async function planCiRun({ get, repo, eventName, runHeadSha, currentRunId
     if (!SHA.test(baseSha)) throw new Error("no usable footprint base for the main tip");
     return { run: true, checkoutRef: tipSha, baseSha, reason: `main tip ${tipSha} has no CI verdict; auditing ${baseSha}..${tipSha}` };
   } catch (error) {
+    // checkout_ref stays empty (the default ref of a workflow_run is the main tip) and base_sha stays empty: the
+    // `Guard changed Git objects` step then falls back to the checked-out tip's first parent instead of failing.
     return { run: true, checkoutRef: "", baseSha: "", reason: `probe failed (${String(error.message || error).slice(0, 120)}); running CI to be safe` };
   }
 }

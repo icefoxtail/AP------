@@ -2,6 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import os from "node:os";
+import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { planCiRun, hasVerdictOrIsRunning, testJobRan } from "../tools/ci/ci-tip-plan.mjs";
 
@@ -108,7 +110,10 @@ test("ci.yml: loop-free workflow_run trigger, planned checkout, unique non-cance
   // CI must never be a trigger source of itself.
   assert.doesNotMatch(/workflows:\s*\[[^\]]*\bCI\b[^\]]*\]/.exec(ci)?.[0] || "", /\bCI\b/);
   assert.match(ci, /group: \$\{\{ github\.event_name == 'workflow_run' && 'ci-main-tip' \|\| format\('ci-\{0\}-\{1\}', github\.event_name, github\.run_id\) \}\}/);
-  assert.match(ci, /cancel-in-progress: \$\{\{ github\.event_name == 'workflow_run' \}\}/);
+  // A second workflow_run for the same tip must never cancel an in-flight re-test: the planner counts that run as
+  // "the tip is being tested", so cancelling it could leave the tip untested.
+  assert.match(ci, /\n  cancel-in-progress: false\n/);
+  assert.doesNotMatch(ci, /cancel-in-progress: (?!false\b)/);
   assert.match(ci, /\n  plan:\n/);
   assert.match(ci, /needs: plan\n\s+if: needs\.plan\.outputs\.run == 'true'/);
   assert.match(ci, /ref: \$\{\{ needs\.plan\.outputs\.checkout_ref \}\}\n\s+fetch-depth: 0/);
@@ -154,4 +159,73 @@ test("Pages derive refreshes Meta Foundation compiled artifacts first, never blo
     "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json"
   ]) assert.ok(regex.test(file), file);
   assert.equal(regex.test("archive/data/meta-foundation/canonical/packs/derivative/pack.json"), false, "canonical sources stay human-owned");
+});
+
+// ---- Guard changed Git objects: a transient planner failure must not be a false red -------------------------------
+const guardStep = (() => {
+  const from = ci.indexOf("      - name: Guard changed Git objects against footprint growth");
+  const to = ci.indexOf("      - name: Run tests");
+  const block = ci.slice(from, to);
+  const run = block.slice(block.indexOf("        run: |\n") + "        run: |\n".length);
+  return run.split("\n").map(line => line.replace(/^ {10}/, "")).join("\n");
+})();
+
+function guardFixture(t, commits = 3) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ci-guard-"));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const git = (...args) => spawnSync("git", args, { cwd: dir, encoding: "utf8" });
+  git("init", "-q", "--initial-branch=main");
+  for (const [k, v] of [["user.name", "t"], ["user.email", "t@example.invalid"], ["commit.gpgsign", "false"]]) git("config", k, v);
+  fs.mkdirSync(path.join(dir, "tools"), { recursive: true });
+  fs.writeFileSync(path.join(dir, "tools/git-history-rewrite-policy.v1.json"), "{}\n");
+  fs.writeFileSync(path.join(dir, "tools/check-git-growth.mjs"), "import fs from 'node:fs'; fs.writeFileSync('growth-args.txt', process.argv.slice(2).join(' '));\n");
+  const shas = [];
+  for (let i = 0; i < commits; i += 1) {
+    fs.writeFileSync(path.join(dir, `f${i}.txt`), String(i));
+    git("add", "-A"); git("commit", "-q", "-m", `c${i}`);
+    shas.push(git("rev-parse", "HEAD").stdout.trim());
+  }
+  const run = env => {
+    fs.rmSync(path.join(dir, "growth-args.txt"), { force: true });
+    const r = spawnSync("bash", ["-c", guardStep], { cwd: dir, encoding: "utf8", env: { PATH: process.env.PATH, GITHUB_REF: "refs/heads/main", ...env } });
+    return { ...r, args: fs.existsSync(path.join(dir, "growth-args.txt")) ? fs.readFileSync(path.join(dir, "growth-args.txt"), "utf8") : null };
+  };
+  return { shas, run };
+}
+
+test("guard step: workflow_run uses the planned base when it is a reachable commit", t => {
+  const f = guardFixture(t);
+  const r = f.run({ EVENT_NAME: "workflow_run", PLAN_BASE_SHA: f.shas[0] });
+  assert.equal(r.status, 0, r.stderr);
+  assert.equal(r.args, `--base ${f.shas[0]} --head HEAD`);
+});
+
+test("guard step: workflow_run with an empty planned base (probe failed) falls back to the tip's first parent", t => {
+  const f = guardFixture(t);
+  const r = f.run({ EVENT_NAME: "workflow_run", PLAN_BASE_SHA: "" });
+  assert.equal(r.status, 0, r.stderr);
+  assert.equal(r.args, `--base ${f.shas[1]} --head HEAD`);
+  assert.match(r.stdout, /::warning title=CI re-test footprint base::/);
+});
+
+test("guard step: a malformed or unreachable planned base also falls back to the first parent; a root tip stays fail-closed", t => {
+  const f = guardFixture(t);
+  for (const base of ["not-a-sha", "f".repeat(40)]) {
+    const r = f.run({ EVENT_NAME: "workflow_run", PLAN_BASE_SHA: base });
+    assert.equal(r.status, 0, r.stderr);
+    assert.equal(r.args, `--base ${f.shas[1]} --head HEAD`, base);
+  }
+  const root = guardFixture(t, 1);
+  const r = root.run({ EVENT_NAME: "workflow_run", PLAN_BASE_SHA: "" });
+  assert.equal(r.status, 2);
+  assert.equal(r.args, null, "no audit ran");
+  assert.match(r.stderr, /no usable footprint base SHA/);
+});
+
+test("guard step: push / dispatch fail-closed semantics are unchanged", t => {
+  const f = guardFixture(t);
+  assert.equal(f.run({ EVENT_NAME: "push", BEFORE_SHA: "0".repeat(40) }).status, 2);
+  assert.equal(f.run({ EVENT_NAME: "push", BEFORE_SHA: f.shas[0] }).args, `--base ${f.shas[0]} --head HEAD`);
+  assert.equal(f.run({ EVENT_NAME: "workflow_dispatch", MANUAL_BASE_SHA: "" }).status, 2);
+  assert.equal(f.run({ EVENT_NAME: "push", BEFORE_SHA: "e".repeat(40) }).status, 2, "an unavailable push base still refuses");
 });

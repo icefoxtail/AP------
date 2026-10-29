@@ -23,11 +23,15 @@ on:
         required: true
         type: string
 
-# Only the workflow_run (tip re-test) runs share a group: a newer tip supersedes an older queued/running one.
+# Only the workflow_run (tip re-test) runs share a group, and that group never cancels a running job: the planner
+# (tools/ci/ci-tip-plan.mjs) counts an in-progress run for the tip as "this tip is being tested", so cancelling it
+# for a second workflow_run of the same tip (Register finishes, then Pages finishes) could leave the tip untested -
+# the second plan sees the dying run as in progress and skips. Serialised instead: at most one re-test runs and one
+# waits (GitHub replaces an older waiting run with the newer one, which re-plans from the live main tip anyway).
 # Push, PR and manual runs get a unique group and are never cancelled.
 concurrency:
   group: ${{ github.event_name == 'workflow_run' && 'ci-main-tip' || format('ci-{0}-{1}', github.event_name, github.run_id) }}
-  cancel-in-progress: ${{ github.event_name == 'workflow_run' }}
+  cancel-in-progress: false
 
 jobs:
   plan:
@@ -143,9 +147,16 @@ jobs:
             # The planner chose the commit the finished pipeline ran on (or the tip's parent): audit only what
             # the bot added on top of it.
             base_ref="$PLAN_BASE_SHA"
-            if [[ ! "$base_ref" =~ ^[0-9a-fA-F]{40}$ ]]; then
-              echo "CI re-test has no planned footprint base SHA; refusing an incomplete audit." >&2
-              exit 2
+            if [[ ! "$base_ref" =~ ^[0-9a-fA-F]{40}$ ]] || ! git cat-file -e "$base_ref^{commit}" 2>/dev/null; then
+              # A transient planner API error (probe failed -> run=true with no base) or an unreachable planned base
+              # must not turn into a false red. The checked-out commit is the main tip: audit what it adds on top of
+              # its first parent (the bot commit itself). A root commit has no parent and stays fail-closed.
+              echo "::warning title=CI re-test footprint base::planned base '${base_ref}' is unusable; auditing the tip against its first parent"
+              base_ref="$(git rev-parse --verify --quiet HEAD^1 || true)"
+              if [[ ! "$base_ref" =~ ^[0-9a-fA-F]{40}$ ]]; then
+                echo "CI re-test has no usable footprint base SHA (no planned base, tip has no parent); refusing an incomplete audit." >&2
+                exit 2
+              fi
             fi
           elif [[ "$EVENT_NAME" == "push" ]]; then
             base_ref="$BEFORE_SHA"

@@ -90,9 +90,14 @@ for round in 1 2; do
   for request in "${applied[@]}"; do
     schema="$(jq -r .schemaVersion "$request")"
     if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
-      if ! out="$(node "$registrar" --request "$request" --verify-projection 2>&1)"; then
+      verify_rc=0
+      out="$(node "$registrar" --request "$request" --verify-projection 2>&1)" || verify_rc=$?
+      if [[ "$verify_rc" -ne 0 ]]; then
         verify_failed+=("$request")
-        verify_errors+=("$(grep -E '^(Uncaught )?[A-Za-z]*Error: ' <<<"$out" | tail -n 1 | cut -c1-500)")
+        # A refusal that prints no recognisable "...Error: " line (signal kill, non-Error throw, "AssertionError [ERR_...]")
+        # must not abort the whole pass under `set -e -o pipefail` (grep exits 1): isolation is per request.
+        verify_msg="$(grep -E '^(Uncaught )?[A-Za-z]*Error: ' <<<"$out" | tail -n 1 | cut -c1-500 || true)"
+        verify_errors+=("${verify_msg:-consumer projection verification failed (exit status $verify_rc)}")
       fi
     fi
   done

@@ -6,7 +6,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { evaluateGate } from "../tools/ci/archive-pages-release-gate.mjs";
-import { decideDeployNeeded, SYNC_SUBJECT } from "../tools/ci/archive-pages-deploy-needed.mjs";
+import { decideDeployNeeded, probe, SYNC_SUBJECT } from "../tools/ci/archive-pages-deploy-needed.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const workflow = fs.readFileSync(path.join(repo, ".github/workflows/archive-pages-release.yml"), "utf8");
@@ -125,4 +125,61 @@ test("self-heal probe: only scheduled runs may skip, and only when the live site
   assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ cmp: { status: "diverged", total_commits: 1, commits: [syncCommit] } }) })).needed, true);
   assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ cmp: { status: "ahead", total_commits: 150, commits: [syncCommit] } }) })).needed, true, "truncated compare is not trusted");
   assert.ok(SYNC_SUBJECT.test("chore(archive): sync registration artifacts [skip ci]"));
+});
+
+// ---- the probe can never skip a push build by crashing --------------------------------------------------------
+const probeScript = path.join(repo, "tools/ci/archive-pages-deploy-needed.mjs");
+const runProbeScript = (t, eventName, extraEnv = {}) => {
+  // A directory that is not a git checkout and has no network credentials: any git/network access would fail.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "deploy-needed-"));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const out = path.join(dir, "output.txt");
+  const r = spawnSync(process.execPath, [probeScript], { cwd: dir, encoding: "utf8",
+    env: { PATH: process.env.PATH, GITHUB_EVENT_NAME: eventName, GITHUB_OUTPUT: out, GIT_CEILING_DIRECTORIES: path.dirname(dir), ...extraEnv } });
+  return { ...r, output: fs.existsSync(out) ? fs.readFileSync(out, "utf8") : "" };
+};
+
+test("probe: non-schedule events answer needed=true before touching git or the network", async () => {
+  const boom = () => { throw new Error("must not be called"); };
+  for (const eventName of ["push", "workflow_run", "workflow_dispatch", "pull_request", ""]) {
+    const result = await probe({ env: { GITHUB_EVENT_NAME: eventName }, headSha: boom, makeGetFn: boom });
+    assert.equal(result.needed, true, eventName);
+  }
+});
+
+test("probe: every error path fails open (needed=true) and never throws", async () => {
+  const sched = { GITHUB_EVENT_NAME: "schedule", GITHUB_REPOSITORY: "o/r" };
+  const gitFails = await probe({ env: sched, headSha: () => { throw new Error("fatal: not a git repository"); }, makeGetFn: () => { throw new Error("no network"); } });
+  assert.equal(gitFails.needed, true);
+  assert.match(gitFails.reason, /probe crashed.*not a git repository/);
+  const getFactoryFails = await probe({ env: sched, args: ["--main-sha", SHA_M], makeGetFn: () => { throw new Error("no network"); } });
+  assert.equal(getFactoryFails.needed, true);
+  const apiFails = await probe({ env: sched, args: ["--main-sha", SHA_M], makeGetFn: () => fakeGet({ fail: true }) });
+  assert.equal(apiFails.needed, true);
+  const nonError = await probe({ env: sched, headSha: () => { throw "plain string"; } });
+  assert.equal(nonError.needed, true);
+  // And the one legitimate skip still works through the same entry point.
+  const served = await probe({ env: sched, args: ["--main-sha", SHA_M], makeGetFn: () => fakeGet({ deployments: [{ id: 1, sha: SHA_M }] }) });
+  assert.equal(served.needed, false);
+});
+
+test("probe script: push builds with exit 0 outside any git checkout; a crashing scheduled run still writes needed=true", t => {
+  const push = runProbeScript(t, "push");
+  assert.equal(push.status, 0, push.stderr);
+  assert.match(push.output, /^needed=true\n/);
+  const sched = runProbeScript(t, "schedule", { GITHUB_REPOSITORY: "o/r" });
+  assert.equal(sched.status, 0, sched.stderr);
+  assert.match(sched.output, /^needed=true\n/, "git rev-parse failing outside a checkout fails open");
+  assert.match(sched.output, /reason=probe crashed/);
+  const unwritable = runProbeScript(t, "push", { GITHUB_OUTPUT: path.join(os.tmpdir(), "does-not-exist-dir", "x", "out.txt") });
+  assert.equal(unwritable.status, 0, "an unwritable GITHUB_OUTPUT does not fail the step");
+});
+
+test("workflow: a crash of the probe step cannot turn into a skipped build", () => {
+  const job = workflow.slice(workflow.indexOf("\n  registration-ready:\n"), workflow.indexOf("\n  build:\n"));
+  assert.match(job, /needed: \$\{\{ steps\.deployed\.outputs\.needed \|\| 'true' \}\}/);
+  const step = job.slice(job.indexOf("      - id: deployed"));
+  assert.match(step, /continue-on-error: true/);
+  assert.match(step, /run: node tools\/ci\/archive-pages-deploy-needed\.mjs/);
+  assert.match(workflow, /needs\.registration-ready\.outputs\.needed == 'true'/);
 });
