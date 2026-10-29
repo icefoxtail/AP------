@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "formula": "-2x+6",
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -1,
+      7,
+      -6,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": -4
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "1",
+        "4"
+      ],
+      "B": [
+        "5",
+        "-4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "기울기가 -2인 직선 f(x)=-2x+6은 점 (1, 4)와 (5, -4)를 지나며 f(5)의 최솟값 -4를 준다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "f'(x)=-2, f(1)=4이면 f(x)=-2x+6이고 f(5)=-4이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "등호가 성립하는 경우(기울기 -2인 직선)에서 f(5)=-4가 최솟값임을 보여 준다."
+  ],
+  "sourceQuote": "$f(x)=-2x+6$이면 $f'(x)=-2$",
+  "assetPath": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q15-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q15-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q15-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q15-solution.svg"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "3/2",
+      "-1/2"
+    ],
+    "domain": [
+      -0.6,
+      3.6
+    ],
+    "viewport": [
+      -1,
+      4,
+      -1,
+      2.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "1"
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "2"
+        },
+        {
+          "id": "C",
+          "curveX": "1"
+        },
+        {
+          "id": "D",
+          "curveX": "2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "Q",
+          "points": [
+            "A",
+            "B",
+            "D",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "t=3/5일 때 P(3, 0)이고 A(1, 0), B(2, 0), C(1, 1), D(2, 1)이어서 AB=AC=1인 정사각형 ABDC가 된다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "t=3/5이면 P(3,0)이고 이차함수는 y=-1/2x(x-3)이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "A(1,0), B(2,0), C(1,1), D(2,1)에서 AB=AC=1이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형이 되는 순간 t=3/5의 점 배치와 AB=AC임을 보여 준다."
+  ],
+  "sourceQuote": "$A\\left(\\dfrac{5t}{3},0\\right)$",
+  "assetPath": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q19-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q19-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q19-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q19-solution.svg"
+  }
+}

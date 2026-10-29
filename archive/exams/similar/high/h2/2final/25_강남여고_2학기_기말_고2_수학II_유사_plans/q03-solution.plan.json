@@ -1,0 +1,78 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "9",
+      "-12",
+      "3"
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -1,
+      5,
+      -4,
+      10
+    ],
+    "axisVariable": "t",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -3
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "2",
+        "-3"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "T",
+          "slope": "0",
+          "intercept": "-3"
+        }
+      ]
+    }
+  },
+  "caption": "속도 v(t)=3t²-12t+9의 그래프는 꼭짓점 (2, -3)에서 접선의 기울기가 0이므로 t=2에서 가속도가 0이고 그때 속도는 -3이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "v(t)=3t²-12t+9=3(t-2)²-3이므로 꼭짓점은 (2,-3)이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "가속도 a(t)=v'(t)=6t-12가 0인 시각은 t=2로 v의 접선 기울기가 0인 꼭짓점이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "가속도 0이 속도 그래프의 접선 기울기 0(꼭짓점)임을 보여 준다.",
+    "그 순간의 속도가 꼭짓점의 y좌표 -3임을 보여 준다."
+  ],
+  "sourceQuote": "$a(t)=v'(t)=6t-12$",
+  "assetPath": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q3-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q03-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q03-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q03-solution.svg"
+  }
+}
