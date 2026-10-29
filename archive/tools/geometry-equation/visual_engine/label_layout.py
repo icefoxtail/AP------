@@ -409,6 +409,19 @@ def box_in_other_sectors(box,sectors):
     center=(box.x+box.width/2,box.y+box.height/2)
     return any(sector_contains(center,sector) for sector in sectors)
 
+def point_in_wedge(point,vertex,start,delta,slack_degrees=0.5):
+    """True when the point lies within the angular range an angle mark sweeps (vertex, start direction, signed sweep), at any distance from the vertex."""
+    dx,dy=point[0]-vertex[0],point[1]-vertex[1]
+    if math.hypot(dx,dy)<=1e-9:return True
+    offset=((math.atan2(dy,dx)-start) if delta>0 else (start-math.atan2(dy,dx)))%(2*math.pi)
+    slack=math.radians(slack_degrees)
+    return offset<=abs(delta)+slack or offset>=2*math.pi-slack
+
+def box_touches_wedge(box,wedge):
+    """True when the box centre or any corner lies within the wedge an angle mark sweeps (labelPlacement LEADER keeps the whole label outside its angle)."""
+    points=((box.x+box.width/2,box.y+box.height/2),(box.x,box.y),(box.right,box.y),(box.x,box.bottom),(box.right,box.bottom))
+    return any(point_in_wedge(point,wedge['vertex'],wedge['start'],wedge['delta']) for point in points)
+
 def lines_through_vertex(occupied,vertex,start,delta):
     """(own rays, other lines through the vertex): the drawn segments of the angle's two rays, and every other drawn line that also meets the vertex
     (a dashed line splitting the angle, a third ray). Each entry is (obstacle, segment start, segment end)."""
@@ -563,6 +576,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             directions=((preferred,) if preferred in allowed else ())+tuple(v for v in allowed if v!=preferred)
             default_gaps=TICK_LABEL_GAPS
         else:default_gaps=() if 'candidateCenters' in label or 'candidateBaselines' in label else tuple(label.get('gaps',(12,8,20,32,48)))
+        # labelPlacement LEADER on an angle mark (E12b): no search inside the angle and no box beside the arc; only the outside leader from its own arc, with the whole box outside the wedge.
+        force_leader=bool(label.get('wedgeSearch',{}).get('forceLeader'))
+        if force_leader:default_gaps=()
         if tick_callout is not None:
             offset=tick_callout['offsetUser'];center=[label['at'][0]+offset[0],label['at'][1]+offset[1]]
             box=Box(center[0]-w/2,center[1]-h/2,w,h)
@@ -581,7 +597,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     'axis':label['tickAxis'],'value':label['tickValue']})
                 occupied.append({'id':leader_id,'kind':'leader','geometry':[list(label['at']),end]})
         else:
-            if 'wedgeSearch' in label:
+            if 'wedgeSearch' in label and not force_leader:
                 # An angle label inside its angle: slide the box out along the bisector until it clears the marks and stays within the two rays.
                 from .publication import box_owned
                 ws=label['wedgeSearch'];vertex=ws['vertex'];radius=ws['rMin']
@@ -723,7 +739,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     if chosen:break
         if chosen is None and 'wedgeSearch' in label and tick_callout is None:
             # No room inside the angle or beside its arc: outside the angle, on a leader from the middle of its own outermost arc.
-            found=angle_outside_leader(label,w,h,occupied,acceptable,leader_owned_ids)
+            found=angle_outside_leader(label,w,h,occupied,(lambda box:acceptable(box) and not box_touches_wedge(box,label['wedgeSearch'])) if force_leader else acceptable,leader_owned_ids)
             if found is not None:
                 box,start,end,direction=found
                 label={**label,'at':list(start)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction

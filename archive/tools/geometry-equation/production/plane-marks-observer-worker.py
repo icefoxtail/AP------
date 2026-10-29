@@ -297,7 +297,16 @@ def audit(p):
                     for sid,pts in strokes:
                         if sid in own_arcs:continue
                         if any(properly_cross(la,lb,p,q) for p,q in zip(pts,pts[1:])):errors.append('ANGLE_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
-                if not inside and not has_leader:errors.append('ANGLE_LABEL_NOT_IN_ANGLE:'+oid)
+                if row.get('labelPlacement')=='LEADER':
+                    # labelPlacement LEADER: a visible leader from the angle's own arc, and the whole label outside the wedge the angle sweeps
+                    if not has_leader:errors.append('ANGLE_LABEL_LEADER_MISSING:'+oid)
+                    def in_wedge(q):
+                        d=sub(inverse(*q),v)
+                        if norm(d)<=1e-12:return True
+                        along=((direction_degrees(d)-direction_degrees(sub(a,v)))*(1 if signed>0 else -1))%360.0
+                        return along<=abs(signed)+ANGLE_LEADER_END_TOLERANCE or along>=360.0-ANGLE_LEADER_END_TOLERANCE
+                    if any(in_wedge(q) for q in ((box[0]+box[2]/2,box[1]+box[3]/2),(box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3]))):errors.append('ANGLE_LABEL_NOT_OUTSIDE_ANGLE:'+oid)
+                elif not inside and not has_leader:errors.append('ANGLE_LABEL_NOT_IN_ANGLE:'+oid)
                 elif inside and not has_leader and norm(sub(centre_model,v))*sx<=max(radii)*sx-1:errors.append('ANGLE_LABEL_INSIDE_ARC:'+oid)
                 elif inside and not has_leader:
                     vx,vy=forward(v)   # the vertex in svg px; the distance to the label box's nearest point
