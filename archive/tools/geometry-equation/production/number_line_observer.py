@@ -280,6 +280,40 @@ def _end_value(raw, parameter):
     return _rational(raw['param']['mul'], 'NL_OBSERVER_PLAN_INVALID') * parameter + _rational(raw['param'].get('add', '0'), 'NL_OBSERVER_PLAN_INVALID')
 
 
+JAMO = re.compile('^[\u3131-\u314e]$')
+
+
+def _point_flags(point):
+    """What a marked point must show, read from the plan alone: its name (None, a Hangul letter or the capital id) and whether its value is written."""
+    hidden = point.get('hideName') is True or ('name' in point and point['name'] is None)
+    name = point.get('name')
+    if hidden or name is None and not JAMO.fullmatch(point['id']): jamo = None
+    else: jamo = name if isinstance(name, str) else point['id']
+    return {'name_hidden': hidden, 'jamo': jamo, 'show_value': point.get('showValue') is not False}
+
+
+def _scale_of(row_spec, values):
+    """The graduated axis a POINTS row asks for: ({integer: label...}, {minor value: parts}) re-derived from its subdivisions, or None."""
+    subdivisions = row_spec.get('subdivisions')
+    if subdivisions is None: return None
+    if not isinstance(subdivisions, list) or not subdivisions: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+    ranges = []
+    for item in subdivisions:
+        a, b, parts = item.get('from'), item.get('to'), item.get('parts')
+        if isinstance(parts, str): parts = int(parts)
+        if not (isinstance(a, str) and isinstance(b, str) and re.fullmatch(r'-?\d{1,4}', a) and re.fullmatch(r'-?\d{1,4}', b) and isinstance(parts, int) and 2 <= parts <= 10 and int(a) < int(b)):
+            raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        ranges.append((int(a), int(b), parts))
+    low = min([int(S.floor(value)) for value in values] + [r[0] for r in ranges])
+    high = max([int(S.ceiling(value)) for value in values] + [r[1] for r in ranges])
+    minor = {}
+    for a, b, parts in ranges:
+        for k in range(a, b):
+            for j in range(1, parts):
+                minor[S.Rational(k * parts + j, parts)] = parts
+    return list(range(low, high + 1)), minor
+
+
 def _pieces_of(solution):
     if solution == S.EmptySet: return []
     parts = list(solution.args) if isinstance(solution, S.Union) else [solution]
@@ -335,7 +369,7 @@ def audit_figure(numberLine, svg, pointNames=None):
     errors = []
     parameter_spec, parameter, rows = expected_figure(numberLine)
     # The name each point must show (its display name's TeX; the id itself without one), read from the plan alone.
-    name_tex = tex_map(pointNames, [point['id'] for row in numberLine['rows'] if row['kind'] == 'POINTS' for point in row['points']])
+    name_tex = tex_map(pointNames, [point['id'] for row in numberLine['rows'] if row['kind'] == 'POINTS' for point in row['points'] if re.fullmatch('[A-Z]', point['id'])])
     variable = numberLine.get('variable', 'x')
     symbol = None if parameter_spec is None else S.Symbol(parameter_spec['name'])
     free = None if parameter_spec is None else {parameter_spec['name']: symbol}
@@ -349,7 +383,7 @@ def audit_figure(numberLine, svg, pointNames=None):
     by_id = {element.get('id'): element for element in root.iter() if element.get('id')}
     circles = list(root.iter(NS + 'circle'))
     lines = list(root.iter(NS + 'line'))
-    ticks = [element for element in lines if element.get('data-role') == 'tick']
+    ticks = [element for element in lines if element.get('data-role') in ('tick', 'subtick')]
     labels = [element for element in root.iter(NS + 'g') if element.get('data-label-role')]
     owners = {}
     for label in labels: owners.setdefault(label.get('data-owner'), []).append(label)
@@ -365,31 +399,73 @@ def audit_figure(numberLine, svg, pointNames=None):
         in_row = lambda element: element.get('data-row') == str(index)
         row_circles = [element for element in circles if in_row(element)]
         row_labels = [element for element in labels if in_row(element)]
-        if len([l for l in row_labels if l.get('data-label-role') == 'variable']) != 1: errors.append('NL_VARIABLE_LABEL_COUNT:%d' % index)
+        if len([l for l in row_labels if l.get('data-label-role') == 'variable']) != (0 if numberLine.get('axisVariable') is False else 1): errors.append('NL_VARIABLE_LABEL_COUNT:%d' % index)
         if row['kind'] == 'POINTS':
             values = row['values']
             drawn = {element.get('data-point-id'): element for element in row_circles if element.get('data-dot') == 'point'}
+            flags = {point['id']: _point_flags(point) for point in row['spec']['points']}
+            scale = _scale_of(row['spec'], list(values.values()))
             if set(drawn) != set(values): errors.append('NL_POINT_SET_MISMATCH:%d' % index)
             for point_id, value in values.items():
                 element = drawn.get(point_id)
                 if element is None: continue
+                flag = flags[point_id]
                 if abs(_num(element, 'cx') - px(value)) > TOL or abs(_num(element, 'cy') - axis_y) > TOL: errors.append('NL_POINT_POSITION:' + point_id)
                 if (element.get('fill') or '').lower() != '#111': errors.append('NL_POINT_NOT_FILLED:' + point_id)
                 text = element.get('data-value', '')
                 if not RATIONAL.fullmatch(text) or S.Rational(text) != value: errors.append('NL_POINT_VALUE:' + point_id)
-                names = [l for l in owners.get(element.get('id'), []) if l.get('data-label-role') == 'point-name']
-                vals = [l for l in owners.get(element.get('id'), []) if l.get('data-label-role') == 'point-value']
-                if len(names) != 1 or len(vals) != 1: errors.append('NL_POINT_LABEL_COUNT:' + point_id)
+                if element.get('data-value-shown') != (None if flag['show_value'] else 'false'): errors.append('NL_POINT_VALUE_FLAG:' + point_id)
+                mine = owners.get(element.get('id'), [])
+                names = [l for l in mine if l.get('data-label-role') == 'point-name']
+                vals = [l for l in mine if l.get('data-label-role') == 'point-value']
+                if len(names) != (0 if flag['name_hidden'] else 1) or len(vals) != (1 if flag['show_value'] else 0): errors.append('NL_POINT_LABEL_COUNT:' + point_id)
+                # a value the plan hides is written nowhere on its point (only a name may be owned by it)
+                if not flag['show_value'] and any(l.get('data-label-role') != 'point-name' for l in mine): errors.append('NL_POINT_VALUE_SHOWN:' + point_id)
                 for l in names:
-                    if l.get('data-tex') != name_tex[point_id]: errors.append('NL_POINT_NAME_LABEL:' + point_id)
+                    if flag['jamo'] is not None:
+                        if l.get('data-text') != flag['jamo'] or l.get('data-tex') is not None: errors.append('NL_POINT_NAME_LABEL:' + point_id)
+                    elif l.get('data-tex') != name_tex[point_id] or l.get('data-text') is not None: errors.append('NL_POINT_NAME_LABEL:' + point_id)
                 for l in vals:
                     try:
                         if read(l) != value: errors.append('NL_POINT_VALUE_LABEL:' + point_id)
                     except ValueError as error: errors.append(str(error) + ':' + str(l.get('id')))
-            # The band spans the outermost points; each internal division carries its ratio parts over its two sub-segments.
+            # The band spans the outermost points (unless the plan turns it off); each internal division carries its ratio parts over its two sub-segments.
             band = by_id.get('r%d-band-1' % index)
-            if band is None: errors.append('NL_BAND_MISSING:%d' % index)
+            row_bands = [element for element in lines if element.get('data-role') == 'solution-band' and in_row(element)]
+            if row['spec'].get('band') is False:
+                if row_bands: errors.append('NL_BAND_UNEXPECTED:%d' % index)
+            elif band is None: errors.append('NL_BAND_MISSING:%d' % index)
             elif abs(_num(band, 'x1') - px(min(values.values()))) > TOL or abs(_num(band, 'x2') - px(max(values.values()))) > TOL or abs(_num(band, 'y1') - axis_y) > TOL: errors.append('NL_BAND_EXTENT:%d' % index)
+            # The graduated axis: a labelled tick at every integer of the range and shorter ticks at the equal parts, nowhere else.
+            row_ticks = [element for element in ticks if in_row(element)]
+            if scale is None:
+                if row_ticks: errors.append('NL_UNEXPECTED_TICK:%d' % index)
+            else:
+                integers, minor = scale
+                majors = [t for t in row_ticks if t.get('data-role') == 'tick' and t.get('data-scale') == 'major']
+                subs = [t for t in row_ticks if t.get('data-role') == 'subtick' and t.get('data-scale') == 'minor']
+                if len(majors) + len(subs) != len(row_ticks) or len(majors) != len(integers) or {t.get('data-value') for t in majors} != {str(k) for k in integers}: errors.append('NL_SCALE_MAJOR_SET:%d' % index)
+                major_half = None
+                for tick in majors:
+                    text = tick.get('data-value', '')
+                    if not re.fullmatch(r'-?\d+', text): continue
+                    if abs(_num(tick, 'x1') - px(int(text))) > TOL or abs(_num(tick, 'x2') - px(int(text))) > TOL or abs((_num(tick, 'y1') + _num(tick, 'y2')) / 2 - axis_y) > TOL: errors.append('NL_SCALE_MAJOR_POSITION:' + str(tick.get('id')))
+                    major_half = abs(_num(tick, 'y2') - _num(tick, 'y1')) / 2
+                    own = owners.get(tick.get('id'), [])
+                    if len(own) != 1 or own[0].get('data-label-role') != 'tick': errors.append('NL_LABEL_COUNT:' + str(tick.get('id'))); continue
+                    try:
+                        if read(own[0]) != int(text): errors.append('NL_TICK_LABEL_VALUE:' + str(own[0].get('id')))
+                    except ValueError as error: errors.append(str(error) + ':' + str(own[0].get('id')))
+                seen = {}
+                for tick in subs:
+                    try: value = S.Rational(tick.get('data-value', ''))
+                    except (TypeError, ValueError): errors.append('NL_SCALE_MINOR_VALUE:' + str(tick.get('id'))); continue
+                    seen[value] = seen.get(value, 0) + 1
+                    if value not in minor or abs(_num(tick, 'x1') - px(value)) > TOL or abs(_num(tick, 'x2') - px(value)) > TOL or abs((_num(tick, 'y1') + _num(tick, 'y2')) / 2 - axis_y) > TOL: errors.append('NL_SCALE_MINOR_POSITION:' + str(tick.get('id')))
+                    elif tick.get('data-parts') != str(minor[value]): errors.append('NL_SCALE_MINOR_PARTS:' + str(tick.get('id')))
+                    if major_half is not None and not abs(_num(tick, 'y2') - _num(tick, 'y1')) / 2 < major_half - 0.5: errors.append('NL_SCALE_MINOR_NOT_SHORTER:' + str(tick.get('id')))
+                    if owners.get(tick.get('id')): errors.append('NL_SCALE_MINOR_LABELLED:' + str(tick.get('id')))
+                if set(seen) != set(minor) or any(count != 1 for count in seen.values()): errors.append('NL_SCALE_MINOR_SET:%d' % index)
             for point in row['spec']['points']:
                 if 'divides' not in point: continue
                 owner = drawn.get(point['id'])
@@ -474,6 +550,7 @@ def audit_figure(numberLine, svg, pointNames=None):
                     if str(read(l)) != text: errors.append('NL_INTEGER_LABEL_VALUE:' + str(l.get('id')))
                 except ValueError as error: errors.append(str(error) + ':' + str(l.get('id')))
         for tick in [t for t in ticks if in_row(t)]:
+            if tick.get('data-role') != 'tick' or tick.get('data-scale') is not None: errors.append('NL_UNEXPECTED_TICK:%d' % index); continue
             if tick.get('data-value') != '0' or abs(_num(tick, 'x1') - px(0)) > TOL: errors.append('NL_TICK_POSITION:' + str(tick.get('id')))
             mine = owners.get(tick.get('id'), [])
             if len(mine) != 1: errors.append('NL_LABEL_COUNT:' + str(tick.get('id')))
@@ -515,7 +592,15 @@ def audit_figure(numberLine, svg, pointNames=None):
         if target is None: errors.append('NL_LABEL_OWNER_MISSING:' + str(label_id)); continue
         at = (_num(target, 'x1') + _num(target, 'x2')) / 2 if role == 'set' else _num(target, 'x1') if role == 'tick' else _num(target, 'cx')
         if abs(centre - at) > 0.5: errors.append('NL_LABEL_NOT_CENTRED:' + str(label_id))
-        if role in ('endpoint', 'tick', 'point-value') and axis_y is not None and box[1] < axis_y + 1.6: errors.append('NL_LABEL_NOT_BELOW_AXIS:' + str(label_id))
+        # a point's value is written below the axis, or (on a graduated axis, whose ticks use the space below) stacked above its name
+        stacked = role == 'point-value' and any(t.get('data-scale') for t in ticks if t.get('data-row') == row_n)
+        if stacked:
+            if box[1] + box[3] > _num(target, 'cy') - _num(target, 'r'): errors.append('NL_LABEL_NOT_ABOVE_DOT:' + str(label_id))
+            for other in owners.get(owner, []):
+                if other.get('data-label-role') == 'point-name':
+                    other_match, other_inner = TRANSLATE.fullmatch(other.get('transform') or ''), other.find(NS + 'svg')
+                    if other_match and other_inner is not None and box[1] + box[3] > float(other_match.group(2)) + 0.5: errors.append('NL_VALUE_NOT_ABOVE_NAME:' + str(label_id))
+        elif role in ('endpoint', 'tick', 'point-value') and axis_y is not None and box[1] < axis_y + 1.6: errors.append('NL_LABEL_NOT_BELOW_AXIS:' + str(label_id))
         if role in ('integer', 'point-name') and box[1] + box[3] > _num(target, 'cy') - _num(target, 'r'): errors.append('NL_LABEL_NOT_ABOVE_DOT:' + str(label_id))
         if role == 'set' and axis_y is not None and box[1] + box[3] > axis_y - 8: errors.append('NL_LABEL_NOT_ABOVE_BAND:' + str(label_id))
     for i, (label_id, a) in enumerate(boxes):
