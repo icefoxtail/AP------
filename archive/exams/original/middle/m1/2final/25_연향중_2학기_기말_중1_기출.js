@@ -653,7 +653,7 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:414ee05203f23896224668c832809dc523b34adca3fefbfa444e853d30d5dfb4",
     "difficultyEvidenceSha": "sha256:00a53834fc7504c6834c6e03c537f34984ac701c09bbf0149f65b91ec5af69c5",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q15-solution-v2.svg",
     "solutionImageAlt": "해설 그림: (가)는 밑면이 두 변 6cm, 7cm인 직각삼각형이고 높이가 4cm인 삼각뿔 모양의 물, (나)는 밑면이 두 변 6cm, x cm인 직각삼각형이고 높이가 4cm인 삼각기둥 모양의 물을 나란히 보인 그림",
     "solutionImageCaption": "(가)의 물은 삼각뿔, (나)의 물은 삼각기둥 모양이며 각 모서리의 길이를 나타낸 그림",
     "solutionImageSize": "medium"

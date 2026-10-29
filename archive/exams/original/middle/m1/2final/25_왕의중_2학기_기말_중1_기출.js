@@ -633,7 +633,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:2903afdac20c2faa18b6e93dd21be39c79fd5b5b0e1c86eec49328461c4acb18",
-      "difficultyEvidenceSha": "sha256:83c9428d6f650da6c13cc8eb2983c0348122e64a84365ac427018265eb07f32d"
+      "difficultyEvidenceSha": "sha256:83c9428d6f650da6c13cc8eb2983c0348122e64a84365ac427018265eb07f32d",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 정육면체 안에 그린 삼각뿔이다. 정육면체의 한 꼭짓점에서 만나는 서로 수직인 세 모서리의 끝점을 이어 만들었고, 밑면은 정육면체의 한 면에 있는 직각삼각형(주황색)이며 그 꼭짓점에서 위로 올라가는 모서리 a가 높이이다.",
+      "solutionImageCaption": "정육면체의 한 모서리 a를 높이로 하고 한 면의 직각삼각형을 밑면으로 하는 삼각뿔",
+      "solutionImageSize": "medium"
     },
     {
       "id": 15,
