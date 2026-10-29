@@ -180,7 +180,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
-    "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE"
+    "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 갈수록 넓어지는 물컵의 단면과, 이 컵에 매초 일정한 양의 물을 넣을 때 시간에 따른 물의 높이를 나타낸 그래프를 나란히 그린 그림이다. 그래프는 계속 올라가되 기울기가 점점 완만해지는 곡선이고, 점선은 컵의 높이와 그래프의 끝점을 이어 준다.",
+    "solutionImageCaption": "컵이 위로 갈수록 넓어지므로 같은 양의 물에도 높이가 점점 천천히 올라가, 그래프는 기울기가 점점 완만해지는 곡선이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,

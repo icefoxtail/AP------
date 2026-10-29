@@ -157,7 +157,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 그릇 A(위로 갈수록 넓어지는 그릇), B(아래는 넓고 낮은 원기둥 위에 가는 관이 올라간 그릇), C(원기둥)의 단면을, 각 그릇에 매초 일정한 양의 물을 넣을 때 시간에 따른 물의 높이 그래프와 나란히 그린 그림이다. A의 그래프 ㉠은 기울기가 점점 완만해지는 곡선, B의 그래프 ㉢은 처음에는 완만하다가 관 부분에서 가팔라지는 꺾인 선, C의 그래프 ㉡은 직선이며, 점선은 그릇의 높이와 그래프의 꺾임점을 이어 준다.",
+    "solutionImageCaption": "같은 양의 물을 넣을 때 단면이 넓을수록 높이는 천천히, 좁을수록 빨리 오른다. A는 곡선 ㉠, B는 꺾인 선 ㉢, C는 직선 ㉡이 된다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 5,
