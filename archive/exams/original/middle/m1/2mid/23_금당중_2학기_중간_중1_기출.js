@@ -196,7 +196,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래쪽은 굵은 원기둥이고 위쪽은 더 가는 원기둥인 그릇의 단면과, 이 그릇에 매초 일정한 양의 물을 넣을 때 시간에 따른 물의 높이를 나타낸 그래프를 나란히 그린 그림이다. 그래프는 처음에는 기울기가 일정한 직선이다가 굵은 부분이 끝나는 높이에서 꺾여 기울기가 더 커지고, 점선은 두 부분의 경계 높이와 그래프의 꺾임점을 이어 준다.",
+    "solutionImageCaption": "단면이 넓은 아래쪽에서는 높이가 일정하게 천천히 오르고, 단면이 좁은 위쪽에서는 같은 양에도 더 빨리 올라 기울기가 커진다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,

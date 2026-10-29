@@ -6,12 +6,14 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {NUMBER_LINE_CAPABILITY,composeNumberLinePanel} from './quadratic-inequality-chain-v1.mjs';
-import {SOLID_CAPABILITY,composeSolidFigurePanel} from './solid-figure-v1.mjs';
+import {SOLID_CAPABILITY,GRID_PANEL_WIDTH,composeSolidFigurePanel} from './solid-figure-v1.mjs';
 import {isPlaneFigure} from './plane-marks.mjs';
 export const isNumberLinePanel=plan=>plan?.capability===NUMBER_LINE_CAPABILITY;
 export const isSolidPanel=plan=>plan?.capability===SOLID_CAPABILITY;
 // A plane-figure panel: the same axis-free PLANE_FIGURE_v1 construction plan authors already use for one figure.
 export const isPlanePanel=plan=>plan?.capability==='construction-spike-v1'&&plan.graphPlan===undefined&&isPlaneFigure(plan);
+// A grid panel is a plane figure or a solid figure (solid-figure-v1 solids or net): they share one two-column grid of equal cells.
+export const isGridPanel=plan=>isPlanePanel(plan)||isSolidPanel(plan);
 
 export const COMPOSITE_SVG_VERSION='composite-candidate-svg-v1';
 export const COMPOSITE_CAPABILITY='composite-panels-v1';
@@ -28,6 +30,8 @@ const GRID_CAPTION_PAD=8;
 // row (3*384+2*8 = 1168) is refused at measure with UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE; two columns (776) pass.
 // Graph stacks never take this path.
 export const COMPOSITE_MAX_PLANE_PANELS=5;
+// A grid with a solid panel is at most four panels (two rows of the two-column grid): a solid panel is taller than a plane canvas, and the page limit counts.
+export const COMPOSITE_MAX_SOLID_GRID_PANELS=4;
 export const compositeGridColumns=count=>Math.min(Math.max(count,1),2);
 // Shared rows above a three-panel stack (line equations every panel draws the same): 34 apart, then a gap before the first caption.
 export const COMPOSITE_SHARED_ROW=56;// a shared line equation may carry a full-size fraction (about 41 px high)
@@ -43,19 +47,26 @@ class Stop extends Error{constructor(status,detail=null){super(status);this.stat
 const isDomainCode=error=>error?.constructor===Error&&/^[A-Z][A-Z0-9_]*(?::|$)/.test(error.message);
 const digest=(value,reason)=>{try{return objectSha(value);}catch{throw new Stop('COMPOSITE_INPUT_NOT_CANONICAL',{reason});}};
 
-/** The panels of a composite plan, checked: 2-3 graph/number-line/solid panels stacked, or 2-5 PLANE_FIGURE_v1 panels in a grid. */
+/**
+ * The panels of a composite plan, checked: 2-3 graph/number-line panels stacked (or the one solid panel of a standalone solid figure), or a grid of
+ * 2-5 PLANE_FIGURE_v1 panels, or of 2-4 panels of which at least one is a solid figure (solid-figure-v1 solids or net) and the rest plane figures or solids.
+ */
 export function compositePanels(plan){
   const bad=reason=>{throw new Stop('COMPOSITE_PLAN_INVALID',{reason});};
   if(plan?.capability!==COMPOSITE_CAPABILITY||!Array.isArray(plan.panels))bad('PANELS');
-  const planePanels=plan.panels.map(panel=>isPlanePanel(panel?.plan));
-  const grid=planePanels.length>0&&planePanels.every(Boolean);
+  const planePanels=plan.panels.map(panel=>isPlanePanel(panel?.plan)),solidPanels=plan.panels.map(panel=>isSolidPanel(panel?.plan));
+  // The one-panel stack a standalone solid figure expands to (chain solid-figure-v1) keeps its own path; any other set of plane and solid panels is a grid.
+  const solidChain=plan.chain===SOLID_CAPABILITY;
+  const grid=!solidChain&&planePanels.length>0&&plan.panels.every((panel,index)=>planePanels[index]||solidPanels[index]);
+  const withSolid=grid&&solidPanels.some(Boolean);
   if(grid){
-    // An all-plane stack is a grid: no chain marker, 2-5 panels, every panel a PLANE_FIGURE_v1 construction plan.
+    // A grid: no chain marker, 2-5 plane panels (2-4 when a solid panel is among them), every panel a PLANE_FIGURE_v1 construction plan or a solid figure.
     if(plan.chain!==undefined)bad('CHAIN');
-    if(plan.panels.length<2||plan.panels.length>COMPOSITE_MAX_PLANE_PANELS)bad('PANELS');
+    if(plan.panels.length<2||plan.panels.length>(withSolid?COMPOSITE_MAX_SOLID_GRID_PANELS:COMPOSITE_MAX_PLANE_PANELS))bad('PANELS');
   }else{
-    // A plane panel is never mixed into a graph/number-line/solid stack: the two layouts use different geometry units.
+    // A plane or solid panel is never mixed into a graph/number-line stack: the layouts use different geometry units.
     if(planePanels.some(Boolean))bad('PANEL_PLANE_MIXED_'+planePanels.indexOf(true));
+    if(!solidChain&&solidPanels.some(Boolean))bad('PANEL_SOLID_MIXED_'+solidPanels.indexOf(true));
     if(plan.panels.length<(plan.chain==='number-line-figure-v1'||plan.chain===SOLID_CAPABILITY?1:2)||plan.panels.length>MAX_PANELS)bad('PANELS');
   }
   // Three panels with their own formula headers cannot fit the 640 CSS px stack: each formula moves to its caption row and a line every
@@ -65,6 +76,14 @@ export function compositePanels(plan){
     const caption=panel?.caption;
     if(!caption||typeof caption!=='object'||Array.isArray(caption)||Object.keys(caption).some(key=>!['math','text'].includes(key))||(!caption.math&&!caption.text)
       ||(caption.math!==undefined&&(typeof caption.math!=='string'||!CAPTION_MATH.test(caption.math)))||(caption.text!==undefined&&(typeof caption.text!=='string'||!caption.text||caption.text.length>24)))bad('PANEL_CAPTION_'+index);
+    if(grid&&solidPanels[index]){
+      // A solid panel is a plain solid-figure-v1 plan (solids or net): the figure's caption, conditions and quote belong to the composite, never to a panel.
+      // The grid sets the panel width itself (two panels and the gap must fit the Archive solution column); an author never writes it.
+      const panelPlan=panel.plan;
+      if(['caption','solidCaption','sourceConditions','newVisualInformation','sourceQuote'].some(key=>Object.hasOwn(panelPlan,key)))bad('PANEL_SOLID_PLAN_'+index);
+      if(panelPlan.panelWidth!==undefined&&panelPlan.panelWidth!==GRID_PANEL_WIDTH)bad('PANEL_SOLID_PLAN_'+index);
+      return {index,plan:{...panelPlan,panelWidth:GRID_PANEL_WIDTH},caption};
+    }
     if(grid){
       // Same schema bounds the single PLANE_FIGURE_v1 path enforces; the panel keeps its own model, marks and observer audits.
       const panelPlan=panel?.plan,math=panelPlan?.mathPlan;
@@ -110,8 +129,8 @@ export function compositePanels(plan){
     return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three?{compositeHeader:{formula:'CAPTION',sharedLines}}:twoCubic?{overviewHeaderBand:true}:{})}}};
   });
 }
-/** The stack or grid layout of the checked panels: graph/number-line/solid stacks stay one column; all-plane panels become a grid. */
-export const compositePanelLayout=checked=>checked.length>1&&checked.every(item=>isPlanePanel(item.plan))
+/** The stack or grid layout of the checked panels: graph/number-line stacks (and the one solid panel) stay one column; plane and solid panels become a grid. */
+export const compositePanelLayout=checked=>checked.length>1&&checked.every(item=>isGridPanel(item.plan))
   ?{kind:'GRID',columns:compositeGridColumns(checked.length),rows:Math.ceil(checked.length/compositeGridColumns(checked.length))}
   :{kind:'STACK',columns:1,rows:checked.length};
 /** The stacked/gridded size for panels of the given sizes (top margin, caption row per panel, gaps between panels): what the Archive policy must be measured for. */

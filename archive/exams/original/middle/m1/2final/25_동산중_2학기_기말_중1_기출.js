@@ -455,7 +455,7 @@ window.questionBank = [
         "$2x+1=3$"
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 각 방정식에 $x=1$을 대입하여 등식이 성립하는지 확인한다.\n① $2\neq0$, ② $2\neq-4$, ③ $2\neq0$, ④ $-\\dfrac12\neq2$이고, ⑤는 $2\\times1+1=3$으로 성립한다.\n따라서 정답은 ⑤이다.",
+      "solution": "[키포인트] 각 방정식에 $x=1$을 대입하여 등식이 성립하는지 확인한다.\n① $2\\neq0$, ② $2\\neq-4$, ③ $2\\neq0$, ④ $-\\dfrac12\\neq2$이고, ⑤는 $2\\times1+1=3$으로 성립한다.\n따라서 정답은 ⑤이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION",
       "subUnit": "일차방정식",
       "subUnitConfidence": "rule_inferred",
@@ -689,7 +689,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:4469175f086af71b4b9e19208effe04b4b3023353040e75617cebfcbd63dd843",
-      "difficultyEvidenceSha": "sha256:8996827d9aecff0f35075843c0501011b038b41f46d874e533e8a21e871120bd"
+      "difficultyEvidenceSha": "sha256:8996827d9aecff0f35075843c0501011b038b41f46d874e533e8a21e871120bd",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면에서 점 P(a,b)의 x좌표 a와 y좌표 b를 축으로 내린 점선으로 읽는 모습과, 두 좌표가 모두 음수인 제3사분면에 점 A가 있음을 보여 주는 그림.",
+      "solutionImageCaption": "원점 O(0,0), P(a,b)의 좌표 읽기, 제3사분면의 점 A.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 17,
@@ -732,7 +736,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9c3412cff450e9e800c6503d4142494a2b24879ad22d595905bb6e2c1dcc670a",
-      "difficultyEvidenceSha": "sha256:c0c33868c1323fea5717f5e0d25fad9b339a4758f4d349e2ea0d7dddec220441"
+      "difficultyEvidenceSha": "sha256:c0c33868c1323fea5717f5e0d25fad9b339a4758f4d349e2ea0d7dddec220441",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 예시 a=3, b=-2에서 제4사분면의 점 A(3,-2)와 같은 값으로 구한 점 B(b-a, -a/b)=(-5, 3/2)의 위치를 좌표평면에 나타낸 그림.",
+      "solutionImageCaption": "예시 a=3, b=-2일 때 점 A(3,-2)와 점 B(-5, 3/2)의 위치.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 18,
@@ -766,16 +774,16 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q18-solution.svg",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q18-solution-v2.svg",
       "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:532cf3e11e77b37589f4435ee5a5d3e751d51fe7ad797b664c28dc857463db3a",
       "difficultyEvidenceSha": "sha256:775c0d9cc75835b8c845e1970c92d0204fc2fb9c27d539c8be8904017801ada8",
-      "solutionImageAlt": "시간에 따라 속력이 증가한 뒤 일정해지는 속력-시간 그래프",
-      "solutionImageCaption": "속력이 증가하는 선분 뒤에 속력이 일정한 수평선이 이어진다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 시간 축과 속력 축에서 속력이 올라가는 구간 뒤에 속력이 일정한 수평 구간이 이어지는 꺾은선 그래프. 증가 구간은 0이 아닌 속력에서 시작한다.",
+      "solutionImageCaption": "속력이 증가하다가 일정해지는 그래프.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 19,
@@ -907,16 +915,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q21-solution.svg",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q21-solution-v2.svg",
       "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
       "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:793a6a1756667755e2b05eda598d5d660c142a58b292dbdf4c976ea823ae3d72",
       "difficultyEvidenceSha": "sha256:d0cbb131c289d1861d60e00f03c808d3f9f7bdfb884c7308a0c9314871f1d5a2",
-      "solutionImageAlt": "y=ax와 y=b/x 그래프가 (-6,2)에서 만나며 a=-1/3, b=-12임을 표시한 좌표평면",
-      "solutionImageCaption": "공통 교점 (-6,2)를 두 식에 각각 대입해 ab를 구한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 반비례 그래프 y=b/x와 정비례 직선 y=ax가 제2사분면의 점 P(-6, 2)에서 만나고, 점 P에서 x축의 -6과 y축의 2로 점선을 내린 그림.",
+      "solutionImageCaption": "두 그래프는 점 (-6, 2)를 함께 지난다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 22,
@@ -1029,15 +1037,15 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q24-solution.svg",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q24-solution-v2.svg",
       "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:a07a4b1aeff5a7cbf19374f205530c22d536c70026ea32de216340ce19799ff9",
       "difficultyEvidenceSha": "sha256:5424c9aedc3d3a281cf2df5a3a6712bc420f41a00a9930296343f91b62357b05",
-      "solutionImageAlt": "시간-거리 그래프에서 토끼는 (10,0)에서 출발하고 거북은 (60,2)를 지나는 모습",
-      "solutionImageCaption": "두 선에서 토끼의 출발 시각과 거북이 2 km에 도달한 시각을 좌표로 읽는다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 시간(분) 축과 거리(km) 축에서 거북은 원점에서 (60,2)까지 직선으로, 토끼는 (10,0)에서 출발해 40분에 2km 지점에 도착한 뒤 수평으로 이어지는 그래프이며 10~60분 눈금과 2km 점선이 표시된 그림.",
+      "solutionImageCaption": "토끼는 10분에 출발하고 거북은 60분에 2km 지점에 도착한다.",
+      "solutionImageSize": "medium"
     }
   ];

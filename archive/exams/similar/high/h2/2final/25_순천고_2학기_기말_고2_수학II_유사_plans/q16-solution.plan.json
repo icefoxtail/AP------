@@ -1,0 +1,87 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$S(t)=\\dfrac12\\cdot t\\cdot t^2(4-t)$",
+  "caption": "곡선 위의 점 P(t, f(t))와 수선의 발 H로 이루어진 삼각형 POH이며, 넓이는 t=3에서 최대이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "4",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1.5,
+      5.5,
+      -3,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3"
+        },
+        {
+          "id": "H",
+          "axis": "x",
+          "value": "3"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PH",
+          "from": "P",
+          "to": "H",
+          "dashed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "P",
+            "O",
+            "H"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "pointNames": {
+      "P": "P",
+      "H": "H",
+      "O": "O",
+      "A": "A"
+    }
+  },
+  "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q16-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q16-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q16-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q16-solution.svg"
+  }
+}

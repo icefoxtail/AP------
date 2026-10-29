@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "25_순천고_2학기_기말_고2_수학II_유사",
+  "sourceExam": "archive/exams/original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [],
+  "generatedCrossConcepts": [
+    {
+      "key": "EXT-CROSS-POLYNOMIAL-BOUNDED-LINEAR",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "모든 실수에서 유계인 다항식 차이는 상수 또는 일차 이하",
+      "definition": "모든 실수 t에 대해 f(mt)-f(mt-c)와 같은 다항식 차이가 일정한 범위에 갇히면 그 다항식의 차수가 1 이하라는 차수 판단을 이용해 함수를 일차식으로 한정하는 개념.",
+      "parentKey": "CC_DEGREE_DETERMINATION",
+      "parentLabelKo": "항등식에서 다항식의 차수 결정",
+      "standardUnitKey": "H15-M2-04",
+      "subUnitKey": "H15-M2-04-DERIVATIVE",
+      "standardCourse": "수학II",
+      "curriculum": "2015",
+      "basis": "f가 이차 이상이면 f(3t)-f(3t-6)이 t의 일차 이상 다항식이라 유계일 수 없어 f가 일차함수(Q22)",
+      "firstUsed": {
+        "stem": "25_순천고_2학기_기말_고2_수학II_유사",
+        "qid": 22
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js",
+        "generator": "GEN_HIGH_SIMILAR_v1",
+        "createdAt": "2026-10-29",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedConditions": [],
+  "reusedGeneratedKeys": [],
+  "aliasProposals": [],
+  "uidAssignments": [
+    {
+      "stem": "25_순천고_2학기_기말_고2_수학II_유사",
+      "qid": 22,
+      "generatedKeys": [
+        "EXT-CROSS-POLYNOMIAL-BOUNDED-LINEAR"
+      ]
+    }
+  ],
+  "noStudentRelease": true
+}

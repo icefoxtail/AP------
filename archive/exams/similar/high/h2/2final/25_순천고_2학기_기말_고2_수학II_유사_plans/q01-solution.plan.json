@@ -1,0 +1,61 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$v(t)=x'(t)=3t^2-12t-15$",
+  "caption": "속도 v(t)=3(t−5)(t+1)은 t=5에서 0이 되고 부호가 음에서 양으로 바뀐다. 가로축은 시각 t, 세로축은 속도이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-15",
+      "-12",
+      "3"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        6
+      ]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      -30,
+      25
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": -27
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2,
+        4,
+        6
+      ],
+      "y": [
+        10,
+        20
+      ]
+    },
+    "applicationAxes": true,
+    "axisVariable": "t"
+  },
+  "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q01-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q01-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q01-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q01-solution.svg"
+  }
+}

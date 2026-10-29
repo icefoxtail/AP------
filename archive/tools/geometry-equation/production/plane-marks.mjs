@@ -9,16 +9,49 @@ export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_R
 export const COORDINATE_RECIPE='SOURCE_COORDINATE_AXES_v1';
 export const isCoordinateFigure=(plan,model)=>plan?.mathPlan?.realization?.recipeId===COORDINATE_RECIPE&&model?.coordinateMode==='SOURCE_COORDINATES';
 export const planeMarksAllowed=(plan,model)=>isPlaneFigure(plan)||isCoordinateFigure(plan,model);
+// hiddenPointStyle "NONE" (a plane figure or a coordinate figure with axes): the points listed in hiddenPointNames are drawn with no dot and no name.
+// The independent observer is told these ids from the PLAN, never from the engine, and expects no marker at them (every other point must keep its dot).
+// A coordinate figure is recognised by its recipe here; phase2 also checks the model's coordinate mode and refuses the style on any other figure.
+// `unmarkedPointNames` (with the default style) picks single hidden points that get no dot, the others keeping theirs (the four read points of a coordinate
+// figure keep their dots while the feet of the perpendiculars that only guide the dashed segments draw none).
+export const unmarkedPointIds=plan=>{
+  if(!(isPlaneFigure(plan)||plan?.mathPlan?.realization?.recipeId===COORDINATE_RECIPE))return [];
+  if(plan?.hiddenPointStyle==='NONE')return Array.isArray(plan.hiddenPointNames)?[...plan.hiddenPointNames]:[];
+  return Array.isArray(plan?.unmarkedPointNames)?[...plan.unmarkedPointNames]:[];
+};
+// Texts of a plan that write point names (caption and the labels of marks/lengths), for the check that a nameless point is never named in text.
+export function planNameTexts(plan){
+  const out=[],add=value=>{if(typeof value==='string')out.push(value);else if(value&&typeof value==='object'&&!Array.isArray(value)){add(value.text);add(value.math);}};
+  add(plan?.caption);
+  const marks=plan?.planeMarks&&typeof plan.planeMarks==='object'?plan.planeMarks:{};
+  for(const row of Array.isArray(marks.angles)?marks.angles:[])add(row?.label);
+  for(const row of Array.isArray(marks.arcs)?marks.arcs:[])add(row?.label);
+  for(const row of Array.isArray(marks.regions)?marks.regions:[])add(row?.label);
+  for(const row of Array.isArray(marks.expressionLabels)?marks.expressionLabels:[])add(row?.text);
+  for(const row of Array.isArray(plan?.scalarLabels)?plan.scalarLabels:[]){add(row?.prefix);add(row?.unit);}
+  return out;
+}
+/** True when `text` writes the point id as a name (a capital letter run such as AB or an id beside non-letters); TeX commands such as \angle are ignored. */
+export function textNamesPoint(text,id){
+  const plain=String(text).replace(/\\[A-Za-z]+/gu,' ');
+  const escaped=id.replace(/[.*+?^${}()|[\]\\]/gu,'\\$&');
+  return new RegExp('(?<![a-z0-9_])'+escaped+"(?![a-z0-9_\u2032\u2033'])",'u').test(plain);
+}
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts'],
-  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','equalGroup','factRole','noLabel'],
+  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','equalGroup','emphasisGroup','factRole','noLabel'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
-  expressionLabels:['id','ownerSegment','text','factRole'],
-  arcs:['id','circle','center','from','to','side','label','labelKind','highlight','factRole'],
-  traces:['id','center','radius','through','spanDeg','label','factRole'],
+  expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit'],
+  arcs:['id','circle','center','from','to','side','label','labelKind','unit','highlight','factRole'],
+  traces:['id','center','radius','through','spanDeg','label','labelKind','unit','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
+// emphasisGroup (angles): angles of one group draw their arcs in one colour (group 1 red, 2 blue, 3 green), so an angle that belongs to two relations
+// (a pair of corresponding angles AND a pair of vertical angles) shows which relation each arc belongs to; equalGroup (the arc count) is independent of it.
+export const ANGLE_EMPHASIS_GROUPS=3;
+// A label's `unit` (cm, m, mm) is written after a MATH label's expression; a TEXT label is plain Korean text and takes none.
+export const LABEL_UNITS=['cm','m','mm'];
 const bad=code=>{throw Error(code);};
 const keysOk=(row,allowed,where)=>{for(const key of Object.keys(row))if(!allowed.includes(key))bad('MARK_FIELD_UNKNOWN:'+where+'.'+key);};
 const numberOf=value=>{const n=typeof value==='string'&&value.trim()!==''?Number(value):value;return typeof n==='number'&&Number.isFinite(n)?n:null;};
@@ -50,6 +83,16 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(label==null||label==='')return allowNone?null:'';
     return label;
   };
+  // `unit` on a label: only a known unit, only with a MATH label (never a plain TEXT, degree or angle-name label), only with a label to carry it.
+  const unitOf=(row,kind,hasLabel,where)=>{
+    if(row.unit===undefined)return null;
+    if(!LABEL_UNITS.includes(row.unit))bad('MARK_UNIT_INVALID:'+where+':'+row.id);
+    if(kind!=='MATH')bad('MARK_UNIT_REQUIRES_MATH_LABEL:'+row.id);
+    if(!hasLabel)bad('MARK_UNIT_REQUIRES_LABEL:'+row.id);
+    return row.unit;
+  };
+  // A plain Korean label (labelKind TEXT): one line of at most 40 characters.
+  const plainTextOk=(text,where,id)=>{if(typeof text!=='string'||!text.trim()||text.length>40||/[\r\n\t\\$]/.test(text))bad('MARK_FIELD_INVALID:'+where+':'+id);};
 
   // --- angle arcs
   const groups=new Map();
@@ -81,6 +124,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     // A degree label names the declared value; a mark with neither a label nor `noLabel` states nothing a student can read.
     const text=labelOf(row,declared!==null?String(row.value).replace(/\.0+$/,''):null,true);
     if(text===null&&row.noLabel!==true)bad('ANGLE_MARK_LABEL_REQUIRED:'+row.id);
+    if(row.emphasisGroup!==undefined&&(!Number.isInteger(row.emphasisGroup)||row.emphasisGroup<1||row.emphasisGroup>ANGLE_EMPHASIS_GROUPS))bad('ANGLE_EMPHASIS_GROUP_INVALID:'+row.id);
     if(row.equalGroup!==undefined){
       if(!Number.isInteger(row.equalGroup)||row.equalGroup<1)bad('MARK_FIELD_INVALID:angles.equalGroup:'+row.id);
       const g=groups.get(row.equalGroup)??{measured,arcs,style,ids:[]};
@@ -89,7 +133,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(g.style!==style)bad('ANGLE_EQUAL_GROUP_STYLE_MISMATCH:'+row.id);
       g.ids.push(row.id);groups.set(row.equalGroup,g);
     }
-    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(side==='OUTER'?{outer:true}:{})};
+    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{})};
     if(text!==null){object.labelText=text;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
@@ -125,9 +169,14 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     keysOk(row,KEYS.expressionLabels,'expressionLabels');claim(row.id,'expressionLabels');
     const [p,q]=segEnds(row.ownerSegment);
     if(typeof row.text!=='string'||!row.text.trim()||row.text.length>40)bad('MARK_FIELD_INVALID:expressionLabels.text:'+row.id);
+    const kind=row.labelKind??'MATH';
+    if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:expressionLabels.labelKind:'+row.id);
+    if(kind==='TEXT')plainTextOk(row.text,'expressionLabels.text',row.id);
+    const unit=unitOf(row,kind,true,'expressionLabels');
     const mid=[(p[0]+q[0])/2,(p[1]+q[1])/2];
     objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:mid,lineOwned:true,
-      alternateAt:[0.3,0.7].map(t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t]),gaps:[8,6,10,20,32,48],priority:1});
+      alternateAt:[0.3,0.7].map(t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t]),gaps:[8,6,10,20,32,48],priority:1,
+      ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
     factRolesByLabel[row.id]=role(row);
   }
 
@@ -147,10 +196,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(Math.abs(ccw-Math.PI)<1e-9)bad('ARC_SIDE_AMBIGUOUS:'+row.id);
       const minorCcw=ccw<Math.PI;sweep=(row.side==='MAJOR')===minorCcw?'CW':'CCW';
     }else bad('MARK_FIELD_INVALID:arcs.side:'+row.id);
-    const kind=row.labelKind??'DEGREE';
-    if(!['DEGREE','NAME','MATH'].includes(kind))bad('MARK_FIELD_INVALID:arcs.labelKind:'+row.id);
+    const kind=row.labelKind??(row.unit!==undefined?'MATH':'DEGREE');   // a unit goes with a math label: it names a length, not an angle
+    // TEXT writes the label as plain Korean text (a name such as "호 AB"); DEGREE, NAME and MATH are the angle-style math labels.
+    if(!['DEGREE','NAME','MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:arcs.labelKind:'+row.id);
+    if(kind==='TEXT'&&row.label!==undefined)plainTextOk(String(row.label),'arcs.label',row.id);
+    const unit=unitOf(row,kind,row.label!==undefined,'arcs');
     const object={id:row.id,kind:'CIRCULAR_ARC',centerPoint:row.center,startPoint:row.from,endPoint:row.to,sweep,highlight:row.highlight!==false};
-    if(row.label!==undefined){object.labelText=String(row.label);object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
+    if(row.label!==undefined){object.labelText=String(row.label);object.labelKind=kind;if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
 
@@ -183,9 +235,17 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const span=row.spanDeg===undefined?24:numberOf(row.spanDeg);
     if(span===null||span<2||span>120)bad('TRACE_SPAN_INVALID:'+row.id);
     const label=row.label===undefined?null:String(row.label);
-    if(label!==null&&!/^[1-9][0-9]?$/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);
+    const kind=row.labelKind??'MATH';
+    if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:traces.labelKind:'+row.id);
+    const unit=unitOf(row,kind,label!==null,'traces');
+    // MATH: the construction order digit 1..99, or with a unit the length that radius stands for (a positive number or one letter);
+    // TEXT: a plain Korean mark such as the order sign (up to 40 characters).
+    if(label!==null){
+      if(kind==='TEXT'){if(label.trim()===''||label.length>40||/[\r\n\t\\$]/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);}
+      else if(unit?!/^(?:[0-9]+(?:\.[0-9]+)?|[A-Za-z])$/.test(label)||/^0+(?:\.0+)?$/.test(label):!/^[1-9][0-9]?$/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);
+    }
     const object={id:row.id,kind:'TRACE_ARC',centerPoint:row.center,through:[...row.through],spanDeg:span,...(radiusPoint?{radiusPoint}:{radiusSegment})};
-    if(label!==null){object.labelText=label;factRolesByLabel[row.id+'-label']=role(row);}
+    if(label!==null){object.labelText=label;if(kind==='TEXT')object.labelKind='TEXT';if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
 
@@ -218,4 +278,63 @@ export function planeMarkPointRefs(plan){
   for(const row of Array.isArray(marks.traces)?marks.traces:[]){refs.push(row?.center,row?.radius?.point,...(Array.isArray(row?.through)?row.through:[]));}
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
   return [...refs,...regionPointRefs(plan)].filter(id=>typeof id==='string');
+}
+
+// ---- framing room for arc labels (E11) -------------------------------------------------------------------------------------------------
+// A label on a circular arc stands OUTSIDE its circle (the layout tries the directions that point away from the centre, gap 14 px and up).
+// The tight plane-figure frame leaves too little canvas there, so a plan with labelled arcs widens its model bounds until every label has
+// room on the sides its arc faces. Sizes are px estimates at a conservative font (the policy font is 20 to 32 px, measured later); a plan
+// without a labelled arc is returned unchanged, so every other figure keeps its frame byte for byte.
+export const ARC_LABEL_FONT_ESTIMATE_PX=26;
+const ARC_LABEL_FIRST_GAP_PX=18,ARC_LABEL_SAFE_PX=12,ARC_LABEL_VIEW_MARGIN_PX=32,ARC_LABEL_FACING=0.38;
+export function arcLabelBoxEstimate(row){
+  const text=String(row.label),font=ARC_LABEL_FONT_ESTIMATE_PX,kind=row.labelKind??(row.unit!==undefined?'MATH':'DEGREE');
+  const hangul=/[ᄀ-ᇿ㄰-㆏㈀-㋿가-힯]/;
+  let em;
+  if(kind==='TEXT')em=[...text].reduce((sum,ch)=>sum+(hangul.test(ch)?1.05:0.6),0);
+  else{
+    em=[...text.replace(/\s+/g,'')].length*0.62+(kind==='DEGREE'?0.45:kind==='NAME'?0.8:0);
+    if(row.unit!==undefined)em+=String(row.unit).length*0.6+(/[A-Za-z]$/.test(text)?0.25:0);
+  }
+  return {width:Math.ceil(em*font),height:Math.ceil(font*(kind!=='TEXT'&&/[\/^_]|sqrt/.test(text)?2.0:1.1))};
+}
+// Where each labelled arc's label hangs: the arc's middle (model units), the outward unit vector, the arc's own extreme points and the label size estimate.
+export function arcLabelSites(plan,model,points){
+  const rows=Array.isArray(plan?.planeMarks?.arcs)?plan.planeMarks.arcs:[],sites=[];
+  for(const row of rows){
+    if(!row||typeof row!=='object'||row.label===undefined)continue;
+    try{
+      const [cx,cy,r]=model.circles[row.circle].approximation,center=points[row.center].approximation,start=points[row.from].approximation,end=points[row.to].approximation;
+      const a0=Math.atan2(start[1]-center[1],start[0]-center[0]);
+      const ccw=(((Math.atan2(end[1]-center[1],end[0]-center[0])-a0)%(2*Math.PI))+2*Math.PI)%(2*Math.PI);
+      if(!(ccw>1e-9)||(Math.abs(ccw-Math.PI)<1e-9&&(row.side===undefined||row.side==='MINOR'||row.side==='MAJOR')))continue;
+      const counter=row.side==='CCW'||(row.side!=='CW'&&(row.side==='MAJOR')!==(ccw<Math.PI));
+      const span=counter?ccw:2*Math.PI-ccw,direction=counter?1:-1,middle=a0+direction*span/2;
+      const extremes=[0,1,2,3].map(k=>k*Math.PI/2).filter(angle=>(((angle-a0)*direction)%(2*Math.PI)+2*Math.PI)%(2*Math.PI)<=span).map(angle=>[cx+r*Math.cos(angle),cy+r*Math.sin(angle)]);
+      sites.push({id:row.id,anchor:[cx+r*Math.cos(middle),cy+r*Math.sin(middle)],outward:[Math.cos(middle),Math.sin(middle)],extremes,...arcLabelBoxEstimate(row)});
+    }catch{/* planeMarkSpec reports the real error */}
+  }
+  return sites;
+}
+export function arcLabelFraming(plan,model,points,bounds,canvas){
+  if(!isPlaneFigure(plan))return bounds;
+  const sites=arcLabelSites(plan,model,points);
+  if(!sites.length)return bounds;
+  let {xMin,xMax,yMin,yMax}=bounds;
+  for(const site of sites)for(const [x,y] of [site.anchor,...site.extremes]){xMin=Math.min(xMin,x);xMax=Math.max(xMax,x);yMin=Math.min(yMin,y);yMax=Math.max(yMax,y);}
+  const M=ARC_LABEL_VIEW_MARGIN_PX,plotW=canvas.width-2*M,plotH=canvas.height-2*M;
+  for(let pass=0;pass<80;pass++){
+    const sx=Math.min(plotW/(xMax-xMin),plotH/(yMax-yMin)),left=M+(plotW-sx*(xMax-xMin))/2,top=M+(plotH-sx*(yMax-yMin))/2;
+    const grow={left:0,right:0,top:0,bottom:0};
+    for(const site of sites){
+      const X=left+(site.anchor[0]-xMin)*sx,Y=top+(yMax-site.anchor[1])*sx,[ux,uy]=site.outward,gap=ARC_LABEL_FIRST_GAP_PX,safe=ARC_LABEL_SAFE_PX;
+      if(ux>ARC_LABEL_FACING)grow.right=Math.max(grow.right,X+gap+site.width-(canvas.width-safe));
+      if(ux<-ARC_LABEL_FACING)grow.left=Math.max(grow.left,safe-(X-gap-site.width));
+      if(uy>ARC_LABEL_FACING)grow.top=Math.max(grow.top,safe-(Y-gap-site.height));
+      if(uy<-ARC_LABEL_FACING)grow.bottom=Math.max(grow.bottom,Y+gap+site.height-(canvas.height-safe));
+    }
+    if(Math.max(grow.left,grow.right,grow.top,grow.bottom)<=0.05)break;
+    xMin-=Math.max(grow.left,0)/sx;xMax+=Math.max(grow.right,0)/sx;yMin-=Math.max(grow.bottom,0)/sx;yMax+=Math.max(grow.top,0)/sx;
+  }
+  return {xMin,xMax,yMin,yMax};
 }

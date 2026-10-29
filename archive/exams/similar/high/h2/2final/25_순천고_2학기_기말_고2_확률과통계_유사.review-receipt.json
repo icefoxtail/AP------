@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "25_순천고_2학기_기말_고2_확률과통계_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계_유사.meta-q01-q24.json",
+  "candidateGitBlobSha1": "45a8d905ef955628b30f311b43d842023007808f",
+  "reviewTimestamp": "2026-10-29T12:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS",
+  "blindSolve": {
+    "freezeFile": "/tmp/claude-0/-home-claude-ap------/7f318204-7110-5f87-941f-bd9940f7c6c5/scratchpad/rev6/blind_freeze.md",
+    "freezeOrder": "학생 노출 필드(content/choices/표)만 추출한 student.txt로 24문항 전부를 answer/solution/메타 열람 전에 직접 풀이·동결 후 저장 answer와 대조",
+    "totalSolved": 24,
+    "answerMatches": 24,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "correctedAfterCompare": 0,
+    "frozenAnswers": {
+      "1": "③",
+      "2": "②",
+      "3": "④",
+      "4": "①",
+      "5": "①",
+      "6": "③",
+      "7": "②",
+      "8": "④",
+      "9": "⑤",
+      "10": "②",
+      "11": "③",
+      "12": "④",
+      "13": "①",
+      "14": "⑤",
+      "15": "③",
+      "16": "⑤",
+      "17": "⑤",
+      "18": "④",
+      "19": "⑤",
+      "20": "②",
+      "21": "①",
+      "22": "0.9332",
+      "23": "20",
+      "24": "203/144"
+    }
+  },
+  "originalComparison": {
+    "questionCountMatch": "24/24",
+    "scoreSum": {
+      "original": 100,
+      "similar": 100,
+      "perQuestionPointsEqual": true
+    },
+    "levelPerQidEqualToOriginal": true,
+    "answerValueCoincidenceWithOriginal": "없음(전 문항 정답 값·키 다름). 단 Q8은 원본(0.91, z -2~1.5)과 유사(0.9104, z -1.5~2)가 구간 좌우만 바뀐 약한 변형이라 숫자가 근사 일치 — 유형·난이도 대응은 유지되어 결함으로 올리지 않고 관찰 사항으로 기록",
+    "structure": "원본 번호별 유형(이항분포 평균/신뢰구간/표본평균/정규근사/밀도함수/서술형 3문항) 1:1 대응. Q10 불량 판정을 상한(60h 이하)으로 바꿔 z=-2→p=0.02→정규근사 흐름 유지"
+  },
+  "answerSlotDistribution": {
+    "객관식": 21,
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 5,
+    "서술형": 3
+  },
+  "scoreAndCount": {
+    "questionCount": 24,
+    "scoreSum": 100.0,
+    "nodeCheck": "PASS",
+    "katexOddDollarQids": []
+  },
+  "reviewerDirectFixes": [
+    {
+      "qid": 21,
+      "field": "solution",
+      "change": "확률과 통계 교육과정에 없는 정적분 기호(∫)를 쓴 해설을 사다리꼴 넓이 합 표현으로 교체(수치·정답 불변)"
+    },
+    {
+      "qid": 2,
+      "field": "meta",
+      "change": "crossConceptKeys [] -> [CC_BINOMIAL_DISTRIBUTION_MOMENTS], integrationPattern NONE -> SEQUENTIAL (이항분포 평균 후 일차변환; 해설·reason과 일치)"
+    },
+    {
+      "qid": 9,
+      "field": "meta",
+      "change": "crossConceptKeys [] -> [CC_BINOMIAL_DISTRIBUTION_MOMENTS], integrationPattern NONE -> SEQUENTIAL"
+    },
+    {
+      "qid": 13,
+      "field": "meta",
+      "change": "crossConceptKeys [] -> [CC_PARTIAL_FRACTION_DECOMPOSITION], integrationPattern NONE -> SEQUENTIAL (부분분수 소거가 필수 단계)"
+    },
+    {
+      "qid": 18,
+      "field": "meta",
+      "change": "crossConceptKeys [] -> [CC_INDEPENDENT_EVENTS_MULTIPLICATION], reason의 '미부여' 문구를 수정 (2×0.77×0.23이 최종 풀이)"
+    },
+    {
+      "qid": 21,
+      "field": "meta",
+      "change": "crossConceptKeys [] -> [CC_PROBABILITY_DENSITY_SYMMETRY], integrationPattern NONE -> SEQUENTIAL (f·g 대칭이 넓이 계산에 직접 사용)"
+    },
+    {
+      "qid": 24,
+      "field": "meta",
+      "change": "crossConceptKeys [] -> [CC_INDEPENDENT_EVENTS_MULTIPLICATION], integrationPattern NONE -> CASE_BRANCH"
+    },
+    {
+      "scope": "JS+meta",
+      "change": "위 메타 변경을 JS 문항 필드에도 동기화하고 JS-메타 12개 키 필드 불일치 0 확인, expectedSourceBlobSha1 갱신"
+    }
+  ],
+  "metaReview": {
+    "coverage": {
+      "fieldsFilled": "600/600 (24문항 x 25필드, crossConcept/condition은 빈 배열을 NOT_APPLICABLE로 인정)",
+      "canonicalKeysUsed": {
+        "standardUnit": 2,
+        "subUnit": 6,
+        "problemType": 6,
+        "template": 9,
+        "crossConcept": 5,
+        "condition": 3,
+        "rpmCrosswalkRows": 10
+      },
+      "crossConceptItems": 8,
+      "conditionItems": 4,
+      "reusedExtensionKeys": 0,
+      "newExtensionKeys": 0,
+      "newExtensionParentVerified": "해당 없음(새 확장 키 없음, registryChanges [])",
+      "aliasProposals": 0,
+      "evidenceDebt": 0
+    },
+    "keyExistenceVerification": "CC 7종은 canonical/concepts/*.json ACTIVE conceptKey로, COND 3종은 condition_registry로, PT 6/TPL 9는 canonical taxonomy/bindings로, RPM 행 10개는 crosswalks/rpm-primary-v1.0/high2-probability-statistics.json의 id와 l1~l4가 일치함을 스크립트로 직접 조회",
+    "notes": [
+      "Q10·Q23 TPL_BINOMIAL_NORMAL_RELATION(canonical, parent PT_NORMAL_DISTRIBUTION)은 crosswalk 행 H2-PS-RPM-027의 기본 템플릿(TPL_NORMAL_DISTRIBUTION_APPLICATION)과 다르나, 최종 풀이의 결정 구조가 이항분포의 정규근사이므로 의미상 타당 — 유지",
+      "일부 subUnitKey가 crosswalk 행 기본값과 다름(Q2·9·11·13·24 PROBABILITY_DISTRIBUTION, Q15·21 RANDOM_VARIABLE, Q18 ESTIMATION_APPLICATION)은 모두 canonical 하위 단원이며 원본 JS의 단원 표기와 일치하므로 허용",
+      "level은 원본 level과 24문항 모두 동일, difficultyBucket은 사고단계 독립 판정(Q16 level 중/bucket 1 등 합리적)",
+      "rpmSemanticStatus는 전부 SELF_CHECKED이며 승인(approval)은 review_required 유지(중등 예시 방식) — 병합 단계에서 승격"
+    ]
+  },
+  "planSvgReview": {
+    "planFiles": "48/48 (2x24) 유효 JSON",
+    "active": [
+      "q15-solution: piecewise-polynomial-spike-v1, sourceQuote가 해설에 실존, caption·assetPath·engineEvidence(result/state/svg) 모두 존재하고 ARCHIVE_BOUND, plans의 svg와 assets svg가 바이트 동일"
+    ],
+    "q15SvgManualCheck": "PNG 변환 불가(rsvg/convert 미동작)로 SVG path를 직접 PIL로 래스터화해 확인: 점 A(0,2/3), B(2,0), C(5,2/9)와 왼쪽·오른쪽 삼각형 두 영역(밑변 2, 3) 및 좌표축이 해설(a=1/3,b=2/9)과 일치. 글리프는 path로 임베드되어 텍스트 레이어 11px 검사는 해당 없음, raw LaTeX 없음, title/desc/role=img 있음(desc는 엔진 고정 문구).",
+    "exempt": "발문 그림 24/24 EXEMPT(분포표는 KaTeX 배열로 제시, 밀도함수는 식으로 완결·그래프는 정답 누설), 해설 그림 15건 EXEMPT",
+    "unsupported": "해설 그림 Q7·Q8·Q10·Q18·Q19·Q21·Q22·Q23 8건 UNSUPPORTED(정규분포 곡선·색칠 영역, Q21은 f·g 스케일 문제) — 발문은 모두 그림 없이 완결이고 해설은 글·수식으로 완결이므로 오류는 아니나 엔진 보강 시 추가 가치가 있는 후보",
+    "missingFigureQids": {
+      "problem": [],
+      "solution": [
+        7,
+        8,
+        10,
+        18,
+        19,
+        21,
+        22,
+        23
+      ]
+    }
+  },
+  "harness": {
+    "command": "node tools/harness/verify_similar_exam.mjs <JS> --phase=draft",
+    "result": "GATE_FAIL 56건",
+    "breakdown": {
+      "toolLimit": "48건 = 24문항 x (problemTypeKey, templateKey) 'unregistered ... in canonical taxonomy' — 하네스가 중등 taxonomy만 조회하는 도구 한계(실제 키는 확통 canonical에 실재 확인)",
+      "contentOrEngine": "8건 = 위 UNSUPPORTED 해설 plan이 'production-visual PASS'로 쓰일 수 없다는 게이트 문구(엔진 지원 범위 한계; 문항 내용 결함 아님)",
+      "realContentDefects": 0
+    },
+    "toolsNotModified": true
+  },
+  "nodeCheck": "PASS",
+  "NOT_RUN": [
+    "브라우저 실화면/KaTeX 렌더 확인",
+    "인쇄 미리보기",
+    "render-plan 재실행(수정이 해설 텍스트·메타뿐이라 그림 입력 불변)",
+    "정규분포 곡선 SVG(엔진 미지원)"
+  ],
+  "defects": [],
+  "openIssuesForOrchestrator": [
+    "Q8 원본과 숫자 근사 일치(관찰, 비차단)",
+    "해설 그림 8건 UNSUPPORTED 후속 후보",
+    "points 필드: 이 시험지는 harness 요구 및 중등 유사 JS 관행에 따라 유지. 기존 고등 유사 JS 일부엔 없으나 엔진은 학생 화면에서 points를 소비하지 않고 발문 내 [x점]이 점수 표기를 담당하므로 영향 없음"
+  ]
+}

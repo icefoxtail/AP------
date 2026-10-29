@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1/2",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "(x-1)/2",
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "확률밀도함수의 그래프와 x축으로 둘러싸인 삼각형 S의 넓이가 1이다.",
+  "sourceQuote": "밑변이 $2$, 높이가 $2a$인 삼각형의 넓이를 이용한다.",
+  "sourceConditions": [
+    {
+      "id": "q08-c1",
+      "condition": "문항의 해설 풀이에 쓰인 값과 관계를 그림으로 옮긴다."
+    }
+  ],
+  "newVisualInformation": "밑변 2, 높이 2a=1, 넓이 S=1",
+  "assetPath": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계_유사/q08-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q08-solution/figure-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q08-solution/figure-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q08-solution/figure-solution.svg"
+  }
+}

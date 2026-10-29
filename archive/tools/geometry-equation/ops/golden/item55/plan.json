@@ -1,0 +1,88 @@
+{
+  "capability": "container-fill-figure-v1",
+  "container": {
+    "pairs": [
+      {
+        "vessel": {
+          "name": "A",
+          "profile": [
+            {
+              "kind": "FRUSTUM",
+              "r0": "2",
+              "r1": "3",
+              "height": "4"
+            }
+          ]
+        },
+        "graphName": "㉠",
+        "segmentNotes": [
+          {
+            "segment": 0,
+            "text": "점점 느려짐"
+          }
+        ]
+      },
+      {
+        "vessel": {
+          "name": "B",
+          "profile": [
+            {
+              "kind": "CYLINDER",
+              "radius": "3",
+              "height": "2"
+            },
+            {
+              "kind": "CYLINDER",
+              "radius": "1",
+              "height": "4"
+            }
+          ]
+        },
+        "graphName": "㉢",
+        "segmentNotes": [
+          {
+            "segment": 0,
+            "text": "넓음 → 느림"
+          },
+          {
+            "segment": 1,
+            "text": "좁음 → 빠름"
+          }
+        ]
+      },
+      {
+        "vessel": {
+          "name": "C",
+          "profile": [
+            {
+              "kind": "CYLINDER",
+              "radius": "5/2",
+              "height": "5"
+            }
+          ]
+        },
+        "graphName": "㉡",
+        "segmentNotes": [
+          {
+            "segment": 0,
+            "text": "일정한 비율"
+          }
+        ]
+      }
+    ],
+    "guides": true,
+    "xTitle": "시간(초)",
+    "yTitle": "높이(cm)"
+  },
+  "caption": "그릇 A(위로 갈수록 넓어짐), B(아래는 넓은 원기둥·위는 가는 원기둥), C(원기둥)의 단면과, 각 그릇에 매초 일정한 양의 물을 넣을 때 물의 높이가 시간에 따라 변하는 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "그릇 A는 위로 갈수록 넓어지고, B는 아래가 넓고 위 관이 좁으며, C는 단면이 일정한 원기둥이다. 매초 일정한 양의 물을 채운다",
+      "mappedTo": "container"
+    }
+  ],
+  "newVisualInformation": [
+    "단면적이 클수록 높이는 천천히 올라가고 작을수록 빨리 올라가므로, 각 그릇의 높이 그래프는 단면 변화에 따라 곡선·꺾인 선·직선이 된다"
+  ]
+}

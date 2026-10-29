@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "25_순천고_2학기_기말_고2_수학II_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.meta-q01-q24.json",
+  "candidateGitBlobSha1": "2b1cf1a9043c7c03c58cf6197420e30befedc1dd",
+  "reviewTimestamp": "2026-10-29T12:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS_WITH_NOT_RUN_BROWSER_PRINT",
+  "blindSolve": {
+    "protocol": "학생 노출 필드(content, choices, 문제 그림)만 추출해 answer/solution/meta를 보기 전에 sympy/열거로 전 문항을 풀고 답을 동결한 뒤 저장 answer와 대조",
+    "totalSolved": 24,
+    "firstPassMatches": 24,
+    "firstPassMismatches": 0,
+    "afterFixMismatches": 0,
+    "ambiguousStems": 0,
+    "frozenBeforeCompare": true,
+    "notes": "Q23은 그림 라벨 누설 때문에 재설계한 뒤 재풀이(f'=3(x+1)(x-3), f(3)=-10 → f=x^3-3x^2-9x+17) 일치."
+  },
+  "originalComparison": "원본 Q1~Q24와 형식·유형·배점(합 80.0, 원본과 동일)·레벨 1:1 대응. 모든 문항이 원본과 다른 값·정답(원본 정답과 같은 값 없음). Q16은 원본의 일반 a 대신 a=4 수치화로 다소 쉬워졌으나 최대화 구조와 M/p 요구는 유지(상 4 유지는 경계).",
+  "defectsFoundAndFixedByReviewer": [
+    {
+      "qid": 23,
+      "defect": "문제 그림이 f'(x)=3(x-1)^2-12 식 라벨과 꼭짓점 (1,-12)를 노출해 풀이 핵심(f' 복원)을 누설",
+      "fix": "문제 그림(q23.svg)과 engine_evidence 제거, 발문에 f'(-1)=f'(3)=0과 최고차항 계수 조건을 직접 서술; 해설 첫 단계를 그림 없는 서술로 정합화; problem plan을 EXEMPT로 변경; category/tags/PT·TPL(PT_DERIVATIVE_EXTREMA/TPL_EXTREMA_VALUE_PARAMETER) 동기화"
+    },
+    {
+      "qid": 16,
+      "defect": "수치 보기가 오름차순이 아님(27/2, 9/4, 27/8, 9/2, 3)",
+      "fix": "오름차순(9/4, 3, 27/8, 9/2, 27/2)으로 재배열; 정답 ④(9/2) 위치 유지, 정답 분포 불변"
+    },
+    {
+      "qid": 17,
+      "defect": "확장 키 EXT-CROSS-DERIVATIVE-NO-SIGN-CHANGE-SQUARED-FACTOR가 canonical CC_ZERO_MULTIPLICITY(영점의 중복도)/CC_ONE_TO_ONE_FUNCTION과 중복",
+      "fix": "Q17은 CC_ZERO_MULTIPLICITY, Q22는 CC_ONE_TO_ONE_FUNCTION으로 교체하고 확장 키를 registry·meta·JS에서 제거"
+    },
+    {
+      "qid": 18,
+      "defect": "확장 키 EXT-CROSS-FINITE-LIMIT-ZERO-NUMERATOR가 canonical CC_FUNCTION_LIMIT(극한으로 함수값·적분값 조건 결정)로 충분하고 Q18에 이미 CC_FUNCTION_LIMIT/CC_DERIVATIVE_VALUE 부착",
+      "fix": "확장 키 제거, canonical만 유지"
+    }
+  ],
+  "problemsNotFixed": [
+    {
+      "qid": 7,
+      "severity": "minor",
+      "note": "문제 그림 라벨이 y=x^3-4x(=f'의 식)로 표기되어 지문의 y=f'(x) 기호와 표기가 다르나 답 누설 아님(그래프에서 부호가 그대로 판독). 엔진 산출물이라 수정하지 않음."
+    },
+    {
+      "qid": 16,
+      "severity": "minor",
+      "note": "그림 라벨 (4,0)이 지문의 A와 표기가 다름(A(4,0)이 지문에 명시). 엔진 산출물이라 수정하지 않음. 삼각형이 얇아 그림이 작게 보이나 해석에 지장 없음."
+    },
+    {
+      "qid": "19,20",
+      "severity": "minor",
+      "note": "해설 그림 UNSUPPORTED(역함수 대칭 영역/삼차 라벨 머리줄 미지원). 해설이 식 계산·서술로 완결되어 그림 없이 수용하나 Q19는 그림이 있으면 더 좋은 문항으로 후속 엔진 지원 시 보강 권장."
+    }
+  ],
+  "choiceAndLayoutChecks": {
+    "questionCount": 24,
+    "mcCount": 20,
+    "subjectiveCount": 4,
+    "mcChoicesAreFive": true,
+    "numericChoicesAscending": true,
+    "uniqueCorrectAnswer": true,
+    "mcAnswerDistribution": {
+      "②": 4,
+      "④": 4,
+      "①": 4,
+      "⑤": 4,
+      "③": 4
+    },
+    "scoreSum": {
+      "expected": 80.0,
+      "actual": 80.0,
+      "note": "원본 합 80.0과 동일(발문 [x점] 표기 합산)"
+    },
+    "katexDollarParity": "PASS (모든 content/choices/solution/answer에서 $ 짝수)",
+    "nodeCheck": "PASS"
+  },
+  "curriculum": "2015 개정 수학II(도함수 활용, 부정적분, 정적분, 정적분의 활용) 범위 내; 해설에 범위 밖 정리(예: 이차 이상 다항식 차의 유계성은 차수 비교로 직접 논증) 없음",
+  "planSvgVerdict": {
+    "plansValidJson": "PASS (48 plan, 24x2)",
+    "problemFigures": "Q7, Q16 활성; Q23 재설계로 EXEMPT(누설 제거). 나머지 EXEMPT 사유 타당(식으로 완결)",
+    "solutionFigures": "Q1,2,4,5,6,8,11,12,13,14,15,16,17,21,22,23,24 활성(17개), Q3,7,9,10,18 EXEMPT, Q19,20 UNSUPPORTED(발문·해설 모두 그림 없이 완결)",
+    "svgAttrs": "title/desc/role=img 존재(q21-solution 합성 패널은 엔진 composite 산출물이라 없음; 엔진 증거와 바이트 동일 유지), 폰트 20px 이상, raw LaTeX 없음, 실제 PNG 변환 후 육안 확인(문제 3개, 해설 17개)",
+    "leakage": "Q7/Q16 문제 그림은 정답 누설 없음; Q23 누설 제거함"
+  },
+  "metaReview": {
+    "fieldCoverage": "552/552 적용 가능 필드 채움 (실측 543 값 + 9개 conditionKeys=[]는 NOT_APPLICABLE로 정당: Q3,5,7,8,9,10,14,19,21)",
+    "items": 24,
+    "distinctCanonicalKeysUsed": 80,
+    "canonicalKeysIncludeNote": "RPM id, standardUnit/subUnit, PT, TPL, CC, COND 합산 고유 키; 모두 canonical/crosswalk 실재 확인(PT-TPL parent 일치, RPM 경로 L1/L3/L4 일치)",
+    "reusedExtensionKeys": 0,
+    "newExtensionKeysBefore": 3,
+    "newExtensionKeysAfter": 1,
+    "newExtensionKeyJudgement": [
+      {
+        "key": "EXT-CROSS-POLYNOMIAL-BOUNDED-LINEAR",
+        "verdict": "KEEP",
+        "parent": "CC_DEGREE_DETERMINATION",
+        "parentExists": true,
+        "reason": "canonical에 '유계 조건에서 차수 제한' 개념 없음; Q22 결정적 단계(f(3t)-f(3t-6) 유계 → f 일차)"
+      },
+      {
+        "key": "EXT-CROSS-DERIVATIVE-NO-SIGN-CHANGE-SQUARED-FACTOR",
+        "verdict": "REPLACED_BY_CANONICAL",
+        "replacement": "CC_ZERO_MULTIPLICITY(Q17), CC_ONE_TO_ONE_FUNCTION(Q22)"
+      },
+      {
+        "key": "EXT-CROSS-FINITE-LIMIT-ZERO-NUMERATOR",
+        "verdict": "REPLACED_BY_CANONICAL",
+        "replacement": "CC_FUNCTION_LIMIT(기존 부착)"
+      }
+    ],
+    "aliasProposals": 0,
+    "aliasProposalNote": "매산여고 EXT-CROSS-DERIVATIVE-SIGN-CHANGE-EXTREMUM과의 중복 가능성은 해당 키를 본 시험지에서 제거해 소멸(기록할 alias 없음)",
+    "evidenceDebt": 0,
+    "levelDifficultyJudgement": "level 하/중/상과 difficultyBucket 1~5 재판정: 풀이 단계 수·함정 기준 타당(Q18,20,22=5, Q15,16,17,19,24=4, Q23=3)",
+    "jsMetaParity": "JS 24문항 메타 필드와 .meta-q01-q24.json items.after 불일치 0"
+  },
+  "harness": {
+    "command": "node tools/harness/verify_similar_exam.mjs <JS> --phase=draft",
+    "result": "GATE_FAIL(81건) - 모두 도구 한계 또는 병합 단계 항목",
+    "toolLimitations": [
+      "unregistered PT/TPL 48건: 중등 taxonomy 기준 검사(고등 PT/TPL은 derivative/integral pack에 실재 확인)",
+      "invalid points (undefined) 24건 및 total score 0.0: points 필드 요구(고등 JS는 발문 [점수] 표기)",
+      "Q16 점/기호 라벨 5건: 엔진이 글리프 path로 라벨을 그려 text 검사 불가(실제 PNG로 O,A(4,0),P,H 확인)"
+    ],
+    "mergeStageItems": [
+      "Q19/Q20 UNSUPPORTED fallback 승인: 검수자 판단으로 식 계산 해설이 완결되어 수용",
+      "meta expectedSourceBlobSha1은 최종 JS blob으로 갱신 완료"
+    ],
+    "realContentDefectsRemaining": 0
+  },
+  "NOT_RUN": [
+    "실제 브라우저 학생 화면 렌더",
+    "인쇄/PDF 미리보기",
+    "Chrome runtime 검사",
+    "node tools/check-archive2-runtime.cjs"
+  ],
+  "finalBlobBinding": "candidateGitBlobSha1 = 최종 JS git hash-object; meta expectedSourceBlobSha1 동일"
+}

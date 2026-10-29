@@ -1,0 +1,49 @@
+{
+  "capability": "solid-figure-v1",
+  "net": {
+    "solid": {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "........"
+    },
+    "root": "side0",
+    "joins": [
+      ["side0", "side1"],
+      ["side1", "side2"],
+      ["side2", "side3"],
+      ["side1", "top"],
+      ["side3", "bottom"]
+    ],
+    "corners": {
+      "side0": ["B", "C", "N", "A"],
+      "side1": ["C", "D", "K", "N"],
+      "side2": ["D", "E", "J", "K"],
+      "side3": ["E", "H", "I", "J"],
+      "top": ["M", "N", "K", "L"],
+      "bottom": ["E", "F", "G", "H"]
+    },
+    "highlights": [
+      {"face": "side2", "fill": "LIGHT"},
+      {"face": "top", "fill": "LIGHT"}
+    ],
+    "segments": [
+      {"from": "B", "to": "C", "role": "ACCENT"}
+    ]
+  },
+  "caption": "정육면체의 전개도에서 모서리 BC(빨강)와 평행한 두 면 JEDK, NMLK(색칠)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "전개도를 접어서 정육면체를 만든다. 모서리 BC와 평행한 면을 찾는다",
+      "mappedTo": "net"
+    }
+  ],
+  "newVisualInformation": [
+    "전개도에서 모서리 BC를 빨강으로 강조하고, BC와 평행한 면 JEDK, NMLK를 연하게 칠한 그림"
+  ]
+}

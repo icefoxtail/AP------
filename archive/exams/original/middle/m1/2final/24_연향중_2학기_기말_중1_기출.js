@@ -370,7 +370,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:477712b9e8eaeded7df46b7298b5ffc3ea70689be42c1d25fdb9f6e4a38c7624",
-      "difficultyEvidenceSha": "sha256:1ec15da8c08d5789c108ecddc0d040bed3a49478682b1f8dbc346868c2b89573"
+      "difficultyEvidenceSha": "sha256:1ec15da8c08d5789c108ecddc0d040bed3a49478682b1f8dbc346868c2b89573",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 각뿔대의 모서리를 번호 ①~⑱로 센 그림이다. 아랫면 둘레의 모서리 ①~⑥은 초록색 아랫면 가장자리에, 옆모서리 ⑦~⑫는 가운데에, 윗면 둘레의 모서리 ⑬~⑱은 주황색 윗면 가장자리에 붙어 있다.",
+      "solutionImageCaption": "각뿔대의 모서리를 아랫면 둘레, 옆모서리, 윗면 둘레로 나누어 번호를 붙여 센다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 10,
@@ -411,7 +415,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:4032a8f12213adaec890203597f10e9a0fc14ffbb1495b78309f1cadb2482530",
-      "difficultyEvidenceSha": "sha256:242ba46f8a436a35675fd16aa4b93956df57550f339dc6c9fe7c1aa20c957744"
+      "difficultyEvidenceSha": "sha256:242ba46f8a436a35675fd16aa4b93956df57550f339dc6c9fe7c1aa20c957744",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 원뿔, 원뿔대, 원기둥은 회전축을 포함하는 평면으로, 구는 중심을 지나는 평면으로 자른 단면을 연한 파란색으로 칠해 네 칸에 나란히 그린 그림이다.",
+      "solutionImageCaption": "회전체를 회전축을 포함하는 평면(구는 중심을 지나는 평면)으로 자른 단면을 색으로 나타낸다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 11,
@@ -497,7 +505,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:032a212086b664ff97adc37820249a11aee2c1a1bf7078e962cbf6b3410b3e6e",
-      "difficultyEvidenceSha": "sha256:607ca07c5d6ac78eb9310837c80abcf2a1358d0d3b7e419f812306f042ff5eae"
+      "difficultyEvidenceSha": "sha256:607ca07c5d6ac78eb9310837c80abcf2a1358d0d3b7e419f812306f042ff5eae",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 사각기둥의 밑면인 사다리꼴을 색칠해 그린 그림이다. 평행한 윗변은 6cm, 아랫변은 10cm이고 이 두 변에 수직인 왼쪽 변(높이)은 6cm이다.",
+      "solutionImageCaption": "기둥의 밑면은 평행한 두 변이 6cm, 10cm이고 높이가 6cm인 사다리꼴이다. 기둥의 높이는 8cm이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 13,

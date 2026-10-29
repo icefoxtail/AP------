@@ -1,0 +1,42 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "한 번 자른 두 조각" },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          { "id": "s1", "kind": "SPHERE", "radius": 3, "cut": { "kind": "HALF" } },
+          { "id": "s2", "kind": "SPHERE", "radius": 3, "cut": { "kind": "HALF" } }
+        ],
+        "dims": [
+          { "solid": "s1", "radius": "center" },
+          { "solid": "s2", "radius": "center" }
+        ]
+      }
+    },
+    {
+      "caption": { "text": "8조각 중 한 조각" },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          { "id": "s1", "kind": "SPHERE", "radius": 3, "cut": { "kind": "OCTANT" } }
+        ],
+        "dims": [
+          { "solid": "s1", "radius": "center" }
+        ]
+      }
+    }
+  ],
+  "caption": "반지름 3cm인 구를 중심을 지나게 한 번 자르면 반지름 3cm인 원판 모양의 단면이 두 개(조각마다 하나씩) 생기고, 서로 수직인 평면 세 개로 자르면 8조각이 되며 조각마다 4분원 모양의 단면 3개가 생긴다",
+  "sourceConditions": [
+    { "id": "c1", "condition": "반지름이 3cm인 구를 중심을 지나도록 수직으로 3번 자른다", "mappedTo": "solids+cut" },
+    { "id": "c2", "condition": "한 번 자를 때마다 같은 크기의 원판 단면이 양쪽에 하나씩 생긴다", "mappedTo": "cut" }
+  ],
+  "newVisualInformation": [
+    "중심을 지나는 평면으로 자르면 단면이 반지름 3cm인 원판이고 한 번 자를 때 두 조각에 하나씩 생긴다",
+    "수직인 평면 3개로 자른 8조각 중 한 조각에는 4분원 모양의 단면 3개가 있다"
+  ]
+}

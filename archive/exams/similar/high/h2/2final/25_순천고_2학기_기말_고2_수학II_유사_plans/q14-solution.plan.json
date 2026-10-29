@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$y=f(x)=-2(x-1)^2+5$",
+  "caption": "y=f(x)=−2x²+4x+3과 y=g(x)=2x²은 x=−1/2, 3/2에서 만나고 그 사이에서 f가 위쪽이다. 사이의 넓이를 칠했다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "4",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "-2x^2+4x+3",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "intersectionX": [
+          "-1/2",
+          "3/2"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "g",
+        "from": "-1/2",
+        "to": "3/2",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": 5
+      },
+      {
+        "id": "A",
+        "x": -0.5,
+        "y": 0.5
+      },
+      {
+        "id": "B",
+        "x": 1.5,
+        "y": 4.5
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1/2",
+        "1/2"
+      ],
+      "B": [
+        "3/2",
+        "9/2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -2,
+      3,
+      -2,
+      6
+    ]
+  },
+  "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q14-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q14-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q14-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q14-solution.svg"
+  }
+}

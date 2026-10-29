@@ -1,5 +1,6 @@
 """Deterministic bounded label layout; approximate boxes cannot grant FINAL."""
 from dataclasses import dataclass,asdict
+import copy
 import heapq
 import math
 import html
@@ -16,6 +17,7 @@ NARROW_WEDGE_MAX_DEGREES=30.0
 TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
+TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
 
 @dataclass(frozen=True)
 class Box:
@@ -356,7 +358,110 @@ def _segment_intersection(a,b):
     if not -1e-8<=t<=1+1e-8 or not -1e-8<=s<=1+1e-8:return None
     return (a[0][0]+t*u[0],a[0][1]+t*u[1])
 
+# ---- angle labels outside their angle (E12) -----------------------------------------------------------------------------------------------
+# An angle label belongs to its own arc. It never stands inside another angle mark's sector (the wedge up to that mark's outermost arc), and when the
+# angle holds no room for it (a narrow wedge crowded with lines, a vertex with several angles) it goes outside the angle on a visible leader that starts
+# ON its own outermost arc: at the arc's middle or, for a narrow angle, at an end of the arc (on a ray) leaving across that ray. A leader never crosses a line.
+ANGLE_OUTSIDE_LEADER_LENGTHS=(14,20,28,38,50,64,80,100,125)
+ANGLE_OUTSIDE_LEADER_STEP_DEGREES=15
+ANGLE_OUTSIDE_LEADER_ARC_FRACTIONS=(0.5,0.3,0.7,0.15,0.85,0.0,1.0)   # where along the outermost arc (from its first ray to its last) the leader may start
+ANGLE_LEADER_RAY_CROSSING_MIN_SIN=0.5      # a leader leaving an arc end points 30 degrees or more away from the ray (never grazes along it)
+ANGLE_LEADER_OWN_RAY_CLEARANCE=3.0         # while it does not cross the ray, the leader keeps this far from it
+
+def sector_contains(point,sector,margin=2.0):
+    """True when the point lies inside the sector (vertex, start direction, signed sweep, radius): within the swept wedge and within radius+margin."""
+    (vx,vy),start,delta,radius=sector
+    dx,dy=point[0]-vx,point[1]-vy
+    if math.hypot(dx,dy)>radius+margin:return False
+    if math.hypot(dx,dy)<=1e-9:return True
+    theta=math.atan2(dy,dx)
+    return ((theta-start) if delta>0 else (start-theta))%(2*math.pi)<=abs(delta)+1e-9
+
+def box_point_distance(box,point):
+    """Distance from the point to the nearest point of the box (0 inside)."""
+    return math.hypot(max(box.x-point[0],0,point[0]-box.right),max(box.y-point[1],0,point[1]-box.bottom))
+
+def box_in_other_sectors(box,sectors):
+    """True when the box centre lies inside some other angle mark's sector."""
+    center=(box.x+box.width/2,box.y+box.height/2)
+    return any(sector_contains(center,sector) for sector in sectors)
+
+def lines_through_vertex(occupied,vertex,start,delta):
+    """(own rays, other lines through the vertex): the drawn segments of the angle's two rays, and every other drawn line that also meets the vertex
+    (a dashed line splitting the angle, a third ray). Each entry is (obstacle, segment start, segment end)."""
+    own,other=[],[]
+    for obstacle in occupied:
+        geometry=obstacle.get('geometry')
+        if obstacle.get('kind') not in {'line','auxiliary'} or not isinstance(geometry,(list,tuple)) or len(geometry)<2:continue
+        for c,d in zip(geometry,geometry[1:]):
+            if point_segment_distance(vertex,c,d)>1e-3:continue
+            along=any(leader_along(vertex,(vertex[0]+math.cos(direction),vertex[1]+math.sin(direction)),c,d,0.5) for direction in (start,start+delta))
+            (own if along else other).append((obstacle,c,d))
+    return own,other
+
+def angle_leader_clear(start,end,occupied,owner_ids,rays,through,outward=None):
+    """leader_clear for a leader that starts on an angle's outermost arc. A line through the vertex that is not one of the angle's rays may run close
+    to the start (it splits the arc) but is never crossed. The angle's own rays keep the leader clear; when the leader starts at an END of the arc
+    (on a ray) it must leave across that ray's outside: `outward` is the ray's outward normal, and the leader then points at least 30 degrees away from
+    the ray and touches it only at its start (a leader never crosses a drawn line: the rendered-layout verifier rejects any crossing)."""
+    skipped={id(obstacle) for obstacle,_c,_d in rays}
+    through_ids={obstacle.get('id') for obstacle,_c,_d in through}
+    if not leader_clear(start,end,[o for o in occupied if id(o) not in skipped],set(owner_ids)|through_ids):return False
+    u=(end[0]-start[0],end[1]-start[1]);length=math.hypot(*u)
+    for _obstacle,c,d in rays:
+        if outward is not None and point_segment_distance(start,c,d)<=1e-3:
+            if length<=1e-9 or (u[0]*outward[0]+u[1]*outward[1])/length<ANGLE_LEADER_RAY_CROSSING_MIN_SIN:return False
+        elif segment_segment_distance(start,end,c,d)<=ANGLE_LEADER_OWN_RAY_CLEARANCE:return False
+    return True
+
+def angle_outside_leader(label,w,h,occupied,acceptable,owner_ids):
+    """A box for an angle label beside its angle, with a leader that starts on the angle's outermost arc: (box, leader start, leader end, direction)
+    or None. Shorter leaders first; for one length the arc's middle first, then points nearer each ray, then the two ends of the arc (where the arc
+    meets a ray: the only place from which a leader reaches the outside of a narrow angle without crossing a line); at one start the directions
+    nearest to the perpendicular of the nearer ray come first."""
+    ws=label['wedgeSearch'];vertex=ws['vertex'];radius=ws['arcRadius'];first=ws['start'];delta=ws['delta']
+    sign=1 if delta>0 else -1
+    own,through=lines_through_vertex(occupied,vertex,first,delta)
+    normals=(first-sign*math.pi/2,first+delta+sign*math.pi/2)          # outward normal of the first ray / of the last ray
+    steps=int(360/ANGLE_OUTSIDE_LEADER_STEP_DEGREES)
+    for length in ANGLE_OUTSIDE_LEADER_LENGTHS:
+        for fraction in ANGLE_OUTSIDE_LEADER_ARC_FRACTIONS:
+            angle=first+delta*fraction
+            start=(vertex[0]+radius*math.cos(angle),vertex[1]+radius*math.sin(angle))
+            near=normals[0] if fraction<=0.5 else normals[1]
+            outward=None
+            if fraction<=0.0:outward=(math.cos(normals[0]),math.sin(normals[0]))
+            elif fraction>=1.0:outward=(math.cos(normals[1]),math.sin(normals[1]))
+            directions=sorted((near+2*math.pi*k/steps for k in range(steps)),key=lambda theta:(round(abs((theta-near+math.pi)%(2*math.pi)-math.pi),9),theta%(2*math.pi)))
+            for theta in directions:
+                ux,uy=math.cos(theta),math.sin(theta)
+                end=[start[0]+length*ux,start[1]+length*uy]
+                tx=math.inf if abs(ux)<=1e-12 else (w/2)/abs(ux)
+                ty=math.inf if abs(uy)<=1e-12 else (h/2)/abs(uy)
+                reach=min(tx,ty);center=(end[0]+ux*reach,end[1]+uy*reach)
+                box=Box(center[0]-w/2,center[1]-h/2,w,h)
+                if not acceptable(box):continue
+                if not angle_leader_clear(start,end,occupied,owner_ids,own,through,outward):continue
+                return box,start,owner_leader_endpoint(box,start,center),('E','SE','S','SW','W','NW','N','NE')[int(((math.degrees(theta)%360)+22.5)%360//45)]
+    return None
+
+def angle_labels_first_order(label):
+    """The second-pass order: at one priority the angle labels go first, the narrowest angle first (a label inside a nested angle is placed before the
+    wider angle whose sector contains it), then every other label as in the first pass."""
+    wedge=label.get('wedgeSearch')
+    return (label.get('priority',2),0 if wedge else 1,abs(wedge['delta']) if wedge else 0.0,label['id'])
+
 def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False):
+    """The placement pass, and - only when some angle label found no place in it - a second pass that places the angle labels narrowest angle first
+    (a vertex with several nested angles); the second result replaces the first only when it leaves fewer labels unresolved, so a layout that
+    resolved at the first pass is never changed."""
+    result=layout_pass(labels,obstacles,safe_area,panel,measurements,require_measurements)
+    if any(any(label['id']==label_id and 'wedgeSearch' in label for label in labels) for label_id in result['unresolved']):
+        retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,angle_labels_first_order)
+        if len(retry['unresolved'])<len(result['unresolved']):return retry
+    return result
+
+def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False,order=None):
     """P0..P4, 8 candidates, coordinate relocation, suppression, side panel.
 
     Unsupported further repairs are explicit suggestions, never fake PASS.
@@ -367,7 +472,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     measurements=measurements or {};placed=[];suppressed=[];unresolved=[];trace=[];repairs=[];leaders=[]
     if len({v['id'] for v in labels})!=len(labels):raise ValueError('DUPLICATE_LAYOUT_LABEL')
     occupied=list(obstacles)
-    for label in sorted(labels,key=lambda v:(v.get('priority',2),v['id'])):
+    for label in sorted(labels,key=order or (lambda v:(v.get('priority',2),v['id']))):
         priority=label.get('priority',2)
         if not isinstance(priority,int) or not 0<=priority<=4:raise ValueError('INVALID_LABEL_PRIORITY')
         tick_owner=None
@@ -401,7 +506,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         else:
             w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
             w,h=finite(w),finite(h)
-        chosen=None;method=None;tick_callout=label.get('tickLabelCallout');leader_fallbacks=[]
+        chosen=None;method=None;tick_callout=label.get('tickLabelCallout');leader_fallbacks=[];far_choice=None
         if tick_callout is not None:
             if (tick_owner is None or not isinstance(tick_callout,dict)
                 or set(tick_callout)!={'schemaVersion','tickId','axis','value','sourceAt','offsetUser'}
@@ -416,8 +521,10 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         other_lines=[o for o in obstacles if line_owner is not None and o.get('kind')=='line' and o is not line_owner]
         # leaderOwned: ids of the marks (angle arcs, highlighted arcs) a label names; beyond the near gaps a visible leader from its anchor ties it to them.
         leader_owned_ids=set(label.get('leaderOwned',()))
+        other_sectors=label.get('wedgeSearch',{}).get('others',())
         def acceptable(box,owner_check=True):
             return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
+                and not (other_sectors and box_in_other_sectors(box,other_sectors))
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
@@ -463,6 +570,12 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                         center=(vertex[0]+radius*math.cos(ws['bisector'])-lateral*math.sin(ws['bisector']),vertex[1]+radius*math.sin(ws['bisector'])+lateral*math.cos(ws['bisector']))
                         box=Box(center[0]-w/2,center[1]-h/2,w,h)
                         if not (acceptable(box) and box_owned({'ownerWedge':[vertex,ws['start'],ws['delta'],ws.get('rFar',ws['rMax'])+max(w,h)]},box)):continue
+                        if (ws.get('farDistance') is not None and (radius<=inside_limit or abs(ws['delta'])<=math.radians(NARROW_WEDGE_MAX_DEGREES))
+                                and box_point_distance(box,vertex)>ws['farDistance']):
+                            # Too far from its vertex and arc to read as that arc's label, and no leader ties it back: kept only as the last resort,
+                            # after the leader placements (inside the angle, then outside it) have been tried.
+                            if far_choice is None:far_choice=(box,'ANGLE_WEDGE_INSIDE' if radius<=inside_limit else 'ANGLE_WEDGE_INSIDE_FAR')
+                            continue
                         if radius<=inside_limit:chosen=box;method='ANGLE_WEDGE_INSIDE';default_gaps=();break
                         if abs(ws['delta'])<=math.radians(NARROW_WEDGE_MAX_DEGREES):
                             # A narrow wedge cannot hold the box near the arc, and a leader from the arc would run within the line-hiding
@@ -535,6 +648,17 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                     chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
                     break
                 if chosen:break
+            if chosen is None and tick_owner is not None and tick_callout is None:
+                # Two tick labels meeting near the origin (x=-1 and y=1) can leave one of them no clean box on its axis-normal sides. It may then slide along its
+                # axis by up to the owner-alignment tolerance (it still names its own tick); the nearest slide that clears every other label and mark wins.
+                for gap in default_gaps:
+                    for direction in directions:
+                        base=candidate(label['at'],w,h,direction,gap)
+                        for slide in TICK_LABEL_SLIDES:
+                            box=Box(base.x+slide,base.y,w,h) if label['tickAxis']=='x' else Box(base.x,base.y+slide,w,h)
+                            if acceptable(box):chosen=box;method='TICK_SLIDE_'+direction;break
+                        if chosen:break
+                    if chosen:break
             if chosen is None and owner_marker is not None:
                 # With another point close by, a box straight above/below/beside its point can reach into that point's cell. On those four
                 # sides the box may slide along the side, in eighths of its size, at the near gaps that need no leader.
@@ -559,6 +683,13 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                         if end is None:continue
                         tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                     if chosen:break
+        if chosen is None and 'wedgeSearch' in label and tick_callout is None:
+            # No room inside the angle or beside its arc: outside the angle, on a leader from the middle of its own outermost arc.
+            found=angle_outside_leader(label,w,h,occupied,acceptable,leader_owned_ids)
+            if found is not None:
+                box,start,end,direction=found
+                label={**label,'at':list(start)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction
+        if chosen is None and far_choice is not None:chosen,method=far_choice
         if chosen is None and line_owner is not None:
             # The first anchor found no room: the same line may be written from other anchors on it (nearer boxes need no leader, farther ones a visible one).
             for alternate in label.get('alternateAt',()):

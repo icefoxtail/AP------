@@ -31,7 +31,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q1.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q1-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q1-solution-v2.svg",
       "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
       "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_BISECTOR",
       "crossConceptKeys": [],
@@ -45,9 +45,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:a7b9e9f7a1d07a37c460fe9044685cc37f8f0a7ab805ac3e3ad01465db46dc8a",
       "difficultyEvidenceSha": "sha256:1ac5ddf07588a743ee4c2b3320b29ca3494033618ae3ea3a322b25c635fc7cc4",
-      "solutionImageAlt": "삼각형 ABC에서 AD가 ∠A를 이등분하고 ∠B=30°, ∠C=70°인 각 관계 그림",
-      "solutionImageCaption": "∠A를 이등분한 뒤 두 삼각형의 내각합을 적용한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AD가 ∠A의 이등분선이어서 ∠BAD와 ∠DAC가 같은 호 표시의 40°로 나뉘고, ∠B=30°, ∠C=70°이며 ∠ADC를 x로 표시한 그림이다.",
+      "solutionImageCaption": "∠A=80°가 AD로 이등분되어 ∠BAD=∠DAC=40°이므로 삼각형 ADC의 두 각 40°, 70°로 ∠ADC(=x)를 구한다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 2,
@@ -91,7 +91,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:e3d11a84fade96c35caf85071312859aa8dcd2eb26506ea07af3c13ac2dc3e56",
-      "difficultyEvidenceSha": "sha256:809f826bdec265d112970f2cd3dfb6b518573eeb431d73d3165f3b184dcb9939"
+      "difficultyEvidenceSha": "sha256:809f826bdec265d112970f2cd3dfb6b518573eeb431d73d3165f3b184dcb9939",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 육각형의 바깥쪽 각 48°, 53°가 각각 내각 132°, 127°로 바뀌고 나머지 내각 111°, 112°, 108°와 구하는 각 x를 표시했으며 육각형 안에 내각의 합 720°를 적은 그림이다.",
+      "solutionImageCaption": "바깥쪽 각 48°, 53°는 내각 132°, 127°가 되고, 육각형의 내각의 합 720°에서 나머지 다섯 내각을 빼면 x를 구할 수 있다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 3,
@@ -167,7 +171,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q4.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q4-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q4-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
       "crossConceptKeys": [],
@@ -181,9 +185,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3a16062568ee4b418ba5831016b4fab250ec0c0b2a5f900baa32e335b426a191",
       "difficultyEvidenceSha": "sha256:ac0bd7340a72d06ea265d92d7749d1dc567a238de7399916214004a0611ec800",
-      "solutionImageAlt": "원 O에서 같은 크기의 호 AB, CD, DE와 중심각 및 현을 표시한 그림",
-      "solutionImageCaption": "호의 크기와 중심각, 현의 관계를 보기의 진술과 대조한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원 O에서 같은 길이의 호 AB, CD, DE의 중심각이 모두 θ로 같고 현 AB, CD, DE의 길이가 같음을 눈금으로 표시하며, 현 CE와 삼각형 AOB, COE를 색칠해 비교한 그림이다.",
+      "solutionImageCaption": "같은 호의 중심각과 현은 각각 같지만, 현 CE는 CD+DE보다 짧고 삼각형 COE는 삼각형 AOB의 2배가 아니다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 5,
@@ -331,8 +335,8 @@ window.questionBank = [
         "$\\dfrac{20}{3}\\pi\\rm\\,cm$",
         "$20\\pi\\rm\\,cm$"
       ],
-      "answer": "③",
-      "solution": "색칠한 부분의 둘레를 이루는 호들의 중심각을 모두 합하면 $360^\\circ$가 된다.\n각 호의 반지름은 정사각형의 한 변의 길이와 같은 $5\\rm\\,cm$이다.\n\n따라서 전체 호의 길이는 반지름이 $5\\rm\\,cm$인 원의 둘레와 같다.\n$2\\pi\\times5=10\\pi\\rm\\,cm$\n\n따라서 정답은 ③이다.",
+      "answer": "④",
+      "solution": "정사각형의 꼭짓점을 차례로 $A,B,C,D$라 하자. 각 호의 반지름은 정사각형의 한 변의 길이와 같은 $5\\rm\\,cm$이고, 각 호의 중심각은 $90^\\circ$이다.\n\n$D$를 중심으로 하는 호와 $C$를 중심으로 하는 호가 만나는 점을 $P$라 하면 $\\overline{DC}=\\overline{DP}=\\overline{CP}=5\\rm\\,cm$이므로 삼각형 $DCP$는 정삼각형이다.\n따라서 $\\angle PDC=60^\\circ$이고, $D$를 중심으로 하는 호에서 $A$ 쪽 끝에서 $P$까지의 중심각은 $90^\\circ-60^\\circ=30^\\circ$이다.\n같은 방법으로 $A$를 중심으로 하는 호와 만나는 점 $Q$에 대하여 삼각형 $DAQ$도 정삼각형이므로 $C$ 쪽 끝에서 $Q$까지의 중심각도 $30^\\circ$이다.\n\n즉 $D$를 중심으로 하는 호는 $30^\\circ+30^\\circ+30^\\circ$로 나뉘고, 가운데 $30^\\circ$ 부분(점선)은 색칠한 도형의 안쪽에 있으므로 둘레에 들어가지 않는다. 둘레에는 양 끝의 $30^\\circ$ 부분 2개만 포함된다.\n다른 세 호도 마찬가지이므로 둘레를 이루는 호는 중심각이 $30^\\circ$인 호 $4\\times2=8$개이고, 중심각의 합은 $30^\\circ\\times8=240^\\circ$이다.\n\n$2\\pi\\times5\\times\\dfrac{240}{360}=\\dfrac{20}{3}\\pi\\rm\\,cm$\n\n따라서 정답은 ④이다.",
       "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
       "subUnit": "평면도형의 측정",
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q8.png",
@@ -351,7 +355,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3b49f9faba360a00cc30860fcb76ef1ab19167978cca94910a6de6587fa0960a",
-      "difficultyEvidenceSha": "sha256:df371ca682ef94164aefca6b6117cb79696f4be87c66e413336dca6dea489ff4"
+      "difficultyEvidenceSha": "sha256:df371ca682ef94164aefca6b6117cb79696f4be87c66e413336dca6dea489ff4",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 변이 5cm인 정사각형 ABCD에서 꼭짓점을 중심으로 하는 호 4개와 정삼각형 DCP, DAQ를 그려 각 호가 30°씩 세 부분으로 나뉘고, 색칠한 도형의 둘레는 굵은 호 8개(중심각 합 240°), 안쪽의 호는 가는 선임을 보여 주는 그림이다.",
+      "solutionImageCaption": "각 호는 정삼각형 덕분에 30°씩 세 부분으로 나뉘고, 가운데 부분은 안쪽에 있어 둘레에는 양 끝의 30° 호 8개가 들어간다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 9,
@@ -433,7 +441,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:990e8d63e130a57c8d11a65b119f7ec0d91243547e2c596759bfa2fdd97a387f",
-      "difficultyEvidenceSha": "sha256:c02564fffd88e0a1e4ba3a4fcc677f5fd35542f76d51435584388af49940512d"
+      "difficultyEvidenceSha": "sha256:c02564fffd88e0a1e4ba3a4fcc677f5fd35542f76d51435584388af49940512d",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 원기둥과 원뿔을 축에 수직인 평면으로 낮은 곳과 높은 곳에서 자른 네 그림이다. 원기둥은 두 높이의 단면 반지름이 모두 r로 같고, 원뿔은 낮은 곳의 반지름 r_1이 높은 곳의 반지름 r_2보다 크다.",
+      "solutionImageCaption": "원기둥은 높이에 관계없이 단면 반지름이 같고, 원뿔은 높이에 따라 달라진다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 11,
@@ -477,7 +489,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:325030cda8b3f9e21e8d2b38becee56dc827eb92c2774c444a93f7a5d104944f",
-      "difficultyEvidenceSha": "sha256:49bbfc280cfe9aa6b5b19f1de3d1aa50c88a04d78f6f8ada4b4ccb33a2cb2e37"
+      "difficultyEvidenceSha": "sha256:49bbfc280cfe9aa6b5b19f1de3d1aa50c88a04d78f6f8ada4b4ccb33a2cb2e37",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 5cm인 구를 중심 O를 지나는 서로 수직인 두 평면으로 4등분한 입체도형으로, 곡면의 일부와 반원 모양의 단면 2개(색칠)가 겉면을 이루는 모습을 보여 주는 그림이다.",
+      "solutionImageCaption": "구를 4등분한 입체도형 (반지름 5 cm)",
+      "solutionImageSize": "medium"
     },
     {
       "id": 12,
@@ -509,7 +525,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q12.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q12-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q12-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "crossConceptKeys": [],
@@ -523,9 +539,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:242e90fe46f8e38f3676ca643656ad3c5d49d23f011310f3c354b1c3d601081c",
       "difficultyEvidenceSha": "sha256:300f903a39eff262d3ff4419c10e2a05d848b8154e61650a1c28642ec0489aab",
-      "solutionImageAlt": "모선의 길이가 12 cm이고 밑면 반지름이 r인 원뿔 그림",
-      "solutionImageCaption": "옆넓이 식으로 반지름을 구하고 밑넓이를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 왼쪽은 모선 12 cm와 밑면 반지름 6 cm를 표시한 원뿔이고, 오른쪽은 그 전개도로 옆면인 반지름 12 cm 부채꼴과 밑면인 반지름 6 cm 원이다.",
+      "solutionImageCaption": "원뿔의 모선 12 cm, 밑면 반지름 6 cm와 옆면(부채꼴)·밑면(원)의 전개도",
+      "solutionImageSize": "medium"
     },
     {
       "id": 13,
@@ -746,7 +762,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:ffded47bc5b1564a18c83ec1da040debb6459d0d504500572c3d51c27be41a93",
-      "difficultyEvidenceSha": "sha256:c693a2b60f40d8a1768e3f11953b26eeedc9f84c784af8233a425427f6901e65"
+      "difficultyEvidenceSha": "sha256:c693a2b60f40d8a1768e3f11953b26eeedc9f84c784af8233a425427f6901e65",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 영어 성적 22개의 줄기와 잎 그림이다. 줄기 5, 6, 7, 8, 9의 잎 개수 3, 4, 5, 6, 4가 괄호로 묶여 있고, 줄기 7의 잎 4와 6(74점, 76점)이 동그라미로 표시되어 있다.",
+      "solutionImageCaption": "줄기별 잎의 개수와 가운데 두 값 74점, 76점",
+      "solutionImageSize": "medium"
     },
     {
       "id": 18,
@@ -859,7 +879,7 @@ window.questionBank = [
         "한별이네 반에서 5번째로 빠르게 달린 학생이 속하는 계급의 도수는 3명이다."
       ],
       "answer": "⑤",
-      "solution": "그래프의 각 점은 해당 1초 구간의 도수를 나타낸다.\n\n두 반의 각 계급 도수를 더하면 전체 학생 수는 서로 같고, 부미네 반에서 $15$초 미만인 학생 수는 전체의 $16\\%$이다. 또한 두 반에서 $17$초 이상인 학생 수를 합하면 6명이고, 부미네 반의 도수가 가장 큰 계급은 $16$초 이상 $17$초 미만이다.\n\n한별이네 반의 빠른 기록부터 누적하면 5번째 학생은 $15$초 이상 $16$초 미만인 계급에 들어간다. 그래프에서 이 계급의 도수는 6명이므로 ‘도수는 3명이다’라는 ⑤가 옳지 않다.\n\n따라서 정답은 ⑤이다.",
+      "solution": "그래프의 각 점은 해당 1초 구간의 도수를 나타낸다.\n\n두 반의 각 계급 도수를 더하면 전체 학생 수는 서로 같고, 부미네 반에서 $15$초 미만인 학생 수는 전체의 $16\\%$이다. 또한 두 반에서 $17$초 이상인 학생 수를 합하면 6명이고, 부미네 반의 도수가 가장 큰 계급은 $16$초 이상 $17$초 미만이다.\n\n한별이네 반의 도수를 빠른 기록부터 차례로 누적하면 $12$초 이상 $13$초 미만에서 $1$명, $13$초 이상 $14$초 미만까지 $1+3=4$명, $14$초 이상 $15$초 미만까지 $4+6=10$명이므로 5번째 학생은 $14$초 이상 $15$초 미만인 계급에 들어간다. 그래프에서 이 계급의 도수는 6명이므로 ‘도수는 3명이다’라는 ⑤가 옳지 않다.\n\n따라서 정답은 ⑤이다.",
       "subUnitKey": "M1-08-DATA_ORGANIZATION",
       "subUnit": "자료의 정리",
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q20.png",
@@ -878,7 +898,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:f7ad7fd486acadf9c4269d31e8e4a84e46d8ed3c68dffd675bfb70387ae4d421",
-      "difficultyEvidenceSha": "sha256:9771c2cdf31e62e1368fb9d9ae76c5e742d5cd5d34a4c3865288988267327d77"
+      "difficultyEvidenceSha": "sha256:9771c2cdf31e62e1368fb9d9ae76c5e742d5cd5d34a4c3865288988267327d77",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 한별이네 반의 기록별 도수를 나타낸 히스토그램이다. 12초 이상 18초 미만의 여섯 계급 도수가 1, 3, 6, 10, 3, 2이고, 빠른 기록부터 세어 5번째 학생이 속하는 14초 이상 15초 미만 계급(도수 6)이 진하게 칠해져 있다.",
+      "solutionImageCaption": "한별이네 반의 계급별 도수와 5번째로 빠른 학생이 속한 계급",
+      "solutionImageSize": "medium"
     },
     {
       "id": 21,
@@ -905,7 +929,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q21.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q21-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q21-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
       "crossConceptKeys": [],
@@ -919,9 +943,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:07549d56920aaeb074bb5a5d7ace53085a4d7eab485fa2521ea5acbd04c7130b",
       "difficultyEvidenceSha": "sha256:2082b7779f40fd3d068092086f7bf72dd4b055f564ddf97c7ac25b77c963128d",
-      "solutionImageAlt": "중심각 45°, 안쪽 반지름 8 cm, 바깥쪽 반지름 12 cm인 환형 부채꼴 그림",
-      "solutionImageCaption": "바깥 호·안쪽 호·두 직선 변을 각각 계산해 둘레를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 중심각 45°인 부채꼴 O에서 OB=8cm, BD=4cm, AC=4cm이고 안쪽 호 AB는 2π cm, 바깥쪽 호 CD는 3π cm이며 두 호와 두 곧은 변 사이를 빗금으로 색칠한 그림이다.",
+      "solutionImageCaption": "색칠한 부분의 둘레는 바깥쪽 호 CD, 안쪽 호 AB와 곧은 변 AC, BD로 이루어진다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 22,
@@ -948,7 +972,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q22.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q22-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q22-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
       "crossConceptKeys": [],
@@ -962,9 +986,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:1bf736ad0c8d142c98ee7d6f5e8ded012f24b3294d51eb59b49c73a532e84b98",
       "difficultyEvidenceSha": "sha256:8a44940d6f41bb5644853b83d60a390dcf496257b1942b95ba58c62d67ba2b4f",
-      "solutionImageAlt": "반지름 6 cm인 사분원에서 직각삼각형 부분을 뺀 색칠 영역과 회전축 l을 나타낸 그림",
-      "solutionImageCaption": "색칠 영역의 회전체를 반구 부피에서 원뿔 부피를 빼어 계산한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 반지름 6cm인 사분원에서 현으로 잘린 활꼴을 빗금으로 색칠하고, 직각 표시와 회전축 l, 두 반지름 6cm, 회전하면 원뿔이 되는 직각삼각형 부분을 함께 나타낸 그림이다.",
+      "solutionImageCaption": "사분원을 축 l로 회전시키면 반구가 되고 직각삼각형 부분은 원뿔이 되어, 활꼴의 회전체는 반구에서 원뿔을 뺀 것이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 23,
