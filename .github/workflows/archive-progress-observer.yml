@@ -24,25 +24,36 @@ concurrency:
   group: archive-progress-observer
   cancel-in-progress: false
 
+# Bounded runtime (S16). Root cause of 234/237 cancelled runs: the reconcile step asked GitHub /compare for
+# thousands of (exam merge SHA, run SHA) pairs and stored the status only at the very end, so every run hit the
+# 30 minute limit and lost all progress. Now ancestry is answered from a local full-history checkout (blob-less,
+# the observer only needs commits), every request has an abort deadline, evidence collection stops at
+# ARCHIVE_PROGRESS_BUDGET_MS, and the step itself is capped. cancel-in-progress stays false on purpose: the
+# status is stored at the end of a run, so cancelling a running observer would discard its work; a newer
+# trigger queues behind it and a still-newer one replaces the queued run.
 jobs:
   observe:
     if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 25
     steps:
       - name: Checkout trusted main
         uses: actions/checkout@v4
         with:
           ref: main
           persist-credentials: false
+          fetch-depth: 0
+          filter: blob:none
       - name: Set up Node 22
         uses: actions/setup-node@v4
         with:
           node-version: '22'
       - name: Reconcile public status (nonblocking)
+        timeout-minutes: 20
         env:
           GITHUB_TOKEN: ${{ github.token }}
           ARCHIVE_PROGRESS_HISTORY_PAGES: ${{ inputs.history_pages || 1 }}
+          ARCHIVE_PROGRESS_BUDGET_MS: '720000'
         run: node archive/tools/archive-progress-observer.mjs
       - name: No production dependency
         if: always()
