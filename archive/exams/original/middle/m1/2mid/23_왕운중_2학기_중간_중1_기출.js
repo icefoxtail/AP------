@@ -783,7 +783,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥의 전개도와 접은 모양에서 세 옆모서리 AB(=ID), JC, HE를 빨강으로 표시해 서로 평행함을 나타낸 그림이다.",
+    "solutionImageCaption": "전개도와 접은 삼각기둥에서 평행한 세 옆모서리",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -855,7 +859,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 사각형 ABCD에서 세로로 평행한 변 AB=7, CD=3과 두 변 사이의 거리인 BC=10을 표시하고 사각형 안을 연하게 칠한 그림이다.",
+    "solutionImageCaption": "평행한 두 변 AB, CD와 두 변 사이의 거리 BC를 나타낸 사다리꼴 ABCD",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -891,7 +899,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC에서 BC 위의 점 D, CA 위의 점 E를 잡아 △ABD(빨강)와 △BCE(검정 굵은 선)를 강조하고, AB=BC, BD=CE 눈금과 ∠ABD, ∠BCE의 60° 호를 표시한 그림이다.",
+    "solutionImageCaption": "△ABD와 △BCE에서 대응하는 두 변과 끼인각이 각각 같음을 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -927,7 +939,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 점 A, 점 P를 지나는 직선 m과 평행선 PR 작도에서 호 ㅁ, ㅂ, ㄷ, ㄹ과 직선 ㄱ, ㄴ을 표시하고, AB=PQ, AC=PR, BC=QR 눈금과 엇각 ∠BAC, ∠QPR의 표시를 나타낸 그림이다.",
+    "solutionImageCaption": "평행선 작도 과정과 같은 길이, 엇각 ∠BAC=∠QPR를 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -962,6 +978,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 y=10/x의 그래프가 점 (2,5)를 지남을 점선으로 보이고, 제3사분면 그래프 위에서 두 좌표가 모두 정수인 점들을 점으로 표시한 그림이다.",
+    "solutionImageCaption": "y=10/x의 그래프와 주어진 점 (2,5), 제3사분면의 정수 좌표 점들",
+    "solutionImageSize": "medium"
   }
 ];
