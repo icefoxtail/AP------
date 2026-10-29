@@ -64,7 +64,8 @@ function harness(data) {
     save = () => {};
     globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderHealth, unifiedHealth, unifiedIndex, planRows, request, pool,
       draft, applyDraft, generate, review, applySourceRoute, filterMarkup, reconcileUnifiedFilters, compactSaveFilters,
-      selectedScopeOptions, workspaceMatches, workspaceEligibility, applySavedPaperRevision};
+      selectedScopeOptions, workspaceMatches, workspaceEligibility, applySavedPaperRevision,
+      findExams, reconcileFinderFilters, finderPrimaryFilterMarkup, finderDetailFilterMarkup, renderComposition};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -214,7 +215,7 @@ test('compose shows one clean unit list per grade with 2015 and 2022 items merge
   const { w } = harness(data);
   w.state.filters = { grade: '고1' };
   const scopes = w.scopeOptions();
-  assert.deepEqual(plain([...new Set(scopes.map(scope => scope.L1))].filter(label => !/미정/.test(label))), ['공통수학1', '공통수학2']);
+  assert.deepEqual(plain([...new Set(scopes.map(scope => scope.L1))].filter(label => label !== Unified.NO_SUBJECT_LABEL)), ['공통수학1', '공통수학2']);
 });
 
 test('고2·고3 subjects, the optional original-curriculum filter and the subject filter narrow one list', async () => {
@@ -486,4 +487,128 @@ test('per-question identity rules of 단원별 기출 are honoured and never ser
   assert.equal(index.byRecord.get(twin).unclassified, false);
   assert.equal(index.byRecord.get(special).unclassified, true);
   assert.equal(UnitCore.classifyRecord({ sourceFile: special.sourceFile, id: 22, standardUnitKey: special.legacyStandardUnitKey, standardUnit: special.legacyStandardUnit }, 'h2').status, 'ignored');
+});
+
+// ---- S7: simple compose and finder screens on the unified layer ----
+const selectedOption = (html, id) => {
+  const select = html.match(new RegExp(`<select id="${id}">([\\s\\S]*?)</select>`))[1];
+  const options = [...select.matchAll(/<option value="(\d+)"( selected)?>([^<]*)<\/option>/g)]
+    .map(([, value, selected, label]) => ({ value: Number(value), selected: Boolean(selected), label }));
+  return { options, selected: options.find(option => option.selected) };
+};
+
+test('range start/end default to the first and last real unit and never list 단원 미분류', async () => {
+  const data = await catalog();
+  for (const grade of GRADES) {
+    const { w } = harness(data);
+    w.state.filters = { grade };
+    const scopes = w.scopeOptions();
+    const html = w.renderScopes();
+    const real = scopes.map((scope, index) => ({ scope, index })).filter(row => !row.scope.unclassified);
+    const start = selectedOption(html, 'scope-start'), end = selectedOption(html, 'scope-end');
+    assert.equal(start.selected.value, real[0].index, grade);
+    assert.equal(end.selected.value, real.at(-1).index, grade);
+    assert.equal(start.options.length, real.length, grade);
+    assert.ok(![...start.options, ...end.options].some(option => /단원 미분류/.test(option.label)), grade);
+    assert.ok(!scopes[end.selected.value].unclassified, grade);
+    assert.ok(!/·\s*(2015|2022)|통합/.test(html.replace(/2015·2022 개정/g, '')), `${grade} suffix`);
+  }
+  const { w } = harness(data);
+  w.state.filters = { grade: '고1' };
+  const html = w.renderScopes();
+  assert.ok(html.includes(Unified.NO_SUBJECT_LABEL) && !/과목 미정/.test(html));
+  assert.ok(/data-action="scope-range"/.test(html));
+});
+
+test('the compose screen keeps only grade, subject, scope and 난이도 outside 세부 조건', async () => {
+  const data = await catalog();
+  const { w } = harness(data);
+  w.state.filters = { grade: '고2', semanticSubject: 'ALGEBRA' };
+  const primary = w.filterMarkup(w.state.filters, 'compose', 'primary');
+  assert.deepEqual([...primary.matchAll(/data-filter="(\w+)"/g)].map(match => match[1]), ['grade', 'semanticSubject']);
+  const composition = w.renderComposition();
+  const [outside, detail] = composition.split('<details class="compose-detail"');
+  assert.ok(/class="compose-difficulty"/.test(outside) && /data-action="bucket-all"/.test(outside));
+  assert.ok(!/data-filter=/.test(outside));
+  const fields = [...detail.matchAll(/data-filter="(\w+)"/g)].map(match => match[1]);
+  for (const field of ['originalCurriculum', 'school', 'axis', 'yearFrom', 'yearTo', 'L3', 'L4']) assert.ok(fields.includes(field), field);
+  assert.ok(!/2015·2022 통합|통합\)/.test(composition));
+  w.state.filters = { grade: '고2', semanticSubject: 'ALGEBRA', school: Object.keys(Object.fromEntries(data.records.map(r => [r.school, 1])))[0] };
+  assert.match(w.renderComposition(), /세부 조건 <span class="badge"[^>]*>1개 적용 중/);
+});
+
+test('고2/고3 open on the grade\'s largest subject, other grades keep the full list, 전체 과목 stays selectable', async () => {
+  const data = await catalog();
+  const view = harness(data);
+  const index = view.w.unifiedIndex();
+  for (const grade of ['고2', '고3']) {
+    const expected = Unified.defaultSubject(index, grade);
+    assert.ok(Unified.subjectsForGrade(grade).some(subject => subject.value === expected), grade);
+    const { w, change } = harness(data);
+    w.state.filters = { grade: '고1' };
+    await change('compose', 'grade', grade);
+    assert.equal(w.state.filters.semanticSubject, expected, grade);
+    const scopes = w.scopeOptions();
+    assert.ok(scopes.length >= 5 && scopes.every(scope => scope.L1 === Unified.subjectByValue(grade, expected).label ||
+      scope.L1 === Unified.NO_SUBJECT_LABEL), grade);
+    // choosing 전체 과목 explicitly is kept
+    await change('compose', 'semanticSubject', '');
+    assert.equal(w.state.filters.semanticSubject, '');
+    assert.ok(new Set(w.scopeOptions().map(scope => scope.L1)).size > 1);
+  }
+  for (const grade of ['중1', '중2', '중3', '고1']) {
+    const { w, change } = harness(data);
+    w.state.filters = { grade: '고2', semanticSubject: 'ALGEBRA' };
+    await change('compose', 'grade', grade);
+    assert.equal(w.state.filters.semanticSubject, '', grade);
+  }
+});
+
+test('finder subject filter uses the units an exam covers (2015 수학(상) with 도형의 방정식 is 공통수학2)', async () => {
+  const data = await catalog();
+  const { w } = harness(data);
+  const exam = data.exams.find(row => row.file === 'original/high/h1/1final/24_금당고_1학기_기말_고1_기출.js');
+  assert.ok(exam && exam.courseRanges.some(range => range.standardCourse === '수학(상)'));
+  const files = filters => (w.state.find = filters, new Set(w.findExams().map(row => row.file)));
+  const common2 = files({ grade: '고1', semanticSubject: 'COMMON_MATH_2' });
+  const common1 = files({ grade: '고1', semanticSubject: 'COMMON_MATH_1' });
+  assert.ok(common1.has(exam.file) && common2.has(exam.file));
+  const all = files({ grade: '고1' });
+  assert.ok([...common1, ...common2].every(file => all.has(file)));
+  // the covered subjects come from the questions' units, and nothing the shared matcher found is lost
+  const covered = Unified.examSubjects(w.unifiedIndex());
+  const finderIndex = core.buildFinderIndex(data);
+  for (const [subject, found] of [['COMMON_MATH_1', common1], ['COMMON_MATH_2', common2]]) {
+    for (const row of data.exams.filter(item => item.effectiveBrowseGrade === '고1')) {
+      const legacy = core.finderMatches(row, { grade: '고1', semanticSubject: subject }, finderIndex);
+      if (legacy) assert.ok(found.has(row.file), `${subject} lost ${row.file}`);
+      const set = covered.get(core.normalizeFile(row.file));
+      if (set?.size && found.has(row.file)) assert.ok(set.has(subject));
+    }
+  }
+  assert.ok(common2.size > 100, `공통수학2 exams ${common2.size}`);
+  // No grade: the subject spans every unified subject; curriculum stays an independent narrowing.
+  const noGrade = files({ semanticSubject: 'COMMON_MATH_2' });
+  assert.equal(noGrade.size, common2.size);
+  const only2015 = files({ grade: '고1', semanticSubject: 'COMMON_MATH_2', curriculumKey: '2015' });
+  assert.ok(only2015.has(exam.file) && only2015.size < common2.size);
+});
+
+test('finder filter markup and URL reconcile use unified subjects without 과목 계열', async () => {
+  const data = await catalog();
+  const { w } = harness(data);
+  const field = filters => w.finderPrimaryFilterMarkup(filters);
+  const optionLabels = html => [...(html.match(/data-filter="semanticSubject"[^>]*>([\s\S]*?)<\/select>/)?.[1] || '').matchAll(/<option[^>]*>([^<]*)</g)].map(match => match[1]);
+  assert.deepEqual(optionLabels(field({})), ['전체 과목', '공통수학1', '공통수학2', '대수', '미적분Ⅰ', '확률과 통계', '미적분Ⅱ', '기하']);
+  assert.deepEqual(optionLabels(field({ grade: '고1' })), ['전체 과목', '공통수학1', '공통수학2']);
+  assert.deepEqual(optionLabels(field({ grade: '고2' })), ['전체 과목', '대수', '미적분Ⅰ', '확률과 통계', '미적분Ⅱ', '기하']);
+  assert.ok(!/semanticSubject/.test(field({ grade: '중2' })));
+  assert.ok(!/과목 계열|finder-family|data-filter="family"/.test(w.finderDetailFilterMarkup({}) + field({})));
+  assert.ok(!/수학\(상\)|수학\(하\)/.test(field({ grade: '고1' })));
+  // legacy URLs: family and unified subject values survive; foreign values are dropped
+  assert.deepEqual(plain(w.reconcileFinderFilters({ family: 'COMMON_2' })).semanticSubject, 'COMMON_MATH_2');
+  assert.equal(w.reconcileFinderFilters({ family: 'COMMON_2' }).family, '');
+  assert.equal(w.reconcileFinderFilters({ grade: '고2', semanticSubject: 'GEOMETRY' }).semanticSubject, 'GEOMETRY');
+  assert.equal(w.reconcileFinderFilters({ grade: '고1', semanticSubject: 'GEOMETRY' }).semanticSubject, '');
+  assert.equal(w.reconcileFinderFilters({ grade: '중1', semanticSubject: 'ALGEBRA', courseKey: 'M1-1' }).semanticSubject, '');
 });

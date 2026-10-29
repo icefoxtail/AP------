@@ -578,14 +578,14 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261029-unified-units-1'],
     ['meta-foundation-runtime.js', '20261029-health-reasons-1'],
     ['archive2-history.js', '20261004-class-grade-fallback-1'],
-    ['archive2-workspace.js', '20261029-unified-units-1'],
-    ['archive2-unified-units.js', '20261029-unified-units-1'],
+    ['archive2-workspace.js', '20261029-simple-compose-1'],
+    ['archive2-unified-units.js', '20261029-simple-compose-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /problem-bank-meta\.js\?v=20261021-reviewed-registration-1/);
   assert.match(html, /archive2-source\.js\?v=20261029-source-meta-conflict-1/);
   assert.match(html, /archive2-library\.js\?v=20261003-navigation-s5-3/);
-  assert.match(html, /archive2\.css\?v=20261008-finder-filter-row-1/);
+  assert.match(html, /archive2\.css\?v=20261029-simple-compose-1/);
   assert.match(html, /archive2-navigation\.js\?v=20260929-saved-library-2/);
 });
 
@@ -669,7 +669,9 @@ test('fresh BASIC includes every difficulty and unclassified metadata without pr
     assert.equal(result.selected.length, 6, grade);
     assert.notEqual(core.review(result.selected, request).status, 'HARD_BLOCK', grade);
     assert.doesNotMatch(w.renderScopes(), /자동 출제/);
-    assert.match(w.renderComposition(), /전체 \(미지정 포함\)/);
+    // 난이도 is a primary control: 전체 is pressed and the note says unselected means every difficulty.
+    assert.match(w.renderComposition(), /data-action="bucket-all"[^>]*aria-pressed="true"/);
+    assert.match(w.renderComposition(), /고르지 않으면 전체에서 출제합니다/);
   }
 });
 

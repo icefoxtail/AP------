@@ -37,7 +37,7 @@
   });
   const GRADES = Object.freeze(Object.keys(GRADE_PROFILE));
   const UNCLASSIFIED_LABEL = "단원 미분류";
-  const NO_SUBJECT_LABEL = "과목 미정";
+  const NO_SUBJECT_LABEL = "기타 문항";
   const HIGH1_SUBJECTS = Object.freeze([
     Object.freeze({ value: "COMMON_MATH_1", label: "공통수학1", course: "공통수학1" }),
     Object.freeze({ value: "COMMON_MATH_2", label: "공통수학2", course: "공통수학2" }),
@@ -329,6 +329,72 @@
     return POLICY.description;
   }
 
+  // ---- Shared selection helpers (compose and finder; also reusable by other consumers) ----
+  // All unified subjects, grade independent (공통수학1/2 for 고1, the five 고2/고3 subjects).
+  const ALL_SUBJECTS = Object.freeze([
+    ...HIGH1_SUBJECTS.map(({ value, label }) => Object.freeze({ value, label })),
+    ...Core.highSemanticSubjectOptions().map(({ value, label }) => Object.freeze({ value, label })),
+  ]);
+  // Subject choices for a finder filter: the grade's own list, or every unified subject while no
+  // grade is chosen. 중1~중3 have a single subject, so no choice is offered.
+  function subjectChoices(grade) {
+    if (!grade) return ALL_SUBJECTS;
+    if (isMiddle(grade)) return [];
+    return subjectsForGrade(grade).map(({ value, label }) => ({ value, label }));
+  }
+  function isKnownSubject(grade, value) {
+    const subject = text(value);
+    if (!subject) return false;
+    return grade ? Boolean(subjectByValue(grade, subject)) : ALL_SUBJECTS.some((row) => row.value === subject);
+  }
+  // Old "과목 계열" values (family) that name exactly one unified subject. The remaining legacy
+  // families are not subjects and are simply dropped.
+  const FAMILY_SUBJECT = Object.freeze({
+    COMMON_1: "COMMON_MATH_1", COMMON_2: "COMMON_MATH_2", ALGEBRA: "ALGEBRA", CALCULUS: "CALCULUS",
+    CALCULUS_ADVANCED: "CALCULUS_ADVANCED", PROB_STATS: "PROB_STATS", GEOMETRY: "GEOMETRY",
+  });
+  const subjectForFamily = (family) => FAMILY_SUBJECT[text(family)] || "";
+
+  // Default subject for grades whose list would otherwise be long (고2/고3 have five subjects):
+  // the subject with the most questions of that grade itself. Ties keep the curriculum order.
+  const defaultSubjectCache = new WeakMap();
+  function defaultSubject(index, grade) {
+    if (grade !== "고2" && grade !== "고3") return "";
+    let byGrade = defaultSubjectCache.get(index);
+    if (!byGrade) defaultSubjectCache.set(index, (byGrade = new Map()));
+    if (byGrade.has(grade)) return byGrade.get(grade);
+    const counts = new Map();
+    for (const entry of index.views[grade] || [])
+      if (entry.grade === grade && entry.subject && !entry.unclassified)
+        counts.set(entry.subject, (counts.get(entry.subject) || 0) + 1);
+    let best = "", bestCount = 0;
+    for (const subject of subjectsForGrade(grade))
+      if ((counts.get(subject.value) || 0) > bestCount) {
+        best = subject.value;
+        bestCount = counts.get(subject.value);
+      }
+    byGrade.set(grade, best);
+    return best;
+  }
+
+  // Unified subjects an exam covers, decided by the subjects of its questions' units (a 2015
+  // 수학(상) exam with 도형의 방정식 questions covers 공통수학2 as well as 공통수학1). Built once
+  // per index; exams without any placed question are absent and the caller falls back.
+  const examSubjectCache = new WeakMap();
+  function examSubjects(index) {
+    if (examSubjectCache.has(index)) return examSubjectCache.get(index);
+    const byFile = new Map();
+    for (const entry of index.byRecord.values()) {
+      if (!entry.subject) continue;
+      const file = Core.normalizeFile(entry.record.sourceFile);
+      let set = byFile.get(file);
+      if (!set) byFile.set(file, (set = new Set()));
+      set.add(entry.subject);
+    }
+    examSubjectCache.set(index, byFile);
+    return byFile;
+  }
+
   return {
     POLICY,
     GRADES,
@@ -346,6 +412,12 @@
     buildIndex,
     candidates,
     structure,
+    ALL_SUBJECTS,
+    subjectChoices,
+    isKnownSubject,
+    subjectForFamily,
+    defaultSubject,
+    examSubjects,
     scopeKey,
     isUnifiedScopeKey,
     policyNotice,

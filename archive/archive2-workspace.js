@@ -183,6 +183,15 @@
     next.family = "";
     return next;
   }
+  // 고2/고3 start on the grade's largest subject instead of a long all-subject list (the
+  // subject select still offers "전체 과목"). Only applied when the grade is chosen or compose is
+  // opened from the finder without a subject, never while whole exams are selected as sources.
+  function withDefaultComposeSubject(filters) {
+    const index = unifiedIndex();
+    if (!index || filters.semanticSubject || state.sources.length) return filters;
+    const subject = Unified.defaultSubject(index, filters.grade || "");
+    return subject ? { ...filters, semanticSubject: subject } : filters;
+  }
   // Subject label of the unified list for grades the shared projection does not name (중1~중3 have
   // a single subject; 고1~고3 name it once a subject is chosen).
   function composeSubjectLabel() {
@@ -1451,7 +1460,7 @@
     const subjects = Unified.subjectsForGrade(filters.grade);
     const subjectField = subjects.length > 1
       ? `<label>과목<select data-filter="semanticSubject" data-group="compose">${options(subjects.map(({ value, label }) => ({ value, label })), filters.semanticSubject, "전체 과목")}</select></label>`
-      : `<p class="muted compose-subject-note">${esc(subjects[0]?.label || "")} 전체 단원</p>`;
+      : `<p class="compose-subject-note">${esc(subjects[0]?.label || "")}</p>`;
     return `<div class="compose-step compose-grade"><div class="compose-step-head"><span class="compose-step-number">1</span><h2>학년</h2></div><label>학년<select data-filter="grade" data-group="compose">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, null)}</select></label></div>
         <div class="compose-step compose-subject"><div class="compose-step-head"><span class="compose-step-number">2</span><h2>과목</h2></div><div class="compose-subject-fields">${subjectField}</div></div>`;
   }
@@ -1477,7 +1486,7 @@
       return `<div class="compose-step compose-grade"><div class="compose-step-head"><span class="compose-step-number">1</span><h2>학년</h2></div><label>학년<select data-filter="grade" data-group="compose">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, null)}</select></label></div>
         <div class="compose-step compose-subject"><div class="compose-step-head"><span class="compose-step-number">2</span><h2>교육과정 / 과목</h2></div><div class="compose-subject-fields"><label>교육과정<select data-filter="curriculumKey" data-group="compose">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${courseField}</div></div>`;
     if (compose === "detail")
-      return `<div class="compose-detail-fields">${unifiedDetail ? `<label>원본 교육과정<select data-filter="originalCurriculum" data-group="compose">${options([{ value: "2015", label: "2015 개정" }, { value: "2022", label: "2022 개정" }], filters.originalCurriculum, "전체 (2015·2022 통합)")}</select></label>` : ""}<label>학교<select data-filter="school" data-group="compose">${options(finderSchoolValues(filters), filters.school, "전체 학교")}</select></label>
+      return `<div class="compose-detail-fields">${unifiedDetail ? `<label>교육과정<select data-filter="originalCurriculum" data-group="compose">${options([{ value: "2015", label: "2015 개정" }, { value: "2022", label: "2022 개정" }], filters.originalCurriculum, "전체")}</select></label>` : ""}<label>학교<select data-filter="school" data-group="compose">${options(finderSchoolValues(filters), filters.school, "전체 학교")}</select></label>
         <label>시험 시기<select data-filter="axis" data-group="compose">${options([{ value: "1-mid", label: "1학기 중간" }, { value: "1-final", label: "1학기 기말" }, { value: "2-mid", label: "2학기 중간" }, { value: "2-final", label: "2학기 기말" }], filters.axis, "전체 시험")}</select></label>
         <label>시작 연도<input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="compose" value="${esc(filters.yearFrom || "")}" placeholder="전체"></label>
         <label>끝 연도<input type="number" min="2000" max="2100" data-filter="yearTo" data-group="compose" value="${esc(filters.yearTo || "")}" placeholder="전체"></label></div>`;
@@ -1533,18 +1542,47 @@
             .map((r) => r.courseKey),
         ).map((value) => ({ value, label: courseLabel(value) }));
   }
-  function finderUpstreamMatch(exam, filters) {
-    if (!O.matchesMaterial(exam, filters.material)) return false;
-    return C.finderMatches(
+  // Grade / curriculum / subject identity of an exam. With the unified layer the subject is the
+  // unified (2022-based) subject of the units the exam covers, so a 2015 수학(상) exam with 도형의
+  // 방정식 questions is found under 공통수학2 as well. Exams without any placed question keep the
+  // shared matcher's own subject projection.
+  function finderIdentityMatch(exam, filters) {
+    const index = unifiedIndex();
+    const subject = index ? filters.semanticSubject || Unified.subjectForFamily(filters.family) : "";
+    const matched = C.finderMatches(
       exam,
       {
         grade: filters.grade,
         curriculumKey: filters.curriculumKey,
         courseKey: filters.courseKey,
-        semanticSubject: filters.semanticSubject,
+        semanticSubject: index ? "" : filters.semanticSubject,
       },
       state.finderIndex,
     );
+    if (!matched || !subject) return matched;
+    const covered = Unified.examSubjects(index).get(C.normalizeFile(exam.file));
+    return covered?.size
+      ? covered.has(subject)
+      : C.finderMatches(exam, { semanticSubject: subject }, state.finderIndex);
+  }
+  function finderUpstreamMatch(exam, filters) {
+    if (!O.matchesMaterial(exam, filters.material)) return false;
+    return finderIdentityMatch(exam, filters);
+  }
+  // Finder filters in the unified vocabulary: the subject comes from the unified list for the
+  // chosen grade (all unified subjects while no grade is chosen); the old subject family, the
+  // semester-course select and shared-matcher subject rules no longer apply.
+  function reconcileFinderFilters(filters) {
+    if (!unifiedIndex()) return C.reconcileFinderFilters(filters, state.catalog.taxonomy);
+    const next = C.reconcileFinderFilters(
+      { ...filters, semanticSubject: "", family: "", courseKey: "" },
+      state.catalog.taxonomy,
+    );
+    const subject = filters.semanticSubject || Unified.subjectForFamily(filters.family);
+    next.semanticSubject = Unified.isKnownSubject(next.grade || "", subject) ? subject : "";
+    next.family = "";
+    next.courseKey = "";
+    return next;
   }
   function finderSchoolValues(filters = state.find) {
     return unique(
@@ -1608,7 +1646,9 @@
           ? `${filters.yearFrom || "…"}~${filters.yearTo || "…"}`
           : "",
       ],
-      ["과목 계열", filters.family ? finderFamilyLabel(filters.family) : ""],
+      unifiedIndex()
+        ? ["", ""]
+        : ["과목 계열", filters.family ? finderFamilyLabel(filters.family) : ""],
     ].filter(([, value]) => value);
     return `<div class="finder-active-zone"><div class="finder-active-row">${active
       .map(
@@ -1628,6 +1668,13 @@
   function finderPrimaryFilterMarkup(filters) {
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
       projected = C.hasSubjectProjection?.(filters.grade) === true;
+    if (unifiedIndex()) {
+      const subjects = Unified.subjectChoices(filters.grade || "");
+      const subjectField = subjects.length
+        ? `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(subjects, filters.semanticSubject || Unified.subjectForFamily(filters.family), "전체 과목")}</select></label>`
+        : "";
+      return `<div class="finder-filter-core"><label class="finder-field"><span>학년</span><select data-filter="grade" data-group="find">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, "전체 학년")}</select></label><label class="finder-field"><span>교육과정</span><select data-filter="curriculumKey" data-group="find">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${subjectField}</div>`;
+    }
     const courses = finderCourseOptions(filters);
     const courseField = projected
       ? `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(courses, filters.semanticSubject, highSemantic ? "과목 선택" : "전체 과목")}</select></label>`
@@ -1646,7 +1693,7 @@
       filters.axis,
       "전체 시험",
     )}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label><div class="finder-axis-quick" role="group" aria-label="시험 시기 빠른 선택">${[["1-mid","1학기 중간"],["1-final","1학기 기말"],["2-mid","2학기 중간"],["2-final","2학기 기말"]].map(([value,label])=>button("finder-axis-quick",label,`type="button" data-axis="${value}" aria-pressed="${filters.axis===value}"`)).join("")}</div>${
-      filters.grade
+      filters.grade || unifiedIndex()
         ? ""
         : `<label class="finder-field finder-family"><span>과목 계열</span><select data-filter="family" data-group="find">${options(
             [
@@ -1693,20 +1740,9 @@
         return false;
       if (f.axis && `${exam.semester}-${exam.examType}` !== f.axis)
         return false;
-      if (f.family && !f.grade && !exam.courseFamilies.includes(f.family)) return false;
-      if (
-        !C.finderMatches(
-          exam,
-          {
-            grade: f.grade,
-            curriculumKey: f.curriculumKey,
-            courseKey: f.courseKey,
-            semanticSubject: f.semanticSubject,
-          },
-          state.finderIndex,
-        )
-      )
+      if (!unifiedIndex() && f.family && !f.grade && !exam.courseFamilies.includes(f.family))
         return false;
+      if (!finderIdentityMatch(exam, f)) return false;
       return (
         !query ||
         matchingSources.has(exam.file) ||
@@ -2178,23 +2214,25 @@
       C.isHighSemanticSubjectGrade?.(state.filters.grade) &&
       !state.filters.semanticSubject
     )
-      return `<div class="resultbar"><h2>출제 범위</h2></div><p class="muted">고2·고3은 과목을 먼저 선택하면 해당 과목의 2015·2022 범위를 하나로 묶어 보여줍니다.</p>`;
+      return `<div class="resultbar"><h2>출제 범위</h2></div><p class="muted">과목을 먼저 선택해 주세요. 선택한 과목의 단원이 여기에 나타납니다.</p>`;
     const scopes = scopeOptions(),
       groups = unique(scopes.map((s) => s.L1)),
       basic = scopes;
-    const rangeOptions = scopes.flatMap((s, i) => s.basicScope
-      ? [{ value: i, label: s.L1 + " · " + s.label }] : []);
+    // Range start/end only list real units: "단원 미분류" is selectable by checkbox but is never
+    // the default end of a range.
+    const rangeOptions = scopes.flatMap((s, i) => s.basicScope && !s.unclassified
+      ? [{ value: i, label: s.fullLabel || `${s.L1} · ${s.label}` }] : []);
     const groupMarkup = (rows, detail) => `<div class="scope-list">${unique(rows.map(s => s.L1)).map(g =>
       `<div class="scope-group"><div class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</div>${rows.filter(s => s.L1 === g).map(s =>
         `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`
       ).join("")}</div>`
     ).join("")}</div>`;
     const unifiedNotice = unifiedIndex()
-      ? `<p class="muted">2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶었습니다. 숫자는 선택 가능한 문항 수입니다. ‘단원 미분류’는 단원 정보가 없는 문항이며 선택하면 함께 출제됩니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 과목·학교·연도 조건을 넓혀 보세요.</p>' : ""}`
+      ? `<p class="muted">출제할 단원을 고르세요. 2015·2022 개정 문항이 한 목록에 함께 들어 있고, 숫자는 지금 출제할 수 있는 문항 수입니다. ‘단원 미분류’는 단원 정보가 아직 없는 문항으로, 선택하면 함께 출제됩니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
       : "";
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
-      ${unifiedNotice || '<p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 승인된 공통 범위를 하나로 묶습니다. 숫자는 현재 조건과 품질 검사를 통과한 선택 가능 문항 수이며 같은 UID는 한 번만 셉니다. 기본은 난이도를 지정하지 않고, 미지정 문항을 포함한 전체 난이도에서 선택합니다.</p>'}
-      <div class="range-controls"><label>범위 시작<select id="scope-start">${options(
+      ${unifiedNotice || '<p class="muted">학년의 1·2학기 전체 단원입니다. 숫자는 지금 출제할 수 있는 문항 수이며, 같은 문항은 한 번만 셉니다. 난이도를 고르지 않으면 난이도가 정해지지 않은 문항까지 포함해 전체에서 고릅니다.</p>'}
+      ${rangeOptions.length ? `<div class="range-controls"><label>범위 시작<select id="scope-start">${options(
         rangeOptions,
         rangeOptions[0]?.value ?? 0,
         null,
@@ -2202,11 +2240,11 @@
         rangeOptions,
         rangeOptions.at(-1)?.value ?? 0,
         null,
-      )}</select></label>${button("scope-range", "연속 범위 선택")}</div>
+      )}</select></label>${button("scope-range", "연속 범위 선택")}</div>` : ""}
       ${groupMarkup(basic, false)}`;
   }
   function bucketButtons(current, row = "") {
-    return `<div class="bucket-set" aria-label="난이도 선택">${button("bucket-all", "전체", `data-row="${esc(row)}" aria-pressed="${!current.length}" ${state.sealed ? "disabled" : ""}`)}${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
+    return `<div class="bucket-set" role="group" aria-label="난이도 선택">${button("bucket-all", "전체", `data-row="${esc(row)}" aria-pressed="${!current.length}" ${state.sealed ? "disabled" : ""}`)}${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
   }
   function composeAdvancedChoices(selectionFilters) {
     const baseFilters = { ...selectionFilters, L3: "", L4: "" };
@@ -2267,7 +2305,12 @@
       }))
       .filter((item) => item.available < item.row.count);
     const advanced = composeAdvancedChoices(selectionFilters);
-    return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>구성</h2><span class="muted">출제 범위 · 문항 수</span></div><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
+    const detailFilters = state.filters;
+    const detailCount = [
+      detailFilters.originalCurriculum, detailFilters.school, detailFilters.axis,
+      detailFilters.yearFrom || detailFilters.yearTo, detailFilters.L3, detailFilters.L4,
+    ].filter(Boolean).length;
+    return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>구성</h2><span class="muted">문항 수 · 난이도</span></div><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
       [
         { value: "equal", label: "단원별 균등" },
         { value: "pool", label: "전체에서 선택" },
@@ -2276,8 +2319,9 @@
       ],
       state.distribution,
       null,
-    )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label><span class="muted">난이도: ${state.buckets.length ? state.buckets.join(" · ") : "전체 (미지정 포함)"}</span></div>
-      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건</summary><label>난이도 (선택)${bucketButtons(state.buckets)}</label><p class="muted">전체는 난이도 미지정 문항도 포함합니다. 특정 난이도를 선택하면 해당 난이도가 확인된 문항만 선택합니다.</p>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.types, state.filters.L4, "전체 유형")}</select></label></div></div></details>
+    )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label></div>
+      <div class="compose-difficulty"><strong id="compose-difficulty-label">난이도</strong>${bucketButtons(state.buckets)}<p class="muted">고르지 않으면 전체에서 출제합니다. 난이도를 고르면 해당 난이도가 확인된 문항만 선택합니다.</p></div>
+      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.types, state.filters.L4, "전체 유형")}</select></label></div></div></details>
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ") || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
       <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
@@ -4068,9 +4112,21 @@
         state.custom = {};
         state.view = "compose";
         state.filters = { school: "", ...state.find };
-        if (!state.filters.grade) state.filters.grade = "고1";
+        let findSubject = state.find.semanticSubject || "";
+        if (!state.filters.grade) {
+          // A subject chosen without a grade opens compose on the grade that teaches it.
+          const subject = findSubject || Unified?.subjectForFamily?.(state.find.family) || "";
+          state.filters.grade = /^COMMON_MATH_/.test(subject) ? "고1"
+            : ["ALGEBRA", "PROB_STATS"].includes(subject) ? "고2"
+            : subject ? "고3" : "고1";
+          findSubject = subject;
+        }
         if (C.hasSubjectProjection?.(state.find.grade)) {
-          state.filters.semanticSubject = state.find.semanticSubject || "";
+          state.filters.semanticSubject = findSubject;
+          state.filters.courseKey = "";
+          state.filters.family = "";
+        } else if (findSubject) {
+          state.filters.semanticSubject = findSubject;
           state.filters.courseKey = "";
           state.filters.family = "";
         } else {
@@ -4083,7 +4139,7 @@
           // starts from the unified list (original curriculum "전체").
           state.filters.curriculumKey = "";
           state.filters.originalCurriculum = "";
-          state.filters = reconcileUnifiedFilters(state.filters);
+          state.filters = withDefaultComposeSubject(reconcileUnifiedFilters(state.filters));
         } else
           state.filters = C.reconcileFinderFilters(
             state.filters,
@@ -4190,7 +4246,7 @@
             to = Number($("scope-end").value);
           if (from > to)
             throw new Error("끝 단원은 시작 단원 뒤에 있어야 합니다.");
-          state.scopes = scopes.slice(from, to + 1).filter(s => s.basicScope).map((s) => s.key);
+          state.scopes = scopes.slice(from, to + 1).filter(s => s.basicScope && !s.unclassified).map((s) => s.key);
         }
         invalidate();
         render();
@@ -4452,6 +4508,8 @@
               // The unified unit list owns subject and curriculum; the finder reconcile
               // rules (2015/2022 course keys) do not apply to it.
               state.filters = reconcileUnifiedFilters(state.filters);
+              if (el.dataset.filter === "grade")
+                state.filters = withDefaultComposeSubject(state.filters);
             } else {
               if (
                 el.dataset.filter === "curriculumKey" &&
@@ -4485,10 +4543,7 @@
               el.dataset.filter,
             )
           )
-            Object.assign(
-              state.find,
-              C.reconcileFinderFilters(state.find, state.catalog.taxonomy),
-            );
+            Object.assign(state.find, reconcileFinderFilters(state.find));
           if (
             ["material", "grade", "curriculumKey", "courseKey", "semanticSubject"].includes(
               el.dataset.filter,
@@ -4815,10 +4870,7 @@
     state.recentSelectedAssignmentId = p.get("assignment_id") || "";
     if (state.catalog?.taxonomy) {
       const before = JSON.stringify(state.find);
-      Object.assign(
-        state.find,
-        C.reconcileFinderFilters(state.find, state.catalog.taxonomy),
-      );
+      Object.assign(state.find, reconcileFinderFilters(state.find));
       if (state.view === "find" && before !== JSON.stringify(state.find))
         replaceFinderUrlState();
     }
