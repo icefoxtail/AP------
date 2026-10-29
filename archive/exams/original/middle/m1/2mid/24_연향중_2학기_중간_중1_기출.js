@@ -285,7 +285,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 전개도를 접은 정육면체 세 개에서 모서리 AB를 굵은 검정으로 두고, 평행한 모서리 ML·DE·CF, 만나는 모서리 BM·BC·AL·AF, 꼬인 위치의 모서리 CD·DM·EF·EL을 각각 빨간색으로 나타낸 그림",
+    "solutionImageCaption": "접은 정육면체에서 AB와 평행한, 만나는, 꼬인 위치의 모서리를 나눠 보인 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -616,7 +620,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 선생님 나이 20개를 줄기별로 작은 수부터 늘어놓은 줄기와 잎 그림에서, 문제의 a, b, c가 놓인 20대 셋째 잎, 30대 여섯째 잎, 40대 넷째 잎에 동그라미를 친 그림",
+    "solutionImageCaption": "원자료를 줄기별로 정렬해 a, b, c가 놓인 잎을 동그라미로 표시한 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -773,7 +781,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 130cm부터 180cm까지 계급 크기 10cm인 도수분포 히스토그램에서 150cm 미만인 130~140, 140~150 두 계급을 짙게 칠해 괄호로 묶고, 도수가 비어 있던 140~150 계급은 값 없이 점선 막대로 나타낸 그림",
+    "solutionImageCaption": "150cm 미만인 학생은 130~140, 140~150 두 계급에 속한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
