@@ -447,7 +447,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동인 △ABC와 △BDE의 대응각(28°끼리, 62°끼리)을 같은 수의 호로 표시하고 ∠B=90°, ∠ABF=62°와 구하는 ∠AFB를 나타낸 그림",
+    "solutionImageCaption": "합동의 대응각 28°, 62°와 ∠ABF=62°로 △ABF의 나머지 각 ∠AFB를 구한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -487,7 +491,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 꺾인 점에서 l, m에 평행한 보조선을 긋고 엇각 40°, 55°를 옮겨 표시하고 보조선 사이에 낀 두 각의 합이 180°임을 나타낸 그림",
+    "solutionImageCaption": "보조선으로 엇각 40°, 55°를 옮기면 x+y는 180°에 40°와 55°를 더한 값이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -524,7 +532,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동 조건 다섯 가지를 같은 변(눈금 수)과 같은 각(호)으로 나란히 보이고 마지막은 끼인각이 아닌 각만 같아 삼각형이 달라질 수 있음을 나타낸 그림",
+    "solutionImageCaption": "각 보기의 같은 변과 같은 각의 위치를 비교해 끼인각이 아닌 경우를 찾는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -598,7 +610,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 네 사분면에 x좌표, y좌표의 부호 (+,+), (-,+), (-,-), (+,-)를 표시하고 제4사분면에 점 P를 나타낸 그림",
+    "solutionImageCaption": "P가 제4사분면 위의 점이므로 a>0, b<0이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -723,7 +739,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB 위의 점 C, M에서 AC=L/4, CM=MB=3L/8, AM=5cm, AB=L인 길이 관계를 치수선으로 나타낸 그림",
+    "solutionImageCaption": "AB=L이라 하면 AM=AC+CM=5L/8이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
