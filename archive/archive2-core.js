@@ -482,6 +482,27 @@
     return Number.isInteger(year) && year >= 1900 && year <= 2100 ? year : 0;
   };
   const compareNewest = (a, b) => sourceYear(b) - sourceYear(a);
+  // Recency policy (user decision 2026-10-29): exam preparation prefers the most recent COMPLETE
+  // school year first (2025, 2024, 2023, ... descending), then the current year (its exams can
+  // still be incomplete), then years newer than the configured current year (only possible when
+  // this constant is stale), and unknown years last. This is the single definition used by
+  // 문제지 만들기, 단원별 기출 and the quick assessments; bump currentExamYear once per school year.
+  const RECENCY_POLICY = Object.freeze({
+    currentExamYear: 2026,
+    order: "완결된 최근 연도(2025, 2024, 2023 순)를 먼저, 올해 자료는 그다음, 연도를 알 수 없는 자료는 마지막",
+  });
+  const RECENCY_CURRENT_BAND = 1000;
+  const RECENCY_UNKNOWN = 1000000;
+  function recencyRank(year, currentExamYear = RECENCY_POLICY.currentExamYear) {
+    const value = Number(year);
+    if (!Number.isInteger(value) || value < 1900 || value > 2100) return RECENCY_UNKNOWN;
+    return value < currentExamYear
+      ? currentExamYear - 1 - value
+      : RECENCY_CURRENT_BAND + (value - currentExamYear);
+  }
+  const compareRecency = (a, b) => recencyRank(sourceYear(a)) - recencyRank(sourceYear(b));
+  // Years ordered by recencyRank, e.g. [2026, 2024, 2025, 0] -> [2025, 2024, 2026, 0].
+  const sortYearsByRecency = (years) => [...years].sort((a, b) => recencyRank(a) - recencyRank(b));
   function taxonomyPaths(master) {
     const paths = [];
     for (const row of master.records || [])
@@ -890,12 +911,13 @@
         while (result.selected < row.count && groups.size) {
           const group = [...groups.values()].sort((a, b) =>
             (conceptCounts.get(a.concept) || 0) - (conceptCounts.get(b.concept) || 0) ||
-            Math.max(...b.records.map(sourceYear)) - Math.max(...a.records.map(sourceYear)) ||
+            Math.min(...a.records.map(record => recencyRank(sourceYear(record)))) -
+              Math.min(...b.records.map(record => recencyRank(sourceYear(record)))) ||
             a.key.localeCompare(b.key, "en"))[0];
           groups.delete(group.key);
-          const newestYear = Math.max(...group.records.map(sourceYear));
+          const bestRank = Math.min(...group.records.map(record => recencyRank(sourceYear(record))));
           const selection = selector.selectCandidates(
-            group.records.filter(record => sourceYear(record) === newestYear),
+            group.records.filter(record => recencyRank(sourceYear(record)) === bestRank),
             { count: 1 },
             { selectionSeed: request.seed || VERSION },
           );
@@ -908,9 +930,10 @@
           conceptCounts.set(group.concept, (conceptCounts.get(group.concept) || 0) + 1);
         }
       }
-      // Recency is a priority after hard scope/quality/history gates. Preserve
-      // the existing seeded selection within each year; unknown years go last.
-      for (const year of [...new Set(pool.map(sourceYear))].sort((a, b) => b - a)) {
+      // Recency is a priority after hard scope/quality/history gates (RECENCY_POLICY: complete
+      // years newest first, then the current year, unknown years last). The existing seeded
+      // selection is preserved within each year.
+      for (const year of sortYearsByRecency(new Set(pool.map(sourceYear)))) {
         const remaining = row.count - result.selected;
         if (!remaining) break;
         const selection = selector.selectCandidates(
@@ -928,7 +951,7 @@
     selected.sort(
       (a, b) =>
         rows.findIndex((r) => r.id === a.rowId) -
-        rows.findIndex((r) => r.id === b.rowId) || compareNewest(a, b),
+        rows.findIndex((r) => r.id === b.rowId) || compareRecency(a, b),
     );
     const shortages = rowResults
       .filter((r) => r.selected < r.requested)
@@ -1065,6 +1088,10 @@
     finderMatches,
     sourceYear,
     compareNewest,
+    RECENCY_POLICY,
+    recencyRank,
+    compareRecency,
+    sortYearsByRecency,
     taxonomyPaths,
     eligibility,
     basicEligibility,

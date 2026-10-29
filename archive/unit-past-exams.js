@@ -71,9 +71,35 @@
     return core.createMetaFoundationSelectionAuthority(window.ARCHIVE_META_FOUNDATION_RUNTIME || null);
   }
 
+  // Usage gate shared with 문제지 만들기 (Archive2Core.generalUseEligibility on the final catalog
+  // record): verified identity, intact source reference and fingerprint. Metadata approval, pending
+  // review, source-issue annotations and the Meta Foundation taxonomy chain are NOT usage gates.
+  // Without a final catalog nothing can be judged, so records stay unmarked (the core treats an
+  // unmarked record as usable and the status line says the check could not run).
+  function buildGeneralUseAuthority() {
+    const catalog = window.ARCHIVE2_FINAL_CATALOG;
+    const archive2 = window.Archive2Core;
+    if (!catalog || !Array.isArray(catalog.records) || !archive2 || typeof archive2.generalUseEligibility !== 'function') return null;
+    const byUid = new Map();
+    const bySource = new Map();
+    for (const record of catalog.records) {
+      if (record.questionUid) byUid.set(record.questionUid, record);
+      bySource.set(`${archive2.normalizeFile(record.sourceFile)}#${Number(record.sourceOrdinal)}`, record);
+    }
+    return {
+      check(uid, sourceFile, sourceOrdinal) {
+        const found = (uid && byUid.get(uid)) || bySource.get(`${archive2.normalizeFile(sourceFile)}#${Number(sourceOrdinal)}`);
+        if (!found) return { ok: false, reasons: ['catalog_record_missing'] };
+        return archive2.generalUseEligibility(found);
+      }
+    };
+  }
+
   function joinApprovedMetadata(records) {
     const sidecar = window.ARCHIVE_QUESTION_METADATA;
     const authority = buildMetaFoundationSelectionAuthority();
+    const generalUse = buildGeneralUseAuthority();
+    state.generalUseChecked = Boolean(generalUse);
     const bySource = new Map();
     for (const meta of sidecar?.records || []) {
       const file = String(meta.sourceArchiveFile || '').replace(/\\/g, '/');
@@ -83,7 +109,11 @@
     return (Array.isArray(records) ? records : []).map(record => {
       const file = String(record.sourceFile || record._sourceFile || '').replace(/\\/g, '/');
       const meta = bySource.get(`${file}#${record.sourceOrdinal}`) || bySource.get(`${file}#id:${record.id || record.sourceQuestionNo}`);
-      if (!meta) return { ...record, metaFoundationRuntimeAvailable: authority.active };
+      const useGate = generalUse
+        ? generalUse.check(core.getQuestionUid(meta || {}) || core.getQuestionUid(record), file, record.sourceOrdinal)
+        : null;
+      const useFields = useGate ? { generalUseEligible: useGate.ok, generalUseReasons: useGate.reasons } : {};
+      if (!meta) return { ...record, ...useFields, metaFoundationRuntimeAvailable: authority.active };
       const metadataSubUnitKey = String(meta.subUnitKey || meta.sub_unit_key || '').trim();
       const metadataParentKey = String(meta.standardUnitKey || meta.standard_unit_key || '').trim();
       const validSubUnit = Boolean(metadataSubUnitKey && metadataParentKey && core.isSubUnitInParentScope(metadataSubUnitKey, metadataParentKey));
@@ -93,6 +123,7 @@
       const taxonomyGate = core.validateMetaFoundationSelection(meta, authority);
       return {
         ...record,
+        ...useFields,
         questionUid: core.getQuestionUid(meta) || core.getQuestionUid(record),
         subUnitParentKey: validSubUnit ? metadataParentKey : core.getSubUnitParentKey(record),
         subUnitKey: validSubUnit ? metadataSubUnitKey : core.getSubUnitKey(record),
@@ -102,12 +133,10 @@
         L3: String(meta.L3 || record.L3 || '').trim(),
         L4: String(meta.L4 || record.L4 || '').trim(),
         difficultyBucket: meta.difficultyBucket || record.difficultyBucket || '',
-        // User decision 2026-10-29: source hold annotations (sourceIssueHold /
-        // sourceDefectCandidate) are not usage gates. The metadata record keeps the flag and its
-        // history; only the selectable state derived from it is lifted here.
-        defaultSelectable: (meta.sourceIssueHold === true || meta.sourceDefectCandidate === true)
-          ? true
-          : (meta.defaultSelectable !== undefined ? meta.defaultSelectable : record.defaultSelectable),
+        // User decision 2026-10-29: neither metadata approval (defaultSelectable) nor the source
+        // hold annotations are usage gates; usage is decided by generalUseEligible above. The
+        // approval value stays truthful and only orders the selection (approved metadata first).
+        defaultSelectable: meta.defaultSelectable !== undefined ? meta.defaultSelectable : record.defaultSelectable,
         metaFoundationRuntimeAvailable: authority.active,
         metaFoundationOwnedScope: taxonomyGate.owned,
         metaFoundationTaxonomyValid: taxonomyGate.valid,
@@ -1681,11 +1710,12 @@
     const catalog = state.catalog;
     const summary = document.getElementById('unit-summary');
     if (summary) summary.textContent = `${catalog.selectableCount.toLocaleString()}문항 · ${catalog.units.length}개 단원`;
-    const reviewText = catalog.review.length ? ` · 검토 필요 ${catalog.review.length}문항` : '';
-    const excludedText = catalog.excludedFromAutomaticCount ? ` · 자동출제 제외 ${catalog.excludedFromAutomaticCount}문항` : '';
-    const metadataText = state.metadataError ? ' · Meta Foundation 연결 실패로 자동출제를 중단했습니다' : '';
+    const reviewText = catalog.review.length ? ` · 단원 미확정 ${catalog.review.length}문항` : '';
+    const excludedText = catalog.excludedFromAutomaticCount ? ` · 원본 확인 실패로 제외 ${catalog.excludedFromAutomaticCount}문항` : '';
+    const approvedText = ` (승인 메타 ${catalog.approvedCount.toLocaleString()}문항)`;
+    const metadataText = state.metadataError ? ' · Meta Foundation 연결 실패로 승인 메타 정보 없이 일반 출제합니다' : '';
     setStatus(
-      `원본 ${catalog.scannedCount.toLocaleString()}문항 중 분류 ${catalog.classifiedCount.toLocaleString()}문항 · 자동출제 가능 ${catalog.selectableCount.toLocaleString()}문항${reviewText}${excludedText}${metadataText}.`,
+      `원본 ${catalog.scannedCount.toLocaleString()}문항 중 분류 ${catalog.classifiedCount.toLocaleString()}문항 · 출제 가능 ${catalog.selectableCount.toLocaleString()}문항${approvedText}${reviewText}${excludedText}${metadataText}. 완결된 최근 연도(2025년, 2024년 순)부터 선택하고 같은 연도에서는 승인 메타 문항을 먼저 씁니다.`,
       state.metadataError
     );
   }

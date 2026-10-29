@@ -2033,7 +2033,7 @@
             <input id="five-minute-level" type="range" min="0" max="${config.order.length - 1}" step="1"
               value="${config.order.indexOf(selection.preset)}" aria-label="${config.title} 난이도" aria-valuetext="${fiveMinutePresetLabels[selection.preset]}">
           </div>
-        </div><p class="muted" id="quick-assessment-mix">${mix}</p></section>
+        </div><p class="muted" id="quick-assessment-mix">${mix}</p><p class="muted">문항은 완결된 최근 연도(2025년, 2024년 순)부터 고르고, 올해 시험은 그다음입니다. 같은 연도에서는 무작위로 섞습니다.</p></section>
       <section class="panel"><h2>${monthly ? "대단원" : state.view === "unit-test" ? "중단원" : state.view === "subunit-test" ? "소단원" : "단원"}</h2>
         ${monthly ? '<p class="muted">단원명을 누르면 한 단원으로 바로 출제합니다. 여러 단원은 묶음에 추가하세요.</p>' : ""}${units.length
         ? `<div class="archive-home-products">${cards}</div>${monthly ? button("quick-bundle-open",
@@ -2051,6 +2051,17 @@
       [result[i], result[j]] = [result[j], result[i]];
     }
     return result;
+  }
+  // Recency policy (C.RECENCY_POLICY): most recent complete school year first, then the current
+  // year, unknown years last; random within the same year.
+  function recencyShuffle(rows) {
+    return fiveMinuteShuffle(rows).sort(C.compareRecency);
+  }
+  // Coarse recency tier for the balanced score: 0..7 for complete years (2025 first), 8 for the
+  // current year, 9 for unknown. Always below one "type already used" step (100) of the score.
+  function quickRecencyTier(record) {
+    const rank = C.recencyRank(C.sourceYear(record));
+    return rank >= 1000000 ? 9 : rank >= 1000 ? 8 : Math.min(rank, 7);
   }
   function balancedQuickSelection(units, preset) {
     const pools = { 1: [], 2: [], 3: [], 4: [] }, scopeByUid = new Map();
@@ -2070,7 +2081,7 @@
     const scopeUse = new Map(), subunitUse = new Map(), typeUse = new Map(),
       sourceUse = new Map(), selected = [];
     for (const [bucket, count] of preset) {
-      const candidates = fiveMinuteShuffle([...new Map(pools[bucket]
+      const candidates = recencyShuffle([...new Map(pools[bucket]
         .map(record => [record.questionUid, record])).values()]);
       for (let i = 0; i < count; i++) {
         let best = 0, bestScore = Infinity;
@@ -2081,7 +2092,8 @@
           const score = (scopeUse.get(scope) || 0) * 1000000 +
             (subunitUse.get(subunit) || 0) * 10000 +
             (type ? (typeUse.get(type) || 0) : 0) * 100 +
-            (sourceUse.get(record.sourceFile) || 0);
+            quickRecencyTier(record) * 10 +
+            Math.min(sourceUse.get(record.sourceFile) || 0, 9);
           if (score < bestScore) { best = j; bestScore = score; }
         }
         const [record] = candidates.splice(best, 1);
@@ -2120,7 +2132,7 @@
     const selected = state.view === "unit-test" || state.view === "monthly-test"
       ? balancedQuickSelection(units, preset)
       : preset.flatMap(([bucket, count]) =>
-        fiveMinuteShuffle([...new Map(pools[bucket].map(record => [record.questionUid, record])).values()]).slice(0, count));
+        recencyShuffle([...new Map(pools[bucket].map(record => [record.questionUid, record])).values()]).slice(0, count));
     if (new Set(selected.map(record => record.questionUid)).size !== config.count) {
       status("문항 UID가 중복되어 시험지를 열 수 없습니다.", true);
       return;
@@ -2324,12 +2336,23 @@
       <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.types, state.filters.L4, "전체 유형")}</select></label></div></div></details>
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ") || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
-      <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
+      <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 문항을 완결된 최근 연도부터(2025년, 2024년, 2023년 순) 선택하고, 올해 시험은 그다음, 연도를 알 수 없는 자료는 마지막에 선택합니다. 같은 연도 안에서는 문항을 섞습니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
+  }
+  // Year spread of the generated paper, in the recency order the selection used.
+  function yearDistribution(records) {
+    const counts = new Map();
+    for (const record of records) {
+      const year = C.sourceYear(record);
+      counts.set(year, (counts.get(year) || 0) + 1);
+    }
+    return C.sortYearsByRecency(counts.keys())
+      .map((year) => ({ year, label: year ? `${year}년` : "연도 미상", count: counts.get(year) }));
   }
   function renderInspector() {
     const r = state.selected.length ? review() : null;
     const summary = `<h2>${state.round}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
       <div class="summary-line"><span>선택 범위</span><strong>${state.derivationSource ? "원본 유지" : `${selectedScopeOptions().length}개`}</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
+      ${state.selected.length ? `<div class="summary-line" data-year-distribution><span>출제 연도</span><strong>${yearDistribution(state.selected).map((item) => `${esc(item.label)} ${item.count}문항`).join(" · ")}</strong></div>` : ""}
       ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
       ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
     const frozen = Parts.receipt(state.receipts, state.previewIndex),
@@ -3490,7 +3513,7 @@
       C.rowMatches(r, row, workspaceMatchOptions()) &&
         !used.has(r.questionUid) &&
         !excluded.has(r.questionUid),
-    ).sort(C.compareNewest);
+    ).sort(C.compareRecency);
     showDialog(
       `${Math.floor(index / 50) + 1}권 ${(index % 50) + 1}번 교체 · ${current.L2}`,
       `<p class="muted">현재 출제 조건·출처·학생 이력을 유지합니다. 후보 ${candidateRecords.length}문항</p>${

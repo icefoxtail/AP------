@@ -505,9 +505,14 @@
     const fileDiff = compareText(normalizePath(a.sourceFile), normalizePath(b.sourceFile));
     return fileDiff || getQuestionNo(a) - getQuestionNo(b);
   }
+  // Recency order shared with 문제지 만들기 (Archive2Core.RECENCY_POLICY): the most recent complete
+  // school year first (2025, 2024, ...), then the current year, unknown years last.
+  function recencyRankOf(record) {
+    const year = getYear(record);
+    return isValidExamYear(year) ? archive2Core.recencyRank(year) : archive2Core.recencyRank(0);
+  }
   function compareNewestYear(a, b) {
-    const rank = record => isValidExamYear(getYear(record)) ? getYear(record) : 0;
-    return rank(b) - rank(a);
+    return recencyRankOf(a) - recencyRankOf(b);
   }
 
   function getCollectionUnitKey(record) {
@@ -623,7 +628,7 @@
     for (const record of source) {
       const key = getProblemTypeKey(record);
       const label = getProblemTypeLabel(record);
-      if (!key || !label) continue;
+      if (!key || !label || !isProblemTypeSelectable(record)) continue;
       const group = groups.get(key) || { key, label, count: 0 };
       group.count += 1;
       groups.set(key, group);
@@ -642,7 +647,7 @@
     for (const record of source) {
       const key = getTemplateKey(record);
       const label = getTemplateLabel(record);
-      if (!key || !label) continue;
+      if (!key || !label || !isProblemTypeSelectable(record)) continue;
       const group = groups.get(key) || { key, label, count: 0, parentProblemTypeKey: getProblemTypeKey(record) };
       group.count += 1;
       groups.set(key, group);
@@ -721,8 +726,29 @@
       String(record.metaFoundationTaxonomyValid || '').trim().toLowerCase() === 'true';
   }
 
-  function isAutomaticSelectable(record) {
+  // Approved metadata: the former automatic-selection gate (metadata approved as default-selectable
+  // and an intact Meta Foundation taxonomy chain). Since the 2026-10-29 user decision it is a
+  // PRIORITY tier, not a usage gate.
+  function isMetadataApproved(record) {
     return isDefaultSelectable(record) && isTaxonomySelectable(record);
+  }
+
+  // Usage gate = 문제지 만들기 generalUseEligibility (verified identity, intact source reference and
+  // fingerprint). The page joins the result as `generalUseEligible` from the final catalog; a record
+  // that was never joined (no catalog evidence) is not rejected here. Metadata approval, pending
+  // review, source-issue annotations and a broken L2/L3/L4 chain are not usage gates.
+  function isGeneralUseEligible(record) {
+    const value = record && record.generalUseEligible;
+    return !(value === false || value === 0 || String(value).trim().toLowerCase() === 'false');
+  }
+
+  function isAutomaticSelectable(record) {
+    return isGeneralUseEligible(record);
+  }
+
+  // A broken or missing L2/L3/L4 chain only disables L3/L4-based selection for that record.
+  function isProblemTypeSelectable(record) {
+    return isTaxonomySelectable(record);
   }
 
   function getSubUnitOptions(records) {
@@ -751,6 +777,7 @@
       const templateKey = getTemplateKey(record);
       const difficulty = getDifficultyBucket(record);
       if (subUnitKeys.size && !subUnitKeys.has(subUnitKey)) return false;
+      if ((problemTypeKeys.size || templateKeys.size) && !isProblemTypeSelectable(record)) return false;
       if (problemTypeKeys.size && !problemTypeKeys.has(problemTypeKey)) return false;
       if (templateKeys.size && !templateKeys.has(templateKey)) return false;
       if (difficultyBuckets.size && !difficultyBuckets.has(difficulty)) return false;
@@ -917,7 +944,7 @@
   function compareCollectionRecords(a, b) {
     const schoolDiff = compareText(getSchoolKey(a), getSchoolKey(b));
     if (schoolDiff) return schoolDiff;
-    const yearDiff = getExamYear(b) - getExamYear(a);
+    const yearDiff = compareNewestYear(a, b);
     if (yearDiff) return yearDiff;
     const periodOrder = { '1mid': 1, '1final': 2, '2mid': 3, '2final': 4 };
     const periodDiff = (periodOrder[getPeriod(a.sourceFile)] || 99) - (periodOrder[getPeriod(b.sourceFile)] || 99);
@@ -946,7 +973,7 @@
         });
         return {
           schoolKey,
-          groups: [...byYear.entries()].sort((a, b) => b[0] - a[0]).map(([year, items]) => ({ year, items, index: 0 })),
+          groups: [...byYear.entries()].sort((a, b) => archive2Core.recencyRank(a[0]) - archive2Core.recencyRank(b[0])).map(([year, items]) => ({ year, items, index: 0 })),
           pointer: 0
         };
       });
@@ -1052,13 +1079,20 @@
     return fnv1a(`${String(seed || 'unitpast-default')}|${getRecordIdentity(record)}`);
   }
 
+  // Selection order: the most recent complete school year first (RECENCY_POLICY: 2025, 2024, ...,
+  // then the current year, unknown years last); inside a year approved-metadata items first; then a
+  // seed-stable random order. The sort keys are computed once per record, not once per comparison.
   function sortForSelection(records, seed) {
-    return [...records].sort((a, b) => {
-      const yearDiff = compareNewestYear(a, b);
-      if (yearDiff) return yearDiff;
-      const scoreDiff = compareText(stableSelectionScore(a, seed), stableSelectionScore(b, seed));
-      return scoreDiff || compareRecords(a, b);
-    });
+    const rows = records.map(record => ({
+      record,
+      recency: recencyRankOf(record),
+      approved: isMetadataApproved(record) ? 0 : 1,
+      score: stableSelectionScore(record, seed)
+    }));
+    rows.sort((a, b) =>
+      a.recency - b.recency || a.approved - b.approved ||
+      compareText(a.score, b.score) || compareRecords(a.record, b.record));
+    return rows.map(row => row.record);
   }
 
   function dedupeRecords(records) {
@@ -1224,6 +1258,7 @@
       L3: getProblemTypeLabel(record),
       L4: getTemplateLabel(record),
       defaultSelectable: isDefaultSelectable(record),
+      generalUseEligible: isGeneralUseEligible(record),
       metaFoundationOwnedScope: record.metaFoundationOwnedScope === true,
       metaFoundationTaxonomyValid: record.metaFoundationTaxonomyValid === true,
       mappedUnitKey: unit.key,
@@ -1330,6 +1365,7 @@
         ...unit,
         count: unitRecords.length,
         selectableCount: selectableRecords.length,
+        approvedCount: selectableRecords.filter(isMetadataApproved).length,
         excludedFromAutomaticCount: unitRecords.length - selectableRecords.length,
         records: unitRecords,
         papers
@@ -1338,11 +1374,13 @@
 
     const classifiedCount = units.reduce((sum, unit) => sum + unit.count, 0);
     const selectableCount = units.reduce((sum, unit) => sum + unit.selectableCount, 0);
+    const approvedCount = units.reduce((sum, unit) => sum + unit.approvedCount, 0);
     return {
       profile, scope, scannedCount: scanned.length,
       candidateCount: classifiedCount + review.length,
       classifiedCount,
       selectableCount,
+      approvedCount,
       excludedFromAutomaticCount: classifiedCount - selectableCount,
       review, invalid, ignored, units
     };
@@ -1397,7 +1435,11 @@
     validateMetaFoundationSelection,
     isDefaultSelectable,
     isTaxonomySelectable,
+    isMetadataApproved,
+    isGeneralUseEligible,
+    isProblemTypeSelectable,
     isAutomaticSelectable,
+    recencyRankOf,
     getSubUnitOptions,
     filterUnitRecords,
     normalizeCollectionSemester,

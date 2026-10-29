@@ -30,17 +30,18 @@ function fixtureRecord(overrides = {}) {
   };
 }
 
-test('전체 단원 기출과 바로 쓰는 문제지는 연도를 학기보다 우선해 최신순으로 준비한다', () => {
+test('전체 단원 기출과 바로 쓰는 문제지는 연도를 학기보다 우선해 완결된 최근 연도부터, 올해는 그다음 순서로 준비한다', () => {
   const records = [2021, 2025, 2026, 2025].map((year, i) => fixtureRecord({
     sourceFile: `original/high/h2/${i === 2 ? '2final' : '1mid'}/${year}_school.js`,
     examYear: year, id: i + 1, sourceOrdinal: i + 1, question_uid: `year-${i}`,
     subUnitKey: 'A', subUnit: '개념', difficultyBucket: '중'
   }));
   const catalog = core.buildCatalog(records, { profileId: 'h2' });
-  assert.deepEqual(catalog.units.find(unit => unit.count).papers.flatMap(paper => paper.records.map(core.getExamYear)), [2026, 2025, 2025, 2021]);
+  assert.deepEqual(catalog.units.find(unit => unit.count).papers.flatMap(paper => paper.records.map(core.getExamYear)), [2025, 2025, 2021, 2026]);
   for (const seed of ['first', 'second']) {
     const result = core.selectRecords(records, { count: 2, seed });
-    assert.deepEqual(result.selected.map(core.getExamYear), [2026, 2025]);
+    assert.deepEqual(result.selected.map(core.getExamYear), [2025, 2025]);
+    assert.deepEqual(core.selectRecords(records, { count: 4, seed }).selected.map(core.getExamYear), [2025, 2025, 2021, 2026]);
   }
   const unknown = fixtureRecord({sourceFile:'original/high/h2/1mid/unknown.js'});
   assert.ok(core.compareRecords(unknown, records[0]) > 0);
@@ -116,7 +117,7 @@ test('high-semantic mapping precedence는 override → explicit ignore → direc
   assert.equal(overridden.unitKey, 'H22-A-04');
 });
 
-test('defaultSelectable=false와 broken Meta Foundation taxonomy는 자동출제 pool에서 fail-closed된다', () => {
+test('Meta Foundation authority는 fail-closed로 두되 단원 출제는 기술 게이트만 따른다', () => {
   const runtime = {
     status: 'ACTIVE',
     ownedScopes: [{ curriculumKey: '2022', courseKey: '공통수학2', L1: '도형의 방정식', L2: '평면좌표' }],
@@ -140,21 +141,36 @@ test('defaultSelectable=false와 broken Meta Foundation taxonomy는 자동출제
     problemTypeKey: 'LEGACY', templateKey: 'LEGACY'
   }, authority), { owned: false, valid: true, reason: 'NOT_OWNED' });
 
+  const common = { subUnitKey: 'L2', subUnit: '소단원', level: '중', problemTypeKey: 'PT_OK', templateKey: 'TPL_OK', L3: '유형', L4: '틀' };
   const records = [
-    { id: 1, sourceFile: 'a.js', questionUid: 'ok', subUnitKey: 'L2', subUnit: '소단원', level: '중', defaultSelectable: true, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: true },
-    { id: 2, sourceFile: 'b.js', questionUid: 'supplementary', subUnitKey: 'L2', subUnit: '소단원', level: '중', defaultSelectable: false, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: true },
-    { id: 3, sourceFile: 'c.js', questionUid: 'broken-taxonomy', subUnitKey: 'L2', subUnit: '소단원', level: '중', defaultSelectable: true, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: false }
+    { id: 1, sourceFile: 'a.js', questionUid: 'ok', ...common, defaultSelectable: true, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: true },
+    { id: 2, sourceFile: 'b.js', questionUid: 'pending-review', ...common, defaultSelectable: false, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: true },
+    { id: 3, sourceFile: 'c.js', questionUid: 'broken-taxonomy', ...common, defaultSelectable: true, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: false },
+    { id: 4, sourceFile: 'd.js', questionUid: 'source-unverified', ...common, defaultSelectable: true, generalUseEligible: false }
   ];
-  assert.deepEqual(core.filterUnitRecords(records).map(item => item.questionUid), ['ok']);
-  assert.deepEqual(core.getSubUnitOptions(records).map(item => [item.key, item.count]), [['L2', 1]]);
+  // Metadata approval and a broken chain are not usage gates; a failed technical check is.
+  assert.deepEqual(core.filterUnitRecords(records).map(item => item.questionUid), ['ok', 'pending-review', 'broken-taxonomy']);
+  assert.deepEqual(core.getSubUnitOptions(records).map(item => [item.key, item.count]), [['L2', 3]]);
+  assert.deepEqual(records.map(core.isMetadataApproved), [true, false, false, true]);
+  // A broken L2/L3/L4 chain only disables L3/L4-based selection for that record.
+  assert.deepEqual(core.filterUnitRecords(records, { problemTypeKeys: ['PT_OK'] }).map(item => item.questionUid), ['ok', 'pending-review']);
+  assert.deepEqual(core.filterUnitRecords(records, { templateKeys: ['TPL_OK'] }).map(item => item.questionUid), ['ok', 'pending-review']);
+  assert.deepEqual(core.getProblemTypeOptions(records).map(item => [item.key, item.count]), [['PT_OK', 2]]);
+  assert.deepEqual(core.getTemplateOptions(records).map(item => [item.key, item.count]), [['TPL_OK', 2]]);
 
-  const selected = core.selectByBlueprint(records, [{ subUnitKey: 'L2', difficultyBucket: '중', count: 2 }], {});
-  assert.equal(selected.ok, false);
-  assert.equal(selected.selectedCount, 1);
-  assert.equal(selected.shortage, 1);
+  // Within the same year (here: unknown) approved metadata is used first; the rest fills the request.
+  const first = core.selectByBlueprint(records, [{ subUnitKey: 'L2', difficultyBucket: '중', count: 1 }], {});
+  assert.deepEqual(first.selected.map(item => item.questionUid), ['ok']);
+  const selected = core.selectByBlueprint(records, [{ subUnitKey: 'L2', difficultyBucket: '중', count: 3 }], {});
+  assert.equal(selected.ok, true);
+  assert.equal(selected.selectedCount, 3);
+  assert.equal(selected.selected[0].questionUid, 'ok');
+  const tooMany = core.selectByBlueprint(records, [{ subUnitKey: 'L2', difficultyBucket: '중', count: 4 }], {});
+  assert.equal(tooMany.ok, false);
+  assert.equal(tooMany.shortage, 1);
 });
 
-test('Meta Foundation runtime unavailable은 자동출제 전체를 fail-closed한다', () => {
+test('Meta Foundation runtime unavailable은 승인 메타 우선순위만 잃고 출제를 막지 않는다', () => {
   const records = [
     {
       sourceFile: 'legacy.js', id: 1, questionUid: 'legacy-runtime-down',
@@ -170,27 +186,56 @@ test('Meta Foundation runtime unavailable은 자동출제 전체를 fail-closed�
       metaFoundationTaxonomyValid: false
     }
   ];
-  assert.equal(core.isAutomaticSelectable(records[0]), false);
-  assert.equal(core.isAutomaticSelectable(records[1]), false);
-  assert.deepEqual(core.filterUnitRecords(records, { includeUnclassified: true }), []);
-  const result = core.selectByBlueprint(records, [{ subUnitKey: 'A', difficultyBucket: '중', count: 1 }], {});
-  assert.equal(result.ok, false);
-  assert.equal(result.selectedCount, 0);
-  assert.equal(result.shortage, 1);
+  assert.equal(core.isAutomaticSelectable(records[0]), true);
+  assert.equal(core.isAutomaticSelectable(records[1]), true);
+  assert.equal(core.isMetadataApproved(records[0]), false);
+  assert.equal(core.isMetadataApproved(records[1]), false);
+  assert.equal(core.filterUnitRecords(records, { includeUnclassified: true }).length, 2);
+  const result = core.selectByBlueprint(records, [{ subUnitKey: 'A', difficultyBucket: '중', count: 2 }], {});
+  assert.equal(result.ok, true);
+  assert.equal(result.selectedCount, 2);
+  // The L3/L4 selection stays closed while the authority is unavailable.
+  assert.deepEqual(core.filterUnitRecords(records, { problemTypeKeys: ['PT'] }), []);
 });
 
-test('ready paper split은 non-selectable classified record를 보존 집계하되 문제지에는 넣지 않는다', () => {
+test('ready paper split은 기술 확인에 실패한 record만 제외하고 승인 메타 수를 따로 집계한다', () => {
   const records = [
     fixtureRecord({ id: 1, sourceOrdinal: 1, question_uid: 'ready-ok', subUnitKey: 'A', subUnit: '개념', level: '중', defaultSelectable: true }),
-    fixtureRecord({ id: 2, sourceOrdinal: 2, question_uid: 'ready-supplementary', subUnitKey: 'A', subUnit: '개념', level: '중', defaultSelectable: false })
+    fixtureRecord({ id: 2, sourceOrdinal: 2, question_uid: 'ready-pending', subUnitKey: 'A', subUnit: '개념', level: '중', defaultSelectable: false }),
+    fixtureRecord({ id: 3, sourceOrdinal: 3, question_uid: 'ready-unverified', subUnitKey: 'A', subUnit: '개념', level: '중', generalUseEligible: false })
   ];
   const catalog = core.buildCatalog(records, { profileId: 'h2' });
   const unit = catalog.units.find(item => item.count > 0);
-  assert.equal(catalog.classifiedCount, 2);
-  assert.equal(unit.count, 2);
-  assert.equal(unit.selectableCount, 1);
+  assert.equal(catalog.classifiedCount, 3);
+  assert.equal(unit.count, 3);
+  assert.equal(unit.selectableCount, 2);
+  assert.equal(unit.approvedCount, 1);
+  assert.equal(catalog.approvedCount, 1);
   assert.equal(unit.excludedFromAutomaticCount, 1);
-  assert.deepEqual(unit.papers.flatMap(paper => paper.records.map(item => item.questionUid)), ['ready-ok']);
+  assert.deepEqual(unit.papers.flatMap(paper => paper.records.map(item => item.questionUid)).sort(), ['ready-ok', 'ready-pending']);
+});
+
+test('선택 순서는 완결된 최근 연도, 올해, 연도 미상 순이고 같은 연도 안에서는 승인 메타 먼저, 그다음 seed로 섞는다', () => {
+  const mk = (uid, year, extra = {}) => fixtureRecord({
+    sourceFile: `original/high/h2/1mid/${year || 'x'}_${uid}.js`, examYear: year || undefined, id: 1, sourceOrdinal: 1,
+    question_uid: uid, subUnitKey: 'A', subUnit: '개념', difficultyBucket: '중', ...extra
+  });
+  const records = [
+    mk('y2026', 2026), mk('y2025a', 2025), mk('y2025b', 2025), mk('y2024', 2024), mk('y2023', 2023),
+    mk('unknown', 0), mk('old-unapproved-2025', 2025, { defaultSelectable: false })
+  ];
+  const years = result => result.selected.map(core.getExamYear);
+  const all = core.selectRecords(records, { count: 7, seed: 's1' });
+  // 2025 approved first, then the unapproved 2025 item, before any older year.
+  assert.deepEqual(years(all), [2025, 2025, 2025, 2024, 2023, 2026, 9999]);
+  assert.equal(core.getQuestionUid(all.selected[2]), 'old-unapproved-2025');
+  const same = core.selectRecords(records, { count: 2, seed: 's1' });
+  assert.deepEqual(same.selected.map(core.getQuestionUid), core.selectRecords(records, { count: 2, seed: 's1' }).selected.map(core.getQuestionUid));
+  const seeds = new Set();
+  for (let i = 0; i < 12; i += 1) seeds.add(core.selectRecords(records, { count: 1, seed: `seed-${i}` }).selected[0].question_uid);
+  assert.deepEqual([...seeds].sort(), ['y2025a', 'y2025b']);
+  assert.equal(core.recencyRankOf(mk('c', 2025)) < core.recencyRankOf(mk('c', 2026)), true);
+  assert.equal(core.recencyRankOf(mk('c', 2026)) < core.recencyRankOf(mk('c', 0)), true);
 });
 
 test('catalog 정규화는 원본 식별자와 문제지 80문항 상한을 유지한다', () => {

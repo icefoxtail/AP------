@@ -18,9 +18,9 @@ test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 �
   assert.ok(html.indexOf('archive2-canonical.js') < html.indexOf('archive2-core.js'), 'canonical core must load before its browser consumer');
   assert.ok(html.indexOf('archive2-output-contract.js') < html.indexOf('archive2-output.js'), 'output contract must load before its producer');
   assert.ok(html.indexOf('archive2-output.js') < html.indexOf('unit-past-exams.js'), 'Unit Past must load the existing Output Envelope producer first');
-  assert.match(html, /archive2-core\.js\?v=20261029-unified-units-1/);
-  assert.match(html, /unit-past-exams-core\.js\?v=20261029-unified-units-1/);
-  assert.match(html, /unit-past-exams\.js\?v=20261029-unified-units-1/);
+  assert.match(html, /archive2-core\.js\?v=20261029-recency-1/);
+  assert.match(html, /unit-past-exams-core\.js\?v=20261029-recency-1/);
+  assert.match(html, /unit-past-exams\.js\?v=20261029-recency-1/);
   assert.match(html, /id="unit-stepper"/);
   for (const id of ['unit-subunits', 'unit-difficulty', 'unit-mode', 'unit-quick-preset', 'unit-quick-count', 'unit-advanced-rows', 'unit-selection-report', 'unit-collection-scope', 'unit-collection-year-mode', 'unit-school-list', 'unit-collection-output', 'unit-collection-report']) {
     assert.match(js, new RegExp(id));
@@ -48,7 +48,7 @@ test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 �
   assert.match(js, /isAutomaticSelectable/);
   assert.match(js, /unit\.selectableCount/);
   assert.match(js, /catalog\.selectableCount/);
-  assert.match(js, /Meta Foundation 연결 실패로 자동출제를 중단했습니다/);
+  assert.match(js, /Meta Foundation 연결 실패로 승인 메타 정보 없이 일반 출제합니다/);
   assert.match(js, /window\.addEventListener\('popstate'/);
   assert.match(js, /renderSafeFallback/);
   assert.match(js, /limitExceeded/);
