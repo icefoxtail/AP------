@@ -515,7 +515,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체의 뒤쪽 면 AEHD를 파랗게 칠하고, 점 G에서 이 면에 내린 수선 GH를 빨간 선으로 강조해 길이 4cm와 점 H의 직각 표시를 나타낸 그림",
+    "solutionImageCaption": "점 G에서 면 AEHD까지의 거리는 수선 GH의 길이 4cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -926,7 +930,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위 삼각형 ABC에서 x=-1 위의 변 AB의 길이 5와, 점 C에서 직선 AB에 내린 수선(높이)의 길이 4, 수선의 발의 직각 표시를 나타낸 그림",
+    "solutionImageCaption": "밑변 AB=5이고 점 C에서 직선 AB까지의 높이는 4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -965,7 +973,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "STRONG_CONFLICT"
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평선·수직선·두 대각선이 한 점에서 만나는 그림에서 아래쪽 각 3x+36°와 위쪽 맞꼭지각을 같은 빨간 두 겹 호로, 수평선 위의 각 2x-18°와 x를 표시하고, 직각 안에서 이웃한 각 a와 x를 파란 호로 나타낸 그림",
+    "solutionImageCaption": "맞꼭지각이라 위쪽 각도 3x+36°이고, 직각 안에서 a+x=90°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1003,7 +1015,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 AB 위의 점 O에서 수직인 반직선 OC와 반직선 OD, OE를 그리고, 직각 표시와 함께 ∠COD=30°, ∠DOE=10°, ∠DOB=60°를 각 호와 지시선으로 나타낸 그림",
+    "solutionImageCaption": "OC⊥AB이고 ∠COD=30°, ∠DOE=10°, ∠DOB=60°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -1043,6 +1059,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: AD∥BC, ∠A=∠B=90°인 사다리꼴 ABCD와 연장선 위의 점 E에서, 합동인 △AFD와 △EFC를 짙게 칠하고 AF=EF, AD=EC 눈금과 맞꼭지각·엇각 호, AB=4cm, BE=10cm를 나타낸 그림",
+    "solutionImageCaption": "△AFD≡△EFC (ASA 합동)이므로 AD=EC이고 BE=10cm, AB=4cm이다.",
+    "solutionImageSize": "medium"
   }
 ];
