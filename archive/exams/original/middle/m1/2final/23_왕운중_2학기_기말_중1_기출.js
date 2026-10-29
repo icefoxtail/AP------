@@ -886,16 +886,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q20-solution.svg",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q20-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:11f326cba23cf9081fb38028f1468b260d43fa49bf98af7423c8dbc458773df1",
       "difficultyEvidenceSha": "sha256:472b62e2a2c00a1ce79176feafa77c844b4b7fc7c7b4472440a387e9c12fb4f7",
-      "solutionImageAlt": "직사각형이 회전축 l에서 2 cm 떨어져 회전해 생긴 속 빈 원기둥: 안쪽 반지름 2 cm, 바깥 반지름 5 cm, 높이 6 cm",
-      "solutionImageCaption": "두 옆면과 위아래 환형 면의 넓이를 합한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 직선 l을 축으로 직사각형(가로 3, 세로 6, 축에서 2 떨어짐)을 회전시켜 생긴 속 빈 원기둥의 축을 지나는 단면(두 직사각형, 바깥 반지름 5, 높이 6)과 위·아래 면인 고리 모양(안쪽 반지름 2, 바깥 반지름 5)",
+      "solutionImageCaption": "속 빈 원기둥의 단면은 두 직사각형이고 위·아래 면은 고리 모양이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 21,
