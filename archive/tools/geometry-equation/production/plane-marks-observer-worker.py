@@ -117,6 +117,38 @@ def audit(p):
         if min(point_segment_distance(b,e0,e1) for e0,e1 in edges)>1.5:errors.append('MARK_LEADER_NOT_ON_LABEL:'+label_id)
         return True
 
+    def glyph_codes(node):
+        """The MathJax glyph codes (data-c, upper-case hex) of a typeset math label, in reading order; empty for plain text outlines."""
+        return [n.get('data-c','').upper() for n in node.iter() if tag(n)=='path' and n.get('data-c')]
+    def code_variants(ch):
+        """A character's own code and, for a Latin letter, the italic math code MathJax uses for a variable."""
+        out={format(ord(ch),'X')}
+        if 'a'<=ch<='z':out.add(format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X'))
+        if 'A'<=ch<='Z':out.add(format(0x1D434+ord(ch)-65,'X'))
+        return out
+    def label_content(label_id,kind,text,unit):
+        """What a plain-text (labelKind TEXT) or unit-bearing label of the plan says, read back from the final SVG. A TEXT label is plain outlines (no math glyphs)
+        whose text the typesetting step left on its group as data-text; a unit label is checked glyph by glyph (the unit letters last, a plain number's digits first)
+        and, for a simple expression, against the exact TeX spacing: a number takes the unit attached (3cm), a letter one thin space (x cm)."""
+        node=elements.get(label_id)
+        if node is None:return
+        codes=glyph_codes(node)
+        if kind=='TEXT':
+            if codes or node.get('data-tex') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
+            if node.get('data-text')!=str(text):errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+            return
+        if node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
+        if not unit:return
+        tail=[format(ord(ch),'X') for ch in unit]
+        if len(codes)<len(tail)+1 or codes[-len(tail):]!=tail:errors.append('LABEL_UNIT_MISMATCH:'+label_id)
+        value=str(text)
+        if re.fullmatch(r'[0-9]+(?:\.[0-9]+)?',value):
+            if codes!=[format(ord(ch),'X') for ch in value]+tail:errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+        elif re.fullmatch(r'[A-Za-z]',value):
+            if len(codes)!=1+len(tail) or codes[0] not in code_variants(value):errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+        else:return          # any other expression: the unit glyphs above are all this observer can read back
+        if node.get('data-tex')!=value+(r'\,' if value[-1].isalpha() else '')+r'\mathrm{'+unit+'}':errors.append('LABEL_UNIT_SPACING_MISMATCH:'+label_id)
+
     # ---- angle marks: 1-3 stroke arcs and, for style SECTOR (the default), the filled wedge beneath them
     drawn_angles={}
     document=list(root.iter());order={id(n):i for i,n in enumerate(document)}
@@ -247,9 +279,34 @@ def audit(p):
             qm=inverse(*q);return point_segment_distance(qm,*own)*sx<=1.0
         if leader_ok(oid,box,anchored):pass
         elif any(distance_to(sid)+1e-9<mine for sid in segment_lines if sid!=row['ownerSegment']):errors.append('SEGMENT_LABEL_AMBIGUOUS_OWNER:'+oid)
-        observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx})
+        label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'))
+        observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx,**({'labelKind':row['labelKind']} if row.get('labelKind') else {}),**({'unit':row['unit']} if row.get('unit') else {})})
 
     # ---- highlighted circle arcs
+    def arc_span(row):
+        """(centre, radius, start direction in degrees, signed sweep in degrees) of a declared arc, from the peer points and the declared side only."""
+        center=peer_point(row['center']);start=peer_point(row['from']);end=peer_point(row['to'])
+        ccw=(direction_degrees(sub(end,center))-direction_degrees(sub(start,center)))%360.0
+        side=row.get('side')
+        counter=side=='CCW' or (side not in ('CW',) and (ccw<180.0)==((side or 'MINOR')=='MINOR'))
+        return center,norm(sub(start,center)),direction_degrees(sub(start,center)),ccw if counter else -(360.0-ccw)
+    def arc_gap(row,angle):
+        """Degrees from a direction (seen from the arc's centre) to the arc's span: 0 inside it."""
+        _c,_r,first,sweep=arc_span(row)
+        offset=((angle-first)*(1 if sweep>0 else -1))%360.0
+        return 0.0 if offset<=abs(sweep) else min(offset-abs(sweep),360.0-offset)
+    def audit_arc_label(row):
+        oid=row['id'];center,radius,_first,_sweep=arc_span(row)
+        box=label_clear(oid+'-label')
+        if box is None:return
+        c=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
+        if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
+        if not leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5):
+            # no leader: the label must be nearer its own arc than another arc of the same circle
+            angle=direction_degrees(sub(c,center));mine=arc_gap(row,angle)
+            if any(other is not row and other.get('circle')==row.get('circle') and other.get('center')==row.get('center') and arc_gap(other,angle)+1e-9<mine for other in marks.get('arcs',[])):errors.append('ARC_LABEL_AMBIGUOUS_OWNER:'+oid)
+        kind=row.get('labelKind','MATH' if row.get('unit') else 'DEGREE')
+        if kind=='TEXT' or row.get('unit'):label_content(oid+'-label',kind,row['label'],row.get('unit'))
     for row in marks.get('arcs',[]):
         oid=row['id'];nodes=by_mark.get(('arc',oid),[])
         if row.get('highlight',True) is not True and row.get('highlight') is not None:continue
@@ -267,12 +324,10 @@ def audit(p):
         if want is None:want=min(ccw,360.0-ccw) if row.get('side','MINOR')=='MINOR' else max(ccw,360.0-ccw)
         if abs(abs(total)-want)>ANGLE_TOLERANCE:errors.append('ARC_SIDE_MISMATCH:'+oid+':drawn=%.3f:expected=%.3f'%(abs(total),want))
         observations.append({'id':oid,'type':'ARC','drawnDegrees':abs(total),'radius':radius})
-        if row.get('label') is not None:
-            box=label_clear(oid+'-label')
-            if box is not None:
-                c=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
-                if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
-                leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
+        if row.get('label') is not None:audit_arc_label(row)
+    # a label on an arc that is only part of the drawn circle (highlight false) still stands beside its own arc
+    for row in marks.get('arcs',[]):
+        if row.get('highlight',True) is False and row.get('label') is not None:audit_arc_label(row)
 
     # ---- construction traces: thin solid compass arcs around the declared intersections
     for row in marks.get('traces',[]):
@@ -314,10 +369,12 @@ def audit(p):
                 middle=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
                 if norm(sub(middle,center))<radius:errors.append('TRACE_LABEL_INSIDE_CIRCLE:'+oid)
                 leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
-            node=elements.get(oid+'-label')
-            codes=[] if node is None else [n.get('data-c','').upper() for n in node.iter() if tag(n)=='path' and n.get('data-c')]
-            want=[format(ord(ch),'X') for ch in str(row['label'])]
-            if codes and codes!=want:errors.append('TRACE_LABEL_MISMATCH:'+oid)
+            if row.get('labelKind')=='TEXT' or row.get('unit'):label_content(oid+'-label',row.get('labelKind','MATH'),row['label'],row.get('unit'))
+            else:
+                node=elements.get(oid+'-label')
+                codes=[] if node is None else glyph_codes(node)
+                want=[format(ord(ch),'X') for ch in str(row['label'])]
+                if codes and codes!=want:errors.append('TRACE_LABEL_MISMATCH:'+oid)
 
     # ---- filled regions (plane_regions_observer.py)
     audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes)

@@ -35,11 +35,13 @@ const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','equalGroup','factRole','noLabel'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
-  expressionLabels:['id','ownerSegment','text','factRole'],
-  arcs:['id','circle','center','from','to','side','label','labelKind','highlight','factRole'],
-  traces:['id','center','radius','through','spanDeg','label','factRole'],
+  expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit'],
+  arcs:['id','circle','center','from','to','side','label','labelKind','unit','highlight','factRole'],
+  traces:['id','center','radius','through','spanDeg','label','labelKind','unit','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
+// A label's `unit` (cm, m, mm) is written after a MATH label's expression; a TEXT label is plain Korean text and takes none.
+export const LABEL_UNITS=['cm','m','mm'];
 const bad=code=>{throw Error(code);};
 const keysOk=(row,allowed,where)=>{for(const key of Object.keys(row))if(!allowed.includes(key))bad('MARK_FIELD_UNKNOWN:'+where+'.'+key);};
 const numberOf=value=>{const n=typeof value==='string'&&value.trim()!==''?Number(value):value;return typeof n==='number'&&Number.isFinite(n)?n:null;};
@@ -71,6 +73,16 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(label==null||label==='')return allowNone?null:'';
     return label;
   };
+  // `unit` on a label: only a known unit, only with a MATH label (never a plain TEXT, degree or angle-name label), only with a label to carry it.
+  const unitOf=(row,kind,hasLabel,where)=>{
+    if(row.unit===undefined)return null;
+    if(!LABEL_UNITS.includes(row.unit))bad('MARK_UNIT_INVALID:'+where+':'+row.id);
+    if(kind!=='MATH')bad('MARK_UNIT_REQUIRES_MATH_LABEL:'+row.id);
+    if(!hasLabel)bad('MARK_UNIT_REQUIRES_LABEL:'+row.id);
+    return row.unit;
+  };
+  // A plain Korean label (labelKind TEXT): one line of at most 40 characters.
+  const plainTextOk=(text,where,id)=>{if(typeof text!=='string'||!text.trim()||text.length>40||/[\r\n\t\\$]/.test(text))bad('MARK_FIELD_INVALID:'+where+':'+id);};
 
   // --- angle arcs
   const groups=new Map();
@@ -146,9 +158,14 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     keysOk(row,KEYS.expressionLabels,'expressionLabels');claim(row.id,'expressionLabels');
     const [p,q]=segEnds(row.ownerSegment);
     if(typeof row.text!=='string'||!row.text.trim()||row.text.length>40)bad('MARK_FIELD_INVALID:expressionLabels.text:'+row.id);
+    const kind=row.labelKind??'MATH';
+    if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:expressionLabels.labelKind:'+row.id);
+    if(kind==='TEXT')plainTextOk(row.text,'expressionLabels.text',row.id);
+    const unit=unitOf(row,kind,true,'expressionLabels');
     const mid=[(p[0]+q[0])/2,(p[1]+q[1])/2];
     objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:mid,lineOwned:true,
-      alternateAt:[0.3,0.7].map(t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t]),gaps:[8,6,10,20,32,48],priority:1});
+      alternateAt:[0.3,0.7].map(t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t]),gaps:[8,6,10,20,32,48],priority:1,
+      ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
     factRolesByLabel[row.id]=role(row);
   }
 
@@ -168,10 +185,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(Math.abs(ccw-Math.PI)<1e-9)bad('ARC_SIDE_AMBIGUOUS:'+row.id);
       const minorCcw=ccw<Math.PI;sweep=(row.side==='MAJOR')===minorCcw?'CW':'CCW';
     }else bad('MARK_FIELD_INVALID:arcs.side:'+row.id);
-    const kind=row.labelKind??'DEGREE';
-    if(!['DEGREE','NAME','MATH'].includes(kind))bad('MARK_FIELD_INVALID:arcs.labelKind:'+row.id);
+    const kind=row.labelKind??(row.unit!==undefined?'MATH':'DEGREE');   // a unit goes with a math label: it names a length, not an angle
+    // TEXT writes the label as plain Korean text (a name such as "호 AB"); DEGREE, NAME and MATH are the angle-style math labels.
+    if(!['DEGREE','NAME','MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:arcs.labelKind:'+row.id);
+    if(kind==='TEXT'&&row.label!==undefined)plainTextOk(String(row.label),'arcs.label',row.id);
+    const unit=unitOf(row,kind,row.label!==undefined,'arcs');
     const object={id:row.id,kind:'CIRCULAR_ARC',centerPoint:row.center,startPoint:row.from,endPoint:row.to,sweep,highlight:row.highlight!==false};
-    if(row.label!==undefined){object.labelText=String(row.label);object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
+    if(row.label!==undefined){object.labelText=String(row.label);object.labelKind=kind;if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
 
@@ -204,9 +224,17 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const span=row.spanDeg===undefined?24:numberOf(row.spanDeg);
     if(span===null||span<2||span>120)bad('TRACE_SPAN_INVALID:'+row.id);
     const label=row.label===undefined?null:String(row.label);
-    if(label!==null&&!/^[1-9][0-9]?$/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);
+    const kind=row.labelKind??'MATH';
+    if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:traces.labelKind:'+row.id);
+    const unit=unitOf(row,kind,label!==null,'traces');
+    // MATH: the construction order digit 1..99, or with a unit the length that radius stands for (a positive number or one letter);
+    // TEXT: a plain Korean mark such as the order sign (up to 40 characters).
+    if(label!==null){
+      if(kind==='TEXT'){if(label.trim()===''||label.length>40||/[\r\n\t\\$]/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);}
+      else if(unit?!/^(?:[0-9]+(?:\.[0-9]+)?|[A-Za-z])$/.test(label)||/^0+(?:\.0+)?$/.test(label):!/^[1-9][0-9]?$/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);
+    }
     const object={id:row.id,kind:'TRACE_ARC',centerPoint:row.center,through:[...row.through],spanDeg:span,...(radiusPoint?{radiusPoint}:{radiusSegment})};
-    if(label!==null){object.labelText=label;factRolesByLabel[row.id+'-label']=role(row);}
+    if(label!==null){object.labelText=label;if(kind==='TEXT')object.labelKind='TEXT';if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
 

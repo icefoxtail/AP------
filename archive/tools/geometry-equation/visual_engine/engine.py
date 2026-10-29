@@ -30,17 +30,23 @@ ROOT=Path(__file__).resolve().parents[4]
 def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False)
 def sha(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
-def mark_label(label_id,target,text,label_kind,at,extra):
-    """A math label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC), 'MATH' = the expression as it stands (a symbol such as theta names the angle)."""
+def mark_label(label_id,target,text,label_kind,at,extra,unit=None):
+    """A label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC), 'MATH' = the expression as it stands (a symbol such as theta names the angle;
+    with `unit` the unit follows it: 3cm, x cm), 'TEXT' = plain Korean text in the text font, never parsed as math (a name such as ㉠ or 호 AB)."""
     tokens=load()
+    if unit is not None and label_kind!='MATH':raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL')
+    if label_kind=='TEXT':
+        return {'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':text,'layoutText':text,'math':False,'bindText':True,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
     if label_kind=='NAME':
         if not re.fullmatch(r'[A-Z][A-Z0-9]{1,3}',text):raise ValueError('ANGLE_LABEL_NAME_INVALID')
         plain='∠'+text;markup=html.escape(plain);tex='\\angle '+text
     elif label_kind in ('DEGREE','MATH'):
         tree=Expr('degree','',(parse(text),)) if label_kind=='DEGREE' else parse(text)
+        if unit is not None:tree=Expr('quantity',unit,(tree,))
         plain=serialize(tree,'plain');markup=serialize(tree,'svg');tex=serialize(tree,'tex')
     else:raise ValueError('ANGLE_LABEL_KIND_INVALID')
     label={'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':plain,'markup':markup,'tex':tex,'math':True,'sourceMath':text,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
+    if unit is not None:label['bindText']=True
     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
     return label
 
@@ -538,7 +544,7 @@ def prepare(spec):
                     dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
                     return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
                 directions=sorted(DIRECTIONS,key=alignment)
-                labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]}))
+                labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]},obj.get('unit')))
         elif kind=='TRACE_ARC':
             # Construction traces (compass arcs): a thin solid arc of the declared radius around each intersection the trace produces.
             if not vp.equal:raise ValueError('TRACE_ARC_REQUIRES_EQUAL_UNITS')
@@ -553,9 +559,15 @@ def prepare(spec):
                 _pid,_target,angle=value['through'][0]
                 gap=10.0
                 anchor=vp.screen((centre[0]+(radius+gap/vp.sx)*math.cos(angle),centre[1]+(radius+gap/vp.sy)*math.sin(angle)))
-                labels.append({'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'tex':obj['labelText'],'math':True,'sourceMath':obj['labelText'],
-                               'font':tokens['tickLabel'],'priority':0,'at':list(anchor),'allowSuppress':False,
-                               'directions':('E','NE','N','SE','S','NW','W','SW'),'gaps':(8,12,18,26)})
+                if obj.get('labelKind')=='TEXT' or obj.get('unit') is not None:
+                    # a plain Korean order sign such as ㉠, or a radius length with its unit (3cm): the same owner-bound label as an arc's
+                    label=mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'directions':('E','NE','N','SE','S','NW','W','SW'),'gaps':(8,12,18,26)},obj.get('unit'))
+                    label['font']=tokens['tickLabel']
+                    labels.append(label)
+                else:
+                    labels.append({'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'tex':obj['labelText'],'math':True,'sourceMath':obj['labelText'],
+                                   'font':tokens['tickLabel'],'priority':0,'at':list(anchor),'allowSuppress':False,
+                                   'directions':('E','NE','N','SE','S','NW','W','SW'),'gaps':(8,12,18,26)})
         elif kind=='FILL_REGION':
             # A filled region: one even-odd <path> (shapes minus holes) with exact SVG arcs, drawn beneath every stroke. The label is placed inside it.
             if not vp.equal:raise ValueError('REGION_REQUIRES_EQUAL_UNITS')
@@ -706,11 +718,20 @@ def prepare(spec):
                 label['renderedLines']=[{**row,'markup':serialize(parse(row['text']),'svg') if row['math'] else None} for row in rows]
                 label['lines']=[serialize(parse(row['text']),'plain') if row['math'] else row['text'] for row in rows]
                 label['text']='\n'.join(label['lines']);label['hasMath']=any(v['math'] for v in rows)
+            elif kind=='EQUATION_LABEL' and obj.get('labelKind')=='TEXT':
+                # A plain Korean label on a plane figure (an order sign such as ㉠, a ray name): the text font, never parsed as math.
+                if obj.get('unit') is not None:raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+oid)
+                label.update(text=obj['text'],layoutText=obj['text'],math=False,bindText=True)
             elif kind in {'EQUATION_LABEL','LENGTH_LABEL'} or obj.get('math'):
                 tree=parse(obj['text']);notation=spec['displayFacts'].get('notationByLabel',{}).get(oid,{})
                 entity=notation.get('entity')
                 if entity and tree.kind=='binary' and tree.value=='=' and tree.args[0].kind=='symbol' and tree.args[0].value==entity:tree=Expr('binary','=',(Expr('entity',entity),tree.args[1]))
-                if notation.get('unit'):
+                if obj.get('unit') is not None:
+                    # a plane-mark expression label with its own unit: attached after a number (3cm), one space after a letter (x cm)
+                    if tree.kind=='binary' and tree.value=='=':tree=Expr('binary','=',(tree.args[0],Expr('quantity',obj['unit'],(tree.args[1],))))
+                    else:tree=Expr('quantity',obj['unit'],(tree,))
+                    label['bindText']=True
+                elif notation.get('unit'):
                     if tree.kind=='binary' and tree.value=='=':tree=Expr('binary','=',(tree.args[0],Expr('unit',notation['unit'],(tree.args[1],))))
                     else:tree=Expr('unit',notation['unit'],(tree,))
                 label.update(text=serialize(tree,'plain'),markup=serialize(tree,'svg'),tex=serialize(tree,'tex'),sourceMath=obj['text'],math=True)

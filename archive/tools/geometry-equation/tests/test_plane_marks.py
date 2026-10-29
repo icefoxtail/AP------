@@ -12,7 +12,7 @@ GEOMETRY=Path(__file__).resolve().parents[1]
 PRODUCTION=GEOMETRY/'production'
 sys.path.insert(0,str(GEOMETRY))
 sys.path.insert(0,str(PRODUCTION))
-from visual_engine.engine import build
+from visual_engine.engine import build,mark_label
 from visual_engine.semantic_model import validate
 import construction
 
@@ -411,5 +411,72 @@ class UnmarkedPointTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'INVALID_POINT_MARKER'):validate(spec_of(self.points,[])|{'objects':rows})
         rows=self.objects();rows[0]['marker']='NONE'
         self.assertEqual(validate(spec_of(self.points,[])|{'objects':rows})['semanticStatus'],'PASS')
+
+class LabelKindTests(unittest.TestCase):
+    """Plain TEXT labels and units (cm, m, mm): the label objects the engine makes, its refusals, and the observer reading a hand-made label group back."""
+    def test_unit_is_attached_after_a_number_and_one_space_after_a_letter(self):
+        for text,plain,tex in [('3','3cm',r'3\mathrm{cm}'),('2.5','2.5cm',r'2.5\mathrm{cm}'),('x','x cm',r'x\,\mathrm{cm}'),('(x+1)','(x+1)cm',r'(x+1)\mathrm{cm}')]:
+            label=mark_label('l','t',text,'MATH',(0,0),{},'cm')
+            self.assertEqual((label['text'],label['tex']),(plain,tex),text);self.assertTrue(label['math']);self.assertTrue(label['bindText'])
+        self.assertEqual(mark_label('l','t','7','MATH',(0,0),{},'mm')['tex'],r'7\mathrm{mm}')
+    def test_text_label_is_plain_korean_text(self):
+        label=mark_label('l','t','반직선 AB','TEXT',(0,0),{'gaps':(8,)})
+        self.assertEqual((label['text'],label['layoutText'],label['math'],label['bindText'],label['gaps']),('반직선 AB','반직선 AB',False,True,(8,)))
+        self.assertNotIn('tex',label);self.assertNotIn('markup',label)
+    def test_no_unit_is_the_old_label_byte_for_byte(self):
+        label=mark_label('l','t','40','DEGREE',(0,0),{})
+        self.assertEqual((label['text'],label['tex'],'bindText' in label),('40°',r'40^{\circ}',False))
+        self.assertEqual(mark_label('l','t','x','MATH',(0,0),{})['text'],'x')
+    def test_unit_with_a_degree_name_or_text_label_is_refused(self):
+        for kind in ('DEGREE','NAME','TEXT'):
+            with self.assertRaises(ValueError,msg=kind):mark_label('l','t','AB' if kind=='NAME' else '3',kind,(0,0),{},'cm')
+    def test_spec_refuses_unknown_unit_kind_and_misplaced_unit(self):
+        pts={'A':(0.0,0.0),'B':(6.0,0.0)}
+        def build_with(extra):
+            return build(spec_of(pts,[seg('sAB',pts,'A','B'),{'id':'e1','kind':'EQUATION_LABEL','text':'6','at':[3.0,0.0],**extra}]))
+        self.assertIsNotNone(build_with({'unit':'cm'}))
+        for extra,code in [({'unit':'km'},'MARK_UNIT_INVALID'),({'unit':'cm','labelKind':'TEXT'},'MARK_UNIT_REQUIRES_MATH_LABEL'),({'labelKind':'SYMBOL'},'MARK_LABEL_KIND_INVALID')]:
+            with self.assertRaises(ValueError,msg=code) as caught:build_with(extra)
+            self.assertTrue(str(caught.exception).startswith(code),str(caught.exception))
+        with self.assertRaises(ValueError) as caught:build(spec_of(pts,[{**seg('sAB',pts,'A','B'),'unit':'cm'}]))
+        self.assertEqual(str(caught.exception),'UNKNOWN_OR_MISSING_COMPONENT_FIELD')
+        arc={'id':'arc','kind':'CIRCULAR_ARC','centerPoint':'A','startPoint':'B','endPoint':'B','sweep':'CCW','unit':'cm'}
+        with self.assertRaises(ValueError):build(spec_of(pts,[arc]))
+
+    # the observer, on a label group made by hand (the typeset glyph codes MathJax leaves: data-c)
+    def setUp(self):
+        self.points={'A':(0.0,0.0),'B':(6.0,0.0)}
+        result=build(spec_of(self.points,[seg('sAB',self.points,'A','B')]));self.svg=result['svg'];self.transform=result['witness']['coordinateModel']
+    def group(self,label_id,attributes,glyphs=(),text_path=False):
+        m=self.transform;x=m['originX']+3.0*m['sx']-15.0;y=m['originY']-14.0-16.0
+        inner=''.join('<path data-c="'+code+'" d="M0 0 L5 0"/>' for code in glyphs)+('<path d="M0 0 L5 0" fill="#111"/>' if text_path else '')
+        return ('<g id="'+label_id+'" data-owner="sAB" data-fragment-sha="sha256:'+'0'*64+'" '+attributes+' transform="translate('+('%.3f'%x)+' '+('%.3f'%y)+')">'
+                '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="14" viewBox="0 0 30 14">'+inner+'</svg></g>')
+    def codes(self,group,row):
+        svg=self.svg.replace('</svg>',group+'</svg>')
+        report=OBSERVER.audit({'svg':svg,'points':{k:list(v) for k,v in self.points.items()},'marks':{'expressionLabels':[row]},'segments':[{'id':'sAB','refs':['A','B']}],'transform':self.transform})
+        return [error.split(':')[0] for error in report['errors']]
+    def test_observer_reads_a_unit_label_back(self):
+        row={'id':'n','ownerSegment':'sAB','text':'6','unit':'cm'}
+        good=self.group('n',r'data-tex="6\mathrm{cm}"',['36','63','6D'])
+        self.assertEqual(self.codes(good,row),[])
+        self.assertIn('LABEL_UNIT_MISMATCH',self.codes(self.group('n',r'data-tex="6\mathrm{cm}"',['36','63','6E']),row))
+        self.assertIn('LABEL_UNIT_MISMATCH',self.codes(self.group('n',r'data-tex="6"',['36']),row))
+        self.assertIn('LABEL_TEXT_MISMATCH',self.codes(self.group('n',r'data-tex="7\mathrm{cm}"',['37','63','6D']),row))
+        self.assertIn('LABEL_UNIT_SPACING_MISMATCH',self.codes(self.group('n',r'data-tex="6\,\mathrm{cm}"',['36','63','6D']),row))
+        letter={'id':'n','ownerSegment':'sAB','text':'x','unit':'cm'}
+        self.assertEqual(self.codes(self.group('n',r'data-tex="x\,\mathrm{cm}"',['1D465','63','6D']),letter),[])
+        self.assertIn('LABEL_UNIT_SPACING_MISMATCH',self.codes(self.group('n',r'data-tex="x\mathrm{cm}"',['1D465','63','6D']),letter))
+        self.assertIn('LABEL_TEXT_MISMATCH',self.codes(self.group('n',r'data-tex="x\,\mathrm{cm}"',['1D466','63','6D']),letter))
+    def test_observer_reads_a_text_label_back(self):
+        row={'id':'n','ownerSegment':'sAB','text':'반직선 AB','labelKind':'TEXT'}
+        self.assertEqual(self.codes(self.group('n','data-text="반직선 AB"',text_path=True),row),[])
+        self.assertIn('LABEL_TEXT_MISMATCH',self.codes(self.group('n','data-text="반직선 BA"',text_path=True),row))
+        self.assertIn('LABEL_TEXT_MISMATCH',self.codes(self.group('n','',text_path=True),row))
+        self.assertIn('LABEL_KIND_MISMATCH',self.codes(self.group('n','data-text="반직선 AB"',['41']),row))
+        self.assertIn('LABEL_KIND_MISMATCH',self.codes(self.group('n','data-text="6" data-tex="6"',['36']),{'id':'n','ownerSegment':'sAB','text':'6'}))
+    def test_observer_is_silent_for_the_old_math_label(self):
+        self.assertEqual(self.codes(self.group('n','',['36']),{'id':'n','ownerSegment':'sAB','text':'6'}),[])
+
 
 if __name__=='__main__':unittest.main()
