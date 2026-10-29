@@ -778,6 +778,35 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - **한계.** 빗금 간격·각도는 엔진이 정한다(작성자가 바꾸지 않는다). 작은 영역의 안쪽 여백이 좁으면 `(나) πr²` 같은 긴 표지가 들어가지 않으므로(`LAYOUT_INVENTORY_INCOMPLETE`) 이름만 쓰고 넓이는 `caption`에 적는다. 평문 라벨의 글자 자체는 조판 단계에서 만들어지므로 관측기는 "그 라벨이 자기 영역 안에 있는지"와 "빗금이 영역 안에 있는지"를 보고, 글자 내용의 최종 확인은 실제 렌더 이미지 검토가 맡는다. 빗금 영역의 넓이 값도 관측기가 검산하지 않는다.
 
 
+### 3-50. 물 채우기 그릇과 물의 높이 그래프 (`container-fill-figure-v1`)
+
+원문 문항이 **매초 일정한 양의 물을 채울 때** 그릇 모양과 **시간에 따른 물의 높이 그래프**를 짝짓거나(그릇 A·B·C ↔ 그래프 ㄱ·ㄴ·ㄷ), 한 그릇에 알맞은 그래프를 고르고, 해설이 "단면이 넓으면 높이가 천천히, 좁으면 빨리 오른다"를 그림으로 보여 줄 때 쓴다. 대상은 **한 수직축을 도는 회전체**(원기둥·원뿔대를 아래에서 위로 쌓은 그릇)다. `capability:"container-fill-figure-v1"`.
+
+```json
+{"capability":"container-fill-figure-v1",
+ "container":{
+  "pairs":[
+   {"vessel":{"name":"A","profile":[{"kind":"FRUSTUM","r0":"2","r1":"3","height":"4"}]},"graphName":"㉠",
+    "segmentNotes":[{"segment":0,"text":"점점 느려짐"}]},
+   {"vessel":{"name":"B","profile":[{"kind":"CYLINDER","radius":"3","height":"2"},{"kind":"CYLINDER","radius":"1","height":"4"}]},"graphName":"㉢",
+    "segmentNotes":[{"segment":0,"text":"넓음 → 느림"},{"segment":1,"text":"좁음 → 빠름"}]},
+   {"vessel":{"name":"C","profile":[{"kind":"CYLINDER","radius":"5/2","height":"5"}]},"graphName":"㉡"}],
+  "guides":true,"xTitle":"시간(초)","yTitle":"높이(cm)"},
+ "caption":"그릇 A, B, C의 단면과 매초 일정한 양의 물을 넣을 때 물의 높이가 시간에 따라 변하는 그래프",
+ "sourceConditions":[...],"newVisualInformation":[...]}
+```
+
+- **그래프는 엔진이 계산한다.** 일정한 양을 넣으면 높이 h까지 차는 시간은 그 아래 부피에 비례하므로 t(h)=π∫r(z)²dz÷(매초 부피)다. 엔진이 조각 경계에서는 정확한 분수로, 원뿔대 안에서는 촘촘한 표본점으로 곡선을 그린다. **저자는 곡선을 그리거나 모양을 지정하지 않는다.** 원기둥 조각은 직선, 위로 넓어지는 원뿔대는 기울기가 점점 완만한 곡선, 위로 좁아지는 원뿔대는 점점 가파른 곡선이고, 두 조각이 만나는 높이에서 꺾임점이 생긴다.
+- `profile`은 그릇을 **아래에서 위로** 1~4조각으로 쓴다. `{"kind":"CYLINDER","radius","height"}` 또는 `{"kind":"FRUSTUM","r0":밑면 반지름,"r1":윗면 반지름,"height"}`. 값은 정확한 문자열(`"3"`, `"5/2"`, `"1.5"`)이고 양수다. 원뿔(점이 아래)은 첫 조각에 `"r0":"0"`으로 쓴다(맨 위가 뾰족한 그릇과 중간에 점이 있는 그릇은 `CONTAINER_APEX_UNSUPPORTED`). **조각의 밑면 반지름이 아래 조각의 윗면 반지름과 달라도 된다**: 넓은 원기둥 위에 가는 관을 얹은 그릇(B)이나 어깨가 있는 그릇이 이렇게 그려진다. 그림은 그릇을 **단면**으로 그린다(좌우 대칭, 위는 열림, 조각 경계마다 얇은 선).
+- `pairs`는 1~3개이고 한 행에 **그릇 단면(왼쪽)과 그 그래프(오른쪽)**를 그린다(행마다 자기 그릇의 그래프). 그릇과 그래프는 **같은 세로 축척**을 쓰고 그래프의 바닥이 그릇의 바닥과 같은 높이다. 그릇 가로·세로도 같은 축척이다(반지름과 높이의 비를 그대로 쓴다). 문제 그림의 실제 길이를 모르면 모양의 **비율**을 정해 쓴다(예: 위로 넓어지는 컵 `r0:2, r1:4`). 가로 시간 축은 행마다 그래프 폭 전체를 쓴다.
+- 이름: `vessel.name`(그릇 이름 `A`·`물컵`)은 그릇 아래, `graphName`(`ㄱ` 또는 문제가 인쇄한 `㉠`)은 그래프 아래에 놓이며 각각 6자 이하다. **해설 그림은 문제가 묻는 보기 번호(①~⑤)를 쓰지 않는다**; 그릇과 그래프의 짝은 같은 행에 놓인 것으로 보이면 된다.
+- `guides:true`이면 조각 경계와 맨 위 높이마다 그릇에서 그래프의 꺾임점까지 **가로 점선 안내선**을 긋고 꺾임점에 점을 찍는다(라벨이 서 있는 곳에서는 선이 끊긴다).
+- `segmentNotes:[{"segment":i,"text":"단면 넓음 → 천천히"}]`는 i번째 조각(0이 맨 아래)의 곡선 옆에 짧은 한글 설명(16자 이하)을 놓는다. 곡선·점·축·안내선·다른 글자를 피해 그래프 안쪽에 자동 배치되고 자리가 없으면 `CONTAINER_NOTE_NO_ROOM`이다.
+- `xTitle`·`yTitle`(14자 이하, 기본 `시간`·`높이`; 단위는 `시간(초)`·`높이(cm)`처럼 직접 쓴다), `origin:false`면 원점 O를 지운다. **숫자 눈금은 값을 줄 때만** 그린다: `yTicks`(높이 값, 증가, 그릇 높이 이하)와, 문제가 매초 넣는 양을 정했으면 `flowPi`(매초 부피가 π의 몇 배인지, 예 `"9"`는 9π cm³/초)와 `xTicks`(시간 값, 증가, 전체 시간 이하). `flowPi` 없이 `xTicks`를 주면 `CONTAINER_XTICKS_NEED_FLOW`다.
+- **독립 검수.** `container_fill_observer.py`는 plan만 보고 부피(π h(r0²+r0r1+r1²)/3)와 곡선 t(h)를 자기 코드로 다시 계산해 **최종 SVG**와 대조한다: 그릇 단면 모양이 plan의 반지름·높이와 **같은 축척**인지(축척은 그려진 그릇의 높이에서 되찾는다), 그래프 바닥이 그릇 바닥인지, 곡선의 **모든 꼭짓점**이 t(h) 위(0.03px)이고 현의 오차가 0.35px 이하인지, 끝점이 그릇 꼭대기 높이인지, 꺾임점 위치, 안내선이 정확한 높이에서 수평인지, 눈금 위치, 이름·메모가 자기 조각 곁에 있는지, 계획에 없는 글자가 없는지. 하나라도 어긋나면 FAIL이다(곡선 모양이 다르거나 안내선 높이가 어긋나면 `CF_CURVE_POINT`·`CF_GUIDE_NOT_LEVEL` 등).
+- 한계·오류 코드: `CONTAINER_PLAN_INVALID`, `CONTAINER_PAIR_COUNT_INVALID`(0개 또는 4개 이상), `CONTAINER_PROFILE_INVALID`(조각 없음·5개 이상·허용하지 않는 키), `CONTAINER_PIECE_KIND_UNSUPPORTED`(CYLINDER·FRUSTUM 밖), `CONTAINER_CURVED_PROFILE_UNSUPPORTED`(구·반구·볼록한 병 같은 곡면 벽), `CONTAINER_ASYMMETRIC_UNSUPPORTED`(기울어졌거나 축에서 벗어난 비대칭 그릇), `CONTAINER_APEX_UNSUPPORTED`, `CONTAINER_DIMENSION_INVALID`, `CONTAINER_NAME_INVALID`, `CONTAINER_FLOW_INVALID`, `CONTAINER_XTICKS_NEED_FLOW`, `CONTAINER_TICK_INVALID`, `CONTAINER_SEGMENT_NOTE_INVALID`, `CONTAINER_TITLE_INVALID`, `CONTAINER_PROPORTION_UNSUPPORTED`(높이 12px 미만의 조각·너비 6px 미만의 부분·8px 안쪽으로 붙은 꺾임점), `CONTAINER_NOTE_NO_ROOM`, `CONTAINER_GUIDE_HIDDEN`, `CONTAINER_LABEL_OUT_OF_BOUNDS`, `CONTAINER_LABELS_TOO_CLOSE`, `CONTAINER_LABEL_ON_LINE`. 구·반구 그릇, 물 양이 시간에 따라 바뀌는 경우, 손으로 그린 곡선 그래프는 지원하지 않는다: UNSUPPORTED로 남긴다.
+
+
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
 
 - 그림에 나오는 점 이름은 노드 id다. 문항과 풀이 텍스트에 쓴 이름과 같아야 한다. 풀이가 점 이름을 쓰지 않으면 한 글자 대문자(A, B, P)만 쓰고, O0, Pp, C1 같은 내부식 이름은 쓰지 않는다. 풀이에 쓰지 않은 보조점은 숨김 필드를 쓴다.
