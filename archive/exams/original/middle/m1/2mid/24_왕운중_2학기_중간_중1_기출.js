@@ -331,7 +331,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 평행한 직선 l, m과 한 직선이 만나는 그림에서 l 아래쪽의 118°와 m 위쪽의 62°를 같은 쪽 내각으로 표시하고 두 직선의 평행 표시를 나타낸 그림",
+    "solutionImageCaption": "같은 쪽 내각 118°와 62°의 합이 180°이므로 l와 m은 평행하다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,

@@ -617,7 +617,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:08ccce0abec0839f421af9a15b57d5ea694404784fe3366e35fc9836325a9bc4",
-      "difficultyEvidenceSha": "sha256:c1f1deca08ec259162cdcecd1c13d845123c7d5a8f13ab931fbf620f0b2b131a"
+      "difficultyEvidenceSha": "sha256:c1f1deca08ec259162cdcecd1c13d845123c7d5a8f13ab931fbf620f0b2b131a",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 컵 A와 컵 B를 나란히 그린 원뿔 그림이다. 컵 A는 반지름 10, 높이 9, 컵 B는 반지름 5, 높이 18로 표시되어 있고 각 컵 위 글에 길이 단위가 cm라고 적혀 있다.",
+      "solutionImageCaption": "컵 A와 컵 B는 모두 원뿔 모양이고, 각 컵의 반지름과 높이를 cm 단위로 나타낸다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 15,

@@ -164,7 +164,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB 위에 점 N, M이 있고, 위쪽에 AM과 MB가 각각 8cm로 같은 길이 표식으로, 아래쪽에 AB가 16cm로 표시된 그림. AN과 NM은 같은 길이 표식이 있다.",
+    "solutionImageCaption": "AB=16cm, AM=MB=8cm, AN=NM",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -742,7 +746,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 130cm부터 180cm까지 계급 크기 10cm인 도수분포 히스토그램에서 주어진 도수 4, 9, 3의 막대를 그리고, 문제에서 비어 있던 140~150 계급은 막대 없이 두며, 묻는 160~170 계급은 값 없는 점선 막대로 나타냈다. 160cm 이상인 두 계급을 짙게 칠해 괄호로 묶고 합 6명을 적은 그림",
+    "solutionImageCaption": "160cm 이상인 두 계급을 묶으면 전체 30명의 20%인 6명이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
