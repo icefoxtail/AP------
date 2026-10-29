@@ -261,7 +261,11 @@ window.questionBank = [
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 2,
     "sourceQuestionNo": "6",
-    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60"
+    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 정칠각뿔 세 개를 나란히 그린 그림. 첫째는 밑면의 모서리 7개를 굵게, 둘째는 꼭짓점 O로 향하는 옆 모서리 7개를 빨갛게, 셋째는 밑면 1개와 옆면 7개를 색으로 나누어 면 8개를 보인다.",
+    "solutionImageCaption": "칠각뿔의 모서리는 밑면 7개와 옆 모서리 7개로 14개이고, 면은 밑면 1개와 옆면 7개로 8개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -302,7 +306,11 @@ window.questionBank = [
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 2,
     "sourceQuestionNo": "7",
-    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60"
+    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체의 모서리 12개를 위쪽 4개, 아래쪽 4개, 위아래를 잇는 세로 4개로 나누어 세 그림에 각각 빨갛게 표시한 그림.",
+    "solutionImageCaption": "정육면체의 모서리는 위쪽 4개, 아래쪽 4개, 세로 4개로 모두 12개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -375,7 +383,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 삼각기둥의 겉넓이는 삼각형 밑면 두 개와 직사각형 옆면 세 개의 넓이를 더한다.\n\n그림의 밑면은 서로 수직인 두 변이 $3\\rm\\,cm$, $4\\rm\\,cm$인 직각삼각형이다. 따라서 밑면 한 개의 넓이는\n$\\dfrac{3\\times4}{2}=6\\rm\\,cm^2$이다.\n\n다른 변은 $5\\rm\\,cm$이고, 기둥의 높이는 $6\\rm\\,cm$이다. 옆면 세 개의 가로 길이의 합은 밑면 둘레와 같으므로\n옆넓이 $=(3+4+5)\\times6=72\\rm\\,cm^2$이다.\n\n따라서 겉넓이는 $2\\times6+72=84\\rm\\,cm^2$이다.\n\n정답은 ②이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q9.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q9-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q9-solution-v2.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
     "crossConceptKeys": [],
@@ -385,9 +393,9 @@ window.questionBank = [
     "sourcePage": 2,
     "sourceQuestionNo": "9",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "삼각기둥 겉넓이: 삼각형 둘 = 12, 옆면 셋 = 72, 겉넓이 = 12+72",
-    "solutionImageCaption": "84 cm²"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 삼각기둥의 전개도. 합동인 직각삼각형 밑면 2개(파랑)와 세로 6cm, 가로 5cm, 4cm, 3cm인 직사각형 옆면 3개가 이어져 있고, 직각삼각형의 직각을 낀 두 변은 4cm와 3cm이다.",
+    "solutionImageCaption": "삼각기둥은 밑면 2개와 가로가 3, 4, 5이고 세로가 6인 직사각형 옆면 3개로 펼쳐진다."
   },
   {
     "id": 10,
@@ -419,7 +427,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 반구의 곡면을 합하면 구의 겉넓이가 되고, 원기둥에서는 옆면만 바깥에 드러난다.\n\n반지름은 $4\\rm\\,cm$, 원기둥 높이는 $6\\rm\\,cm$이다.\n\n두 반구의 곡면 넓이의 합은 구의 겉넓이와 같으므로\n$4\\pi\\times4^2=64\\pi\\rm\\,cm^2$이다.\n\n원기둥의 옆넓이는\n$2\\pi\\times4\\times6=48\\pi\\rm\\,cm^2$이다.\n\n붙인 두 원형 면은 겉으로 드러나지 않으므로 더하지 않는다.\n따라서 겉넓이는\n$64\\pi+48\\pi=112\\pi\\rm\\,cm^2$이므로 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q10.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q10-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q10-solution-v2.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
     "crossConceptKeys": [],
@@ -429,9 +437,9 @@ window.questionBank = [
     "sourcePage": 3,
     "sourceQuestionNo": "10",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "겉면만 계산: 반구 둘 = 구 1개, 곡면 넓이 = 64π, 원기둥 옆넓이 = 48π",
-    "solutionImageCaption": "112π cm²"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 두 반구를 합친 반지름 4cm인 구, 원기둥 옆면의 전개도(가로 8π cm, 세로 6 cm), 맞붙인 반구의 단면 두 개를 나란히 보여, 곡면 두 개와 옆면만 겉넓이에 넣고 맞붙은 단면은 제외함을 나타낸 그림.",
+    "solutionImageCaption": "두 반구의 곡면은 구 하나의 겉넓이 64π, 원기둥 옆면은 8π×6=48π이고 맞붙인 단면은 제외한다."
   },
   {
     "id": 11,
@@ -463,7 +471,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 기둥과 뿔은 같은 정사각형 밑면을 공유한다. 각각의 부피를 구한 다음 더한다.\n\n밑면은 한 변이 $6\\rm\\,cm$인 정사각형이므로 넓이는\n$6\\times6=36\\rm\\,cm^2$이다.\n\n사각기둥의 높이는 $3\\rm\\,cm$이므로 부피는\n$36\\times3=108\\rm\\,cm^3$이다.\n\n사각뿔의 높이 $4\\rm\\,cm$는 꼭짓점에서 밑면으로 내린 수선의 길이이다. 옆으로 기울어진 모서리 길이와 혼동하지 않는다.\n사각뿔의 부피는 $\\dfrac13\\times36\\times4=48\\rm\\,cm^3$이다.\n\n두 도형은 내부에서 겹치지 않고 밑면만 맞닿아 있으므로 부피를 더하면 된다.\n$108+48=156\\rm\\,cm^3$이다.\n\n따라서 정답은 ③이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q11.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q11-solution-v2.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
     "crossConceptKeys": [],
@@ -473,9 +481,9 @@ window.questionBank = [
     "sourcePage": 3,
     "sourceQuestionNo": "11",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "기둥과 뿔: 기둥 = 6×6×3, 뿔 = 6×6×4÷3, 108+48",
-    "solutionImageCaption": "156 cm³"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 사각기둥과 사각뿔을 나누어 보인 그림. 왼쪽 사각기둥은 밑면 한 변 6cm, 높이 3cm이고, 오른쪽 사각뿔은 같은 정사각형 밑면 EFGH(한 변 6cm)와 꼭짓점에서 밑면에 내린 수선의 길이 4cm를 표시한다.",
+    "solutionImageCaption": "사각기둥(밑면 6×6, 높이 3)과 사각뿔(밑면 6×6, 수선의 길이 4)로 나누어 부피를 구한다."
   },
   {
     "id": 12,
