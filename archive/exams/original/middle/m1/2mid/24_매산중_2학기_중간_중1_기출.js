@@ -105,7 +105,7 @@ window.questionBank = [
       "$\\overline{BN}=\\overline{NC}$"
     ],
     "answer": "①",
-    "solution": "M은 \\overline{AB}의 중점이므로\nAM=MB\n\nN은 \\overline{BC}의 중점이므로\nBN=NC\n\n따라서\nMN=MB+BN\n=\\dfrac12AB+\\dfrac12BC\n=\\dfrac12AC\n\n또\nCN=\\dfrac12BC,\\quad BN=NC\n\n반면 MB와 NB의 길이는 항상\nMB=2NB\n가 되는 것은 아니다.\n\n따라서 옳지 않은 것은 ①이다.",
+    "solution": "M은 \\overline{AB}의 중점이므로\nAM=MB\n\nN은 \\overline{BC}의 중점이므로\nBN=NC\n\n따라서\nMN=MB+BN\n=\\dfrac{1}{2}AB+\\dfrac{1}{2}BC\n=\\dfrac{1}{2}AC\n\n또\nCN=\\dfrac{1}{2}BC,\\quad BN=NC\n\n반면 MB와 NB의 길이는 항상\nMB=2NB\n가 되는 것은 아니다.\n\n따라서 옳지 않은 것은 ①이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q3.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
