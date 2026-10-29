@@ -319,7 +319,16 @@ def prepare(spec):
         if tick_callouts:raise ValueError('TICK_LABEL_CALLOUT_OWNER_NOT_FOUND')
         if tick_pi_labels is not None and len(used_pi)!=len(tick_pi_labels):raise ValueError('TICK_PI_LABEL_UNUSED')
     rational_features=spec['displayFacts'].get('rationalGraphFeatures')
-    if rational_features is not None:
+    if rational_features is not None and rational_features.get('schemaVersion')=='RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1':
+        # Inverse proportion: an asymptote on a coordinate axis is the axis itself, so only an off-axis vertical asymptote is drawn (dashed).
+        xmin,xmax,ymin,ymax=vp.bounds
+        vertical=rational_features.get('asymptotes',{}).get('vertical')
+        if not isinstance(vertical,dict) or not isinstance(vertical.get('drawn'),bool) or rational_features.get('asymptotes',{}).get('horizontal',{}).get('drawn') is not False:raise ValueError('RATIONAL_FEATURE_INVENTORY_REQUIRED')
+        if vertical['drawn']:
+            singular_x=float(Fraction(vertical['x']))
+            a,b=vp.screen((singular_x,ymin)),vp.screen((singular_x,ymax))
+            primitive({'id':'rational-asymptote-vertical','kind':'line','from':a,'to':b,'token':'auxiliary','layer':25,'role':'asymptote','dash':'5 4'},'line')
+    elif rational_features is not None:
         if rational_features.get('schemaVersion')!='RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1':raise ValueError('RATIONAL_FEATURE_INVENTORY_REQUIRED')
         xmin,xmax,ymin,ymax=vp.bounds
         horizontal=float(Fraction(rational_features['horizontalAsymptoteY']))
@@ -503,6 +512,18 @@ def prepare(spec):
             if obj.get('fill') and obj['fill']!='NONE':
                 primitive({'id':oid+'-fill','kind':'polygon','points':vertices,'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS.get(obj['fill'],REGION_FILLS['LIGHT']),'noStroke':True},'curve')
             primitive({'id':oid,'kind':'polyline','points':vertices+[vertices[0]],'token':'secondaryShape','layer':35,'role':'overlayPolygon'},'line')
+            if obj.get('labelText') is not None:
+                # An optional label (a formula such as b, or plain Korean text) inside the polygon where it has the most room, like a region label.
+                if obj.get('labelKind','MATH')=='TEXT':
+                    label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'layoutText':obj['labelText'],'math':False,
+                           'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':[vertices],'labelGap':14}
+                else:
+                    tree=parse(obj['labelText']);markup=serialize(tree,'svg')
+                    label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
+                           'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':[vertices],'labelGap':14}
+                    label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
+                label['candidateCenters']=_region_label_centres([vertices],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(vertices[0])
+                labels.append(label)
         elif kind=='CIRCULAR_ARC':
             primitive({'id':oid,'kind':'polyline','points':[vp.screen(p) for p in value.sample_points()],
                        'token':'axisOverlapShape' if obj.get('highlight') else 'mainShape','layer':46 if obj.get('highlight') else 40,'role':'circularArc',
