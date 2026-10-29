@@ -217,7 +217,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체에서 모서리 AB와 BC를 빨간색으로 강조하고 꼭짓점 B의 직각 표시를 나타낸 그림",
+    "solutionImageCaption": "점 A에서 직선 BC에 내린 수선은 모서리 AB이고 B에서 직각을 이룬다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -300,7 +304,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각기둥에서 선분 AB와 만나는 모서리, 평행한 모서리 FG, 꼬인 위치의 모서리를 세 그림으로 나누어 빨간색으로 강조한 그림",
+    "solutionImageCaption": "AB와 만나는 모서리, 평행한 모서리, 꼬인 위치의 모서리를 구분해 보인다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -925,7 +933,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 BE 위에서 점 O에 모인 세 각 ∠BOA=(x+20)°, 직각 ∠AOF, ∠FOE=(3x+10)°가 이웃해 평각을 이루는 모습을 나타낸 그림",
+    "solutionImageCaption": "직선 BE 위의 세 각 (x+20)°, 90°, (3x+10)°의 합은 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -963,7 +975,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 선에서 꺾인 두 점마다 보조 평행선을 긋고 엇각 40°, 50°, 30°를 같은 색 호로 짝지어 보이며 x가 40°와 50°로 나뉘는 그림",
+    "solutionImageCaption": "보조 평행선을 그으면 엇각 40°, 50°, 30°가 생기고 x는 40°와 50°로 나뉜다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1039,6 +1055,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 세 내각 85-2x°, 75°, 140-4x°와 꼭짓점 C의 외각 4x+40°를 나타낸 그림",
+    "solutionImageCaption": "꼭짓점 C의 외각이 (4x+40)°이므로 내각은 (140-4x)°이다.",
+    "solutionImageSize": "medium"
   }
 ];
