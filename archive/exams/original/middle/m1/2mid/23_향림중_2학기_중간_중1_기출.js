@@ -420,7 +420,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 복사 작도 그림으로, O와 P를 중심으로 한 같은 반지름의 호가 만드는 OA, OB, PC, PD에는 눈금 1개, 컴퍼스로 옮긴 현 AB와 CD에는 눈금 2개가 표시되고 PC와 CD에는 같은 눈금이 없다.",
+    "solutionImageCaption": "같은 반지름 OA=OB=PC=PD와 옮긴 현 AB=CD를 눈금으로 구분한 각 복사 작도.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -537,7 +541,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 정삼각형 ABC와 ECD가 B, C, D가 한 직선 위에 놓인 그림을 두 개 나란히 놓고, 왼쪽은 삼각형 ACD, 오른쪽은 삼각형 BCE를 빨간 변으로 강조했다. AC=BC와 CD=CE의 같은 길이 눈금과 C에서의 120° 각이 두 삼각형에 같은 순서로 나타난다.",
+    "solutionImageCaption": "△ACD와 △BCE가 AC=BC, CD=CE, 끼인각 120°로 대응하는 모습을 강조한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -577,7 +585,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC와 DCE가 B, D, E가 한 직선 위에 놓인 그림으로, BC=AC와 CD=CE의 같은 길이 눈금, ∠BCD=∠ACE=42°, ∠BDC=120°가 표시되고 ∠CBD와 ∠CAE는 같은 파란 호로 묶여 있다.",
+    "solutionImageCaption": "BC=AC, CD=CE, ∠BCD=∠ACE이고 ∠CBD와 ∠CAE가 같음을 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -654,7 +666,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 삼각형이 꼭짓점에서 맞닿은 그림으로, 교점에서 왼쪽 삼각형의 각 95°와 맞꼭지각 95°가 같은 빨간 호로 표시되고 y=25°, 직선 위의 이웃한 각 x=85°와 40°, 45°, 60°가 쓰여 있다.",
+    "solutionImageCaption": "교점의 각 95°와 맞꼭지각 95°에서 y=25°와 x=85°를 구하는 과정을 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -694,7 +710,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안의 점 O에 B, C를 이은 그림으로, 사각형 ABOC의 내각 85°, 20°, 25°와 O에서 표시된 각 x, 그 바깥쪽 안쪽 각 360°-x가 표시되어 있다.",
+    "solutionImageCaption": "사각형 ABOC의 내각 85°, 20°, 25°와 O의 안쪽 각 360°-x를 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
