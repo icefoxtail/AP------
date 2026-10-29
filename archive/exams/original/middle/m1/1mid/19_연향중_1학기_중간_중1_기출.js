@@ -418,7 +418,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체 전개도에서 5, c, b, 1이 가로로 이어지고 5의 위에 -3, 아래에 a가 붙어 있으며, 접었을 때 마주 보는 면인 5와 b, c와 1을 같은 색으로 칠해 보여 준다.",
+    "solutionImageCaption": "전개도를 접으면 마주 보는 면끼리 같은 색으로 칠한 쌍이 된다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,

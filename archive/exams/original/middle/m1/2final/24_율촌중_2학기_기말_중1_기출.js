@@ -93,7 +93,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:07fcb20bc41131291db6961888eb49fdca8a515c402ad24d7a67f0fc50f46370",
-      "difficultyEvidenceSha": "sha256:839ebd5470a41b74b845b25b5b5eefbe632167ada079ba7eb433aa41e636ba6f"
+      "difficultyEvidenceSha": "sha256:839ebd5470a41b74b845b25b5b5eefbe632167ada079ba7eb433aa41e636ba6f",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 정삼각형으로 이루어진 정다면체에서 한 꼭짓점에 모인 면 4개를 같은 색으로 칠해 보여 준다.",
+      "solutionImageCaption": "한 꼭짓점에 모인 면 4개를 칠해 보인 정다면체이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 3,
