@@ -756,7 +756,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원탁에 앉은 7명을 정칠각형의 꼭짓점인 점 7개로 나타내고 서로 가위바위보를 하는 모든 두 사람을 선분으로 이은 그림이다. 굵은 선분은 변 7개이고 가는 선분은 대각선 14개이다.",
+    "solutionImageCaption": "7명을 점으로, 가위바위보를 하는 모든 쌍을 선분으로 이으면 변 7개와 대각선 14개가 된다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,

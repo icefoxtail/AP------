@@ -705,7 +705,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:42760ca03bfa321267a984ec00aa5ffd6ede6cb2923f4581be254cd296a90ead",
-      "difficultyEvidenceSha": "sha256:c95a18e275e4d1c2c5931fc6ad25dfc459e02a3f7c82b484132df75a75734e08"
+      "difficultyEvidenceSha": "sha256:c95a18e275e4d1c2c5931fc6ad25dfc459e02a3f7c82b484132df75a75734e08",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 윗변 2cm, 아랫변 5cm, 높이 6cm인 사다리꼴을 세 축으로 회전시킬 때의 분해 그림이다. l축은 반지름 5cm 높이 10cm인 큰 삼각형에서 반지름 2cm 높이 4cm인 작은 삼각형을 빼고, m축은 5cm×6cm 직사각형에서 밑변 3cm인 삼각형을 빼며, n축은 2cm×6cm 직사각형에 밑변 3cm인 삼각형을 더한다.",
+      "solutionImageCaption": "축 l, m, n별 회전체의 분해",
+      "solutionImageSize": "medium"
     },
     {
       "id": 17,
@@ -792,7 +796,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:5b9bb5d75dba91941ca80ce9e61ef994d3f038004a637920aaf183356939836e",
-      "difficultyEvidenceSha": "sha256:390e38f3357423e0818216f4ce1ee71d6155ed92008da454ae406cd483cc66ac"
+      "difficultyEvidenceSha": "sha256:390e38f3357423e0818216f4ce1ee71d6155ed92008da454ae406cd483cc66ac",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 남학생과 여학생의 독서 시간 상대도수 분포를 겹친 꺾은선 그래프이다. 7시간 이상 9시간 미만 계급에서 남학생은 0.20, 여학생은 0.24로 표시되고, 여학생의 분포가 오른쪽으로 치우쳐 있다.",
+      "solutionImageCaption": "남·여 독서 시간 상대도수 다각형",
+      "solutionImageSize": "medium"
     },
     {
       "id": 19,
@@ -919,7 +927,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:87cca012b34d470531cc773f085cafe2f6e632f4c37f5209f6b2039f266d4a9f",
-      "difficultyEvidenceSha": "sha256:e0382407a27bfe163191af49c23f86d3ded6a5c9e9ff2dc0f35925376f2d7859"
+      "difficultyEvidenceSha": "sha256:e0382407a27bfe163191af49c23f86d3ded6a5c9e9ff2dc0f35925376f2d7859",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 중심각 135°이고 호의 길이가 6π cm인 회색 부채꼴이다. 한 반지름에 r=8 cm가 적혀 있다.",
+      "solutionImageCaption": "반지름 8 cm인 부채꼴",
+      "solutionImageSize": "medium"
     },
     {
       "id": 22,
@@ -985,7 +997,7 @@ window.questionBank = [
       "subUnitConfidence": "rule_inferred",
       "subUnitClassificationDepth": "complete_rule",
       "solution": "사다리꼴을 직선 $l$을 축으로 회전시키면 두 밑면의 반지름이 $6\\rm\\,cm$, $3\\rm\\,cm$이고 모선이 $5\\rm\\,cm$인 원뿔대가 된다.\n\n빗변을 위로 연장하면 작은 직각삼각형의 세 변이 $3,4,5$가 된다.\n따라서 전체 원뿔의 모선은 $10\\rm\\,cm$, 잘라낸 작은 원뿔의 모선은 $5\\rm\\,cm$이다.\n\n옆면의 전개도는 바깥반지름 $10\\rm\\,cm$, 안쪽반지름 $5\\rm\\,cm$인 고리 모양의 부채꼴이다.\n\n바깥쪽 호의 길이는 반지름 $6\\rm\\,cm$인 밑면의 둘레와 같으므로\n\n$2\\pi\\times10\\times\\dfrac{\\theta}{360}=2\\pi\\times6$\n\n$\\theta=216^\\circ$\n\n이다.\n\n고리 모양 부채꼴의 넓이는\n\n$\\pi(10^2-5^2)\\times\\dfrac{216}{360}=45\\pi\\rm\\,cm^2$\n\n두 밑면의 넓이의 합은\n\n$\\pi\\times6^2+\\pi\\times3^2=45\\pi\\rm\\,cm^2$\n\n이다.\n\n따라서 겉넓이는\n\n$45\\pi+45\\pi=90\\pi\\rm\\,cm^2$\n\n이다.\n\n전개도는 반지름 $6\\rm\\,cm$, $3\\rm\\,cm$인 두 원과 바깥반지름 $10\\rm\\,cm$, 안쪽반지름 $5\\rm\\,cm$, 중심각 $216^\\circ$인 고리 모양의 부채꼴로 이루어진다.",
-      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q23-solution.svg",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q23-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
       "crossConceptKeys": [],
@@ -999,8 +1011,8 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d8382b2fdb7804c05978f5208d0829f7791bcad9c45c97016fa5301641d8d85f",
       "difficultyEvidenceSha": "sha256:e7067b3daf3a96466dcc83c803d9bc0ca308d93752ac8aa7380c2dbf9d4d6b40",
-      "solutionImageAlt": "원뿔대 옆면을 펼친 고리 모양 부채꼴과 반지름 6 cm, 3 cm인 두 밑면 원",
-      "solutionImageCaption": "옆면은 바깥·안쪽 반지름 10 cm, 5 cm와 중심각 216°인 부채꼴 띠다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원뿔대의 전개도이다. 위쪽에 바깥반지름 10cm, 안쪽반지름 5cm, 중심각 216°인 고리 모양의 부채꼴이 있고 바깥 호는 12π cm, 안쪽 호는 6π cm이며 모선 5cm이다. 아래에 반지름 6cm와 3cm인 두 밑면 원이 있다.",
+      "solutionImageCaption": "원뿔대의 전개도",
+      "solutionImageSize": "medium"
     }
   ];
