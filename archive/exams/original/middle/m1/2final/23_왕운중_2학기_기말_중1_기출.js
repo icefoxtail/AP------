@@ -562,7 +562,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3676cc38a6f63d6d1d4d37084e63b51db7b7293867f0dc7e80a512dd4455976a",
-      "difficultyEvidenceSha": "sha256:15d7e4bc4962e33d6d6738997055281a26d90764734c9613abff362a2f46f2e8"
+      "difficultyEvidenceSha": "sha256:15d7e4bc4962e33d6d6738997055281a26d90764734c9613abff362a2f46f2e8",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 정사각형(한 변 6cm)에서 네 모서리의 반지름 3cm 사분원을 빼면 색칠한 부분 36-9π이고, 네 사분원의 합은 반지름 3cm인 원 하나(넓이 9π)와 같음을 두 그림으로 비교한다.",
+      "solutionImageCaption": "정사각형에서 사분원 4개를 빼고, 사분원 4개를 원 1개로 모아 비교한다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 14,
@@ -645,16 +649,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q15-solution.svg",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q15-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3d7a78cc538d15109d4d4ca059a4716780065e6d7c92547c29245df76937d8d8",
       "difficultyEvidenceSha": "sha256:7dda12841f3ae8cce3eb6a94a933a757944018ca964f28fcf5bd8026cee2b3ca",
-      "solutionImageAlt": "지름 AB인 원에서 ∠COA=50°, 호 AC=5 cm, BD가 OC와 평행한 그림",
-      "solutionImageCaption": "평행선으로 중심각 ∠BOD를 구하고 호의 길이를 비례시킨다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원 O에서 지름 AB, BD∥OC 표시, ∠COA=∠OBD=∠ODB=50°, ∠BOD=80°, OB=OD와 호 AC=5cm, 호 BD를 보여 준다.",
+      "solutionImageCaption": "BD∥OC이므로 ∠OBD=50°, ∠ODB=50°, ∠BOD=80°이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 16,
@@ -785,16 +789,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q18-solution.svg",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q18-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:da84181ea8e89ced17c73863fff43d9ca70e483174d3be86d9bcf40ad942c7b1",
       "difficultyEvidenceSha": "sha256:982a215c3ce18f2f1694fde6fa6b35f41218fbb1a34e21db939e159e4dd06221",
-      "solutionImageAlt": "반지름 3 cm인 같은 원형 캔 세 개가 서로 접해 있고 팽팽한 테이프가 둘러싼 그림",
-      "solutionImageCaption": "세 직선 구간 18 cm와 합쳐 한 바퀴인 원호 길이 6π cm를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 반지름 3cm인 세 캔의 중심이 한 변 6cm인 정삼각형을 이루고, 테이프의 직선 부분 3개(각 6cm)와 중심각 120°인 호 부분 3개를 보여 준다.",
+      "solutionImageCaption": "테이프는 직선 부분 3개(각 6cm)와 120°씩인 호 부분 3개로 이루어진다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 19,
@@ -838,7 +842,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:fb6a137e9582010c5f91d498e4abf9c86a76d93097bab5c201d947b7f8f1137f",
-      "difficultyEvidenceSha": "sha256:3017820d413bcaaef966159be957f17cf449fbad39cd6ef727d71e1b6570048f"
+      "difficultyEvidenceSha": "sha256:3017820d413bcaaef966159be957f17cf449fbad39cd6ef727d71e1b6570048f",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 원기둥 케이스를 축을 지나는 평면으로 자른 단면에서 반지름 r인 공 3개가 폭 2r, 높이 6r인 직사각형 안에 꼭 맞게 쌓여 있다.",
+      "solutionImageCaption": "케이스의 폭은 2r, 높이는 공 세 개의 지름의 합 6r이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 20,
@@ -970,7 +978,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:93acabba7e2a96ffda8c7331552343292239c7366616ca240ef1496281247266",
-      "difficultyEvidenceSha": "sha256:50ac781fd7e6ea6b52e3628ea725219669b26e72f4fc7e65ba7f7a3a427b0903"
+      "difficultyEvidenceSha": "sha256:50ac781fd7e6ea6b52e3628ea725219669b26e72f4fc7e65ba7f7a3a427b0903",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 점 O에서 호 AB, BC, CD의 길이의 비 10:6:3, 각 ∠AOD=114°, ∠BOC=36°, ∠COD=18°를 보여 주는 부채꼴 그림이다.",
+      "solutionImageCaption": "호의 길이의 비는 중심각의 비와 같다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 23,
