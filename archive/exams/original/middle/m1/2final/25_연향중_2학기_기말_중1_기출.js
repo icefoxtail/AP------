@@ -432,7 +432,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:a41c3fefd4185fd6edec31a063f0cb80be41c7f24e9692b1d6d38a1ff01eddd7",
-    "difficultyEvidenceSha": "sha256:20fdd027bed0ffb9f8c6ebc94ace6ce9e44e111e1a668178f0db806717354310"
+    "difficultyEvidenceSha": "sha256:20fdd027bed0ffb9f8c6ebc94ace6ce9e44e111e1a668178f0db806717354310",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 회전축에 붙은 직각사다리꼴 ⑤(큰 밑면, 작은 밑면, 옆면)와, 이를 1회전시켜 얻은 원뿔대의 두 밑면과 회전축을 지나는 단면(사다리꼴)을 나란히 보인 그림",
+    "solutionImageCaption": "직각사다리꼴 ⑤를 회전축으로 1회전시키면 크기가 다른 두 밑면을 가진 원뿔대가 된다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -552,7 +556,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:1d3342545ae87baa5e0e24dca4b55c8b37a92480b0f0f0e17ec5de9c8db4cf20",
-    "difficultyEvidenceSha": "sha256:ab12f719cdbde8a604022fd4d888a05d69e594fa0c3f997b0466801ef0c277c4"
+    "difficultyEvidenceSha": "sha256:ab12f719cdbde8a604022fd4d888a05d69e594fa0c3f997b0466801ef0c277c4",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 3cm, 높이 8cm인 원기둥 두 개: 왼쪽은 축에 수직인 평면으로 자른 단면 원, 오른쪽은 축을 포함하는 평면으로 자른 직사각형 단면을 칠해 보인 그림",
+    "solutionImageCaption": "축에 수직인 단면은 반지름 3cm인 원, 축을 포함하는 단면은 가로 6cm 세로 8cm인 직사각형인 원기둥",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -640,7 +648,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:414ee05203f23896224668c832809dc523b34adca3fefbfa444e853d30d5dfb4",
-    "difficultyEvidenceSha": "sha256:00a53834fc7504c6834c6e03c537f34984ac701c09bbf0149f65b91ec5af69c5"
+    "difficultyEvidenceSha": "sha256:00a53834fc7504c6834c6e03c537f34984ac701c09bbf0149f65b91ec5af69c5",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: (가)는 밑면이 두 변 6cm, 7cm인 직각삼각형이고 높이가 4cm인 삼각뿔 모양의 물, (나)는 밑면이 두 변 6cm, x cm인 직각삼각형이고 높이가 4cm인 삼각기둥 모양의 물을 나란히 보인 그림",
+    "solutionImageCaption": "(가)의 물은 삼각뿔, (나)의 물은 삼각기둥 모양이며 각 모서리의 길이를 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -672,10 +684,10 @@ window.questionBank = [
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q16-solution.svg",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "중심각 240도, 반지름 3 cm, 높이 6 cm인 원기둥 조각을 옆 곡면, 두 부채꼴 면, 두 절단 직사각형 면으로 나눈 그림",
-    "solutionImageCaption": "옆 곡면 24π, 위아래 부채꼴 면 12π, 절단면 36을 더해 겉넓이는 36π+36 cm²이다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q16-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 입체의 겉면을 세 부분으로 나눈 그림: 반지름 3cm, 중심각 240°인 부채꼴(넓이 6π, 2개), 가로 4π cm 세로 6cm인 곡면 직사각형(넓이 24π), 가로 3cm 세로 6cm인 직사각형 면 2개(넓이 각 18)",
+    "solutionImageCaption": "겉면을 부채꼴 2개, 곡면 직사각형, 직사각형 면 2개로 나누어 각각의 크기와 넓이를 나타낸 그림",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
     "crossConceptKeys": [],
@@ -916,10 +928,10 @@ window.questionBank = [
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q23-solution.svg",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "높이가 2r인 원기둥에 꼭 맞는 반지름 r의 구와 같은 밑면 반지름 r, 높이 2r인 원뿔을 나란히 비교하는 그림",
-    "solutionImageCaption": "세 부피는 각각 2/3πr³, 4/3πr³, 2πr³이므로 비는 1:2:3이다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q23-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 반지름이 모두 r인 원뿔, 구, 원기둥을 나란히 그리고, 원뿔과 원기둥의 높이가 구의 지름과 같은 2r임을 치수로 보인 그림",
+    "solutionImageCaption": "원뿔, 구, 원기둥의 반지름은 모두 r이고 원뿔과 원기둥의 높이는 2r이다",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
     "crossConceptKeys": [],
