@@ -482,3 +482,95 @@ class Cuts(unittest.TestCase):
         self.assertEqual(edge_errors(plain, edge_svg(plain)), [])
         self.assertTrue(any(e.startswith('SOLID_EDGE_MISSING') for e in edge_errors(cut, edge_svg(plain))))
         self.assertTrue(any(e.startswith('SOLID_EDGE_UNKNOWN') for e in edge_errors(plain, edge_svg(cut))))
+
+
+class SphereCuts(unittest.TestCase):
+    """A sphere cut by planes through its centre (cut:{kind,facing?}). The observer re-derives the piece as a set of points (the ball meeting half-spaces)
+    and samples the ray toward the viewer; the pieces below were worked out by hand (viewer at +x, -y, +z; CUT turns the cut faces toward the viewer)."""
+    PIECES = {   # kind: (boundary quarter-disks as plane + signs of its two in-plane axes, the radii where cut faces meet, the half axis a radius lies on)
+        'HALF': (['Y++', 'Y+-', 'Y-+', 'Y--'], [], (0, 1)),
+        'QUARTER': (['X++', 'X+-', 'Y-+', 'Y--'], ['+Z', '-Z'], (0, -1)),
+        'OCTANT': (['X+-', 'Y--', 'Z-+'], ['-X', '+Y', '-Z'], (0, -1)),
+        'THREE_QUARTERS': (['X-+', 'X--', 'Y++', 'Y+-'], ['+Z', '-Z'], (0, 1)),
+        'SEVEN_EIGHTHS': (['X-+', 'Y++', 'Z+-'], ['+X', '-Y', '+Z'], (0, 1)),
+    }
+
+    def solid(self, kind, facing='CUT', r=5.0):
+        return O.build_solid({'kind': 'SPHERE', 'radius': r, 'id': 's1', 'names': {'center': 'O'}, 'cut': {'kind': kind, 'facing': facing}})
+
+    def test_the_pieces_are_the_ones_worked_out_by_hand(self):
+        for kind, (faces, creases, axis) in self.PIECES.items():
+            solid = self.solid(kind)
+            feats = O.cut_features(solid)
+            self.assertEqual(sorted(feats['faces']), sorted(faces), kind)
+            self.assertTrue(all(f['visible'] for f in feats['faces'].values()), kind)
+            self.assertEqual(sorted(feats['creases']), sorted(creases), kind)
+            self.assertEqual(O.cut_radius_axis(solid), axis, kind)
+
+    def test_turned_about_the_centre_the_cut_faces_are_behind_and_no_radius_is_seen(self):
+        for kind, (faces, creases, _axis) in self.PIECES.items():
+            solid = self.solid(kind, 'CURVED')
+            feats = O.cut_features(solid)
+            # the same faces exist (the piece is the same, turned), none of them faces the viewer, and no half axis is seen
+            self.assertEqual(sorted(feats['faces']), sorted(self.invert(f) for f in faces), kind)
+            self.assertFalse(any(f['visible'] for f in feats['faces'].values()), kind)
+            self.assertIsNone(O.cut_radius_axis(solid), kind)
+
+    @staticmethod
+    def invert(face):
+        """the face of the half-turned piece: the same plane, the signs of both in-plane axes reversed"""
+        return face[0] + ''.join('-' if c == '+' else '+' for c in face[1:])
+
+    def test_membership_and_the_depth_test(self):
+        half = {'kind': 'HALF', 'facing': 'CUT'}
+        self.assertTrue(O.cut_inside(half, (1.0, 1.0, 0.0), 5.0))
+        self.assertFalse(O.cut_inside(half, (1.0, -1.0, 0.0), 5.0))
+        self.assertFalse(O.cut_inside(half, (0.0, 4.0, 4.0), 5.0))   # outside the ball
+        seven = {'kind': 'SEVEN_EIGHTHS', 'facing': 'CUT'}
+        self.assertFalse(O.cut_inside(seven, (1.0, -1.0, 1.0), 5.0))   # the removed octant
+        self.assertTrue(O.cut_inside(seven, (1.0, -1.0, -1.0), 5.0))
+        three = {'kind': 'THREE_QUARTERS', 'facing': 'CUT'}
+        self.assertFalse(O.cut_inside(three, (1.0, -1.0, 1.0), 5.0))   # the removed quarter wedge, above and below the equator
+        self.assertFalse(O.cut_inside(three, (1.0, -1.0, -1.0), 5.0))
+        self.assertTrue(O.cut_inside(three, (-1.0, -1.0, 1.0), 5.0))
+        # turned about the centre every answer is the answer at the opposite point
+        self.assertEqual(O.cut_inside({'kind': 'OCTANT', 'facing': 'CURVED'}, (1.0, -1.0, 1.0), 5.0), O.cut_inside({'kind': 'OCTANT', 'facing': 'CUT'}, (-1.0, 1.0, -1.0), 5.0))
+        # a point on the flat face of the half that faces the viewer sees nothing of the piece; the back of its dome is behind the piece
+        self.assertFalse(O.cut_hits(half, (2.0, 0.0, 1.0), 5.0))
+        self.assertTrue(O.cut_hits(half, (0.0, 5.0 * 0.999, 0.0), 5.0))
+        # the near side of the removed octant is open: a point on its three faces is seen
+        self.assertFalse(O.cut_hits(seven, (0.0, -2.0, 2.0), 5.0))
+
+    def test_an_elliptical_arc_is_read_by_the_endpoint_to_centre_conversion_of_svg(self):
+        cx, cy, rx, ry, phi = 100.0, 120.0, 40.0, 20.0, 30.0
+        c, s = math.cos(math.radians(phi)), math.sin(math.radians(phi))
+        point = lambda t: (cx + c * rx * math.cos(t) - s * ry * math.sin(t), cy + s * rx * math.cos(t) + c * ry * math.sin(t))
+        t0, t1 = math.radians(20), math.radians(110)
+        a, b = point(t0), point(t1)
+        pts = O.svg_arc_points(a[0], a[1], rx, ry, phi, 0, 1, b[0], b[1], 8)   # growing parameter turns clockwise on the screen: sweep 1
+        self.assertAlmostEqual(math.hypot(pts[0][0] - a[0], pts[0][1] - a[1]), 0, places=6)
+        self.assertAlmostEqual(math.hypot(pts[-1][0] - b[0], pts[-1][1] - b[1]), 0, places=6)
+        for (x, y) in pts:
+            u, w = c * (x - cx) + s * (y - cy), -s * (x - cx) + c * (y - cy)
+            self.assertAlmostEqual((u / rx) ** 2 + (w / ry) ** 2, 1.0, places=6)
+        mid = point((t0 + t1) / 2)
+        self.assertAlmostEqual(math.hypot(pts[4][0] - mid[0], pts[4][1] - mid[1]), 0, places=5)
+        # the other sweep is the other way round the same ellipse: its middle is on the far side
+        other = O.svg_arc_points(a[0], a[1], rx, ry, phi, 1, 0, b[0], b[1], 8)
+        self.assertGreater(math.hypot(other[4][0] - mid[0], other[4][1] - mid[1]), 20)
+
+    def test_a_cut_that_cannot_be_drawn_is_refused_before_anything_is_checked(self):
+        for cut, code in (({'kind': 'CAP'}, 'SOLID_SPHERE_CUT_KIND_UNSUPPORTED'), ({'kind': 'HALF', 'offset': 2}, 'SOLID_SPHERE_CUT_OFF_CENTRE'),
+                          ({'kind': 'HALF', 'explode': True}, 'SOLID_SPHERE_CUT_EXPLODE_UNSUPPORTED'), ({'kind': 'HALF', 'facing': 'BACK'}, 'SOLID_SPHERE_CUT_FACING_INVALID'),
+                          ({'kind': 'HALF', 'colour': 1}, 'SOLID_SPHERE_CUT_INVALID'), ({}, 'SOLID_SPHERE_CUT_INVALID'), ('HALF', 'SOLID_SPHERE_CUT_INVALID')):
+            with self.assertRaisesRegex(ValueError, code): O.check_cut_spec(cut)
+        with self.assertRaisesRegex(ValueError, 'SOLID_SPHERE_CUT_UNSUPPORTED'): O.build_solid({'kind': 'HEMISPHERE', 'radius': 3, 'id': 's1', 'cut': {'kind': 'HALF'}})
+        # the audit reports it as an observer input error and does not crash
+        svg = '<svg xmlns="http://www.w3.org/2000/svg" data-solid-figure="solid-figure-v1" data-yaw="28" data-pitch="20"/>'
+        plan = {'capability': 'solid-figure-v1', 'solids': [{'kind': 'SPHERE', 'radius': 3, 'cut': {'kind': 'CAP'}}]}
+        self.assertTrue(any(e.startswith('SOLID_OBSERVER_INPUT:SOLID_SPHERE_CUT_KIND_UNSUPPORTED') for e in O.audit(plan, svg)['errors']))
+
+    def test_a_figure_with_no_curve_of_the_piece_has_no_frame(self):
+        svg = '<svg xmlns="http://www.w3.org/2000/svg" data-solid-figure="solid-figure-v1" data-yaw="28" data-pitch="20"/>'
+        plan = {'capability': 'solid-figure-v1', 'solids': [{'kind': 'SPHERE', 'radius': 3, 'names': {'center': 'O'}, 'cut': {'kind': 'QUARTER'}}]}
+        self.assertTrue(any(e.startswith('SOLID_NO_CURVES') for e in O.audit(plan, svg)['errors']))

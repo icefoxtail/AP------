@@ -149,9 +149,12 @@ def build_solid(spec):
             pts.append((names.get('center'), 'center', (0.0, 0.0, h if down and kind == 'CONE' else 0.0)))
             if kind == 'CONE': pts.append((names.get('apex'), 'apex', (0.0, 0.0, 0.0 if down else h)))
             else: pts.append((names.get('top'), 'top', (0.0, 0.0, h)))
+        if spec.get('cut') is not None:
+            if kind != 'SPHERE': raise ValueError('SOLID_SPHERE_CUT_UNSUPPORTED')
+            check_cut_spec(spec['cut'])
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV',
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
-                'inside': spec.get('inside')}
+                'inside': spec.get('inside'), 'cut': spec.get('cut')}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
 
 
@@ -742,6 +745,7 @@ def _round_frame(solid, root, errors):
     """Scale and translation of a round solid from its own curves: the widest circle's horizontal extreme points give the scale (x extent = 2r),
     its centre gives the translation; every other curve is then checked against that frame."""
     sid = solid['id']
+    if solid.get('cut'): return _cut_frame(solid, root, errors)
     arcs = [(e, _parse_arc(e.get('d'))) for e in root.iter(NS + 'path') if e.get('data-solid') == sid]
     if solid['cat'] == 'SPHERE':
         outline = [a for e, a in arcs if e.get('data-role') == 'sphere-outline']
@@ -778,6 +782,9 @@ def _round_frame(solid, root, errors):
 
 def check_round(solid, root, px, scale, errors, segments, section=None):
     sid = solid['id']
+    if solid.get('cut'):
+        check_cut_sphere(solid, root, px, scale, errors, segments)
+        return
     arcs = [(e, _parse_arc(e.get('d'))) for e in root.iter(NS + 'path') if e.get('data-solid') == sid]
     lines = [e for e in root.iter(NS + 'line') if e.get('data-solid') == sid and e.get('data-role') == 'silhouette']
     sinp = math.sin(PITCH)
@@ -1129,6 +1136,377 @@ def check_dim_lines(plan, ctx):
         got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
         if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)):
             ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':' + str(kind))
+
+
+# --- a sphere cut by planes through its centre (cut:{kind,facing?}) -----------------------------------------------------------------------------
+# The piece is re-derived here from the radius and the cut alone, as a set of points (a ball intersected with half-spaces) and not as the producer's list of
+# octants: a face, a rim arc or a radius exists where probes on its two sides disagree about being inside the piece; the depth test samples the ray toward the
+# viewer. The SVG is then checked against that: faces, limb stretches, rim arcs and radii (each piece solid or dashed as the depth test says), centre dot.
+CUT_KINDS = ('HALF', 'QUARTER', 'OCTANT', 'THREE_QUARTERS', 'SEVEN_EIGHTHS')
+CUT_FACING = ('CUT', 'CURVED')
+AXIS_VEC = ((1.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0))
+PLANE_AXES = {'X': (0, 1, 2), 'Y': (1, 0, 2), 'Z': (2, 0, 1)}   # normal axis, then the two axes inside the plane
+CUT_TOL_T = 4e-3           # a piece of a rim arc or radius may end this far (as a fraction of the whole) from where the depth test changes
+CUT_FACE_VERTEX_TOL = 1.2  # px
+
+
+def check_cut_spec(cut):
+    if not isinstance(cut, dict) or set(cut) - {'kind', 'facing', 'offset', 'explode'}: raise ValueError('SOLID_SPHERE_CUT_INVALID')
+    if cut.get('explode') is not None: raise ValueError('SOLID_SPHERE_CUT_EXPLODE_UNSUPPORTED')
+    if cut.get('offset') not in (None, 0): raise ValueError('SOLID_SPHERE_CUT_OFF_CENTRE')
+    if not isinstance(cut.get('kind'), str): raise ValueError('SOLID_SPHERE_CUT_INVALID')
+    if cut['kind'] not in CUT_KINDS: raise ValueError('SOLID_SPHERE_CUT_KIND_UNSUPPORTED')
+    if cut.get('facing', 'CUT') not in CUT_FACING: raise ValueError('SOLID_SPHERE_CUT_FACING_INVALID')
+    return {'kind': cut['kind'], 'facing': cut.get('facing', 'CUT')}
+
+
+def cut_inside(cut, d, r):
+    """is the point d (relative to the centre) in the piece: the closed ball meeting the half-spaces of the kind"""
+    if vlen(d) > r * (1 + 1e-9): return False
+    x, y, z = (-d[0], -d[1], -d[2]) if cut['facing'] == 'CURVED' else d
+    kind = cut['kind']
+    if kind == 'HALF': return y >= 0
+    if kind == 'QUARTER': return x <= 0 and y >= 0
+    if kind == 'OCTANT': return x <= 0 and y >= 0 and z <= 0
+    if kind == 'THREE_QUARTERS': return x <= 0 or y >= 0
+    return not (x > 0 and y < 0 and z > 0)   # SEVEN_EIGHTHS
+
+
+def cut_hits(cut, d, r):
+    """does the ray from d toward the viewer pass through the piece (sampled along the part of it that lies inside the ball)"""
+    b = vdot(d, VIEW)
+    disc = b * b - (vdot(d, d) - r * r)
+    if disc <= 1e-12: return False
+    s = math.sqrt(disc)
+    lo, hi = max(-b - s, 1e-7), -b + s
+    if hi <= lo + 1e-7: return False
+    n = 240
+    return any(cut_inside(cut, vadd(d, vmul(VIEW, lo + (hi - lo) * (k + 0.5) / n)), r) for k in range(n))
+
+
+def _around_axis(cut, k, s, r):
+    """the four probes beside the half axis k (sign s) halfway out"""
+    _, i, j = PLANE_AXES['XYZ'[k]]
+    m = vmul(AXIS_VEC[k], 0.5 * r * s)
+    return [cut_inside(cut, vadd(m, vadd(vmul(AXIS_VEC[i], a * 0.01 * r), vmul(AXIS_VEC[j], b * 0.01 * r))), r) for a in (1, -1) for b in (1, -1)]
+
+
+def cut_features(solid):
+    cut, r = check_cut_spec(solid['cut']), solid['r0']
+    eps = 1e-3 * r
+    faces, creases = {}, {}
+    for pid in 'XYZ':
+        n, i, j = PLANE_AXES[pid]
+        for si in (1, -1):
+            for sj in (1, -1):
+                e1, e2 = vmul(AXIS_VEC[i], si), vmul(AXIS_VEC[j], sj)
+                mid = vmul(vadd(e1, e2), 0.97 * r / math.sqrt(2))
+                nrm = AXIS_VEC[n]
+                up, down = cut_inside(cut, vadd(mid, vmul(nrm, eps)), r), cut_inside(cut, vsub(mid, vmul(nrm, eps)), r)
+                if up == down: continue
+                outward = vmul(nrm, -1.0) if up else nrm
+                visible = vdot(outward, VIEW) > 1e-9 and not cut_hits(cut, vmul(vadd(e1, e2), 0.45 * r), r)
+                faces[pid + ('+' if si > 0 else '-') + ('+' if sj > 0 else '-')] = {'plane': pid, 'e1': e1, 'e2': e2, 'outward': outward, 'visible': visible}
+    for k in range(3):
+        for s in (1, -1):
+            if sum(_around_axis(cut, k, s, r)) in (1, 3): creases[('+' if s > 0 else '-') + 'XYZ'[k]] = {'axis': k, 'sign': s}
+    return {'cut': cut, 'faces': faces, 'creases': creases}
+
+
+def cut_radius_axis(solid):
+    """the half axis a radius label lies on: part of the piece, seen, the most horizontal on the screen (the right one when equal); None when none is seen"""
+    cut, r = check_cut_spec(solid['cut']), solid['r0']
+    best = None
+    for k in range(3):
+        for s in (1, -1):
+            if not any(_around_axis(cut, k, s, r)): continue
+            if any(cut_hits(cut, vmul(AXIS_VEC[k], u * r * s), r) for u in (0.25, 0.5, 0.75)): continue
+            sx = vdot(vmul(AXIS_VEC[k], s), SCREEN_X)
+            score = (round(abs(sx), 9), 1 if sx > 0 else 0)
+            if best is None or score > best[0]: best = (score, (k, s))
+    return None if best is None else best[1]
+
+
+def _parse_arc_full(d):
+    m = re.fullmatch(r'\s*M\s*(\S+)\s+(\S+)\s*A\s*(\S+)\s+(\S+)\s+(\S+)\s+(\d)\s+(\d)\s+(\S+)\s+(\S+)\s*', d or '')
+    if not m: raise ValueError('SOLID_ARC_UNREADABLE')
+    x0, y0, rx, ry, rot, large, sweep, x1, y1 = m.groups()
+    return float(x0), float(y0), float(rx), float(ry), float(rot), int(large), int(sweep), float(x1), float(y1)
+
+
+def svg_arc_points(x1, y1, rx, ry, phi_deg, fa, fs, x2, y2, n):
+    """points along an SVG elliptical arc (the endpoint-to-centre conversion of the SVG specification)"""
+    phi = math.radians(phi_deg)
+    cp, sp = math.cos(phi), math.sin(phi)
+    dx, dy = (x1 - x2) / 2, (y1 - y2) / 2
+    x1p, y1p = cp * dx + sp * dy, -sp * dx + cp * dy
+    rx, ry = abs(rx), abs(ry)
+    lam = (x1p / rx) ** 2 + (y1p / ry) ** 2
+    if lam > 1: rx, ry = rx * math.sqrt(lam), ry * math.sqrt(lam)
+    num = (rx * ry) ** 2 - (rx * y1p) ** 2 - (ry * x1p) ** 2
+    den = (rx * y1p) ** 2 + (ry * x1p) ** 2
+    co = math.sqrt(max(0.0, num / den)) if den else 0.0
+    if fa == fs: co = -co
+    cxp, cyp = co * rx * y1p / ry, -co * ry * x1p / rx
+    cx, cy = cp * cxp - sp * cyp + (x1 + x2) / 2, sp * cxp + cp * cyp + (y1 + y2) / 2
+    th1 = math.atan2((y1p - cyp) / ry, (x1p - cxp) / rx)
+    th2 = math.atan2((-y1p - cyp) / ry, (-x1p - cxp) / rx)
+    dth = th2 - th1
+    if fs == 0 and dth > 0: dth -= 2 * math.pi
+    elif fs == 1 and dth < 0: dth += 2 * math.pi
+    out = []
+    for k in range(n + 1):
+        th = th1 + dth * k / n
+        out.append((cx + cp * rx * math.cos(th) - sp * ry * math.sin(th), cy + sp * rx * math.cos(th) + cp * ry * math.sin(th)))
+    return out
+
+
+def _parse_subpaths(d):
+    subs = []
+    for chunk in re.findall(r'M([^M]*)', d or ''):
+        body = chunk.strip()
+        if body.endswith('Z'): body = body[:-1]
+        pts = []
+        for part in body.split('L'):
+            nums = part.split()
+            if len(nums) != 2: raise ValueError('SOLID_CUT_FACE_PATH_UNREADABLE')
+            pts.append((float(nums[0]), float(nums[1])))
+        subs.append(pts)
+    return subs
+
+
+def _unit_circle_arc_ok(pts, centre_px, scale, e1, e2, r, t0, t1, errors, ident):
+    """every point of a drawn arc lies on the projection of the circle through e1, e2 about the centre, within the angles t0..t1 (fractions of a quarter turn)"""
+    p1, p2 = project(e1), project(e2)
+    a, b, c, d = scale * p1[0], scale * p2[0], -scale * p1[1], -scale * p2[1]
+    det = a * d - b * c
+    if abs(det) < 1e-9:
+        errors.append('SOLID_SPHERE_CUT_ARC_DEGENERATE:' + ident)
+        return
+    for (x, y) in pts:
+        vx, vy = x - centre_px[0], y - centre_px[1]
+        u, w = (d * vx - b * vy) / det, (-c * vx + a * vy) / det
+        if abs(math.hypot(u, w) - r) * scale > 1.0:
+            errors.append('SOLID_SPHERE_CUT_ARC_OFF_CIRCLE:' + ident)
+            return
+        ang = math.atan2(w, u) / (math.pi / 2)
+        if ang < t0 - 0.02 or ang > t1 + 0.02:
+            errors.append('SOLID_SPHERE_CUT_ARC_OUT_OF_SPAN:' + ident)
+            return
+
+
+def _cut_pieces(root, sid, role, tag):
+    out = {}
+    for e in root.iter(NS + tag):
+        if e.get('data-solid') == sid and e.get('data-role') == role: out.setdefault(e.get('data-arc') if tag == 'path' else e.get('data-edge'), []).append(e)
+    return out
+
+
+def _cut_frame(solid, root, errors):
+    """scale and translation of a cut sphere from its own rim arcs and radii: the longest piece, drawn between the two points it should join"""
+    sid, r = solid['id'], solid['r0']
+    best = None
+    for ident, els in _cut_pieces(root, sid, 'cut-arc', 'path').items():
+        if not ident or len(ident) != 3: continue
+        n, i, j = PLANE_AXES[ident[0]]
+        e1, e2 = vmul(AXIS_VEC[i], 1 if ident[1] == '+' else -1), vmul(AXIS_VEC[j], 1 if ident[2] == '+' else -1)
+        for e in els:
+            t0, t1 = _num(e, 'data-t0'), _num(e, 'data-t1')
+            x0, y0, _rx, _ry, _rot, _l, _s, x1, y1 = _parse_arc_full(e.get('d'))
+            a = tuple(r * (math.cos(t0 * math.pi / 2) * e1[k] + math.sin(t0 * math.pi / 2) * e2[k]) for k in range(3))
+            b = tuple(r * (math.cos(t1 * math.pi / 2) * e1[k] + math.sin(t1 * math.pi / 2) * e2[k]) for k in range(3))
+            pa, pb = project(a), project(b)
+            want = math.hypot(pb[0] - pa[0], pb[1] - pa[1])
+            if want > 1e-6 and (best is None or want > best[0]): best = (want, math.hypot(x1 - x0, y1 - y0) / want, (x0, y0), a)
+    for ident, els in _cut_pieces(root, sid, 'cut-crease', 'line').items():
+        if not ident or len(ident) != 2 or ident[1] not in 'XYZ': continue
+        k = 'XYZ'.index(ident[1])
+        sign = 1 if ident[0] == '+' else -1
+        for e in els:
+            t0, t1 = _num(e, 'data-t0'), _num(e, 'data-t1')
+            a, b = vmul(AXIS_VEC[k], sign * r * t0), vmul(AXIS_VEC[k], sign * r * t1)
+            pa, pb = project(a), project(b)
+            want = math.hypot(pb[0] - pa[0], pb[1] - pa[1])
+            if want > 1e-6 and (best is None or want > best[0]): best = (want, math.hypot(_num(e, 'x2') - _num(e, 'x1'), _num(e, 'y2') - _num(e, 'y1')) / want, (_num(e, 'x1'), _num(e, 'y1')), a)
+    if best is None:
+        errors.append('SOLID_NO_CURVES:' + sid)
+        return None, None
+    S, start, a = best[1], best[2], best[3]
+    qa = project(a)
+    centre = (start[0] - S * qa[0], start[1] + S * qa[1])
+    q = project((0.0, 0.0, r))
+    return S, (centre[0] - S * q[0], centre[1] + S * q[1])
+
+
+def check_cut_sphere(solid, root, px, scale, errors, segments):
+    sid, r = solid['id'], solid['r0']
+    feats = cut_features(solid)
+    cut = feats['cut']
+    C = px((0.0, 0.0, r))
+
+    def loc(v):
+        q = project(v)
+        return (C[0] + scale * q[0], C[1] - scale * q[1])
+
+    def arc_at(ident, t):
+        f = feats['faces'][ident]
+        th = t * math.pi / 2
+        return tuple(r * (math.cos(th) * f['e1'][k] + math.sin(th) * f['e2'][k]) for k in range(3))
+    # the elements of this solid are all known roles
+    for e in root.iter():
+        if e.get('data-solid') == sid and e.get('data-role') not in ('cut-face', 'cut-arc', 'cut-crease', 'sphere-limb', 'center-dot', 'dim-line'):
+            errors.append('SOLID_SPHERE_CUT_ELEMENT_UNKNOWN:%s:%s' % (sid, e.get('data-role')))
+    # rim arcs: one set of pieces per boundary quarter-disk, tiling the arc, each solid or dashed as the depth test says
+    arcs = _cut_pieces(root, sid, 'cut-arc', 'path')
+    if set(arcs) != set(feats['faces']): errors.append('SOLID_SPHERE_CUT_ARC_SET_MISMATCH:%s:%s' % (sorted(set(arcs) ^ set(feats['faces']))[:6], sid))
+    for ident, els in arcs.items():
+        if ident not in feats['faces']: continue
+        f = feats['faces'][ident]
+        runs = []
+        for e in els:
+            t0, t1 = _num(e, 'data-t0'), _num(e, 'data-t1')
+            x0, y0, rx, ry, rot, large, sweep, x1, y1 = _parse_arc_full(e.get('d'))
+            if large != 0: errors.append('SOLID_SPHERE_CUT_ARC_FLAGS:' + ident)
+            for (got, want) in (((x0, y0), loc(arc_at(ident, t0))), ((x1, y1), loc(arc_at(ident, t1)))):
+                if math.hypot(got[0] - want[0], got[1] - want[1]) > POS_TOL: errors.append('SOLID_SPHERE_CUT_ARC_ENDPOINT_OFF:' + ident)
+            drawn = svg_arc_points(x0, y0, rx, ry, rot, large, sweep, x1, y1, 12)
+            _unit_circle_arc_ok(drawn, C, scale, f['e1'], f['e2'], r, t0, t1, errors, ident)
+            segments.extend((drawn[k], drawn[k + 1]) for k in range(len(drawn) - 1))
+            votes = sum(1 for k in range(5) if cut_hits(cut, arc_at(ident, t0 + (t1 - t0) * (k + 0.5) / 5), r))
+            _stroke_ok(e, votes >= 3, errors, ident)
+            if votes not in (0, 5) and (t1 - t0) * math.pi / 2 * r * scale > 1.5: errors.append('SOLID_SPHERE_CUT_PIECE_STRADDLES:' + ident)
+            runs.append((t0, t1, _dashed(e)))
+        runs.sort()
+        if runs and (abs(runs[0][0]) > CUT_TOL_T or abs(runs[-1][1] - 1) > CUT_TOL_T or any(abs(runs[k + 1][0] - runs[k][1]) > CUT_TOL_T for k in range(len(runs) - 1))): errors.append('SOLID_SPHERE_CUT_ARC_NOT_COVERED:' + ident)
+        n = 200
+        want_hidden = sum(1 for k in range(n) if cut_hits(cut, arc_at(ident, (k + 0.5) / n), r)) / n
+        if abs(want_hidden - sum(b - a for a, b, dashed in runs if dashed)) > 0.02: errors.append('SOLID_SPHERE_CUT_BREAK_MISMATCH:' + ident)
+    # radii where cut faces meet
+    creases = _cut_pieces(root, sid, 'cut-crease', 'line')
+    if set(creases) != set(feats['creases']): errors.append('SOLID_SPHERE_CUT_CREASE_SET_MISMATCH:%s:%s' % (sorted(set(creases) ^ set(feats['creases']))[:6], sid))
+    for ident, els in creases.items():
+        if ident not in feats['creases']: continue
+        k, sign = feats['creases'][ident]['axis'], feats['creases'][ident]['sign']
+        at = lambda t: vmul(AXIS_VEC[k], sign * r * t)
+        runs = []
+        for e in els:
+            t0, t1 = _num(e, 'data-t0'), _num(e, 'data-t1')
+            for (got, want) in (((_num(e, 'x1'), _num(e, 'y1')), loc(at(t0))), ((_num(e, 'x2'), _num(e, 'y2')), loc(at(t1)))):
+                if math.hypot(got[0] - want[0], got[1] - want[1]) > POS_TOL: errors.append('SOLID_SPHERE_CUT_CREASE_ENDPOINT_OFF:' + ident)
+            votes = sum(1 for m in range(5) if cut_hits(cut, at(t0 + (t1 - t0) * (m + 0.5) / 5), r))
+            _stroke_ok(e, votes >= 3, errors, ident)
+            if votes not in (0, 5) and (t1 - t0) * r * scale > 1.5: errors.append('SOLID_SPHERE_CUT_PIECE_STRADDLES:' + ident)
+            runs.append((t0, t1, _dashed(e)))
+        runs.sort()
+        if runs and (abs(runs[0][0]) > CUT_TOL_T or abs(runs[-1][1] - 1) > CUT_TOL_T or any(abs(runs[k2 + 1][0] - runs[k2][1]) > CUT_TOL_T for k2 in range(len(runs) - 1))): errors.append('SOLID_SPHERE_CUT_CREASE_NOT_COVERED:' + ident)
+        n = 200
+        want_hidden = sum(1 for m in range(n) if cut_hits(cut, at((m + 0.5) / n), r)) / n
+        if abs(want_hidden - sum(b - a for a, b, dashed in runs if dashed)) > 0.02: errors.append('SOLID_SPHERE_CUT_BREAK_MISMATCH:' + ident)
+    # the limb: the circle of the sphere the view grazes; drawn exactly where the piece reaches it
+    limb = [e for e in root.iter(NS + 'path') if e.get('data-solid') == sid and e.get('data-role') == 'sphere-limb']
+    spans = []
+    for e in limb:
+        x0, y0, rx, ry, large, sweep, x1, y1 = _parse_arc(e.get('d'))
+        if abs(rx - scale * r) > POS_TOL or abs(ry - scale * r) > POS_TOL: errors.append('SOLID_SPHERE_OUTLINE_RADIUS:' + sid)
+        angs = []
+        for (x, y) in ((x0, y0), (x1, y1)):
+            if abs(math.hypot(x - C[0], y - C[1]) - scale * r) > POS_TOL: errors.append('SOLID_SPHERE_OUTLINE_OFF:' + sid)
+            angs.append(math.atan2(-(y - C[1]), x - C[0]) % (2 * math.pi))
+        span = (angs[1] - angs[0]) % (2 * math.pi)
+        if sweep != 0 or large != (1 if span > math.pi else 0): errors.append('SOLID_ARC_FLAGS_INCONSISTENT:' + str(e.get('id')))
+        spans.append((angs[0], span))
+        for k in range(25):
+            a0, a1 = angs[0] + span * k / 25, angs[0] + span * (k + 1) / 25
+            segments.append(((C[0] + scale * r * math.cos(a0), C[1] - scale * r * math.sin(a0)), (C[0] + scale * r * math.cos(a1), C[1] - scale * r * math.sin(a1))))
+        mid = angs[0] + span / 2
+        q = tuple(r * (math.cos(mid) * SCREEN_X[k] + math.sin(mid) * SCREEN_Y[k]) for k in range(3))
+        octant = ''.join('+' if v >= 0 else '-' for v in q)
+        if e.get('data-octant') != octant: errors.append('SOLID_SPHERE_CUT_LIMB_OCTANT:' + str(e.get('id')))
+    n = 720
+    for k in range(n):
+        phi = 2 * math.pi * (k + 0.5) / n
+        v = tuple(r * (math.cos(phi) * SCREEN_X[m] + math.sin(phi) * SCREEN_Y[m]) for m in range(3))
+        want = cut_inside(cut, v, r)
+        # a sample within a degree of the end of a drawn stretch or of a coordinate plane may fall either way
+        near_end = any(min((phi - a) % (2 * math.pi), (a - phi) % (2 * math.pi)) < math.radians(1.0) or min((phi - (a + s)) % (2 * math.pi), ((a + s) - phi) % (2 * math.pi)) < math.radians(1.0) for a, s in spans)
+        near_plane = any(abs(c) < 0.02 * r for c in v)
+        got = any(((phi - a) % (2 * math.pi)) <= s for a, s in spans)
+        if got != want and not near_end and not near_plane:
+            errors.append('SOLID_SPHERE_CUT_LIMB_MISMATCH:' + sid)
+            break
+    # flat faces: exactly the seen boundary quarter-disks; quarter-disks of one plane that face one way and touch along a radius are one fill (a half-disk, three
+    # quarters, a whole disk), painted beneath the strokes and exactly covering their quarter-disks
+    QUAD = {'++': 0, '-+': 1, '--': 2, '+-': 3}
+    groups = {}
+    for ident, f in feats['faces'].items():
+        if f['visible']: groups.setdefault((f['plane'], f['outward']), []).append(ident)
+    expected = {}
+    for (plane, outward), idents in groups.items():
+        have = {QUAD[i[1:]] for i in idents}
+        if len(have) == 4: runs = [(0, 4)]
+        else:
+            runs = []
+            for k in sorted(have):
+                if (k - 1) % 4 not in have:
+                    n = 1
+                    while (k + n) % 4 in have: n += 1
+                    runs.append((k, n))
+        for k0, n in runs:
+            expected[frozenset(i for i in idents if (QUAD[i[1:]] - k0) % 4 < n)] = (plane, k0, n)
+    order = {id(e): k for k, e in enumerate(root.iter())}
+    first_stroke = min([order[id(e)] for e in root.iter() if e.get('data-solid') == sid and e.get('data-role') in ('cut-arc', 'cut-crease', 'sphere-limb')] or [10 ** 9])
+    drawn_sets = []
+    for e in root.iter(NS + 'path'):
+        if e.get('data-solid') != sid or e.get('data-role') != 'cut-face': continue
+        ids = frozenset((e.get('data-faces') or '').split())
+        drawn_sets.append(ids)
+        if order[id(e)] > first_stroke: errors.append('SOLID_SPHERE_CUT_FACE_NOT_BENEATH:' + str(e.get('id')))
+        subs = _parse_subpaths(e.get('d'))
+        if len(subs) != 1 or ids not in expected:
+            errors.append('SOLID_SPHERE_CUT_FACE_PIECES_MISMATCH:' + str(e.get('id')))
+            continue
+        plane, k0, n = expected[ids]
+        _, i_ax, j_ax = PLANE_AXES[plane]
+        p1, p2 = project(AXIS_VEC[i_ax]), project(AXIS_VEC[j_ax])
+        a_, b_, c_, d_ = scale * p1[0], scale * p2[0], -scale * p1[1], -scale * p2[1]
+        det = a_ * d_ - b_ * c_
+        coords = [((d_ * (x - C[0]) - b_ * (y - C[1])) / det, (-c_ * (x - C[0]) + a_ * (y - C[1])) / det) for x, y in subs[0]]
+        near_centre = [q for q in coords if math.hypot(q[0], q[1]) * scale < CUT_FACE_VERTEX_TOL]
+        rim = [q for q in coords if math.hypot(q[0], q[1]) * scale >= CUT_FACE_VERTEX_TOL]
+        ok = len(near_centre) == (0 if n == 4 else 1) and len(rim) >= 8 * n
+        if ok and any(abs(math.hypot(q[0], q[1]) - r) * scale > CUT_FACE_VERTEX_TOL for q in rim): ok = False
+        if ok:
+            # the rim vertices run one way round, in steps of at most 8 degrees, and cover exactly the span of their quarter-disks
+            angs = [math.degrees(math.atan2(q[1], q[0])) for q in rim]
+            steps = [((angs[m + 1] - angs[m] + 180) % 360) - 180 for m in range(len(angs) - 1)]
+            if n == 4: steps.append(((angs[0] - angs[-1] + 180) % 360) - 180)
+            direction = 1 if sum(steps) > 0 else -1
+            if any(st * direction <= 0 or abs(st) > 8.0 for st in steps): ok = False
+            if ok and n < 4:
+                lo, hi = 90.0 * k0, 90.0 * (k0 + n)
+                def near(x, y): return min((x - y) % 360, (y - x) % 360) <= 3.0
+                if not ((near(angs[0], lo) and near(angs[-1], hi)) or (near(angs[0], hi) and near(angs[-1], lo))): ok = False
+        if ok:
+            area = abs(sum(coords[m][0] * coords[(m + 1) % len(coords)][1] - coords[(m + 1) % len(coords)][0] * coords[m][1] for m in range(len(coords)))) / 2
+            if abs(area - n * math.pi * r * r / 4) > 0.01 * n * math.pi * r * r / 4: ok = False
+        if not ok: errors.append('SOLID_SPHERE_CUT_FACE_SHAPE_MISMATCH:' + str(e.get('id')))
+    if sorted(map(sorted, drawn_sets)) != sorted(map(sorted, expected)): errors.append('SOLID_SPHERE_CUT_FACE_SET_MISMATCH:' + sid)
+    # the named centre carries a dot; an unnamed one none
+    dots = [e for e in root.iter(NS + 'circle') if e.get('data-solid') == sid and e.get('data-role') == 'center-dot']
+    named = any(name for name, _pid, _p in solid['points'])
+    if named != bool(dots) or len(dots) > 1: errors.append('SOLID_SPHERE_CUT_CENTRE_DOT_MISMATCH:' + sid)
+    for e in dots:
+        if math.hypot(_num(e, 'cx') - C[0], _num(e, 'cy') - C[1]) > POS_TOL: errors.append('SOLID_SPHERE_CUT_CENTRE_DOT_OFF:' + sid)
+    # the radius dimension line: from the centre along the chosen half axis
+    axis = cut_radius_axis(solid)
+    for e in root.iter(NS + 'line'):
+        if e.get('data-solid') != sid or e.get('data-role') != 'dim-line' or e.get('data-kind') != 'RADIUS': continue
+        if axis is None:
+            errors.append('SOLID_SPHERE_CUT_RADIUS_HIDDEN:' + sid)
+            continue
+        want = (loc((0.0, 0.0, 0.0)), loc(vmul(AXIS_VEC[axis[0]], axis[1] * r)))
+        got = ((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')))
+        if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): errors.append('SOLID_SPHERE_CUT_RADIUS_LINE_MISMATCH:' + str(e.get('data-dim')))
 
 
 # --- labels --------------------------------------------------------------------------------------------------------------------------------

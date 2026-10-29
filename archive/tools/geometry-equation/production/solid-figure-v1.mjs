@@ -5,6 +5,7 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
+import {sphereCutModel,arcPoint,SPHERE_PLANES,AXES as CUT_AXES} from './sphere-parts.mjs';
 
 // A solid figure (solid-figure-v1): prisms, pyramids, pyramid frusta, cylinders, cones, cone frusta, spheres and hemispheres drawn in ONE fixed
 // orthographic projection (yaw 28 deg, pitch 20 deg: a textbook "dimetric" look; circles become axis-aligned ellipses), with hidden edges dashed by
@@ -13,7 +14,7 @@ import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mj
 // drawn on named points. Or the NET of such a solid (polyhedra unfolded along a spanning tree of faces, cylinder and cone nets). The engine builds
 // the 3D model from the plan; solid_figure_observer.py re-derives the same model from the plan alone (never from the engine's numbers) and checks
 // the final SVG: visible/hidden per edge, vertex positions, ellipse axes and tangent lines, the liquid region, marks, nesting, net face congruence
-// and adjacency, label values and places.
+// and adjacency, label values and places. A sphere may be cut by planes through its centre (cut:{kind}: half, quarter, eighth, 3/4, 7/8; sphere-parts.mjs).
 export const SOLID_CAPABILITY='solid-figure-v1';
 export const SOLID_MODEL_VERSION='SOLID_FIGURE_MODEL_v2',SOLID_SPEC_VERSION='SOLID_FIGURE_SPEC_v2',SOLID_SVG_VERSION='solid-figure-svg-v2';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('solid_figure_observer_worker.py',import.meta.url));
@@ -39,6 +40,8 @@ const len=a=>Math.hypot(a[0],a[1],a[2]);
 const unit=a=>{const l=len(a);return l===0?a:mulv(a,1/l);};
 const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 const EX=[cY,sY,0];// world direction of the screen's horizontal
+const EY=[-sP*sY,sP*cY,cP];// world direction of the screen's vertical
+const CUT_FRAME={view:VIEW,ex:EX,ey:EY};
 
 // --- the 3D model -----------------------------------------------------------------------------------------------------------------------------
 const NAME=/^[A-Z]′?$/u;
@@ -333,9 +336,12 @@ export function countedEdges(solid){
 function buildRound(spec){
   const kind=spec.kind;
   const baseKeys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
-  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts'],'SOLID_PARAM_INVALID');
+  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut'],'SOLID_PARAM_INVALID');
   if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:'+kind);
   if(spec.cuts!==undefined)bad('SOLID_CUT_UNSUPPORTED:'+kind);
+  // cut:{kind,facing?} cuts a SPHERE by planes through its centre (sphere-parts.mjs); no other round solid, and a cut sphere does not sit inside a cylinder
+  if(spec.cut!==undefined&&kind!=='SPHERE')bad('SOLID_SPHERE_CUT_UNSUPPORTED:'+kind);
+  if(spec.cut!==undefined&&spec.inside!==undefined)bad('SOLID_SPHERE_CUT_NEST_UNSUPPORTED');
   const r=pos(spec.radius,'SOLID_PARAM_INVALID');
   const cone=kind==='CONE'||kind==='CONE_FRUSTUM';
   const orientation=spec.orientation??'APEX_UP';
@@ -359,7 +365,8 @@ function buildRound(spec){
     else points.push({name:names.apex??null,id:'apex',p:[0,0,down?0:height]});
   }
   if(spec.inside!==undefined&&(typeof spec.inside!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(spec.inside)))bad('SOLID_NEST_INVALID');
-  return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null};
+  return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,
+    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{})};
 }
 
 const shiftSolid=(solid,s)=>{
@@ -702,7 +709,9 @@ function solveSolids(plan){
             if(which==='top'&&!(solid.r1>0))bad('SOLID_DIMS_INVALID');
             z=which==='top'?solid.height:0;rimR=which==='top'?solid.r1:solid.r0;
           }
-          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z,r:r6(rimR),...dimLabel(d.label,rimR,unitName,code)});
+          // a cut sphere's radius lies along one of its seen half axes (sphere-parts.mjs picks it), not along the screen's horizontal
+          if(solid.cut&&!solid.cut.radiusAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN');
+          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z,r:r6(rimR),...(solid.cut?{axis:solid.cut.radiusAxis}:{}),...dimLabel(d.label,rimR,unitName,code)});
         }else if(d.level!==undefined){
           if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
           // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
@@ -741,6 +750,7 @@ function solidScreenPoints(solid){
   if(solid.category==='POLY')return solid.vertices.map(v=>project(v.p));
   const r=solid.radius,pts=[];
   const ox=solid.offset??0;
+  if(solid.cut)return cutSphereScreenPoints(solid);
   const ell=(rad,z)=>{const c=project([0,0,z]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+rad*Math.cos(u),c[1]+rad*sP*Math.sin(u)]);}};
   if(solid.kind==='SPHERE'){const c=project([0,0,r]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}}
   else if(solid.kind==='HEMISPHERE'){const c=project([0,0,0]);c[0]+=ox;for(let k=0;k<=12;k++){const u=Math.PI*k/12;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}ell(r,0);}
@@ -749,6 +759,21 @@ function solidScreenPoints(solid){
     if(solid.r1>0)ell(solid.r1,solid.height);
     if(solid.r0===0||solid.r1===0){const q=project([0,0,solid.r0===0?0:solid.height]);pts.push([q[0]+ox,q[1]]);}
   }
+  return pts;
+}
+
+/** The drawn extent of a cut sphere: the stretches of its limb, its rim arcs and radii, and its centre (the whole sphere is not drawn). */
+function cutSphereScreenPoints(solid){
+  const r=solid.radius,ox=solid.offset??0,c=project([0,0,r]),cut=solid.cut;
+  const at=q=>{const p=project(q);return [c[0]+ox+p[0],c[1]+p[1]];};
+  const pts=[[c[0]+ox,c[1]]];
+  for(const piece of cut.limb){
+    for(let k=0;k<=24;k++){const u=piece.phi0+(piece.phi1-piece.phi0)*k/24;pts.push([c[0]+ox+r*Math.cos(u),c[1]+r*Math.sin(u)]);}
+    // the extreme points of the circle (right, top, left, bottom) are the extent when they lie on a drawn stretch
+    for(let u=0;u<=4*Math.PI;u+=Math.PI/2)if(u>=piece.phi0&&u<=piece.phi1)pts.push([c[0]+ox+r*Math.cos(u),c[1]+r*Math.sin(u)]);
+  }
+  for(const arc of cut.arcs)for(let k=0;k<=24;k++)pts.push(at(arcPoint(r,arc,Math.PI/2*k/24)));
+  for(const crease of cut.creases)pts.push(at(CUT_AXES[crease.axis].map(v=>v*crease.sign*r)));
   return pts;
 }
 
@@ -1035,6 +1060,7 @@ function spec3d(plan,model,ctx){
         });
       }
     }else if(solid.category==='REV')specRev(solid,ctx,arcPrim);
+    else if(solid.cut)specCutSphere(solid,ctx,arcPrim);
     else specSphere(solid,ctx,arcPrim);
   }
   for(const [k,s] of model.segments.entries()){
@@ -1102,6 +1128,11 @@ function spec3d(plan,model,ctx){
   for(const d of model.dims){
     if(d.type==='RADIUS'){
       const solid=model.solids.find(s=>s.id===d.solid);
+      if(solid.cut){
+        const scr=cutScreen(solid,pt),tip=CUT_AXES[d.axis.axis].map(v=>v*d.axis.sign*solid.radius);
+        line(d.id+'-line','dim-line',scr([0,0,0]),scr(tip),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+        continue;
+      }
       const c=project([solid.offset?EX[0]*solid.offset:0,solid.offset?EX[1]*solid.offset:0,d.z]);
       const rim=[c[0]+d.r,c[1]];// screen-horizontal radius: ends at the ellipse's right extreme
       line(d.id+'-line','dim-line',pt(c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
@@ -1173,7 +1204,15 @@ function spec3d(plan,model,ctx){
       for(const q of solid.points){
         if(!q.name)continue;
         const here=project(q.p),up=q.p[2]>solid.height/2;
-        labels.push({id:'name-'+q.name,role:'vertex-name',owner:'point-'+q.name,kind:'MATH',tex:q.name,plain:q.name,value:q.name,anchor:pt(here),dir:up?[0,1]:[0,-1]});
+        let dir=up?[0,1]:[0,-1];
+        if(solid.cut){
+          // the centre of a cut sphere is a corner: its name sits away from the radii (creases) that meet there
+          const scr=cutScreen(solid,pt),o=scr([0,0,0]);let sum=[0,0];
+          for(const crease of solid.cut.creases){const t=scr(CUT_AXES[crease.axis].map(v=>v*crease.sign*solid.radius)),l=Math.hypot(t[0]-o[0],t[1]-o[1]);sum=[sum[0]+(t[0]-o[0])/l,sum[1]+(t[1]-o[1])/l];}
+          const l=Math.hypot(sum[0],sum[1]);
+          if(l>0.35)dir=[r6(-sum[0]/l),r6(sum[1]/l)];// screen y points down in the figure, up in the label request
+        }
+        labels.push({id:'name-'+q.name,role:'vertex-name',owner:'point-'+q.name,kind:'MATH',tex:q.name,plain:q.name,value:q.name,anchor:pt(here),dir});
       }
     }
   }
@@ -1184,6 +1223,11 @@ function spec3d(plan,model,ctx){
       labels.push({...label,segment:[a,b],segmentOf:d.from+d.to});
     }else if(d.type==='RADIUS'){
       const solid=model.solids.find(s=>s.id===d.solid);
+      if(solid.cut){
+        const scr=cutScreen(solid,pt);
+        labels.push({...label,segment:[scr([0,0,0]),scr(CUT_AXES[d.axis.axis].map(v=>v*d.axis.sign*solid.radius))],segmentOf:'radius'});
+        continue;
+      }
       const c=project([EX[0]*(solid.offset??0),EX[1]*(solid.offset??0),d.z]);
       labels.push({...label,segment:[pt(c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
     }else if(d.type==='HEIGHT'){
@@ -1320,6 +1364,73 @@ function specSphere(solid,ctx,arcPrim){
   }
   void X;void Y;void S;void prims;
 }
+/** World vector relative to the centre of a cut sphere -> px (the solid's own shift along the screen's horizontal included). */
+function cutScreen(solid,pt){
+  const c=project([0,0,solid.radius]),shift=solid.offset??0;
+  return q=>{const p=project(q);return pt([c[0]+shift+p[0],c[1]+p[1]]);};
+}
+const CUT_FACE_STEPS=24,CUT_ARC_SAMPLES=16;
+/** The projected ellipse of a circle through the screen vectors p1, p2 (screen units, y up) of two perpendicular radii, at scale S: SVG arc radii, tilt (deg) and sweep. */
+function projectedEllipse(S,r,p1,p2){
+  const a=S*r*p1[0],b=S*r*p2[0],c=-S*r*p1[1],d=-S*r*p2[1];// svg coordinates: y grows down
+  const m11=a*a+b*b,m22=c*c+d*d,m12=a*c+b*d,tr=m11+m22,diff=m11-m22,root=Math.hypot(diff,2*m12);
+  return {rx:r6(Math.sqrt((tr+root)/2)),ry:r6(Math.sqrt(Math.max(0,(tr-root)/2))),rot:r6(0.5*Math.atan2(2*m12,diff)*180/Math.PI),sweep:a*d-b*c>0?1:0};
+}
+/**
+ * A sphere cut by planes through its centre: the flat faces that face the viewer (one filled path per plane and side), the stretches of the limb
+ * circle that belong to the piece, the rim arcs of the cut faces and the radii where cut faces meet, each cut where the depth test changes
+ * (solid in front, dashed behind), and a dot at a named centre.
+ */
+function specCutSphere(solid,ctx,arcPrim){
+  const {S,pt,prims,line}=ctx,sid=solid.id,r=solid.radius,cut=solid.cut,sh=solid.offset??0;
+  const scr=cutScreen(solid,pt),c0=project([0,0,r]);
+  const centre=scr([0,0,0]);
+  // faces: the quarter-disks that stand on one plane, face the same way and touch along a radius are one fill (a half-disk, three quarters, a whole disk),
+  // so no seam runs through it and a label may lie across it
+  const groups=new Map();
+  for(const face of cut.faces){
+    if(!face.visible)continue;
+    const key=face.plane+face.outward.join(',');
+    if(!groups.has(key))groups.set(key,[]);
+    groups.get(key).push(face);
+  }
+  const quadrant={'++':0,'-+':1,'--':2,'+-':3};
+  for(const list of groups.values()){
+    const plane=SPHERE_PLANES.find(pl=>pl.id===list[0].plane),have=new Set(list.map(f=>quadrant[f.quad]));
+    const runs=[];
+    if(have.size===4)runs.push([0,4]);
+    else for(const k of [...have].sort())if(!have.has((k+3)%4)){let n=1;while(have.has((k+n)%4))n++;runs.push([k,n]);}
+    for(const [k0,n] of runs){
+      const ids=[...Array(n).keys()].map(m=>list.find(f=>quadrant[f.quad]===(k0+m)%4).id);
+      const at=psi=>scr([0,1,2].map(k=>r*(Math.cos(psi)*CUT_AXES[plane.i][k]+Math.sin(psi)*CUT_AXES[plane.j][k])));
+      const steps=CUT_FACE_STEPS*n,psi0=Math.PI/2*k0,points=n===4?[]:[centre];
+      for(let m=0;m<(n===4?steps:steps+1);m++)points.push(at(psi0+Math.PI/2*n*m/steps));
+      let area=0;for(let i=0;i<points.length;i++){const [a,b]=[points[i],points[(i+1)%points.length]];area+=a[0]*b[1]-b[0]*a[1];}
+      if(area<0)points.reverse();
+      prims.push({t:'cutface',id:'cut-face-'+sid+'-'+ids.join('-'),role:'cut-face',solid:sid,faces:ids.join(' '),points});
+    }
+  }
+  cut.limb.forEach((piece,k)=>arcPrim(`${sid}-limb-${k+1}`,'sphere-limb',{cx:c0[0]+sh,cy:c0[1],a:r,b:r},piece.phi0,piece.phi1,'solid',{solid:sid,part:'LIMB',octant:piece.octant}));
+  for(const arc of cut.arcs){
+    const plane=SPHERE_PLANES.find(p=>p.id===arc.plane),si=arc.quad[0]==='+'?1:-1,sj=arc.quad[1]==='+'?1:-1;
+    const p1=project(CUT_AXES[plane.i].map(v=>v*si)),p2=project(CUT_AXES[plane.j].map(v=>v*sj)),ellipse=projectedEllipse(S,r,p1,p2);
+    arc.runs.forEach((run,k)=>{
+      const at=t=>scr(arcPoint(r,arc,Math.PI/2*t)),p0=at(run.t0),p1x=at(run.t1);
+      if(Math.hypot(p1x[0]-p0[0],p1x[1]-p0[1])<0.4)return;
+      const samples=[...Array(CUT_ARC_SAMPLES+1).keys()].map(m=>at(run.t0+(run.t1-run.t0)*m/CUT_ARC_SAMPLES));
+      prims.push({t:'earc',id:`${sid}-rim-${arc.id}-${k+1}`,role:'cut-arc',solid:sid,arc:arc.id,t0:run.t0,t1:run.t1,vis:run.hidden?'hidden':'solid',p0,p1:p1x,samples,...ellipse});
+    });
+  }
+  for(const crease of cut.creases){
+    const at=t=>scr(CUT_AXES[crease.axis].map(v=>v*crease.sign*r*t));
+    crease.runs.forEach((run,k)=>{
+      const a=at(run.t0),b=at(run.t1);
+      if(Math.hypot(b[0]-a[0],b[1]-a[1])<0.4)return;
+      line(`${sid}-crease-${crease.id}-${k+1}`,'cut-crease',a,b,{solid:sid,edge:crease.id,vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1});
+    });
+  }
+  if(solid.points.some(q=>q.name))prims.push({t:'dot',id:'centre-'+sid,role:'center-dot',solid:sid,cx:centre[0],cy:centre[1],r:2.4});
+}
 function specNet(plan,model,ctx){
   const {S,pt,prims,labels,line}=ctx;
   const fold='hidden';
@@ -1436,6 +1547,9 @@ function obstacleSegments(spec){
     else if(p.t==='circle'){const pts=[];for(let k=0;k<ELL_SAMPLES;k++){const u=2*Math.PI*k/ELL_SAMPLES;pts.push([p.cx+p.r*Math.cos(u),p.cy-p.r*Math.sin(u)]);}poly(pts,true);}
     else if(p.t==='poly'&&(p.role==='net-face'||p.role==='liquid-region'))poly(p.points,true);
     else if(p.t==='polyline')poly(p.points,false);
+    else if(p.t==='earc')poly(p.samples,false);
+    // the outline of a filled cut face is geometry the rendered layout check keeps labels off
+    else if(p.t==='cutface')poly(p.points,true);
     else if(p.t==='sector'){
       // The drawn arc runs from p1 to p2 with sweep-flag 0 (the short way round in screen coordinates): keep the signed angle difference.
       const pts=[p.apex],a=Math.atan2(p.p1[1]-p.apex[1],p.p1[0]-p.apex[0]),b=Math.atan2(p.p2[1]-p.apex[1],p.p2[0]-p.apex[0]),d=b-a;
@@ -1528,6 +1642,7 @@ function renderPrims(spec,model){
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face" data-polygon="${p.polygon}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='liquid-region'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="liquid-region" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='ellipse'))body+=`<g data-layer="20"><ellipse id="${p.id}" data-role="level-fill" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='cutface'))body+=`<g data-layer="20"><path id="${p.id}" data-role="cut-face" data-solid="${p.solid}" data-faces="${p.faces}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" d="M ${p.points.map(q=>q.join(' ')).join(' L ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='section'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="section" data-section="axial" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="#2457b8" stroke-width="1.6" stroke-dasharray="6 3" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims){
     if(p.t==='line'){
@@ -1539,7 +1654,11 @@ function renderPrims(spec,model){
     }else if(p.t==='arc'){
       const A=[p.cx+p.rx*Math.cos(p.u0),p.cy-p.ry*Math.sin(p.u0)].map(r6),B=[p.cx+p.rx*Math.cos(p.u1),p.cy-p.ry*Math.sin(p.u1)].map(r6);
       const large=(p.u1-p.u0)>Math.PI+1e-9?1:0;
-      body+=`<g data-layer="40"><path id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" ${p.circle?`data-circle="${p.circle}" data-half="${p.half}"`:`data-part="${p.part}"`} data-vis="${p.vis}" stroke="#111" stroke-width="1.6"${strokeFor(p)} fill="none" d="M ${A.join(' ')} A ${p.rx} ${p.ry} 0 ${large} 0 ${B.join(' ')}"/></g>`;
+      body+=`<g data-layer="40"><path id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" ${p.circle?`data-circle="${p.circle}" data-half="${p.half}"`:`data-part="${p.part}"`} data-vis="${p.vis}"${p.octant?` data-octant="${p.octant}"`:''} stroke="#111" stroke-width="1.6"${strokeFor(p)} fill="none" d="M ${A.join(' ')} A ${p.rx} ${p.ry} 0 ${large} 0 ${B.join(' ')}"/></g>`;
+    }else if(p.t==='earc'){
+      body+=`<g data-layer="40"><path id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" data-arc="${p.arc}" data-t0="${p.t0}" data-t1="${p.t1}" data-vis="${p.vis}" stroke="#111" stroke-width="1.6"${strokeFor(p)} fill="none" d="M ${p.p0.join(' ')} A ${p.rx} ${p.ry} ${p.rot} 0 ${p.sweep} ${p.p1.join(' ')}"/></g>`;
+    }else if(p.t==='dot'){
+      body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
     }else if(p.t==='polyline'){
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="55"><polyline ${attrs} stroke="#111" stroke-width="1.2" fill="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;

@@ -782,3 +782,153 @@ test('E4: a cut solid sits beside another in a grid and in an unnamed-vertex fig
   assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
   assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
 });
+
+// --- E27: a sphere cut by planes through its centre (cut:{kind,facing?}) ---------------------------------------------------------------------------
+// (an `over` value of undefined drops that key: the plan is JSON)
+const sphereCut=(cut,over={},solidOver={})=>Object.fromEntries(Object.entries(figure({unit:'cm',solids:[{id:'s1',kind:'SPHERE',radius:5,names:{center:'O'},cut,...solidOver}],dims:[{solid:'s1',radius:'center'}],...over})).filter(([,value])=>value!==undefined));
+// The pieces worked out by hand (viewer at +x, -y, +z; CUT facing turns the cut faces toward the viewer): the boundary quarter-disks as plane+signs of the two
+// in-plane axes, the radii where two cut faces meet at an angle, the half axis a radius label lies on, and how many stretches of the limb circle are drawn.
+const CUT_PIECES={
+  HALF:{faces:['Y++','Y+-','Y-+','Y--'],creases:[],radius:{axis:0,sign:1},limb:3,fills:1},
+  QUARTER:{faces:['X++','X+-','Y-+','Y--'],creases:['+Z','-Z'],radius:{axis:0,sign:-1},limb:1,fills:2},
+  OCTANT:{faces:['X+-','Y--','Z-+'],creases:['-X','+Y','-Z'],radius:{axis:0,sign:-1},limb:0,fills:3},
+  THREE_QUARTERS:{faces:['X-+','X--','Y++','Y+-'],creases:['+Z','-Z'],radius:{axis:0,sign:1},limb:5,fills:2},
+  SEVEN_EIGHTHS:{faces:['X-+','Y++','Z+-'],creases:['+X','-Y','+Z'],radius:{axis:0,sign:1},limb:6,fills:3}
+};
+const sphereSvg=async(plan,expectStatus='COMPOSED')=>{
+  const composed=await panel(plan);
+  assert.equal(composed.status,expectStatus,JSON.stringify([composed.status,composed.detail,composed.staticAudit?.errors]).slice(0,600));
+  if(expectStatus==='COMPOSED')assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  return composed.svg;
+};
+test('E27: a sphere cut by planes through its centre keeps the piece that is left: seen faces, rim arcs, radii and limb as worked out by hand',()=>{
+  for(const [kind,want] of Object.entries(CUT_PIECES)){
+    const model=solveSolidFigure(sphereCut({kind}));
+    const cut=model.solids[0].cut;
+    assert.equal(cut.kind,kind);assert.equal(cut.facing,'CUT');
+    assert.deepEqual(cut.faces.map(f=>f.id).sort(),[...want.faces].sort(),kind+' faces');
+    assert.ok(cut.faces.every(f=>f.visible),kind+': every cut face faces the viewer');
+    assert.deepEqual(cut.arcs.map(a=>a.id).sort(),[...want.faces].sort(),kind+' rim arcs are the rims of the faces');
+    assert.deepEqual(cut.creases.map(c=>c.id).sort(),[...want.creases].sort(),kind+' radii');
+    assert.deepEqual(cut.radiusAxis,want.radius,kind+' radius axis');
+    assert.equal(cut.limb.length,want.limb,kind+' limb stretches');
+    // turned to the viewer, nothing of the piece hides its own cut faces: every rim arc and radius is one solid run
+    assert.ok([...cut.arcs,...cut.creases].every(item=>item.runs.length===1&&!item.runs[0].hidden),kind+' no hidden edges');
+    // the same piece turned about its centre: the curved surface faces the viewer, the cut faces and radii are behind, no radius is seen
+    const back=solveSolidFigure(sphereCut({kind,facing:'CURVED'},{dims:undefined})).solids[0].cut;
+    assert.ok(back.faces.every(f=>!f.visible),kind+' CURVED: no cut face is seen');
+    assert.equal(back.radiusAxis,null);
+    assert.ok([...back.arcs,...back.creases].some(item=>item.runs.some(run=>run.hidden)),kind+' CURVED: some edge is behind the surface');
+  }
+  // the eighths: a seven-eighths sphere shows its whole limb circle, a single octant none of it (its outline is made by its three rims)
+  assert.deepEqual(Object.fromEntries(Object.entries(CUT_PIECES).map(([k,v])=>[k,v.limb])),{HALF:3,QUARTER:1,OCTANT:0,THREE_QUARTERS:5,SEVEN_EIGHTHS:6});
+  // the drawn extent is the piece, not the whole sphere: a quarter wedge is narrower and an octant lower than the sphere they were cut from
+  const scaleOf=plan=>solidFigureSpec(plan,solveSolidFigure(plan)).frame.scale;
+  const whole=figure({unit:'cm',solids:[{kind:'SPHERE',radius:5,names:{center:'O'}}],dims:[{radius:'center'}]});
+  assert.ok(scaleOf(sphereCut({kind:'OCTANT'}))>scaleOf(whole),'an octant is drawn larger than the sphere it came from');
+  assert.equal(scaleOf(sphereCut({kind:'SEVEN_EIGHTHS'})),scaleOf(whole),'seven eighths keep the whole limb circle');
+  // a plan without cut has no cut model: the plain sphere and hemisphere are what they were
+  for(const kind of ['SPHERE','HEMISPHERE'])assert.equal('cut' in solveSolidFigure(figure({solids:[{kind,radius:3,names:{center:'O'}}]})).solids[0],false);
+});
+test('E27: a cut sphere is refused with explicit codes where the engine cannot draw it',()=>{
+  const bad=(cut,expected,over,solidOver)=>assert.throws(()=>solveSolidFigure(sphereCut(cut,over,solidOver)),code(expected),expected);
+  bad({kind:'CAP'},'SOLID_SPHERE_CUT_KIND_UNSUPPORTED:CAP');
+  bad({kind:'HALF',offset:1},'SOLID_SPHERE_CUT_OFF_CENTRE');
+  bad({kind:'HALF',offset:0.5,facing:'CUT'},'SOLID_SPHERE_CUT_OFF_CENTRE');
+  bad({kind:'HALF',explode:true},'SOLID_SPHERE_CUT_EXPLODE_UNSUPPORTED');
+  bad({kind:'HALF',facing:'BACK'},'SOLID_SPHERE_CUT_FACING_INVALID');
+  bad({kind:'HALF',colour:'red'},'SOLID_SPHERE_CUT_INVALID');
+  bad({},'SOLID_SPHERE_CUT_INVALID');bad('HALF','SOLID_SPHERE_CUT_INVALID');bad(['HALF'],'SOLID_SPHERE_CUT_INVALID');bad({kind:3},'SOLID_SPHERE_CUT_INVALID');
+  // a radius needs a seen radius
+  bad({kind:'HALF',facing:'CURVED'},'SOLID_SPHERE_CUT_RADIUS_HIDDEN');
+  // only a SPHERE is cut, and a cut sphere does not nest or count
+  for(const solid of [{kind:'HEMISPHERE',radius:3},{kind:'CYLINDER',radius:3,height:4},{kind:'CONE',radius:3,height:4}])
+    assert.throws(()=>solveSolidFigure(figure({solids:[{...solid,cut:{kind:'HALF'}}],dims:[{height:true}]})),code('SOLID_SPHERE_CUT_UNSUPPORTED:'+solid.kind));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{id:'s1',kind:'CYLINDER',radius:4,height:8},{id:'s2',kind:'SPHERE',radius:3,inside:'s1',cut:{kind:'HALF'}}],dims:[{solid:'s1',height:true}]})),code('SOLID_SPHERE_CUT_NEST_UNSUPPORTED'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'SPHERE',radius:3,cut:{kind:'HALF'},count:{vertices:true}}]})),code('SOLID_COUNT_UNSUPPORTED:SPHERE'));
+  // planes cutting a polyhedron stay `cuts`; a sphere does not take them
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'SPHERE',radius:3,cuts:[{through:[['AB','1/2'],['BC','1/2'],['CD','1/2']]}]}],dims:[{radius:'center'}]})),code('SOLID_CUT_UNSUPPORTED:SPHERE'));
+  // no other section on a sphere
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'SPHERE',radius:3,cut:{kind:'HALF'}}],section:{kind:'AXIAL'},dims:[{radius:'center'}]})),code('SOLID_SECTION_UNSUPPORTED'));
+});
+test('E27: every piece and both facings are composed, read back by the independent observer, with the cut faces filled and hidden edges dashed',async()=>{
+  for(const [kind,want] of Object.entries(CUT_PIECES)){
+    const svg=await sphereSvg(sphereCut({kind}));
+    assert.equal((svg.match(/data-role="cut-face"/g)??[]).length,want.fills,kind+' fills');
+    assert.equal((svg.match(/data-role="sphere-limb"/g)??[]).length,want.limb,kind+' limb stretches');
+    assert.equal((svg.match(/data-role="cut-crease"/g)??[]).length,want.creases.length,kind+' radii');
+    assert.equal((svg.match(/data-role="cut-arc"/g)??[]).length,want.faces.length,kind+' rim arcs (one piece each when nothing is hidden)');
+    assert.doesNotMatch(svg,/stroke-dasharray/,kind+': nothing is behind the piece');
+    assert.match(svg,/data-role="center-dot"/);assert.match(svg,/data-kind="RADIUS"/);
+    // the fill lies beneath every stroke
+    assert.ok(svg.indexOf('data-role="cut-face"')<svg.indexOf('data-role="cut-arc"'));
+    const back=await sphereSvg(sphereCut({kind,facing:'CURVED'},{dims:undefined}));
+    assert.doesNotMatch(back,/data-role="cut-face"/,kind+' CURVED has no seen cut face');
+    assert.match(back,/stroke-dasharray/,kind+' CURVED shows its far edges dashed');
+  }
+});
+test('E27: the observer reads a quarter wedge back and catches a figure that disagrees with its plan',async()=>{
+  const plan=sphereCut({kind:'QUARTER'});
+  const svg=await sphereSvg(plan);
+  const failing=async(tampered,prefix,againstPlan=plan)=>{const r=await audit(againstPlan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const element=pattern=>svg.match(pattern)[0];
+  // a radius drawn solid where it is behind, a fill missing, a fill with a moved corner, a fill painted over the strokes
+  const crease=element(/<line id="s1-crease-\+Z-1"[^>]*\/>/);
+  await failing(svg.replace(crease,crease.replace(' stroke-width',' stroke-dasharray="5 4" stroke-width')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  const fills=[...svg.matchAll(/<g data-layer="20"><path id="cut-face-[^>]*\/><\/g>/g)].map(m=>m[0]);
+  assert.equal(fills.length,2);
+  await failing(svg.replace(fills[0],''),'SOLID_SPHERE_CUT_FACE_SET_MISMATCH');
+  await failing(svg.replace(fills[0],fills[0].replace(/data-faces="([^"]+)"/,'data-faces="$1 Z++"')),'SOLID_SPHERE_CUT_FACE');
+  const moved=fills[0].replace(/ d="M ([\d.]+) ([\d.]+) L ([\d.]+) ([\d.]+)/,(all,a,b,c,d)=>` d="M ${a} ${b} L ${Number(c)+9} ${d}`);
+  await failing(svg.replace(fills[0],moved),'SOLID_SPHERE_CUT_FACE_SHAPE_MISMATCH');
+  await failing(svg.replace(fills[0],'').replace('</svg>',fills[0]+'</svg>'),'SOLID_SPHERE_CUT_FACE_NOT_BENEATH');
+  // a rim arc that stops short of its end, one drawn as another quadrant, one missing
+  const rim=element(/<path id="s1-rim-X\+\+-1"[^>]*\/>/);
+  await failing(svg.replace(rim,rim.replace(/ ([\d.]+) ([\d.]+)"\/>$/,(all,x,y)=>` ${Number(x)+7} ${y}"/>`)),'SOLID_SPHERE_CUT_ARC_ENDPOINT_OFF');
+  await failing(svg.replace(rim,rim.replace('data-arc="X++"','data-arc="X-+"')),'SOLID_SPHERE_CUT_ARC');
+  await failing(svg.replace(`<g data-layer="40">${rim}</g>`,''),'SOLID_SPHERE_CUT_ARC_SET_MISMATCH');
+  // the limb circle: a stretch removed, or the dot of the centre
+  const limb=element(/<path id="s1-limb-1"[^>]*\/>/);
+  await failing(svg.replace(`<g data-layer="40">${limb}</g>`,''),'SOLID_SPHERE_CUT_LIMB_MISMATCH');
+  const dot=element(/<circle id="centre-s1"[^>]*\/>/);
+  await failing(svg.replace(`<g data-layer="45">${dot}</g>`,''),'SOLID_SPHERE_CUT_CENTRE_DOT_MISMATCH');
+  await failing(svg.replace(dot,dot.replace(/ cx="([\d.]+)"/,(all,x)=>` cx="${Number(x)+6}"`)),'SOLID_SPHERE_CUT_CENTRE_DOT_OFF');
+  // the radius dimension line: moved off its radius
+  const dim=element(/<line id="dim-1-line"[^>]*\/>/);
+  await failing(svg.replace(dim,dim.replace(/ y2="([\d.]+)"/,(all,y)=>` y2="${Number(y)+9}"`)),'SOLID_SPHERE_CUT_RADIUS_LINE_MISMATCH');
+  // the figure against the plan of another piece, and of the other facing
+  await failing(svg,'SOLID_SPHERE_CUT',sphereCut({kind:'OCTANT'}));
+  await failing(svg,'SOLID_SPHERE_CUT',sphereCut({kind:'QUARTER',facing:'CURVED'},{dims:undefined}));
+  // an element of the solid the plan knows nothing about
+  await failing(svg.replace('</svg>','<circle id="x" data-role="mystery" data-solid="s1" cx="5" cy="5" r="2"/></svg>'),'SOLID_SPHERE_CUT_ELEMENT_UNKNOWN');
+});
+test('E27: the observer checks the stretches of dashed edges behind a curved-side piece',async()=>{
+  const plan=sphereCut({kind:'QUARTER',facing:'CURVED'},{dims:undefined});
+  const svg=await sphereSvg(plan);
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const dashed=svg.match(/<path id="s1-rim-[^"]*"[^>]*data-vis="hidden"[^>]*\/>/)[0];
+  await failing(svg.replace(dashed,dashed.replace(' stroke-dasharray="5 4"','').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_SPHERE_CUT_BREAK_MISMATCH');
+  const solid=svg.match(/<path id="s1-rim-[^"]*"[^>]*data-vis="solid"[^>]*\/>/)[0];
+  await failing(svg.replace(solid,solid.replace(' stroke-width',' stroke-dasharray="5 4" stroke-width')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  // a stretch whose break is moved: split a solid rim piece at the wrong place
+  const pieces=[...svg.matchAll(/<path id="(s1-rim-[^"]*-\d)"[^>]*data-t0="([\d.]+)" data-t1="([\d.]+)"[^>]*\/>/g)].filter(m=>m[2]!=='0'||m[3]!=='1');
+  assert.ok(pieces.length>0,'a rim arc is cut where the depth test changes');
+  const piece=svg.match(new RegExp(`<path id="${pieces[0][1]}"[^>]*\\/>`))[0];
+  await failing(svg.replace(piece,piece.replace(/data-t1="[\d.]+"/,`data-t1="${(Number(pieces[0][3])+0.2).toFixed(3)}"`)),'SOLID_SPHERE_CUT_');
+});
+test('E27: cut spheres beside other solids share one scale, and a cut-sphere panel joins a grid',async()=>{
+  // two halves side by side (each shows its own disk) and an octant beside a cylinder
+  const halves=figure({unit:'cm',solids:[{id:'s1',kind:'SPHERE',radius:3,cut:{kind:'HALF'}},{id:'s2',kind:'SPHERE',radius:3,cut:{kind:'HALF'}}],dims:[{solid:'s1',radius:'center'},{solid:'s2',radius:'center'}]});
+  const svg=await sphereSvg(halves);
+  assert.equal((svg.match(/data-role="cut-face"/g)??[]).length,2);assert.equal((svg.match(/data-kind="RADIUS"/g)??[]).length,2);
+  const mixed=figure({unit:'cm',solids:[{id:'s1',kind:'SPHERE',radius:3,cut:{kind:'OCTANT'}},{id:'s2',kind:'CYLINDER',radius:3,height:5}],dims:[{solid:'s1',radius:'center'},{solid:'s2',height:true}]});
+  await sphereSvg(mixed);
+  // the octant's radius dimension is the radius that is seen; the other solid's dimensions are untouched
+  const plan=gridOf([solidPanel({capability:'solid-figure-v1',unit:'cm',solids:halves.solids,dims:halves.dims},'한 번 자른 두 조각'),
+    solidPanel({capability:'solid-figure-v1',unit:'cm',solids:[{id:'s1',kind:'SPHERE',radius:3,cut:{kind:'OCTANT'}}],dims:[{solid:'s1',radius:'center'}]},'8조각 중 한 조각')]);
+  const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+  const small={baseFontPx:16,displayScale:0.7,fontFloorCssPx:11};
+  const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-cut-sphere-grid|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:small});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
+  assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+});
