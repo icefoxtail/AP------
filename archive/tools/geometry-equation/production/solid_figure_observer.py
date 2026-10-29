@@ -16,6 +16,7 @@ YAW = math.radians(28.0)
 PITCH = math.radians(20.0)
 POS_TOL = 0.9        # px
 NAME = re.compile(r'^[A-Z]′?$')
+NAME_MULTI = re.compile(r'^[A-Z]′?(?:,[A-Z]′?){1,3}$')   # one vertex, several names: "M,A,I" (an entry of a names list)
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 NAME_TOKEN = re.compile(r'[A-Z]′?|\.')
 
@@ -51,7 +52,7 @@ def _clean_names(list_):
     out = []
     for x in list_:
         if x is None or x == '.': out.append(None)
-        elif isinstance(x, str) and NAME.fullmatch(x): out.append(x)
+        elif isinstance(x, str) and (NAME.fullmatch(x) or NAME_MULTI.fullmatch(x)): out.append(x)
         else: raise ValueError('SOLID_NAMES_INVALID')
     return out
 
@@ -110,13 +111,16 @@ def build_solid(spec):
         verts = [(bn[i], bottom[i]) for i in range(n)]
         if kind == 'PYRAMID': verts.append((an, top[0]))
         else: verts += [(tn[i], top[i]) for i in range(n)]
+        # a vertex written "M,A,I" is named M (edges and the label id use the first name) and answers to all three
+        aliases = {i: name.split(',') for i, (name, _) in enumerate(verts) if name and ',' in name}
+        verts = [(name.split(',')[0] if name and ',' in name else name, p) for name, p in verts]
         faces = [list(range(n))]
         if kind == 'PRISM' or kind == 'FRUSTUM':
             faces.append([i + n for i in range(n)])
             faces += [[i, (i + 1) % n, (i + 1) % n + n, i + n] for i in range(n)]
         else:
             faces += [[i, (i + 1) % n, n] for i in range(n)]
-        return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h}
+        return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases}
     if kind in ('CYLINDER', 'CONE', 'CONE_FRUSTUM', 'SPHERE', 'HEMISPHERE'):
         r = float(spec['radius'])
         cone = kind in ('CONE', 'CONE_FRUSTUM')
@@ -337,7 +341,7 @@ def audit(plan, svg):
             errors.append('SOLID_LABEL_GEOMETRY_UNREADABLE:' + str(g.get('id')))
             continue
         boxes[g.get('id')] = (float(match.group(1)), float(match.group(2)), _num(inner, 'width'), _num(inner, 'height'))
-    ctx = {'root': root, 'errors': errors, 'boxes': boxes, 'labels': labels, 'segments': [], 'unit': unit}
+    ctx = {'root': root, 'errors': errors, 'boxes': boxes, 'labels': labels, 'segments': [], 'unit': unit, 'label_text': {}}
     try:
         if plan.get('net') is not None: audit_net(plan, ctx)
         else: audit_solids(plan, ctx)
@@ -402,7 +406,9 @@ def audit_solids(plan, ctx):
             return (Tx + scale * q[0], Ty - scale * q[1])
         if solid['cat'] == 'POLY':
             for i, (name, p) in enumerate(solid['verts']):
-                if name: named[name] = (sid, px(p), p)
+                if name:
+                    for alias in solid['aliases'].get(i, [name]): named[alias] = (sid, px(p), p)
+                    if i in solid['aliases']: ctx['label_text'][name] = ','.join(solid['aliases'][i])
             check_poly_edges(solid, root, px, scale, errors)
             audit_counts(solid, (specs_by_id.get(sid) or {}).get('count') or {}, px, ctx)
             counted.add(sid)
@@ -416,10 +422,11 @@ def audit_solids(plan, ctx):
     ctx['named'] = named
     ctx['px'] = {sid: frames[sid] for sid in frames}
     # aux segments, highlights, section
+    declared_pairs = {s_['from'] + s_['to']: (s_['from'], s_['to']) for s_ in plan.get('segments') or []}
     for el in root.iter(NS + 'line'):
         if el.get('data-role') == 'segment':
             ident = el.get('data-edge') or ''
-            a, b = (ident[0], ident[1]) if len(ident) == 2 else (None, None)
+            a, b = declared_pairs.get(ident, (None, None))
             if a not in named or b not in named:
                 errors.append('SOLID_SEGMENT_NAME_UNKNOWN:' + ident)
                 continue
@@ -1065,7 +1072,7 @@ def audit_labels(plan, ctx):
                 if want is None or value != want: errors.append('SOLID_NET_CORNER_NAME_MISMATCH:' + lid)
             else:
                 name = lid[len('name-'):] if lid.startswith('name-') else None
-                if name not in named or value != name: errors.append('SOLID_NAME_MISMATCH:' + lid)
+                if name not in named or value != ctx['label_text'].get(name, name): errors.append('SOLID_NAME_MISMATCH:' + lid)
                 else: anchor = named[name][1]
             if anchor is None:
                 errors.append('SOLID_NAME_ANCHOR_UNKNOWN:' + lid)
@@ -1073,7 +1080,9 @@ def audit_labels(plan, ctx):
             cx, cy = box[0] + box[2] / 2, box[1] + box[3] / 2
             d = _box_seg_dist(box, anchor, anchor)
             if d < 1.5: errors.append('SOLID_NAME_ON_VERTEX:' + lid)
-            if math.hypot(cx - anchor[0], cy - anchor[1]) > 48: errors.append('SOLID_NAME_FAR_FROM_VERTEX:' + lid)
+            # a vertex with several names ("M,A,I") is one wide label: its centre is half its width farther out; a single name keeps the 48 px bound
+            far = 48 + (box[2] / 2 if ',' in (value or '') else 0)
+            if math.hypot(cx - anchor[0], cy - anchor[1]) > far: errors.append('SOLID_NAME_FAR_FROM_VERTEX:' + lid)
         elif role == 'dim':
             dim = g.get('data-dim')
             seen_dims.add(dim)
@@ -1585,8 +1594,24 @@ def audit_net_layout_and_emphasis(net, ctx, cycles, polys, P3, root_id, joins, s
         given = (net.get('corners') or {}).get(fid)
         names_by_face[fid] = list(given) if given is not None else [solid['verts'][i][0] for i in cyc]
     expected = []
+    expected_diagonals = []   # ((px, px), role, label, face id, 'i-j')
+
+    def adjacent(n, i, j): return (i + 1) % n == j or (j + 1) % n == i
     for s in net.get('segments') or []:
         role = s.get('role') or 'ACCENT'
+        if s.get('diagonal') is not None:
+            fid, pair = s.get('face'), s['diagonal']
+            if fid not in cycles or not isinstance(pair, list) or len(pair) != 2 or not all(isinstance(v, int) for v in pair):
+                errors.append('SOLID_NET_SEGMENT_PLAN_INVALID')
+                continue
+            i, j = sorted(pair)
+            n = len(cycles[fid])
+            if not 0 <= i < j < n or adjacent(n, i, j):
+                errors.append('SOLID_NET_SEGMENT_PLAN_INVALID')
+                continue
+            pts = expected_px[fid]
+            expected_diagonals.append(((pts[i], pts[j]), role, '%s:%d-%d' % (fid, i, j), fid, '%d-%d' % (i, j)))
+            continue
         if s.get('face') is not None:
             fid, ei = s['face'], s['edge']
             if fid not in cycles or not isinstance(ei, int) or not 0 <= ei < len(cycles[fid]):
@@ -1604,6 +1629,18 @@ def audit_net_layout_and_emphasis(net, ctx, cycles, polys, P3, root_id, joins, s
                     x = names[k] if k < len(names) else None
                     y = names[(k + 1) % n] if (k + 1) % n < len(names) else None
                     if x and y and {x, y} == {a_name, b_name}: found.append((pts[k], pts[(k + 1) % n]))
+            if not found:
+                # no drawn edge carries the two names: a diagonal of one face (both names on it, not neighbours) does
+                diagonals = []
+                for fid, cyc in cycles.items():
+                    names, pts = names_by_face[fid], expected_px[fid]
+                    n = len(cyc)
+                    if a_name in names and b_name in names:
+                        i, j = sorted((names.index(a_name), names.index(b_name)))
+                        if i != j and not adjacent(n, i, j): diagonals.append(((pts[i], pts[j]), fid, '%d-%d' % (i, j)))
+                if diagonals and all(_px_pair_same(diagonals[0][0], d[0]) for d in diagonals):
+                    expected_diagonals.append((diagonals[0][0], role, '%s%s' % (a_name, b_name), diagonals[0][1], diagonals[0][2]))
+                    continue
             if not found or any(not _px_pair_same(found[0], f) for f in found):
                 errors.append('SOLID_NET_SEGMENT_PLAN_UNRESOLVED:%s%s' % (a_name, b_name))
                 continue
@@ -1619,6 +1656,22 @@ def audit_net_layout_and_emphasis(net, ctx, cycles, polys, P3, root_id, joins, s
         if role == '?': errors.append('SOLID_NET_EDGE_STYLE_UNKNOWN:' + ident)
         elif role is not None and not any(_px_pair_same(seg, x[0]) for x in expected): errors.append('SOLID_NET_EMPHASIS_UNEXPECTED:' + ident)
         if e.get('data-accent') != role: errors.append('SOLID_NET_ACCENT_ATTRIBUTE_INCONSISTENT:' + ident)
+    # stressed face diagonals: exactly the planned ones, each on its own face between the two planned corners, in the planned role
+    diag_els = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'net-diagonal']
+    used = set()
+    for seg, role, label, fid, pair in expected_diagonals:
+        hits = [e for e in diag_els if _px_pair_same(((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2'))), seg)]
+        if len(hits) != 1:
+            errors.append('SOLID_NET_DIAGONAL_MISSING:' + label)
+            continue
+        e = hits[0]
+        used.add(id(e))
+        if e.get('data-face') != fid or e.get('data-diagonal') != pair: errors.append('SOLID_NET_DIAGONAL_FACE_MISMATCH:' + label)
+        if _net_line_role(e) != role: errors.append('SOLID_NET_DIAGONAL_ROLE_MISMATCH:' + label)
+        if e.get('data-accent') != role: errors.append('SOLID_NET_ACCENT_ATTRIBUTE_INCONSISTENT:' + str(e.get('id')))
+        if _dashed(e): errors.append('SOLID_NET_DIAGONAL_STYLE_MISMATCH:' + label)
+    for e in diag_els:
+        if id(e) not in used: errors.append('SOLID_NET_DIAGONAL_UNEXPECTED:' + str(e.get('id')))
 
 
 def _polys_overlap(a, b):

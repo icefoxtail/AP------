@@ -548,3 +548,111 @@ test('E5: three solid panels of one hexagonal prism compose in one grid, each pa
   assert.ok(composed.panels.every(item=>item.status==='COMPOSED'&&item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
   assert.match(composed.svg,/<svg [^>]*width="776"/);
 });
+
+// --- E6: several names on one vertex, face diagonals of a net, sourceQuote ---------------------------------------------------------------------------
+const foldedNames={base:['H,B','C,G','F,D','E'],top:['M,A,I','N','K','L,J']};
+const foldedPlan=(over={})=>figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:3,depth:4},height:7,names:foldedNames}],
+  segments:[seg('N','J','REF'),seg('A','H'),seg('G','F')],dims:[{from:'A',to:'B'}],...over});
+test('E6: one vertex may carry several names ("M,A,I"): the first is its name, every name is usable, one label writes them all',async()=>{
+  const plan=foldedPlan();
+  const model=solveSolidFigure(plan),vertices=model.solids[0].vertices;
+  assert.deepEqual(vertices.map(v=>v.name),['H','C','F','E','M','N','K','L']);
+  assert.deepEqual(vertices.filter(v=>v.aliases).map(v=>v.aliases),[['H','B'],['C','G'],['F','D'],['M','A','I'],['L','J']]);
+  assert.equal(vertices[3].aliases,undefined);// a single name has no aliases, so a plan without several names is unchanged
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/<g id="name-M"[^>]*data-value="M,A,I"[^>]*data-tex="M,A,I"/);
+  assert.equal((svg.match(/data-label-role="vertex-name"/g)??[]).length,8);
+  // the edges are keyed by the first name; a segment by any of the names it was written with
+  assert.match(svg,/data-edge="HM"/);assert.match(svg,/id="segment-NJ"[^>]*data-edge="NJ"/);
+  // the label must write exactly the names of the vertex
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const group=svg.match(/<g id="name-M"[^>]*>/)[0];
+  await failing(svg.replace(group,group.replace('data-value="M,A,I"','data-value="M,A"')),'SOLID_NAME_MISMATCH:name-M');
+  // a segment end that is not one of the vertex's names is an unknown segment
+  const noseg=svg.match(/<line id="segment-NJ"[^>]*data-edge="NJ"/)[0];
+  await failing(svg.replace(noseg,noseg.replace('data-edge="NJ"','data-edge="NQ"')),'SOLID_SEGMENT_NAME_UNKNOWN');
+  // the commas of a letters string are still ignored, so "A,B,C,D,E,F,G,H" is eight single names as before
+  const letters=solveSolidFigure(figure({solids:[cuboid({names:'A,B,C,D,E,F,G,H'})]}));
+  assert.deepEqual(letters.solids[0].vertices.map(v=>v.name),[...'ABCDEFGH']);assert.ok(letters.solids[0].vertices.every(v=>v.aliases===undefined));
+});
+test('E6: several names are refused with explicit codes',()=>{
+  const names=(base,top)=>figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:3,depth:4},height:7,names:{base,top}}]});
+  const ok=['A','B','C','D'],tops=['E','F','G','H'];
+  assert.throws(()=>solveSolidFigure(names(['A,B','C,A','D','X'],tops)),code('SOLID_NAME_DUPLICATE:A'));
+  assert.throws(()=>solveSolidFigure(names(['A,A','B','C','D'],tops)),code('SOLID_NAME_DUPLICATE:A'));
+  assert.throws(()=>solveSolidFigure(names(['A,,B','B','C','D'],tops)),code('SOLID_NAMES_INVALID'));
+  assert.throws(()=>solveSolidFigure(names(['A,b','B','C','D'],tops)),code('SOLID_NAMES_INVALID'));
+  assert.throws(()=>solveSolidFigure(names(['A,B,C,D,E','X','Y','Z'],tops)),code('SOLID_NAMES_INVALID'));
+  assert.throws(()=>solveSolidFigure(names(['A,','B','C','D'],tops)),code('SOLID_NAMES_INVALID'));
+  assert.equal(solveSolidFigure(names(['A,B,C,D','X','Y','Z'],tops)).solids[0].vertices[0].aliases.length,4);
+  assert.throws(()=>solveSolidFigure(foldedPlan({segments:[seg('N','Q')]})),code('SOLID_NAME_UNKNOWN'));
+  // several names are for polyhedron vertices: a round solid keeps single names
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:2,height:3,names:{center:'O,P'}}]})),code('SOLID_NAMES_INVALID'));
+  void ok;
+});
+const diagonalNet=(extra,over)=>emphasisNet({segments:extra},over);
+test('E6: a face diagonal of a net is stressed by corner index or by its two names, and every tamper of the final SVG is read back',async()=>{
+  const plan=diagonalNet([{from:'N',to:'L',role:'REF'},{face:'bottom',diagonal:[3,1]}]);
+  const model=solveSolidFigure(plan);
+  assert.deepEqual(model.segments,[{face:'top',diagonal:[1,3],role:'REF',from:'N',to:'L'},{face:'bottom',diagonal:[1,3],role:'ACCENT'}]);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.equal((svg.match(/data-role="net-diagonal"/g)??[]).length,2);
+  const lineOf=id=>svg.match(new RegExp(`<line id="${id}"[^>]*\\/>`))[0];
+  const ref=lineOf('net-diagonal-top-1-3'),accent=lineOf('net-diagonal-bottom-1-3');
+  for(const part of [/data-face="top"/,/data-diagonal="1-3"/,/data-vis="solid"/,/stroke="#111" stroke-width="2.4"/,/data-accent="REF"/])assert.match(ref,part);
+  assert.match(accent,/stroke="#c0392b"/);assert.match(accent,/data-accent="ACCENT"/);
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  // a planned diagonal not drawn, drawn between other corners, in the wrong role or dashed, a diagonal nobody planned
+  await failing(svg.replace(`<g data-layer="40">${ref}</g>`,''),'SOLID_NET_DIAGONAL_MISSING');
+  const moved=ref.replace(/x2="[\d.]+"/,m=>`x2="${Number(m.slice(4,-1))+20}"`);
+  await failing(svg.replace(ref,moved),'SOLID_NET_DIAGONAL_MISSING');
+  await failing(svg.replace(ref,ref.replace('data-diagonal="1-3"','data-diagonal="0-2"')),'SOLID_NET_DIAGONAL_FACE_MISMATCH');
+  await failing(svg.replace(accent,accent.replace('stroke="#c0392b"','stroke="#111"').replace('data-accent="ACCENT"','data-accent="REF"')),'SOLID_NET_DIAGONAL_ROLE_MISMATCH');
+  await failing(svg.replace(accent,accent.replace(' fill="none"',' stroke-dasharray="5 4" fill="none"')),'SOLID_NET_DIAGONAL_STYLE_MISMATCH');
+  await failing(svg.replace(accent,accent.replace(' data-accent="ACCENT"','')),'SOLID_NET_ACCENT_ATTRIBUTE_INCONSISTENT');
+  const side=svg.match(/<polygon id="net-face-side0"[^>]*points="([^"]+)"/)[1].split(' ').map(q=>q.split(',').map(Number));
+  const extra=`<g data-layer="40"><line id="net-diagonal-side0-0-2" data-role="net-diagonal" data-face="side0" data-diagonal="0-2" data-vis="solid" stroke="#c0392b" stroke-width="2.4" data-accent="ACCENT" fill="none" x1="${side[0][0]}" y1="${side[0][1]}" x2="${side[2][0]}" y2="${side[2][1]}"/></g>`;
+  await failing(svg.replace('</svg>',extra+'</svg>'),'SOLID_NET_DIAGONAL_UNEXPECTED');
+  // a plan without diagonals has none in its SVG, and the stressed edges are unchanged by the new element
+  const plain=await panel(emphasisNet({segments:[{from:'B',to:'C'}]}));
+  assert.equal(plain.status,'COMPOSED',JSON.stringify(plain.detail));assert.doesNotMatch(plain.svg,/net-diagonal/);
+});
+test('E6: net diagonals are refused with explicit codes',()=>{
+  const bad=(segments,expected)=>assert.throws(()=>solveSolidFigure(diagonalNet(segments)),code(expected),expected);
+  bad([{face:'top',diagonal:[0,1]}],'SOLID_NET_SEGMENT_INVALID');// neighbours are an edge, not a diagonal
+  bad([{face:'top',diagonal:[3,0]}],'SOLID_NET_SEGMENT_INVALID');
+  bad([{face:'top',diagonal:[1,1]}],'SOLID_NET_SEGMENT_INVALID');
+  bad([{face:'top',diagonal:[0,4]}],'SOLID_NET_SEGMENT_INVALID');
+  bad([{face:'top',diagonal:[0]}],'SOLID_NET_SEGMENT_INVALID');
+  bad([{face:'top',diagonal:'02'}],'SOLID_NET_SEGMENT_INVALID');
+  bad([{face:'top',diagonal:[0,2],edge:1}],'SOLID_NET_SEGMENT_INVALID');
+  bad([{diagonal:[0,2]}],'SOLID_NET_SEGMENT_INVALID');
+  bad([{from:'N',to:'L',diagonal:[1,3],face:'top'}],'SOLID_NET_SEGMENT_INVALID');
+  bad([{face:'nope',diagonal:[0,2]}],'SOLID_NET_FACE_UNKNOWN');
+  bad([{face:'top',diagonal:[1,3]},{face:'top',diagonal:[3,1]}],'SOLID_NET_SEGMENT_DUPLICATE');
+  bad([{from:'N',to:'L'},{from:'L',to:'N'}],'SOLID_NET_SEGMENT_DUPLICATE');
+  bad([{from:'N',to:'L'},{face:'top',diagonal:[1,3]}],'SOLID_NET_SEGMENT_DUPLICATE');
+  bad([{from:'B',to:'K'}],'SOLID_NET_EDGE_UNKNOWN');// two names that share no face
+  // the two names at two different places of the net are ambiguous, as for an edge
+  assert.throws(()=>solveSolidFigure(emphasisNet({segments:[{from:'N',to:'L'}],corners:{...cubeCorners,bottom:['N','F','L','H']}})),code('SOLID_NET_EDGE_AMBIGUOUS'));
+  // a triangle has no diagonal
+  assert.throws(()=>solveSolidFigure(figure({net:{solid:{kind:'PYRAMID',base:{kind:'RECT',width:2,depth:2},height:3,names:'.....'},root:'bottom',joins:[['bottom','side0'],['bottom','side1'],['bottom','side2'],['bottom','side3']],segments:[{face:'side0',diagonal:[0,2]}]}})),code('SOLID_NET_SEGMENT_INVALID'));
+  // a cylinder or cone net takes neither
+  assert.throws(()=>solveSolidFigure(figure({net:{kind:'CYLINDER',radius:3,height:5,dims:[{part:'rect-height'}],segments:[{face:'rect',diagonal:[0,2]}]}})),code('SOLID_NET_EMPHASIS_UNSUPPORTED:CYLINDER'));
+});
+test('E6: sourceQuote is provenance only: accepted by a solid and a net plan, carried to the composite, never drawn',()=>{
+  const base=figure({solids:[cuboid()],dims:[{edge:'FG'}]}),quote='한 모서리와 평행한 모서리';
+  assert.deepEqual(solveSolidFigure({...base,sourceQuote:quote}),solveSolidFigure(base));
+  const expanded=expandSolidFigure({...base,sourceQuote:quote});
+  assert.equal(expanded.sourceQuote,quote);assert.equal(Object.hasOwn(expanded.panels[0].plan,'sourceQuote'),false);
+  assert.equal(Object.hasOwn(expandSolidFigure(base),'sourceQuote'),false);
+  assert.equal(compositePanels(expanded).length,1);
+  assert.deepEqual(solveSolidFigure(emphasisNet({},{sourceQuote:quote})),solveSolidFigure(emphasisNet()));
+  for(const wrong of ['',' ',5,null,['가'],'가'.repeat(201)])assert.throws(()=>solveSolidFigure({...base,sourceQuote:wrong}),code('SOLID_SOURCE_QUOTE_INVALID'));
+});

@@ -42,6 +42,9 @@ const EX=[cY,sY,0];// world direction of the screen's horizontal
 
 // --- the 3D model -----------------------------------------------------------------------------------------------------------------------------
 const NAME=/^[A-Z]′?$/u;
+// One vertex may carry several names (the corners of a net that fold onto one point): written "M,A,I" as an entry of a names list, 2 to 4 names.
+const NAME_MULTI=/^[A-Z]′?(?:,[A-Z]′?){1,3}$/u;
+const nameOk=x=>NAME.test(x)||NAME_MULTI.test(x);
 const LETTERS='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 /** A names string is written letter by letter; a letter may be followed by one prime (A′, B′). '.' means "no name". */
 function nameTokens(text){return String(text).match(/[A-Z]′?|\./gu)??[];}
@@ -95,7 +98,7 @@ function basePolygon(base){
 function letters(start,count){return [...Array(count).keys()].map(k=>LETTERS[start+k]??null);}
 /** Vertex names of a polyhedron: a string / array in base,top|apex order, an object {base,top,apex}, or consecutive letters. */
 function polyNames(kind,n,names){
-  const clean=list=>{if(!Array.isArray(list)||list.some(x=>x!==null&&x!=='.'&&!NAME.test(String(x))))bad('SOLID_NAMES_INVALID');return list.map(x=>x==='.'?null:x);};
+  const clean=list=>{if(!Array.isArray(list)||list.some(x=>x!==null&&x!=='.'&&!nameOk(String(x))))bad('SOLID_NAMES_INVALID');return list.map(x=>x==='.'?null:x);};
   if(names===undefined)return {base:letters(0,n),top:kind==='PYRAMID'?[]:letters(n,n),apex:kind==='PYRAMID'?LETTERS[n]:null};
   if(typeof names==='string'||Array.isArray(names)){
     const list=clean(typeof names==='string'?nameTokens(names):names),need=kind==='PYRAMID'?n+1:2*n;
@@ -107,7 +110,7 @@ function polyNames(kind,n,names){
   const top=kind==='PYRAMID'?[]:names.top===undefined?letters(n,n):clean(typeof names.top==='string'?nameTokens(names.top):names.top);
   if(base.length!==n||(kind!=='PYRAMID'&&top.length!==n))bad('SOLID_NAMES_INVALID');
   const apex=kind==='PYRAMID'?(names.apex===undefined?LETTERS[n]:names.apex):null;
-  if(apex!==null&&apex!==undefined&&!NAME.test(apex))bad('SOLID_NAMES_INVALID');
+  if(apex!==null&&apex!==undefined&&!nameOk(apex))bad('SOLID_NAMES_INVALID');
   return {base,top,apex:apex??null};
 }
 const faceNormal=pts=>{let n=[0,0,0];for(let i=0;i<pts.length;i++)n=add(n,cross(pts[i],pts[(i+1)%pts.length]));return unit(n);};
@@ -150,8 +153,10 @@ function buildPolyhedron(spec){
   const baseRunsUp=dot(faceNormal(bottom),axis)>0;// the cycle b0..bn-1 runs counter-clockwise about +axis
   const nm=polyNames(kind,n,spec.names);
   const vertices=[];
-  bottom.forEach((p,i)=>vertices.push({name:nm.base[i],p:p.map(r6)}));
-  if(kind==='PYRAMID')vertices.push({name:nm.apex,p:apex.map(r6)});else top.forEach((p,i)=>vertices.push({name:nm.top[i],p:p.map(r6)}));
+  // a vertex with several names keeps the first as its name (edges and labels are keyed by it) and lists all of them as aliases
+  const vertexOf=(raw,p)=>typeof raw==='string'&&raw.includes(',')?{name:raw.split(',')[0],aliases:raw.split(','),p:p.map(r6)}:{name:raw,p:p.map(r6)};
+  bottom.forEach((p,i)=>vertices.push(vertexOf(nm.base[i],p)));
+  if(kind==='PYRAMID')vertices.push(vertexOf(nm.apex,apex));else top.forEach((p,i)=>vertices.push(vertexOf(nm.top[i],p)));
   const faces=[];
   const orient=(id,idx,expected)=>{
     const normal=faceNormal(idx.map(i=>vertices[i].p));
@@ -421,7 +426,7 @@ function solveSolids(plan){
   const named=new Map();
   for(const solid of solids){
     const list=solid.category==='POLY'?solid.vertices:solid.points;
-    for(const q of list){if(q.name===null||q.name===undefined)continue;if(named.has(q.name))bad('SOLID_NAME_DUPLICATE:'+q.name);named.set(q.name,{solid:solid.id,p:q.p});}
+    for(const q of list){if(q.name===null||q.name===undefined)continue;for(const alias of q.aliases??[q.name]){if(named.has(alias))bad('SOLID_NAME_DUPLICATE:'+alias);named.set(alias,{solid:solid.id,p:q.p});}}
   }
   // segments (aux) between named points
   const segments=[];
@@ -436,7 +441,7 @@ function solveSolids(plan){
       segments.push({from:s.from,to:s.to,style,role:s.role??'ACCENT'});
     }
   }
-  const drawnPair=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=solid.vertices[i].name,y=solid.vertices[j].name;return (x===a&&y===b)||(x===b&&y===a);}));
+  const drawnPair=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=solid.vertices[i],y=solid.vertices[j],has=(v,n)=>v.name===n||(v.aliases?.includes(n)??false);return (has(x,a)&&has(y,b))||(has(x,b)&&has(y,a));}));
   // auto visibility of an AUTO segment: depth test at several points
   for(const s of segments)if(s.style==='AUTO'){
     const solid=solids.find(x=>x.id===named.get(s.from).solid);
@@ -659,6 +664,8 @@ const sameNetSegment=(p,q)=>{
 /**
  * Faces to tint and edges to stress on a polyhedron net. A face is named (bottom, side0, ...); an edge is the `edge`-th side of a face in its cycle order
  * or the pair of corner names written on the net. A corner-name pair that finds no drawn edge, or finds several different ones, is refused.
+ * A diagonal of one face (two corners of a face that are not neighbours) is stressed the same two ways: {face,diagonal:[i,j]} by corner index in the
+ * face's cycle order, or {from,to} when the two names are no drawn edge but stand at two non-neighbouring corners of one face.
  */
 function netEmphasis(net,faces){
   const highlights=[],segments=[];
@@ -677,12 +684,30 @@ function netEmphasis(net,faces){
   if(net.segments!==undefined){
     if(!Array.isArray(net.segments)||net.segments.length<1||net.segments.length>8)bad('SOLID_NET_SEGMENT_INVALID');
     for(const s of net.segments){
-      onlyKeys(s,['face','edge','from','to','role'],'SOLID_NET_SEGMENT_INVALID');
+      onlyKeys(s,['face','edge','diagonal','from','to','role'],'SOLID_NET_SEGMENT_INVALID');
       const role=s.role??'ACCENT';
       if(!NET_ROLES.includes(role))bad('SOLID_NET_SEGMENT_INVALID');
-      const byIndex=s.face!==undefined||s.edge!==undefined,byName=s.from!==undefined||s.to!==undefined;
+      const byIndex=s.face!==undefined||s.edge!==undefined||s.diagonal!==undefined,byName=s.from!==undefined||s.to!==undefined;
       if(byIndex===byName)bad('SOLID_NET_SEGMENT_INVALID');
       let face,edge,record;
+      const diagonalOf=(f,i,j)=>{
+        // two corners of one face that are not neighbours in its cycle
+        const n=f.idx.length;
+        if(!Number.isInteger(i)||!Number.isInteger(j)||i<0||j<0||i>=n||j>=n||i===j||(i+1)%n===j||(j+1)%n===i)bad('SOLID_NET_SEGMENT_INVALID');
+        return [Math.min(i,j),Math.max(i,j)];
+      };
+      const addDiagonal=(f,pair,rec)=>{
+        const seg=[f.poly[pair[0]],f.poly[pair[1]]];
+        if(segments.some(x=>x.diagonal&&sameNetSegment([byId.get(x.face).poly[x.diagonal[0]],byId.get(x.face).poly[x.diagonal[1]]],seg)))bad('SOLID_NET_SEGMENT_DUPLICATE');
+        segments.push(rec);
+      };
+      if(s.diagonal!==undefined){
+        if(typeof s.face!=='string'||s.edge!==undefined||!Array.isArray(s.diagonal)||s.diagonal.length!==2)bad('SOLID_NET_SEGMENT_INVALID');
+        if(!byId.has(s.face))bad('SOLID_NET_FACE_UNKNOWN');
+        const f=byId.get(s.face),pair=diagonalOf(f,s.diagonal[0],s.diagonal[1]);
+        addDiagonal(f,pair,{face:s.face,diagonal:pair,role});
+        continue;
+      }
       if(byIndex){
         if(typeof s.face!=='string'||s.edge===undefined)bad('SOLID_NET_SEGMENT_INVALID');
         if(!byId.has(s.face))bad('SOLID_NET_FACE_UNKNOWN');
@@ -698,12 +723,26 @@ function netEmphasis(net,faces){
             if((a===s.from&&b===s.to)||(a===s.to&&b===s.from))found.push({face:f.id,edge:k,seg:[f.poly[k],f.poly[(k+1)%n]]});
           }
         }
-        if(!found.length)bad('SOLID_NET_EDGE_UNKNOWN:'+s.from+s.to);
+        if(!found.length){
+          // no drawn edge carries the two names: a diagonal of one face does (both corners written on that face, not neighbours)
+          const diagonals=[];
+          for(const f of faces){
+            const i=f.corners.indexOf(s.from),j=f.corners.indexOf(s.to);
+            if(i<0||j<0)continue;
+            const n=f.corners.length;
+            if((i+1)%n===j||(j+1)%n===i)continue;
+            diagonals.push({face:f,pair:[Math.min(i,j),Math.max(i,j)],seg:[f.poly[i],f.poly[j]]});
+          }
+          if(!diagonals.length)bad('SOLID_NET_EDGE_UNKNOWN:'+s.from+s.to);
+          if(diagonals.some(x=>!sameNetSegment(x.seg,diagonals[0].seg)))bad('SOLID_NET_EDGE_AMBIGUOUS:'+s.from+s.to);
+          addDiagonal(diagonals[0].face,diagonals[0].pair,{face:diagonals[0].face.id,diagonal:diagonals[0].pair,role,from:s.from,to:s.to});
+          continue;
+        }
         if(found.some(x=>!sameNetSegment(x.seg,found[0].seg)))bad('SOLID_NET_EDGE_AMBIGUOUS:'+s.from+s.to);
         face=found[0].face;edge=found[0].edge;record={face,edge,role,from:s.from,to:s.to};
       }
       const f=byId.get(face),seg=[f.poly[edge],f.poly[(edge+1)%f.poly.length]];
-      if(segments.some(x=>{const g=byId.get(x.face);return sameNetSegment([g.poly[x.edge],g.poly[(x.edge+1)%g.poly.length]],seg);}))bad('SOLID_NET_SEGMENT_DUPLICATE');
+      if(segments.some(x=>{if(x.diagonal)return false;const g=byId.get(x.face);return sameNetSegment([g.poly[x.edge],g.poly[(x.edge+1)%g.poly.length]],seg);}))bad('SOLID_NET_SEGMENT_DUPLICATE');
       segments.push(record);
     }
   }
@@ -860,7 +899,7 @@ function spec3d(plan,model,ctx){
   const {S,X,Y,pt,prims,labels,line}=ctx;
   const named=new Map();
   for(const solid of model.solids){
-    if(solid.category==='POLY')solid.vertices.forEach(v=>{if(v.name)named.set(v.name,v.p);});
+    if(solid.category==='POLY')solid.vertices.forEach(v=>{if(v.name)for(const alias of v.aliases??[v.name])named.set(alias,v.p);});
     else for(const q of solid.points)if(q.name)named.set(q.name,q.p);
   }
   const arcPrim=(id,role,e,u0,u1,vis,attrs={})=>prims.push({t:'arc',id,role,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b),u0:r6(u0),u1:r6(u1),vis,...attrs});
@@ -999,7 +1038,8 @@ function spec3d(plan,model,ctx){
       solid.vertices.forEach((v,i)=>{
         if(!v.name)return;
         const {here,dir}=outward(i);
-        labels.push({id:'name-'+v.name,role:'vertex-name',owner:'vertex-'+v.name,kind:'MATH',tex:v.name,plain:v.name,value:v.name,anchor:pt(here),dir});
+        const text=v.aliases?v.aliases.join(','):v.name;
+        labels.push({id:'name-'+v.name,role:'vertex-name',owner:'vertex-'+v.name,kind:'MATH',tex:text,plain:text,value:text,anchor:pt(here),dir});
       });
       if(solid.count?.vertices){
         const spots=solid.vertices.map(v=>pt(project(v.p)));
@@ -1185,7 +1225,7 @@ function specNet(plan,model,ctx){
     for(const h of model.highlights??[])prims.push({t:'poly',id:'net-highlight-'+h.face,role:'net-highlight',face:h.face,fill:h.fill,points:byId.get(h.face).poly.map(pt)});
     // a stressed edge is found by the drawn line it lies on: one shared line for a fold, the face's own line for a cut edge
     const lineKey=(f,k)=>{const n=f.idx.length,a=f.idx[k],b=f.idx[(k+1)%n],lo=Math.min(a,b),hi=Math.max(a,b);return lo+'-'+hi+(foldEdges.has(f.id+':'+lo+'-'+hi)?'-fold':'-'+f.id);};
-    const stressed=new Map((model.segments??[]).map(s=>[lineKey(byId.get(s.face),s.edge),s.role]));
+    const stressed=new Map((model.segments??[]).filter(s=>!s.diagonal).map(s=>[lineKey(byId.get(s.face),s.edge),s.role]));
     const drawn=new Set();
     for(const f of model.faces){
       const n=f.idx.length;
@@ -1196,6 +1236,11 @@ function specNet(plan,model,ctx){
         drawn.add(pairKey);
         line(`net-edge-${f.id}-${k}`,'net-edge',pt(f.poly[k]),pt(f.poly[(k+1)%n]),{face:f.id,edgeIndex:k,vis:isFold?fold:'solid',fold:isFold?1:0,...(stressed.has(pairKey)?{accent:stressed.get(pairKey)}:{})});
       }
+    }
+    // a stressed face diagonal is one more drawn line, on top of the edges (it ends on two corners of its face)
+    for(const s of (model.segments??[]).filter(x=>x.diagonal)){
+      const f=byId.get(s.face),[i,j]=s.diagonal;
+      line(`net-diagonal-${f.id}-${i}-${j}`,'net-diagonal',pt(f.poly[i]),pt(f.poly[j]),{face:f.id,diagonal:i+'-'+j,vis:'solid',accent:s.role});
     }
     const cen=model.faces.flatMap(f=>f.poly);const mean=[cen.reduce((s,p)=>s+p[0],0)/cen.length,cen.reduce((s,p)=>s+p[1],0)/cen.length];
     // corner names: corners that coincide in the net are one place (a name is written once there); the name sits where no edge runs
@@ -1375,8 +1420,8 @@ function renderPrims(spec,model){
   for(const p of spec.prims){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
-      const w=p.role==='dim-line'||p.role==='dim-ext'?1.1:p.role==='segment'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',p.role==='net-edge'&&p.accent?`data-accent="${p.accent}"`:''].filter(Boolean).join(' ');
+      const w=p.role==='dim-line'||p.role==='dim-ext'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal')&&p.accent?`data-accent="${p.accent}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
     }else if(p.t==='arc'){

@@ -386,3 +386,23 @@ class Counting(unittest.TestCase):
         ctx = {'errors': [], 'boxes': boxes, 'labels': [g for g in els if g.get('id') != 'count-e-7']}
         O.audit_counts(solid, {'vertices': True, 'edges': True}, px, ctx)
         self.assertTrue(any(e.startswith('SOLID_COUNT_NUMBERS_NOT_COMPLETE') for e in ctx['errors']), ctx['errors'])
+
+
+class SeveralNames(unittest.TestCase):
+    BASE = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 3, 'depth': 4}, 'height': 7, 'id': 's1'}
+
+    def test_a_vertex_written_with_several_names_is_named_by_the_first_and_answers_to_all(self):
+        solid = O.build_solid({**self.BASE, 'names': {'base': ['H,B', 'C,G', 'F,D', 'E'], 'top': ['M,A,I', 'N', 'K', 'L,J']}})
+        self.assertEqual([n for n, _ in solid['verts']], ['H', 'C', 'F', 'E', 'M', 'N', 'K', 'L'])
+        self.assertEqual(solid['aliases'], {0: ['H', 'B'], 1: ['C', 'G'], 2: ['F', 'D'], 4: ['M', 'A', 'I'], 7: ['L', 'J']})
+        self.assertIn('HM', [O.vname(solid, a) + O.vname(solid, b) for a, b in O.poly_edges(solid)])   # edges are keyed by the first names
+
+    def test_a_letters_string_still_ignores_commas_and_single_names_have_no_aliases(self):
+        solid = O.build_solid({**self.BASE, 'names': 'A,B,C,D,E,F,G,H'})
+        self.assertEqual([n for n, _ in solid['verts']], list('ABCDEFGH'))
+        self.assertEqual(solid['aliases'], {})
+
+    def test_bad_several_names_are_refused(self):
+        for bad in (['A,,B', 'B', 'C', 'D'], ['A,b', 'B', 'C', 'D'], ['A,B,C,D,E', 'B', 'C', 'D'], ['A,', 'B', 'C', 'D']):
+            with self.assertRaises(ValueError):
+                O.build_solid({**self.BASE, 'names': {'base': bad, 'top': list('EFGH')}})
