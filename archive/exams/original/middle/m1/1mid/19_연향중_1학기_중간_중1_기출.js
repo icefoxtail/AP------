@@ -789,7 +789,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 24, 세로 10, 높이 12(단위 cm)인 직육면체 벽돌과, 그 벽돌을 쌓아 만든 정육면체를 나란히 그린 그림이다. 정육면체는 벽돌과 배율이 다르고, 한 모서리에 최소공배수라고 적혀 있다.",
+    "solutionImageCaption": "벽돌을 쌓아 만든 가장 작은 정육면체의 한 모서리는 24, 10, 12의 최소공배수이다(두 그림의 배율은 다르다).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -822,7 +826,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 처음 위치 0과 수현의 위치 -1, 태호의 위치 9를 점으로 찍고 -1과 9 사이를 굵은 선분으로 이은 그림이다.",
+    "solutionImageCaption": "처음 위치 0에서 수현은 -1, 태호는 9에 있다. 두 수의 차는 두 점 사이의 거리와 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

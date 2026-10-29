@@ -775,7 +775,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_왕운중_1학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 정수 3, 4, 5의 눈금 위에 4보다 1/3 작은 수(4의 왼쪽 3등분 눈금 한 칸)와 3보다 3/2 큰 수(4와 5의 한가운데)가 점으로 찍혀 있어, 두 점 사이의 정수 눈금을 셀 수 있다.",
+    "solutionImageCaption": "4보다 1/3 작은 수와 3보다 3/2 큰 수를 수직선에 찍고 두 점 사이의 정수를 센다. 3과 4 사이의 짧은 눈금은 3등분 눈금이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,

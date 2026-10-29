@@ -474,7 +474,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:068dfc59779f6c6538ca0561011339a4fba943d53c5cfabe01721eafd903cfb7",
-      "difficultyEvidenceSha": "sha256:e847ad95f95ccc48593cc561ee8f59383d08fe4802313a3834b2b74633cf66e3"
+      "difficultyEvidenceSha": "sha256:e847ad95f95ccc48593cc561ee8f59383d08fe4802313a3834b2b74633cf66e3",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 원뿔대를 회전축에 수직인 평면으로 자르면 나타나는 단면 원과 두 밑면의 원은 반지름이 서로 다르고, 옆면을 만드는 모선과 두 밑면 사이의 높이는 서로 다른 선분임을 보여 주는 그림",
+      "solutionImageCaption": "원뿔대의 수직 단면 두 원은 반지름이 다르고, 모선과 높이는 서로 다른 선분이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 12,
@@ -1056,7 +1060,7 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q24-solution.svg",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q24-solution-v2.svg",
       "solutionReminderImagePolicy": "STRIP_INLINE",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
@@ -1064,8 +1068,8 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:c3a98e4e78589597949f372986156229d0b4c09f66b6a5efe89607d1499899f8",
       "difficultyEvidenceSha": "sha256:d8cfcc87c32c861608ea8a9481129794a6418b90cf75a7ad2629339baf35f79a",
-      "solutionImageAlt": "윗면 반지름 3 cm, 아랫면 반지름 9 cm인 원뿔대의 전개도: 모선 15 cm, 5 cm와 중심각 216°인 고리 부채꼴",
-      "solutionImageCaption": "옆면 전개도의 고리 부채꼴 넓이와 두 원의 넓이를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원뿔대의 축을 지나는 단면을 연장한 보조 원뿔(높이 4, 모선 5와 15, 직각 표시)과, 같은 배율로 그린 전개도의 옆면(안쪽 반지름 5·바깥 반지름 15·중심각 216도의 고리 모양 부채꼴)과 반지름 9와 3인 두 밑면 원",
+      "solutionImageCaption": "보조 원뿔의 모선 5·15와, 같은 배율로 나타낸 전개도의 옆면(고리 모양 부채꼴)·두 밑면을 나타낸 그림이다.",
+      "solutionImageSize": "medium"
     }
   ];

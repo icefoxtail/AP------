@@ -354,7 +354,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_동산중_1학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 3등분 눈금이 있는 수직선에서 원점 0을 기준으로 왼쪽의 점 B와 오른쪽의 점 A가 같은 거리에 놓여 있고, A의 위치만 2/3으로 표시되어 있다. 제목에 A가 B보다 4/3 크다는 조건이 적혀 있다.",
+    "solutionImageCaption": "절댓값이 같은 두 수 A, B는 원점을 기준으로 대칭이며 A가 B보다 4/3 크므로 A가 오른쪽에 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
