@@ -431,7 +431,11 @@ window.questionBank = [
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/24_향림중_2학기_기말_중1_기출/q13.png"
+    "image": "assets/images/24_향림중_2학기_기말_중1_기출/q13.png",
+    "solutionImage": "assets/images/24_향림중_2학기_기말_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 영화 관람 편수 히스토그램에서 20편 이상인 20~25편(5명), 25~30편(2명) 두 막대를 진하게 칠하고, 모든 계급의 합인 전체 학생 35명을 아래 괄호로 묶어 보인 그림",
+    "solutionImageCaption": "20편 이상인 두 계급을 진하게 표시하고 전체 학생 35명을 괄호로 묶은 히스토그램",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -635,7 +639,11 @@ window.questionBank = [
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/24_향림중_2학기_기말_중1_기출/q19.png"
+    "image": "assets/images/24_향림중_2학기_기말_중1_기출/q19.png",
+    "solutionImage": "assets/images/24_향림중_2학기_기말_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 배우 나이의 도수분포다각형에서 20~30세 계급의 도수 12와 보이는 도수 1, 4, 2를 꼭짓점 위에 적고, 찢어져 보이지 않는 30~40세 계급을 물음표 괄호로 표시한 그림",
+    "solutionImageCaption": "20~30세의 도수 12와 보이는 도수를 적고 찢어진 30~40세 계급을 ?로 표시한 도수분포다각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -785,6 +793,10 @@ window.questionBank = [
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/24_향림중_2학기_기말_중1_기출/q24.png"
+    "image": "assets/images/24_향림중_2학기_기말_중1_기출/q24.png",
+    "solutionImage": "assets/images/24_향림중_2학기_기말_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 수학 체험전 관람 시간 24개를 십의 자리 줄기 2~6에 일의 자리 잎을 작은 수부터 나열한 줄기와 잎 그림이며, 아래에 '2|3은 23분'이라는 읽는 법이 적혀 있다",
+    "solutionImageCaption": "십의 자리를 줄기, 일의 자리를 잎으로 하여 잎을 작은 수부터 나열한 줄기와 잎 그림",
+    "solutionImageSize": "medium"
   }
 ];
