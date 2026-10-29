@@ -49,3 +49,26 @@ test('E16: an angle named by one capital letter (the angle A) is written as ∠A
   assert.deepEqual(glyphs('aA-label'),['2220','1D434'],'the angle sign and the letter A');
   assert.match(String(await composeOf(trianglePlan([{id:'aA',refs:['B','A','C'],value:70,label:'a',labelKind:'NAME',arcs:1,factRole:'GIVEN'}]),model).then(r=>JSON.stringify(r.detail)).catch(e=>e.message)),/ANGLE_LABEL_NAME_INVALID/);
 });
+
+test('E18: angles of one emphasisGroup draw their arcs in one colour; an angle with no group keeps the default; the observer reads it back',async()=>{
+  const model=await modelOf(triangleGraph),plan=trianglePlan(triangleAngles),composed=await composeOf(plan,model);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.planeMarks.status,'PASS',JSON.stringify(composed.staticAudit.planeMarks.errors));
+  assert.equal(attr(tagOf(composed.svg,'aA-arc-1'),'stroke'),'#c0392b');
+  for(const k of [1,2])assert.equal(attr(tagOf(composed.svg,'aB-arc-'+k),'stroke'),'#1f5fa8');
+  assert.equal(attr(tagOf(composed.svg,'aC-arc-1'),'stroke'),'#111');
+  assert.equal(attr(tagOf(composed.svg,'aA-sector'),'fill'),'#d9d9d9','the sector keeps the light grey fill');
+  const prepared=await pythonWorker({action:'prepare',spec:specFor(plan,model,identity.assetId)});
+  const run=svg=>observe(svg,triangleGraph,plan.planeMarks,plan.displaySegments,prepared.result.coordinateModel);
+  const swapped=composed.svg.replace(tagOf(composed.svg,'aA-arc-1'),tagOf(composed.svg,'aA-arc-1').replace('#c0392b','#2e7d32'));
+  assert.ok(codes(await run(swapped)).includes('ANGLE_EMPHASIS_COLOR_MISMATCH'));
+  const painted=composed.svg.replace(tagOf(composed.svg,'aC-arc-1'),tagOf(composed.svg,'aC-arc-1').replace('#111','#c0392b'));
+  assert.ok(codes(await run(painted)).includes('ANGLE_EMPHASIS_UNDECLARED'));
+  assert.equal(specError(trianglePlan([{...triangleAngles[0],emphasisGroup:4}]),model),'ANGLE_EMPHASIS_GROUP_INVALID:aA');
+  assert.equal(specError(trianglePlan([{...triangleAngles[0],emphasisGroup:'1'}]),model),'ANGLE_EMPHASIS_GROUP_INVALID:aA');
+});
+test('E18: a plan without emphasisGroup is the old figure (no colour anywhere)',async()=>{
+  const model=await modelOf(triangleGraph),composed=await composeOf(trianglePlan(triangleAngles.map(({emphasisGroup,...row})=>row)),model);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.ok(!/#c0392b|#1f5fa8|#2e7d32/.test(composed.svg));
+});

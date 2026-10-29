@@ -546,4 +546,48 @@ class AngleNameLabelTests(unittest.TestCase):
             self.assertEqual(str(caught.exception),'ANGLE_LABEL_NAME_INVALID')
 
 
+class AngleEmphasisGroupTests(unittest.TestCase):
+    """E18: angles of one emphasisGroup draw their arcs in one colour; an angle that is a corresponding-angle pair member AND a vertical-angle pair member
+    keeps its arc count (equalGroup) while the colour tells the relation. The observer reads the stroke back from the final SVG."""
+    COLOURS={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}
+    def setUp(self):
+        self.points,objects=parallelogram()
+        for row in objects:
+            if row['id']=='aD':row['emphasisGroup']=1
+            if row['id']=='aC':row['emphasisGroup']=2
+        result=build(spec_of(self.points,objects));self.svg=result['svg'];self.transform=result['witness']['coordinateModel']
+        self.marks=json.loads(json.dumps(MARKS));self.marks['angles'][0]['emphasisGroup']=1;self.marks['angles'][1]['emphasisGroup']=2
+    def audit(self,svg=None,marks=None):
+        return OBSERVER.audit({'svg':svg or self.svg,'points':{k:list(v) for k,v in self.points.items()},'marks':marks or self.marks,'segments':SEGMENTS,'transform':self.transform})['errors']
+    def arc(self,oid,k=1):return re.search(r'<polyline\s(?:[^>]*\s)?id="'+oid+'-arc-'+str(k)+r'"[^>]*/>',self.svg).group(0)
+    def test_every_arc_of_a_group_takes_the_group_colour(self):
+        self.assertEqual(self.audit(),[])
+        self.assertIn('stroke="'+self.COLOURS[1]+'"',self.arc('aD'))
+        for k in (1,2):self.assertIn('stroke="'+self.COLOURS[2]+'"',self.arc('aC',k))
+        self.assertIn('stroke="#111"',self.arc('aOut',1))        # no group: the default stroke
+    def test_the_sector_keeps_the_light_grey_fill(self):
+        self.assertIn('fill="#d9d9d9"',re.search(r'<polygon\s(?:[^>]*\s)?id="aD-sector"[^>]*/>',self.svg).group(0))
+    def test_a_plan_without_emphasis_groups_is_the_old_figure_byte_for_byte(self):
+        plain=build(spec_of(*[parallelogram()[0],parallelogram()[1]]))['svg']
+        self.assertNotIn('c0392b',plain);self.assertNotIn('1f5fa8',plain)
+    def test_tamper_wrong_missing_or_undeclared_colour(self):
+        wrong=self.svg.replace(self.arc('aD'),self.arc('aD').replace(self.COLOURS[1],self.COLOURS[3]))
+        self.assertIn('ANGLE_EMPHASIS_COLOR_MISMATCH:aD',self.audit(svg=wrong))
+        plain=self.svg.replace(self.arc('aD'),self.arc('aD').replace('stroke="'+self.COLOURS[1]+'"','stroke="#111"'))
+        self.assertIn('ANGLE_EMPHASIS_COLOR_MISMATCH:aD',self.audit(svg=plain))
+        red=self.svg.replace(self.arc('aOut',1),self.arc('aOut',1).replace('stroke="#111"','stroke="'+self.COLOURS[1]+'"'))
+        self.assertIn('ANGLE_EMPHASIS_UNDECLARED:aOut',self.audit(svg=red))
+        marks=json.loads(json.dumps(self.marks));marks['angles'][0]['emphasisGroup']=7
+        self.assertIn('ANGLE_EMPHASIS_GROUP_INVALID:aD',self.audit(marks=marks))
+    def test_engine_refuses_a_bad_group(self):
+        for value in (0,4,'1',True,None):
+            points,objects=parallelogram()
+            for row in objects:
+                if row['id']=='aD':row['emphasisGroup']=value
+            with self.assertRaises(ValueError,msg=repr(value)) as caught:build(spec_of(points,objects))
+            self.assertEqual(str(caught.exception),'INVALID_ANGLE_EMPHASIS_GROUP')
+        with self.assertRaises(ValueError) as caught:build(spec_of(self.points,[seg('sAB',self.points,'A','B',emphasisGroup=1)]))
+        self.assertEqual(str(caught.exception),'INVALID_ANGLE_EMPHASIS_GROUP')
+
+
 if __name__=='__main__':unittest.main()

@@ -20,6 +20,7 @@ SECTOR_TOLERANCE=0.02        # px: a sector vertex/radius against the vertex and
 EMPHASIS_WIDTH=3.0           # px: an emphasized segment's stroke (the default segment stroke is 1.6)
 DEFAULT_STROKE='#111'
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT: the red of a singled-out segment
+ANGLE_GROUP_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle: the colour of every arc of the group (red, blue, green)
 
 def tag(node):return node.tag.split('}')[-1]
 def sub(p,q):return (p[0]-q[0],p[1]-q[1])
@@ -192,6 +193,13 @@ def audit(p):
         if abs(drawn-expected)>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:points=%.3f'%(drawn,expected))
         if row.get('value') is not None and abs(drawn-float(row['value']))>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:declared=%s'%(drawn,row['value']))
         if len(radii)>1 and any(r1-r0<=1e-9 for r0,r1 in zip(radii,radii[1:])):errors.append('ANGLE_ARCS_NOT_CONCENTRIC_INCREASING:'+oid)
+        # emphasisGroup: every arc of the angle is drawn in its group's colour; an angle without a group keeps the default stroke
+        group=row.get('emphasisGroup')
+        if group is not None and group not in ANGLE_GROUP_STROKES:errors.append('ANGLE_EMPHASIS_GROUP_INVALID:'+oid)
+        else:
+            want=ANGLE_GROUP_STROKES[group] if group is not None else DEFAULT_STROKE
+            for n in arcs:
+                if str(n.get('stroke') or '').lower()!=want:errors.append(('ANGLE_EMPHASIS_COLOR_MISMATCH:' if group is not None else 'ANGLE_EMPHASIS_UNDECLARED:')+oid);break
         if sectors:
             node=sectors[0]
             if node.get('stroke') not in (None,'none'):errors.append('ANGLE_SECTOR_STROKE_PRESENT:'+oid)
