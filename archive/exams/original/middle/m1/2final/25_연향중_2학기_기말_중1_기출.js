@@ -604,7 +604,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:8f54ce392519a2e44dab170df0bfc87225af97492438a5fb17784810bf900d0a",
-    "difficultyEvidenceSha": "sha256:7f1247b7140d38a4b1bcbf9d813bd9ce26bc0e30fd989e045fcf4c39b7f140b3"
+    "difficultyEvidenceSha": "sha256:7f1247b7140d38a4b1bcbf9d813bd9ce26bc0e30fd989e045fcf4c39b7f140b3",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 6cm인 구에서 8등분 한 조각을 잘라 내고 남은 7/8 입체도형으로, 잘라 낸 자리에 중심에서 서로 수직으로 만나는 4분원 모양의 평면 3개(색칠)가 보이고 반지름 6cm가 표시된 그림이다.",
+    "solutionImageCaption": "구의 1/8을 잘라낸 입체도형 (반지름 6 cm)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,

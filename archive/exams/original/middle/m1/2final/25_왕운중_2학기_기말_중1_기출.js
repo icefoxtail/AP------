@@ -553,7 +553,11 @@ window.questionBank = [
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
       "resolverEvidenceSha": "sha256:c1144eb8972a432f16fb293c0b4f5665c2a798b848cf8a2b16b5a44363cb0ab6",
-      "difficultyEvidenceSha": "sha256:f3af6e43e2d95d63fb63c2f07fa634a992a153025b8170e865243f2f1a2d1ce3"
+      "difficultyEvidenceSha": "sha256:f3af6e43e2d95d63fb63c2f07fa634a992a153025b8170e865243f2f1a2d1ce3",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 5cm인 구에서 중심을 지나는 서로 수직인 두 평면 사이의 4분의 1을 잘라 내고 남은 3/4 입체도형으로, 잘린 자리에 반원 모양의 단면 2개(색칠)가 한 축에서 만나고 반지름 5cm가 표시된 그림이다.",
+      "solutionImageCaption": "[ㄷ] 구의 1/4을 잘라낸 입체도형 (반지름 5 cm)",
+      "solutionImageSize": "medium"
     },
     {
       "id": 13,
