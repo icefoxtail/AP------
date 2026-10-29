@@ -505,7 +505,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:48e87eb6a0bcf8f51ba234854ad43a48225c4e86e68d14efa1a21579bc9313ff",
-      "difficultyEvidenceSha": "sha256:d219ca392b864febc7508d1651d429f027f2ec90fbaef2e42e16553e49282809"
+      "difficultyEvidenceSha": "sha256:d219ca392b864febc7508d1651d429f027f2ec90fbaef2e42e16553e49282809",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 도서관 이용자의 나이를 나타낸 줄기와 잎 그림이다. 줄기 1~6마다 잎을 괄호로 묶어 잎의 개수 2, 4, 5, 4, 3, 2를 아래에 썼다.",
+      "solutionImageCaption": "줄기마다 잎의 개수를 센 줄기와 잎 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 12,
@@ -549,7 +553,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d6d2951324c96cbcaa7482c433639153546f0a2365f13ccaeb4d8f2c1155aa7f",
-      "difficultyEvidenceSha": "sha256:813cc641b2f3c602dd626dc0ad1310100a93ef94a5704fa55d5f7d9c0055cb9c"
+      "difficultyEvidenceSha": "sha256:813cc641b2f3c602dd626dc0ad1310100a93ef94a5704fa55d5f7d9c0055cb9c",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 같은 줄기와 잎 그림에서 20대~60대 줄기마다 잎의 개수 4, 5, 4, 3, 2를 쓰고, 잎이 가장 많은 30대 줄기의 잎 다섯 개를 동그라미로 표시했다.",
+      "solutionImageCaption": "연령대별 잎의 개수를 비교한 줄기와 잎 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 13,
@@ -722,7 +730,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9d3797504924bb738b941422b5c7af245988b2c91853df3f22ab8b0c12dea543",
-      "difficultyEvidenceSha": "sha256:341f535fb1c1b8bb85fd0a63a77e9c07cc5119488cd873b8b3fa6df301ec2ae3"
+      "difficultyEvidenceSha": "sha256:341f535fb1c1b8bb85fd0a63a77e9c07cc5119488cd873b8b3fa6df301ec2ae3",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 자유투 성공 횟수 도수분포다각형이다. 많은 쪽에서 11~13회 계급(3명)을 큰 점으로, 9~11회 계급(10명)을 동그라미로 표시하고 두 계급의 합 13명을 괄호로 묶었다.",
+      "solutionImageCaption": "많은 쪽에서 3명, 13명까지 센 도수분포다각형",
+      "solutionImageSize": "medium"
     },
     {
       "id": 17,
@@ -766,7 +778,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3209df5bcd96e7619160e1b9a271671fd6152fc7965de01270d586a2fef1e1b9",
-      "difficultyEvidenceSha": "sha256:fb7b269fe23ed0275a315c1dd748adfe5d3cd8dd650adcf8399601835e77ef8d"
+      "difficultyEvidenceSha": "sha256:fb7b269fe23ed0275a315c1dd748adfe5d3cd8dd650adcf8399601835e77ef8d",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 오래 매달리기 기록 도수분포다각형이다. 기록이 큰 쪽의 60~70초(2명)를 큰 점으로, 50~60초(4명)를 동그라미로 표시하고 합 6명을 괄호로 묶었다.",
+      "solutionImageCaption": "상위 6명을 채우는 두 계급을 표시한 도수분포다각형",
+      "solutionImageSize": "medium"
     },
     {
       "id": 18,
@@ -810,7 +826,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d8cbbaf70bd00d082b4f67bd7dba4a5f1885099ebcc42ebbc3d3363bcf8fdf32",
-      "difficultyEvidenceSha": "sha256:72742cd40c1164a8ca9437bb5f7b3423814d6bbc82714695194845282e47bd0a"
+      "difficultyEvidenceSha": "sha256:72742cd40c1164a8ca9437bb5f7b3423814d6bbc82714695194845282e47bd0a",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 수학공부 시간의 상대도수 분포 다각형이다. 60분 이상인 세 계급(0.35, 0.15, 0.10)을 동그라미로 표시하고 합 0.60을 괄호로 묶었다.",
+      "solutionImageCaption": "60분 이상 세 계급의 상대도수 합을 나타낸 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 19,
