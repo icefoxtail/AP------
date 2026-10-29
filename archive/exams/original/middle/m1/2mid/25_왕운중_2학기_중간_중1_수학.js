@@ -328,7 +328,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동인 두 삼각형 ABC와 FED에서 AB=FE=10을 같은 눈금으로, ∠C=∠D=40°를 같은 호로 표시하고 DE=8, ∠E=110°, ∠F=30°를 나타낸 그림이다.",
+    "solutionImageCaption": "합동인 두 삼각형에서 AB=FE=10이고 ∠C=∠D=40°이므로 ∠F=180°-110°-40°=30°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,

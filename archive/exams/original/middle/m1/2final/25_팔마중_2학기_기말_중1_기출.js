@@ -460,16 +460,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q10-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q10-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:45107247151597cf7cb91253aee080eb33a271ea9c308462e81cb12b01b38c5b",
       "difficultyEvidenceSha": "sha256:83efa0c7a190b5ec8a8b8ce4a8e3abcb1520d52cee522ebc6dafda4f1aa5c857",
-      "solutionImageAlt": "반원 안의 이등변삼각형 ABC와 점 D, E, 중심 O를 표시하고 중심각 DOE가 120°임을 나타낸 그림",
-      "solutionImageCaption": "삼각형의 밑각과 반원의 중심각을 이용해 ∠DOE=120°를 확인한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 반원과 꼭지각 30°인 이등변삼각형 ABC를 그리고, 밑각 75°, 반지름 OA=OD=OE=OB, ∠AOD=∠EOB=30°, 중심각 ∠DOE=120°와 색칠한 부채꼴 DOE를 표시한 그림이다.",
+      "solutionImageCaption": "밑각 75°에서 ∠AOD=∠EOB=30°이므로 부채꼴 DOE의 중심각은 120°이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 11,
