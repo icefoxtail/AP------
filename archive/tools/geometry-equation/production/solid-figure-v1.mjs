@@ -809,8 +809,8 @@ function solveSolids(plan){
   const marks={rightAngles:[],equalLengths:[],angles:[]};
   if(plan.marks!==undefined){
     if(!isPlain(plan.marks))bad('SOLID_MARKS_INVALID');
-    onlyKeys(plan.marks,['rightAngles','equalLengths','angles'],'SOLID_MARKS_INVALID');
-    const used=new Set();
+    onlyKeys(plan.marks,['rightAngles','equalLengths','angles','equalSlant'],'SOLID_MARKS_INVALID');
+    const used=new Set(),tickCounts=new Set();// the tick counts of equal-length groups and of equal-slant groups are all different, so no two groups read as one
     const markId=(given,prefix,k)=>{const id=given??prefix+(k+1);if(typeof id!=='string'||!/^[a-zA-Z][a-zA-Z0-9-]{0,15}$/.test(id)||used.has(id))bad('SOLID_MARK_ID_INVALID:'+String(id).slice(0,24));used.add(id);return id;};
     const cosAngle=(a,v,b)=>{const u=unit(sub(a,v)),w=unit(sub(b,v));return Math.max(-1,Math.min(1,dot(u,w)));};
     const angleDeg=(a,v,b)=>Math.acos(cosAngle(a,v,b))*180/Math.PI;
@@ -832,12 +832,11 @@ function solveSolids(plan){
     }
     if(plan.marks.equalLengths!==undefined){
       if(!Array.isArray(plan.marks.equalLengths)||plan.marks.equalLengths.length>4)bad('SOLID_MARKS_INVALID');
-      const counts=new Set();
       for(const [k,g] of plan.marks.equalLengths.entries()){
         onlyKeys(g,['id','count','segments'],'SOLID_MARKS_INVALID');
         const id=markId(g.id,'eq',k),count=g.count??1;
         if(!Number.isInteger(count)||count<1||count>3)bad('SOLID_MARKS_INVALID');
-        if(counts.has(count))bad('SOLID_MARK_GROUP_AMBIGUOUS:'+id);counts.add(count);
+        if(tickCounts.has(count))bad('SOLID_MARK_GROUP_AMBIGUOUS:'+id);tickCounts.add(count);
         if(!Array.isArray(g.segments)||g.segments.length<2||g.segments.length>4)bad('SOLID_MARKS_INVALID');
         const segs=[];
         for(const pair of g.segments){
@@ -852,6 +851,25 @@ function solveSolids(plan){
         const ref=lengths[0];
         if(lengths.some(L=>Math.abs(L-ref)>1e-6*Math.max(1,ref)))bad('SOLID_MARK_LENGTH_MISMATCH:'+id);
         marks.equalLengths.push({id,count,segments:segs});
+      }
+    }
+    // equalSlant: true | {solid?,count?} | a list of those: the left and the right slant (silhouette) of a cone or cone frustum get the same ticks (the two slants of a cone of revolution are as long as each other)
+    if(plan.marks.equalSlant!==undefined){
+      const raw=plan.marks.equalSlant,list=raw===true?[{}]:Array.isArray(raw)?raw:[raw];
+      if(list.length<1||list.length>3)bad('SOLID_MARKS_INVALID');
+      marks.equalSlant=[];
+      const cones=solids.filter(s=>s.kind==='CONE'||s.kind==='CONE_FRUSTUM');
+      for(const [k,g] of list.entries()){
+        if(!isPlain(g))bad('SOLID_MARKS_INVALID');
+        onlyKeys(g,['id','solid','count'],'SOLID_MARKS_INVALID');
+        const id=markId(g.id,'es',k),count=g.count??1;
+        if(!Number.isInteger(count)||count<1||count>3)bad('SOLID_MARKS_INVALID');
+        if(tickCounts.has(count))bad('SOLID_MARK_GROUP_AMBIGUOUS:'+id);tickCounts.add(count);
+        if(g.solid!==undefined&&typeof g.solid!=='string')bad('SOLID_MARKS_INVALID');
+        const owner=g.solid!==undefined?cones.find(s=>s.id===g.solid):cones.length===1?cones[0]:undefined;
+        if(!owner)bad('SOLID_MARK_SLANT_UNSUPPORTED:'+String(g.solid??'').slice(0,12));
+        if(marks.equalSlant.some(x=>x.solid===owner.id))bad('SOLID_MARKS_INVALID');
+        marks.equalSlant.push({id,solid:owner.id,count});
       }
     }
     if(plan.marks.angles!==undefined){
@@ -1482,6 +1500,17 @@ function spec3d(plan,model,ctx){
       for(let i=0;i<g.count;i++){
         const shift=(i-(g.count-1)/2)*5,c=[mx+ux*shift,my+uy*shift];
         line(`${g.id}-${joinKeys([a,b])}-${i+1}`,'equal-mark',[c[0]-nx*5.5,c[1]-ny*5.5],[c[0]+nx*5.5,c[1]+ny*5.5],{mark:g.id,markEdge:joinKeys([a,b]),markIndex:i+1,markCount:g.count});
+      }
+    }
+  }
+  // equal slants: the same ticks on the left and the right silhouette line of the cone (found among the drawn lines, so the ticks sit on what is drawn)
+  for(const g of model.marks.equalSlant??[]){
+    for(const side of ['LEFT','RIGHT']){
+      const sil=prims.find(p=>p.t==='line'&&p.role==='silhouette'&&p.solid===g.solid&&p.side===side);
+      const dx=sil.x2-sil.x1,dy=sil.y2-sil.y1,l=Math.hypot(dx,dy),ux=dx/l,uy=dy/l,nx=-uy,ny=ux,mx=(sil.x1+sil.x2)/2,my=(sil.y1+sil.y2)/2;
+      for(let i=0;i<g.count;i++){
+        const shift=(i-(g.count-1)/2)*5,c=[mx+ux*shift,my+uy*shift];
+        line(`${g.id}-${g.solid}-${side.toLowerCase()}-${i+1}`,'slant-mark',[r6(c[0]-nx*5.5),r6(c[1]-ny*5.5)],[r6(c[0]+nx*5.5),r6(c[1]+ny*5.5)],{solid:g.solid,side,mark:g.id,markIndex:i+1,markCount:g.count});
       }
     }
   }

@@ -1003,3 +1003,23 @@ class NetSymbolsAndEdgeLabels(unittest.TestCase):
         self.assertEqual(O.net_edge_entries({'dims': [{'face': 'top', 'edge': 0, 'label': 'l'}]})[0]['label'], 'l')
         self.assertRaises(ValueError, O.net_edge_entries, {'edgeLabels': [{'face': 'top', 'edge': 0, 'text': '가나다라마바사아자차카타파'}]})
         self.assertRaises(ValueError, O.net_edge_entries, {'edgeLabels': [{'face': 'top', 'edge': 0, 'text': '밑 변 $'}]})
+
+
+class EqualSlantOfACone(unittest.TestCase):
+    """E28c: equalSlant groups re-derived from the plan"""
+
+    def solids(self, *specs):
+        return [O.build_solid({**spec, 'id': 's%d' % (i + 1)}) for i, spec in enumerate(specs)]
+
+    def test_groups_are_numbered_like_the_plan_and_default_to_the_only_cone(self):
+        cone = {'kind': 'CONE', 'radius': 3, 'height': 6}
+        frustum = {'kind': 'CONE_FRUSTUM', 'radius': 4, 'topRadius': 2, 'height': 5}
+        solids = self.solids(cone)
+        self.assertEqual(O.planned_slant_marks({'marks': {'equalSlant': True}}, solids), [('es1', 's1', 1)])
+        self.assertEqual(O.planned_slant_marks({'marks': {'equalSlant': {'count': 2}}}, solids), [('es1', 's1', 2)])
+        self.assertEqual(O.planned_slant_marks({}, solids), [])
+        both = self.solids(cone, frustum)
+        self.assertEqual(O.planned_slant_marks({'marks': {'equalSlant': [{'solid': 's1'}, {'solid': 's2', 'count': 3, 'id': 'f'}]}}, both), [('es1', 's1', 1), ('f', 's2', 3)])
+        for bad in (True, {'solid': 's9'}):
+            self.assertRaises(ValueError, O.planned_slant_marks, {'marks': {'equalSlant': bad}}, both)
+        self.assertRaises(ValueError, O.planned_slant_marks, {'marks': {'equalSlant': True}}, self.solids({'kind': 'CYLINDER', 'radius': 2, 'height': 3}))

@@ -1543,3 +1543,59 @@ test('E28c: a prism net with a length, a symbol and a word at its edges composes
   await failingAudit(other,svg,'SOLID_DIM_WORD_MISMATCH');
   await failingAudit(plan,svg.replace(len,len.replace(/translate\(([\d.]+) ([\d.]+)\)/,'translate(5 5)')),'SOLID_DIM_FAR_FROM_SEGMENT');
 });
+
+// --- E28c-3: the two slants of a cone carry the same ticks (marks.equalSlant) --------------------------------------------------------------------------
+test('E28c: equalSlant puts the same ticks on both slants of a cone or cone frustum; refusals have their own codes',()=>{
+  const cone={kind:'CONE',radius:3,height:6},frustum={kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5};
+  const marks=(solids,equalSlant,more={})=>solveSolidFigure(figure({solids,marks:{equalSlant,...more}})).marks;
+  assert.deepEqual(marks([cone],true).equalSlant,[{id:'es1',solid:'s1',count:1}]);
+  assert.deepEqual(marks([frustum],{count:2}).equalSlant,[{id:'es1',solid:'s1',count:2}]);
+  assert.deepEqual(marks([cone,frustum],[{solid:'s1'},{solid:'s2',count:3,id:'f'}]).equalSlant,[{id:'es1',solid:'s1',count:1},{id:'f',solid:'s2',count:3}]);
+  assert.equal('equalSlant' in solveSolidFigure(figure({solids:[cone],dims:[{height:true}]})).marks,false);
+  const bad=(solids,equalSlant,expected,more={})=>assert.throws(()=>solveSolidFigure(figure({solids,marks:{equalSlant,...more}})),code(expected),expected);
+  bad([{kind:'CYLINDER',radius:2,height:3}],true,'SOLID_MARK_SLANT_UNSUPPORTED');
+  bad([cone,frustum],true,'SOLID_MARK_SLANT_UNSUPPORTED');// two cones and no solid id
+  bad([cone],{solid:'s9'},'SOLID_MARK_SLANT_UNSUPPORTED:s9');
+  bad([cone],{solid:3},'SOLID_MARKS_INVALID');
+  bad([cone],false,'SOLID_MARKS_INVALID');
+  bad([cone],[],'SOLID_MARKS_INVALID');
+  bad([cone],{count:4},'SOLID_MARKS_INVALID');
+  bad([cone],{count:0},'SOLID_MARKS_INVALID');
+  bad([cone],{count:1.5},'SOLID_MARKS_INVALID');
+  bad([cone],{size:2},'SOLID_MARKS_INVALID');
+  bad([cone],[{},{}],'SOLID_MARK_GROUP_AMBIGUOUS');// one cone twice (the same count)
+  bad([cone,frustum],[{solid:'s1'},{solid:'s2'}],'SOLID_MARK_GROUP_AMBIGUOUS:es2');// two cones with the same ticks read as four equal slants
+  bad([cone],[{solid:'s1',count:1},{solid:'s1',count:2}],'SOLID_MARKS_INVALID');
+});
+test('E28c: equal slant ticks and equal-length ticks never share a count, so no two groups read as one',()=>{
+  const solids=[cuboid(),{kind:'CONE',radius:3,height:6}];
+  assert.throws(()=>solveSolidFigure(figure({solids,marks:{equalLengths:[{count:1,segments:['FG','HE']}],equalSlant:true}})),code('SOLID_MARK_GROUP_AMBIGUOUS:es1'));
+  const m=solveSolidFigure(figure({solids,marks:{equalLengths:[{count:1,segments:['FG','HE']}],equalSlant:{count:2}}})).marks;
+  assert.equal(m.equalLengths[0].count,1);assert.equal(m.equalSlant[0].count,2);
+});
+test('E28c: slant ticks are drawn on the silhouettes at their middle and the observer reads them back from the final SVG',async()=>{
+  const plan=figure({solids:[{kind:'CONE',radius:3,height:6},{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],marks:{equalSlant:[{solid:'s1',count:1},{solid:'s2',count:2}]},solidCaption:{text:'원뿔과 원뿔대'}});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-role="slant-mark"/g)??[]).length,6);// 1 + 1 for the cone, 2 + 2 for the frustum
+  assert.match(svg,/<line id="es1-s1-left-1" data-role="slant-mark" data-solid="s1" data-side="LEFT" data-mark="es1" data-mark-index="1" data-mark-count="1" stroke="#111"/);
+  assert.match(svg,/<line id="es2-s2-right-2" data-role="slant-mark" data-solid="s2" data-side="RIGHT" data-mark="es2" data-mark-index="2" data-mark-count="2" stroke="#111"/);
+  // the ticks stand on the drawn silhouette lines: each tick's centre is on its slant (within a pixel) and the slant stays unmarked elsewhere
+  const num=(el,name)=>Number(el.match(new RegExp(`${name}="([-\\d.]+)"`))[1]);
+  const sil=svg.match(/<line id="s1-side-left"[^>]*\/>/)[0],tick=svg.match(/<line id="es1-s1-left-1"[^>]*\/>/)[0];
+  const cx=(num(tick,'x1')+num(tick,'x2'))/2,cy=(num(tick,'y1')+num(tick,'y2'))/2;
+  assert.ok(Math.abs(cx-(num(sil,'x1')+num(sil,'x2'))/2)<0.01&&Math.abs(cy-(num(sil,'y1')+num(sil,'y2'))/2)<0.01);
+  // tampering: a tick moved along its slant, one made too long, a missing tick, a tick on the wrong solid or side, a silhouette bent so the slants differ
+  await failingAudit(plan,svg.replace(tick,tick.replace(/y1="([-\d.]+)"/,(all,y)=>`y1="${Number(y)+9}"`)),'SOLID_SLANT_MARK_');
+  const moved=svg.match(/<line id="es2-s2-left-1"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(moved,moved.replace(/(x1|x2)="([-\d.]+)"/g,(all,k,x)=>`${k}="${Number(x)+6}"`)),'SOLID_SLANT_MARK_NOT_AT_MIDDLE');
+  const longer=svg.match(/<line id="es2-s2-right-1"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(longer,longer.replace(/x2="([-\d.]+)"/,(all,x)=>`x2="${Number(x)+8}"`)),'SOLID_SLANT_MARK_');
+  await failingAudit(plan,svg.replace(`<g data-layer="40">${tick}</g>`,''),'SOLID_SLANT_MARK_SET_MISMATCH');
+  await failingAudit(plan,svg.replace(tick,tick.replace('data-side="LEFT"','data-side="RIGHT"')),'SOLID_SLANT_MARK_');
+  await failingAudit(plan,svg.replace(tick,tick.replace('data-solid="s1"','data-solid="s2"')),'SOLID_SLANT_MARK_');
+  const right=svg.match(/<line id="s1-side-right"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(right,right.replace(/y2="([-\d.]+)"/,(all,y)=>`y2="${Number(y)-14}"`)),'SOLID_');
+  // the plan against another figure: more ticks than drawn, and a figure without the marks
+  await failingAudit(figure({solids:[{kind:'CONE',radius:3,height:6},{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],marks:{equalSlant:[{solid:'s1',count:2},{solid:'s2',count:3}]},solidCaption:{text:'원뿔과 원뿔대'}}),svg,'SOLID_SLANT_MARK_COUNT');
+  await failingAudit(figure({solids:[{kind:'CONE',radius:3,height:6},{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],marks:{equalSlant:[{solid:'s1',count:1}]},solidCaption:{text:'원뿔과 원뿔대'}}),svg,'SOLID_SLANT_MARK_SET_MISMATCH');
+});

@@ -849,6 +849,7 @@ def audit_solids(plan, ctx):
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
     check_dim_lines(plan, ctx)
     check_axes_and_text_labels(plan, ctx)
+    check_slant_marks(plan, ctx)
 
 
 def solids_with_ids(plan):
@@ -1650,6 +1651,68 @@ def check_axes_and_text_labels(plan, ctx):
             dist = _box_seg_dist(box, seg[0], seg[1])
             if dist > TEXT_NEAR_SEGMENT: errors.append('SOLID_TEXT_LABEL_FAR_FROM_TARGET:' + lid)
             if dist < 1.0: errors.append('SOLID_TEXT_LABEL_ON_TARGET:' + lid)
+
+
+# --- equal slants of a cone (marks.equalSlant): the same ticks on the left and right silhouette ------------------------------------------------------------
+SLANT_TICK = 11.0   # px: a tick is this long, perpendicular to the slant, 5 px apart when there are several, centred on the slant's middle
+
+
+def planned_slant_marks(plan, solids):
+    """[(mark id, solid id, count)]: equalSlant is true, one {solid?,count?} or a list of those; a group with no solid is the only cone or cone frustum"""
+    raw = (plan.get('marks') or {}).get('equalSlant')
+    if raw is None: return []
+    items = [{}] if raw is True else raw if isinstance(raw, list) else [raw]
+    cones = [x for x in solids if x['kind'] in ('CONE', 'CONE_FRUSTUM')]
+    out = []
+    for k, g in enumerate(items):
+        owner = next((x for x in cones if x['id'] == g.get('solid')), None) if g.get('solid') is not None else (cones[0] if len(cones) == 1 else None)
+        if owner is None: raise ValueError('SOLID_MARK_SLANT_UNSUPPORTED')
+        out.append((g.get('id') or 'es%d' % (k + 1), owner['id'], g.get('count', 1)))
+    return out
+
+
+def check_slant_marks(plan, ctx):
+    errors, root = ctx['errors'], ctx['root']
+    try: planned = planned_slant_marks(plan, ctx.get('solids') or [])
+    except (ValueError, KeyError, TypeError, AttributeError) as error:
+        errors.append('SOLID_SLANT_MARK_PLAN_UNRESOLVED:' + str(error)[:60])
+        return
+    ticks = {}
+    for el in root.iter(NS + 'line'):
+        if el.get('data-role') == 'slant-mark': ticks.setdefault((el.get('data-mark'), el.get('data-solid'), el.get('data-side')), []).append(el)
+    want_keys = {(mid, sid, side) for mid, sid, _ in planned for side in ('LEFT', 'RIGHT')}
+    if set(ticks) != want_keys: errors.append('SOLID_SLANT_MARK_SET_MISMATCH')
+    for mid, sid, count in planned:
+        sils = {}
+        for side in ('LEFT', 'RIGHT'):
+            sil = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'silhouette' and e.get('data-solid') == sid and e.get('data-side') == side]
+            if len(sil) != 1:
+                errors.append('SOLID_SLANT_MARK_SILHOUETTE_MISSING:%s:%s' % (sid, side))
+                continue
+            sils[side] = ((_num(sil[0], 'x1'), _num(sil[0], 'y1')), (_num(sil[0], 'x2'), _num(sil[0], 'y2')))
+        if len(sils) == 2:
+            lengths = [math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in sils.values()]
+            # the two slants of a cone of revolution are as long as each other: read from the drawn silhouette lines
+            if abs(lengths[0] - lengths[1]) > 2 * POS_TOL: errors.append('SOLID_SLANT_MARK_UNEQUAL:%s:%.2f:%.2f' % (sid, lengths[0], lengths[1]))
+        for side, (a, b) in sils.items():
+            els = ticks.get((mid, sid, side), [])
+            if sorted(int(e.get('data-mark-index') or 0) for e in els) != list(range(1, count + 1)) or any(int(e.get('data-mark-count') or 0) != count for e in els):
+                errors.append('SOLID_SLANT_MARK_COUNT:%s:%s' % (mid, side))
+                continue
+            dx, dy = b[0] - a[0], b[1] - a[1]
+            L = math.hypot(dx, dy)
+            ux, uy = dx / L, dy / L
+            mx, my = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
+            for el in els:
+                i = int(el.get('data-mark-index'))
+                p, q = (_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))
+                tx, ty = p[0] - q[0], p[1] - q[1]
+                if abs(tx * ux + ty * uy) > 1e-3 * max(1.0, math.hypot(tx, ty)): errors.append('SOLID_SLANT_MARK_NOT_PERPENDICULAR:%s:%s' % (mid, side))
+                if abs(math.hypot(tx, ty) - SLANT_TICK) > POS_TOL: errors.append('SOLID_SLANT_MARK_SIZE:%s:%s' % (mid, side))
+                shift = (i - 1 - (count - 1) / 2) * 5.0   # i counts from 1
+                want = (mx + ux * shift, my + uy * shift)
+                c = ((p[0] + q[0]) / 2, (p[1] + q[1]) / 2)
+                if math.hypot(c[0] - want[0], c[1] - want[1]) > POS_TOL: errors.append('SOLID_SLANT_MARK_NOT_AT_MIDDLE:%s:%s' % (mid, side))
 
 
 # --- a sphere cut by planes through its centre (cut:{kind,facing?}) -----------------------------------------------------------------------------
