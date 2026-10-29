@@ -127,14 +127,14 @@ test('q22: the square in a zoomed window with coordinates and side lengths rende
 const LINES={capability:'rational-spike-v1',graphPlan:{family:'rational',numerator:['24','0'],denominator:['0','1'],sourceDomain:{kind:'ALL_REALS'},domain:[-24,24],viewport:[-24,24,-24,24],
   displayWindow:[-9,13,-17,13],formulaLabel:'y=24/x',axisTickValues:{x:[],y:[]},
   overlays:{lines:[{id:'h',slope:'-1/2',intercept:'0'},{id:'g',slope:'3/2',intercept:'0',label:'y=ax'},{id:'d',slope:'-7/2',intercept:'0',label:'y=cx'},{id:'v',x:'4'}],
-    points:[{id:'A',curveX:'4',coordinates:true},{id:'B',intersect:['h','v'],coordinates:true},{id:'C',intersect:['d','v'],coordinates:true},{id:'O',x:'0',y:'0'}],
+    points:[{id:'A',curveX:'4',coordinates:true},{id:'B',intersect:['h','v'],coordinates:true},{id:'C',intersect:['d','v']},{id:'O',x:'0',y:'0'}],
     polygons:[{id:'tAC',points:['O','A','C'],fill:'LIGHT'},{id:'tAB',points:['O','A','B'],fill:'MEDIUM'}],segments:[{id:'sOA',from:'O',to:'A'},{id:'sOC',from:'O',to:'C'}]}},
   pointNames:{A:'A',B:'B',C:'C',O:'O'},caption:'직선 x=4 위의 세 점 A, B, C와 삼각형 AOB, AOC'};
 
 test('q20: four lines (two steep ones through the origin) get their equations beside them, next to a polygon edge drawn over x=4',{timeout:600000},async()=>{
   const svg=await render(LINES,'lines',{sourcePath:'archive/exams/original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.js',ordinal:20});
   for(const id of ['h','g','d','v'])assert.ok(svg.includes(`id="overlay-line-${id}-equation"`),id);
-  for(const id of ['A','B','C'])assert.ok(svg.includes(`id="${id}-coordinates"`),id);
+  for(const id of ['A','B'])assert.ok(svg.includes(`id="${id}-coordinates"`),id);assert.equal(svg.includes('id="C-coordinates"'),false);
 });
 
 test('q19: a trigonometric graph with Korean axis titles renders',{timeout:600000},async()=>{
