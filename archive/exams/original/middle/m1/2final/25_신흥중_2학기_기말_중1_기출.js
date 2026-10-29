@@ -637,7 +637,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 10장 이상인 학생의 수부터 구하고 남은 학생 수에서 5장 미만을 뺀다.\n\n전체 학생이 $30$명이므로 10장 이상인 학생은\n$30\\times\\dfrac{70}{100}=21$명이다.\n\n10장 미만인 학생은\n$30-21=9$명이다.\n\n그중 $0$장 이상 $5$장 미만인 학생은 $3$명이므로\n$5$장 이상 $10$장 미만인 학생은\n$9-3=6$명이다.\n\n따라서 정답은 ①이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q15.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q15-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
     "crossConceptKeys": [],
@@ -647,9 +647,9 @@ window.questionBank = [
     "sourcePage": 4,
     "sourceQuestionNo": "15",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "모르는 도수 채우기: 10장 이상 = 21명, 10장 미만 = 9명, 5~10장 = 9−3",
-    "solutionImageCaption": "6명"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 칭찬 스티커 수의 히스토그램. 0~5장, 5~10장 막대는 연하게, 10장 이상인 10~15, 15~20, 20~25장 세 막대는 진하게 칠해 전체 30명 중 10장 이상 학생을 구별한 그림",
+    "solutionImageCaption": "10장 이상인 세 계급을 진하게 표시한 칭찬 스티커 수 히스토그램"
   },
   {
     "id": 16,
@@ -682,7 +682,7 @@ window.questionBank = [
     "answer": "③, ⑤",
     "solution": "[키포인트] 히스토그램에서는 막대의 너비가 계급의 크기이고 막대의 높이가 도수이다. '몇 번째로 많이'는 오른쪽 계급부터 센다.\n\n그림의 계급은 $0$ 이상 $10$ 미만부터 $60$ 이상 $70$ 미만까지 7개이고, 계급의 크기는 모두 $10\\rm\\,km$이다.\n왼쪽부터 도수는 $2,5,8,4,2,3,1$명이다.\n\n① 계급이 7개이므로 참이다.\n② 계급 너비가 $10\\rm\\,km$이므로 참이다.\n③ $20\\rm\\,km$ 미만은 앞 두 계급이므로 $2+5=7$명이다. 8명이라는 설명은 거짓이다.\n④ 가장 작은 도수는 $1$명이며 $60$ 이상 $70$ 미만 계급이므로 참이다.\n⑤ 거리 순서로 가장 큰 계급에 1명, 그다음 계급인 $50$ 이상 $60$ 미만에 3명이 있다. 따라서 4번째로 많이 걸은 회원은 두 번째 계급에 속하고 그 계급의 도수는 3명이다. 2명이 아니므로 거짓이다.\n\n따라서 정답은 ③, ⑤이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q16.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q16-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q16-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -692,9 +692,9 @@ window.questionBank = [
     "sourcePage": 4,
     "sourceQuestionNo": "16",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "두 조건 재검토: 20 km 미만 = 2+5, 20 km 미만 = 7명, 4번째 큰 기록",
-    "solutionImageCaption": "50~60 km: 3명"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 걸은 거리의 히스토그램(도수 2, 5, 8, 4, 2, 3, 1명). 20 km 미만인 왼쪽 두 막대(2명, 5명)와 큰 쪽부터 센 오른쪽 두 막대(1명, 3명)를 진하게 표시한 그림",
+    "solutionImageCaption": "20 km 미만 계급과 큰 쪽부터 세는 계급을 진하게 표시한 히스토그램"
   },
   {
     "id": 17,
@@ -727,7 +727,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 5번째로 큰 기록이 어느 계급에 속하는지 오른쪽부터 누적 도수를 세고, 그 계급의 상대도수를 백분율로 바꾼다.\n\n그래프에서 $0$ 이상 $10$ 미만부터 $40$ 이상 $50$ 미만까지 도수는 차례로 $2,3,5,6,4$명이다.\n전체 학생 수는 $2+3+5+6+4=20$명이다.\n\n가장 큰 기록인 $40$개 이상 $50$개 미만 계급에 4명이 있다. 따라서 1번째부터 4번째까지의 학생이 이 계급에 속하고, 5번째 학생은 바로 왼쪽의 $30$개 이상 $40$개 미만 계급에 속한다.\n\n따라서 $a=30$, $b=40$이다. 이 계급의 도수는 6명이므로\n$c=\\dfrac6{20}\\times100=30$이다.\n\n$a+b+c=30+40+30=100$이다.\n\n따라서 정답은 ①이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q17.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q17-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q17-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -737,9 +737,9 @@ window.questionBank = [
     "sourcePage": 4,
     "sourceQuestionNo": "17",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "5번째로 많은 기록: 40~50 계급에 4명, 다음은 30~40 계급, 그 계급 6/20 = 30%",
-    "solutionImageCaption": "30+40+30=100"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 팔 굽혀 펴기 기록의 히스토그램과 도수분포다각형(도수 2, 3, 5, 6, 4명). 큰 기록 쪽의 30~40개(6명), 40~50개(4명) 두 막대를 진하게 표시해 5번째 학생의 계급을 찾게 한 그림",
+    "solutionImageCaption": "큰 쪽의 두 계급을 진하게 표시한 히스토그램과 도수분포다각형"
   },
   {
     "id": 18,
