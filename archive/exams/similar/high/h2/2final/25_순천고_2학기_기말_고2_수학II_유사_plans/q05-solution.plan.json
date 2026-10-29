@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$x=0$ 또는 $x=4$이다.",
+  "caption": "포물선 y=−x²+5x와 직선 y=x는 x=0, 4에서 만나고 그 사이에서 포물선이 위쪽이다. 사이의 넓이를 칠했다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "5",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "-x^2+5x",
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "k",
+        "slope": "1",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "4"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "k",
+        "from": "0",
+        "to": "4",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "id": "V",
+        "x": 2.5,
+        "y": 6.25
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "5/2",
+        "25/4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q05-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q05-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q05-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q05-solution.svg"
+  }
+}

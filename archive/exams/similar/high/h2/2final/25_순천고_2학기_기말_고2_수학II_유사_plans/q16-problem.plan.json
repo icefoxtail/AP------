@@ -1,0 +1,87 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "곡선 $f(x)=x^2(4-x)$가 $x$축과 만나는 두 점",
+  "caption": "곡선 y=f(x)와 x축이 원점 O와 점 A에서 만나고, 곡선 위의 점 P에서 x축에 내린 수선의 발 H를 나타낸 그림이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "4",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1.5,
+      5.5,
+      -3,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2"
+        },
+        {
+          "id": "H",
+          "axis": "x",
+          "value": "2"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PH",
+          "from": "P",
+          "to": "H",
+          "dashed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "P",
+            "O",
+            "H"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "pointNames": {
+      "P": "P",
+      "H": "H",
+      "O": "O",
+      "A": "A"
+    }
+  },
+  "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q16.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q16-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q16-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q16-problem.svg"
+  }
+}
