@@ -421,7 +421,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:6a1ac5b0d18e7cefcbc5e4f87b0c7e671d0bc2cab9df5245fab7db62239c2904",
-    "difficultyEvidenceSha": "sha256:224c7d2b1634015fb7a6210dfdbd5e39967d4c21cef5daeb42f2d08ff7a63683"
+    "difficultyEvidenceSha": "sha256:224c7d2b1634015fb7a6210dfdbd5e39967d4c21cef5daeb42f2d08ff7a63683",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 XOY와 반직선 PQ 위에 작도한 같은 크기의 각 A'PB'이다. 같은 반지름의 호 OA, OB, PA', PB'와 옮긴 길이 AB, A'B'(점선)를 같은 표식으로 나타냈다. 문제 그림의 작도 기호를 작도 순서대로 ④(O 중심 호), ⑤(P 중심 호), ②(AB 길이 재기), ①(B' 중심 호), ③(반직선 PA')에 붙였다.",
+    "solutionImageCaption": "각을 옮기는 작도 결과: 작도 순서는 ④ → ⑤ → ② → ① → ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,

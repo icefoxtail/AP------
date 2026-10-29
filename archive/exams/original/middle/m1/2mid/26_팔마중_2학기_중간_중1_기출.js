@@ -96,7 +96,11 @@ window.questionBank = [
     "imageStatus": "not_required",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 A, B, C, D와 AB=BC 눈금, 그리고 A에서 오른쪽으로 향하는 반직선 AB와 D에서 왼쪽으로 향하는 반직선 DC가 두 그림으로 나란히 보인다. 각 반직선 위에 \"반직선 AB\", \"반직선 DC\"라고 이름을 적었다.",
+    "solutionImageCaption": "반직선 AB와 DC는 시작점과 방향이 모두 다르다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -501,7 +505,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 ∠XOY와 오른쪽 반직선 PQ 위의 같은 크기의 각을 나란히 놓고, 같은 반지름의 호(㉠, ㉢), 두 교점 사이의 거리를 재어 옮긴 호(㉡, ㉣), 마지막 반직선(㉤)을 문제 그림의 작도 기호로 표시한 그림이다.",
+    "solutionImageCaption": "㉠~㉤은 문제 그림의 작도 기호이며 작도 순서는 ㉠ → ㉢ → ㉡ → ㉣ → ㉤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,

@@ -201,7 +201,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: AD와 BC가 평행하고 점 A, B에서 직각인 사다리꼴 ABCD에 대각선 AC, BD가 점 O에서 만난다. AB⊥BC이므로 점 A에서 BC에 내린 수선의 발이 B임을 보여 준다. 수선 AB는 굵은 빨간 선으로 강조했다.",
+    "solutionImageCaption": "AD∥BC이고 ∠B=90°이므로 점 A에서 BC에 내린 수선의 발은 B이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -267,7 +271,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 점 Q와 l 밖의 점 P에서 같은 반지름의 호를 그려 QA=QB=PC=PD이고, 각 AQB와 각 CPD가 같은 호 표시로 크기가 같음을 보여 준다. 각 호와 직선 옆의 ㉠~㉥은 문제 그림의 작도 기호이다.",
+    "solutionImageCaption": "같은 반지름의 호로 PC=PD=QA=QB이고 ∠AQB=∠CPD이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -397,7 +405,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O인 원에서 45° 부채꼴의 호가 3cm이고, 135° 부채꼴을 45°씩 세 부분으로 나누면 각 호가 3cm로 같음을 보여 준다.",
+    "solutionImageCaption": "135°는 45°의 3배이므로 호의 길이도 3cm의 3배이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -533,7 +545,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체를 네 모서리의 중점 M, N, P, Q를 지나는 평면으로 잘라 낸 입체이다. 절단면 MNPQ는 직사각형으로 칠했고, 모서리 MQ는 굵은 선, MQ와 꼬인 위치에 있는 모서리 7개는 빨간색이며 보이지 않는 모서리는 점선이다.",
+    "solutionImageCaption": "MQ(굵은 선)와 꼬인 위치인 모서리 7개를 빨간색으로 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -1007,7 +1023,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB인 반원 O 위의 두 점 C, D에서 OC와 BD가 평행이다. 보조선 OD(점선)를 그어 ∠AOC=∠OBD=x, OB=OD, ∠BOD=180°-2x를 표시했다. 호 AC는 10cm, 호 BD는 16cm이다.",
+    "solutionImageCaption": "평행선과 이등변삼각형으로 구한 중심각의 관계",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
