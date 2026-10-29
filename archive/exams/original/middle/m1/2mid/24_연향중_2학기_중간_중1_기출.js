@@ -285,7 +285,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 전개도를 접은 정육면체 세 개에서 모서리 AB를 굵은 검정으로 두고, 평행한 모서리 ML·DE·CF, 만나는 모서리 BM·BC·AL·AF, 꼬인 위치의 모서리 CD·DM·EF·EL을 각각 빨간색으로 나타낸 그림",
+    "solutionImageCaption": "접은 정육면체에서 AB와 평행한, 만나는, 꼬인 위치의 모서리를 나눠 보인 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -446,7 +450,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=8cm, BC=9cm, ∠C=40°를 모두 만족하는 삼각형 ABC 두 개를 나란히 그렸다. 왼쪽은 점 A가 C에 가까운 납작한 삼각형, 오른쪽은 A가 C에서 먼 삼각형이다.",
+    "solutionImageCaption": "같은 조건에서 점 A의 위치가 두 가지이므로 삼각형이 하나로 정해지지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -486,7 +494,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 DEF에서 변 DE는 5cm, DF는 8cm, 각 E는 70도, 각 F는 40도로 표시되어 있고, 길이를 알 수 없는 변 EF는 빨간 굵은 선과 물음표로 나타냈다.",
+    "solutionImageCaption": "합동인 삼각형에서 DE, DF, ∠E, ∠F는 대응하는 값으로 알 수 있지만 EF는 주어진 값이 없다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -563,7 +575,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: B, C, D가 한 직선 위에 있고 정삼각형 ABC와 정삼각형 ECD가 점 C에서 만난다. AC와 BC에 눈금 한 개, CD와 CE에 눈금 두 개가 있고, 점 C에서 각 ACD와 각 BCE가 모두 120도로 표시되어 있다.",
+    "solutionImageCaption": "AC=BC, CD=CE이고 ∠ACD=∠BCE=120°이므로 두 변과 그 끼인각이 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -604,7 +620,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 선생님 나이 20개를 줄기별로 작은 수부터 늘어놓은 줄기와 잎 그림에서, 문제의 a, b, c가 놓인 20대 셋째 잎, 30대 여섯째 잎, 40대 넷째 잎에 동그라미를 친 그림",
+    "solutionImageCaption": "원자료를 줄기별로 정렬해 a, b, c가 놓인 잎을 동그라미로 표시한 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -761,7 +781,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 130cm부터 180cm까지 계급 크기 10cm인 도수분포 히스토그램에서 150cm 미만인 130~140, 140~150 두 계급을 짙게 칠해 괄호로 묶고, 도수가 비어 있던 140~150 계급은 값 없이 점선 막대로 나타낸 그림",
+    "solutionImageCaption": "150cm 미만인 학생은 130~140, 140~150 두 계급에 속한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -796,7 +820,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, B, C, D에서 AB와 BC는 같은 길이(눈금 한 개)이고 BC는 6cm이다. 치수선으로 AC=2x, CD=2x(눈금 두 개), BD=3x, AD=4x가 표시되어 있다.",
+    "solutionImageCaption": "AB=x라 하면 BD=3x, AD=4x이고 C가 AD의 중점이므로 AC=CD=2x, BC=x=6cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -831,7 +859,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에 대각선 AC를 굵게 그렸다. AD∥BC로 생기는 엇각 ∠BCA와 ∠DAC에는 호 한 개, AB∥CD로 생기는 엇각 ∠BAC와 ∠DCA에는 호 두 개를 표시해 각각 같음을 보였고, 변 AC가 두 삼각형에 공통임을 나타냈다.",
+    "solutionImageCaption": "평행선의 엇각 ∠BCA=∠DAC, ∠BAC=∠DCA와 공통인 변 AC로 △ABC≡△CDA(ASA)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -866,6 +898,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 종이 ABCD를 선분 EF(빨간 선)를 접는 선으로 접은 그림이다. ∠EGF는 120도이고, ∠GEF, ∠FEC, ∠GFE에는 같은 두 겹 호를, 선분 GE와 GF에는 같은 눈금을 표시해 삼각형 EGF가 GE=GF인 이등변삼각형임을 나타냈다.",
+    "solutionImageCaption": "접힌 각 ∠GEF=∠FEC와 엇각 ∠GFE=∠FEC로 ∠GEF=∠GFE이므로 삼각형 EGF는 이등변삼각형이다.",
+    "solutionImageSize": "medium"
   }
 ];

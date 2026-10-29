@@ -39,7 +39,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 l, m이 만나 이루는 각 61°와 그 보각 x=119°, m에 수직인 선과 l 사이의 각 y=29°를 각 표식으로 나타낸 그림",
+    "solutionImageCaption": "61°의 보각이 x=119°이고, m에 수직인 선과 l이 이루는 각이 y=29°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -119,7 +123,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 윗변 AD=3cm, 아랫변 BC=5cm, 넓이 16cm²인 사다리꼴 ABCD에서 BC에 수직인 변 CD를 높이 h로 강조하고 두 직각을 표시한 그림",
+    "solutionImageCaption": "CD가 BC에 수직이므로 D와 변 BC 사이의 거리는 사다리꼴의 높이 h이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -159,7 +167,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=16일 때 수직선 위에 A=0, E=6, C=8, D=12, B=16의 위치를 나타내어 EC=2, CD=4, AE=ED임을 눈금 값으로 읽게 한 그림",
+    "solutionImageCaption": "AB=16이면 C는 AB의 중점(8), D는 CB의 중점(12), E는 AD의 중점(6)이므로 EC=2, CD=4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -276,7 +288,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: PO∥AB인 직사각형 종이를 QR로 접은 그림에서 ∠PQR=116°와 그 보각 64°, 접힌 AB와 이루는 각 a, b와 평행 표시를 나타낸 그림",
+    "solutionImageCaption": "PO∥AB이므로 QR과 수평선이 이루는 예각은 116°의 보각 64°이고, 접힌 AB 때문에 각 a, b가 생긴다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -393,7 +409,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:da9945725b7a2b3bd447d48f26688a9b65475c2ad140b1d1cf7f1909211cc3fa",
-    "difficultyEvidenceSha": "sha256:adbaf5d720c945b803c9c3eac444aa2a4f4a2750d5d72368e86afc1b7f17b263"
+    "difficultyEvidenceSha": "sha256:adbaf5d720c945b803c9c3eac444aa2a4f4a2750d5d72368e86afc1b7f17b263",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행선 작도 그림: 직선 m 위의 C를 중심으로 한 호가 D, E를 잡고 같은 반지름으로 P를 중심으로 F, G를 잡아 CD=CE=PF=PG, DE=FG와 엇각 ∠DCE=∠FPG를 표시한 그림",
+    "solutionImageCaption": "같은 반지름과 DE=FG로 엇각 ∠DCE=∠FPG를 옮겨 l∥m이 되는 작도이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
