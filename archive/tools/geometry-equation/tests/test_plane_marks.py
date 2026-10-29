@@ -534,4 +534,16 @@ class SegmentEmphasisTests(unittest.TestCase):
         with self.assertRaises(ValueError):build(spec_of(self.points,[{'id':'q','kind':'EQUATION_LABEL','text':'x','at':[1.0,1.0],'emphasis':'BOLD'}]))
 
 
+class AngleNameLabelTests(unittest.TestCase):
+    """E16: an angle named by one letter (the angle A) as well as by up to four."""
+    def test_one_letter_and_longer_names_are_accepted(self):
+        for name in ('A','ABC','A1','AB12'):
+            label=mark_label('a-label','a',name,'NAME',(10.0,10.0),{})
+            self.assertEqual(label['text'],'∠'+name);self.assertEqual(label['tex'],'\\angle '+name)
+    def test_bad_names_are_refused(self):
+        for name in ('','a','AbC','ABCDE','A B','1A'):
+            with self.assertRaises(ValueError,msg=name) as caught:mark_label('a-label','a',name,'NAME',(10.0,10.0),{})
+            self.assertEqual(str(caught.exception),'ANGLE_LABEL_NAME_INVALID')
+
+
 if __name__=='__main__':unittest.main()

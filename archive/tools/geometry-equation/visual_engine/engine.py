@@ -38,7 +38,8 @@ def mark_label(label_id,target,text,label_kind,at,extra,unit=None):
     if label_kind=='TEXT':
         return {'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':text,'layoutText':text,'math':False,'bindText':True,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
     if label_kind=='NAME':
-        if not re.fullmatch(r'[A-Z][A-Z0-9]{1,3}',text):raise ValueError('ANGLE_LABEL_NAME_INVALID')
+        # One capital letter (the angle A written as the letter alone) or up to four letters/digits (ABC -> the angle ABC).
+        if not re.fullmatch(r'[A-Z][A-Z0-9]{0,3}',text):raise ValueError('ANGLE_LABEL_NAME_INVALID')
         plain='∠'+text;markup=html.escape(plain);tex='\\angle '+text
     elif label_kind in ('DEGREE','MATH'):
         tree=Expr('degree','',(parse(text),)) if label_kind=='DEGREE' else parse(text)
