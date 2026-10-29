@@ -722,8 +722,8 @@ window.questionBank = [
       "$900^\\circ$",
       "$1080^\\circ$"
     ],
-    "answer": "③",
-    "solution": "그림의 선분을 따라 생기는 네 개의 삼각형으로 분할하여 각각의 내각의 합을 적용한다.\n각 삼각형의 내각 합은 180°이므로 a부터 k까지의 합은 4×180°=720°이다.\n따라서 ③이다.",
+    "answer": "②",
+    "solution": "선분이 서로 만나는 세 점으로 나누어 삼각형 3개와 8각형의 내각의 합을 이용한다.\n선분 $ac$와 $bd$, $eg$와 $fh$, $hj$와 $ik$가 만나는 점을 각각 $P$, $Q$, $R$라 하고 $\\angle bPc=x$, $\\angle gQf=y$, $\\angle jRi=z$라 하자.\n삼각형 $bPc$, $gQf$, $jRi$에서 $\\angle b+\\angle c=180^\\circ-x$, $\\angle g+\\angle f=180^\\circ-y$, $\\angle j+\\angle i=180^\\circ-z$이다.\n8각형 $aPdeQhRk$의 내각의 합은 $180^\\circ\\times(8-2)=1080^\\circ$이고, 맞꼭지각에 의해 $P$, $Q$, $R$에서의 내각은 각각 $360^\\circ-x$, $360^\\circ-y$, $360^\\circ-z$이므로 $\\angle a+\\angle d+\\angle e+\\angle h+\\angle k=x+y+z$이다.\n따라서 $\\angle a+\\cdots+\\angle k=(540^\\circ-x-y-z)+(x+y+z)=540^\\circ$이므로 정답은 ②이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
