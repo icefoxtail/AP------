@@ -618,12 +618,71 @@ function polyOverlap(a,b){
   const shrink=(p)=>{const c=cen(p);return p.map(q=>[c[0]+(q[0]-c[0])*0.9,c[1]+(q[1]-c[1])*0.9]);};
   return shrink(a).some(q=>inside2(b,q))||shrink(b).some(q=>inside2(a,q))||inside2(b,cen(a))||inside2(a,cen(b));
 }
+const NET_FILLS=['LIGHT','MEDIUM'],NET_ROLES=['ACCENT','REF'];
+const sameNetSegment=(p,q)=>{
+  const near=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1])<1e-3;
+  return (near(p[0],q[0])&&near(p[1],q[1]))||(near(p[0],q[1])&&near(p[1],q[0]));
+};
+/**
+ * Faces to tint and edges to stress on a polyhedron net. A face is named (bottom, side0, ...); an edge is the `edge`-th side of a face in its cycle order
+ * or the pair of corner names written on the net. A corner-name pair that finds no drawn edge, or finds several different ones, is refused.
+ */
+function netEmphasis(net,faces){
+  const highlights=[],segments=[];
+  const byId=new Map(faces.map(f=>[f.id,f]));
+  if(net.highlights!==undefined){
+    if(!Array.isArray(net.highlights)||net.highlights.length<1||net.highlights.length>faces.length)bad('SOLID_NET_HIGHLIGHT_INVALID');
+    for(const h of net.highlights){
+      onlyKeys(h,['face','fill'],'SOLID_NET_HIGHLIGHT_INVALID');
+      if(typeof h.face!=='string')bad('SOLID_NET_HIGHLIGHT_INVALID');
+      if(!byId.has(h.face))bad('SOLID_NET_FACE_UNKNOWN');
+      const fill=h.fill??'LIGHT';
+      if(!NET_FILLS.includes(fill)||highlights.some(x=>x.face===h.face))bad('SOLID_NET_HIGHLIGHT_INVALID');
+      highlights.push({face:h.face,fill});
+    }
+  }
+  if(net.segments!==undefined){
+    if(!Array.isArray(net.segments)||net.segments.length<1||net.segments.length>8)bad('SOLID_NET_SEGMENT_INVALID');
+    for(const s of net.segments){
+      onlyKeys(s,['face','edge','from','to','role'],'SOLID_NET_SEGMENT_INVALID');
+      const role=s.role??'ACCENT';
+      if(!NET_ROLES.includes(role))bad('SOLID_NET_SEGMENT_INVALID');
+      const byIndex=s.face!==undefined||s.edge!==undefined,byName=s.from!==undefined||s.to!==undefined;
+      if(byIndex===byName)bad('SOLID_NET_SEGMENT_INVALID');
+      let face,edge,record;
+      if(byIndex){
+        if(typeof s.face!=='string'||s.edge===undefined)bad('SOLID_NET_SEGMENT_INVALID');
+        if(!byId.has(s.face))bad('SOLID_NET_FACE_UNKNOWN');
+        if(!Number.isInteger(s.edge)||s.edge<0||s.edge>=byId.get(s.face).idx.length)bad('SOLID_NET_SEGMENT_INVALID');
+        face=s.face;edge=s.edge;record={face,edge,role};
+      }else{
+        if(typeof s.from!=='string'||typeof s.to!=='string'||s.from===s.to||!NAME.test(s.from)||!NAME.test(s.to))bad('SOLID_NET_SEGMENT_INVALID');
+        const found=[];
+        for(const f of faces){
+          const n=f.corners.length;
+          for(let k=0;k<n;k++){
+            const a=f.corners[k],b=f.corners[(k+1)%n];
+            if((a===s.from&&b===s.to)||(a===s.to&&b===s.from))found.push({face:f.id,edge:k,seg:[f.poly[k],f.poly[(k+1)%n]]});
+          }
+        }
+        if(!found.length)bad('SOLID_NET_EDGE_UNKNOWN:'+s.from+s.to);
+        if(found.some(x=>!sameNetSegment(x.seg,found[0].seg)))bad('SOLID_NET_EDGE_AMBIGUOUS:'+s.from+s.to);
+        face=found[0].face;edge=found[0].edge;record={face,edge,role,from:s.from,to:s.to};
+      }
+      const f=byId.get(face),seg=[f.poly[edge],f.poly[(edge+1)%f.poly.length]];
+      if(segments.some(x=>{const g=byId.get(x.face);return sameNetSegment([g.poly[x.edge],g.poly[(x.edge+1)%g.poly.length]],seg);}))bad('SOLID_NET_SEGMENT_DUPLICATE');
+      segments.push(record);
+    }
+  }
+  return {highlights,segments};
+}
 function solveNet(plan){
   const net=plan.net;
   if(plan.dims!==undefined||plan.highlights!==undefined||plan.segments!==undefined||plan.section!==undefined)bad('SOLID_PLAN_INVALID');
-  onlyKeys(net,['solid','root','joins','corners','dims','kind','radius','height','slant'],'SOLID_NET_INVALID');
+  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','height','slant'],'SOLID_NET_INVALID');
   const unit=plan.unit??null;
   if(net.kind==='CYLINDER'||net.kind==='CONE'){
+    if(net.highlights!==undefined||net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
     const r=pos(net.radius,'SOLID_PARAM_INVALID');
     const dims=[];
     if(net.kind==='CYLINDER'){
@@ -708,8 +767,10 @@ function solveNet(plan){
     const value=len(sub(solid.vertices[a].p,solid.vertices[b].p));
     dims.push({id:'dim-'+(k+1),type:'NETEDGE',face:d.face,edge:d.edge,...dimLabel(d.label,value,unit,'d'+(k+1))});
   }
+  const faces=solid.faces.map(f=>({id:f.id,idx:f.idx,poly:placed.get(f.id).poly,corners:corners[f.id]}));
+  const {highlights,segments}=netEmphasis(net,faces);
   return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'POLYHEDRON',solid:{kind:solid.kind,vertices:solid.vertices,faces:solid.faces},root:net.root,joins:joinsOut,
-    faces:solid.faces.map(f=>({id:f.id,idx:f.idx,poly:placed.get(f.id).poly,corners:corners[f.id]})),dims};
+    faces,dims,...(highlights.length?{highlights}:{}),...(segments.length?{segments}:{})};
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
@@ -1062,6 +1123,10 @@ function specNet(plan,model,ctx){
       void fp;void fc;
     }
     for(const f of model.faces)prims.push({t:'poly',id:'net-face-'+f.id,role:'net-face',face:f.id,points:f.poly.map(pt)});
+    for(const h of model.highlights??[])prims.push({t:'poly',id:'net-highlight-'+h.face,role:'net-highlight',face:h.face,fill:h.fill,points:byId.get(h.face).poly.map(pt)});
+    // a stressed edge is found by the drawn line it lies on: one shared line for a fold, the face's own line for a cut edge
+    const lineKey=(f,k)=>{const n=f.idx.length,a=f.idx[k],b=f.idx[(k+1)%n],lo=Math.min(a,b),hi=Math.max(a,b);return lo+'-'+hi+(foldEdges.has(f.id+':'+lo+'-'+hi)?'-fold':'-'+f.id);};
+    const stressed=new Map((model.segments??[]).map(s=>[lineKey(byId.get(s.face),s.edge),s.role]));
     const drawn=new Set();
     for(const f of model.faces){
       const n=f.idx.length;
@@ -1070,7 +1135,7 @@ function specNet(plan,model,ctx){
         const pairKey=Math.min(a,b)+'-'+Math.max(a,b)+(isFold?'-fold':'-'+f.id);
         if(isFold&&drawn.has(pairKey))continue;
         drawn.add(pairKey);
-        line(`net-edge-${f.id}-${k}`,'net-edge',pt(f.poly[k]),pt(f.poly[(k+1)%n]),{face:f.id,edgeIndex:k,vis:isFold?fold:'solid',fold:isFold?1:0});
+        line(`net-edge-${f.id}-${k}`,'net-edge',pt(f.poly[k]),pt(f.poly[(k+1)%n]),{face:f.id,edgeIndex:k,vis:isFold?fold:'solid',fold:isFold?1:0,...(stressed.has(pairKey)?{accent:stressed.get(pairKey)}:{})});
       }
     }
     const cen=model.faces.flatMap(f=>f.poly);const mean=[cen.reduce((s,p)=>s+p[0],0)/cen.length,cen.reduce((s,p)=>s+p[1],0)/cen.length];
@@ -1236,6 +1301,7 @@ function renderPrims(spec,model){
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-face'))body+=`<g data-layer="10"><polygon id="${p.id}" data-role="net-face" data-face="${p.face}" fill="#f4f6fa" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="#7fa6e8" fill-opacity="${p.fill==='MEDIUM'?0.55:0.32}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face" data-polygon="${p.polygon}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='liquid-region'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="liquid-region" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='ellipse'))body+=`<g data-layer="20"><ellipse id="${p.id}" data-role="level-fill" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}"/></g>`;
@@ -1243,8 +1309,8 @@ function renderPrims(spec,model){
   for(const p of spec.prims){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
-      const w=p.role==='dim-line'||p.role==='dim-ext'?1.1:p.role==='segment'?2.4:p.role==='silhouette'?1.7:1.6;
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:''].filter(Boolean).join(' ');
+      const w=p.role==='dim-line'||p.role==='dim-ext'?1.1:p.role==='segment'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',p.role==='net-edge'&&p.accent?`data-accent="${p.accent}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
     }else if(p.t==='arc'){

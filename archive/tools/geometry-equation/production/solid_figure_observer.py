@@ -1404,6 +1404,154 @@ def audit_polyhedron_net(plan, ctx, declared):
         poly = polys[fid]
         segs += [(poly[i], poly[(i + 1) % len(poly)]) for i in range(len(poly))]
     ctx['segments'] += segs
+    audit_net_layout_and_emphasis(net, ctx, cycles, polys, P3, root_id, joins, solid)
+
+
+# --- net layout re-derived from the plan, tinted faces and stressed edges ---------------------------------------------------------------------------------
+NET_FILL_STYLE = {'LIGHT': ('#7fa6e8', 0.32), 'MEDIUM': ('#7fa6e8', 0.55)}
+NET_ACCENT_STROKE = '#c0392b'
+
+
+def net_flatten(pts3):
+    """a face (cycle seen counter-clockwise from outside) in its own plane: origin at its first vertex, x along its first edge"""
+    nrm = (0.0, 0.0, 0.0)
+    for i in range(len(pts3)): nrm = vadd(nrm, vcross(pts3[i], pts3[(i + 1) % len(pts3)]))
+    nrm = vunit(nrm)
+    ex = vunit(vsub(pts3[1], pts3[0]))
+    ey = vcross(nrm, ex)
+    return [complex(vdot(vsub(p, pts3[0]), ex), vdot(vsub(p, pts3[0]), ey)) for p in pts3]
+
+
+def net_layout(cycles, P3, root_id, joins):
+    """face id -> corner list (complex) of the net unfolded along the plan's joins, in the root face's own frame; None when the joins cannot be unfolded"""
+    flat = {fid: net_flatten([P3(i) for i in cyc]) for fid, cyc in cycles.items()}
+    placed = {root_id: list(flat[root_id])}
+    pending = [tuple(j) for j in joins]
+    while pending:
+        k = next((i for i, (par, chi) in enumerate(pending) if par in placed and chi not in placed), None)
+        if k is None: return None
+        par, chi = pending.pop(k)
+        cp, cc = cycles[par], cycles[chi]
+        common = [v for v in cp if v in cc]
+        if len(common) != 2: return None
+        edge = next(((cp[i], cp[(i + 1) % len(cp)]) for i in range(len(cp)) if cp[i] in common and cp[(i + 1) % len(cp)] in common), None)
+        if edge is None: return None
+        a, b = edge
+        pa, pb = placed[par][cp.index(a)], placed[par][cp.index(b)]
+        ca, cb = flat[chi][cc.index(a)], flat[chi][cc.index(b)]
+        if abs(pb - pa) < 1e-12 or abs(cb - ca) < 1e-12: return None
+        turn = ((pb - pa) / abs(pb - pa)) / ((cb - ca) / abs(cb - ca))
+        placed[chi] = [turn * (q - ca) + pa for q in flat[chi]]
+    return placed if len(placed) == len(cycles) else None
+
+
+def net_fit(layout_root, svg_root):
+    """the similarity (a mirror image when the picture's y runs down) taking the root face's layout onto its drawn polygon; None when no such map fits all corners"""
+    s0, s1 = complex(*svg_root[0]), complex(*svg_root[1])
+    for mirror in (True, False):
+        f = (lambda z: z.conjugate()) if mirror else (lambda z: z)
+        w0, w1 = f(layout_root[0]), f(layout_root[1])
+        if abs(w1 - w0) < 1e-12: return None
+        a = (s1 - s0) / (w1 - w0)
+        b = s0 - a * w0
+        if all(abs(a * f(z) + b - complex(*sp)) <= POS_TOL for z, sp in zip(layout_root, svg_root)):
+            return lambda z, a=a, b=b, f=f: a * f(z) + b
+    return None
+
+
+def _px_pair_same(a, b):
+    d = lambda p, q: math.hypot(p[0] - q[0], p[1] - q[1])
+    return (d(a[0], b[0]) <= POS_TOL and d(a[1], b[1]) <= POS_TOL) or (d(a[0], b[1]) <= POS_TOL and d(a[1], b[0]) <= POS_TOL)
+
+
+def _net_line_role(e):
+    stroke = (e.get('stroke') or '').lower()
+    try: width = float(e.get('stroke-width') or 0)
+    except ValueError: return '?'
+    if stroke == NET_ACCENT_STROKE and width >= 2.2: return 'ACCENT'
+    if stroke == '#111' and width >= 2.2: return 'REF'
+    if stroke == '#111' and width <= 1.8: return None
+    return '?'
+
+
+def audit_net_layout_and_emphasis(net, ctx, cycles, polys, P3, root_id, joins, solid):
+    root, errors = ctx['root'], ctx['errors']
+    layout = net_layout(cycles, P3, root_id, joins)
+    if layout is None:
+        errors.append('SOLID_NET_LAYOUT_UNRESOLVED')
+        return
+    fit = net_fit(layout[root_id], polys[root_id])
+    if fit is None:
+        errors.append('SOLID_NET_LAYOUT_MISMATCH:' + root_id)
+        return
+    expected_px = {fid: [(fit(z).real, fit(z).imag) for z in pts] for fid, pts in layout.items()}
+    for fid, want in expected_px.items():
+        got = polys.get(fid) or []
+        if len(got) != len(want) or any(math.hypot(g[0] - w[0], g[1] - w[1]) > POS_TOL for g, w in zip(got, want)): errors.append('SOLID_NET_LAYOUT_MISMATCH:' + fid)
+    order = {id(el): k for k, el in enumerate(root.iter())}
+    first_line = min([order[id(e)] for e in root.iter(NS + 'line') if e.get('data-role') == 'net-edge'] or [10 ** 9])
+    first_label = min([order[id(g)] for g in ctx['labels']] or [10 ** 9])
+    # tinted faces: exactly the planned faces, each drawn on that face's own polygon, under every line and label
+    want_fill = {}
+    for h in net.get('highlights') or []:
+        if h.get('face') in want_fill or h.get('face') not in cycles: errors.append('SOLID_NET_HIGHLIGHT_PLAN_INVALID')
+        else: want_fill[h['face']] = h.get('fill') or 'LIGHT'
+    drawn = {}
+    for el in root.iter(NS + 'polygon'):
+        if el.get('data-role') != 'net-highlight': continue
+        if el.get('data-face') in drawn: errors.append('SOLID_NET_HIGHLIGHT_DUPLICATE:' + str(el.get('data-face')))
+        drawn[el.get('data-face')] = el
+    if sorted(want_fill) != sorted(drawn): errors.append('SOLID_NET_HIGHLIGHT_SET_MISMATCH')
+    for fid, el in drawn.items():
+        if fid not in want_fill: continue
+        want = expected_px[fid]
+        got = _points(el.get('points'))
+        if len(got) != len(want) or any(math.hypot(g[0] - w[0], g[1] - w[1]) > POS_TOL for g, w in zip(got, want)): errors.append('SOLID_NET_HIGHLIGHT_FACE_MISMATCH:' + fid)
+        color, opacity = NET_FILL_STYLE.get(want_fill[fid], ('?', -1.0))
+        try: opac = float(el.get('fill-opacity'))
+        except (TypeError, ValueError): opac = -2.0
+        if (el.get('fill') or '').lower() != color or abs(opac - opacity) > 1e-9 or el.get('data-fill') != want_fill[fid]: errors.append('SOLID_NET_HIGHLIGHT_FILL_MISMATCH:' + fid)
+        if order[id(el)] > min(first_line, first_label): errors.append('SOLID_NET_HIGHLIGHT_OVER_LINES:' + fid)
+    # stressed edges: the planned edges, nothing else, drawn in the planned role
+    names_by_face = {}
+    for fid, cyc in cycles.items():
+        given = (net.get('corners') or {}).get(fid)
+        names_by_face[fid] = list(given) if given is not None else [solid['verts'][i][0] for i in cyc]
+    expected = []
+    for s in net.get('segments') or []:
+        role = s.get('role') or 'ACCENT'
+        if s.get('face') is not None:
+            fid, ei = s['face'], s['edge']
+            if fid not in cycles or not isinstance(ei, int) or not 0 <= ei < len(cycles[fid]):
+                errors.append('SOLID_NET_SEGMENT_PLAN_INVALID')
+                continue
+            pts = expected_px[fid]
+            expected.append(((pts[ei], pts[(ei + 1) % len(pts)]), role, '%s:%d' % (fid, ei)))
+        else:
+            a_name, b_name = s.get('from'), s.get('to')
+            found = []
+            for fid, cyc in cycles.items():
+                names, pts = names_by_face[fid], expected_px[fid]
+                n = len(cyc)
+                for k in range(n):
+                    x = names[k] if k < len(names) else None
+                    y = names[(k + 1) % n] if (k + 1) % n < len(names) else None
+                    if x and y and {x, y} == {a_name, b_name}: found.append((pts[k], pts[(k + 1) % n]))
+            if not found or any(not _px_pair_same(found[0], f) for f in found):
+                errors.append('SOLID_NET_SEGMENT_PLAN_UNRESOLVED:%s%s' % (a_name, b_name))
+                continue
+            expected.append((found[0], role, '%s%s' % (a_name, b_name)))
+    net_lines = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'net-edge']
+    drawn_lines = [(e, ((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2'))), _net_line_role(e)) for e in net_lines]
+    for seg, role, label in expected:
+        hits = [d for d in drawn_lines if _px_pair_same(d[1], seg)]
+        if len(hits) != 1: errors.append('SOLID_NET_EMPHASIS_EDGE_MISSING:' + label)
+        elif hits[0][2] != role: errors.append('SOLID_NET_EMPHASIS_ROLE_MISMATCH:' + label)
+    for e, seg, role in drawn_lines:
+        ident = str(e.get('id'))
+        if role == '?': errors.append('SOLID_NET_EDGE_STYLE_UNKNOWN:' + ident)
+        elif role is not None and not any(_px_pair_same(seg, x[0]) for x in expected): errors.append('SOLID_NET_EMPHASIS_UNEXPECTED:' + ident)
+        if e.get('data-accent') != role: errors.append('SOLID_NET_ACCENT_ATTRIBUTE_INCONSISTENT:' + ident)
 
 
 def _polys_overlap(a, b):

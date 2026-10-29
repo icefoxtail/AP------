@@ -267,3 +267,56 @@ class Extensions(unittest.TestCase):
         solids = [O.build_solid(s) for s in plan['solids']]
         self.assertEqual(solids[1]['inside'], 's1')
         self.assertEqual({q[1]: q[2] for q in solids[1]['points']}['center'], (0.0, 0.0, 3.0))
+
+
+class NetLayout(unittest.TestCase):
+    SPEC = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 2, 'names': '.' * 8, 'id': 's1'}
+    IDS = ['bottom', 'top'] + ['side%d' % i for i in range(4)]
+    JOINS = [['side0', 'side1'], ['side1', 'side2'], ['side2', 'side3'], ['side1', 'top'], ['side3', 'bottom']]
+
+    def setUp(self):
+        self.solid = O.build_solid(self.SPEC)
+        self.cycles = O.orient_cycles(self.solid, self.SPEC, self.IDS)
+        self.P3 = lambda i: self.solid['verts'][i][1]
+        self.layout = O.net_layout(self.cycles, self.P3, 'side0', self.JOINS)
+
+    def test_every_unfolded_face_is_the_solids_face_and_joined_edges_coincide(self):
+        self.assertEqual(sorted(self.layout), sorted(self.IDS))
+        for fid, pts in self.layout.items():
+            self.assertEqual(len(pts), 4)
+            for i in range(4): self.assertAlmostEqual(abs(pts[(i + 1) % 4] - pts[i]), 2.0, places=9, msg=fid)
+        for par, chi in self.JOINS:
+            shared = [v for v in self.cycles[par] if v in self.cycles[chi]]
+            self.assertEqual(len(shared), 2)
+            for v in shared: self.assertAlmostEqual(abs(self.layout[par][self.cycles[par].index(v)] - self.layout[chi][self.cycles[chi].index(v)]), 0.0, places=9)
+
+    def test_the_faces_lie_on_opposite_sides_of_their_fold(self):
+        for par, chi in self.JOINS:
+            shared = [v for v in self.cycles[par] if v in self.cycles[chi]]
+            a, b = (self.layout[par][self.cycles[par].index(v)] for v in shared)
+            side = lambda fid: ((b - a).conjugate() * (sum(self.layout[fid]) / 4 - a)).imag
+            self.assertLess(side(par) * side(chi), 0)
+
+    def test_a_bad_join_list_is_not_unfolded(self):
+        self.assertIsNone(O.net_layout(self.cycles, self.P3, 'side0', [['side0', 'side1'], ['side1', 'side2'], ['side2', 'side3'], ['side0', 'top'], ['top', 'bottom']]))
+        self.assertIsNone(O.net_layout(self.cycles, self.P3, 'side0', self.JOINS[:3]))
+
+    def test_the_fit_is_a_mirror_image_onto_a_y_down_drawing_and_refuses_a_stretched_one(self):
+        root = self.layout['side0']
+        svg = [(100 + 40 * z.real, 200 - 40 * z.imag) for z in root]
+        fit = O.net_fit(root, svg)
+        self.assertIsNotNone(fit)
+        for pts in self.layout.values():
+            for z in pts:
+                self.assertLess(abs(fit(z) - complex(100 + 40 * z.real, 200 - 40 * z.imag)), 1e-9)
+        stretched = [(x + (7 if k in (1, 2) else 0), y) for k, (x, y) in enumerate(svg)]
+        self.assertIsNone(O.net_fit(root, stretched))
+
+    def test_stress_roles_come_from_the_drawn_stroke(self):
+        import xml.etree.ElementTree as ET
+        el = lambda stroke, width: ET.fromstring('<line xmlns="http://www.w3.org/2000/svg" stroke="%s" stroke-width="%s"/>' % (stroke, width))
+        self.assertEqual(O._net_line_role(el('#c0392b', '2.4')), 'ACCENT')
+        self.assertEqual(O._net_line_role(el('#111', '2.4')), 'REF')
+        self.assertIsNone(O._net_line_role(el('#111', '1.6')))
+        self.assertEqual(O._net_line_role(el('#ff0000', '1.6')), '?')
+        self.assertEqual(O._net_line_role(el('#c0392b', '1.6')), '?')

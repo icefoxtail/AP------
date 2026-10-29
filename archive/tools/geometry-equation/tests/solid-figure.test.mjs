@@ -313,3 +313,91 @@ test('the new capabilities refuse what they cannot draw with explicit codes',()=
   assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CONE',radius:3,height:9,orientation:'APEX_DOWN'}],dims:[{radius:'bottom'}]})),code('SOLID_DIMS_INVALID'));
   assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{angles:[{refs:['B','A','D'],value:80}]}})),code('SOLID_MARK_ANGLE_MISMATCH'));
 });
+
+// --- E2: a net may tint faces and stress edges ------------------------------------------------------------------------------------------------
+const cubeCorners={side0:['B','C','N','A'],side1:['C','D','K','N'],side2:['D','E','J','K'],side3:['E','H','I','J'],top:['M','N','K','L'],bottom:['E','F','G','H']};
+const cubeJoins=[['side0','side1'],['side1','side2'],['side2','side3'],['side1','top'],['side3','bottom']];
+const emphasisNet=(extra={},over={})=>figure({net:{solid:{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2,names:'........'},root:'side0',joins:cubeJoins,corners:cubeCorners,...extra},...over});
+test('a net without highlights or segments has neither in its model nor in its SVG',async()=>{
+  const plan=emphasisNet();
+  const model=solveSolidFigure(plan);
+  assert.equal('highlights' in model,false);assert.equal('segments' in model,false);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.doesNotMatch(composed.svg,/net-highlight|data-accent/);
+});
+test('net highlights tint named faces and net segments stress named edges; every tamper of the final SVG is read back',async()=>{
+  const plan=emphasisNet({highlights:[{face:'side2'},{face:'top',fill:'MEDIUM'}],segments:[{from:'B',to:'C'},{face:'side1',edge:2,role:'REF'}]});
+  const model=solveSolidFigure(plan);
+  assert.deepEqual(model.highlights,[{face:'side2',fill:'LIGHT'},{face:'top',fill:'MEDIUM'}]);
+  assert.deepEqual(model.segments,[{face:'side0',edge:0,role:'ACCENT',from:'B',to:'C'},{face:'side1',edge:2,role:'REF'}]);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.equal((svg.match(/data-role="net-highlight"/g)??[]).length,2);
+  assert.equal((svg.match(/data-accent="ACCENT"/g)??[]).length,1);
+  const fold=svg.match(/<line [^>]*data-accent="REF"[^>]*\/>/)?.[0];
+  assert.ok(fold&&/stroke-dasharray/.test(fold),'a stressed fold edge stays dashed');
+  assert.ok(svg.indexOf('data-role="net-highlight"')<svg.indexOf('data-role="net-edge"'),'the tint lies under every line');
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  // a tinted polygon that is another face
+  const tint=svg.match(/<polygon id="net-highlight-side2"[^>]*\/>/)[0];
+  const side0=svg.match(/<polygon id="net-face-side0"[^>]*points="([^"]+)"/)[1];
+  await failing(svg.replace(tint,tint.replace(/points="[^"]+"/,`points="${side0}"`)),'SOLID_NET_HIGHLIGHT_FACE_MISMATCH');
+  // a tint missing, an extra tint, a wrong strength
+  const top=svg.match(/<g data-layer="20"><polygon id="net-highlight-top"[^>]*\/><\/g>/)[0];
+  await failing(svg.replace(top,''),'SOLID_NET_HIGHLIGHT_SET_MISMATCH');
+  const extra=`<g data-layer="20"><polygon id="net-highlight-bottom" data-role="net-highlight" data-face="bottom" data-fill="LIGHT" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${svg.match(/<polygon id="net-face-bottom"[^>]*points="([^"]+)"/)[1]}"/></g>`;
+  await failing(svg.replace(top,top+extra),'SOLID_NET_HIGHLIGHT_SET_MISMATCH');
+  await failing(svg.replace(top,top.replace('fill-opacity="0.55"','fill-opacity="0.32"')),'SOLID_NET_HIGHLIGHT_FILL_MISMATCH');
+  // the tint painted over the lines
+  await failing(svg.replace(top,'').replace('</svg>',top+'</svg>'),'SOLID_NET_HIGHLIGHT_OVER_LINES');
+  // another edge stressed, the planned edge not stressed, the wrong role
+  const bc=svg.match(/<line [^>]*data-accent="ACCENT"[^>]*\/>/)[0];
+  const plain=bc.replace(' data-accent="ACCENT"','').replace('stroke="#c0392b"','stroke="#111"').replace('stroke-width="2.4"','stroke-width="1.6"');
+  await failing(svg.replace(bc,plain),'SOLID_NET_EMPHASIS_ROLE_MISMATCH');
+  const other=svg.match(/<line id="net-edge-side0-2"[^>]*\/>/)[0];
+  await failing(svg.replace(other,other.replace('stroke="#111"','stroke="#c0392b"').replace('stroke-width="1.6"','stroke-width="2.4"').replace(' fill="none"',' data-accent="ACCENT" fill="none"')),'SOLID_NET_EMPHASIS_UNEXPECTED');
+  await failing(svg.replace(bc,bc.replace('stroke="#c0392b"','stroke="#111"').replace(' data-accent="ACCENT"',' data-accent="REF"')),'SOLID_NET_EMPHASIS_ROLE_MISMATCH');
+  // a stressed look without its attribute
+  await failing(svg.replace(bc,bc.replace(' data-accent="ACCENT"','')),'SOLID_NET_ACCENT_ATTRIBUTE_INCONSISTENT');
+});
+test('a corner-name edge on a fold is the same edge as its face and index; a segment is not repeated',()=>{
+  const byName=solveSolidFigure(emphasisNet({segments:[{from:'N',to:'C'}]})).segments[0];
+  assert.equal(byName.face,'side0');assert.equal(byName.edge,1);// the first face, in face order, that lists the fold
+  assert.throws(()=>solveSolidFigure(emphasisNet({segments:[{face:'side0',edge:1},{face:'side1',edge:3}]})),code('SOLID_NET_SEGMENT_DUPLICATE'));
+  assert.throws(()=>solveSolidFigure(emphasisNet({segments:[{from:'B',to:'C'},{from:'C',to:'B'}]})),code('SOLID_NET_SEGMENT_DUPLICATE'));
+});
+test('net highlights and segments are refused with explicit codes',()=>{
+  const bad=(extra,expected)=>assert.throws(()=>solveSolidFigure(emphasisNet(extra)),code(expected),expected);
+  bad({highlights:[{face:'nope'}]},'SOLID_NET_FACE_UNKNOWN');
+  bad({highlights:[{face:'top',fill:'DARK'}]},'SOLID_NET_HIGHLIGHT_INVALID');
+  bad({highlights:[{face:'top'},{face:'top'}]},'SOLID_NET_HIGHLIGHT_INVALID');
+  bad({highlights:[]},'SOLID_NET_HIGHLIGHT_INVALID');
+  bad({highlights:[{face:'top',colour:'red'}]},'SOLID_NET_HIGHLIGHT_INVALID');
+  bad({segments:[{face:'side0',edge:4}]},'SOLID_NET_SEGMENT_INVALID');
+  bad({segments:[{face:'side0',edge:0,role:'BOLD'}]},'SOLID_NET_SEGMENT_INVALID');
+  bad({segments:[{face:'side0',edge:0,from:'B',to:'C'}]},'SOLID_NET_SEGMENT_INVALID');
+  bad({segments:[{from:'B'}]},'SOLID_NET_SEGMENT_INVALID');
+  bad({segments:[{face:'nope',edge:0}]},'SOLID_NET_FACE_UNKNOWN');
+  bad({segments:[{from:'B',to:'F'}]},'SOLID_NET_EDGE_UNKNOWN');
+  bad({segments:[]},'SOLID_NET_SEGMENT_INVALID');
+  // the same two names at two different drawn edges are ambiguous
+  bad({corners:{...cubeCorners,top:['B','C','K','L']},segments:[{from:'B',to:'C'}]},'SOLID_NET_EDGE_AMBIGUOUS');
+  assert.throws(()=>solveSolidFigure(figure({net:{kind:'CYLINDER',radius:3,height:5,dims:[{part:'rect-height'}],highlights:[{face:'rect'}]}})),code('SOLID_NET_EMPHASIS_UNSUPPORTED:CYLINDER'));
+  assert.throws(()=>solveSolidFigure(figure({net:{kind:'CONE',radius:3,slant:5,dims:[{part:'slant'}],segments:[{face:'sector',edge:0}]}})),code('SOLID_NET_EMPHASIS_UNSUPPORTED:CONE'));
+});
+test('the re-derived net layout holds for a pyramid, a triangular prism and a frustum net with tinted faces',async()=>{
+  const nets=[
+    {solid:{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:5,names:'ABCDE'},root:'bottom',joins:[['bottom','side0'],['bottom','side1'],['bottom','side2'],['bottom','side3']],highlights:[{face:'side1'}],segments:[{face:'side0',edge:1,role:'REF'}]},
+    {solid:{kind:'PRISM',base:{kind:'REGULAR',n:3,side:3},height:4,names:'ABCDEF'},root:'side0',joins:[['side0','side1'],['side1','side2'],['side0','bottom'],['side0','top']],highlights:[{face:'bottom',fill:'MEDIUM'}],segments:[{from:'A',to:'B'}]},
+    {solid:{kind:'FRUSTUM',base:{kind:'RECT',width:4,depth:4},height:3,topScale:0.5,names:'ABCDEFGH'},root:'bottom',joins:[['bottom','side0'],['bottom','side1'],['bottom','side2'],['bottom','side3'],['side0','top']],highlights:[{face:'top'},{face:'side2'}],segments:[{face:'top',edge:0}]}
+  ];
+  for(const net of nets){
+    const plan=figure({net});
+    const composed=await panel(plan);
+    assert.equal(composed.status,'COMPOSED',net.solid.kind+JSON.stringify(composed.detail));
+    assert.equal(composed.staticAudit.status,'PASS',net.solid.kind+JSON.stringify(composed.staticAudit.errors));
+  }
+});
