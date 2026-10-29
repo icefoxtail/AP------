@@ -7,6 +7,9 @@
   const O = window.Archive2Output;
   const Parts = window.Archive2Papers;
   const History = window.Archive2History;
+  // Unified 2022-based unit layer (user decision 2026-10-29). When the shared module is not
+  // loaded the compose screen falls back to the canonical-parent scope list.
+  const Unified = window.Archive2UnifiedUnits;
   const frozenPaperCache = new Map();
   const composeMetaQueryCache = new Map();
   let renderComposeMetaFilters = null;
@@ -112,10 +115,82 @@
       renderEligibilityCache.set(record, evaluate(record, state));
     return renderEligibilityCache.get(record);
   }
-  function workspaceMatches(record, filters = state.filters) {
+  // canonicalOnly: the finder's taxonomy scan keeps the canonical matcher even while compose
+  // uses the unified unit list.
+  function workspaceMatches(record, filters = state.filters, canonicalOnly = false) {
     const options = workspaceMatchOptions();
+    const index = canonicalOnly ? null : unifiedIndex();
+    if (index) {
+      // Subject and original curriculum are decided by the unified layer (display and
+      // selection grouping only); everything else is the unchanged shared matcher.
+      const entry = index.byUid.get(record.questionUid);
+      if (!entry) return false;
+      if (filters.semanticSubject && entry.subject !== filters.semanticSubject) return false;
+      if (filters.originalCurriculum && entry.originalCurriculum !== filters.originalCurriculum)
+        return false;
+      return C.matches(record, stripUnifiedFilters(filters), options);
+    }
     return C.matches(record, filters, options) ||
       sourceRoutedFallbackMatches(record, filters);
+  }
+  let unifiedIndexCache = { records: null, projectionPolicy: null, index: null };
+  function unifiedIndex() {
+    if (!Unified || !state.catalog?.records) return null;
+    const { records, projectionPolicy } = state.catalog;
+    if (unifiedIndexCache.records !== records || unifiedIndexCache.projectionPolicy !== projectionPolicy)
+      unifiedIndexCache = {
+        records,
+        projectionPolicy,
+        index: Unified.buildIndex(records, { projectionPolicy }),
+      };
+    return unifiedIndexCache.index;
+  }
+  // Curriculum/course/subject/family are resolved by the unified layer, so they must not reach
+  // the shared matcher, the replayed server request or the saved-paper filters.
+  const UNIFIED_ONLY_FILTERS = ["curriculumKey", "courseKey", "semanticSubject", "originalCurriculum", "family"];
+  // Always returns a copy without the unified-only keys (request and saved-paper filters).
+  function omitUnifiedFilters(filters) {
+    const stripped = { ...filters };
+    for (const key of UNIFIED_ONLY_FILTERS) delete stripped[key];
+    return stripped;
+  }
+  // The matcher treats empty values as "no constraint", so a copy is only needed while one of
+  // the unified-only filters actually carries a value. Filter objects are mutated in place by
+  // the filter controls, so nothing here may be cached by object identity.
+  function stripUnifiedFilters(filters) {
+    return UNIFIED_ONLY_FILTERS.some((key) => filters?.[key]) ? omitUnifiedFilters(filters) : filters;
+  }
+  // Maps filters from older drafts, URLs and the finder onto the unified vocabulary: the old
+  // curriculum select becomes the optional original-curriculum filter, a subject the unified
+  // list does not know is dropped (the list then shows every subject).
+  function reconcileUnifiedFilters(filters) {
+    const next = { ...filters };
+    const grade = next.grade || "";
+    if (!next.originalCurriculum && ["2015", "2022"].includes(next.curriculumKey))
+      next.originalCurriculum = next.curriculumKey;
+    if (!["2015", "2022"].includes(next.originalCurriculum)) next.originalCurriculum = "";
+    let subject = next.semanticSubject || "";
+    if (!subject && next.courseKey) {
+      const identity = C.normalizeCourseIdentity(next.courseKey);
+      subject = Unified.subjectsForGrade(grade)
+        .find((candidate) => C.normalizeCourseIdentity(candidate.course) === identity)?.value ||
+        C.highSemanticSubjectForCourseKey?.(next.courseKey) || "";
+    }
+    if (subject && !Unified.subjectByValue(grade, subject)) subject = "";
+    next.semanticSubject = subject;
+    next.curriculumKey = "";
+    next.courseKey = "";
+    next.family = "";
+    return next;
+  }
+  // Subject label of the unified list for grades the shared projection does not name (중1~중3 have
+  // a single subject; 고1~고3 name it once a subject is chosen).
+  function composeSubjectLabel() {
+    if (!unifiedIndex()) return "";
+    const grade = state.filters.grade || "";
+    const subjects = Unified.subjectsForGrade(grade);
+    if (subjects.length === 1) return subjects[0].label;
+    return Unified.subjectByValue(grade, state.filters.semanticSubject)?.label || "";
   }
   function workspaceScopeParent(record) {
     if (workspaceScopeParentCache.has(record)) return workspaceScopeParentCache.get(record);
@@ -301,7 +376,7 @@
     };
     delete selectionFilters.scopeQuestionUids;
     for (const record of state.catalog.records || []) {
-      if (!workspaceMatches(record, selectionFilters) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
+      if (!workspaceMatches(record, selectionFilters, true) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
       const parent = workspaceScopeParent(record);
       if (parent) {
         const key = scopeParentKey({ ...record, ...parent });
@@ -341,6 +416,7 @@
     view: "home",
     useMode: "strict",
     healthComposeScope: null,
+    healthUnified: null,
     assessmentRecipe: "",
     page: 0,
     savedPaperId: "",
@@ -410,6 +486,7 @@
     editSavedPaperId: "",
     urlSources: [],
     urlRange: "",
+    scopeNotice: "",
   };
   let finderFilterRenderTimer = null;
   // The five-minute shelf uses the existing catalog and output engine without
@@ -669,10 +746,13 @@
       )
     )
       throw new Error("시리즈 이력 UID가 잘못되었습니다.");
-    const restoredFilters = C.reconcileFinderFilters(
-      { ...data.filters },
-      state.catalog.taxonomy,
-    );
+    const unifiedDraft = Boolean(unifiedIndex());
+    const restoredFilters = unifiedDraft
+      ? reconcileUnifiedFilters({ ...data.filters })
+      : C.reconcileFinderFilters(
+        { ...data.filters },
+        state.catalog.taxonomy,
+      );
     const hasLegacyDetail = ["L3", "L4"].some(
       field => restoredFilters[field] && !/^(mf|rpm):/.test(restoredFilters[field]),
     );
@@ -685,7 +765,7 @@
       ));
     }
     const savedScopePaths = unique(data.scopeSourcePaths || data.rows.flatMap(row => row.paths || (row.path ? [row.path] : [])));
-    if (data.scopes.length && !savedScopePaths.length)
+    if (!unifiedDraft && data.scopes.length && !savedScopePaths.length)
       throw new Error("현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다.");
     let currentScopes = [];
     const previousScopeState = {
@@ -707,14 +787,25 @@
     } finally {
       Object.assign(state, previousScopeState);
     }
-    const currentScopePaths = new Set(currentScopes.flatMap(scope => scope.paths));
-    if (savedScopePaths.some(path => !currentScopePaths.has(path)))
-      throw new Error("현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다.");
-    const restoredScopeKeys = currentScopes
-      .filter(scope => scope.paths.some(path => savedScopePaths.includes(path)))
-      .map(scope => scope.key);
-    if (data.scopes.length && !restoredScopeKeys.length)
-      throw new Error("현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다.");
+    let restoredScopeKeys;
+    let droppedScopeCount = 0;
+    if (unifiedDraft) {
+      // Scope keys from the previous (per-curriculum) list are not valid unit keys any more.
+      // Drop them with a visible notice instead of rejecting the whole draft; selected
+      // questions and their frozen rows are kept as saved.
+      const currentKeys = new Set(currentScopes.map(scope => scope.key));
+      restoredScopeKeys = data.scopes.filter(key => currentKeys.has(key));
+      droppedScopeCount = data.scopes.length - restoredScopeKeys.length;
+    } else {
+      const currentScopePaths = new Set(currentScopes.flatMap(scope => scope.paths));
+      if (savedScopePaths.some(path => !currentScopePaths.has(path)))
+        throw new Error("현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다.");
+      restoredScopeKeys = currentScopes
+        .filter(scope => scope.paths.some(path => savedScopePaths.includes(path)))
+        .map(scope => scope.key);
+      if (data.scopes.length && !restoredScopeKeys.length)
+        throw new Error("현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다.");
+    }
     const allowed = Object.keys(draft()).filter(
       (k) =>
         !["schemaVersion", "taxonomyVersion", "updatedAt", "selected", "scopeSourcePaths", "scopeQuestionUids"].includes(
@@ -757,6 +848,9 @@
     if (state.saveResultState === "SAVING") state.saveResultState = "RESULT_UNKNOWN";
     state.filters = restoredFilters;
     state.scopes = restoredScopeKeys;
+    state.scopeNotice = droppedScopeCount
+      ? `이전 작업의 출제 범위 ${droppedScopeCount}개는 새 단원 목록에 없어 선택에서 제외했습니다. 필요한 단원을 다시 선택해 주세요.`
+      : "";
     // Old unopened drafts inherited [2, 3] without a user choosing difficulty.
     if (!data.selected.length && data.difficultyFilterVersion !== "optional-v1" &&
         data.distribution !== "custom" && JSON.stringify(data.buckets) === "[2,3]") {
@@ -795,10 +889,11 @@
     state.inspector = "summary";
     render();
     status(
-      data.indexVersion === state.catalog.indexVersion
+      (data.indexVersion === state.catalog.indexVersion
         ? "이전 작업을 복원했습니다. 이전 출제 확인은 필요할 때 고급 설정에서 실행할 수 있습니다."
-        : "문항 목록이 갱신되었습니다. 다시 만들기한 뒤 출력하세요.",
-      data.indexVersion !== state.catalog.indexVersion,
+        : "문항 목록이 갱신되었습니다. 다시 만들기한 뒤 출력하세요.") +
+        (state.scopeNotice ? " " + state.scopeNotice : ""),
+      data.indexVersion !== state.catalog.indexVersion || Boolean(state.scopeNotice),
     );
     if (state.studentIds.length) refreshHistory();
   }
@@ -840,7 +935,9 @@
       difficultyBuckets: [],
     };
     for (const record of records)
-      if (!C.rowMatches(record, row))
+      // Papers saved before the unified list recorded raw path keys; unified papers record the
+      // general-mode keys of their fallback taxonomy. Either must be accepted.
+      if (!C.rowMatches(record, row) && !C.rowMatches(record, row, workspaceMatchOptions()))
         throw new Error("저장 당시 범위와 현재 canonical namespace가 달라 수정본을 안전하게 열 수 없습니다.");
     const filters = { ...selectionFilters };
     delete filters.sourceFiles;
@@ -855,7 +952,7 @@
     const title = String(snapshot.meta.title || paper.title || "저장 시험지 수정본");
     const header = snapshot.meta.printHeaderOptions || { title };
     state.draftId = crypto.randomUUID();
-    state.filters = validated.filters;
+    state.filters = unifiedIndex() ? reconcileUnifiedFilters(validated.filters) : validated.filters;
     state.scopes = [];
     state.sources = Array.isArray(validated.selectionFilters.sourceFiles)
       ? [...validated.selectionFilters.sourceFiles]
@@ -961,6 +1058,80 @@
   let renderingScopes = false;
   let renderPoolCache = null;
   function scopeOptions() {
+    const index = unifiedIndex();
+    return index ? unifiedScopeOptions(index) : canonicalScopeOptions();
+  }
+  // PRIMARY scope source (user decision 2026-10-29): one 2022-based unit list per grade built by
+  // Archive2UnifiedUnits. 2015 and 2022 items share a unit; a UID is counted once; items without
+  // unit evidence stay selectable in a per-subject "단원 미분류" scope instead of disappearing.
+  function unifiedScopeOptions(index) {
+    if (renderingScopes && scopeRenderCache) return scopeRenderCache;
+    const grade = state.filters.grade || "";
+    const structure = grade ? Unified.structure(grade) : [];
+    const excluded = C.composeExclusions(context()).union;
+    const selectionFilters = {
+      ...state.filters,
+      sourceFiles: state.sources,
+      difficultyBuckets: state.buckets,
+    };
+    delete selectionFilters.scopeQuestionUids;
+    const recipeUids = activeAssessmentRecipeUids();
+    const seenUids = new Set();
+    const drafts = new Map();
+    if (grade) {
+      for (const entry of Unified.candidates(index, {
+        grade,
+        semanticSubject: state.filters.semanticSubject,
+        originalCurriculum: state.filters.originalCurriculum,
+      })) {
+        const record = entry.record;
+        const uid = record.questionUid;
+        if (!uid || seenUids.has(uid)) continue;
+        if (recipeUids && !recipeUids.has(uid)) continue;
+        if (!composeMetaMatches(record) || !workspaceMatches(record, selectionFilters) ||
+            !workspaceEligibility(record).ok || excluded.has(uid)) continue;
+        seenUids.add(uid);
+        const key = Unified.scopeKey(grade, entry.subject, entry.unitKey);
+        let draft = drafts.get(key);
+        if (!draft) {
+          const subjectIndex = structure.findIndex((group) => group.subject === entry.subject);
+          draft = {
+            key, entry, subjectIndex: subjectIndex < 0 ? structure.length : subjectIndex,
+            uids: [], paths: new Set(),
+          };
+          drafts.set(key, draft);
+        }
+        draft.uids.push(uid);
+        draft.paths.add(C.generalPathKey(record));
+      }
+    }
+    const singleSubject = structure.length === 1;
+    const result = [...drafts.values()]
+      .sort((a, b) => a.subjectIndex - b.subjectIndex ||
+        Number(a.entry.unclassified) - Number(b.entry.unclassified) ||
+        a.entry.unitOrder - b.entry.unitOrder)
+      .map((draft) => ({
+        key: draft.key,
+        L1: draft.entry.subjectLabel,
+        L2: draft.entry.unitLabel,
+        label: draft.entry.unitLabel,
+        fullLabel: singleSubject ? draft.entry.unitLabel : `${draft.entry.subjectLabel} · ${draft.entry.unitLabel}`,
+        basicScope: true,
+        unified: true,
+        unclassified: draft.entry.unclassified,
+        paths: [...draft.paths],
+        scopeQuestionUids: draft.uids,
+        count: draft.uids.length,
+        eligibleCount: draft.uids.length,
+        supplemental: false,
+      }));
+    if (renderingScopes) {
+      scopeRenderCache = result;
+      displayedScopes = result;
+    }
+    return result;
+  }
+  function canonicalScopeOptions() {
     if (renderingScopes && scopeRenderCache) return scopeRenderCache;
     const canonicalRows = taxonomyRowsForFilters(state.filters);
     const units = new Map();
@@ -1070,7 +1241,7 @@
   function scopeIsSelected(scope) {
     return (
       state.scopes.includes(scope.key) ||
-      scope.paths.some((path) => state.scopes.includes(path))
+      (!scope.unified && scope.paths.some((path) => state.scopes.includes(path)))
     );
   }
   function selectedScopeOptions() {
@@ -1105,7 +1276,7 @@
         paths: s.paths,
         scopeQuestionUids: s.scopeQuestionUids,
         depth: 4,
-        label: s.label,
+        label: s.fullLabel || s.label,
         count:
           state.distribution === "all"
             ? s.eligibleCount
@@ -1180,9 +1351,11 @@
     const scopeQuestionUids = useFrozen
       ? unique(rows.flatMap(row => row.scopeQuestionUids || state.catalog.records.filter(r => C.rowMatches(r, row, workspaceMatchOptions())).map(r => r.questionUid)))
       : selectedScopeQuestionUids();
-    const routedFilters = isSourceRoutedGeneralRange()
-      ? { ...state.filters, courseKey: "" }
-      : state.filters;
+    const routedFilters = unifiedIndex()
+      ? omitUnifiedFilters(state.filters)
+      : isSourceRoutedGeneralRange()
+        ? { ...state.filters, courseKey: "" }
+        : state.filters;
     return {
       filters: {
         ...routedFilters,
@@ -1274,14 +1447,24 @@
       status("이전 출제 이력을 확인하지 못했습니다. 시험지는 그대로 출제할 수 있습니다.");
     }
   }
+  function unifiedPrimaryMarkup(filters) {
+    const subjects = Unified.subjectsForGrade(filters.grade);
+    const subjectField = subjects.length > 1
+      ? `<label>과목<select data-filter="semanticSubject" data-group="compose">${options(subjects.map(({ value, label }) => ({ value, label })), filters.semanticSubject, "전체 과목")}</select></label>`
+      : `<p class="muted compose-subject-note">${esc(subjects[0]?.label || "")} 전체 단원</p>`;
+    return `<div class="compose-step compose-grade"><div class="compose-step-head"><span class="compose-step-number">1</span><h2>학년</h2></div><label>학년<select data-filter="grade" data-group="compose">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, null)}</select></label></div>
+        <div class="compose-step compose-subject"><div class="compose-step-head"><span class="compose-step-number">2</span><h2>과목</h2></div><div class="compose-subject-fields">${subjectField}</div></div>`;
+  }
   function filterMarkup(filters, prefix, compose = false) {
+    if (compose === "primary" && unifiedIndex()) return unifiedPrimaryMarkup(filters);
+    const unifiedDetail = compose === "detail" && Boolean(unifiedIndex());
     const courseLabel = (value) =>
       /^M([123])-([12])$/.test(value)
         ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
         : value;
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
       projected = C.hasSubjectProjection?.(filters.grade) === true;
-    const courses = projected
+    const courses = unifiedDetail ? [] : projected
       ? C.subjectProjectionOptions(filters.grade)
       : unique(
           taxonomyRowsForFilters({ ...filters, courseKey: "" })
@@ -1294,7 +1477,7 @@
       return `<div class="compose-step compose-grade"><div class="compose-step-head"><span class="compose-step-number">1</span><h2>학년</h2></div><label>학년<select data-filter="grade" data-group="compose">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, null)}</select></label></div>
         <div class="compose-step compose-subject"><div class="compose-step-head"><span class="compose-step-number">2</span><h2>교육과정 / 과목</h2></div><div class="compose-subject-fields"><label>교육과정<select data-filter="curriculumKey" data-group="compose">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${courseField}</div></div>`;
     if (compose === "detail")
-      return `<div class="compose-detail-fields"><label>학교<select data-filter="school" data-group="compose">${options(finderSchoolValues(filters), filters.school, "전체 학교")}</select></label>
+      return `<div class="compose-detail-fields">${unifiedDetail ? `<label>원본 교육과정<select data-filter="originalCurriculum" data-group="compose">${options([{ value: "2015", label: "2015 개정" }, { value: "2022", label: "2022 개정" }], filters.originalCurriculum, "전체 (2015·2022 통합)")}</select></label>` : ""}<label>학교<select data-filter="school" data-group="compose">${options(finderSchoolValues(filters), filters.school, "전체 학교")}</select></label>
         <label>시험 시기<select data-filter="axis" data-group="compose">${options([{ value: "1-mid", label: "1학기 중간" }, { value: "1-final", label: "1학기 기말" }, { value: "2-mid", label: "2학기 중간" }, { value: "2-final", label: "2학기 기말" }], filters.axis, "전체 시험")}</select></label>
         <label>시작 연도<input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="compose" value="${esc(filters.yearFrom || "")}" placeholder="전체"></label>
         <label>끝 연도<input type="number" min="2000" max="2100" data-filter="yearTo" data-group="compose" value="${esc(filters.yearTo || "")}" placeholder="전체"></label></div>`;
@@ -1991,6 +2174,7 @@
 
   function renderScopes() {
     if (
+      !unifiedIndex() &&
       C.isHighSemanticSubjectGrade?.(state.filters.grade) &&
       !state.filters.semanticSubject
     )
@@ -2005,8 +2189,11 @@
         `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`
       ).join("")}</div>`
     ).join("")}</div>`;
+    const unifiedNotice = unifiedIndex()
+      ? `<p class="muted">2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶었습니다. 숫자는 선택 가능한 문항 수입니다. ‘단원 미분류’는 단원 정보가 없는 문항이며 선택하면 함께 출제됩니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 과목·학교·연도 조건을 넓혀 보세요.</p>' : ""}`
+      : "";
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
-      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 승인된 공통 범위를 하나로 묶습니다. 숫자는 현재 조건과 품질 검사를 통과한 선택 가능 문항 수이며 같은 UID는 한 번만 셉니다. 기본은 난이도를 지정하지 않고, 미지정 문항을 포함한 전체 난이도에서 선택합니다.</p>
+      ${unifiedNotice || '<p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 승인된 공통 범위를 하나로 묶습니다. 숫자는 현재 조건과 품질 검사를 통과한 선택 가능 문항 수이며 같은 UID는 한 번만 셉니다. 기본은 난이도를 지정하지 않고, 미지정 문항을 포함한 전체 난이도에서 선택합니다.</p>'}
       <div class="range-controls"><label>범위 시작<select id="scope-start">${options(
         rangeOptions,
         rangeOptions[0]?.value ?? 0,
@@ -2670,6 +2857,31 @@
       .sort((a, b) => Number(b[1]) - Number(a[1]) || a[0].localeCompare(b[0]))
       .map(([code, count]) => ({ code, count: Number(count), label: HEALTH_REASON_LABELS[code] || "" }));
   }
+  // Counts of general-use records (one per UID) by how the unified unit list places them.
+  function unifiedHealth() {
+    const index = unifiedIndex();
+    if (!index) return null;
+    const result = { placed: 0, unit: 0, unclassified: 0, unplaced: 0, unplacedReasons: {} };
+    const seen = new Set();
+    for (const record of state.catalog.records) {
+      if (!record.questionUid || seen.has(record.questionUid) || !C.generalUseEligibility(record).ok) continue;
+      seen.add(record.questionUid);
+      const entry = index.byUid.get(record.questionUid);
+      if (!entry) {
+        const reason = Unified.classify(record).reason || "UNPLACED";
+        result.unplaced++;
+        result.unplacedReasons[reason] = (result.unplacedReasons[reason] || 0) + 1;
+        continue;
+      }
+      result.placed++;
+      if (entry.unclassified) result.unclassified++;
+      else result.unit++;
+    }
+    return result;
+  }
+  const UNPLACED_REASON_LABELS = {
+    GRADE_UNRESOLVED: "학년 근거 없음(등록 학년 미확정)",
+  };
   function renderHealth() {
     const h = state.catalog.health,
       total = Number(h.questions) || 0,
@@ -2681,6 +2893,9 @@
       ["전체 문항", h.questions],
       ["자동출제 승인", h.automatic],
       ["문제지 만들기 범위에 포함", composeScope],
+      ...(state.healthUnified
+        ? [["단원에 배치", state.healthUnified.unit], ["단원 미분류로 제공", state.healthUnified.unclassified], ["학년 근거 없어 제외", state.healthUnified.unplaced]]
+        : []),
       ["metadata records", h.metadataRecords],
     ]
       .map(
@@ -2696,7 +2911,7 @@
               `<tr><th>${label ? `${esc(label)} <span class="muted">(${esc(code)})</span>` : esc(code)}</th><td>${fmt(count)}${total ? ` <span class="muted">· ${((count / total) * 100).toFixed(1)}%</span>` : ""}</td></tr>`,
           )
           .join("")
-      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">자동출제 승인은 단원 분류와 검수까지 모두 승인된 문항입니다. 문제지 만들기는 원본 식별·무결성이 확인된 문항 중 단원 범위에 연결되는 문항을 제공하므로 위 사유로 막히지 않습니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">교육과정 간 연결 검수: 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. 문제지 자동 선택은 선택한 교육과정 안에서 수행합니다. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>catalog ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
+      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">자동출제 승인은 단원 분류와 검수까지 모두 승인된 문항입니다(엄격한 승인 지표이며 사용 조건이 아닙니다). 문제지 만들기는 원본 식별·무결성이 확인된 모든 문항을 제공합니다. 원본에 대한 검수·품질 표시(보류 표시 등)와 메타데이터 검수 대기는 사용을 막지 않고 별도 검수 라인에서 처리합니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">${state.healthUnified ? `교육과정 통합 표시: 문제지 만들기는 2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶어 보여줍니다. 묶음은 표시와 선택에만 적용하며 문항의 원본 교육과정·키·메타데이터는 바꾸지 않습니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다. 단원 근거가 없는 문항은 학년·과목별 ‘단원 미분류’로 제공합니다.${Object.entries(state.healthUnified.unplacedReasons).map(([code, count]) => ` ${esc(UNPLACED_REASON_LABELS[code] || code)} ${fmt(count)}개는 학년이 없어 학년별 목록에 넣지 못했습니다.`).join("")} ` : ""}교육과정 간 연결 검수(엄격한 승인 지표): 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a> · <a href="data/archive2-unified-unit-policy.json" target="_blank">통합 표시 정책</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>catalog ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
   }
   function applyFiveMinuteViewGuard() {
     if (!isAssessmentRecipeMode()) return;
@@ -2893,7 +3108,7 @@
         identityTitle: state.header.title,
         count: part.length,
         grade: state.filters.grade,
-        subject: C.subjectProjectionLabel(state.filters),
+        subject: C.subjectProjectionLabel(state.filters) || composeSubjectLabel(),
         questionUids: part.map((q) => q.questionUid),
         printHeaderOptions: {
           ...state.header,
@@ -2987,7 +3202,7 @@
         throw new Error("저장 전에 안내를 확인해 주세요.");
       }
       const papers = await prepare();
-      const filters = request(true).filters;
+      const filters = compactSaveFilters(request(true).filters);
       const saveIndexVersion = state.indexVersion || state.catalog?.indexVersion || "";
       if (!saveIndexVersion) throw new Error("현재 문항 목록 버전을 확인할 수 없습니다.");
       const signature = JSON.stringify({
@@ -3157,6 +3372,17 @@
         status(e.message, true);
       }
     }
+  }
+  // The saved-paper endpoint rejects selection filters above 200 KB. A unified unit can hold
+  // thousands of UIDs, so when the filters would not fit, record only the UIDs the papers use
+  // (the server still replays every saved question against them).
+  const SAVE_FILTER_BYTE_LIMIT = 150000;
+  function compactSaveFilters(filters) {
+    if (!Array.isArray(filters.scopeQuestionUids)) return filters;
+    // UIDs and path keys are ASCII, so the string length is the byte length for the large parts.
+    if (JSON.stringify(filters).length <= SAVE_FILTER_BYTE_LIMIT) return filters;
+    const used = new Set(state.selected.map((record) => record.questionUid));
+    return { ...filters, scopeQuestionUids: filters.scopeQuestionUids.filter((uid) => used.has(uid)) };
   }
   function generate(rebuild = false) {
     if (state.sealed) return;
@@ -3383,7 +3609,7 @@
               .slice(0, 10)),
           question_count: paper.questions.length,
           archive_file: "MIXED:" + paper.key,
-          subject: C.subjectProjectionLabel(state.filters),
+          subject: C.subjectProjectionLabel(state.filters) || composeSubjectLabel(),
           pdf_qpp: paper.meta.qpp,
           history_mode: "off",
           mixed_payload_json: { questions: paper.questions, meta: paper.meta },
@@ -3852,10 +4078,18 @@
           state.filters.family = "";
           if (state.find.courseKey) state.filters.courseKey = state.find.courseKey;
         }
-        state.filters = C.reconcileFinderFilters(
-          state.filters,
-          state.catalog.taxonomy,
-        );
+        if (unifiedIndex()) {
+          // A finder curriculum choice is a search aid, not a compose restriction: compose
+          // starts from the unified list (original curriculum "전체").
+          state.filters.curriculumKey = "";
+          state.filters.originalCurriculum = "";
+          state.filters = reconcileUnifiedFilters(state.filters);
+        } else
+          state.filters = C.reconcileFinderFilters(
+            state.filters,
+            state.catalog.taxonomy,
+          );
+        state.scopeNotice = "";
         state.sources = state.sources.filter(file => state.catalog.records.some(record =>
           record.sourceFile === file && C.browseGradeMatchesRecord(
             record,
@@ -4195,11 +4429,12 @@
         if (el.dataset.group === "compose") {
           if (el.dataset.filter === "L3") delete state.filters.L4;
           if (
-            ["grade", "curriculumKey", "courseKey", "semanticSubject"].includes(
+            ["grade", "curriculumKey", "courseKey", "semanticSubject", "originalCurriculum"].includes(
               el.dataset.filter,
             )
           ) {
             state.scopes = [];
+            state.scopeNotice = "";
             delete state.filters.L3;
             delete state.filters.L4;
             if (el.dataset.filter === "grade") {
@@ -4209,22 +4444,29 @@
               state.filters.curriculumKey = "";
               state.filters.courseKey = "";
               state.filters.semanticSubject = "";
+              state.filters.originalCurriculum = "";
               state.filters.family = "";
               state.filters.school = "";
             }
-            if (
-              el.dataset.filter === "curriculumKey" &&
-              !C.hasSubjectProjection?.(state.filters.grade)
-            )
-              state.filters.courseKey = "";
-            if (el.dataset.filter === "semanticSubject") {
-              state.filters.courseKey = "";
-              state.filters.family = "";
+            if (unifiedIndex()) {
+              // The unified unit list owns subject and curriculum; the finder reconcile
+              // rules (2015/2022 course keys) do not apply to it.
+              state.filters = reconcileUnifiedFilters(state.filters);
+            } else {
+              if (
+                el.dataset.filter === "curriculumKey" &&
+                !C.hasSubjectProjection?.(state.filters.grade)
+              )
+                state.filters.courseKey = "";
+              if (el.dataset.filter === "semanticSubject") {
+                state.filters.courseKey = "";
+                state.filters.family = "";
+              }
+              state.filters = C.reconcileFinderFilters(
+                state.filters,
+                state.catalog.taxonomy,
+              );
             }
-            state.filters = C.reconcileFinderFilters(
-              state.filters,
-              state.catalog.taxonomy,
-            );
             reconcileFinderSchool(state.filters);
           }
           invalidate();
@@ -4263,7 +4505,7 @@
         render();
       } else if (el.dataset.scope) {
         const scope = (displayedScopes || scopeOptions()).find((item) => item.key === el.dataset.scope);
-        const legacyPaths = scope?.paths || [];
+        const legacyPaths = scope?.unified ? [] : scope?.paths || [];
         state.scopes = el.checked
           ? [
               ...state.scopes.filter((x) => !legacyPaths.includes(x)),
@@ -4272,6 +4514,7 @@
           : state.scopes.filter(
               (x) => x !== el.dataset.scope && !legacyPaths.includes(x),
             );
+        state.scopeNotice = "";
         invalidate();
         render();
       } else if (el.id === "distribution" || el.id === "count") {
@@ -4615,7 +4858,7 @@
     state.filters = {};
     if (routedGrades.size === 1)
       state.filters.grade = [...routedGrades][0];
-    if (routedCurriculumCourses.size === 1) {
+    if (routedCurriculumCourses.size === 1 && !unifiedIndex()) {
       const [curriculumKey, courseKey] = [...routedCurriculumCourses][0].split("\u0000");
       state.filters.curriculumKey = curriculumKey;
       state.filters.courseKey = courseKey;
@@ -4653,8 +4896,11 @@
       // Compose runs in general mode: it offers records with general-use
       // eligibility AND a scope parent. Count them once here (this also warms
       // workspaceScopeParent's per-record cache) for the status line and health view.
-      state.healthComposeScope = state.catalog.records.reduce(
-        (n, record) => n + (C.generalUseEligibility(record).ok && workspaceScopeParent(record) ? 1 : 0), 0);
+      state.healthUnified = unifiedHealth();
+      state.healthComposeScope = state.healthUnified
+        ? state.healthUnified.placed
+        : state.catalog.records.reduce(
+          (n, record) => n + (C.generalUseEligibility(record).ok && workspaceScopeParent(record) ? 1 : 0), 0);
       state.byUid = new Map(
         state.catalog.records
           .filter((r) => r.questionUid)

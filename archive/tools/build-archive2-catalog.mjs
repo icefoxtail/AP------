@@ -416,6 +416,7 @@ for (const exam of exams) {
       ...(question.reviewStatus && /^meta-foundation:[^:]+:exam-(?:final_qa|review2)-v2:/.test(meta?.metadataRevision || "")
         ? { sourceReviewStatus: question.reviewStatus } : {}),
       legacyStandardUnitKey: question.standardUnitKey || "",
+      legacyStandardUnit: question.standardUnit || "",
       legacySubUnitKey: question.subUnitKey || "",
       identityStatus,
       sourceIntegrityStatus: identityStatus === "VERIFIED" ? "VERIFIED" : "UNRESOLVED",

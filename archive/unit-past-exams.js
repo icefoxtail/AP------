@@ -102,7 +102,12 @@
         L3: String(meta.L3 || record.L3 || '').trim(),
         L4: String(meta.L4 || record.L4 || '').trim(),
         difficultyBucket: meta.difficultyBucket || record.difficultyBucket || '',
-        defaultSelectable: meta.defaultSelectable !== undefined ? meta.defaultSelectable : record.defaultSelectable,
+        // User decision 2026-10-29: source hold annotations (sourceIssueHold /
+        // sourceDefectCandidate) are not usage gates. The metadata record keeps the flag and its
+        // history; only the selectable state derived from it is lifted here.
+        defaultSelectable: (meta.sourceIssueHold === true || meta.sourceDefectCandidate === true)
+          ? true
+          : (meta.defaultSelectable !== undefined ? meta.defaultSelectable : record.defaultSelectable),
         metaFoundationRuntimeAvailable: authority.active,
         metaFoundationOwnedScope: taxonomyGate.owned,
         metaFoundationTaxonomyValid: taxonomyGate.valid,

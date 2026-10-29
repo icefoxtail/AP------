@@ -557,6 +557,14 @@
   // metadata approval path. Keep identity/integrity and the source payload
   // contract hard, while leaving taxonomy/approval/version status as
   // supplemental metadata state for later repair.
+  //
+  // User decision 2026-10-29: review/quality annotations about the ORIGINAL source
+  // (sourceIssueHold, sourceDefectCandidate, sourceQualityDisposition, source-release
+  // fingerprint HOLD, "pending review" metadata) are NOT usage gates. They are handled
+  // upstream by the correction protocol and the scheduled meta/SVG review lines; the
+  // records and the strict basicEligibility() approval metric are left untouched. Only
+  // technical gates remain here: the question must have a verified identity, an intact
+  // source reference and a fingerprint so it can load, be restored and render.
   function generalUseEligibility(record = {}) {
     const reasons = [];
     if (!UID.test(record.questionUid || "") || record.identityStatus !== "VERIFIED")
@@ -569,11 +577,6 @@
       !text(record.sourceFingerprint)
     )
       reasons.push("source");
-    if (["SOURCE_BLOCKED", "SOURCE_REPAIR_REQUIRED", "SOLUTION_REPAIR_REQUIRED",
-      "ANSWER_REPAIR_REQUIRED"].includes(record.sourceQualityDisposition))
-      reasons.push("source");
-    if (record.sourceIssueHold === true || record.sourceDefectCandidate === true)
-      reasons.push("source_issue");
     return { ok: reasons.length === 0, reasons: [...new Set(reasons)] };
   }
   const eligibility = basicEligibility;
@@ -626,11 +629,16 @@
     });
     return overlay;
   }
+  // Path key a record carries when general-use filtering overlays its unverified fallback
+  // taxonomy. Selection requests (and the server-side replay of them) must name exactly this key.
+  function generalPathKey(record, depth = 4) {
+    return pathKey(generalFilterRecord(record, { useMode: "general" }), depth);
+  }
   function matches(record, filters = {}, options = {}) {
     const filterRecord = options.useMode === "general"
       ? generalFilterRecord(record, options)
       : record;
-    if (Array.isArray(filters.scopeQuestionUids) && !filters.scopeQuestionUids.includes(record.questionUid))
+    if (Array.isArray(filters.scopeQuestionUids) && !uidSetFor(filters.scopeQuestionUids).has(record.questionUid))
       return false;
     if (
       filters.primaryPaths?.length &&
@@ -719,6 +727,18 @@
     }
     return next;
   }
+  // `scopeQuestionUids` lists can hold thousands of UIDs and are tested once per record and per
+  // row on every render. Membership is answered from a Set cached per array; the cache entry is
+  // rebuilt if the array's length changes, so an array extended in place is never answered stale.
+  const uidSets = new WeakMap();
+  function uidSetFor(list) {
+    let entry = uidSets.get(list);
+    if (!entry || entry.size !== list.length) {
+      entry = { size: list.length, set: new Set(list) };
+      uidSets.set(list, entry);
+    }
+    return entry.set;
+  }
   function composeExclusions(context = {}) {
     const sets = {};
     const union = new Set();
@@ -729,6 +749,10 @@
     return { sets, union };
   }
   function rowMatches(record, row, options = {}) {
+    // The UID scope is the cheapest test and every condition is required, so test it first:
+    // most records belong to no scope row and never reach the path-key computation.
+    if (Array.isArray(row.scopeQuestionUids) && !uidSetFor(row.scopeQuestionUids).has(record.questionUid))
+      return false;
     const filterRecord = options.useMode === "general"
       ? generalFilterRecord(record, options)
       : record;
@@ -737,7 +761,6 @@
       : !row.path || pathKey(filterRecord, row.depth || 4) === row.path;
     return (
       pathsMatch &&
-      (!Array.isArray(row.scopeQuestionUids) || row.scopeQuestionUids.includes(record.questionUid)) &&
       (!row.difficultyBuckets?.length ||
         (difficultyEligible(record) && row.difficultyBuckets.includes(record.difficultyBucket)))
     );
@@ -1016,6 +1039,7 @@
     META_FIELDS,
     OPTIONAL_METADATA_FIELDS,
     pathKey,
+    generalPathKey,
     basicScopeParent,
     normalizeFile,
     normalizeSearch,

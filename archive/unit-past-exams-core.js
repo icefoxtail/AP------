@@ -354,6 +354,22 @@
     return archive2Core.highSemanticSubjectForCourseKey(courseKey);
   }
 
+  const IGNORED_IDENTITIES = Object.freeze({
+    'original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js#22': '공통수학 문항'
+  });
+
+  // True when the classification of this exact question is decided by its file#number identity
+  // (manual override or explicit ignore) instead of by its unit key and label alone. Callers that
+  // cache classifications by key/label must not reuse a cached result for such a question.
+  function hasIdentityRule(record, profileOrId = 'h1') {
+    const profile = getProfile(profileOrId);
+    const questionNo = getQuestionNo(record);
+    if (!questionNo) return false;
+    const identity = `${normalizePath(record && (record.sourceFile || record._sourceFile))}#${questionNo}`;
+    return Boolean(profile.overrides[identity]) ||
+      (isHighSemanticProfile(profile) && Boolean(IGNORED_IDENTITIES[identity]));
+  }
+
   function classifyRecord(record, profileOrId = 'h1') {
     const profile = getProfile(profileOrId);
     const sourceFile = normalizePath(record && (record.sourceFile || record._sourceFile));
@@ -368,10 +384,8 @@
     const sourceUnit = String(record && record.standardUnit || '').trim();
     const unitByKey = Object.fromEntries(profile.units.map(unit => [unit.key, unit]));
 
-    if (isHighSemanticProfile(profile)) {
-      if (identity === 'original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js#22') {
-        return { status: 'ignored', reason: '공통수학 문항' };
-      }
+    if (isHighSemanticProfile(profile) && IGNORED_IDENTITIES[identity]) {
+      return { status: 'ignored', reason: IGNORED_IDENTITIES[identity] };
     }
 
     if (unitByKey[sourceKey]) return { status: 'classified', unitKey: sourceKey, reason: 'h22-direct' };
@@ -1362,6 +1376,7 @@
     getSourceExamKey,
     isInScope,
     classifyRecord,
+    hasIdentityRule,
     compareRecords,
     normalizeDifficulty,
     getDifficultyBucket,
