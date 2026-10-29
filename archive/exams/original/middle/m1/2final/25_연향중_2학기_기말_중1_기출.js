@@ -29,7 +29,11 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 정팔각형 세 개를 나란히 보여 준다. 첫째는 한 꼭짓점에서 그은 대각선 5개와 그것이 나누는 삼각형 6개, 둘째는 한 변을 연장해 만든 한 외각 45°, 셋째는 내부의 한 점과 8개의 꼭짓점을 이어 생긴 삼각형 8개이다.",
+    "solutionImageCaption": "정팔각형의 대각선, 한 외각, 내부의 점과 꼭짓점을 이은 삼각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -73,7 +77,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:484501079d31ab68813abe742124421432c46440dfed61ba1963e330ac53fb29",
-    "difficultyEvidenceSha": "sha256:42aa166ed0cb0c8a059f046ef27de4b7c08f091c8fe7a13df4a5672c350ab7e2"
+    "difficultyEvidenceSha": "sha256:42aa166ed0cb0c8a059f046ef27de4b7c08f091c8fe7a13df4a5672c350ab7e2",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위에 이웃한 두 각의 쌍이 두 곳에 있다. 아래쪽 점의 85°와 x, 위쪽 점의 95°와 y이며, 호의 개수로 x와 95°, y와 85°가 같은 크기임이 짝지어 보인다.",
+    "solutionImageCaption": "한 직선 위의 이웃한 두 각의 합은 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -117,7 +125,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:c7b826bd3f9f81a211e0cdb6839e0571485e5cebee8f69eb05898056d666c3f7",
-    "difficultyEvidenceSha": "sha256:7a27036ca06b8cbf90d36512fcf106ba850d3c8d061c1a9fe8f2bd6194dbbe52"
+    "difficultyEvidenceSha": "sha256:7a27036ca06b8cbf90d36512fcf106ba850d3c8d061c1a9fe8f2bd6194dbbe52",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 별 모양의 다섯 꼭짓점의 각이 30°, 40°, 40°, 40°, z로 표시되어 있고, 오른쪽 삼각형(색칠)의 세 각이 40°, 180°-x, y로 표시되어 있어 x-y의 관계를 삼각형의 내각의 합으로 읽게 한다.",
+    "solutionImageCaption": "꼭짓점의 각의 합과 오른쪽 삼각형의 내각의 합을 이용한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -244,7 +256,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:74ae052f4d1c3868377858f42e5f249a4e2b66bbd27f063214b830feb06c5f14",
-    "difficultyEvidenceSha": "sha256:799efb15a661979a31668ad350b8b234bd034792e81fdb8965337515ec438a5d"
+    "difficultyEvidenceSha": "sha256:799efb15a661979a31668ad350b8b234bd034792e81fdb8965337515ec438a5d",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 세 호 AB, BC, CPA 곁에 호의 길이의 비 1, 3, 5가 적혀 있고, 각 호의 중심각이 40°, 120°, 200°로 표시되어 있다. 현 AB와 BC는 점선으로 그려 호와 현을 구별한다.",
+    "solutionImageCaption": "호의 길이의 비와 같은 비로 중심각이 40°, 120°, 200°이지만 현의 길이의 비는 같지 않다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -488,7 +504,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:e507c0dfa948f7469e752101e34bd5a2c13c053b5a99220d4f07776667661648",
-    "difficultyEvidenceSha": "sha256:4b4d6073f1776c1f1badabc99cc2f37e2f6e337f4d2cc01af99a7934cf30c423"
+    "difficultyEvidenceSha": "sha256:4b4d6073f1776c1f1badabc99cc2f37e2f6e337f4d2cc01af99a7934cf30c423",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O, 반지름 l인 원이 지름으로 두 반원 호로 나뉘고, 각 호에 밑면의 둘레와 같은 6π cm가 적혀 있어 원뿔을 두 바퀴 굴린 자국의 둘레가 6π+6π임을 보여 준다.",
+    "solutionImageCaption": "반지름 l인 원의 둘레가 밑면의 둘레 6π인 두 호로 나뉜다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
