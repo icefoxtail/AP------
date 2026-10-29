@@ -241,15 +241,34 @@
           "reviewStatus",
           "metadataRevision",
         ]) {
-          if (
+          const sourceAsserts =
             question[field] !== undefined &&
             question[field] !== null &&
-            String(question[field]).trim() !== "" &&
+            String(question[field]).trim() !== "";
+          // A conflict needs the catalog record to assert a non-empty value that
+          // differs from the source. An empty/undefined record field (fallback or
+          // unverified taxonomy) keeps the source value and is not a conflict.
+          const recordAsserts =
+            record[field] !== undefined &&
+            record[field] !== null &&
+            String(record[field]).trim() !== "";
+          // metaFoundationPackVersion is revision provenance: when the catalog record
+          // carries a different metadataRevision than the source JS, the catalog is a
+          // newer re-certification and its pack version supersedes the stale source one.
+          const supersededRevision =
+            field === "metaFoundationPackVersion" &&
+            String(record.metadataRevision ?? "").trim() !== "" &&
+            String(record.metadataRevision) !== String(question.metadataRevision ?? "");
+          if (
+            sourceAsserts &&
+            recordAsserts &&
+            !supersededRevision &&
             JSON.stringify(question[field]) !== JSON.stringify(record[field]) &&
             !optionalFields.has(field) &&
             !metaV2Sidecar
           )
             throw new Error("source metadata 충돌: " + field);
+          if (sourceAsserts && !recordAsserts && !optionalFields.has(field) && !metaV2Sidecar) continue;
           if (record[field] !== undefined) result[field] = record[field];
           else if (optionalFields.has(field)) delete result[field];
         }

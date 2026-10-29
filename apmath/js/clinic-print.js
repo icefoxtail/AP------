@@ -3480,7 +3480,7 @@ function clinicPrintFindRecommendationRecord(candidate, catalog) {
 
 async function clinicPrintEnsureArchive2Source() {
     await clinicPrintLoadArchive2Script('problem-bank-meta', '../archive/problem-bank-meta.js?v=20261011-rpm-debt-projection1', 'ProblemBankMeta');
-    await clinicPrintLoadArchive2Script('archive2-source', '../archive/archive2-source.js?v=20261016-clinic-source-base-1', 'Archive2Source');
+    await clinicPrintLoadArchive2Script('archive2-source', '../archive/archive2-source.js?v=20261029-source-meta-conflict-1', 'Archive2Source');
     if (typeof window.Archive2Source?.restore !== 'function') throw new Error('Archive 2.0 원본 검증기를 불러오지 못했습니다.');
 }
 
