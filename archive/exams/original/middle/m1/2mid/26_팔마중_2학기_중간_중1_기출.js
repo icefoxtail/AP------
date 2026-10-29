@@ -405,7 +405,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 육각기둥을 세 번 그리고 모서리 BH를 굵게 표시했다. 첫째 그림은 BH와 만나는 모서리, 둘째 그림은 BH와 평행한 모서리, 셋째 그림은 BH와 꼬인 위치에 있는 모서리를 빨간색으로 나타냈고 보이지 않는 모서리는 점선이다.",
+    "solutionImageCaption": "BH와 만나는 모서리와 평행한 모서리를 제외한 나머지 모서리가 BH와 꼬인 위치에 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -557,7 +561,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB의 양 끝 A, B에 각 A, 각 B를 놓아 삼각형 ABC를 만드는 두 가지 작도 순서를 나란히 보인 그림이다. 왼쪽은 AB, 각 A, 각 B 순이고 오른쪽은 각 A, AB, 각 B 순이다. 변 옆의 1단계, 2단계, 3단계는 그 변을 그리는 작도 순서를 나타낸다.",
+    "solutionImageCaption": "1단계, 2단계, 3단계는 작도 순서이며, 왼쪽은 AB→∠A→∠B, 오른쪽은 ∠A→AB→∠B이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
