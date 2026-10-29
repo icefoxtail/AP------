@@ -20,7 +20,7 @@ export const unmarkedPointIds=plan=>{
   return Array.isArray(plan?.unmarkedPointNames)?[...plan.unmarkedPointNames]:[];
 };
 // Texts of a plan that write point names (caption and the labels of marks/lengths), for the check that a nameless point is never named in text.
-export function planNameTexts(plan){
+export function planNameTexts(plan,exceptPointId){
   const out=[],add=value=>{if(typeof value==='string')out.push(value);else if(value&&typeof value==='object'&&!Array.isArray(value)){add(value.text);add(value.math);}};
   add(plan?.caption);
   const marks=plan?.planeMarks&&typeof plan.planeMarks==='object'?plan.planeMarks:{};
@@ -30,6 +30,8 @@ export function planNameTexts(plan){
   for(const row of Array.isArray(marks.expressionLabels)?marks.expressionLabels:[])add(row?.text);
   for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])add(row?.label);
   for(const row of Array.isArray(marks.pathLabels)?marks.pathLabels:[])add(row?.label);
+  // A free text label anchored AT a point (at: its id) is how the figure writes that point's own label (P(a,b) beside P): it never counts against that point.
+  for(const row of Array.isArray(marks.textLabels)?marks.textLabels:[])if(!(typeof row?.at==='string'&&row.at===exceptPointId))add(row?.text);
   for(const row of Array.isArray(plan?.scalarLabels)?plan.scalarLabels:[]){add(row?.prefix);add(row?.unit);}
   return out;
 }
@@ -41,7 +43,8 @@ export function textNamesPoint(text,id){
 }
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels'],
+  textLabels:['id','at','text','labelKind','anchor','factRole'],
   dimensions:['id','from','to','label','labelKind','unit','side','style','offset','value','factRole'],
   pathLabels:['id','points','label','labelKind','unit','value','factRole'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel'],
@@ -69,6 +72,24 @@ export function angleBetween(a,v,c){
   return Math.acos(Math.max(-1,Math.min(1,(u[0]*w[0]+u[1]*w[1])/(nu*nw))))*180/Math.PI;
 }
 const list=(value,where)=>{if(value===undefined)return [];if(!Array.isArray(value))bad('MARK_FIELD_INVALID:'+where);return value;};
+
+// ---- free text labels (E30) -------------------------------------------------------------------------------------------------------------------
+// planeMarks.textLabels:[{id,at,text,labelKind?,anchor?,factRole?}] writes a short label that no segment, angle or region owns: a quadrant name such as 제2사분면 at a
+// source coordinate, the sign condition a>0, b<0, the label P(a,b) beside a point, the coordinates (-1,0) of a point the figure leaves unnamed.
+// `at` is a source coordinate [x,y] (the label is centred there, anchor CENTER) or the id of a displayed point (the label stands beside it, on the side `anchor` names, or on the
+// first free side without one). labelKind TEXT writes plain Korean text, MATH a formula; without labelKind a text with a Hangul syllable is TEXT, any other MATH.
+export const TEXT_LABEL_ANCHORS=['CENTER','N','NE','E','SE','S','SW','W','NW'];
+export const TEXT_LABEL_HANGUL=/[\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF]/u;
+export const TEXT_LABEL_MATH=/^[A-Za-z0-9 (),<>=+\-.]{1,40}$/;
+export const textLabelKind=row=>row?.labelKind??(TEXT_LABEL_HANGUL.test(String(row?.text??''))?'TEXT':'MATH');
+const TEXT_LABEL_FUNCTIONS=/(?<![A-Za-z])(?:sqrt|abs|log|logb|ln|exp|sin|cos|tan)(?![A-Za-z])/;
+const TEXT_LABEL_COORDINATE=/^[A-Za-z]?\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)$/;
+/** The model coordinates a textLabels row stands at, when `at` is a source coordinate pair (a point id adds no frame extent: the point is already in the frame). */
+export function textLabelExtentPoints(plan){
+  const rows=Array.isArray(plan?.planeMarks?.textLabels)?plan.planeMarks.textLabels:[],out=[];
+  for(const row of rows)if(Array.isArray(row?.at)&&row.at.length===2&&row.at.every(v=>typeof v==='number'&&Number.isFinite(v)))out.push([row.at[0],row.at[1]]);
+  return out;
+}
 
 // ---- dimension lines (E7) --------------------------------------------------------------------------------------------------------------------
 // planeMarks.dimensions:[{id,from,to,label,labelKind?,unit?,side,style?,offset?,value?,factRole?}] writes a length between two displayed points on a line
@@ -212,6 +233,29 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:mid,lineOwned:true,
       alternateAt:others,gaps:[8,6,10,20,32,48],priority:1,
       ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
+    factRolesByLabel[row.id]=role(row);
+  }
+
+  // --- free text labels (E30)
+  for(const row of list(marks.textLabels,'textLabels')){
+    if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:textLabels');
+    keysOk(row,KEYS.textLabels,'textLabels');claim(row.id,'textLabels');
+    if(typeof row.text!=='string'||!row.text.trim()||row.text.length>40)bad('TEXT_LABEL_TEXT_INVALID:'+row.id);
+    const kind=textLabelKind(row);
+    if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:textLabels.labelKind:'+row.id);
+    if(kind==='TEXT')plainTextOk(row.text,'textLabels.text',row.id);
+    else if(!TEXT_LABEL_MATH.test(row.text)||TEXT_LABEL_FUNCTIONS.test(row.text)||TEXT_LABEL_HANGUL.test(row.text))bad('TEXT_LABEL_MATH_UNSUPPORTED:'+row.id);
+    const byPoint=typeof row.at==='string';
+    let place;
+    if(byPoint)place=at(row.at);
+    else if(Array.isArray(row.at)&&row.at.length===2&&row.at.every(v=>typeof v==='number'&&Number.isFinite(v)))place=[row.at[0],row.at[1]];
+    else bad('TEXT_LABEL_AT_INVALID:'+row.id);
+    if(row.anchor!==undefined&&!TEXT_LABEL_ANCHORS.includes(row.anchor))bad('TEXT_LABEL_ANCHOR_INVALID:'+row.id);
+    const anchor=row.anchor??(byPoint?undefined:'CENTER');
+    // A coordinate pair written beside a point must be that point's coordinates (an optional one-letter name before it is not checked here).
+    const written=byPoint&&kind==='MATH'?TEXT_LABEL_COORDINATE.exec(row.text.trim()):null;
+    if(written&&(Math.abs(Number(written[1])-place[0])>1e-6||Math.abs(Number(written[2])-place[1])>1e-6))bad('TEXT_LABEL_COORDINATE_MISMATCH:'+row.id+':declared=('+written[1]+','+written[2]+'):point=('+Number(place[0].toFixed(6))+','+Number(place[1].toFixed(6))+')');
+    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.id,text:row.text,at:place,freeLabel:true,priority:1,...(anchor?{anchor}:{}),...(kind==='TEXT'?{labelKind:'TEXT'}:{})});
     factRolesByLabel[row.id]=role(row);
   }
 
@@ -385,6 +429,7 @@ export function planeMarkPointRefs(plan){
   for(const row of Array.isArray(marks.arcs)?marks.arcs:[])refs.push(row?.center,row?.from,row?.to);
   for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])refs.push(row?.from,row?.to);
   for(const row of Array.isArray(marks.pathLabels)?marks.pathLabels:[])if(Array.isArray(row?.points))refs.push(...row.points);
+  for(const row of Array.isArray(marks.textLabels)?marks.textLabels:[])if(typeof row?.at==='string')refs.push(row.at);
   for(const row of Array.isArray(marks.traces)?marks.traces:[]){refs.push(row?.center,row?.radius?.point,...(Array.isArray(row?.through)?row.through:[]));}
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
   return [...refs,...regionPointRefs(plan)].filter(id=>typeof id==='string');

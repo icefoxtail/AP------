@@ -86,6 +86,19 @@ def parse(source):
     if parser.peek()!='EOF':raise ValueError('UNRESOLVED_EXPRESSION')
     return result
 
+def parse_list(source):
+    """One expression, or several joined by commas written outside brackets (a>0, b<0): a 'list' node of the parsed parts. A free text label may be a list;
+    nothing else takes one (parse() still refuses a comma at the top level)."""
+    if not isinstance(source,str) or not source.strip() or len(source)>2048 or '\\' in source:raise ValueError('UNRESOLVED_EXPRESSION')
+    parts=[];depth=0;start=0
+    for index,ch in enumerate(source):
+        if ch=='(':depth+=1
+        elif ch==')':depth-=1
+        elif ch==',' and depth==0:parts.append(source[start:index]);start=index+1
+    parts.append(source[start:])
+    if len(parts)==1:return parse(source)
+    return Expr('list','',tuple(parse(part) for part in parts))
+
 def serialize(node,mode='tex'):
     """TeX, readable plain notation, or SVG text runs with real super/subscripts."""
     def s(v):return serialize(v,mode)
@@ -115,6 +128,7 @@ def serialize(node,mode='tex'):
     if k=='symbol':
         if mode=='svg':return '<tspan font-style="italic">'+escape(node.value)+'</tspan>'
         return {'pi':r'\pi','π':r'\pi','α':r'\alpha','β':r'\beta','θ':r'\theta'}.get(node.value,node.value) if mode=='tex' else ('π' if node.value=='pi' else node.value)
+    if k=='list':return (',\\;' if mode=='tex' else ', ').join(s(v) for v in a)
     if k=='group':return '('+s(a[0])+')'
     if k=='tuple':return '('+','.join(s(v) for v in a)+')'
     if k=='unary':

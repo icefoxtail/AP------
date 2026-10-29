@@ -35,6 +35,25 @@ TRACE_LABEL_AT_TOLERANCE=45.0       # degrees: a trace label's direction from th
 ANGLE_LABEL_MAX_DISTANCE_PX=90.0    # an angle label without a leader stands within this distance of its vertex (its nearest edge: the label reads as that arc's value)
 ANGLE_LEADER_END_TOLERANCE=0.5      # degrees: a leader may start at an end of its arc, where the arc meets a ray
 
+# ---- free text labels (E30): this observer's own copy of the placement rules and of the glyph codes a MATH label shows
+TEXT_LABEL_HANGUL=re.compile('[\u1100-\u11ff\u3130-\u318f\uac00-\ud7af]')
+TEXT_LABEL_ANCHORS=('CENTER','N','NE','E','SE','S','SW','W','NW')
+TEXT_LABEL_CENTER_SLACK_PX=18.5   # a centred label may sit this far from its stated place (the engine slides it at most 18 px to find room)
+TEXT_LABEL_MAX_GAP_PX=28.0        # a label beside a point has its nearest edge within this distance of the point
+def math_label_codes(text):
+    """The glyph codes (a set of acceptable hex codes per glyph, in reading order) of a MATH label of letters, digits, spaces and ( ) , < > = + - . : a letter is itself or its
+    italic math code, - is the minus sign, <= and >= the single relation glyphs; spaces draw nothing."""
+    out=[];text=text.replace(' ','');i=0
+    while i<len(text):
+        ch=text[i]
+        if ch in '<>' and text[i+1:i+2]=='=':out.append({'2264' if ch=='<' else '2265'});i+=2;continue
+        if ch=='-':out.append({'2212','2D'})
+        elif 'a'<=ch<='z':out.append({format(ord(ch),'X'),format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X')})
+        elif 'A'<=ch<='Z':out.append({format(ord(ch),'X'),format(0x1D434+ord(ch)-65,'X')})
+        else:out.append({format(ord(ch),'X')})
+        i+=1
+    return out
+
 def properly_cross(a,b,c,d):
     """True when the segments a-b and c-d cross at a point inside both (touching at an end does not count)."""
     u=(b[0]-a[0],b[1]-a[1]);v=(d[0]-c[0],d[1]-c[1]);w=(c[0]-a[0],c[1]-a[1])
@@ -392,6 +411,34 @@ def audit(p):
                 a,b=own;d=sub(b,a);fraction=((centre_model[0]-a[0])*d[0]+(centre_model[1]-a[1])*d[1])/(norm(d)**2)
                 if (row['labelAt']=='START' and fraction>0.3) or (row['labelAt']=='END' and fraction<0.7):errors.append('SEGMENT_LABEL_NOT_AT_END:'+oid)
         observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx,**({'labelKind':row['labelKind']} if row.get('labelKind') else {}),**({'unit':row['unit']} if row.get('unit') else {})})
+
+    # ---- free text labels (E30): a plain Korean or math label at a stated source coordinate, or beside a point on a stated side
+    for row in marks.get('textLabels',[]):
+        oid=row.get('id');box=label_clear(oid)
+        if box is None:continue
+        at=row.get('at');text=str(row.get('text',''))
+        if isinstance(at,str):target=forward(peer_point(at))
+        elif isinstance(at,list) and len(at)==2 and all(isinstance(v,(int,float)) and not isinstance(v,bool) for v in at):target=forward((float(at[0]),float(at[1])))
+        else:errors.append('TEXT_LABEL_AT_INVALID:'+oid);continue
+        kind=row.get('labelKind') or ('TEXT' if TEXT_LABEL_HANGUL.search(text) else 'MATH')
+        anchor=row.get('anchor') if row.get('anchor') is not None else ('CENTER' if not isinstance(at,str) else None)
+        if anchor is not None and anchor not in TEXT_LABEL_ANCHORS:errors.append('TEXT_LABEL_ANCHOR_INVALID:'+oid);continue
+        label_content(oid,kind,text,None)
+        node=elements.get(oid)
+        if kind=='MATH' and node is not None:
+            want=math_label_codes(text);codes=glyph_codes(node)
+            if len(codes)!=len(want) or any(code not in allowed for code,allowed in zip(codes,want)):errors.append('LABEL_TEXT_MISMATCH:'+oid)
+        cx,cy=box[0]+box[2]/2,box[1]+box[3]/2;ax,ay=target
+        if anchor=='CENTER':
+            if math.hypot(cx-ax,cy-ay)>TEXT_LABEL_CENTER_SLACK_PX:errors.append('TEXT_LABEL_NOT_AT_PLACE:'+oid)
+        else:
+            gap=math.hypot(max(box[0]-ax,0,ax-(box[0]+box[2])),max(box[1]-ay,0,ay-(box[1]+box[3])))
+            if gap>TEXT_LABEL_MAX_GAP_PX:errors.append('TEXT_LABEL_TOO_FAR:'+oid)
+            if anchor is not None:
+                dx=1 if 'E' in anchor else -1 if 'W' in anchor else 0;dy=1 if 'S' in anchor else -1 if 'N' in anchor else 0
+                if (dx>0 and box[0]<ax-0.5) or (dx<0 and box[0]+box[2]>ax+0.5) or (dy>0 and box[1]<ay-0.5) or (dy<0 and box[1]+box[3]>ay+0.5):errors.append('TEXT_LABEL_NOT_ON_SIDE:'+oid)
+                if (dx==0 and abs(cx-ax)>1.0) or (dy==0 and abs(cy-ay)>1.0):errors.append('TEXT_LABEL_NOT_ON_SIDE:'+oid)
+        observations.append({'id':oid,'type':'TEXT_LABEL','labelKind':kind,'anchor':anchor,'distancePx':math.hypot(cx-ax,cy-ay)})
 
     # ---- dimension lines: the bar, arrows or brace between two displayed points, every part recomputed from the peer points, the label on the outer side
     dimension_lines={}   # id -> the dimension's main polyline in svg px (its line, or the brace) for the label-ownership test

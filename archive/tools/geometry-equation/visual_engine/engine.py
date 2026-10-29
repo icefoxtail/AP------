@@ -11,7 +11,7 @@ from pathlib import Path
 from . import ENGINE_VERSION
 from .semantic_model import validate
 from .geometry_model import Circle,CircularArc,Line,clip_line,finite
-from .math_expression import parse as _parse_expression,evaluate as _evaluate_expression
+from .math_expression import parse as _parse_expression,evaluate as _evaluate_expression,parse_list as _parse_list
 
 def _exact_float(text):
     """The float of an exact value string: a rational 'a/b' or an expression with sqrt (the surd endpoint of a quadratic's source interval)."""
@@ -66,6 +66,8 @@ def _sample_graph_boundary(rows,vp):
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 # A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
 SECTOR_FILL='#d9d9d9'
+FREE_LABEL_RINGS=(6,12,18)   # px: how far a centred free text label may slide from its stated place (the observer's slack is the largest ring)
+FREE_LABEL_GAPS=(8,12,18,26) # px: the gaps a free text label beside a point or in a named direction tries
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT on a plane figure's segment (the same red as a solid figure's accent edge)
 ANGLE_EMPHASIS_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle mark: red, blue, green arcs
 # A source that says 빗금친 (hatched) is drawn with real diagonal strokes clipped to the region, not with a second grey:
@@ -863,7 +865,7 @@ def prepare(spec):
                 if obj.get('unit') is not None:raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+oid)
                 label.update(text=obj['text'],layoutText=obj['text'],math=False,bindText=True)
             elif kind in {'EQUATION_LABEL','LENGTH_LABEL'} or obj.get('math'):
-                tree=parse(obj['text']);notation=spec['displayFacts'].get('notationByLabel',{}).get(oid,{})
+                tree=_parse_list(obj['text']) if obj.get('freeLabel') else parse(obj['text']);notation=spec['displayFacts'].get('notationByLabel',{}).get(oid,{})
                 entity=notation.get('entity')
                 if entity and tree.kind=='binary' and tree.value=='=' and tree.args[0].kind=='symbol' and tree.args[0].value==entity:tree=Expr('binary','=',(Expr('entity',entity),tree.args[1]))
                 if obj.get('unit') is not None:
@@ -877,6 +879,14 @@ def prepare(spec):
                 label.update(text=serialize(tree,'plain'),markup=serialize(tree,'svg'),tex=serialize(tree,'tex'),sourceMath=obj['text'],math=True)
                 label['layoutText']=''.join(ET.fromstring('<text>'+label['markup']+'</text>').itertext())
                 if kind=='LENGTH_LABEL' and abs(float(evaluate(parse(obj['text'])))-obj['value'])>1e-9:raise ValueError('DISPLAY_LENGTH_PARITY_FAIL')
+            if kind=='EQUATION_LABEL' and obj.get('freeLabel'):
+                # A free text label (planeMarks.textLabels): centred on its place (the nearest free spot of a small ring round it) or beside it on the side `anchor`
+                # names (every side when it names none); it never moves to the side panel and has no leader.
+                ax,ay=label['at'];anchor=obj.get('anchor');label['allowPanel']=False
+                if anchor=='CENTER':label['candidateCenters']=[[ax,ay]]+[[ax+r*math.cos(k*math.pi/4),ay+r*math.sin(k*math.pi/4)] for r in FREE_LABEL_RINGS for k in range(8)]
+                else:
+                    label['gaps']=FREE_LABEL_GAPS
+                    if anchor in DIRECTIONS:label['directions']=(anchor,)
             labels.append(label)
     # An angle label never stands inside another angle mark's sector (it would read as that angle's value): each wedge search knows the other sectors.
     for label in labels:

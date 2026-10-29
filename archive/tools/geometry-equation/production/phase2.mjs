@@ -29,7 +29,7 @@ export {verifyConstructionConditionBindings} from './fact-display-map-v1.mjs';
 
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
-import {planeMarkSpec,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints} from './plane-marks.mjs';
+import {planeMarkSpec,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints} from './plane-marks.mjs';
 import {regionExtentPoints} from './plane-regions.mjs';
 
 const GRAPH_OVERVIEW_CANVAS=Object.freeze({width:610,height:420,panel:140});
@@ -759,7 +759,7 @@ function specForFamily(plan,model,id){
     const bandCenters=Object.fromEntries(rows.flatMap((row,r)=>row.map((labelId,k)=>[labelId,[r<lineLabels.length||panelLabels.length===1||columns===1?canvas.width/2:canvas.width*(k?.72:.28),rowCenters[r]]])));
     return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),...(degree<=2||cubicBand?{topInset:canvas.topInset+bandExtra}:{}),...(p.equalUnits===true&&(p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),...(axisVariable!=='x'?{axisVariable}:{}),...(degree<=2?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(header?{}:{formula:[canvas.width/2,72]}),...bandCenters}}:cubicBand?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{formula:[canvas.width/2,72]}}:{}),...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{})},objects};
   }
-  const displayed=displayGeometryInventory(plan,model),points=displayed.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);for(const q of [...regionExtentPoints(plan,points),...traceJoinExtentPoints(plan,points)]){xs.push(q[0]);ys.push(q[1]);}   // a region's arc can bulge past the displayed points, and so can a joined trace arc
+  const displayed=displayGeometryInventory(plan,model),points=displayed.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);for(const q of [...regionExtentPoints(plan,points),...traceJoinExtentPoints(plan,points),...textLabelExtentPoints(plan)]){xs.push(q[0]);ys.push(q[1]);}   // a region's arc can bulge past the displayed points, and so can a joined trace arc
   // A plane figure (no axes) is fitted tightly: the engine's own margin already leaves room for the point names.
   const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1e-9),pad=span*(isPlaneFigure(plan)?.06:.35);
   // hiddenPointNames:[point IDs] draws derived helper points as bare dots: never a GIVEN/CONCLUSION point or a coordinate-labelled one.
@@ -780,7 +780,7 @@ function specForFamily(plan,model,id){
     if(plan.hiddenPointStyle==='NONE')throw Error('UNMARKED_POINT_NAMES_WITH_STYLE_NONE');
     if(!Array.isArray(plan.unmarkedPointNames)||!plan.unmarkedPointNames.length||new Set(plan.unmarkedPointNames).size!==plan.unmarkedPointNames.length||plan.unmarkedPointNames.some(id=>!hiddenNames.has(id)))throw Error('INVALID_UNMARKED_POINT_NAMES');
   }
-  if(markFigure)for(const id of hiddenNames)if(plan.mathPlan.nodes.find(n=>n.id===id)?.op==='SOURCE_POINT'&&planNameTexts(plan).some(text=>textNamesPoint(text,id)))throw Error('HIDDEN_POINT_NAMED_IN_TEXT:'+id);
+  if(markFigure)for(const id of hiddenNames)if(plan.mathPlan.nodes.find(n=>n.id===id)?.op==='SOURCE_POINT'&&planNameTexts(plan,id).some(text=>textNamesPoint(text,id)))throw Error('HIDDEN_POINT_NAMED_IN_TEXT:'+id);
   const unmarked=new Set(unmarkedPointIds(plan));
   const pointNames=pointNameModel(plan,Object.keys(points));
   for(const entry of pointNames.entries())if(hiddenNames.has(entry.id))throw Error('POINT_NAME_TARGET_HIDDEN:'+entry.id);

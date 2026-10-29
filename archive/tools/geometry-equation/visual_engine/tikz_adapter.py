@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib
 import shutil
 import subprocess
-from .math_expression import parse,serialize
+from .math_expression import parse,parse_list,serialize
 
 def text(value):
     escapes={'\\':r'\textbackslash{}','{':r'\{','}':r'\}','%':r'\%','&':r'\&','#':r'\#','_':r'\_','$':r'\$','^':r'\textasciicircum{}','~':r'\textasciitilde{}'}
@@ -23,7 +23,7 @@ def draft(prepared,layout):
         elif p['kind']=='path' and p.get('role')=='region':rows.append(r'ill[even odd rule,black!10] '+' '.join(' -- '.join(coord(v) for v in poly)+' -- cycle' for poly in p['fillPolygons'])+';')
         else:raise ValueError('TIKZ_UNSUPPORTED_PRIMITIVE')
     for label in layout['labels']:
-        if label.get('sourceMath'):content='$'+serialize(parse(label['sourceMath']))+'$'
+        if label.get('sourceMath'):content='$'+serialize(parse_list(label['sourceMath']))+'$'
         elif label.get('renderedLines'):content=r'\shortstack[l]{'+r'\\'.join('$'+serialize(parse(v['text']))+'$' if v['math'] else text(v['text']) for v in label['renderedLines'])+'}'
         elif label.get('lines'):content=r'\shortstack[l]{'+r'\\'.join(text(v) for v in label['lines'])+'}'
         else:content=text(label['text'])
