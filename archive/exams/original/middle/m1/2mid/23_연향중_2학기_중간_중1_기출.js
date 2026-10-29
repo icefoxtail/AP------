@@ -83,7 +83,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D에 대해, 선분 AB, 직선 AC와 BD(직선 l 전체), 반직선 AB(A에서 오른쪽), 반직선 BA(B에서 왼쪽)를 네 칸에 나누어 빨간색으로 강조한 그림.",
+    "solutionImageCaption": "선분 AB·BA, 반직선 AB·BA, 직선 AC·BD가 뻗는 모양",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -126,7 +130,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB 위에 점 A, N, M, B가 차례로 있고, AB는 16 cm, AM과 MB는 각각 8 cm이며 AN과 NM에는 같은 길이 눈금이 있는 그림.",
+    "solutionImageCaption": "M은 AB의 중점, N은 AM의 중점이므로 AN=NM이다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -335,7 +343,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 평각 AOB 위의 반직선 OC, OD, OE가 만드는 네 각을 4t, t, u, 4u로 표시하고, 오른쪽 그림은 반직선 OC와 OE를 강조해 ∠COE를 t+u로 표시한 그림.",
+    "solutionImageCaption": "평각을 4t, t, u, 4u로 나누고 ∠COE는 t+u",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -458,7 +470,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 AOB 안에 O를 중심으로 한 호가 변 OA, OB와 C, D에서 만나고, O′X 위에 O′를 중심으로 같은 반지름의 호와 F, E를 잡아 반지름 OC=OD=O′E=O′F와 현 CD=FE를 같은 눈금으로 표시하며 두 각이 같음을 나타낸 그림.",
+    "solutionImageCaption": "같은 반지름과 같은 현의 길이로 각을 옮겨 ∠XO′E=∠AOB",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -541,7 +557,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 O에서 뻗은 두 반직선 위에 A, B와 C, D가 있고, 왼쪽은 삼각형 AOD, 오른쪽은 삼각형 COB의 변을 빨갛게 강조하며 OA=OC는 눈금 두 개, AB=CD는 눈금 한 개, 공통각 ∠O를 표시한 그림.",
+    "solutionImageCaption": "OA=OC, AB=CD이고 ∠O가 공통인 두 삼각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
