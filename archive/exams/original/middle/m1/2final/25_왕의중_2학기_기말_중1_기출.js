@@ -441,7 +441,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:990e8d63e130a57c8d11a65b119f7ec0d91243547e2c596759bfa2fdd97a387f",
-      "difficultyEvidenceSha": "sha256:c02564fffd88e0a1e4ba3a4fcc677f5fd35542f76d51435584388af49940512d"
+      "difficultyEvidenceSha": "sha256:c02564fffd88e0a1e4ba3a4fcc677f5fd35542f76d51435584388af49940512d",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 원기둥과 원뿔을 축에 수직인 평면으로 낮은 곳과 높은 곳에서 자른 네 그림이다. 원기둥은 두 높이의 단면 반지름이 모두 r로 같고, 원뿔은 낮은 곳의 반지름 r_1이 높은 곳의 반지름 r_2보다 크다.",
+      "solutionImageCaption": "원기둥은 높이에 관계없이 단면 반지름이 같고, 원뿔은 높이에 따라 달라진다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 11,
@@ -517,7 +521,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q12.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q12-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q12-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "crossConceptKeys": [],
@@ -531,9 +535,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:242e90fe46f8e38f3676ca643656ad3c5d49d23f011310f3c354b1c3d601081c",
       "difficultyEvidenceSha": "sha256:300f903a39eff262d3ff4419c10e2a05d848b8154e61650a1c28642ec0489aab",
-      "solutionImageAlt": "모선의 길이가 12 cm이고 밑면 반지름이 r인 원뿔 그림",
-      "solutionImageCaption": "옆넓이 식으로 반지름을 구하고 밑넓이를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 왼쪽은 모선 12 cm와 밑면 반지름 6 cm를 표시한 원뿔이고, 오른쪽은 그 전개도로 옆면인 반지름 12 cm 부채꼴과 밑면인 반지름 6 cm 원이다.",
+      "solutionImageCaption": "원뿔의 모선 12 cm, 밑면 반지름 6 cm와 옆면(부채꼴)·밑면(원)의 전개도",
+      "solutionImageSize": "medium"
     },
     {
       "id": 13,
@@ -754,7 +758,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:ffded47bc5b1564a18c83ec1da040debb6459d0d504500572c3d51c27be41a93",
-      "difficultyEvidenceSha": "sha256:c693a2b60f40d8a1768e3f11953b26eeedc9f84c784af8233a425427f6901e65"
+      "difficultyEvidenceSha": "sha256:c693a2b60f40d8a1768e3f11953b26eeedc9f84c784af8233a425427f6901e65",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 영어 성적 22개의 줄기와 잎 그림이다. 줄기 5, 6, 7, 8, 9의 잎 개수 3, 4, 5, 6, 4가 괄호로 묶여 있고, 줄기 7의 잎 4와 6(74점, 76점)이 동그라미로 표시되어 있다.",
+      "solutionImageCaption": "줄기별 잎의 개수와 가운데 두 값 74점, 76점",
+      "solutionImageSize": "medium"
     },
     {
       "id": 18,
@@ -886,7 +894,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:f7ad7fd486acadf9c4269d31e8e4a84e46d8ed3c68dffd675bfb70387ae4d421",
-      "difficultyEvidenceSha": "sha256:9771c2cdf31e62e1368fb9d9ae76c5e742d5cd5d34a4c3865288988267327d77"
+      "difficultyEvidenceSha": "sha256:9771c2cdf31e62e1368fb9d9ae76c5e742d5cd5d34a4c3865288988267327d77",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 한별이네 반의 기록별 도수를 나타낸 히스토그램이다. 12초 이상 18초 미만의 여섯 계급 도수가 1, 3, 6, 10, 3, 2이고, 빠른 기록부터 세어 5번째 학생이 속하는 14초 이상 15초 미만 계급(도수 6)이 진하게 칠해져 있다.",
+      "solutionImageCaption": "한별이네 반의 계급별 도수와 5번째로 빠른 학생이 속한 계급",
+      "solutionImageSize": "medium"
     },
     {
       "id": 21,
