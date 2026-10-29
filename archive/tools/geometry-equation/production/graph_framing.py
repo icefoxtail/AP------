@@ -136,6 +136,7 @@ def _fit_overview_family(plan):
     if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
+    if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
     if plan.get('family')=='rational':return _fit_rational_overview(plan)
     if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan)
     if plan.get('family')=='absolute-value':return _fit_absolute_value_overview(plan)
@@ -360,6 +361,7 @@ def _fit_rational_overview(plan):
     denominator=_rational_coefficients(plan.get('denominator'),'denominator')
     if numerator[1]==0:return _fit_rational_constant_numerator(plan,numerator[0],denominator,original_domain,original_viewport)
     if plan.get('displayWindow') is not None:raise ValueError('DISPLAY_WINDOW_REQUIRES_INVERSE_PROPORTION')
+    if plan.get('formulaAt') is not None:raise ValueError('FORMULA_AT_REQUIRES_DISPLAY_WINDOW')
     if plan.get('formulaLabel') is not None:raise ValueError('RATIONAL_FORMULA_LABEL_REQUIRES_CONSTANT_NUMERATOR')
     pole_or_hole=-denominator[0]/denominator[1]
     numerator_root=-numerator[0]/numerator[1]
@@ -451,6 +453,9 @@ def _fit_rational_constant_window(plan,k,denominator,original_domain,original_vi
     pole_x=float(pole);c_value=float(c)
     if any(not math.isfinite(value) or abs(value)>1e6 for value in (pole_x,c_value)):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
     xmin,xmax,ymin,ymax=window
+    formula_at=plan.get('formulaAt')
+    if formula_at is not None and (not isinstance(formula_at,list) or len(formula_at)!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in formula_at)):raise ValueError('FORMULA_AT_INVALID')
+    if formula_at is not None and not (xmin<formula_at[0]<xmax and ymin<formula_at[1]<ymax):raise ValueError('FORMULA_AT_OUTSIDE_WINDOW')
     scale=QUADRATIC_PLOT_WIDTH/(xmax-xmin)
     exact_height=(ymax-ymin)*scale
     if exact_height<QUADRATIC_PLOT_HEIGHT[0]-1e-9:raise ValueError('DISPLAY_WINDOW_TOO_FLAT')
@@ -482,6 +487,7 @@ def _fit_rational_constant_window(plan,k,denominator,original_domain,original_vi
 def _fit_rational_constant_numerator(plan,k,denominator,original_domain,original_viewport):
     window=_display_window(plan)
     if window is not None:return _fit_rational_constant_window(plan,k,denominator,original_domain,original_viewport,window)
+    if plan.get('formulaAt') is not None:raise ValueError('FORMULA_AT_REQUIRES_DISPLAY_WINDOW')
     label=plan.get('formulaLabel')
     if label is not None and (not isinstance(label,str) or not re.fullmatch(RATIONAL_CONSTANT_LABEL_PATTERN,label)):raise ValueError('RATIONAL_FORMULA_LABEL_INVALID')
     pole=-denominator[0]/denominator[1];c=k/denominator[1]
@@ -2482,17 +2488,17 @@ def _overlay_label_alternates(plan,line,lines,points):
         m=other['slopeValue'];q=other['interceptValue']
         return py*abs(m*point[0]-point[1]+q)/math.sqrt(1+(m*py/px)**2)
     rows=[]
-    for step in range(1,20):
-        t=step/20;point=(chord[0][0]+(chord[1][0]-chord[0][0])*t,chord[0][1]+(chord[1][1]-chord[0][1])*t)
+    for step in range(1,40):
+        t=step/40;point=(chord[0][0]+(chord[1][0]-chord[0][0])*t,chord[0][1]+(chord[1][1]-chord[0][1])*t)
         edge=min((point[0]-xmin)*px,(xmax-point[0])*px,(point[1]-ymin)*py,(ymax-point[1])*py)
         score=min([edge,abs(point[0])*px,abs(point[1])*py,*[line_distance(point,other) for other in others],*[math.hypot((point[0]-p['x'])*px,(point[1]-p['y'])*py) for p in points]])
-        if edge<24:continue
+        if edge<12:continue
         rows.append((-score,t,point))
     rows.sort()
     chosen=[]
     for _score,_t,point in rows:
-        if all(math.hypot((point[0]-other[0])*px,(point[1]-other[1])*py)>=40 for other in chosen):chosen.append(point)
-        if len(chosen)==6:break
+        if all(math.hypot((point[0]-other[0])*px,(point[1]-other[1])*py)>=30 for other in chosen):chosen.append(point)
+        if len(chosen)==10:break
     return [[round(point[0],9),round(point[1],9)] for point in chosen]
 
 def _overlay_length_row(value,ident):

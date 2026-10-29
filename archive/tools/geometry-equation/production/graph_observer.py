@@ -491,6 +491,7 @@ def absolute_value_overview_audit(plan,poly,points,transform,topology,svg_root):
     return {'status':'UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS','errors':sorted(set(errors+unsupported)),'features':expected,'plotCssSize':[width,height],'arms':[{'side':'LEFT','spanCssPx':left_span,'riseCssPx':left_rise},{'side':'RIGHT','spanCssPx':right_span,'riseCssPx':right_rise}],'observedCornerMarkers':len(markers),'topology':{'corner':topology.get('corners'),'roots':topology.get('roots')},'mathMethod':'EXACT_ABS_AFFINE_CORNER_AND_BRANCHES'}
 
 DISPLAY_WINDOW_OBSERVER_POLICY='AUTHOR_DISPLAY_WINDOW_EQUAL_UNITS_v1'
+FORMULA_AT_MAX_DISTANCE_PX=110.0
 
 def _display_window_audit(plan,transform):
     """graphPlan.displayWindow, re-validated here: ([errors], [xmin,xmax,ymin,ymax] or None). The drawn frame must be the author's window at one
@@ -554,6 +555,16 @@ def rational_constant_overview_audit(plan,points,transform,topology,svg_root):
     if not windowed and not x0+.05*(x1-x0)<pole<x1-.05*(x1-x0):errors.append('RATIONAL_SINGULARITY_OUTSIDE_OVERVIEW')
     if not x0<0<x1 or not y0<0<y1:errors.append('RATIONAL_AXES_ORIGIN_NOT_VISIBLE')
     pole_list=topology.get('poles',[]);hole_list=topology.get('holes',[])
+    if plan.get('formulaAt') is not None:
+        # formulaAt: the author's spot for the formula label (inside the window); the label the layout placed must stand near it.
+        spot=plan['formulaAt']
+        if not windowed or not isinstance(spot,list) or len(spot)!=2 or window is None or not (window[0]<spot[0]<window[1] and window[2]<spot[1]<window[3]):errors.append('FORMULA_AT_INVALID')
+        else:
+            holder={node.get('id'):node for node in svg_root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')=='formula'}
+            if holder:
+                box=_region_label_box(holder,'formula')
+                anchor=(transform['originX']+spot[0]*transform['sx'],transform['originY']-spot[1]*transform['sy'])
+                if box is None or _ov_point_box_distance(anchor,box)>FORMULA_AT_MAX_DISTANCE_PX:errors.append('FORMULA_LABEL_NOT_AT_ANCHOR')
     if windowed:
         if len(pole_list)!=(1 if pole_in_window else 0) or (pole_list and abs(pole_list[0]-pole)>.00000001) or hole_list:errors.append('RATIONAL_POLE_TOPOLOGY_MISMATCH')
     elif len(pole_list)!=1 or abs(pole_list[0]-pole)>.00000001 or hole_list:errors.append('RATIONAL_POLE_TOPOLOGY_MISMATCH')
@@ -2608,6 +2619,13 @@ def _ov_box_segment_distance(box,a,b):
     corners=((box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3]))
     return min(_ov_point_box_distance(a,box),_ov_point_box_distance(b,box),*[_ov_point_segment_distance(corner,a,b) for corner in corners])
 
+def _ov_collinear(own,other,tolerance=0.5):
+    """True when the drawn segment `other` lies on the line through `own` (both end points within `tolerance` px): the same line drawn twice
+    (a polygon edge or a segment over an overlay line) is not a competitor for a label."""
+    (ax,ay),(bx,by)=own;length=math.hypot(bx-ax,by-ay)
+    if length<=1e-9:return False
+    return all(abs((bx-ax)*(ay-p[1])-(ax-p[0])*(by-ay))/length<=tolerance for p in other)
+
 def _ov_glyph_codes(node):
     return [(child.get('data-c') or '').upper() for child in node.iter() if child.tag.split('}')[-1]=='path' and child.get('data-c')]
 
@@ -2718,6 +2736,7 @@ def overlays_audit(plan,svg,transform):
                     if min(_ov_point_segment_distance(end,a,b) for a,b in edges)>OV_LEADER_TOLERANCE_PX:errors.append(code+'_LEADER_NOT_ON_LABEL:'+label_id)
                     return
                 near_own=_ov_box_segment_distance(box,*own)
+                others=[other for other in others if not _ov_collinear(own,other)]
                 limit,margin=(OV_LABEL_STRICT_OWN_MAX_PX,OV_LABEL_STRICT_MARGIN_PX) if strict else (OV_LABEL_LOOSE_OWN_MAX_PX,OV_LABEL_LOOSE_MARGIN_PX)
                 if near_own>limit:errors.append(code+'_LABEL_NOT_NEAR_OWNER:'+label_id)
                 elif any(_ov_box_segment_distance(box,*other)<near_own+margin for other in others):errors.append(code+'_LABEL_AMBIGUOUS_OWNER:'+label_id)

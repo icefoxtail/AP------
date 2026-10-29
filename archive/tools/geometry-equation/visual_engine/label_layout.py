@@ -309,6 +309,27 @@ def line_label_unambiguous(box,own,others):
     if own_distance>LINE_LABEL_OWN_MAX:return False
     return all(min(box_segment_distance(box,c,d) for c,d in pairs(o))>=own_distance+LINE_LABEL_OTHER_MARGIN for o in others)
 
+def segment_on_line(owner,c,d,tolerance=0.5):
+    """True when the segment c-d lies on the (infinite) line through the drawn segment `owner`: a polygon edge or a segment drawn over the line it
+    labels is the same line, not another line."""
+    (ax,ay),(bx,by)=owner['geometry'][0],owner['geometry'][-1];length=math.hypot(bx-ax,by-ay)
+    if length<=1e-9:return False
+    return all(abs((bx-ax)*(ay-p[1])-(ax-p[0])*(by-ay))/length<=tolerance for p in (c,d))
+
+def competing_lines(owner,obstacles):
+    """The other drawn lines a label could be mistaken for, with the pieces drawn over the owner's own line left out (a polygon's other edges stay)."""
+    rows=[]
+    for o in obstacles:
+        if o.get('kind')!='line' or o is owner or not isinstance(o.get('geometry'),(list,tuple)) or len(o['geometry'])<2:continue
+        pieces=[[c,d] for c,d in zip(o['geometry'],o['geometry'][1:]) if not segment_on_line(owner,c,d)]
+        rows.extend({**o,'geometry':piece} for piece in pieces)
+    return rows
+
+def owner_line_incident_ids(owner,start,occupied):
+    """The line a label names and every other drawn line with a piece over it that passes through the anchor: a leader may touch these only there."""
+    return {owner['id']}|{o.get('id') for o in occupied if o.get('kind')=='line' and o is not owner and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+        and any(segment_on_line(owner,c,d) and point_segment_distance(start,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+
 def owner_incident_ids(start,owner_marker,occupied):
     """The point itself and every line, curve, circle or other label's leader through it: a leader may touch these only at the point."""
     incident={owner_marker['id']}|{o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve','leader'}
@@ -520,7 +541,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         # lineOwned: an equation written beside its displayed line (kind 'line', id == target); no other label kind takes this path.
         line_owner=next((o for o in obstacles if label.get('lineOwned') and o.get('kind')=='line' and o.get('id')==label.get('target')),None)
         if label.get('lineOwned') and line_owner is None:raise ValueError('LINE_LABEL_OWNER_LINE_REQUIRED:'+label['id'])
-        other_lines=[o for o in obstacles if line_owner is not None and o.get('kind')=='line' and o is not line_owner]
+        # collinearOwners: a polygon edge or segment drawn over the labelled line is that line, not a competitor, and a leader may start on it.
+        collinear_owners=bool(label.get('collinearOwners'))
+        other_lines=(competing_lines(line_owner,obstacles) if collinear_owners else [o for o in obstacles if o.get('kind')=='line' and o is not line_owner]) if line_owner is not None else []
         # leaderOwned: ids of the marks (angle arcs, highlighted arcs) a label names; beyond the near gaps a visible leader from its anchor ties it to them.
         leader_owned_ids=set(label.get('leaderOwned',()))
         other_sectors=label.get('wedgeSearch',{}).get('others',())
@@ -638,7 +661,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         # Too far to read as beside its line: a visible leader from the anchor on the line ties it back; it may touch only that line
                         # (or, for a mark label, only the mark it names).
                         if not acceptable(box,owner_check=False):continue
-                        start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,{line_owner['id']} if line_owner is not None else leader_owned_ids)
+                        start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,(owner_line_incident_ids(line_owner,start,occupied) if collinear_owners else {line_owner['id']}) if line_owner is not None else leader_owned_ids)
                         if end is None:continue
                         tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                     if not acceptable(box):continue
@@ -702,7 +725,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                             if not acceptable(box):continue
                             label={**label,'at':list(alternate)};chosen=box;method='AUTO_'+direction;break
                         if not acceptable(box,owner_check=False):continue
-                        end=visible_owner_leader(tuple(alternate),box,occupied,{line_owner['id']})
+                        end=visible_owner_leader(tuple(alternate),box,occupied,owner_line_incident_ids(line_owner,tuple(alternate),occupied) if collinear_owners else {line_owner['id']})
                         if end is None:continue
                         label={**label,'at':list(alternate)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                     if chosen:break
@@ -713,7 +736,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             # Labels that already fit never get here, so their placement is exactly the ordinary one.
             fallback_owner=next((o for o in obstacles if o.get('kind')=='line' and o.get('id')==label.get('target')),None)
             if fallback_owner is not None:
-                fallback_others=[o for o in obstacles if o.get('kind')=='line' and o is not fallback_owner]
+                fallback_others=competing_lines(fallback_owner,obstacles) if collinear_owners else [o for o in obstacles if o.get('kind')=='line' and o is not fallback_owner]
                 def acceptable_fallback(box,owner_check=True):
                     return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
                         and (not owner_check or line_label_unambiguous(box,fallback_owner,fallback_others)))
@@ -725,7 +748,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                                 if not acceptable_fallback(box):continue
                                 label={**label,'at':list(alternate)};chosen=box;method='AUTO_'+direction;break
                             if not acceptable_fallback(box,owner_check=False):continue
-                            end=visible_owner_leader(tuple(alternate),box,occupied,{fallback_owner['id']})
+                            end=visible_owner_leader(tuple(alternate),box,occupied,owner_line_incident_ids(fallback_owner,tuple(alternate),occupied) if collinear_owners else {fallback_owner['id']})
                             if end is None:continue
                             label={**label,'at':list(alternate)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                         if chosen:break
