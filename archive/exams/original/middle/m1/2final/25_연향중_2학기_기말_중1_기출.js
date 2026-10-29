@@ -731,7 +731,11 @@ window.questionBank = [
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 수영반 수강생 20명의 나이를 줄기와 잎 그림으로 나타내고, 빈칸 a, b, c 자리에 들어가는 잎 5(줄기 2), 8(줄기 3), 7(줄기 4)을 동그라미로 표시한 그림",
+    "solutionImageCaption": "자료를 작은 수부터 비교해 빈칸 a, b, c에 들어갈 잎을 동그라미로 나타낸 줄기와 잎 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -774,7 +778,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:e2f7bc42b431cb2ba8823233fd5e1a19047a26ead56d7657259e6356a6c6ff94",
-    "difficultyEvidenceSha": "sha256:65f877432cce107744d8b71c9d8d65c1613ac5ad90c9dcdf6be55a2de2966da1"
+    "difficultyEvidenceSha": "sha256:65f877432cce107744d8b71c9d8d65c1613ac5ad90c9dcdf6be55a2de2966da1",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수영반 수강생 20명의 나이를 나타낸 줄기와 잎 그림에서 작은 쪽부터 10번째 잎(줄기 3의 6)과 11번째 잎(줄기 3의 8)을 순번과 함께 동그라미로 표시한 그림",
+    "solutionImageCaption": "20개 자료를 작은 수부터 셌을 때 10번째와 11번째 값의 위치를 보인 줄기와 잎 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -835,7 +843,11 @@ window.questionBank = [
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 100 m 달리기 기록의 도수분포다각형에서 지워졌던 17.5초(6명)와 18.5초(4명) 계급을 채워 40명 전체를 완성하고, 18초 이상인 세 계급(4명, 2명, 1명)의 점을 동그라미로 표시해 괄호로 묶은 그림",
+    "solutionImageCaption": "지워진 두 계급의 도수를 채워 완성한 도수분포다각형에서 18초 이상인 세 계급을 묶어 보인 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
