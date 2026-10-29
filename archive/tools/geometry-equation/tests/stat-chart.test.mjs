@@ -328,6 +328,17 @@ test('erased, restored, highlighted, marked and summed charts that cannot be dra
   refuse(some({total:35,classSums:[{from:3,to:4,label:'13'}]}),'STAT_CLASS_SUM_LABEL_MISMATCH');
   assert.equal(solveStatChart({...marked,classSums:[{series:0,from:3,to:4},{series:1,from:3,to:4}]}).classSums.length,2);// two series may bracket the same classes
 });
+test('stem-and-leaf marks may be many and may carry their order numbers; a bad plan is refused with its code',()=>{
+  const values=[2,2,3,3,3,4,10,10,11,11,12,12,12,13,22,23,23,24,31,42];
+  const ten={kind:'STEM_LEAF',values,marks:[{ranks:[11,12,13,14,15,16,17,18,19,20]}],rankLabels:'FROM_LARGEST'};
+  const m=solveStatChart(ten);
+  assert.equal(m.marks.length,10);assert.equal(m.rankLabels,'FROM_LARGEST');
+  assert.equal(solveStatChart({kind:'STEM_LEAF',values,marks:[{ranks:[11,12,13,14,15,16,17,18,19,20]}]}).rankLabels,undefined);// without rankLabels the model has no such key
+  refuse({kind:'STEM_LEAF',values:[...values,...values.map(v=>v+1)],marks:[{ranks:[...Array(17).keys()].map(k=>k+1)}]},'STAT_STEM_MARK_INVALID');// more than 16 circles
+  refuse({kind:'STEM_LEAF',values,marks:[{rank:1},{rank:2},{ranks:[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]}]},'STAT_STEM_MARK_INVALID');
+  refuse({kind:'STEM_LEAF',values,rankLabels:'FROM_LARGEST'},'STAT_STEM_RANK_LABELS_INVALID');// no circle, nothing to number
+  refuse({...ten,rankLabels:'UP'},'STAT_STEM_RANK_LABELS_INVALID');
+});
 test('the observer passes erased classes, restored bars, tones, marked points, class sums and hidden values, and catches each one on the wrong class or place',async()=>{
   const browser=await launchBrowser();
   try{
@@ -413,6 +424,28 @@ test('the observer passes erased classes, restored bars, tones, marked points, c
     await pass(plain,svg);// the observer insists on the centred-above place for a bars-only chart
   }finally{await browser.close();}
 });
+test('the observer passes order numbers above the circled leaves and catches a wrong number, a missing one and a number over the wrong circle',async()=>{
+  const browser=await launchBrowser();
+  try{
+    const values=[2,2,3,3,3,4,10,10,11,11,12,12,12,13,22,23,23,24,31,42];
+    const chart={kind:'STEM_LEAF',title:'대출한 책의 수',unitText:'권',values,marks:[{ranks:[11,12,13,14,15,16,17,18,19,20]}],rankLabels:'FROM_LARGEST',classGroups:[{from:'12',to:'14',label:'4'},{from:'20',to:'30',label:'4'}]};
+    const composed=await composeStatChartFigure({plan:plan(chart),model:solveStatChart(chart),identity:assetIdentity('26_테스트|37','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
+    assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+    assert.equal(composed.staticAudit.status,'PASS');assert.equal(composed.renderedLayout.status,'PASS');
+    const svg=composed.svg,audit=async(c,text)=>(await pythonWorker({chart:JSON.parse(JSON.stringify(c)),svg:text},{script:observer})).result;
+    const ok=await audit(chart,svg);assert.equal(ok.status,'PASS',JSON.stringify(ok.errors));
+    assert.deepEqual([...svg.matchAll(/id="mark-g0-r(\d+)-order"[^>]*data-order="(\d+)"/g)].map(m=>[Number(m[1]),Number(m[2])]),[11,12,13,14,15,16,17,18,19,20].map(r=>[r,21-r]));
+    assert.ok(has(await audit({...chart,rankLabels:'FROM_SMALLEST'},svg),'SC_RANK_LABEL_VALUE'));
+    assert.ok(has(await audit({...chart,rankLabels:undefined},svg),'SC_RANK_LABELS_UNEXPECTED'));
+    assert.ok(has(await audit({...chart,marks:[{ranks:[12,13,14,15,16,17,18,19,20]}]},svg),'SC_MARK_SET_MISMATCH'));
+    assert.ok(has(await audit(chart,svg.replace(/(id="mark-g0-r15-order"[^>]*data-tex=")6"/,(m,head)=>head+'7"')),'SC_RANK_LABEL_VALUE:15'));
+    assert.ok(has(await audit(chart,svg.replace(/(id="mark-g0-r15-order"[^>]*data-order=")6"/,(m,head)=>head+'7"')),'SC_RANK_LABEL_VALUE:15'));
+    assert.ok(has(await audit(chart,svg.replace(/(id="mark-g0-r15-order"[^>]*data-box=")([\d.]+)/,(m,head,x)=>head+(Number(x)+24))),'SC_RANK_LABEL_NOT_CENTRED:15'));
+    assert.ok(has(await audit(chart,svg.replace(/(id="mark-g0-r15-order"[^>]*data-box="[\d.]+,)([\d.]+)/,(m,head,y)=>head+(Number(y)+25))),'SC_RANK_LABEL_NOT_ABOVE:15'));
+    assert.ok(has(await audit(chart,svg.replace(/(id="mark-g0-r15-order"[^>]*data-rank=")15"/,(m,head)=>head+'99"')),'SC_RANK_LABEL_SET_MISMATCH'));
+  }finally{await browser.close();}
+});
+
 test('render-plan routes a stat-chart plan and reports an unfaithful chart at its stage with the engine code',async()=>{
   const out=fs.mkdtempSync(path.join(os.tmpdir(),'stat-chart-'));
   const r=await renderPlan({item:{sourcePath:'archive/exams/test-exam.js',ordinal:3,dir:'t'},plan:plan({...hist,boundaries:['20','25','31','35']}),outDir:out});

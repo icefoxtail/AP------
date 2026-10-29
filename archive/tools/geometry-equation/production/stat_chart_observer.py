@@ -617,6 +617,31 @@ def audit_stem(chart, doc):
         try: leaf = read_leaf(target)
         except ValueError as err: doc.err(str(err)); continue
         if leaf != (item if isinstance(item, str) else item % 10): doc.err('SC_MARK_LEAF_VALUE:%d' % rank)
+    # rank labels: the order number of each circled leaf, counted here from the largest (or smallest) value of its group, written centred above its circle
+    order_labels = doc.label_role('rank-number')
+    mode = chart.get('rankLabels')
+    if mode is None:
+        if order_labels: doc.err('SC_RANK_LABELS_UNEXPECTED')
+    else:
+        if mode not in ('FROM_LARGEST', 'FROM_SMALLEST') or not marks: fail('STAT_STEM_RANK_LABELS_INVALID')
+        want_orders = {(gi, r): (len(groups[gi]['ordered']) - r + 1 if mode == 'FROM_LARGEST' else r) for gi, r in marks}
+        got = {}
+        for l in order_labels:
+            key = (int(l.get('data-group', -1)), int(l.get('data-rank', -1)))
+            if key in got: doc.err('SC_RANK_LABEL_DUPLICATE:%d' % key[1])
+            got[key] = l
+        if set(got) != set(want_orders): doc.err('SC_RANK_LABEL_SET_MISMATCH')
+        circles = {(int(e.get('data-group')), int(e.get('data-rank'))): e for e in drawn}
+        for key, l in got.items():
+            if key not in want_orders: continue
+            try: read = tex_number(l.get('data-tex'))
+            except ValueError as e: doc.err(str(e)); continue
+            if read != want_orders[key] or l.get('data-order') != str(want_orders[key]): doc.err('SC_RANK_LABEL_VALUE:%d' % key[1])
+            circle = circles.get(key)
+            if circle is None: continue
+            lx, ly, lw, lh = box_of(l)
+            if abs(lx + lw / 2 - num(circle, 'cx')) > LABEL_TOL: doc.err('SC_RANK_LABEL_NOT_CENTRED:%d' % key[1])
+            if ly + lh > num(circle, 'cy') - num(circle, 'ry') + 1: doc.err('SC_RANK_LABEL_NOT_ABOVE:%d' % key[1])
     # class groups: a bracket under exactly the leaves of the class, its count (counted here from the plan) centred below it
     wanted = class_plan(chart, groups)
     brackets = doc.role('polyline', 'class-bracket')

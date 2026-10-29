@@ -242,7 +242,7 @@ function solveFreq(c){
 // in ascending order), and the engine refuses a place the row cannot hold. Ranks (marks) count positions in that ascending order, so a letter leaf can be ranked.
 // The key text "1 | 4는 14분": the particle after the leaf digit follows how that digit is read. 영 일 삼 육 칠 팔 end in a final consonant (은); 이 사 오 구 do not (는).
 const LEAF_PARTICLE=['은','은','는','은','는','는','은','은','은','는'];
-const STEM_SYMBOL=/^[a-z]$/;
+const STEM_SYMBOL=/^[a-z]$/,MAX_STEM_MARKS=16; // circled leaves of one plan (a rank entry may list as many)
 const stemRow=(g,s)=>{ // the leaves (ones digits, or {symbol}) of stem s in ascending order, the letter leaves put where the author says
   const row=g.numbers.filter(v=>Math.floor(v/10)===s).map(v=>v%10);
   const letters=g.symbols.filter(x=>x.stem===s).sort((x,y)=>x.order-y.order);
@@ -250,7 +250,7 @@ const stemRow=(g,s)=>{ // the leaves (ones digits, or {symbol}) of stem s in asc
   return row;
 };
 function solveStem(c){
-  onlyKeys(c,['kind','values','groups','unitText','title','key','marks','classGroups'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','values','groups','unitText','title','key','marks','classGroups','rankLabels'],'STAT_CHART_PLAN_INVALID');
   if((c.values===undefined)===(c.groups===undefined))bad('STAT_STEM_PLAN_INVALID');
   const raw=c.values!==undefined?[{values:c.values}]:c.groups;
   if(!Array.isArray(raw)||raw.length<1||raw.length>2)bad('STAT_STEM_PLAN_INVALID');
@@ -291,18 +291,25 @@ function solveStem(c){
   key.value=key.stem*10+key.leaf;key.text=`${key.stem} | ${key.leaf}${LEAF_PARTICLE[key.leaf]} ${key.value}${unitText}`;
   const marks=[];
   if(c.marks!==undefined){
-    if(!Array.isArray(c.marks)||c.marks.length>4)bad('STAT_STEM_MARK_INVALID');
+    if(!Array.isArray(c.marks)||c.marks.length>MAX_STEM_MARKS)bad('STAT_STEM_MARK_INVALID');
     for(const m of c.marks){
       onlyKeys(m,['group','ranks','median','rank'],'STAT_STEM_MARK_INVALID');
       const gi=m.group===undefined?0:intIn(m.group,0,groups.length-1,'STAT_STEM_MARK_INVALID'),n=ordered[gi].length;
       if(['ranks','median','rank'].filter(k=>m[k]!==undefined).length!==1)bad('STAT_STEM_MARK_INVALID');
-      const ranks=m.median===true?(n%2?[(n+1)/2]:[n/2,n/2+1]):m.rank!==undefined?[intIn(m.rank,1,n,'STAT_STEM_MARK_INVALID')]:(Array.isArray(m.ranks)&&m.ranks.length>=1&&m.ranks.length<=4?m.ranks.map(r=>intIn(r,1,n,'STAT_STEM_MARK_INVALID')):bad('STAT_STEM_MARK_INVALID'));
+      const ranks=m.median===true?(n%2?[(n+1)/2]:[n/2,n/2+1]):m.rank!==undefined?[intIn(m.rank,1,n,'STAT_STEM_MARK_INVALID')]:(Array.isArray(m.ranks)&&m.ranks.length>=1&&m.ranks.length<=MAX_STEM_MARKS?m.ranks.map(r=>intIn(r,1,n,'STAT_STEM_MARK_INVALID')):bad('STAT_STEM_MARK_INVALID'));
       for(const rank of ranks){
         if(marks.some(x=>x.group===gi&&x.rank===rank))bad('STAT_STEM_MARK_INVALID');
         const at=ordered[gi][rank-1];
         marks.push(typeof at==='number'?{group:gi,rank,value:at}:{group:gi,rank,value:null,symbol:at.symbol});
       }
     }
+  }
+  if(marks.length>MAX_STEM_MARKS)bad('STAT_STEM_MARK_INVALID');
+  // rankLabels: the order number of every circled leaf counted from the largest (or smallest) value of its group is written above its circle
+  let rankLabels=null;
+  if(c.rankLabels!==undefined){
+    if(c.rankLabels!=='FROM_LARGEST'&&c.rankLabels!=='FROM_SMALLEST'||!marks.length)bad('STAT_STEM_RANK_LABELS_INVALID');
+    rankLabels=c.rankLabels;
   }
   // the median of a group that holds a letter leaf is a number only when the middle leaf (or both middle leaves) are whole numbers
   const medianOf=(g,i)=>{
@@ -345,7 +352,7 @@ function solveStem(c){
   }
   return {schemaVersion:MODEL_VERSION,kind:'STEM_LEAF',title,unitText,key,stems,marks,
     groups:groups.map((g,i)=>({name:g.name,n:ordered[i].length,sorted:g.symbols.length?ordered[i]:g.numbers,median:medianOf(g,i),rows:rows[i]})),
-    ...(classGroups.length?{classGroups}:{})};
+    ...(classGroups.length?{classGroups}:{}),...(rankLabels?{rankLabels}:{})};
 }
 function solveBox(c){
   onlyKeys(c,['kind','series','xTitle','step','showValues'],'STAT_CHART_PLAN_INVALID');
@@ -611,8 +618,8 @@ function freqSpec(m){
   return {size:{width:W,height:H},prims,labels,valueClearance:newer?2.5:0};
 }
 function stemSpec(m){
-  const classes=m.classGroups??[],two=m.groups.length===2,PITCH=24,STEMW=48,PAD=14,HEAD_H=34,ROW_H=classes.length?54:30,RAISE=classes.length?10:0,X0=SAFE+6; // RAISE: leaves sit above the row middle so a class bracket and its count fit under them
-  const rowCy=ri=>top+HEAD_H+ROW_H*(ri+.5)-RAISE;
+  const classes=m.classGroups??[],two=m.groups.length===2,PITCH=24,STEMW=48,PAD=14,HEAD_H=34,LBL=m.rankLabels?18:0,ROW_H=(classes.length?54:30)+LBL,RAISE=classes.length?10:0,X0=SAFE+6; // RAISE: leaves sit above the row middle so a class bracket and its count fit under them; LBL: room above each row for the order numbers of circled leaves
+  const rowCy=ri=>top+HEAD_H+ROW_H*(ri+.5)-RAISE+LBL/2;
   const maxLeaves=Math.max(1,...m.groups.flatMap(g=>g.rows.map(r=>r.leaves.length)));
   const leafW=maxLeaves*PITCH+PAD,tableW=(two?2*leafW:leafW)+STEMW,top=SAFE+(m.title?34:0)+2;
   const rows=m.stems.length,trim=classes.some(k=>k.stem===m.stems.at(-1))?0:2*RAISE,bottom=top+HEAD_H+rows*ROW_H-trim,width=Math.max(Math.ceil(tableW+2*X0),230),x0=r6((width-tableW)/2);
@@ -643,6 +650,10 @@ function stemSpec(m){
     while(left>m.groups[mk.group].rows[ri].leaves.length){left-=m.groups[mk.group].rows[ri].leaves.length;ri++;}
     const data=mk.symbol===undefined?{group:mk.group,rank:mk.rank,value:mk.value}:{group:mk.group,rank:mk.rank,symbol:mk.symbol};
     prims.push({t:'ellipse',id:`mark-g${mk.group}-r${mk.rank}`,role:'mark',cls:'mark',cx:r6(leafX(mk.group,left-1)),cy:r6(rowCy(ri)),rx:12,ry:13,data,layer:60});
+    if(m.rankLabels){
+      const order=m.rankLabels==='FROM_LARGEST'?m.groups[mk.group].n-mk.rank+1:mk.rank,id=`mark-g${mk.group}-r${mk.rank}`;
+      labels.push(math(`${id}-order`,'rank-number',id,String(order),String(order),'center','bottom',leafX(mk.group,left-1),rowCy(ri)-13-2,{group:mk.group,rank:mk.rank,order}));
+    }
   }
   for(const cl of classes){ // a bracket under the leaves of the class, its frequency centred below it
     const ri=m.stems.indexOf(cl.stem),xa=leafX(cl.group,cl.first),xb=leafX(cl.group,cl.last),xl=Math.min(xa,xb)-10,xr=Math.max(xa,xb)+10,yb=rowCy(ri)+17,id=`class-g${cl.group}-${cl.from}-${cl.to}`;
