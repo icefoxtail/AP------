@@ -1,0 +1,108 @@
+{
+  "capability": "composite-panels-v1",
+  "sourceQuote": "$s(t)=\\displaystyle\\int_0^tv(u)\\,du$",
+  "caption": "속도 v(t)의 부호는 t=2, 4에서 바뀌고 위치 s(t)는 s(2)=4, s(4)=0, s(6)=36이다.",
+  "panels": [
+    {
+      "caption": {
+        "math": "v(t)",
+        "text": "속도"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "8",
+            "-6",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -0.5,
+            6.5
+          ],
+          "viewport": [
+            -1,
+            7,
+            -8,
+            52
+          ],
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "B",
+              "x": 4,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "s(t)",
+        "text": "위치"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "0",
+            "4",
+            "-2",
+            "1/4"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -0.5,
+            6.5
+          ],
+          "viewport": [
+            -1,
+            9,
+            -4,
+            44
+          ],
+          "requiredPoints": [
+            {
+              "id": "C",
+              "x": 2,
+              "y": 4
+            },
+            {
+              "id": "D",
+              "x": 4,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    }
+  ],
+  "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q21-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q21-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q21-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q21-solution.svg"
+  }
+}
