@@ -656,3 +656,129 @@ test('E6: sourceQuote is provenance only: accepted by a solid and a net plan, ca
   assert.deepEqual(solveSolidFigure(emphasisNet({},{sourceQuote:quote})),solveSolidFigure(emphasisNet()));
   for(const wrong of ['',' ',5,null,['가'],'가'.repeat(201)])assert.throws(()=>solveSolidFigure({...base,sourceQuote:wrong}),code('SOLID_SOURCE_QUOTE_INVALID'));
 });
+
+// --- E4: a convex polyhedron cut by planes through edge points ------------------------------------------------------------------------------------
+const cutCube=(cuts,over={},solidOver={})=>figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:4},height:4,names:'FGHEBCDA',cuts,...solidOver}],...over});
+const midCut=[['AD','1/2','M'],['BC','1/2','N'],['CG','1/2','P'],['DH','1/2','Q']];
+const hexCut=[['GH','1/2','P'],['GC','1/2','Q'],['BC','1/2','R'],['BA','1/2','S'],['EA','1/2','T'],['EH','1/2','U']];
+test('E4: a cube cut through four edge midpoints M, N, P, Q loses an edge-side prism and gains the rectangle MNPQ; hidden edges follow the depth test',()=>{
+  const model=solveSolidFigure(cutCube([{through:midCut}]));
+  const solid=model.solids[0];
+  assert.deepEqual(solid.vertices.map(v=>v.name),['F','G','H','E','B','A','P','Q','N','M']);// the 6 kept corners, then the new ones by their edge
+  assert.deepEqual(solid.faces.map(f=>f.id),['bottom','top','side0','side1','side2','side3','cut1']);
+  assert.equal(solid.edges.length,15);assert.equal(solid.vertices.length-solid.edges.length+solid.faces.length,2);// Euler: a closed polyhedron
+  const at=name=>solid.vertices.find(v=>v.name===name).p,dist=(a,b)=>Math.hypot(...at(a).map((x,i)=>x-at(b)[i]));
+  assert.ok(Math.abs(dist('M','N')-4)<1e-5&&Math.abs(dist('P','Q')-4)<1e-5&&Math.abs(dist('N','P')-2*Math.SQRT2)<1e-5&&Math.abs(dist('M','Q')-dist('N','P'))<1e-5);
+  assert.deepEqual(hiddenEdges(solid),['EA','FE','HE']);
+  assert.equal(solid.cuts.length,1);assert.equal(solid.cuts[0].removed,2);assert.equal(solid.cuts[0].added,4);
+  // the unnamed model is untouched by the new field: a plan without cuts has no cuts in its model
+  assert.equal('cuts' in solveSolidFigure(figure({solids:[cuboid()]})).solids[0],false);
+});
+test('E4: six edge midpoints give the regular hexagon of a cube; equal halves need keep, which may name either side',()=>{
+  assert.throws(()=>solveSolidFigure(cutCube([{through:hexCut}])),code('SOLID_CUT_KEEP_AMBIGUOUS'));
+  for(const [keep,names] of [['F',['F','G','E','B']],['H',['H','C','D','A']]]){
+    const solid=solveSolidFigure(cutCube([{through:hexCut,keep}])).solids[0];
+    assert.deepEqual(solid.vertices.slice(0,4).map(v=>v.name),names);
+    assert.equal(solid.vertices.length,10);assert.equal(solid.edges.length,15);
+    const section=solid.faces.at(-1).idx.map(i=>solid.vertices[i].p),sides=section.map((p,i)=>Math.hypot(...p.map((x,c)=>x-section[(i+1)%6][c])));
+    assert.equal(section.length,6);assert.ok(sides.every(l=>Math.abs(l-sides[0])<1e-5),'a regular hexagon');
+  }
+  assert.throws(()=>solveSolidFigure(cutCube([{through:hexCut,keep:'Z'}])),code('SOLID_NAME_UNKNOWN'));
+  // three of the six points fix the same plane (the new vertices are then unnamed)
+  const three=solveSolidFigure(cutCube([{through:hexCut.slice(0,3),keep:'F'}])).solids[0];
+  assert.equal(three.vertices.length,10);assert.equal(three.vertices.filter(v=>v.name===null).length,3);
+});
+test('E4: a vertex on the plane stays and is a corner of the section; an edge that lies in the plane cannot carry a through point',()=>{
+  const through=[['FG','1/4'],['GH','1/4'],['CD','1/3']];// the plane also passes through the vertex B
+  const solid=solveSolidFigure(cutCube([{through}])).solids[0];
+  assert.equal(solid.vertices.length,9);assert.equal(solid.edges.length,14);
+  const b=solid.vertices.findIndex(v=>v.name==='B');
+  assert.ok(b>=0&&solid.faces.at(-1).idx.includes(b));
+  assert.throws(()=>solveSolidFigure(cutCube([{through,keep:'B'}])),code('SOLID_CUT_KEEP_INVALID'));
+  assert.throws(()=>solveSolidFigure(cutCube([{through:[['FG','1/4'],['HE','3/4'],['CD','1/4']]}])),code('SOLID_CUT_INVALID'));// C and D lie in this plane
+});
+test('E4: a corner cut by three midpoints, a pyramid cut parallel to its base and a prism cut twice are solved',()=>{
+  const corner=solveSolidFigure(cutCube([{through:[['AD','1/2','M'],['DC','1/2','N'],['DH','1/2','P']]}])).solids[0];
+  assert.equal(corner.vertices.length,10);assert.equal(corner.faces.length,7);assert.equal(corner.faces.at(-1).idx.length,3);
+  // the apex side has one vertex against four: the base side stays unless keep names the apex
+  const pyramid=(keep)=>solveSolidFigure(figure({solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:4,names:'ABCDV',cuts:[{through:[['VA','1/2'],['VB','1/2'],['VC','1/2']],...(keep?{keep}:{})}]}]})).solids[0];
+  assert.deepEqual(pyramid().vertices.slice(0,4).map(v=>v.name),['A','B','C','D']);assert.equal(pyramid().vertices.length,8);assert.equal(pyramid().faces.length,6);
+  assert.deepEqual(pyramid('V').vertices.map(v=>v.name).slice(0,1),['V']);assert.equal(pyramid('V').vertices.length,5);assert.equal(pyramid('V').faces.length,5);
+  // a frustum, cut in a plane through three of its slanted edges
+  const frustum=solveSolidFigure(figure({solids:[{kind:'FRUSTUM',base:{kind:'RECT',width:6,depth:6},height:4,topScale:0.5,names:'ABCDEFGH',cuts:[{through:[['AE','1/2'],['BF','1/2'],['CG','1/2']],keep:'A'}]}]})).solids[0];
+  assert.equal(frustum.vertices.length,8);// the mid-level plane halves the frustum: the 4 bottom corners and 4 new ones
+  // a second plane is made on the solid the first one left, and may name the vertices the first one made
+  const twice=solveSolidFigure(cutCube([{through:midCut},{through:[['FG','1/2','R'],['FE','1/2','S'],['FB','1/2','T']]}])).solids[0];
+  assert.equal(twice.cuts.length,2);assert.ok(['R','S','T','M','N','P','Q'].every(name=>twice.vertices.some(v=>v.name===name))&&!twice.vertices.some(v=>v.name==='F'));
+  assert.equal(twice.vertices.length-twice.edges.length+twice.faces.length,2);
+  assert.ok(twice.faces.some(f=>f.id==='cut1')&&twice.faces.some(f=>f.id==='cut2'));
+});
+test('E4: cuts are refused with explicit codes',()=>{
+  const bad=(cuts,expected,solidOver)=>assert.throws(()=>solveSolidFigure(cutCube(cuts,{},solidOver)),code(expected),expected+' '+JSON.stringify(cuts));
+  bad([],'SOLID_CUT_COUNT_INVALID');
+  bad([{through:midCut},{through:midCut},{through:midCut}],'SOLID_CUT_COUNT_INVALID');
+  bad('x','SOLID_CUT_COUNT_INVALID');
+  bad(['x'],'SOLID_CUT_INVALID');
+  bad([{through:midCut,colour:'red'}],'SOLID_CUT_INVALID');
+  bad([{through:midCut.slice(0,2)}],'SOLID_CUT_INVALID');
+  bad([{through:[...midCut,...hexCut]}],'SOLID_CUT_INVALID');// more than six points
+  bad([{through:[['AD','1/2'],['AD','1/3'],['BC','1/2']]}],'SOLID_CUT_INVALID');// two points on one edge
+  bad([{through:[['AD','1/2'],['DA','1/3'],['BC','1/2']]}],'SOLID_CUT_INVALID');
+  for(const at of ['0/2','2/2','3/2','1/0','half','1/2 ','0.5'])bad([{through:[['AD',at],['BC','1/2'],['CG','1/2']]}],'SOLID_CUT_INVALID');
+  bad([{through:[['AD',0.5],['BC','1/2'],['CG','1/2']]}],'SOLID_CUT_INVALID');
+  bad([{through:[['A','1/2'],['BC','1/2'],['CG','1/2']]}],'SOLID_CUT_INVALID');
+  bad([{through:[['ADB','1/2'],['BC','1/2'],['CG','1/2']]}],'SOLID_CUT_INVALID');
+  bad([{through:[['AD','1/2','MM'],['BC','1/2'],['CG','1/2']]}],'SOLID_NAMES_INVALID');
+  bad([{through:[['AD','1/2','m'],['BC','1/2'],['CG','1/2']]}],'SOLID_NAMES_INVALID');
+  bad([{through:[['AC','1/2'],['BC','1/2'],['CG','1/2']]}],'SOLID_CUT_EDGE_UNKNOWN:AC');// a face diagonal is no edge
+  bad([{through:[['AZ','1/2'],['BC','1/2'],['CG','1/2']]}],'SOLID_CUT_EDGE_UNKNOWN:AZ');
+  bad([{through:[['AD','1/2'],['BC','1/2'],['CG','1/2'],['FE','1/4']]}],'SOLID_CUT_NOT_PLANAR');
+  bad([{through:[['FG','1/2'],['GC','1/2'],['CB','1/2']]}],'SOLID_CUT_NO_EFFECT');// the plane of the front face
+  bad([{through:[['AD','1/2'],['BC','1/2'],['FG','1/2']]}],'SOLID_CUT_KEEP_AMBIGUOUS');// a plane through the middle: four corners on each side
+  bad([{through:midCut,keep:5}],'SOLID_CUT_INVALID');
+  // a second plane may not name a vertex the first one removed
+  bad([{through:midCut},{through:[['CD','1/2'],['MA','1/2'],['NB','1/2']]}],'SOLID_CUT_EDGE_UNKNOWN:CD');
+  // not every solid is cut
+  bad([{through:midCut}],'SOLID_CUT_NOT_CONVEX',{base:{kind:'POLYGON',points:[[0,0],[4,0],[4,2],[2,2],[2,4],[0,4]]},names:'ABCDEFGHIJKL'});
+  bad([{through:midCut}],'SOLID_COUNT_UNSUPPORTED:CUT',{names:'.'.repeat(8),count:{vertices:true}});
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:2,height:3,cuts:[{through:midCut}]}]})),code('SOLID_CUT_UNSUPPORTED:CYLINDER'));
+  assert.throws(()=>solveSolidFigure(figure({net:{solid:{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2,names:'........',cuts:[{through:midCut}]},root:'side0',joins:cubeJoins}})),code('SOLID_NET_UNSUPPORTED:CUT'));
+  // a height line has no apex to hang on once a plane has cut the solid
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:4,names:'ABCDV',cuts:[{through:[['VA','1/2'],['VB','1/2'],['VC','1/2']]}]}],dims:[{height:true}]})),code('SOLID_DIMS_INVALID'));
+});
+test('E4: a cut cube is drawn with names, a shaded section and emphasized edges, and the independent observer re-derives the cut',async()=>{
+  const plan=cutCube([{through:midCut}],{unit:'cm',highlights:[{polygon:['M','N','P','Q']}],segments:[seg('M','Q','REF'),seg('A','B'),seg('B','N'),seg('B','F'),seg('E','F'),seg('F','G'),seg('G','P'),seg('G','H')],dims:[{from:'M',to:'N'},{from:'M',to:'Q'}]});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.equal((svg.match(/data-role="edge"/g)??[]).length>=15,true);
+  assert.equal((svg.match(/data-label-role="vertex-name"/g)??[]).length,10);
+  assert.match(svg,/data-role="highlight-face" data-polygon="MNPQ"/);
+  // the lengths are exact: MN is the cube's side, MQ the diagonal of a half face
+  const tex=[...svg.matchAll(/data-dim="dim-(\d)"[^>]*data-tex="([^"]+)"/g)].map(m=>m[2]);void tex;
+  assert.match(svg,/data-tex="4\\,\\mathrm\{cm\}"/);assert.match(svg,/data-tex="2\\sqrt\{2\}\\,\\mathrm\{cm\}"/);
+  const failing=async(wrongPlan,prefix,drawn=svg)=>{const r=await audit(wrongPlan,drawn);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  // a figure drawn for another cut: the uncut cube, another fraction, another plane
+  const uncut=await panel(figure({solids:[cuboid({base:{kind:'RECT',width:4,depth:4},height:4,names:{base:'FGHE',top:'BCDA'}})]}));
+  assert.equal(uncut.status,'COMPOSED',JSON.stringify(uncut.detail));
+  await failing(plan,'SOLID_EDGE_MISSING',uncut.svg);
+  await failing(figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:4},height:4,names:{base:'FGHE',top:'BCDA'}}]}),'SOLID_EDGE_UNKNOWN');
+  const quarter=cutCube([{through:[['AD','1/4','M'],['BC','1/4','N'],['CG','1/4','P'],['DH','1/4','Q']]}],{unit:'cm',highlights:[{polygon:['M','N','P','Q']}],segments:plan.segments,dims:plan.dims.slice(0,1)});
+  const wrong=await audit(quarter,svg);
+  assert.equal(wrong.status,'FAIL',JSON.stringify(wrong.errors));
+  // a section edge drawn solid where the depth test makes it hidden is read back as before
+  const hidden=svg.match(/<line id="s1-edge-[A-Z]+-\d+"[^>]*data-vis="hidden"[^>]*\/>/)[0];
+  await failing(plan,'SOLID_EDGE_VISIBILITY_MISMATCH',svg.replace(hidden,hidden.replace(' stroke-dasharray="5 4"','').replace('data-vis="hidden"','data-vis="solid"')));
+});
+test('E4: a cut solid sits beside another in a grid and in an unnamed-vertex figure',async()=>{
+  // two cut cubes in one grid; the new vertices of the second are unnamed and read back by their index names
+  const named=cutCube([{through:midCut}],{unit:'cm'}).solids[0];
+  const plan=gridOf([solidPanel({capability:'solid-figure-v1',solids:[named],segments:[seg('M','Q','REF')]},'MQ의 위치'),
+    solidPanel({capability:'solid-figure-v1',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:4},height:4,names:'FGHEBCDA',cuts:[{through:[['AD','1/2'],['BC','1/2'],['CG','1/2'],['DH','1/2']]}]}],segments:[seg('A','B','REF')]},'이름 없는 점')]);
+  const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+  const small={baseFontPx:16,displayScale:0.7,fontFloorCssPx:11};
+  const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-cut-grid|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:small});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
+  assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+});

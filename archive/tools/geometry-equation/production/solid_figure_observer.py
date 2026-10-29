@@ -120,6 +120,11 @@ def build_solid(spec):
             faces += [[i, (i + 1) % n, (i + 1) % n + n, i + n] for i in range(n)]
         else:
             faces += [[i, (i + 1) % n, n] for i in range(n)]
+        if spec.get('cuts') is not None:
+            # planes cutting parts off a convex polyhedron: the solid that is drawn is what remains (derived here from the plan alone)
+            if spec.get('count') is not None: raise ValueError('SOLID_COUNT_UNSUPPORTED:CUT')
+            verts, faces, aliases = apply_cuts(verts, faces, aliases, spec['cuts'])
+            return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases, 'cut': True}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases}
     if kind in ('CYLINDER', 'CONE', 'CONE_FRUSTUM', 'SPHERE', 'HEMISPHERE'):
         r = float(spec['radius'])
@@ -148,6 +153,107 @@ def build_solid(spec):
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
                 'inside': spec.get('inside')}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
+
+
+# --- planes cutting a convex polyhedron -----------------------------------------------------------------------------------------------------------------
+CUT_EPS = 1e-6
+CUT_AT = re.compile(r'^([1-9]\d?)/([1-9]\d?)$')
+
+
+def apply_cuts(verts, faces, aliases, cuts):
+    """The polyhedron left after cutting by one or two planes, one after the other. A plane is given by 3-6 points, each at the fraction p/q of an edge
+    (written as its two vertex names) of the solid as it is at that cut; the side with strictly more vertices stays (keep:"<vertex>" decides a tie).
+    The remaining vertices keep their order, the new vertices (one per edge crossing the plane) follow, ordered by the (low, high) indices of their edge in
+    the solid before the cut; the section is one more face. Re-derived here independently of the producer."""
+    if not isinstance(cuts, list) or not 1 <= len(cuts) <= 2: raise ValueError('SOLID_CUT_COUNT_INVALID')
+    for number, cut in enumerate(cuts, 1):
+        verts, faces, aliases = _cut_once(verts, faces, aliases, cut)
+    return verts, faces, aliases
+
+
+def _cut_once(verts, faces, aliases, cut):
+    entries = cut.get('through')
+    if not isinstance(entries, list) or not 3 <= len(entries) <= 6: raise ValueError('SOLID_CUT_INVALID')
+
+    def index_of(name):
+        for i, (n, _) in enumerate(verts):
+            if n == name or name in aliases.get(i, []): return i
+        return -1
+    edges = set()
+    for f in faces:
+        for i in range(len(f)):
+            edges.add((min(f[i], f[(i + 1) % len(f)]), max(f[i], f[(i + 1) % len(f)])))
+    through = []
+    for entry in entries:
+        text, at = entry[0], entry[1]
+        names = NAME_TOKEN.findall(text)
+        if len(names) != 2 or ''.join(names) != text or '.' in names: raise ValueError('SOLID_CUT_INVALID')
+        a, b = index_of(names[0]), index_of(names[1])
+        if a < 0 or b < 0 or a == b or (min(a, b), max(a, b)) not in edges: raise ValueError('SOLID_CUT_EDGE_UNKNOWN:' + text)
+        m = CUT_AT.fullmatch(at)
+        if not m or int(m.group(1)) >= int(m.group(2)): raise ValueError('SOLID_CUT_INVALID')
+        t = int(m.group(1)) / int(m.group(2))
+        point = vadd(verts[a][1], vmul(vsub(verts[b][1], verts[a][1]), t))
+        label = entry[2] if len(entry) > 2 and entry[2] != '.' else None
+        through.append({'key': (min(a, b), max(a, b)), 'p': point, 'name': label})
+    if len({x['key'] for x in through}) != len(through): raise ValueError('SOLID_CUT_INVALID')
+    # the plane from the first three points that are not on one line (the producer takes the widest triple; coplanar points give the same plane)
+    normal = None
+    for i in range(len(through)):
+        for j in range(i + 1, len(through)):
+            for k in range(j + 1, len(through)):
+                c = vcross(vsub(through[j]['p'], through[i]['p']), vsub(through[k]['p'], through[i]['p']))
+                if normal is None and vlen(c) > 1e-9: normal = c
+    if normal is None: raise ValueError('SOLID_CUT_DEGENERATE')
+    n = vunit(normal)
+    d = vdot(n, through[0]['p'])
+    if any(abs(vdot(n, x['p']) - d) > 2 * CUT_EPS for x in through): raise ValueError('SOLID_CUT_NOT_PLANAR')
+    dist = [vdot(n, v[1]) - d for v in verts]
+    pos, neg = sum(1 for x in dist if x > CUT_EPS), sum(1 for x in dist if x < -CUT_EPS)
+    if pos == 0 or neg == 0: raise ValueError('SOLID_CUT_NO_EFFECT')
+    keep = cut.get('keep')
+    if keep is not None:
+        i = index_of(keep)
+        if i < 0: raise ValueError('SOLID_NAME_UNKNOWN')
+        if abs(dist[i]) <= CUT_EPS: raise ValueError('SOLID_CUT_KEEP_INVALID')
+        sign = 1.0 if dist[i] > 0 else -1.0
+    elif pos != neg: sign = 1.0 if pos > neg else -1.0
+    else: raise ValueError('SOLID_CUT_KEEP_AMBIGUOUS')
+    side = [sign * x for x in dist]   # positive on the side that stays
+    crossing = lambda a, b: (side[a] > CUT_EPS and side[b] < -CUT_EPS) or (side[a] < -CUT_EPS and side[b] > CUT_EPS)
+    crossings = {}
+    for lo, hi in sorted(edges):
+        if crossing(lo, hi):
+            t = side[lo] / (side[lo] - side[hi])
+            crossings[(lo, hi)] = vadd(verts[lo][1], vmul(vsub(verts[hi][1], verts[lo][1]), t))
+    if any(x['key'] not in crossings for x in through): raise ValueError('SOLID_CUT_INVALID')
+    kept = [i for i in range(len(verts)) if side[i] >= -CUT_EPS]
+    new_of = {old: j for j, old in enumerate(kept)}
+    cross_of = {key: len(kept) + j for j, key in enumerate(sorted(crossings))}
+    out = [verts[i] for i in kept]
+    out_aliases = {new_of[i]: a for i, a in aliases.items() if i in new_of}
+    for key in sorted(crossings):
+        out.append((next((x['name'] for x in through if x['key'] == key), None), crossings[key]))
+    new_faces = []
+    for f in faces:
+        cycle = []
+        for i in range(len(f)):
+            a, b = f[i], f[(i + 1) % len(f)]
+            if side[a] >= -CUT_EPS: cycle.append(new_of[a])
+            key = (min(a, b), max(a, b))
+            if key in cross_of and crossing(a, b): cycle.append(cross_of[key])
+        if len(set(cycle)) >= 3: new_faces.append(cycle)
+    section = [new_of[i] for i in kept if abs(side[i]) <= CUT_EPS] + [cross_of[key] for key in sorted(crossings)]
+    if len(section) < 3: raise ValueError('SOLID_CUT_DEGENERATE')
+    # counter-clockwise seen from the removed side (outside of the section face)
+    u = vmul(n, -sign)
+    helper = (1.0, 0.0, 0.0) if abs(u[0]) < 0.9 else (0.0, 1.0, 0.0)
+    e1 = vunit(vcross(u, helper))
+    e2 = vcross(u, e1)
+    centre = vmul(tuple(sum(out[i][1][c] for i in section) for c in range(3)), 1.0 / len(section))
+    section.sort(key=lambda i: math.atan2(vdot(vsub(out[i][1], centre), e2), vdot(vsub(out[i][1], centre), e1)))
+    new_faces.append(section)
+    return out, new_faces, out_aliases
 
 
 def poly_edges(solid):

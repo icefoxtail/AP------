@@ -406,3 +406,79 @@ class SeveralNames(unittest.TestCase):
         for bad in (['A,,B', 'B', 'C', 'D'], ['A,b', 'B', 'C', 'D'], ['A,B,C,D,E', 'B', 'C', 'D'], ['A,', 'B', 'C', 'D']):
             with self.assertRaises(ValueError):
                 O.build_solid({**self.BASE, 'names': {'base': bad, 'top': list('EFGH')}})
+
+
+class Cuts(unittest.TestCase):
+    CUBE = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 4}, 'height': 4, 'names': 'FGHEBCDA', 'id': 's1'}
+    MID = [['AD', '1/2', 'M'], ['BC', '1/2', 'N'], ['CG', '1/2', 'P'], ['DH', '1/2', 'Q']]
+    HEX = [['GH', '1/2', 'P'], ['GC', '1/2', 'Q'], ['BC', '1/2', 'R'], ['BA', '1/2', 'S'], ['EA', '1/2', 'T'], ['EH', '1/2', 'U']]
+
+    def cut(self, cuts, **extra):
+        return O.build_solid({**self.CUBE, 'cuts': cuts, **extra})
+
+    def dist(self, solid, a, b):
+        p = dict(solid['verts'])
+        return O.vlen(O.vsub(p[a], p[b]))
+
+    def test_four_midpoints_cut_off_an_edge_prism_and_leave_a_rectangle_section(self):
+        solid = self.cut([{'through': self.MID}])
+        self.assertEqual([n for n, _ in solid['verts']], ['F', 'G', 'H', 'E', 'B', 'A', 'P', 'Q', 'N', 'M'])   # kept corners, then new ones by their edge
+        self.assertEqual(len(solid['faces']), 7)
+        self.assertEqual(len(O.poly_edges(solid)), 15)
+        self.assertEqual(len(solid['verts']) - len(O.poly_edges(solid)) + len(solid['faces']), 2)            # Euler
+        self.assertAlmostEqual(self.dist(solid, 'M', 'N'), 4.0)
+        self.assertAlmostEqual(self.dist(solid, 'P', 'Q'), 4.0)
+        self.assertAlmostEqual(self.dist(solid, 'N', 'P'), 2 * math.sqrt(2))
+        self.assertAlmostEqual(self.dist(solid, 'M', 'Q'), 2 * math.sqrt(2))
+        names = {i: n for i, (n, _) in enumerate(solid['verts'])}
+        self.assertEqual(sorted(names[i] for i in solid['faces'][-1]), ['M', 'N', 'P', 'Q'])               # the last face is the section
+
+    def test_the_side_with_more_vertices_stays_and_a_tie_needs_keep(self):
+        with self.assertRaisesRegex(ValueError, 'SOLID_CUT_KEEP_AMBIGUOUS'): self.cut([{'through': self.HEX}])
+        low = self.cut([{'through': self.HEX, 'keep': 'F'}])
+        high = self.cut([{'through': self.HEX, 'keep': 'H'}])
+        self.assertEqual([n for n, _ in low['verts']][:4], ['F', 'G', 'E', 'B'])
+        self.assertEqual([n for n, _ in high['verts']][:4], ['H', 'C', 'D', 'A'])
+        for solid in (low, high):
+            self.assertEqual((len(solid['verts']), len(O.poly_edges(solid)), len(solid['faces'])), (10, 15, 7))
+            section = [solid['verts'][i][1] for i in solid['faces'][-1]]
+            sides = [O.vlen(O.vsub(section[i], section[(i + 1) % 6])) for i in range(6)]
+            self.assertLess(max(sides) - min(sides), 1e-6)                                               # a regular hexagon
+        with self.assertRaisesRegex(ValueError, 'SOLID_NAME_UNKNOWN'): self.cut([{'through': self.HEX, 'keep': 'Z'}])
+
+    def test_a_vertex_on_the_plane_stays_and_is_a_corner_of_the_section(self):
+        through = [['FG', '1/4'], ['GH', '1/4'], ['CD', '1/3']]   # the plane also passes through B
+        solid = self.cut([{'through': through}])
+        self.assertEqual((len(solid['verts']), len(O.poly_edges(solid))), (9, 14))
+        b = [n for n, _ in solid['verts']].index('B')
+        self.assertIn(b, solid['faces'][-1])
+        with self.assertRaisesRegex(ValueError, 'SOLID_CUT_KEEP_INVALID'): self.cut([{'through': through, 'keep': 'B'}])
+        with self.assertRaisesRegex(ValueError, 'SOLID_CUT_INVALID'): self.cut([{'through': [['FG', '1/4'], ['HE', '3/4'], ['CD', '1/4']]}])   # C and D lie in this plane
+
+    def test_two_planes_are_made_one_after_the_other(self):
+        solid = self.cut([{'through': self.MID}, {'through': [['FG', '1/2', 'R'], ['FE', '1/2', 'S'], ['FB', '1/2', 'T']]}])
+        names = [n for n, _ in solid['verts']]
+        self.assertNotIn('F', names)
+        for name in 'RSTMNPQ': self.assertIn(name, names)
+        self.assertEqual(len(solid['verts']) - len(O.poly_edges(solid)) + len(solid['faces']), 2)
+        with self.assertRaisesRegex(ValueError, 'SOLID_CUT_EDGE_UNKNOWN'): self.cut([{'through': self.MID}, {'through': [['CD', '1/2'], ['MA', '1/2'], ['NB', '1/2']]}])
+        with self.assertRaisesRegex(ValueError, 'SOLID_CUT_COUNT_INVALID'): self.cut([{'through': self.MID}] * 3)
+
+    def test_what_cannot_be_cut_is_refused(self):
+        for cuts, code in (([{'through': [['FG', '1/2'], ['GC', '1/2'], ['CB', '1/2']]}], 'SOLID_CUT_NO_EFFECT'),
+                           ([{'through': [['AD', '1/2'], ['BC', '1/2'], ['CG', '1/2'], ['FE', '1/4']]}], 'SOLID_CUT_NOT_PLANAR'),
+                           ([{'through': [['AC', '1/2'], ['BC', '1/2'], ['CG', '1/2']]}], 'SOLID_CUT_EDGE_UNKNOWN'),
+                           ([{'through': [['AD', '0/2'], ['BC', '1/2'], ['CG', '1/2']]}], 'SOLID_CUT_INVALID'),
+                           ([{'through': self.MID[:2]}], 'SOLID_CUT_INVALID'),
+                           ([], 'SOLID_CUT_COUNT_INVALID')):
+            with self.assertRaisesRegex(ValueError, code): self.cut(cuts)
+        with self.assertRaisesRegex(ValueError, 'SOLID_COUNT_UNSUPPORTED:CUT'): self.cut([{'through': self.MID}], count={'edges': True})
+
+    def test_a_drawing_is_read_back_against_the_cut_not_the_uncut_solid(self):
+        plain = {'capability': 'solid-figure-v1', 'solids': [dict(self.CUBE)]}
+        cut = {'capability': 'solid-figure-v1', 'solids': [{**self.CUBE, 'cuts': [{'through': self.MID}]}]}
+        edge_errors = lambda plan, svg: [e for e in O.audit(plan, svg)['errors'] if e.startswith('SOLID_EDGE_')]   # (the name labels are not drawn by this helper)
+        self.assertEqual(edge_errors(cut, edge_svg(cut)), [])
+        self.assertEqual(edge_errors(plain, edge_svg(plain)), [])
+        self.assertTrue(any(e.startswith('SOLID_EDGE_MISSING') for e in edge_errors(cut, edge_svg(plain))))
+        self.assertTrue(any(e.startswith('SOLID_EDGE_UNKNOWN') for e in edge_errors(plain, edge_svg(cut))))
