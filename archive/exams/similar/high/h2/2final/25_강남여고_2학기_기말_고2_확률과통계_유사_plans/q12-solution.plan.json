@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2/5",
+          "-1/5"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4/15",
+          "2/15"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "5",
+        "fill": "LIGHT"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": "2/5"
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 5,
+        "y": "2/5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "확률밀도함수의 그래프에서 x=1 이상인 부분의 넓이가 P(X≥1)이다.",
+  "sourceQuote": "그래프는 세 점 $A(0,a)$, $B(2,0)$, $C(5,a)$",
+  "sourceConditions": [
+    {
+      "id": "q12-c1",
+      "condition": "문항의 해설 풀이에 쓰인 값과 관계를 그림으로 옮긴다."
+    }
+  ],
+  "newVisualInformation": "a=2/5일 때 x≥1인 부분이 P(X≥1)",
+  "assetPath": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q12-solution/figure-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q12-solution/figure-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q12-solution/figure-solution.svg"
+  }
+}
