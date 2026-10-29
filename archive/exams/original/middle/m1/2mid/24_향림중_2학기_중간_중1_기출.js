@@ -494,7 +494,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 꼭짓점에서 두 대각선(빨강)을 그어 다각형이 삼각형 두 개와 사각형 한 개로 나누어진 모양을 영역별 색으로 구분해 보여 준다.",
+    "solutionImageCaption": "한 꼭짓점에서 그은 두 대각선이 다각형을 삼각형 둘과 사각형 하나로 나눈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -535,7 +539,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 꼭짓점 둘레에 정사각형의 내각 90°, 정육각형의 내각 120°, 정n각형의 내각 150°가 모여 한 바퀴를 이루는 모습을 색이 다른 호로 구분해 보여 주고, 붙은 변은 같은 길이 눈금으로 나타낸다.",
+    "solutionImageCaption": "한 점 둘레에 모인 정사각형·정육각형·정n각형의 세 내각을 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -695,7 +703,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: l∥m 사이에서 꺾인 선의 두 꺾인 점을 지나 l, m과 평행한 보조선(점선)을 그어, 엇각인 30°·α°·x°가 옮겨지고 각 x−10°와 x+20°가 각각 30°+α°, α°+x°로 나뉘는 모양을 색 호로 보여 준다.",
+    "solutionImageCaption": "평행한 보조선으로 엇각을 옮겨 꺾인 두 점의 각을 나눈 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
