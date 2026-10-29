@@ -418,7 +418,7 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "④",
-    "solution": "l과 m은 평행하므로 각 선분의 방향을 같은 수평선에 대하여 비교한다.\n왼쪽 선분의 35°와 130°인 꼭짓점의 방향 관계를 쓰면 가운데 하강 선분은 왼쪽 상승 선분보다 50° 방향이 작다.\n오른쪽 150° 조건으로 꼭짓점 각의 방향을 정리하면 x=β+100°, y=β+35°가 되어 x−y=65°이다.\n따라서 ④이다.",
+    "solution": "$l\\parallel m$이므로 각 꼭짓점에서 $l$, $m$에 평행한 보조선을 긋고 엇각과 평각을 이용한다.\n$y$인 꼭짓점에서 오른쪽으로 그은 보조선과, 그 꼭짓점에서 $130^\\circ$인 꼭짓점으로 향하는 선분이 이루는 각을 $\\beta$라 하자.\n$y$인 꼭짓점에서 아래 선분과 보조선(오른쪽)이 이루는 각은 $35^\\circ$의 엇각이므로 $35^\\circ$이다. 따라서 $y=\\beta+35^\\circ$이다.\n$130^\\circ$인 꼭짓점에서 보조선(왼쪽)과 왼쪽 선분이 이루는 각은 $\\beta$의 엇각이므로 $\\beta$이다. 오른쪽 아래로 내려가는 선분과 보조선(오른쪽)이 이루는 각을 $\\gamma$라 하면 평각에서 $\\beta+130^\\circ+\\gamma=180^\\circ$이므로 $\\gamma=50^\\circ-\\beta$이다.\n$150^\\circ$인 꼭짓점에서 $m$(오른쪽)과 아래 선분이 이루는 각이 $150^\\circ$이므로, 왼쪽으로 그은 보조선과 아래 선분이 이루는 각은 $180^\\circ-150^\\circ=30^\\circ$이다.\n$x$인 꼭짓점에서 왼쪽 위 선분과 보조선(왼쪽)이 이루는 각은 $\\gamma$의 엇각이므로 $\\gamma$이고, 오른쪽 위 선분과 보조선(오른쪽)이 이루는 각은 $30^\\circ$의 엇각이므로 $30^\\circ$이다. 평각에서 $\\gamma+x+30^\\circ=180^\\circ$이므로 $x=150^\\circ-\\gamma=150^\\circ-(50^\\circ-\\beta)=\\beta+100^\\circ$이다.\n따라서 $x-y=(\\beta+100^\\circ)-(\\beta+35^\\circ)=65^\\circ$이므로 정답은 ④이다.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -544,7 +544,7 @@ window.questionBank = [
       "SAS"
     ],
     "answer": "⑤",
-    "solution": "A와 B가 O에서 일직선이고 C와 D도 O에서 일직선이므로 OB=OA+AB, OD=OC+CD이다.\nOA=OC, AB=CD에서 OB=OD를 얻는다.\n또 ∠AOD와 ∠COB는 맞꼭지각이고 OA=OC이므로 두 변과 그 끼인각이 각각 같아 SAS 합동이다.\n따라서 ⑤이다.",
+    "solution": "$O$, $A$, $B$가 한 직선 위에 있고 $O$, $C$, $D$도 한 직선 위에 있으므로 $OB=OA+AB$, $OD=OC+CD$이다.\n$OA=OC$, $AB=CD$에서 $OB=OD$를 얻는다.\n$\\triangle AOD$와 $\\triangle COB$에서 $\\angle AOD$와 $\\angle COB$는 모두 두 삼각형이 함께 가지는 공통인 각 $\\angle O$이므로 크기가 같다.\n즉 $OA=OC$, $OD=OB$이고 그 끼인각 $\\angle O$가 공통이므로 두 변과 그 끼인각이 각각 같아 SAS 합동이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
