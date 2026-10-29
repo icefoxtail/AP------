@@ -31,7 +31,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q1.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q1-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q1-solution-v2.svg",
       "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
       "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_BISECTOR",
       "crossConceptKeys": [],
@@ -45,9 +45,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:a7b9e9f7a1d07a37c460fe9044685cc37f8f0a7ab805ac3e3ad01465db46dc8a",
       "difficultyEvidenceSha": "sha256:1ac5ddf07588a743ee4c2b3320b29ca3494033618ae3ea3a322b25c635fc7cc4",
-      "solutionImageAlt": "삼각형 ABC에서 AD가 ∠A를 이등분하고 ∠B=30°, ∠C=70°인 각 관계 그림",
-      "solutionImageCaption": "∠A를 이등분한 뒤 두 삼각형의 내각합을 적용한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AD가 ∠A의 이등분선이어서 ∠BAD와 ∠DAC가 같은 호 표시의 40°로 나뉘고, ∠B=30°, ∠C=70°이며 ∠ADC를 x로 표시한 그림이다.",
+      "solutionImageCaption": "∠A=80°가 AD로 이등분되어 ∠BAD=∠DAC=40°이므로 삼각형 ADC의 두 각 40°, 70°로 ∠ADC(=x)를 구한다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 2,
@@ -91,7 +91,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:e3d11a84fade96c35caf85071312859aa8dcd2eb26506ea07af3c13ac2dc3e56",
-      "difficultyEvidenceSha": "sha256:809f826bdec265d112970f2cd3dfb6b518573eeb431d73d3165f3b184dcb9939"
+      "difficultyEvidenceSha": "sha256:809f826bdec265d112970f2cd3dfb6b518573eeb431d73d3165f3b184dcb9939",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 육각형의 바깥쪽 각 48°, 53°가 각각 내각 132°, 127°로 바뀌고 나머지 내각 111°, 112°, 108°와 구하는 각 x를 표시했으며 육각형 안에 내각의 합 720°를 적은 그림이다.",
+      "solutionImageCaption": "바깥쪽 각 48°, 53°는 내각 132°, 127°가 되고, 육각형의 내각의 합 720°에서 나머지 다섯 내각을 빼면 x를 구할 수 있다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 3,
@@ -167,7 +171,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q4.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q4-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q4-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
       "crossConceptKeys": [],
@@ -181,9 +185,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3a16062568ee4b418ba5831016b4fab250ec0c0b2a5f900baa32e335b426a191",
       "difficultyEvidenceSha": "sha256:ac0bd7340a72d06ea265d92d7749d1dc567a238de7399916214004a0611ec800",
-      "solutionImageAlt": "원 O에서 같은 크기의 호 AB, CD, DE와 중심각 및 현을 표시한 그림",
-      "solutionImageCaption": "호의 크기와 중심각, 현의 관계를 보기의 진술과 대조한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원 O에서 같은 길이의 호 AB, CD, DE의 중심각이 모두 θ로 같고 현 AB, CD, DE의 길이가 같음을 눈금으로 표시하며, 현 CE와 삼각형 AOB, COE를 색칠해 비교한 그림이다.",
+      "solutionImageCaption": "같은 호의 중심각과 현은 각각 같지만, 현 CE는 CD+DE보다 짧고 삼각형 COE는 삼각형 AOB의 2배가 아니다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 5,
@@ -351,7 +355,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3b49f9faba360a00cc30860fcb76ef1ab19167978cca94910a6de6587fa0960a",
-      "difficultyEvidenceSha": "sha256:df371ca682ef94164aefca6b6117cb79696f4be87c66e413336dca6dea489ff4"
+      "difficultyEvidenceSha": "sha256:df371ca682ef94164aefca6b6117cb79696f4be87c66e413336dca6dea489ff4",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 변이 5cm인 정사각형 ABCD에서 꼭짓점을 중심으로 하는 호 4개와 정삼각형 DCP, DAQ를 그려 각 호가 30°씩 세 부분으로 나뉘고, 색칠한 도형의 둘레는 굵은 호 8개(중심각 합 240°), 안쪽의 호는 가는 선임을 보여 주는 그림이다.",
+      "solutionImageCaption": "각 호는 정삼각형 덕분에 30°씩 세 부분으로 나뉘고, 가운데 부분은 안쪽에 있어 둘레에는 양 끝의 30° 호 8개가 들어간다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 9,
@@ -905,7 +913,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q21.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q21-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q21-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
       "crossConceptKeys": [],
@@ -919,9 +927,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:07549d56920aaeb074bb5a5d7ace53085a4d7eab485fa2521ea5acbd04c7130b",
       "difficultyEvidenceSha": "sha256:2082b7779f40fd3d068092086f7bf72dd4b055f564ddf97c7ac25b77c963128d",
-      "solutionImageAlt": "중심각 45°, 안쪽 반지름 8 cm, 바깥쪽 반지름 12 cm인 환형 부채꼴 그림",
-      "solutionImageCaption": "바깥 호·안쪽 호·두 직선 변을 각각 계산해 둘레를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 중심각 45°인 부채꼴 O에서 OB=8cm, BD=4cm, AC=4cm이고 안쪽 호 AB는 2π cm, 바깥쪽 호 CD는 3π cm이며 두 호와 두 곧은 변 사이를 빗금으로 색칠한 그림이다.",
+      "solutionImageCaption": "색칠한 부분의 둘레는 바깥쪽 호 CD, 안쪽 호 AB와 곧은 변 AC, BD로 이루어진다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 22,
@@ -948,7 +956,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q22.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q22-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q22-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
       "crossConceptKeys": [],
@@ -962,9 +970,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:1bf736ad0c8d142c98ee7d6f5e8ded012f24b3294d51eb59b49c73a532e84b98",
       "difficultyEvidenceSha": "sha256:8a44940d6f41bb5644853b83d60a390dcf496257b1942b95ba58c62d67ba2b4f",
-      "solutionImageAlt": "반지름 6 cm인 사분원에서 직각삼각형 부분을 뺀 색칠 영역과 회전축 l을 나타낸 그림",
-      "solutionImageCaption": "색칠 영역의 회전체를 반구 부피에서 원뿔 부피를 빼어 계산한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 반지름 6cm인 사분원에서 현으로 잘린 활꼴을 빗금으로 색칠하고, 직각 표시와 회전축 l, 두 반지름 6cm, 회전하면 원뿔이 되는 직각삼각형 부분을 함께 나타낸 그림이다.",
+      "solutionImageCaption": "사분원을 축 l로 회전시키면 반구가 되고 직각삼각형 부분은 원뿔이 되어, 활꼴의 회전체는 반구에서 원뿔을 뺀 것이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 23,
