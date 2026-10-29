@@ -45,7 +45,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:a878f58ec14040e2421c1dc019d9f4143da3897047a570a7602ebb7845178360",
-      "difficultyEvidenceSha": "sha256:8a889446775d72837eb56957f6b271ffb1888ac8a0f141f14e296e6e1f290812"
+      "difficultyEvidenceSha": "sha256:8a889446775d72837eb56957f6b271ffb1888ac8a0f141f14e296e6e1f290812",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 오각뿔대와 육각뿔을 펼친 전개도로, 면마다 ①부터 ⑦까지 번호가 붙어 있어 면이 각각 7개임을 센다. 밑면은 진한 색, 옆면은 연한 색이다.",
+      "solutionImageCaption": "오각뿔대와 육각뿔의 전개도에서 면에 번호를 붙여 센다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 2,
@@ -132,7 +136,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:5bc6dba9b3f5e7184aecb0cf2baab9203a2593818ce7657e94f7616ab5f8f7f2",
-      "difficultyEvidenceSha": "sha256:3569b9f6bf29ea1373d8e74f1e390c9631f4d86c8608bf12414a637dad661e51"
+      "difficultyEvidenceSha": "sha256:3569b9f6bf29ea1373d8e74f1e390c9631f4d86c8608bf12414a637dad661e51",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q3-solution.svg",
+      "solutionImageAlt": "해설 그림: 원기둥, 원뿔, 원뿔대, 구, 반구 다섯 입체를 각각 회전축에 수직인 평면으로 자른 그림으로, 어느 입체든 단면(색칠한 부분)이 원 모양이다.",
+      "solutionImageCaption": "회전축에 수직인 평면으로 자른 단면은 모두 원이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 4,
@@ -176,9 +184,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:38d30b213424537002b7185b7d0ec4838d462878f4e0786bcc012b44510deaf9",
       "difficultyEvidenceSha": "sha256:464f61c4d93f41583b5fb859d0d8e16600f2670771dc233a3923d35992866a82",
-      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q4-solution.svg",
-      "solutionImageAlt": "해설 그림: 원뿔대와 원기둥을 회전축을 포함하는 평면으로 자른 단면이 색칠되어 있고, 두 단면 모두 가운데 회전축 l(점선)을 기준으로 좌우가 같은 모양이다.",
-      "solutionImageCaption": "회전축 l을 포함한 단면은 회전축을 기준으로 선대칭이다.",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q4-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 원뿔대와 원기둥을 회전축을 포함하는 평면으로 자른 단면이 색칠되어 있고, 두 단면 모두 가운데 회전축(점쇄선)을 기준으로 좌우가 같은 모양이다.",
+      "solutionImageCaption": "회전축을 포함하는 평면으로 자른 단면은 회전축을 기준으로 좌우가 포개지는 선대칭도형이다.",
       "solutionImageSize": "medium"
     },
     {
@@ -878,7 +886,7 @@ window.questionBank = [
       "subUnitConfidence": "rule_inferred",
       "subUnitClassificationDepth": "complete_rule",
       "solution": "(1)은 삼각기둥의 두 밑면과 옆면을 더하고, (2)는 원뿔의 부피를 구한다.\n\n(1) 밑면은 두 직각변의 길이가 $6\\mathrm{cm}$, $8\\mathrm{cm}$인 직각삼각형이다.\n한 밑면의 넓이는\n$\\dfrac12\\times6\\times8=24\\mathrm{cm}^2$이다.\n두 밑면의 넓이의 합은\n$24\\times2=48\\mathrm{cm}^2$이다.\n그림에서 밑면 삼각형의 세 변의 길이는 $6\\mathrm{cm}$, $8\\mathrm{cm}$, $10\\mathrm{cm}$이고 기둥의 높이는 $10\\mathrm{cm}$이다.\n옆넓이는\n$(6+8+10)\\times10=240\\mathrm{cm}^2$이다.\n따라서 겉넓이는\n$48+240=288\\mathrm{cm}^2$이다.\n\n(2) 원뿔의 밑면 반지름은 $5\\mathrm{cm}$, 높이는 $9\\mathrm{cm}$이다.\n부피는\n$\\dfrac13\\pi\\times5^2\\times9=75\\pi\\mathrm{cm}^3$이다.\n\n따라서 (1) $288\\mathrm{cm}^2$, (2) $75\\pi\\mathrm{cm}^3$이다.",
-      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q19-solution.svg",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q19-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "crossConceptKeys": [],
@@ -888,9 +896,9 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImageSize": "large",
-      "solutionImageAlt": "직각삼각형 밑면(변 6, 8, 10)과 기둥 높이 10인 삼각기둥, 반지름 5 높이 9인 원뿔.",
-      "solutionImageCaption": "삼각기둥 겉넓이는 288 cm²이고 원뿔 부피는 75π cm³이다.",
+      "solutionImageSize": "medium",
+      "solutionImageAlt": "해설 그림: 삼각기둥의 전개도에 직각삼각형 밑면 두 개(연한 파랑, 직각 표시)와 가로 8, 10, 6, 세로 10인 옆면 직사각형 세 개가 있고, 원뿔은 반지름 5와 높이 9가 표시되어 있다.",
+      "solutionImageCaption": "삼각기둥의 전개도와 원뿔의 반지름·높이",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:64ba740154f146571fce379366b97a9e08c6f8b192324a805635571ce6f07f1e",

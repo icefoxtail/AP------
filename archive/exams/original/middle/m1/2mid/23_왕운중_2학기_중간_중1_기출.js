@@ -659,7 +659,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:06f0587768aa48b02ecf2fd65fe8052e52864c4c4ce4d325655b7516b8f1e3ee",
-    "difficultyEvidenceSha": "sha256:74a478c8bd1447e674909c94339dfbc414d4d2fc77d85b2f63cdbde69133743f"
+    "difficultyEvidenceSha": "sha256:74a478c8bd1447e674909c94339dfbc414d4d2fc77d85b2f63cdbde69133743f",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체를 세 꼭짓점 A, G, C를 지나는 평면으로 잘라 한 꼭짓점을 떼어 낸 입체로, 절단면 AGC가 주황색으로 칠해져 있고 남은 일곱 꼭짓점 A~G에 이름이 붙어 있다.",
+    "solutionImageCaption": "세 꼭짓점 A, G, C를 지나는 평면으로 자른 입체와 절단면 AGC",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,

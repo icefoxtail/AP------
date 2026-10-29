@@ -679,7 +679,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체를 세 꼭짓점 A, C, F를 지나는 평면으로 잘라 꼭짓점 B 쪽을 떼어 낸 입체 세 개. 첫째는 CG(빨강)와 꼬인 위치의 모서리 AD, AF, EF, EH를, 둘째는 면 CGHD(주황)와 평행한 모서리 AE, EF, AF를, 셋째는 면 ACD(주황)와 수직인 모서리 AE, CG, DH를 굵게 나타냈다.",
+    "solutionImageCaption": "잘라 낸 입체에서 꼬인 위치·평행·수직인 모서리를 굵게 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,

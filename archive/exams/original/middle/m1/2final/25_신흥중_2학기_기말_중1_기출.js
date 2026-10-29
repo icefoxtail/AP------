@@ -263,9 +263,10 @@ window.questionBank = [
     "sourceQuestionNo": "6",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 정칠각뿔 세 개를 나란히 그린 그림. 첫째는 밑면의 모서리 7개를 굵게, 둘째는 꼭짓점 O로 향하는 옆 모서리 7개를 빨갛게, 셋째는 밑면 1개와 옆면 7개를 색으로 나누어 면 8개를 보인다.",
-    "solutionImageCaption": "칠각뿔의 모서리는 밑면 7개와 옆 모서리 7개로 14개이고, 면은 밑면 1개와 옆면 7개로 8개이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "해설 그림: 정칠각뿔 세 개를 나란히 그린 그림. 첫째는 밑면의 모서리 7개를 빨갛게, 둘째는 꼭짓점으로 향하는 옆 모서리 7개를 빨갛게 표시했고, 셋째는 밑면 1개(진한 파랑)와 옆면 7개(연한 파랑)를 색으로 나누어 보인다.",
+    "solutionImageCaption": "칠각뿔의 모서리는 밑면 7개와 옆 모서리 7개로 14개이고, 면은 밑면 1개와 옆면 7개로 8개이며 꼭짓점도 8개이다.",
+    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q6-solution-v2.svg"
   },
   {
     "id": 7,
@@ -308,9 +309,10 @@ window.questionBank = [
     "sourceQuestionNo": "7",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 정육면체의 모서리 12개를 위쪽 4개, 아래쪽 4개, 위아래를 잇는 세로 4개로 나누어 세 그림에 각각 빨갛게 표시한 그림.",
-    "solutionImageCaption": "정육면체의 모서리는 위쪽 4개, 아래쪽 4개, 세로 4개로 모두 12개이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "해설 그림: 정이십면체와 정육면체 세 개를 나란히 그린 그림. 정이십면체는 한 꼭짓점에 모인 정삼각형 5개를 주황색으로 칠했다. 정육면체 세 개는 각각 위쪽 모서리 4개, 아래쪽 모서리 4개, 위아래를 잇는 모서리 4개를 빨갛게 표시했다.",
+    "solutionImageCaption": "한 꼭짓점에 정삼각형이 5개 모이는 정다면체는 정이십면체이고, 정육면체의 모서리는 위쪽 4개, 아래쪽 4개, 위아래를 잇는 4개로 모두 12개이다.",
+    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution-v2.svg"
   },
   {
     "id": 8,

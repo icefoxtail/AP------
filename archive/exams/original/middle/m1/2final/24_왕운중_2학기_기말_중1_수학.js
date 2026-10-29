@@ -1268,7 +1268,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$6\\text{ cm}$",
     "solution": "원기둥의 반지름은 3 cm이고, 쇠공 3개의 지름이 각각 6 cm이므로 원기둥의 높이는 $18\\text{ cm}$이다.\n처음 물의 부피는 원기둥 부피에서 구 세 개의 부피를 뺀 값이다.\n$\\pi\\times3^2\\times18-3\\times\\dfrac{4}{3}\\pi\\times3^3=162\\pi-108\\pi=54\\pi\\text{ cm}^3$이다.\n\n쇠공을 꺼낸 뒤 물은 밑면 넓이 $9\\pi$인 원기둥을 채우므로 높이는 $54\\pi\\div9\\pi=6\\text{ cm}$이다.",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/s03-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q23-solution-v2.svg",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -1284,7 +1284,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImageAlt": "해설 그림: 왼쪽은 원기둥 모양의 통에 반지름 3cm인 쇠공 3개가 세로로 꼭 맞게 들어 있는 그림이고, 오른쪽은 공을 꺼낸 같은 통의 아래쪽을 물이 채운 높이 h를 나타낸 그림이다.",
+    "solutionImageCaption": "쇠공을 꺼낸 뒤 남은 물이 통의 아래쪽을 채우는 높이 h",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
