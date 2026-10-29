@@ -677,7 +677,7 @@ window.questionBank = [
       "모서리 $EF$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 면의 교선은 두 면이 공유하는 모서리이다.\n면 $ABCD$와 면 $AEHD$가 공유하는 모서리는 $\\overline{AD}$이므로 두 면의 교선은 $\\overline{AD}$이다.\n$\\overline{AD}$와 한 점에서 만나는 모서리는 점 $A$를 지나는 $\\overline{AB}$, $\\overline{AE}$와 점 $D$를 지나는 $\\overline{DC}$, $\\overline{DH}$이다.\n모서리 $BC$와 모서리 $EF$는 $\\overline{AD}$와 평행하고, 모서리 $CG$와 모서리 $GH$는 $\\overline{AD}$와 꼬인 위치에 있으므로 만나지 않는다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 두 면의 교선은 두 면이 공유하는 모서리이다.\n면 $ABCD$와 면 $AEHD$가 공유하는 모서리는 $\\overline{AD}$이므로 두 면의 교선은 $\\overline{AD}$이다.\n$\\overline{AD}$와 한 점에서 만나는 모서리는 점 $A$를 지나는 $\\overline{AB}$, $\\overline{AE}$와 점 $D$를 지나는 $\\overline{DC}$, $\\overline{DH}$이다.\n모서리 $BC$는 $\\overline{AD}$와 평행하고, 모서리 $CG$, 모서리 $GH$, 모서리 $EF$는 $\\overline{AD}$와 꼬인 위치에 있으므로 만나지 않는다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중1_수학/q16.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
