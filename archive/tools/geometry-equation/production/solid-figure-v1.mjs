@@ -482,6 +482,8 @@ function dimLabel(raw,value,unit,code,{angle=false}={}){
 
 // --- solving the figure ---------------------------------------------------------------------------------------------------------------------
 const MAX_SEGMENTS=10;
+// highlight tints: a fill colour and its opacity (LIGHT is the original blue shade of every highlight)
+const HIGHLIGHT_FILLS={LIGHT:['#7fa6e8',0.32],MEDIUM:['#7fa6e8',0.55],WARM:['#f2a65a',0.42],GREEN:['#6fcf97',0.42],ROSE:['#e98aa8',0.42],VIOLET:['#a78bdb',0.42]};
 const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
 const UNIT=/^(cm|mm|m|km)$/;
 export function solveSolidFigure(plan){
@@ -568,18 +570,35 @@ function solveSolids(plan){
     const hiddenSamples=[0.2,0.4,0.6,0.8].map(t=>occluded(planes,lerp(A,B,t),new Set()));
     s.hidden=hiddenSamples.filter(Boolean).length>=2;
   }
-  // highlights: planar polygons of named vertices
-  const highlights=[];
+  // highlights: planar polygons of named vertices, or whole faces of a polyhedron by their face name (bottom, top, side0, ...: named vertices not needed); fill picks the tint
+  const highlights=[],faceKeys=new Set();
   if(plan.highlights!==undefined){
-    if(!Array.isArray(plan.highlights)||plan.highlights.length>3)bad('SOLID_HIGHLIGHT_INVALID');
+    if(!Array.isArray(plan.highlights)||plan.highlights.length>8)bad('SOLID_HIGHLIGHT_INVALID');
     for(const h of plan.highlights){
-      onlyKeys(h,['polygon'],'SOLID_HIGHLIGHT_INVALID');
+      onlyKeys(h,['polygon','face','solid','fill'],'SOLID_HIGHLIGHT_INVALID');
+      if((h.polygon===undefined)===(h.face===undefined))bad('SOLID_HIGHLIGHT_INVALID');
+      const fill=h.fill??'LIGHT';
+      if(typeof fill!=='string'||!Object.hasOwn(HIGHLIGHT_FILLS,fill))bad('SOLID_HIGHLIGHT_FILL_INVALID');
+      const tint=fill==='LIGHT'?{}:{fill};
+      if(h.face!==undefined){
+        if(typeof h.face!=='string')bad('SOLID_HIGHLIGHT_INVALID');
+        const polys=solids.filter(x=>x.category==='POLY'),owner=h.solid!==undefined?polys.find(x=>x.id===h.solid):polys.length===1?polys[0]:undefined;
+        if(!owner)bad('SOLID_HIGHLIGHT_INVALID');// several polyhedra need the solid id; a round solid has no named faces
+        if(owner.cuts)bad('SOLID_HIGHLIGHT_FACE_UNSUPPORTED:CUT');
+        if(!owner.faces.some(f=>f.id===h.face))bad('SOLID_HIGHLIGHT_FACE_UNKNOWN:'+h.face.slice(0,12));
+        const key=owner.id+'|'+h.face;
+        if(faceKeys.has(key))bad('SOLID_HIGHLIGHT_INVALID');
+        faceKeys.add(key);
+        highlights.push({solid:owner.id,face:h.face,...tint});
+        continue;
+      }
+      if(h.solid!==undefined)bad('SOLID_HIGHLIGHT_INVALID');
       if(!Array.isArray(h.polygon)||h.polygon.length<3||h.polygon.length>6||new Set(h.polygon).size!==h.polygon.length)bad('SOLID_HIGHLIGHT_INVALID');
       const pts=h.polygon.map(name=>{if(!named.has(name))bad('SOLID_NAME_UNKNOWN');return named.get(name).p;});
       const nrm=faceNormal(pts);
       if(pts.some(p=>Math.abs(dot(nrm,sub(p,pts[0])))>1e-6)||len(nrm)<0.5)bad('SOLID_HIGHLIGHT_NOT_PLANAR');
       for(let k=0;k<h.polygon.length;k++){const a=h.polygon[k],b=h.polygon[(k+1)%h.polygon.length];if(!drawnPair(a,b))bad('SOLID_HIGHLIGHT_EDGE_NOT_DRAWN:'+a+b);}
-      highlights.push({polygon:[...h.polygon]});
+      highlights.push({polygon:[...h.polygon],...tint});
     }
   }
   // marks on named points: right angles, equal-length groups and angle arcs (the plan states the fact; the model checks it in 3D)
@@ -654,12 +673,12 @@ function solveSolids(plan){
   // axial section of a round solid
   let section=null;
   if(plan.section!==undefined){
-    onlyKeys(plan.section,['solid','kind','at'],'SOLID_SECTION_INVALID');
+    onlyKeys(plan.section,['solid','kind','at','fill'],'SOLID_SECTION_INVALID');
     if(plan.section.kind!=='AXIAL'&&plan.section.kind!=='LEVEL')bad('SOLID_SECTION_UNSUPPORTED');
     const target=plan.section.solid??solids.find(s=>s.category==='REV')?.id;
     const solid=solids.find(s=>s.id===target);
     if(!solid||solid.category!=='REV')bad('SOLID_SECTION_UNSUPPORTED');
-    if(plan.section.kind==='AXIAL'){if(plan.section.at!==undefined)bad('SOLID_SECTION_INVALID');section={solid:solid.id,kind:'AXIAL'};}
+    if(plan.section.kind==='AXIAL'){if(plan.section.at!==undefined||plan.section.fill!==undefined)bad('SOLID_SECTION_INVALID');section={solid:solid.id,kind:'AXIAL'};}
     else{
       // a plane parallel to the base at the fraction `at` ("1/3") of the height: the water level of a vessel
       const m=/^([1-9]\d?)\/([1-9]\d?)$/.exec(plan.section.at??'');
@@ -667,7 +686,13 @@ function solveSolids(plan){
       const f=Number(m[1])/Number(m[2]),z=f*solid.height,r=solid.r0+(solid.r1-solid.r0)*f;
       if(!(r>0))bad('SOLID_SECTION_INVALID');
       if(solid.orientation==='APEX_DOWN'&&!(z*cP>r*sP))bad('SOLID_LEVEL_APEX_HIDDEN');
-      section={solid:solid.id,kind:'LEVEL',at:plan.section.at,z:r6(z),r:r6(r)};
+      // fill:"BOTTOM"|"TOP" shades the body of the solid below or above the plane (an apex-up solid: a frustum below a cone, the small cone above); an apex-down vessel already shades its liquid
+      const fill=plan.section.fill;
+      if(fill!==undefined){
+        if(fill!=='BOTTOM'&&fill!=='TOP')bad('SOLID_SECTION_FILL_INVALID');
+        if(solid.orientation==='APEX_DOWN')bad('SOLID_SECTION_FILL_UNSUPPORTED:APEX_DOWN');
+      }
+      section={solid:solid.id,kind:'LEVEL',at:plan.section.at,z:r6(z),r:r6(r),...(fill!==undefined?{fill}:{})};
     }
   }
   // dimensions
@@ -1043,7 +1068,10 @@ function spec3d(plan,model,ctx){
   const outline=[];// polylines for label obstacles are derived from prims later
   const fillFirst=[];
   for(const h of model.highlights){
-    fillFirst.push({t:'poly',id:'highlight-'+h.polygon.join(''),role:'highlight-face',points:h.polygon.map(n=>pt(project(named.get(n)))),polygon:h.polygon.join('')});
+    if(h.face!==undefined){
+      const owner=model.solids.find(x=>x.id===h.solid),face=owner.faces.find(f=>f.id===h.face);
+      fillFirst.push({t:'poly',id:`highlight-${h.solid}-${h.face}`,role:'highlight-face',solid:h.solid,face:h.face,fill:h.fill??'LIGHT',points:face.idx.map(i=>pt(project(owner.vertices[i].p)))});
+    }else fillFirst.push({t:'poly',id:'highlight-'+h.polygon.join(''),role:'highlight-face',points:h.polygon.map(n=>pt(project(named.get(n)))),polygon:h.polygon.join(''),fill:h.fill??'LIGHT'});
   }
   prims.push(...fillFirst);
   void outline;
@@ -1113,6 +1141,7 @@ function spec3d(plan,model,ctx){
     prims.push({t:'poly',id:'section-'+solid.id,role:'section',solid:solid.id,points:pts.map(q=>pt(project(q))),polygon:'axial'});
   }else if(model.section?.kind==='LEVEL'){
     const solid=model.solids.find(s=>s.id===model.section.solid),e=ellipseOf(S,solid,model.section.r,model.section.z);
+    if(model.section.fill)prims.push({t:'poly',id:'body-'+solid.id,role:'body-fill',solid:solid.id,side:model.section.fill,points:bodyHull(solid,model.section).map(pt)});
     prims.push({t:'ellipse',id:'level-'+solid.id,role:'level-fill',solid:solid.id,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b)});
     if(solid.orientation==='APEX_DOWN'){
       // The liquid fills the similar (smaller) vessel below the level: its projected outline is shaded and its two inner sides are drawn, so the
@@ -1249,6 +1278,30 @@ function spec3d(plan,model,ctx){
       labels.push({...label,segment:[p0,p1],segmentOf:'slant',preferredSide:side});
     }
   }
+}
+/** Convex hull (counter-clockwise, monotone chain) of screen points. */
+function convexHull(points){
+  const pts=[...points].sort((p,q)=>p[0]-q[0]||p[1]-q[1]);
+  const cross=(o,a,b)=>(a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0]);
+  const lower=[],upper=[];
+  for(const p of pts){while(lower.length>=2&&cross(lower.at(-2),lower.at(-1),p)<=0)lower.pop();lower.push(p);}
+  for(const p of [...pts].reverse()){while(upper.length>=2&&cross(upper.at(-2),upper.at(-1),p)<=0)upper.pop();upper.push(p);}
+  return [...lower.slice(0,-1),...upper.slice(0,-1)];
+}
+const BODY_SAMPLES=72;
+/**
+ * The projected outline (screen units) of the part of a solid of revolution on one side of its level plane: the convex hull of the two circles that bound it
+ * (the base and the level circle below; the level circle and the top circle or the apex above), each circle sampled every 5 degrees.
+ */
+function bodyHull(solid,section){
+  const ox=solid.offset??0,pts=[];
+  const ring=(rad,z)=>{const c=project([0,0,z]);for(let k=0;k<BODY_SAMPLES;k++){const u=2*Math.PI*k/BODY_SAMPLES;pts.push([c[0]+ox+rad*Math.cos(u),c[1]+rad*sP*Math.sin(u)]);}};
+  if(section.fill==='BOTTOM'){ring(solid.r0,0);ring(section.r,section.z);}
+  else{
+    ring(section.r,section.z);
+    if(solid.r1>0)ring(solid.r1,solid.height);else{const c=project([0,0,solid.height]);pts.push([c[0]+ox,c[1]]);}
+  }
+  return convexHull(pts).map(q=>[r6(q[0]),r6(q[1])]);
 }
 function apexOf(solid){
   // the screen point of the (virtual) apex of a cone or cone frustum; an apex-down vessel has it on the base plane
@@ -1545,7 +1598,7 @@ function obstacleSegments(spec){
     if(p.t==='line')segs.push([[p.x1,p.y1],[p.x2,p.y2]]);
     else if(p.t==='arc')poly(arcPoints(p),false);
     else if(p.t==='circle'){const pts=[];for(let k=0;k<ELL_SAMPLES;k++){const u=2*Math.PI*k/ELL_SAMPLES;pts.push([p.cx+p.r*Math.cos(u),p.cy-p.r*Math.sin(u)]);}poly(pts,true);}
-    else if(p.t==='poly'&&(p.role==='net-face'||p.role==='liquid-region'))poly(p.points,true);
+    else if(p.t==='poly'&&(p.role==='net-face'||p.role==='liquid-region'||p.role==='body-fill'))poly(p.points,true);
     else if(p.t==='polyline')poly(p.points,false);
     else if(p.t==='earc')poly(p.samples,false);
     // the outline of a filled cut face is geometry the rendered layout check keeps labels off
@@ -1569,23 +1622,38 @@ function segmentHitsBox(a,b,box,pad){
     return (o(a,b,c)*o(a,b,d)<0)&&(o(c,d,a)*o(c,d,b)<0);
   });
 }
-const BOX_PAD=2.2,COUNT_MARGIN=4;
-/** Place every label near its anchor: names on the open side of their corner, lengths beside their segment, never over a stroke or another label. */
+// a counting number's centre stays within COUNT_FAR px of its own vertex or edge midpoint (the observer's bound is 48; one half px less here, so a rounding never crosses it)
+const BOX_PAD=2.2,COUNT_MARGIN=4,COUNT_FAR=47.5;
+/**
+ * Place every label near its anchor: names on the open side of their corner, lengths beside their segment, never over a stroke or another label.
+ * A label that finds no place because the labels placed before it took the room around it goes first on the next try (a few tries); the fewest-failures try is kept.
+ */
+const rankOf=l=>l.role==='vertex-name'||l.role==='count-vertex'?0:l.role==='count-edge'?2:1;
 function placeLabels(spec,fragments,errors){
-  const obstacles=obstacleSegments(spec),placed=[];
+  let order=[...spec.labels].sort((a,b)=>rankOf(a)-rankOf(b)),best=null;
+  for(let attempt=0;attempt<6;attempt++){
+    const result=placeLabelsOnce(spec,fragments,order);
+    if(!best||result.failed.length<best.failed.length)best=result;
+    if(!result.failed.length)break;
+    const failed=new Set(result.failed);
+    order=[...order.filter(l=>failed.has(l.id)),...order.filter(l=>!failed.has(l.id))];
+  }
+  errors.push(...best.failed);
+  return best.placed;
+}
+function placeLabelsOnce(spec,fragments,order){
+  const obstacles=obstacleSegments(spec),placed=[],failedIds=[];
   const {width,height}=spec.size,SAFE_MARGIN=SAFE;
   const free=(box,ignoreOwn)=>{
     if(box.x<SAFE_MARGIN||box.y<SAFE_MARGIN||box.x+box.width>width-SAFE_MARGIN||box.y+box.height>height-SAFE_MARGIN)return false;
     if(placed.some(p=>overlaps({x:p.box.x-BOX_PAD,y:p.box.y-BOX_PAD,width:p.box.width+2*BOX_PAD,height:p.box.height+2*BOX_PAD},box)))return false;
     return !obstacles.some(([a,b])=>segmentHitsBox(a,b,box,BOX_PAD)&&!(ignoreOwn&&false));
   };
-  const rank=l=>l.role==='vertex-name'||l.role==='count-vertex'?0:l.role==='count-edge'?2:1;
-  const order=[...spec.labels].sort((a,b)=>rank(a)-rank(b));
   // a counting number stays nearer to its own vertex or edge midpoint than to any other by a margin, so no number can be read as another's
   const nearest=(label,box)=>{
     if(!label.near)return true;
     const cx=box.x+box.width/2,cy=box.y+box.height/2,own=Math.hypot(cx-label.near.own[0],cy-label.near.own[1]);
-    return label.near.others.every(o=>own+label.near.margin<Math.hypot(cx-o[0],cy-o[1]));
+    return own<=COUNT_FAR&&label.near.others.every(o=>own+label.near.margin<Math.hypot(cx-o[0],cy-o[1]));
   };
   for(const label of order){
     const frag=fragments.get(label.id),{width:w,height:h}=frag.intrinsic;
@@ -1610,6 +1678,12 @@ function placeLabels(spec,fragments,errors){
       }
       if(label.inside){candidates.unshift({x:(a[0]+b[0])/2-w/2,y:(a[1]+b[1])/2-h/2+30});}
     }
+    // a counting number that found no place beside its edge or vertex may stand anywhere around its own target, nearest first (tried after the others, so a figure that
+    // had a place keeps it)
+    if(label.near)for(let dist=2;dist<=COUNT_FAR;dist+=1.5){
+      const n=Math.max(8,Math.ceil(2*Math.PI*dist/3));
+      for(let k=0;k<n;k++){const ang=2*Math.PI*k/n;candidates.push({x:label.near.own[0]+Math.cos(ang)*dist-w/2,y:label.near.own[1]-Math.sin(ang)*dist-h/2});}
+    }
     for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)&&nearest(label,box)){chosen=box;break;}}
     let leader=null;
     if(!chosen&&label.role==='dim'){
@@ -1625,10 +1699,10 @@ function placeLabels(spec,fragments,errors){
         chosen=box;leader=[[r6(nx),r6(ny)],[r6(mx),r6(my)]];obstacles.push(leader);break search;
       }
     }
-    if(!chosen){errors.push(label.id);continue;}
+    if(!chosen){failedIds.push(label.id);continue;}
     placed.push({label,fragment:frag,box:chosen,leader});
   }
-  return placed;
+  return {placed,failed:failedIds};
 }
 const strokeFor=p=>p.vis==='hidden'?' stroke-dasharray="5 4"':'';
 function renderPrims(spec,model){
@@ -1639,7 +1713,11 @@ function renderPrims(spec,model){
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="#7fa6e8" fill-opacity="${p.fill==='MEDIUM'?0.55:0.32}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
-  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face" data-polygon="${p.polygon}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face')){
+    const [color,opacity]=HIGHLIGHT_FILLS[p.fill??'LIGHT'];
+    body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face"${p.polygon?` data-polygon="${p.polygon}"`:` data-solid="${p.solid}" data-face="${p.face}"`}${p.fill&&p.fill!=='LIGHT'?` data-fill="${p.fill}"`:''} fill="${color}" fill-opacity="${opacity}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  }
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='body-fill'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="body-fill" data-solid="${p.solid}" data-side="${p.side}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='liquid-region'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="liquid-region" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='ellipse'))body+=`<g data-layer="20"><ellipse id="${p.id}" data-role="level-fill" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='cutface'))body+=`<g data-layer="20"><path id="${p.id}" data-role="cut-face" data-solid="${p.solid}" data-faces="${p.faces}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" d="M ${p.points.map(q=>q.join(' ')).join(' L ')} Z"/></g>`;

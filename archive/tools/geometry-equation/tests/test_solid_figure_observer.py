@@ -574,3 +574,118 @@ class SphereCuts(unittest.TestCase):
         svg = '<svg xmlns="http://www.w3.org/2000/svg" data-solid-figure="solid-figure-v1" data-yaw="28" data-pitch="20"/>'
         plan = {'capability': 'solid-figure-v1', 'solids': [{'kind': 'SPHERE', 'radius': 3, 'names': {'center': 'O'}, 'cut': {'kind': 'QUARTER'}}]}
         self.assertTrue(any(e.startswith('SOLID_NO_CURVES') for e in O.audit(plan, svg)['errors']))
+
+
+def face_polygon_svg(plan, entries, tamper=None):
+    """the edge figure of the first polyhedron plus one shaded polygon per (face name, tint), drawn from the observer's own projection"""
+    solid = O.build_solid({**plan['solids'][0], 'id': 's1'})
+    names = O.face_names(solid)
+
+    def px(p):
+        q = O.project(p)
+        return (60 + SCALE * q[0], 200 - SCALE * q[1])
+    body = ''
+    for face, fill in entries:
+        pts = [px(solid['verts'][i][1]) for i in solid['faces'][names.index(face)]]
+        if tamper: pts = tamper(face, pts)
+        body += '<polygon id="h-%s" data-role="highlight-face" data-solid="s1" data-face="%s"%s fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="%s"/>' % (face, face, (' data-fill="%s"' % fill) if fill else '', ' '.join('%.3f,%.3f' % p for p in pts))
+    return edge_svg(plan).replace('</svg>', body + '</svg>')
+
+
+class FaceHighlights(unittest.TestCase):
+    """A face shaded by its name ({face:"side1"}): the observer finds the face's corners itself and reads the drawn polygon and its tint back."""
+    PLAN = {'capability': 'solid-figure-v1', 'solids': [{'kind': 'FRUSTUM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 4}, 'height': 5, 'topScale': 0.6, 'names': '.' * 8}]}
+
+    def errors(self, plan, svg):
+        return [e for e in O.audit(plan, svg)['errors'] if e.startswith('SOLID_HIGHLIGHT')]
+
+    def test_the_faces_of_each_kind_of_polyhedron_are_named_in_the_order_of_their_list(self):
+        prism = O.build_solid({'kind': 'PRISM', 'base': {'kind': 'REGULAR', 'n': 3, 'side': 2}, 'height': 3, 'id': 's1'})
+        pyramid = O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 3, 'id': 's1'})
+        frustum = O.build_solid({**self.PLAN['solids'][0], 'id': 's1'})
+        self.assertEqual(O.face_names(prism), ['bottom', 'top', 'side0', 'side1', 'side2'])
+        self.assertEqual(O.face_names(pyramid), ['bottom', 'side0', 'side1', 'side2', 'side3'])
+        self.assertEqual(O.face_names(frustum), ['bottom', 'top', 'side0', 'side1', 'side2', 'side3'])
+        for solid in (prism, pyramid, frustum): self.assertEqual(len(O.face_names(solid)), len(solid['faces']))
+        # a side face stands on the matching edge of the base: side i holds the base vertices i and i+1
+        self.assertEqual(sorted(frustum['faces'][O.face_names(frustum).index('side1')][:2]), [1, 2])
+
+    def test_a_drawing_matching_the_plan_passes_and_each_tamper_is_caught(self):
+        plan = {**self.PLAN, 'highlights': [{'face': 'top', 'fill': 'MEDIUM'}, {'face': 'side1', 'fill': 'WARM'}, {'face': 'side0'}]}
+        entries = [('top', 'MEDIUM'), ('side1', 'WARM'), ('side0', None)]
+        self.assertEqual(self.errors(plan, face_polygon_svg(plan, entries)), [])
+        # a corner moved, in another cyclic order the same face is still the same face
+        rotate = lambda face, pts: pts[1:] + pts[:1] if face == 'side1' else pts
+        self.assertEqual(self.errors(plan, face_polygon_svg(plan, entries, rotate)), [])
+        self.assertEqual(self.errors(plan, face_polygon_svg(plan, entries, lambda face, pts: pts[::-1])), [])
+        move = lambda face, pts: [(pts[0][0] + 6, pts[0][1])] + pts[1:] if face == 'top' else pts
+        self.assertTrue(any(e.startswith('SOLID_HIGHLIGHT_FACE_VERTEX_OFF') for e in self.errors(plan, face_polygon_svg(plan, entries, move))))
+        self.assertTrue(any(e.startswith('SOLID_HIGHLIGHT_FILL_MISMATCH') for e in self.errors(plan, face_polygon_svg(plan, [('top', 'MEDIUM'), ('side1', 'GREEN'), ('side0', None)]))))
+        self.assertTrue(any(e.startswith('SOLID_HIGHLIGHT_FILL_MISMATCH') for e in self.errors(plan, face_polygon_svg(plan, [('top', 'MEDIUM'), ('side1', 'WARM'), ('side0', 'ROSE')]))))
+        self.assertTrue(any(e.startswith('SOLID_HIGHLIGHT_FACE_SET_MISMATCH') for e in self.errors(plan, face_polygon_svg(plan, entries[:2]))))
+        self.assertTrue(any(e.startswith('SOLID_HIGHLIGHT_FACE_SET_MISMATCH') for e in self.errors(plan, face_polygon_svg(plan, entries + [('bottom', None)]))))
+        # a plan that shades no face but a figure that does
+        self.assertTrue(any(e.startswith('SOLID_HIGHLIGHT_FACE_SET_MISMATCH') for e in self.errors(self.PLAN, face_polygon_svg(plan, entries))))
+
+    def test_the_plan_is_checked_before_the_drawing(self):
+        svg = edge_svg(self.PLAN)
+        for highlights, code in (([{'face': 'top', 'fill': 'PINK'}], 'SOLID_HIGHLIGHT_FILL_INVALID'), ([{'face': 'top'}, {'face': 'top'}], None)):
+            plan = {**self.PLAN, 'highlights': highlights}
+            errors = O.audit(plan, svg)['errors']
+            if code: self.assertTrue(any(e.startswith('SOLID_OBSERVER_INPUT:' + code) for e in errors), errors)
+        # a face the solid does not have is read as no drawn face
+        plan = {**self.PLAN, 'highlights': [{'face': 'side9'}]}
+        self.assertTrue(any(e.startswith('SOLID_HIGHLIGHT_FACE') for e in self.errors(plan, svg)))
+
+
+class BodyFill(unittest.TestCase):
+    """A level section with fill "BOTTOM" / "TOP" shades the part of the solid on that side: the polygon must be the hull of the circles that bound it."""
+    S, TX, TY = 30.0, 200.0, 260.0
+
+    def setUp(self):
+        self.solid = O.build_solid({'kind': 'CONE', 'radius': 6, 'height': 8, 'id': 's1'})
+        self.plan = {'section': {'kind': 'LEVEL', 'at': '1/2', 'fill': 'BOTTOM'}}
+
+    def px(self, z):
+        q = O.project((0.0, 0.0, z))
+        return (self.TX + self.S * q[0], self.TY - self.S * q[1])
+
+    def circle(self, z, r):
+        cx, cy = self.px(z)
+        return [(cx + self.S * r * math.cos(math.radians(k)), cy - self.S * r * math.sin(O.PITCH) * math.sin(math.radians(k))) for k in range(0, 360, 5)]
+
+    def check(self, points, plan=None, side='BOTTOM'):
+        svg = '<svg xmlns="http://www.w3.org/2000/svg"><polygon data-role="body-fill" data-solid="s1" data-side="%s" points="%s"/></svg>' % (side, ' '.join('%.3f,%.3f' % p for p in points))
+        import xml.etree.ElementTree as ET
+        errors = []
+        O.check_body_fill(plan or self.plan, [self.solid], {'s1': (self.TX, self.TY)}, self.S, ET.fromstring(svg), errors)
+        return errors
+
+    def test_the_hull_of_the_two_circles_of_the_lower_part_passes(self):
+        hull = O._hull(self.circle(0.0, 6.0) + self.circle(4.0, 3.0))
+        self.assertGreater(len(hull), 20)
+        self.assertEqual(self.check(hull), [])
+        self.assertEqual(self.check(hull[::-1]), [])   # either way round
+        # the upper part is the hull of the level circle and the apex
+        top = {'section': {'kind': 'LEVEL', 'at': '1/2', 'fill': 'TOP'}}
+        hull_top = O._hull(self.circle(4.0, 3.0) + [self.px(8.0)])
+        self.assertEqual(self.check(hull_top, top, 'TOP'), [])
+        self.assertTrue(self.check(hull_top, self.plan))   # the lower part's plan against the upper part's polygon
+
+    def test_a_polygon_that_is_not_that_hull_is_refused(self):
+        hull = O._hull(self.circle(0.0, 6.0) + self.circle(4.0, 3.0))
+        # a corner pulled out, the polygon squashed so that the circles stick out, the wrong side named, a polygon where the plan has none, none where it has one
+        self.assertTrue(self.check([(hull[0][0] + 25, hull[0][1])] + hull[1:]))
+        top = min(p[1] for p in hull)
+        self.assertTrue(any(e.startswith('SOLID_BODY_FILL_MISMATCH:circle_outside') for e in self.check([(x, max(y, top + 40)) for x, y in hull])))
+        self.assertIn('SOLID_BODY_FILL_MISMATCH:attributes', self.check(hull, side='TOP'))
+        self.assertIn('SOLID_BODY_FILL_SET_MISMATCH', self.check(hull, {'section': {'kind': 'LEVEL', 'at': '1/2'}}))
+        errors = []
+        import xml.etree.ElementTree as ET
+        O.check_body_fill(self.plan, [self.solid], {'s1': (self.TX, self.TY)}, self.S, ET.fromstring('<svg xmlns="http://www.w3.org/2000/svg"/>'), errors)
+        self.assertIn('SOLID_BODY_FILL_SET_MISMATCH', errors)
+
+    def test_the_hull_helper_is_a_convex_hull(self):
+        square = [(0.0, 0.0), (4.0, 0.0), (4.0, 4.0), (0.0, 4.0), (2.0, 2.0), (1.0, 3.0)]
+        self.assertEqual(sorted(O._hull(square)), sorted(square[:4]))
+        self.assertAlmostEqual(O._area(O._hull(square)), 16.0)

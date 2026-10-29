@@ -932,3 +932,106 @@ test('E27: cut spheres beside other solids share one scale, and a cut-sphere pan
   assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
   assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
 });
+
+// --- E28: faces shaded by name (no vertex names), edge numbers in a narrow panel at the large grid font, the body of a level section -------------------
+const frustum5=(over={})=>figure({unit:'cm',solids:[{kind:'FRUSTUM',base:{kind:'REGULAR',n:5,side:4},height:6,topScale:0.6,names:'..........'}],dims:[{height:true}],...over});
+const failingAudit=async(plan,svg,prefix)=>{const r=await audit(plan,svg);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+test('E28: faces are shaded by their face name with no vertex names, each in its own tint, and the observer reads every face back',async()=>{
+  const faces=[{face:'top',fill:'MEDIUM'},{face:'bottom',fill:'MEDIUM'},{face:'side0',fill:'WARM'},{face:'side1',fill:'GREEN'},{face:'side2',fill:'ROSE'},{face:'side3',fill:'VIOLET'},{face:'side4'}];
+  const plan=frustum5({highlights:faces});
+  const model=solveSolidFigure(plan);
+  assert.deepEqual(model.highlights.map(h=>h.face),faces.map(f=>f.face));
+  assert.equal('fill' in model.highlights[6],false,'the default tint is not recorded');
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-role="highlight-face"/g)??[]).length,7);
+  for(const f of faces)assert.match(svg,new RegExp(`<polygon id="highlight-s1-${f.face}" data-role="highlight-face" data-solid="s1" data-face="${f.face}"${f.fill?` data-fill="${f.fill}"`:''} fill=`));
+  assert.match(svg,/data-face="side0" data-fill="WARM" fill="#f2a65a" fill-opacity="0.42"/);
+  assert.match(svg,/data-face="side4" fill="#7fa6e8" fill-opacity="0.32"/);
+  assert.match(svg,/data-face="top" data-fill="MEDIUM" fill="#7fa6e8" fill-opacity="0.55"/);
+  assert.ok(svg.lastIndexOf('data-role="highlight-face"')<svg.indexOf('data-role="edge"'),'the fills lie beneath the strokes');
+  // a pyramid has bottom and side faces only; the faces of a named solid can be shaded too, and the polygon form takes a tint as well
+  const pyramid=figure({solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:5,names:'ABCDE'}],highlights:[{face:'bottom'},{face:'side1',fill:'WARM'}]});
+  await sphereSvg(pyramid);
+  const poly=figure({solids:[cuboid()],segments:[{from:'E',to:'G'},{from:'G',to:'C'},{from:'E',to:'C'}],highlights:[{polygon:['E','G','C'],fill:'GREEN'}]});
+  const polySvg=await sphereSvg(poly);
+  assert.match(polySvg,/data-role="highlight-face" data-polygon="EGC" data-fill="GREEN" fill="#6fcf97"/);
+  // tampering: a tint changed, a corner moved, a shaded face missing, a face shaded twice or another face drawn
+  const element=name=>svg.match(new RegExp(`<polygon id="highlight-s1-${name}"[^>]*\\/>`))[0];
+  await failingAudit(plan,svg.replace(element('side0'),element('side0').replace('data-fill="WARM"','data-fill="GREEN"')),'SOLID_HIGHLIGHT_FILL_MISMATCH');
+  await failingAudit(plan,svg.replace(element('side4'),element('side4').replace('data-face="side4"','data-face="side4" data-fill="ROSE"')),'SOLID_HIGHLIGHT_FILL_MISMATCH');
+  await failingAudit(plan,svg.replace(element('side1'),element('side1').replace(/points="([\d.]+),([\d.]+)/,(all,x,y)=>`points="${Number(x)+8},${y}`)),'SOLID_HIGHLIGHT_FACE_VERTEX_OFF');
+  await failingAudit(plan,svg.replace(`<g data-layer="20">${element('side3')}</g>`,''),'SOLID_HIGHLIGHT_FACE_SET_MISMATCH');
+  await failingAudit(plan,svg.replace(element('side3'),element('side3').replace('data-face="side3"','data-face="side2"')),'SOLID_HIGHLIGHT_FACE_SET_MISMATCH');
+  await failingAudit(plan,svg.replace(element('top'),element('top').replace('data-face="top"','data-face="bottom"')),'SOLID_HIGHLIGHT_FACE');
+  // the figure against a plan that shades other faces
+  await failingAudit(frustum5({highlights:faces.slice(0,6)}),svg,'SOLID_HIGHLIGHT_FACE_SET_MISMATCH');
+});
+test('E28: a face highlight that names no face of the solid, or two things at once, or a tint that does not exist, is refused',()=>{
+  const bad=(highlights,expected,over)=>assert.throws(()=>solveSolidFigure(frustum5({highlights,...over})),code(expected),expected);
+  bad([{face:'side9'}],'SOLID_HIGHLIGHT_FACE_UNKNOWN:side9');
+  bad([{face:'bottom'},{face:'bottom'}],'SOLID_HIGHLIGHT_INVALID');
+  bad([{face:'top',polygon:['A','B','C']}],'SOLID_HIGHLIGHT_INVALID');
+  bad([{}],'SOLID_HIGHLIGHT_INVALID');
+  bad([{face:'top',fill:'PINK'}],'SOLID_HIGHLIGHT_FILL_INVALID');
+  bad([{face:3}],'SOLID_HIGHLIGHT_INVALID');
+  bad([{face:'top',colour:'red'}],'SOLID_HIGHLIGHT_INVALID');
+  bad([{face:'top',solid:'s9'}],'SOLID_HIGHLIGHT_INVALID');
+  bad(Array.from({length:9},(_,k)=>({face:'side'+(k%5)})),'SOLID_HIGHLIGHT_INVALID');
+  // several polyhedra need the solid id; a round solid has no named faces; a cut polyhedron's faces are not named
+  const two=highlights=>figure({solids:[{id:'s1',kind:'PYRAMID',base:{kind:'RECT',width:3,depth:3},height:4,names:'ABCDE'},{id:'s2',kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:3,names:'FGHIJKLM'}],highlights});
+  assert.throws(()=>solveSolidFigure(two([{face:'bottom'}])),code('SOLID_HIGHLIGHT_INVALID'));
+  assert.equal(solveSolidFigure(two([{solid:'s2',face:'top'},{solid:'s1',face:'side0'}])).highlights.length,2);
+  assert.throws(()=>solveSolidFigure(figure({solids:[{id:'s1',kind:'CYLINDER',radius:2,height:4}],dims:[{height:true}],highlights:[{solid:'s1',face:'top'}]})),code('SOLID_HIGHLIGHT_INVALID'));
+  assert.throws(()=>solveSolidFigure(cutCube([{through:midCut}],{unit:'cm',highlights:[{face:'cut1'}]})),code('SOLID_HIGHLIGHT_FACE_UNSUPPORTED:CUT'));
+  // eight highlights are allowed
+  assert.equal(solveSolidFigure(frustum5({highlights:[{face:'top'},{face:'bottom'},...[0,1,2,3,4].map(k=>({face:'side'+k}))]})).highlights.length,7);
+});
+test('E28: edge numbers of a pyramid in a narrow grid panel at the large font each find a place: a squeezed-out number goes first on the next try',async()=>{
+  const plan={capability:'solid-figure-v1',panelWidth:GRID_PANEL_WIDTH,solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:5,names:'ABCDE',count:{edges:true}}],...meta};
+  const composed=await composeSolidFigurePanel({plan,model:solveSolidFigure(plan),identity,typographyPolicy:{baseFontPx:29.3,displayScale:1,fontFloorCssPx:11}});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,400));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  assert.equal((composed.svg.match(/data-label-role="count-edge"/g)??[]).length,8);
+  // with room for nothing there is still an explicit refusal, not a figure with a number far away
+  const crowded={...plan,solids:[{kind:'PRISM',base:{kind:'RECT',width:1,depth:1},height:30,names:'.'.repeat(8),count:{vertices:true,edges:true}}]};
+  const refused=await composeSolidFigurePanel({plan:crowded,model:solveSolidFigure(crowded),identity,typographyPolicy:{baseFontPx:29.3,displayScale:1,fontFloorCssPx:11}});
+  assert.equal(refused.status,'SOLID_LABELS_NO_ROOM');
+});
+const levelPlan=(solid,section,dims)=>figure({unit:'cm',solids:[solid],section:{kind:'LEVEL',...section},dims});
+test('E28: a level section can shade the body below or above its plane (a frustum below a cone, the small cone above), read back as the hull of its circles',async()=>{
+  const cases=[
+    [{kind:'CONE',radius:6,height:8},{at:'1/2',fill:'BOTTOM'},[{radius:'bottom'},{level:'bottom'},{level:'top'},{radius:'level'}]],
+    [{kind:'CONE',radius:6,height:8},{at:'1/3',fill:'TOP'},[{level:'top'}]],
+    [{kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:6},{at:'1/2',fill:'BOTTOM'},[{level:true}]],
+    [{kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:6},{at:'1/2',fill:'TOP'},[{level:'top'}]],
+    [{kind:'CYLINDER',radius:4,height:7},{at:'2/3',fill:'BOTTOM'},[{level:true}]]
+  ];
+  for(const [solid,section,dims] of cases){
+    const plan=levelPlan(solid,section,dims);
+    const model=solveSolidFigure(plan);
+    assert.equal(model.section.fill,section.fill);
+    const svg=await sphereSvg(plan);
+    assert.equal((svg.match(/data-role="body-fill"/g)??[]).length,1,solid.kind+section.fill);
+    assert.match(svg,new RegExp(`data-role="body-fill" data-solid="s1" data-side="${section.fill}"`));
+    assert.ok(svg.indexOf('data-role="body-fill"')<svg.indexOf('data-role="level-fill"'),'the body is shaded beneath the section');
+  }
+  // without fill the figure is what it was: no body polygon
+  assert.doesNotMatch(await sphereSvg(levelPlan({kind:'CONE',radius:6,height:8},{at:'1/2'},[{radius:'bottom'},{level:'bottom'}])),/body-fill/);
+  // tampering: the polygon's corner moved in, a circle of the body left outside it, the wrong side, no polygon at all
+  const plan=levelPlan({kind:'CONE',radius:6,height:8},{at:'1/2',fill:'BOTTOM'},[{radius:'bottom'},{level:'bottom'},{level:'top'},{radius:'level'}]);
+  const svg=await sphereSvg(plan);
+  const body=svg.match(/<polygon id="body-s1"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(body,body.replace(/points="([\d.]+),([\d.]+)/,(all,x,y)=>`points="${Number(x)+30},${y}`)),'SOLID_BODY_FILL_MISMATCH');
+  await failingAudit(plan,svg.replace(body,body.replace('data-side="BOTTOM"','data-side="TOP"')),'SOLID_BODY_FILL_MISMATCH:attributes');
+  await failingAudit(plan,svg.replace(`<g data-layer="20">${body}</g>`,''),'SOLID_BODY_FILL_SET_MISMATCH');
+  await failingAudit(levelPlan({kind:'CONE',radius:6,height:8},{at:'1/2'},[{radius:'bottom'},{level:'bottom'}]),svg,'SOLID_BODY_FILL_SET_MISMATCH');
+  const flat=body.replace(/points="[^"]*"/,(all)=>{const pts=all.slice(8,-1).split(' ').map(p=>p.split(',').map(Number));const top=Math.min(...pts.map(p=>p[1]));return `points="${pts.map(([x,y])=>`${x},${Math.max(y,top+40)}`).join(' ')}"`;});
+  await failingAudit(plan,svg.replace(body,flat),'SOLID_BODY_FILL_MISMATCH');
+});
+test('E28: a level fill is refused where it has no body to shade',()=>{
+  const bad=(solid,section,expected)=>assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[solid],section,dims:[{level:true}]})),code(expected),expected);
+  bad({kind:'CONE',radius:4,height:6,orientation:'APEX_DOWN'},{kind:'LEVEL',at:'1/2',fill:'BOTTOM'},'SOLID_SECTION_FILL_UNSUPPORTED:APEX_DOWN');
+  bad({kind:'CONE',radius:4,height:6},{kind:'LEVEL',at:'1/2',fill:'MIDDLE'},'SOLID_SECTION_FILL_INVALID');
+  bad({kind:'CONE',radius:4,height:6},{kind:'AXIAL',fill:'BOTTOM'},'SOLID_SECTION_INVALID');
+  bad({kind:'CONE',radius:4,height:6},{kind:'LEVEL',at:'1/2',colour:'blue'},'SOLID_SECTION_INVALID');
+});

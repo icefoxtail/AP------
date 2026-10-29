@@ -554,9 +554,14 @@ def audit_solids(plan, ctx):
     declared_segments = {s['from'] + s['to'] for s in plan.get('segments') or []}
     drawn_segments = {el.get('data-edge') for el in root.iter(NS + 'line') if el.get('data-role') == 'segment'}
     if declared_segments != drawn_segments: errors.append('SOLID_SEGMENT_SET_MISMATCH')
-    highlights = [h['polygon'] for h in plan.get('highlights') or []]
-    drawn = {el.get('data-polygon'): el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'highlight-face'}
+    all_highlights = plan.get('highlights') or []
+    highlights = [h['polygon'] for h in all_highlights if h.get('polygon') is not None]
+    drawn = {el.get('data-polygon'): el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'highlight-face' and el.get('data-polygon') is not None}
     if sorted(''.join(h) for h in highlights) != sorted(drawn): errors.append('SOLID_HIGHLIGHT_SET_MISMATCH')
+    for entry in all_highlights:
+        if entry.get('polygon') is None: continue
+        el = drawn.get(''.join(entry['polygon']))
+        if el is not None and (el.get('data-fill') or 'LIGHT') != (entry.get('fill') or 'LIGHT'): errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + ''.join(entry['polygon']))
     for h in highlights:
         el = drawn.get(''.join(h))
         if el is None: continue
@@ -569,6 +574,7 @@ def audit_solids(plan, ctx):
         if len(P) >= 4:
             nrm = vunit(vcross(vsub(P[1], P[0]), vsub(P[2], P[0])))
             if any(abs(vdot(nrm, vsub(p, P[0]))) > 1e-6 for p in P): errors.append('SOLID_HIGHLIGHT_NOT_PLANAR')
+    check_face_highlights(all_highlights, solids, frames, scale, root, errors)
     # a nested solid must sit exactly on its host's axis
     by_id = {s['id']: s for s in solids}
     for solid in solids:
@@ -623,6 +629,7 @@ def audit_solids(plan, ctx):
                         errors.append('SOLID_LIQUID_REGION_MISMATCH')
     elif liquid_els:
         errors.append('SOLID_LIQUID_REGION_WITHOUT_SECTION')
+    check_body_fill(plan, solids, frames, scale, root, errors)
     audit_marks(plan, solid_named=named, frames=frames, scale=scale, root=root, errors=errors, px_by_id=ctx.get('px'))
     for el in root.iter(NS + 'line'):
         if el.get('data-role') == 'dim-line':
@@ -689,6 +696,55 @@ def audit_counts(solid, flags, px, ctx):
             if own > COUNT_FAR: errors.append('SOLID_COUNT_LABEL_FAR:' + lid)
             if any(own + COUNT_MARGIN >= math.hypot(cx - t[0], cy - t[1]) for k, t in enumerate(targets) if k != n - 1): errors.append('SOLID_COUNT_LABEL_CONFUSED:' + lid)
             if role == 'count-vertex' and _box_seg_dist(box, targets[n - 1], targets[n - 1]) < 1.5: errors.append('SOLID_COUNT_ON_VERTEX:' + lid)
+
+
+HIGHLIGHT_FILLS = ('LIGHT', 'MEDIUM', 'WARM', 'GREEN', 'ROSE', 'VIOLET')
+
+
+def face_names(solid):
+    """the names of a polyhedron's faces, in the order of its face list: bottom, (top,) side0, side1, ... (side i stands on the i-th edge of the base)"""
+    n = len(solid['verts']) - 1 if solid['kind'] == 'PYRAMID' else len(solid['verts']) // 2
+    return (['bottom'] if solid['kind'] == 'PYRAMID' else ['bottom', 'top']) + ['side%d' % i for i in range(n)]
+
+
+def check_face_highlights(highlights, solids, frames, scale, root, errors):
+    """a highlight written as {face: "side2"} shades exactly the drawn polygon of that face of that polyhedron, in the tint the plan names"""
+    polys = [x for x in solids if x['cat'] == 'POLY']
+    want = {}
+    for h in highlights:
+        if h.get('face') is None: continue
+        owner = next((x for x in polys if x['id'] == h.get('solid')), None) if h.get('solid') is not None else (polys[0] if len(polys) == 1 else None)
+        if owner is None or owner.get('cut'): raise ValueError('SOLID_HIGHLIGHT_INVALID')
+        if (h.get('fill') or 'LIGHT') not in HIGHLIGHT_FILLS: raise ValueError('SOLID_HIGHLIGHT_FILL_INVALID')
+        want[(owner['id'], h['face'])] = h.get('fill') or 'LIGHT'
+    drawn = {}
+    for el in root.iter(NS + 'polygon'):
+        if el.get('data-role') == 'highlight-face' and el.get('data-face') is not None:
+            key = (el.get('data-solid'), el.get('data-face'))
+            if key in drawn: errors.append('SOLID_HIGHLIGHT_FACE_SET_MISMATCH')
+            drawn[key] = el
+    if set(drawn) != set(want): errors.append('SOLID_HIGHLIGHT_FACE_SET_MISMATCH')
+    for (sid, face), fill in want.items():
+        el = drawn.get((sid, face))
+        if el is None: continue
+        solid = next(x for x in polys if x['id'] == sid)
+        names = face_names(solid)
+        if face not in names:
+            errors.append('SOLID_HIGHLIGHT_FACE_UNKNOWN:' + face)
+            continue
+        if sid not in frames: continue
+        Tx, Ty = frames[sid]
+
+        def px(p):
+            q = project(p)
+            return (Tx + scale * q[0], Ty - scale * q[1])
+        cycle = solid['faces'][names.index(face)]
+        expected = [px(solid['verts'][i][1]) for i in cycle]
+        pts = _points(el.get('points'))
+        n = len(expected)
+        ok = len(pts) == n and any(all(math.hypot(pts[i][0] - expected[(d * i + k) % n][0], pts[i][1] - expected[(d * i + k) % n][1]) <= POS_TOL for i in range(n)) for d in (1, -1) for k in range(n))
+        if not ok: errors.append('SOLID_HIGHLIGHT_FACE_VERTEX_OFF:' + face)
+        if (el.get('data-fill') or 'LIGHT') != fill: errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + face)
 
 
 def check_poly_edges(solid, root, px, scale, errors):
@@ -922,6 +978,82 @@ def _liquid_boundary(solid, z, rl):
     bv = _tangent_params(ell(r0, 0.0), apex)
     near = [bv['at'](bv['uL'] + 2 * math.pi + (bv['uR'] - bv['uL']) * k / LIQUID_SAMPLES) for k in range(LIQUID_SAMPLES + 1)]
     return near + far
+
+
+BODY_TOL = 1.2   # px
+
+
+def _hull(points):
+    pts = sorted(set(points))
+    if len(pts) < 3: return pts
+
+    def cr(o, a, b): return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+    lower, upper = [], []
+    for p in pts:
+        while len(lower) >= 2 and cr(lower[-2], lower[-1], p) <= 0: lower.pop()
+        lower.append(p)
+    for p in reversed(pts):
+        while len(upper) >= 2 and cr(upper[-2], upper[-1], p) <= 0: upper.pop()
+        upper.append(p)
+    return lower[:-1] + upper[:-1]
+
+
+def _area(poly):
+    return abs(sum(poly[i][0] * poly[(i + 1) % len(poly)][1] - poly[(i + 1) % len(poly)][0] * poly[i][1] for i in range(len(poly)))) / 2
+
+
+def check_body_fill(plan, solids, frames, scale, root, errors):
+    """a level plane with fill "BOTTOM" / "TOP" shades the part of the solid on that side: the polygon is the convex hull of the circles that bound that part
+    (re-derived here: every vertex on one of the circles' projections, the polygon convex, every point of every circle inside it, and its area the hull's)"""
+    section = plan.get('section') or {}
+    fill = section.get('fill') if section.get('kind') == 'LEVEL' else None
+    els = [el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'body-fill']
+    if bool(fill) != bool(els) or len(els) > 1:
+        errors.append('SOLID_BODY_FILL_SET_MISMATCH')
+        return
+    if not els: return
+    el = els[0]
+    solid = next(x for x in solids if x['id'] == (section.get('solid') or next(y['id'] for y in solids if y['cat'] == 'REV')))
+    if el.get('data-solid') != solid['id'] or el.get('data-side') != fill: errors.append('SOLID_BODY_FILL_MISMATCH:attributes')
+    Tx, Ty = frames[solid['id']]
+    m = re.fullmatch(r'(\d+)/(\d+)', section.get('at') or '')
+    f = int(m.group(1)) / int(m.group(2))
+    h, r0, r1 = solid['height'], solid['r0'], solid['r1']
+    zl, rl = f * h, r0 + (r1 - r0) * f
+
+    def px(z):
+        q = project((0.0, 0.0, z))
+        return (Tx + scale * q[0], Ty - scale * q[1])
+    circles = [(0.0, r0), (zl, rl)] if fill == 'BOTTOM' else [(zl, rl)] + ([(h, r1)] if r1 > 0 else [])
+    apex = [px(h)] if (fill == 'TOP' and r1 == 0) else []
+    samples, curves = list(apex), []
+    for z, rad in circles:
+        cx, cy = px(z)
+        rx, ry = scale * rad, scale * rad * math.sin(PITCH)
+        curves.append((cx, cy, rx, ry))
+        samples += [(cx + rx * math.cos(math.radians(k)), cy - ry * math.sin(math.radians(k))) for k in range(360)]
+    poly = _points(el.get('points'))
+    if len(poly) < 6:
+        errors.append('SOLID_BODY_FILL_MISMATCH:vertices')
+        return
+    for (x, y) in poly:
+        on_curve = any(abs(math.hypot((x - cx) / rx, (y - cy) / ry) - 1) * min(rx, ry) <= BODY_TOL for cx, cy, rx, ry in curves)
+        if not on_curve and not any(math.hypot(x - a[0], y - a[1]) <= BODY_TOL for a in apex):
+            errors.append('SOLID_BODY_FILL_MISMATCH:vertex_off_circle')
+            break
+    turns = [(poly[(i + 1) % len(poly)][0] - poly[i][0]) * (poly[(i + 2) % len(poly)][1] - poly[(i + 1) % len(poly)][1]) - (poly[(i + 1) % len(poly)][1] - poly[i][1]) * (poly[(i + 2) % len(poly)][0] - poly[(i + 1) % len(poly)][0]) for i in range(len(poly))]
+    if not (all(t >= -1e-6 for t in turns) or all(t <= 1e-6 for t in turns)): errors.append('SOLID_BODY_FILL_MISMATCH:not_convex')
+    sign = 1 if sum(turns) > 0 else -1
+    for (x, y) in samples:
+        for i in range(len(poly)):
+            a, b = poly[i], poly[(i + 1) % len(poly)]
+            edge = math.hypot(b[0] - a[0], b[1] - a[1])
+            if edge < 1e-9: continue
+            if sign * ((b[0] - a[0]) * (y - a[1]) - (b[1] - a[1]) * (x - a[0])) / edge < -0.8:
+                errors.append('SOLID_BODY_FILL_MISMATCH:circle_outside')
+                return
+    want = _area(_hull(samples))
+    if abs(_area(poly) - want) > 0.006 * want: errors.append('SOLID_BODY_FILL_MISMATCH:area')
 
 
 def _dist_point_seg(p, a, b):
