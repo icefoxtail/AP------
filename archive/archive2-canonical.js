@@ -254,6 +254,27 @@
     return true;
   }
 
+  // validateBasicAssignment runs for every catalog record on each compose
+  // render, so the two authority row lists are indexed once per array instead of
+  // being scanned (with Unicode normalization per row) for every record. The
+  // index is rebuilt when the array object or its length changes; membership
+  // results are identical to the former Array.some scans.
+  const authorityKeyIndexes = new WeakMap();
+  function authorityKeySet(rows, kind, keyOf) {
+    if (!Array.isArray(rows)) return new Set();
+    let entry = authorityKeyIndexes.get(rows);
+    if (!entry || entry.kind !== kind || entry.length !== rows.length) {
+      entry = { kind, length: rows.length, keys: new Set(rows.map(keyOf)) };
+      authorityKeyIndexes.set(rows, entry);
+    }
+    return entry.keys;
+  }
+  const gradeCourseKeys = (rows) =>
+    authorityKeySet(rows, "gradeCourse", (row) =>
+      JSON.stringify([text(row.grade), text(row.curriculumKey), text(row.courseKey)]));
+  const canonicalParentKeys = (rows) =>
+    authorityKeySet(rows, "canonicalParent", (row) => pathKey(row, BASIC_PARENT_FIELDS));
+
   function validateBasicAssignment(record = {}, authority = null) {
     const reasons = [];
     if (!authority || typeof authority !== "object")
@@ -287,11 +308,8 @@
 
     const curriculumKey = text(record.curriculumKey);
     const courseKey = text(record.courseKey);
-    const courseAllowed = (authority.gradeCourses || []).some(
-      (row) =>
-        text(row.grade) === grade &&
-        text(row.curriculumKey) === curriculumKey &&
-        text(row.courseKey) === courseKey,
+    const courseAllowed = gradeCourseKeys(authority.gradeCourses).has(
+      JSON.stringify([grade, curriculumKey, courseKey]),
     );
     if (!courseAllowed) reasons.push("course_namespace_invalid");
 
@@ -344,9 +362,8 @@
         }
       : null;
     const parentKey = parent && pathKey(parent, BASIC_PARENT_FIELDS);
-    const canonicalParentExists = parent && (authority.canonicalParents || []).some(
-      (candidate) => pathKey(candidate, BASIC_PARENT_FIELDS) === parentKey,
-    );
+    const canonicalParentExists = parent &&
+      canonicalParentKeys(authority.canonicalParents).has(parentKey);
     if (!canonicalParentExists) reasons.push("canonical_parent_missing");
 
     return {

@@ -126,6 +126,29 @@ test('general useMode and 고2/고3 semantic subject selections stay responsive'
   }
 });
 
+// The first grade/subject change after boot evaluates records that the default
+// 고1 screen never touched, so none of the per-record caches are filled yet. Use a
+// fresh catalog clone per grade so every cache starts cold, like a real page load.
+test('first 고2/고3 selection after boot (cold caches) stays responsive in general mode', t => {
+  for (const [grade, subjects] of [
+    ['고2', ['ALGEBRA', 'CALCULUS', 'PROB_STATS']],
+    ['고3', ['CALCULUS_ADVANCED', 'GEOMETRY', 'ALGEBRA']],
+  ]) {
+    const a = app('general');
+    a.render(); // boot screen: default 고1
+    for (const filters of [{ grade }, ...subjects.map(semanticSubject => ({ grade, semanticSubject }))]) {
+      a.state.filters = { ...filters };
+      a.state.scopes = [];
+      const start = performance.now();
+      a.render();
+      const elapsed = performance.now() - start;
+      t.diagnostic(`cold general ${JSON.stringify(filters)}: ${elapsed.toFixed(1)}ms`);
+      assert.ok(a.nodes.content.innerHTML.length > 0, `${JSON.stringify(filters)} rendered nothing`);
+      assert.ok(elapsed < 500, `cold general ${JSON.stringify(filters)} blocks input for ${elapsed.toFixed(1)}ms`);
+    }
+  }
+});
+
 test('memoized subject projection is identical to the canonical resolver and follows policy edits', () => {
   const policy = catalog.projectionPolicy;
   const seen = new Set();

@@ -270,7 +270,23 @@
     scopeText(row.L1),
     scopeText(row.L2),
   ].join("|");
+  // One render asks for the same taxonomy rows several times (scope list, course
+  // options); each ask scans the whole catalog. Reuse the answer within a render
+  // only: render() installs and clears this cache, so every interaction still
+  // re-evaluates the current filters and quality gates.
+  let renderTaxonomyRowsCache = null;
   const taxonomyRowsForFilters = (filters) => {
+    if (!renderTaxonomyRowsCache) return computeTaxonomyRowsForFilters(filters);
+    let key;
+    try {
+      key = JSON.stringify(filters, (name, value) =>
+        value === "" || value === null || value === undefined ? undefined : value);
+    } catch { return computeTaxonomyRowsForFilters(filters); }
+    if (!renderTaxonomyRowsCache.has(key))
+      renderTaxonomyRowsCache.set(key, computeTaxonomyRowsForFilters(filters));
+    return renderTaxonomyRowsCache.get(key);
+  };
+  const computeTaxonomyRowsForFilters = (filters) => {
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
     if (highSemantic && !filters.semanticSubject) return [];
     const allowedParents = new Set();
@@ -2694,6 +2710,7 @@
     renderPoolCache = null;
     renderEligibilityCache = new WeakMap();
     renderComposeMetaFilters = new WeakMap();
+    renderTaxonomyRowsCache = new Map();
     renderingScopes = true;
     try {
       renderContent();
@@ -2704,6 +2721,7 @@
       renderPoolCache = null;
       renderEligibilityCache = null;
       renderComposeMetaFilters = null;
+      renderTaxonomyRowsCache = null;
     }
   }
   function renderContent() {

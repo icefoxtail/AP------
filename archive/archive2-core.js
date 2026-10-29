@@ -598,12 +598,18 @@
   // change; every other field is read live from the record via the prototype.
   const generalOverlays = new WeakMap();
   const GENERAL_FALLBACK_FIELDS = ["curriculumKey", "courseKey", "L1", "L2"];
+  // Same truthiness as text(value) without allocating a trimmed copy when the
+  // value is already a non-blank string; this runs ~100k times per render.
+  const hasText = (value) => typeof value === "string"
+    ? value.trim().length > 0
+    : value != null && text(value) !== "";
   function generalFilterRecord(record, options = {}) {
     if (options.useMode !== "general") return record;
     const fallback = record?.unverifiedTaxonomy;
     const fields = GENERAL_FALLBACK_FIELDS;
-    if (!fallback || fields.some((field) => text(record[field]))) return record;
-    if (fields.some((field) => !text(fallback[field]))) return record;
+    if (!fallback) return record;
+    for (const field of fields) if (hasText(record[field])) return record;
+    for (const field of fields) if (!hasText(fallback[field])) return record;
     const cached = generalOverlays.get(record);
     if (cached && cached.fallback === fallback &&
         fields.every((field, index) => cached.values[index] === fallback[field]))
