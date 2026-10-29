@@ -35,7 +35,7 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q1-solution.svg",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q1-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "crossConceptKeys": [],
@@ -45,9 +45,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:8d267a2da2cf5df95d2afa444aaaddb2408bffedfb9525d8b17614d7ecebe384",
       "difficultyEvidenceSha": "sha256:dc38ed5ae6e7f4443039ba927dc55bd0605b01d9311c145b877149047c9585b1",
-      "solutionImageAlt": "원 O에서 40° 중심각에 대한 호의 길이가 10 cm이고 80° 중심각의 호 길이가 x인 부채꼴 그림",
-      "solutionImageCaption": "같은 원에서 호의 길이를 중심각에 비례시켜 x를 구한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원 O 안에 중심각 40°인 부채꼴과 중심각 80°인 부채꼴이 색칠되어 있고, 두 부채꼴의 호에 각각 길이 10cm와 x cm가 표시된 그림.",
+      "solutionImageCaption": "같은 원에서 호의 길이는 중심각에 비례하므로 10 : x = 40 : 80이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 2,
@@ -83,7 +83,7 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q2-solution.svg",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q2-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "crossConceptKeys": [],
@@ -93,9 +93,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:30d352b1e3eb8724aeed71bac42ead0f57eee4104b0de37cbceb84c05d8fdd38",
       "difficultyEvidenceSha": "sha256:a663210f5eece54ef0f1b1c11e3e00bc0423cc363dfb9b965033fcc5600cb7fc",
-      "solutionImageAlt": "반지름 6 cm, 중심각 150°인 부채꼴에 호의 길이 x와 넓이 y를 표시한 그림",
-      "solutionImageCaption": "부채꼴의 호의 길이와 넓이를 각각 계산한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 반지름 6cm, 중심각 150°인 부채꼴. 굵게 그린 호에 길이 5π cm, 색칠한 부채꼴 안에 넓이 15π를 표시해 호의 길이와 넓이를 구분한 그림.",
+      "solutionImageCaption": "굵은 호는 호의 길이 5π, 색칠한 부분은 넓이 15π를 나타낸다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 3,
@@ -372,7 +372,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9a13637d6a14cad2c4adcb9471a1caaa494f763c4034f73fa70fe799fc205e91",
-      "difficultyEvidenceSha": "sha256:b2556fc431c07b17108c9a9cc2b7c8614534e147754dfd32d00cd76463c2ff60"
+      "difficultyEvidenceSha": "sha256:b2556fc431c07b17108c9a9cc2b7c8614534e147754dfd32d00cd76463c2ff60",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 정팔면체 속 가운데 정사각형(서로 수직인 두 대각선 12cm), 그 정사각형을 이루는 직각이등변삼각형 하나(직각을 낀 두 변 6cm), 높이 6cm·밑면 12cm인 사각뿔의 옆모습을 나란히 보인 그림.",
+      "solutionImageCaption": "가운데 정사각형의 두 대각선 12cm는 수직이고, 한 사각뿔의 높이는 6cm이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 9,
