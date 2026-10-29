@@ -377,7 +377,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥 ABC-DEF에서 모서리 BC(굵은 선)와 만나는 모서리 AB, AC, BE, CF, 평행한 모서리 EF, 꼬인 위치의 모서리 AD, DE, DF를 세 그림에 각각 빨간색으로 보여 준다.",
+    "solutionImageCaption": "BC와 만나는 모서리와 평행한 모서리를 빼면 AD, DE, DF가 꼬인 위치에 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -792,7 +796,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 꼭짓점의 각 55°, 왼쪽 꼭짓점의 각 x, 오른쪽 꼭짓점의 각 30°를 표시한 오목사각형(굵은 선)이다. 안쪽 꼭짓점에는 작은 삼각형 쪽의 120°와 그 바깥쪽 큰 각 240°가 함께 표시되어 있다.",
+    "solutionImageCaption": "오목사각형의 네 각은 55°, x, 30°와 안쪽 꼭짓점의 큰 각 240°(=360°-120°)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -833,7 +841,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 별 모양에서 다섯 개의 끝 삼각형을 연한 색으로 칠하고, 삼각형마다 끝각 하나(빨간 호)와 밑각 둘(검은 호)을 표시했다. 열 개의 밑각에 a부터 j까지 이름이 붙어 있다.",
+    "solutionImageCaption": "별 끝의 삼각형 5개마다 끝각 하나와 밑각 둘이 있고, 밑각 열 개가 a~j이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -868,7 +880,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A, B, C가 한 직선 위에 있고 D, E가 그 위쪽에 있는 그림이다. A, B, C를 잇는 세 쌍은 빨간 직선 하나로 겹치고, 반직선 AB와 AC, 반직선 CA와 CB는 각각 같은 반직선(빨간 화살표)으로 겹친다.",
+    "solutionImageCaption": "AB, BC, CA는 같은 직선이고, 반직선 AB=AC, 반직선 CA=CB는 겹친다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -936,6 +952,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: AD∥BC, AD=BC=4인 사각형 ABCD에서 대각선 BD로 나눈 △ABD(연한 색)와 △CDB(진한 색)를 보여 준다. AD와 CB에 같은 눈금과 4, BD에 '공통' 표시, 엇각 ∠ADB와 ∠CBD에 같은 빨간 호가 있다.",
+    "solutionImageCaption": "AD=CB, BD는 공통, 엇각 ∠ADB=∠CBD이므로 △ABD와 △CDB는 SAS 합동이다.",
+    "solutionImageSize": "medium"
   }
 ];
