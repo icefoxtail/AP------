@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각뿔의 꼭짓점 5개에 1부터 5까지, 모서리 8개에 ①부터 ⑧까지 번호를 붙이고 보이지 않는 모서리는 점선으로 나타낸 그림",
+    "solutionImageCaption": "꼭짓점과 모서리에 번호를 붙여 교점과 교선의 개수를 센다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -385,7 +389,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 전개도를 접어 만든 삼각기둥에서 겹치는 꼭짓점 I=A=G, D=B=F의 이름을 함께 적고, 모서리 JC와 IH를 빨간 선으로 표시한 그림",
+    "solutionImageCaption": "접은 삼각기둥에서 모서리 JC와 IH의 위치",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -1012,7 +1020,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 전개도를 접은 직육면체에서 겹치는 꼭짓점의 이름 A=I=M, B=H=D, E=G, J=L을 함께 적고, 모서리 IH(=AB)를 빨간 선으로 표시한 그림",
+    "solutionImageCaption": "접은 직육면체에서 모서리 IH(=AB)의 위치",
+    "solutionImageSize": "medium"
   },
   {
     "id": 25,
@@ -1050,7 +1062,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 8cm인 정사각형 ABCD의 두 대각선 교점 O에 다른 정사각형의 꼭짓점이 놓인 그림에서, 합동인 삼각형 BOH와 COI를 진하게, 겹치는 삼각형 OHC를 연하게 칠하고 BO=CO 눈금과 45° 각을 표시한 그림",
+    "solutionImageCaption": "삼각형 BOH와 COI가 합동이므로 사각형 OHCI와 삼각형 OBC의 넓이가 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 26,
@@ -1085,6 +1101,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q26-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 꼭짓점 둘레에 정삼각형 60°, 정사각형 90°, 정육각형 120°를 빈틈없이 모은 모습과, 정오각형 108°를 모으면 36°의 틈이 남는 모습을 네 칸으로 나타낸 그림",
+    "solutionImageCaption": "한 꼭짓점 둘레에 같은 정다각형을 모으면 정오각형만 36°의 틈이 남는다.",
+    "solutionImageSize": "medium"
   }
 ];
