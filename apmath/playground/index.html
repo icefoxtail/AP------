@@ -83,7 +83,7 @@
     <div class="webgl-fallback">
       <h2>3D 하드웨어 가속 필요</h2>
       <p>AP Math Universe 3D 엔진은 JavaScript 및 WebGL 2.0 지원 브라우저에서 실행됩니다.</p>
-      <a class="cta-entrance" href="./teacher-hub.html">메인 실험실 허브로 직접 입장</a>
+      <a class="cta-entrance" href="./next/index.html">메인 실험실 허브로 직접 입장</a>
     </div>
   </noscript>
 
@@ -108,7 +108,7 @@
         // Clicking the 3D object enters the lab hub; clicking empty space returns the camera.
         onSelectNode: (meta) => {
           if (meta) {
-            window.location.href = './teacher-hub.html';
+            window.location.href = './next/index.html';
           } else {
             document.querySelectorAll('.celestial-pill').forEach(p => {
               p.classList.remove('active');
@@ -124,7 +124,7 @@
       fallback.innerHTML = `
         <h2>3D 그래픽 초기화 실패</h2>
         <p>기기의 WebGL 가속을 시작할 수 없습니다. 메인 허브를 통해 모든 수학 실험실을 이용하실 수 있습니다.</p>
-        <a class="cta-entrance" href="./teacher-hub.html">실험실 허브 바로가기</a>
+        <a class="cta-entrance" href="./next/index.html">실험실 허브 바로가기</a>
       `;
       document.body.appendChild(fallback);
     }
@@ -138,12 +138,12 @@
       if (universe && typeof universe.triggerLabEntranceFlight === 'function') {
         universe.triggerLabEntranceFlight(() => {
           setTimeout(() => {
-            window.location.href = './teacher-hub.html';
+            window.location.href = './next/index.html';
           }, 450);
         });
       } else {
         setTimeout(() => {
-          window.location.href = './teacher-hub.html';
+          window.location.href = './next/index.html';
         }, 500);
       }
     });

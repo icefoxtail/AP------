@@ -37,6 +37,13 @@
 .hub-switch[aria-pressed="true"] .knob { background: var(--accent); }
 .hub-switch[aria-pressed="true"] .knob::after { transform: translateX(14px); }
 
+/* 다른 화면(AP Math Universe · 이전 허브)으로 가는 얇은 링크 줄 */
+.hub-trail { background: var(--bar); border-bottom: 1px solid var(--line); }
+.hub-trail-in { max-width: 1320px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.hub-trail a { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; color: var(--text-2); font-size: var(--fs-xs); font-weight: 700; text-decoration: none; }
+.hub-trail a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+.hub-trail .apl-ico { width: 14px; height: 14px; }
+
 .hub-wrap { max-width: 1320px; margin: 0 auto; padding: 0 20px 80px; }
 
 /* 히어로 */
@@ -162,6 +169,8 @@
   .hub-hero-stage { aspect-ratio: 16 / 8.5; }
 }
 @media (max-width: 720px) {
+  .hub-trail-in { padding: 0 14px; }
+  .hub-trail a { min-height: 38px; }
   .hub-top-in { grid-template-columns: auto auto; grid-template-areas: "brand tools" "search search"; padding: 8px 14px 10px; gap: 8px 10px; }
   .hub-brand { grid-area: brand; }
   .hub-tools { grid-area: tools; justify-self: end; }
