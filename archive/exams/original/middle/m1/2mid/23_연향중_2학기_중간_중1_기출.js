@@ -431,7 +431,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 선에 35°, 130°, 150°와 각 x, y가 표시되고, 각 꺾인 점에서 l과 평행한 점선 보조선을 그어 엇각 35°(빨간 호), β(파란 호), 50°−β(초록 호), 30°를 표시한 그림.",
+    "solutionImageCaption": "보조 평행선으로 엇각 35°, β, 50°−β, 30°를 옮겨 x와 y를 비교한다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -748,7 +752,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분이 세 곳에서 서로 만나는 도형에 각 a부터 k까지가 표시되어 있고, 세 교점마다 만들어지는 삼각형의 각이 빨강, 파랑, 초록 호로 구분되고 맞꼭지각이 같은 색의 호로 표시된 그림.",
+    "solutionImageCaption": "세 교점의 삼각형과 맞꼭지각",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

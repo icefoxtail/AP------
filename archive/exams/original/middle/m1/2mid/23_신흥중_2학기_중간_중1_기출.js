@@ -596,7 +596,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC와 ADE에서 BD=CE, 각 DAB와 각 EAC와 각 FDC가 같고, 각 ABD, 각 ACE, 각 ADE가 60도임을 표시한 그림.",
+    "solutionImageCaption": "두 정삼각형에서 대응하는 변과 각의 표시",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -714,7 +718,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 보기 삼각형은 변 5의 양 끝 각이 30도와 70도이고 나머지 각이 80도이며, 비교 삼각형은 70도와 80도에 나머지 각이 30도여서 변 5가 30도와 70도 사이에 있음을 보여 주는 그림.",
+    "solutionImageCaption": "보기와 비교 삼각형의 세 각과 변 5",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

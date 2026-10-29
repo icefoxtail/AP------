@@ -336,7 +336,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:594ffe3e7e2064c8873972557179be9967922c05b40369dbd31f57fdf53d291b",
-    "difficultyEvidenceSha": "sha256:e453fe0717d6794db455959fd7077ad35a5ad325d84772806fa0581cf01dd1ed"
+    "difficultyEvidenceSha": "sha256:e453fe0717d6794db455959fd7077ad35a5ad325d84772806fa0581cf01dd1ed",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행선 l, m, n과 꺾인 선분에서 150°의 바깥각 30°, l과 m에서의 각 2x와 3x, y와 이웃한 각 35°, 55°를 표시한 그림.",
+    "solutionImageCaption": "평행선과 꺾인 선분에서 2x, 3x, 30°, 35°의 관계를 보인 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
