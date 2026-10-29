@@ -211,7 +211,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥 ABC-DEF를 두 개 나란히 그려, 왼쪽에는 모서리 DF와 DE가 점 D에서 만나는 모양을, 오른쪽에는 모서리 AB와 EF가 만나지도 평행하지도 않는 꼬인 위치임을 빨간색 모서리로 나타낸 그림.",
+    "solutionImageCaption": "삼각기둥에서 DF와 DE는 한 점 D에서 만나고, AB와 EF는 만나지도 평행하지도 않아 꼬인 위치이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -530,7 +534,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 보기 ㄴ과 ㅂ 두 삼각형에서 길이 4cm인 변을 굵게 나타내고, 그 양 끝 각 60°(빨간 한 겹 호)와 50°(파란 두 겹 호)가 같음을 보인 그림. ㄴ의 나머지 각은 70°이다.",
+    "solutionImageCaption": "ㄴ은 세 번째 각이 180°-60°-70°=50°이므로, ㄴ과 ㅂ은 길이가 4cm인 변의 양 끝 각이 60°, 50°로 각각 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -570,7 +578,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 대각선이 점 O에서 수직으로 만나는 마름모 ABCD에서 OA=OC=3cm, OB=OD=4cm, 네 변이 같음을 표시하고 대응하는 삼각형 OBC와 ODA를 색칠한 그림.",
+    "solutionImageCaption": "두 대각선이 서로를 수직이등분하므로 △OBC와 △ODA는 OB=OD, ∠BOC=∠DOA=90°, OC=OA이다(B↔D, C↔A가 대응).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -866,7 +878,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 일직선 AOB 위의 점 O에서 반직선 OC, OD, OE를 그리고 ∠AOC의 직각 표시와 ∠COD=45°, ∠DOE=15°, ∠EOB=30°를 나타낸 그림.",
+    "solutionImageCaption": "평각 AOB에서 ∠AOC=90°이면 ∠COD=45°이고, ∠DOB=45°를 1:2로 나누면 ∠DOE=15°, ∠EOB=30°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -936,6 +952,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 BDE에서 ∠BAC=∠DBE=31°, ∠ACB=∠BED=59°, AC=BE를 같은 표시로 나타내고 AB=BD=5cm, BC=DE=3cm 및 구하는 선분 CD를 빨간색으로 강조한 그림.",
+    "solutionImageCaption": "△ACB와 △BED에서 ∠BAC=∠DBE=31°, ∠ACB=∠BED=59°, AC=BE이므로 합동이고, 따라서 BD=AB=5cm, BC=DE=3cm이다.",
+    "solutionImageSize": "medium"
   }
 ];
