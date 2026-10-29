@@ -141,7 +141,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_COORDINATE_POINT_READING",
-    "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT"
+    "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 y축 위의 점 (0, 3), x축 위의 점 (-3, 0), 제4사분면의 점 (1, -2), 제2사분면의 점 (-1, 2)의 위치를 점선과 눈금으로 보여 주는 그림.",
+    "solutionImageCaption": "좌표축 위의 점은 어느 사분면에도 속하지 않고 (1, -2)는 제4사분면, (-1, 2)는 제2사분면의 점이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -203,7 +207,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
-    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 두 직선 y=x와 y=3/2x를 그리고 x=2에서 y값 2와 3을 점선으로 비교하여 y=3/2x가 y축에 더 가까움을 보여 주는 그림.",
+    "solutionImageCaption": "x=2일 때 y=x는 2, y=3/2x는 3이므로 y=3/2x의 그래프가 y축에 더 가깝다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -275,7 +283,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
-    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 직선 y=2/3x가 점 (-3, -2)와 x=2인 점을 지나고, x=2에서의 y값을 b로 표시한 점선 그림.",
+    "solutionImageCaption": "점 (-3, -2)를 지나는 y=2/3x에서 x=2일 때의 y의 값이 b이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -381,7 +393,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
-    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY"
+    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D에서 반직선 BC, BA, AB(=AD=AC)를 화살촉으로 따로 그려 시작점과 방향의 차이를 보여 준다.",
+    "solutionImageCaption": "반직선은 시작점과 뻗는 방향이 모두 같아야 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -418,7 +434,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER"
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 점에서 만나는 세 직선에서 가로 직선 위쪽의 52°, x, 30°와 아래쪽의 맞꼭지각 y(30°와 같은 호 표시), z(52°와 같은 호 표시)를 표시한 그림.",
+    "solutionImageCaption": "52°+x+30°는 평각이고 y, z는 각각 30°, 52°의 맞꼭지각이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -455,7 +475,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
-    "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE"
+    "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: A가 왼쪽 위, B가 왼쪽 아래인 사다리꼴 ABCD에서 A, B에 직각 표시가 있고, C에서 직선 AD의 연장선(점선)에 내린 수선의 발이 D의 오른쪽에 있음을 점선과 직각 표시로 보여 준다.",
+    "solutionImageCaption": "점 C에서 직선 AD에 내린 수선의 발은 D가 아니다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -486,13 +510,17 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 전개도를 접었을 때 겹쳐지는 꼭짓점을 먼저 찾은 뒤 위치 관계를 판단한다.\n전개도를 접으면 가운데 가로줄의 네 정사각형이 옆면이 되고, 위쪽 정사각형과 아래쪽 정사각형이 각각 윗면과 아랫면이 된다.\n이때 겹쳐지는 꼭짓점은 $A$와 $I$와 $M$, $B$와 $H$, $J$와 $L$, $C$와 $G$, $D$와 $F$이다.\n모서리 $KJ$와 평행한 모서리는 $\\overline{AN}$, $\\overline{BC}$, $\\overline{DE}$의 세 개이다.\n한편 모서리 $IH$는 $A$와 $I$, $B$와 $H$가 겹쳐지므로 모서리 $AB$와 같은 모서리이다.\n$\\overline{AN}$은 점 $A$에서, $\\overline{BC}$는 점 $B$에서 모서리 $IH$와 만나므로 꼬인 위치가 아니다.\n$\\overline{DE}$는 모서리 $IH$와 만나지도 않고 평행하지도 않으므로 꼬인 위치에 있다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q14.png",
+    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q14-source-repaired.svg",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_RELATION"
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_RELATION",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 정육면체의 전개도, 오른쪽은 접은 정육면체이다. 접으면 A,I,M, B,H, C,G, D,F, J,L이 각각 한 꼭짓점이 된다. 모서리 KJ와 AB(=IH)는 빨간색, KJ와 평행한 AN, BC, DE는 굵게 표시했고, AN과 BC는 AB와 꼭짓점에서 만나지만 DE는 AB와 만나지 않는다.",
+    "solutionImageCaption": "KJ와 평행한 AN, BC, DE 중 모서리 IH(=AB)와 만나지도 평행하지도 않은 것은 DE이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -530,7 +558,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
-    "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE"
+    "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m이 직선 n과 만나 생기는 여덟 각 a~h에서 크기가 같은 각을 같은 호 표시로 묶어 b와 f(동위각), c와 e(엇각), f와 h(맞꼭지각)를 보여 준다.",
+    "solutionImageCaption": "l∥m이면 b=f(동위각), c=e(엇각)이고 f=h(맞꼭지각)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -709,7 +741,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 나란히 놓은 두 삼각형 ㄷ, ㅁ에서 둘 다 7 cm인 변의 양 끝 각이 80°와 35°이고, ㄷ에는 65°도 표시되어 있어 두 삼각형이 ASA 합동임을 보여 준다.",
+    "solutionImageCaption": "ㄷ과 ㅁ은 7 cm인 변과 그 양 끝 각 80°, 35°가 같아 ASA 합동이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -740,7 +776,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO"
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 AE 위의 점 O에서 수직인 반직선 OB와, 그 오른쪽의 반직선 OC, OD가 있고 ∠AOB는 직각, ∠BOC=15°, ∠COD=25°, ∠COE=75°가 호로 표시되어 있다.",
+    "solutionImageCaption": "평각과 직각에서 ∠COE=75°이므로 ∠COD=25°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -771,7 +811,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS"
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 그래프 y=-8/x의 두 가지와 원점을 지나는 직선 y=-8x/25가 제4사분면의 점 A(5, -8/5)에서 만나고, 제2사분면에 점 (-4, 2)가 있다.",
+    "solutionImageCaption": "점 (-4, 2)로 b=-8을, 점 A(5, -8/5)로 a=-8/25를 구한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -798,7 +842,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC(∠B는 직각, BC=6 cm, AB=7 cm)와 합동인 직각삼각형 DEF를 나란히 놓고, 대응변 AB와 DE, BC와 EF, CA와 FD에 같은 개수의 눈금을 표시한 그림.",
+    "solutionImageCaption": "합동인 삼각형에서 대응변 AB와 DE의 길이는 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -829,6 +877,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 C가 선분 AB 위에 있고 정삼각형 ACD와 CBE가 위쪽에 놓인 그림에서 선분 DB와 AE의 교점 F, DB와 CE의 교점 G, AE와 DC의 교점 H를 나타내고, CA=CD, CE=CB의 눈금과 ∠ACE=∠DCB=120°, ∠GFE=60° 표시가 있다.",
+    "solutionImageCaption": "SAS 합동 △ACE≡△DCB에서 ∠GFE=60°이다.",
+    "solutionImageSize": "medium"
   }
 ];
