@@ -72,7 +72,7 @@ window.questionBank = [
     "answer": "①, ⑤",
     "solution": "[키포인트] 같은 원에서 호의 길이와 부채꼴의 넓이는 중심각에 정비례하지만, 현과 삼각형의 넓이는 그렇지 않다.\n\n먼저 중심각의 비를 구하면 $60:20=3:1$이다. 이 비를 그대로 사용할 수 있는 대상부터 구별한다.\n\n① 같은 원의 호의 길이는 중심각에 비례하므로 $\\overset{\\frown}{AB}:\\overset{\\frown}{CD}=60:20=3:1$이다. 따라서 참이다.\n\n② 현은 두 끝점을 곧게 이은 선분이다. $60^\\circ$의 호를 $20^\\circ$씩 셋으로 나누면 그에 대응하는 세 현의 길이는 모두 $\\overline{CD}$와 같다. 그러나 두 끝점을 곧게 잇는 $\\overline{AB}$는 그 세 현을 차례로 이은 꺾은선보다 짧다. 따라서 $\\overline{AB}\\lt3\\overline{CD}$이므로 거짓이다.\n\n③ 삼각형 $AOB$의 두 변 $OA,OB$는 반지름이다. 중심각 $60^\\circ$의 부채꼴을 세 개의 $20^\\circ$ 부채꼴로 나누고 각 부채꼴의 두 반지름을 이으면, 넓이가 $\\triangle COD$와 같은 삼각형 세 개가 생긴다. 이 세 삼각형의 합은 $\\triangle AOB$보다 크다. 따라서 $\\triangle AOB$의 넓이는 $3\\times\\triangle COD$의 넓이와 같지 않아 거짓이다.\n\n④ 중심각 $60^\\circ$의 부채꼴 $AOB$의 넓이는 원 전체 넓이의 $\\dfrac16$이다. $\\triangle AOB$는 이 부채꼴 안에 있고 그보다 넓이가 작다. 따라서 원의 넓이는 $\\triangle AOB$ 넓이의 $6$배보다 크므로 거짓이다.\n\n⑤ 두 부채꼴의 넓이도 중심각의 비와 같다. $\\dfrac{20}{60}=\\dfrac13$이므로 참이다.\n\n따라서 정답은 ①, ⑤이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q2.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q2-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q2-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
@@ -82,9 +82,9 @@ window.questionBank = [
     "sourcePage": 1,
     "sourceQuestionNo": "2",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "호와 부채꼴: 중심각 3 : 1, 호의 길이도 3 : 1, 넓이도 3 : 1",
-    "solutionImageCaption": "①, ⑤"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 원 O에서 60° 중심각의 부채꼴 AOB와 20° 중심각의 부채꼴 COD의 호를 비교하고, 60°를 20°씩 셋으로 나눈 세 현이 CD와 같으며 현 AB가 꺾은선보다 짧고 세 삼각형 합이 삼각형 AOB보다 넓은 부분이 색으로 드러난다.",
+    "solutionImageCaption": "중심각의 비 3:1은 호와 부채꼴에는 그대로, 현과 삼각형에는 그대로 적용되지 않음을 보여 준다."
   },
   {
     "id": 3,
@@ -160,7 +160,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 색칠 부분의 경계는 큰 호, 작은 호, 반지름 방향의 직선 두 개로 이루어진다. 안쪽의 빈 부분은 넓이에 넣지 않는다.\n\n큰 부채꼴의 반지름은 $8\\rm\\,cm$, 작은 부채꼴의 반지름은 $4\\rm\\,cm$, 중심각은 모두 $45^\\circ$이다.\n\n큰 호의 길이는 $2\\pi\\times8\\times\\dfrac{45}{360}=2\\pi\\rm\\,cm$이다.\n작은 호의 길이는 $2\\pi\\times4\\times\\dfrac{45}{360}=\\pi\\rm\\,cm$이다.\n\n두 호를 잇는 직선 부분은 각각 $8-4=4\\rm\\,cm$이므로 합계 $4+4=8\\rm\\,cm$이다.\n\n따라서 색칠 부분의 둘레는\n$2\\pi+\\pi+8=3\\pi+8\\rm\\,cm$이므로 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q4.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q4-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q4-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [],
@@ -170,9 +170,9 @@ window.questionBank = [
     "sourcePage": 1,
     "sourceQuestionNo": "4",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "안쪽·바깥쪽 원호: 바깥 호 = 2π, 안쪽 호 = π, 직선 두 부분 = 8",
-    "solutionImageCaption": "3π+8 cm"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 중심각 45°, 안쪽 반지름 4cm, 바깥 반지름 8cm인 부채꼴 모양의 색칠한 부분에서 바깥 호 2π cm와 안쪽 호 π cm, 빨간 직선 두 개 4cm와 4cm를 구분해 보여 준다.",
+    "solutionImageCaption": "색칠한 부분의 둘레는 두 호와 두 직선으로 이루어진다."
   },
   {
     "id": 5,
@@ -811,7 +811,7 @@ window.questionBank = [
     "answer": "$50\\pi-100\\rm\\,cm^2$",
     "solution": "[키포인트] 색칠된 렌즈 모양은 반지름이 $10\\rm\\,cm$인 두 사분원이 겹치는 부분이다. 두 사분원의 넓이 합에서 정사각형의 넓이를 빼면 겹친 부분만 남는다.\n\n정사각형의 한 변이 $10\\rm\\,cm$이므로 넓이는 $10\\times10=100\\rm\\,cm^2$이다.\n\n그림에서 양쪽의 곡선은 각각 반지름 $10\\rm\\,cm$, 중심각 $90^\\circ$인 사분원의 호이다.\n사분원 하나의 넓이는 $\\pi\\times10^2\\times\\dfrac{90}{360}=25\\pi\\rm\\,cm^2$이다.\n\n두 사분원은 합쳐서 정사각형 전체를 덮고, 색칠한 부분에서는 서로 겹친다. 따라서 두 사분원의 넓이를 더하면 색칠한 부분을 두 번 센 것이다.\n\n색칠 부분의 넓이는\n$(25\\pi+25\\pi)-100=50\\pi-100\\rm\\,cm^2$이다.\n\n따라서 구하는 넓이는 $(50\\pi-100)\\rm\\,cm^2$이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q19.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q19-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q19-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [],
@@ -821,9 +821,9 @@ window.questionBank = [
     "sourcePage": 5,
     "sourceQuestionNo": "서술형 1",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "두 사분원의 공통부분: 사분원 하나 = 25π, 두 개를 합한 뒤, 정사각형 100을 뺌",
-    "solutionImageCaption": "50π−100 cm²"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 한 변이 10cm인 정사각형 안에서 두 사분원의 호가 만드는 렌즈 모양 S를 진하게, 두 사분원이 덮는 나머지 두 부분을 각각 25π-S로 표시해 겹침 구조를 보여 준다.",
+    "solutionImageCaption": "두 사분원이 정사각형을 덮고 렌즈 모양이 겹친다."
   },
   {
     "id": 20,
