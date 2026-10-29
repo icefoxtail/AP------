@@ -642,7 +642,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9ac2a63bd06e9c5f9352c32f3266d84c4c93b9fe14f9958bd43f40cd292650b4",
-      "difficultyEvidenceSha": "sha256:86679c25dcd91481cb739b2238cdb1e8854bdc0eff2c7afb045ff78d52bcaa34"
+      "difficultyEvidenceSha": "sha256:86679c25dcd91481cb739b2238cdb1e8854bdc0eff2c7afb045ff78d52bcaa34",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 줄넘기 기록의 줄기와 잎 그림에 줄기별 잎의 개수 4, 6, 7, 5, 3을 괄호로 표시하고, 가장 낮은 기록 5, 큰 쪽에서 6번째 기록, 가장 높은 기록 45를 동그라미로 강조한 그림",
+      "solutionImageCaption": "줄기별 잎의 개수와 최솟값, 큰 쪽 6번째 값, 최댓값을 표시한 줄기와 잎 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 15,
@@ -730,7 +734,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:a2ee703dcaacfa752c9a39f27aaeabe4cf2ad752008f63e7e8d4af56b1fbf1ce",
-      "difficultyEvidenceSha": "sha256:d12ae6e45faa28e8e2613d2f84984edc312763b4bb0dc94d09f97b5816b16cf1"
+      "difficultyEvidenceSha": "sha256:d12ae6e45faa28e8e2613d2f84984edc312763b4bb0dc94d09f97b5816b16cf1",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 멀리 던지기 기록의 히스토그램. 보이는 계급의 도수 3, 6, 5, 2명과 전체 25명에서 복원한 40m 이상 45m 미만 계급의 도수 9명을 진하게 표시한 그림",
+      "solutionImageCaption": "찢어진 계급의 도수를 25-(3+6+5+2)로 복원해 진하게 나타낸 히스토그램",
+      "solutionImageSize": "medium"
     },
     {
       "id": 17,
@@ -774,7 +782,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:798d110f44e515b50f5defd94aa639356c6581bebe6d821d37980667133daba9",
-      "difficultyEvidenceSha": "sha256:cdb83a1912e8c55a8856d13844fa3ab4b0c32a3ff7a1854548efe6c1d22c3c13"
+      "difficultyEvidenceSha": "sha256:cdb83a1912e8c55a8856d13844fa3ab4b0c32a3ff7a1854548efe6c1d22c3c13",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: A동아리 남학생(실선)과 여학생(점선)의 윗몸일으키기 횟수를 나타낸 두 도수분포다각형. 남학생의 120회 이상 140회 미만 계급 2명과 100회 이상 120회 미만 계급 5명을 그래프에서 읽을 수 있다.",
+      "solutionImageCaption": "남학생과 여학생의 도수분포다각형을 한 그래프에 나타낸 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 18,
@@ -1062,6 +1074,10 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:7a3be09da6a004f7a41bcf26791e99120879105c0b310e9b941a385b7ea46341",
-      "difficultyEvidenceSha": "sha256:42a96af742ae7d54f7417b0eb9440e720002ca9dc99019f6aed72017916bd87e"
+      "difficultyEvidenceSha": "sha256:42a96af742ae7d54f7417b0eb9440e720002ca9dc99019f6aed72017916bd87e",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: A반(실선)과 B반(점선)의 수학 성적을 나타낸 두 도수분포다각형. 80점 이상 계급의 도수를 두 반에서 같은 눈금으로 읽을 수 있다.",
+      "solutionImageCaption": "A반과 B반의 도수분포다각형을 한 그래프에 나타낸 그림",
+      "solutionImageSize": "medium"
     }
   ];
