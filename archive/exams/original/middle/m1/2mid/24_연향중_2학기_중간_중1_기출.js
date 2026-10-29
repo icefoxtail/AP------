@@ -76,7 +76,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A에서 시작해 B, C, D를 각각 지나는 반직선 세 개를 화살표로 그린 그림. 시작점 하나에서 반직선이 3개씩 나온다는 것을 보여 준다.",
+    "solutionImageCaption": "점 A에서 시작하는 반직선 3개",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -116,7 +120,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나는 그림. 왼쪽 각 x+40°와 오른쪽 각 70°는 맞꼭지각으로 같은 색 호이고, 위쪽 각 y°는 70°와 한 직선 위의 이웃한 각임을 보여 준다.",
+    "solutionImageCaption": "맞꼭지각 x+40°=70°, 이웃한 각 y°+70°=180°",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -233,7 +241,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이에 두 번 꺾인 선이 있고, 꺾인 두 점에서 l, m과 평행한 점선 보조선을 그어 40°, 50°, 가운데 선분과 보조선이 이루는 각 α를 같은 색 호로 표시한 그림.",
+    "solutionImageCaption": "보조선으로 엇각 40°, α, 50°를 옮겨 x와 y를 구한다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -313,7 +325,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이에 점 A, B, C, D, S를 지나는 꺾인 선이 있고, B, C, D에서 l, m에 평행한 점선 보조선을 그어 a, a+b, a+b+c 와 d, 25°가 차례로 쌓이는 것을 각 호로 표시한 그림.",
+    "solutionImageCaption": "보조선으로 a, b, c, d, 25°를 점 D의 한 직선 위에 모은다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -389,7 +405,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:2c8187ac376be0acddc8039244a725b49e3765c43a5ed80e0c24ea703ce523f8",
-    "difficultyEvidenceSha": "sha256:52cfdf6be5878d23f9fc7e39e4488eb54e9645edf2dc7b61828b77f7800ea09d"
+    "difficultyEvidenceSha": "sha256:52cfdf6be5878d23f9fc7e39e4488eb54e9645edf2dc7b61828b77f7800ea09d",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l과 점 P를 지나는 보조선, 두 개의 호와 현의 길이를 옮기는 작은 호, 점 P를 지나는 평행선이 그려진 작도 그림. 작도 흔적마다 순서 번호 1~6과 원문자 ㉠~㉥이 붙어 있다.",
+    "solutionImageCaption": "평행선 작도의 순서를 번호 1~6으로 표시",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
