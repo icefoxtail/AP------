@@ -1,0 +1,3058 @@
+{
+  "schemaVersion": "h22-mi1-h15-m2-semantic-reuse-intake-v1",
+  "status": "CANDIDATE_SEED",
+  "candidateOnly": true,
+  "canonicalPromotion": false,
+  "consumerSelectable": false,
+  "createdOn": "2026-10-29",
+  "subject": "2022 미적분I",
+  "reuseFrom": "2015 수학II",
+  "objective": "2015 curriculum semantic machinery reuse for 2022 Mi1 while collecting verified source evidence; no new RPM/PT/TPL/CC key or master mutation.",
+  "nonGoals": [
+    "H15/H22 subunit master repair",
+    "2022 L3/L4 RPM promotion to LOCKED without review",
+    "automatic PT/TPL binding ACTIVATION",
+    "DB/index regeneration",
+    "exam source rewriting",
+    "reopening unrelated audit #980"
+  ],
+  "authority": {
+    "crosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+      "blobSha": "453ce17c65f6bd77aab562d2bb7c445623cd57e2"
+    },
+    "rpm2015": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+      "blobSha": "b8590959171a249095aed4a252ace7c99fa3de3e"
+    },
+    "rpm2022": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+      "blobSha": "401aa878aa704179d56fad140f3bb5b8fa5c9748",
+      "status": "CANONICAL_DRAFT"
+    },
+    "standardAndSubunitMaster": {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "blobSha": "1f3036d29bd015e05ace084e1bc6f68a59e6bd8f"
+    },
+    "activeMachineTaxonomies": [
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+        "blobSha": "a103610df452c6158936251920f05bb73559395b"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+        "blobSha": "36df7a6afc8d919743b256fb87af88428bae1081"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+        "blobSha": "b6d279a2913aac0a754b9bfb4ccf3bb74c437cc5"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+        "blobSha": "6fac8d5c880c3a6af3763fb204708f84d4fba546"
+      }
+    ],
+    "crossConceptShards": [
+      {
+        "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
+        "blobSha": "7fa28399623b61a1fd4dfadfd289678ca1d8a0ea"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/concepts/calculus.json",
+        "blobSha": "b81ff3a1fc0cd3c9820186c1e0deffeb14799a64"
+      }
+    ],
+    "conditionRegistry": {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "blobSha": "f6f2977d2ae21cc8eb38f65db57517867fce8898"
+    }
+  },
+  "sourceMapping": {
+    "targetParentMap": [
+      {
+        "h15": "H15-M2-01",
+        "h22": "H22-M1-01"
+      },
+      {
+        "h15": "H15-M2-02",
+        "h22": "H22-M1-02"
+      },
+      {
+        "h15": "H15-M2-03",
+        "h22": "H22-M1-03"
+      },
+      {
+        "h15": "H15-M2-04",
+        "h22": "H22-M1-04"
+      },
+      {
+        "h15": "H15-M2-05",
+        "h22": "H22-M1-05"
+      },
+      {
+        "h15": "H15-M2-06",
+        "h22": "H22-M1-05"
+      },
+      {
+        "h15": "H15-M2-07",
+        "h22": "H22-M1-06"
+      },
+      {
+        "h15": "H15-M2-08",
+        "h22": "H22-M1-07"
+      },
+      {
+        "h15": "H15-M2-09",
+        "h22": "H22-M1-08"
+      }
+    ],
+    "principle": "same semantic => share PT/TPL/CC concepts; different course/year/standard parent kept; subUnitKey only via existing master after item evidence"
+  },
+  "crossConceptReusableCatalog": [
+    {
+      "key": "CC_FUNCTION_LIMIT",
+      "label": "함수의 극한",
+      "registryStatus": "ACTIVE",
+      "rule": "Only as actual secondary concept in qid solution"
+    },
+    {
+      "key": "CC_FUNCTION_CONTINUITY",
+      "label": "함수의 연속",
+      "registryStatus": "ACTIVE",
+      "rule": "Only as actual secondary concept in qid solution"
+    },
+    {
+      "key": "CC_DERIVATIVE_VALUE",
+      "label": "미분계수",
+      "registryStatus": "ACTIVE",
+      "rule": "Only as actual secondary concept in qid solution"
+    },
+    {
+      "key": "CC_DIFFERENTIABILITY",
+      "label": "미분가능성",
+      "registryStatus": "ACTIVE",
+      "rule": "Only as actual secondary concept in qid solution"
+    },
+    {
+      "key": "CC_FUNCTION_EXTREMA",
+      "label": "함수의 극대와 극소",
+      "registryStatus": "ACTIVE",
+      "rule": "Only as actual secondary concept in qid solution"
+    },
+    {
+      "key": "CC_FUNCTION_MONOTONICITY",
+      "label": "함수의 증가와 감소",
+      "registryStatus": "ACTIVE",
+      "rule": "Only as actual secondary concept in qid solution"
+    },
+    {
+      "key": "CC_INDEFINITE_INTEGRAL",
+      "label": "부정적분",
+      "registryStatus": "ACTIVE",
+      "rule": "Only as actual secondary concept in qid solution"
+    },
+    {
+      "key": "CC_DEFINITE_INTEGRAL",
+      "label": "정적분",
+      "registryStatus": "ACTIVE",
+      "rule": "Only as actual secondary concept in qid solution"
+    },
+    {
+      "key": "CC_INTERMEDIATE_VALUE_THEOREM",
+      "label": "사잇값 정리",
+      "registryStatus": "ACTIVE",
+      "rule": "Only as actual secondary concept in qid solution"
+    }
+  ],
+  "conditionLookupCatalog": [
+    {
+      "key": "COND_INTEGER",
+      "label": "정수 조건"
+    },
+    {
+      "key": "COND_POSITIVE",
+      "label": "양수 조건"
+    },
+    {
+      "key": "COND_NEGATIVE",
+      "label": "음수 조건"
+    },
+    {
+      "key": "COND_RANGE",
+      "label": "범위 조건"
+    },
+    {
+      "key": "COND_NONZERO",
+      "label": "0이 아닌 조건"
+    },
+    {
+      "key": "COND_ADJACENT_REGIONS_DIFFERENT_COLOR",
+      "label": "인접 영역 색상 상이 조건"
+    },
+    {
+      "key": "COND_COPRIME_TO_FIXED_INTEGER",
+      "label": "지정 정수와 서로소 조건"
+    },
+    {
+      "key": "COND_NON_COPRIME_TO_FIXED_INTEGER",
+      "label": "지정 정수와 공약수 공유 조건"
+    },
+    {
+      "key": "COND_RESTRICTED_INTERVAL",
+      "label": "제한된 구간 조건"
+    }
+  ],
+  "conditionRule": "registry for lookup, never infer from unit label",
+  "integrationRule": "Evidence-based pattern per actual item; no invented NONE/keys",
+  "intakeSamples": [
+    {
+      "examUid": "26_매산고_2학기_중간_고2_미적분I",
+      "questionCount": 21,
+      "libraryBasePath": "/문제은행/2026_2학기중간_신규JS/04_매산고_고2_미적분I_CREATE",
+      "stage": "CREATE_CANDIDATE",
+      "sourceStatus": "CAPTURED_SEPARATE",
+      "semanticVerification": "NOT_IN_THIS_SEED"
+    }
+  ],
+  "summary": {
+    "targetRPMPaths": 50,
+    "uniqueGlobalPT": 22,
+    "uniqueGlobalTemplateCandidates": 42,
+    "h15ExactSameL3L4": 40,
+    "h22SpecificOrReorganized": 10,
+    "missing2022ExactBindings": 50,
+    "existingH22SubunitMasterKeys": 28,
+    "automaticNewCanonicalKeys": 0,
+    "ccCatalogCount": 9
+  },
+  "records": [
+    {
+      "crosswalkRecordId": "H2-M2-RPM-049",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-01",
+        "standardUnit": "함수의 극한",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "함수의 극한",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "좌극한·우극한",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "problemTypeLabelKo": "함수의 극한값 계산",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_LIMIT_DIRECTIONAL_APPROACH",
+            "templateLabelKo": "접근 방향을 고려한 극한"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-001"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-050",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-01",
+        "standardUnit": "함수의 극한",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "함수의 극한",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "극한값 계산",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "problemTypeLabelKo": "함수의 극한값 계산",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_LIMIT_DIRECT_SUBSTITUTION",
+            "templateLabelKo": "직접 대입으로 극한값 구하기"
+          },
+          {
+            "templateKey": "TPL_LIMIT_FACTOR_CANCEL",
+            "templateLabelKo": "인수분해와 약분으로 극한 계산"
+          },
+          {
+            "templateKey": "TPL_LIMIT_RATIONALIZATION",
+            "templateLabelKo": "유리화로 극한 계산"
+          },
+          {
+            "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+            "templateLabelKo": "극한의 사칙연산"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-002"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-051",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-01",
+        "standardUnit": "함수의 극한",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "극한의 성질",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "대수적 계산",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "problemTypeLabelKo": "함수의 극한값 계산",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+            "templateLabelKo": "극한의 사칙연산"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-003"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-052",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-01",
+        "standardUnit": "함수의 극한",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "극한의 성질",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "미정계수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+        "problemTypeLabelKo": "극한 조건으로 함수·계수 결정",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+            "templateLabelKo": "유한 극한 조건으로 계수 결정"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-004"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-053",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-01",
+        "standardUnit": "함수의 극한",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "무한대에서의 극한",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "다항·유리함수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "problemTypeLabelKo": "함수의 극한값 계산",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM",
+            "templateLabelKo": "지배항을 이용한 무한대 극한 계산"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-005"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-054",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-01",
+        "standardUnit": "함수의 극한",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "무한대에서의 극한",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "그래프 해석",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "problemTypeLabelKo": "함수의 극한값 계산",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_LIMIT_GRAPH_DIRECTION_READ",
+            "templateLabelKo": "그래프에서 좌극한·우극한 구하기"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-006"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-055",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-02",
+        "standardUnit": "함수의 연속",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "연속의 뜻",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "한 점에서의 연속",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+        "problemTypeLabelKo": "연속과 불연속의 판정",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
+            "templateLabelKo": "연속·불연속 판정"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-007"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-056",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-02",
+        "standardUnit": "함수의 연속",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "연속의 뜻",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "구간에서의 연속",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+        "problemTypeLabelKo": "연속과 불연속의 판정",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
+            "templateLabelKo": "연속·불연속 판정"
+          },
+          {
+            "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+            "templateLabelKo": "함수의 연산과 합성함수의 연속성"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-008"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-057",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-02",
+        "standardUnit": "함수의 연속",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "연속 조건",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "미정계수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_CONTINUITY_CONDITION",
+        "problemTypeLabelKo": "함수의 연속 조건",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_CONTINUITY_FACTOR_CONDITION",
+            "templateLabelKo": "인수 조건을 이용한 연속성 확보"
+          },
+          {
+            "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+            "templateLabelKo": "구간별로 정의된 함수의 연속 조건"
+          },
+          {
+            "templateKey": "TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION",
+            "templateLabelKo": "연속인 함수의 식 결정"
+          },
+          {
+            "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+            "templateLabelKo": "분모가 0이 되지 않는 조건"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-009"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-058",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-02",
+        "standardUnit": "함수의 연속",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "연속 조건",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "구간별 함수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_CONTINUITY_CONDITION",
+        "problemTypeLabelKo": "함수의 연속 조건",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+            "templateLabelKo": "구간별로 정의된 함수의 연속 조건"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-010"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-059",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-02",
+        "standardUnit": "함수의 연속",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "연속함수의 성질",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "최대·최소 정리",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "problemTypeLabelKo": "함수의 최댓값·최솟값",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+            "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값"
+          }
+        ],
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-011"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-060",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-02",
+        "standardUnit": "함수의 연속",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "연속함수의 성질",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "사잇값 정리",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+        "problemTypeLabelKo": "사잇값 정리의 활용",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+            "templateLabelKo": "사잇값 정리로 특정 값·실근의 존재 확인"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-012"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-061",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-03",
+        "standardUnit": "미분계수",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "미분계수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "평균변화율·순간변화율",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+        "problemTypeLabelKo": "평균변화율과 미분계수",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_AVERAGE_RATE_DERIVATIVE_LINK",
+            "templateLabelKo": "평균변화율과 미분계수 연결"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-013"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-062",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-03",
+        "standardUnit": "미분계수",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "미분계수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "정의로 미분계수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+        "problemTypeLabelKo": "미분계수의 정의와 극한",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+            "templateLabelKo": "차분극한의 미분계수 환원"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-014"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-063",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-04",
+        "standardUnit": "도함수",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "도함수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "미분법",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+        "problemTypeLabelKo": "도함수 계산",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+            "templateLabelKo": "도함수 계산과 값 평가"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-015"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-064",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-04",
+        "standardUnit": "도함수",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "도함수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "도함수 계산",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+        "problemTypeLabelKo": "도함수 계산",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+            "templateLabelKo": "도함수 계산과 값 평가"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-016"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-065",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-04",
+        "standardUnit": "도함수",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "미분가능성과 연속",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "미분가능 조건",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+        "problemTypeLabelKo": "미분가능 조건",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+            "templateLabelKo": "한 점의 미분가능 조건"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-017"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-066",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-04",
+        "standardUnit": "도함수",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "미분가능성과 연속",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "그래프에서 판정",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+        "problemTypeLabelKo": "미분가능 조건",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+            "templateLabelKo": "미분불가능 구조 판정"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-018"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-067",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "접선",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "접선의 방정식",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+        "problemTypeLabelKo": "접선과 미분",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_TANGENT_CONSTRUCTION",
+            "templateLabelKo": "접선·법선 구성"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-019"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-068",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "접선",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "두 곡선의 접선",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+        "problemTypeLabelKo": "접선과 미분",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+            "templateLabelKo": "접선 관계와 기하 활용"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [
+          "H2-M2-RPM-020"
+        ],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-069",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "증가·감소와 극값",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "증감표",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "problemTypeLabelKo": "함수의 증가·감소",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_MONOTONICITY_DIRECT",
+            "templateLabelKo": "도함수 부호로 증감 판정"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-023"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-070",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "증가·감소와 극값",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "극대·극소",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "problemTypeLabelKo": "극대·극소",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+            "templateLabelKo": "극값·극점 조건으로 값 결정"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-024"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-071",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "최대·최소",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "구간 최대·최소",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "problemTypeLabelKo": "최댓값·최솟값",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+            "templateLabelKo": "함수의 정의역상 최대·최소"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-025"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-072",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "최대·최소",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "활용",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "problemTypeLabelKo": "최댓값·최솟값",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+            "templateLabelKo": "모델링된 양의 최대·최소"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [
+          "H2-M2-RPM-026"
+        ],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-073",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "방정식·부등식",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "근의 개수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "problemTypeLabelKo": "방정식·부등식에의 활용",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+            "templateLabelKo": "극값을 이용한 실근 개수 판정"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [
+          "H2-M2-RPM-027"
+        ],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-074",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "방정식·부등식",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "함수 비교",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "problemTypeLabelKo": "방정식·부등식에의 활용",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE",
+            "templateLabelKo": "미분을 이용한 전역 부등식"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [
+          "H2-M2-RPM-028"
+        ],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-075",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "속도와 가속도",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "위치·속도",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "problemTypeLabelKo": "속도·가속도와 변화율",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+            "templateLabelKo": "운동의 사건 시각·상태 분석"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [
+          "H2-M2-RPM-029",
+          "H2-M2-RPM-030"
+        ],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-076",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "속도와 가속도",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "변화율",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "problemTypeLabelKo": "속도·가속도와 변화율",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+            "templateLabelKo": "운동의 사건 시각·상태 분석"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [
+          "H2-M2-RPM-029",
+          "H2-M2-RPM-030"
+        ],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-077",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "롤의 정리와 평균값 정리",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "롤의 정리",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+        "problemTypeLabelKo": "평균값 정리와 롤의 정리",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_MVT_ROLLE_DIRECT",
+            "templateLabelKo": "평균값·롤 정리 직접 적용"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [
+          "H2-M2-RPM-021",
+          "H2-M2-RPM-022"
+        ],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-078",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "롤의 정리와 평균값 정리",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "평균값 정리의 조건과 적용",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+        "problemTypeLabelKo": "평균값 정리와 롤의 정리",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_MVT_ROLLE_DIRECT",
+            "templateLabelKo": "평균값·롤 정리 직접 적용"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [
+          "H2-M2-RPM-021",
+          "H2-M2-RPM-022"
+        ],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-079",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "미분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-05",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "롤의 정리와 평균값 정리",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "평균값 정리를 이용한 함수의 성질",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+        "problemTypeLabelKo": "평균값 정리와 롤의 정리",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_MVT_BOUND_LIMIT",
+            "templateLabelKo": "평균값 정리로 범위·극한 제어"
+          }
+        ],
+        "ownerPack": "DERIVATIVE"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-080",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-06",
+        "standardUnit": "부정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "부정적분의 뜻",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "원시함수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "problemTypeLabelKo": "부정적분과 함수",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+            "templateLabelKo": "부정적분과 미분의 관계"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-031"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-081",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-06",
+        "standardUnit": "부정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "부정적분의 뜻",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "적분상수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "problemTypeLabelKo": "부정적분과 함수",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+            "templateLabelKo": "부정적분과 미분의 관계"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-032"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-082",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-06",
+        "standardUnit": "부정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "부정적분 계산",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "다항함수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "problemTypeLabelKo": "부정적분과 함수",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+            "templateLabelKo": "부정적분과 미분의 관계"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-033"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-083",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-06",
+        "standardUnit": "부정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "부정적분 계산",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "상수배·합차",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "problemTypeLabelKo": "부정적분과 함수",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+            "templateLabelKo": "부정적분과 미분의 관계"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-034"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-084",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-06",
+        "standardUnit": "부정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "조건을 이용한 함수 결정",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "초기조건",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "problemTypeLabelKo": "부정적분과 함수",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+            "templateLabelKo": "도함수에서 함수·함숫값 구하기"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-035"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-085",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-06",
+        "standardUnit": "부정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "조건을 이용한 함수 결정",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "도함수에서 원함수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "problemTypeLabelKo": "부정적분과 함수",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+            "templateLabelKo": "도함수에서 함수·함숫값 구하기"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-036"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-086",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-07",
+        "standardUnit": "정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "정적분의 뜻",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "정적분 계산",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "problemTypeLabelKo": "정적분의 계산과 성질",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DEFINITE_EVALUATION",
+            "templateLabelKo": "정적분 값 계산"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-037"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-087",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-07",
+        "standardUnit": "정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "정적분의 뜻",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "구간 분할",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "problemTypeLabelKo": "정적분의 계산과 성질",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DEFINITE_EVALUATION",
+            "templateLabelKo": "정적분 값 계산"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-038"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-088",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-07",
+        "standardUnit": "정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "정적분의 성질",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "상하한 교환",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "problemTypeLabelKo": "정적분의 계산과 성질",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+            "templateLabelKo": "정적분의 성질을 이용한 식 변형"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-039"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-089",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-07",
+        "standardUnit": "정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "정적분의 성질",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "대칭성",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "problemTypeLabelKo": "정적분의 계산과 성질",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+            "templateLabelKo": "정적분의 성질을 이용한 식 변형"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-040"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-090",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-07",
+        "standardUnit": "정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "정적분과 함수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "상한이 변수인 적분",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "problemTypeLabelKo": "정적분과 함수",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION",
+            "templateLabelKo": "적분으로 정의된 함수의 미분"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-041"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-091",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-07",
+        "standardUnit": "정적분",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "정적분과 함수",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "미분과 적분 관계",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "problemTypeLabelKo": "정적분과 함수",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+            "templateLabelKo": "적분이 포함된 식을 미분하여 함수 구하기"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-042"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-092",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-08",
+        "standardUnit": "정적분의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "넓이",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "곡선과 x축",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+            "templateLabelKo": "교점과 부호를 이용한 넓이"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-043"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-093",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-08",
+        "standardUnit": "정적분의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "넓이",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "두 곡선 사이",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+            "templateLabelKo": "교점과 부호를 이용한 넓이"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-044"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-094",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-08",
+        "standardUnit": "정적분의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "속도와 거리",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "속도에서 이동거리",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "problemTypeLabelKo": "속도와 거리",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+            "templateLabelKo": "속도에서 위치·변위·이동거리 구하기"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-045"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-095",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-08",
+        "standardUnit": "정적분의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "속도와 거리",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "위치 변화",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "problemTypeLabelKo": "속도와 거리",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+            "templateLabelKo": "속도에서 위치·변위·이동거리 구하기"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-046"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-096",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-08",
+        "standardUnit": "정적분의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "도형 활용",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "매개변수 넓이",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+            "templateLabelKo": "넓이 조건으로 함수·매개변수 결정"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-047"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-097",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "적분"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-08",
+        "standardUnit": "정적분의 활용",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "도형 활용",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "최대·최소",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+            "templateLabelKo": "넓이 조건으로 함수·매개변수 결정"
+          }
+        ],
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "H15Source": {
+        "sameSemanticPath": true,
+        "sourceRecordIds": [
+          "H2-M2-RPM-048"
+        ],
+        "relation": "SAME_L3_L4_SEMANTIC",
+        "unresolvedExactMatch": false
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    },
+    {
+      "crosswalkRecordId": "H2-M2-RPM-098",
+      "curriculum": "2022",
+      "standardCourse": "미적분I",
+      "L1": {
+        "majorUnit": "함수의 극한과 연속"
+      },
+      "L2": {
+        "standardUnitKey": "H22-M1-01",
+        "standardUnit": "함수의 극한",
+        "subUnitKey": null,
+        "subUnitPolicy": "PRESERVE_EXISTING_L2_MASTER_NO_AUTOFILL"
+      },
+      "L3": {
+        "label": "극한의 성질",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "L4": {
+        "label": "함수의 극한의 대소 관계",
+        "authorityStatus": "CANONICAL_DRAFT"
+      },
+      "inheritedGlobal": {
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "problemTypeLabelKo": "함수의 극한값 계산",
+        "templateCandidates": [
+          {
+            "templateKey": "TPL_LIMIT_SQUEEZE",
+            "templateLabelKo": "함수의 대소 관계를 이용한 극한값 계산"
+          }
+        ],
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "H15Source": {
+        "sameSemanticPath": false,
+        "sourceRecordIds": [],
+        "relation": "SHARED_ACTIVE_PT_TPL_CHECK_CONTEXT",
+        "unresolvedExactMatch": true
+      },
+      "crossConceptKeys": [],
+      "crossConceptStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "conditionKeys": [],
+      "conditionStatus": "QID_BASED_LOOKUP_REQUIRED_NOT_AUTOMATIC",
+      "integrationPattern": null,
+      "integrationStatus": "QID_BASED_LOOKUP_REQUIRED",
+      "curriculumBinding": "MISSING_CANDIDATE_ONLY_NOT_ACTIVE",
+      "reviewStatus": "PENDING_2022_ITEM_EVIDENCE",
+      "evidenceRequired": [
+        "source_question",
+        "independent_solution",
+        "decisive_step",
+        "2022_course_applicability",
+        "H22_L2_PARENT_VALIDATION"
+      ]
+    }
+  ]
+}
