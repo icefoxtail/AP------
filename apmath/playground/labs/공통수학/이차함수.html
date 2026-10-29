@@ -416,7 +416,7 @@
         { id: 'absWholeFold', label: '🥟 전체 절댓값 y=|x²-2x-3| 폴딩 & y=k 교점(0→2→4→3→2개!)' },
         { id: 'absXSymmetry', label: '🪞 x에만 절댓값 y=x²-2|x|-3 (y축 데칼코마니 W자 그래프!)' },
         { id: 'absLineRotTangent', label: '📐 [1등급 결정타] y=|x²-4|와 회전 직선 y=m(x+3) 교점 3개!' },
-        { id: 'absPiecewiseSplit', label: '✂️ 부분 절댓값 y=x²-2x-3|x-1| (경계 x=1 좌우 이어붙이기)' },
+        { id: 'absPiecewiseSplit', label: '✂️ 부분 절댓값 y=x²-2x-2|x-1| (경계 x=1 좌우 이어붙이기)' },
         { id: 'maxMinEnvelope', label: '📈 두 함수 중 작은 함수 min(f, g) · 큰 함수 max(f, g) 그래프' }
       ],
       4: [
@@ -693,27 +693,27 @@
         if (sub === 'chordLengthVieta') {
           return {
             badge: `탐구 1-C · 📏 이차함수와 직선이 잘라내는 선분 AB(현)의 길이 — √(1 + m²) × |α - β| 3초 공식!`,
-            hint: `포물선 $y = x^2 - 2x - 1$ 과 직선 $y = x + 1$ 의 두 교점 $A, B$ 사이의 거리를 구할 때, 근의 공식으로 교점을 구하면 시간이 폭발합니다! <strong>가로 거리 $|\\alpha - \\beta|$를 구한 뒤 기울기($m=1$) 직각삼각형 비율 <span class="text-amber-300">$\\sqrt{1+1^2} = \\sqrt{2}$배</span></strong>만 곱하면 끝납니다!`,
+            hint: `포물선 $y = x^2 - 2x - 1$ 과 직선 $y = x + 1$ 의 두 교점 $A, B$ 사이의 거리를 구할 때, 근의 공식을 모두 풀지 않아도 됩니다. 차함수는 $x^2-3x-2=0$이고, 두 근의 차는 판별식으로 $|\\alpha-\\beta|=\\sqrt{17}$입니다. 여기에 직선 기울기 $m=1$에 따른 길이 비율 $\\sqrt{1+m^2}=\\sqrt2$를 곱합니다.`,
             actionTxt: state.fold > 0.5 ? '🎬 기본 선분 보기' : '🎬 가로차 |α-β| × √(1+m²) 직각삼각형 발광!',
             dim1Name: '가로 거리 |α - β|', dim2Name: '빗변 선분 AB의 길이',
-            val1Txt: '|4 - (-1)| = 5', val2Txt: '5 × √(1 + 1²) = 5√2!',
+            val1Txt: '|α - β| = √17', val2Txt: '√17 × √(1 + 1²) = √34!',
             parts: [
-              { id: 0, name: `🟡 1단계: 차함수 x² - 3x - 2 = 0 (또는 x² - 3x - 4 = 0)에서 |α - β| 구하기`, desc: `(α - β)² = (α + β)² - 4αβ 또는 √D / |a| 공식으로 가로 길이 도출!`, val: `Δx = |α - β| = 5`, color: '#fbbf24', ok: true },
+              { id: 0, name: `🟡 1단계: 차함수 x² - 3x - 2 = 0 에서 |α - β| 구하기`, desc: `판별식 D = 9 + 8 = 17이므로 두 근의 차는 √D/|1| = √17입니다. 두 근을 각각 계산할 필요는 없습니다.`, val: `Δx = |α - β| = √17`, color: '#fbbf24', ok: true },
               { id: 1, name: `🔵 2단계: 직선의 기울기가 m 이므로 세로 길이 Δy = |m| · |α - β|`, desc: `가로 : 세로 : 빗변 = 1 : m : √(1 + m²) 피타고라스 직각삼각형!`, val: `Δy = m|α - β|`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🩷 3단계 [완성]: 선분 AB = √(1 + m²) × |α - β| = 5√2!`, desc: `기울기가 1이면 √2배, 기울기가 2이면 √5배, 기울기가 √3이면 2배!`, val: `AB = 5√2 ⭕`, color: '#f472b6', ok: true }
+              { id: 2, name: `🩷 3단계 [완성]: 선분 AB = √(1 + m²) × |α - β| = √34!`, desc: `두 점은 기울기 1인 같은 직선 위에 있으므로 Δy=Δx=√17이고, 피타고라스 정리로 AB=√(17+17)=√34입니다.`, val: `AB = √34 ⭕`, color: '#f472b6', ok: true }
             ],
             totalRes: `선분 AB의 길이 = √(1 + m²) · |α - β| = √(1 + m²) · (√D / |a|)`,
             rule: '직선 위의 두 점 사이 거리는 점 좌표를 구하지 말고 무조건 (x좌표 차이 |α-β|) × √(1 + m²) 로 구한다!',
             formulaHTML: `• <strong>두 근의 차 1초 공식</strong>: ${tex('|\\alpha - \\beta| = \\sqrt{(\\alpha+\\beta)^2 - 4\\alpha\\beta} = \\mathbf{\\dfrac{\\sqrt{D}}{|a|}}')}<br/>• <strong>현의 길이 공식</strong>: ${tex('\\mathbf{\\overline{AB} = \\sqrt{1 + m^2}\\cdot |\\alpha - \\beta|}')}!`,
             notes: `• 기울기 $m = 1$ (45°)이면 가로 길이의 **$\\sqrt{2}$배**, 기울기 $m = 2$ 이면 **$\\sqrt{5}$배**, 기울기 $m = \\frac{3}{4}$ 이면 **$\\frac{5}{4}$배**입니다!`,
-            tapeTitle: `직각삼각형 빗변 비율: 가로(|α - β| = 5) ──[× √(1 + m²)]──▶ 비스듬한 현의 길이 AB = 5√2!`,
+            tapeTitle: `직각삼각형 빗변 비율: 가로(|α - β| = √17) ──[× √(1 + m²)]──▶ 비스듬한 현의 길이 AB = √34!`,
             tapeSegs: []
           };
         }
         if (sub === 'minDistMaxArea') {
           return {
             badge: `탐구 1-D · 📐 포물선 위의 점 P와 직선 사이의 최단거리 & 삼각형 △PAB의 최대 넓이!`,
-            hint: `포물선 위의 점 $P$와 직선 $l$ 사이의 거리가 <strong>최소</strong>(또는 $\\triangle PAB$ 넓이가 <strong>최대</strong>)가 되는 순간은 언제일까요? 슬라이더로 직선 $l$을 평행이동시켜 <strong>포물선에 정확히 접할 때($D = 0$)의 접점 $P$</strong>일 때입니다!`,
+            hint: `이 탐구의 기준 직선은 포물선 아래에 있어 교점이 없습니다. 이를 평행이동해 포물선에 가까이 가져오면 두 곡선 사이 간격은 접할 때($D=0$) 가장 작아집니다. 직선이 포물선과 만나면 최단거리는 그 교점에서 $0$이므로, 접선 결론은 이처럼 만나지 않는 설정에서 적용합니다.`,
             actionTxt: state.fold > 0.5 ? '🎬 일반 점 P 보기' : '🎬 평행한 접선(D=0) 작도 & 접점 P에서 최대 넓이 스냅!',
             dim1Name: '핵심 전략', dim2Name: '최적점 P의 정체',
             val1Txt: '같은 기울기 m인 접선(D=0)', val2Txt: '접점 x = (m - b) / 2a!',
@@ -722,7 +722,7 @@
               { id: 1, name: `🩷 접점 P: 직선까지의 수직거리 d가 최소 (교점 삼각형에서는 높이 최대!)`, desc: `평행선 등적변형 원리에 의해 접점 P에서 높이가 극값 달성!`, val: `접점 P ⭕`, color: '#f472b6', ok: true }
             ],
             totalRes: `최단거리 & △PAB 최대넓이 ➔ 주어진 직선과 평행한 접선(D=0)의 접점 P에서 발생!`,
-            rule: '포물선 위 동점 P가 등장하는 최대·최소 문제는 100% "주어진 직선과 기울기가 같은 접선(D=0)" 문제다!',
+            rule: '포물선과 만나지 않는 평행 이동 직선의 간격을 최소화할 때는 같은 기울기의 접선을 경계로 찾는다. 이미 교점이 있으면 최단거리는 0이다.',
             formulaHTML: `• <strong>2단계 정석 해법</strong>:<br/>&nbsp;&nbsp;① 주어진 직선 $y = mx + n$ 과 평행한 접선 ${tex('y = mx + k\'')} 를 놓고 차함수 판별식 ${tex('\\mathbf{D = 0}')} 으로 $k'$ 와 접점 $P$를 구한다.<br/>&nbsp;&nbsp;② 두 평행선 사이의 거리 공식으로 최단거리(또는 최대 높이)를 구한다!`,
             notes: `• 만약 $\\triangle PAB$ 넓이의 최댓값을 묻는 문제라면, 접점 $P$에서 $x$축에 평행한(세로) 길이 $h_{\\text{세로}}$ 의 최댓값 $\\frac{D}{4|a|}$ 에 가로 폭 $\\frac{1}{2}|\\alpha-\\beta|$ 를 곱한 **$\\dfrac{|a|}{8}(\\beta-\\alpha)^3$** 공식으로 3초 검산이 가능합니다!`,
             tapeTitle: `핵심 통찰: 곡선 위의 움직이는 점 P 문제 ➔ 평행한 접선(D = 0)을 그었을 때의 접점 P가 정답!`,
@@ -788,14 +788,14 @@
             hint: `아래로 볼록할 때 <strong>최댓값은 대칭축 $x = p$ 로부터 더 멀리 떨어진 구간의 끝점</strong>에서 나옵니다! 따라서 최댓값은 3구간이 아니라 <strong>구간의 정중앙 $x = 1$ 딱 하나를 경계</strong>로 <strong class="text-amber-300">$p < 1$ 이면 $f(2)$가 최대</strong>, <strong class="text-pink-300">$p > 1$ 이면 $f(0)$이 최대</strong>가 됩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 p < 1 (오른쪽 끝 최대) 보기' : '🎬 대칭축이 정중앙(p=1)을 넘을 때 최댓값 점프 시연!',
             dim1Name: '최댓값 분할 경계선', dim2Name: `현재(p=${fmtNum(curP)}) 최댓값 위치`,
-            val1Txt: '구간의 중점 p = 1', val2Txt: isLeftMax ? '왼쪽 끝 f(0)이 최대!' : '오른쪽 끝 f(2)가 최대!',
+            val1Txt: '구간의 중점 p = 1', val2Txt: Math.abs(curP - 1) < 1e-9 ? 'p=1: 양 끝 f(0), f(2)가 함께 최대!' : isLeftMax ? '왼쪽 끝 f(0)이 최대!' : '오른쪽 끝 f(2)가 최대!',
             parts: [
               { id: 0, name: `🟡 대칭축이 중점 왼쪽 (p ≤ 1) ➔ 더 먼 오른쪽 끝 f(2) 에서 최대!`, desc: `축 p에서 x=2 까지의 거리가 x=0 까지의 거리보다 더 멀기 때문!`, val: `최댓값 = f(2)`, color: '#fbbf24', ok: !isLeftMax },
-              { id: 1, name: `🩷 대칭축이 중점 오른쪽 (p ≥ 1) ➔ 더 먼 왼쪽 끝 f(0) 에서 최대!`, desc: `축 p가 중앙(1)을 넘는 순간 x=0 까지의 거리가 더 멀어져 최댓값 점프!`, val: `최댓값 = f(0)`, color: '#f472b6', ok: isLeftMax }
+              { id: 1, name: `🩷 대칭축이 중점 오른쪽 (p ≥ 1) ➔ 더 먼 왼쪽 끝 f(0) 에서 최대!`, desc: Math.abs(curP - 1) < 1e-9 ? `p=1이면 양 끝의 축까지 거리가 같아 f(0)=f(2), 두 끝점 모두 최댓값입니다.` : `축 p가 중앙(1)을 넘는 순간 x=0 까지의 거리가 더 멀어져 최댓값 점프!`, val: `최댓값 = f(0)`, color: '#f472b6', ok: isLeftMax || Math.abs(curP - 1) < 1e-9 }
             ],
             totalRes: `최솟값은 양 끝점(p=0, p=2) 3구간 분할 | 최댓값은 구간의 중점(p=1) 2구간 분할!`,
             rule: '아래로 볼록에서: 최솟값은 [꼭짓점이 구간에 들어오냐]로 3분할, 최댓값은 [축이 중앙(중점)의 어느 쪽이냐]로 2분할!',
-            formulaHTML: `• 구간 $[\\alpha, \\beta]$의 정중앙(중점)을 ${tex('M = \\dfrac{\\alpha + \\beta}{2}')} 라 할 때 (아래로 볼록 $a>0$ 기준):<br/>&nbsp;&nbsp;① $p \\le M$ 이면 오른쪽 끝이 더 멀므로 <strong>최댓값 $= f(\\beta)$</strong><br/>&nbsp;&nbsp;② $p \\ge M$ 이면 왼쪽 끝이 더 멀므로 <strong>최댓값 $= f(\\alpha)$</strong>!`,
+            formulaHTML: `• 구간 $[\\alpha, \\beta]$의 정중앙(중점)을 ${tex('M = \\dfrac{\\alpha + \\beta}{2}')} 라 할 때 (아래로 볼록 $a>0$ 기준):<br/>&nbsp;&nbsp;① $p < M$ 이면 오른쪽 끝이 더 멀어 <strong>최댓값 $= f(\\beta)$</strong><br/>&nbsp;&nbsp;② $p = M$ 이면 양 끝점에서 값이 같아 <strong>둘 다 최댓값</strong><br/>&nbsp;&nbsp;③ $p > M$ 이면 왼쪽 끝이 더 멀어 <strong>최댓값 $= f(\\alpha)$</strong>입니다.`,
             notes: `• 최댓값 문제를 풀 때 습관적으로 $p<0, 0\\le p\\le 2, p>2$ 로 나누면 시간만 걸리고 헷갈립니다! 최댓값은 무조건 **구간의 중점 $p = 1$** 기준으로 딱 2번만 나누세요!`,
             tapeTitle: `최댓값 2분할 경계 (중점 p = 1): [p < 1 이면 오른쪽 끝 f(2) 최대]  |  [p > 1 이면 왼쪽 끝 f(0) 최대]`,
             tapeSegs: [
@@ -998,7 +998,7 @@
             val1Txt: 'f(p) < 0 (아래로 볼록 기준)', val2Txt: '자동 성립 & 무관 (조사 불필요!)',
             parts: [
               { id: 0, name: `🟡 유일한 절대 조건: 경계 함숫값 f(p) < 0 (강바닥 아래로 잠김!)`, desc: `x = p 에서 y값이 음수이면 양옆으로 올라가며 무조건 x축을 2번 뚫음!`, val: `f(p) < 0 단 1개! ⭕`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🟢 왜 판별식 D > 0 을 안 써도 될까? (100% 자동 성립!)`, desc: `f(p) = ap²+bp+c < 0 에서 ac < 0 계열이므로 D = b²-4ac > 0 이 자동 보장됨!`, val: `D > 0 자동보장!`, color: '#34d399', ok: true },
+              { id: 1, name: `🟢 왜 판별식 D > 0 을 따로 검사하지 않아도 될까?`, desc: `a>0이고 f(p)<0이면 포물선 양 끝은 위로 올라가므로 x=p의 양쪽에서 각각 x축을 한 번씩 만나 D>0이 이미 보장됩니다.`, val: `D > 0 자동보장!`, color: '#34d399', ok: true },
               { id: 2, name: `🔵 왜 대칭축 위치를 안 따져도 될까?`, desc: `슬라이더로 대칭축을 좌우로 흔들어 보세요! 축이 어디든 α < p < β 는 유지됨!`, val: `대칭축 무관!`, color: '#38bdf8', ok: true }
             ],
             totalRes: `두 실근 사이에 p가 있을 조건 (α < p < β) ⟺ 오직 f(p) < 0 단 하나만 풀면 3초 컷!`,
@@ -1056,9 +1056,9 @@
           dim1Name: '두 양근 조건 (3개)', dim2Name: '서로 다른 부호 조건 (단 1개!)',
           val1Txt: 'D ≥ 0, α+β > 0, αβ > 0', val2Txt: 'αβ < 0 (오직 두 근의 곱만!)',
           parts: [
-            { id: 0, name: `🟡 [두 근이 모두 양수] ⟺ 두 근이 0보다 큼: D ≥ 0, α+β > 0, αβ > 0`, desc: `함(f(0)=c>0 ⇔ αβ>0) · 판(D≥0) · 축(-b/2a>0 ⇔ α+β>0) 과 100% 일치!`, val: `3조건 모두 ⭕`, color: '#fbbf24', ok: true },
+            { id: 0, name: `🟡 [두 근이 모두 양수] ⟺ 두 근이 0보다 큼: D ≥ 0, α+β > 0, αβ > 0`, desc: `근의 합은 −b/a, 근의 곱은 c/a입니다. 따라서 두 근이 모두 양수이려면 D≥0, −b/a>0, c/a>0을 확인합니다.`, val: `3조건 모두 ⭕`, color: '#fbbf24', ok: true },
             { id: 1, name: `🔵 [두 근이 모두 음수] ⟺ 두 근이 0보다 작음: D ≥ 0, α+β < 0, αβ > 0`, desc: `두 음수를 곱해도 양수(αβ > 0)이고, 합만 음수(α+β < 0)!`, val: `합만 음수 ⭕`, color: '#38bdf8', ok: true },
-            { id: 2, name: `🩷 [서로 다른 부호] ⟺ 두 근 사이에 0이 있음: 오직 αβ < 0 단 1개!`, desc: `f(0) < 0 단 1개 조건과 동일! (단, '음근의 절댓값이 더 크다'면 α+β < 0 추가!)`, val: `αβ < 0 단 1개!`, color: '#f472b6', ok: true }
+            { id: 2, name: `🩷 [서로 다른 부호] ⟺ 두 근 사이에 0이 있음: 오직 αβ < 0 단 1개!`, desc: `근의 곱 αβ=c/a<0이면 두 근의 부호가 다릅니다. 그림은 a>0인 예이므로 이때는 f(0)=c<0과 같습니다.`, val: `αβ < 0 단 1개!`, color: '#f472b6', ok: true }
           ],
           totalRes: `두 양근: D≥0, 합>0, 곱>0 | 두 음근: D≥0, 합<0, 곱>0 | 다른 부호: 곱(αβ) < 0 단 1개!`,
           rule: '서로 다른 부호의 근일 때: "절댓값이 같다" ➔ α+β=0 추가 | "양근의 절댓값이 더 크다" ➔ α+β>0 추가!',
@@ -1194,18 +1194,18 @@
       if (sub === 'trapMaxLtMin') {
         return {
           badge: `탐구 6-B · 💥 [함정 2위] "모든 실수 x에 대하여 f(x) ≥ g(x)" vs "임의의 실수 x₁, x₂에 대하여 f(x₁) ≥ g(x₂)"!`,
-          hint: `두 문장의 차이를 구별해야 합니다! ① 같은 문자 $x$를 넣는 <strong>$f(x) \\ge g(x)$ 는 같은 세로선 위에서 비교하므로 차함수 $f(x)-g(x) \\ge 0$ ($D \\le 0$)</strong>으로 풀지만, ② 서로 다른 $x_1, x_2$ 를 넣는 <strong>$f(x_1) \\ge g(x_2)$ 는 <span class="text-amber-300">($f$의 최솟값) $\\ge$ ($g$의 최댓값)</span></strong>으로 풀어야 합니다!`,
+          hint: `두 문장의 차이를 구별해야 합니다! ① 같은 문자 $x$를 넣는 <strong>$f(x) \\ge g(x)$ 는 차함수 $h(x)=f(x)-g(x) \\ge 0$</strong>으로 바꿉니다. $h$가 이차함수라면 최고차항 계수가 양수이고 판별식 $D_h\\le0$이어야 하며, ② 서로 다른 $x_1, x_2$ 를 넣는 <strong>$f(x_1) \\ge g(x_2)$ 는 <span class="text-amber-300">($f$의 최솟값) $\\ge$ ($g$의 최댓값)</span></strong>으로 비교합니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 같은 x 비교 f(x)≥g(x) 보기' : '🎬 서로 다른 x₁, x₂ 비교 (f 최솟값 ≥ g 최댓값) 수평선 확인!',
           dim1Name: '같은 문자: f(x) ≥ g(x)', dim2Name: '다른 문자: f(x₁) ≥ g(x₂)',
-          val1Txt: '차함수 f(x) - g(x) ≥ 0 (D ≤ 0)', val2Txt: '(f의 최솟값) ≥ (g의 최댓값)!',
+          val1Txt: 'h=f−g ≥ 0 (a_h>0, D_h≤0)', val2Txt: '(f의 최솟값) ≥ (g의 최댓값)!',
           parts: [
-            { id: 0, name: `🔵 [같은 문자 x]: 모든 실수 x에 대하여 f(x) ≥ g(x)`, desc: `같은 x좌표에서만 f가 위쪽에 있으면 됨 ➔ 이항하여 f(x)-g(x) ≥ 0 (D ≤ 0)!`, val: `f - g ≥ 0 (D≤0)`, color: '#38bdf8', ok: true },
+            { id: 0, name: `🔵 [같은 문자 x]: 모든 실수 x에 대하여 f(x) ≥ g(x)`, desc: `h=f−g라 두면 모든 x에서 h(x)≥0입니다. h가 이차함수이면 a_h>0, D_h≤0이고, a_h=0인 경우에는 남은 일차·상수식을 직접 확인합니다.`, val: `h≥0: a_h>0, D_h≤0 (이차일 때)`, color: '#38bdf8', ok: true },
             { id: 1, name: `🟡 [다른 문자 x₁, x₂]: 임의의 실수 x₁, x₂에 대하여 f(x₁) ≥ g(x₂)!`, desc: `f의 제일 낮은 꼴찌(최솟값)가 g의 제일 높은 1등(최댓값)보다 위에 있어야 함!`, val: `min(f) ≥ max(g)!`, color: '#fbbf24', ok: true }
           ],
-          totalRes: `f(x) ≥ g(x) ⟺ f(x)-g(x) ≥ 0 (D ≤ 0)  |  f(x₁) ≥ g(x₂) ⟺ (f의 최솟값) ≥ (g의 최댓값)!`,
+          totalRes: `f(x) ≥ g(x) ⟺ h(x)=f(x)-g(x) ≥ 0 (이차 h이면 a_h>0, D_h≤0) | f(x₁) ≥ g(x₂) ⟺ min(f) ≥ max(g)!`,
           rule: 'f(x₁) ≥ g(x₂) 처럼 첨자(x₁, x₂)가 다르면 이항해서 빼면 절대 안 된다! 각각의 꼭짓점(최솟값 ≥ 최댓값)을 비교하라!',
           formulaHTML: `• <strong>비유로 1초 이해하기</strong>:<br/>&nbsp;&nbsp;- $f(x) \\ge g(x)$: 같은 번호 학생끼리 붙었을 때만 A반($f$)이 B반($g$)보다 키가 크면 됨!<br/>&nbsp;&nbsp;- $f(x_1) \\ge g(x_2)$: A반에서 **제일 작은 학생(최솟값)**이 B반에서 **제일 큰 학생(최댓값)**보다 커야 함!`,
-          notes: `• 따라서 $f(x_1) \\ge g(x_2)$ 가 성립하려면 두 포물선 사이에 **수평한 분리선**이 지나갈 수 있어야 합니다!`,
+          notes: `• 이 화면의 예처럼 $f$가 아래로 볼록($a_f>0$), $g$가 위로 볼록($a_g<0$)이면 두 함수에 각각 최솟값·최댓값이 있어 수평 분리선으로 비교할 수 있습니다. 열린 방향이 반대여서 전 구간 최솟값이나 최댓값이 존재하지 않는 함수에는 그 표현을 바로 적용하지 않습니다.`,
           tapeTitle: `문장 구별법: [f(x) ≥ g(x) ➔ 이항 후 D ≤ 0]  vs  [f(x₁) ≥ g(x₂) ➔ (f의 꼭짓점 최솟값) ≥ (g의 꼭짓점 최댓값)]`,
           tapeSegs: []
         };
@@ -1336,20 +1336,21 @@
           drawFuncCurve((x) => x - 1, -4.5, 4.5, ox, oy, unit, 'rgba(251, 191, 36, 0.45)', 2.0, [5, 4], 1);
           qdot(S(1, 0), '접점 (1, 0) [k=-1, D=0!]', QCOL.gold, 14, 18);
         } else if (sub === 'chordLengthVieta') {
-          // y = 0.5x^2 - x - 1.5 와 y = 0.5x + 1 -> 교점 x = -1, x = 4 (가로차 5)
-          const fn = (x) => 0.4 * (x + 1) * (x - 4) + 0.5 * x + 1;
-          const gn = (x) => 0.5 * x + 1;
-          drawFuncCurve(fn, -3.2, 5.5, ox, oy, unit, QCOL.cyan, 3.2);
-          drawFuncCurve(gn, -4.5, 6.0, ox, oy, unit, QCOL.green, 2.8);
+          // y = x² - 2x - 1 과 y = x + 1: x² - 3x - 2 = 0, |α-β|=√17.
+          const fn = (x) => x * x - 2 * x - 1;
+          const gn = (x) => x + 1;
+          drawFuncCurve(fn, -2.8, 4.8, ox, oy, unit, QCOL.cyan, 3.2);
+          drawFuncCurve(gn, -3.2, 5.0, ox, oy, unit, QCOL.green, 2.8);
 
-          const pA = S(-1, 0.5), pB = S(4, 3.0), pH = S(4, 0.5);
+          const alpha = (3 - Math.sqrt(17)) / 2, beta = (3 + Math.sqrt(17)) / 2;
+          const pA = S(alpha, alpha + 1), pB = S(beta, beta + 1), pH = S(beta, alpha + 1);
           qline(pA, pH, QCOL.gold, 3.4, [5, 4], true, 0);
           qline(pH, pB, QCOL.cyan, 3.4, [5, 4], true, 1);
           qline(pA, pB, QCOL.pink, 4.2, [], true, 2);
 
-          qdot(pA, 'A(α = -1)', QCOL.white, -55, -12);
-          qdot(pB, 'B(β = 4)', QCOL.white, 12, -12);
-          qdot(pH, '가로차 |α-β| = 5 ➔ 빗변 AB = √(1+m²)×5!', QCOL.gold, -60, 22);
+          qdot(pA, 'A(α = (3-√17)/2)', QCOL.white, -72, -12);
+          qdot(pB, 'B(β = (3+√17)/2)', QCOL.white, 12, -12);
+          qdot(pH, '가로차 |α-β| = √17 ➔ AB = √34', QCOL.gold, -40, 22);
         } else if (sub === 'minDistMaxArea') {
           const fn = (x) => 0.5 * x * x - x + 0.5;
           drawFuncCurve(fn, -2.8, 4.8, ox, oy, unit, QCOL.cyan, 3.4);

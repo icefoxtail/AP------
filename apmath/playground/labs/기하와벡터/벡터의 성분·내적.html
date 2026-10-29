@@ -592,7 +592,7 @@
       B4: { x: 2.0, y: -2.5 },
       C4: { x: 3.0, y: 1.5 },
 
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 44,
       offsetX: -10,
       offsetY: 42, // 좌측 상단 플로팅 배지와의 충돌 방지를 위해 여유 확보
@@ -640,18 +640,23 @@
           "점 B에서 직선 OA에 내린 수선의 발 H 및 정사영 그림자 OH",
           "수선 레일(BH) 불변성 & 기하 공식: OA · OB = |OA| × x_H"
         ],
-        textbook: () => ({
-          steps: `① 점 ${tex('B(3, 4)')}일 때 피타고라스 정리로 ${tex('|\\overrightarrow{OB}| = \\sqrt{3^2 + 4^2} = 5')}<br/>
-② 직각삼각형 ${tex('OBH')}에서 ${tex('\\cos\\theta = \\dfrac{\\overline{OH}}{\\overline{OB}} = \\dfrac{3}{5}')} 계산<br/>
-③ 내적의 정의식에 대입:<br/>
-&nbsp;&nbsp;${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = |\\overrightarrow{OA}||\\overrightarrow{OB}|\\cos\\theta = 6 \\times 5 \\times \\dfrac{3}{5} = 18')}`,
-          warning: "⚠️ 시험장에서 |OB| 길이를 구하고 cos θ를 구해서 다시 곱하면, 결국 |OB|가 약분되어 사라지는데 헛수고를 하게 됩니다!"
-        }),
+        textbook: () => {
+          const ax = state.A1.x;
+          const xh = state.B1.x;
+          const by = state.B1.y;
+          const ob = Math.hypot(xh, by);
+          const dot = ax * xh;
+          return {
+            steps: `① 기준 그림에서 ${tex('A=')} ${tex(`(${ax.toFixed(1)},0)`)}이므로 ${tex('\\overrightarrow{OA}')}는 양의 x축 방향이다. 점 ${tex('B=')} ${tex(`(${xh.toFixed(1)},${by.toFixed(1)})`)}에서 내린 수선의 발은 ${tex(`H(${xh.toFixed(1)},0)`)}.<br/>
+② 직각삼각형 ${tex('OBH')}에서 ${tex(`|OB|\\approx ${ob.toFixed(2)}, \\quad |OH|=${Math.abs(xh).toFixed(1)}`)}이지만, ${tex('x_H')}는 직선 위에서 부호를 가진 좌표이므로 ${tex(`x_H=${xh.toFixed(1)}`)}이다. ${xh < 0 ? '발 H가 O의 반대쪽에 있으므로 정사영은 음수이다.' : xh === 0 ? 'H=O이므로 정사영은 0이다.' : 'H가 O와 같은 쪽에 있으므로 정사영은 양수이다.'}<br/>
+③ 정사영 정의로 ${tex('\\overrightarrow{OA}\\cdot\\overrightarrow{OB}=|OA|x_H')}이다. 따라서 ${tex(`(${ax.toFixed(1)})(${xh.toFixed(1)})=${dot.toFixed(1)}`)}. ${tex('y_B')}가 달라져도 발의 위치가 같으면 내적은 변하지 않는다.`,
+            warning: "각도와 빗변을 이용해도 되지만, 부호 있는 정사영 x_H를 쓰면 높이 y_B가 식에서 바로 사라진다."
+          };
+        },
         shortcut: () => ({
-          steps: `① 내적 ${tex('|\\overrightarrow{OA}| \\times (|\\overrightarrow{OB}|\\cos\\theta)')} 에서 <strong class="text-amber-300">${tex('|\\overrightarrow{OB}|\\cos\\theta = x_H')} (정사영 그림자 위치)</strong>!<br/>
-② 따라서 빗변 ${tex('|\\overrightarrow{OB}|')}나 각도 ${tex('\\theta')}는 아예 구할 필요가 없습니다!<br/>
-③ 무조건 <strong class="text-emerald-300">【 바닥 길이(${tex('6')}) × 그림자(${tex('3')}) = ${tex('18')} 】</strong> 곱하면 2초 만에 끝! (둔각이면 ${tex('-')}부호)`,
-          highlight: "💡 도형에서 내적이 나오면 무조건 수선의 발 H를 내리고 【 바닥 길이 × 그림자 길이 】로 3초 컷 하세요! 수선 레일 위 어디로 가든 내적은 같습니다!"
+          steps: `① ${tex('OA')}가 x축 위에 있으므로 ${tex('OB')}의 부호 있는 정사영은 ${tex(`x_H=${state.B1.x.toFixed(1)}`)}이다. 길이 ${tex('|OH|')}만 사용하면 왼쪽에 놓인 경우의 음수 부호를 잃는다.<br/>
+② 따라서 ${tex(`OA\\cdot OB=|OA|x_H=${state.A1.x.toFixed(1)}\\times(${state.B1.x.toFixed(1)})=${(state.A1.x * state.B1.x).toFixed(1)}`)}. 높이 ${tex('y_B')}에는 의존하지 않는다.`,
+          highlight: "내적은 한 벡터의 크기와 다른 벡터의 부호 있는 정사영의 곱이다."
         })
       },
 
@@ -689,7 +694,7 @@
           steps: `① <strong>[성분 내적 공식]</strong>: ${tex('x')}끼리 곱하고 ${tex('y')}끼리 곱해서 더한다!<br/>
 &nbsp;&nbsp;<strong class="text-emerald-300">${tex('\\overrightarrow{a} \\cdot \\overrightarrow{b} = 4 \\times 1 + 2 \\times 3 = 4 + 6 = 10')}</strong><br/>
 ② <strong>[사잇각 공식]</strong>: <strong class="text-amber-300">${tex('\\cos\\theta = \\dfrac{\\overrightarrow{a} \\cdot \\overrightarrow{b}}{|\\overrightarrow{a}||\\overrightarrow{b}|} = \\dfrac{10}{\\sqrt{20}\\sqrt{10}} = \\dfrac{10}{10\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2} \\implies \\theta = 45^\\circ')}</strong>!`,
-          highlight: "💡 성분 내적은 무조건 【 x₁x₂ + y₁y₂ 】! 특히 두 벡터가 수직(90°)이면 【 x₁x₂ + y₁y₂ = 0 】입니다!"
+          highlight: "성분 내적은 x₁x₂+y₁y₂이다. 두 벡터가 0이 아닐 때 내적 0은 수직을 뜻한다. 영벡터가 끼면 내적은 0이지만 영벡터와 이루는 각은 정의되지 않는다."
         })
       },
 
@@ -722,20 +727,19 @@
           "CP가 OA와 같은 방향일 때 최대(+5r), 반대 방향일 때 최소(-5r)"
         ],
         textbook: () => ({
-          steps: `① 원 위의 점 ${tex('P')}를 매개변수로 치환: ${tex('P(2 + 2\\cos\\theta, \\; 1 + 2\\sin\\theta)')}<br/>
+          steps: `① 원 위의 점 ${tex('P')}를 매개변수로 치환: ${tex(`P(2 + ${state.r34.toFixed(1)}\\cos\\theta, \\; 1 + ${state.r34.toFixed(1)}\\sin\\theta)`)}<br/>
 ② 성분 내적 전개:<br/>
-&nbsp;&nbsp;${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{OP} = 3(2 + 2\\cos\\theta) + 4(1 + 2\\sin\\theta) = 10 + 6\\cos\\theta + 8\\sin\\theta')}<br/>
-③ 삼각함수 합성 공식 적용:<br/>
-&nbsp;&nbsp;${tex('6\\cos\\theta + 8\\sin\\theta = \\sqrt{6^2 + 8^2}\\sin(\\theta + \\alpha) = 10\\sin(\\theta + \\alpha)')}<br/>
-④ 따라서 최댓값 ${tex('10 + 10 = 20')}, 최솟값 ${tex('10 - 10 = 0')}.`,
-          warning: "⚠️ 도형 위에서 원의 방정식이 주어지지 않는 기하 문제에서는 삼각함수 치환 자체가 불가능합니다!"
+&nbsp;&nbsp;${tex(`OA\\cdot OP = 3(2 + ${state.r34.toFixed(1)}\\cos\\theta) + 4(1 + ${state.r34.toFixed(1)}\\sin\\theta) = 10 + ${3 * state.r34}\\cos\\theta + ${4 * state.r34}\\sin\\theta`)}<br/>
+③ ${tex('3\\cos\\theta+4\\sin\\theta')}의 최댓값은 ${tex('\\sqrt{3^2+4^2}=5')}, 최솟값은 ${tex('-5')}이다. 따라서 반지름이 ${tex(`r=${state.r34.toFixed(1)}`)}일 때 변동항의 범위는 ${tex(`[-${(5 * state.r34).toFixed(1)},${(5 * state.r34).toFixed(1)}]`)}.<br/>
+④ 고정항 ${tex('OA\\cdot OC=10')}을 더해 최댓값 ${tex(`10+5r=${(10 + 5 * state.r34).toFixed(1)}`)}, 최솟값 ${tex(`10-5r=${(10 - 5 * state.r34).toFixed(1)}`)}.`,
+          warning: "중심 분해는 원의 중심이 주어졌을 때 좌표로 계산하든 도형에서 분해하든 성립한다."
         }),
         shortcut: () => ({
           steps: `① 원 위의 점 ${tex('P')}가 내적에 등장하면 무조건 <strong>[원의 중심 ${tex('C')}로 쪼개기]</strong>!<br/>
 &nbsp;&nbsp;<strong class="text-amber-300">${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{OP} = \\overrightarrow{OA} \\cdot (\\overrightarrow{OC} + \\overrightarrow{CP}) = \\underbrace{\\overrightarrow{OA} \\cdot \\overrightarrow{OC}}_{\\text{고정값 } 10} + \\overrightarrow{OA} \\cdot \\overrightarrow{CP}')}</strong><br/>
 ② 고정 내적값: ${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{OC} = 3 \\times 2 + 4 \\times 1 = 10')}.<br/>
 ③ 회전 내적값 ${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{CP}')}는 두 벡터가 <strong>같은 방향일 때 최대(${tex('+|\\overrightarrow{OA}|r = +5r')})</strong>, <strong>반대 방향일 때 최소(${tex('-5r')})</strong>!<br/>
-④ ${tex('r=2')}일 때 즉시 <strong class="text-sky-300">최대 ${tex('M = 10 + 10 = 20')}</strong>, <strong class="text-pink-300">최소 ${tex('m = 10 - 10 = 0')}</strong>!`,
+④ 현재 반지름 ${tex(`r=${state.r34.toFixed(1)}`)}에서는 <strong class="text-sky-300">최대 ${tex(`10+5r=${(10 + 5 * state.r34).toFixed(1)}`)}</strong>, <strong class="text-pink-300">최소 ${tex(`10-5r=${(10 - 5 * state.r34).toFixed(1)}`)}</strong>!`,
           highlight: "💡 『고정벡터 u · 원위동점 P = (u · 중심 C) ± |u|r』 — 내적 킬러를 5초 만에 끝내는 불변 공식입니다!"
         })
       },
@@ -768,19 +772,20 @@
           "합차공식 전개: PA · PB = |PM|² - |MA|² = PM² - 2² (거리 문제로 환원!)"
         ],
         textbook: () => ({
-          steps: `① ${tex('M')}을 원점으로 두면 ${tex('A(-2, 0), \\; B(2, 0), \\; P(x, y)')}<br/>
+          steps: `① ${tex('M')}을 원점으로 두고 ${tex('AM=BM=2')}이므로 ${tex('A(-2, 0), \\; B(2, 0), \\; P(x, y)')}로 둔다.<br/>
 ② ${tex('\\overrightarrow{PA} = (-2 - x, -y), \\; \\overrightarrow{PB} = (2 - x, -y)')}<br/>
 ③ 성분 내적을 전개하면:<br/>
 &nbsp;&nbsp;${tex('\\overrightarrow{PA} \\cdot \\overrightarrow{PB} = (-2 - x)(2 - x) + (-y)(-y) = x^2 - 4 + y^2 = (x^2 + y^2) - 4')}<br/>
-④ ${tex('x^2 + y^2 = \\overline{PM}^2')} 이므로 다시 원 위의 점 ${tex('P')}와 원점 ${tex('M')} 사이 거리 최대/최소 계산...`,
+④ ${tex('x^2+y^2=PM^2')}이므로 ${tex('PA\\cdot PB=PM^2-4')}. 한편 ${tex('MC=5')}이고 원의 반지름 ${tex(`r=${state.r34.toFixed(1)}`)}은 5보다 작다. 따라서 ${tex(`5-r\\le PM\\le 5+r`)}.<br/>
+⑤ ${tex(`PA\\cdot PB`)}는 ${tex('PM')}이 커질수록 커지므로 최솟값 ${tex(`(5-r)^2-4=${((5 - state.r34) ** 2 - 4).toFixed(2).replace(/\.00$/, '')}`)}, 최댓값 ${tex(`(5+r)^2-4=${((5 + state.r34) ** 2 - 4).toFixed(2).replace(/\.00$/, '')}`)}.`,
           warning: "⚠️ 시점 P가 움직이면 |PA|, |PB| 길이와 끼인각 θ가 동시에 다 변하기 때문에 일반 내적 공식 |PA||PB|cosθ 로는 절대 못 풉니다!"
         }),
         shortcut: () => ({
           steps: `① 시점 ${tex('P')}가 움직이고 종점 ${tex('A, B')}가 고정되어 있으면 무조건 <strong>[선분 AB의 중점 M]</strong>을 경유!<br/>
 ② 합차공식에 의해 각도 ${tex('\\theta')}가 완전히 사라집니다:<br/>
 &nbsp;&nbsp;<strong class="text-amber-300">${tex('\\overrightarrow{PA} \\cdot \\overrightarrow{PB} = (\\overrightarrow{PM} + \\overrightarrow{MA}) \\cdot (\\overrightarrow{PM} - \\overrightarrow{MA}) = \\overline{PM}^2 - \\overline{AM}^2')}</strong><br/>
-③ ${tex('\\overline{AM} = 2')} (고정)이고, ${tex('r=2')}일 때 ${tex('\\overline{PM}')}의 최댓값은 ${tex('5 + 2 = 7')}, 최솟값은 ${tex('5 - 2 = 3')}!<br/>
-④ 따라서 <strong class="text-sky-300">최대 ${tex('= 7^2 - 2^2 = 45')}</strong>, <strong class="text-pink-300">최소 ${tex('= 3^2 - 2^2 = 5')}</strong> (5초 컷!)`,
+③ ${tex('\\overline{AM}=2')}이고 ${tex(`r=${state.r34.toFixed(1)}<MC=5`)}이므로 ${tex(`5-r\\le PM\\le 5+r`)}. 따라서 ${tex('PM')}의 최솟값과 최댓값은 원의 중심을 ${tex('M')}에서 바라본 가까운 점과 먼 점에서 각각 얻는다.<br/>
+④ ${tex('PM^2-4')}는 ${tex('PM\\ge0')}에서 증가하므로 내적의 최솟값은 ${tex(`(5-r)^2-4=${((5 - state.r34) ** 2 - 4).toFixed(2).replace(/\.00$/, '')}`)}, 최댓값은 ${tex(`(5+r)^2-4=${((5 + state.r34) ** 2 - 4).toFixed(2).replace(/\.00$/, '')}`)}.`,
           highlight: "💡 『PA · PB = PM² - (AB절반)²』 — 움직이는 두 벡터의 내적을 점 M과 점 P 사이의 거리(PM) 문제로 바꾸는 기적의 공식입니다!"
         })
       }
@@ -1593,6 +1598,7 @@
       state.mode = m;
       state.activePartIdx = null;
       clearPartHighlight();
+      resetLearningReveal();
 
       for (let i = 1; i <= 4; i++) {
         const tab = document.getElementById(`tab-${i}`);
@@ -1676,7 +1682,6 @@
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
       document.getElementById('txtAutoPlay').textContent = '자동 회전';
 
-      unlockAllSteps();
       setConceptLens('all');
       startSmoothTransition(examData[state.mode].snap);
     }
@@ -1724,6 +1729,7 @@
       if (isHidden) {
         body.classList.remove('hidden');
         icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+        setAnswerRevealed(true);
       } else {
         body.classList.add('hidden');
         icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
@@ -1741,6 +1747,7 @@
         btn.classList.remove('active');
         icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
       }
+      if (s === 3 && state.steps[s]) setAnswerRevealed(true);
       render();
     }
 
@@ -1750,7 +1757,43 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      setAnswerRevealed(true);
       render();
+    }
+
+    function syncStepButtons() {
+      [1, 2, 3].forEach((s) => {
+        const on = !!state.steps[s];
+        const btn = document.getElementById(`stepBtn${s}`);
+        const icon = document.getElementById(`stepIcon${s}`);
+        if (btn) btn.classList.toggle('active', on);
+        if (icon) icon.className = on ? 'fa-solid fa-check text-emerald-400 text-xs' : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
+    }
+
+    function setAnswerRevealed(show) {
+      const badge = document.getElementById('examAnswerBadge');
+      if (badge) {
+        badge.classList.toggle('hidden', !show);
+        badge.setAttribute('aria-hidden', String(!show));
+        if (badge.parentElement) badge.parentElement.classList.toggle('hidden', !show);
+      }
+    }
+
+    function closeSolutionAccordions() {
+      ['textbook', 'shortcut'].forEach((type) => {
+        const body = document.getElementById(`accBody-${type}`);
+        const icon = document.getElementById(`accIcon-${type}`);
+        if (body) body.classList.add('hidden');
+        if (icon) icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      });
+    }
+
+    function resetLearningReveal() {
+      state.steps = { 1: true, 2: false, 3: false };
+      syncStepButtons();
+      setAnswerRevealed(false);
+      closeSolutionAccordions();
     }
 
     function onMode1RailChange() {

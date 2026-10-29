@@ -312,7 +312,7 @@
 
           <!-- 핵심 정답 요약 & 원클릭 문제 조건 스냅 버튼 -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-            <div class="bg-[#07130e] px-3 py-1.5 rounded-lg border border-emerald-800/60 flex items-center gap-2">
+            <div class="hidden bg-[#07130e] px-3 py-1.5 rounded-lg border border-emerald-800/60 flex items-center gap-2">
               <span class="text-[11px] text-emerald-400 font-bold shrink-0">실전 정답:</span>
               <span id="examAnswerBadge" class="text-xs font-extrabold text-amber-300"></span>
             </div>
@@ -345,23 +345,23 @@
               </button>
             </div>
 
-            <div id="partCard1" class="part-card step-btn active w-full px-2.5 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between gap-2">
+            <div id="partCard1" class="part-card step-btn w-full px-2.5 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between gap-2">
               <button onclick="togglePartHighlight(1)" class="flex items-center gap-2 text-left flex-1">
                 <span class="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-400 text-amber-200 text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
                 <span id="stepLabel2" class="text-xs font-semibold">1:2 직사각형 &amp; 통경(4p) 정사각형 그리드</span>
               </button>
               <button onclick="toggleStep(2, event)" class="px-2 py-1 rounded hover:bg-emerald-800/60 text-xs" title="보조선 표시/숨김">
-                <i class="fa-solid fa-eye text-emerald-400" id="stepIcon2"></i>
+                <i class="fa-solid fa-eye-slash text-slate-500" id="stepIcon2"></i>
               </button>
             </div>
 
-            <div id="partCard2" class="part-card step-btn active w-full px-2.5 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between gap-2">
+            <div id="partCard2" class="part-card step-btn w-full px-2.5 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between gap-2">
               <button onclick="togglePartHighlight(2)" class="flex items-center gap-2 text-left flex-1">
                 <span class="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-400 text-amber-200 text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
                 <span id="stepLabel3" class="text-xs font-semibold">PF = PH 불변 증명 &amp; 접선 광학 반사(α=α)</span>
               </button>
               <button onclick="toggleStep(3, event)" class="px-2 py-1 rounded hover:bg-emerald-800/60 text-xs" title="보조선 표시/숨김">
-                <i class="fa-solid fa-eye text-emerald-400" id="stepIcon3"></i>
+                <i class="fa-solid fa-eye-slash text-slate-500" id="stepIcon3"></i>
               </button>
             </div>
           </div>
@@ -395,9 +395,9 @@
                 <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">10초 컷</span>
                 <span class="text-xs font-extrabold text-amber-300">10초 컷 실전 기하 비기 (일타 강사 판서)</span>
               </div>
-              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs transition-transform"></i>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-down text-amber-300 text-xs transition-transform"></i>
             </button>
-            <div id="accBody-shortcut" class="p-3 text-xs space-y-2 border-t border-amber-400/30">
+            <div id="accBody-shortcut" class="hidden p-3 text-xs space-y-2 border-t border-amber-400/30">
               <div id="shortcutSteps" class="text-emerald-50 leading-relaxed space-y-1.5 bg-[#07130e]/90 p-2.5 rounded-lg border border-emerald-800/80 font-medium">
                 <!-- JS 렌더링 -->
               </div>
@@ -506,7 +506,7 @@
       py: Math.sqrt(32),        // 모드 1, 4의 점 P y좌표
       theta: Math.PI / 3,       // 모드 2, 3의 초점현 각도
       pointA0: { x: 5.0, y: 4.0 }, // 모드 1-3(최단거리) 내부 정점 A(5, 4)
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 38,
       offsetX: -35,             // 포물선 우측 개방 고려
       offsetY: 55,              // 상반평면 주요 도형이 좌상단 HUD에 가리지 않도록 원점을 아래로 배치
@@ -605,8 +605,8 @@
               steps: `① 점 ${tex('P\\left(\\dfrac{y^2}{8}, y\\right)')} 로 두고 두 거리 합 함수 ${tex('f(y) = \\overline{PF} + \\overline{PA}')} 작성:<br/>
 &nbsp;&nbsp;${tex('f(y) = \\left(\\dfrac{y^2}{8} + 2\\right) + \\sqrt{\\left(\\dfrac{y^2}{8} - 5\\right)^2 + (y - 4)^2}')}<br/>
 ② 미분으로는 계산이 매우 복잡하므로 기하적 정의 ${tex('\\overline{PF} = \\overline{PH}')} 도입 필수!<br/>
-③ ${tex('\\overline{PH} + \\overline{PA} \\ge \\overline{AH\'} = 5 - (-2) = 7')} (단, 등호는 ${tex('y = 4')} 일 때 성립).`,
-              warning: "⚠️ 최단거리 문제를 좌표 대입 후 미분으로 풀려고 하면 루트 식 때문에 절대 풀리지 않습니다!"
+③ ${tex('PH+PA\\ge AH')}이며, ${tex('A=(5,4), H=(-2,y_1)')}이므로 ${tex('AH=\\sqrt{49+(y_1-4)^2}\\ge7')}. 등호에는 ${tex('y_1=4')}가 필요하고, 이때 포물선 위의 점 ${tex('P=(2,4)')}가 H와 A 사이에 놓여 실제 등호가 성립합니다.`,
+              warning: "좌표식으로도 풀 수 있지만 제곱근이 포함됩니다. 여기서는 포물선 정의로 거리를 준선 위의 꺾은선 길이로 바꾸면 등호 조건까지 바로 확인할 수 있습니다."
             }),
             shortcut: () => ({
               steps: `① 포물선 정의 ${tex('\\overline{PF} = \\overline{PH}')}를 대입하면 구하는 값은 <strong class="text-pink-300">${tex('\\overline{PH} + \\overline{PA}')}</strong>!<br/>
@@ -1942,6 +1942,7 @@
     function setSubType(subIdx) {
       state.subType = subIdx;
       state.activePartIdx = null;
+      resetDisclosure();
       updatePartCardStyles();
 
       for (let s = 1; s <= 3; s++) {
@@ -1984,6 +1985,7 @@
       if (state.activePartIdx !== null && !state.steps[idx + 1]) {
         state.steps[idx + 1] = true;
         document.getElementById(`stepIcon${idx + 1}`).className = 'fa-solid fa-eye text-emerald-400';
+        if (idx === 2) setAnswerVisible(true);
       }
       updatePartCardStyles();
       render();
@@ -1999,12 +2001,29 @@
       });
     }
 
+    function setAnswerVisible(visible) {
+      document.getElementById('examAnswerBadge').parentElement.classList.toggle('hidden', !visible);
+    }
+
+    function resetDisclosure() {
+      state.steps = { 1: true, 2: false, 3: false };
+      state.activePartIdx = null;
+      setAnswerVisible(false);
+      ['textbook', 'shortcut'].forEach((type) => {
+        document.getElementById(`accBody-${type}`).classList.add('hidden');
+        document.getElementById(`accIcon-${type}`).className = `fa-solid fa-chevron-down ${type === 'textbook' ? 'text-rose-300' : 'text-amber-300'} text-xs transition-transform`;
+      });
+      [1, 2, 3].forEach((step) => {
+        const enabled = state.steps[step];
+        document.getElementById(`stepIcon${step}`).className = enabled ? 'fa-solid fa-eye text-emerald-400' : 'fa-solid fa-eye-slash text-slate-500';
+      });
+      updatePartCardStyles();
+    }
+
     function snapToProblem() {
       state.autoPlay = false;
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
       document.getElementById('txtAutoPlay').textContent = '시연';
-
-      unlockAllSteps();
 
       const target = examData[state.mode].subData[state.subType].snap;
       state.snapAnim.active = true;
@@ -2024,6 +2043,7 @@
       if (isHidden) {
         body.classList.remove('hidden');
         icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+        setAnswerVisible(true);
       } else {
         body.classList.add('hidden');
         icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
@@ -2033,6 +2053,7 @@
     function toggleStep(s, ev) {
       if (ev) ev.stopPropagation();
       state.steps[s] = !state.steps[s];
+      if (s === 3 && state.steps[s]) setAnswerVisible(true);
       const icon = document.getElementById(`stepIcon${s}`);
       if (state.steps[s]) {
         icon.className = 'fa-solid fa-eye text-emerald-400';
@@ -2049,6 +2070,7 @@
         state.steps[s] = true;
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-eye text-emerald-400';
       });
+      setAnswerVisible(true);
       updatePartCardStyles();
       render();
     }

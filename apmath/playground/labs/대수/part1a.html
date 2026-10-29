@@ -139,6 +139,18 @@
       color: #ffffff;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
+    @media (max-width: 639px) {
+      body.w-screen { width: 100%; }
+      header > div:first-child { min-width: 0; gap: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+      header > div:first-child > div:first-child { min-width: 0; flex: 1 1 auto; gap: 0.5rem; }
+      header > div:first-child > div:first-child > div { min-width: 0; flex: 1 1 auto; }
+      header h1 { min-width: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: 0.88rem; line-height: 1.2; }
+      header > div:first-child > div:first-child > div > div:first-child > span:first-child { display: none; }
+      header > div:first-child > div:last-child { flex: 0 0 auto; gap: 0.25rem; }
+      header > div:first-child > div:last-child button { flex: 0 0 auto; white-space: nowrap; padding-left: 0.45rem; padding-right: 0.45rem; }
+      header > div:first-child > div:last-child button span { white-space: nowrap; }
+      #modeTabBar { min-width: 0; max-width: 100%; white-space: nowrap; overscroll-behavior-x: contain; }
+    }
   </style>
 </head>
 <body class="flex flex-col h-screen w-screen overflow-hidden">
@@ -170,13 +182,13 @@
           <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
           <span id="missionText">칠판의 노란색 제어점을 드래그하여 그래프 구조를 직접 실험해보세요!</span>
         </div>
-        <button onclick="triggerTwinProblem()" class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-purple-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+        <button onclick="triggerTwinProblem()" aria-label="쌍둥이 변형 생성" title="쌍둥이 변형 생성" class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-purple-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
           <i class="fa-solid fa-dice"></i>
-          <span>쌍둥이 변형 생성</span>
+          <span>새 변형</span>
         </button>
-        <button onclick="snapToCondition()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+        <button onclick="snapToCondition()" aria-label="문제 조건 스냅" title="문제 조건 스냅" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
           <i class="fa-solid fa-bullseye"></i>
-          <span>문제 조건 스냅</span>
+          <span>조건 스냅</span>
         </button>
       </div>
     </div>
@@ -348,9 +360,9 @@
               <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-400 text-slate-950">⚡ 10초 컷 실전 비기</span>
               <span id="secretTitle" class="text-xs font-extrabold text-amber-300">기울기 삼각형 & 불변량 직독직해</span>
             </div>
-            <i id="iconSecret" class="fa-solid fa-chevron-up text-xs text-amber-300 transition-transform"></i>
+            <i id="iconSecret" class="fa-solid fa-chevron-down text-xs text-amber-300 transition-transform"></i>
           </button>
-          <div id="contentSecret" class="px-3.5 pb-3 pt-1.5 text-xs leading-relaxed text-emerald-50 border-t border-amber-500/30 space-y-2">
+          <div id="contentSecret" class="hidden px-3.5 pb-3 pt-1.5 text-xs leading-relaxed text-emerald-50 border-t border-amber-500/30 space-y-2">
             <!-- Populated by JS -->
           </div>
         </div>
@@ -562,7 +574,7 @@
         code: 'TYPE 02',
         shortTitle: '평행이동과 기울기 절단',
         icon: 'fa-arrows-up-down-left-right',
-        stepLabels: ['계수→지수 평행이동', '기울기 합동 삼각형', '퍼즐 등적변형 넓이'],
+        stepLabels: ['두 곡선의 평행이동', '기울기 일치와 대응점', '평행선 사이 넓이'],
         stepDescs: [
           'Step 1: $y = k\\cdot 2^x + n$의 앞 계수 $k$를 지수로 올려 $2^{x - m} + n$ 꼴의 순수 평행이동 벡터 $[m, n]$을 추출합니다.',
           'Step 2: 두 곡선을 가로지르는 직선의 기울기가 $\\frac{n}{m}$와 일치할 때, 교점 $A, B$는 정확히 평행이동 대응점이 되어 직각삼각형($\\Delta x=m, \\Delta y=n$)이 작도됩니다.',
@@ -573,12 +585,12 @@
           {
             chip: '기출 A (선분 길이 피타고라스)',
             source: '평가원 4점 최빈출 유형',
-            params: { base: 2, dx: 3, dy: 4, x0: 0.5 },
+            params: { base: 2, dx: 2, dy: 4, x0: 0 },
             snapParams: { base: 2, dx: 2, dy: 4, x0: 0 },
             problem: '두 곡선 $y = 2^x$과 $y = 2^{x-2} + 4$가 기울기가 $2$인 직선 $y = 2x + 1$과 만나는 두 점을 각각 $A, B$라 할 때, 선분 $\\overline{AB}$의 길이를 구하시오.',
             textbookTitle: '교점 좌표 미지수 설정 및 연립',
             textbookSteps: [
-              '1) 점 $A$의 좌표를 $(t, 2^t)$라 하면 $2^t = 2t + 1$을 만족한다 ($t=0$ 또는 $t=1$).',
+              '1) $y=2^x$와 직선 $y=2x+1$의 교점 중 $A=(0,1)$은 $2^0=1$로 확인된다. 평행이동 대응을 이용하므로 다른 교점의 좌표를 풀 필요는 없다.',
               '2) 점 $B(s, 2^{s-2}+4)$를 직선 $y=2x+1$에 대입하면 $2^{s-2}+4 = 2s+1 \\implies 2^{s-2} = 2(s-2) + 1$.',
               '3) 따라서 $s - 2 = t \\implies s = t + 2$이고 $y_B - y_A = 4$이므로 $\\overline{AB} = \\sqrt{2^2 + 4^2} = 2\\sqrt{5}$.'
             ],
@@ -592,19 +604,19 @@
           {
             chip: '기출 B (곡선 퍼즐 등적변형 넓이)',
             source: '수능·교육청 4점 단골',
-            params: { base: 2, dx: 2, dy: 3, x0: 0 },
-            snapParams: { base: 2, dx: 3, dy: 3, x0: 0 },
-            problem: '두 곡선 $y = 2^x$, $y = 2^{x-3} + 3$ 및 두 직선 $y = x + 1$, $y = x + 3$으로 둘러싸인 영역의 넓이 $S$를 구하시오.',
-            textbookTitle: '정적분 또는 다각형 쪼개기 계산',
+            params: { base: 2, dx: 3, dy: 3, x0: 1 },
+            snapParams: { base: 2, dx: 3, dy: 3, x0: 1 },
+            problem: '두 곡선 $y = 2^x$, $y = 2^{x-3} + 3$의 같은 증가 가지와 두 직선 $y=x+1$, $y=x+3$으로 둘러싸인 영역의 넓이 $S$를 구하시오.',
+            textbookTitle: '이동좌표에서 띠의 가로·세로 길이 비교',
             textbookSteps: [
-              '1) 각 교점의 좌표를 연립하여 네 꼭짓점 $(0,1), (1,2), (3,4), (4,5)$를 구한다.',
-              '2) 곡선 $y=2^x$의 $[0,1]$ 구간을 $[3,4]$ 구간으로 평행이동하여 합동임을 증명한다.',
-              '3) 점과 직선 사이의 거리 공식을 써서 평행사변형의 높이와 밑변을 곱해 넓이 $6$을 구한다.'
+              '1) $s=y-x$로 두면 두 직선은 각각 $s=1,3$이다. 첫 곡선 위에서 $s=2^x-x$는 $x>0.53$일 때 증가하며, 같은 증가 가지에서 $s=1$과 $s=3$을 만나는 점을 잇는다.',
+              '2) 두 번째 곡선은 첫 곡선을 $(3,3)$만큼 옮긴 그래프이다. 이 이동은 $s=y-x$를 보존하므로 각 경계선에서 대응하는 두 점의 가로 간격은 정확히 $3$이고 그 선분 길이는 $3\\sqrt2$이다.',
+              '3) 경계선 $y=x+1$과 $y=x+3$ 사이의 수직거리는 $\\frac{2}{\\sqrt{1^2+1^2}}=\\sqrt2$이다. 따라서 넓이는 $3\\sqrt2\\times\\sqrt2=6$이다.'
             ],
-            secretTitle: '곡선 지우개! 평행사변형 외적(절편차 × 가로이동) 공식',
+            secretTitle: 's=y−x 좌표에서 띠 넓이를 길이×수직거리로 계산',
             secretSteps: [
-              '⚡ **[퍼즐 합체]** 평행이동 벡터 $[3, 3]$의 기울기 $\\frac{3}{3}=1$이 두 직선의 기울기 $1$과 같으므로, 휜 곡선 조각을 잘라 붙이면 완벽한 평행사변형이 됩니다.',
-              '⚡ **[5초 넓이 공식]** 평행사변형 넓이 $S = (\\text{두 직선의 } y\\text{절편 차}) \\times |\\Delta x| = (3 - 1) \\times 3 = 6$!'
+              '⚡ 첫 곡선의 증가 가지에서 $2^x-x=1$은 $x=1$, $2^x-x=3$은 유일한 $x>1$ 해이다. 두 번째 곡선은 두 점을 $(3,3)$만큼 옮긴 점을 잇는다.',
+              '⚡ 두 평행선 사이의 수직거리는 $\\sqrt2$, 대응점 사이의 길이는 $3\\sqrt2$이므로 $S=3\\sqrt2\\cdot\\sqrt2=6$이다. 적분이나 잘못된 네 꼭짓점 계산이 필요하지 않다.'
             ]
           }
         ]
@@ -626,13 +638,13 @@
             chip: '기출 A (기본 y=x 역함수 대칭)',
             source: '수능 수학I 4점 대표 기출',
             params: { base: 2, k: 6, shift: 0 },
-            snapParams: { base: 2, k: 5, shift: 0 },
-            problem: '곡선 $y = 2^x$과 $y = \\log_2 x$가 직선 $y = -x + k$와 만나는 두 점을 $A, B$라 하자. $\\overline{AB} = 2\\sqrt{2}$일 때, 상수 $k$의 값과 삼각형 $OAB$의 넓이를 구하시오.',
+            snapParams: { base: 2, k: 6, shift: 0 },
+            problem: '곡선 $y = 2^x$과 $y = \\log_2 x$가 직선 $y = -x + k$와 만나는 두 점을 $A, B$라 하자. 두 점이 모두 제1사분면에 있고 $\\overline{AB} = 2\\sqrt{2}$일 때, 상수 $k$의 값과 삼각형 $OAB$의 넓이를 구하시오.',
             textbookTitle: '좌표 미지수 (α, 2^α) 설정 및 거리 공식',
             textbookSteps: [
               '1) $y=2^x$과 $y=\\log_2 x$는 $y=x$ 대칭이므로 $A(\\alpha, \\beta), B(\\beta, \\alpha)$라 놓는다 ($\\alpha < \\beta$).',
               '2) $\\overline{AB} = \\sqrt{(\\beta-\\alpha)^2 + (\\alpha-\\beta)^2} = \\sqrt{2}(\\beta-\\alpha) = 2\\sqrt{2}$에서 $\\beta - \\alpha = 2$.',
-              '3) $\\beta = 2^\\alpha$이므로 $2^\\alpha - \\alpha = 2 \\implies \\alpha = 1, \\beta = 3$이 되어 $k = \\alpha + \\beta = 4$ 또는 평행이동 조건에 대입한다.'
+              '3) $\\beta=2^\\alpha$와 $\\beta-\\alpha=2$에서 $2^\\alpha-\\alpha=2$이다. $\\alpha=2$가 해이므로 $(\\alpha,\\beta)=(2,4)$, $k=6$이다. 삼각형 넓이는 $\\frac12|2\\cdot2-4\\cdot4|=6$이다.'
             ],
             secretTitle: 'AB = d√2 ⟹ Δx = Δy = d 직각이등변 & 중점 공식',
             secretSteps: [
@@ -650,13 +662,13 @@
             textbookTitle: '치환 후 연립방정식 풀이',
             textbookSteps: [
               '1) $X = x-1, Y = y-1$로 평행이동 치환하면 $Y = 2^X$, $Y = \\log_2 X$, 직선은 $Y = -X + 4$가 된다.',
-              '2) $2^X = -X + 4$를 만족하는 해 $X = 1, Y = 3$을 찾는다.',
-              '3) 원래 좌표 $A(2, 4), B(4, 2)$로 복원하여 $\\overline{AB} = \\sqrt{2^2 + (-2)^2} = 2\\sqrt{2}$를 구한다.'
+              '2) $X=2$이면 $Y=2^2=4=-2+4$이므로 지수곡선의 교점은 $(2,4)$이다. 대칭인 로그곡선의 교점은 $(4,2)$이다.',
+              '3) 원래 좌표로 옮기면 $A(3,5), B(5,3)$이다. 따라서 $\\overline{AB}=\\sqrt{2^2+(-2)^2}=2\\sqrt2$이다.'
             ],
             secretTitle: '(1, 1) 대칭 중심 이동 & 중점 M(3, 3) 직관 대입',
             secretSteps: [
               '⚡ **[대칭축 확인]** $(1,1)$만큼 똑같이 평행이동했으므로 여전히 $y=x$에 대칭입니다!',
-              '⚡ **[중점 찍기]** $y=x$와 $y=-x+6$의 교점인 중점은 $M(3, 3)$! 중점에서 한 칸 이동한 $(2, 4)$를 $y=2^{x-1}+1$에 넣으면 $2^1+1=3 \\neq 4$가 아니라 정확히 성립하는 정수점을 3초 만에 스캔!'
+              '⚡ **[중점 확인]** 대칭인 두 교점의 중점은 $y=x$ 위에 있다. 직선과의 교점은 $M(3,3)$이고, $(2,4)$는 실제로 $4=2^{2-1}+1$을 만족한다.'
             ]
           }
         ]
@@ -746,7 +758,7 @@
           {
             chip: '기출 B (동일 곡선 위 1:2 비율 킬러)',
             source: '평가원 4점 고난도 변형',
-            params: { ratioK: 3, tVal: 1.0 },
+            params: { ratioK: 2, tVal: 1.0 },
             snapParams: { ratioK: 2, tVal: 1.0 },
             problem: '원점 $O$를 지나는 직선이 곡선 $y = a^x$ ($a>1$)과 만나는 두 점을 $P, Q$라 하자. $\\overline{OP} = \\overline{PQ}$ (즉 $\\overline{OP}:\\overline{OQ}=1:2$)일 때, 점 $P$의 $y$좌표와 점 $Q$의 $y$좌표의 합을 구하시오.',
             textbookTitle: '두 교점 (t, a^t), (2t, a^2t) 기울기 일치식',
@@ -832,12 +844,12 @@
             source: '평가원·교육청 21번급 격자점 유형',
             params: { maxX: 6 },
             snapParams: { maxX: 7 },
-            problem: '부등식 $1 \\le x \\le k$, $1 \\le y \\le \\log_2 x + 1$을 동시에 만족시키는 자연수 순서쌍 $(x, y)$의 개수가 $15$가 되도록 하는 자연수 $k$의 값을 구하시오.',
+            problem: '부등식 $1 \\le x \\le k$, $1 \\le y \\le \\log_2 x + 1$을 동시에 만족시키는 자연수 순서쌍 $(x, y)$의 개수가 $14$가 되도록 하는 자연수 $k$의 값을 구하시오.',
             textbookTitle: 'x = 1, 2, 3... 일일이 대입 나열',
             textbookSteps: [
               '1) $x=1$일 때 $1 \\le y \\le 1$ ($1$개).',
               '2) $x=2, 3$일 때 $1 \\le y \\le 2$ (각 $2$개씩 총 $4$개, 누적 $5$개).',
-              '3) $x=4, 5, 6, 7$일 때 $1 \\le y \\le 3$ (각 $3$개씩). $k=6$이면 $5 + 9 = 14$개, $k=7$이면 $5 + 12 = 17$개가 아니라 $x=4,5,6$일 때 $5+9=14$, $x=7$까지 합치면 구간별 합을 조정한다.'
+              '3) $x=4,5,6$에서는 각각 $y=1,2,3$의 3개씩이므로 $k=6$일 때 총 $5+3\cdot3=14$개이다. $k=5$이면 11개, $k=7$이면 17개이므로 단조 증가성에 따라 답은 $k=6$뿐이다.'
             ],
             secretTitle: '2^m 거듭제곱 구간 블록 묶기 (가로줄 역산 비기)',
             secretSteps: [
@@ -899,14 +911,14 @@
           {
             chip: '기출 B (서로 다른 두 양의 실근 근의 분리)',
             source: '평가원·내신 4점 킬러 함·판·축',
-            params: { sumT: 5, prodT: 4 },
-            snapParams: { sumT: 5, prodT: 4 },
-            problem: '방정식 $4^x - 5\\cdot 2^x + p = 0$이 **서로 다른 두 양의 실근** $x > 0$을 갖도록 하는 정수 $p$의 값($p=4$)에서 두 근 $t_1, t_2$의 곱과 판별식 $D$의 값을 확인하시오.',
+            params: { sumT: 5, prodT: 6 },
+            snapParams: { sumT: 5, prodT: 6 },
+            problem: '방정식 $4^x - 5\\cdot 2^x + p = 0$이 서로 다른 두 양의 실근을 갖게 하는 정수 $p$를 모두 구하고, 그중 $p=6$일 때 치환한 두 근의 곱과 판별식 $D$를 구하시오.',
             textbookTitle: '치환 범위 t > 1에서 이차함수 근의 분리',
             textbookSteps: [
-              '1) $x > 0 \\iff t = 2^x > 2^0 = 1$이므로, $f(t) = t^2 - 5t + p = 0$이 $t > 1$에서 서로 다른 두 실근을 가져야 한다.',
-              '2) [판별식] $D = 25 - 4p > 0 \\implies p < 6.25$. [대칭축] $t = 2.5 > 1$ (성립).',
-              '3) [경계값] $f(1) = 1 - 5 + p > 0 \\implies p > 4$. (단, 한 근이 $x=0$ 즉 $t=1$에 걸리는 경계는 $p=4$이다.)'
+              '1) $t=2^x$로 놓으면 $x>0$은 $t>1$이다. 두 양의 $x$ 근을 얻으려면 이차방정식 $t^2-5t+p=0$의 서로 다른 두 근이 모두 $1$보다 커야 한다.',
+              '2) 축은 $t=5/2>1$이고 판별식은 $D=25-4p>0$이므로 $p<25/4$.',
+              '3) $f(1)=p-4>0$이면 축 왼쪽 근도 $1$보다 크므로 $p>4$. 정수 $p$는 $5,6$이며, $p=6$이면 두 근은 $2,3$, 곱은 $6$, 판별식은 $1$이다. $p=4$는 $t=1$을 포함해 $x=0$이므로 제외한다.'
             ],
             secretTitle: 'x > 0 ⟹ t > 1 경계 변환! (t>0이 아니라 t>1임에 주의!)',
             secretSteps: [
@@ -977,6 +989,8 @@
     }
 
     function selectMode(modeIdx, scenarioIdx = 0) {
+      const changedQuestion = state.modeIdx !== modeIdx || state.scenarioIdx !== scenarioIdx;
+      if (changedQuestion) closeSolutionAccordions();
       state.modeIdx = modeIdx;
       state.scenarioIdx = scenarioIdx;
       const mode = KILLER_MODES[modeIdx];
@@ -1094,6 +1108,14 @@
       }
     }
 
+    function closeSolutionAccordions() {
+      for (const which of ['textbook', 'secret']) {
+        document.getElementById(which === 'textbook' ? 'contentTextbook' : 'contentSecret').classList.add('hidden');
+        const icon = document.getElementById(which === 'textbook' ? 'iconTextbook' : 'iconSecret');
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
     function toggleMutator(key) {
       state.mutators[key] = !state.mutators[key];
       updateMutatorButtonsUI();
@@ -1131,10 +1153,6 @@
       const startParams = { ...state.params };
       const startTime = performance.now();
       const duration = 420;
-
-      // Unlock all steps so student sees the full structure
-      state.steps = { 1: true, 2: true, 3: true };
-      updateStepButtonsUI(3);
 
       function animateSnap(now) {
         const t = Math.min(1, (now - startTime) / duration);
@@ -1231,6 +1249,7 @@
       document.getElementById('problemTextBox').innerHTML = formatRichMath(scen.problem);
       syncSlidersFromParams();
       updateLiveHUDAndInvariants();
+      closeSolutionAccordions();
       showToast('🎲 새로운 쌍둥이 숫자 변형 문제가 생성되었습니다!');
     }
 
@@ -1868,7 +1887,9 @@
     // --- TYPE 2: Translation Vector & Slope Cut ---
     function renderType2() {
       const p = state.params;
+      const currentScenario = KILLER_MODES[state.modeIdx].scenarios[state.scenarioIdx];
       const slope = p.dy / p.dx;
+      const showType2BRegion = state.scenarioIdx === 1 && currentScenario.problem.includes('같은 증가 가지') && Math.abs(p.dx - 3) < 1e-6 && Math.abs(p.dy - 3) < 1e-6;
 
       // Curve 1: y = 2^x, Curve 2: y = 2^(x - dx) + dy
       drawFunctionCurve(x => Math.pow(2, x), '#34d399', 2.8, [], -5, 4.5);
@@ -1882,10 +1903,59 @@
 
       // Line passing through A and B
       const intercept = yA - slope * xA;
-      drawMathLine(slope, intercept, 'rgba(251, 191, 36, 0.7)', [], 2.2);
+      if (!showType2BRegion) drawMathLine(slope, intercept, 'rgba(251, 191, 36, 0.7)', [], 2.2);
+
+      // TYPE 02B's fixed region is bounded by the increasing branches and
+      // y-x=1,3. In s=y-x coordinates, translation by (3,3) preserves s.
+      if (showType2BRegion) {
+        const increasingRoot = (target) => {
+          let lo = 0.55, hi = 5;
+          for (let i = 0; i < 60; i++) {
+            const mid = (lo + hi) / 2;
+            if (Math.pow(2, mid) - mid < target) lo = mid;
+            else hi = mid;
+          }
+          return (lo + hi) / 2;
+        };
+        const t1 = increasingRoot(1), t3 = increasingRoot(3);
+        drawMathLine(1, 1, 'rgba(251, 191, 36, 0.55)', [5, 5], 1.5);
+        drawMathLine(1, 3, 'rgba(251, 191, 36, 0.55)', [5, 5], 1.5);
+        const p1 = mathToScreen(t1, Math.pow(2, t1));
+        const p2 = mathToScreen(t3, Math.pow(2, t3));
+        const p3 = mathToScreen(t3 + 3, Math.pow(2, t3) + 3);
+        if (state.steps[1] || state.steps[2]) {
+          drawMathPoint(t3, Math.pow(2, t3), 's=3', '#fbbf24', 5.5, false);
+          drawMathPoint(t3 + 3, Math.pow(2, t3) + 3, 's=3', '#38bdf8', 5.5, false);
+        }
+        if (state.steps[3]) {
+          ctx.save();
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.18)';
+          ctx.strokeStyle = '#34d399';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          for (let i = 1; i <= 60; i++) {
+            const x = t1 + (t3 - t1) * i / 60;
+            const q = mathToScreen(x, Math.pow(2, x));
+            ctx.lineTo(q.x, q.y);
+          }
+          ctx.lineTo(p3.x, p3.y);
+          for (let i = 59; i >= 0; i--) {
+            const x = t1 + (t3 - t1) * i / 60;
+            const q = mathToScreen(x + 3, Math.pow(2, x) + 3);
+            ctx.lineTo(q.x, q.y);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+          ctx.restore();
+          const mid = mathToScreen((t1 + t3 + 3) / 2, (Math.pow(2, t1) + Math.pow(2, t3) + 3) / 2);
+          drawCanvasBadge(ctx, 'S = 3√2 × √2 = 6', mid.x, mid.y, '#34d399');
+        }
+      }
 
       // Step 1 & 2: Right Triangle (dx, dy)
-      if (state.steps[1] || state.steps[2]) {
+      if (!showType2BRegion && (state.steps[1] || state.steps[2])) {
         ctx.save();
         const sA = mathToScreen(xA, yA);
         const sC = mathToScreen(xB, yA);
@@ -1909,7 +1979,7 @@
       }
 
       // Step 3: Equi-areal Puzzle Parallelogram Shading (between xA and xA+1)
-      if (state.steps[3]) {
+      if (state.steps[3] && !showType2BRegion) {
         const xA2 = xA + 1;
         const yA2 = Math.pow(2, xA2);
         const xB2 = xA2 + p.dx;
@@ -1941,10 +2011,10 @@
       }
 
       // Draggable Points A (controls x0) and B (controls dx, dy)
-      drawMathPoint(xA, yA, `A(${xA.toFixed(1)}, ${yA.toFixed(1)})`, '#34d399', 6.5, true, (mPos) => {
+      drawMathPoint(xA, yA, `${showType2BRegion ? 's=1 A' : 'A'}(${xA.toFixed(1)}, ${yA.toFixed(1)})`, '#34d399', 6.5, true, (mPos) => {
         state.params.x0 = Math.max(-1.5, Math.min(1.5, Math.round(mPos.x * 10) / 10));
       });
-      drawMathPoint(xB, yB, `B(${xB.toFixed(1)}, ${yB.toFixed(1)}) [드래그]`, '#fbbf24', 7.5, true, (mPos) => {
+      drawMathPoint(xB, yB, `${showType2BRegion ? 's=1 B' : 'B'}(${xB.toFixed(1)}, ${yB.toFixed(1)})`, '#fbbf24', 7.5, true, (mPos) => {
         state.params.dx = Math.max(1, Math.min(4, Math.round((mPos.x - xA) * 4) / 4));
         state.params.dy = Math.max(1, Math.min(5, Math.round((mPos.y - yA) * 4) / 4));
       });

@@ -272,7 +272,7 @@
           </div>
 
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-            <div class="bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
+            <div id="answerBadgeWrap" class="hidden bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
               <span class="text-[11px] text-emerald-400 font-bold">실전 정답:</span>
               <span id="examAnswerBadge" class="text-xs font-extrabold text-amber-300"></span>
             </div>
@@ -349,9 +349,9 @@
                 <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">10초 컷</span>
                 <span class="text-xs font-extrabold text-amber-300">10초 컷 실전 속도 넓이·비율 비기 (일타 강사 판서)</span>
               </div>
-              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs transition-transform"></i>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-down text-amber-300 text-xs transition-transform"></i>
             </button>
-            <div id="accBody-shortcut" class="p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
+            <div id="accBody-shortcut" class="hidden p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
               <div id="shortcutSteps" class="text-emerald-50 leading-loose space-y-1.5 bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/80 font-medium">
                 <!-- JS 렌더링 -->
               </div>
@@ -463,7 +463,7 @@
       t: 3.0,                   // 현재 시각 t (0 <= t <= 3.5)
       param: 1.0,               // 모드별 제어 파라미터 (예: δ 또는 Q의 속도 k)
       dualView: true,           // 위치 x(t) + 속도 v(t) 동시 관찰 뷰 (기본 ON)
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 68,                // 가로축 t 스케일
       offsetX: -120,
       offsetY: 0,
@@ -589,13 +589,13 @@
         ],
         textbook: () => ({
           steps: `① 학생들의 흔한 실수: ${tex('v_2(t) = 3(t-1)^2 = 0')} 에서 ${tex('t = 1')} 이므로 ${tex('t = 1')} 에서 운동 방향을 바꾼다고 착각하여 오답 선택!<br/>
-② 정석 판정: ${tex('t = 1')} 의 좌우에서 ${tex('v_2(t)')} 의 부호가 ${tex('(+) \\to 0 \\to (+)')} 로 바뀌지 않으므로 운동 방향은 바뀌지 않는다.`,
+② ${tex('v_1(t)=3(t-1)^2-3=3t(t-2)')}은 ${tex('0<t<2')}에서 음수, ${tex('t>2')}에서 양수이므로 ${tex('t=2')}에서 한 번 방향을 바꾼다.<br/>③ ${tex('v_2(t)=3(t-1)^2')}은 ${tex('t=1')} 전후 모두 양수라 부호가 바뀌지 않는다. 따라서 방향 전환 횟수는 각각 ${tex('1,0')}회다.`,
           warning: "⚠️ '운동 방향을 바꾼다'는 조건을 단순히 'v(t) = 0 이다'로 풀면 평가원 함정에 100% 걸려듭니다!"
         }),
         shortcut: () => ({
-          steps: `① <strong>[운동 방향 전환 = 위치 $x(t)$의 극값]</strong> 속도가 $0$이 되어도 <strong>부호가 바뀌어야(${tex('+ \\leftrightarrow -')}, 관통)</strong> 유턴합니다!<br/>
-② ${tex('v_2(t) = 3(t-1)^2')} 은 ${tex('t = 1')} 에서 ${tex('t')}축에 <strong>접하므로(중근)</strong> 신호등에 잠깐 멈췄다가 다시 직진하는 것과 같습니다!<br/>
-③ 따라서 운동 방향 전환 횟수는 <strong class="text-amber-300">0번</strong>!`,
+          steps: `① 방향 전환은 속도가 0인 순간 중 좌우 부호가 바뀌는 때에만 일어난다.<br/>
+② ${tex('v_1(t)=3t(t-2)')}은 출발 후 ${tex('t=2')}에서 음수에서 양수로 바뀌므로 ${tex('1')}회 전환한다. ${tex('v_2(t)=3(t-1)^2')}은 ${tex('t=1')}에서 0이지만 양수에서 양수로 이어져 전환하지 않는다.<br/>
+③ 따라서 전환 횟수는 각각 <strong class="text-amber-300">${tex('1')}회, ${tex('0')}회</strong>이다.`,
           highlight: "💡 『점 P가 운동 방향을 바꾼다 ⇔ 속도 v(t)가 t축을 '관통'하여 부호가 바뀐다 (접하면 유턴 아님!)』"
         })
       },
@@ -605,7 +605,7 @@
         hint: "시간 마커 <span class='text-amber-300 font-bold'>t</span>를 <span class='text-pink-300 font-bold'>t=1, t=2, t=3</span>에 차례로 맞춰보세요! <span class='text-sky-300 font-bold'>t=1(가속도 0)에서 속력이 최대(3)</span>, t=2에서 원점으로부터 최고 멀리(-4), <span class='text-emerald-300 font-bold'>t=3에서 원점 복귀</span>합니다!",
         tag: "수능 4점 속도·가속도 종합 추론",
         targetTime: "목표 시간: 5초",
-        question: () => `원점에서 출발하여 수직선 위를 움직이는 점 ${tex('P')}의 속도가 ${tex('v(t) = 3t^2 - 6t')} 일 때, ① 닫힌구간 ${tex('[0, 2]')}에서 점 ${tex('P')}의 속력이 최대인 시각, ② 원점으로부터 가장 멀리 떨어진 시각, ③ 출발 후 다시 원점을 지나는 시각을 각각 구하시오.`,
+        question: () => `원점에서 출발하여 수직선 위를 움직이는 점 ${tex('P')}의 속도가 ${tex('v(t) = 3t^2 - 6t')} 일 때, ① 닫힌구간 ${tex('[0, 2]')}에서 점 ${tex('P')}의 속력이 최대인 시각, ② 닫힌구간 ${tex('[0, 3]')}에서 원점으로부터 가장 멀리 떨어진 시각, ③ 출발 후 다시 원점을 지나는 시각을 각각 구하시오.`,
         answerBadge: () => `① 최대속력 ${tex('t=1')}, ② 최고점 ${tex('t=2')}, ③ 원점복귀 ${tex('t=3')}`,
         snap: { t: 1.0, param: 1.0, dualView: true },
         steps: [
@@ -615,15 +615,15 @@
         ],
         textbook: () => ({
           steps: `① 속력 ${tex('|v(t)| = |-3t^2 + 6t| = 3(t-1)^2 - 3')} 의 꼭짓점 ${tex('t = 1')} 에서 최댓값 ${tex('3')}<br/>
-② 위치 ${tex('x(t) = t^3 - 3t^2')} 을 적분으로 구한 뒤 극솟값 ${tex('x(2) = -4')} 계산<br/>
-③ 원점 복귀 시각은 방정식 ${tex('t^3 - 3t^2 = t^2(t - 3) = 0')} 을 풀어 ${tex('t = 3')} 도출...`,
+② ${tex('x(t)=\\int_0^t v(s)ds=t^3-3t^2')}이다. ${tex('x(0)=0, x(2)=-4, x(3)=0')}이고 ${tex('x(t)')}는 ${tex('[0,2]')}에서 감소, ${tex('[2,3]')}에서 증가하므로 이 구간에서 원점과 가장 먼 때는 ${tex('t=2')}이다.<br/>
+③ ${tex('x(t)=t^2(t-3)=0')}의 양의 해는 ${tex('t=3')}이므로 그때 다시 원점을 지난다.`,
           warning: "⚠️ 속도 그래프 하나로 ① 꼭짓점(가속도 0 = 최대 속력), ② 영점(유턴 최고점), ③ 2:1 비율(원점 복귀) 세 가지를 동시에 읽어야 합니다!"
         }),
         shortcut: () => ({
           steps: `① <strong>[최대 속력]</strong> 이차 속도함수의 대칭축(가속도 ${tex('a(t)=0')})인 <strong class="text-sky-300">${tex('t = 1')}초</strong> (속력 ${tex('|-3|=3')})!<br/>
 ② <strong>[원점 최원거리]</strong> 한쪽으로만 끝까지 간 유턴 시점 <strong class="text-pink-300">${tex('t = 2')}초</strong> (거리 ${tex('= \\dfrac{3}{6}\\cdot 2^3 = 4')})!<br/>
-③ <strong>[원점 복귀]</strong> 이차함수 <strong>[2 : 1 넓이 상쇄 법칙]</strong>으로 적분 없이 즉시 <strong class="text-amber-300">${tex('t = 3')}초</strong>!`,
-          highlight: "💡 이차 속도함수 v(t) = a·t(t - 2k) 에서는 무조건 【 t=k 최대속력, t=2k 유턴(최고점), t=3k 원점복귀 】 1:2:3 세트입니다!"
+③ ${tex('x(t)=t^3-3t^2=t^2(t-3)')}이므로 출발 이후의 원점 복귀 시각은 ${tex('t=3')}이다. 세 결과는 이 문항의 시간구간과 속도함수에서 나온다.`,
+          highlight: "[0, 2]에서 속력의 임계점과 양 끝점을 비교하고, 원점 복귀는 위치함수의 영점으로 판정한다."
         })
       },
 
@@ -660,7 +660,7 @@
         tag: "내신·수능 합답형 실수 방지 필수 훈련",
         targetTime: "목표 시간: 3초",
         question: () => `시각 ${tex('t')}에 대한 삼차 위치 그래프 ${tex('x(t) = t^3 - 3t^2')} 과 이차 속도 그래프 ${tex('v(t) = 3t^2 - 6t')} 를 비교할 때, ① 위치 그래프 ${tex('x(t)')}에서 운동 방향이 바뀌는 지점의 기하학적 특징과, ② 속도 그래프 ${tex('v(t)')}에서 운동 방향이 바뀌는 지점의 특징을 각각 말하시오.`,
-        answerBadge: () => `위치 ${tex('x(t)')}: 극대·극소점(${tex('t=2')}) / 속도 ${tex('v(t)')}: ${tex('t')}축 관통점(${tex('t=2')})`,
+        answerBadge: () => `위치 ${tex('x(t)')}: 극솟값 ${tex('t=2')} / 속도 ${tex('v(t)')}: ${tex('t')}축 관통(${tex('t=2')})`,
         snap: { t: 2.0, param: 1.0, dualView: true },
         steps: [
           "상단 수직선 트랙: t = 2초(x = -4)에서 실제 운동 방향이 왼쪽→오른쪽으로 바뀌는 순간",
@@ -668,8 +668,9 @@
           "하단 속도 v(t) 그래프: 함숫값이 0을 '관통'하여 부호가 바뀌는 점이 곧 방향 전환점!"
         ],
         textbook: () => ({
-          steps: `① 시험 문제에서 그래프가 주어졌을 때 세로축 라벨이 ${tex('x(t)')}(위치)인지 ${tex('v(t)')}(속도)인지 확인하지 않고 풀면 정반대의 답을 고르게 됨<br/>
-② 위치 그래프의 ${tex('t')}절편(${tex('t=3')})을 운동 방향 전환점으로 착각하는 오답이 매우 빈번함...`,
+          steps: `① 위치와 속도는 ${tex('v(t)=x\'(t)')}로 연결된다. 따라서 방향 전환은 위치 그래프의 극값 중에서도 실제로 감소에서 증가(또는 증가에서 감소)로 바뀌는 점이다.<br/>
+② 여기서는 ${tex('v(t)=3t(t-2)')}이고 ${tex('0<t<2')}에서 음수, ${tex('t>2')}에서 양수다. 그러므로 위치는 ${tex('t=2')}에서 극소 ${tex('x(2)=-4')}를 갖고 방향을 바꾼다. ${tex('x(t)=0')}인 ${tex('t=3')}은 원점 통과일 뿐 방향 전환점이 아니다.<br/>
+③ 속도 그래프에서는 ${tex('t=2')}에서만(${tex('t>0')} 범위에서) ${tex('t')}축을 관통해 부호가 바뀐다. ${tex('t=0')}은 출발 경계다.`,
           warning: "⚠️ 속도·거리 문제를 풀기 전 0.1초 만에 가장 먼저 해야 할 일은 세로축 이름(위치 x 인지 속도 v 인지)에 동그라미를 치는 것입니다!"
         }),
         shortcut: () => ({
@@ -1279,6 +1280,23 @@
 
     function setMode(m) {
       state.mode = m;
+      state.steps = { 1: true, 2: false, 3: false };
+      [1, 2, 3].forEach((s) => {
+        const stepButton = document.getElementById(`stepBtn${s}`);
+        const stepIcon = document.getElementById(`stepIcon${s}`);
+        stepButton.classList.toggle('active', state.steps[s]);
+        stepIcon.className = state.steps[s]
+          ? 'fa-solid fa-check text-emerald-400 text-xs'
+          : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
+      const revealWrap = document.getElementById('answerBadgeWrap');
+      if (revealWrap) revealWrap.classList.add('hidden');
+      ['textbook', 'shortcut'].forEach((type) => {
+        const boardBody = document.getElementById(`accBody-${type}`);
+        const boardIcon = document.getElementById(`accIcon-${type}`);
+        boardBody.classList.add('hidden');
+        boardIcon.className = boardIcon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      });
       for (let i = 1; i <= 5; i++) {
         const tab = document.getElementById(`tab-${i}`);
         if (i === m) tab.classList.add('active');
@@ -1292,6 +1310,8 @@
       document.getElementById('examTarget').textContent = data.targetTime;
       document.getElementById('examQuestion').innerHTML = data.question();
       document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+      const answerWrap = document.getElementById('answerBadgeWrap');
+      if (answerWrap) answerWrap.classList.toggle('hidden', !state.steps[3]);
 
       document.getElementById('stepLabel1').textContent = data.steps[0];
       document.getElementById('stepLabel2').textContent = data.steps[1];
@@ -1312,7 +1332,6 @@
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play text-amber-300';
       document.getElementById('txtAutoPlay').textContent = '▶ 주행 재생';
 
-      unlockAllSteps();
 
       const target = examData[state.mode].snap;
       state.dualView = target.dualView;
@@ -1350,6 +1369,8 @@
         btn.classList.remove('active');
         icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
       }
+      const answerWrap = document.getElementById('answerBadgeWrap');
+      if (s === 3 && answerWrap) answerWrap.classList.toggle('hidden', !state.steps[3]);
       render();
     }
 
@@ -1359,6 +1380,8 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      const answerWrap = document.getElementById('answerBadgeWrap');
+      if (answerWrap) answerWrap.classList.remove('hidden');
       render();
     }
 

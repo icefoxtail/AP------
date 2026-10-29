@@ -503,7 +503,7 @@
       slopeR: 2.0,              // Mode 3 우미분계수 p (좌측은 f(x) = x^2 이므로 x=1에서 좌미분계수 = 2)
       gapH: 0.0,                // Mode 3 경계점 불연속 단차 Δh
       dualView: false,          // 상하 동기화 뷰
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 48,
       offsetX: -30,
       offsetY: 25,
@@ -603,16 +603,16 @@
         answerBadge: () => `평균변화율 ${tex('= 5')}, 극한값 ${tex('= 5f\'(2) = 22.5')}`,
         snap: { a: 1.0, dx: 2.0, slopeR: 2.0, gapH: 0.0, dualView: false },
         steps: [
-          "두 점 A(a, f(a)), B(a+Δx, f(a+Δx))를 잇는 할선 및 Δx, Δy 직각삼각형",
-          "점 A에서의 목표 접선(기울기 f'(a)) 및 미분 dy = f'(a)dx 비교",
-          "대칭 차분 공식 [ (p - q) · f'(a) ] 칠판 판서"
+          "Step 1 · 점 A(1,f(1)), B(3,f(3))를 잇는 할선 AB의 기울기를 세웁니다.",
+          "Step 2 · B(2+3h)와 C(2−2h)가 x=2로 모일 때 분자 차이를 미분계수 정의와 연결합니다.",
+          "Step 3 · f′(2)를 접선 기울기로 읽고 입력 간격 계수 차를 반영해 극한을 구합니다."
         ],
         textbook: () => ({
           steps: `① 평균변화율: ${tex('\\dfrac{f(3) - f(1)}{3 - 1} = \\dfrac{10 - 0}{2} = 5')}<br/>
 ② 극한식을 변형하기 위해 분자에 ${tex('-f(2) + f(2)')} 를 더하고 빼서 분리:<br/>
 &nbsp;&nbsp;${tex('\\lim_{h \\to 0} \\left\\{ \\dfrac{f(2+3h)-f(2)}{3h}\\cdot 3 + \\dfrac{f(2-2h)-f(2)}{-2h}\\cdot 2 \\right\\}')}<br/>
 ③ 미분계수의 정의에 의해 ${tex("3f'(2) + 2f'(2) = 5f'(2)")}<br/>
-④ ${tex("f'(x) = \\dfrac{3}{2}x^2 - \\dfrac{3}{2}")} 에 ${tex('x = 2')} 대입: ${tex("5 \\times 4.5 = 22.5")}...`,
+④ ${tex("f'(x)=\\frac32x^2-\\frac32")}이므로 ${tex("f'(2)=\\frac92")}; 따라서 극한값은 ${tex("5\\cdot\\frac92=\\frac{45}{2}")}입니다.`,
           warning: "⚠️ 시험장에서 f(a)를 더하고 빼서 극한식을 두 개로 쪼개어 적으면 시간이 낭비됩니다!"
         }),
         shortcut: () => ({
@@ -633,24 +633,23 @@
         // a = -1, b = 2 (dx = 3) => a^2 + ab + b^2 = 1 - 2 + 4 = 3 => c^2 = 3/3 = 1 => c = 1!
         snap: { a: -1.0, dx: 3.0, slopeR: 2.0, gapH: 0.0, dualView: false },
         steps: [
-          "구간 양 끝점 A(a, f(a)), B(b, f(b))를 잇는 할선 AB 작도",
-          "할선 AB와 평행한 접선 (f'(c) = 평균변화율) 및 접점 C(c, f(c)) 자동 탐색",
-          "평균값 정리 수식 f(b) - f(a) = f'(c)(b - a) 칠판 판서"
+          "Step 1 · f(x)=½x³−3/2x+1이 [−1,2]에서 연속, (−1,2)에서 미분가능한지 확인합니다.",
+          "Step 2 · A(−1,f(−1)), B(2,f(2))의 할선 기울기와 f′(c)의 방정식을 연결합니다.",
+          "Step 3 · 도함수 방정식의 후보를 구간 (−1,2)에 대조해 정리의 c를 선택합니다."
         ],
         textbook: () => ({
           steps: `① 구간 ${tex('[-1, 2]')}에서의 평균변화율 계산:<br/>
 &nbsp;&nbsp;${tex('\\dfrac{f(2) - f(-1)}{2 - (-1)} = \\dfrac{2 - 2}{3} = 0')}<br/>
 ② 도함수 ${tex("f'(c) = \\dfrac{3}{2}c^2 - \\dfrac{3}{2} = 0")} 방정식 풀이:<br/>
 &nbsp;&nbsp;${tex('c^2 = 1 \\implies c = -1')} 또는 ${tex('c = 1')}<br/>
-③ 열린구간 ${tex('(-1, 2)')} 에 속하는 ${tex('c = 1')} 선택...`,
+③ 후보 ${tex('c=-1,1')} 중 ${tex('-1')}은 구간 끝점이라 제외합니다. 따라서 열린구간 ${tex('(-1,2)')} 안의 값은 ${tex('c=1')}뿐입니다.`,
           warning: "⚠️ 삼차함수에서 한 끝점 A(-1, 2)가 극대점이고 f(-1)=f(2)=2 일 때는 삼차함수 2:1 비율관계로 c를 1초 만에 찾을 수 있습니다!"
         }),
         shortcut: () => ({
           steps: `① ${tex('f(-1) = 2')} 이고 ${tex('f(2) = 2')} 이므로 할선 ${tex('AB')}는 기울기가 ${tex('0')}인 수평선(롤의 정리)!<br/>
 ② 삼차함수 <strong>[2 : 1 비율 법칙]</strong>에 의해 극대점 ${tex('x = -1')} 과 교점 ${tex('x = 2')} (간격 ${tex('3')})를 <strong>2 : 1 내분</strong>하는 점이 극소점!<br/>
-③ 따라서 미분 계산 없이도 열린구간 내부의 평행 접선 접점은 즉시 <strong class="text-amber-300">${tex('c = 1')}</strong>!<br/>
-&nbsp;&nbsp;(일반 삼차함수 공식: <strong class="text-sky-300">${tex('c^2 = \\dfrac{a^2 + ab + b^2}{3}')}</strong>)`,
-          highlight: "💡 이차함수의 평균값 정리 접점은 무조건 중점 【 c = (a+b)/2 】, 삼차함수(m=0)는 【 c² = (a²+ab+b²)/3 】입니다!"
+③ 따라서 도함수 방정식의 후보 중 열린구간 내부의 평행 접선 접점은 <strong class="text-amber-300">${tex('c=1')}</strong>입니다. 이 값은 주어진 함수에 대한 미분계수 방정식으로 확인합니다.`,
+          highlight: `💡 이 문항의 ${tex('f(x)=\\frac12x^3-\\frac32x+1')}은 ${tex('x^2')}항이 없으므로 ${tex('f\\prime(c)=\\frac32(c^2-1)')}입니다. 양 끝값이 같아 평균 기울기가 0이므로 ${tex('c=\\pm1')}, 열린구간에서는 ${tex('c=1')}입니다.`
         })
       },
 
@@ -663,16 +662,16 @@
         answerBadge: () => `${tex('p = 2, \\; q = -1 \\; (p + q = 1)')}`,
         snap: { a: 1.0, dx: 1.0, slopeR: 2.0, gapH: 0.0, dualView: true },
         steps: [
-          "경계선 x = 1 및 좌극한(1, 1) ↔ 우극한(1, 1+Δh) 연속성 비교",
-          "좌접선(기울기 f'₋(1) = 2) vs 우접선(기울기 f'₊(1) = p) 나비넥타이 비교",
-          "실시간 미분가능성 2단계 판정 (① 연속인가? → ② 좌미분=우미분인가?)"
+          "Step 1 · x=1에서 왼쪽 x²과 오른쪽 px+q가 같은 점으로 이어지는 조건을 세웁니다.",
+          "Step 2 · 왼쪽 접선 기울기 2x와 오른쪽 직선 기울기 p를 경계 x=1에서 비교합니다.",
+          "Step 3 · 연속 조건과 좌우 기울기 조건을 함께 만족하는 p,q를 원래 식에 확인합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('x = 1')} 에서 미분가능하면 연속이므로:<br/>
 &nbsp;&nbsp;${tex('\\lim_{x \\to 1-} x^2 = f(1) \\implies 1 = p + q')}<br/>
 ② 미분계수의 정의를 이용해 좌미분계수와 우미분계수 각각 극한 계산:<br/>
 &nbsp;&nbsp;${tex('\\lim_{h \\to 0-} \\dfrac{(1+h)^2 - 1}{h} = 2')}, &nbsp;${tex('\\lim_{h \\to 0+} \\dfrac{p(1+h)+q - 1}{h} = p')}<br/>
-③ ${tex('p = 2')} 이고 ${tex('1 = 2 + q \\implies q = -1')} 도출...`,
+③ 연속 조건 ${tex('p+q=1')}에 ${tex('p=2')}를 대입하면 ${tex('q=-1')}입니다. 그러면 두 식은 점 ${tex('(1,1)')}에서 만나고 양쪽 기울기도 2로 같습니다.`,
           warning: "⚠️ 구간 다항함수에서 매번 h → 0-, 0+ 극한 정의식을 세우면 시간을 낭비합니다!"
         }),
         shortcut: () => ({
@@ -692,23 +691,23 @@
         answerBadge: () => `접점 ${tex('T(1, 1)')}, 최단거리 ${tex('d_{\\min} = \\sqrt{2}')}`,
         snap: { a: 1.0, dx: 1.0, slopeR: 2.0, gapH: 0.0, dualView: false },
         steps: [
-          "외부 직선 l : y = x - 2 및 곡선 위 점 T(a, f(a))에서의 접선 작도",
-          "점 T를 지나고 접선에 수직인 법선 (기울기 -1/f'(a)) 작도",
-          "점 T에서 직선 l에 내린 수선의 발 H 및 거리 d 실시간 측정"
+          "Step 1 · T(a,½a²+½)와 직선 x−y−2=0 사이의 수선 거리식을 씁니다.",
+          "Step 2 · 거리의 분자를 a에 대한 이차식으로 정리해 완전제곱과 등호 조건을 찾습니다.",
+          "Step 3 · T에서 직선까지 내린 수선과 접선 방향이 만드는 최단거리 조건을 확인합니다."
         ],
         textbook: () => ({
           steps: `① 곡선 위의 임의의 점을 ${tex('T\\left(a, \\dfrac{1}{2}a^2 + \\dfrac{1}{2}\\right)')} 로 설정<br/>
 ② 점과 직선 ${tex('x - y - 2 = 0')} 사이의 거리 공식에 대입:<br/>
 &nbsp;&nbsp;${tex('d = \\dfrac{\\left| a - \\left(\\dfrac{1}{2}a^2 + \\dfrac{1}{2}\\right) - 2 \\right|}{\\sqrt{1^2 + (-1)^2}} = \\dfrac{\\left| -\\dfrac{1}{2}a^2 + a - \\dfrac{5}{2} \\right|}{\\sqrt{2}}')}<br/>
 ③ 분자의 이차식을 완전제곱식으로 묶어 최솟값 계산:<br/>
-&nbsp;&nbsp;${tex('\\dfrac{\\dfrac{1}{2}(a-1)^2 + 2}{\\sqrt{2}} \\ge \\dfrac{2}{\\sqrt{2}} = \\sqrt{2}')}...`,
+&nbsp;&nbsp;${tex('\\dfrac{\\frac12(a-1)^2+2}{\\sqrt2} \\ge \\dfrac{2}{\\sqrt2}=\\sqrt2')}입니다. 등호는 ${tex('a=1')}일 때이고, 이때 ${tex('T=(1,1)')}입니다.`,
           warning: "⚠️ 삼차함수나 초월함수에서는 점과 직선 사이의 거리 공식을 완전제곱식으로 묶을 수 없으므로 반드시 기하학적 접선 원리를 써야 합니다!"
         }),
         shortcut: () => ({
-          steps: `① 곡선과 직선 사이의 거리가 최소인 점은 무조건 <strong class="text-pink-300">【 직선과 평행한 접선의 접점 】</strong>!<br/>
-② 직선 ${tex('y = x - 2')} 의 기울기가 ${tex('1')}이므로 ${tex("f'(a) = a = 1")} 에서 즉시 접점 <strong class="text-amber-300">${tex('T(1, 1)')}</strong>!<br/>
-③ 점 ${tex('T(1, 1)')} 과 직선 ${tex('x - y - 2 = 0')} 사이의 거리 <strong class="text-sky-300">${tex('d_{\\min} = \\dfrac{|1 - 1 - 2|}{\\sqrt{2}} = \\sqrt{2}')}</strong>!`,
-          highlight: "💡 곡선 위의 점과 직선 사이의 최소 거리 문제는 무조건 【 f'(t) = 직선의 기울기 】로 접점부터 찾으세요!"
+          steps: `① 곡선 위 점 ${tex('T(a,\\frac12a^2+\\frac12)')}와 직선 ${tex('x-y-2=0')}의 거리는 이 문항에서 ${tex('d(a)=\\frac{\\frac12(a-1)^2+2}{\\sqrt2}')}입니다.<br/>
+② ${tex('(a-1)^2\\ge0')}이므로 거리는 ${tex('a=1')}에서 최소입니다. 이때 접선의 기울기는 ${tex("f'(1)=1")}로 직선의 기울기와 같음을 확인할 수 있습니다.<br/>
+③ ${tex('T=(1,1)')}에서 ${tex('d=|1-1-2|/\\sqrt2=\\sqrt2')}입니다. 이 결론은 주어진 곡선과 직선의 거리식을 완전제곱한 결과입니다.`,
+          highlight: `💡 이 문항은 직선과 곡선의 거리식 ${tex('d(a)=\\frac{\\frac12(a-1)^2+2}{\\sqrt2}')}를 완전제곱해 최솟값과 등호 조건을 직접 확인합니다.`
         })
       },
 
@@ -721,16 +720,16 @@
         answerBadge: () => `접점 ${tex('T(1, 1)')}, 공통접선 ${tex('y = x')}`,
         snap: { a: 1.0, dx: 1.0, slopeR: 2.0, gapH: 0.0, dualView: false },
         steps: [
-          "두 곡선 y = f(x) (흰색) 및 y = g(x) (하늘색) 동시 작도",
-          "접점 T(a, f(a))에서의 공통접선 y = f'(a)(x - a) + f(a) 표시",
-          "공통접선 2대 성립 조건 [ f(a) = g(a) & f'(a) = g'(a) ] 칠판 판서"
+          "Step 1 · x=1에서 f(x)=½x³−½x+1과 g(x)=−4/5x²+px+q의 높이를 맞춥니다.",
+          "Step 2 · 같은 점의 f′(1), g′(1)을 같게 두어 공통접선 기울기 조건을 씁니다.",
+          "Step 3 · 구한 계수를 접점 T와 점기울기식 y−f(1)=f′(1)(x−1)에 대입합니다."
         ],
         textbook: () => ({
           steps: `① 두 곡선이 ${tex('x = 1')} 에서 만나므로 함숫값 일치:<br/>
 &nbsp;&nbsp;${tex('f(1) = g(1) \\implies 1 = -\\dfrac{4}{5} + p + q')}<br/>
 ② ${tex('x = 1')} 에서의 접선의 기울기가 같으므로 미분계수 일치:<br/>
 &nbsp;&nbsp;${tex("f'(1) = g'(1) \\implies 1 = -\\dfrac{8}{5} + p")}<br/>
-③ 연립방정식을 풀어 ${tex('p, q')}를 구한 뒤 다시 접선 식 계산...`,
+③ 앞 조건에서 ${tex('p=\\frac{13}{5}, q=-\\frac45')}입니다. 이제 ${tex("f(1)=1, f'(1)=1")}이므로 공통접선은 ${tex('y-1=x-1')}, 즉 ${tex('y=x')}입니다.`,
           warning: "⚠️ 공통접선의 방정식 자체를 구할 때는 미정계수 p, q를 구할 필요 없이 이미 아는 함수 f(x)만으로 바로 구할 수 있습니다!"
         }),
         shortcut: () => ({
@@ -1483,6 +1482,13 @@
 
     function setMode(m) {
       state.mode = m;
+      state.steps = { 1: true, 2: false, 3: false };
+      // 새 문항으로 이동할 때 이전 문항의 해설 펼침 상태를 넘기지 않는다.
+      ['textbook', 'shortcut'].forEach((type) => {
+        document.getElementById(`accBody-${type}`).classList.add('hidden');
+        const icon = document.getElementById(`accIcon-${type}`);
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      });
       for (let i = 1; i <= 5; i++) {
         const tab = document.getElementById(`tab-${i}`);
         if (i === m) tab.classList.add('active');
@@ -1500,11 +1506,19 @@
       document.getElementById('examTag').innerHTML = `<i class="fa-solid fa-award"></i> ${data.tag}`;
       document.getElementById('examTarget').textContent = data.targetTime;
       document.getElementById('examQuestion').innerHTML = data.question();
-      document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+      document.getElementById('examAnswerBadge').innerHTML = '세 단계 풀이를 모두 확인하면 정답이 공개됩니다.';
 
       document.getElementById('stepLabel1').textContent = data.steps[0];
       document.getElementById('stepLabel2').textContent = data.steps[1];
       document.getElementById('stepLabel3').textContent = data.steps[2];
+      [1, 2, 3].forEach((s) => {
+        const btn = document.getElementById(`stepBtn${s}`);
+        const icon = document.getElementById(`stepIcon${s}`);
+        btn.classList.toggle('active', state.steps[s]);
+        icon.className = state.steps[s]
+          ? 'fa-solid fa-check text-emerald-400 text-xs'
+          : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
 
       const tb = data.textbook();
       const sc = data.shortcut();
@@ -1513,6 +1527,7 @@
       document.getElementById('shortcutSteps').innerHTML = sc.steps;
       document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
 
+      // 기준 도형은 발문 조건으로 맞추되, snapToProblem은 풀이 단계를 열지 않는다.
       snapToProblem();
     }
 
@@ -1520,8 +1535,6 @@
       state.autoPlay = false;
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
       document.getElementById('txtAutoPlay').textContent = '극한 애니메이션';
-
-      unlockAllSteps();
 
       const target = examData[state.mode].snap;
       state.dualView = target.dualView;
@@ -1555,6 +1568,9 @@
 
     function toggleStep(s) {
       state.steps[s] = !state.steps[s];
+      document.getElementById('examAnswerBadge').innerHTML = Object.values(state.steps).every(Boolean)
+        ? examData[state.mode].answerBadge()
+        : '세 단계 풀이를 모두 확인하면 정답이 공개됩니다.';
       const btn = document.getElementById(`stepBtn${s}`);
       const icon = document.getElementById(`stepIcon${s}`);
       if (state.steps[s]) {
@@ -1573,6 +1589,7 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      document.getElementById('examAnswerBadge').innerHTML = examData[state.mode].answerBadge();
       render();
     }
 

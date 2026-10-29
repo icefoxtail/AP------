@@ -546,7 +546,7 @@
       autoPlay: false,
       animDir: 1,
       userZoomed: false,
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
 
       // 모드 1, 2, 3용 경사 평면 각도 theta (초기값 60°)
       planeTheta: (60 * Math.PI) / 180,
@@ -587,10 +587,9 @@
           "밑변 BC(8) 불변 & 높이 A'M = 6 cos 60° = 3 ⇒ S' = S cos 60° = 12"
         ],
         textbook: () => ({
-          steps: `① 교선 ${tex('BC')}의 중점 ${tex('M')}에 대하여 ${tex('\\overline{AM} \\perp \\overline{BC}')}<br/>
-② 삼수선의 정리에 의해 ${tex('A')}의 정사영 ${tex("A'")}에 대해 ${tex("\\overline{A'M} \\perp \\overline{BC}")}<br/>
-③ 직각삼각형 ${tex("AA'M")}에서 ${tex("\\overline{A'M} = \\overline{AM}\\cos 60^\\circ = 6 \\times \\dfrac{1}{2} = 3")}<br/>
-④ 정사영 삼각형 넓이 ${tex("S' = \\dfrac{1}{2} \\times \\overline{BC} \\times \\overline{A'M} = \\dfrac{1}{2} \\times 8 \\times 3 = 12")}.`,
+          steps: `① ${tex('AM')}은 ${tex('\\beta')} 안에서 교선 ${tex('BC')}에 수직이고, ${tex('A')}의 수선의 발을 ${tex("A'")}라 둔다. ${tex("A'M")}은 ${tex('AM')}의 ${tex('\\alpha')} 위 정사영이다.<br/>
+② 두 평면의 각이 ${tex('60^\\circ')}이므로 단면 ${tex("AA'M")}에서 ${tex('\\angle AMA\'=60^\\circ')}; 따라서 실제 길이 ${tex("A'M=AM\\cos60^\\circ=6\\cdot\\frac12=3")}이다. 이 각은 평면 단면에서 정의되며, 투시 화면의 각도 측정값이 아니다.<br/>
+③ ${tex('BC')}는 교선 방향이므로 투영해도 길이 ${tex('8')}을 유지한다. 따라서 ${tex("S'=\\frac12\\cdot8\\cdot3=12")}이고 넓이 공식으로도 ${tex("S'=S\\cos60^\\circ=12")}를 얻는다.`,
           warning: "⚠️ 선분의 정사영을 구할 때 무조건 l cos θ를 곱하면 틀립니다! 교선과 평행한 선분은 정사영해도 길이가 절대 줄어들지 않습니다!"
         }),
         shortcut: () => ({
@@ -617,10 +616,10 @@
           "역정사영 공식: S cos 60° = 9π ⇒ 타원 넓이 S = 9π / (1/2) = 18π"
         ],
         textbook: () => ({
-          steps: `① 단면인 타원의 단축 반지름은 원기둥의 반지름과 같으므로 ${tex('b = r = 3')}<br/>
-② 옆면 직각삼각형에서 장축의 길이 ${tex('2a = \\dfrac{2r}{\\cos 60^\\circ} = \\dfrac{6}{1/2} = 12 \\implies a = 6')}<br/>
-③ 타원의 넓이 공식(교과 과정 외) ${tex('S = \\pi a b = \\pi \\times 6 \\times 3 = 18\\pi')} 계산...`,
-          warning: "⚠️ 원이 아닌 일반 도형이나 잘린 원기둥 조각이 나오면 장축/단축 공식으로는 아예 넓이를 구할 수 없습니다!"
+          steps: `① 경사 단면의 정사영은 반지름 ${tex('3')}인 밑면 원이므로 ${tex("S'=9\\pi")}. 평면과 밑면의 예각은 ${tex('60^\\circ')}이다.<br/>
+② 정사영 넓이 관계 ${tex("S'=S\\cos60^\\circ")}에서 ${tex('S=9\\pi/(1/2)=18\\pi')}.<br/>
+③ 단면 타원의 교선 평행 단축은 지름 그대로 ${tex('2b=6')}; 수직 방향은 ${tex('60^\\circ')} 경사만큼 확대되어 ${tex('2a=6/\\cos60^\\circ=12')}. 따라서 반축은 ${tex('a=6,b=3')}이다. ${tex('\\theta=90^\\circ')}이면 정사영 넓이는 0이 되어 유한한 단면 넓이를 역산할 수 없고, 이 경우 타원은 유한한 단면으로 성립하지 않는다.`,
+          warning: "정사영 역산은 cos θ > 0일 때만 유한한 단면 넓이를 복원한다. θ=90°에서는 0으로 나누지 않는다."
         }),
         shortcut: () => ({
           steps: `① 경사 단면(넓이 ${tex('S')})을 바닥으로 정사영하면 <strong>반지름 ${tex('3')}인 밑면 원(넓이 ${tex("S' = 9\\pi")})</strong>이 됩니다!<br/>
@@ -685,10 +684,9 @@
           warning: "⚠️ 광선이 원판과 수직이 아닌 일반 각도로 비추는 고난도 기출에서는 도형 길이만으로는 계산이 매우 헷갈립니다!"
         }),
         shortcut: () => ({
-          steps: `① <strong>[정사영의 기준은 무조건 '빛과 수직인 평면'!]</strong><br/>
-② 태양 광선이 원판에 수직(${tex('90^\\circ')})이므로, <strong>바닥 그림자(${tex("S'")})를 원판 위로 정사영한 것이 원래 원판 넓이(${tex('S = 12')})</strong>가 됩니다!<br/>
-③ 따라서 <strong class="text-amber-300">${tex("S' \\cos 30^\\circ = S = 12")}</strong><br/>
-&nbsp;&nbsp;<strong class="text-emerald-300">${tex("\\implies S' = \\dfrac{12}{\\cos 30^\\circ} = \\dfrac{12}{\\sqrt{3}/2} = 8\\sqrt{3}")}</strong>!`,
+          steps: `① 원판은 지면과 ${tex('30^\\circ')} 기울고 광선은 지면과 ${tex('60^\\circ')}를 이루므로 광선은 원판에 수직이다. 광선 방향 정사영에서 원판과 지면 사이 각은 ${tex('30^\\circ')}이다.<br/>
+② 원판의 직경 중 경사 방향 성분은 지면 그림자에서 ${tex('1/\\cos30^\\circ')}배 늘고, 교선 방향 직경은 그대로다. 따라서 그림자 넓이 배율도 ${tex('1/\\cos30^\\circ')}이다.<br/>
+③ ${tex("S'=S/\\cos30^\\circ=12/(\\sqrt3/2)=8\\sqrt3")}. 화면의 3D 투시 각 대신 주어진 실제 지면각으로 계산한다. 광선이 원판에 수직이 아니라면 배율은 일반적으로 ${tex("\\sin(\\text{원판-광선 각})/\\sin(\\text{지면-광선 각})")}이다.`,
           highlight: "💡 일반 사선 광선 만능 공식: 【 바닥 그림자 S' = (도형 넓이 S × sin(도형~빛 각도)) / sin(바닥~빛 각도) 】!"
         })
       }
@@ -701,8 +699,11 @@
     const ctx = canvas.getContext('2d');
 
     function toggleAccordion(type){const el=document.getElementById('accBody-'+type);const ico=document.getElementById('accIcon-'+type);el.classList.toggle('hidden');ico.className=ico.className.replace(el.classList.contains('hidden')?'fa-chevron-up':'fa-chevron-down',el.classList.contains('hidden')?'fa-chevron-down':'fa-chevron-up')}
-    function toggleStep(i){state.steps[i]=!state.steps[i];document.getElementById('stepBtn'+i).classList.toggle('active',state.steps[i]);document.getElementById('stepIcon'+i).className=state.steps[i]?'fa-solid fa-check':'fa-solid fa-eye-slash';render()}
-    function unlockAllSteps(){for(let i=1;i<=3;i++){state.steps[i]=true;document.getElementById('stepBtn'+i).classList.add('active');document.getElementById('stepIcon'+i).className='fa-solid fa-check'}render()}
+    function syncRevealState(){for(let i=1;i<=3;i++){const on=!!state.steps[i],btn=document.getElementById(`stepBtn${i}`),icon=document.getElementById(`stepIcon${i}`);btn.classList.toggle('active',on);icon.className=on?'fa-solid fa-check text-emerald-400 text-xs':'fa-solid fa-eye-slash text-slate-500 text-xs'}document.getElementById('examAnswerBadge').classList.toggle('hidden',!state.steps[3])}
+    function resetStepsForMode(){state.steps={1:true,2:false,3:false};syncRevealState()}
+    function closeSolutionAccordions(){for(const type of ['textbook','shortcut']){document.getElementById(`accBody-${type}`).classList.add('hidden');const icon=document.getElementById(`accIcon-${type}`);icon.className=icon.className.replace('fa-chevron-up','fa-chevron-down')}}
+    function toggleStep(i){state.steps[i]=!state.steps[i];syncRevealState();render()}
+    function unlockAllSteps(){for(let i=1;i<=3;i++)state.steps[i]=true;syncRevealState();render()}
     function toggleGrid(){state.showGrid=!state.showGrid;render()}
 
     // Camera rotation interaction.
@@ -764,10 +765,9 @@
     // ---------------------------------------------------------------------
     Object.assign(state,{lens:'all',partIdx:null,view:'iso',frame:{x:0,y:0,scale:30},labels:[],reserved:[]});
     examData[3].textbook = () => ({
-      steps: `① 평면 BDE와 밑면 EFGH의 실제 교선은 E를 지나 BD (및 FH)에 평행한 직선입니다.<br/>
-② BD의 중점 M′(0,2,0)과 FH의 중점 M(0,-2,0)을 잡습니다. 두 선분 EM′, EM은 교선 방향에 각각 수직입니다.<br/>
-③ EM=2√2, MM′=4, EM′=2√6. ∠EMM′=90°이고 두 평면의 이면각은 ∠M′EM입니다.<br/>
-④ cosθ = EM/EM′ = (2√2)/(2√6) = 1/√3.`,
+      steps: `① 밑면 EFGH는 y=−2, 평면 BDE의 실제 교선은 E를 지나 BD와 평행한 직선입니다. 따라서 EG는 교선이 아닙니다.<br/>
+② 밑면의 대각선 FH와 윗면의 대각선 BD의 중점을 각각 M(0,−2,0), M′(0,2,0)이라 두면 EM, EM′는 교선에 수직입니다. 그래서 두 평면의 이면각은 ∠M′EM으로 나타납니다.<br/>
+③ 좌표 차로 EM=2√2, MM′=4, EM′=2√6이고 EM⊥MM′입니다. 직각삼각형 EMM′에서 cosθ=EM/EM′=(2√2)/(2√6)=1/√3입니다. 투시 화면의 각도는 이 실제 공간각을 재는 기준이 아닙니다.`,
       warning: '교선은 EG가 아닙니다. EG를 교선으로 잡으면 이면각과 도형이 맞지 않습니다.'
     });
     const PI=Math.PI, rad=d=>d*PI/180, deg=r=>r*180/PI;
@@ -1051,7 +1051,7 @@
       for(let i=1;i<=3;i++)document.getElementById(`stepLabel${i}`).textContent=d.steps[i-1];
       const tb=d.textbook(),sc=d.shortcut();
       for(const [k,v] of Object.entries({textbookSteps:tb.steps,textbookWarning:tb.warning,shortcutSteps:sc.steps,shortcutHighlight:sc.highlight}))document.getElementById(k).innerHTML=v;
-      buildParts();state.lens='all';document.querySelectorAll('.lens-chip').forEach(el=>el.classList.toggle('active',el.dataset.lens==='all'));
+      buildParts();resetStepsForMode();closeSolutionAccordions();state.lens='all';document.querySelectorAll('.lens-chip').forEach(el=>el.classList.toggle('active',el.dataset.lens==='all'));
       snapToProblem();updateAutoButton();
     }
     function updateAutoButton(){document.getElementById('iconAutoPlay').className=state.autoPlay?'fa-solid fa-pause':'fa-solid fa-play';
@@ -1061,7 +1061,7 @@
       const data=examData[state.mode];const target=preset==='section'?data.sectionCam:preset==='top'?{yaw:0,pitch:PI/2}:data.cam;
       state.camAnim={active:true,progress:0,startYaw:state.yaw,startPitch:state.pitch,targetYaw:target.yaw,targetPitch:target.pitch};
     }
-    function snapToProblem(){unlockAllSteps();const d=examData[state.mode];
+    function snapToProblem(){const d=examData[state.mode];
       if(state.mode===3)state.planeTheta=Math.acos(1/Math.sqrt(3));
       else if(d.thetaSnap!==undefined)state.planeTheta=d.thetaSnap;
       if(state.mode===4){state.boardDeg=d.boardDeg;state.sunDeg=d.sunDeg}state.userZoomed=false;state.zoomFactor=1;state.offsetX=0;state.offsetY=0;
