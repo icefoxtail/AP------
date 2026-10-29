@@ -610,7 +610,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 턱걸이 횟수 히스토그램에서 큰 계급부터 12~14회 1명(연한 회색), 10~12회 5명(진한 회색)을 세고 두 계급 합 6명까지를 괄호로 묶어, 위에서 6번째까지의 위치를 보여 준다.",
+    "solutionImageCaption": "큰 쪽부터 차례로 세어 위에서 6번째까지의 학생이 어느 계급에 있는지 보여 주는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -651,7 +655,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 신발 크기 줄기와 잎 그림에서 큰 값부터 250, 245 세 개, 240, 235 두 개, 그리고 8번째 잎까지 동그라미를 치고 1~8의 순번을 붙여 큰 쪽에서 8번째 위치를 보여 준다.",
+    "solutionImageCaption": "큰 신발 크기부터 잎을 차례로 세어 8번째 잎까지 번호를 붙인 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -691,7 +699,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 신발 크기 줄기와 잎 그림에서 22줄기와 23줄기의 잎 10개에 동그라미를 치고, 220·225·230·235mm 값의 도수 2, 3, 3, 2를 괄호로 묶어 보여 준다.",
+    "solutionImageCaption": "220mm 이상 240mm 미만인 잎 10개를 값별 도수로 묶어 센 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -771,7 +783,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 영어 성적 도수분포다각형에서 50~70점의 두 계급 도수 2, 7을 묶어 9명으로 표시하고, 바로 다음인 70점 이상 80점 미만 계급의 꼭짓점을 크게 표시한다.",
+    "solutionImageCaption": "70점 미만 학생 9명을 센 뒤 그다음 계급이 70점 이상 80점 미만임을 보여 주는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -811,7 +827,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 저축 금액 도수분포다각형에서 찢어져 보이지 않는 4만~5만 원 계급은 꼭짓점 없이 끊어 두고, 3만 원 미만 두 계급의 도수 2, 3을 묶어 합 5명을 보여 준다.",
+    "solutionImageCaption": "3만 원 미만인 두 계급의 도수를 묶어 합을 구하는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
