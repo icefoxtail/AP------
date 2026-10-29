@@ -15,7 +15,7 @@ NS = '{http://www.w3.org/2000/svg}'
 TOL = 0.02
 LABEL_TOL = 1.5
 CAPABILITY = 'stat-chart-figure-v1'
-FILL = {'bar': '#ececec', 'barHi': '#b5b5b5', 'cell': '#fff', 'cellHi': '#c9c9c9'}
+FILL = {'bar': '#ececec', 'barHi': '#b5b5b5', 'barHi2': '#8e8e8e', 'cell': '#fff', 'cellHi': '#c9c9c9'}
 
 
 def fail(code):
@@ -152,32 +152,161 @@ def derive_freq(chart):
     y_kind = chart.get('yKind') or ('RELATIVE' if relative else 'FREQUENCY')
     series = []
     for i, s in enumerate(chart['series']):
+        hidden_sum = None
         if 'frequencies' in s:
             freq = list(s['frequencies'])
             if len(freq) != n: fail('STAT_FREQUENCY_COUNT_MISMATCH')
-            total = sum(freq)
+            known = [f for f in freq if f is not None]  # a null frequency is a class the problem does not show
+            if not known: fail('STAT_FREQUENCY_INVALID')
             given = s.get('total', chart.get('total') if i == 0 else None)
-            if given is not None and given != total: fail('STAT_FREQUENCY_TOTAL_MISMATCH')
-            values = [Fraction(f) if y_kind == 'FREQUENCY' else Fraction(f, total) for f in freq]
+            if len(known) == n:
+                total = sum(known)
+                if given is not None and given != total: fail('STAT_FREQUENCY_TOTAL_MISMATCH')
+            else:
+                total = given
+                if total is not None and (not isinstance(total, int) or total < sum(known)): fail('STAT_FREQUENCY_TOTAL_MISMATCH')
+            if y_kind == 'FREQUENCY':
+                values = [None if f is None else Fraction(f) for f in freq]
+                if total is not None and len(known) < n: hidden_sum = Fraction(total - sum(known))
+            else:
+                if total is None: fail('STAT_UNKNOWN_NEEDS_TOTAL')
+                values = [None if f is None else Fraction(f, total) for f in freq]
+                if len(known) < n: hidden_sum = Fraction(total - sum(known), total)
         else:
-            values = [frac(x, 'SC_PLAN_INVALID') for x in s['relativeFrequencies']]
-            if sum(values) != 1: fail('STAT_RELATIVE_SUM_NOT_ONE')
-        series.append({'name': s.get('name'), 'values': values})
+            values = [None if x is None else frac(x, 'SC_PLAN_INVALID') for x in s['relativeFrequencies']]
+            known = [v for v in values if v is not None]
+            if not known: fail('STAT_FREQUENCY_INVALID')
+            if len(known) == n:
+                if sum(known) != 1: fail('STAT_RELATIVE_SUM_NOT_ONE')
+            else:
+                if sum(known) > 1: fail('STAT_RELATIVE_SUM_NOT_ONE')
+                hidden_sum = 1 - sum(known)  # relative frequencies add up to 1: the hidden classes hold what is left
+        series.append({'name': s.get('name'), 'values': values, 'hidden_sum': hidden_sum})
     mids = [(b[i] + b[i + 1]) / 2 for i in range(n)]
     polygon = kind == 'FREQUENCY_POLYGON' or chart.get('polygon') is True
     for s in series:
-        s['vertices'] = [(mids[0] - width, Fraction(0))] + list(zip(mids, s['values'])) + [(mids[-1] + width, Fraction(0))]
+        s['vertices'] = [(mids[0] - width, Fraction(0))] + [None if v is None else (m, v) for m, v in zip(mids, s['values'])] + [(mids[-1] + width, Fraction(0))]
     return b, width, mids, series, polygon, y_kind
+
+
+def derive_marks(chart, series, polygon):
+    """Everything the plan marks on a frequency chart, re-derived from the plan alone: the emphasis tone of each class, the polygon points that carry a mark, the
+    restored bars, the classes whose value stays unwritten and the class sums (a numeric label must equal the exact sum; hidden classes count only through the stated total)."""
+    kind = chart['kind']
+    tones = {}
+    for e in chart.get('highlightClasses') or []:
+        ks = ([e['class']] if 'class' in e else list(e['classes'])) if isinstance(e, dict) else [e]
+        for k in ks: tones[k] = e.get('tone', 1) if isinstance(e, dict) else 1
+    if any(sr['values'][k] is None for k in tones for sr in series): fail('STAT_HIGHLIGHT_UNKNOWN_CLASS')  # a hidden class has no bar or point to mark
+    marks = {}
+    if kind == 'FREQUENCY_POLYGON':
+        for k, t in tones.items():
+            for s in range(len(series)): marks[(s, k)] = {'tone': t, 'show': False}
+    for e in chart.get('highlightPoints') or []:
+        marks[(e.get('series', 0), e['class'])] = {'tone': e.get('tone', 1), 'show': e.get('showValue') is True}
+    for (s, k) in marks:
+        if series[s]['values'][k] is None: fail('STAT_HIGHLIGHT_UNKNOWN_CLASS')
+    restored = set(chart.get('restoredClasses') or [])
+    hide = set(chart.get('hideValues') or [])
+    sums = []
+    for e in chart.get('classSums') or []:
+        s, lo, hi = e.get('series', 0), e['from'], e['to']
+        sr = series[s]
+        inside = sr['values'][lo:hi + 1]
+        hidden = [v for v in inside if v is None]
+        known = sum((v for v in inside if v is not None), Fraction(0))
+        label = e.get('label')
+        if label is not None: label = str(label)
+        if label == '?':
+            if not hidden: fail('STAT_CLASS_SUM_LABEL_INVALID')
+        elif label is not None:
+            total = known
+            if hidden:
+                all_hidden = [k for k, v in enumerate(sr['values']) if v is None]
+                if sr['hidden_sum'] is None or any(k < lo or k > hi for k in all_hidden): fail('STAT_CLASS_SUM_UNKNOWN')
+                total = known + sr['hidden_sum']
+            if frac(label, 'STAT_CLASS_SUM_LABEL_INVALID') != total: fail('STAT_CLASS_SUM_LABEL_MISMATCH')
+        sums.append({'series': s, 'from': lo, 'to': hi, 'label': label, 'unit': e.get('unit', '')})
+    return tones, marks, restored, hide, sums
+
+
+def box_distance(box, point):
+    x, y, w, h = box
+    return math.hypot(max(x - point[0], 0, point[0] - x - w), max(y - point[1], 0, point[1] - y - h))
+
+
+def segment_hits_box(a, c, box):
+    x, y, w, h = box
+    t0, t1 = 0.0, 1.0
+    dx, dy = c[0] - a[0], c[1] - a[1]
+    for p, q in ((-dx, a[0] - x), (dx, x + w - a[0]), (-dy, a[1] - y), (dy, y + h - a[1])):
+        if p == 0:
+            if q < 0: return False
+            continue
+        t = q / p
+        if p < 0:
+            if t > t1: return False
+            t0 = max(t0, t)
+        else:
+            if t < t0: return False
+            t1 = min(t1, t)
+    return True
+
+
+def segment_box_distance(a, c, box):
+    """The exact distance between a segment and an axis-aligned box (0 when they meet)."""
+    if segment_hits_box(a, c, box): return 0.0
+    x, y, w, h = box
+    best = min(box_distance(box, a), box_distance(box, c))
+    dx, dy = c[0] - a[0], c[1] - a[1]
+    length2 = dx * dx + dy * dy
+    for p in ((x, y), (x + w, y), (x + w, y + h), (x, y + h)):
+        t = max(0.0, min(1.0, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / length2)) if length2 else 0.0
+        best = min(best, math.hypot(p[0] - (a[0] + t * dx), p[1] - (a[1] + t * dy)))
+    return best
+
+
+def drawn_obstacles(doc):
+    """Every line, polyline, arrow head, dot, ring and bar edge of the final SVG with its half stroke width: what a label must stay clear of (grid lines are cut around labels)."""
+    def pad(e):
+        if (e.get('stroke') or 'none') == 'none': return 0.0
+        try: return float(e.get('stroke-width') or 0) / 2
+        except ValueError: return 0.0
+    out = []
+    for e in doc.lines:
+        if e.get('data-role') == 'grid': continue
+        out.append(('segs', [((num(e, 'x1'), num(e, 'y1')), (num(e, 'x2'), num(e, 'y2')))], pad(e)))
+    for tag in ('polyline', 'polygon'):
+        for e in doc.root.iter(NS + tag):
+            pts = [tuple(float(v) for v in pair.split(',')) for pair in (e.get('points') or '').split()]
+            if tag == 'polygon': pts = pts + pts[:1]
+            out.append(('segs', list(zip(pts, pts[1:])), pad(e)))
+    for e in doc.circles: out.append(('circle', (num(e, 'cx'), num(e, 'cy'), num(e, 'r')), pad(e)))
+    for e in doc.role('rect', 'bar'):
+        x, y, w, h = num(e, 'x'), num(e, 'y'), num(e, 'width'), num(e, 'height')
+        c = [(x, y), (x + w, y), (x + w, y + h), (x, y + h)]
+        out.append(('segs', list(zip(c, c[1:] + c[:1])), pad(e)))
+    return out
+
+
+def clearance(box, obstacles):
+    best = math.inf
+    for kind, shape, pad in obstacles:
+        if kind == 'circle': best = min(best, box_distance(box, shape[:2]) - shape[2] - pad)
+        else:
+            for a, c in shape: best = min(best, segment_box_distance(a, c, box) - pad)
+    return best
 
 
 def audit_freq(chart, doc):
     b, width, mids, series, polygon, y_kind = derive_freq(chart)
+    tones, marks, restored, hide, sums = derive_marks(chart, series, polygon)
     n = len(b) - 1
     kind = chart['kind']
     fx, _, xvals = doc.axis_map('x-tick', 'x')
     fy, _, yvals = doc.axis_map('y-tick', 'y')
     if set(xvals) != set(b): doc.err('SC_X_TICKS_NOT_BOUNDARIES')
-    top = max(v for s in series for v in s['values'])
+    top = max(v for s in series for v in s['values'] if v is not None)
     if max(yvals) <= top: doc.err('SC_Y_AXIS_DOES_NOT_REACH_DATA')
     steps = {yvals[i + 1] - yvals[i] for i in range(len(yvals) - 1)}
     if len(steps) > 1 or (yvals and yvals[0] != min(steps or {yvals[0]})): doc.err('SC_Y_TICKS_NOT_EVEN')
@@ -194,53 +323,138 @@ def audit_freq(chart, doc):
     bars = doc.role('rect', 'bar')
     if kind == 'FREQUENCY_POLYGON' and bars: doc.err('SC_BARS_IN_POLYGON_CHART')
     if kind == 'HISTOGRAM':
-        highlight = set(chart.get('highlightClasses') or [])
         values = series[0]['values']
-        if len(bars) != n: doc.err('SC_BAR_COUNT')
+        shown_classes = {i for i, v in enumerate(values) if v is not None}  # a hidden class has no bar
+        if len(bars) != len(shown_classes): doc.err('SC_BAR_COUNT')
         for bar in bars:
             i = int(bar.get('data-class', -1))
-            if not 0 <= i < n: doc.err('SC_BAR_INDEX'); continue
+            if i not in shown_classes: doc.err('SC_BAR_INDEX' if not 0 <= i < n else 'SC_BAR_HIDDEN_CLASS:%d' % i); continue
             x0, x1 = fx(b[i]), fx(b[i + 1])
             top_y = fy(values[i])
             if abs(num(bar, 'x') - x0) > TOL or abs(num(bar, 'x') + num(bar, 'width') - x1) > TOL: doc.err('SC_BAR_X_RANGE:%d' % i)
             if abs(num(bar, 'y') - top_y) > TOL or abs(num(bar, 'y') + num(bar, 'height') - base) > TOL: doc.err('SC_BAR_HEIGHT:%d' % i)
-            want = 'barHi' if i in highlight else 'bar'
-            if (bar.get('fill') or '').lower() != FILL[want] or bar.get('data-highlight') != ('1' if i in highlight else '0'): doc.err('SC_BAR_HIGHLIGHT:%d' % i)
-        if {int(bar.get('data-class', -1)) for bar in bars} != set(range(n)): doc.err('SC_BAR_CLASSES')
+            tone = tones.get(i, 0)
+            want = ['bar', 'barHi', 'barHi2'][tone]
+            if (bar.get('fill') or '').lower() != FILL[want] or bar.get('data-highlight') != str(tone): doc.err('SC_BAR_HIGHLIGHT:%d' % i)
+            dashed = bar.get('stroke-dasharray') is not None
+            if dashed != (i in restored) or (bar.get('data-restored') == '1') != (i in restored): doc.err('SC_BAR_RESTORED:%d' % i)
+        if {int(bar.get('data-class', -1)) for bar in bars} != shown_classes: doc.err('SC_BAR_CLASSES')
     polylines = doc.role('polyline', 'polygon')
     vertices = [e for e in doc.circles if e.get('data-vertex') is not None]
     if not polygon:
         if polylines or vertices: doc.err('SC_UNEXPECTED_POLYGON')
     else:
-        if len(polylines) != len(series): doc.err('SC_POLYGON_COUNT')
         for s, serie in enumerate(series):
-            line = [p for p in polylines if p.get('data-series') == str(s)]
-            dots = sorted([d for d in vertices if d.get('data-series') == str(s)], key=lambda d: int(d.get('data-vertex')))
-            if len(line) != 1: doc.err('SC_POLYGON_COUNT:%d' % s); continue
-            try: points = [tuple(float(v) for v in pair.split(',')) for pair in line[0].get('points').split()]
-            except ValueError: doc.err('SC_POLYGON_POINTS_UNREADABLE'); continue
-            want = [(fx(x), fy(y)) for x, y in serie['vertices']]
-            if len(points) != len(want) or len(dots) != len(want): doc.err('SC_POLYGON_VERTEX_COUNT:%d' % s); continue
-            for k, ((px, py), (wx, wy)) in enumerate(zip(points, want)):
-                if abs(px - wx) > TOL or abs(py - wy) > TOL: doc.err('SC_POLYGON_VERTEX:%d:%d' % (s, k))
-                if abs(num(dots[k], 'cx') - wx) > TOL or abs(num(dots[k], 'cy') - wy) > TOL: doc.err('SC_POLYGON_DOT:%d:%d' % (s, k))
-            if points and (abs(points[0][1] - base) > TOL or abs(points[-1][1] - base) > TOL): doc.err('SC_POLYGON_ENDS_NOT_ZERO:%d' % s)
-            if (line[0].get('stroke-dasharray') is not None) != (s == 1): doc.err('SC_POLYGON_STYLE:%d' % s)
-    # value labels
-    shown = {l.get('data-class'): l for l in doc.label_role('value')}
+            want = [None if v is None else (fx(v[0]), fy(v[1])) for v in serie['vertices']]
+            dots = {}
+            for d in vertices:
+                if d.get('data-series') == str(s): dots[int(d.get('data-vertex'))] = d
+            if set(dots) != {k for k, w in enumerate(want) if w is not None}: doc.err('SC_POLYGON_VERTEX_COUNT:%d' % s)
+            for k, d in dots.items():
+                if k < len(want) and want[k] is not None and (abs(num(d, 'cx') - want[k][0]) > TOL or abs(num(d, 'cy') - want[k][1]) > TOL): doc.err('SC_POLYGON_DOT:%d:%d' % (s, k))
+            if 0 in dots and abs(num(dots[0], 'cy') - base) > TOL or n + 1 in dots and abs(num(dots[n + 1], 'cy') - base) > TOL: doc.err('SC_POLYGON_ENDS_NOT_ZERO:%d' % s)
+            # a hidden class breaks the polygon: one polyline per run of consecutive known vertices (a lone vertex is only its dot)
+            runs, run = [], []
+            for k, w in enumerate(want + [None]):
+                if w is not None: run.append((k, w))
+                else:
+                    if len(run) >= 2: runs.append(run)
+                    run = []
+            lines = [p for p in polylines if p.get('data-series') == str(s)]
+            if len(lines) != len(runs): doc.err('SC_POLYGON_COUNT:%d' % s); continue
+            drawn = []
+            for line in lines:
+                try: drawn.append([tuple(float(v) for v in pair.split(',')) for pair in line.get('points').split()])
+                except ValueError: doc.err('SC_POLYGON_POINTS_UNREADABLE'); drawn.append([])
+                if (line.get('stroke-dasharray') is not None) != (s == 1): doc.err('SC_POLYGON_STYLE:%d' % s)
+            drawn.sort(key=lambda pts: pts[0][0] if pts else 0)
+            for pts, run in zip(drawn, sorted(runs, key=lambda r: r[0][1][0])):
+                if len(pts) != len(run): doc.err('SC_POLYGON_VERTEX_COUNT:%d' % s); continue
+                for (px, py), (k, (wx, wy)) in zip(pts, run):
+                    if abs(px - wx) > TOL or abs(py - wy) > TOL: doc.err('SC_POLYGON_VERTEX:%d:%d' % (s, k))
+    # marked polygon points: a ring or a solid dot on exactly the planned vertices
+    drawn_marks = {}
+    for e in doc.role('circle', 'point-mark'):
+        key = (int(e.get('data-series', -1)), int(e.get('data-class', -1)))
+        if key in drawn_marks: doc.err('SC_MARK_DUPLICATE:%d:%d' % key)
+        drawn_marks[key] = e
+    if set(drawn_marks) != set(marks): doc.err('SC_MARK_SET_MISMATCH')
+    for (s, k), e in drawn_marks.items():
+        if (s, k) not in marks: continue
+        spec = marks[(s, k)]
+        v = series[s]['values'][k]
+        if abs(num(e, 'cx') - fx(mids[k])) > TOL or abs(num(e, 'cy') - fy(v)) > TOL: doc.err('SC_MARK_NOT_ON_POINT:%d:%d' % (s, k))
+        ring = (e.get('fill') or 'none') == 'none'
+        if e.get('data-tone') != str(spec['tone']) or ring != (spec['tone'] == 1) or not 5 <= num(e, 'r') <= 12: doc.err('SC_MARK_STYLE:%d:%d' % (s, k))
+    # value labels: the plan's own list of labelled points, each with the right number, tied to its owner, near its point and clear of every drawn line
+    wanted = set()
     if chart.get('showValues') is True:
         for i, v in enumerate(series[0]['values']):
-            if v == 0: continue
-            label = shown.get(str(i))
-            if label is None: doc.err('SC_VALUE_LABEL_MISSING:%d' % i); continue
-            try: read = tex_number(label.get('data-tex'))
-            except ValueError as e: doc.err(str(e)); continue
-            if read != v: doc.err('SC_VALUE_LABEL_VALUE:%d' % i)
-            cx, cy = centre(label)
-            if abs(cx - fx(mids[i])) > LABEL_TOL: doc.err('SC_VALUE_LABEL_NOT_CENTRED:%d' % i)
-            if cy > fy(v): doc.err('SC_VALUE_LABEL_NOT_ABOVE:%d' % i)
-        if len(shown) != sum(1 for v in series[0]['values'] if v != 0): doc.err('SC_VALUE_LABEL_COUNT')
-    elif shown: doc.err('SC_VALUE_LABELS_UNEXPECTED')
+            if v is None or v == 0 or (i in restored and chart.get('showRestoredValues') is not True) or i in hide: continue
+            wanted.add((0, i))
+    wanted |= {key for key, spec in marks.items() if spec['show']}
+    shown = {}
+    for l in doc.label_role('value'):
+        key = (int(l.get('data-series', 0)), int(l.get('data-class', -1)))
+        if key in shown: doc.err('SC_VALUE_LABEL_DUPLICATE:%d' % key[1])
+        shown[key] = l
+    obstacles = drawn_obstacles(doc) if shown else []
+    for key in sorted(wanted):
+        s, i = key
+        label = shown.get(key)
+        if label is None: doc.err('SC_VALUE_LABEL_MISSING:%d' % i); continue
+        v = series[s]['values'][i]
+        try: read = tex_number(label.get('data-tex'))
+        except ValueError as e: doc.err(str(e)); continue
+        if read != v: doc.err('SC_VALUE_LABEL_VALUE:%d' % i)
+        ax, ay = fx(mids[i]), fy(v)
+        owner = doc.by_id.get(label.get('data-owner'))
+        if owner is None or (owner.get('data-vertex') is not None and (int(owner.get('data-series', -1)), int(owner.get('data-vertex')) - 1) != key) or (owner.get('data-role') == 'bar' and (s, int(owner.get('data-class', -1))) != key):
+            doc.err('SC_VALUE_LABEL_OWNER:%d' % i)
+        cx, cy = centre(label)
+        box = box_of(label)
+        if not polygon:
+            if abs(cx - ax) > LABEL_TOL: doc.err('SC_VALUE_LABEL_NOT_CENTRED:%d' % i)
+            if cy > ay: doc.err('SC_VALUE_LABEL_NOT_ABOVE:%d' % i)
+        elif math.hypot(cx - ax, cy - ay) > 70 or box_distance(box, (ax, ay)) < 1: doc.err('SC_VALUE_LABEL_FAR_FROM_POINT:%d' % i)
+        if clearance(box, obstacles) <= 0: doc.err('SC_VALUE_LABEL_TOUCHES_LINE:%d' % i)
+        for other in doc.labels:
+            if other is label or other.get('data-label-role') == 'value' and other.get('id') < label.get('id'): continue  # two value labels are compared once
+            ox, oy, ow, oh = box_of(other)
+            if box[0] < ox + ow and ox < box[0] + box[2] and box[1] < oy + oh and oy < box[1] + box[3]: doc.err('SC_VALUE_LABEL_OVERLAP:%d' % i)
+    for key in shown:
+        if key not in wanted: doc.err('SC_VALUE_LABELS_UNEXPECTED' if not wanted else 'SC_VALUE_LABEL_UNEXPECTED:%d' % key[1])
+    # class sums: a bracket under the x tick labels from the left edge of class `from` to the right edge of class `to`, its sum written beneath
+    brackets = doc.role('polyline', 'class-sum')
+    key_of = lambda e: (int(e.get('data-series', -1)), int(e.get('data-from', -1)), int(e.get('data-to', -1)))
+    if sorted(key_of(e) for e in brackets) != sorted((m['series'], m['from'], m['to']) for m in sums): doc.err('SC_CLASS_SUM_SET_MISMATCH')
+    tick_bottom = max((box_of(l)[1] + box_of(l)[3] for l in doc.label_role('x-tick')), default=base)
+    for e in brackets:
+        found = [m for m in sums if (m['series'], m['from'], m['to']) == key_of(e)]
+        if len(found) != 1: continue
+        m = found[0]
+        tag = '%d-%d-%d' % key_of(e)
+        try: pts = [tuple(float(v) for v in pair.split(',')) for pair in e.get('points').split()]
+        except Exception: doc.err('SC_CLASS_SUM_POINTS:' + tag); continue
+        if len(pts) != 4 or abs(pts[0][0] - pts[1][0]) > TOL or abs(pts[2][0] - pts[3][0]) > TOL or abs(pts[1][1] - pts[2][1]) > TOL or abs(pts[0][1] - pts[3][1]) > TOL or not pts[1][1] > pts[0][1]:
+            doc.err('SC_CLASS_SUM_SHAPE:' + tag); continue
+        xl, xr, yb = pts[0][0], pts[3][0], pts[1][1]
+        lo, hi = m['from'], m['to']
+        # the left end lies in the left half of class `from` and the right end in the right half of class `to`: it spans exactly those classes
+        if not fx(b[lo]) - TOL <= xl < fx(mids[lo]) or not fx(mids[hi]) < xr <= fx(b[hi + 1]) + TOL: doc.err('SC_CLASS_SUM_SPAN:' + tag)
+        if pts[0][1] < tick_bottom + 1 or yb <= base: doc.err('SC_CLASS_SUM_NOT_BELOW:' + tag)
+        if (e.get('stroke-dasharray') is not None) != (m['series'] == 1): doc.err('SC_CLASS_SUM_STYLE:' + tag)
+        texts = [l for l in doc.owners.get(e.get('id'), []) if l.get('data-label-role') == 'class-sum']
+        if m['label'] is None:
+            if texts: doc.err('SC_CLASS_SUM_LABEL_UNEXPECTED:' + tag)
+        elif len(texts) != 1: doc.err('SC_CLASS_SUM_LABEL_COUNT:' + tag)
+        else:
+            text = texts[0].get('data-text') or ''
+            read = re.fullmatch(r'(\?|\d+(?:\.\d+)?)(.*)', text)
+            if read is None or read.group(2) != m['unit'] or read.group(1) != m['label'] and (read.group(1) == '?' or m['label'] == '?' or Fraction(read.group(1)) != Fraction(m['label'])): doc.err('SC_CLASS_SUM_LABEL_VALUE:' + tag)
+            lx, _ = centre(texts[0])
+            if abs(lx - (xl + xr) / 2) > LABEL_TOL: doc.err('SC_CLASS_SUM_LABEL_NOT_CENTRED:' + tag)
+            if box_of(texts[0])[1] < yb: doc.err('SC_CLASS_SUM_LABEL_NOT_BELOW:' + tag)
     doc.check_title('x-title', chart.get('xTitle', '계급'), 'x')
     doc.check_title('y-title', chart.get('yTitle', '도수(명)' if y_kind == 'FREQUENCY' else '상대도수'), 'y')
     legends = doc.label_role('legend')
@@ -255,7 +469,11 @@ def audit_freq(chart, doc):
         if horizontal != {round(fy(v), 1) for v in yvals}: doc.err('SC_GRID_HORIZONTAL')
         if vertical != {round(fx(v), 1) for v in b[1:]}: doc.err('SC_GRID_VERTICAL')
     elif grids: doc.err('SC_GRID_UNEXPECTED')
-    return {'classes': n, 'yKind': y_kind, 'polygon': polygon, 'totals': [sum(s['values']) for s in series].__repr__()}
+    observed = {'classes': n, 'yKind': y_kind, 'polygon': polygon, 'totals': [sum(v for v in s['values'] if v is not None) for s in series].__repr__()}
+    if any(None in s['values'] for s in series): observed['hidden'] = [[k for k, v in enumerate(s['values']) if v is None] for s in series]
+    if marks: observed['marks'] = sorted([s, k, spec['tone']] for (s, k), spec in marks.items())
+    if sums: observed['sums'] = [[m['series'], m['from'], m['to'], m['label']] for m in sums]
+    return observed
 
 
 def stem_plan(chart):

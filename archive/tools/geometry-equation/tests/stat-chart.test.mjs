@@ -240,6 +240,179 @@ test('the key text takes 은 or 는 from the reading of the leaf digit, and the 
   }finally{await browser.close();}
 });
 
+// ---- E26: marks a solution figure puts on a frequency chart (erased classes, restored bars, emphasis tones, marked polygon points, class sums, hidden values) ----------------
+// 25 팔마중 2학기 기말 중1 19: the 13~14 and 14~15 classes are erased (null); a bracket over the three known classes and a bracket over the erased ones
+const erased={kind:'HISTOGRAM',polygon:true,boundaries:['10','11','12','13','14','15','16','17'],series:[{frequencies:[1,5,8,null,null,5,2]}],xTitle:'시간',grid:true,highlightClasses:[0,1,2],
+  classSums:[{from:0,to:2,label:'14',unit:'명'},{from:3,to:4,label:'?'}]};
+// 25 신흥중 2학기 기말 중1 15: two restored bars (dashed), the asked bar's value hidden, the 10+ classes in one tone with their sum
+const restoredHist={kind:'HISTOGRAM',boundaries:['0','5','10','15','20','25'],series:[{frequencies:[3,6,5,14,2]}],total:30,showValues:true,restoredClasses:[1,2],showRestoredValues:true,hideValues:[1],
+  highlightClasses:[2,3,4],classSums:[{from:2,to:4,label:'21',unit:'명'}]};
+// 25 팔마중 2학기 기말 중1 24: two polygons, the 80+ points of both marked, B's bracket (dashed like B's polygon)
+const marked={kind:'FREQUENCY_POLYGON',boundaries:['50','60','70','80','90','100'],series:[{name:'A반',frequencies:[3,6,7,3,1]},{name:'B반',frequencies:[1,5,8,4,2]}],xTitle:'점수(점)',grid:true,
+  highlightClasses:[3,4],classSums:[{series:1,from:3,to:4,label:'6',unit:'명'}]};
+// 25 풍덕중 2학기 기말 중1 17: all values written on a histogram with its polygon (the labels leave the polygon lines), two emphasis tones with a bracket each
+const valued={kind:'HISTOGRAM',polygon:true,boundaries:['20','25','30','35','40','45','50'],series:[{frequencies:[2,5,6,12,10,5]}],xTitle:'기록(회)',grid:true,showValues:true,
+  highlightClasses:[{classes:[0,1,2],tone:1},{class:5,tone:2}],classSums:[{from:0,to:2,label:'13',unit:'명'},{from:5,to:5,label:'5',unit:'명'}]};
+// 25 풍덕중 2학기 기말 중1 18: one point of a polygon ringed and its value written
+const ringed={kind:'FREQUENCY_POLYGON',yKind:'RELATIVE',total:100,boundaries:['10','20','30','40','50','60'],series:[{frequencies:[10,15,25,30,20]}],highlightPoints:[{series:0,class:4,showValue:true}]};
+
+test('hidden classes, restored bars, tones, marked points, class sums and hidden values are derived exactly',()=>{
+  const m=solveStatChart(erased);
+  assert.deepEqual(m.series[0].values,['1','5','8',null,null,'5','2']);
+  assert.equal(m.series[0].vertices[4],null);assert.equal(m.series[0].vertices[5],null);assert.deepEqual(m.series[0].vertices[3],['12.5','8']);
+  assert.deepEqual(m.classSums.map(s=>[s.from,s.to,s.label,s.unit]),[[0,2,'14','명'],[3,4,'?','']]);
+  assert.equal(m.y.top,'9');// the axis follows the known classes (largest 8)
+  // a stated total fixes what the hidden classes add up to: the label of a bracket over exactly the hidden classes is then checked
+  const withTotal=solveStatChart({...erased,total:35,classSums:[{from:3,to:4,label:'14'}]});
+  assert.equal(withTotal.series[0].hiddenSum,'14');assert.equal(withTotal.classSums[0].label,'14');
+  assert.equal(solveStatChart({...erased,series:[{relativeFrequencies:['0.1','0.2','0.3',null,null,'0.1','0.1']}],classSums:[{from:3,to:4,label:'0.2'}]}).series[0].hiddenSum,'0.2');// relative frequencies add up to 1
+  assert.equal(solveStatChart({...erased,yKind:'RELATIVE',total:40,classSums:[{from:0,to:2,label:'0.35'}]}).series[0].values[0],'0.025');
+  // restored bars and tones
+  const r=solveStatChart(restoredHist);
+  assert.deepEqual([r.restored,r.hideValues,r.showRestoredValues,r.highlight],[[1,2],[1],true,[2,3,4]]);
+  assert.equal(r.classSums[0].label,'21');
+  const v=solveStatChart(valued);
+  assert.deepEqual([v.highlight,v.highlightTone2],[[0,1,2,5],[5]]);
+  // a polygon-only chart marks the points of every series at a highlighted class, the plan's own points add to them
+  const mk=solveStatChart(marked);
+  assert.deepEqual(mk.marks.map(x=>[x.series,x.class,x.tone]),[[0,3,1],[0,4,1],[1,3,1],[1,4,1]]);
+  assert.deepEqual(solveStatChart(ringed).marks,[{series:0,class:4,tone:1,showValue:true}]);
+  assert.deepEqual(solveStatChart({...marked,highlightClasses:undefined,classSums:undefined,highlightPoints:[{series:1,class:2,tone:2},{series:0,class:0}]}).marks.map(x=>[x.series,x.class,x.tone]),[[0,0,1],[1,2,2]]);
+  // a plan without any of the new fields keeps the keys of its model
+  const old=solveStatChart(hist);
+  assert.deepEqual(Object.keys(old),['schemaVersion','kind','yKind','polygon','grid','showValues','highlight','xTitle','yTitle','boundaries','width','classes','series','y']);
+  assert.deepEqual(Object.keys(old.series[0]),['name','frequencies','total','values','vertices']);
+});
+test('erased, restored, highlighted, marked and summed charts that cannot be drawn faithfully are refused with their codes',()=>{
+  const some=(extra)=>({...erased,classSums:undefined,highlightClasses:undefined,...extra});
+  refuse(some({series:[{frequencies:[null,null,null,null,null,null,null]}]}),'STAT_FREQUENCY_INVALID');
+  refuse(some({series:[{frequencies:[1,5,8,null,null,5,2]}],yKind:'RELATIVE'}),'STAT_UNKNOWN_NEEDS_TOTAL');
+  refuse(some({total:20}),'STAT_FREQUENCY_TOTAL_MISMATCH');// the known classes already add up to 21
+  refuse(some({series:[{relativeFrequencies:['0.5','0.4',null,'0.2']}],boundaries:['0','1','2','3','4']}),'STAT_RELATIVE_SUM_NOT_ONE');
+  refuse(some({highlightClasses:[3]}),'STAT_HIGHLIGHT_UNKNOWN_CLASS');
+  refuse({...valued,highlightClasses:[{class:1,tone:3}]},'STAT_HIGHLIGHT_INVALID');
+  refuse({...valued,highlightClasses:[{class:1,classes:[2]}]},'STAT_HIGHLIGHT_INVALID');
+  refuse({...valued,highlightClasses:[{classes:[0,1]},2,{class:1}]},'STAT_HIGHLIGHT_INVALID');
+  refuse({...valued,highlightClasses:[{classes:[]}]},'STAT_HIGHLIGHT_INVALID');
+  // marked points
+  refuse({...restoredHist,restoredClasses:undefined,hideValues:undefined,highlightPoints:[{series:0,class:1}]},'STAT_HIGHLIGHT_POINT_INVALID');// a histogram without polygon has no points
+  refuse({...ringed,highlightPoints:[{class:1},{class:1}]},'STAT_HIGHLIGHT_POINT_INVALID');
+  refuse({...ringed,highlightPoints:[{series:1,class:1}]},'STAT_HIGHLIGHT_POINT_INVALID');
+  refuse({...ringed,highlightPoints:[{class:9}]},'STAT_HIGHLIGHT_POINT_INVALID');
+  refuse({...ringed,highlightPoints:[{class:1,tone:0}]},'STAT_HIGHLIGHT_POINT_INVALID');
+  refuse({...ringed,highlightPoints:[{class:1,extra:1}]},'STAT_HIGHLIGHT_POINT_INVALID');
+  refuse({...ringed,showValues:true},'STAT_HIGHLIGHT_POINT_INVALID');// showValues already writes every value
+  refuse({...erased,highlightClasses:undefined,classSums:undefined,highlightPoints:[{class:3}]},'STAT_HIGHLIGHT_UNKNOWN_CLASS');
+  refuse({...marked,highlightClasses:[3],highlightPoints:[{series:0,class:3}]},'STAT_HIGHLIGHT_POINT_INVALID');// the class mark already rings that point
+  // restored bars and hidden values
+  refuse({...restoredHist,polygon:true},'STAT_RESTORED_UNSUPPORTED');
+  refuse({...restoredHist,kind:'FREQUENCY_POLYGON'},'STAT_RESTORED_UNSUPPORTED');
+  refuse({...restoredHist,total:undefined},'STAT_RESTORED_NEEDS_TOTAL');
+  refuse({...restoredHist,restoredClasses:[1,1]},'STAT_RESTORED_INVALID');
+  refuse({...restoredHist,restoredClasses:[7]},'STAT_RESTORED_INVALID');
+  refuse({...restoredHist,hideValues:[1,1]},'STAT_HIDE_VALUES_INVALID');
+  refuse({...restoredHist,showValues:false},'STAT_HIDE_VALUES_INVALID');
+  refuse({...restoredHist,hideValues:[]},'STAT_HIDE_VALUES_INVALID');
+  // class sums
+  refuse({...restoredHist,classSums:[{from:2,to:4,label:'22'}]},'STAT_CLASS_SUM_LABEL_MISMATCH');
+  refuse({...restoredHist,classSums:[{from:2,to:4,label:'?'}]},'STAT_CLASS_SUM_LABEL_INVALID');// nothing hidden to ask for
+  refuse({...restoredHist,classSums:[{from:2,to:4,label:'2,1'}]},'STAT_CLASS_SUM_LABEL_INVALID');
+  refuse({...restoredHist,classSums:[{from:4,to:2}]},'STAT_CLASS_SUM_INVALID');
+  refuse({...restoredHist,classSums:[{from:2,to:9}]},'STAT_CLASS_SUM_INVALID');
+  refuse({...restoredHist,classSums:[]},'STAT_CLASS_SUM_INVALID');
+  refuse({...restoredHist,classSums:[{from:0,to:1},{from:1,to:2}]},'STAT_CLASS_SUM_OVERLAP');
+  refuse({...restoredHist,classSums:[{from:2,to:4,unit:'명명명명'}]},'STAT_CLASS_SUM_UNIT_INVALID');
+  refuse({...restoredHist,classSums:[{from:2,to:4,series:1}]},'STAT_CLASS_SUM_INVALID');
+  refuse(some({classSums:[{from:3,to:4,label:'14'}]}),'STAT_CLASS_SUM_UNKNOWN');// no total: the hidden classes add up to nobody knows what
+  refuse(some({total:35,classSums:[{from:3,to:3,label:'7'}]}),'STAT_CLASS_SUM_UNKNOWN');// one hidden class of two: still not known
+  refuse(some({total:35,classSums:[{from:3,to:4,label:'13'}]}),'STAT_CLASS_SUM_LABEL_MISMATCH');
+  assert.equal(solveStatChart({...marked,classSums:[{series:0,from:3,to:4},{series:1,from:3,to:4}]}).classSums.length,2);// two series may bracket the same classes
+});
+test('the observer passes erased classes, restored bars, tones, marked points, class sums and hidden values, and catches each one on the wrong class or place',async()=>{
+  const browser=await launchBrowser();
+  try{
+    const wire=chart=>JSON.parse(JSON.stringify(chart));// a plan sent to the engine or the observer has no undefined fields
+    const compose=async(chart,n)=>{
+      const composed=await composeStatChartFigure({plan:plan(wire(chart)),model:solveStatChart(chart),identity:assetIdentity('26_테스트|'+n,'SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
+      assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+      assert.equal(composed.staticAudit.status,'PASS');assert.equal(composed.renderedLayout.status,'PASS');
+      return composed.svg;
+    };
+    const audit=async(chart,svg)=>(await pythonWorker({chart:wire(chart),svg},{script:observer})).result;
+    const pass=async(chart,svg)=>{const r=await audit(chart,svg);assert.equal(r.status,'PASS',JSON.stringify(r.errors));return r;};
+    const bump=(svg,id,attr,delta)=>{const re=new RegExp(`(id="${id}"[^>]*? ${attr}=")(-?[\\d.]+)`);assert.ok(re.test(svg),id);return svg.replace(re,(m,head,x)=>head+(Number(x)+delta));};
+    const known={...erased,series:[{frequencies:[1,5,8,4,3,5,2]}],classSums:undefined};
+    // erased classes: no bar, no vertex, the polygon in two pieces
+    let svg=await compose(erased,30);
+    let r=await pass(erased,svg);assert.deepEqual(r.observed.hidden,[[3,4]]);
+    assert.ok(!/id="bar-s0-3"|id="bar-s0-4"|id="vertex-s0-4"|id="vertex-s0-5"/.test(svg));
+    assert.equal((svg.match(/id="polygon-s0/g)||[]).length,2);
+    const wrongPlan=(await audit(known,svg)).errors;// the SVG has two polygon pieces and five bars where the plan says one piece and seven bars
+    assert.ok(wrongPlan.includes('SC_POLYGON_COUNT:0')&&wrongPlan.includes('SC_BAR_COUNT'));
+    const knownSvg=await compose(known,31);
+    assert.ok(has(await audit(erased,knownSvg),'SC_BAR_HIDDEN_CLASS:3'));
+    assert.ok(has(await audit(erased,knownSvg),'SC_POLYGON_VERTEX_COUNT:0'));
+    // class-sum brackets: the classes they span, their text and their place
+    const shifted=svg.replace(/(id="class-sum-0"[^>]*points=")([^"]*)"/,(m,head,pts)=>head+pts.split(' ').map(p=>{const [x,y]=p.split(',');return (Number(x)+60)+','+y;}).join(' ')+'"');
+    assert.ok(has(await audit(erased,shifted),'SC_CLASS_SUM_SPAN:0-0-2'));
+    const text=(from,to)=>svg.replace(new RegExp(`(id="class-sum-0-label"[^>]*data-text=")${from}`),(m,head)=>head+to);
+    assert.ok(has(await audit(erased,text('14명','15명')),'SC_CLASS_SUM_LABEL_VALUE:0-0-2'));
+    assert.ok(has(await audit(erased,text('14명','14개')),'SC_CLASS_SUM_LABEL_VALUE:0-0-2'));
+    assert.ok(has(await audit({...erased,classSums:[{from:0,to:2,unit:'명'},erased.classSums[1]]},svg),'SC_CLASS_SUM_LABEL_UNEXPECTED:0-0-2'));
+    assert.ok(has(await audit({...erased,classSums:[{from:0,to:1,label:'6',unit:'명'},erased.classSums[1]]},svg),'SC_CLASS_SUM_SET_MISMATCH'));
+    const raised=svg.replace(/(id="class-sum-1"[^>]*points=")([^"]*)"/,(m,head,pts)=>head+pts.split(' ').map(p=>{const [x,y]=p.split(',');return x+','+(Number(y)-30);}).join(' ')+'"');
+    assert.ok(has(await audit(erased,raised),'SC_CLASS_SUM_NOT_BELOW:0-3-4'));
+    // restored bars (dashed), tones, the asked value left out, the sum of the three tinted classes
+    svg=await compose(restoredHist,32);
+    await pass(restoredHist,svg);
+    assert.equal((svg.match(/stroke-dasharray="5 3"/g)||[]).length,2);
+    assert.ok(!/id="value-1"/.test(svg));assert.ok(/id="value-2"/.test(svg));
+    assert.ok(has(await audit({...restoredHist,restoredClasses:[1]},svg),'SC_BAR_RESTORED:2'));
+    assert.ok(has(await audit({...restoredHist,restoredClasses:[1,3]},svg),'SC_BAR_RESTORED:3'));
+    assert.ok(has(await audit({...restoredHist,highlightClasses:[{class:2,tone:2},3,4]},svg),'SC_BAR_HIGHLIGHT:2'));
+    assert.ok(has(await audit({...restoredHist,highlightClasses:[1,3,4]},svg),'SC_BAR_HIGHLIGHT:1'));
+    assert.ok(has(await audit({...restoredHist,hideValues:undefined},svg),'SC_VALUE_LABEL_MISSING:1'));
+    assert.ok(has(await audit({...restoredHist,hideValues:[1,3]},svg),'SC_VALUE_LABEL_UNEXPECTED:3'));
+    assert.ok(has(await audit({...restoredHist,showRestoredValues:false},svg),'SC_VALUE_LABEL_UNEXPECTED:2'));
+    assert.ok(has(await audit(restoredHist,svg.replace('data-restored="1"','data-restored="0"')),'SC_BAR_RESTORED'));
+    // two polygons: the points of both series ringed at the highlighted classes, B's bracket dashed
+    svg=await compose(marked,33);
+    r=await pass(marked,svg);assert.deepEqual(r.observed.marks,[[0,3,1],[0,4,1],[1,3,1],[1,4,1]]);
+    assert.ok(has(await audit(marked,bump(svg,'mark-s1-c4','cx',61)),'SC_MARK_NOT_ON_POINT:1:4'));
+    assert.ok(has(await audit(marked,bump(svg,'mark-s0-c3','cy',-30)),'SC_MARK_NOT_ON_POINT:0:3'));
+    assert.ok(has(await audit({...marked,highlightClasses:[2,3]},svg),'SC_MARK_SET_MISMATCH'));
+    assert.ok(has(await audit({...marked,highlightClasses:[3,{class:4,tone:2}]},svg),'SC_MARK_STYLE:0:4'));
+    assert.ok(has(await audit({...marked,highlightClasses:[3]},svg),'SC_MARK_SET_MISMATCH'));
+    assert.ok(has(await audit({...marked,classSums:[{series:0,from:3,to:4,label:'4',unit:'명'}]},svg),'SC_CLASS_SUM_SET_MISMATCH'));
+    assert.ok(has(await audit(marked,svg.replace(/(id="class-sum-0"[^>]*) stroke-dasharray="4 3"/,'$1')),'SC_CLASS_SUM_STYLE:1-3-4'));
+    // all values on a histogram with its polygon: no label touches a polygon line, two tones with a bracket each
+    svg=await compose(valued,34);
+    await pass(valued,svg);
+    assert.equal((svg.match(/fill="#8e8e8e"/g)||[]).length,1);assert.equal((svg.match(/fill="#b5b5b5"/g)||[]).length,3);
+    assert.ok(has(await audit({...valued,highlightClasses:[{classes:[0,1,2],tone:1},5]},svg),'SC_BAR_HIGHLIGHT:5'));
+    // a label slid onto its polygon vertex, or far from it, is caught
+    const box=id=>{const m=new RegExp(`id="${id}"[^>]*data-box="([^"]*)"`).exec(svg);assert.ok(m,id);return m[1].split(',').map(Number);};
+    const vx=Number(/id="vertex-s0-4"[^>]*cx="([\d.]+)" cy="([\d.]+)"/.exec(svg)[1]),vy=Number(/id="vertex-s0-4"[^>]*cx="([\d.]+)" cy="([\d.]+)"/.exec(svg)[2]);
+    const [,,w3,h3]=box('value-3');
+    // the labels the polygon would cross are moved off their default place; the one over the peak stays centred above its vertex
+    const centreX=id=>{const [x,,w]=box(id);return x+w/2;},vertexX=k=>Number(new RegExp(`id="vertex-s0-${k}"[^>]*cx="([\\d.]+)"`).exec(svg)[1]);
+    for(const i of [1,3])assert.ok(Math.abs(centreX(`value-${i}`)-vertexX(i+1))<.01,`value-${i} stays above its vertex`);
+    for(const i of [0,2,4,5])assert.ok(Math.abs(centreX(`value-${i}`)-vertexX(i+1))>5,`value-${i} is moved off the polygon`);
+    const moved=(x,y)=>svg.replace(/(id="value-3"[^>]*data-box=")[^"]*"/,`$1${x},${y},${w3},${h3}"`);
+    assert.ok(has(await audit(valued,moved(vx-w3/2,vy-h3/2)),'SC_VALUE_LABEL_TOUCHES_LINE:3'));
+    assert.ok(has(await audit(valued,moved(vx+90,vy-90)),'SC_VALUE_LABEL_FAR_FROM_POINT:3'));
+    assert.ok(has(await audit(valued,svg.replace(/(id="value-3"[^>]*data-tex="\\displaystyle )12/,(m,head)=>head+'13')),'SC_VALUE_LABEL_VALUE:3'));
+    // one point ringed, its value written beside it (the label is moved off the polygon line when the place above is taken)
+    svg=await compose(ringed,35);
+    r=await pass(ringed,svg);assert.deepEqual(r.observed.marks,[[0,4,1]]);
+    assert.ok(has(await audit({...ringed,highlightPoints:[{class:4}]},svg),'SC_VALUE_LABELS_UNEXPECTED'));
+    assert.ok(has(await audit({...ringed,highlightPoints:[{class:3,showValue:true}]},svg),'SC_MARK_SET_MISMATCH'));
+    // a bars-only histogram without any new field keeps its labels centred above the bars (the old default place)
+    const plain={kind:'HISTOGRAM',boundaries:['30','35','40','45','50','55'],series:[{frequencies:[3,6,9,5,2]}],showValues:true,highlightClasses:[2]};
+    svg=await compose(plain,36);
+    await pass(plain,svg);// the observer insists on the centred-above place for a bars-only chart
+  }finally{await browser.close();}
+});
 test('render-plan routes a stat-chart plan and reports an unfaithful chart at its stage with the engine code',async()=>{
   const out=fs.mkdtempSync(path.join(os.tmpdir(),'stat-chart-'));
   const r=await renderPlan({item:{sourcePath:'archive/exams/test-exam.js',ordinal:3,dir:'t'},plan:plan({...hist,boundaries:['20','25','31','35']}),outDir:out});

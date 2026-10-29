@@ -1,5 +1,6 @@
 """Statistics-chart observer: the exact re-derivations and the tamper cases on a small hand-built dice table.
 No Chrome here: composed charts are exercised by tests/stat-chart.test.mjs."""
+import math
 import sys
 import unittest
 from fractions import Fraction
@@ -210,6 +211,62 @@ class StemKeyParticle(unittest.TestCase):
             other='는' if particle=='은' else '은'
             wrong=stem_svg({1:[digit]},key='1 | %d%s %d분'%(digit,other,10+digit))
             self.assertIn('SC_KEY_TEXT',S.audit(chart,wrong)['errors'])
+
+
+class FrequencyMarks(unittest.TestCase):
+    erased={'kind':'HISTOGRAM','polygon':True,'boundaries':['10','11','12','13','14','15','16','17'],'series':[{'frequencies':[1,5,8,None,None,5,2]}],'highlightClasses':[0,1,2],
+            'classSums':[{'from':0,'to':2,'label':'14','unit':'명'},{'from':3,'to':4,'label':'?'}]}
+
+    def test_hidden_classes_have_no_vertex_and_the_total_fixes_what_they_add_up_to(self):
+        _,_,_,series,polygon,_=S.derive_freq(self.erased)
+        self.assertEqual(series[0]['values'],[Fraction(1),Fraction(5),Fraction(8),None,None,Fraction(5),Fraction(2)])
+        self.assertEqual(series[0]['vertices'][4:6],[None,None])
+        self.assertIsNone(series[0]['hidden_sum'])
+        self.assertEqual(S.derive_freq({**self.erased,'total':35})[3][0]['hidden_sum'],Fraction(14))
+        relative=S.derive_freq({**self.erased,'series':[{'relativeFrequencies':['0.1','0.2','0.3',None,None,'0.1','0.1']}]})[3][0]
+        self.assertEqual(relative['hidden_sum'],Fraction(1,5))  # relative frequencies add up to 1
+        scaled=S.derive_freq({**self.erased,'yKind':'RELATIVE','total':40})[3][0]
+        self.assertEqual((scaled['values'][0],scaled['hidden_sum']),(Fraction(1,40),Fraction(19,40)))
+
+    def test_hidden_class_refusals(self):
+        for chart,code in (({**self.erased,'series':[{'frequencies':[None]*7}]},'STAT_FREQUENCY_INVALID'),
+                           ({**self.erased,'yKind':'RELATIVE'},'STAT_UNKNOWN_NEEDS_TOTAL'),
+                           ({**self.erased,'total':20},'STAT_FREQUENCY_TOTAL_MISMATCH')):
+            with self.assertRaises(ValueError) as context: S.derive_freq(chart)
+            self.assertEqual(str(context.exception),code)
+
+    def test_marks_tones_restored_hidden_values_and_sums_are_re_derived_from_the_plan(self):
+        marked={'kind':'FREQUENCY_POLYGON','boundaries':['50','60','70','80','90','100'],'series':[{'name':'A반','frequencies':[3,6,7,3,1]},{'name':'B반','frequencies':[1,5,8,4,2]}],
+                'highlightClasses':[3,{'class':4,'tone':2}],'highlightPoints':[{'series':1,'class':0,'showValue':True}],'classSums':[{'series':1,'from':3,'to':4,'label':'6','unit':'명'}]}
+        series,polygon=S.derive_freq(marked)[3:5]
+        tones,marks,restored,hide,sums=S.derive_marks(marked,series,polygon)
+        self.assertEqual(tones,{3:1,4:2})
+        self.assertEqual(marks,{(0,3):{'tone':1,'show':False},(1,3):{'tone':1,'show':False},(0,4):{'tone':2,'show':False},(1,4):{'tone':2,'show':False},(1,0):{'tone':1,'show':True}})
+        self.assertEqual(sums,[{'series':1,'from':3,'to':4,'label':'6','unit':'명'}])
+        hist={'kind':'HISTOGRAM','boundaries':['0','5','10','15','20','25'],'series':[{'frequencies':[3,6,5,14,2]}],'total':30,'showValues':True,'restoredClasses':[1,2],'hideValues':[1],
+              'highlightClasses':[{'classes':[2,3,4],'tone':1}],'classSums':[{'from':2,'to':4,'label':'21.0'}]}
+        series,polygon=S.derive_freq(hist)[3:5]
+        tones,marks,restored,hide,sums=S.derive_marks(hist,series,polygon)
+        self.assertEqual((tones,marks,restored,hide),({2:1,3:1,4:1},{},{1,2},{1}))
+        for chart,code in (({**hist,'classSums':[{'from':2,'to':4,'label':'22'}]},'STAT_CLASS_SUM_LABEL_MISMATCH'),
+                           ({**hist,'classSums':[{'from':2,'to':4,'label':'?'}]},'STAT_CLASS_SUM_LABEL_INVALID'),
+                           ({**self.erased,'classSums':[{'from':3,'to':4,'label':'14'}]},'STAT_CLASS_SUM_UNKNOWN'),
+                           ({**self.erased,'total':35,'classSums':[{'from':3,'to':3,'label':'7'}]},'STAT_CLASS_SUM_UNKNOWN'),
+                           ({**self.erased,'highlightClasses':[3]},'STAT_HIGHLIGHT_UNKNOWN_CLASS')):
+            series,polygon=S.derive_freq(chart)[3:5]
+            with self.assertRaises(ValueError) as context: S.derive_marks(chart,series,polygon)
+            self.assertEqual(str(context.exception),code)
+        series,polygon=S.derive_freq({**self.erased,'total':35,'classSums':[{'from':3,'to':4,'label':'14'}]})[3:5]
+        self.assertEqual(S.derive_marks({**self.erased,'total':35,'classSums':[{'from':3,'to':4,'label':'14'}]},series,polygon)[4][0]['label'],'14')
+
+    def test_geometry_helpers_measure_the_gap_between_a_label_box_and_a_line(self):
+        box=(10.0,10.0,20.0,10.0)  # x 10..30, y 10..20
+        self.assertEqual(S.segment_box_distance((0,0),(40,40),box),0.0)  # the diagonal runs through the box
+        self.assertAlmostEqual(S.segment_box_distance((0,25),(40,25),box),5.0)  # a level line 5 below it
+        self.assertAlmostEqual(S.segment_box_distance((40,0),(40,40),box),10.0)
+        self.assertAlmostEqual(S.segment_box_distance((0,0),(0,0),box),math.hypot(10,10))  # a point
+        self.assertAlmostEqual(S.clearance(box,[('circle',(35.0,15.0,2.0),0.5),('segs',[((0,40),(40,40))],0.6)]),2.5)  # the dot 5 away minus its radius and stroke
+        self.assertEqual(S.clearance(box,[('segs',[((0,15),(40,15))],0.6)]),-0.6)
 
 
 if __name__=='__main__':

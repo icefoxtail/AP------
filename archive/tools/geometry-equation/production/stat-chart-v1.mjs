@@ -69,8 +69,13 @@ export function solveStatChart(chart){
     default:return bad('STAT_KIND_UNSUPPORTED');
   }
 }
+// Histogram / frequency polygon. Beyond the plain data it takes the marks a solution figure needs, each one checked here against the data and re-derived by the observer:
+//  - a class frequency may be null (the problem tore or erased it: the bar and polygon vertex are simply not drawn there); `total` then fixes what the hidden classes add up to;
+//  - restoredClasses: a bar the figure rebuilds from the total (dashed outline; its value is not written unless showRestoredValues);
+//  - highlightClasses: bars of a histogram, or the points of every series of a polygon-only chart (an entry is a class or {class,tone:1|2});
+//  - highlightPoints: single polygon points {series,class,tone?,showValue?}; classSums: a bracket under the axis over classes from..to with their summed frequency.
 function solveFreq(c){
-  onlyKeys(c,['kind','boundaries','series','yKind','polygon','xTitle','yTitle','grid','showValues','highlightClasses','total'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','boundaries','series','yKind','polygon','xTitle','yTitle','grid','showValues','highlightClasses','total','highlightPoints','classSums','restoredClasses','showRestoredValues','hideValues'],'STAT_CHART_PLAN_INVALID');
   const polygonKind=c.kind==='FREQUENCY_POLYGON';
   if(!Array.isArray(c.boundaries)||c.boundaries.length<3||c.boundaries.length>13)bad('STAT_BOUNDARIES_INVALID');
   const b=c.boundaries.map(x=>parseQ(x,'STAT_BOUNDARIES_INVALID'));
@@ -94,44 +99,142 @@ function solveFreq(c){
     if(c.series.length>1&&(typeof s.name!=='string'||!s.name))bad('STAT_SERIES_NAME_REQUIRED');
     const name=s.name===undefined?null:titleText(s.name,'STAT_SERIES_INVALID');
     if(name!==null){if(names.has(name))bad('STAT_SERIES_INVALID');names.add(name);}
-    let freq=null,values,total=null;
+    let freq=null,values,total=null,hasTotal=false,hiddenSum=null;
     if(s.frequencies!==undefined){
       if(!Array.isArray(s.frequencies)||s.frequencies.length!==n)bad('STAT_FREQUENCY_COUNT_MISMATCH');
-      freq=s.frequencies.map(f=>intIn(f,0,999,'STAT_FREQUENCY_INVALID'));
-      total=freq.reduce((x,y)=>x+y,0);
+      freq=s.frequencies.map(f=>f===null?null:intIn(f,0,999,'STAT_FREQUENCY_INVALID')); // null: the problem does not show this class
+      const known=freq.filter(f=>f!==null),knownSum=known.reduce((x,y)=>x+y,0);
+      if(!known.length)bad('STAT_FREQUENCY_INVALID');
       const given=s.total??(i===0?c.total:undefined);
-      if(given!==undefined&&given!==total)bad('STAT_FREQUENCY_TOTAL_MISMATCH');
-      if(yKind==='FREQUENCY')values=freq.map(f=>Q(BigInt(f)));
-      else{if(total===0)bad('STAT_FREQUENCY_TOTAL_ZERO');values=freq.map(f=>Q(BigInt(f),BigInt(total)));}
+      hasTotal=given!==undefined;
+      if(known.length===n){
+        total=knownSum;
+        if(given!==undefined&&given!==total)bad('STAT_FREQUENCY_TOTAL_MISMATCH');
+      }else if(given!==undefined){ // hidden classes: the stated total must leave them a non-negative sum, which is then what they add up to
+        if(!Number.isInteger(given)||given<knownSum)bad('STAT_FREQUENCY_TOTAL_MISMATCH');
+        total=given;
+      }
+      if(yKind==='FREQUENCY'){
+        values=freq.map(f=>f===null?null:Q(BigInt(f)));
+        if(total!==null&&known.length<n)hiddenSum=Q(BigInt(total-knownSum));
+      }else{
+        if(total===null)bad('STAT_UNKNOWN_NEEDS_TOTAL');
+        if(total===0)bad('STAT_FREQUENCY_TOTAL_ZERO');
+        values=freq.map(f=>f===null?null:Q(BigInt(f),BigInt(total)));
+        if(known.length<n)hiddenSum=Q(BigInt(total-knownSum),BigInt(total));
+      }
     }else{
       if(s.total!==undefined||c.total!==undefined)bad('STAT_SERIES_INVALID');
       if(!Array.isArray(s.relativeFrequencies)||s.relativeFrequencies.length!==n)bad('STAT_FREQUENCY_COUNT_MISMATCH');
-      values=s.relativeFrequencies.map(x=>{const v=parseQ(x,'STAT_FREQUENCY_INVALID');if(qcmp(v,ZERO)<0||qcmp(v,ONE)>0)bad('STAT_FREQUENCY_INVALID');return v;});
-      if(qcmp(values.reduce(qadd,ZERO),ONE)!==0)bad('STAT_RELATIVE_SUM_NOT_ONE');
+      values=s.relativeFrequencies.map(x=>{if(x===null)return null;const v=parseQ(x,'STAT_FREQUENCY_INVALID');if(qcmp(v,ZERO)<0||qcmp(v,ONE)>0)bad('STAT_FREQUENCY_INVALID');return v;});
+      const known=values.filter(v=>v!==null),sum=known.reduce(qadd,ZERO);
+      if(!known.length)bad('STAT_FREQUENCY_INVALID');
+      if(known.length===n){if(qcmp(sum,ONE)!==0)bad('STAT_RELATIVE_SUM_NOT_ONE');}
+      else{if(qcmp(sum,ONE)>0)bad('STAT_RELATIVE_SUM_NOT_ONE');hiddenSum=qsub(ONE,sum);} // relative frequencies add up to 1, so what the hidden classes hold is known
     }
-    return {name,frequencies:freq,total,values};
+    return {name,frequencies:freq,total,values,hasTotal,hiddenSum};
   });
   const classes=[...Array(n).keys()].map(i=>({lo:b[i],hi:b[i+1],mid:qdiv(qadd(b[i],b[i+1]),Q(2n))}));
   const polygon=polygonKind||c.polygon===true;
   if(c.polygon!==undefined&&typeof c.polygon!=='boolean')bad('STAT_CHART_PLAN_INVALID');
-  let highlight=[];
+  for(const k of ['grid','showValues','showRestoredValues'])if(c[k]!==undefined&&typeof c[k]!=='boolean')bad('STAT_CHART_PLAN_INVALID');
+  const toneOf=(v,code)=>{if(v===undefined)return 1;if(v!==1&&v!==2)bad(code);return v;};
+  let highlight=[],tone2=[];
   if(c.highlightClasses!==undefined){
-    if(polygonKind||!Array.isArray(c.highlightClasses)||new Set(c.highlightClasses).size!==c.highlightClasses.length)bad('STAT_HIGHLIGHT_INVALID');
-    highlight=c.highlightClasses.map(k=>intIn(k,0,n-1,'STAT_HIGHLIGHT_INVALID')).sort((x,y)=>x-y);
+    if(!Array.isArray(c.highlightClasses))bad('STAT_HIGHLIGHT_INVALID');
+    const seen=new Set(),picked=[];
+    for(const e of c.highlightClasses){
+      let ks,tone=1;
+      if(isPlain(e)){ // {class,tone} or a whole group {classes:[...],tone}: one emphasis colour for the group
+        onlyKeys(e,['class','classes','tone'],'STAT_HIGHLIGHT_INVALID');
+        if((e.class===undefined)===(e.classes===undefined))bad('STAT_HIGHLIGHT_INVALID');
+        ks=e.class!==undefined?[intIn(e.class,0,n-1,'STAT_HIGHLIGHT_INVALID')]:(Array.isArray(e.classes)&&e.classes.length?e.classes.map(k=>intIn(k,0,n-1,'STAT_HIGHLIGHT_INVALID')):bad('STAT_HIGHLIGHT_INVALID'));
+        tone=toneOf(e.tone,'STAT_HIGHLIGHT_INVALID');
+      }else ks=[intIn(e,0,n-1,'STAT_HIGHLIGHT_INVALID')];
+      for(const k of ks){
+        if(seen.has(k))bad('STAT_HIGHLIGHT_INVALID');
+        seen.add(k);
+        if(series.some(s=>s.values[k]===null))bad('STAT_HIGHLIGHT_UNKNOWN_CLASS'); // a hidden class has no bar or point to mark
+        picked.push({k,tone});
+      }
+    }
+    picked.sort((x,y)=>x.k-y.k);highlight=picked.map(x=>x.k);tone2=picked.filter(x=>x.tone===2).map(x=>x.k);
   }
-  for(const k of ['grid','showValues'])if(c[k]!==undefined&&typeof c[k]!=='boolean')bad('STAT_CHART_PLAN_INVALID');
   if(c.showValues&&series.length>1)bad('STAT_VALUES_NEED_ONE_SERIES');
-  const maxV=series.flatMap(s=>s.values).reduce((x,y)=>qcmp(x,y)>=0?x:y);
+  let hidden=[];
+  if(c.hideValues!==undefined){ // showValues writes every value; these classes keep theirs unwritten (the value is what the problem asks for)
+    if(c.showValues!==true||!Array.isArray(c.hideValues)||!c.hideValues.length||new Set(c.hideValues).size!==c.hideValues.length)bad('STAT_HIDE_VALUES_INVALID');
+    hidden=c.hideValues.map(k=>intIn(k,0,n-1,'STAT_HIDE_VALUES_INVALID')).sort((x,y)=>x-y);
+  }
+  // polygon points that carry a mark: the points of every series at a highlighted class (polygon-only chart) and the single points the plan names
+  const marks=[];
+  if(polygonKind)for(const k of highlight)for(let s=0;s<series.length;s++)marks.push({series:s,class:k,tone:tone2.includes(k)?2:1,showValue:false});
+  if(c.highlightPoints!==undefined){
+    if(!polygon||!Array.isArray(c.highlightPoints)||c.highlightPoints.length<1||c.highlightPoints.length>12)bad('STAT_HIGHLIGHT_POINT_INVALID');
+    for(const e of c.highlightPoints){
+      onlyKeys(e,['series','class','tone','showValue'],'STAT_HIGHLIGHT_POINT_INVALID');
+      const s=e.series===undefined?0:intIn(e.series,0,series.length-1,'STAT_HIGHLIGHT_POINT_INVALID'),k=intIn(e.class,0,n-1,'STAT_HIGHLIGHT_POINT_INVALID'),tone=toneOf(e.tone,'STAT_HIGHLIGHT_POINT_INVALID');
+      if(e.showValue!==undefined&&typeof e.showValue!=='boolean')bad('STAT_HIGHLIGHT_POINT_INVALID');
+      if(series[s].values[k]===null)bad('STAT_HIGHLIGHT_UNKNOWN_CLASS');
+      if(marks.some(x=>x.series===s&&x.class===k))bad('STAT_HIGHLIGHT_POINT_INVALID');
+      if(e.showValue===true&&c.showValues===true)bad('STAT_HIGHLIGHT_POINT_INVALID'); // showValues already writes every value of the one series
+      marks.push({series:s,class:k,tone,showValue:e.showValue===true});
+    }
+  }
+  marks.sort((x,y)=>x.series-y.series||x.class-y.class);
+  let restored=[];
+  if(c.restoredClasses!==undefined){
+    if(c.kind!=='HISTOGRAM'||polygon)bad('STAT_RESTORED_UNSUPPORTED'); // the restored bar is a bar of a histogram without its polygon
+    if(!Array.isArray(c.restoredClasses)||!c.restoredClasses.length||new Set(c.restoredClasses).size!==c.restoredClasses.length)bad('STAT_RESTORED_INVALID');
+    restored=c.restoredClasses.map(k=>intIn(k,0,n-1,'STAT_RESTORED_INVALID')).sort((x,y)=>x-y);
+    if(restored.some(k=>series[0].values[k]===null))bad('STAT_RESTORED_INVALID'); // a restored class has its value (the figure draws it), a hidden one has none
+    if(!series[0].hasTotal)bad('STAT_RESTORED_NEEDS_TOTAL'); // what is restored comes from a stated total, which the engine then checks
+  }
+  // class sums: the exact sum of the series' values over from..to; a numeric label must equal it (hidden classes count only when one bracket holds all of them and the total says what they add up to)
+  const sums=[];
+  if(c.classSums!==undefined){
+    if(!Array.isArray(c.classSums)||c.classSums.length<1||c.classSums.length>6)bad('STAT_CLASS_SUM_INVALID');
+    for(const e of c.classSums){
+      onlyKeys(e,['series','from','to','label','unit'],'STAT_CLASS_SUM_INVALID');
+      const s=e.series===undefined?0:intIn(e.series,0,series.length-1,'STAT_CLASS_SUM_INVALID'),from=intIn(e.from,0,n-1,'STAT_CLASS_SUM_INVALID'),to=intIn(e.to,0,n-1,'STAT_CLASS_SUM_INVALID');
+      if(to<from)bad('STAT_CLASS_SUM_INVALID');
+      if(sums.some(x=>x.series===s&&x.from<=to&&from<=x.to))bad('STAT_CLASS_SUM_OVERLAP');
+      const unit=e.unit===undefined?'':(typeof e.unit==='string'&&/^[가-힣A-Za-z%]{1,3}$/.test(e.unit)?e.unit:bad('STAT_CLASS_SUM_UNIT_INVALID'));
+      const label=e.label===undefined||e.label===null?null:typeof e.label==='number'?String(e.label):e.label;
+      const sr=series[s],inside=sr.values.slice(from,to+1),hidden=inside.filter(v=>v===null).length,known=inside.filter(v=>v!==null).reduce(qadd,ZERO);
+      let text=null;
+      if(label!==null){
+        if(typeof label!=='string')bad('STAT_CLASS_SUM_LABEL_INVALID');
+        if(label==='?'){if(!hidden)bad('STAT_CLASS_SUM_LABEL_INVALID');text='?';} // the sum of hidden classes, still to be found
+        else{
+          if(!/^\d{1,6}(?:\.\d{1,4})?$/.test(label))bad('STAT_CLASS_SUM_LABEL_INVALID');
+          let want=known;
+          if(hidden){
+            const allHidden=sr.values.flatMap((v,k)=>v===null?[k]:[]);
+            if(sr.hiddenSum===null||allHidden.some(k=>k<from||k>to))bad('STAT_CLASS_SUM_UNKNOWN');
+            want=qadd(known,sr.hiddenSum);
+          }
+          if(qcmp(parseQ(label,'STAT_CLASS_SUM_LABEL_INVALID'),want)!==0)bad('STAT_CLASS_SUM_LABEL_MISMATCH');
+          text=label; // written as the author gave it (0.30 stays 0.30); it equals the exact sum
+        }
+      }
+      sums.push({series:s,from,to,label:text,unit});
+    }
+    sums.sort((x,y)=>x.series-y.series||x.from-y.from);
+  }
+  const maxV=series.flatMap(s=>s.values).filter(v=>v!==null).reduce((x,y)=>qcmp(x,y)>=0?x:y);
   const steps=yKind==='FREQUENCY'?NICE.map(s=>Q(BigInt(s))):[Q(1n,100n),Q(1n,50n),Q(1n,20n),Q(1n,10n),Q(1n,5n),Q(1n,2n),Q(1n)];
   const step=steps.find(s=>qceil(qdiv(maxV,s))<=8n)??bad('STAT_Y_RANGE_TOO_LARGE');
   let top=qmul(step,Q(qceil(qdiv(maxV,step))));
   if(qcmp(top,maxV)===0)top=qadd(top,step);
   const ticks=[];for(let t=step;qcmp(t,top)<=0;t=qadd(t,step))ticks.push(qstr(t));
   return {schemaVersion:MODEL_VERSION,kind:c.kind,yKind,polygon,grid:c.grid===true,showValues:c.showValues===true,highlight,
+    ...(tone2.length?{highlightTone2:tone2}:{}),...(marks.length?{marks}:{}),...(restored.length?{restored,showRestoredValues:c.showRestoredValues===true}:{}),...(hidden.length?{hideValues:hidden}:{}),...(sums.length?{classSums:sums}:{}),
     xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID','계급'),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',yKind==='FREQUENCY'?'도수(명)':'상대도수'),
     boundaries:b.map(qstr),width:qstr(width),classes:classes.map(k=>({lo:qstr(k.lo),hi:qstr(k.hi),mid:qstr(k.mid)})),
-    series:series.map(s=>({name:s.name,frequencies:s.frequencies,total:s.total,values:s.values.map(qstr),
-      vertices:[[qstr(qsub(classes[0].mid,width)),'0'],...classes.map((k,i)=>[qstr(k.mid),qstr(s.values[i])]),[qstr(qadd(classes[n-1].mid,width)),'0']]})),
+    series:series.map(s=>({name:s.name,frequencies:s.frequencies,total:s.total,values:s.values.map(v=>v===null?null:qstr(v)),
+      vertices:[[qstr(qsub(classes[0].mid,width)),'0'],...classes.map((k,i)=>s.values[i]===null?null:[qstr(k.mid),qstr(s.values[i])]),[qstr(qadd(classes[n-1].mid,width)),'0']],
+      ...(s.hiddenSum!==null?{hiddenSum:qstr(s.hiddenSum)}:{})})),
     y:{step:qstr(step),top:qstr(top),ticks}};
 }
 // A stem-and-leaf leaf is a whole number 0..999 (stem = tens, leaf = ones) or a letter leaf {symbol:'a',stem:1,order:3}: a value the problem names with a letter
@@ -405,7 +508,10 @@ const STYLE={
   mark:'fill="none" stroke="#111" stroke-width="1.8"',box:'fill="#ececec" stroke="#111" stroke-width="1.4"',median:'stroke="#111" stroke-width="3" fill="none"',
   whisker:'stroke="#111" stroke-width="1.4" fill="none"',cell:'fill="#fff" stroke="#111" stroke-width="1"',cellHi:'fill="#c9c9c9" stroke="#111" stroke-width="1"',
   head:'fill="#f1f1f1" stroke="#111" stroke-width="1"',diag:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"',branch:'stroke="#111" stroke-width="1.4" fill="none"',
-  legend0:'stroke="#111" stroke-width="2" fill="none"',legend1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="7 4"',diagonal:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"'
+  legend0:'stroke="#111" stroke-width="2" fill="none"',legend1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="7 4"',diagonal:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"',
+  barHi2:'fill="#8e8e8e" stroke="#111" stroke-width="1.2"',barR:'fill="#ececec" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',barHiR:'fill="#b5b5b5" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',
+  barHi2R:'fill="#8e8e8e" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',markRing:'fill="none" stroke="#111" stroke-width="1.8"',markDisc:'fill="#111" stroke="none"',
+  sum0:'stroke="#111" stroke-width="1.2" fill="none"',sum1:'stroke="#111" stroke-width="1.2" fill="none" stroke-dasharray="4 3"'
 };
 const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6(x1),y1:r6(y1),x2:r6(x2),y2:r6(y2),data,layer});
 const rect=(id,role,cls,x,y,width,height,data={},layer=40)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
@@ -426,11 +532,19 @@ const breakMark=(prims,axis,x,y)=>{
 };
 
 // --- the charts: spec = ordered primitives + labels at anchors (positions need no label widths; the tree's branch ends are placed when labels are typeset) --------
+// A class-sum bracket sits under the x tick labels: the first row's bottom line is SUM_Y0 below the axis, each further row (brackets that would overlap) SUM_PITCH lower; its text hangs beneath it.
+const SUM_Y0=36,SUM_PITCH=44,SUM_INSET=2.5,SUM_ARM=5,SUM_TEXT_H=33,SUM_TEXT_GAP=3;
+const MARK_R={1:8,2:6};
 function freqSpec(m){
   const n=m.classes.length,w=N(m.width),b0=N(m.boundaries[0]),bn=N(m.boundaries[n]),poly=m.kind==='FREQUENCY_POLYGON'||m.polygon;
+  const marks=m.marks??[],sums=m.classSums??[],restored=m.restored??[],tone2=m.highlightTone2??[];
   let lowU,yAxisU,breakU=null;
   if(b0===0){lowU=poly?-.75*w:0;yAxisU=0;}else{lowU=b0-(poly?1.2:.8)*w;yAxisU=lowU;breakU=lowU+.3*w;}
-  const highU=bn+(poly?.8:.45)*w,PLOT_H=210,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=BASE+TICK+4+LABEL_BELOW+SAFE;
+  // each class sum goes in the first row where no earlier bracket of the figure overlaps its classes
+  const rowOf=[];
+  sums.forEach((sm,k)=>{let r=0;while(sums.some((o,j)=>j<k&&rowOf[j]===r&&o.from<=sm.to&&sm.from<=o.to))r++;rowOf.push(r);});
+  const sumRows=rowOf.length?Math.max(...rowOf)+1:0;
+  const highU=bn+(poly?.8:.45)*w,PLOT_H=210,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=sumRows?BASE+SUM_Y0+(sumRows-1)*SUM_PITCH+SUM_TEXT_GAP+SUM_TEXT_H+SAFE:BASE+TICK+4+LABEL_BELOW+SAFE;
   const px=u=>r6(MAPL+(u-lowU)/(highU-lowU)*(MAPR-MAPL)),T=N(m.y.top),py=v=>r6(BASE-v/T*PLOT_H),yAxisPx=px(yAxisU);
   const prims=[],labels=[];
   const ys=m.y.ticks.map(t=>({t,v:N(t)}));
@@ -440,8 +554,9 @@ function freqSpec(m){
     for(const [i,bb] of m.boundaries.entries())if(i>0)prims.push(L(`grid-x-${i}`,'grid','grid',px(N(bb)),BASE,px(N(bb)),PT,{value:bb},20));
   }
   if(m.kind==='HISTOGRAM')for(const [i,k] of m.classes.entries()){
-    const v=N(m.series[0].values[i]);
-    prims.push(rect(`bar-s0-${i}`,'bar',m.highlight.includes(i)?'barHi':'bar',px(N(k.lo)),py(v),px(N(k.hi))-px(N(k.lo)),BASE-py(v),{series:0,class:i,highlight:m.highlight.includes(i)?1:0},40));
+    if(m.series[0].values[i]===null)continue; // a hidden class has no bar
+    const v=N(m.series[0].values[i]),tone=m.highlight.includes(i)?(tone2.includes(i)?2:1):0,rebuilt=restored.includes(i);
+    prims.push(rect(`bar-s0-${i}`,'bar',['bar','barHi','barHi2'][tone]+(rebuilt?'R':''),px(N(k.lo)),py(v),px(N(k.hi))-px(N(k.lo)),BASE-py(v),{series:0,class:i,highlight:tone,...(rebuilt?{restored:1}:{})},40));
   }
   arrows(prims,{xStartPx:px(lowU),yAxisPx,base:BASE});
   if(breakU!==null)breakMark(prims,'x',px(breakU),BASE);
@@ -457,21 +572,43 @@ function freqSpec(m){
   if(breakU!==null)labels.push(math('origin','origin','x-axis','O','O','end','top',yAxisPx-6,BASE+4));
   labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
   labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,AXIS_TOP-4));
+  const at=(s,k)=>[px(N(m.series[s].vertices[k][0])),py(N(m.series[s].vertices[k][1]))]; // the drawn place of a (known) polygon vertex
   if(poly)for(const [s,sr] of m.series.entries()){
-    const pts=sr.vertices.map(([x,y])=>[px(N(x)),py(N(y))]);
-    prims.push({t:'polyline',id:`polygon-s${s}`,role:'polygon',cls:'poly'+s,points:pts,data:{series:s},layer:50});
-    sr.vertices.forEach(([x,y],k)=>prims.push({t:'circle',id:`vertex-s${s}-${k}`,role:'point',cls:'dot',cx:pts[k][0],cy:pts[k][1],r:3.2,data:{series:s,vertex:k},layer:70}));
+    const pts=sr.vertices.map(v=>v===null?null:[px(N(v[0])),py(N(v[1]))]);
+    // a hidden class breaks the polygon: one polyline per run of consecutive known vertices (a lone vertex is only its dot)
+    const runs=[];let run=[];
+    for(const p of [...pts,null]){if(p)run.push(p);else{if(run.length)runs.push(run);run=[];}}
+    runs.filter(r=>r.length>=2).forEach((r,j)=>prims.push({t:'polyline',id:j?`polygon-s${s}~${j}`:`polygon-s${s}`,role:'polygon',cls:'poly'+s,points:r,data:{series:s},layer:50}));
+    pts.forEach((p,k)=>{if(p)prims.push({t:'circle',id:`vertex-s${s}-${k}`,role:'point',cls:'dot',cx:p[0],cy:p[1],r:3.2,data:{series:s,vertex:k},layer:70});});
   }
+  for(const mk of marks){ // a marked polygon point: a ring (tone 1) or a larger solid dot (tone 2) on its vertex
+    const [cx,cy]=at(mk.series,mk.class+1);
+    prims.push({t:'circle',id:`mark-s${mk.series}-c${mk.class}`,role:'point-mark',cls:mk.tone===1?'markRing':'markDisc',cx,cy,r:MARK_R[mk.tone],data:{series:mk.series,class:mk.class,tone:mk.tone},layer:65});
+  }
+  // value labels: the default place is centred above the bar top / polygon vertex; resolveValueLabels() moves a label only when that place touches a line or another label
+  const ringed=(s,k)=>marks.some(x=>x.series===s&&x.class===k&&x.tone===1);
+  const valueLabel=(id,owner,s,i,extra)=>{
+    const v=m.series[s].values[i],[ax,ay]=at(s,i+1),gap=poly?(ringed(s,i)?MARK_R[1]+5.8:9):4;
+    labels.push({...math(id,'value',owner,DISPLAY+qtex(P(v)),v,'center','bottom',ax,ay-gap,extra),place:{x:ax,y:ay,gap}});
+  };
   if(m.showValues)for(const [i,k] of m.classes.entries()){
-    const v=m.series[0].values[i];if(N(v)===0)continue;
-    labels.push(math(`value-${i}`,'value',m.kind==='HISTOGRAM'&&!poly?`bar-s0-${i}`:`vertex-s0-${i+1}`,DISPLAY+qtex(P(v)),v,'center','bottom',px(N(k.mid)),py(N(v))-(poly?9:4),{value:v,class:i}));
+    const v=m.series[0].values[i];if(v===null||N(v)===0)continue;
+    if(restored.includes(i)&&!m.showRestoredValues||(m.hideValues??[]).includes(i))continue; // the value of a restored bar, or of a class the plan hides, is what the problem asks for
+    valueLabel(`value-${i}`,m.kind==='HISTOGRAM'&&!poly?`bar-s0-${i}`:`vertex-s0-${i+1}`,0,i,{value:v,class:i});
   }
+  for(const mk of marks)if(mk.showValue)valueLabel(`value-s${mk.series}-c${mk.class}`,`vertex-s${mk.series}-${mk.class+1}`,mk.series,mk.class,{value:m.series[mk.series].values[mk.class],class:mk.class,series:mk.series});
   if(m.series.length>1)for(const [s,sr] of m.series.entries()){
     const y=PT+14+s*30;
     prims.push(L(`legend-line-${s}`,'legend-line','legend'+s,TITLE_X,y,TITLE_X+20,y,{series:s}));
     labels.push(textLabel(`legend-${s}`,'legend',`legend-line-${s}`,sr.name,'start','middle',TITLE_X+27,y,{series:s}));
   }
-  return {size:{width:W,height:H},prims,labels};
+  sums.forEach((sm,k)=>{ // a bracket under the axis labels from the left edge of class `from` to the right edge of class `to`; its sum is written beneath
+    const xl=px(N(m.boundaries[sm.from]))+SUM_INSET,xr=px(N(m.boundaries[sm.to+1]))-SUM_INSET,yb=BASE+SUM_Y0+rowOf[k]*SUM_PITCH,id=`class-sum-${k}`;
+    prims.push({t:'polyline',id,role:'class-sum',cls:'sum'+sm.series,points:[[xl,yb-SUM_ARM],[xl,yb],[xr,yb],[xr,yb-SUM_ARM]],data:{series:sm.series,from:sm.from,to:sm.to},layer:50});
+    if(sm.label!==null)labels.push(textLabel(`${id}-label`,'class-sum',id,sm.label+sm.unit,'center','top',(xl+xr)/2,yb+SUM_TEXT_GAP,{series:sm.series,from:sm.from,to:sm.to}));
+  });
+  const newer=marks.length||sums.length||restored.length||tone2.length||m.series.some(sr=>sr.vertices.includes(null)); // a plan using none of the newer fields keeps its figure exactly
+  return {size:{width:W,height:H},prims,labels,valueClearance:newer?2.5:0};
 }
 function stemSpec(m){
   const classes=m.classGroups??[],two=m.groups.length===2,PITCH=24,STEMW=48,PAD=14,HEAD_H=34,ROW_H=classes.length?54:30,RAISE=classes.length?10:0,X0=SAFE+6; // RAISE: leaves sit above the row middle so a class bracket and its count fit under them
@@ -630,6 +767,69 @@ export function statChartSpec(plan,model){
   return {schemaVersion:SPEC_VERSION,...spec};
 }
 
+// --- value labels: a label that would touch a polygon line, a dot or ring, an axis, a bracket or another label is moved to the nearest free place around its point ---
+const strokeOf=cls=>{const st=STYLE[cls]??'',mm=/stroke-width="([\d.]+)"/.exec(st);return !mm||/stroke="none"/.test(st)?0:Number(mm[1]);};
+const rectDist=(x,y,b)=>Math.hypot(Math.max(b.x-x,0,x-b.x-b.width),Math.max(b.y-y,0,y-b.y-b.height));
+const rectGap=(a,b)=>Math.hypot(Math.max(b.x-(a.x+a.width),0,a.x-(b.x+b.width)),Math.max(b.y-(a.y+a.height),0,a.y-(b.y+b.height)));
+function segHitsRect(a,c,b){ // Liang-Barsky: does the segment a-c meet the closed rectangle b
+  let t0=0,t1=1;const dx=c[0]-a[0],dy=c[1]-a[1];
+  for(const [p,q] of [[-dx,a[0]-b.x],[dx,b.x+b.width-a[0]],[-dy,a[1]-b.y],[dy,b.y+b.height-a[1]]]){
+    if(p===0){if(q<0)return false;continue;}
+    const t=q/p;
+    if(p<0){if(t>t1)return false;if(t>t0)t0=t;}else{if(t<t0)return false;if(t<t1)t1=t;}
+  }
+  return true;
+}
+const pointSegDist=(p,a,c)=>{const dx=c[0]-a[0],dy=c[1]-a[1],len2=dx*dx+dy*dy,t=len2?Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dy)/len2)):0;return Math.hypot(p[0]-(a[0]+t*dx),p[1]-(a[1]+t*dy));};
+const segRectDist=(a,c,b)=>{
+  if(segHitsRect(a,c,b))return 0;
+  const corners=[[b.x,b.y],[b.x+b.width,b.y],[b.x+b.width,b.y+b.height],[b.x,b.y+b.height]];
+  return Math.min(rectDist(a[0],a[1],b),rectDist(c[0],c[1],b),...corners.map(p=>pointSegDist(p,a,c)));
+};
+function obstacles(prims){ // every line, polyline, dot and bar edge a label must stay clear of (grid lines are cut around labels instead)
+  const out=[];
+  for(const p of prims){
+    if(p.role==='grid')continue;
+    const pad=strokeOf(p.cls)/2;
+    if(p.t==='line')out.push({segs:[[[p.x1,p.y1],[p.x2,p.y2]]],pad});
+    else if(p.t==='polyline')out.push({segs:p.points.slice(1).map((q,i)=>[p.points[i],q]),pad});
+    else if(p.t==='polygon')out.push({segs:p.points.map((q,i)=>[q,p.points[(i+1)%p.points.length]]),pad});
+    else if(p.t==='circle')out.push({circle:[p.cx,p.cy,p.r],pad});
+    else if(p.t==='rect'&&p.role==='bar'){const c=[[p.x,p.y],[p.x+p.width,p.y],[p.x+p.width,p.y+p.height],[p.x,p.y+p.height]];out.push({segs:c.map((q,i)=>[q,c[(i+1)%4]]),pad});}
+  }
+  return out;
+}
+function resolveValueLabels(spec,placed){
+  const items=placed.filter(item=>item.label.place);
+  if(!items.length)return;
+  const obs=obstacles(spec.prims),{width,height}=spec.size,PREFER=spec.valueClearance??0;
+  for(const item of items){
+    const {x:ax,y:ay,gap}=item.label.place,{width:w,height:h}=item.box,others=placed.filter(o=>o!==item).map(o=>o.box);
+    const clearance=box=>{ // the smallest gap to anything it must not touch; negative when it touches or leaves the figure
+      if(box.x<SAFE||box.y<SAFE||box.x+box.width>width-SAFE||box.y+box.height>height-SAFE)return -1;
+      let s=Infinity;
+      for(const o of obs){
+        if(o.circle)s=Math.min(s,rectDist(o.circle[0],o.circle[1],box)-o.circle[2]-o.pad);
+        else for(const [a,c] of o.segs)s=Math.min(s,segRectDist(a,c,box)-o.pad);
+      }
+      for(const other of others)s=Math.min(s,overlaps(box,other)?-1:rectGap(box,other));
+      return s;
+    };
+    const cands=[item.box];
+    for(const g of [gap,gap+6,gap+12,gap+20]){
+      const d=g*.72;
+      cands.push({x:ax-w/2,y:ay-g-h},{x:ax-d-w,y:ay-d-h},{x:ax+d,y:ay-d-h},{x:ax+g,y:ay-h/2},{x:ax-g-w,y:ay-h/2},{x:ax-w/2,y:ay+g},{x:ax+d,y:ay+d},{x:ax-d-w,y:ay+d});
+    }
+    const boxes=cands.map(c=>({x:r6(c.x),y:r6(c.y),width:w,height:h}));
+    const scores=boxes.map(clearance);
+    // the default place stays when it is free (PREFER is 0 for a chart that uses none of the newer marks, so its old figure is unchanged); otherwise the first candidate with room, else the roomiest one
+    let pick=scores[0]>PREFER?0:scores.findIndex(s=>s>=2.5);
+    if(pick<0){const best=Math.max(...scores);pick=best>0.3?scores.indexOf(best):-1;}
+    if(pick<0)throw new Stop('STAT_VALUE_LABEL_NO_ROOM',{labelId:item.label.id});
+    item.box=boxes[pick];
+  }
+}
+
 // --- composing ----------------------------------------------------------------------------------------------------------------------------
 const PLAIN_KEYS=['capability','chart','caption','sourceConditions','newVisualInformation'];
 export function checkStatChartPlan(plan){
@@ -721,6 +921,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
       placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
     }
     if(spec.tree)resolveTree(spec,placed);
+    resolveValueLabels(spec,placed);
     cutGrid(spec,placed);
     const {width,height}=spec.size;
     for(const item of placed){
