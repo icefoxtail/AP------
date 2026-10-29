@@ -125,7 +125,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:eb20a879bca779d2586314004198e49a412efdf3593354c370142243c24f5ca1",
-      "difficultyEvidenceSha": "sha256:20dd554ad3d9a9fd30ae26913ecbdf5fca1384427f640110c5344c3d3602f546"
+      "difficultyEvidenceSha": "sha256:20dd554ad3d9a9fd30ae26913ecbdf5fca1384427f640110c5344c3d3602f546",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q3-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽은 오각형의 꼭짓점마다 한 변을 연장해 외각 70°, 60°, x, 60°, 80°를 표시한 그림, 오른쪽은 이 다섯 외각을 한 점에 이어 붙이면 빈틈없이 한 바퀴를 이루는 모습이다.",
+      "solutionImageCaption": "오각형의 외각을 한 점에 모으면 한 바퀴",
+      "solutionImageSize": "medium"
     },
     {
       "id": 4,
@@ -158,7 +162,11 @@ window.questionBank = [
       "difficultyBucket": 2,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "NORMAL"
+      "legacyLevelCompatibility": "NORMAL",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 원탁의 8명을 정팔각형의 꼭짓점으로 나타낸 그림. 왼쪽은 한 학생에게서 양옆을 뺀 다섯 학생으로 뻗은 선에 번호 1~5를 붙였고, 오른쪽은 악수 한 번을 나타내는 선분 하나를 빨강으로 강조해 양 끝의 두 학생이 각각 센다고 표시한 그림이다.",
+      "solutionImageCaption": "한 학생의 악수 상대 5명과 이중으로 세어지는 선",
+      "solutionImageSize": "medium"
     },
     {
       "id": 5,
@@ -243,7 +251,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d705a0e1029788b39237d3456d694782854229f8b2bc09223c914022906ac58d",
-      "difficultyEvidenceSha": "sha256:bebc5da45230a1e198956daba85e6134c7db2e7a83f353a73e47e86702c80902"
+      "difficultyEvidenceSha": "sha256:bebc5da45230a1e198956daba85e6134c7db2e7a83f353a73e47e86702c80902",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q6-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 원에서 중심각 30°인 부채꼴(넓이 3 cm²)과 중심각 x°인 부채꼴(넓이 16 cm²)을 서로 다른 회색으로 칠해 넓이와 중심각이 짝을 이루도록 보인 그림.",
+      "solutionImageCaption": "넓이와 중심각이 짝을 이루는 두 부채꼴",
+      "solutionImageSize": "medium"
     },
     {
       "id": 7,
@@ -287,7 +299,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:71aee6927b09997a920592ebe2ec0b040447df3d8dec80b11375a71e6b1c3023",
-      "difficultyEvidenceSha": "sha256:3977667ef2bcace9e5ac1dc116516fe6f595ee94f2f3b75228da633138dbcb69"
+      "difficultyEvidenceSha": "sha256:3977667ef2bcace9e5ac1dc116516fe6f595ee94f2f3b75228da633138dbcb69",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 6 cm인 반원과 그 왼쪽 끝점을 중심으로 하는 반지름 12 cm, 중심각 45°의 부채꼴이 겹친 그림. 어두운 두 부분의 둘레를 이루는 반원의 호, 부채꼴의 호, 빨간 반지름이 구분되어 있다.",
+      "solutionImageCaption": "어두운 부분의 둘레를 이루는 호와 직선 구간",
+      "solutionImageSize": "medium"
     },
     {
       "id": 8,
@@ -445,7 +461,7 @@ window.questionBank = [
       "subUnitConfidence": "rule_inferred",
       "subUnitClassificationDepth": "complete_rule",
       "solution": "회전축에 수직인 평면으로 잘랐을 때 단면이 가운데까지 채워지는지 확인하자.\n\n①~④는 회전시키는 평면도형이 회전축에 닿아 있으므로 수직 단면이 중심까지 채워진 원판이 되고, 단면의 경계는 원 하나이다.\n\n⑤는 직사각형이 회전축에서 떨어져 있다.\n직사각형을 회전시키면 가운데가 빈 원기둥 모양이 되므로 수직 단면은 고리 모양이다.\n\n고리 모양의 경계는 바깥 원과 안쪽 원 두 개이므로 '경계가 원' 하나인 도형이 아니다.\n\n따라서 정답은 ⑤이다.",
-      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q11-solution.svg",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q11-solution-v2.svg",
       "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
       "templateKey": "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
       "crossConceptKeys": [],
@@ -459,9 +475,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:eff2022f98e03372bb47263eef6db47b1c45168fdb0de40b96562466a64f0c26",
       "difficultyEvidenceSha": "sha256:ef8f6a5dd5c98727010404b958946b10729c9daf203a1f3d21b21cf118d9afce",
-      "solutionImageAlt": "회전축 l에서 떨어진 직사각형을 회전시켜 생기는 속이 빈 원기둥과 그 수직 단면의 고리 모양",
-      "solutionImageCaption": "회전축과 직사각형 사이의 간격 때문에 수직 단면에는 바깥 원과 안쪽 원이 함께 생긴다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 위 줄은 회전축 l에 닿은 사다리꼴과 그 수직 단면인 원판(경계 원 1개), 아래 줄은 축에서 떨어진 직사각형과 그 수직 단면인 고리(경계 원 2개)를 짝지어 보인 그림이다. 축에 수직인 선분이 쓸고 가는 모양을 빨간 선분으로 표시했다.",
+      "solutionImageCaption": "축에 닿은 도형은 원판, 떨어진 직사각형은 고리",
+      "solutionImageSize": "medium"
     },
     {
       "id": 12,
@@ -553,7 +569,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:af4c59b03c0f31b76af542f165f3213221d82edd159c3723692029835cda781c",
-      "difficultyEvidenceSha": "sha256:afaeac95d91755fbcc07c88736764475e3e0e6f23508ab079fd0851bf3f90e6e"
+      "difficultyEvidenceSha": "sha256:afaeac95d91755fbcc07c88736764475e3e0e6f23508ab079fd0851bf3f90e6e",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽은 구멍 뚫린 원기둥을 위에서 본 고리로, 안쪽 반지름 5cm, 두께 4cm, 바깥 반지름 9cm를 표시했다. 오른쪽은 바깥쪽과 안쪽 옆면을 펼친 직사각형 두 개로, 가로는 각각 2π×9cm와 2π×5cm, 세로는 9cm이다.",
+      "solutionImageCaption": "고리 모양의 위·아래면과 펼친 옆면 두 개",
+      "solutionImageSize": "medium"
     },
     {
       "id": 14,
