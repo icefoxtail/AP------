@@ -457,7 +457,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 M이 두 대각선의 중점인 사각형 ABCD에서 같은 길이 눈금과 맞꼭지각 표시로 삼각형 AMB와 CMD, 삼각형 AMD와 CMB가 각각 합동임을 두 그림으로 보여 준다.",
+    "solutionImageCaption": "두 대각선의 중점 M에서 생기는 두 쌍의 합동 삼각형(SAS)을 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -583,7 +587,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정구각형의 두 변 AB, DC를 연장해 만나는 점 J를 잡으면 삼각형 BJC가 생기고, 두 밑각 ∠JBC와 ∠BCJ가 정구각형의 한 외각인 40°로 같으며 꼭지각 ∠BJC가 x임을 보여 준다.",
+    "solutionImageCaption": "변의 연장선이 만든 삼각형 BJC의 같은 두 밑각 40°와 꼭지각 x를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -623,7 +631,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 D가 R에 겹치도록 PQ를 접은 직사각형에서 같은 길이 눈금과 두 직각으로 삼각형 PDQ와 PRQ의 대응을 보이고, 엇각 ∠DPR=∠PRB=68°와 PQ가 이등분한 같은 두 각 34°, ∠DQP=∠PQR 표시를 보여 준다.",
+    "solutionImageCaption": "접은 삼각형 PRQ와 PDQ의 대응, 엇각 68°, 이등분된 같은 두 각 34°를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
