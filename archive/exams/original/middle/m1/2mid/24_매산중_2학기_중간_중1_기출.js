@@ -39,7 +39,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 위의 세 점 X, Y, Z에서 점 X에서 시작하여 Y와 Z를 지나 한 방향으로 뻗는 반직선을 화살표로 나타낸 그림이다. X의 반대쪽 연장은 점선이다.",
+    "solutionImageCaption": "점 X에서 시작해 Y, Z를 지나는 반직선",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -79,7 +83,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각뿔대의 꼭짓점에 1부터 8까지, 모서리에 ①부터 ⑫까지 번호를 붙여(보이지 않는 모서리는 점선) 교점 8개와 교선 12개를 하나씩 센다.",
+    "solutionImageCaption": "사각뿔대의 꼭짓점(교점) 8개와 모서리(교선) 12개를 번호로 세었다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -119,7 +127,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 위에 점 A, M, B, N, C가 놓여 있고 AM=MB는 두 눈금, BN=NC는 한 눈금으로 표시되며, 위쪽 양방향 화살표로 MN의 길이가 AC의 절반임을 보여 준다.",
+    "solutionImageCaption": "M, N이 AB, BC의 중점이므로 MN은 AC의 절반이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -159,7 +171,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑면이 직각삼각형 DEF, ABC인 삼각기둥에서 모서리 DE를 빨간색으로, 모서리 BC를 굵은 선으로 표시해 DE와 만나는 AD, BE, DF, EF와 만나지 않는 BC를 구분해 보여 준다.",
+    "solutionImageCaption": "모서리 DE와 만나는 모서리는 AD, BE, DF, EF이고 BC는 만나지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -236,7 +252,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l, m, n과 p, q가 만나는 그림에서 p, m이 이루는 60°와 같은 위치의 각, 120°의 이웃한 각 60°를 같은 두 겹 호로 묶어 l∥m, p∥q를 보이고 n은 이웃한 각이 61°라서 평행하지 않음을 보여 준다.",
+    "solutionImageCaption": "같은 위치의 각이 60°로 같아 l∥m, p∥q이고 n은 평행하지 않다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -277,7 +297,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴 ABED에서 AF는 CD에 수직이고 AF=4, DE는 BE에 수직이다. 점 C에서 직선 AD에 내린 수선은 점선으로 길이 8이다.",
+    "solutionImageCaption": "수선과 거리를 나타낸 사다리꼴 ABED",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -354,7 +378,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 삼각형 ABC와 DEF에서 크기가 같은 각을 같은 개수의 호로 표시했다. 45도(A와 F), 75도(B와 E), 60도(C와 D)가 대응하고 AC와 DF는 6이다.",
+    "solutionImageCaption": "대응각을 표시한 두 삼각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -433,7 +461,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m과 이를 가로지르는 직선이 만나 생기는 여덟 각 a~h이다. b, d, f, h는 호 2개, a, c, e, g는 호 1개로 같은 크기끼리 묶여 있다.",
+    "solutionImageCaption": "평행선과 한 직선이 만드는 여덟 각",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -510,7 +542,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 각의 크기가 각각 같지만 한 삼각형은 크고 다른 삼각형은 절반 크기인 두 삼각형을 나란히 그렸다. 세 각만으로는 삼각형의 크기가 정해지지 않음을 보여 준다.",
+    "solutionImageCaption": "세 각이 같아도 크기가 다른 삼각형이 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -554,7 +590,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:eec124b6a429d10c3e6a2608e51c874a40aebbb3b9fed3b791089223572d4a50",
-    "difficultyEvidenceSha": "sha256:9bb4153036c54e2136e8074d0313bc8fa7221986ef724ad2e4e4d1a3b9b06dac"
+    "difficultyEvidenceSha": "sha256:9bb4153036c54e2136e8074d0313bc8fa7221986ef724ad2e4e4d1a3b9b06dac",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 일직선 위의 한 점에서 접는 선(점선)이 접은 뒤의 변과의 사이를 두 개의 같은 각 x로 나누고, 남은 각 40°와 함께 일직선 180°를 이루는 그림이다.",
+    "solutionImageCaption": "일직선에서 40°를 뺀 140°가 같은 두 각 x로 나뉘므로 2x=140°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -595,7 +635,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체의 전개도에서 모서리 BC를 빨간색으로 표시하고, 접었을 때 BC와 평행한 면 JEDK와 NMLK를 색칠했다.",
+    "solutionImageCaption": "전개도를 접으면 모서리 BC와 평행한 면은 JEDK와 NMLK이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -636,7 +680,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P가 AB의 수직이등분선 l 위에 있을 때 두 삼각형 PAM과 PBM을 다른 음영으로 나누어, AM=BM 눈금, M에서의 두 직각 표시, 두 삼각형이 공유하는 변 PM을 보여 준다.",
+    "solutionImageCaption": "AM=BM, ∠PMA=∠PMB=90°, PM 공통이므로 △PAM≡△PBM(SAS 합동)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -680,7 +728,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:1d5aceff464d9ec2ca65383193b5b30b53694c64a17468d41cb7f57e6a9a4584",
-    "difficultyEvidenceSha": "sha256:bd7289671ce1b52fa49c70b192b59c9b04af1299fa32290c4f2db473ba22b8d1"
+    "difficultyEvidenceSha": "sha256:bd7289671ce1b52fa49c70b192b59c9b04af1299fa32290c4f2db473ba22b8d1",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 여섯 개가 한 번에 이어진 닫힌 별 모양 경로에서 꼭짓점마다 25°, 45°, 40°, 55°, x, y가 표시되어 있다. 이 여섯 각을 한 바퀴 돌아 더하면 360°임을 보여 준다.",
+    "solutionImageCaption": "닫힌 경로의 꼭짓점 각을 모두 더하면 360°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -762,7 +814,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:d99c1a1dfe165f01d1f8d95f3cd2af6a9749e8f4fa47031f96445818d79bc25b",
-    "difficultyEvidenceSha": "sha256:20031f1fc8d5c95535e8d7efe6c89980c3b0f32f9a035386906fc9e2ed3efc6f"
+    "difficultyEvidenceSha": "sha256:20031f1fc8d5c95535e8d7efe6c89980c3b0f32f9a035386906fc9e2ed3efc6f",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각형의 각 꼭짓점에서 변을 연장해 외각 180°-100°, 45°, 180°-70°, y, 180°-x를 표시하고 내각 100°, 70°, x와 함께 보여 준다.",
+    "solutionImageCaption": "오각형의 외각의 합 (180°-100°)+(180°-70°)+45°+(180°-x)+y=360°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -802,7 +858,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 BCE 위의 점 C에서 CA와 CD가 갈라진 그림이다. B에서는 ∠DBC=t, ∠ABD=2t, C에서는 ∠DCE=s, ∠ACD=2s, ∠ACB=180°−3s, A에서는 60°, D에서는 x가 표시되어 s−t=20°와 x=s−t를 보여 준다.",
+    "solutionImageCaption": "각을 t, s로 놓으면 s−t=20°이고 x=s−t이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -837,7 +897,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥에서 모서리 AB는 굵게, 모서리 CF와 이에 평행한 모서리 AD, BE는 같은 붉은색으로 표시한 그림이며, 보이지 않는 모서리는 점선이다.",
+    "solutionImageCaption": "모서리 AB와 점 A, B에서 만나면서 모서리 CF와 평행한 모서리 AD, BE",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -872,7 +936,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m을 한 직선이 비스듬히 지나는 그림이다. l 아래쪽 오른쪽 각 2x−20°와, m 아래쪽 왼쪽 각 x+50°와 그 맞꼭지각이 표시되어 한 각의 동위각과 다른 각이 직선 m 위에서 이웃해 두 각의 합이 180°임을 보여 준다.",
+    "solutionImageCaption": "l∥m이므로 한 각의 동위각과 다른 각이 직선 m 위에서 이웃하여 두 각의 합은 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -908,7 +976,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 BC 위의 점 E, CD 위의 점 F를 잡고 AE와 BF가 만나는 점을 G로 나타낸 그림이다. BE와 CF에 같은 길이 표시, B와 C에 직각 표시가 있고 ∠AEB와 ∠BFC는 같은 각, ∠GEC는 그 보각으로 표시되어 합이 180°임을 보여 준다.",
+    "solutionImageCaption": "∠BFC=∠AEB이고 ∠GEC는 그 보각이므로 합은 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
