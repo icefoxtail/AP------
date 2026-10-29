@@ -61,6 +61,10 @@
     h('a', { class: 'hub-brand', href: './index.html', html: `<span class="hub-mark"><svg viewBox="0 0 32 32" fill="none" stroke-linecap="round"><path d="M4 24c5 0 7-14 12-14s7 8 12 8" stroke="var(--m-ink)" stroke-width="2.6"/><path d="M5 17.5 27 7.5" stroke="var(--m-rose)" stroke-width="2.2"/><circle cx="16" cy="10.6" r="3.4" fill="var(--m-amber)"/></svg></span><span><b>AP Math 실험실</b><small>도형·함수 시각화 · 2.0 미리보기</small></span>` }),
     h('div', { class: 'hub-search' }, APLab.iconEl('search'), search, h('span', { class: 'apl-kbd', text: '/' })),
     h('div', { class: 'hub-tools' }, teachSw, themeBtn)));
+  // 3D 우주(처음 화면)와 이전 허브로 가는 얇은 링크 줄. 머리글 위에 놓여 스크롤하면 사라집니다.
+  const trail = h('nav', { class: 'hub-trail', 'aria-label': '다른 화면' }, h('div', { class: 'hub-trail-in' },
+    h('a', { href: '../index.html', html: `${icon('back')}<span>AP Math Universe</span>` }),
+    h('a', { href: '../teacher-hub.html', text: '이전 허브' })));
 
   /* ---------- 히어로 ---------- */
   const total = CAT.labs.length;
@@ -140,8 +144,8 @@
   const shelf = h('div', { class: 'hub-shelf' });
   const content = h('div', {});
   const wrap = h('main', { class: 'hub-wrap' }, heroEl, bar, shelf, content,
-    h('footer', { class: 'hub-foot-note', html: `<span>AP Math 실험실 2.0 미리보기 · 카탈로그 ${esc(CAT.version)} · 실험실 ${total}개</span><span><a href="./compare.html">기존 ↔ 2.0 비교</a> · <a href="../teacher-hub.html">기존 허브</a> · <a href="../index.html">3D 수학 우주</a> · <a href="./README.md">설계·이식 안내</a></span>` }));
-  document.body.append(h('div', { class: 'hub' }, top, wrap));
+    h('footer', { class: 'hub-foot-note', html: `<span>AP Math 실험실 2.0 미리보기 · 카탈로그 ${esc(CAT.version)} · 실험실 ${total}개</span><span><a href="./compare.html">기존 ↔ 2.0 비교</a> · <a href="../teacher-hub.html">이전 허브</a> · <a href="../index.html">AP Math Universe</a> · <a href="./README.md">설계·이식 안내</a></span>` }));
+  document.body.append(h('div', { class: 'hub' }, trail, top, wrap));
 
   /* ---------- 렌더 ---------- */
   function renderCourses(list) {

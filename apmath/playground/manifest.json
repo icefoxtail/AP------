@@ -1,196 +1,393 @@
 {
-  "site": "AP Math Playground grade7+grade8",
-  "version": "2026-10-27-circle-sector-lab-26-production",
-  "main_lab_count": 11,
-  "additional_basic_lab_count": 1,
-  "grade8_scene_registrations": {
-    "triangle": 62,
-    "quadrilateral": 41,
-    "similarity": 44
-  },
-  "labs": [
+  "site": "AP Math Playground",
+  "version": "2026-10-29",
+  "source": "next/kit/apl-catalog.js",
+  "generator": "next/tools/gen-manifest.mjs",
+  "lab_count": 43,
+  "courses": [
     {
-      "grade": "g7",
-      "title": "점 · 직선 · 반직선 · 선분 · 각",
-      "path": "labs/g7/points-lines.html",
-      "source": "점·직선·반직선·선분·각.html",
-      "source_sha256": "cba9eb883ed48adfa6d30b0ac81c292bcf5ba014261809d4248d1052d55a8c04",
-      "mobile_patch": true,
-      "touch_patch": true,
-      "bundle_sha256": "57959d5c631a9955932ccdce24839aee2e54cfa4246c201f4a7c2eec23c30dc2"
+      "id": "g7",
+      "name": "중1",
+      "lab_count": 8
     },
     {
-      "grade": "g7",
-      "title": "위치관계 · 반례",
-      "path": "labs/g7/spatial-relations.html",
-      "source": "위치관계·반례.html",
-      "source_sha256": "6db46fea6382cc4701e624a0a56465309b46e55a25d5faee65979920c763a3b9",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "bundle_sha256": "a76f0836eec810254e7ebdce7f4606e56e6bc0e74cc7394dae11f43cc499cbcc",
-      "native_canvas_relation_v2": true
+      "id": "g8",
+      "name": "중2",
+      "lab_count": 4
     },
     {
-      "grade": "g7",
-      "title": "평면도형 · 다각형 · 넓이",
-      "path": "labs/g7/polygons-area.html",
-      "source": "평면도형·다각형·넓이.html",
-      "source_sha256": "b0b1c358fe869bed8a8ac34011006178722d60e890955938ceee584527cad72d",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "bundle_sha256": "57d998d15ff08065df7b83d4c0e90dced2641aaec642108ca088c576f6280c2f"
+      "id": "g9",
+      "name": "중3",
+      "lab_count": 2
     },
     {
-      "grade": "g7",
-      "title": "원과 부채꼴",
-      "path": "labs/g7/원과_부채꼴_통합_마스터_스튜디오.html",
-      "source": "붙여넣은 텍스트(1)(20261027-130644).txt",
-      "source_sha256": "b0eeffc90f1eafcfe8ed96d0e401cf295d340046d588879b0c61e6214f7badfa",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "upgraded": true,
-      "bundle_sha256": "21c17ab161033f28a24293f56cfdacc46e705e6a52aa9915c002ab0946d76a63"
+      "id": "common",
+      "name": "공통수학",
+      "lab_count": 4
     },
     {
-      "grade": "g7",
-      "title": "다면체와 정다면체",
-      "path": "labs/g7/polyhedra.html",
-      "source": "다면체와 정다면체.html",
-      "source_sha256": "c5fc3edcddd31693fd9f0cf30766c77ee717d88f8a7f02d6bf4611da057031b2",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "bundle_sha256": "32977ff646a9f0f0d15c23f85b798742ddd15702f215490910380bb28a90e42a",
-      "native_canvas_relation_v2": true
+      "id": "algebra",
+      "name": "대수",
+      "lab_count": 8
     },
     {
-      "grade": "g7",
-      "title": "전개도 변환",
-      "path": "labs/g7/nets-folding.html",
-      "source": "전개도 변환.html",
-      "source_sha256": "62f8c3a6a47f6b5016fcba80700444cb332993d24c735b99d16467ee345fd80d",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "bundle_sha256": "43daccdcf876c2a9e0412443a4ad62364776fd86ce5ed50e8af2bed3180fcd64",
-      "native_canvas_relation_v2": true
+      "id": "calc1",
+      "name": "미적분Ⅰ",
+      "lab_count": 8
     },
     {
-      "grade": "g7",
-      "title": "겉넓이 · 부피",
-      "path": "labs/g7/surface-volume.html",
-      "source": "겉넓이·부피.html",
-      "source_sha256": "ef75e139f4e4e49132eba7ba6b24ffc6df1f10c297efd25496a685a0bcdea980",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "bundle_sha256": "32be5042c3f081858868855a35dcd44f41227dc4e2ed49d806257b597ac56724"
-    },
-    {
-      "grade": "g7",
-      "title": "입체도형 종합",
-      "path": "labs/g7/solids-3d.html",
-      "source": "입체도형.html",
-      "source_sha256": "395460f1c1bbb42e641ea635f49d84530a074ddcef37aa7ab63bf1cb5314d0d2",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "bundle_sha256": "5ef49809010f14691d5bbe1c45b12617408ad11eab9ef572b116ca151cb8c695",
-      "native_canvas_relation_v2": true
-    },
-    {
-      "grade": "g8",
-      "title": "삼각형 경험도감",
-      "path": "labs/g8/triangles-atlas.html",
-      "source": "AP_Math_중2_삼각형_경험도감_개선판.html",
-      "source_sha256": "82f7a66bc45a24821173eca339b7512b01498dc61133a91f06dbbc530cf807c0",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "bundle_sha256": "e0d7f6c08689762c64fabbd705331a3b561e16ab40724aab3475164feda614be"
-    },
-    {
-      "grade": "g8",
-      "title": "사각형 경험도감",
-      "path": "labs/g8/quadrilaterals-atlas.html",
-      "source": "AP_Math_중2_사각형_경험도감_개선판.html",
-      "source_sha256": "a096bdfe7ea5535ebe1de2a3b08b1dc844dd226bfa7e3dfc74d6469c6f0661de",
-      "mobile_patch": true,
-      "touch_patch": true,
-      "bundle_sha256": "ea67c0e2d2a0da83620cc980440186823c346b6bfaad9de56687612b2619fe02"
-    },
-    {
-      "grade": "g8",
-      "title": "닮음 경험도감",
-      "path": "labs/g8/similarity-atlas.html",
-      "source": "AP_Math_중2_닮음_경험도감_개선판.html",
-      "source_sha256": "69b520a3c00e9f25591b22167110670848992ac5fc15def78c5dfa48dbc28207",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "bundle_sha256": "4e3ebf1c299494d069ec787496f256891b3a799b02bc6615043491b7dd842736"
-    },
-    {
-      "grade": "g7",
-      "title": "원과 부채꼴 기본판 (보조)",
-      "path": "labs/g7/circle-sectors-basic.html",
-      "source": "원과 부채꼴.html",
-      "source_sha256": "e85a2a8f8831dbd3517f5f99a73fbb6e417720dca3107aaaf84872c5075da53a",
-      "mobile_patch": true,
-      "touch_patch": false,
-      "bundle_sha256": "2393933f0057a09aa5344cf24b00f2c553fbb4159d59e42a3290b2797d643ae2"
+      "id": "geom",
+      "name": "기하",
+      "lab_count": 9
     }
   ],
-  "circle_sector_scene_atlas": {
-    "categories": 14,
-    "selectable_scenes": 56,
-    "legacy_pro_modes": 5,
-    "standalone": "AP_Math_중1_원과부채꼴_56장면_개선판.html",
-    "html_sha256": "262e06440b235c06ccd77c513ebb3cf1cf035cd629eeb637b8d9dc9dbc899b71",
-    "browser_scene_render_test": "56/56; external CDN skipped"
-  },
-  "relation_engine": {
-    "version": "1.0",
-    "assets": [
-      "assets/geometry-relations.css",
-      "assets/geometry-relations.js"
-    ],
-    "standalone": "tools/geometry-relations.html",
-    "integrated_labs": [
-      "labs/g7/points-lines.html",
-      "labs/g7/spatial-relations.html",
-      "labs/g7/polygons-area.html",
-      "labs/g7/polyhedra.html",
-      "labs/g7/nets-folding.html",
-      "labs/g7/surface-volume.html",
-      "labs/g7/solids-3d.html",
-      "labs/g8/triangles-atlas.html",
-      "labs/g8/quadrilaterals-atlas.html",
-      "labs/g8/similarity-atlas.html"
-    ],
-    "mode_by_lab": {
-      "labs/g7/points-lines.html": "plane",
-      "labs/g7/spatial-relations.html": "cube",
-      "labs/g7/polygons-area.html": "plane",
-      "labs/g7/polyhedra.html": "cube",
-      "labs/g7/nets-folding.html": "net",
-      "labs/g7/surface-volume.html": "cube",
-      "labs/g7/solids-3d.html": "cube",
-      "labs/g8/triangles-atlas.html": "plane",
-      "labs/g8/quadrilaterals-atlas.html": "plane",
-      "labs/g8/similarity-atlas.html": "plane"
+  "labs": [
+    {
+      "id": "g7-points-lines",
+      "grade": "g7",
+      "course": "g7",
+      "unit": "기본 도형",
+      "title": "점 · 직선 · 반직선 · 선분 · 각",
+      "path": "labs/g7/points-lines.html"
     },
-    "scope": "dedicated relation panel; original Canvas diagram not modified"
-  },
-  "direct_native_relation_labs": [
-    "labs/g7/nets-folding.html",
-    "labs/g7/polyhedra.html",
-    "labs/g7/spatial-relations.html",
-    "labs/g7/solids-3d.html"
-  ],
-  "shared_native_assets": [
-    "assets/board-relations.js",
-    "assets/board-relations.css"
-  ],
-  "native_canvas_status": "SUPPORTED_SCENES_ONLY",
-  "student_copy": {
-    "scope": "all 12 HTML labs, homepage and two relationship tools",
-    "learning_guide": "shared student-guide.js",
-    "search": "homepage client-side unit filter",
-    "math_logic_modified": false
-  }
+    {
+      "id": "g7-spatial",
+      "grade": "g7",
+      "course": "g7",
+      "unit": "기본 도형",
+      "title": "위치관계 · 반례",
+      "path": "labs/g7/spatial-relations.html"
+    },
+    {
+      "id": "g7-polygons",
+      "grade": "g7",
+      "course": "g7",
+      "unit": "평면도형",
+      "title": "평면도형 · 다각형 · 넓이",
+      "path": "labs/g7/polygons-area.html"
+    },
+    {
+      "id": "g7-circle-sector",
+      "grade": "g7",
+      "course": "g7",
+      "unit": "평면도형",
+      "title": "원과 부채꼴 · 움직이는 실험실",
+      "path": "labs/g7/원과_부채꼴_통합_마스터_스튜디오.html"
+    },
+    {
+      "id": "g7-polyhedra",
+      "grade": "g7",
+      "course": "g7",
+      "unit": "입체도형",
+      "title": "다면체와 정다면체",
+      "path": "labs/g7/polyhedra.html"
+    },
+    {
+      "id": "g7-nets",
+      "grade": "g7",
+      "course": "g7",
+      "unit": "입체도형",
+      "title": "전개도 변환",
+      "path": "labs/g7/nets-folding.html"
+    },
+    {
+      "id": "g7-surface-volume",
+      "grade": "g7",
+      "course": "g7",
+      "unit": "입체도형",
+      "title": "겉넓이 · 부피",
+      "path": "labs/g7/입체도형의 겉넓이와 부피.html"
+    },
+    {
+      "id": "g7-solids",
+      "grade": "g7",
+      "course": "g7",
+      "unit": "입체도형",
+      "title": "입체도형 종합",
+      "path": "labs/g7/다면체·회전체&겨냥도·전개도.html"
+    },
+    {
+      "id": "g8-triangles",
+      "grade": "g8",
+      "course": "g8",
+      "unit": "삼각형의 성질",
+      "title": "삼각형 경험도감",
+      "path": "labs/g8/triangles-atlas.html"
+    },
+    {
+      "id": "g8-quadrilaterals",
+      "grade": "g8",
+      "course": "g8",
+      "unit": "사각형의 성질",
+      "title": "사각형 경험도감",
+      "path": "labs/g8/quadrilaterals-atlas.html"
+    },
+    {
+      "id": "g8-similarity",
+      "grade": "g8",
+      "course": "g8",
+      "unit": "도형의 닮음",
+      "title": "닮음 경험도감",
+      "path": "labs/g8/similarity-atlas.html"
+    },
+    {
+      "id": "g8-pythagoras",
+      "grade": "g8",
+      "course": "g8",
+      "unit": "피타고라스 정리",
+      "title": "피타고라스 정리",
+      "path": "labs/g8/피타고라스.html"
+    },
+    {
+      "id": "g9-trig-ratio",
+      "grade": "g9",
+      "course": "g9",
+      "unit": "삼각비",
+      "title": "삼각비",
+      "path": "labs/g9/삼각비.html",
+      "next": "next/labs/g9-trig-ratio.html"
+    },
+    {
+      "id": "g9-circle",
+      "grade": "g9",
+      "course": "g9",
+      "unit": "원의 성질",
+      "title": "원의 성질",
+      "path": "labs/g9/원.html"
+    },
+    {
+      "id": "common-quadratic",
+      "grade": "common",
+      "course": "common",
+      "unit": "방정식과 부등식",
+      "title": "이차함수",
+      "path": "labs/공통수학/이차함수.html"
+    },
+    {
+      "id": "common-lines",
+      "grade": "common",
+      "course": "common",
+      "unit": "도형의 방정식",
+      "title": "평면 · 직선 · 이동",
+      "path": "labs/공통수학/평면·직선·이동.html"
+    },
+    {
+      "id": "common-circle-eq",
+      "grade": "common",
+      "course": "common",
+      "unit": "도형의 방정식",
+      "title": "원의 방정식",
+      "path": "labs/공통수학/원의 방정식.html"
+    },
+    {
+      "id": "common-functions",
+      "grade": "common",
+      "course": "common",
+      "unit": "함수와 그래프",
+      "title": "합성함수 · 유리 · 무리함수",
+      "path": "labs/공통수학/합성함수·유리함수·무리함수.html"
+    },
+    {
+      "id": "alg-explog",
+      "grade": "algebra",
+      "course": "algebra",
+      "unit": "Ⅰ. 지수함수와 로그함수",
+      "title": "지수·로그함수 그래프 탐구",
+      "path": "labs/대수/part1a.html"
+    },
+    {
+      "id": "alg-exp-deep",
+      "grade": "algebra",
+      "course": "algebra",
+      "unit": "Ⅰ. 지수함수와 로그함수",
+      "title": "거듭제곱근·상용로그·지수함수",
+      "path": "labs/대수/part1a2.html"
+    },
+    {
+      "id": "alg-log",
+      "grade": "algebra",
+      "course": "algebra",
+      "unit": "Ⅰ. 지수함수와 로그함수",
+      "title": "로그함수와 역함수·도형",
+      "path": "labs/대수/part1b.html"
+    },
+    {
+      "id": "alg-log-deep",
+      "grade": "algebra",
+      "course": "algebra",
+      "unit": "Ⅰ. 지수함수와 로그함수",
+      "title": "로그함수·역함수 도형 심화",
+      "path": "labs/대수/part1b1.html"
+    },
+    {
+      "id": "alg-unit-circle",
+      "grade": "algebra",
+      "course": "algebra",
+      "unit": "Ⅱ. 삼각함수",
+      "title": "단위원과 삼각함수 파형 연동",
+      "path": "labs/대수/단위원과그래프.html"
+    },
+    {
+      "id": "alg-trig-geometry",
+      "grade": "algebra",
+      "course": "algebra",
+      "unit": "Ⅱ. 삼각함수",
+      "title": "삼각함수와 도형 활용",
+      "path": "labs/대수/part2a.html"
+    },
+    {
+      "id": "alg-sine-cosine-law",
+      "grade": "algebra",
+      "course": "algebra",
+      "unit": "Ⅱ. 삼각함수",
+      "title": "사인·코사인법칙 도형 탐구",
+      "path": "labs/대수/part2b.html"
+    },
+    {
+      "id": "alg-sequence",
+      "grade": "algebra",
+      "course": "algebra",
+      "unit": "Ⅲ. 수열",
+      "title": "수열의 그래프와 점화식",
+      "path": "labs/대수/part3.html"
+    },
+    {
+      "id": "calc1-limits",
+      "grade": "calc1",
+      "course": "calc1",
+      "unit": "함수의 극한과 연속",
+      "title": "함수의 극한 · 연속",
+      "path": "labs/미적분1/함수의 극한·연속.html"
+    },
+    {
+      "id": "calc1-tangent",
+      "grade": "calc1",
+      "course": "calc1",
+      "unit": "미분",
+      "title": "접선과 미분계수",
+      "path": "labs/미적분1/접선과 미분계수.html",
+      "next": "next/labs/calc1-tangent.html"
+    },
+    {
+      "id": "calc1-derivative-shape",
+      "grade": "calc1",
+      "course": "calc1",
+      "unit": "미분",
+      "title": "도함수 ↔ 원함수",
+      "path": "labs/미적분1/도함수 ↔ 원함수.html"
+    },
+    {
+      "id": "calc1-cubic",
+      "grade": "calc1",
+      "course": "calc1",
+      "unit": "미분",
+      "title": "삼차함수 비율관계",
+      "path": "labs/미적분1/삼차함수 비율관계.html"
+    },
+    {
+      "id": "calc1-quartic",
+      "grade": "calc1",
+      "course": "calc1",
+      "unit": "미분",
+      "title": "사차함수 비율관계",
+      "path": "labs/미적분1/사차함수 비율관계.html"
+    },
+    {
+      "id": "calc1-composite",
+      "grade": "calc1",
+      "course": "calc1",
+      "unit": "미분",
+      "title": "합성함수 · 절댓값 그래프",
+      "path": "labs/미적분1/합성함수·절댓값 그래프.html"
+    },
+    {
+      "id": "calc1-integral",
+      "grade": "calc1",
+      "course": "calc1",
+      "unit": "적분",
+      "title": "정적분과 넓이",
+      "path": "labs/미적분1/정적분과 넓이.html"
+    },
+    {
+      "id": "calc1-motion",
+      "grade": "calc1",
+      "course": "calc1",
+      "unit": "적분",
+      "title": "속도 · 가속도 · 이동거리",
+      "path": "labs/미적분1/속도·가속도·이동거리.html"
+    },
+    {
+      "id": "geom-parabola",
+      "grade": "geom",
+      "course": "geom",
+      "unit": "이차곡선",
+      "title": "포물선",
+      "path": "labs/기하와벡터/포물선.html"
+    },
+    {
+      "id": "geom-ellipse",
+      "grade": "geom",
+      "course": "geom",
+      "unit": "이차곡선",
+      "title": "타원",
+      "path": "labs/기하와벡터/타원.html"
+    },
+    {
+      "id": "geom-hyperbola",
+      "grade": "geom",
+      "course": "geom",
+      "unit": "이차곡선",
+      "title": "쌍곡선",
+      "path": "labs/기하와벡터/쌍곡선.html"
+    },
+    {
+      "id": "geom-space",
+      "grade": "geom",
+      "course": "geom",
+      "unit": "공간도형과 공간좌표",
+      "title": "공간도형 3D",
+      "path": "labs/기하와벡터/공간도형 3D.html",
+      "next": "next/labs/geom-space-3d.html"
+    },
+    {
+      "id": "geom-projection",
+      "grade": "geom",
+      "course": "geom",
+      "unit": "공간도형과 공간좌표",
+      "title": "정사영 3D",
+      "path": "labs/기하와벡터/정사영 3D.html"
+    },
+    {
+      "id": "geom-space-coord",
+      "grade": "geom",
+      "course": "geom",
+      "unit": "공간도형과 공간좌표",
+      "title": "공간좌표 3D",
+      "path": "labs/기하와벡터/공간좌표_3D.html"
+    },
+    {
+      "id": "geom-vector-ops",
+      "grade": "geom",
+      "course": "geom",
+      "unit": "벡터",
+      "title": "벡터의 덧셈과 뺄셈",
+      "path": "labs/기하와벡터/벡터의덧셈과뺄셈.html"
+    },
+    {
+      "id": "geom-vector-dot",
+      "grade": "geom",
+      "course": "geom",
+      "unit": "벡터",
+      "title": "벡터의 성분 · 내적",
+      "path": "labs/기하와벡터/벡터의 성분·내적.html"
+    },
+    {
+      "id": "geom-vector-figure",
+      "grade": "geom",
+      "course": "geom",
+      "unit": "벡터",
+      "title": "벡터로 나타낸 도형",
+      "path": "labs/기하와벡터/벡터로 나타낸 도형.html"
+    }
+  ]
 }
