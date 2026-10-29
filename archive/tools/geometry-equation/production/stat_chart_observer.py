@@ -252,11 +252,77 @@ def audit_freq(chart, doc):
     return {'classes': n, 'yKind': y_kind, 'polygon': polygon, 'totals': [sum(s['values']) for s in series].__repr__()}
 
 
-def audit_stem(chart, doc):
+def stem_plan(chart):
+    """The plan's own leaves, re-derived without the producer: per group the rows (stem -> leaves in ascending order; a letter leaf, a str, stands where the plan
+    puts it, 1-based among that stem's leaves) and `ordered`, every leaf of the group in rank order (an int is the full value, a str is a letter leaf)."""
     raw = [{'values': chart['values']}] if 'values' in chart else chart['groups']
-    groups = [{'name': g.get('name'), 'values': sorted(g['values'])} for g in raw]
-    allv = [v for g in groups for v in g['values']]
-    stems = list(range(min(allv) // 10, max(allv) // 10 + 1))
+    groups, letters = [], []
+    for g in raw:
+        numbers, symbols = [], []
+        for v in g['values']:
+            if isinstance(v, dict):
+                symbols.append((v['symbol'], v['stem'], v['order']))
+                letters.append(v['symbol'])
+            else: numbers.append(v)
+        groups.append({'name': g.get('name'), 'numbers': sorted(numbers), 'symbols': symbols})
+    if len(set(letters)) != len(letters): fail('STAT_STEM_SYMBOL_DUPLICATE')
+    stem_ids = [v // 10 for g in groups for v in g['numbers']] + [st for g in groups for _, st, _ in g['symbols']]
+    stems = list(range(min(stem_ids), max(stem_ids) + 1))
+    for g in groups:
+        g['rows'] = {}
+        for s in stems:
+            row = [v % 10 for v in g['numbers'] if v // 10 == s]
+            placed = sorted((o, sym) for sym, st, o in g['symbols'] if st == s)
+            for k, (o, sym) in enumerate(placed):
+                if (k and placed[k - 1][0] == o) or o - 1 > len(row): fail('STAT_STEM_SYMBOL_ORDER_CONFLICT')
+                row.insert(o - 1, sym)
+            g['rows'][s] = row
+        g['ordered'] = [s * 10 + leaf if isinstance(leaf, int) else leaf for s in stems for leaf in g['rows'][s]]
+    return groups, stems
+
+
+def class_plan(chart, groups):
+    """Each class group of the plan: (group, from, to, stem, leaf places inside [from, to) of that stem's row, count). A letter leaf counts only when the whole-number
+    leaves on either side of it settle which side of the class edge it is on; otherwise the plan is refused (the figure would state a frequency nobody knows)."""
+    out = []
+    for cl in chart.get('classGroups') or []:
+        gi = cl.get('group', 0)
+        frm, to = int(cl['from']), int(cl['to'])
+        stem = frm // 10
+        if to <= frm or (to - 1) // 10 != stem: fail('STAT_STEM_CLASS_UNSUPPORTED')
+        row = groups[gi]['rows'].get(stem)
+        if row is None: fail('STAT_STEM_CLASS_EMPTY')
+        clo, chi = frm - 10 * stem, to - 10 * stem
+        inside = []
+        for j, leaf in enumerate(row):
+            if isinstance(leaf, int): hit = clo <= leaf < chi
+            else:
+                left = [v for v in row[:j] if isinstance(v, int)]
+                right = [v for v in row[j + 1:] if isinstance(v, int)]
+                low, high = (left[-1] if left else 0), (right[0] if right else 9)
+                if low >= clo and high < chi: hit = True
+                elif high < clo or low >= chi: hit = False
+                else: fail('STAT_STEM_CLASS_UNDETERMINED')
+            if hit: inside.append(j)
+        if not inside: fail('STAT_STEM_CLASS_EMPTY')
+        if inside[-1] - inside[0] + 1 != len(inside): fail('STAT_STEM_CLASS_UNDETERMINED')
+        if any(o[0] == gi and o[1] < to and frm < o[2] for o in out): fail('STAT_STEM_CLASS_OVERLAP')
+        label = cl.get('label')
+        if label is not None and str(label) != str(len(inside)): fail('STAT_STEM_CLASS_COUNT_MISMATCH')
+        out.append((gi, frm, to, stem, inside, len(inside), label is not None))
+    return out
+
+
+def read_leaf(label):
+    """A drawn leaf read back from its own TeX: an int (the ones digit) or a str (a letter leaf)."""
+    tex = re.sub(r'^\\displaystyle\s*', '', label.get('data-tex') or '').replace(' ', '')
+    if re.fullmatch(r'[a-z]', tex): return tex
+    return int(tex_number(tex))
+
+
+def audit_stem(chart, doc):
+    groups, stems = stem_plan(chart)
+    total = sum(len(g['ordered']) for g in groups)
     two = len(groups) == 2
     stem_labels = doc.label_role('stem')
     if sorted(int(l.get('data-value')) for l in stem_labels) != stems: doc.err('SC_STEMS_MISMATCH')
@@ -270,17 +336,21 @@ def audit_stem(chart, doc):
     ys = [stem_y[s][1] for s in stems if s in stem_y]
     if ys != sorted(ys) or len(set(round(y, 1) for y in ys)) != len(ys): doc.err('SC_STEM_ORDER')
     leaves = doc.label_role('leaf')
-    if len(leaves) != len(allv): doc.err('SC_LEAF_COUNT_MISMATCH')
+    if len(leaves) != total: doc.err('SC_LEAF_COUNT_MISMATCH')
     stem_x = sum(c[0] for c in stem_y.values()) / max(len(stem_y), 1)
     for gi, g in enumerate(groups):
         for s in stems:
-            want = [v % 10 for v in g['values'] if v // 10 == s]
+            want = g['rows'][s]
             mine = sorted([l for l in leaves if l.get('data-group') == str(gi) and l.get('data-stem') == str(s)], key=lambda l: int(l.get('data-index')))
             read = []
             for l in mine:
-                try: read.append(int(tex_number(l.get('data-tex'))))
-                except ValueError as e: doc.err(str(e))
-                if l.get('data-value') != str(s * 10 + read[-1] if read else -1): doc.err('SC_LEAF_VALUE_ATTRIBUTE:%d' % s)
+                try: leaf = read_leaf(l)
+                except ValueError as e: doc.err(str(e)); continue
+                read.append(leaf)
+                if isinstance(leaf, str):
+                    # a letter leaf carries its letter and no value
+                    if l.get('data-symbol') != leaf or l.get('data-value') is not None: doc.err('SC_LEAF_SYMBOL_ATTRIBUTE:%d' % s)
+                elif l.get('data-value') != str(s * 10 + leaf) or l.get('data-symbol') is not None: doc.err('SC_LEAF_VALUE_ATTRIBUTE:%d' % s)
             if read != want: doc.err('SC_LEAVES_MISMATCH:g%d:%d' % (gi, s))
             xs = [centre(l)[0] for l in mine]
             if (gi == 0 and not two and xs != sorted(xs)) or (gi == 0 and two and xs != sorted(xs, reverse=True)) or (gi == 1 and xs != sorted(xs)): doc.err('SC_LEAF_ORDER:g%d:%d' % (gi, s))
@@ -288,41 +358,100 @@ def audit_stem(chart, doc):
             if not two and any(x <= stem_x for x in xs): doc.err('SC_LEAF_SIDE:g%d' % gi)
             for k, l in enumerate(mine):
                 if s in stem_y and abs(centre(l)[1] - stem_y[s][1]) > LABEL_TOL: doc.err('SC_LEAF_NOT_ON_STEM_ROW:%d' % s)
-    # marks: the rank-th smallest value of the group circles that leaf
+    # marks: the rank-th smallest leaf of the group is circled (a rank counts the letter leaves too)
     marks = []
     for m in chart.get('marks') or []:
         gi = m.get('group', 0)
-        n = len(groups[gi]['values'])
-        ranks = ([(n + 1) // 2] if n % 2 else [n // 2, n // 2 + 1]) if m.get('median') is True else m['ranks']
+        n = len(groups[gi]['ordered'])
+        if m.get('median') is True: ranks = [(n + 1) // 2] if n % 2 else [n // 2, n // 2 + 1]
+        elif 'rank' in m: ranks = [m['rank']]
+        else: ranks = m['ranks']
         marks += [(gi, r) for r in ranks]
     drawn = doc.role('ellipse', 'mark')
     if sorted((int(e.get('data-group')), int(e.get('data-rank'))) for e in drawn) != sorted(marks): doc.err('SC_MARK_SET_MISMATCH')
+    stem_rows = sorted((c[1], s) for s, c in stem_y.items())
+
+    def row_of(label):
+        y = centre(label)[1]
+        return min(range(len(stem_rows)), key=lambda k: abs(stem_rows[k][0] - y)) if stem_rows else 0
+
     for e in drawn:
         gi, rank = int(e.get('data-group')), int(e.get('data-rank'))
-        values = groups[gi]['values']
-        if not 1 <= rank <= len(values): doc.err('SC_MARK_RANK'); continue
-        value = values[rank - 1]
-        if e.get('data-value') != str(value): doc.err('SC_MARK_VALUE:%d' % rank)
-        s = value // 10
-        before = sum(1 for v in values[:rank - 1] if v // 10 == s)
-        target = [l for l in leaves if l.get('data-group') == str(gi) and l.get('data-stem') == str(s) and l.get('data-index') == str(before)]
-        if len(target) != 1: doc.err('SC_MARK_TARGET:%d' % rank); continue
-        cx, cy = centre(target[0])
+        ordered = groups[gi]['ordered']
+        if not 1 <= rank <= len(ordered): doc.err('SC_MARK_RANK'); continue
+        item = ordered[rank - 1]
+        if isinstance(item, str):
+            if e.get('data-symbol') != item or e.get('data-value') is not None: doc.err('SC_MARK_SYMBOL:%d' % rank)
+        elif e.get('data-value') != str(item) or e.get('data-symbol') is not None: doc.err('SC_MARK_VALUE:%d' % rank)
+        # the circled leaf is found from the picture alone: the group's leaves ordered by stem row (top to bottom) and along the row (away from the stem), counted to the rank
+        mine = [l for l in leaves if l.get('data-group') == str(gi)]
+        geo = sorted(mine, key=lambda l: (row_of(l), -centre(l)[0] if (gi == 0 and two) else centre(l)[0]))
+        if len(geo) != len(ordered): doc.err('SC_MARK_TARGET:%d' % rank); continue
+        target = geo[rank - 1]
+        cx, cy = centre(target)
         if abs(num(e, 'cx') - cx) > LABEL_TOL or abs(num(e, 'cy') - cy) > LABEL_TOL: doc.err('SC_MARK_NOT_ON_LEAF:%d' % rank)
-        if tex_number(target[0].get('data-tex')) != value % 10: doc.err('SC_MARK_LEAF_VALUE:%d' % rank)
+        try: leaf = read_leaf(target)
+        except ValueError as err: doc.err(str(err)); continue
+        if leaf != (item if isinstance(item, str) else item % 10): doc.err('SC_MARK_LEAF_VALUE:%d' % rank)
+    # class groups: a bracket under exactly the leaves of the class, its count (counted here from the plan) centred below it
+    wanted = class_plan(chart, groups)
+    brackets = doc.role('polyline', 'class-bracket')
+    if sorted((int(b.get('data-group')), int(b.get('data-from')), int(b.get('data-to'))) for b in brackets) != sorted((w[0], w[1], w[2]) for w in wanted): doc.err('SC_CLASS_SET_MISMATCH')
+    for b in brackets:
+        key3 = (int(b.get('data-group')), int(b.get('data-from')), int(b.get('data-to')))
+        found = [w for w in wanted if (w[0], w[1], w[2]) == key3]
+        if len(found) != 1: continue
+        gi, frm, to, stem, inside, count, has_label = found[0]
+        tag = '%d-%d-%d' % key3
+        try: pts = [tuple(float(v) for v in pair.split(',')) for pair in b.get('points').split()]
+        except Exception: doc.err('SC_CLASS_BRACKET_POINTS:' + tag); continue
+        if len(pts) != 4 or abs(pts[0][0] - pts[1][0]) > TOL or abs(pts[2][0] - pts[3][0]) > TOL or abs(pts[1][1] - pts[2][1]) > TOL or abs(pts[0][1] - pts[3][1]) > TOL or not pts[1][1] > pts[0][1]:
+            doc.err('SC_CLASS_BRACKET_SHAPE:' + tag); continue
+        xl, xr, yb = pts[0][0], pts[3][0], pts[1][1]
+        if not xl < xr: doc.err('SC_CLASS_BRACKET_SHAPE:' + tag); continue
+        # the leaves of this stem row in the group, in order away from the stem, found from the picture (by row position), not from the producer's stem/index attributes
+        at_row = [k for k, (_, s2) in enumerate(stem_rows) if s2 == stem]
+        if len(at_row) != 1: doc.err('SC_CLASS_ROW_MISSING:' + tag); continue
+        top_row = at_row[0]
+        row_leaves = sorted([l for l in leaves if l.get('data-group') == str(gi) and row_of(l) == top_row], key=lambda l: -centre(l)[0] if (gi == 0 and two) else centre(l)[0])
+        if len(row_leaves) != len(groups[gi]['rows'][stem]): doc.err('SC_CLASS_ROW_LEAVES:' + tag); continue
+        covered = [l.get('id') for l in row_leaves if xl <= centre(l)[0] <= xr]
+        if covered != [row_leaves[j].get('id') for j in inside]: doc.err('SC_CLASS_COVER_MISMATCH:' + tag)
+        if any(yb <= box_of(l)[1] + box_of(l)[3] + 2 for l in row_leaves): doc.err('SC_CLASS_BRACKET_NOT_BELOW:' + tag)
+        counts = doc.owners.get(b.get('id'), [])
+        if not has_label:
+            if counts: doc.err('SC_CLASS_COUNT_UNEXPECTED:' + tag)
+        elif len(counts) != 1 or counts[0].get('data-label-role') != 'class-count': doc.err('SC_CLASS_COUNT_LABEL:' + tag)
+        else:
+            try: shown = tex_number(counts[0].get('data-tex'))
+            except ValueError as e: doc.err(str(e) + ':' + tag); continue
+            if shown != count: doc.err('SC_CLASS_COUNT_VALUE:' + tag)
+            cx, _ = centre(counts[0])
+            if abs(cx - (xl + xr) / 2) > LABEL_TOL: doc.err('SC_CLASS_COUNT_NOT_CENTRED:' + tag)
+            if box_of(counts[0])[1] < yb: doc.err('SC_CLASS_COUNT_NOT_BELOW:' + tag)
     # key
     unit = chart.get('unitText', '')
     key = chart.get('key')
-    first = groups[0]['values'][0]
+    numeric = sorted(v for g in groups for v in g['numbers'])
+    first = next((v for v in groups[0]['ordered'] if isinstance(v, int)), None)
+    if key is None and first is None: fail('STAT_STEM_KEY_INVALID')
     ks, kl = (key['stem'], key['leaf']) if key else (first // 10, first % 10)
-    if key and ks * 10 + kl not in allv: doc.err('SC_KEY_NOT_IN_DATA')
+    if key and ks * 10 + kl not in numeric: doc.err('SC_KEY_NOT_IN_DATA')
     keys = doc.label_role('key')
     if len(keys) != 1 or keys[0].get('data-text') != '%d | %d은 %d%s' % (ks, kl, ks * 10 + kl, unit): doc.err('SC_KEY_TEXT')
     heads = {l.get('data-text') for l in doc.label_role('header')}
     want_heads = {'줄기'} | ({g['name'] for g in groups} if two else {'잎'})
     if heads != want_heads: doc.err('SC_HEADERS')
     doc.check_title('title', chart.get('title'), 'x')
-    return {'n': [len(g['values']) for g in groups], 'median': [str(median([Fraction(v) for v in g['values']])) for g in groups]}
+
+    def median_of(ordered):
+        n = len(ordered)
+        mid = [ordered[(n + 1) // 2 - 1]] if n % 2 else [ordered[n // 2 - 1], ordered[n // 2]]
+        return None if any(isinstance(v, str) for v in mid) else str(median([Fraction(v) for v in mid]))
+
+    observed = {'n': [len(g['ordered']) for g in groups], 'median': [median_of(g['ordered']) for g in groups]}
+    if wanted: observed['classes'] = [{'group': w[0], 'from': w[1], 'to': w[2], 'count': w[5]} for w in wanted]
+    return observed
 
 
 def audit_box(chart, doc):

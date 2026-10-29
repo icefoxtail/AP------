@@ -145,6 +145,82 @@ test('every chart composes, the independent observer passes it, and it catches a
   }finally{await browser.close();}
 });
 
+// 26 왕운중 2학기 중간 중1 19: the leaves a and b are letters (10+a, 10+b); only a+b is known, so the engine must place them by position and never give them a value
+const letters={kind:'STEM_LEAF',title:'스마트폰 사용 시간',unitText:'시간',key:{stem:1,leaf:0},
+  values:[1,1,3,3,7,8,9,10,14,18,{symbol:'a',stem:1,order:3},{symbol:'b',stem:1,order:4},23,27,27,30,30,31,31,31],
+  marks:[{rank:10},{rank:11}],classGroups:[{from:'5',to:'10',label:'3'},{from:'20',to:'25',label:'1'}]};
+test('a stem-and-leaf plot takes letter leaves by position, ranks them, and counts class groups itself',()=>{
+  const m=solveStatChart(letters);
+  assert.deepEqual(m.stems,[0,1,2,3]);
+  assert.deepEqual(m.groups[0].rows[1].leaves,[0,4,{symbol:'a'},{symbol:'b'},8]);
+  assert.equal(m.groups[0].n,20);assert.equal(m.groups[0].median,null);// the middle two leaves are 10+a and 10+b: no number
+  assert.deepEqual(m.marks,[{group:0,rank:10,value:null,symbol:'a'},{group:0,rank:11,value:null,symbol:'b'}]);
+  assert.deepEqual(m.classGroups.map(k=>[k.stem,k.first,k.last,k.count,k.label]),[[0,4,6,3,'3'],[2,0,0,1,'1']]);
+  // a letter leaf does not move the median when the middle leaves are whole numbers; a single rank is the same as a one-entry ranks
+  const mid=solveStatChart({kind:'STEM_LEAF',values:[11,13,{symbol:'a',stem:1,order:3},17,19],marks:[{median:true}]});
+  assert.equal(mid.groups[0].median,null);
+  assert.equal(solveStatChart({kind:'STEM_LEAF',values:[11,13,{symbol:'a',stem:1,order:2},17,19,21],marks:[{median:true}]}).groups[0].median,'15');
+  assert.deepEqual(solveStatChart({...stem,marks:[{rank:10},{rank:11}]}).marks,solveStatChart({...stem,marks:[{ranks:[10,11]}]}).marks);
+  // a plan without the new fields keeps its model exactly: same keys, no class groups, marks of whole numbers
+  const old=solveStatChart(stem);
+  assert.deepEqual(Object.keys(old),['schemaVersion','kind','title','unitText','key','stems','marks','groups']);
+  assert.deepEqual(Object.keys(old.marks[0]),['group','rank','value']);
+  assert.deepEqual(Object.keys(old.groups[0]),['name','n','sorted','median','rows']);
+});
+test('letter leaves and class groups that cannot be drawn faithfully are refused with their codes',()=>{
+  const values=(...extra)=>[1,3,5,12,17,...extra],letter=(symbol,order,stemNo=1)=>({symbol,stem:stemNo,order});
+  const chart=(vals,rest={})=>({kind:'STEM_LEAF',values:vals,...rest});
+  refuse(chart(values(letter('A',2))),'STAT_STEM_SYMBOL_INVALID');
+  refuse(chart(values(letter('ab',2))),'STAT_STEM_SYMBOL_INVALID');
+  refuse(chart(values({symbol:'a',stem:1})),'STAT_STEM_SYMBOL_INVALID');
+  refuse(chart(values({symbol:'a',stem:1,order:2,value:4})),'STAT_STEM_SYMBOL_INVALID');
+  refuse(chart(values(letter('a',2),letter('a',3))),'STAT_STEM_SYMBOL_DUPLICATE');
+  refuse(chart(values(letter('a',4))),'STAT_STEM_SYMBOL_ORDER_CONFLICT');// the row 12 17 has room for a leaf in places 1..3
+  refuse(chart(values(letter('a',2),letter('b',2))),'STAT_STEM_SYMBOL_ORDER_CONFLICT');
+  refuse(chart([{symbol:'a',stem:1,order:1}]),'STAT_STEM_KEY_INVALID');
+  refuse(chart(values(),{marks:[{rank:0}]}),'STAT_STEM_MARK_INVALID');
+  refuse(chart(values(),{marks:[{rank:6}]}),'STAT_STEM_MARK_INVALID');
+  refuse(chart(values(),{marks:[{rank:2,ranks:[3]}]}),'STAT_STEM_MARK_INVALID');
+  const withClass=classGroups=>chart(values(letter('a',2)),{classGroups});
+  refuse(withClass([{from:0,to:5,label:'3'}]),'STAT_STEM_CLASS_COUNT_MISMATCH');
+  refuse(withClass([{from:10,to:15}]),'STAT_STEM_CLASS_UNDETERMINED');// 2 <= a <= 7 may lie on either side of 5
+  refuse(withClass([{from:0,to:15}]),'STAT_STEM_CLASS_UNSUPPORTED');
+  refuse(withClass([{from:20,to:25}]),'STAT_STEM_CLASS_EMPTY');
+  refuse(withClass([{from:0,to:5},{from:3,to:8}]),'STAT_STEM_CLASS_OVERLAP');
+  refuse(withClass([{from:0,to:5,extra:1}]),'STAT_STEM_CLASS_INVALID');
+  refuse(withClass([]),'STAT_STEM_CLASS_INVALID');
+  refuse(withClass([{from:'x',to:5}]),'STAT_STEM_CLASS_INVALID');
+  assert.equal(solveStatChart(withClass([{from:10,to:20,label:'3'}])).classGroups[0].count,3);// the whole row settles the letter leaf
+});
+test('the observer passes letter leaves, rank circles and class brackets, and catches a circle on the wrong leaf, a wrong letter, a moved bracket and a wrong count',async()=>{
+  const browser=await launchBrowser();
+  try{
+    const p=plan(letters),model=solveStatChart(letters);
+    const composed=await composeStatChartFigure({plan:p,model,identity:assetIdentity('26_테스트|19','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
+    assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+    assert.equal(composed.staticAudit.status,'PASS');assert.equal(composed.renderedLayout.status,'PASS');
+    const svg=composed.svg,audit=async(chart,text)=>(await pythonWorker({chart,svg:text},{script:observer})).result;
+    const pass=await audit(letters,svg);assert.equal(pass.status,'PASS',JSON.stringify(pass.errors));
+    assert.deepEqual(pass.observed.classes.map(k=>k.count),[3,1]);assert.deepEqual(pass.observed.median,[null]);
+    const bump=(id,attr,delta)=>{const re=new RegExp(`(id="${id}"[^>]*? ${attr}=")(-?[\\d.]+)`);assert.ok(re.test(svg),id);return svg.replace(re,(m,head,x)=>head+(Number(x)+delta));};
+    assert.ok(has(await audit(letters,bump('mark-g0-r10','cx',24)),'SC_MARK_NOT_ON_LEAF:10'));// the circle of leaf a slid onto b
+    assert.ok(has(await audit(letters,bump('mark-g0-r11','cy',-30)),'SC_MARK_NOT_ON_LEAF:11'));// onto the row above
+    assert.ok(has(await audit({...letters,marks:[{rank:9},{rank:11}]},svg),'SC_MARK_SET_MISMATCH'));
+    assert.ok(has(await audit(letters,svg.replace(/(id="mark-g0-r10"[^>]*data-symbol=")a/,'$1b')),'SC_MARK_SYMBOL:10'));
+    assert.ok(has(await audit(letters,svg.replace(/(id="leaf-g0-1-2"[^>]*data-symbol=")a("[^>]*data-tex=")a/,'$1b$2b')),'SC_LEAVES_MISMATCH:g0:1'));
+    assert.ok(has(await audit(letters,svg.replace(/(id="leaf-g0-1-2"[^>]*data-tex=")a/,'$14')),'SC_LEAVES_MISMATCH:g0:1'));
+    assert.ok(has(await audit(letters,svg.replace(/(id="class-g0-5-10"[^>]*points=")(-?[\d.]+),/,(m,head,x)=>head+(Number(x)+24)+',')),'SC_CLASS_'));
+    assert.ok(has(await audit(letters,svg.replace(/(id="class-g0-5-10-count"[^>]*data-tex=")3/,'$12')),'SC_CLASS_COUNT_VALUE:0-5-10'));
+    assert.ok(has(await audit({...letters,classGroups:[{from:'5',to:'10'},{from:'20',to:'25',label:'1'}]},svg),'SC_CLASS_COUNT_UNEXPECTED:0-5-10'));
+    assert.ok(has(await audit({...letters,classGroups:[letters.classGroups[0]]},svg),'SC_CLASS_SET_MISMATCH'));
+    // two groups, back to back: a letter leaf and a class on the left side keep their order away from the stem
+    const back={kind:'STEM_LEAF',groups:[{name:'A반',values:[52,57,{symbol:'a',stem:6,order:1},68,71]},{name:'B반',values:[61,63,{symbol:'b',stem:7,order:2},75,89]}],unitText:'점',marks:[{group:0,rank:3},{group:1,rank:3}],classGroups:[{group:0,from:50,to:55,label:'1'},{group:1,from:60,to:65,label:'2'}]};
+    const two=await composeStatChartFigure({plan:plan(back),model:solveStatChart(back),identity:assetIdentity('26_테스트|20','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
+    assert.equal(two.status,'COMPOSED',JSON.stringify(two.detail));
+    const backPass=await audit(back,two.svg);assert.equal(backPass.status,'PASS',JSON.stringify(backPass.errors));
+  }finally{await browser.close();}
+});
+
 test('render-plan routes a stat-chart plan and reports an unfaithful chart at its stage with the engine code',async()=>{
   const out=fs.mkdtempSync(path.join(os.tmpdir(),'stat-chart-'));
   const r=await renderPlan({item:{sourcePath:'archive/exams/test-exam.js',ordinal:3,dir:'t'},plan:plan({...hist,boundaries:['20','25','31','35']}),outDir:out});

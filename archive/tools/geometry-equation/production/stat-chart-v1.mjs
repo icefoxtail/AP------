@@ -134,46 +134,113 @@ function solveFreq(c){
       vertices:[[qstr(qsub(classes[0].mid,width)),'0'],...classes.map((k,i)=>[qstr(k.mid),qstr(s.values[i])]),[qstr(qadd(classes[n-1].mid,width)),'0']]})),
     y:{step:qstr(step),top:qstr(top),ticks}};
 }
+// A stem-and-leaf leaf is a whole number 0..999 (stem = tens, leaf = ones) or a letter leaf {symbol:'a',stem:1,order:3}: a value the problem names with a letter
+// instead of giving it. The engine never invents the letter's value; the author fixes only its place in the row (order = 1-based position among that stem's leaves
+// in ascending order), and the engine refuses a place the row cannot hold. Ranks (marks) count positions in that ascending order, so a letter leaf can be ranked.
+const STEM_SYMBOL=/^[a-z]$/;
+const stemRow=(g,s)=>{ // the leaves (ones digits, or {symbol}) of stem s in ascending order, the letter leaves put where the author says
+  const row=g.numbers.filter(v=>Math.floor(v/10)===s).map(v=>v%10);
+  const letters=g.symbols.filter(x=>x.stem===s).sort((x,y)=>x.order-y.order);
+  letters.forEach((x,i)=>{if((i&&letters[i-1].order===x.order)||x.order-1>row.length)bad('STAT_STEM_SYMBOL_ORDER_CONFLICT');row.splice(x.order-1,0,{symbol:x.symbol});});
+  return row;
+};
 function solveStem(c){
-  onlyKeys(c,['kind','values','groups','unitText','title','key','marks'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','values','groups','unitText','title','key','marks','classGroups'],'STAT_CHART_PLAN_INVALID');
   if((c.values===undefined)===(c.groups===undefined))bad('STAT_STEM_PLAN_INVALID');
   const raw=c.values!==undefined?[{values:c.values}]:c.groups;
   if(!Array.isArray(raw)||raw.length<1||raw.length>2)bad('STAT_STEM_PLAN_INVALID');
   const groups=raw.map(g=>{
     onlyKeys(g,['name','values'],'STAT_STEM_PLAN_INVALID');
     if(!Array.isArray(g.values)||g.values.length<1||g.values.length>60)bad('STAT_STEM_PLAN_INVALID');
-    const values=g.values.map(v=>intIn(v,0,999,'STAT_STEM_VALUE_INVALID')).sort((x,y)=>x-y);
-    return {name:g.name===undefined?null:titleText(g.name,'STAT_STEM_PLAN_INVALID'),values};
+    const numbers=[],symbols=[];
+    for(const v of g.values){
+      if(isPlain(v)){
+        onlyKeys(v,['symbol','stem','order'],'STAT_STEM_SYMBOL_INVALID');
+        if(typeof v.symbol!=='string'||!STEM_SYMBOL.test(v.symbol))bad('STAT_STEM_SYMBOL_INVALID');
+        symbols.push({symbol:v.symbol,stem:intIn(v.stem,0,99,'STAT_STEM_SYMBOL_INVALID'),order:intIn(v.order,1,60,'STAT_STEM_SYMBOL_INVALID')});
+      }else numbers.push(intIn(v,0,999,'STAT_STEM_VALUE_INVALID'));
+    }
+    numbers.sort((x,y)=>x-y);
+    return {name:g.name===undefined?null:titleText(g.name,'STAT_STEM_PLAN_INVALID'),numbers,symbols};
   });
   if(raw.length===2&&groups.some(g=>!g.name))bad('STAT_SERIES_NAME_REQUIRED');
-  const all=groups.flatMap(g=>g.values),lo=Math.floor(Math.min(...all)/10),hi=Math.floor(Math.max(...all)/10);
+  const letters=groups.flatMap(g=>g.symbols.map(x=>x.symbol));
+  if(new Set(letters).size!==letters.length)bad('STAT_STEM_SYMBOL_DUPLICATE');
+  const all=groups.flatMap(g=>g.numbers),rowStems=[...all.map(v=>Math.floor(v/10)),...groups.flatMap(g=>g.symbols.map(x=>x.stem))],lo=Math.min(...rowStems),hi=Math.max(...rowStems);
   if(hi-lo>11)bad('STAT_STEM_TOO_MANY_STEMS');
   const stems=[];for(let s=lo;s<=hi;s++)stems.push(s);
   const unitText=c.unitText===undefined?'':titleText(c.unitText,'STAT_TITLE_INVALID','');
   const title=c.title===undefined?null:titleText(c.title,'STAT_TITLE_INVALID',null);
+  const rows=groups.map(g=>stems.map(s=>({stem:s,leaves:stemRow(g,s)})));
+  // every leaf of a group in ascending order (a whole number is its full value; a letter leaf stays {symbol}): rank r is entry r-1
+  const ordered=rows.map(rs=>rs.flatMap(r=>r.leaves.map(l=>typeof l==='number'?r.stem*10+l:l)));
   let key=null;
-  const first=groups[0].values[0];
+  const first=ordered[0].find(v=>typeof v==='number');
   if(c.key!==undefined){
     onlyKeys(c.key,['stem','leaf'],'STAT_STEM_KEY_INVALID');
     const value=intIn(c.key.stem,0,99,'STAT_STEM_KEY_INVALID')*10+intIn(c.key.leaf,0,9,'STAT_STEM_KEY_INVALID');
     if(!all.includes(value))bad('STAT_STEM_KEY_NOT_IN_DATA');
     key={stem:c.key.stem,leaf:c.key.leaf};
-  }else key={stem:Math.floor(first/10),leaf:first%10};
+  }else if(first===undefined)bad('STAT_STEM_KEY_INVALID');
+  else key={stem:Math.floor(first/10),leaf:first%10};
   key.value=key.stem*10+key.leaf;key.text=`${key.stem} | ${key.leaf}은 ${key.value}${unitText}`;
   const marks=[];
   if(c.marks!==undefined){
     if(!Array.isArray(c.marks)||c.marks.length>4)bad('STAT_STEM_MARK_INVALID');
     for(const m of c.marks){
-      onlyKeys(m,['group','ranks','median'],'STAT_STEM_MARK_INVALID');
-      const gi=m.group===undefined?0:intIn(m.group,0,groups.length-1,'STAT_STEM_MARK_INVALID'),n=groups[gi].values.length;
-      if((m.ranks===undefined)===(m.median===undefined))bad('STAT_STEM_MARK_INVALID');
-      const ranks=m.median===true?(n%2?[(n+1)/2]:[n/2,n/2+1]):(Array.isArray(m.ranks)&&m.ranks.length>=1&&m.ranks.length<=4?m.ranks.map(r=>intIn(r,1,n,'STAT_STEM_MARK_INVALID')):bad('STAT_STEM_MARK_INVALID'));
-      for(const rank of ranks){if(marks.some(x=>x.group===gi&&x.rank===rank))bad('STAT_STEM_MARK_INVALID');marks.push({group:gi,rank,value:groups[gi].values[rank-1]});}
+      onlyKeys(m,['group','ranks','median','rank'],'STAT_STEM_MARK_INVALID');
+      const gi=m.group===undefined?0:intIn(m.group,0,groups.length-1,'STAT_STEM_MARK_INVALID'),n=ordered[gi].length;
+      if(['ranks','median','rank'].filter(k=>m[k]!==undefined).length!==1)bad('STAT_STEM_MARK_INVALID');
+      const ranks=m.median===true?(n%2?[(n+1)/2]:[n/2,n/2+1]):m.rank!==undefined?[intIn(m.rank,1,n,'STAT_STEM_MARK_INVALID')]:(Array.isArray(m.ranks)&&m.ranks.length>=1&&m.ranks.length<=4?m.ranks.map(r=>intIn(r,1,n,'STAT_STEM_MARK_INVALID')):bad('STAT_STEM_MARK_INVALID'));
+      for(const rank of ranks){
+        if(marks.some(x=>x.group===gi&&x.rank===rank))bad('STAT_STEM_MARK_INVALID');
+        const at=ordered[gi][rank-1];
+        marks.push(typeof at==='number'?{group:gi,rank,value:at}:{group:gi,rank,value:null,symbol:at.symbol});
+      }
     }
   }
+  // the median of a group that holds a letter leaf is a number only when the middle leaf (or both middle leaves) are whole numbers
+  const medianOf=(g,i)=>{
+    if(!g.symbols.length)return qstr(median(g.numbers.map(v=>Q(BigInt(v)))));
+    const n=ordered[i].length,mid=(n%2?[(n+1)/2]:[n/2,n/2+1]).map(r=>ordered[i][r-1]);
+    return mid.every(v=>typeof v==='number')?qstr(median(mid.map(v=>Q(BigInt(v))))):null;
+  };
+  // class groups: a value interval [from,to) inside one stem's row is bracketed under its leaves and its frequency written below. The frequency is counted here, never
+  // taken from the author: a stated label must equal it. A letter leaf counts only when its place in the row settles it (between its whole-number neighbours).
+  const classGroups=[];
+  if(c.classGroups!==undefined){
+    const wholeNumber=v=>typeof v==='string'&&/^\d{1,3}$/.test(v)?Number(v):v;
+    if(!Array.isArray(c.classGroups)||c.classGroups.length<1||c.classGroups.length>8)bad('STAT_STEM_CLASS_INVALID');
+    for(const cl of c.classGroups){
+      onlyKeys(cl,['group','from','to','label'],'STAT_STEM_CLASS_INVALID');
+      const group=cl.group===undefined?0:intIn(cl.group,0,groups.length-1,'STAT_STEM_CLASS_INVALID'),from=intIn(wholeNumber(cl.from),0,999,'STAT_STEM_CLASS_INVALID'),to=intIn(wholeNumber(cl.to),1,1000,'STAT_STEM_CLASS_INVALID');
+      const stem=Math.floor(from/10);
+      if(to<=from||Math.floor((to-1)/10)!==stem)bad('STAT_STEM_CLASS_UNSUPPORTED');
+      const row=stems.includes(stem)?rows[group][stems.indexOf(stem)].leaves:[],clo=from-10*stem,chi=to-10*stem,inside=[];
+      row.forEach((leaf,j)=>{
+        let isIn;
+        if(typeof leaf==='number')isIn=leaf>=clo&&leaf<chi;
+        else{ // a letter leaf lies between the whole-number leaves on either side of it
+          const left=row.slice(0,j).filter(v=>typeof v==='number').at(-1)??0,right=row.slice(j+1).find(v=>typeof v==='number')??9;
+          if(left>=clo&&right<chi)isIn=true;else if(right<clo||left>=chi)isIn=false;else bad('STAT_STEM_CLASS_UNDETERMINED');
+        }
+        if(isIn)inside.push(j);
+      });
+      if(!inside.length)bad('STAT_STEM_CLASS_EMPTY');
+      if(inside.at(-1)-inside[0]+1!==inside.length)bad('STAT_STEM_CLASS_UNDETERMINED');
+      if(classGroups.some(x=>x.group===group&&x.from<to&&from<x.to))bad('STAT_STEM_CLASS_OVERLAP');
+      let label=null;
+      if(cl.label!==undefined){
+        label=typeof cl.label==='number'?String(cl.label):cl.label;
+        if(typeof label!=='string'||!/^\d{1,3}$/.test(label)||Number(label)!==inside.length)bad('STAT_STEM_CLASS_COUNT_MISMATCH');
+      }
+      classGroups.push({group,from,to,stem,first:inside[0],last:inside.at(-1),count:inside.length,label});
+    }
+    classGroups.sort((x,y)=>x.group-y.group||x.from-y.from);
+  }
   return {schemaVersion:MODEL_VERSION,kind:'STEM_LEAF',title,unitText,key,stems,marks,
-    groups:groups.map(g=>({name:g.name,n:g.values.length,sorted:g.values,median:qstr(median(g.values.map(v=>Q(BigInt(v))))),
-      rows:stems.map(s=>({stem:s,leaves:g.values.filter(v=>Math.floor(v/10)===s).map(v=>v%10)}))}))};
+    groups:groups.map((g,i)=>({name:g.name,n:ordered[i].length,sorted:g.symbols.length?ordered[i]:g.numbers,median:medianOf(g,i),rows:rows[i]})),
+    ...(classGroups.length?{classGroups}:{})};
 }
 function solveBox(c){
   onlyKeys(c,['kind','series','xTitle','step','showValues'],'STAT_CHART_PLAN_INVALID');
@@ -405,10 +472,11 @@ function freqSpec(m){
   return {size:{width:W,height:H},prims,labels};
 }
 function stemSpec(m){
-  const two=m.groups.length===2,PITCH=24,STEMW=48,PAD=14,HEAD_H=34,ROW_H=30,X0=SAFE+6;
+  const classes=m.classGroups??[],two=m.groups.length===2,PITCH=24,STEMW=48,PAD=14,HEAD_H=34,ROW_H=classes.length?54:30,RAISE=classes.length?10:0,X0=SAFE+6; // RAISE: leaves sit above the row middle so a class bracket and its count fit under them
+  const rowCy=ri=>top+HEAD_H+ROW_H*(ri+.5)-RAISE;
   const maxLeaves=Math.max(1,...m.groups.flatMap(g=>g.rows.map(r=>r.leaves.length)));
   const leafW=maxLeaves*PITCH+PAD,tableW=(two?2*leafW:leafW)+STEMW,top=SAFE+(m.title?34:0)+2;
-  const rows=m.stems.length,bottom=top+HEAD_H+rows*ROW_H,width=Math.max(Math.ceil(tableW+2*X0),230),x0=r6((width-tableW)/2);
+  const rows=m.stems.length,trim=classes.some(k=>k.stem===m.stems.at(-1))?0:2*RAISE,bottom=top+HEAD_H+rows*ROW_H-trim,width=Math.max(Math.ceil(tableW+2*X0),230),x0=r6((width-tableW)/2);
   const prims=[],labels=[];
   prims.push(rect('table-frame','frame','frame',x0,top,tableW,bottom-top,{},20));
   prims.push(L('header-rule','rule','rule',x0,top+HEAD_H,x0+tableW,top+HEAD_H,{}));
@@ -423,18 +491,24 @@ function stemSpec(m){
   }else labels.push(textLabel('head-leaf','header','table-frame','잎','center','middle',x0+STEMW+leafW/2,top+HEAD_H/2,{}));
   const leafX=(g,j)=>g===0&&two?x0+leafW-PAD-j*PITCH:(two?sepR:x0+STEMW)+PAD+j*PITCH;
   for(const [ri,s] of m.stems.entries()){
-    const cy=top+HEAD_H+ROW_H*(ri+.5);
+    const cy=rowCy(ri);
     labels.push(math(`stem-${s}`,'stem','table-frame',String(s),String(s),'center','middle',stemCx,cy,{value:String(s)}));
     for(const [gi,g] of m.groups.entries())g.rows[ri].leaves.forEach((leaf,j)=>{
-      const value=s*10+leaf;
-      labels.push(math(`leaf-g${gi}-${s}-${j}`,'leaf','table-frame',String(leaf),String(leaf),'center','middle',leafX(gi,j),cy,{value:String(value),group:gi,stem:s,index:j}));
+      if(typeof leaf==='object')labels.push(math(`leaf-g${gi}-${s}-${j}`,'leaf','table-frame',leaf.symbol,leaf.symbol,'center','middle',leafX(gi,j),cy,{symbol:leaf.symbol,group:gi,stem:s,index:j}));
+      else labels.push(math(`leaf-g${gi}-${s}-${j}`,'leaf','table-frame',String(leaf),String(leaf),'center','middle',leafX(gi,j),cy,{value:String(s*10+leaf),group:gi,stem:s,index:j}));
     });
   }
   for(const mk of m.marks){
-    const g=m.groups[mk.group],s=Math.floor(mk.value/10),ri=m.stems.indexOf(s);
-    // the rank-th smallest value: its leaf index is the count of smaller values on the same stem
-    const before=g.sorted.slice(0,mk.rank-1).filter(v=>Math.floor(v/10)===s).length;
-    prims.push({t:'ellipse',id:`mark-g${mk.group}-r${mk.rank}`,role:'mark',cls:'mark',cx:r6(leafX(mk.group,before)),cy:r6(top+HEAD_H+ROW_H*(ri+.5)),rx:12,ry:13,data:{group:mk.group,rank:mk.rank,value:mk.value},layer:60});
+    // the rank-th smallest leaf: walk the rows (ascending stems) until rank leaves have been passed; that row and place is where the circle goes
+    let left=mk.rank,ri=0;
+    while(left>m.groups[mk.group].rows[ri].leaves.length){left-=m.groups[mk.group].rows[ri].leaves.length;ri++;}
+    const data=mk.symbol===undefined?{group:mk.group,rank:mk.rank,value:mk.value}:{group:mk.group,rank:mk.rank,symbol:mk.symbol};
+    prims.push({t:'ellipse',id:`mark-g${mk.group}-r${mk.rank}`,role:'mark',cls:'mark',cx:r6(leafX(mk.group,left-1)),cy:r6(rowCy(ri)),rx:12,ry:13,data,layer:60});
+  }
+  for(const cl of classes){ // a bracket under the leaves of the class, its frequency centred below it
+    const ri=m.stems.indexOf(cl.stem),xa=leafX(cl.group,cl.first),xb=leafX(cl.group,cl.last),xl=Math.min(xa,xb)-10,xr=Math.max(xa,xb)+10,yb=rowCy(ri)+17,id=`class-g${cl.group}-${cl.from}-${cl.to}`;
+    prims.push({t:'polyline',id,role:'class-bracket',cls:'rule',points:[[xl,yb-5],[xl,yb],[xr,yb],[xr,yb-5]],data:{group:cl.group,from:cl.from,to:cl.to},layer:50});
+    if(cl.label!==null)labels.push(math(`${id}-count`,'class-count',id,cl.label,cl.label,'center','top',(xl+xr)/2,yb+3,{group:cl.group,from:cl.from,to:cl.to,value:cl.label}));
   }
   if(m.title)labels.push(textLabel('title','title','table-frame',m.title,'center','top',width/2,SAFE));
   labels.push(textLabel('key','key','table-frame',m.key.text,'end','top',x0+tableW,bottom+8,{}));

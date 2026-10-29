@@ -103,5 +103,99 @@ class DiceTamper(unittest.TestCase):
         with self.assertRaises(ValueError): S.audit({'kind':'PIE'},'<svg xmlns="http://www.w3.org/2000/svg"/>')
 
 
+def stem_svg(rows,marks=(),brackets=(),key='0 | 1은 1점',leaf_offset=None):
+    """A hand-built one-group stem-and-leaf SVG. rows: {stem: [leaf, ...]} with an int (ones digit) or a str (letter leaf); marks: [(rank, row, index, symbol_or_None, value_or_None)];
+    brackets: [(from, to, row, first_index, last_index, count_text_or_None)]. Leaf j of row r sits at x=100+24j, y=100+40r; stems at x=50."""
+    ns='http://www.w3.org/2000/svg'
+    out=['<svg xmlns="%s" data-stat-chart="stat-chart-figure-v1" data-kind="STEM_LEAF">'%ns]
+    def label(identifier,role,owner,cx,cy,attrs,w=10,h=13):
+        return '<g id="%s" data-label-role="%s" data-owner="%s" %s data-box="%s,%s,%s,%s"/>'%(identifier,role,owner,attrs,cx-w/2,cy-h/2,w,h)
+    out.append(label('head-stem','header','frame',50,70,'data-text="줄기"'))
+    out.append(label('head-leaf','header','frame',200,70,'data-text="잎"'))
+    out.append(label('key','key','frame',250,300,'data-text="%s"'%key))
+    for r,(stem,leaves) in enumerate(sorted(rows.items())):
+        cy=100+40*r
+        out.append(label('stem-%d'%stem,'stem','frame',50,cy,'data-value="%d" data-tex="%d"'%(stem,stem)))
+        for j,leaf in enumerate(leaves):
+            cx=100+24*j+(leaf_offset or {}).get((r,j),0)
+            attrs=('data-symbol="%s" data-tex="%s"'%(leaf,leaf)) if isinstance(leaf,str) else 'data-value="%d" data-tex="%d"'%(stem*10+leaf,leaf)
+            out.append(label('leaf-g0-%d-%d'%(stem,j),'leaf','frame',cx,cy,attrs+' data-group="0" data-stem="%d" data-index="%d"'%(stem,j)))
+    for rank,r,j,symbol,value in marks:
+        extra=('data-symbol="%s"'%symbol) if symbol else 'data-value="%d"'%value
+        out.append('<ellipse id="mark-g0-r%d" data-role="mark" data-group="0" data-rank="%d" %s cx="%s" cy="%s" rx="12" ry="13"/>'%(rank,rank,extra,100+24*j,100+40*r))
+    for frm,to,r,first,last,count in brackets:
+        ident='class-g0-%d-%d'%(frm,to)
+        xl,xr,yb=100+24*first-10,100+24*last+10,100+40*r+17
+        out.append('<polyline id="%s" data-role="class-bracket" data-group="0" data-from="%d" data-to="%d" points="%s,%s %s,%s %s,%s %s,%s"/>'%(ident,frm,to,xl,yb-5,xl,yb,xr,yb,xr,yb-5))
+        if count is not None: out.append(label(ident+'-count','class-count',ident,(xl+xr)/2,yb+10,'data-tex="%s" data-group="0" data-from="%d" data-to="%d"'%(count,frm,to)))
+    out.append('</svg>')
+    return ''.join(out)
+
+
+class StemLetterLeaves(unittest.TestCase):
+    # rows: 0 | 1 3 5      1 | 2 a 7     (the letter a is the 2nd leaf of stem 1, so 2 <= a <= 7); ranks: 1 3 5 12 a 17
+    chart={'kind':'STEM_LEAF','unitText':'점','values':[1,3,5,12,17,{'symbol':'a','stem':1,'order':2}],'marks':[{'rank':5}],'classGroups':[{'from':0,'to':5,'label':'2'}]}
+    rows={0:[1,3,5],1:[2,'a',7]}
+    good=staticmethod(lambda **kw:stem_svg({0:[1,3,5],1:[2,'a',7]},marks=[(5,1,1,'a',None)],brackets=[(0,5,0,0,1,'2')],**kw))
+
+    def errors(self,svg,chart=None):
+        return S.audit(chart or self.chart,svg)['errors']
+
+    def test_the_plan_is_re_derived_with_the_letter_leaf_in_its_place(self):
+        groups,stems=S.stem_plan(self.chart)
+        self.assertEqual(stems,[0,1])
+        self.assertEqual(groups[0]['rows'],{0:[1,3,5],1:[2,'a',7]})
+        self.assertEqual(groups[0]['ordered'],[1,3,5,12,'a',17])
+        self.assertEqual(S.audit(self.chart,self.good())['observed']['median'],['17/2'])  # the middle two leaves are 5 and 12, both whole numbers
+        self.assertEqual(S.audit({**self.chart,'marks':[],'classGroups':[]},stem_svg(self.rows))['observed']['median'],['17/2'])
+        self.assertEqual(S.stem_plan({'kind':'STEM_LEAF','values':[1,3,{'symbol':'a','stem':0,'order':3},7]})[0][0]['ordered'],[1,3,'a',7])
+
+    def test_a_place_the_row_cannot_hold_and_a_repeated_letter_are_refused(self):
+        letter=lambda sym,order,stem=1:{'symbol':sym,'stem':stem,'order':order}
+        for values,code in (([12,17,letter('a',4)],'STAT_STEM_SYMBOL_ORDER_CONFLICT'),
+                            ([12,17,letter('a',2),letter('b',2)],'STAT_STEM_SYMBOL_ORDER_CONFLICT'),
+                            ([12,17,letter('a',1),letter('a',3)],'STAT_STEM_SYMBOL_DUPLICATE')):
+            with self.assertRaises(ValueError) as context: S.stem_plan({'kind':'STEM_LEAF','values':values})
+            self.assertEqual(str(context.exception),code)
+
+    def test_class_counts_are_counted_here_and_an_unsettled_letter_leaf_is_refused(self):
+        groups,_=S.stem_plan(self.chart)
+        self.assertEqual(S.class_plan(self.chart,groups),[(0,0,5,0,[0,1],2,True)])
+        for classes,code in (([{'from':0,'to':5,'label':'3'}],'STAT_STEM_CLASS_COUNT_MISMATCH'),
+                             ([{'from':10,'to':15}],'STAT_STEM_CLASS_UNDETERMINED'),
+                             ([{'from':0,'to':15}],'STAT_STEM_CLASS_UNSUPPORTED'),
+                             ([{'from':20,'to':25}],'STAT_STEM_CLASS_EMPTY'),
+                             ([{'from':0,'to':5},{'from':3,'to':8}],'STAT_STEM_CLASS_OVERLAP')):
+            with self.assertRaises(ValueError) as context: S.class_plan({**self.chart,'classGroups':classes},groups)
+            self.assertEqual(str(context.exception),code)
+        self.assertEqual(S.class_plan({**self.chart,'classGroups':[{'from':10,'to':20}]},groups)[0][5],3)  # the whole stem row settles the letter leaf
+
+    def test_the_faithful_figure_passes(self):
+        result=S.audit(self.chart,self.good())
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertEqual(result['observed']['classes'],[{'group':0,'from':0,'to':5,'count':2}])
+
+    def test_a_circle_on_the_wrong_leaf_a_wrong_letter_and_a_misplaced_bracket_are_caught(self):
+        on_seven=stem_svg(self.rows,marks=[(5,1,2,None,17)],brackets=[(0,5,0,0,1,'2')])
+        self.assertIn('SC_MARK_NOT_ON_LEAF:5',self.errors(on_seven))
+        on_two=stem_svg(self.rows,marks=[(5,1,0,'a',None)],brackets=[(0,5,0,0,1,'2')])
+        self.assertIn('SC_MARK_NOT_ON_LEAF:5',self.errors(on_two))
+        as_number=stem_svg(self.rows,marks=[(5,1,1,None,15)],brackets=[(0,5,0,0,1,'2')])
+        self.assertIn('SC_MARK_SYMBOL:5',self.errors(as_number))
+        wrong_letter=stem_svg({0:[1,3,5],1:[2,'b',7]},marks=[(5,1,1,'a',None)],brackets=[(0,5,0,0,1,'2')])
+        self.assertIn('SC_LEAVES_MISMATCH:g0:1',self.errors(wrong_letter))
+        wide=stem_svg(self.rows,marks=[(5,1,1,'a',None)],brackets=[(0,5,0,0,2,'2')])
+        self.assertIn('SC_CLASS_COVER_MISMATCH:0-0-5',self.errors(wide))
+        self.assertIn('SC_CLASS_COUNT_VALUE:0-0-5',self.errors(stem_svg(self.rows,marks=[(5,1,1,'a',None)],brackets=[(0,5,0,0,1,'3')])))
+        self.assertIn('SC_CLASS_COUNT_LABEL:0-0-5',self.errors(stem_svg(self.rows,marks=[(5,1,1,'a',None)],brackets=[(0,5,0,0,1,None)])))
+        self.assertIn('SC_CLASS_SET_MISMATCH',self.errors(stem_svg(self.rows,marks=[(5,1,1,'a',None)])))
+
+    def test_a_rank_without_the_letter_leaf_counting_is_caught(self):
+        # rank 4 is the whole number 12 (the letter leaf is rank 5): circling the letter leaf for rank 4 must fail
+        chart={**self.chart,'marks':[{'rank':4}]}
+        self.assertEqual(self.errors(stem_svg(self.rows,marks=[(4,1,0,None,12)],brackets=[(0,5,0,0,1,'2')]),chart),[])
+        self.assertIn('SC_MARK_NOT_ON_LEAF:4',self.errors(stem_svg(self.rows,marks=[(4,1,1,None,12)],brackets=[(0,5,0,0,1,'2')]),chart))
+
+
 if __name__=='__main__':
     unittest.main()
