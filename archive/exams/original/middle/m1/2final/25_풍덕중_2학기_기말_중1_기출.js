@@ -82,7 +82,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:372860cd9d6e9bb1a7290ff617b0cda3a233c8df6ffce6a8ba8cf69b404ad460",
-    "difficultyEvidenceSha": "sha256:409e09b811386ceca48df7b22fd4423f71b209657dd0c734fe3f72202f73f369"
+    "difficultyEvidenceSha": "sha256:409e09b811386ceca48df7b22fd4423f71b209657dd0c734fe3f72202f73f369",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각뿔대의 위·아래 두 밑면(오각형)을 색칠해 보이고, 나머지 옆면 5개는 사다리꼴임을 보여 주는 그림이다.",
+    "solutionImageCaption": "두 밑면(오각형)과 옆면 5개(사다리꼴)로 이루어진 오각뿔대",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -126,7 +130,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:40356361b5a0a4dbc6b0f77db2af8dd40a89abef0de6f06059aaec77af2cd135",
-    "difficultyEvidenceSha": "sha256:148b23ff065f278357dc3db764f3d1b2ea39ec91bfdca89c8bc05a4f654c99d1"
+    "difficultyEvidenceSha": "sha256:148b23ff065f278357dc3db764f3d1b2ea39ec91bfdca89c8bc05a4f654c99d1",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 하나에 이등변삼각형 4개가 붙은 전개도와, 이를 접어 만든 사각뿔(꼭짓점 A~E 5개, 밑면 모서리 4개와 옆모서리 4개)을 나란히 보여 주는 그림이다.",
+    "solutionImageCaption": "전개도와 접은 사각뿔의 꼭짓점·모서리",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -170,7 +178,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:2d5949a379bd85dc34c5887493c13968eb2a39facb7cf4e7323c2ef1bfd9e61d",
-    "difficultyEvidenceSha": "sha256:2c96c6c720c0cf9856b1f36e0cfb823c670401ddaa9c2103c3f877f36064cfe4"
+    "difficultyEvidenceSha": "sha256:2c96c6c720c0cf9856b1f36e0cfb823c670401ddaa9c2103c3f877f36064cfe4",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원기둥의 전개도로, 합동인 두 밑면(반지름 r인 원)과 가로가 밑면의 둘레 2πr, 세로가 높이 h인 직사각형 옆면을 보여 주는 그림이다.",
+    "solutionImageCaption": "원기둥의 전개도: 두 밑면과 가로 2πr, 세로 h인 옆면",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -215,7 +227,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:8e4ee07dfe8932963381bf85278a50c8e8fe669750ae37733ac72ac4ec6d41b3",
-    "difficultyEvidenceSha": "sha256:c41c8b8e7a5febdef73dbe696f3c32bc9befd031dcbcda72de57b9300911e61e"
+    "difficultyEvidenceSha": "sha256:c41c8b8e7a5febdef73dbe696f3c32bc9befd031dcbcda72de57b9300911e61e",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4cm, 높이 10cm인 원기둥과 그 전개도로, 옆면 직사각형의 가로는 밑면의 둘레 8πcm, 세로는 10cm임을 보여 주는 그림이다.",
+    "solutionImageCaption": "원기둥과 전개도: 옆면은 가로 8π cm, 세로 10 cm",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -260,7 +276,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:d70772662df045774c5b1a3ed93aca4b97413f77cf8a8687a63a29f1149f4b37",
-    "difficultyEvidenceSha": "sha256:3499c749c3668c24e32ec11766ab6bb2a66b3765653c02ff96b0f2b85d831b27"
+    "difficultyEvidenceSha": "sha256:3499c749c3668c24e32ec11766ab6bb2a66b3765653c02ff96b0f2b85d831b27",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑면의 반지름 4cm, 높이 6cm가 같은 원뿔과 원기둥을 나란히 놓아, 원뿔의 부피를 같은 원기둥과 비교하는 그림이다. 점선은 높이이다.",
+    "solutionImageCaption": "반지름 4 cm, 높이 6 cm가 같은 원뿔과 원기둥",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -348,7 +368,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:f31ba2cc88b7949f16f088d040ffd737003c638a54be48fd3a49065cfad9be71",
-    "difficultyEvidenceSha": "sha256:540f2eabaae59511f925e49eb9af88576fc09d8a0d889de0000554f5acfc1bdd"
+    "difficultyEvidenceSha": "sha256:540f2eabaae59511f925e49eb9af88576fc09d8a0d889de0000554f5acfc1bdd",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 6cm, 높이 8cm인 큰 원뿔을 높이의 절반에서 자른 그림으로, 위의 작은 원뿔은 반지름 3cm·높이 4cm이고 아래 남는 원뿔대의 높이는 4cm임을 보여 준다.",
+    "solutionImageCaption": "큰 원뿔에서 작은 원뿔을 떼고 남는 원뿔대 (높이 4 cm + 4 cm)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -604,7 +628,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:7a5cdc7f3fac1c715c8e03cb2b2eb1d6771ceae6537414608902c38ea1d7dadf",
-    "difficultyEvidenceSha": "sha256:ea98472785e6106f6bd13e7c3a29343375ec72c3d956852d85c45e6ed42a9ec0"
+    "difficultyEvidenceSha": "sha256:ea98472785e6106f6bd13e7c3a29343375ec72c3d956852d85c45e6ed42a9ec0",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 통학 시간 줄기와 잎 그림에서 줄기 1, 2, 3, 4의 잎 개수 4, 6, 7, 5를 괄호로 묶어 보이고, 작은 쪽 4번째 값인 17분에 동그라미를 친 그림",
+    "solutionImageCaption": "줄기별 잎의 수와 4번째로 짧은 통학 시간을 나타낸 줄기와 잎 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -691,7 +719,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:0df76b7cfdb786e86bbd31bde6cfce678cdb98e7b3addebdc6ef31241a61d8a0",
-    "difficultyEvidenceSha": "sha256:9839816704a70e4031487de507ef4b7a7d57a2049e3ae8b7df6d26409be7b9c6"
+    "difficultyEvidenceSha": "sha256:9839816704a70e4031487de507ef4b7a7d57a2049e3ae8b7df6d26409be7b9c6",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 공부 시간 히스토그램에서 계급 0~12시간의 도수 7, 9, 11, 7, 4, 2를 보이고, 많은 쪽의 8~10시간(4명)·10~12시간(2명) 계급을 진하게 칠한 그림",
+    "solutionImageCaption": "공부 시간이 많은 쪽 두 계급을 진하게 나타낸 히스토그램",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -735,7 +767,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:7a9b670556dc22745e1c4318f95167f189bc0f75339a201727c962af7ae02134",
-    "difficultyEvidenceSha": "sha256:cb9d314388ecab04212c4437fd7a7176d29d9663cef52ff53c45de685f17a2b5"
+    "difficultyEvidenceSha": "sha256:cb9d314388ecab04212c4437fd7a7176d29d9663cef52ff53c45de685f17a2b5",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 팔굽혀 펴기 기록의 히스토그램과 도수분포다각형에서 35회 미만의 세 계급과 45회 이상의 마지막 계급을 진하게 칠한 그림",
+    "solutionImageCaption": "35회 미만과 45회 이상 계급을 진하게 나타낸 히스토그램과 도수분포다각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -779,7 +815,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:baa0910b02013f3537ba255f01c65595c9885f9bcef88a1fc576488bf0e108e9",
-    "difficultyEvidenceSha": "sha256:d9c70a60e88d7b9821f9f4cc6b5ba337318559bcc017e5a5d970c71113157af5"
+    "difficultyEvidenceSha": "sha256:d9c70a60e88d7b9821f9f4cc6b5ba337318559bcc017e5a5d970c71113157af5",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 윗몸일으키기 기록의 상대도수 분포에서 50회 이상 60회 미만 계급의 상대도수 0.2 막대를 진하게 칠하고 다각형을 겹쳐 그린 그림",
+    "solutionImageCaption": "50회가 속한 계급의 상대도수를 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -823,7 +863,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:f070b4f34eb953dbb67d2112d093f97fc1d32a1490d0a8ef20df63c4603ae539",
-    "difficultyEvidenceSha": "sha256:c707371d6543aacda37a0eb430cd2153d9a3a3d437bb773b2d9b41ba0051cd66"
+    "difficultyEvidenceSha": "sha256:c707371d6543aacda37a0eb430cd2153d9a3a3d437bb773b2d9b41ba0051cd66",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: A 중학교(실선)와 B 중학교(점선)의 키에 대한 상대도수 분포를 130~180cm 계급에서 두 꺾은선으로 비교한 그림",
+    "solutionImageCaption": "두 학교의 키에 대한 상대도수 분포를 비교한 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

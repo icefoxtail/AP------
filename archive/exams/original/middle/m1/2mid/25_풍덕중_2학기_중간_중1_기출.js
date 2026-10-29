@@ -270,7 +270,11 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 사각기둥을 세 번 그리고 각각 기준 모서리 하나를 굵게 표시했다. 왼쪽 위는 HG와 평행한 모서리 AB, CD, EF, 오른쪽 위는 CD와 만나는 모서리 BC, CG, AD, DH, 아래는 BC와 꼬인 위치인 모서리 AE, DH, EF, GH를 빨간색으로 나타냈고 보이지 않는 모서리는 점선이다.",
+    "solutionImageCaption": "같은 사각기둥에서 HG와 평행한 모서리, CD와 만나는 모서리, BC와 꼬인 위치인 모서리를 각각 표시했다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
