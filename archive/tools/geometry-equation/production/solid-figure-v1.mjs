@@ -923,21 +923,26 @@ function solveSolids(plan){
   if(plan.section!==undefined){
     onlyKeys(plan.section,['solid','kind','at','fill'],'SOLID_SECTION_INVALID');
     if(plan.section.kind!=='AXIAL'&&plan.section.kind!=='LEVEL')bad('SOLID_SECTION_UNSUPPORTED');
-    const target=plan.section.solid??solids.find(s=>s.category==='REV')?.id;
+    // a plane perpendicular to the axis (LEVEL) may also cut a whole sphere or a hemisphere that stands alone: with no rotation solid in the plan it takes the first one
+    const sphereOk=s=>s.category==='SPHERE'&&!s.cut&&!s.inside&&plan.section.kind==='LEVEL';
+    const target=plan.section.solid??solids.find(s=>s.category==='REV')?.id??solids.find(sphereOk)?.id;
     const solid=solids.find(s=>s.id===target);
-    if(!solid||solid.category!=='REV')bad('SOLID_SECTION_UNSUPPORTED');
+    if(!solid||(solid.category!=='REV'&&!sphereOk(solid)))bad('SOLID_SECTION_UNSUPPORTED');
     if(plan.section.kind==='AXIAL'){if(plan.section.at!==undefined||plan.section.fill!==undefined)bad('SOLID_SECTION_INVALID');section={solid:solid.id,kind:'AXIAL'};}
     else{
       // a plane parallel to the base at the fraction `at` ("1/3") of the height: the water level of a vessel
       const m=/^([1-9]\d?)\/([1-9]\d?)$/.exec(plan.section.at??'');
       if(!m||Number(m[1])>=Number(m[2]))bad('SOLID_SECTION_INVALID');
-      const f=Number(m[1])/Number(m[2]),z=f*solid.height,r=solid.r0+(solid.r1-solid.r0)*f;
-      if(!(r>0))bad('SOLID_SECTION_INVALID');
+      // the circle of a ball cut at height z has radius sqrt(R^2 - (z - zc)^2), zc the height of its centre (R for a sphere, 0 for a hemisphere)
+      const f=Number(m[1])/Number(m[2]),z=f*solid.height,zc=solid.kind==='SPHERE'?solid.radius:0;
+      const r=solid.category==='SPHERE'?Math.sqrt(Math.max(0,solid.radius*solid.radius-(z-zc)*(z-zc))):solid.r0+(solid.r1-solid.r0)*f;
+      if(!(r>1e-9))bad('SOLID_SECTION_INVALID');
       if(solid.orientation==='APEX_DOWN'&&!(z*cP>r*sP))bad('SOLID_LEVEL_APEX_HIDDEN');
       // fill:"BOTTOM"|"TOP" shades the body of the solid below or above the plane (an apex-up solid: a frustum below a cone, the small cone above); an apex-down vessel already shades its liquid
       const fill=plan.section.fill;
       if(fill!==undefined){
         if(fill!=='BOTTOM'&&fill!=='TOP')bad('SOLID_SECTION_FILL_INVALID');
+        if(solid.category==='SPHERE')bad('SOLID_SECTION_FILL_UNSUPPORTED:'+solid.kind);
         if(solid.orientation==='APEX_DOWN')bad('SOLID_SECTION_FILL_UNSUPPORTED:APEX_DOWN');
       }
       section={solid:solid.id,kind:'LEVEL',at:plan.section.at,z:r6(z),r:r6(r),...(fill!==undefined?{fill}:{})};
@@ -988,7 +993,7 @@ function solveSolids(plan){
           if(solid.cut&&!solid.cut.radiusAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN');
           dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z,r:r6(rimR),...(solid.cut?{axis:solid.cut.radiusAxis}:{}),...dimLabel(d.label,rimR,unitName,code)});
         }else if(d.level!==undefined){
-          if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
+          if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id||solid.category!=='REV')bad('SOLID_DIMS_INVALID');
           // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
           const fm=/^([1-9]\d?)\/([1-9]\d?)$/.exec(section.at);
           const f=Number(fm[1])/Number(fm[2]);

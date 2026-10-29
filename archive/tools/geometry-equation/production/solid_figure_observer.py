@@ -761,7 +761,7 @@ def audit_solids(plan, ctx):
         else:
             for name, pid, p in solid['points']:
                 if name: named[name] = (sid, px(p), p)
-            check_round(solid, root, px, scale, errors, ctx['segments'], (plan.get('section') if (plan.get('section') or {}).get('kind') == 'LEVEL' and (plan['section'].get('solid') or next((x['id'] for x in solids if x['cat'] == 'REV'), None)) == solid['id'] else None))
+            check_round(solid, root, px, scale, errors, ctx['segments'], (plan.get('section') if (plan.get('section') or {}).get('kind') == 'LEVEL' and (_section_solid(plan, solids) or {}).get('id') == solid['id'] else None))
     for g in ctx['labels']:
         if g.get('data-label-role') in COUNT_ROLES and g.get('data-solid') not in counted: errors.append('SOLID_COUNT_LABEL_UNEXPECTED:' + str(g.get('id')))
     ctx['named'] = named
@@ -830,6 +830,7 @@ def audit_solids(plan, ctx):
         if max_inner > max_host + 1e-6 or solid['height'] > host['height'] + 1e-6:
             errors.append('SOLID_NEST_DOES_NOT_FIT:' + solid['id'])
     section = plan.get('section')
+    section_solid = _section_solid(plan, solids)
     sec_els = [el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'section']
     level_els = [el for el in root.iter(NS + 'ellipse') if el.get('data-role') == 'level-fill']
     liquid_els = [el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'liquid-region']
@@ -837,7 +838,7 @@ def audit_solids(plan, ctx):
     leveled = section is not None and section.get('kind') == 'LEVEL'
     if axial != bool(sec_els) or leveled != bool(level_els): errors.append('SOLID_SECTION_SET_MISMATCH')
     if section:
-        solid = next(s for s in solids if s['id'] == (section.get('solid') or next(x['id'] for x in solids if x['cat'] == 'REV')))
+        solid = section_solid
         Tx, Ty = frames[solid['id']]
         z = solid['height']
         if axial and sec_els:
@@ -854,6 +855,10 @@ def audit_solids(plan, ctx):
             else:
                 f = int(m.group(1)) / int(m.group(2))
                 zl, rl = f * z, solid['r0'] + (solid['r1'] - solid['r0']) * f
+                if solid['cat'] == 'SPHERE':
+                    # a ball cut by a horizontal plane: a circle of radius sqrt(R^2 - (z - zc)^2)
+                    zc = solid.get('cz', solid['r0']) if solid['kind'] == 'SPHERE' else 0.0
+                    rl = math.sqrt(max(0.0, solid['r0'] ** 2 - (zl - zc) ** 2))
                 q = project((0.0, 0.0, zl))
                 el = level_els[0]
                 cx, cy, rx, ry = _num(el, 'cx'), _num(el, 'cy'), _num(el, 'rx'), _num(el, 'ry')
@@ -1099,6 +1104,9 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
         m = re.fullmatch(r'(\d+)/(\d+)', section.get('at') or '')
         f = int(m.group(1)) / int(m.group(2))
         level = (f * h, r0 + (r1 - r0) * f)
+        if solid['cat'] == 'SPHERE':
+            zc = solid.get('cz', r0) if solid['kind'] == 'SPHERE' else 0.0
+            level = (f * h, math.sqrt(max(0.0, r0 * r0 - (f * h - zc) ** 2)))
 
     def circle(name):
         if name == 'level': return px((0.0, 0.0, level[0])), level[1]
@@ -1155,6 +1163,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
         pts_by_circle.setdefault(cname, []).append(((x0, y0), (x1, y1)))
     if solid['cat'] == 'SPHERE':
         if solid['kind'] == 'HEMISPHERE' and not any(e.get('data-circle') == 'bottom' for e, _ in arcs): errors.append('SOLID_BASE_ARC_MISSING:' + sid)
+        if level is not None and sorted(e.get('data-half') for e, _ in arcs if e.get('data-circle') == 'level') != ['BACK', 'FRONT']: errors.append('SOLID_LEVEL_ARC_MISSING:' + sid)
         return
     # silhouette lines: tangent to the circles they end on, through the (virtual) apex of the cone
     family = {name for name in ('bottom', 'top') if circle(name)[1] > 0}
@@ -1462,6 +1471,16 @@ def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id, norm=N
         for a, b in g['segments']:
             if (mid, join_keys([a, b])) not in groups and (mid, join_keys([b, a])) not in groups:
                 errors.append('SOLID_EQUAL_MARK_MISSING:%s:%s%s' % (mid, a, b))
+
+
+def _section_solid(plan, solids):
+    """the solid a section cuts: the one named, else the first rotation solid, else (a level section only) the first whole sphere or hemisphere"""
+    section = plan.get('section') or {}
+    if not section: return None
+    if section.get('solid'): return next((s for s in solids if s['id'] == section['solid']), None)
+    rev = next((s for s in solids if s['cat'] == 'REV'), None)
+    if rev is not None: return rev
+    return next((s for s in solids if s['cat'] == 'SPHERE' and not s.get('cut') and not s.get('inside')), None)
 
 
 def check_dim_lines(plan, ctx):

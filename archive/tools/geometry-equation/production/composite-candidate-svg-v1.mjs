@@ -33,8 +33,10 @@ const GRID_CAPTION_PAD=8;
 // row (3*384+2*8 = 1168) is refused at measure with UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE; two columns (776) pass.
 // Graph stacks never take this path.
 export const COMPOSITE_MAX_PLANE_PANELS=5;
-// A grid with a solid panel is at most four panels (two rows of the two-column grid): a solid panel is taller than a plane canvas, and the page limit counts.
-export const COMPOSITE_MAX_SOLID_GRID_PANELS=4;
+// A grid with a solid panel is at most six panels (three rows of the two-column grid): a solid panel is up to 400 units high, and what the page keeps (COMPOSITE_MAX_DISPLAY_HEIGHT_PX,
+// the caption row of every row included) decides whether a tall set still fits: three rows of 400 + 44 + the top margin and gaps are 1380 units, about 520 px at the display scale of the
+// 776-unit grid, so six solid panels fit; a grid that is too tall is refused with COMPOSITE_TOO_TALL.
+export const COMPOSITE_MAX_SOLID_GRID_PANELS=6;
 export const compositeGridColumns=count=>Math.min(Math.max(count,1),2);
 // Shared rows above a three-panel stack (line equations every panel draws the same): 34 apart, then a gap before the first caption.
 export const COMPOSITE_SHARED_ROW=56;// a shared line equation may carry a full-size fraction (about 41 px high)
@@ -52,7 +54,7 @@ const digest=(value,reason)=>{try{return objectSha(value);}catch{throw new Stop(
 
 /**
  * The panels of a composite plan, checked: 2-3 graph/number-line panels stacked (or the one solid panel of a standalone solid figure), or a grid of
- * 2-5 PLANE_FIGURE_v1 panels, or of 2-4 panels of which at least one is a solid figure (solid-figure-v1 solids or net) and the rest plane figures or solids.
+ * 2-5 PLANE_FIGURE_v1 panels, or of 2-6 panels of which at least one is a solid figure (solid-figure-v1 solids or net) and the rest plane figures or solids.
  */
 export function compositePanels(plan){
   const bad=reason=>{throw new Stop('COMPOSITE_PLAN_INVALID',{reason});};
@@ -63,7 +65,7 @@ export function compositePanels(plan){
   const grid=!solidChain&&planePanels.length>0&&plan.panels.every((panel,index)=>planePanels[index]||solidPanels[index]);
   const withSolid=grid&&solidPanels.some(Boolean);
   if(grid){
-    // A grid: no chain marker, 2-5 plane panels (2-4 when a solid panel is among them), every panel a PLANE_FIGURE_v1 construction plan or a solid figure.
+    // A grid: no chain marker, 2-5 plane panels (2-6 when a solid panel is among them), every panel a PLANE_FIGURE_v1 construction plan or a solid figure.
     if(plan.chain!==undefined)bad('CHAIN');
     if(plan.panels.length<2||plan.panels.length>(withSolid?COMPOSITE_MAX_SOLID_GRID_PANELS:COMPOSITE_MAX_PLANE_PANELS))bad('PANELS');
   }else{

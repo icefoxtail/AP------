@@ -488,7 +488,7 @@ const triPlane=()=>({capability:'construction-spike-v1',
     nodes:['A','B','C'].map((id,k)=>({id,op:'SOURCE_POINT',inputs:[],args:{coordinates:[{kind:'integer',value:String([0,4,0][k])},{kind:'integer',value:String([0,0,4][k])}]},outputType:'POINT',factRole:'GIVEN'}))},
   axisTickValues:{x:[],y:[]},displayLines:[],displayCircles:[],displaySegments:[{id:'sAB',refs:['A','B']},{id:'sBC',refs:['B','C']},{id:'sCA',refs:['C','A']}],rightAngles:[],displayPoints:['A','B','C']});
 const reason=error=>error?.detail?.reason;
-test('E5: two to four solid panels (and solids mixed with plane figures) are a two-column grid; the grid sets the panel width, idempotently',()=>{
+test('E5: two to six solid panels (and solids mixed with plane figures) are a two-column grid; the grid sets the panel width, idempotently',()=>{
   const three=gridOf([solidPanel(hexPrism([seg('B','H','REF'),seg('B','A')]),'만나는 모서리'),solidPanel(hexPrism([seg('B','H','REF'),seg('I','C')]),'평행한 모서리'),solidPanel(hexPrism([seg('B','H','REF'),seg('C','D')]),'꼬인 모서리')]);
   const checked=compositePanels(three);
   assert.equal(checked.length,3);
@@ -504,11 +504,11 @@ test('E5: two to four solid panels (and solids mixed with plane figures) are a t
   assert.equal(figurePanelSize(solveSolidFigure(hexPrism([seg('B','H')]))).width,480);// a standalone solid keeps the 480 wide panel
   const stack=compositeStackSize(checked.map(item=>figurePanelSize(solveSolidFigure(item.plan))),0,compositePanelLayout(checked));
   assert.equal(stack.width,2*GRID_PANEL_WIDTH+8);assert.ok(stack.width<=776);
-  // a solid next to a plane figure, and four panels
+  // a solid next to a plane figure, and four panels (a grid with a solid takes up to six since E28c)
   const mixed=compositePanels(gridOf([{caption:{text:'오각형'},plan:triPlane()},solidPanel(hexPrism([seg('B','H')]),'육각기둥')]));
   assert.deepEqual(compositePanelLayout(mixed),{kind:'GRID',columns:2,rows:1});
   assert.equal(mixed[0].plan.panelWidth,undefined);assert.equal(mixed[1].plan.panelWidth,GRID_PANEL_WIDTH);
-  assert.equal(COMPOSITE_MAX_SOLID_GRID_PANELS,4);
+  assert.equal(COMPOSITE_MAX_SOLID_GRID_PANELS,6);
   assert.equal(compositePanels(gridOf(Array.from({length:4},()=>solidPanel(hexPrism([seg('B','H')]),'육각기둥')))).length,4);
   // a net is a solid panel too
   const netPanel={capability:'solid-figure-v1',net:{solid:{kind:'PRISM',base:{kind:'RECT',width:2,depth:3},height:4,names:'........'},root:'side0',joins:[['side0','side1'],['side1','side2'],['side2','side3'],['side1','top'],['side3','bottom']],corners:{side0:['B','C','N','A']}}};
@@ -517,7 +517,7 @@ test('E5: two to four solid panels (and solids mixed with plane figures) are a t
 test('E5: solid panels are refused with explicit codes where the grid cannot hold them',()=>{
   const one=()=>solidPanel(hexPrism([seg('B','H')]),'육각기둥');
   assert.throws(()=>compositePanels(gridOf([one()])),error=>reason(error)==='PANELS');
-  assert.throws(()=>compositePanels(gridOf(Array.from({length:5},one))),error=>reason(error)==='PANELS');
+  assert.throws(()=>compositePanels(gridOf(Array.from({length:7},one))),error=>reason(error)==='PANELS');
   assert.throws(()=>compositePanels(gridOf([one(),one()],{chain:'solid-figure-v1'})),error=>reason(error)==='SOLID_PANEL_PLACEMENT_0');
   const graph={caption:{text:'그래프'},plan:{capability:'polynomial-spike-v1',graphPlan:{family:'polynomial',coefficients:['0','0','1']}}};
   assert.throws(()=>compositePanels(gridOf([one(),graph])),error=>reason(error)==='PANEL_SOLID_MIXED_0');
@@ -1686,4 +1686,79 @@ test('E28c: the two pieces of a cut cuboid are drawn side by side: the piece tha
   const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-cut-corner|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:16,displayScale:0.7,fontFloorCssPx:11}});
   assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
   assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+});
+
+// --- E28c-5: five or six solid panels in one grid; a plane perpendicular to the axis through a whole sphere or a hemisphere -----------------------------
+const r6=value=>Math.round(value*1e6)/1e6;
+const levelOf=(solid,at='1/2',over={})=>figure({solids:[solid],section:{kind:'LEVEL',at},...over,panelWidth:GRID_PANEL_WIDTH});
+test('E28c: a plane perpendicular to the axis cuts a sphere or a hemisphere in a circle of radius sqrt(R^2 - (z - zc)^2)',()=>{
+  const half=solveSolidFigure(levelOf({kind:'HEMISPHERE',radius:3},'1/2')).section;
+  assert.deepEqual([half.kind,half.at,half.z,half.r],['LEVEL','1/2',1.5,r6(Math.sqrt(9-2.25))]);
+  const ball=solveSolidFigure(levelOf({kind:'SPHERE',radius:3},'1/3')).section;
+  assert.deepEqual([ball.z,ball.r],[2,r6(Math.sqrt(9-1))]);// the plane is 1 below the centre (height 2 of 6)
+  assert.equal(solveSolidFigure(levelOf({kind:'SPHERE',radius:3},'1/2')).section.r,3);// through the centre: a great circle
+  // a rotation solid keeps winning when it is in the plan, and a named solid is cut
+  const both=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:2,height:4},{kind:'SPHERE',radius:2}],section:{kind:'LEVEL',at:'1/2'}}));
+  assert.equal(both.section.solid,'s1');
+  assert.equal(solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:2,height:4},{kind:'HEMISPHERE',radius:2}],section:{kind:'LEVEL',at:'1/4',solid:'s2'}})).section.solid,'s2');
+  const bad=(solid,section,expected,over={})=>assert.throws(()=>solveSolidFigure(figure({solids:[solid],section,...over,panelWidth:GRID_PANEL_WIDTH})),code(expected),expected);
+  bad({kind:'SPHERE',radius:3},{kind:'AXIAL'},'SOLID_SECTION_UNSUPPORTED');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'AXIAL'},'SOLID_SECTION_UNSUPPORTED');
+  bad({kind:'SPHERE',radius:3,cut:{kind:'HALF'}},{kind:'LEVEL',at:'1/2'},'SOLID_SECTION_UNSUPPORTED');
+  bad({kind:'SPHERE',radius:3},{kind:'LEVEL',at:'1/2',fill:'BOTTOM'},'SOLID_SECTION_FILL_UNSUPPORTED:SPHERE');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'1/2',fill:'TOP'},'SOLID_SECTION_FILL_UNSUPPORTED:HEMISPHERE');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'3/2'},'SOLID_SECTION_INVALID');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL'},'SOLID_SECTION_INVALID');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'1/2',dims:1},'SOLID_SECTION_INVALID');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'1/2'},'SOLID_DIMS_INVALID',{dims:[{level:true}]});
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'1/2'},'SOLID_DIMS_INVALID',{dims:[{radius:'level'}]});
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:9,id:'s1'},{kind:'SPHERE',radius:3,inside:'s1'}],section:{kind:'LEVEL',at:'1/2',solid:'s2'}})),code('SOLID_SECTION_UNSUPPORTED'));
+  // a plan without the section keeps its model
+  assert.equal(solveSolidFigure(figure({solids:[{kind:'HEMISPHERE',radius:3,names:{center:'O'}}]})).section,null);
+});
+test('E28c: a hemisphere and a sphere with a level section compose, the observer reads the circle back, and a moved or resized circle is caught',async()=>{
+  for(const [solid,at,r] of [[{kind:'HEMISPHERE',radius:3},'1/2',Math.sqrt(9-2.25)],[{kind:'SPHERE',radius:3},'1/3',Math.sqrt(8)]]){
+    const plan=levelOf(solid,at);
+    const svg=await sphereSvg(plan);
+    assert.match(svg,/<ellipse id="level-s1" data-role="level-fill" data-solid="s1"/);
+    assert.equal((svg.match(/data-circle="level"/g)??[]).length,2);
+    const scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]),ell=svg.match(/<ellipse id="level-s1"[^>]*\/>/)[0];
+    assert.ok(Math.abs(Number(ell.match(/ rx="([-\d.]+)"/)[1])-scale*r)<0.01,'the circle has radius '+r);
+    await failingAudit(plan,svg.replace(ell,ell.replace(/ cy="([-\d.]+)"/,(all,y)=>` cy="${Number(y)+8}"`)),'SOLID_LEVEL_ELLIPSE_MISMATCH');
+    await failingAudit(plan,svg.replace(ell,ell.replace(/ rx="([-\d.]+)"/,(all,x)=>` rx="${Number(x)+6}"`)),'SOLID_LEVEL_ELLIPSE_MISMATCH');
+    const front=svg.match(/<path id="s1-level-front"[^>]*\/>/)[0];
+    await failingAudit(plan,svg.replace(`<g data-layer="40">${front}</g>`,''),'SOLID_LEVEL_ARC_MISSING');
+    await failingAudit(plan,svg.replace(front,front.replace(/ A ([-\d.]+) ([-\d.]+) /,(all,a,b)=>` A ${Number(a)+7} ${b} `)),'SOLID_');
+    // the plan against a figure of another level
+    await failingAudit(levelOf(solid,at==='1/2'?'1/4':'1/2'),svg,'SOLID_LEVEL_ELLIPSE_MISMATCH');
+  }
+});
+test('E28c: five and six solid panels make a two-column grid of three rows that still fits the page',()=>{
+  assert.equal(COMPOSITE_MAX_SOLID_GRID_PANELS,6);
+  const one=()=>solidPanel(hexPrism([seg('B','H')]),'육각기둥');
+  for(const count of [5,6]){
+    const checked=compositePanels(gridOf(Array.from({length:count},one)));
+    assert.equal(checked.length,count);
+    assert.deepEqual(compositePanelLayout(checked),{kind:'GRID',columns:2,rows:Math.ceil(count/2)});
+    const stack=compositeStackSize(checked.map(item=>figurePanelSize(solveSolidFigure(item.plan))),0,compositePanelLayout(checked));
+    assert.equal(stack.width,2*GRID_PANEL_WIDTH+8);assert.equal(stack.rows,3);
+    // three rows of the tallest solid panel (400 units, caption row 44) stay under the page limit at the display scale of the 776-unit grid
+    assert.ok(stack.height*(298/stack.width)<=640,JSON.stringify(stack));
+  }
+  assert.throws(()=>compositePanels(gridOf(Array.from({length:7},one))),error=>reason(error)==='PANELS');
+  // a solid among plane panels keeps counting as a solid grid
+  assert.equal(compositePanels(gridOf([...Array.from({length:5},()=>({caption:{text:'오각형'},plan:triPlane()})),one()])).length,6);
+});
+test('E28c: five section panels (cylinder, cone, frustum, sphere, hemisphere) compose in one grid, each passes its own observer',async()=>{
+  const level=(solid,at='1/2')=>({capability:'solid-figure-v1',solids:[solid],section:{kind:'LEVEL',at}});
+  const plan=gridOf([
+    solidPanel(level({kind:'CYLINDER',radius:3,height:6}),'원기둥'),solidPanel(level({kind:'CONE',radius:3,height:6}),'원뿔'),solidPanel(level({kind:'CONE_FRUSTUM',radius:3,topRadius:1.5,height:4}),'원뿔대'),
+    solidPanel(level({kind:'SPHERE',radius:3},'1/3'),'구'),solidPanel(level({kind:'HEMISPHERE',radius:3}),'반구')
+  ],{caption:'회전체를 회전축에 수직인 평면으로 자른 단면은 모두 원이다'});
+  const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+  const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-five-sections|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:29.3,displayScale:0.384,fontFloorCssPx:11}});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
+  assert.equal(composed.panels.length,5);
+  assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+  assert.deepEqual(compositePanelLayout(checked),{kind:'GRID',columns:2,rows:3});
 });
