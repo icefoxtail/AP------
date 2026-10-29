@@ -121,6 +121,8 @@ const faceNormal=pts=>{let n=[0,0,0];for(let i=0;i<pts.length;i++)n=add(n,cross(
 /** One polyhedron: prism, pyramid or pyramid frustum. Faces are cycles of vertex indices oriented counter-clockwise seen from OUTSIDE. */
 function buildPolyhedron(spec){
   const kind=spec.kind;
+  if(kind==='REGULAR_POLYHEDRON')return buildRegular(spec);
+  if(kind==='BIPYRAMID')return buildBipyramid(spec);
   const allowed={PRISM:['id','kind','base','height','names','count','cuts'],PYRAMID:['id','kind','base','height','apex','names','count','cuts'],FRUSTUM:['id','kind','base','height','topScale','foot','names','count','cuts']}[kind];
   onlyKeys(spec,allowed,'SOLID_PARAM_INVALID');
   const {points,plane}=basePolygon(spec.base);
@@ -195,6 +197,103 @@ function buildPolyhedron(spec){
   }
   const count=parseCount(spec.count,vertices,edges);
   return {id:spec.id,kind,category:'POLY',vertices,faces,edges,height,...(count?{count}:{})};
+}
+
+// --- regular polyhedra and bipyramids (E29) ---------------------------------------------------------------------------------------------------------
+// REGULAR_POLYHEDRON {faces:4|8|12|20,side}: the tetrahedron, octahedron, dodecahedron and icosahedron with every edge `side` long, one vertical axis of symmetry
+// (a 3-fold one for the tetrahedron, a 4-fold one through two opposite vertices for the octahedron, a 5-fold one for the dodecahedron and icosahedron), standing
+// on z=0. A cube is a PRISM over a RECT base. Vertices, in model order (names, counting numbers and "#v<i>" follow it):
+//   tetrahedron  base triangle (the first side horizontal along the front, as a REGULAR base of 3), then the apex.
+//   octahedron   the square ring (a REGULAR base of 4, one level above the foot), the upper apex, the lower apex.
+//   icosahedron  the upper apex, the upper ring of 5 (v1..v5, the first towards the viewer), the lower ring of 5 (v6..v10, each between two upper ones), the lower apex.
+//   dodecahedron the centres of the 20 faces of that icosahedron, in the order of its faces (5 around the upper apex, 5 hanging from the upper ring, 5 standing on the lower
+//                ring, 5 around the lower apex).
+// Faces are called f0, f1, ... (icosahedron: 5 around the upper apex, 5 hanging from the upper ring, 5 standing on the lower ring, 5 around the lower apex; dodecahedron: one per
+// vertex of the icosahedron in its order). BIPYRAMID {base (convex, plane XY),height,names?}: two pyramids on one base (the ring), each `height` high; vertices are the ring, the
+// upper apex, the lower apex; faces top0.., bottom0.. (i stands on the i-th edge of the base).
+const REGULAR_FACE_COUNTS=[4,8,12,20];
+const ringPoints=(n,side,z)=>[...Array(n).keys()].map(k=>{const R=side/(2*Math.sin(Math.PI/n)),a=-Math.PI/2-Math.PI/n+2*Math.PI*k/n;return [R*Math.cos(a),R*Math.sin(a),z];});
+function icosahedronPoints(s){
+  const rho=s/(2*Math.sin(Math.PI/5)),zr=Math.sqrt(s*s-rho*rho),chord=2*rho*Math.sin(Math.PI/10),zu=Math.sqrt(s*s-chord*chord)/2,top=zu+zr;
+  const upper=[...Array(5).keys()].map(k=>{const a=-Math.PI/2+2*Math.PI*k/5;return [rho*Math.cos(a),rho*Math.sin(a),zu];});
+  const lower=[...Array(5).keys()].map(k=>{const a=-Math.PI/2+Math.PI/5+2*Math.PI*k/5;return [rho*Math.cos(a),rho*Math.sin(a),-zu];});
+  return [[0,0,top],...upper,...lower,[0,0,-top]];
+}
+const ICOSAHEDRON_FACES=(()=>{
+  const faces=[];
+  for(let k=0;k<5;k++)faces.push([0,1+k,1+(k+1)%5]);// around the upper apex
+  for(let k=0;k<5;k++)faces.push([1+k,1+(k+1)%5,6+k]);// hanging from an upper edge
+  for(let k=0;k<5;k++)faces.push([6+k,6+(k+1)%5,1+(k+1)%5]);// standing on a lower edge
+  for(let k=0;k<5;k++)faces.push([11,6+(k+1)%5,6+k]);// around the lower apex
+  return faces;
+})();
+function regularGeometry(count,side){
+  let points,faces;
+  if(count===4){
+    const h=side*Math.sqrt(2/3);
+    points=[...ringPoints(3,side,0),[0,0,h]];
+    faces=[[0,1,2],[0,1,3],[1,2,3],[2,0,3]];
+  }else if(count===8){
+    const h=side/Math.SQRT2;
+    points=[...ringPoints(4,side,h),[0,0,2*h],[0,0,0]];
+    faces=[];
+    for(let k=0;k<4;k++)faces.push([k,(k+1)%4,4]);
+    for(let k=0;k<4;k++)faces.push([k,(k+1)%4,5]);
+  }else if(count===20){
+    points=icosahedronPoints(side);faces=ICOSAHEDRON_FACES.map(f=>[...f]);
+  }else{
+    // the dodecahedron: the dual of the icosahedron (its face centres), scaled to the edge `side`
+    const ico=icosahedronPoints(1),centres=ICOSAHEDRON_FACES.map(f=>mulv(add(add(ico[f[0]],ico[f[1]]),ico[f[2]]),1/3));
+    const edge=len(sub(centres[0],centres.find((c,i)=>i>0&&ICOSAHEDRON_FACES[i].filter(v=>ICOSAHEDRON_FACES[0].includes(v)).length===2)));
+    points=centres.map(c=>mulv(c,side/edge));
+    faces=ico.map((v,vi)=>{
+      const around=ICOSAHEDRON_FACES.map((f,i)=>f.includes(vi)?i:-1).filter(i=>i>=0),axis=unit(v);
+      const helper=Math.abs(axis[0])<0.9?[1,0,0]:[0,1,0],e1=unit(cross(axis,helper)),e2=cross(axis,e1);
+      const angle=i=>{const q=sub(points[i],mulv(axis,dot(points[i],axis)));return Math.atan2(dot(q,e2),dot(q,e1));};
+      return around.sort((a,b)=>angle(a)-angle(b));
+    });
+  }
+  const zmin=Math.min(...points.map(p=>p[2]));
+  return {points:points.map(p=>[p[0],p[1],p[2]-zmin]),faces};
+}
+/** The vertices as objects with their names (a name may list aliases "M,A,I"), the faces oriented counter-clockwise seen from outside, every face checked planar. */
+function convexPolyhedron(kind,id,points,faceCycles,faceIds,names,count){
+  const total=points.length;
+  const list=names===undefined?letters(0,total):(()=>{const l=typeof names==='string'?nameTokens(names):names;if(!Array.isArray(l)||l.length!==total||l.some(x=>x!==null&&x!=='.'&&!nameOk(String(x))))bad('SOLID_NAMES_INVALID');return l.map(x=>x==='.'?null:x);})();
+  const vertices=points.map((p,i)=>{const raw=list[i];return typeof raw==='string'&&raw.includes(',')?{name:raw.split(',')[0],aliases:raw.split(','),p}:{name:raw,p};});
+  const centre=points.reduce((s,p)=>add(s,mulv(p,1/total)),[0,0,0]);
+  const faces=faceCycles.map((idx,k)=>{
+    const pts=idx.map(i=>points[i]),nrm=faceNormal(pts),mid=pts.reduce((s,p)=>add(s,mulv(p,1/pts.length)),[0,0,0]);
+    if(pts.some(p=>Math.abs(dot(nrm,sub(p,pts[0])))>1e-9*Math.max(1,len(pts[0]))))bad('SOLID_FACE_NOT_PLANAR');
+    return {id:faceIds[k],idx:dot(nrm,sub(mid,centre))>=0?idx:[...idx].reverse()};
+  });
+  const edges=edgesOfFaces(faces),counted=parseCount(count,vertices,edges);
+  return {id,kind,category:'POLY',vertices,faces,edges,height:Math.max(...points.map(p=>p[2])),exact:true,...(counted?{count:counted}:{})};
+}
+function buildRegular(spec){
+  onlyKeys(spec,['id','kind','faces','side','names','count'],'SOLID_PARAM_INVALID');
+  if(!REGULAR_FACE_COUNTS.includes(spec.faces))bad('SOLID_REGULAR_FACES_UNSUPPORTED:'+String(spec.faces).slice(0,8));
+  const side=pos(spec.side,'SOLID_PARAM_INVALID'),{points,faces}=regularGeometry(spec.faces,side);
+  // every edge is `side` long: the construction is checked, not trusted
+  const solid=convexPolyhedron('REGULAR_POLYHEDRON',spec.id,points,faces,faces.map((f,k)=>'f'+k),spec.names,spec.count);
+  for(const [a,b] of solid.edges)if(Math.abs(len(sub(solid.vertices[a].p,solid.vertices[b].p))-side)>1e-9*side)bad('SOLID_REGULAR_GEOMETRY_INVALID');
+  if(solid.edges.length!==({4:6,8:12,12:30,20:30})[spec.faces])bad('SOLID_REGULAR_GEOMETRY_INVALID');
+  return solid;
+}
+function buildBipyramid(spec){
+  onlyKeys(spec,['id','kind','base','height','names','count'],'SOLID_PARAM_INVALID');
+  if(!isPlain(spec.base))bad('SOLID_BASE_INVALID');
+  const exactRing=spec.base.kind==='REGULAR'&&Number.isInteger(spec.base.n)&&spec.base.n>=3&&spec.base.n<=8&&typeof spec.base.side==='number'&&spec.base.side>0;
+  const {points,plane}=basePolygon(spec.base);
+  if(plane!=='XY')bad('SOLID_BASE_PLANE_UNSUPPORTED');
+  if(!isConvex(points))bad('SOLID_BASE_NOT_CONVEX');
+  const n=points.length,h=pos(spec.height,'SOLID_PARAM_INVALID');
+  const ring=exactRing?ringPoints(n,spec.base.side,h):points.map(p=>[p[0],p[1],h]);
+  const cx=ring.reduce((s,p)=>s+p[0]/n,0),cy=ring.reduce((s,p)=>s+p[1]/n,0);
+  const faces=[],ids=[];
+  for(let i=0;i<n;i++){faces.push([i,(i+1)%n,n]);ids.push('top'+i);}
+  for(let i=0;i<n;i++){faces.push([i,(i+1)%n,n+1]);ids.push('bottom'+i);}
+  return convexPolyhedron('BIPYRAMID',spec.id,[...ring,[cx,cy,2*h],[cx,cy,0]],faces,ids,spec.names,spec.count);
 }
 /** The distinct edges (vertex index pairs, low first) of a set of faces, sorted. */
 function edgesOfFaces(faces){
@@ -323,8 +422,10 @@ function parseCount(raw,vertices,edges){
 }
 /** The edges of a polyhedron in counting order (see parseCount). */
 export function countedEdges(solid){
-  const n=solid.kind==='PYRAMID'?solid.vertices.length-1:solid.vertices.length/2;
-  const slot=([a,b])=>a<n&&b<n?[0,b===a+1?a:b]:a>=n&&b>=n?[2,b===a+1?a-n:b-n]:[1,a];
+  if(solid.kind==='REGULAR_POLYHEDRON')return [...solid.edges];// by the vertex numbers, low pair first
+  const n=ringSize(solid);
+  // a bipyramid: around the ring, then up to the upper apex by ring vertex, then down to the lower apex
+  const slot=solid.kind==='BIPYRAMID'?([a,b])=>a<n&&b<n?[0,b===a+1?a:b]:b===n?[1,a]:[2,a]:([a,b])=>a<n&&b<n?[0,b===a+1?a:b]:a>=n&&b>=n?[2,b===a+1?a-n:b-n]:[1,a];
   return [...solid.edges].sort((x,y)=>{const u=slot(x),v=slot(y);return u[0]-v[0]||u[1]-v[1];});
 }
 
@@ -372,7 +473,7 @@ function buildRound(spec){
 const shiftSolid=(solid,s)=>{
   // move along the screen's horizontal (and recentre the footprint on the origin first)
   const d=mulv(EX,s);
-  if(solid.category==='POLY'){for(const v of solid.vertices)v.p=add(v.p,d).map(r6);}
+  if(solid.category==='POLY'){for(const v of solid.vertices)v.p=solid.exact?add(v.p,d):add(v.p,d).map(r6);}
   else for(const q of solid.points)q.p=add(q.p,d).map(r6);
   solid.offset=r6(s);
 };
@@ -380,7 +481,7 @@ function recentre(solid){
   if(solid.category!=='POLY')return;
   const xs=solid.vertices.map(v=>v.p[0]),ys=solid.vertices.map(v=>v.p[1]);
   const cx=(Math.min(...xs)+Math.max(...xs))/2,cy=(Math.min(...ys)+Math.max(...ys))/2;
-  for(const v of solid.vertices)v.p=[r6(v.p[0]-cx),r6(v.p[1]-cy),v.p[2]];
+  for(const v of solid.vertices)v.p=solid.exact?[v.p[0]-cx,v.p[1]-cy,v.p[2]]:[r6(v.p[0]-cx),r6(v.p[1]-cy),v.p[2]];
 }
 
 // --- visibility of polyhedron edges ------------------------------------------------------------------------------------------------------------
@@ -486,15 +587,17 @@ function dimLabel(raw,value,unit,code,{angle=false}={}){
 // (any polyhedron: the same order as the counting numbers 1, 2, ...). "s2#b0" names the solid when the plan has several polyhedra. A reference stands wherever a
 // name does (segments, dims edge/from/to, highlights polygon, marks) and works whether the vertex has a name or not. A vertex without a name is known in the model
 // by its canonical key "<solid id>.<slot>" ("s1.b0"); a key is the name when there is one.
-const VREF=/^([a-z][a-z0-9]{0,7})?#(?:([btv])(\d{1,2})|(apex))$/;
+const VREF=/^([a-z][a-z0-9]{0,7})?#(?:([btv])(\d{1,2})|(apex2?))$/;
 const PLAIN_KEY=/^[A-Z]′?$/u;
 /** Keys written together: "AB" for plain vertex names, "s1.b0-s1.b1" (joined by '-') as soon as one is a canonical key; used in ids and data-* of the SVG. */
 export const joinKeys=keys=>keys.every(k=>PLAIN_KEY.test(k))?keys.join(''):keys.join('-');
-const ringSize=solid=>solid.kind==='PYRAMID'?solid.vertices.length-1:solid.vertices.length/2;
+const ringSize=solid=>solid.kind==='PYRAMID'?solid.vertices.length-1:solid.kind==='BIPYRAMID'?solid.vertices.length-2:solid.vertices.length/2;
 /** The slot of vertex i of a polyhedron in the reference grammar. */
 function vertexSlot(solid,i){
-  if(solid.kind==='PYRAMID'){const n=ringSize(solid);return i<n?'b'+i:'apex';}
+  if(solid.kind==='REGULAR_POLYHEDRON')return 'v'+i;
   const n=ringSize(solid);
+  if(solid.kind==='PYRAMID')return i<n?'b'+i:'apex';
+  if(solid.kind==='BIPYRAMID')return i<n?'b'+i:i===n?'apex':'apex2';
   return i<n?'b'+i:'t'+(i-n);
 }
 /** The keys a polyhedron vertex answers to: its names, or the one canonical key when it has none (a solid with cuts renumbers its vertices: only names). */
@@ -502,11 +605,13 @@ const vertexKeys=(solid,i)=>{const v=solid.vertices[i];return v.name?(v.aliases?
 /** The vertex index of a slot written in a reference, or null when this polyhedron has no such vertex. */
 function slotIndex(solid,ring,index,apex){
   const total=solid.vertices.length,n=ringSize(solid);
-  if(apex)return solid.kind==='PYRAMID'?n:null;
   const i=Number(index);
   if(ring==='v')return i<total?i:null;
+  if(solid.kind==='REGULAR_POLYHEDRON')return null;// no ring and no apex: only #v<i>
+  if(apex==='apex')return solid.kind==='PYRAMID'||solid.kind==='BIPYRAMID'?n:null;
+  if(apex==='apex2')return solid.kind==='BIPYRAMID'?n+1:null;
   if(ring==='b')return i<n?i:null;
-  return solid.kind==='PYRAMID'?null:i<n?n+i:null;
+  return solid.kind==='PYRAMID'||solid.kind==='BIPYRAMID'?null:i<n?n+i:null;
 }
 /** The reference resolver of a plan: a name is checked against the named points; a reference becomes the key of the vertex it stands for (the name when it has one). */
 function vertexResolver(solids,named){
@@ -553,7 +658,7 @@ function pointTable(solids){
 const MAX_SEGMENTS=10;
 // highlight tints: a fill colour and its opacity (LIGHT is the original blue shade of every highlight)
 const HIGHLIGHT_FILLS={LIGHT:['#7fa6e8',0.32],MEDIUM:['#7fa6e8',0.55],WARM:['#f2a65a',0.42],GREEN:['#6fcf97',0.42],ROSE:['#e98aa8',0.42],VIOLET:['#a78bdb',0.42]};
-const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
+const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM','REGULAR_POLYHEDRON','BIPYRAMID'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
 const UNIT=/^(cm|mm|m|km)$/;
 export function solveSolidFigure(plan){
   if(!isPlain(plan)||plan.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
@@ -829,7 +934,7 @@ function solveSolids(plan){
         }else if(d.height!==undefined){
           if(d.height!==true)bad('SOLID_DIMS_INVALID');
           if(solid.category==='SPHERE'&&solid.kind==='SPHERE')bad('SOLID_DIMS_INVALID');
-          if(solid.cuts)bad('SOLID_DIMS_INVALID');
+          if(solid.cuts||solid.kind==='REGULAR_POLYHEDRON'||solid.kind==='BIPYRAMID')bad('SOLID_DIMS_INVALID');
           const h=solid.height;
           dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...dimLabel(d.label,h,unitName,code)});
         }else{
@@ -1094,6 +1199,7 @@ function solveNet(plan){
   }
   if(net.kind!==undefined)bad('SOLID_NET_UNSUPPORTED:'+String(net.kind).slice(0,24));
   if(!isPlain(net.solid)||!POLY_KINDS.includes(net.solid.kind))bad('SOLID_NET_INVALID');
+  if(net.solid.kind==='REGULAR_POLYHEDRON'||net.solid.kind==='BIPYRAMID')bad('SOLID_NET_UNSUPPORTED:'+net.solid.kind);
   if(net.solid.cuts!==undefined)bad('SOLID_NET_UNSUPPORTED:CUT');
   const solid=buildPolyhedron({...net.solid,id:'s1'});
   const faceById=new Map(solid.faces.map(f=>[f.id,f]));

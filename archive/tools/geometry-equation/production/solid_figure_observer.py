@@ -90,6 +90,8 @@ def base_polygon(base):
 
 def build_solid(spec):
     kind = spec['kind']
+    if kind == 'REGULAR_POLYHEDRON': return build_regular(spec)
+    if kind == 'BIPYRAMID': return build_bipyramid(spec)
     if kind in ('PRISM', 'PYRAMID', 'FRUSTUM'):
         pts, plane = base_polygon(spec['base'])
         n, h = len(pts), float(spec['height'])
@@ -156,6 +158,141 @@ def build_solid(spec):
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
                 'inside': spec.get('inside'), 'cut': spec.get('cut')}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
+
+
+# --- regular polyhedra and bipyramids (E29) ------------------------------------------------------------------------------------------------------------
+# Derived here from the plan and the spec (vertex order, orientation) alone, by other routes than the producer's: the tetrahedron from the vertices of a cube, the
+# octahedron from the axes, the icosahedron and dodecahedron from their golden-ratio coordinates turned until a 5-fold axis stands upright (the producer builds the
+# icosahedron from rings and the dodecahedron as its dual). Vertex order: tetrahedron base triangle (azimuths -150, -30, 90 degrees) then the apex; octahedron the square
+# ring (azimuths -135, -45, 45, 135) then the upper and the lower apex; icosahedron the upper apex, the upper ring (azimuths -90 + 72k), the lower ring (-54 + 72k), the
+# lower apex; dodecahedron four rings of five (upper pentagon, upper-middle, lower-middle, lower pentagon; azimuths -54 + 72k for the first two, -18 + 72k for the others).
+PHI = (1 + math.sqrt(5)) / 2
+REGULAR_FACE_COUNTS = (4, 8, 12, 20)
+
+
+def _rot_axis_to_z(points, axis):
+    """the points turned (Rodrigues) so that the direction `axis` becomes +z"""
+    a = vunit(axis)
+    k = vcross(a, (0.0, 0.0, 1.0))
+    s, c = vlen(k), a[2]
+    if s < 1e-12: return [p if c > 0 else (p[0], -p[1], -p[2]) for p in points]
+    k = vmul(k, 1.0 / s)
+    return [vadd(vadd(vmul(p, c), vmul(vcross(k, p), s)), vmul(k, vdot(k, p) * (1 - c))) for p in points]
+
+
+def _turn_z(points, angle):
+    ca, sa = math.cos(angle), math.sin(angle)
+    return [(p[0] * ca - p[1] * sa, p[0] * sa + p[1] * ca, p[2]) for p in points]
+
+
+def _az(p): return math.atan2(p[1], p[0])
+
+
+def _sorted_from(points, start_az):
+    """points ordered counter-clockwise by azimuth, beginning at the one nearest `start_az`"""
+    return sorted(points, key=lambda p: (_az(p) - start_az + 1e-7) % (2 * math.pi))
+
+
+def _ring_cycle(points, centre_dir):
+    """the points sorted cyclically around a direction (counter-clockwise seen from outside)"""
+    axis = vunit(centre_dir)
+    helper = (1.0, 0.0, 0.0) if abs(axis[0]) < 0.9 else (0.0, 1.0, 0.0)
+    e1 = vunit(vcross(axis, helper))
+    e2 = vcross(axis, e1)
+    return sorted(points, key=lambda p: math.atan2(vdot(p, e2), vdot(p, e1)))
+
+
+def regular_polyhedron(count, side):
+    """vertices (3-tuples) and faces (index lists) of the regular polyhedron with `count` faces and edge `side`, standing on z = 0"""
+    if count == 4:
+        raw = [(1.0, 1.0, 1.0), (1.0, -1.0, -1.0), (-1.0, 1.0, -1.0), (-1.0, -1.0, 1.0)]    # four vertices of a cube: edge 2 sqrt 2
+        turned = _rot_axis_to_z(raw, raw[0])                                                   # the first becomes the apex on the +z axis
+        apex, base = turned[0], turned[1:]
+        base = _sorted_from(_turn_z(base, -math.radians(150) - _az(base[0])), -math.radians(150))
+        k = side / (2 * math.sqrt(2))
+        pts = [vmul(p, k) for p in [*base, apex]]
+        faces = [[0, 1, 2], [0, 1, 3], [1, 2, 3], [2, 0, 3]]
+    elif count == 8:
+        r = side / math.sqrt(2)
+        ring = _turn_z([(r, 0.0, 0.0), (0.0, r, 0.0), (-r, 0.0, 0.0), (0.0, -r, 0.0)], -math.radians(135))
+        pts = [*ring, (0.0, 0.0, r), (0.0, 0.0, -r)]
+        faces = [[k, (k + 1) % 4, 4] for k in range(4)] + [[k, (k + 1) % 4, 5] for k in range(4)]
+    else:
+        ico = [(0.0, a, b * PHI) for a in (1.0, -1.0) for b in (1.0, -1.0)] + [(a, b * PHI, 0.0) for a in (1.0, -1.0) for b in (1.0, -1.0)] + [(b * PHI, 0.0, a) for a in (1.0, -1.0) for b in (1.0, -1.0)]
+        if count == 20:
+            top_axis = ico[0]
+            pts = _rot_axis_to_z(ico, top_axis)
+            levels = sorted(pts, key=lambda p: -p[2])
+            top, upper, lower, bottom = levels[0], levels[1:6], levels[6:11], levels[11]
+            turn = -math.pi / 2 - _az(upper[0])
+            top, bottom = _turn_z([top], turn)[0], _turn_z([bottom], turn)[0]
+            upper, lower = _turn_z(upper, turn), _turn_z(lower, turn)
+            upper = _sorted_from(upper, -math.pi / 2)
+            lower = _sorted_from(lower, -math.pi / 2 + math.pi / 5)
+            pts = [top, *upper, *lower, bottom]
+            faces = [[0, 1 + k, 1 + (k + 1) % 5] for k in range(5)] + [[1 + k, 1 + (k + 1) % 5, 6 + k] for k in range(5)] \
+                + [[6 + k, 6 + (k + 1) % 5, 1 + (k + 1) % 5] for k in range(5)] + [[11, 6 + (k + 1) % 5, 6 + k] for k in range(5)]
+            scale = side / 2.0
+        else:
+            raw = [(a, b, c) for a in (1.0, -1.0) for b in (1.0, -1.0) for c in (1.0, -1.0)]
+            raw += [(0.0, a * PHI, b / PHI) for a in (1.0, -1.0) for b in (1.0, -1.0)] + [(a / PHI, 0.0, b * PHI) for a in (1.0, -1.0) for b in (1.0, -1.0)] + [(a * PHI, b / PHI, 0.0) for a in (1.0, -1.0) for b in (1.0, -1.0)]
+            turned = _rot_axis_to_z(raw, (0.0, 1.0, PHI))
+            rows = sorted(turned, key=lambda p: -p[2])
+            groups = [rows[0:5], rows[5:10], rows[10:15], rows[15:20]]
+            turn = -math.pi / 2 + math.pi / 5 - _az(groups[0][0])
+            groups = [_turn_z(g, turn) for g in groups]
+            groups = [_sorted_from(groups[0], -math.pi / 2 + math.pi / 5), _sorted_from(groups[1], -math.pi / 2 + math.pi / 5),
+                      _sorted_from(groups[2], -math.pi / 2 + math.pi / 5 + math.pi / 5), _sorted_from(groups[3], -math.pi / 2 + math.pi / 5 + math.pi / 5)]
+            pts = [p for g in groups for p in g]
+            # a face stands on each axis of the icosahedron: its five vertices are the ones nearest that axis
+            el = math.atan(0.5)
+            dirs = [(0.0, 0.0, 1.0)] + [(math.cos(el) * math.cos(-math.pi / 2 + 2 * math.pi * k / 5), math.cos(el) * math.sin(-math.pi / 2 + 2 * math.pi * k / 5), math.sin(el)) for k in range(5)] \
+                + [(math.cos(el) * math.cos(-math.pi / 2 + math.pi / 5 + 2 * math.pi * k / 5), math.cos(el) * math.sin(-math.pi / 2 + math.pi / 5 + 2 * math.pi * k / 5), -math.sin(el)) for k in range(5)] + [(0.0, 0.0, -1.0)]
+            faces = []
+            for d in dirs:
+                near = sorted(range(20), key=lambda i: -vdot(pts[i], d))[:5]
+                order = _ring_cycle([pts[i] for i in near], d)
+                faces.append([pts.index(p) for p in order])
+            scale = side * PHI / 2.0
+        pts = [vmul(p, scale) for p in pts]
+    z0 = min(p[2] for p in pts)
+    return [(p[0], p[1], p[2] - z0) for p in pts], faces
+
+
+def _flat_names(total, names):
+    if names is None: return _letters(0, total)
+    lst = _clean_names(NAME_TOKEN.findall(names) if isinstance(names, str) else list(names))
+    if len(lst) != total: raise ValueError('SOLID_NAMES_INVALID')
+    return lst
+
+
+def build_regular(spec):
+    count, side = spec.get('faces'), float(spec['side'])
+    if count not in REGULAR_FACE_COUNTS: raise ValueError('SOLID_REGULAR_FACES_UNSUPPORTED')
+    pts, faces = regular_polyhedron(count, side)
+    # every edge of every face is `side` long and every face is planar: the construction checks itself
+    for f in faces:
+        for k in range(len(f)):
+            if abs(vlen(vsub(pts[f[k]], pts[f[(k + 1) % len(f)]])) - side) > 1e-7 * side: raise ValueError('SOLID_OBSERVER_REGULAR_EDGE')
+    names = _flat_names(len(pts), spec.get('names'))
+    aliases = {i: n.split(',') for i, n in enumerate(names) if n and ',' in n}
+    verts = [(n.split(',')[0] if n and ',' in n else n, pts[i]) for i, n in enumerate(names)]
+    return {'id': spec.get('id'), 'kind': 'REGULAR_POLYHEDRON', 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': max(p[2] for p in pts), 'aliases': aliases}
+
+
+def build_bipyramid(spec):
+    base, h = spec['base'], float(spec['height'])
+    ring2d, plane = base_polygon(base)
+    if plane != 'XY': raise ValueError('SOLID_BASE_PLANE_UNSUPPORTED')
+    n = len(ring2d)
+    ring = [(x, y, h) for x, y in ring2d]
+    cx, cy = sum(p[0] for p in ring) / n, sum(p[1] for p in ring) / n
+    pts = [*ring, (cx, cy, 2 * h), (cx, cy, 0.0)]
+    faces = [[i, (i + 1) % n, n] for i in range(n)] + [[i, (i + 1) % n, n + 1] for i in range(n)]
+    names = _flat_names(len(pts), spec.get('names'))
+    aliases = {i: nm.split(',') for i, nm in enumerate(names) if nm and ',' in nm}
+    verts = [(nm.split(',')[0] if nm and ',' in nm else nm, pts[i]) for i, nm in enumerate(names)]
+    return {'id': spec.get('id'), 'kind': 'BIPYRAMID', 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': 2 * h, 'aliases': aliases}
 
 
 # --- planes cutting a convex polyhedron -----------------------------------------------------------------------------------------------------------------
@@ -276,7 +413,7 @@ def vname(solid, i):
 # --- vertex references: "#b0" "#t2" "#apex" "#v5" (optionally "s2#b0") stand for a vertex wherever a name does ---------------------------------------
 # A vertex without a name is known by the key "<solid id>.<slot>" ("s1.b0"); a key is the name when there is one. Keys are joined "AB" while they are plain
 # names and "s1.b0-s1.b1" as soon as one is a canonical key. Written here from the grammar alone (not from the producer).
-VREF = re.compile(r'^([a-z][a-z0-9]{0,7})?#(?:([btv])(\d{1,2})|(apex))$')
+VREF = re.compile(r'^([a-z][a-z0-9]{0,7})?#(?:([btv])(\d{1,2})|(apex2?))$')
 PLAIN_KEY = re.compile(r'^[A-Z]′?$')
 
 
@@ -296,12 +433,14 @@ def split_edge(edge):
 
 def _ring_size(solid):
     n = len(solid['verts'])
-    return n - 1 if solid['kind'] == 'PYRAMID' else n // 2
+    return n - 1 if solid['kind'] == 'PYRAMID' else n - 2 if solid['kind'] == 'BIPYRAMID' else n // 2
 
 
 def vertex_slot(solid, i):
+    if solid['kind'] == 'REGULAR_POLYHEDRON': return 'v%d' % i
     n = _ring_size(solid)
     if solid['kind'] == 'PYRAMID': return 'b%d' % i if i < n else 'apex'
+    if solid['kind'] == 'BIPYRAMID': return 'b%d' % i if i < n else 'apex' if i == n else 'apex2'
     return 'b%d' % i if i < n else 't%d' % (i - n)
 
 
@@ -325,11 +464,13 @@ def make_norm(solids, named):
         found = []
         for solid in solids:
             if solid['cat'] != 'POLY' or solid.get('cut') or (prefix is not None and solid['id'] != prefix): continue
-            total, n = len(solid['verts']), _ring_size(solid)
-            if apex: i = n if solid['kind'] == 'PYRAMID' else None
-            elif ring == 'v': i = int(index) if int(index) < total else None
+            total, n, kind = len(solid['verts']), _ring_size(solid), solid['kind']
+            if ring == 'v': i = int(index) if int(index) < total else None
+            elif kind == 'REGULAR_POLYHEDRON': i = None
+            elif apex == 'apex': i = n if kind in ('PYRAMID', 'BIPYRAMID') else None
+            elif apex == 'apex2': i = n + 1 if kind == 'BIPYRAMID' else None
             elif ring == 'b': i = int(index) if int(index) < n else None
-            else: i = None if solid['kind'] == 'PYRAMID' else (n + int(index) if int(index) < n else None)
+            else: i = None if kind in ('PYRAMID', 'BIPYRAMID') else (n + int(index) if int(index) < n else None)
             if i is not None: found.append((solid, i))
         if len(found) != 1: raise ValueError('SOLID_VREF_UNKNOWN:' + x[:16] if not found else 'SOLID_VREF_AMBIGUOUS:' + x[:16])
         return vertex_keys(found[0][0], found[0][1])[0]
@@ -719,11 +860,13 @@ CIRCLED = [chr(0x2460 + k) for k in range(20)]
 def count_order(solid):
     """the edges (vertex index pairs) in counting order: around the base ring (edge i joins vertices i and i+1, the closing edge last), then the side
     edges by their base vertex, then around the top ring"""
-    n = len(solid['verts']) - 1 if solid['kind'] == 'PYRAMID' else len(solid['verts']) // 2
+    if solid['kind'] == 'REGULAR_POLYHEDRON': return poly_edges(solid)
+    n = _ring_size(solid)
 
     def slot(e):
         a, b = e
         if a < n and b < n: return (0, a if b == a + 1 else b)
+        if solid['kind'] == 'BIPYRAMID': return (1, a) if b == n else (2, a)
         if a >= n and b >= n: return (2, a - n if b == a + 1 else b - n)
         return (1, a)
     return sorted(poly_edges(solid), key=slot)
@@ -771,7 +914,9 @@ HIGHLIGHT_FILLS = ('LIGHT', 'MEDIUM', 'WARM', 'GREEN', 'ROSE', 'VIOLET')
 
 def face_names(solid):
     """the names of a polyhedron's faces, in the order of its face list: bottom, (top,) side0, side1, ... (side i stands on the i-th edge of the base)"""
-    n = len(solid['verts']) - 1 if solid['kind'] == 'PYRAMID' else len(solid['verts']) // 2
+    if solid['kind'] == 'REGULAR_POLYHEDRON': return ['f%d' % i for i in range(len(solid['faces']))]
+    n = _ring_size(solid)
+    if solid['kind'] == 'BIPYRAMID': return ['top%d' % i for i in range(n)] + ['bottom%d' % i for i in range(n)]
     return (['bottom'] if solid['kind'] == 'PYRAMID' else ['bottom', 'top']) + ['side%d' % i for i in range(n)]
 
 

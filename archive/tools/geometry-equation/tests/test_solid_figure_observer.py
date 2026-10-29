@@ -844,3 +844,83 @@ class NetFaceLabelsAndMarks(unittest.TestCase):
         errors = []
         O.check_excluded_circles({}, self.circles('top', 'stroke="#111"'), ['bottom', 'top'], errors)
         self.assertEqual(errors, [])
+
+
+class RegularPolyhedraAndBipyramids(unittest.TestCase):
+    """E29: the observer builds regular polyhedra (by routes other than the producer's) and bipyramids from the plan alone."""
+
+    def regular(self, faces, side=2.0):
+        return O.build_solid({'kind': 'REGULAR_POLYHEDRON', 'faces': faces, 'side': side, 'id': 's1'})
+
+    def azimuth_deg(self, p): return math.degrees(math.atan2(p[1], p[0]))
+
+    def test_each_solid_has_its_vertices_edges_faces_and_equal_edges(self):
+        for faces, V, E, sides in ((4, 4, 6, 3), (8, 6, 12, 3), (12, 20, 30, 5), (20, 12, 30, 3)):
+            solid = self.regular(faces, 3.0)
+            pts = [p for _, p in solid['verts']]
+            self.assertEqual((len(pts), len(O.poly_edges(solid)), len(solid['faces'])), (V, E, faces))
+            self.assertEqual(V - E + faces, 2)
+            self.assertTrue(all(len(f) == sides for f in solid['faces']))
+            for a, b in O.poly_edges(solid): self.assertAlmostEqual(O.vlen(O.vsub(pts[a], pts[b])), 3.0, places=9)
+            self.assertAlmostEqual(min(p[2] for p in pts), 0.0, places=12)
+            # every face is planar (all its vertices on the plane of the first three)
+            for f in solid['faces']:
+                n = O.vunit(O.vcross(O.vsub(pts[f[1]], pts[f[0]]), O.vsub(pts[f[2]], pts[f[0]])))
+                self.assertTrue(all(abs(O.vdot(n, O.vsub(pts[i], pts[f[0]]))) < 1e-9 for i in f))
+
+    def test_the_documented_vertex_order_of_each_solid(self):
+        centre = lambda pts: tuple(sum(p[k] for p in pts) / len(pts) for k in range(3))
+        pts = [p for _, p in self.regular(20)['verts']]
+        c = centre(pts)
+        self.assertEqual(max(range(12), key=lambda i: pts[i][2]), 0)       # the upper apex first, the lower apex last
+        self.assertEqual(min(range(12), key=lambda i: pts[i][2]), 11)
+        for k in range(5):
+            self.assertAlmostEqual(self.azimuth_deg(O.vsub(pts[1 + k], c)) % 360, (-90 + 72 * k) % 360, places=6)     # upper ring, the first towards the viewer
+            self.assertAlmostEqual(self.azimuth_deg(O.vsub(pts[6 + k], c)) % 360, (-54 + 72 * k) % 360, places=6)     # lower ring, each between two upper ones
+            self.assertGreater(pts[1 + k][2], c[2])
+            self.assertLess(pts[6 + k][2], c[2])
+        pts = [p for _, p in self.regular(12)['verts']]
+        c = centre(pts)
+        zs = [p[2] for p in pts]
+        self.assertTrue(all(zs[i] > zs[j] for i in range(0, 5) for j in range(5, 20)))      # the upper pentagon first, then the next ring, ...
+        self.assertTrue(all(zs[i] > zs[j] for i in range(5, 10) for j in range(10, 20)) and all(zs[i] > zs[j] for i in range(10, 15) for j in range(15, 20)))
+        for k in range(5):
+            for start, base in ((0, -54), (5, -54), (10, -18), (15, -18)):
+                self.assertAlmostEqual(self.azimuth_deg(O.vsub(pts[start + k], c)) % 360, (base + 72 * k) % 360, places=6)
+        pts = [p for _, p in self.regular(8)['verts']]
+        for k in range(1, 4): self.assertAlmostEqual(self.azimuth_deg(pts[k]) - self.azimuth_deg(pts[0]), 90 * k, places=6)     # the ring runs counter-clockwise from the front left
+        self.assertAlmostEqual(self.azimuth_deg(pts[0]), -135, places=6)
+        self.assertAlmostEqual(pts[4][2], 2 * pts[0][2], places=9)             # the upper apex over the ring; the lower apex on the floor
+        self.assertAlmostEqual(pts[5][2], 0.0, places=9)
+        pts = [p for _, p in self.regular(4)['verts']]
+        self.assertTrue(pts[3][2] > pts[0][2] and abs(pts[0][2]) < 1e-9)       # a base on the floor and the apex above it
+
+    def test_the_construction_refuses_what_it_cannot_build(self):
+        for faces in (6, 5, 0, 3, '8', None):
+            self.assertRaises(ValueError, O.build_solid, {'kind': 'REGULAR_POLYHEDRON', 'faces': faces, 'side': 2, 'id': 's1'})
+        self.assertRaises(ValueError, O.build_solid, {'kind': 'REGULAR_POLYHEDRON', 'faces': 8, 'side': 2, 'names': 'ABC', 'id': 's1'})
+
+    def test_a_bipyramid_is_two_pyramids_on_one_ring(self):
+        solid = O.build_solid({'kind': 'BIPYRAMID', 'base': {'kind': 'REGULAR', 'n': 5, 'side': 3}, 'height': 2.0, 'id': 's1'})
+        pts = [p for _, p in solid['verts']]
+        self.assertEqual((len(pts), len(O.poly_edges(solid)), len(solid['faces'])), (7, 15, 10))
+        self.assertTrue(all(abs(p[2] - 2.0) < 1e-9 for p in pts[:5]))
+        self.assertAlmostEqual(pts[5][2], 4.0)
+        self.assertAlmostEqual(pts[6][2], 0.0)
+        self.assertEqual(O.face_names(solid), ['top%d' % i for i in range(5)] + ['bottom%d' % i for i in range(5)])
+        self.assertEqual(O.count_order(solid)[:6], [(0, 1), (1, 2), (2, 3), (3, 4), (0, 4), (0, 5)])
+        self.assertEqual(O.count_order(solid)[-5:], [(0, 6), (1, 6), (2, 6), (3, 6), (4, 6)])
+        self.assertRaises(ValueError, O.build_solid, {'kind': 'BIPYRAMID', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2, 'plane': 'XZ'}, 'height': 2, 'id': 's1'})
+
+    def test_references_and_face_names_follow_the_kind(self):
+        named = lambda solids: {key: ('x', (0.0, 0.0), (0.0, 0.0, 0.0)) for s in solids for i in range(len(s['verts'])) for key in O.vertex_keys(s, i)}
+        solids = [O.build_solid({'kind': 'BIPYRAMID', 'base': {'kind': 'REGULAR', 'n': 5, 'side': 3}, 'height': 2, 'names': '.......', 'id': 's1'})]
+        norm = O.make_norm(solids, named(solids))
+        self.assertEqual([norm(x) for x in ('#b4', '#apex', '#apex2', '#v6', '#v5')], ['s1.b4', 's1.apex', 's1.apex2', 's1.apex2', 's1.apex'])
+        for bad in ('#t0', '#b5', '#v7'): self.assertRaises(ValueError, norm, bad)
+        solids = [O.build_solid({'kind': 'REGULAR_POLYHEDRON', 'faces': 20, 'side': 2, 'names': '.' * 12, 'id': 's1'})]
+        norm = O.make_norm(solids, named(solids))
+        self.assertEqual([norm(x) for x in ('#v0', '#v11')], ['s1.v0', 's1.v11'])
+        for bad in ('#b0', '#t0', '#apex', '#apex2', '#v12'): self.assertRaises(ValueError, norm, bad)
+        self.assertEqual(O.face_names(self.regular(12)), ['f%d' % i for i in range(12)])
+        self.assertEqual(O.count_order(self.regular(8)), O.poly_edges(self.regular(8)))

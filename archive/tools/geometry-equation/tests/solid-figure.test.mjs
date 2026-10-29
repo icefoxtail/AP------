@@ -1216,3 +1216,117 @@ test('E28b: a cylinder net and a cone net leave out the circles that are not par
   const sector=textOf(coneSvg,'face-label-sector');
   await failingAudit(cone,coneSvg.replace(sector,sector.replace('data-tex="15\\pi\\,\\mathrm{cm}^2"','data-tex="16\\pi\\,\\mathrm{cm}^2"')),'SOLID_FACE_LABEL_VALUE_MISMATCH');
 });
+
+// --- E29: regular polyhedra (4, 8, 12, 20 faces) and bipyramids ---------------------------------------------------------------------------------------
+const regular=(faces,over={},solidOver={})=>figure({unit:'cm',solids:[{kind:'REGULAR_POLYHEDRON',faces,side:2,...solidOver}],...over});
+const bipyramid=(over={},solidOver={})=>figure({unit:'cm',solids:[{kind:'BIPYRAMID',base:{kind:'REGULAR',n:5,side:3},height:2.4,...solidOver}],...over});
+const distance=(a,b)=>Math.hypot(...a.map((x,i)=>x-b[i]));
+test('E29: each regular polyhedron has its vertices, edges and faces, every edge as long as `side`, three to five edges at a vertex, standing on the floor',()=>{
+  for(const [faces,V,E,sides,valence] of [[4,4,6,3,3],[8,6,12,3,4],[12,20,30,5,3],[20,12,30,3,5]]){
+    const solid=solveSolidFigure(regular(faces)).solids[0];
+    assert.equal(solid.kind,'REGULAR_POLYHEDRON');
+    assert.deepEqual([solid.vertices.length,solid.edges.length,solid.faces.length],[V,E,faces]);
+    assert.equal(V-E+faces,2);// Euler's formula
+    for(const [a,b] of solid.edges)assert.ok(Math.abs(distance(solid.vertices[a].p,solid.vertices[b].p)-2)<1e-9,`${faces} edge ${a}-${b}`);
+    assert.ok(solid.faces.every(f=>f.idx.length===sides));
+    for(let i=0;i<V;i++)assert.equal(solid.edges.filter(e=>e.includes(i)).length,valence);
+    assert.ok(Math.abs(Math.min(...solid.vertices.map(v=>v.p[2])))<1e-12);
+    // all vertices on one sphere about the centre of the figure
+    const c=solid.vertices.reduce((s,v)=>s.map((x,k)=>x+v.p[k]/V),[0,0,0]),radii=solid.vertices.map(v=>distance(v.p,c));
+    assert.ok(Math.max(...radii)-Math.min(...radii)<1e-9);
+    assert.deepEqual(solid.faces.map(f=>f.id),[...Array(faces).keys()].map(k=>'f'+k));
+    // the vertices are letters A, B, ... unless named; exact (unrounded) coordinates, so a length is written exactly
+    assert.deepEqual(solid.vertices.slice(0,3).map(v=>v.name),['A','B','C']);
+  }
+  const model=solveSolidFigure(regular(12,{dims:[{edge:['#v0','#v1']}]}));
+  assert.equal(model.dims[0].tex,'2\\,\\mathrm{cm}');
+  // the tetrahedron stands on a face, the icosahedron on a vertex, the octahedron on a vertex, the dodecahedron on a face
+  const flat=n=>solveSolidFigure(regular(n)).solids[0].vertices.filter(v=>v.p[2]<1e-9).length;
+  assert.deepEqual([4,8,12,20].map(flat),[3,1,5,1]);
+});
+test('E29: a bipyramid is two pyramids on one base: ring, upper apex, lower apex, faces top<i> and bottom<i>',()=>{
+  const solid=solveSolidFigure(bipyramid()).solids[0];
+  assert.deepEqual([solid.vertices.length,solid.edges.length,solid.faces.length],[7,15,10]);
+  assert.deepEqual(solid.faces.map(f=>f.id),['top0','top1','top2','top3','top4','bottom0','bottom1','bottom2','bottom3','bottom4']);
+  assert.ok(Math.abs(solid.vertices[5].p[2]-4.8)<1e-9&&Math.abs(solid.vertices[6].p[2])<1e-9&&solid.vertices.slice(0,5).every(v=>Math.abs(v.p[2]-2.4)<1e-9));
+  assert.deepEqual(countedEdges(solid).slice(0,6),[[0,1],[1,2],[2,3],[3,4],[0,4],[0,5]]);// the ring (closing edge last), then up to the upper apex
+  assert.deepEqual(countedEdges(solid).slice(-5),[[0,6],[1,6],[2,6],[3,6],[4,6]]);
+  // any convex base works; a rectangle gives the square-like octahedron shape
+  assert.equal(solveSolidFigure(bipyramid({},{base:{kind:'RECT',width:4,depth:3}})).solids[0].vertices.length,6);
+});
+test('E29: references and face highlights of the new solids',()=>{
+  const pent=bipyramid({segments:[{from:'#apex',to:'#apex2',style:'DASHED'}],dims:[{edge:['#b0','#b1'],label:'a'}]},{names:'.......'});
+  assert.deepEqual(solveSolidFigure(pent).segments.map(s=>[s.from,s.to]),[['s1.apex','s1.apex2']]);
+  assert.deepEqual(solveSolidFigure(bipyramid({dims:[{edge:['#b4','#v5'],label:'l'}]},{names:'.......'})).dims.map(d=>[d.from,d.to]),[['s1.b4','s1.apex']]);
+  assert.deepEqual(solveSolidFigure(regular(20,{segments:[{from:'#v0',to:'#v11'}],dims:[{edge:['#v0','#v1'],label:'a'}]},{names:'.'.repeat(12)})).segments.map(s=>[s.from,s.to]),[['s1.v0','s1.v11']]);
+  const bad=(over,expected,solidOver,build=regular)=>assert.throws(()=>solveSolidFigure(build===regular?regular(20,over,solidOver):bipyramid(over,solidOver)),code(expected),expected);
+  bad({segments:[{from:'#b0',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#b0',{names:'.'.repeat(12)});// a regular polyhedron has no ring
+  bad({segments:[{from:'#apex',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#apex',{names:'.'.repeat(12)});
+  bad({segments:[{from:'#v12',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#v12',{names:'.'.repeat(12)});
+  bad({segments:[{from:'#t0',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#t0',{names:'.......'},bipyramid);
+  bad({segments:[{from:'#b5',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#b5',{names:'.......'},bipyramid);
+  // faces are f0.. for a regular polyhedron (20 here), top<i> and bottom<i> for a bipyramid
+  assert.equal(solveSolidFigure(regular(20,{highlights:[{face:'f0'},{face:'f19',fill:'WARM'}]})).highlights.length,2);
+  bad({highlights:[{face:'f20'}]},'SOLID_HIGHLIGHT_FACE_UNKNOWN:f20');
+  bad({highlights:[{face:'bottom'}]},'SOLID_HIGHLIGHT_FACE_UNKNOWN:bottom');
+  assert.equal(solveSolidFigure(bipyramid({highlights:[{face:'top4'},{face:'bottom0'}]})).highlights.length,2);
+  bad({highlights:[{face:'side0'}]},'SOLID_HIGHLIGHT_FACE_UNKNOWN:side0',undefined,bipyramid);
+  bad({highlights:[{face:'top5'}]},'SOLID_HIGHLIGHT_FACE_UNKNOWN:top5',undefined,bipyramid);
+});
+test('E29: regular polyhedra and bipyramids are refused with explicit codes where the engine cannot draw them',()=>{
+  const bad=(solid,expected,over={})=>assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[solid],...over})),code(expected),expected);
+  bad({kind:'REGULAR_POLYHEDRON',faces:6,side:2},'SOLID_REGULAR_FACES_UNSUPPORTED:6');// a cube is a PRISM over a RECT base
+  bad({kind:'REGULAR_POLYHEDRON',faces:5,side:2},'SOLID_REGULAR_FACES_UNSUPPORTED:5');
+  bad({kind:'REGULAR_POLYHEDRON',faces:'8',side:2},'SOLID_REGULAR_FACES_UNSUPPORTED');
+  bad({kind:'REGULAR_POLYHEDRON',side:2},'SOLID_REGULAR_FACES_UNSUPPORTED');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8},'SOLID_PARAM_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:-1},'SOLID_PARAM_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:2,height:3},'SOLID_PARAM_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:2,cuts:[{through:[['AB','1/2'],['BC','1/2'],['CD','1/2']]}]},'SOLID_PARAM_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:2,names:'ABC'},'SOLID_NAMES_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:20,side:2,names:'.'.repeat(12),count:{edges:true}},'SOLID_COUNT_TOO_MANY:edges');// 30 edges, circled numbers go to 20
+  bad({kind:'REGULAR_POLYHEDRON',faces:20,side:2,names:'.'.repeat(12),count:{faces:true}},'SOLID_COUNT_FACES_UNSUPPORTED');
+  bad({kind:'REGULAR_POLYHEDRON',faces:20,side:2,count:{vertices:true}},'SOLID_COUNT_NAMES_CONFLICT');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:2,names:'......'},'SOLID_DIMS_INVALID',{dims:[{height:true,solid:'s1'}]});
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',net:{solid:{kind:'REGULAR_POLYHEDRON',faces:4,side:2},root:'f0',joins:[]}})),code('SOLID_NET_UNSUPPORTED:REGULAR_POLYHEDRON'));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',net:{solid:{kind:'BIPYRAMID',base:{kind:'RECT',width:2,depth:2},height:2},root:'top0',joins:[]}})),code('SOLID_NET_UNSUPPORTED:BIPYRAMID'));
+  bad({kind:'BIPYRAMID',base:{kind:'POLYGON',points:[[0,0],[4,0],[4,2],[2,2],[2,4],[0,4]]},height:2},'SOLID_BASE_NOT_CONVEX');
+  bad({kind:'BIPYRAMID',base:{kind:'POLYGON',plane:'XZ',points:[[0,0],[4,0],[2,3]]},height:2},'SOLID_BASE_PLANE_UNSUPPORTED');
+  bad({kind:'BIPYRAMID',base:{kind:'RECT',width:2,depth:2}},'SOLID_PARAM_INVALID');
+  bad({kind:'BIPYRAMID',base:{kind:'RECT',width:2,depth:2},height:2,apex:[1,1]},'SOLID_PARAM_INVALID');
+  bad({kind:'BIPYRAMID',height:2},'SOLID_BASE_INVALID');
+  bad({kind:'BIPYRAMID',base:{kind:'RECT',width:2,depth:2},height:2,names:'ABCDE'},'SOLID_NAMES_INVALID');
+  bad({kind:'BIPYRAMID',base:{kind:'REGULAR',n:7,side:2},height:2,names:'.........',count:{edges:true}},'SOLID_COUNT_TOO_MANY:edges');// 21 edges
+});
+test('E29: every regular polyhedron and a bipyramid compose, hidden edges dashed by the depth test, and the independent observer rebuilds each from the plan',async()=>{
+  const plans=[
+    regular(4,{highlights:[{face:'f0',fill:'WARM'}]},{names:'....',count:{vertices:true}}),
+    regular(8,{},{names:'......',count:{vertices:true}}),
+    regular(12,{highlights:[{face:'f0',fill:'WARM'},{face:'f1'}]},{names:'.'.repeat(20),count:{vertices:true}}),
+    regular(20,{highlights:[{face:'f0',fill:'WARM'},{face:'f1'},{face:'f2'},{face:'f3'},{face:'f4'}]},{names:'.'.repeat(12),count:{vertices:true}}),
+    regular(20,{dims:[{edge:['#v0','#v1'],label:'a'}]},{names:'.'.repeat(12)}),
+    bipyramid({highlights:[{face:'top0'},{face:'top1'},{face:'top2'},{face:'top3'},{face:'top4',fill:'WARM'}]},{names:'.......',count:{vertices:true,edges:true}}),
+    bipyramid({dims:[{edge:['#apex','#b0'],label:'l'}]},{base:{kind:'RECT',width:4,depth:3},height:2,names:'......'})
+  ];
+  const svgs=[];
+  for(const plan of plans){
+    const svg=await sphereSvg(plan);
+    svgs.push(svg);
+    assert.ok((svg.match(/data-role="edge"/g)??[]).length>=6);
+  }
+  // the icosahedron: the figure shows hidden edges dashed; tamper: one hidden edge drawn solid, a shaded face moved, a face shaded that the plan did not ask for
+  const ico=plans[3],svg=svgs[3];
+  assert.ok((svg.match(/data-vis="hidden"/g)??[]).length>=6);
+  const hidden=svg.match(/<line id="s1-edge-[^"]*" data-role="edge"[^>]*data-vis="hidden"[^>]*\/>/)[0];
+  await failingAudit(ico,svg.replace(hidden,hidden.replace(/ stroke-dasharray="[^"]*"/,'').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  const face=svg.match(/<polygon id="highlight-s1-f2"[^>]*\/>/)[0];
+  await failingAudit(ico,svg.replace(face,face.replace(/points="([\d.]+),([\d.]+)/,(all,x,y)=>`points="${Number(x)+9},${y}`)),'SOLID_HIGHLIGHT_FACE_VERTEX_OFF');
+  await failingAudit(ico,svg.replace(face,face.replace('data-face="f2"','data-face="f9"')),'SOLID_HIGHLIGHT_FACE');
+  // the figure against a plan for another solid
+  await failingAudit(regular(12,{},{names:'.'.repeat(20),count:{vertices:true}}),svg,'SOLID_');
+  // the observer counts the bipyramid's fifteen edges in the order of the plan (the ring, then up to the upper apex, then down to the lower one): a number moved away from its edge fails
+  const bip=plans[5],bipSvg=svgs[5];
+  assert.equal((bipSvg.match(/data-label-role="count-edge"/g)??[]).length,15);
+  const n1=textOf(bipSvg,'count-e-s1-1');
+  await failingAudit(bip,bipSvg.replace(n1,n1.replace(/translate\(([\d.]+) ([\d.]+)\)/,'translate(0 0)')),'SOLID_COUNT_');
+});
