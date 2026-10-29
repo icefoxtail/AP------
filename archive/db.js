@@ -1880,6 +1880,37 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
+      "file": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+      "school": "신흥중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-05",
+      "rangeStartUnit": "기본도형",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M1-06",
+      "rangeEndUnit": "평면도형의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-06",
+          "rangeEndUnit": "평면도형의 성질",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
       "school": "왕운중",
       "topic": "",
