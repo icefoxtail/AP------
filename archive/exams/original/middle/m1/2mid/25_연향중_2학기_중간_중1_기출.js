@@ -236,7 +236,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=-x가 원점을 지나 제2사분면과 제4사분면을 지나는 그림. 점 (-2,2)는 직선 위에 있고 점 (-2,-2)는 직선 밖에 있다.",
+    "solutionImageCaption": "y=-x의 그래프와 두 점 (-2,2), (-2,-2)의 위치",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -313,7 +317,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 관계 y=8/x의 그래프가 제1사분면과 제3사분면에 두 가지로 그려져 있고, 점 (4,2)를 지난다. x좌표가 -1인 점 A는 x=-1에서 그은 점선과 그래프가 만나는 곳에 있다.",
+    "solutionImageCaption": "y=8/x의 그래프와 x=-1에 대응하는 점 A",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -354,7 +362,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위에 A, Q, P, R, B가 차례로 놓여 있고, 선분 아래 치수선으로 AQ=10cm, QP=10cm, QB=30cm, AP=20cm, PB=20cm, AB=40cm를 보인 그림.",
+    "solutionImageCaption": "한 직선 위의 점 A, Q, P, R, B와 각 선분의 길이",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -394,7 +406,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로선, 세로선, 기울어진 직선이 한 점에서 만나는 그림. 가로선과 기울어진 직선이 이루는 27°의 맞꼭지각이 x이고, x와 y가 합하여 직각을 이룬다.",
+    "solutionImageCaption": "한 점에서 만나는 세 직선과 각 x, y",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -434,7 +450,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 평각 AOF 위에서 점 O에서 뻗은 반직선 OB, OC, OD, OE를 그린 그림. ∠AOB=40°, ∠BOC=3x, ∠COD=x, ∠DOE=y, ∠EOF=3y로 표시하고 ∠COE는 x+y에 해당하는 호로 묶어 보인다.",
+    "solutionImageCaption": "평각 AOF를 나누는 각 40°, 3x, x, y, 3y",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -475,7 +495,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: AD⊥AB, AB⊥BC인 사다리꼴 ABCD(AD=3cm, AB=2cm, BC=4cm)에서 AB를 빨간 굵은 선으로 강조해 점 A와 직선 BC 사이의 거리 2cm를 보이고, 점선으로 연장한 직선 CD가 직선 AB와 만나는 점을 나타낸 그림.",
+    "solutionImageCaption": "AB⊥BC, AD⊥AB인 사다리꼴과 직선 CD의 연장선이 직선 AB와 만나는 점",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -516,7 +540,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각기둥 ABCDE-HIJFG를 두 가지로 나타낸 그림이다. 왼쪽은 모서리 DI(빨강)와 만나지도 평행하지도 않은 모서리 AB, BC, EA, FG, GH, JF 6개를 굵게, 오른쪽은 AB와 평행한 모서리 FG(빨강)와 평행하지 않은 모서리 IJ(굵은 선)를 보여 준다.",
+    "solutionImageCaption": "DI와 꼬인 위치의 모서리는 6개이고, AB와 평행한 모서리는 FG이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -556,7 +584,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선이 이루는 세 교점 중 아래 왼쪽 교점의 ∠h를 기준으로, 위쪽 교점의 왼쪽 각 ∠b와 오른쪽 아래 교점의 아래쪽 각 ∠j를 호로 표시해 엇각의 위치를 보이는 그림.",
+    "solutionImageCaption": "∠h와 엇각 위치에 있는 ∠b와 ∠j",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -600,7 +632,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:b2cc37d022e573d0c8b92c49871189b38536f6eb8ea43095c0ec1af52b396334",
-    "difficultyEvidenceSha": "sha256:5644fa21369b2a03d40a392cc3bd3f01d1823ca1409608c4882b7af30107d7e3"
+    "difficultyEvidenceSha": "sha256:5644fa21369b2a03d40a392cc3bd3f01d1823ca1409608c4882b7af30107d7e3",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m과 두 직선이 지나가는 그림에서 50°의 엇각인 ∠a를 같은 이중 호로 표시하고, 110°와 같은 쪽 내각인 ∠b가 70°임을 보이는 그림.",
+    "solutionImageCaption": "50°와 ∠a는 엇각, 110°와 ∠b는 같은 쪽 내각",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -640,7 +676,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 점에서 두 직선에 평행한 점선 보조선을 그어 30°와 40°로 나누고, 위쪽 삼각형의 세 각 40°, 80°, 180°-x(바깥각 x)를 표시한 그림.",
+    "solutionImageCaption": "꺾인 점의 보조 평행선과 위 삼각형의 각 40°, 80°, 180°-x",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -680,7 +720,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠AOB와 같은 각 ∠EO'F를 옮겨 그리는 작도 그림. 호의 반지름이 같은 OC, OD, O'E, O'F에 눈금 한 개, 옮긴 현 CD와 EF에 눈금 두 개를 표시하고 ∠COD와 ∠EO'F를 같은 호로 나타내며 ㉠~㉤ 작도 호와 반직선을 보인다.",
+    "solutionImageCaption": "반지름 OC=OD=O'E=O'F와 옮긴 현 CD=EF, ∠COD=∠EO'F",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -794,7 +838,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 BC의 중점 M과 AM 위의 수선의 발 D, E를 나타낸 그림이다. BM=CM, 직각 D·E, 맞꼭지각 ∠BMD=∠CME 표시로 합동인 두 삼각형 BDM, CEM과 BD=CE=10cm, DM=EM=4cm, AE=10cm가 보이고 삼각형 ACE가 색칠되어 있다.",
+    "solutionImageCaption": "△BDM≡△CEM이므로 CE=10cm, EM=4cm이고 AE=10cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -830,7 +878,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 정비례 관계 y=5/4x의 그래프 위의 점 A(8,10)에서 x축에 내린 수선의 발 B(8,0)와 원점 O로 이루어진 직각삼각형 AOB를 색칠하고, 밑변 OB=8과 높이 AB=10을 표시한 좌표평면 그림이다.",
+    "solutionImageCaption": "삼각형 AOB는 밑변 OB=8, 높이 AB=10인 직각삼각형이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -901,7 +953,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 위쪽·아래쪽 변(점선) 사이에서 점 B에서 점 D까지의 접은 선이 위쪽 변과 66°를 이루고(∠ABC와 맞꼭지각 ∠DBE), 점 D에서 ∠BDE=58°, ∠EDF=56°이며 삼각형 DEF의 두 각 ∠DEF, ∠DFE에도 호가 표시된 그림이다.",
+    "solutionImageCaption": "∠BDF=114°에서 ∠EDF=56°이므로 삼각형 DEF의 나머지 두 각의 합을 구할 수 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -937,6 +993,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 8cm인 정사각형 ABCD와 두 대각선의 교점 O, 정사각형 OHIJ의 변이 BC, CD와 만나는 점 P, Q를 나타낸 그림이다. OC=OD, ∠PCO=∠QDO=45°, ∠POC=∠QOD 표시로 같은 색으로 칠한 삼각형 OPC와 OQD가 합동임을 보이고, 삼각형 OCQ는 연하게 칠했다.",
+    "solutionImageCaption": "△OPC≡△OQD이므로 사각형 OPCQ의 넓이는 △OCD의 넓이와 같다.",
+    "solutionImageSize": "medium"
   }
 ];
