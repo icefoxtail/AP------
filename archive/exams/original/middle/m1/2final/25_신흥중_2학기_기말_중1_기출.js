@@ -120,7 +120,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 반원에서 반지름 두 개가 같은 이등변삼각형을 찾고, 평행선으로 작은 중심각을 구한다.\n\n$OA=OD$는 같은 원의 반지름이므로 $\\triangle AOD$는 이등변삼각형이다.\n$\\angle DAO=36^\\circ$이므로 밑각 $\\angle ADO$도 $36^\\circ$이다.\n\n삼각형 내각의 합을 이용하면\n$\\angle AOD=180^\\circ-(36^\\circ+36^\\circ)=108^\\circ$이다.\n\n그림에서 $AD\\parallel OC$이고 $A,O,B$는 한 직선 위에 있으므로 평행선에서 생기는 각의 크기를 비교하면 $\\angle BOC=36^\\circ$이다.\n\n호 $AD$와 호 $BC$는 같은 원의 호이므로 길이의 비는 각각의 중심각의 비와 같다.\n$\\overset{\\frown}{BC}:24=36:108=1:3$이므로\n$\\overset{\\frown}{BC}=24\\div3=8\\rm\\,cm$이다.\n\n따라서 정답은 ②이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q3.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q3-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q3-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
@@ -130,9 +130,9 @@ window.questionBank = [
     "sourcePage": 1,
     "sourceQuestionNo": "3",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "평행선과 중심각: ∠AOD = 108°, ∠BOC = 36°, BC 호 = 24×36/108",
-    "solutionImageCaption": "8 cm"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 반원 O에서 AD∥OC이고 ∠DAO=∠ADO=36°, ∠AOD=108°, ∠BOC=36°를 표시하고, 호 AD=24cm와 호 BC를 굵게 보이며 두 부채꼴 AOD와 BOC를 색칠한 그림이다.",
+    "solutionImageCaption": "OA=OD이므로 ∠ADO=∠DAO=36°, ∠AOD=108°이고 AD∥OC에서 ∠BOC=36°이므로 호 AD : 호 BC = 108 : 36이다."
   },
   {
     "id": 4,
