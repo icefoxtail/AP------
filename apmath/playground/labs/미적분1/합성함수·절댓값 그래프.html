@@ -478,7 +478,7 @@
       p1: 0.0,                  // Mode 1: 수평이동 m / Mode 2: 접기선 t / Mode 3: g(x)=x-r 근 r / Mode 4,5: 속함수 꼭짓점 높이 c
       p2: 2.0,                  // Mode 2,5: 탐색 수평선 k
       dualView: false,          // 상하 동기화 뷰
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 46,
       offsetX: -15,
       offsetY: 15,
@@ -554,15 +554,15 @@
         answerBadge: () => `${tex("f'(0) = 0 \\implies m = 1, \\; g(0) = 2")}`,
         snap: { p1: 1.0, p2: 2.0, dualView: false },
         steps: [
-          "변환 전 원래 함수 y = f(x) (흰색 반투명 점선 가이드) 표시",
-          "절댓값 변환된 그래프 (|f(x)| 또는 f(|x|) 데칼코마니) 네온 실선 작도",
-          "꺾이는 경계점(f(x)=0 또는 x=0)에서의 첨점(⚡) vs 미분가능(✅) 판별"
+          "Step 1 · f(|x|)에서 x≥0의 f(x), x<0의 f(−x)를 나누어 오른쪽 그래프를 y축 대칭합니다.",
+          "Step 2 · x=0에서 우미분 f′(0)과 좌미분 −f′(0)을 계산해 맞춥니다.",
+          "Step 3 · f′(0)=3m²−3 조건과 m>0을 적용하고 g(0)=f(0)을 계산합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('g(x) = f(|x|) = \\begin{cases} f(x) & (x \\ge 0) \\\\ f(-x) & (x < 0) \\end{cases}')} 로 구간 분리<br/>
 ② ${tex('x = 0')} 에서 우미분계수 ${tex("g'_{+}(0) = f'(0)")}, 좌미분계수 ${tex("g'_{-}(0) = -f'(0)")}<br/>
 ③ 미분가능하려면 ${tex("f'(0) = -f'(0) \\implies f'(0) = 0")} 이어야 함<br/>
-④ ${tex("f'(x) = 3(x-m)^2 - 3")} 에 ${tex('x = 0')} 대입: ${tex('3m^2 - 3 = 0 \\implies m = 1')}...`,
+④ ${tex("f'(x)=3(x-m)^2-3")}이므로 ${tex("f'(0)=3m^2-3=0")}. 따라서 ${tex('m=\\pm1')}이고 양수 조건에서 ${tex('m=1')}입니다. 이때 ${tex('g(0)=f(0)=2')}입니다.`,
           warning: "⚠️ y = f(|x|) 는 x ≥ 0 부분만 남겨서 y축에 데칼코마니로 찍어내는 그래프입니다!"
         }),
         shortcut: () => ({
@@ -582,14 +582,14 @@
         answerBadge: () => `4개: ${tex('k = 2')} / 6개: ${tex('0 < k < 2')}`,
         snap: { p1: 0.0, p2: 2.0, dualView: false },
         steps: [
-          "원함수 f(x) = x³ - 3x 와 접기 기준선 y = t 표시",
-          "접어 올린 그래프 g(x) = |f(x) - t| (분홍색 네온 곡선) 작도",
-          "탐색 수평선 y = k 와의 실시간 교점(실근) 포착 및 개수 카운트"
+          "Step 1 · t=0에서 |x³−3x|=k를 x³−3x=k와 x³−3x=−k로 분리합니다.",
+          "Step 2 · f′=3(x²−1)의 극점과 두 극값을 이용해 k 높이의 교점 수를 셉니다.",
+          "Step 3 · k가 극값 높이에 닿을 때 중복해를 한 번만 세고 4개·6개 조건을 판정합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('t = 0')} 일 때 방정식 ${tex('|x^3 - 3x| = k')} 는 ${tex('x^3 - 3x = k')} 또는 ${tex('x^3 - 3x = -k')}<br/>
 ② 두 방정식의 실근의 개수의 합이 ${tex('4')}가 되려면 각 방정식이 중근 1개와 단근 1개씩(총 2개씩) 가져야 함<br/>
-③ 극댓값과 극솟값이 ${tex('\\pm 2')} 이므로 ${tex('k = 2')} 도출...`,
+③ ${tex('0<k<2')}에서는 두 수평선 ${tex('y=k')}와 ${tex('y=-k')}가 각각 삼차곡선과 3점에서 만나 총 6개입니다. ${tex('k=2')}이면 한 수평선이 극값에서 접해 2점, 다른 수평선은 2점이므로 총 4개입니다. ${tex('k>2')}이면 합계가 4개보다 작아집니다.`,
           warning: "⚠️ t가 변할 때마다 식을 ±k로 나누어 풀면 헷갈립니다! y=t를 새로운 바닥(0)으로 보고 접혀 올라온 봉우리 높이를 읽으세요!"
         }),
         shortcut: () => ({
@@ -609,16 +609,16 @@
         answerBadge: () => `${tex("g(2) = 0 \\implies r = 2, \\; h'(2) = 0")}`,
         snap: { p1: 2.0, p2: 0.0, dualView: true },
         steps: [
-          "상단: x = 2 에서 꺾인 첨점 함수 |x - 2| 와 일차함수 g(x) = x - r",
-          "하단 동기화: 곱함수 h(x) = |x - 2|(x - r) 의 실시간 그래프 및 좌·우접선",
-          "첨점 힐링 법칙 [ |f(x)|가 x=a에서 첨점일 때 |f(x)|g(x)가 미분가능 ⇔ g(a) = 0 ] 판서"
+          "Step 1 · x=2 기준으로 |x−2|의 부호를 나누고 h(x)=|x−2|(x−r)의 좌우식을 씁니다.",
+          "Step 2 · 양쪽에서 곱을 미분해 x=2의 좌우미분계수를 각각 계산합니다.",
+          "Step 3 · 두 미분계수를 같게 하는 r을 구하고 h′(2)가 일치하는지 확인합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('x \\ge 2')} 일 때 ${tex('h(x) = (x-2)(x-r) \\implies h\'_{+}(2) = 2 - r')}<br/>
 ② ${tex('x < 2')} 일 때 ${tex('h(x) = -(x-2)(x-r) \\implies h\'_{-}(2) = -(2 - r)')}<br/>
 ③ ${tex('x = 2')} 에서 미분가능하려면 좌미분계수 = 우미분계수여야 하므로:<br/>
 &nbsp;&nbsp;${tex('2 - r = -(2 - r) \\implies 2(2 - r) = 0 \\implies r = 2')}<br/>
-④ 이때 ${tex("h'(2) = 0")} 도출...`,
+④ ${tex('r=2')}일 때 두 일측 미분계수는 모두 0이므로 ${tex("h'(2)=0")}입니다.`,
           warning: "⚠️ 시험장에서 절댓값을 x ≥ a, x < a 로 나누어 곱의 미분법을 두 번 쓰면 시간이 낭비됩니다!"
         }),
         shortcut: () => ({
@@ -638,15 +638,15 @@
         answerBadge: () => `${tex("g'(x)=0")} (1개) + ${tex('g(x)=\\pm 1')} 관통 (4개) = 총 ${tex('5')}개`,
         snap: { p1: -2.0, p2: 0.0, dualView: true },
         steps: [
-          "상단 합성함수 y = f(g(x)) 의 극대·극소 ↔ 하단 속함수 y = g(x) 수직 동기화선",
-          "하단 속함수 위에 겉함수의 극값 위치 수평 기준선 u = -1, u = 1 표시",
-          "합성함수 극값 공식 [ ① 속함수 극값(g'=0) + ② 속함수가 겉함수 극값(u=±1) 관통 ] 판서"
+          "Step 1 · h(x)=f(g(x))에서 h′=f′(g(x))g′(x), g(x)=x²/2−2를 대입합니다.",
+          "Step 2 · g′=0과 겉함수 f′(u)=0인 u=±1의 원상 방정식을 각각 풉니다.",
+          "Step 3 · 후보 x마다 도함수 부호가 바뀌는지 보고 중복 없이 극값을 셉니다."
         ],
         textbook: () => ({
           steps: `① 실제로 식을 대입하여 6차함수 전개:<br/>
 &nbsp;&nbsp;${tex('h(x) = \\left(\\dfrac{1}{2}x^2 - 2\\right)^3 - 3\\left(\\dfrac{1}{2}x^2 - 2\\right)')}<br/>
 ② 연쇄법칙으로 미분: ${tex("h'(x) = 3(g(x)-1)(g(x)+1) \\cdot x = 0")}<br/>
-③ ${tex('x = 0')}, ${tex('\\dfrac{1}{2}x^2 - 2 = 1')}, ${tex('\\dfrac{1}{2}x^2 - 2 = -1')} 세 방정식의 실근을 각각 구하고 부호 변화 확인...`,
+③ 후보는 ${tex('x=0')} 및 ${tex('x=\\pm\\sqrt6,\\pm\\sqrt2')}입니다. 도함수 ${tex("h'(x)=3x(g(x)^2-1)")}의 인수는 각 후보에서 부호를 바꾸므로 모두 극값입니다. 서로 다른 후보는 총 5개입니다.`,
           warning: "⚠️ 속함수가 삼차·사차함수일 때는 대입해서 전개할 수 없습니다! 하단 속함수에 겉함수 극값 수평선을 긋는 기하학적 해법을 써야 합니다!"
         }),
         shortcut: () => ({
@@ -667,13 +667,14 @@
         answerBadge: () => `${tex('u = -\\sqrt{3}')}(0개) + ${tex('u = 0')}(2개) + ${tex('u = \\sqrt{3}')}(2개) = 총 ${tex('4')}개`,
         snap: { p1: -1.0, p2: 0.0, dualView: true },
         steps: [
-          "1단계(상단): 바깥 방정식 f(u) = k 의 실근 u = u₁, u₂, u₃ 탐색",
-          "2단계(하단): 안쪽 그래프 y = g(x) 위에 수평선 y = u₁, u₂, u₃ 자동 작도",
-          "각 수평선과 y = g(x) 가 만나는 교점(최종 실근 x) 개수 합산 판서"
+          "Step 1 · u=g(x)=x²/2−1로 놓고 바깥 방정식 u³−3u=0을 풉니다.",
+          "Step 2 · g의 치역 [−1,∞)와 각 수평선 u의 교점 개수를 비교합니다.",
+          "Step 3 · u=−√3,0,√3의 원상 개수를 더하고 서로 다른 해인지 확인합니다."
         ],
         textbook: () => ({
           steps: `① 합성함수 ${tex('y = f(g(x))')} 의 그래프를 직접 그리려고 시도하면 6차함수가 되어 매우 복잡함<br/>
-② 식에 직접 대입하여 6차방정식 ${tex('\\left(\\dfrac{1}{2}x^2 - 1\\right)^3 - 3\\left(\\dfrac{1}{2}x^2 - 1\\right) = 0')} 전개 후 인수분해...`,
+② 대신 ${tex('u=g(x)')}로 놓으면 ${tex('u^3-3u=u(u-\\sqrt3)(u+\\sqrt3)=0')}이므로 ${tex('u=-\\sqrt3,0,\\sqrt3')}입니다.<br/>
+③ ${tex('g(x)=\\frac12x^2-1\\ge-1')}이므로 ${tex('u=-\\sqrt3')}은 불가능합니다. ${tex('g(x)=0')}에서 ${tex('x=\\pm\\sqrt2')}, ${tex('g(x)=\\sqrt3')}에서 ${tex('x=\\pm\\sqrt{2(1+\\sqrt3)}')}를 얻어 서로 다른 실근은 4개입니다.`,
           warning: "⚠️ 합성방정식 f(g(x)) = k 가 나왔을 때 절대로 합성함수 그래프를 그리거나 식을 대입해서 풀지 마세요!"
         }),
         shortcut: () => ({
@@ -1345,6 +1346,13 @@
 
     function setMode(m) {
       state.mode = m;
+      state.steps = { 1: true, 2: false, 3: false };
+      // 새 문항으로 이동할 때 이전 문항의 해설 펼침 상태를 넘기지 않는다.
+      ['textbook', 'shortcut'].forEach((type) => {
+        document.getElementById(`accBody-${type}`).classList.add('hidden');
+        const icon = document.getElementById(`accIcon-${type}`);
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      });
       for (let i = 1; i <= 5; i++) {
         const tab = document.getElementById(`tab-${i}`);
         if (i === m) tab.classList.add('active');
@@ -1359,11 +1367,19 @@
       document.getElementById('examTag').innerHTML = `<i class="fa-solid fa-award"></i> ${data.tag}`;
       document.getElementById('examTarget').textContent = data.targetTime;
       document.getElementById('examQuestion').innerHTML = data.question();
-      document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+      document.getElementById('examAnswerBadge').innerHTML = '세 단계 풀이를 모두 확인하면 정답이 공개됩니다.';
 
       document.getElementById('stepLabel1').textContent = data.steps[0];
       document.getElementById('stepLabel2').textContent = data.steps[1];
       document.getElementById('stepLabel3').textContent = data.steps[2];
+      [1, 2, 3].forEach((s) => {
+        const btn = document.getElementById(`stepBtn${s}`);
+        const icon = document.getElementById(`stepIcon${s}`);
+        btn.classList.toggle('active', state.steps[s]);
+        icon.className = state.steps[s]
+          ? 'fa-solid fa-check text-emerald-400 text-xs'
+          : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
 
       const tb = data.textbook();
       const sc = data.shortcut();
@@ -1373,6 +1389,7 @@
       document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
 
       if (m === 1) setAbsType(2);
+      // 기준 도형은 발문 조건으로 맞추되, snapToProblem은 풀이 단계를 열지 않는다.
       snapToProblem();
     }
 
@@ -1380,8 +1397,6 @@
       state.autoPlay = false;
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
       document.getElementById('txtAutoPlay').textContent = '자동 실험';
-
-      unlockAllSteps();
 
       const target = examData[state.mode].snap;
       state.dualView = target.dualView;
@@ -1410,6 +1425,9 @@
 
     function toggleStep(s) {
       state.steps[s] = !state.steps[s];
+      document.getElementById('examAnswerBadge').innerHTML = Object.values(state.steps).every(Boolean)
+        ? examData[state.mode].answerBadge()
+        : '세 단계 풀이를 모두 확인하면 정답이 공개됩니다.';
       const btn = document.getElementById(`stepBtn${s}`);
       const icon = document.getElementById(`stepIcon${s}`);
       if (state.steps[s]) {
@@ -1428,6 +1446,7 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      document.getElementById('examAnswerBadge').innerHTML = examData[state.mode].answerBadge();
       render();
     }
 

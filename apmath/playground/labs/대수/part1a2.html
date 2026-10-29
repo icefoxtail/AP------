@@ -129,6 +129,18 @@ border-bottom: 3px solid #fbbf24;
 color: #ffffff;
 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 639px) {
+  body.w-screen { width: 100%; }
+  header > div:first-child { min-width: 0; gap: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+  header > div:first-child > div:first-child { min-width: 0; flex: 1 1 auto; gap: 0.5rem; }
+  header > div:first-child > div:first-child > div { min-width: 0; flex: 1 1 auto; }
+  header h1 { min-width: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: 0.88rem; line-height: 1.2; }
+  header > div:first-child > div:first-child > div > div:first-child > span:first-child { display: none; }
+  header > div:first-child > div:last-child { flex: 0 0 auto; gap: 0.25rem; }
+  header > div:first-child > div:last-child button { flex: 0 0 auto; white-space: nowrap; padding-left: 0.45rem; padding-right: 0.45rem; }
+  header > div:first-child > div:last-child button span { white-space: nowrap; }
+  #modeTabBar { min-width: 0; max-width: 100%; white-space: nowrap; overscroll-behavior-x: contain; }
+}
 </style>
 </head>
 <body class="flex flex-col h-screen w-screen overflow-hidden">
@@ -157,13 +169,13 @@ Code
       <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
       <span>칠판의 노란색 제어점을 드래그하여 지수·상용로그 불변량을 직접 확인하세요!</span>
     </div>
-    <button onclick="triggerTwinProblem()" class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-purple-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+    <button onclick="triggerTwinProblem()" aria-label="쌍둥이 변형 생성" title="쌍둥이 변형 생성" class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-purple-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
       <i class="fa-solid fa-dice"></i>
-      <span>쌍둥이 변형 생성</span>
+      <span>새 변형</span>
     </button>
-    <button onclick="snapToCondition()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+    <button onclick="snapToCondition()" aria-label="문제 조건 스냅" title="문제 조건 스냅" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
       <i class="fa-solid fa-bullseye"></i>
-      <span>문제 조건 스냅</span>
+      <span>조건 스냅</span>
     </button>
   </div>
 </div>
@@ -330,9 +342,9 @@ Code
           <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-400 text-slate-950">⚡ 10초 컷 실전 비기</span>
           <span id="secretTitle" class="text-xs font-extrabold text-amber-300">약수 매트릭스 · 소수부분 톱니파 · 가로 불변량</span>
         </div>
-        <i id="iconSecret" class="fa-solid fa-chevron-up text-xs text-amber-300 transition-transform"></i>
+      <i id="iconSecret" class="fa-solid fa-chevron-down text-xs text-amber-300 transition-transform"></i>
       </button>
-      <div id="contentSecret" class="px-3.5 pb-3 pt-1.5 text-xs leading-relaxed text-emerald-50 border-t border-amber-500/30 space-y-2">
+      <div id="contentSecret" class="hidden px-3.5 pb-3 pt-1.5 text-xs leading-relaxed text-emerald-50 border-t border-amber-500/30 space-y-2">
         <!-- Populated by JS -->
       </div>
     </div>
@@ -787,7 +799,7 @@ scenarios: [
 {
 chip: '기출 A (2^x + 2^(-x) = t ≥ 2 치환과 실근 개수)',
 source: '수능·평가원·내신 4점 준킬러',
-params: { lineT: 2.5 },
+params: { lineT: 2.0 },
 snapParams: { lineT: 2.0 },
 problem: '방정식 $(4^x + 4^{-x}) - 5(2^x + 2^{-x}) + 8 = 0$의 서로 다른 실근 $x$의 개수와 모든 실근의 합을 구하시오.',
 textbookTitle: '2^x + 2^(-x) = t 치환 후 이차방정식 풀이',
@@ -839,7 +851,7 @@ chip: '기출 A (|2^x - k| = t 합차공식 2^(x₁+x₂) = k²-t²)',
 source: '수능·평가원 4점 준킬러 필수',
 params: { asymK: 4, lineT: 2.0 },
 snapParams: { asymK: 4, lineT: 2.0 },
-problem: '함수 $y = |2^x - 4|$의 그래프와 직선 $y = 2$가 만나는 두 점의 $x$좌표를 $x_1, x_2$라 할 때, $2^{x_1 + x_2}$의 값과, 교점이 $2$개가 되도록 하는 모든 자연수 $t$의 합을 구하시오.',
+problem: '함수 $y = |2^x - 4|$의 그래프와 직선 $y = 2$가 만나는 두 점의 $x$좌표를 $x_1, x_2$라 하자. $2^{x_1+x_2}$의 값을 구하고, 직선 $y=t$가 그래프와 서로 다른 두 점에서 만나도록 하는 모든 자연수 $t$의 합을 구하시오.',
 textbookTitle: '구간별로 절댓값 부호 나누어 각각 풀이',
 textbookSteps: [
 '1) 왼쪽 날개에서 $-(2^{x_1} - 4) = 2 \\implies 2^{x_1} = 2$.',
@@ -932,6 +944,8 @@ return `
 }
 
 function selectMode(modeIdx, scenarioIdx = 0) {
+const changedQuestion = state.modeIdx !== modeIdx || state.scenarioIdx !== scenarioIdx;
+if (changedQuestion) closeSolutionAccordions();
 state.modeIdx = modeIdx;
 state.scenarioIdx = scenarioIdx;
 const mode = KILLER_MODES[modeIdx];
@@ -1040,6 +1054,15 @@ icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
 content.classList.add('hidden');
 icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
 }
+
+}
+
+function closeSolutionAccordions() {
+for (const which of ['textbook', 'secret']) {
+document.getElementById(which === 'textbook' ? 'contentTextbook' : 'contentSecret').classList.add('hidden');
+const icon = document.getElementById(which === 'textbook' ? 'iconTextbook' : 'iconSecret');
+icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+}
 }
 
 function toggleMutator(key) {
@@ -1068,9 +1091,6 @@ const target = scen.snapParams;
 const startParams = { ...state.params };
 const startTime = performance.now();
 const duration = 420;
-
-state.steps = { 1: true, 2: true, 3: true };
-updateStepButtonsUI(3);
 
 function animateSnap(now) {
 const t = Math.min(1, (now - startTime) / duration);
@@ -1162,6 +1182,7 @@ scen.problem = `**[🎲 쌍둥이 변형]** $|2^x - ${kVal}| = ${tVal}$의 두 �
 document.getElementById('problemTextBox').innerHTML = formatRichMath(scen.problem);
 syncSlidersFromParams();
 updateLiveHUDAndInvariants();
+closeSolutionAccordions();
 showToast('🎲 새로운 쌍둥이 숫자 변형 문제가 생성되었습니다!');
 }
 

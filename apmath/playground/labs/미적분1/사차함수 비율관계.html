@@ -291,7 +291,7 @@
 
           <!-- 핵심 정답 요약 & 원클릭 문제 조건 스냅 버튼 -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-            <div class="bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
+            <div id="answerBadgeWrap" class="hidden bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
               <span class="text-[11px] text-emerald-400 font-bold">실전 정답:</span>
               <span id="examAnswerBadge" class="text-xs font-extrabold text-amber-300"></span>
             </div>
@@ -368,9 +368,9 @@
                 <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">10초 컷</span>
                 <span class="text-xs font-extrabold text-amber-300">10초 컷 실전 비율·넓이 비기 (일타 강사 판서)</span>
               </div>
-              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs transition-transform"></i>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-down text-amber-300 text-xs transition-transform"></i>
             </button>
-            <div id="accBody-shortcut" class="p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
+            <div id="accBody-shortcut" class="hidden p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
               <div id="shortcutSteps" class="text-emerald-50 leading-loose space-y-1.5 bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/80 font-medium">
                 <!-- JS 렌더링 -->
               </div>
@@ -515,7 +515,7 @@
       y0: 2.0,                  // f(α) = y0 기준 높이
       kLine: 2.0,               // Mode 5 수평선 y = k 스캐너
       dualView: false,          // 상하 동기화 뷰
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 48,
       offsetX: -75,
       offsetY: -20,
@@ -624,12 +624,11 @@
           steps: `① 식을 전개하여 미분: ${tex('f(x) = \\dfrac{1}{4}x^4 - x^3 + 2')}<br/>
 ② 도함수 ${tex("f'(x) = x^3 - 3x^2 = x^2(x - 3) = 0")} 방정식 풀이<br/>
 ③ ${tex('x = 0')} 에서 중근(변곡점), ${tex('x = 3')} 에서 부호가 ${tex('(-)\\to(+)')}로 바뀌므로 극소점 ${tex('\\beta = 3')}<br/>
-④ ${tex('x = 3')} 을 다시 사차함수에 대입하여 통분 계산:<br/>
-&nbsp;&nbsp;${tex('f(3) = \\dfrac{27}{4}(3 - 4) + 2 = -\\dfrac{27}{4} + \\dfrac{8}{4} = -\\dfrac{19}{4}')}...`,
+④ ${tex('x=3')}을 대입하면 ${tex('f(3)=\\dfrac{27}{4}(3-4)+2=-\\dfrac{19}{4}')}이다. 도함수는 ${tex('x<3')}에서 ${tex('x=0')}을 제외하면 음수이고, ${tex('x>3')}에서 양수다. ${tex('x=0')}에서는 도함수가 0이지만 부호가 바뀌지 않으므로 극점이 아니며, ${tex('x=3')}이 극소점이다.`,
           warning: "⚠️ 식이 (x-α)³(x-q) 꼴로 주어졌는데 이를 다시 전개해서 미분하고 인수분해하면 시간을 크게 낭비합니다!"
         }),
         shortcut: () => ({
-          steps: `① 삼중근 접점 ${tex('\\alpha = 0')} 과 단일 교점 ${tex('q = 4')} 를 잇는 선분을 <strong>[3 : 1 내분]</strong>하는 점이 무조건 극소점!<br/>
+          steps: `① 이 문항의 형태는 ${tex('f(x)=a(x-\\alpha)^3(x-q)+c')}이다. 미분하면 ${tex('f\'(x)=a(x-\\alpha)^2(4x-\\alpha-3q)')}이므로 변곡접점 이외의 극점은 ${tex('x=(\\alpha+3q)/4')}에 있다. 여기서는 ${tex('a>0')}라 극소점이다.<br/>
 ② 따라서 미분 없이 1초 만에 극소점 <strong class="text-amber-300">${tex('\\beta = 3')}</strong>!<br/>
 ③ 한 칸 간격 ${tex('h = 1')} 이므로 극솟값 깊이 <strong class="text-sky-300">${tex('\\Delta y = 27|a|h^4 = \\dfrac{27}{4} = 6.75')}</strong>!<br/>
 &nbsp;&nbsp;따라서 극솟값은 ${tex('2 - 6.75 = -4.75 \\; (-19/4)')} 즉시 도출!`,
@@ -655,8 +654,7 @@
           steps: `① 극소점 ${tex('x = -1, 3')} 에서 접하므로 ${tex('f(x) - f(-1) = \\dfrac{1}{4}(x+1)^2(x-3)^2')}<br/>
 ② 대칭축 ${tex('x = 1')} 대입하여 극댓값과 극솟값의 차 계산:<br/>
 &nbsp;&nbsp;${tex('f(1) - f(-1) = \\dfrac{1}{4}(2)^2(-2)^2 = 4')}<br/>
-③ 극대 접선 ${tex('y = f(1)')} 과의 교점을 구하기 위해 사차방정식 전개 후 풀이:<br/>
-&nbsp;&nbsp;${tex('\\dfrac{1}{4}(x+1)^2(x-3)^2 = 4 \\implies (x-1)^2((x-1)^2 - 8) = 0 \\implies x = 1 \\pm 2\\sqrt{2}')}...`,
+③ ${tex('u=x-1')}로 두면 극댓값 접선과의 교점 방정식은 ${tex('\\dfrac14(u^2-4)^2=4')}이다. 이를 풀면 ${tex('u^2=0')} 또는 ${tex('u^2=8')}이다. ${tex('u=0')}은 접점 ${tex('x=1')}을 다시 얻는 중근이므로 제외하고, 새로 만나는 두 점은 ${tex('x=1\\pm2\\sqrt2')}이다.`,
           warning: "⚠️ 대칭 사차함수에서 극대 접선과의 교점을 구할 때마다 사차방정식을 세워 인수분해하면 시간이 오래 걸립니다!"
         }),
         shortcut: () => ({
@@ -686,7 +684,8 @@
 ② 사차다항식 전개: ${tex('\\dfrac{1}{4}(x^4 - 4x^3 - 2x^2 + 12x + 9)')}<br/>
 ③ 구간 ${tex('[-1, 3]')} 에서 정적분 계산:<br/>
 &nbsp;&nbsp;${tex('S = \\dfrac{1}{4}\\left[ \\dfrac{1}{5}x^5 - x^4 - \\dfrac{2}{3}x^3 + 6x^2 + 9x \\right]_{-1}^{3}')}<br/>
-④ 분모 15로 통분하여 ${tex('3^5 = 243')} 등을 계산...`,
+④ 더 간단히 ${tex('u=x-1')}로 치환하면 ${tex('f(x)+2=\\dfrac14(u^2-4)^2')}이고 적분 구간은 ${tex('[-2,2]')}이다.
+&nbsp;&nbsp;${tex('S=\\dfrac14\\int_{-2}^{2}(u^4-8u^2+16)du=\\dfrac14[2(32/5)-8(16/3)+64]=128/15')}이다.`,
           warning: "⚠️ 사차함수를 전개해서 5차식 부정적분에 위끝·아래끝을 대입하면 계산 실수 확률이 90%에 달합니다!"
         }),
         shortcut: () => ({
@@ -715,14 +714,14 @@
         textbook: () => ({
           steps: `① 도함수 ${tex("f'(x) = (x+1)(x-0.2)(x-3)")} 을 전개:<br/>
 &nbsp;&nbsp;${tex("f'(x) = x^3 - 2.2x^2 - 2.6x + 0.6")}<br/>
-② 부정적분 ${tex('f(x) = \\dfrac{1}{4}x^4 - \\dfrac{2.2}{3}x^3 - 1.3x^2 + 0.6x + C')} 구하기<br/>
-③ ${tex('x = -1')} 과 ${tex('x = 3')} 을 각각 대입하여 소수점 분수 계산으로 대소 비교...`,
+② 원시함수를 정확한 분수로 쓰면 ${tex('F(x)=x^4/4-11x^3/15-13x^2/10+3x/5+C')}이다.<br/>
+③ ${tex("f(3)-f(-1)=\\int_{-1}^{1/5}f'(x)dx+\\int_{1/5}^{3}f'(x)dx=S_1-S_2<0")}이므로 <strong class="text-amber-300">${tex('f(-1)>f(3)')}</strong>이다.`,
           warning: "⚠️ 도함수의 근이 주어졌을 때 부정적분을 구해 대입하면 시간 내에 절대 풀 수 없습니다!"
         }),
         shortcut: () => ({
           steps: `① ${tex('\\alpha = -1, \\; \\gamma = 0.2, \\; \\beta = 3')} 에서 왼쪽 간격은 ${tex('1.2')}, 오른쪽 간격은 ${tex('2.8')}!<br/>
-② 삼차 도함수의 오른쪽 구간의 폭이 훨씬 넓으므로 정적분 넓이 <strong class="text-sky-300">${tex('S_1 < S_2')}</strong>!<br/>
-③ 원함수는 ${tex('S_1')}만큼 올라갔다가 ${tex('S_2')}만큼 더 많이 내려오므로 계산 없이 즉시 <strong class="text-amber-300">${tex('f(-1) > f(3)')}</strong> (차이 ${tex('= S_2 - S_1')})!`,
+② 구간의 폭만으로 넓이를 비교할 수는 없다. 이 고정된 도함수의 원시함수로 계산하면 ${tex('S_1=612/625')}와 ${tex('S_2=17836/1875')}이어서 ${tex('S_1<S_2')}이다.<br/>
+③ ${tex("f(3)-f(-1)=\\int_{-1}^{1/5}f'(x)dx+\\int_{1/5}^{3}f'(x)dx=S_1-S_2<0")}이므로 <strong class="text-amber-300">${tex('f(-1)>f(3)')}</strong>이다.`,
           highlight: "💡 『사차함수 두 극솟값의 높이 차 = 삼차 도함수 두 날개 넓이의 차 (|S₁ - S₂|)』 — γ가 중점(λ=0.5)일 때만 두 극솟값이 같습니다!"
         })
       },
@@ -743,14 +742,15 @@
         textbook: () => ({
           steps: `① ${tex('g(x) = |f(x) - k|')} 가 ${tex('f(x) = k')} 인 교점 ${tex('x = c')} 에서 미분가능하려면<br/>
 &nbsp;&nbsp;우미분계수 ${tex("|f'(c)|")} 와 좌미분계수 ${tex("-|f'(c)|")} 가 같아야 하므로 ${tex("f'(c) = 0")} 이어야 함<br/>
-② 여러 개의 ${tex('k')} 값에 대해 ${tex('f(x) = k')} 의 실근 개수와 각 실근에서의 미분계수 ${tex("f'(c)")} 를 일일이 케이스 분류...`,
+② 주어진 함수는 ${tex('f(x)-2=\\dfrac14x^3(x-4)')}이다. ${tex('k=2')}에서는 ${tex('x=0')}이 삼중근이고 ${tex('x=4')}가 단순근이다. 삼중근에서는 ${tex('|f(x)-2|')}의 좌우 도함수가 모두 ${tex('0')}이어서 미분가능하지만, 단순근 ${tex('x=4')}에서는 기울기 부호가 뒤집혀 미분불가능하다.<br/>
+③ 극솟값은 ${tex('f(3)=-19/4')}이다. ${tex('k<-19/4')}에서는 교점이 없고, ${tex('k=-19/4')}에서는 극소점의 중근만 있어 첨점이 없으며, ${tex('-19/4<k<2')} 또는 ${tex('k>2')}에서는 서로 다른 두 단순근이 생겨 첨점이 두 개다. 따라서 조건을 만족하는 값은 ${tex('k=2')}뿐이다.`,
           warning: "⚠️ 수능 22번에서 '|f(x)-k|가 오직 한 점에서만 미분불가능하다'는 조건이 나오면 3초 만에 개형을 특정해야 합니다!"
         }),
         shortcut: () => ({
           steps: `① ${tex('|f(x) - k|')} 가 교점에서 꺾여 올라갈 때, <strong>단순 실근(${tex("f' \\ne 0")})이면 미분불가능(첨점)</strong>이고 <strong>삼중근(${tex("f' = 0")})이면 접혀 올라가도 미분가능</strong>!<br/>
-② 따라서 미분불가능한 점이 <strong>오직 1개</strong>이려면 사차함수는 무조건 <strong class="text-amber-300">삼중근 개형(3:1형)</strong>이어야 하고, 수평선 ${tex('y = k')}는 <strong class="text-purple-300">변곡접점 ${tex('A(0, 2)')}</strong>를 지나야 합니다!<br/>
-③ 즉 ${tex('k = 2')} 이고, 통과하는 나머지 교점 <strong class="text-rose-300">${tex('x = 4')} 에서만 유일한 첨점</strong> 발생!`,
-          highlight: "💡 『사차함수 |f(x)-k| 의 미분불가능 점이 1개 ⇔ 삼중근 사차함수 + 변곡접선 높이 k』 — 수능 22번 1초 번역기!"
+② 이 특정 함수에서는 ${tex('k=2')}일 때 ${tex('f(x)-k=\\dfrac14x^3(x-4)')}: 삼중근 ${tex('x=0')}의 절댓값은 미분가능하고 단순근 ${tex('x=4')}에서만 첨점이 생긴다.<br/>
+③ ${tex('f(3)=-19/4')}와 사차함수의 양끝이 위로 향하는 성질을 이용하면 다른 높이에서는 교점이 없거나 단순근이 2개(첨점 2개)다. 그러므로 유일한 값은 ${tex('k=2')}이다.`,
+          highlight: "이 결론은 이 문항의 특정 사차함수에 대한 것이다. 일반 사차함수에서는 수평선과의 교점 및 각 근의 중복도를 따로 확인한다."
         })
       }
     };
@@ -1727,6 +1727,23 @@
 
     function setMode(m) {
       state.mode = m;
+      state.steps = { 1: true, 2: false, 3: false };
+      [1, 2, 3].forEach((s) => {
+        const stepButton = document.getElementById(`stepBtn${s}`);
+        const stepIcon = document.getElementById(`stepIcon${s}`);
+        stepButton.classList.toggle('active', state.steps[s]);
+        stepIcon.className = state.steps[s]
+          ? 'fa-solid fa-check text-emerald-400 text-xs'
+          : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
+      const revealWrap = document.getElementById('answerBadgeWrap');
+      if (revealWrap) revealWrap.classList.add('hidden');
+      ['textbook', 'shortcut'].forEach((type) => {
+        const boardBody = document.getElementById(`accBody-${type}`);
+        const boardIcon = document.getElementById(`accIcon-${type}`);
+        boardBody.classList.add('hidden');
+        boardIcon.className = boardIcon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      });
       for (let i = 1; i <= 5; i++) {
         const tab = document.getElementById(`tab-${i}`);
         if (i === m) tab.classList.add('active');
@@ -1742,6 +1759,8 @@
       document.getElementById('examTarget').textContent = data.targetTime;
       document.getElementById('examQuestion').innerHTML = data.question();
       document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+      const answerWrap = document.getElementById('answerBadgeWrap');
+      if (answerWrap) answerWrap.classList.toggle('hidden', !state.steps[3]);
 
       document.getElementById('stepLabel1').textContent = data.steps[0];
       document.getElementById('stepLabel2').textContent = data.steps[1];
@@ -1762,7 +1781,6 @@
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
       document.getElementById('txtAutoPlay').textContent = '자동 실험';
 
-      unlockAllSteps();
 
       const target = examData[state.mode].snap;
       state.dualView = target.dualView;
@@ -1809,6 +1827,8 @@
         btn.classList.remove('active');
         icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
       }
+      const answerWrap = document.getElementById('answerBadgeWrap');
+      if (s === 3 && answerWrap) answerWrap.classList.toggle('hidden', !state.steps[3]);
       render();
     }
 
@@ -1818,6 +1838,8 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      const answerWrap = document.getElementById('answerBadgeWrap');
+      if (answerWrap) answerWrap.classList.remove('hidden');
       render();
     }
 

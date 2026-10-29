@@ -483,7 +483,7 @@
       p2: 2.0,                  // Mode 1: 함숫값 f(1) / Mode 2: 분자 계수 / Mode 3: 단차 크기 / Mode 4: - / Mode 5: 구간 오른쪽 b
       probeDist: 0.65,          // Mode 1 양방향 극한 탐침 거리
       dualView: false,          // 상하 동기화 뷰 (Mode 3, 4에서 자동 활성화)
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 48,
       offsetX: -25,
       offsetY: 15,
@@ -515,15 +515,15 @@
         answerBadge: () => `${tex('\\Delta h = 0, \\; k = 2')}`,
         snap: { p1: 0.0, p2: 2.0, dualView: false },
         steps: [
-          "양방향 수렴 탐침 (x → 1- 좌극한 L₋ = 2 & x → 1+ 우극한 L₊ = 2+Δh)",
-          "y축 극한 투영 가이드 및 함숫값 점 (1, f(1)) 표시",
-          "연속의 3대 조건 [ 좌극한 = 우극한 (극한 존재) = 함숫값 ] 실시간 판정"
+          "Step 1 · x=1에서 왼쪽 곡선 −½x²+5/2와 오른쪽 직선 x+1+Δh의 접근을 비교합니다.",
+          "Step 2 · 좌우 접근 높이를 맞추고, 경계의 닫힌 점 (1,k)를 극한 높이와 따로 봅니다.",
+          "Step 3 · 좌극한·우극한·f(1)의 세 높이가 일치하는지 칠판의 연속 판정선으로 확인합니다."
         ],
         textbook: () => ({
           steps: `① 좌극한 계산: ${tex('\\lim_{x \\to 1-} \\left(-\\dfrac{1}{2}x^2 + \\dfrac{5}{2}\\right) = 2')}<br/>
 ② 우극한 계산: ${tex('\\lim_{x \\to 1+} (x + 1 + \\Delta h) = 2 + \\Delta h')}<br/>
 ③ 극한값이 존재하려면 좌극한 = 우극한이어야 하므로 ${tex('2 = 2 + \\Delta h \\implies \\Delta h = 0')}<br/>
-④ 연속이려면 극한값 = 함숫값이어야 하므로 ${tex('k = f(1) = 2')}...`,
+④ 따라서 연속이 되려면 ${tex('k=f(1)=2')}여야 합니다. 극한의 존재 조건으로 정한 ${tex('\\Delta h=0')}와 함수값 조건을 함께 확인합니다.`,
           warning: "⚠️ 극한값은 존재하지만 함숫값과 다른 '구멍 뚫린 불연속'과 좌·우극한이 다른 '점프 불연속'을 그래프에서 명확히 구분해야 합니다!"
         }),
         shortcut: () => ({
@@ -543,16 +543,16 @@
         // f(x) = x^2 + 2x - 3 = (x-1)(x+3), g(x) = x - 1 => f'(1)/g'(1) = 4 / 1 = 4!
         snap: { p1: 1.8, p2: 2.0, dualView: false },
         steps: [
-          "공통 영점 A(1, 0)을 지나는 분자 곡선 y = f(x) 및 분모 직선 y = g(x)",
-          "점 A(1, 0)에서의 두 접선 작도 (기울기 f'(1)=4 vs g'(1)=1)",
-          "0/0 부정형 미분계수 비 공식 [ lim f(x)/g(x) = f'(a)/g'(a) ] 판서"
+          "Step 1 · 분모 x−1이 0으로 가는 점에서 분자 x²+ax−3의 값도 확인합니다.",
+          "Step 2 · 정한 a를 분자에 넣어 (x−1) 인수를 드러내고, x≠1에서 약분합니다.",
+          "Step 3 · 공통 영점 A(1,0) 근처에서 남은 인자의 극한을 두 곡선의 접선과 함께 확인합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('x \\to 1')} 일 때 분모 ${tex('x - 1 \\to 0')} 이고 극한값이 수렴하므로 분자도 ${tex('0')}으로 수렴:<br/>
 &nbsp;&nbsp;${tex('f(1) = 1 + a - 3 = 0 \\implies a = 2')}<br/>
 ② ${tex('a = 2')} 를 대입하여 분자를 인수분해:<br/>
 &nbsp;&nbsp;${tex('\\lim_{x \\to 1} \\dfrac{x^2 + 2x - 3}{x - 1} = \\lim_{x \\to 1} \\dfrac{(x - 1)(x + 3)}{x - 1}')}<br/>
-③ ${tex('(x - 1)')} 약분 후 ${tex('x = 1')} 대입하여 ${tex('b = 4')} 도출...`,
+③ 약분한 식은 ${tex('x+3')}이므로 ${tex('b=\\lim_{x\\to1}(x+3)=4')}입니다. ${tex('x=1')} 자체에서 나눈 것이 아니라 그 점에 가까운 ${tex('x\\ne1')}에서 약분했습니다.`,
           warning: "⚠️ 삼차·사차식이 분자·분모에 있을 때 조립제법으로 인수분해하고 약분하면 시간이 많이 걸립니다!"
         }),
         shortcut: () => ({
@@ -573,16 +573,16 @@
         answerBadge: () => `${tex('g(1) = 0 \\implies r = 1')} (영점 힐링)`,
         snap: { p1: 1.0, p2: 2.0, dualView: true },
         steps: [
-          "상단: x = 1 에서 점프 불연속인 함수 f(x)와 연속 일차함수 g(x) = x - r",
-          "하단 동기화: 두 함수를 곱한 함수 h(x) = f(x)g(x) 의 실시간 그래프",
-          "영점 힐링 법칙 [ f(x)가 x=a에서 불연속일 때 f(x)g(x)가 연속 ⇔ g(a) = 0 ] 판서"
+          "Step 1 · x=1에서 f의 좌측 높이와 우측값을 읽고, g(x)=x−r의 절편을 표시합니다.",
+          "Step 2 · 상단 f와 g를 곱한 하단 h의 좌극한·우극한·함숫값을 대조합니다.",
+          "Step 3 · g(1)이 만드는 곱의 경계조건을 풀고 h(1)까지 이어지는지 확인합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('x = 1')} 에서 ${tex('f(x)g(x)')}의 좌극한 계산:<br/>
 &nbsp;&nbsp;${tex('\\lim_{x \\to 1-} f(x)g(x) = 2 \\times (1 - r)')}<br/>
 ② ${tex('x = 1')} 에서 우극한 및 함숫값 계산:<br/>
 &nbsp;&nbsp;${tex('\\lim_{x \\to 1+} f(x)g(x) = f(1)g(1) = 0 \\times (1 - r) = 0')}<br/>
-③ 두 값이 같아야 하므로 ${tex('2(1 - r) = 0 \\implies r = 1')}...`,
+③ 두 극한이 같아야 하므로 ${tex('2(1-r)=0')}에서 ${tex('r=1')}입니다. 이때 경계값도 ${tex('h(1)=f(1)g(1)=0')}이므로 공통 극한과 같아 연속입니다.`,
           warning: "⚠️ 불연속점이 여러 개일 때 매번 좌극한·우극한·함숫값 표를 그려서 계산하면 시간을 크게 낭비합니다!"
         }),
         shortcut: () => ({
@@ -602,14 +602,14 @@
         answerBadge: () => `${tex('t = -2, \\; 2')} 에서 불연속 (${tex('g(-2) = g(2) = 2')})`,
         snap: { p1: 2.0, p2: 0.0, dualView: true },
         steps: [
-          "상단: 원함수 f(x) = x³ - 3x 와 스캔 수평선 y = t 의 실시간 교점 추적",
-          "하단 동기화: 가로축을 t로 하는 교점의 개수 함수 y = g(t) (1 → 2 → 3 → 2 → 1 계단 그래프)",
-          "새로운 함수 불연속 대원칙 [ 교점 개수 함수 g(t)의 불연속점 ⇔ 접하는 순간(극값) ] 판서"
+          "Step 1 · f(x)=x³−3x의 도함수와 극점 x=−1,1에서 수평선 경계 높이를 구합니다.",
+          "Step 2 · y=t를 극댓값·극솟값 바깥, 사이, 경계에 놓고 상단 교점을 하단 g(t)에 기록합니다.",
+          "Step 3 · t=±2에서 접점과 나머지 교점을 따로 세어 주변 구간의 계단 높이와 비교합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('f(x) = x^3 - 3x')} 를 미분하여 극댓값 ${tex('f(-1) = 2')}, 극솟값 ${tex('f(1) = -2')} 구하기<br/>
-② ${tex('t')}의 범위를 5개 구간(${tex('t < -2, \\; t = -2, \\; -2 < t < 2, \\; t = 2, \\; t > 2')})으로 나누어<br/>
-&nbsp;&nbsp;각각 교점의 개수 ${tex('g(t)')}의 식을 세우고 그래프를 그린 뒤 불연속점 조사...`,
+② ${tex('t<-2')}와 ${tex('t>2')}에서는 교점이 1개, ${tex('-2<t<2')}에서는 3개입니다. ${tex('t=2')}에서는 접점 ${tex('x=1')}과 다른 교점 1개, ${tex('t=-2')}에서도 접점과 다른 교점 1개라 각각 2개입니다.<br/>
+③ 경계에서 값이 2이고 양쪽에서는 1 또는 3이므로 ${tex('g(t)')}는 ${tex('t=\\pm2')}에서 불연속입니다.`,
           warning: "⚠️ 교점의 개수 함수나 실근의 개수 함수가 불연속이 되는 순간은 구간별로 식을 다 세울 필요 없이 '접하는 순간'만 찾으면 끝납니다!"
         }),
         shortcut: () => ({
@@ -629,9 +629,9 @@
         answerBadge: () => `${tex('f(1) = -1.5 < 0, \\; f(2) = 0.5 > 0 \\implies f(1)f(2) < 0')} (존재)`,
         snap: { p1: 1.0, p2: 2.0, dualView: false },
         steps: [
-          "양 끝점 A(a, f(a)), B(b, f(b)) 의 함숫값 부호(+ / -) 수직 바 표시",
-          "구간 (a, b) 내부의 실제 실근 c (f(c) = 0) 레이더 포착 하이라이트",
-          "사잇값 정리 판정식 [ 연속함수 & f(a)·f(b) < 0 ⇒ (a, b)에 실근 존재 ] 판서"
+          "Step 1 · 다항함수 f(x)=½x³−3/2x−1/2가 닫힌구간 [1,2]에서 연속임을 확인합니다.",
+          "Step 2 · f(1), f(2)의 정확한 값을 계산해 0이 양 끝값 사이인지 부호선으로 표시합니다.",
+          "Step 3 · 사잇값 정리를 적용해 c∈(1,2)의 존재를 말하고, 해의 개수와 구별합니다."
         ],
         textbook: () => ({
           steps: `① 다항함수 ${tex('f(x)')}는 닫힌구간 ${tex('[1, 2]')}에서 연속이다.<br/>
@@ -1437,6 +1437,13 @@
 
     function setMode(m) {
       state.mode = m;
+      state.steps = { 1: true, 2: false, 3: false };
+      // 새 문항으로 이동할 때 이전 문항의 해설 펼침 상태를 넘기지 않는다.
+      ['textbook', 'shortcut'].forEach((type) => {
+        document.getElementById(`accBody-${type}`).classList.add('hidden');
+        const icon = document.getElementById(`accIcon-${type}`);
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      });
       for (let i = 1; i <= 5; i++) {
         const tab = document.getElementById(`tab-${i}`);
         if (i === m) tab.classList.add('active');
@@ -1451,11 +1458,19 @@
       document.getElementById('examTag').innerHTML = `<i class="fa-solid fa-award"></i> ${data.tag}`;
       document.getElementById('examTarget').textContent = data.targetTime;
       document.getElementById('examQuestion').innerHTML = data.question();
-      document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+      document.getElementById('examAnswerBadge').innerHTML = '세 단계 풀이를 모두 확인하면 정답이 공개됩니다.';
 
       document.getElementById('stepLabel1').textContent = data.steps[0];
       document.getElementById('stepLabel2').textContent = data.steps[1];
       document.getElementById('stepLabel3').textContent = data.steps[2];
+      [1, 2, 3].forEach((s) => {
+        const btn = document.getElementById(`stepBtn${s}`);
+        const icon = document.getElementById(`stepIcon${s}`);
+        btn.classList.toggle('active', state.steps[s]);
+        icon.className = state.steps[s]
+          ? 'fa-solid fa-check text-emerald-400 text-xs'
+          : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
 
       const tb = data.textbook();
       const sc = data.shortcut();
@@ -1464,6 +1479,7 @@
       document.getElementById('shortcutSteps').innerHTML = sc.steps;
       document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
 
+      // 기준 도형은 발문 조건으로 맞추되, snapToProblem은 풀이 단계를 열지 않는다.
       snapToProblem();
     }
 
@@ -1471,8 +1487,6 @@
       state.autoPlay = false;
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
       document.getElementById('txtAutoPlay').textContent = '자동 실험';
-
-      unlockAllSteps();
 
       const target = examData[state.mode].snap;
       state.dualView = target.dualView;
@@ -1501,6 +1515,9 @@
 
     function toggleStep(s) {
       state.steps[s] = !state.steps[s];
+      document.getElementById('examAnswerBadge').innerHTML = Object.values(state.steps).every(Boolean)
+        ? examData[state.mode].answerBadge()
+        : '세 단계 풀이를 모두 확인하면 정답이 공개됩니다.';
       const btn = document.getElementById(`stepBtn${s}`);
       const icon = document.getElementById(`stepIcon${s}`);
       if (state.steps[s]) {
@@ -1519,6 +1536,7 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      document.getElementById('examAnswerBadge').innerHTML = examData[state.mode].answerBadge();
       render();
     }
 

@@ -564,7 +564,7 @@
       beta: 3,
       gamma: 5,
 
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 46,
       offsetX: -20,
       offsetY: 25,
@@ -710,15 +710,16 @@
           steps: `① 시점을 ${tex('A')}로 통일: ${tex('\\overrightarrow{PB} = \\overrightarrow{AB} - \\overrightarrow{AP}, \\; \\overrightarrow{PC} = \\overrightarrow{AC} - \\overrightarrow{AP}')} 대입<br/>
 ② ${tex('-2\\overrightarrow{AP} + 3(\\overrightarrow{AB} - \\overrightarrow{AP}) + 5(\\overrightarrow{AC} - \\overrightarrow{AP}) = \\overrightarrow{0}')}<br/>
 ③ 정리하면 ${tex('10\\overrightarrow{AP} = 3\\overrightarrow{AB} + 5\\overrightarrow{AC} = 5\\left(\\dfrac{3\\overrightarrow{AB}}{5}\\right) + 5\\overrightarrow{AC}')}<br/>
-④ 내분점 ${tex('D')}를 잡고 밑변의 길이 비를 역추적하여 각 삼각형 넓이 계산...`,
-          warning: "⚠️ 매번 시점을 A로 통일하고 내분점을 두 번에 걸쳐 유도하면 헷갈리고 부호 실수가 나오기 쉽습니다!"
+④ ${tex('D')}를 ${tex('AD:DB=3:2')}인 점으로 잡으면 ${tex('\\overrightarrow{PD}=(2\\overrightarrow{PA}+3\\overrightarrow{PB})/5')}이므로 원래 식에서 ${tex('\\overrightarrow{PD}+\\overrightarrow{PC}=0')}. 따라서 ${tex('P')}는 ${tex('CD')}의 중점이다.<br/>
+⑤ 위치벡터로 정리하면 ${tex('OP=(2OA+3OB+5OC)/10')}. 삼각형의 넓이는 한 꼭짓점의 위치에 대해 선형이므로 ${tex('S_{PBC}/S_{ABC}=2/10')}, 같은 방식으로 나머지는 ${tex('3/10,5/10')}; 따라서 맞은편 넓이비는 ${tex('2:3:5')}. 세 부분 넓이 합이 ${tex('40')}이므로 ${tex('S_{PAB}=40\\times5/(2+3+5)=20')}. 양의 계수와 비퇴화 삼각형 조건이 필요하다.`,
+          warning: "넓이비 공식은 점이 삼각형 내부에 있고 삼각형 넓이가 양수일 때 적용한다."
         }),
         shortcut: () => ({
           steps: `① <strong class="text-amber-300">${tex('\\alpha\\overrightarrow{PA} + \\beta\\overrightarrow{PB} + \\gamma\\overrightarrow{PC} = \\overrightarrow{0}')}</strong> 꼴이 나오면 각 꼭짓점 마주보는 삼각형의 넓이 비는 계수 비와 완벽히 일치!<br/>
 ② <strong class="text-sky-300">${tex('\\triangle PBC(\\text{A 맞은편})')}</strong> : <strong class="text-pink-300">${tex('\\triangle PCA(\\text{B 맞은편})')}</strong> : <strong class="text-emerald-300">${tex('\\triangle PAB(\\text{C 맞은편})')}</strong><br/>
 &nbsp;&nbsp;<strong class="text-amber-300">${tex('= \\alpha : \\beta : \\gamma = 2 : 3 : 5')}</strong>!<br/>
 ③ 따라서 ${tex('\\triangle PAB = 40 \\times \\dfrac{5}{2 + 3 + 5} = 20')} (5초 암산 끝!)`,
-          highlight: "💡 『αPA + βPB + γPC = 0  ⇔  마주보는 넓이 비 ΔPBC : ΔPCA : ΔPAB = α : β : γ』 (특히 1:1:1이면 무게중심 G!)"
+          highlight: "세 계수가 양수이고 ABC가 퇴화하지 않을 때, P는 내부점이며 맞은편 넓이비가 α:β:γ이다. 계수가 음수이면 부호와 외부 영역을 따로 확인한다."
         })
       }
     };
@@ -1406,8 +1407,6 @@
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
       document.getElementById('txtAutoPlay').textContent = '자동 회전';
 
-      unlockAllSteps();
-
       const snap = examData[state.mode].snap;
       state.snapAnim.active = true;
       state.snapAnim.progress = 0;
@@ -1441,6 +1440,7 @@
       if (isHidden) {
         body.classList.remove('hidden');
         icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+        setAnswerRevealed(true);
       } else {
         body.classList.add('hidden');
         icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
@@ -1458,6 +1458,7 @@
         btn.classList.remove('active');
         icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
       }
+      if (s === 3 && state.steps[s]) setAnswerRevealed(true);
       render();
     }
 
@@ -1467,6 +1468,7 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      setAnswerRevealed(true);
       render();
     }
 
@@ -2055,6 +2057,7 @@
     }
     function setSubType(id){
       if(!INFO[id])return;state.subType=id;state.mode=Number(id[0]);state.activePartIdx=null;
+      resetLearningReveal();
       for(let i=1;i<=4;i++)document.getElementById('tab-'+i).classList.toggle('active',state.mode===i);
       configureSceneUI();snapToProblem(0);
     }
@@ -2180,6 +2183,28 @@
       updateExtraControls();updateDynamicExam();
     }
     function setMode(m){initExt();if(!SUBS[m])return;setSubType(SUBS[m][0]);}
+    function syncStepButtons(){
+      [1,2,3].forEach(s=>{
+        const on=!!state.steps[s],btn=document.getElementById(`stepBtn${s}`),icon=document.getElementById(`stepIcon${s}`);
+        if(btn)btn.classList.toggle('active',on);
+        if(icon)icon.className=on?'fa-solid fa-check text-emerald-400 text-xs':'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
+    }
+    function setAnswerRevealed(show){
+      const badge=document.getElementById('examAnswerBadge');
+      if(badge){badge.classList.toggle('hidden',!show);badge.setAttribute('aria-hidden',String(!show));if(badge.parentElement)badge.parentElement.classList.toggle('hidden',!show);}
+    }
+    function closeSolutionAccordions(){
+      ['textbook','shortcut'].forEach(type=>{
+        const body=document.getElementById(`accBody-${type}`),icon=document.getElementById(`accIcon-${type}`);
+        if(body)body.classList.add('hidden');
+        if(icon)icon.className=icon.className.replace('fa-chevron-up','fa-chevron-down');
+      });
+    }
+    function resetLearningReveal(){
+      state.steps={1:true,2:false,3:false};
+      syncStepButtons();setAnswerRevealed(false);closeSolutionAccordions();
+    }
     function snapToProblem(index=0){
       initExt();state.autoPlay=false;state.snapAnim.active=false;
       document.getElementById('iconAutoPlay').className='fa-solid fa-play';
@@ -2192,7 +2217,7 @@
         state.snapAnim={active:Math.abs(delta)>.0001,progress:0,start:{theta3:initialAngle},target:{theta3:initialAngle+delta}};
         if(state.snapAnim.active)state.theta3=initialAngle;
       }
-      unlockAllSteps();configureSceneUI();fitScene(true);render();
+      configureSceneUI();fitScene(true);render();
     }
     function toggleGrid(){state.showGrid=!state.showGrid;document.getElementById('btnGrid').classList.toggle('grid-on',state.showGrid);render();}
     function resetView(){state.userZoomed=false;fitScene(true);render();}

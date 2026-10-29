@@ -11,12 +11,30 @@
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <style>
     * { box-sizing: border-box; font-family: 'Pretendard', sans-serif; user-select: none; }
-    body { margin: 0; background: linear-gradient(135deg, #07130e 0%, #0f261d 50%, #163329 100%); color: #ecfdf5; height: 100vh; width: 100vw; overflow: hidden; }
+    html, body { min-width: 0; max-width: 100%; }
+    body.w-screen { width: 100%; }
+    body { margin: 0; background: linear-gradient(135deg, #07130e 0%, #0f261d 50%, #163329 100%); color: #ecfdf5; height: 100vh; width: 100%; overflow: hidden; }
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-thumb { background: rgba(52, 211, 153, 0.35); border-radius: 999px; }
     .chalk-bg { background-color: #0b1d16; background-image: radial-gradient(circle at 25% 25%, rgba(52, 211, 153, 0.045) 0%, transparent 50%); }
     .tab-btn-active { background: linear-gradient(180deg, rgba(52, 211, 153, 0.24) 0%, rgba(16, 40, 31, 0.95) 100%); border-bottom: 3px solid #fbbf24; color: #fff; }
     .glow-gold { box-shadow: 0 0 15px rgba(251, 191, 36, 0.28); }
+    main, main > section, main > aside { min-width: 0; }
+    main > aside { overflow-x: hidden; }
+    #hudEquationBox { max-width: 100%; min-width: 0; overflow-x: auto; overflow-y: hidden; }
+    #problemTextBox, #stepDescBox, #contentTextbook, #contentSecret { min-width: 0; overflow-wrap: anywhere; }
+    #problemTextBox .katex-display, #stepDescBox .katex-display,
+    #contentTextbook .katex-display, #contentSecret .katex-display {
+      max-width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 2px;
+    }
+    @media (max-width: 639px) {
+      header > div:first-child { min-width: 0; flex-wrap: wrap; row-gap: 8px; }
+      header h1 { min-width: 0; flex: 1 1 140px; }
+      header > div:first-child > button { flex: 0 0 auto; }
+      header > div:first-child > div { min-width: 0; flex: 1 1 100%; }
+      section > div.absolute.top-3.left-3 { max-width: calc(100% - 24px); }
+      #hudEquationBox { white-space: nowrap; }
+    }
     input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; background: rgba(255,255,255,0.12); border-radius: 999px; }
     input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #34d399; border: 2px solid #fff; cursor: pointer; }
   </style>
@@ -59,7 +77,7 @@
       <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
         <div class="flex items-center justify-between mb-2">
           <span class="text-xs font-extrabold text-amber-300"><i class="fa-solid fa-file-signature mr-1"></i>실전 대표 기출 문항</span>
-          <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/50">오차 0.000% 검증</span>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/50">조건과 그래프 탐구</span>
         </div>
         <div id="problemTextBox" class="text-[13px] leading-relaxed text-emerald-50 bg-[#091812]/90 border border-emerald-800/60 rounded-lg p-3 mb-2.5"></div>
         <button onclick="snapToCondition()" class="w-full py-2 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold text-xs shadow">🎯 문제 조건 원클릭 스냅</button>

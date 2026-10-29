@@ -482,7 +482,7 @@
       param1: 1.0,              // Mode 1,3,4,5: δ (극값 간격 제곱), Mode 2: λ (가운데 근 내분비 0~1)
       param2: 0.0,              // Mode 1,2,3: 적분상수 C(수직이동), Mode 4: g'(x)=k 높이, Mode 5: 아래끝 a
       showSignChart: true,      // 중앙 실시간 증감표 표시 여부
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 46,
       offsetX: -35,
       offsetY: 0,
@@ -597,9 +597,9 @@
         answerBadge: () => `단근일 때 극값 차 ${tex('= 4')} / 중근일 때 극값 없음`,
         snap: { p1: 1.0, p2: 0.0 },
         steps: [
-          "하단 도함수 영점(f'=0) ↔ 상단 원함수 극대·극소·변곡점 수직 동기화선",
-          "도함수 부호(+ / -) 영역 컬러 셰이딩 및 정적분 넓이 표시",
-          "칠판 중앙 실시간 증감표 바 (f' 부호 → f 증가↗ · 감소↘) 오버레이"
+          "Step 1 · f′(x)=3x(x−2)와 f′(x)=3(x−1)²의 영점 및 중복도를 표시합니다.",
+          "Step 2 · 각 영점 양쪽에서 f′의 부호를 읽어 f의 증가·감소와 극값을 연결합니다.",
+          "Step 3 · f′=3x(x−2)와 x축 사이 넓이로 f(0)과 f(2)의 높이 차를 비교합니다."
         ],
         textbook: () => ({
           steps: `① ${tex("f'(x) = 3x(x - 2) = 0")} 에서 ${tex('x = 0, 2')} 구하기<br/>
@@ -624,9 +624,9 @@
         answerBadge: () => `${tex('\\gamma = -1')} (극소 ${tex('x=3')}) 또는 ${tex('\\gamma = 3')} (극소 ${tex('x=-1')})`,
         snap: { p1: 0.0, p2: 0.0 },
         steps: [
-          "하단 삼차 도함수 세 실근(α, γ, β) ↔ 상단 사차 원함수 특징점 수직 동기화선",
-          "도함수 부호(- / + / - / +) 변화 및 중근 시 부호 불변(- / 0 / - / +) 시각화",
-          "실시간 사차함수 증감표 바 (↘ 변곡 ↘ 극소 ↗) 오버레이"
+          "Step 1 · f′(x)=a(x+1)(x−γ)(x−3)의 근 −1,γ,3과 허용 범위를 표시합니다.",
+          "Step 2 · γ가 내부에 있을 때와 양 끝 근과 겹칠 때 도함수 부호 변화를 비교합니다.",
+          "Step 3 · 극대가 사라지는 경계에서 남은 단순근의 위치를 원함수의 극소점으로 읽습니다."
         ],
         textbook: () => ({
           steps: `① 사차함수(${tex('a > 0')})가 극댓값을 가지려면 도함수 ${tex("f'(x) = 0")} 이 서로 다른 세 실근을 가져야 함<br/>
@@ -653,9 +653,9 @@
         // param2 = 0 이면 C = 2 (극대 2, 극소 -2 -> 세 실근!)
         snap: { p1: 1.0, p2: 0.0 },
         steps: [
-          "극대점 A(0, f(0)) 및 극소점 B(2, f(2))에서 x축까지의 부호 거리 표시",
-          "방정식 f(x) = 0 의 실근(x축과의 교점) 실시간 추적 하이라이트",
-          "극값 부호 곱 판정식 [ f(극대) · f(극소) < 0 ⇔ 서로 다른 세 실근 ] 판서"
+          "Step 1 · F(x)=x³−3x²+C의 도함수로 극대 x=0, 극소 x=2를 찾습니다.",
+          "Step 2 · 두 극값 F(0),F(2)를 계산하고 삼차함수의 양끝 방향과 함께 x축에 표시합니다.",
+          "Step 3 · 극값 사이에서 세 번 만나는 부등식과 극값에 접하는 경계 C를 구별합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('f(x) = x^3 - 3x^2 + C')} 로 두고 미분: ${tex("f'(x) = 3x(x - 2) = 0")}<br/>
@@ -682,9 +682,9 @@
         answerBadge: () => `${tex('k = -3')}, 차함수 ${tex('h(x)')}의 극값은 ${tex('0')}개 (단조증가)`,
         snap: { p1: 1.0, p2: -3.0 },
         steps: [
-          "하단 f'(x) 포물선과 직선 g'(x) = k 의 교점 ↔ 상단 차함수 h(x) 수직 동기화선",
-          "차함수의 도함수 h'(x) = f'(x) - g'(x) 의 부호(+ / -) 영역 표시",
-          "교차(관통) = 차함수 극값 vs 접함(k=-3) = 차함수 변곡점 판서"
+          "Step 1 · h=f−g에서 h′=f′−g′를 세우고 포물선 f′와 수평선 g′=k의 상대 위치를 봅니다.",
+          "Step 2 · 두 그래프가 한 점에서 접하는 꼭짓점 높이를 k 조건으로 연결합니다.",
+          "Step 3 · 접점 양쪽에서 h′ 부호가 바뀌는지 살펴 h의 극값 개수를 판단합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('h(x) = f(x) - g(x)')} 로 두면 ${tex("h'(x) = f'(x) - g'(x) = 3(x-1)^2 - 3 - k")}<br/>
@@ -711,9 +711,9 @@
         // 극솟값 g(2) = 0 이 되려면 g(a) = 0 에서 a = 2 이거나, 삼차함수 1:1:1 비율에 의해 다시 만나는 교점 a = -1!
         snap: { p1: 1.0, p2: -1.0 },
         steps: [
-          "하단 피적분함수 f(x) = g'(x) 의 영점(x=0, 2) ↔ 상단 g(x) 극대·극소 수직 동기화",
-          "아래끝 x = a 에서 함숫값 g(a) = 0 (상단 그래프의 x절편 고정핀) 표시",
-          "삼차함수 비율관계(1:1:1)로 g(2) = 0 이 되는 또 다른 아래끝 a = -1 도출"
+          "Step 1 · g(x)=∫ₐˣ3t(t−2)dt에서 g′(x)=3x(x−2), g(a)=0을 표시합니다.",
+          "Step 2 · x=0,2에서 피적분함수의 부호를 나누어 g의 극대·극소 위치를 찾습니다.",
+          "Step 3 · g(2)=0 조건을 ∫ₐ²3t(t−2)dt=0으로 바꾸어 아래끝 a를 구합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('g(x) = \\displaystyle\\int_{a}^{x} (3t^2 - 6t)\\,dt = \\left[ t^3 - 3t^2 \\right]_{a}^{x} = x^3 - 3x^2 - (a^3 - 3a^2)')}<br/>
@@ -724,7 +724,7 @@
           warning: "⚠️ 정적분으로 정의된 함수 g(x) = ∫_a^x f(t)dt 가 나오면 적분 계산을 하지 말고 【 ① g(a)=0 (x축 핀 꽂기), ② g'(x)=f(x) (개형 그리기) 】로 풀어야 합니다!"
         }),
         shortcut: () => ({
-          steps: `① <strong>[정적분 함수 2대 철칙]</strong> <strong class="text-pink-300">① ${tex('g(a) = 0')} (${tex('x=a')}에서 ${tex('x')}축 통과)</strong>, <strong class="text-sky-300">② ${tex("g'(x) = f(x)")}</strong>!<br/>
+          steps: `① <strong>[정적분 함수의 기준]</strong> <strong class="text-pink-300">① ${tex('g(a)=0')}이므로 점 ${tex('(a,0)')}는 그래프 위에 있음</strong> (통과인지 접하는지는 도함수 부호로 따로 판단), <strong class="text-sky-300">② ${tex("g'(x)=f(x)")}</strong>!<br/>
 ② ${tex("g'(x) = 3x(x-2)")} 이므로 상단 ${tex('g(x)')}는 극대 ${tex('x=0')}, 변곡 ${tex('x=1')}, 극소 ${tex('x=2')}인 삼차함수!<br/>
 ③ 극솟값 ${tex('g(2) = 0')} 이란 말은 <strong>극소점 ${tex('x=2')}에서 ${tex('x')}축에 접한다</strong>는 뜻이므로, <strong>[1 : 1 : 1 비율 법칙]</strong>에 의해 ${tex('x')}축과 만나는 점(${tex('g(a)=0')})은 즉시 <strong class="text-amber-300">${tex('a = 2')} 또는 ${tex('a = -1')}</strong>!`,
           highlight: "💡 『g(x) = ∫ₐˣ f(t)dt 에서 아래끝 a를 바꾼다 = 개형은 그대로 두고 x=a가 원점 높이가 되도록 x축의 위치를 위아래로 맞춘다!』"
@@ -1414,6 +1414,13 @@
 
     function setMode(m) {
       state.mode = m;
+      state.steps = { 1: true, 2: false, 3: false };
+      // 새 문항으로 이동할 때 이전 문항의 해설 펼침 상태를 넘기지 않는다.
+      ['textbook', 'shortcut'].forEach((type) => {
+        document.getElementById(`accBody-${type}`).classList.add('hidden');
+        const icon = document.getElementById(`accIcon-${type}`);
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      });
       for (let i = 1; i <= 5; i++) {
         const tab = document.getElementById(`tab-${i}`);
         if (i === m) tab.classList.add('active');
@@ -1450,11 +1457,19 @@
       document.getElementById('examTag').innerHTML = `<i class="fa-solid fa-award"></i> ${data.tag}`;
       document.getElementById('examTarget').textContent = data.targetTime;
       document.getElementById('examQuestion').innerHTML = data.question();
-      document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+      document.getElementById('examAnswerBadge').innerHTML = '세 단계 풀이를 모두 확인하면 정답이 공개됩니다.';
 
       document.getElementById('stepLabel1').textContent = data.steps[0];
       document.getElementById('stepLabel2').textContent = data.steps[1];
       document.getElementById('stepLabel3').textContent = data.steps[2];
+      [1, 2, 3].forEach((s) => {
+        const btn = document.getElementById(`stepBtn${s}`);
+        const icon = document.getElementById(`stepIcon${s}`);
+        btn.classList.toggle('active', state.steps[s]);
+        icon.className = state.steps[s]
+          ? 'fa-solid fa-check text-emerald-400 text-xs'
+          : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
 
       const tb = data.textbook();
       const sc = data.shortcut();
@@ -1463,6 +1478,7 @@
       document.getElementById('shortcutSteps').innerHTML = sc.steps;
       document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
 
+      // 기준 도형은 발문 조건으로 맞추되, snapToProblem은 풀이 단계를 열지 않는다.
       snapToProblem();
     }
 
@@ -1470,8 +1486,6 @@
       state.autoPlay = false;
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
       document.getElementById('txtAutoPlay').textContent = '자동 실험';
-
-      unlockAllSteps();
 
       const target = examData[state.mode].snap;
       state.snapAnim.active = true;
@@ -1497,6 +1511,9 @@
 
     function toggleStep(s) {
       state.steps[s] = !state.steps[s];
+      document.getElementById('examAnswerBadge').innerHTML = Object.values(state.steps).every(Boolean)
+        ? examData[state.mode].answerBadge()
+        : '세 단계 풀이를 모두 확인하면 정답이 공개됩니다.';
       const btn = document.getElementById(`stepBtn${s}`);
       const icon = document.getElementById(`stepIcon${s}`);
       if (state.steps[s]) {
@@ -1515,6 +1532,7 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      document.getElementById('examAnswerBadge').innerHTML = examData[state.mode].answerBadge();
       render();
     }
 

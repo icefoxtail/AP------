@@ -272,7 +272,7 @@
           </div>
 
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-            <div class="bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
+            <div id="answerBadgeWrap" class="hidden bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
               <span class="text-[11px] text-emerald-400 font-bold">실전 정답:</span>
               <span id="examAnswerBadge" class="text-xs font-extrabold text-amber-300"></span>
             </div>
@@ -349,9 +349,9 @@
                 <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">10초 컷</span>
                 <span class="text-xs font-extrabold text-amber-300">10초 컷 실전 넓이 공식·대칭 비기 (일타 강사 판서)</span>
               </div>
-              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs transition-transform"></i>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-down text-amber-300 text-xs transition-transform"></i>
             </button>
-            <div id="accBody-shortcut" class="p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
+            <div id="accBody-shortcut" class="hidden p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
               <div id="shortcutSteps" class="text-emerald-50 leading-loose space-y-1.5 bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/80 font-medium">
                 <!-- JS 렌더링 -->
               </div>
@@ -463,7 +463,7 @@
       p1: 0.0,                  // Mode 1,5: 아래끝 a / Mode 2: 직선 기울기 m / Mode 3: 왼쪽근 α / Mode 4: 직선 기울기 m
       p2: 3.0,                  // Mode 1,5: 위끝 b / Mode 2: 절편 보정 / Mode 3: 가운데근 β / Mode 4: 상하 이동
       dualView: false,          // 상단 f, g ↔ 하단 차함수 f-g 동시 뷰
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 46,
       offsetX: -35,
       offsetY: 15,
@@ -1453,6 +1453,23 @@
 
     function setMode(m) {
       state.mode = m;
+      state.steps = { 1: true, 2: false, 3: false };
+      [1, 2, 3].forEach((s) => {
+        const stepButton = document.getElementById(`stepBtn${s}`);
+        const stepIcon = document.getElementById(`stepIcon${s}`);
+        stepButton.classList.toggle('active', state.steps[s]);
+        stepIcon.className = state.steps[s]
+          ? 'fa-solid fa-check text-emerald-400 text-xs'
+          : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
+      const revealWrap = document.getElementById('answerBadgeWrap');
+      if (revealWrap) revealWrap.classList.add('hidden');
+      ['textbook', 'shortcut'].forEach((type) => {
+        const boardBody = document.getElementById(`accBody-${type}`);
+        const boardIcon = document.getElementById(`accIcon-${type}`);
+        boardBody.classList.add('hidden');
+        boardIcon.className = boardIcon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      });
       for (let i = 1; i <= 5; i++) {
         const tab = document.getElementById(`tab-${i}`);
         if (i === m) tab.classList.add('active');
@@ -1466,6 +1483,8 @@
       document.getElementById('examTarget').textContent = data.targetTime;
       document.getElementById('examQuestion').innerHTML = data.question();
       document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+      const answerWrap = document.getElementById('answerBadgeWrap');
+      if (answerWrap) answerWrap.classList.toggle('hidden', !state.steps[3]);
 
       document.getElementById('stepLabel1').textContent = data.steps[0];
       document.getElementById('stepLabel2').textContent = data.steps[1];
@@ -1486,7 +1505,6 @@
       document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
       document.getElementById('txtAutoPlay').textContent = '자동 실험';
 
-      unlockAllSteps();
 
       const target = examData[state.mode].snap;
       state.dualView = target.dualView;
@@ -1524,6 +1542,8 @@
         btn.classList.remove('active');
         icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
       }
+      const answerWrap = document.getElementById('answerBadgeWrap');
+      if (s === 3 && answerWrap) answerWrap.classList.toggle('hidden', !state.steps[3]);
       render();
     }
 
@@ -1533,6 +1553,8 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      const answerWrap = document.getElementById('answerBadgeWrap');
+      if (answerWrap) answerWrap.classList.remove('hidden');
       render();
     }
 

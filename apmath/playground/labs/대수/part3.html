@@ -129,6 +129,18 @@ border-bottom: 3px solid #fbbf24;
 color: #ffffff;
 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 639px) {
+  body.w-screen { width: 100%; }
+  header > div:first-child { min-width: 0; gap: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+  header > div:first-child > div:first-child { min-width: 0; flex: 1 1 auto; gap: 0.5rem; }
+  header > div:first-child > div:first-child > div { min-width: 0; flex: 1 1 auto; }
+  header h1 { min-width: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: 0.88rem; line-height: 1.2; }
+  header > div:first-child > div:first-child > div > div:first-child > span:first-child { display: none; }
+  header > div:first-child > div:last-child { flex: 0 0 auto; gap: 0.25rem; }
+  header > div:first-child > div:last-child button { flex: 0 0 auto; white-space: nowrap; padding-left: 0.45rem; padding-right: 0.45rem; }
+  header > div:first-child > div:last-child button span { white-space: nowrap; }
+  #modeTabBar { min-width: 0; max-width: 100%; white-space: nowrap; overscroll-behavior-x: contain; }
+}
 </style>
 </head>
 <body class="flex flex-col h-screen w-screen overflow-hidden">
@@ -157,13 +169,13 @@ Code
       <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
       <span>칠판의 노란색 제어점을 드래그하여 수열의 기하학적 불변량을 실험하세요!</span>
     </div>
-    <button onclick="triggerTwinProblem()" class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-purple-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+    <button onclick="triggerTwinProblem()" aria-label="쌍둥이 변형 생성" title="쌍둥이 변형 생성" class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-purple-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
       <i class="fa-solid fa-dice"></i>
-      <span>쌍둥이 변형 생성</span>
+      <span>새 변형</span>
     </button>
-    <button onclick="snapToCondition()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+    <button onclick="snapToCondition()" aria-label="문제 조건 스냅" title="문제 조건 스냅" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
       <i class="fa-solid fa-bullseye"></i>
-      <span>문제 조건 스냅</span>
+      <span>조건 스냅</span>
     </button>
   </div>
 </div>
@@ -330,9 +342,9 @@ Code
           <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-400 text-slate-950">⚡ 10초 컷 실전 비기</span>
           <span id="secretTitle" class="text-xs font-extrabold text-amber-300">원점 통과 포물선 대칭축 & 역추적 가지치기</span>
         </div>
-        <i id="iconSecret" class="fa-solid fa-chevron-up text-xs text-amber-300 transition-transform"></i>
+        <i id="iconSecret" class="fa-solid fa-chevron-down text-xs text-amber-300 transition-transform"></i>
       </button>
-      <div id="contentSecret" class="px-3.5 pb-3 pt-1.5 text-xs leading-relaxed text-emerald-50 border-t border-amber-500/30 space-y-2">
+      <div id="contentSecret" class="hidden px-3.5 pb-3 pt-1.5 text-xs leading-relaxed text-emerald-50 border-t border-amber-500/30 space-y-2">
         <!-- Populated by JS -->
       </div>
     </div>
@@ -612,20 +624,20 @@ secretSteps: [
 ]
 },
 {
-chip: '기출 B (|S₃| = |S₅| = |S₉| 꺾은 포물선 킬러)',
+chip: '기출 B (|S₃| = |S₅| = 15, |S₉| = 9 경계 비교)',
 source: '평가원 모의평가 4점 킬러 모델',
 params: { zeroSumN: 8, scaleK: -1, targetN: 9 },
 snapParams: { zeroSumN: 8, scaleK: -1, targetN: 9 },
-problem: '등차수열의 합 $S_n = k n(n - 8)$ ($k = -1$)에 대하여, $|S_3| = |S_5| = 15$이고 $n > 8$에서 $|S_r| = 15$를 만족시키는 자연수 $r$의 값을 구하시오.',
+problem: '등차수열의 합 $S_n = -n(n - 8)$에 대하여, $|S_3| = |S_5| = 15$이다. $n > 8$에서 $|S_r| = 9$를 만족시키는 자연수 $r$의 값을 구하시오.',
 textbookTitle: '절댓값 부호 케이스 나누어 이차방정식 풀이',
 textbookSteps: [
 '1) $n=3, 5$는 대칭축 $4$에 대칭이므로 $S_3 = S_5 = 15$이다.',
-'2) $n > 8$에서는 $S_r < 0$이므로 $-S_r = 15 \\implies r(r-8) = 15$.',
-'3) $r^2 - 8r - 15 = 0$ 또는 정수 조건에 맞는 $r$을 구한다 ($S_n = -n(n-8)$에서는 $S_9 = -9$).'
+'2) $n>8$에서는 $S_r<0$이므로 $|S_r|=-S_r=r(r-8)$. 조건에 따라 $r(r-8)=9$이다.',
+'3) $r^2-8r-9=(r-9)(r+1)=0$이고 $r>8$이므로 $r=9$이다. 확인하면 $S_9=-9$이다.'
 ],
-secretTitle: '|S_p| = |S_q| = |S_r| ⟹ 앞의 둘은 대칭(S_p=S_q), 뒤의 하나는 부호 반전(-S_r)!',
+secretTitle: '대칭인 두 항의 높이 15와 오른쪽 날개 높이 9를 따로 판별',
 secretSteps: [
-'⚡ **[W자 그래프 판독]** 이차함수 절댓값 $|S_n|$이 같은 높이를 3번 가지려면, 무조건 **봉우리 양쪽 대칭점 2개($S_p = S_q$)**와 **접혀 올라온 오른쪽 날개 1개($S_p = -S_r$)**입니다!'
+'⚡ **[W자 그래프 판독]** $n=3,5$의 대칭으로 $|S_3|=|S_5|=15$이고, 오른쪽 날개에서는 $|S_9|=9$입니다. 세 수가 같은 높이인 조건은 아닙니다.'
 ]
 }
 ]
@@ -937,6 +949,8 @@ return `
 }
 
 function selectMode(modeIdx, scenarioIdx = 0) {
+const changedQuestion = state.modeIdx !== modeIdx || state.scenarioIdx !== scenarioIdx;
+if (changedQuestion) closeSolutionAccordions();
 state.modeIdx = modeIdx;
 state.scenarioIdx = scenarioIdx;
 const mode = KILLER_MODES[modeIdx];
@@ -1045,6 +1059,15 @@ icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
 content.classList.add('hidden');
 icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
 }
+
+}
+
+function closeSolutionAccordions() {
+for (const which of ['textbook', 'secret']) {
+document.getElementById(which === 'textbook' ? 'contentTextbook' : 'contentSecret').classList.add('hidden');
+const icon = document.getElementById(which === 'textbook' ? 'iconTextbook' : 'iconSecret');
+icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+}
 }
 
 function toggleMutator(key) {
@@ -1073,9 +1096,6 @@ const target = scen.snapParams;
 const startParams = { ...state.params };
 const startTime = performance.now();
 const duration = 420;
-
-state.steps = { 1: true, 2: true, 3: true };
-updateStepButtonsUI(3);
 
 function animateSnap(now) {
 const t = Math.min(1, (now - startTime) / duration);
@@ -1177,6 +1197,7 @@ scen.problem = `**[🎲 쌍둥이 변형]** 목표 항을 $a_4 = ${tA4}$, 분기
 document.getElementById('problemTextBox').innerHTML = formatRichMath(scen.problem);
 syncSlidersFromParams();
 updateLiveHUDAndInvariants();
+closeSolutionAccordions();
 showToast('🎲 새로운 쌍둥이 숫자 변형 문제가 생성되었습니다!');
 }
 

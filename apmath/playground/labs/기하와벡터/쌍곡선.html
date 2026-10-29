@@ -370,7 +370,7 @@
 
           <!-- 핵심 정답 요약 & 원클릭 문제 조건 스냅 버튼 -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-            <div class="bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
+            <div class="hidden bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
               <span class="text-[11px] text-emerald-400 font-bold">실전 정답:</span>
               <span id="examAnswerBadge" class="text-xs font-extrabold text-amber-300"></span>
             </div>
@@ -410,20 +410,20 @@
               <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon1"></i>
             </button>
 
-            <button onclick="toggleStep(2)" id="stepBtn2" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+            <button onclick="toggleStep(2)" id="stepBtn2" class="step-btn w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
               <div class="flex items-center gap-2.5">
                 <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
                 <span id="stepLabel2" class="text-xs font-semibold">2a×2b 직사각형 박스 &amp; 점근선 가이드</span>
               </div>
-              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon2"></i>
+              <i class="fa-solid fa-eye-slash text-slate-500 text-xs" id="stepIcon2"></i>
             </button>
 
-            <button onclick="toggleStep(3)" id="stepBtn3" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+            <button onclick="toggleStep(3)" id="stepBtn3" class="step-btn w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
               <div class="flex items-center gap-2.5">
                 <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
                 <span id="stepLabel3" class="text-xs font-semibold">|PF' - PF| = 2a 거리 차 불변 게이지</span>
               </div>
-              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon3"></i>
+              <i class="fa-solid fa-eye-slash text-slate-500 text-xs" id="stepIcon3"></i>
             </button>
           </div>
         </section>
@@ -464,9 +464,9 @@
                 <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">10초 컷</span>
                 <span class="text-xs font-extrabold text-amber-300">10초 컷 실전 기하 비기 (일타 강사 판서)</span>
               </div>
-              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs transition-transform"></i>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-down text-amber-300 text-xs transition-transform"></i>
             </button>
-            <div id="accBody-shortcut" class="p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
+            <div id="accBody-shortcut" class="hidden p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
               <div id="shortcutSteps" class="text-emerald-50 leading-loose space-y-1.5 bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/80 font-medium">
                 <!-- JS 렌더링 -->
               </div>
@@ -611,7 +611,7 @@
       b: 4.0,                   // b (초점 c = sqrt(a^2 + b^2))
       py: 3.198,                // 쌍곡선 우측 가지 위의 점 P(x1, y1), x1 = a * sqrt(1 + (y1/b)^2)
       branch: 1,                // 1: 우측 가지 (x > 0), -1: 좌측 가지 (x < 0)
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       scale: 42,
       offsetX: 0,
       offsetY: 0,
@@ -673,8 +673,8 @@
           warning: "⚠️ 시험장에서 점 P의 좌표를 구하려고 루트 거리 공식에 대입해 이차방정식을 풀면 3분이 날아갑니다!"
         }),
         shortcut: () => ({
-          steps: `① 주축의 길이 <strong class="text-amber-300">${tex('2a = 2 \\times 3 = 6')}</strong> 확인!<br/>
-② 쌍곡선의 정의에 의해 무조건 <strong class="text-pink-300">${tex("\\overline{PF'} - \\overline{PF} = 2a = 6")}</strong>!<br/>
+          steps: `① 제1사분면의 점은 오른쪽 가지에 있으므로 가까운 초점은 ${tex('F(5,0)')}, 먼 초점은 ${tex("F'(-5,0)")}입니다. 따라서 정의의 절댓값은 ${tex("PF'-PF")}로 풀립니다.<br/>
+② 주축의 길이는 ${tex('2a = 2 \\times 3 = 6')}이므로 ${tex("PF'-PF=2a=6")}입니다.<br/>
 ③ ${tex("11 - \\overline{PF} = 6 \\implies")} 연립 없이 즉시 <strong class="text-emerald-300">${tex('\\overline{PF} = 5')}</strong>!<br/>
 ④ ${tex("\\triangle PF'F")} 둘레 ${tex("= \\overline{PF'} + \\overline{PF} + \\overline{F'F} = 11 + 5 + 10 =")} <strong class="text-amber-300">${tex('26')}</strong>!`,
           highlight: "💡 쌍곡선 위의 점 P가 나오면 좌표 구하지 말고 무조건 【 |PF' - PF| = 2a 】 정의부터 쓰세요! 5초 컷!"
@@ -1312,11 +1312,13 @@
     function setSubtype(subtype){
       if(!Number.isInteger(subtype)||subtype<1||subtype>3)return;
       state.subtype=subtype;state.partIdx=-1;
+      resetDisclosure();
       updateScenarioUI();snapToProblem();
     }
     function setMode(mode){
       if(!Number.isInteger(mode)||mode<1||mode>4)return;
       state.mode=mode;state.subtype=1;state.partIdx=-1;
+      resetDisclosure();
       for(let i=1;i<=4;i++)el(`tab-${i}`).classList.toggle('active',i===mode);
       updateScenarioUI();snapToProblem();
     }
@@ -1538,14 +1540,18 @@
     }
     function snapToProblem(){
       const s=snapTarget();state.autoPlay=false;el('iconAutoPlay').className='fa-solid fa-play';el('txtAutoPlay').textContent='자동 주행';
-      unlockAllSteps();const n=state.snapAnim;n.active=true;n.startA=state.a;n.startB=state.b;n.startPy=state.py;
+      const n=state.snapAnim;n.active=true;n.startA=state.a;n.startB=state.b;n.startPy=state.py;
       n.targetA=s.a;n.targetB=s.b;n.targetPy=state.py<0?-Math.abs(s.py):Math.abs(s.py);
       n.startBranch=state.branch;n.targetBranch=state.branch;n.progress=0;n.branchSwitched=false;
     }
     function toggleAccordion(type){const b=el(`accBody-${type}`),ic=el(`accIcon-${type}`),open=b.classList.contains('hidden');b.classList.toggle('hidden',!open);
-      ic.className=ic.className.replace(open?'fa-chevron-down':'fa-chevron-up',open?'fa-chevron-up':'fa-chevron-down');}
-    function toggleStep(s){state.steps[s]=!state.steps[s];el(`stepBtn${s}`).classList.toggle('active',state.steps[s]);el(`stepIcon${s}`).className=state.steps[s]?'fa-solid fa-check text-emerald-400 text-xs':'fa-solid fa-eye-slash text-slate-500 text-xs';render();}
-    function unlockAllSteps(){for(let i=1;i<=3;i++){state.steps[i]=true;el(`stepBtn${i}`).classList.add('active');el(`stepIcon${i}`).className='fa-solid fa-check text-emerald-400 text-xs';}render();}
+      ic.className=ic.className.replace(open?'fa-chevron-down':'fa-chevron-up',open?'fa-chevron-up':'fa-chevron-down');if(open)setAnswerVisible(true);}
+    function toggleStep(s){state.steps[s]=!state.steps[s];if(s===3&&state.steps[s])setAnswerVisible(true);el(`stepBtn${s}`).classList.toggle('active',state.steps[s]);el(`stepIcon${s}`).className=state.steps[s]?'fa-solid fa-check text-emerald-400 text-xs':'fa-solid fa-eye-slash text-slate-500 text-xs';render();}
+    function unlockAllSteps(){for(let i=1;i<=3;i++){state.steps[i]=true;el(`stepBtn${i}`).classList.add('active');el(`stepIcon${i}`).className='fa-solid fa-check text-emerald-400 text-xs';}setAnswerVisible(true);render();}
+    function setAnswerVisible(visible){el('examAnswerBadge').parentElement.classList.toggle('hidden',!visible);}
+    function resetDisclosure(){state.steps={1:true,2:false,3:false};setAnswerVisible(false);
+      ['textbook','shortcut'].forEach(type=>{el(`accBody-${type}`).classList.add('hidden');el(`accIcon-${type}`).className=`fa-solid fa-chevron-down ${type==='textbook'?'text-rose-300':'text-amber-300'} text-xs transition-transform`;});
+      for(let i=1;i<=3;i++){el(`stepBtn${i}`).classList.toggle('active',state.steps[i]);el(`stepIcon${i}`).className=state.steps[i]?'fa-solid fa-check text-emerald-400 text-xs':'fa-solid fa-eye-slash text-slate-500 text-xs';}}
     function onParamChange(){state.snapAnim.active=false;state.a=Number(el('sliderA').value);state.b=Number(el('sliderB').value);if(!state.userZoomed)fitView();render();}
     function onPySlider(){state.snapAnim.active=false;state.py=Number(el('sliderPy').value);render();}
     function zoomCanvas(factor){state.userZoomed=true;state.scale=clamp(state.scale*factor,8,115);render();}

@@ -168,9 +168,10 @@
     .part-card.dimmed{opacity:.55}
     #boardCanvas{touch-action:none}
     @media(max-width:1023px){
-      body{height:100dvh!important}
-      main{min-height:34dvh;flex:1 1 45dvh}
-      aside{height:42dvh!important;flex:0 0 42dvh}
+      body{height:auto!important;min-height:100dvh;overflow-x:hidden;overflow-y:auto}
+      #ap-workspace{flex:0 0 auto;overflow:visible}
+      #ap-workspace>main{height:56dvh;min-height:440px;flex:0 0 56dvh}
+      #ap-workspace>aside{height:42dvh!important;flex:0 0 42dvh}
       header{padding:7px 9px}
       .ap-top-overlays{top:7px;left:7px;right:7px;max-width:calc(100% - 14px);gap:4px}
       .ap-top-overlays>div{padding:5px 7px}
@@ -180,6 +181,8 @@
     }
     @media(max-width:440px){
       .ap-top-overlays{font-size:10px}
+      .ap-top-overlays>div{padding:4px 6px}
+      .ap-lens-bar>span:first-child,.ap-top-overlays>div:last-child>span:first-child{display:none}
       .ap-top-overlays .cam-btn,.ap-top-overlays .lens-chip{font-size:10px;padding:3px 4px}
       .ap-bottom-toolbar button{font-size:10px!important;padding:5px!important}
       .ap-bottom-toolbar{gap:2px;padding:3px}
@@ -448,7 +451,7 @@
               <i class="fa-solid fa-gauge-high text-amber-400"></i>
               <span>실시간 3D 공간좌표·구 모니터</span>
             </h2>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-600/50">오차 0.000%</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-600/50">계산값 기준</span>
           </div>
 
           <div class="grid grid-cols-2 gap-2 text-xs font-mono">
@@ -484,10 +487,10 @@
             <!-- 모드 3용: 구의 중심 높이 d (평면과의 거리) 슬라이더 -->
             <div id="sliderGroup3" class="hidden">
               <div class="flex justify-between text-[11px] mb-1">
-                <span class="text-emerald-200">구 중심 높이 <strong class="text-pink-300">d = |z_C|</strong> (교선원 반지름 r = √(25-d²))</span>
+                <span class="text-emerald-200">구 중심 높이 <strong class="text-pink-300">d = |z_C|</strong> (d ≤ R일 때 r = √(R²-d²))</span>
                 <span id="valSphereD" class="font-mono font-bold text-pink-300">d = 3.00 (교선원 r = 4.00)</span>
               </div>
-              <input type="range" id="sliderSphereD" min="0.0" max="4.8" step="0.1" value="3.0" class="w-full" oninput="onSphereDChange()" />
+              <input type="range" id="sliderSphereD" min="0.0" max="6.0" step="0.1" value="3.0" class="w-full" oninput="onSphereDChange()" />
             </div>
 
             <!-- 모드 4용: 구 위의 동점 Q 회전각 슬라이더 -->
@@ -557,7 +560,7 @@
       autoPlay: false,
       animDir: 1,
       userZoomed: false,
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
 
       // 모드 1: A(1, 1, 2), B(3, 4, 4), B'(3, 4, -4). 최단점 P는 t = 2/(2+4) = 1/3 지점
       t12: 1 / 3,
@@ -651,8 +654,8 @@
       },
 
       3: {
-        badge: "MODE 3 · 기출 2: 구와 평면의 교선원 반지름 공식 (r = √(R² - d²))",
-        hint: "<span class='text-sky-300 font-bold'>[📐 2D 대원 단면 뷰]</span>를 눌러보세요! 3차원 구를 평면으로 자르는 문제는 무조건 중심 수선 <span class='text-pink-300 font-bold'>d</span>를 내려 <span class='text-amber-300 font-bold'>직각삼각형 R² = d² + r²</span>으로 풉니다!",
+        badge: "MODE 3 · 구와 평면: d ≤ R일 때 r = √(R² - d²)",
+        hint: "중심에서 평면까지의 거리 <span class='text-pink-300 font-bold'>d</span>와 반지름 <span class='text-amber-300 font-bold'>R</span>을 비교하세요. <span class='text-emerald-300'>d&lt;R</span>이면 원, <span class='text-sky-300'>d=R</span>이면 한 점에서 접하고, <span class='text-rose-300'>d&gt;R</span>이면 만나지 않습니다. 반지름 공식 <span class='text-amber-300'>r=√(R²−d²)</span>은 <span class='text-emerald-300'>d≤R</span>일 때만 적용합니다.",
         tag: "수능 기하 4점 구의 방정식 최고 빈출",
         targetTime: "목표 시간: 5초",
         question: () => `구 ${tex('x^2 + y^2 + (z - 3)^2 = 25')} 가 ${tex('xy')}평면(${tex('z = 0')})과 만나서 생기는 도형(교선원)의 반지름의 길이 ${tex('r')}과 넓이를 구하시오.`,
@@ -666,11 +669,10 @@
           "피타고라스 직각삼각형 ΔCHP: 교선원 반지름 r = √(5² - 3²) = 4"
         ],
         textbook: () => ({
-          steps: `① ${tex('xy')}평면의 방정식은 ${tex('z = 0')} 이므로 구의 방정식에 ${tex('z = 0')}을 대입:<br/>
-&nbsp;&nbsp;${tex('x^2 + y^2 + (0 - 3)^2 = 25')}<br/>
-② 상수항을 이항하여 정리:<br/>
-&nbsp;&nbsp;${tex('x^2 + y^2 = 25 - 9 = 16 = 4^2, \\; z = 0')}<br/>
-③ 따라서 반지름이 ${tex('r = 4')} 인 원이므로 넓이는 ${tex('16\\pi')}.`,
+          steps: `① 중심 ${tex('C(0,0,3)')}에서 ${tex('xy')}평면까지의 수선의 발은 ${tex('H(0,0,0)')}, 거리 ${tex('CH=d=3')}이다. 평면 위 교점 ${tex('P')}에 대해 ${tex('CH\\perp HP')}이므로 먼저 단면의 직각삼각형을 확인한다.<br/>
+② 반지름 ${tex('CP=5')}이므로 ${tex('HP^2=CP^2-CH^2=25-9=16')}; 따라서 ${tex('r=HP=4')}. 구의 방정식에 ${tex('z=0')}을 대입해도 같은 결과가 나온다:<br/>
+&nbsp;&nbsp;${tex('x^2+y^2=16, \\; z=0')}. 그러므로 교선은 중심 ${tex('H')}인 반지름 ${tex('4')}의 원, 넓이는 ${tex('16\\pi')}이다.<br/>
+③ 일반적으로 중심과 평면 사이 거리 ${tex('d')}에 대해 ${tex('d< R')}이면 원, ${tex('d=R')}이면 한 점(접함), ${tex('d>R')}이면 만나지 않는다.`,
           warning: "⚠️ 평면이 좌표평면(z=0)이 아니라 비스듬한 평면으로 주어지는 4점 기출에서는 대입법 자체가 불가능합니다!"
         }),
         shortcut: () => ({
@@ -678,7 +680,7 @@
 ② 구의 반지름(빗변) <strong class="text-sky-300">${tex('R = 5')}</strong>, 중심 ${tex('C(0,0,3)')}에서 평면까지 수직 거리 <strong class="text-pink-300">${tex('d = 3')}</strong>!<br/>
 ③ 직각삼각형 피타고라스 정리에 의해 교선원 반지름은 언제나:<br/>
 &nbsp;&nbsp;<strong class="text-amber-300">${tex('r = \\sqrt{R^2 - d^2} = \\sqrt{5^2 - 3^2} = 4')}</strong> ⇒ 넓이 <strong class="text-emerald-300">${tex('= 16\\pi')}</strong>!`,
-          highlight: "💡 구가 평면과 만나면 구를 입체로 그리지 마세요! 무조건 단면 원 하나와 직선 하나를 긋고 【 R² = d² + r² 】 직각삼각형만 그리면 끝납니다!"
+          highlight: "d < R이면 교선은 원, d = R이면 한 점에서 접하고, d > R이면 교점이 없습니다. 원이 생기는 경우에만 직각삼각형 CHP에서 R² = d² + r²를 적용합니다."
         })
       },
 
@@ -1224,11 +1226,11 @@
       });
 
       // Step 3: 피타고라스 직각삼각형 ΔCHP (빗변 R = 5, 높이 d, 밑변 r)
-      if (state.steps[3]) inPart(2,()=>{
-        draw3DPolygon([C, H, P], 'rgba(244, 114, 182, 0.24)');
+      if (state.steps[3] && mathD <= mathR + 1e-9) inPart(2,()=>{
+        if (mathD < mathR - 1e-9) draw3DPolygon([C, H, P], 'rgba(244, 114, 182, 0.24)');
         draw3DLine(C, H, '#f472b6', 3.6, false, true); // 거리 d
-        draw3DLine(H, P, '#fbbf24', 3.6, false, true); // 교선원 반지름 r
-        draw3DLine(C, P, '#38bdf8', 3.6, false, true); // 구 반지름 R = 5
+        if (mathD < mathR - 1e-9) draw3DLine(H, P, '#fbbf24', 3.6, false, true); // 교선원 반지름 r
+        if (mathD <= mathR + 1e-9) draw3DLine(C, P, '#38bdf8', 3.6, false, true); // 교선원 위 점까지의 구 반지름 R = 5
 
         if (d > 0.15 && rSec > 0.15) {
           draw3DRightAngle(H, C, P, 0.38, '#fbbf24');
@@ -1240,7 +1242,8 @@
 
       draw3DPoint(C, 6.5, '#f472b6', `구 중심 C(0,0,${mathD.toFixed(1)})`, { x: 12, y: -10 });
       draw3DPoint(H, 5.5, '#34d399', '수선의 발 H(0,0,0)', { x: -115, y: 18 });
-      draw3DPoint(P, 6.5, '#fbbf24', `교선원 P (r=${mathR_sec.toFixed(2)})`, { x: 12, y: 16 });
+      if (mathD < mathR - 1e-9) draw3DPoint(P, 6.5, '#fbbf24', `교선원 위 P (r≈${mathR_sec.toFixed(2)})`, { x: 12, y: 16 });
+      else if (Math.abs(mathD-mathR) <= 1e-9) draw3DPoint(H, 6.5, '#fbbf24', '접점 H (r=0)', { x: 12, y: 16 });
     }
 
     // =========================================================================
@@ -1367,20 +1370,22 @@
       } else if (state.mode === 3) {
         const d = state.d3;
         const r = Math.sqrt(Math.max(0, 25 - d * d));
+        const tangent = Math.abs(d-5) <= 1e-9;
+        const relation = d < 5 - 1e-9 ? '교선은 원' : tangent ? '한 점에서 접함' : '교점 없음';
 
-        document.getElementById('eqDisplay').innerHTML = tex('r = \\sqrt{R^2 - d^2}');
-        document.getElementById('subEqDisplay').innerHTML = tex(`r = \\sqrt{25 - ${d.toFixed(1)}^2} = ${r.toFixed(2)}`);
+        document.getElementById('eqDisplay').innerHTML = tex('d \\le R: \\; r = \\sqrt{R^2 - d^2}');
+        document.getElementById('subEqDisplay').innerHTML = tex(`d=${d.toFixed(1)}, \\; R=5, \\; ${relation}`);
 
         document.getElementById('statLabel1').textContent = '구 반지름 R / 중심 높이 d';
         document.getElementById('statVal1').textContent = `R = 5.00 | d = ${d.toFixed(2)}`;
-        document.getElementById('statLabel2').textContent = '교선원 반지름 r = √(R²-d²)';
-        document.getElementById('statVal2').textContent = `r = ${r.toFixed(3)}`;
-        document.getElementById('statLabel3').textContent = '교선원 둘레 2πr';
-        document.getElementById('statVal3').textContent = `${(2 * r).toFixed(2)}π`;
-        document.getElementById('statLabel4').textContent = '교선원 넓이 πr²';
-        document.getElementById('statVal4').textContent = `${(r * r).toFixed(2)}π`;
+        document.getElementById('statLabel2').textContent = d > 5 ? '교선 판정' : relation;
+        document.getElementById('statVal2').textContent = d > 5 ? 'd > R, 교점 없음' : tangent ? 'd = R, 접점 H (r = 0)' : `r = ${r.toFixed(3)}`;
+        document.getElementById('statLabel3').textContent = d < 5 ? '교선원 둘레 2πr' : tangent ? '접점의 교선원 둘레' : '교선 판정';
+        document.getElementById('statVal3').textContent = d < 5 ? `${(2 * r).toFixed(2)}π` : tangent ? '원형 단면이 아닌 한 점' : 'd > R, 교점 없음';
+        document.getElementById('statLabel4').textContent = d < 5 ? '교선원 넓이 πr²' : tangent ? '접점의 교선원 넓이' : '교선 판정';
+        document.getElementById('statVal4').textContent = d < 5 ? `${(r * r).toFixed(2)}π` : tangent ? '원형 단면이 아닌 한 점' : 'd > R, 교점 없음';
 
-        document.getElementById('valSphereD').textContent = `d = ${d.toFixed(2)} (교선원 r = ${r.toFixed(2)})`;
+        document.getElementById('valSphereD').textContent = `d = ${d.toFixed(2)} (${relation}${d < 5 ? `, r≈${r.toFixed(2)}` : ''})`;
         document.getElementById('sliderSphereD').value = d;
       } else {
         const deg = Math.round((state.theta4 * 180) / Math.PI);
@@ -1413,8 +1418,12 @@
         return {caption:`xy평면 교점 P(2,-3,0) · 내분비 4:2=2:1 · 현재 t=${t.toFixed(2)}, z=${(4-6*t).toFixed(2)}`,blocks:[{label:'AP · 2',value:2,color:'#38bdf8'},{label:'PB · 1',value:1,color:'#f472b6'}],fraction:['2×4−2','3']};
       }
       if(state.mode===3){
-        const d=state.d3,r=Math.sqrt(Math.max(0,25-d*d));
-        return {caption:`R² = d² + r² : 25 = ${d.toFixed(1)}² + ${r.toFixed(2)}²  |  넓이 ${(r*r).toFixed(2)}π`,blocks:[{label:`d ${d.toFixed(1)}`,value:d,color:'#f472b6'},{label:`r ${r.toFixed(2)}`,value:r,color:'#fbbf24'}]};
+        const R=5,d=state.d3;
+        if(d>R+1e-9)return {caption:'d > R, 교점 없음',blocks:[]};
+        if(Math.abs(d-R)<=1e-9)return {caption:'d = R, 평면과 한 점에서 접함 (원형 단면 없음)',blocks:[{label:'d = R = 5',value:R,color:'#f472b6'}]};
+        const r=Math.sqrt(R*R-d*d),exact=Math.abs(d-Math.round(d))<1e-9&&Math.abs(r-Math.round(r))<1e-9;
+        const marker=exact?'=':'≈';
+        return {caption:`R² = d² + r² · 25 ${marker} ${d.toFixed(1)}² + ${r.toFixed(2)}²  |  넓이 ${marker} ${(r*r).toFixed(2)}π`,blocks:[{label:`d ${d.toFixed(1)}`,value:d,color:'#f472b6'},{label:`r ${marker} ${r.toFixed(2)}`,value:r,color:'#fbbf24'}]};
       }
       const pq=Math.sqrt(34-30*Math.cos(state.theta4));
       return {caption:`현재 PQ = ${pq.toFixed(2)}  ·  최소 2 / 최대 8  ·  접선 PT=4  ·  접점 원 r′=12/5`,blocks:[{label:`PQ ${pq.toFixed(2)}`,value:pq,color:'#38bdf8'},{label:'PT 4',value:4,color:'#fbbf24'}],fraction:['12','5']};
@@ -1499,6 +1508,8 @@
       document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
 
       buildPartCards();
+      resetStepsForMode();
+      closeSolutionAccordions();
       updateLensControls();
       snapToProblem();
     }
@@ -1529,7 +1540,6 @@
     }
 
     function snapToProblem() {
-      unlockAllSteps();
       const data = examData[state.mode];
       if (data.tSnap !== undefined) state.t12 = data.tSnap;
       if (data.dSnap !== undefined) state.d3 = data.dSnap;
@@ -1561,8 +1571,16 @@
         btn.classList.remove('active');
         icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
       }
+      syncRevealState();
       updatePartCards();render();
     }
+
+    function syncRevealState(){
+      for(let i=1;i<=3;i++){const on=!!state.steps[i],btn=document.getElementById(`stepBtn${i}`),icon=document.getElementById(`stepIcon${i}`);btn.classList.toggle('active',on);icon.className=on?'fa-solid fa-check text-emerald-400 text-xs':'fa-solid fa-eye-slash text-slate-500 text-xs';}
+      document.getElementById('examAnswerBadge').classList.toggle('hidden',!state.steps[3]);
+    }
+    function resetStepsForMode(){state.steps={1:true,2:false,3:false};syncRevealState();}
+    function closeSolutionAccordions(){for(const type of ['textbook','shortcut']){document.getElementById(`accBody-${type}`).classList.add('hidden');const icon=document.getElementById(`accIcon-${type}`);icon.className=icon.className.replace('fa-chevron-up','fa-chevron-down');}}
 
     function unlockAllSteps() {
       [1, 2, 3].forEach((s) => {
@@ -1570,6 +1588,7 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      syncRevealState();
       updatePartCards();render();
     }
 

@@ -597,7 +597,7 @@
       B4: { x: 3.0, y: 3.0 },
       theta4: (65 * Math.PI) / 180,
 
-      steps: { 1: true, 2: true, 3: true },
+      steps: { 1: true, 2: false, 3: false },
       activePartIdx: null,
       hoverPartIdx: null,
       conceptSwitch: 'all', // 'all', 'base', 'locus', 'aux'
@@ -686,13 +686,13 @@
           steps: `① 경계선 ${tex('m + n = 2')} 식의 양변을 나누어 계수 합이 ${tex('1')}이 되도록 변형:<br/>
 &nbsp;&nbsp;${tex('\\overrightarrow{OP} = \\dfrac{m}{2}(2\\overrightarrow{OA}) + \\dfrac{n}{2}(2\\overrightarrow{OB}) \\quad \\left(\\text{단, } \\dfrac{m}{2} + \\dfrac{n}{2} = 1\\right)')}<br/>
 ② ${tex("2\\overrightarrow{OA} = \\overrightarrow{OA'}, \\; 2\\overrightarrow{OB} = \\overrightarrow{OB'}")} 라 치환하면 점 ${tex('P')}는 선분 ${tex("A'B'")} 위의 점!<br/>
-③ 닮음비가 ${tex('1 : 2')} 이므로 넓이비는 ${tex('1^2 : 2^2 = 1 : 4')}<br/>
-④ 따라서 사다리꼴 ${tex("ABB'A'")}의 넓이는 ${tex('4S - S = 3S = 12')}.`,
+③ 계수 범위 ${tex('m,n\\ge0, m+n\\le2')}가 만드는 큰 영역은 꼭짓점 ${tex("O,A',B'")}의 삼각형 ${tex("OA'B'")}이고, 닮음비가 ${tex('1:2')}이므로 넓이는 ${tex('4S=16')}.<br/>
+④ 조건의 아래 경계 ${tex('m+n=1')} 안쪽 삼각형 넓이 ${tex('S=4')}를 빼면 띠 영역은 ${tex('4S-S=3S=12')}. 각 계수의 비음수 조건이 두 경계 사이의 사다리꼴 전체를 선택한다.`,
           warning: "⚠️ 시험장에서 매번 양변을 k로 나누고 치환해서 닮음비를 구하면 실전에서는 시간이 걸립니다!"
         }),
         shortcut: () => ({
           steps: `① <strong class="text-sky-300">${tex('m + n = 1 \\;(m,n \\ge 0)')}</strong> 이면 무조건 <strong class="text-sky-300">선분 ${tex('AB')}</strong>!<br/>
-② <strong class="text-pink-300">${tex('m + n = k \\;(m,n \\ge 0)')}</strong> 이면 원점에서 <strong class="text-pink-300">${tex('k')}배 멀어진 평행선분 ${tex('kA \\cdot kB')}</strong>!<br/>
+② ${tex('m+n=k')}를 고정하고 ${tex('k\\ne0')}라 하자. ${tex("A'=kA, B'=kB")}로 두면 ${tex('\\overrightarrow{OP}=(m/k)\\overrightarrow{OA\\prime}+(n/k)\\overrightarrow{OB\\prime}')}이며 계수 합은 1이다. 따라서 ${tex('m,n\\ge0')}이면 ${tex('P')}는 ${tex("A'B'")} 선분 위에 있다. 이 문항에서는 ${tex('k=1,2')} 경계가 된다.<br/>
 ③ 따라서 ${tex('1 \\le m + n \\le 2')} 영역은 닮음비 ${tex('1 : 2')} 인 두 삼각형 사이의 사다리꼴이므로:<br/>
 &nbsp;&nbsp;<strong class="text-amber-300">넓이 ${tex('= (2^2 - 1^2)S = 3S = 3 \\times 4 = 12')}</strong> (3초 암산 끝!)`,
           highlight: "💡 족보 암기: ① m+n≤1 (삼각형 S) ② 0≤m,n≤1 (평행사변형 2S) ③ 1≤m+n≤2 (사다리꼴 3S) ④ m+n≤k (k²S)!"
@@ -748,11 +748,10 @@
           "탈레스 원주각 정리: 선분 AB를 지름으로 하는 원 (중심 M(0,1), r=√13)"
         ],
         textbook: () => ({
-          steps: `① 점 ${tex('P(x, y)')}라 두면 ${tex('\\overrightarrow{OP} - \\overrightarrow{OA} = (x + 3, y + 1), \\; \\overrightarrow{OP} - \\overrightarrow{OB} = (x - 3, y - 3)')}<br/>
-② 성분 내적이 ${tex('0')}이므로 대입하여 전개:<br/>
-&nbsp;&nbsp;${tex('(x + 3)(x - 3) + (y + 1)(y - 3) = 0 \\implies x^2 - 9 + y^2 - 2y - 3 = 0')}<br/>
-③ 완전제곱식으로 표준형 변형:<br/>
-&nbsp;&nbsp;${tex('x^2 + (y - 1)^2 = 13 \\implies')} 반지름 ${tex('r = \\sqrt{13}')} 인 원 도출...`,
+          steps: `① 시점이 모두 ${tex('O')}인 벡터 차를 점에서 점으로 향하는 벡터로 바꾸면 ${tex('OP-OA=AP')}, ${tex('OP-OB=BP')}이다. 따라서 조건은 ${tex('AP\\cdot BP=0')}, 즉 ${tex('AP\\perp BP')}이다.<br/>
+② ${tex('P=A')} 또는 ${tex('P=B')}이면 한 벡터가 영벡터라 내적이 0이므로 두 끝점도 자취에 포함된다. 그 밖에는 ${tex('\\angle APB=90^\\circ')}이다.<br/>
+③ 탈레스 정리의 역에 따라 ${tex('AB')}를 지름으로 하는 원 위의 점은 모두 직각을 만들고, 반대로 직각을 만드는 점은 그 원 위에 있다. 그러므로 필요충분하게 자취는 지름 ${tex('AB')}인 원 전체이다.<br/>
+④ ${tex('AB=\\sqrt{6^2+4^2}=2\\sqrt{13}')}이므로 반지름은 ${tex('\\sqrt{13}')}이다. 따라서 둘레 ${tex('2\\pi\\sqrt{13}')}와 넓이 ${tex('13\\pi')}.`,
           warning: "⚠️ 시험장에서 P(x, y)를 대입해 이차식을 전개하고 완전제곱식으로 묶고 있으면 기하적 의미를 완전히 놓치게 됩니다!"
         }),
         shortcut: () => ({
@@ -1679,6 +1678,7 @@
       state.activePartIdx = null;
       state.hoverPartIdx = null;
       syncPartCardsUI();
+      resetLearningReveal();
 
       // [BUG-02 & BUG-06 수리] 모드별 최적 카메라 오프셋 자동 적용
       const defOff = getDefaultOffsetForMode(m);
@@ -1753,8 +1753,6 @@
       state.offsetX = defOff.x;
       state.offsetY = defOff.y;
 
-      unlockAllSteps();
-
       const snap = examData[state.mode].snap;
       state.snapAnim.active = true;
       state.snapAnim.progress = 0;
@@ -1784,6 +1782,7 @@
       if (isHidden) {
         body.classList.remove('hidden');
         icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+        setAnswerRevealed(true);
       } else {
         body.classList.add('hidden');
         icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
@@ -1801,6 +1800,7 @@
         btn.classList.remove('active');
         icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
       }
+      if (s === 3 && state.steps[s]) setAnswerRevealed(true);
       render();
     }
 
@@ -1810,7 +1810,43 @@
         document.getElementById(`stepBtn${s}`).classList.add('active');
         document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
       });
+      setAnswerRevealed(true);
       render();
+    }
+
+    function syncStepButtons() {
+      [1, 2, 3].forEach((s) => {
+        const on = !!state.steps[s];
+        const btn = document.getElementById(`stepBtn${s}`);
+        const icon = document.getElementById(`stepIcon${s}`);
+        if (btn) btn.classList.toggle('active', on);
+        if (icon) icon.className = on ? 'fa-solid fa-check text-emerald-400 text-xs' : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      });
+    }
+
+    function setAnswerRevealed(show) {
+      const badge = document.getElementById('examAnswerBadge');
+      if (badge) {
+        badge.classList.toggle('hidden', !show);
+        badge.setAttribute('aria-hidden', String(!show));
+        if (badge.parentElement) badge.parentElement.classList.toggle('hidden', !show);
+      }
+    }
+
+    function closeSolutionAccordions() {
+      ['textbook', 'shortcut'].forEach((type) => {
+        const body = document.getElementById(`accBody-${type}`);
+        const icon = document.getElementById(`accIcon-${type}`);
+        if (body) body.classList.add('hidden');
+        if (icon) icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      });
+    }
+
+    function resetLearningReveal() {
+      state.steps = { 1: true, 2: false, 3: false };
+      syncStepButtons();
+      setAnswerRevealed(false);
+      closeSolutionAccordions();
     }
 
     function onParamTChange() {
