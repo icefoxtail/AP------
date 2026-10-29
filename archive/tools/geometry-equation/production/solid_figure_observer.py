@@ -145,7 +145,7 @@ def build_solid(spec):
             r0, r1 = (narrow, r) if down else (r, narrow)
         names = spec.get('names') or {}
         pts = []
-        if kind == 'SPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, r)))
+        if kind == 'SPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, float(spec['centerZ']) if spec.get('centerZ') is not None else r)))
         elif kind == 'HEMISPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, 0.0)))
         else:
             pts.append((names.get('center'), 'center', (0.0, 0.0, h if down and kind == 'CONE' else 0.0)))
@@ -160,7 +160,8 @@ def build_solid(spec):
             axis = {'label': axis.get('label') if isinstance(axis, dict) else None}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV',
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
-                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis}
+                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis,
+                'cz': (float(spec['centerZ']) if spec.get('centerZ') is not None else r) if kind == 'SPHERE' else 0.0}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
 
 
@@ -561,7 +562,7 @@ def hits_round(solid, P):
     V = VIEW
     r0, r1, h = solid['r0'], solid['r1'], solid['height']
     if solid['cat'] == 'SPHERE':
-        c = (0.0, 0.0, r0 if solid['kind'] == 'SPHERE' else 0.0)
+        c = (0.0, 0.0, solid.get('cz', r0) if solid['kind'] == 'SPHERE' else 0.0)
         d = vsub(P, c)
         b = vdot(d, V)
         cc = vdot(d, d) - r0 * r0
@@ -702,8 +703,11 @@ def _stroke_ok(el, expect_dashed, errors, ident):
 
 def audit_solids(plan, ctx):
     root, errors = ctx['root'], ctx['errors']
-    solids = [build_solid({**spec, 'id': spec.get('id') or 's%d' % (i + 1)}) for i, spec in enumerate(plan['solids'])]
+    solids = [build_solid(spec) for spec in expanded_solid_specs(plan)]
     ctx['solids'] = solids
+    # nothing is drawn for a solid the plan does not have (a ball that is not in the plan, a second solid that was not asked for)
+    drawn_solids = {e.get('data-solid') for e in root.iter() if e.get('data-solid')}
+    if drawn_solids - {s_['id'] for s_ in solids}: errors.append('SOLID_SOLID_NOT_IN_PLAN:' + ','.join(sorted(drawn_solids - {s_['id'] for s_ in solids}))[:40])
     specs_by_id = {s_['id']: s_ for s_ in solids_with_ids(plan)}
     counted = set()
     declared = float(root.get('data-scale') or 0)
@@ -827,8 +831,18 @@ def audit_solids(plan, ctx):
             errors.append('SOLID_NEST_AXIS_MISMATCH:' + solid['id'])
         max_inner = solid['r0'] if solid['cat'] == 'SPHERE' else max(solid['r0'], solid['r1'])
         max_host = max(host['r0'], host['r1'])
-        if max_inner > max_host + 1e-6 or solid['height'] > host['height'] + 1e-6:
+        if solid['cat'] == 'SPHERE': too_tall = solid['cz'] - solid['r0'] < -1e-6 or solid['cz'] + solid['r0'] > host['height'] + 1e-6
+        else: too_tall = solid['height'] > host['height'] + 1e-6
+        if max_inner > max_host + 1e-6 or too_tall:
             errors.append('SOLID_NEST_DOES_NOT_FIT:' + solid['id'])
+    # balls in one cylinder do not overlap: their centres are on the axis, so two balls overlap when the centres are nearer than the radii add up
+    for host in solids:
+        guests = [s for s in solids if s.get('inside') == host['id']]
+        if len(guests) > 1 and any(g['cat'] != 'SPHERE' for g in guests): errors.append('SOLID_NEST_MIXED:' + host['id'])
+        for i in range(len(guests)):
+            for j in range(i + 1, len(guests)):
+                a, b = guests[i], guests[j]
+                if a['cat'] == 'SPHERE' and b['cat'] == 'SPHERE' and abs(a['cz'] - b['cz']) < a['r0'] + b['r0'] - 1e-6: errors.append('SOLID_NEST_OVERLAP:%s,%s' % (a['id'], b['id']))
     section = plan.get('section')
     section_solid = _section_solid(plan, solids)
     sec_els = [el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'section']
@@ -883,8 +897,41 @@ def audit_solids(plan, ctx):
     check_slant_marks(plan, ctx)
 
 
+MAX_BALLS = 6
+
+
+def expanded_solid_specs(plan):
+    """the plan's solids with an id each (by their place in the plan), the balls of a cylinder (stack:{count,radius} or inside:[{kind,radius,centerZ?}]) turned into nested spheres s1b1, s1b2, ...
+    (a ball without centerZ rests on the ball before it, the first on the bottom). Written here from the grammar alone."""
+    out = []
+    for i, spec in enumerate(plan['solids']):
+        ident = spec.get('id') or 's%d' % (i + 1)
+        stack, inside = spec.get('stack'), spec.get('inside')
+        if stack is None and not isinstance(inside, list):
+            out.append({**spec, 'id': ident})
+            continue
+        if spec.get('kind') != 'CYLINDER' or (stack is not None and isinstance(inside, list)): raise ValueError('SOLID_BALLS_INVALID')
+        host = {k: v for k, v in spec.items() if k not in ('stack', 'inside')}
+        out.append({**host, 'id': ident})
+        if stack is not None:
+            count = stack.get('count')
+            if not isinstance(count, int) or not 2 <= count <= MAX_BALLS: raise ValueError('SOLID_BALLS_INVALID')
+            balls = [{'kind': 'SPHERE', 'radius': stack.get('radius')} for _ in range(count)]
+        else:
+            if not 1 <= len(inside) <= MAX_BALLS: raise ValueError('SOLID_BALLS_INVALID')
+            balls = inside
+        top = 0.0
+        for k, ball in enumerate(balls):
+            if ball.get('kind') != 'SPHERE': raise ValueError('SOLID_BALLS_INVALID')
+            radius = float(ball['radius'])
+            centre = float(ball['centerZ']) if ball.get('centerZ') is not None else round(top + radius, 6)
+            out.append({'kind': 'SPHERE', 'radius': radius, 'centerZ': centre, 'inside': ident, 'id': '%sb%d' % (ident, k + 1)})
+            top = centre + radius
+    return out
+
+
 def solids_with_ids(plan):
-    return [{**spec, 'id': spec.get('id') or 's%d' % (i + 1)} for i, spec in enumerate(plan['solids'])]
+    return expanded_solid_specs(plan)
 
 
 # --- counting numbers: 1, 2, ... beside the vertices and circled numbers beside the edge midpoints -------------------------------------------------------
@@ -1064,7 +1111,7 @@ def _round_frame(solid, root, errors):
         xs = [v for a in outline for v in (a[0], a[6])]
         S = (max(xs) - min(xs)) / (2 * solid['r0'])
         cx, cy = (max(xs) + min(xs)) / 2, outline[0][1]
-        q = project((0.0, 0.0, solid['r0'] if solid['kind'] == 'SPHERE' else 0.0))
+        q = project((0.0, 0.0, solid.get('cz', solid['r0']) if solid['kind'] == 'SPHERE' else 0.0))
         return S, (cx - S * q[0], cy + S * q[1])
     places = {'bottom': (0.0, solid['r0']), 'top': (solid['height'], solid['r1']), 'equator': (solid['r0'], solid['r0'])}
     fronts = []
@@ -1112,12 +1159,12 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
         if name == 'level': return px((0.0, 0.0, level[0])), level[1]
         if name == 'bottom': return px((0.0, 0.0, 0.0)), r0
         if name == 'top': return px((0.0, 0.0, h)), r1
-        return px((0.0, 0.0, r0)), r0   # sphere equator
+        return px((0.0, 0.0, solid.get('cz', r0))), r0   # sphere equator
     pts_by_circle = {}
     for e, (x0, y0, rx, ry, large, sweep, x1, y1) in arcs:
         role = e.get('data-role')
         if role == 'sphere-outline':
-            c = px((0.0, 0.0, r0 if solid['kind'] == 'SPHERE' else 0.0))
+            c = px((0.0, 0.0, solid.get('cz', r0) if solid['kind'] == 'SPHERE' else 0.0))
             if abs(rx - scale * r0) > POS_TOL or abs(ry - scale * r0) > POS_TOL: errors.append('SOLID_SPHERE_OUTLINE_RADIUS:' + sid)
             for (x, y) in ((x0, y0), (x1, y1)):
                 if abs(math.hypot(x - c[0], y - c[1]) - scale * r0) > POS_TOL: errors.append('SOLID_SPHERE_OUTLINE_OFF:' + sid)
@@ -1151,7 +1198,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
             pts_by_circle.setdefault(cname, []).append(((x0, y0), (x1, y1)))
             continue
         votes = 0
-        z = h if cname == 'top' else (level[0] if cname == 'level' else (r0 if cname == 'equator' else 0.0))
+        z = h if cname == 'top' else (level[0] if cname == 'level' else (solid.get('cz', r0) if cname == 'equator' else 0.0))
         for k in range(7):
             u = u0 + span * (k + 0.5) / 7
             # screen param u -> world circle point: sx = r cos u, sy = r sin(pitch) sin u + z cos(pitch); the circle point with that screen image

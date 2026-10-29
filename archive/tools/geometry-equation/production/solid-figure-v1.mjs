@@ -472,7 +472,7 @@ function parseAxis(axis,kind,nested){
 function buildRound(spec){
   const kind=spec.kind;
   const baseKeys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
-  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis'],'SOLID_PARAM_INVALID');
+  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis','centerZ'],'SOLID_PARAM_INVALID');
   if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:'+kind);
   if(spec.cuts!==undefined)bad('SOLID_CUT_UNSUPPORTED:'+kind);
   // cut:{kind,facing?} cuts a SPHERE by planes through its centre (sphere-parts.mjs); no other round solid, and a cut sphere does not sit inside a cylinder
@@ -493,7 +493,14 @@ function buildRound(spec){
   onlyKeys(names,['center','top','apex'],'SOLID_NAMES_INVALID');
   for(const key of Object.keys(names))if(!NAME.test(names[key]))bad('SOLID_NAMES_INVALID');
   const points=[];
-  if(kind==='SPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,r]});}
+  // centerZ: the height of the centre of a sphere inside a cylinder (the default is resting on the bottom: r)
+  let centerZ=null;
+  if(spec.centerZ!==undefined){
+    if(kind!=='SPHERE'||typeof spec.inside!=='string')bad('SOLID_NEST_INVALID');
+    if(typeof spec.centerZ!=='number'||!finite(spec.centerZ)||spec.centerZ<0||spec.centerZ>1000)bad('SOLID_PARAM_INVALID');
+    centerZ=spec.centerZ;
+  }
+  if(kind==='SPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,centerZ??r]});}
   else if(kind==='HEMISPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,0]});}
   else{
     points.push({name:names.center??null,id:'center',p:[0,0,down&&kind==='CONE'?height:0]});
@@ -503,7 +510,7 @@ function buildRound(spec){
   if(spec.inside!==undefined&&(typeof spec.inside!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(spec.inside)))bad('SOLID_NEST_INVALID');
   const axis=spec.axis!==undefined?parseAxis(spec.axis,kind,spec.inside!==undefined):undefined;
   return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,
-    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{})};
+    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{}),...(centerZ!==null?{centerZ}:{})};
 }
 
 const shiftSolid=(solid,s)=>{
@@ -721,9 +728,45 @@ export function solveSolidFigure(plan){
   if(names+model.dims.length+(model.faceLabels?.length??0)+(model.labels?.length??0)+stressed===0&&plan.solidCaption===undefined&&plan.panelWidth===undefined)bad('SOLID_FIGURE_NEEDS_A_LABEL');
   return plan.panelWidth===undefined?model:{...model,panelWidth:plan.panelWidth};
 }
+const MAX_BALLS=6;
+/**
+ * A cylinder may hold several balls: stack:{count,radius} (count equal balls one on the other from the bottom) or inside:[{kind:"SPHERE",radius,centerZ?}, ...] (each ball
+ * at the height of its centre; without centerZ it rests on the ball before it, the first on the bottom). They become nested spheres s1b1, s1b2, ... of the cylinder s1
+ * (so a ball can be named in dims by its id); the plan's own solids keep their ids by their place in the plan.
+ */
+function expandBalls(specs){
+  const out=[];
+  specs.forEach((spec,i)=>{
+    if(!isPlain(spec)||(!Array.isArray(spec.inside)&&spec.stack===undefined)){out.push(isPlain(spec)&&spec.id===undefined?{...spec,id:'s'+(i+1)}:spec);return;}
+    if(spec.kind!=='CYLINDER')bad('SOLID_BALLS_UNSUPPORTED:'+String(spec.kind).slice(0,24));
+    if(Array.isArray(spec.inside)&&spec.stack!==undefined)bad('SOLID_BALLS_INVALID');
+    const hostId=spec.id??'s'+(i+1),{inside,stack,...host}=spec;
+    out.push({...host,id:hostId});
+    let list;
+    if(stack!==undefined){
+      if(!isPlain(stack))bad('SOLID_BALLS_INVALID');
+      onlyKeys(stack,['count','radius'],'SOLID_BALLS_INVALID');
+      if(!Number.isInteger(stack.count)||stack.count<2||stack.count>MAX_BALLS)bad('SOLID_BALLS_INVALID');
+      list=Array.from({length:stack.count},()=>({kind:'SPHERE',radius:stack.radius}));
+    }else{
+      if(inside.length<1||inside.length>MAX_BALLS)bad('SOLID_BALLS_INVALID');
+      list=inside;
+    }
+    let top=0;
+    list.forEach((ball,k)=>{
+      if(!isPlain(ball))bad('SOLID_BALLS_INVALID');
+      onlyKeys(ball,['kind','radius','centerZ'],'SOLID_BALLS_INVALID');
+      if(ball.kind!=='SPHERE')bad('SOLID_BALLS_INVALID');
+      const radius=pos(ball.radius,'SOLID_PARAM_INVALID'),centerZ=ball.centerZ!==undefined?ball.centerZ:r6(top+radius);
+      out.push({kind:'SPHERE',radius,centerZ,inside:hostId,id:hostId+'b'+(k+1)});
+      top=centerZ+radius;
+    });
+  });
+  return out;
+}
 function solveSolids(plan){
   if(!Array.isArray(plan.solids)||plan.solids.length<1||plan.solids.length>3)bad('SOLID_COUNT_INVALID');
-  const solids=plan.solids.map((spec,i)=>{
+  const solids=expandBalls(plan.solids).map((spec,i)=>{
     if(!isPlain(spec))bad('SOLID_PARAM_INVALID');
     const withId={...spec,id:spec.id??'s'+(i+1)};
     if(typeof withId.id!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(withId.id))bad('SOLID_ID_INVALID');
@@ -739,9 +782,19 @@ function solveSolids(plan){
     if(!host||host===solid)bad('SOLID_NEST_UNKNOWN:'+solid.inside);
     if(host.inside)bad('SOLID_NEST_CHAIN');
     if(host.kind!=='CYLINDER')bad('SOLID_NEST_UNSUPPORTED:'+host.kind);
-    if(solid.kind==='SPHERE'){if(2*solid.radius>host.height+1e-9||solid.radius>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
+    if(solid.kind==='SPHERE'){const cz=solid.centerZ??solid.radius;if(cz-solid.radius<-1e-9||cz+solid.radius>host.height+1e-9||solid.radius>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
     else if(solid.kind==='CONE'||solid.kind==='CONE_FRUSTUM'){if(solid.height>host.height+1e-9||Math.max(solid.r0,solid.r1)>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
     else bad('SOLID_NEST_UNSUPPORTED:'+solid.kind);
+  }
+  // several solids in one cylinder are balls that do not overlap (their centres are on the axis, so two balls meet where the centres are closer than the radii add up)
+  for(const host of solids){
+    const guests=solids.filter(s=>s.inside===host.id);
+    if(guests.length<2)continue;
+    if(guests.some(s=>s.kind!=='SPHERE'))bad('SOLID_NEST_UNSUPPORTED:MIXED');
+    for(let i=0;i<guests.length;i++)for(let j=i+1;j<guests.length;j++){
+      const a=guests[i],b=guests[j];
+      if(Math.abs((a.centerZ??a.radius)-(b.centerZ??b.radius))<a.radius+b.radius-1e-9)bad('SOLID_NEST_OVERLAP:'+a.id+','+b.id);
+    }
   }
   for(const solid of solids)recentre(solid);
   // side-by-side placement on the screen's horizontal; a nested solid stays on its host's axis
@@ -977,7 +1030,7 @@ function solveSolids(plan){
           if(which==='center'){if(solid.category!=='SPHERE')bad('SOLID_DIMS_INVALID');}
           else if(solid.category==='SPHERE')bad('SOLID_DIMS_INVALID');
           let z,rimR;
-          if(which==='center'){z=solid.kind==='SPHERE'?solid.radius:0;rimR=solid.radius;}
+          if(which==='center'){z=solid.kind==='SPHERE'?(solid.centerZ??solid.radius):0;rimR=solid.radius;}
           else if(which==='level'){
             if(!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
             // the radius comes from the exact fraction, not the rounded section.r, so a length such as 20/3 still has an exact label
@@ -1092,7 +1145,7 @@ function solidScreenPoints(solid){
   const ox=solid.offset??0;
   if(solid.cut)return cutSphereScreenPoints(solid);
   const ell=(rad,z)=>{const c=project([0,0,z]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+rad*Math.cos(u),c[1]+rad*sP*Math.sin(u)]);}};
-  if(solid.kind==='SPHERE'){const c=project([0,0,r]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}}
+  if(solid.kind==='SPHERE'){const c=project([0,0,solid.centerZ??r]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}}
   else if(solid.kind==='HEMISPHERE'){const c=project([0,0,0]);c[0]+=ox;for(let k=0;k<=12;k++){const u=Math.PI*k/12;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}ell(r,0);}
   else{
     if(solid.r0>0)ell(solid.r0,0);
@@ -1856,7 +1909,7 @@ function specSphere(solid,ctx,arcPrim){
   const {S,X,Y,prims}=ctx;
   const sid=solid.id,r=solid.radius,sh=solid.offset??0;
   if(solid.kind==='SPHERE'){
-    const c=project([0,0,r]),cx=c[0]+sh;
+    const c=project([0,0,solid.centerZ??r]),cx=c[0]+sh;
     const eq={cx,cy:c[1],a:r,b:r*sP};
     arcPrim(sid+'-outline-upper','sphere-outline',{cx,cy:c[1],a:r,b:r},0,Math.PI,'solid',{solid:sid,part:'UPPER'});
     arcPrim(sid+'-outline-lower','sphere-outline',{cx,cy:c[1],a:r,b:r},Math.PI,2*Math.PI,'solid',{solid:sid,part:'LOWER'});
@@ -2297,6 +2350,7 @@ export function expandSolidFigure(plan){
   const cap=plan.solidCaption;
   if(cap!==undefined&&(!isPlain(cap)||Object.keys(cap).some(k=>k!=='text')||typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))bad('SOLID_CAPTION_INVALID');
   if(plan.panelWidth!==undefined)bad('SOLID_PLAN_INVALID');
+  // the author's solidCaption stays in the panel's plan: it is what lets a figure with nothing written on it stand (the panel caption carries the text)
   const {caption,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;
-  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':'입체도형'},plan:figure}],caption,sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
+  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':'입체도형'},plan:cap!==undefined?{...figure,solidCaption:cap}:figure}],caption,sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
 }

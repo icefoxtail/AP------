@@ -1063,3 +1063,40 @@ class CutsThroughCorners(unittest.TestCase):
         for cuts in ([{'vertices': ['A', 'C']}], [{'vertices': []}], [{}], [{'vertices': ['A', 'A', 'C']}], [{'vertices': ['A', 'C', 'F', 'D']}], [{'vertices': ['E', 'F', 'G']}],
                      [{'vertices': ['A', 'C', 'F'], 'keep': 'A'}], [{'vertices': 'ACF'}], [{'vertices': ['A', 'C', 7]}]):
             self.assertRaises(ValueError, self.cut, cuts)
+
+
+class BallsInACylinder(unittest.TestCase):
+    """E28c: balls stacked in a cylinder, expanded from the plan's own grammar"""
+
+    def specs(self, host, *more):
+        return O.expanded_solid_specs({'solids': [{'kind': 'CYLINDER', 'radius': 3, 'height': 18, **host}, *more]})
+
+    def test_a_stack_is_equal_balls_resting_on_each_other_from_the_bottom(self):
+        specs = self.specs({'stack': {'count': 3, 'radius': 3}})
+        self.assertEqual([(s['id'], s['kind']) for s in specs], [('s1', 'CYLINDER'), ('s1b1', 'SPHERE'), ('s1b2', 'SPHERE'), ('s1b3', 'SPHERE')])
+        self.assertEqual([s.get('centerZ') for s in specs], [None, 3.0, 9.0, 15.0])
+        self.assertTrue(all(s['inside'] == 's1' for s in specs[1:]))
+        self.assertNotIn('stack', specs[0])
+        solids = [O.build_solid(s) for s in specs]
+        self.assertEqual([s['cz'] for s in solids[1:]], [3.0, 9.0, 15.0])
+        self.assertEqual(solids[1]['points'][0][2], (0.0, 0.0, 3.0))
+
+    def test_a_list_rests_each_ball_on_the_one_before_unless_it_says_where(self):
+        specs = self.specs({'inside': [{'kind': 'SPHERE', 'radius': 2}, {'kind': 'SPHERE', 'radius': 3}, {'kind': 'SPHERE', 'radius': 1, 'centerZ': 15}]})
+        self.assertEqual([s.get('centerZ') for s in specs[1:]], [2.0, 7.0, 15.0])
+        # the plan's own solids keep their ids by their place in the plan, the balls follow their cylinder
+        specs = self.specs({'stack': {'count': 2, 'radius': 1}}, {'kind': 'CONE', 'radius': 2, 'height': 3})
+        self.assertEqual([s['id'] for s in specs], ['s1', 's1b1', 's1b2', 's2'])
+
+    def test_a_ball_at_a_given_height_has_its_centre_there_and_a_plain_sphere_rests_on_the_floor(self):
+        self.assertEqual(O.build_solid({'kind': 'SPHERE', 'radius': 2, 'id': 's1'})['cz'], 2.0)
+        ball = O.build_solid({'kind': 'SPHERE', 'radius': 2, 'inside': 's1', 'centerZ': 7, 'id': 's2'})
+        self.assertEqual((ball['cz'], ball['points'][0][2]), (7.0, (0.0, 0.0, 7.0)))
+        self.assertEqual(O.build_solid({'kind': 'HEMISPHERE', 'radius': 2, 'id': 's1'})['cz'], 0.0)
+
+    def test_what_the_grammar_does_not_allow_is_refused(self):
+        for host in ({'stack': {'count': 1, 'radius': 3}}, {'stack': {'count': 7, 'radius': 1}}, {'stack': {'count': 2.5, 'radius': 1}},
+                     {'stack': {'count': 2, 'radius': 1}, 'inside': [{'kind': 'SPHERE', 'radius': 1}]}, {'inside': []},
+                     {'inside': [{'kind': 'CONE', 'radius': 1}]}, {'inside': [{'kind': 'SPHERE', 'radius': 1}] * 7}):
+            self.assertRaises(ValueError, self.specs, host)
+        self.assertRaises(ValueError, O.expanded_solid_specs, {'solids': [{'kind': 'CONE', 'radius': 2, 'height': 3, 'stack': {'count': 2, 'radius': 1}}]})

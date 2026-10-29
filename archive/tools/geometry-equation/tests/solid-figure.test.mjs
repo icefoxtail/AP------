@@ -1762,3 +1762,81 @@ test('E28c: five section panels (cylinder, cone, frustum, sphere, hemisphere) co
   assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
   assert.deepEqual(compositePanelLayout(checked),{kind:'GRID',columns:2,rows:3});
 });
+
+// --- E28c-6: several balls in one cylinder -----------------------------------------------------------------------------------------------------------
+const ballsIn=(solid,over={})=>figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:18,...solid}],solidCaption:{text:'반지름 3cm인 공 3개'},...over});
+// (the radius of a ball in a tight cylinder has no room for its label: the engine's rules keep a label off every stroke and a leader from crossing one, so the balls carry their radius in the caption)
+test('E28c: a cylinder holds a stack of balls, or balls at given heights: nested spheres s1b1, s1b2, ... that fit, touch or stand apart, and never overlap',()=>{
+  const m=solveSolidFigure(ballsIn({stack:{count:3,radius:3}},{dims:[{solid:'s1b1',radius:'center'}]}));
+  assert.deepEqual(m.solids.map(s=>[s.id,s.kind,s.inside,s.centerZ]),[['s1','CYLINDER',null,undefined],['s1b1','SPHERE','s1',3],['s1b2','SPHERE','s1',9],['s1b3','SPHERE','s1',15]]);
+  assert.equal(m.dims[0].z,3);assert.equal(m.dims[0].r,3);// the radius of the lowest ball lies at the height of its centre
+  const list=solveSolidFigure(ballsIn({inside:[{kind:'SPHERE',radius:3},{kind:'SPHERE',radius:3},{kind:'SPHERE',radius:3,centerZ:15}]}));
+  assert.deepEqual(list.solids.slice(1).map(s=>s.centerZ),[3,9,15]);// a ball without centerZ rests on the ball before it
+  // different radii and a loose ball; the plan's own solids keep their ids by their place in the plan
+  const loose=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:18,inside:[{kind:'SPHERE',radius:2},{kind:'SPHERE',radius:3,centerZ:10}]},{kind:'CONE',radius:2,height:3}],solidCaption:{text:'공과 원뿔'}}));
+  assert.deepEqual(loose.solids.map(s=>[s.id,s.centerZ]),[['s1',undefined],['s1b1',2],['s1b2',10],['s2',undefined]]);
+  // the written-out form is the same model
+  const written=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:12,id:'s1'},{kind:'SPHERE',radius:3,inside:'s1',centerZ:3},{kind:'SPHERE',radius:3,inside:'s1',centerZ:9}],solidCaption:{text:'공 2개'}}));
+  assert.deepEqual(written.solids.map(s=>[s.id,s.centerZ]),[['s1',undefined],['s2',3],['s3',9]]);
+  // a plan without the fields keeps its model: a sphere in a cylinder rests on the bottom
+  const rest=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:6,id:'s1'},{kind:'SPHERE',radius:3,inside:'s1'}],solidCaption:{text:'공 1개'}}));
+  assert.equal('centerZ' in rest.solids[1],false);assert.equal(rest.solids[1].points[0].p[2],3);
+  const bad=(solid,expected,over={})=>assert.throws(()=>solveSolidFigure(ballsIn(solid,over)),code(expected),expected);
+  bad({stack:{count:3,radius:3},height:17},'SOLID_NEST_DOES_NOT_FIT:s1b3');// the third ball reaches above the top
+  bad({stack:{count:3,radius:4}},'SOLID_NEST_DOES_NOT_FIT:s1b1');// wider than the cylinder
+  bad({inside:[{kind:'SPHERE',radius:3,centerZ:2}]},'SOLID_NEST_DOES_NOT_FIT:s1b1');// below the bottom
+  bad({inside:[{kind:'SPHERE',radius:3,centerZ:3},{kind:'SPHERE',radius:3,centerZ:5}]},'SOLID_NEST_OVERLAP:s1b1,s1b2');
+  bad({inside:[{kind:'SPHERE',radius:3,centerZ:3},{kind:'SPHERE',radius:2,centerZ:7}]},'SOLID_NEST_OVERLAP:s1b1,s1b2');// 3 + 2 > 4
+  bad({stack:{count:3,radius:3},inside:[{kind:'SPHERE',radius:3}]},'SOLID_BALLS_INVALID');
+  bad({stack:{count:1,radius:3}},'SOLID_BALLS_INVALID');
+  bad({stack:{count:7,radius:1}},'SOLID_BALLS_INVALID');
+  bad({stack:{count:2.5,radius:1}},'SOLID_BALLS_INVALID');
+  bad({stack:'x'},'SOLID_BALLS_INVALID');
+  bad({stack:{count:2,radius:1,gap:1}},'SOLID_BALLS_INVALID');
+  bad({stack:{count:2,radius:-1}},'SOLID_PARAM_INVALID');
+  bad({stack:{count:2}},'SOLID_PARAM_INVALID');
+  bad({inside:[]},'SOLID_BALLS_INVALID');
+  bad({inside:[{kind:'CONE',radius:1}]},'SOLID_BALLS_INVALID');
+  bad({inside:[{kind:'SPHERE',radius:1,color:'red'}]},'SOLID_BALLS_INVALID');
+  bad({inside:['s2']},'SOLID_BALLS_INVALID');
+  bad({inside:[{kind:'SPHERE',radius:1,centerZ:'3'}]},'SOLID_PARAM_INVALID');
+  bad({inside:Array.from({length:7},()=>({kind:'SPHERE',radius:0.5}))},'SOLID_BALLS_INVALID');
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CONE',radius:3,height:6,stack:{count:2,radius:1}}]})),code('SOLID_BALLS_UNSUPPORTED:CONE'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'SPHERE',radius:2,centerZ:3}]})),code('SOLID_NEST_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:6,id:'s1'},{kind:'SPHERE',radius:2,inside:'s1',centerZ:-1}]})),code('SOLID_PARAM_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:18,stack:{count:2,radius:3}},{kind:'CONE',radius:2,height:3,inside:'s1'}]})),code('SOLID_NEST_UNSUPPORTED:MIXED'));
+  // the cap of three solids counts the plan's own solids, not the balls they hold
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:1,height:2},{kind:'CYLINDER',radius:1,height:2},{kind:'CYLINDER',radius:1,height:2},{kind:'CYLINDER',radius:1,height:2}]})),code('SOLID_COUNT_INVALID'));
+  assert.equal(solveSolidFigure(ballsIn({stack:{count:6,radius:1.5}})).solids.length,7);
+});
+test('E28c: three balls in a cylinder are drawn at their own heights and the observer re-derives each from the plan: heights, fit, no overlap',async()=>{
+  const plan=ballsIn({stack:{count:3,radius:3}},{panelWidth:GRID_PANEL_WIDTH});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-role="sphere-outline"/g)??[]).length,6);// an upper and a lower half circle for each ball
+  assert.equal((svg.match(/data-circle="equator"/g)??[]).length,6);
+  assert.match(svg,/id="s1b3-outline-upper"/);
+  // each ball is a circle of the cylinder's radius, one above the other on the axis (centres 2 r cos(pitch) apart on the screen)
+  const scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]),centre=id=>{const d=svg.match(new RegExp(`<path id="${id}-outline-upper"[^>]*d="M ([-\\d.]+) ([-\\d.]+) A`));return [Number(d[1])+scale*3,Number(d[2])];};
+  const [c1,c2,c3]=['s1b1','s1b2','s1b3'].map(centre);
+  assert.ok(Math.abs(c1[0]-c2[0])<0.01&&Math.abs(c2[0]-c3[0])<0.01);
+  assert.ok(Math.abs((c1[1]-c2[1])-scale*6*Math.cos(20*Math.PI/180))<0.05&&Math.abs((c2[1]-c3[1])-scale*6*Math.cos(20*Math.PI/180))<0.05);
+  // tampering: a ball drawn higher or lower, a ball missing, a ball that is not in the plan
+  const upper=svg.match(/<path id="s1b2-outline-upper"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(upper,upper.replace(/ d="M ([-\d.]+) ([-\d.]+) A ([-\d.]+) ([-\d.]+) 0 (\d) 0 ([-\d.]+) ([-\d.]+)"/,(all,x0,y0,rx,ry,l,x1,y1)=>` d="M ${x0} ${Number(y0)-12} A ${rx} ${ry} 0 ${l} 0 ${x1} ${Number(y1)-12}"`)),'SOLID_');
+  await failingAudit(ballsIn({stack:{count:2,radius:3}},{panelWidth:GRID_PANEL_WIDTH}),svg,'SOLID_SOLID_NOT_IN_PLAN:s1b3');// a ball drawn that the plan does not have
+  await failingAudit(ballsIn({inside:[{kind:'SPHERE',radius:3,centerZ:3},{kind:'SPHERE',radius:3,centerZ:9},{kind:'SPHERE',radius:3,centerZ:14.5}]},{panelWidth:GRID_PANEL_WIDTH}),svg,'SOLID_');
+  // the plan that overlaps its balls fails in the observer as well (the engine refuses it first, so ask the observer directly)
+  const overlapping=ballsIn({inside:[{kind:'SPHERE',radius:3,centerZ:3},{kind:'SPHERE',radius:3,centerZ:5}]},{panelWidth:GRID_PANEL_WIDTH});
+  const r=await audit(overlapping,svg);
+  assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_NEST_OVERLAP')),JSON.stringify(r.errors));
+});
+test('E28c: balls with a section beside them: a cylinder of balls and a cylinder with a water level compose in one grid',async()=>{
+  const plan=gridOf([
+    solidPanel({capability:'solid-figure-v1',unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:18,stack:{count:3,radius:3}}]},'공 3개'),
+    solidPanel({capability:'solid-figure-v1',unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:18}],section:{kind:'LEVEL',at:'1/3',fill:'BOTTOM'},dims:[{level:true,label:'h'}]},'물의 높이')
+  ],{caption:'원기둥에 공 3개가 꼭 맞게 들어 있다'});
+  const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+  const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-balls-grid|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:29.3,displayScale:0.384,fontFloorCssPx:11}});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
+  assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+});
