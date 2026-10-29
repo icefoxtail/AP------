@@ -615,6 +615,19 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                             label={**label,'at':list(start)};tie_to_owner(end);chosen=box;default_gaps=()
                             theta=math.degrees(ws['bisector'])%360;method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)];break
                     radius+=2
+            if 'dimensionPlacement' in label:
+                # A dimension line's length label (E7): the box stands on the outer side of the line (of the brace's tip), touching none of it, centred on the
+                # line or slid along it; no other place would read as that dimension's value, so there is no leader and no fallback search.
+                default_gaps=()
+                site=label['dimensionPlacement'];normal=site['normal'];tangent=site['tangent'];anchor=site['anchor']
+                support=abs(normal[0])*w/2+abs(normal[1])*h/2
+                for slide in site['slides']:
+                    for gap in site['gaps']:
+                        reach=gap+support;along=slide*site['length']
+                        center=(anchor[0]+tangent[0]*along+normal[0]*reach,anchor[1]+tangent[1]*along+normal[1]*reach)
+                        box=Box(center[0]-w/2,center[1]-h/2,w,h)
+                        if acceptable(box):chosen=box;method='DIMENSION_OUTSIDE';break
+                    if chosen is not None:break
             if 'candidateBaselines' in label:
                 for x, y in label['candidateBaselines']:
                     box=Box(x,y-h*.8,w,h)

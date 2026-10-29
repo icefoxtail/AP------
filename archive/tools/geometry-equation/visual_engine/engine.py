@@ -167,6 +167,45 @@ def _region_label_centres(polygons,obstacles,step=3.0,limit=900):
         if len(chosen)>=limit:break
     return [list(p) for p in chosen]
 
+# ---- dimension lines (E7): a length written between two points on a line parallel to them, on one side of the figure ----------------------------------
+# The dimension line stands DIM_FIRST_PX from the two points (further levels DIM_STEP_PX apart, so a label fits between two levels). Its ends are the feet of
+# the perpendiculars from the two points. BAR: thin extension lines from the points and a short perpendicular tick at each end; ARROW: the same with an
+# arrowhead at each end instead of a tick; BRACE: a curly brace whose two ends stand just off the points and whose tip, DIM_FIRST_PX away, points outward.
+DIM_FIRST_PX=24.0
+DIM_STEP_PX=44.0
+DIM_EXT_GAP_PX=4.0               # an extension line starts this far from its point (clear of the point's dot)
+DIM_TICK_HALF_PX=4.5             # a BAR tick is 9 px long, centred on the dimension line's end
+DIM_ARROW_OVERSHOOT_PX=3.0       # an ARROW's extension line runs this far past the dimension line
+DIM_ARROW_LENGTH_PX=10.0
+DIM_ARROW_HALF_WIDTH_PX=3.6
+DIM_BRACE_RADIUS_PX=6.0          # the brace is built of quarter circles of this radius: its depth from the two ends to the tip is twice it
+DIM_BRACE_SAMPLES=10             # points per quarter circle
+DIM_MIN_LENGTH_PX=40.0
+DIM_SIDE_VECTORS={'BELOW':(0.0,1.0),'ABOVE':(0.0,-1.0),'LEFT':(-1.0,0.0),'RIGHT':(1.0,0.0)}
+DIM_SIDE_MIN_DOT=0.2             # the chosen side must point at least this much (cosine) along the named screen direction
+DIM_LABEL_GAPS=(8,12,18,26)
+DIM_LABEL_SLIDES=(0.0,0.12,-0.12,0.24,-0.24)   # fractions of the dimension's length a label may slide along it when the middle is taken
+
+def dimension_frame(p,q,side,offset,oid):
+    """(length, unit direction p->q, outward unit normal, distance of the dimension line from p-q) in screen px. The normal is the one of the two
+    perpendiculars that points more along the named screen side; a segment (nearly) perpendicular to that side is ambiguous."""
+    length=math.dist(p,q);d=((q[0]-p[0])/length,(q[1]-p[1])/length)
+    want=DIM_SIDE_VECTORS[side]
+    n=max(((-d[1],d[0]),(d[1],-d[0])),key=lambda v:v[0]*want[0]+v[1]*want[1])
+    if n[0]*want[0]+n[1]*want[1]<DIM_SIDE_MIN_DOT:raise ValueError('DIMENSION_SIDE_AMBIGUOUS:'+oid)
+    return length,d,n,DIM_FIRST_PX+DIM_STEP_PX*(offset-1)
+
+def brace_points(length,start,tip):
+    """A curly brace along u in [0,length]: its two ends at v=start (vertical tangent), a horizontal run at start+r, and the tip at v=tip in the middle (both
+    halves arrive vertically), as (u,v) pairs from the left end to the right end. The depth tip-start must be twice the radius."""
+    r=DIM_BRACE_RADIUS_PX;half=[]
+    for k in range(DIM_BRACE_SAMPLES+1):
+        a=math.pi/2*k/DIM_BRACE_SAMPLES;half.append((r-r*math.cos(a),start+r*math.sin(a)))                   # end hook: (0,start) -> (r,start+r)
+    for k in range(DIM_BRACE_SAMPLES+1):
+        a=-math.pi/2+math.pi/2*k/DIM_BRACE_SAMPLES;half.append((length/2-r+r*math.cos(a),start+2*r+r*math.sin(a)))   # towards the tip: (L/2-r,start+r) -> (L/2,start+2r)
+    left=half;right=[(length-u,v) for u,v in reversed(half)]
+    return left+right[1:]
+
 # An angle label whose nearest edge is farther than this (px) from its vertex is no longer read as its arc's value: it takes a leader to the arc instead
 # (the golden figures keep every label within 71 px, so they are unchanged). The plane-marks observer checks the same distance on the final SVG (ANGLE_LABEL_TOO_FAR).
 ANGLE_LABEL_FAR_DISTANCE_PX=90.0
@@ -699,6 +738,35 @@ def prepare(spec):
                     labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*rays)),'rFar':max(outer_radius+12.0,.92*rays),'arcRadius':outer_radius,'farDistance':ANGLE_LABEL_FAR_DISTANCE_PX},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
                 continue
             primitive({'id':oid,'kind':'polyline','points':pts,'token':'indicator','layer':60,'role':'indicator'},'curve')
+        elif kind=='DIMENSION_LINE':
+            if not vp.equal:raise ValueError('DIMENSION_REQUIRES_EQUAL_UNITS')
+            p,q=vp.screen(value['from']),vp.screen(value['to']);style=obj.get('style','BAR')
+            length,d,n,dist=dimension_frame(p,q,obj['side'],obj.get('offset',1),oid)
+            if length<DIM_MIN_LENGTH_PX:raise ValueError('DIMENSION_TOO_SHORT:'+oid)
+            at=lambda base,u,v:(base[0]+d[0]*u+n[0]*v,base[1]+d[1]*u+n[1]*v)
+            def dim_primitive(part,shape,token,**fields):
+                primitive({'id':oid+'-'+part,'kind':shape,'token':token,'layer':52,'role':'indicator','mark':'dimension','markId':oid,'markPart':part,**fields},'curve')
+            foot_from,foot_to=at(p,0,dist),at(q,0,dist)
+            if style=='BRACE':
+                start=dist-2*DIM_BRACE_RADIUS_PX
+                if start<DIM_EXT_GAP_PX+2:raise ValueError('DIMENSION_BRACE_TOO_NEAR:'+oid)
+                if length<4*DIM_BRACE_RADIUS_PX+16:raise ValueError('DIMENSION_TOO_SHORT:'+oid)
+                dim_primitive('brace','polyline','auxiliary',points=[at(p,u,v) for u,v in brace_points(length,start,dist)])
+            else:
+                end_pad=DIM_TICK_HALF_PX if style=='BAR' else -DIM_ARROW_OVERSHOOT_PX
+                for part,base in (('ext-from',p),('ext-to',q)):
+                    dim_primitive(part,'line','indicator',**{'from':at(base,0,DIM_EXT_GAP_PX),'to':at(base,0,dist-end_pad)})
+                dim_primitive('line','line','auxiliary',**{'from':foot_from,'to':foot_to})
+                if style=='BAR':
+                    for part,foot in (('tick-from',foot_from),('tick-to',foot_to)):
+                        dim_primitive(part,'line','auxiliary',**{'from':(foot[0]-n[0]*DIM_TICK_HALF_PX,foot[1]-n[1]*DIM_TICK_HALF_PX),'to':(foot[0]+n[0]*DIM_TICK_HALF_PX,foot[1]+n[1]*DIM_TICK_HALF_PX)})
+                else:
+                    for part,tip,out in (('arrow-from',foot_from,(-d[0],-d[1])),('arrow-to',foot_to,d)):
+                        base=(tip[0]-out[0]*DIM_ARROW_LENGTH_PX,tip[1]-out[1]*DIM_ARROW_LENGTH_PX)
+                        dim_primitive(part,'polygon','indicator',points=[tip,(base[0]-out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]+out[0]*DIM_ARROW_HALF_WIDTH_PX),(base[0]+out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]-out[0]*DIM_ARROW_HALF_WIDTH_PX)],fill='#111')
+            # The label stands on the outer side of the dimension line (of the brace's tip), centred on it; the layout slides it along the line when the middle is taken.
+            anchor=at(p,length/2,dist)
+            labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'dimensionPlacement':{'anchor':list(anchor),'normal':list(n),'tangent':list(d),'length':length,'gaps':DIM_LABEL_GAPS,'slides':DIM_LABEL_SLIDES}},obj.get('unit')))
         elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
             ends=[(vp.screen(geometry[r][0]),vp.screen(geometry[r][1])) for r in obj['refs']];count=obj['count']
             reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1])

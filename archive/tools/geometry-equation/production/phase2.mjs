@@ -29,7 +29,7 @@ export {verifyConstructionConditionBindings} from './fact-display-map-v1.mjs';
 
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
-import {planeMarkSpec,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming} from './plane-marks.mjs';
+import {planeMarkSpec,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming} from './plane-marks.mjs';
 import {regionExtentPoints} from './plane-regions.mjs';
 
 const GRAPH_OVERVIEW_CANVAS=Object.freeze({width:610,height:420,panel:140});
@@ -886,7 +886,7 @@ function specForFamily(plan,model,id){
   if(height>600)throw Error('COORDINATE_PANEL_TOO_TALL');
   const equationLabelCenters=Object.fromEntries(panelLabels.map((labelId,i)=>[labelId,[panelLabels.length===1?coordinateCanvas.width/2:coordinateCanvas.width*(i%2?.72:.28),panelCenters[Math.floor(i/2)]]]));
   // A plane figure with a label on a circular arc (outside its circle) widens its frame so the label has canvas room; every other figure keeps the tight frame.
-  const frame=arcLabelFraming(plan,model,points,{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad},coordinateCanvas);
+  const frame=dimensionFraming(plan,model,points,arcLabelFraming(plan,model,points,{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad},coordinateCanvas),coordinateCanvas);
   return {id,visualType:'line_circle_geometry',viewport:{xMin:frame.xMin,xMax:frame.xMax,yMin:frame.yMin,yMax:frame.yMax,width:coordinateCanvas.width,height,panel:0,...(topInset?{topInset}:{})},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id),...axisTickDisplayFacts(plan),...(panelLabels.length?{equationLabelCenters}:{}),...(axisCoincidentLines.length?{axisCoincidentLines}:{})},objects};
 }
 

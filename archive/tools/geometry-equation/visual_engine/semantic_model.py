@@ -9,11 +9,11 @@ from .geometry_model import (Line,Circle,CircularArc,point,finite,line_intersect
 KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRCULAR_ARC','TRACE_ARC',
     'FUNCTION_GRAPH','INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR',
     'PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUATION_LABEL','EQUAL_MARK','PARALLEL_MARK',
-    'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION'}
+    'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION','DIMENSION_LINE'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
-FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners'}
-REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'}}
+FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset'}
+REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'}}
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -65,11 +65,11 @@ def validate(spec):
         if 'emphasisGroup' in obj and (obj['kind']!='ANGLE_MARK' or isinstance(obj['emphasisGroup'],bool) or obj['emphasisGroup'] not in {1,2,3}):raise ValueError('INVALID_ANGLE_EMPHASIS_GROUP')
         # A plane mark label is plain TEXT or math; a unit (cm, m, mm) follows a math label of an expression label, a circular arc or a trace only.
         if 'unit' in obj:
-            if obj['kind'] not in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC'}:raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
+            if obj['kind'] not in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE'}:raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
             if obj['unit'] not in {'cm','m','mm'}:raise ValueError('MARK_UNIT_INVALID:'+str(obj.get('id')))
             if obj['kind']!='EQUATION_LABEL' and obj.get('labelText') is None:raise ValueError('MARK_UNIT_REQUIRES_LABEL:'+str(obj.get('id')))
             if obj.get('labelKind','DEGREE' if obj['kind']=='CIRCULAR_ARC' else 'MATH')!='MATH':raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+str(obj.get('id')))
-        if 'labelKind' in obj and obj['kind'] in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC'}:
+        if 'labelKind' in obj and obj['kind'] in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE'}:
             if obj['labelKind'] not in ({'MATH','TEXT'} if obj['kind']!='CIRCULAR_ARC' else {'DEGREE','NAME','MATH','TEXT'}):raise ValueError('MARK_LABEL_KIND_INVALID:'+str(obj.get('id')))
         # A first layout direction for a label at its point (the layout still tries the other directions).
         if 'preferred' in obj and (obj['kind'] not in {'POINT_NAME','COORDINATE_LABEL'} or obj['preferred'] not in {'N','NE','E','SE','S','SW','W','NW'}):raise ValueError('INVALID_LABEL_PREFERRED_DIRECTION')
@@ -131,6 +131,21 @@ def validate(spec):
             rows.append((pid,target,math.atan2(target[1]-center[1],target[0]-center[0])))
         geometry[obj['id']]={'center':center,'radius':radius,'through':rows,'spanDeg':float(span)}
         relations.append({'id':obj['id'],'kind':'TRACE_ARC','status':'PASS','observed':radius})
+    for obj in spec['objects']:
+        if obj['kind'] != 'DIMENSION_LINE': continue
+        # A dimension line: a length written between two displayed points on a line parallel to them, on one side, with a bar/arrow/brace style.
+        refs=obj['refs']
+        if len(refs)!=2 or len(set(refs))!=2 or any(objects.get(ref,{}).get('kind')!='POINT' for ref in refs):raise ValueError('DIMENSION_POINT_REFS_REQUIRED:'+obj['id'])
+        if obj['side'] not in {'ABOVE','BELOW','LEFT','RIGHT'}:raise ValueError('DIMENSION_SIDE_INVALID:'+obj['id'])
+        if obj.get('style','BAR') not in {'BAR','ARROW','BRACE'}:raise ValueError('DIMENSION_STYLE_INVALID:'+obj['id'])
+        offset=obj.get('offset',1)
+        if isinstance(offset,bool) or not isinstance(offset,int) or not 1<=offset<=3:raise ValueError('DIMENSION_OFFSET_INVALID:'+obj['id'])
+        text=obj.get('labelText')
+        if not isinstance(text,str) or not text.strip() or len(text)>40:raise ValueError('DIMENSION_LABEL_REQUIRED:'+obj['id'])
+        p,q=geometry[refs[0]],geometry[refs[1]]
+        if math.dist(p,q)<=1e-9:raise ValueError('DIMENSION_POINTS_COINCIDE:'+obj['id'])
+        geometry[obj['id']]={'from':p,'to':q}
+        relations.append({'id':obj['id'],'kind':'DIMENSION_LINE','status':'PASS','observed':math.dist(p,q)})
     for obj in spec['objects']:
         if obj['kind'] != 'CIRCULAR_ARC': continue
         refs=(obj['centerPoint'],obj['startPoint'],obj['endPoint'])

@@ -59,6 +59,49 @@ def segment_box_hit(a,b,box,pad):
             if low>high:return False
     return True
 
+# ---- dimension lines (E7): this observer's own copy of the drawing rules, in svg px; it never imports the engine's constants ------------------------
+DIM_SIDE_VECTORS={'BELOW':(0.0,1.0),'ABOVE':(0.0,-1.0),'LEFT':(-1.0,0.0),'RIGHT':(1.0,0.0)}
+DIM_SIDE_MIN_DOT=0.2           # the chosen perpendicular points at least this much (cosine) along the named screen side
+DIM_FIRST_PX=24.0              # the dimension line's distance from its two points; each further offset level adds DIM_STEP_PX
+DIM_STEP_PX=44.0
+DIM_EXT_START_PX=4.0           # an extension line starts this far from its point
+DIM_BAR_TICK_HALF_PX=4.5       # a BAR tick is 9 px long, centred on the line's end
+DIM_ARROW_PAST_PX=3.0          # an ARROW's extension line runs this far past the line
+DIM_ARROW_LENGTH_PX=10.0
+DIM_ARROW_HALF_WIDTH_PX=3.6
+DIM_BRACE_RADIUS_PX=6.0        # a brace: quarter circles of this radius, two ends, a run, a tip twice the radius from the ends
+DIM_BRACE_SAMPLES=10
+DIM_POSITION_TOLERANCE_PX=0.05
+DIM_LABEL_MAX_SLIDE=0.3        # the label's centre lies within this fraction of the dimension's length from the middle of the line
+DIM_LABEL_MAX_GAP_PX=30.0      # and its nearest edge within this distance beyond the line (or the brace's tip)
+
+def dimension_label_parts(row):
+    """(label, unit) of a dimension: a trailing thin-space unit written in the label ("24\\,cm") is the unit, as in the plan's own reading of it."""
+    label,unit=row.get('label'),row.get('unit')
+    if isinstance(label,str):
+        m=re.fullmatch(r'(.*?)\s*\\,\s*(cm|mm|m)',label)
+        if m and m.group(1)!='' and unit in (None,m.group(2)):label,unit=m.group(1),m.group(2)
+    return label,unit
+
+def brace_expected(length,dist):
+    """The brace's (along, across) samples from the end at the first point to the end at the second: ends dist-2r from the points' line (vertical tangent),
+    a run at dist-r, the tip at dist in the middle. Written here from the declared rule, not read from the engine."""
+    r=DIM_BRACE_RADIUS_PX;start=dist-2*r;half=[]
+    for k in range(DIM_BRACE_SAMPLES+1):
+        a=math.pi/2*k/DIM_BRACE_SAMPLES;half.append((r-r*math.cos(a),start+r*math.sin(a)))
+    for k in range(DIM_BRACE_SAMPLES+1):
+        a=-math.pi/2+math.pi/2*k/DIM_BRACE_SAMPLES;half.append((length/2-r+r*math.cos(a),start+2*r+r*math.sin(a)))
+    return half+[(length-u,v) for u,v in reversed(half)][1:]
+
+def box_polyline_distance(box,points):
+    """Smallest distance from a label box (0 inside) to a polyline, sampled along every segment."""
+    best=math.inf
+    for a,b in zip(points,points[1:]):
+        for i in range(33):
+            x=a[0]+(b[0]-a[0])*i/32;y=a[1]+(b[1]-a[1])*i/32
+            best=min(best,math.hypot(max(box[0]-x,0,x-(box[0]+box[2])),max(box[1]-y,0,y-(box[1]+box[3]))))
+    return best
+
 def audit(p):
     root=ET.fromstring(p['svg']);errors=[];observations=[]
     model=p['transform'];ox,oy,sx,sy=[model[k] for k in ('originX','originY','sx','sy')]
@@ -84,6 +127,7 @@ def audit(p):
         if n.get('data-mark'):by_mark.setdefault((n.get('data-mark'),n.get('data-mark-id')),[]).append(n)
     declared={('angle',r['id']) for r in marks.get('angles',[])}|{('equal',r['id']) for r in marks.get('equalLengths',[])}|{('parallel',r['id']) for r in marks.get('parallels',[])}|{('arc',r['id']) for r in marks.get('arcs',[]) if r.get('highlight',True)}
     declared|={('trace',r['id']) for r in marks.get('traces',[])}
+    declared|={('dimension',r['id']) for r in marks.get('dimensions',[])}
     declared|={('arrow',s['id']) for s in p.get('segments',[]) if s.get('arrow')}
     declared|={('region',r['id']) for r in marks.get('regions',[])}
     declared|={('region-hatch',r['id']) for r in marks.get('regions',[]) if r.get('pattern')=='HATCH'}
@@ -332,6 +376,105 @@ def audit(p):
         elif any(distance_to(sid)+1e-9<mine for sid in segment_lines if sid!=row['ownerSegment']):errors.append('SEGMENT_LABEL_AMBIGUOUS_OWNER:'+oid)
         label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'))
         observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx,**({'labelKind':row['labelKind']} if row.get('labelKind') else {}),**({'unit':row['unit']} if row.get('unit') else {})})
+
+    # ---- dimension lines: the bar, arrows or brace between two displayed points, every part recomputed from the peer points, the label on the outer side
+    dimension_lines={}   # id -> the dimension's main polyline in svg px (its line, or the brace) for the label-ownership test
+    dimension_rows=[row for row in marks.get('dimensions',[]) if isinstance(row,dict)]
+    for row in dimension_rows:
+        oid=row['id'];tol=DIM_POSITION_TOLERANCE_PX
+        a=forward(peer_point(row['from']));b=forward(peer_point(row['to']));length=norm(sub(b,a))
+        if length<=1e-9:errors.append('DIMENSION_POINTS_COINCIDE:'+oid);continue
+        side=row.get('side')
+        if side not in DIM_SIDE_VECTORS:errors.append('DIMENSION_SIDE_INVALID:'+oid);continue
+        d=((b[0]-a[0])/length,(b[1]-a[1])/length);want=DIM_SIDE_VECTORS[side]
+        n=max(((-d[1],d[0]),(d[1],-d[0])),key=lambda v:v[0]*want[0]+v[1]*want[1])
+        if n[0]*want[0]+n[1]*want[1]<DIM_SIDE_MIN_DOT:errors.append('DIMENSION_SIDE_AMBIGUOUS:'+oid);continue
+        offset=row.get('offset',1);style=row.get('style','BAR')
+        if isinstance(offset,bool) or not isinstance(offset,int) or not 1<=offset<=3:errors.append('DIMENSION_OFFSET_INVALID:'+oid);continue
+        if style not in ('BAR','ARROW','BRACE'):errors.append('DIMENSION_STYLE_INVALID:'+oid);continue
+        if row.get('value') is not None:
+            drawn_length=norm(sub(peer_point(row['to']),peer_point(row['from'])))
+            if abs(drawn_length-float(row['value']))>1e-6*max(1.0,float(row['value'])):errors.append('DIMENSION_FACT_MISMATCH:'+oid+':declared=%s:drawn=%.6f'%(row['value'],drawn_length))
+        dist=DIM_FIRST_PX+DIM_STEP_PX*(offset-1)
+        frame=lambda q:((q[0]-a[0])*d[0]+(q[1]-a[1])*d[1],(q[0]-a[0])*n[0]+(q[1]-a[1])*n[1])   # (along p->q, across toward the declared side) of an svg point
+        parts={}
+        for node in by_mark.get(('dimension',oid),[]):parts.setdefault(node.get('data-mark-part'),[]).append(node)
+        wanted=['brace'] if style=='BRACE' else ['ext-from','ext-to','line']+(['tick-from','tick-to'] if style=='BAR' else ['arrow-from','arrow-to'])
+        missing=[part for part in wanted if len(parts.get(part,[]))!=1]
+        for part in missing:errors.append('DIMENSION_PART_MISSING:'+oid+':'+part)
+        for part in parts:
+            if part not in wanted:errors.append('DIMENSION_PART_UNEXPECTED:'+oid+':'+str(part))
+        if missing:continue
+        def line_ends(part):
+            node=parts[part][0]
+            if tag(node)!='line':errors.append('DIMENSION_PART_SHAPE:'+oid+':'+part);return None
+            return [frame((float(node.get('x1')),float(node.get('y1')))),frame((float(node.get('x2')),float(node.get('y2'))))]
+        def polygon_points(part):
+            node=parts[part][0]
+            if tag(node) not in ('polygon','polyline'):errors.append('DIMENSION_PART_SHAPE:'+oid+':'+part);return None
+            raw=[float(v) for chunk in node.get('points','').split() for v in chunk.split(',')]
+            return [(raw[i],raw[i+1]) for i in range(0,len(raw)-1,2)]
+        def near(x,y):return abs(x-y)<=tol
+        if style=='BRACE':
+            points=polygon_points('brace')
+            if points is not None:
+                expected=brace_expected(length,dist);observed=[frame(q) for q in points]
+                if any(across<-tol for _a,across in observed):errors.append('DIMENSION_SIDE_MISMATCH:'+oid)
+                elif len(observed)!=len(expected) or any(not near(o[0],e[0]) or not near(o[1],e[1]) for o,e in zip(observed,expected)):errors.append('DIMENSION_BRACE_MISMATCH:'+oid)
+                dimension_lines[oid]=points
+        else:
+            ends=line_ends('line')
+            if ends is not None:
+                if any(across<-tol for _a,across in ends):errors.append('DIMENSION_SIDE_MISMATCH:'+oid)
+                elif any(not near(across,dist) for _a,across in ends):errors.append('DIMENSION_OFFSET_MISMATCH:'+oid)
+                elif not (near(ends[0][0],0.0) and near(ends[1][0],length)):errors.append('DIMENSION_END_MISMATCH:'+oid)
+                node=parts['line'][0];dimension_lines[oid]=[(float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2')))]
+            reach=dist-DIM_BAR_TICK_HALF_PX if style=='BAR' else dist+DIM_ARROW_PAST_PX
+            for part,along in (('ext-from',0.0),('ext-to',length)):
+                ext=line_ends(part)
+                if ext is not None and not (near(ext[0][0],along) and near(ext[1][0],along) and near(ext[0][1],DIM_EXT_START_PX) and near(ext[1][1],reach)):errors.append('DIMENSION_EXTENSION_MISMATCH:'+oid+':'+part)
+            if style=='BAR':
+                for part,along in (('tick-from',0.0),('tick-to',length)):
+                    tick=line_ends(part)
+                    if tick is None:continue
+                    low,high=sorted(t[1] for t in tick)
+                    if not (near(tick[0][0],along) and near(tick[1][0],along) and near(low,dist-DIM_BAR_TICK_HALF_PX) and near(high,dist+DIM_BAR_TICK_HALF_PX)):errors.append('DIMENSION_TICK_MISMATCH:'+oid+':'+part)
+            else:
+                for part,along,out in (('arrow-from',0.0,-1.0),('arrow-to',length,1.0)):
+                    points=polygon_points(part)
+                    if points is None:continue
+                    if len(points)!=3:errors.append('DIMENSION_ARROW_MISMATCH:'+oid+':'+part);continue
+                    tip,left,right=[frame(q) for q in points]
+                    ok=near(tip[0],along) and near(tip[1],dist)
+                    ok=ok and near(left[0],along-out*DIM_ARROW_LENGTH_PX) and near(right[0],along-out*DIM_ARROW_LENGTH_PX)
+                    ok=ok and near(abs(left[1]-right[1]),2*DIM_ARROW_HALF_WIDTH_PX) and near((left[1]+right[1])/2,dist)
+                    if not ok:errors.append('DIMENSION_ARROW_MISMATCH:'+oid+':'+part)
+        observations.append({'id':oid,'type':'DIMENSION','style':style,'side':side,'offset':offset,'lengthPx':length,'distancePx':dist})
+    for row in dimension_rows:
+        oid=row['id']
+        if oid not in dimension_lines:continue
+        a=forward(peer_point(row['from']));b=forward(peer_point(row['to']));length=norm(sub(b,a));d=((b[0]-a[0])/length,(b[1]-a[1])/length)
+        want=DIM_SIDE_VECTORS[row['side']];n=max(((-d[1],d[0]),(d[1],-d[0])),key=lambda v:v[0]*want[0]+v[1]*want[1])
+        dist=DIM_FIRST_PX+DIM_STEP_PX*(row.get('offset',1)-1)
+        frame=lambda q:((q[0]-a[0])*d[0]+(q[1]-a[1])*d[1],(q[0]-a[0])*n[0]+(q[1]-a[1])*n[1])
+        box=label_clear(oid+'-label')
+        if box is not None:
+            corners=[(box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3])]
+            along,_across=frame((box[0]+box[2]/2,box[1]+box[3]/2));near_edge=min(frame(q)[1] for q in corners)
+            if near_edge<dist-0.5:errors.append('DIMENSION_LABEL_NOT_OUTSIDE:'+oid)
+            elif near_edge-dist>DIM_LABEL_MAX_GAP_PX:errors.append('DIMENSION_LABEL_TOO_FAR:'+oid)
+            if abs(along-length/2)>DIM_LABEL_MAX_SLIDE*length:errors.append('DIMENSION_LABEL_OFF_CENTER:'+oid)
+            mine=box_polyline_distance(box,dimension_lines[oid])
+            for other,line in dimension_lines.items():
+                if other!=oid and box_polyline_distance(box,line)+1e-9<mine:errors.append('DIMENSION_LABEL_AMBIGUOUS_OWNER:'+oid+':'+other)
+        label,unit=dimension_label_parts(row)
+        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit)
+        # the dimension line itself (or the brace) never crosses a drawn stroke: its own parts and another dimension's extension lines excepted
+        line=dimension_lines[oid]
+        for sid,pts in strokes:
+            sid=str(sid)
+            if sid.startswith(oid+'-') or re.fullmatch(r'.+-ext-(?:from|to)',sid):continue
+            if any(properly_cross(c,e,q0,q1) for c,e in zip(line,line[1:]) for q0,q1 in zip(pts,pts[1:])):errors.append('DIMENSION_CROSSES_STROKE:'+oid+':'+sid)
 
     # ---- highlighted circle arcs
     def arc_span(row):

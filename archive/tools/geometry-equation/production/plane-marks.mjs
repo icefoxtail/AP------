@@ -28,6 +28,7 @@ export function planNameTexts(plan){
   for(const row of Array.isArray(marks.arcs)?marks.arcs:[])add(row?.label);
   for(const row of Array.isArray(marks.regions)?marks.regions:[])add(row?.label);
   for(const row of Array.isArray(marks.expressionLabels)?marks.expressionLabels:[])add(row?.text);
+  for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])add(row?.label);
   for(const row of Array.isArray(plan?.scalarLabels)?plan.scalarLabels:[]){add(row?.prefix);add(row?.unit);}
   return out;
 }
@@ -39,7 +40,8 @@ export function textNamesPoint(text,id){
 }
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels'],
+  dimensions:['id','from','to','label','labelKind','unit','side','style','offset','value','factRole'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','equalGroup','emphasisGroup','factRole','noLabel'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit'],
@@ -63,6 +65,28 @@ export function angleBetween(a,v,c){
   return Math.acos(Math.max(-1,Math.min(1,(u[0]*w[0]+u[1]*w[1])/(nu*nw))))*180/Math.PI;
 }
 const list=(value,where)=>{if(value===undefined)return [];if(!Array.isArray(value))bad('MARK_FIELD_INVALID:'+where);return value;};
+
+// ---- dimension lines (E7) --------------------------------------------------------------------------------------------------------------------
+// planeMarks.dimensions:[{id,from,to,label,labelKind?,unit?,side,style?,offset?,value?,factRole?}] writes a length between two displayed points on a line
+// parallel to them, on one screen side (ABOVE, BELOW, LEFT, RIGHT: the perpendicular that points that way), as a bar (default), arrows or a brace.
+export const DIMENSION_SIDES=['ABOVE','BELOW','LEFT','RIGHT'];
+export const DIMENSION_STYLES=['BAR','ARROW','BRACE'];
+export const DIMENSION_FIRST_PX=24,DIMENSION_STEP_PX=44;   // the same px distances as the engine draws (the independent observer keeps its own copy)
+const DIMENSION_SIDE_VECTORS={BELOW:[0,1],ABOVE:[0,-1],LEFT:[-1,0],RIGHT:[1,0]};
+/** A dimension's label text and unit: a trailing `\\,cm` (thin space and unit) written inside the label is the unit, so "24\\,cm" is the label 24 with unit cm. */
+export function dimensionLabelParts(row){
+  let label=row?.label,unit=row?.unit;
+  if(typeof label==='string'){
+    const m=/^(.*?)\s*\\,\s*(cm|mm|m)$/u.exec(label);
+    if(m&&m[1]!==''){if(unit!==undefined&&unit!==m[2])return {label,unit,conflict:true};label=m[1];unit=m[2];}
+  }
+  return {label,unit};
+}
+function dimensionFrame(p,q,side,offset){
+  const length=Math.hypot(q[0]-p[0],q[1]-p[1]),d=[(q[0]-p[0])/length,(q[1]-p[1])/length],want=DIMENSION_SIDE_VECTORS[side];
+  const score=v=>v[0]*want[0]+v[1]*want[1],candidates=[[-d[1],d[0]],[d[1],-d[0]]],n=score(candidates[0])>=score(candidates[1])?candidates[0]:candidates[1];
+  return {length,d,n,dist:DIMENSION_FIRST_PX+DIMENSION_STEP_PX*(offset-1),ok:score(n)>=0.2};
+}
 
 // Returns {objects, factRolesByLabel}; throws an Error whose message is an UPPER_SNAKE code (optionally ':detail').
 export function planeMarkSpec(plan,model,points,segmentIds){
@@ -180,6 +204,36 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     factRolesByLabel[row.id]=role(row);
   }
 
+  // --- dimension lines: a length between two points on a parallel line, with a bar, arrow or brace style
+  for(const row of list(marks.dimensions,'dimensions')){
+    if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:dimensions');
+    keysOk(row,KEYS.dimensions,'dimensions');claim(row.id,'dimensions');
+    if(typeof row.from!=='string'||typeof row.to!=='string'||row.from===row.to)bad('MARK_FIELD_INVALID:dimensions.from:'+row.id);
+    const a=at(row.from),b=at(row.to),distance=norm(sub(b,a));
+    if(!(distance>1e-9))bad('DIMENSION_POINTS_COINCIDE:'+row.id);
+    if(!DIMENSION_SIDES.includes(row.side))bad('DIMENSION_SIDE_INVALID:'+row.id);
+    const style=row.style??'BAR';
+    if(!DIMENSION_STYLES.includes(style))bad('DIMENSION_STYLE_INVALID:'+row.id);
+    const offset=row.offset??1;
+    if(!Number.isInteger(offset)||offset<1||offset>3)bad('DIMENSION_OFFSET_INVALID:'+row.id);
+    const parts=dimensionLabelParts(row);
+    if(parts.conflict)bad('MARK_UNIT_INVALID:dimensions:'+row.id);
+    const kind=row.labelKind??'MATH';
+    if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:dimensions.labelKind:'+row.id);
+    if(typeof parts.label!=='string'||!parts.label.trim()||parts.label.length>40)bad('DIMENSION_LABEL_REQUIRED:'+row.id);
+    if(kind==='TEXT')plainTextOk(parts.label,'dimensions.label',row.id);
+    const unit=unitOf({...row,unit:parts.unit},kind,true,'dimensions');
+    if(row.value!==undefined){
+      const declared=numberOf(row.value);
+      if(declared===null||declared<=0)bad('MARK_FIELD_INVALID:dimensions.value:'+row.id);
+      if(Math.abs(declared-distance)>1e-6*Math.max(1,declared))bad('DIMENSION_FACT_MISMATCH:'+row.id+':declared='+declared+':drawn='+distance.toFixed(6));
+    }
+    const frame=dimensionFrame(a,b,row.side,offset);
+    if(!frame.ok)bad('DIMENSION_SIDE_AMBIGUOUS:'+row.id);
+    objects.push({id:row.id,kind:'DIMENSION_LINE',refs:[row.from,row.to],side:row.side,style,offset,labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
+    factRolesByLabel[row.id+'-label']=role(row);
+  }
+
   // --- highlighted circle arcs
   for(const row of list(marks.arcs,'arcs')){
     if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:arcs');
@@ -275,6 +329,7 @@ export function planeMarkPointRefs(plan){
   const refs=[];
   for(const row of Array.isArray(marks.angles)?marks.angles:[])if(Array.isArray(row?.refs))refs.push(...row.refs);
   for(const row of Array.isArray(marks.arcs)?marks.arcs:[])refs.push(row?.center,row?.from,row?.to);
+  for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])refs.push(row?.from,row?.to);
   for(const row of Array.isArray(marks.traces)?marks.traces:[]){refs.push(row?.center,row?.radius?.point,...(Array.isArray(row?.through)?row.through:[]));}
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
   return [...refs,...regionPointRefs(plan)].filter(id=>typeof id==='string');
@@ -332,6 +387,50 @@ export function arcLabelFraming(plan,model,points,bounds,canvas){
       if(ux<-ARC_LABEL_FACING)grow.left=Math.max(grow.left,safe-(X-gap-site.width));
       if(uy>ARC_LABEL_FACING)grow.top=Math.max(grow.top,safe-(Y-gap-site.height));
       if(uy<-ARC_LABEL_FACING)grow.bottom=Math.max(grow.bottom,Y+gap+site.height-(canvas.height-safe));
+    }
+    if(Math.max(grow.left,grow.right,grow.top,grow.bottom)<=0.05)break;
+    xMin-=Math.max(grow.left,0)/sx;xMax+=Math.max(grow.right,0)/sx;yMin-=Math.max(grow.bottom,0)/sx;yMax+=Math.max(grow.top,0)/sx;
+  }
+  return {xMin,xMax,yMin,yMax};
+}
+
+// ---- framing room for dimension lines and their labels (E7) ------------------------------------------------------------------------------------
+// A dimension line stands a fixed number of px outside its two points, with its label beyond it, so the tight plane frame has no canvas there. A plan with
+// dimensions widens its model bounds on the sides they face until the lines, the labels (size estimated, as for arc labels) and a safe margin all fit; a
+// plan without one is returned unchanged, so every other figure keeps its frame byte for byte.
+const DIMENSION_LABEL_GAP_PX=8,DIMENSION_VIEW_SAFE_PX=14;
+export function dimensionSites(plan,points){
+  const rows=Array.isArray(plan?.planeMarks?.dimensions)?plan.planeMarks.dimensions:[],sites=[];
+  for(const row of rows){
+    if(!row||typeof row!=='object')continue;
+    try{
+      const a=points[row.from].approximation,b=points[row.to].approximation,parts=dimensionLabelParts(row),kind=row.labelKind??'MATH';
+      sites.push({from:a,to:b,side:row.side,offset:row.offset??1,...arcLabelBoxEstimate({label:String(parts.label),labelKind:kind,unit:parts.unit})});
+    }catch{/* planeMarkSpec reports the real error */}
+  }
+  return sites;
+}
+export function dimensionFraming(plan,model,points,bounds,canvas){
+  if(!planeMarksAllowed(plan,model))return bounds;
+  const sites=dimensionSites(plan,points);
+  if(!sites.length)return bounds;
+  let {xMin,xMax,yMin,yMax}=bounds;
+  for(let pass=0;pass<80;pass++){
+    const M=ARC_LABEL_VIEW_MARGIN_PX,plotW=canvas.width-2*M,plotH=canvas.height-2*M;
+    const sx=Math.min(plotW/(xMax-xMin),plotH/(yMax-yMin)),left=M+(plotW-sx*(xMax-xMin))/2,top=M+(plotH-sx*(yMax-yMin))/2;
+    const grow={left:0,right:0,top:0,bottom:0};
+    for(const site of sites){
+      const P=[left+(site.from[0]-xMin)*sx,top+(yMax-site.from[1])*sx],Q=[left+(site.to[0]-xMin)*sx,top+(yMax-site.to[1])*sx];
+      if(!(Math.hypot(Q[0]-P[0],Q[1]-P[1])>1e-9))continue;
+      const {n,dist}=dimensionFrame(P,Q,site.side,site.offset);
+      const support=Math.abs(n[0])*site.width/2+Math.abs(n[1])*site.height/2,reach=dist+DIMENSION_LABEL_GAP_PX+support,mid=[(P[0]+Q[0])/2,(P[1]+Q[1])/2];
+      const centre=[mid[0]+n[0]*reach,mid[1]+n[1]*reach];
+      const corners=[[P[0]+n[0]*dist,P[1]+n[1]*dist],[Q[0]+n[0]*dist,Q[1]+n[1]*dist],
+        [centre[0]-site.width/2,centre[1]-site.height/2],[centre[0]+site.width/2,centre[1]-site.height/2],[centre[0]-site.width/2,centre[1]+site.height/2],[centre[0]+site.width/2,centre[1]+site.height/2]];
+      for(const [X,Y] of corners){
+        grow.left=Math.max(grow.left,DIMENSION_VIEW_SAFE_PX-X);grow.right=Math.max(grow.right,X-(canvas.width-DIMENSION_VIEW_SAFE_PX));
+        grow.top=Math.max(grow.top,DIMENSION_VIEW_SAFE_PX-Y);grow.bottom=Math.max(grow.bottom,Y-(canvas.height-DIMENSION_VIEW_SAFE_PX));
+      }
     }
     if(Math.max(grow.left,grow.right,grow.top,grow.bottom)<=0.05)break;
     xMin-=Math.max(grow.left,0)/sx;xMax+=Math.max(grow.right,0)/sx;yMin-=Math.max(grow.bottom,0)/sx;yMax+=Math.max(grow.top,0)/sx;
