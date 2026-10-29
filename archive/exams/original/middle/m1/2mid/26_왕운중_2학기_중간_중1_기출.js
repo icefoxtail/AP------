@@ -68,7 +68,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q001_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q001_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB=a의 양 끝점 A, B에서 각각 ∠A, ∠B를 작도해 두 반직선이 만나는 점 C로 삼각형 ABC를 완성한 그림.",
+    "solutionImageCaption": "한 변 AB와 양 끝각 ∠A, ∠B로 정해지는 삼각형 ABC",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -205,7 +209,11 @@ window.questionBank = [
     "tagStatus": "reviewed_repair",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q003_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q003_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동인 두 삼각형 ABC와 DEF를 나란히 놓고 대응변 AB=DE=4 cm, BC=EF=5 cm와 대응각 ∠B=∠E=48°를 같은 표식으로 나타낸 그림.",
+    "solutionImageCaption": "△ABC≡△DEF의 대응변과 대응각",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -271,7 +279,10 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q004_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q4.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 오각기둥 ABCDE-FGHIJ를 문제와 같은 배치로 그리고, 모서리 BC는 굵게, 모서리 EJ는 빨간색으로 강조했으며 보이지 않는 모서리 AF, FG, FJ는 점선으로 나타낸 그림",
+    "solutionImageCaption": "오각기둥에서 모서리 BC와 EJ는 만나지도 평행하지도 않는 꼬인 위치에 있다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -341,7 +352,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q005_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q005_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 변 6 cm와 각 75°, 40°가 주어진 삼각형에 나머지 한 각 65°를 표시해 6 cm 변의 양 끝각이 40°와 65°임을 보여 주는 그림.",
+    "solutionImageCaption": "나머지 각 65°와 6 cm 변의 양 끝각 40°, 65°",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -625,7 +640,10 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q009_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q9.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 m, n과 두 직선이 이루는 삼각형에서, 세 직선이 만나는 점의 두 각 a, b가 아래쪽 두 꼭짓점의 50°, 60°와 엇각으로 같음을 같은 호 표시로 나타낸 그림.",
+    "solutionImageCaption": "평행선 m, n에서 엇각으로 a=50°, b=60°",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -765,7 +783,10 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_visual.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q11.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 각 변의 중점 E, F, G, H를 이은 그림에서 같은 눈금의 변과 같은 호의 각을 표시하고, 합동인 네 귀퉁이 삼각형 AEH와 CGF, EBF와 GDH를 같은 색으로 칠한 그림.",
+    "solutionImageCaption": "중점으로 만든 네 귀퉁이 삼각형의 SAS 합동",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -838,7 +859,10 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_visual.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q12.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이에서 AB와 CD가 점 O에서 만나는 그림에서 엇각 ∠CAO=∠DBO, ∠ACO=∠BDO를 같은 호로, AC=BD를 같은 눈금으로 표시하고 삼각형 AOC와 BOD를 색칠한 그림.",
+    "solutionImageCaption": "엇각과 AC=BD로 만드는 △AOC≡△BOD",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -909,7 +933,10 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q013_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q13.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾은선에 꺾인 점마다 평행 보조선(점선)을 그어 엇각이 같은 30°, 20°, 80°를 호로 표시하고 100°와 x가 놓인 각을 보여 주는 그림.",
+    "solutionImageCaption": "평행 보조선과 엇각으로 구하는 ∠x",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -1054,7 +1081,10 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q015_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q15.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 l, m이 직선 n과 만나는 그림에서 위 교점의 95°와 맞꼭지각 ∠b를 같은 호로 표시하고, 아래 교점의 ∠d를 따로 표시해 ∠d와 ∠b가 엇각 위치임을 보여 주는 그림.",
+    "solutionImageCaption": "맞꼭지각 ∠b=95°와 ∠d의 엇각 위치",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -1336,7 +1366,11 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.svg",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 스마트폰 사용 시간 20명의 줄기와 잎 그림에서 작은 쪽 10번째와 11번째 잎 a, b를 동그라미로 표시하고, 줄기 0의 5~10시간 잎 7, 8, 9를 도수 3으로, 줄기 2의 20~25시간 잎 3을 도수 1로 괄호 묶어 보여 준다.",
+    "solutionImageCaption": "중앙값은 크기 순 10번째와 11번째 값 10+a, 10+b의 평균이고, 5~10시간은 3명, 20~25시간은 1명이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -1472,7 +1506,10 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q021_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q21.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 점 O에서 만나는 세 직선에서 맞꼭지각인 ∠AOF와 ∠EOB를 같은 호로 표시해, 직선 CD 아래쪽의 세 각 (2x+2)°, (5x+17)°, (59-x)°가 한 직선 위에 모이는 모양을 보여 주는 그림.",
+    "solutionImageCaption": "직선 CD 아래쪽 세 각의 합이 180°",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -1539,7 +1576,10 @@ window.questionBank = [
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q022_visual.svg",
     "imageSize": "large",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q22.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 직선 y=5/6x, y=-1/2x가 y=-5와 만나는 점 A(-6,-5), B(10,-5)와 선분 AB를 3:1로 나누는 점 K를 나타내고, AK=12, KB=4와 점 K에서 x축에 내린 수선(직각 표시)을 보여 주는 그림.",
+    "solutionImageCaption": "A, B, K와 K에서 x축에 내린 수선",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1606,6 +1646,9 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q23.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC에서 BD=CE인 점 D, E를 잡고 AD와 BE의 교점을 P라 한 그림에 BD=CE 눈금, 합동인 삼각형 ABD와 BCE 색칠, 같은 각 α와 60°, ∠APB=120°와 ∠APE를 표시한 그림.",
+    "solutionImageCaption": "△ABD≡△BCE로 얻는 α와 ∠APB=120°",
+    "solutionImageSize": "medium"
   }
 ];
