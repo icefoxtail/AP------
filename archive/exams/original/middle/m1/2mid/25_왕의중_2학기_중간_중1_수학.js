@@ -106,7 +106,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
-    "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM"
+    "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면(눈금 값 없음)에서 제2사분면의 점 (a+b, ab)와 점 (b, -a)를 각각 x축·y축에 내린 점선으로 나타내고, a<0, b<0임을 표시한 그림.",
+    "solutionImageCaption": "점 (a+b, ab)가 제2사분면의 점이므로 a<0, b<0이다. 이때 점 (b, -a)의 x좌표와 y좌표의 부호를 확인한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -322,7 +326,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
-    "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE"
+    "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 관계 y=k/x의 그래프로, 쌍곡선의 두 가지가 제2사분면과 제4사분면에 놓인 좌표평면 그림.",
+    "solutionImageCaption": "비례상수 k가 음수이면 반비례 그래프는 제2·4사분면을 지난다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -599,7 +607,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_FOLDED_RECTANGLE_PARALLEL_TRANSFER"
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_FOLDED_RECTANGLE_PARALLEL_TRANSFER",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 위·아래 변 사이에서 직선 ABD와 접는 선 CD, DE를 그린 그림. ∠ABC=68°이고 같은 호 표시(3개)로 ∠BDG가 ∠ABC와 같음을 나타내며, CD가 ∠BDG를 이등분한 두 각 ∠CDG와 ∠CDB는 같은 호 표시(2개)와 문자 x로, ∠BDE=60°, ∠EDF=52°로 표시했다.",
+    "solutionImageCaption": "∠BDG=∠ABC=68°, CD는 ∠BDG의 이등분선이므로 ∠CDG=∠CDB=x이고, 68°+60°+∠EDF=180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
