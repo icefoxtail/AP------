@@ -455,7 +455,7 @@ window.questionBank = [
         "$2x+1=3$"
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 각 방정식에 $x=1$을 대입하여 등식이 성립하는지 확인한다.\n① $2\neq0$, ② $2\neq-4$, ③ $2\neq0$, ④ $-\\dfrac12\neq2$이고, ⑤는 $2\\times1+1=3$으로 성립한다.\n따라서 정답은 ⑤이다.",
+      "solution": "[키포인트] 각 방정식에 $x=1$을 대입하여 등식이 성립하는지 확인한다.\n① $2\\neq0$, ② $2\\neq-4$, ③ $2\\neq0$, ④ $-\\dfrac12\\neq2$이고, ⑤는 $2\\times1+1=3$으로 성립한다.\n따라서 정답은 ⑤이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION",
       "subUnit": "일차방정식",
       "subUnitConfidence": "rule_inferred",
