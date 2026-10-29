@@ -3387,15 +3387,44 @@ def _audit_family(plan,svg,transform):
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
     return {'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
 
+AXIS_TITLE_OBSERVER_PATTERN=r'[가-힣A-Za-z0-9 ()·/.,%-]{1,10}'
+AXIS_TITLE_MAX_DISTANCE_PX=60.0
+
+def axis_titles_audit(plan,svg,transform):
+    """graphPlan.axisTitles: the plan's own check of the titles, then (in a composed figure) each title is a plain-text label of the axis it names,
+    its text read from the group, standing at the end of that axis."""
+    titles=plan.get('axisTitles')
+    if titles is None:return None
+    if not isinstance(titles,dict) or not titles or set(titles)-{'x','y'}:return {'status':'UNSUPPORTED','errors':['AXIS_TITLES_INVALID']}
+    for axis,text in titles.items():
+        if not isinstance(text,str) or text!=text.strip() or not re.fullmatch(AXIS_TITLE_OBSERVER_PATTERN,text):return {'status':'UNSUPPORTED','errors':['AXIS_TITLE_INVALID:'+axis]}
+    if 'data-label-kind' not in svg:return {'status':'PASS','errors':[],'titles':len(titles)}
+    errors=[]
+    try:
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')];xmin,xmax,ymin,ymax=plan['viewport']
+        root=ET.fromstring(svg);groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
+        for axis,text in titles.items():
+            label_id='axis-'+axis;node=groups.get(label_id)
+            if node is None:errors.append('AXIS_TITLE_MISSING:'+axis);continue
+            # a plain-text label: the text on its group, no math glyph codes, no TeX
+            if node.get('data-label-kind')!='GRAPH_ANNOTATION' or node.get('data-text')!=text or node.get('data-tex') is not None or _ov_glyph_codes(node):errors.append('AXIS_TITLE_TEXT_MISMATCH:'+axis);continue
+            box=_region_label_box(groups,label_id)
+            if box is None:errors.append('AXIS_TITLE_BOX_UNREADABLE:'+axis);continue
+            end=(ox+xmax*sx,oy) if axis=='x' else (ox,oy-ymax*sy)
+            if _ov_point_box_distance(end,box)>AXIS_TITLE_MAX_DISTANCE_PX:errors.append('AXIS_TITLE_NOT_AT_AXIS_END:'+axis)
+    except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['AXIS_TITLE_SOURCE_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'titles':len(titles)}
+
 def audit(plan,svg,transform):
-    """The family audit plus the optional graph overlays: the observer re-derives every overlay element from the raw overlays field and
-    reads the same element ids back from the model and the final SVG."""
+    """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
+    field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform)
-    if plan.get('overlays') is None:return result
-    overlay=overlays_audit(plan,svg,transform)
-    if overlay is None:return result
-    errors=sorted(set([*(result.get('errors') or []),*(overlay.get('errors') or [])]))
-    if result.get('status')=='UNSUPPORTED' or overlay.get('status')=='UNSUPPORTED':status='UNSUPPORTED'
-    elif result.get('status')=='FAIL' or overlay.get('status')=='FAIL' or errors:status='FAIL'
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform)) if part is not None]
+    if not parts:return result
+    errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
+    if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'
+    elif result.get('status')=='FAIL' or any(part.get('status')=='FAIL' for part in parts) or errors:status='FAIL'
     else:status='PASS'
-    return {**result,'status':status,'errors':errors,'overlays':overlay}
+    merged={**result,'status':status,'errors':errors}
+    if plan.get('overlays') is not None and parts:merged['overlays']=parts[0]
+    return merged

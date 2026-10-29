@@ -279,10 +279,14 @@ def prepare(spec):
         for oid,axis,value,at,delta in unit_ticks:
             p=vp.screen(at);primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
         axis_labels=[]
-        if show_x:axis_labels.append(('axis-x',(xmax,0),spec['displayFacts'].get('axisVariable','x')))
-        if show_y:axis_labels.append(('axis-y',(0,ymax),'y'))
-        for oid,at,text in axis_labels:
-            labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
+        axis_titles=spec['displayFacts'].get('axisTitles',{})
+        if not isinstance(axis_titles,dict) or set(axis_titles)-{'x','y'} or any(not isinstance(v,str) or not v for v in axis_titles.values()):raise ValueError('INVALID_AXIS_TITLES')
+        if show_x:axis_labels.append(('axis-x',(xmax,0),spec['displayFacts'].get('axisVariable','x'),axis_titles.get('x')))
+        if show_y:axis_labels.append(('axis-y',(0,ymax),'y',axis_titles.get('y')))
+        for oid,at,text,title in axis_labels:
+            # A plain Korean title (a name with its unit) is a text label that must find room (never suppressed); the letter is a math label.
+            if title is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
+            else:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
         visible_axes=[]
         if show_x:visible_axes.append(('x',xmin,xmax))
         if show_y:visible_axes.append(('y',ymin,ymax))

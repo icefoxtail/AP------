@@ -1366,7 +1366,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -2043,7 +2043,7 @@ def fit_piecewise_polynomial(plan):
 # ---- piecewise discontinuous: one to six polynomial pieces (degree <= 2) on their own intervals, each end OPEN or CLOSED ----------
 # Unlike piecewise-polynomial-spike-v1 the pieces need not meet: a junction may jump, the function value there is declared either by a
 # CLOSED end or by jumpValues, and a jumpValue may also stand alone as an isolated point. A staircase is written as a step block.
-PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit'}
+PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles'}
 PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY='PIECEWISE_DISCONTINUOUS_OVERVIEW_v1'
 PIECEWISE_DISCONTINUOUS_MAX_PIECES=6
 PIECEWISE_DISCONTINUOUS_MAX_JUMP_VALUES=8
@@ -2753,7 +2753,7 @@ def _overlay_anchor_points(plan):
 # (vertical squeeze at most 1/2), freezes every branch's exact x interval and sampling expression, and refuses a
 # curve it cannot represent. The independent observer recomputes every branch from the same coefficients and reads
 # the final SVG; it never trusts a frozen expression.
-MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors'}
+MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors','axisTitles'}
 MULTI_CURVE_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().^ ]{1,40}'
 MULTI_CURVE_MIN_CURVES=3
 MULTI_CURVE_MAX_CURVES=6
