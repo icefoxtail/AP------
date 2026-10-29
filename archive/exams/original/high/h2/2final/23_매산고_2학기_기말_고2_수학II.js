@@ -446,8 +446,8 @@ window.questionBank = [
     "choices": [],
     "answer": "28",
     "solution": "조건 정리: 등식이 모든 실수 $x$에 대하여 성립하므로 양변을 미분할 수 있고, 주어진 추가 조건으로 상수들을 정할 수 있다.\n풀이 방향: 먼저 미분하여 $f'(x)$를 구하고, 적분한 뒤 원래 식과 조건 $f(1)=\\int_0^1f(t)dt$를 이용한다.\n정석 풀이: 양변을 미분하면 $f(x)+xf'(x)-f(x)=xf'(x)=12x^2+4ax$이므로 $f'(x)=12x+4a$이다. 따라서 $f(x)=6x^2+4ax+C$이다. 이를 원래 식에 대입하면 왼쪽은 $4x^3+2ax^2+(2+2a+C)$가 되므로 $2+2a+C=a$, 즉 $C=-a-2$이다. 따라서 $f(x)=6x^2+4ax-a-2$이다. 이제 $f(1)=4+3a$, 한편 $\\int_0^1 f(t)dt=2+2a-a-2=a$이므로 조건에 의해 $4+3a=a$이다. 따라서 $a=-2$이고 $f(x)=6x^2-8x$이다. 그러므로 $f(3)=54-24=30$이어서 $a+f(3)=-2+30=28$이다.\n따라서 구하는 값은 $28$이다.",
-    "subUnitKey": "H15-M2-08-APPLICATION_OF_CALCULUS",
-    "subUnit": "미분·적분의 활용",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -551,8 +551,8 @@ window.questionBank = [
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "solution": "조건 정리: $f(0)=f(3)=0$, $f'(0)=0$이므로 $f(x)=mx^2(x-3)$ 꼴이다. 또 극댓값이 $16$이므로 계수 $m$를 정할 수 있다.\n풀이 방향: 먼저 $f(x)$와 $g(x)$를 구하고, $|g(x)|$가 한 점에서만 미분 불가능하다는 조건으로 $a$를 결정한 뒤 적분값을 계산한다.\n정석 풀이: $f(x)=mx^2(x-3)$라 두면 $f'(x)=3mx(x-2)$이므로 $x=2$에서 극값을 가진다. 극댓값이 $16$이므로 $f(2)=m\\cdot4\\cdot(-1)=-4m=16$, 따라서 $m=-4$이다. 그러므로 $f(x)=4x^2(3-x)$이다. 이제 $g(x)=\\displaystyle\\int_a^x4t^2(3-t)dt$이다. $x<3$에서는 $f(x)\\ge0$이므로 $g(x)$는 증가함수이다. 만약 $a\\ne0$이면 $g(a)=0$이고 $f(a)\\ne0$이어서 $|g(x)|$는 $x=a$에서 미분 불가능하다. 또한 $g(3)>0$이고 $x>3$에서는 $f(x)<0$이므로 감소하여 어떤 $x>3$에서 다시 0이 된다. 그러면 미분 불가능점이 두 개 생긴다. 따라서 미분 불가능점이 하나만 되려면 반드시 $a=0$이어야 한다. 이때 $g(x)=\\int_0^x4t^2(3-t)dt=4x^3-x^4=x^3(4-x)$이다. 따라서 $\\displaystyle\\int_a^4 g(x)dx=\\int_0^4(4x^3-x^4)dx=[x^4-\\frac{x^5}{5}]_0^4=256-\\frac{1024}{5}=\\frac{256}{5}$이다.\n따라서 구하는 값은 $\\dfrac{256}{5}$이다.",
-    "subUnitKey": "H15-M2-08-APPLICATION_OF_CALCULUS",
-    "subUnit": "미분·적분의 활용",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
