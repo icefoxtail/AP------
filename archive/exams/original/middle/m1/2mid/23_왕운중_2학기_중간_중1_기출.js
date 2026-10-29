@@ -117,7 +117,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각뿔의 꼭짓점에 번호를 붙이고, 밑면의 모서리(검정)와 옆모서리(빨강)에 번호를 붙여 보이지 않는 모서리를 점선으로 나타낸 그림이다.",
+    "solutionImageCaption": "오각뿔의 꼭짓점과 밑면, 옆모서리에 번호를 붙여 센 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,

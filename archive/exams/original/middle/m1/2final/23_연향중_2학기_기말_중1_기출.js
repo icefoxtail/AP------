@@ -220,7 +220,7 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q5-solution.svg",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q5-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
       "crossConceptKeys": [],
@@ -230,9 +230,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:4ab3fe1bd84f3e6a69ac884fa734c1d2859d641c7b3010ad5d71d21c77455486",
       "difficultyEvidenceSha": "sha256:2e81880b7812f73b76318cf668437a3e468339acaead59b094d70c07b7e22509",
-      "solutionImageAlt": "직사각형을 회전축 l 주위로 돌려 생기는 속 빈 원기둥의 단면: 안쪽 반지름 1 cm, 바깥 반지름 4 cm, 높이 8 cm",
-      "solutionImageCaption": "안팎 원기둥의 옆넓이와 위아래 고리 넓이를 합한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 왼쪽 위에는 가로 3cm, 세로 8cm인 직사각형이 회전축 l에서 1cm 떨어져 있고, 오른쪽 위에는 회전축 l을 포함한 단면인 직사각형 두 개(오른쪽 직사각형의 가로 3cm, 축에서 바깥 끝까지 4cm)가 있으며, 아래에는 바깥 반지름 4cm, 안쪽 반지름 1cm인 고리 모양의 면이 색칠되어 있다.",
+      "solutionImageCaption": "직사각형을 축 l에서 1cm 떨어뜨려 회전시키면 속이 빈 원기둥이 생기고, 위아래 면은 고리 모양이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 6,
