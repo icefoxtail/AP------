@@ -333,7 +333,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_팔마중_1학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 -4 이상 10/3 이하의 범위를 닫힌 끝점으로 굵게 나타내고, 그 범위 안의 정수 -4, -3, -2, -1, 0, 1, 2, 3을 점으로 찍은 그림이다.",
+    "solutionImageCaption": "-4 이상 10/3 이하의 범위 안에 놓인 정수를 수직선에 점으로 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -558,7 +562,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_팔마중_1학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 -26/5보다 크고 -11/5보다 작은 범위를 열린 끝점으로 굵게 나타내고, 그 범위 안의 정수 -5, -4, -3을 점으로 찍은 그림이다.",
+    "solutionImageCaption": "-26/5<x<-11/5의 범위 안에 놓인 정수를 수직선에 점으로 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -809,7 +817,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_팔마중_1학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 처음 위치 0과 두 학생 B, A의 위치를 왼쪽부터 차례로 점으로 찍은 그림으로, 두 학생의 위치 사이 간격이 위치의 차임을 보여 준다.",
+    "solutionImageCaption": "처음 위치 0에서 출발한 두 학생 A, B의 위치를 수직선에 나타낸 것이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

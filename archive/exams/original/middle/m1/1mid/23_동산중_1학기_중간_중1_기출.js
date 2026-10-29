@@ -311,7 +311,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_동산중_1학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -6, -3, 0, 2, 5에 해당하는 다섯 점이 왼쪽에서 오른쪽으로 차례로 놓여 있어 오른쪽일수록 큰 수임을 보여 준다.",
+    "solutionImageCaption": "수직선에서는 오른쪽에 있을수록 큰 수이므로 다섯 수를 수직선 위에 놓고 크기를 비교한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,

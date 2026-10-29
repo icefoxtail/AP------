@@ -331,7 +331,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_왕운중_1학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 윗줄에 -3/2, -1, 3/2를, 아랫줄에 가장 왼쪽의 수 -5/3과 가장 오른쪽의 수 2를 같은 눈금으로 찍고 아랫줄은 두 점을 굵은 선분으로 이은 그림이다.",
+    "solutionImageCaption": "다섯 수 중 가장 왼쪽의 -5/3이 가장 작고 가장 오른쪽의 2가 가장 크다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,

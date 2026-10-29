@@ -337,7 +337,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 뉴욕 -5, 그리니치 0, 두바이 +4에 해당하는 세 점을 찍고 -5에서 4까지 굵은 선분으로 이은 그림으로, 두 도시의 시차가 두 점 사이의 간격임을 보여 준다.",
+    "solutionImageCaption": "그리니치를 0으로 하면 뉴욕은 -5, 두바이는 +4이므로 두 도시의 시차는 두 점 사이의 거리이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
