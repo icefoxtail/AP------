@@ -47,7 +47,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 만나 이루는 네 각에서 위쪽 120°와 맞꼭지각인 a=120°가 같은 호 표시로, 이웃한 b=60°가 표시된다.",
+    "solutionImageCaption": "맞꼭지각 a는 120°이고 이웃한 각 b는 180°-120°=60°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -140,7 +144,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: A, D는 위쪽 변 AD=3 cm, 오른쪽 수직 변 DC=4 cm, 아래쪽 변 BC=6 cm, 기울어진 변 AB=5 cm인 사다리꼴 ABCD이고 꼭짓점 D, C에 직각 표시가 있다.",
+    "solutionImageCaption": "∠D=∠C=90°이므로 AD⊥DC이고 B에서 DC에 내린 수선의 발은 C이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -188,7 +196,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 AB 위의 점 O에서 수직인 OC, 그리고 OD, OE가 나오며 ∠COD=30°, ∠DOE=20°, ∠DOB=60°가 각 표시로 보인다.",
+    "solutionImageCaption": "∠COD=30°, ∠DOE=20°, ∠DOB=60°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -236,7 +248,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB=20 아래에 AL=LB=10, AM=ML=5, MN=NB=7.5가 같은 눈금과 길이로 층층이 보이고 A, M, L, N, B의 순서가 나타난다.",
+    "solutionImageCaption": "중점의 성질로 AL=LB=10, AM=ML=5, MN=NB=7.5이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -284,7 +300,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체에서 서로 평행한 모서리 CD와 EF를 빨간색으로 강조하였고, 보이지 않는 모서리는 점선으로 그렸다.",
+    "solutionImageCaption": "모서리 CD와 EF는 서로 평행하다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -329,7 +349,11 @@ window.questionBank = [
     "imageStatus": "not_required",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 보기 ㄱ~ㄹ의 세 직선 l, m, n 배치를 네 그림으로 나란히 보여 주며 직각 표시와 평행 화살표로 수직과 평행 관계를 나타낸다.",
+    "solutionImageCaption": "보기 ㄱ~ㄹ의 세 직선 관계를 나란히 비교한 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -425,7 +449,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 쌍의 직선 l∥m, n∥k가 만나는 그림으로, 110°의 대응각 110°와 이웃한 각 x=70°, y=70°가 평행 표시와 함께 나타나 있다.",
+    "solutionImageCaption": "l∥m, n∥k이므로 110°의 대응각도 110°이고, 이웃한 각 x=70°, y=70°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -614,7 +642,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동인 두 삼각형 ABC와 DEF에서 ∠B=∠E(60°, 호 1개), ∠C=∠F=70°(호 2개), ∠A=∠D(호 3개, ∠A=50°)와 BC=EF(같은 눈금, BC=4 cm)가 대응하는 것을 같은 호와 눈금으로 보인 그림이다.",
+    "solutionImageCaption": "△ABC≡△DEF이므로 ∠C=∠F=70°, ∠A=180°-60°-70°=50°=∠D이고 BC=EF이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -662,7 +694,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=DE=3 cm, AC=DF=5 cm인 두 삼각형 ABC와 DEF에 ∠A=∠D를 나타내는 같은 호 표시와 BC=EF를 나타내는 같은 눈금이 있어, 나머지 한 조건으로 SAS 또는 SSS 합동이 되는 경우를 보인 그림이다.",
+    "solutionImageCaption": "AB=DE, AC=DF에 ∠A=∠D를 더하면 SAS, BC=EF를 더하면 SSS 합동이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -755,7 +791,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 정오각형 ABCDE의 대각선 AC, AD, BE와 교점 F가 있고, ∠DAE=∠ABE=36°, ∠BAF=∠AFB=72°, y=∠BFD=108°가 호로 표시되어 있다.",
+    "solutionImageCaption": "∠AFB=72°이므로 y=180°-72°=108°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -984,7 +1024,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위에 점 D가 있고, B의 42°, ∠ADC=84°, 점 C의 외각 117°와 ∠ADB=96°, x=42°, y=33°가 호로 표시되어 있다.",
+    "solutionImageCaption": "117°=84°+y에서 y=33°이고 ∠ADB=96°에서 x=42°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -1027,7 +1071,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 점에서 만나는 세 직선이 이루는 각 65°, 직각, y=25°와, 65°+90°=155°인 각과 맞꼭지각을 이루는 (3x+35)°가 같은 겹호로 표시되어 있다.",
+    "solutionImageCaption": "155°인 각과 맞꼭지각이므로 3x+35=155이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1111,6 +1159,10 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 8cm인 두 정사각형 ABCD, EFGH가 E에서 겹쳐 있고, 색칠한 사각형 EJCI와 빗금친 삼각형 EDJ, ED=EC와 45°인 두 각 표시가 있다.",
+    "solutionImageCaption": "△EDJ와 △ECI가 합동이므로 색칠한 부분의 넓이는 △EDC의 넓이와 같다.",
+    "solutionImageSize": "medium"
   }
 ];
