@@ -5,7 +5,8 @@ import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {compositePanels,compositePanelLayout,compositeStackSize,composeCompositeCandidate,isGridPanel,COMPOSITE_MAX_SOLID_GRID_PANELS} from '../production/composite-candidate-svg-v1.mjs';
-import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH} from '../production/solid-figure-v1.mjs';
+import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL} from '../production/solid-figure-v1.mjs';
+import {typesetter} from '../production/typography.mjs';
 
 const observer=fileURLToPath(new URL('../production/solid_figure_observer_worker.py',import.meta.url));
 const code=expected=>error=>String(error.message).startsWith(expected);
@@ -1465,4 +1466,80 @@ test('E28c: a figure with nothing written on it composes (its caption carries th
   // a text-free figure is accepted by the layout check only when it says so: the plain check still wants a label
   const bytes=await sphereSvg(figure({solids:[cuboid()],dims:[{edge:'FG'}],panelWidth:GRID_PANEL_WIDTH}));
   assert.doesNotMatch(bytes,/axis-line|text-label|data-text-id/);
+});
+
+// --- E28c-2: face symbols (①, 가, (1)) on net faces, a cone net under 180 degrees, edge labels on net faces ----------------------------------------------
+test('E28c: a net face carries a symbol that numbers or names it (circled number, Hangul letter or jamo, number in parentheses); the area rule for numbers is unchanged',()=>{
+  const m=solveSolidFigure(triPrismNet({faceLabels:[{face:'top',text:'①'},{face:'bottom',text:'⑩'},{face:'side0',text:'가'},{face:'side1',text:'ㄴ'},{face:'side2',text:'(3)'}]}));
+  assert.deepEqual(m.faceLabels.map(f=>[f.face,f.text,f.numeric,f.symbol]),[['top','①',false,true],['bottom','⑩',false,true],['side0','가',false,true],['side1','ㄴ',false,true],['side2','(3)',false,undefined]]);
+  assert.ok(FACE_SYMBOL.test('(가)')&&FACE_SYMBOL.test('㉮')&&FACE_SYMBOL.test('(12)')&&FACE_SYMBOL.test('⑳'));
+  // (3) is plain ASCII, so it keeps being a TeX symbol as before; anything longer than one symbol outside ASCII is refused
+  for(const text of ['①②','가나','①.','a①','㉮㉯','※']){
+    assert.equal(FACE_SYMBOL.test(text),false,text);
+    assert.throws(()=>solveSolidFigure(triPrismNet({faceLabels:[{face:'top',text}]})),code('SOLID_FACE_LABEL_INVALID:f1'),text);
+  }
+  // a number is still checked against the area, a circled number is no area
+  assert.throws(()=>solveSolidFigure(triPrismNet({faceLabels:[{face:'top',text:'7'}]})),code('SOLID_FACE_LABEL_VALUE_MISMATCH:f1'));
+  assert.equal(solveSolidFigure(triPrismNet({faceLabels:[{face:'top',text:'6'}]})).faceLabels[0].symbol,undefined);
+});
+test('E28c: face symbols are written as ink-sized text inside their faces and the observer reads the characters back',async()=>{
+  const plan=triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top',text:'①'},{face:'bottom',text:'②'},{face:'side0',text:'가'},{face:'side1',text:'(4)'},{face:'side2',text:'ㄷ'}]},{panelWidth:GRID_PANEL_WIDTH});
+  const svg=await sphereSvg(plan);
+  assert.match(svg,/<g id="face-label-top" data-label-kind="AREA_LABEL" data-label-role="face-label"[^>]* data-numeric="0" data-face-of="top" data-text="①"/);
+  assert.match(svg,/data-face-of="side1" data-tex="\(4\)"/);
+  const top=textOf(svg,'face-label-top');
+  await failingAudit(plan,svg.replace(top,top.replace('data-text="①"','data-text="②"')),'SOLID_FACE_LABEL_VALUE_MISMATCH');
+  await failingAudit(plan,svg.replace(top,top.replace('data-numeric="0"','data-numeric="1"')),'SOLID_FACE_LABEL_VALUE_MISMATCH');
+  await failingAudit(plan,svg.replace(top,top.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${Number(x)+150} ${y})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  const swapped=triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top',text:'②'},{face:'bottom',text:'②'},{face:'side0',text:'가'},{face:'side1',text:'(4)'},{face:'side2',text:'ㄷ'}]},{panelWidth:GRID_PANEL_WIDTH});
+  await failingAudit(swapped,svg,'SOLID_FACE_LABEL_VALUE_MISMATCH:top');
+  // the ink-sized box is shorter than the font's line box; a text without the flag keeps the line box
+  const typeset=typesetter(),line={id:'a',owner:'o',factRole:'GIVEN',fontPx:30,panelId:'p',kind:'TEXT',text:'①'};
+  const full=typeset(line,identity),ink=typeset({...line,tight:true},identity);
+  assert.ok(ink.intrinsic.height<0.8*full.intrinsic.height&&ink.intrinsic.width<=full.intrinsic.width+1e-9,JSON.stringify([ink.intrinsic,full.intrinsic]));
+  assert.equal(typeset({...line,tight:false},identity).fragmentSha256,full.fragmentSha256);
+});
+test('E28c: a cone net whose sector is under 180 degrees takes face labels inside the sector (the observer follows the arc by its sweep, not the long way round)',async()=>{
+  const cone=figure({unit:'cm',net:{kind:'CONE',radius:2,slant:6,dims:[{part:'slant'}],faceLabels:[{face:'sector'},{face:'base'}]},solidCaption:{text:'원뿔의 전개도'}});
+  const svg=await sphereSvg(cone);
+  assert.match(svg,/data-face-of="sector" data-tex="12\\pi\\,\\mathrm\{cm\}\^2"/);
+  const sector=textOf(svg,'face-label-sector');
+  // a label put above the apex (outside the sector, inside the circle the arc closes) or far to the side is outside the sector
+  await failingAudit(cone,svg.replace(sector,sector.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${x} ${Number(y)-110})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  await failingAudit(cone,svg.replace(sector,sector.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${Number(x)+260} ${y})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  // a face symbol in the same sector
+  const sym=figure({unit:'cm',net:{kind:'CONE',radius:2,slant:6,faceLabels:[{face:'sector',text:'가'},{face:'base',text:'나'}]},solidCaption:{text:'원뿔의 전개도'}});
+  await sphereSvg(sym);
+});
+test('E28c: net edge labels write a length, a symbol or a word at an edge of a face, numbered after the dims; refusals have their own codes',()=>{
+  const m=solveSolidFigure(triPrismNet({dims:[{face:'side2',edge:0}],edgeLabels:[{face:'top',edge:0},{face:'top',edge:1,text:'5'},{face:'side0',edge:0,text:'a'},{face:'side0',edge:1,text:'높이'}]}));
+  assert.deepEqual(m.dims.map(d=>[d.id,d.face,d.edge,d.numeric,d.word]),[['dim-1','side2',0,true,undefined],['dim-2','top',0,true,undefined],['dim-3','top',1,true,undefined],['dim-4','side0',0,false,undefined],['dim-5','side0',1,false,true]]);
+  assert.equal(m.dims[4].tex,'높이');
+  assert.equal('word' in m.dims[0],false);
+  const bad=(net,expected)=>assert.throws(()=>solveSolidFigure(triPrismNet(net)),code(expected),expected);
+  bad({edgeLabels:[]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:'top'},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,size:2}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:3}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:'0'}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:7,edge:0}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,text:5}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,text:'가나다라마바사아자차카타파'}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,text:'밑 변 $'}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'nope',edge:0}]},'SOLID_NET_FACE_UNKNOWN');
+  bad({edgeLabels:[{face:'top',edge:0,text:'7'}]},'SOLID_DIM_VALUE_MISMATCH:e1');
+  bad({edgeLabels:Array.from({length:11},(_,k)=>({face:'side0',edge:k%4,text:'a'}))},'SOLID_EDGE_LABEL_INVALID');
+  for(const net of [{kind:'CYLINDER',radius:4,height:6,edgeLabels:[{face:'rect',edge:0}],faceLabels:[{face:'rect'}]},{kind:'CONE',radius:3,slant:5,edgeLabels:[{face:'sector',edge:0}],faceLabels:[{face:'sector'}]}])
+    assert.throws(()=>solveSolidFigure(figure({unit:'cm',net})),code('SOLID_EDGE_LABEL_UNSUPPORTED:'+net.kind));
+});
+test('E28c: a prism net with a length, a symbol and a word at its edges composes and the observer reads each back, the word by its characters',async()=>{
+  const plan=triPrismNet({highlights:[{face:'top'}],rightAngles:[{face:'top',corner:0}],edgeLabels:[{face:'side0',edge:0},{face:'side2',edge:1,text:'밑변'},{face:'side1',edge:1,text:'h'}]},{panelWidth:GRID_PANEL_WIDTH,unit:'cm'});
+  const svg=await sphereSvg(plan);
+  assert.match(svg,/data-dim="dim-3" data-segment="net-edge:side2:1" data-text="밑변"/);
+  const word=textOf(svg,'dim-3-label'),len=textOf(svg,'dim-2-label');
+  assert.match(word,/data-numeric="0"/);
+  await failingAudit(plan,svg.replace(word,word.replace('data-text="밑변"','data-text="높이"')),'SOLID_DIM_WORD_MISMATCH');
+  const other=triPrismNet({highlights:[{face:'top'}],rightAngles:[{face:'top',corner:0}],edgeLabels:[{face:'side0',edge:0},{face:'side2',edge:1,text:'높이'},{face:'side1',edge:1,text:'h'}]},{panelWidth:GRID_PANEL_WIDTH,unit:'cm'});
+  await failingAudit(other,svg,'SOLID_DIM_WORD_MISMATCH');
+  await failingAudit(plan,svg.replace(len,len.replace(/translate\(([\d.]+) ([\d.]+)\)/,'translate(5 5)')),'SOLID_DIM_FAR_FROM_SEGMENT');
 });

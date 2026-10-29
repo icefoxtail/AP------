@@ -435,6 +435,7 @@ export function countedEdges(solid){
  * height h. r0/r1 are the radii at z=0 and z=h; radius is still the wide one (topRadius the narrow one).
  */
 // A short word the author writes on the figure (labels:[{text,at}], axis:{label}): Korean syllables, letters, digits, spaces, parentheses and a middle dot, no TeX.
+const WORD_LABEL=/[가-힣·]/u;// a text with a Hangul syllable is a word, not TeX
 const MAX_TEXT_LABELS=6,TEXT_LABEL=/^[가-힣A-Za-z0-9 ·()]{1,12}$/u;
 const textLabelOk=text=>typeof text==='string'&&TEXT_LABEL.test(text)&&text.trim()===text&&text.length>0;
 /** The axis of a rotation solid (axis:true | axis:{label?}): drawn as a dash-dot line, extended beyond both ends of the solid, optionally with a word beside it. */
@@ -577,6 +578,9 @@ export function labelNumber(tex){
   return null;
 }
 const SYMBOLIC=/^[A-Za-z0-9_\\{}^+\-=.() ]{1,24}$/;
+// A face symbol of a net (net.faceLabels text), written as plain text: a circled number (\u2460-\u2473), a circled Hangul letter, a single Hangul syllable or jamo (\uac00, \u3134), or
+// a number, syllable or jamo in parentheses ((1), (\uac00)). It names or numbers a face: it is no area, so no value is checked.
+export const FACE_SYMBOL=/^(?:[\u2460-\u2473\u3260-\u327B\u3131-\u314E\uAC00-\uD7A3]|\((?:[1-9]\d?|[\u3131-\u314E\uAC00-\uD7A3])\))$/u;
 function dimLabel(raw,value,unit,code,{angle=false}={}){
   // raw: undefined (auto) or a TeX string. A numeric label must equal the value; anything else is a symbol and says so.
   let tex,numeric=true;
@@ -1179,18 +1183,19 @@ function netEmphasis(net,faces){
 }
 /** The label of a face area: undefined `raw` writes the exact area, a number must equal it, anything else is a symbol; a numeric label carries the unit squared. */
 function areaLabel(raw,value,unit,code){
-  let tex,numeric=true;
+  let tex,numeric=true,symbol=false;
   if(raw===undefined){
     tex=lengthTex(value);
     if(tex===null)bad('SOLID_FACE_LABEL_NOT_EXPRESSIBLE:'+code);
-  }else{
+  }else if(typeof raw==='string'&&!SYMBOLIC.test(raw)&&FACE_SYMBOL.test(raw)){tex=raw;numeric=false;symbol=true;}// ASCII such as (3) stays a TeX symbol
+  else{
     if(typeof raw!=='string'||!SYMBOLIC.test(raw))bad('SOLID_FACE_LABEL_INVALID:'+code);
     tex=raw;
     const n=labelNumber(tex);
     if(n===null)numeric=false;
     else if(Math.abs(n-value)>1e-6*Math.max(1,Math.abs(value)))bad('SOLID_FACE_LABEL_VALUE_MISMATCH:'+code);
   }
-  return {tex:numeric&&unit?tex+'\\,\\mathrm{'+unit+'}^2':tex,text:tex,numeric,value:r6(value)};
+  return {tex:numeric&&unit?tex+'\\,\\mathrm{'+unit+'}^2':tex,text:tex,numeric,value:r6(value),...(symbol?{symbol:true}:{})};
 }
 /**
  * net.faceLabels:[{face,text?}] writes one label in the middle of each listed net face: the face's area, exactly (text omitted), a number that must equal
@@ -1245,10 +1250,11 @@ const polygonArea=poly=>Math.abs(polygonArea2(poly));
 function solveNet(plan){
   const net=plan.net;
   if(plan.dims!==undefined||plan.highlights!==undefined||plan.segments!==undefined||plan.section!==undefined)bad('SOLID_PLAN_INVALID');
-  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','height','slant','faceLabels','rightAngles','excluded'],'SOLID_NET_INVALID');
+  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','height','slant','faceLabels','rightAngles','excluded','edgeLabels'],'SOLID_NET_INVALID');
   const unit=plan.unit??null;
   if(net.kind==='CYLINDER'||net.kind==='CONE'){
     if(net.highlights!==undefined||net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
+    if(net.edgeLabels!==undefined)bad('SOLID_EDGE_LABEL_UNSUPPORTED:'+net.kind);
     if(net.rightAngles!==undefined)bad('SOLID_NET_RIGHT_ANGLE_UNSUPPORTED:'+net.kind);
     const r=pos(net.radius,'SOLID_PARAM_INVALID');
     const dims=[];
@@ -1337,6 +1343,26 @@ function solveNet(plan){
     const f=faceById.get(d.face),a=f.idx[d.edge],b=f.idx[(d.edge+1)%f.idx.length];
     const value=len(sub(solid.vertices[a].p,solid.vertices[b].p));
     dims.push({id:'dim-'+(k+1),type:'NETEDGE',face:d.face,edge:d.edge,...dimLabel(d.label,value,unit,'d'+(k+1))});
+  }
+  // net.edgeLabels:[{face,edge,text?}] write at an edge of a face like dims do (text omitted: the exact length; a TeX text: a number that must equal the length or a symbol),
+  // or a word (Hangul, up to 12 characters: "밑변") that only names the edge
+  if(net.edgeLabels!==undefined){
+    const list=net.edgeLabels;
+    if(!Array.isArray(list)||list.length<1||list.length>10)bad('SOLID_EDGE_LABEL_INVALID');
+    for(const [k,e] of list.entries()){
+      onlyKeys(e,['face','edge','text'],'SOLID_EDGE_LABEL_INVALID');
+      if(typeof e.face!=='string'||!faceById.has(e.face))bad(typeof e.face==='string'?'SOLID_NET_FACE_UNKNOWN':'SOLID_EDGE_LABEL_INVALID');
+      if(!Number.isInteger(e.edge)||e.edge<0||e.edge>=faceById.get(e.face).idx.length)bad('SOLID_EDGE_LABEL_INVALID');
+      const f=faceById.get(e.face),a=f.idx[e.edge],b=f.idx[(e.edge+1)%f.idx.length];
+      const value=len(sub(solid.vertices[a].p,solid.vertices[b].p)),id='dim-'+(dims.length+1);
+      if(typeof e.text==='string'&&WORD_LABEL.test(e.text)){
+        if(!textLabelOk(e.text))bad('SOLID_EDGE_LABEL_INVALID');
+        dims.push({id,type:'NETEDGE',face:e.face,edge:e.edge,tex:e.text,text:e.text,numeric:false,value:r6(value),word:true});
+      }else{
+        if(e.text!==undefined&&typeof e.text!=='string')bad('SOLID_EDGE_LABEL_INVALID');
+        dims.push({id,type:'NETEDGE',face:e.face,edge:e.edge,...dimLabel(e.text,value,unit,'e'+(k+1))});
+      }
+    }
   }
   const faces=solid.faces.map(f=>({id:f.id,idx:f.idx,poly:placed.get(f.id).poly,corners:corners[f.id]}));
   const {highlights,segments}=netEmphasis(net,faces);
@@ -1863,7 +1889,7 @@ function specNet(plan,model,ctx){
   const {S,pt,prims,labels,line}=ctx;
   const fold='hidden';
   // one label in the middle of a net face (net.faceLabels): it must lie wholly inside the region of its face
-  const faceLabel=(fl,region)=>labels.push({id:'face-label-'+fl.face,role:'face-label',owner:'face-'+fl.face,kind:'MATH',tex:fl.tex,plain:fl.text,value:String(fl.value),numeric:fl.numeric,faceOf:fl.face,region});
+  const faceLabel=(fl,region)=>labels.push({id:'face-label-'+fl.face,role:'face-label',owner:'face-'+fl.face,...(fl.symbol?{kind:'TEXT',text:fl.text,tight:true}:{kind:'MATH',tex:fl.tex}),plain:fl.text,value:String(fl.value),numeric:fl.numeric,faceOf:fl.face,region});
   if(model.netKind==='POLYHEDRON'){
     const byId=new Map(model.faces.map(f=>[f.id,f]));
     const joinOf=new Map();
@@ -1928,7 +1954,7 @@ function specNet(plan,model,ctx){
     }
     for(const d of model.dims){
       const f=byId.get(d.face),n=f.poly.length,a=f.poly[d.edge],b=f.poly[(d.edge+1)%n];
-      labels.push({id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(a),pt(b)],segmentOf:'net-edge:'+d.face+':'+d.edge});
+      labels.push({id:d.id+'-label',role:'dim',owner:d.id,...(d.word?{kind:'TEXT',text:d.text}:{kind:'MATH',tex:d.tex}),plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(a),pt(b)],segmentOf:'net-edge:'+d.face+':'+d.edge});
     }
     // a right angle at a corner of a face: a small square inside the face, its legs along the two edges
     for(const m of model.rightAngles??[]){
@@ -2165,7 +2191,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     lineage.specSha256=objectSha(spec);
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,fragments=new Map();
     for(const label of spec.labels){
-      try{fragments.set(label.id,typeset({id:label.id,owner:label.owner,factRole:label.role==='dim'?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'solid',...(label.kind==='TEXT'?{kind:'TEXT',text:label.text}:{kind:'MATH',tex:label.tex})},identity));}
+      try{fragments.set(label.id,typeset({id:label.id,owner:label.owner,factRole:label.role==='dim'?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'solid',...(label.kind==='TEXT'?{kind:'TEXT',text:label.text,...(label.tight?{tight:true}:{})}:{kind:'MATH',tex:label.tex})},identity));}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('SOLID_TYPESET_ERROR',{labelId:label.id,code:error.message});}
     }
     const failed=[];

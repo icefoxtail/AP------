@@ -915,6 +915,9 @@ def audit_counts(solid, flags, px, ctx):
 
 
 HIGHLIGHT_FILLS = ('LIGHT', 'MEDIUM', 'WARM', 'GREEN', 'ROSE', 'VIOLET')
+SYMBOLIC = re.compile(r'^[A-Za-z0-9_\\{}^+\-=.() ]{1,24}$')   # a plain-ASCII symbol (such as (3)) is TeX, whatever FACE_SYMBOL says
+# a face symbol of a net (net.faceLabels text): a circled number, a circled Hangul letter, one Hangul syllable or jamo, or a number / syllable / jamo in parentheses
+FACE_SYMBOL = re.compile(r'^(?:[\u2460-\u2473\u3260-\u327B\u3131-\u314E\uac00-\ud7a3]|\((?:[1-9]\d?|[\u3131-\u314E\uac00-\ud7a3])\))$')
 
 
 def face_names(solid):
@@ -2085,6 +2088,7 @@ def audit_labels(plan, ctx):
             seen_dims.add(dim)
             if dim not in expected_dims: errors.append('SOLID_DIM_UNKNOWN:' + str(dim))
             else:
+                if dim in (ctx.get('net_dim_words') or {}) and (g.get('data-text') != ctx['net_dim_words'][dim] or g.get('data-numeric') != '0'): errors.append('SOLID_DIM_WORD_MISMATCH:' + dim)
                 want, seg, symbolic = expected_dims[dim]
                 tex = g.get('data-tex') or ''
                 number = label_number(tex)
@@ -2138,7 +2142,10 @@ def check_face_label(g, box, ctx):
     if want is None:
         errors.append('SOLID_FACE_LABEL_UNKNOWN:' + lid)
         return
-    if symbolic:
+    if isinstance(entry.get('text'), str) and not SYMBOLIC.fullmatch(entry['text']) and FACE_SYMBOL.fullmatch(entry['text']):
+        # a face symbol (a circled number, a Hangul letter, (1)): plain text that is no area, so only the characters and the "not numeric" mark are read back
+        if g.get('data-text') != entry['text'] or g.get('data-numeric') != '0' or g.get('data-tex') is not None: errors.append('SOLID_FACE_LABEL_VALUE_MISMATCH:%s:%s' % (fid, g.get('data-text')))
+    elif symbolic:
         if number is not None: errors.append('SOLID_FACE_LABEL_VALUE_MISMATCH:%s:%s' % (fid, tex))
     else:
         if g.get('data-numeric') != '1' or number is None: errors.append('SOLID_FACE_LABEL_NOT_NUMERIC:' + str(fid))
@@ -2329,13 +2336,28 @@ def audit_cone_net(plan, ctx, declared):
     _fill_dim_lines(ctx)
     # the sector outline as obstacle segments
     a1 = math.atan2(y1 - ay, x1 - ax)
-    a2 = math.atan2(y2 - ay, x2 - ax)
-    d = (a2 - a1) % (2 * math.pi)
-    if want > 180 and d < math.pi: d = d - 2 * math.pi
+    # the drawn arc runs from p1 to p2 by the path's sweep flag (0: towards smaller angles on the screen) through exactly the sector's angle, whether that is under or over 180 degrees
+    d = -math.radians(want) if int(sweep) == 0 else math.radians(want)
     pts = [(ax + R1 * math.cos(a1 + d * k / 32), ay + R1 * math.sin(a1 + d * k / 32)) for k in range(33)]
     ctx['face_regions']['sector'] = ('poly', [(ax, ay)] + pts)
     ctx['segments'] += [((ax, ay), pts[0])] + [(pts[k], pts[k + 1]) for k in range(32)] + [(pts[-1], (ax, ay))]
     ctx['segments'] += _circle_segments(cx, cy, cr)
+
+
+WORD_LABEL = re.compile(r'[\uac00-\ud7a3\u00b7]')
+
+
+def net_edge_entries(net):
+    """the length labels at the edges of a polyhedron net's faces, in the order the producer numbers them (dim-1, dim-2, ...): net.dims, then net.edgeLabels ({face,edge,text?}: no text is the exact
+    length, a text with Hangul is a word that only names the edge, any other text is a number or a symbol like a dims label)"""
+    out = [dict(d) for d in net.get('dims') or []]
+    for e in net.get('edgeLabels') or []:
+        text = e.get('text')
+        if isinstance(text, str) and WORD_LABEL.search(text):
+            if not TEXT_LABEL.fullmatch(text): raise ValueError('SOLID_EDGE_LABEL_INVALID')
+            out.append({'face': e['face'], 'edge': e['edge'], 'word': text})
+        else: out.append({'face': e['face'], 'edge': e['edge'], 'label': text})
+    return out
 
 
 def check_excluded_circles(net, circles, parts, errors):
@@ -2533,15 +2555,18 @@ def audit_polyhedron_net(plan, ctx, declared):
     got = sorted(g.get('id') for g in ctx['labels'] if g.get('data-label-role') == 'vertex-name')
     if got != sorted(expected_labels): errors.append('SOLID_NAME_LABEL_SET_MISMATCH')
     dims = {}
-    for k, d in enumerate(net.get('dims') or []):
+    words = {}
+    for k, d in enumerate(net_edge_entries(net)):
         ident = 'dim-%d' % (k + 1)
         fid, ei = d['face'], d['edge']
         cyc = cycles[fid]
         value = vlen(vsub(P3(cyc[ei]), P3(cyc[(ei + 1) % len(cyc)])))
         a, b = polys[fid][ei], polys[fid][(ei + 1) % len(cyc)]
-        symbolic = d.get('label') is not None and label_number(d['label']) is None
+        symbolic = d.get('word') is not None or (d.get('label') is not None and label_number(d['label']) is None)
+        if d.get('word') is not None: words[ident] = d['word']
         dims[ident] = (value, (a, b), symbolic)
     ctx['net_dims'] = dims
+    ctx['net_dim_words'] = words
     ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
     ctx['face_areas'] = {fid: area3(cyc, P3) for fid, cyc in cycles.items()}
     ctx['face_regions'] = {fid: ('poly', polys[fid]) for fid in ids}

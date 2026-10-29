@@ -41,6 +41,12 @@ export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.jo
       const p=font.getPath(label.text,0,baseline,label.fontPx);
       const b=p.getBoundingBox();width=Math.max(font.getAdvanceWidth(label.text,label.fontPx),b.x2);height=Math.max(b.y2,baseline-label.fontPx*font.descender/font.unitsPerEm);
       content='<path d="'+p.toPathData(5)+'" fill="#111"/>';
+      // tight:true sets the box to the ink itself (a short symbol in a small face needs no room for the line's ascent and descent); the default keeps the font's line box
+      if(label.tight===true){
+        const ink=font.getPath(label.text,-b.x1,baseline-b.y1,label.fontPx);
+        width=b.x2-b.x1;height=b.y2-b.y1;baseline=baseline-b.y1;
+        content='<path d="'+ink.toPathData(5)+'" fill="#111"/>';
+      }
     } else throw Error('UNSUPPORTED_LABEL_KIND');
     const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+width+'" height="'+height+'" viewBox="0 0 '+width+' '+height+'" data-outline-width="'+width+'" data-outline-height="'+height+'" id="'+namespace+'" data-owner="'+esc(label.owner)+'" data-fact-role="'+esc(label.factRole)+'">'+content+'</svg>';
     return {labelId:label.id,owner:label.owner,factRole:label.factRole,namespace,svg,fragmentSha256:bytesSha(Buffer.from(svg)),fontSha256:actual,intrinsic:{width,height,baseline},fontPx:label.fontPx,typesetter:'MathJax SVG / NotoSansKR outlines'};

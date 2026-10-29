@@ -978,3 +978,28 @@ class WordsOnTheFigure(unittest.TestCase):
         self.assertAlmostEqual(pts[0][0], 0.0 + 40.0 * b0[0])
         self.assertAlmostEqual(pts[1][1], 300.0 - 40.0 * b1[1])
         self.assertRaises(ValueError, O._face_polygon_px, solid, 'nope', frame, 40.0)
+
+
+class NetSymbolsAndEdgeLabels(unittest.TestCase):
+    """E28c: face symbols, words and lengths at net edges, written from the grammar alone"""
+
+    def test_a_face_symbol_is_one_circled_number_one_hangul_letter_or_one_in_parentheses(self):
+        for ok in ('①', '⑳', '㉮', '㉠', '가', '힣', 'ㄱ', 'ㅎ', '(가)', '(ㄴ)', '(7)', '(12)'):
+            self.assertTrue(O.FACE_SYMBOL.fullmatch(ok), ok)
+        for bad in ('①②', '가나', '(100)', '(0)', '(가나)', '①.', 'a①', '※', '', ' ①', '㉮㉯', '⑳⑴'):
+            self.assertFalse(O.FACE_SYMBOL.fullmatch(bad), bad)
+        # plain ASCII such as (3) is TeX whatever the symbol rule says: the producer sets it as math
+        self.assertTrue(O.SYMBOLIC.fullmatch('(3)'))
+        self.assertFalse(O.SYMBOLIC.fullmatch('①'))
+        self.assertFalse(O.SYMBOLIC.fullmatch('가'))
+
+    def test_edge_labels_follow_the_dims_and_a_hangul_text_is_a_word(self):
+        net = {'dims': [{'face': 'side2', 'edge': 0}],
+               'edgeLabels': [{'face': 'top', 'edge': 0}, {'face': 'top', 'edge': 1, 'text': '5'}, {'face': 'side0', 'edge': 0, 'text': 'a'}, {'face': 'side0', 'edge': 1, 'text': '높이'}]}
+        entries = O.net_edge_entries(net)
+        self.assertEqual([(e['face'], e['edge'], e.get('label'), e.get('word')) for e in entries],
+                         [('side2', 0, None, None), ('top', 0, None, None), ('top', 1, '5', None), ('side0', 0, 'a', None), ('side0', 1, None, '높이')])
+        self.assertEqual(O.net_edge_entries({}), [])
+        self.assertEqual(O.net_edge_entries({'dims': [{'face': 'top', 'edge': 0, 'label': 'l'}]})[0]['label'], 'l')
+        self.assertRaises(ValueError, O.net_edge_entries, {'edgeLabels': [{'face': 'top', 'edge': 0, 'text': '가나다라마바사아자차카타파'}]})
+        self.assertRaises(ValueError, O.net_edge_entries, {'edgeLabels': [{'face': 'top', 'edge': 0, 'text': '밑 변 $'}]})
