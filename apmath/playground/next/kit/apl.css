@@ -563,12 +563,17 @@ body.apl {
   .apl-presenter { max-width: calc(100% - 24px); bottom: 10px; }
   .apl-share { grid-template-columns: 1fr; justify-items: center; }
   .apl-hide-sm { display: none !important; }
-  /* 모바일: 상태 배지는 왼쪽 아래로 옮겨 수식 칩과 겹치지 않게 */
-  .apl-float.tr { top: auto; bottom: 10px; left: 10px; right: auto; align-items: flex-start; max-width: calc(100% - 76px); }
+  /* 모바일: 상태 배지(왼쪽)와 도구(오른쪽, 가로 막대)를 무대 아래 한 줄에 — 셸이 그 높이만큼 도형 배치에서 비워 둡니다. */
+  .apl-float.tr { top: auto; bottom: 10px; left: 10px; right: auto; align-items: flex-start; max-width: calc(100% - var(--tools-w, 60px) - 30px); }
   .apl-float.tl { top: 10px; left: 10px; right: 10px; }
   .apl-float.br { bottom: 10px; right: 10px; }
+  .apl-tools { flex-direction: row; }
   .apl-tools .apl-icon-btn { width: 36px; height: 36px; }
   .apl-tools hr { display: none; }
+}
+/* 터치 화면은 손가락으로 벌려 확대하므로 확대·축소 버튼을 줄입니다. */
+@media (max-width: 859px) and (pointer: coarse) {
+  .apl-tools .apl-zoom-btn { display: none; }
 }
 @media (max-width: 520px) {
   .apl-bar { padding: 0 8px; column-gap: 6px; }

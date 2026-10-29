@@ -43,6 +43,7 @@
       this.interactive = opts.interactive !== false;
       this.onInteract = opts.onInteract || (() => {});
       this.onDragState = opts.onDragState || (() => {});
+      this.onPanDrag = opts.onPanDrag || null; // 지정하면 빈 곳 끌기 = 회전(3D 궤도) 등으로 바뀝니다
       this.lw = 1;
       this.fs = 1;
       this.hr = 1;
@@ -670,6 +671,31 @@
           align = 'center';
         } else { dx = 10; dy = -10; }
       }
+      // 무대 가장자리(도구 막대 포함)에 닿으면 라벨을 점의 반대쪽으로 넘깁니다 — 점을 끌어 가장자리로 가도 잘리지 않습니다.
+      if (!this._bbox && !this.thumb && align !== 'center') {
+        const c = this.ctx;
+        const size = (o.size || 12.5) * this.fs * this._ts();
+        c.save();
+        c.font = `800 ${size}px ${this.font}`;
+        const w = c.measureText(String(o.label)).width;
+        c.restore();
+        const right = this.W - (this.panes ? 0 : this.insets.right) - 6;
+        const x0 = align === 'left' ? s.x + dx : s.x + dx - w; // 지금 라벨의 왼쪽 끝
+        if (x0 < 6 || x0 + w > right) {
+          const flipped = align === 'left' ? s.x - dx - w : s.x - dx;
+          if ((dx >= 0) === (align === 'left') && flipped >= 6 && flipped + w <= right) {
+            dx = -dx;
+            align = align === 'left' ? 'right' : 'left';
+          } else {
+            // 양쪽 다 넘치는 긴 라벨: 점 바로 위(위가 좁으면 아래)에 놓고 무대 안으로 밀어 넣습니다.
+            align = 'left';
+            dx = clamp(s.x - w / 2, 6, Math.max(6, right - w)) - s.x;
+            dy = s.y - size * 1.6 > size ? -size * 1.6 : size * 1.6;
+          }
+        }
+        const y = s.y + dy;
+        if ((y < size && dy < 0) || (y > this.H - size && dy > 0)) dy = -dy;
+      }
       this._text(s.x + dx, s.y + dy, o.label, { color: o.labelColor || o.color || 'ink', size: o.size || 12.5, weight: 800, align, baseline: o.baseline || 'middle', ref: o.ref, part: o.part });
     }
     /** 드래그 가능한 핸들: 후광(halo)과 고리로 '움직일 수 있음'을 알려 줍니다. */
@@ -715,16 +741,16 @@
       const s = this.toS(this._P(p));
       return this._text(s.x + (o.dx || 0), s.y + (o.dy || 0), str, o);
     }
-    /** 화면 좌표 글자 */
+    /** 화면 좌표 글자(자동 맞춤 계산에서는 빠집니다) */
     stext(x, y, str, o = {}) {
-      return this._text(x, y, str, o);
+      return this._text(x, y, str, o, true);
     }
     /** 도형(figure) 좌표계에서 화면이 작아 도형이 줄어들면 라벨도 조금(최대 22%) 줄여 겹침을 줄입니다. */
     _ts() {
       if (this.kind !== 'figure' || this.thumb) return 1;
       return clamp(0.55 + 0.45 * this.k, 0.78, 1);
     }
-    _text(x, y, str, o = {}) {
+    _text(x, y, str, o = {}, screen = false) {
       if (str == null || str === '') return this;
       const c = this.ctx;
       const em = this._em(o);
@@ -733,6 +759,15 @@
       c.font = `${o.weight || 750} ${size}px ${this.font}`;
       c.textAlign = o.align || 'center';
       c.textBaseline = o.baseline || 'alphabetic';
+      if (this._bbox && !screen) {
+        // 재는 중: 글자 상자를 '세계 기준점 + 화면 픽셀 크기'로 기록(fitBox가 배율과 함께 풉니다)
+        const w = c.measureText(String(str)).width;
+        const al = c.textAlign, bl = c.textBaseline;
+        const l = al === 'center' ? -w / 2 : al === 'right' || al === 'end' ? -w : 0;
+        const t = bl === 'middle' ? -size / 2 : bl === 'top' || bl === 'hanging' ? 0 : bl === 'bottom' ? -size : -size * 0.8;
+        const ref = this.toW(x, y);
+        this._bbox.texts.push({ x: ref.x, y: ref.y, l: l - 3, r: l + w + 3, t: t - 3, b: t + size + 3 });
+      }
       c.setLineDash([]);
       c.shadowBlur = 0;
       if (o.halo !== false) {
@@ -847,8 +882,11 @@
           return;
         }
         if (pan) {
-          this.panX += p.x - pan.x;
-          this.panY += p.y - pan.y;
+          if (this.onPanDrag) this.onPanDrag(p.x - pan.x, p.y - pan.y);
+          else {
+            this.panX += p.x - pan.x;
+            this.panY += p.y - pan.y;
+          }
           pan = { x: p.x, y: p.y };
           this.onInteract('view');
           return;
@@ -927,16 +965,60 @@
       });
     }
 
-    /** 그리기 함수를 한 번 '재기만' 하여 도형이 차지하는 세계 좌표 범위를 구합니다(장면 자동 맞춤). */
+    /**
+     * 그리기 함수를 한 번 '재기만' 하여 도형이 차지하는 세계 좌표 범위와 글자 상자(texts)를 구합니다(자동 맞춤).
+     * 잰 그림은 지우고 강조 상태는 유지하므로 draw 안에서 불러도 됩니다.
+     */
     measure(drawFn) {
-      this._bbox = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
+      const outer = this._bbox; // 재는 중에 다시 재는 경우(장면 안에서 맞춤)
+      this._bbox = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity, texts: [] };
       const keep = this.labelLayer;
+      const emph = this.emph;
       this.labelLayer = null;
-      try { this.begin(); drawFn(); } catch (e) { console.warn('measure', e); }
+      try { this.begin({ emph }); drawFn(); } catch (e) { console.warn('measure', e); }
       this.labelLayer = keep;
       const bb = this._bbox;
-      this._bbox = null;
+      this._bbox = outer;
+      this.begin({ emph });
       return bb.x1 > bb.x0 && bb.y1 > bb.y0 ? bb : null;
+    }
+    /**
+     * 점 범위(x0~y1)와 글자 상자(texts)가 모두 무대 안에 들어오는 focus를 구합니다.
+     * 글자는 확대해도 크기가 같은 화면 픽셀이라, 배율 k를 이분 탐색으로 풀어 라벨이 잘리지 않는 가장 큰 그림을 찾습니다.
+     * margin: 점 범위에 비례한 숨 쉴 공간, px: 가장자리에 더 둘 화면 픽셀
+     */
+    fitBox(bb, { margin = 0.06, px = 10 } = {}) {
+      const a = this._area();
+      const padPx = this.pad * Math.min(a.w, a.h);
+      const W = a.w - padPx * 2, H = a.h - padPx * 2;
+      const sg = this.kind === 'figure' ? 1 : -1; // 화면 y 방향
+      const mx = (bb.x1 - bb.x0) * margin, my = (bb.y1 - bb.y0) * margin;
+      const texts = bb.texts || [];
+      const X = [{ v: bb.x0 - mx, l: -px, r: 0 }, { v: bb.x1 + mx, l: 0, r: px }, ...texts.map((t) => ({ v: t.x, l: t.l - px, r: t.r + px }))];
+      const Y = [{ v: sg * (bb.y0 - my), l: -px, r: px }, { v: sg * (bb.y1 + my), l: -px, r: px }, ...texts.map((t) => ({ v: sg * t.y, l: t.t - px, r: t.b + px }))];
+      const span = (items, k) => {
+        let lo = Infinity, hi = -Infinity;
+        for (const it of items) {
+          lo = Math.min(lo, it.v * k + it.l);
+          hi = Math.max(hi, it.v * k + it.r);
+        }
+        return { lo, hi };
+      };
+      const fits = (k) => { const x = span(X, k), y = span(Y, k); return x.hi - x.lo <= W && y.hi - y.lo <= H; };
+      let lo = 0, hi = Math.min(W / Math.max(1e-9, bb.x1 - bb.x0 + 2 * mx), H / Math.max(1e-9, bb.y1 - bb.y0 + 2 * my));
+      if (!fits(1e-9)) { // 글자만으로도 넘치면(아주 작은 화면) 점 범위만 맞춥니다
+        X.length = 2; Y.length = 2;
+      }
+      for (let i = 0; i < 40; i++) {
+        const mid = (lo + hi) / 2;
+        if (fits(mid)) lo = mid; else hi = mid;
+      }
+      const k = Math.max(lo, 1e-6);
+      const sx = span(X, k), sy = span(Y, k);
+      const cx = (sx.lo + sx.hi) / 2 / k, cy = (sg * (sy.lo + sy.hi)) / 2 / k;
+      // 무대 전체가 아니라 '내용(라벨 포함)의 범위'를 돌려줍니다 → 나중에 무대 크기·여백이 바뀌어도 그 비율대로 다시 맞춰집니다.
+      const hw = (sx.hi - sx.lo) / k / 2, hh = (sy.hi - sy.lo) / k / 2;
+      return { x: [cx - hw, cx + hw], y: [cy - hh, cy + hh] };
     }
 
     /* ---------- 이미지 내보내기 ---------- */

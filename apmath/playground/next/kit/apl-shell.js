@@ -22,6 +22,7 @@
   const TONE_ICON = { ok: 'check', warn: 'alert', bad: 'x', info: 'info', key: 'spark' };
   const easeOut = (t) => 1 - Math.pow(1 - t, 3);
   const call = (v, ...a) => (typeof v === 'function' ? v(...a) : v);
+  const NARROW = window.matchMedia('(max-width: 859px)'); // apl.css의 모바일 기준과 같은 값
 
   class Lab {
     constructor(def) {
@@ -94,8 +95,8 @@
       ui.penBtn = h('button', { class: 'apl-icon-btn', 'aria-label': '판서 (D)', title: '판서 펜 (D)', html: icon('pen'), onclick: () => this.setPen(!this.pen.on) });
       ui.tools = h('div', { class: 'apl-float br' },
         h('div', { class: 'apl-tools apl-glass' },
-          h('button', { class: 'apl-icon-btn', 'aria-label': '확대', title: '확대 (+)', html: icon('zoomIn'), onclick: () => this.zoom(1.2) }),
-          h('button', { class: 'apl-icon-btn', 'aria-label': '축소', title: '축소 (−)', html: icon('zoomOut'), onclick: () => this.zoom(1 / 1.2) }),
+          h('button', { class: 'apl-icon-btn apl-zoom-btn', 'aria-label': '확대', title: '확대 (+)', html: icon('zoomIn'), onclick: () => this.zoom(1.2) }),
+          h('button', { class: 'apl-icon-btn apl-zoom-btn', 'aria-label': '축소', title: '축소 (−)', html: icon('zoomOut'), onclick: () => this.zoom(1 / 1.2) }),
           h('button', { class: 'apl-icon-btn', 'aria-label': '처음 화면으로 맞추기 (0)', title: '화면 맞춤 (0)', html: icon('fit'), onclick: () => this.fitView() }),
           h('hr'),
           ui.penBtn,
@@ -136,7 +137,8 @@
           this.invalidate(why === 'drag' || why === 'drag-start' || why === 'drag-end');
           if (why === 'drag-end') this._saveHashSoon();
         },
-        onDragState: (on) => { this.s.dragging = on; }
+        onDragState: (on) => { this.s.dragging = on; },
+        onPanDrag: bd.orbit ? (dx, dy) => { this._tween = null; bd.orbit(this.s, dx, dy, this); this.invalidate(true); } : null
       });
       this.s.grid = bd.grid !== false;
       this._bindInk();
@@ -180,16 +182,26 @@
       if (prev !== sc) this._announce(`장면 ${i + 1}: ${APLab.stripEmoji(sc.title)}`);
       this._saveHashSoon();
     }
-    /** 장면을 한 번 재어서(그리지 않고) 도형 전체가 들어오는 맞춤 범위를 정합니다. */
+    /** 장면을 재어서(그리지 않고) 도형과 라벨 전체가 들어오는 맞춤 범위를 정합니다. */
     _measureFocus(sc) {
       const b = this.board;
       const s = this.s;
       const v = (sc.view ? sc.view(s, this) : {}) || {};
-      const bb = b.measure(() => (sc.draw || this.def.draw)(b, s, v, this));
+      const run = () => b.measure(() => (sc.draw || this.def.draw)(b, s, v, this));
+      let bb = run();
       if (!bb) return null;
-      const w = bb.x1 - bb.x0, hgt = bb.y1 - bb.y0;
-      const px = w * 0.1 + 46, py = hgt * 0.08 + 30;
-      return { x: [bb.x0 - px, bb.x1 + px], y: [bb.y0 - py, bb.y1 + py] };
+      if (b.panes) {
+        const w = bb.x1 - bb.x0, hgt = bb.y1 - bb.y0;
+        const px = w * 0.1 + 46, py = hgt * 0.08 + 30;
+        return { x: [bb.x0 - px, bb.x1 + px], y: [bb.y0 - py, bb.y1 + py] };
+      }
+      // 라벨은 화면 픽셀 크기라 배율이 바뀌면 세계 좌표 크기도 바뀝니다 → 맞춘 배율에서 한 번 더 재어 정확히 맞춥니다.
+      const opts = { margin: 0.08, px: 12 };
+      const keep = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY };
+      Object.assign(b, { focus: b.fitBox(bb, opts), zoom: 1, panX: 0, panY: 0 });
+      bb = run() || bb;
+      Object.assign(b, keep);
+      return b.fitBox(bb, opts);
     }
     _tabAvailable(id) {
       const sc = this.scene;
@@ -616,15 +628,22 @@
           requestAnimationFrame(() => this.board.resize() && this.invalidate());
         }
       }
-      // 무대 위 칩이 차지한 윗부분은 도형 배치에서 비워 둡니다(그림을 가리지 않도록).
-      const top = ui.chips.childElementCount ? ui.chips.offsetHeight + 18 : 0;
-      if (Math.abs(top - this.board.insets.top) > 2) {
-        this.board.setInsets({ top });
-        this.invalidate();
-      }
       // 발표 막대
       this._renderPresenter();
       this.ui.gridBtn.classList.toggle('on', !!this.s.grid);
+      // 무대 위 칩·배지·도구·발표 막대가 차지한 가장자리는 도형 배치에서 비워 둡니다(그림을 가리지 않도록).
+      // 넓은 화면은 도구가 오른쪽 세로 막대, 좁은 화면은 상태 배지(왼쪽)·도구(오른쪽)가 아래 한 줄입니다.
+      const narrow = NARROW.matches;
+      const ins = {
+        top: ui.chips.childElementCount ? ui.chips.offsetHeight + 18 : 0,
+        right: narrow ? 0 : ui.tools.offsetWidth + 16,
+        bottom: Math.max(narrow ? Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14 : 0, ui.presenter.hidden ? 0 : ui.presenter.offsetHeight + 22)
+      };
+      ui.canvasWrap.style.setProperty('--tools-w', ui.tools.offsetWidth + 'px');
+      if (['top', 'right', 'bottom'].some((k) => Math.abs(ins[k] - this.board.insets[k]) > 2)) {
+        this.board.setInsets(ins);
+        this.invalidate();
+      }
     }
 
     _renderPanel(v) {

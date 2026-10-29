@@ -14,7 +14,7 @@ const PLAYGROUND = path.resolve(NEXT, '..');
 
 function loadCatalog() {
   const ctx = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(NEXT, 'kit/catalog.js'), 'utf8'), ctx);
+  vm.runInNewContext(fs.readFileSync(path.join(NEXT, 'kit/apl-catalog.js'), 'utf8'), ctx);
   return ctx.window.APLab.catalog;
 }
 const cat = loadCatalog();
@@ -73,4 +73,22 @@ test('2.0 페이지가 불러오는 키트 파일이 존재하고 문법이 맞�
   for (const f of fs.readdirSync(path.join(NEXT, 'kit')).filter((f) => f.endsWith('.js'))) {
     execFileSync(process.execPath, ['--check', path.join(NEXT, 'kit', f)]);
   }
+});
+
+test('2.0 파일이 .gitignore에 걸려 배포에서 빠지지 않는다', () => {
+  // 저장소 루트 .gitignore의 `catalog.js` 규칙 때문에 목록 파일이 커밋에서 빠진 적이 있습니다.
+  const files = [];
+  (function walk(dir) {
+    for (const name of fs.readdirSync(dir)) {
+      const full = path.join(dir, name);
+      if (fs.statSync(full).isDirectory()) walk(full); else files.push(full);
+    }
+  })(NEXT);
+  let ignored = '';
+  try {
+    ignored = execFileSync('git', ['check-ignore', '--no-index', ...files], { cwd: NEXT, encoding: 'utf8' });
+  } catch (e) {
+    if (e.status !== 1) throw e; // 1 = 걸린 파일 없음
+  }
+  assert.equal(ignored.trim(), '', `.gitignore에 걸린 파일: ${ignored.trim()}`);
 });
