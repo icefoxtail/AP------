@@ -610,7 +610,7 @@ window.questionBank = [
       "$35\\%$"
     ],
     "answer": "⑤",
-    "solution": "40대 선생님은\n41,42,42,47,47,48,49\n의 7명이다.\n\n전체는 20명이므로\n\\dfrac7{20}\\times100=35\\%\n\n따라서 정답은 ⑤이다.",
+    "solution": "40대 선생님은\n41,42,42,47,47,48,49\n의 7명이다.\n\n전체는 20명이므로\n\\dfrac{7}{20}\\times100=35\\%\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",

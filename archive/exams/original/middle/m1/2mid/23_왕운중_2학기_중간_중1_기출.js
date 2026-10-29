@@ -137,7 +137,7 @@ window.questionBank = [
       "$5$개"
     ],
     "answer": "④",
-    "solution": "정비례는\ny=kx\n꼴이다.\n\nㄱ. y=\\dfrac12x → 정비례\nㄴ. y=-\\dfrac3x → 반비례\nㄷ. x=-7y → y=-\\dfrac17x → 정비례\nㄹ. \\dfrac yx=-4 → y=-4x → 정비례\nㅁ. xy=1 → y=\\dfrac1x → 반비례\nㅂ. y=-x → 정비례\n\n따라서 정비례는\nㄱ, ㄷ, ㄹ, ㅂ\n\n모두 4개이므로 정답은 ④이다.",
+    "solution": "정비례는\ny=kx\n꼴이다.\n\nㄱ. y=\\dfrac{1}{2}x → 정비례\nㄴ. y=-\\dfrac{3}{x} → 반비례\nㄷ. x=-7y → y=-\\dfrac{1}{7}x → 정비례\nㄹ. \\dfrac{y}{x}=-4 → y=-4x → 정비례\nㅁ. xy=1 → y=\\dfrac{1}{x} → 반비례\nㅂ. y=-x → 정비례\n\n따라서 정비례는\nㄱ, ㄷ, ㄹ, ㅂ\n\n모두 4개이므로 정답은 ④이다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
@@ -686,7 +686,7 @@ window.questionBank = [
       "$10\\,\\mathrm{cm}$"
     ],
     "answer": "②",
-    "solution": "AB=L이라 하자.\n\nAC=\\dfrac14L\n\nCB=L-\\dfrac14L\n=\\dfrac34L\n\nCM=MB이므로\nCM=\\dfrac12CB\n=\\dfrac38L\n\nAM=AC+CM\n\n5\n=\\dfrac14L+\\dfrac38L\n=\\dfrac58L\n\nL=8\n\n따라서\nAB=8\\,\\mathrm{cm}\n\n정답은 ②이다.",
+    "solution": "AB=L이라 하자.\n\nAC=\\dfrac{1}{4}L\n\nCB=L-\\dfrac{1}{4}L\n=\\dfrac{3}{4}L\n\nCM=MB이므로\nCM=\\dfrac{1}{2}CB\n=\\dfrac{3}{8}L\n\nAM=AC+CM\n\n5\n=\\dfrac{1}{4}L+\\dfrac{3}{8}L\n=\\dfrac{5}{8}L\n\nL=8\n\n따라서\nAB=8\\,\\mathrm{cm}\n\n정답은 ②이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -763,7 +763,7 @@ window.questionBank = [
       "ㄱ, ㄹ, ㅁ"
     ],
     "answer": "①",
-    "solution": "점 (ab,bc)가 제2사분면이므로\n\nab<0,\\quad bc>0\n\n따라서\na와 b의 부호는 반대,\nb와 c의 부호는 같다.\n\nㄱ. ab<0 → 참\n\nㄴ. b,c가 둘 다 양수라고 정해지지 않음 → 거짓\n\nㄷ. a의 부호가 하나로 정해지지 않음 → 거짓\n\nㄹ.\n-\\dfrac ac>0,\\quad ab<0\n이므로 제4사분면 → 참\n\nㅁ.\n\\dfrac ab<0\n이므로 y=\\dfrac abx는 제2·4사분면을 지남 → 거짓\n\n따라서 ㄱ, ㄹ이고 정답은 ①이다.",
+    "solution": "점 (ab,bc)가 제2사분면이므로\n\nab<0,\\quad bc>0\n\n따라서\na와 b의 부호는 반대,\nb와 c의 부호는 같다.\n\nㄱ. ab<0 → 참\n\nㄴ. b,c가 둘 다 양수라고 정해지지 않음 → 거짓\n\nㄷ. a의 부호가 하나로 정해지지 않음 → 거짓\n\nㄹ.\n-\\dfrac{a}{c}>0,\\quad ab<0\n이므로 제4사분면 → 참\n\nㅁ.\n\\dfrac{a}{b}<0\n이므로 y=\\dfrac{a}{b}x는 제2·4사분면을 지남 → 거짓\n\n따라서 ㄱ, ㄹ이고 정답은 ①이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -905,7 +905,7 @@ window.questionBank = [
     "content": "$y=\\dfrac ax$의 그래프가 아래와 같을 때, 그래프 위의 점 중에서 $x$좌표와 $y$좌표가 모두 음의 정수인 점을 모두 나열하고, 그 풀이과정을 쓰시오. [5점]",
     "choices": [],
     "answer": "$(-1,-10),\\ (-2,-5),\\ (-5,-2),\\ (-10,-1)$",
-    "solution": "그래프가 점 (2,5)를 지나므로\n\n5=\\dfrac a2\n\na=10\n\n따라서\n\ny=\\dfrac{10}{x}\n\nx,y가 모두 음의 정수이려면\nxy=10이고 두 수가 모두 음수여야 한다.\n\n10의 양의 약수쌍은\n\n1\\times10\n2\\times5\n5\\times2\n10\\times1\n\n따라서 해당 점은\n\n(-1,-10)\n(-2,-5)\n(-5,-2)\n(-10,-1)",
+    "solution": "그래프가 점 (2,5)를 지나므로\n\n5=\\dfrac{a}{2}\n\na=10\n\n따라서\n\ny=\\dfrac{10}{x}\n\nx,y가 모두 음의 정수이려면\nxy=10이고 두 수가 모두 음수여야 한다.\n\n10의 양의 약수쌍은\n\n1\\times10\n2\\times5\n5\\times2\n10\\times1\n\n따라서 해당 점은\n\n(-1,-10)\n(-2,-5)\n(-5,-2)\n(-10,-1)",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",

@@ -146,7 +146,7 @@ window.questionBank = [
       "$\\overline{AB}=16\\,\\mathrm{cm}$일 때, $\\overline{EC}=2\\,\\mathrm{cm}$이다."
     ],
     "answer": "④",
-    "solution": "AB의 길이를 L이라 하자.\n\nC는 AB의 중점이므로\nAC=CB=\\dfrac{L}{2}\n\nD는 CB의 중점이므로\nCD=DB=\\dfrac{L}{4}\n\nE는 AD의 중점이고\nAD=AC+CD=\\dfrac{3L}{4}\n이므로\nAE=ED=\\dfrac{3L}{8}\n\n또\nEC=AC-AE\n=\\dfrac{L}{2}-\\dfrac{3L}{8}\n=\\dfrac{L}{8}\n\n따라서\nEC:CD=1:2\n\nAD=\\dfrac{3}{4}AB이므로\nAD=\\dfrac23AB라는 ④가 옳지 않다.",
+    "solution": "AB의 길이를 L이라 하자.\n\nC는 AB의 중점이므로\nAC=CB=\\dfrac{L}{2}\n\nD는 CB의 중점이므로\nCD=DB=\\dfrac{L}{4}\n\nE는 AD의 중점이고\nAD=AC+CD=\\dfrac{3L}{4}\n이므로\nAE=ED=\\dfrac{3L}{8}\n\n또\nEC=AC-AE\n=\\dfrac{L}{2}-\\dfrac{3L}{8}\n=\\dfrac{L}{8}\n\n따라서\nEC:CD=1:2\n\nAD=\\dfrac{3}{4}AB이므로\nAD=\\dfrac{2}{3}AB라는 ④가 옳지 않다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -537,7 +537,7 @@ window.questionBank = [
       "$\\triangle OBC\\equiv\\triangle OAD$"
     ],
     "answer": "⑤",
-    "solution": "AC와 BD가 서로의 수직이등분선이므로\nAO=OC=3\\,\\mathrm{cm}\nBO=OD=4\\,\\mathrm{cm}\n이고 두 대각선은 수직이다.\n\n따라서\nAB=\\sqrt{3^2+4^2}=5\\,\\mathrm{cm}\n\n또\n[BCD]=\\dfrac12\\times BD\\times OC\n=\\dfrac12\\times8\\times3\n=12\\,\\mathrm{cm}^2\n\n네 변의 길이도 모두 5\\,\\mathrm{cm}이고\nAB\\parallel CD이다.\n\n\\triangle OBC와 합동인 삼각형의 올바른 대응 순서는\n\\triangle ODA이다.\n\\triangle OBC\\equiv\\triangle OAD라고 쓰면\nOB와 OA가 대응하므로 옳지 않다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "AC와 BD가 서로의 수직이등분선이므로\nAO=OC=3\\,\\mathrm{cm}\nBO=OD=4\\,\\mathrm{cm}\n이고 두 대각선은 수직이다.\n\n따라서\nAB=\\sqrt{3^2+4^2}=5\\,\\mathrm{cm}\n\n또\n[BCD]=\\dfrac{1}{2}\\times BD\\times OC\n=\\dfrac{1}{2}\\times8\\times3\n=12\\,\\mathrm{cm}^2\n\n네 변의 길이도 모두 5\\,\\mathrm{cm}이고\nAB\\parallel CD이다.\n\n\\triangle OBC와 합동인 삼각형의 올바른 대응 순서는\n\\triangle ODA이다.\n\\triangle OBC\\equiv\\triangle OAD라고 쓰면\nOB와 OA가 대응하므로 옳지 않다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "candidate_evidence",
@@ -698,7 +698,7 @@ window.questionBank = [
       "성적이 $9$번째로 좋은 사람이 속하는 계급의 도수는 $7$명이다."
     ],
     "answer": "⑤",
-    "solution": "도수분포표에서\n\n50\\sim60:4명\n60\\sim70:5명\n70\\sim80:7명\n80\\sim90:8명\n90\\sim100:6명\n\n① 계급의 크기 10점 — 옳다.\n② 계급 5개 — 옳다.\n③ 70점 이상 80점 미만 7명 — 옳다.\n④ 70점 미만은 4+5=9명,\n\\dfrac9{30}\\times100=30\\% — 옳다.\n\n성적이 9번째로 좋은 학생은\n상위 6명이 있는 90\\sim100 다음인\n80\\sim90 계급에 속한다.\n이 계급의 도수는 8명이다.\n\n따라서 ⑤가 옳지 않다.",
+    "solution": "도수분포표에서\n\n50\\sim60:4명\n60\\sim70:5명\n70\\sim80:7명\n80\\sim90:8명\n90\\sim100:6명\n\n① 계급의 크기 10점 — 옳다.\n② 계급 5개 — 옳다.\n③ 70점 이상 80점 미만 7명 — 옳다.\n④ 70점 미만은 4+5=9명,\n\\dfrac{9}{30}\\times100=30\\% — 옳다.\n\n성적이 9번째로 좋은 학생은\n상위 6명이 있는 90\\sim100 다음인\n80\\sim90 계급에 속한다.\n이 계급의 도수는 8명이다.\n\n따라서 ⑤가 옳지 않다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
@@ -778,7 +778,7 @@ window.questionBank = [
       "$3$만 원 미만인 학생 수는 $3$만 원 이상인 학생 수의 $9$배이다."
     ],
     "answer": "④",
-    "solution": "전체 학생 수는 50명이다.\n\n그래프에서 3만 원 미만인 학생 수는\n0+2+3=5명\n\n따라서\n\\dfrac5{50}\\times100=10\\%\n\n그러므로 옳은 설명은\n“3만 원 미만인 학생은 전체의 10\\%이다.”\n\n정답은 ④이다.",
+    "solution": "전체 학생 수는 50명이다.\n\n그래프에서 3만 원 미만인 학생 수는\n0+2+3=5명\n\n따라서\n\\dfrac{5}{50}\\times100=10\\%\n\n그러므로 옳은 설명은\n“3만 원 미만인 학생은 전체의 10\\%이다.”\n\n정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
@@ -813,7 +813,7 @@ window.questionBank = [
     "content": "[서술형1] 다음 그림에서 $\\angle AOB$가 평각이고 $\\angle COD=\\dfrac13\\angle AOD$, $\\angle DOE=\\dfrac12\\angle EOB$일 때, $\\angle COE$의 크기를 구하시오. (6점) ($\\angle COE$를 구하는 과정: 4점, $\\angle COE$의 크기: 2점)",
     "choices": [],
     "answer": "$60^\\circ$",
-    "solution": "\\angle AOB=180^\\circ이고\n그림에서 \\angle AOC=90^\\circ이다.\n\n\\angle COD=x^\\circ라 하면\n\\angle AOD=90^\\circ+x\n\nx=\\dfrac13(90+x)\n\n3x=90+x\n2x=90\nx=45\n\n따라서\n\\angle DOB=180^\\circ-90^\\circ-45^\\circ=45^\\circ\n\n\\angle DOE=y^\\circ라 하면\n\\angle EOB=2y^\\circ\n\ny+2y=45^\\circ\n3y=45^\\circ\ny=15^\\circ\n\n따라서\n\\angle COE=\\angle COD+\\angle DOE\n=45^\\circ+15^\\circ\n=60^\\circ",
+    "solution": "\\angle AOB=180^\\circ이고\n그림에서 \\angle AOC=90^\\circ이다.\n\n\\angle COD=x^\\circ라 하면\n\\angle AOD=90^\\circ+x\n\nx=\\dfrac{1}{3}(90+x)\n\n3x=90+x\n2x=90\nx=45\n\n따라서\n\\angle DOB=180^\\circ-90^\\circ-45^\\circ=45^\\circ\n\n\\angle DOE=y^\\circ라 하면\n\\angle EOB=2y^\\circ\n\ny+2y=45^\\circ\n3y=45^\\circ\ny=15^\\circ\n\n따라서\n\\angle COE=\\angle COD+\\angle DOE\n=45^\\circ+15^\\circ\n=60^\\circ",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
