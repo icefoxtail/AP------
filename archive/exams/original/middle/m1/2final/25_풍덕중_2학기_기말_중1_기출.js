@@ -637,7 +637,7 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:7a5cdc7f3fac1c715c8e03cb2b2eb1d6771ceae6537414608902c38ea1d7dadf",
     "difficultyEvidenceSha": "sha256:ea98472785e6106f6bd13e7c3a29343375ec72c3d956852d85c45e6ed42a9ec0",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q14-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 통학 시간 줄기와 잎 그림에서 줄기 1, 2, 3, 4의 잎 개수 4, 6, 7, 5를 괄호로 묶어 보이고, 작은 쪽 4번째 값인 17분에 동그라미를 친 그림",
     "solutionImageCaption": "줄기별 잎의 수와 4번째로 짧은 통학 시간을 나타낸 줄기와 잎 그림",
     "solutionImageSize": "medium"

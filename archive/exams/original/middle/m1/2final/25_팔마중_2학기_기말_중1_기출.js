@@ -647,7 +647,7 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9ac2a63bd06e9c5f9352c32f3266d84c4c93b9fe14f9958bd43f40cd292650b4",
       "difficultyEvidenceSha": "sha256:86679c25dcd91481cb739b2238cdb1e8854bdc0eff2c7afb045ff78d52bcaa34",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q14-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q14-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 줄넘기 기록의 줄기와 잎 그림에 줄기별 잎의 개수 4, 6, 7, 5, 3을 괄호로 표시하고, 가장 낮은 기록 5, 큰 쪽에서 6번째 기록, 가장 높은 기록 45를 동그라미로 강조한 그림",
       "solutionImageCaption": "줄기별 잎의 개수와 최솟값, 큰 쪽 6번째 값, 최댓값을 표시한 줄기와 잎 그림",
       "solutionImageSize": "medium"
