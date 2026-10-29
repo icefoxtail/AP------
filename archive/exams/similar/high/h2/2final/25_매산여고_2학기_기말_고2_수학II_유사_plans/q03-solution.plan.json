@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$1<x<4$에서 함수값이 음수이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^2-5x+4",
+    "functionName": "f",
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "4",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2.5,
+        "y": -2.25
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "5/2",
+        "-9/4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "곡선 y=x²-5x+4와 x축은 x=1, x=4에서 만나고 1<x<4에서 곡선은 x축 아래에 있다.",
+  "sourceConditions": [
+    {
+      "id": "q3-c1",
+      "condition": "y=x^2-5x+4의 x절편은 x=1, 4",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "q3-c2",
+      "condition": "1<x<4에서 함수값이 음수이므로 둘러싸인 부분은 x축 아래",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "x축과 곡선으로 둘러싸인 부분(1<x<4)을 색칠해 곡선이 x축 아래에 있음을 보인다."
+  ],
+  "assetPath": "assets/images/25_매산여고_2학기_기말_고2_수학II_유사/q3-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q03-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q03-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q03-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+      "ordinal": 3,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}
