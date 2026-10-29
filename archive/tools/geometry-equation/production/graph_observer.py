@@ -2404,9 +2404,20 @@ def _ov_curve_value(plan,value,curve_id=None):
         if argument<=0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
         return a*S.log(argument)/S.log(base)+c
     if family=='trigonometric':
-        a,k,c=(_ov_reader(item) for item in plan['coefficients']);phase=_ov_reader(plan.get('phasePi','0'))
         function={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}.get(plan.get('function'))
         if function is None:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+        if plan.get('ratePi') is not None or plan.get('phase') is not None:
+            # the general grammar: ratePi -> coefficients [A,C] with the rate m*pi, otherwise [A,k,C]; phase in radians or phasePi
+            coefficients=plan['coefficients']
+            if plan.get('ratePi') is not None:
+                if not isinstance(coefficients,list) or len(coefficients)!=2:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+                a,c=(_ov_reader(item) for item in coefficients);rate=_ov_reader(plan['ratePi'])*S.pi
+            else:
+                if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+                a,rate,c=(_ov_reader(item) for item in coefficients)
+            phase=_ov_reader(plan['phase']) if plan.get('phase') is not None else _ov_reader(plan.get('phasePi','0'))*S.pi
+            return a*function(rate*value+phase)+c
+        a,k,c=(_ov_reader(item) for item in plan['coefficients']);phase=_ov_reader(plan.get('phasePi','0'))
         return a*function(k*value+phase*S.pi)+c
     if family=='piecewise-polynomial':
         pieces=plan.get('pieces') or [];breaks=plan.get('breakpoints') or []
@@ -2454,7 +2465,7 @@ def _ov_expected(plan):
     if not isinstance(raw,dict):raise ValueError('OVERLAY_PLAN_INVALID')
     lines=[_ov_line(entry) for entry in raw.get('lines',[])]
     by_line={line['id']:line for line in lines}
-    points={};coordinates={}
+    points={};coordinates={};unnamed=set()
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_POINT_INVALID')
         ident=entry.get('id')
@@ -2483,6 +2494,7 @@ def _ov_expected(plan):
             x,y=_ov_reader(entry['x']),_ov_reader(entry['y'])
         else:raise ValueError('OVERLAY_POINT_INVALID')
         points[ident]=(x,y)
+        if entry.get('unnamed') is True:unnamed.add(ident)
         if entry.get('coordinates') is True:
             if not (x.is_integer and y.is_integer):raise ValueError('OVERLAY_COORDINATES_REQUIRE_INTEGERS')
             coordinates[ident]=(int(x),int(y))
@@ -2513,7 +2525,7 @@ def _ov_expected(plan):
             if label_kind not in ('MATH','TEXT'):raise ValueError('OVERLAY_POLYGON_LABEL_KIND_INVALID')
             if not isinstance(label,str) or not label.strip() or len(label)>40 or any(ord(char)<32 for char in label) or (label_kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',label)):raise ValueError('OVERLAY_POLYGON_LABEL_INVALID')
         polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT'),'label':label,'labelKind':label_kind})
-    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
 
 OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
 
@@ -2719,6 +2731,10 @@ def overlays_audit(plan,svg,transform):
                     # An equation written the ordinary way has no leader and sits within a generous distance of its line, never clearly nearer another
                     # overlay line; one moved away by the layout's fallback carries a leader that starts on its line and ends on the label box.
                     label_belongs(label_id,'overlay-line-'+str(line['id']),'OVERLAY_LINE',False,[segment for other in expected['lines'] if other is not line for segment in [px_segment('overlay-line-'+str(other['id']))] if segment is not None])
+            # unnamed:true points carry no name label at all (a coordinate label alone is the `(x,y)` form).
+            for ident in expected['unnamed']:
+                if any(node.get('data-owner')==ident and node.get('data-label-kind')=='POINT_NAME' for node in groups.values()):errors.append('OVERLAY_POINT_NAME_UNEXPECTED:'+ident)
+                if ident in expected['coordinates'] and (groups.get(ident+'-coordinates') is not None and groups[ident+'-coordinates'].get('data-label-kind')!='COORDINATE_LABEL'):errors.append('OVERLAY_COORDINATES_LABEL_NAMED:'+ident)
             # coordinates:true points: the label is `name(x,y)` or `(x,y)` (integers), owned by its point, nearer to it than to any other overlay point.
             for ident,(cx,cy) in expected['coordinates'].items():
                 label_id=ident+'-coordinates';claimed.add(label_id);node=groups.get(label_id)

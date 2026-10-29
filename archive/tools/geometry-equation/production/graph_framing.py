@@ -2371,10 +2371,22 @@ def _overlay_curve_exact(plan,x_value,curve_id=None):
             if argument<=0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
             return a*S.log(argument)/S.log(base)+c
         if family=='trigonometric':
-            a,k,c=(_overlay_exact(value,'curve') for value in plan['coefficients']);phase=_overlay_exact(plan.get('phasePi','0'),'curve')
-            argument=k*x_value+phase*S.pi;function=plan.get('function','SIN')
-            value={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}.get(function)
+            function=plan.get('function','SIN');value={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}.get(function)
             if value is None:_overlay_fail('OVERLAY_CURVE_UNSUPPORTED',function)
+            if plan.get('ratePi') is not None or plan.get('phase') is not None:
+                # The general grammar (trig_spec): ratePi writes the rate m*pi and the coefficients as [A,C]; without it they stay [A,k,C]; the
+                # phase is `phase` (radians) or `phasePi` (a multiple of pi).
+                coefficients=plan['coefficients']
+                if plan.get('ratePi') is not None:
+                    if not isinstance(coefficients,list) or len(coefficients)!=2:_overlay_fail('OVERLAY_CURVE_UNSUPPORTED','trigonometric')
+                    a,c=(_overlay_exact(item,'curve') for item in coefficients);rate=_overlay_exact(plan['ratePi'],'curve')*S.pi
+                else:
+                    if not isinstance(coefficients,list) or len(coefficients)!=3:_overlay_fail('OVERLAY_CURVE_UNSUPPORTED','trigonometric')
+                    a,rate,c=(_overlay_exact(item,'curve') for item in coefficients)
+                phase=_overlay_exact(plan['phase'],'curve') if plan.get('phase') is not None else _overlay_exact(plan.get('phasePi','0'),'curve')*S.pi
+                return a*value(rate*x_value+phase)+c
+            a,k,c=(_overlay_exact(item,'curve') for item in plan['coefficients']);phase=_overlay_exact(plan.get('phasePi','0'),'curve')
+            argument=k*x_value+phase*S.pi
             return a*value(argument)+c
         if family=='piecewise-polynomial':
             pieces=plan.get('pieces') or [];breaks=plan.get('breakpoints') or [];source=plan.get('sourceDomain') or {}
@@ -2565,7 +2577,7 @@ def _overlay_features(plan):
     required_ids={point.get('id') for point in plan.get('requiredPoints',[]) if isinstance(point,dict)}
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_POINT_INVALID','point')
-        if set(entry)-{'id','curveX','curve','x','y','axis','value','intersect','coordinates','labelDirection'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
+        if set(entry)-{'id','curveX','curve','x','y','axis','value','intersect','coordinates','labelDirection','unnamed'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'point')
         if ident in required_ids:_overlay_fail('OVERLAY_POINT_ID_CONFLICT',ident)
         claim('point:'+ident)
@@ -2607,6 +2619,10 @@ def _overlay_features(plan):
             if entry['coordinates']:
                 if not (x.is_integer and y.is_integer):_overlay_fail('OVERLAY_COORDINATES_REQUIRE_INTEGERS',ident)
                 row['coordinates']=[str(int(x)),str(int(y))]
+        # unnamed:true: a dot with no name letter (an unlabelled intersection of the source figure); with coordinates:true it keeps (x,y) alone.
+        if 'unnamed' in entry:
+            if not isinstance(entry['unnamed'],bool):_overlay_fail('OVERLAY_POINT_UNNAMED_INVALID',ident)
+            if entry['unnamed']:row['unnamed']=True
         if 'labelDirection' in entry:
             # A layout hint only (the side to try first); it needs the label it is a hint for.
             if not row.get('coordinates') or entry['labelDirection'] not in ('N','NE','E','SE','S','SW','W','NW'):_overlay_fail('OVERLAY_LABEL_DIRECTION_INVALID',ident)
