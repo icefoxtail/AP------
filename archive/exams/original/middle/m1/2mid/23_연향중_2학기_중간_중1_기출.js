@@ -606,7 +606,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD 안에 BC를 한 변으로 하는 정삼각형 BCE가 있고, E에서 AB와 BC에 내린 점선 수선이 표시되며 E에서 AB까지의 거리 4 cm와 밑변 AB=8 cm, 삼각형 ABE가 색칠된 그림.",
+    "solutionImageCaption": "E에서 AB까지의 거리는 4 cm, 밑변 AB는 8 cm",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -650,7 +654,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위에 D, A, E가 차례로 있고 B, C에서 내린 수선의 발이 D, E인 직각이등변삼각형 ABC가 있다. 직각삼각형 ABD와 CAE는 합동으로 색칠되고, 같은 길이와 같은 각이 눈금과 호로 표시되며 DE=28 cm, EC=7 cm가 적힌 그림.",
+    "solutionImageCaption": "△ABD≅△CAE이므로 AD=CE, BD=AE",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -693,7 +701,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 삼각형이 한 점에서 꼭짓점이 마주 보며 겹쳐 있고, 왼쪽 삼각형의 각 40°, 35°, 오른쪽 삼각형의 각 27°와 x가 표시되며 교점에서 맞꼭지각 105°와 105°가 같은 호로 표시된 그림.",
+    "solutionImageCaption": "교점의 맞꼭지각 105°와 105°",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -780,7 +792,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변을 공유하는 정팔각형과 정오각형이 있고, 두 도형의 변을 연장해 만든 사각형이 색칠되어 세 내각 45°, 72°, 117°와 구하는 각 x가 표시된 그림.",
+    "solutionImageCaption": "연장선이 만드는 사각형의 내각 45°, 72°, 117°와 x",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -859,7 +875,11 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 CD를 D 쪽으로 연장해 DG=BE인 점 G를 잡고, 합동인 삼각형 ABE와 ADG, 직각이등변삼각형 AEG를 점선으로 나타내며 ∠EAF=45°, ∠AFE=80°, ∠AGF=55°를 표시한 그림.",
+    "solutionImageCaption": "DG=BE로 △ABE≡△ADG, △AEG는 직각이등변삼각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
