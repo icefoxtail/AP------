@@ -656,7 +656,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 다른 두 주사위의 눈 (x, y)를 가로(x)와 세로(y)로 나타낸 6×6 표에서 3x+y<11을 만족시키는 칸이 색칠되어 있다. x=1인 열은 전부, x=2인 열은 y=1~4, x=3인 열은 y=1만 색칠된다.",
+    "solutionImageCaption": "3x+y<11을 만족시키는 칸을 색칠한 두 주사위의 6×6 표",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
