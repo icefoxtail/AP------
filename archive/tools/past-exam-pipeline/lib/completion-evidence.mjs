@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { objectSha } from '../../pipeline-core/canonical.mjs';
 import { loadActiveMetaRegistry, validateActiveMetaFields } from '../../meta-foundation/active-registry.mjs';
+import { checkResolverProjectionParity } from '../../meta-foundation/stage-meta-bridge.mjs';
 import {
   ADVANCED_META_FIELDS_EXCLUDED_FROM_SEMANTIC_INPUT as META_FIELDS_EXCLUDED_FROM_DECISION,
   DECISION_ISOLATED_INPUT_FIELDS as META_DECISION_INPUT_FIELDS,
@@ -115,6 +116,7 @@ function validateMetaRow({ row, question, identity, solutionReview, repoRoot, re
     candidateMeta, semanticMetaEvidence: row.semanticMetaEvidence, validatorReceipt: row.validatorReceipt, repoRoot, registry,
   }) : { status: 'FAIL', errors: ['META_RESOLVER_EVIDENCE_MISSING'] };
   advancedErrors.push(...semanticFinalization.errors.filter(error => error !== 'META_FINAL_CANDIDATE_REQUIRED').map(error => `${error}:${key}`));
+  if (resolution) advancedErrors.push(...checkResolverProjectionParity(resolverCheck.recomputed || resolution, candidateMeta).map(error => error + ':' + key));
   const effectiveResolution = resolverCheck.recomputed || resolution || {};
   const disposition = effectiveResolution.disposition || 'ROUTE_OUT';
   const rpmSemanticStatus = effectiveResolution.semanticStatus || 'UNAVAILABLE';
