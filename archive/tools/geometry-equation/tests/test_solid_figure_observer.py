@@ -689,3 +689,414 @@ class BodyFill(unittest.TestCase):
         square = [(0.0, 0.0), (4.0, 0.0), (4.0, 4.0), (0.0, 4.0), (2.0, 2.0), (1.0, 3.0)]
         self.assertEqual(sorted(O._hull(square)), sorted(square[:4]))
         self.assertAlmostEqual(O._area(O._hull(square)), 16.0)
+
+
+class VertexReferences(unittest.TestCase):
+    """E28b: "#b0", "#t2", "#apex", "#v5" (and "s2#b0") stand for a vertex wherever a name does; the observer resolves them from the grammar alone."""
+
+    def table(self, solids):
+        named = {}
+        for s in solids:
+            for i, (name, p) in enumerate(s['verts']):
+                for key in (s['aliases'].get(i, [name]) if name else O.vertex_keys(s, i)): named[key] = (s['id'], (0.0, 0.0), p)
+        return named
+
+    def norm(self, specs):
+        solids = [O.build_solid({**spec, 'id': 's%d' % (i + 1)}) for i, spec in enumerate(specs)]
+        return O.make_norm(solids, self.table(solids)), solids
+
+    def test_slots_of_a_prism_a_pyramid_and_the_model_order(self):
+        prism = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 3}, 'height': 2, 'names': UNNAMED}
+        norm, _ = self.norm([prism])
+        self.assertEqual([norm(x) for x in ('#b0', '#b3', '#t0', '#t3', '#v0', '#v4', '#v7')], ['s1.b0', 's1.b3', 's1.t0', 's1.t3', 's1.b0', 's1.t0', 's1.t3'])
+        for bad in ('#apex', '#b4', '#t4', '#v8'): self.assertRaises(ValueError, norm, bad)
+        pyramid = {'kind': 'PYRAMID', 'base': {'kind': 'REGULAR', 'n': 5, 'side': 2}, 'height': 4, 'names': '.' * 6}
+        norm, _ = self.norm([pyramid])
+        self.assertEqual([norm(x) for x in ('#b4', '#apex', '#v5', '#v0')], ['s1.b4', 's1.apex', 's1.apex', 's1.b0'])
+        for bad in ('#t0', '#b5', '#v6'): self.assertRaises(ValueError, norm, bad)
+
+    def test_a_named_vertex_keeps_its_name_and_a_plain_name_must_exist(self):
+        norm, _ = self.norm([{'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 2, 'names': {'base': 'FGHE', 'top': 'BCDA'}}])
+        self.assertEqual([norm(x) for x in ('#b0', '#t2', 'G', '#v6')], ['F', 'D', 'G', 'D'])
+        self.assertRaises(ValueError, norm, 'Z')
+        self.assertRaises(ValueError, norm, 5)
+        self.assertRaises(ValueError, norm, '#q1')
+        self.assertRaises(ValueError, norm, 'b0')
+
+    def test_several_polyhedra_need_the_solid_id_and_a_cut_solid_has_no_slots(self):
+        prism = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 2, 'names': UNNAMED}
+        pyramid = {'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 3, 'names': '.....'}
+        norm, _ = self.norm([prism, pyramid])
+        self.assertRaises(ValueError, norm, '#b0')           # fits both
+        self.assertEqual(norm('s2#b0'), 's2.b0')
+        self.assertEqual(norm('#t0'), 's1.t0')                # only the prism has a top ring
+        self.assertEqual(norm('#apex'), 's2.apex')            # only the pyramid has an apex
+        self.assertRaises(ValueError, norm, 's9#b0')
+        cut = {**prism, 'names': {'base': 'FGHE', 'top': 'BCDA'}, 'cuts': [{'through': [['AD', '1/2', 'M'], ['BC', '1/2', 'N'], ['CG', '1/2', 'P'], ['DH', '1/2', 'Q']]}]}
+        norm, _ = self.norm([cut])
+        self.assertRaises(ValueError, norm, '#b0')
+        self.assertEqual(norm('F'), 'F')
+
+    def test_keys_are_joined_plain_or_with_a_dash_and_split_back(self):
+        self.assertEqual(O.join_keys(['A', 'B']), 'AB')
+        self.assertEqual(O.join_keys(['A′', 'B']), 'A′B')
+        self.assertEqual(O.join_keys(['s1.b0', 's1.b1']), 's1.b0-s1.b1')
+        self.assertEqual(O.join_keys(['A', 's1.b1']), 'A-s1.b1')
+        self.assertEqual(O.join_keys(['s1.b0', 'B', 'C']), 's1.b0-B-C')
+        self.assertEqual(O.split_edge('AB'), ('A', 'B'))
+        self.assertEqual(O.split_edge('A′B'), ('A′', 'B'))
+        self.assertEqual(O.split_edge('s1.b0-s1.b1'), ('s1.b0', 's1.b1'))
+        self.assertEqual(O.split_edge('A-s2.apex'), ('A', 's2.apex'))
+        self.assertEqual(O.split_edge('ABC'), (None, None))
+
+
+class NetFaceLabelsAndMarks(unittest.TestCase):
+    """E28b: face-area labels, right-angle squares at net corners and circles left out of a net, read back from hand-built SVG pieces."""
+
+    SVG = '<svg xmlns="http://www.w3.org/2000/svg">%s</svg>'
+
+    def root(self, body):
+        import xml.etree.ElementTree as ET
+        return ET.fromstring(self.SVG % body)
+
+    def test_a_label_number_reads_a_squared_unit(self):
+        self.assertEqual(O.label_number('6\\,\\mathrm{cm}^2'), 6.0)
+        self.assertEqual(O.label_number('6\\,\\mathrm{cm}'), 6.0)
+        self.assertAlmostEqual(O.label_number('48\\pi\\,\\mathrm{cm}^2'), 48 * math.pi)
+        self.assertIsNone(O.label_number('S'))
+
+    def test_a_point_is_inside_a_polygon_or_a_circle_by_a_margin(self):
+        square = ('poly', [(0.0, 0.0), (10.0, 0.0), (10.0, 10.0), (0.0, 10.0)])
+        self.assertTrue(O._inside_region(square, (5.0, 5.0), 1.0))
+        self.assertFalse(O._inside_region(square, (0.5, 5.0), 1.0))
+        self.assertFalse(O._inside_region(square, (11.0, 5.0)))
+        circle = ('circle', 0.0, 0.0, 5.0)
+        self.assertTrue(O._inside_region(circle, (3.0, 0.0), 1.0))
+        self.assertFalse(O._inside_region(circle, (4.5, 0.0), 1.0))
+
+    def test_the_area_of_a_face_is_half_the_cross_sum(self):
+        P = {0: (0.0, 0.0, 0.0), 1: (4.0, 0.0, 0.0), 2: (0.0, 3.0, 0.0), 3: (4.0, 3.0, 5.0)}
+        self.assertAlmostEqual(O.area3([0, 1, 2], P.get), 6.0)
+        self.assertAlmostEqual(O.area3([2, 1, 0], P.get), 6.0)
+
+    def label_ctx(self, plan_entry, value_area=6.0, region=None, unit='cm'):
+        return {'errors': [], 'face_label_plan': {'top': plan_entry}, 'face_areas': {'top': value_area}, 'face_regions': {'top': region or ('poly', [(0.0, 0.0), (100.0, 0.0), (100.0, 100.0), (0.0, 100.0)])}, 'unit': unit}
+
+    def label_group(self, tex, numeric='1', lid='face-label-top', face='top'):
+        return self.root('<g id="%s" data-label-role="face-label" data-face-of="%s" data-numeric="%s" data-tex="%s"/>' % (lid, face, numeric, tex)).find(O.NS + 'g')
+
+    def test_a_face_label_is_checked_against_the_area_and_the_face(self):
+        box = (40.0, 40.0, 20.0, 12.0)
+        ctx = self.label_ctx({'face': 'top'})
+        O.check_face_label(self.label_group('6\\,\\mathrm{cm}^2'), box, ctx)
+        self.assertEqual(ctx['errors'], [])
+        for tex, expected in (('7\\,\\mathrm{cm}^2', 'SOLID_FACE_LABEL_VALUE_MISMATCH'), ('6', 'SOLID_FACE_LABEL_UNIT_MISSING')):
+            ctx = self.label_ctx({'face': 'top'})
+            O.check_face_label(self.label_group(tex), box, ctx)
+            self.assertTrue(any(e.startswith(expected) for e in ctx['errors']), (tex, ctx['errors']))
+        ctx = self.label_ctx({'face': 'top'})
+        O.check_face_label(self.label_group('6\\,\\mathrm{cm}^2'), (95.0, 40.0, 20.0, 12.0), ctx)    # sticks out of the face
+        self.assertTrue(any(e.startswith('SOLID_FACE_LABEL_OUTSIDE_FACE') for e in ctx['errors']), ctx['errors'])
+        ctx = self.label_ctx({'face': 'top', 'text': 'S'})
+        O.check_face_label(self.label_group('S', numeric='0'), box, ctx)                               # a symbol is not compared with the area
+        self.assertEqual(ctx['errors'], [])
+        ctx = self.label_ctx({'face': 'top', 'text': 'S'})
+        O.check_face_label(self.label_group('9', numeric='0'), box, ctx)
+        self.assertTrue(any(e.startswith('SOLID_FACE_LABEL_VALUE_MISMATCH') for e in ctx['errors']), ctx['errors'])
+        ctx = self.label_ctx({'face': 'top'})
+        O.check_face_label(self.label_group('6\\,\\mathrm{cm}^2', face='side0', lid='face-label-side0'), box, ctx)
+        self.assertTrue(any(e.startswith('SOLID_FACE_LABEL_UNKNOWN') for e in ctx['errors']), ctx['errors'])
+
+    def right_angle_case(self, points, corner=0, plan_corner=0):
+        P = {0: (0.0, 0.0, 0.0), 1: (4.0, 0.0, 0.0), 2: (0.0, 3.0, 0.0)}
+        root = self.root('<polyline id="net-ra-top-%d" data-role="net-right-angle" data-face="top" data-corner="%d" points="%s"/>' % (corner, corner, points))
+        errors = []
+        O.check_net_right_angles({'rightAngles': [{'face': 'top', 'corner': plan_corner}]}, root, errors, {'top': [0, 1, 2]}, {'top': [(10.0, 10.0), (50.0, 10.0), (10.0, 40.0)]}, P.get)
+        return errors
+
+    def test_a_right_angle_square_has_equal_legs_along_the_two_edges_at_a_true_right_corner(self):
+        self.assertEqual(self.right_angle_case('10,20 20,20 20,10'), [])
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('10,20 22,23 20,10')))   # corner not the sum of the legs
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('10,16 24,16 24,10')))   # unequal legs
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('12,20 22,20 20,10')))   # a leg off its edge
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('10,12 11,12 11,10')))     # too small
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_GEOMETRY') for e in self.right_angle_case('10,40 40,40 40,10')))     # larger than half an edge
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_NOT_RIGHT') for e in self.right_angle_case('10,20 20,20 20,10', corner=1, plan_corner=1)))
+        self.assertTrue(any(e.startswith('SOLID_NET_RIGHT_ANGLE_SET_MISMATCH') for e in self.right_angle_case('10,20 20,20 20,10', corner=0, plan_corner=2)))
+
+    def circles(self, part, extra):
+        root = self.root('<circle id="c" data-role="net-circle" data-part="%s" %s fill="#fff" cx="1" cy="1" r="5"/>' % (part, extra))
+        return {part: root.find(O.NS + 'circle')}
+
+    def test_the_circles_left_out_are_exactly_the_listed_ones_and_look_so(self):
+        errors = []
+        O.check_excluded_circles({'excluded': ['top']}, self.circles('top', 'data-excluded="1" stroke="#888" stroke-dasharray="5 4"'), ['bottom', 'top'], errors)
+        self.assertEqual(errors, [])
+        for net, circles, expected in (
+                ({'excluded': ['top']}, self.circles('top', 'stroke="#888" stroke-dasharray="5 4"'), 'SOLID_NET_EXCLUDED_SET_MISMATCH'),
+                ({'excluded': ['top']}, self.circles('top', 'data-excluded="1" stroke="#111"'), 'SOLID_NET_EXCLUDED_STYLE_MISMATCH'),
+                ({}, self.circles('top', 'data-excluded="1" stroke="#888" stroke-dasharray="5 4"'), 'SOLID_NET_EXCLUDED_SET_MISMATCH'),
+                ({}, self.circles('top', 'stroke="#111" stroke-dasharray="5 4"'), 'SOLID_NET_EXCLUDED_STYLE_MISMATCH'),
+                ({'excluded': ['rect']}, self.circles('top', 'stroke="#111"'), 'SOLID_NET_EXCLUDED_PLAN_INVALID')):
+            errors = []
+            O.check_excluded_circles(net, circles, ['bottom', 'top'], errors)
+            self.assertTrue(any(e.startswith(expected) for e in errors), (expected, errors))
+        errors = []
+        O.check_excluded_circles({}, self.circles('top', 'stroke="#111"'), ['bottom', 'top'], errors)
+        self.assertEqual(errors, [])
+
+
+class RegularPolyhedraAndBipyramids(unittest.TestCase):
+    """E29: the observer builds regular polyhedra (by routes other than the producer's) and bipyramids from the plan alone."""
+
+    def regular(self, faces, side=2.0):
+        return O.build_solid({'kind': 'REGULAR_POLYHEDRON', 'faces': faces, 'side': side, 'id': 's1'})
+
+    def azimuth_deg(self, p): return math.degrees(math.atan2(p[1], p[0]))
+
+    def test_each_solid_has_its_vertices_edges_faces_and_equal_edges(self):
+        for faces, V, E, sides in ((4, 4, 6, 3), (8, 6, 12, 3), (12, 20, 30, 5), (20, 12, 30, 3)):
+            solid = self.regular(faces, 3.0)
+            pts = [p for _, p in solid['verts']]
+            self.assertEqual((len(pts), len(O.poly_edges(solid)), len(solid['faces'])), (V, E, faces))
+            self.assertEqual(V - E + faces, 2)
+            self.assertTrue(all(len(f) == sides for f in solid['faces']))
+            for a, b in O.poly_edges(solid): self.assertAlmostEqual(O.vlen(O.vsub(pts[a], pts[b])), 3.0, places=9)
+            self.assertAlmostEqual(min(p[2] for p in pts), 0.0, places=12)
+            # every face is planar (all its vertices on the plane of the first three)
+            for f in solid['faces']:
+                n = O.vunit(O.vcross(O.vsub(pts[f[1]], pts[f[0]]), O.vsub(pts[f[2]], pts[f[0]])))
+                self.assertTrue(all(abs(O.vdot(n, O.vsub(pts[i], pts[f[0]]))) < 1e-9 for i in f))
+
+    def test_the_documented_vertex_order_of_each_solid(self):
+        centre = lambda pts: tuple(sum(p[k] for p in pts) / len(pts) for k in range(3))
+        pts = [p for _, p in self.regular(20)['verts']]
+        c = centre(pts)
+        self.assertEqual(max(range(12), key=lambda i: pts[i][2]), 0)       # the upper apex first, the lower apex last
+        self.assertEqual(min(range(12), key=lambda i: pts[i][2]), 11)
+        for k in range(5):
+            self.assertAlmostEqual(self.azimuth_deg(O.vsub(pts[1 + k], c)) % 360, (-90 + 72 * k) % 360, places=6)     # upper ring, the first towards the viewer
+            self.assertAlmostEqual(self.azimuth_deg(O.vsub(pts[6 + k], c)) % 360, (-54 + 72 * k) % 360, places=6)     # lower ring, each between two upper ones
+            self.assertGreater(pts[1 + k][2], c[2])
+            self.assertLess(pts[6 + k][2], c[2])
+        pts = [p for _, p in self.regular(12)['verts']]
+        c = centre(pts)
+        zs = [p[2] for p in pts]
+        self.assertTrue(all(zs[i] > zs[j] for i in range(0, 5) for j in range(5, 20)))      # the upper pentagon first, then the next ring, ...
+        self.assertTrue(all(zs[i] > zs[j] for i in range(5, 10) for j in range(10, 20)) and all(zs[i] > zs[j] for i in range(10, 15) for j in range(15, 20)))
+        for k in range(5):
+            for start, base in ((0, -54), (5, -54), (10, -18), (15, -18)):
+                self.assertAlmostEqual(self.azimuth_deg(O.vsub(pts[start + k], c)) % 360, (base + 72 * k) % 360, places=6)
+        pts = [p for _, p in self.regular(8)['verts']]
+        for k in range(1, 4): self.assertAlmostEqual(self.azimuth_deg(pts[k]) - self.azimuth_deg(pts[0]), 90 * k, places=6)     # the ring runs counter-clockwise from the front left
+        self.assertAlmostEqual(self.azimuth_deg(pts[0]), -135, places=6)
+        self.assertAlmostEqual(pts[4][2], 2 * pts[0][2], places=9)             # the upper apex over the ring; the lower apex on the floor
+        self.assertAlmostEqual(pts[5][2], 0.0, places=9)
+        pts = [p for _, p in self.regular(4)['verts']]
+        self.assertTrue(pts[3][2] > pts[0][2] and abs(pts[0][2]) < 1e-9)       # a base on the floor and the apex above it
+
+    def test_the_construction_refuses_what_it_cannot_build(self):
+        for faces in (6, 5, 0, 3, '8', None):
+            self.assertRaises(ValueError, O.build_solid, {'kind': 'REGULAR_POLYHEDRON', 'faces': faces, 'side': 2, 'id': 's1'})
+        self.assertRaises(ValueError, O.build_solid, {'kind': 'REGULAR_POLYHEDRON', 'faces': 8, 'side': 2, 'names': 'ABC', 'id': 's1'})
+
+    def test_a_bipyramid_is_two_pyramids_on_one_ring(self):
+        solid = O.build_solid({'kind': 'BIPYRAMID', 'base': {'kind': 'REGULAR', 'n': 5, 'side': 3}, 'height': 2.0, 'id': 's1'})
+        pts = [p for _, p in solid['verts']]
+        self.assertEqual((len(pts), len(O.poly_edges(solid)), len(solid['faces'])), (7, 15, 10))
+        self.assertTrue(all(abs(p[2] - 2.0) < 1e-9 for p in pts[:5]))
+        self.assertAlmostEqual(pts[5][2], 4.0)
+        self.assertAlmostEqual(pts[6][2], 0.0)
+        self.assertEqual(O.face_names(solid), ['top%d' % i for i in range(5)] + ['bottom%d' % i for i in range(5)])
+        self.assertEqual(O.count_order(solid)[:6], [(0, 1), (1, 2), (2, 3), (3, 4), (0, 4), (0, 5)])
+        self.assertEqual(O.count_order(solid)[-5:], [(0, 6), (1, 6), (2, 6), (3, 6), (4, 6)])
+        self.assertRaises(ValueError, O.build_solid, {'kind': 'BIPYRAMID', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2, 'plane': 'XZ'}, 'height': 2, 'id': 's1'})
+
+    def test_references_and_face_names_follow_the_kind(self):
+        named = lambda solids: {key: ('x', (0.0, 0.0), (0.0, 0.0, 0.0)) for s in solids for i in range(len(s['verts'])) for key in O.vertex_keys(s, i)}
+        solids = [O.build_solid({'kind': 'BIPYRAMID', 'base': {'kind': 'REGULAR', 'n': 5, 'side': 3}, 'height': 2, 'names': '.......', 'id': 's1'})]
+        norm = O.make_norm(solids, named(solids))
+        self.assertEqual([norm(x) for x in ('#b4', '#apex', '#apex2', '#v6', '#v5')], ['s1.b4', 's1.apex', 's1.apex2', 's1.apex2', 's1.apex'])
+        for bad in ('#t0', '#b5', '#v7'): self.assertRaises(ValueError, norm, bad)
+        solids = [O.build_solid({'kind': 'REGULAR_POLYHEDRON', 'faces': 20, 'side': 2, 'names': '.' * 12, 'id': 's1'})]
+        norm = O.make_norm(solids, named(solids))
+        self.assertEqual([norm(x) for x in ('#v0', '#v11')], ['s1.v0', 's1.v11'])
+        for bad in ('#b0', '#t0', '#apex', '#apex2', '#v12'): self.assertRaises(ValueError, norm, bad)
+        self.assertEqual(O.face_names(self.regular(12)), ['f%d' % i for i in range(12)])
+        self.assertEqual(O.count_order(self.regular(8)), O.poly_edges(self.regular(8)))
+
+
+class WordsOnTheFigure(unittest.TestCase):
+    """E28c: the axis of a rotation solid and the words written on a vertex, an axis, an edge, a slant or a visible face: targets re-derived from the plan"""
+    cuboid = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 5, 'depth': 3}, 'height': 3, 'names': UNNAMED}
+
+    def solids(self, *specs):
+        return [O.build_solid({**spec, 'id': 's%d' % (i + 1)}) for i, spec in enumerate(specs)]
+
+    def norm_of(self, solids):
+        named = {key: ('x', (0.0, 0.0), (0.0, 0.0, 0.0)) for s in solids if s['cat'] == 'POLY' for i in range(len(s['verts'])) for key in O.vertex_keys(s, i)}
+        named.update({n: ('x', (0.0, 0.0), p) for s in solids if s['cat'] != 'POLY' for n, _, p in s['points'] if n})
+        return O.make_norm(solids, named)
+
+    def test_the_axis_of_a_rotation_solid_is_kept_by_the_construction_and_refused_elsewhere(self):
+        self.assertEqual(self.solids({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'axis': {'label': '회전축'}})[0]['axis'], {'label': '회전축'})
+        self.assertEqual(self.solids({'kind': 'CONE', 'radius': 2, 'height': 3, 'axis': True})[0]['axis'], {'label': None})
+        self.assertIsNone(self.solids({'kind': 'CONE', 'radius': 2, 'height': 3})[0]['axis'])
+        for kind in ('SPHERE', 'HEMISPHERE'):
+            self.assertRaises(ValueError, O.build_solid, {'kind': kind, 'radius': 2, 'axis': True, 'id': 's1'})
+        self.assertRaises(ValueError, O.build_solid, {'kind': 'CONE', 'radius': 2, 'height': 3, 'axis': True, 'inside': 's0', 'id': 's2'})
+
+    def test_labels_are_numbered_axis_words_first_then_in_the_order_written(self):
+        solids = self.solids({'kind': 'CONE', 'radius': 3, 'height': 6, 'names': {'apex': 'A'}}, {'kind': 'CYLINDER', 'radius': 2, 'height': 4, 'axis': {'label': '회전축'}})
+        plan = {'labels': [{'text': '모선', 'at': {'slant': True, 'solid': 's1'}}, {'text': '꼭짓점', 'at': 'A'}]}
+        planned, axes = O.planned_text_labels(plan, solids, self.norm_of(solids))
+        self.assertEqual([(i, k, t, g) for i, k, t, g, _ in planned], [('text-tl1', 'AXIS', '회전축', 's2'), ('text-tl2', 'SLANT', '모선', 's1'), ('text-tl3', 'VERTEX', '꼭짓점', 'A')])
+        self.assertEqual(axes, {'s2'})
+        # a labelled axis is a drawn axis, even where the solid does not ask for one
+        solids = self.solids({'kind': 'CYLINDER', 'radius': 2, 'height': 4})
+        planned, axes = O.planned_text_labels({'labels': [{'text': '회전축', 'at': {'axis': True}}]}, solids, self.norm_of(solids))
+        self.assertEqual((planned[0][:4], axes), (('text-tl1', 'AXIS', '회전축', 's1'), {'s1'}))
+
+    def test_edges_and_faces_are_resolved_from_the_plan(self):
+        solids = self.solids(self.cuboid)
+        norm = self.norm_of(solids)
+        planned, _ = O.planned_text_labels({'labels': [{'text': '모서리', 'at': {'edge': ['#b1', '#b2']}}, {'text': '앞면', 'at': {'face': 'side0'}}, {'text': '꼭짓점', 'at': '#t2'}]}, solids, norm)
+        self.assertEqual([(k, g) for _, k, _, g, _ in planned], [('EDGE', 's1.b1-s1.b2'), ('FACE', 's1|side0'), ('VERTEX', 's1.t2')])
+        for bad in ({'text': '앞', 'at': {}}, {'text': '앞', 'at': {'axis': True}}, {'text': '앞', 'at': {'slant': True}}, {'text': '앞', 'at': 'Z'}, {'text': '$x$', 'at': '#b0'}, {'text': '앞 ', 'at': '#b0'}):
+            self.assertRaises(ValueError, O.planned_text_labels, {'labels': [bad]}, solids, norm)
+
+    def test_a_face_is_labelled_only_when_it_faces_the_viewer(self):
+        solid = self.solids(self.cuboid)[0]
+        frame = (0.0, 300.0)
+        facing = {face: O._face_polygon_px(solid, face, frame, 40.0)[1] for face in O.face_names(solid)}
+        self.assertEqual(facing, {'bottom': False, 'top': True, 'side0': True, 'side1': True, 'side2': False, 'side3': False})
+        pts, front = O._face_polygon_px(solid, 'side0', frame, 40.0)
+        self.assertTrue(front)
+        self.assertEqual(len(pts), 4)
+        # the polygon is the projected outline, scaled: the first two corners are the front-bottom edge b0 -> b1
+        b0, b1 = O.project(solid['verts'][0][1]), O.project(solid['verts'][1][1])
+        self.assertAlmostEqual(pts[0][0], 0.0 + 40.0 * b0[0])
+        self.assertAlmostEqual(pts[1][1], 300.0 - 40.0 * b1[1])
+        self.assertRaises(ValueError, O._face_polygon_px, solid, 'nope', frame, 40.0)
+
+
+class NetSymbolsAndEdgeLabels(unittest.TestCase):
+    """E28c: face symbols, words and lengths at net edges, written from the grammar alone"""
+
+    def test_a_face_symbol_is_one_circled_number_one_hangul_letter_or_one_in_parentheses(self):
+        for ok in ('①', '⑳', '㉮', '㉠', '가', '힣', 'ㄱ', 'ㅎ', '(가)', '(ㄴ)', '(7)', '(12)'):
+            self.assertTrue(O.FACE_SYMBOL.fullmatch(ok), ok)
+        for bad in ('①②', '가나', '(100)', '(0)', '(가나)', '①.', 'a①', '※', '', ' ①', '㉮㉯', '⑳⑴'):
+            self.assertFalse(O.FACE_SYMBOL.fullmatch(bad), bad)
+        # plain ASCII such as (3) is TeX whatever the symbol rule says: the producer sets it as math
+        self.assertTrue(O.SYMBOLIC.fullmatch('(3)'))
+        self.assertFalse(O.SYMBOLIC.fullmatch('①'))
+        self.assertFalse(O.SYMBOLIC.fullmatch('가'))
+
+    def test_edge_labels_follow_the_dims_and_a_hangul_text_is_a_word(self):
+        net = {'dims': [{'face': 'side2', 'edge': 0}],
+               'edgeLabels': [{'face': 'top', 'edge': 0}, {'face': 'top', 'edge': 1, 'text': '5'}, {'face': 'side0', 'edge': 0, 'text': 'a'}, {'face': 'side0', 'edge': 1, 'text': '높이'}]}
+        entries = O.net_edge_entries(net)
+        self.assertEqual([(e['face'], e['edge'], e.get('label'), e.get('word')) for e in entries],
+                         [('side2', 0, None, None), ('top', 0, None, None), ('top', 1, '5', None), ('side0', 0, 'a', None), ('side0', 1, None, '높이')])
+        self.assertEqual(O.net_edge_entries({}), [])
+        self.assertEqual(O.net_edge_entries({'dims': [{'face': 'top', 'edge': 0, 'label': 'l'}]})[0]['label'], 'l')
+        self.assertRaises(ValueError, O.net_edge_entries, {'edgeLabels': [{'face': 'top', 'edge': 0, 'text': '가나다라마바사아자차카타파'}]})
+        self.assertRaises(ValueError, O.net_edge_entries, {'edgeLabels': [{'face': 'top', 'edge': 0, 'text': '밑 변 $'}]})
+
+
+class EqualSlantOfACone(unittest.TestCase):
+    """E28c: equalSlant groups re-derived from the plan"""
+
+    def solids(self, *specs):
+        return [O.build_solid({**spec, 'id': 's%d' % (i + 1)}) for i, spec in enumerate(specs)]
+
+    def test_groups_are_numbered_like_the_plan_and_default_to_the_only_cone(self):
+        cone = {'kind': 'CONE', 'radius': 3, 'height': 6}
+        frustum = {'kind': 'CONE_FRUSTUM', 'radius': 4, 'topRadius': 2, 'height': 5}
+        solids = self.solids(cone)
+        self.assertEqual(O.planned_slant_marks({'marks': {'equalSlant': True}}, solids), [('es1', 's1', 1)])
+        self.assertEqual(O.planned_slant_marks({'marks': {'equalSlant': {'count': 2}}}, solids), [('es1', 's1', 2)])
+        self.assertEqual(O.planned_slant_marks({}, solids), [])
+        both = self.solids(cone, frustum)
+        self.assertEqual(O.planned_slant_marks({'marks': {'equalSlant': [{'solid': 's1'}, {'solid': 's2', 'count': 3, 'id': 'f'}]}}, both), [('es1', 's1', 1), ('f', 's2', 3)])
+        for bad in (True, {'solid': 's9'}):
+            self.assertRaises(ValueError, O.planned_slant_marks, {'marks': {'equalSlant': bad}}, both)
+        self.assertRaises(ValueError, O.planned_slant_marks, {'marks': {'equalSlant': True}}, self.solids({'kind': 'CYLINDER', 'radius': 2, 'height': 3}))
+
+
+class CutsThroughCorners(unittest.TestCase):
+    """E28c: a plane through corners of the solid, cut by the observer's own construction"""
+    base = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 3}, 'height': 2, 'names': 'EFGHABCD', 'id': 's1'}
+
+    def cut(self, cuts, **over):
+        return O.build_solid({**self.base, 'cuts': cuts, **over})
+
+    def test_three_corners_cut_the_corner_off(self):
+        solid = self.cut([{'vertices': ['A', 'C', 'F']}])
+        names = sorted(n for n, _ in solid['verts'])
+        self.assertEqual(names, ['A', 'C', 'D', 'E', 'F', 'G', 'H'])
+        self.assertEqual((len(solid['verts']), len(O.poly_edges(solid)), len(solid['faces'])), (7, 12, 7))
+        self.assertEqual(sorted(len(f) for f in solid['faces']), [3, 3, 3, 3, 4, 4, 4])
+        section = solid['faces'][-1]
+        self.assertEqual(sorted(solid['verts'][i][0] for i in section), ['A', 'C', 'F'])
+
+    def test_corners_can_be_named_by_slot_in_the_first_cut_only(self):
+        named = self.cut([{'vertices': ['A', 'C', 'F']}])
+        by_slot = self.cut([{'vertices': ['#t0', '#t2', '#b1']}], names='.' * 8)
+        self.assertEqual([p for _, p in by_slot['verts']], [p for _, p in named['verts']])
+        for bad in (['#t0', '#t2', '#b9'], ['#apex', '#t2', '#b1'], ['s2#b0', '#t2', '#b1'], ['#t0', '#t2', 'Z']):
+            self.assertRaises(ValueError, self.cut, [{'vertices': bad}], names='.' * 8)
+        self.assertRaises(ValueError, self.cut, [{'vertices': ['#t0', '#t2', '#b1']}, {'vertices': ['#t0', '#t3', '#b0']}], names='.' * 8)
+
+    def test_a_second_cut_names_the_corners_that_are_left(self):
+        self.assertRaises(ValueError, self.cut, [{'vertices': ['A', 'C', 'F']}, {'vertices': ['B', 'D', 'G']}])
+
+    def test_corners_and_edge_points_make_one_plane(self):
+        solid = self.cut([{'vertices': ['F'], 'through': [['AD', '1/2', 'P'], ['BC', '1/2', 'Q']], 'keep': 'G'}])
+        self.assertEqual(sorted(n for n, _ in solid['verts'] if n), ['C', 'D', 'E', 'F', 'G', 'H', 'P', 'Q'])
+
+    def test_a_diagonal_plane_needs_keep_and_the_refusals_are_explicit(self):
+        self.assertRaises(ValueError, self.cut, [{'vertices': ['A', 'C', 'G', 'E']}])
+        half = self.cut([{'vertices': ['A', 'C', 'G', 'E'], 'keep': 'B'}])
+        self.assertEqual((len(half['verts']), len(O.poly_edges(half)), len(half['faces'])), (6, 9, 5))
+        for cuts in ([{'vertices': ['A', 'C']}], [{'vertices': []}], [{}], [{'vertices': ['A', 'A', 'C']}], [{'vertices': ['A', 'C', 'F', 'D']}], [{'vertices': ['E', 'F', 'G']}],
+                     [{'vertices': ['A', 'C', 'F'], 'keep': 'A'}], [{'vertices': 'ACF'}], [{'vertices': ['A', 'C', 7]}]):
+            self.assertRaises(ValueError, self.cut, cuts)
+
+
+class BallsInACylinder(unittest.TestCase):
+    """E28c: balls stacked in a cylinder, expanded from the plan's own grammar"""
+
+    def specs(self, host, *more):
+        return O.expanded_solid_specs({'solids': [{'kind': 'CYLINDER', 'radius': 3, 'height': 18, **host}, *more]})
+
+    def test_a_stack_is_equal_balls_resting_on_each_other_from_the_bottom(self):
+        specs = self.specs({'stack': {'count': 3, 'radius': 3}})
+        self.assertEqual([(s['id'], s['kind']) for s in specs], [('s1', 'CYLINDER'), ('s1b1', 'SPHERE'), ('s1b2', 'SPHERE'), ('s1b3', 'SPHERE')])
+        self.assertEqual([s.get('centerZ') for s in specs], [None, 3.0, 9.0, 15.0])
+        self.assertTrue(all(s['inside'] == 's1' for s in specs[1:]))
+        self.assertNotIn('stack', specs[0])
+        solids = [O.build_solid(s) for s in specs]
+        self.assertEqual([s['cz'] for s in solids[1:]], [3.0, 9.0, 15.0])
+        self.assertEqual(solids[1]['points'][0][2], (0.0, 0.0, 3.0))
+
+    def test_a_list_rests_each_ball_on_the_one_before_unless_it_says_where(self):
+        specs = self.specs({'inside': [{'kind': 'SPHERE', 'radius': 2}, {'kind': 'SPHERE', 'radius': 3}, {'kind': 'SPHERE', 'radius': 1, 'centerZ': 15}]})
+        self.assertEqual([s.get('centerZ') for s in specs[1:]], [2.0, 7.0, 15.0])
+        # the plan's own solids keep their ids by their place in the plan, the balls follow their cylinder
+        specs = self.specs({'stack': {'count': 2, 'radius': 1}}, {'kind': 'CONE', 'radius': 2, 'height': 3})
+        self.assertEqual([s['id'] for s in specs], ['s1', 's1b1', 's1b2', 's2'])
+
+    def test_a_ball_at_a_given_height_has_its_centre_there_and_a_plain_sphere_rests_on_the_floor(self):
+        self.assertEqual(O.build_solid({'kind': 'SPHERE', 'radius': 2, 'id': 's1'})['cz'], 2.0)
+        ball = O.build_solid({'kind': 'SPHERE', 'radius': 2, 'inside': 's1', 'centerZ': 7, 'id': 's2'})
+        self.assertEqual((ball['cz'], ball['points'][0][2]), (7.0, (0.0, 0.0, 7.0)))
+        self.assertEqual(O.build_solid({'kind': 'HEMISPHERE', 'radius': 2, 'id': 's1'})['cz'], 0.0)
+
+    def test_what_the_grammar_does_not_allow_is_refused(self):
+        for host in ({'stack': {'count': 1, 'radius': 3}}, {'stack': {'count': 7, 'radius': 1}}, {'stack': {'count': 2.5, 'radius': 1}},
+                     {'stack': {'count': 2, 'radius': 1}, 'inside': [{'kind': 'SPHERE', 'radius': 1}]}, {'inside': []},
+                     {'inside': [{'kind': 'CONE', 'radius': 1}]}, {'inside': [{'kind': 'SPHERE', 'radius': 1}] * 7}):
+            self.assertRaises(ValueError, self.specs, host)
+        self.assertRaises(ValueError, O.expanded_solid_specs, {'solids': [{'kind': 'CONE', 'radius': 2, 'height': 3, 'stack': {'count': 2, 'radius': 1}}]})

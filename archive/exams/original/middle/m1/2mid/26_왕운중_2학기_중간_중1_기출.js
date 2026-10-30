@@ -1015,7 +1015,10 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q14.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반비례 y=a/x의 그래프(제1사분면)와 그 아래쪽의 자연수 좌표 점 16개가 열마다 찍혀 있고, x축 아래에 열별 개수 7, 3, 2, 1, 1, 1, 1이 적혀 있는 그림.",
+    "solutionImageCaption": "y=a/x의 그래프 아래쪽(그래프 위의 점은 제외)에서 자연수 좌표 점을 x=1, 2, …, 7인 열마다 세면 7+3+2+1+1+1+1=16개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,

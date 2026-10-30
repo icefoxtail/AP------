@@ -655,7 +655,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY"
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠XOY와 크기가 같은 각을 반직선 O'X'를 한 변으로 작도하는 과정: O를 중심으로 한 호(㉠)가 두 반직선과 만나는 점 A, B, A를 중심으로 AB의 길이를 잰 호(㉡)와, O'를 중심으로 한 같은 반지름의 호(㉢), A'를 중심으로 한 호(㉣), 반직선 O'Y'(㉤)를 나타낸 그림.",
+    "solutionImageCaption": "각의 작도 과정 ㉠~㉤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

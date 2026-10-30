@@ -5,7 +5,8 @@ import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {compositePanels,compositePanelLayout,compositeStackSize,composeCompositeCandidate,isGridPanel,COMPOSITE_MAX_SOLID_GRID_PANELS} from '../production/composite-candidate-svg-v1.mjs';
-import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH} from '../production/solid-figure-v1.mjs';
+import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL} from '../production/solid-figure-v1.mjs';
+import {typesetter} from '../production/typography.mjs';
 
 const observer=fileURLToPath(new URL('../production/solid_figure_observer_worker.py',import.meta.url));
 const code=expected=>error=>String(error.message).startsWith(expected);
@@ -487,7 +488,7 @@ const triPlane=()=>({capability:'construction-spike-v1',
     nodes:['A','B','C'].map((id,k)=>({id,op:'SOURCE_POINT',inputs:[],args:{coordinates:[{kind:'integer',value:String([0,4,0][k])},{kind:'integer',value:String([0,0,4][k])}]},outputType:'POINT',factRole:'GIVEN'}))},
   axisTickValues:{x:[],y:[]},displayLines:[],displayCircles:[],displaySegments:[{id:'sAB',refs:['A','B']},{id:'sBC',refs:['B','C']},{id:'sCA',refs:['C','A']}],rightAngles:[],displayPoints:['A','B','C']});
 const reason=error=>error?.detail?.reason;
-test('E5: two to four solid panels (and solids mixed with plane figures) are a two-column grid; the grid sets the panel width, idempotently',()=>{
+test('E5: two to six solid panels (and solids mixed with plane figures) are a two-column grid; the grid sets the panel width, idempotently',()=>{
   const three=gridOf([solidPanel(hexPrism([seg('B','H','REF'),seg('B','A')]),'만나는 모서리'),solidPanel(hexPrism([seg('B','H','REF'),seg('I','C')]),'평행한 모서리'),solidPanel(hexPrism([seg('B','H','REF'),seg('C','D')]),'꼬인 모서리')]);
   const checked=compositePanels(three);
   assert.equal(checked.length,3);
@@ -503,11 +504,11 @@ test('E5: two to four solid panels (and solids mixed with plane figures) are a t
   assert.equal(figurePanelSize(solveSolidFigure(hexPrism([seg('B','H')]))).width,480);// a standalone solid keeps the 480 wide panel
   const stack=compositeStackSize(checked.map(item=>figurePanelSize(solveSolidFigure(item.plan))),0,compositePanelLayout(checked));
   assert.equal(stack.width,2*GRID_PANEL_WIDTH+8);assert.ok(stack.width<=776);
-  // a solid next to a plane figure, and four panels
+  // a solid next to a plane figure, and four panels (a grid with a solid takes up to six since E28c)
   const mixed=compositePanels(gridOf([{caption:{text:'오각형'},plan:triPlane()},solidPanel(hexPrism([seg('B','H')]),'육각기둥')]));
   assert.deepEqual(compositePanelLayout(mixed),{kind:'GRID',columns:2,rows:1});
   assert.equal(mixed[0].plan.panelWidth,undefined);assert.equal(mixed[1].plan.panelWidth,GRID_PANEL_WIDTH);
-  assert.equal(COMPOSITE_MAX_SOLID_GRID_PANELS,4);
+  assert.equal(COMPOSITE_MAX_SOLID_GRID_PANELS,6);
   assert.equal(compositePanels(gridOf(Array.from({length:4},()=>solidPanel(hexPrism([seg('B','H')]),'육각기둥')))).length,4);
   // a net is a solid panel too
   const netPanel={capability:'solid-figure-v1',net:{solid:{kind:'PRISM',base:{kind:'RECT',width:2,depth:3},height:4,names:'........'},root:'side0',joins:[['side0','side1'],['side1','side2'],['side2','side3'],['side1','top'],['side3','bottom']],corners:{side0:['B','C','N','A']}}};
@@ -516,7 +517,7 @@ test('E5: two to four solid panels (and solids mixed with plane figures) are a t
 test('E5: solid panels are refused with explicit codes where the grid cannot hold them',()=>{
   const one=()=>solidPanel(hexPrism([seg('B','H')]),'육각기둥');
   assert.throws(()=>compositePanels(gridOf([one()])),error=>reason(error)==='PANELS');
-  assert.throws(()=>compositePanels(gridOf(Array.from({length:5},one))),error=>reason(error)==='PANELS');
+  assert.throws(()=>compositePanels(gridOf(Array.from({length:7},one))),error=>reason(error)==='PANELS');
   assert.throws(()=>compositePanels(gridOf([one(),one()],{chain:'solid-figure-v1'})),error=>reason(error)==='SOLID_PANEL_PLACEMENT_0');
   const graph={caption:{text:'그래프'},plan:{capability:'polynomial-spike-v1',graphPlan:{family:'polynomial',coefficients:['0','0','1']}}};
   assert.throws(()=>compositePanels(gridOf([one(),graph])),error=>reason(error)==='PANEL_SOLID_MIXED_0');
@@ -1034,4 +1035,808 @@ test('E28: a level fill is refused where it has no body to shade',()=>{
   bad({kind:'CONE',radius:4,height:6},{kind:'LEVEL',at:'1/2',fill:'MIDDLE'},'SOLID_SECTION_FILL_INVALID');
   bad({kind:'CONE',radius:4,height:6},{kind:'AXIAL',fill:'BOTTOM'},'SOLID_SECTION_INVALID');
   bad({kind:'CONE',radius:4,height:6},{kind:'LEVEL',at:'1/2',colour:'blue'},'SOLID_SECTION_INVALID');
+});
+
+// --- E28b: the vertices of a solid with no names are written by reference (#b0, #t2, #apex, #v5) -------------------------------------------------
+const bare=(over={})=>figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:4},height:4,names:'........'}],...over});
+const segmentLines=(plan)=>solidFigureSpec(plan,solveSolidFigure(plan)).prims.filter(p=>p.role==='segment').map(p=>[p.x1,p.y1,p.x2,p.y2]);
+test('E28b: a reference is the same vertex as its name; the model keys an unnamed vertex "<solid>.<slot>" and a named one by its name',()=>{
+  const byName=figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:4},height:4,names:'ABCDEFGH'}],segments:[{from:'B',to:'E',style:'SOLID'},{from:'C',to:'H',style:'SOLID'}],dims:[{edge:'AB'}]});
+  const byRef=bare({segments:[{from:'#b1',to:'#t0',style:'SOLID'},{from:'#b2',to:'#v7',style:'SOLID'}],dims:[{edge:['#b0','#b1']}]});
+  assert.deepEqual(segmentLines(byRef),segmentLines(byName));
+  const model=solveSolidFigure(byRef);
+  assert.deepEqual(model.segments.map(s=>[s.from,s.to]),[['s1.b1','s1.t0'],['s1.b2','s1.t3']]);// #v7 is the 8th vertex: the top ring's last
+  assert.deepEqual([model.dims[0].from,model.dims[0].to,model.dims[0].tex],['s1.b0','s1.b1','4\\,\\mathrm{cm}']);
+  // a name and a reference may be mixed, and a named vertex written by reference keeps its name as its key
+  const mixed=figure({unit:'cm',solids:[cuboid()],segments:[{from:'#b0',to:'#t2'}],dims:[{edge:['F','#b1']},{from:'#t0',to:'C'}]});// base FGHE, top BCDA
+  const m=solveSolidFigure(mixed);
+  assert.deepEqual(m.segments.map(s=>[s.from,s.to]),[['F','D']]);
+  assert.deepEqual(m.dims.map(d=>[d.from,d.to]),[['F','G'],['B','C']]);
+  // a pyramid has #b<i> and #apex (and #v<i> in model order); a frustum, like a prism, has two rings
+  const pyramid=figure({unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:5,names:'.....'}],dims:[{edge:['#b0','#apex']},{edge:['#v4','#v1']}]});
+  assert.deepEqual(solveSolidFigure(pyramid).dims.map(d=>[d.from,d.to]),[['s1.b0','s1.apex'],['s1.apex','s1.b1']]);
+  const frustum=frustum5({segments:[{from:'#b0',to:'#t0',style:'AUTO'}]});
+  assert.deepEqual(solveSolidFigure(frustum).segments.map(s=>[s.from,s.to]),[['s1.b0','s1.t0']]);
+});
+test('E28b: references name the solid when there are several, and each refusal has its own code',()=>{
+  const bad=(over,expected,solids)=>assert.throws(()=>solveSolidFigure(solids?figure({unit:'cm',solids,...over}):bare(over)),code(expected),expected);
+  bad({segments:[{from:'#x0',to:'#b1'}]},'SOLID_VREF_INVALID');
+  bad({segments:[{from:'b0',to:'#b1x'}]},'SOLID_NAME_UNKNOWN');// a plain word is a name, and no such name exists
+  bad({segments:[{from:'#b0#',to:'#b1'}]},'SOLID_VREF_INVALID');
+  bad({segments:[{from:'#b4',to:'#b1'}]},'SOLID_VREF_UNKNOWN:#b4');
+  bad({segments:[{from:'#t4',to:'#b1'}]},'SOLID_VREF_UNKNOWN:#t4');
+  bad({segments:[{from:'#v8',to:'#b1'}]},'SOLID_VREF_UNKNOWN:#v8');
+  bad({segments:[{from:'#apex',to:'#b1'}]},'SOLID_VREF_UNKNOWN:#apex');// a prism has no apex
+  bad({segments:[{from:'#b1',to:'#b1'}]},'SOLID_NAME_UNKNOWN');
+  bad({dims:[{edge:['#b0','#t2']}]},'SOLID_DIM_SEGMENT_NOT_DRAWN:s1.b0-s1.t2');// a face diagonal is no drawn edge
+  bad({dims:[{edge:['#b0']}]},'SOLID_DIMS_INVALID');
+  bad({dims:[{edge:5}]},'SOLID_DIMS_INVALID');
+  bad({marks:{rightAngles:[{at:'#b0',refs:['#b1','#b1']}]}},'SOLID_MARKS_INVALID');
+  bad({marks:{equalLengths:[{segments:[['#b0','#b1'],['#b0','#t0','#t1']]}]}},'SOLID_MARKS_INVALID');
+  bad({marks:{rightAngles:[{at:'#b0',refs:['#b1','#b9']}]}},'SOLID_VREF_UNKNOWN:#b9');
+  bad({highlights:[{polygon:['#b0','#b1','#b2','#t0']}]},'SOLID_HIGHLIGHT_NOT_PLANAR');
+  bad({highlights:[{polygon:['#b0','#b1','#b2']}]},'SOLID_HIGHLIGHT_EDGE_NOT_DRAWN:s1.b2-s1.b0');
+  // two polyhedra: an unprefixed reference that fits both is ambiguous; the solid id settles it, and a missing solid or a round one is refused
+  const two=[{id:'s1',kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:3,names:'........'},{id:'s2',kind:'PYRAMID',base:{kind:'RECT',width:2,depth:2},height:3,names:'.....'},{id:'s3',kind:'CYLINDER',radius:1,height:2}];
+  bad({segments:[{from:'#b0',to:'#b1'}]},'SOLID_VREF_AMBIGUOUS:#b0',two);
+  bad({segments:[{from:'#apex',to:'#b1'}]},'SOLID_VREF_AMBIGUOUS:#b1',two);
+  bad({segments:[{from:'s9#b0',to:'s1#b1'}]},'SOLID_VREF_SOLID_UNKNOWN:s9',two);
+  bad({segments:[{from:'s3#b0',to:'s1#b1'}]},'SOLID_VREF_UNSUPPORTED:CYLINDER',two);
+  const model=solveSolidFigure(figure({unit:'cm',solids:two,segments:[{from:'#t0',to:'s1#b1'},{from:'#apex',to:'s2#b1'}],dims:[{edge:['s1#b0','s1#b1']}]}));
+  assert.deepEqual(model.segments.map(s=>[s.from,s.to]),[['s1.t0','s1.b1'],['s2.apex','s2.b1']]);// #t0 and #apex fit one solid each
+  // a solid with cuts has no base ring any more: its vertices are named or nothing
+  const cut=cutCube([{through:midCut}],{unit:'cm',segments:[{from:'#b0',to:'#b1'}]});
+  assert.throws(()=>solveSolidFigure(cut),code('SOLID_VREF_UNKNOWN'));
+  assert.throws(()=>solveSolidFigure(cutCube([{through:midCut}],{unit:'cm',segments:[{from:'s1#b0',to:'F'}]})),code('SOLID_VREF_UNSUPPORTED:CUT'));
+});
+test('E28b: an unnamed cube with a corner pyramid composes with every reference kind and the observer reads each back',async()=>{
+  const plan=bare({
+    segments:[{from:'#b1',to:'#b3',style:'AUTO',role:'REF'},{from:'#b1',to:'#t0',style:'AUTO',role:'REF'},{from:'#b3',to:'#t0',style:'AUTO',role:'REF'}],
+    highlights:[{polygon:['#b0','#b1','#b3'],fill:'WARM'}],
+    marks:{rightAngles:[{at:'#b0',refs:['#b1','#b3']}],equalLengths:[{count:1,segments:[['#b0','#b1'],['#b0','#b3'],['#b0','#t0']]}],angles:[{refs:['#b1','#b3','#t0'],arcs:1}]},
+    dims:[{edge:['#b0','#t0'],label:'a'},{edge:['#b0','#b1'],label:'a'}]
+  });
+  const svg=await sphereSvg(plan);
+  assert.match(svg,/<line id="segment-s1\.b1-s1\.b3" data-role="segment" data-edge="s1\.b1-s1\.b3"/);
+  assert.match(svg,/id="highlight-s1\.b0-s1\.b1-s1\.b3" data-role="highlight-face" data-polygon="s1\.b0-s1\.b1-s1\.b3"/);
+  assert.match(svg,/data-role="right-angle-mark" data-mark="ra1" data-at="s1\.b0" data-refs="s1\.b1-s1\.b3"/);
+  assert.match(svg,/data-mark="eq1" data-edge="s1\.b0-s1\.b1" data-mark-index="1"/);
+  assert.match(svg,/data-segment="s1\.b0-s1\.t0"/);
+  // tampering: an end of a segment moved, a segment named after other vertices, a shaded corner moved, a right angle at another vertex
+  const seg=svg.match(/<line id="segment-s1\.b1-s1\.b3"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(seg,seg.replace(/x2="([\d.]+)"/,(all,v)=>`x2="${Number(v)+8}"`)),'SOLID_SEGMENT_ENDPOINT_OFF');
+  await failingAudit(plan,svg.replace(seg,seg.replace('data-edge="s1.b1-s1.b3"','data-edge="s1.b1-s1.t3"')),'SOLID_SEGMENT_');
+  const poly=svg.match(/<polygon id="highlight-s1\.b0-s1\.b1-s1\.b3"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(poly,poly.replace(/points="([\d.]+),([\d.]+)/,(all,x,y)=>`points="${Number(x)+9},${y}`)),'SOLID_HIGHLIGHT_VERTEX_OFF');
+  const ra=svg.match(/<polyline id="ra1"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(ra,ra.replace('data-at="s1.b0"','data-at="s1.b1"')),'SOLID_RIGHT_ANGLE_MARK_OWNER');
+  // the same figure against a plan that points at other vertices
+  await failingAudit({...plan,segments:[{from:'#b1',to:'#b3',style:'AUTO',role:'REF'},{from:'#b2',to:'#t0',style:'AUTO',role:'REF'},{from:'#b3',to:'#t0',style:'AUTO',role:'REF'}]},svg,'SOLID_SEGMENT_');
+  // the lengths are read back too: a plan that swaps two dimensioned edges of different length fails against the figure it did not make
+  const box=dims=>figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:3},height:2,names:'........'}],dims});
+  const boxSvg=await sphereSvg(box([{edge:['#b0','#b1']},{edge:['#b1','#b2']},{edge:['#b1','#t1']}]));
+  assert.match(boxSvg,/data-tex="4\\,\\mathrm\{cm\}"/);assert.match(boxSvg,/data-segment="s1\.b1-s1\.t1"/);
+  await failingAudit(box([{edge:['#b0','#b1']},{edge:['#b1','#t1']},{edge:['#b1','#b2']}]),boxSvg,'SOLID_DIM_VALUE_MISMATCH');
+});
+
+// --- E28b: net face labels, right angles at net corners, circles left out of a cylinder / cone net -----------------------------------------------------
+const triPrismNet=(net={},over={})=>figure({unit:'cm',net:{solid:{kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[4,0],[0,3]]},height:6,names:'......'},root:'side2',
+  joins:[['side2','side1'],['side1','side0'],['side1','top'],['side1','bottom']],dims:[{face:'side2',edge:0}],...net},...over});
+test('E28b: net face labels write a face area exactly, a number is checked against it, a symbol is not; right angles need a true right corner',()=>{
+  const m=solveSolidFigure(triPrismNet({faceLabels:[{face:'top'},{face:'bottom',text:'6'},{face:'side1',text:'S'},{face:'side0',text:'2\\pi r h'}],rightAngles:[{face:'top',corner:0},{face:'bottom',corner:2}]}));
+  assert.deepEqual(m.faceLabels.map(f=>[f.face,f.tex,f.numeric]),[['top','6\\,\\mathrm{cm}^2',true],['bottom','6\\,\\mathrm{cm}^2',true],['side1','S',false],['side0','2\\pi r h',false]]);
+  assert.deepEqual(m.rightAngles,[{face:'top',corner:0},{face:'bottom',corner:2}]);
+  assert.equal(labelNumber('6\\,\\mathrm{cm}^2'),6);assert.ok(Math.abs(labelNumber('48\\pi\\,\\mathrm{cm}^2')-48*Math.PI)<1e-9);
+  // a net with no dims and no names is readable text when it carries face labels; without them it is refused
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6}})),code('SOLID_FIGURE_NEEDS_A_LABEL'));
+  assert.equal(solveSolidFigure(figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,faceLabels:[{face:'rect'}]}})).faceLabels[0].tex,'48\\pi\\,\\mathrm{cm}^2');
+  assert.equal(solveSolidFigure(figure({unit:'cm',net:{kind:'CONE',radius:3,slant:5,faceLabels:[{face:'sector'},{face:'base',text:'9\\pi'}]}})).faceLabels.map(f=>f.tex).join('|'),'15\\pi\\,\\mathrm{cm}^2|9\\pi\\,\\mathrm{cm}^2');
+  // the plan without the new fields has none of them in its model
+  assert.deepEqual(['faceLabels','rightAngles','excluded'].map(k=>k in solveSolidFigure(triPrismNet())),[false,false,false]);
+});
+test('E28b: net face labels, right angles and excluded circles are refused with explicit codes',()=>{
+  const bad=(net,expected,over)=>assert.throws(()=>solveSolidFigure(triPrismNet(net,over)),code(expected),expected);
+  bad({faceLabels:'top'},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[]},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[{face:'top',tone:'x'}]},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[{face:3}]},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[{face:'top'},{face:'top'}]},'SOLID_FACE_LABEL_INVALID');
+  bad({faceLabels:[{face:'nope'}]},'SOLID_NET_FACE_UNKNOWN');
+  bad({faceLabels:[{face:'top',text:'7'}]},'SOLID_FACE_LABEL_VALUE_MISMATCH:f1');
+  bad({faceLabels:[{face:'top',text:'6 cm²'}]},'SOLID_FACE_LABEL_INVALID:f1');
+  bad({faceLabels:[{face:'top',text:5}]},'SOLID_FACE_LABEL_INVALID:f1');
+  bad({solid:{kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[2,0],[0,Math.E]]},height:6,names:'......'},dims:[{face:'side2',edge:0,label:'a'}],faceLabels:[{face:'top'}]},'SOLID_FACE_LABEL_NOT_EXPRESSIBLE:f1');// an area with no short exact form
+  bad({rightAngles:[]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'top',corner:3}]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'top',corner:0.5}]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'top',corner:0},{face:'top',corner:0}]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'top',corner:0,size:2}]},'SOLID_NET_RIGHT_ANGLE_INVALID');
+  bad({rightAngles:[{face:'nope',corner:0}]},'SOLID_NET_FACE_UNKNOWN');
+  bad({rightAngles:[{face:'top',corner:1}]},'SOLID_NET_RIGHT_ANGLE_NOT_RIGHT:top:1:right_at=0');// the message names the corner that is right
+  bad({rightAngles:[{face:'bottom',corner:0}]},'SOLID_NET_RIGHT_ANGLE_NOT_RIGHT:bottom:0:right_at=2');
+  bad({excluded:['bottom']},'SOLID_NET_EXCLUDED_UNSUPPORTED:POLYHEDRON');
+  const round=(net,expected)=>assert.throws(()=>solveSolidFigure(figure({unit:'cm',net:{...net}})),code(expected),expected);
+  round({kind:'CYLINDER',radius:4,height:6,excluded:['rect'],faceLabels:[{face:'rect'}]},'SOLID_NET_EXCLUDED_INVALID');
+  round({kind:'CYLINDER',radius:4,height:6,excluded:['top','top'],faceLabels:[{face:'rect'}]},'SOLID_NET_EXCLUDED_INVALID');
+  round({kind:'CYLINDER',radius:4,height:6,excluded:[],faceLabels:[{face:'rect'}]},'SOLID_NET_EXCLUDED_INVALID');
+  round({kind:'CONE',radius:3,slant:5,excluded:['bottom'],faceLabels:[{face:'sector'}]},'SOLID_NET_EXCLUDED_INVALID');
+  round({kind:'CYLINDER',radius:4,height:6,rightAngles:[{face:'rect',corner:0}],faceLabels:[{face:'rect'}]},'SOLID_NET_RIGHT_ANGLE_UNSUPPORTED:CYLINDER');
+  round({kind:'CYLINDER',radius:4,height:6,faceLabels:[{face:'side0'}]},'SOLID_NET_FACE_UNKNOWN');
+  round({kind:'CONE',radius:3,slant:5,faceLabels:[{face:'rect'}]},'SOLID_NET_FACE_UNKNOWN');
+});
+const textOf=(svg,id)=>svg.match(new RegExp(`<g data-layer="90"><g id="${id}"[^>]*>`))[0];
+test('E28b: a prism net with face areas and right-angle squares composes, and the observer reads each label and square back',async()=>{
+  const plan=triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top'},{face:'bottom',text:'6'},{face:'side1',text:'S'}],rightAngles:[{face:'top',corner:0},{face:'bottom',corner:2}]});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-label-role="face-label"/g)??[]).length,3);
+  assert.match(svg,/<g id="face-label-top" data-label-kind="AREA_LABEL" data-label-role="face-label"/);
+  assert.match(svg,/data-face-of="bottom" data-tex="6\\,\\mathrm\{cm\}\^2"/);
+  assert.match(svg,/<polyline id="net-ra-top-0" data-role="net-right-angle" data-face="top" data-corner="0" stroke="#111"/);
+  // tampering: a number that is not the area, a label moved out of its face, a missing label, a square moved, wrongly placed, missing or extra
+  const top=textOf(svg,'face-label-top');
+  await failingAudit(plan,svg.replace(top,top.replace('data-tex="6\\,\\mathrm{cm}^2"','data-tex="7\\,\\mathrm{cm}^2"')),'SOLID_FACE_LABEL_VALUE_MISMATCH');
+  await failingAudit(plan,svg.replace(top,top.replace('data-tex="6\\,\\mathrm{cm}^2"','data-tex="6"')),'SOLID_FACE_LABEL_UNIT_MISSING');
+  await failingAudit(plan,svg.replace(top,top.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${Number(x)+110} ${y})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  const side=textOf(svg,'face-label-side1');
+  await failingAudit(plan,svg.replace(side,'<g data-layer="90"><g id="face-label-side1x" data-label-role="face-label" data-face-of="side1x">'),'SOLID_FACE_LABEL_');
+  await failingAudit(triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top'},{face:'bottom',text:'6'}],rightAngles:[{face:'top',corner:0},{face:'bottom',corner:2}]}),svg,'SOLID_FACE_LABEL_SET_MISMATCH');
+  const ra=svg.match(/<polyline id="net-ra-top-0"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(ra,ra.replace(/points="([\d.]+),([\d.]+) ([\d.]+),([\d.]+)/,(all,a,b,c,d)=>`points="${a},${b} ${Number(c)+5},${Number(d)+3}`)),'SOLID_NET_RIGHT_ANGLE_GEOMETRY');
+  await failingAudit(plan,svg.replace(ra,ra.replace('data-corner="0"','data-corner="1"')),'SOLID_NET_RIGHT_ANGLE_');
+  await failingAudit(plan,svg.replace(`<g data-layer="55">${ra}</g>`,''),'SOLID_NET_RIGHT_ANGLE_SET_MISMATCH');
+  await failingAudit(triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top'},{face:'bottom',text:'6'},{face:'side1',text:'S'}],rightAngles:[{face:'top',corner:0}]}),svg,'SOLID_NET_RIGHT_ANGLE_SET_MISMATCH');
+  // the observer re-derives the right corner from the 3D solid: a plan that names a corner that is no right angle fails against this figure
+  await failingAudit(triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top'},{face:'bottom',text:'6'},{face:'side1',text:'S'}],rightAngles:[{face:'top',corner:1},{face:'bottom',corner:2}]}),svg,'SOLID_NET_RIGHT_ANGLE_NOT_RIGHT:top:1');
+});
+test('E28b: a cylinder net and a cone net leave out the circles that are not part of the surface; face labels sit inside their faces',async()=>{
+  const cyl=figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,dims:[{part:'rect-width',label:'8\\pi'},{part:'rect-height'}],excluded:['bottom','top'],faceLabels:[{face:'rect',text:'S'}]}});
+  const svg=await sphereSvg(cyl);
+  assert.equal((svg.match(/data-excluded="1"/g)??[]).length,2);
+  assert.match(svg,/<circle id="net-circle-top" data-role="net-circle" data-part="top" data-excluded="1" fill="#fff" stroke="#888" stroke-width="1.6" stroke-dasharray="5 4"/);
+  const one=figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,dims:[{part:'rect-width',label:'8\\pi'},{part:'rect-height'}],excluded:['top'],faceLabels:[{face:'rect',text:'S'},{face:'bottom'}]}});
+  const oneSvg=await sphereSvg(one);
+  assert.equal((oneSvg.match(/data-excluded="1"/g)??[]).length,1);
+  assert.match(oneSvg,/<circle id="net-circle-bottom" data-role="net-circle" data-part="bottom" fill="#f4f6fa" stroke="#111"/);
+  assert.match(oneSvg,/data-face-of="bottom" data-tex="16\\pi\\,\\mathrm\{cm\}\^2"/);
+  // a net without the field keeps its bytes: plain circles, no data-excluded
+  const plainSvg=await sphereSvg(figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,dims:[{part:'rect-height'}]}}));
+  assert.doesNotMatch(plainSvg,/data-excluded|#888|data-face-of/);
+  // tampering: a circle drawn solid again, a circle dashed that the plan keeps, a face label moved into the neighbouring circle
+  const circle=svg.match(/<circle id="net-circle-top"[^>]*\/>/)[0];
+  await failingAudit(cyl,svg.replace(circle,circle.replace(' stroke-dasharray="5 4"','')),'SOLID_NET_EXCLUDED_STYLE_MISMATCH:top');
+  await failingAudit(cyl,svg.replace(circle,circle.replace(' data-excluded="1"','')),'SOLID_NET_EXCLUDED_SET_MISMATCH:top');
+  await failingAudit(figure({unit:'cm',net:{kind:'CYLINDER',radius:4,height:6,dims:[{part:'rect-width',label:'8\\pi'},{part:'rect-height'}],excluded:['bottom'],faceLabels:[{face:'rect',text:'S'}]}}),svg,'SOLID_NET_EXCLUDED_SET_MISMATCH');
+  const label=textOf(svg,'face-label-rect');
+  await failingAudit(cyl,svg.replace(label,label.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${x} ${Number(y)-95})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  // a cone: the base is left out, both faces are labelled (the sector area is exact: pi r l)
+  const cone=figure({unit:'cm',net:{kind:'CONE',radius:3,slant:5,dims:[{part:'slant'},{part:'radius'}],excluded:['base'],faceLabels:[{face:'sector'},{face:'base',text:'\\pi r^2'}]}});
+  const coneSvg=await sphereSvg(cone);
+  assert.match(coneSvg,/data-part="base" data-excluded="1"/);assert.match(coneSvg,/data-face-of="sector" data-tex="15\\pi\\,\\mathrm\{cm\}\^2"/);
+  const baseCircle=coneSvg.match(/<circle id="net-circle-base"[^>]*\/>/)[0];
+  await failingAudit(cone,coneSvg.replace(baseCircle,baseCircle.replace('stroke="#888"','stroke="#111"')),'SOLID_NET_EXCLUDED_STYLE_MISMATCH:base');
+  const sector=textOf(coneSvg,'face-label-sector');
+  await failingAudit(cone,coneSvg.replace(sector,sector.replace('data-tex="15\\pi\\,\\mathrm{cm}^2"','data-tex="16\\pi\\,\\mathrm{cm}^2"')),'SOLID_FACE_LABEL_VALUE_MISMATCH');
+});
+
+// --- E29: regular polyhedra (4, 8, 12, 20 faces) and bipyramids ---------------------------------------------------------------------------------------
+const regular=(faces,over={},solidOver={})=>figure({unit:'cm',solids:[{kind:'REGULAR_POLYHEDRON',faces,side:2,...solidOver}],...over});
+const bipyramid=(over={},solidOver={})=>figure({unit:'cm',solids:[{kind:'BIPYRAMID',base:{kind:'REGULAR',n:5,side:3},height:2.4,...solidOver}],...over});
+const distance=(a,b)=>Math.hypot(...a.map((x,i)=>x-b[i]));
+test('E29: each regular polyhedron has its vertices, edges and faces, every edge as long as `side`, three to five edges at a vertex, standing on the floor',()=>{
+  for(const [faces,V,E,sides,valence] of [[4,4,6,3,3],[8,6,12,3,4],[12,20,30,5,3],[20,12,30,3,5]]){
+    const solid=solveSolidFigure(regular(faces)).solids[0];
+    assert.equal(solid.kind,'REGULAR_POLYHEDRON');
+    assert.deepEqual([solid.vertices.length,solid.edges.length,solid.faces.length],[V,E,faces]);
+    assert.equal(V-E+faces,2);// Euler's formula
+    for(const [a,b] of solid.edges)assert.ok(Math.abs(distance(solid.vertices[a].p,solid.vertices[b].p)-2)<1e-9,`${faces} edge ${a}-${b}`);
+    assert.ok(solid.faces.every(f=>f.idx.length===sides));
+    for(let i=0;i<V;i++)assert.equal(solid.edges.filter(e=>e.includes(i)).length,valence);
+    assert.ok(Math.abs(Math.min(...solid.vertices.map(v=>v.p[2])))<1e-12);
+    // all vertices on one sphere about the centre of the figure
+    const c=solid.vertices.reduce((s,v)=>s.map((x,k)=>x+v.p[k]/V),[0,0,0]),radii=solid.vertices.map(v=>distance(v.p,c));
+    assert.ok(Math.max(...radii)-Math.min(...radii)<1e-9);
+    assert.deepEqual(solid.faces.map(f=>f.id),[...Array(faces).keys()].map(k=>'f'+k));
+    // the vertices are letters A, B, ... unless named; exact (unrounded) coordinates, so a length is written exactly
+    assert.deepEqual(solid.vertices.slice(0,3).map(v=>v.name),['A','B','C']);
+  }
+  const model=solveSolidFigure(regular(12,{dims:[{edge:['#v0','#v1']}]}));
+  assert.equal(model.dims[0].tex,'2\\,\\mathrm{cm}');
+  // the tetrahedron stands on a face, the icosahedron on a vertex, the octahedron on a vertex, the dodecahedron on a face
+  const flat=n=>solveSolidFigure(regular(n)).solids[0].vertices.filter(v=>v.p[2]<1e-9).length;
+  assert.deepEqual([4,8,12,20].map(flat),[3,1,5,1]);
+});
+test('E29: a bipyramid is two pyramids on one base: ring, upper apex, lower apex, faces top<i> and bottom<i>',()=>{
+  const solid=solveSolidFigure(bipyramid()).solids[0];
+  assert.deepEqual([solid.vertices.length,solid.edges.length,solid.faces.length],[7,15,10]);
+  assert.deepEqual(solid.faces.map(f=>f.id),['top0','top1','top2','top3','top4','bottom0','bottom1','bottom2','bottom3','bottom4']);
+  assert.ok(Math.abs(solid.vertices[5].p[2]-4.8)<1e-9&&Math.abs(solid.vertices[6].p[2])<1e-9&&solid.vertices.slice(0,5).every(v=>Math.abs(v.p[2]-2.4)<1e-9));
+  assert.deepEqual(countedEdges(solid).slice(0,6),[[0,1],[1,2],[2,3],[3,4],[0,4],[0,5]]);// the ring (closing edge last), then up to the upper apex
+  assert.deepEqual(countedEdges(solid).slice(-5),[[0,6],[1,6],[2,6],[3,6],[4,6]]);
+  // any convex base works; a rectangle gives the square-like octahedron shape
+  assert.equal(solveSolidFigure(bipyramid({},{base:{kind:'RECT',width:4,depth:3}})).solids[0].vertices.length,6);
+});
+test('E29: references and face highlights of the new solids',()=>{
+  const pent=bipyramid({segments:[{from:'#apex',to:'#apex2',style:'DASHED'}],dims:[{edge:['#b0','#b1'],label:'a'}]},{names:'.......'});
+  assert.deepEqual(solveSolidFigure(pent).segments.map(s=>[s.from,s.to]),[['s1.apex','s1.apex2']]);
+  assert.deepEqual(solveSolidFigure(bipyramid({dims:[{edge:['#b4','#v5'],label:'l'}]},{names:'.......'})).dims.map(d=>[d.from,d.to]),[['s1.b4','s1.apex']]);
+  assert.deepEqual(solveSolidFigure(regular(20,{segments:[{from:'#v0',to:'#v11'}],dims:[{edge:['#v0','#v1'],label:'a'}]},{names:'.'.repeat(12)})).segments.map(s=>[s.from,s.to]),[['s1.v0','s1.v11']]);
+  const bad=(over,expected,solidOver,build=regular)=>assert.throws(()=>solveSolidFigure(build===regular?regular(20,over,solidOver):bipyramid(over,solidOver)),code(expected),expected);
+  bad({segments:[{from:'#b0',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#b0',{names:'.'.repeat(12)});// a regular polyhedron has no ring
+  bad({segments:[{from:'#apex',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#apex',{names:'.'.repeat(12)});
+  bad({segments:[{from:'#v12',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#v12',{names:'.'.repeat(12)});
+  bad({segments:[{from:'#t0',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#t0',{names:'.......'},bipyramid);
+  bad({segments:[{from:'#b5',to:'#v1'}]},'SOLID_VREF_UNKNOWN:#b5',{names:'.......'},bipyramid);
+  // faces are f0.. for a regular polyhedron (20 here), top<i> and bottom<i> for a bipyramid
+  assert.equal(solveSolidFigure(regular(20,{highlights:[{face:'f0'},{face:'f19',fill:'WARM'}]})).highlights.length,2);
+  bad({highlights:[{face:'f20'}]},'SOLID_HIGHLIGHT_FACE_UNKNOWN:f20');
+  bad({highlights:[{face:'bottom'}]},'SOLID_HIGHLIGHT_FACE_UNKNOWN:bottom');
+  assert.equal(solveSolidFigure(bipyramid({highlights:[{face:'top4'},{face:'bottom0'}]})).highlights.length,2);
+  bad({highlights:[{face:'side0'}]},'SOLID_HIGHLIGHT_FACE_UNKNOWN:side0',undefined,bipyramid);
+  bad({highlights:[{face:'top5'}]},'SOLID_HIGHLIGHT_FACE_UNKNOWN:top5',undefined,bipyramid);
+});
+test('E29: regular polyhedra and bipyramids are refused with explicit codes where the engine cannot draw them',()=>{
+  const bad=(solid,expected,over={})=>assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[solid],...over})),code(expected),expected);
+  bad({kind:'REGULAR_POLYHEDRON',faces:6,side:2},'SOLID_REGULAR_FACES_UNSUPPORTED:6');// a cube is a PRISM over a RECT base
+  bad({kind:'REGULAR_POLYHEDRON',faces:5,side:2},'SOLID_REGULAR_FACES_UNSUPPORTED:5');
+  bad({kind:'REGULAR_POLYHEDRON',faces:'8',side:2},'SOLID_REGULAR_FACES_UNSUPPORTED');
+  bad({kind:'REGULAR_POLYHEDRON',side:2},'SOLID_REGULAR_FACES_UNSUPPORTED');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8},'SOLID_PARAM_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:-1},'SOLID_PARAM_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:2,height:3},'SOLID_PARAM_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:2,cuts:[{through:[['AB','1/2'],['BC','1/2'],['CD','1/2']]}]},'SOLID_PARAM_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:2,names:'ABC'},'SOLID_NAMES_INVALID');
+  bad({kind:'REGULAR_POLYHEDRON',faces:20,side:2,names:'.'.repeat(12),count:{edges:true}},'SOLID_COUNT_TOO_MANY:edges');// 30 edges, circled numbers go to 20
+  bad({kind:'REGULAR_POLYHEDRON',faces:20,side:2,names:'.'.repeat(12),count:{faces:true}},'SOLID_COUNT_FACES_UNSUPPORTED');
+  bad({kind:'REGULAR_POLYHEDRON',faces:20,side:2,count:{vertices:true}},'SOLID_COUNT_NAMES_CONFLICT');
+  bad({kind:'REGULAR_POLYHEDRON',faces:8,side:2,names:'......'},'SOLID_DIMS_INVALID',{dims:[{height:true,solid:'s1'}]});
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',net:{solid:{kind:'REGULAR_POLYHEDRON',faces:4,side:2},root:'f0',joins:[]}})),code('SOLID_NET_UNSUPPORTED:REGULAR_POLYHEDRON'));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',net:{solid:{kind:'BIPYRAMID',base:{kind:'RECT',width:2,depth:2},height:2},root:'top0',joins:[]}})),code('SOLID_NET_UNSUPPORTED:BIPYRAMID'));
+  bad({kind:'BIPYRAMID',base:{kind:'POLYGON',points:[[0,0],[4,0],[4,2],[2,2],[2,4],[0,4]]},height:2},'SOLID_BASE_NOT_CONVEX');
+  bad({kind:'BIPYRAMID',base:{kind:'POLYGON',plane:'XZ',points:[[0,0],[4,0],[2,3]]},height:2},'SOLID_BASE_PLANE_UNSUPPORTED');
+  bad({kind:'BIPYRAMID',base:{kind:'RECT',width:2,depth:2}},'SOLID_PARAM_INVALID');
+  bad({kind:'BIPYRAMID',base:{kind:'RECT',width:2,depth:2},height:2,apex:[1,1]},'SOLID_PARAM_INVALID');
+  bad({kind:'BIPYRAMID',height:2},'SOLID_BASE_INVALID');
+  bad({kind:'BIPYRAMID',base:{kind:'RECT',width:2,depth:2},height:2,names:'ABCDE'},'SOLID_NAMES_INVALID');
+  bad({kind:'BIPYRAMID',base:{kind:'REGULAR',n:7,side:2},height:2,names:'.........',count:{edges:true}},'SOLID_COUNT_TOO_MANY:edges');// 21 edges
+});
+test('E29: every regular polyhedron and a bipyramid compose, hidden edges dashed by the depth test, and the independent observer rebuilds each from the plan',async()=>{
+  const plans=[
+    regular(4,{highlights:[{face:'f0',fill:'WARM'}]},{names:'....',count:{vertices:true}}),
+    regular(8,{},{names:'......',count:{vertices:true}}),
+    regular(12,{highlights:[{face:'f0',fill:'WARM'},{face:'f1'}]},{names:'.'.repeat(20),count:{vertices:true}}),
+    regular(20,{highlights:[{face:'f0',fill:'WARM'},{face:'f1'},{face:'f2'},{face:'f3'},{face:'f4'}]},{names:'.'.repeat(12),count:{vertices:true}}),
+    regular(20,{dims:[{edge:['#v0','#v1'],label:'a'}]},{names:'.'.repeat(12)}),
+    bipyramid({highlights:[{face:'top0'},{face:'top1'},{face:'top2'},{face:'top3'},{face:'top4',fill:'WARM'}]},{names:'.......',count:{vertices:true,edges:true}}),
+    bipyramid({dims:[{edge:['#apex','#b0'],label:'l'}]},{base:{kind:'RECT',width:4,depth:3},height:2,names:'......'})
+  ];
+  const svgs=[];
+  for(const plan of plans){
+    const svg=await sphereSvg(plan);
+    svgs.push(svg);
+    assert.ok((svg.match(/data-role="edge"/g)??[]).length>=6);
+  }
+  // the icosahedron: the figure shows hidden edges dashed; tamper: one hidden edge drawn solid, a shaded face moved, a face shaded that the plan did not ask for
+  const ico=plans[3],svg=svgs[3];
+  assert.ok((svg.match(/data-vis="hidden"/g)??[]).length>=6);
+  const hidden=svg.match(/<line id="s1-edge-[^"]*" data-role="edge"[^>]*data-vis="hidden"[^>]*\/>/)[0];
+  await failingAudit(ico,svg.replace(hidden,hidden.replace(/ stroke-dasharray="[^"]*"/,'').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  const face=svg.match(/<polygon id="highlight-s1-f2"[^>]*\/>/)[0];
+  await failingAudit(ico,svg.replace(face,face.replace(/points="([\d.]+),([\d.]+)/,(all,x,y)=>`points="${Number(x)+9},${y}`)),'SOLID_HIGHLIGHT_FACE_VERTEX_OFF');
+  await failingAudit(ico,svg.replace(face,face.replace('data-face="f2"','data-face="f9"')),'SOLID_HIGHLIGHT_FACE');
+  // the figure against a plan for another solid
+  await failingAudit(regular(12,{},{names:'.'.repeat(20),count:{vertices:true}}),svg,'SOLID_');
+  // the observer counts the bipyramid's fifteen edges in the order of the plan (the ring, then up to the upper apex, then down to the lower one): a number moved away from its edge fails
+  const bip=plans[5],bipSvg=svgs[5];
+  assert.equal((bipSvg.match(/data-label-role="count-edge"/g)??[]).length,15);
+  const n1=textOf(bipSvg,'count-e-s1-1');
+  await failingAudit(bip,bipSvg.replace(n1,n1.replace(/translate\(([\d.]+) ([\d.]+)\)/,'translate(0 0)')),'SOLID_COUNT_');
+});
+
+// --- E28c: a figure with nothing written on it, words on a figure (labels, axis) ---------------------------------------------------------------------
+const unnamedCuboid=(over={})=>cuboid({names:'........',...over});
+const dropGroup=(svg,id)=>svg.replace(new RegExp(`<g data-layer="90"><g id="${id}"[\\s\\S]*?</svg></g></g>`),'');
+test('E28c: a figure with no name, length or word is accepted when something in it is stressed or it is captioned; a bare one is still refused',()=>{
+  const bare=[{kind:'CYLINDER',radius:1,height:2}];
+  assert.throws(()=>solveSolidFigure(figure({solids:bare})),code('SOLID_FIGURE_NEEDS_A_LABEL'));
+  assert.equal(solveSolidFigure(figure({solids:bare,solidCaption:{text:'원기둥'}})).solids.length,1);
+  assert.equal(solveSolidFigure(figure({solids:bare,panelWidth:GRID_PANEL_WIDTH})).panelWidth,GRID_PANEL_WIDTH);
+  // stressed: a shaded face, a drawn segment, a mark, a section, an axis
+  for(const over of [{highlights:[{face:'top'}]},{segments:[{from:'#b0',to:'#t2',style:'AUTO',role:'ACCENT'}]},{marks:{rightAngles:[{at:'#b0',refs:['#b1','#b3']}]}}])
+    assert.equal(solveSolidFigure(figure({solids:[unnamedCuboid()],...over})).mode,'SOLIDS');
+  assert.equal(solveSolidFigure(figure({solids:bare,section:{kind:'AXIAL'}})).section.kind,'AXIAL');
+  assert.equal(solveSolidFigure(figure({solids:[{...bare[0],axis:true}]})).solids[0].axis.label,null);
+  // a net: a shaded face or a right angle stresses it, the bare cylinder net is refused as before
+  const netOf=over=>figure({unit:'cm',net:{solid:{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2,names:'........'},root:'side0',joins:[['side0','side1'],['side1','side2'],['side2','side3'],['side1','top'],['side3','bottom']],...over}});
+  assert.throws(()=>solveSolidFigure(netOf({})),code('SOLID_FIGURE_NEEDS_A_LABEL'));
+  assert.equal(solveSolidFigure(netOf({highlights:[{face:'top'}]})).highlights.length,1);
+  assert.equal(solveSolidFigure(netOf({rightAngles:[{face:'top',corner:0}]})).rightAngles.length,1);
+});
+test('E28c: words on a figure: a vertex, the axis, a face that faces the viewer, a drawn edge, the slant of a cone; refusals have their own codes',()=>{
+  const cone={kind:'CONE',radius:3,height:6,names:{apex:'A'}};
+  const m=solveSolidFigure(figure({solids:[cone,{kind:'CYLINDER',radius:2,height:4,axis:{label:'회전축'}}],labels:[{text:'모선',at:{slant:true,solid:'s1'}},{text:'꼭짓점',at:'A'}]}));
+  // the axis word of a solid comes first, then the labels in the order written
+  assert.deepEqual(m.labels.map(l=>[l.id,l.text,l.at.kind]),[['tl1','회전축','AXIS'],['tl2','모선','SLANT'],['tl3','꼭짓점','VERTEX']]);
+  assert.equal(m.solids[1].axis.label,'회전축');assert.equal(m.solids[0].axis,undefined);
+  const w=solveSolidFigure(figure({solids:[unnamedCuboid()],labels:[{text:'앞면',at:{face:'side0'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b1','#b2']}},{text:'꼭짓점',at:'#t2'}]}));
+  assert.deepEqual(w.labels.map(l=>l.at.kind),['FACE','FACE','EDGE','VERTEX']);
+  // a labelled axis is drawn even where the solid does not ask for one
+  const ax=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:2,height:4}],labels:[{text:'회전축',at:{axis:true}}]}));
+  assert.deepEqual(ax.solids[0].axis,{label:null});
+  // a plan without the fields has none of them in its model
+  assert.equal('labels' in solveSolidFigure(figure({solids:[cuboid()]})),false);assert.equal('axis' in solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:1,height:2}],dims:[{height:true}]})).solids[0],false);
+  const bad=(over,expected,solids=[unnamedCuboid()])=>assert.throws(()=>solveSolidFigure(figure({solids,...over})),code(expected),expected);
+  bad({labels:[]},'SOLID_LABELS_INVALID');
+  bad({labels:'앞면'},'SOLID_LABELS_INVALID');
+  bad({labels:Array.from({length:7},(_,k)=>({text:'가'+k,at:'#b0'}))},'SOLID_LABELS_INVALID');
+  bad({labels:[{text:'앞면',at:'#b0',size:2}]},'SOLID_LABELS_INVALID');
+  for(const text of ['','앞면 ','$x$','가나다라마바사아자차카타파','a\\b',5])bad({labels:[{text,at:'#b0'}]},'SOLID_LABEL_TEXT_INVALID');
+  bad({labels:[{text:'앞',at:'Z'}]},'SOLID_LABEL_AT_UNKNOWN:Z');
+  bad({labels:[{text:'앞',at:'#b9'}]},'SOLID_VREF_UNKNOWN');
+  bad({labels:[{text:'앞',at:7}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{face:'top',axis:true}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{face:'top',edge:['#b0','#b1']}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{edge:['#b0','#b1'],solid:'s1'}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{edge:['#b0','#b0']}}]},'SOLID_LABEL_AT_INVALID');
+  bad({labels:[{text:'앞',at:{edge:['#b0','#t2']}}]},'SOLID_LABEL_EDGE_NOT_DRAWN:s1.b0-s1.t2');// a space diagonal is no drawn edge
+  bad({labels:[{text:'앞',at:{face:'bottom'}}]},'SOLID_LABEL_FACE_HIDDEN:bottom');
+  bad({labels:[{text:'앞',at:{face:'side2'}}]},'SOLID_LABEL_FACE_HIDDEN:side2');
+  bad({labels:[{text:'앞',at:{face:'nope'}}]},'SOLID_LABEL_FACE_UNKNOWN:nope');
+  bad({labels:[{text:'앞',at:{axis:true}}]},'SOLID_LABEL_AXIS_UNSUPPORTED');
+  bad({labels:[{text:'앞',at:{slant:true}}]},'SOLID_LABEL_SLANT_UNSUPPORTED');
+  bad({labels:[{text:'앞',at:{face:'top'}},{text:'뒤',at:{face:'top'}}]},'SOLID_LABEL_DUPLICATE_TARGET:face:s1|top');
+  bad({labels:[{text:'앞',at:'#b0'},{text:'뒤',at:'#b0'}]},'SOLID_LABEL_DUPLICATE_TARGET');
+  bad({labels:[{text:'앞',at:{face:'top'}}]},'SOLID_LABEL_FACE_UNSUPPORTED:CUT',[unnamedCuboid({names:'ABCDEFGH',cuts:[{through:[['AD','1/2','M'],['BC','1/2','N'],['CG','1/2','P'],['DH','1/2','Q']]}]})]);
+  bad({labels:[{text:'앞',at:{face:'top'}}]},'SOLID_LABEL_FACE_UNSUPPORTED',[{kind:'CYLINDER',radius:1,height:2}]);
+  bad({labels:[{text:'앞',at:{axis:true}}]},'SOLID_LABEL_AXIS_UNSUPPORTED',[{kind:'SPHERE',radius:2},{kind:'CYLINDER',radius:1,height:2},{kind:'CONE',radius:1,height:2}]);// two rotation solids and no id
+  bad({axis:true},'SOLID_PLAN_INVALID');
+  const badAxis=(solid,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[solid]})),code(expected),expected);
+  badAxis({kind:'SPHERE',radius:2,axis:true,names:{center:'O'}},'SOLID_AXIS_UNSUPPORTED:SPHERE');
+  badAxis({kind:'HEMISPHERE',radius:2,axis:true,names:{center:'O'}},'SOLID_AXIS_UNSUPPORTED:HEMISPHERE');
+  badAxis({kind:'CYLINDER',radius:2,height:3,axis:false},'SOLID_AXIS_INVALID');
+  badAxis({kind:'CYLINDER',radius:2,height:3,axis:{label:'회전축',color:'red'}},'SOLID_AXIS_INVALID');
+  badAxis({kind:'CYLINDER',radius:2,height:3,axis:{label:'$l$'}},'SOLID_LABEL_TEXT_INVALID');
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',id:'s1',radius:3,height:4},{kind:'SPHERE',radius:2,inside:'s1',axis:true}]})),code('SOLID_AXIS_UNSUPPORTED:SPHERE'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',id:'s1',radius:3,height:4},{kind:'CONE',radius:2,height:2,inside:'s1',axis:true}]})),code('SOLID_AXIS_UNSUPPORTED:NESTED'));
+  assert.throws(()=>solveSolidFigure(figure({net:{kind:'CYLINDER',radius:2,height:3,dims:[{part:'rect-height'}]},labels:[{text:'앞',at:'A'}]})),code('SOLID_LABELS_UNSUPPORTED:NET'));
+});
+test('E28c: the axis of a rotation solid is a dash-dot line beyond both ends and its word stands beside it; the observer reads both back',async()=>{
+  // a frustum and a cylinder cut along the axis (the section is shaded): the word 회전축 stands inside the section
+  const plan=figure({solids:[{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5,axis:{label:'회전축'}}],section:{kind:'AXIAL'},panelWidth:GRID_PANEL_WIDTH});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-role="axis-line"/g)??[]).length,1);
+  assert.match(svg,/<line id="s1-axis" data-role="axis-line" data-solid="s1" stroke="#111" stroke-width="1.1" stroke-dasharray="10 3 2 3" fill="none"/);
+  assert.match(svg,/<g id="text-tl1" data-label-kind="COORDINATE_LABEL" data-label-role="text-label"[^>]* data-text-id="tl1" data-at-kind="AXIS" data-target="s1" data-text="회전축"/);
+  // the line runs 14 % of the height beyond the bottom centre and the top centre of the solid
+  const axis=svg.match(/<line id="s1-axis"[^>]*\/>/)[0],num=name=>Number(axis.match(new RegExp(`${name}="([-\\d.]+)"`))[1]);
+  const scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]);
+  assert.ok(Math.abs((num('y1')-num('y2'))-scale*Math.cos(20*Math.PI/180)*5*1.28)<0.02*scale*5);
+  assert.equal(num('x1'),num('x2'));
+  // tampering: the word changed, moved onto the axis, far away, missing; the line moved, made solid, missing
+  const label=textOf(svg,'text-tl1');
+  await failingAudit(plan,svg.replace(label,label.replace('data-text="회전축"','data-text="대칭축"')),'SOLID_TEXT_LABEL_TEXT_MISMATCH');
+  await failingAudit(plan,svg.replace(label,label.replace('data-target="s1"','data-target="s2"')),'SOLID_TEXT_LABEL_TARGET_MISMATCH');
+  const at=label.match(/translate\(([-\d.]+) ([-\d.]+)\)/);
+  const moved=(dx,dy)=>label.replace(at[0],`translate(${Number(at[1])+dx} ${Number(at[2])+dy})`);
+  await failingAudit(plan,svg.replace(label,moved(-400,0)),'SOLID_TEXT_LABEL_FAR_FROM_TARGET');
+  await failingAudit(plan,svg.replace(label,moved(num('x1')-Number(at[1])-1,0)),'SOLID_TEXT_LABEL_ON_TARGET');
+  await failingAudit(plan,dropGroup(svg,'text-tl1'),'SOLID_TEXT_LABEL_SET_MISMATCH');
+  await failingAudit(plan,svg.replace(axis,axis.replace(/y2="[-\d.]+"/,`y2="${num('y2')+9}"`)),'SOLID_AXIS_LINE_MISMATCH');
+  await failingAudit(plan,svg.replace(axis,axis.replace(' stroke-dasharray="10 3 2 3"','')),'SOLID_AXIS_NOT_DASH_DOT');
+  await failingAudit(plan,svg.replace(`<g data-layer="40">${axis}</g>`,''),'SOLID_AXIS_SET_MISMATCH');
+  // the plan against another figure: an axis the plan does not ask for, and a word the plan does not have
+  await failingAudit(figure({solids:[{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],section:{kind:'AXIAL'},dims:[{height:true}],panelWidth:GRID_PANEL_WIDTH}),svg,'SOLID_AXIS_SET_MISMATCH');
+  await failingAudit(figure({solids:[{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5,axis:true}],section:{kind:'AXIAL'},panelWidth:GRID_PANEL_WIDTH}),svg,'SOLID_TEXT_LABEL_SET_MISMATCH');
+});
+test('E28c: words on a vertex, a face, an edge and a slant stand where their target is; a vertex word with no room beside it gets a leader; the observer re-derives each target',async()=>{
+  const plan=figure({solids:[unnamedCuboid({base:{kind:'RECT',width:5,depth:3},height:3})],labels:[{text:'앞면',at:{face:'side0'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b1','#b2']}},{text:'꼭짓점',at:'#t2'}],panelWidth:GRID_PANEL_WIDTH});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-label-role="text-label"/g)??[]).length,4);
+  assert.match(svg,/data-at-kind="FACE" data-target="s1\|side0" data-text="앞면"/);
+  assert.match(svg,/data-at-kind="EDGE" data-target="s1.b1-s1.b2" data-text="모서리"/);
+  assert.match(svg,/data-at-kind="VERTEX" data-target="s1.t2" data-text="꼭짓점"/);
+  const shift=(id,dx,dy)=>{const g=textOf(svg,id),at=g.match(/translate\(([-\d.]+) ([-\d.]+)\)/);return svg.replace(g,g.replace(at[0],`translate(${Number(at[1])+dx} ${Number(at[2])+dy})`));};
+  await failingAudit(plan,shift('text-tl1',-300,0),'SOLID_TEXT_LABEL_OUTSIDE_FACE');
+  await failingAudit(plan,shift('text-tl2',0,-120),'SOLID_TEXT_LABEL_OUTSIDE_FACE');
+  await failingAudit(plan,shift('text-tl3',-400,0),'SOLID_TEXT_LABEL_FAR_FROM_TARGET');
+  // a long word on the back corner finds no room beside the vertex in the narrow panel: a leader joins it to the vertex, and the observer checks both ends of the leader
+  const long=figure({solids:[unnamedCuboid({base:{kind:'RECT',width:5,depth:3},height:3})],labels:[{text:'가나다라마바사아자',at:'#t2'}],panelWidth:GRID_PANEL_WIDTH});
+  const longSvg=await sphereSvg(long);
+  const leader=longSvg.match(/<line id="leader-text-tl1"[^>]*\/>/)[0];
+  assert.match(longSvg,/data-label-role="text-label"[^>]* data-leader="1"/);
+  await failingAudit(long,longSvg.replace(leader,leader.replace(/x2="[-\d.]+"/,all=>`x2="${Number(all.match(/[-\d.]+/)[0])+20}"`)),'SOLID_LEADER_NOT_ATTACHED');
+  await failingAudit(long,longSvg.replace(`<g data-layer="40">${leader}</g>`,''),'SOLID_LEADER_MISMATCH');
+  // the observer re-derives each target from the plan: a plan that puts the word on another face, edge or vertex fails against this figure
+  const other=labels=>figure({solids:[unnamedCuboid({base:{kind:'RECT',width:5,depth:3},height:3})],labels,panelWidth:GRID_PANEL_WIDTH});
+  await failingAudit(other([{text:'앞면',at:{face:'side1'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b1','#b2']}},{text:'꼭짓점',at:'#t2'}]),svg,'SOLID_TEXT_LABEL_TARGET_MISMATCH');
+  await failingAudit(other([{text:'앞면',at:{face:'side0'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b0','#b1']}},{text:'꼭짓점',at:'#t2'}]),svg,'SOLID_TEXT_LABEL_TARGET_MISMATCH');
+  await failingAudit(other([{text:'앞면',at:{face:'side0'}},{text:'윗면',at:{face:'top'}},{text:'모서리',at:{edge:['#b1','#b2']}}]),svg,'SOLID_TEXT_LABEL_SET_MISMATCH');
+  // a cone: the slant word beside the right silhouette, the apex word on its name
+  const cone=figure({solids:[{kind:'CONE',radius:3,height:6,names:{apex:'A'},axis:true}],labels:[{text:'모선',at:{slant:true}},{text:'꼭짓점',at:'A'}],panelWidth:GRID_PANEL_WIDTH});
+  const coneSvg=await sphereSvg(cone);
+  assert.match(coneSvg,/data-at-kind="SLANT" data-target="s1" data-text="모선"/);
+  await failingAudit(cone,coneSvg.replace(textOf(coneSvg,'text-tl1'),textOf(coneSvg,'text-tl1').replace(/translate\(([-\d.]+) ([-\d.]+)\)/,'translate(5 5)')),'SOLID_TEXT_LABEL_FAR_FROM_TARGET');
+});
+test('E28c: a figure with nothing written on it composes (its caption carries the text) and a plan with no new field keeps its bytes',async()=>{
+  const plan=figure({solids:[unnamedCuboid()],highlights:[{face:'top'},{face:'side0',fill:'WARM'}],panelWidth:GRID_PANEL_WIDTH});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]));
+  assert.equal(composed.renderedLayout.status,'PASS');
+  assert.equal((composed.svg.match(/data-label-role=/g)??[]).length,0);
+  // a text-free figure is accepted by the layout check only when it says so: the plain check still wants a label
+  const bytes=await sphereSvg(figure({solids:[cuboid()],dims:[{edge:'FG'}],panelWidth:GRID_PANEL_WIDTH}));
+  assert.doesNotMatch(bytes,/axis-line|text-label|data-text-id/);
+});
+
+// --- E28c-2: face symbols (①, 가, (1)) on net faces, a cone net under 180 degrees, edge labels on net faces ----------------------------------------------
+test('E28c: a net face carries a symbol that numbers or names it (circled number, Hangul letter or jamo, number in parentheses); the area rule for numbers is unchanged',()=>{
+  const m=solveSolidFigure(triPrismNet({faceLabels:[{face:'top',text:'①'},{face:'bottom',text:'⑩'},{face:'side0',text:'가'},{face:'side1',text:'ㄴ'},{face:'side2',text:'(3)'}]}));
+  assert.deepEqual(m.faceLabels.map(f=>[f.face,f.text,f.numeric,f.symbol]),[['top','①',false,true],['bottom','⑩',false,true],['side0','가',false,true],['side1','ㄴ',false,true],['side2','(3)',false,undefined]]);
+  assert.ok(FACE_SYMBOL.test('(가)')&&FACE_SYMBOL.test('㉮')&&FACE_SYMBOL.test('(12)')&&FACE_SYMBOL.test('⑳'));
+  // (3) is plain ASCII, so it keeps being a TeX symbol as before; anything longer than one symbol outside ASCII is refused
+  for(const text of ['①②','가나','①.','a①','㉮㉯','※']){
+    assert.equal(FACE_SYMBOL.test(text),false,text);
+    assert.throws(()=>solveSolidFigure(triPrismNet({faceLabels:[{face:'top',text}]})),code('SOLID_FACE_LABEL_INVALID:f1'),text);
+  }
+  // a number is still checked against the area, a circled number is no area
+  assert.throws(()=>solveSolidFigure(triPrismNet({faceLabels:[{face:'top',text:'7'}]})),code('SOLID_FACE_LABEL_VALUE_MISMATCH:f1'));
+  assert.equal(solveSolidFigure(triPrismNet({faceLabels:[{face:'top',text:'6'}]})).faceLabels[0].symbol,undefined);
+});
+test('E28c: face symbols are written as ink-sized text inside their faces and the observer reads the characters back',async()=>{
+  const plan=triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top',text:'①'},{face:'bottom',text:'②'},{face:'side0',text:'가'},{face:'side1',text:'(4)'},{face:'side2',text:'ㄷ'}]},{panelWidth:GRID_PANEL_WIDTH});
+  const svg=await sphereSvg(plan);
+  assert.match(svg,/<g id="face-label-top" data-label-kind="AREA_LABEL" data-label-role="face-label"[^>]* data-numeric="0" data-face-of="top" data-text="①"/);
+  assert.match(svg,/data-face-of="side1" data-tex="\(4\)"/);
+  const top=textOf(svg,'face-label-top');
+  await failingAudit(plan,svg.replace(top,top.replace('data-text="①"','data-text="②"')),'SOLID_FACE_LABEL_VALUE_MISMATCH');
+  await failingAudit(plan,svg.replace(top,top.replace('data-numeric="0"','data-numeric="1"')),'SOLID_FACE_LABEL_VALUE_MISMATCH');
+  await failingAudit(plan,svg.replace(top,top.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${Number(x)+150} ${y})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  const swapped=triPrismNet({highlights:[{face:'top'},{face:'bottom'}],faceLabels:[{face:'top',text:'②'},{face:'bottom',text:'②'},{face:'side0',text:'가'},{face:'side1',text:'(4)'},{face:'side2',text:'ㄷ'}]},{panelWidth:GRID_PANEL_WIDTH});
+  await failingAudit(swapped,svg,'SOLID_FACE_LABEL_VALUE_MISMATCH:top');
+  // the ink-sized box is shorter than the font's line box; a text without the flag keeps the line box
+  const typeset=typesetter(),line={id:'a',owner:'o',factRole:'GIVEN',fontPx:30,panelId:'p',kind:'TEXT',text:'①'};
+  const full=typeset(line,identity),ink=typeset({...line,tight:true},identity);
+  assert.ok(ink.intrinsic.height<0.8*full.intrinsic.height&&ink.intrinsic.width<=full.intrinsic.width+1e-9,JSON.stringify([ink.intrinsic,full.intrinsic]));
+  assert.equal(typeset({...line,tight:false},identity).fragmentSha256,full.fragmentSha256);
+});
+test('E28c: a cone net whose sector is under 180 degrees takes face labels inside the sector (the observer follows the arc by its sweep, not the long way round)',async()=>{
+  const cone=figure({unit:'cm',net:{kind:'CONE',radius:2,slant:6,dims:[{part:'slant'}],faceLabels:[{face:'sector'},{face:'base'}]},solidCaption:{text:'원뿔의 전개도'}});
+  const svg=await sphereSvg(cone);
+  assert.match(svg,/data-face-of="sector" data-tex="12\\pi\\,\\mathrm\{cm\}\^2"/);
+  const sector=textOf(svg,'face-label-sector');
+  // a label put above the apex (outside the sector, inside the circle the arc closes) or far to the side is outside the sector
+  await failingAudit(cone,svg.replace(sector,sector.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${x} ${Number(y)-110})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  await failingAudit(cone,svg.replace(sector,sector.replace(/translate\(([\d.]+) ([\d.]+)\)/,(all,x,y)=>`translate(${Number(x)+260} ${y})`)),'SOLID_FACE_LABEL_OUTSIDE_FACE');
+  // a face symbol in the same sector
+  const sym=figure({unit:'cm',net:{kind:'CONE',radius:2,slant:6,faceLabels:[{face:'sector',text:'가'},{face:'base',text:'나'}]},solidCaption:{text:'원뿔의 전개도'}});
+  await sphereSvg(sym);
+});
+test('E28c: net edge labels write a length, a symbol or a word at an edge of a face, numbered after the dims; refusals have their own codes',()=>{
+  const m=solveSolidFigure(triPrismNet({dims:[{face:'side2',edge:0}],edgeLabels:[{face:'top',edge:0},{face:'top',edge:1,text:'5'},{face:'side0',edge:0,text:'a'},{face:'side0',edge:1,text:'높이'}]}));
+  assert.deepEqual(m.dims.map(d=>[d.id,d.face,d.edge,d.numeric,d.word]),[['dim-1','side2',0,true,undefined],['dim-2','top',0,true,undefined],['dim-3','top',1,true,undefined],['dim-4','side0',0,false,undefined],['dim-5','side0',1,false,true]]);
+  assert.equal(m.dims[4].tex,'높이');
+  assert.equal('word' in m.dims[0],false);
+  const bad=(net,expected)=>assert.throws(()=>solveSolidFigure(triPrismNet(net)),code(expected),expected);
+  bad({edgeLabels:[]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:'top'},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,size:2}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:3}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:'0'}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:7,edge:0}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,text:5}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,text:'가나다라마바사아자차카타파'}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,text:'밑 변 $'}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'nope',edge:0}]},'SOLID_NET_FACE_UNKNOWN');
+  bad({edgeLabels:[{face:'top',edge:0,text:'7'}]},'SOLID_DIM_VALUE_MISMATCH:e1');
+  bad({edgeLabels:Array.from({length:11},(_,k)=>({face:'side0',edge:k%4,text:'a'}))},'SOLID_EDGE_LABEL_INVALID');
+  for(const net of [{kind:'CYLINDER',radius:4,height:6,edgeLabels:[{face:'rect',edge:0}],faceLabels:[{face:'rect'}]},{kind:'CONE',radius:3,slant:5,edgeLabels:[{face:'sector',edge:0}],faceLabels:[{face:'sector'}]}])
+    assert.throws(()=>solveSolidFigure(figure({unit:'cm',net})),code('SOLID_EDGE_LABEL_UNSUPPORTED:'+net.kind));
+});
+test('E28c: a prism net with a length, a symbol and a word at its edges composes and the observer reads each back, the word by its characters',async()=>{
+  const plan=triPrismNet({highlights:[{face:'top'}],rightAngles:[{face:'top',corner:0}],edgeLabels:[{face:'side0',edge:0},{face:'side2',edge:1,text:'밑변'},{face:'side1',edge:1,text:'h'}]},{panelWidth:GRID_PANEL_WIDTH,unit:'cm'});
+  const svg=await sphereSvg(plan);
+  assert.match(svg,/data-dim="dim-3" data-segment="net-edge:side2:1" data-text="밑변"/);
+  const word=textOf(svg,'dim-3-label'),len=textOf(svg,'dim-2-label');
+  assert.match(word,/data-numeric="0"/);
+  await failingAudit(plan,svg.replace(word,word.replace('data-text="밑변"','data-text="높이"')),'SOLID_DIM_WORD_MISMATCH');
+  const other=triPrismNet({highlights:[{face:'top'}],rightAngles:[{face:'top',corner:0}],edgeLabels:[{face:'side0',edge:0},{face:'side2',edge:1,text:'높이'},{face:'side1',edge:1,text:'h'}]},{panelWidth:GRID_PANEL_WIDTH,unit:'cm'});
+  await failingAudit(other,svg,'SOLID_DIM_WORD_MISMATCH');
+  await failingAudit(plan,svg.replace(len,len.replace(/translate\(([\d.]+) ([\d.]+)\)/,'translate(5 5)')),'SOLID_DIM_FAR_FROM_SEGMENT');
+});
+
+// --- E28c-3: the two slants of a cone carry the same ticks (marks.equalSlant) --------------------------------------------------------------------------
+test('E28c: equalSlant puts the same ticks on both slants of a cone or cone frustum; refusals have their own codes',()=>{
+  const cone={kind:'CONE',radius:3,height:6},frustum={kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5};
+  const marks=(solids,equalSlant,more={})=>solveSolidFigure(figure({solids,marks:{equalSlant,...more}})).marks;
+  assert.deepEqual(marks([cone],true).equalSlant,[{id:'es1',solid:'s1',count:1}]);
+  assert.deepEqual(marks([frustum],{count:2}).equalSlant,[{id:'es1',solid:'s1',count:2}]);
+  assert.deepEqual(marks([cone,frustum],[{solid:'s1'},{solid:'s2',count:3,id:'f'}]).equalSlant,[{id:'es1',solid:'s1',count:1},{id:'f',solid:'s2',count:3}]);
+  assert.equal('equalSlant' in solveSolidFigure(figure({solids:[cone],dims:[{height:true}]})).marks,false);
+  const bad=(solids,equalSlant,expected,more={})=>assert.throws(()=>solveSolidFigure(figure({solids,marks:{equalSlant,...more}})),code(expected),expected);
+  bad([{kind:'CYLINDER',radius:2,height:3}],true,'SOLID_MARK_SLANT_UNSUPPORTED');
+  bad([cone,frustum],true,'SOLID_MARK_SLANT_UNSUPPORTED');// two cones and no solid id
+  bad([cone],{solid:'s9'},'SOLID_MARK_SLANT_UNSUPPORTED:s9');
+  bad([cone],{solid:3},'SOLID_MARKS_INVALID');
+  bad([cone],false,'SOLID_MARKS_INVALID');
+  bad([cone],[],'SOLID_MARKS_INVALID');
+  bad([cone],{count:4},'SOLID_MARKS_INVALID');
+  bad([cone],{count:0},'SOLID_MARKS_INVALID');
+  bad([cone],{count:1.5},'SOLID_MARKS_INVALID');
+  bad([cone],{size:2},'SOLID_MARKS_INVALID');
+  bad([cone],[{},{}],'SOLID_MARK_GROUP_AMBIGUOUS');// one cone twice (the same count)
+  bad([cone,frustum],[{solid:'s1'},{solid:'s2'}],'SOLID_MARK_GROUP_AMBIGUOUS:es2');// two cones with the same ticks read as four equal slants
+  bad([cone],[{solid:'s1',count:1},{solid:'s1',count:2}],'SOLID_MARKS_INVALID');
+});
+test('E28c: equal slant ticks and equal-length ticks never share a count, so no two groups read as one',()=>{
+  const solids=[cuboid(),{kind:'CONE',radius:3,height:6}];
+  assert.throws(()=>solveSolidFigure(figure({solids,marks:{equalLengths:[{count:1,segments:['FG','HE']}],equalSlant:true}})),code('SOLID_MARK_GROUP_AMBIGUOUS:es1'));
+  const m=solveSolidFigure(figure({solids,marks:{equalLengths:[{count:1,segments:['FG','HE']}],equalSlant:{count:2}}})).marks;
+  assert.equal(m.equalLengths[0].count,1);assert.equal(m.equalSlant[0].count,2);
+});
+test('E28c: slant ticks are drawn on the silhouettes at their middle and the observer reads them back from the final SVG',async()=>{
+  const plan=figure({solids:[{kind:'CONE',radius:3,height:6},{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],marks:{equalSlant:[{solid:'s1',count:1},{solid:'s2',count:2}]},solidCaption:{text:'원뿔과 원뿔대'}});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-role="slant-mark"/g)??[]).length,6);// 1 + 1 for the cone, 2 + 2 for the frustum
+  assert.match(svg,/<line id="es1-s1-left-1" data-role="slant-mark" data-solid="s1" data-side="LEFT" data-mark="es1" data-mark-index="1" data-mark-count="1" stroke="#111"/);
+  assert.match(svg,/<line id="es2-s2-right-2" data-role="slant-mark" data-solid="s2" data-side="RIGHT" data-mark="es2" data-mark-index="2" data-mark-count="2" stroke="#111"/);
+  // the ticks stand on the drawn silhouette lines: each tick's centre is on its slant (within a pixel) and the slant stays unmarked elsewhere
+  const num=(el,name)=>Number(el.match(new RegExp(`${name}="([-\\d.]+)"`))[1]);
+  const sil=svg.match(/<line id="s1-side-left"[^>]*\/>/)[0],tick=svg.match(/<line id="es1-s1-left-1"[^>]*\/>/)[0];
+  const cx=(num(tick,'x1')+num(tick,'x2'))/2,cy=(num(tick,'y1')+num(tick,'y2'))/2;
+  assert.ok(Math.abs(cx-(num(sil,'x1')+num(sil,'x2'))/2)<0.01&&Math.abs(cy-(num(sil,'y1')+num(sil,'y2'))/2)<0.01);
+  // tampering: a tick moved along its slant, one made too long, a missing tick, a tick on the wrong solid or side, a silhouette bent so the slants differ
+  await failingAudit(plan,svg.replace(tick,tick.replace(/y1="([-\d.]+)"/,(all,y)=>`y1="${Number(y)+9}"`)),'SOLID_SLANT_MARK_');
+  const moved=svg.match(/<line id="es2-s2-left-1"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(moved,moved.replace(/(x1|x2)="([-\d.]+)"/g,(all,k,x)=>`${k}="${Number(x)+6}"`)),'SOLID_SLANT_MARK_NOT_AT_MIDDLE');
+  const longer=svg.match(/<line id="es2-s2-right-1"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(longer,longer.replace(/x2="([-\d.]+)"/,(all,x)=>`x2="${Number(x)+8}"`)),'SOLID_SLANT_MARK_');
+  await failingAudit(plan,svg.replace(`<g data-layer="40">${tick}</g>`,''),'SOLID_SLANT_MARK_SET_MISMATCH');
+  await failingAudit(plan,svg.replace(tick,tick.replace('data-side="LEFT"','data-side="RIGHT"')),'SOLID_SLANT_MARK_');
+  await failingAudit(plan,svg.replace(tick,tick.replace('data-solid="s1"','data-solid="s2"')),'SOLID_SLANT_MARK_');
+  const right=svg.match(/<line id="s1-side-right"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(right,right.replace(/y2="([-\d.]+)"/,(all,y)=>`y2="${Number(y)-14}"`)),'SOLID_');
+  // the plan against another figure: more ticks than drawn, and a figure without the marks
+  await failingAudit(figure({solids:[{kind:'CONE',radius:3,height:6},{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],marks:{equalSlant:[{solid:'s1',count:2},{solid:'s2',count:3}]},solidCaption:{text:'원뿔과 원뿔대'}}),svg,'SOLID_SLANT_MARK_COUNT');
+  await failingAudit(figure({solids:[{kind:'CONE',radius:3,height:6},{kind:'CONE_FRUSTUM',radius:4,topRadius:2,height:5}],marks:{equalSlant:[{solid:'s1',count:1}]},solidCaption:{text:'원뿔과 원뿔대'}}),svg,'SOLID_SLANT_MARK_SET_MISMATCH');
+});
+
+// --- E28c-4: a plane through corners of the solid (cuts:[{vertices:["A","C","F"]}]) ---------------------------------------------------------------------
+// A cuboid with the top ring A B C D over the bottom ring E F G H (A over E, ...); the plane A C F cuts the corner B off.
+const cornerBox=(cuts,over={},solidOver={})=>figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:3},height:2,names:'EFGHABCD',cuts,...solidOver}],...over});
+const namesOf=solid=>solid.vertices.map(v=>v.name);
+const faceNamesOf=(solid,id)=>solid.faces.find(f=>f.id===id).idx.map(i=>solid.vertices[i].name).sort();
+test('E28c: a plane through three corners cuts the corner off: 7 vertices, 12 edges, 7 faces, the section is a face with those corners',()=>{
+  const m=solveSolidFigure(cornerBox([{vertices:['A','C','F']}])),solid=m.solids[0];
+  assert.deepEqual(namesOf(solid).sort(),['A','C','D','E','F','G','H']);// B is gone, and no vertex was added
+  assert.equal(solid.edges.length,12);assert.equal(solid.faces.length,7);
+  assert.deepEqual(faceNamesOf(solid,'cut1'),['A','C','F']);
+  assert.equal(solid.cuts[0].removed,1);assert.equal(solid.cuts[0].added,0);assert.deepEqual(solid.cuts[0].vertices,['A','C','F']);assert.deepEqual(solid.cuts[0].through,[]);
+  // the faces next to B shrink to triangles, the others stay (Euler: 7 - 12 + 7 = 2)
+  assert.deepEqual(solid.faces.map(f=>f.idx.length).sort(),[3,3,3,3,4,4,4]);
+  // the edges A-C, C-F and F-A are new; the edges of B are gone
+  const edge=(a,b)=>solid.edges.some(([i,j])=>[namesOf(solid)[i],namesOf(solid)[j]].sort().join('')===[a,b].sort().join(''));
+  assert.ok(edge('A','C')&&edge('C','F')&&edge('A','F')&&!edge('A','B'));
+  // hidden edges follow the depth test: seen from the front right, the cut face ACF faces the viewer
+  assert.ok(solid.runs.every(e=>e.runs.length===1));
+  // a plane through four corners (a diagonal plane) cuts the cuboid in two equal halves: keep says which one
+  assert.throws(()=>solveSolidFigure(cornerBox([{vertices:['A','C','G','E']}])),code('SOLID_CUT_KEEP_AMBIGUOUS'));
+  const half=solveSolidFigure(cornerBox([{vertices:['A','C','G','E'],keep:'B'}])).solids[0];
+  assert.deepEqual(namesOf(half).sort(),['A','B','C','E','F','G']);assert.equal(half.faces.length,5);assert.equal(half.edges.length,9);
+  // corners and edge points together: the plane through F and the middles of AD' ... (three points, one a corner)
+  const mixed=solveSolidFigure(cornerBox([{vertices:['F'],through:[['AD','1/2','P'],['BC','1/2','Q']],keep:'G'}])).solids[0];
+  assert.ok(namesOf(mixed).includes('P')&&namesOf(mixed).includes('Q')&&namesOf(mixed).includes('F'));
+  // the same cut written with references of an unnamed solid is the same solid
+  const refs=solveSolidFigure(cornerBox([{vertices:['#t0','#t2','#b1']}],{},{names:'........'})).solids[0];
+  assert.deepEqual(refs.vertices.map(v=>v.p),solid.vertices.map(v=>v.p));
+  // a pyramid cut through its apex and a base diagonal
+  const pyramid=solveSolidFigure(figure({solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:6,names:'ABCDE',cuts:[{vertices:['A','C','E'],keep:'B'}]}]})).solids[0];
+  assert.deepEqual(namesOf(pyramid).sort(),['A','B','C','E']);assert.equal(pyramid.faces.length,4);
+  // a plan without the field keeps its model
+  assert.equal('vertices' in solveSolidFigure(cutCube([{through:midCut}])).solids[0].cuts[0],false);
+});
+test('E28c: cuts through corners are refused with explicit codes',()=>{
+  const bad=(cuts,expected,solidOver={})=>assert.throws(()=>solveSolidFigure(cornerBox(cuts,{},solidOver)),code(expected),expected);
+  bad([{vertices:['A','C']}],'SOLID_CUT_INVALID');
+  bad([{vertices:[]}],'SOLID_CUT_INVALID');
+  bad([{}],'SOLID_CUT_INVALID');
+  bad([{vertices:'ACF'}],'SOLID_CUT_INVALID');
+  bad([{vertices:['A','C',7]}],'SOLID_CUT_INVALID');
+  bad([{vertices:['A','A','C']}],'SOLID_CUT_INVALID');
+  bad([{vertices:['A','C','F'],size:1}],'SOLID_CUT_INVALID');
+  bad([{vertices:['A','C','F','D','E','H','B']}],'SOLID_CUT_INVALID');// seven points
+  bad([{vertices:['A','C','Z']}],'SOLID_CUT_VERTEX_UNKNOWN:Z');
+  bad([{vertices:['A','C','F','D']}],'SOLID_CUT_NOT_PLANAR');
+  bad([{vertices:['E','F','G']}],'SOLID_CUT_NO_EFFECT');// the plane of a face leaves nothing on one side
+  bad([{vertices:['A','C','F'],keep:'A'}],'SOLID_CUT_KEEP_INVALID');// a corner on the plane stays and cannot name a side
+  bad([{vertices:['A','C','F'],keep:'Z'}],'SOLID_NAME_UNKNOWN');
+  bad([{vertices:['#t0','#t2','#b1']},{vertices:['#t0','#t3','#b0']}],'SOLID_CUT_VERTEX_REF_UNSUPPORTED',{names:'........'});
+  bad([{vertices:['s2#b0','#t2','#b1']}],'SOLID_VREF_INVALID',{names:'........'});
+  bad([{vertices:['#b9','#t2','#b1']}],'SOLID_VREF_UNKNOWN',{names:'........'});
+  bad([{vertices:['#apex','#t2','#b1']}],'SOLID_VREF_UNKNOWN',{names:'........'});
+  bad([{vertices:['#q1','#t2','#b1']}],'SOLID_VREF_INVALID',{names:'........'});
+  // a corner that was cut away is no corner of the next cut
+  assert.throws(()=>solveSolidFigure(cornerBox([{vertices:['A','C','F']},{vertices:['B','D','G']}])),code('SOLID_CUT_VERTEX_UNKNOWN:B'));
+  // a cut solid still takes no references afterwards
+  assert.throws(()=>solveSolidFigure(cornerBox([{vertices:['#t0','#t2','#b1']}],{segments:[{from:'s1#b0',to:'s1#t0',style:'AUTO'}]},{names:'........'})),code('SOLID_VREF_UNSUPPORTED:CUT'));
+});
+test('E28c: a cut corner is drawn with its hidden edges dashed, the section shaded, and the observer re-derives the cut from the plan',async()=>{
+  const plan=cornerBox([{vertices:['A','C','F']}],{highlights:[{polygon:['A','C','F']}],segments:[{from:'A',to:'C',style:'SOLID',role:'REF'}]});
+  const svg=await sphereSvg(plan);
+  assert.match(svg,/<polygon id="highlight-ACF" data-role="highlight-face" data-polygon="ACF"/);
+  assert.equal((svg.match(/data-role="edge"/g)??[]).length>=12,true);
+  // no corner B anywhere in the drawing, and the new edges are drawn
+  assert.doesNotMatch(svg,/data-edge="[A-Z]*B[A-Z]*"/);
+  assert.match(svg,/data-edge="AC"/);
+  // the observer cuts the solid itself: a figure drawn for another cut fails against this plan
+  await failingAudit(cornerBox([{vertices:['B','D','G']}],{highlights:[{polygon:['B','D','G']}]}),svg,'SOLID_');
+  await failingAudit(cornerBox([{vertices:['A','C','F'],keep:'B'}],{highlights:[{polygon:['A','C','F']}]}),svg,'SOLID_');
+  // a hidden edge drawn solid is caught
+  const hidden=svg.match(/<line id="s1-edge-[^"]*" data-role="edge"[^>]*data-vis="hidden"[^>]*\/>/);
+  if(hidden)await failingAudit(plan,svg.replace(hidden[0],hidden[0].replace(/ stroke-dasharray="[^"]*"/,'').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  // the unnamed form composes as well: only the new vertices of a cut are unnamed
+  const refs=cornerBox([{vertices:['#t0','#t2','#b1']}],{},{names:'........'});
+  await sphereSvg({...refs,solidCaption:{text:'한 꼭짓점을 자른 직육면체'}});
+});
+test('E28c: the two pieces of a cut cuboid are drawn side by side: the piece that is left and the corner pyramid that was cut off',async()=>{
+  // the cut-off piece is a pyramid on the triangle B A C with its apex F straight above the right-angle corner B: BF is perpendicular to BA and BC (lengths 4, 3 and 2 as in the cuboid)
+  const left={capability:'solid-figure-v1',unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:4,depth:3},height:2,names:'EFGHABCD',cuts:[{vertices:['A','C','F']}]}],highlights:[{polygon:['A','C','F']}]};
+  const off={capability:'solid-figure-v1',unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'POLYGON',points:[[0,0],[4,0],[0,3]]},height:2,apex:[0,0],names:'BACF'}]};
+  const plan=gridOf([solidPanel(left,'남은 입체'),solidPanel(off,'잘라 낸 삼각뿔')],{caption:'세 꼭짓점 A, C, F를 지나는 평면으로 직육면체의 한 꼭짓점 B를 자른다'});
+  const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+  const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-cut-corner|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:16,displayScale:0.7,fontFloorCssPx:11}});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
+  assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+});
+
+// --- E28c-5: five or six solid panels in one grid; a plane perpendicular to the axis through a whole sphere or a hemisphere -----------------------------
+const r6=value=>Math.round(value*1e6)/1e6;
+const levelOf=(solid,at='1/2',over={})=>figure({solids:[solid],section:{kind:'LEVEL',at},...over,panelWidth:GRID_PANEL_WIDTH});
+test('E28c: a plane perpendicular to the axis cuts a sphere or a hemisphere in a circle of radius sqrt(R^2 - (z - zc)^2)',()=>{
+  const half=solveSolidFigure(levelOf({kind:'HEMISPHERE',radius:3},'1/2')).section;
+  assert.deepEqual([half.kind,half.at,half.z,half.r],['LEVEL','1/2',1.5,r6(Math.sqrt(9-2.25))]);
+  const ball=solveSolidFigure(levelOf({kind:'SPHERE',radius:3},'1/3')).section;
+  assert.deepEqual([ball.z,ball.r],[2,r6(Math.sqrt(9-1))]);// the plane is 1 below the centre (height 2 of 6)
+  assert.equal(solveSolidFigure(levelOf({kind:'SPHERE',radius:3},'1/2')).section.r,3);// through the centre: a great circle
+  // a rotation solid keeps winning when it is in the plan, and a named solid is cut
+  const both=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:2,height:4},{kind:'SPHERE',radius:2}],section:{kind:'LEVEL',at:'1/2'}}));
+  assert.equal(both.section.solid,'s1');
+  assert.equal(solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:2,height:4},{kind:'HEMISPHERE',radius:2}],section:{kind:'LEVEL',at:'1/4',solid:'s2'}})).section.solid,'s2');
+  const bad=(solid,section,expected,over={})=>assert.throws(()=>solveSolidFigure(figure({solids:[solid],section,...over,panelWidth:GRID_PANEL_WIDTH})),code(expected),expected);
+  bad({kind:'SPHERE',radius:3},{kind:'AXIAL'},'SOLID_SECTION_UNSUPPORTED');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'AXIAL'},'SOLID_SECTION_UNSUPPORTED');
+  bad({kind:'SPHERE',radius:3,cut:{kind:'HALF'}},{kind:'LEVEL',at:'1/2'},'SOLID_SECTION_UNSUPPORTED');
+  bad({kind:'SPHERE',radius:3},{kind:'LEVEL',at:'1/2',fill:'BOTTOM'},'SOLID_SECTION_FILL_UNSUPPORTED:SPHERE');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'1/2',fill:'TOP'},'SOLID_SECTION_FILL_UNSUPPORTED:HEMISPHERE');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'3/2'},'SOLID_SECTION_INVALID');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL'},'SOLID_SECTION_INVALID');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'1/2',dims:1},'SOLID_SECTION_INVALID');
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'1/2'},'SOLID_DIMS_INVALID',{dims:[{level:true}]});
+  bad({kind:'HEMISPHERE',radius:3},{kind:'LEVEL',at:'1/2'},'SOLID_DIMS_INVALID',{dims:[{radius:'level'}]});
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:9,id:'s1'},{kind:'SPHERE',radius:3,inside:'s1'}],section:{kind:'LEVEL',at:'1/2',solid:'s2'}})),code('SOLID_SECTION_UNSUPPORTED'));
+  // a plan without the section keeps its model
+  assert.equal(solveSolidFigure(figure({solids:[{kind:'HEMISPHERE',radius:3,names:{center:'O'}}]})).section,null);
+});
+test('E28c: a hemisphere and a sphere with a level section compose, the observer reads the circle back, and a moved or resized circle is caught',async()=>{
+  for(const [solid,at,r] of [[{kind:'HEMISPHERE',radius:3},'1/2',Math.sqrt(9-2.25)],[{kind:'SPHERE',radius:3},'1/3',Math.sqrt(8)]]){
+    const plan=levelOf(solid,at);
+    const svg=await sphereSvg(plan);
+    assert.match(svg,/<ellipse id="level-s1" data-role="level-fill" data-solid="s1"/);
+    assert.equal((svg.match(/data-circle="level"/g)??[]).length,2);
+    const scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]),ell=svg.match(/<ellipse id="level-s1"[^>]*\/>/)[0];
+    assert.ok(Math.abs(Number(ell.match(/ rx="([-\d.]+)"/)[1])-scale*r)<0.01,'the circle has radius '+r);
+    await failingAudit(plan,svg.replace(ell,ell.replace(/ cy="([-\d.]+)"/,(all,y)=>` cy="${Number(y)+8}"`)),'SOLID_LEVEL_ELLIPSE_MISMATCH');
+    await failingAudit(plan,svg.replace(ell,ell.replace(/ rx="([-\d.]+)"/,(all,x)=>` rx="${Number(x)+6}"`)),'SOLID_LEVEL_ELLIPSE_MISMATCH');
+    const front=svg.match(/<path id="s1-level-front"[^>]*\/>/)[0];
+    await failingAudit(plan,svg.replace(`<g data-layer="40">${front}</g>`,''),'SOLID_LEVEL_ARC_MISSING');
+    await failingAudit(plan,svg.replace(front,front.replace(/ A ([-\d.]+) ([-\d.]+) /,(all,a,b)=>` A ${Number(a)+7} ${b} `)),'SOLID_');
+    // the plan against a figure of another level
+    await failingAudit(levelOf(solid,at==='1/2'?'1/4':'1/2'),svg,'SOLID_LEVEL_ELLIPSE_MISMATCH');
+  }
+});
+test('E28c: five and six solid panels make a two-column grid of three rows that still fits the page',()=>{
+  assert.equal(COMPOSITE_MAX_SOLID_GRID_PANELS,6);
+  const one=()=>solidPanel(hexPrism([seg('B','H')]),'육각기둥');
+  for(const count of [5,6]){
+    const checked=compositePanels(gridOf(Array.from({length:count},one)));
+    assert.equal(checked.length,count);
+    assert.deepEqual(compositePanelLayout(checked),{kind:'GRID',columns:2,rows:Math.ceil(count/2)});
+    const stack=compositeStackSize(checked.map(item=>figurePanelSize(solveSolidFigure(item.plan))),0,compositePanelLayout(checked));
+    assert.equal(stack.width,2*GRID_PANEL_WIDTH+8);assert.equal(stack.rows,3);
+    // three rows of the tallest solid panel (400 units, caption row 44) stay under the page limit at the display scale of the 776-unit grid
+    assert.ok(stack.height*(298/stack.width)<=640,JSON.stringify(stack));
+  }
+  assert.throws(()=>compositePanels(gridOf(Array.from({length:7},one))),error=>reason(error)==='PANELS');
+  // a solid among plane panels keeps counting as a solid grid
+  assert.equal(compositePanels(gridOf([...Array.from({length:5},()=>({caption:{text:'오각형'},plan:triPlane()})),one()])).length,6);
+});
+test('E28c: five section panels (cylinder, cone, frustum, sphere, hemisphere) compose in one grid, each passes its own observer',async()=>{
+  const level=(solid,at='1/2')=>({capability:'solid-figure-v1',solids:[solid],section:{kind:'LEVEL',at}});
+  const plan=gridOf([
+    solidPanel(level({kind:'CYLINDER',radius:3,height:6}),'원기둥'),solidPanel(level({kind:'CONE',radius:3,height:6}),'원뿔'),solidPanel(level({kind:'CONE_FRUSTUM',radius:3,topRadius:1.5,height:4}),'원뿔대'),
+    solidPanel(level({kind:'SPHERE',radius:3},'1/3'),'구'),solidPanel(level({kind:'HEMISPHERE',radius:3}),'반구')
+  ],{caption:'회전체를 회전축에 수직인 평면으로 자른 단면은 모두 원이다'});
+  const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+  const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-five-sections|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:29.3,displayScale:0.384,fontFloorCssPx:11}});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
+  assert.equal(composed.panels.length,5);
+  assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+  assert.deepEqual(compositePanelLayout(checked),{kind:'GRID',columns:2,rows:3});
+});
+
+// --- E28c-6: several balls in one cylinder -----------------------------------------------------------------------------------------------------------
+const ballsIn=(solid,over={})=>figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:18,...solid}],solidCaption:{text:'반지름 3cm인 공 3개'},...over});
+// (the radius of a ball in a tight cylinder has no room for its label: the engine's rules keep a label off every stroke and a leader from crossing one, so the balls carry their radius in the caption)
+test('E28c: a cylinder holds a stack of balls, or balls at given heights: nested spheres s1b1, s1b2, ... that fit, touch or stand apart, and never overlap',()=>{
+  const m=solveSolidFigure(ballsIn({stack:{count:3,radius:3}},{dims:[{solid:'s1b1',radius:'center'}]}));
+  assert.deepEqual(m.solids.map(s=>[s.id,s.kind,s.inside,s.centerZ]),[['s1','CYLINDER',null,undefined],['s1b1','SPHERE','s1',3],['s1b2','SPHERE','s1',9],['s1b3','SPHERE','s1',15]]);
+  assert.equal(m.dims[0].z,3);assert.equal(m.dims[0].r,3);// the radius of the lowest ball lies at the height of its centre
+  const list=solveSolidFigure(ballsIn({inside:[{kind:'SPHERE',radius:3},{kind:'SPHERE',radius:3},{kind:'SPHERE',radius:3,centerZ:15}]}));
+  assert.deepEqual(list.solids.slice(1).map(s=>s.centerZ),[3,9,15]);// a ball without centerZ rests on the ball before it
+  // different radii and a loose ball; the plan's own solids keep their ids by their place in the plan
+  const loose=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:18,inside:[{kind:'SPHERE',radius:2},{kind:'SPHERE',radius:3,centerZ:10}]},{kind:'CONE',radius:2,height:3}],solidCaption:{text:'공과 원뿔'}}));
+  assert.deepEqual(loose.solids.map(s=>[s.id,s.centerZ]),[['s1',undefined],['s1b1',2],['s1b2',10],['s2',undefined]]);
+  // the written-out form is the same model
+  const written=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:12,id:'s1'},{kind:'SPHERE',radius:3,inside:'s1',centerZ:3},{kind:'SPHERE',radius:3,inside:'s1',centerZ:9}],solidCaption:{text:'공 2개'}}));
+  assert.deepEqual(written.solids.map(s=>[s.id,s.centerZ]),[['s1',undefined],['s2',3],['s3',9]]);
+  // a plan without the fields keeps its model: a sphere in a cylinder rests on the bottom
+  const rest=solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:6,id:'s1'},{kind:'SPHERE',radius:3,inside:'s1'}],solidCaption:{text:'공 1개'}}));
+  assert.equal('centerZ' in rest.solids[1],false);assert.equal(rest.solids[1].points[0].p[2],3);
+  const bad=(solid,expected,over={})=>assert.throws(()=>solveSolidFigure(ballsIn(solid,over)),code(expected),expected);
+  bad({stack:{count:3,radius:3},height:17},'SOLID_NEST_DOES_NOT_FIT:s1b3');// the third ball reaches above the top
+  bad({stack:{count:3,radius:4}},'SOLID_NEST_DOES_NOT_FIT:s1b1');// wider than the cylinder
+  bad({inside:[{kind:'SPHERE',radius:3,centerZ:2}]},'SOLID_NEST_DOES_NOT_FIT:s1b1');// below the bottom
+  bad({inside:[{kind:'SPHERE',radius:3,centerZ:3},{kind:'SPHERE',radius:3,centerZ:5}]},'SOLID_NEST_OVERLAP:s1b1,s1b2');
+  bad({inside:[{kind:'SPHERE',radius:3,centerZ:3},{kind:'SPHERE',radius:2,centerZ:7}]},'SOLID_NEST_OVERLAP:s1b1,s1b2');// 3 + 2 > 4
+  bad({stack:{count:3,radius:3},inside:[{kind:'SPHERE',radius:3}]},'SOLID_BALLS_INVALID');
+  bad({stack:{count:1,radius:3}},'SOLID_BALLS_INVALID');
+  bad({stack:{count:7,radius:1}},'SOLID_BALLS_INVALID');
+  bad({stack:{count:2.5,radius:1}},'SOLID_BALLS_INVALID');
+  bad({stack:'x'},'SOLID_BALLS_INVALID');
+  bad({stack:{count:2,radius:1,gap:1}},'SOLID_BALLS_INVALID');
+  bad({stack:{count:2,radius:-1}},'SOLID_PARAM_INVALID');
+  bad({stack:{count:2}},'SOLID_PARAM_INVALID');
+  bad({inside:[]},'SOLID_BALLS_INVALID');
+  bad({inside:[{kind:'CONE',radius:1}]},'SOLID_BALLS_INVALID');
+  bad({inside:[{kind:'SPHERE',radius:1,color:'red'}]},'SOLID_BALLS_INVALID');
+  bad({inside:['s2']},'SOLID_BALLS_INVALID');
+  bad({inside:[{kind:'SPHERE',radius:1,centerZ:'3'}]},'SOLID_PARAM_INVALID');
+  bad({inside:Array.from({length:7},()=>({kind:'SPHERE',radius:0.5}))},'SOLID_BALLS_INVALID');
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CONE',radius:3,height:6,stack:{count:2,radius:1}}]})),code('SOLID_BALLS_UNSUPPORTED:CONE'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'SPHERE',radius:2,centerZ:3}]})),code('SOLID_NEST_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:6,id:'s1'},{kind:'SPHERE',radius:2,inside:'s1',centerZ:-1}]})),code('SOLID_PARAM_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:18,stack:{count:2,radius:3}},{kind:'CONE',radius:2,height:3,inside:'s1'}]})),code('SOLID_NEST_UNSUPPORTED:MIXED'));
+  // the cap of three solids counts the plan's own solids, not the balls they hold
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:1,height:2},{kind:'CYLINDER',radius:1,height:2},{kind:'CYLINDER',radius:1,height:2},{kind:'CYLINDER',radius:1,height:2}]})),code('SOLID_COUNT_INVALID'));
+  assert.equal(solveSolidFigure(ballsIn({stack:{count:6,radius:1.5}})).solids.length,7);
+});
+test('E28c: three balls in a cylinder are drawn at their own heights and the observer re-derives each from the plan: heights, fit, no overlap',async()=>{
+  const plan=ballsIn({stack:{count:3,radius:3}},{panelWidth:GRID_PANEL_WIDTH});
+  const svg=await sphereSvg(plan);
+  assert.equal((svg.match(/data-role="sphere-outline"/g)??[]).length,6);// an upper and a lower half circle for each ball
+  assert.equal((svg.match(/data-circle="equator"/g)??[]).length,6);
+  assert.match(svg,/id="s1b3-outline-upper"/);
+  // each ball is a circle of the cylinder's radius, one above the other on the axis (centres 2 r cos(pitch) apart on the screen)
+  const scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]),centre=id=>{const d=svg.match(new RegExp(`<path id="${id}-outline-upper"[^>]*d="M ([-\\d.]+) ([-\\d.]+) A`));return [Number(d[1])+scale*3,Number(d[2])];};
+  const [c1,c2,c3]=['s1b1','s1b2','s1b3'].map(centre);
+  assert.ok(Math.abs(c1[0]-c2[0])<0.01&&Math.abs(c2[0]-c3[0])<0.01);
+  assert.ok(Math.abs((c1[1]-c2[1])-scale*6*Math.cos(20*Math.PI/180))<0.05&&Math.abs((c2[1]-c3[1])-scale*6*Math.cos(20*Math.PI/180))<0.05);
+  // tampering: a ball drawn higher or lower, a ball missing, a ball that is not in the plan
+  const upper=svg.match(/<path id="s1b2-outline-upper"[^>]*\/>/)[0];
+  await failingAudit(plan,svg.replace(upper,upper.replace(/ d="M ([-\d.]+) ([-\d.]+) A ([-\d.]+) ([-\d.]+) 0 (\d) 0 ([-\d.]+) ([-\d.]+)"/,(all,x0,y0,rx,ry,l,x1,y1)=>` d="M ${x0} ${Number(y0)-12} A ${rx} ${ry} 0 ${l} 0 ${x1} ${Number(y1)-12}"`)),'SOLID_');
+  await failingAudit(ballsIn({stack:{count:2,radius:3}},{panelWidth:GRID_PANEL_WIDTH}),svg,'SOLID_SOLID_NOT_IN_PLAN:s1b3');// a ball drawn that the plan does not have
+  await failingAudit(ballsIn({inside:[{kind:'SPHERE',radius:3,centerZ:3},{kind:'SPHERE',radius:3,centerZ:9},{kind:'SPHERE',radius:3,centerZ:14.5}]},{panelWidth:GRID_PANEL_WIDTH}),svg,'SOLID_');
+  // the plan that overlaps its balls fails in the observer as well (the engine refuses it first, so ask the observer directly)
+  const overlapping=ballsIn({inside:[{kind:'SPHERE',radius:3,centerZ:3},{kind:'SPHERE',radius:3,centerZ:5}]},{panelWidth:GRID_PANEL_WIDTH});
+  const r=await audit(overlapping,svg);
+  assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_NEST_OVERLAP')),JSON.stringify(r.errors));
+});
+test('E28c: balls with a section beside them: a cylinder of balls and a cylinder with a water level compose in one grid',async()=>{
+  const plan=gridOf([
+    solidPanel({capability:'solid-figure-v1',unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:18,stack:{count:3,radius:3}}]},'공 3개'),
+    solidPanel({capability:'solid-figure-v1',unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:18}],section:{kind:'LEVEL',at:'1/3',fill:'BOTTOM'},dims:[{level:true,label:'h'}]},'물의 높이')
+  ],{caption:'원기둥에 공 3개가 꼭 맞게 들어 있다'});
+  const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+  const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-balls-grid|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:29.3,displayScale:0.384,fontFloorCssPx:11}});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
+  assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
 });

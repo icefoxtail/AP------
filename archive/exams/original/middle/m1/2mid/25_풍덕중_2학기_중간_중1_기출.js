@@ -148,7 +148,11 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 거리 AB=193 m(양쪽 화살표 치수선)와 중점 M의 AM=BM=96.5 m, 그리고 A에서 B로 돌아가는 점선 도로 경로의 총거리 305 m를 한 그림에 놓고 직선 거리와 도로 이동 거리가 다름을 보여 준다.",
+    "solutionImageCaption": "두 점 사이의 거리는 선분 AB의 길이 193 m이고 도로 경로 총거리 305 m와 다르다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,

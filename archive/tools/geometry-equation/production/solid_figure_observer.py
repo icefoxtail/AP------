@@ -90,6 +90,8 @@ def base_polygon(base):
 
 def build_solid(spec):
     kind = spec['kind']
+    if kind == 'REGULAR_POLYHEDRON': return build_regular(spec)
+    if kind == 'BIPYRAMID': return build_bipyramid(spec)
     if kind in ('PRISM', 'PYRAMID', 'FRUSTUM'):
         pts, plane = base_polygon(spec['base'])
         n, h = len(pts), float(spec['height'])
@@ -123,7 +125,7 @@ def build_solid(spec):
         if spec.get('cuts') is not None:
             # planes cutting parts off a convex polyhedron: the solid that is drawn is what remains (derived here from the plan alone)
             if spec.get('count') is not None: raise ValueError('SOLID_COUNT_UNSUPPORTED:CUT')
-            verts, faces, aliases = apply_cuts(verts, faces, aliases, spec['cuts'])
+            verts, faces, aliases = apply_cuts(verts, faces, aliases, spec['cuts'], kind)
             return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases, 'cut': True}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases}
     if kind in ('CYLINDER', 'CONE', 'CONE_FRUSTUM', 'SPHERE', 'HEMISPHERE'):
@@ -143,7 +145,7 @@ def build_solid(spec):
             r0, r1 = (narrow, r) if down else (r, narrow)
         names = spec.get('names') or {}
         pts = []
-        if kind == 'SPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, r)))
+        if kind == 'SPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, float(spec['centerZ']) if spec.get('centerZ') is not None else r)))
         elif kind == 'HEMISPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, 0.0)))
         else:
             pts.append((names.get('center'), 'center', (0.0, 0.0, h if down and kind == 'CONE' else 0.0)))
@@ -152,10 +154,150 @@ def build_solid(spec):
         if spec.get('cut') is not None:
             if kind != 'SPHERE': raise ValueError('SOLID_SPHERE_CUT_UNSUPPORTED')
             check_cut_spec(spec['cut'])
+        axis = spec.get('axis')
+        if axis is not None:
+            if kind not in ('CYLINDER', 'CONE', 'CONE_FRUSTUM') or spec.get('inside') is not None: raise ValueError('SOLID_AXIS_UNSUPPORTED:' + kind)
+            axis = {'label': axis.get('label') if isinstance(axis, dict) else None}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV',
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
-                'inside': spec.get('inside'), 'cut': spec.get('cut')}
+                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis,
+                'cz': (float(spec['centerZ']) if spec.get('centerZ') is not None else r) if kind == 'SPHERE' else 0.0}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
+
+
+# --- regular polyhedra and bipyramids (E29) ------------------------------------------------------------------------------------------------------------
+# Derived here from the plan and the spec (vertex order, orientation) alone, by other routes than the producer's: the tetrahedron from the vertices of a cube, the
+# octahedron from the axes, the icosahedron and dodecahedron from their golden-ratio coordinates turned until a 5-fold axis stands upright (the producer builds the
+# icosahedron from rings and the dodecahedron as its dual). Vertex order: tetrahedron base triangle (azimuths -150, -30, 90 degrees) then the apex; octahedron the square
+# ring (azimuths -135, -45, 45, 135) then the upper and the lower apex; icosahedron the upper apex, the upper ring (azimuths -90 + 72k), the lower ring (-54 + 72k), the
+# lower apex; dodecahedron four rings of five (upper pentagon, upper-middle, lower-middle, lower pentagon; azimuths -54 + 72k for the first two, -18 + 72k for the others).
+PHI = (1 + math.sqrt(5)) / 2
+REGULAR_FACE_COUNTS = (4, 8, 12, 20)
+
+
+def _rot_axis_to_z(points, axis):
+    """the points turned (Rodrigues) so that the direction `axis` becomes +z"""
+    a = vunit(axis)
+    k = vcross(a, (0.0, 0.0, 1.0))
+    s, c = vlen(k), a[2]
+    if s < 1e-12: return [p if c > 0 else (p[0], -p[1], -p[2]) for p in points]
+    k = vmul(k, 1.0 / s)
+    return [vadd(vadd(vmul(p, c), vmul(vcross(k, p), s)), vmul(k, vdot(k, p) * (1 - c))) for p in points]
+
+
+def _turn_z(points, angle):
+    ca, sa = math.cos(angle), math.sin(angle)
+    return [(p[0] * ca - p[1] * sa, p[0] * sa + p[1] * ca, p[2]) for p in points]
+
+
+def _az(p): return math.atan2(p[1], p[0])
+
+
+def _sorted_from(points, start_az):
+    """points ordered counter-clockwise by azimuth, beginning at the one nearest `start_az`"""
+    return sorted(points, key=lambda p: (_az(p) - start_az + 1e-7) % (2 * math.pi))
+
+
+def _ring_cycle(points, centre_dir):
+    """the points sorted cyclically around a direction (counter-clockwise seen from outside)"""
+    axis = vunit(centre_dir)
+    helper = (1.0, 0.0, 0.0) if abs(axis[0]) < 0.9 else (0.0, 1.0, 0.0)
+    e1 = vunit(vcross(axis, helper))
+    e2 = vcross(axis, e1)
+    return sorted(points, key=lambda p: math.atan2(vdot(p, e2), vdot(p, e1)))
+
+
+def regular_polyhedron(count, side):
+    """vertices (3-tuples) and faces (index lists) of the regular polyhedron with `count` faces and edge `side`, standing on z = 0"""
+    if count == 4:
+        raw = [(1.0, 1.0, 1.0), (1.0, -1.0, -1.0), (-1.0, 1.0, -1.0), (-1.0, -1.0, 1.0)]    # four vertices of a cube: edge 2 sqrt 2
+        turned = _rot_axis_to_z(raw, raw[0])                                                   # the first becomes the apex on the +z axis
+        apex, base = turned[0], turned[1:]
+        base = _sorted_from(_turn_z(base, -math.radians(150) - _az(base[0])), -math.radians(150))
+        k = side / (2 * math.sqrt(2))
+        pts = [vmul(p, k) for p in [*base, apex]]
+        faces = [[0, 1, 2], [0, 1, 3], [1, 2, 3], [2, 0, 3]]
+    elif count == 8:
+        r = side / math.sqrt(2)
+        ring = _turn_z([(r, 0.0, 0.0), (0.0, r, 0.0), (-r, 0.0, 0.0), (0.0, -r, 0.0)], -math.radians(135))
+        pts = [*ring, (0.0, 0.0, r), (0.0, 0.0, -r)]
+        faces = [[k, (k + 1) % 4, 4] for k in range(4)] + [[k, (k + 1) % 4, 5] for k in range(4)]
+    else:
+        ico = [(0.0, a, b * PHI) for a in (1.0, -1.0) for b in (1.0, -1.0)] + [(a, b * PHI, 0.0) for a in (1.0, -1.0) for b in (1.0, -1.0)] + [(b * PHI, 0.0, a) for a in (1.0, -1.0) for b in (1.0, -1.0)]
+        if count == 20:
+            top_axis = ico[0]
+            pts = _rot_axis_to_z(ico, top_axis)
+            levels = sorted(pts, key=lambda p: -p[2])
+            top, upper, lower, bottom = levels[0], levels[1:6], levels[6:11], levels[11]
+            turn = -math.pi / 2 - _az(upper[0])
+            top, bottom = _turn_z([top], turn)[0], _turn_z([bottom], turn)[0]
+            upper, lower = _turn_z(upper, turn), _turn_z(lower, turn)
+            upper = _sorted_from(upper, -math.pi / 2)
+            lower = _sorted_from(lower, -math.pi / 2 + math.pi / 5)
+            pts = [top, *upper, *lower, bottom]
+            faces = [[0, 1 + k, 1 + (k + 1) % 5] for k in range(5)] + [[1 + k, 1 + (k + 1) % 5, 6 + k] for k in range(5)] \
+                + [[6 + k, 6 + (k + 1) % 5, 1 + (k + 1) % 5] for k in range(5)] + [[11, 6 + (k + 1) % 5, 6 + k] for k in range(5)]
+            scale = side / 2.0
+        else:
+            raw = [(a, b, c) for a in (1.0, -1.0) for b in (1.0, -1.0) for c in (1.0, -1.0)]
+            raw += [(0.0, a * PHI, b / PHI) for a in (1.0, -1.0) for b in (1.0, -1.0)] + [(a / PHI, 0.0, b * PHI) for a in (1.0, -1.0) for b in (1.0, -1.0)] + [(a * PHI, b / PHI, 0.0) for a in (1.0, -1.0) for b in (1.0, -1.0)]
+            turned = _rot_axis_to_z(raw, (0.0, 1.0, PHI))
+            rows = sorted(turned, key=lambda p: -p[2])
+            groups = [rows[0:5], rows[5:10], rows[10:15], rows[15:20]]
+            turn = -math.pi / 2 + math.pi / 5 - _az(groups[0][0])
+            groups = [_turn_z(g, turn) for g in groups]
+            groups = [_sorted_from(groups[0], -math.pi / 2 + math.pi / 5), _sorted_from(groups[1], -math.pi / 2 + math.pi / 5),
+                      _sorted_from(groups[2], -math.pi / 2 + math.pi / 5 + math.pi / 5), _sorted_from(groups[3], -math.pi / 2 + math.pi / 5 + math.pi / 5)]
+            pts = [p for g in groups for p in g]
+            # a face stands on each axis of the icosahedron: its five vertices are the ones nearest that axis
+            el = math.atan(0.5)
+            dirs = [(0.0, 0.0, 1.0)] + [(math.cos(el) * math.cos(-math.pi / 2 + 2 * math.pi * k / 5), math.cos(el) * math.sin(-math.pi / 2 + 2 * math.pi * k / 5), math.sin(el)) for k in range(5)] \
+                + [(math.cos(el) * math.cos(-math.pi / 2 + math.pi / 5 + 2 * math.pi * k / 5), math.cos(el) * math.sin(-math.pi / 2 + math.pi / 5 + 2 * math.pi * k / 5), -math.sin(el)) for k in range(5)] + [(0.0, 0.0, -1.0)]
+            faces = []
+            for d in dirs:
+                near = sorted(range(20), key=lambda i: -vdot(pts[i], d))[:5]
+                order = _ring_cycle([pts[i] for i in near], d)
+                faces.append([pts.index(p) for p in order])
+            scale = side * PHI / 2.0
+        pts = [vmul(p, scale) for p in pts]
+    z0 = min(p[2] for p in pts)
+    return [(p[0], p[1], p[2] - z0) for p in pts], faces
+
+
+def _flat_names(total, names):
+    if names is None: return _letters(0, total)
+    lst = _clean_names(NAME_TOKEN.findall(names) if isinstance(names, str) else list(names))
+    if len(lst) != total: raise ValueError('SOLID_NAMES_INVALID')
+    return lst
+
+
+def build_regular(spec):
+    count, side = spec.get('faces'), float(spec['side'])
+    if count not in REGULAR_FACE_COUNTS: raise ValueError('SOLID_REGULAR_FACES_UNSUPPORTED')
+    pts, faces = regular_polyhedron(count, side)
+    # every edge of every face is `side` long and every face is planar: the construction checks itself
+    for f in faces:
+        for k in range(len(f)):
+            if abs(vlen(vsub(pts[f[k]], pts[f[(k + 1) % len(f)]])) - side) > 1e-7 * side: raise ValueError('SOLID_OBSERVER_REGULAR_EDGE')
+    names = _flat_names(len(pts), spec.get('names'))
+    aliases = {i: n.split(',') for i, n in enumerate(names) if n and ',' in n}
+    verts = [(n.split(',')[0] if n and ',' in n else n, pts[i]) for i, n in enumerate(names)]
+    return {'id': spec.get('id'), 'kind': 'REGULAR_POLYHEDRON', 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': max(p[2] for p in pts), 'aliases': aliases}
+
+
+def build_bipyramid(spec):
+    base, h = spec['base'], float(spec['height'])
+    ring2d, plane = base_polygon(base)
+    if plane != 'XY': raise ValueError('SOLID_BASE_PLANE_UNSUPPORTED')
+    n = len(ring2d)
+    ring = [(x, y, h) for x, y in ring2d]
+    cx, cy = sum(p[0] for p in ring) / n, sum(p[1] for p in ring) / n
+    pts = [*ring, (cx, cy, 2 * h), (cx, cy, 0.0)]
+    faces = [[i, (i + 1) % n, n] for i in range(n)] + [[i, (i + 1) % n, n + 1] for i in range(n)]
+    names = _flat_names(len(pts), spec.get('names'))
+    aliases = {i: nm.split(',') for i, nm in enumerate(names) if nm and ',' in nm}
+    verts = [(nm.split(',')[0] if nm and ',' in nm else nm, pts[i]) for i, nm in enumerate(names)]
+    return {'id': spec.get('id'), 'kind': 'BIPYRAMID', 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': 2 * h, 'aliases': aliases}
 
 
 # --- planes cutting a convex polyhedron -----------------------------------------------------------------------------------------------------------------
@@ -163,20 +305,22 @@ CUT_EPS = 1e-6
 CUT_AT = re.compile(r'^([1-9]\d?)/([1-9]\d?)$')
 
 
-def apply_cuts(verts, faces, aliases, cuts):
+def apply_cuts(verts, faces, aliases, cuts, kind=None):
     """The polyhedron left after cutting by one or two planes, one after the other. A plane is given by 3-6 points, each at the fraction p/q of an edge
     (written as its two vertex names) of the solid as it is at that cut; the side with strictly more vertices stays (keep:"<vertex>" decides a tie).
     The remaining vertices keep their order, the new vertices (one per edge crossing the plane) follow, ordered by the (low, high) indices of their edge in
     the solid before the cut; the section is one more face. Re-derived here independently of the producer."""
     if not isinstance(cuts, list) or not 1 <= len(cuts) <= 2: raise ValueError('SOLID_CUT_COUNT_INVALID')
     for number, cut in enumerate(cuts, 1):
-        verts, faces, aliases = _cut_once(verts, faces, aliases, cut)
+        verts, faces, aliases = _cut_once(verts, faces, aliases, cut, number, kind)
     return verts, faces, aliases
 
 
-def _cut_once(verts, faces, aliases, cut):
-    entries = cut.get('through')
-    if not isinstance(entries, list) or not 3 <= len(entries) <= 6: raise ValueError('SOLID_CUT_INVALID')
+def _cut_once(verts, faces, aliases, cut, number=1, kind=None):
+    entries = cut.get('through', [])
+    corner_tokens = cut.get('vertices', [])
+    if cut.get('through') is None and cut.get('vertices') is None: raise ValueError('SOLID_CUT_INVALID')
+    if not isinstance(entries, list) or not isinstance(corner_tokens, list) or not 3 <= len(entries) + len(corner_tokens) <= 6: raise ValueError('SOLID_CUT_INVALID')
 
     def index_of(name):
         for i, (n, _) in enumerate(verts):
@@ -186,6 +330,29 @@ def _cut_once(verts, faces, aliases, cut):
     for f in faces:
         for i in range(len(f)):
             edges.add((min(f[i], f[(i + 1) % len(f)]), max(f[i], f[(i + 1) % len(f)])))
+    # corners of the solid the plane passes through: a name, or (first cut only) a reference to a slot of the uncut solid: "#b0", "#t2", "#apex", "#v5"
+    corners = []
+    for token in corner_tokens:
+        if not isinstance(token, str): raise ValueError('SOLID_CUT_INVALID')
+        if '#' in token:
+            if number != 1: raise ValueError('SOLID_CUT_VERTEX_REF_UNSUPPORTED')
+            m = VREF.fullmatch(token)
+            if not m or m.group(1) is not None: raise ValueError('SOLID_VREF_INVALID')
+            ring, idx, apex = m.group(2), m.group(3), m.group(4)
+            total = len(verts)
+            n_ring = total - 1 if kind == 'PYRAMID' else total - 2 if kind == 'BIPYRAMID' else total // 2
+            if ring == 'v': i = int(idx) if int(idx) < total else None
+            elif kind == 'REGULAR_POLYHEDRON': i = None
+            elif apex == 'apex': i = n_ring if kind in ('PYRAMID', 'BIPYRAMID') else None
+            elif apex == 'apex2': i = n_ring + 1 if kind == 'BIPYRAMID' else None
+            elif ring == 'b': i = int(idx) if int(idx) < n_ring else None
+            else: i = None if kind in ('PYRAMID', 'BIPYRAMID') else (n_ring + int(idx) if int(idx) < n_ring else None)
+            if i is None: raise ValueError('SOLID_VREF_UNKNOWN')
+        else:
+            i = index_of(token)
+            if i < 0: raise ValueError('SOLID_CUT_VERTEX_UNKNOWN')
+        corners.append({'index': i, 'p': verts[i][1]})
+    if len({x['index'] for x in corners}) != len(corners): raise ValueError('SOLID_CUT_INVALID')
     through = []
     for entry in entries:
         text, at = entry[0], entry[1]
@@ -202,15 +369,16 @@ def _cut_once(verts, faces, aliases, cut):
     if len({x['key'] for x in through}) != len(through): raise ValueError('SOLID_CUT_INVALID')
     # the plane from the first three points that are not on one line (the producer takes the widest triple; coplanar points give the same plane)
     normal = None
-    for i in range(len(through)):
-        for j in range(i + 1, len(through)):
-            for k in range(j + 1, len(through)):
-                c = vcross(vsub(through[j]['p'], through[i]['p']), vsub(through[k]['p'], through[i]['p']))
+    pts = [x['p'] for x in through] + [x['p'] for x in corners]
+    for i in range(len(pts)):
+        for j in range(i + 1, len(pts)):
+            for k in range(j + 1, len(pts)):
+                c = vcross(vsub(pts[j], pts[i]), vsub(pts[k], pts[i]))
                 if normal is None and vlen(c) > 1e-9: normal = c
     if normal is None: raise ValueError('SOLID_CUT_DEGENERATE')
     n = vunit(normal)
-    d = vdot(n, through[0]['p'])
-    if any(abs(vdot(n, x['p']) - d) > 2 * CUT_EPS for x in through): raise ValueError('SOLID_CUT_NOT_PLANAR')
+    d = vdot(n, pts[0])
+    if any(abs(vdot(n, p) - d) > 2 * CUT_EPS for p in pts): raise ValueError('SOLID_CUT_NOT_PLANAR')
     dist = [vdot(n, v[1]) - d for v in verts]
     pos, neg = sum(1 for x in dist if x > CUT_EPS), sum(1 for x in dist if x < -CUT_EPS)
     if pos == 0 or neg == 0: raise ValueError('SOLID_CUT_NO_EFFECT')
@@ -273,6 +441,73 @@ def vname(solid, i):
     return n if n else 'v%d' % i
 
 
+# --- vertex references: "#b0" "#t2" "#apex" "#v5" (optionally "s2#b0") stand for a vertex wherever a name does ---------------------------------------
+# A vertex without a name is known by the key "<solid id>.<slot>" ("s1.b0"); a key is the name when there is one. Keys are joined "AB" while they are plain
+# names and "s1.b0-s1.b1" as soon as one is a canonical key. Written here from the grammar alone (not from the producer).
+VREF = re.compile(r'^([a-z][a-z0-9]{0,7})?#(?:([btv])(\d{1,2})|(apex2?))$')
+PLAIN_KEY = re.compile(r'^[A-Z]′?$')
+
+
+def join_keys(keys):
+    keys = list(keys)
+    return ''.join(keys) if all(PLAIN_KEY.fullmatch(k) for k in keys) else '-'.join(keys)
+
+
+def split_edge(edge):
+    """the two keys of a data-edge written by join_keys"""
+    if '-' in edge:
+        a, b = edge.split('-', 1)
+        return a, b
+    parts = re.findall(r'[A-Z]′?', edge)
+    return (parts[0], parts[1]) if len(parts) == 2 else (None, None)
+
+
+def _ring_size(solid):
+    n = len(solid['verts'])
+    return n - 1 if solid['kind'] == 'PYRAMID' else n - 2 if solid['kind'] == 'BIPYRAMID' else n // 2
+
+
+def vertex_slot(solid, i):
+    if solid['kind'] == 'REGULAR_POLYHEDRON': return 'v%d' % i
+    n = _ring_size(solid)
+    if solid['kind'] == 'PYRAMID': return 'b%d' % i if i < n else 'apex'
+    if solid['kind'] == 'BIPYRAMID': return 'b%d' % i if i < n else 'apex' if i == n else 'apex2'
+    return 'b%d' % i if i < n else 't%d' % (i - n)
+
+
+def vertex_keys(solid, i):
+    """the keys a polyhedron vertex answers to: its names, or its canonical key when it has none (a solid with cuts renumbers: names only)"""
+    name = solid['verts'][i][0]
+    if name: return solid['aliases'].get(i, [name])
+    return [] if solid.get('cut') else ['%s.%s' % (solid['id'], vertex_slot(solid, i))]
+
+
+def make_norm(solids, named):
+    """name or reference -> key of its vertex (the name when it has one); ValueError with the plan's error code otherwise"""
+    def norm(x, unknown='SOLID_NAME_UNKNOWN'):
+        if not isinstance(x, str): raise ValueError(unknown)
+        if '#' not in x:
+            if x not in named: raise ValueError(unknown)
+            return x
+        m = VREF.fullmatch(x)
+        if not m: raise ValueError('SOLID_VREF_INVALID:' + x[:16])
+        prefix, ring, index, apex = m.groups()
+        found = []
+        for solid in solids:
+            if solid['cat'] != 'POLY' or solid.get('cut') or (prefix is not None and solid['id'] != prefix): continue
+            total, n, kind = len(solid['verts']), _ring_size(solid), solid['kind']
+            if ring == 'v': i = int(index) if int(index) < total else None
+            elif kind == 'REGULAR_POLYHEDRON': i = None
+            elif apex == 'apex': i = n if kind in ('PYRAMID', 'BIPYRAMID') else None
+            elif apex == 'apex2': i = n + 1 if kind == 'BIPYRAMID' else None
+            elif ring == 'b': i = int(index) if int(index) < n else None
+            else: i = None if kind in ('PYRAMID', 'BIPYRAMID') else (n + int(index) if int(index) < n else None)
+            if i is not None: found.append((solid, i))
+        if len(found) != 1: raise ValueError('SOLID_VREF_UNKNOWN:' + x[:16] if not found else 'SOLID_VREF_AMBIGUOUS:' + x[:16])
+        return vertex_keys(found[0][0], found[0][1])[0]
+    return norm
+
+
 # --- depth test ---------------------------------------------------------------------------------------------------------------------------
 def _winding_inside(poly, q):
     """winding number of a planar polygon (2D) around q: non-zero means inside"""
@@ -327,7 +562,7 @@ def hits_round(solid, P):
     V = VIEW
     r0, r1, h = solid['r0'], solid['r1'], solid['height']
     if solid['cat'] == 'SPHERE':
-        c = (0.0, 0.0, r0 if solid['kind'] == 'SPHERE' else 0.0)
+        c = (0.0, 0.0, solid.get('cz', r0) if solid['kind'] == 'SPHERE' else 0.0)
         d = vsub(P, c)
         b = vdot(d, V)
         cc = vdot(d, d) - r0 * r0
@@ -385,7 +620,7 @@ def _parse_arc(d):
 
 
 def label_number(tex):
-    t = re.sub(r'\\,?\\mathrm\{[a-z]+\}', '', tex or '')
+    t = re.sub(r'\\,?\\mathrm\{[a-z]+\}(\^2)?', '', tex or '')
     t = t.replace('\\,', '').replace(' ', '')
     m = re.fullmatch(r'(\d+(?:\.\d+)?)', t)
     if m: return float(m.group(1))
@@ -468,8 +703,11 @@ def _stroke_ok(el, expect_dashed, errors, ident):
 
 def audit_solids(plan, ctx):
     root, errors = ctx['root'], ctx['errors']
-    solids = [build_solid({**spec, 'id': spec.get('id') or 's%d' % (i + 1)}) for i, spec in enumerate(plan['solids'])]
+    solids = [build_solid(spec) for spec in expanded_solid_specs(plan)]
     ctx['solids'] = solids
+    # nothing is drawn for a solid the plan does not have (a ball that is not in the plan, a second solid that was not asked for)
+    drawn_solids = {e.get('data-solid') for e in root.iter() if e.get('data-solid')}
+    if drawn_solids - {s_['id'] for s_ in solids}: errors.append('SOLID_SOLID_NOT_IN_PLAN:' + ','.join(sorted(drawn_solids - {s_['id'] for s_ in solids}))[:40])
     specs_by_id = {s_['id']: s_ for s_ in solids_with_ids(plan)}
     counted = set()
     declared = float(root.get('data-scale') or 0)
@@ -518,6 +756,8 @@ def audit_solids(plan, ctx):
                 if name:
                     for alias in solid['aliases'].get(i, [name]): named[alias] = (sid, px(p), p)
                     if i in solid['aliases']: ctx['label_text'][name] = ','.join(solid['aliases'][i])
+                else:
+                    for key in vertex_keys(solid, i): named[key] = (sid, px(p), p)
             check_poly_edges(solid, root, px, scale, errors)
             audit_counts(solid, (specs_by_id.get(sid) or {}).get('count') or {}, px, ctx)
             counted.add(sid)
@@ -525,13 +765,15 @@ def audit_solids(plan, ctx):
         else:
             for name, pid, p in solid['points']:
                 if name: named[name] = (sid, px(p), p)
-            check_round(solid, root, px, scale, errors, ctx['segments'], (plan.get('section') if (plan.get('section') or {}).get('kind') == 'LEVEL' and (plan['section'].get('solid') or next((x['id'] for x in solids if x['cat'] == 'REV'), None)) == solid['id'] else None))
+            check_round(solid, root, px, scale, errors, ctx['segments'], (plan.get('section') if (plan.get('section') or {}).get('kind') == 'LEVEL' and (_section_solid(plan, solids) or {}).get('id') == solid['id'] else None))
     for g in ctx['labels']:
         if g.get('data-label-role') in COUNT_ROLES and g.get('data-solid') not in counted: errors.append('SOLID_COUNT_LABEL_UNEXPECTED:' + str(g.get('id')))
     ctx['named'] = named
     ctx['px'] = {sid: frames[sid] for sid in frames}
+    norm = ctx['norm'] = make_norm(solids, named)
     # aux segments, highlights, section
-    declared_pairs = {s_['from'] + s_['to']: (s_['from'], s_['to']) for s_ in plan.get('segments') or []}
+    plan_segments = [(norm(s_['from']), norm(s_['to'])) for s_ in plan.get('segments') or []]
+    declared_pairs = {join_keys(pair): pair for pair in plan_segments}
     for el in root.iter(NS + 'line'):
         if el.get('data-role') == 'segment':
             ident = el.get('data-edge') or ''
@@ -551,22 +793,23 @@ def audit_solids(plan, ctx):
                 _stroke_ok(el, hid, errors, 'segment-' + ident)
             else: _stroke_ok(el, style == 'DASHED', errors, 'segment-' + ident)
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
-    declared_segments = {s['from'] + s['to'] for s in plan.get('segments') or []}
+    declared_segments = {join_keys(pair) for pair in plan_segments}
     drawn_segments = {el.get('data-edge') for el in root.iter(NS + 'line') if el.get('data-role') == 'segment'}
     if declared_segments != drawn_segments: errors.append('SOLID_SEGMENT_SET_MISMATCH')
     all_highlights = plan.get('highlights') or []
-    highlights = [h['polygon'] for h in all_highlights if h.get('polygon') is not None]
+    highlights = [[norm(n) for n in h['polygon']] for h in all_highlights if h.get('polygon') is not None]
     drawn = {el.get('data-polygon'): el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'highlight-face' and el.get('data-polygon') is not None}
-    if sorted(''.join(h) for h in highlights) != sorted(drawn): errors.append('SOLID_HIGHLIGHT_SET_MISMATCH')
+    if sorted(join_keys(h) for h in highlights) != sorted(drawn): errors.append('SOLID_HIGHLIGHT_SET_MISMATCH')
     for entry in all_highlights:
         if entry.get('polygon') is None: continue
-        el = drawn.get(''.join(entry['polygon']))
-        if el is not None and (el.get('data-fill') or 'LIGHT') != (entry.get('fill') or 'LIGHT'): errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + ''.join(entry['polygon']))
+        key = join_keys([norm(n) for n in entry['polygon']])
+        el = drawn.get(key)
+        if el is not None and (el.get('data-fill') or 'LIGHT') != (entry.get('fill') or 'LIGHT'): errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + key)
     for h in highlights:
-        el = drawn.get(''.join(h))
+        el = drawn.get(join_keys(h))
         if el is None: continue
         pts = _points(el.get('points'))
-        if len(pts) != len(h): errors.append('SOLID_HIGHLIGHT_POINTS_MISMATCH:' + ''.join(h)); continue
+        if len(pts) != len(h): errors.append('SOLID_HIGHLIGHT_POINTS_MISMATCH:' + join_keys(h)); continue
         for name, q in zip(h, pts):
             if name not in named or math.hypot(named[name][1][0] - q[0], named[name][1][1] - q[1]) > POS_TOL: errors.append('SOLID_HIGHLIGHT_VERTEX_OFF:' + name)
         # planar in 3D: the named vertices must be coplanar
@@ -588,9 +831,20 @@ def audit_solids(plan, ctx):
             errors.append('SOLID_NEST_AXIS_MISMATCH:' + solid['id'])
         max_inner = solid['r0'] if solid['cat'] == 'SPHERE' else max(solid['r0'], solid['r1'])
         max_host = max(host['r0'], host['r1'])
-        if max_inner > max_host + 1e-6 or solid['height'] > host['height'] + 1e-6:
+        if solid['cat'] == 'SPHERE': too_tall = solid['cz'] - solid['r0'] < -1e-6 or solid['cz'] + solid['r0'] > host['height'] + 1e-6
+        else: too_tall = solid['height'] > host['height'] + 1e-6
+        if max_inner > max_host + 1e-6 or too_tall:
             errors.append('SOLID_NEST_DOES_NOT_FIT:' + solid['id'])
+    # balls in one cylinder do not overlap: their centres are on the axis, so two balls overlap when the centres are nearer than the radii add up
+    for host in solids:
+        guests = [s for s in solids if s.get('inside') == host['id']]
+        if len(guests) > 1 and any(g['cat'] != 'SPHERE' for g in guests): errors.append('SOLID_NEST_MIXED:' + host['id'])
+        for i in range(len(guests)):
+            for j in range(i + 1, len(guests)):
+                a, b = guests[i], guests[j]
+                if a['cat'] == 'SPHERE' and b['cat'] == 'SPHERE' and abs(a['cz'] - b['cz']) < a['r0'] + b['r0'] - 1e-6: errors.append('SOLID_NEST_OVERLAP:%s,%s' % (a['id'], b['id']))
     section = plan.get('section')
+    section_solid = _section_solid(plan, solids)
     sec_els = [el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'section']
     level_els = [el for el in root.iter(NS + 'ellipse') if el.get('data-role') == 'level-fill']
     liquid_els = [el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'liquid-region']
@@ -598,7 +852,7 @@ def audit_solids(plan, ctx):
     leveled = section is not None and section.get('kind') == 'LEVEL'
     if axial != bool(sec_els) or leveled != bool(level_els): errors.append('SOLID_SECTION_SET_MISMATCH')
     if section:
-        solid = next(s for s in solids if s['id'] == (section.get('solid') or next(x['id'] for x in solids if x['cat'] == 'REV')))
+        solid = section_solid
         Tx, Ty = frames[solid['id']]
         z = solid['height']
         if axial and sec_els:
@@ -615,6 +869,10 @@ def audit_solids(plan, ctx):
             else:
                 f = int(m.group(1)) / int(m.group(2))
                 zl, rl = f * z, solid['r0'] + (solid['r1'] - solid['r0']) * f
+                if solid['cat'] == 'SPHERE':
+                    # a ball cut by a horizontal plane: a circle of radius sqrt(R^2 - (z - zc)^2)
+                    zc = solid.get('cz', solid['r0']) if solid['kind'] == 'SPHERE' else 0.0
+                    rl = math.sqrt(max(0.0, solid['r0'] ** 2 - (zl - zc) ** 2))
                 q = project((0.0, 0.0, zl))
                 el = level_els[0]
                 cx, cy, rx, ry = _num(el, 'cx'), _num(el, 'cy'), _num(el, 'rx'), _num(el, 'ry')
@@ -630,15 +888,50 @@ def audit_solids(plan, ctx):
     elif liquid_els:
         errors.append('SOLID_LIQUID_REGION_WITHOUT_SECTION')
     check_body_fill(plan, solids, frames, scale, root, errors)
-    audit_marks(plan, solid_named=named, frames=frames, scale=scale, root=root, errors=errors, px_by_id=ctx.get('px'))
+    audit_marks(plan, solid_named=named, frames=frames, scale=scale, root=root, errors=errors, px_by_id=ctx.get('px'), norm=norm)
     for el in root.iter(NS + 'line'):
         if el.get('data-role') == 'dim-line':
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
     check_dim_lines(plan, ctx)
+    check_axes_and_text_labels(plan, ctx)
+    check_slant_marks(plan, ctx)
+
+
+MAX_BALLS = 6
+
+
+def expanded_solid_specs(plan):
+    """the plan's solids with an id each (by their place in the plan), the balls of a cylinder (stack:{count,radius} or inside:[{kind,radius,centerZ?}]) turned into nested spheres s1b1, s1b2, ...
+    (a ball without centerZ rests on the ball before it, the first on the bottom). Written here from the grammar alone."""
+    out = []
+    for i, spec in enumerate(plan['solids']):
+        ident = spec.get('id') or 's%d' % (i + 1)
+        stack, inside = spec.get('stack'), spec.get('inside')
+        if stack is None and not isinstance(inside, list):
+            out.append({**spec, 'id': ident})
+            continue
+        if spec.get('kind') != 'CYLINDER' or (stack is not None and isinstance(inside, list)): raise ValueError('SOLID_BALLS_INVALID')
+        host = {k: v for k, v in spec.items() if k not in ('stack', 'inside')}
+        out.append({**host, 'id': ident})
+        if stack is not None:
+            count = stack.get('count')
+            if not isinstance(count, int) or not 2 <= count <= MAX_BALLS: raise ValueError('SOLID_BALLS_INVALID')
+            balls = [{'kind': 'SPHERE', 'radius': stack.get('radius')} for _ in range(count)]
+        else:
+            if not 1 <= len(inside) <= MAX_BALLS: raise ValueError('SOLID_BALLS_INVALID')
+            balls = inside
+        top = 0.0
+        for k, ball in enumerate(balls):
+            if ball.get('kind') != 'SPHERE': raise ValueError('SOLID_BALLS_INVALID')
+            radius = float(ball['radius'])
+            centre = float(ball['centerZ']) if ball.get('centerZ') is not None else round(top + radius, 6)
+            out.append({'kind': 'SPHERE', 'radius': radius, 'centerZ': centre, 'inside': ident, 'id': '%sb%d' % (ident, k + 1)})
+            top = centre + radius
+    return out
 
 
 def solids_with_ids(plan):
-    return [{**spec, 'id': spec.get('id') or 's%d' % (i + 1)} for i, spec in enumerate(plan['solids'])]
+    return expanded_solid_specs(plan)
 
 
 # --- counting numbers: 1, 2, ... beside the vertices and circled numbers beside the edge midpoints -------------------------------------------------------
@@ -651,11 +944,13 @@ CIRCLED = [chr(0x2460 + k) for k in range(20)]
 def count_order(solid):
     """the edges (vertex index pairs) in counting order: around the base ring (edge i joins vertices i and i+1, the closing edge last), then the side
     edges by their base vertex, then around the top ring"""
-    n = len(solid['verts']) - 1 if solid['kind'] == 'PYRAMID' else len(solid['verts']) // 2
+    if solid['kind'] == 'REGULAR_POLYHEDRON': return poly_edges(solid)
+    n = _ring_size(solid)
 
     def slot(e):
         a, b = e
         if a < n and b < n: return (0, a if b == a + 1 else b)
+        if solid['kind'] == 'BIPYRAMID': return (1, a) if b == n else (2, a)
         if a >= n and b >= n: return (2, a - n if b == a + 1 else b - n)
         return (1, a)
     return sorted(poly_edges(solid), key=slot)
@@ -699,11 +994,16 @@ def audit_counts(solid, flags, px, ctx):
 
 
 HIGHLIGHT_FILLS = ('LIGHT', 'MEDIUM', 'WARM', 'GREEN', 'ROSE', 'VIOLET')
+SYMBOLIC = re.compile(r'^[A-Za-z0-9_\\{}^+\-=.() ]{1,24}$')   # a plain-ASCII symbol (such as (3)) is TeX, whatever FACE_SYMBOL says
+# a face symbol of a net (net.faceLabels text): a circled number, a circled Hangul letter, one Hangul syllable or jamo, or a number / syllable / jamo in parentheses
+FACE_SYMBOL = re.compile(r'^(?:[\u2460-\u2473\u3260-\u327B\u3131-\u314E\uac00-\ud7a3]|\((?:[1-9]\d?|[\u3131-\u314E\uac00-\ud7a3])\))$')
 
 
 def face_names(solid):
     """the names of a polyhedron's faces, in the order of its face list: bottom, (top,) side0, side1, ... (side i stands on the i-th edge of the base)"""
-    n = len(solid['verts']) - 1 if solid['kind'] == 'PYRAMID' else len(solid['verts']) // 2
+    if solid['kind'] == 'REGULAR_POLYHEDRON': return ['f%d' % i for i in range(len(solid['faces']))]
+    n = _ring_size(solid)
+    if solid['kind'] == 'BIPYRAMID': return ['top%d' % i for i in range(n)] + ['bottom%d' % i for i in range(n)]
     return (['bottom'] if solid['kind'] == 'PYRAMID' else ['bottom', 'top']) + ['side%d' % i for i in range(n)]
 
 
@@ -811,7 +1111,7 @@ def _round_frame(solid, root, errors):
         xs = [v for a in outline for v in (a[0], a[6])]
         S = (max(xs) - min(xs)) / (2 * solid['r0'])
         cx, cy = (max(xs) + min(xs)) / 2, outline[0][1]
-        q = project((0.0, 0.0, solid['r0'] if solid['kind'] == 'SPHERE' else 0.0))
+        q = project((0.0, 0.0, solid.get('cz', solid['r0']) if solid['kind'] == 'SPHERE' else 0.0))
         return S, (cx - S * q[0], cy + S * q[1])
     places = {'bottom': (0.0, solid['r0']), 'top': (solid['height'], solid['r1']), 'equator': (solid['r0'], solid['r0'])}
     fronts = []
@@ -851,17 +1151,20 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
         m = re.fullmatch(r'(\d+)/(\d+)', section.get('at') or '')
         f = int(m.group(1)) / int(m.group(2))
         level = (f * h, r0 + (r1 - r0) * f)
+        if solid['cat'] == 'SPHERE':
+            zc = solid.get('cz', r0) if solid['kind'] == 'SPHERE' else 0.0
+            level = (f * h, math.sqrt(max(0.0, r0 * r0 - (f * h - zc) ** 2)))
 
     def circle(name):
         if name == 'level': return px((0.0, 0.0, level[0])), level[1]
         if name == 'bottom': return px((0.0, 0.0, 0.0)), r0
         if name == 'top': return px((0.0, 0.0, h)), r1
-        return px((0.0, 0.0, r0)), r0   # sphere equator
+        return px((0.0, 0.0, solid.get('cz', r0))), r0   # sphere equator
     pts_by_circle = {}
     for e, (x0, y0, rx, ry, large, sweep, x1, y1) in arcs:
         role = e.get('data-role')
         if role == 'sphere-outline':
-            c = px((0.0, 0.0, r0 if solid['kind'] == 'SPHERE' else 0.0))
+            c = px((0.0, 0.0, solid.get('cz', r0) if solid['kind'] == 'SPHERE' else 0.0))
             if abs(rx - scale * r0) > POS_TOL or abs(ry - scale * r0) > POS_TOL: errors.append('SOLID_SPHERE_OUTLINE_RADIUS:' + sid)
             for (x, y) in ((x0, y0), (x1, y1)):
                 if abs(math.hypot(x - c[0], y - c[1]) - scale * r0) > POS_TOL: errors.append('SOLID_SPHERE_OUTLINE_OFF:' + sid)
@@ -895,7 +1198,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
             pts_by_circle.setdefault(cname, []).append(((x0, y0), (x1, y1)))
             continue
         votes = 0
-        z = h if cname == 'top' else (level[0] if cname == 'level' else (r0 if cname == 'equator' else 0.0))
+        z = h if cname == 'top' else (level[0] if cname == 'level' else (solid.get('cz', r0) if cname == 'equator' else 0.0))
         for k in range(7):
             u = u0 + span * (k + 0.5) / 7
             # screen param u -> world circle point: sx = r cos u, sy = r sin(pitch) sin u + z cos(pitch); the circle point with that screen image
@@ -907,6 +1210,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
         pts_by_circle.setdefault(cname, []).append(((x0, y0), (x1, y1)))
     if solid['cat'] == 'SPHERE':
         if solid['kind'] == 'HEMISPHERE' and not any(e.get('data-circle') == 'bottom' for e, _ in arcs): errors.append('SOLID_BASE_ARC_MISSING:' + sid)
+        if level is not None and sorted(e.get('data-half') for e, _ in arcs if e.get('data-circle') == 'level') != ['BACK', 'FRONT']: errors.append('SOLID_LEVEL_ARC_MISSING:' + sid)
         return
     # silhouette lines: tangent to the circles they end on, through the (virtual) apex of the cone
     family = {name for name in ('bottom', 'top') if circle(name)[1] > 0}
@@ -1064,17 +1368,18 @@ def _parallel(u, v):
     return abs(u[0] * v[1] - u[1] * v[0]) <= 1e-6 * max(1.0, math.hypot(*u) * math.hypot(*v))
 
 
-def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id):
+def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id, norm=None):
     marks = plan.get('marks') or {}
     named = solid_named or {}
-    right = {(m.get('id') or 'ra%d' % (k + 1)): m for k, m in enumerate(marks.get('rightAngles') or [])}
+    norm = norm or (lambda x: x)
+    right = {(m.get('id') or 'ra%d' % (k + 1)): {**m, 'at': norm(m['at']), 'refs': [norm(r) for r in m['refs']]} for k, m in enumerate(marks.get('rightAngles') or [])}
     equal = {}
     for k, g in enumerate(marks.get('equalLengths') or []):
         segs = []
         for pair in g.get('segments') or []:
-            segs.append(list(pair) if isinstance(pair, (list, tuple)) else [pair[0], pair[1]])
+            segs.append([norm(x) for x in (list(pair) if isinstance(pair, (list, tuple)) else [pair[0], pair[1]])])
         equal[g.get('id') or 'eq%d' % (k + 1)] = {**g, 'segments': segs}
-    angles = {(m.get('id') or 'an%d' % (k + 1)): m for k, m in enumerate(marks.get('angles') or [])}
+    angles = {(m.get('id') or 'an%d' % (k + 1)): {**m, 'refs': [norm(r) for r in m['refs']]} for k, m in enumerate(marks.get('angles') or [])}
     drawn_right, drawn_equal, drawn_angles = set(), {}, {}
     for el in root.iter(NS + 'polyline'):
         role = el.get('data-role')
@@ -1086,7 +1391,7 @@ def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id):
                 errors.append('SOLID_RIGHT_ANGLE_MARK_UNKNOWN:' + str(mid))
                 continue
             m = right[mid]
-            if el.get('data-at') != m['at'] or el.get('data-refs') != ''.join(m['refs']):
+            if el.get('data-at') != m['at'] or el.get('data-refs') != join_keys(m['refs']):
                 errors.append('SOLID_RIGHT_ANGLE_MARK_OWNER:' + mid)
                 continue
             V, A, B = named[m['at']][2], named[m['refs'][0]][2], named[m['refs'][1]][2]
@@ -1178,7 +1483,7 @@ def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id):
             errors.append('SOLID_EQUAL_MARK_UNKNOWN:' + str(mid))
             continue
         g = equal[mid]
-        a, b = edge[0], edge[1]
+        a, b = split_edge(edge)
         if a not in named or b not in named or [a, b] not in g['segments'] and [b, a] not in g['segments']:
             errors.append('SOLID_EQUAL_MARK_SEGMENT:' + mid)
             continue
@@ -1211,8 +1516,18 @@ def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id):
             errors.append('SOLID_EQUAL_MARK_COUNT:' + mid)
     for mid, g in equal.items():
         for a, b in g['segments']:
-            if (mid, a + b) not in groups and (mid, b + a) not in groups:
+            if (mid, join_keys([a, b])) not in groups and (mid, join_keys([b, a])) not in groups:
                 errors.append('SOLID_EQUAL_MARK_MISSING:%s:%s%s' % (mid, a, b))
+
+
+def _section_solid(plan, solids):
+    """the solid a section cuts: the one named, else the first rotation solid, else (a level section only) the first whole sphere or hemisphere"""
+    section = plan.get('section') or {}
+    if not section: return None
+    if section.get('solid'): return next((s for s in solids if s['id'] == section['solid']), None)
+    rev = next((s for s in solids if s['cat'] == 'REV'), None)
+    if rev is not None: return rev
+    return next((s for s in solids if s['cat'] == 'SPHERE' and not s.get('cut') and not s.get('inside')), None)
 
 
 def check_dim_lines(plan, ctx):
@@ -1268,6 +1583,228 @@ def check_dim_lines(plan, ctx):
         got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
         if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)):
             ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':' + str(kind))
+
+
+# --- the axis of a rotation solid and the words written on the figure (labels:[{text,at}], axis:{label}) ----------------------------------------------------
+# The axis is a dash-dot line along the solid's own axis, AXIS_EXT of the height beyond the bottom and beyond the top. A text label stands on one target: a vertex
+# (open side), the axis / a drawn edge / the slant of a cone (beside the segment, or at the end of a leader that reaches its middle) or a visible face (wholly inside).
+# Written here from the plan and the final SVG alone: the targets are re-derived from the plan, never read back from the SVG's own attributes.
+AXIS_EXT = 0.14
+AXIS_DASH = '10 3 2 3'
+TEXT_LABEL = re.compile(r'^[가-힣A-Za-z0-9 ·()]{1,12}$')
+TEXT_NEAR_VERTEX = 34.0   # px from the vertex to the nearest edge of its word's box
+TEXT_NEAR_SEGMENT = 34.0  # px from the segment to the nearest edge of its word's box
+
+
+def planned_text_labels(plan, solids, norm):
+    """([(id, kind, text, target, extra)], the ids of the solids whose axis is drawn): the axis words of the solids first, then labels:[...], numbered tl1, tl2, ..."""
+    out, axes = [], set()
+    rev = [x for x in solids if x['cat'] == 'REV']
+    polys = [x for x in solids if x['cat'] == 'POLY']
+    for solid in solids:
+        if solid.get('axis') is not None:
+            axes.add(solid['id'])
+            if solid['axis'].get('label') is not None: out.append(('AXIS', solid['axis']['label'], solid['id'], {'solid': solid['id']}))
+
+    def pick(pool, sid, code):
+        found = next((x for x in pool if x['id'] == sid), None) if sid is not None else (pool[0] if len(pool) == 1 else None)
+        if found is None: raise ValueError(code)
+        return found
+    for entry in plan.get('labels') or []:
+        text, at = entry['text'], entry['at']
+        if not isinstance(text, str) or not TEXT_LABEL.fullmatch(text) or text.strip() != text: raise ValueError('SOLID_LABEL_TEXT_INVALID')
+        if isinstance(at, str):
+            key = norm(at, 'SOLID_LABEL_AT_UNKNOWN:' + at[:16])
+            out.append(('VERTEX', text, key, {'key': key}))
+        elif at.get('edge') is not None:
+            pair = at['edge']
+            a, b = norm(pair[0], 'SOLID_LABEL_AT_UNKNOWN'), norm(pair[1], 'SOLID_LABEL_AT_UNKNOWN')
+            out.append(('EDGE', text, join_keys([a, b]), {'a': a, 'b': b}))
+        elif at.get('axis') is not None:
+            owner = pick(rev, at.get('solid'), 'SOLID_LABEL_AXIS_UNSUPPORTED')
+            axes.add(owner['id'])
+            out.append(('AXIS', text, owner['id'], {'solid': owner['id']}))
+        elif at.get('slant') is not None:
+            owner = pick([x for x in rev if x['kind'] in ('CONE', 'CONE_FRUSTUM')], at.get('solid'), 'SOLID_LABEL_SLANT_UNSUPPORTED')
+            out.append(('SLANT', text, owner['id'], {'solid': owner['id']}))
+        elif at.get('face') is not None:
+            owner = pick(polys, at.get('solid'), 'SOLID_LABEL_FACE_UNSUPPORTED')
+            out.append(('FACE', text, owner['id'] + '|' + at['face'], {'solid': owner['id'], 'face': at['face']}))
+        else: raise ValueError('SOLID_LABEL_AT_INVALID')
+    return [('text-tl%d' % (k + 1),) + item for k, item in enumerate(out)], axes
+
+
+def _face_polygon_px(solid, face, frame, scale):
+    """the outline of a face of a polyhedron in px and whether it faces the viewer (outward normal, taken away from the solid's middle, against the viewing direction)"""
+    names = face_names(solid)
+    if face not in names: raise ValueError('SOLID_LABEL_FACE_UNKNOWN')
+    cycle = solid['faces'][names.index(face)]
+    P = [solid['verts'][i][1] for i in cycle]
+    n = (0.0, 0.0, 0.0)
+    for i in range(len(P)): n = vadd(n, vcross(P[i], P[(i + 1) % len(P)]))
+    n = vunit(n)
+    middle = vmul(tuple(sum(v[1][k] for v in solid['verts']) for k in range(3)), 1.0 / len(solid['verts']))
+    centre = vmul(tuple(sum(q[k] for q in P) for k in range(3)), 1.0 / len(P))
+    if vdot(n, vsub(centre, middle)) < 0: n = vmul(n, -1.0)
+    Tx, Ty = frame
+    pts = []
+    for q in P:
+        pr = project(q)
+        pts.append((Tx + scale * pr[0], Ty - scale * pr[1]))
+    return pts, vdot(n, VIEW) > 0.02
+
+
+def check_axes_and_text_labels(plan, ctx):
+    errors, root, boxes = ctx['errors'], ctx['root'], ctx['boxes']
+    frames, scale = ctx.get('px') or {}, ctx.get('scale')
+    solids = ctx.get('solids') or []
+    by_id = {x['id']: x for x in solids}
+    norm = ctx.get('norm') or (lambda x, unknown='SOLID_NAME_UNKNOWN': x)
+    try: planned, axes = planned_text_labels(plan, solids, norm)
+    except (ValueError, KeyError, TypeError, IndexError) as error:
+        errors.append('SOLID_TEXT_LABEL_PLAN_UNRESOLVED:' + str(error)[:60])
+        return
+    if scale is None: return
+    # axis lines: one per solid whose axis is drawn, on the solid's own axis, dash-dot
+    drawn_axis = {}
+    for el in root.iter(NS + 'line'):
+        if el.get('data-role') == 'axis-line': drawn_axis.setdefault(el.get('data-solid'), []).append(el)
+    if set(drawn_axis) != axes or any(len(v) != 1 for v in drawn_axis.values()): errors.append('SOLID_AXIS_SET_MISMATCH')
+    axis_px = {}
+    cos_p = math.cos(PITCH)
+    for sid in axes:
+        solid = by_id.get(sid)
+        if solid is None or solid['cat'] != 'REV' or sid not in frames:
+            errors.append('SOLID_AXIS_SOLID_UNKNOWN:' + str(sid))
+            continue
+        Tx, Ty = frames[sid]
+        ext = AXIS_EXT * solid['height']
+        want = ((Tx, Ty - scale * (-ext) * cos_p), (Tx, Ty - scale * (solid['height'] + ext) * cos_p))
+        axis_px[sid] = want
+        els = drawn_axis.get(sid)
+        if not els: continue
+        got = ((_num(els[0], 'x1'), _num(els[0], 'y1')), (_num(els[0], 'x2'), _num(els[0], 'y2')))
+        if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): errors.append('SOLID_AXIS_LINE_MISMATCH:' + sid)
+        if els[0].get('stroke-dasharray') != AXIS_DASH: errors.append('SOLID_AXIS_NOT_DASH_DOT:' + sid)
+    drawn = {g.get('id'): g for g in ctx['labels'] if g.get('data-label-role') == 'text-label'}
+    if sorted(drawn) != sorted(item[0] for item in planned): errors.append('SOLID_TEXT_LABEL_SET_MISMATCH')
+    named = ctx.get('named') or {}
+    for lid, kind, text, target, extra in planned:
+        g = drawn.get(lid)
+        if g is None: continue
+        if g.get('data-text') != text or g.get('data-value') != text: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)
+        if g.get('data-at-kind') != kind or g.get('data-target') != target: errors.append('SOLID_TEXT_LABEL_TARGET_MISMATCH:' + lid)
+        box = boxes.get(lid)
+        if box is None: continue
+        if kind == 'VERTEX':
+            if target not in named:
+                errors.append('SOLID_TEXT_LABEL_TARGET_UNKNOWN:' + lid)
+                continue
+            anchor = named[target][1]
+            leader = next((e for e in root.iter(NS + 'line') if e.get('data-role') == 'leader' and e.get('data-label') == lid), None)
+            if (g.get('data-leader') == '1') != (leader is not None): errors.append('SOLID_LEADER_MISMATCH:' + lid)
+            if leader is not None:
+                p0, p1 = (_num(leader, 'x1'), _num(leader, 'y1')), (_num(leader, 'x2'), _num(leader, 'y2'))
+                if math.hypot(p1[0] - anchor[0], p1[1] - anchor[1]) > 1.5 or _box_seg_dist(box, p0, p0) > 2.5: errors.append('SOLID_LEADER_NOT_ATTACHED:' + lid)
+                continue
+            d = _box_seg_dist(box, anchor, anchor)
+            if d < 1.5: errors.append('SOLID_TEXT_LABEL_ON_TARGET:' + lid)
+            if d > TEXT_NEAR_VERTEX: errors.append('SOLID_TEXT_LABEL_FAR_FROM_TARGET:' + lid)
+            continue
+        if kind == 'FACE':
+            solid = by_id.get(extra['solid'])
+            if solid is None or extra['solid'] not in frames:
+                errors.append('SOLID_TEXT_LABEL_TARGET_UNKNOWN:' + lid)
+                continue
+            try: pts, front = _face_polygon_px(solid, extra['face'], frames[extra['solid']], scale)
+            except ValueError as error:
+                errors.append(str(error) + ':' + lid)
+                continue
+            if not front: errors.append('SOLID_TEXT_LABEL_FACE_HIDDEN:' + lid)
+            x, y, w, h = box
+            if not all(_inside_region(('poly', pts), c, 1.0) for c in ((x, y), (x + w, y), (x, y + h), (x + w, y + h), (x + w / 2, y + h / 2))): errors.append('SOLID_TEXT_LABEL_OUTSIDE_FACE:' + lid)
+            continue
+        if kind == 'AXIS': seg = axis_px.get(extra['solid'])
+        elif kind == 'EDGE': seg = (named[extra['a']][1], named[extra['b']][1]) if extra['a'] in named and extra['b'] in named else None
+        else:
+            sil = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'silhouette' and e.get('data-side') == 'RIGHT' and e.get('data-solid') == extra['solid']]
+            seg = ((_num(sil[0], 'x1'), _num(sil[0], 'y1')), (_num(sil[0], 'x2'), _num(sil[0], 'y2'))) if sil else None
+        if seg is None:
+            errors.append('SOLID_TEXT_LABEL_TARGET_UNKNOWN:' + lid)
+            continue
+        leader = next((e for e in root.iter(NS + 'line') if e.get('data-role') == 'leader' and e.get('data-label') == lid), None)
+        if (g.get('data-leader') == '1') != (leader is not None): errors.append('SOLID_LEADER_MISMATCH:' + lid)
+        if leader is not None:
+            p0, p1 = (_num(leader, 'x1'), _num(leader, 'y1')), (_num(leader, 'x2'), _num(leader, 'y2'))
+            if _seg_dist(p1, seg[0], seg[1]) > 1.5 or _box_seg_dist(box, p0, p0) > 2.5: errors.append('SOLID_LEADER_NOT_ATTACHED:' + lid)
+            mid = ((seg[0][0] + seg[1][0]) / 2, (seg[0][1] + seg[1][1]) / 2)
+            if _seg_dist(mid, p1, p1) > 1.5: errors.append('SOLID_LEADER_NOT_AT_MIDDLE:' + lid)
+        else:
+            dist = _box_seg_dist(box, seg[0], seg[1])
+            if dist > TEXT_NEAR_SEGMENT: errors.append('SOLID_TEXT_LABEL_FAR_FROM_TARGET:' + lid)
+            if dist < 1.0: errors.append('SOLID_TEXT_LABEL_ON_TARGET:' + lid)
+
+
+# --- equal slants of a cone (marks.equalSlant): the same ticks on the left and right silhouette ------------------------------------------------------------
+SLANT_TICK = 11.0   # px: a tick is this long, perpendicular to the slant, 5 px apart when there are several, centred on the slant's middle
+
+
+def planned_slant_marks(plan, solids):
+    """[(mark id, solid id, count)]: equalSlant is true, one {solid?,count?} or a list of those; a group with no solid is the only cone or cone frustum"""
+    raw = (plan.get('marks') or {}).get('equalSlant')
+    if raw is None: return []
+    items = [{}] if raw is True else raw if isinstance(raw, list) else [raw]
+    cones = [x for x in solids if x['kind'] in ('CONE', 'CONE_FRUSTUM')]
+    out = []
+    for k, g in enumerate(items):
+        owner = next((x for x in cones if x['id'] == g.get('solid')), None) if g.get('solid') is not None else (cones[0] if len(cones) == 1 else None)
+        if owner is None: raise ValueError('SOLID_MARK_SLANT_UNSUPPORTED')
+        out.append((g.get('id') or 'es%d' % (k + 1), owner['id'], g.get('count', 1)))
+    return out
+
+
+def check_slant_marks(plan, ctx):
+    errors, root = ctx['errors'], ctx['root']
+    try: planned = planned_slant_marks(plan, ctx.get('solids') or [])
+    except (ValueError, KeyError, TypeError, AttributeError) as error:
+        errors.append('SOLID_SLANT_MARK_PLAN_UNRESOLVED:' + str(error)[:60])
+        return
+    ticks = {}
+    for el in root.iter(NS + 'line'):
+        if el.get('data-role') == 'slant-mark': ticks.setdefault((el.get('data-mark'), el.get('data-solid'), el.get('data-side')), []).append(el)
+    want_keys = {(mid, sid, side) for mid, sid, _ in planned for side in ('LEFT', 'RIGHT')}
+    if set(ticks) != want_keys: errors.append('SOLID_SLANT_MARK_SET_MISMATCH')
+    for mid, sid, count in planned:
+        sils = {}
+        for side in ('LEFT', 'RIGHT'):
+            sil = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'silhouette' and e.get('data-solid') == sid and e.get('data-side') == side]
+            if len(sil) != 1:
+                errors.append('SOLID_SLANT_MARK_SILHOUETTE_MISSING:%s:%s' % (sid, side))
+                continue
+            sils[side] = ((_num(sil[0], 'x1'), _num(sil[0], 'y1')), (_num(sil[0], 'x2'), _num(sil[0], 'y2')))
+        if len(sils) == 2:
+            lengths = [math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in sils.values()]
+            # the two slants of a cone of revolution are as long as each other: read from the drawn silhouette lines
+            if abs(lengths[0] - lengths[1]) > 2 * POS_TOL: errors.append('SOLID_SLANT_MARK_UNEQUAL:%s:%.2f:%.2f' % (sid, lengths[0], lengths[1]))
+        for side, (a, b) in sils.items():
+            els = ticks.get((mid, sid, side), [])
+            if sorted(int(e.get('data-mark-index') or 0) for e in els) != list(range(1, count + 1)) or any(int(e.get('data-mark-count') or 0) != count for e in els):
+                errors.append('SOLID_SLANT_MARK_COUNT:%s:%s' % (mid, side))
+                continue
+            dx, dy = b[0] - a[0], b[1] - a[1]
+            L = math.hypot(dx, dy)
+            ux, uy = dx / L, dy / L
+            mx, my = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
+            for el in els:
+                i = int(el.get('data-mark-index'))
+                p, q = (_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))
+                tx, ty = p[0] - q[0], p[1] - q[1]
+                if abs(tx * ux + ty * uy) > 1e-3 * max(1.0, math.hypot(tx, ty)): errors.append('SOLID_SLANT_MARK_NOT_PERPENDICULAR:%s:%s' % (mid, side))
+                if abs(math.hypot(tx, ty) - SLANT_TICK) > POS_TOL: errors.append('SOLID_SLANT_MARK_SIZE:%s:%s' % (mid, side))
+                shift = (i - 1 - (count - 1) / 2) * 5.0   # i counts from 1
+                want = (mx + ux * shift, my + uy * shift)
+                c = ((p[0] + q[0]) / 2, (p[1] + q[1]) / 2)
+                if math.hypot(c[0] - want[0], c[1] - want[1]) > POS_TOL: errors.append('SOLID_SLANT_MARK_NOT_AT_MIDDLE:%s:%s' % (mid, side))
 
 
 # --- a sphere cut by planes through its centre (cut:{kind,facing?}) -----------------------------------------------------------------------------
@@ -1699,11 +2236,14 @@ def audit_labels(plan, ctx):
             # a vertex with several names ("M,A,I") is one wide label: its centre is half its width farther out; a single name keeps the 48 px bound
             far = 48 + (box[2] / 2 if ',' in (value or '') else 0)
             if math.hypot(cx - anchor[0], cy - anchor[1]) > far: errors.append('SOLID_NAME_FAR_FROM_VERTEX:' + lid)
+        elif role == 'face-label':
+            check_face_label(g, box, ctx)
         elif role == 'dim':
             dim = g.get('data-dim')
             seen_dims.add(dim)
             if dim not in expected_dims: errors.append('SOLID_DIM_UNKNOWN:' + str(dim))
             else:
+                if dim in (ctx.get('net_dim_words') or {}) and (g.get('data-text') != ctx['net_dim_words'][dim] or g.get('data-numeric') != '0'): errors.append('SOLID_DIM_WORD_MISMATCH:' + dim)
                 want, seg, symbolic = expected_dims[dim]
                 tex = g.get('data-tex') or ''
                 number = label_number(tex)
@@ -1725,10 +2265,51 @@ def audit_labels(plan, ctx):
                     if dist < 1.0 and not g.get('data-segment', '').startswith('net-part:angle'): errors.append('SOLID_DIM_ON_SEGMENT:' + dim)
     for dim in expected_dims:
         if dim not in seen_dims: errors.append('SOLID_DIM_LABEL_MISSING:' + dim)
+    drawn_face_labels = sorted(str(g.get('data-face-of')) for g in ctx['labels'] if g.get('data-label-role') == 'face-label')
+    if drawn_face_labels != sorted(ctx.get('face_label_plan') or {}): errors.append('SOLID_FACE_LABEL_SET_MISMATCH')
     plan_names = ctx.get('expected_name_labels')
     if plan_names is not None:
         got = sorted(g.get('id') for g in ctx['labels'] if g.get('data-label-role') == 'vertex-name')
         if got != sorted(plan_names): errors.append('SOLID_NAME_LABEL_SET_MISMATCH')
+
+
+def _inside_region(region, q, margin=0.0):
+    """q lies inside a region: ('poly', points) or ('circle', cx, cy, r), at least `margin` px from its outline"""
+    if region[0] == 'circle':
+        return math.hypot(q[0] - region[1], q[1] - region[2]) <= region[3] - margin
+    pts = region[1]
+    return _winding_inside(pts, q) and min(_seg_dist(q, pts[i], pts[(i + 1) % len(pts)]) for i in range(len(pts))) >= margin
+
+
+def check_face_label(g, box, ctx):
+    """net.faceLabels: the label of a face writes that face's area (a number is checked against the area worked out from the plan, a symbol is not) and lies wholly inside the face"""
+    errors = ctx['errors']
+    fid = g.get('data-face-of')
+    entry = (ctx.get('face_label_plan') or {}).get(fid)
+    lid = str(g.get('id'))
+    if entry is None or g.get('id') != 'face-label-%s' % fid:
+        errors.append('SOLID_FACE_LABEL_UNKNOWN:' + lid)
+        return
+    want = (ctx.get('face_areas') or {}).get(fid)
+    tex = g.get('data-tex') or ''
+    number = label_number(tex)
+    symbolic = entry.get('text') is not None and label_number(entry['text']) is None
+    if want is None:
+        errors.append('SOLID_FACE_LABEL_UNKNOWN:' + lid)
+        return
+    if isinstance(entry.get('text'), str) and not SYMBOLIC.fullmatch(entry['text']) and FACE_SYMBOL.fullmatch(entry['text']):
+        # a face symbol (a circled number, a Hangul letter, (1)): plain text that is no area, so only the characters and the "not numeric" mark are read back
+        if g.get('data-text') != entry['text'] or g.get('data-numeric') != '0' or g.get('data-tex') is not None: errors.append('SOLID_FACE_LABEL_VALUE_MISMATCH:%s:%s' % (fid, g.get('data-text')))
+    elif symbolic:
+        if number is not None: errors.append('SOLID_FACE_LABEL_VALUE_MISMATCH:%s:%s' % (fid, tex))
+    else:
+        if g.get('data-numeric') != '1' or number is None: errors.append('SOLID_FACE_LABEL_NOT_NUMERIC:' + str(fid))
+        elif abs(number - want) > 1e-6 * max(1.0, want): errors.append('SOLID_FACE_LABEL_VALUE_MISMATCH:%s:%s' % (fid, tex))
+        if ctx.get('unit') and number is not None and '\\mathrm{%s}^2' % ctx['unit'] not in tex: errors.append('SOLID_FACE_LABEL_UNIT_MISSING:' + str(fid))
+    region = (ctx.get('face_regions') or {}).get(fid)
+    if region is None or box is None: return
+    x, y, w, h = box
+    if not all(_inside_region(region, c, 1.0) for c in ((x, y), (x + w, y), (x, y + h), (x + w, y + h), (x + w / 2, y + h / 2))): errors.append('SOLID_FACE_LABEL_OUTSIDE_FACE:' + str(fid))
 
 
 def expected_dim_values(plan, ctx):
@@ -1746,7 +2327,8 @@ def expected_dim_values(plan, ctx):
         try:
             if d.get('edge') is not None or d.get('from') is not None:
                 a, b = (d['edge'][0], d['edge'][1]) if d.get('edge') is not None else (d['from'], d['to'])
-                A, B = named[a], named[b]
+                norm = ctx.get('norm') or (lambda x: x)
+                A, B = named[norm(a)], named[norm(b)]
                 out[ident] = (vlen(vsub(A[2], B[2])), (A[1], B[1]), symbolic)
             else:
                 solid = None
@@ -1776,7 +2358,7 @@ def expected_dim_values(plan, ctx):
                     out[ident] = (solid['height'] * (1 - f) if d.get('level') == 'top' else solid['height'] * f, None, symbolic)
                 elif d.get('height') is not None: out[ident] = (solid['height'], None, symbolic)
                 else: out[ident] = (math.hypot(solid['r1'] - solid['r0'], solid['height']), None, symbolic)
-        except (KeyError, TypeError):
+        except (KeyError, TypeError, ValueError):
             ctx['errors'].append('SOLID_DIM_PLAN_UNRESOLVED:' + ident)
     # the segments of radius / height / slant dimensions come from the drawn dim-lines (data-dim) or the silhouette; resolved in px by the dim line
     for e in ctx['root'].iter(NS + 'line'):
@@ -1854,6 +2436,12 @@ def audit_cylinder_net(plan, ctx, declared):
     if cy_b < max(ys) or cy_t > min(ys): errors.append('SOLID_NET_CIRCLE_ON_WRONG_SIDE')
     table = {'rect-width': (2 * math.pi * r, ((min(xs), min(ys)), (max(xs), min(ys)))), 'rect-height': (h, ((max(xs), min(ys)), (max(xs), max(ys)))),
              'radius-top': (r, None), 'radius-bottom': (r, None)}
+    check_excluded_circles(net, circles, ['bottom', 'top'], errors)
+    ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
+    ctx['face_areas'] = {'rect': 2 * math.pi * r * h, 'bottom': math.pi * r * r, 'top': math.pi * r * r}
+    ctx['face_regions'] = {'rect': ('poly', [(min(xs), min(ys)), (max(xs), min(ys)), (max(xs), max(ys)), (min(xs), max(ys))]),
+                           'bottom': ('circle', _num(circles['bottom'], 'cx'), _num(circles['bottom'], 'cy'), _num(circles['bottom'], 'r')),
+                           'top': ('circle', _num(circles['top'], 'cx'), _num(circles['top'], 'cy'), _num(circles['top'], 'r'))}
     ctx['net_dims'] = _dim_defs(plan, ctx, table)
     _fill_dim_lines(ctx)
     ctx['segments'] += [((min(xs), min(ys)), (max(xs), min(ys))), ((min(xs), max(ys)), (max(xs), max(ys)))]
@@ -1894,17 +2482,50 @@ def audit_cone_net(plan, ctx, declared):
     axis = (mid[0] / ml, mid[1] / ml) if ml > 1e-6 else (0.0, 1.0)
     if want > 180: axis = (-axis[0], -axis[1])
     if abs(math.hypot(cx - ax, cy - ay) - (R1 + cr)) > POS_TOL * 1.5 or abs((cx - ax) * axis[1] - (cy - ay) * axis[0]) > POS_TOL * 1.5: errors.append('SOLID_NET_CIRCLE_NOT_TANGENT:base')
+    check_excluded_circles(net, {'base': base}, ['base'], errors)
+    ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
+    ctx['face_areas'] = {'sector': math.pi * r * l, 'base': math.pi * r * r}
+    ctx['face_regions'] = {'base': ('circle', cx, cy, cr)}
     table = {'slant': (l, ((ax, ay), (x2, y2))), 'arc': (2 * math.pi * r, ((ax + axis[0] * R1 - 0.12 * R1 * axis[1], ay + axis[1] * R1 + 0.12 * R1 * axis[0]), (ax + axis[0] * R1 + 0.12 * R1 * axis[1], ay + axis[1] * R1 - 0.12 * R1 * axis[0]))), 'radius': (r, None), 'angle': (want, ((ax, ay), (ax + axis[0] * R1 * 0.35, ay + axis[1] * R1 * 0.35)))}
     ctx['net_dims'] = _dim_defs(plan, ctx, table)
     _fill_dim_lines(ctx)
     # the sector outline as obstacle segments
     a1 = math.atan2(y1 - ay, x1 - ax)
-    a2 = math.atan2(y2 - ay, x2 - ax)
-    d = (a2 - a1) % (2 * math.pi)
-    if want > 180 and d < math.pi: d = d - 2 * math.pi
+    # the drawn arc runs from p1 to p2 by the path's sweep flag (0: towards smaller angles on the screen) through exactly the sector's angle, whether that is under or over 180 degrees
+    d = -math.radians(want) if int(sweep) == 0 else math.radians(want)
     pts = [(ax + R1 * math.cos(a1 + d * k / 32), ay + R1 * math.sin(a1 + d * k / 32)) for k in range(33)]
+    ctx['face_regions']['sector'] = ('poly', [(ax, ay)] + pts)
     ctx['segments'] += [((ax, ay), pts[0])] + [(pts[k], pts[k + 1]) for k in range(32)] + [(pts[-1], (ax, ay))]
     ctx['segments'] += _circle_segments(cx, cy, cr)
+
+
+WORD_LABEL = re.compile(r'[\uac00-\ud7a3\u00b7]')
+
+
+def net_edge_entries(net):
+    """the length labels at the edges of a polyhedron net's faces, in the order the producer numbers them (dim-1, dim-2, ...): net.dims, then net.edgeLabels ({face,edge,text?}: no text is the exact
+    length, a text with Hangul is a word that only names the edge, any other text is a number or a symbol like a dims label)"""
+    out = [dict(d) for d in net.get('dims') or []]
+    for e in net.get('edgeLabels') or []:
+        text = e.get('text')
+        if isinstance(text, str) and WORD_LABEL.search(text):
+            if not TEXT_LABEL.fullmatch(text): raise ValueError('SOLID_EDGE_LABEL_INVALID')
+            out.append({'face': e['face'], 'edge': e['edge'], 'word': text})
+        else: out.append({'face': e['face'], 'edge': e['edge'], 'label': text})
+    return out
+
+
+def check_excluded_circles(net, circles, parts, errors):
+    """net.excluded: exactly the listed circles are drawn dashed and grey (not part of the surface), the others are plain"""
+    want = set(net.get('excluded') or [])
+    if len(want) != len(net.get('excluded') or []) or not want <= set(parts): errors.append('SOLID_NET_EXCLUDED_PLAN_INVALID')
+    for part in parts:
+        el = circles.get(part)
+        if el is None: continue
+        excluded = el.get('data-excluded') == '1'
+        if excluded != (part in want): errors.append('SOLID_NET_EXCLUDED_SET_MISMATCH:' + part)
+        style_ok = (_dashed(el) and (el.get('stroke') or '').lower() == '#888') if part in want else (not _dashed(el) and (el.get('stroke') or '').lower() == '#111')
+        if not style_ok: errors.append('SOLID_NET_EXCLUDED_STYLE_MISMATCH:' + part)
 
 
 def _circle_segments(cx, cy, r, n=32):
@@ -1957,6 +2578,13 @@ def orient_cycles(solid, spec, ids):
                 want = vsub(c, interior)
         out[fid] = list(cyc) if vdot(newell(cyc), want) >= 0 else list(reversed(cyc))
     return out
+
+
+def area3(cyc, P3):
+    """the area of a planar face given as a cycle of vertex indices (half the length of the sum of cross products)"""
+    nrm = (0.0, 0.0, 0.0)
+    for i in range(len(cyc)): nrm = vadd(nrm, vcross(P3(cyc[i]), P3(cyc[(i + 1) % len(cyc)])))
+    return vlen(nrm) / 2
 
 
 def audit_polyhedron_net(plan, ctx, declared):
@@ -2082,15 +2710,21 @@ def audit_polyhedron_net(plan, ctx, declared):
     got = sorted(g.get('id') for g in ctx['labels'] if g.get('data-label-role') == 'vertex-name')
     if got != sorted(expected_labels): errors.append('SOLID_NAME_LABEL_SET_MISMATCH')
     dims = {}
-    for k, d in enumerate(net.get('dims') or []):
+    words = {}
+    for k, d in enumerate(net_edge_entries(net)):
         ident = 'dim-%d' % (k + 1)
         fid, ei = d['face'], d['edge']
         cyc = cycles[fid]
         value = vlen(vsub(P3(cyc[ei]), P3(cyc[(ei + 1) % len(cyc)])))
         a, b = polys[fid][ei], polys[fid][(ei + 1) % len(cyc)]
-        symbolic = d.get('label') is not None and label_number(d['label']) is None
+        symbolic = d.get('word') is not None or (d.get('label') is not None and label_number(d['label']) is None)
+        if d.get('word') is not None: words[ident] = d['word']
         dims[ident] = (value, (a, b), symbolic)
     ctx['net_dims'] = dims
+    ctx['net_dim_words'] = words
+    ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
+    ctx['face_areas'] = {fid: area3(cyc, P3) for fid, cyc in cycles.items()}
+    ctx['face_regions'] = {fid: ('poly', polys[fid]) for fid in ids}
     segs = []
     for fid in ids:
         poly = polys[fid]
@@ -2288,6 +2922,46 @@ def audit_net_layout_and_emphasis(net, ctx, cycles, polys, P3, root_id, joins, s
         if _dashed(e): errors.append('SOLID_NET_DIAGONAL_STYLE_MISMATCH:' + label)
     for e in diag_els:
         if id(e) not in used: errors.append('SOLID_NET_DIAGONAL_UNEXPECTED:' + str(e.get('id')))
+    check_net_right_angles(net, root, errors, cycles, expected_px, P3)
+
+
+def check_net_right_angles(net, root, errors, cycles, expected_px, P3):
+    """net.rightAngles: a small square at a corner whose two edges are truly perpendicular (3D), its legs along the two edges of the drawn face, equally long, nothing else drawn"""
+    want = []
+    for m in net.get('rightAngles') or []:
+        fid, ci = m.get('face'), m.get('corner')
+        if fid not in cycles or not isinstance(ci, int) or isinstance(ci, bool) or not 0 <= ci < len(cycles[fid]) or (fid, ci) in want:
+            errors.append('SOLID_NET_RIGHT_ANGLE_PLAN_INVALID')
+            continue
+        cyc, n = cycles[fid], len(cycles[fid])
+        V, A, B = P3(cyc[ci]), P3(cyc[(ci - 1) % n]), P3(cyc[(ci + 1) % n])
+        if abs(vdot(vunit(vsub(A, V)), vunit(vsub(B, V)))) > 1e-6: errors.append('SOLID_NET_RIGHT_ANGLE_NOT_RIGHT:%s:%d' % (fid, ci))
+        want.append((fid, ci))
+    drawn = {}
+    for el in root.iter(NS + 'polyline'):
+        if el.get('data-role') != 'net-right-angle': continue
+        try: key = (el.get('data-face'), int(el.get('data-corner')))
+        except (TypeError, ValueError):
+            errors.append('SOLID_NET_RIGHT_ANGLE_UNREADABLE:' + str(el.get('id')))
+            continue
+        if key in drawn: errors.append('SOLID_NET_RIGHT_ANGLE_DUPLICATE:%s:%d' % key)
+        drawn[key] = el
+    if sorted(want) != sorted(drawn): errors.append('SOLID_NET_RIGHT_ANGLE_SET_MISMATCH')
+    for (fid, ci), el in drawn.items():
+        if (fid, ci) not in want or fid not in expected_px: continue
+        pts_px, n = expected_px[fid], len(expected_px[fid])
+        V, A, B = pts_px[ci], pts_px[(ci - 1) % n], pts_px[(ci + 1) % n]
+        pts = _points(el.get('points'))
+        if len(pts) != 3:
+            errors.append('SOLID_NET_RIGHT_ANGLE_GEOMETRY:%s:%d' % (fid, ci))
+            continue
+        p0, p1, p2 = pts
+        la, lb = math.hypot(A[0] - V[0], A[1] - V[1]), math.hypot(B[0] - V[0], B[1] - V[1])
+        l0, l2 = math.hypot(p0[0] - V[0], p0[1] - V[1]), math.hypot(p2[0] - V[0], p2[1] - V[1])
+        on_a = l0 > 0 and abs((p0[0] - V[0]) * (A[1] - V[1]) - (p0[1] - V[1]) * (A[0] - V[0])) <= POS_TOL * la and (p0[0] - V[0]) * (A[0] - V[0]) + (p0[1] - V[1]) * (A[1] - V[1]) > 0
+        on_b = l2 > 0 and abs((p2[0] - V[0]) * (B[1] - V[1]) - (p2[1] - V[1]) * (B[0] - V[0])) <= POS_TOL * lb and (p2[0] - V[0]) * (B[0] - V[0]) + (p2[1] - V[1]) * (B[1] - V[1]) > 0
+        corner_ok = math.hypot(p1[0] - (p0[0] + p2[0] - V[0]), p1[1] - (p0[1] + p2[1] - V[1])) <= POS_TOL
+        if not (on_a and on_b and corner_ok and abs(l0 - l2) <= POS_TOL and l0 >= 3.0 and l0 <= 0.5 * min(la, lb)): errors.append('SOLID_NET_RIGHT_ANGLE_GEOMETRY:%s:%d' % (fid, ci))
 
 
 def _polys_overlap(a, b):

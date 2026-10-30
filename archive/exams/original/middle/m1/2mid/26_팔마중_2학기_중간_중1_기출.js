@@ -1005,7 +1005,11 @@ window.questionBank = [
     "imageStatus": "present",
     "answerStatus": "created",
     "solutionStatus": "created",
-    "reviewStatus": "create_pending"
+    "reviewStatus": "create_pending",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이에 삼각형 ABC가 있다. 꼭짓점 A는 l 위, C는 m 위에 있고 직선 AC는 양쪽으로 연장되어 있다. l 위의 D는 A의 왼쪽, m 위의 E는 C의 왼쪽에 있다. 점 A에서는 ∠DAB=x°, ∠BAC=2x°, ∠DAC=3x°이고, 점 C에서는 ∠BCE=y°, ∠ACB=2y°, ∠ACE=3y°로 표시되어 있다.",
+    "solutionImageCaption": "∠DAC:∠DAB=3:1, ∠ACE:∠BCE=3:1 조건을 x, y로 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

@@ -290,9 +290,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, M, B, N, C에서 AM=18cm와 BC 구간의 길이를 표시하고, 중점 M, N 때문에 같은 구간을 같은 눈금으로 나타내며 구하는 MN 구간을 빨간 굵은 선으로 보여 준다.",
-    "solutionImageCaption": "중점으로 나뉜 같은 길이의 구간(같은 눈금)과 구하는 MN 구간(빨간 선)을 표시한 그림",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, M, B, N, C에서 AM=18cm와 BC=24cm를 치수선으로 표시하고, 중점 M, N 때문에 같은 구간을 같은 눈금으로 나타내며 구하는 MN 구간을 빨간 굵은 선으로 보여 준다.",
+    "solutionImageCaption": "중점으로 나뉜 같은 길이의 구간(같은 눈금)과 AM=18cm, BC=24cm, 구하는 MN 구간(빨간 선)을 표시한 그림",
     "solutionImageSize": "medium"
   },
   {
@@ -377,7 +377,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥 ABC-DEF에서 모서리 BC(굵은 선)와 만나는 모서리 AB, AC, BE, CF, 평행한 모서리 EF, 꼬인 위치의 모서리 AD, DE, DF를 세 그림에 각각 빨간색으로 보여 준다.",
+    "solutionImageCaption": "BC와 만나는 모서리와 평행한 모서리를 빼면 AD, DE, DF가 꼬인 위치에 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -457,7 +461,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 M이 두 대각선의 중점인 사각형 ABCD에서 같은 길이 눈금과 맞꼭지각 표시로 삼각형 AMB와 CMD, 삼각형 AMD와 CMB가 각각 합동임을 두 그림으로 보여 준다.",
+    "solutionImageCaption": "두 대각선의 중점 M에서 생기는 두 쌍의 합동 삼각형(SAS)을 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -494,7 +502,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 꼭짓점에서 두 대각선(빨강)을 그어 다각형이 삼각형 두 개와 사각형 한 개로 나누어진 모양을 영역별 색으로 구분해 보여 준다.",
+    "solutionImageCaption": "한 꼭짓점에서 그은 두 대각선이 다각형을 삼각형 둘과 사각형 하나로 나눈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -535,7 +547,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 꼭짓점 둘레에 정사각형의 내각 90°, 정육각형의 내각 120°, 정n각형의 내각 150°가 모여 한 바퀴를 이루는 모습을 색이 다른 호로 구분해 보여 주고, 붙은 변은 같은 길이 눈금으로 나타낸다.",
+    "solutionImageCaption": "한 점 둘레에 모인 정사각형·정육각형·정n각형의 세 내각을 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -575,7 +591,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정구각형의 두 변 AB, DC를 연장해 만나는 점 J를 잡으면 삼각형 BJC가 생기고, 두 밑각 ∠JBC와 ∠BCJ가 정구각형의 한 외각인 40°로 같으며 꼭지각 ∠BJC가 x임을 보여 준다.",
+    "solutionImageCaption": "변의 연장선이 만든 삼각형 BJC의 같은 두 밑각 40°와 꼭지각 x를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -615,7 +635,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 D가 R에 겹치도록 PQ를 접은 직사각형에서 같은 길이 눈금과 두 직각으로 삼각형 PDQ와 PRQ의 대응을 보이고, 엇각 ∠DPR=∠PRB=68°와 PQ가 이등분한 같은 두 각 34°, ∠DQP=∠PQR 표시를 보여 준다.",
+    "solutionImageCaption": "접은 삼각형 PRQ와 PDQ의 대응, 엇각 68°, 이등분된 같은 두 각 34°를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -655,7 +679,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체를 세 꼭짓점 A, C, F를 지나는 평면으로 잘라 꼭짓점 B 쪽을 떼어 낸 입체 세 개. 첫째는 CG(빨강)와 꼬인 위치의 모서리 AD, AF, EF, EH를, 둘째는 면 CGHD(주황)와 평행한 모서리 AE, EF, AF를, 셋째는 면 ACD(주황)와 수직인 모서리 AE, CG, DH를 굵게 나타냈다.",
+    "solutionImageCaption": "잘라 낸 입체에서 꼬인 위치·평행·수직인 모서리를 굵게 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -695,7 +723,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: l∥m 사이에서 꺾인 선의 두 꺾인 점을 지나 l, m과 평행한 보조선(점선)을 그어, 엇각인 30°·α°·x°가 옮겨지고 각 x−10°와 x+20°가 각각 30°+α°, α°+x°로 나뉘는 모양을 색 호로 보여 준다.",
+    "solutionImageCaption": "평행한 보조선으로 엇각을 옮겨 꺾인 두 점의 각을 나눈 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -728,7 +760,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원탁에 앉은 7명을 정칠각형의 꼭짓점인 점 7개로 나타내고 서로 가위바위보를 하는 모든 두 사람을 선분으로 이은 그림이다. 굵은 선분은 변 7개이고 가는 선분은 대각선 14개이다.",
+    "solutionImageCaption": "7명을 점으로, 가위바위보를 하는 모든 쌍을 선분으로 이으면 변 7개와 대각선 14개가 된다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -768,7 +804,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 꼭짓점의 각 55°, 왼쪽 꼭짓점의 각 x, 오른쪽 꼭짓점의 각 30°를 표시한 오목사각형(굵은 선)이다. 안쪽 꼭짓점에는 작은 삼각형 쪽의 120°와 그 바깥쪽 큰 각 240°가 함께 표시되어 있다.",
+    "solutionImageCaption": "오목사각형의 네 각은 55°, x, 30°와 안쪽 꼭짓점의 큰 각 240°(=360°-120°)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -809,7 +849,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 별 모양에서 다섯 개의 끝 삼각형을 연한 색으로 칠하고, 삼각형마다 끝각 하나(빨간 호)와 밑각 둘(검은 호)을 표시했다. 열 개의 밑각에 a부터 j까지 이름이 붙어 있다.",
+    "solutionImageCaption": "별 끝의 삼각형 5개마다 끝각 하나와 밑각 둘이 있고, 밑각 열 개가 a~j이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -844,7 +888,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A, B, C가 한 직선 위에 있고 D, E가 그 위쪽에 있는 그림이다. A, B, C를 잇는 세 쌍은 빨간 직선 하나로 겹치고, 반직선 AB와 AC, 반직선 CA와 CB는 각각 같은 반직선(빨간 화살표)으로 겹친다.",
+    "solutionImageCaption": "AB, BC, CA는 같은 직선이고, 반직선 AB=AC, 반직선 CA=CB는 겹친다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -912,6 +960,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: AD∥BC, AD=BC=4인 사각형 ABCD에서 대각선 BD로 나눈 △ABD(연한 색)와 △CDB(진한 색)를 보여 준다. AD와 CB에 같은 눈금과 4, BD에 '공통' 표시, 엇각 ∠ADB와 ∠CBD에 같은 빨간 호가 있다.",
+    "solutionImageCaption": "AD=CB, BD는 공통, 엇각 ∠ADB=∠CBD이므로 △ABD와 △CDB는 SAS 합동이다.",
+    "solutionImageSize": "medium"
   }
 ];

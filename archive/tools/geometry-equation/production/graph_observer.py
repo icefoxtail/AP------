@@ -490,6 +490,37 @@ def absolute_value_overview_audit(plan,poly,points,transform,topology,svg_root):
         if 2*marker['radius']*transform['displayScale']<policy['minimumCornerMarkerDiameterCssPx']:unsupported.append('ABSOLUTE_VALUE_CORNER_MARKER_BELOW_PROFILE_FLOOR')
     return {'status':'UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS','errors':sorted(set(errors+unsupported)),'features':expected,'plotCssSize':[width,height],'arms':[{'side':'LEFT','spanCssPx':left_span,'riseCssPx':left_rise},{'side':'RIGHT','spanCssPx':right_span,'riseCssPx':right_rise}],'observedCornerMarkers':len(markers),'topology':{'corner':topology.get('corners'),'roots':topology.get('roots')},'mathMethod':'EXACT_ABS_AFFINE_CORNER_AND_BRANCHES'}
 
+DISPLAY_WINDOW_OBSERVER_POLICY='AUTHOR_DISPLAY_WINDOW_EQUAL_UNITS_v1'
+FORMULA_AT_MAX_DISTANCE_PX=110.0
+
+def _display_window_audit(plan,transform):
+    """graphPlan.displayWindow, re-validated here: ([errors], [xmin,xmax,ymin,ymax] or None). The drawn frame must be the author's window at one
+    scale (448 px plot width): x exactly, y widened by less than a pixel at each side (a whole-pixel plot height), the origin inside."""
+    raw=plan.get('displayWindow')
+    try:
+        if not isinstance(raw,list) or len(raw)!=4 or any(isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) for value in raw):raise ValueError
+        wx0,wx1,wy0,wy1=(float(value) for value in raw)
+        if not (wx0<wx1 and wy0<wy1 and wx0<0<wx1 and wy0<0<wy1):raise ValueError
+    except ValueError:return ['DISPLAY_WINDOW_INVALID'],None
+    errors=[];x0,x1,y0,y1=plan['viewport'];sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale']
+    if abs(x0-wx0)*sx>.01 or abs(x1-wx1)*sx>.01 or abs((x1-x0)*sx-448)>.01:errors.append('DISPLAY_WINDOW_VIEWPORT_MISMATCH')
+    if y0>wy0+1e-9 or y1<wy1-1e-9 or (wy0-y0)*sy>1.0 or (y1-wy1)*sy>1.0:errors.append('DISPLAY_WINDOW_VIEWPORT_MISMATCH')
+    return errors,[wx0,wx1,wy0,wy1]
+
+def _window_visible_branches(pole,residue,window,sx,sy):
+    """For y=residue/(x-pole) in the window: {'left': bool|None, 'right': bool|None}; True = the exact curve has a stretch of at least 1.5 px
+    in the window on that side, False = none at all, None = a sliver too small to demand or forbid."""
+    wx0,wx1,wy0,wy1=window;result={}
+    for side,(a,b) in (('left',(wx0,min(wx1,pole))),('right',(max(wx0,pole),wx1))):
+        if not a<b:result[side]=False;continue
+        def value(x):
+            if abs(x-pole)<1e-12:return math.copysign(math.inf,residue*(1 if side=='right' else -1))
+            return residue/(x-pole)
+        ya,yb=value(a),value(b);low,high=max(min(ya,yb),wy0),min(max(ya,yb),wy1)
+        if low>=high-1e-12:result[side]=False;continue
+        result[side]=True if (high-low)*sy>=1.5 else None
+    return result
+
 def rational_constant_overview_audit(plan,points,transform,topology,svg_root):
     """Inverse proportion y=k/(d0+d1*x) (a nonzero constant numerator over a linear denominator), recomputed from the plan's exact coefficients
     (never the producer's features) and read back from the SVG: the single pole and its two branches, the asymptote that lies on an axis NOT drawn
@@ -502,27 +533,57 @@ def rational_constant_overview_audit(plan,points,transform,topology,svg_root):
     if numerator.is_zero or numerator.degree()!=0 or denominator.degree()!=1:return {'status':'UNSUPPORTED','errors':['RATIONAL_CONSTANT_OVER_LINEAR_GRAMMAR_REQUIRED']}
     k=numerator.nth(0);d0=denominator.nth(0);d1=denominator.nth(1)
     pole_exact=-d0/d1;residue=k/d1;pole=float(pole_exact)
-    drawn_vertical=pole_exact!=0
+    # graphPlan.displayWindow (E22): the author names the window; the observer then checks the window itself and which branches the exact curve
+    # puts inside it, instead of the overview rules (both branches, centred pole). The plan's own displayWindow is re-validated here.
+    windowed=plan.get('displayWindow') is not None
+    window_errors,window=_display_window_audit(plan,transform) if windowed else ([],None)
+    errors.extend(window_errors)
+    pole_in_window=window is not None and window[0]<pole<window[1]
+    drawn_vertical=(pole_exact!=0 and pole_in_window) if windowed else pole_exact!=0
+    vertical={'x':str(pole_exact),'drawn':drawn_vertical}
+    if not drawn_vertical:vertical['reason']=('ON_Y_AXIS' if pole_exact==0 else 'OUTSIDE_WINDOW') if windowed else 'ON_Y_AXIS'
     expected={'schemaVersion':'RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1','constant':str(k),'singularity':{'kind':'VERTICAL_POLE','x':str(pole_exact)},'horizontalAsymptoteY':'0','xIntercept':None,
               'poleDirection':{'left':'DOWN' if residue>0 else 'UP','right':'UP' if residue>0 else 'DOWN'},
-              'asymptotes':{'horizontal':{'y':'0','drawn':False,'reason':'ON_X_AXIS'},'vertical':{'x':str(pole_exact),'drawn':drawn_vertical,**({} if drawn_vertical else {'reason':'ON_Y_AXIS'})}}}
-    policy={'schemaVersion':'RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'CONSTANT_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE','horizontalAsymptotePolicy':'Y_EQUALS_ZERO_IS_THE_X_AXIS_NOT_DRAWN','asymptoteOnAxisPolicy':'AXIS_IS_THE_ASYMPTOTE_NO_DASHED_LINE','minimumFeatureSeparationCssPx':1}
+              'asymptotes':{'horizontal':{'y':'0','drawn':False,'reason':'ON_X_AXIS'},'vertical':vertical}}
+    policy={'schemaVersion':'RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'CONSTANT_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE','horizontalAsymptotePolicy':'Y_EQUALS_ZERO_IS_THE_X_AXIS_NOT_DRAWN','asymptoteOnAxisPolicy':'AXIS_IS_THE_ASYMPTOTE_NO_DASHED_LINE','minimumFeatureSeparationCssPx':1,**({'windowPolicy':DISPLAY_WINDOW_OBSERVER_POLICY} if windowed else {})}
     if plan.get('rationalFeatures')!=expected:errors.append('RATIONAL_FEATURE_INVENTORY_MISMATCH')
     if plan.get('rationalFeaturePolicy')!=policy:errors.append('RATIONAL_FEATURE_POLICY_MISMATCH')
     if plan.get('equalUnits') is not True:errors.append('EQUAL_UNIT_DECLARATION_MISSING')
     errors.extend(axis_ratio_errors(plan,transform))
     x0,x1,y0,y1=plan['viewport'];sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale']
     width=(x1-x0)*sx;height=(y1-y0)*sy
-    if not x0+.05*(x1-x0)<pole<x1-.05*(x1-x0):errors.append('RATIONAL_SINGULARITY_OUTSIDE_OVERVIEW')
+    if not windowed and not x0+.05*(x1-x0)<pole<x1-.05*(x1-x0):errors.append('RATIONAL_SINGULARITY_OUTSIDE_OVERVIEW')
     if not x0<0<x1 or not y0<0<y1:errors.append('RATIONAL_AXES_ORIGIN_NOT_VISIBLE')
     pole_list=topology.get('poles',[]);hole_list=topology.get('holes',[])
-    if len(pole_list)!=1 or abs(pole_list[0]-pole)>.00000001 or hole_list:errors.append('RATIONAL_POLE_TOPOLOGY_MISMATCH')
+    if plan.get('formulaAt') is not None:
+        # formulaAt: the author's spot for the formula label (inside the window); the label the layout placed must stand near it.
+        spot=plan['formulaAt']
+        if not windowed or not isinstance(spot,list) or len(spot)!=2 or window is None or not (window[0]<spot[0]<window[1] and window[2]<spot[1]<window[3]):errors.append('FORMULA_AT_INVALID')
+        else:
+            holder={node.get('id'):node for node in svg_root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')=='formula'}
+            if holder:
+                box=_region_label_box(holder,'formula')
+                anchor=(transform['originX']+spot[0]*transform['sx'],transform['originY']-spot[1]*transform['sy'])
+                if box is None or _ov_point_box_distance(anchor,box)>FORMULA_AT_MAX_DISTANCE_PX:errors.append('FORMULA_LABEL_NOT_AT_ANCHOR')
+    if windowed:
+        if len(pole_list)!=(1 if pole_in_window else 0) or (pole_list and abs(pole_list[0]-pole)>.00000001) or hole_list:errors.append('RATIONAL_POLE_TOPOLOGY_MISMATCH')
+    elif len(pole_list)!=1 or abs(pole_list[0]-pole)>.00000001 or hole_list:errors.append('RATIONAL_POLE_TOPOLOGY_MISMATCH')
     left_points=[point for point in points if point[0]<pole];right_points=[point for point in points if point[0]>pole]
-    if not left_points or not right_points:errors.append('RATIONAL_BRANCH_SIDE_MISSING')
-    branch_width_floor=max(20,width*.10)
-    if left_points and (pole-min(point[0] for point in left_points))*sx<branch_width_floor:errors.append('RATIONAL_LEFT_BRANCH_TOO_NARROW')
-    if right_points and (max(point[0] for point in right_points)-pole)*sx<branch_width_floor:errors.append('RATIONAL_RIGHT_BRANCH_TOO_NARROW')
-    if left_points and right_points:
+    if windowed:
+        # Which branches the exact curve puts inside the window, against which branches the drawing has.
+        wanted_sides=_window_visible_branches(pole,float(residue),window,sx,sy) if window is not None else {'left':False,'right':False}
+        if not wanted_sides['left'] and not wanted_sides['right']:errors.append('RATIONAL_WINDOW_SHOWS_NO_CURVE')
+        for side,have in (('left',left_points),('right',right_points)):
+            if wanted_sides[side] is True and not have:errors.append('RATIONAL_WINDOW_BRANCH_MISSING:'+side)
+            elif wanted_sides[side] is False and have:errors.append('RATIONAL_WINDOW_BRANCH_UNEXPECTED:'+side)
+        for point in points:
+            if point[1]*(float(residue)*(point[0]-pole))<0 and abs(point[1])*sy>.35:errors.append('RATIONAL_BRANCH_IN_WRONG_QUADRANT');break
+    else:
+        if not left_points or not right_points:errors.append('RATIONAL_BRANCH_SIDE_MISSING')
+        branch_width_floor=max(20,width*.10)
+        if left_points and (pole-min(point[0] for point in left_points))*sx<branch_width_floor:errors.append('RATIONAL_LEFT_BRANCH_TOO_NARROW')
+        if right_points and (max(point[0] for point in right_points)-pole)*sx<branch_width_floor:errors.append('RATIONAL_RIGHT_BRANCH_TOO_NARROW')
+    if not windowed and left_points and right_points:
         # Near the pole each branch runs off the frame on the side the sign of k/d1 dictates (clipped at the frame edge); far away it flattens onto y=0.
         left_edge=y1 if residue<0 else y0
         right_edge=y1 if residue>0 else y0
@@ -2354,9 +2415,20 @@ def _ov_curve_value(plan,value,curve_id=None):
         if argument<=0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
         return a*S.log(argument)/S.log(base)+c
     if family=='trigonometric':
-        a,k,c=(_ov_reader(item) for item in plan['coefficients']);phase=_ov_reader(plan.get('phasePi','0'))
         function={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}.get(plan.get('function'))
         if function is None:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+        if plan.get('ratePi') is not None or plan.get('phase') is not None:
+            # the general grammar: ratePi -> coefficients [A,C] with the rate m*pi, otherwise [A,k,C]; phase in radians or phasePi
+            coefficients=plan['coefficients']
+            if plan.get('ratePi') is not None:
+                if not isinstance(coefficients,list) or len(coefficients)!=2:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+                a,c=(_ov_reader(item) for item in coefficients);rate=_ov_reader(plan['ratePi'])*S.pi
+            else:
+                if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+                a,rate,c=(_ov_reader(item) for item in coefficients)
+            phase=_ov_reader(plan['phase']) if plan.get('phase') is not None else _ov_reader(plan.get('phasePi','0'))*S.pi
+            return a*function(rate*value+phase)+c
+        a,k,c=(_ov_reader(item) for item in plan['coefficients']);phase=_ov_reader(plan.get('phasePi','0'))
         return a*function(k*value+phase*S.pi)+c
     if family=='piecewise-polynomial':
         pieces=plan.get('pieces') or [];breaks=plan.get('breakpoints') or []
@@ -2404,7 +2476,7 @@ def _ov_expected(plan):
     if not isinstance(raw,dict):raise ValueError('OVERLAY_PLAN_INVALID')
     lines=[_ov_line(entry) for entry in raw.get('lines',[])]
     by_line={line['id']:line for line in lines}
-    points={}
+    points={};coordinates={};unnamed=set()
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_POINT_INVALID')
         ident=entry.get('id')
@@ -2433,13 +2505,20 @@ def _ov_expected(plan):
             x,y=_ov_reader(entry['x']),_ov_reader(entry['y'])
         else:raise ValueError('OVERLAY_POINT_INVALID')
         points[ident]=(x,y)
+        if entry.get('unnamed') is True:unnamed.add(ident)
+        if entry.get('coordinates') is True:
+            if not (x.is_integer and y.is_integer):raise ValueError('OVERLAY_COORDINATES_REQUIRE_INTEGERS')
+            coordinates[ident]=(int(x),int(y))
     def point_ref(value):
         if value not in points:raise ValueError('OVERLAY_POINT_UNKNOWN')
         return points[value]
     segments=[]
     for entry in raw.get('segments',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_SEGMENT_INVALID')
-        segments.append({'id':entry.get('id'),'from':point_ref(entry.get('from')),'to':point_ref(entry.get('to')),'dashed':entry.get('dashed',False)})
+        row={'id':entry.get('id'),'from':point_ref(entry.get('from')),'to':point_ref(entry.get('to')),'dashed':entry.get('dashed',False)}
+        if entry.get('length') is True:
+            (x1,y1),(x2,y2)=row['from'],row['to'];row['lengthCodes']=_ov_length_codes(S.sqrt(S.expand((x2-x1)**2+(y2-y1)**2)))
+        segments.append(row)
     guides=[]
     for entry in raw.get('guides',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_GUIDE_INVALID')
@@ -2457,7 +2536,40 @@ def _ov_expected(plan):
             if label_kind not in ('MATH','TEXT'):raise ValueError('OVERLAY_POLYGON_LABEL_KIND_INVALID')
             if not isinstance(label,str) or not label.strip() or len(label)>40 or any(ord(char)<32 for char in label) or (label_kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',label)):raise ValueError('OVERLAY_POLYGON_LABEL_INVALID')
         polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT'),'label':label,'labelKind':label_kind})
-    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons}
+    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+
+OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
+
+def _ov_int_codes(value):
+    """MathJax glyph codes (data-c) of an integer: a minus sign (U+2212) then its digits."""
+    return (['2212'] if value<0 else [])+OV_DIGIT(abs(value))
+
+def _ov_length_codes(value):
+    """Glyph codes of a segment length written as an integer or p*sqrt(q): the digits, the radical U+221A, the radicand digits."""
+    value=value if value.is_Integer else S.simplify(value)
+    if value.is_Integer:return OV_DIGIT(int(value))
+    coefficient,radical=value.as_coeff_Mul()
+    if coefficient.is_Integer and coefficient>0 and radical.is_Pow and radical.exp==S.Rational(1,2) and radical.base.is_Integer and radical.base>1:
+        return (OV_DIGIT(int(coefficient)) if coefficient!=1 else [])+['221A']+OV_DIGIT(int(radical.base))
+    raise ValueError('OVERLAY_SEGMENT_LENGTH_UNSUPPORTED')
+
+def _ov_lattice(plan,entry):
+    """graphPlan.overlays.latticePoints enumerated again from the raw field with the observer's own exact curve: {'points':[(x,y)],'columns':{x:(count,top)},'counts':bool}, or None."""
+    if entry is None:return None
+    if not isinstance(entry,dict):raise ValueError('OVERLAY_LATTICE_INVALID')
+    region=entry.get('region');span=entry.get('xRange');strict=entry.get('strict',True)
+    if region not in ('BELOW_CURVE','ABOVE_CURVE') or not isinstance(span,list) or len(span)!=2 or any(isinstance(v,bool) or not isinstance(v,int) for v in span) or span[0]>span[1]:raise ValueError('OVERLAY_LATTICE_INVALID')
+    bound=entry.get('yMin' if region=='BELOW_CURVE' else 'yMax')
+    if isinstance(bound,bool) or not isinstance(bound,int) or not isinstance(strict,bool):raise ValueError('OVERLAY_LATTICE_INVALID')
+    points=[];columns={}
+    for x in range(span[0],span[1]+1):
+        y_curve=_ov_curve_value(plan,S.Integer(x),entry.get('curve'))
+        if region=='BELOW_CURVE':
+            ys=[y for y in range(bound,int(S.ceiling(y_curve))+(0 if strict else 1)) if (y<y_curve if strict else y<=y_curve)]
+        else:
+            ys=[y for y in range(int(S.floor(y_curve)),bound+1) if (y>y_curve if strict else y>=y_curve)]
+        if ys:columns[x]=(len(ys),max(ys));points.extend((x,y) for y in ys)
+    return {'points':points,'columns':columns,'counts':entry.get('counts',False) is True}
 
 def _ov_clip(viewport,line):
     xmin,xmax,ymin,ymax=viewport
@@ -2472,6 +2584,50 @@ def _ov_clip(viewport,line):
             x=(y-q)/m
             if xmin-1e-6<=x<=xmax+1e-6 and not any(abs(x-a)<1e-6 for a,_ in ends):ends.append((max(xmin,min(xmax,x)),y))
     return ends[:2]
+
+OV_LABEL_STRICT_OWN_MAX_PX=12.0
+OV_LABEL_STRICT_MARGIN_PX=12.0
+OV_LABEL_LOOSE_OWN_MAX_PX=60.0
+OV_LABEL_LOOSE_MARGIN_PX=-8.0
+OV_COORDINATE_LABEL_OWN_MAX_PX=60.0
+OV_COORDINATE_LABEL_MARGIN_PX=4.0
+OV_LEADER_TOLERANCE_PX=1.5
+
+def _ov_point_segment_distance(point,a,b):
+    dx,dy=b[0]-a[0],b[1]-a[1];length2=dx*dx+dy*dy
+    t=0.0 if length2<=1e-18 else max(0.0,min(1.0,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/length2))
+    return math.hypot(point[0]-(a[0]+t*dx),point[1]-(a[1]+t*dy))
+
+def _ov_point_box_distance(point,box):
+    return math.hypot(max(box[0]-point[0],0.0,point[0]-box[0]-box[2]),max(box[1]-point[1],0.0,point[1]-box[1]-box[3]))
+
+def _ov_segment_hits_box(a,b,box):
+    dx,dy=b[0]-a[0],b[1]-a[1];low,high=0.0,1.0
+    for p,q in ((-dx,a[0]-box[0]),(dx,box[0]+box[2]-a[0]),(-dy,a[1]-box[1]),(dy,box[1]+box[3]-a[1])):
+        if p==0:
+            if q<0:return False
+        else:
+            t=q/p
+            if p<0:low=max(low,t)
+            else:high=min(high,t)
+            if low>high:return False
+    return True
+
+def _ov_box_segment_distance(box,a,b):
+    """Distance from a label box to a drawn segment (0 when they touch): exact, from the end points and the four corners."""
+    if _ov_segment_hits_box(a,b,box):return 0.0
+    corners=((box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3]))
+    return min(_ov_point_box_distance(a,box),_ov_point_box_distance(b,box),*[_ov_point_segment_distance(corner,a,b) for corner in corners])
+
+def _ov_collinear(own,other,tolerance=0.5):
+    """True when the drawn segment `other` lies on the line through `own` (both end points within `tolerance` px): the same line drawn twice
+    (a polygon edge or a segment over an overlay line) is not a competitor for a label."""
+    (ax,ay),(bx,by)=own;length=math.hypot(bx-ax,by-ay)
+    if length<=1e-9:return False
+    return all(abs((bx-ax)*(ay-p[1])-(ax-p[0])*(by-ay))/length<=tolerance for p in other)
+
+def _ov_glyph_codes(node):
+    return [(child.get('data-c') or '').upper() for child in node.iter() if child.tag.split('}')[-1]=='path' and child.get('data-c')]
 
 def overlays_audit(plan,svg,transform):
     raw=plan.get('overlays')
@@ -2543,17 +2699,101 @@ def overlays_audit(plan,svg,transform):
                 claimed.add(ident+'-fill');fill=polylines.get(ident+'-fill',None) or root.find(f'.//*[@id="{ident}-fill"]')
                 if fill is None:errors.append('OVERLAY_FILL_MISSING:'+str(polygon['id']))
             if polygon['label'] is not None:claimed.add(ident+'-label')
+        # Lattice points: the observer enumerates them itself from the exact curve; the figure must show exactly those dots, small and unnamed.
+        lattice=expected.get('lattice')
+        lattice_dots={ident:node for ident,node in circles.items() if (ident or '').startswith('overlay-lattice-')}
+        if lattice is not None:
+            unmatched=dict(lattice_dots)
+            for (lx,ly) in lattice['points']:
+                match=next((ident for ident in unmatched if (lambda got:got is not None and near(got,(float(lx),float(ly))))(read_circle(ident))),None)
+                if match is None:errors.append('OVERLAY_LATTICE_POINT_MISSING:%d,%d'%(lx,ly));continue
+                claimed.add(match);node=unmatched.pop(match)
+                try:radius=float(node.get('r'))
+                except (TypeError,ValueError):radius=0.0
+                if not 0<radius<=3.0:errors.append('OVERLAY_LATTICE_DOT_SIZE:'+match)
+            for ident in unmatched:errors.append('OVERLAY_LATTICE_POINT_UNEXPECTED:'+ident)
         # Labels: in the composed figure every overlay line has its equation label, owned by that line. (The model SVG has no labels.)
         if 'data-label-kind' in svg:
             groups={}
             for node in root.iter():
                 if node.tag.split('}')[-1]=='g' and node.get('id'):groups[node.get('id')]=node
+            leaders={node.get('data-owner-label'):node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='leader' and node.get('data-owner-label')}
+            def px_segment(ident):
+                node=lines.get(ident)
+                try:return None if node is None else ((float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2'))))
+                except (TypeError,ValueError):return None
+            def label_belongs(label_id,owner_id,code,strict,others):
+                """The label stands beside its own drawn line/segment: nearest to it by a margin, or tied to it by a leader that starts on it and ends on the label box."""
+                box=_region_label_box(groups,label_id);own=px_segment(owner_id)
+                if box is None or own is None:errors.append(code+'_LABEL_BOX_UNREADABLE:'+label_id);return
+                leader=leaders.get(label_id)
+                if leader is not None:
+                    claimed.add(label_id+'-owner-leader')
+                    try:start=(float(leader.get('x1')),float(leader.get('y1')));end=(float(leader.get('x2')),float(leader.get('y2')))
+                    except (TypeError,ValueError):errors.append(code+'_LEADER_UNREADABLE:'+label_id);return
+                    edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
+                    if leader.get('data-owner')!=owner_id or _ov_point_segment_distance(start,*own)>OV_LEADER_TOLERANCE_PX:errors.append(code+'_LEADER_NOT_ON_OWNER:'+label_id)
+                    if min(_ov_point_segment_distance(end,a,b) for a,b in edges)>OV_LEADER_TOLERANCE_PX:errors.append(code+'_LEADER_NOT_ON_LABEL:'+label_id)
+                    return
+                near_own=_ov_box_segment_distance(box,*own)
+                others=[other for other in others if not _ov_collinear(own,other)]
+                limit,margin=(OV_LABEL_STRICT_OWN_MAX_PX,OV_LABEL_STRICT_MARGIN_PX) if strict else (OV_LABEL_LOOSE_OWN_MAX_PX,OV_LABEL_LOOSE_MARGIN_PX)
+                if near_own>limit:errors.append(code+'_LABEL_NOT_NEAR_OWNER:'+label_id)
+                elif any(_ov_box_segment_distance(box,*other)<near_own+margin for other in others):errors.append(code+'_LABEL_AMBIGUOUS_OWNER:'+label_id)
             for line in expected['lines']:
                 label_id='overlay-line-'+str(line['id'])+'-equation';claimed.add(label_id)
                 node=groups.get(label_id)
                 if node is None:errors.append('OVERLAY_LABEL_MISSING:'+str(line['id']))
                 elif node.get('data-owner')!='overlay-line-'+str(line['id']):errors.append('OVERLAY_LABEL_OWNER_MISMATCH:'+str(line['id']))
                 elif not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_LABEL_EMPTY:'+str(line['id']))
+                else:
+                    # An equation written the ordinary way has no leader and sits within a generous distance of its line, never clearly nearer another
+                    # overlay line; one moved away by the layout's fallback carries a leader that starts on its line and ends on the label box.
+                    label_belongs(label_id,'overlay-line-'+str(line['id']),'OVERLAY_LINE',False,[segment for other in expected['lines'] if other is not line for segment in [px_segment('overlay-line-'+str(other['id']))] if segment is not None])
+            # unnamed:true points carry no name label at all (a coordinate label alone is the `(x,y)` form).
+            for ident in expected['unnamed']:
+                if any(node.get('data-owner')==ident and node.get('data-label-kind')=='POINT_NAME' for node in groups.values()):errors.append('OVERLAY_POINT_NAME_UNEXPECTED:'+ident)
+                if ident in expected['coordinates'] and (groups.get(ident+'-coordinates') is not None and groups[ident+'-coordinates'].get('data-label-kind')!='COORDINATE_LABEL'):errors.append('OVERLAY_COORDINATES_LABEL_NAMED:'+ident)
+            # coordinates:true points: the label is `name(x,y)` or `(x,y)` (integers), owned by its point, nearer to it than to any other overlay point.
+            for ident,(cx,cy) in expected['coordinates'].items():
+                label_id=ident+'-coordinates';claimed.add(label_id);node=groups.get(label_id)
+                want=['28',*_ov_int_codes(cx),'2C',*_ov_int_codes(cy),'29']
+                if node is None:errors.append('OVERLAY_COORDINATES_LABEL_MISSING:'+ident);continue
+                if node.get('data-owner')!=ident or node.get('data-label-kind') not in ('COORDINATE_LABEL','EQUATION_LABEL'):errors.append('OVERLAY_COORDINATES_LABEL_OWNER_MISMATCH:'+ident);continue
+                codes=_ov_glyph_codes(node)
+                head_ok=len(codes)>len(want) if node.get('data-label-kind')=='EQUATION_LABEL' else len(codes)==len(want)
+                if codes[len(codes)-len(want):]!=want or not head_ok:errors.append('OVERLAY_COORDINATES_LABEL_TEXT_MISMATCH:'+ident+':got='+' '.join(codes)+':want=..'+' '.join(want))
+                box=_region_label_box(groups,label_id);own=circles.get(ident)
+                if box is None or own is None:errors.append('OVERLAY_COORDINATES_LABEL_BOX_UNREADABLE:'+ident);continue
+                dot=lambda node_id:(float(circles[node_id].get('cx')),float(circles[node_id].get('cy')))
+                own_distance=_ov_point_box_distance(dot(ident),box)
+                if own_distance>OV_COORDINATE_LABEL_OWN_MAX_PX or any(_ov_point_box_distance(dot(other),box)<own_distance+OV_COORDINATE_LABEL_MARGIN_PX for other in expected['points'] if other!=ident and other in circles):errors.append('OVERLAY_COORDINATES_LABEL_AMBIGUOUS_OWNER:'+ident)
+            # length:true segments: the exact length (an integer or p*sqrt(q)), owned by its segment (strictly nearest, or a leader).
+            for segment in expected['segments']:
+                if 'lengthCodes' not in segment:continue
+                label_id='overlay-segment-'+str(segment['id'])+'-length';claimed.add(label_id);node=groups.get(label_id)
+                if node is None:errors.append('OVERLAY_SEGMENT_LENGTH_LABEL_MISSING:'+str(segment['id']));continue
+                if node.get('data-owner')!='overlay-segment-'+str(segment['id']):errors.append('OVERLAY_SEGMENT_LENGTH_LABEL_OWNER_MISMATCH:'+str(segment['id']));continue
+                codes=_ov_glyph_codes(node)
+                if codes!=segment['lengthCodes']:errors.append('OVERLAY_SEGMENT_LENGTH_LABEL_TEXT_MISMATCH:'+str(segment['id'])+':got='+' '.join(codes)+':want='+' '.join(segment['lengthCodes']));continue
+                others=[px for other in expected['segments'] if other is not segment for px in [px_segment('overlay-segment-'+str(other['id']))] if px is not None]
+                others+=[px for other in expected['lines'] for px in [px_segment('overlay-line-'+str(other['id']))] if px is not None]
+                label_belongs(label_id,'overlay-segment-'+str(segment['id']),'OVERLAY_SEGMENT_LENGTH',True,others)
+            # latticePoints counts:true: one label per column, its digits the column's count, owned by (nearest to) that column's dots.
+            lattice=expected.get('lattice')
+            if lattice is not None and lattice['counts']:
+                dots=[(float(lx),float(ly)) for (lx,ly) in lattice['points']]
+                for column,(count,top) in lattice['columns'].items():
+                    label_id='overlay-lattice-count-x'+('n'+str(-column) if column<0 else str(column));claimed.add(label_id);node=groups.get(label_id)
+                    if node is None:errors.append('OVERLAY_LATTICE_COUNT_LABEL_MISSING:'+str(column));continue
+                    codes=_ov_glyph_codes(node);want=OV_DIGIT(count)
+                    if codes!=want:errors.append('OVERLAY_LATTICE_COUNT_LABEL_TEXT_MISMATCH:'+str(column)+':got='+' '.join(codes)+':want='+' '.join(want));continue
+                    box=_region_label_box(groups,label_id)
+                    if box is None:errors.append('OVERLAY_LATTICE_COUNT_LABEL_BOX_UNREADABLE:'+str(column));continue
+                    centre=to_data(box[0]+box[2]/2,box[1]+box[3]/2)
+                    if abs(centre[0]-column)>.5:errors.append('OVERLAY_LATTICE_COUNT_LABEL_NOT_IN_COLUMN:'+str(column))
+                    nearest=min(dots,key=lambda dot:_ov_point_box_distance((ox+dot[0]*sx,oy-dot[1]*sy),box))
+                    if abs(nearest[0]-column)>1e-9:errors.append('OVERLAY_LATTICE_COUNT_LABEL_AMBIGUOUS_OWNER:'+str(column))
             # A polygon's own label belongs to that polygon and stands wholly inside it (centre and all four corners of the label box).
             for polygon in expected['polygons']:
                 if polygon['label'] is None:continue
@@ -3166,15 +3406,44 @@ def _audit_family(plan,svg,transform):
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
     return {'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
 
+AXIS_TITLE_OBSERVER_PATTERN=r'[가-힣A-Za-z0-9 ()·/.,%-]{1,10}'
+AXIS_TITLE_MAX_DISTANCE_PX=60.0
+
+def axis_titles_audit(plan,svg,transform):
+    """graphPlan.axisTitles: the plan's own check of the titles, then (in a composed figure) each title is a plain-text label of the axis it names,
+    its text read from the group, standing at the end of that axis."""
+    titles=plan.get('axisTitles')
+    if titles is None:return None
+    if not isinstance(titles,dict) or not titles or set(titles)-{'x','y'}:return {'status':'UNSUPPORTED','errors':['AXIS_TITLES_INVALID']}
+    for axis,text in titles.items():
+        if not isinstance(text,str) or text!=text.strip() or not re.fullmatch(AXIS_TITLE_OBSERVER_PATTERN,text):return {'status':'UNSUPPORTED','errors':['AXIS_TITLE_INVALID:'+axis]}
+    if 'data-label-kind' not in svg:return {'status':'PASS','errors':[],'titles':len(titles)}
+    errors=[]
+    try:
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')];xmin,xmax,ymin,ymax=plan['viewport']
+        root=ET.fromstring(svg);groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
+        for axis,text in titles.items():
+            label_id='axis-'+axis;node=groups.get(label_id)
+            if node is None:errors.append('AXIS_TITLE_MISSING:'+axis);continue
+            # a plain-text label: the text on its group, no math glyph codes, no TeX
+            if node.get('data-label-kind')!='GRAPH_ANNOTATION' or node.get('data-text')!=text or node.get('data-tex') is not None or _ov_glyph_codes(node):errors.append('AXIS_TITLE_TEXT_MISMATCH:'+axis);continue
+            box=_region_label_box(groups,label_id)
+            if box is None:errors.append('AXIS_TITLE_BOX_UNREADABLE:'+axis);continue
+            end=(ox+xmax*sx,oy) if axis=='x' else (ox,oy-ymax*sy)
+            if _ov_point_box_distance(end,box)>AXIS_TITLE_MAX_DISTANCE_PX:errors.append('AXIS_TITLE_NOT_AT_AXIS_END:'+axis)
+    except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['AXIS_TITLE_SOURCE_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'titles':len(titles)}
+
 def audit(plan,svg,transform):
-    """The family audit plus the optional graph overlays: the observer re-derives every overlay element from the raw overlays field and
-    reads the same element ids back from the model and the final SVG."""
+    """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
+    field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform)
-    if plan.get('overlays') is None:return result
-    overlay=overlays_audit(plan,svg,transform)
-    if overlay is None:return result
-    errors=sorted(set([*(result.get('errors') or []),*(overlay.get('errors') or [])]))
-    if result.get('status')=='UNSUPPORTED' or overlay.get('status')=='UNSUPPORTED':status='UNSUPPORTED'
-    elif result.get('status')=='FAIL' or overlay.get('status')=='FAIL' or errors:status='FAIL'
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform)) if part is not None]
+    if not parts:return result
+    errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
+    if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'
+    elif result.get('status')=='FAIL' or any(part.get('status')=='FAIL' for part in parts) or errors:status='FAIL'
     else:status='PASS'
-    return {**result,'status':status,'errors':errors,'overlays':overlay}
+    merged={**result,'status':status,'errors':errors}
+    if plan.get('overlays') is not None and parts:merged['overlays']=parts[0]
+    return merged

@@ -170,12 +170,21 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
         framedPanels.push({caption:panel.caption,plan:panelPlan});panelModels.push(m.result);
         panelSizes.push({width:spec.viewport.width,height:spec.viewport.height});
       }
-      plan={...current,panels:framedPanels};const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),comp.compositePanelLayout(checked));
-      stage='measure';
-      measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${attempt?'-retry'+attempt:''}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      stage='compose';
-      composed=await comp.composeCompositeCandidate({plan,panels:framedPanels.map((panel,i)=>({plan:panel.plan,model:panelModels[i]})),identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});
+      plan={...current,panels:framedPanels};const stackLayout=comp.compositePanelLayout(checked);
+      // The caption rows are as tall as the captions need at the measured font (E7): a figure whose captions fit keeps the standard row, so its measured size is the
+      // first one; when the composed figure came out taller (or shorter) than measured, the policy is measured again for the size it really has and composed again.
+      let captionRow=comp.COMPOSITE_CAPTION_ROW;
+      for(let pass=0;pass<3;pass++){
+        const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),stackLayout,captionRow);
+        stage='measure';
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${attempt?'-retry'+attempt:''}${pass?'-size'+pass:''}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+        stage='compose';
+        composed=await comp.composeCompositeCandidate({plan,panels:framedPanels.map((panel,i)=>({plan:panel.plan,model:panelModels[i]})),identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});
+        const composedHeight=composed.status==='COMPOSED'?Number(/<svg [^>]*\sheight="([\d.]+)"/.exec(composed.svg)?.[1]):height;
+        if(composed.status!=='COMPOSED'||!(composedHeight>0)||Math.abs(composedHeight-height)<1e-6)break;
+        captionRow+=(composedHeight-height)/stackLayout.rows;
+      }
       const failed=composed.status==='COMPOSITE_PANEL_NOT_COMPOSED'&&composed.detail?.status==='LAYOUT_INVENTORY_INCOMPLETE'?composed.detail:null;
       if(!failed||attempt===2)break;
       // A plane panel has no graph band or y-squeeze fallback: its own observer reports the label it could not place, and the panel fails as written.

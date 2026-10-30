@@ -1,0 +1,126 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "42",
+   "0"
+  ],
+  "denominator": [
+   "0",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -8,
+   8
+  ],
+  "viewport": [
+   -8,
+   8,
+   -8,
+   8
+  ],
+  "formulaLabel": "y=42/x",
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "-6",
+     "y": "-3",
+     "coordinates": true,
+     "labelDirection": "NW"
+    },
+    {
+     "id": "B",
+     "curveX": "-6",
+     "coordinates": true,
+     "labelDirection": "SW"
+    },
+    {
+     "id": "C",
+     "x": "-2",
+     "y": "-7",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "D",
+     "x": "-2",
+     "y": "-3",
+     "coordinates": true,
+     "labelDirection": "NE"
+    },
+    {
+     "id": "O",
+     "x": "0",
+     "y": "0"
+    }
+   ],
+   "segments": [
+    {
+     "id": "sAB",
+     "from": "A",
+     "to": "B",
+     "length": true,
+     "labelDirection": "W"
+    },
+    {
+     "id": "sBC",
+     "from": "B",
+     "to": "C"
+    },
+    {
+     "id": "sCD",
+     "from": "C",
+     "to": "D"
+    },
+    {
+     "id": "sDA",
+     "from": "D",
+     "to": "A",
+     "length": true,
+     "labelDirection": "N"
+    },
+    {
+     "id": "sOA",
+     "from": "O",
+     "to": "A"
+    }
+   ]
+  },
+  "displayWindow": [
+   -9,
+   3,
+   -10,
+   2
+  ],
+  "formulaAt": [
+   -7.6,
+   -9
+  ]
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B",
+  "C": "C",
+  "D": "D",
+  "O": "O"
+ },
+ "caption": "한 변이 4인 정사각형 ABCD에서 A(-6,-3)은 정비례 y=x/2의 그래프 위에 있고, B(-6,-7)은 반비례 y=42/x의 그래프 위에 있다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "넓이가 16인 정사각형 ABCD, D(-2,-3), A와 D의 y좌표가 같고 A는 y=ax 위, B는 y=b/x 위",
+   "mappedTo": [
+    "graphPlan.overlays"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "A(-6,-3), B(-6,-7), C(-2,-7), D(-2,-3)과 A를 지나는 y=x/2, B를 지나는 y=42/x의 그래프 위치 관계"
+ ],
+ "sourceQuote": "점 $A$가 $y=ax$의 그래프 위의 점이므"
+}

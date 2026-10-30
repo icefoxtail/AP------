@@ -802,7 +802,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC를 한 가지로 작도할 수 있는지 비교하는 그림: 왼쪽 ㄷ은 AB=6, BC=5, ∠A=45°에서 반직선과 B를 중심으로 한 반지름 5의 호가 두 점에서 만나 삼각형이 두 가지로 그려지고, 오른쪽 ㄹ은 세 각이 같아도 크기가 다른 삼각형이 그려진다.",
+    "solutionImageCaption": "ㄷ은 두 가지, ㄹ은 크기가 다른 삼각형이 그려져 한 가지로 정해지지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

@@ -39,7 +39,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체의 꼭짓점 8개에 번호 1~8을, 모서리 12개에 번호 ①~⑫를 붙이고, 세로 모서리는 빨강, 위 모서리는 굵게, 보이지 않는 모서리는 점선으로 구분해 센 그림이다.",
+    "solutionImageCaption": "직육면체의 꼭짓점 8개와 모서리 12개를 번호로 센다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -79,7 +83,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 다섯 점 A, B, C, D, E에서 두 점씩 이은 선분을 빠짐없이 그어 보인 그림.",
+    "solutionImageCaption": "원 위의 다섯 점 중 두 점씩 이은 직선을 모두 그린 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -119,7 +127,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나 생긴 마주 보는 두 각 a, b가 각각 60°로 같은 호로 표시되고, 위쪽의 이웃한 각은 x로 표시된 그림.",
+    "solutionImageCaption": "맞꼭지각 a, b는 크기가 같고 각 x는 이웃한 각이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -159,7 +171,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 점 A(5,4)에서 x축까지, 점 B(2,7)에서 y축까지 점선 수선을 내려 길이 a=4, b=2를 표시한 그림.",
+    "solutionImageCaption": "점에서 축까지의 거리는 수선의 길이이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -199,7 +215,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 AD 위의 점 O에서 OF가 수직이고 각 EOD=60°, 각 AOE=120°이며, 같은 호로 표시한 맞꼭지각 FOE와 BOC를 나타낸 그림.",
+    "solutionImageCaption": "각 EOD, AOE의 크기와 맞꼭지각 FOE, BOC의 관계를 보인 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -225,7 +245,7 @@ window.questionBank = [
       "모서리 $AB$와 꼬인 위치에 있는 모서리는 $2$개이다."
     ],
     "answer": "④",
-    "solution": "삼각기둥의 모서리와 면의 관계를 하나씩 확인한다.\n\n① 면 $ABC$와 평행한 면은 $1$개\n② $BE$와 수직인 면이 $3$개는 아님\n③ $BE$와 평행한 모서리가 $3$개는 아님\n④ $EF$와 수직으로 만나는 모서리는 $3$개\n⑤ $AB$와 꼬인 위치인 모서리가 $2$개는 아님\n\n따라서 옳은 것은 ④이다.",
+    "solution": "삼각기둥의 모서리와 면의 관계를 하나씩 확인한다.\n\n① 면 $ABC$와 평행한 면은 다른 밑면 $DEF$ 하나뿐이므로 $1$개이다.\n② 모서리 $BE$는 두 밑면 $ABC$, $DEF$에만 수직이므로 수직인 면은 $2$개이다.\n③ 모서리 $BE$와 평행한 모서리는 옆모서리 $AD$, $CF$뿐이므로 $2$개이다.\n④ $\\angle DEF=90^\\circ$이므로 $DE\\perp EF$이고, 옆모서리 $BE$, $CF$는 밑면에 수직이므로 $EF$와 수직이다. 따라서 $EF$와 수직으로 만나는 모서리는 $DE$, $BE$, $CF$의 $3$개이다.\n⑤ $AB$와 만나는 모서리($AC$, $AD$, $BC$, $BE$)와 평행한 모서리($DE$)를 뺀 $CF$, $DF$, $EF$가 꼬인 위치이므로 $3$개이다.\n\n따라서 옳은 것은 ④이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q6.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -239,7 +259,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥 ABC-DEF를 네 번 그려 두 밑면과 모서리 BE, BE와 평행한 AD·CF, EF와 수직인 DE·BE·CF, AB와 꼬인 위치의 CF·DF·EF를 각각 빨강과 굵은 선으로 구분해 보여 준다.",
+    "solutionImageCaption": "삼각기둥에서 모서리 사이의 평행, 수직, 꼬인 위치 관계를 모서리별로 구분한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -320,7 +344,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:594ffe3e7e2064c8873972557179be9967922c05b40369dbd31f57fdf53d291b",
-    "difficultyEvidenceSha": "sha256:e453fe0717d6794db455959fd7077ad35a5ad325d84772806fa0581cf01dd1ed"
+    "difficultyEvidenceSha": "sha256:e453fe0717d6794db455959fd7077ad35a5ad325d84772806fa0581cf01dd1ed",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행선 l, m, n과 꺾인 선분에서 150°의 바깥각 30°, l과 m에서의 각 2x와 3x, y와 이웃한 각 35°, 55°를 표시한 그림.",
+    "solutionImageCaption": "평행선과 꺾인 선분에서 2x, 3x, 30°, 35°의 관계를 보인 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -346,7 +374,7 @@ window.questionBank = [
       "$36^\\circ$"
     ],
     "answer": "②",
-    "solution": "$AD\\parallel BC$이다.\n\n접는 선 $FG$가 윗변과 이루는 각에서\n$GF$와 수평 방향이 이루는 각은 $70^\\circ$\n\n평행선이므로\n$x=70^\\circ$\n\n접으면 원래 윗변과 접힌 변이 $FG$를 기준으로 같은 각을 이루므로\n$G$에서 접힌 변의 방향은 대칭이다.\n\n따라서\n$y=40^\\circ$\n\n그러므로\n$x-y=70^\\circ-40^\\circ=30^\\circ$\n\n정답은 ②이다.",
+    "solution": "$AD\\parallel BC$이다.\n\n$x$의 크기를 구한다.\n평행선에서 동측내각의 크기의 합은 $180^\\circ$이므로\n$\\angle DGF+\\angle GFC=180^\\circ$\n$110^\\circ+x=180^\\circ$, 즉 $x=70^\\circ$이다.\n\n$y$의 크기를 구한다.\n접은 각이므로 $\\angle GFE=\\angle GFC=x=70^\\circ$이다.\n또 $\\angle EGF=180^\\circ-\\angle DGF=180^\\circ-110^\\circ=70^\\circ$이다.\n삼각형 $EFG$의 세 내각의 합은 $180^\\circ$이므로\n$y=\\angle GEF=180^\\circ-70^\\circ-70^\\circ=40^\\circ$이다.\n\n그러므로\n$x-y=70^\\circ-40^\\circ=30^\\circ$\n\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q9.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -360,7 +388,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 종이테이프의 접는 선 FG에서 동측내각 x=70°, 접은 각 GFE=70°, 각 EGF=70°, 삼각형 EFG의 각 y=40°를 표시한 그림.",
+    "solutionImageCaption": "종이를 접었을 때 같아지는 각과 삼각형 EFG의 각을 보인 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -400,7 +432,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 복사 작도 그림으로, O와 P를 중심으로 한 같은 반지름의 호가 만드는 OA, OB, PC, PD에는 눈금 1개, 컴퍼스로 옮긴 현 AB와 CD에는 눈금 2개가 표시되고 PC와 CD에는 같은 눈금이 없다.",
+    "solutionImageCaption": "같은 반지름 OA=OB=PC=PD와 옮긴 현 AB=CD를 눈금으로 구분한 각 복사 작도.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -437,7 +473,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: BC, ∠C, AB가 같을 때 B를 중심으로 반지름 AB인 원이 C에서 나간 반직선과 두 점에서 만나, 점 A가 C에 가까운 경우와 먼 경우의 서로 다른 삼각형 ABC 두 개를 나란히 보인 그림(길이와 각의 크기는 예).",
+    "solutionImageCaption": "같은 BC, ∠C, AB에서 점 A가 두 곳에 놓여 삼각형이 두 개 생기는 모습(그린 크기는 예).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -517,7 +557,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 정삼각형 ABC와 ECD가 B, C, D가 한 직선 위에 놓인 그림을 두 개 나란히 놓고, 왼쪽은 삼각형 ACD, 오른쪽은 삼각형 BCE를 빨간 변으로 강조했다. AC=BC와 CD=CE의 같은 길이 눈금과 C에서의 120° 각이 두 삼각형에 같은 순서로 나타난다.",
+    "solutionImageCaption": "△ACD와 △BCE가 AC=BC, CD=CE, 끼인각 120°로 대응하는 모습을 강조한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -557,7 +601,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC와 DCE가 B, D, E가 한 직선 위에 놓인 그림으로, BC=AC와 CD=CE의 같은 길이 눈금, ∠BCD=∠ACE=42°, ∠BDC=120°가 표시되고 ∠CBD와 ∠CAE는 같은 파란 호로 묶여 있다.",
+    "solutionImageCaption": "BC=AC, CD=CE, ∠BCD=∠ACE이고 ∠CBD와 ∠CAE가 같음을 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -634,7 +682,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 삼각형이 꼭짓점에서 맞닿은 그림으로, 교점에서 왼쪽 삼각형의 각 95°와 맞꼭지각 95°가 같은 빨간 호로 표시되고 y=25°, 직선 위의 이웃한 각 x=85°와 40°, 45°, 60°가 쓰여 있다.",
+    "solutionImageCaption": "교점의 각 95°와 맞꼭지각 95°에서 y=25°와 x=85°를 구하는 과정을 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -674,7 +726,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안의 점 O에 B, C를 이은 그림으로, 사각형 ABOC의 내각 85°, 20°, 25°와 O에서 표시된 각 x, 그 바깥쪽 안쪽 각 360°-x가 표시되어 있다.",
+    "solutionImageCaption": "사각형 ABOC의 내각 85°, 20°, 25°와 O의 안쪽 각 360°-x를 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -748,7 +804,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "STRONG_CONFLICT"
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 예로 든 정오각형과 정육각형의 아래 변 위의 점에서 나머지 꼭짓점으로 빨간 선분을 그어 번호 1부터의 삼각형으로 나눈 그림이다. 5각형은 삼각형 4개, 6각형은 5개로 n각형이면 n−1개이다.",
+    "solutionImageCaption": "한 변 위의 점에서 n각형의 꼭짓점으로 선분을 그으면 삼각형이 n−1개 생긴다(그림은 5각형, 6각형의 예). 문제의 삼각형 14개는 n−1=14에 해당한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -785,7 +845,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 꼭짓점에서 그은 빨간 대각선이 5각형, 6각형, 또 다른 다각형을 번호 붙은 삼각형으로 나누는 세 그림이다. 5각형은 대각선 2개와 삼각형 3개, 6각형은 대각선 3개와 삼각형 4개이고, 셋째 그림에 n각형이면 대각선 n−3개, 삼각형 n−2개라고 적었다.",
+    "solutionImageCaption": "n각형이면 꼭짓점의 개수 A=n, 한 꼭짓점에서 그을 수 있는 대각선 B=n−3, 이 대각선들이 나누는 삼각형 C=n−2이다(그림은 5각형, 6각형의 예와 확인용 그림).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -829,7 +893,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:bffbe6096c969bf47ce7b425c09f9fafd230ad6ff5fa72870243016a315279f1",
-    "difficultyEvidenceSha": "sha256:a2b68fcadcff088a700ff2d4fe9aafb32ce91fc813ff3f4cf6d9d4d7d0234eac"
+    "difficultyEvidenceSha": "sha256:a2b68fcadcff088a700ff2d4fe9aafb32ce91fc813ff3f4cf6d9d4d7d0234eac",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각형의 각 꼭짓점에서 한 변씩을 연장해 외각 60°, x, 80°, 65°, 90°를 빨간 호로 표시한 그림이다.",
+    "solutionImageCaption": "오각형의 외각 다섯 개를 호로 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -873,7 +941,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:806a60acf41eaf40dc2df285cce9aa349e4e689dec99310a4f92bd5f64804124",
-    "difficultyEvidenceSha": "sha256:c3f75801b12b5ed3b7285bec5cee0fe36dc671fb6651b3547fd24d137dad7723"
+    "difficultyEvidenceSha": "sha256:c3f75801b12b5ed3b7285bec5cee0fe36dc671fb6651b3547fd24d137dad7723",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변을 공유한 정오각형과 정육각형의 공통 꼭짓점 둘레에 a=108°, b=120°, c=132°가 있고, 두 변의 연장선이 만든 사각형의 나머지 각 d=72°, e=60°, f=96°가 표시된 그림이다.",
+    "solutionImageCaption": "정오각형과 정육각형의 각 a~f의 크기를 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -908,7 +980,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m과 한 직선이 만나는 그림에서 위쪽 교점의 2x+50°와 그 맞꼭지각, 아래쪽 교점의 x-20°를 표시해 맞꼭지각과 x-20°가 같은 쪽 내각(빨강)임을 보여 준다.",
+    "solutionImageCaption": "2x+50°의 맞꼭지각과 x-20°가 같은 쪽 내각임을 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -944,7 +1020,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: B, F, C, E가 한 직선 위에 있고 AB∥ED, AC∥FD인 두 삼각형에서 BF=CE 눈금, 공통 변 FC(굵은 선), 같은 호로 묶인 엇각 두 쌍이 표시된 그림이다.",
+    "solutionImageCaption": "합동인 △ABC와 △DEF의 대응 변과 각을 표시한 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 25,

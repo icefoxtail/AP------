@@ -73,7 +73,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 y=-12/x의 쌍곡선이 제2·4사분면에 놓이고, 곡선 위의 점 (-3,4), (3,-4)와 곡선 위에 있지 않은 점 (-3,-4)를 점선으로 이어 비교한 그림",
+    "solutionImageCaption": "y=-12/x의 그래프는 제2사분면과 제4사분면에 있고 (-3,-4)는 그래프 위의 점이 아니다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -113,7 +117,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각뿔의 꼭짓점에 번호를 붙이고, 밑면의 모서리(검정)와 옆모서리(빨강)에 번호를 붙여 보이지 않는 모서리를 점선으로 나타낸 그림이다.",
+    "solutionImageCaption": "오각뿔의 꼭짓점과 밑면, 옆모서리에 번호를 붙여 센 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -224,7 +232,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:79cf48f81296c4aa063d4bc6c344bb7ed2f5ed00f1bcdb06f6365fd0dc6b119f",
-    "difficultyEvidenceSha": "sha256:29f26065348b625cba10c799ef3127d21debff67176d323f992a086f68abc056"
+    "difficultyEvidenceSha": "sha256:29f26065348b625cba10c799ef3127d21debff67176d323f992a086f68abc056",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠AOB와 같은 각을 O'X를 한 변으로 옮기는 작도 그림으로, 같은 반지름의 호(OC=OD=O'E=O'F)와 옮긴 현의 길이 CD=EF, 기호 ㉠~㉤ 위치를 보여 준다.",
+    "solutionImageCaption": "같은 반지름의 호와 옮긴 현 길이 CD=EF로 ∠AOB와 크기가 같은 각이 작도된다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -264,7 +276,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 점에서 만나는 세 직선에서, 아래쪽 2x°와 (2x+10)°의 맞꼭지각을 같은 색의 호로 위쪽에 옮겨 놓아 한 직선 위에 2x°, (4x+50)°, (2x+10)°가 이어짐을 보여 주는 그림",
+    "solutionImageCaption": "맞꼭지각을 위쪽에 옮기면 한 직선 위의 세 각 2x°, (4x+50)°, (2x+10)°의 합이 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -303,7 +319,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 AB=11cm 선분에 4cm와 6cm 괄호를 놓아 합이 11cm에 못 미침을 보이고, 오른쪽에는 BC=11cm, ∠B=28°에서 반지름 8cm인 원호가 반직선과 두 점에서 만나 삼각형이 두 개 생김을 보이는 그림",
+    "solutionImageCaption": "①은 6+4<11이라 삼각형이 만들어지지 않고, ④는 원호가 반직선과 두 점에서 만나 삼각형이 두 개 생긴다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -343,7 +363,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D에서 반직선 AB·AC, BC, CD가 각각 어느 점에서 시작해 오른쪽으로 뻗는지 네 칸으로 나누어 빨간색으로 보이고, 반직선 AD와 CD가 겹치는 부분을 함께 보여 주는 그림",
+    "solutionImageCaption": "반직선은 시작점과 뻗는 방향으로 정해지며, 반직선 AD와 CD가 겹치는 부분은 C에서 시작한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -383,7 +407,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 종이를 접은 그림에서 접는 선(빨강), 150°의 보각 30°와 접어서 생긴 같은 크기의 30°, 그리고 이 둘과 삼각형을 이루는 ∠x를 표시한 그림",
+    "solutionImageCaption": "150°의 보각 30°와 접어서 생긴 같은 크기의 30°가 ∠x와 함께 삼각형을 이룬다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -423,7 +451,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동인 △ABC와 △BDE의 대응각(28°끼리, 62°끼리)을 같은 수의 호로 표시하고 ∠B=90°, ∠ABF=62°와 구하는 ∠AFB를 나타낸 그림",
+    "solutionImageCaption": "합동의 대응각 28°, 62°와 ∠ABF=62°로 △ABF의 나머지 각 ∠AFB를 구한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -463,7 +495,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 꺾인 점에서 l, m에 평행한 보조선을 긋고 엇각 40°, 55°를 옮겨 표시하고 보조선 사이에 낀 두 각의 합이 180°임을 나타낸 그림",
+    "solutionImageCaption": "보조선으로 엇각 40°, 55°를 옮기면 x+y는 180°에 40°와 55°를 더한 값이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -500,7 +536,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동 조건 다섯 가지를 같은 변(눈금 수)과 같은 각(호)으로 나란히 보이고 마지막은 끼인각이 아닌 각만 같아 삼각형이 달라질 수 있음을 나타낸 그림",
+    "solutionImageCaption": "각 보기의 같은 변과 같은 각의 위치를 비교해 끼인각이 아닌 경우를 찾는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -574,7 +614,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 네 사분면에 x좌표, y좌표의 부호 (+,+), (-,+), (-,-), (+,-)를 표시하고 제4사분면에 점 P를 나타낸 그림",
+    "solutionImageCaption": "P가 제4사분면 위의 점이므로 a>0, b<0이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -601,7 +645,7 @@ window.questionBank = [
       "면 $AGC$와 만나는 면은 $4$개다."
     ],
     "answer": "④",
-    "solution": "그림의 절단면과 모서리 관계를 확인한다.\n\n① $AC$와 $BE$는 공간에서 만나지 않는다.\n② $AD$와 $CG$는 평행하지 않는다.\n③ $AG$와 꼬인 위치인 모서리는 5개이다.\n④ 면 $AGC$와 평행한 모서리는 없다.\n⑤ 면 $AGC$와 만나는 면의 수는 보기의 진술과 일치하지 않는다.\n\n따라서 옳은 것은 ④이다.",
+    "solution": "그림의 절단면과 모서리 관계를 확인한다.\n\n① $AC$와 $BE$는 공간에서 만나지 않고 평행하지도 않으므로 꼬인 위치이다.\n② $AD$와 $CG$는 평행하지 않다(만나지도 않는 꼬인 위치).\n③ $AG$와 만나지도 평행하지도 않은 모서리는 $BC$, $BE$, $CF$, $DE$, $EF$의 $5$개이다. ($4$개가 아니다.)\n④ $AB$, $AD$, $BC$, $CF$, $DG$, $FG$는 점 $A$, $C$, $G$에서 면 $AGC$와 만나고, $BE$, $DE$, $EF$는 각각 $AD$, $AB$, $BC$와 같은 방향의 모서리이므로 연장하면 면 $AGC$와 만난다. 따라서 면 $AGC$와 평행한 모서리는 없다.\n⑤ 면 $AGC$와 모서리를 공유하며 만나는 면은 면 $ABC$, 면 $ADG$, 면 $CFG$의 $3$개이다. ($4$개가 아니다.)\n\n따라서 옳은 것은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -619,7 +663,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:06f0587768aa48b02ecf2fd65fe8052e52864c4c4ce4d325655b7516b8f1e3ee",
-    "difficultyEvidenceSha": "sha256:74a478c8bd1447e674909c94339dfbc414d4d2fc77d85b2f63cdbde69133743f"
+    "difficultyEvidenceSha": "sha256:74a478c8bd1447e674909c94339dfbc414d4d2fc77d85b2f63cdbde69133743f",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체를 세 꼭짓점 A, G, C를 지나는 평면으로 잘라 한 꼭짓점을 떼어 낸 입체로, 절단면 AGC가 주황색으로 칠해져 있고 남은 일곱 꼭짓점 A~G에 이름이 붙어 있다.",
+    "solutionImageCaption": "세 꼭짓점 A, G, C를 지나는 평면으로 자른 입체와 절단면 AGC",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -659,7 +707,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O(0주)에 기준 9 kg을 표시하고, 1주부터 6주까지 여섯 점에 몸무게 8.5, 8, 8, 9, 10, 10.5(kg)를 표시하며 1주 후의 점을 빨간 선으로 강조한 그림",
+    "solutionImageCaption": "원점 O는 12개월 때의 기준 9 kg이고, 세로축 y는 9 kg에서 변한 양이므로 몸무게는 9+y이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -699,7 +751,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB 위의 점 C, M에서 AC=L/4, CM=MB=3L/8, AM=5cm, AB=L인 길이 관계를 치수선으로 나타낸 그림",
+    "solutionImageCaption": "AB=L이라 하면 AM=AC+CM=5L/8이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -739,7 +795,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥의 전개도와 접은 모양에서 세 옆모서리 AB(=ID), JC, HE를 빨강으로 표시해 서로 평행함을 나타낸 그림이다.",
+    "solutionImageCaption": "전개도와 접은 삼각기둥에서 평행한 세 옆모서리",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -811,7 +871,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 사각형 ABCD에서 세로로 평행한 변 AB=7, CD=3과 두 변 사이의 거리인 BC=10을 표시하고 사각형 안을 연하게 칠한 그림이다.",
+    "solutionImageCaption": "평행한 두 변 AB, CD와 두 변 사이의 거리 BC를 나타낸 사다리꼴 ABCD",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -847,7 +911,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC에서 BC 위의 점 D, CA 위의 점 E를 잡아 △ABD(빨강)와 △BCE(검정 굵은 선)를 강조하고, AB=BC, BD=CE 눈금과 ∠ABD, ∠BCE의 60° 호를 표시한 그림이다.",
+    "solutionImageCaption": "△ABD와 △BCE에서 대응하는 두 변과 끼인각이 각각 같음을 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -869,8 +937,8 @@ window.questionBank = [
     "imageSize": "tall",
     "content": "아래 그림은 직선 $l$위에 있지 않은 한 점 $P$를 지나고 직선 $l$에 평행한 직선을 작도한 것이다.",
     "choices": [],
-    "answer": "(1) 점 $P$와 직선 $l$ 위의 한 점 $A$를 지나는 직선 $m$을 긋고, 점 $A$를 중심으로 호를 그어 $m$, $l$과 만나는 점을 각각 $B$, $C$라 한다. 점 $P$를 중심으로 같은 반지름의 호를 그어 $m$과 만나는 점을 $Q$라 하고, $\\overline{BC}$의 길이를 반지름으로 하여 점 $Q$를 중심으로 호를 그어 앞의 호와 만나는 점을 $R$이라 한 뒤 직선 $PR$을 긋는다. (2) 두 직선이 한 직선과 만날 때 엇각의 크기가 같으면 두 직선은 평행하다.",
-    "solution": "(1)\n점 $P$와 직선 $l$ 위의 점 $A$를 지나는 직선 $m$을 긋는다.\n\n점 $A$를 중심으로 호를 그어\n$m,l$과 만나는 점을 $B,C$라 한다.\n\n점 $P$를 중심으로 같은 반지름의 호를 그어\n$m$과 만나는 점을 $Q$라 한다.\n\n$BC$의 길이를 컴퍼스로 옮겨\n점 $Q$를 중심으로 앞의 호와 만나는 점 $R$을 잡는다.\n\n직선 $PR$을 긋는다.\n\n(2)\n이때\n$\\angle BCA=\\angle QRP$\n\n두 직선이 한 직선과 만날 때\n엇각의 크기가 같으면 두 직선은 평행하므로\n\n$PR\\parallel l$",
+    "answer": "(1) ㄱ → ㅁ → ㅂ → ㄷ → ㄹ → ㄴ (ㅂ과 ㄷ은 순서를 바꾸어도 된다) (2) 두 직선이 한 직선과 만날 때 엇각의 크기가 같으면 두 직선은 평행하다.",
+    "solution": "(1)\nㄱ 점 $P$와 직선 $l$ 위의 점 $A$를 지나는 직선 $m$을 긋는다.\n\nㅁ 점 $A$를 중심으로 호를 그어\n$m,l$과 만나는 점을 $B,C$라 한다.\n\nㅂ 컴퍼스로 $BC$의 길이를 잰다.\n\nㄷ 점 $P$를 중심으로 같은 반지름의 호를 그어\n$m$과 만나는 점을 $Q$라 한다.\n\nㄹ $BC$의 길이를 컴퍼스로 옮겨\n점 $Q$를 중심으로 앞의 호와 만나는 점 $R$을 잡는다.\n\nㄴ 직선 $PR$을 긋는다.\n\n따라서 작도 순서는 ㄱ → ㅁ → ㅂ → ㄷ → ㄹ → ㄴ이다. ($BC$를 재는 ㅂ과 점 $P$를 중심으로 호를 긋는 ㄷ은 서로 순서를 바꾸어도 된다.)\n\n(2)\n작도에서 $AB=PQ$, $AC=PR$, $BC=QR$이므로\n$\\triangle ABC\\equiv\\triangle PQR$이다.\n\n이때 직선 $m$이 두 직선 $l$, $PR$과 만나서 생기는 엇각\n$\\angle BAC=\\angle QPR$\n\n두 직선이 한 직선과 만날 때\n엇각의 크기가 같으면 두 직선은 평행하므로\n\n$PR\\parallel l$",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -883,7 +951,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 점 A, 점 P를 지나는 직선 m과 평행선 PR 작도에서 호 ㅁ, ㅂ, ㄷ, ㄹ과 직선 ㄱ, ㄴ을 표시하고, AB=PQ, AC=PR, BC=QR 눈금과 엇각 ∠BAC, ∠QPR의 표시를 나타낸 그림이다.",
+    "solutionImageCaption": "평행선 작도 과정과 같은 길이, 엇각 ∠BAC=∠QPR를 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -918,6 +990,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 y=10/x의 그래프가 점 (2,5)를 지남을 점선으로 보이고, 제3사분면 그래프 위에서 두 좌표가 모두 정수인 점들을 점으로 표시한 그림이다.",
+    "solutionImageCaption": "y=10/x의 그래프와 주어진 점 (2,5), 제3사분면의 정수 좌표 점들",
+    "solutionImageSize": "medium"
   }
 ];

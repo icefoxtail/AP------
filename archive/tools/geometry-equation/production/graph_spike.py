@@ -558,6 +558,12 @@ def _overlay_model_svg(plan,transform):
     for point in features['points']:
         x,y=screen(point['x'],point['y'])
         parts.append(f'<circle id="{point["id"]}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="3.2" fill="#111" stroke="black"/>')
+    lattice=features.get('latticePoints')
+    if lattice:
+        token=lambda value:'n'+str(-value) if value<0 else str(value)
+        for dot in lattice['points']:
+            x,y=screen(dot['x'],dot['y'])
+            parts.append(f'<circle id="overlay-lattice-x{token(dot["x"])}y{token(dot["y"])}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="2.4" fill="#111" stroke="black"/>')
     return ''.join(parts)
 
 def produce(plan):

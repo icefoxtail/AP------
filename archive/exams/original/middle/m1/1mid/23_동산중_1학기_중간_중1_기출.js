@@ -311,7 +311,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_동산중_1학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -6, -3, 0, 2, 5에 해당하는 다섯 점이 왼쪽에서 오른쪽으로 차례로 놓여 있어 오른쪽일수록 큰 수임을 보여 준다.",
+    "solutionImageCaption": "수직선에서는 오른쪽에 있을수록 큰 수이므로 다섯 수를 수직선 위에 놓고 크기를 비교한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -350,7 +354,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_동산중_1학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 3등분 눈금이 있는 수직선에서 원점 0을 기준으로 왼쪽의 점 B와 오른쪽의 점 A가 같은 거리에 놓여 있고, A의 위치만 2/3으로 표시되어 있다. 제목에 A가 B보다 4/3 크다는 조건이 적혀 있다.",
+    "solutionImageCaption": "절댓값이 같은 두 수 A, B는 원점을 기준으로 대칭이며 A가 B보다 4/3 크므로 A가 오른쪽에 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -590,7 +598,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_동산중_1학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체 전개도에서 a, -2/5, -2/3, c가 가로로 이어지고 a의 위에 b, 아래에 1/4이 붙어 있으며, 접었을 때 마주 보는 면인 a와 -2/3, -2/5와 c를 같은 색으로 칠해 보여 준다.",
+    "solutionImageCaption": "전개도를 접으면 마주 보는 면끼리 같은 색으로 칠한 쌍이 된다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,

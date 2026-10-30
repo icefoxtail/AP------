@@ -211,7 +211,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥 ABC-DEF를 두 개 나란히 그려, 왼쪽에는 모서리 DF와 DE가 점 D에서 만나는 모양을, 오른쪽에는 모서리 AB와 EF가 만나지도 평행하지도 않는 꼬인 위치임을 빨간색 모서리로 나타낸 그림.",
+    "solutionImageCaption": "삼각기둥에서 DF와 DE는 한 점 D에서 만나고, AB와 EF는 만나지도 평행하지도 않아 꼬인 위치이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -248,7 +252,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체의 한 꼭짓점에서 만나는 세 면 P(앞면), Q(윗면), R(오른쪽 옆면)을 서로 다른 색으로 칠한 그림으로, P와 Q, Q와 R이 각각 수직이어도 P와 R은 평행하지 않고 수직으로 만나는 모습",
+    "solutionImageCaption": "P와 Q, Q와 R이 각각 수직이어도 P와 R은 평행하지 않다. 직육면체의 한 꼭짓점에서 만나는 세 면이 그 예이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -327,7 +335,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 평행한 직선 l, m과 한 직선이 만나는 그림에서 l 아래쪽의 118°와 m 위쪽의 62°를 같은 쪽 내각으로 표시하고 두 직선의 평행 표시를 나타낸 그림",
+    "solutionImageCaption": "같은 쪽 내각 118°와 62°의 합이 180°이므로 l와 m은 평행하다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -530,7 +542,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 보기 ㄴ과 ㅂ 두 삼각형에서 길이 4cm인 변을 굵게 나타내고, 그 양 끝 각 60°(빨간 한 겹 호)와 50°(파란 두 겹 호)가 같음을 보인 그림. ㄴ의 나머지 각은 70°이다.",
+    "solutionImageCaption": "ㄴ은 세 번째 각이 180°-60°-70°=50°이므로, ㄴ과 ㅂ은 길이가 4cm인 변의 양 끝 각이 60°, 50°로 각각 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -570,7 +586,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 대각선이 점 O에서 수직으로 만나는 마름모 ABCD에서 OA=OC=3cm, OB=OD=4cm, 네 변이 같음을 표시하고 대응하는 삼각형 OBC와 ODA를 색칠한 그림.",
+    "solutionImageCaption": "두 대각선이 서로를 수직이등분하므로 △OBC와 △ODA는 OB=OD, ∠BOC=∠DOA=90°, OC=OA이다(B↔D, C↔A가 대응).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -610,7 +630,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 턱걸이 횟수 히스토그램에서 큰 계급부터 12~14회 1명(연한 회색), 10~12회 5명(진한 회색)을 세고 두 계급 합 6명까지를 괄호로 묶어, 위에서 6번째까지의 위치를 보여 준다.",
+    "solutionImageCaption": "큰 쪽부터 차례로 세어 위에서 6번째까지의 학생이 어느 계급에 있는지 보여 주는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -651,7 +675,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 신발 크기 줄기와 잎 그림에서 큰 값부터 250, 245 세 개, 240, 235 두 개, 그리고 8번째 잎까지 동그라미를 치고 1~8의 순번을 붙여 큰 쪽에서 8번째 위치를 보여 준다.",
+    "solutionImageCaption": "큰 신발 크기부터 잎을 차례로 세어 8번째 잎까지 번호를 붙인 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -691,7 +719,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 신발 크기 줄기와 잎 그림에서 22줄기와 23줄기의 잎 10개에 동그라미를 치고, 220·225·230·235mm 값의 도수 2, 3, 3, 2를 괄호로 묶어 보여 준다.",
+    "solutionImageCaption": "220mm 이상 240mm 미만인 잎 10개를 값별 도수로 묶어 센 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -771,7 +803,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 영어 성적 도수분포다각형에서 50~70점의 두 계급 도수 2, 7을 묶어 9명으로 표시하고, 바로 다음인 70점 이상 80점 미만 계급의 꼭짓점을 크게 표시한다.",
+    "solutionImageCaption": "70점 미만 학생 9명을 센 뒤 그다음 계급이 70점 이상 80점 미만임을 보여 주는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -811,7 +847,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 저축 금액 도수분포다각형에서 찢어져 보이지 않는 4만~5만 원 계급은 꼭짓점 없이 끊어 두고, 3만 원 미만 두 계급의 도수 2, 3을 묶어 합 5명을 보여 준다.",
+    "solutionImageCaption": "3만 원 미만인 두 계급의 도수를 묶어 합을 구하는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -846,7 +886,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 일직선 AOB 위의 점 O에서 반직선 OC, OD, OE를 그리고 ∠AOC의 직각 표시와 ∠COD=45°, ∠DOE=15°, ∠EOB=30°를 나타낸 그림.",
+    "solutionImageCaption": "평각 AOB에서 ∠AOC=90°이면 ∠COD=45°이고, ∠DOB=45°를 1:2로 나누면 ∠DOE=15°, ∠EOB=30°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -916,6 +960,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 BDE에서 ∠BAC=∠DBE=31°, ∠ACB=∠BED=59°, AC=BE를 같은 표시로 나타내고 AB=BD=5cm, BC=DE=3cm 및 구하는 선분 CD를 빨간색으로 강조한 그림.",
+    "solutionImageCaption": "△ACB와 △BED에서 ∠BAC=∠DBE=31°, ∠ACB=∠BED=59°, AC=BE이므로 합동이고, 따라서 BD=AB=5cm, BC=DE=3cm이다.",
+    "solutionImageSize": "medium"
   }
 ];
