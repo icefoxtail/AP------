@@ -267,7 +267,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 벽돌 9장(위 5장, 아래 4장)으로 만든 직사각형 ABCD에서 위쪽 가로 5x cm와 아래쪽 가로 4y cm가 같고, 세로가 (x+y) cm이며 왼쪽 변에 긴 변 y cm와 짧은 변 x cm가 표시된 그림이다.",
+    "solutionImageCaption": "벽돌 1장의 짧은 변을 x cm, 긴 변을 y cm라 하면 직사각형 ABCD의 가로는 위쪽 5x cm, 아래쪽 4y cm로 같고 세로는 (x+y) cm이며 둘레는 87 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -434,7 +438,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=3/2x-6과 y=-2/3x+4, y절편 A(0,4)와 B(0,-6), x절편 C(4,0)와 D(6,0)을 나타내고 AO:OB=2:3, CD=2를 표시한 그림이다.",
+    "solutionImageCaption": "y축과 만나는 점 A, B와 x축과 만나는 점 C, D에서 AO:OB=2:3, CD=2이므로 b=4, a=-6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -469,7 +477,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 일차함수 y=-3/4x-3의 그래프가 x절편 (-4,0), y절편 (0,-3), 점 (-8,3)을 지나고, 기울기가 같은 직선 y=-3/4x+3이 함께 그려진 그림이다.",
+    "solutionImageCaption": "일차함수 y=-3/4x-3의 그래프는 x절편이 -4, y절편이 -3이고 점 (-8, 3)을 지나며, y=-3/4x+3의 그래프와 기울기가 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -539,7 +551,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=-2x+6이 x절편 (3,0), y절편 (0,6)을 지나고, 기울기가 같은 직선 y=-2x+5가 함께 그려진 좌표평면 그림이다.",
+    "solutionImageCaption": "기울기가 y=-2x+5의 그래프와 같고 x절편이 3인 직선은 y=-2x+6이며, y절편은 6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -614,7 +630,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 AD=18 cm, AB=10 cm이고 변 BC 위의 점 P에 대해 BP=2x cm이며, 사다리꼴 ABPD가 색칠되고 넓이 130 cm²가 표시된 그림이다.",
+    "solutionImageCaption": "직사각형 ABCD에서 AD=18 cm, AB=10 cm이고 점 P가 B에서 초속 2 cm로 x초 움직이면 BP=2x cm이며, 색칠한 사다리꼴 ABPD의 넓이가 130 cm²이다(그림의 점 P 위치는 예시).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
