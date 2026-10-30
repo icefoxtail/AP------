@@ -247,7 +247,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x(분), 세로축 y(km)인 좌표평면에 토끼와 거북이의 그래프를 함께 그린 그림. 토끼의 그래프는 x축의 10 위치에서 시작해 y=2까지 올라간 뒤 수평으로 이어지고, 거북이의 그래프는 원점에서 오른쪽 위로 곧게 올라가 토끼의 그래프와 두 점에서 만난다. 두 교점은 점으로만 표시했고, x축에는 10부터 60까지 10 간격으로, y축에는 1과 2가 적혀 있다.",
+    "solutionImageCaption": "토끼와 거북이의 그래프가 두 점에서 만난다. 두 교점의 x좌표를 읽는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
