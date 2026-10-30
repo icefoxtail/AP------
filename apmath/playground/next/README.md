@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', () => APLab.createLab({
 | 마스터 실험실 (중등 도형 등) | 16 | `getSpec()` + `SUB_MENUS` + `pline/ppoly/pdot…` | **5개는 `apl-compat.js`의 `p*` 도우미, 나머지는 실험실 내부 어댑터**: getSpec·renderModeN을 글자 그대로 복사하고 그리기를 새 무대에 연결. `g9-trig-ratio`(호환층)가 예시(수정은 5곳: 빠진 함수 정의 2, 변수 이름 1, 호 그리기 2). |
 | 킬러 랩 2D (미적분·이차곡선·벡터) | 14 | `examData` + `drawChalkLine/drawChalkPoint` | **데이터 이식 + 그리기 이식**: examData는 그대로, 그리기는 `b.plot/b.line/b.handle`로 옮기며 1:1 축척 적용. `calc1-tangent`가 예시. 원본이 캔버스 `ctx`를 직접 쓰는 경우(raw-ctx, 예: `geom-vector-dot`)는 실험실 안에 **작은 캔버스 퍼사드**(보드의 `ctx`를 감싸 색을 테마 의미색으로 바꿔 주는 래퍼)를 두어 원본 그리기 코드를 `APLab.Board` 위에서 그대로 돌립니다. |
 | 킬러 랩 3D (공간도형·정사영·공간좌표) | 3 | `examData` + `rotatePoint` + `draw3D…` | **`apl-space.js`**: `draw3DLine/Point/Polygon…` 이름만 연결하고 투영·시점 버튼·자동 회전을 공용 도우미가 맡음. `geom-space-3d`가 예시. 중1 입체도형(`g7-solids`·`g7-surface-volume`·`g7-spatial`)은 같은 `rotatePoint` 구조라 **실험실 안에 둔 투영 코드**를 쓰되, 빈 곳 끌기 회전은 보드 정의의 `orbit(s, dx, dy)` 훅에 연결합니다(공용 3D 실험실도 같은 훅 사용). |
-| 개별 설계 (원과 부채꼴, 단위원, 대수 Part 등) | 10 | 실험실마다 다름 | 위 세 방식 중 가까운 것으로 옮김. 예외 하나: `g7-circle-sector`는 원본 엔진(SVG 그리기)을 **화면 밖에서 그대로 돌려** 나온 SVG를 2.0 무대에 칠합니다. |
+| 개별 설계 (원과 부채꼴, 단위원, 대수 Part 등) | 10 | 실험실마다 다름 | 위 세 방식 중 가까운 것으로 옮김. 예외 하나: `g7-circle-sector`는 2.0 무대(figure)에 직접 그린 ① 원 알아보기 · ③ 길이·둘레 · ④ 넓이 원리와, `labs/g7-circle-sector/*.js` 모듈(`window.APL_CS_GROUPS`에 `{order,id,title,short,params?,scenes}` 등록)을 `order` 순으로 붙인 탭으로 이루어집니다. 모듈 목록은 페이지 안 `MODULES`에 있고, 아직 없는 파일은 건너뜁니다. |
 
 이식할 때 지키는 것: 해설·문제 문자열과 수학 함수는 바꾸지 않습니다(검수 이력 보존). 화면 표시만 정리합니다(이모지·`[오답 1위]` 꼬리표는 셸이 배지로 바꿔 보여 줌).
 
