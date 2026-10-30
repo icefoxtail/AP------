@@ -522,8 +522,8 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
-    "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+    "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+    "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
     "crossConceptKeys": [
       "CC_ADJACENT_PERMUTATION"
     ],
