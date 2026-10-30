@@ -1,0 +1,42 @@
+name: JS Archive Meta Resolver Bridge
+on:
+  pull_request:
+    paths:
+      - 'archive/tools/meta-foundation/stage-meta-bridge.mjs'
+      - 'archive/tools/meta-foundation/stage-meta-bridge.test.mjs'
+      - 'archive/tools/meta-foundation/rpm-active-resolver.mjs'
+      - 'archive/tools/meta-foundation/rpm-active-resolver.test.mjs'
+      - 'archive/tools/past-exam-pipeline/lib/completion-evidence.mjs'
+      - '.github/workflows/meta-resolver-bridge.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'archive/tools/meta-foundation/stage-meta-bridge.mjs'
+      - 'archive/tools/meta-foundation/stage-meta-bridge.test.mjs'
+      - 'archive/tools/meta-foundation/rpm-active-resolver.mjs'
+      - 'archive/tools/meta-foundation/rpm-active-resolver.test.mjs'
+      - 'archive/tools/past-exam-pipeline/lib/completion-evidence.mjs'
+      - '.github/workflows/meta-resolver-bridge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  resolver-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse only changed code path
+        run: |
+          node --check archive/tools/meta-foundation/stage-meta-bridge.mjs
+          node --check archive/tools/meta-foundation/stage-meta-bridge.test.mjs
+          node --check archive/tools/past-exam-pipeline/lib/completion-evidence.mjs
+      - name: Run official resolver and projection parity regression
+        run: |
+          node --test archive/tools/meta-foundation/stage-meta-bridge.test.mjs
+          node --test archive/tools/meta-foundation/rpm-active-resolver.test.mjs

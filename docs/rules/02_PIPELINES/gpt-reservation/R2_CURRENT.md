@@ -1,3 +1,7 @@
+## CURRENT 공통 메타 진입 (2026-10-30)
+
+- 신규 CREATE/R1/R2/R3는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 적용한다. Primary RPM·CrossConcept/Condition/Integration은 실제 교육과정 풀이로 판정, PT/TPL은 공식 Resolver만 투영한다. 기존 역할별 원본·블라인드·출고 권한/품질 계약을 유지한다.
+
 # ROLE R2 — GPT 예약라인 공용 실행 프롬프트 (CURRENT v1.0.0)
 
 Use with [README_CURRENT.md](README_CURRENT.md). ROLE 바인딩: `role=R2, campaignId={CAMPAIGN_ID}, generationRoot={GENERATION_ROOT}, libraryNamespace={LIBRARY_NAMESPACE}, stream={STREAM_IF_APPLICABLE}, previousStage=R1, nextStage=R3, canonicalVersion=1.0.0, schedule={USER_APPROVED_SCHEDULE}, isEnabled={USER_APPROVED_ON_OFF}`. 신규 예약이라도 R1 역할을 대체하거나 R1 독립 freeze 전체 재수행을 요구하지 않는다.

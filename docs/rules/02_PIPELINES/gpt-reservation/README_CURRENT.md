@@ -1,3 +1,7 @@
+## CURRENT 공통 메타 진입 (2026-10-30)
+
+- 신규 CREATE/R1/R2/R3는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 적용한다. Primary RPM·CrossConcept/Condition/Integration은 실제 교육과정 풀이로 판정, PT/TPL은 공식 Resolver만 투영한다. 기존 역할별 원본·블라인드·출고 권한/품질 계약을 유지한다.
+
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — CURRENT
 
 ## CURRENT — 역할·캠페인 맞춤 진입 / 공통 Notion 장문 필독 해제 (2026-10-22)
