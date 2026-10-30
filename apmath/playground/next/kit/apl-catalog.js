@@ -332,6 +332,7 @@ window.APLab.catalog = {
     "원과 비례(할선·접선) & 착시반례"
    ],
    "legacy": "labs/g9/원.html",
+   "next": "next/labs/g9-circle.html",
    "glyph": "<circle cx=\"40\" cy=\"38\" r=\"28\"/><path d=\"M12 38 L40 10 L68 38\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
    "sceneTotal": 30
   },
