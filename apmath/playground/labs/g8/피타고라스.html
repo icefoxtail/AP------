@@ -346,6 +346,11 @@
       return latexStr;
     }
 
+    // 해설 문자열(hint · formulaHTML · notes) 속 $...$ 구간을 위 tex()로 KaTeX 수식으로 바꿉니다.
+    function texInline(html) {
+      return html.replace(/\$([^$]+)\$/g, (m, src) => tex(src));
+    }
+
     const PCOL = {
       cyan: '#38bdf8',
       pink: '#f472b6',
@@ -2358,9 +2363,18 @@
       document.getElementById('valP1').textContent = FAMILY_LIST[state.famIdx].label;
     }
 
+    // 해설 칸에 $...$ 수식을 넣습니다. 슬라이더·애니메이션이 매 프레임 render()를 부르므로 내용이 같으면 DOM을 다시 쓰지 않습니다.
+    function setRichHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el._html !== html) {
+        el._html = html;
+        el.innerHTML = texInline(html);
+      }
+    }
+
     function updateUI(spec) {
       document.getElementById('canvasModeBadge').textContent = spec.badge;
-      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      setRichHTML('canvasActionHint', spec.hint);
       document.getElementById('txtFoldToggle').textContent = spec.actionTxt;
       document.getElementById('dim1Label').textContent = spec.p1Title || '직각삼각형 족보';
       document.getElementById('dim2Label').textContent = spec.p2Title || '배수 스케일 ×k';
@@ -2394,8 +2408,8 @@
 
       document.getElementById('totalResultBadge').textContent = spec.totalRes;
       document.getElementById('ruleBadge').textContent = spec.rule;
-      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
-      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+      setRichHTML('formulaBox', spec.formulaHTML);
+      setRichHTML('intuitionNotes', spec.notes);
 
       renderPresetChips();
     }
