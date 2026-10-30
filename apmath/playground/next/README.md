@@ -6,7 +6,7 @@
 
 | 화면 | 경로 |
 |---|---|
-| 새 허브 (목록 · 개념 노선도 · 검색 · 내 수업 목록). Universe → 「실험실 입장」의 도착점 | `next/index.html` |
+| 새 허브 (개념 노선도 · 목록 · 검색 · 내 수업 목록). Universe → 「실험실 입장」의 도착점 | `next/index.html` |
 | 기존 ↔ 2.0 나란히 비교 (PC·태블릿·모바일 크기, 대표 사례 4건) | `next/compare.html` |
 | 2.0 실험실 43개 (카탈로그의 `next` 경로) | `next/labs/` |
 | 예: 미적분Ⅰ 접선과 미분계수 (직접 이식) | `next/labs/calc1-tangent.html` |
