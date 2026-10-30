@@ -1192,7 +1192,12 @@ window.addEventListener('DOMContentLoaded', function () {
         { // [표시 보강] 시침·분침의 사잇각에 호와 값을 넣고, 바늘 끝에 이름·각을 붙입니다(현재 분에서 다시 계산)
           const O = { x: cx, y: cy }, tip = (a, l) => ({ x: cx + l * Math.cos(a), y: cy + l * Math.sin(a) });
           const between = (smallArc * 180 / Math.PI).toFixed(1);
-          angMark(BOARD, O, tip(hRad, 100), tip(mRad, 100), { color: '#fbbf24', rings: 1, r: Math.max(26, R * 0.3 * BOARD.k), label: `${between}°`, max: R * 0.5 * BOARD.k });
+          const narrow = smallArc * 180 / Math.PI < 24; // 두 바늘이 거의 겹치면 값이 바늘 위에 얹히므로, 분침 바깥쪽 옆에 따로 적음
+          angMark(BOARD, O, tip(hRad, 100), tip(mRad, 100), { color: '#fbbf24', rings: 1, r: Math.max(26, R * 0.3 * BOARD.k), label: narrow ? '' : `${between}°`, max: R * 0.5 * BOARD.k });
+          if (narrow) {
+            const sg = Math.sin(hRad - mRad) > 0 ? -1 : 1;
+            BOARD.text(tip(mRad, R * 0.3), `${between}°`, { color: '#fbbf24', size: 12.5, dx: -Math.sin(mRad) * sg * 14, dy: Math.cos(mRad) * sg * 14, baseline: 'middle' });
+          }
           const tag = (a, o, len, txt, col) => { // 바늘 이름·각: 다른 바늘의 반대쪽(바깥쪽) 옆에 붙임
             const sg = Math.sin(o - a) > 0 ? -1 : 1, nx = -Math.sin(a) * sg, ny = Math.cos(a) * sg, hw = txt.length * 3.9 + 6;
             BOARD.text(tip(a, len), txt, { color: col, size: 12, dx: nx * (Math.abs(nx) * hw + 8), dy: ny * (Math.abs(ny) * 14 + 6) * 0.9 + ny * Math.abs(nx) * 2, baseline: 'middle' });
@@ -1285,12 +1290,19 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.font = '800 13px Pretendard, monospace'; ctx.textAlign = 'center';
         { // [표시 보강] 같은 각 ●(원래각·접은각·엇각)은 같은 노랑 1겹 호, 꼭지각 ∠A는 분홍 2겹 호 — 값은 각 안쪽
           const pB = { x: bx, y: by }, pC = { x: cxPt, y: cyPt }, pA = { x: ax, y: ay };
-          const nm = (n, v) => (BOARD.k < 1 ? v : [n, v]); // 작은 화면(휴대폰)에서는 이름 줄을 빼고 값만
-          angMark(BOARD, pB, { x: bx + 100, y: by }, pC, { color: '#fbbf24', rings: 1, r: 30, label: nm('원래각', `●${foldDeg}°`) });
-          angMark(BOARD, pC, { x: cxPt - 100, y: cyPt }, pB, { color: '#fbbf24', rings: 1, r: 30, label: nm('②엇각', `●${foldDeg}°`) });
+          const small = BOARD.k < 1; // 작은 화면(휴대폰): 삼각형이 작아 라벨이 겹치므로 호만 그리고 값은 그림 아래 한 줄에 모아 적음
+          const nm = (n, v) => (small ? '' : [n, v]);
+          const rr = (l1, l2) => Math.max(9, Math.min(30, 0.28 * Math.min(l1, l2) * BOARD.k)); // 변이 짧으면 호도 작게
+          const sBC = Math.hypot(cxPt - bx, cyPt - by), sAB = Math.hypot(ax - bx, ay - by), sAC = Math.hypot(cxPt - ax, cyPt - ay);
+          angMark(BOARD, pB, { x: bx + 100, y: by }, pC, { color: '#fbbf24', rings: 1, r: small ? rr(sBC, sBC) : 30, label: nm('원래각', `●${foldDeg}°`) });
+          angMark(BOARD, pC, { x: cxPt - 100, y: cyPt }, pB, { color: '#fbbf24', rings: 1, r: small ? rr(sBC, sAC) : 30, label: nm('②엇각', `●${foldDeg}°`) });
+          if (small) {
+            BOARD.text(pB, `●=${foldDeg}°`, { color: '#fbbf24', size: 12.5, dx: t > 0.65 ? -36 : 0, dy: 48, baseline: 'middle' });
+            if (t > 0.65) BOARD.text(pB, `∠A=${xDeg}°`, { color: '#fda4af', size: 12.5, dx: 36, dy: 48, baseline: 'middle' });
+          }
           if (t > 0.65) {
-            angMark(BOARD, pB, pC, pA, { color: '#fbbf24', rings: 1, r: 30, label: nm('①접은각', `●${foldDeg}°`) });
-            angMark(BOARD, pA, pC, pB, { color: '#fda4af', rings: 2, r: 28, label: nm('꼭지각', `∠A=${xDeg}°`) });
+            angMark(BOARD, pB, pC, pA, { color: '#fbbf24', rings: 1, r: small ? rr(sBC, sAB) : 30, label: nm('①접은각', `●${foldDeg}°`) });
+            angMark(BOARD, pA, pC, pB, { color: '#fda4af', rings: 2, r: small ? rr(sAB, sAC) : 28, label: nm('꼭지각', `∠A=${xDeg}°`) });
           }
         }
 
