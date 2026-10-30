@@ -982,8 +982,24 @@ window.addEventListener('DOMContentLoaded', function () {
     function dPoly(pts, fill = 'rgba(56,189,248,0.16)', stroke = C.cyan, w = 2.5, glow = false) {
       BRD.poly(pts, { fill: fill || null, color: stroke || null, width: w, glow });
     }
-    function dArcAngle(vertex, p1, p2, label = '', col = C.cyan, radiusPx = 24) {
-      BRD.angle(vertex, p1, p2, { r: radiusPx, label: txt(label), color: col, labelGap: 16 });
+    function dArcAngle(vertex, p1, p2, label = '', col = C.cyan, radiusPx = 24, rings = 1) { // [표시 보강] rings: 같은 각은 같은 색·같은 호 개수로 표시
+      BRD.angle(vertex, p1, p2, { r: radiusPx, label: txt(label), color: col, labelGap: 16, rings });
+    }
+    // [표시 보강] 같은 길이(눈금)·평행(›) 표시 — 모두 현재 점 좌표에서 계산하므로 도형을 끌어도 따라옵니다
+    const markTick = (p, q, n = 1, col = C.white) => BRD.ticks(p, q, { count: n, color: col, size: 6.5 });
+    function markPar(p, q, n = 1, col = C.white, f = 0.28) { // p→q 방향 선분 위(시작점에서 f 비율, 가운데 눈금과 겹치지 않게)에 '›' n개
+      const a = BRD.toS(p), b = BRD.toS(q), c = BRD.ctx;
+      const m = { x: a.x + (b.x - a.x) * f, y: a.y + (b.y - a.y) * f }, l = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+      const d = { x: (b.x - a.x) / l, y: (b.y - a.y) / l }, nn = { x: -d.y, y: d.x };
+      c.save();
+      c.strokeStyle = BRD.color(col); c.lineWidth = 2 * BRD.lw; c.setLineDash([]); c.lineCap = 'round'; c.lineJoin = 'round';
+      for (let i = 0; i < n; i++) {
+        const o = (i - (n - 1) / 2) * 8, x = m.x + d.x * o, y = m.y + d.y * o;
+        c.beginPath();
+        c.moveTo(x - d.x * 4 + nn.x * 5, y - d.y * 4 + nn.y * 5); c.lineTo(x + d.x * 3, y + d.y * 3); c.lineTo(x - d.x * 4 - nn.x * 5, y - d.y * 4 - nn.y * 5);
+        c.stroke();
+      }
+      c.restore();
     }
     // 길이·값 배지: 가상 좌표 (x, y)를 중심으로 그리되 무대 안으로 밀어 넣습니다
     function dBadge(x, y, text, col = C.gold, bg) {
@@ -1113,6 +1129,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (step >= 2) {
           dPoly([A, H, Cpt], 'rgba(251, 191, 36, 0.16)', C.gold, 2.4);
+          drawRightAngle(H, Cpt, A, 12, C.gold); // [표시 보강] ∠AHB = ∠AHC = 90° 양쪽 직각
           drawDimension(H, Cpt, 26, `CH = √(AC² - 4²) = ${ch.toFixed(1)}`, C.cyan);
         }
 
@@ -1178,6 +1195,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (step >= 2) {
           dPoly([A, B, H], 'rgba(52, 211, 153, 0.18)', C.green, 2.2);
           dPoly([A, H, Cpt], 'rgba(56, 189, 248, 0.18)', C.cyan, 2.2);
+          drawRightAngle(H, Cpt, A, 11, C.gold); // [표시 보강] 수선의 발 H 양쪽 직각
           dBadge(H.x, (A.y + H.y) / 2, '수선 높이 AH = 12', C.gold);
         }
 
@@ -1190,6 +1208,7 @@ window.addEventListener('DOMContentLoaded', function () {
           drawRightAngle(P, B, A, 12, C.gold);
         } else {
           dBadge((A.x + P.x) / 2 + (bp > 5 ? 36 : -36), (A.y + P.y) / 2 - 12, `AP ≈ ${apLen.toFixed(2)}`, C.pink);
+          dArcAngle(P, B, A, `∠APB ≈ ${angAPB.toFixed(0)}°`, C.pink, 20); // [표시 보강] 해설에 나오는 ∠APB를 P의 호 안에 값과 함께 표시
         }
 
         dVertex(B, 'B', C.white, { x: -14, y: 4, align: 'right' });
@@ -1289,8 +1308,11 @@ window.addEventListener('DOMContentLoaded', function () {
       // [P0-1 수리] 3단계 배지에서 현재 조작된 공통현 AC에 대한 6 sin D = AC 식과 조건 만족값(AC=5 ➔ sin D=5/6)을 일치시켜 표기
       // -----------------------------------------------------------------------
       if (id === 'bas-4') {
-        const sc = u * 0.85;
         const r1 = 4.5, r2 = 3.0;
+        // [표시 보강] 두 원 전체(왼쪽 B ~ 오른쪽 D)가 화면 안에 들어오도록 크기와 가운데를 맞춤(공통현 목표값 5 기준으로 고정해 끌어도 흔들리지 않음)
+        const h0 = 2.5, spanL0 = Math.sqrt(r1 * r1 - h0 * h0) + r1 * Math.cos(0.2), spanR0 = Math.sqrt(r2 * r2 - h0 * h0) + r2 * Math.cos(0.18);
+        const sc = Math.min(u * 0.85, (rect.width * 0.9) / (spanL0 + spanR0));
+        const oxF = ox + ((spanL0 - spanR0) / 2) * sc;
         const acLen = 3.0 + t * 2.8; // t = 0.7143 -> acLen = 5.0
         const h = acLen / 2;
         const isTarget = Math.abs(acLen - 5.0) < 0.08;
@@ -1298,12 +1320,12 @@ window.addEventListener('DOMContentLoaded', function () {
         const d1 = Math.sqrt(Math.max(0.2, r1 * r1 - h * h));
         const d2 = Math.sqrt(Math.max(0.2, r2 * r2 - h * h));
 
-        const O1 = toScr(-d1, 0, ox, oy, sc);
-        const O2 = toScr(d2, 0, ox, oy, sc);
-        const A = toScr(0, h, ox, oy, sc);
-        const Cpt = toScr(0, -h, ox, oy, sc);
-        const B = toScr(-d1 - r1 * Math.cos(0.2), r1 * Math.sin(0.2), ox, oy, sc);
-        const D = toScr(d2 + r2 * Math.cos(-0.18), r2 * Math.sin(-0.18), ox, oy, sc);
+        const O1 = toScr(-d1, 0, oxF, oy, sc);
+        const O2 = toScr(d2, 0, oxF, oy, sc);
+        const A = toScr(0, h, oxF, oy, sc);
+        const Cpt = toScr(0, -h, oxF, oy, sc);
+        const B = toScr(-d1 - r1 * Math.cos(0.2), r1 * Math.sin(0.2), oxF, oy, sc);
+        const D = toScr(d2 + r2 * Math.cos(-0.18), r2 * Math.sin(-0.18), oxF, oy, sc);
 
         dCircle(O1, r1 * sc, 'rgba(52, 211, 153, 0.7)', 'rgba(52, 211, 153, 0.05)', 2.4);
         dCircle(O2, r2 * sc, 'rgba(56, 189, 248, 0.7)', 'rgba(56, 189, 248, 0.05)', 2.4);
@@ -1334,13 +1356,13 @@ window.addEventListener('DOMContentLoaded', function () {
           dBadge(ox, Cpt.y + 54, badgeTxt, C.gold);
         }
 
-        dVertex(O1, 'O₁(R₁=9/2)', C.green, { x: 0, y: 16, align: 'center' });
-        dVertex(O2, 'O₂(R₂=3)', C.cyan, { x: 0, y: 16, align: 'center' });
+        dVertex(O1, 'O₁(R₁=9/2)', C.green, { x: 0, y: BRD.W < 560 ? 34 : 16, align: 'center' }); // [표시 보강] 휴대폰에서는 원 중심 라벨을 아래로 내려 각 값(sin D)과 겹치지 않게
+        dVertex(O2, 'O₂(R₂=3)', C.cyan, { x: 0, y: BRD.W < 560 ? 34 : 16, align: 'center' });
         dVertex(B, 'B', C.green, { x: -12, y: -8, align: 'right' });
-        dVertex(D, 'D', C.cyan, { x: 12, y: -8, align: 'left' });
+        dVertex(D, 'D', C.cyan, { x: 12, y: BRD.W < 560 ? 12 : -8, align: 'left' }); // [표시 보강] 휴대폰에서 sin D 글자와 겹치지 않게
         dVertex(Cpt, 'C', C.white, { x: 12, y: 8, align: 'left' });
         dVertex(A, 'A [공통현 길이 드래그]', C.gold, { x: 0, y: -16, align: 'center' }, true, (sPos) => {
-          const m = toMath(sPos.x, sPos.y, ox, oy, sc);
+          const m = toMath(sPos.x, sPos.y, oxF, oy, sc);
           const nextAc = Math.max(3.0, Math.min(5.8, Math.abs(m.y) * 2));
           onSliderInput((nextAc - 3.0) / 2.8);
         });
@@ -1410,6 +1432,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (step >= 3) {
           dPoly([A, D, E], 'rgba(251, 191, 36, 0.22)', C.gold, 2.8, true);
+          // [표시 보강] △ADE ∽ △ABC: ∠ADE = ∠ABC (청색 한 겹), ∠AED = ∠ACB (분홍 두 겹) — 같은 각은 같은 색·같은 호
+          dArcAngle(D, A, E, 'x', C.cyan, 20); dArcAngle(B, A, Cpt, 'x', C.cyan, 24);
+          dArcAngle(E, A, D, 'y', C.pink, 20, 2); dArcAngle(Cpt, A, B, 'y', C.pink, 24, 2);
           dBadge((D.x + E.x) / 2, (D.y + E.y) / 2 - 16, `DE = BC cos A = ${deLen.toFixed(2)}`, C.red);
           const badgeTxt = isTarget
             ? '조건 만족 (∠A = π/3): 지름 BC = 6 ➔ R = 3  |  DE = 6 cos(π/3) = 3'
@@ -1468,6 +1493,7 @@ window.addEventListener('DOMContentLoaded', function () {
         dBadge((A.x + Cpt.x) / 2 + 26, (A.y + Cpt.y) / 2 - 8, 'AC = 7', C.cyan);
 
         if (step >= 1) {
+          if (isMid) { markTick(B, D, 1, C.gold); markTick(D, Cpt, 1, C.gold); } // [표시 보강] 중점이면 BM = CM 같은 눈금
           drawDimension(B, D, 28, isMid ? 'BM = 3' : `BD = ${bd.toFixed(1)}`, C.green);
           drawDimension(D, Cpt, 28, isMid ? 'CM = 3' : `CD = ${cd.toFixed(1)}`, C.cyan);
         }
@@ -1561,6 +1587,10 @@ window.addEventListener('DOMContentLoaded', function () {
           dLine(B, D, C.green, 3.4);
           dLine(Cpt, D, C.cyan, 3.4);
           dLine(Cpt, E, C.cyan, 3.4);
+          // [표시 보강] 접선의 길이는 같다: AF = AE (한 줄), BF = BD (두 줄), CD = CE (세 줄)
+          markTick(A, F, 1, C.gold); markTick(A, E, 1, C.gold);
+          markTick(B, F, 2, C.green); markTick(B, D, 2, C.green);
+          markTick(Cpt, D, 3, C.cyan); markTick(Cpt, E, 3, C.cyan);
           dBadge((A.x + F.x) / 2 - 34, (A.y + F.y) / 2 - 6, `AF = s - a = ${(s - a).toFixed(2)}`, C.gold);
           drawDimension(B, D, 26, `BD = s - b = ${(s - b).toFixed(2)}`, C.green);
           drawDimension(D, Cpt, 26, `CD = s - c = ${(s - c).toFixed(2)}`, C.cyan);
@@ -1619,6 +1649,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (step >= 1) {
           dCircle(M, R * sc, 'rgba(56, 189, 248, 0.7)', 'rgba(56, 189, 248, 0.05)', 2.4, [6, 4]);
           dVertex(M, `외심 M (R = ${R.toFixed(2)})`, C.cyan, { x: 14, y: -10, align: 'left' });
+          markTick(B, M, 2, C.cyan); markTick(M, Cpt, 2, C.cyan); // [표시 보강] 직각삼각형의 외심은 빗변의 중점: BM = MC = R
         }
 
         dPoly([A, B, Cpt], 'rgba(52, 211, 153, 0.12)', C.green, 2.8);
@@ -1632,6 +1663,7 @@ window.addEventListener('DOMContentLoaded', function () {
           dPoly([A, E, I, F], 'rgba(251, 191, 36, 0.28)', C.gold, 2.2);
           drawRightAngle(E, A, I, 9, C.gold);
           drawRightAngle(F, A, I, 9, C.gold);
+          markTick(A, E, 1, C.white); markTick(E, I, 1, C.white); markTick(I, F, 1, C.white); markTick(F, A, 1, C.white); // [표시 보강] AEIF는 정사각형: 네 변 = r
           dVertex(I, `I (r = ${r.toFixed(2)})`, C.gold, { x: 10, y: -10, align: 'left' });
           dBadge(E.x, E.y + 16, `r=${r.toFixed(1)}`, C.gold);
         }
@@ -1709,6 +1741,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (step >= 2) {
           dPoly([A, D, E], 'rgba(251, 191, 36, 0.24)', C.gold, 2.8, true);
+          // [표시 보강] △ADE ∽ △ABC: ∠ADE = ∠ABC (청색 한 겹), ∠AED = ∠ACB (분홍 두 겹) — 같은 각은 같은 색·같은 호
+          dArcAngle(D, A, E, 'x', C.cyan, 20); dArcAngle(B, A, Cpt, 'x', C.cyan, 24);
+          dArcAngle(E, A, D, 'y', C.pink, 20, 2); dArcAngle(Cpt, A, B, 'y', C.pink, 24, 2);
           dBadge((D.x + E.x) / 2, (D.y + E.y) / 2 + 16, `DE = 5 cos A = ${deLen.toFixed(2)}`, C.red);
         }
 
@@ -1769,6 +1804,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         dBadge((A.x + B.x) / 2 - 26, (A.y + B.y) / 2 - 8, 'AB = 5', C.green);
         dBadge((A.x + Cpt.x) / 2 + 28, (A.y + Cpt.y) / 2 - 8, 'AC = 6', C.cyan);
+        markTick(A, Cpt, 2, C.cyan); markTick(B, Cpt, 2, C.cyan); // [표시 보강] 문제 조건 AC = BC = 6 (같은 길이)
 
         if (step >= 1) {
           drawDimension(B, D, 28, `BD = ${mLen.toFixed(1)}`, C.green);
@@ -1849,6 +1885,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (step >= 2) {
           dLine(O, A, C.cyan, 1.8, [4, 3]);
           dLine(O, B, C.cyan, 1.8, [4, 3]);
+          markTick(O, A, 1, C.cyan); markTick(O, B, 1, C.cyan); markTick(O, T, 1, C.cyan); // [표시 보강] 반지름 OA = OB = OT = R
           dArcAngle(P, O, B, 'θ', C.gold, 30);
           dBadge((O.x + B.x) / 2 + 24, (O.y + B.y) / 2, 'R = 2√3', C.cyan);
         }
@@ -1911,13 +1948,18 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (step >= 1) {
           dPoly([A, B, D, Cpt], 'rgba(56, 189, 248, 0.08)', 'rgba(56, 189, 248, 0.45)', 1.6, false);
+          // [표시 보강] 내접사각형의 외각: ∠PAD = ∠PCB 는 같은 색(금색)·같은 호
           dArcAngle(A, P, D, '∠PAD', C.gold, 20);
-          dArcAngle(Cpt, P, B, '∠PCB', C.green, 20);
+          dArcAngle(Cpt, P, B, '∠PCB', C.gold, 20);
         }
 
         if (step >= 2) {
           dPoly([P, A, D], 'rgba(251, 191, 36, 0.16)', C.gold, 2.5);
           dPoly([P, Cpt, B], 'rgba(52, 211, 153, 0.16)', C.green, 2.5);
+          // [표시 보강] AA 닮음의 나머지 두 쌍: 공통각 ∠P (청색 두 겹), ∠PDA = ∠PBC (분홍)
+          dArcAngle(P, B, D, '∠P', C.cyan, 40, 2);
+          dArcAngle(D, P, A, '', C.pink, 46);
+          dArcAngle(B, P, Cpt, '', C.pink, 46);
         }
 
         if (step >= 3) {
@@ -1980,12 +2022,17 @@ window.addEventListener('DOMContentLoaded', function () {
         dLine(P, B, C.gold, 3.2);
 
         if (step >= 1) {
-          dArcAngle(P, Cpt, A, '2π/3', C.cyan, 22);
+          // [표시 보강] 원주각 ∠APB = ∠BPC = π/3 (같은 금색 호), 합친 각 ∠APC = 2π/3 은 바깥 호. 정삼각형의 세 변은 같은 눈금
+          dArcAngle(P, A, B, 'π/3', C.gold, 26);
+          dArcAngle(P, B, Cpt, 'π/3', C.gold, 26);
+          dArcAngle(P, Cpt, A, '2π/3', C.cyan, 52);
+          markTick(A, B, 2, C.green); markTick(B, Cpt, 2, C.green); markTick(A, Cpt, 2, C.green);
           dBadge((A.x + Cpt.x) / 2 + 52, A.y - 14, 'AC = 7 (정삼각형 한 변)', C.green);
         }
 
         if (step >= 2) {
           dPoly([A, P, K], 'rgba(251, 191, 36, 0.24)', C.gold, 2.4, true);
+          markTick(P, A, 1, C.gold); markTick(P, K, 1, C.gold); markTick(A, K, 1, C.gold); // [표시 보강] 정삼각형 APK: PA = PK = AK
           dVertex(K, `K (PK=PA=${pa.toFixed(1)})`, C.gold, { x: 12, y: 0, align: 'left' });
         }
 
@@ -2062,22 +2109,28 @@ window.addEventListener('DOMContentLoaded', function () {
 
         dBadge((A.x + B.x) / 2 - 22, (A.y + B.y) / 2 - 10, 'AB = 3', C.green);
         dBadge((B.x + Cpt.x) / 2 + 22, (B.y + Cpt.y) / 2 - 10, 'BC = 5', C.green);
-        dBadge((A.x + Cpt.x) / 2 + 32, A.y - 14, 'AC = 7', C.cyan);
+        dBadge((A.x + Cpt.x) / 2 + 32, A.y + (BRD.W < 560 ? 18 : -14), 'AC = 7', C.cyan); // [표시 보강] 휴대폰에서는 AC 배지를 선 아래로 내려 ∠KBC 글자를 가리지 않게
         dBadge((Cpt.x + D.x) / 2 + 30, (Cpt.y + D.y) / 2 + 10, isTarget ? 'CD = 8' : `CD ≈ ${cdLen.toFixed(2)}`, C.green);
         dBadge((D.x + A.x) / 2 - 30, (D.y + A.y) / 2 + 10, isTarget ? 'DA = 3' : `DA ≈ ${daLen.toFixed(2)}`, C.green);
 
         if (step >= 1 && Km) {
           const K = toScr(Km.x, Km.y, ox, oy, sc);
           dLine(B, K, C.purple, 2.8, [5, 4], true);
-          dArcAngle(B, A, D, '', C.gold, 22);
-          dArcAngle(B, K, Cpt, '∠ABD=∠KBC', C.purple, 28);
-          dVertex(K, 'K(AC 위의 점)', C.purple, { x: 0, y: 16, align: 'center' });
+          // [표시 보강] ∠ABD = ∠KBC 는 같은 색(보라)·같은 호로 두 각 모두 표시
+          dArcAngle(B, A, D, '∠ABD', C.purple, 22);
+          dArcAngle(B, K, Cpt, '∠KBC', C.purple, 44);
+          dVertex(K, 'K(AC 위의 점)', C.purple, { x: 0, y: BRD.W < 560 ? 32 : 16, align: 'center' }); // [표시 보강] 휴대폰에서 ∠KBC 글자와 겹치지 않게
         }
 
         if (step >= 2 && Km) {
           const K = toScr(Km.x, Km.y, ox, oy, sc);
           dPoly([B, K, Cpt], 'rgba(192, 132, 252, 0.18)', C.purple, 2.2);
           dPoly([A, B, D], 'rgba(251, 191, 36, 0.14)', C.gold, 2.2);
+          // [표시 보강] 닮음의 나머지 각: ∠ADB = ∠KCB(= ∠ACB, 호 AB의 원주각)는 금색, ∠BAC = ∠BDC(호 BC의 원주각)는 분홍 두 겹
+          dArcAngle(D, A, B, '', C.gold, 30);
+          dArcAngle(Cpt, A, B, '', C.gold, 30);
+          dArcAngle(A, B, Cpt, '', C.pink, 30, 2);
+          dArcAngle(D, B, Cpt, '', C.pink, 30, 2);
         }
 
         if (step >= 3) {
@@ -2139,6 +2192,9 @@ window.addEventListener('DOMContentLoaded', function () {
         const D = toScr(Dx, Dy, ox, cy, sc);
 
         dPoly([A, B, Cpt, D], 'rgba(52, 211, 153, 0.12)', C.green, 2.6);
+        // [표시 보강] 평행사변형: 마주 보는 변은 같은 눈금(AB = DC 한 줄, AD = BC 두 줄)과 평행 표시
+        markTick(A, B, 1, C.white); markTick(D, Cpt, 1, C.white); markTick(A, D, 2, C.white); markTick(B, Cpt, 2, C.white);
+        markPar(A, B, 1); markPar(D, Cpt, 1); markPar(B, Cpt, 2); markPar(A, D, 2);
         dBadge((A.x + B.x) / 2 - 26, (A.y + B.y) / 2, 'AB = 3', C.green);
         drawDimension(A, D, 26, 'AD = BC = 5', C.green);
 
@@ -2147,6 +2203,9 @@ window.addEventListener('DOMContentLoaded', function () {
           dLine(B, D, C.cyan, 3.0);
           dArcAngle(A, D, B, '∠A = π - B', C.gold, 24);
           dArcAngle(B, A, Cpt, '∠B', C.cyan, 24);
+          // [표시 보강] 마주 보는 각은 같다: ∠C = ∠A (금색), ∠D = ∠B (청색)
+          dArcAngle(Cpt, B, D, '= ∠A', C.gold, 24);
+          dArcAngle(D, Cpt, A, '= ∠B', C.cyan, 24);
         }
 
         if (step >= 2) {
@@ -2209,6 +2268,9 @@ window.addEventListener('DOMContentLoaded', function () {
         const E = toScr(Ex, Ey, cx, cy, sc);
 
         dPoly([A, B, Cpt, D], 'rgba(52, 211, 153, 0.14)', C.green, 2.6);
+        // [표시 보강] 평행사변형 ABCD: 마주 보는 변은 같은 눈금(AB = DC 한 줄, AD = BC 두 줄)과 평행 표시
+        markTick(A, B, 1, C.white); markTick(D, Cpt, 1, C.white); markTick(A, D, 2, C.white); markTick(B, Cpt, 2, C.white);
+        markPar(A, B, 1); markPar(D, Cpt, 1); markPar(B, Cpt, 2); markPar(A, D, 2);
         dArcAngle(A, B, D, 'π/3', C.gold, 24);
         dBadge((A.x + D.x) / 2 - 24, (A.y + D.y) / 2 - 6, 'AD = 3', C.green);
         drawDimension(A, B, 26, 'AB = 4', C.green);
@@ -2222,10 +2284,14 @@ window.addEventListener('DOMContentLoaded', function () {
           dPoly([B, mB, mD, D], 'rgba(56, 189, 248, 0.10)', null, 0);
         }
         dLine(mB, mD, C.cyan, 3.2, [], true);
+        if (moveRatio > 0.02) { markPar(B, D, 2, C.cyan); markPar(mB, mD, 2, C.cyan); } // [표시 보강] 이동한 대각선은 원래 BD와 평행(같은 '›' 두 줄)
 
         if (step >= 2 || moveRatio > 0.02) {
           dLine(B, E, C.gold, 2.4, [5, 4]);
           dLine(D, Cpt, C.gold, 2.0, [4, 4]);
+          // [표시 보강] DBEC는 평행사변형: BE = DC (= AB) 눈금, DC ∥ BE, 동위각 ∠CBE = ∠DAB = π/3
+          markTick(B, E, 1, C.white);
+          dArcAngle(B, Cpt, E, 'π/3', C.gold, 24);
           drawDimension(B, E, 26, `이동 거리 = ${(a * moveRatio).toFixed(1)}`, C.cyan);
           dVertex(E, 'E', C.cyan, { x: 12, y: 4, align: 'left' });
         }

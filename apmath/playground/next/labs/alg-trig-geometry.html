@@ -993,6 +993,37 @@ window.addEventListener('DOMContentLoaded', function () {
     function drawAngleArc(vertex, p1, p2, radiusPx = 24, label = '', col = C.gold) {
       BRD.angle(vertex, p1, p2, { r: radiusPx, label: txt(label), color: col, labelGap: 15 });
     }
+    /* [표시 보강] 호가 180°를 넘는 각(부채꼴 중심각 θ, 동경 5θ)도 각의 안쪽으로 그리는 각 표시.
+       BRD.angle은 항상 짧은 쪽 호만 그려서 큰 각이 보각으로 잘못 표시됩니다. startMath→endMath는 수학 각(반시계), 반지름은 화면 픽셀. */
+    function drawSweepAngle(center, startMath, endMath, radiusPx, label, col = C.gold, rings = 1) {
+      for (let i = 0; i < rings; i++) {
+        const rr = (radiusPx - i * 4.5) / BRD.k;
+        if (rr * BRD.k <= 4) break;
+        BRD.arc(center, rr, -startMath, -endMath, i === 0 ? { ccw: true, sector: true, color: col, width: 2, fill: BRD.color(col, 0.15) } : { ccw: true, color: col, width: 2 });
+      }
+      if (label) {
+        const m = (startMath + endMath) / 2, lr = radiusPx + 15;
+        BRD.text(center, txt(label), { dx: Math.cos(m) * lr, dy: -Math.sin(m) * lr, color: col, size: 12.5, align: 'center', baseline: 'middle', weight: 800 });
+      }
+    }
+    // [표시 보강] 같은 길이(눈금)·평행(›) 표시
+    const markTick = (p, q, n = 1, col = C.white) => BRD.ticks(p, q, { count: n, color: col, size: 6.5 });
+    function markPar(p, q, n = 1, col = C.white) {
+      const a = BRD.toS(p), b = BRD.toS(q), c = BRD.ctx;
+      const m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, l = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+      const d = { x: (b.x - a.x) / l, y: (b.y - a.y) / l }, nn = { x: -d.y, y: d.x };
+      c.save();
+      c.strokeStyle = BRD.color(col); c.lineWidth = 2 * BRD.lw; c.setLineDash([]); c.lineCap = 'round'; c.lineJoin = 'round';
+      for (let i = 0; i < n; i++) {
+        const o = (i - (n - 1) / 2) * 8, x = m.x + d.x * o, y = m.y + d.y * o;
+        c.beginPath();
+        c.moveTo(x - d.x * 4 + nn.x * 5, y - d.y * 4 + nn.y * 5); c.lineTo(x + d.x * 3, y + d.y * 3); c.lineTo(x - d.x * 4 - nn.x * 5, y - d.y * 4 - nn.y * 5);
+        c.stroke();
+      }
+      c.restore();
+    }
+    const markMid = (p, q) => ({ x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 });
+
     function drawDimension(p1, p2, offsetPx, label, col = C.gold) {
       label = txt(label);
       const c = BRD.ctx;
@@ -1132,7 +1163,9 @@ window.addEventListener('DOMContentLoaded', function () {
         const arcTop = { x: centerPt.x, y: centerPt.y - rPx };
 
         drawDimension(centerPt, B, step >= 2 ? 22 : -22, `r = ${r.toFixed(1)}`, C.gold); // [2.0 수정] 2단계부터 r 치수선을 반대쪽으로: 작아진 부채꼴에서 θ 라벨·점 A와 겹치지 않게
-        drawAngleArc(centerPt, A, B, Math.min(32, rPx * 0.36), step >= 3 ? `θ = ${theta.toFixed(2)} rad` : 'θ', C.gold);
+        // [표시 보강] 중심각 θ는 부채꼴 안쪽 호로(θ>π 일 때 보각 쪽에 그려지던 것을 수정), 두 반지름 OA = OB = r 같은 눈금
+        drawSweepAngle(centerPt, startA, endA, Math.min(32, rPx * 0.36), step >= 3 ? `θ = ${theta.toFixed(2)} rad` : 'θ', C.gold);
+        markTick(centerPt, A, 1, C.gold); markTick(centerPt, B, 1, C.gold);
 
         dDot(centerPt, 'O', C.gold, { x: -16, y: 16 }, false, true);
         dDot(A, 'A [드래그]', C.white, { x: 12, y: 16 }, true, true); // [2.0 수정] 점 A 라벨을 오른쪽으로: 작은 부채꼴에서 θ 라벨과 겹치지 않게
@@ -1212,6 +1245,22 @@ window.addEventListener('DOMContentLoaded', function () {
           dLine(P, R, C.pink, 1.8, [3, 3]);
           dPoly([O, Hr, R], 'rgba(244, 114, 182, 0.18)', C.pink, 2.2, true);
           drawRightAngle(Hr, O, R, 10, C.pink);
+        }
+
+        // [표시 보강] 같은 각은 같은 호: θ(금색)는 P의 삼각형·Q의 삼각형(Q에서)·R의 삼각형(R에서) 모두, π/2-θ(분홍)는 Q·R 삼각형의 O에서. 반지름 OP=OQ=OR 눈금
+        const X1 = toScr(1, 0, ox, oy, sc), Xm = toScr(-1, 0, ox, oy, sc);
+        const kk = Math.max(0.55, Math.min(1, sc / 220)); // 휴대폰처럼 단위원이 작으면 호 반지름도 함께 줄여 글자가 겹치지 않게
+        drawAngleArc(O, X1, P, 34 * kk, 'θ', C.gold);
+        markTick(O, P, 1, C.white);
+        if (step >= 2) {
+          drawAngleArc(Q, O, Hq, 26 * kk, 'θ', C.gold);
+          drawAngleArc(O, Xm, Q, 32 * kk, 'π/2-θ', C.pink);
+          markTick(O, Q, 1, C.white);
+        }
+        if (step >= 3) {
+          drawAngleArc(R, O, Hr, 26 * kk, 'θ', C.gold);
+          drawAngleArc(O, X1, R, 54 * kk, 'π/2-θ', C.pink);
+          markTick(O, R, 1, C.white);
         }
 
         dLine(O, P, C.gold, 3.0);
@@ -1435,7 +1484,7 @@ window.addEventListener('DOMContentLoaded', function () {
           dPoly([Ap, B, Cpt], 'rgba(251, 191, 36, 0.16)', C.gold, 2.2, step === 2);
           drawRightAngle(Cpt, Ap, B, 12, C.gold);
           if (!isAtDiameterEnd) {
-            drawAngleArc(Ap, B, Cpt, 22, 'π/3', C.gold);
+            drawAngleArc(Ap, B, Cpt, 24, 'π/3', C.cyan); // [표시 보강] 같은 현 BC의 원주각 ∠A = ∠A' = π/3 → 같은 청색 호
             dDot(Ap, "A'(지름 끝점)", C.gold, { x: 10, y: -10 }, false);
           }
         }
@@ -1577,12 +1626,14 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         if (step >= 2) {
-          drawAngleArc(A, B, D, 26, isBisector ? 'π/3' : 'α', C.green);
-          drawAngleArc(A, D, Cpt, 32, isBisector ? 'π/3' : '2π/3-α', C.cyan);
+          // [표시 보강] 각의 이등분(π/3 = π/3)이면 두 각은 같은 금색 호·같은 반지름, 전체 ∠A = 2π/3 는 바깥 호
+          drawAngleArc(A, B, D, isBisector ? 30 : 26, isBisector ? 'π/3' : 'α', isBisector ? C.gold : C.green);
+          drawAngleArc(A, D, Cpt, isBisector ? 30 : 32, isBisector ? 'π/3' : '2π/3-α', isBisector ? C.gold : C.cyan);
           drawDimension(B, D, 24, isBisector && step >= 3 ? 'BD = 2√7 (비율 2)' : `BD = ${(a * ratioBD).toFixed(2)}`, C.green);
           drawDimension(D, Cpt, 24, isBisector && step >= 3 ? 'DC = √7 (비율 1)' : `DC = ${(a * (1 - ratioBD)).toFixed(2)}`, C.cyan);
         }
 
+        drawAngleArc(A, B, Cpt, step >= 2 ? 68 : 32, '2π/3', C.white);
         dLine(A, D, C.gold, 3.2, [], true);
         drawDimension(A, B, -24, 'AB = 6', C.green);
         drawDimension(A, Cpt, 24, 'AC = 3', C.cyan);
@@ -1648,11 +1699,16 @@ window.addEventListener('DOMContentLoaded', function () {
         dPoly([O, P, Q], isCollinear ? 'rgba(251,113,133,0.18)' : 'rgba(56,189,248,0.22)', isCollinear ? C.red : C.cyan, 2.2);
         dLine(O, P, C.gold, 3.2, [], true);
         dLine(O, Q, C.pink, 2.8, []);
+        // [표시 보강] 동경의 각: x축에서 반시계로 잰 θ(금색)와 5θ(분홍) 호(180°를 넘어도 안쪽 호), 두 반지름 OP = OQ 같은 눈금
+        drawSweepAngle(O, 0, theta, 30, 'θ', C.gold);
+        if (theta5 > 0.05) drawSweepAngle(O, 0, theta5, 48, '5θ', C.pink);
+        markTick(O, P, 1, C.white); markTick(O, Q, 1, C.white);
 
         if (step >= 1) {
           const M = { x: (P.x + Q.x) * 0.5, y: (P.y + Q.y) * 0.5 };
           dLine(P, Q, 'rgba(251,191,36,0.6)', 1.8, [4, 4]);
           dDot(M, '', C.gold, { x: 6, y: -6 }, false);
+          markTick(P, M, 1, C.gold); markTick(M, Q, 1, C.gold); // PM = MQ (중점)
         }
 
         dDot(P, `P(θ = ${fmtPi(theta)}) [드래그]`, C.gold, { x: 12, y: -10 }, true, true);
@@ -1697,11 +1753,13 @@ window.addEventListener('DOMContentLoaded', function () {
         if (step >= 1) {
           const angPOQ = Math.acos(Math.max(-1, Math.min(1, xP * xQ + yP * yQ)));
           drawAngleArc(O, Q, P, 34, isEquilateral ? '∠POQ = π/3' : `∠POQ = ${fmtPi(angPOQ)}`, C.green);
+          markTick(O, P, 1, C.white); markTick(O, Q, 1, C.white); // [표시 보강] 반지름 OP = OQ = 1
         }
 
         if (step >= 2) {
           dLine(toScr(-0.2, -0.2, ox, oy, sc), toScr(1.15, 1.15, ox, oy, sc), C.pink, 2.2, [6, 4], true);
           drawRightAngle(M, O, P, 11, C.pink);
+          markTick(P, M, 2, C.pink); markTick(M, Q, 2, C.pink); // [표시 보강] M은 현 PQ의 중점: PM = MQ
           drawDimension(O, M, 24, isEquilateral && step >= 3 ? '높이 OM = k/√2 = √3/2' : `OM = ${(k / Math.SQRT2).toFixed(2)}`, C.pink);
           dDot(M, 'M(k/2, k/2)', C.pink, { x: 10, y: -8 }, false);
         }
@@ -1755,6 +1813,11 @@ window.addEventListener('DOMContentLoaded', function () {
           dLine(A, D, 'rgba(251,191,36,0.65)', 1.8, [4, 4]);
           dLine(B, Cpt, 'rgba(251,191,36,0.65)', 1.8, [4, 4]);
           dDot(M, '점대칭 중심 M(6, 0)', C.gold, { x: -52, y: -14 }, false);
+          // [표시 보강] 평행사변형 ABDC: 마주 보는 변은 같은 눈금(AB=CD 한 줄, AC=BD 두 줄)과 평행 표시(AB∥CD, AC∥BD)
+          markTick(A, B, 1, C.white); markTick(Cpt, D, 1, C.white);
+          markTick(A, Cpt, 2, C.white); markTick(B, D, 2, C.white);
+          markPar(markMid(A, B), B, 1); markPar(markMid(Cpt, D), D, 1);
+          markPar(markMid(A, Cpt), Cpt, 2); markPar(markMid(B, D), D, 2);
           drawDimension(Cpt, D, 24, `아랫변 CD = ${(x4 - x3).toFixed(1)}`, C.cyan);
         }
 
@@ -1956,6 +2019,11 @@ window.addEventListener('DOMContentLoaded', function () {
           dLine(toScr(0, -R, ox, oy, sc), toScr(0, R, ox, oy, sc), 'rgba(251,191,36,0.45)', 1.8, [5, 4]);
           dLine(A, H, C.gold, 2.4, [4, 3], true);
           drawRightAngle(H, A, Cpt, 11, C.gold);
+          markTick(B, M, 1, C.pink); markTick(M, Cpt, 1, C.pink); // [표시 보강] M은 현 BC의 중점: BM = MC
+          if (isMax) { // AB = AC (= BC = 6) 인 정삼각형: 같은 길이 눈금, 세 각 π/3 같은 호
+            markTick(A, B, 2, C.green); markTick(A, Cpt, 2, C.green);
+            drawAngleArc(B, Cpt, A, 26, 'π/3', C.gold); drawAngleArc(Cpt, A, B, 26, 'π/3', C.gold);
+          }
           drawDimension(A, H, 28, isMax && step >= 3 ? '최대 높이 h = 3√3' : `높이 h = ${fmtSurd(heightH)}`, C.gold);
           dDot(M, 'M(현의 중점)', C.pink, { x: 8, y: 15 }, false);
         }
@@ -2103,7 +2171,7 @@ window.addEventListener('DOMContentLoaded', function () {
           D,
           step >= 3 && isTarget ? 'D (1:2 내분점 ➔ AD = 5!) [드래그]' : `D (AD = ${fmtSurd(lenAD)}) [드래그]`,
           C.gold,
-          { x: -55, y: -14 },
+          { x: -55, y: step >= 2 ? -62 : -14 }, // [표시 보강] 2단계부터 D의 각(α, π-α) 글자가 이 라벨 뒤에 가려지지 않게 위로
           true,
           true
         );
