@@ -529,20 +529,20 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
       mappingStatus === 'RPM_ONLY' ? 'RPM_ONLY_COMPATIBILITY_PROJECTION' : 'CROSSWALK_PROJECTION_STATUS_UNSUPPORTED');
   }
 
-  const problemTypeKey = text(row.problemTypeKey);
+  let problemTypeKey = text(row.problemTypeKey);
   const mappedTemplateKeys = row.templateKey ? [text(row.templateKey)] : (row.templateCandidates || []).map(item => text(item.templateKey)).filter(Boolean);
   if (!problemTypeKey || activeRegistry.status !== 'ACTIVE') {
     return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED',
       !problemTypeKey ? 'CROSSWALK_PROBLEM_TYPE_NOT_MAPPED' : 'ACTIVE_COMPATIBILITY_REGISTRY_UNAVAILABLE',
       { problemTypeKey, mappedTemplateKeys });
   }
-  const problemType = activeRegistry.problemTypes.get(problemTypeKey);
+  let problemType = activeRegistry.problemTypes.get(problemTypeKey);
   if (!problemType || problemType.status !== 'ACTIVE') {
     return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_PROBLEM_TYPE_PROJECTION_NOT_MATERIALIZED',
       { problemTypeKey, mappedTemplateKeys });
   }
-  const canonicalOwnerPack = text(problemType.ownerPack);
-  const canonicalPack = activeRegistry.activePacks.get(canonicalOwnerPack);
+  let canonicalOwnerPack = text(problemType.ownerPack);
+  let canonicalPack = activeRegistry.activePacks.get(canonicalOwnerPack);
   if (!canonicalOwnerPack || !canonicalPack) {
     return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_CANONICAL_OWNER_NOT_ACTIVE',
       { problemTypeKey, canonicalOwnerPack, mappedTemplateKeys });
@@ -560,6 +560,20 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
           bindingOwnerPack: existingBindings.length === 1 ? text(existingBindings[0].ownerPack) : '' });
     }
     templateKey = selection.templateKey;
+    // A crosswalk family can explicitly allow a subtype owned by a different
+    // ACTIVE parent PT, e.g. repeated versus identical-object permutations.
+    const familyPT = text(row.familyProblemTypeOverrides?.[templateKey] || '');
+    if (familyPT) {
+      const variant = activeRegistry.problemTypes.get(familyPT);
+      if (!variant || variant.status !== 'ACTIVE' || !activeRegistry.activePacks.has(text(variant.ownerPack))) {
+        return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_FAMILY_VARIANT_PROBLEM_TYPE_MISSING',
+          { problemTypeKey: familyPT, mappedTemplateKeys: [templateKey] });
+      }
+      problemTypeKey = familyPT;
+      problemType = variant;
+      canonicalOwnerPack = text(variant.ownerPack);
+      canonicalPack = activeRegistry.activePacks.get(canonicalOwnerPack);
+    }
   } else {
     templateKey = text(row.templateKey);
     if (!templateKey) return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_TEMPLATE_PROJECTION_NOT_MAPPED',
