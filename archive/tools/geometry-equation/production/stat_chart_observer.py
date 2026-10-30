@@ -194,6 +194,36 @@ def derive_freq(chart):
     return b, width, mids, series, polygon, y_kind
 
 
+def sum_runs(e, n):
+    """The runs of classes one classSums entry covers, read from the plan alone: from..to is one run; classes is a list of class numbers or of [from, to] pairs, ascending, adjacent runs merged."""
+    def whole(v):
+        if isinstance(v, bool) or not isinstance(v, int) or not 0 <= v < n: fail('STAT_CLASS_SUM_INVALID')
+        return v
+    if 'classes' not in e:
+        lo, hi = whole(e.get('from')), whole(e.get('to'))
+        if hi < lo: fail('STAT_CLASS_SUM_INVALID')
+        return [(lo, hi)]
+    raw = e['classes']
+    if 'from' in e or 'to' in e or not isinstance(raw, list) or not 2 <= len(raw) <= 24: fail('STAT_CLASS_SUM_INVALID')
+    if all(isinstance(x, list) for x in raw):
+        pairs = []
+        for x in raw:
+            if len(x) != 2: fail('STAT_CLASS_SUM_INVALID')
+            pairs.append((whole(x[0]), whole(x[1])))
+    else: pairs = [(whole(v), whole(v)) for v in raw]
+    runs = []
+    for a, b in pairs:
+        if b < a or (runs and a <= runs[-1][1]): fail('STAT_CLASS_SUM_INVALID')
+        if runs and a == runs[-1][1] + 1: runs[-1] = (runs[-1][0], b)
+        else: runs.append((a, b))
+    return runs
+
+
+def runs_of(m):
+    """The runs of one derived class sum: its own `runs` (a group) or the single run from..to."""
+    return m.get('runs') or [(m['from'], m['to'])]
+
+
 def derive_marks(chart, series, polygon):
     """Everything the plan marks on a frequency chart, re-derived from the plan alone: the emphasis tone of each class, the polygon points that carry a mark, the
     restored bars, the classes whose value stays unwritten and the class sums (a numeric label must equal the exact sum; hidden classes count only through the stated total)."""
@@ -215,9 +245,12 @@ def derive_marks(chart, series, polygon):
     hide = set(chart.get('hideValues') or [])
     sums = []
     for e in chart.get('classSums') or []:
-        s, lo, hi = e.get('series', 0), e['from'], e['to']
+        s = e.get('series', 0)
         sr = series[s]
-        inside = sr['values'][lo:hi + 1]
+        runs = sum_runs(e, len(series[0]['values']))
+        lo, hi = runs[0][0], runs[-1][1]
+        members = [k for a, b in runs for k in range(a, b + 1)]
+        inside = [sr['values'][k] for k in members]
         hidden = [v for v in inside if v is None]
         known = sum((v for v in inside if v is not None), Fraction(0))
         label = e.get('label')
@@ -232,13 +265,15 @@ def derive_marks(chart, series, polygon):
             total, derivable = known, True
             if hidden:
                 all_hidden = [k for k, v in enumerate(sr['values']) if v is None]
-                derivable = not (sr['hidden_sum'] is None or any(k < lo or k > hi for k in all_hidden))
+                derivable = not (sr['hidden_sum'] is None or any(k not in members for k in all_hidden))
                 if derivable: total = known + sr['hidden_sum']
             if not free and not derivable: fail('STAT_CLASS_SUM_UNKNOWN')
             lead = SUM_LEADING_NUMBER.match(label) if free else None
             number = label if not free else (lead.group(1) if lead else None)
             if number is not None and derivable and frac(number, 'STAT_CLASS_SUM_LABEL_INVALID') != total: fail('STAT_CLASS_SUM_LABEL_MISMATCH')
-        sums.append({'series': s, 'from': lo, 'to': hi, 'label': label, 'unit': e.get('unit', ''), **({'free': True} if free else {})})
+        sums.append({'series': s, 'from': lo, 'to': hi, 'label': label, 'unit': e.get('unit', ''), **({'free': True} if free else {}), **({'runs': runs} if len(runs) > 1 else {})})
+    for i, m in enumerate(sums):
+        if any(o['series'] == m['series'] and {k for a, b in runs_of(o) for k in range(a, b + 1)} & {k for a, b in runs_of(m) for k in range(a, b + 1)} for o in sums[:i]): fail('STAT_CLASS_SUM_OVERLAP')
     return tones, marks, restored, hide, sums
 
 
@@ -317,6 +352,7 @@ def audit_freq(chart, doc):
     kind = chart['kind']
     # unknownLabels: a hidden class of a histogram carries a symbol in a dotted outline (never a bar), re-read from the plan
     unknown = {}
+    unknown_rel = {}       # relHeight (opt-in): the outline heights stand in this ratio, the highest keeping UNKNOWN_BAR_FRACTION of the plot; an entry without one counts as 1 once any entry has one
     for e in chart.get('unknownLabels') or []:
         k = e.get('class')
         if kind != 'HISTOGRAM' or polygon: fail('STAT_UNKNOWN_LABEL_UNSUPPORTED')
@@ -324,6 +360,7 @@ def audit_freq(chart, doc):
         if series[0]['values'][k] is not None: fail('STAT_UNKNOWN_LABEL_CLASS_KNOWN')
         if not isinstance(e.get('label'), str) or not UNKNOWN_LABEL.fullmatch(e['label']) or e['label'] != e['label'].strip(): fail('STAT_UNKNOWN_LABEL_INVALID')
         unknown[k] = e['label']
+        if 'relHeight' in e: unknown_rel[k] = frac(e['relHeight'], 'STAT_UNKNOWN_LABEL_INVALID')
     show_ends = chart.get('showEndValues') is True
     if show_ends and (not polygon or len(series) != 1): fail('STAT_SHOW_END_VALUES_UNSUPPORTED')
     fx, _, xvals = doc.axis_map('x-tick', 'x')
@@ -371,10 +408,14 @@ def audit_freq(chart, doc):
             outlines[key] = r
         if set(outlines) != set(unknown): doc.err('SC_UNKNOWN_SET_MISMATCH')
         plot_height = base - fy(max(yvals))
+        if unknown_rel:
+            if any(v < Fraction(1, 20) or v > 20 for v in unknown_rel.values()): fail('STAT_UNKNOWN_LABEL_INVALID')
+            rel = {k: unknown_rel.get(k, Fraction(1)) for k in unknown}
+            top_rel = max(rel.values())
         for k, r in outlines.items():
             if k not in unknown: continue
             if abs(num(r, 'x') - fx(b[k])) > TOL or abs(num(r, 'x') + num(r, 'width') - fx(b[k + 1])) > TOL: doc.err('SC_UNKNOWN_X_RANGE:%d' % k)
-            if abs(num(r, 'y') + num(r, 'height') - base) > TOL or abs(num(r, 'height') - UNKNOWN_BAR_FRACTION * plot_height) > TOL: doc.err('SC_UNKNOWN_HEIGHT:%d' % k)
+            if abs(num(r, 'y') + num(r, 'height') - base) > TOL or abs(num(r, 'height') - UNKNOWN_BAR_FRACTION * plot_height * (float(rel[k] / top_rel) if unknown_rel else 1.0)) > TOL: doc.err('SC_UNKNOWN_HEIGHT:%d' % k)
             if r.get('stroke-dasharray') is None or (r.get('fill') or 'none') != 'none' or (r.get('stroke') or '') != '#111': doc.err('SC_UNKNOWN_STYLE:%d' % k)
             mine = [l for l in doc.owners.get(r.get('id'), []) if l.get('data-label-role') == 'unknown-label']
             if len(mine) != 1: doc.err('SC_UNKNOWN_LABEL_COUNT:%d' % k); continue
@@ -492,27 +533,15 @@ def audit_freq(chart, doc):
                 ox, oy, ow, oh = box_of(other)
                 if box[0] < ox + ow and ox < box[0] + box[2] and box[1] < oy + oh and oy < box[1] + box[3]: doc.err('SC_END_VALUE_OVERLAP:%d' % k)
     elif ends: doc.err('SC_END_VALUES_UNEXPECTED')
-    # class sums: a bracket under the x tick labels from the left edge of class `from` to the right edge of class `to`, its sum written beneath
+    # class sums: a bracket under the x tick labels from the left edge of class `from` to the right edge of class `to`, its sum written beneath; a group of runs (classes) has one
+    # bracket per run, a stem from each down to one joining line, and its sum written under the middle of that line
     brackets = doc.role('polyline', 'class-sum')
     key_of = lambda e: (int(e.get('data-series', -1)), int(e.get('data-from', -1)), int(e.get('data-to', -1)))
-    if sorted(key_of(e) for e in brackets) != sorted((m['series'], m['from'], m['to']) for m in sums): doc.err('SC_CLASS_SUM_SET_MISMATCH')
+    if sorted(key_of(e) for e in brackets) != sorted((m['series'], a, b) for m in sums for a, b in runs_of(m)): doc.err('SC_CLASS_SUM_SET_MISMATCH')
     tick_bottom = max((box_of(l)[1] + box_of(l)[3] for l in doc.label_role('x-tick')), default=base)
-    for e in brackets:
-        found = [m for m in sums if (m['series'], m['from'], m['to']) == key_of(e)]
-        if len(found) != 1: continue
-        m = found[0]
-        tag = '%d-%d-%d' % key_of(e)
-        try: pts = [tuple(float(v) for v in pair.split(',')) for pair in e.get('points').split()]
-        except Exception: doc.err('SC_CLASS_SUM_POINTS:' + tag); continue
-        if len(pts) != 4 or abs(pts[0][0] - pts[1][0]) > TOL or abs(pts[2][0] - pts[3][0]) > TOL or abs(pts[1][1] - pts[2][1]) > TOL or abs(pts[0][1] - pts[3][1]) > TOL or not pts[1][1] > pts[0][1]:
-            doc.err('SC_CLASS_SUM_SHAPE:' + tag); continue
-        xl, xr, yb = pts[0][0], pts[3][0], pts[1][1]
-        lo, hi = m['from'], m['to']
-        # the left end lies in the left half of class `from` and the right end in the right half of class `to`: it spans exactly those classes
-        if not fx(b[lo]) - TOL <= xl < fx(mids[lo]) or not fx(mids[hi]) < xr <= fx(b[hi + 1]) + TOL: doc.err('SC_CLASS_SUM_SPAN:' + tag)
-        if pts[0][1] < tick_bottom + 1 or yb <= base: doc.err('SC_CLASS_SUM_NOT_BELOW:' + tag)
-        if (e.get('stroke-dasharray') is not None) != (m['series'] == 1): doc.err('SC_CLASS_SUM_STYLE:' + tag)
-        texts = [l for l in doc.owners.get(e.get('id'), []) if l.get('data-label-role') == 'class-sum']
+
+    def sum_label(m, owner, middle, floor, tag):
+        texts = [l for l in doc.owners.get(owner.get('id'), []) if l.get('data-label-role') == 'class-sum']
         if m['label'] is None:
             if texts: doc.err('SC_CLASS_SUM_LABEL_UNEXPECTED:' + tag)
         elif len(texts) != 1: doc.err('SC_CLASS_SUM_LABEL_COUNT:' + tag)
@@ -524,8 +553,52 @@ def audit_freq(chart, doc):
                 read = re.fullmatch(r'(\?|\d+(?:\.\d+)?)(.*)', text)
                 if read is None or read.group(2) != m['unit'] or read.group(1) != m['label'] and (read.group(1) == '?' or m['label'] == '?' or Fraction(read.group(1)) != Fraction(m['label'])): doc.err('SC_CLASS_SUM_LABEL_VALUE:' + tag)
             lx, _ = centre(texts[0])
-            if abs(lx - (xl + xr) / 2) > LABEL_TOL: doc.err('SC_CLASS_SUM_LABEL_NOT_CENTRED:' + tag)
-            if box_of(texts[0])[1] < yb: doc.err('SC_CLASS_SUM_LABEL_NOT_BELOW:' + tag)
+            if abs(lx - middle) > LABEL_TOL: doc.err('SC_CLASS_SUM_LABEL_NOT_CENTRED:' + tag)
+            if box_of(texts[0])[1] < floor: doc.err('SC_CLASS_SUM_LABEL_NOT_BELOW:' + tag)
+
+    run_geometry = {}      # (series, from, to) -> (xl, xr, yb) as drawn
+    for e in brackets:
+        owner = [m for m in sums if key_of(e) in [(m['series'], a, b) for a, b in runs_of(m)]]
+        if len(owner) != 1: continue
+        m = owner[0]
+        tag = '%d-%d-%d' % key_of(e)
+        try: pts = [tuple(float(v) for v in pair.split(',')) for pair in e.get('points').split()]
+        except Exception: doc.err('SC_CLASS_SUM_POINTS:' + tag); continue
+        if len(pts) != 4 or abs(pts[0][0] - pts[1][0]) > TOL or abs(pts[2][0] - pts[3][0]) > TOL or abs(pts[1][1] - pts[2][1]) > TOL or abs(pts[0][1] - pts[3][1]) > TOL or not pts[1][1] > pts[0][1]:
+            doc.err('SC_CLASS_SUM_SHAPE:' + tag); continue
+        xl, xr, yb = pts[0][0], pts[3][0], pts[1][1]
+        _, lo, hi = key_of(e)
+        run_geometry[key_of(e)] = (xl, xr, yb)
+        # the left end lies in the left half of class `from` and the right end in the right half of class `to`: it spans exactly those classes
+        if not fx(b[lo]) - TOL <= xl < fx(mids[lo]) or not fx(mids[hi]) < xr <= fx(b[hi + 1]) + TOL: doc.err('SC_CLASS_SUM_SPAN:' + tag)
+        if pts[0][1] < tick_bottom + 1 or yb <= base: doc.err('SC_CLASS_SUM_NOT_BELOW:' + tag)
+        if (e.get('stroke-dasharray') is not None) != (m['series'] == 1): doc.err('SC_CLASS_SUM_STYLE:' + tag)
+        if len(runs_of(m)) == 1: sum_label(m, e, (xl + xr) / 2, yb, tag)
+    joins = doc.role('polyline', 'class-sum-join')
+    group_sums = [m for m in sums if len(runs_of(m)) > 1]
+    if sorted(key_of(e) for e in joins) != sorted((m['series'], m['from'], m['to']) for m in group_sums): doc.err('SC_CLASS_SUM_JOIN_SET')
+    stems = doc.role('line', 'class-sum-stem')
+    for m in group_sums:
+        found = [e for e in joins if key_of(e) == (m['series'], m['from'], m['to'])]
+        if len(found) != 1: continue
+        join = found[0]
+        tag = 'group-%d-%d-%d' % key_of(join)
+        geometry = [run_geometry.get((m['series'], a, b)) for a, b in runs_of(m)]
+        if any(g is None for g in geometry): continue
+        try: pts = [tuple(float(v) for v in pair.split(',')) for pair in join.get('points').split()]
+        except Exception: doc.err('SC_CLASS_SUM_POINTS:' + tag); continue
+        yb = geometry[0][2]
+        centres_x = [(g[0] + g[1]) / 2 for g in geometry]
+        if any(abs(g[2] - yb) > TOL for g in geometry): doc.err('SC_CLASS_SUM_GROUP_ROW:' + tag)
+        if len(pts) != 4 or not 4 <= pts[1][1] - yb <= 40 or abs(pts[0][0] - centres_x[0]) > TOL or abs(pts[0][1] - yb) > TOL or abs(pts[1][0] - centres_x[0]) > TOL \
+                or abs(pts[2][0] - centres_x[-1]) > TOL or abs(pts[2][1] - pts[1][1]) > TOL or abs(pts[3][0] - centres_x[-1]) > TOL or abs(pts[3][1] - yb) > TOL:
+            doc.err('SC_CLASS_SUM_JOIN_SHAPE:' + tag); continue
+        if (join.get('stroke-dasharray') is not None) != (m['series'] == 1): doc.err('SC_CLASS_SUM_STYLE:' + tag)
+        mine = [e for e in stems if e.get('data-group') == join.get('data-group')]
+        want_stems = centres_x[1:-1]
+        if len(mine) != len(want_stems) or sorted(round(num(e, 'x1'), 1) for e in mine) != sorted(round(x, 1) for x in want_stems) \
+                or any(abs(num(e, 'x1') - num(e, 'x2')) > TOL or abs(num(e, 'y1') - yb) > TOL or abs(num(e, 'y2') - pts[1][1]) > TOL for e in mine): doc.err('SC_CLASS_SUM_STEMS:' + tag)
+        sum_label(m, join, (centres_x[0] + centres_x[-1]) / 2, pts[1][1], tag)
     doc.check_title('x-title', chart.get('xTitle', '계급'), 'x')
     doc.check_title('y-title', chart.get('yTitle', '도수(명)' if y_kind == 'FREQUENCY' else '상대도수'), 'y')
     legends = doc.label_role('legend')
@@ -543,7 +616,7 @@ def audit_freq(chart, doc):
     observed = {'classes': n, 'yKind': y_kind, 'polygon': polygon, 'totals': [sum(v for v in s['values'] if v is not None) for s in series].__repr__()}
     if any(None in s['values'] for s in series): observed['hidden'] = [[k for k, v in enumerate(s['values']) if v is None] for s in series]
     if marks: observed['marks'] = sorted([s, k, spec['tone']] for (s, k), spec in marks.items())
-    if sums: observed['sums'] = [[m['series'], m['from'], m['to'], m['label']] for m in sums]
+    if sums: observed['sums'] = [[m['series'], m['from'], m['to'], m['label']] + ([[list(r) for r in m['runs']]] if m.get('runs') else []) for m in sums]
     if unknown: observed['unknown'] = sorted([k, v] for k, v in unknown.items())
     return observed
 

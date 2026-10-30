@@ -73,8 +73,8 @@ export function solveStatChart(chart){
 //  - a class frequency may be null (the problem tore or erased it: the bar and polygon vertex are simply not drawn there); `total` then fixes what the hidden classes add up to;
 //  - restoredClasses: a bar the figure rebuilds from the total (dashed outline; its value is not written unless showRestoredValues);
 //  - highlightClasses: bars of a histogram, or the points of every series of a polygon-only chart (an entry is a class or {class,tone:1|2});
-//  - highlightPoints: single polygon points {series,class,tone?,showValue?}; classSums: a bracket under the axis over classes from..to with their summed frequency;
-//  - unknownLabels: [{class,label}] a hidden class of a histogram drawn as a dotted outline carrying a symbol (2x); showEndValues: a polygon's two end points write their 0;
+//  - highlightPoints: single polygon points {series,class,tone?,showValue?}; classSums: a bracket under the axis over classes from..to with their summed frequency (classes:[[0,2],[4,5]]: one bracket per run of classes that need not touch, joined under the axis, E34);
+//  - unknownLabels: [{class,label,relHeight?}] a hidden class of a histogram drawn as a dotted outline carrying a symbol (2x), the outlines standing in the ratio of their relHeight (E34); showEndValues: a polygon's two end points write their 0;
 //  - a classSums label that is not a plain number (6명, 합계) is a stated fact: it is written as given and checked only where the engine can sum the bracket exactly.
 function solveFreq(c){
   onlyKeys(c,['kind','boundaries','series','yKind','polygon','xTitle','yTitle','grid','showValues','highlightClasses','total','highlightPoints','classSums','restoredClasses','showRestoredValues','hideValues','unknownLabels','showEndValues'],'STAT_CHART_PLAN_INVALID');
@@ -198,14 +198,18 @@ function solveFreq(c){
     if(c.kind!=='HISTOGRAM'||polygon)bad('STAT_UNKNOWN_LABEL_UNSUPPORTED');
     if(!Array.isArray(c.unknownLabels)||c.unknownLabels.length<1||c.unknownLabels.length>n)bad('STAT_UNKNOWN_LABEL_INVALID');
     for(const e of c.unknownLabels){
-      onlyKeys(e,['class','label'],'STAT_UNKNOWN_LABEL_INVALID');
+      onlyKeys(e,['class','label','relHeight'],'STAT_UNKNOWN_LABEL_INVALID');
       const k=intIn(e.class,0,n-1,'STAT_UNKNOWN_LABEL_INVALID');
       if(unknown.some(u=>u.class===k))bad('STAT_UNKNOWN_LABEL_INVALID');
       if(series[0].values[k]!==null)bad('STAT_UNKNOWN_LABEL_CLASS_KNOWN'); // only a class whose bar the problem does not show can carry a symbol
       if(typeof e.label!=='string'||!/^[A-Za-z0-9+\-= ()?]{1,10}$/.test(e.label)||e.label!==e.label.trim())bad('STAT_UNKNOWN_LABEL_INVALID');
-      unknown.push({class:k,label:e.label});
+      // relHeight (opt-in): the outline's height relative to the other outlines (2x drawn twice as high as x); the highest outline keeps the usual height, the others are scaled down to it
+      let rel=null;
+      if(e.relHeight!==undefined){rel=parseQ(e.relHeight,'STAT_UNKNOWN_LABEL_INVALID');if(qcmp(rel,Q(1n,20n))<0||qcmp(rel,Q(20n))>0)bad('STAT_UNKNOWN_LABEL_INVALID');}
+      unknown.push({class:k,label:e.label,rel});
     }
     unknown.sort((x,y)=>x.class-y.class);
+    if(unknown.some(u=>u.rel!==null))for(const u of unknown)u.rel=u.rel??ONE;
   }
   if(c.showEndValues!==undefined&&(typeof c.showEndValues!=='boolean'||(c.showEndValues&&(!polygon||series.length!==1))))bad('STAT_SHOW_END_VALUES_UNSUPPORTED');
   // class sums: the exact sum of the series' values over from..to; a numeric label must equal it (hidden classes count only when one bracket holds all of them and the total says what they add up to)
@@ -213,13 +217,29 @@ function solveFreq(c){
   if(c.classSums!==undefined){
     if(!Array.isArray(c.classSums)||c.classSums.length<1||c.classSums.length>6)bad('STAT_CLASS_SUM_INVALID');
     for(const e of c.classSums){
-      onlyKeys(e,['series','from','to','label','unit'],'STAT_CLASS_SUM_INVALID');
-      const s=e.series===undefined?0:intIn(e.series,0,series.length-1,'STAT_CLASS_SUM_INVALID'),from=intIn(e.from,0,n-1,'STAT_CLASS_SUM_INVALID'),to=intIn(e.to,0,n-1,'STAT_CLASS_SUM_INVALID');
-      if(to<from)bad('STAT_CLASS_SUM_INVALID');
-      if(sums.some(x=>x.series===s&&x.from<=to&&from<=x.to))bad('STAT_CLASS_SUM_OVERLAP');
+      onlyKeys(e,['series','from','to','classes','label','unit'],'STAT_CLASS_SUM_INVALID');
+      const s=e.series===undefined?0:intIn(e.series,0,series.length-1,'STAT_CLASS_SUM_INVALID');
+      // one bracket over classes from..to, or (classes) a group of runs that need not touch: [0,1,2,4,5] or [[0,2],[4,5]] (adjacent runs merge); every run gets its bracket, joined under the axis
+      let runs;
+      if(e.classes!==undefined){
+        if(e.from!==undefined||e.to!==undefined||!Array.isArray(e.classes)||e.classes.length<2||e.classes.length>24)bad('STAT_CLASS_SUM_INVALID');
+        const pairs=e.classes.every(x=>Array.isArray(x));
+        const raw=pairs?e.classes.map(x=>x.length===2?[intIn(x[0],0,n-1,'STAT_CLASS_SUM_INVALID'),intIn(x[1],0,n-1,'STAT_CLASS_SUM_INVALID')]:bad('STAT_CLASS_SUM_INVALID')):e.classes.map(k=>{const v=intIn(k,0,n-1,'STAT_CLASS_SUM_INVALID');return [v,v];});
+        runs=[];
+        for(const [a,b] of raw){
+          if(b<a||(runs.length&&a<=runs.at(-1)[1]))bad('STAT_CLASS_SUM_INVALID'); // ascending, no class twice
+          if(runs.length&&a===runs.at(-1)[1]+1)runs.at(-1)[1]=b;else runs.push([a,b]);
+        }
+      }else{
+        const from=intIn(e.from,0,n-1,'STAT_CLASS_SUM_INVALID'),to=intIn(e.to,0,n-1,'STAT_CLASS_SUM_INVALID');
+        if(to<from)bad('STAT_CLASS_SUM_INVALID');
+        runs=[[from,to]];
+      }
+      const from=runs[0][0],to=runs.at(-1)[1],members=runs.flatMap(([a,b])=>[...Array(b-a+1).keys()].map(i=>a+i));
+      if(sums.some(x=>x.series===s&&x.members.some(k=>members.includes(k))))bad('STAT_CLASS_SUM_OVERLAP');
       const unit=e.unit===undefined?'':(typeof e.unit==='string'&&/^[가-힣A-Za-z%]{1,3}$/.test(e.unit)?e.unit:bad('STAT_CLASS_SUM_UNIT_INVALID'));
       const label=e.label===undefined||e.label===null?null:typeof e.label==='number'?String(e.label):e.label;
-      const sr=series[s],inside=sr.values.slice(from,to+1),hidden=inside.filter(v=>v===null).length,known=inside.filter(v=>v!==null).reduce(qadd,ZERO);
+      const sr=series[s],inside=members.map(k=>sr.values[k]),hidden=inside.filter(v=>v===null).length,known=inside.filter(v=>v!==null).reduce(qadd,ZERO);
       let text=null,free=false;
       if(label!==null){
         if(typeof label!=='string')bad('STAT_CLASS_SUM_LABEL_INVALID');
@@ -231,7 +251,7 @@ function solveFreq(c){
           let want=known,derivable=true;
           if(hidden){
             const allHidden=sr.values.flatMap((v,k)=>v===null?[k]:[]);
-            derivable=!(sr.hiddenSum===null||allHidden.some(k=>k<from||k>to));
+            derivable=!(sr.hiddenSum===null||allHidden.some(k=>!members.includes(k)));
             if(derivable)want=qadd(known,sr.hiddenSum);
           }
           if(!free&&!derivable)bad('STAT_CLASS_SUM_UNKNOWN');
@@ -240,9 +260,10 @@ function solveFreq(c){
           text=label; // written as the author gave it (0.30 stays 0.30); a number it starts with equals the exact sum whenever the engine can derive it
         }
       }
-      sums.push({series:s,from,to,label:text,unit,...(free?{free:true}:{})});
+      sums.push({series:s,from,to,label:text,unit,...(free?{free:true}:{}),...(runs.length>1?{runs}:{}),members});
     }
     sums.sort((x,y)=>x.series-y.series||x.from-y.from);
+    for(const x of sums)delete x.members;
   }
   const maxV=series.flatMap(s=>s.values).filter(v=>v!==null).reduce((x,y)=>qcmp(x,y)>=0?x:y);
   const steps=yKind==='FREQUENCY'?NICE.map(s=>Q(BigInt(s))):[Q(1n,100n),Q(1n,50n),Q(1n,20n),Q(1n,10n),Q(1n,5n),Q(1n,2n),Q(1n)];
@@ -251,7 +272,7 @@ function solveFreq(c){
   if(qcmp(top,maxV)===0)top=qadd(top,step);
   const ticks=[];for(let t=step;qcmp(t,top)<=0;t=qadd(t,step))ticks.push(qstr(t));
   return {schemaVersion:MODEL_VERSION,kind:c.kind,yKind,polygon,grid:c.grid===true,showValues:c.showValues===true,highlight,
-    ...(tone2.length?{highlightTone2:tone2}:{}),...(marks.length?{marks}:{}),...(restored.length?{restored,showRestoredValues:c.showRestoredValues===true}:{}),...(hidden.length?{hideValues:hidden}:{}),...(sums.length?{classSums:sums}:{}),...(unknown.length?{unknown}:{}),...(c.showEndValues===true?{showEndValues:true}:{}),
+    ...(tone2.length?{highlightTone2:tone2}:{}),...(marks.length?{marks}:{}),...(restored.length?{restored,showRestoredValues:c.showRestoredValues===true}:{}),...(hidden.length?{hideValues:hidden}:{}),...(sums.length?{classSums:sums}:{}),...(unknown.length?{unknown:unknown.map(u=>({class:u.class,label:u.label,...(u.rel!==null?{relHeight:qstr(u.rel)}:{})}))}:{}),...(c.showEndValues===true?{showEndValues:true}:{}),
     xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID','계급'),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',yKind==='FREQUENCY'?'도수(명)':'상대도수'),
     boundaries:b.map(qstr),width:qstr(width),classes:classes.map(k=>({lo:qstr(k.lo),hi:qstr(k.hi),mid:qstr(k.mid)})),
     series:series.map(s=>({name:s.name,frequencies:s.frequencies,total:s.total,values:s.values.map(v=>v===null?null:qstr(v)),
@@ -564,6 +585,7 @@ const breakMark=(prims,axis,x,y)=>{
 // --- the charts: spec = ordered primitives + labels at anchors (positions need no label widths; the tree's branch ends are placed when labels are typeset) --------
 // A class-sum bracket sits under the x tick labels: the first row's bottom line is SUM_Y0 below the axis, each further row (brackets that would overlap) SUM_PITCH lower; its text hangs beneath it.
 const SUM_Y0=36,SUM_PITCH=44,SUM_INSET=2.5,SUM_ARM=5,SUM_TEXT_H=33,SUM_TEXT_GAP=3;
+const SUM_JOIN_DROP=10; // a group of class runs (classSums[].classes): each run's bracket sends a stem this far down to one joining line, the label hangs beneath it
 const UNKNOWN_BAR_FRACTION=0.4; // a hidden class drawn as a dotted outline this fraction of the plot high: a place-holder, not a value
 const MARK_R={1:8,2:6};
 function freqSpec(m){
@@ -572,10 +594,11 @@ function freqSpec(m){
   let lowU,yAxisU,breakU=null;
   if(b0===0){lowU=poly?-.75*w:0;yAxisU=0;}else{lowU=b0-(poly?1.2:.8)*w;yAxisU=lowU;breakU=lowU+.3*w;}
   // each class sum goes in the first row where no earlier bracket of the figure overlaps its classes
-  const rowOf=[];
-  sums.forEach((sm,k)=>{let r=0;while(sums.some((o,j)=>j<k&&rowOf[j]===r&&o.from<=sm.to&&sm.from<=o.to))r++;rowOf.push(r);});
+  // (a figure with a group of runs puts the plain brackets first and the groups below them, so a group's joining line never runs through a plain bracket's label)
+  const groups=sums.some(sm=>sm.runs),pitch=SUM_PITCH+(groups?SUM_JOIN_DROP:0),rowOf=sums.map(()=>null);
+  [...sums.keys()].sort((a,b)=>(groups?(sums[a].runs?1:0)-(sums[b].runs?1:0):0)||a-b).forEach(k=>{const sm=sums[k];let r=0;while(sums.some((o,j)=>rowOf[j]===r&&j!==k&&o.from<=sm.to&&sm.from<=o.to))r++;rowOf[k]=r;});
   const sumRows=rowOf.length?Math.max(...rowOf)+1:0;
-  const highU=bn+(poly?.8:.45)*w,PLOT_H=210,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=sumRows?BASE+SUM_Y0+(sumRows-1)*SUM_PITCH+SUM_TEXT_GAP+SUM_TEXT_H+SAFE:BASE+TICK+4+LABEL_BELOW+SAFE;
+  const highU=bn+(poly?.8:.45)*w,PLOT_H=210,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=sumRows?BASE+SUM_Y0+(sumRows-1)*pitch+(groups?SUM_JOIN_DROP:0)+SUM_TEXT_GAP+SUM_TEXT_H+SAFE:BASE+TICK+4+LABEL_BELOW+SAFE;
   const px=u=>r6(MAPL+(u-lowU)/(highU-lowU)*(MAPR-MAPL)),T=N(m.y.top),py=v=>r6(BASE-v/T*PLOT_H),yAxisPx=px(yAxisU);
   const prims=[],labels=[];
   const ys=m.y.ticks.map(t=>({t,v:N(t)}));
@@ -589,8 +612,9 @@ function freqSpec(m){
     const v=N(m.series[0].values[i]),tone=m.highlight.includes(i)?(tone2.includes(i)?2:1):0,rebuilt=restored.includes(i);
     prims.push(rect(`bar-s0-${i}`,'bar',['bar','barHi','barHi2'][tone]+(rebuilt?'R':''),px(N(k.lo)),py(v),px(N(k.hi))-px(N(k.lo)),BASE-py(v),{series:0,class:i,highlight:tone,...(rebuilt?{restored:1}:{})},40));
   }
+  const maxRel=Math.max(...(m.unknown??[]).map(u=>u.relHeight===undefined?1:N(u.relHeight)),1e-9);
   for(const u of m.unknown??[]){ // a dotted outline in the hidden class's place with its symbol inside (never a bar: no value is drawn)
-    const k=m.classes[u.class],x0=px(N(k.lo)),x1=px(N(k.hi)),h=UNKNOWN_BAR_FRACTION*PLOT_H;
+    const k=m.classes[u.class],x0=px(N(k.lo)),x1=px(N(k.hi)),h=u.relHeight===undefined?UNKNOWN_BAR_FRACTION*PLOT_H:UNKNOWN_BAR_FRACTION*PLOT_H*N(u.relHeight)/maxRel;
     prims.push(rect(`unknown-s0-${u.class}`,'bar-unknown','barU',x0,BASE-h,x1-x0,h,{series:0,class:u.class},40));
     labels.push(math(`unknown-${u.class}-label`,'unknown-label',`unknown-s0-${u.class}`,DISPLAY+u.label,u.label,'center','middle',(x0+x1)/2,BASE-h/2,{class:u.class}));
   }
@@ -643,7 +667,17 @@ function freqSpec(m){
     labels.push(textLabel(`legend-${s}`,'legend',`legend-line-${s}`,sr.name,'start','middle',TITLE_X+27,y,{series:s}));
   }
   sums.forEach((sm,k)=>{ // a bracket under the axis labels from the left edge of class `from` to the right edge of class `to`; its sum is written beneath
-    const xl=px(N(m.boundaries[sm.from]))+SUM_INSET,xr=px(N(m.boundaries[sm.to+1]))-SUM_INSET,yb=BASE+SUM_Y0+rowOf[k]*SUM_PITCH,id=`class-sum-${k}`;
+    const yb=BASE+SUM_Y0+rowOf[k]*pitch,id=`class-sum-${k}`;
+    if(sm.runs){ // a group of runs: one bracket per run, a stem from each down to one joining line, the sum written under the middle of it
+      const spans=sm.runs.map(([a,b])=>({a,b,xl:px(N(m.boundaries[a]))+SUM_INSET,xr:px(N(m.boundaries[b+1]))-SUM_INSET}));
+      spans.forEach((sp,j)=>prims.push({t:'polyline',id:`${id}-run-${j+1}`,role:'class-sum',cls:'sum'+sm.series,points:[[sp.xl,yb-SUM_ARM],[sp.xl,yb],[sp.xr,yb],[sp.xr,yb-SUM_ARM]],data:{series:sm.series,from:sp.a,to:sp.b,group:k,run:j+1},layer:50}));
+      const xc=spans.map(sp=>(sp.xl+sp.xr)/2),yj=yb+SUM_JOIN_DROP;
+      prims.push({t:'polyline',id:`${id}-join`,role:'class-sum-join',cls:'sum'+sm.series,points:[[xc[0],yb],[xc[0],yj],[xc.at(-1),yj],[xc.at(-1),yb]],data:{series:sm.series,from:sm.from,to:sm.to,group:k},layer:50});
+      xc.slice(1,-1).forEach((x,j)=>prims.push(L(`${id}-stem-${j+2}`,'class-sum-stem','sum'+sm.series,x,yb,x,yj,{group:k,run:j+2},50)));
+      if(sm.label!==null)labels.push(textLabel(`${id}-label`,'class-sum',`${id}-join`,sm.label+sm.unit,'center','top',(xc[0]+xc.at(-1))/2,yj+SUM_TEXT_GAP,{series:sm.series,from:sm.from,to:sm.to,group:k}));
+      return;
+    }
+    const xl=px(N(m.boundaries[sm.from]))+SUM_INSET,xr=px(N(m.boundaries[sm.to+1]))-SUM_INSET;
     prims.push({t:'polyline',id,role:'class-sum',cls:'sum'+sm.series,points:[[xl,yb-SUM_ARM],[xl,yb],[xr,yb],[xr,yb-SUM_ARM]],data:{series:sm.series,from:sm.from,to:sm.to},layer:50});
     if(sm.label!==null)labels.push(textLabel(`${id}-label`,'class-sum',id,sm.label+sm.unit,'center','top',(xl+xr)/2,yb+SUM_TEXT_GAP,{series:sm.series,from:sm.from,to:sm.to}));
   });

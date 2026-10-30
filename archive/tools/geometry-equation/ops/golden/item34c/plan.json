@@ -1,0 +1,70 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "FREQUENCY_POLYGON",
+  "yKind": "RELATIVE",
+  "boundaries": [
+   "35",
+   "40",
+   "45",
+   "50",
+   "55",
+   "60",
+   "65"
+  ],
+  "series": [
+   {
+    "relativeFrequencies": [
+     "0.12",
+     "0.16",
+     "0.20",
+     null,
+     "0.08",
+     "0.04"
+    ]
+   }
+  ],
+  "showValues": true,
+  "classSums": [
+   {
+    "series": 0,
+    "classes": [
+     [
+      0,
+      2
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "label": "0.6"
+   },
+   {
+    "series": 0,
+    "from": 3,
+    "to": 3,
+    "label": "?"
+   }
+  ],
+  "xTitle": "몸무게(kg)",
+  "yTitle": "상대도수",
+  "grid": true
+ },
+ "caption": "학생 200명의 몸무게 상대도수분포다각형에서 보이는 다섯 계급의 상대도수를 한 괄호로 묶어 합을 나타내고, 찢어져 보이지 않는 50kg 이상 55kg 미만 계급은 물음표 괄호로 나타낸 그림",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "계급 35kg 이상 65kg 미만, 계급의 크기 5kg, 계급 6개",
+   "mappedTo": "chart.boundaries"
+  },
+  {
+   "id": "c2",
+   "condition": "보이는 상대도수 0.12, 0.16, 0.20, 0.08, 0.04이고 50kg 이상 55kg 미만 계급은 찢어져 보이지 않음",
+   "mappedTo": "chart.series[0]"
+  }
+ ],
+ "newVisualInformation": [
+  "보이는 다섯 계급(찢어진 계급의 양옆)의 상대도수를 한 묶음으로 합하고, 보이지 않는 계급의 위치를 표시해 상대도수의 합이 1임을 이용하게 함"
+ ]
+}
