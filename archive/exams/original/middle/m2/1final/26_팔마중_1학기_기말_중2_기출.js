@@ -547,7 +547,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 오른쪽 위로 올라가며 y축과 원점 아래에서 만나는 직선 y=(2a-1)x+4b-3이 제3, 제4, 제1사분면을 지나고, 색칠한 제2사분면은 지나지 않는 예시 그림이다.",
+    "solutionImageCaption": "기울기가 양수이고 y절편이 음수이면 직선은 제2사분면을 지나지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -627,7 +631,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 AD=15 cm, DC=8 cm이고 점 P가 변 BC 위에 있다. BP=3x cm, PC=(15-3x) cm로 표시했고, 사각형 ABPD와 오른쪽 삼각형(넓이 60-12x)이 서로 다른 색으로 구분되어 있다.",
+    "solutionImageCaption": "BP=3x, PC=15-3x이므로 사각형 ABPD는 직사각형에서 오른쪽 삼각형을 뺀 부분이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -786,7 +794,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 직선 y=2x+5, x+y-2=0, y=-1이 둘러싸는 삼각형이 색칠되어 있다. y=-1 위의 밑변에 길이 6, 맨 위 꼭짓점에서 밑변으로 내린 점선 높이에 4와 직각 표시가 있다.",
+    "solutionImageCaption": "세 직선으로 둘러싸인 삼각형의 밑변은 6, 높이는 4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

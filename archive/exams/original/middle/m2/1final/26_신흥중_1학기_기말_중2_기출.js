@@ -506,7 +506,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선 y=-2x+13, y=1/2x+1/2, x-1=0이 둘러싸는 삼각형을 색칠한 좌표평면 그림이다. x=1 위의 두 꼭짓점이 y축의 11과 1에 대응하고, 세 번째 꼭짓점은 x좌표 5이며 이 꼭짓점에서 x=1까지 그은 수평 점선(길이 4)과 직각 표시가 그려져 있다.",
+    "solutionImageCaption": "세 직선으로 둘러싸인 삼각형의 밑변은 x=1 위에, 높이 4는 교점에서 x=1까지의 수평 거리이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -534,7 +538,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 점 (0,1)을 지나는 두 직선 y=10x+1과 y=7/3x+1이 각각 점 A(2,21), B(3,8)을 지나고, 선분 AB가 두 직선 사이에 굵게 그려져 있다.",
+    "solutionImageCaption": "y=ax+1이 선분 AB와 만나는 경계는 점 A를 지날 때와 점 B를 지날 때이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -635,6 +643,10 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직각삼각형이 색칠되어 있다. 점 B에서 직각을 이루며, 밑변 AB는 y=-8 위에 있고 세로 변은 2(a+4), 점 (a,2a)와 A를 잇는 빗변에는 기울기 -(a+4)/7이 적혀 있다.",
+    "solutionImageCaption": "밑변 AB는 y=-8 위, 세로 변은 2(a+4)이고 빗변의 기울기는 -(a+4)/7이다.",
+    "solutionImageSize": "medium"
   }
 ];
