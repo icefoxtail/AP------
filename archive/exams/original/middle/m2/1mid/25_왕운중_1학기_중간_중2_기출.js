@@ -794,9 +794,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "course": "중2 수학",
-    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 수직선에 -2, -1, 0, 1, 2의 눈금을 표시하고, 이 중 x<n의 해가 되는 -2, -1, 0에 점을 찍었다. 점 N은 n의 위치를 나타낸다.",
-    "solutionImageCaption": "x-1-n<-1은 x<n이다. 주어진 값 -2, -1, 0, 1, 2를 수직선의 눈금으로 나타내고, 이 중 x<n의 해가 되는 -2, -1, 0에 점을 찍었다. 점 N은 n의 위치이다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 -2, -1, 0, 1, 2를 나타내고, x<n을 만족하는 값은 채운 점, 만족하지 않는 값은 빈 점으로 그렸다. 눈금 n의 위치를 문자로 표시했다.",
+    "solutionImageCaption": "x-1-n<-1은 x<n이다. 주어진 값 -2, -1, 0, 1, 2 중 x<n을 만족하는 값은 채운 점, 만족하지 않는 값은 빈 점으로 나타내고, 눈금 n의 위치를 표시했다.",
     "solutionImageSize": "medium"
   },
   {
