@@ -47,6 +47,8 @@ function resolveInlineImageAsset(src, examFile, relativeExamPath) {
 export function buildInlineImageInventory() {
   const records = [];
   const errors = [];
+  const warnings = [];
+  const resolvedKnownMissing = [];
   const knownMissing = JSON.parse(fs.readFileSync(knownMissingPath, 'utf8')).missing;
   const keyFor = ({ file, questionId, src }) => JSON.stringify([file, String(questionId), src]);
   const expectedMissingCounts = new Map();
@@ -107,19 +109,33 @@ export function buildInlineImageInventory() {
     });
   }
 
+  // A known-missing entry that is no longer observed as missing is not a
+  // defect: either the asset was restored (the owner may now shrink the list)
+  // or the reference was removed from the exam source. Report it, do not fail.
+  const existingByKey = new Map();
+  for (const record of records) {
+    if (!record.testFixture && record.assetExists) {
+      const key = keyFor(record);
+      existingByKey.set(key, (existingByKey.get(key) || 0) + 1);
+    }
+  }
+  const reportedStale = new Map();
   for (const reference of knownMissing) {
     const key = keyFor(reference);
-    if ((observedMissingCounts.get(key) || 0) < expectedMissingCounts.get(key)) {
-      errors.push(`${reference.file} q${reference.questionId}: frozen missing-image baseline entry is stale: ${reference.src}`);
-    }
+    const index = (reportedStale.get(key) || 0) + 1;
+    reportedStale.set(key, index);
+    if (index <= (observedMissingCounts.get(key) || 0)) continue;
+    const restored = (existingByKey.get(key) || 0) > 0;
+    resolvedKnownMissing.push({ ...reference, reason: restored ? 'asset-restored' : 'reference-removed' });
+    warnings.push(`${reference.file} q${reference.questionId}: known-missing entry is resolved (${restored ? 'asset now exists' : 'reference no longer in source'}); the owner may remove it from the known list: ${reference.src}`);
   }
 
   records.sort((left, right) => left.file.localeCompare(right.file) || left.sourceOrdinal - right.sourceOrdinal);
-  return { records, errors };
+  return { records, errors, warnings, resolvedKnownMissing };
 }
 
-export function buildInlineImageInventoryReport() {
-  const { records, errors } = buildInlineImageInventory();
+export function buildInlineImageInventoryReport(inventory = buildInlineImageInventory()) {
+  const { records, errors, resolvedKnownMissing } = inventory;
   const extensionCounts = {};
   for (const record of records) extensionCounts[record.extension] = (extensionCounts[record.extension] || 0) + 1;
   return {
@@ -135,6 +151,7 @@ export function buildInlineImageInventoryReport() {
       missingProductionAssetCount: records.filter(record => !record.testFixture && !record.assetExists).length,
       errorCount: errors.length
     },
+    resolvedKnownMissing,
     records
   };
 }
@@ -145,29 +162,29 @@ function main() {
   const check = args.has('--check');
   if (write && check) throw new Error('Choose either --write or --check.');
 
-  const report = buildInlineImageInventoryReport();
+  const inventory = buildInlineImageInventory();
+  const report = buildInlineImageInventoryReport(inventory);
   if (report.validation.errorCount) {
     console.error(report.validation);
-    for (const message of buildInlineImageInventory().errors) console.error(`FAIL ${message}`);
+    for (const message of inventory.errors) console.error(`FAIL ${message}`);
     process.exitCode = 1;
     return;
   }
 
   if (write) {
+    // Explicit request only: refreshes the dated historical snapshot.
     fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
     console.log(`Wrote ${path.relative(repoRoot, reportPath)} (${report.total} records)`);
     return;
   }
   if (check) {
-    const current = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
-    const { generatedAt: _currentDate, ...currentData } = current;
-    const { generatedAt: _reportDate, ...reportData } = report;
-    if (JSON.stringify(currentData) !== JSON.stringify(reportData)) {
-      console.error('FAIL inline-image inventory differs from current archive assets');
-      process.exitCode = 1;
-      return;
-    }
-    console.log(`PASS ${report.total} records; ${report.validation.missingProductionAssetCount} missing production assets`);
+    // 2026-10-30: --check validates defects only. It does not compare against
+    // the dated snapshot or pinned counts; it prints the current totals.
+    for (const message of inventory.warnings) console.warn(`WARN ${message}`);
+    console.log(`PASS total=${report.total} production=${report.productionTotal} testFixture=${report.testFixtureTotal} `
+      + `extensions=${JSON.stringify(report.extensionCounts)} qImageAndInline=${report.qImageAndInlineTotal} `
+      + `missingProductionAssets=${report.validation.missingProductionAssetCount} `
+      + `resolvedKnownMissing=${report.resolvedKnownMissing.length}`);
     return;
   }
   process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);

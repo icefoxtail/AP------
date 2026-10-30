@@ -39,7 +39,7 @@ function fixture({mode='fail',latePR=false}={}){
  const reg={id:20,run_attempt:1,event:'push',conclusion:'success',head_sha:B,updated_at:at(3),html_url:link('actions/runs',20),head_branch:'main'};
  const release={id:44,run_attempt:2,event:'push',conclusion:'success',head_sha:D,updated_at:at(5),html_url:link('actions/runs',44),head_branch:'main'};
  const api=async route=>{
-  if(route.startsWith('/contents/'))return {sha:A,content:Buffer.from(JSON.stringify(stored)).toString('base64')};
+  if(route.startsWith('/contents/'))return {sha:A,encoding:'base64',content:Buffer.from(JSON.stringify(stored)).toString('base64')};
   if(route.startsWith('/pulls?'))return [
    {number:1,merged_at:at(1),merge_commit_sha:B,head:{sha:A},changed_files:1,html_url:link('pull',1)},
    {number:2,merged_at:at(1),merge_commit_sha:B,head:{sha:A},changed_files:1,html_url:link('pull',2)}];
@@ -232,7 +232,7 @@ function oldRunBackfillFixture({negative=false}={}){
     registry:expected.registry,exams:{},evidenceSource:'trusted-git-tree'}}]))};
  let stored=prior,trees=0;
  const api=async route=>{
-  if(route.startsWith('/contents/'))return {sha:A,content:Buffer.from(JSON.stringify(stored)).toString('base64')};
+  if(route.startsWith('/contents/'))return {sha:A,encoding:'base64',content:Buffer.from(JSON.stringify(stored)).toString('base64')};
   if(route.startsWith('/pulls?'))return []; // PR is outside recent window
   if(route.includes('/runs?'))return {workflow_runs:[]}; // historical runs are outside recent 24
   if(route.startsWith('/compare/'))return {status:'ahead'};

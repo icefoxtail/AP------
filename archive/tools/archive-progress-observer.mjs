@@ -1,23 +1,60 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {execFileSync} from 'node:child_process';
+import {execFileSync,spawnSync} from 'node:child_process';
 import {pathToFileURL} from 'node:url';
 import {reconcile,validSha} from './archive-progress-core.mjs';
 import {mergedPRs,runs,selectProof,parseProof,checksFromRuns} from './archive-progress-collector.mjs';
 import {registeredGitProof,deployedSiteProof} from './archive-progress-github-proof.mjs';
 import {observeRun,runKey,sanitizeObservation,eligible} from './archive-progress-retry.mjs';
 const REPOSITORY='icefoxtail/AP------';
-export function githubClient({fetchImpl=fetch,token=process.env.GITHUB_TOKEN}={}){
+// A hung socket must never consume the whole job budget: every request carries its own deadline.
+export const API_TIMEOUT_MS=60*1000;
+export const DOWNLOAD_TIMEOUT_MS=5*60*1000;
+export function githubClient({fetchImpl=fetch,token=process.env.GITHUB_TOKEN,apiTimeoutMs=API_TIMEOUT_MS,
+ downloadTimeoutMs=DOWNLOAD_TIMEOUT_MS}={}){
  if(!token)throw Error('GITHUB_TOKEN missing');
  const origin='https://api.github.com/repos/'+REPOSITORY;
  const headers={Accept:'application/vnd.github+json',Authorization:'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28'};
+ const bounded=(ms,fn)=>(url,opts={})=>fn(url,opts.signal?opts:{...opts,signal:AbortSignal.timeout(ms)});
  const api=async(route,opts={})=>{
-  const response=await fetchImpl(origin+route,{...opts,headers:{...headers,...opts.headers}});
+  const response=await bounded(apiTimeoutMs,fetchImpl)(origin+route,{...opts,headers:{...headers,...opts.headers}});
   if(!response.ok){if(response.status===404&&opts.allow404)return null;throw Error('GitHub '+response.status+' '+route);}
   return response.json();
  };
- return {api,headers,origin,fetchImpl};
+ return {api,headers,origin,fetchImpl:bounded(downloadTimeoutMs,fetchImpl)};
+}
+
+/**
+ * Ancestry oracle for reconcile(). The old implementation called GET /compare/{base}...{head} once per
+ * (exam merge SHA, run SHA) pair: ~175 merge SHAs x ~32 runs = thousands of sequential, payload-heavy
+ * requests, which exceeded the 30 minute job limit on every run since 2026-10-28 (the status is only
+ * stored at the very end, so a timeout loses all progress). The trusted-main checkout already holds the
+ * full commit graph, so answer from it. A commit that exists on neither side is not an ancestor of a local
+ * commit; only a head newer than the checkout falls back to the API (existence is probed once per head).
+ */
+export function localAncestorResolver({git,remoteHasCommit,apiCompare,log=()=>{}}){
+ const known=new Map(),remote=new Map(),stats={local:0,api:0,missing:0};
+ const hasLocal=sha=>{
+  if(!known.has(sha))known.set(sha,git(['cat-file','-e',sha+'^{commit}'])===0);
+  return known.get(sha);
+ };
+ const resolver=async(base,head)=>{
+  if(hasLocal(head)){
+   if(!hasLocal(base)){stats.missing++;return false;}
+   stats.local++;
+   return git(['merge-base','--is-ancestor',base,head])===0;
+  }
+  if(!remote.has(head))remote.set(head,Promise.resolve().then(()=>remoteHasCommit(head)).catch(()=>false));
+  if(!(await remote.get(head))){stats.missing++;return false;}
+  stats.api++;
+  return apiCompare(base,head);
+ };
+ resolver.stats=stats;resolver.log=()=>log('ancestry checks: local='+stats.local+' api='+stats.api+' unknown='+stats.missing);
+ return resolver;
+}
+export function gitStatus(args,{cwd=process.cwd()}={}){
+ return spawnSync('git',args,{cwd,stdio:'ignore',timeout:30000}).status;
 }
 export async function getProof(run,kind,client){
  if(run.conclusion!=='success'||run.event==='pull_request'||run.branch!=='main'||!Number.isInteger(run.attempt))return null;
@@ -86,7 +123,8 @@ export async function readStatus(api) {
  return {value,sha:file.sha||null};
 }
 
-export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new Date().toISOString(),storeStatus,manualRetry=false}){
+export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new Date().toISOString(),storeStatus,manualRetry=false,
+ ancestor:ancestorImpl=null,deadlineAt=Infinity,now:nowMs=()=>Date.now(),log=()=>{}}){
  const {value:old,sha:previousSha}=await readStatus(api);
  const [{prs,incompletePRs,completePulls,oldestObservedAt},regRuns,releaseRuns]=await Promise.all([
   mergedPRs(api,historyPages),runs(api,'archive-registration-sync.yml',historyPages),runs(api,'archive-pages-release.yml',historyPages)]);
@@ -111,6 +149,7 @@ export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new 
   mergedAt.get(id)<=Date.parse(run.at)&&!record?.proof?.exams?.[id]&&
   !record?.checkedExamIds?.includes(id));
  const observations={};
+ let deferred=0;
  for(const [key,raw] of Object.entries(old.observations||{})){
   const safe=sanitizeObservation(key,raw,examIds);
   if(safe)observations[key]=safe;
@@ -136,7 +175,13 @@ export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new 
    }
    if(r.conclusion!=='success')continue;
    const key=runKey(kind,r);
-   const {record,proof}=await observeRun({kind,run:r,old:key?observations[key]:null,clock,manual:manualRetry,
+   // Bounded work: once the budget is spent, stop paying for new evidence. Already stored evidence is
+   // reused unchanged (no attempt is consumed), the remaining runs are picked up by the next observer run,
+   // and the status is still reconciled and stored so progress is never lost to a job timeout.
+   const exhausted=nowMs()>=deadlineAt;
+   if(exhausted)deferred++;
+   const {record,proof}=exhausted?{record:key?observations[key]||null:null,proof:key?observations[key]?.proof||null:null}
+    :await observeRun({kind,run:r,old:key?observations[key]:null,clock,manual:manualRetry,
     getEvidence,examIds,newExamIds:missingFor(r,observations[key])});
    if(key&&record)observations[key]=record;
    if(kind==='registration')registrations.push({...r,inputSha:r.sha,registeredSha:proof?.sourceSha,
@@ -144,10 +189,12 @@ export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new 
    else releases.push({...r,proof,sha:r.sha});
   }
  }
- const ancestor=async(base,head)=>{
-  const result=await api('/compare/'+base+'...'+head);
+ const apiCompare=async(base,head)=>{
+  const result=await api('/compare/'+base+'...'+head+'?per_page=1');
   return result.status==='identical'||result.status==='ahead';
  };
+ const ancestor=ancestorImpl||apiCompare;
+ if(deferred)log('evidence budget exhausted: '+deferred+' run(s) deferred to the next observer run');
  const current=await reconcile(old,{prs,checks,registrations,releases,incompletePRs,completePulls,oldestObservedAt,
   scope:manualHistory?'manual-history':'recent',now:clock()},ancestor);
  // Cache small allowlisted proof fragments keyed to the exact observed run version.
@@ -176,8 +223,22 @@ async function main(){
   body:JSON.stringify({message:'chore(status): refresh GitHub-observed archive progress',branch:'archive-progress-state',
    content:Buffer.from(JSON.stringify(value,null,2)+'\n').toString('base64'),...(priorSha?{sha:priorSha}:{})})});
  console.log('OBSERVER_CHECKOUT_SHA='+execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim());
+ const started=Date.now();
+ const log=message=>console.log('['+Math.round((Date.now()-started)/1000)+'s] '+message);
+ // Evidence collection stops at the budget (default 12 min) so reconcile + store always finish inside the
+ // workflow's 20 minute step limit instead of being cancelled with nothing saved.
+ const budgetMs=Math.max(30*1000,Number.parseInt(process.env.ARCHIVE_PROGRESS_BUDGET_MS||'',10)||12*60*1000);
+ const shallow=execFileSync('git',['rev-parse','--is-shallow-repository'],{encoding:'utf8'}).trim()==='true';
+ // A shallow checkout cannot answer ancestry locally; fall back to the (slower) API comparison.
+ const ancestor=shallow?null:localAncestorResolver({git:gitStatus,log,
+  remoteHasCommit:async sha=>!!(await api('/git/commits/'+sha,{allow404:true})),
+  apiCompare:async(base,head)=>{const r=await api('/compare/'+base+'...'+head+'?per_page=1');return r.status==='identical'||r.status==='ahead';}});
+ log('observer start: budget='+Math.round(budgetMs/1000)+'s ancestry='+(shallow?'api (shallow checkout)':'local git'));
  const current=await executeOnce({api,historyPages:pages,manualRetry:process.env.GITHUB_EVENT_NAME==='workflow_dispatch',
-  getEvidence:(run,kind,cachedProof)=>collectEvidence(run,kind,cachedProof,client),storeStatus});
+  getEvidence:(run,kind,cachedProof)=>collectEvidence(run,kind,cachedProof,client),storeStatus,
+  ancestor,deadlineAt:started+budgetMs,log});
+ ancestor?.log?.();
+ log('observer stored status');
  console.log('Observer complete:',Object.keys(current.entries).length,'GitHub-linked exams');
 }
 if(process.argv[1] && import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)main().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,5 +1,11 @@
 # JS Archive — MAIN_FIRST / CI_DEFERRED 운영병합 계약 (CURRENT)
 
+## CURRENT — Pages 학생 배포는 릴리스 게이트 필수 (2026-10-29, 사용자 결정)
+
+- **병합은 CI와 계속 독립**이다. `GIT_MAIN_MERGED` 판정, 병합 선행조건 금지, `CI_DEFERRED/CI_FAIL_FOLLOWUP` 분리는 그대로이며 이 노트가 병합을 막는 게이트를 추가하지 않는다.
+- 다만 **학생 Pages 배포(`Archive Pages Release`의 `deploy`)는 릴리스 게이트를 통과해야만** 실행된다. 필수 검증 단계가 하나라도 실패·타임아웃·미도달이면 `Pages release gate` 단계가 build job을 실패시켜 deploy가 실행되지 않고, **기존 정상 사이트가 그대로 유지**된다(진단 증거 업로드는 `if: always()`로 유지). 이전의 "검증 실패해도 배포" 동작은 잘못된 운영으로 폐기한다.
+- 필수/참고 단계 분류, 단계별 timeout, 예약(3시간) 자가복구는 워크플로 상단 주석과 `tools/ci/archive-pages-release-gate.mjs`, `tools/ci/archive-pages-deploy-needed.mjs`가 정본이다. 게이트 통과 없이 `PUBLISHED_VERIFIED`를 주장하지 않는다.
+
 ## CURRENT — 사용자 지정 감독 출고 / 품질·Git·배포 상태 분리 (2026-10-22)
 
 **적용:** 사용자가 특정 시험지·산출물과 Git `main` 운영병합을 명시해 지정한 감독·출고 담당 Work/Codex/ROOT에게 적용한다. 이는 출고를 **직접 검토·수리·병합할 작업 권한**이지, 내용 미검증을 품질 PASS로 바꾸는 권한이 아니다. 예약 MASTER/CREATE/R1/R2/R3의 Git writer 금지는 그대로다.
