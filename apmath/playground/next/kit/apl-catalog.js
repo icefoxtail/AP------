@@ -224,9 +224,9 @@ window.APLab.catalog = {
    "order": 2,
    "title": "사각형 경험도감",
    "short": "사각형",
-   "summary": "판별·넓이·대각선·반례·회전 41개 장면. 사각형 분류 완전 정복.",
-   "keywords": "사각형 평행사변형 마름모 직사각형 대각선 판별 넓이 41장면 사각형 경험도감 중2 · 단원 02 41장면",
-   "badge": "41장면",
+   "summary": "판별·넓이·대각선·반례·회전 30개 장면. 사각형 분류 완전 정복.",
+   "keywords": "사각형 평행사변형 마름모 직사각형 대각선 판별 넓이 30장면 사각형 경험도감 중2 · 단원 02 30장면",
+   "badge": "30장면",
    "scenes": [
     "평행사변형 성질·5대 판정",
     "사각형 족보 진화 & 등변사다리꼴",
@@ -236,6 +236,7 @@ window.APLab.catalog = {
     "가짜 조건 반례 연구소 (오답 1위)"
    ],
    "legacy": "labs/g8/quadrilaterals-atlas.html",
+   "next": "next/labs/g8-quadrilaterals.html",
    "glyph": "<path d=\"M10 24 L58 14 L74 58 L26 68 Z\"/><path d=\"M10 24 L74 58 M58 14 L26 68\"/><circle cx=\"42\" cy=\"41\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
    "sceneTotal": 30
   },
