@@ -2602,6 +2602,7 @@ def audit_labels(plan, ctx):
                     if ctx.get('unit') and number is not None and '\\mathrm{%s}' % ctx['unit'] not in tex and '^\\circ' not in tex: errors.append('SOLID_DIM_UNIT_MISSING:' + dim)
                 leader = next((e for e in root.iter(NS + 'line') if e.get('data-role') == 'leader' and e.get('data-label') == lid), None)
                 if (g.get('data-leader') == '1') != (leader is not None): errors.append('SOLID_LEADER_MISMATCH:' + lid)
+                if seg is not None: check_dim_side(plan, dim, seg, box, errors)
                 if leader is not None and seg is not None:
                     p0, p1 = (_num(leader, 'x1'), _num(leader, 'y1')), (_num(leader, 'x2'), _num(leader, 'y2'))
                     if _seg_dist(p1, seg[0], seg[1]) > 1.5 or _box_seg_dist(box, p0, p0) > 2.5: errors.append('SOLID_LEADER_NOT_ATTACHED:' + lid)
@@ -2618,6 +2619,37 @@ def audit_labels(plan, ctx):
     if plan_names is not None:
         got = sorted(g.get('id') for g in ctx['labels'] if g.get('data-label-role') == 'vertex-name')
         if got != sorted(plan_names): errors.append('SOLID_NAME_LABEL_SET_MISMATCH')
+
+
+SIDE_DIR_PX = {'LEFT': (-1.0, 0.0), 'RIGHT': (1.0, 0.0), 'TOP': (0.0, -1.0), 'BOTTOM': (0.0, 1.0)}   # dims[].side: the direction on the page (y down) the label stands in
+SIDE_FACING_MIN = 0.3   # the segment's normal has to point at least this far into it
+
+
+def plan_dim(plan, dim):
+    """the plan's dims entry of a drawn dimension id ("dim-3" is the third)"""
+    m = re.fullmatch(r'dim-(\d+)', dim or '')
+    dims = plan.get('dims') or []
+    return dims[int(m.group(1)) - 1] if m and 0 < int(m.group(1)) <= len(dims) else {}
+
+
+def check_dim_side(plan, dim, seg, box, errors):
+    """dims[].side: the label stands on that side of its segment (the side of the segment's line, as the placer takes it): LEFT, RIGHT, TOP or BOTTOM on the page"""
+    side = plan_dim(plan, dim).get('side')
+    if side is None or seg is None or box is None: return
+    (ax, ay), (bx, by) = seg
+    length = math.hypot(bx - ax, by - ay)
+    if length < 1e-9: return
+    nx, ny = -(by - ay) / length, (bx - ax) / length
+    want = SIDE_DIR_PX.get(side)
+    if want is None:
+        errors.append('SOLID_DIM_SIDE_PLAN_INVALID:' + dim)
+        return
+    facing = nx * want[0] + ny * want[1]
+    if abs(facing) < SIDE_FACING_MIN - 1e-9:
+        errors.append('SOLID_DIM_SIDE_PLAN_INVALID:' + dim)   # the segment runs along that direction: it has no such side
+        return
+    t = (box[0] + box[2] / 2 - ax) * nx + (box[1] + box[3] / 2 - ay) * ny
+    if t * (1 if facing > 0 else -1) <= 0: errors.append('SOLID_DIM_SIDE_MISMATCH:' + dim)
 
 
 def _inside_region(region, q, margin=0.0):

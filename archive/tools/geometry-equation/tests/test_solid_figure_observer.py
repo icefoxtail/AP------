@@ -1365,3 +1365,52 @@ class HeightFeet(unittest.TestCase):
         pyramid = O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 3, 'depth': 4}, 'height': 5, 'names': 'ABCDV', 'id': 's1'})
         xs = [O.project(v[1])[0] for v in pyramid['verts'][:4]]
         self.assertEqual(xs.index(max(xs)), 2)   # C(3, 4): 3 cos 28 + 4 sin 28
+
+
+class DimSide(unittest.TestCase):
+    """E33: dims[].side says which side of its segment a label stands on (page coordinates, y down); read back from the label's box and the segment"""
+
+    BOX = (100.0, 100.0, 40.0, 20.0)   # x, y, width, height
+
+    def check(self, side, seg, box):
+        errors = []
+        O.check_dim_side({'dims': [{'edge': 'AB', 'side': side}]}, 'dim-1', seg, box, errors)
+        return errors
+
+    def test_a_label_above_a_nearly_horizontal_segment_is_on_its_top(self):
+        seg = ((90.0, 160.0), (190.0, 150.0))   # runs right and slightly up on the page
+        self.assertEqual(self.check('TOP', seg, (120.0, 100.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('BOTTOM', seg, (120.0, 170.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('TOP', seg, (120.0, 170.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_MISMATCH:dim-1'])
+        self.assertEqual(self.check('BOTTOM', seg, (120.0, 100.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_MISMATCH:dim-1'])
+
+    def test_the_side_is_the_side_of_the_segments_line_whichever_end_is_first(self):
+        seg = ((190.0, 150.0), (90.0, 160.0))   # the same segment written the other way round
+        self.assertEqual(self.check('TOP', seg, (120.0, 100.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('TOP', seg, (120.0, 170.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_MISMATCH:dim-1'])
+        # a label past the end of its segment is still on the segment's top when it is above the line
+        self.assertEqual(self.check('TOP', ((100.0, 150.0), (120.0, 150.0)), (50.0, 100.0, 40.0, 20.0)), [])
+
+    def test_left_and_right_of_a_nearly_vertical_segment(self):
+        seg = ((150.0, 200.0), (156.0, 120.0))
+        self.assertEqual(self.check('LEFT', seg, (90.0, 150.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('RIGHT', seg, (170.0, 150.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('LEFT', seg, (170.0, 150.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_MISMATCH:dim-1'])
+
+    def test_a_side_the_segment_does_not_face_and_an_unknown_side_are_plan_errors(self):
+        flat = ((90.0, 150.0), (190.0, 150.0))
+        self.assertEqual(self.check('LEFT', flat, (30.0, 140.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_PLAN_INVALID:dim-1'])   # a horizontal segment has no left
+        self.assertEqual(self.check('UP', flat, (30.0, 140.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_PLAN_INVALID:dim-1'])
+        # 17 degrees off the direction is the limit: sin 17 = 0.29 is refused, a segment tilted 20 degrees (0.34) is accepted
+        t17 = ((100.0, 100.0), (100.0 + 100 * math.cos(math.radians(17)), 100.0 - 100 * math.sin(math.radians(17))))
+        t20 = ((100.0, 100.0), (100.0 + 100 * math.cos(math.radians(20)), 100.0 - 100 * math.sin(math.radians(20))))
+        self.assertEqual(self.check('LEFT', t17, (40.0, 90.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_PLAN_INVALID:dim-1'])
+        self.assertEqual(self.check('LEFT', t20, (40.0, 90.0, 40.0, 20.0)), [])
+
+    def test_no_side_no_check_and_the_dimension_of_a_plan_is_found_by_its_id(self):
+        self.assertEqual(O.plan_dim({'dims': [{'edge': 'AB'}, {'edge': 'BC', 'side': 'TOP'}]}, 'dim-2'), {'edge': 'BC', 'side': 'TOP'})
+        self.assertEqual(O.plan_dim({'dims': [{'edge': 'AB'}]}, 'dim-3'), {})
+        self.assertEqual(O.plan_dim({}, 'dim-1'), {})
+        errors = []
+        O.check_dim_side({'dims': [{'edge': 'AB'}]}, 'dim-1', ((0.0, 0.0), (10.0, 0.0)), (0.0, 0.0, 1.0, 1.0), errors)
+        self.assertEqual(errors, [])

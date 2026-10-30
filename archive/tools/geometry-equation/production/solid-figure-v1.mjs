@@ -715,6 +715,10 @@ function pointTable(solids){
 
 // --- solving the figure ---------------------------------------------------------------------------------------------------------------------
 const MAX_SEGMENTS=10;
+// the side of a segment its label stands on (dims[].side): the direction on the screen (x right, y up) and how far the segment's normal has to point into it
+// a label told its side may also stand past either end of its segment (above-left of a short top edge, say): fractions of the segment, 0 and 1 are its ends
+const SIDE_FRACTIONS=[0.5,0.4,0.6,0.3,0.7,0.2,0.8,0.1,0.9,0,1,-0.15,1.15,-0.3,1.3,-0.5,1.5,-0.75,1.75];
+const SEGMENT_SIDES=['LEFT','RIGHT','TOP','BOTTOM'],SIDE_DIRECTION={LEFT:[-1,0],RIGHT:[1,0],TOP:[0,1],BOTTOM:[0,-1]},SIDE_FACING_MIN=0.3;
 // highlight tints: a fill colour and its opacity (LIGHT is the original blue shade of every highlight)
 const HIGHLIGHT_FILLS={LIGHT:['#7fa6e8',0.32],MEDIUM:['#7fa6e8',0.55],WARM:['#f2a65a',0.42],GREEN:['#6fcf97',0.42],ROSE:['#e98aa8',0.42],VIOLET:['#a78bdb',0.42]};
 const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM','REGULAR_POLYHEDRON','BIPYRAMID'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
@@ -1104,8 +1108,12 @@ function solveSolids(plan){
       if((d.direct!==undefined&&d.direct!==true)||(d.foot!==undefined&&d.foot!==true&&typeof d.foot!=='string')||((d.direct!==undefined||d.foot!==undefined)&&d.height===undefined))bad('SOLID_DIM_DIRECT_INVALID');
       // half:"+X" ... "-Z": which half axis of a cut sphere its radius lies along (it must belong to the piece and be seen)
       if(d.half!==undefined&&(d.radius!=='center'||typeof d.half!=='string'||!/^[+-][XYZ]$/.test(d.half)))bad('SOLID_DIMS_INVALID');
-      // side:"LEFT"|"RIGHT" of a round solid's height: the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis
-      if(d.side!==undefined&&(d.height===undefined||(d.side!=='LEFT'&&d.side!=='RIGHT')))bad('SOLID_DIM_SIDE_INVALID');
+      // side:"LEFT"|"RIGHT" of a round solid's height: the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis;
+      // side:"LEFT"|"RIGHT"|"TOP"|"BOTTOM" of an edge or segment length: the label stands on that side of the segment on the screen (the segment must not run along that direction)
+      if(d.side!==undefined){
+        const edgeDim=d.edge!==undefined||d.from!==undefined;
+        if(!(edgeDim?SEGMENT_SIDES:['LEFT','RIGHT']).includes(d.side)||(!edgeDim&&d.height===undefined))bad('SOLID_DIM_SIDE_INVALID');
+      }
       if((d.from===undefined)!==(d.to===undefined))bad('SOLID_DIMS_INVALID');
       if([d.edge!==undefined,d.from!==undefined,d.radius!==undefined,d.height!==undefined,d.slant!==undefined,d.level!==undefined].filter(Boolean).length!==1)bad('SOLID_DIMS_INVALID');
       const code='d'+(k+1);
@@ -1117,7 +1125,12 @@ function solveSolids(plan){
         if(a===b)bad('SOLID_NAME_UNKNOWN');
         if(!drawnPair(a,b))bad('SOLID_DIM_SEGMENT_NOT_DRAWN:'+joinKeys([a,b]));
         const value=len(sub(named.get(a).p,named.get(b).p));
-        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...dimLabel(d.label,value,unitName,code)});
+        if(d.side!==undefined){
+          // the side must be one the segment faces: its normal on the screen has to point at least 17 degrees into the named direction (a horizontal edge has a top and a bottom, not a left)
+          const pa=project(named.get(a).p),pb=project(named.get(b).p),dx=pb[0]-pa[0],dy=pb[1]-pa[1],l=Math.hypot(dx,dy),want=SIDE_DIRECTION[d.side];
+          if(!(l>1e-9)||Math.abs((-dy*want[0]+dx*want[1])/l)<SIDE_FACING_MIN)bad('SOLID_DIM_SIDE_INVALID:'+code);
+        }
+        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...(d.side!==undefined?{side:d.side}:{}),...dimLabel(d.label,value,unitName,code)});
       }else{
         const solid=solids.find(s=>s.id===(d.solid??(d.level!==undefined?section?.solid:d.radius!==undefined||d.slant!==undefined?solids.find(s2=>s2.category==='REV'||s2.category==='SPHERE')?.id:solids.find(s2=>s2.category==='REV'||s2.kind==='PYRAMID'||s2.kind==='FRUSTUM')?.id)));
         if(!solid)bad('SOLID_DIMS_INVALID');
@@ -1903,7 +1916,9 @@ function spec3d(plan,model,ctx){
     const label={id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id};
     if(d.type==='SEGMENT'){
       const a=pt(project(named.get(d.from))),b=pt(project(named.get(d.to)));
-      labels.push({...label,segment:[a,b],segmentOf:joinKeys([d.from,d.to])});
+      // side: the same direction on the page (y down) for the label placer
+      const sideDir=d.side?{LEFT:[-1,0],RIGHT:[1,0],TOP:[0,-1],BOTTOM:[0,1]}[d.side]:undefined;
+      labels.push({...label,segment:[a,b],segmentOf:joinKeys([d.from,d.to]),...(sideDir?{sideDir}:{})});
     }else if(d.type==='RADIUS'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.cut){
@@ -2409,8 +2424,10 @@ function placeLabelsOnce(spec,fragments,order){
       }
     }else{
       const [a,b]=label.segment,dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1,nx=-dy/l,ny=dx/l;
-      const sides=label.preferredSide?[label.preferredSide,-label.preferredSide]:[1,-1];
-      for(const side of sides)for(const dist of [3,6,10,15,21])for(const frac of label.endBias?[0.96,0.9,0.84,0.78,0.7,0.6]:[0.5,0.4,0.6,0.3,0.7,0.2,0.8]){
+      let sides=label.preferredSide?[label.preferredSide,-label.preferredSide]:[1,-1];
+      // a label told which side of its segment it stands on is tried on that side only (beside the segment or at the end of a leader)
+      if(label.sideDir)sides=[nx*label.sideDir[0]+ny*label.sideDir[1]>=0?1:-1];
+      for(const side of sides)for(const dist of [3,6,10,15,21])for(const frac of label.endBias?[0.96,0.9,0.84,0.78,0.7,0.6]:label.sideDir?SIDE_FRACTIONS:[0.5,0.4,0.6,0.3,0.7,0.2,0.8]){
         const mx=a[0]+dx*frac,my=a[1]+dy*frac;
         // the box edge (not its centre) stands `dist` px from the segment
         const ext=Math.abs(nx)*w/2+Math.abs(ny)*h/2;
@@ -2432,6 +2449,7 @@ function placeLabelsOnce(spec,fragments,order){
       const [a,b]=label.place==='VERTEX'?[label.anchor,label.anchor]:label.segment,mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
       search:for(const dist of [24,34,46,60,76])for(let k=0;k<16;k++){
         const ang=k*Math.PI/8,dx=Math.cos(ang),dy=Math.sin(ang);
+        if(label.sideDir){const [sx,sy]=label.segment[1],[tx,ty]=label.segment[0],sl=Math.hypot(sx-tx,sy-ty)||1,nx=-(sy-ty)/sl,ny=(sx-tx)/sl,sg=nx*label.sideDir[0]+ny*label.sideDir[1]>=0?1:-1;if(sg*(dx*nx+dy*ny)<0.2)continue;}
         const box={x:r6(mx+dx*(dist+Math.abs(dx)*w/2)-w/2),y:r6(my+dy*(dist+Math.abs(dy)*h/2)-h/2),width:w,height:h};
         if(!free(box))continue;
         const nx=Math.max(box.x,Math.min(mx,box.x+box.width)),ny=Math.max(box.y,Math.min(my,box.y+box.height));

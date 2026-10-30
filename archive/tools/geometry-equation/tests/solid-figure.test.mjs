@@ -2205,3 +2205,69 @@ test('E33: a cone and a frustum with the right angle at the foot of the height a
     assert.match(composed.svg,/id="dim-1-foot-right-angle"/);
   }
 });
+
+// --- E33: dims[].side on an edge: the label stands on the named side of its segment on the screen ------------------------------------------------------------------------------------------
+test('E33: an edge length may say which side of its segment its label stands on; a side the segment does not face is refused with a code',()=>{
+  const m=solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',side:'BOTTOM'},{edge:'GC',side:'RIGHT'},{edge:'FG',label:'4',side:'TOP'}]}));
+  assert.deepEqual(m.dims.map(d=>d.side),['BOTTOM','RIGHT','TOP']);
+  assert.equal(solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG'}]})).dims[0].side,undefined);
+  const bad=(dims,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims})),code(expected),expected);
+  bad([{edge:'FG',side:'LEFT'}],'SOLID_DIM_SIDE_INVALID:d1');// the front-bottom edge is nearly horizontal: it has a top and a bottom
+  bad([{edge:'FG',side:'RIGHT'}],'SOLID_DIM_SIDE_INVALID:d1');
+  bad([{edge:'GC',side:'TOP'}],'SOLID_DIM_SIDE_INVALID:d1');// a vertical edge has a left and a right
+  bad([{edge:'GC',side:'BOTTOM'}],'SOLID_DIM_SIDE_INVALID:d1');
+  bad([{edge:'FG',side:'UP'}],'SOLID_DIM_SIDE_INVALID');
+  bad([{edge:'FG',side:'top'}],'SOLID_DIM_SIDE_INVALID');
+  bad([{edge:'FG',side:5}],'SOLID_DIM_SIDE_INVALID');
+  bad([{edge:'FG',side:null}],'SOLID_DIM_SIDE_INVALID');
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5}],dims:[{slant:true,side:'LEFT'}]})),code('SOLID_DIM_SIDE_INVALID'));// only an edge or a round solid's height
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5}],dims:[{radius:'bottom',side:'TOP'}]})),code('SOLID_DIM_SIDE_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:5}],dims:[{height:true,side:'TOP'}]})),code('SOLID_DIM_SIDE_INVALID'));// a round solid's height: LEFT or RIGHT
+});
+test('E33: a label on a named side of its edge is composed on that side and read back; a label moved to the other side is caught',async()=>{
+  const place=async side=>{
+    const plan=figure({unit:'cm',solids:[cuboid()],dims:[{edge:'FG',side},{edge:'FE',side:side==='TOP'?'RIGHT':'LEFT'}]});
+    const composed=await panel(plan);
+    assert.equal(composed.status,'COMPOSED',JSON.stringify([side,composed.detail]));
+    assert.equal(composed.staticAudit.status,'PASS',JSON.stringify([side,composed.staticAudit.errors]));
+    return {plan,svg:composed.svg};
+  };
+  const box=(svg,id)=>{const g=svg.match(new RegExp(`<g id="${id}"[^>]*transform="translate\\(([-\\d.]+) ([-\\d.]+)\\)"[^>]*><svg[^>]*?width="([\\d.]+)"[^>]*?height="([\\d.]+)"`));return {x:Number(g[1]),y:Number(g[2]),w:Number(g[3]),h:Number(g[4])};};
+  const edge=(svg,name)=>{const l=svg.match(new RegExp(`<line [^>]*data-edge="${name}"[^>]*x1="([\\d.]+)" y1="([\\d.]+)" x2="([\\d.]+)" y2="([\\d.]+)"`));return [[Number(l[1]),Number(l[2])],[Number(l[3]),Number(l[4])]];};
+  // how far the label's centre is from the edge's line towards the named direction (page coordinates, y down): positive = on that side
+  const towards=(svg,id,name,dir)=>{const b=box(svg,id),[a,c]=edge(svg,name),l=Math.hypot(c[0]-a[0],c[1]-a[1]),n=[-(c[1]-a[1])/l,(c[0]-a[0])/l],t=(b.x+b.w/2-a[0])*n[0]+(b.y+b.h/2-a[1])*n[1],facing=n[0]*dir[0]+n[1]*dir[1];return t*Math.sign(facing);};
+  const top=await place('TOP'),bottom=await place('BOTTOM');
+  assert.ok(towards(top.svg,'dim-1-label','FG',[0,-1])>0,'TOP: the label is above its edge');
+  assert.ok(towards(bottom.svg,'dim-1-label','FG',[0,1])>0,'BOTTOM: the label is below its edge');
+  assert.ok(towards(top.svg,'dim-2-label','FE',[1,0])>0,'RIGHT: the label is right of its edge');
+  assert.ok(towards(bottom.svg,'dim-2-label','FE',[-1,0])>0,'LEFT: the label is left of its edge');
+  // the two sides differ: the same edge's label is on opposite sides of its line
+  assert.ok(towards(top.svg,'dim-1-label','FG',[0,1])<0&&towards(bottom.svg,'dim-1-label','FG',[0,-1])<0);
+  // tamper: the label moved to the other side of the edge's line
+  const failing=async(plan,tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const b=box(top.svg,'dim-1-label'),[a0,a1]=edge(top.svg,'FG'),midY=(a0[1]+a1[1])/2;
+  const group=top.svg.match(new RegExp(`<g id="dim-1-label"[^>]*transform="translate\\([-\\d.]+ [-\\d.]+\\)"`))[0];
+  await failing(top.plan,top.svg.replace(group,group.replace(/translate\([^)]+\)/,`translate(${b.x} ${2*midY-b.y-b.h})`)),'SOLID_DIM_SIDE_MISMATCH:dim-1');
+  // and the same figure checked against a plan that asks for the other side
+  await failing({...top.plan,dims:[{edge:'FG',side:'BOTTOM'},top.plan.dims[1]]},top.svg,'SOLID_DIM_SIDE_MISMATCH:dim-1');
+  // a plan whose side the segment does not face is refused by the observer on its own
+  await failing({...top.plan,dims:[{edge:'FG',side:'LEFT'},top.plan.dims[1]]},top.svg,'SOLID_DIM_SIDE_PLAN_INVALID:dim-1');
+});
+test('E33: a short top edge of a long prism in a grid panel: the label on side TOP may stand past the end of its edge (above-left) where it finds no room otherwise',async()=>{
+  const triangle={capability:'solid-figure-v1',unit:'cm',solids:[{kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[8,0],[0,6]],plane:'XZ'},height:10,names:'......'}],
+    dims:[{edge:['#b0','#b1']},{edge:['#b2','#b1']},{edge:['#b2','#b0']},{edge:['#b1','#t1']}]};
+  const quad=side=>({capability:'solid-figure-v1',unit:'cm',solids:[{kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[10,0],[2,6],[0,6]],plane:'XZ'},height:18,names:'........'}],
+    dims:[{edge:['#b0','#b1']},{edge:['#b1','#b2']},{edge:['#b2','#b3'],...(side?{side}:{})},{edge:['#b3','#b0']},{edge:['#b1','#t1'],label:'h'}]});
+  const grid=side=>gridOf([solidPanel(triangle,'삼각기둥'),solidPanel(quad(side),'사각기둥')]);
+  const compose=async plan=>{
+    const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+    return composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-side-grid|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:30,displayScale:0.375,fontFloorCssPx:11}});
+  };
+  // a prism 18 deep: the 2 cm top edge is short, the top face above it is a long narrow strip, and the label has no room on either side without being told
+  const without=await compose(grid(undefined));
+  assert.equal(without.status,'COMPOSITE_PANEL_NOT_COMPOSED',JSON.stringify(without.detail).slice(0,300));
+  assert.equal(without.detail.status,'SOLID_LABELS_NO_ROOM');assert.deepEqual(without.detail.detail.labels,['dim-3-label']);
+  const withSide=await compose(grid('TOP'));
+  assert.equal(withSide.status,'COMPOSED',JSON.stringify([withSide.status,withSide.detail]).slice(0,400));
+  assert.ok(withSide.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(withSide.panels.map(item=>item.staticAudit)));
+});
