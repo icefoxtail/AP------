@@ -2093,15 +2093,14 @@
 
     // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
     const LENS_OFF = {
-      divInternalExternal: ['angles'], divExtendedLine: ['angles'], pappusMedian: ['angles'],
-      centroidParaCoord: ['angles', 'aux'], distMinSumSq: ['angles', 'aux'], perpSlopeMinus1: ['aux'],
-      fixedPointPencil: ['angles', 'sides'], perpBisectorOrtho: ['aux'], areaBisectLines: ['angles', 'aux'],
-      threeLinesNoTri: ['angles', 'aux'], shoelaceArea: ['angles', 'sides', 'aux'], pointLineDist: ['aux'],
-      angleBisectorLine: ['sides'], compositeStepByStep: ['angles', 'sides'], paradoxPointVsFig: ['angles', 'sides'],
-      symmetry4Basic: ['angles', 'sides'], lineSlideSame: ['angles'], reflectTriPerim: ['angles', 'sides'],
-      reflectSingleAxis: ['angles'], reflectDoubleAxes: ['angles'], billiardMirrorRoom: ['angles', 'sides'],
-      diffMaxLine: ['angles', 'aux'], trapApollonius: ['angles'], trapLineSegmentMeet: ['sides'],
-      trapInterceptZero: ['angles', 'aux'], trapPerpDivideZero: ['sides', 'aux']
+      divInternalExternal: ['angles'], divExtendedLine: ['angles'], centroidParaCoord: ['angles'],
+      distMinSumSq: ['angles'], fixedPointPencil: ['angles', 'sides'], perpBisectorOrtho: ['aux'],
+      areaBisectLines: ['angles', 'aux'], threeLinesNoTri: ['angles', 'aux'], shoelaceArea: ['angles'],
+      pointLineDist: ['aux'], angleBisectorLine: ['sides'], compositeStepByStep: ['angles', 'sides'],
+      paradoxPointVsFig: ['angles', 'sides'], symmetry4Basic: ['angles', 'sides'], lineSlideSame: ['angles'],
+      reflectTriPerim: ['angles', 'sides'], reflectSingleAxis: ['angles'], reflectDoubleAxes: ['angles'],
+      billiardMirrorRoom: ['angles', 'sides'], diffMaxLine: ['angles', 'aux'], trapApollonius: ['angles'],
+      trapLineSegmentMeet: ['sides'], trapInterceptZero: ['angles', 'aux'], trapPerpDivideZero: ['sides', 'aux']
     };
 
     function syncLensButtons() {
