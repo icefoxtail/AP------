@@ -973,7 +973,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:83ab40c467bc2016386a569031317e38a1523121609e121a2f72e0621c03712b",
-      "difficultyEvidenceSha": "sha256:1fe7c13a0b1e8782c74f48976bafd8221c555fdb9058b0d501d754ed374d2440"
+      "difficultyEvidenceSha": "sha256:1fe7c13a0b1e8782c74f48976bafd8221c555fdb9058b0d501d754ed374d2440",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 변이 20cm인 정사각형 안의 큰 사분원 호와 두 반원 호. 큰 호에 10π cm, 렌즈 모양의 두 호에 각각 5π cm를 표시하고, 위쪽 색칠한 부분과 아래쪽 렌즈 모양 안에 넓이 50π-100을 각각 적어 두 넓이가 같음을 보인 그림.",
+      "solutionImageCaption": "굵은 호의 길이와 두 색칠한 부분의 넓이 50π-100이 같음을 한 그림에 나타냈다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 22,

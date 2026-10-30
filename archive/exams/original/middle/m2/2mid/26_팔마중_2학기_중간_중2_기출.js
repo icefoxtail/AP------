@@ -369,7 +369,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-2",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q07.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD의 두 대각선이 O에서 이등분되고 OD=3cm, OC=2cm이며, 중점 P를 지나는 AP가 △ABC를 같은 넓이의 두 삼각형으로 나눈다. △ABC의 넓이 6cm²는 지시선으로 바깥에 적혀 있다.",
+    "solutionImageCaption": "대각선의 이등분과 P가 BC의 중점일 때 △ABC가 나뉘는 모양",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
