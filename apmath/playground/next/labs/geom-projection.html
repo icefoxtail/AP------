@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>정사영 3D · AP Math 실험실</title>
+<meta name="description" content="기하: 정사영 넓이 S′ = S cosθ, 원기둥 타원 단면의 역정사영, 정육면체 단면의 이면각(1/√3), 비스듬한 태양광 그림자를 3D로 돌려 보며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-space.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<script>
+/* ==========================================================================
+   기하 · 정사영 3D (AP Math Lab 2.0 이식본)
+   원본: labs/기하와벡터/정사영 3D.html
+   - 문제·단계·두 풀이(examData), 3D 좌표(currentGeometry), 장면 그리기(renderMode1~4)는 원본 그대로입니다.
+   - 원본의 draw3D… 함수 이름·인자는 그대로 두고, 실제 그리기만 3D 무대 도우미(apl-space.js)가 맡습니다.
+   - 바뀐 점: 빈 곳을 끌면 회전(무대 공통 기능), 두 손가락 확대, 하단 띠(정사영/나머지 비율)는 그림 아래 별도 줄,
+     점 라벨은 무대 가장자리에서 자동으로 뒤집혀 잘리지 않음.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+  const { clamp } = APLab;
+
+  /* ===== 원본 상태(이름 그대로) — 매 프레임 2.0 셸 상태에서 채웁니다 ===== */
+  const state = { mode: 1, planeTheta: Math.PI / 3, boardDeg: 30, sunDeg: 60, lens: 'all', partIdx: null, steps: { 1: true, 2: false, 3: false } };
+
+  /* ===== 원본 그대로: 4대 기출 문제 & 두 풀이 (원본 573–693행) ===== */
+    const examData = {
+      1: {
+        badge: "MODE 1 · 정사영 넓이 공식 (S' = S cos θ) — 교선 평행 길이 불변의 법칙",
+        hint: "슬라이더로 <span class='text-amber-300 font-bold'>평면 각도 θ</span>를 조절해 보세요! <span class='text-emerald-300 font-bold'>교선에 평행한 밑변 BC(8)는 그대로</span>이고, <span class='text-pink-300 font-bold'>수직인 높이 AM(6)만 cos θ배</span> 축소됩니다!",
+        tag: "수능·평가원 필수 기본 개념",
+        targetTime: "목표 시간: 5초",
+        question: () => `두 평면 ${tex('\\alpha, \\beta')}가 이루는 각의 크기가 ${tex('\\theta = 60^\\circ')} 이다. 평면 ${tex('\\beta')} 위에 밑변이 교선과 평행하고 길이가 ${tex('\\overline{BC} = 8')}, 높이가 ${tex('\\overline{AM} = 6')} 인 삼각형 ${tex('ABC')} (넓이 ${tex('S = 24')})가 있을 때, 이 삼각형의 평면 ${tex('\\alpha')} 위로의 정사영 ${tex("A'BC")}의 높이 ${tex("\\overline{A'M}")}과 넓이 ${tex("S'")}를 구하시오.`,
+        answerBadge: () => `${tex("\\overline{A'M} = 3, \\; S' = S\\cos 60^\\circ = 12")}`,
+        thetaSnap: (60 * Math.PI) / 180,
+        cam: { yaw: (-38 * Math.PI) / 180, pitch: (24 * Math.PI) / 180 },
+        sectionCam: { yaw: 0, pitch: 0 },
+        steps: [
+          "경사 평면 β 위의 원래 삼각형 ΔABC (밑변 8, 높이 6, 넓이 S = 24)",
+          "꼭짓점 A에서 바닥 평면 α에 내린 수선의 발 A' 및 정사영 ΔA'BC",
+          "밑변 BC(8) 불변 & 높이 A'M = 6 cos 60° = 3 ⇒ S' = S cos 60° = 12"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('AM')}은 ${tex('\\beta')} 안에서 교선 ${tex('BC')}에 수직이고, ${tex('A')}의 수선의 발을 ${tex("A'")}라 둔다. ${tex("A'M")}은 ${tex('AM')}의 ${tex('\\alpha')} 위 정사영이다.<br/>
+② 두 평면의 각이 ${tex('60^\\circ')}이므로 단면 ${tex("AA'M")}에서 ${tex('\\angle AMA\'=60^\\circ')}; 따라서 실제 길이 ${tex("A'M=AM\\cos60^\\circ=6\\cdot\\frac12=3")}이다. 이 각은 평면 단면에서 정의되며, 투시 화면의 각도 측정값이 아니다.<br/>
+③ ${tex('BC')}는 교선 방향이므로 투영해도 길이 ${tex('8')}을 유지한다. 따라서 ${tex("S'=\\frac12\\cdot8\\cdot3=12")}이고 넓이 공식으로도 ${tex("S'=S\\cos60^\\circ=12")}를 얻는다.`,
+          warning: "⚠️ 선분의 정사영을 구할 때 무조건 l cos θ를 곱하면 틀립니다! 교선과 평행한 선분은 정사영해도 길이가 절대 줄어들지 않습니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[정사영 넓이 불변 법칙]</strong>: 도형의 모양과 무관하게 무조건 <strong class="text-sky-300">${tex("S' = S\\cos\\theta")}</strong>!<br/>
+② 원래 넓이 ${tex('S = \\dfrac{1}{2} \\times 8 \\times 6 = 24')}.<br/>
+③ 따라서 <strong class="text-amber-300">${tex("S' = 24 \\times \\cos 60^\\circ = 24 \\times \\dfrac{1}{2} = 12")}</strong> (3초 컷!)`,
+          highlight: "💡 핵심 구분: ① 교선에 평행한 선분 길이 = 불변(100%) ② 교선에 수직인 선분 길이 = l cos θ ③ 도형의 넓이 = 무조건 S cos θ!"
+        })
+      },
+
+      2: {
+        badge: "MODE 2 · 기출 1: 원기둥을 자른 타원 단면의 넓이 (역정사영 S = S' / cos θ)",
+        hint: "원기둥을 비스듬히 자른 <span class='text-pink-300 font-bold'>타원 단면의 넓이 S</span>를 구할 때는 타원 공식을 쓰지 말고, 바닥 원의 넓이 <span class='text-sky-300 font-bold'>S'를 cos θ로 나누는 역정사영</span>을 쓰세요!",
+        tag: "평가원·수능 4점 단골 역발상 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `밑면의 반지름의 길이가 ${tex('r = 3')} 인 원기둥을 밑면과 ${tex('60^\\circ')}의 각을 이루는 평면으로 자를 때 생기는 단면(타원)의 넓이 ${tex('S')}와 타원의 장축의 길이 ${tex('2a')}, 단축의 길이 ${tex('2b')}를 구하시오.`,
+        answerBadge: () => `단면 넓이 ${tex('S = 18\\pi')}, 장축 ${tex('= 12')}, 단축 ${tex('= 6')}`,
+        thetaSnap: (60 * Math.PI) / 180,
+        cam: { yaw: (-35 * Math.PI) / 180, pitch: (22 * Math.PI) / 180 },
+        sectionCam: { yaw: 0, pitch: 0 },
+        steps: [
+          "바닥 밑면 원 (반지름 r = 3, 정사영 넓이 S' = πr² = 9π)",
+          "60° 경사 평면으로 자른 타원 단면 (단축 b = r = 3 불변!)",
+          "역정사영 공식: S cos 60° = 9π ⇒ 타원 넓이 S = 9π / (1/2) = 18π"
+        ],
+        textbook: () => ({
+          steps: `① 경사 단면의 정사영은 반지름 ${tex('3')}인 밑면 원이므로 ${tex("S'=9\\pi")}. 평면과 밑면의 예각은 ${tex('60^\\circ')}이다.<br/>
+② 정사영 넓이 관계 ${tex("S'=S\\cos60^\\circ")}에서 ${tex('S=9\\pi/(1/2)=18\\pi')}.<br/>
+③ 단면 타원의 교선 평행 단축은 지름 그대로 ${tex('2b=6')}; 수직 방향은 ${tex('60^\\circ')} 경사만큼 확대되어 ${tex('2a=6/\\cos60^\\circ=12')}. 따라서 반축은 ${tex('a=6,b=3')}이다. ${tex('\\theta=90^\\circ')}이면 정사영 넓이는 0이 되어 유한한 단면 넓이를 역산할 수 없고, 이 경우 타원은 유한한 단면으로 성립하지 않는다.`,
+          warning: "정사영 역산은 cos θ > 0일 때만 유한한 단면 넓이를 복원한다. θ=90°에서는 0으로 나누지 않는다."
+        }),
+        shortcut: () => ({
+          steps: `① 경사 단면(넓이 ${tex('S')})을 바닥으로 정사영하면 <strong>반지름 ${tex('3')}인 밑면 원(넓이 ${tex("S' = 9\\pi")})</strong>이 됩니다!<br/>
+② <strong>[역정사영 공식]</strong>: ${tex("S \\cos 60^\\circ = S' = 9\\pi")}<br/>
+③ 양변에 ${tex('2')}를 곱하면 장축을 구할 필요도 없이 즉시 <strong class="text-amber-300">${tex('S = \\dfrac{9\\pi}{\\cos 60^\\circ} = 18\\pi')}</strong>!<br/>
+&nbsp;&nbsp;(교선 방향인 단축 ${tex('2b = 6')}은 불변, 수직 방향인 장축 ${tex('2a = 6 / \\cos 60^\\circ = 12')})`,
+          highlight: "💡 비스듬히 잘린 단면의 넓이 S를 구할 때는 언제나 【 S = 바닥 넓이 S' / cos θ 】 역정사영 공식으로 3초 컷 하세요!"
+        })
+      },
+
+      3: {
+        badge: "MODE 3 · 기출 2: 정육면체 대각선 단면(정삼각형 BDE)과 정사영으로 이면각 구하기",
+        hint: "보조선을 그어 이면각을 구하기 힘들 때는 <span class='text-pink-300 font-bold'>원래 넓이 S</span>와 <span class='text-sky-300 font-bold'>바닥 그림자 넓이 S'</span>를 각각 구해 나누면 <span class='text-amber-300 font-bold'>cos θ = S' / S = 1/√3</span>이 바로 나옵니다!",
+        tag: "수능 기하 4점 이면각 역산 최고 빈출",
+        targetTime: "목표 시간: 5초",
+        question: () => `한 모서리의 길이가 ${tex('4')}인 정육면체 ${tex('ABCD-EFGH')}에서 세 꼭짓점 ${tex('B, D, E')}를 지나는 평면과 밑면 ${tex('EFGH')}가 이루는 예각의 크기를 ${tex('\\theta')}라 할 때, 정사영을 이용하여 ${tex('\\cos\\theta')}의 값을 구하시오.`,
+        answerBadge: () => `${tex('\\cos\\theta = \\dfrac{S\'}{S} = \\dfrac{8}{8\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}}')}`,
+        thetaSnap: Math.acos(1 / Math.sqrt(3)), // 약 54.7356°
+        cam: { yaw: (-36 * Math.PI) / 180, pitch: (24 * Math.PI) / 180 },
+        sectionCam: { yaw: (-45 * Math.PI) / 180, pitch: 0 },
+        steps: [
+          "정육면체 대각선 단면 ΔBDE (한 변이 4√2인 정삼각형, S = 8√3)",
+          "꼭짓점 B, D, E를 밑면 EFGH로 수직 투영한 정사영 ΔFEH (직각이등변삼각형, S' = 8)",
+          "이면각 역산 공식: cos θ = S' / S = 8 / (8√3) = 1 / √3 (보조선 불필요!)"
+        ],
+        textbook: () => ({
+          steps: `① 실제 교선 방향은 BD에 평행합니다. BD와 FH의 중점을 이용하여 이면각을 계산합니다. 기존  ${tex('M')}을 잡고 ${tex('\\overline{BM} \\perp \\overline{EG}, \\; \\overline{FM} \\perp \\overline{EG}')} 수선 작도<br/>
+② ${tex('\\overline{FM} = 2\\sqrt{2}')}, 높이 ${tex('\\overline{BF} = 4')} 로부터 피타고라스 정리로 ${tex('\\overline{BM} = \\sqrt{16 + 8} = 2\\sqrt{6}')} 계산<br/>
+③ 직각삼각형 ${tex('BFM')}에서 ${tex('\\cos\\theta = \\dfrac{\\overline{FM}}{\\overline{BM}} = \\dfrac{2\\sqrt{2}}{2\\sqrt{6}} = \\dfrac{1}{\\sqrt{3}}')} 도출...`,
+          warning: "⚠️ 교선이 보이지 않거나 비대칭 단면일 때는 수선의 발 M을 작도하는 데 시간이 오래 걸립니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[정사영으로 이면각 역산하기]</strong>: 보조선 그리지 말고 <strong class="text-amber-300">${tex("\\cos\\theta = \\dfrac{\\text{정사영 넓이 } S'}{\\text{원래 넓이 } S}")}</strong>!<br/>
+② 원래 도형 ${tex('\\triangle BDE')}는 한 변이 ${tex('4\\sqrt{2}')}인 정삼각형이므로 <strong class="text-pink-300">${tex('S = \\dfrac{\\sqrt{3}}{4}(4\\sqrt{2})^2 = 8\\sqrt{3}')}</strong>.<br/>
+③ 바닥 정사영 ${tex('\\triangle FEH')}는 밑변·높이가 ${tex('4')}인 직각삼각형이므로 <strong class="text-sky-300">${tex("S' = \\dfrac{1}{2} \\times 4 \\times 4 = 8")}</strong>.<br/>
+④ 즉시 <strong class="text-emerald-300">${tex("\\cos\\theta = \\dfrac{8}{8\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}}")}</strong> (5초 컷!)`,
+          highlight: "💡 정육면체 대각선 정삼각형 단면(BDE)과 밑면이 이루는 각은 언제나 【 cos θ = 1 / √3 】입니다! (정사면체 1/3과 함께 필수 암기)"
+        })
+      },
+
+      4: {
+        badge: "MODE 4 · 기출 3: 비스듬한 태양광(사선 투영)과 바닥 그림자 넓이 킬러",
+        hint: "빛이 수직으로 오지 않고 비스듬히 올 때는 <span class='text-amber-300 font-bold'>빛에 수직인 기준면(단면적 S cos β)</span>을 거친 뒤 바닥 경사각으로 나누는 <span class='text-sky-300 font-bold'>S' = S cos β / cos α</span> 공식을 씁니다!",
+        tag: "수능 29번·30번 최고난도 그림자 킬러",
+        targetTime: "목표 시간: 10초",
+        question: () => `지면 ${tex('\\alpha')}와 ${tex('30^\\circ')}의 각을 이루는 평면 위에 넓이가 ${tex('S = 12')} 인 원판이 놓여 있다. 태양 광선이 지면과 ${tex('60^\\circ')}의 각을 이루면서 원판의 면에 수직으로 비출 때, 지면 ${tex('\\alpha')}에 생기는 그림자의 넓이 ${tex("S'")}를 구하시오.`,
+        answerBadge: () => `${tex("S' = \\dfrac{S}{\\cos 30^\\circ} = \\dfrac{12}{\\sqrt{3}/2} = 8\\sqrt{3}")}`,
+        boardDeg: 30,
+        sunDeg: 60,
+        cam: { yaw: (-25 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
+        sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (4 * Math.PI) / 180 },
+        steps: [
+          "지면과 30° 이루는 원판(넓이 S = 12) 및 60° 입사 태양 광선 (원판과 90° 수직!)",
+          "지면 α 위에 길게 늘어나는 타원 그림자 (넓이 S')",
+          "바닥 그림자 S'를 빛에 수직인 원판 S로 정사영: S' cos 30° = S ⇒ S' = S / cos 30°"
+        ],
+        textbook: () => ({
+          steps: `① 단면 직각삼각형에서 원판의 지름을 ${tex('2r')}이라 할 때, 지면에 맺히는 그림자의 가로 길이는:<br/>
+&nbsp;&nbsp;${tex('2a = \\dfrac{2r}{\\sin 60^\\circ} = \\dfrac{2r}{\\cos 30^\\circ}')}<br/>
+② 교선 방향의 세로 지름 ${tex('2b = 2r')}은 불변이므로<br/>
+③ 타원 그림자의 넓이 ${tex("S' = \\pi a b = \\dfrac{\\pi r^2}{\\cos 30^\\circ} = \\dfrac{12}{\\sqrt{3}/2} = 8\\sqrt{3}")} 계산...`,
+          warning: "⚠️ 광선이 원판과 수직이 아닌 일반 각도로 비추는 고난도 기출에서는 도형 길이만으로는 계산이 매우 헷갈립니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 원판은 지면과 ${tex('30^\\circ')} 기울고 광선은 지면과 ${tex('60^\\circ')}를 이루므로 광선은 원판에 수직이다. 광선 방향 정사영에서 원판과 지면 사이 각은 ${tex('30^\\circ')}이다.<br/>
+② 원판의 직경 중 경사 방향 성분은 지면 그림자에서 ${tex('1/\\cos30^\\circ')}배 늘고, 교선 방향 직경은 그대로다. 따라서 그림자 넓이 배율도 ${tex('1/\\cos30^\\circ')}이다.<br/>
+③ ${tex("S'=S/\\cos30^\\circ=12/(\\sqrt3/2)=8\\sqrt3")}. 화면의 3D 투시 각 대신 주어진 실제 지면각으로 계산한다. 광선이 원판에 수직이 아니라면 배율은 일반적으로 ${tex("\\sin(\\text{원판-광선 각})/\\sin(\\text{지면-광선 각})")}이다.`,
+          highlight: "💡 일반 사선 광선 만능 공식: 【 바닥 그림자 S' = (도형 넓이 S × sin(도형~빛 각도)) / sin(바닥~빛 각도) 】!"
+        })
+      }
+    };
+
+  /* ===== 원본 그대로: 3번 문제 정석 풀이 교정본 (원본 767–772행) ===== */
+    examData[3].textbook = () => ({
+      steps: `① 밑면 EFGH는 y=−2, 평면 BDE의 실제 교선은 E를 지나 BD와 평행한 직선입니다. 따라서 EG는 교선이 아닙니다.<br/>
+② 밑면의 대각선 FH와 윗면의 대각선 BD의 중점을 각각 M(0,−2,0), M′(0,2,0)이라 두면 EM, EM′는 교선에 수직입니다. 그래서 두 평면의 이면각은 ∠M′EM으로 나타납니다.<br/>
+③ 좌표 차로 EM=2√2, MM′=4, EM′=2√6이고 EM⊥MM′입니다. 직각삼각형 EMM′에서 cosθ=EM/EM′=(2√2)/(2√6)=1/√3입니다. 투시 화면의 각도는 이 실제 공간각을 재는 기준이 아닙니다.`,
+      warning: '교선은 EG가 아닙니다. EG를 교선으로 잡으면 이면각과 도형이 맞지 않습니다.'
+    });
+
+  /* ===== 원본 그대로: 벡터 도우미와 모드별 3D 좌표 (원본 773–805행) ===== */
+    const PI=Math.PI, rad=d=>d*PI/180, deg=r=>r*180/PI;
+    const V=(x,y,z=0)=>({x,y,z});
+    const sub=(a,b)=>V(a.x-b.x,a.y-b.y,a.z-b.z);
+    const add=(a,b)=>V(a.x+b.x,a.y+b.y,a.z+b.z);
+    const mul=(a,t)=>V(a.x*t,a.y*t,a.z*t);
+    const norm=v=>Math.hypot(v.x,v.y,v.z);
+    const unit=v=>mul(v,1/Math.max(1e-12,norm(v)));
+    const dist=(a,b)=>norm(sub(a,b));
+    function currentGeometry(){
+      if(state.mode===1){
+        const t=state.planeTheta,M=V(-2,0,0),B=V(-2,0,4),C=V(-2,0,-4),A=V(-2+6*Math.cos(t),6*Math.sin(t),0),Ap=V(A.x,0,0);
+        return {A,Ap,M,B,C,floor:0,fit:[A,Ap,M,B,C,V(-3,0,-5),V(5,0,5)]};
+      }
+      if(state.mode===2){
+        const t=state.planeTheta,r=3,k=Math.tan(t);
+        const base=[],ell=[];
+        for(let i=0;i<80;i++){const ph=2*PI*i/80,x=r*Math.cos(ph),z=r*Math.sin(ph);base.push(V(x,0,z));ell.push(V(x,(x+r)*k,z));}
+        return {base,ell,r,k,floor:0,low:V(-r,0,0),high:V(r,2*r*k,0),upperGround:V(r,0,0),fit:[...base,...ell]};
+      }
+      if(state.mode===3){
+        const L=2,E=V(-L,-L,-L),F=V(L,-L,-L),G=V(L,-L,L),H=V(-L,-L,L);
+        const A=V(-L,L,-L),B=V(L,L,-L),C=V(L,L,L),D=V(-L,L,L);
+        const M=mul(add(F,H),.5),Mp=mul(add(B,D),.5);
+        return {E,F,G,H,A,B,C,D,M,Mp,floor:-L,fit:[E,F,G,H,A,B,C,D]};
+      }
+      const b=rad(state.boardDeg),sun=rad(state.sunDeg),r=Math.sqrt(12/PI),u0=r+.5,xH=-2.5,ray=V(Math.cos(sun),-Math.sin(sun),0),disk=[],shadow=[];
+      for(let i=0;i<80;i++){
+        const phi=2*PI*i/80,u=u0+r*Math.cos(phi),z=r*Math.sin(phi),p=V(xH+u*Math.cos(b),u*Math.sin(b),z);
+        disk.push(p);const h=p.y/Math.sin(sun);shadow.push(add(p,mul(ray,h)));
+      }
+      const center=V(xH+u0*Math.cos(b),u0*Math.sin(b),0),start=add(center,mul(ray,-2.5));
+      return {disk,shadow,center,start,ray,r,xH,u0,floor:0,hinge:V(xH,0,0),fit:[...disk,...shadow,start]};
+    }
+
+  /* ===== 호환층: 원본 draw3D… 이름·인자 → 3D 무대 도우미 =====
+     원본 alphaFor와 같은 규칙으로 ‘선택한 조각/관찰 렌즈’ 밖의 요소를 흐리게 합니다. */
+  let SP = null, BRD = null;
+  const sink = {};
+  function alphaFor(opt = {}) {
+    let a = 1;
+    if (state.lens !== 'all' && opt.group && state.lens !== opt.group) a *= .14;
+    if (state.partIdx !== null && opt.part !== undefined && opt.part !== state.partIdx) a *= .15;
+    return a;
+  }
+  function styled(opt, fn) {
+    const c = BRD.ctx;
+    c.save();
+    c.globalAlpha *= alphaFor(opt);
+    fn();
+    c.restore();
+  }
+  const isPart = (opt) => opt.part !== undefined && opt.part === state.partIdx;
+  function draw3DLine(p1, p2, color = '#fff', width = 2.2, dashed = false, glow = false, opt = {}) {
+    if (!p1 || !p2) return;
+    styled(opt, () => SP.line(p1, p2, { color, width, dash: dashed ? [5, 5] : null, glow: glow || isPart(opt) }));
+  }
+  function draw3DPolygon(pts, fillColor = 'rgba(52,211,153,.12)', strokeColor = null, width = 2, dashed = false, opt = {}) {
+    if (pts.length < 3) return;
+    styled(opt, () => SP.poly(pts, { fill: fillColor, color: strokeColor || null, stroke: !!strokeColor, width, dash: dashed ? [5, 5] : null, glow: !!strokeColor && isPart(opt) }));
+  }
+  function draw3DPoint(p, r = 5, color = '#fbbf24', label = '', offset = { x: 10, y: -10 }, opt = {}) {
+    styled(opt, () => SP.point(p, { r, color, label: alphaFor(opt) > .12 ? label : '', dx: offset.x || 10, dy: offset.y || -10, align: 'left' }));
+  }
+  function drawBottomTapeBanner(rect, labelA, valueA, labelB, valueB, caption = '') {
+    sink.tape = {
+      title: caption,
+      segments: [
+        { text: `${labelA} ${valueA.toFixed(2)}`, weight: valueA, color: 'sky' },
+        { text: `${labelB} ${valueB.toFixed(2)}`, weight: valueB, color: 'rose' }
+      ]
+    };
+  }
+  /* 원본 그대로: 직각 표시(3D 안에서 직접 그린 ㄱ자)와 각의 호 — 호의 가운데 글자만 점 대신 글자로 그립니다 */
+  function draw3DRightAngle(o, A, B, size = .4, color = '#fbbf24', opt = { part: 2, group: 'aux' }) {
+    const va = sub(A, o), vb = sub(B, o);
+    if (norm(va) < 1e-8 || norm(vb) < 1e-8) return;
+    const u = mul(unit(va), size), v = mul(unit(vb), size);
+    draw3DLine(add(o, u), add(add(o, u), v), color, 2, false, false, opt);
+    draw3DLine(add(add(o, u), v), add(o, v), color, 2, false, false, opt);
+  }
+  function draw3DAngleArc(o, a, b, radius = .72, color = '#fde68a', label = 'θ', opt = { part: 2, group: 'aux' }) {
+    const u = unit(sub(a, o)), v = unit(sub(b, o)), dot = Math.max(-1, Math.min(1, u.x * v.x + u.y * v.y + u.z * v.z)), angle = Math.acos(dot);
+    if (!Number.isFinite(angle) || angle < .005) return;
+    const perpendicular = unit(sub(v, mul(u, dot))), n = Math.max(12, Math.ceil(angle * 22));
+    let prev = null;
+    for (let i = 0; i <= n; i++) {
+      const t = angle * i / n, pt = add(o, mul(add(mul(u, Math.cos(t)), mul(perpendicular, Math.sin(t))), radius));
+      if (prev) draw3DLine(prev, pt, color, 2.2, false, false, opt);
+      prev = pt;
+    }
+    const mid = add(o, mul(add(mul(u, Math.cos(angle * .5)), mul(perpendicular, Math.sin(angle * .5))), radius * 1.2));
+    if (alphaFor(opt) > .12) styled(opt, () => SP.text(mid, `${label} ${(angle * 180 / PI).toFixed(1)}°`, { color, size: 12.5, weight: 800, align: 'left', baseline: 'middle', dx: 12, dy: -13 }));
+  }
+
+  /* ===== 원본 그대로: 바닥 격자와 장면 그리기 (원본 891–991행) ===== */
+    function draw3DFloorGrid(floorY=0){
+      for(let i=-5;i<=5;i++){
+        draw3DLine(V(i,floorY,-5),V(i,floorY,5),'rgba(80,200,140,.12)',1,false,false,{group:'aux'});
+        draw3DLine(V(-5,floorY,i),V(5,floorY,i),'rgba(80,200,140,.12)',1,false,false,{group:'aux'});
+      }
+    }
+    function renderMode1(rect,g){
+      const {A,Ap,M,B,C}=g,t=state.planeTheta,co=Math.cos(t),si=Math.sin(t);
+      draw3DPolygon([V(-3,0,-4.5),V(5,0,-4.5),V(5,0,4.5),V(-3,0,4.5)],'rgba(25,160,107,.07)','#176746',1,false,{group:'projection'});
+      if(state.steps[1]){
+        draw3DPolygon([B,C,A],'rgba(244,114,182,.22)','#f472b6',2.8,false,{part:0,group:'source'});
+        draw3DPoint(A,6,'#f472b6','A · S=24',{x:12,y:-12},{part:0,group:'source',priority:3});
+      }
+      if(state.steps[2]){
+        draw3DPolygon([B,C,Ap],'rgba(56,189,248,.25)','#38bdf8',2.6,false,{part:1,group:'projection'});
+        draw3DLine(A,Ap,'#fde047',2.6,true,true,{part:1,group:'aux'});
+        draw3DPoint(Ap,5,'#38bdf8',`A′ · S′=${(24*co).toFixed(2)}`,{x:12,y:18},{part:1,group:'projection',priority:2});
+        if(si>.04)draw3DRightAngle(Ap,A,M,.42,'#fde047');
+      }
+      if(state.steps[3]){
+        draw3DPolygon([A,Ap,M],'rgba(251,191,36,.15)','#fbbf24',1.4,false,{part:2,group:'aux'});
+        draw3DLine(B,C,'#34d399',3,false,true,{part:2,group:'aux'});
+        draw3DPoint(B,4,'#34d399','B',{x:8,y:12},{part:2,group:'aux'});draw3DPoint(C,4,'#34d399','C',{x:8,y:-12},{part:2,group:'aux'});
+        draw3DPoint(M,4,'#fde047','M',{x:-29,y:10},{part:2,group:'aux'});
+        draw3DAngleArc(M,Ap,A,.65,'#fde047','θ');
+        drawBottomTapeBanner(rect,'S′',24*co,'S−S′',24*(1-co),`BC=8 · AM=6 · A′M=${(6*co).toFixed(2)} · θ=${deg(t).toFixed(1)}°`);
+      }
+    }
+    function renderMode2(rect,g){
+      const {base,ell,low,high,upperGround,r}=g,t=state.planeTheta,co=Math.cos(t);
+      if(state.steps[1]){
+        draw3DPolygon(base,'rgba(56,189,248,.24)','#38bdf8',2.7,false,{part:0,group:'projection'});
+        draw3DPoint(V(0,0,0),4,'#38bdf8','밑면 원 · 9π',{x:10,y:15},{part:0,group:'projection'});
+      }
+      if(state.steps[2]){
+        draw3DPolygon(ell,'rgba(244,114,182,.25)','#f472b6',2.8,false,{part:1,group:'source'});
+        for(let i=0;i<80;i+=8)draw3DLine(ell[i],base[i],'#fbbf24',1.4,true,false,{part:1,group:'aux'});
+      }
+      if(state.steps[3]){
+        draw3DLine(low,high,'#fbbf24',3,false,true,{part:2,group:'aux'});
+        draw3DLine(ell[20],ell[60],'#34d399',3,false,true,{part:2,group:'aux'});
+        draw3DLine(low,upperGround,'#38bdf8',2.2,false,false,{part:2,group:'aux'});
+        draw3DLine(upperGround,high,'#fde047',2.2,true,false,{part:2,group:'aux'});
+        draw3DRightAngle(upperGround,low,high,.4);
+        draw3DAngleArc(low,upperGround,high,.7,'#fde047','θ');
+        draw3DPoint(high,5,'#fbbf24',`장축 2a=${(6/co).toFixed(2)}`,{x:10,y:-10},{part:2,group:'aux',priority:2});
+        draw3DPoint(ell[20],4,'#34d399','단축 2b=6',{x:10,y:10},{part:2,group:'aux'});
+        drawBottomTapeBanner(rect,'바닥 S′/π',9,'추가 단면/π',9/co-9,`tanθ=${Math.tan(t).toFixed(3)} · 단면 S=${(9/co).toFixed(2)}π · θ=${deg(t).toFixed(1)}°`);
+      }
+    }
+    function renderMode3(rect,g){
+      const {A,B,C,D,E,F,G,H,M,Mp}=g;
+      const edges=[[E,F],[F,G],[G,H],[H,E],[A,B],[B,C],[C,D],[D,A],[A,E],[B,F],[C,G],[D,H]];
+      edges.forEach(([p,q])=>draw3DLine(p,q,'rgba(203,213,225,.35)',1.4,false,false,{group:'aux'}));
+      if(state.steps[2]){
+        draw3DPolygon([F,E,H],'rgba(56,189,248,.22)','#38bdf8',2.8,false,{part:1,group:'projection'});
+        draw3DLine(B,F,'#fbbf24',2.4,true,false,{part:1,group:'aux'});draw3DLine(D,H,'#fbbf24',2.4,true,false,{part:1,group:'aux'});
+        draw3DRightAngle(E,F,H,.48,'#38bdf8',{part:1,group:'projection'});
+        draw3DPoint(F,5,'#38bdf8','F = proj(B)',{x:10,y:12},{part:1,group:'projection'});
+        draw3DPoint(H,5,'#38bdf8','H = proj(D)',{x:-100,y:12},{part:1,group:'projection'});
+      }
+      if(state.steps[1]){
+        draw3DPolygon([B,D,E],'rgba(244,114,182,.26)','#f472b6',3,false,{part:0,group:'source'});
+        draw3DPoint(B,6,'#f472b6','B',{x:12,y:-15},{part:0,group:'source'});
+        draw3DPoint(D,6,'#f472b6','D',{x:12,y:-15},{part:0,group:'source'});
+        draw3DPoint(E,6,'#34d399','E',{x:-25,y:-12},{part:0,group:'source'});
+      }
+      if(state.steps[3]){
+        draw3DPolygon([E,M,Mp],'rgba(251,191,36,.18)','#fbbf24',2,false,{part:2,group:'aux'});
+        draw3DLine(F,H,'#6ee7b7',2.2,true,false,{part:2,group:'aux'});
+        draw3DLine(B,D,'#f9a8d4',2.2,true,false,{part:2,group:'aux'});
+        draw3DRightAngle(M,E,Mp,.44,'#fde047',{part:2,group:'aux'});
+        draw3DAngleArc(E,M,Mp,.7,'#fde047','θ');
+        draw3DPoint(M,5,'#fde047','M (FH 중점)',{x:10,y:14},{part:2,group:'aux',priority:1});
+        draw3DPoint(Mp,5,'#fde047','M′ (BD 중점)',{x:10,y:-14},{part:2,group:'aux',priority:1});
+        drawBottomTapeBanner(rect,'S′',8,'S−S′',8*Math.sqrt(3)-8,`EM=2√2 · MM′=4 · cosθ=1/√3 · θ=${deg(Math.acos(1/Math.sqrt(3))).toFixed(2)}°`);
+      }
+    }
+    function renderMode4(rect,g){
+      const {disk,shadow,center,start,ray,hinge,xH,u0}=g,b=rad(state.boardDeg),sun=rad(state.sunDeg);
+      draw3DPolygon([V(-4,0,-4),V(6,0,-4),V(6,0,4),V(-4,0,4)],'rgba(16,185,129,.07)','#176746',1.2,false,{group:'projection'});
+      if(state.steps[2]){
+        draw3DPolygon(shadow,'rgba(56,189,248,.25)','#38bdf8',2.8,false,{part:1,group:'projection'});
+        for(let i=0;i<80;i+=10)draw3DLine(disk[i],shadow[i],'#fbbf24',1.5,true,false,{part:1,group:'aux'});
+        draw3DPoint(shadow[0],4,'#38bdf8','그림자 S′',{x:9,y:15},{part:1,group:'projection'});
+      }
+      if(state.steps[1]){
+        draw3DPolygon(disk,'rgba(244,114,182,.26)','#f472b6',2.9,false,{part:0,group:'source'});
+        draw3DLine(start,center,'#fde047',3,false,true,{part:0,group:'aux'});
+        draw3DPoint(start,5,'#fde047',`태양광 θ₂=${state.sunDeg}°`,{x:-55,y:-10},{part:0,group:'aux',priority:1});
+        draw3DPoint(center,5,'#f472b6','원판 S=12',{x:12,y:-12},{part:0,group:'source'});
+      }
+      if(state.steps[3]){
+        const onPlane=V(xH+(u0+1)*Math.cos(b),(u0+1)*Math.sin(b),0),onGround=V(xH+(u0+1),0,0);
+        draw3DAngleArc(hinge,onGround,onPlane,.72,'#fbbf24','θ₁');
+        const tip=disk[0],hit=shadow[0],left=V(hit.x-1,0,hit.z);
+        draw3DAngleArc(hit,left,tip,.66,'#fde047','θ₂');
+        const sp=12*Math.sin(b+sun)/Math.sin(sun);
+        drawBottomTapeBanner(rect,'그림자 S′',sp,'|S′−S|',Math.abs(sp-12),`S′=12 sin(${state.boardDeg}+${state.sunDeg})° / sin${state.sunDeg}° = ${sp.toFixed(2)}`);
+      }
+    }
+
+  /* ======================================================================
+     2.0 셸 연결 (새로 작성한 부분)
+     ====================================================================== */
+  const RENDER = { 1: renderMode1, 2: renderMode2, 3: renderMode3, 4: renderMode4 };
+  const R2D = 180 / Math.PI;
+  const INV_SQRT3 = Math.acos(1 / Math.sqrt(3));
+  function sync(s, m) {
+    state.mode = m;
+    state.planeTheta = m === 3 ? INV_SQRT3 : s.th / R2D;
+    state.boardDeg = +s.board.toFixed(1); // [2.0 수정] 자동 개폐 중 하단 식에 30.2200000001 같은 긴 소수가 찍히지 않게 함
+    state.sunDeg = s.sun;
+    state.lens = s.lens;
+    state.partIdx = s.part ? s.part - 1 : null;
+    for (let i = 1; i <= 3; i++) state.steps[i] = s.step >= i || state.partIdx === i - 1;
+  }
+  const cam = (s) => ({ yaw: s.yaw / R2D, pitch: s.pitch / R2D });
+  const CAMS = (m) => ({
+    iso: { yaw: examData[m].cam.yaw * R2D, pitch: examData[m].cam.pitch * R2D },
+    section: { yaw: examData[m].sectionCam.yaw * R2D, pitch: examData[m].sectionCam.pitch * R2D },
+    top: { yaw: 0, pitch: 90 }
+  });
+  const TITLES = ["정사영 기본 (S' = S cosθ)", '기출1: 원기둥 타원 단면 역정사영', '기출2: 정육면체 단면 이면각(1/√3)', '기출3: 비스듬한 태양광 그림자'];
+  const SHORT = ['정사영 기본', '타원 단면', '정육면체 단면', '태양광 그림자'];
+  const QUESTIONS = [
+    '기울어진 도형을 바로 위에서 비추면 넓이는 얼마나 줄어들까?',
+    '비스듬히 자른 타원 단면의 넓이를 타원 공식 없이 구할 수 있을까?',
+    '보조선 없이 정사영의 넓이 비로 이면각을 구할 수 있을까?',
+    '빛이 비스듬히 와도 그림자 넓이를 각도 하나로 구할 수 있을까?'
+  ];
+  /* 원본 buildParts의 조각 이름 */
+  const PART_NAMES = [
+    ['원래 도형 S', '정사영 S′', '이면각·직각·보조선'],
+    ['바닥 밑면 원 S′', '경사 타원 단면 S', '장축·단축·θ'],
+    ['정삼각형 BDE', '바닥 정사영 FEH', '중점 M, M′ · 각 θ'],
+    ['경사 원판 S', '지면 그림자 S′', '태양광 입사각·이면각']
+  ];
+
+  function readouts(m) {
+    const t = state.planeTheta, co = Math.cos(t), dt = deg(t);
+    if (m === 1) return [
+      { label: '원래 삼각형 넓이 S', value: 'S = 24 (BC=8, AM=6)', color: 'rose' },
+      { label: '이면각 θ / cosθ', value: `${dt.toFixed(1)}° | ${co.toFixed(4)}`, color: 'amber' },
+      { label: '정사영 넓이 S′', value: (24 * co).toFixed(2), color: 'sky' },
+      { label: '밑변 불변 / 높이의 정사영', value: `BC = 8 | A′M = ${(6 * co).toFixed(3)}`, color: 'green' }
+    ];
+    if (m === 2) return [
+      { label: '바닥 원 S′', value: 'S′ = 9π', color: 'rose' },
+      { label: '절단 평면 θ', value: `${dt.toFixed(1)}° | cosθ = ${co.toFixed(5)}`, color: 'amber' },
+      { label: '타원 단면 넓이 S', value: `${(9 / co).toFixed(3)}π`, color: 'sky' },
+      { label: '단축 2b / 장축 2a', value: `6.00 / ${(6 / co).toFixed(3)}`, color: 'green' }
+    ];
+    if (m === 3) return [
+      { label: '정삼각형 BDE 넓이 S', value: `8√3 ≈ ${(8 * Math.sqrt(3)).toFixed(3)}`, color: 'rose' },
+      { label: '바닥 정사영 FEH 넓이 S′', value: '8.000', color: 'amber' },
+      { label: 'cosθ = S′/S', value: (1 / Math.sqrt(3)).toFixed(6), color: 'sky' },
+      { label: 'M′EM 직각단면', value: 'EM = 2√2, MM′ = 4', color: 'green' }
+    ];
+    const b = state.boardDeg, s = state.sunDeg, normal = 12 * Math.sin(rad(b + s)), area = normal / Math.sin(rad(s));
+    return [
+      { label: '원판 넓이 S / θ₁', value: `S = 12 | ${Math.round(b)}°`, color: 'rose' },
+      { label: '태양광 지면각 θ₂', value: `${s}° | 원판-광선 각 ${Math.round(b + s)}°`, color: 'amber' },
+      { label: '빛 수직 단면 S⊥', value: normal.toFixed(3), color: 'sky' },
+      { label: '지면 그림자 S′', value: `${area.toFixed(3)} (현재 각 기준)`, color: 'green' }
+    ];
+  }
+  function chips(m) {
+    const t = state.planeTheta, co = Math.cos(t);
+    if (m === 1) return [{ tex: String.raw`S'=S\cos\theta` }, { tex: String.raw`S'=24\times ${co.toFixed(4)}=${(24 * co).toFixed(2)}`, color: 'amber' }];
+    if (m === 2) return [{ tex: String.raw`S=\dfrac{9\pi}{\cos\theta}` }, { tex: String.raw`S=${(9 / co).toFixed(3)}\pi,\quad 2a=${(6 / co).toFixed(2)}`, color: 'amber' }];
+    if (m === 3) return [{ tex: String.raw`\cos\theta=\dfrac{S'}{S}=\dfrac1{\sqrt3}` }, { tex: String.raw`\theta=${deg(INV_SQRT3).toFixed(3)}^\circ`, color: 'amber' }];
+    const b = state.boardDeg, s = state.sunDeg, area = 12 * Math.sin(rad(b + s)) / Math.sin(rad(s));
+    const perpendicular = Math.abs(b + s - 90) < 1e-9;
+    return [
+      { tex: perpendicular ? String.raw`S'\cos ${b}^\circ=S\;\Rightarrow\;S'=\dfrac{S}{\cos ${b}^\circ}` : String.raw`S'\sin ${s}^\circ=S\sin(${b}+${s})^\circ` },
+      { tex: String.raw`S'=${area.toFixed(3)}`, color: 'amber' }
+    ];
+  }
+
+  function sceneOf(m) {
+    const d = examData[m];
+    return {
+      id: 'mode' + m, title: TITLES[m - 1], short: SHORT[m - 1],
+      question: QUESTIONS[m - 1],
+      guide: d.hint,
+      enter: (s) => { const c = CAMS(m).iso; s.yaw = c.yaw; s.pitch = c.pitch; s.th = 60; s.board = 30; s.sun = 60; s.lens = 'all'; s.dir = 1; },
+      controls: () => (m <= 2 ? ['th', 'yaw', 'pitch'] : m === 3 ? ['yaw', 'pitch'] : ['board', 'sun', 'yaw', 'pitch']),
+      presets: () => {
+        const c = CAMS(m);
+        const near = (st, t) => Math.abs(st.yaw - t.yaw) < 1 && Math.abs(st.pitch - t.pitch) < 1;
+        return [
+          { group: '시점', label: '3D 입체 뷰', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
+          { group: '시점', label: '옆면 직각삼각형 뷰 (핵심)', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
+          { group: '시점', label: '위에서 내려다보기 (정사영)', set: c.top, ms: 600, on: (st) => near(st, c.top) },
+          { group: '관찰 렌즈', label: '전체 보기', apply: (st) => { st.lens = 'all'; }, on: (st) => st.lens === 'all' },
+          { group: '관찰 렌즈', label: '원래 도형 S', apply: (st) => { st.lens = 'source'; }, on: (st) => st.lens === 'source' },
+          { group: '관찰 렌즈', label: '정사영 S′', apply: (st) => { st.lens = 'projection'; }, on: (st) => st.lens === 'projection' },
+          { group: '관찰 렌즈', label: '이면각·투영선', apply: (st) => { st.lens = 'aux'; }, on: (st) => st.lens === 'aux' }
+        ];
+      },
+      actions: [{ id: 'spin', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : m === 3 ? '3D 자동 회전' : '평면 자동 개폐'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+      tick: (s, dt) => {
+        if (!s.playing) return false;
+        if (m <= 2) { // 원본: 평면 기울기 5°~85° 왕복
+          s.th += 31 * dt * s.dir;
+          if (s.th >= 85) { s.th = 85; s.dir = -1; }
+          if (s.th <= 5) { s.th = 5; s.dir = 1; }
+        } else if (m === 3) {
+          s.yaw += 34 * dt;
+          if (s.yaw > 180) s.yaw -= 360;
+        } else { // 원판 기울기 10°~60° 왕복
+          s.board += 13.2 * dt * s.dir;
+          if (s.board >= 60) { s.board = 60; s.dir = -1; }
+          if (s.board <= 10) { s.board = 10; s.dir = 1; }
+        }
+        return true;
+      },
+      steps: d.steps,
+      problem: { tag: d.tag, time: d.targetTime, text: d.question, answer: d.answerBadge, snap: () => (m === 4 ? { board: 30, sun: 60, ...CAMS(m).iso } : m === 3 ? { ...CAMS(m).iso } : { th: 60, ...CAMS(m).iso }) },
+      solution: { standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
+      view: (s) => {
+        sync(s, m);
+        const perp = m === 4 && Math.abs(state.boardDeg + state.sunDeg - 90) < 1e-9;
+        const text = m === 4 && !perp
+          ? `원판-광선 각 ${Math.round(state.boardDeg + state.sunDeg)}° (수직 아님) — 시점 ${Math.round(s.yaw)}° · ${Math.round(s.pitch)}°`
+          : `시점 ${Math.round(s.yaw)}° · ${Math.round(s.pitch)}° — 빈 곳을 끌면 회전`;
+        return {
+          chips: chips(m),
+          status: { tone: 'info', text },
+          readouts: readouts(m),
+          parts: d.steps.map((t, i) => ({ id: i + 1, name: PART_NAMES[m - 1][i], desc: t, color: (m === 2 ? ['sky', 'rose', 'amber'] : ['rose', 'sky', 'amber'])[i] }))
+        };
+      },
+      draw: (b, s, v) => {
+        BRD = b;
+        sync(s, m);
+        SP = APLab.space(b, cam(s));
+        const g = currentGeometry();
+        const rect = { width: b.W, height: b.H };
+        // 회전할 때마다 점과 라벨이 모두 화면 안에 들어오도록 맞춥니다(바닥 평면은 장식이라 넘쳐도 됩니다).
+        SP.fitDrawing(g.fit, () => RENDER[m](rect, g));
+        sink.tape = null;
+        if (s.grid) draw3DFloorGrid(g.floor);
+        RENDER[m](rect, g);
+        v.tape = sink.tape;
+      }
+    };
+  }
+
+  APLab.createLab({
+    id: 'geom-projection',
+    title: '정사영 3D',
+    courseName: '기하',
+    unit: '공간도형과 공간좌표',
+    courseColor: 'var(--m-rose)',
+    home: '../index.html#geom',
+    legacy: '../../labs/기하와벡터/정사영 3D.html',
+    board: {
+      kind: 'cartesian', focus: { x: [-4, 4], y: [-4, 4] }, pad: 0.05,
+      // 빈 곳을 끌면 카메라 회전(원본과 같은 감도)
+      orbit: (s, dx, dy) => {
+        s.yaw += dx * 0.0085 * R2D;
+        if (s.yaw > 180) s.yaw -= 360;
+        if (s.yaw < -180) s.yaw += 360;
+        s.pitch = clamp(s.pitch + dy * 0.0075 * R2D, -12, 90);
+      }
+    },
+    params: {
+      yaw: { value: -38, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전 (yaw)', format: (v) => `${Math.round(v)}°` },
+      pitch: { value: 24, min: -12, max: 90, step: 1, color: 'muted', label: '위아래 기울기 (pitch)', format: (v) => `${Math.round(v)}°` },
+      th: { value: 60, min: 0, max: 85, step: 0.5, color: 'amber', label: '경사 평면 기울기(이면각) θ', hint: '교선에 평행한 길이는 그대로, 수직인 길이만 cosθ배', format: (v) => `θ = ${v.toFixed(1)}° (cos θ = ${Math.cos(v / R2D).toFixed(3)})` },
+      board: { value: 30, min: 10, max: 60, step: 1, color: 'rose', label: '원판 기울기 θ₁', format: (v, s) => `θ₁ = ${Math.round(v)}° (원판-광선 각 ${Math.round(v + s.sun)}°)` },
+      sun: { value: 60, min: 30, max: 85, step: 1, color: 'amber', label: '광선-지면 경사각 θ₂', hint: 'θ₁ + θ₂ = 90°일 때 광선이 원판에 수직', format: (v, s) => `θ₂ = ${Math.round(v)}° (지면각)` }
+    },
+    state: { lens: 'all', dir: 1 },
+    persist: ['lens'],
+    scenes: [1, 2, 3, 4].map(sceneOf)
+  });
+});
+</script>
+</body>
+</html>
