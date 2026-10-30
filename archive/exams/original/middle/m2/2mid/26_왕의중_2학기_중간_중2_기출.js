@@ -40,7 +40,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q1.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q1.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 AC 위의 점 D가 BC=BD를 만족한다. ∠C, ∠BDC, ∠ABC는 75°, ∠CBD는 30°이고 ∠x는 ∠ABD로 표시된다.",
+    "solutionImageCaption": "BC=BD, AB=AC에서 얻는 75°, 30° 관계와 ∠x의 위치를 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,

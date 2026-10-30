@@ -491,7 +491,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q007_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q007_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I를 지나는 BD, CE가 각 B, 각 C를 이등분하고, ∠BDC=100°, ∠BEC=104°와 풀이에서 구한 ∠B=48°, ∠C=56°, ∠A=76°가 표시된 그림이다. 구하는 ∠BIC는 호로만 강조했다.",
+    "solutionImageCaption": "BD, CE가 각 B, 각 C의 이등분선일 때 ∠BDC=100°, ∠BEC=104°에서 각 B, 각 C를 구한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -625,7 +629,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q009_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q009_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 AB, AC의 수직이등분선이 만나는 외심 O에서 AO=BO=CO, ∠A=50°, ∠BOC=100°를 보인 삼각형이고, 오른쪽은 외심과 내심이 같은 점 O인 정삼각형의 외접원과 내접원이다.",
+    "solutionImageCaption": "수직이등분선의 교점 O는 세 꼭짓점에서 같은 거리이고, 정삼각형에서는 외심과 내심이 일치한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -695,7 +703,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q010_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q10-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 내심 I를 지나 BC에 평행한 DE를 긋고 AD=8, DB=4, AE=12, EC=6, DI=4, IE=6, AB=12, AC=18과 같은 호 표식의 ∠DBI, ∠IBC, ∠DIB를 나타낸 그림이다.",
+    "solutionImageCaption": "DE∥BC이므로 ∠DIB=∠IBC=∠DBI이고 BD=DI, CE=IE이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -828,7 +839,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 AB=DC=4cm, AD=BC=5cm로 두 쌍의 대변의 길이가 같은 사각형 ABCD, 오른쪽은 대각선 AC에서 ∠BAC=∠ACD=50°, ∠DAC=∠ACB=20°인 엇각으로 AB∥DC, AD∥BC인 사각형 ABCD이다.",
+    "solutionImageCaption": "두 쌍의 대변의 길이가 같거나 엇각이 같아 두 쌍의 대변이 평행한 사각형을 비교한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -963,7 +978,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q014_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q014_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 네 내각의 이등분선이 만나 E, F, G, H를 이루고, □EFGH의 네 각이 직각이며 두 대각선 EG, FH의 길이가 같은 모습이다.",
+    "solutionImageCaption": "이웃한 두 내각의 이등분선은 수직이어서 □EFGH는 직사각형이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,

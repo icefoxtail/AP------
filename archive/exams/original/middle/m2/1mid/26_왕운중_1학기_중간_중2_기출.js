@@ -779,7 +779,11 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄: 위는 해가 모두 음수인 범위 x<0(끝점 0은 속이 빈 점), 아래는 a=-7일 때 해집합 x≤0(끝점 0은 속이 찬 점)을 보여 준다.",
+    "solutionImageCaption": "a=-7일 때 해집합 x≤(2/3)(a+7)은 x≤0이고 끝점 0은 음수가 아니므로, 모든 해가 음수이려면 끝점이 0보다 작아야 한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
