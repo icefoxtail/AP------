@@ -18,7 +18,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중1 · 점 · 직선 · 반직선 · 선분 · 각 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 17개 장면
@@ -304,7 +304,7 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: `거리 AB = ${L} cm, 중점 AM = MB = ${L / 2} cm`,
           rule: '두 점 사이의 거리 = 두 점을 잇는 선 중 가장 짧은 선분 AB의 길이!',
           formulaHTML: `• 두 점 A, B 사이의 거리 ${tex(`= \\overline{AB} = ${L}\\text{ cm}`)}<br/>• 중점 M: ${tex(`\\overline{AM} = \\overline{MB} = \\dfrac{1}{2}\\overline{AB} = ${L / 2}\\text{ cm}`)}`,
-          notes: `• <strong>[주의]</strong>: '두 점 A, B를 잇는 선 중 가장 짧은 것은 직선 AB이다?' ➔ <strong>거짓(❌)</strong>! 직선은 끝이 없으므로 <strong>선분 AB</strong>라고 해야 맞습니다.`,
+          notes: `• <strong>[함정 주의]</strong>: '두 점 A, B를 잇는 선 중 가장 짧은 것은 직선 AB이다?' ➔ <strong>거짓(❌)</strong>! 직선은 끝이 없으므로 <strong>선분 AB</strong>라고 해야 맞습니다.`,
           bars: [
             { label: `AM = ½AB (${L / 2}cm)`, weight: 0.5, color: '#fbbf24' },
             { label: `MB = ½AB (${L / 2}cm)`, weight: 0.5, color: '#34d399' }
@@ -510,7 +510,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const foldDeg = Math.min(75, Math.max(40, deg));
         const xDeg = 180 - 2 * foldDeg;
         return {
-          badge: `탐구 4-A · 직사각형 종이 테이프 접기 — 『접은 각 = 엇각 ⟹ 이등변삼각형!』`,
+          badge: `탐구 4-A · [필수 킬러] 직사각형 종이 테이프 접기 — 『접은 각 = 엇각 ⟹ 이등변삼각형!』`,
           hint: `슬라이더를 움직이거나 <strong class="text-amber-300">[🎬 종이 접기 실행]</strong>을 눌러 종이 테이프를 직접 접어보세요! <strong class="text-amber-300">① 접은 각(∠ABC=${foldDeg}°) = 원래 각(∠EBC=${foldDeg}°)</strong>이고, 위아래 변이 평행하므로 <strong class="text-emerald-300">② 엇각(∠ACB=${foldDeg}°)</strong>도 같아져 <strong class="text-rose-400">ΔABC는 AB = AC 인 이등변삼각형</strong>이 됩니다!`,
           actionTxt: state.animProg > 0.5 ? '🎬 종이 테이프 다시 펼치기' : '🎬 종이 테이프 접어 올리기!',
           dim1Name: '테이프 폭 스케일', dim2Name: '접은 각도 ∠ABC',
@@ -522,7 +522,7 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: `∠ACB = ${foldDeg}°, ∠BAC = ${xDeg}°, AB = AC (이등변!)`,
           rule: '접은 각(●) = 엇각(●)  ⟹  겹친 삼각형은 항상 이등변삼각형!',
           formulaHTML: `• <strong>1단계(접은 각)</strong>: ${tex(`\\angle ABC = \\angle EBC = ${foldDeg}^\\circ`)}<br/>• <strong>2단계(엇각)</strong>: ${tex(`\\angle ACB = \\angle EBC = ${foldDeg}^\\circ`)}<br/>• <strong>3단계(이등변 결론)</strong>: 밑각 2개가 모두 ${tex(`${foldDeg}^\\circ`)}이므로 <strong>${tex(`\\overline{AB} = \\overline{AC}`)}</strong> 이고, 꼭지각 ${tex(`\\angle BAC = 180^\\circ - 2\\times ${foldDeg}^\\circ = \\mathbf{${xDeg}^\\circ}`)}!`,
-          notes: `• <strong>[변의 길이 주의!]</strong>: 접는 선이 $BC$일 때 두 밑각이 $B$와 $C$이므로, 길이가 같은 두 변은 $BC$가 아니라 꼭짓점 $A$에서 양쪽으로 내려온 <strong>$AB = AC$ (빨간색으로 표시한 변 2개!)</strong>입니다!`,
+          notes: `• <strong>[변의 길이 함정 주의!]</strong>: 접는 선이 $BC$일 때 두 밑각이 $B$와 $C$이므로, 길이가 같은 두 변은 $BC$가 아니라 꼭짓점 $A$에서 양쪽으로 내려온 <strong>$AB = AC$ (빨간색으로 표시한 변 2개!)</strong>입니다!`,
           bars: [
             { label: `밑각 ∠B (${foldDeg}°)`, weight: foldDeg / 180, color: '#fbbf24' },
             { label: `밑각 ∠C (${foldDeg}°)`, weight: foldDeg / 180, color: '#34d399' },

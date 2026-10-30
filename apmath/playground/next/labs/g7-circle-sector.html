@@ -74,7 +74,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <!-- 원본 화면의 구조(보이지 않음): 원본 그리기·계산 코드가 이 안의 요소를 그대로 읽고 씁니다. -->
 <div id="csLegacy" aria-hidden="true" inert>
 <header class="top"><div class="brand"><div class="brand-left"><a href="../../teacher-hub.html" class="ap-back-home" aria-label="전체 단원 목록으로 돌아가기">← 전체 단원</a><div><b>AP MATH <span style="color:var(--amber)">원과 부채꼴</span></b><small>개념 → 기본형 → 둘레 → 넓이 → 조각 실험 → 문제 적용</small></div></div><span class="pill">원과 부채꼴 · 27가지 움직이는 실험</span></div><nav id="tabs" class="tabs" aria-label="학습 단계"></nav></header>
@@ -956,7 +956,7 @@ function showModel(m){
  $('scene').innerHTML=geometry+`<g id="geomLayer">${m.draw}</g><g id="boundaryLayer">${arcShapes}</g>`+traceMarker(m.segs)+(m.hud||'')+`<g id="handleLayer">${m.handle||''}</g>`;
  const name=current()[1];
  $('boardCaption').textContent=`${zones[S.zone].short} · ${name}`;
- $('boardHint').textContent=S.zone===4?'단계·슬라이더로 면을 분리하고 조각을 직접 끌어보세요':S.zone===2?'칠판의 선이나 펼친 둘레·하단 줄자 버튼을 누르면 해당 구간이 강조됩니다':'도형 핸들과 슬라이더를 직접 조작하세요 (빈 곳을 끌면 화면 이동)';
+ $('boardHint').textContent=S.zone===4?'단계·슬라이더로 면을 분리하고 조각을 직접 끌어보세요':S.zone===2?'칠판의 선이나 펼친 둘레·줄자 버튼을 누르면 해당 구간이 강조됩니다':'도형 핸들과 슬라이더를 직접 조작하세요 (빈 곳을 끌면 화면 이동)';
  $('tag').textContent=zones[S.zone].name;
  $('title').textContent=name;
  $('description').textContent=m.info||'그림에서 서로 다른 선과 면을 눌러 확인해 보세요.';
