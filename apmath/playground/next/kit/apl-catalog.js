@@ -92,6 +92,7 @@ window.APLab.catalog = {
     "도형 변환 실험"
    ],
    "legacy": "labs/g7/원과_부채꼴_통합_마스터_스튜디오.html?v=20261027-circlelab-26",
+   "next": "next/labs/g7-circle-sector.html",
    "glyph": "<circle cx=\"40\" cy=\"38\" r=\"28\"/><path d=\"M40 38 L40 10 A28 28 0 0 1 64 52 Z\" fill=\"currentColor\" fill-opacity=\".15\"/><path d=\"M40 38 L40 10 M40 38 L64 52\"/>",
    "sceneTotal": 26,
    "extra": [
@@ -145,6 +146,7 @@ window.APLab.catalog = {
     "원뿔·원뿔대 & 🔪입체 단면 스캐너"
    ],
    "legacy": "labs/g7/nets-folding.html",
+   "next": "next/labs/g7-nets.html",
    "glyph": "<path d=\"M26 10 H50 V36 H26 Z M26 36 H50 V58 H26 Z M2 36 H26 V58 H2 Z M50 36 H74 V58 H50 Z M26 58 H50 V72 H26 Z\"/>",
    "sceneTotal": 30,
    "tags": [
