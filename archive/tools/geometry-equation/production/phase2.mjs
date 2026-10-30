@@ -335,7 +335,7 @@ function addGraphOverlays(plan,spec){
   // names: a plain Korean name beside the segment or line it names (tied to it like a length label), or beside the drawn curve at its anchor
   // point (a free label: any side that has room, the author's side first).
   for(const name of features.names??[]){
-    const base={id:'overlay-name-'+name.id,kind:'EQUATION_LABEL',labelKind:'TEXT',text:name.text,at:name.at,priority:1,allowSuppress:false,...(name.labelDirection?{directions:directionsFrom(name.labelDirection)}:{})};
+    const base={id:'overlay-name-'+name.id,kind:'EQUATION_LABEL',...(name.labelKind==='MATH'?{}:{labelKind:'TEXT'}),text:name.text,at:name.at,priority:1,allowSuppress:false,...(name.labelDirection?{directions:directionsFrom(name.labelDirection)}:{})};
     objects.push(name.kind==='CURVE'?{...base,freeLabel:true}
       :{...base,target:(name.kind==='SEGMENT'?'overlay-segment-':'overlay-line-')+name.ref,lineOwned:true,collinearOwners:true,alternateAt:name.alternateAt,gaps:[8,6,10,20,32,48]});
   }

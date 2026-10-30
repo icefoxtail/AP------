@@ -2523,6 +2523,18 @@ def _ov_label_problem(line):
     same=a*want[1]==b*want[0] and a*want[2]==c*want[0] and b*want[2]==c*want[1]
     return None if same else 'OVERLAY_LABEL_NOT_THE_LINE'
 
+def _ov_math_name_problem(plan,name):
+    """A MATH name beside a single straight piece (E31), read again here with sympy: 'OVERLAY_NAME_NOT_THE_CURVE' when the text is an equation with no letter left but x and y that
+    is not the drawn line y=c0+c1*x; 'OVERLAY_NAME_NOT_LINEAR' for a power or a product of x and y; None for anything it cannot compare."""
+    pieces=plan.get('pieces')
+    if plan.get('family')!='piecewise-polynomial' or not isinstance(pieces,list) or len(pieces)!=1:return None
+    try:values=[_ov_reader(c) for c in pieces[0].get('coefficients',[])]
+    except (ValueError,TypeError,AttributeError):return None
+    if len(values)>2 and any(v!=0 for v in values[2:]):return None
+    c0=values[0] if values else S.Integer(0);c1=values[1] if len(values)>1 else S.Integer(0)
+    problem=_ov_label_problem({'label':name['text'],'labelValues':name.get('labelValues'),'kind':'LINE','slope':c1,'intercept':c0})
+    return {'OVERLAY_LABEL_NOT_THE_LINE':'OVERLAY_NAME_NOT_THE_CURVE','OVERLAY_LABEL_NOT_LINEAR':'OVERLAY_NAME_NOT_LINEAR'}.get(problem)
+
 def _ov_line(entry):
     if not isinstance(entry,dict):raise ValueError('OVERLAY_LINE_INVALID')
     # labelAt (E31): START / END / a fraction 0..1 of the drawn line from its left (lower) end, read from the raw field here.
@@ -2611,10 +2623,13 @@ def _ov_expected(plan):
     for entry in raw.get('names',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_NAME_INVALID')
         ident=entry.get('id');text=entry.get('text')
-        if not isinstance(ident,str) or ident in seen_names or not isinstance(text,str) or text!=text.strip() or not re.fullmatch(OV_NAME_PATTERN,text):raise ValueError('OVERLAY_NAME_INVALID')
+        math_kind=entry.get('labelKind','TEXT')
+        if math_kind not in ('TEXT','MATH'):raise ValueError('OVERLAY_NAME_INVALID')
+        pattern=OV_NAME_PATTERN if math_kind=='TEXT' else r'[0-9A-Za-z=+\-*/().^ ]{1,40}'
+        if not isinstance(ident,str) or ident in seen_names or not isinstance(text,str) or text!=text.strip() or not re.fullmatch(pattern,text):raise ValueError('OVERLAY_NAME_INVALID')
         seen_names.add(ident);forms=[key for key in ('segment','line','curveX') if key in entry]
-        if len(forms)!=1:raise ValueError('OVERLAY_NAME_INVALID')
-        row={'id':ident,'text':text,'form':forms[0]}
+        if len(forms)!=1 or (math_kind=='MATH' and forms[0]!='curveX'):raise ValueError('OVERLAY_NAME_INVALID')
+        row={'id':ident,'text':text,'form':forms[0],'labelKind':math_kind,'labelValues':entry.get('labelValues')}
         if forms[0]=='segment':
             if entry['segment'] not in [segment['id'] for segment in segments]:raise ValueError('OVERLAY_NAME_TARGET_UNKNOWN')
             row['ref']=entry['segment']
@@ -2935,7 +2950,13 @@ def overlays_audit(plan,svg,transform):
             for name in expected['names']:
                 label_id='overlay-name-'+str(name['id']);claimed.add(label_id);node=groups.get(label_id)
                 if node is None:errors.append('OVERLAY_NAME_LABEL_MISSING:'+str(name['id']));continue
-                if node.get('data-text')!=name['text'] or node.get('data-tex') is not None or _ov_glyph_codes(node) or not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_NAME_LABEL_TEXT_MISMATCH:'+str(name['id']));continue
+                if name['labelKind']=='MATH':
+                    # an equation of the drawn curve (E31): typeset math whose glyphs are the text's; for a single straight piece the text is read exactly and must be that line
+                    want=_ov_label_codes(name['text']);got=_ov_glyph_codes(node)
+                    if node.get('data-text') is not None or len(got)!=len(want) or any(code not in allowed for code,allowed in zip(got,want)):errors.append('OVERLAY_NAME_LABEL_TEXT_MISMATCH:'+str(name['id']));continue
+                    problem=_ov_math_name_problem(plan,name)
+                    if problem:errors.append(problem+':'+str(name['id']))
+                elif node.get('data-text')!=name['text'] or node.get('data-tex') is not None or _ov_glyph_codes(node) or not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_NAME_LABEL_TEXT_MISMATCH:'+str(name['id']));continue
                 overlay_px=[px for kind,rows in (('segment',expected['segments']),('line',expected['lines'])) for other in rows for px in [px_segment('overlay-'+kind+'-'+str(other['id']))] if px is not None]
                 if name['form']!='curveX':
                     owner='overlay-'+name['form']+'-'+str(name['ref'])

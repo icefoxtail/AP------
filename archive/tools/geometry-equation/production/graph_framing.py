@@ -2607,19 +2607,50 @@ def _overlay_lattice(plan,entry,exact_points):
         if any(abs(point['x']-ex)<1e-9 and abs(point['y']-ey)<1e-9 for ex,ey in exact_points):_overlay_fail('OVERLAY_LATTICE_POINT_COINCIDES',str(point['x'])+','+str(point['y']))
     return {'region':region,'strict':strict,'counts':counts,'xRange':list(span),bound_key:bound,'points':points,'columns':columns}
 
+def _overlay_math_name_is_the_curve(plan,entry,ident):
+    """A MATH name beside the drawn curve (E31): when the curve is one straight piece with rational coefficients (y=c0+c1*x) and the text is an equation that can be read exactly
+    (labelValues gives the number a letter stands for), it must be that line. Other curves, symbolic texts and names without '=' are shown as written."""
+    from linear_text import read_equation,read_values,same_line
+    text=entry['text']
+    try:read_values(entry.get('labelValues'))
+    except ValueError:_overlay_fail('OVERLAY_NAME_VALUES_INVALID',ident)
+    if text.count('=')!=1:return
+    try:equation=read_equation(text,entry.get('labelValues'))
+    except ValueError as error:
+        if str(error)=='LINE_TEXT_NOT_LINEAR':_overlay_fail('OVERLAY_NAME_NOT_LINEAR',ident)
+        return
+    pieces=plan.get('pieces')
+    if equation is None or plan.get('family')!='piecewise-polynomial' or not isinstance(pieces,list) or len(pieces)!=1:return
+    try:values=[pp_exact_value(c) for c in pieces[0].get('coefficients',[])]
+    except (ValueError,TypeError,AttributeError):return
+    if len(values)>2 and any(v!=0 for v in values[2:]):return
+    if not all(v.is_Rational for v in values):return
+    c0=values[0] if values else S.Integer(0);c1=values[1] if len(values)>1 else S.Integer(0)
+    if not same_line(equation,(Fraction(int(c1.p),int(c1.q)),Fraction(-1),Fraction(int(c0.p),int(c0.q)))):_overlay_fail('OVERLAY_NAME_NOT_THE_CURVE',ident)
+
 def _overlay_names(plan,rows,claim,lines,segments,by_point):
     """overlays.names: {id,text,segment|line|curveX[,curve][,labelDirection]}. The text is a plain name (Korean, letters, digits, spaces, brackets) that
     stands beside the segment or line it names, or beside the drawn curve at curveX. Each anchor is computed here exactly; nothing is dropped."""
     names=[];by_segment={row['id']:row for row in segments};by_line={row['id']:row for row in lines}
     for entry in rows:
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_NAME_INVALID','name')
-        if set(entry)-{'id','text','segment','line','curveX','curve','labelDirection'}:_overlay_fail('OVERLAY_NAME_INVALID',entry.get('id'))
+        if set(entry)-{'id','text','segment','line','curveX','curve','labelDirection','labelKind','labelValues'}:_overlay_fail('OVERLAY_NAME_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'name');claim('name:'+ident)
         text=entry.get('text')
-        if not isinstance(text,str) or text!=text.strip() or not re.fullmatch(OVERLAY_NAME_PATTERN,text):_overlay_fail('OVERLAY_NAME_TEXT_INVALID',ident)
+        # labelKind MATH (E31): the equation of the drawn curve written beside it at curveX (y=2x-3/2), typeset as math; the default TEXT is a plain name.
+        kind=entry.get('labelKind','TEXT')
+        if kind not in ('TEXT','MATH') or ('labelValues' in entry and kind!='MATH'):_overlay_fail('OVERLAY_NAME_INVALID',ident)
+        from linear_text import TEXT_PATTERN
+        if kind=='MATH':
+            if not isinstance(text,str) or text!=text.strip() or TEXT_PATTERN.fullmatch(text) is None:_overlay_fail('OVERLAY_NAME_TEXT_INVALID',ident)
+        elif not isinstance(text,str) or text!=text.strip() or not re.fullmatch(OVERLAY_NAME_PATTERN,text):_overlay_fail('OVERLAY_NAME_TEXT_INVALID',ident)
         forms=[key for key in ('segment','line','curveX') if key in entry]
-        if len(forms)!=1 or ('curve' in entry and 'curveX' not in entry):_overlay_fail('OVERLAY_NAME_INVALID',ident)
+        if len(forms)!=1 or ('curve' in entry and 'curveX' not in entry) or (kind=='MATH' and forms[0]!='curveX'):_overlay_fail('OVERLAY_NAME_INVALID',ident)
         row={'id':ident,'text':text}
+        if kind=='MATH':
+            row['labelKind']='MATH'
+            if 'labelValues' in entry:row['labelValues']=entry['labelValues']
+            _overlay_math_name_is_the_curve(plan,entry,ident)
         if forms[0]=='segment':
             target=by_segment.get(entry['segment'])
             if target is None:_overlay_fail('OVERLAY_NAME_TARGET_UNKNOWN',ident)
