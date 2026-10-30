@@ -1,6 +1,10 @@
 {
   "schemaVersion": "ARCHIVE_PAGES_SITE_MANIFEST_V1",
   "maxBytes": 1000000000,
+  "minifyJson": [
+    "archive/data/school-fingerprints.json",
+    "archive/data/generated-lite-consumer/"
+  ],
   "files": [
     ".nojekyll",
     "index.html",
@@ -119,7 +123,6 @@
     "basic-scope-parent-groups.json",
     "basic-scope-parent-links.json",
     "basic-scope-source-links.json",
-    "question_identity_map.json",
     "question_metadata.json",
     "school-fingerprints.json",
     "svg-accessibility-index.js"
@@ -131,7 +134,8 @@
         "archive/data/",
         "archive/_generated/intelligence/",
         "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-      ]
+      ],
+      "ship": "loader-fetch-set"
     },
     "sourceVerification": {
       "index": "archive/data/archive2-source-verification-index.json",
@@ -142,6 +146,7 @@
       "pathPrefix": "data/meta-foundation/evidence/review-overrides/v1/"
     },
     "reviewedExamMeta": {
+      "verifyOnly": true,
       "index": "archive/data/question_metadata.json",
       "pathPrefix": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/"
     },

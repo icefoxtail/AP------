@@ -3,7 +3,7 @@ const HEX=/^[0-9a-f]{40}$/;
 export const REGISTRY_FILES=['archive/db.js','archive/question-index.js','archive/question-identity.js',
  'archive/question-index-report.md','archive/question-index-audit.md',
  'archive/data/archive2-catalog.json','archive/data/archive2-crosswalk-inventory.json',
- 'archive/data/question_identity_map.json','archive/data/question_metadata.json',
+ 'archive/data/question_metadata.json',
  'archive/data/archive2-canonical-input-manifest.json','archive/data/archive2-canonical-projection-policy.json',
  'archive/data/archive2-item-review-overrides.json','archive/data/basic-scope-parent-links.json'];
 export const sha256=items=>crypto.createHash('sha256').update([...items].sort().join('\n')).digest('hex');

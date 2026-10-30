@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { buildPagesSite } from '../tools/build-archive-pages-site.mjs';
+import { spawnSync } from 'node:child_process';
+import { buildPagesSite, formatPackageSummary, HEADROOM_WARNING_BYTES, planPagesSite, summarizePackageSize } from '../tools/build-archive-pages-site.mjs';
 
 function digest(value) {
   return crypto.createHash('sha256').update(value.replace(/\r\n/g, '\n')).digest('hex');
@@ -229,4 +230,96 @@ test('rejects symlinked manifest and indexed source files before digesting or co
     );
     fs.rmSync(linkPath, { recursive: true, force: true });
   }
+});
+
+test('compacts only listed non-digest-bound JSON and keeps its value identical', async (t) => {
+  const { root, manifest } = fixture();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const pretty = JSON.stringify({ rows: [{ id: 1, name: '한글', nested: { a: [1, 2, 3] } }], big: 12345678901234567890 }, null, 2) + '\n';
+  put(root, 'archive/data/loose.json', pretty);
+  put(root, 'archive/data/loose-tree/a.json', pretty);
+  put(root, 'archive/data/other.json', pretty);
+  manifest.archiveDataFiles = ['loose.json', 'other.json'];
+  manifest.trees.push({ path: 'archive/data/loose-tree', reason: 'tree' });
+  manifest.minifyJson = ['archive/data/loose.json', 'archive/data/loose-tree/'];
+  const report = await buildPagesSite({ sourceRoot: root, outputDir: path.join(root, '_site'), manifest });
+  const byPath = new Map(report.inventory.map((item) => [item.path, item]));
+  for (const relative of ['archive/data/loose.json', 'archive/data/loose-tree/a.json']) {
+    const text = fs.readFileSync(path.join(root, '_site', ...relative.split('/')), 'utf8');
+    assert.deepEqual(JSON.parse(text), JSON.parse(pretty), relative);
+    assert.ok(text.length < pretty.length, relative);
+    assert.equal(byPath.get(relative).transform, 'minify-json');
+    assert.equal(byPath.get(relative).bytes, Buffer.byteLength(text));
+    assert.equal(byPath.get(relative).sourceBytes, Buffer.byteLength(pretty));
+    assert.equal(byPath.get(relative).sha256, crypto.createHash('sha256').update(text).digest('hex'));
+  }
+  assert.equal(fs.readFileSync(path.join(root, '_site', 'archive/data/other.json'), 'utf8'), pretty);
+  assert.equal(byPath.get('archive/data/other.json').transform, undefined);
+  assert.equal(report.minifiedFileCount, 2);
+  assert.equal(report.totalBytes, report.inventory.reduce((sum, item) => sum + item.bytes, 0));
+});
+
+test('refuses to compact digest-bound files and unmatched or malformed entries', async (t) => {
+  const { root, manifest } = fixture();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const attempt = (minifyJson) => buildPagesSite({
+    sourceRoot: root, outputDir: path.join(root, '_site'), manifest: { ...manifest, minifyJson },
+  });
+  // the canonical input manifest binds this file's bytes to a digest
+  await assert.rejects(attempt(['archive/data/fixture.json']), /minifyJson refuses a digest-bound file/);
+  await assert.rejects(attempt(['archive/data/archive2-source-verification/v1/']), /minifyJson refuses a digest-bound file/);
+  await assert.rejects(attempt(['archive/data/missing.json']), /matches no packaged JSON file/);
+  await assert.rejects(attempt('archive/data/fixture.json'), /minifyJson must be an array/);
+  put(root, 'archive/data/broken.json', '{not json');
+  manifest.archiveDataFiles = ['broken.json'];
+  await assert.rejects(attempt(['archive/data/broken.json']), /not valid JSON/);
+});
+
+test('reviewed evidence referenced only by path is verified but not shipped when verifyOnly is set', async (t) => {
+  const { root, manifest, reviewedMeta } = fixture();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  manifest.runtimeClosure.reviewedExamMeta.verifyOnly = true;
+  const plan = planPagesSite({ sourceRoot: root, manifest });
+  assert.equal(plan.entries.some((entry) => entry.path === reviewedMeta), false);
+  assert.deepEqual(plan.buildOnly.map((item) => item.path), [reviewedMeta]);
+  fs.rmSync(path.join(root, ...reviewedMeta.split('/')));
+  assert.throws(() => planPagesSite({ sourceRoot: root, manifest }), /ENOENT|does not exist/);
+});
+
+test('size summary names the largest contributors and the remaining headroom', () => {
+  const entries = [
+    { path: 'a/b/c/one.bin', bytes: 600 },
+    { path: 'a/b/c/two.bin', bytes: 300 },
+    { path: 'a/b/d/three.bin', bytes: 50 },
+    { path: 'top.html', bytes: 10 },
+  ];
+  const summary = summarizePackageSize(entries, 2000, { groupDepth: 3, topGroups: 2, topFiles: 2 });
+  assert.equal(summary.totalBytes, 960);
+  assert.equal(summary.headroomBytes, 1040);
+  assert.deepEqual(summary.topGroups.map((group) => [group.path, group.bytes, group.files]), [['a/b/c', 900, 2], ['a/b/d', 50, 1]]);
+  assert.deepEqual(summary.topFiles.map((file) => file.path), ['a/b/c/one.bin', 'a/b/c/two.bin']);
+  assert.match(formatPackageSummary(summary), /headroom 0\.0 MB/);
+});
+
+test('the command line reports headroom and warns, without failing, when it drops below the threshold', async (t) => {
+  const { root, manifest } = fixture();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const probe = planPagesSite({ sourceRoot: root, manifest });
+  const run = (maxBytes) => {
+    const manifestPath = path.join(root, `manifest-${maxBytes}.json`);
+    fs.writeFileSync(manifestPath, JSON.stringify({ ...manifest, maxBytes }));
+    return spawnSync(process.execPath, [
+      path.resolve('tools/build-archive-pages-site.mjs'), '--root', root, '--output', path.join(root, '_site'), '--manifest', manifestPath,
+    ], { encoding: 'utf8' });
+  };
+  const tight = run(probe.totalBytes + 1000);
+  assert.equal(tight.status, 0, tight.stderr);
+  assert.match(tight.stdout, /headroom 0\.0 MB/);
+  assert.match(tight.stdout, /::warning title=Pages size headroom::/);
+  assert.equal(HEADROOM_WARNING_BYTES, 50_000_000);
+
+  const over = run(probe.totalBytes);
+  assert.equal(over.status, 1);
+  assert.match(over.stderr, /must be below the/);
+  assert.match(over.stderr, /Largest directories:/);
 });
