@@ -11,7 +11,9 @@
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
 <!-- 원본 해설 문자열이 쓰는 text-rose-400 한 가지만 이 실험실 안에서 의미색(빨강)으로 연결합니다(키트 CSS는 그대로). -->
-<style>.apl .text-rose-400 { color: var(--m-red); }</style>
+<style>.apl .text-rose-400 { color: var(--m-red); }
+.apl .g7-2d-btn { position: absolute; top: 10px; right: 10px; z-index: 6; }
+.apl .g7-2d-btn[hidden] { display: none; }</style>
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
@@ -34,7 +36,10 @@
      ① 고정 배율(약 46~52px) → 도형을 감싸는 상자에 맞춘 자동 배율·중심(넓은 화면에서도 그림이 작지 않고, 돌려도 크기가 변하지 않음)
      ② 그림·해설에 아무 영향이 없던 조작(진행도 슬라이더·단계·실행 단추, 치수 단추, 관찰 렌즈)은 해당 장면에서 숨김(장면마다 값을 바꿔 그려 보고 가려냄)
      ③ 좁은 화면에서 가장자리 이름표가 잘리지 않게 무대 안쪽으로 밀어 넣음
-     ④ 2D 설계도 상자는 무대 폭 640px 이상에서만 표시(원본은 520px 이상이라 상자가 그림을 가렸음)
+     ④ 2D 설계도 상자: 무대 폭 640px 이상은 그림 오른쪽 위에(원본은 520px 이상), 그보다 좁은 화면(휴대폰)은 오른쪽 위 「2D 설계도 보기」 단추로
+        상자를 무대 전체로 키워 보여 줌(원본은 상자를 숨겨 해설이 가리키는 그림을 볼 수 없었음). 해설의 '우측 상단 2D …' 문장은 휴대폰에서 단추 안내가 덧붙음
+     ⑤ 계단형(2-2-2) 장면의 2D 상자는 원본에 글자 한 줄뿐이라 2-2-2 전개도를 그려 채우고, 정팔면체 장면은 그릴 내용이 없어 상자를 두지 않음
+     ⑥ 개미 최단거리 등 펼침↔감김으로 크기가 크게 변하는 장면은 지금 진행도 근처로 크기를 맞추고, 휴대폰의 개미 장면은 겹치던 면 이름표를 접음
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const tex = APLab.tex;
@@ -611,6 +616,10 @@ window.addEventListener('DOMContentLoaded', function () {
   let B = null;     // 지금 그리는 무대(APLab.Board)
   let ctx = null;   // 원본이 쓰던 이름 그대로
   let VIEW = { c: { x: 0, y: 0, z: 0 }, cx: 0, cy: 0, sc: 40 };
+  let MAINB = null;    // 화면의 무대(미리보기 썸네일은 제외)
+  let BOXMODE = false; // 2D 설계도를 무대 전체로 키워 그리는 중
+  let HIDE_FACE_LABELS = false; // 좁은 화면에서 이름표가 겹쳐 읽기 어려운 장면(개미 최단거리)은 면 이름표를 접어 둠
+  let BTN = null;      // 좁은 화면의 '2D 설계도 보기' 단추
   const DUAL_W = 220;
   function makeCtx(b) {
     const c = b.ctx;
@@ -631,6 +640,7 @@ window.addEventListener('DOMContentLoaded', function () {
           // 작은 미리보기에는 글자를 넣지 않습니다. [2.0 수정] 그림 가장자리의 이름표가 좁은 화면에서 잘리지 않도록 무대 안쪽으로 밀어 넣습니다.
           return (str, x, y, ...rest) => {
             if (b.thumb) return;
+            if (BOXMODE) { t.fillText(str, x, y, ...rest); return; }
             const w = t.measureText(String(str)).width, al = t.textAlign, A = b._area();
             const x0 = al === 'center' ? x - w / 2 : al === 'right' || al === 'end' ? x - w : x;
             const lo = A.x + 4, hi = A.x + A.w - 4;
@@ -653,10 +663,15 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-  // 2D 설계도 상자는 폭이 넉넉한 화면에서만 (원본도 520px 미만에서는 숨겼습니다)
+  // 2D 설계도 상자: 폭이 넉넉한(640px 이상) 무대는 그림 오른쪽 위에 그대로,
+  // [2.0 수정] 좁은 무대(휴대폰)는 무대 오른쪽 위의 「2D 설계도 보기」 단추로 상자를 무대 전체로 키워 보여 줍니다(원본은 520px 미만에서 상자를 숨겨 해설이 가리키는 그림을 볼 수 없었습니다).
+  const hasBox = () => !NO_BOX.has(state.sub[state.mode]);
   function dualShown() {
-    return !!(state.dualView && B && !B.thumb && B._area().w >= 640);
+    return !!(state.dualView && B && !B.thumb && B._area().w >= 640 && hasBox());
   }
+  const isNarrow = () => !!(MAINB && MAINB._area().w < 640);
+  // 해설이 '우측 상단 2D …'를 가리키는 문장은 좁은 화면에서 단추 안내를 덧붙입니다.
+  const phoneWords = (html) => (isNarrow() ? html.replace(/우측 상단 (<strong[^>]*>2D[^<]*<\/strong>)/g, '$1(휴대폰은 무대 오른쪽 위의 「2D 설계도 보기」 단추)') : html);
   // [2.0 수정] 원본은 캔버스 크기로 고정 배율(약 46~52px)을 정해 넓은 화면에서 그림이 작았습니다.
   // 그림을 한 번 '재기만' 하여(진행도 0~100% 다섯 단계를 겹쳐) 도형을 감싸는 상자의 중심과 반경을 구하고, 무대 안쪽 영역에 맞춥니다.
   // 중심·반경은 카메라와 무관해 돌려도 크기가 변하지 않고(도형 중심을 축으로 회전), 치수(r·h·n)를 바꾸면 그에 맞게 다시 맞춰집니다.
@@ -664,13 +679,15 @@ window.addEventListener('DOMContentLoaded', function () {
   const NOOP = new Proxy(function () {}, { get: () => NOOP, set: () => true, apply: () => NOOP });
   const EXT = new Map();
   function extentOf(m, id, s) {
-    const key = [m, id, s.n, s.h].join('|');
+    const cur = FIT_CUR.has(id); // 진행도에 따라 그림 크기가 크게 변하는 장면은 지금 진행도 근처로만 맞춥니다(휴대폰에서 작아지지 않게)
+    const qa = Math.round(s.anim * 10) / 10;
+    const key = [m, id, s.n, s.h, cur ? qa : ''].join('|');
     let e = EXT.get(key);
     if (!e) {
       const keep = ctx;
       ctx = NOOP;
       DRY = { lo: [1e9, 1e9, 1e9], hi: [-1e9, -1e9, -1e9] };
-      [0, 0.25, 0.5, 0.75, 1].forEach((a) => {
+      (cur ? [Math.max(0, qa - 0.1), qa, Math.min(1, qa + 0.1)] : [0, 0.25, 0.5, 0.75, 1]).forEach((a) => {
         try { sync({ ...s, anim: a, antProg: a }, m, id); RENDER[m](); } catch (err) { /* 어떤 단계에서 그려지지 않아도 나머지로 잼 */ }
       });
       const d = DRY.hi.map((v, i) => Math.max(v - DRY.lo[i], 0.2) / 2);
@@ -683,11 +700,12 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function setView(b, m, id, s) {
     const A = b._area();
-    const dual = state.dualView && !b.thumb && A.w >= 640;
+    const dual = state.dualView && !b.thumb && A.w >= 640 && !NO_BOX.has(id);
     const availW = A.w - (dual ? DUAL_W + 20 : 0);
     const e = extentOf(m, id, s);
     sync(s, m, id);
-    const padX = b.thumb ? 4 : Math.min(60, A.w * 0.12), padY = b.thumb ? 4 : Math.min(40, A.h * 0.1);
+    const nar = A.w < 640; // 좁은 무대는 여백을 줄여 그림을 키웁니다(가장자리 이름표는 안쪽으로 밀어 넣어 잘리지 않음)
+    const padX = b.thumb ? 4 : nar ? 22 : Math.min(60, A.w * 0.12), padY = b.thumb ? 4 : nar ? 20 : Math.min(40, A.h * 0.1);
     const fit = Math.min((availW - 2 * padX) / (2 * e.rxy * 1.04), (A.h - 2 * padY) / (2 * e.r3 * 1.04));
     VIEW = {
       c: e.c,
@@ -820,7 +838,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.lineJoin = 'round';
         ctx.stroke();
 
-        if (f.label) {
+        if (f.label && !HIDE_FACE_LABELS) {
           ctx.font = '800 12px Pretendard, sans-serif';
           ctx.fillStyle = f.labelColor || '#ffffff';
           ctx.textAlign = 'center';
@@ -842,12 +860,20 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
   /* ===== 원본 그대로: 우측 상단 2D 설계도 미니뷰 (상자 자리만 무대 안쪽 영역 기준으로 바꿈) ===== */
-    function draw2DDualOverlay() {
-      if (!dualShown()) return;
+    function draw2DDualOverlay(full) {
+      if (!hasBox() || !(full || dualShown())) return;
       const A = B._area();
       const boxW = 220, boxH = 200;
-      const bx = A.x + A.w - boxW - 6;
-      const by = A.y + 10;
+      if (full) { // [2.0 수정] 좁은 무대: 상자를 무대 전체로 키워 그림(글자 포함)이 휴대폰에서도 읽히게
+        const S = Math.min((A.w - 16) / boxW, (A.h - 58) / boxH, 1.8); // 위쪽은 단추 자리
+        ctx.save();
+        ctx.translate(A.x + A.w / 2 - (boxW * S) / 2, A.y + 48 + (A.h - 56 - boxH * S) / 2);
+        ctx.scale(S, S);
+        BOXMODE = true;
+        try { drawBox(0, 0); } finally { BOXMODE = false; ctx.restore(); }
+      } else drawBox(A.x + A.w - boxW - 6, A.y + 10);
+
+      function drawBox(bx, by) {
       const cx = bx + boxW / 2, cy = by + boxH / 2 + 8;
 
       ctx.save();
@@ -949,9 +975,19 @@ window.addEventListener('DOMContentLoaded', function () {
           });
           ctx.fillStyle = '#fda4af';
           ctx.fillText('⚠️ 2×2 덩어리 = 접으면 같은 자리 충돌!', cx, by + boxH - 10);
-        } else {
-          ctx.fillStyle = '#fef08a';
-          ctx.fillText('입체 겨냥도 ↔ 평면 전개도 대응', cx, cy);
+        } else if (sub === 'cubeStairs') {
+          // [2.0 수정] 원본은 이 장면의 2D 상자에 글자 한 줄만 있었습니다 → 계단형 2-2-2 전개도(정사각형 6칸)를 그려 채움
+          [[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 2]].forEach(([i, j], n) => {
+            const col = n % 2 ? '#f472b6' : '#38bdf8';
+            ctx.fillStyle = col + '55';
+            ctx.strokeStyle = col;
+            ctx.lineWidth = 1.5;
+            ctx.fillRect(cx + (i - 2) * s, cy + (j - 1.5) * s, s, s);
+            ctx.strokeRect(cx + (i - 2) * s, cy + (j - 1.5) * s, s, s);
+          });
+          ctx.fillStyle = '#a7f3d0';
+          ctx.font = '700 10px Pretendard, sans-serif';
+          ctx.fillText('계단형 2-2-2도 접으면 정육면체!', cx, by + boxH - 10);
         }
       } else if (m === 3) {
         if (sub === 'cubeCut') {
@@ -1061,8 +1097,8 @@ window.addEventListener('DOMContentLoaded', function () {
         }
       }
       ctx.restore();
+      }
     }
-
 
   /* ===== 원본 그대로: 탐구관별 3D 모델 렌더러 ===== */
     // ==================== [탭 1 렌더링: 다면체(기둥·뿔·뿔대) & 정다면체 5종] ====================
@@ -1729,7 +1765,7 @@ window.addEventListener('DOMContentLoaded', function () {
      2.0 셸 연결 (새로 작성한 부분)
      ====================================================================== */
   const arrowOnly = (s) => String(s == null ? '' : s).replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×');
-  const arrow = (v) => (typeof v === 'string' ? arrowOnly(v) : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
+  const arrow = (v) => (typeof v === 'string' ? phoneWords(arrowOnly(v)) : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
   const cv = (s) => APLab.stripEmoji(arrowOnly(s));
   const RENDER = { 1: renderTab1PolyhedraAndPlatonic, 2: renderTab2PolyhedraFolding, 3: renderTab3RevolutionAndSections, 4: renderTab4RevolutionNetsAndShortest };
   const TABS = ["다면체(기둥·뿔·뿔대) & 정다면체", "정육면체·다면체 전개도 폴딩", "회전체 360° 생성 & 단면 슬라이서", "회전체 전개도 & 개미 최단거리"];
@@ -1782,6 +1818,10 @@ window.addEventListener('DOMContentLoaded', function () {
   const LENS_OFF = Object.fromEntries(NOAUX.map((k) => [k, ['aux']]));
   LENS_OFF.revSection.push('section');
   LENS_OFF.cubeCut.push('section');
+  // [2.0 수정] 정팔면체 장면의 2D 상자는 원본에 글자 한 줄뿐이라(그림 없음) 상자를 두지 않습니다. 계단형 장면은 2-2-2 전개도를 그려 채웠습니다.
+  const NO_BOX = new Set(['octaNet']);
+  // 휴대폰에서 작아지던 장면: 진행도(펼침↔감김)에 따라 크기 차이가 커서, 지금 진행도 근처로만 크기를 맞춥니다.
+  const FIT_CUR = new Set(['cylRoll', 'coneSector', 'antShortest']);
 
   function sceneOf(m, it) {
     const id = it.id;
@@ -1791,6 +1831,7 @@ window.addEventListener('DOMContentLoaded', function () {
       question: QUESTIONS[m - 1],
       notesTitle: '절대 속지 않는 공간지각 킬러 포인트!',
       enter: (s) => {
+        s.view2d = false;
         s.anim = m === 2 || m === 4 ? 0.35 : 0.85;
         s.playing = false;
         s.antActive = false;
@@ -1805,7 +1846,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!NO_D1.has(id)) [3, 4, 5, 6].forEach((v) => out.push({ group: cv(spec.dim1Name), label: `${spec.nPrefix || ''}${v}`, color: 'sky', apply: (st) => { st.n = v; st.part = null; }, on: (st) => st.n === v }));
         if (!NO_D2.has(id)) [3, 4, 5, 6].forEach((v) => out.push({ group: cv(spec.dim2Name), label: `${spec.hPrefix || ''}${v}`, color: 'rose', apply: (st) => { st.h = v; st.part = null; }, on: (st) => st.h === v }));
         LENSES.filter(([k]) => !(LENS_OFF[id] || []).includes(k)).forEach(([k, lbl]) => out.push({ group: '관찰 렌즈', label: lbl, apply: (st) => { st.lens = k; st.part = null; }, on: (st) => st.lens === k }));
-        if (!B || B._area().w >= 640) {
+        if (!NO_BOX.has(id) && !isNarrow()) {
           out.push({ group: '2D 단면·전개도 뷰', label: '켜기', apply: (st) => { st.dual = true; }, on: (st) => st.dual !== false });
           out.push({ group: '2D 단면·전개도 뷰', label: '끄기', apply: (st) => { st.dual = false; }, on: (st) => st.dual === false });
         }
@@ -1831,8 +1872,17 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       draw: (b, s) => {
         B = b;
+        if (!b.thumb) MAINB = b;
         ctx = b.__legacyCtx || (b.__legacyCtx = makeCtx(b));
         sync(s, m, id);
+        const narrow = !b.thumb && b._area().w < 640 && !NO_BOX.has(id);
+        if (BTN && !b.thumb) {
+          BTN.hidden = !narrow;
+          BTN.textContent = s.view2d ? '3D 그림으로 돌아가기' : '2D 설계도 보기';
+        }
+        if (narrow && s.view2d) { draw2DDualOverlay(true); return; }
+        // [2.0 수정] 개미 최단거리: 좁은 화면에서는 면 이름표(윗밑면·아랫밑면·가로=2πr)가 개미 이름표와 겹쳐 읽히지 않아 접어 둡니다(같은 내용은 아래 띠와 2D 설계도에 있음).
+        HIDE_FACE_LABELS = id === 'antShortest' && !b.thumb && b._area().w < 640;
         setView(b, m, id, s);
         if (s.grid && !b.thumb) drawFloorGrid();
         RENDER[m]();
@@ -1871,7 +1921,7 @@ window.addEventListener('DOMContentLoaded', function () {
       yaw: { value: -32, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전', format: (v) => `${Math.round(v)}°` },
       pitch: { value: 28, min: 5, max: 88, step: 1, color: 'muted', label: '위아래 기울기', format: (v) => `${Math.round(v)}°` }
     },
-    state: { lens: 'all', dual: true, antActive: false, antProg: 0 },
+    state: { lens: 'all', dual: true, view2d: false, antActive: false, antProg: 0 },
     persist: ['lens', 'dual'],
     tick: (s, dt) => {
       let again = false;
@@ -1881,6 +1931,18 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     groups
   });
+
+  // 좁은 화면 전용: 무대 오른쪽 위의 단추(넓은 화면에서는 숨김)
+  const lab = window.lab;
+  if (lab) {
+    BTN = document.createElement('button');
+    BTN.type = 'button';
+    BTN.className = 'apl-btn sm g7-2d-btn';
+    BTN.hidden = true;
+    BTN.addEventListener('click', () => { lab.s.view2d = !lab.s.view2d; lab.invalidate(true); });
+    lab.ui.canvasWrap.append(BTN);
+    lab.invalidate(true);
+  }
 });
 </script>
 </body>
