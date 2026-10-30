@@ -252,7 +252,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 O는 AC, BC의 수직이등분선의 교점이다. OD⊥BC, OE⊥AC와 BD=DC, AE=EC를 표시하고 OA=OB=OC를 같은 눈금으로 나타냈으며, 삼각형 AOB를 칠하고 AB의 중점에서 O로 이은 수선을 보였다.",
+    "solutionImageCaption": "O가 AC, BC의 수직이등분선 위에 있으므로 OA=OC, OB=OC이고 OA=OB=OC이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -285,7 +289,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I와 외심 O를 나타낸 그림. ∠A=x(80°), ∠BIC=130°, ∠BOC=y(160°)를 표시하고 OA=OB=OC를 같은 눈금으로, ∠OAB=p와 ∠OAC=q를 호로 나타냈다.",
+    "solutionImageCaption": "내심 I에서 ∠BIC=130°이고 외심 O에서 OA=OB=OC이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -318,7 +326,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 외심 O에서 세 꼭짓점 A, B, C로 이은 반지름 OA=OB=OC를 같은 눈금으로 나타내고, 세 중심각 96°, 144°, 120°와 꼭짓점 C에서 ∠ACO=30°, ∠OCB=18°를 표시한 그림.",
+    "solutionImageCaption": "중심각의 비 4:6:5에서 세 중심각을 구하고 꼭짓점 C의 두 밑각을 나타낸 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -351,7 +363,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F를 표시한 그림. AD=AF=4cm, BD=BE=5cm를 같은 눈금으로 나타내고 CE=CF를 x로 나타냈다.",
+    "solutionImageCaption": "접점에서 꼭짓점까지의 길이가 같다: AF=AD=4cm, BE=BD=5cm, CE=CF=x.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -384,7 +400,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 ∠A의 이등분선 AD를 긋고 D에서 AB에 내린 수선의 발 H를 표시한 그림. DH=DC=6cm를 같은 눈금으로 나타내고 AB=24cm를 밑변으로 하는 삼각형 ABD를 칠했다.",
+    "solutionImageCaption": "D에서 AB에 내린 수선 DH는 DC와 같은 6cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -450,7 +470,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 ∠C=108°와 DE가 ∠D를 이등분한 ∠ADE=∠EDC=36°, AE⊥DE인 직각 표시, 평행한 변의 화살표, 구하는 ∠DAE=x를 나타낸 그림.",
+    "solutionImageCaption": "∠D=72°를 DE가 이등분하여 ∠ADE=36°이고 ∠AED=90°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
