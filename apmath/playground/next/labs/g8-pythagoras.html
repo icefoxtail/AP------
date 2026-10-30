@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>피타고라스 정리 · AP Math 실험실</title>
-<meta name="description" content="중2 피타고라스 정리: 세 정사각형 넓이, 4대 증명, 피타고라스 수, 예각·직각·둔각 판별, 제곱합 공식, 정삼각형·반원·초승달, 빗변 수선과 소 공식, 종이접기·최단거리까지 8개 탐구관 40개 장면">
+<meta name="description" content="중2 피타고라스 정리: 세 정사각형 넓이, 증명 네 가지, 피타고라스 수, 예각·직각·둔각 판별, 제곱합 관계식, 정삼각형·반원·초승달 모양의 넓이, 빗변에 내린 수선과 넓이, 종이접기·최단거리까지 8개 탐구관 40개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -123,57 +123,57 @@ window.addEventListener('DOMContentLoaded', function () {
     const SUB_MENUS = {
       1: [
         { id: 'std345', label: '🟦 기본 세 정사각형 (a²+b²=c²)' },
-        { id: 'findLeg', label: '➖ 직각변 역산 (b²=c²-a²)' },
+        { id: 'findLeg', label: '➖ 직각변 구하기 (b²=c²-a²)' },
         { id: 'rotated', label: '🔄 뒤집힌 삼각형 빗변 찾기' },
         { id: 'tiltedGrid', label: '💠 모눈 위 기울어진 정사각형 넓이' },
-        { id: 'chainTri', label: '🪜 이어 붙인 연쇄 직각삼각형' }
+        { id: 'chainTri', label: '🪜 이어 붙인 두 직각삼각형' }
       ],
       2: [
-        { id: 'euclid', label: '🌪️ 유클리드 풍차 증명 (연속 5단계!)' },
-        { id: 'bhaskaraOut', label: '🧩 조비산경 외접 정사각형 퍼즐' },
-        { id: 'bhaskaraIn', label: '🎯 바스카라 내접 정사각형 (b-a)²' },
-        { id: 'garfield', label: '📐 가필드 사다리꼴 증명 (½c²)' },
+        { id: 'euclid', label: '🌪️ 정사각형의 넓이를 직사각형으로 옮기는 증명 (단계별 연속 재생)' },
+        { id: 'bhaskaraOut', label: '🧩 직각삼각형 4개를 큰 정사각형 안에서 옮겨 놓는 증명' },
+        { id: 'bhaskaraIn', label: '🎯 직각삼각형 4개로 둘러싼 정사각형의 증명 (가운데 (b-a)²)' },
+        { id: 'garfield', label: '📐 사다리꼴의 넓이를 이용한 증명 (½c²)' },
         { id: 'simProof', label: '🔗 수선 닮음 증명 (c²=cx+cy)' }
       ],
       3: [
-        { id: 'fam345', label: '🥇 1순위 (3 : 4 : 5) × k배 족보' },
-        { id: 'fam51213', label: '🥈 2순위 (5 : 12 : 13) × k배 족보' },
-        { id: 'fam81517', label: '🥉 3순위 (8 : 15 : 17) × k배 족보' },
-        { id: 'fam72425', label: '🏅 4순위 (7 : 24 : 25) × k배 족보' },
-        { id: 'trap34x', label: '⚠️ [함정 1위] (3, 4, x)에서 4가 빗변일 때!' }
+        { id: 'fam345', label: '🥇 (3 : 4 : 5)의 k배' },
+        { id: 'fam51213', label: '🥈 (5 : 12 : 13)의 k배' },
+        { id: 'fam81517', label: '🥉 (8 : 15 : 17)의 k배' },
+        { id: 'fam72425', label: '🏅 (7 : 24 : 25)의 k배' },
+        { id: 'trap34x', label: '⚠️ [함정] (3, 4, x)에서 4가 빗변일 때' }
       ],
       4: [
-        { id: 'hinge', label: '🕹️ 경첩 각도(∠C) 마우스 직접 조작!' },
+        { id: 'hinge', label: '🕹️ ∠C의 크기 바꿔 보기 (꼭짓점 A 끌기)' },
         { id: 'acuteEx', label: '🔹 세 변 (5, 6, 7) 예각 판별' },
         { id: 'obtuseEx', label: '🔸 세 변 (4, 5, 7) 둔각 판별' },
-        { id: 'obtuseRange', label: '📏 [필수] 둔각삼각형 자연수 x 범위 (5<x<7)' },
-        { id: 'acuteRange', label: '🔥 [심화] 가장 긴 변 미정일 때 예각 범위' }
+        { id: 'obtuseRange', label: '📏 둔각삼각형이 되는 자연수 x의 범위 (5<x<7)' },
+        { id: 'acuteRange', label: '🔥 가장 긴 변이 정해지지 않았을 때 예각이 되는 범위' }
       ],
       5: [
-        { id: 'rightCross', label: '❌ [공식1] 직각삼각형 속 X자 제곱합' },
-        { id: 'orthoQuad', label: '➕ [공식2] 대각선 직교 사각형 (AB²+CD²)' },
-        { id: 'rectPointP', label: '👆 [공식3] 직사각형 속 점 P 드래그!' },
-        { id: 'orthoSquares', label: '⬛ 직교 사각형 네 변 위 정사각형 합' },
-        { id: 'orthoSemis', label: '🌓 직교 사각형 네 변 위 반원 넓이 합' }
+        { id: 'rightCross', label: '❌ [관계식 1] 직각삼각형 속 X자 모양 선분의 제곱합' },
+        { id: 'orthoQuad', label: '➕ [관계식 2] 대각선이 수직인 사각형 (AB²+CD²)' },
+        { id: 'rectPointP', label: '👆 [관계식 3] 직사각형 속 점 P 움직이기' },
+        { id: 'orthoSquares', label: '⬛ 대각선이 수직인 사각형의 네 변 위 정사각형 넓이 합' },
+        { id: 'orthoSemis', label: '🌓 대각선이 수직인 사각형의 네 변 위 반원 넓이 합' }
       ],
       6: [
-        { id: 'hippoLune', label: '🌙 [필수] 히포크라테스의 초승달 (반원 접기!)' },
+        { id: 'hippoLune', label: '🌙 반원으로 둘러싸인 초승달 모양의 넓이 (반원 접기)' },
         { id: 'isoLune', label: '🌓 직각이등변삼각형 초승달 1개 넓이' },
         { id: 'equilateral', label: '🔺 세 변 위 정삼각형 넓이 (S₁+S₂=S₃)' },
         { id: 'semicircles', label: '🔵 세 변을 지름으로 하는 반원 넓이' },
-        { id: 'findHypSemi', label: '🔍 두 반원 넓이 합으로 빗변 역추적' }
+        { id: 'findHypSemi', label: '🔍 두 반원의 넓이의 합으로 빗변의 길이 구하기' }
       ],
       7: [
-        { id: 'allFour', label: '👑 수선 공식 4형제 & 닮음 분리 종합' },
-        { id: 'leftWing', label: '① 왼쪽 날개 (AB² = BH × BC)' },
-        { id: 'rightWing', label: '② 오른쪽 날개 (AC² = CH × CB)' },
-        { id: 'centerPillar', label: '③ 가운데 기둥 (AH² = BH × CH)' },
-        { id: 'cowArea', label: '④ 소(牛) 넓이 공식 (AB·AC = BC·AH)' }
+        { id: 'allFour', label: '👑 빗변에 내린 수선의 관계식 4가지 & 닮음 삼각형 분리' },
+        { id: 'leftWing', label: '① 직각변 AB의 제곱 (AB² = BH × BC)' },
+        { id: 'rightWing', label: '② 직각변 AC의 제곱 (AC² = CH × CB)' },
+        { id: 'centerPillar', label: '③ 수선 AH의 제곱 (AH² = BH × CH)' },
+        { id: 'cowArea', label: '④ 직각삼각형의 넓이 (AB·AC = BC·AH)' }
       ],
       8: [
-        { id: 'rectFold', label: '📄 [빈출 1위] 직사각형 꼭짓점 D 접기' },
+        { id: 'rectFold', label: '📄 직사각형의 꼭짓점 D 접기' },
         { id: 'triFold', label: '📐 직각삼각형 빗변 수직이등분 접기' },
-        { id: 'reflection', label: '🪞 직선 반사 최단거리 (점 P 드래그!)' },
+        { id: 'reflection', label: '🪞 직선 위의 점을 지나는 최단거리 (점 P 움직이기)' },
         { id: 'boxNet', label: '📦 직육면체 겉면 최단거리 (전개도 펼치기)' },
         { id: 'cylinderNet', label: '🥫 원기둥 옆면 실 감기 최단거리' }
       ]
@@ -391,10 +391,10 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 1) {
         if (sub === 'findLeg') {
           return {
-            badge: `탐구 1-B · [직각변 역산] 빗변(${c})과 한 직각변(${a})으로 나머지 직각변 b 구하기`,
+            badge: `탐구 1-B · [직각변 구하기] 빗변(${c})과 한 직각변(${a})으로 나머지 직각변 b 구하기`,
             hint: `구하려는 변이 빗변이 아니라 <strong class="text-pink-300">직각변(b)</strong>일 때는 더하지 않고 <strong class="text-amber-300">빗변 정사각형 넓이(${c}²=${c*c})에서 작은 정사각형 넓이(${a}²=${a*a})를 빼야 합니다!</strong>`,
             actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 돌아가기' : '🎬 넓이 차(c² - a² = b²) 블록 비교!',
-            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            p1Title: '직각삼각형의 세 변의 비', p2Title: '배수 ×k',
             parts: [
               { id: 0, name: `🟨 가장 큰 빗변 정사각형 S₃ (c² = ${c}²)`, desc: `90° 직각 맞은편의 전체 기준 넓이`, val: `${c * c}`, color: PCOL.gold, ok: true },
               { id: 1, name: `🟦 빼야 할 작은 정사각형 S₁ (-a² = -${a}²)`, desc: `알고 있는 직각변의 정사각형 넓이 차감(-)`, val: `-${a * a}`, color: PCOL.cyan, ok: false },
@@ -402,30 +402,30 @@ window.addEventListener('DOMContentLoaded', function () {
             ],
             totalRes: `S₂ = S₃(${c * c}) - S₁(${a * a}) = ${b * b}  ➔  b = ${b}`,
             rule: '빗변(90° 맞은편)을 구할 땐 더하고(+), 직각변을 구할 땐 빗변²에서 뺀다(-)!',
-            formulaHTML: `• <strong>피타고라스 역산 공식</strong>: ${tex(`b^2 = c^2 - a^2 = ${c}^2 - ${a}^2 = ${c * c} - ${a * a} = ${b * b} \\implies \\mathbf{b = ${b}}`)}`,
-            notes: `• <strong>[단골 실수 방지]</strong>: 숫자가 2개 보인다고 무조건 제곱해서 더하면 안 됩니다! 먼저 $90^\\circ$ 직각 기호 맞은편의 <strong>빗변(가장 긴 변)</strong>에 동그라미를 치세요.`
+            formulaHTML: `• <strong>직각변을 구하는 식</strong>: ${tex(`b^2 = c^2 - a^2 = ${c}^2 - ${a}^2 = ${c * c} - ${a * a} = ${b * b} \\implies \\mathbf{b = ${b}}`)}`,
+            notes: `• <strong>[실수 주의]</strong>: 숫자가 2개 보인다고 무조건 제곱해서 더하면 안 됩니다! 먼저 $90^\\circ$ 직각 기호 맞은편의 <strong>빗변(가장 긴 변)</strong>에 동그라미를 치세요.`
           };
         }
         if (sub === 'rotated') {
           return {
             badge: `탐구 1-C · 뒤집힌 직각삼각형에서 빗변(90° 맞은편 대변) 정확히 찾기`,
             hint: `직각 꼭짓점 $A(90^\\circ)$가 위쪽에 있을 때는 <strong class="text-amber-300">바닥에 놓인 변 BC가 밑변이 아니라 빗변</strong>입니다! 슬라이더로 삼각형을 회전시켜 보세요.`,
-            actionTxt: state.fold > 0.5 ? '🎬 원래 방향으로 돌리기' : '🎬 삼각형 회전 시뮬레이션!',
-            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            actionTxt: state.fold > 0.5 ? '🎬 원래 방향으로 돌리기' : '🎬 삼각형을 돌려 보기!',
+            p1Title: '직각삼각형의 세 변의 비', p2Title: '배수 ×k',
             parts: [
               { id: 0, name: `🟦 왼쪽 직각변 정사각형 S₁ (AB² = ${a}²)`, desc: `직각 ∠A를 낀 첫 번째 변`, val: `${a * a}`, color: PCOL.cyan, ok: true },
               { id: 1, name: `🟩 오른쪽 직각변 정사각형 S₂ (AC² = ${b}²)`, desc: `직각 ∠A를 낀 두 번째 변`, val: `+${b * b}`, color: PCOL.green, ok: true },
-              { id: 2, name: `🟨 바닥에 놓인 빗변 정사각형 S₃ (BC² = ${c}²)`, desc: `∠A=90° 맞은편 변이 무조건 대장(빗변)!`, val: `=${c * c} (BC=${c})`, color: PCOL.gold, ok: true }
+              { id: 2, name: `🟨 바닥에 놓인 빗변 정사각형 S₃ (BC² = ${c}²)`, desc: `∠A=90° 맞은편 변이 빗변!`, val: `=${c * c} (BC=${c})`, color: PCOL.gold, ok: true }
             ],
             totalRes: `∠A = 90° 맞은편 빗변 BC = ${c} (BC² = ${a * a} + ${b * b} = ${c * c})`,
-            rule: '빗변 찾기 절대 법칙: 90° 직각 네모 모서리가 화살표처럼 가리키는 맞은편 변!',
+            rule: '빗변 찾기: 직각 기호(∟)의 맞은편에 있는 변이 빗변!',
             formulaHTML: `• ${tex(`\\angle A = 90^\\circ \\implies \\overline{BC}^2 = \\overline{AB}^2 + \\overline{AC}^2 = ${a}^2 + ${b}^2 = ${c * c} \\implies \\mathbf{\\overline{BC} = ${c}}`)}`,
-            notes: `• 도형이 어떻게 돌아가 있든 눈에 보이는 위치(바닥/옆)에 속지 마세요! <strong>직각($90^\\circ$)과 마주보는 변 = 무조건 빗변</strong>입니다.`
+            notes: `• 도형이 어떻게 돌아가 있든 눈에 보이는 위치(바닥/옆)에 속지 마세요! <strong>직각($90^\\circ$)과 마주보는 변 = 빗변</strong>입니다.`
           };
         }
         if (sub === 'tiltedGrid') {
           return {
-            badge: `탐구 1-D · 모눈종이 위 기울어진 정사각형 ABCD의 넓이 1초 암산법`,
+            badge: `탐구 1-D · 모눈종이 위 기울어진 정사각형 ABCD의 넓이 구하기`,
             hint: `모눈 칸을 비스듬히 가로지르는 선분 $AB$는 <strong class="text-sky-300">가로 3칸, 세로 2칸인 직각삼각형의 빗변</strong>입니다! 따라서 정사각형 넓이(${tex('AB^2')})는 <strong class="text-amber-300">3² + 2² = 13</strong>입니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 바깥 5×5 정사각형과 함께 보기' : '🎬 귀퉁이 삼각형 4개 분리 시연!',
             p1Title: '격자 구성(3칸·2칸)', p2Title: '비교 방식',
@@ -442,17 +442,17 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         if (sub === 'chainTri') {
           return {
-            badge: `탐구 1-E · 징검다리처럼 이어 붙인 두 직각삼각형 연쇄 풀이`,
-            hint: `첫 번째 직각삼각형 $\\triangle ABC(3\\text{-}4\\text{-}5)$에서 구한 빗변 <strong class="text-emerald-300">AC = 5</strong>가 두 번째 직각삼각형 $\\triangle ACD(5\\text{-}12\\text{-}13)$의 직각변이 되어 <strong class="text-amber-300">AD = 13</strong>이 도미노처럼 풀립니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 전체 도형 보기' : '🎬 1단계 ➔ 2단계 연쇄 강조!',
-            p1Title: '연쇄 비율', p2Title: '배수 스케일 ×k',
+            badge: `탐구 1-E · 이어 붙인 두 직각삼각형으로 길이 구하기`,
+            hint: `첫 번째 직각삼각형 $\\triangle ABC(3\\text{-}4\\text{-}5)$에서 구한 빗변 <strong class="text-emerald-300">AC = 5</strong>가 두 번째 직각삼각형 $\\triangle ACD(5\\text{-}12\\text{-}13)$의 직각변이 되어 <strong class="text-amber-300">AD = 13</strong>이 차례로 구해집니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 전체 도형 보기' : '🎬 1단계 ➔ 2단계 차례로 강조!',
+            p1Title: '두 삼각형의 변의 비', p2Title: '배수 ×k',
             parts: [
               { id: 0, name: `🟦 1단계 직각삼각형 △ABC (직각변 ${3*k}, ${4*k})`, desc: `AC² = ${3*k}² + ${4*k}² = ${(5*k)**2} ➔ 공통변 AC = ${5*k}`, val: `AC = ${5 * k}`, color: PCOL.cyan, ok: true },
-              { id: 1, name: `🟩 징검다리 공통변 AC = ${5*k}`, desc: `△ABC의 빗변이자 △ACD의 직각변 역할!`, val: `AC² = ${(5 * k) ** 2}`, color: PCOL.green, ok: true },
+              { id: 1, name: `🟩 공통변 AC = ${5*k}`, desc: `△ABC의 빗변이자 △ACD의 직각변 역할!`, val: `AC² = ${(5 * k) ** 2}`, color: PCOL.green, ok: true },
               { id: 2, name: `🟨 2단계 직각삼각형 △ACD (직각변 ${5*k}, ${12*k})`, desc: `AD² = ${5*k}² + ${12*k}² = ${(13*k)**2} ➔ 최종 빗변 AD = ${13*k}!`, val: `AD = ${13 * k}`, color: PCOL.gold, ok: true }
             ],
             totalRes: `1단계 AC = ${5 * k}  ➔  2단계 최종 빗변 AD = ${13 * k}`,
-            rule: '연쇄 직각삼각형: AD² = AB² + BC² + CD² (한 번에 제곱합 가능!)',
+            rule: '이어 붙인 직각삼각형: AD² = AB² + BC² + CD² (한 번에 제곱합 가능!)',
             formulaHTML: `• ${tex(`\\overline{AD}^2 = \\overline{AC}^2 + \\overline{CD}^2 = (\\overline{AB}^2 + \\overline{BC}^2) + \\overline{CD}^2 = ${3*k}^2 + ${4*k}^2 + ${12*k}^2 = ${(13*k)**2} \\implies \\mathbf{\\overline{AD} = ${13*k}}`)}`,
             notes: `• 만약 중간 공통변 $AC$가 자연수로 딱 떨어지지 않더라도 당황하지 마세요! 2단계 식에 $AC$ 대신 <strong>$AC^2$ 값을 그대로 대입</strong>하면 됩니다.`
           };
@@ -460,9 +460,9 @@ window.addEventListener('DOMContentLoaded', function () {
         // std345 기본
         return {
           badge: `탐구 1-A · 직각삼각형 세 변 위 정사각형 넓이 법칙 (S₁ + S₂ = S₃ ⟺ a² + b² = c²)`,
-          hint: `우측의 <strong class="text-sky-300">직각삼각형 족보 칩</strong>과 <strong class="text-pink-300">배수 칩</strong>을 눌러보세요! 직각을 낀 두 변 위 정사각형 넓이 합(<strong class="text-sky-300">${a*a}</strong> + <strong class="text-emerald-300">${b*b}</strong>)은 언제나 빗변 위 큰 정사각형 넓이(<strong class="text-amber-300">${c*c}</strong>)와 일치합니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 보기' : '🎬 넓이 블록 합체 비교!',
-          p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+          hint: `오른쪽의 <strong class="text-sky-300">직각삼각형의 세 변의 비 버튼</strong>과 <strong class="text-pink-300">배수 버튼</strong>을 눌러 보세요! 직각을 낀 두 변 위 정사각형 넓이 합(<strong class="text-sky-300">${a*a}</strong> + <strong class="text-emerald-300">${b*b}</strong>)은 언제나 빗변 위 큰 정사각형 넓이(<strong class="text-amber-300">${c*c}</strong>)와 일치합니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 보기' : '🎬 넓이 블록을 합쳐 비교!',
+          p1Title: '직각삼각형의 세 변의 비', p2Title: '배수 ×k',
           parts: [
             { id: 0, name: `🟦 작은 직각변 위 정사각형 S₁ (a² = ${a}²)`, desc: `한 변 a = ${a} 인 정사각형 모눈 타일 개수`, val: `S₁ = ${a * a}`, color: PCOL.cyan, ok: true },
             { id: 1, name: `🟩 긴 직각변 위 정사각형 S₂ (b² = ${b}²)`, desc: `한 변 b = ${b} 인 정사각형 모눈 타일 개수`, val: `+S₂ = ${b * b}`, color: PCOL.green, ok: true },
@@ -471,96 +471,96 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: `${a}²(${a * a}) + ${b}²(${b * b}) = ${c}²(${c * c})  [S₁ + S₂ = S₃]`,
           rule: '피타고라스 정리: 직각삼각형에서 (직각변 a)² + (직각변 b)² = (빗변 c)²',
           formulaHTML: `• <strong>넓이 해석</strong>: ${tex(`S_1 + S_2 = S_3 \\iff a^2 + b^2 = c^2`)}<br/>• <strong>현재 수치</strong>: ${tex(`${a}^2 + ${b}^2 = ${a * a} + ${b * b} = ${c * c} = ${c}^2`)}`,
-          notes: `• <strong>[가장 흔한 오개념]</strong>: 변의 길이를 그냥 더하면($a+b > c$) 절대 같지 않습니다! 반드시 각 변을 한 변으로 하는 <strong>정사각형의 넓이(제곱)</strong>를 더해야 같아집니다.`
+          notes: `• <strong>[흔한 실수]</strong>: 변의 길이를 그냥 더하면($a+b > c$) 절대 같지 않습니다! 반드시 각 변을 한 변으로 하는 <strong>정사각형의 넓이(제곱)</strong>를 더해야 같아집니다.`
         };
       }
 
       // ==================== [탭 2: 4대 시각적 증명 (유클리드·바스카라·가필드)] ====================
       if (m === 2) {
         if (sub === 'euclid') {
-          const stage = state.fold < 0.34 ? '1구간: 평행선 등적변형 (△FAB = △FBC)' : state.fold < 0.67 ? '2구간: 점 B 중심 90° 회전 SAS 합동 (△FBC ≡ △ABD)' : '3구간: 평행선 등적변형 (△ABD = △HBD ➔ □ABFG = □BDLH!)';
+          const stage = state.fold < 0.34 ? '1구간: 평행선을 이용해 넓이가 같은 삼각형으로 바꾸기 (△FAB = △FBC)' : state.fold < 0.67 ? '2구간: 점 B 중심 90° 회전 SAS 합동 (△FBC ≡ △ABD)' : '3구간: 평행선을 이용해 넓이가 같은 삼각형으로 바꾸기 (△ABD = △HBD ➔ □ABFG = □BDLH!)';
           return {
-            badge: `탐구 2-A · [서술형 1위] 유클리드의 풍차 증명 연속 시연 — ${stage}`,
-            hint: `슬라이더를 0%에서 100%까지 천천히 밀어보세요! <strong class="text-amber-300">① 등적변형(A→C) ➔ ② 점 B 중심 90° 회전 합동 ➔ ③ 등적변형(A→H)</strong>을 거쳐 위쪽 정사각형 넓이가 아래 직사각형으로 그대로 흘러 내려갑니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 처음(△FAB)으로 되감기' : '🎬 유클리드 3단 변신 연속 재생!',
-            p1Title: '유클리드 단계 퀵점프', p2Title: '관찰 포인트',
+            badge: `탐구 2-A · 정사각형의 넓이를 직사각형으로 옮기는 증명 (연속 재생) — ${stage}`,
+            hint: `슬라이더를 0%에서 100%까지 천천히 밀어보세요! <strong class="text-amber-300">① 넓이가 같은 삼각형으로 바꾸기(A→C) ➔ ② 점 B 중심 90° 회전 합동 ➔ ③ 넓이가 같은 삼각형으로 바꾸기(A→H)</strong>를 거쳐 위쪽 정사각형의 넓이가 아래쪽 직사각형으로 그대로 옮겨집니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 처음(△FAB)으로 돌리기' : '🎬 3단계 연속 재생!',
+            p1Title: '단계 바로 가기', p2Title: '살펴볼 점',
             parts: [
               { id: 0, name: `🟦 왼쪽 정사각형 □ABFG = 왼쪽 직사각형 □BDLH`, desc: `AB²(12²=144) = BH(7.2) × BD(20) = 144 일치!`, val: `넓이 = 144`, color: PCOL.cyan, ok: true },
-              { id: 1, name: `🟨 핵심 4총사 삼각형 (모두 넓이 = 72 로 동일!)`, desc: `△FAB = △FBC(등적) ≡ △ABD(SAS합동) = △HBD(등적)`, val: `절반 넓이 = 72`, color: PCOL.gold, ok: true },
+              { id: 1, name: `🟨 넓이가 같은 삼각형 4개 (모두 넓이 = 72)`, desc: `△FAB = △FBC(밑변·높이가 같음) ≡ △ABD(SAS 합동) = △HBD(밑변·높이가 같음)`, val: `절반 넓이 = 72`, color: PCOL.gold, ok: true },
               { id: 2, name: `🟩 오른쪽 정사각형 □ACJI = 오른쪽 직사각형 □HCEL`, desc: `AC²(16²=256) = CH(12.8) × CE(20) = 256 일치!`, val: `넓이 = 256`, color: PCOL.green, ok: true }
             ],
             totalRes: `□ABFG(144) + □ACJI(256) = □BDLH(144) + □HCEL(256) = □BCED(400)`,
-            rule: '유클리드 증명 사슬: △FAB = △FBC(등적) ≡ △ABD(SAS합동) = △HBD(등적)',
+            rule: '넓이가 이어지는 순서: △FAB = △FBC(밑변·높이가 같음) ≡ △ABD(SAS 합동) = △HBD(밑변·높이가 같음)',
             formulaHTML: `• <strong>왜 △FBC ≡ △ABD (SAS 합동) 일까?</strong><br/>&nbsp;&nbsp;① ${tex('\\overline{FB} = \\overline{AB}')} (작은 정사각형 한 변), ② ${tex('\\overline{BC} = \\overline{BD}')} (큰 정사각형 한 변)<br/>&nbsp;&nbsp;③ 끼인각 ${tex('\\angle FBC = 90^\\circ + \\angle ABC = \\angle ABD')} $\\implies$ <strong>점 B 중심 90° 회전 SAS 합동!</strong>`,
-            notes: `• <strong>[시험 100% 출제 질문]</strong>: “다음 중 $\\triangle FAB$와 넓이가 같지 않은 것은?” $\\implies$ <strong>$\\triangle FAB, \\triangle FBC, \\triangle ABD, \\triangle HBD$ (4총사 = 정사각형 넓이의 절반!)</strong> 외의 삼각형을 고르세요!`
+            notes: `• <strong>[문제 예]</strong>: “다음 중 $\\triangle FAB$와 넓이가 같지 않은 것은?” $\\implies$ <strong>$\\triangle FAB, \\triangle FBC, \\triangle ABD, \\triangle HBD$ (넓이가 모두 정사각형 넓이의 절반!)</strong> 외의 삼각형을 고르세요!`
           };
         }
         if (sub === 'bhaskaraOut') {
           return {
-            badge: `탐구 2-B · 조비산경 · 바스카라 외접 정사각형 퍼즐 재배치 증명`,
+            badge: `탐구 2-B · 직각삼각형 4개를 큰 정사각형 안에서 옮겨 놓는 증명`,
             hint: `슬라이더를 오른쪽으로 밀어보세요! 한 변이 $a+b=14$인 큰 정사각형 안의 <strong class="text-sky-300">합동 직각삼각형 4개(넓이 합 96)</strong>가 짝지어 이동하면, 빈 공간 <strong class="text-amber-300">c²(100)이 정확히 a²(36) + b²(64) 두 정사각형으로 나뉩니다!</strong>`,
             actionTxt: state.fold > 0.5 ? '🎬 기울어진 정사각형 c²으로 복원' : '🎬 삼각형 4개 이동 ➔ a² + b² 분리!',
             p1Title: '직각변 (a=6, b=8)', p2Title: '배치 상태',
             parts: [
-              { id: 0, name: `🟨 빈 공간 넓이 불변: c²(100) ➔ a²(36) + b²(64)`, desc: `전체 정사각형(14²=196)에서 삼각형 4개(96)를 뺀 나머지!`, val: `c² = 36+64 = 100`, color: PCOL.gold, ok: true },
+              { id: 0, name: `🟨 빈 공간의 넓이는 변하지 않음: c²(100) ➔ a²(36) + b²(64)`, desc: `전체 정사각형(14²=196)에서 삼각형 4개(96)를 뺀 나머지!`, val: `c² = 36+64 = 100`, color: PCOL.gold, ok: true },
               { id: 1, name: `🟦 합동인 네 귀퉁이 직각삼각형 4개 (6×8÷2 = 24씩)`, desc: `이동해도 4개 넓이 합(4 × 24 = 96)은 그대로 보존됨`, val: `4 × 24 = 96`, color: PCOL.cyan, ok: true },
               { id: 2, name: `🩷 왜 가운데 사각형의 한 내각이 90°일까?`, desc: `● + × = 90° 이므로 180° - (● + ×) = 90° (정사각형!)`, val: `내각 = 90°`, color: PCOL.pink, ok: true }
             ],
             totalRes: `전체 (6+8)² = 196 = 삼각형 4개(96) + 가운데 정사각형 c²(100) ➔ c = 10`,
             rule: '(a + b)² = c² + 4 × (½ab)  ⟺  a² + 2ab + b² = c² + 2ab  ⟺  a² + b² = c²',
-            formulaHTML: `• <strong>대수적 증명</strong>: ${tex(`(a+b)^2 - 4\\left(\\dfrac{1}{2}ab\\right) = (a^2 + 2ab + b^2) - 2ab = a^2 + b^2 = c^2`)}`,
+            formulaHTML: `• <strong>식으로 하는 증명</strong>: ${tex(`(a+b)^2 - 4\\left(\\dfrac{1}{2}ab\\right) = (a^2 + 2ab + b^2) - 2ab = a^2 + b^2 = c^2`)}`,
             notes: `• 가운데 사각형이 마름모가 아니라 <strong>정사각형</strong>인 이유: 네 변의 길이가 $c$로 같고, 한 내각이 $180^\\circ - (\\bullet + \\times) = 180^\\circ - 90^\\circ = 90^\\circ$이기 때문입니다!`
           };
         }
         if (sub === 'bhaskaraIn') {
           return {
-            badge: `탐구 2-C · 바스카라 내접 정사각형 증명 — 가운데 작은 구멍의 한 변은 (b - a)!`,
-            hint: `빗변 $c=10$인 정사각형 안쪽에 직각삼각형($a=6, b=8$) 4개를 바람개비처럼 넣으면, 한가운데 <strong class="text-amber-300">한 변의 길이가 b - a = 8 - 6 = 2 인 작은 정사각형(넓이 4)</strong>이 남습니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 보기' : '🎬 가운데 구멍 (b-a)² 강조!',
-            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            badge: `탐구 2-C · 직각삼각형 4개로 둘러싼 정사각형의 증명 — 가운데 작은 정사각형의 한 변은 (b - a)!`,
+            hint: `빗변 $c=10$인 정사각형 안쪽에 직각삼각형($a=6, b=8$) 4개를 돌려 가며 놓으면, 한가운데 <strong class="text-amber-300">한 변의 길이가 b - a = 8 - 6 = 2 인 작은 정사각형(넓이 4)</strong>이 남습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 보기' : '🎬 가운데 정사각형 (b-a)² 강조!',
+            p1Title: '직각삼각형의 세 변의 비', p2Title: '배수 ×k',
             parts: [
-              { id: 0, name: `🟦 바람개비 합동 직각삼각형 4개 (직각변 ${a}, ${b})`, desc: `4 × (½ × ${a} × ${b}) = ${2 * a * b}`, val: `넓이 합 = ${2 * a * b}`, color: PCOL.cyan, ok: true },
-              { id: 1, name: `🟨 한가운데 작은 정사각형 구멍 (한 변 = b - a = ${b - a})`, desc: `(${b} - ${a})² = ${b - a}² = ${(b - a) ** 2}`, val: `구멍 넓이 = ${(b - a) ** 2}`, color: PCOL.gold, ok: true },
+              { id: 0, name: `🟦 합동인 직각삼각형 4개 (직각변 ${a}, ${b})`, desc: `4 × (½ × ${a} × ${b}) = ${2 * a * b}`, val: `넓이 합 = ${2 * a * b}`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🟨 한가운데 작은 정사각형 (한 변 = b - a = ${b - a})`, desc: `(${b} - ${a})² = ${b - a}² = ${(b - a) ** 2}`, val: `구멍 넓이 = ${(b - a) ** 2}`, color: PCOL.gold, ok: true },
               { id: 2, name: `🟩 바깥 전체 정사각형 (한 변 c = ${c})`, desc: `${2 * a * b} + ${(b - a) ** 2} = ${c * c} = ${c}² 완벽 일치!`, val: `전체 c² = ${c * c}`, color: PCOL.green, ok: true }
             ],
-            totalRes: `바깥 정사각형 c²(${c * c}) = 삼각형 4개(${2 * a * b}) + 가운데 구멍 (${b}-${a})²(${(b - a) ** 2})`,
-            rule: '바스카라 내접 공식: c² = 4 × (½ab) + (b - a)² = 2ab + (b² - 2ab + a²) = a² + b²',
+            totalRes: `바깥 정사각형 c²(${c * c}) = 삼각형 4개(${2 * a * b}) + 가운데 정사각형 (${b}-${a})²(${(b - a) ** 2})`,
+            rule: '넓이로 나타낸 식: c² = 4 × (½ab) + (b - a)² = 2ab + (b² - 2ab + a²) = a² + b²',
             formulaHTML: `• <strong>가운데 작은 정사각형 한 변의 길이</strong> = (긴 직각변 $b$) - (짧은 직각변 $a$) = <strong>${tex(`${b} - ${a} = ${b - a}`)}</strong>`,
-            notes: `• 시험에서 “가운데 작은 정사각형의 넓이는?”을 물을 때 그림 눈대중으로 찍지 말고 반드시 <strong>$(b - a)^2 = (${b} - ${a})^2 = ${(b - a) ** 2}$</strong>으로 계산하세요!`
+            notes: `• 시험에서 “가운데 작은 정사각형의 넓이는?”을 물을 때 그림을 눈으로 어림하지 말고 반드시 <strong>$(b - a)^2 = (${b} - ${a})^2 = ${(b - a) ** 2}$</strong>으로 계산하세요!`
           };
         }
         if (sub === 'garfield') {
           return {
-            badge: `탐구 2-D · 가필드(미 제20대 대통령)의 사다리꼴 넓이 증명`,
+            badge: `탐구 2-D · 사다리꼴의 넓이를 이용한 증명`,
             hint: `합동인 두 직각삼각형($a=6, b=8$)을 일직선 위에 세워 사다리꼴을 만들면, 가운데 끼인 $\\triangle ABE$는 <strong class="text-amber-300">∠AEB = 90°인 직각이등변삼각형(넓이 ½c² = 50)</strong>이 됩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 기본 사다리꼴 보기' : '🎬 가운데 ∠AEB = 90° 직각이등변 강조!',
-            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            p1Title: '직각삼각형의 세 변의 비', p2Title: '배수 ×k',
             parts: [
               { id: 0, name: `🟦 양옆 합동 직각삼각형 2개 (△BCE + △EDA)`, desc: `(½ × ${a} × ${b}) × 2개 = ${a * b}`, val: `2개 합 = ${a * b}`, color: PCOL.cyan, ok: true },
               { id: 1, name: `🟨 가운데 직각이등변삼각형 △ABE (∠AEB = 90°!)`, desc: `½ × c × c = ½ × ${c}² = ${(c * c) / 2}`, val: `½c² = ${(c * c) / 2}`, color: PCOL.gold, ok: true },
               { id: 2, name: `🟩 사다리꼴 전체 넓이: ½ × (윗변+아랫변) × 높이`, desc: `½ × (${a}+${b}) × (${a}+${b}) = ${((a + b) ** 2) / 2}`, val: `전체 = ${((a + b) ** 2) / 2}`, color: PCOL.green, ok: true }
             ],
             totalRes: `사다리꼴 넓이(${((a + b) ** 2) / 2}) = 양옆 삼각형(${a * b}) + 가운데 ½c²(${(c * c) / 2}) ➔ c = ${c}`,
-            rule: '가필드 사다리꼴 = 조비산경 외접 정사각형을 대각선으로 딱 절반 자른 도형!',
+            rule: '이 사다리꼴은 한 변이 a+b인 정사각형을 대각선으로 반으로 자른 도형이다!',
             formulaHTML: `• ${tex(`\\dfrac{1}{2}(a+b)^2 = 2\\left(\\dfrac{1}{2}ab\\right) + \\dfrac{1}{2}c^2 \\implies a^2 + 2ab + b^2 = 2ab + c^2 \\implies \\mathbf{a^2 + b^2 = c^2}`)}`,
             notes: `• 평각 $180^\\circ$에서 $\\bullet + \\times = 90^\\circ$를 빼면 가운데 끼인각 $\\angle AEB = 90^\\circ$가 되어 $\\triangle ABE$는 항상 <strong>직각이등변삼각형</strong>입니다!`
           };
         }
         // simProof
         return {
-          badge: `탐구 2-E · 직각삼각형 빗변 수선과 닮음비(사영 정리)를 이용한 2줄 대수 증명`,
+          badge: `탐구 2-E · 직각삼각형의 빗변에 내린 수선과 닮음을 이용한 증명 (식 2개)`,
           hint: `직각 꼭짓점 $A$에서 빗변 $BC$에 내린 수선 $AH$에 의해 <strong class="text-sky-300">AB² = BH·BC</strong>이고 <strong class="text-emerald-300">AC² = CH·BC</strong>입니다. 두 식을 더하면 분배법칙으로 단번에 증명됩니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 보기' : '🎬 왼쪽 + 오른쪽 합체 시연!',
-          p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+          actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 보기' : '🎬 왼쪽 + 오른쪽 식 합치기!',
+          p1Title: '직각삼각형의 세 변의 비', p2Title: '배수 ×k',
           parts: [
-            { id: 0, name: `🟦 왼쪽 닮음식: AB² = BH × BC`, desc: `△ABC ∽ △HBA (AA 닮음) 비례식 변형`, val: `AB² = 144`, color: PCOL.cyan, ok: true },
-            { id: 1, name: `🟩 오른쪽 닮음식: AC² = CH × BC`, desc: `△ABC ∽ △HAC (AA 닮음) 비례식 변형`, val: `+AC² = 256`, color: PCOL.green, ok: true },
+            { id: 0, name: `🟦 닮음으로 얻은 식 ①: AB² = BH × BC`, desc: `△ABC ∽ △HBA (AA 닮음) 비례식 변형`, val: `AB² = 144`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `🟩 닮음으로 얻은 식 ②: AC² = CH × BC`, desc: `△ABC ∽ △HAC (AA 닮음) 비례식 변형`, val: `+AC² = 256`, color: PCOL.green, ok: true },
             { id: 2, name: `🟨 두 식의 합: AB² + AC² = (BH + CH) × BC = BC²!`, desc: `BH(7.2) + CH(12.8) = BC(20) 이므로 20 × 20 = 400!`, val: `=BC² (400)`, color: PCOL.gold, ok: true }
           ],
           totalRes: `AB²(144) + AC²(256) = (BH + CH) × BC = BC × BC = BC²(400)`,
-          rule: '유클리드 풍차 증명의 기하학적 넓이 분할과 100% 동일한 대수적 표현!',
+          rule: '정사각형의 넓이를 직사각형으로 옮겨 나눈 앞의 증명(탐구 2-A)을 식으로 나타낸 것과 같다!',
           formulaHTML: `• ${tex(`\\overline{AB}^2 + \\overline{AC}^2 = \\overline{BH}\\cdot\\overline{BC} + \\overline{CH}\\cdot\\overline{BC} = (\\overline{BH}+\\overline{CH})\\overline{BC} = \\overline{BC}^2`)}`,
-          notes: `• 이 증명은 유클리드 풍차 증명에서 아래쪽 큰 정사각형 $BC^2$이 수선 $AH$의 연장선에 의해 두 직사각형($BH\\cdot BC$와 $CH\\cdot BC$)으로 나뉘는 것과 똑같은 원리입니다!`
+          notes: `• 이 증명은 앞의 넓이를 옮기는 증명(탐구 2-A)에서 아래쪽 큰 정사각형 $BC^2$이 수선 $AH$의 연장선에 의해 두 직사각형($BH\\cdot BC$와 $CH\\cdot BC$)으로 나뉘는 것과 똑같은 원리입니다!`
         };
       }
 
@@ -568,34 +568,34 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 3) {
         if (sub === 'trap34x') {
           return {
-            badge: `탐구 3-E · ⚠️ [시험 오답 1위 함정] 세 변이 (3, 4, x)인데 누가 빗변인지 안 알려줄 때!`,
-            hint: `문제에 $3$과 $4$가 보인다고 무조건 $x = 5$라고 쓰면 감점됩니다! <strong class="text-emerald-300">① x가 빗변일 때(x²=3²+4²=25)</strong>와 <strong class="text-rose-400">② 4가 가장 긴 빗변일 때(x²=4²-3²=7)</strong> 두 가지를 모두 구해야 합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 두 경우 나란히 비교' : '🎬 경우 2 (4가 빗변일 때) 집중 조명!',
-            p1Title: '비교 모드', p2Title: '배수 스케일',
+            badge: `탐구 3-E · ⚠️ [오답 함정] 세 변이 (3, 4, x)인데 누가 빗변인지 안 알려줄 때!`,
+            hint: `문제에 $3$과 $4$가 보인다고 $x = 5$라고만 쓰면 감점될 수 있습니다! <strong class="text-emerald-300">① x가 빗변일 때(x²=3²+4²=25)</strong>와 <strong class="text-rose-400">② 4가 가장 긴 빗변일 때(x²=4²-3²=7)</strong> 두 가지를 모두 구해야 합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 두 경우 나란히 비교' : '🎬 경우 2 (4가 빗변일 때) 강조!',
+            p1Title: '비교 모드', p2Title: '배수',
             parts: [
               { id: 0, name: `🟩 [경우 1] x가 가장 긴 변(빗변)일 때`, desc: `x² = 3² + 4² = 9 + 16 = 25 (x = 5)`, val: `x² = 25 ⭕`, color: PCOL.green, ok: true },
               { id: 1, name: `🟥 [경우 2] 4가 가장 긴 변(빗변)일 때! (누락 주의!)`, desc: `3² + x² = 4² ➔ x² = 16 - 9 = 7 (x ≠ 5!)`, val: `x² = 7 ⭕`, color: PCOL.red, ok: true }
             ],
             totalRes: `직각삼각형 세 변이 (3, 4, x)일 때 가능한 x²의 값: 25 또는 7 (총 2개!)`,
-            rule: '가장 긴 변(빗변)이 누구인지 지정되지 않으면 무조건 2가지 경우로 나누어 푼다!',
+            rule: '가장 긴 변(빗변)이 어느 것인지 정해지지 않으면 반드시 2가지 경우로 나누어 푼다!',
             formulaHTML: `• <strong>경우 1 ($x > 4$가 빗변)</strong>: ${tex(`x^2 = 3^2 + 4^2 = \\mathbf{25}`)}<br/>• <strong>경우 2 ($4$가 빗변)</strong>: ${tex(`3^2 + x^2 = 4^2 \\implies x^2 = 16 - 9 = \\mathbf{7}`)}`,
             notes: `• 시험 문제에서 <strong>“(단, $x > 4$)”</strong> 조건이 있는지 없는지 밑줄을 그으며 읽으세요! 조건이 없으면 정답은 2개입니다.`
           };
         }
         return {
-          badge: `탐구 3 · [${fam.label} 가문] 기본 피타고라스 수와 ×${k}배 확대 삼각형 (${a}, ${b}, ${c})`,
-          hint: `우측의 <strong class="text-pink-300">[×1배 ~ ×4배] 프리셋 칩</strong>을 눌러보세요! 큰 숫자가 나와도 제곱하지 말고 <strong class="text-amber-300">최대공약수(${k})로 먼저 약분하여 기본비(${fam.a} : ${fam.b} : ${fam.c})</strong>를 찾으면 1초 만에 암산됩니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본비(×1배)와 겹쳐 비교' : '🎬 마디 눈금 & 약분 구조 보기!',
-          p1Title: '4대 기본 족보', p2Title: '자연수 배수 ×k',
+          badge: `탐구 3 · [${fam.label}] 기본 피타고라스 수와 ×${k}배 확대 삼각형 (${a}, ${b}, ${c})`,
+          hint: `우측의 <strong class="text-pink-300">[×1배 ~ ×4배] 버튼</strong>을 눌러 보세요! 큰 숫자가 나와도 제곱하지 말고 <strong class="text-amber-300">최대공약수(${k})로 먼저 약분하여 기본비(${fam.a} : ${fam.b} : ${fam.c})</strong>를 찾으면 바로 구할 수 있습니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본비(×1배)와 겹쳐 비교' : '🎬 눈금 & 약분 구조 보기!',
+          p1Title: '기본 피타고라스 수 4가지', p2Title: '자연수 배수 ×k',
           parts: [
             { id: 0, name: `🟦 짧은 직각변 a = ${fam.a} × ${k} = ${a}`, desc: `a² = ${a * a} (기본비 ${fam.a}의 ${k}배)`, val: `a = ${a}`, color: PCOL.cyan, ok: true },
             { id: 1, name: `🟩 긴 직각변 b = ${fam.b} × ${k} = ${b}`, desc: `b² = ${b * b} (기본비 ${fam.b}의 ${k}배)`, val: `b = ${b}`, color: PCOL.green, ok: true },
-            { id: 2, name: `🟨 빗변 c = ${fam.c} × ${k} = ${c} (1초 암산!)`, desc: `${a}²(${a * a}) + ${b}²(${b * b}) = ${c * c} = ${c}²`, val: `c = ${c}`, color: PCOL.gold, ok: true }
+            { id: 2, name: `🟨 빗변 c = ${fam.c} × ${k} = ${c}`, desc: `${a}²(${a * a}) + ${b}²(${b * b}) = ${c * c} = ${c}²`, val: `c = ${c}`, color: PCOL.gold, ok: true }
           ],
           totalRes: `기본비 (${fam.a} : ${fam.b} : ${fam.c}) × ${k}배  ➔  (${a}, ${b}, ${c})`,
-          rule: '중등 수학 4대 필수 피타고라스 가문: (3,4,5) · (5,12,13) · (8,15,17) · (7,24,25)',
-          formulaHTML: `• <strong>1초 약분 암산법</strong>: 두 직각변이 $${a}, ${b}$일 때 최대공약수 $${k}$로 나누면 <strong>$${fam.a} : ${fam.b}$</strong> $\\implies$ 빗변 비는 <strong>$${fam.c}$</strong> $\\implies$ 다시 $${k}$배 하여 <strong>$${fam.c}\\times ${k} = ${c}$</strong>!`,
-          notes: `• 특히 <strong>(3:4:5)의 배수인 (6,8,10), (9,12,15), (12,16,20), (15,20,25)</strong>와 <strong>(5:12:13)의 2배수인 (10,24,26)</strong>은 구구단처럼 외워두세요!`
+          rule: '자주 쓰이는 피타고라스 수(세 변이 모두 자연수인 직각삼각형): (3,4,5) · (5,12,13) · (8,15,17) · (7,24,25)',
+          formulaHTML: `• <strong>약분하여 구하기</strong>: 두 직각변이 $${a}, ${b}$일 때 최대공약수 $${k}$로 나누면 <strong>$${fam.a} : ${fam.b}$</strong> $\\implies$ 빗변 비는 <strong>$${fam.c}$</strong> $\\implies$ 다시 $${k}$배 하여 <strong>$${fam.c}\\times ${k} = ${c}$</strong>!`,
+          notes: `• 특히 <strong>(3:4:5)의 배수인 (6,8,10), (9,12,15), (12,16,20), (15,20,25)</strong>와 <strong>(5:12:13)의 2배수인 (10,24,26)</strong>은 기억해 두면 편리합니다!`
         };
       }
 
@@ -603,34 +603,34 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 4) {
         if (sub === 'obtuseRange') {
           return {
-            badge: `탐구 4-D · [내신 1등급 필수] 세 변 (3, 4, x)가 둔각삼각형이 되기 위한 자연수 x의 범위`,
-            hint: `둔각 조건(<strong class="text-rose-400">x² > 3²+4² ➔ x > 5</strong>)만 쓰고 <strong class="text-amber-300">삼각형 결정 조건(x < 3+4 = 7)</strong>을 빼먹으면 100% 틀립니다! 아래 수직선에서 공통범위 <strong class="text-emerald-300">5 < x < 7 (자연수 x = 6)</strong>을 확인하세요!`,
-            actionTxt: state.fold > 0.5 ? '🎬 직각 기준(x=5) 보기' : '🎬 둔각(x=6) vs 일직선 붕괴(x=7) 시연!',
+            badge: `탐구 4-D · 세 변 (3, 4, x)가 둔각삼각형이 되기 위한 자연수 x의 범위`,
+            hint: `둔각 조건(<strong class="text-rose-400">x² > 3²+4² ➔ x > 5</strong>)만 쓰고 <strong class="text-amber-300">삼각형 결정 조건(x < 3+4 = 7)</strong>을 빼먹으면 틀립니다! 아래 수직선에서 두 조건을 모두 만족하는 범위 <strong class="text-emerald-300">5 < x < 7 (자연수 x = 6)</strong>을 확인하세요!`,
+            actionTxt: state.fold > 0.5 ? '🎬 직각 기준(x=5) 보기' : '🎬 둔각(x=6) vs 삼각형이 만들어지지 않는 x=7 비교!',
             p1Title: '직각변 (3, 4)', p2Title: '각도 ∠C 실험',
             parts: [
               { id: 0, name: `🟥 조건 ① 둔각삼각형 조건: x² > 3² + 4² = 25`, desc: `90° 직각일 때의 빗변(5)보다 더 길어야 둔각!`, val: `x > 5`, color: PCOL.red, ok: true },
               { id: 1, name: `🟨 조건 ② 삼각형 결정 조건: x < 3 + 4 = 7 (필수!)`, desc: `두 변(3,4)을 180°로 다 펴도 7이므로 7보다 짧아야 함!`, val: `x < 7`, color: PCOL.gold, ok: true },
-              { id: 2, name: `🟩 수직선 공통범위 교집합: 5 < x < 7`, desc: `범위 안의 자연수 x는 오직 6 하나뿐!`, val: `자연수 x = 6`, color: PCOL.green, ok: true }
+              { id: 2, name: `🟩 수직선에서 두 조건을 모두 만족하는 범위: 5 < x < 7`, desc: `범위 안의 자연수 x는 오직 6 하나뿐!`, val: `자연수 x = 6`, color: PCOL.green, ok: true }
             ],
-            totalRes: `둔각삼각형 범위: √(a²+b²) < x < a + b  ➔  5 < x < 7 (자연수 x = 6)`,
+            totalRes: `둔각삼각형이 되려면 a²+b² < x² 이고 x < a + b  ➔  5 < x < 7 (자연수 x = 6)`,
             rule: '둔각삼각형 범위 문제 = (피타고라스 기준) < x < (두 변의 합: 삼각형 결정 조건)!',
             formulaHTML: `• <strong>1단계 (둔각 조건)</strong>: ${tex(`x^2 > 3^2 + 4^2 = 25 \\implies x > 5`)}<br/>• <strong>2단계 (삼각형 결정 조건)</strong>: ${tex(`x < 3 + 4 = 7`)}<br/>• <strong>결론</strong>: ${tex(`\\mathbf{5 < x < 7} \\implies \\text{자연수 } x = 6`)}`,
-            notes: `• 이 문제를 틀리는 학생의 99%는 2단계 삼각형 결정 조건($x < a+b$)을 안 써서 틀립니다! <strong>“둔각 범위 = 양쪽 샌드위치 부등식”</strong>을 꼭 기억하세요.`
+            notes: `• 이 문제는 2단계 삼각형 결정 조건($x < a+b$)을 빠뜨려서 틀리는 경우가 많습니다! <strong>“둔각 범위 = 5 < x < 7처럼 양쪽을 모두 막는 부등식”</strong>임을 꼭 기억하세요.`
           };
         }
         if (sub === 'acuteRange') {
           return {
-            badge: `탐구 4-E · [심화 킬러] 가장 긴 변이 안 정해진 세 변 (6, 8, x)가 예각삼각형이 될 조건`,
+            badge: `탐구 4-E · [심화 킬러] 가장 긴 변이 정해지지 않은 세 변 (6, 8, x)가 예각삼각형이 될 조건`,
             hint: `예각삼각형은 <strong>세 각이 모두 예각</strong>이어야 합니다! <strong class="text-sky-300">① x가 가장 긴 변일 때(x² < 6²+8²=100)</strong>와 <strong class="text-pink-300">② 8이 가장 긴 변일 때(8² < 6²+x² ➔ x² > 28)</strong>를 동시에 만족해야 합니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 양쪽 예각 경계 확인!',
             p1Title: '기준변 (6, 8)', p2Title: '각도 ∠C 실험',
             parts: [
               { id: 0, name: `🟦 조건 ① x가 가장 긴 변일 때 예각: x² < 6² + 8²`, desc: `x² < 36 + 64 = 100 (즉 x < 10)`, val: `x² < 100`, color: PCOL.cyan, ok: true },
               { id: 1, name: `🩷 조건 ② 8이 가장 긴 변일 때 예각: 8² < 6² + x²`, desc: `64 < 36 + x² ➔ x² > 28 (안 쓰면 x=5에서 둔각 발생!)`, val: `x² > 28`, color: PCOL.pink, ok: true },
-              { id: 2, name: `🟩 공통범위: 28 < x² < 100 만족 자연수 x`, desc: `x = 6(36), 7(49), 8(64), 9(81) ➔ 총 4개!`, val: `6, 7, 8, 9 (4개)`, color: PCOL.green, ok: true }
+              { id: 2, name: `🟩 두 조건을 모두 만족: 28 < x² < 100 인 자연수 x`, desc: `x = 6(36), 7(49), 8(64), 9(81) ➔ 총 4개!`, val: `6, 7, 8, 9 (4개)`, color: PCOL.green, ok: true }
             ],
             totalRes: `28 < x² < 100  ➔  예각삼각형이 되는 자연수 x = 6, 7, 8, 9 (총 4개)`,
-            rule: '가장 긴 변 미정 예각삼각형: (큰변² - 작은변²) < x² < (큰변² + 작은변²)!',
+            rule: '가장 긴 변이 정해지지 않은 예각삼각형: (큰변² - 작은변²) < x² < (큰변² + 작은변²)!',
             formulaHTML: `• ${tex(`8^2 - 6^2 < x^2 < 6^2 + 8^2 \\iff 28 < x^2 < 100 \\implies \\mathbf{x = 6, 7, 8, 9}`)}`,
             notes: `• 만약 $x=5$라면 $5^2 + 6^2 = 61 < 8^2(64)$이 되어 변 $8$의 맞은편 각이 둔각인 <strong>둔각삼각형</strong>이 되어버립니다!`
           };
@@ -642,16 +642,16 @@ window.addEventListener('DOMContentLoaded', function () {
         const cSq = hc.cSq;
         const kind = deg < 89 ? '예각삼각형 (c² < a²+b²)' : deg > 91 ? '둔각삼각형 (c² > a²+b²)' : '직각삼각형 (c² = a²+b²)';
         return {
-          badge: `탐구 4 · [예각·직각·둔각 경첩 판별기] 현재 ∠C = ${deg}° ➔ ${kind}`,
-          hint: `캔버스 위 <strong class="text-amber-300">꼭짓점 A를 마우스로 직접 잡고 좌우로 돌려보거나</strong> 우측 각도 프리셋을 눌러보세요! ∠C가 90°보다 좁아지면 <strong class="text-sky-300">c² < a²+b²(예각)</strong>, 넓어지면 <strong class="text-rose-400">c² > a²+b²(둔각)</strong>이 됩니다!`,
+          badge: `탐구 4 · [예각·직각·둔각 판별] 현재 ∠C = ${deg}° ➔ ${kind}`,
+          hint: `캔버스 위 <strong class="text-amber-300">꼭짓점 A를 마우스로 직접 잡고 좌우로 돌려보거나</strong> 오른쪽 각도 버튼을 눌러 보세요! ∠C가 90°보다 좁아지면 <strong class="text-sky-300">c² < a²+b²(예각)</strong>, 넓어지면 <strong class="text-rose-400">c² > a²+b²(둔각)</strong>이 됩니다!`,
           actionTxt: '🎬 예각 ➔ 직각 ➔ 둔각 차례로 돌려 보기!', // [2.0 수정] 원본 글의 각도(60°·120°)는 실제 동작(65°→90°→115°→130°)과 달라 각도 숫자를 뺌(칩에 각도가 있음)
-          p1Title: `기준변 (a=${hc.a}, b=${hc.b})`, p2Title: '경첩 각도 ∠C',
+          p1Title: `기준변 (a=${hc.a}, b=${hc.b})`, p2Title: '∠C의 크기',
           parts: [
             { id: 0, name: `🟦 두 변의 제곱합 기준값: a² + b² = ${hc.b}² + ${hc.a}² = ${hc.base}`, desc: `∠C = 90°(직각)일 때의 불변 기준 넓이`, val: `a²+b² = ${hc.base}`, color: PCOL.cyan, ok: true },
             { id: 1, name: `🟨 현재 ∠C = ${deg}° 맞은편 변의 제곱: c² = ${cSq}`, desc: deg < 89 ? `${hc.base}보다 작으므로 예각!` : deg > 91 ? `${hc.base}보다 크므로 둔각!` : `${hc.base}과 정확히 같으므로 직각!`, val: `c² = ${cSq}`, color: deg < 89 ? PCOL.cyan : deg > 91 ? PCOL.red : PCOL.gold, ok: true }
           ],
           totalRes: `c²(${cSq}) ${deg < 89 ? '<' : deg > 91 ? '>' : '='} a² + b²(${hc.base})  ➔  ${kind}`,
-          rule: '항상 가장 긴 변 c²을 주인공(좌변)에 놓는다: c² < a²+b²(예각) · c² = a²+b²(직각) · c² > a²+b²(둔각)',
+          rule: '항상 가장 긴 변 c²을 좌변에 놓는다: c² < a²+b²(예각) · c² = a²+b²(직각) · c² > a²+b²(둔각)',
           formulaHTML: `• <strong>예각삼각형</strong>: ${tex(`c^2 < a^2 + b^2`)} (예: $5,6,7 \\implies 7^2(49) < 5^2+6^2(61)$)<br/>• <strong>둔각삼각형</strong>: ${tex(`c^2 > a^2 + b^2`)} (예: $4,5,7 \\implies 7^2(49) > 4^2+5^2(41)$)`,
           notes: `• 세 변의 길이가 주어지면 먼저 <strong>가장 긴 변이 나머지 두 변의 합보다 작은지($c < a+b$)</strong> 확인한 뒤 제곱을 비교하세요!`
         };
@@ -661,32 +661,32 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 5) {
         if (sub === 'rightCross') {
           return {
-            badge: `탐구 5-A · [제곱합 공식 1] 직각삼각형 속 사다리꼴 X자 공식 (DE² + BC² = BE² + CD²)`,
+            badge: `탐구 5-A · [제곱합 관계식 1] 직각삼각형 속 X자 모양 선분의 제곱합 (DE² + BC² = BE² + CD²)`,
             hint: `∠A = 90°인 직각삼각형의 두 변 위에 점 D, E를 잡으면, <strong class="text-sky-300">가로 파란 두 선의 제곱합(DE² + BC²)</strong>과 <strong class="text-pink-300">대각선 분홍 X자 두 선의 제곱합(BE² + CD²)</strong>이 항상 똑같습니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 전체 공식 보기' : '🎬 파란 짝꿍 vs 분홍 X자 성분 분해!',
-            p1Title: '직각변 스케일', p2Title: '점 D·E 위치',
+            actionTxt: state.fold > 0.5 ? '🎬 전체 공식 보기' : '🎬 파란 선분의 짝 vs 분홍 X자 선분의 짝 분해!',
+            p1Title: '직각변의 길이', p2Title: '점 D·E 위치',
             parts: [
-              { id: 0, name: `🟦 파란 평행 방향 짝꿍: DE² + BC²`, desc: `(AD² + AE²) + (AB² + AC²) = 4개 직각변 제곱합!`, val: `16 + 100 = 116`, color: PCOL.cyan, ok: true },
-              { id: 1, name: `🩷 분홍 대각선 X자 짝꿍: BE² + CD²`, desc: `(AB² + AE²) + (AD² + AC²) = 위와 100% 동일한 구성!`, val: `64 + 52 = 116`, color: PCOL.pink, ok: true }
+              { id: 0, name: `🟦 파란 선분의 짝: DE² + BC²`, desc: `(AD² + AE²) + (AB² + AC²) = 4개 직각변 제곱합!`, val: `16 + 100 = 116`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🩷 분홍 X자 선분의 짝: BE² + CD²`, desc: `(AB² + AE²) + (AD² + AC²) = 위와 같은 네 조각으로 이루어짐!`, val: `64 + 52 = 116`, color: PCOL.pink, ok: true }
             ],
             totalRes: `DE²(16) + BC²(100) = BE²(64) + CD²(52) = 116 (항상 일치!)`,
             rule: '직각 꼭짓점 A에서 뻗어나온 도형: (안쪽·바깥쪽 선분 제곱합) = (X자 대각선 제곱합)!',
             formulaHTML: `• <strong>왜 AD, AE 길이를 몰라도 풀릴까?</strong><br/>&nbsp;&nbsp;${tex(`\\overline{DE}^2 + \\overline{BC}^2 = (\\overline{AD}^2+\\overline{AE}^2) + (\\overline{AB}^2+\\overline{AC}^2)`)}<br/>&nbsp;&nbsp;${tex(`\\overline{BE}^2 + \\overline{CD}^2 = (\\overline{AB}^2+\\overline{AE}^2) + (\\overline{AD}^2+\\overline{AC}^2)`)} (네 조각이 완전히 똑같음!)`,
-            notes: `• 시험에서 $\\overline{DE}=4, \\overline{BC}=10, \\overline{BE}=8$을 주고 $\\overline{CD}^2$을 물으면 $4^2 + 10^2 = 8^2 + \\overline{CD}^2 \\implies \\overline{CD}^2 = 52$로 3초 만에 푸세요!`
+            notes: `• 시험에서 $\\overline{DE}=4, \\overline{BC}=10, \\overline{BE}=8$을 주고 $\\overline{CD}^2$을 물으면 $4^2 + 10^2 = 8^2 + \\overline{CD}^2 \\implies \\overline{CD}^2 = 52$로 바로 구할 수 있습니다!`
           };
         }
         if (sub === 'rectPointP') {
           return {
-            badge: `탐구 5-C · [제곱합 공식 3] 직사각형 내부/외부 점 P 마우스 드래그 실험 (PA² + PC² = PB² + PD²)`,
-            hint: `캔버스 위 <strong class="text-amber-300">점 P를 마우스로 잡고 직사각형 안팎 어디로든 드래그</strong>해 보세요! 마주보는 대각선 방향 꼭짓점끼리의 제곱합 <strong class="text-sky-300">PA² + PC²</strong>과 <strong class="text-pink-300">PB² + PD²</strong>는 소수점까지 완벽히 일치합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 점 P 원위치' : '🎬 점 P 이동 시뮬레이션!',
-            p1Title: '직사각형 비율', p2Title: '점 P 위치 프리셋',
+            badge: `탐구 5-C · [제곱합 관계식 3] 직사각형 안팎의 점 P를 움직이는 실험 (PA² + PC² = PB² + PD²)`,
+            hint: `캔버스 위 <strong class="text-amber-300">점 P를 마우스로 잡고 직사각형 안팎 어디로든 드래그</strong>해 보세요! 마주보는 대각선 방향 꼭짓점끼리의 제곱합 <strong class="text-sky-300">PA² + PC²</strong>과 <strong class="text-pink-300">PB² + PD²</strong>는 정확히 같습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 점 P 원위치' : '🎬 점 P를 움직여 보기!',
+            p1Title: '직사각형 비율', p2Title: '점 P의 위치',
             parts: [
               { id: 0, name: `🟦 대각선 A-C 방향 짝꿍: PA² + PC²`, desc: `(a² + c²) + (b² + d²) = a² + b² + c² + d²`, val: `PA² + PC²`, color: PCOL.cyan, ok: true },
               { id: 1, name: `🩷 대각선 B-D 방향 짝꿍: PB² + PD²`, desc: `(a² + d²) + (b² + c²) = a² + b² + c² + d² (일치!)`, val: `= PB² + PD²`, color: PCOL.pink, ok: true }
             ],
-            totalRes: `PA² + PC² = PB² + PD² (점 P가 직사각형 내부든 외부든 100% 성립!)`,
-            rule: '직사각형 속 점 P 공식: 원래 대각선 짝꿍인 (A와 C 제곱합) = (B와 D 제곱합)!',
+            totalRes: `PA² + PC² = PB² + PD² (점 P가 직사각형 내부든 외부든 성립!)`,
+            rule: '직사각형 속 점 P: 마주보는 꼭짓점끼리의 거리의 제곱합 (PA² + PC²) = (PB² + PD²)!',
             formulaHTML: `• 점 $P$를 지나는 가로·세로 수선을 그어 직각삼각형 4개로 쪼개면:<br/>&nbsp;&nbsp;${tex(`\\overline{PA}^2 + \\overline{PC}^2 = (a^2+c^2) + (b^2+d^2) = (a^2+d^2) + (b^2+c^2) = \\overline{PB}^2 + \\overline{PD}^2`)}`,
             notes: `• 이웃한 꼭짓점($PA^2+PB^2$)끼리 더하지 않도록 주의하세요! <strong>마주보는 꼭짓점($A\\leftrightarrow C$, $B\\leftrightarrow D$)끼리</strong> 짝지어야 합니다.`
           };
@@ -695,21 +695,21 @@ window.addEventListener('DOMContentLoaded', function () {
         const isSq = sub === 'orthoSquares', isSemi = sub === 'orthoSemis';
         return {
           badge: isSemi
-            ? `탐구 5-E · 대각선이 직교(AC⊥BD)하는 사각형 네 변 위 반원의 넓이 합 (P₁ + P₃ = P₂ + P₄)`
+            ? `탐구 5-E · 대각선이 수직(AC⊥BD)인 사각형의 네 변 위 반원의 넓이 합 (P₁ + P₃ = P₂ + P₄)`
             : isSq
-            ? `탐구 5-D · 대각선이 직교(AC⊥BD)하는 사각형 네 변 위 정사각형 넓이 합 (S₁ + S₃ = S₂ + S₄)`
-            : `탐구 5-B · [제곱합 공식 2] 두 대각선이 직교(AC⊥BD)하는 사각형의 마주보는 변 제곱합`,
+            ? `탐구 5-D · 대각선이 수직(AC⊥BD)인 사각형의 네 변 위 정사각형 넓이 합 (S₁ + S₃ = S₂ + S₄)`
+            : `탐구 5-B · [제곱합 관계식 2] 두 대각선이 수직(AC⊥BD)인 사각형의 마주보는 변 제곱합`,
           hint: `두 대각선이 $90^\\circ$ 수직으로 만나는 사각형에서는 언제나 <strong class="text-sky-300">마주보는 파란 대변의 제곱합(AB² + CD²)</strong>과 <strong class="text-amber-300">마주보는 노란 대변의 제곱합(BC² + DA²)</strong>이 같습니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 전체 보기' : '🎬 마주보는 짝꿍 번갈아 강조!',
           p1Title: '대각선 분할비', p2Title: '도형 확장',
           parts: [
             { id: 0, name: isSemi ? `🟦 마주보는 반원 넓이 합: P₁ + P₃` : `🟦 마주보는 파란 변 제곱합: AB² + CD² (S₁ + S₃)`, desc: `(OA² + OB²) + (OC² + OD²)`, val: isSemi ? `10π + 25π = 35π` : `25 + 64 = 89`, color: PCOL.cyan, ok: true },
-            { id: 1, name: isSemi ? `🟨 마주보는 반원 넓이 합: P₂ + P₄` : `🟨 마주보는 노란 변 제곱합: BC² + DA² (S₂ + S₄)`, desc: `(OB² + OC²) + (OD² + OA²) — 위와 100% 일치!`, val: isSemi ? `18π + 17π = 35π` : `49 + 40 = 89`, color: PCOL.gold, ok: true }
+            { id: 1, name: isSemi ? `🟨 마주보는 반원 넓이 합: P₂ + P₄` : `🟨 마주보는 노란 변 제곱합: BC² + DA² (S₂ + S₄)`, desc: `(OB² + OC²) + (OD² + OA²) — 위와 같음!`, val: isSemi ? `18π + 17π = 35π` : `49 + 40 = 89`, color: PCOL.gold, ok: true }
           ],
           totalRes: isSemi ? `P₁(10π) + P₃(25π) = P₂(18π) + P₄(17π) = 35π` : `AB²(25) + CD²(64) = BC²(49) + DA²(40) = 89`,
-          rule: 'AC ⊥ BD 직교 사각형: 마주보는 변의 제곱합 = 마주보는 정사각형 합 = 마주보는 반원 합!',
+          rule: 'AC ⊥ BD인 사각형: 마주보는 변의 제곱합 = 마주보는 정사각형 합 = 마주보는 반원 합!',
           formulaHTML: `• ${tex(`\\overline{AC} \\perp \\overline{BD} \\implies \\overline{AB}^2 + \\overline{CD}^2 = \\overline{BC}^2 + \\overline{DA}^2 = \\overline{OA}^2 + \\overline{OB}^2 + \\overline{OC}^2 + \\overline{OD}^2`)}`,
-          notes: `• 네 변 위에 정사각형($S = d^2$)이나 반원($P = \\frac{\\pi}{8}d^2$)을 그려도 넓이는 변의 제곱에 비례하므로 <strong>마주보는 도형끼리 더한 값이 무조건 같습니다!</strong>`
+          notes: `• 네 변 위에 정사각형($S = d^2$)이나 반원($P = \\frac{\\pi}{8}d^2$)을 그려도 넓이는 변의 제곱에 비례하므로 <strong>마주보는 도형끼리 더한 값이 같습니다!</strong>`
         };
       }
 
@@ -721,10 +721,10 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: isIso
               ? `탐구 6-B · 직각이등변삼각형에서 한쪽 초승달 1개의 넓이 (= △ABC 넓이의 절반!)`
-              : `탐구 6-A · 🌙 [시험 100% 출제] 히포크라테스의 초승달 넓이의 합 (= 직각삼각형 ABC의 넓이!)`,
+              : `탐구 6-A · 🌙 초승달 모양 두 개의 넓이의 합 (= 직각삼각형 ABC의 넓이!)`,
             hint: `슬라이더를 오른쪽으로 밀어 <strong class="text-sky-300">빗변 아래쪽 큰 반원 S₃을 위로 접어 올려보세요!</strong> $S_1 + S_2 = S_3$이므로 원주율 $\\pi$가 들어간 반원들이 통째로 지워지고 <strong class="text-amber-300">초승달 넓이 합 = 직각삼각형 넓이(${triArea})</strong>만 남습니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 반원 펼치기 (원리 비교)' : '🎬 큰 반원 S₃을 위로 접어 초승달 만들기!',
-            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            p1Title: '직각삼각형의 세 변의 비', p2Title: '배수 ×k',
             parts: [
               { id: 0, name: `🟨 두 직각변 위 작은 반원 합 (S₁ + S₂)`, desc: `피타고라스 정리에 의해 빗변 큰 반원 S₃ 넓이와 똑같음!`, val: `S₁ + S₂ = S₃`, color: PCOL.gold, ok: true },
               { id: 1, name: `❌ 위로 접어 올려 뺀 빗변 큰 반원 (-S₃ 소거!)`, desc: `(S₁ + S₂) - S₃ = 0 ➔ 원주율 π가 완전히 사라짐!`, val: `-S₃ (π 소멸!)`, color: PCOL.cyan, ok: false },
@@ -733,24 +733,24 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: isIso
               ? `직각이등변(8,8): 두 초승달 합 = 32  ➔  한쪽 초승달 1개 넓이 = 16 cm²`
               : `두 초승달 넓이 합 = (S₁ + S₂ + △ABC) - S₃ = △ABC 넓이 = ${triArea} cm²`,
-            rule: '초승달 넓이 합 공식: 반원 계산은 1초도 하지 말고 그냥 직각삼각형 넓이(½ab)만 구한다!',
+            rule: '초승달 모양의 넓이의 합 = 직각삼각형의 넓이(½ab)! 반원의 넓이를 따로 구하지 않아도 된다.',
             formulaHTML: `• ${tex(`(\\text{초승달 합}) = (S_1 + S_2 + \\triangle ABC) - S_3 = \\mathbf{\\triangle ABC = \\dfrac{1}{2}\\times ${isIso ? '8\\times 8' : `${a}\\times ${b}`} = ${triArea}}`)}`,
             notes: `• <strong>[오답 함정 2가지]</strong>:<br/>&nbsp;&nbsp;① 곡선 도형이라고 답에 $\\pi$를 붙이면 <strong>오답(❌)</strong>! 반원끼리 상쇄되어 $\\pi$는 사라집니다.<br/>&nbsp;&nbsp;② 직각이등변삼각형에서 <strong>초승달 1개</strong>만 색칠되어 있으면 삼각형 넓이를 구한 뒤 꼭 <strong>$\\div 2$</strong>를 하세요!`
           };
         }
         if (sub === 'findHypSemi') {
           return {
-            badge: `탐구 6-E · 두 직각변 위 반원의 넓이 합(S₁+S₂=18π)으로 빗변의 길이 역추적하기`,
+            badge: `탐구 6-E · 두 직각변 위 반원의 넓이 합(S₁+S₂=18π)으로 빗변의 길이 구하기`,
             hint: `두 직각변의 길이를 각각 몰라도 <strong class="text-amber-300">S₁ + S₂ = S₃(빗변 반원의 넓이 = 18π)</strong>입니다! 빗변 반원의 반지름 $r$을 구한 뒤 <strong class="text-rose-400">2배(지름 = 2r)</strong>를 해야 빗변의 길이가 나옵니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 반지름 r=6 ➔ 지름(빗변)=12 강조!',
-            p1Title: '반원 넓이 합', p2Title: '역추적 단계',
+            p1Title: '반원 넓이 합', p2Title: '구하는 단계',
             parts: [
               { id: 0, name: `🟦 두 직각변 반원 넓이 합: S₁ + S₂ = 18π`, desc: `빗변을 지름으로 하는 큰 반원 넓이 S₃ = 18π 와 같음`, val: `S₃ = 18π`, color: PCOL.cyan, ok: true },
               { id: 1, name: `🟨 큰 반원의 반지름 r 구하기: ½πr² = 18π`, desc: `r² = 36 ➔ 반지름 r = 6 cm`, val: `반지름 r = 6`, color: PCOL.gold, ok: true },
               { id: 2, name: `🩷 빗변의 길이 = 큰 반원의 지름 (2r = 12 cm!)`, desc: `⚠️ 반지름 6을 그대로 답으로 쓰면 안 됨! (×2 필수)`, val: `빗변 = 12 cm`, color: PCOL.pink, ok: true }
             ],
             totalRes: `S₁ + S₂ = S₃ = ½πr² = 18π  ➔  r = 6  ➔  빗변(지름 2r) = 12 cm!`,
-            rule: '반원 넓이 역추적 함정: ① 반원 공식은 ½πr² (½ 주의!)  ② 빗변의 길이는 지름 2r (×2 주의!)',
+            rule: '반원의 넓이로 빗변의 길이를 구할 때의 함정: ① 반원 공식은 ½πr² (½ 주의!)  ② 빗변의 길이는 지름 2r (×2 주의!)',
             formulaHTML: `• ${tex(`S_3 = \\dfrac{1}{2}\\pi r^2 = 18\\pi \\implies r^2 = 36 \\implies r = 6 \\implies \\mathbf{\\text{빗변 } c = 2r = 12\\text{ cm}}`)}`,
             notes: `• 시험에서 $r=6$까지 잘 구해놓고 마지막에 $2$배(지름)를 안 해서 $6$이라고 쓰는 오답이 가장 많습니다!`
           };
@@ -762,14 +762,14 @@ window.addEventListener('DOMContentLoaded', function () {
             : `탐구 6-D · 직각삼각형 세 변을 지름으로 하는 세 반원의 넓이 법칙 (S₁ + S₂ = S₃)`,
           hint: `직각삼각형 세 변 위에 <strong>정사각형 · 정삼각형 · 반원</strong> 중 어떤 닮은 도형을 그려도 넓이는 변의 제곱에 비례하므로 언제나 <strong class="text-amber-300">작은 두 도형 넓이의 합(S₁ + S₂) = 빗변 위 큰 도형 넓이(S₃)</strong>입니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 S₁ + S₂ = S₃ 넓이 비교!',
-          p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+          p1Title: '직각삼각형의 세 변의 비', p2Title: '배수 ×k',
           parts: [
             { id: 0, name: isEqui ? `🟦 작은 변 위 정삼각형 S₁` : `🟦 작은 변(지름 ${2*a}) 위 반원 S₁`, desc: isEqui ? `한 변의 제곱(${a}²)에 비례` : `½ × π × ${a}² = ${(a*a)/2}π`, val: isEqui ? `S₁ = 12` : `${(a * a) / 2}π`, color: PCOL.cyan, ok: true },
             { id: 1, name: isEqui ? `🟩 중간 변 위 정삼각형 S₂` : `🟩 중간 변(지름 ${2*b}) 위 반원 S₂`, desc: isEqui ? `한 변의 제곱(${b}²)에 비례` : `½ × π × ${b}² = ${(b*b)/2}π`, val: isEqui ? `+S₂ = 20` : `+${(b * b) / 2}π`, color: PCOL.green, ok: true },
             { id: 2, name: isEqui ? `🟨 빗변 위 큰 정삼각형 S₃ (= S₁ + S₂)` : `🟨 빗변(지름 ${2*c}) 위 큰 반원 S₃ (= S₁ + S₂)`, desc: isEqui ? `정삼각형 높이 공식 몰라도 12 + 20 = 32!` : `½ × π × ${c}² = ${(c*c)/2}π 일치!`, val: isEqui ? `=S₃ (32)` : `=${(c * c) / 2}π`, color: PCOL.gold, ok: true }
           ],
           totalRes: isEqui ? `정삼각형 넓이 합: S₃ = S₁(12) + S₂(20) = 32` : `반원 넓이 합: S₁(${(a*a)/2}π) + S₂(${(b*b)/2}π) = S₃(${(c*c)/2}π)`,
-          rule: '세 변 위에 그린 모든 닮은 도형(정사각형·정삼각형·반원)은 S₁ + S₂ = S₃가 100% 성립한다!',
+          rule: '세 변 위에 그린 모든 닮은 도형(정사각형·정삼각형·반원)은 S₁ + S₂ = S₃가 성립한다!',
           formulaHTML: isEqui
             ? `• 정삼각형 넓이는 $k\\cdot(\\text{한 변})^2$에 비례하므로 ${tex(`S_1 + S_2 = k(a^2+b^2) = kc^2 = S_3`)}!`
             : `• 지름이 $2c$이면 반지름은 $c$이므로 ${tex(`S_1 + S_2 = S_3 = \\dfrac{1}{2}\\pi c^2 = \\mathbf{${(c * c) / 2}\\pi}`)}!`,
@@ -782,27 +782,27 @@ window.addEventListener('DOMContentLoaded', function () {
         // 황금 자연수 세트: 큰 삼각형 (15, 20, 25) * k => BH = 9k, CH = 16k, AH = 12k
         const AB = 15 * k, AC = 20 * k, BC = 25 * k, BH = 9 * k, CH = 16 * k, AH = 12 * k;
         return {
-          badge: `탐구 7 · 직각삼각형 빗변 수선 공식 4형제 & 3개 닮음 삼각형 해부 (AB=${AB}, AC=${AC}, BC=${BC})`,
-          hint: `우측의 <strong class="text-amber-300">4형제 공식 카드를 하나씩 클릭</strong>해 보세요! 칠판에서 어떤 선분끼리 제곱하고 곱하는지 화살표처럼 네온 발광하며, 우측 상단 창에서 <strong>왜 3개의 직각삼각형이 AA 닮음인지</strong> 한눈에 보입니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 4형제 공식 차례대로 스캔!',
-          p1Title: '공식 퀵 선택', p2Title: '배수 스케일 ×k',
+          badge: `탐구 7 · 직각삼각형의 빗변에 내린 수선의 관계식 4가지 & 닮은 삼각형 3개 (AB=${AB}, AC=${AC}, BC=${BC})`,
+          hint: `오른쪽의 <strong class="text-amber-300">관계식 카드를 하나씩 눌러</strong> 보세요! 어떤 선분끼리 제곱하고 곱하는지 그림에서 강조되고, 오른쪽 위 창에서 <strong>왜 3개의 직각삼각형이 AA 닮음인지</strong> 한눈에 보입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 관계식 4가지를 차례대로 강조!',
+          p1Title: '관계식 선택', p2Title: '배수 ×k',
           parts: [
-            { id: 0, name: `① [왼쪽 날개] AB² = BH × BC (짧은 조각 × 전체)`, desc: `${AB}²(${AB*AB}) = ${BH} × ${BC}(${BH*BC})  [△ABC ∽ △HBA]`, val: `${AB}² = ${BH}×${BC}`, color: PCOL.cyan, ok: true },
-            { id: 1, name: `② [오른쪽 날개] AC² = CH × CB (짧은 조각 × 전체)`, desc: `${AC}²(${AC*AC}) = ${CH} × ${BC}(${CH*BC})  [△ABC ∽ △HAC]`, val: `${AC}² = ${CH}×${BC}`, color: PCOL.green, ok: true },
-            { id: 2, name: `③ [가운데 기둥] AH² = BH × CH (내려찍어 양옆으로!)`, desc: `${AH}²(${AH*AH}) = ${BH} × ${CH}(${BH*CH})  [△HBA ∽ △HAC]`, val: `${AH}² = ${BH}×${CH}`, color: PCOL.gold, ok: true },
-            { id: 3, name: `④ [소(牛) 넓이 공식] AB × AC = BC × AH`, desc: `직각변×직각변(${AB}×${AC}) = 빗변×높이(${BC}×${AH}) = ${AB*AC}`, val: `${AB}×${AC}=${BC}×${AH}`, color: PCOL.pink, ok: true }
+            { id: 0, name: `① [직각변 AB의 제곱] AB² = BH × BC (조각 BH × 빗변 전체 BC)`, desc: `${AB}²(${AB*AB}) = ${BH} × ${BC}(${BH*BC})  [△ABC ∽ △HBA]`, val: `${AB}² = ${BH}×${BC}`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `② [직각변 AC의 제곱] AC² = CH × CB (조각 CH × 빗변 전체 CB)`, desc: `${AC}²(${AC*AC}) = ${CH} × ${BC}(${CH*BC})  [△ABC ∽ △HAC]`, val: `${AC}² = ${CH}×${BC}`, color: PCOL.green, ok: true },
+            { id: 2, name: `③ [수선 AH의 제곱] AH² = BH × CH (두 조각의 곱)`, desc: `${AH}²(${AH*AH}) = ${BH} × ${CH}(${BH*CH})  [△HBA ∽ △HAC]`, val: `${AH}² = ${BH}×${CH}`, color: PCOL.gold, ok: true },
+            { id: 3, name: `④ [직각삼각형의 넓이] AB × AC = BC × AH`, desc: `직각변×직각변(${AB}×${AC}) = 빗변×높이(${BC}×${AH}) = ${AB*AC}`, val: `${AB}×${AC}=${BC}×${AH}`, color: PCOL.pink, ok: true }
           ],
-          totalRes: `황금 세트: AB=${AB}, AC=${AC}, BC=${BC}  ➔  BH=${BH}, CH=${CH}, 높이 AH=${AH}`,
-          rule: '빗변 수선 4형제: ① AB²=BH·BC  ② AC²=CH·CB  ③ AH²=BH·CH  ④ AB·AC=BC·AH',
+          totalRes: `이 삼각형: AB=${AB}, AC=${AC}, BC=${BC}  ➔  BH=${BH}, CH=${CH}, 높이 AH=${AH}`,
+          rule: '빗변에 내린 수선의 관계식 4가지: ① AB²=BH·BC  ② AC²=CH·CB  ③ AH²=BH·CH  ④ AB·AC=BC·AH',
           formulaHTML: `• <strong>왜 성립할까?</strong> $\\bullet + \\times = 90^\\circ$에 의해 <strong>큰 $\\triangle ABC \\sim$ 왼쪽 $\\triangle HBA \\sim$ 오른쪽 $\\triangle HAC$ (모두 $3:4:5$ 비!)</strong>이기 때문입니다.`,
-          notes: `• <strong>[단골 실수 2가지]</strong>:<br/>&nbsp;&nbsp;① $AB^2 = BH \\times CH$로 잘못 곱하기 (❌, $BH \\times \\text{전체 } BC$를 곱해야 함!)<br/>&nbsp;&nbsp;② 수선의 발 $H$를 빗변의 중점(외심 $M$)으로 착각하기 (❌, $BH=9, CH=16$으로 길이가 다름!)`
+          notes: `• <strong>[실수하기 쉬운 점 2가지]</strong>:<br/>&nbsp;&nbsp;① $AB^2 = BH \\times CH$로 잘못 곱하기 (❌, $BH \\times \\text{전체 } BC$를 곱해야 함!)<br/>&nbsp;&nbsp;② 수선의 발 $H$를 빗변의 중점(외심 $M$)으로 착각하기 (❌, $BH=9, CH=16$으로 길이가 다름!)`
         };
       }
 
       // ==================== [탭 8: 종이접기 & 최단거리 응용] ====================
       if (sub === 'rectFold') {
         return {
-          badge: `탐구 8-A · [내신 100% 출제] 직사각형 꼭짓점 D를 변 BC 위의 점 E에 접기 (2단계 도미노!)`,
+          badge: `탐구 8-A · 직사각형 꼭짓점 D를 변 BC 위의 점 E에 접기 (2단계)`,
           hint: `슬라이더로 꼭짓점 $D$를 접어보세요! <strong class="text-amber-300">접힌 변 AE = AD = 10</strong>이므로 <strong class="text-sky-300">① 왼쪽 △ABE(6-8-10)에서 BE = 6 ➔ 남은 EC = 4!</strong> 이어서 <strong class="text-pink-300">② 오른쪽 △FCE에서 x² = (8-x)² + 4² ➔ EF(x) = 5!</strong>`,
           actionTxt: state.fold > 0.5 ? '🎬 접기 전 직사각형 보기' : '🎬 꼭짓점 D를 점 E로 접어 내리기!',
           p1Title: '직사각형 (10×8)', p2Title: '풀이 단계',
@@ -814,7 +814,7 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: `1단계 BE = 6 (EC = 4)  ➔  2단계 △FCE 방정식 해 EF(x) = 5, CF = 3`,
           rule: '직사각형 꼭짓점 접기: ① AE=AD로 왼쪽 △ABE 풀기 ➔ ② x²=(세로-x)²+EC²으로 오른쪽 △FCE 풀기!',
           formulaHTML: `• <strong>2단계 방정식</strong>: ${tex(`x^2 = (8-x)^2 + 4^2 \\implies x^2 = 64 - 16x + x^2 + 16 \\implies 16x = 80 \\implies \\mathbf{x = 5}`)}`,
-          notes: `• <strong>[3초 닮음 암산 비법]</strong>: $\\angle AEF = 90^\\circ$이므로 왼쪽 $\\triangle ABE(6\\text{-}8\\text{-}10)$와 오른쪽 $\\triangle ECF$는 둘 다 <strong>$3:4:5$ AA 닮음</strong>입니다! $EC=4$이므로 방정식 없이도 $CF=3, FE=5$가 1초 만에 나옵니다!`
+          notes: `• <strong>[닮음으로 구하기]</strong>: $\\angle AEF = 90^\\circ$이므로 왼쪽 $\\triangle ABE(6\\text{-}8\\text{-}10)$와 오른쪽 $\\triangle ECF$는 둘 다 <strong>$3:4:5$ AA 닮음</strong>입니다! $EC=4$이므로 방정식 없이도 $CF=3, FE=5$를 구할 수 있습니다!`
         };
       }
       if (sub === 'triFold') {
@@ -828,44 +828,44 @@ window.addEventListener('DOMContentLoaded', function () {
             { id: 1, name: `🩷 직각삼각형 △ACD에서 피타고라스 방정식`, desc: `AC = 6, CD = 8 - x, 빗변 AD = x`, val: `x = 25/4 (6.25)`, color: PCOL.pink, ok: true }
           ],
           totalRes: `x² = (8 - x)² + 6²  ➔  16x = 100  ➔  AD = BD = x = 25/4`,
-          rule: '종이접기 절대 법칙: 접혀서 같아진 길이를 x로 놓고, 남은 조각(전체-x)으로 직각삼각형 식을 세운다!',
+          rule: '종이접기 풀이 방법: 접혀서 같아진 길이를 x로 놓고, 남은 조각(전체-x)으로 직각삼각형 식을 세운다!',
           formulaHTML: `• ${tex(`x^2 = (8-x)^2 + 6^2 \\implies x^2 = 64 - 16x + x^2 + 36 \\implies 16x = 100 \\implies \\mathbf{x = \\dfrac{25}{4}}`)}`,
           notes: `• 점 $D$를 변 $BC$의 중점($x=4$)이라고 착각하면 절대 안 됩니다! $x = 25/4 = 6.25$입니다.`
         };
       }
       if (sub === 'reflection') {
         return {
-          badge: `탐구 8-C · 직선 위 점 P를 거쳐 가는 최단거리 (AP + PB = AB' 대칭이동 & 점 P 드래그!)`,
-          hint: `캔버스에서 <strong class="text-amber-300">직선 l 위의 점 P를 마우스로 좌우로 드래그</strong>해 보세요! 점 $B$를 직선 $l$에 대칭이동한 $B'$과 $A$를 곧장 이은 <strong class="text-emerald-300">일직선 AB' (직각삼각형 가로 12, 세로 3+6=9 ➔ 빗변 15)</strong>일 때가 최단거리입니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 대칭선 접기' : '🎬 점 B를 직선 아래 B′으로 대칭이동!',
+          badge: `탐구 8-C · 직선 위 점 P를 거쳐 가는 최단거리 (AP + PB = AB', 직선 l에 대하여 대칭인 점 B' 이용 & 점 P 움직이기)`,
+          hint: `캔버스에서 <strong class="text-amber-300">직선 l 위의 점 P를 마우스로 좌우로 드래그</strong>해 보세요! 점 $B$와 직선 $l$에 대하여 대칭인 점 $B'$과 $A$를 곧장 이은 <strong class="text-emerald-300">일직선 AB' (직각삼각형 가로 12, 세로 3+6=9 ➔ 빗변 15)</strong>일 때가 최단거리입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 직선 l을 접는 선으로 접기' : '🎬 점 B를 직선 l 아래의 대칭인 점 B′으로 옮기기!',
           p1Title: '가로 거리(12)', p2Title: '점 P 위치',
           parts: [
-            { id: 0, name: `🟦 대칭이동으로 펴진 선분: PB = PB'`, desc: `직선 l이 BB'의 수직이등분선이므로 항상 PB = PB'`, val: `AP+PB = AP+PB'`, color: PCOL.cyan, ok: true },
-            { id: 1, name: `🟨 큰 직각삼각형 △AKB' (가로 12, 세로 3+6 = 9)`, desc: `높이 3과 대칭 깊이 6이 더해져 세로 합 = 9!`, val: `9 - 12 - 15!`, color: PCOL.gold, ok: true },
+            { id: 0, name: `🟦 대칭인 점 B'을 이용해 펴진 선분: PB = PB'`, desc: `직선 l이 BB'의 수직이등분선이므로 항상 PB = PB'`, val: `AP+PB = AP+PB'`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `🟨 큰 직각삼각형 △AKB' (가로 12, 세로 3+6 = 9)`, desc: `높이 3과 B'까지의 깊이 6이 더해져 세로 합 = 9!`, val: `9 - 12 - 15!`, color: PCOL.gold, ok: true },
             { id: 2, name: `🟩 최단거리 일직선 빗변 AB' = 15 (제곱 = 225)`, desc: `12² + (3+6)² = 144 + 81 = 225 = 15²`, val: `최솟값 = 15`, color: PCOL.green, ok: true }
           ],
-          totalRes: `(AP + PB)의 최솟값 = AB' = √(12² + (3+6)²) = √225 = 15 cm`,
-          rule: '직선 찍고 가는 최단거리: 한 점을 직선 반대편으로 대칭이동하여 큰 직각삼각형의 빗변을 구한다!',
+          totalRes: `(AP + PB)의 최솟값 = AB' ➔ AB'² = 12² + (3+6)² = 225 이므로 AB' = 15 cm`,
+          rule: '직선 위의 점을 지나는 최단거리: 한 점을 직선에 대하여 대칭인 점으로 옮겨 큰 직각삼각형의 빗변을 구한다!',
           formulaHTML: `• ${tex(`(\\overline{AP}+\\overline{PB})_{\\min}^2 = \\overline{AB'}^2 = (\\text{가로 } 12)^2 + (\\text{세로 합 } 3+6)^2 = 144 + 81 = 225 = \\mathbf{15^2}`)}`,
-          notes: `• 세로 높이를 $6 - 3 = 3$으로 빼는 실수를 조심하세요! 대칭이동을 하면 위쪽 $3$과 아래쪽 $6$이 더해져서 <strong>세로 합은 $3 + 6 = 9$</strong>가 됩니다.`
+          notes: `• 세로 높이를 $6 - 3 = 3$으로 빼는 실수를 조심하세요! 대칭인 점 $B'$을 쓰면 위쪽 $3$과 아래쪽 $6$이 더해져서 <strong>세로 합은 $3 + 6 = 9$</strong>가 됩니다.`
         };
       }
       const isCyl = sub === 'cylinderNet';
       return {
         badge: isCyl
-          ? `탐구 8-E · 원기둥 옆면을 한 바퀴 감아 올라가는 실의 최단거리 (휴지심 펼치기!)`
+          ? `탐구 8-E · 원기둥 옆면을 한 바퀴 감아 올라가는 실의 최단거리 (옆면 펼치기)`
           : `탐구 8-D · 직육면체 겉면을 따라 꼭짓점 A에서 G까지 가는 최단거리 (전개도 펼치기!)`,
         hint: isCyl
           ? `원기둥 옆면을 펼치면 <strong class="text-sky-300">가로가 밑면 원주(2πr = 6)</strong>이고 <strong class="text-emerald-300">세로가 높이(h = 8)</strong>인 직사각형이 됩니다! 한 바퀴 감은 실의 최단거리는 대각선 <strong class="text-amber-300">10 cm</strong>입니다!`
           : `접혀 있던 옆면을 펼친 전개도입니다! 실이 지나가는 앞면(5)과 옆면(7)을 나란히 펼치면 <strong class="text-sky-300">가로 합 5+7=12, 세로 5인 직각삼각형</strong>이 되어 최단거리(빗변)는 <strong class="text-amber-300">13</strong>입니다!`,
-        actionTxt: state.fold > 0.5 ? '🎬 입체 느낌으로 접기' : '🎬 평면 전개도로 활짝 펼쳐 일직선 확인!',
+        actionTxt: state.fold > 0.5 ? '🎬 입체도형으로 접기' : '🎬 전개도로 펼쳐 일직선 확인!',
         p1Title: isCyl ? '원주(6)·높이(8)' : '가로합(5+7)·높이(5)', p2Title: '전개 상태',
         parts: [
           { id: 0, name: isCyl ? `🟦 펼친 옆면의 가로 길이 (= 밑면 원주 2πr)` : `🟦 펼친 두 면의 가로 길이 합 (5 + 7 = 12)`, desc: isCyl ? `원기둥 한 바퀴 둘레 = 6 cm` : `앞면 가로(5) + 오른쪽 옆면 가로(7) = 12`, val: isCyl ? `가로 = 6` : `가로 합 = 12`, color: PCOL.cyan, ok: true },
           { id: 1, name: isCyl ? `🟩 원기둥의 세로 높이 (h = 8 cm)` : `🟩 직육면체의 세로 높이 (h = 5 cm)`, desc: `직각을 이루는 세로 직각변`, val: isCyl ? `높이 = 8` : `높이 = 5`, color: PCOL.green, ok: true },
           { id: 2, name: isCyl ? `🟨 최단거리 대각선 빗변 (6 - 8 - 10!)` : `🟨 최단거리 대각선 빗변 AG (5 - 12 - 13!)`, desc: isCyl ? `6² + 8² = 100 ➔ 최단거리 = 10 cm` : `12² + 5² = 169 ➔ 최단거리 = 13`, val: isCyl ? `최단거리 = 10` : `최단거리 = 13`, color: PCOL.gold, ok: true }
         ],
-        totalRes: isCyl ? `원기둥 1바퀴 최단거리 = √(6² + 8²) = 10 cm` : `직육면체 겉면 최단거리 = √((5+7)² + 5²) = 13`,
+        totalRes: isCyl ? `원기둥 1바퀴 최단거리² = 6² + 8² = 100 이므로 최단거리 = 10 cm` : `직육면체 겉면 최단거리² = (5+7)² + 5² = 169 이므로 최단거리 = 13`,
         rule: '모든 입체 겉면 최단거리 = 실이 지나가는 면들을 평면 전개도로 펼쳐 직각삼각형 빗변 구하기!',
         formulaHTML: isCyl
           ? `• ${tex(`(\\text{최단거리})^2 = (2\\pi r)^2 + h^2 = 6^2 + 8^2 = 100 = \\mathbf{10^2}`)}`
@@ -951,7 +951,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ptagAt(mid(A, D), `빗변 AD = ${13 * k}`, PCOL.gold, 14, 'right', -6, -10);
         [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, mid(A, C)));
 
-        drawBottomTapeBanner(rect, `연쇄 직각삼각형: AD²(${(13*k)**2}) = AB²(${(3*k)**2}) + BC²(${(4*k)**2}) + CD²(${(12*k)**2})`, [
+        drawBottomTapeBanner(rect, `이어 붙인 직각삼각형: AD²(${(13*k)**2}) = AB²(${(3*k)**2}) + BC²(${(4*k)**2}) + CD²(${(12*k)**2})`, [
           { text: `AB²(${(3*k)**2})`, weight: 9 / 169, color: PCOL.cyan },
           { text: `BC²(${(4*k)**2})`, weight: 16 / 169, color: PCOL.green },
           { text: `CD²(${(12*k)**2}) ➔ 합 AD²=${(13*k)**2}`, weight: 144 / 169, color: PCOL.gold }
@@ -1010,7 +1010,7 @@ window.addEventListener('DOMContentLoaded', function () {
       drawBottomTapeBanner(
         rect,
         isFindLeg
-          ? `직각변 역산: S₂(${b * b}) = 빗변 S₃(${c * c}) - 작은 S₁(${a * a})  ➔  b = ${b}`
+          ? `직각변 구하기: S₂(${b * b}) = 빗변 S₃(${c * c}) - 작은 S₁(${a * a})  ➔  b = ${b}`
           : `피타고라스 넓이 조립: S₁(${a}²=${a * a}) + S₂(${b}²=${b * b}) = 빗변 S₃(${c}²=${c * c})`,
         [
           { text: `S₁ = ${a}² = ${a * a}`, weight: (a * a) / (c * c), color: PCOL.cyan },
@@ -1058,7 +1058,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const u = t / 0.33;
           pline(G, C, PCOL.pink, 2.0, [5, 4]);
           activeTri = [F, lerp(A, C, u), B];
-          stepDesc = '① 평행선(GC∥FB) 등적변형: △FAB = △FBC';
+          stepDesc = '① 평행선(GC∥FB)을 이용: 밑변 FB 공통, 높이 같음 ➔ △FAB = △FBC';
         } else if (t <= 0.67) {
           const u = (t - 0.33) / 0.34;
           const rotAng = u * (Math.PI / 2);
@@ -1069,7 +1069,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const u = (t - 0.67) / 0.33;
           pline(A, L, PCOL.pink, 2.4, [5, 4]);
           activeTri = [lerp(A, H, u), B, D];
-          stepDesc = '③ 평행선(AL∥BD) 등적변형: △ABD = △HBD (완성!)';
+          stepDesc = '③ 평행선(AL∥BD)을 이용: 밑변 BD 공통, 높이 같음 ➔ △ABD = △HBD (완성!)';
         }
 
         ppoly(activeTri, 'rgba(251, 191, 36, 0.56)', PCOL.gold, 3.8, 1);
@@ -1084,9 +1084,9 @@ window.addEventListener('DOMContentLoaded', function () {
         pdot(E, 'E', PCOL.green, null, { x: 10, y: 14 });
         pdot(L, 'L', PCOL.gold, null, { x: -4, y: 18 });
 
-        drawMiniOverlayBox(rect, '🌪️ 유클리드 넓이 불변 사슬', [
+        drawMiniOverlayBox(rect, '🌪️ 넓이가 이어지는 순서', [
           { txt: '① △FAB = ½ □ABFG (72)', col: '#38bdf8' },
-          { txt: '② = △FBC (GC∥FB 등적변형)', col: '#fbbf24' },
+          { txt: '② = △FBC (GC∥FB: 밑변 FB 공통, 높이 같음)', col: '#fbbf24' },
           { txt: '③ ≡ △ABD (점 B 90° 회전 SAS)', col: '#f472b6' },
           { txt: '④ = △HBD = ½ □BDLH (72)', col: '#34d399' }
         ]);
@@ -1133,7 +1133,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ptag(ox + a + b / 2, oy + a + b / 2 + 4, 'b² = 64', PCOL.gold, 14);
         }
 
-        drawBottomTapeBanner(rect, '조비산경 외접 정사각형(14²=196) = 직각삼각형 4개(96) + 빈 공간(c² = a²+b² = 100)', [
+        drawBottomTapeBanner(rect, '큰 정사각형(14²=196) = 직각삼각형 4개(96) + 빈 공간(c² = a²+b² = 100)', [
           { text: '삼각형 4개 합 (4×24 = 96)', weight: 96 / 196, color: PCOL.cyan },
           { text: '빈 공간 c² = a²(36)+b²(64) = 100', weight: 100 / 196, color: PCOL.gold }
         ]);
@@ -1160,7 +1160,7 @@ window.addEventListener('DOMContentLoaded', function () {
         [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, pt(cx, oy + L / 2)));
         ptag(cx, oy + L / 2 + 4, '(b-a)²=2²=4', PCOL.gold, 12.5);
 
-        drawBottomTapeBanner(rect, '바스카라 내접 정사각형 c²(100) = 직각삼각형 4개(96) + 가운데 구멍 (8-6)²(4)', [
+        drawBottomTapeBanner(rect, '바깥 정사각형 c²(100) = 직각삼각형 4개(96) + 가운데 정사각형 (8-6)²(4)', [
           { text: '직각삼각형 4개 합 (4×24 = 96)', weight: 92 / 100, color: PCOL.cyan },
           { text: '(b-a)²=4', weight: 8 / 100, color: PCOL.gold }
         ]);
@@ -1193,7 +1193,7 @@ window.addEventListener('DOMContentLoaded', function () {
         pdot(D, 'D(90°)', PCOL.white, null, { x: 8, y: 18 });
 
         ptag((B.x + A.x + E.x) / 3, (B.y + A.y + E.y) / 3 + 6, '½c² = 50', PCOL.gold, 13.5);
-        drawBottomTapeBanner(rect, '가필드 사다리꼴 넓이(98) = 양옆 직각삼각형 2개(24+24=48) + 가운데 직각이등변(½c²=50)', [
+        drawBottomTapeBanner(rect, '사다리꼴 넓이(98) = 양옆 직각삼각형 2개(24+24=48) + 가운데 직각이등변(½c²=50)', [
           { text: '△BCE (24)', weight: 24 / 98, color: PCOL.cyan },
           { text: '△EDA (24)', weight: 24 / 98, color: PCOL.green },
           { text: '가운데 직각이등변 ½c² = 50', weight: 50 / 98, color: PCOL.gold }
@@ -1270,7 +1270,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ptagAt(pt(C.x, (A.y + C.y) / 2), `짧은 변 a = ${fam.a} × ${k} = ${a}`, PCOL.cyan, 13.5, 'left', 12, 4);
       ptagAt(mid(A, B), `빗변 c = ${fam.c} × ${k} = ${c}`, PCOL.gold, 14.5, 'right', -10, -8);
 
-      drawBottomTapeBanner(rect, `[${fam.label} 가문 × ${k}배] ${a}²(${a*a}) + ${b}²(${b*b}) = ${c}²(${c*c})`, [
+      drawBottomTapeBanner(rect, `[${fam.label} × ${k}배] ${a}²(${a*a}) + ${b}²(${b*b}) = ${c}²(${c*c})`, [
         { text: `a² = ${a * a}`, weight: (a * a) / (c * c), color: PCOL.cyan },
         { text: `b² = ${b * b}`, weight: (b * b) / (c * c), color: PCOL.green }
       ]);
@@ -1307,7 +1307,7 @@ window.addEventListener('DOMContentLoaded', function () {
       // 점 A가 A₀의 오른쪽(예각)이면 이름표를 왼쪽에, 왼쪽(둔각)이면 오른쪽에 놓아 점 A와 겹치지 않게 합니다
       lensRun('def', () => {
         BOARD.point(A0, { color: 'rgba(251,191,36,0.75)', r: 5.2 });
-        if (Math.abs(hc.deg - 90) >= 8 && !BOARD.thumb) BOARD.text(A0, `A₀(90° 기준 ${thirdName}=${c0Txt})`, { color: 'rgba(251,191,36,0.75)', size: 12.5, align: A.x > A0.x ? 'right' : 'left', baseline: 'alphabetic', weight: 800, dx: A.x > A0.x ? -10 : 10, dy: -12 });
+        if (Math.abs(hc.deg - 90) >= 8 && !BOARD.thumb) BOARD.text(A0, `A₀(90° 기준 ${Number.isInteger(c0) ? `${thirdName}=${c0}` : `${thirdName}²=${hc.base}`})`, { color: 'rgba(251,191,36,0.75)', size: 12.5, align: A.x > A0.x ? 'right' : 'left', baseline: 'alphabetic', weight: 800, dx: A.x > A0.x ? -10 : 10, dy: -12 });
       });
 
       // [2.0] 원본의 ctx.arc 블록 → 호환 함수 parc (같은 호·같은 점선, '보조선' 렌즈 규칙)
@@ -1357,20 +1357,20 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'acuteRange') {
           const pMin = cx - 95 * s, pMax = cx + 95 * s;
           ppoly([pt(pMin, barY - 18), pt(pMax, barY - 18), pt(pMax, barY), pt(pMin, barY)], 'rgba(52, 211, 153, 0.34)', PCOL.green, 2.4, 2);
-          pdot(pt(pMin, barY), '√28(≈5.3)', PCOL.pink, null, { x: -20, y: 20 });
-          pdot(pt(pMax, barY), '10(√100)', PCOL.cyan, null, { x: -15, y: 20 });
-          ptag(cx, barY - 26, '예각 공통범위: 28 < x² < 100  ➔  자연수 x = 6, 7, 8, 9 (4개)', PCOL.green, 13);
+          pdot(pt(pMin, barY), 'x²=28', PCOL.pink, null, { x: -20, y: 20 });
+          pdot(pt(pMax, barY), '10 (x²=100)', PCOL.cyan, null, { x: -15, y: 20 });
+          ptag(cx, barY - 26, '예각이 되는 범위: 28 < x² < 100  ➔  자연수 x = 6, 7, 8, 9 (4개)', PCOL.green, 13);
         } else {
           const p5 = cx - 40 * s, p7 = cx + 95 * s;
           ppoly([pt(p5, barY - 18), pt(p7, barY - 18), pt(p7, barY), pt(p5, barY)], 'rgba(244, 63, 94, 0.35)', PCOL.red, 2.4, 2);
           pdot(pt(cx - 125 * s, barY), '1(4-3)', PCOL.white, null, { x: -15, y: 20 });
-          pdot(pt(p5, barY), '5(직각 √25)', PCOL.gold, null, { x: -25, y: 20 });
+          pdot(pt(p5, barY), '5 (직각, x²=25)', PCOL.gold, null, { x: -25, y: 20 });
           pdot(pt((p5 + p7) / 2, barY), 'x=6(둔각 자연수!)', PCOL.green, null, { x: -35, y: -12 });
           pdot(pt(p7, barY), '7(삼각형 한계 3+4)', PCOL.red, null, { x: -30, y: 20 });
         }
       }
 
-      drawBottomTapeBanner(rect, `현재 ∠C = ${degC}°: ${thirdName}²(${cSq}) ${signStr} a²+b²(${hc.base})  |  둔각 필수 범위: √(a²+b²) < ${thirdName} < a+b`);
+      drawBottomTapeBanner(rect, `현재 ∠C = ${degC}°: ${thirdName}²(${cSq}) ${signStr} a²+b²(${hc.base})  |  둔각이 되려면: a²+b² < ${thirdName}² 이고 ${thirdName} < a+b`);
     }
 
     // =========================================================================
@@ -1546,10 +1546,10 @@ window.addEventListener('DOMContentLoaded', function () {
           lensRun('aux', (sfx) => BOARD.poly(arcPts(mBC, rBC, Math.PI, 0, false), { fill: null, color: PCOL.cyan, stroke: true, width: sfx.hi ? 4.2 : 2.6, dash: [5, 4], glow: sfx.hi, part: 1 }));
         }
 
-        drawMiniOverlayBox(rect, '🌙 히포크라테스 초승달 소거식', [
+        drawMiniOverlayBox(rect, '🌙 초승달 모양의 넓이', [
           { txt: '전체 = S₁ + S₂ + △ABC', col: '#fef08a' },
           { txt: '빼기 = - S₃ (위로 접은 큰 반원)', col: '#38bdf8' },
-          { txt: 'S₁ + S₂ = S₃ 이므로 반원 소멸!', col: '#f43f5e' },
+          { txt: 'S₁ + S₂ = S₃ 이므로 반원의 넓이가 모두 없어짐!', col: '#f43f5e' },
           { txt: `∴ 초승달 합 = △ABC = ${isIso ? 32 : (a*b)/2}`, col: '#34d399' }
         ]);
       }
@@ -1568,7 +1568,7 @@ window.addEventListener('DOMContentLoaded', function () {
       drawBottomTapeBanner(
         rect,
         isLune
-          ? `히포크라테스 초승달: (S₁ + S₂ + △ABC) - S₃ = △ABC 넓이(${isIso ? 32 : (a * b) / 2}) — 원주율 π가 완전히 사라집니다!`
+          ? `초승달 모양의 넓이: (S₁ + S₂ + △ABC) - S₃ = △ABC 넓이(${isIso ? 32 : (a * b) / 2}) — 원주율 π가 완전히 사라집니다!`
           : '직각삼각형 세 변 위의 모든 닮은 도형(정사각형·정삼각형·반원)은 S₁ + S₂ = S₃가 성립합니다!'
       );
     }
@@ -1779,7 +1779,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ptag((K_pt.x + B_ref.x) / 2, B_ref.y + 20, '가로 거리 = 12 cm', PCOL.gold, 13, 'aux');
         ptag(K_pt.x - 48, (A.y + K_pt.y) / 2, '세로 합 = 3+6 = 9', PCOL.gold, 13, 'aux');
 
-        drawBottomTapeBanner(rect, `현재 AP + PB = ${curDist} cm  |  일직선 최솟값 AB' = √(12² + (3+6)²) = 15.00 cm!`, [
+        drawBottomTapeBanner(rect, `현재 AP + PB = ${curDist} cm  |  일직선 최솟값 AB'² = 12² + (3+6)² = 225 이므로 AB' = 15.00 cm!`, [
           { text: '가로 = 12 (12²=144)', weight: 144 / 225, color: PCOL.cyan },
           { text: '세로 합 = 3+6 = 9 (9²=81)', weight: 81 / 225, color: PCOL.gold }
         ]);
@@ -1832,8 +1832,8 @@ window.addEventListener('DOMContentLoaded', function () {
      ====================================================================== */
   const RENDER = { 1: renderMode1ThreeSquares, 2: renderMode2FourProofs, 3: renderMode3Triples, 4: renderMode4AngleJudge, 5: renderMode5SumOfSquares, 6: renderMode6LunesAndShapes, 7: renderMode7CowFormulas, 8: renderMode8Applied };
   const RECT = { width: 1000, height: 700 }; // 원본의 캔버스 크기 자리(하단 띠·미니 상자는 셸의 카드·띠로 옮겨 가므로 값은 쓰이지 않음)
-  const TABS = ['세 정사각형 넓이 (a²+b²=c²)', '4대 증명 (유클리드·바스카라)', '피타고라스 수 & 배수 탐색', '예각·직각·둔각 판별기', '겹친 도형 제곱의 합 3총사', '정삼각형·반원·초승달 넓이', '빗변 수선 & 소(牛) 공식', '종이접기 & 최단거리 응용'];
-  const SHORT = ['세 정사각형', '4대 증명', '피타고라스 수', '예각·둔각', '제곱의 합', '초승달', '빗변 수선', '종이접기'];
+  const TABS = ['세 정사각형 넓이 (a²+b²=c²)', '피타고라스 정리의 증명 4가지', '피타고라스 수 & 배수 탐색', '예각·직각·둔각 판별', '제곱의 합 관계식 3가지', '정삼각형·반원·초승달 모양의 넓이', '빗변에 내린 수선과 닮음', '종이접기 & 최단거리 응용'];
+  const SHORT = ['세 정사각형', '정리의 증명', '피타고라스 수', '예각·둔각', '제곱의 합', '초승달', '빗변 수선', '종이접기'];
   const QUESTIONS = [
     '직각삼각형의 세 변 위에 정사각형을 그리면, 넓이 사이에 어떤 관계가 생길까?',
     '피타고라스 정리는 어떤 그림으로 눈에 보이게 증명할 수 있을까?',
@@ -1842,7 +1842,7 @@ window.addEventListener('DOMContentLoaded', function () {
     '직각이 숨어 있는 도형에서 변 위의 제곱의 합은 어떻게 짝지어질까?',
     '정사각형이 아닌 정삼각형·반원을 그려도 S₁ + S₂ = S₃ 가 성립할까?',
     '빗변에 수선을 그으면 생기는 세 직각삼각형에서 어떤 곱셈식이 성립할까?',
-    '접기와 대칭이동을 직각삼각형 하나로 바꾸면 길이는 어떻게 구할까?'
+    '종이접기와 최단거리 문제를 직각삼각형 하나로 바꾸면 길이는 어떻게 구할까?'
   ];
 
   // 이 장면에서 '변환(0→100%)'이 실제로 그림을 바꾸는 장면만 변환 조절을 보여 줍니다(원본 그리기 코드의 state.fold · t 사용처).
@@ -1908,7 +1908,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id, title: label, short: label, reviewTab: true, autoFit: true,
       question: QUESTIONS[m - 1],
-      notesTitle: '시험장 오답 함정 & 3초 직관',
+      notesTitle: '오답 함정과 참고',
       enter: (s) => {
         // 원본 setMode / setSubType 의 초기화 규칙 그대로
         s.fold = START_FOLD.has(id) ? 1 : 0;
@@ -1918,10 +1918,10 @@ window.addEventListener('DOMContentLoaded', function () {
       controls: () => (FOLD.has(id) ? ['fold'] : id === 'hinge' ? ['hinge'] : []),
       presets: () => {
         const out = [];
-        if (FAM_SCENES.has(id)) FAMILY_LIST.forEach((f) => out.push({ group: '직각삼각형 족보', label: f.label, apply: (st) => { st.fam = f.id; }, on: (st) => Math.round(st.fam) === f.id }));
-        if (K_SCENES.has(id)) [1, 2, 3, 4].forEach((v) => out.push({ group: m === 3 ? '자연수 배수 ×k' : '배수 스케일 ×k', label: `×${v}배`, apply: (st) => { st.mult = v; }, on: (st) => Math.round(st.mult) === v }));
-        if (id === 'hinge') HINGE_ORDER.forEach((d) => out.push({ group: '경첩 각도 ∠C', label: `${d}°`, set: { hinge: d }, ms: 500, on: (st) => Math.round(st.hinge) === d }));
-        LENSES.filter(([k]) => lensList(id).includes(k)).forEach(([k, lb]) => out.push({ group: '관찰 렌즈', label: lb, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
+        if (FAM_SCENES.has(id)) FAMILY_LIST.forEach((f) => out.push({ group: '직각삼각형의 세 변의 비', label: f.label, apply: (st) => { st.fam = f.id; }, on: (st) => Math.round(st.fam) === f.id }));
+        if (K_SCENES.has(id)) [1, 2, 3, 4].forEach((v) => out.push({ group: m === 3 ? '자연수 배수 ×k' : '배수 ×k', label: `×${v}배`, apply: (st) => { st.mult = v; }, on: (st) => Math.round(st.mult) === v }));
+        if (id === 'hinge') HINGE_ORDER.forEach((d) => out.push({ group: '∠C의 크기', label: `${d}°`, set: { hinge: d }, ms: 500, on: (st) => Math.round(st.hinge) === d }));
+        LENSES.filter(([k]) => lensList(id).includes(k)).forEach(([k, lb]) => out.push({ group: '강조해서 보기', label: lb, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
         if (FOLD.has(id)) [0, 0.5, 1].forEach((v) => out.push({ group: '변환 단계', label: v === 0 ? '0% 시작' : v === 1 ? '100% 완성' : '50%', set: { fold: v }, ms: 700, on: (st) => Math.abs(st.fold - v) < 0.01 }));
         return out;
       },
@@ -1985,9 +1985,9 @@ window.addEventListener('DOMContentLoaded', function () {
     state: { lens: 'all' },
     persist: ['lens'],
     params: {
-      fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '변환 진행 (0% → 100%)', hint: '등적변형 · 회전 · 이동 · 접기 같은 변환을 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
-      hinge: { value: 90, min: 45, max: 140, step: 1, color: 'rose', label: '경첩 각도 ∠C', format: (v) => `${Math.round(v)}°` },
-      fam: { value: 0, min: 0, max: 3, step: 1, color: 'sky', label: '직각삼각형 족보' },
+      fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '변환 진행 (0% → 100%)', hint: '넓이를 옮기는 변형 · 회전 · 이동 · 접기 같은 변환을 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
+      hinge: { value: 90, min: 45, max: 140, step: 1, color: 'rose', label: '∠C의 크기', format: (v) => `${Math.round(v)}°` },
+      fam: { value: 0, min: 0, max: 3, step: 1, color: 'sky', label: '직각삼각형의 세 변의 비' },
       mult: { value: 1, min: 1, max: 4, step: 1, color: 'green', label: '배수 ×k' },
       px: { value: -26, min: -700, max: 700, step: 1, color: 'amber', label: '점 P 가로' },
       py: { value: 18, min: -700, max: 700, step: 1, color: 'amber', label: '점 P 세로' },
