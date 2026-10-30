@@ -3,6 +3,8 @@
 Re-solves the plan's quadratic inequality with SymPy (solveset over the reals, the domain interval, the adjoined values), recomputes the integer
 points, and checks the final number-line panel SVG: the end dots (place, filled = closed, hollow = open), the solution band, every integer dot,
 the 0 tick, and every label (its TeX read back as a number or as the interval, centred on its owner, clear of every dot, tick and other label).
+E35: compass constructions (the arc's circle, radius and landing point recomputed from the plan's exact centre and radius) and letter points (no value anywhere; their order,
+mirror and between constraints read from the SVG coordinates) are checked the same way.
 """
 import hashlib
 import math
@@ -274,7 +276,14 @@ TRANSLATE = re.compile(r'translate\(([-\d.e]+) ([-\d.e]+)\)')
 # This observer's own copy of the point-style drawing rules (E30): the half-extent of a CROSS stroke pair and the radius of the ring round an emphasised point.
 CROSS_HALF_PX = 4.2
 RING_RADIUS_PX = 8.0
-POINT_STYLES = ('FILLED', 'HOLLOW', 'CROSS')
+POINT_STYLES = ('FILLED', 'HOLLOW', 'CROSS', 'TICK')
+TICK_MARK_HALF_PX = 7.5          # E35: the TICK style, a short vertical stroke through the axis
+# E35 (this observer's own copies): a letter point's id, how far apart (px) the places that a constraint orders must be, how near a hit's name must stand to its dot, and the compass arc rules.
+SYMBOL_ID = re.compile('^-?[a-z]$')
+SYMBOL_SEPARATION_PX = 10.0
+NAME_BESIDE_ARC_PX = 12.0
+ARC_PATH = re.compile(r'^M (-?[\d.e]+) (-?[\d.e]+) A (-?[\d.e]+) (-?[\d.e]+) 0 0 ([01]) (-?[\d.e]+) (-?[\d.e]+)$')
+ARC_MIN_RISE_PX, ARC_MAX_RISE_PX, ARC_MAX_ANGLE_DEG, ARC_CLEAR_PX, ARC_SAMPLES = 8.0, 80.0, 40.0, 1.2, 48
 
 
 def _end_value(raw, parameter):
@@ -304,6 +313,43 @@ def _point_flags(point):
     side = point.get('valueSide')
     if side not in (None, 'ABOVE', 'BELOW'): raise ValueError('NL_OBSERVER_PLAN_INVALID')
     return {'name_hidden': hidden, 'jamo': jamo, 'show_value': point.get('showValue') is not False, 'style': point.get('style'), 'value_above': side == 'ABOVE'}
+
+
+def _check_point_style(element, point_id, style, inside, lines, by_id):
+    """The drawing of one marked point in its style (FILLED, HOLLOW, CROSS) and its ring (a point inside a `within` set): read from the dot, its strokes and its ring."""
+    errors = []
+    fill = (element.get('fill') or '').lower()
+    if style == 'FILLED':
+        if fill != '#111': errors.append('NL_POINT_NOT_FILLED:' + point_id)
+        if element.get('data-point-style') is not None or element.get('data-state') != 'CLOSED': errors.append('NL_POINT_STYLE:' + point_id)
+    elif style == 'HOLLOW':
+        if fill != '#fff' or element.get('data-point-style') != 'HOLLOW' or element.get('data-state') != 'OPEN': errors.append('NL_POINT_STYLE:' + point_id)
+    elif style == 'TICK':
+        marks = [l for l in lines if l.get('data-role') == 'tick-mark' and l.get('data-of') == element.get('id')]
+        if fill != 'none' or element.get('stroke') != 'none' or element.get('data-point-style') != 'TICK' or element.get('data-state') != 'CLOSED': errors.append('NL_POINT_STYLE:' + point_id)
+        cx, cy = _num(element, 'cx'), _num(element, 'cy')
+        if len(marks) != 1: errors.append('NL_POINT_TICK_MARK_COUNT:' + point_id)
+        for l in marks:
+            if abs(_num(l, 'x1') - cx) > TOL or abs(_num(l, 'x2') - cx) > TOL or abs((_num(l, 'y1') + _num(l, 'y2')) / 2 - cy) > TOL or abs(abs(_num(l, 'y2') - _num(l, 'y1')) / 2 - TICK_MARK_HALF_PX) > 0.05: errors.append('NL_POINT_TICK_MARK_GEOMETRY:' + point_id)
+    else:
+        if fill != 'none' or element.get('stroke') != 'none' or element.get('data-point-style') != 'CROSS': errors.append('NL_POINT_STYLE:' + point_id)
+        crosses = [l for l in lines if l.get('data-role') == 'cross' and l.get('data-of') == element.get('id')]
+        cx, cy = _num(element, 'cx'), _num(element, 'cy')
+        signs = []
+        for l in crosses:
+            half_x, half_y = (_num(l, 'x2') - _num(l, 'x1')) / 2, (_num(l, 'y2') - _num(l, 'y1')) / 2
+            mid_x, mid_y = (_num(l, 'x2') + _num(l, 'x1')) / 2, (_num(l, 'y2') + _num(l, 'y1')) / 2
+            if abs(mid_x - cx) > TOL or abs(mid_y - cy) > TOL or abs(abs(half_x) - CROSS_HALF_PX) > 0.05 or abs(abs(half_y) - CROSS_HALF_PX) > 0.05: errors.append('NL_POINT_CROSS_GEOMETRY:' + point_id)
+            signs.append(1 if half_x * half_y > 0 else -1)
+        if len(crosses) != 2 or sorted(signs) != [-1, 1]: errors.append('NL_POINT_CROSS_STROKES:' + point_id)
+    if style != 'CROSS' and any(l.get('data-role') == 'cross' and l.get('data-of') == element.get('id') for l in lines): errors.append('NL_POINT_CROSS_UNEXPECTED:' + point_id)
+    if style != 'TICK' and any(l.get('data-role') == 'tick-mark' and l.get('data-of') == element.get('id') for l in lines): errors.append('NL_POINT_TICK_MARK_UNEXPECTED:' + point_id)
+    ring = by_id.get(element.get('id', '') + '-ring')
+    if inside:
+        if ring is None or ring.get('data-dot') != 'ring' or ring.get('data-of') != element.get('id') or (ring.get('fill') or '').lower() != 'none' \
+                or abs(_num(ring, 'cx') - _num(element, 'cx')) > TOL or abs(_num(ring, 'cy') - _num(element, 'cy')) > TOL or abs(_num(ring, 'r') - RING_RADIUS_PX) > 0.05: errors.append('NL_POINT_RING:' + point_id)
+    elif ring is not None: errors.append('NL_POINT_RING_UNEXPECTED:' + point_id)
+    return errors
 
 
 def _label_box(label):
@@ -430,6 +476,76 @@ def _check_spans(index, spans, values, px, axis_y, root, by_id, owners, label_bo
     return errors
 
 
+def _construction_plans(numberLine, rows):
+    """The compass constructions the plan asks for, per 1-based row number: [{id, center, radius (exact), hits:[(id, branch)]}] (an invalid plan is the observer's error, not a figure's)."""
+    raw = numberLine.get('constructions')
+    if raw is None: return {}
+    if not isinstance(raw, list) or not 1 <= len(raw) <= 4: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+    point_rows = [i for i, row in enumerate(rows, start=1) if row['kind'] == 'POINTS']
+    out = {}
+    for item in raw:
+        if not isinstance(item, dict) or set(item) - {'id', 'row', 'center', 'radius', 'arc', 'hits'}: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        row = item.get('row')
+        if row is None:
+            if len(point_rows) != 1: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+            row = point_rows[0]
+        if row not in point_rows or not isinstance(item.get('radius'), dict) or not isinstance(item.get('arc'), dict) or not isinstance(item.get('hits'), list): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        radius = _value(item['radius'].get('value'), 'NL_OBSERVER_PLAN_INVALID')
+        side = item['arc'].get('side')
+        if not radius > 0 or side not in ('LEFT', 'RIGHT', 'BOTH'): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        hits = [(hit.get('id'), hit.get('branch')) for hit in item['hits'] if isinstance(hit, dict)]
+        want = ['LEFT', 'RIGHT'] if side == 'BOTH' else [side]
+        if len(hits) != len(item['hits']) or sorted(branch for _, branch in hits) != sorted(want) or not isinstance(item.get('center'), str) or not isinstance(item.get('id'), str):
+            raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        out.setdefault(row, []).append({'id': item['id'], 'center': item['center'], 'radius': radius, 'hits': hits})
+    return out
+
+
+def _check_constructions(index, plans, values, px, unit_scale, axis_y, root, by_id, circles, label_boxes):
+    """Every compass arc of row `index`, recomputed from the plan: the circle round the centre point with the exact radius, landing on the hit (centre +- radius, exactly), drawn over the
+    line, short of a quarter turn, with the centre's side of the sweep right; clear of every label and of every dot but its own hit."""
+    errors = []
+    drawn = [e for e in root.iter(NS + 'path') if e.get('data-role') == 'construction-arc' and e.get('data-row') == str(index)]
+    wanted = [(plan, hit_id, branch) for plan in plans for hit_id, branch in plan['hits']]
+    if len(drawn) != len(wanted): errors.append('NL_CONSTRUCTION_ARC_COUNT:%d' % index)
+    for plan, hit_id, branch in wanted:
+        aid = 'r%d-con-%s-%s' % (index, plan['id'], branch.lower())
+        element = by_id.get(aid)
+        if element is None: errors.append('NL_CONSTRUCTION_ARC_MISSING:' + aid); continue
+        if plan['center'] not in values or hit_id not in values: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        centre_value, radius = values[plan['center']], plan['radius']
+        # the hit is exactly centre +- radius (SymPy), whatever the engine thinks
+        if S.simplify(values[hit_id] - (centre_value + radius if branch == 'RIGHT' else centre_value - radius)) != 0: errors.append('NL_CONSTRUCTION_HIT_VALUE:' + aid)
+        if (element.get('data-construction'), element.get('data-center'), element.get('data-hit'), element.get('data-branch')) != (plan['id'], plan['center'], hit_id, branch): errors.append('NL_CONSTRUCTION_ARC_ATTRIBUTES:' + aid)
+        try:
+            if S.simplify(_value(element.get('data-radius'), 'NL_CONSTRUCTION_ARC_RADIUS_TEXT') - radius) != 0: errors.append('NL_CONSTRUCTION_ARC_RADIUS_TEXT:' + aid)
+        except ValueError: errors.append('NL_CONSTRUCTION_ARC_RADIUS_TEXT:' + aid)
+        match = ARC_PATH.fullmatch(element.get('d') or '')
+        if not match: errors.append('NL_CONSTRUCTION_ARC_SHAPE:' + aid); continue
+        x0, y0, rx, ry, sweep, x1, y1 = (float(g) for g in match.groups())
+        cx, cy, R = px(centre_value), axis_y, float(radius) * unit_scale
+        direction = 1 if branch == 'RIGHT' else -1
+        if abs(rx - R) > TOL or abs(ry - R) > TOL: errors.append('NL_CONSTRUCTION_ARC_RADIUS:' + aid)
+        if abs(math.hypot(x0 - cx, y0 - cy) - R) > TOL or abs(math.hypot(x1 - cx, y1 - cy) - R) > TOL: errors.append('NL_CONSTRUCTION_ARC_CENTER:' + aid)
+        hit_dot = next((c for c in circles if c.get('data-row') == str(index) and c.get('data-point-id') == hit_id and c.get('data-dot') == 'point'), None)
+        # it starts at the hit's place (from the plan) and on the dot that is drawn for the hit
+        if abs(x0 - px(values[hit_id])) > TOL or abs(y0 - axis_y) > TOL or hit_dot is None or abs(x0 - _num(hit_dot, 'cx')) > TOL or abs(y0 - _num(hit_dot, 'cy')) > TOL: errors.append('NL_CONSTRUCTION_ARC_NOT_AT_HIT:' + aid)
+        rise = axis_y - y1
+        angle = math.degrees(math.atan2(rise, direction * (x1 - cx)))
+        if not ARC_MIN_RISE_PX <= rise <= ARC_MAX_RISE_PX or not 0 < angle <= ARC_MAX_ANGLE_DEG: errors.append('NL_CONSTRUCTION_ARC_EXTENT:' + aid)
+        cross = (x0 - cx) * (y1 - cy) - (y0 - cy) * (x1 - cx)
+        if int(sweep) != (1 if cross > 0 else 0) or match.group(5) not in ('0', '1'): errors.append('NL_CONSTRUCTION_ARC_SWEEP:' + aid)
+        # clear of every label (box grown a little) and of every dot but its own hit
+        points = [(cx + direction * R * math.cos(math.radians(angle) * k / ARC_SAMPLES), cy - R * math.sin(math.radians(angle) * k / ARC_SAMPLES)) for k in range(ARC_SAMPLES + 1)]
+        for label_id, b in label_boxes:
+            if any(b[0] - ARC_CLEAR_PX < x < b[0] + b[2] + ARC_CLEAR_PX and b[1] - ARC_CLEAR_PX < y < b[1] + b[3] + ARC_CLEAR_PX for x, y in points): errors.append('NL_CONSTRUCTION_ARC_ON_LABEL:%s:%s' % (aid, label_id))
+        for circle in circles:
+            if circle.get('data-row') != str(index) or circle.get('data-point-id') == hit_id: continue
+            dx, dy, r = _num(circle, 'cx'), _num(circle, 'cy'), _num(circle, 'r') + 0.6
+            if any(math.hypot(x - dx, y - dy) <= r for x, y in points): errors.append('NL_CONSTRUCTION_ARC_ON_DOT:%s:%s' % (aid, circle.get('id')))
+    return errors
+
+
 def _scale_of(row_spec, values):
     """The graduated axis a POINTS row asks for: ({integer: label...}, {minor value: parts}) re-derived from its subdivisions, or None."""
     subdivisions = row_spec.get('subdivisions')
@@ -481,12 +597,12 @@ def expected_figure(numberLine):
             solution = sets[0]
             for other in sets[1:]: solution = solution.intersect(other)
         elif kind == 'POINTS':
-            values = {point['id']: _rational(point['value'], 'NL_OBSERVER_PLAN_INVALID') for point in row['points'] if 'value' in point}
+            values = {point['id']: _value(point['value'], 'NL_OBSERVER_PLAN_INVALID') for point in row['points'] if 'value' in point}
             for point in row['points']:
                 if 'divides' in point:
                     m, n = (S.Integer(part) for part in point['divides']['ratio'])
                     values[point['id']] = (n * values[point['divides']['from']] + m * values[point['divides']['to']]) / (m + n)
-            rows.append({'kind': kind, 'values': values, 'spec': row})
+            rows.append({'kind': kind, 'values': values, 'symbols': [point for point in row['points'] if 'value' not in point and 'divides' not in point], 'spec': row})
             continue
         else: raise ValueError('NL_OBSERVER_PLAN_INVALID')
         pieces = _pieces_of(solution)
@@ -530,7 +646,14 @@ def audit_figure(numberLine, svg, pointNames=None):
         return parse_tex_number(label.get('data-tex') or '', symbols)
     def at_value(expression): return S.simplify(S.sympify(expression).subs(at_sample))
     # E34: the points whose value the plan writes above the dot (over the name), and every label's box (a span must keep clear of all of them)
-    value_above = {(str(i), point['id']) for i, r_ in enumerate(rows, start=1) if r_['kind'] == 'POINTS' for point in r_['spec']['points'] if _point_flags(point)['value_above']}
+    value_above = {(str(i), point['id']) for i, r_ in enumerate(rows, start=1) if r_['kind'] == 'POINTS' for point in r_['spec']['points'] if ('value' in point or 'divides' in point) and _point_flags(point)['value_above']}
+    # E35: the compass constructions the plan asks for, per row, and for each hit the sides its arcs rise to (its name must stand on the other side)
+    con_plans = _construction_plans(numberLine, rows)
+    hit_branches = {}
+    for index_, plans_ in con_plans.items():
+        for plan_ in plans_:
+            for hit_id_, branch_ in plan_['hits']: hit_branches.setdefault((str(index_), hit_id_), set()).add(branch_)
+    unit_scale = (px_right - px_left) / (unit_right - unit_left)
     label_boxes = [(label.get('id'), box) for label, box in ((l, _label_box(l)) for l in labels) if box is not None]
     for index, row in enumerate(rows, start=1):
         axis = by_id.get('r%d-axis' % index)
@@ -560,9 +683,12 @@ def audit_figure(numberLine, svg, pointNames=None):
         if row['kind'] == 'POINTS':
             values = row['values']
             drawn = {element.get('data-point-id'): element for element in row_circles if element.get('data-dot') == 'point'}
-            flags = {point['id']: _point_flags(point) for point in row['spec']['points']}
+            symbols = row['symbols']
+            for point in symbols:
+                if not isinstance(point['id'], str) or not SYMBOL_ID.fullmatch(point['id']): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+            flags = {point['id']: _point_flags(point) for point in row['spec']['points'] if 'value' in point or 'divides' in point}
             scale = _scale_of(row['spec'], list(values.values()))
-            if set(drawn) != set(values): errors.append('NL_POINT_SET_MISMATCH:%d' % index)
+            if set(drawn) != set(values) | {point['id'] for point in symbols}: errors.append('NL_POINT_SET_MISMATCH:%d' % index)
             # within: every point is classified against the set of an earlier SET / RESULT row, solved here from the plan (inside: FILLED and ringed, outside: CROSS, unless the plan styles the point)
             within = row['spec'].get('within')
             within_pieces = None
@@ -577,31 +703,11 @@ def audit_figure(numberLine, svg, pointNames=None):
                 inside = None if within_pieces is None else any(piece.contains(value) == S.true for piece in within_pieces)
                 style = flag['style'] if flag['style'] is not None else ('CROSS' if inside is False else 'FILLED')
                 if style not in POINT_STYLES: raise ValueError('NL_OBSERVER_PLAN_INVALID')
-                fill = (element.get('fill') or '').lower()
-                if style == 'FILLED':
-                    if fill != '#111': errors.append('NL_POINT_NOT_FILLED:' + point_id)
-                    if element.get('data-point-style') is not None or element.get('data-state') != 'CLOSED': errors.append('NL_POINT_STYLE:' + point_id)
-                elif style == 'HOLLOW':
-                    if fill != '#fff' or element.get('data-point-style') != 'HOLLOW' or element.get('data-state') != 'OPEN': errors.append('NL_POINT_STYLE:' + point_id)
-                else:
-                    if fill != 'none' or element.get('stroke') != 'none' or element.get('data-point-style') != 'CROSS': errors.append('NL_POINT_STYLE:' + point_id)
-                    crosses = [l for l in lines if l.get('data-role') == 'cross' and l.get('data-of') == element.get('id')]
-                    cx, cy = _num(element, 'cx'), _num(element, 'cy')
-                    signs = []
-                    for l in crosses:
-                        half_x, half_y = (_num(l, 'x2') - _num(l, 'x1')) / 2, (_num(l, 'y2') - _num(l, 'y1')) / 2
-                        mid_x, mid_y = (_num(l, 'x2') + _num(l, 'x1')) / 2, (_num(l, 'y2') + _num(l, 'y1')) / 2
-                        if abs(mid_x - cx) > TOL or abs(mid_y - cy) > TOL or abs(abs(half_x) - CROSS_HALF_PX) > 0.05 or abs(abs(half_y) - CROSS_HALF_PX) > 0.05: errors.append('NL_POINT_CROSS_GEOMETRY:' + point_id)
-                        signs.append(1 if half_x * half_y > 0 else -1)
-                    if len(crosses) != 2 or sorted(signs) != [-1, 1]: errors.append('NL_POINT_CROSS_STROKES:' + point_id)
-                if style != 'CROSS' and any(l.get('data-role') == 'cross' and l.get('data-of') == element.get('id') for l in lines): errors.append('NL_POINT_CROSS_UNEXPECTED:' + point_id)
-                ring = by_id.get(element.get('id', '') + '-ring')
-                if inside:
-                    if ring is None or ring.get('data-dot') != 'ring' or ring.get('data-of') != element.get('id') or (ring.get('fill') or '').lower() != 'none' \
-                            or abs(_num(ring, 'cx') - _num(element, 'cx')) > TOL or abs(_num(ring, 'cy') - _num(element, 'cy')) > TOL or abs(_num(ring, 'r') - RING_RADIUS_PX) > 0.05: errors.append('NL_POINT_RING:' + point_id)
-                elif ring is not None: errors.append('NL_POINT_RING_UNEXPECTED:' + point_id)
+                errors.extend(_check_point_style(element, point_id, style, inside, lines, by_id))
                 text = element.get('data-value', '')
-                if not RATIONAL.fullmatch(text) or S.Rational(text) != value: errors.append('NL_POINT_VALUE:' + point_id)
+                try: value_ok = S.simplify(_value(text, 'NL_POINT_VALUE') - value) == 0
+                except ValueError: value_ok = False
+                if not value_ok: errors.append('NL_POINT_VALUE:' + point_id)
                 if element.get('data-value-shown') != (None if flag['show_value'] else 'false'): errors.append('NL_POINT_VALUE_FLAG:' + point_id)
                 mine = owners.get(element.get('id'), [])
                 names = [l for l in mine if l.get('data-label-role') == 'point-name']
@@ -617,13 +723,54 @@ def audit_figure(numberLine, svg, pointNames=None):
                     try:
                         if read(l) != value: errors.append('NL_POINT_VALUE_LABEL:' + point_id)
                     except ValueError as error: errors.append(str(error) + ':' + str(l.get('id')))
+            # E35: letter points. A dot with no value and one label, its name (italic letter, as the plan spells it); its place is read from the SVG and the plan's constraints
+            # (between, mirrorOf, the row's order) are checked on those coordinates. Nothing about the place is written: no value label, no data-value.
+            px_of = {point_id: _num(element, 'cx') for point_id, element in drawn.items() if point_id in values or any(sp['id'] == point_id for sp in symbols)}
+            for point in symbols:
+                point_id = point['id']
+                element = drawn.get(point_id)
+                if element is None: continue
+                if abs(_num(element, 'cy') - axis_y) > TOL: errors.append('NL_POINT_POSITION:' + point_id)
+                if element.get('data-symbol') != point_id or element.get('data-value') is not None or element.get('data-value-shown') is not None: errors.append('NL_SYMBOL_DOT:' + point_id)
+                style = point.get('style') or 'FILLED'
+                if style not in POINT_STYLES: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+                errors.extend(_check_point_style(element, point_id, style, None, lines, by_id))
+                mine = owners.get(element.get('id'), [])
+                names = [l for l in mine if l.get('data-label-role') == 'point-symbol']
+                if len(names) != 1 or len(mine) != 1: errors.append('NL_SYMBOL_LABEL_COUNT:' + point_id)
+                for l in names:
+                    if l.get('data-tex') != point_id or l.get('data-text') is not None: errors.append('NL_SYMBOL_LABEL_TEXT:' + point_id)
+            def x_of(token):
+                if not isinstance(token, str): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+                return px_of[token] if token in px_of else px(_value(token, 'NL_OBSERVER_PLAN_INVALID'))
+            for point in symbols:
+                point_id = point['id']
+                if point_id not in px_of: continue
+                between = point.get('between')
+                if between is not None:
+                    if not isinstance(between, list) or len(between) != 2: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+                    a, b = sorted(x_of(token) for token in between)
+                    if not a + SYMBOL_SEPARATION_PX <= px_of[point_id] <= b - SYMBOL_SEPARATION_PX: errors.append('NL_SYMBOL_BETWEEN:' + point_id)
+                mirror = point.get('mirrorOf')
+                if mirror is not None:
+                    if mirror not in px_of: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+                    if abs(px_of[point_id] + px_of[mirror] - 2 * px(0)) > TOL or abs(px_of[point_id] - px(0)) < SYMBOL_SEPARATION_PX: errors.append('NL_SYMBOL_MIRROR:' + point_id)
+            order = row['spec'].get('order')
+            if order is not None:
+                if not isinstance(order, list) or len(order) < 2 or any(token not in px_of for token in order): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+                for left_id, right_id in zip(order, order[1:]):
+                    if not px_of[left_id] + SYMBOL_SEPARATION_PX <= px_of[right_id]: errors.append('NL_SYMBOL_ORDER:%s:%s' % (left_id, right_id))
+            # every point of the row, as a place on the number line (a letter point's place is read back from where it is drawn)
+            all_u = {point_id: float(value) for point_id, value in values.items()}
+            for point_id, x in px_of.items():
+                if point_id not in all_u: all_u[point_id] = unit_left + (x - px_left) / (px_right - px_left) * (unit_right - unit_left)
             # The band spans the outermost points (unless the plan turns it off); each internal division carries its ratio parts over its two sub-segments.
             band = by_id.get('r%d-band-1' % index)
             row_bands = [element for element in lines if element.get('data-role') == 'solution-band' and in_row(element)]
             if row['spec'].get('band') is False:
                 if row_bands: errors.append('NL_BAND_UNEXPECTED:%d' % index)
             elif band is None: errors.append('NL_BAND_MISSING:%d' % index)
-            elif abs(_num(band, 'x1') - px(min(values.values()))) > TOL or abs(_num(band, 'x2') - px(max(values.values()))) > TOL or abs(_num(band, 'y1') - axis_y) > TOL: errors.append('NL_BAND_EXTENT:%d' % index)
+            elif abs(_num(band, 'x1') - px(min(all_u.values()))) > TOL or abs(_num(band, 'x2') - px(max(all_u.values()))) > TOL or abs(_num(band, 'y1') - axis_y) > TOL: errors.append('NL_BAND_EXTENT:%d' % index)
             # The graduated axis: a labelled tick at every integer of the range and shorter ticks at the equal parts, nowhere else.
             row_ticks = [element for element in ticks if in_row(element)]
             if scale is None:
@@ -670,10 +817,12 @@ def audit_figure(numberLine, svg, pointNames=None):
                     if abs(centre - (px(values[span[0]]) + px(values[span[1]])) / 2) > 0.5: errors.append('NL_RATIO_NOT_CENTRED:' + str(label.get('id')))
                     if label.get('data-tex') != want: errors.append('NL_RATIO_VALUE:' + str(label.get('id')))
             # spans (E34): a brace or arrow between two points of the row, recomputed from the plan's two end values
-            span_plan = _span_plan(row['spec'], values)
+            span_plan = _span_plan(row['spec'], all_u)
             if span_plan is None:
                 if any(e.get('data-row') == str(index) and e.get('data-role') in ('span-brace', 'span-arrow') for e in root.iter()): errors.append('NL_SPAN_UNEXPECTED:%d' % index)
-            else: errors.extend(_check_spans(index, span_plan, values, px, axis_y, root, by_id, owners, label_boxes))
+            else: errors.extend(_check_spans(index, span_plan, all_u, px, axis_y, root, by_id, owners, label_boxes))
+            # E35: compass arcs, recomputed from the plan's centre, radius and hits
+            errors.extend(_check_constructions(index, con_plans.get(index, []), values, px, unit_scale, axis_y, root, by_id, circles, label_boxes))
             continue
         # SET / RESULT rows
         pieces = row['pieces']
@@ -790,7 +939,13 @@ def audit_figure(numberLine, svg, pointNames=None):
         target = by_id.get(owner)
         if target is None: errors.append('NL_LABEL_OWNER_MISSING:' + str(label_id)); continue
         at = (_num(target, 'x1') + _num(target, 'x2')) / 2 if role == 'set' else _num(target, 'x1') if role == 'tick' else _num(target, 'cx')
-        if abs(centre - at) > 0.5: errors.append('NL_LABEL_NOT_CENTRED:' + str(label_id))
+        sides = hit_branches.get((row_n, target.get('data-point-id'))) if role == 'point-name' else None
+        if sides is not None and len(sides) == 1:
+            # a compass arc rises from this point towards its centre: the name stands on the other side of the dot, above it and near it
+            dot_x = _num(target, 'cx')
+            beside = box[0] >= dot_x and box[0] - dot_x <= NAME_BESIDE_ARC_PX if 'RIGHT' in sides else box[0] + box[2] <= dot_x and dot_x - (box[0] + box[2]) <= NAME_BESIDE_ARC_PX
+            if not beside: errors.append('NL_CONSTRUCTION_NAME_SIDE:' + str(label_id))
+        elif abs(centre - at) > 0.5: errors.append('NL_LABEL_NOT_CENTRED:' + str(label_id))
         # a point's value is written below the axis, or (on a graduated axis, whose ticks use the space below) stacked above its name
         stacked = role == 'point-value' and (any(t.get('data-scale') for t in ticks if t.get('data-row') == row_n) or (row_n, target.get('data-point-id')) in value_above)
         if stacked:
@@ -799,7 +954,7 @@ def audit_figure(numberLine, svg, pointNames=None):
                 if other.get('data-label-role') == 'point-name':
                     other_match, other_inner = TRANSLATE.fullmatch(other.get('transform') or ''), other.find(NS + 'svg')
                     if other_match and other_inner is not None and box[1] + box[3] > float(other_match.group(2)) + 0.5: errors.append('NL_VALUE_NOT_ABOVE_NAME:' + str(label_id))
-        elif role in ('endpoint', 'tick', 'point-value') and axis_y is not None and box[1] < axis_y + 1.6: errors.append('NL_LABEL_NOT_BELOW_AXIS:' + str(label_id))
+        elif role in ('endpoint', 'tick', 'point-value', 'point-symbol') and axis_y is not None and box[1] < axis_y + 1.6: errors.append('NL_LABEL_NOT_BELOW_AXIS:' + str(label_id))
         if role in ('integer', 'point-name') and box[1] + box[3] > _num(target, 'cy') - _num(target, 'r'): errors.append('NL_LABEL_NOT_ABOVE_DOT:' + str(label_id))
         if role == 'set' and axis_y is not None and box[1] + box[3] > axis_y - 8: errors.append('NL_LABEL_NOT_ABOVE_BAND:' + str(label_id))
     for i, (label_id, a) in enumerate(boxes):
