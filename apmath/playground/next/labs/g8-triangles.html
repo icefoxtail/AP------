@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>삼각형 경험도감 · AP Math 실험실</title>
-<meta name="description" content="중2 삼각형의 성질: 이등변삼각형과 네 선분, 직각·일반 삼각형의 합동, 각의 이등분선과 수직이등분선, 외심·내심·무게중심, 고난도 각 추론까지 8개 탐구관 48개 장면">
+<meta name="description" content="중2 삼각형의 성질: 이등변삼각형과 꼭지각의 이등분선·중선·수선, 직각·일반 삼각형의 합동, 각의 이등분선과 수직이등분선, 외심·내심·무게중심, 고난도 각 추론까지 8개 탐구관 48개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -2167,8 +2167,8 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ======================================================================
      2.0 셸 연결 (새로 작성한 부분)
      ====================================================================== */
-  const TABS = ['이등변삼각형 & 네 선분', '직각삼각형의 합동 RHA/RHS', '삼각형의 합동 SSS/SAS/ASA', '각·수직이등분선', '외심 O & 수직이등분', '내심 I & 넓이·꼭짓점에서 접점까지의 거리', '외심·내심·무게중심 비교', '고난도 각 & 보조선'];
-  const SHORT = ['이등변·네 선분', '직각삼각형 합동', '삼각형 합동', '각·수직이등분선', '외심 O', '내심 I', 'O·I·G 비교', '고난도 각'];
+  const TABS = ['이등변삼각형 & 꼭지각의 이등분선·중선·수선·밑변의 수직이등분선', '직각삼각형의 합동 RHA/RHS', '삼각형의 합동 SSS/SAS/ASA', '각·수직이등분선', '외심 O & 수직이등분', '내심 I & 넓이·꼭짓점에서 접점까지의 거리', '외심·내심·무게중심 비교', '고난도 각 & 보조선'];
+  const SHORT = ['이등변·이등분선·중선·수선', '직각삼각형 합동', '삼각형 합동', '각·수직이등분선', '외심 O', '내심 I', 'O·I·G 비교', '고난도 각'];
   const QUESTIONS = [
     '이등변삼각형에서는 각의 이등분선·중선·수선이 한 선으로 겹칠까? 일반 삼각형에서는 어떻게 달라질까?',
     '직각삼각형은 어떤 조건 두 가지만 같아도 합동이 될까?',
