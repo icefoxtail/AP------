@@ -2623,7 +2623,17 @@ def _ov_expected(plan):
             if lo is not None and not lo<=float(S.N(x,30))<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
             row['at']=(float(S.N(x,30)),float(S.N(_ov_curve_value(plan,x,entry.get('curve')),30)))
         names.append(row)
-    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+    quadrants=[];seen_quadrants=set()
+    for entry in raw.get('quadrants',[]) or []:
+        # quadrants (E31): read again from the raw field here
+        if not isinstance(entry,dict) or set(entry)-{'id','quadrant','label','fill'}:raise ValueError('OVERLAY_QUADRANT_INVALID')
+        number=entry.get('quadrant');label=entry.get('label');fill=entry.get('fill')
+        if not isinstance(entry.get('id'),str) or isinstance(number,bool) or number not in (1,2,3,4) or number in seen_quadrants:raise ValueError('OVERLAY_QUADRANT_INVALID')
+        if label is None and fill is None:raise ValueError('OVERLAY_QUADRANT_INVALID')
+        if label is not None and (not isinstance(label,str) or label!=label.strip() or not re.fullmatch(r'[가-힣A-Za-z0-9 ()]{1,12}',label)):raise ValueError('OVERLAY_QUADRANT_INVALID')
+        if fill is not None and fill not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_QUADRANT_INVALID')
+        seen_quadrants.add(number);quadrants.append({'id':entry['id'],'quadrant':number,'label':label,'fill':fill})
+    return {'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
 
 OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
 
@@ -2934,6 +2944,36 @@ def overlays_audit(plan,svg,transform):
                 own_distance=min(_ov_box_segment_distance(box,*piece) for piece in curve_segments)
                 if own_distance>OV_NAME_CURVE_OWN_MAX_PX:errors.append('OVERLAY_NAME_LABEL_NOT_NEAR_CURVE:'+str(name['id']))
                 elif any(_ov_box_segment_distance(box,*other)<own_distance+OV_NAME_CURVE_MARGIN_PX for other in overlay_px):errors.append('OVERLAY_NAME_LABEL_AMBIGUOUS_OWNER:'+str(name['id']))
+            # quadrants (E31): the tinted rectangle between the origin and the end of the drawn axes on that side, under every stroke, and the plain-text name inside it.
+            if expected['quadrants']:
+                by_id={node.get('id'):node for node in root.iter() if node.get('id')}
+                axis_px={name:px_segment(name) for name in ('x-axis','y-axis')}
+                if any(value is None for value in axis_px.values()):errors.append('OVERLAY_QUADRANT_AXES_MISSING')
+                else:
+                    xs=sorted(point[0] for point in axis_px['x-axis']);ys=sorted(point[1] for point in axis_px['y-axis'])
+                    document={id(node):index for index,node in enumerate(root.iter())}
+                    for quadrant in expected['quadrants']:
+                        ident='overlay-quadrant-'+quadrant['id'];claimed.add(ident+'-fill');claimed.add(ident+'-label')
+                        number=quadrant['quadrant'];edge_x=xs[1] if number in (1,4) else xs[0];edge_y=ys[0] if number in (1,2) else ys[1]
+                        rect=[(ox,oy),(edge_x,oy),(edge_x,edge_y),(ox,edge_y)]
+                        within=lambda point:min(ox,edge_x)-.5<=point[0]<=max(ox,edge_x)+.5 and min(oy,edge_y)-.5<=point[1]<=max(oy,edge_y)+.5
+                        fill=by_id.get(ident+'-fill')
+                        if quadrant['fill'] is not None:
+                            if fill is None or fill.tag.split('}')[-1]!='polygon':errors.append('OVERLAY_QUADRANT_FILL_MISSING:'+quadrant['id'])
+                            else:
+                                points=[tuple(float(value) for value in pair.split(',')) for pair in (fill.get('points') or '').split()]
+                                if len(points)!=4 or any(not any(math.hypot(a[0]-b[0],a[1]-b[1])<=.05 for b in points) for a in rect):errors.append('OVERLAY_QUADRANT_FILL_MISMATCH:'+quadrant['id'])
+                                if (fill.get('fill') or '').lower()!={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[quadrant['fill']]:errors.append('OVERLAY_QUADRANT_FILL_TONE_MISMATCH:'+quadrant['id'])
+                                if any(document[id(node)]<document[id(fill)] and node.tag.split('}')[-1] in {'line','polyline','polygon','circle','path'} and node.get('stroke') not in (None,'none') for node in root.iter()):errors.append('OVERLAY_QUADRANT_FILL_COVERS_STROKE:'+quadrant['id'])
+                        elif fill is not None:errors.append('OVERLAY_QUADRANT_FILL_UNDECLARED:'+quadrant['id'])
+                        label_node=groups.get(ident+'-label')
+                        if quadrant['label'] is not None:
+                            if label_node is None:errors.append('OVERLAY_QUADRANT_LABEL_MISSING:'+quadrant['id'])
+                            else:
+                                if label_node.get('data-text')!=quadrant['label'] or label_node.get('data-tex') is not None or _ov_glyph_codes(label_node):errors.append('OVERLAY_QUADRANT_LABEL_TEXT_MISMATCH:'+quadrant['id'])
+                                box=_region_label_box(groups,ident+'-label')
+                                if box is None or not all(within(point) for point in ((box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3]))):errors.append('OVERLAY_QUADRANT_LABEL_OUTSIDE:'+quadrant['id'])
+                        elif label_node is not None:errors.append('OVERLAY_QUADRANT_LABEL_UNDECLARED:'+quadrant['id'])
             # latticePoints counts:true: one label per column, its digits the column's count, owned by (nearest to) that column's dots.
             lattice=expected.get('lattice')
             if lattice is not None and lattice['counts']:

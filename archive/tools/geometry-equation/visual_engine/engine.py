@@ -736,6 +736,22 @@ def prepare(spec):
                     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
                 label['candidateCenters']=_region_label_centres([vertices],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(vertices[0])
                 labels.append(label)
+        elif kind=='QUADRANT':
+            # A coordinate quadrant (E31): the rectangle between the origin and the drawn window's edge in that quadrant, tinted under every stroke, and its Korean name inside it
+            # where it has the most room. The window is the one the axes are drawn to, so the fill ends where the axes end.
+            if not (show_x and show_y):raise ValueError('QUADRANT_REQUIRES_AXES:'+oid)
+            xmin,xmax,ymin,ymax=vp.bounds;quadrant=obj['quadrant']
+            if not (xmin<0<xmax and ymin<0<ymax):raise ValueError('QUADRANT_ORIGIN_OUTSIDE_VIEW:'+oid)
+            corner_x=xmax if quadrant in (1,4) else xmin;corner_y=ymax if quadrant in (1,2) else ymin
+            rectangle=[vp.screen((0,0)),vp.screen((corner_x,0)),vp.screen((corner_x,corner_y)),vp.screen((0,corner_y))]
+            if obj.get('fill') and obj['fill']!='NONE':
+                if obj['fill'] not in REGION_FILLS:raise ValueError('QUADRANT_FILL_UNSUPPORTED:'+oid)
+                primitive({'id':oid+'-fill','kind':'polygon','points':rectangle,'token':'secondaryShape','layer':9,'role':'region','fill':REGION_FILLS[obj['fill']],'noStroke':True,'mark':'quadrant','markId':oid})
+            if obj.get('labelText') is not None:
+                label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'layoutText':obj['labelText'],'math':False,'bindText':True,
+                       'font':tokens['mathLabel'],'priority':3,'allowSuppress':False,'ownerRegion':[rectangle],'labelGap':14}
+                label['candidateCenters']=_region_label_centres([rectangle],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(rectangle[2])
+                labels.append(label)
         elif kind=='CIRCULAR_ARC':
             primitive({'id':oid,'kind':'polyline','points':[vp.screen(p) for p in value.sample_points()],
                        'token':'axisOverlapShape' if obj.get('highlight') else 'mainShape','layer':46 if obj.get('highlight') else 40,'role':'circularArc',

@@ -220,6 +220,7 @@ def audit(p):
     declared|={('region',r['id']) for r in marks.get('regions',[])}
     declared|={('equal-bracket',r['id']) for r in marks.get('equalLengths',[]) if any(isinstance(entry,dict) for entry in r.get('segments',[]))}
     declared|={('region-hatch',r['id']) for r in marks.get('regions',[]) if r.get('pattern')=='HATCH'}
+    declared|={('quadrant',r['id']) for r in marks.get('quadrants',[]) if isinstance(r,dict) and r.get('fill')}
     for key in by_mark:
         if key not in declared:errors.append('UNDECLARED_MARK:'+key[0]+':'+str(key[1]))
     label_boxes={}   # label id -> (x,y,w,h) in svg px
@@ -669,6 +670,42 @@ def audit(p):
                 if (dx>0 and box[0]<ax-0.5) or (dx<0 and box[0]+box[2]>ax+0.5) or (dy>0 and box[1]<ay-0.5) or (dy<0 and box[1]+box[3]>ay+0.5):errors.append('TEXT_LABEL_NOT_ON_SIDE:'+oid)
                 if (dx==0 and abs(cx-ax)>1.0) or (dy==0 and abs(cy-ay)>1.0):errors.append('TEXT_LABEL_NOT_ON_SIDE:'+oid)
         observations.append({'id':oid,'type':'TEXT_LABEL','labelKind':kind,'anchor':anchor,'distancePx':math.hypot(cx-ax,cy-ay)})
+
+    # ---- quadrants (E31): the tinted rectangle of a coordinate quadrant and its Korean name, read back from the final XML. The window edge a quadrant reaches is the end of the drawn
+    # axis on that side (the axes are drawn across the whole window), the origin the transform's own; the name is plain text, inside its quadrant and clear of every stroke.
+    quadrant_rows=[row for row in marks.get('quadrants',[]) if isinstance(row,dict)]
+    if quadrant_rows:
+        axis_ends={}
+        for axis_id in ('x-axis','y-axis'):
+            n=elements.get(axis_id)
+            if n is not None and tag(n)=='line':axis_ends[axis_id]=((float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2'))))
+        QUADRANT_TONES={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+        for row in quadrant_rows:
+            oid=row.get('id');number=row.get('quadrant')
+            if number not in (1,2,3,4):errors.append('QUADRANT_INVALID:'+str(oid));continue
+            if len(axis_ends)!=2:errors.append('QUADRANT_AXES_MISSING:'+str(oid));continue
+            xs=sorted(p[0] for p in axis_ends['x-axis']);ys=sorted(p[1] for p in axis_ends['y-axis'])
+            edge_x=xs[1] if number in (1,4) else xs[0];edge_y=ys[0] if number in (1,2) else ys[1]
+            rect=[(ox,oy),(edge_x,oy),(edge_x,edge_y),(ox,edge_y)]
+            inside=lambda q:min(ox,edge_x)-0.5<=q[0]<=max(ox,edge_x)+0.5 and min(oy,edge_y)-0.5<=q[1]<=max(oy,edge_y)+0.5
+            fill=elements.get(oid+'-fill') if row.get('fill') else None
+            if row.get('fill'):
+                if fill is None or tag(fill)!='polygon':errors.append('QUADRANT_FILL_MISSING:'+str(oid))
+                else:
+                    pts=[tuple(float(v) for v in pair.split(',')) for pair in fill.get('points','').split()]
+                    if len(pts)!=4 or any(not any(math.hypot(a[0]-b[0],a[1]-b[1])<=0.05 for b in pts) for a in rect):errors.append('QUADRANT_FILL_MISMATCH:'+str(oid))
+                    if str(fill.get('fill','')).lower()!=QUADRANT_TONES.get(row['fill']):errors.append('QUADRANT_FILL_TONE_MISMATCH:'+str(oid))
+                    if fill.get('data-role')!='region':errors.append('QUADRANT_FILL_NOT_A_REGION:'+str(oid))
+                    if stroke_before(fill):errors.append('QUADRANT_FILL_COVERS_STROKE:'+str(oid))
+            elif elements.get(str(oid)+'-fill') is not None:errors.append('QUADRANT_FILL_UNDECLARED:'+str(oid))
+            if row.get('label') is not None:
+                lid=str(oid)+'-label';box=label_clear(lid)
+                if box is not None:
+                    label_content(lid,'TEXT',row['label'],None)
+                    if not all(inside(q) for q in ((box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3]))):errors.append('QUADRANT_LABEL_OUTSIDE:'+str(oid))
+                    observations.append({'id':lid,'type':'QUADRANT_LABEL','quadrant':number})
+            elif elements.get(str(oid)+'-label') is not None:errors.append('QUADRANT_LABEL_UNDECLARED:'+str(oid))
+            observations.append({'id':oid,'type':'QUADRANT','quadrant':number,'fill':row.get('fill')})
 
     # ---- dimension lines: the bar, arrows or brace between two displayed points, every part recomputed from the peer points, the label on the outer side
     dimension_lines={}   # id -> the dimension's main polyline in svg px (its line, or the brace) for the label-ownership test

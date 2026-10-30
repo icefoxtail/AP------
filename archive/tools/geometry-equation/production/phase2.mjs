@@ -356,6 +356,8 @@ function addGraphOverlays(plan,spec){
     if(guide.axis==='y'||guide.axis==='BOTH')objects.push({id:'overlay-guide-'+guide.id+'-y',kind:'SEGMENT',from:start,to:[0,start[1]],dash:true});
   }
   for(const polygon of features.polygons)objects.push({id:'overlay-polygon-'+polygon.id,kind:'POLYGON',refs:polygon.points,...(polygon.fill!=='NONE'?{fill:polygon.fill}:{}),...(polygon.label!==undefined?{labelText:polygon.label,labelKind:polygon.labelKind}:{})});
+  // quadrants (E31): the tinted rectangle and the Korean name of a coordinate quadrant, last so the name finds its room among the strokes already drawn.
+  for(const quadrant of features.quadrants??[])objects.push({id:'overlay-quadrant-'+quadrant.id,kind:'QUADRANT',quadrant:quadrant.quadrant,...(quadrant.fill?{fill:quadrant.fill}:{}),...(quadrant.label!==undefined?{labelText:quadrant.label}:{})});
   return {...spec,objects:[...spec.objects,...objects]};
 }
 

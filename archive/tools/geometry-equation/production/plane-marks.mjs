@@ -57,8 +57,8 @@ export function segmentLabelSite(row,p,q){
   const others=(at==='START'?[0.06,0.15,0.3]:at==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
   return {at:mid,others,band:at==='START'?[0,.25]:at==='END'?[.75,1]:null};
 }
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides'],
-  textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants'],
+  quadrants:['id','quadrant','label','fill','factRole'],textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over'],
@@ -402,6 +402,23 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(written&&(Math.abs(Number(written[1])-place[0])>1e-6||Math.abs(Number(written[2])-place[1])>1e-6))bad('TEXT_LABEL_COORDINATE_MISMATCH:'+row.id+':declared=('+written[1]+','+written[2]+'):point=('+Number(place[0].toFixed(6))+','+Number(place[1].toFixed(6))+')');
     objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.id,text:row.text,at:place,freeLabel:true,priority:1,...(anchor?{anchor}:{}),...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...weightOf(row,kind,'textLabels')});
     factRolesByLabel[row.id]=role(row);
+  }
+
+  // --- quadrants (E31): the coordinate quadrant 1..4 tinted (fill LIGHT | MEDIUM, under every stroke, out to the edge of the drawn window) and/or named (label, plain Korean text such as
+  // 제2사분면, inside the quadrant where it has the most room). Needs the drawn axes (SOURCE_COORDINATE_AXES_v1); a plan names each quadrant at most once.
+  const quadrantsSeen=new Set();
+  for(const row of list(marks.quadrants,'quadrants')){
+    if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:quadrants');
+    keysOk(row,KEYS.quadrants,'quadrants');claim(row.id,'quadrants');
+    if(![1,2,3,4].includes(row.quadrant))bad('QUADRANT_INVALID:'+row.id);
+    if(quadrantsSeen.has(row.quadrant))bad('QUADRANT_DUPLICATE:'+row.quadrant);
+    quadrantsSeen.add(row.quadrant);
+    if(model.coordinateMode!=='SOURCE_COORDINATES')bad('QUADRANTS_REQUIRE_AXES:'+row.id);
+    if(row.label===undefined&&row.fill===undefined)bad('QUADRANT_EMPTY:'+row.id);
+    if(row.fill!==undefined&&!['LIGHT','MEDIUM'].includes(row.fill))bad('QUADRANT_FILL_INVALID:'+row.id);
+    if(row.label!==undefined){plainTextOk(row.label,'quadrants.label',row.id);if(row.label.length>12)bad('QUADRANT_LABEL_TOO_LONG:'+row.id);}
+    objects.push({id:row.id,kind:'QUADRANT',quadrant:row.quadrant,...(row.fill?{fill:row.fill}:{}),...(row.label!==undefined?{labelText:row.label}:{})});
+    if(row.label!==undefined)factRolesByLabel[row.id+'-label']=role(row);
   }
 
   // --- angle sums (E30): the equation of two angle marks at one vertex written as a label, A°+B°=S°, built from their declared values (so it is true by construction);

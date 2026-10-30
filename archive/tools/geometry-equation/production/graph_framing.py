@@ -2336,7 +2336,7 @@ def fit_piecewise_discontinuous(plan):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4}
+OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4}
 # overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
@@ -2645,6 +2645,31 @@ def _overlay_names(plan,rows,claim,lines,segments,by_point):
         names.append(row)
     return names
 
+OVERLAY_QUADRANT_LABEL_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,12}'
+
+def _overlay_quadrants(plan,rows,claim):
+    """overlays.quadrants:[{id,quadrant,label?,fill?}] (E31): the coordinate quadrant 1..4 tinted (LIGHT | MEDIUM, under every stroke, out to the edge of the drawn window) and/or named
+    in plain Korean text inside it. The origin must lie strictly inside the framed window, and a quadrant is named at most once."""
+    out=[];seen=set()
+    xmin,xmax,ymin,ymax=plan['viewport']
+    for entry in rows:
+        if not isinstance(entry,dict) or set(entry)-{'id','quadrant','label','fill'}:_overlay_fail('OVERLAY_QUADRANT_INVALID',entry.get('id') if isinstance(entry,dict) else 'quadrant')
+        ident=_overlay_id(entry.get('id'),'quadrant');claim('quadrant:'+ident)
+        number=entry.get('quadrant')
+        if isinstance(number,bool) or number not in (1,2,3,4):_overlay_fail('OVERLAY_QUADRANT_INVALID',ident)
+        if number in seen:_overlay_fail('OVERLAY_QUADRANT_DUPLICATE',ident)
+        seen.add(number)
+        label,fill=entry.get('label'),entry.get('fill')
+        if label is None and fill is None:_overlay_fail('OVERLAY_QUADRANT_EMPTY',ident)
+        if label is not None and (not isinstance(label,str) or label!=label.strip() or not re.fullmatch(OVERLAY_QUADRANT_LABEL_PATTERN,label)):_overlay_fail('OVERLAY_QUADRANT_LABEL_INVALID',ident)
+        if fill is not None and fill not in ('LIGHT','MEDIUM'):_overlay_fail('OVERLAY_QUADRANT_FILL_INVALID',ident)
+        if not (xmin<0<xmax and ymin<0<ymax):_overlay_fail('OVERLAY_QUADRANT_ORIGIN_OUTSIDE_VIEW',ident)
+        row={'id':ident,'quadrant':number}
+        if label is not None:row['label']=label
+        if fill is not None:row['fill']=fill
+        out.append(row)
+    return out
+
 def _overlay_features(plan):
     raw=plan.get('overlays')
     if raw is None:return None
@@ -2795,6 +2820,7 @@ def _overlay_features(plan):
     for line in lines:line['labelAlternates']=_overlay_label_alternates(plan,line,lines,points)
     features={'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
     if 'names' in raw:features['names']=_overlay_names(plan,raw.get('names'),claim,lines,segments,by_point)
+    if raw.get('quadrants'):features['quadrants']=_overlay_quadrants(plan,raw['quadrants'],claim)
     if raw.get('latticePoints') is not None:features['latticePoints']=_overlay_lattice(plan,raw['latticePoints'],[(point['x'],point['y']) for point in points])
     return features
 
