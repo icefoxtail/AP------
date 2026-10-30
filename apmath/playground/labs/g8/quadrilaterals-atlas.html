@@ -2076,6 +2076,27 @@
       render();
     }
 
+    // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
+    const LENS_OFF = {
+      paraDiag: ['sides'], quadToTri: ['angles'], equiSlide: ['angles'], butterflyWing: ['angles'],
+      insidePointP: ['angles', 'sides', 'aux'], paraHeightSplit: ['angles'], varignonGen: ['angles', 'sides', 'aux'],
+      varignonRectToRhomb: ['sides'], varignonIsoToRhomb: ['sides'], varignonRhombToRect: ['angles'],
+      squarePerpLines: ['angles'], squareInnerRot: ['angles']
+    };
+
+    function syncLensButtons() {
+      const ids = ['all', 'angles', 'sides', 'aux'];
+      const off = (LENS_OFF[state.mode] || []).concat(LENS_OFF[state.subType[state.mode]] || []);
+      const none = ids.every((id) => id === 'all' || off.includes(id));
+      if (none || off.includes(state.conceptSwitch)) state.conceptSwitch = 'all';
+      ids.forEach((id) => {
+        const btn = document.getElementById(`sw-${id}`);
+        btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
+        btn.classList.toggle('active', id === state.conceptSwitch);
+      });
+      document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+    }
+
     function setMode(m) {
       state.mode = m;
       state.activePartIdx = -1;
@@ -2085,6 +2106,7 @@
       }
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }
@@ -2095,6 +2117,7 @@
       state.customDOffset = null;
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }

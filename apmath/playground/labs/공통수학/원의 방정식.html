@@ -487,6 +487,20 @@
       ctx.restore();
     }
 
+    // 관찰 렌즈: 그려지는 요소를 def(중심 C·반지름 r·거리 d) / pyth(피타고라스 직각삼각형) / aux(평행이동·공통현·자취) 그룹에 태깅하고,
+    // 선택한 렌즈의 그룹은 선명하게, 나머지 그룹은 흐리게, 그룹이 없는 기본 도형은 반쯤 흐리게 그린다. (좌표평면은 항상 선명)
+    function lensAlpha(group) {
+      const sw = state.conceptSwitch;
+      return sw === 'all' || group === sw ? 1 : group ? 0.14 : 0.4;
+    }
+
+    function labelLens(text) {
+      if (/자취|공통현|평행|이동|대칭|반사|중점|k = |y = x/.test(text)) return 'aux';
+      if (/중심|반지름|거리|\br\b|\bd\b|R²|[CO][₁₂]?\(|^[CO][₁₂]?$/.test(text)) return 'def';
+      if (/직각|∠|빗변|\||AH|√/.test(text)) return 'pyth';
+      return null;
+    }
+
     function isPartDimmed(partIdx) {
       if (state.activePartIdx === -1 || partIdx === undefined) return false;
       return state.activePartIdx !== partIdx;
@@ -496,10 +510,11 @@
       return state.activePartIdx !== -1 && state.activePartIdx === partIdx;
     }
 
-    function pline(a, b, color = '#fbbf24', width = 2.6, dash = [], glow = false, partIdx = undefined) {
+    function pline(a, b, color = '#fbbf24', width = 2.6, dash = [], glow = false, partIdx = undefined, group = null) {
       const dimmed = isPartDimmed(partIdx);
       const hi = isPartHighlighted(partIdx);
       ctx.save();
+      ctx.globalAlpha = lensAlpha(group || (dash.length ? 'aux' : null));
       ctx.strokeStyle = dimmed ? 'rgba(148, 163, 184, 0.22)' : color;
       ctx.lineWidth = hi ? width + 2.2 : dimmed ? 1.1 : width;
       ctx.lineCap = 'round';
@@ -519,6 +534,7 @@
       const dimmed = isPartDimmed(partIdx);
       const hi = isPartHighlighted(partIdx);
       ctx.save();
+      ctx.globalAlpha = lensAlpha(dash.length ? 'aux' : null);
       ctx.beginPath();
       ctx.setLineDash(dash);
       ctx.arc(c.x, c.y, Math.max(1, rPx), 0, Math.PI * 2);
@@ -539,6 +555,7 @@
       const dimmed = isPartDimmed(partIdx);
       const hi = isPartHighlighted(partIdx);
       ctx.save();
+      ctx.globalAlpha = lensAlpha('pyth');
       ctx.beginPath();
       pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
       ctx.closePath();
@@ -557,6 +574,7 @@
 
     function pdot(p, text = '', col = '#ffffff', customOff = null) {
       ctx.save();
+      ctx.globalAlpha = lensAlpha(labelLens(text));
       ctx.beginPath();
       ctx.arc(p.x, p.y, 5.2, 0, Math.PI * 2);
       ctx.fillStyle = col;
@@ -585,6 +603,7 @@
       const u1 = mul(d1, size), u2 = mul(d2, size);
       const c1 = add(v, u1), c12 = add(c1, u2), c2 = add(v, u2);
       ctx.save();
+      ctx.globalAlpha = lensAlpha('pyth');
       ctx.beginPath();
       ctx.moveTo(v.x, v.y); ctx.lineTo(c1.x, c1.y); ctx.lineTo(c12.x, c12.y); ctx.lineTo(c2.x, c2.y);
       ctx.closePath();
@@ -600,6 +619,7 @@
 
     function ptag(x, y, msg, color = '#fef08a', size = 13) {
       ctx.save();
+      ctx.globalAlpha = lensAlpha(labelLens(msg));
       ctx.font = `800 ${size}px Pretendard, sans-serif`;
       ctx.textAlign = 'center';
       ctx.lineWidth = 3.5;
@@ -1162,9 +1182,9 @@
 
       pcircle(C, Rpx, CCOL.gold, 'rgba(251, 191, 36, 0.10)', 3.0);
       ppoly([C, H, P], 'rgba(56, 189, 248, 0.22)', 'rgba(255,255,255,0.4)', 1.8);
-      pline(C, H, CCOL.cyan, 4.2, [], true, 0);
-      pline(H, P, CCOL.green, 4.2, [], true, 1);
-      pline(C, P, CCOL.gold, 4.4, [], true, 2);
+      pline(C, H, CCOL.cyan, 4.2, [], true, 0, 'pyth');
+      pline(H, P, CCOL.green, 4.2, [], true, 1, 'pyth');
+      pline(C, P, CCOL.gold, 4.4, [], true, 2, 'def');
       pright(H, C, P, 12, CCOL.gold);
 
       pdot(C, 'C(a, b)', CCOL.gold, { x: -45, y: 20 });
@@ -1199,7 +1219,7 @@
 
         pcircle(C2, 5 * sc, CCOL.pink, 'rgba(244, 114, 182, 0.12)', 3.0, [], 1);
         pcircle(C1, 1 * sc, CCOL.cyan, 'rgba(56, 189, 248, 0.24)', 3.2, [], 0);
-        pline(C1, C2, CCOL.gold, 3.6, [], true, 2);
+        pline(C1, C2, CCOL.gold, 3.6, [], true, 2, 'def');
 
         pdot(C1, 'C₁(1, 1) [r₁=1]', CCOL.cyan, { x: -75, y: -12 });
         pdot(C2, 'C₂(5, 5) [r₂=5]', CCOL.pink, { x: 12, y: -8 });
@@ -1219,7 +1239,7 @@
       if (sub === 'touchX') {
         const C = pt(ox + 3.5 * u, oy - 3 * u);
         pcircle(C, 3 * u, CCOL.cyan, 'rgba(56, 189, 248, 0.16)', 3.2, [], 0);
-        pline(C, pt(C.x, oy), CCOL.gold, 4.2, [], true, 0);
+        pline(C, pt(C.x, oy), CCOL.gold, 4.2, [], true, 0, 'def');
         pright(pt(C.x, oy), C, pt(ox, oy), 12, CCOL.gold);
         pdot(C, '중심 C(a, b) = (3.5, 3)', CCOL.cyan, { x: -45, y: -14 });
         pdot(pt(C.x, oy), '접점 (a, 0)', CCOL.gold, { x: -20, y: 22 });
@@ -1231,7 +1251,7 @@
       if (sub === 'touchY') {
         const C = pt(ox + 3.5 * u, oy - 2.5 * u);
         pcircle(C, 3.5 * u, CCOL.pink, 'rgba(244, 114, 182, 0.16)', 3.2, [], 1);
-        pline(C, pt(ox, C.y), CCOL.gold, 4.2, [], true, 1);
+        pline(C, pt(ox, C.y), CCOL.gold, 4.2, [], true, 1, 'def');
         pright(pt(ox, C.y), C, pt(ox, oy), 12, CCOL.gold);
         pdot(C, '중심 C(a, b) = (3.5, 2.5)', CCOL.pink, { x: -45, y: -14 });
         pdot(pt(ox, C.y), '접점 (0, b)', CCOL.gold, { x: -65, y: 4 });
@@ -1350,7 +1370,7 @@
       pline(L1, L2, CCOL.white, 3.0);
 
       // 중심에서 직선에 내린 수선 CH (길이 d)
-      pline(C, H, CCOL.cyan, 4.2, [], true, 0);
+      pline(C, H, CCOL.cyan, 4.2, [], true, 0, 'def');
       pright(H, C, L2, 12, CCOL.cyan);
 
       if (effD < r) {
@@ -1360,7 +1380,7 @@
 
         ppoly([C, A, H], 'rgba(251, 191, 36, 0.26)', CCOL.gold, 2.8, 1);
         pline(A, B, CCOL.gold, 5.0, [], true, 1);
-        pline(C, A, CCOL.pink, 3.8, [], true);
+        pline(C, A, CCOL.pink, 3.8, [], true, undefined, 'def');
 
         if (sub === 'equilMaxMin') {
           const apex = add(H, mul(nVec, -Math.sqrt(3) * halfLenPx));
@@ -1463,9 +1483,9 @@
         pcircle(Ck, Rk, CCOL.pink, 'rgba(244, 114, 182, 0.08)', 2.4, [5, 4], 1);
       }
 
-      pline(pt(H.x, oy - 165), pt(H.x, oy + 165), CCOL.gold, 4.4, [], true, 2);
+      pline(pt(H.x, oy - 165), pt(H.x, oy + 165), CCOL.gold, 4.4, [], true, 2, 'aux');
       pline(C1, C2, 'rgba(255,255,255,0.45)', 2.0, [4, 4]);
-      pline(C1, A, CCOL.cyan, 3.0);
+      pline(C1, A, CCOL.cyan, 3.0, [], false, undefined, 'def');
       pright(H, A, C1, 11, CCOL.gold);
 
       pdot(C1, 'C₁', CCOL.cyan, { x: -24, y: 18 });
@@ -1503,7 +1523,7 @@
 
         // ★ 접선 2 (공식에서 증발하는 숨은 수직 접선 x = 3!) ★
         pline(pt(T1.x, O.y - 175), pt(T1.x, O.y + 115), CCOL.red, 4.8, [], true, 1);
-        pline(O, T1, CCOL.gold, 3.2);
+        pline(O, T1, CCOL.gold, 3.2, [], false, undefined, 'def');
         pright(T1, O, P, 13, CCOL.red);
 
         pdot(O, 'O(0, 0)', CCOL.white, { x: -45, y: 18 });
@@ -1564,7 +1584,7 @@
         pline(add(T2, mul(tDir, -140)), add(T2, mul(tDir, 140)), CCOL.cyan, 3.6, [], true, 0);
         pdot(T2, '접점 2', CCOL.cyan, { x: -45, y: 16 });
       }
-      pline(O, T1, CCOL.pink, 3.2);
+      pline(O, T1, CCOL.pink, 3.2, [], false, undefined, 'def');
       pright(T1, O, add(T1, mul(tDir, 60)), 12, CCOL.gold);
       pdot(O, 'O(0,0)', CCOL.white, { x: -35, y: 18 });
       pdot(T1, '접점 (x₁, y₁)', CCOL.gold, { x: 12, y: -8 });
@@ -1623,7 +1643,7 @@
 
       pcircle(C1, r1, CCOL.cyan, 'rgba(56, 189, 248, 0.12)', 2.8);
       pcircle(C2, r2, CCOL.pink, 'rgba(244, 114, 182, 0.12)', 2.8);
-      pline(C1, C2, CCOL.gold, 4.0, [], true, 0);
+      pline(C1, C2, CCOL.gold, 4.0, [], true, 0, 'def');
 
       const dPx = dist(C1, C2);
       const effR = isInt ? r1 + r2 : r1 - r2;
@@ -1849,6 +1869,26 @@
       render();
     }
 
+    // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
+    const LENS_OFF = {
+      stdDef: ['aux'], generalForm: ['pyth'], diamEnds: ['def'], threePts: ['pyth'], twoCircles21: ['pyth'],
+      touchX: ['aux'], touchY: ['aux'], touchBothQuad: ['pyth'], apolloMaxArea: ['aux'], apolloMaxAngle: ['aux'],
+      foldCircleArc: ['pyth'], tanSlope: ['aux'], tanPointOn: ['aux'], laserReflectTan: ['pyth']
+    };
+
+    function syncLensButtons() {
+      const ids = ['all', 'def', 'pyth', 'aux'];
+      const off = (LENS_OFF[state.mode] || []).concat(LENS_OFF[state.subType[state.mode]] || []);
+      const none = ids.every((id) => id === 'all' || off.includes(id));
+      if (none || off.includes(state.conceptSwitch)) state.conceptSwitch = 'all';
+      ids.forEach((id) => {
+        const btn = document.getElementById(`sw-${id}`);
+        btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
+        btn.classList.toggle('active', id === state.conceptSwitch);
+      });
+      document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+    }
+
     function setMode(m) {
       state.mode = m;
       state.activePartIdx = -1;
@@ -1857,6 +1897,7 @@
       }
       state.fold = 0.0;
       state.foldTarget = null;
+      syncLensButtons();
       renderSubBar();
       render();
     }
@@ -1866,6 +1907,7 @@
       state.activePartIdx = -1;
       state.fold = 0.0;
       state.foldTarget = null;
+      syncLensButtons();
       renderSubBar();
       render();
     }

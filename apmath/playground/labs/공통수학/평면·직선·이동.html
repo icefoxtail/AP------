@@ -515,8 +515,24 @@
       ctx.restore();
     }
 
+    // 관찰 렌즈: 수직·기울기 마크(aright)는 angles, 좌표·거리 배지(abadge)는 sides 그룹으로 태깅해 해당 렌즈에서만 그린다.
+    // 점선·점프 아치·대칭점 등 보조 요소는 aux 그룹으로 태깅하고, 선택한 렌즈의 그룹은 선명하게, 나머지 그룹은 흐리게,
+    // 그룹이 없는 기본 도형은 반쯤 흐리게 그린다. (좌표평면은 항상 선명)
+    function lensAlpha(group) {
+      const sw = state.conceptSwitch;
+      return sw === 'all' || group === sw ? 1 : group ? 0.14 : 0.4;
+    }
+
+    function dotLens(text) {
+      if (/대칭|반사|접는|이동|원본|고정점|압정|[′'″]/.test(text)) return 'aux';
+      if (/직교|직각|90°|수선|기울기|m=|m'/.test(text)) return 'angles';
+      if (/\d\)|\d,|거리|내분|외분|비율|중점|중심/.test(text)) return 'sides';
+      return null;
+    }
+
     function apoly(pts, fill = 'rgba(52,211,153,0.20)', stroke = '#34d399', width = 2.8, partIdx = -1) {
       ctx.save();
+      ctx.globalAlpha = lensAlpha(null);
       ctx.beginPath();
       pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
       ctx.closePath();
@@ -540,6 +556,7 @@
 
     function aline(a, b, color = '#fbbf24', width = 2.6, dash = [], glow = false, partIdx = -1) {
       ctx.save();
+      ctx.globalAlpha = lensAlpha(dash.length ? 'aux' : null);
       let lw = width, isGlow = glow;
       if (state.activePartIdx !== -1 && partIdx !== -1 && state.activePartIdx === partIdx) {
         lw = width + 2.2;
@@ -569,6 +586,7 @@
 
     function acircle(center, r, stroke = '#38bdf8', fill = 'rgba(56, 189, 248, 0.10)', width = 2.8, dash = [], partIdx = -1) {
       ctx.save();
+      ctx.globalAlpha = lensAlpha(dash.length ? 'aux' : null);
       let lw = width, sCol = stroke, fCol = fill;
       if (state.activePartIdx !== -1 && partIdx !== -1) {
         if (state.activePartIdx === partIdx) {
@@ -590,6 +608,7 @@
 
     function adot(p, text = '', col = '#ffffff', ox = 10, oy = -12) {
       ctx.save();
+      ctx.globalAlpha = lensAlpha(dotLens(text));
       ctx.beginPath();
       ctx.arc(p.x, p.y, 5.2, 0, Math.PI * 2);
       ctx.fillStyle = col;
@@ -663,6 +682,7 @@
       const mx = (pStart.x + pEnd.x) / 2;
       const my = Math.min(pStart.y, pEnd.y) + heightOffset;
       ctx.save();
+      ctx.globalAlpha = lensAlpha('aux');
       ctx.beginPath();
       ctx.moveTo(pStart.x, pStart.y);
       ctx.quadraticCurveTo(mx, my, pEnd.x, pEnd.y);
@@ -2071,6 +2091,30 @@
       render();
     }
 
+    // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
+    const LENS_OFF = {
+      divInternalExternal: ['angles'], divExtendedLine: ['angles'], centroidParaCoord: ['angles'],
+      distMinSumSq: ['angles'], fixedPointPencil: ['angles', 'sides'], areaBisectLines: ['angles', 'aux'],
+      threeLinesNoTri: ['angles', 'aux'], shoelaceArea: ['angles'], compositeStepByStep: ['angles'],
+      paradoxPointVsFig: ['angles', 'sides'], symmetry4Basic: ['angles', 'sides'], lineSlideSame: ['angles'],
+      reflectTriPerim: ['angles', 'sides'], reflectSingleAxis: ['angles'], reflectDoubleAxes: ['angles'],
+      billiardMirrorRoom: ['angles', 'sides'], diffMaxLine: ['angles', 'aux'], trapApollonius: ['angles'],
+      trapLineSegmentMeet: ['sides'], trapInterceptZero: ['angles', 'aux'], trapPerpDivideZero: ['angles', 'sides']
+    };
+
+    function syncLensButtons() {
+      const ids = ['all', 'angles', 'sides', 'aux'];
+      const off = (LENS_OFF[state.mode] || []).concat(LENS_OFF[state.subType[state.mode]] || []);
+      const none = ids.every((id) => id === 'all' || off.includes(id));
+      if (none || off.includes(state.conceptSwitch)) state.conceptSwitch = 'all';
+      ids.forEach((id) => {
+        const btn = document.getElementById(`sw-${id}`);
+        btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
+        btn.classList.toggle('active', id === state.conceptSwitch);
+      });
+      document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+    }
+
     function setMode(m) {
       state.mode = m;
       state.activePartIdx = -1;
@@ -2079,6 +2123,7 @@
       }
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }
@@ -2088,6 +2133,7 @@
       state.activePartIdx = -1;
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }
