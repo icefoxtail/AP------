@@ -26,6 +26,7 @@ window.APLab.catalog = {
     "종이 테이프 접기·이등분선·직교 (4종)"
    ],
    "legacy": "labs/g7/points-lines.html",
+   "next": "next/labs/g7-points-lines.html",
    "glyph": "<path d=\"M10 52 L64 18\"/><circle cx=\"16\" cy=\"48\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"58\" cy=\"22\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M38 58 L70 58\"/>"
   },
   {
@@ -46,6 +47,7 @@ window.APLab.catalog = {
     "공간 명제 참·거짓 3D 반례기 (6종)"
    ],
    "legacy": "labs/g7/spatial-relations.html",
+   "next": "next/labs/g7-spatial.html",
    "glyph": "<path d=\"M14 48 L60 48 L74 28 L30 28 Z\"/><path d=\"M18 14 L18 62 M60 10 L60 54\"/><circle cx=\"18\" cy=\"48\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
