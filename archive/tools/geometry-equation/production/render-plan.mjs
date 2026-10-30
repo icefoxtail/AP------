@@ -88,16 +88,17 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       stage='measure';
       let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      // A frame that grows to fit its labels (a long legend, a long x title, tree path probabilities) depends on the font size the measurement gives: measure again at the size that font needs.
-      for(let again=1;again<=3;again++){
+      // A frame that grows to fit its labels (a long legend, a long x title, tree path probabilities) depends on the font size the measurement gives, and the font on the size: measure again at the
+      // larger size until the font that size gives needs no more room (sizes only grow; the figure is then composed at exactly the measured size).
+      for(let again=1;again<=6;again++){
         const exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx});
-        if(exact.width===size.width&&exact.height===size.height)break;
-        size=exact;
+        if(exact.width<=size.width&&exact.height<=size.height)break;
+        size={width:Math.max(size.width,exact.width),height:Math.max(size.height,exact.height)};
         measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
         if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       }
       stage='compose';
-      const composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+      const composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
       const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});

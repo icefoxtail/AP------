@@ -1,0 +1,47 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "DICE_TABLE",
+  "colVar": "x",
+  "rowVar": "y",
+  "cell": "PAIR",
+  "highlightGroups": [
+   {
+    "highlight": {
+     "expr": "x-y",
+     "in": [
+      -2,
+      2
+     ]
+    },
+    "tone": 1
+   },
+   {
+    "highlight": {
+     "expr": "x-y",
+     "in": [
+      -4,
+      4
+     ]
+    },
+    "tone": 2
+   }
+  ]
+ },
+ "caption": "서로 다른 두 주사위의 눈을 가로와 세로로 놓은 6×6 표에서 두 눈의 수의 차가 2인 칸과 4인 칸을 서로 다른 회색으로 칠한 그림",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "서로 다른 두 개의 주사위를 동시에 던진다",
+   "mappedTo": "chart.kind"
+  },
+  {
+   "id": "c2",
+   "condition": "나오는 두 눈의 수의 차가 2 또는 4",
+   "mappedTo": "chart.highlight"
+  }
+ ],
+ "newVisualInformation": [
+  "눈의 차가 2인 칸 (1,3),(2,4),(3,1),(3,5),(4,2),(4,6),(5,3),(6,4)는 옅은 회색, 차가 4인 칸 (1,5),(2,6),(5,1),(6,2)는 짙은 회색으로 칠해 두 경우가 겹치지 않음을 확인"
+ ]
+}
