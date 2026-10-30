@@ -751,7 +751,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/25_매산중_1학기_중간_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄이다. 위 줄은 주어진 해 x≥-1을 닫힌 점 -1과 오른쪽 화살표로 나타냈다. 아래 줄에는 부등식을 풀어 얻은 해의 끝점 (a+4)/4를 점 P로 나타냈고, 점 P는 -1과 같은 위치에 있다. 0도 표시했다.",
+    "solutionImageCaption": "주어진 해 x≥-1의 끝점 -1과 부등식을 풀어 얻은 해 x≥(a+4)/4의 끝점 (a+4)/4를 같은 수직선 위에 놓은 그림이다. 점 P는 (a+4)/4의 위치이고 두 끝점이 같은 자리에 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

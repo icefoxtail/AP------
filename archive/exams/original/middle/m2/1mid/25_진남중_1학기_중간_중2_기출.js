@@ -549,7 +549,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑면이 한 변 2a²b인 정사각형인 직육면체이다. 색칠한 밑면의 두 변에 2a²b, 옆모서리에 높이 h가 적혀 있고, 그림 위에 부피 8a^5b^3이 쓰여 있다.",
+    "solutionImageCaption": "밑면(색칠)이 한 변 2a²b인 정사각형이고 높이가 h, 부피가 8a^5b^3인 직육면체이며, 변의 비율은 모양만 나타낸 것이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,

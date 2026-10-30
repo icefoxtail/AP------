@@ -793,7 +793,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 -2, -1, 0, 1, 2의 눈금을 표시하고, 이 중 x<n의 해가 되는 -2, -1, 0에 점을 찍었다. 점 N은 n의 위치를 나타낸다.",
+    "solutionImageCaption": "x-1-n<-1은 x<n이다. 주어진 값 -2, -1, 0, 1, 2를 수직선의 눈금으로 나타내고, 이 중 x<n의 해가 되는 -2, -1, 0에 점을 찍었다. 점 N은 n의 위치이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
