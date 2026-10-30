@@ -2,6 +2,7 @@
 import hashlib
 import json
 import math
+import re
 import sys
 import xml.etree.ElementTree as ET
 from worker import read_request,VERSION
@@ -150,6 +151,139 @@ def audit(p):
             if abs(offset[0]*ray[1]-offset[1]*ray[0])>1e-8 or sum(offset[i]*ray[i] for i in range(2))<=0:errors.append('RIGHT_ANGLE_RAY_OWNER_MISMATCH')
         if math.dist(coords[1],[coords[0][i]+coords[2][i]-v[i] for i in range(2)])>1e-8:errors.append('RIGHT_ANGLE_CORNER_MISMATCH')
         observations.append({'id':angle['id'],'ownerPoints':angle['refs'],'observedMarkPoints':coords})
+    # ---- line labels (E31): the equation written beside a displayed SOURCE_LINE, read back from the final XML. The plan's own rows say which line owns which label, where
+    # along the line it was asked to stand (labelAt) and, for a free text, which glyphs it must show; nothing here comes from the producer.
+    line_label_rows=p.get('lineLabels') or []
+    if not isinstance(line_label_rows,list):raise ValueError('INVALID_LINE_LABELS')
+    if line_label_rows:
+        def tag_of(node):return node.tag.split('}')[-1]
+        def box_of(group):
+            m=re.fullmatch(r'translate\(([-\d.eE+]+)[ ,]([-\d.eE+]+)\)',group.get('transform') or '')
+            inner=next((c for c in group if tag_of(c)=='svg'),None)
+            return (float(m.group(1)),float(m.group(2)),float(inner.get('width')),float(inner.get('height'))) if m and inner is not None else None
+        def seg_distance(q,a,b):
+            dx,dy=b[0]-a[0],b[1]-a[1];n2=dx*dx+dy*dy
+            if n2<=1e-18:return math.dist(q,a)
+            t=max(0.0,min(1.0,((q[0]-a[0])*dx+(q[1]-a[1])*dy)/n2));return math.hypot(q[0]-(a[0]+t*dx),q[1]-(a[1]+t*dy))
+        def box_distance(box,a,b):
+            samples=[(a[0]+(b[0]-a[0])*i/64,a[1]+(b[1]-a[1])*i/64) for i in range(65)]
+            return min(math.hypot(max(box[0]-x,0,x-(box[0]+box[2])),max(box[1]-y,0,y-(box[1]+box[3]))) for x,y in samples)
+        def label_codes(text):
+            out=[];text=text.replace(' ','')
+            for ch in text:
+                if ch in '/^':continue
+                if ch=='-':out.append({'2212','2D'})
+                elif 'a'<=ch<='z':out.append({format(ord(ch),'X'),format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X')})
+                elif 'A'<=ch<='Z':out.append({format(ord(ch),'X'),format(0x1D434+ord(ch)-65,'X')})
+                else:out.append({format(ord(ch),'X')})
+            return out
+        def read_free_text(text,values):
+            """This observer's own reader of a free line equation (a linear equation in x and y, exact fractions): (A,B,C) of A x + B y + C = 0, None when a letter other than
+            x and y has no value (a symbolic text is shown as written), ValueError when it is not an equation or not linear."""
+            from fractions import Fraction
+            tokens=re.findall(r'\d+(?:\.\d+)?|[A-Za-z]|[=+\-*/().^]',text.replace(' ',''))
+            if ''.join(tokens)!=text.replace(' ','') or tokens.count('=')!=1:raise ValueError('LINE_TEXT_INVALID')
+            known={k:Fraction(v) for k,v in (values or {}).items()}
+            def parse(seq):
+                pos=[0]
+                def peek():return seq[pos[0]] if pos[0]<len(seq) else None
+                def eat():pos[0]+=1;return seq[pos[0]-1]
+                def mul(a,b):
+                    if a is None or b is None:return None
+                    if not a['x'] and not a['y']:return {k:a['c']*v for k,v in b.items()}
+                    if not b['x'] and not b['y']:return {k:b['c']*v for k,v in a.items()}
+                    raise ValueError('LINE_TEXT_NOT_LINEAR')
+                def atom():
+                    t=eat()
+                    if t=='(':
+                        v=expr()
+                        if eat()!=')':raise ValueError('LINE_TEXT_INVALID')
+                        return v
+                    if t[0].isdigit():return {'x':Fraction(0),'y':Fraction(0),'c':Fraction(t)}
+                    if t in 'xy' and len(t)==1 and t.isalpha():return {'x':Fraction(int(t=='x')),'y':Fraction(int(t=='y')),'c':Fraction(0)}
+                    if len(t)==1 and t.isalpha():return {'x':Fraction(0),'y':Fraction(0),'c':known[t]} if t in known else None
+                    raise ValueError('LINE_TEXT_INVALID')
+                def power():
+                    base=atom()
+                    if peek()=='^':
+                        eat();e=eat()
+                        if e not in ('0','1'):raise ValueError('LINE_TEXT_NOT_LINEAR')
+                        return {'x':Fraction(0),'y':Fraction(0),'c':Fraction(1)} if e=='0' else base
+                    return base
+                def unary():
+                    if peek() in ('-','+'):
+                        sign=eat();v=unary()
+                        return v if sign=='+' or v is None else {k:-w for k,w in v.items()}
+                    return power()
+                def term():
+                    v=unary()
+                    while peek() is not None and peek() not in '+-=)^':
+                        if peek()=='*':eat();v=mul(v,unary())
+                        elif peek()=='/':
+                            eat();d=unary()
+                            if d is None or v is None:v=None;continue
+                            if d['x'] or d['y']:raise ValueError('LINE_TEXT_NOT_LINEAR')
+                            if d['c']==0:raise ValueError('LINE_TEXT_INVALID')
+                            v={k:w/d['c'] for k,w in v.items()}
+                        else:v=mul(v,unary())
+                    return v
+                def expr():
+                    v=term()
+                    while peek() in ('+','-'):
+                        sign=1 if eat()=='+' else -1;w=term()
+                        v=None if v is None or w is None else {k:v[k]+sign*w[k] for k in v}
+                    return v
+                value=expr()
+                if pos[0]!=len(seq):raise ValueError('LINE_TEXT_INVALID')
+                return value
+            cut=tokens.index('=');left,right=parse(tokens[:cut]),parse(tokens[cut+1:])
+            if left is None or right is None:return None
+            return tuple(left[k]-right[k] for k in ('x','y','c'))
+        drawn_lines={}
+        for n in root.iter():
+            if tag_of(n)=='line' and n.get('data-role')=='line':
+                try:drawn_lines[n.get('id')]=((float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2'))))
+                except (TypeError,ValueError):pass
+        leaders={n.get('data-owner-label'):n for n in root.iter() if tag_of(n)=='line' and n.get('data-role')=='leader' and n.get('data-owner-label')}
+        for row in line_label_rows:
+            lid=row.get('id');owner=row.get('owner');group=elements.get(lid)
+            if group is None or tag_of(group)!='g':errors.append('LINE_LABEL_MISSING:'+str(owner));continue
+            if group.get('data-owner')!=owner:errors.append('LINE_LABEL_OWNER_MISMATCH:'+str(owner));continue
+            own=drawn_lines.get(owner);box=box_of(group)
+            if own is None or box is None:errors.append('LINE_LABEL_UNREADABLE:'+str(owner));continue
+            codes=[(c.get('data-c') or '').upper() for c in group.iter() if tag_of(c)=='path' and c.get('data-c')]
+            if not codes:errors.append('LINE_LABEL_EMPTY:'+str(owner))
+            if isinstance(row.get('text'),str):
+                want=label_codes(row['text'])
+                if len(codes)!=len(want) or any(code not in allowed for code,allowed in zip(codes,want)):errors.append('LINE_LABEL_TEXT_MISMATCH:'+str(owner)+':got='+' '.join(codes))
+            if isinstance(row.get('text'),str):
+                try:equation=read_free_text(row['text'],row.get('values'))
+                except (ValueError,KeyError,ZeroDivisionError) as error:equation=None;errors.append((str(error) if str(error) in ('LINE_TEXT_INVALID','LINE_TEXT_NOT_LINEAR') else 'LINE_TEXT_INVALID').replace('LINE_TEXT','LINE_LABEL_TEXT')+':'+str(owner))
+                truth=(p.get('lines') or {}).get(owner)
+                if equation is not None and truth is not None:
+                    A,B,C=[float(v) for v in equation];a,b,c=[float(v) for v in truth];scale=(abs(A)+abs(B)+abs(C))*(abs(a)+abs(b)+abs(c))
+                    if (A==0 and B==0) or abs(A*b-a*B)>1e-9*scale or abs(A*c-a*C)>1e-9*scale or abs(B*c-b*C)>1e-9*scale:errors.append('LINE_LABEL_TEXT_NOT_THE_LINE:'+str(owner))
+            leader=leaders.get(lid)
+            if leader is not None:
+                try:start=(float(leader.get('x1')),float(leader.get('y1')));end=(float(leader.get('x2')),float(leader.get('y2')))
+                except (TypeError,ValueError):errors.append('LINE_LABEL_LEADER_UNREADABLE:'+str(owner));continue
+                edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
+                if leader.get('data-owner')!=owner or seg_distance(start,*own)>1.5:errors.append('LINE_LABEL_LEADER_NOT_ON_OWNER:'+str(owner))
+                if min(seg_distance(end,a,b) for a,b in edges)>1.5:errors.append('LINE_LABEL_LEADER_NOT_ON_LABEL:'+str(owner))
+                spot=start
+            else:
+                near=box_distance(box,*own)
+                others=[seg for oid,seg in drawn_lines.items() if oid!=owner and not all(seg_distance(q,*own)<=.5 for q in seg)]
+                if near>12.5:errors.append('LINE_LABEL_NOT_NEAR_OWNER:'+str(owner))
+                elif any(box_distance(box,*seg)<near+12 for seg in others):errors.append('LINE_LABEL_AMBIGUOUS_OWNER:'+str(owner))
+                spot=(box[0]+box[2]/2,box[1]+box[3]/2)
+            at=row.get('labelAt')
+            if at is not None:
+                if not (at in ('START','END') or (isinstance(at,(int,float)) and not isinstance(at,bool) and 0<=at<=1)):errors.append('LINE_LABEL_AT_INVALID:'+str(owner));continue
+                a,b=sorted(own,key=lambda q:(q[0],-q[1]));d=(b[0]-a[0],b[1]-a[1])
+                along=((spot[0]-a[0])*d[0]+(spot[1]-a[1])*d[1])/max(1e-9,d[0]**2+d[1]**2)
+                if abs(along-{'START':.08,'END':.92}.get(at,at))>.4:errors.append('LINE_LABEL_NOT_AT:'+str(owner))
+            observations.append({'id':lid,'type':'LINE_LABEL','owner':owner,'leader':leader is not None})
     wrappers=[n for n in root.iter() if n.get('data-fragment-sha')]
     if set(n.get('id') for n in wrappers)!=set(p['fragments']):errors.append('FRAGMENT_INVENTORY_MISMATCH')
     for oid,f in p['fragments'].items():

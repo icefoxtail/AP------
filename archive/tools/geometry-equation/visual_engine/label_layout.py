@@ -20,6 +20,10 @@ TICK_LABEL_GAPS=(8,12,16)
 TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
 # Gaps tried from each alternate anchor of a lineFallback label (nearest first; from NEAR_RELOCATION_LEADER_MIN_GAP on, a visible leader is needed).
 LINE_FALLBACK_GAPS=(8,6,10,20,32,48)
+# The wide search of a line-owned label (E31): when no ordinary anchor found room, anchors are sampled over the whole drawn chord of the line.
+WIDE_LINE_GAPS=(8,6,10,14,20,28,38,50,64)
+WIDE_LINE_STEPS=24                 # anchors at t = 1/(steps+1) ... steps/(steps+1) along the drawn line, the ones nearest the preferred anchor first
+LEADER_NEAR_START_MIN_PX=1.5       # a leader starting beside a parallel neighbour keeps at least this far from it (near_start leaders)
 
 @dataclass(frozen=True)
 class Box:
@@ -120,7 +124,9 @@ def segment_segment_distance(a,b,c,d):
         if cross(ab,ac)*cross(ab,ad)<=1e-12 and cross(cd,ca)*cross(cd,cb)<=1e-12:return 0.0
     return min(point_segment_distance(a,c,d),point_segment_distance(b,c,d),point_segment_distance(c,a,b),point_segment_distance(d,a,b))
 
-def leader_clear(start,end,obstacles,owner_ids,clearance=6.0):
+def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False):
+    """near_start (E31): a leader that starts on its own line right beside a parallel neighbour (closer than `clearance`) may leave it when it only moves
+    away from that neighbour: the closest approach to the neighbour is its start, which keeps at least LEADER_NEAR_START_MIN_PX from it, and it never crosses it."""
     def intersection_points(a,b,c,d):
         cross=lambda u,v:u[0]*v[1]-u[1]*v[0]
         r=(b[0]-a[0],b[1]-a[1]);s=(d[0]-c[0],d[1]-c[1]);den=cross(r,s);q=(c[0]-a[0],c[1]-a[1])
@@ -153,6 +159,13 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0):
         if owner:
             points=[point for c,d in segments for point in intersection_points(start,end,c,d)]
             if any(math.dist(point,start)>1e-4 for point in points):return False
+            continue
+        if near_start:
+            for c,d in segments:
+                gap=segment_segment_distance(start,end,c,d)
+                if gap>clearance:continue
+                start_gap=point_segment_distance(start,c,d)
+                if start_gap<LEADER_NEAR_START_MIN_PX or gap<start_gap-1e-6:return False
             continue
         if any(segment_segment_distance(start,end,c,d)<=clearance for c,d in segments):return False
     return True
@@ -331,7 +344,7 @@ def competing_lines(owner,obstacles):
 
 def owner_line_incident_ids(owner,start,occupied):
     """The line a label names and every other drawn line with a piece over it that passes through the anchor: a leader may touch these only there."""
-    return {owner['id']}|{o.get('id') for o in occupied if o.get('kind')=='line' and o is not owner and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+    return {owner['id']}|{o.get('id') for o in occupied if o.get('kind') in {'line','curve'} and o is not owner and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
         and any(segment_on_line(owner,c,d) and point_segment_distance(start,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
 
 def owner_incident_ids(start,owner_marker,occupied):
@@ -342,10 +355,10 @@ def owner_incident_ids(start,owner_marker,occupied):
     incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=1e-3}
     return incident
 
-def visible_owner_leader(start,box,occupied,incident):
+def visible_owner_leader(start,box,occupied,incident,near_start=False):
     """End of a leader from the point to the label box, or None when it would touch other geometry or hide along a line through the point."""
     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
-    if not leader_clear(start,end,occupied,incident):return None
+    if not leader_clear(start,end,occupied,incident,near_start=near_start):return None
     # A leader running along a line through the point (within 15 degrees) hides under that line: not a visible leader.
     if any(o.get('id') in incident and o.get('kind') in {'line','axis','auxiliary','curve','leader'} and isinstance(o.get('geometry'),(list,tuple))
            and any(point_segment_distance(start,c,d)<=1e-3 and leader_hides_along(start,end,c,d) for c,d in zip(o['geometry'],o['geometry'][1:]))
@@ -589,7 +602,16 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     if any(any(label['id']==label_id and 'wedgeSearch' in label for label in labels) for label_id in result['unresolved']):
         retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,angle_labels_first_order)
         if len(retry['unresolved'])<len(result['unresolved']):return retry
+    if any(any(label['id']==label_id and label.get('kind')=='TICK_LABEL' for label in labels) for label_id in result['unresolved']):
+        # A tick number beside a point name (the O of the origin and the tick 3 right next to it) found no room because the name took its place first
+        # (equal priority, ordered by id): the second pass places the tick numbers first, so the point name moves to the free side instead.
+        retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
+        if len(retry['unresolved'])<len(result['unresolved']):return retry
     return result
+
+def tick_labels_first_order(label):
+    """The tick-label retry order: at one priority the tick numbers go first (each is bound to its axis tick and may stand on two sides only), then every other label as in the first pass."""
+    return (label.get('priority',2),0 if label.get('kind')=='TICK_LABEL' else 1,label['id'])
 
 def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False,order=None):
     """P0..P4, 8 candidates, coordinate relocation, suppression, side panel.
@@ -884,6 +906,35 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         label={**label,'at':list(alternate)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                     if chosen:break
                 if chosen:break
+        if chosen is None and line_owner is not None:
+            # Wide search (E31): no anchor the author's list names found room. The drawn line is sampled end to end (the anchors nearest the preferred one
+            # first), the nearer places that need no leader before the leader ones; when the line has a parallel neighbour so close that no leader may start
+            # beside it, the leader that starts on its own line and only moves away from that neighbour (near_start) is tried in a second pass.
+            geometry_line=line_owner['geometry'];chord_a,chord_b=geometry_line[0],geometry_line[-1]
+            # wideRange: the band of the drawn line the author asked the label to stand in, counted along the line as drawn (from its first point), or
+            # from its left (lower) end when wideLeftFirst (lineAt).
+            if label.get('wideLeftFirst') and (chord_b[0],-chord_b[1])<(chord_a[0],-chord_a[1]):chord_a,chord_b=chord_b,chord_a
+            chord=(chord_b[0]-chord_a[0],chord_b[1]-chord_a[1]);chord2=chord[0]**2+chord[1]**2
+            if chord2>1e-9:
+                preferred=max(0.0,min(1.0,((label['at'][0]-chord_a[0])*chord[0]+(label['at'][1]-chord_a[1])*chord[1])/chord2))
+                band=label.get('wideRange') or (0.0,1.0)
+                fractions=sorted((t for t in (k/(WIDE_LINE_STEPS+1) for k in range(1,WIDE_LINE_STEPS+1)) if band[0]-1e-9<=t<=band[1]+1e-9),key=lambda t:(round(abs(t-preferred),9),t))
+                wide_anchors=[(chord_a[0]+chord[0]*t,chord_a[1]+chord[1]*t) for t in fractions]
+                for near_start in (False,True):
+                    for gap in WIDE_LINE_GAPS:
+                        for anchor in wide_anchors:
+                            for direction in DIRECTIONS:
+                                box=candidate(anchor,w,h,direction,gap)
+                                if gap<NEAR_RELOCATION_LEADER_MIN_GAP:
+                                    if near_start or not acceptable(box):continue
+                                    label={**label,'at':list(anchor)};chosen=box;method='AUTO_'+direction;break
+                                if not acceptable(box,owner_check=False):continue
+                                end=visible_owner_leader(anchor,box,occupied,owner_line_incident_ids(line_owner,anchor,occupied) if collinear_owners else {line_owner['id']},near_start=near_start)
+                                if end is None:continue
+                                label={**label,'at':list(anchor)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                            if chosen:break
+                        if chosen:break
+                    if chosen:break
         if chosen is None and line_owner is None and label.get('lineFallback') and label.get('alternateAt'):
             # lineFallback: a label that was placed the ordinary way (no ownership rule) and found no room; the same line may be written from the other
             # anchors on it, now under the line-owned rules (its own line clearly the nearest, or a visible leader from the anchor on the line).

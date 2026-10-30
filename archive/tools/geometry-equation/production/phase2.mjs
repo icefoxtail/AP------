@@ -11,6 +11,7 @@ import {assetIdentity,planHash} from './contracts.mjs';
 import {commitStage,generatedPath,currentWorkRoot,bindRunWorkspace,withWorkRoot,isEngineOutputPath,calculationStage} from './store.mjs';
 import {pythonWorker} from './worker.mjs';
 import {pointNameModel} from './point-names.mjs';
+import {readEquation,sameLine,frac} from './linear-text.mjs';
 import {reconstruct,compareReconstruction} from './cindy-observer.mjs';
 import {dependency,dependencyRoot} from './dependencies.mjs';
 import {typesetter} from './typography.mjs';
@@ -310,7 +311,8 @@ function addGraphOverlays(plan,spec){
     const lineId='overlay-line-'+line.id,anchors=ownedLabels&&line.labelAlternates?.length?[...line.labelAlternates,line.labelAt]:null;
     objects.push({id:lineId,kind:'LINE',coefficients:line.kind==='VERTICAL'?[1,0,-exactValue(line.x)]:[exactValue(line.slope),-1,exactValue(line.intercept)]});
     objects.push({id:lineId+'-equation',kind:'EQUATION_LABEL',target:lineId,text:line.text,at:anchors?anchors[0]:line.labelAt,priority:0,
-      ...(anchors?{lineOwned:true,alternateAt:anchors.slice(1),gaps:[8,6,10,20,32,48],collinearOwners:true}:line.labelAlternates?.length?{alternateAt:line.labelAlternates,lineFallback:true}:{})});
+      ...(line.lineAt!==undefined?{lineOwned:true,alternateAt:[],gaps:[8,6,10,20,32,48],collinearOwners:true,lineAt:line.lineAt}
+        :anchors?{lineOwned:true,alternateAt:anchors.slice(1),gaps:[8,6,10,20,32,48],collinearOwners:true}:line.labelAlternates?.length?{alternateAt:line.labelAlternates,lineFallback:true}:{})});
   }
   for(const point of features.points){
     if(!point.coordinates){objects.push({id:point.id,kind:'POINT',at:[point.x,point.y],name:point.unnamed?null:names.tex(point.id),priority:0});continue;}
@@ -840,9 +842,11 @@ function specForFamily(plan,model,id){
   const lineLabelIds=new Set();
   for(const label of plan.lineLabels||[]){
     const node=plan.mathPlan.nodes.find(n=>n.id===label.nodeId);
-    if(!node||node.op!=='SOURCE_LINE'||!Object.hasOwn(displayed.lines,node.id)||lineLabelIds.has(node.id)||!['SLOPE_INTERCEPT','GENERAL'].includes(label.form)||Object.keys(label).length!==2)throw Error('INVALID_LINE_LABEL');
+    if(!node||node.op!=='SOURCE_LINE'||!Object.hasOwn(displayed.lines,node.id)||lineLabelIds.has(node.id)||(label.text===undefined?!['SLOPE_INTERCEPT','GENERAL'].includes(label.form):label.form!==undefined)||Object.keys(label).some(key=>!['nodeId','form','labelAt','text','values'].includes(key))||(label.values!==undefined&&label.text===undefined))throw Error('INVALID_LINE_LABEL');
+    if(label.labelAt!==undefined&&!lineAtValid(label.labelAt))throw Error('LINE_LABEL_AT_INVALID:'+label.nodeId);
     lineLabelIds.add(node.id);
     const [ca,cb,cc]=['a','b','c'].map(k=>exactSurd(node.args[k]));
+    if(label.text!==undefined)freeLineTextOk(label,[ca,cb,cc]);
     const lo=[Math.min(...xs)-pad,Math.min(...ys)-pad],hi=[Math.max(...xs)+pad,Math.max(...ys)+pad],coef=[ca,cb,cc].map(v=>Number(v.p[0])/Number(v.p[1])+(v.q[0]===0n?0:Number(v.q[0])/Number(v.q[1])*Math.sqrt(Number(v.r))));
     // Anchor at the end of the drawn line: clip a x+b y+c=0 to the view, then take the end that is higher (steep line) or further right (flat line), just inside the frame.
     const ends=[];const [A,B,C]=coef;
@@ -852,7 +856,7 @@ function specForFamily(plan,model,id){
     // Anchors on the line, preferred end first (higher for a steep line, further right for a flat one): near the end, a little in, further in; then the other end.
     const steep=Math.abs(A)>Math.abs(B),first=ends.reduce((p,q)=>(steep?q[1]>p[1]:q[0]>p[0])?q:p),second=ends.find(e=>e!==first),mid=[(first[0]+second[0])/2,(first[1]+second[1])/2];
     const anchors=[[first,.08],[first,.22],[first,.4],[second,.08],[second,.22],[second,.4]].map(([e,t])=>[e[0]+(mid[0]-e[0])*t*2,e[1]+(mid[1]-e[1])*t*2]),at=anchors[0];
-    const id=node.id+'-equation';objects.push({id,kind:'EQUATION_LABEL',target:node.id,lineOwned:true,text:lineEquationText(ca,cb,cc,label.form),at,alternateAt:anchors.slice(1),priority:1});factRolesByLabel[id]=node.factRole;
+    const id=node.id+'-equation';objects.push({id,kind:'EQUATION_LABEL',target:node.id,lineOwned:true,text:label.text!==undefined?label.text:lineEquationText(ca,cb,cc,label.form),at,alternateAt:anchors.slice(1),priority:1,...(label.labelAt!==undefined?{lineAt:label.labelAt}:{})});factRolesByLabel[id]=node.factRole;
   }
   for(const label of plan.scalarLabels||[]){
     const scalar=model.scalars[label.nodeId];if(!scalar)throw Error('SCALAR_LABEL_UNKNOWN_NODE');
@@ -1729,6 +1733,23 @@ function surdLineEquationText(sa,sb,sc,form){
   const pureSurd=!surdIsRational(slope)&&slope.p[0]===0n&&slope.q[1]===1n,slopeText=surdIsRational(slope)?termOf(slope,'x'):pureSurd?surdText(slope).replace(/^(?!-)/,'+')+'x':'+'+par(slope)+'*x';
   return 'y='+(join([slopeText,constOf(icept)])||'0');
 }
+// lineAt / labelAt of a line label (E31): START, END or a fraction 0..1 of the drawn line counted from its left (lower) end.
+// A free equation text on a displayed SOURCE_LINE (lineLabels[].text, E31): written as given (symbolic letters allowed), and when it can be read exactly (every letter other than
+// x and y has a value in `values`) it must be the line itself; an irrational line is not compared.
+function freeLineTextOk(label,coefficients){
+  const id=label.nodeId;
+  let equation;
+  try{equation=readEquation(label.text,label.values);}
+  catch(error){const code=String(error.message);throw Error((code==='LINE_TEXT_NOT_LINEAR'?'LINE_LABEL_TEXT_NOT_LINEAR':code==='LINE_TEXT_VALUES_INVALID'?'LINE_LABEL_TEXT_VALUES_INVALID':'LINE_LABEL_TEXT_INVALID')+':'+id);}
+  if(equation===null){
+    if(label.values&&Object.keys(label.values).every(letter=>!label.text.includes(letter)))throw Error('LINE_LABEL_TEXT_VALUES_UNUSED:'+id);
+    return;
+  }
+  if(!coefficients.every(v=>v.q[0]===0n))return;
+  const line={a:frac(coefficients[0].p[0],coefficients[0].p[1]),b:frac(coefficients[1].p[0],coefficients[1].p[1]),c:frac(coefficients[2].p[0],coefficients[2].p[1])};
+  if(!sameLine(equation,line))throw Error('LINE_LABEL_TEXT_NOT_THE_LINE:'+id);
+}
+export const lineAtValid=value=>value==='START'||value==='END'||(typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=1);
 function unwrapParentheses(text){
   if(!text.startsWith('(')||!text.endsWith(')'))return text;
   let depth=0;for(let i=0;i<text.length;i++){if(text[i]==='(')depth++;else if(text[i]===')'&&--depth===0&&i<text.length-1)return text;}

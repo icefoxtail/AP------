@@ -2453,11 +2453,37 @@ def _overlay_curve_exact(plan,x_value,curve_id=None):
 def _overlay_number(value):
     return float(S.N(value,30))
 
+def _overlay_label_is_the_line(line):
+    """A free equation text on an overlay line (E31): when it is an equation of one '=' it is read exactly (labelValues gives the number a letter stands for in the
+    drawing) and must be the drawn line. A text with a letter that has no value is symbolic and is shown as written; a text without '=' is a name, not an equation."""
+    from linear_text import read_equation,read_values,same_line
+    text=line['label'];ident=line.get('id')
+    try:values=read_values(line.get('labelValues'))
+    except ValueError:_overlay_fail('OVERLAY_LABEL_VALUES_INVALID',ident)
+    if text.count('=')!=1:
+        if values:_overlay_fail('OVERLAY_LABEL_VALUES_WITHOUT_EQUATION',ident)
+        return
+    try:equation=read_equation(text,line.get('labelValues'))
+    except ValueError as error:
+        if str(error)=='LINE_TEXT_NOT_LINEAR':_overlay_fail('OVERLAY_LABEL_NOT_LINEAR',ident)
+        return
+    if equation is None:
+        if values and all(letter not in text for letter in values):_overlay_fail('OVERLAY_LABEL_VALUES_UNUSED',ident)
+        return
+    if line['kind']=='VERTICAL':
+        x=pp_exact_value(line['x']);coefficients=(Fraction(1),Fraction(0),-Fraction(int(x.p),int(x.q))) if x.is_Rational else None
+    else:
+        slope,intercept=pp_exact_value(line['slope']),pp_exact_value(line['intercept'])
+        coefficients=(Fraction(int(slope.p),int(slope.q)),Fraction(-1),Fraction(int(intercept.p),int(intercept.q))) if slope.is_Rational and intercept.is_Rational else None
+    if coefficients is not None and not same_line(equation,coefficients):_overlay_fail('OVERLAY_LABEL_NOT_THE_LINE',ident)
+
 def _overlay_line_text(line):
     if line.get('label') is not None:
         if not isinstance(line['label'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',line['label']):
             _overlay_fail('OVERLAY_LABEL_INVALID',line.get('id'))
+        _overlay_label_is_the_line(line)
         return line['label']
+    if line.get('labelValues') is not None:_overlay_fail('OVERLAY_LABEL_VALUES_WITHOUT_LABEL',line.get('id'))
     if line['kind']=='VERTICAL':return 'x='+pp_surd_text(line['x'])
     slope,intercept=line['slope'],line['intercept']
     if slope=='0':return 'y='+pp_surd_text(intercept)
@@ -2465,6 +2491,9 @@ def _overlay_line_text(line):
     if intercept=='0':return 'y='+slope_text
     sign='-' if intercept.startswith('-') else '+'
     return 'y='+slope_text+sign+pp_surd_text(intercept).lstrip('-')
+
+def _overlay_line_at_valid(value):
+    return value in ('START','END') or (isinstance(value,(int,float)) and not isinstance(value,bool) and math.isfinite(value) and 0<=value<=1)
 
 def _overlay_label_anchor(viewport,line):
     xmin,xmax,ymin,ymax=viewport;spanx=xmax-xmin;spany=ymax-ymin
@@ -2630,19 +2659,25 @@ def _overlay_features(plan):
     lines=[]
     for entry in raw.get('lines',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_LINE_INVALID','line')
-        if set(entry)-{'id','slope','intercept','x','label'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
+        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'line');claim('line:'+ident)
         if 'x' in entry:
             if 'slope' in entry or 'intercept' in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
             x=_overlay_exact(entry['x'],ident)
             line={'id':ident,'kind':'VERTICAL','x':pp_surd_text(x),'xValue':_overlay_number(x),'label':entry.get('label')}
+            if 'labelValues' in entry:line['labelValues']=entry['labelValues']
         else:
             if 'slope' not in entry or 'intercept' not in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
             slope=_overlay_exact(entry['slope'],ident);intercept=_overlay_exact(entry['intercept'],ident)
             line={'id':ident,'kind':'LINE','slope':pp_surd_text(slope),'intercept':pp_surd_text(intercept),'slopeValue':_overlay_number(slope),'interceptValue':_overlay_number(intercept),'label':entry.get('label')}
+        if 'labelValues' in entry:line['labelValues']=entry['labelValues']
         line['text']=_overlay_line_text(line)
         if not _overlay_line_crosses_view(plan['viewport'],line):_overlay_fail('OVERLAY_LINE_OUTSIDE_VIEWPORT',ident)
         line['labelAt']=_overlay_label_anchor(plan['viewport'],line)
+        # labelAt (E31): START / END / a fraction 0..1 of the drawn line from its left (lower) end; the layout then keeps the equation label in that part of the line.
+        if 'labelAt' in entry:
+            if not _overlay_line_at_valid(entry['labelAt']):_overlay_fail('OVERLAY_LINE_LABEL_AT_INVALID',ident)
+            line['lineAt']=entry['labelAt']
         lines.append(line)
     by_line={line['id']:line for line in lines}
     points=[];by_point={};exact_by_point={}

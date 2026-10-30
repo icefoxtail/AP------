@@ -43,6 +43,20 @@ export function textNamesPoint(text,id){
 }
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
+// The anchor of a segment's expression label and the other anchors the layout may try (data coordinates), from its labelAt: START / MID / END or a fraction
+// 0..1 from the segment's first end. `band` is the part of the segment a stated labelAt keeps the label in (the wide search of the layout stays inside it).
+export function segmentLabelSite(row,p,q){
+  const at=row.labelAt;
+  if(at!==undefined&&!['START','MID','END'].includes(at)&&!(typeof at==='number'&&Number.isFinite(at)&&at>=0&&at<=1))throw Error('SEGMENT_LABEL_AT_INVALID:'+row.id);
+  const lerp=t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];
+  if(typeof at==='number'){
+    const near=[.1,-.1,.2,-.2].map(step=>Math.min(.95,Math.max(.05,at+step)));
+    return {at:lerp(at),others:near.map(lerp),band:[Math.max(0,at-.2),Math.min(1,at+.2)]};
+  }
+  const mid=at==='START'?lerp(0):at==='END'?lerp(1):[(p[0]+q[0])/2,(p[1]+q[1])/2];
+  const others=(at==='START'?[0.06,0.15,0.3]:at==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
+  return {at:mid,others,band:at==='START'?[0,.25]:at==='END'?[.75,1]:null};
+}
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides'],
   textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
@@ -356,15 +370,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:expressionLabels.labelKind:'+row.id);
     if(kind==='TEXT')plainTextOk(row.text,'expressionLabels.text',row.id);
     const unit=unitOf(row,kind,true,'expressionLabels');
-    // labelAt (E8b): START / END write the label at the first / second end of its segment (the order of the segment's refs), MID (default) at its middle.
-    if(row.labelAt!==undefined&&!['START','MID','END'].includes(row.labelAt))bad('SEGMENT_LABEL_AT_INVALID:'+row.id);
-    const lerp=t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];
-    const mid=row.labelAt==='START'?lerp(0):row.labelAt==='END'?lerp(1):[(p[0]+q[0])/2,(p[1]+q[1])/2];
-    const others=(row.labelAt==='START'?[0.06,0.15,0.3]:row.labelAt==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
+    // labelAt (E8b): START / END write the label at the first / second end of its segment (the order of the segment's refs), MID (default) at its middle;
+    // (E31) a number 0..1 writes it that fraction of the way from the first end.
+    const site=segmentLabelSite(row,p,q);
     // ownership NEAREST (E32): the label stands where its own segment is the nearest one by a small margin (a side of a small triangle among its other sides); STRICT (default) keeps the old margin
     if(row.ownership!==undefined&&!['STRICT','NEAREST'].includes(row.ownership))bad('SEGMENT_LABEL_OWNERSHIP_INVALID:'+row.id);
-    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:mid,lineOwned:true,
-      alternateAt:others,gaps:[8,6,10,20,32,48],priority:1,
+    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:site.at,lineOwned:true,
+      alternateAt:site.others,gaps:[8,6,10,20,32,48],priority:1,...(site.band?{lineBand:site.band}:{}),
       ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...(row.ownership==='NEAREST'?{ownership:'NEAREST'}:{}),...weightOf(row,kind,'expressionLabels')});
     factRolesByLabel[row.id]=role(row);
   }
@@ -425,11 +437,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const text=row.text??'공통';
     plainTextOk(text,'commonSides.text',row.id);
     if(text.length>6)bad('MARK_FIELD_INVALID:commonSides.text:'+row.id);
-    if(row.labelAt!==undefined&&!['START','MID','END'].includes(row.labelAt))bad('SEGMENT_LABEL_AT_INVALID:'+row.id);
-    const lerp=t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];
-    const mid=row.labelAt==='START'?lerp(0):row.labelAt==='END'?lerp(1):[(p[0]+q[0])/2,(p[1]+q[1])/2];
-    const others=(row.labelAt==='START'?[0.06,0.15,0.3]:row.labelAt==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
-    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.segment,text,at:mid,lineOwned:true,alternateAt:others,gaps:[8,6,10,20,32,48],priority:1,labelKind:'TEXT',...weightOf(row,'TEXT','commonSides')});
+    const site=segmentLabelSite(row,p,q);
+    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.segment,text,at:site.at,lineOwned:true,alternateAt:site.others,gaps:[8,6,10,20,32,48],priority:1,...(site.band?{lineBand:site.band}:{}),labelKind:'TEXT',...weightOf(row,'TEXT','commonSides')});
     factRolesByLabel[row.id]=role(row);
   }
 

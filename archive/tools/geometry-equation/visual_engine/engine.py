@@ -74,6 +74,8 @@ SECTOR_FILL='#d9d9d9'
 STRAIGHT_SIDE_VECTORS={'ABOVE':(0,-1),'BELOW':(0,1),'LEFT':(-1,0),'RIGHT':(1,0)}   # screen directions (y points down) a straight angle's semicircle may face
 FREE_LABEL_RINGS=(6,12,18)   # px: how far a centred free text label may slide from its stated place (the observer's slack is the largest ring)
 FREE_LABEL_GAPS=(8,12,18,26) # px: the gaps a free text label beside a point or in a named direction tries
+LINE_AT_NAMED={'START':.08,'END':.92}   # lineAt names: a line label near the left (lower) end / the right (upper) end of the drawn line
+LINE_AT_BAND=.25            # the wide search of a lineAt label stays within this fraction of the line round the stated place
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT on a plane figure's segment (the same red as a solid figure's accent edge)
 ANGLE_EMPHASIS_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle mark: red, blue, green arcs
 # A source that says 빗금친 (hatched) is drawn with real diagonal strokes clipped to the region, not with a second grey:
@@ -1064,6 +1066,23 @@ def prepare(spec):
             label={**obj,'font':tokens['pointName'] if kind=='POINT_NAME' else tokens['coordinateLabel'] if kind=='COORDINATE_LABEL' else tokens['conditionBox'] if kind=='CONDITION_BOX' else tokens['mathLabel'],'priority':obj.get('priority',1 if kind in {'POINT_NAME','CONDITION_BOX'} else 2)}
             label['at']=vp.screen(geometry[obj['target']]) if kind in {'POINT_NAME','COORDINATE_LABEL'} else vp.screen(obj['at'])
             if 'alternateAt' in obj:label['alternateAt']=[list(vp.screen(value)) for value in obj['alternateAt']]
+            if kind=='EQUATION_LABEL' and obj.get('lineAt') is not None:
+                # lineAt (E31): START / END / a fraction 0..1 of the drawn line, counted from its left end (its lower end for a vertical line). The anchor, its
+                # neighbours and the band the wide search may use are taken from the line as it is drawn in the frame, so the author's place is the line's visible part.
+                owner_line=next((v for v in primitives if v['id']==obj.get('target') and v.get('kind')=='line'),None)
+                if owner_line is None or obj.get('lineOwned') is not True:raise ValueError('LINE_LABEL_AT_OWNER_NOT_DRAWN:'+oid)
+                chord_a,chord_b=owner_line['from'],owner_line['to']
+                if (chord_b[0],-chord_b[1])<(chord_a[0],-chord_a[1]):chord_a,chord_b=chord_b,chord_a
+                wanted=obj['lineAt'];t0=LINE_AT_NAMED.get(wanted) if isinstance(wanted,str) else wanted
+                if t0 is None or isinstance(wanted,bool) or not isinstance(t0,(int,float)) or not 0<=t0<=1:raise ValueError('LINE_LABEL_AT_INVALID:'+oid)
+                spots=[t0]+[t for step in (.06,.12,.2) for t in (t0+step,t0-step)]
+                spots=[min(.97,max(.03,t)) for t in spots];ordered=[]
+                for t in spots:
+                    if all(abs(t-other)>1e-9 for other in ordered):ordered.append(t)
+                on_line=lambda t:[chord_a[0]+(chord_b[0]-chord_a[0])*t,chord_a[1]+(chord_b[1]-chord_a[1])*t]
+                label['at']=on_line(ordered[0]);label['alternateAt']=[on_line(t) for t in ordered[1:]]
+                label['wideRange']=[max(0.0,t0-LINE_AT_BAND),min(1.0,t0+LINE_AT_BAND)];label['wideLeftFirst']=True
+            if kind=='EQUATION_LABEL' and obj.get('lineBand') is not None:label['wideRange']=[float(v) for v in obj['lineBand']]
             if kind=='COORDINATE_LABEL':
                 exact=[exact_coordinate(v,n,bool(obj.get('sourceDecimalEvidence')),symbols) for v,n in zip(obj['exact'],geometry[obj['target']])]
                 label['text']='('+','.join(exact)+')';label['panelText']=obj['target']+': '+label['text']

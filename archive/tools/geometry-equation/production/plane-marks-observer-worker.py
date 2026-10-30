@@ -594,10 +594,12 @@ def audit(p):
         label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'),row.get('labelWeight'))
         if row.get('labelAt') is not None:
             # labelAt START / END: the label stands nearer the first / second end of its segment than the other end (its projection on the segment, 0 = first end, 1 = second)
-            if row['labelAt'] not in ('START','MID','END'):errors.append('SEGMENT_LABEL_AT_INVALID:'+oid)
+            at=row['labelAt']
+            if not (at in ('START','MID','END') or (isinstance(at,(int,float)) and not isinstance(at,bool) and 0<=at<=1)):errors.append('SEGMENT_LABEL_AT_INVALID:'+oid)
             else:
                 a,b=own;d=sub(b,a);fraction=((centre_model[0]-a[0])*d[0]+(centre_model[1]-a[1])*d[1])/(norm(d)**2)
-                if (row['labelAt']=='START' and fraction>0.3) or (row['labelAt']=='END' and fraction<0.7):errors.append('SEGMENT_LABEL_NOT_AT_END:'+oid)
+                # a number 0..1 (E31): the label's centre stands within 0.4 of the segment's length from the stated fraction
+                if (at=='START' and fraction>0.3) or (at=='END' and fraction<0.7) or (isinstance(at,(int,float)) and abs(fraction-at)>0.4):errors.append('SEGMENT_LABEL_NOT_AT_END:'+oid)
         observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx,**({'labelKind':row['labelKind']} if row.get('labelKind') else {}),**({'unit':row['unit']} if row.get('unit') else {})})
 
     # ---- angle sums (E30): the equation of two angle marks at one vertex, re-derived here from the plan's own angle rows (values, vertex) and checked as a free math label
