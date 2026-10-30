@@ -298,6 +298,7 @@
       r.controls = h('div', { class: 'apl-section' });
       pane.append(r.controls);
       this._ctlIds = null;
+      this._ctlKey = null;
       // 실시간 값
       r.alert = h('div', { hidden: true });
       r.readouts = h('div', { class: 'apl-readouts' });
