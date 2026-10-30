@@ -648,7 +648,7 @@ window.questionBank = [
       "$196\\pi\\text{ cm}^2,\\; 192\\pi\\text{ cm}^3$"
     ],
     "answer": "③",
-    "solution": "회전축에서 직사각형까지의 거리가 5 cm이고 직사각형의 너비가 4 cm이므로 바깥 반지름은 5 cm, 안쪽 반지름은 5−4=1 cm이다. 높이는 8 cm이다.\n\n부피는 π(5²−1²)×8=192π cm³이다.\n겉넓이는 바깥·안쪽 옆넓이와 위·아래 고리 넓이를 더한다.\n2π×5×8+2π×1×8+2π(5²−1²)=144π cm²이다.\n\n따라서 정답은 ③이다.", "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q12-solution.svg", "solutionImageAlt": "직사각형을 회전해 생긴 안쪽 반지름 1cm, 바깥 반지름 5cm, 높이 8cm인 속이 빈 원기둥", "solutionImageCaption": "회전 후 안쪽과 바깥쪽 옆면 및 환형 밑면을 계산", "solutionImageSize": "full",
+    "solution": "회전축에서 직사각형까지의 거리가 5 cm이고 직사각형의 너비가 4 cm이므로 바깥 반지름은 5 cm, 안쪽 반지름은 5−4=1 cm이다. 높이는 8 cm이다.\n\n부피는 π(5²−1²)×8=192π cm³이다.\n겉넓이는 바깥·안쪽 옆넓이와 위·아래 고리 넓이를 더한다.\n2π×5×8+2π×1×8+2π(5²−1²)=144π cm²이다.\n\n따라서 정답은 ③이다.", "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q12-solution-v2.svg", "solutionImageAlt": "해설 그림: 직사각형(가로 4 cm, 세로 8 cm)과 회전축 l의 거리 5 cm·4 cm를 보이고, 회전 후 바깥 반지름 5·안쪽 반지름 1·높이 8인 두 원기둥과 위아래 고리 모양의 면을 나란히 보여 주는 그림이다.", "solutionImageCaption": "직사각형을 축 l로 1회전한 속 빈 원기둥은 바깥 반지름 5, 안쪽 반지름 1, 높이 8이다.", "solutionImageSize": "medium",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -717,7 +717,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 구, 원기둥, 원뿔, 원뿔대, 반구를 회전축을 포함하는 평면으로 자른 단면이 각각 원, 직사각형, 삼각형, 사다리꼴, 반원임을 다섯 칸에 나란히 보여 주는 그림이다.",
+    "solutionImageCaption": "회전축을 포함하는 평면으로 자른 다섯 회전체의 단면 모양을 비교한 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -1112,7 +1116,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "원뿔대의 옆넓이는 π(10+5)×13=195π cm²이다.\n두 밑면의 넓이는 100π+25π=125π cm²이므로 S₁=320π cm²이다.\n반지름 4인 구의 겉넓이는 S₂=4π×4²=64π cm²이다.\n따라서 S₁/S₂=320/64=5이고 정답은 ③이다.",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q20-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q20-solution-v2.svg",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -1128,7 +1132,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImageAlt": "해설 그림: 윗면 반지름 5 cm, 아랫면 반지름 10 cm, 모선 13 cm인 원뿔대와, 두 밑면을 같은 배율로 그린 원, 반지름 4 cm인 구를 나란히 보여 주는 그림이다.",
+    "solutionImageCaption": "원뿔대의 두 밑면과 모선, 반지름 4인 구를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
