@@ -87,10 +87,12 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
 test('the lane never changes the canonical resolution or the strict approval metric', async () => {
   const data = await catalog();
   const auth = { canonicalAuthority: data.canonicalAuthority };
-  assert.equal(data.records.filter(row => core.basicEligibility(row, auth).ok).length, 1496);
+  // 1496 before the 2026-10-30 release sync; main's f61861cb9 restored the figure of 25_왕의중 2학기 중간 중1 q14 (a changed
+  // stem), so that one question's recorded approval no longer matches its bytes and leaves the strict count.
+  assert.equal(data.records.filter(row => core.basicEligibility(row, auth).ok).length, 1495);
   assert.equal(data.records.filter(row => core.advancedEligible(row, auth)).length, 195);
   assert.equal(data.records.filter(row => row.problemTypeKey).length, 549);
-  assert.equal(data.records.filter(row => row.curriculumKey).length, 3207, 'canonical curriculumKey is untouched');
+  assert.equal(data.records.filter(row => row.curriculumKey).length, 3206, 'canonical curriculumKey is untouched (3207 before the same changed-stem question, see above)');
   // every canonically validated type/template is also in the lane with the same value and is 승인
   for (const row of data.records.filter(candidate => core.advancedEligible(candidate, auth))) {
     const facets = core.metaFacetsOf(row);
