@@ -547,7 +547,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 오른쪽 위로 올라가며 y축과 원점 아래에서 만나는 직선 y=(2a-1)x+4b-3이 제3, 제4, 제1사분면을 지나고, 색칠한 제2사분면은 지나지 않는 예시 그림이다.",
+    "solutionImageCaption": "기울기가 양수이고 y절편이 음수이면 직선은 제2사분면을 지나지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -607,7 +611,7 @@ window.questionBank = [
       "움직이는점"
     ],
     "wide": false,
-    "content": "다음 직사각형 $ABCD$에서 점 $P$는 점 $D$를 출발하여 점 $C$까지 $DC$를 따라 초속 3 cm로 움직이고 있다. 점 $P$가 점 $D$를 출발한 지 $x$초 후의 사각형 $ABPD$의 넓이를 $y$ cm$^2$라 할 때, 사각형 $ABPD$의 넓이가 96 cm$^2$가 되는 것은 점 $P$가 점 $D$를 출발한 지 몇 초 후인가? [5점]",
+    "content": "다음 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 $BC$를 따라 초속 3 cm로 움직이고 있다. 점 $P$가 점 $B$를 출발한 지 $x$초 후의 사각형 $ABPD$의 넓이를 $y$ cm$^2$라 할 때, 사각형 $ABPD$의 넓이가 96 cm$^2$가 되는 것은 점 $P$가 점 $B$를 출발한 지 몇 초 후인가? [5점]",
     "choices": [
       "1초 후",
       "2초 후",
@@ -616,7 +620,7 @@ window.questionBank = [
       "5초 후"
     ],
     "answer": "③",
-    "solution": "$x$초 후\n$DP=3x$이므로\n\n$PC=15-3x$이다.\n\n직사각형 $ABCD$의 넓이는\n$15\\times8=120$이다.\n\n삼각형 $PBC$의 넓이는\n$\\dfrac12(15-3x)\\times8$\n$=60-12x$이다.\n\n따라서 사각형 $ABPD$의 넓이는\n$120-(60-12x)$\n$=60+12x$이다.\n\n넓이가 $96\\text{ cm}^2$이므로\n$60+12x=96$\n$12x=36$\n$x=3$이다.\n\n따라서 정답은 ③이다.",
+    "solution": "$x$초 후\n$BP=3x$이므로\n\n$PC=15-3x$이다.\n\n직사각형 $ABCD$의 넓이는\n$15\\times8=120$이다.\n\n삼각형 $DPC$의 넓이는\n$\\dfrac12(15-3x)\\times8$\n$=60-12x$이다.\n\n따라서 사각형 $ABPD$의 넓이는\n$120-(60-12x)$\n$=60+12x$이다.\n\n넓이가 $96\\text{ cm}^2$이므로\n$60+12x=96$\n$12x=36$\n$x=3$이다.\n\n따라서 정답은 ③이다.",
     "image": "assets/images/26_팔마중_1학기_기말_중2_기출/q16.png",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
@@ -627,7 +631,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 AD=15 cm, DC=8 cm이고 점 P가 변 BC 위에 있다. BP=3x cm, PC=(15-3x) cm로 표시했고, 사각형 ABPD와 오른쪽 삼각형(넓이 60-12x)이 서로 다른 색으로 구분되어 있다.",
+    "solutionImageCaption": "BP=3x, PC=15-3x이므로 사각형 ABPD는 직사각형에서 오른쪽 삼각형을 뺀 부분이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -786,7 +794,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 직선 y=2x+5, x+y-2=0, y=-1이 둘러싸는 삼각형이 색칠되어 있다. y=-1 위의 밑변에 길이 6, 맨 위 꼭짓점에서 밑변으로 내린 점선 높이에 4와 직각 표시가 있다.",
+    "solutionImageCaption": "세 직선으로 둘러싸인 삼각형의 밑변은 6, 높이는 4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

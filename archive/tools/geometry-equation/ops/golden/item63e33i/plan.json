@@ -1,0 +1,77 @@
+{
+ "capability": "solid-figure-v1",
+ "unit": "cm",
+ "solids": [
+  {
+   "id": "s1",
+   "kind": "CONE",
+   "radius": 6,
+   "height": 8,
+   "names": {
+    "apex": "T",
+    "center": "A",
+    "level": "C",
+    "levelRim": "D",
+    "rim": "B"
+   }
+  }
+ ],
+ "section": {
+  "solid": "s1",
+  "kind": "LEVEL",
+  "at": "2/5",
+  "fill": "BOTTOM"
+ },
+ "segments": [
+  {
+   "from": "T",
+   "to": "A",
+   "style": "SOLID",
+   "role": "REF"
+  },
+  {
+   "from": "C",
+   "to": "D",
+   "style": "SOLID",
+   "role": "REF"
+  },
+  {
+   "from": "A",
+   "to": "B",
+   "style": "SOLID",
+   "role": "REF"
+  }
+ ],
+ "dims": [
+  {
+   "solid": "s1",
+   "slant": "top"
+  },
+  {
+   "solid": "s1",
+   "slant": "bottom"
+  }
+ ],
+ "solidCaption": {
+  "text": "물을 부어 채운 원뿔 그릇"
+ },
+ "caption": "원뿔 모양의 그릇에 물이 채워진 모습이다. 꼭짓점 T에서 물이 닿는 모선 위의 점 D까지는 6cm, D에서 B까지는 4cm이다. 색칠한 부분이 물이 채워진 부분이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "원뿔 모양의 그릇에 위에서부터 물을 부어 채웠다",
+   "mappedTo": [
+    "solids",
+    "section"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "TD=6cm, DB=4cm",
+   "mappedTo": "dims"
+  }
+ ],
+ "newVisualInformation": [
+  "물이 채워진 부분(색칠)과 모선의 두 부분 TD=6cm, DB=4cm"
+ ]
+}

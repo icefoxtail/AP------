@@ -1,0 +1,285 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "DIVISION_POINT",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {
+     "m": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "n": {
+      "kind": "integer",
+      "value": "2"
+     },
+     "mode": "INTERNAL"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "7"
+      },
+      {
+       "kind": "integer",
+       "value": "6"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "lBC",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "H",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "A",
+     "lBC"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBP",
+   "refs": [
+    "B",
+    "P"
+   ]
+  },
+  {
+   "id": "sPC",
+   "refs": [
+    "P",
+    "C"
+   ]
+  },
+  {
+   "id": "sCA",
+   "refs": [
+    "C",
+    "A"
+   ]
+  },
+  {
+   "id": "sAP",
+   "refs": [
+    "A",
+    "P"
+   ]
+  },
+  {
+   "id": "sAH",
+   "refs": [
+    "A",
+    "H"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "P",
+  "H"
+ ],
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 460
+ },
+ "planeMarks": {
+  "regions": [
+   {
+    "id": "rABP",
+    "fill": "LIGHT",
+    "label": "△ABP",
+    "labelKind": "TEXT",
+    "shapes": [
+     {
+      "polygon": [
+       "A",
+       "B",
+       "P"
+      ]
+     }
+    ],
+    "labelWeight": "MATH"
+   },
+   {
+    "id": "rAPC",
+    "fill": "MEDIUM",
+    "label": "△APC",
+    "labelKind": "TEXT",
+    "shapes": [
+     {
+      "polygon": [
+       "A",
+       "P",
+       "C"
+      ]
+     }
+    ],
+    "labelWeight": "MATH"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "tAH",
+    "ownerSegment": "sAH",
+    "text": "높이",
+    "labelKind": "TEXT",
+    "labelWeight": "MATH"
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dBP",
+    "from": "B",
+    "to": "P",
+    "label": "3",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dPC",
+    "from": "P",
+    "to": "C",
+    "label": "2",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dBC",
+    "from": "B",
+    "to": "C",
+    "label": "△ABC=75cm²",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": 2,
+    "factRole": "GIVEN",
+    "labelKind": "TEXT",
+    "labelWeight": "MATH"
+   }
+  ]
+ },
+ "hiddenPointNames": [
+  "H"
+ ],
+ "hiddenPointStyle": "NONE",
+ "rightAngles": [
+  {
+   "id": "rH",
+   "refs": [
+    "A",
+    "H",
+    "C"
+   ]
+  }
+ ],
+ "caption": "△ABP와 △APC는 꼭짓점 A에서 직선 BC까지의 높이가 같고 밑변의 비가 BP:PC=3:2이므로 넓이의 비도 3:2이다. △ABC의 넓이는 75cm²이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "△ABC의 넓이가 75cm²이고 변 BC 위의 점 P에 대하여 BP:PC=3:2이다",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "P"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "A에서 BC에 내린 공통 높이와, 높이가 같은 두 삼각형 △ABP, △APC의 색칠 구분 및 밑변의 비 3:2"
+ ],
+ "sourceQuote": "꼭짓점 $A$에서 직선 $BC$까지의 높이가 같으므로"
+}

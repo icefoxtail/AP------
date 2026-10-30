@@ -1,0 +1,55 @@
+{
+ "capability": "solid-figure-v1",
+ "unit": "cm",
+ "solids": [
+  {
+   "id": "s1",
+   "kind": "CONE_FRUSTUM",
+   "radius": 6,
+   "topRadius": 3,
+   "height": 4,
+   "orientation": "APEX_DOWN",
+   "axis": {
+    "label": "l"
+   }
+  },
+  {
+   "id": "s2",
+   "kind": "HEMISPHERE",
+   "radius": 6,
+   "on": "s1"
+  }
+ ],
+ "dims": [
+  {
+   "solid": "s2",
+   "radius": "center"
+  },
+  {
+   "solid": "s1",
+   "radius": "bottom"
+  },
+  {
+   "solid": "s1",
+   "slant": true
+  },
+  {
+   "solid": "s1",
+   "height": true
+  }
+ ],
+ "solidCaption": {
+  "text": "반구와 원뿔대를 붙인 입체"
+ },
+ "caption": "반지름 6cm인 반구와 두 반지름 6cm, 3cm이고 모선이 5cm인 원뿔대를 붙인 입체를 직선 l을 회전축으로 1회전시킨 회전체이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "반지름 6cm인 반구, 두 반지름 6cm와 3cm이고 모선 5cm인 원뿔대를 직선 l을 회전축으로 1회전",
+   "mappedTo": "solids"
+  }
+ ],
+ "newVisualInformation": [
+  "회전체의 겉면을 이루는 반구의 곡면, 원뿔대의 옆면과 아래 밑면, 회전축 l"
+ ]
+}

@@ -440,9 +440,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 선에 35°, 130°, 150°와 각 x, y가 표시되고, 각 꺾인 점에서 l과 평행한 점선 보조선을 그어 엇각 35°(빨간 호), β(파란 호), 50°−β(초록 호), 30°를 표시한 그림.",
-    "solutionImageCaption": "보조 평행선으로 엇각 35°, β, 50°−β, 30°를 옮겨 x와 y를 비교한다",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 평행선 l, m 사이에 꺾인 선이 있고, 꺾인 점마다 l, m과 평행한 보조선(점선)을 그어 엇각을 같은 색 호로 표시한 그림. 각 35°, β, γ, 130°, 30°, 150°와 x, y가 적혀 있다.",
+    "solutionImageCaption": "각 꺾인 점을 지나 l, m과 평행한 보조선을 그어 엇각 35°, β, γ, 30°를 표시했다.",
     "solutionImageSize": "medium"
   },
   {
@@ -934,9 +934,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 직선 BE 위에서 점 O에 모인 세 각 ∠BOA=(x+20)°, 직각 ∠AOF, ∠FOE=(3x+10)°가 이웃해 평각을 이루는 모습을 나타낸 그림",
-    "solutionImageCaption": "직선 BE 위의 세 각 (x+20)°, 90°, (3x+10)°의 합은 180°이다.",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 직선 AD, BE, CF가 점 O에서 만나는 그림. 직선 BE 위의 평각에 180°가 적혀 있고, ∠BOA=x+20°, ∠FOE=3x+10°가 표시되어 있으며 ∠AOF에는 직각 표시가 있다.",
+    "solutionImageCaption": "직선 BE 위에서 이웃한 세 각 ∠BOA=(x+20)°, ∠AOF=90°, ∠FOE=(3x+10)°의 합이 평각 180°이다.",
     "solutionImageSize": "medium"
   },
   {

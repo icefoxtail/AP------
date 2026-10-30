@@ -41,6 +41,7 @@ const unit=a=>{const l=len(a);return l===0?a:mulv(a,1/l);};
 const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 const EX=[cY,sY,0];// world direction of the screen's horizontal
 const EY=[-sP*sY,sP*cY,cP];// world direction of the screen's vertical
+const DEPTH=[-sY,cY,0];// the horizontal direction into the picture (away from the viewer), perpendicular to the screen's horizontal
 const CUT_FRAME={view:VIEW,ex:EX,ey:EY};
 
 // --- the 3D model -----------------------------------------------------------------------------------------------------------------------------
@@ -432,10 +433,12 @@ export const circled=k=>String.fromCodePoint(CIRCLED_ONE+k-1);
 function parseCount(raw,vertices,edges){
   if(raw===undefined)return null;
   if(!isPlain(raw))bad('SOLID_COUNT_REQUEST_INVALID');
-  onlyKeys(raw,['vertices','edges','faces'],'SOLID_COUNT_REQUEST_INVALID');
-  for(const key of Object.keys(raw))if(typeof raw[key]!=='boolean')bad('SOLID_COUNT_REQUEST_INVALID');
+  onlyKeys(raw,['vertices','edges','faces','near'],'SOLID_COUNT_REQUEST_INVALID');
+  for(const key of Object.keys(raw))if(key!=='near'&&typeof raw[key]!=='boolean')bad('SOLID_COUNT_REQUEST_INVALID');
   if(raw.faces===true)bad('SOLID_COUNT_FACES_UNSUPPORTED');
-  const count={vertices:raw.vertices===true,edges:raw.edges===true};
+  // near:"EDGE": every edge number stands nearer to its own edge (the whole segment, not only its middle) than to any other numbered edge, by 6 px
+  if(raw.near!==undefined&&(raw.near!=='EDGE'||raw.edges!==true))bad('SOLID_COUNT_REQUEST_INVALID');
+  const count={vertices:raw.vertices===true,edges:raw.edges===true,...(raw.near!==undefined?{near:'EDGE'}:{})};
   if(!count.vertices&&!count.edges)bad('SOLID_COUNT_REQUEST_INVALID');
   if(count.vertices&&vertices.some(v=>v.name))bad('SOLID_COUNT_NAMES_CONFLICT');
   if(count.edges&&edges.length>COUNT_EDGES_MAX)bad('SOLID_COUNT_TOO_MANY:edges');
@@ -457,22 +460,39 @@ export function countedEdges(solid){
  */
 // A short word the author writes on the figure (labels:[{text,at}], axis:{label}): Korean syllables, letters, digits, spaces, parentheses and a middle dot, no TeX.
 const WORD_LABEL=/[가-힣·]/u;// a text with a Hangul syllable is a word, not TeX
+const AXIS_LETTER=/^[A-Za-z]$/;// the text of an axis label that is one letter: a math symbol (the axis l)
 const MAX_TEXT_LABELS=6,TEXT_LABEL=/^[가-힣A-Za-z0-9 ·()]{1,12}$/u;
 const textLabelOk=text=>typeof text==='string'&&TEXT_LABEL.test(text)&&text.trim()===text&&text.length>0;
 /** The axis of a rotation solid (axis:true | axis:{label?}): drawn as a dash-dot line, extended beyond both ends of the solid, optionally with a word beside it. */
 export const AXIS_EXTENSION=0.14;// of the solid's height, above the top and below the bottom
-function parseAxis(axis,kind,nested){
-  if(kind!=='CYLINDER'&&kind!=='CONE'&&kind!=='CONE_FRUSTUM')bad('SOLID_AXIS_UNSUPPORTED:'+kind);
+function parseAxis(axis,kind,nested,standsOn){
+  // a hemisphere carries an axis only when it stands on another solid (a stack's axis may be written on its top member)
+  if(kind!=='CYLINDER'&&kind!=='CONE'&&kind!=='CONE_FRUSTUM'&&!(kind==='HEMISPHERE'&&standsOn))bad('SOLID_AXIS_UNSUPPORTED:'+kind);
   if(nested)bad('SOLID_AXIS_UNSUPPORTED:NESTED');
   if(axis===true)return {label:null};
   if(!isPlain(axis)||Object.keys(axis).some(k=>k!=='label'))bad('SOLID_AXIS_INVALID');
   if(axis.label!==undefined&&!textLabelOk(axis.label))bad('SOLID_LABEL_TEXT_INVALID');
   return {label:axis.label??null};
 }
+/**
+ * baseFill (CYLINDER, CONE, CONE_FRUSTUM): true | "LIGHT" | {fill?,face?,label?}: the base circle (face BOTTOM, the default; or TOP, the wide opening of an apex-down vessel) is tinted
+ * with a highlight fill, and label (one letter such as S, or a short Korean word) names it inside the tint. A circle of radius 0 (the point of a cone) has nothing to tint.
+ */
+function parseBaseFill(raw,r0,rt){
+  const o=raw===true?{}:typeof raw==='string'?{fill:raw}:raw;
+  if(!isPlain(o)||Object.keys(o).some(k=>!['fill','face','label'].includes(k)))bad('SOLID_BASE_FILL_INVALID');
+  const fill=o.fill??'LIGHT',face=o.face??'BOTTOM';
+  if(typeof fill!=='string'||!Object.hasOwn(HIGHLIGHT_FILLS,fill))bad('SOLID_HIGHLIGHT_FILL_INVALID');
+  if(face!=='BOTTOM'&&face!=='TOP')bad('SOLID_BASE_FILL_INVALID');
+  if(!((face==='BOTTOM'?r0:rt)>0))bad('SOLID_BASE_FILL_INVALID');
+  if(o.label!==undefined&&(typeof o.label!=='string'||!textLabelOk(o.label)))bad('SOLID_LABEL_TEXT_INVALID');
+  return {face,fill,...(o.label!==undefined?{label:o.label}:{})};
+}
 function buildRound(spec){
   const kind=spec.kind;
   const baseKeys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
-  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis','centerZ'],'SOLID_PARAM_INVALID');
+  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis','centerZ','on','at','baseFill'],'SOLID_PARAM_INVALID');
+  if(spec.baseFill!==undefined&&kind!=='CYLINDER'&&kind!=='CONE'&&kind!=='CONE_FRUSTUM')bad('SOLID_BASE_FILL_UNSUPPORTED:'+kind);
   if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:'+kind);
   if(spec.cuts!==undefined)bad('SOLID_CUT_UNSUPPORTED:'+kind);
   // cut:{kind,facing?} cuts a SPHERE by planes through its centre (sphere-parts.mjs); no other round solid, and a cut sphere does not sit inside a cylinder
@@ -482,7 +502,9 @@ function buildRound(spec){
   const cone=kind==='CONE'||kind==='CONE_FRUSTUM';
   const orientation=spec.orientation??'APEX_UP';
   if(orientation!=='APEX_UP'&&orientation!=='APEX_DOWN')bad('SOLID_ORIENTATION_UNSUPPORTED:'+String(orientation).slice(0,24));
-  if(orientation==='APEX_DOWN'&&!cone)bad('SOLID_ORIENTATION_UNSUPPORTED:'+kind);
+  // a hemisphere may stand on its dome (APEX_DOWN: the pole is the lowest point, the flat disc is the top)
+  if(orientation==='APEX_DOWN'&&!cone&&kind!=='HEMISPHERE')bad('SOLID_ORIENTATION_UNSUPPORTED:'+kind);
+  if(spec.on!==undefined&&(typeof spec.on!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(spec.on)))bad('SOLID_STACK_INVALID');
   let r1=kind==='CONE'?0:r,height;
   if(kind==='SPHERE'||kind==='HEMISPHERE')height=kind==='SPHERE'?2*r:r;
   else height=pos(spec.height,'SOLID_PARAM_INVALID');
@@ -490,8 +512,12 @@ function buildRound(spec){
   const down=orientation==='APEX_DOWN';
   const r0=down?r1:r,rt=down?r:r1;// radius at z=0 and at z=h
   const names=spec.names??{};
-  onlyKeys(names,['center','top','apex'],'SOLID_NAMES_INVALID');
+  onlyKeys(names,['center','top','apex','level','levelRim','rim'],'SOLID_NAMES_INVALID');
   for(const key of Object.keys(names))if(!NAME.test(names[key]))bad('SOLID_NAMES_INVALID');
+  // level / levelRim / rim name the centre of the level circle of a LEVEL section, the point of its right contour generator on that circle and the point of the same generator on the base
+  // circle: only for a cone or a cone frustum (the points are placed once the section is known)
+  const levelNames=Object.fromEntries(['level','levelRim','rim'].filter(key=>names[key]!==undefined).map(key=>[key,names[key]]));
+  if(Object.keys(levelNames).length&&kind!=='CONE'&&kind!=='CONE_FRUSTUM')bad('SOLID_NAMES_INVALID');
   const points=[];
   // centerZ: the height of the centre of a sphere inside a cylinder (the default is resting on the bottom: r)
   let centerZ=null;
@@ -500,17 +526,26 @@ function buildRound(spec){
     if(typeof spec.centerZ!=='number'||!finite(spec.centerZ)||spec.centerZ<0||spec.centerZ>1000)bad('SOLID_PARAM_INVALID');
     centerZ=spec.centerZ;
   }
-  if(kind==='SPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,centerZ??r]});}
-  else if(kind==='HEMISPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,0]});}
+  // at:{x,y}: where a ball inside a cylinder stands off the axis (x along the screen's horizontal, y into the picture, measured from the axis); its centre point carries it
+  let at=null;
+  if(spec.at!==undefined){
+    if(kind!=='SPHERE'||typeof spec.inside!=='string')bad('SOLID_NEST_INVALID');
+    if(!isPlain(spec.at)||Object.keys(spec.at).some(k=>k!=='x'&&k!=='y'))bad('SOLID_BALLS_INVALID');
+    for(const k of ['x','y'])if(spec.at[k]!==undefined&&(typeof spec.at[k]!=='number'||!finite(spec.at[k])||Math.abs(spec.at[k])>1000))bad('SOLID_BALLS_INVALID');
+    at={x:r6(spec.at.x??0),y:r6(spec.at.y??0)};
+  }
+  if(kind==='SPHERE'){points.push({name:names.center??null,id:'center',p:at?[r6(at.x*EX[0]+at.y*DEPTH[0]),r6(at.x*EX[1]+at.y*DEPTH[1]),centerZ??r]:[0,0,centerZ??r]});}
+  else if(kind==='HEMISPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,orientation==='APEX_DOWN'?r:0]});}
   else{
     points.push({name:names.center??null,id:'center',p:[0,0,down&&kind==='CONE'?height:0]});
     if(kind!=='CONE')points.push({name:names.top??null,id:'top',p:[0,0,height]});
     else points.push({name:names.apex??null,id:'apex',p:[0,0,down?0:height]});
   }
   if(spec.inside!==undefined&&(typeof spec.inside!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(spec.inside)))bad('SOLID_NEST_INVALID');
-  const axis=spec.axis!==undefined?parseAxis(spec.axis,kind,spec.inside!==undefined):undefined;
-  return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,
-    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{}),...(centerZ!==null?{centerZ}:{})};
+  const axis=spec.axis!==undefined?parseAxis(spec.axis,kind,spec.inside!==undefined,spec.on!==undefined):undefined;
+  return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,...(spec.on!==undefined?{on:spec.on}:{}),
+    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{}),...(centerZ!==null?{centerZ}:{}),...(at?{at}:{}),
+    ...(spec.baseFill!==undefined?{baseFill:parseBaseFill(spec.baseFill,r0,rt)}:{}),...(Object.keys(levelNames).length?{levelNames}:{})};
 }
 
 const shiftSolid=(solid,s)=>{
@@ -606,11 +641,18 @@ export function labelNumber(tex){
   return null;
 }
 const SYMBOLIC=/^[A-Za-z0-9_\\{}^+\-=.() ]{1,24}$/;
+/** The number of an angle label written 55^\circ or \angle A=55^\circ (the degrees after the last "="), or null when the label is a symbol. */
+const angleLabelNumber=tex=>{const m=/^(?:[^=]*=)?(\d+(?:\.\d+)?)\^\\circ$/.exec(String(tex));return m?Number(m[1]):null;};
 // A face symbol of a net (net.faceLabels text), written as plain text: a circled number (\u2460-\u2473), a circled Hangul letter, a single Hangul syllable or jamo (\uac00, \u3134), or
 // a number, syllable or jamo in parentheses ((1), (\uac00)). It names or numbers a face: it is no area, so no value is checked.
 export const FACE_SYMBOL=/^(?:[\u2460-\u2473\u3260-\u327B\u3131-\u314E\uAC00-\uD7A3]|\((?:[1-9]\d?|[\u3131-\u314E\uAC00-\uD7A3])\))$/u;
-function dimLabel(raw,value,unit,code,{angle=false}={}){
+function dimLabel(raw,value,unit,code,{angle=false,words=false}={}){
   // raw: undefined (auto) or a TeX string. A numeric label must equal the value; anything else is a symbol and says so.
+  // With `words` (a length of a solid) a label with a Hangul syllable is a word that only names the length (모선, 높이): plain text, no value is checked.
+  if(words&&typeof raw==='string'&&WORD_LABEL.test(raw)){
+    if(!textLabelOk(raw))bad('SOLID_DIM_LABEL_INVALID:'+code);
+    return {tex:raw,text:raw,numeric:false,value:r6(value),word:true};
+  }
   let tex,numeric=true;
   if(raw===undefined){
     tex=lengthTex(value);
@@ -702,6 +744,10 @@ function pointTable(solids){
 
 // --- solving the figure ---------------------------------------------------------------------------------------------------------------------
 const MAX_SEGMENTS=10;
+// the side of a segment its label stands on (dims[].side): the direction on the screen (x right, y up) and how far the segment's normal has to point into it
+// a label told its side may also stand past either end of its segment (above-left of a short top edge, say): fractions of the segment, 0 and 1 are its ends
+const SIDE_FRACTIONS=[0.5,0.4,0.6,0.3,0.7,0.2,0.8,0.1,0.9,0,1,-0.15,1.15,-0.3,1.3,-0.5,1.5,-0.75,1.75];
+const SEGMENT_SIDES=['LEFT','RIGHT','TOP','BOTTOM'],SIDE_DIRECTION={LEFT:[-1,0],RIGHT:[1,0],TOP:[0,1],BOTTOM:[0,-1]},SIDE_FACING_MIN=0.3;
 // highlight tints: a fill colour and its opacity (LIGHT is the original blue shade of every highlight)
 const HIGHLIGHT_FILLS={LIGHT:['#7fa6e8',0.32],MEDIUM:['#7fa6e8',0.55],WARM:['#f2a65a',0.42],GREEN:['#6fcf97',0.42],ROSE:['#e98aa8',0.42],VIOLET:['#a78bdb',0.42]};
 const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM','REGULAR_POLYHEDRON','BIPYRAMID'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
@@ -723,15 +769,60 @@ export function solveSolidFigure(plan){
   // carries a caption: the author's solidCaption, or the panel caption of a composite grid (the grid sets panelWidth, and every composite panel has a caption).
   // Only a bare, uncaptioned figure is refused: there nothing tells the reader which part matters.
   const stressed=model.mode==='SOLIDS'
-    ?model.highlights.length+model.segments.length+(model.section?1:0)+model.marks.rightAngles.length+model.marks.equalLengths.length+model.marks.angles.length+(model.marks.equalSlant?.length??0)+model.solids.filter(s=>s.cuts||s.cut||s.axis).length
+    ?model.highlights.length+model.segments.length+(model.section?1:0)+model.marks.rightAngles.length+model.marks.equalLengths.length+model.marks.angles.length+(model.marks.equalSlant?.length??0)+model.solids.filter(s=>s.cuts||s.cut||s.axis||s.baseFill).length
     :(model.highlights?.length??0)+(model.segments?.length??0)+(model.rightAngles?.length??0)+(model.excluded?.length??0);
   if(names+model.dims.length+(model.faceLabels?.length??0)+(model.labels?.length??0)+stressed===0&&plan.solidCaption===undefined&&plan.panelWidth===undefined)bad('SOLID_FIGURE_NEEDS_A_LABEL');
   return plan.panelWidth===undefined?model:{...model,panelWidth:plan.panelWidth};
 }
+// --- stacked round solids (E33) -------------------------------------------------------------------------------------------------------------------
+// A round solid (CYLINDER, CONE, CONE_FRUSTUM, HEMISPHERE) may carry on:"<id>": it stands on the flat top circle of that host, on the same axis, and the two are one
+// body whose joint circle has the same radius on both sides (a hemisphere on a cone frustum, a cone on a cylinder, a hemisphere on its dome: orientation "APEX_DOWN"
+// of a HEMISPHERE puts the pole down and the flat disc up). Each solid keeps its own id (dims name it), solid.lift is the height of its own base above the foot of the
+// stack, and one member's axis runs through the whole stack. A stack is a chain: one guest per host, up to the plan's solid limit.
+const roundTopRadius=s=>s.category==='REV'?s.r1:s.kind==='HEMISPHERE'&&s.orientation==='APEX_DOWN'?s.radius:0;
+const roundBottomRadius=s=>s.category==='REV'?s.r0:s.kind==='HEMISPHERE'&&s.orientation!=='APEX_DOWN'?s.radius:0;
+const liftOf=solid=>solid.lift??0;
+function resolveStacks(solids){
+  const byId=new Map(solids.map(s=>[s.id,s])),guestOf=new Map();
+  for(const g of solids){
+    if(g.on===undefined)continue;
+    const host=byId.get(g.on);
+    if(!host||host===g)bad('SOLID_STACK_UNKNOWN:'+String(g.on).slice(0,8));
+    for(const s of [g,host]){
+      if(s.category==='POLY'||s.kind==='SPHERE')bad('SOLID_STACK_UNSUPPORTED:'+s.kind);
+      if(s.inside||s.cut)bad('SOLID_STACK_UNSUPPORTED:NESTED');
+    }
+    if(guestOf.has(host.id))bad('SOLID_STACK_BRANCH:'+host.id);
+    guestOf.set(host.id,g);
+  }
+  const stacks=[];
+  for(const root of solids){
+    if(root.on!==undefined||!guestOf.has(root.id))continue;
+    const chain=[root];let lift=0;
+    for(let host=root,guest=guestOf.get(host.id);guest;host=guest,guest=guestOf.get(host.id)){
+      const rad=roundTopRadius(host);
+      if(!(rad>0)||Math.abs(rad-roundBottomRadius(guest))>1e-9*Math.max(1,rad))bad('SOLID_STACK_JOINT_MISMATCH:'+host.id+','+guest.id);
+      lift+=host.height;guest.lift=r6(lift);host.covered=true;chain.push(guest);
+    }
+    for(const s of chain)for(const q of s.points)q.p=[q.p[0],q.p[1],r6(q.p[2]+liftOf(s))];
+    // a tint on a base that another solid stands on or hangs from would be a tint on the joint circle
+    for(const s of chain)if(s.baseFill&&((s.baseFill.face==='BOTTOM'&&s.on!==undefined)||(s.baseFill.face==='TOP'&&s!==chain.at(-1))))bad('SOLID_BASE_FILL_INVALID');
+    const total=r6(lift+chain.at(-1).height),owners=chain.filter(s=>s.axis);
+    if(owners.length>1)bad('SOLID_AXIS_STACK_DUPLICATE');
+    if(owners.length)owners[0].axis={...owners[0].axis,span:total};
+    stacks.push({root:root.id,members:chain.map(s=>s.id),height:total});
+  }
+  const members=new Set(stacks.flatMap(st=>st.members));
+  if(solids.some(s=>s.on!==undefined&&!members.has(s.id)))bad('SOLID_STACK_CYCLE');
+  for(const s of solids)if(s.axis&&s.kind==='HEMISPHERE'&&!members.has(s.id))bad('SOLID_AXIS_UNSUPPORTED:HEMISPHERE');
+  return stacks;
+}
 const MAX_BALLS=6;
 /**
- * A cylinder may hold several balls: stack:{count,radius} (count equal balls one on the other from the bottom) or inside:[{kind:"SPHERE",radius,centerZ?}, ...] (each ball
- * at the height of its centre; without centerZ it rests on the ball before it, the first on the bottom). They become nested spheres s1b1, s1b2, ... of the cylinder s1
+ * A cylinder may hold several balls: stack:{count,radius} (count equal balls one on the other from the bottom), stack:{radius,layers:[2,2,1]} (equal balls in rows along the
+ * screen's horizontal, row by row from the bottom, each ball resting on the balls below it) or inside:[{kind:"SPHERE",radius,centerZ?,at?:{x,y,z?}}, ...] (each ball
+ * at the height of its centre; without centerZ it rests on the ball before it, the first on the bottom; with at:{x,y} the ball stands off the axis, and without a height
+ * it falls onto the balls below it). They become nested spheres s1b1, s1b2, ... of the cylinder s1
  * (so a ball can be named in dims by its id); the plan's own solids keep their ids by their place in the plan.
  */
 function expandBalls(specs){
@@ -745,24 +836,76 @@ function expandBalls(specs){
     let list;
     if(stack!==undefined){
       if(!isPlain(stack))bad('SOLID_BALLS_INVALID');
-      onlyKeys(stack,['count','radius'],'SOLID_BALLS_INVALID');
-      if(!Number.isInteger(stack.count)||stack.count<2||stack.count>MAX_BALLS)bad('SOLID_BALLS_INVALID');
-      list=Array.from({length:stack.count},()=>({kind:'SPHERE',radius:stack.radius}));
+      onlyKeys(stack,['count','radius','layers'],'SOLID_BALLS_INVALID');
+      if(stack.layers!==undefined){
+        // rows of equal balls along the screen's horizontal, centred on the axis, touching (a row of 2: x = -r and +r); the next row rests on this one
+        if(stack.count!==undefined||!Array.isArray(stack.layers)||stack.layers.length<1||stack.layers.length>MAX_BALLS||stack.layers.some(n=>!Number.isInteger(n)||n<1||n>MAX_BALLS))bad('SOLID_BALLS_INVALID');
+        const total=stack.layers.reduce((a,b)=>a+b,0);
+        if(total<2||total>MAX_BALLS)bad('SOLID_BALLS_INVALID');
+        const rr=pos(stack.radius,'SOLID_PARAM_INVALID');
+        list=stack.layers.flatMap(n=>Array.from({length:n},(_,i)=>({kind:'SPHERE',radius:rr,at:{x:r6((i-(n-1)/2)*2*rr),y:0}})));
+      }else{
+        if(!Number.isInteger(stack.count)||stack.count<2||stack.count>MAX_BALLS)bad('SOLID_BALLS_INVALID');
+        list=Array.from({length:stack.count},()=>({kind:'SPHERE',radius:stack.radius}));
+      }
     }else{
       if(inside.length<1||inside.length>MAX_BALLS)bad('SOLID_BALLS_INVALID');
       list=inside;
     }
     let top=0;
+    // a list with a ball off the axis puts every ball without a height where it falls: onto the floor or onto the balls placed before it
+    const falling=list.some(ball=>isPlain(ball)&&ball.at!==undefined),placed=[];
     list.forEach((ball,k)=>{
       if(!isPlain(ball))bad('SOLID_BALLS_INVALID');
-      onlyKeys(ball,['kind','radius','centerZ'],'SOLID_BALLS_INVALID');
+      onlyKeys(ball,['kind','radius','centerZ','at'],'SOLID_BALLS_INVALID');
       if(ball.kind!=='SPHERE')bad('SOLID_BALLS_INVALID');
-      const radius=pos(ball.radius,'SOLID_PARAM_INVALID'),centerZ=ball.centerZ!==undefined?ball.centerZ:r6(top+radius);
-      out.push({kind:'SPHERE',radius,centerZ,inside:hostId,id:hostId+'b'+(k+1)});
+      const radius=pos(ball.radius,'SOLID_PARAM_INVALID');
+      let at;
+      if(ball.at!==undefined){
+        if(!isPlain(ball.at)||Object.keys(ball.at).some(key=>!['x','y','z'].includes(key)))bad('SOLID_BALLS_INVALID');
+        for(const key of ['x','y','z'])if(ball.at[key]!==undefined&&(typeof ball.at[key]!=='number'||!finite(ball.at[key])||Math.abs(ball.at[key])>1000))bad('SOLID_BALLS_INVALID');
+        if(ball.at.z!==undefined&&ball.centerZ!==undefined)bad('SOLID_BALLS_INVALID');
+        at={x:r6(ball.at.x??0),y:r6(ball.at.y??0)};
+      }
+      const ax=at?.x??0,ay=at?.y??0;
+      let centerZ=ball.centerZ??ball.at?.z;
+      if(centerZ===undefined){
+        if(falling){
+          centerZ=radius;
+          for(const b of placed){const d=Math.hypot(ax-b.x,ay-b.y);if(d<radius+b.radius)centerZ=Math.max(centerZ,b.z+Math.sqrt((radius+b.radius)**2-d*d));}
+          centerZ=r6(centerZ);
+        }else centerZ=r6(top+radius);
+      }
+      placed.push({x:ax,y:ay,z:centerZ,radius});
+      out.push({kind:'SPHERE',radius,centerZ,inside:hostId,id:hostId+'b'+(k+1),...(at?{at}:{})});
       top=centerZ+radius;
     });
   });
   return out;
+}
+/**
+ * The named points of a LEVEL section on a cone or frustum (names:{level,levelRim,rim}): C the centre of the level circle, D the point of the right contour generator on that circle and
+ * B its point on the base circle. The contour generator is the straight line the cone's outline draws on its right: the tangent from the apex to every circle (they correspond, the
+ * circles being similar), so D and B stand exactly on the drawn outline. Placed before the solids are laid out side by side.
+ */
+function addLevelPoints(solids,plan){
+  for(const solid of solids){
+    if(!solid.levelNames)continue;
+    const {level,levelRim,rim}=solid.levelNames,sec=plan.section;
+    const target=sec?.solid??solids.find(s=>s.category==='REV')?.id;
+    const m=sec?.kind==='LEVEL'&&target===solid.id?/^([1-9]\d?)\/([1-9]\d?)$/.exec(sec.at??''):null;
+    if((level!==undefined||levelRim!==undefined)&&!m)bad('SOLID_NAMES_INVALID');
+    if(rim!==undefined&&!(solid.r0>0))bad('SOLID_NAMES_INVALID');
+    const apex=apexOf(solid);
+    // the point of a circle (radius rad, height z) where the tangent from the apex touches it on the right, as a point of the world
+    const contour=(rad,z)=>{const tp=tangentParams(ellipseOf(0,solid,rad,z),apex);return [r6(rad*(Math.cos(tp.uR)*EX[0]+Math.sin(tp.uR)*DEPTH[0])),r6(rad*(Math.cos(tp.uR)*EX[1]+Math.sin(tp.uR)*DEPTH[1])),r6(z)];};
+    if(m){
+      const f=Number(m[1])/Number(m[2]),z=f*solid.height,rad=solid.r0+(solid.r1-solid.r0)*f;
+      if(level!==undefined)solid.points.push({name:level,id:'level',p:[0,0,r6(z)]});
+      if(levelRim!==undefined)solid.points.push({name:levelRim,id:'levelRim',p:contour(rad,z)});
+    }
+    if(rim!==undefined)solid.points.push({name:rim,id:'rim',p:contour(solid.r0,0)});
+  }
 }
 function solveSolids(plan){
   if(!Array.isArray(plan.solids)||plan.solids.length<1||plan.solids.length>3)bad('SOLID_COUNT_INVALID');
@@ -782,7 +925,7 @@ function solveSolids(plan){
     if(!host||host===solid)bad('SOLID_NEST_UNKNOWN:'+solid.inside);
     if(host.inside)bad('SOLID_NEST_CHAIN');
     if(host.kind!=='CYLINDER')bad('SOLID_NEST_UNSUPPORTED:'+host.kind);
-    if(solid.kind==='SPHERE'){const cz=solid.centerZ??solid.radius;if(cz-solid.radius<-1e-9||cz+solid.radius>host.height+1e-9||solid.radius>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
+    if(solid.kind==='SPHERE'){const cz=solid.centerZ??solid.radius,away=solid.at?Math.hypot(solid.at.x,solid.at.y):0;if(cz-solid.radius<-1e-9||cz+solid.radius>host.height+1e-9||away+solid.radius>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
     else if(solid.kind==='CONE'||solid.kind==='CONE_FRUSTUM'){if(solid.height>host.height+1e-9||Math.max(solid.r0,solid.r1)>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
     else bad('SOLID_NEST_UNSUPPORTED:'+solid.kind);
   }
@@ -793,13 +936,18 @@ function solveSolids(plan){
     if(guests.some(s=>s.kind!=='SPHERE'))bad('SOLID_NEST_UNSUPPORTED:MIXED');
     for(let i=0;i<guests.length;i++)for(let j=i+1;j<guests.length;j++){
       const a=guests[i],b=guests[j];
-      if(Math.abs((a.centerZ??a.radius)-(b.centerZ??b.radius))<a.radius+b.radius-1e-9)bad('SOLID_NEST_OVERLAP:'+a.id+','+b.id);
+      const ca=[a.at?.x??0,a.at?.y??0,a.centerZ??a.radius],cb=[b.at?.x??0,b.at?.y??0,b.centerZ??b.radius];
+      if(len(sub(ca,cb))<a.radius+b.radius-1e-5)bad('SOLID_NEST_OVERLAP:'+a.id+','+b.id);// a ball that fell onto another touches it (the heights are kept to 6 decimals)
+      // the drawing keeps every ball whole, so two balls whose discs would hide a good part of each other on the screen cannot be drawn
+      if(Math.hypot(ca[0]-cb[0],(ca[1]-cb[1])*sP+(ca[2]-cb[2])*cP)<0.85*(a.radius+b.radius))bad('SOLID_BALLS_OVERLAP_ON_SCREEN:'+a.id+','+b.id);
     }
   }
+  const stacks=resolveStacks(solids);
+  addLevelPoints(solids,plan);
   for(const solid of solids)recentre(solid);
-  // side-by-side placement on the screen's horizontal; a nested solid stays on its host's axis
-  const roots=solids.filter(solid=>!solid.inside);
-  const boxes=roots.map(solid=>{const pts=solidScreenPoints(solid);return {x0:Math.min(...pts.map(p=>p[0])),x1:Math.max(...pts.map(p=>p[0]))};});
+  // side-by-side placement on the screen's horizontal; a nested solid stays on its host's axis and a stack is one body (the box of its root covers all its members)
+  const roots=solids.filter(solid=>!solid.inside&&solid.on===undefined);
+  const boxes=roots.map(solid=>{const own=stacks.find(st=>st.root===solid.id);const pts=(own?own.members.map(id=>solids.find(s=>s.id===id)):[solid]).flatMap(solidScreenPoints);return {x0:Math.min(...pts.map(p=>p[0])),x1:Math.max(...pts.map(p=>p[0]))};});
   const gap=0.3*Math.max(...boxes.map(b=>b.x1-b.x0));
   let cursor=0;
   roots.forEach((solid,i)=>{
@@ -811,6 +959,7 @@ function solveSolids(plan){
     const host=solids.find(s=>s.id===solid.inside);
     shiftSolid(solid,host.offset??0);
   }
+  for(const st of stacks){const root=solids.find(s=>s.id===st.root);for(const id of st.members.slice(1))shiftSolid(solids.find(s=>s.id===id),root.offset??0);}
   for(const solid of solids){
     if(solid.category==='POLY')solid.runs=edgeRuns(solid);
   }
@@ -950,7 +1099,7 @@ function solveSolids(plan){
       if(!Array.isArray(plan.marks.angles)||plan.marks.angles.length>4)bad('SOLID_MARKS_INVALID');
       const counts=new Map();
       for(const [k,m] of plan.marks.angles.entries()){
-        onlyKeys(m,['id','refs','value','arcs','equalGroup'],'SOLID_MARKS_INVALID');
+        onlyKeys(m,['id','refs','value','arcs','equalGroup','label'],'SOLID_MARKS_INVALID');
         const id=markId(m.id,'an',k);
         if(!Array.isArray(m.refs)||m.refs.length!==3||new Set(m.refs).size!==3)bad('SOLID_MARKS_INVALID');
         const a=keyOf(m.refs[0]),v=keyOf(m.refs[1]),b=keyOf(m.refs[2]);
@@ -967,7 +1116,15 @@ function solveSolids(plan){
         const prev=counts.get(group);
         if(prev){if(prev.arcs!==arcs)bad('SOLID_MARK_GROUP_ARC_COUNT:'+id);if(Math.abs(prev.value-measured)>0.5)bad('SOLID_MARK_GROUP_MISMATCH:'+id);}
         else{for(const [other,p] of counts)if(p.arcs===arcs)bad('SOLID_MARK_GROUP_AMBIGUOUS:'+id);counts.set(group,{arcs,value:measured});}
-        marks.angles.push({id,refs:[a,v,b],value:r6(measured),arcs});
+        // label: the angle's value or a symbol written beside its arc (55^\circ, y^\circ, \angle A=55^\circ); a number in it has to be the angle (within the half degree the value has)
+        let label;
+        if(m.label!==undefined){
+          if(typeof m.label!=='string'||!SYMBOLIC.test(m.label))bad('SOLID_MARK_ANGLE_LABEL_INVALID:'+id);
+          const n=angleLabelNumber(m.label);
+          if(n!==null&&Math.abs(n-measured)>0.5)bad('SOLID_MARK_ANGLE_LABEL_MISMATCH:'+id);
+          label=m.label;
+        }
+        marks.angles.push({id,refs:[a,v,b],value:r6(measured),arcs,...(label!==undefined?{label}:{})});
       }
     }
   }
@@ -977,10 +1134,11 @@ function solveSolids(plan){
     onlyKeys(plan.section,['solid','kind','at','fill'],'SOLID_SECTION_INVALID');
     if(plan.section.kind!=='AXIAL'&&plan.section.kind!=='LEVEL')bad('SOLID_SECTION_UNSUPPORTED');
     // a plane perpendicular to the axis (LEVEL) may also cut a whole sphere or a hemisphere that stands alone: with no rotation solid in the plan it takes the first one
-    const sphereOk=s=>s.category==='SPHERE'&&!s.cut&&!s.inside&&plan.section.kind==='LEVEL';
+    const sphereOk=s=>s.category==='SPHERE'&&!s.cut&&!s.inside&&s.orientation!=='APEX_DOWN'&&plan.section.kind==='LEVEL';
     const target=plan.section.solid??solids.find(s=>s.category==='REV')?.id??solids.find(sphereOk)?.id;
     const solid=solids.find(s=>s.id===target);
     if(!solid||(solid.category!=='REV'&&!sphereOk(solid)))bad('SOLID_SECTION_UNSUPPORTED');
+    if(solid.on!==undefined||solids.some(x=>x.on===solid.id))bad('SOLID_STACK_UNSUPPORTED:SECTION');
     if(plan.section.kind==='AXIAL'){if(plan.section.at!==undefined||plan.section.fill!==undefined)bad('SOLID_SECTION_INVALID');section={solid:solid.id,kind:'AXIAL'};}
     else{
       // a plane parallel to the base at the fraction `at` ("1/3") of the height: the water level of a vessel
@@ -1007,7 +1165,19 @@ function solveSolids(plan){
   if(plan.dims!==undefined){
     if(!Array.isArray(plan.dims)||plan.dims.length>10)bad('SOLID_DIMS_INVALID');
     plan.dims.forEach((d,k)=>{
-      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label'],'SOLID_DIMS_INVALID');
+      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side','half','direct','foot'],'SOLID_DIMS_INVALID');
+      // direct:true (a pyramid's or frustum's height): the length is written beside the dashed line from the apex (top centre) straight down to the base plane, with no
+      // dimension frame around it; foot:true | "<base vertex>": a right-angle mark at the foot of that line, between it and a dashed line in the base plane to a vertex (a
+      // cone or cylinder: to the rim on the screen's right)
+      if((d.direct!==undefined&&d.direct!==true)||(d.foot!==undefined&&d.foot!==true&&typeof d.foot!=='string')||((d.direct!==undefined||d.foot!==undefined)&&d.height===undefined))bad('SOLID_DIM_DIRECT_INVALID');
+      // half:"+X" ... "-Z": which half axis of a cut sphere its radius lies along (it must belong to the piece and be seen)
+      if(d.half!==undefined&&(d.radius!=='center'||typeof d.half!=='string'||!/^[+-][XYZ]$/.test(d.half)))bad('SOLID_DIMS_INVALID');
+      // side:"LEFT"|"RIGHT" of a round solid's height: the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis;
+      // side:"LEFT"|"RIGHT"|"TOP"|"BOTTOM" of an edge or segment length: the label stands on that side of the segment on the screen (the segment must not run along that direction)
+      if(d.side!==undefined){
+        const edgeDim=d.edge!==undefined||d.from!==undefined;
+        if(!(edgeDim?SEGMENT_SIDES:['LEFT','RIGHT']).includes(d.side)||(!edgeDim&&d.height===undefined))bad('SOLID_DIM_SIDE_INVALID');
+      }
       if((d.from===undefined)!==(d.to===undefined))bad('SOLID_DIMS_INVALID');
       if([d.edge!==undefined,d.from!==undefined,d.radius!==undefined,d.height!==undefined,d.slant!==undefined,d.level!==undefined].filter(Boolean).length!==1)bad('SOLID_DIMS_INVALID');
       const code='d'+(k+1);
@@ -1019,7 +1189,12 @@ function solveSolids(plan){
         if(a===b)bad('SOLID_NAME_UNKNOWN');
         if(!drawnPair(a,b))bad('SOLID_DIM_SEGMENT_NOT_DRAWN:'+joinKeys([a,b]));
         const value=len(sub(named.get(a).p,named.get(b).p));
-        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...dimLabel(d.label,value,unitName,code)});
+        if(d.side!==undefined){
+          // the side must be one the segment faces: its normal on the screen has to point at least 17 degrees into the named direction (a horizontal edge has a top and a bottom, not a left)
+          const pa=project(named.get(a).p),pb=project(named.get(b).p),dx=pb[0]-pa[0],dy=pb[1]-pa[1],l=Math.hypot(dx,dy),want=SIDE_DIRECTION[d.side];
+          if(!(l>1e-9)||Math.abs((-dy*want[0]+dx*want[1])/l)<SIDE_FACING_MIN)bad('SOLID_DIM_SIDE_INVALID:'+code);
+        }
+        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...(d.side!==undefined?{side:d.side}:{}),...dimLabel(d.label,value,unitName,code,{words:true})});
       }else{
         const solid=solids.find(s=>s.id===(d.solid??(d.level!==undefined?section?.solid:d.radius!==undefined||d.slant!==undefined?solids.find(s2=>s2.category==='REV'||s2.category==='SPHERE')?.id:solids.find(s2=>s2.category==='REV'||s2.kind==='PYRAMID'||s2.kind==='FRUSTUM')?.id)));
         if(!solid)bad('SOLID_DIMS_INVALID');
@@ -1030,7 +1205,7 @@ function solveSolids(plan){
           if(which==='center'){if(solid.category!=='SPHERE')bad('SOLID_DIMS_INVALID');}
           else if(solid.category==='SPHERE')bad('SOLID_DIMS_INVALID');
           let z,rimR;
-          if(which==='center'){z=solid.kind==='SPHERE'?(solid.centerZ??solid.radius):0;rimR=solid.radius;}
+          if(which==='center'){z=solid.kind==='SPHERE'?(solid.centerZ??solid.radius):solid.orientation==='APEX_DOWN'?solid.height:0;rimR=solid.radius;}
           else if(which==='level'){
             if(!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
             // the radius comes from the exact fraction, not the rounded section.r, so a length such as 20/3 still has an exact label
@@ -1042,9 +1217,16 @@ function solveSolids(plan){
             if(which==='top'&&!(solid.r1>0))bad('SOLID_DIMS_INVALID');
             z=which==='top'?solid.height:0;rimR=which==='top'?solid.r1:solid.r0;
           }
-          // a cut sphere's radius lies along one of its seen half axes (sphere-parts.mjs picks it), not along the screen's horizontal
+          // a cut sphere's radius lies along one of its seen half axes (sphere-parts.mjs picks the most horizontal one unless `half` names it), not along the screen's horizontal
           if(solid.cut&&!solid.cut.radiusAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN');
-          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z,r:r6(rimR),...(solid.cut?{axis:solid.cut.radiusAxis}:{}),...dimLabel(d.label,rimR,unitName,code)});
+          if(d.half!==undefined&&!solid.cut)bad('SOLID_DIMS_INVALID');
+          let cutAxis=solid.cut?.radiusAxis;
+          if(d.half!==undefined){
+            const k='XYZ'.indexOf(d.half[1]),sg=d.half[0]==='+'?1:-1;
+            cutAxis=solid.cut.seenAxes.find(a=>a.axis===k&&a.sign===sg);
+            if(!cutAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN:'+d.half);
+          }
+          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z:liftOf(solid)?r6(z+liftOf(solid)):z,r:r6(rimR),...(solid.cut?{axis:cutAxis}:{}),...dimLabel(d.label,rimR,unitName,code,{words:true})});
         }else if(d.level!==undefined){
           if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id||solid.category!=='REV')bad('SOLID_DIMS_INVALID');
           // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
@@ -1052,17 +1234,51 @@ function solveSolids(plan){
           const f=Number(fm[1])/Number(fm[2]);
           const side=d.level==='top'?'TOP':'BOTTOM';
           const value=side==='TOP'?solid.height*(1-f):solid.height*f;
-          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...dimLabel(d.label,value,unitName,code)});
+          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...dimLabel(d.label,value,unitName,code,{words:true})});
         }else if(d.height!==undefined){
           if(d.height!==true)bad('SOLID_DIMS_INVALID');
           if(solid.category==='SPHERE'&&solid.kind==='SPHERE')bad('SOLID_DIMS_INVALID');
           if(solid.cuts||solid.kind==='REGULAR_POLYHEDRON'||solid.kind==='BIPYRAMID')bad('SOLID_DIMS_INVALID');
           const h=solid.height;
-          dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...dimLabel(d.label,h,unitName,code)});
+          // a stack that has an axis writes the heights of its members along that axis, with no line of their own
+          const st=stacks.find(x=>x.members.includes(solid.id)),onAxis=solid.category!=='POLY'&&!!st&&st.members.some(id=>solids.find(x=>x.id===id).axis);
+          if(d.side!==undefined&&(solid.category!=='REV'||st))bad('SOLID_DIM_SIDE_INVALID');
+          // direct: only a pyramid or a frustum (a rotation solid's height already runs on its axis); foot: the foot of the height has a right angle mark
+          if(d.direct!==undefined&&(!(solid.category==='REV'||solid.kind==='PYRAMID'||solid.kind==='FRUSTUM')||d.side!==undefined||st))bad('SOLID_DIM_DIRECT_INVALID');
+          let footMark;
+          if(d.foot!==undefined){
+            if(d.side!==undefined||st||solid.category==='SPHERE'||solid.cuts)bad('SOLID_DIM_FOOT_INVALID');
+            if(solid.category==='REV'){
+              if(!(solid.r0>0))bad('SOLID_DIM_FOOT_INVALID');
+              if(d.foot!==true)bad('SOLID_DIM_FOOT_INVALID');
+              footMark={to:'RIM'};
+            }else{
+              if(!(solid.kind==='PYRAMID'||solid.kind==='FRUSTUM')||d.direct!==true)bad('SOLID_DIM_FOOT_INVALID');
+              const n=ringSize(solid);
+              let index;
+              if(d.foot===true){
+                // the base vertex that stands farthest to the right on the screen (the lowest index when equal): the dashed line to it runs across the base
+                index=0;for(let i=1;i<n;i++)if(project(solid.vertices[i].p)[0]>project(solid.vertices[index].p)[0]+1e-9)index=i;
+              }else{
+                const key=vref(d.foot,'SOLID_DIM_FOOT_INVALID');
+                index=solid.vertices.findIndex((v,i)=>vertexKeys(solid,i).includes(key));
+                if(index<0||index>=n)bad('SOLID_DIM_FOOT_INVALID');
+              }
+              footMark={to:vertexKeys(solid,index)[0],index};
+            }
+          }
+          dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...(onAxis?{onAxis:true}:{}),...(d.side!==undefined?{side:d.side}:{}),...(d.direct===true&&solid.category==='POLY'?{direct:true}:{}),...(footMark?{footMark}:{}),...dimLabel(d.label,h,unitName,code,{words:true})});
         }else{
-          if(d.slant!==true||(solid.kind!=='CONE'&&solid.kind!=='CONE_FRUSTUM'))bad('SOLID_DIMS_INVALID');
-          const l=Math.hypot(solid.radius-solid.topRadius,solid.height);
-          dims.push({id:'dim-'+(k+1),type:'SLANT',solid:solid.id,...dimLabel(d.label,l,unitName,code)});
+          // slant:true is the whole generator; "top" / "bottom" is the part of it above / below the plane of the solid's LEVEL section (apex or top down to the plane / the plane down to the base)
+          if((d.slant!==true&&d.slant!=='top'&&d.slant!=='bottom')||(solid.kind!=='CONE'&&solid.kind!=='CONE_FRUSTUM'))bad('SOLID_DIMS_INVALID');
+          let l=Math.hypot(solid.radius-solid.topRadius,solid.height),part;
+          if(d.slant!==true){
+            if(!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIM_SLANT_PART_NEEDS_LEVEL');
+            const fm=/^([1-9]\d?)\/([1-9]\d?)$/.exec(section.at),f=Number(fm[1])/Number(fm[2]);
+            part=d.slant==='top'?'TOP':'BOTTOM';
+            l=part==='TOP'?l*(1-f):l*f;
+          }
+          dims.push({id:'dim-'+(k+1),type:'SLANT',solid:solid.id,...(part?{part}:{}),...dimLabel(d.label,l,unitName,code,{words:true})});
         }
       }
     });
@@ -1096,6 +1312,8 @@ function textLabels(plan,solids,named,vref,drawnPair){
   const rev=solids.filter(s=>s.category==='REV'),polys=solids.filter(s=>s.category==='POLY');
   const pick=(list,id,code)=>{const owner=id!==undefined?list.find(s=>s.id===id):list.length===1?list[0]:undefined;if(!owner)bad(code);return owner;};
   for(const solid of solids)if(solid.axis&&solid.axis.label!==null)add(solid.axis.label,{kind:'AXIS',solid:solid.id},'axis:'+solid.id);
+  // the name written inside a tinted base (baseFill.label), after the axis words
+  for(const solid of solids)if(solid.baseFill?.label!==undefined)add(solid.baseFill.label,{kind:'BASE',solid:solid.id,face:solid.baseFill.face},'base:'+solid.id);
   if(plan.labels===undefined)return out;
   if(!Array.isArray(plan.labels)||plan.labels.length<1||plan.labels.length>MAX_TEXT_LABELS)bad('SOLID_LABELS_INVALID');
   for(const entry of plan.labels){
@@ -1144,13 +1362,20 @@ function solidScreenPoints(solid){
   const r=solid.radius,pts=[];
   const ox=solid.offset??0;
   if(solid.cut)return cutSphereScreenPoints(solid);
-  const ell=(rad,z)=>{const c=project([0,0,z]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+rad*Math.cos(u),c[1]+rad*sP*Math.sin(u)]);}};
-  if(solid.kind==='SPHERE'){const c=project([0,0,solid.centerZ??r]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}}
-  else if(solid.kind==='HEMISPHERE'){const c=project([0,0,0]);c[0]+=ox;for(let k=0;k<=12;k++){const u=Math.PI*k/12;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}ell(r,0);}
+  const lz=liftOf(solid);
+  const ell=(rad,z)=>{const c=project([0,0,z+lz]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+rad*Math.cos(u),c[1]+rad*sP*Math.sin(u)]);}};
+  if(solid.kind==='SPHERE'){const c=project([0,0,solid.centerZ??r]);c[0]+=ox+(solid.at?.x??0);c[1]+=(solid.at?.y??0)*sP;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}}
+  else if(solid.kind==='HEMISPHERE'){
+    // the dome: the half of the outline circle above the flat disc (a bowl, APEX_DOWN: below it) and the ellipse of the disc
+    const bowl=solid.orientation==='APEX_DOWN',zd=bowl?solid.height:0,c=project([0,0,zd+lz]);c[0]+=ox;
+    for(let k=0;k<=12;k++){const u=Math.PI*k/12*(bowl?-1:1);pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}
+    ell(r,zd);
+    if(solid.axis)pts.push(...axisEnds(solid));
+  }
   else{
     if(solid.r0>0)ell(solid.r0,0);
     if(solid.r1>0)ell(solid.r1,solid.height);
-    if(solid.r0===0||solid.r1===0){const q=project([0,0,solid.r0===0?0:solid.height]);pts.push([q[0]+ox,q[1]]);}
+    if(solid.r0===0||solid.r1===0){const q=project([0,0,(solid.r0===0?0:solid.height)+lz]);pts.push([q[0]+ox,q[1]]);}
     if(solid.axis)pts.push(...axisEnds(solid));
   }
   return pts;
@@ -1186,7 +1411,7 @@ function polyOverlap(a,b){
   const shrink=(p)=>{const c=cen(p);return p.map(q=>[c[0]+(q[0]-c[0])*0.9,c[1]+(q[1]-c[1])*0.9]);};
   return shrink(a).some(q=>inside2(b,q))||shrink(b).some(q=>inside2(a,q))||inside2(b,cen(a))||inside2(a,cen(b));
 }
-const NET_FILLS=['LIGHT','MEDIUM'],NET_ROLES=['ACCENT','REF'];
+const NET_FILLS=Object.keys(HIGHLIGHT_FILLS),NET_ROLES=['ACCENT','REF'];// a net tints a face with any of the six fills of a solid's highlights
 const sameNetSegment=(p,q)=>{
   const near=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1])<1e-3;
   return (near(p[0],q[0])&&near(p[1],q[1]))||(near(p[0],q[1])&&near(p[1],q[0]));
@@ -1470,7 +1695,7 @@ function solveNet(plan){
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
-const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70;
+const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70,SIDE_DIM_ROOM=64;
 // A solid panel of a composite grid (composite-panels-v1 with two columns) is narrower: two of them plus the 8 unit gap stay at 776 SVG units (the narrowest plane canvas pair: a Korean caption row still fits 44 units at the measured base font),
 // the width the Archive solution column keeps its 11 CSS px label floor at. The composite sets it (plan.panelWidth); an author never writes it.
 export const GRID_PANEL_WIDTH=384;
@@ -1492,9 +1717,11 @@ function figureExtent(model){
 export function figureFrame(model){
   const e=figureExtent(model),bw=e.x1-e.x0,bh=e.y1-e.y0;
   const grid=model.panelWidth!==undefined,W=grid?model.panelWidth:WIDTH,MX=grid?GRID_MARGIN_X:MARGIN_X;
-  const scale=r6(Math.min((W-2*MX)/bw,MAX_FIG_H/bh,MAX_SCALE));
+  // an outside height dimension (dims[].side) takes room beside the solid for its line and its label
+  const roomL=model.mode==='SOLIDS'&&model.dims.some(d=>d.side==='LEFT')?SIDE_DIM_ROOM:0,roomR=model.mode==='SOLIDS'&&model.dims.some(d=>d.side==='RIGHT')?SIDE_DIM_ROOM:0;
+  const scale=r6(Math.min((W-2*MX-roomL-roomR)/bw,MAX_FIG_H/bh,MAX_SCALE));
   const height=Math.ceil(bh*scale+2*MARGIN_Y);
-  return {scale,width:W,height,origin:[r6(W/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
+  return {scale,width:W,height,origin:[r6((W+roomL-roomR)/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
 }
 export const figurePanelSize=model=>{const f=figureFrame(model);return {width:f.width,height:f.height};};
 
@@ -1515,8 +1742,31 @@ export function solidFigureSpec(plan,model){
   return {schemaVersion:SOLID_SPEC_VERSION,size:{width:frame.width,height:frame.height},frame:{scale:S,origin:frame.origin},prims,labels};
 }
 function ellipseOf(S,solid,rad,z){
-  const c=project([0,0,z]);// the solid's axis is shifted along the screen horizontal by its offset
+  const c=project([0,0,z+liftOf(solid)]);// the solid's axis is shifted along the screen horizontal by its offset
   return {cx:c[0]+(solid.offset??0),cy:c[1],a:rad,b:rad*sP};
+}
+/**
+ * The right angle at the foot of a height (dims[].foot): a dashed line in the base plane from the foot F to the point T (a base vertex, or the rim on the screen's right for a
+ * rotation solid) and a small square between it and the height line, drawn in their plane (so it is seen as a parallelogram). World points; the square's side is a fifth of
+ * the shorter of the two lines, at most 20 px.
+ */
+function footRightAngle(d,F,T,ctx){
+  const {S,pt,prims,line}=ctx,up=[0,0,1],along=unit(sub(T,F)),len2=len(sub(T,F));
+  const l1=Math.hypot(...project(up)),l2=Math.hypot(...project(along));
+  const k=Math.min(0.2*len2,20/(S*Math.max(l1,l2)));
+  if(k*S*Math.min(l1,l2)<3)bad('SOLID_DIM_FOOT_TOO_SMALL:'+d.id);
+  line(d.id+'-foot-ray','foot-ray',pt(project(F)),pt(project(T)),{solid:d.solid,dim:d.id,kind:'FOOT',vis:'hidden'});
+  const pts=[add(F,mulv(up,k)),add(F,mulv(add(up,along),k)),add(F,mulv(along,k))].map(q=>pt(project(q)));
+  prims.push({t:'polyline',id:d.id+'-foot-right-angle',role:'foot-right-angle',points:pts,dim:d.id,solid:d.solid});
+}
+/**
+ * The outside height dimension of a round solid (dims[].side LEFT|RIGHT), in px: the x of the dimension line (26 px beyond the widest side of the solid, kept inside the safe margin),
+ * and the two points on the solid's side that its extension lines end on (the base circle's and the top circle's extreme on that side; an apex stands on the axis).
+ */
+function sideHeightDim(d,solid,ctx){
+  const {X,Y,frame}=ctx,sgn=d.side==='LEFT'?-1:1,cx=(solid.offset??0),R=Math.max(solid.r0,solid.r1);
+  const xs=X(cx+sgn*R),x=d.side==='LEFT'?Math.max(SAFE+2,xs-26):Math.min(frame.width-SAFE-2,xs+26);
+  return {x:r6(x),bottom:[X(cx+sgn*solid.r0),Y(0)],top:[X(cx+sgn*solid.r1),Y(solid.height*cP)]};
 }
 const heightDimX=(solid,X)=>r6(Math.max(SAFE+2,Math.min(...solid.vertices.map(v=>X(project(v.p)[0])))-26));
 function spec3d(plan,model,ctx){
@@ -1608,6 +1858,13 @@ function spec3d(plan,model,ctx){
       for(let k=0;k<=24;k++){const t=theta*k/24;pts.push(pt(project(add(V,mulv(add(mulv(e1,Math.cos(t)),mulv(w,Math.sin(t))),kWorld)))));}
       prims.push({t:'polyline',id:m.id+'-arc-'+(ring+1),role:'angle-mark',points:pts,mark:m.id,refs:joinKeys(m.refs),index:ring+1,count:m.arcs});
     }
+    if(m.label!==undefined){
+      // the label stands beyond the outer arc along the bisector of the two rays on the page (it may slide round the vertex a little where something is in the way)
+      const u1=[(p1[0]-pv[0])/l1,(p1[1]-pv[1])/l1],u2=[(p2[0]-pv[0])/l2,(p2[1]-pv[1])/l2];
+      let bis=[u1[0]+u2[0],u1[1]+u2[1]];const bl=Math.hypot(bis[0],bis[1]);
+      bis=bl>1e-6?[bis[0]/bl,bis[1]/bl]:[-u1[1],u1[0]];
+      labels.push({id:'angle-label-'+m.id,role:'angle-label',owner:'angle-'+m.id,kind:'MATH',tex:m.label,plain:m.label,value:m.label,mark:m.id,place:'ANGLE',anchor:pt(pv),dir:[r6(bis[0]),r6(bis[1])],reach:20+5*(m.arcs-1)});
+    }
   }
   if(model.section?.kind==='AXIAL'){
     const solid=model.solids.find(s=>s.id===model.section.solid);
@@ -1637,6 +1894,7 @@ function spec3d(plan,model,ctx){
         continue;
       }
       const c=project([solid.offset?EX[0]*solid.offset:0,solid.offset?EX[1]*solid.offset:0,d.z]);
+      if(solid.at){c[0]+=solid.at.x;c[1]+=solid.at.y*sP;}// a ball off the axis: its radius starts at its own centre
       const rim=[c[0]+d.r,c[1]];// screen-horizontal radius: ends at the ellipse's right extreme
       line(d.id+'-line','dim-line',pt(c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
     }else if(d.type==='HEIGHT'){
@@ -1646,15 +1904,27 @@ function spec3d(plan,model,ctx){
         // (with extension lines to the apex and the base-centre level) so the length never has to sit between two edges.
         const top=pt(project(d.top)),foot=pt(project(d.foot));
         line(d.id+'-axis','height-axis',foot,top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'hidden'});
-        const x=heightDimX(solid,X);
-        line(d.id+'-line','dim-line',[x,foot[1]],[x,top[1]],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
-        line(d.id+'-ext-top','dim-ext',[x,top[1]],top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
-        line(d.id+'-ext-bottom','dim-ext',[x,foot[1]],foot,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        if(!d.direct){
+          const x=heightDimX(solid,X);
+          line(d.id+'-line','dim-line',[x,foot[1]],[x,top[1]],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+          line(d.id+'-ext-top','dim-ext',[x,top[1]],top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+          line(d.id+'-ext-bottom','dim-ext',[x,foot[1]],foot,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        }
+        if(d.footMark)footRightAngle(d,d.foot,solid.vertices[d.footMark.index].p,ctx);
+      }
+      else if(d.side){
+        // outside the solid on its LEFT or RIGHT: a vertical dimension line from the base circle's level to the top circle's, with an extension line level with each circle
+        // running to the solid's side there (to the axis at an apex)
+        const g=sideHeightDim(d,solid,ctx),[bx,by]=g.bottom,[tx,ty]=g.top;
+        line(d.id+'-line','dim-line',[g.x,by],[g.x,ty],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        line(d.id+'-ext-bottom','dim-ext',[g.x,by],[bx,by],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        line(d.id+'-ext-top','dim-ext',[g.x,ty],[tx,ty],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
       }
       else{
-        const bottom=solid.kind==='HEMISPHERE'?[0,0,0]:[0,0,0],top=[0,0,solid.height];
+        const bottom=[0,0,liftOf(solid)],top=[0,0,liftOf(solid)+solid.height];
         const sh=mulv(EX,solid.offset??0);
-        line(d.id+'-line','dim-line',pt(project(add(bottom,sh))),pt(project(add(top,sh))),{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'hidden'});
+        if(!d.onAxis)line(d.id+'-line','dim-line',pt(project(add(bottom,sh))),pt(project(add(top,sh))),{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'hidden'});
+        if(d.footMark)footRightAngle(d,add(bottom,sh),add(add(bottom,sh),mulv(EX,solid.r0)),ctx);
       }
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
@@ -1702,13 +1972,14 @@ function spec3d(plan,model,ctx){
         const mids=ends.map(([a,b])=>[r6((a[0]+b[0])/2),r6((a[1]+b[1])/2)]);
         list.forEach((e,k)=>{
           const n=String(k+1),text=circled(k+1);
-          labels.push({id:`count-e-${solid.id}-${n}`,role:'count-edge',owner:`count-edge-${solid.id}-${n}`,kind:'TEXT',text,plain:text,value:n,countKind:'edge',countN:k+1,solid:solid.id,segment:ends[k],near:{own:mids[k],others:mids.filter((q,j)=>j!==k),margin:COUNT_MARGIN}});
+          labels.push({id:`count-e-${solid.id}-${n}`,role:'count-edge',owner:`count-edge-${solid.id}-${n}`,kind:'TEXT',text,plain:text,value:n,countKind:'edge',countN:k+1,solid:solid.id,segment:ends[k],near:{own:mids[k],others:mids.filter((q,j)=>j!==k),margin:COUNT_MARGIN,
+            ...(solid.count.near==='EDGE'?{ownSeg:ends[k],otherSegs:ends.filter((q,j)=>j!==k),segMargin:COUNT_EDGE_MARGIN}:{})}});
         });
       }
     }else{
       for(const q of solid.points){
         if(!q.name)continue;
-        const here=project(q.p),up=q.p[2]>solid.height/2;
+        const here=project(q.p),up=q.p[2]-liftOf(solid)>solid.height/2;
         let dir=up?[0,1]:[0,-1];
         if(solid.cut){
           // the centre of a cut sphere is a corner: its name sits away from the radii (creases) that meet there
@@ -1723,10 +1994,12 @@ function spec3d(plan,model,ctx){
     }
   }
   for(const d of model.dims){
-    const label={id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id};
+    const label={id:d.id+'-label',role:'dim',owner:d.id,...(d.word?{kind:'TEXT',text:d.text}:{kind:'MATH',tex:d.tex}),plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id};
     if(d.type==='SEGMENT'){
       const a=pt(project(named.get(d.from))),b=pt(project(named.get(d.to)));
-      labels.push({...label,segment:[a,b],segmentOf:joinKeys([d.from,d.to])});
+      // side: the same direction on the page (y down) for the label placer
+      const sideDir=d.side?{LEFT:[-1,0],RIGHT:[1,0],TOP:[0,-1],BOTTOM:[0,1]}[d.side]:undefined;
+      labels.push({...label,segment:[a,b],segmentOf:joinKeys([d.from,d.to]),...(sideDir?{sideDir}:{})});
     }else if(d.type==='RADIUS'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.cut){
@@ -1735,21 +2008,23 @@ function spec3d(plan,model,ctx){
         continue;
       }
       const c=project([EX[0]*(solid.offset??0),EX[1]*(solid.offset??0),d.z]);
+      if(solid.at){c[0]+=solid.at.x;c[1]+=solid.at.y*sP;}
       labels.push({...label,segment:[pt(c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
     }else if(d.type==='HEIGHT'){
       const solid=model.solids.find(s=>s.id===d.solid);
-      if(solid.category==='POLY'){const top=pt(project(d.top)),foot=pt(project(d.foot)),x=heightDimX(solid,X);labels.push({...label,segment:[[x,foot[1]],[x,top[1]]],segmentOf:'height'});}
-      else{const sh=mulv(EX,solid.offset??0);labels.push({...label,segment:[pt(project(add([0,0,0],sh))),pt(project(add([0,0,solid.height],sh)))],segmentOf:'height'});}
+      if(solid.category==='POLY'){const top=pt(project(d.top)),foot=pt(project(d.foot)),x=heightDimX(solid,X);labels.push({...label,segment:d.direct?[foot,top]:[[x,foot[1]],[x,top[1]]],segmentOf:'height'});}
+      else if(d.side){const g=sideHeightDim(d,solid,ctx);labels.push({...label,segment:[[g.x,g.bottom[1]],[g.x,g.top[1]]],segmentOf:'height',preferredSide:d.side==='LEFT'?-1:1});}
+      else{const sh=mulv(EX,solid.offset??0);labels.push({...label,segment:[pt(project(add([0,0,liftOf(solid)],sh))),pt(project(add([0,0,liftOf(solid)+solid.height],sh)))],segmentOf:'height'});}
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
       const [z0,z1]=d.side==='TOP'?[model.section.z,solid.height]:[0,model.section.z];
       labels.push({...label,segment:[pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh)))],segmentOf:'level'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
-      const seg=slantSegment(S,solid);
+      const seg=d.part?slantPartSegment(S,solid,d.part,model.section):slantSegment(S,solid);
       const p0=pt(seg[0]),p1=pt(seg[1]),cs=pt(centroidScreen),n=[-(p1[1]-p0[1]),p1[0]-p0[0]];
       const mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2],side=Math.sign(n[0]*(mid[0]-cs[0])+n[1]*(mid[1]-cs[1]))||1;
-      labels.push({...label,segment:[p0,p1],segmentOf:'slant',preferredSide:side});
+      labels.push({...label,segment:[p0,p1],segmentOf:d.part?'slant-'+d.part.toLowerCase():'slant',preferredSide:side});
     }
   }
   // text labels: a word on a vertex (its open side), on the axis / an edge / a cone's slant (beside the segment, with a leader when there is no room) or inside a visible face
@@ -1765,9 +2040,16 @@ function spec3d(plan,model,ctx){
     }else if(at.kind==='EDGE'){
       const a=pt(project(named.get(at.from))),b=pt(project(named.get(at.to)));
       labels.push({...label,place:'SEGMENT',target:joinKeys([at.from,at.to]),segment:[a,b]});
+    }else if(at.kind==='BASE'){
+      // the name of a tinted base stands wholly inside its ellipse; one letter is a math symbol in italics, a word stays text
+      const solid=model.solids.find(s=>s.id===at.solid),top=at.face==='TOP',e=ellipseOf(S,solid,top?solid.r1:solid.r0,top?solid.height:0);
+      const region=[...Array(36).keys()].map(k=>{const u=2*Math.PI*k/36;return [X(e.cx+e.a*Math.cos(u)),Y(e.cy+e.b*Math.sin(u))];});
+      labels.push({...label,...(AXIS_LETTER.test(tl.text)?{kind:'MATH',tex:tl.text}:{}),place:'FACE',target:at.solid+'|base',region});
     }else if(at.kind==='AXIS'){
       const solid=model.solids.find(s=>s.id===at.solid),[a,b]=axisEnds(solid);
-      labels.push({...label,place:'SEGMENT',target:at.solid,segment:[pt(a),pt(b)]});
+      // a single letter on the axis (the rotation axis l) is a math symbol in italics, written near the top end of the axis
+      if(AXIS_LETTER.test(tl.text))labels.push({...label,kind:'MATH',tex:tl.text,place:'SEGMENT',target:at.solid,segment:[pt(a),pt(b)],endBias:true});
+      else labels.push({...label,place:'SEGMENT',target:at.solid,segment:[pt(a),pt(b)]});
     }else{
       const solid=model.solids.find(s=>s.id===at.solid),seg=slantSegment(S,solid),p0=pt(seg[0]),p1=pt(seg[1]),cs=pt(centroidScreen),n=[-(p1[1]-p0[1]),p1[0]-p0[0]];
       const mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2],side=Math.sign(n[0]*(mid[0]-cs[0])+n[1]*(mid[1]-cs[1]))||1;
@@ -1777,14 +2059,21 @@ function spec3d(plan,model,ctx){
 }
 /** The two ends (screen units, y up) of the drawn axis of a rotation solid: the solid's own axis, a little beyond its bottom and its top. */
 function axisEnds(solid){
-  const ext=AXIS_EXTENSION*solid.height,sh=mulv(EX,solid.offset??0);
-  return [project(add([0,0,-ext],sh)),project(add([0,0,solid.height+ext],sh))];
+  const total=solid.axis?.span??solid.height,ext=AXIS_EXTENSION*total,sh=mulv(EX,solid.offset??0);
+  return [project(add([0,0,-ext],sh)),project(add([0,0,total+ext],sh))];
 }
 /** The slant (generator) of a cone or cone frustum on its right-hand silhouette, in screen units (the same segment the slant length is written beside). */
 function slantSegment(S,solid){
   const apex=apexOf(solid);
   if(solid.kind==='CONE'){const rim=ellipseOf(S,solid,solid.r0===0?solid.r1:solid.r0,solid.r0===0?solid.height:0);return [apex,tangentPoints(rim,apex)[1]];}
   return [tangentPoints(ellipseOf(S,solid,solid.r0,0),apex)[1],tangentPoints(ellipseOf(S,solid,solid.r1,solid.height),apex)[1]];
+}
+/** The part of the right-hand slant above (TOP) or below (BOTTOM) the plane of a LEVEL section, in screen units: between the outline's points on the circles at the two heights. */
+function slantPartSegment(S,solid,part,section){
+  const apex=apexOf(solid),fm=/^([1-9]\d?)\/([1-9]\d?)$/.exec(section.at),f=Number(fm[1])/Number(fm[2]);
+  const onOutline=(rad,z)=>rad>0?tangentPoints(ellipseOf(S,solid,rad,z),apex)[1]:apex;
+  const level=onOutline(solid.r0+(solid.r1-solid.r0)*f,f*solid.height);
+  return part==='TOP'?[level,onOutline(solid.r1,solid.height)]:[onOutline(solid.r0,0),level];
 }
 /** Convex hull (counter-clockwise, monotone chain) of screen points. */
 function convexHull(points){
@@ -1813,7 +2102,7 @@ function bodyHull(solid,section){
 function apexOf(solid){
   // the screen point of the (virtual) apex of a cone or cone frustum; an apex-down vessel has it on the base plane
   const z=solid.r1===solid.r0?0:-solid.r0*solid.height/(solid.r1-solid.r0);
-  const c=project([0,0,z]);return [c[0]+(solid.offset??0),c[1]];
+  const c=project([0,0,z+liftOf(solid)]);return [c[0]+(solid.offset??0),c[1]];
 }
 /** The two tangent points (left, right) from a point on the axis of an axis-aligned ellipse (sin u = b/d, d may be negative below). */
 function tangentPoints(e,apex){
@@ -1854,15 +2143,21 @@ function liquidRegion(S,solid,z,rl){
   return {points:[...near,...far],sides:[[bv.right,lv.right],[lv.left,bv.left]]};
 }
 function specRev(solid,ctx,arcPrim){
-  const {S,pt,prims,line}=ctx;
+  const {S,X,Y,pt,prims,line}=ctx;
   const sid=solid.id,h=solid.height;
+  if(solid.baseFill){
+    // the tinted base circle (an ellipse), painted beneath every stroke
+    const top=solid.baseFill.face==='TOP',e=ellipseOf(S,solid,top?solid.r1:solid.r0,top?h:0);
+    prims.push({t:'basefill',id:sid+'-base-fill',role:'base-fill',solid:sid,face:solid.baseFill.face,fill:solid.baseFill.fill,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b)});
+  }
   const cone=solid.kind==='CONE'||solid.kind==='CONE_FRUSTUM';
   if(!cone){
     // cylinder: the base ellipse's back half hidden, the top ellipse whole; verticals at x = +-r
     const bot=ellipseOf(S,solid,solid.r0,0),top=ellipseOf(S,solid,solid.r1,h);
     arcPrim(sid+'-base-front','ellipse-arc',bot,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'bottom',half:'FRONT'});
     arcPrim(sid+'-base-back','ellipse-arc',bot,0,Math.PI,'hidden',{solid:sid,circle:'bottom',half:'BACK'});
-    arcPrim(sid+'-top-back','ellipse-arc',top,0,Math.PI,'solid',{solid:sid,circle:'top',half:'BACK'});
+    // a rim that a guest stands on is the joint circle of a stack: its far half is behind the guest
+    arcPrim(sid+'-top-back','ellipse-arc',top,0,Math.PI,solid.covered?'hidden':'solid',{solid:sid,circle:'top',half:'BACK'});
     arcPrim(sid+'-top-front','ellipse-arc',top,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'top',half:'FRONT'});
     for(const sgn of [-1,1])line(`${sid}-side-${sgn<0?'left':'right'}`,'silhouette',pt([bot.cx+sgn*bot.a,bot.cy]),pt([top.cx+sgn*top.a,top.cy]),{solid:sid,side:sgn<0?'LEFT':'RIGHT',vis:'solid'});
     return;
@@ -1890,7 +2185,7 @@ function specRev(solid,ctx,arcPrim){
   }
   if(solid.r1>0){
     const top=ellipseOf(S,solid,solid.r1,h);
-    arcPrim(sid+'-top-back','ellipse-arc',top,0,Math.PI,'solid',{solid:sid,circle:'top',half:'BACK'});
+    arcPrim(sid+'-top-back','ellipse-arc',top,0,Math.PI,solid.covered?'hidden':'solid',{solid:sid,circle:'top',half:'BACK'});
     arcPrim(sid+'-top-front','ellipse-arc',top,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'top',half:'FRONT'});
   }
   if(solid.r0===0||solid.r1===0){
@@ -1909,14 +2204,21 @@ function specSphere(solid,ctx,arcPrim){
   const {S,X,Y,prims}=ctx;
   const sid=solid.id,r=solid.radius,sh=solid.offset??0;
   if(solid.kind==='SPHERE'){
-    const c=project([0,0,solid.centerZ??r]),cx=c[0]+sh;
+    const c=project([0,0,solid.centerZ??r]),cx=c[0]+sh+(solid.at?.x??0);c[1]+=(solid.at?.y??0)*sP;
     const eq={cx,cy:c[1],a:r,b:r*sP};
     arcPrim(sid+'-outline-upper','sphere-outline',{cx,cy:c[1],a:r,b:r},0,Math.PI,'solid',{solid:sid,part:'UPPER'});
     arcPrim(sid+'-outline-lower','sphere-outline',{cx,cy:c[1],a:r,b:r},Math.PI,2*Math.PI,'solid',{solid:sid,part:'LOWER'});
     arcPrim(sid+'-equator-front','ellipse-arc',eq,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'equator',half:'FRONT'});
     arcPrim(sid+'-equator-back','ellipse-arc',eq,0,Math.PI,'hidden',{solid:sid,circle:'equator',half:'BACK'});
+  }else if(solid.orientation==='APEX_DOWN'){
+    // a bowl: the pole is the lowest point and the flat disc is the top (a whole ellipse: the disc is seen from above), its far half behind a guest standing on it
+    const c=project([0,0,liftOf(solid)+solid.height]),cx=c[0]+sh;
+    const rim={cx,cy:c[1],a:r,b:r*sP};
+    arcPrim(sid+'-outline-lower','sphere-outline',{cx,cy:c[1],a:r,b:r},Math.PI,2*Math.PI,'solid',{solid:sid,part:'LOWER'});
+    arcPrim(sid+'-top-back','ellipse-arc',rim,0,Math.PI,solid.covered?'hidden':'solid',{solid:sid,circle:'top',half:'BACK'});
+    arcPrim(sid+'-top-front','ellipse-arc',rim,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'top',half:'FRONT'});
   }else{
-    const c=project([0,0,0]),cx=c[0]+sh;
+    const c=project([0,0,liftOf(solid)]),cx=c[0]+sh;
     const base={cx,cy:c[1],a:r,b:r*sP};
     arcPrim(sid+'-outline-upper','sphere-outline',{cx,cy:c[1],a:r,b:r},0,Math.PI,'solid',{solid:sid,part:'UPPER'});
     arcPrim(sid+'-base-front','ellipse-arc',base,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'bottom',half:'FRONT'});
@@ -1988,6 +2290,18 @@ function specCutSphere(solid,ctx,arcPrim){
       if(Math.hypot(b[0]-a[0],b[1]-a[1])<0.4)return;
       line(`${sid}-crease-${crease.id}-${k+1}`,'cut-crease',a,b,{solid:sid,edge:crease.id,vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1});
     });
+  }
+  // a wedge's right angle: the two radii perpendicular to its edge, one in each cut face, and a small square between them (in their plane, projected)
+  if(cut.rightAngle){
+    const [ra,rb]=cut.rightAngle.radii.map(x=>CUT_AXES[x.axis].map(c=>c*x.sign));
+    for(const x of cut.rightAngle.radii){
+      const name=(x.sign>0?'+':'-')+'XYZ'[x.axis];
+      line(`${sid}-cut-radius-${name}`,'cut-radius',centre,scr(CUT_AXES[x.axis].map(c=>c*x.sign*r)),{solid:sid,edge:name,vis:'solid'});
+    }
+    const p1=project(ra),p2=project(rb),l1=Math.hypot(p1[0],p1[1]),l2=Math.hypot(p2[0],p2[1]),k=Math.min(0.2*r,20/(S*Math.max(l1,l2)));
+    if(k*S*Math.min(l1,l2)<3)bad('SOLID_SPHERE_CUT_RIGHT_ANGLE_TOO_SMALL');
+    const pts=[ra.map(c=>c*k),ra.map((c,i)=>(c+rb[i])*k),rb.map(c=>c*k)].map(q=>scr(q));
+    prims.push({t:'polyline',id:sid+'-right-angle',role:'cut-right-angle',points:pts,solid:sid});
   }
   if(solid.points.some(q=>q.name))prims.push({t:'dot',id:'centre-'+sid,role:'center-dot',solid:sid,cx:centre[0],cy:centre[1],r:2.4});
 }
@@ -2149,7 +2463,19 @@ function segmentHitsBox(a,b,box,pad){
   });
 }
 // a counting number's centre stays within COUNT_FAR px of its own vertex or edge midpoint (the observer's bound is 48; one half px less here, so a rounding never crosses it)
-const BOX_PAD=2.2,COUNT_MARGIN=4,COUNT_FAR=47.5;
+const BOX_PAD=2.2,COUNT_MARGIN=4,COUNT_FAR=47.5,COUNT_EDGE_MARGIN=6;
+/** The distance from a box {x,y,width,height} to a segment (0 where they touch). */
+function boxSegmentDistance(box,a,b){
+  const x0=box.x,y0=box.y,x1=box.x+box.width,y1=box.y+box.height;
+  const inside=p=>p[0]>=x0&&p[0]<=x1&&p[1]>=y0&&p[1]<=y1;
+  if(inside(a)||inside(b))return 0;
+  const corners=[[x0,y0],[x1,y0],[x1,y1],[x0,y1]];
+  const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);
+  for(let i=0;i<4;i++){const c=corners[i],d=corners[(i+1)%4];if(o(a,b,c)*o(a,b,d)<0&&o(c,d,a)*o(c,d,b)<0)return 0;}
+  const toSeg=(p,s,t)=>{const dx=t[0]-s[0],dy=t[1]-s[1],l2=dx*dx+dy*dy,u=l2===0?0:Math.max(0,Math.min(1,((p[0]-s[0])*dx+(p[1]-s[1])*dy)/l2));return Math.hypot(p[0]-(s[0]+u*dx),p[1]-(s[1]+u*dy));};
+  const edges=[[corners[0],corners[1]],[corners[1],corners[2]],[corners[2],corners[3]],[corners[3],corners[0]]];
+  return Math.min(...edges.map(([c,d])=>Math.min(toSeg(a,c,d),toSeg(b,c,d))),...corners.map(c=>toSeg(c,a,b)));
+}
 /**
  * Place every label near its anchor: names on the open side of their corner, lengths beside their segment, never over a stroke or another label.
  * A label that finds no place because the labels placed before it took the room around it goes first on the next try (a few tries); the fewest-failures try is kept.
@@ -2185,7 +2511,10 @@ function placeLabelsOnce(spec,fragments,order){
   const nearest=(label,box)=>{
     if(!label.near)return true;
     const cx=box.x+box.width/2,cy=box.y+box.height/2,own=Math.hypot(cx-label.near.own[0],cy-label.near.own[1]);
-    return own<=COUNT_FAR&&label.near.others.every(o=>own+label.near.margin<Math.hypot(cx-o[0],cy-o[1]));
+    if(!(own<=COUNT_FAR&&label.near.others.every(o=>own+label.near.margin<Math.hypot(cx-o[0],cy-o[1]))))return false;
+    // count.near "EDGE": the box is nearer to its own edge (the whole segment) than to every other numbered edge
+    if(label.near.ownSeg){const dOwn=boxSegmentDistance(box,label.near.ownSeg[0],label.near.ownSeg[1]);return label.near.otherSegs.every(s=>dOwn+label.near.segMargin<=boxSegmentDistance(box,s[0],s[1]));}
+    return true;
   };
   for(const label of order){
     const frag=fragments.get(label.id),{width:w,height:h}=frag.intrinsic;
@@ -2199,6 +2528,14 @@ function placeLabelsOnce(spec,fragments,order){
         const n=Math.max(8,Math.ceil(2*Math.PI*dist/4));
         for(let k=0;k<n;k++){const ang=2*Math.PI*k/n;candidates.push({x:c[0]+Math.cos(ang)*dist-w/2,y:c[1]-Math.sin(ang)*dist-h/2});}
       }
+    }else if(label.place==='ANGLE'){
+      // beyond the outer arc of an angle mark, round the bisector of its two rays: the box edge stands `reach` + a few px from the vertex
+      const base=Math.atan2(label.dir[1],label.dir[0]);
+      for(const dist of [label.reach+3,label.reach+7,label.reach+12,label.reach+18,label.reach+26,label.reach+36])for(const da of [0,0.35,-0.35,0.7,-0.7,1.1,-1.1]){
+        const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
+        const cx=label.anchor[0]+dx*(dist+Math.abs(dx)*w/2),cy=label.anchor[1]+dy*(dist+Math.abs(dy)*h/2);
+        candidates.push({x:cx-w/2,y:cy-h/2});
+      }
     }else if(label.role==='vertex-name'||label.role==='count-vertex'||label.place==='VERTEX'){
       const base=Math.atan2(label.dir[1],label.dir[0]);
       for(const dist of [5,8,12,17,24])for(const da of [0,0.5,-0.5,1.0,-1.0,1.6,-1.6,2.3,-2.3,Math.PI]){
@@ -2208,8 +2545,10 @@ function placeLabelsOnce(spec,fragments,order){
       }
     }else{
       const [a,b]=label.segment,dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1,nx=-dy/l,ny=dx/l;
-      const sides=label.preferredSide?[label.preferredSide,-label.preferredSide]:[1,-1];
-      for(const side of sides)for(const dist of [3,6,10,15,21])for(const frac of [0.5,0.4,0.6,0.3,0.7,0.2,0.8]){
+      let sides=label.preferredSide?[label.preferredSide,-label.preferredSide]:[1,-1];
+      // a label told which side of its segment it stands on is tried on that side only (beside the segment or at the end of a leader)
+      if(label.sideDir)sides=[nx*label.sideDir[0]+ny*label.sideDir[1]>=0?1:-1];
+      for(const side of sides)for(const dist of [3,6,10,15,21])for(const frac of label.endBias?[0.96,0.9,0.84,0.78,0.7,0.6]:label.sideDir?SIDE_FRACTIONS:[0.5,0.4,0.6,0.3,0.7,0.2,0.8]){
         const mx=a[0]+dx*frac,my=a[1]+dy*frac;
         // the box edge (not its centre) stands `dist` px from the segment
         const ext=Math.abs(nx)*w/2+Math.abs(ny)*h/2;
@@ -2231,6 +2570,7 @@ function placeLabelsOnce(spec,fragments,order){
       const [a,b]=label.place==='VERTEX'?[label.anchor,label.anchor]:label.segment,mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
       search:for(const dist of [24,34,46,60,76])for(let k=0;k<16;k++){
         const ang=k*Math.PI/8,dx=Math.cos(ang),dy=Math.sin(ang);
+        if(label.sideDir){const [sx,sy]=label.segment[1],[tx,ty]=label.segment[0],sl=Math.hypot(sx-tx,sy-ty)||1,nx=-(sy-ty)/sl,ny=(sx-tx)/sl,sg=nx*label.sideDir[0]+ny*label.sideDir[1]>=0?1:-1;if(sg*(dx*nx+dy*ny)<0.2)continue;}
         const box={x:r6(mx+dx*(dist+Math.abs(dx)*w/2)-w/2),y:r6(my+dy*(dist+Math.abs(dy)*h/2)-h/2),width:w,height:h};
         if(!free(box))continue;
         const nx=Math.max(box.x,Math.min(mx,box.x+box.width)),ny=Math.max(box.y,Math.min(my,box.y+box.height));
@@ -2252,10 +2592,14 @@ function renderPrims(spec,model){
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-face'))body+=`<g data-layer="10"><polygon id="${p.id}" data-role="net-face" data-face="${p.face}" fill="#f4f6fa" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}"${p.excluded?' data-excluded="1"':''} fill="${p.excluded?'#fff':'#f4f6fa'}" stroke="${p.excluded?'#888':'#111'}" stroke-width="1.6"${p.excluded?' stroke-dasharray="5 4"':''} cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
-  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="#7fa6e8" fill-opacity="${p.fill==='MEDIUM'?0.55:0.32}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="${HIGHLIGHT_FILLS[p.fill][0]}" fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face')){
     const [color,opacity]=HIGHLIGHT_FILLS[p.fill??'LIGHT'];
     body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face"${p.polygon?` data-polygon="${p.polygon}"`:` data-solid="${p.solid}" data-face="${p.face}"`}${p.fill&&p.fill!=='LIGHT'?` data-fill="${p.fill}"`:''} fill="${color}" fill-opacity="${opacity}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  }
+  for(const p of spec.prims.filter(p=>p.t==='basefill')){
+    const [color,opacity]=HIGHLIGHT_FILLS[p.fill];
+    body+=`<g data-layer="20"><ellipse id="${p.id}" data-role="base-fill" data-solid="${p.solid}" data-face="${p.face}" data-fill="${p.fill}" fill="${color}" fill-opacity="${opacity}" stroke="none" cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}"/></g>`;
   }
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='body-fill'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="body-fill" data-solid="${p.solid}" data-side="${p.side}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='liquid-region'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="liquid-region" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
@@ -2265,7 +2609,7 @@ function renderPrims(spec,model){
   for(const p of spec.prims){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
-      const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
+      const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'||p.role==='cut-radius'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal')&&p.accent?`data-accent="${p.accent}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
@@ -2278,7 +2622,7 @@ function renderPrims(spec,model){
     }else if(p.t==='dot'){
       body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
     }else if(p.t==='polyline'){
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.role==='net-right-angle'?`data-face="${p.face}" data-corner="${p.corner}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid&&(p.role==='cut-right-angle'||p.role==='foot-right-angle')?`data-solid="${p.solid}"`:'',p.role==='foot-right-angle'?`data-dim="${p.dim}"`:'',p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.role==='net-right-angle'?`data-face="${p.face}" data-corner="${p.corner}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="55"><polyline ${attrs} stroke="#111" stroke-width="1.2" fill="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
     }
   }
@@ -2310,7 +2654,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`+renderPrims(spec,model);
     for(const {label,leader} of placed)if(leader)body+=`<g data-layer="40"><line id="leader-${label.id}" data-role="leader" data-owner-label="${label.id}" data-label="${label.id}" stroke="#555" stroke-width="0.9" fill="none" x1="${leader[0][0]}" y1="${leader[0][1]}" x2="${leader[1][0]}" y2="${leader[1][1]}"/></g>`;
     for(const {label,fragment,box,leader} of placed){
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':label.role==='face-label'?'AREA_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''}${label.faceOf?` data-face-of="${label.faceOf}"`:''}${label.textId?` data-text-id="${label.textId}" data-at-kind="${label.atKind}" data-target="${esc(label.target)}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':label.role==='face-label'?'AREA_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.mark?` data-mark="${label.mark}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''}${label.faceOf?` data-face-of="${label.faceOf}"`:''}${label.textId?` data-text-id="${label.textId}" data-at-kind="${label.atKind}" data-target="${esc(label.target)}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
     const dataAttrs=` data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
@@ -2340,15 +2684,17 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
 }
 
 // --- the author plan ----------------------------------------------------------------------------------------------------------------------------
-const CAPTION_TEXT=/^.{1,24}$/;
+const CAPTION_TEXT=/^.{1,24}$/,CAPTION_MATH_OK=/^[A-Za-z0-9=+\-<>.,()\/^{}]{1,24}$/;
 /**
- * {capability:'solid-figure-v1',solids|net,dims?,highlights?,segments?,section?,unit?,solidCaption?:{text},caption,sourceConditions,newVisualInformation}
+ * {capability:'solid-figure-v1',solids|net,dims?,highlights?,segments?,section?,unit?,solidCaption?:{text?,math?},caption,sourceConditions,newVisualInformation}
  * -> the one-panel composite-panels-v1 it stands for. The model is built here first, so a plan that cannot be drawn is refused before anything is.
  */
 export function expandSolidFigure(plan){
   const model=solveSolidFigure(plan);
   const cap=plan.solidCaption;
-  if(cap!==undefined&&(!isPlain(cap)||Object.keys(cap).some(k=>k!=='text')||typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))bad('SOLID_CAPTION_INVALID');
+  // solidCaption: {text} (a phrase), {math} (an expression with exponents such as V=8a^5b^3) or {math,text} (the expression, then the phrase)
+  if(cap!==undefined&&(!isPlain(cap)||Object.keys(cap).some(k=>k!=='text'&&k!=='math')||(cap.text===undefined&&cap.math===undefined)
+    ||(cap.text!==undefined&&(typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))||(cap.math!==undefined&&(typeof cap.math!=='string'||!CAPTION_MATH_OK.test(cap.math)))))bad('SOLID_CAPTION_INVALID');
   if(plan.panelWidth!==undefined)bad('SOLID_PLAN_INVALID');
   // the author's solidCaption stays in the panel's plan: it is what lets a figure with nothing written on it stand (the panel caption carries the text)
   const {caption,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;

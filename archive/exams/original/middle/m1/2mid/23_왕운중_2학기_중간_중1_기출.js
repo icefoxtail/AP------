@@ -615,9 +615,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면의 네 사분면에 x좌표, y좌표의 부호 (+,+), (-,+), (-,-), (+,-)를 표시하고 제4사분면에 점 P를 나타낸 그림",
-    "solutionImageCaption": "P가 제4사분면 위의 점이므로 a>0, b<0이다.",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 제1~제4사분면의 이름과 각 사분면의 두 좌표의 부호 (+,+), (-,+), (-,-), (+,-)를 적은 그림. 제4사분면에 점 P(a, b)가 있고 두 축으로 점선을 내렸으며, 제4사분면 안에 a>0, b<0이 적혀 있다.",
+    "solutionImageCaption": "제4사분면 위의 점 P(a, b)에서 a>0, b<0이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -708,9 +708,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 원점 O(0주)에 기준 9 kg을 표시하고, 1주부터 6주까지 여섯 점에 몸무게 8.5, 8, 8, 9, 10, 10.5(kg)를 표시하며 1주 후의 점을 빨간 선으로 강조한 그림",
-    "solutionImageCaption": "원점 O는 12개월 때의 기준 9 kg이고, 세로축 y는 9 kg에서 변한 양이므로 몸무게는 9+y이다.",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축에 2, 4, 6, 세로축에 1, -1의 눈금이 있는 좌표평면에 여섯 점을 찍고, 점마다 몸무게(8.5kg, 8kg, 8kg, 9kg, 10kg, 10.5kg)를 점선과 지시선으로 이어 적은 그림. 원점에는 9kg이 적혀 있다.",
+    "solutionImageCaption": "세로축의 y는 9kg에서 변한 양이므로, 여섯 점에서 각 주의 몸무게를 읽는다.",
     "solutionImageSize": "medium"
   },
   {

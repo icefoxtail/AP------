@@ -1,0 +1,74 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "HISTOGRAM",
+  "boundaries": [
+   "12",
+   "14",
+   "16",
+   "18",
+   "20",
+   "22",
+   "24"
+  ],
+  "series": [
+   {
+    "frequencies": [
+     4,
+     6,
+     null,
+     5,
+     null,
+     2
+    ],
+    "total": 50
+   }
+  ],
+  "xTitle": "밝기(럭스)",
+  "yTitle": "도수(개)",
+  "grid": true,
+  "showValues": true,
+  "classSums": [
+   {
+    "from": 0,
+    "to": 5,
+    "label": "50",
+    "unit": "개"
+   }
+  ],
+  "unknownLabels": [
+   {
+    "class": 2,
+    "label": "2x",
+    "relHeight": 2
+   },
+   {
+    "class": 4,
+    "label": "x",
+    "relHeight": 1
+   }
+  ]
+ },
+ "caption": "가로등 밝기의 히스토그램에서 보이는 막대 4, 6, 5, 2개와, 찢어져 보이지 않는 두 계급(점선: 16~18럭스는 2x개, 20~22럭스는 x개)을 구분하고 전체 50개를 괄호로 묶어 나타낸 그림",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "계급 12~24럭스(크기 2럭스, 6개), 보이는 도수 4, 6, 5, 2이고 16~18, 20~22는 찢어져 보이지 않음",
+   "mappedTo": "chart.series[0].frequencies"
+  },
+  {
+   "id": "c2",
+   "condition": "전체 가로등 50개",
+   "mappedTo": "chart.classSums"
+  },
+  {
+   "id": "c3",
+   "condition": "16럭스 이상 18럭스 미만인 가로등 수는 20럭스 이상 22럭스 미만인 가로등 수의 2배",
+   "mappedTo": "chart.unknownLabels"
+  }
+ ],
+ "newVisualInformation": [
+  "20~22럭스 계급의 도수를 x, 16~18럭스 계급의 도수를 2x로 두고, 보이는 네 막대의 합 4+6+5+2=17과 더해 전체 50개가 됨을 보임",
+  "점선 윤곽의 높이는 2x개 계급이 x개 계급의 두 배가 되도록 그린다(값이 아니라 비율)"
+ ]
+}

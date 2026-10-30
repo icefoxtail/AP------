@@ -1,0 +1,169 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0"
+    ]
+   },
+   {
+    "coefficients": [
+     "-2/3",
+     "1/15"
+    ]
+   },
+   {
+    "coefficients": [
+     "2"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "10",
+    "y": "0"
+   },
+   {
+    "x": "40",
+    "y": "2"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "0",
+    "70"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "domain": [
+   0,
+   70
+  ],
+  "viewport": [
+   -4,
+   70,
+   -0.4,
+   2.6
+  ],
+  "axisTickValues": {
+   "x": [
+    "20",
+    "60"
+   ],
+   "y": [
+    "2"
+   ]
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "O",
+     "x": "0",
+     "y": "0"
+    },
+    {
+     "id": "P",
+     "x": "20",
+     "y": "2/3",
+     "unnamed": true
+    },
+    {
+     "id": "Q",
+     "x": "60",
+     "y": "2",
+     "unnamed": true
+    },
+    {
+     "id": "Z",
+     "x": "70",
+     "y": "7/3",
+     "unnamed": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "sT",
+     "from": "O",
+     "to": "Z"
+    }
+   ],
+   "guides": [
+    {
+     "id": "gP",
+     "from": "P",
+     "axis": "x"
+    },
+    {
+     "id": "gQ",
+     "from": "Q",
+     "axis": "x"
+    }
+   ],
+   "names": [
+    {
+     "id": "nR",
+     "text": "토끼",
+     "curveX": "50",
+     "labelDirection": "N"
+    },
+    {
+     "id": "nT",
+     "text": "거북이",
+     "segment": "sT",
+     "labelDirection": "SE"
+    }
+   ]
+  },
+  "axisScale": {
+   "x": 1,
+   "y": 12
+  },
+  "axisTitles": {
+   "x": "x(분)",
+   "y": "y(km)"
+  },
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": 10,
+    "y": 0
+   },
+   {
+    "id": "B",
+    "x": 40,
+    "y": 2
+   }
+  ]
+ },
+ "pointNames": {
+  "O": "O"
+ },
+ "caption": "토끼의 그래프와 거북이의 그래프가 x=20, x=60인 두 점에서 만난다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "토끼는 출발 10분 후 출발해 40분에 2km에 도착하고 이후 멈춘다; 거북이는 0분부터 일정한 속력으로 60분에 2km",
+   "mappedTo": [
+    "graphPlan.pieces",
+    "graphPlan.overlays"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "교점의 x좌표는 20, 60",
+   "mappedTo": [
+    "graphPlan.overlays"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 그래프의 교점에서 x축으로 내린 점선이 20분과 60분을 가리킨다"
+ ],
+ "sourceQuote": "교점의 $x$좌표는 $20$, $60$이므로 거북이가 출발한 지"
+}

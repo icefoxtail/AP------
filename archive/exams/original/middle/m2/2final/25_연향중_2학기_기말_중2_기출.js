@@ -462,7 +462,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 다른 두 주사위의 눈을 가로와 세로로 놓은 6×6 표에서 두 눈의 수의 차가 2 또는 4인 칸이 색칠되어 있다. 차가 2인 8칸과 차가 4인 4칸은 서로 겹치지 않으며 대각선을 기준으로 대칭으로 놓여 있다.",
+    "solutionImageCaption": "두 눈의 수의 차가 2 또는 4인 칸을 색칠한 두 주사위의 6×6 표",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,

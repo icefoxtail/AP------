@@ -943,7 +943,7 @@ window.questionBank = [
     "answer": "(1) 평균 20개, 중앙값 10.5개, 최빈값 5개. (2) 중앙값이 적절하다.",
     "solution": "[키포인트] 평균은 전체 합을 자료 수로 나눈 값, 중앙값은 크기순으로 놓았을 때 가운데 값, 최빈값은 가장 자주 나타나는 값이다. 극단적으로 큰 자료가 있을 때 어떤 대표값이 적절한지도 판단한다.\n\n(1) 자료는 $7,15,11,114,5,5,13,10,8,12$로 모두 10개이다.\n평균: 합계가 $7+15+11+114+5+5+13+10+8+12=200$이므로\n$200\\div10=20$개이다.\n\n중앙값: 작은 수부터 나열하면\n$5,5,7,8,10,11,12,13,15,114$이다.\n10개 자료의 중앙값은 가운데 두 값인 5번째 $10$과 6번째 $11$의 평균이므로\n$\\dfrac{10+11}{2}=10.5$개이다.\n\n최빈값: $5$개가 두 번 나오고 다른 값은 한 번씩 나오므로 최빈값은 $5$개이다.\n\n(2) 이 자료의 대표값으로는 중앙값 $10.5$개가 더 적절하다.\n평균 $20$개는 다른 학생보다 매우 많은 $114$개라는 자료 하나에 크게 끌려 올라가 대부분 학생의 기록을 잘 나타내지 못한다.\n최빈값 $5$개는 가장 자주 나타나기는 하지만 10명 가운데 2명에게만 해당하며 낮은 쪽에 치우쳐 전체의 가운데 위치를 나타내기 어렵다.\n반면 중앙값은 크기순으로 가운데에 있는 두 학생의 기록으로 결정되므로 $114$개처럼 매우 큰 값 하나의 영향을 덜 받는다.\n\n따라서 (1) 평균은 $20$개, 중앙값은 $10.5$개, 최빈값은 $5$개이고, (2) 대표값으로 중앙값을 선택한다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q22.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q22-solution-v2.svg",
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
     "crossConceptKeys": [],
@@ -953,8 +953,8 @@ window.questionBank = [
     "sourcePage": 6,
     "sourceQuestionNo": "서술형 4",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "대표값 비교: 평균 20, 최빈값 5, 가운데 두 값 10, 11, 중앙값 = 10.5",
-    "solutionImageCaption": "중앙값 선택"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 문자 메시지 개수 10개의 줄기와 잎 그림. 가운데 두 값 10, 11과 줄기 11에 홀로 떨어진 114를 동그라미로 표시해 114가 나머지 자료에서 멀리 있음을 보인 그림",
+    "solutionImageCaption": "가운데 두 값과 멀리 떨어진 값 114를 동그라미로 표시한 줄기와 잎 그림"
   }
 ];

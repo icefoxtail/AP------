@@ -345,9 +345,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:594ffe3e7e2064c8873972557179be9967922c05b40369dbd31f57fdf53d291b",
     "difficultyEvidenceSha": "sha256:e453fe0717d6794db455959fd7077ad35a5ad325d84772806fa0581cf01dd1ed",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행선 l, m, n과 꺾인 선분에서 150°의 바깥각 30°, l과 m에서의 각 2x와 3x, y와 이웃한 각 35°, 55°를 표시한 그림.",
-    "solutionImageCaption": "평행선과 꺾인 선분에서 2x, 3x, 30°, 35°의 관계를 보인 그림이다.",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 직선 l, m, n을 지나는 꺾인 선 그림. 꺾인 점의 150°와 바깥각 30°, l에서의 각 2x, m에서 직각 표시와 3x=90°, 꺾인 점의 35°와 y, n에서의 55°가 적혀 있다.",
+    "solutionImageCaption": "평행선 l, m, n에서 꺾인 점의 각 150°의 바깥각 30°, l과 m에서의 각 2x와 3x, 그리고 y의 이웃한 각 35°를 보인 그림이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -1021,9 +1021,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: B, F, C, E가 한 직선 위에 있고 AB∥ED, AC∥FD인 두 삼각형에서 BF=CE 눈금, 공통 변 FC(굵은 선), 같은 호로 묶인 엇각 두 쌍이 표시된 그림이다.",
-    "solutionImageCaption": "합동인 △ABC와 △DEF의 대응 변과 각을 표시한 그림.",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행 표시가 있는 AB와 ED, AC와 FD, 같은 길이 표시가 있는 BF와 CE를 가진 그림. 변 FC는 굵게 그려져 있고 공통이라고 적혀 있으며, 엇각 ∠ABC와 ∠DEF, ∠ACB와 ∠DFE가 같은 색 호로 표시되어 있다.",
+    "solutionImageCaption": "FC는 BC와 EF에 공통인 부분이고, 엇각 ∠ABC와 ∠DEF, ∠ACB와 ∠DFE를 같은 색 호로 표시했다.",
     "solutionImageSize": "medium"
   },
   {

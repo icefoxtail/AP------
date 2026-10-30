@@ -706,7 +706,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:cfa3950a1fe596994459f6c0b08849385e3e89361dba87b07f5e0f9bc085430a",
-      "difficultyEvidenceSha": "sha256:29a30fa25b6cca5377384601ca1d8c8ca5e8124677279e945ba962ffec14ae54"
+      "difficultyEvidenceSha": "sha256:29a30fa25b6cca5377384601ca1d8c8ca5e8124677279e945ba962ffec14ae54",
+      "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 변 9cm인 정삼각형 ABC에서 A, B, C를 중심으로 반지름 9cm, 18cm, 27cm인 중심각 120° 부채꼴 P, Q, R이 나선 모양으로 이어지고 호의 길이는 6π, 12π, 18π(cm)이다.",
+      "solutionImageCaption": "세 부채꼴의 반지름은 9cm, 18cm, 27cm로 커지고 중심각은 모두 120°이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 17,

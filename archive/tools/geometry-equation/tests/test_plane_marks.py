@@ -670,4 +670,28 @@ class AngleLabelOwnershipTests(unittest.TestCase):
             self.assertFalse(sector_contains(centre,sector))
 
 
+class DecimalStringTests(unittest.TestCase):
+    """A coordinate with no short closed form is written as a plain decimal string: never as SymPy's mantissa-less zero (0.e-149) and never with an exponent."""
+    def test_an_unsimplified_zero_is_the_number_zero(self):
+        zero=construction.S.sqrt(3+2*construction.S.sqrt(2))-1-construction.S.sqrt(2)
+        self.assertRegex(str(construction.S.N(zero,34)),r'^-?0\.e-\d+$')            # what SymPy prints for it (the old output)
+        self.assertEqual(construction.exact_or_decimal(zero),{'kind':'decimal','value':'0'})
+        self.assertEqual(construction.plain_decimal(-zero),'0')
+        self.assertEqual(construction.plain_decimal(construction.S.Float('-1e-40',34)),'0')
+    def test_a_small_value_has_no_exponent(self):
+        text=construction.plain_decimal(construction.S.Rational(1,10**11)*construction.S.sqrt(2))
+        self.assertNotRegex(text,r'[eE]');self.assertTrue(text.startswith('0.00000000001414213562373095'),text)
+        self.assertNotRegex(construction.plain_decimal(construction.S.Float('2.5e-28',34)),r'[eE]')
+        self.assertNotRegex(construction.plain_decimal(construction.S.Float('3.5e+30',34)),r'[eE]')
+    def test_an_ordinary_decimal_keeps_its_digits(self):
+        self.assertEqual(construction.plain_decimal(construction.S.sqrt(2)),'1.414213562373095048801688724209698')
+        self.assertEqual(construction.plain_decimal(-construction.S.sqrt(2)),'-1.414213562373095048801688724209698')
+        self.assertEqual(construction.plain_decimal(construction.S.Rational(-1,3)),'-0.3333333333333333333333333333333333')
+    def test_every_decimal_the_model_emits_matches_the_observer_grammar(self):
+        grammar=re.compile(r'^-?(0|[1-9][0-9]*)(\.[0-9]+)?$')            # the Cindy observer's number grammar, without the exponent branch
+        for value in (construction.S.sqrt(2),-construction.S.sqrt(3)/7,construction.S.Rational(1,10**12)*construction.S.sqrt(5),
+                      construction.S.sqrt(3+2*construction.S.sqrt(2))-1-construction.S.sqrt(2),construction.S.sqrt(10**20+1)-10**10):
+            self.assertRegex(construction.plain_decimal(value),grammar)
+
+
 if __name__=='__main__':unittest.main()

@@ -89,12 +89,15 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 각이 각각 같음을 이용하여 두 삼각형의 닮음을 찾는다.\n점 $B,D,A$가 한 직선 위에 있으므로 $\\angle ABC=\\angle CBD$이고, 조건에서 $\\angle A=\\angle BCD$이다. 따라서 $\\triangle ABC\\sim\\triangle CBD$이다.\n대응변 $AC:CD=12:6=2:1$이므로 $AB:CB=2:1$이다. $CB=8\\mathrm{cm}$이므로 $AB=16\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q3-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q3.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 점 D가 변 AB 위에 있는 삼각형 ABC에서 ∠A와 ∠BCD가 같은 호로 표시되고 ∠B가 공통각으로 표시되며, AC=12cm, CD=6cm, BC=8cm가 변에 적혀 있다.",
+    "solutionImageCaption": "∠A=∠BCD이고 ∠B가 공통이므로 △ABC와 △CBD가 닮음이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -188,7 +191,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC로, AB의 중점 D(AD=DB 눈금)와 무게중심 G가 중선 CD 위에 있고 치수선으로 AB=10cm와 BD=y=5cm가 적혀 있다. 오른쪽은 중선 CD만 따로 그려 C, G, D에 이름을 붙이고, 치수선을 쌓아 CG=10cm, GD=5cm와 전체 CD=x=15cm를 보인 그림이다.",
+    "solutionImageCaption": "중선 CD를 오른쪽에 따로 그려 CG, GD와 전체 CD의 길이를 단으로 쌓아 나타냈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -311,7 +318,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 15cm, 세로 12cm인 바깥 직사각형 ABCD 안에 테두리 폭 2cm를 두고 안쪽 직사각형 EFGH가 있으며, EFGH의 가로 11cm, 세로 8cm가 적혀 있다.",
+    "solutionImageCaption": "바깥 직사각형과 테두리 폭을 뺀 안쪽 직사각형의 가로·세로 길이를 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,

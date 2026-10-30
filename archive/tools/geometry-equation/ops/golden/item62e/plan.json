@@ -1,0 +1,314 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Xr",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "B",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "-6"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "6"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "Xr"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "145"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "Xr"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "325"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "F",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "Xr"
+    ],
+    "args": {
+     "length": {
+      "kind": "rational",
+      "numerator": "9",
+      "denominator": "2"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "55"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "Xr"
+    ],
+    "args": {
+     "length": {
+      "kind": "rational",
+      "numerator": "9",
+      "denominator": "2"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "235"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 480
+ },
+ "displaySegments": [
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  },
+  {
+   "id": "sOE",
+   "refs": [
+    "O",
+    "E"
+   ]
+  },
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sOD",
+   "refs": [
+    "O",
+    "D"
+   ]
+  },
+  {
+   "id": "sOF",
+   "refs": [
+    "O",
+    "F"
+   ]
+  },
+  {
+   "id": "sOC",
+   "refs": [
+    "O",
+    "C"
+   ]
+  }
+ ],
+ "rightAngles": [
+  {
+   "id": "rAOF",
+   "refs": [
+    "A",
+    "O",
+    "F"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "O",
+  "B",
+  "E",
+  "A",
+  "D",
+  "F",
+  "C"
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aBOA",
+    "refs": [
+     "B",
+     "O",
+     "A"
+    ],
+    "value": 35,
+    "label": "x+20",
+    "labelKind": "DEGREE",
+    "arcs": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aFOE",
+    "refs": [
+     "F",
+     "O",
+     "E"
+    ],
+    "value": 55,
+    "label": "3x+10",
+    "labelKind": "DEGREE",
+    "arcs": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aBOE",
+    "refs": [
+     "B",
+     "O",
+     "E"
+    ],
+    "straight": true,
+    "side": "ABOVE",
+    "ring": 3,
+    "style": "ARC",
+    "label": "180",
+    "labelKind": "DEGREE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "caption": "직선 BE 위에서 이웃한 세 각 ∠BOA=(x+20)°, ∠AOF=90°, ∠FOE=(3x+10)°의 합이 180°이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AD⊥FC, ∠BOA=x+20°, ∠FOE=3x+10°, B·O·E는 한 직선",
+   "mappedTo": [
+    "O",
+    "A",
+    "B",
+    "E",
+    "F",
+    "rAOF",
+    "aBOA",
+    "aFOE"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "직선 BE 위의 이웃한 세 각 x+20°, 90°, 3x+10°가 합쳐 180°(평각)를 이룬다"
+ ],
+ "sourceQuote": "아래 그림에서 $AD\\perp FC$일 때"
+}

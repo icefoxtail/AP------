@@ -297,7 +297,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 열린 점 -9/2와 9/2를 찍고, 그 사이에 놓인 정수 -4부터 4까지를 점으로 나타낸 그림이다.",
+    "solutionImageCaption": "절댓값이 같고 차가 9인 두 수 -9/2, 9/2 사이의 정수를 수직선에 점으로 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -338,9 +342,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 수직선에 뉴욕 -5, 그리니치 0, 두바이 +4에 해당하는 세 점을 찍고 -5에서 4까지 굵은 선분으로 이은 그림으로, 두 도시의 시차가 두 점 사이의 간격임을 보여 준다.",
-    "solutionImageCaption": "그리니치를 0으로 하면 뉴욕은 -5, 두바이는 +4이므로 두 도시의 시차는 두 점 사이의 거리이다.",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 뉴욕 -5, 그리니치 0, 두바이 4에 해당하는 세 점을 이름과 함께 찍고, 뉴욕에서 두바이까지를 괄호로 묶어 시차라고 적은 그림이다.",
+    "solutionImageCaption": "그리니치를 0으로 하면 뉴욕은 -5, 두바이는 4이므로 두 도시의 시차는 두 점 사이의 거리이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -831,8 +835,8 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 수직선 위에 처음 위치 0과 수현의 위치 -1, 태호의 위치 9를 점으로 찍고 -1과 9 사이를 굵은 선분으로 이은 그림이다.",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 처음 위치 0과 수현의 위치 -1, 태호의 위치 9를 점으로 찍고, 수현과 태호 사이를 괄호로 묶어 두 수의 차라고 적은 그림이다.",
     "solutionImageCaption": "처음 위치 0에서 수현은 -1, 태호는 9에 있다. 두 수의 차는 두 점 사이의 거리와 같다.",
     "solutionImageSize": "medium"
   },

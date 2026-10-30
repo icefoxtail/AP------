@@ -1,0 +1,435 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "BL",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "BR",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "20"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "TR",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "20"
+      },
+      {
+       "kind": "integer",
+       "value": "20"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "TL",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "20"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "10"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "M1",
+    "op": "MIDPOINT",
+    "inputs": [
+     "TL",
+     "BL"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "M2",
+    "op": "MIDPOINT",
+    "inputs": [
+     "BL",
+     "BR"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "kBig",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "BL"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "20"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "k1",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "M1"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "10"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "k2",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "M2"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "10"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sTop",
+   "refs": [
+    "TL",
+    "TR"
+   ]
+  },
+  {
+   "id": "sRight",
+   "refs": [
+    "TR",
+    "BR"
+   ]
+  },
+  {
+   "id": "sBottom",
+   "refs": [
+    "BL",
+    "BR"
+   ]
+  },
+  {
+   "id": "sLeft",
+   "refs": [
+    "BL",
+    "TL"
+   ]
+  },
+  {
+   "id": "sM1P",
+   "refs": [
+    "M1",
+    "P"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sM2P",
+   "refs": [
+    "M2",
+    "P"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "BL",
+  "BR",
+  "TR",
+  "TL",
+  "P",
+  "M1",
+  "M2"
+ ],
+ "hiddenPointNames": [
+  "BL",
+  "BR",
+  "TR",
+  "TL",
+  "P",
+  "M1",
+  "M2"
+ ],
+ "planeMarks": {
+  "arcs": [
+   {
+    "id": "arcBig",
+    "circle": "kBig",
+    "center": "BL",
+    "from": "TL",
+    "to": "BR",
+    "side": "MINOR",
+    "factRole": "GIVEN",
+    "label": "10pi",
+    "unit": "cm"
+   },
+   {
+    "id": "arcA",
+    "circle": "k1",
+    "center": "M1",
+    "from": "TL",
+    "to": "P",
+    "side": "MINOR",
+    "factRole": "GIVEN",
+    "label": "5pi",
+    "unit": "cm",
+    "labelPlacement": "LEADER"
+   },
+   {
+    "id": "arcB",
+    "circle": "k2",
+    "center": "M2",
+    "from": "P",
+    "to": "BR",
+    "side": "MINOR",
+    "factRole": "GIVEN",
+    "label": "5pi",
+    "unit": "cm",
+    "labelPlacement": "LEADER"
+   },
+   {
+    "id": "arcC",
+    "circle": "k1",
+    "center": "M1",
+    "from": "P",
+    "to": "BL",
+    "side": "MINOR",
+    "factRole": "GIVEN",
+    "label": "5pi",
+    "unit": "cm",
+    "labelPlacement": "LEADER"
+   },
+   {
+    "id": "arcD",
+    "circle": "k2",
+    "center": "M2",
+    "from": "BL",
+    "to": "P",
+    "side": "MINOR",
+    "factRole": "GIVEN",
+    "label": "5pi",
+    "unit": "cm",
+    "labelPlacement": "LEADER"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rgUp",
+    "fill": "LIGHT",
+    "label": "50pi-100",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "shapes": [
+     {
+      "loop": {
+       "start": "TL",
+       "steps": [
+        {
+         "to": "BR",
+         "arc": {
+          "center": "BL",
+          "side": "MINOR"
+         }
+        },
+        {
+         "to": "P",
+         "arc": {
+          "center": "M2",
+          "side": "MINOR"
+         }
+        },
+        {
+         "to": "TL",
+         "arc": {
+          "center": "M1",
+          "side": "MINOR"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "id": "rgLens",
+    "fill": "LIGHT",
+    "label": "50pi-100",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "shapes": [
+     {
+      "loop": {
+       "start": "BL",
+       "steps": [
+        {
+         "to": "P",
+         "arc": {
+          "center": "M1",
+          "side": "MINOR"
+         }
+        },
+        {
+         "to": "BL",
+         "arc": {
+          "center": "M2",
+          "side": "MINOR"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dBot",
+    "from": "BL",
+    "to": "BR",
+    "label": "20",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "ARROW",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dLeft",
+    "from": "BL",
+    "to": "TL",
+    "label": "20",
+    "unit": "cm",
+    "side": "LEFT",
+    "style": "ARROW",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lM1P",
+    "ownerSegment": "sM1P",
+    "text": "10",
+    "unit": "cm",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "caption": "한 변이 20 cm인 정사각형에서 큰 호는 반지름 20 cm인 사분원의 호, 안쪽 호들은 반지름 10 cm인 원의 일부이다. 굵은 호의 길이는 10π, 5π, 5π와 렌즈 모양의 5π, 5π이고, 위쪽 색칠한 부분과 아래쪽 렌즈 모양의 넓이는 모두 50π-100으로 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "한 변이 20 cm인 정사각형 안의 사분원과 두 반원으로 만든 색칠한 두 부분",
+   "mappedTo": [
+    "BL",
+    "BR",
+    "TR",
+    "TL",
+    "P"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "색칠한 부분의 둘레를 이루는 호의 길이 10π, 5π, 5π와 렌즈 모양의 호 5π, 5π를 호마다 보이고, 두 색칠한 부분의 넓이가 각각 50π-100으로 같음을 영역 안에 보인다."
+ ],
+ "sourceQuote": "큰 호는 반지름 20인 사분원의 호이고",
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 600
+ },
+ "unmarkedPointNames": [
+  "BL",
+  "BR",
+  "TR",
+  "TL",
+  "P"
+ ]
+}

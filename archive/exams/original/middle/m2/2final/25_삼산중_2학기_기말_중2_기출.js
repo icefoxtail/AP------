@@ -61,7 +61,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF를 나란히 그리고 BC=16cm, EF=8cm, DE=6cm, AB=12cm와 ∠B=55°를 표시했다. ∠B와 ∠E는 같은 눈금의 대응각이다.",
+    "solutionImageCaption": "닮음비 BC:EF=2:1과 대응각 ∠B=∠E를 보여 주는 닮은 두 삼각형이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -92,7 +96,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D는 AC 위의 점이고 AB=6cm, AD=3cm, CD=x cm, AC=12cm이다. ∠ABD와 ∠C에 같은 눈금을, 공통각 ∠A에 호 두 개를 표시했다.",
+    "solutionImageCaption": "∠ABD=∠C이고 ∠A가 공통이므로 △ABD∽△ACB임을 보여 주는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -154,7 +162,11 @@ window.questionBank = [
     "subUnitKey": "",
     "subUnit": "삼각형의 무게중심",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 세 중선이 만나는 무게중심 G와 BC의 중점 D를 표시하고, 세 중선이 나눈 여섯 삼각형을 모두 3cm²로 적었다. 삼각형 GBD는 진하게 색칠했다.",
+    "solutionImageCaption": "세 중선은 삼각형 ABC를 넓이가 같은 여섯 삼각형으로 나눈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -216,7 +228,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD에서 AB=13cm, BC=5cm, CD=15cm이고 점선 AC=12cm가 BC와 AD에 수직이다. AD=9cm이며 AD와 BC에 평행 표시를 했다.",
+    "solutionImageCaption": "점선 AC가 두 직각삼각형을 만들고 사다리꼴의 높이가 됨을 보여 주는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -279,7 +295,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 AB=6cm, AD=8cm, BD=10cm이고 E는 A에서 BD에 내린 수선의 발이다. 닮은 직각삼각형의 같은 대응각을 호 한 개, 두 개로 표시했다.",
+    "solutionImageCaption": "AE⊥BD로 생기는 △ABE, △DBA, △DAE가 서로 닮은 직각삼각형임을 보여 주는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -342,7 +362,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D는 AC 위의 점이고 AB=8cm, AD=4cm, AC=16cm, BD=10cm이다. 공통각 ∠A와 대응각 ∠ABD=∠ACB, ∠ADB=∠ABC를 색과 호 개수로 표시했다.",
+    "solutionImageCaption": "두 변의 비와 공통각으로 △ABD∽△ACB이고 대응각이 정해짐을 보여 주는 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -632,7 +656,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 다른 두 주사위의 눈 (x, y)를 가로(x)와 세로(y)로 나타낸 6×6 표에서 3x+y<11을 만족시키는 칸이 색칠되어 있다. x=1인 열은 전부, x=2인 열은 y=1~4, x=3인 열은 y=1만 색칠된다.",
+    "solutionImageCaption": "3x+y<11을 만족시키는 칸을 색칠한 두 주사위의 6×6 표",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,

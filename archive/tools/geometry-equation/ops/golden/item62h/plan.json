@@ -1,0 +1,299 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "F",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "B"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "C",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "B"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "14"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "E",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "B"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "18"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "B"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "6"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "D",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "B"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "13"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "-6"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sBF",
+   "refs": [
+    "B",
+    "F"
+   ]
+  },
+  {
+   "id": "sFC",
+   "refs": [
+    "F",
+    "C"
+   ],
+   "emphasis": "BOLD"
+  },
+  {
+   "id": "sCE",
+   "refs": [
+    "C",
+    "E"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sED",
+   "refs": [
+    "E",
+    "D"
+   ]
+  },
+  {
+   "id": "sFD",
+   "refs": [
+    "F",
+    "D"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F"
+ ],
+ "caption": "AB∥ED, AC∥FD, BF=CE인 그림에서 FC가 두 삼각형에 공통이고 ∠ABC=∠DEF, ∠ACB=∠DFE가 엇각임을 표시한 그림.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AB∥ED, AC∥FD, BF=CE, 점 B, F, C, E는 한 직선 위",
+   "mappedTo": [
+    "A",
+    "B",
+    "C"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "공통 변 FC(굵은 선)와 같은 호로 묶인 엇각 두 쌍이 △ABC와 △DEF의 대응을 보여 준다."
+ ],
+ "sourceQuote": "한 변과 그 양 끝 각이 각각 같으므로",
+ "planeMarks": {
+  "parallels": [
+   {
+    "id": "p1",
+    "count": 1,
+    "segments": [
+     "sAB",
+     "sED"
+    ]
+   },
+   {
+    "id": "p2",
+    "count": 2,
+    "segments": [
+     "sAC",
+     "sFD"
+    ]
+   }
+  ],
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sBF",
+     "sCE"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "id": "aB",
+    "refs": [
+     "A",
+     "B",
+     "C"
+    ],
+    "noLabel": true,
+    "arcs": 1,
+    "equalGroup": 1,
+    "emphasisGroup": 1
+   },
+   {
+    "id": "aE",
+    "refs": [
+     "D",
+     "E",
+     "F"
+    ],
+    "noLabel": true,
+    "arcs": 1,
+    "equalGroup": 1,
+    "emphasisGroup": 1
+   },
+   {
+    "id": "aC",
+    "refs": [
+     "A",
+     "C",
+     "B"
+    ],
+    "noLabel": true,
+    "arcs": 2,
+    "equalGroup": 2,
+    "emphasisGroup": 2
+   },
+   {
+    "id": "aF",
+    "refs": [
+     "D",
+     "F",
+     "E"
+    ],
+    "noLabel": true,
+    "arcs": 2,
+    "equalGroup": 2,
+    "emphasisGroup": 2
+   }
+  ],
+  "commonSides": [
+   {
+    "id": "cFC",
+    "segment": "sFC"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 480
+ }
+}

@@ -1010,7 +1010,7 @@ window.questionBank = [
       "$-3$"
     ],
     "answer": "⑤",
-    "solution": "$3x-2\\le5-ax$를 정리하면 $(3+a)x\\le7$이다.\n일차부등식이려면 $x$의 계수 $3+a$가 0이 아니어야 하므로 $a\ne-3$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "$3x-2\\le5-ax$를 정리하면 $(3+a)x\\le7$이다.\n일차부등식이려면 $x$의 계수 $3+a$가 0이 아니어야 하므로 $a\\ne-3$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",

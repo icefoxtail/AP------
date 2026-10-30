@@ -387,6 +387,38 @@ class Counting(unittest.TestCase):
         O.audit_counts(solid, {'vertices': True, 'edges': True}, px, ctx)
         self.assertTrue(any(e.startswith('SOLID_COUNT_NUMBERS_NOT_COMPLETE') for e in ctx['errors']), ctx['errors'])
 
+    PYRAMID = {'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 4, 'depth': 4}, 'height': 5, 'names': '.' * 5, 'id': 's1'}
+
+    def audit_pyramid(self, flags, shift=None):
+        """edge numbers 6 px right of each midpoint (the pyramid is drawn small, 8 edges within 270 px); shift={n: (dx, dy)} moves edge number n from its midpoint"""
+        solid = O.build_solid(self.PYRAMID)
+        px = lambda p: (60 + 40 * O.project(p)[0], 300 - 40 * O.project(p)[1])
+        els, boxes = self.labels_for(solid, px)
+        els = [g for g in els if g.get('data-label-role') == 'count-edge']
+        mids = [px(O.vmul(O.vadd(solid['verts'][a][1], solid['verts'][b][1]), 0.5)) for a, b in O.count_order(solid)]
+        for n, (dx, dy) in (shift or {}).items():
+            boxes['count-e-%d' % n] = (mids[n - 1][0] + dx - 2.0, mids[n - 1][1] + dy - 2.0, 4.0, 4.0)
+        ctx = {'errors': [], 'boxes': boxes, 'labels': els}
+        O.audit_counts(solid, flags, px, ctx)
+        return ctx['errors']
+
+    def test_count_near_edge_wants_each_edge_number_nearer_to_its_own_whole_edge(self):
+        # numbers just beside their own midpoints: fine with and without near
+        self.assertEqual(self.audit_pyramid({'edges': True}), [])
+        self.assertEqual(self.audit_pyramid({'edges': True, 'near': 'EDGE'}), [])
+        # edge number 3 stands 32 px from its own midpoint (still nearer to it than to any other midpoint), but its box sits on another edge
+        far = {3: (-11, 30)}
+        self.assertEqual(self.audit_pyramid({'edges': True}, shift=far), [])
+        errors = self.audit_pyramid({'edges': True, 'near': 'EDGE'}, shift=far)
+        self.assertEqual(errors, ['SOLID_COUNT_LABEL_NEARER_TO_OTHER_EDGE:count-e-3'])
+
+    def test_count_near_edge_measures_to_the_whole_segment_not_only_the_midpoint(self):
+        # edge number 4 beside its own midpoint but 6 px off its edge: the box is 6.1 px from its own edge and 9.8 px from the nearest other one,
+        # so 6.1 + 4 is more than 9.8 and it is not clearly nearer; the margin is the observer's own 4 px
+        errors = self.audit_pyramid({'edges': True, 'near': 'EDGE'}, shift={4: (-7, -6)})
+        self.assertEqual(errors, ['SOLID_COUNT_LABEL_NEARER_TO_OTHER_EDGE:count-e-4'])
+        self.assertEqual(self.audit_pyramid({'edges': True, 'near': 'EDGE'}, shift={4: (-4, 0)}), [])
+
 
 class SeveralNames(unittest.TestCase):
     BASE = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 3, 'depth': 4}, 'height': 7, 'id': 's1'}
@@ -1100,3 +1132,457 @@ class BallsInACylinder(unittest.TestCase):
                      {'inside': [{'kind': 'CONE', 'radius': 1}]}, {'inside': [{'kind': 'SPHERE', 'radius': 1}] * 7}):
             self.assertRaises(ValueError, self.specs, host)
         self.assertRaises(ValueError, O.expanded_solid_specs, {'solids': [{'kind': 'CONE', 'radius': 2, 'height': 3, 'stack': {'count': 2, 'radius': 1}}]})
+
+
+class StackedRoundSolids(unittest.TestCase):
+    """E33: on:"<id>" stands a round solid on the flat top circle of another, on one axis; the lifts, the shared joint circle, the axis through the stack and what a
+    joint circle hides are derived here from the plan alone"""
+
+    def build(self, *specs):
+        solids = [O.build_solid({**spec, 'id': spec.get('id') or 's%d' % (i + 1)}) for i, spec in enumerate(specs)]
+        return solids, O.resolve_stacks(solids)
+
+    @staticmethod
+    def frustum(**over):
+        return {'kind': 'CONE_FRUSTUM', 'radius': 6, 'topRadius': 3, 'height': 4, 'orientation': 'APEX_DOWN', **over}
+
+    def test_the_guest_stands_on_the_top_circle_of_its_host_and_the_axis_runs_through_both(self):
+        solids, stacks = self.build(self.frustum(axis={'label': 'l'}, names={'center': 'P'}), {'kind': 'HEMISPHERE', 'radius': 6, 'on': 's1', 'names': {'center': 'O'}})
+        self.assertEqual([m['id'] for m in stacks[0]['members']], ['s1', 's2'])
+        self.assertEqual([m['lift'] for m in stacks[0]['members']], [0.0, 4.0])
+        self.assertEqual(stacks[0]['height'], 10.0)
+        self.assertEqual((solids[0]['covered'], solids[1]['covered']), (True, False))
+        self.assertEqual(solids[0]['axis'], {'label': 'l', 'span': 10.0})
+        self.assertEqual(solids[1]['points'][0][2], (0.0, 0.0, 4.0))   # the hemisphere's own centre is raised with it
+        self.assertEqual(solids[0]['points'][0][2], (0.0, 0.0, 0.0))
+
+    def test_a_bowl_has_its_flat_disc_on_top_and_carries_a_guest_there(self):
+        solids, stacks = self.build({'kind': 'HEMISPHERE', 'radius': 3, 'orientation': 'APEX_DOWN', 'names': {'center': 'O'}}, {'kind': 'CONE', 'radius': 3, 'height': 5, 'on': 's1', 'axis': True})
+        self.assertEqual(solids[0]['points'][0][2], (0.0, 0.0, 3.0))   # the disc is at the top, a radius above the pole
+        self.assertEqual([m['lift'] for m in stacks[0]['members']], [0.0, 3.0])
+        self.assertEqual(solids[1]['axis'], {'label': None, 'span': 8.0})
+        # a ball made of two hemispheres: the dome on the bowl
+        solids, stacks = self.build({'kind': 'HEMISPHERE', 'radius': 2, 'orientation': 'APEX_DOWN'}, {'kind': 'HEMISPHERE', 'radius': 2, 'on': 's1', 'axis': {'label': 'l'}})
+        self.assertEqual(stacks[0]['height'], 4.0)
+
+    def test_a_chain_adds_up_the_heights(self):
+        solids, stacks = self.build({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'CYLINDER', 'radius': 2, 'height': 1.5, 'on': 's1'}, {'kind': 'CONE', 'radius': 2, 'height': 2, 'on': 's2'})
+        self.assertEqual([m['lift'] for m in stacks[0]['members']], [0.0, 3.0, 4.5])
+        self.assertEqual(stacks[0]['height'], 6.5)
+        self.assertEqual([s['covered'] for s in solids], [True, True, False])
+
+    def test_the_joint_circle_has_one_radius_and_the_grammar_is_kept(self):
+        cases = [
+            ((self.frustum(), {'kind': 'HEMISPHERE', 'radius': 5, 'on': 's1'}), 'SOLID_STACK_JOINT_MISMATCH'),   # the radii at the joint differ
+            (({'kind': 'CONE', 'radius': 2, 'height': 3}, {'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's1'}), 'SOLID_STACK_JOINT_MISMATCH'),   # a cone's point is no circle
+            (({'kind': 'HEMISPHERE', 'radius': 2}, {'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's1'}), 'SOLID_STACK_JOINT_MISMATCH'),   # a dome has no flat top
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's9'}), 'SOLID_STACK_UNKNOWN'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's1'},), 'SOLID_STACK_UNKNOWN'),   # on itself
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'CYLINDER', 'radius': 2, 'height': 1, 'on': 's1'}, {'kind': 'CYLINDER', 'radius': 2, 'height': 1, 'on': 's1'}), 'SOLID_STACK_BRANCH'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's2'}, {'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's1'}), 'SOLID_STACK_CYCLE'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'SPHERE', 'radius': 2, 'on': 's1'}), 'SOLID_STACK_UNSUPPORTED:SPHERE'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 1, 'on': 's1'}), 'SOLID_STACK_UNSUPPORTED:PRISM'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'axis': True}, {'kind': 'CONE', 'radius': 2, 'height': 3, 'on': 's1', 'axis': True}), 'SOLID_AXIS_STACK_DUPLICATE'),
+        ]
+        for specs, code in cases:
+            with self.assertRaises(ValueError) as caught:
+                self.build(*specs)
+            self.assertTrue(str(caught.exception).startswith(code), (code, str(caught.exception)))
+        # a lone hemisphere has no axis; a hemisphere that stands on something may carry the stack's
+        self.assertRaises(ValueError, O.build_solid, {'kind': 'HEMISPHERE', 'radius': 2, 'axis': True, 'id': 's1'})
+        self.assertEqual(O.build_solid({'kind': 'HEMISPHERE', 'radius': 2, 'axis': True, 'on': 's1', 'id': 's2'})['axis'], {'label': None})
+
+    def test_the_far_half_of_a_joint_circle_is_behind_the_guest_and_the_near_half_is_seen(self):
+        (host, guest), stacks = self.build({'kind': 'CYLINDER', 'radius': 2, 'height': 5}, {'kind': 'CONE', 'radius': 2, 'height': 4, 'on': 's1'})
+        front = (2 * math.cos(O.YAW - math.pi / 2), 2 * math.sin(O.YAW - math.pi / 2), 5.0)   # the joint circle, facing the viewer
+        back = (-front[0], -front[1], 5.0)
+        chain = stacks[0]['members']
+        self.assertFalse(O.hits_round(host, back))   # a lone cylinder shows its whole top rim
+        self.assertTrue(O.hits_any(chain, back))      # with a cone on it the far half is hidden
+        self.assertFalse(O.hits_any(chain, front))
+        # a dome on a frustum, a bowl under a cone
+        (frustum, dome), stacks = self.build(self.frustum(), {'kind': 'HEMISPHERE', 'radius': 6, 'on': 's1'})
+        front = (6 * math.cos(O.YAW - math.pi / 2), 6 * math.sin(O.YAW - math.pi / 2), 4.0)
+        back = (-front[0], -front[1], 4.0)
+        self.assertTrue(O.hits_any(stacks[0]['members'], back))
+        self.assertFalse(O.hits_any(stacks[0]['members'], front))
+        (bowl, cone), stacks = self.build({'kind': 'HEMISPHERE', 'radius': 3, 'orientation': 'APEX_DOWN'}, {'kind': 'CONE', 'radius': 3, 'height': 5, 'on': 's1'})
+        front = (3 * math.cos(O.YAW - math.pi / 2), 3 * math.sin(O.YAW - math.pi / 2), 3.0)
+        back = (-front[0], -front[1], 3.0)
+        self.assertTrue(O.hits_any(stacks[0]['members'], back))
+        self.assertFalse(O.hits_any(stacks[0]['members'], front))
+
+    def test_a_bowl_and_a_dome_hide_the_far_side_of_their_curved_surface_and_a_bowl_never_hides_its_own_rim(self):
+        away = O.vunit((-O.VIEW[0], -O.VIEW[1], 0.0))   # the horizontal direction from the viewer into the picture
+        a = math.radians(20)
+        bowl = O.build_solid({'kind': 'HEMISPHERE', 'radius': 2, 'orientation': 'APEX_DOWN', 'id': 's1'})
+        self.assertEqual((bowl['cz'], bowl['height']), (2.0, 2.0))
+        self.assertFalse(O.hits_round(bowl, (2 * away[0], 2 * away[1], 2.0)))   # the flat disc is the top: its far rim is seen
+        # 20 degrees below the rim the ray from the far side runs through the body under the disc's plane; from the near side it leaves at once
+        self.assertTrue(O.hits_round(bowl, (2 * math.cos(a) * away[0], 2 * math.cos(a) * away[1], 2.0 - 2 * math.sin(a))))
+        self.assertFalse(O.hits_round(bowl, (-2 * math.cos(a) * away[0], -2 * math.cos(a) * away[1], 2.0 - 2 * math.sin(a))))
+        dome = O.build_solid({'kind': 'HEMISPHERE', 'radius': 2, 'id': 's2'})
+        self.assertEqual(dome['cz'], 0.0)
+        self.assertTrue(O.hits_round(dome, (2 * away[0], 2 * away[1], 0.0)))   # the far rim of the flat disc is behind the dome
+        self.assertFalse(O.hits_round(dome, (-2 * away[0], -2 * away[1], 0.0)))
+        self.assertTrue(O.hits_round(dome, (2 * math.cos(a) * away[0], 2 * math.cos(a) * away[1], 2 * math.sin(a))))
+        self.assertFalse(O.hits_round(dome, (-2 * math.cos(a) * away[0], -2 * math.cos(a) * away[1], 2 * math.sin(a))))
+
+
+class BallsOffTheAxis(unittest.TestCase):
+    """E33: at:{x,y,z?} puts a ball of a cylinder off its axis (x along the screen's horizontal, y into the picture); stack.layers lays equal balls out in rows"""
+
+    @staticmethod
+    def specs(host):
+        return O.expanded_solid_specs({'solids': [{'kind': 'CYLINDER', 'radius': 12, 'height': 40, **host}]})
+
+    def test_rows_of_equal_balls_rest_on_the_row_below(self):
+        specs = self.specs({'stack': {'radius': 6, 'layers': [2, 2, 1]}})
+        balls = specs[1:]
+        self.assertEqual([b['id'] for b in balls], ['s1b1', 's1b2', 's1b3', 's1b4', 's1b5'])
+        self.assertEqual([(b['at']['x'], b['at']['y']) for b in balls], [(-6.0, 0.0), (6.0, 0.0), (-6.0, 0.0), (6.0, 0.0), (0.0, 0.0)])
+        self.assertEqual([b['centerZ'] for b in balls[:4]], [6.0, 6.0, 18.0, 18.0])
+        self.assertAlmostEqual(balls[4]['centerZ'], 18 + math.sqrt(108), places=5)   # between two balls 12 apart: 6 across, so 12^2 - 6^2 up
+        # a row of three or of one, and the plan's own old stacks and lists stay where they were
+        self.assertEqual([b['at']['x'] for b in self.specs({'stack': {'radius': 3, 'layers': [3]}})[1:]], [-6.0, 0.0, 6.0])
+        old = self.specs({'stack': {'count': 3, 'radius': 3}})
+        self.assertTrue(all('at' not in b for b in old[1:]))
+        self.assertEqual([b['centerZ'] for b in old[1:]], [3.0, 9.0, 15.0])
+
+    def test_a_ball_without_a_height_falls_onto_the_floor_or_the_balls_before_it(self):
+        specs = self.specs({'inside': [{'kind': 'SPHERE', 'radius': 3, 'at': {'x': 0, 'y': 0}}, {'kind': 'SPHERE', 'radius': 3, 'at': {'x': 3, 'y': 0}},
+                                       {'kind': 'SPHERE', 'radius': 2, 'at': {'x': -8, 'y': 0}}, {'kind': 'SPHERE', 'radius': 3, 'at': {'x': 6, 'y': -4, 'z': 20}}]})[1:]
+        self.assertEqual(specs[0]['centerZ'], 3.0)
+        self.assertAlmostEqual(specs[1]['centerZ'], 3 + math.sqrt(27), places=5)   # touching the first ball, 3 across
+        self.assertEqual(specs[2]['centerZ'], 2.0)                                  # nothing under it: on the floor
+        self.assertEqual(specs[3]['centerZ'], 20.0)                                 # told where
+        self.assertNotIn('z', specs[3]['at'])
+
+    def test_a_list_without_any_at_keeps_the_old_rule_one_on_the_other(self):
+        specs = self.specs({'inside': [{'kind': 'SPHERE', 'radius': 2}, {'kind': 'SPHERE', 'radius': 3}]})[1:]
+        self.assertEqual([b['centerZ'] for b in specs], [2.0, 7.0])
+
+    def test_what_the_grammar_does_not_allow_is_refused(self):
+        for host in ({'stack': {'radius': 6, 'layers': [2, 2, 1], 'count': 5}}, {'stack': {'radius': 6, 'layers': []}}, {'stack': {'radius': 6, 'layers': [1]}},
+                     {'stack': {'radius': 2, 'layers': [3, 3, 1]}}, {'stack': {'radius': 2, 'layers': [2, 1.5]}}, {'stack': {'radius': 2, 'layers': [2, True]}}, {'stack': {'radius': 2, 'layers': 'ab'}},
+                     {'inside': [{'kind': 'SPHERE', 'radius': 3, 'centerZ': 3, 'at': {'x': 0, 'y': 0, 'z': 3}}]}, {'inside': [{'kind': 'SPHERE', 'radius': 3, 'at': {'x': 0, 'w': 1}}]},
+                     {'inside': [{'kind': 'SPHERE', 'radius': 3, 'at': 5}]}):
+            self.assertRaises(ValueError, self.specs, host)
+
+    def test_the_centre_of_a_ball_carries_its_place_off_the_axis(self):
+        ball = O.build_solid({'kind': 'SPHERE', 'radius': 3, 'inside': 's1', 'centerZ': 7, 'at': {'x': 4, 'y': -2}, 'id': 's1b1'})
+        x, y, z = ball['points'][0][2]
+        self.assertAlmostEqual(x, 4 * math.cos(O.YAW) + (-2) * (-math.sin(O.YAW)), places=9)
+        self.assertAlmostEqual(y, 4 * math.sin(O.YAW) + (-2) * math.cos(O.YAW), places=9)
+        self.assertEqual(z, 7.0)
+        self.assertEqual(ball['at'], (4.0, -2.0))
+        # the screen shows x as the horizontal and y (into the picture) as a rise of y sin(pitch): the centre projects to (4, -2 sin(pitch) + 7 cos(pitch))
+        sx, sy = O.project((x, y, z))
+        self.assertAlmostEqual(sx, 4.0, places=9)
+        self.assertAlmostEqual(sy, -2 * math.sin(O.PITCH) + 7 * math.cos(O.PITCH), places=9)
+        # only a ball inside a cylinder stands off the axis
+        for spec in ({'kind': 'SPHERE', 'radius': 3, 'at': {'x': 1, 'y': 0}, 'id': 's1'}, {'kind': 'CONE', 'radius': 3, 'height': 2, 'inside': 's0', 'at': {'x': 1, 'y': 0}, 'id': 's2'}):
+            self.assertRaises(ValueError, O.build_solid, spec)
+
+    def test_the_depth_test_of_a_ball_uses_its_own_centre(self):
+        ball = O.build_solid({'kind': 'SPHERE', 'radius': 3, 'inside': 's1', 'centerZ': 3, 'at': {'x': 5, 'y': 0}, 'id': 's1b1'})
+        away = O.vunit((-O.VIEW[0], -O.VIEW[1], 0.0))
+        cx, cy = 5 * O.SCREEN_X[0], 5 * O.SCREEN_X[1]
+        far = (cx + 3 * away[0], cy + 3 * away[1], 3.0)    # the far side of the equator of this ball
+        near = (cx - 3 * away[0], cy - 3 * away[1], 3.0)
+        self.assertTrue(O.hits_round(ball, far))
+        self.assertFalse(O.hits_round(ball, near))
+        # the same points are not on a ball standing on the axis
+        axis_ball = O.build_solid({'kind': 'SPHERE', 'radius': 3, 'inside': 's1', 'centerZ': 3, 'id': 's1b2'})
+        self.assertFalse(O.hits_round(axis_ball, far))
+
+
+class WedgeEdgeAxisAndRightAngle(unittest.TestCase):
+    """E33: cut.axis puts the edge of a wedge on X, Y or Z; cut.rightAngle names the two radii in the cut faces perpendicular to that edge; dims[].half picks a radius's half axis.
+    Everything is derived from the cut alone, by point membership and the depth test of the observer."""
+
+    @staticmethod
+    def sphere(**cut):
+        return O.build_solid({'kind': 'SPHERE', 'radius': 3, 'id': 's1', 'cut': cut})
+
+    def test_the_checked_cut_carries_its_axis_and_right_angle_and_refuses_what_has_no_wedge(self):
+        self.assertEqual(O.check_cut_spec({'kind': 'THREE_QUARTERS'}), {'kind': 'THREE_QUARTERS', 'facing': 'CUT', 'axis': 'Z', 'rightAngle': False})
+        self.assertEqual(O.check_cut_spec({'kind': 'QUARTER', 'axis': 'Y', 'rightAngle': True}), {'kind': 'QUARTER', 'facing': 'CUT', 'axis': 'Y', 'rightAngle': True})
+        for cut in ({'kind': 'QUARTER', 'axis': 'W'}, {'kind': 'QUARTER', 'axis': 'y'}, {'kind': 'QUARTER', 'axis': 3}, {'kind': 'HALF', 'axis': 'Y'}, {'kind': 'OCTANT', 'axis': 'X'},
+                    {'kind': 'SEVEN_EIGHTHS', 'axis': 'Z'}, {'kind': 'HALF', 'rightAngle': True}, {'kind': 'OCTANT', 'rightAngle': True}, {'kind': 'QUARTER', 'rightAngle': 'yes'}):
+            self.assertRaises(ValueError, O.check_cut_spec, cut)
+
+    def test_the_removed_quarter_and_the_kept_one_in_each_frame(self):
+        r = 3.0
+        def inside(kind, axis, d, facing='CUT'):
+            return O.cut_inside(O.check_cut_spec({'kind': kind, 'axis': axis, 'facing': facing}), d, r)
+        # THREE_QUARTERS: x>0 & y<0 is out for Z (as before), x>0 & z>0 for Y, y<0 & z>0 for X; points on the other sides stay
+        self.assertFalse(inside('THREE_QUARTERS', 'Z', (1.0, -1.0, 0.5)))
+        self.assertTrue(inside('THREE_QUARTERS', 'Z', (1.0, 1.0, 0.5)))
+        self.assertFalse(inside('THREE_QUARTERS', 'Y', (1.0, 0.5, 1.0)))
+        self.assertFalse(inside('THREE_QUARTERS', 'Y', (1.0, -0.5, 1.0)))
+        self.assertTrue(inside('THREE_QUARTERS', 'Y', (1.0, 0.5, -1.0)))
+        self.assertTrue(inside('THREE_QUARTERS', 'Y', (-1.0, 0.5, 1.0)))
+        self.assertFalse(inside('THREE_QUARTERS', 'X', (0.5, -1.0, 1.0)))
+        self.assertFalse(inside('THREE_QUARTERS', 'X', (-0.5, -1.0, 1.0)))
+        self.assertTrue(inside('THREE_QUARTERS', 'X', (0.5, 1.0, 1.0)))
+        # QUARTER keeps the quarter opposite: x<0 & z<0 (Y), z<0 & y>0 (X), x<0 & y>0 (Z)
+        self.assertTrue(inside('QUARTER', 'Y', (-1.0, 0.5, -1.0)))
+        self.assertFalse(inside('QUARTER', 'Y', (-1.0, 0.5, 1.0)))
+        self.assertTrue(inside('QUARTER', 'X', (0.5, 1.0, -1.0)))
+        self.assertFalse(inside('QUARTER', 'X', (0.5, -1.0, -1.0)))
+        self.assertTrue(inside('QUARTER', 'Z', (-1.0, 1.0, 0.5)))
+        # turned about the centre (CURVED) every point is read from the other side
+        self.assertFalse(inside('THREE_QUARTERS', 'Y', (-1.0, 0.5, -1.0), 'CURVED'))   # read as (1, -0.5, 1): in the removed quarter
+        self.assertTrue(inside('THREE_QUARTERS', 'Y', (1.0, 0.5, 1.0), 'CURVED'))
+
+    def test_the_edge_and_the_two_faces_of_the_wedge_follow_the_axis(self):
+        for axis, creases in (('Z', {'+Z', '-Z'}), ('Y', {'+Y', '-Y'}), ('X', {'+X', '-X'})):
+            self.assertEqual(set(O.cut_features(self.sphere(kind='THREE_QUARTERS', axis=axis))['creases']), creases, axis)
+        faces = O.cut_features(self.sphere(kind='THREE_QUARTERS', axis='Y'))['faces']
+        self.assertEqual(sorted(faces), ['X++', 'X-+', 'Z++', 'Z+-'])   # a vertical and a horizontal half-disk, each two quarter-disks
+        self.assertTrue(all(f['visible'] for f in faces.values()))
+
+    def test_the_radii_of_the_right_angle_lie_in_the_cut_faces_and_a_wedge_turned_away_hides_them(self):
+        def radii(**cut):
+            return sorted((('+' if s > 0 else '-') + 'XYZ'[k], seen) for k, s, seen in O.cut_edge_radii(self.sphere(**cut)))
+        self.assertEqual(radii(kind='THREE_QUARTERS', axis='Y'), [('+X', True), ('+Z', True)])
+        self.assertEqual(radii(kind='THREE_QUARTERS'), [('+X', True), ('-Y', True)])
+        self.assertEqual(radii(kind='QUARTER', axis='Y'), [('-X', True), ('-Z', True)])
+        self.assertEqual(radii(kind='QUARTER'), [('+Y', True), ('-X', True)])
+        self.assertTrue(all(not seen for _name, seen in radii(kind='THREE_QUARTERS', axis='Y', facing='CURVED')))
+        # the half axes a radius label may lie on: the seen ones; a named half axis is taken only when it is one of them
+        solid = self.sphere(kind='THREE_QUARTERS', axis='Y')
+        self.assertEqual(O.cut_radius_axis(solid, '+X'), (0, 1))
+        self.assertEqual(O.cut_radius_axis(solid, '+Z'), (2, 1))
+        names = lambda items: [('+' if s_ > 0 else '-') + 'XYZ'[k_] for k_, s_ in items]
+        self.assertEqual(names(O.cut_seen_axes(solid)), ['+X', '+Y', '-Y', '+Z'])   # -X and -Z are inside the piece: not seen
+        self.assertIsNone(O.cut_radius_axis(solid, '-X'))
+        self.assertIsNone(O.cut_radius_axis(solid, '-Z'))
+        self.assertEqual(O.cut_radius_axis(solid), (0, 1))   # unnamed: the most horizontal on the screen, the right one when equal
+
+
+class HeightFeet(unittest.TestCase):
+    """E33: the height of a pyramid or frustum (apex or top centre straight down to the base plane) and its foot, derived from the plan's solids alone"""
+
+    def test_the_foot_is_straight_below_the_apex_or_the_centre_of_the_top_face(self):
+        pyramid = O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 4, 'depth': 2}, 'height': 6, 'names': 'ABCDV', 'id': 's1'})
+        top, foot = O.poly_height_points(pyramid)
+        self.assertEqual(top, (2.0, 1.0, 6.0))
+        self.assertEqual(foot, (2.0, 1.0, 0.0))
+        # an apex pushed off the centre (an oblique pyramid): its foot is below it, not at the centre of the base
+        oblique = O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 4, 'depth': 2}, 'height': 6, 'apex': [3, 2], 'names': 'ABCDV', 'id': 's1'})
+        self.assertEqual(O.poly_height_points(oblique), ((3.0, 2.0, 6.0), (3.0, 2.0, 0.0)))
+        frustum = O.build_solid({'kind': 'FRUSTUM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 4}, 'height': 3, 'topScale': 0.5, 'names': 'ABCDEFGH', 'id': 's1'})
+        top, foot = O.poly_height_points(frustum)
+        self.assertEqual((round(top[0], 9), round(top[1], 9), top[2]), (2.0, 2.0, 3.0))
+        self.assertEqual(foot[2], 0.0)
+
+    def test_a_height_dimension_belongs_to_the_named_solid_or_the_first_that_has_a_height_line(self):
+        solids = [O.build_solid({'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 3, 'names': UNNAMED, 'id': 's1'}),
+                  O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 3, 'names': 'ABCDV', 'id': 's2'}),
+                  O.build_solid({'kind': 'CONE', 'radius': 2, 'height': 3, 'id': 's3'})]
+        self.assertEqual(O.height_dim_solid({}, {'height': True}, solids)['id'], 's2')   # a prism's height is an edge: the pyramid is the first with a height line
+        self.assertEqual(O.height_dim_solid({}, {'height': True, 'solid': 's3'}, solids)['id'], 's3')
+        self.assertIsNone(O.height_dim_solid({}, {'height': True, 'solid': 's9'}, solids))
+
+    def test_two_segments_are_the_same_line_whichever_end_comes_first(self):
+        a, b = (10.0, 20.0), (40.0, 60.0)
+        self.assertTrue(O._same_segment(a, b, a, b) and O._same_segment(a, b, b, a))
+        self.assertTrue(O._same_segment(a, b, (10.4, 20.0), (40.0, 60.4)))
+        self.assertFalse(O._same_segment(a, b, (10.0, 20.0), (40.0, 62.0)))
+        self.assertFalse(O._same_segment(a, b, (10.0, 20.0), (10.0, 20.0)))
+
+    def test_the_default_foot_vertex_is_the_base_vertex_farthest_right_on_the_screen(self):
+        pyramid = O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 3, 'depth': 4}, 'height': 5, 'names': 'ABCDV', 'id': 's1'})
+        xs = [O.project(v[1])[0] for v in pyramid['verts'][:4]]
+        self.assertEqual(xs.index(max(xs)), 2)   # C(3, 4): 3 cos 28 + 4 sin 28
+
+
+class DimSide(unittest.TestCase):
+    """E33: dims[].side says which side of its segment a label stands on (page coordinates, y down); read back from the label's box and the segment"""
+
+    BOX = (100.0, 100.0, 40.0, 20.0)   # x, y, width, height
+
+    def check(self, side, seg, box):
+        errors = []
+        O.check_dim_side({'dims': [{'edge': 'AB', 'side': side}]}, 'dim-1', seg, box, errors)
+        return errors
+
+    def test_a_label_above_a_nearly_horizontal_segment_is_on_its_top(self):
+        seg = ((90.0, 160.0), (190.0, 150.0))   # runs right and slightly up on the page
+        self.assertEqual(self.check('TOP', seg, (120.0, 100.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('BOTTOM', seg, (120.0, 170.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('TOP', seg, (120.0, 170.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_MISMATCH:dim-1'])
+        self.assertEqual(self.check('BOTTOM', seg, (120.0, 100.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_MISMATCH:dim-1'])
+
+    def test_the_side_is_the_side_of_the_segments_line_whichever_end_is_first(self):
+        seg = ((190.0, 150.0), (90.0, 160.0))   # the same segment written the other way round
+        self.assertEqual(self.check('TOP', seg, (120.0, 100.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('TOP', seg, (120.0, 170.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_MISMATCH:dim-1'])
+        # a label past the end of its segment is still on the segment's top when it is above the line
+        self.assertEqual(self.check('TOP', ((100.0, 150.0), (120.0, 150.0)), (50.0, 100.0, 40.0, 20.0)), [])
+
+    def test_left_and_right_of_a_nearly_vertical_segment(self):
+        seg = ((150.0, 200.0), (156.0, 120.0))
+        self.assertEqual(self.check('LEFT', seg, (90.0, 150.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('RIGHT', seg, (170.0, 150.0, 40.0, 20.0)), [])
+        self.assertEqual(self.check('LEFT', seg, (170.0, 150.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_MISMATCH:dim-1'])
+
+    def test_a_side_the_segment_does_not_face_and_an_unknown_side_are_plan_errors(self):
+        flat = ((90.0, 150.0), (190.0, 150.0))
+        self.assertEqual(self.check('LEFT', flat, (30.0, 140.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_PLAN_INVALID:dim-1'])   # a horizontal segment has no left
+        self.assertEqual(self.check('UP', flat, (30.0, 140.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_PLAN_INVALID:dim-1'])
+        # 17 degrees off the direction is the limit: sin 17 = 0.29 is refused, a segment tilted 20 degrees (0.34) is accepted
+        t17 = ((100.0, 100.0), (100.0 + 100 * math.cos(math.radians(17)), 100.0 - 100 * math.sin(math.radians(17))))
+        t20 = ((100.0, 100.0), (100.0 + 100 * math.cos(math.radians(20)), 100.0 - 100 * math.sin(math.radians(20))))
+        self.assertEqual(self.check('LEFT', t17, (40.0, 90.0, 40.0, 20.0)), ['SOLID_DIM_SIDE_PLAN_INVALID:dim-1'])
+        self.assertEqual(self.check('LEFT', t20, (40.0, 90.0, 40.0, 20.0)), [])
+
+    def test_no_side_no_check_and_the_dimension_of_a_plan_is_found_by_its_id(self):
+        self.assertEqual(O.plan_dim({'dims': [{'edge': 'AB'}, {'edge': 'BC', 'side': 'TOP'}]}, 'dim-2'), {'edge': 'BC', 'side': 'TOP'})
+        self.assertEqual(O.plan_dim({'dims': [{'edge': 'AB'}]}, 'dim-3'), {})
+        self.assertEqual(O.plan_dim({}, 'dim-1'), {})
+        errors = []
+        O.check_dim_side({'dims': [{'edge': 'AB'}]}, 'dim-1', ((0.0, 0.0), (10.0, 0.0)), (0.0, 0.0, 1.0, 1.0), errors)
+        self.assertEqual(errors, [])
+
+
+class TintedBase(unittest.TestCase):
+    """E33: baseFill tints the base circle of a cylinder, cone or frustum and may name it; the grammar is read here from the plan alone"""
+
+    def test_the_forms_of_baseFill_and_their_defaults(self):
+        def fill(value, **solid):
+            return O.build_solid({'kind': 'CONE', 'radius': 4, 'height': 6, 'id': 's1', 'baseFill': value, **solid})['base_fill']
+        self.assertEqual(fill(True), {'face': 'BOTTOM', 'fill': 'LIGHT', 'label': None})
+        self.assertEqual(fill('MEDIUM'), {'face': 'BOTTOM', 'fill': 'MEDIUM', 'label': None})
+        self.assertEqual(fill({'fill': 'WARM', 'label': 'S'}), {'face': 'BOTTOM', 'fill': 'WARM', 'label': 'S'})
+        self.assertEqual(fill({'face': 'TOP', 'label': '밑면'}, orientation='APEX_DOWN'), {'face': 'TOP', 'fill': 'LIGHT', 'label': '밑면'})
+        self.assertIsNone(O.build_solid({'kind': 'CONE', 'radius': 4, 'height': 6, 'id': 's1'})['base_fill'])
+
+    def test_what_has_no_base_circle_or_a_bad_form_is_refused(self):
+        cone = {'kind': 'CONE', 'radius': 4, 'height': 6, 'id': 's1'}
+        for value, extra in (({'fill': 'RED'}, {}), ({'face': 'SIDE'}, {}), ({'colour': 'LIGHT'}, {}), (5, {}), ({'label': 'S^2'}, {}), ({'label': ' S'}, {}), ({'label': ''}, {}),
+                             ({'face': 'TOP'}, {}), (True, {'orientation': 'APEX_DOWN'})):
+            with self.assertRaises(ValueError, msg=str((value, extra))): O.build_solid({**cone, 'baseFill': value, **extra})
+        for kind in ('SPHERE', 'HEMISPHERE'):
+            with self.assertRaises(ValueError) as caught: O.build_solid({'kind': kind, 'radius': 3, 'id': 's1', 'baseFill': True})
+            self.assertEqual(str(caught.exception), 'SOLID_BASE_FILL_UNSUPPORTED:' + kind)
+
+    def test_a_joint_circle_of_a_stack_is_no_base(self):
+        def stack(a, b):
+            solids = [O.build_solid({'kind': 'CYLINDER', 'radius': 3, 'height': 4, 'id': 's1', **a}), O.build_solid({'kind': 'CONE', 'radius': 3, 'height': 4, 'id': 's2', 'on': 's1', **b})]
+            return O.resolve_stacks(solids)
+        self.assertRaises(ValueError, stack, {'baseFill': {'face': 'TOP'}}, {})
+        self.assertRaises(ValueError, stack, {}, {'baseFill': True})
+        self.assertEqual(len(stack({'baseFill': True}, {})), 1)
+
+    def test_the_name_of_a_base_is_planned_after_the_axis_words_and_before_the_written_labels(self):
+        solids = [O.build_solid({'kind': 'CYLINDER', 'radius': 2, 'height': 4, 'axis': {'label': '회전축'}, 'baseFill': {'label': 'S'}, 'id': 's1'}),
+                  O.build_solid({'kind': 'CONE', 'radius': 3, 'height': 5, 'baseFill': {'face': 'BOTTOM', 'label': '밑면'}, 'id': 's2'})]
+        plan = {'labels': [{'text': '모선', 'at': {'slant': True, 'solid': 's2'}}]}
+        named = {}
+        planned, axes = O.planned_text_labels(plan, solids, O.make_norm(solids, named))
+        self.assertEqual([(i, k, t, g) for i, k, t, g, _ in planned],
+                         [('text-tl1', 'AXIS', '회전축', 's1'), ('text-tl2', 'BASE', 'S', 's1|base'), ('text-tl3', 'BASE', '밑면', 's2|base'), ('text-tl4', 'SLANT', '모선', 's2')])
+        self.assertEqual(axes, {'s1'})
+
+
+class AngleLabels(unittest.TestCase):
+    """E33: marks.angles[].label — its number is read from the plan's own text, the angle from the named points, the place from the page"""
+
+    def ctx(self, box, tex='90^\\circ', value=None):
+        import xml.etree.ElementTree as ET
+        g = ET.Element('g', {'id': 'angle-label-an1', 'data-label-role': 'angle-label', 'data-mark': 'an1', 'data-tex': tex, 'data-value': tex if value is None else value})
+        named = {'A': ('s1', (100.0, 100.0), (0.0, 0.0, 0.0)), 'B': ('s1', (160.0, 100.0), (3.0, 0.0, 0.0)), 'D': ('s1', (100.0, 40.0), (0.0, 3.0, 0.0))}
+        return {'errors': [], 'boxes': {'angle-label-an1': box}, 'norm': lambda x: x, 'named': named, 'labels': [g]}
+
+    PLAN = {'marks': {'angles': [{'refs': ['B', 'A', 'D'], 'arcs': 1, 'label': '90^\\circ'}]}}
+
+    def test_the_number_of_a_label_is_the_degrees_after_the_last_equals_sign(self):
+        self.assertEqual(O.angle_label_number('55^\\circ'), 55.0)
+        self.assertEqual(O.angle_label_number('\\angle A=55^\\circ'), 55.0)
+        self.assertEqual(O.angle_label_number('90.5^\\circ'), 90.5)
+        for symbol in ('y^\\circ', 'x', '55', '55^\\circ x', '', None): self.assertIsNone(O.angle_label_number(symbol))
+
+    def test_a_label_beside_its_arc_on_the_side_of_the_angle_passes(self):
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0))   # centre (125, 69): up and to the right of the vertex, between the two rays
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertEqual(ctx['errors'], [])
+
+    def test_wrong_number_text_place_and_missing_label_are_caught(self):
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0), tex='55^\\circ')
+        O.check_angle_labels({'marks': {'angles': [{'refs': ['B', 'A', 'D'], 'arcs': 1, 'label': '55^\\circ'}]}}, ctx)   # the angle is 90 degrees
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_VALUE_MISMATCH:an1'])
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0), tex='80^\\circ')
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_TEXT_MISMATCH:an1'])
+        ctx = self.ctx((40.0, 120.0, 30.0, 18.0))   # down and to the left: behind the vertex
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_OFF_SIDE:an1'])
+        ctx = self.ctx((300.0, 300.0, 30.0, 18.0))
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertIn('SOLID_ANGLE_LABEL_FAR_FROM_ANGLE:an1', ctx['errors'])
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0))
+        ctx['labels'] = []
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_SET_MISMATCH'])
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0))
+        O.check_angle_labels({}, ctx)   # a label nobody asked for
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_SET_MISMATCH'])
+        # a symbol is not compared with the angle
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0), tex='y^\\circ')
+        O.check_angle_labels({'marks': {'angles': [{'refs': ['B', 'A', 'D'], 'arcs': 1, 'label': 'y^\\circ'}]}}, ctx)
+        self.assertEqual(ctx['errors'], [])
+
+
+class SlantPartsAndLevelPoints(unittest.TestCase):
+    """E33: names.level/levelRim/rim of a cone with a LEVEL section and the parts of its slant, derived here from the plan alone"""
+
+    @staticmethod
+    def cone(**names):
+        return O.build_solid({'kind': 'CONE', 'radius': 6, 'height': 8, 'id': 's1', 'names': {'apex': 'T', 'center': 'A', **names}})
+
+    PLAN = {'section': {'solid': 's1', 'kind': 'LEVEL', 'at': '2/5', 'fill': 'BOTTOM'}}
+
+    def test_the_level_points_are_the_centre_and_the_contour_generator_points_of_the_two_circles(self):
+        solid = self.cone(level='C', levelRim='D', rim='B')
+        O.add_level_points(self.PLAN, [solid])
+        pts = {name: p for name, _pid, p in solid['points'] if name}
+        self.assertEqual(sorted(pts), ['A', 'B', 'C', 'D', 'T'])
+        self.assertEqual(pts['C'], (0.0, 0.0, 3.2))
+        # on the page T, D and B lie on one straight line (the contour generator), D 3/5 of the way down it (the radii 3.6 and 6)
+        T, D, B = (O.project(pts[k]) for k in 'TDB')
+        cross = (D[0] - T[0]) * (B[1] - T[1]) - (D[1] - T[1]) * (B[0] - T[0])
+        self.assertAlmostEqual(cross, 0.0, places=9)
+        self.assertAlmostEqual((D[0] - T[0]) / (B[0] - T[0]), 0.6, places=9)
+        # in the plane of each circle the point is a radius from its centre
+        self.assertAlmostEqual(math.hypot(pts['D'][0] - pts['C'][0], pts['D'][1] - pts['C'][1]), 3.6, places=9)
+        self.assertAlmostEqual(math.hypot(pts['B'][0] - pts['A'][0], pts['B'][1] - pts['A'][1]), 6.0, places=9)
+
+    def test_what_has_no_level_or_no_base_circle_is_refused(self):
+        for names, plan, kind in (({'level': 'C'}, {}, 'CONE'), ({'levelRim': 'D'}, {}, 'CONE'), ({'level': 'C'}, {'section': {'solid': 's9', 'kind': 'LEVEL', 'at': '1/2'}}, 'CONE'),
+                                  ({'level': 'C'}, {'section': {'kind': 'AXIAL'}}, 'CONE')):
+            solid = self.cone(**names)
+            with self.assertRaises(ValueError, msg=str((names, plan))): O.add_level_points(plan, [solid])
+        down = O.build_solid({'kind': 'CONE', 'radius': 6, 'height': 8, 'orientation': 'APEX_DOWN', 'id': 's1', 'names': {'rim': 'B'}})
+        with self.assertRaises(ValueError): O.add_level_points({}, [down])
+        with self.assertRaises(ValueError): O.build_solid({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'id': 's1', 'names': {'level': 'C'}})
+        # the rim needs no section
+        solid = self.cone(rim='B')
+        O.add_level_points({}, [solid])
+        self.assertEqual([n for n, _p, _q in solid['points'] if n], ['A', 'T', 'B'])
+
+    def test_a_slant_part_is_found_on_the_drawn_line_by_its_radius(self):
+        solid = self.cone()
+        seg = ((100.0, 50.0), (160.0, 250.0))   # apex above, base end below: the page's y grows down
+        top = O.slant_part_segment(seg, solid, 'top', 0.4)
+        bottom = O.slant_part_segment(seg, solid, 'bottom', 0.4)
+        # the level is at 2/5 of the height: its circle has 3/5 of the base radius, so it is 3/5 of the way from the apex
+        for got, want in ((top, ((100.0 + 36.0, 50.0 + 120.0), (100.0, 50.0))), (bottom, ((160.0, 250.0), (136.0, 170.0)))):
+            for p, q in zip(sorted(got), sorted(want)): self.assertAlmostEqual(math.hypot(p[0] - q[0], p[1] - q[1]), 0.0, places=6)
+        self.assertEqual(top[1], seg[0])
+        self.assertEqual(bottom[0], seg[1])
+        # the line given the other way round is the same
+        self.assertEqual(O.slant_part_segment((seg[1], seg[0]), solid, 'top', 0.4), top)
+        self.assertIsNone(O.slant_part_segment(seg, O.build_solid({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'id': 's2'}), 'top', 0.5))

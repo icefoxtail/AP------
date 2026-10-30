@@ -1,0 +1,92 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "TREE",
+  "root": {
+   "children": [
+    {
+     "label": "승",
+     "p": "3/4",
+     "children": [
+      {
+       "label": "승",
+       "p": "3/4"
+      },
+      {
+       "label": "패",
+       "p": "1/4",
+       "children": [
+        {
+         "label": "승",
+         "p": "3/4"
+        },
+        {
+         "label": "패",
+         "p": "1/4"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "패",
+     "p": "1/4",
+     "children": [
+      {
+       "label": "승",
+       "p": "3/4",
+       "children": [
+        {
+         "label": "승",
+         "p": "3/4"
+        },
+        {
+         "label": "패",
+         "p": "1/4"
+        }
+       ]
+      },
+      {
+       "label": "패",
+       "p": "1/4"
+      }
+     ]
+    }
+   ]
+  },
+  "showPathProbability": true,
+  "pathColumn": true,
+  "highlightPaths": [
+   [
+    "승",
+    "승"
+   ],
+   [
+    "승",
+    "패",
+    "승"
+   ],
+   [
+    "패",
+    "승",
+    "승"
+   ]
+  ]
+ },
+ "caption": "해인이가 각 판에서 이기면 승, 지면 패로 나타내고, 먼저 2점을 얻으면 끝나는 게임의 경우를 나타낸 수형도. 해인이가 이기는 세 경우(승승, 승패승, 패승승)를 굵은 선과 동그라미로 표시하고 각 경우의 확률(지나는 가지의 확률의 곱)을 적었다",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "각 판에서 해인이가 진아를 이길 확률은 3/4, 질 확률은 1/4",
+   "mappedTo": "chart.root.children[].p"
+  },
+  {
+   "id": "c2",
+   "condition": "먼저 2점을 얻는 사람이 승리하므로 한 사람이 2승을 하면 더 이상 판을 하지 않는다",
+   "mappedTo": "chart.root"
+  }
+ ],
+ "newVisualInformation": [
+  "해인이가 이기는 경우는 승승, 승패승, 패승승이고 각 경우의 확률은 지나는 가지의 확률의 곱으로 구함"
+ ]
+}

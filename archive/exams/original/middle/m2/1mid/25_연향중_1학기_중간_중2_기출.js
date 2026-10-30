@@ -774,7 +774,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/25_연향중_1학기_중간_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄이다. 위 줄은 첫째 부등식의 해 x<2를 열린 점 2와 왼쪽으로 칠한 선으로 나타냈다. 아래 줄에는 둘째 부등식을 풀어 얻은 해의 끝점 5a/4를 점 P로 나타냈고, 점 P는 2와 같은 위치에 있다. 0도 표시했다.",
+    "solutionImageCaption": "첫째 부등식의 해 x<2의 끝점 2와 둘째 부등식을 풀어 얻은 해 x<5a/4의 끝점 5a/4를 같은 수직선 위에 놓은 그림이다. 점 P는 5a/4의 위치이고 두 끝점이 같은 자리에 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

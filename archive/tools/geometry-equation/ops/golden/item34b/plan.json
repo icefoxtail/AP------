@@ -1,0 +1,56 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "parameter": {
+   "name": "n",
+   "value": "1/2"
+  },
+  "rows": [
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "param": {
+        "mul": "1",
+        "add": "0"
+       },
+       "state": "OPEN"
+      }
+     }
+    ],
+    "integerPoints": {
+     "range": [
+      "-2",
+      "2"
+     ]
+    },
+    "hideSetLabel": true
+   }
+  ]
+ },
+ "numberLineCaption": {
+  "text": "x<n의 해와 주어진 x의 값"
+ },
+ "caption": "x-1-n<-1은 x<n이다. x의 값 -2, -1, 0, 1, 2 중 x<n의 해가 되는 값을 점으로 나타냈다(n의 값은 예시이다).",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x의 값이 -2, -1, 0, 1, 2일 때 x-1-n<-1을 참이 되게 하는 x의 값이 3개이다",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "x-1-n<-1은 x<n이다",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "x<n의 해와 주어진 다섯 값 -2, -1, 0, 1, 2 중 해가 되는 -2, -1, 0을 한 수직선에 나타낸다(n의 범위는 쓰지 않는다)"
+ ]
+}

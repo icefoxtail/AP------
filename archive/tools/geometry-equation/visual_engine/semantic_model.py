@@ -9,11 +9,14 @@ from .geometry_model import (Line,Circle,CircularArc,point,finite,line_intersect
 KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRCULAR_ARC','TRACE_ARC',
     'FUNCTION_GRAPH','INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR',
     'PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUATION_LABEL','EQUAL_MARK','PARALLEL_MARK',
-    'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION','DIMENSION_LINE','PATH_LABEL'}
+    'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION','DIMENSION_LINE','PATH_LABEL','QUADRANT'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
-FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments'}
-REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'}}
+FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide','lineAt','lineBand','ringLeader','lineBarrier','quadrant'}
+REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'},'QUADRANT':{'quadrant'}}
+
+FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
+FIELDS|={'guide','anchorAt'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -61,18 +64,53 @@ def validate(spec):
         if 'pattern' in obj and obj['kind']!='FILL_REGION':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
         # emphasis (BOLD, ACCENT) singles out one drawn segment; nothing else carries it.
         if 'emphasis' in obj and (obj['kind']!='SEGMENT' or obj['emphasis'] not in {'BOLD','ACCENT'}):raise ValueError('INVALID_SEGMENT_EMPHASIS')
+        # anchorAt / side (E37): a path label's leader starts at a fraction of its path (0 < t < 1) and the label stands on the LEFT or RIGHT of the path; nothing else carries anchorAt
+        if 'anchorAt' in obj and (obj['kind']!='PATH_LABEL' or isinstance(obj['anchorAt'],bool) or not isinstance(obj['anchorAt'],(int,float)) or not 0<obj['anchorAt']<1 or obj.get('closed') is True):raise ValueError('PATH_LABEL_ANCHOR_INVALID:'+str(obj.get('id')))
+        if obj['kind']=='PATH_LABEL' and 'side' in obj and (obj['side'] not in {'LEFT','RIGHT'} or obj.get('closed') is True):raise ValueError('PATH_LABEL_SIDE_INVALID:'+str(obj.get('id')))
+        # guide (E37): a plane figure's callout guide line; only a SEGMENT carries it, with none of the segment styles
+        if 'guide' in obj and (obj['kind']!='SEGMENT' or obj['guide'] is not True or any(key in obj for key in ('dash','arrow','emphasis'))):raise ValueError('INVALID_SEGMENT_GUIDE:'+str(obj.get('id')))
         # emphasisGroup (1..3) colours the arcs of one angle mark; nothing else carries it.
         if 'emphasisGroup' in obj and (obj['kind']!='ANGLE_MARK' or isinstance(obj['emphasisGroup'],bool) or obj['emphasisGroup'] not in {1,2,3}):raise ValueError('INVALID_ANGLE_EMPHASIS_GROUP')
         # A plane mark label is plain TEXT or math; a unit (cm, m, mm) follows a math label of an expression label, a circular arc or a trace only.
         if 'unit' in obj:
             if obj['kind'] not in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
-            if obj['unit'] not in {'cm','m','mm'}:raise ValueError('MARK_UNIT_INVALID:'+str(obj.get('id')))
+            if obj['unit'] not in {'cm','m','mm','kg'}:raise ValueError('MARK_UNIT_INVALID:'+str(obj.get('id')))
             if obj['kind']!='EQUATION_LABEL' and obj.get('labelText') is None:raise ValueError('MARK_UNIT_REQUIRES_LABEL:'+str(obj.get('id')))
             if obj.get('labelKind','DEGREE' if obj['kind']=='CIRCULAR_ARC' else 'MATH')!='MATH':raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+str(obj.get('id')))
         if 'labelKind' in obj and obj['kind'] in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:
             if obj['labelKind'] not in ({'MATH','TEXT'} if obj['kind']!='CIRCULAR_ARC' else {'DEGREE','NAME','MATH','TEXT'}):raise ValueError('MARK_LABEL_KIND_INVALID:'+str(obj.get('id')))
+        # A straight angle (angles[].straight) is the half turn between the two rays of a straight line; its semicircle faces one screen side.
+        if 'straight' in obj and (obj['kind']!='ANGLE_MARK' or obj['straight'] is not True or obj.get('straightSide') not in {'ABOVE','BELOW','LEFT','RIGHT'} or obj.get('outer')):raise ValueError('INVALID_STRAIGHT_ANGLE')
+        if 'straightSide' in obj and obj.get('straight') is not True:raise ValueError('INVALID_STRAIGHT_ANGLE')
+        # A free text label (planeMarks.textLabels) is an EQUATION_LABEL that no line owns: freeLabel, and the side or centre `anchor` it stands at.
+        if 'freeLabel' in obj and (obj['kind']!='EQUATION_LABEL' or obj['freeLabel'] is not True):raise ValueError('INVALID_FREE_LABEL')
+        if 'anchor' in obj and ('freeLabel' not in obj or obj['anchor'] not in {'CENTER','N','NE','E','SE','S','SW','W','NW'}):raise ValueError('INVALID_FREE_LABEL_ANCHOR')
+        # lineAt (E31) places a line-owned equation label along the line it names: START, END or a fraction 0..1 from its left (lower) end.
+        if 'lineAt' in obj:
+            wanted=obj['lineAt']
+            if obj['kind']!='EQUATION_LABEL' or obj.get('lineOwned') is not True or isinstance(wanted,bool) or not (wanted in {'START','END'} or (isinstance(wanted,(int,float)) and 0<=wanted<=1)):raise ValueError('INVALID_LINE_LABEL_AT:'+str(obj.get('id')))
+        # dash on a LINE (E31, a dashed overlay line) is a flag; on a SEGMENT it keeps its own meaning.
+        if 'dash' in obj and obj['kind']=='LINE' and obj['dash'] is not True:raise ValueError('INVALID_LINE_DASH:'+str(obj.get('id')))
+        # quadrant (E31): the coordinate quadrant 1..4 a QUADRANT object tints and names.
+        if 'quadrant' in obj and (obj['kind']!='QUADRANT' or isinstance(obj['quadrant'],bool) or obj['quadrant'] not in {1,2,3,4}):raise ValueError('INVALID_QUADRANT:'+str(obj.get('id')))
+        # ringLeader (E31): an unnamed point's coordinate label may take the nearest free sector on a leader from its point as the last resort.
+        if 'ringLeader' in obj and (obj['kind']!='COORDINATE_LABEL' or obj['ringLeader'] is not True):raise ValueError('INVALID_RING_LEADER')
+        # lineBarrier (E31): the hidden point's coordinates must not sit beyond a line the point is not on (the label reads as that line's).
+        if 'lineBarrier' in obj and (obj['kind']!='COORDINATE_LABEL' or obj['lineBarrier'] is not True or obj.get('ringLeader') is not True):raise ValueError('INVALID_LINE_BARRIER')
+        # lineBand (E31): the part [lo,hi] (fractions of the drawn segment, from its first point) a segment's expression label may stand in.
+        if 'lineBand' in obj:
+            band=obj['lineBand']
+            if obj['kind']!='EQUATION_LABEL' or obj.get('lineOwned') is not True or not isinstance(band,list) or len(band)!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float)) for v in band) or not 0<=band[0]<band[1]<=1:raise ValueError('INVALID_LINE_LABEL_BAND:'+str(obj.get('id')))
         # labelPlacement LEADER puts an angle mark's label outside its angle on a leader from its own arc; nothing else carries it.
-        if 'labelPlacement' in obj and (obj['kind']!='ANGLE_MARK' or obj['labelPlacement']!='LEADER'):raise ValueError('INVALID_ANGLE_LABEL_PLACEMENT')
+        if 'labelPlacement' in obj and not ((obj['kind'] in {'ANGLE_MARK','CIRCULAR_ARC'} and obj['labelPlacement']=='LEADER') or (obj['kind']=='FILL_REGION' and obj['labelPlacement'] in {'LEADER','AUTO_LEADER'})):raise ValueError('INVALID_ANGLE_LABEL_PLACEMENT')
+        if 'paths' in obj and obj['kind']!='EQUAL_MARK':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
+        if 'markStyle' in obj and (obj['kind']!='EQUAL_MARK' or obj['markStyle']!='CIRCLE' or obj.get('count') not in {1,2} or 'paths' in obj):raise ValueError('EQUAL_MARK_STYLE_INVALID:'+str(obj.get('id')))
+        if 'ownership' in obj and (obj['kind']!='EQUATION_LABEL' or obj['ownership']!='NEAREST' or not obj.get('lineOwned')):raise ValueError('SEGMENT_LABEL_OWNERSHIP_INVALID:'+str(obj.get('id')))
+        if 'over' in obj and (obj['kind']!='ANGLE_MARK' or not isinstance(obj['over'],list) or not obj['over'] or any(not isinstance(v,str) for v in obj['over'])):raise ValueError('ANGLE_OVER_INVALID:'+str(obj.get('id')))
+        if 'pathMark' in obj and (obj['kind']!='EQUAL_MARK' or obj['pathMark'] not in {'TICK','BRACKET'} or 'paths' not in obj):raise ValueError('EQUAL_MARK_PATH_MARK_INVALID:'+str(obj.get('id')))
+        # labelWeight MATH (E32) draws a plain-text label in the weight of a math label; labelAt places a region's label at a source coordinate.
+        if 'labelWeight' in obj and (obj['labelWeight']!='MATH' or obj.get('labelKind')!='TEXT' or obj['kind'] not in {'FILL_REGION','EQUATION_LABEL','CIRCULAR_ARC','DIMENSION_LINE','PATH_LABEL','TRACE_ARC'}):raise ValueError('INVALID_LABEL_WEIGHT:'+str(obj.get('id')))
+        if obj['kind']=='FILL_REGION' and 'labelAt' in obj and (not isinstance(obj['labelAt'],list) or len(obj['labelAt'])!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in obj['labelAt'])):raise ValueError('REGION_LABEL_AT_INVALID:'+str(obj.get('id')))
         # A first layout direction for a label at its point (the layout still tries the other directions).
         if 'preferred' in obj and (obj['kind'] not in {'POINT_NAME','COORDINATE_LABEL'} or obj['preferred'] not in {'N','NE','E','SE','S','SW','W','NW'}):raise ValueError('INVALID_LABEL_PREFERRED_DIRECTION')
         if 'priority' in obj and (isinstance(obj['priority'],bool) or not isinstance(obj['priority'],int) or not 0<=obj['priority']<=4):raise ValueError('INVALID_PRIORITY')
@@ -154,9 +192,14 @@ def validate(spec):
         refs=obj['refs']
         if len(refs)!=2 or len(set(refs))!=2 or any(objects.get(ref,{}).get('kind')!='POINT' for ref in refs):raise ValueError('DIMENSION_POINT_REFS_REQUIRED:'+obj['id'])
         if obj['side'] not in {'ABOVE','BELOW','LEFT','RIGHT'}:raise ValueError('DIMENSION_SIDE_INVALID:'+obj['id'])
-        if obj.get('style','BAR') not in {'BAR','ARROW','BRACE'}:raise ValueError('DIMENSION_STYLE_INVALID:'+obj['id'])
+        if obj.get('style','BAR') not in {'BAR','ARROW','BRACE','INLINE'}:raise ValueError('DIMENSION_STYLE_INVALID:'+obj['id'])
         offset=obj.get('offset',1)
         if isinstance(offset,bool) or not isinstance(offset,int) or not 1<=offset<=3:raise ValueError('DIMENSION_OFFSET_INVALID:'+obj['id'])
+        # E32: extension NONE draws no extension lines; offsetPx (8..120) is the distance of the first tier; style INLINE stands on the segment itself and takes neither
+        if obj.get('extension','FULL') not in {'FULL','NONE'}:raise ValueError('DIMENSION_EXTENSION_INVALID:'+obj['id'])
+        if 'autoOffset' in obj and obj['autoOffset'] is not True:raise ValueError('DIMENSION_OFFSET_INVALID:'+obj['id'])
+        if 'offsetPx' in obj and (isinstance(obj['offsetPx'],bool) or not isinstance(obj['offsetPx'],(int,float)) or not 8<=obj['offsetPx']<=120):raise ValueError('DIMENSION_OFFSET_PX_INVALID:'+obj['id'])
+        if obj.get('style')=='INLINE' and ('offsetPx' in obj or 'extension' in obj or offset!=1):raise ValueError('DIMENSION_INLINE_FIELD_INVALID:'+obj['id'])
         text=obj.get('labelText')
         if not isinstance(text,str) or not text.strip() or len(text)>40:raise ValueError('DIMENSION_LABEL_REQUIRED:'+obj['id'])
         p,q=geometry[refs[0]],geometry[refs[1]]
@@ -167,15 +210,17 @@ def validate(spec):
         if obj['kind'] != 'PATH_LABEL': continue
         # A path total-length label: three or more displayed points joined by drawn segments (one per consecutive pair), one label for the whole length.
         refs=obj['refs'];sids=obj.get('segments')
+        if 'closed' in obj and obj['closed'] is not True:raise ValueError('PATH_LABEL_CLOSED_INVALID:'+obj['id'])
+        closed=obj.get('closed') is True;ring=refs+refs[:1] if closed else refs      # closed: the perimeter, the last point joins back to the first
         if not 3<=len(refs)<=8 or len(set(refs))!=len(refs) or any(objects.get(ref,{}).get('kind')!='POINT' for ref in refs):raise ValueError('PATH_LABEL_POINTS_INVALID:'+obj['id'])
-        if not isinstance(sids,list) or len(sids)!=len(refs)-1 or any(objects.get(sid,{}).get('kind')!='SEGMENT' for sid in sids):raise ValueError('PATH_LABEL_SEGMENT_NOT_DRAWN:'+obj['id'])
-        for a,b,sid in zip(refs,refs[1:],sids):
+        if not isinstance(sids,list) or len(sids)!=len(ring)-1 or any(objects.get(sid,{}).get('kind')!='SEGMENT' for sid in sids):raise ValueError('PATH_LABEL_SEGMENT_NOT_DRAWN:'+obj['id'])
+        for a,b,sid in zip(ring,ring[1:],sids):
             ends=geometry[sid]
             if not ({tuple(ends[0]),tuple(ends[1])}=={tuple(geometry[a]),tuple(geometry[b])}):raise ValueError('PATH_LABEL_SEGMENT_NOT_DRAWN:'+obj['id']+':'+a+'-'+b)
         text=obj.get('labelText')
         if not isinstance(text,str) or not text.strip() or len(text)>40:raise ValueError('PATH_LABEL_LABEL_REQUIRED:'+obj['id'])
-        geometry[obj['id']]={'points':[geometry[ref] for ref in refs]}
-        relations.append({'id':obj['id'],'kind':'PATH_LABEL','status':'PASS','observed':sum(math.dist(geometry[a],geometry[b]) for a,b in zip(refs,refs[1:]))})
+        geometry[obj['id']]={'points':[geometry[ref] for ref in ring]}
+        relations.append({'id':obj['id'],'kind':'PATH_LABEL','status':'PASS','observed':sum(math.dist(geometry[a],geometry[b]) for a,b in zip(ring,ring[1:]))})
     for obj in spec['objects']:
         if obj['kind'] != 'CIRCULAR_ARC': continue
         refs=(obj['centerPoint'],obj['startPoint'],obj['endPoint'])
@@ -288,22 +333,29 @@ def validate(spec):
                 if math.hypot(*u)==0 or math.hypot(*w)==0: raise ValueError('DEGENERATE_ANGLE')
                 observed=math.degrees(math.acos(max(-1,min(1,(u[0]*w[0]+u[1]*w[1])/(math.hypot(*u)*math.hypot(*w))))))
                 if obj.get('outer') is True:observed=360-observed
-                ok=parity(observed,finite(obj['value']))
+                ok=(abs(observed-180)<=0.5 and parity(180.0,finite(obj['value']))) if obj.get('straight') is True else parity(observed,finite(obj['value']))
             elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
-                if len(refs)<2 or len(set(refs))!=len(refs) or any(objects[r]['kind']!='SEGMENT' for r in refs):raise ValueError('SEGMENT_REFS_REQUIRED')
+                # parallel marks may stand on displayed lines (E31: parallels[].lines) instead of segments, never on a mix; equal marks need segments
+                allowed={'SEGMENT'} if kind=='EQUAL_MARK' else {'SEGMENT'} if all(objects[r]['kind']=='SEGMENT' for r in refs) else {'LINE'}
+                if len(refs)<2 or len(set(refs))!=len(refs) or any(objects[r]['kind'] not in allowed for r in refs):raise ValueError('SEGMENT_REFS_REQUIRED')
                 if isinstance(obj.get('count'),bool) or not isinstance(obj.get('count'),int) or not 1<=obj['count']<=(3 if kind=='EQUAL_MARK' else 2):raise ValueError('MARK_COUNT_INVALID')
                 if kind=='EQUAL_MARK':
-                    lengths=[math.dist(*geometry[r]) for r in refs];observed=lengths
+                    # E32: an entry may stand for a whole path of drawn segments (paths[ref] = the piece ids, first = ref): its length is the pieces' total
+                    paths=obj.get('paths',{})
+                    if not isinstance(paths,dict) or any(key not in refs or not isinstance(value,list) or len(value)<2 or value[0]!=key or len(set(value))!=len(value) or any(objects.get(s,{}).get('kind')!='SEGMENT' for s in value) for key,value in paths.items()):raise ValueError('EQUAL_MARK_PATH_INVALID:'+obj['id'])
+                    lengths=[sum(math.dist(*geometry[s]) for s in paths.get(r,[r])) for r in refs];observed=lengths
                     ok=all(abs(length-lengths[0])<=1e-6*max(1,lengths[0]) for length in lengths)
                     if not ok:raise ValueError('EQUAL_MARK_LENGTH_MISMATCH:'+obj['id'])
                 else:
                     def unit(r):
+                        if objects[r]['kind']=='LINE':
+                            line=geometry[r];n=math.hypot(line.a,line.b);return (line.b/n,-line.a/n)
                         p,q=geometry[r];n=math.dist(p,q);return ((q[0]-p[0])/n,(q[1]-p[1])/n)
                     units=[unit(r) for r in refs];observed=[abs(u[0]*units[0][1]-u[1]*units[0][0]) for u in units]
                     ok=all(value<=math.sin(math.radians(0.5)) for value in observed)
                     if not ok:raise ValueError('PARALLEL_MARK_NOT_PARALLEL:'+obj['id'])
         except (KeyError,TypeError,ValueError) as exc:
-            if str(exc).startswith(('EQUAL_MARK_LENGTH_MISMATCH','PARALLEL_MARK_NOT_PARALLEL')):raise
+            if str(exc).startswith(('EQUAL_MARK_LENGTH_MISMATCH','PARALLEL_MARK_NOT_PARALLEL','EQUAL_MARK_PATH_INVALID')):raise
             raise ValueError('UNVERIFIED_SEMANTIC_MARK:'+obj['id']) from exc
         if not ok: raise ValueError('UNVERIFIED_SEMANTIC_MARK:'+obj['id'])
         relations.append({'id':obj['id'],'kind':kind,'status':'PASS','observed':observed})

@@ -222,7 +222,7 @@ class CoordinatesAndLengths(unittest.TestCase):
             plan=self.plan();edit(plan['overlays']);return plan
         cases=[
           (variant(lambda o:o['points'][2].update(coordinates='yes')),'OVERLAY_COORDINATES_INVALID:C'),
-          (variant(lambda o:o['points'].append({'id':'E','x':'-1/2','y':'-1','coordinates':True})),'OVERLAY_COORDINATES_REQUIRE_INTEGERS:E'),
+          (variant(lambda o:o['points'].append({'id':'E','x':'sqrt(2)','y':'-1','coordinates':True})),'OVERLAY_COORDINATES_REQUIRE_RATIONALS:E'),   # E31: fractions are written now; an irrational coordinate is not
           (variant(lambda o:o['points'][2].update(labelDirection='N')),'OVERLAY_LABEL_DIRECTION_INVALID:C'),
           (variant(lambda o:o['points'][0].update(labelDirection='UP')),'OVERLAY_LABEL_DIRECTION_INVALID:A'),
           (variant(lambda o:o['segments'][1].update(labelDirection='N')),'OVERLAY_LABEL_DIRECTION_INVALID:sBC'),
@@ -431,7 +431,11 @@ class CollinearOwners(unittest.TestCase):
         self.assertEqual(sorted(owner_line_incident_ids(self.OWNER,(100,150),[self.OWNER,self.POLYGON])),['overlay-line-v','overlay-polygon-T'])
         self.assertEqual(sorted(owner_line_incident_ids(self.OWNER,(100,280),[self.OWNER,self.POLYGON])),['overlay-line-v'])
     def test_without_the_flag_the_overlapping_edge_blocks_a_near_label(self):
-        result=layout([self.label()],[self.OWNER,self.POLYGON],Box(0,0,300,300));self.assertEqual(result['unresolved'],['overlay-line-v-equation'])
+        result=layout([self.label()],[self.OWNER,self.POLYGON],Box(0,0,300,300))
+        # The overlapping edge still blocks the label at its own anchor (100,150). Since E31 the wide search then samples the rest of the drawn line (it used to
+        # leave the label unresolved), so the label may stand only where the edge does not cover the line: above y=50 or below y=250.
+        self.assertEqual(result['unresolved'],[]);placed=result['labels'][0]
+        self.assertNotEqual(placed['at'],[100.0,150.0]);self.assertTrue(placed['at'][1]<50 or placed['at'][1]>250,placed['at'])
     def test_with_the_flag_the_label_stands_beside_its_line(self):
         result=layout([self.label(collinearOwners=True)],[self.OWNER,self.POLYGON],Box(0,0,300,300))
         self.assertEqual(result['unresolved'],[]);self.assertTrue(result['labels'][0]['placement'].startswith(('AUTO_','COORDINATE_RELOCATION_')))

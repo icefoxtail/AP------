@@ -1,0 +1,194 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "삼각기둥: 밑넓이 24, 둘레 24"
+   },
+   "plan": {
+    "capability": "solid-figure-v1",
+    "unit": "cm",
+    "solids": [
+     {
+      "kind": "PRISM",
+      "base": {
+       "kind": "POLYGON",
+       "points": [
+        [
+         0,
+         0
+        ],
+        [
+         8,
+         0
+        ],
+        [
+         0,
+         6
+        ]
+       ],
+       "plane": "XZ"
+      },
+      "height": 10,
+      "names": "......"
+     }
+    ],
+    "highlights": [
+     {
+      "face": "bottom",
+      "fill": "LIGHT"
+     }
+    ],
+    "marks": {
+     "rightAngles": [
+      {
+       "at": "#b0",
+       "refs": [
+        "#b1",
+        "#b2"
+       ]
+      }
+     ]
+    },
+    "dims": [
+     {
+      "edge": [
+       "#b0",
+       "#b1"
+      ]
+     },
+     {
+      "edge": [
+       "#b2",
+       "#b1"
+      ]
+     },
+     {
+      "edge": [
+       "#b2",
+       "#b0"
+      ]
+     },
+     {
+      "edge": [
+       "#b1",
+       "#t1"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "사각기둥: 밑넓이 36, 둘레 28"
+   },
+   "plan": {
+    "capability": "solid-figure-v1",
+    "unit": "cm",
+    "solids": [
+     {
+      "kind": "PRISM",
+      "base": {
+       "kind": "POLYGON",
+       "points": [
+        [
+         0,
+         0
+        ],
+        [
+         10,
+         0
+        ],
+        [
+         2,
+         6
+        ],
+        [
+         0,
+         6
+        ]
+       ],
+       "plane": "XZ"
+      },
+      "height": 18,
+      "names": "........"
+     }
+    ],
+    "highlights": [
+     {
+      "face": "bottom",
+      "fill": "LIGHT"
+     }
+    ],
+    "marks": {
+     "rightAngles": [
+      {
+       "at": "#b0",
+       "refs": [
+        "#b1",
+        "#b3"
+       ]
+      },
+      {
+       "at": "#b3",
+       "refs": [
+        "#b0",
+        "#b2"
+       ]
+      }
+     ]
+    },
+    "dims": [
+     {
+      "edge": [
+       "#b0",
+       "#b1"
+      ]
+     },
+     {
+      "edge": [
+       "#b1",
+       "#b2"
+      ]
+     },
+     {
+      "edge": [
+       "#b2",
+       "#b3"
+      ],
+      "side": "TOP"
+     },
+     {
+      "edge": [
+       "#b3",
+       "#b0"
+      ]
+     },
+     {
+      "edge": [
+       "#b1",
+       "#t1"
+      ],
+      "label": "h"
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "삼각기둥은 밑면이 변 6, 8, 10인 직각삼각형이고 높이가 10이며, 사각기둥은 밑면이 평행한 변 10, 2에 높이 6, 빗변 10인 사다리꼴이고 기둥의 높이가 h이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "삼각기둥의 전개도에서 밑면은 변이 6, 8, 10 cm인 직각삼각형이고 높이는 10 cm이다",
+   "mappedTo": "panels[0]"
+  },
+  {
+   "id": "c2",
+   "condition": "사각기둥의 밑면은 평행한 두 변이 10 cm, 2 cm이고 높이 6 cm, 빗변 10 cm인 사다리꼴이며 기둥의 높이는 h이다",
+   "mappedTo": "panels[1]"
+  }
+ ],
+ "newVisualInformation": [
+  "두 기둥의 밑면 둘레와 기둥의 높이, 밑면 넓이를 나란히 비교"
+ ]
+}

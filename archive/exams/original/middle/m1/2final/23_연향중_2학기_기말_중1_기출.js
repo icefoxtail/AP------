@@ -420,7 +420,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d19c64599af11f6cc5cee999cc6129eb1b002420cda45a612285df68fc7fae1c",
-      "difficultyEvidenceSha": "sha256:724796f6e7231dbd8ca5e129f8cc1aa19cfea357b2223cbea204092d406ce68c"
+      "difficultyEvidenceSha": "sha256:724796f6e7231dbd8ca5e129f8cc1aa19cfea357b2223cbea204092d406ce68c",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 3cm인 구에서 1/4을 잘라 낸 입체를 그린 그림이다. 세로 반원과 가로 반원 모양의 절단면 두 개가 색칠되어 드러나 있고, 두 절단면은 서로 수직이어서 가운데 직각 표시가 있으며, 가로 반원의 반지름 3cm가 표시되어 있다.",
+      "solutionImageCaption": "구의 1/4을 잘라 낸 입체에는 반지름 3인 반원 모양의 절단면 두 개가 서로 수직으로 생긴다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 10,
@@ -464,7 +468,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:db3114a341841bbc1ae6d8c15a7c39d5c8dd6d5e7b56d885e38b2cab46665e75",
-      "difficultyEvidenceSha": "sha256:78d75363277b40a0c1b269649f1f8fe0efaca8f4796df25a4fbfde76627e0a1b"
+      "difficultyEvidenceSha": "sha256:78d75363277b40a0c1b269649f1f8fe0efaca8f4796df25a4fbfde76627e0a1b",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 밑면의 반지름 12cm, 높이 40cm인 원기둥 모양의 물통 안에 지름 12cm인 쇠구슬 5개가 아래에 2개, 그 위에 2개, 맨 위에 1개로 쌓여 있는 그림이다. 물통의 윗면 반지름 12cm와 높이 40cm가 표시되어 있다.",
+      "solutionImageCaption": "쇠구슬 5개가 물통 안에 2개, 2개, 1개씩 쌓여 있다. 구슬을 모두 꺼내면 구슬 5개의 부피만큼 물이 줄어든다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 11,
@@ -690,7 +698,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:296415b08f569fa0ec2cf719814d7e047ef542cef7480c62aa779d73cbe8b2ac",
-      "difficultyEvidenceSha": "sha256:486da0c2993b17a9ea979fa077bbea76ce636572b444e365bb16986eb260504c"
+      "difficultyEvidenceSha": "sha256:486da0c2993b17a9ea979fa077bbea76ce636572b444e365bb16986eb260504c",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 밝기(럭스)별 도수를 나타낸 히스토그램. 보이는 막대의 도수는 4, 6, 5, 2이고, 찢어져 보이지 않는 두 계급은 점선 테두리로 나타냈다. 16~18럭스 계급에는 2x, 20~22럭스 계급에는 x가 적혀 있고, 아래 괄호에 전체 50개가 표시되어 있다.",
+      "solutionImageCaption": "히스토그램에서 보이는 도수 4, 6, 5, 2와, 점선으로 나타낸 16~18럭스의 2x개, 20~22럭스의 x개를 묶어 전체 50개로 나타냈다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 16,
@@ -879,8 +891,8 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9215990d279c93b95d45fb058f8d5679d91ce3ced3c3773ce294af65a2f507b2",
       "difficultyEvidenceSha": "sha256:8c456b14bd1a9d535321b274e58c0b30e19bbd2f5d38ff542341d0e3f3a3ac2d",
-      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q19-solution.svg",
-      "solutionImageAlt": "해설 그림: 수영 회원 50명(실선, 범례 '수영 50')과 볼링 회원 40명(점선, 범례 '볼링 40')의 연령별 상대도수분포다각형. 40대의 두 점 0.28과 0.3, 볼링 30대의 점 0.25에 동그라미를 쳐 두었다",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q19-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 수영 회원 50명(실선, 범례 수영(50명))과 볼링 회원 40명(점선, 범례 볼링(40명))의 연령별 상대도수분포다각형. 40대의 두 점 0.28과 0.3, 볼링 30대의 점 0.25에 동그라미를 쳐 두었다.",
       "solutionImageCaption": "수영 회원 50명, 볼링 회원 40명의 연령별 상대도수분포다각형에서 40대와 볼링 30대의 점을 짚은 그림",
       "solutionImageSize": "medium"
     },
@@ -927,9 +939,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:f39d6f4aca9fd5c965f643d2d262f896180d2105a9cda2cde60e9c64f8edcd09",
       "difficultyEvidenceSha": "sha256:c6afa0d856d4641fd67f1e9ae12e6bf83142633cb7cae2d8c7aed354f23a0b32",
-      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q20-solution.svg",
-      "solutionImageAlt": "해설 그림: 전체 학생 200명의 몸무게 상대도수분포다각형. 보이는 점의 상대도수 0.12, 0.16, 0.2, 0.08, 0.04가 적혀 있고, 50kg 이상 55kg 미만 계급은 찢어져 보이지 않아 물음표 괄호로 표시했다",
-      "solutionImageCaption": "전체 200명의 몸무게 상대도수분포다각형에서 보이는 계급의 상대도수와 찢어져 보이지 않는 50kg 이상 55kg 미만 계급을 나타낸 그림",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q20-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 전체 학생 200명의 몸무게 상대도수분포다각형이다. 보이는 점의 상대도수 0.12, 0.16, 0.2, 0.08, 0.04가 적혀 있고, 이 다섯 계급을 한 괄호로 묶어 합 0.6을 적었으며, 50kg 이상 55kg 미만 계급은 찢어져 보이지 않아 물음표 괄호로 표시했다.",
+      "solutionImageCaption": "전체 200명의 몸무게 상대도수분포다각형에서 보이는 계급의 상대도수 합과 찢어져 보이지 않는 50kg 이상 55kg 미만 계급을 나타낸 그림",
       "solutionImageSize": "medium"
     },
     {
@@ -969,7 +981,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:83ab40c467bc2016386a569031317e38a1523121609e121a2f72e0621c03712b",
-      "difficultyEvidenceSha": "sha256:1fe7c13a0b1e8782c74f48976bafd8221c555fdb9058b0d501d754ed374d2440"
+      "difficultyEvidenceSha": "sha256:1fe7c13a0b1e8782c74f48976bafd8221c555fdb9058b0d501d754ed374d2440",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 변이 20cm인 정사각형 안의 큰 사분원 호와 두 반원 호. 큰 호에 10π cm, 렌즈 모양의 두 호에 각각 5π cm를 표시하고, 위쪽 색칠한 부분과 아래쪽 렌즈 모양 안에 넓이 50π-100을 각각 적어 두 넓이가 같음을 보인 그림.",
+      "solutionImageCaption": "굵은 호의 길이와 두 색칠한 부분의 넓이 50π-100이 같음을 한 그림에 나타냈다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 22,

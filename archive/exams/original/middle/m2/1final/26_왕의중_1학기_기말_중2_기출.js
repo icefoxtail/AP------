@@ -429,7 +429,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=-3/4x+6이 점 (4,3)과 x절편 8을 지나 오른쪽 아래로 향하고, x가 6 늘 때 y가 9/2 줄어드는 기울기 삼각형과 평행한 직선 y=-3/4x-3을 함께 보인다.",
+    "solutionImageCaption": "점 (4,3)을 지나는 직선 y=-3/4x+6은 x절편 8, y절편 6이고 오른쪽 아래로 향하며, x가 6 늘 때 y는 9/2만큼 줄어든다. 아래의 직선은 평행한 y=-3/4x-3이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -469,7 +473,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 개략도이다. 직선 y=ax+6과 직선 y=-2x+6이 y축 위의 같은 점에서 만나고, 두 직선과 x축으로 둘러싸인 삼각형이 색칠되어 있다. 삼각형의 높이 6, 오른쪽 밑변 3, 왼쪽 밑변 6/a와 넓이 15가 적혀 있다.",
+    "solutionImageCaption": "두 직선 y=ax+6, y=-2x+6과 x축으로 둘러싸인 삼각형은 밑변이 3+6/a, 높이가 6이고 넓이가 15이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -749,7 +757,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 (0,1)을 지나는 직선 y=ax+1을 세 가지로 점선으로 그렸다. a=2인 직선은 y=2x-3과, a=-1/2인 직선은 y=-1/2x-1/2와 평행하고, a=-2인 직선은 두 실선이 만나는 점 (1,-1)을 지난다.",
+    "solutionImageCaption": "직선 y=ax+1은 항상 점 (0,1)을 지난다. a=2, -1/2이면 각각 y=2x-3, y=-1/2x-1/2와 평행하고, a=-2이면 두 직선의 교점 (1,-1)을 지난다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -788,7 +800,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 시간(분), 세로축을 물의 양(L)으로 하여 A물통 y=18-x와 B물통 y=30-3x의 그래프를 그렸다. 처음 양 (0,18), (0,30)과 4분 후 (4,14), (4,18), 7분 후 (7,11), (7,9)를 점으로 표시했다.",
+    "solutionImageCaption": "마개를 연 지 x분 후 A물통은 y=18-x, B물통은 y=30-3x(L)가 남는다. 4분 후에는 A 14 L, B 18 L이고, 7분 후에는 A 11 L, B 9 L이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -855,7 +871,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=2x-2와 직선 y=4x-6이 그려져 있다. 첫째 직선 위에 점 (1,0)과 (3,4)가, 둘째 직선 위에 점 (1,-2)와 (3,6)이 있고, 각 점 옆에 좌표가 각 직선 옆에 식이 적혀 있다.",
+    "solutionImageCaption": "준서가 그린 직선은 두 점 (1,0), (3,4)를 지나고, 지우가 그린 직선은 두 점 (1,-2), (3,6)을 지난다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

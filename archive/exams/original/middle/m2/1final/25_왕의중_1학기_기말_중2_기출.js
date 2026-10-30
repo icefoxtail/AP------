@@ -267,7 +267,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벽돌 9장(위 5장, 아래 4장)으로 만든 직사각형 ABCD에서 위쪽 가로 5x cm와 아래쪽 가로 4y cm가 같고, 세로가 (x+y) cm이며 왼쪽 변에 긴 변 y cm와 짧은 변 x cm가 표시되고, 꼭짓점 D에서 지시선으로 둘레 87cm가 적힌 그림이다.",
+    "solutionImageCaption": "벽돌 1장의 짧은 변을 x cm, 긴 변을 y cm라 하면 직사각형 ABCD의 가로는 위쪽 5x cm, 아래쪽 4y cm로 같고 세로는 (x+y) cm이며 둘레는 87 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -434,7 +438,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=3/2x-6과 y=-2/3x+4, y절편 A(0,4)와 B(0,-6), x절편 C(4,0)와 D(6,0)을 나타내고 AO:OB=2:3, CD=2를 표시한 그림이다.",
+    "solutionImageCaption": "y축과 만나는 점 A, B와 x축과 만나는 점 C, D에서 AO:OB=2:3, CD=2이므로 b=4, a=-6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -469,7 +477,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 일차함수 y=-3/4x-3의 그래프와 기울기가 같은 직선 y=-3/4x+3이 점선으로 함께 그려진 좌표평면 그림이다. 점선 옆에 그 식이 지시선과 함께 적혀 있고, 실선 위의 세 점 옆에 좌표가 적혀 있다.",
+    "solutionImageCaption": "일차함수 y=-3/4x-3의 그래프와 y=-3/4x+3의 그래프를 함께 그린 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -539,7 +551,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=-2x+6이 x절편 (3,0), y절편 (0,6)을 지나고, 기울기가 같은 직선 y=-2x+5가 함께 그려진 좌표평면 그림이다.",
+    "solutionImageCaption": "기울기가 y=-2x+5의 그래프와 같고 x절편이 3인 직선은 y=-2x+6이며, y절편은 6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -576,7 +592,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 점 P(0,1), A(3,9), B(7,5)와 선분 PA, PB, AB가 삼각형 모양으로 그려져 있고, 점 P를 지나는 직선 y=ax+1이 두 선분 PA, PB 사이를 지나 선분 AB와 만난다.",
+    "solutionImageCaption": "직선 y=ax+1은 a의 값에 관계없이 점 P(0,1)을 지나므로, 선분 AB와 만나려면 점 P에서 점 A로 가는 직선과 점 B로 가는 직선 사이에 놓여야 한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -614,7 +634,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 AD=18 cm, AB=10 cm이고 변 BC 위의 점 P에 대해 BP=2x cm이며, 사다리꼴 ABPD가 색칠되고 넓이 130 cm²가 표시된 그림이다.",
+    "solutionImageCaption": "직사각형 ABCD에서 AD=18 cm, AB=10 cm이고 점 P가 B에서 초속 2 cm로 x초 움직이면 BP=2x cm이며, 색칠한 사다리꼴 ABPD의 넓이가 130 cm²이다(그림의 점 P 위치는 예시).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -682,7 +706,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 x+y-4=0, 2x-3y+2=0이 점 (2,2)에서 만나고 x축과 (-1,0), (4,0)에서 만난다. 이 세 점을 꼭짓점으로 하는 삼각형을 색칠하고 높이 2를 점선으로 나타냈다.",
+    "solutionImageCaption": "두 직선과 x축으로 둘러싸인 삼각형의 꼭짓점 (-1,0), (4,0), (2,2)와 높이 2를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -710,7 +738,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=ax-6과 x축, y축으로 둘러싸인 직각삼각형을 색칠하고 넓이 18, 밑변 -6/a, 높이 6을 표시한 그림이다. 위치는 개형이다.",
+    "solutionImageCaption": "직선 y=ax-6(a<0)과 두 축으로 둘러싸인 직각삼각형의 밑변 -6/a, 높이 6, 넓이 18을 나타낸 그림이다(위치는 개형).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -766,7 +798,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평선 y=-8과 원점을 지나는 직선 y=-8x를 한 좌표평면에 그린 그림으로, 두 직선 모두 제1사분면을 지나지 않는다.",
+    "solutionImageCaption": "a=-1일 때의 수평선 y=-8과 a=7일 때의 직선 y=-8x는 모두 제1사분면을 지나지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -797,6 +833,10 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 직선 x-2=0, 2x+3=0, y+3=0, -3y+6=0이 둘러싸는 직사각형을 색칠하고 가로 7/2, 세로 5를 표시한 그림이다.",
+    "solutionImageCaption": "네 직선으로 둘러싸인 직사각형의 가로 7/2와 세로 5를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   }
 ];

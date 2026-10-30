@@ -31,7 +31,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I에서 변 BC에 내린 수선 ID에 4cm가 적혀 있고, AB와 AC에 내린 수선도 ID와 같은 길이 표시가 되어 있다. ∠A=80°, ∠ICB=20°이며 BI와 CI가 각을 이등분하는 것이 같은 호 표시로 나타나 있다.",
+    "solutionImageCaption": "내심 I에서 세 변까지의 거리는 같고, BI와 CI는 각을 이등분하는 선이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -64,7 +68,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 외심 O에서 세 꼭짓점까지의 OA, OB, OC에 같은 길이 표시가 있고, 변 AB, BC, CA에 내린 수선 OD, OE, OF에 직각 표시가 있다. OD를 공통변으로 가지는 두 직각삼각형이 색칠되어 있다.",
+    "solutionImageCaption": "외심 O에서 OA, OB, OC의 길이가 같고, 색칠한 두 직각삼각형은 OD를 공통변으로 가진다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -98,7 +106,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ㄴ은 빗변이 위쪽에 있고 빗변 5cm와 한 예각 40°가 적혀 있으며, 직각삼각형 ㄷ은 직각이 오른쪽 위에 있고 빗변 5cm와 한 예각 40°가 적혀 있다.",
+    "solutionImageCaption": "ㄴ과 ㄷ에서 빗변의 길이 5cm와 한 예각 40°를 나란히 놓고 비교한 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -132,7 +144,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위에 점 D, A, E가 있고 B, C에서 l에 내린 수선 BD=4cm, CE=3cm와 직각 표시가 있다. AB=AC(같은 눈금), ∠BAD=∠ACE(같은 호), ∠BAC 직각 표시와 AD=3cm, AE=4cm가 그려져 있다.",
+    "solutionImageCaption": "합동인 삼각형 ABD와 CAE에서 AD=CE=3cm, AE=BD=4cm이고 세 점 D, A, E는 직선 l 위에 있다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -199,7 +215,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원 I와 접점 D, E, F가 있고 삼각형 DEF가 그려져 있다. 접선 AD와 AF에 같은 눈금, 반지름 ID, IE, IF에 같은 눈금이 표시되어 있다.",
+    "solutionImageCaption": "내접원 I의 접점 D, E, F와 반지름 ID, IE, IF, 접선 AD, AF에 같은 길이 표시를 한 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -232,7 +252,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 ∠A의 이등분선 AD 위에 점 P가 있다. AB=AC, BD=CD, PB=PC에 같은 눈금이 있고 ∠BAD=∠CAD, ∠ABP=∠PBD에 같은 호 표시와 점 D의 직각 표시가 있다.",
+    "solutionImageCaption": "AB=AC, ∠BAD=∠CAD이고 ∠ABP=∠PBD가 되는 위치의 P에 대해 AD⊥BC, BD=CD, PB=PC를 표시한 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -264,7 +288,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD를 보기 ㄱ~ㄹ의 조건에 따라 2×2로 나타낸 네 그림이다. ㄱ은 AB=BC=5cm, CD=DA=7cm를 적은 사각형, ㄴ은 두 대각선과 ∠ABD=∠BDC, ∠ACB=∠DAC를 같은 호로 표시한 그림, ㄷ은 AD=BC 눈금과 ∠A, ∠B를 표시한 그림, ㄹ은 AD∥BC 표시와 대각선의 교점 O에서 ∠OAD=∠ODA를 표시한 그림이다.",
+    "solutionImageCaption": "보기 ㄱ~ㄹ의 조건을 각각 그림으로 나타냈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -297,7 +325,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 ∠B=68°, ∠ACD=42°가 표시되고, AD∥BC의 엇각 ∠ACB와 ∠CAD가 70°로 같으며, 반직선 AE가 ∠CAD를 이등분하고 B, C, E가 한 직선 위에서 ∠ACE=110°가 표시된다.",
+    "solutionImageCaption": "AD∥BC의 엇각 70°와 AE의 이등분, ∠ACE=110°를 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -364,7 +396,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4cm인 원 O 안에 꼭짓점 B가 원 위에 있는 직사각형 OABC가 있고, 두 대각선 OB와 AC의 절반 위에 같은 길이 눈금이 하나씩 있으며, 원의 반지름 하나(O에서 원 위 왼쪽 점까지)에 4cm가 적혀 있다.",
+    "solutionImageCaption": "직사각형의 두 대각선 OB와 AC는 길이가 같고 OB는 원의 반지름이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,

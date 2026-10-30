@@ -101,7 +101,7 @@ test('refusals carry explicit codes',async()=>{
 
 test('the contract text and the guide state the new fields and their refusal codes',()=>{
   const text=contractText();
-  for(const word of ['latticePoints','displayWindow','coordinates','length','labelDirection','unnamed','axisTitles','AXIS_TITLE_INVALID','OVERLAY_LATTICE_TOO_MANY','DISPLAY_WINDOW_MUST_CONTAIN_ORIGIN','OVERLAY_COORDINATES_REQUIRE_INTEGERS','OVERLAY_SEGMENT_LENGTH_UNSUPPORTED'])assert.ok(text.includes(word),'contract text lacks '+word);
+  for(const word of ['latticePoints','displayWindow','coordinates','length','labelDirection','unnamed','axisTitles','AXIS_TITLE_INVALID','OVERLAY_LATTICE_TOO_MANY','DISPLAY_WINDOW_MUST_CONTAIN_ORIGIN','OVERLAY_COORDINATES_REQUIRE_RATIONALS','OVERLAY_SEGMENT_LENGTH_UNSUPPORTED'])assert.ok(text.includes(word),'contract text lacks '+word);
   const guide=fs.readFileSync(new URL('../production/AUTHOR_GUIDE.md',import.meta.url),'utf8');
   for(const word of ['latticePoints','displayWindow','격자점','표시 창'])assert.ok(guide.includes(word),'guide lacks '+word);
 });

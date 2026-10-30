@@ -50,6 +50,15 @@ const qtex=a=>decimalOf(a)??`${a[0]<0n?'-':''}\\frac{${a[0]<0n?-a[0]:a[0]}}{${a[
 const qfrac=a=>a[1]===1n?String(a[0]):`${a[0]<0n?'-':''}\\frac{${a[0]<0n?-a[0]:a[0]}}{${a[1]}}`;
 const P=text=>parseQ(text,'STAT_MODEL_NUMBER_INVALID'),N=text=>qnum(P(text));
 const titleText=(v,code,fallback)=>{if(v===undefined)return fallback;if(typeof v!=='string'||v.length<1||v.length>14||/[\u0000-\u001f<>&"\\]/.test(v))bad(code);return v;};
+/** An axis title of a frequency chart: at most 14 characters as before, or up to 28 with a single space to break at into two lines of at most 14 each (E34). */
+const titleLines=text=>{
+  if(text.length<=14)return [text];
+  if(/^ | $|  /.test(text))return null;
+  let best=null;
+  for(let i=0;i<text.length;i++)if(text[i]===' '){const a=text.slice(0,i),b=text.slice(i+1);if(a.length<=14&&b.length<=14){const d=Math.abs(a.length-b.length);if(!best||d<best.d)best={d,lines:[a,b]};}}
+  return best&&best.lines;
+};
+const axisTitle=(v,fallback)=>typeof v==='string'&&v.length>14&&v.length<=28&&!/[\u0000-\u001f<>&"\\]/.test(v)&&titleLines(v)!==null?v:titleText(v,'STAT_TITLE_INVALID',fallback);
 const intIn=(v,lo,hi,code)=>{if(!Number.isInteger(v)||v<lo||v>hi)bad(code);return v;};
 const median=sorted=>{const n=sorted.length;return n%2?sorted[(n-1)/2]:qdiv(qadd(sorted[n/2-1],sorted[n/2]),Q(2n));};
 /** The Korean curriculum quartiles: Q2 the median, Q1 the median of the lower half and Q3 of the upper half, the middle value excluded when n is odd. */
@@ -66,6 +75,8 @@ export function solveStatChart(chart){
     case 'SCATTER':return solveScatter(chart);
     case 'DICE_TABLE':return solveDice(chart);
     case 'TREE':return solveTree(chart);
+    case 'DOT_PLOT':return solveDot(chart);
+    case 'NORMAL_CURVE':return solveNormal(chart);
     default:return bad('STAT_KIND_UNSUPPORTED');
   }
 }
@@ -73,9 +84,11 @@ export function solveStatChart(chart){
 //  - a class frequency may be null (the problem tore or erased it: the bar and polygon vertex are simply not drawn there); `total` then fixes what the hidden classes add up to;
 //  - restoredClasses: a bar the figure rebuilds from the total (dashed outline; its value is not written unless showRestoredValues);
 //  - highlightClasses: bars of a histogram, or the points of every series of a polygon-only chart (an entry is a class or {class,tone:1|2});
-//  - highlightPoints: single polygon points {series,class,tone?,showValue?}; classSums: a bracket under the axis over classes from..to with their summed frequency.
+//  - highlightPoints: single polygon points {series,class,tone?,showValue?}; classSums: a bracket under the axis over classes from..to with their summed frequency (classes:[[0,2],[4,5]]: one bracket per run of classes that need not touch, joined under the axis, E34);
+//  - unknownLabels: [{class,label,relHeight?}] a hidden class of a histogram drawn as a dotted outline carrying a symbol (2x), the outlines standing in the ratio of their relHeight (E34); showEndValues: a polygon's two end points write their 0;
+//  - a classSums label that is not a plain number (6명, 합계) is a stated fact: it is written as given and checked only where the engine can sum the bracket exactly.
 function solveFreq(c){
-  onlyKeys(c,['kind','boundaries','series','yKind','polygon','xTitle','yTitle','grid','showValues','highlightClasses','total','highlightPoints','classSums','restoredClasses','showRestoredValues','hideValues'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','boundaries','series','yKind','polygon','xTitle','yTitle','grid','showValues','highlightClasses','total','highlightPoints','classSums','restoredClasses','showRestoredValues','hideValues','unknownLabels','showEndValues'],'STAT_CHART_PLAN_INVALID');
   const polygonKind=c.kind==='FREQUENCY_POLYGON';
   if(!Array.isArray(c.boundaries)||c.boundaries.length<3||c.boundaries.length>13)bad('STAT_BOUNDARIES_INVALID');
   const b=c.boundaries.map(x=>parseQ(x,'STAT_BOUNDARIES_INVALID'));
@@ -190,37 +203,78 @@ function solveFreq(c){
     if(restored.some(k=>series[0].values[k]===null))bad('STAT_RESTORED_INVALID'); // a restored class has its value (the figure draws it), a hidden one has none
     if(!series[0].hasTotal)bad('STAT_RESTORED_NEEDS_TOTAL'); // what is restored comes from a stated total, which the engine then checks
   }
+  // unknownLabels: a class the problem erased (null) of a histogram drawn as a dotted outline with a symbol in it (the value is not drawn: a symbol is not a number)
+  const unknown=[];
+  if(c.unknownLabels!==undefined){
+    if(c.kind!=='HISTOGRAM'||polygon)bad('STAT_UNKNOWN_LABEL_UNSUPPORTED');
+    if(!Array.isArray(c.unknownLabels)||c.unknownLabels.length<1||c.unknownLabels.length>n)bad('STAT_UNKNOWN_LABEL_INVALID');
+    for(const e of c.unknownLabels){
+      onlyKeys(e,['class','label','relHeight'],'STAT_UNKNOWN_LABEL_INVALID');
+      const k=intIn(e.class,0,n-1,'STAT_UNKNOWN_LABEL_INVALID');
+      if(unknown.some(u=>u.class===k))bad('STAT_UNKNOWN_LABEL_INVALID');
+      if(series[0].values[k]!==null)bad('STAT_UNKNOWN_LABEL_CLASS_KNOWN'); // only a class whose bar the problem does not show can carry a symbol
+      if(typeof e.label!=='string'||!/^[A-Za-z0-9+\-= ()?]{1,10}$/.test(e.label)||e.label!==e.label.trim())bad('STAT_UNKNOWN_LABEL_INVALID');
+      // relHeight (opt-in): the outline's height relative to the other outlines (2x drawn twice as high as x); the highest outline keeps the usual height, the others are scaled down to it
+      let rel=null;
+      if(e.relHeight!==undefined){rel=parseQ(e.relHeight,'STAT_UNKNOWN_LABEL_INVALID');if(qcmp(rel,Q(1n,20n))<0||qcmp(rel,Q(20n))>0)bad('STAT_UNKNOWN_LABEL_INVALID');}
+      unknown.push({class:k,label:e.label,rel});
+    }
+    unknown.sort((x,y)=>x.class-y.class);
+    if(unknown.some(u=>u.rel!==null))for(const u of unknown)u.rel=u.rel??ONE;
+  }
+  if(c.showEndValues!==undefined&&(typeof c.showEndValues!=='boolean'||(c.showEndValues&&(!polygon||series.length!==1))))bad('STAT_SHOW_END_VALUES_UNSUPPORTED');
   // class sums: the exact sum of the series' values over from..to; a numeric label must equal it (hidden classes count only when one bracket holds all of them and the total says what they add up to)
   const sums=[];
   if(c.classSums!==undefined){
     if(!Array.isArray(c.classSums)||c.classSums.length<1||c.classSums.length>6)bad('STAT_CLASS_SUM_INVALID');
     for(const e of c.classSums){
-      onlyKeys(e,['series','from','to','label','unit'],'STAT_CLASS_SUM_INVALID');
-      const s=e.series===undefined?0:intIn(e.series,0,series.length-1,'STAT_CLASS_SUM_INVALID'),from=intIn(e.from,0,n-1,'STAT_CLASS_SUM_INVALID'),to=intIn(e.to,0,n-1,'STAT_CLASS_SUM_INVALID');
-      if(to<from)bad('STAT_CLASS_SUM_INVALID');
-      if(sums.some(x=>x.series===s&&x.from<=to&&from<=x.to))bad('STAT_CLASS_SUM_OVERLAP');
+      onlyKeys(e,['series','from','to','classes','label','unit'],'STAT_CLASS_SUM_INVALID');
+      const s=e.series===undefined?0:intIn(e.series,0,series.length-1,'STAT_CLASS_SUM_INVALID');
+      // one bracket over classes from..to, or (classes) a group of runs that need not touch: [0,1,2,4,5] or [[0,2],[4,5]] (adjacent runs merge); every run gets its bracket, joined under the axis
+      let runs;
+      if(e.classes!==undefined){
+        if(e.from!==undefined||e.to!==undefined||!Array.isArray(e.classes)||e.classes.length<2||e.classes.length>24)bad('STAT_CLASS_SUM_INVALID');
+        const pairs=e.classes.every(x=>Array.isArray(x));
+        const raw=pairs?e.classes.map(x=>x.length===2?[intIn(x[0],0,n-1,'STAT_CLASS_SUM_INVALID'),intIn(x[1],0,n-1,'STAT_CLASS_SUM_INVALID')]:bad('STAT_CLASS_SUM_INVALID')):e.classes.map(k=>{const v=intIn(k,0,n-1,'STAT_CLASS_SUM_INVALID');return [v,v];});
+        runs=[];
+        for(const [a,b] of raw){
+          if(b<a||(runs.length&&a<=runs.at(-1)[1]))bad('STAT_CLASS_SUM_INVALID'); // ascending, no class twice
+          if(runs.length&&a===runs.at(-1)[1]+1)runs.at(-1)[1]=b;else runs.push([a,b]);
+        }
+      }else{
+        const from=intIn(e.from,0,n-1,'STAT_CLASS_SUM_INVALID'),to=intIn(e.to,0,n-1,'STAT_CLASS_SUM_INVALID');
+        if(to<from)bad('STAT_CLASS_SUM_INVALID');
+        runs=[[from,to]];
+      }
+      const from=runs[0][0],to=runs.at(-1)[1],members=runs.flatMap(([a,b])=>[...Array(b-a+1).keys()].map(i=>a+i));
+      if(sums.some(x=>x.series===s&&x.members.some(k=>members.includes(k))))bad('STAT_CLASS_SUM_OVERLAP');
       const unit=e.unit===undefined?'':(typeof e.unit==='string'&&/^[가-힣A-Za-z%]{1,3}$/.test(e.unit)?e.unit:bad('STAT_CLASS_SUM_UNIT_INVALID'));
       const label=e.label===undefined||e.label===null?null:typeof e.label==='number'?String(e.label):e.label;
-      const sr=series[s],inside=sr.values.slice(from,to+1),hidden=inside.filter(v=>v===null).length,known=inside.filter(v=>v!==null).reduce(qadd,ZERO);
-      let text=null;
+      const sr=series[s],inside=members.map(k=>sr.values[k]),hidden=inside.filter(v=>v===null).length,known=inside.filter(v=>v!==null).reduce(qadd,ZERO);
+      let text=null,free=false;
       if(label!==null){
         if(typeof label!=='string')bad('STAT_CLASS_SUM_LABEL_INVALID');
         if(label==='?'){if(!hidden)bad('STAT_CLASS_SUM_LABEL_INVALID');text='?';} // the sum of hidden classes, still to be found
         else{
-          if(!/^\d{1,6}(?:\.\d{1,4})?$/.test(label))bad('STAT_CLASS_SUM_LABEL_INVALID');
-          let want=known;
+          // a plain number is the exact sum; any other text (6명, 합계) is a stated fact written as given, checked only where the sum is derivable
+          free=!/^\d{1,6}(?:\.\d{1,4})?$/.test(label);
+          if(free&&(!/^[0-9A-Za-z가-힣+=.%() -]{1,12}$/.test(label)||label!==label.trim()||e.unit!==undefined))bad('STAT_CLASS_SUM_LABEL_INVALID');
+          let want=known,derivable=true;
           if(hidden){
             const allHidden=sr.values.flatMap((v,k)=>v===null?[k]:[]);
-            if(sr.hiddenSum===null||allHidden.some(k=>k<from||k>to))bad('STAT_CLASS_SUM_UNKNOWN');
-            want=qadd(known,sr.hiddenSum);
+            derivable=!(sr.hiddenSum===null||allHidden.some(k=>!members.includes(k)));
+            if(derivable)want=qadd(known,sr.hiddenSum);
           }
-          if(qcmp(parseQ(label,'STAT_CLASS_SUM_LABEL_INVALID'),want)!==0)bad('STAT_CLASS_SUM_LABEL_MISMATCH');
-          text=label; // written as the author gave it (0.30 stays 0.30); it equals the exact sum
+          if(!free&&!derivable)bad('STAT_CLASS_SUM_UNKNOWN');
+          const number=free?/^(\d{1,6}(?:\.\d{1,4})?)(?=\D)/.exec(label)?.[1]??null:label;
+          if(number!==null&&derivable&&qcmp(parseQ(number,'STAT_CLASS_SUM_LABEL_INVALID'),want)!==0)bad('STAT_CLASS_SUM_LABEL_MISMATCH');
+          text=label; // written as the author gave it (0.30 stays 0.30); a number it starts with equals the exact sum whenever the engine can derive it
         }
       }
-      sums.push({series:s,from,to,label:text,unit});
+      sums.push({series:s,from,to,label:text,unit,...(free?{free:true}:{}),...(runs.length>1?{runs}:{}),members});
     }
     sums.sort((x,y)=>x.series-y.series||x.from-y.from);
+    for(const x of sums)delete x.members;
   }
   const maxV=series.flatMap(s=>s.values).filter(v=>v!==null).reduce((x,y)=>qcmp(x,y)>=0?x:y);
   const steps=yKind==='FREQUENCY'?NICE.map(s=>Q(BigInt(s))):[Q(1n,100n),Q(1n,50n),Q(1n,20n),Q(1n,10n),Q(1n,5n),Q(1n,2n),Q(1n)];
@@ -229,8 +283,8 @@ function solveFreq(c){
   if(qcmp(top,maxV)===0)top=qadd(top,step);
   const ticks=[];for(let t=step;qcmp(t,top)<=0;t=qadd(t,step))ticks.push(qstr(t));
   return {schemaVersion:MODEL_VERSION,kind:c.kind,yKind,polygon,grid:c.grid===true,showValues:c.showValues===true,highlight,
-    ...(tone2.length?{highlightTone2:tone2}:{}),...(marks.length?{marks}:{}),...(restored.length?{restored,showRestoredValues:c.showRestoredValues===true}:{}),...(hidden.length?{hideValues:hidden}:{}),...(sums.length?{classSums:sums}:{}),
-    xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID','계급'),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',yKind==='FREQUENCY'?'도수(명)':'상대도수'),
+    ...(tone2.length?{highlightTone2:tone2}:{}),...(marks.length?{marks}:{}),...(restored.length?{restored,showRestoredValues:c.showRestoredValues===true}:{}),...(hidden.length?{hideValues:hidden}:{}),...(sums.length?{classSums:sums}:{}),...(unknown.length?{unknown:unknown.map(u=>({class:u.class,label:u.label,...(u.rel!==null?{relHeight:qstr(u.rel)}:{})}))}:{}),...(c.showEndValues===true?{showEndValues:true}:{}),
+    xTitle:axisTitle(c.xTitle,'계급'),yTitle:axisTitle(c.yTitle,yKind==='FREQUENCY'?'도수(명)':'상대도수'),
     boundaries:b.map(qstr),width:qstr(width),classes:classes.map(k=>({lo:qstr(k.lo),hi:qstr(k.hi),mid:qstr(k.mid)})),
     series:series.map(s=>({name:s.name,frequencies:s.frequencies,total:s.total,values:s.values.map(v=>v===null?null:qstr(v)),
       vertices:[[qstr(qsub(classes[0].mid,width)),'0'],...classes.map((k,i)=>s.values[i]===null?null:[qstr(k.mid),qstr(s.values[i])]),[qstr(qadd(classes[n-1].mid,width)),'0']],
@@ -387,7 +441,7 @@ function solveBox(c){
     series:series.map(s=>({name:s.name,n:s.n,five:Object.fromEntries(Object.entries(s.five).map(([k,v])=>[k,qstr(v)]))}))};
 }
 function solveScatter(c){
-  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal','refLines','regions'],'STAT_CHART_PLAN_INVALID');
   if(!Array.isArray(c.points)||c.points.length<1||c.points.length>40)bad('STAT_SCATTER_POINTS_INVALID');
   const range=(r,code)=>{if(!Array.isArray(r)||r.length!==2)bad(code);const x=r.map(v=>parseQ(v,code));if(qcmp(x[0],ZERO)<0||qcmp(x[0],x[1])>=0)bad(code);return x;};
   const xr=range(c.xRange,'STAT_RANGE_INVALID'),yr=range(c.yRange,'STAT_RANGE_INVALID');
@@ -409,9 +463,238 @@ function solveScatter(c){
   });
   const every=c.labelEvery===undefined?1:intIn(c.labelEvery,1,10,'STAT_LABEL_EVERY_INVALID');
   for(const k of ['grid','diagonal'])if(c[k]!==undefined&&typeof c[k]!=='boolean')bad('STAT_CHART_PLAN_INVALID');
-  return {schemaVersion:MODEL_VERSION,kind:'SCATTER',xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
+  // reference lines and highlighted rectangles (E36); a plan without them is exactly the plan it always was
+  const extra={};
+  if(c.refLines!==undefined){
+    if(!Array.isArray(c.refLines)||c.refLines.length<1||c.refLines.length>4)bad('STAT_SCATTER_GUIDE_INVALID');
+    const seen=new Set();
+    extra.refLines=c.refLines.map(g=>{
+      onlyKeys(g,['type','value'],'STAT_SCATTER_GUIDE_INVALID');
+      if(!['x=k','y=k','y=x'].includes(g.type))bad('STAT_SCATTER_GUIDE_INVALID');
+      if(g.type==='y=x'){if(g.value!==undefined||c.diagonal===true)bad('STAT_SCATTER_GUIDE_INVALID');}
+      else if(g.value===undefined)bad('STAT_SCATTER_GUIDE_INVALID');
+      let value=null;
+      if(g.type!=='y=x'){
+        const r=g.type==='x=k'?xr:yr,st=g.type==='x=k'?xs:ys;
+        value=parseQ(g.value,'STAT_SCATTER_GUIDE_INVALID');
+        if(qcmp(value,r[0])<0||qcmp(value,r[1])>0)bad('STAT_SCATTER_GUIDE_OUT_OF_RANGE');
+        if(qcmp(qmul(Q(qfloor(qdiv(value,st))),st),value)!==0)bad('STAT_SCATTER_GUIDE_NOT_ON_STEP');
+      }
+      const key=g.type+(value===null?'':qstr(value));
+      if(seen.has(key))bad('STAT_SCATTER_GUIDE_INVALID');seen.add(key);
+      return {type:g.type,value:value===null?null:qstr(value)};
+    });
+  }
+  if(c.regions!==undefined){
+    if(!Array.isArray(c.regions)||c.regions.length<1||c.regions.length>3)bad('STAT_SCATTER_REGION_INVALID');
+    extra.regions=c.regions.map(g=>{
+      onlyKeys(g,['xMin','xMax','yMin','yMax','countLabel','countUnit','markPoints','tone'],'STAT_SCATTER_REGION_INVALID');
+      if(['xMin','xMax','yMin','yMax'].every(k=>g[k]===undefined))bad('STAT_SCATTER_REGION_INVALID');
+      for(const k of ['countLabel','markPoints'])if(g[k]!==undefined&&typeof g[k]!=='boolean')bad('STAT_SCATTER_REGION_INVALID');
+      if(g.tone!==undefined&&g.tone!==1&&g.tone!==2)bad('STAT_SCATTER_REGION_INVALID');
+      if(g.countUnit!==undefined&&(g.countLabel!==true||typeof g.countUnit!=='string'||!/^[가-힣]{1,3}$/.test(g.countUnit)))bad('STAT_SCATTER_REGION_INVALID');
+      const bound=(k,r,st,dflt)=>{
+        if(g[k]===undefined)return dflt;
+        const v=parseQ(g[k],'STAT_SCATTER_REGION_INVALID');
+        if(qcmp(v,r[0])<0||qcmp(v,r[1])>0)bad('STAT_SCATTER_GUIDE_OUT_OF_RANGE');
+        if(qcmp(qmul(Q(qfloor(qdiv(v,st))),st),v)!==0)bad('STAT_SCATTER_REGION_NOT_ON_STEP');
+        return v;
+      };
+      const x0=bound('xMin',xr,xs,xr[0]),x1=bound('xMax',xr,xs,xr[1]),y0=bound('yMin',yr,ys,yr[0]),y1=bound('yMax',yr,ys,yr[1]);
+      if(qcmp(x0,x1)>=0||qcmp(y0,y1)>=0)bad('STAT_SCATTER_REGION_INVALID');
+      const inside=points.map((p,i)=>qcmp(p.x,x0)>=0&&qcmp(p.x,x1)<=0&&qcmp(p.y,y0)>=0&&qcmp(p.y,y1)<=0?i:-1).filter(i=>i>=0);
+      if(!inside.length)bad('STAT_SCATTER_REGION_EMPTY');
+      return {xMin:qstr(x0),xMax:qstr(x1),yMin:qstr(y0),yMax:qstr(y1),countLabel:g.countLabel===true,countUnit:g.countUnit??null,markPoints:g.markPoints===true,tone:g.tone??1,inside,count:inside.length};
+    });
+  }
+  return {schemaVersion:MODEL_VERSION,kind:'SCATTER',...extra,xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
     xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',''),
     points:points.map(p=>({x:qstr(p.x),y:qstr(p.y),name:p.name,onDiagonal:qcmp(p.x,p.y)===0})),onDiagonal:points.filter(p=>qcmp(p.x,p.y)===0).length};
+}
+// Dot plot (E34): the data as stacks of dots over a number line, one dot per datum. values [whole numbers] (or counts [{value,count}]); the engine tallies them, picks the label step
+// (every integer between the labelled ticks gets a short tick) and gives the line a segment that runs a unit beyond the data on each side. axisBreak {from,to}: the data have a
+// gap (an outlier far from the rest): values are all <= from or >= to, and the line is cut there by a break mark so that both parts keep one unit length.
+const DOT_MAX_POINTS=60,DOT_MAX_STACK=12,DOT_MIN_UNIT_PX=6.2,DOT_STEPS=[1,2,5,10,20,50,100],DOT_MAPL=40,DOT_MAPR=422,DOT_MAX_TICKS=14;
+const dotSegments=(points,br,step)=>{
+  const groups=br?[points.filter(p=>p.v<=br.from),points.filter(p=>p.v>=br.to)]:[points];
+  return groups.map(g=>{const lo=Math.max(0,Math.floor((g[0].v-1)/step)*step),hi=Math.ceil((g.at(-1).v+1)/step)*step;return {lo,hi};});
+};
+// where the line is cut the two end numbers next to the break need room: the gap is half the width of each (14.5 px a digit) and 8 px
+const dotGapPx=segments=>segments.length>1?14.5*(String(segments[0].hi).length+String(segments[1].lo).length)/2+8:0;
+const dotUnitPx=segments=>(DOT_MAPR-DOT_MAPL-dotGapPx(segments))/segments.reduce((t,g)=>t+g.hi-g.lo,0);
+function solveDot(c){
+  onlyKeys(c,['kind','values','counts','step','xTitle','axisBreak'],'STAT_CHART_PLAN_INVALID');
+  if((c.values===undefined)===(c.counts===undefined))bad('STAT_DOT_PLOT_INVALID');
+  const whole=v=>{const n=typeof v==='string'&&/^\d{1,4}$/.test(v)?Number(v):v;return intIn(n,0,9999,'STAT_DOT_VALUE_INVALID');};
+  const tally=new Map();
+  if(c.values!==undefined){
+    if(!Array.isArray(c.values)||c.values.length<1||c.values.length>DOT_MAX_POINTS)bad('STAT_DOT_PLOT_INVALID');
+    for(const raw of c.values){const v=whole(raw);tally.set(v,(tally.get(v)??0)+1);}
+  }else{
+    if(!Array.isArray(c.counts)||c.counts.length<1||c.counts.length>DOT_MAX_POINTS)bad('STAT_DOT_PLOT_INVALID');
+    for(const e of c.counts){
+      onlyKeys(e,['value','count'],'STAT_DOT_PLOT_INVALID');
+      if(e.value===undefined||e.count===undefined)bad('STAT_DOT_PLOT_INVALID');
+      const v=whole(e.value),k=intIn(e.count,1,DOT_MAX_STACK,'STAT_DOT_STACK_TOO_TALL');
+      if(tally.has(v))bad('STAT_DOT_PLOT_INVALID');
+      tally.set(v,k);
+    }
+  }
+  const points=[...tally.entries()].map(([v,count])=>({v,count})).sort((a,b)=>a.v-b.v);
+  if(points.some(p=>p.count>DOT_MAX_STACK))bad('STAT_DOT_STACK_TOO_TALL');
+  const total=points.reduce((t,p)=>t+p.count,0);
+  if(total>DOT_MAX_POINTS)bad('STAT_DOT_PLOT_INVALID');
+  let br=null;
+  if(c.axisBreak!==undefined){
+    onlyKeys(c.axisBreak,['from','to'],'STAT_DOT_BREAK_INVALID');
+    const from=intIn(c.axisBreak.from,0,9999,'STAT_DOT_BREAK_INVALID'),to=intIn(c.axisBreak.to,0,9999,'STAT_DOT_BREAK_INVALID');
+    if(to-from<2||points.some(p=>p.v>from&&p.v<to)||!points.some(p=>p.v<=from)||!points.some(p=>p.v>=to))bad('STAT_DOT_BREAK_INVALID');
+    br={from,to};
+  }
+  // the labelled ticks must leave room for their numbers: a step is wide enough when it is more than the longest number of the line (14.5 px a digit and 6 px between) apart
+  const fits=step=>{
+    const seg=dotSegments(points,br,step),unit=dotUnitPx(seg);
+    return (seg.length<2||seg[0].hi<seg[1].lo)&&seg.every(g=>g.hi-g.lo>=step&&(g.hi-g.lo)/step+1<=DOT_MAX_TICKS&&(step*unit>=14.5*String(g.hi).length+6||(g.hi-g.lo)/step<1))&&unit>=DOT_MIN_UNIT_PX;
+  };
+  let step;
+  if(c.step!==undefined){step=intIn(c.step,1,500,'STAT_DOT_STEP_INVALID');if(!fits(step))bad('STAT_DOT_PLOT_TOO_DENSE');}
+  else{step=DOT_STEPS.find(fits)??bad('STAT_DOT_PLOT_TOO_DENSE');}
+  const segments=dotSegments(points,br,step);
+  return {schemaVersion:MODEL_VERSION,kind:'DOT_PLOT',step,xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),total,maxStack:Math.max(...points.map(p=>p.count)),
+    points:points.map(p=>({value:String(p.v),count:p.count})),segments,...(br?{axisBreak:br}:{})};
+}
+// Normal curves (E36): the bell curve of N(mean, sd^2) drawn from the exact density, 1 to 3 curves on one x axis, with marked positions (ticks), shaded areas under a curve between two
+// of them (a tail when one end is null), the area labels the problem gives (a table value, a sum of table values, or a letter for equal areas) and pairs of positions that sit
+// symmetrically about a mean. mean and sd are exact numbers; one curve may instead be "framed" (a letter for mean and/or sd: m, σ): it is then drawn in units of σ and every position
+// is a z value (the figure shows the problem's own letters, never a number the problem does not give). A label that is a number is checked against the area the engine integrates.
+const NORM_MAX_CURVES=3,NORM_MAX_TICKS=10,NORM_MAX_SHADES=6,NORM_SD_RATIO=4,NORM_AREA_TOL=2e-4;
+const NORM_SYMBOL=/^[A-Za-zμσ]$/,NORM_TEXT=/^[A-Za-z0-9μσ+\-=.()^]{1,10}$/,NORM_NAME=/^(?:[A-Za-z0-9μσ+\-=.()^, ]{1,14}|[가-힣][가-힣A-Za-z0-9 ()]{0,9})$/,NORM_PLAIN=/^-?\d{1,6}(?:\.\d{1,4})?$/;
+const NORM_AREA_SUM=/^\d(?:\.\d{1,4})?(?:[+-]\d(?:\.\d{1,4})?){0,2}$/,NORM_AREA_SYMBOL=/^[A-Za-z?]$/;
+const normalTeX=text=>text.replaceAll('σ','\\sigma ').replaceAll('μ','\\mu ').trim();
+const tryQ=v=>{try{return parseQ(v,'STAT_NORMAL_NUMBER_INVALID');}catch(error){return null;}};
+const normalPdf=z=>Math.exp(-z*z/2)/Math.sqrt(2*Math.PI);
+function normalArea(za,zb){ // the area under the standard normal density between z values (null: no limit), by Simpson's rule
+  const lo=za===null?-9:Math.max(za,-9),hi=zb===null?9:Math.min(zb,9),n=2000,h=(hi-lo)/n;
+  let s=normalPdf(lo)+normalPdf(hi);for(let i=1;i<n;i++)s+=normalPdf(lo+i*h)*(i%2?4:2);
+  return s*h/3;
+}
+const normalSymText=(c,z)=>{ // the text of a position at z standard deviations from the mean of a framed curve: m, m+3σ, 20-1.5σ
+  if(z[0]===0n)return c.meanText;
+  const abs=z[0]<0n?Q(-z[0],z[1]):z,sign=z[0]<0n?'-':'+';
+  if(c.sdQ!==null){const off=decimalOf(qmul(abs,c.sdQ));if(off===null)bad('STAT_NORMAL_TICK_TEXT_UNREPRESENTABLE');return c.meanText+sign+off;}
+  const coef=qcmp(abs,ONE)===0?'':decimalOf(abs);
+  if(coef===null)bad('STAT_NORMAL_TICK_TEXT_UNREPRESENTABLE');
+  return c.meanText+sign+coef+c.sdText;
+};
+function solveNormal(c){
+  onlyKeys(c,['kind','curves','ticks','zAxis','shades','areaLabels','symmetry','xLabel','span'],'STAT_CHART_PLAN_INVALID');
+  if(!Array.isArray(c.curves)||c.curves.length<1||c.curves.length>NORM_MAX_CURVES)bad('STAT_NORMAL_CURVE_INVALID');
+  const ids=new Set();
+  const curves=c.curves.map(raw=>{
+    onlyKeys(raw,['id','mean','sd','label','meanLine'],'STAT_NORMAL_CURVE_INVALID');
+    if(typeof raw.id!=='string'||!/^[A-Za-z][A-Za-z0-9]{0,3}$/.test(raw.id)||ids.has(raw.id))bad('STAT_NORMAL_CURVE_INVALID');
+    ids.add(raw.id);
+    if(typeof raw.mean!=='string'&&typeof raw.mean!=='number'||typeof raw.sd!=='string'&&typeof raw.sd!=='number')bad('STAT_NORMAL_PARAM_INVALID');
+    const meanQ=tryQ(raw.mean),sdQ=tryQ(raw.sd);
+    if(meanQ===null&&!NORM_SYMBOL.test(raw.mean)||sdQ===null&&!NORM_SYMBOL.test(raw.sd))bad('STAT_NORMAL_PARAM_INVALID');
+    if(sdQ!==null&&qcmp(sdQ,ZERO)<=0)bad('STAT_NORMAL_SD_INVALID');
+    if(raw.label!==undefined&&(typeof raw.label!=='string'||!NORM_NAME.test(raw.label)))bad('STAT_NORMAL_LABEL_INVALID');
+    if(raw.meanLine!==undefined&&typeof raw.meanLine!=='boolean')bad('STAT_NORMAL_CURVE_INVALID');
+    const meanText=meanQ===null?raw.mean:decimalOf(meanQ);
+    if(meanText===null)bad('STAT_NORMAL_PARAM_INVALID');
+    return {id:raw.id,meanQ,sdQ,meanText,sdText:sdQ===null?raw.sd:decimalOf(sdQ)??qstr(sdQ),label:raw.label??null,meanLine:raw.meanLine??c.curves.length===1};
+  });
+  const framed=curves.some(k=>k.meanQ===null||k.sdQ===null),byId=new Map(curves.map(k=>[k.id,k]));
+  if(framed&&curves.length>1)bad('STAT_NORMAL_SYMBOLIC_MULTI');
+  let span=Q(4n);
+  if(c.span!==undefined){span=tryQ(c.span);if(span===null||qcmp(span,Q(5n,2n))<0||qcmp(span,Q(5n))>0)bad('STAT_NORMAL_SPAN_INVALID');}
+  let lo,hi;
+  if(framed){lo=qmul(span,Q(-1n));hi=span;}
+  else{
+    const sds=curves.map(k=>k.sdQ),sdMin=sds.reduce((a,b)=>qcmp(a,b)<=0?a:b),sdMax=sds.reduce((a,b)=>qcmp(a,b)>=0?a:b);
+    if(qcmp(sdMax,qmul(sdMin,Q(BigInt(NORM_SD_RATIO))))>0)bad('STAT_NORMAL_SD_RATIO');
+    const means=curves.map(k=>k.meanQ),mMin=means.reduce((a,b)=>qcmp(a,b)<=0?a:b),mMax=means.reduce((a,b)=>qcmp(a,b)>=0?a:b);
+    if(qcmp(qsub(mMax,mMin),qmul(sdMin,Q(6n)))>0)bad('STAT_NORMAL_WINDOW_TOO_WIDE');
+    lo=curves.map(k=>qsub(k.meanQ,qmul(span,k.sdQ))).reduce((a,b)=>qcmp(a,b)<=0?a:b);
+    hi=curves.map(k=>qadd(k.meanQ,qmul(span,k.sdQ))).reduce((a,b)=>qcmp(a,b)>=0?a:b);
+  }
+  // the marked positions
+  if(!Array.isArray(c.ticks)||c.ticks.length<1||c.ticks.length>NORM_MAX_TICKS)bad('STAT_NORMAL_TICK_INVALID');
+  const zOfX=(k,u)=>qdiv(qsub(u,k.meanQ),k.sdQ);
+  const planTicks=c.ticks.map((raw,planIndex)=>{
+    const t=typeof raw==='string'||typeof raw==='number'?{x:raw}:raw;
+    onlyKeys(t,['x','z','text','curve','hideZ'],'STAT_NORMAL_TICK_INVALID');
+    if((t.x===undefined)===(t.z===undefined))bad('STAT_NORMAL_TICK_INVALID');
+    const k=t.curve===undefined?curves[0]:byId.get(t.curve)??bad('STAT_NORMAL_TICK_INVALID');
+    if(t.hideZ!==undefined&&typeof t.hideZ!=='boolean')bad('STAT_NORMAL_TICK_INVALID');
+    let u,z;
+    if(framed){if(t.x!==undefined)bad('STAT_NORMAL_TICK_INVALID');u=z=parseQ(t.z,'STAT_NORMAL_TICK_INVALID');}
+    else if(t.x!==undefined){u=parseQ(t.x,'STAT_NORMAL_TICK_INVALID');z=zOfX(k,u);}
+    else{z=parseQ(t.z,'STAT_NORMAL_TICK_INVALID');u=qadd(k.meanQ,qmul(z,k.sdQ));}
+    if(qcmp(u,lo)<0||qcmp(u,hi)>0)bad('STAT_NORMAL_TICK_OUT_OF_WINDOW');
+    let text,tex;
+    if(t.text!==undefined){
+      if(typeof t.text!=='string'||!NORM_TEXT.test(t.text))bad('STAT_NORMAL_TICK_TEXT_INVALID');
+      if(!framed&&NORM_PLAIN.test(t.text)&&qcmp(P(t.text),u)!==0)bad('STAT_NORMAL_TICK_TEXT_MISMATCH');
+      text=t.text;tex=DISPLAY+normalTeX(text);
+    }else if(framed){text=normalSymText(k,u);tex=DISPLAY+normalTeX(text);}
+    else{text=decimalOf(u)??`${u[0]}/${u[1]}`;tex=DISPLAY+qtex(u);}
+    return {planIndex,u,z,text,tex,curve:k.id,hideZ:t.hideZ===true};
+  });
+  for(const [i,a] of planTicks.entries())for(const b of planTicks.slice(i+1))if(qcmp(a.u,b.u)===0||a.text===b.text)bad('STAT_NORMAL_TICK_DUPLICATE');
+  const ticks=[...planTicks].sort((a,b)=>qcmp(a.u,b.u));
+  const refTick=ref=>{
+    if(Number.isInteger(ref)&&ref>=0&&ref<planTicks.length)return planTicks[ref];
+    if(typeof ref==='string'){const f=planTicks.find(t=>t.text===ref);if(f)return f;}
+    return bad('STAT_NORMAL_BOUNDARY_NOT_TICKED');
+  };
+  for(const k of curves)if(k.meanLine&&!ticks.some(t=>qcmp(t.u,framed?ZERO:k.meanQ)===0))bad('STAT_NORMAL_MEAN_NOT_TICKED');
+  // shaded areas
+  const shadesRaw=c.shades===undefined?[]:c.shades;
+  if(!Array.isArray(shadesRaw)||shadesRaw.length>NORM_MAX_SHADES)bad('STAT_NORMAL_SHADE_INVALID');
+  const zOf=(k,u)=>framed?u:zOfX(k,u);
+  const shades=shadesRaw.map(raw=>{
+    onlyKeys(raw,['curve','from','to','tone'],'STAT_NORMAL_SHADE_INVALID');
+    const k=raw.curve===undefined?curves[0]:byId.get(raw.curve)??bad('STAT_NORMAL_SHADE_INVALID');
+    const from=raw.from??null,to=raw.to??null;
+    if(from===null&&to===null)bad('STAT_NORMAL_SHADE_INVALID');
+    if(raw.tone!==undefined&&raw.tone!==1&&raw.tone!==2)bad('STAT_NORMAL_SHADE_INVALID');
+    const a=from===null?null:refTick(from),b=to===null?null:refTick(to);
+    if(a&&b&&qcmp(a.u,b.u)>=0)bad('STAT_NORMAL_SHADE_RANGE');
+    const za=a?qnum(zOf(k,a.u)):null,zb=b?qnum(zOf(k,b.u)):null;
+    return {curve:k.id,from:a?qstr(a.u):null,to:b?qstr(b.u):null,tone:raw.tone??1,area:r6(normalArea(za,zb)),label:null};
+  });
+  const labelsRaw=c.areaLabels===undefined?[]:c.areaLabels;
+  if(!Array.isArray(labelsRaw)||labelsRaw.length>shades.length)bad('STAT_NORMAL_AREA_LABEL_INVALID');
+  for(const raw of labelsRaw){
+    onlyKeys(raw,['shade','text'],'STAT_NORMAL_AREA_LABEL_INVALID');
+    if(!Number.isInteger(raw.shade)||raw.shade<0||raw.shade>=shades.length||shades[raw.shade].label!==null||typeof raw.text!=='string')bad('STAT_NORMAL_AREA_LABEL_INVALID');
+    if(NORM_AREA_SUM.test(raw.text)){
+      let v=0;for(const [,sign,term] of raw.text.matchAll(/([+-]?)(\d(?:\.\d{1,4})?)/g))v+=(sign==='-'?-1:1)*qnum(P(term));
+      if(Math.abs(v-shades[raw.shade].area)>NORM_AREA_TOL)bad('STAT_NORMAL_AREA_LABEL_MISMATCH');
+    }else if(!NORM_AREA_SYMBOL.test(raw.text))bad('STAT_NORMAL_AREA_LABEL_INVALID');
+    shades[raw.shade].label=raw.text;
+  }
+  for(const [i,a] of shades.entries())for(const b of shades.slice(i+1))if(a.label!==null&&a.label===b.label&&/^[A-Za-z]$/.test(a.label)&&Math.abs(a.area-b.area)>1e-5)bad('STAT_NORMAL_AREA_SYMBOL_UNEQUAL');
+  // pairs symmetric about a mean
+  const symRaw=c.symmetry===undefined?[]:c.symmetry;
+  if(!Array.isArray(symRaw)||symRaw.length>2)bad('STAT_NORMAL_SYMMETRY_INVALID');
+  const symmetry=symRaw.map(raw=>{
+    onlyKeys(raw,['curve','pair'],'STAT_NORMAL_SYMMETRY_INVALID');
+    const k=raw.curve===undefined?curves[0]:byId.get(raw.curve)??bad('STAT_NORMAL_SYMMETRY_INVALID');
+    if(!Array.isArray(raw.pair)||raw.pair.length!==2)bad('STAT_NORMAL_SYMMETRY_INVALID');
+    const [a,b]=raw.pair.map(refTick);
+    if(a===b||qcmp(qadd(zOf(k,a.u),zOf(k,b.u)),ZERO)!==0)bad('STAT_NORMAL_SYMMETRY_MISMATCH');
+    const [first,second]=qcmp(a.u,b.u)<0?[a,b]:[b,a];
+    return {curve:k.id,pair:[qstr(first.u),qstr(second.u)]};
+  });
+  if(c.zAxis!==undefined&&typeof c.zAxis!=='boolean')bad('STAT_CHART_PLAN_INVALID');
+  if(c.zAxis===true){if(curves.length>1)bad('STAT_NORMAL_Z_AXIS_AMBIGUOUS');if(!ticks.some(t=>!t.hideZ))bad('STAT_NORMAL_Z_AXIS_EMPTY');}
+  if(c.xLabel!==undefined&&(typeof c.xLabel!=='string'||!/^[A-Za-z]$/.test(c.xLabel)))bad('STAT_NORMAL_LABEL_INVALID');
+  return {schemaVersion:MODEL_VERSION,kind:'NORMAL_CURVE',framed,span:qstr(span),window:{lo:qstr(lo),hi:qstr(hi)},xLabel:c.xLabel??'x',zAxis:c.zAxis===true,
+    curves:curves.map(k=>({id:k.id,mean:framed?k.meanText:qstr(k.meanQ),sd:framed?k.sdText:qstr(k.sdQ),label:k.label,meanLine:k.meanLine})),
+    ticks:ticks.map((t,i)=>({index:i,pos:qstr(t.u),z:framed||c.zAxis===true?qstr(t.z):null,text:t.text,tex:t.tex,curve:t.curve,hideZ:t.hideZ})),
+    shades,symmetry};
 }
 // The dice predicate: a small expression grammar (integers, the two die letters, + - *, parentheses) compared to numbers; any/all/not combine.
 function exprTokens(text){
@@ -456,24 +739,65 @@ function predicate(p,vars,env){
   const w=Number(p.value);
   return {'=':v===w,'<':v<w,'<=':v<=w,'>':v>w,'>=':v>=w}[p.cmp];
 }
+// highlightGroups [{highlight: condition | cells: [[col,row]...], tone: 1|2}] (E34): groups of cells in different greys (a cell in two groups is refused). colVar / rowVar: a lowercase letter
+// (written in the corner and used in conditions), null (nothing written) or a Hangul phrase (written beside the table); one that is not a letter is called a (across) or b (down) in conditions.
 function solveDice(c){
-  onlyKeys(c,['kind','faces','cell','highlight','colVar','rowVar'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','faces','cell','highlight','highlightGroups','colVar','rowVar'],'STAT_CHART_PLAN_INVALID');
   const faces=c.faces===undefined?6:intIn(c.faces,2,8,'STAT_DICE_FACES_INVALID');
   const cell=c.cell===undefined?'PAIR':c.cell;
   if(!['PAIR','SUM','PRODUCT','NONE'].includes(cell))bad('STAT_DICE_CELL_INVALID');
-  const colVar=c.colVar??'a',rowVar=c.rowVar??'b';
-  if(!/^[a-z]$/.test(colVar)||!/^[a-z]$/.test(rowVar)||colVar===rowVar)bad('STAT_DICE_VARIABLE_INVALID');
+  const nameOf=(v,fallback)=>{
+    if(v===undefined)return {letter:fallback,show:'LETTER'};
+    if(v===null)return {letter:fallback,show:'NONE'};
+    if(typeof v==='string'&&/^[a-z]$/.test(v))return {letter:v,show:'LETTER'};
+    if(typeof v==='string'&&/^[가-힣][가-힣 ]{0,7}$/u.test(v)&&!/ {2}| $/.test(v))return {letter:fallback,show:'TEXT',text:v};
+    return bad('STAT_DICE_VARIABLE_INVALID');
+  };
+  const col=nameOf(c.colVar,'a'),row=nameOf(c.rowVar,'b'),colVar=col.letter,rowVar=row.letter;
+  if(colVar===rowVar)bad('STAT_DICE_VARIABLE_INVALID');
+  if(c.highlight!==undefined&&c.highlightGroups!==undefined)bad('STAT_DICE_GROUP_INVALID');
   if(c.highlight!==undefined)checkPredicate(c.highlight,[colVar,rowVar]);
+  let groups=null;
+  if(c.highlightGroups!==undefined){
+    if(!Array.isArray(c.highlightGroups)||c.highlightGroups.length<1||c.highlightGroups.length>4)bad('STAT_DICE_GROUP_INVALID');
+    groups=c.highlightGroups.map(g=>{
+      onlyKeys(g,['highlight','cells','tone'],'STAT_DICE_GROUP_INVALID');
+      if((g.highlight===undefined)===(g.cells===undefined))bad('STAT_DICE_GROUP_INVALID');
+      const tone=g.tone===undefined?1:g.tone;
+      if(tone!==1&&tone!==2)bad('STAT_DICE_GROUP_INVALID');
+      if(g.highlight!==undefined){checkPredicate(g.highlight,[colVar,rowVar]);return {tone,highlight:g.highlight};}
+      if(!Array.isArray(g.cells)||g.cells.length<1||g.cells.length>faces*faces)bad('STAT_DICE_GROUP_INVALID');
+      const seen=new Set();
+      for(const e of g.cells){
+        if(!Array.isArray(e)||e.length!==2)bad('STAT_DICE_GROUP_INVALID');
+        const a=intIn(e[0],1,faces,'STAT_DICE_GROUP_INVALID'),b=intIn(e[1],1,faces,'STAT_DICE_GROUP_INVALID');
+        if(seen.has(a*100+b))bad('STAT_DICE_GROUP_INVALID');
+        seen.add(a*100+b);
+      }
+      return {tone,cells:g.cells.map(e=>[e[0],e[1]])};
+    });
+  }
   const cells=[];
   for(let r=1;r<=faces;r++)for(let k=1;k<=faces;k++){
     const env={[colVar]:k,[rowVar]:r};
-    cells.push({col:k,row:r,text:cell==='PAIR'?`(${k},${r})`:cell==='SUM'?String(k+r):cell==='PRODUCT'?String(k*r):'',highlighted:c.highlight===undefined?false:predicate(c.highlight,[colVar,rowVar],env)});
+    let highlighted=c.highlight===undefined?false:predicate(c.highlight,[colVar,rowVar],env),tone=0;
+    if(groups){
+      const hit=groups.filter(g=>g.highlight?predicate(g.highlight,[colVar,rowVar],env):g.cells.some(e=>e[0]===k&&e[1]===r));
+      if(hit.length>1)bad('STAT_DICE_GROUP_OVERLAP');
+      highlighted=hit.length===1;tone=highlighted?hit[0].tone:0;
+    }
+    cells.push({col:k,row:r,text:cell==='PAIR'?`(${k},${r})`:cell==='SUM'?String(k+r):cell==='PRODUCT'?String(k*r):'',highlighted,...(groups&&highlighted?{tone}:{})});
   }
-  return {schemaVersion:MODEL_VERSION,kind:'DICE_TABLE',faces,cell,colVar,rowVar,highlight:c.highlight??null,cells,highlightedCount:cells.filter(x=>x.highlighted).length,total:faces*faces};
+  if(groups&&groups.some(g=>!cells.some(x=>x.highlighted&&x.tone===g.tone&&(g.highlight?predicate(g.highlight,[colVar,rowVar],{[colVar]:x.col,[rowVar]:x.row}):g.cells.some(e=>e[0]===x.col&&e[1]===x.row)))))bad('STAT_DICE_GROUP_EMPTY');
+  return {schemaVersion:MODEL_VERSION,kind:'DICE_TABLE',faces,cell,colVar,rowVar,...(col.show!=='LETTER'?{colLabel:col.show==='TEXT'?col.text:null}:{}),...(row.show!=='LETTER'?{rowLabel:row.show==='TEXT'?row.text:null}:{}),
+    highlight:c.highlight??null,...(groups?{highlightGroups:groups}:{}),cells,highlightedCount:cells.filter(x=>x.highlighted).length,total:faces*faces};
 }
 function solveTree(c){
-  onlyKeys(c,['kind','root','showPathProbability'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','root','showPathProbability','highlightPaths','pathColumn'],'STAT_CHART_PLAN_INVALID');
   if(c.showPathProbability!==undefined&&typeof c.showPathProbability!=='boolean')bad('STAT_CHART_PLAN_INVALID');
+  // pathColumn (E34): the path probabilities stand in one column right of the deepest leaf instead of each beside its own leaf (for leaves of different depths, whose wide labels would meet the deeper branches)
+  if(c.pathColumn!==undefined&&typeof c.pathColumn!=='boolean')bad('STAT_CHART_PLAN_INVALID');
+  if(c.pathColumn===true&&c.showPathProbability!==true)bad('STAT_TREE_PATH_NEEDS_PROBABILITIES');
   onlyKeys(c.root,['label','children'],'STAT_TREE_INVALID');
   const nodes=[];
   const lab=v=>{if(typeof v!=='string'||v.length<1||v.length>6||/[\u0000-\u001f<>&"\\]/.test(v))bad('STAT_TREE_LABEL_INVALID');return v;};
@@ -501,9 +825,35 @@ function solveTree(c){
   for(const n of nodes){n.path=n.parent===null?ONE:(hasP?qmul(byId.get(n.parent).path,n.p):null);}
   // every leaf at the same depth is not required, but the path probabilities of the leaves must add up to 1.
   if(hasP&&qcmp(leaves.map(n=>n.path).reduce(qadd,ZERO),ONE)!==0)bad('STAT_TREE_BRANCH_PROBABILITY_SUM');
-  return {schemaVersion:MODEL_VERSION,kind:'TREE',showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),
+  // highlightPaths [[label, label, ...]] (E34): each path names the labels from the root's child down to a leaf; its branches are drawn heavy and its leaf is ringed
+  const lit=[];
+  if(c.highlightPaths!==undefined){
+    if(!Array.isArray(c.highlightPaths)||c.highlightPaths.length<1||c.highlightPaths.length>12)bad('STAT_TREE_HIGHLIGHT_INVALID');
+    for(const path of c.highlightPaths){
+      if(!Array.isArray(path)||path.length<1||path.length>3||path.some(x=>typeof x!=='string'))bad('STAT_TREE_HIGHLIGHT_INVALID');
+      let cur=byId.get('n0');
+      for(const label of path){const next=cur.children.map(id=>byId.get(id)).filter(n=>n.label===label);if(next.length!==1)bad('STAT_TREE_HIGHLIGHT_INVALID');cur=next[0];}
+      if(cur.children.length||lit.includes(cur.id))bad('STAT_TREE_HIGHLIGHT_INVALID');
+      lit.push(cur.id);
+    }
+    lit.sort((a,b)=>leaves.findIndex(n=>n.id===a)-leaves.findIndex(n=>n.id===b));
+  }
+  return {schemaVersion:MODEL_VERSION,kind:'TREE',showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),...(lit.length?{highlightLeaves:lit}:{}),...(c.pathColumn===true?{pathColumn:true}:{}),
     nodes:nodes.map(n=>({id:n.id,parent:n.parent,depth:n.depth,label:n.label,p:n.p&&qstr(n.p),path:hasP&&!n.children.length?qstr(n.path):null,children:n.children})),leaves:leaves.map(n=>n.id)};
 }
+
+// --- text widths for the frame: a figure whose legend, axis title or leaf labels need more room than the standard frame grows (E34) ---------------------------------
+// The size of the figure must be known before it is composed (the Archive measures that size), so the room labels need is worked out from the model with the same
+// typesetter and the policy's font size that composing uses. Without a policy the smallest base font (20 px) is assumed.
+let measureTypeset=null;
+const DEFAULT_FONT_PX=20,MEASURE_IDENTITY={visualAssetKey:'sha256:stat-chart-measure'};
+function labelSize(label,fontPx){
+  try{
+    measureTypeset??=typesetter();
+    return measureTypeset({id:'measure',owner:'measure',factRole:'DERIVED_INTERMEDIATE',fontPx,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},MEASURE_IDENTITY).intrinsic;
+  }catch(error){return {width:0,height:0};}   // a label that cannot be typeset is refused by composing with its own code
+}
+const textWidth=(text,fontPx)=>labelSize({kind:'TEXT',text},fontPx).width;
 
 // --- geometry shared by the charts -------------------------------------------------------------------------------------------------------
 const W=548,SAFE=12,MAPL=76,MAPR=422,ARROW_TIP=434,TITLE_X=442,AXIS_TOP=54,TICK=5,LABEL_BELOW=34;
@@ -514,11 +864,16 @@ const STYLE={
   brk:'stroke="#111" stroke-width="1.2" fill="none"',frame:'fill="none" stroke="#111" stroke-width="1.2"',rule:'stroke="#111" stroke-width="1.2" fill="none"',
   mark:'fill="none" stroke="#111" stroke-width="1.8"',box:'fill="#ececec" stroke="#111" stroke-width="1.4"',median:'stroke="#111" stroke-width="3" fill="none"',
   whisker:'stroke="#111" stroke-width="1.4" fill="none"',cell:'fill="#fff" stroke="#111" stroke-width="1"',cellHi:'fill="#c9c9c9" stroke="#111" stroke-width="1"',
-  head:'fill="#f1f1f1" stroke="#111" stroke-width="1"',diag:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"',branch:'stroke="#111" stroke-width="1.4" fill="none"',
+  cellHi2:'fill="#9b9b9b" stroke="#111" stroke-width="1"',head:'fill="#f1f1f1" stroke="#111" stroke-width="1"',diag:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"',branch:'stroke="#111" stroke-width="1.4" fill="none"',branchHi:'stroke="#111" stroke-width="3" fill="none"',
   legend0:'stroke="#111" stroke-width="2" fill="none"',legend1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="7 4"',diagonal:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"',
   barHi2:'fill="#8e8e8e" stroke="#111" stroke-width="1.2"',barR:'fill="#ececec" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',barHiR:'fill="#b5b5b5" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',
   barHi2R:'fill="#8e8e8e" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',markRing:'fill="none" stroke="#111" stroke-width="1.8"',markDisc:'fill="#111" stroke="none"',
-  sum0:'stroke="#111" stroke-width="1.2" fill="none"',sum1:'stroke="#111" stroke-width="1.2" fill="none" stroke-dasharray="4 3"'
+  sum0:'stroke="#111" stroke-width="1.2" fill="none"',sum1:'stroke="#111" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
+  barU:'fill="none" stroke="#111" stroke-width="1.2" stroke-dasharray="1.5 3.5"',
+  region1:'fill="#111" fill-opacity="0.12" stroke="none"',region2:'fill="#111" fill-opacity="0.26" stroke="none"',refline:'stroke="#333" stroke-width="1.8" fill="none"',
+  ncurve0:'stroke="#111" stroke-width="2" fill="none"',ncurve1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="8 4"',ncurve2:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="2 4"',
+  shade1:'fill="#111" fill-opacity="0.16" stroke="none"',shade2:'fill="#111" fill-opacity="0.34" stroke="none"',guide:'stroke="#444" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
+  leader:'stroke="#333" stroke-width="1" fill="none"'
 };
 const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6(x1),y1:r6(y1),x2:r6(x2),y2:r6(y2),data,layer});
 const rect=(id,role,cls,x,y,width,height,data={},layer=40)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
@@ -541,17 +896,24 @@ const breakMark=(prims,axis,x,y)=>{
 // --- the charts: spec = ordered primitives + labels at anchors (positions need no label widths; the tree's branch ends are placed when labels are typeset) --------
 // A class-sum bracket sits under the x tick labels: the first row's bottom line is SUM_Y0 below the axis, each further row (brackets that would overlap) SUM_PITCH lower; its text hangs beneath it.
 const SUM_Y0=36,SUM_PITCH=44,SUM_INSET=2.5,SUM_ARM=5,SUM_TEXT_H=33,SUM_TEXT_GAP=3;
+const SUM_JOIN_DROP=10; // a group of class runs (classSums[].classes): each run's bracket sends a stem this far down to one joining line, the label hangs beneath it
+const UNKNOWN_BAR_FRACTION=0.4; // a hidden class drawn as a dotted outline this fraction of the plot high: a place-holder, not a value
 const MARK_R={1:8,2:6};
-function freqSpec(m){
+function freqSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
   const n=m.classes.length,w=N(m.width),b0=N(m.boundaries[0]),bn=N(m.boundaries[n]),poly=m.kind==='FREQUENCY_POLYGON'||m.polygon;
   const marks=m.marks??[],sums=m.classSums??[],restored=m.restored??[],tone2=m.highlightTone2??[];
   let lowU,yAxisU,breakU=null;
   if(b0===0){lowU=poly?-.75*w:0;yAxisU=0;}else{lowU=b0-(poly?1.2:.8)*w;yAxisU=lowU;breakU=lowU+.3*w;}
   // each class sum goes in the first row where no earlier bracket of the figure overlaps its classes
-  const rowOf=[];
-  sums.forEach((sm,k)=>{let r=0;while(sums.some((o,j)=>j<k&&rowOf[j]===r&&o.from<=sm.to&&sm.from<=o.to))r++;rowOf.push(r);});
+  // (a figure with a group of runs puts the plain brackets first and the groups below them, so a group's joining line never runs through a plain bracket's label)
+  const groups=sums.some(sm=>sm.runs),pitch=SUM_PITCH+(groups?SUM_JOIN_DROP:0),rowOf=sums.map(()=>null);
+  [...sums.keys()].sort((a,b)=>(groups?(sums[a].runs?1:0)-(sums[b].runs?1:0):0)||a-b).forEach(k=>{const sm=sums[k];let r=0;while(sums.some((o,j)=>rowOf[j]===r&&j!==k&&o.from<=sm.to&&sm.from<=o.to))r++;rowOf[k]=r;});
   const sumRows=rowOf.length?Math.max(...rowOf)+1:0;
-  const highU=bn+(poly?.8:.45)*w,PLOT_H=210,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=sumRows?BASE+SUM_Y0+(sumRows-1)*SUM_PITCH+SUM_TEXT_GAP+SUM_TEXT_H+SAFE:BASE+TICK+4+LABEL_BELOW+SAFE;
+  // axis titles longer than 14 characters break into two lines (a y title adds a line of room above the axis); the legend and the x title may widen the frame
+  const xLines=titleLines(m.xTitle),yLines=titleLines(m.yTitle),lineH=Math.ceil(1.5*fontPx),top=AXIS_TOP+(yLines.length-1)*lineH;
+  const right=Math.max(...xLines.map(line=>TITLE_X+textWidth(line,fontPx)),...(m.series.length>1?m.series.map(sr=>TITLE_X+27+textWidth(sr.name,fontPx)):[0])),extraWidth=Math.max(0,Math.ceil(right+SAFE)-W);
+  const highU=bn+(poly?.8:.45)*w,PLOT_H=210,PT=top+18,BASE=PT+PLOT_H,H=sumRows?BASE+SUM_Y0+(sumRows-1)*pitch+(groups?SUM_JOIN_DROP:0)+SUM_TEXT_GAP+SUM_TEXT_H+SAFE:BASE+TICK+4+LABEL_BELOW+SAFE;
   const px=u=>r6(MAPL+(u-lowU)/(highU-lowU)*(MAPR-MAPL)),T=N(m.y.top),py=v=>r6(BASE-v/T*PLOT_H),yAxisPx=px(yAxisU);
   const prims=[],labels=[];
   const ys=m.y.ticks.map(t=>({t,v:N(t)}));
@@ -565,7 +927,13 @@ function freqSpec(m){
     const v=N(m.series[0].values[i]),tone=m.highlight.includes(i)?(tone2.includes(i)?2:1):0,rebuilt=restored.includes(i);
     prims.push(rect(`bar-s0-${i}`,'bar',['bar','barHi','barHi2'][tone]+(rebuilt?'R':''),px(N(k.lo)),py(v),px(N(k.hi))-px(N(k.lo)),BASE-py(v),{series:0,class:i,highlight:tone,...(rebuilt?{restored:1}:{})},40));
   }
-  arrows(prims,{xStartPx:px(lowU),yAxisPx,base:BASE});
+  const maxRel=Math.max(...(m.unknown??[]).map(u=>u.relHeight===undefined?1:N(u.relHeight)),1e-9);
+  for(const u of m.unknown??[]){ // a dotted outline in the hidden class's place with its symbol inside (never a bar: no value is drawn)
+    const k=m.classes[u.class],x0=px(N(k.lo)),x1=px(N(k.hi)),h=u.relHeight===undefined?UNKNOWN_BAR_FRACTION*PLOT_H:UNKNOWN_BAR_FRACTION*PLOT_H*N(u.relHeight)/maxRel;
+    prims.push(rect(`unknown-s0-${u.class}`,'bar-unknown','barU',x0,BASE-h,x1-x0,h,{series:0,class:u.class},40));
+    labels.push(math(`unknown-${u.class}-label`,'unknown-label',`unknown-s0-${u.class}`,DISPLAY+u.label,u.label,'center','middle',(x0+x1)/2,BASE-h/2,{class:u.class}));
+  }
+  arrows(prims,{xStartPx:px(lowU),yAxisPx,base:BASE,tipY:top});
   if(breakU!==null)breakMark(prims,'x',px(breakU),BASE);
   for(const [i,bb] of m.boundaries.entries()){
     const x=px(N(bb));
@@ -577,8 +945,11 @@ function freqSpec(m){
     labels.push(math(`y-tick-${t.replace('/','_')}-label`,'y-tick',`y-tick-${t.replace('/','_')}`,DISPLAY+qtex(P(t)),t,'end','middle',yAxisPx-TICK-4,py(v),{value:t}));
   }
   if(breakU!==null)labels.push(math('origin','origin','x-axis','O','O','end','top',yAxisPx-6,BASE+4));
-  labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
-  labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,AXIS_TOP-4));
+  xLines.forEach((line,j)=>labels.push(textLabel(j?`x-title-${j+1}`:'x-title','axis-title','x-axis',line,'start','middle',TITLE_X,BASE+(j-(xLines.length-1)/2)*lineH)));
+  yLines.forEach((line,j)=>{ // a y title wider than the room left of the axis starts at the frame's edge instead of overhanging it
+    const wide=yAxisPx-textWidth(line,fontPx)/2<SAFE;
+    labels.push(textLabel(j?`y-title-${j+1}`:'y-title','axis-title','y-axis',line,wide?'start':'center','bottom',wide?SAFE:yAxisPx,top-4-(yLines.length-1-j)*lineH));
+  });
   const at=(s,k)=>[px(N(m.series[s].vertices[k][0])),py(N(m.series[s].vertices[k][1]))]; // the drawn place of a (known) polygon vertex
   if(poly)for(const [s,sr] of m.series.entries()){
     const pts=sr.vertices.map(v=>v===null?null:[px(N(v[0])),py(N(v[1]))]);
@@ -603,19 +974,35 @@ function freqSpec(m){
     if(restored.includes(i)&&!m.showRestoredValues||(m.hideValues??[]).includes(i))continue; // the value of a restored bar, or of a class the plan hides, is what the problem asks for
     valueLabel(`value-${i}`,m.kind==='HISTOGRAM'&&!poly?`bar-s0-${i}`:`vertex-s0-${i+1}`,0,i,{value:v,class:i});
   }
+  if(m.showEndValues)for(const k of [0,n+1]){ // the two zero-frequency end points of a polygon write their 0, placed like a value label
+    const [ax,ay]=at(0,k),gap=9;
+    labels.push({...math(`end-value-${k?'last':'first'}`,'end-value',`vertex-s0-${k}`,DISPLAY+'0','0','center','bottom',ax,ay-gap,{vertex:k}),place:{x:ax,y:ay,gap}});
+  }
   for(const mk of marks)if(mk.showValue)valueLabel(`value-s${mk.series}-c${mk.class}`,`vertex-s${mk.series}-${mk.class+1}`,mk.series,mk.class,{value:m.series[mk.series].values[mk.class],class:mk.class,series:mk.series});
+  // legend entries stand 30 apart; a font so large that two lines would touch (the frame grew, so the policy's font did) spaces them by its own line height
+  const legendHeight=m.series.length>1?labelSize({kind:'TEXT',text:'수영'},fontPx).height:0,legendPitch=legendHeight<=30?30:Math.ceil(legendHeight)+1;
   if(m.series.length>1)for(const [s,sr] of m.series.entries()){
-    const y=PT+14+s*30;
+    const y=PT+14+s*legendPitch;
     prims.push(L(`legend-line-${s}`,'legend-line','legend'+s,TITLE_X,y,TITLE_X+20,y,{series:s}));
     labels.push(textLabel(`legend-${s}`,'legend',`legend-line-${s}`,sr.name,'start','middle',TITLE_X+27,y,{series:s}));
   }
   sums.forEach((sm,k)=>{ // a bracket under the axis labels from the left edge of class `from` to the right edge of class `to`; its sum is written beneath
-    const xl=px(N(m.boundaries[sm.from]))+SUM_INSET,xr=px(N(m.boundaries[sm.to+1]))-SUM_INSET,yb=BASE+SUM_Y0+rowOf[k]*SUM_PITCH,id=`class-sum-${k}`;
+    const yb=BASE+SUM_Y0+rowOf[k]*pitch,id=`class-sum-${k}`;
+    if(sm.runs){ // a group of runs: one bracket per run, a stem from each down to one joining line, the sum written under the middle of it
+      const spans=sm.runs.map(([a,b])=>({a,b,xl:px(N(m.boundaries[a]))+SUM_INSET,xr:px(N(m.boundaries[b+1]))-SUM_INSET}));
+      spans.forEach((sp,j)=>prims.push({t:'polyline',id:`${id}-run-${j+1}`,role:'class-sum',cls:'sum'+sm.series,points:[[sp.xl,yb-SUM_ARM],[sp.xl,yb],[sp.xr,yb],[sp.xr,yb-SUM_ARM]],data:{series:sm.series,from:sp.a,to:sp.b,group:k,run:j+1},layer:50}));
+      const xc=spans.map(sp=>(sp.xl+sp.xr)/2),yj=yb+SUM_JOIN_DROP;
+      prims.push({t:'polyline',id:`${id}-join`,role:'class-sum-join',cls:'sum'+sm.series,points:[[xc[0],yb],[xc[0],yj],[xc.at(-1),yj],[xc.at(-1),yb]],data:{series:sm.series,from:sm.from,to:sm.to,group:k},layer:50});
+      xc.slice(1,-1).forEach((x,j)=>prims.push(L(`${id}-stem-${j+2}`,'class-sum-stem','sum'+sm.series,x,yb,x,yj,{group:k,run:j+2},50)));
+      if(sm.label!==null)labels.push(textLabel(`${id}-label`,'class-sum',`${id}-join`,sm.label+sm.unit,'center','top',(xc[0]+xc.at(-1))/2,yj+SUM_TEXT_GAP,{series:sm.series,from:sm.from,to:sm.to,group:k}));
+      return;
+    }
+    const xl=px(N(m.boundaries[sm.from]))+SUM_INSET,xr=px(N(m.boundaries[sm.to+1]))-SUM_INSET;
     prims.push({t:'polyline',id,role:'class-sum',cls:'sum'+sm.series,points:[[xl,yb-SUM_ARM],[xl,yb],[xr,yb],[xr,yb-SUM_ARM]],data:{series:sm.series,from:sm.from,to:sm.to},layer:50});
     if(sm.label!==null)labels.push(textLabel(`${id}-label`,'class-sum',id,sm.label+sm.unit,'center','top',(xl+xr)/2,yb+SUM_TEXT_GAP,{series:sm.series,from:sm.from,to:sm.to}));
   });
-  const newer=marks.length||sums.length||restored.length||tone2.length||m.series.some(sr=>sr.vertices.includes(null)); // a plan using none of the newer fields keeps its figure exactly
-  return {size:{width:W,height:H},prims,labels,valueClearance:newer?2.5:0};
+  const newer=marks.length||sums.length||restored.length||tone2.length||(m.unknown??[]).length||m.showEndValues||m.series.some(sr=>sr.vertices.includes(null)); // a plan using none of the newer fields keeps its figure exactly
+  return {size:{width:W+extraWidth,height:H},prims,labels,valueClearance:newer?2.5:0};
 }
 function stemSpec(m){
   const classes=m.classGroups??[],two=m.groups.length===2,PITCH=24,STEMW=48,PAD=14,HEAD_H=34,LBL=m.rankLabels?18:0,ROW_H=(classes.length?54:30)+LBL,RAISE=classes.length?10:0,X0=SAFE+6; // RAISE: leaves sit above the row middle so a class bracket and its count fit under them; LBL: room above each row for the order numbers of circled leaves
@@ -687,8 +1074,8 @@ function boxSpec(m){
   }
   return {size:{width:W,height:H},prims,labels};
 }
-function scatterSpec(m){
-  const xlo=N(m.xRange[0]),xhi=N(m.xRange[1]),ylo=N(m.yRange[0]),yhi=N(m.yRange[1]),xs=N(m.xStep),ys=N(m.yStep);
+function scatterSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,xlo=N(m.xRange[0]),xhi=N(m.xRange[1]),ylo=N(m.yRange[0]),yhi=N(m.yRange[1]),xs=N(m.xStep),ys=N(m.yStep);
   const dxLo=xlo>0?xlo-.8*xs:0,dxHi=xhi+.6*xs,dyLo=ylo>0?ylo-.8*ys:0,dyHi=yhi+.5*ys,PLOT_H=250,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=BASE+TICK+4+LABEL_BELOW+SAFE;
   const px=u=>r6(MAPL+(u-dxLo)/(dxHi-dxLo)*(MAPR-MAPL)),py=v=>r6(BASE-(v-dyLo)/(dyHi-dyLo)*PLOT_H),yAxisPx=px(dxLo);
   const prims=[],labels=[];
@@ -716,19 +1103,40 @@ function scatterSpec(m){
   if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
   if(m.yTitle)labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,AXIS_TOP-4));
   if(m.diagonal){const t0=Math.max(xlo,ylo),t1=Math.min(xhi,yhi);prims.push(L('diagonal','diagonal','diagonal',px(t0),py(t0),px(t1),py(t1),{},35));}
+  for(const [j,g] of (m.regions??[]).entries()){
+    const x0=px(N(g.xMin)),x1=px(N(g.xMax)),y0=py(N(g.yMax)),y1=py(N(g.yMin));
+    prims.push(rect(`region-${j}`,'scatter-region',`region${g.tone}`,x0,y0,x1-x0,y1-y0,{index:j,xmin:g.xMin,xmax:g.xMax,ymin:g.yMin,ymax:g.yMax,tone:g.tone},18));
+    if(g.markPoints)for(const i of g.inside)prims.push({t:'circle',id:`ring-${j}-${i}`,role:'point-ring',cls:'markRing',cx:px(N(m.points[i].x)),cy:py(N(m.points[i].y)),r:7.6,data:{region:j,point:i},layer:72});
+    if(g.countLabel){
+      const text=String(g.count)+(g.countUnit??''),at={x:x1-6,y:y0+6};
+      labels.push({...(g.countUnit?textLabel(`region-${j}-count`,'count-value',`region-${j}`,text,'end','top',at.x,at.y,{region:j,value:String(g.count)}):math(`region-${j}-count`,'count-value',`region-${j}`,DISPLAY+String(g.count),String(g.count),'end','top',at.x,at.y,{region:j,value:String(g.count)})),place:{x:at.x,y:at.y,gap:4}});
+    }
+  }
+  for(const [i,g] of (m.refLines??[]).entries()){
+    if(g.type==='x=k'){const x=px(N(g.value));prims.push(L(`ref-${i}`,'ref-line','refline',x,py(ylo),x,py(yhi),{type:g.type,value:g.value},36));}
+    else if(g.type==='y=k'){const y=py(N(g.value));prims.push(L(`ref-${i}`,'ref-line','refline',px(xlo),y,px(xhi),y,{type:g.type,value:g.value},36));}
+    else{const t0=Math.max(xlo,ylo),t1=Math.min(xhi,yhi);prims.push(L(`ref-${i}`,'ref-line','refline',px(t0),py(t0),px(t1),py(t1),{type:g.type},36));}
+  }
   m.points.forEach((p,i)=>{
     prims.push({t:'circle',id:`pt-${i}`,role:'point',cls:'dot',cx:px(N(p.x)),cy:py(N(p.y)),r:3.6,data:{index:i},layer:70});
     if(p.name)labels.push(math(`pt-${i}-name`,'point-name',`pt-${i}`,p.name,p.name,'start','middle',px(N(p.x))+9,py(N(p.y)),{index:i,value:p.name}));
   });
-  return {size:{width:W,height:H},prims,labels};
+  const extraWidth=m.xTitle?Math.max(0,Math.ceil(TITLE_X+textWidth(m.xTitle,fontPx)+SAFE)-W):0;   // an x title longer than the room right of the arrow widens the frame (E36); a title that fits leaves the figure as it was
+  return {size:{width:W+extraWidth,height:H},prims,labels};
 }
-function diceSpec(m){
-  const CELL=m.cell==='PAIR'?54:40,n=m.faces,x0=SAFE+14,y0=SAFE+14,width=x0*2+(n+1)*CELL,height=y0*2+(n+1)*CELL;
+function diceSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,CELL=m.cell==='PAIR'?54:40,n=m.faces;
+  // a variable written beside the table (a Hangul phrase) takes a band above the columns or left of the rows; letters stand in the corner
+  const colText=typeof m.colLabel==='string',rowText=typeof m.rowLabel==='string',lineH=Math.ceil(1.5*fontPx);
+  const x0=SAFE+14+(rowText?Math.ceil(textWidth(m.rowLabel,fontPx))+10:0),y0=SAFE+14+(colText?lineH+6:0),width=x0+(n+1)*CELL+SAFE+14,height=y0+(n+1)*CELL+SAFE+14;
+  const colLetter=m.colLabel===undefined,rowLetter=m.rowLabel===undefined;
   const prims=[],labels=[];
   prims.push(rect('corner','head','head',x0,y0,CELL,CELL,{},40));
-  prims.push(L('corner-diagonal','rule','rule',x0,y0,x0+CELL,y0+CELL,{},41));
-  labels.push(math('corner-col','var','corner',m.colVar,m.colVar,'center','middle',x0+CELL*.72,y0+CELL*.3,{value:m.colVar,axis:'col'}));
-  labels.push(math('corner-row','var','corner',m.rowVar,m.rowVar,'center','middle',x0+CELL*.28,y0+CELL*.7,{value:m.rowVar,axis:'row'}));
+  if(colLetter||rowLetter)prims.push(L('corner-diagonal','rule','rule',x0,y0,x0+CELL,y0+CELL,{},41));
+  if(colLetter)labels.push(math('corner-col','var','corner',m.colVar,m.colVar,'center','middle',x0+CELL*.72,y0+CELL*.3,{value:m.colVar,axis:'col'}));
+  if(rowLetter)labels.push(math('corner-row','var','corner',m.rowVar,m.rowVar,'center','middle',x0+CELL*.28,y0+CELL*.7,{value:m.rowVar,axis:'row'}));
+  if(colText)labels.push(textLabel('name-col','var-name','corner',m.colLabel,'center','bottom',x0+CELL+n*CELL/2,y0-4,{value:m.colLabel,axis:'col'}));
+  if(rowText)labels.push(textLabel('name-row','var-name','corner',m.rowLabel,'end','middle',x0-8,y0+CELL+n*CELL/2,{value:m.rowLabel,axis:'row'}));
   for(let k=1;k<=n;k++){
     prims.push(rect(`head-col-${k}`,'head','head',x0+k*CELL,y0,CELL,CELL,{axis:'col',value:k},40),rect(`head-row-${k}`,'head','head',x0,y0+k*CELL,CELL,CELL,{axis:'row',value:k},40));
     labels.push(math(`head-col-${k}-label`,'head-value',`head-col-${k}`,String(k),String(k),'center','middle',x0+(k+.5)*CELL,y0+CELL/2,{value:String(k),axis:'col'}));
@@ -736,45 +1144,152 @@ function diceSpec(m){
   }
   for(const c of m.cells){
     const id=`cell-${c.col}-${c.row}`;
-    prims.push(rect(id,'cell',c.highlighted?'cellHi':'cell',x0+c.col*CELL,y0+c.row*CELL,CELL,CELL,{col:c.col,row:c.row,highlight:c.highlighted?1:0},40));
+    prims.push(rect(id,'cell',c.highlighted?(c.tone===2?'cellHi2':'cellHi'):'cell',x0+c.col*CELL,y0+c.row*CELL,CELL,CELL,{col:c.col,row:c.row,highlight:c.highlighted?(c.tone??1):0},40));
     if(c.text)labels.push(math(id+'-label','cell-value',id,c.text,c.text,'center','middle',x0+(c.col+.5)*CELL,y0+(c.row+.5)*CELL,{value:c.text,col:c.col,row:c.row}));
   }
   return {size:{width,height},prims,labels};
 }
 const TREE_COLW=150,TREE_ROW=68,TREE_X0=44,TREE_TOP=58;
-function treeCenters(m){
+// A tree that uses the E34 marks (highlighted paths, a path column) spaces its leaves wider, and wider still with a larger font, so that the stacked fractions of neighbouring branches keep apart.
+const treeRow=(m,fontPx)=>m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
+function treeCenters(m,rowH=TREE_ROW){
   const byId=new Map(m.nodes.map(n=>[n.id,n])),pos=new Map();let leaf=0;
-  const place=id=>{const n=byId.get(id);if(!n.children.length){pos.set(id,TREE_TOP+TREE_ROW*leaf++);return;}n.children.forEach(place);pos.set(id,(pos.get(n.children[0])+pos.get(n.children[n.children.length-1]))/2);};
+  const place=id=>{const n=byId.get(id);if(!n.children.length){pos.set(id,TREE_TOP+rowH*leaf++);return;}n.children.forEach(place);pos.set(id,(pos.get(n.children[0])+pos.get(n.children[n.children.length-1]))/2);};
   place('n0');
   return new Map(m.nodes.map(n=>[n.id,{x:r6(TREE_X0+n.depth*TREE_COLW),y:r6(pos.get(n.id))}]));
 }
-function treeSpec(m){
-  const c=treeCenters(m),leaves=m.leaves.length,width=TREE_X0+m.maxDepth*TREE_COLW+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*TREE_ROW;
-  const labels=[],prims=[];
+function treeSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
+  const rowH=treeRow(m,fontPx),c=treeCenters(m,rowH),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*TREE_COLW+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
+  const labels=[],prims=[],byIdNode=new Map(m.nodes.map(n=>[n.id,n])),lit=new Set(m.highlightLeaves??[]),litBranch=new Set();
+  for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent))litBranch.add(cur.id);
+  const pathTex=n=>{const chain=[];for(let id=n.id;id;id=byIdNode.get(id).parent)chain.unshift(byIdNode.get(id));return DISPLAY+chain.slice(1).map(x=>qfrac(P(x.p))).join('\\times ')+'='+qfrac(P(n.path));};
+  // a frame too narrow for a leaf's label and its path probability (a product of three fractions is wide) grows to hold them
+  let need=0;
+  if(m.showPathProbability){
+    const leafNodes=m.nodes.filter(x=>!x.children.length),nodeWidth=n=>n.label===null?0:labelSize(/^[A-Za-z0-9]{1,3}$/.test(n.label)?{kind:'MATH',tex:n.label}:{kind:'TEXT',text:n.label},fontPx).width;
+    const pathWidth=n=>labelSize({kind:'MATH',tex:pathTex(n)},fontPx).width;
+    if(m.pathColumn)need=Math.max(...leafNodes.map(n=>TREE_X0+n.depth*TREE_COLW+nodeWidth(n)/2))+16+Math.max(...leafNodes.map(pathWidth))+SAFE;
+    else for(const n of leafNodes)need=Math.max(need,TREE_X0+n.depth*TREE_COLW+nodeWidth(n)/2+16+pathWidth(n)+SAFE);
+  }
+  const width=Math.max(width0,Math.ceil(need));
   for(const n of m.nodes){
     const p=c.get(n.id);
     if(n.label!==null){
       const asMath=/^[A-Za-z0-9]{1,3}$/.test(n.label);
       labels.push(asMath?math(`node-${n.id}`,'node',n.id,n.label,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}):textLabel(`node-${n.id}`,'node',n.id,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}));
     }else prims.push({t:'circle',id:`node-${n.id}`,role:'point',cls:'dot',cx:p.x,cy:p.y,r:4,data:{node:n.id},layer:70});
+    if(lit.has(n.id))prims.push({t:'ellipse',id:`leaf-ring-${n.id}`,role:'leaf-ring',cls:'markRing',cx:p.x,cy:p.y,rx:9,ry:9,data:{leaf:n.id},layer:65});
     if(n.parent!==null){
-      prims.push({t:'branch',id:`branch-${n.id}`,role:'branch',cls:'branch',parent:n.parent,child:n.id,data:{parent:n.parent,child:n.id},layer:30});
+      prims.push({t:'branch',id:`branch-${n.id}`,role:'branch',cls:litBranch.has(n.id)?'branchHi':'branch',parent:n.parent,child:n.id,data:{parent:n.parent,child:n.id,...(litBranch.has(n.id)?{highlight:1}:{})},layer:30});
       if(m.hasProbabilities)labels.push({id:`branch-${n.id}-p`,role:'branch-probability',owner:`branch-${n.id}`,kind:'MATH',tex:DISPLAY+qfrac(P(n.p)),plain:n.p,anchor:{x:0,y:0,ax:'center',ay:'middle'},extra:{value:n.p,child:n.id},placement:'branch'});
     }
     if(!n.children.length&&m.showPathProbability){
-      const chain=[];for(let id=n.id;id;id=m.nodes.find(x=>x.id===id).parent)chain.unshift(m.nodes.find(x=>x.id===id));
-      const factors=chain.slice(1).map(x=>qfrac(P(x.p))).join('\\times ');
-      labels.push({id:`path-${n.id}`,role:'path-probability',owner:`node-${n.id}`,kind:'MATH',tex:DISPLAY+factors+'='+qfrac(P(n.path)),plain:n.path,anchor:{x:0,y:0,ax:'start',ay:'middle'},extra:{value:n.path,leaf:n.id},placement:'leaf'});
+      labels.push({id:`path-${n.id}`,role:'path-probability',owner:`node-${n.id}`,kind:'MATH',tex:pathTex(n),plain:n.path,anchor:{x:0,y:0,ax:'start',ay:'middle'},extra:{value:n.path,leaf:n.id},placement:'leaf'});
     }
   }
-  return {size:{width,height},prims,labels,centers:Object.fromEntries([...c.entries()]),tree:true};
+  return {size:{width,height},prims,labels,centers:Object.fromEntries([...c.entries()]),tree:true,...(m.pathColumn?{pathColumn:true}:{})};
 }
-const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec};
-export const statChartSize=model=>({...SPEC_BY_KIND[model.kind](model).size});
-export function statChartSpec(plan,model){
+// The dot plot: the line along the bottom (a break mark where the plan cuts it), a labelled tick every `step`, a short tick at every other integer, and the dots: the first one
+// DOT_FIRST above the line, the others one pitch (a diameter and DOT_GAP) apart; the dot radius follows the length of a unit so that neighbours never touch.
+const DOT_FIRST=7,DOT_GAP=1.5,DOT_MAX_R=5.5,DOT_MINOR=3;
+function dotSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,segs=m.segments,gap=dotGapPx(segs);
+  const unit=dotUnitPx(segs),r=r6(Math.min(DOT_MAX_R,.45*unit)),pitch=2*r+DOT_GAP;
+  const stackH=DOT_FIRST+m.maxStack*pitch+10,BASE=r6(SAFE+20+stackH),H=Math.ceil(BASE+TICK+4+LABEL_BELOW+SAFE);
+  const right=m.xTitle?TITLE_X+textWidth(m.xTitle,fontPx):0,extraWidth=Math.max(0,Math.ceil(right+SAFE)-W);
+  const px=v=>{const k=segs.findIndex(g=>v>=g.lo&&v<=g.hi);return r6(DOT_MAPL+(k?(segs[0].hi-segs[0].lo)*unit+gap:0)+(v-segs[k].lo)*unit);};
+  const prims=[],labels=[];
+  arrows(prims,{xStartPx:SAFE+14,yAxisPx:null,base:BASE});
+  if(segs.length>1)breakMark(prims,'x',r6((px(segs[0].hi)+px(segs[1].lo))/2),BASE);
+  for(const g of segs)for(let v=g.lo;v<=g.hi;v++){
+    const x=px(v);
+    if(v%m.step===0){
+      prims.push(L(`x-tick-${v}`,'x-tick','tick',x,BASE,x,BASE+TICK,{axis:'x',value:String(v)}));
+      labels.push(math(`x-tick-${v}-label`,'x-tick',`x-tick-${v}`,DISPLAY+String(v),String(v),'center','top',x,BASE+TICK+4,{value:String(v)}));
+    }else prims.push(L(`x-minor-${v}`,'x-minor','tick',x,BASE,x,BASE+DOT_MINOR,{axis:'x',value:String(v)}));
+  }
+  for(const p of m.points)for(let j=0;j<p.count;j++)prims.push({t:'circle',id:`dot-${p.value}-${j+1}`,role:'dot',cls:'dot',cx:px(Number(p.value)),cy:r6(BASE-DOT_FIRST-r-j*pitch),r,data:{value:p.value,index:j+1},layer:70});
+  if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
+  return {size:{width:W+extraWidth,height:H},prims,labels};
+}
+// Normal curves (E36): the x axis along the bottom, the window the curves' mean ± span·sd (a framed curve: ± span, in σ units), each curve a polyline of the exact density (the tallest, the one with the
+// smallest sd, NORM_PEAK high; the others in the ratio of their sds), a labelled tick at every marked position, the shaded areas as polygons that end in vertical edges at their two positions (a tail
+// runs to the window end), dotted guides at the means and at symmetric pairs. Area labels and curve names are placed after typesetting (resolveNormal): inside their area when it fits, else outside
+// with a leader line that ends in a dot inside the area.
+const LEADER_GAP=2,NAME_GAP=10,LABEL_APART=8; // a curve name keeps NAME_GAP px from the other labels so that it is not read as part of an area label
+const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_PEAK=140,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
+function normalSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,BASE=NORM_TOP+NORM_PEAK;
+  const lo=N(m.window.lo),hi=N(m.window.hi),scale=(NORM_XR-NORM_XL)/(hi-lo);
+  const px=u=>r6(NORM_XL+(u-lo)*scale);
+  const sdOf=c=>m.framed?1:N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf));
+  const byId=new Map(m.curves.map(c=>[c.id,c])),hOf=c=>NORM_PEAK*sdMin/sdOf(c);
+  const yOf=(c,u)=>r6(BASE-hOf(c)*Math.exp(-(((u-meanOf(c))/sdOf(c))**2)/2));
+  const prims=[],labels=[];
+  arrows(prims,{xStartPx:NORM_XL-20,yAxisPx:null,base:BASE,tipX:NORM_TIP});
+  // the curves
+  const pts=new Map();
+  for(const c of m.curves){
+    const dx=Math.min(NORM_STEP_MAX,Math.max(NORM_STEP_MIN,sdOf(c)*scale/10)),n=Math.ceil((NORM_XR-NORM_XL)/dx),list=[];
+    for(let k=0;k<=n;k++){const x=r6(NORM_XL+(NORM_XR-NORM_XL)*k/n);list.push([x,yOf(c,lo+(x-NORM_XL)/scale)]);}
+    pts.set(c.id,list);
+  }
+  const topOf=(id,x)=>{ // the curve's height at pixel x by its own vertices
+    const list=pts.get(id);let a=0,b=list.length-1;
+    while(b-a>1){const mid=(a+b)>>1;if(list[mid][0]<=x)a=mid;else b=mid;}
+    const [x0,y0]=list[a],[x1,y1]=list[b];return x1===x0?y0:y0+(y1-y0)*(x-x0)/(x1-x0);
+  };
+  // shaded areas first (under everything)
+  const regions=[];
+  for(const [j,s] of m.shades.entries()){
+    const c=byId.get(s.curve),ua=s.from===null?null:N(s.from),ub=s.to===null?null:N(s.to);
+    const xa=ua===null?NORM_XL:px(ua),xb=ub===null?NORM_XR:px(ub);
+    const ya=ua===null?null:yOf(c,ua),yb=ub===null?null:yOf(c,ub);
+    const inner=pts.get(c.id).filter(([x])=>x>xa&&x<xb),top=[];
+    if(ua===null)top.push(...pts.get(c.id).filter(([x])=>x<=xa));else top.push([xa,ya]);
+    top.push(...inner);
+    if(ub===null)top.push(...pts.get(c.id).filter(([x])=>x>=xb));else top.push([xb,yb]);
+    const poly=[[xa,BASE],...top,[xb,BASE]];
+    prims.push({t:'polygon',id:`shade-${j}`,role:'shade',cls:`shade${s.tone}`,points:poly,data:{curve:c.id,tone:s.tone},layer:24});
+    if(ua!==null)prims.push(L(`edge-${j}-from`,'shade-edge','rule',xa,BASE,xa,ya,{shade:j},32));
+    if(ub!==null)prims.push(L(`edge-${j}-to`,'shade-edge','rule',xb,BASE,xb,yb,{shade:j},32));
+    // the weighted middle of the area: where a label is most welcome
+    let wsum=0,xsum=0;for(const [x,y] of top){const h=BASE-y;wsum+=h;xsum+=x*h;}
+    regions.push({shade:j,curve:c.id,xa,xb,top,pref:r6(xsum/wsum)});
+  }
+  // guides: the means, the symmetric pairs
+  for(const c of m.curves)if(c.meanLine){const x=px(meanOf(c));prims.push(L(`mean-${c.id}`,'mean-line','guide',x,BASE,x,yOf(c,meanOf(c)),{curve:c.id},28));}
+  for(const [s,sy] of m.symmetry.entries()){
+    const c=byId.get(sy.curve),[ua,ub]=sy.pair.map(N),xa=px(ua),xb=px(ub),y=yOf(c,ua);
+    prims.push(L(`sym-${s}-a`,'symmetry','guide',xa,BASE,xa,y,{curve:c.id,side:'a'},28),L(`sym-${s}-b`,'symmetry','guide',xb,BASE,xb,yOf(c,ub),{curve:c.id,side:'b'},28),L(`sym-${s}-bar`,'symmetry','guide',xa,y,xb,y,{curve:c.id},28));
+  }
+  for(const [i,c] of m.curves.entries())prims.push({t:'polyline',id:`curve-${c.id}`,role:'curve',cls:`ncurve${i}`,points:pts.get(c.id),data:{curve:c.id,mean:c.mean,sd:c.sd},layer:45});
+  // ticks and their labels (and the z row)
+  const rowH=Math.ceil(fontPx*NORM_Z_ROW),zy=BASE+TICK+4+rowH;
+  for(const t of m.ticks){
+    const x=px(N(t.pos));
+    prims.push(L(`x-tick-${t.index}`,'x-tick','tick',x,BASE,x,BASE+TICK,{axis:'x',index:t.index}));
+    labels.push(math(`x-tick-${t.index}-label`,'x-tick',`x-tick-${t.index}`,t.tex,t.text,'center','top',x,BASE+TICK+4,{value:t.text}));
+    if(m.zAxis&&!t.hideZ)labels.push(math(`z-tick-${t.index}-label`,'z-tick',`x-tick-${t.index}`,DISPLAY+qtex(P(t.z)),t.z,'center','top',x,zy,{value:t.z}));
+  }
+  labels.push(math('x-label','axis-title','x-axis',m.xLabel,m.xLabel,'start','middle',NORM_TIP+8,BASE,{value:m.xLabel}));
+  if(m.zAxis)labels.push(math('z-label','axis-title','z-row','z','z','start','top',NORM_TIP+8,zy,{value:'z'}));
+  // labels placed after typesetting
+  for(const c of m.curves)if(c.label!==null){
+    const hangul=/[가-힣]/.test(c.label);
+    labels.push({...(hangul?textLabel(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,c.label,'start','top',0,0,{curve:c.id,value:c.label}):math(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,DISPLAY+normalTeX(c.label),c.label,'start','top',0,0,{curve:c.id,value:c.label})),placement:'curve'});
+  }
+  for(const [j,s] of m.shades.entries())if(s.label!==null)labels.push({...math(`area-${j}`,'area-value',`shade-${j}`,DISPLAY+normalTeX(s.label),s.label,'start','top',0,0,{shade:j,value:s.label}),placement:'area'});
+  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4)+rowH+SAFE);
+  return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
+}
+const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
+export const statChartSize=(model,ctx)=>({...SPEC_BY_KIND[model.kind](model,ctx).size});
+export function statChartSpec(plan,model,ctx){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.chart))bad('STAT_CHART_PLAN_INVALID');
   if(objectSha(solveStatChart(plan.chart))!==objectSha(model))bad('STAT_MODEL_MISMATCH');
-  const spec=SPEC_BY_KIND[model.kind](model);
+  const spec=SPEC_BY_KIND[model.kind](model,ctx);
   return {schemaVersion:SPEC_VERSION,...spec};
 }
 
@@ -841,6 +1356,89 @@ function resolveValueLabels(spec,placed){
   }
 }
 
+// Normal curves (E36): the labels that need a free place. An area label goes inside its area (on the x axis side, as near the weighted middle of the area as it fits) when its box fits under the
+// curve with 3 px to spare; otherwise above the curves with a leader line that ends in a dot inside the area. A curve name goes beside its curve's peak or shoulder. Every label keeps 2.5 px from
+// every drawn line and from the other labels.
+function resolveNormal(spec,placed){
+  const {base:BASE,regions,curves}=spec.normal,{width,height}=spec.size,CLEAR=2.5;
+  const fixed=placed.filter(item=>item.label.placement===undefined).map(item=>item.box),done=[...fixed];
+  const lines=()=>obstacles(spec.prims);
+  // a leader may cross its own curve and its own area outline (it enters the area that way) and the dotted guides, but no other line
+  const crossing=(a,b,c,d)=>{const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);return o(a,b,c)*o(a,b,d)<0&&o(c,d,a)*o(c,d,b)<0;};
+  const leaderCrosses=(a,b,shade,curveId)=>spec.prims.some(prim=>{
+    if(prim.id===`curve-${curveId}`||prim.id===`shade-${shade}`||String(prim.id).startsWith(`edge-${shade}-`)||prim.cls==='guide'||prim.role==='grid')return false;
+    const segs=prim.t==='line'?[[[prim.x1,prim.y1],[prim.x2,prim.y2]]]:prim.t==='polyline'||prim.t==='polygon'?prim.points.map((q,i)=>[q,prim.points[(i+1)%prim.points.length]]).slice(0,prim.t==='polygon'?prim.points.length:prim.points.length-1):[];
+    return segs.some(([c,d])=>crossing(a,b,c,d));
+  });
+  const clearance=(box,obs,boxGap=CLEAR)=>{ // the smallest margin to a line (CLEAR needed) or to another label (boxGap needed), in units where CLEAR is the pass mark
+    if(box.x<SAFE||box.y<SAFE||box.x+box.width>width-SAFE||box.y+box.height>height-SAFE)return -1;
+    let s=Infinity;
+    for(const o of obs){
+      if(o.circle)s=Math.min(s,rectDist(o.circle[0],o.circle[1],box)-o.circle[2]-o.pad);
+      else for(const [a,c] of o.segs)s=Math.min(s,segRectDist(a,c,box)-o.pad);
+    }
+    for(const other of done)s=Math.min(s,(overlaps(box,other)?-1:rectGap(box,other))-(boxGap-CLEAR));
+    return s;
+  };
+  const topAt=(top,x)=>{let a=0,b=top.length-1;if(x<=top[0][0])return top[0][1];if(x>=top[b][0])return top[b][1];while(b-a>1){const mid=(a+b)>>1;if(top[mid][0]<=x)a=mid;else b=mid;}const [x0,y0]=top[a],[x1,y1]=top[b];return x1===x0?Math.min(y0,y1):y0+(y1-y0)*(x-x0)/(x1-x0);};
+  const curveMinY=(x0,x1)=>{let y=BASE;for(const prim of spec.prims)if(prim.role==='curve')for(const [x,yy] of prim.points)if(x>=x0&&x<=x1&&yy<y)y=yy;return y;};
+  for(const item of placed.filter(i=>i.label.placement==='area')){
+    const region=regions[item.label.extra.shade],{width:w,height:h}=item.box,obs=lines();
+    const inside=[];
+    for(let cx=region.xa+3+w/2;cx<=region.xb-3-w/2+1e-9;cx+=1.5)for(let row=0;row<4;row++){
+      const box={x:r6(cx-w/2),y:r6(BASE-7-h-row*10),width:w,height:h};
+      let fits=true;
+      for(let x=box.x;x<=box.x+w+1e-9;x+=2)if(topAt(region.top,x)>box.y-3){fits=false;break;}
+      if(fits&&topAt(region.top,box.x+w)>box.y-3)fits=false;
+      if(fits)inside.push({box,score:Math.abs(cx-region.pref)+row*30});
+    }
+    inside.sort((a,b)=>a.score-b.score);
+    const pick=inside.find(c=>clearance(c.box,obs)>=CLEAR);
+    if(pick){item.box=pick.box;done.push(pick.box);continue;}
+    // outside with a leader: the dot goes where the area is tall enough to hold it (first at the weighted middle, then at other places along the area)
+    const shade=item.label.extra.shade,peakX=curves.find(k=>k.id===region.curve).peak[0],list=spec.prims.find(prim=>prim.id===`curve-${region.curve}`).points;
+    const spots=[region.pref,...[.5,.3,.7,.15,.85].map(f=>region.xa+f*(region.xb-region.xa))].filter(x=>BASE-topAt(region.top,x)>=16);
+    let found=null,ax=0,ay=0;
+    for(const spot of spots){
+      ax=r6(spot);ay=r6((topAt(region.top,ax)+BASE)/2);
+      const accept=(box,sx,sy)=>{
+        if(clearance(box,obs,LABEL_APART)<CLEAR)return false;
+        if(done.some(o=>segHitsRect([sx,sy],[ax,ay],{x:o.x-2,y:o.y-2,width:o.width+4,height:o.height+4})))return false;
+        if(leaderCrosses([sx,sy],[ax,ay],shade,region.curve))return false;
+        found={box,sx,sy};return true;
+      };
+      // an area off to one side of its curve's peak puts its label beside the curve on that side (a level-ish leader); otherwise (and as a second choice) the label stands above the curves
+      const side=ax>peakX+8?1:ax<peakX-8?-1:0;
+      if(side){
+        let edge=side>0?Math.max(region.xb,ax):Math.min(region.xa,ax);
+        for(const [x,y] of side>0?list.filter(([x])=>x>ax):[...list].reverse().filter(([x])=>x<ax))if(y>=ay){edge=side>0?Math.max(edge,x):Math.min(edge,x);break;}
+        search:for(const shift of [0,-14,14,-28,28])for(const gap of [12,20,30]){
+          const box={x:r6(side>0?edge+gap:edge-gap-w),y:r6(ay+shift-h/2),width:w,height:h};
+          if(accept(box,r6(side>0?box.x-LEADER_GAP:box.x+w+LEADER_GAP),r6(box.y+h/2)))break search;
+        }
+      }
+      if(!found)search:for(const gap of [14,22,32,44])for(const k of [0,-.7,.7,-1.4,1.4,-2.1,2.1,-2.8,2.8]){
+        const cx=ax+k*w,x=cx-w/2,y=curveMinY(x-4,x+w+4)-gap-h,box={x:r6(x),y:r6(y),width:w,height:h};
+        if(accept(box,r6(Math.max(box.x+4,Math.min(box.x+w-4,ax))),r6(box.y+h+LEADER_GAP)))break search;
+      }
+      if(found)break;
+    }
+    if(!found)throw new Stop('STAT_NORMAL_AREA_LABEL_NO_ROOM',{shade});
+    item.box=found.box;done.push(found.box);
+    spec.prims.push(L(`area-${item.label.extra.shade}-leader`,'area-leader','leader',found.sx,found.sy,ax,ay,{shade:item.label.extra.shade},60),{t:'circle',id:`area-${item.label.extra.shade}-dot`,role:'area-dot',cls:'dot',cx:ax,cy:ay,r:2.4,data:{shade:item.label.extra.shade},layer:61});
+  }
+  for(const item of placed.filter(i=>i.label.placement==='curve')){
+    const c=curves.find(k=>k.id===item.label.extra.curve),{width:w,height:h}=item.box,obs=lines(),[px0,py0]=c.peak;
+    const anchors=[[px0,py0,'peak'],[c.right[0],c.right[1],'right'],[c.left[0],c.left[1],'left']];
+    let pick=null;
+    search:for(const [ax,ay,where] of anchors)for(const g of [6,12,20,30]){
+      const d=g*.72,boxes=where==='peak'?[{x:ax-w/2,y:ay-g-h},{x:ax+d,y:ay-d-h},{x:ax-d-w,y:ay-d-h},{x:ax+g,y:ay-h/2},{x:ax-g-w,y:ay-h/2}]:where==='right'?[{x:ax+d,y:ay-d-h},{x:ax+g,y:ay-h/2},{x:ax-w/2,y:ay-g-h}]:[{x:ax-d-w,y:ay-d-h},{x:ax-g-w,y:ay-h/2},{x:ax-w/2,y:ay-g-h}];
+      for(const b of boxes){const box={x:r6(b.x),y:r6(b.y),width:w,height:h};if(clearance(box,obs,NAME_GAP)>=CLEAR){pick=box;break search;}}
+    }
+    if(!pick)throw new Stop('STAT_NORMAL_CURVE_NAME_NO_ROOM',{curve:c.id});
+    item.box=pick;done.push(pick);
+  }
+}
 // --- composing ----------------------------------------------------------------------------------------------------------------------------
 const PLAIN_KEYS=['capability','chart','caption','sourceConditions','newVisualInformation'];
 export function checkStatChartPlan(plan){
@@ -896,6 +1494,12 @@ function resolveTree(spec,placed){
     prim.t='line';prim.x1=r6(s.x);prim.y1=r6(s.y);prim.x2=r6(e.x);prim.y2=r6(e.y);prim.data={...prim.data,cx1:centers[prim.parent].x,cy1:centers[prim.parent].y,cx2:centers[prim.child].x,cy2:centers[prim.child].y};
     lines.set(prim.child,prim);
   }
+  // one column for the path probabilities: right of the leaf label that reaches furthest
+  const columnX=spec.pathColumn?r6(Math.max(...spec.labels.filter(l=>l.placement==='leaf').map(l=>{const nb=boxOf.get(l.extra.leaf),c=centers[l.extra.leaf];return (nb?nb.x+nb.width:c.x);}))+16):0;
+  for(const prim of spec.prims.filter(p=>p.role==='leaf-ring')){ // a ring round the label of a highlighted leaf (round the dot of an unlabelled one)
+    const nb=boxOf.get(prim.data.leaf);
+    if(nb){prim.cx=r6(nb.x+nb.width/2);prim.cy=r6(nb.y+nb.height/2);prim.rx=r6(nb.width/2+8);prim.ry=r6(nb.height/2+6);}
+  }
   for(const item of placed){
     const {label,fragment}=item,{width,height}=fragment.intrinsic;
     if(label.placement==='branch'){
@@ -907,12 +1511,12 @@ function resolveTree(spec,placed){
       item.box={x:r6(mx+nx*d-width/2),y:r6(my+ny*d-height/2),width,height};
     }else if(label.placement==='leaf'){
       const c=centers[label.extra.leaf],nb=boxOf.get(label.extra.leaf);
-      item.box={x:r6((nb?nb.x+nb.width:c.x)+16),y:r6(c.y-height/2),width,height};
+      item.box={x:r6(spec.pathColumn?columnX:(nb?nb.x+nb.width:c.x)+16),y:r6(c.y-height/2),width,height};
     }
   }
 }
 /** Typeset every label, place it, build the SVG, run the independent observer on its bytes and the rendered layout check in Chrome. */
-export async function composeStatChartFigure({plan,model,identity,typographyPolicy,browser}={}){
+export async function composeStatChartFigure({plan,model,identity,typographyPolicy,browser,minSize}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
   const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
@@ -921,7 +1525,8 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
     let spec;
-    try{spec=statChartSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
+    try{spec=statChartSpec(plan,model,{fontPx:typographyPolicy.baseFontPx});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
+    if(minSize)spec.size={width:Math.max(spec.size.width,minSize.width),height:Math.max(spec.size.height,minSize.height)};   // the size the Archive measured (never smaller than the labels need)
     lineage.specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
     for(const label of spec.labels){
@@ -932,6 +1537,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
       placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
     }
     if(spec.tree)resolveTree(spec,placed);
+    if(spec.normal)resolveNormal(spec,placed);
     resolveValueLabels(spec,placed);
     cutGrid(spec,placed);
     const {width,height}=spec.size;

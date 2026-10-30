@@ -1018,14 +1018,17 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "solutionImage": "",
+    "solutionImage": "assets/images/26_왕의중_1학기_중간_중2_수학/q18-solution.svg",
     "tags": [
       "객관식",
       "일차부등식",
       "일차부등식"
     ],
     "itemStatus": "READY_FOR_REVIEW",
-    "sourceMode": "EXTRACTED_JS_ASSETS"
+    "sourceMode": "EXTRACTED_JS_ASSETS",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄에 두 부등식의 해를 나타낸 그림이다. 첫째 줄은 x≥-3/2이고 둘째 줄은 x≥(-2a+1)/2이며, 해가 서로 같으려면 두 끝점이 같은 자리여야 함을 보여 준다.",
+    "solutionImageCaption": "두 부등식의 해가 같으려면 끝점이 같아야 한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1152,7 +1155,7 @@ window.questionBank = [
     "content": "[서답형 1] 순환소수 $0.1\\dot{3}$을 기약분수로 나타내는 과정을 다음 &lt;조건&gt;에 맞추어 풀이과정과 함께 서술하시오.<br><div class=\"border p-2 my-2\">&lt; 조 건 &gt;<br>가. 순환소수를 $x$로 놓고, 10의 거듭제곱을 곱하여 소수점 아래 부분이 같은 두 개의 식을 각각 제시할 것.<br>나. 위에서 만든 두 식을 활용하여 $x$를 분수로 나타내는 과정을 보일 것.<br>(※ 단, 순환소수 공식을 바로 사용하여 답을 도출한 경우 풀이과정 점수를 0점 처리함.)</div>",
     "image": "",
     "answer": "2/15",
-    "solution": "x=0.1333…이라 두고 10x=1.3333…을 만든다. 빼면 9x=1.2=12/10이므로 x=12/90=2/15이다.",
+    "solution": "$x=0.1333\\cdots$이라 하자. 소수점 아래 부분이 같도록 10의 거듭제곱을 곱하면\n$10x=1.333\\cdots$, $100x=13.333\\cdots$이다.\n두 식의 소수점 아래 부분이 같으므로 $100x$에서 $10x$를 빼면\n$90x=12$이다.\n따라서 $x=\\dfrac{12}{90}=\\dfrac{2}{15}$이다.",
     "sourceDocumentSha256": "sha256:178bdfcdd68ca55fdbe1224dcd374d08e0e5a5b71605fdceef3f725d494957c3",
     "sourceQuestionNo": "서답형 1",
     "sourcePageNo": 5,
@@ -1286,14 +1289,17 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "solutionImage": "",
+    "solutionImage": "assets/images/26_왕의중_1학기_중간_중2_수학/q23-solution.svg",
     "tags": [
       "서술형",
       "수와 식",
       "다항식의 계산"
     ],
     "itemStatus": "READY_FOR_REVIEW",
-    "sourceMode": "EXTRACTED_JS_ASSETS"
+    "sourceMode": "EXTRACTED_JS_ASSETS",
+    "solutionImageAlt": "해설 그림: 밑면의 가로 2a, 세로 b, 높이 6a+3b인 직육면체 그릇과, 밑면의 가로 3a, 세로 4b인 사각뿔 그릇(꼭짓점 O)을 나란히 그린 그림이다. 사각뿔의 점선은 보이지 않는 모서리이다. 오른쪽에는 꼭짓점 O, 밑면의 중심 H, 길이 3a인 변의 중점 M을 이은 직각삼각형 OHM을 따로 그렸고, 수직인 변 OH 옆에 높이 h, 변 HM 옆에 2b가 적혀 있으며 H에 직각 표시가 있다.",
+    "solutionImageCaption": "H는 밑면(3a×4b)의 중심, M은 길이 3a인 변의 중점이므로 HM은 4b의 절반인 2b이고, 꼭짓점 O에서 밑면에 내린 수선 OH의 길이가 높이 h이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -1337,10 +1343,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "solutionImage": "assets/images/26_왕지중_1학기_중간_중2_수학/q24-solution.svg",
-    "solutionImageAlt": "정사각형 넓이에서 삼각형 ABE와 ADF를 빼 AECF의 넓이를 구하는 도식",
-    "solutionImageCaption": "AECF = 900 − 375 − 15x = 525 − 15x에서 x의 최솟값을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/26_왕의중_1학기_중간_중2_수학/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 30cm인 정사각형 ABCD에서 BE=25cm, DF=x cm이고, 삼각형 ABE(375)와 삼각형 ADF(15x)를 뺀 사각형 AECF(525-15x)를 진하게 칠해 보여 준다.",
+    "solutionImageCaption": "정사각형에서 두 삼각형 ABE, ADF를 빼면 색칠한 사각형 AECF가 남는다.",
+    "solutionImageSize": "medium",
     "tags": [
       "서술형",
       "일차부등식",

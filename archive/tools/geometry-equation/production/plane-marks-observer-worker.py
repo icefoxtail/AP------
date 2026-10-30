@@ -34,6 +34,27 @@ def wrap180(x):return (x+180.0)%360.0-180.0
 TRACE_LABEL_AT_TOLERANCE=45.0       # degrees: a trace label's direction from the centre against the place its labelAt names
 ANGLE_LABEL_MAX_DISTANCE_PX=90.0    # an angle label without a leader stands within this distance of its vertex (its nearest edge: the label reads as that arc's value)
 ANGLE_LEADER_END_TOLERANCE=0.5      # degrees: a leader may start at an end of its arc, where the arc meets a ray
+ARC_LEADER_SPAN_SLACK_DEGREES=0.8     # degrees: a leader of an arc label (labelPlacement LEADER) starts within the arc's own span, this much slack at the ends
+
+# ---- free text labels (E30): this observer's own copy of the placement rules and of the glyph codes a MATH label shows
+TEXT_LABEL_HANGUL=re.compile('[\u1100-\u11ff\u3130-\u318f\uac00-\ud7af]')
+TEXT_LABEL_ANCHORS=('CENTER','N','NE','E','SE','S','SW','W','NW')
+TEXT_LABEL_CENTER_SLACK_PX=18.5   # a centred label may sit this far from its stated place (the engine slides it at most 18 px to find room)
+TEXT_LABEL_MAX_GAP_PX=28.0        # a label beside a point has its nearest edge within this distance of the point
+def math_label_codes(text):
+    """The glyph codes (a set of acceptable hex codes per glyph, in reading order) of a MATH label of letters, digits, spaces and ( ) , < > = + - . : a letter is itself or its
+    italic math code, - is the minus sign, <= and >= the single relation glyphs; spaces draw nothing."""
+    out=[];text=text.replace(' ','');i=0
+    while i<len(text):
+        ch=text[i]
+        if ch in '<>' and text[i+1:i+2]=='=':out.append({'2264' if ch=='<' else '2265'});i+=2;continue
+        if ch=='-':out.append({'2212','2D'})
+        elif ch=='\u00b0':out.append({'2218'})
+        elif 'a'<=ch<='z':out.append({format(ord(ch),'X'),format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X')})
+        elif 'A'<=ch<='Z':out.append({format(ord(ch),'X'),format(0x1D434+ord(ch)-65,'X')})
+        else:out.append({format(ord(ch),'X')})
+        i+=1
+    return out
 
 def properly_cross(a,b,c,d):
     """True when the segments a-b and c-d cross at a point inside both (touching at an end does not count)."""
@@ -75,6 +96,48 @@ DIM_BRACE_SAMPLES=10
 DIM_POSITION_TOLERANCE_PX=0.05
 DIM_LABEL_MAX_SLIDE=0.3        # the label's centre lies within this fraction of the dimension's length from the middle of the line
 DIM_LABEL_MAX_GAP_PX=30.0      # and its nearest edge within this distance beyond the line (or the brace's tip)
+DIM_INLINE_TIP_INSET_PX=5.0    # style INLINE: no line of its own; the arrowheads' tips stand this far inside the two points
+DIM_OFFSET_PX_RANGE=(8.0,120.0)
+DIM_MAX_TIER=3
+
+def resolve_dimension_tiers(rows,peer_point):
+    """{id: tier} of every dimension row: a number is kept, "AUTO" is the lowest tier whose rows on the same line and side do not overlap it (shorter spans first). Own copy of the rule."""
+    items=[]
+    for row in rows:
+        try:a=peer_point(row['from']);b=peer_point(row['to'])
+        except (KeyError,ValueError,TypeError):continue
+        length=norm(sub(b,a))
+        if length>1e-12 and row.get('side') in DIM_SIDE_VECTORS:items.append({'row':row,'a':a,'b':b,'length':length})
+    scale=max([1e-9]+[item['length'] for item in items])
+    def same_line(p,q):
+        d=((p['b'][0]-p['a'][0])/p['length'],(p['b'][1]-p['a'][1])/p['length'])
+        if abs(d[0]*(q['b'][1]-q['a'][1])-d[1]*(q['b'][0]-q['a'][0]))>1e-6*q['length']:return False
+        return all(abs(d[0]*(pt[1]-p['a'][1])-d[1]*(pt[0]-p['a'][0]))<=1e-6*scale for pt in (q['a'],q['b']))
+    groups=[]
+    for item in items:
+        group=next((g for g in groups if g[0]['row']['side']==item['row']['side'] and same_line(g[0],item)),None)
+        if group is None:groups.append([item])
+        else:group.append(item)
+    out={}
+    for group in groups:
+        base=group[0];d=((base['b'][0]-base['a'][0])/base['length'],(base['b'][1]-base['a'][1])/base['length'])
+        def span(item):
+            t=[(pt[0]-base['a'][0])*d[0]+(pt[1]-base['a'][1])*d[1] for pt in (item['a'],item['b'])];return (min(t),max(t))
+        taken=[(item['row']['offset'],span(item)) for item in group if isinstance(item['row'].get('offset'),int) and not isinstance(item['row'].get('offset'),bool)]
+        for item in sorted([i for i in group if i['row'].get('offset')=='AUTO'],key=lambda i:(i['length'],str(i['row'].get('id')))):
+            lo,hi=span(item);tier=1
+            while any(t==tier and hi>other[0]+1e-6*scale and other[1]>lo+1e-6*scale for t,other in taken):tier+=1
+            out[item['row']['id']]=tier;taken.append((tier,(lo,hi)))
+    for item in items:
+        o=item['row'].get('offset')
+        if isinstance(o,int) and not isinstance(o,bool):out[item['row']['id']]=o
+    return out
+
+def dimension_distance(row,style,offset):
+    """The px distance of a dimension's line from its two points: none for INLINE, else the first tier (24 px, or offsetPx) plus 44 px per further tier."""
+    if style=='INLINE':return 0.0
+    first=row.get('offsetPx');first=DIM_FIRST_PX if first is None else float(first)
+    return first+DIM_STEP_PX*(offset-1)
 
 def dimension_label_parts(row):
     """(label, unit) of a dimension: a trailing thin-space unit written in the label ("24\\,cm") is the unit, as in the plan's own reading of it."""
@@ -94,6 +157,30 @@ def brace_expected(length,dist):
         a=-math.pi/2+math.pi/2*k/DIM_BRACE_SAMPLES;half.append((length/2-r+r*math.cos(a),start+2*r+r*math.sin(a)))
     return half+[(length-u,v) for u,v in reversed(half)][1:]
 
+EQUAL_PATH_CLEAR_PX=8.0   # the mark of a whole path stands at least this far (svg px) from every inner joint
+TEXT_WEIGHT_STROKE_EM=0.06   # labelWeight MATH on a plain-text label: the outline stroke, in em (this observer's own copy)
+EQUAL_CIRCLE_RADIUS_PX=3.6   # markStyle CIRCLE: the radius of an equal-length circle (this observer's own copy)
+NEAREST_OWNER_MARGIN_PX=3.0   # ownership NEAREST: a segment label's own segment is nearer than every other one by at least this (svg px)
+EQUAL_PATH_MIDDLE_TOLERANCE_PX=0.6   # the centre of the marks of a whole path stands at its middle, this far at most (svg px)
+EQUAL_BRACKET_OFFSET_PX=12.0        # the bracket of a path: this far beside it, 8 px end caps (this observer's own copy of the rule)
+EQUAL_BRACKET_CAP_HALF_PX=4.0
+EQUAL_BRACKET_STRAIGHT_PX=0.6
+EQUAL_BRACKET_POSITION_TOLERANCE_PX=0.05
+
+def path_chain(pieces):
+    """The polyline of drawn segments (model point pairs) joined end to end, or None when they do not chain: the first piece starts at the end the second does not share."""
+    def same(p,q):return norm(sub(p,q))<=1e-6
+    first,second=pieces[0],pieces[1]
+    shared=next((pt for pt in first if any(same(pt,other) for other in second)),None)
+    if shared is None:return None
+    chain=[first[1] if same(first[0],shared) else first[0],shared]
+    for piece in pieces[1:]:
+        tail=chain[-1]
+        if same(piece[0],tail):chain.append(piece[1])
+        elif same(piece[1],tail):chain.append(piece[0])
+        else:return None
+    return chain
+
 def box_polyline_distance(box,points):
     """Smallest distance from a label box (0 inside) to a polyline, sampled along every segment."""
     best=math.inf
@@ -103,6 +190,157 @@ def box_polyline_distance(box,points):
             best=min(best,math.hypot(max(box[0]-x,0,x-(box[0]+box[2])),max(box[1]-y,0,y-(box[1]+box[3]))))
     return best
 
+# ---- path label anchor and side (E37): this observer's own copy of the rules
+PATH_LABEL_ANCHORS={'START':0.15,'END':0.85}   # START / END: near the first / last point of the path (a fraction of its length)
+PATH_LABEL_ANCHOR_TOLERANCE=0.1                # the engine slides a named anchor at most 0.09 of the path along it
+PATH_LABEL_SIDE_MIN_COS=0.3                    # the label box's centre, seen from the leader's start, leans at least this far to the declared side (cosine with that side's normal)
+def path_anchor_fraction(anchor):
+    if isinstance(anchor,str):return PATH_LABEL_ANCHORS.get(anchor)
+    if isinstance(anchor,(int,float)) and not isinstance(anchor,bool) and 0<anchor<1:return float(anchor)
+    return None
+def nearest_on_path(q,pts):
+    """(fraction of the path's length at the point of the polyline nearest q, unit direction of the piece it lies on)."""
+    total=sum(norm(sub(b,a)) for a,b in zip(pts,pts[1:]));best=None;run=0.0
+    for a,b in zip(pts,pts[1:]):
+        d=sub(b,a);length=norm(d)
+        t=max(0.0,min(1.0,((q[0]-a[0])*d[0]+(q[1]-a[1])*d[1])/(length*length)))
+        spot=(a[0]+d[0]*t,a[1]+d[1]*t);distance=norm(sub(q,spot))
+        if best is None or distance<best[0]:best=(distance,(run+length*t)/total,(d[0]/length,d[1]/length))
+        run+=length
+    return best[1],best[2]
+
+# ---- callouts (E37): this observer's own copy of the callout rules. A callout draws a path of the main figure again beside it (points named `<callout id>__<point id>`,
+# pieces `<callout id>__s<n>`, guide lines `<callout id>__g<n>`); its marks are ordinary marks on those copies. The copies are read back from the FINAL SVG and held against the
+# main figure's own (peer) points; the marks are then expanded onto the observed copies and checked by the ordinary mark audits below.
+CALLOUT_SEP='__'
+CALLOUT_RELATIVE=1e-6        # relative tolerance of a copy's lengths against the main path's (the SVG keeps full precision)
+CALLOUT_POINT_TOLERANCE=1e-8 # model units: a piece or a guide line's end against the point it joins
+CALLOUT_ANGLE_TOLERANCE=0.001   # degrees: a pulled-out ray's direction, and the angle between two rays, against the main figure's own
+GUIDE_STROKE='#8a8a8a'
+GUIDE_DASH='2 4'
+def expand_callouts(p,elements,inverse,errors,observations):
+    """Returns (points, marks, segments) with the callouts' observed copies, their pieces and their marks added; findings go to `errors`."""
+    marks=dict(p.get('marks') or {});points=dict(p['points']);segments=list(p.get('segments') or [])
+    rows=marks.get('callouts') or []
+    if not rows:return points,marks,segments
+    def codes(node):return [n.get('data-c','').upper() for n in node.iter() if tag(n)=='path' and n.get('data-c')]
+    ids=[r for s in segments for r in (s.get('refs') or []) if r in points] or list(points)
+    main=[points[r] for r in ids];box=(min(q[0] for q in main),max(q[0] for q in main),min(q[1] for q in main),max(q[1] for q in main))
+    dims=list(marks.get('dimensions') or []);equal=list(marks.get('equalLengths') or []);labels=list(marks.get('expressionLabels') or []);angles=list(marks.get('angles') or [])
+    expected_guides=set();taken=set()
+    for row in rows:
+        cid=str(row.get('id'));prefix=cid+CALLOUT_SEP;kind=row.get('kind')
+        if cid in taken:errors.append('CALLOUT_ID_DUPLICATE:'+cid);continue
+        taken.add(cid)
+        if kind not in ('SEGMENT','ANGLE'):errors.append('CALLOUT_KIND_INVALID:'+cid);continue
+        # the points the copies stand for, and the pieces drawn between them (a path's consecutive pairs, or the rays from the vertex)
+        if kind=='SEGMENT':
+            path=list(row.get('path') or []);piece_pairs=[(path[i],path[i+1]) for i in range(len(path)-1)];piece_prefix='s'
+        else:
+            path=[row.get('vertex')]+list(row.get('rays') or []);piece_pairs=[(path[0],ray) for ray in path[1:]];piece_prefix='r'
+        if len(path)<2 or len(set(path))!=len(path) or any((not isinstance(r,str)) or r not in p['points'] for r in path):errors.append('CALLOUT_PATH_INVALID:'+cid);continue
+        seen={};complete=True
+        for pid in path:
+            node=elements.get(prefix+pid)
+            if node is None or tag(node)!='circle' or node.get('data-role')!='point':errors.append('CALLOUT_POINT_MISSING:'+cid+':'+pid);complete=False;continue
+            seen[pid]=inverse(float(node.get('cx')),float(node.get('cy')))
+            copy_label=elements.get(prefix+pid+'-name');main_label=elements.get(pid+'-name')
+            # the copy carries the same name as the point it copies (the same glyphs as that point's own name label)
+            if copy_label is None or main_label is None or not codes(copy_label) or codes(copy_label)!=codes(main_label):errors.append('CALLOUT_NAME_MISMATCH:'+cid+':'+pid)
+        if not complete:continue
+        P={r:tuple(p['points'][r]) for r in path};Q=seen;scale=None
+        if kind=='SEGMENT':
+            d=[norm(sub(P[b],P[a])) for a,b in piece_pairs];e=[norm(sub(Q[b],Q[a])) for a,b in piece_pairs]
+            if min(d)<=1e-9 or min(e)<=1e-9:errors.append('CALLOUT_PATH_DEGENERATE:'+cid);continue
+            scale=e[0]/d[0]
+            # the lengths are enlarged by one factor and nothing else changes: every piece is `scale` times the main piece, in a straight line
+            if any(abs(ei-scale*di)>CALLOUT_RELATIVE*max(1.0,ei) for di,ei in zip(d,e)):errors.append('CALLOUT_RATIO_MISMATCH:'+cid)
+            if row.get('scale') is not None and abs(scale-float(row['scale']))>CALLOUT_RELATIVE*max(1.0,scale):errors.append('CALLOUT_SCALE_MISMATCH:'+cid+':declared=%s:drawn=%.6f'%(row['scale'],scale))
+            total=norm(sub(Q[path[-1]],Q[path[0]]))
+            if abs(total-sum(e))>CALLOUT_RELATIVE*max(1.0,total):errors.append('CALLOUT_NOT_STRAIGHT:'+cid)
+            orientation=row.get('orientation','HORIZONTAL')
+            if orientation not in ('HORIZONTAL','VERTICAL'):errors.append('CALLOUT_ORIENTATION_INVALID:'+cid)
+            else:
+                axis=1 if orientation=='HORIZONTAL' else 0
+                if any(abs(Q[r][axis]-Q[path[0]][axis])>CALLOUT_RELATIVE*max(1.0,total) for r in path):errors.append('CALLOUT_ORIENTATION_MISMATCH:'+cid)
+                chord=sub(P[path[-1]],P[path[0]]);run=sub(Q[path[-1]],Q[path[0]])
+                # it runs the way the path runs on the page: left to right when the main path goes rightwards, downwards when it goes down
+                want=(1 if chord[0]>=0 else -1) if orientation=='HORIZONTAL' else (-1 if chord[1]<=0 else 1)
+                if run[1-axis]*want<=0:errors.append('CALLOUT_DIRECTION_MISMATCH:'+cid)
+        else:
+            # the fan: every ray the same length (radius), every direction the main figure's own (nothing turned), so every angle between two rays is the original's
+            vertex=path[0];rays=path[1:];lengths=[norm(sub(Q[r],Q[vertex])) for r in rays]
+            if min(norm(sub(P[r],P[vertex])) for r in rays)<=1e-9 or min(lengths)<=1e-9:errors.append('CALLOUT_RAY_DEGENERATE:'+cid);continue
+            if max(lengths)-min(lengths)>CALLOUT_RELATIVE*max(1.0,max(lengths)):errors.append('CALLOUT_RAY_LENGTH_MISMATCH:'+cid)
+            if row.get('radius') is not None and abs(lengths[0]-float(row['radius']))>CALLOUT_RELATIVE*max(1.0,lengths[0]):errors.append('CALLOUT_RADIUS_MISMATCH:'+cid+':declared=%s:drawn=%.6f'%(row['radius'],lengths[0]))
+            for r in rays:
+                turned=wrap180(direction_degrees(sub(Q[r],Q[vertex]))-direction_degrees(sub(P[r],P[vertex])))
+                if abs(turned)>CALLOUT_ANGLE_TOLERANCE:errors.append('CALLOUT_ANGLE_MISMATCH:'+cid+':'+r)
+            for i,a in enumerate(rays):
+                for b in rays[i+1:]:
+                    if abs(angle_between(Q[a],Q[vertex],Q[b])-angle_between(P[a],P[vertex],P[b]))>CALLOUT_ANGLE_TOLERANCE:errors.append('CALLOUT_ANGLE_MISMATCH:'+cid+':'+a+b)
+        qbox=(min(Q[r][0] for r in path),max(Q[r][0] for r in path),min(Q[r][1] for r in path),max(Q[r][1] for r in path))
+        at=row.get('at','RIGHT')
+        side={'RIGHT':qbox[0]>box[1],'LEFT':qbox[1]<box[0],'ABOVE':qbox[2]>box[3],'BELOW':qbox[3]<box[2]}.get(at)
+        if side is None:errors.append('CALLOUT_AT_INVALID:'+cid)
+        elif not side:errors.append('CALLOUT_SIDE_MISMATCH:'+cid+':'+str(at))
+        # the pieces are drawn between the copies
+        for i,(a,b) in enumerate(piece_pairs):
+            sid=prefix+piece_prefix+str(i+1);node=elements.get(sid)
+            if node is None or tag(node)!='line':errors.append('CALLOUT_SEGMENT_MISSING:'+cid+':'+sid);continue
+            ends=[inverse(float(node.get('x1')),float(node.get('y1'))),inverse(float(node.get('x2')),float(node.get('y2')))]
+            if any(norm(sub(x,y))>CALLOUT_POINT_TOLERANCE for x,y in zip(ends,[Q[a],Q[b]])):errors.append('CALLOUT_SEGMENT_MISMATCH:'+cid+':'+sid)
+            segments.append({'id':sid,'refs':[prefix+a,prefix+b]})
+        for pid in path:points[prefix+pid]=seen[pid]
+        # guide lines: exactly the declared ones, light grey and dotted, each joining a main point to its copy
+        link=row.get('link','NONE')
+        if link not in ('NONE','ENDS' if kind=='SEGMENT' else 'VERTEX'):errors.append('CALLOUT_LINK_INVALID:'+cid)
+        wanted=[('g1',path[0]),('g2',path[-1])] if (link=='ENDS' and kind=='SEGMENT') else [('g1',path[0])] if (link=='VERTEX' and kind=='ANGLE') else []
+        for gid,pid in wanted:
+            node=elements.get(prefix+gid);expected_guides.add(prefix+gid)
+            if node is None or tag(node)!='line' or node.get('data-role')!='guide':errors.append('CALLOUT_GUIDE_MISSING:'+cid+':'+gid);continue
+            ends=[inverse(float(node.get('x1')),float(node.get('y1'))),inverse(float(node.get('x2')),float(node.get('y2')))]
+            here,copy=P[pid],seen[pid]
+            if not ((norm(sub(ends[0],here))<=CALLOUT_POINT_TOLERANCE and norm(sub(ends[1],copy))<=CALLOUT_POINT_TOLERANCE) or (norm(sub(ends[1],here))<=CALLOUT_POINT_TOLERANCE and norm(sub(ends[0],copy))<=CALLOUT_POINT_TOLERANCE)):errors.append('CALLOUT_GUIDE_NOT_ON_POINTS:'+cid+':'+gid)
+            if str(node.get('stroke') or '').lower()!=GUIDE_STROKE or node.get('stroke-dasharray')!=GUIDE_DASH:errors.append('CALLOUT_GUIDE_STYLE_MISMATCH:'+cid+':'+gid)
+        # the marks: ordinary marks on the observed copies
+        if kind=='SEGMENT':
+            # a declared dimension value is the length on the main figure's own path (the copy is `scale` times as long)
+            for dim in row.get('dimensions') or []:
+                if dim.get('from') not in path or dim.get('to') not in path or dim.get('from')==dim.get('to'):errors.append('CALLOUT_TARGET_UNKNOWN:'+cid+':'+str(dim.get('id')));continue
+                out={**dim,'id':prefix+dim['id'],'from':prefix+dim['from'],'to':prefix+dim['to']}
+                if dim.get('value') is not None:
+                    i,j=sorted((path.index(dim['from']),path.index(dim['to'])));declared=float(dim['value']);along=sum(d[i:j])
+                    if abs(declared-along)>CALLOUT_RELATIVE*max(1.0,declared):errors.append('CALLOUT_DIMENSION_FACT_MISMATCH:'+cid+'.'+str(dim['id'])+':declared=%s:main=%.6f'%(dim['value'],along))
+                    out['value']=declared*scale
+                dims.append(out)
+        else:
+            for angle in row.get('angles') or []:
+                refs=angle.get('refs') or []
+                if len(refs)!=3 or refs[1]!=path[0] or refs[0] not in path[1:] or refs[2] not in path[1:] or refs[0]==refs[2]:errors.append('CALLOUT_ANGLE_REFS_INVALID:'+cid+':'+str(angle.get('id')));continue
+                out={**angle,'id':prefix+angle['id'],'refs':[prefix+r for r in refs]}
+                if angle.get('equalGroup') is not None:out['equalGroup']=cid+':'+str(angle['equalGroup'])      # an equal group is the callout's own, never the main figure's
+                if angle.get('over'):out['over']=[prefix+r for r in angle['over']]
+                angles.append(out)
+        def piece_of(pair,piece_pairs=piece_pairs,prefix=prefix,piece_prefix=piece_prefix):
+            for i,(a,b) in enumerate(piece_pairs):
+                if [a,b]==list(pair) or [b,a]==list(pair):return prefix+piece_prefix+str(i+1)
+            return None
+        extra=row.get('marks') or {}
+        for mark in extra.get('equalLengths') or []:
+            pieces=[piece_of(pair) for pair in mark.get('segments') or []]
+            if any(piece is None for piece in pieces):errors.append('CALLOUT_SEGMENT_UNKNOWN:'+cid+':'+str(mark.get('id')));continue
+            equal.append({**mark,'id':prefix+mark['id'],'segments':pieces})
+        for mark in extra.get('expressionLabels') or []:
+            piece=piece_of(mark.get('segment') or [])
+            if piece is None:errors.append('CALLOUT_SEGMENT_UNKNOWN:'+cid+':'+str(mark.get('id')));continue
+            labels.append({**{k:v for k,v in mark.items() if k!='segment'},'id':prefix+mark['id'],'ownerSegment':piece})
+        observations.append({'id':cid,'type':'CALLOUT','kind':kind,'path':list(path),'at':at,**({'scale':scale} if scale is not None else {})})
+    for node_id,node in elements.items():
+        if tag(node)=='line' and node.get('data-role')=='guide' and node_id not in expected_guides:errors.append('CALLOUT_GUIDE_UNDECLARED:'+str(node_id))
+    marks['dimensions']=dims;marks['equalLengths']=equal;marks['expressionLabels']=labels;marks['angles']=angles
+    return points,marks,segments
+
 def audit(p):
     root=ET.fromstring(p['svg']);errors=[];observations=[]
     model=p['transform'];ox,oy,sx,sy=[model[k] for k in ('originX','originY','sx','sy')]
@@ -111,7 +349,8 @@ def audit(p):
     inverse=lambda x,y:((x-ox)/sx,(oy-y)/sy)
     forward=lambda q:(ox+q[0]*sx,oy-q[1]*sy)   # model -> svg
     elements={n.get('id'):n for n in root.iter() if n.get('id')}
-    peer=p['points'];marks=p.get('marks') or {}
+    peer,marks,expanded=expand_callouts(p,elements,inverse,errors,observations)   # E37: callouts' observed copies, pieces and marks join the main figure's
+    p={**p,'segments':expanded}
     def peer_point(pid):
         if pid not in peer:raise ValueError('MARK_TARGET_UNKNOWN:'+pid)
         return tuple(peer[pid])
@@ -131,7 +370,9 @@ def audit(p):
     declared|={('dimension',r['id']) for r in marks.get('dimensions',[])}
     declared|={('arrow',s['id']) for s in p.get('segments',[]) if s.get('arrow')}
     declared|={('region',r['id']) for r in marks.get('regions',[])}
+    declared|={('equal-bracket',r['id']) for r in marks.get('equalLengths',[]) if any(isinstance(entry,dict) for entry in r.get('segments',[]))}
     declared|={('region-hatch',r['id']) for r in marks.get('regions',[]) if r.get('pattern')=='HATCH'}
+    declared|={('quadrant',r['id']) for r in marks.get('quadrants',[]) if isinstance(r,dict) and r.get('fill')}
     for key in by_mark:
         if key not in declared:errors.append('UNDECLARED_MARK:'+key[0]+':'+str(key[1]))
     label_boxes={}   # label id -> (x,y,w,h) in svg px
@@ -185,7 +426,7 @@ def audit(p):
         if 'a'<=ch<='z':out.add(format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X'))
         if 'A'<=ch<='Z':out.add(format(0x1D434+ord(ch)-65,'X'))
         return out
-    def label_content(label_id,kind,text,unit):
+    def label_content(label_id,kind,text,unit,weight=None):
         """What a plain-text (labelKind TEXT) or unit-bearing label of the plan says, read back from the final SVG. A TEXT label is plain outlines (no math glyphs)
         whose text the typesetting step left on its group as data-text; a unit label is checked glyph by glyph (the unit letters last, a plain number's digits first)
         and, for a simple expression, against the exact TeX spacing: a number takes the unit attached (3cm), a letter one thin space (x cm)."""
@@ -195,6 +436,14 @@ def audit(p):
         if kind=='TEXT':
             if codes or node.get('data-tex') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
             if node.get('data-text')!=str(text):errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+            # labelWeight MATH (E32): the outline carries the weight stroke of a math label; without the field it carries none (the old thin face)
+            try:font=float(node.get('data-font-px'))
+            except (TypeError,ValueError):font=None
+            outlines=[n for n in node.iter() if tag(n)=='path']
+            if font is not None and outlines:
+                stroked=[n for n in outlines if str(n.get('stroke','none')).lower() not in ('none','')]
+                if weight=='MATH' and (len(stroked)!=len(outlines) or any(abs(float(n.get('stroke-width','0'))-font*TEXT_WEIGHT_STROKE_EM)>0.01 for n in stroked)):errors.append('LABEL_WEIGHT_MISMATCH:'+label_id)
+                if weight!='MATH' and stroked:errors.append('LABEL_WEIGHT_UNDECLARED:'+label_id)
             return
         if node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
         if not unit:return
@@ -224,12 +473,14 @@ def audit(p):
         oid=row['id'];nodes=by_mark.get(('angle',oid),[])
         arcs=sorted((n for n in nodes if tag(n)=='polyline'),key=lambda n:int(n.get('data-mark-index','0')))
         sectors=[n for n in nodes if tag(n)=='polygon']
-        style=row.get('style','SECTOR')
+        style=row.get('style','ARC' if row.get('over') else 'SECTOR')
         if style=='SECTOR' and len(sectors)!=1:errors.append('ANGLE_SECTOR_MISSING:'+oid)
         elif style!='SECTOR' and sectors:errors.append('ANGLE_SECTOR_UNEXPECTED:'+oid)
         a,v,c=[peer_point(r) for r in row['refs']];inner=angle_between(a,v,c)
         if inner is None:errors.append('ANGLE_MARK_DEGENERATE:'+oid);continue
-        outer=row.get('side','INNER')=='OUTER';expected=360-inner if outer else inner
+        straight=row.get('straight') is True
+        if straight and abs(inner-180)>ANGLE_TOLERANCE:errors.append('ANGLE_STRAIGHT_NOT_STRAIGHT:'+oid);continue
+        outer=row.get('side','INNER')=='OUTER' and not straight;expected=180.0 if straight else 360-inner if outer else inner
         if len(arcs)!=row.get('arcs',1):errors.append('ANGLE_MARK_MISSING:'+oid);continue
         radii=[];sweeps=[];signed=0.0
         for n in arcs:
@@ -245,6 +496,13 @@ def audit(p):
         if not sweeps:continue
         drawn=sweeps[0]
         angle_geometry[oid]=(v,direction_degrees(sub(a,v)),signed,max(radii))
+        if straight:
+            # the semicircle faces the screen side the plan names: the middle of its first arc, seen from the vertex in svg px, points that way
+            want_side=DIM_SIDE_VECTORS.get(row.get('side'))
+            if want_side is None:errors.append('ANGLE_STRAIGHT_SIDE_REQUIRED:'+oid)
+            else:
+                first_arc=poly_model(arcs[0]);middle=forward(first_arc[len(first_arc)//2]);vertex_px=forward(v);toward=(middle[0]-vertex_px[0],middle[1]-vertex_px[1])
+                if norm(toward)<=1e-9 or (toward[0]*want_side[0]+toward[1]*want_side[1])/norm(toward)<DIM_SIDE_MIN_DOT:errors.append('ANGLE_STRAIGHT_SIDE_MISMATCH:'+oid)
         if any(abs(s-drawn)>1e-6 for s in sweeps):errors.append('ANGLE_ARC_SWEEPS_DIFFER:'+oid)
         if abs(drawn-expected)>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:points=%.3f'%(drawn,expected))
         if row.get('value') is not None and abs(drawn-float(row['value']))>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:declared=%s'%(drawn,row['value']))
@@ -312,6 +570,20 @@ def audit(p):
                 elif inside and not has_leader:
                     vx,vy=forward(v)   # the vertex in svg px; the distance to the label box's nearest point
                     if math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:errors.append('ANGLE_LABEL_TOO_FAR:'+oid)
+    # angles[].over (E32): the whole angle encloses each listed angle at the same vertex (rays inside its wedge, a smaller angle) and its outermost arc lies outside theirs
+    over_of={row['id']:set(row.get('over') or ()) for row in marks.get('angles',[]) if isinstance(row,dict) and row.get('over')}
+    for row in marks.get('angles',[]):
+        if not row.get('over') or row['id'] not in angle_geometry:continue
+        oid=row['id'];refs=row['refs'];va=peer_point(refs[1]);mine_first=direction_degrees(sub(peer_point(refs[0]),va))
+        mine_sweep=((direction_degrees(sub(peer_point(refs[2]),va))-mine_first+180.0)%360.0)-180.0
+        def offset_of(q):return ((direction_degrees(sub(q,va))-mine_first)*(1 if mine_sweep>0 else -1))%360.0
+        for child_id in row['over']:
+            child=next((r for r in marks.get('angles',[]) if r.get('id')==child_id),None)
+            if child is None or child['refs'][1]!=refs[1] or child_id not in angle_geometry:errors.append('ANGLE_OVER_NOT_ENCLOSED:'+oid+':'+str(child_id));continue
+            rays=[offset_of(peer_point(child['refs'][0])),offset_of(peer_point(child['refs'][2]))]
+            tol=ANGLE_TOLERANCE
+            if not all(r<=abs(mine_sweep)+tol or r>=360.0-tol for r in rays) or angle_between(peer_point(child['refs'][0]),va,peer_point(child['refs'][2]))>=angle_between(peer_point(refs[0]),va,peer_point(refs[2]))-1e-6:errors.append('ANGLE_OVER_NOT_ENCLOSED:'+oid+':'+child_id)
+            if angle_geometry[oid][3]*sx<=angle_geometry[child_id][3]*sx+2.0:errors.append('ANGLE_OVER_RING_MISMATCH:'+oid+':'+child_id)
     # a label never stands inside another angle mark's sector (the wedge up to that mark's outermost arc): it would read as that angle's value
     for row in marks.get('angles',[]):
         oid=row['id'];box=label_boxes.get(oid+'-label')
@@ -319,6 +591,7 @@ def audit(p):
         centre=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
         for other,(vo,first_o,sweep_o,radius_o) in angle_geometry.items():
             if other==oid:continue
+            if oid in over_of.get(other,()):continue       # an angle enclosed by that angle (a half under its whole) may stand inside it
             d=sub(centre,vo)
             if norm(d)*sx>radius_o*sx+2.0 or sweep_o==0:continue
             along=((direction_degrees(d)-first_o)*(1 if sweep_o>0 else -1))%360.0
@@ -331,11 +604,84 @@ def audit(p):
         if max(values)-min(values)>ANGLE_TOLERANCE:errors.append('ANGLE_EQUAL_MARK_MISMATCH:group'+str(group))
         if len({r.get('arcs',1) for r in rows})!=1:errors.append('ANGLE_EQUAL_MARK_ARC_COUNT:group'+str(group))
 
+    def audit_equal_bracket(oid,sid,chain,bracket_nodes,ticks):
+        """The bracket of a straight path (E32): a line beside the path, two perpendicular end caps, and the equal ticks centred on the bracket's middle; it crosses no stroke."""
+        px=[forward(point) for point in chain];a,b=px[0],px[-1];length=norm(sub(b,a))
+        if length<=1e-9:return
+        d=((b[0]-a[0])/length,(b[1]-a[1])/length)
+        if any(abs((q[0]-a[0])*d[1]-(q[1]-a[1])*d[0])>EQUAL_BRACKET_STRAIGHT_PX+0.05 for q in px):errors.append('EQUAL_MARK_BRACKET_NOT_STRAIGHT:'+oid+':'+sid);return
+        parts={}
+        for node in bracket_nodes:parts.setdefault(node.get('data-mark-part'),[]).append(node)
+        if sorted(parts)!=['cap-from','cap-to','line'] or any(len(v)!=1 for v in parts.values()):errors.append('EQUAL_MARK_BRACKET_PARTS:'+oid+':'+sid);return
+        def ends_of(node):return [(float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2')))]
+        def same(p,q):return norm(sub(p,q))<=EQUAL_BRACKET_POSITION_TOLERANCE_PX
+        line=ends_of(parts['line'][0]);found=None
+        for n in ((-d[1],d[0]),(d[1],-d[0])):
+            pa=(a[0]+n[0]*EQUAL_BRACKET_OFFSET_PX,a[1]+n[1]*EQUAL_BRACKET_OFFSET_PX);pb=(b[0]+n[0]*EQUAL_BRACKET_OFFSET_PX,b[1]+n[1]*EQUAL_BRACKET_OFFSET_PX)
+            if same(line[0],pa) and same(line[1],pb):found=(n,pa,pb);break
+        if found is None:errors.append('EQUAL_MARK_BRACKET_MISMATCH:'+oid+':'+sid+':line');return
+        n,pa,pb=found
+        for part,base_point in (('cap-from',pa),('cap-to',pb)):
+            cap=ends_of(parts[part][0]);want=[(base_point[0]-n[0]*EQUAL_BRACKET_CAP_HALF_PX,base_point[1]-n[1]*EQUAL_BRACKET_CAP_HALF_PX),(base_point[0]+n[0]*EQUAL_BRACKET_CAP_HALF_PX,base_point[1]+n[1]*EQUAL_BRACKET_CAP_HALF_PX)]
+            if not ((same(cap[0],want[0]) and same(cap[1],want[1])) or (same(cap[0],want[1]) and same(cap[1],want[0]))):errors.append('EQUAL_MARK_BRACKET_MISMATCH:'+oid+':'+sid+':'+part)
+        middle=((pa[0]+pb[0])/2,(pa[1]+pb[1])/2);centres=[]
+        for tick in ticks:
+            t0=(float(tick.get('x1')),float(tick.get('y1')));t1=(float(tick.get('x2')),float(tick.get('y2')));centre=((t0[0]+t1[0])/2,(t0[1]+t1[1])/2);vec=sub(t1,t0)
+            if abs(norm(vec)-TICK_LENGTH_PX)>0.05:errors.append('EQUAL_MARK_TICK_SIZE:'+oid+':'+sid)
+            if abs(abs(d[0]*vec[0]+d[1]*vec[1])/norm(vec))>math.sin(math.radians(PERP_TOLERANCE)):errors.append('EQUAL_MARK_NOT_PERPENDICULAR:'+oid+':'+sid)
+            if point_segment_distance(centre,pa,pb)>EQUAL_BRACKET_POSITION_TOLERANCE_PX:errors.append('EQUAL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid)
+            centres.append(centre)
+        if centres and norm(sub((sum(c[0] for c in centres)/len(centres),sum(c[1] for c in centres)/len(centres)),middle))>EQUAL_PATH_MIDDLE_TOLERANCE_PX:errors.append('EQUAL_MARK_PATH_NOT_AT_MIDDLE:'+oid+':'+sid)
+        mine_ids={node.get('id') for node in [*bracket_nodes,*ticks]}
+        for other_id,pts in strokes:
+            if other_id in mine_ids:continue
+            for c0,c1 in ((pa,pb),*[ends_of(parts[part][0]) for part in ('cap-from','cap-to')]):
+                if any(properly_cross(c0,c1,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('EQUAL_MARK_BRACKET_CROSSES:'+oid+':'+str(other_id));break
+
     # ---- equal-length ticks and parallel arrows
     for field,kind in (('equalLengths','equal'),('parallels','parallel')):
         for row in marks.get(field,[]):
-            oid=row['id'];items=by_mark.get((kind,oid),[]);drawn=[]
-            for sid in row['segments']:
+            oid=row['id'];items=by_mark.get((kind,oid),[]);drawn=[];path_lengths={}
+            for entry in (row.get('segments') if row.get('segments') is not None else row.get('lines',[])):
+                if isinstance(entry,dict):
+                    # E32: one mark for a whole path {"path":[ids]}: the pieces drawn end to end; the ticks stand on the path (on the piece they fall on), clear of its inner joints
+                    path_ids=entry.get('path') or [];sid=path_ids[0] if path_ids else '?'
+                    pieces=[drawn_segment(pid) for pid in path_ids]
+                    if not path_ids or any(piece is None for piece in pieces):continue
+                    chain=path_chain(pieces)
+                    if chain is None:errors.append('EQUAL_MARK_PATH_NOT_CONNECTED:'+oid+':'+sid);continue
+                    path_lengths[sid]=sum(norm(sub(b,a)) for a,b in zip(chain,chain[1:]))
+                    mine=[n for n in items if n.get('data-mark-segment')==sid]
+                    if len(mine)!=row['count']:errors.append('EQUAL_MARK_MISSING:'+oid+':'+sid);continue
+                    brackets=[n for n in by_mark.get(('equal-bracket',oid),[]) if n.get('data-mark-segment')==sid]
+                    path_mark=row.get('pathMark','AUTO')
+                    if path_mark not in ('AUTO','TICK','BRACKET'):errors.append('EQUAL_MARK_PATH_MARK_INVALID:'+oid);continue
+                    if brackets and path_mark=='TICK':errors.append('EQUAL_MARK_PATH_BRACKET_UNEXPECTED:'+oid+':'+sid);continue
+                    if not brackets and path_mark=='BRACKET':errors.append('EQUAL_MARK_PATH_NEEDS_BRACKET:'+oid+':'+sid);continue
+                    if brackets:
+                        # the middle of the path is near an inner joint, so the whole path wears a thin bracket (a straight path only) with the ticks at the bracket's middle
+                        audit_equal_bracket(oid,sid,chain,brackets,mine)
+                        continue
+                    positions=[]
+                    for n in mine:
+                        t0,t1=line_model(n);centre=((t0[0]+t1[0])/2,(t0[1]+t1[1])/2);vec=sub(t1,t0)
+                        if abs(norm(vec)*sx-TICK_LENGTH_PX)>0.05:errors.append('EQUAL_MARK_TICK_SIZE:'+oid+':'+sid)
+                        nearest=min(zip(chain,chain[1:]),key=lambda pair:point_segment_distance(centre,*pair))
+                        if point_segment_distance(centre,*nearest)*sx>0.01:errors.append('EQUAL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid);continue
+                        direction=sub(nearest[1],nearest[0])
+                        if abs(abs(direction[0]*vec[0]+direction[1]*vec[1])/(norm(direction)*norm(vec)))>math.sin(math.radians(PERP_TOLERANCE)):errors.append('EQUAL_MARK_NOT_PERPENDICULAR:'+oid+':'+sid)
+                        # clear of every inner joint (the point E of B-E-D) by the path-mark clearance
+                        along_path=0.0
+                        for a0,b0 in zip(chain,chain[1:]):
+                            if (a0,b0)==nearest:along_path+=norm(sub(centre,a0));break
+                            along_path+=norm(sub(b0,a0))
+                        positions.append(along_path)
+                        if not 0.15*path_lengths[sid]<=along_path<=0.85*path_lengths[sid]:errors.append('EQUAL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid)
+                        if any(norm(sub(centre,joint))*sx<EQUAL_PATH_CLEAR_PX-0.01 for joint in chain[1:-1]):errors.append('EQUAL_MARK_PATH_ON_JOINT:'+oid+':'+sid)
+                    # the marks of a whole path stand at its middle (by length): the group's centre is half way along
+                    if path_mark=='AUTO' and positions and abs(sum(positions)/len(positions)-0.5*path_lengths[sid])*sx>EQUAL_PATH_MIDDLE_TOLERANCE_PX:errors.append('EQUAL_MARK_PATH_NOT_AT_MIDDLE:'+oid+':'+sid)
+                    continue
+                sid=entry
                 seg=drawn_segment(sid)
                 if seg is None:continue
                 drawn.append(seg);a,b=seg;length=norm(sub(b,a))
@@ -343,7 +689,15 @@ def audit(p):
                 if len(mine)!=row['count']:errors.append(('EQUAL_MARK_MISSING:' if kind=='equal' else 'PARALLEL_MARK_MISSING:')+oid+':'+sid);continue
                 unit=((b[0]-a[0])/length,(b[1]-a[1])/length)
                 for n in mine:
-                    if kind=='equal':
+                    if kind=='equal' and row.get('markStyle')=='CIRCLE':
+                        # markStyle CIRCLE (E32): open circles of 3.6 px radius centred on the segment, 9 px apart, centred on the segment's chosen spot
+                        if tag(n)!='circle':errors.append('EQUAL_MARK_STYLE_MISMATCH:'+oid+':'+sid);continue
+                        centre=inverse(float(n.get('cx')),float(n.get('cy')))
+                        if abs(float(n.get('r'))-EQUAL_CIRCLE_RADIUS_PX)>0.05 or str(n.get('fill','none')).lower() not in ('none',''):errors.append('EQUAL_MARK_TICK_SIZE:'+oid+':'+sid)
+                        across=abs((centre[0]-a[0])*unit[1]-(centre[1]-a[1])*unit[0]);along=(centre[0]-a[0])*unit[0]+(centre[1]-a[1])*unit[1]
+                        if across*sx>0.01 or not 0.15*length<=along<=0.85*length:errors.append('EQUAL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid)
+                    elif kind=='equal':
+                        if tag(n)!='line':errors.append('EQUAL_MARK_STYLE_MISMATCH:'+oid+':'+sid);continue
                         t0,t1=line_model(n);centre=((t0[0]+t1[0])/2,(t0[1]+t1[1])/2);vec=sub(t1,t0)
                         if abs(norm(vec)*sx-TICK_LENGTH_PX)>0.05:errors.append('EQUAL_MARK_TICK_SIZE:'+oid+':'+sid)
                         across=abs((centre[0]-a[0])*unit[1]-(centre[1]-a[1])*unit[0]);along=(centre[0]-a[0])*unit[0]+(centre[1]-a[1])*unit[1]
@@ -357,22 +711,28 @@ def audit(p):
                         if across*sx>0.01 or not 0.15*length<=along<=0.85*length:errors.append('PARALLEL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid)
                         if norm(axis)<=1e-12 or abs(axis[0]*unit[1]-axis[1]*unit[0])/norm(axis)>math.sin(math.radians(PERP_TOLERANCE)):errors.append('PARALLEL_MARK_ARROW_NOT_ALONG_SEGMENT:'+oid+':'+sid)
             if kind=='equal':
-                lengths=[norm(sub(b,a)) for a,b in drawn]
+                lengths=[norm(sub(b,a)) for a,b in drawn]+list(path_lengths.values())
                 peer_lengths=[]
-                for sid in row['segments']:
-                    seg=next((s for s in p.get('segments',[]) if s['id']==sid),None)
-                    if seg:peer_lengths.append(norm(sub(peer_point(seg['refs'][1]),peer_point(seg['refs'][0]))))
+                for entry in row['segments']:
+                    ids=entry.get('path') if isinstance(entry,dict) else [entry]
+                    total=0.0;complete=bool(ids)
+                    for sid in ids or []:
+                        seg=next((s for s in p.get('segments',[]) if s['id']==sid),None)
+                        if seg:total+=norm(sub(peer_point(seg['refs'][1]),peer_point(seg['refs'][0])))
+                        else:complete=False
+                    if complete:peer_lengths.append(total)
                 for group in (lengths,peer_lengths):
                     if group and any(abs(l-group[0])>LENGTH_RELATIVE*max(1.0,group[0]) for l in group):errors.append('EQUAL_MARK_LENGTH_MISMATCH:'+oid);break
                 observations.append({'id':oid,'type':'EQUAL','lengths':lengths})
             else:
                 units=[((b[0]-a[0])/norm(sub(b,a)),(b[1]-a[1])/norm(sub(b,a))) for a,b in drawn]
                 if any(abs(u[0]*units[0][1]-u[1]*units[0][0])>math.sin(math.radians(ANGLE_TOLERANCE)) for u in units):errors.append('PARALLEL_MARK_NOT_PARALLEL:'+oid)
-                observations.append({'id':oid,'type':'PARALLEL','segments':row['segments']})
+                observations.append({'id':oid,'type':'PARALLEL','segments':row.get('segments') if row.get('segments') is not None else row.get('lines')})
 
     # ---- segment expression labels
     segment_lines={sid:drawn_segment(sid) for sid in {s['id'] for s in p.get('segments',[])}}
-    for row in marks.get('expressionLabels',[]):
+    common_rows=[{'id':r['id'],'ownerSegment':r.get('segment'),'text':r.get('text','공통'),'labelKind':'TEXT','labelAt':r.get('labelAt'),'labelWeight':r.get('labelWeight')} for r in marks.get('commonSides',[]) if isinstance(r,dict)]
+    for row in [*marks.get('expressionLabels',[]),*common_rows]:
         oid=row['id'];box=label_clear(oid)
         own=segment_lines.get(row['ownerSegment'])
         if box is None or own is None:continue
@@ -383,19 +743,128 @@ def audit(p):
         def anchored(q):
             qm=inverse(*q);return point_segment_distance(qm,*own)*sx<=1.0
         if leader_ok(oid,box,anchored):pass
-        elif any(distance_to(sid)+1e-9<mine for sid in segment_lines if sid!=row['ownerSegment']):errors.append('SEGMENT_LABEL_AMBIGUOUS_OWNER:'+oid)
-        label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'))
+        elif any(distance_to(sid)+1e-9<mine+(NEAREST_OWNER_MARGIN_PX/sx if row.get('ownership')=='NEAREST' else 0.0) for sid in segment_lines if sid!=row['ownerSegment']):errors.append('SEGMENT_LABEL_AMBIGUOUS_OWNER:'+oid)
+        label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'),row.get('labelWeight'))
         if row.get('labelAt') is not None:
             # labelAt START / END: the label stands nearer the first / second end of its segment than the other end (its projection on the segment, 0 = first end, 1 = second)
-            if row['labelAt'] not in ('START','MID','END'):errors.append('SEGMENT_LABEL_AT_INVALID:'+oid)
+            at=row['labelAt']
+            if not (at in ('START','MID','END') or (isinstance(at,(int,float)) and not isinstance(at,bool) and 0<=at<=1)):errors.append('SEGMENT_LABEL_AT_INVALID:'+oid)
             else:
                 a,b=own;d=sub(b,a);fraction=((centre_model[0]-a[0])*d[0]+(centre_model[1]-a[1])*d[1])/(norm(d)**2)
-                if (row['labelAt']=='START' and fraction>0.3) or (row['labelAt']=='END' and fraction<0.7):errors.append('SEGMENT_LABEL_NOT_AT_END:'+oid)
+                # a number 0..1 (E31): the label's centre stands within 0.4 of the segment's length from the stated fraction
+                if (at=='START' and fraction>0.3) or (at=='END' and fraction<0.7) or (isinstance(at,(int,float)) and abs(fraction-at)>0.4):errors.append('SEGMENT_LABEL_NOT_AT_END:'+oid)
         observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx,**({'labelKind':row['labelKind']} if row.get('labelKind') else {}),**({'unit':row['unit']} if row.get('unit') else {})})
+
+    # ---- angle sums (E30): the equation of two angle marks at one vertex, re-derived here from the plan's own angle rows (values, vertex) and checked as a free math label
+    angle_rows={r['id']:r for r in marks.get('angles',[]) if isinstance(r,dict) and 'id' in r}
+    sum_rows=[]
+    for row in marks.get('angleSums',[]):
+        oid=row.get('id');ids=row.get('angles')
+        if not (isinstance(ids,list) and len(ids)==2 and ids[0]!=ids[1] and all(i in angle_rows for i in ids)):errors.append('ANGLE_SUM_ANGLES_INVALID:'+str(oid));continue
+        first,second=angle_rows[ids[0]],angle_rows[ids[1]]
+        if first['refs'][1]!=second['refs'][1]:errors.append('ANGLE_SUM_VERTEX_MISMATCH:'+oid);continue
+        if first.get('value') is None or second.get('value') is None:errors.append('ANGLE_SUM_NEEDS_VALUES:'+oid);continue
+        total=float(first['value'])+float(second['value'])
+        if row.get('label') is not None:
+            try:stated=float(str(row['label']).rstrip('\u00b0'))
+            except ValueError:stated=None
+            if stated is None or abs(stated-total)>ANGLE_TOLERANCE:errors.append('ANGLE_SUM_MISMATCH:'+oid);continue
+        number=lambda x:('%.6f'%x).rstrip('0').rstrip('.')
+        sum_rows.append({'id':oid,'at':row.get('at',first['refs'][1]),'text':number(float(first['value']))+'\u00b0+'+number(float(second['value']))+'\u00b0='+number(total)+'\u00b0','labelKind':'MATH','anchor':row.get('anchor')})
+    # ---- right angle expression labels (E30): beside the square mark inside the right angle, or on a leader from the square
+    for row in p.get('rightAngles') or []:
+        if row.get('label') is None:continue
+        oid=row['id'];lid=oid+'-label';box=label_clear(lid)
+        if box is None:continue
+        a,v,c=[peer_point(r) for r in row['refs']];node=elements.get(lid)
+        want=math_label_codes(str(row['label']));codes=glyph_codes(node) if node is not None else []
+        if node is not None and node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+lid)
+        elif len(codes)!=len(want) or any(code not in allowed for code,allowed in zip(codes,want)):errors.append('LABEL_TEXT_MISMATCH:'+lid)
+        centre=inverse(box[0]+box[2]/2,box[1]+box[3]/2);ray_a=direction_degrees(sub(a,v));ray_c=direction_degrees(sub(c,v))
+        spread=wrap180(ray_c-ray_a);offset=wrap180(direction_degrees(sub(centre,v))-ray_a)
+        inside=(0<offset<spread) if spread>0 else (spread<offset<0)
+        square=elements.get(oid)
+        if square is not None and tag(square)=='polyline':
+            raw=[float(x) for part in square.get('points','').split() for x in part.split(',')];outline=[(raw[i],raw[i+1]) for i in range(0,len(raw)-1,2)]
+        else:outline=[]
+        if lid in leaders:
+            leader_ok(lid,box,lambda q:bool(outline) and min(point_segment_distance(q,s0,s1) for s0,s1 in zip(outline,outline[1:]))<=1.5)
+        elif not inside:errors.append('RIGHT_ANGLE_LABEL_NOT_IN_ANGLE:'+oid)
+        else:
+            vx,vy=forward(v)
+            if math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:errors.append('RIGHT_ANGLE_LABEL_TOO_FAR:'+oid)
+        observations.append({'id':oid,'type':'RIGHT_ANGLE_LABEL','label':row['label']})
+
+    # ---- free text labels (E30): a plain Korean or math label at a stated source coordinate, or beside a point on a stated side
+    for row in [*marks.get('textLabels',[]),*sum_rows]:
+        oid=row.get('id');box=label_clear(oid)
+        if box is None:continue
+        at=row.get('at');text=str(row.get('text',''))
+        if isinstance(at,str):target=forward(peer_point(at))
+        elif isinstance(at,list) and len(at)==2 and all(isinstance(v,(int,float)) and not isinstance(v,bool) for v in at):target=forward((float(at[0]),float(at[1])))
+        else:errors.append('TEXT_LABEL_AT_INVALID:'+oid);continue
+        kind=row.get('labelKind') or ('TEXT' if TEXT_LABEL_HANGUL.search(text) else 'MATH')
+        anchor=row.get('anchor') if row.get('anchor') is not None else ('CENTER' if not isinstance(at,str) else None)
+        if anchor is not None and anchor not in TEXT_LABEL_ANCHORS:errors.append('TEXT_LABEL_ANCHOR_INVALID:'+oid);continue
+        label_content(oid,kind,text,None,row.get('labelWeight'))
+        node=elements.get(oid)
+        if kind=='MATH' and node is not None:
+            want=math_label_codes(text);codes=glyph_codes(node)
+            if len(codes)!=len(want) or any(code not in allowed for code,allowed in zip(codes,want)):errors.append('LABEL_TEXT_MISMATCH:'+oid)
+        cx,cy=box[0]+box[2]/2,box[1]+box[3]/2;ax,ay=target
+        if anchor=='CENTER':
+            if math.hypot(cx-ax,cy-ay)>TEXT_LABEL_CENTER_SLACK_PX:errors.append('TEXT_LABEL_NOT_AT_PLACE:'+oid)
+        else:
+            gap=math.hypot(max(box[0]-ax,0,ax-(box[0]+box[2])),max(box[1]-ay,0,ay-(box[1]+box[3])))
+            if gap>TEXT_LABEL_MAX_GAP_PX:errors.append('TEXT_LABEL_TOO_FAR:'+oid)
+            if anchor is not None:
+                dx=1 if 'E' in anchor else -1 if 'W' in anchor else 0;dy=1 if 'S' in anchor else -1 if 'N' in anchor else 0
+                if (dx>0 and box[0]<ax-0.5) or (dx<0 and box[0]+box[2]>ax+0.5) or (dy>0 and box[1]<ay-0.5) or (dy<0 and box[1]+box[3]>ay+0.5):errors.append('TEXT_LABEL_NOT_ON_SIDE:'+oid)
+                if (dx==0 and abs(cx-ax)>1.0) or (dy==0 and abs(cy-ay)>1.0):errors.append('TEXT_LABEL_NOT_ON_SIDE:'+oid)
+        observations.append({'id':oid,'type':'TEXT_LABEL','labelKind':kind,'anchor':anchor,'distancePx':math.hypot(cx-ax,cy-ay)})
+
+    # ---- quadrants (E31): the tinted rectangle of a coordinate quadrant and its Korean name, read back from the final XML. The window edge a quadrant reaches is the end of the drawn
+    # axis on that side (the axes are drawn across the whole window), the origin the transform's own; the name is plain text, inside its quadrant and clear of every stroke.
+    quadrant_rows=[row for row in marks.get('quadrants',[]) if isinstance(row,dict)]
+    if quadrant_rows:
+        axis_ends={}
+        for axis_id in ('x-axis','y-axis'):
+            n=elements.get(axis_id)
+            if n is not None and tag(n)=='line':axis_ends[axis_id]=((float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2'))))
+        QUADRANT_TONES={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+        for row in quadrant_rows:
+            oid=row.get('id');number=row.get('quadrant')
+            if number not in (1,2,3,4):errors.append('QUADRANT_INVALID:'+str(oid));continue
+            if len(axis_ends)!=2:errors.append('QUADRANT_AXES_MISSING:'+str(oid));continue
+            xs=sorted(p[0] for p in axis_ends['x-axis']);ys=sorted(p[1] for p in axis_ends['y-axis'])
+            edge_x=xs[1] if number in (1,4) else xs[0];edge_y=ys[0] if number in (1,2) else ys[1]
+            rect=[(ox,oy),(edge_x,oy),(edge_x,edge_y),(ox,edge_y)]
+            inside=lambda q:min(ox,edge_x)-0.5<=q[0]<=max(ox,edge_x)+0.5 and min(oy,edge_y)-0.5<=q[1]<=max(oy,edge_y)+0.5
+            fill=elements.get(oid+'-fill') if row.get('fill') else None
+            if row.get('fill'):
+                if fill is None or tag(fill)!='polygon':errors.append('QUADRANT_FILL_MISSING:'+str(oid))
+                else:
+                    pts=[tuple(float(v) for v in pair.split(',')) for pair in fill.get('points','').split()]
+                    if len(pts)!=4 or any(not any(math.hypot(a[0]-b[0],a[1]-b[1])<=0.05 for b in pts) for a in rect):errors.append('QUADRANT_FILL_MISMATCH:'+str(oid))
+                    if str(fill.get('fill','')).lower()!=QUADRANT_TONES.get(row['fill']):errors.append('QUADRANT_FILL_TONE_MISMATCH:'+str(oid))
+                    if fill.get('data-role')!='region':errors.append('QUADRANT_FILL_NOT_A_REGION:'+str(oid))
+                    if stroke_before(fill):errors.append('QUADRANT_FILL_COVERS_STROKE:'+str(oid))
+            elif elements.get(str(oid)+'-fill') is not None:errors.append('QUADRANT_FILL_UNDECLARED:'+str(oid))
+            if row.get('label') is not None:
+                lid=str(oid)+'-label';box=label_clear(lid)
+                if box is not None:
+                    label_content(lid,'TEXT',row['label'],None)
+                    if not all(inside(q) for q in ((box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3]))):errors.append('QUADRANT_LABEL_OUTSIDE:'+str(oid))
+                    observations.append({'id':lid,'type':'QUADRANT_LABEL','quadrant':number})
+            elif elements.get(str(oid)+'-label') is not None:errors.append('QUADRANT_LABEL_UNDECLARED:'+str(oid))
+            observations.append({'id':oid,'type':'QUADRANT','quadrant':number,'fill':row.get('fill')})
 
     # ---- dimension lines: the bar, arrows or brace between two displayed points, every part recomputed from the peer points, the label on the outer side
     dimension_lines={}   # id -> the dimension's main polyline in svg px (its line, or the brace) for the label-ownership test
     dimension_rows=[row for row in marks.get('dimensions',[]) if isinstance(row,dict)]
+    dimension_tiers=resolve_dimension_tiers(dimension_rows,peer_point)
+    dimension_inline=set()
+    arc_stroke_ids={n.get('id') for n in root.iter() if n.get('data-role') in ('circularArc','circle') and n.get('id')}
     for row in dimension_rows:
         oid=row['id'];tol=DIM_POSITION_TOLERANCE_PX
         a=forward(peer_point(row['from']));b=forward(peer_point(row['to']));length=norm(sub(b,a))
@@ -405,17 +874,20 @@ def audit(p):
         d=((b[0]-a[0])/length,(b[1]-a[1])/length);want=DIM_SIDE_VECTORS[side]
         n=max(((-d[1],d[0]),(d[1],-d[0])),key=lambda v:v[0]*want[0]+v[1]*want[1])
         if n[0]*want[0]+n[1]*want[1]<DIM_SIDE_MIN_DOT:errors.append('DIMENSION_SIDE_AMBIGUOUS:'+oid);continue
-        offset=row.get('offset',1);style=row.get('style','BAR')
-        if isinstance(offset,bool) or not isinstance(offset,int) or not 1<=offset<=3:errors.append('DIMENSION_OFFSET_INVALID:'+oid);continue
-        if style not in ('BAR','ARROW','BRACE'):errors.append('DIMENSION_STYLE_INVALID:'+oid);continue
+        style=row.get('style','BAR');offset=dimension_tiers.get(oid) if row.get('offset')=='AUTO' else row.get('offset',1)
+        if isinstance(offset,bool) or not isinstance(offset,int) or not 1<=offset<=DIM_MAX_TIER:errors.append('DIMENSION_OFFSET_INVALID:'+oid);continue
+        if style not in ('BAR','ARROW','BRACE','INLINE'):errors.append('DIMENSION_STYLE_INVALID:'+oid);continue
+        extension=row.get('extension','FULL')
+        if extension not in ('FULL','NONE'):errors.append('DIMENSION_EXTENSION_INVALID:'+oid);continue
+        if row.get('offsetPx') is not None and not DIM_OFFSET_PX_RANGE[0]<=float(row['offsetPx'])<=DIM_OFFSET_PX_RANGE[1]:errors.append('DIMENSION_OFFSET_PX_INVALID:'+oid);continue
         if row.get('value') is not None:
             drawn_length=norm(sub(peer_point(row['to']),peer_point(row['from'])))
             if abs(drawn_length-float(row['value']))>1e-6*max(1.0,float(row['value'])):errors.append('DIMENSION_FACT_MISMATCH:'+oid+':declared=%s:drawn=%.6f'%(row['value'],drawn_length))
-        dist=DIM_FIRST_PX+DIM_STEP_PX*(offset-1)
+        dist=dimension_distance(row,style,offset)
         frame=lambda q:((q[0]-a[0])*d[0]+(q[1]-a[1])*d[1],(q[0]-a[0])*n[0]+(q[1]-a[1])*n[1])   # (along p->q, across toward the declared side) of an svg point
         parts={}
         for node in by_mark.get(('dimension',oid),[]):parts.setdefault(node.get('data-mark-part'),[]).append(node)
-        wanted=['brace'] if style=='BRACE' else ['ext-from','ext-to','line']+(['tick-from','tick-to'] if style=='BAR' else ['arrow-from','arrow-to'])
+        wanted=['brace'] if style=='BRACE' else ['arrow-from','arrow-to'] if style=='INLINE' else (['ext-from','ext-to'] if extension!='NONE' else [])+['line']+(['tick-from','tick-to'] if style=='BAR' else ['arrow-from','arrow-to'])
         missing=[part for part in wanted if len(parts.get(part,[]))!=1]
         for part in missing:errors.append('DIMENSION_PART_MISSING:'+oid+':'+part)
         for part in parts:
@@ -438,6 +910,18 @@ def audit(p):
                 if any(across<-tol for _a,across in observed):errors.append('DIMENSION_SIDE_MISMATCH:'+oid)
                 elif len(observed)!=len(expected) or any(not near(o[0],e[0]) or not near(o[1],e[1]) for o,e in zip(observed,expected)):errors.append('DIMENSION_BRACE_MISMATCH:'+oid)
                 dimension_lines[oid]=points
+        elif style=='INLINE':
+            # arrowheads inside the two points, tips on the segment, no line of its own: the segment itself stands for the dimension line
+            dimension_inline.add(oid);dimension_lines[oid]=[a,b]
+            for part,along,out in (('arrow-from',DIM_INLINE_TIP_INSET_PX,-1.0),('arrow-to',length-DIM_INLINE_TIP_INSET_PX,1.0)):
+                points=polygon_points(part)
+                if points is None:continue
+                if len(points)!=3:errors.append('DIMENSION_ARROW_MISMATCH:'+oid+':'+part);continue
+                tip,left,right=[frame(q) for q in points]
+                ok=near(tip[0],along) and near(tip[1],0.0)
+                ok=ok and near(left[0],along-out*DIM_ARROW_LENGTH_PX) and near(right[0],along-out*DIM_ARROW_LENGTH_PX)
+                ok=ok and near(abs(left[1]-right[1]),2*DIM_ARROW_HALF_WIDTH_PX) and near((left[1]+right[1])/2,0.0)
+                if not ok:errors.append('DIMENSION_ARROW_MISMATCH:'+oid+':'+part)
         else:
             ends=line_ends('line')
             if ends is not None:
@@ -447,6 +931,7 @@ def audit(p):
                 node=parts['line'][0];dimension_lines[oid]=[(float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2')))]
             reach=dist-DIM_BAR_TICK_HALF_PX if style=='BAR' else dist+DIM_ARROW_PAST_PX
             for part,along in (('ext-from',0.0),('ext-to',length)):
+                if extension=='NONE':continue
                 ext=line_ends(part)
                 if ext is not None and not (near(ext[0][0],along) and near(ext[1][0],along) and near(ext[0][1],DIM_EXT_START_PX) and near(ext[1][1],reach)):errors.append('DIMENSION_EXTENSION_MISMATCH:'+oid+':'+part)
             if style=='BAR':
@@ -471,7 +956,7 @@ def audit(p):
         if oid not in dimension_lines:continue
         a=forward(peer_point(row['from']));b=forward(peer_point(row['to']));length=norm(sub(b,a));d=((b[0]-a[0])/length,(b[1]-a[1])/length)
         want=DIM_SIDE_VECTORS[row['side']];n=max(((-d[1],d[0]),(d[1],-d[0])),key=lambda v:v[0]*want[0]+v[1]*want[1])
-        dist=DIM_FIRST_PX+DIM_STEP_PX*(row.get('offset',1)-1)
+        dist=dimension_distance(row,row.get('style','BAR'),dimension_tiers.get(oid) if row.get('offset')=='AUTO' else row.get('offset',1))
         frame=lambda q:((q[0]-a[0])*d[0]+(q[1]-a[1])*d[1],(q[0]-a[0])*n[0]+(q[1]-a[1])*n[1])
         box=label_clear(oid+'-label')
         if box is not None:
@@ -484,24 +969,28 @@ def audit(p):
             for other,line in dimension_lines.items():
                 if other!=oid and box_polyline_distance(box,line)+1e-9<mine:errors.append('DIMENSION_LABEL_AMBIGUOUS_OWNER:'+oid+':'+other)
         label,unit=dimension_label_parts(row)
-        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit)
+        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit,row.get('labelWeight'))
         # the dimension line itself (or the brace) never crosses a drawn stroke: its own parts and another dimension's extension lines excepted
         line=dimension_lines[oid]
+        if oid in dimension_inline:continue      # an inline dimension has no line of its own: the segment it stands on is drawn anyway
         for sid,pts in strokes:
             sid=str(sid)
             if sid.startswith(oid+'-') or re.fullmatch(r'.+-ext-(?:from|to)',sid):continue
+            if row.get('crossArcs') is True and sid in arc_stroke_ids:continue      # crossArcs: the dimension line may cross circular arcs
             if any(properly_cross(c,e,q0,q1) for c,e in zip(line,line[1:]) for q0,q1 in zip(pts,pts[1:])):errors.append('DIMENSION_CROSSES_STROKE:'+oid+':'+sid)
 
     # ---- path total-length labels: one label for a bent path (consecutive drawn segments), tied to the path by a visible leader that starts on it
     for row in marks.get('pathLabels',[]):
         oid=row['id'];ids=row.get('points') or []
         if len(ids)<3 or len(set(ids))!=len(ids):errors.append('PATH_LABEL_POINTS_INVALID:'+oid);continue
-        path=[forward(peer_point(pid)) for pid in ids];owned=[]
-        for a_id,b_id in zip(ids,ids[1:]):
+        if row.get('closed') is not None and row.get('closed') is not True:errors.append('PATH_LABEL_CLOSED_INVALID:'+oid)
+        closed=row.get('closed') is True;ring_ids=ids+ids[:1] if closed else ids      # closed: a perimeter, the last point joins back to the first
+        path=[forward(peer_point(pid)) for pid in ring_ids];owned=[]
+        for a_id,b_id in zip(ring_ids,ring_ids[1:]):
             hit=next((s for s in p.get('segments',[]) if set(s.get('refs') or [])=={a_id,b_id}),None)
             if hit is None or drawn_segment(hit['id']) is None:errors.append('PATH_LABEL_SEGMENT_NOT_DRAWN:'+oid+':'+a_id+'-'+b_id)
             else:owned.append(hit['id'])
-        total=sum(norm(sub(peer_point(b_id),peer_point(a_id))) for a_id,b_id in zip(ids,ids[1:]))
+        total=sum(norm(sub(peer_point(b_id),peer_point(a_id))) for a_id,b_id in zip(ring_ids,ring_ids[1:]))
         if row.get('value') is not None and abs(total-float(row['value']))>1e-6*max(1.0,float(row['value'])):errors.append('PATH_LABEL_FACT_MISMATCH:'+oid+':declared=%s:drawn=%.6f'%(row['value'],total))
         box=label_clear(oid+'-label')
         if box is not None:
@@ -510,11 +999,38 @@ def audit(p):
             else:
                 leader_ok(oid+'-label',box,lambda q:min(point_segment_distance(q,c,d) for c,d in zip(path,path[1:]))<=1.0)
                 la=(float(node.get('x1')),float(node.get('y1')));lb=(float(node.get('x2')),float(node.get('y2')))
+                # anchor / side (E37): where along the path the leader starts, and on which side of the path (walking first point to last, as the page shows it: y down) the label stands
+                if row.get('anchor') is not None:
+                    wanted=path_anchor_fraction(row['anchor'])
+                    if wanted is None or closed:errors.append('PATH_LABEL_ANCHOR_INVALID:'+oid)
+                    else:
+                        drawn,_=nearest_on_path(la,path)
+                        if abs(drawn-wanted)>PATH_LABEL_ANCHOR_TOLERANCE:errors.append('PATH_LABEL_ANCHOR_MISMATCH:'+oid+':wanted=%.3f:drawn=%.3f'%(wanted,drawn))
+                if row.get('side') is not None:
+                    if row['side'] not in ('LEFT','RIGHT') or closed:errors.append('PATH_LABEL_SIDE_INVALID:'+oid)
+                    else:
+                        _,(dx,dy)=nearest_on_path(la,path);normal=(dy,-dx) if row['side']=='LEFT' else (-dy,dx)
+                        centre=(box[0]+box[2]/2-la[0],box[1]+box[3]/2-la[1])
+                        if norm(centre)<=1e-9 or (centre[0]*normal[0]+centre[1]*normal[1])/norm(centre)<PATH_LABEL_SIDE_MIN_COS:errors.append('PATH_LABEL_SIDE_MISMATCH:'+oid)
                 for sid,pts in strokes:
+                    if closed and sid in ids:continue      # a perimeter leader may leave from a corner: that corner's own dot is where it starts
                     if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('PATH_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+                if closed:
+                    # a perimeter label stands outside the figure, its leader never enters it
+                    ring=path[:-1]
+                    def inside(q):
+                        hit=False
+                        for (ax,ay),(bx,by) in zip(ring,ring[1:]+ring[:1]):
+                            if (ay>q[1])!=(by>q[1]) and q[0]<(bx-ax)*(q[1]-ay)/(by-ay)+ax:hit=not hit
+                        return hit
+                    if any(inside((box[0]+box[2]*i/4,box[1]+box[3]*j/2)) for i in range(5) for j in range(3)):errors.append('PATH_LABEL_NOT_OUTSIDE:'+oid)
+                    span=norm(sub(lb,la))
+                    if span>1e-9:
+                        steps=max(2,int(span//4))
+                        if any(inside((la[0]+(lb[0]-la[0])*k/steps,la[1]+(lb[1]-la[1])*k/steps)) for k in range(steps+1) if span*k/steps>=3.0):errors.append('PATH_LABEL_LEADER_ENTERS:'+oid)
         label,unit=dimension_label_parts(row)
-        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit)
-        observations.append({'id':oid,'type':'PATH_LABEL','points':ids,'lengthModel':total,'segments':owned})
+        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit,row.get('labelWeight'))
+        observations.append({'id':oid,'type':'PATH_LABEL','points':ids,'lengthModel':total,'segments':owned,**({'closed':True} if closed else {})})
 
     # ---- highlighted circle arcs
     def arc_span(row):
@@ -534,13 +1050,28 @@ def audit(p):
         box=label_clear(oid+'-label')
         if box is None:return
         c=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
-        if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
-        if not leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5):
-            # no leader: the label must be nearer its own arc than another arc of the same circle
-            angle=direction_degrees(sub(c,center));mine=arc_gap(row,angle)
-            if any(other is not row and other.get('circle')==row.get('circle') and other.get('center')==row.get('center') and arc_gap(other,angle)+1e-9<mine for other in marks.get('arcs',[])):errors.append('ARC_LABEL_AMBIGUOUS_OWNER:'+oid)
+        if row.get('labelPlacement')=='LEADER':
+            # labelPlacement LEADER (E32): anywhere free (inside or outside the circle) on a leader that starts ON this arc (within its span), crossing no other stroke
+            node=leaders.get(oid+'-label')
+            if node is None:errors.append('ARC_LABEL_LEADER_MISSING:'+oid)
+            else:
+                def on_own_arc(q):
+                    point=inverse(*q)
+                    return abs(norm(sub(point,center))-radius)*sx<=1.5 and arc_gap(row,direction_degrees(sub(point,center)))<=ARC_LEADER_SPAN_SLACK_DEGREES
+                leader_ok(oid+'-label',box,on_own_arc)
+                la=(float(node.get('x1')),float(node.get('y1')));lb=(float(node.get('x2')),float(node.get('y2')))
+                own={oid}|{n.get('id') for n in root.iter() if tag(n)=='circle' and n.get('data-role')=='circle' and abs(float(n.get('r'))-radius*sx)<=0.6 and norm(sub(inverse(float(n.get('cx')),float(n.get('cy'))),center))*sx<=0.6}
+                for sid,pts in strokes:
+                    if sid in own:continue
+                    if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('ARC_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+        else:
+            if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
+            if not leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5):
+                # no leader: the label must be nearer its own arc than another arc of the same circle
+                angle=direction_degrees(sub(c,center));mine=arc_gap(row,angle)
+                if any(other is not row and other.get('circle')==row.get('circle') and other.get('center')==row.get('center') and arc_gap(other,angle)+1e-9<mine for other in marks.get('arcs',[])):errors.append('ARC_LABEL_AMBIGUOUS_OWNER:'+oid)
         kind=row.get('labelKind','MATH' if row.get('unit') else 'DEGREE')
-        if kind=='TEXT' or row.get('unit'):label_content(oid+'-label',kind,row['label'],row.get('unit'))
+        if kind=='TEXT' or row.get('unit'):label_content(oid+'-label',kind,row['label'],row.get('unit'),row.get('labelWeight'))
     for row in marks.get('arcs',[]):
         oid=row['id'];nodes=by_mark.get(('arc',oid),[])
         if row.get('highlight',True) is not True and row.get('highlight') is not None:continue
@@ -633,7 +1164,7 @@ def audit(p):
                     at=row['labelAt'];anchor=first if at=='START' else first+sweep if at=='END' else first+sweep/2 if at=='MID' else float(at)
                     if abs(wrap180(direction_degrees(sub(middle,center))-anchor))>TRACE_LABEL_AT_TOLERANCE:errors.append('TRACE_LABEL_NOT_AT_ANCHOR:'+oid)
                 leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
-            if row.get('labelKind')=='TEXT' or row.get('unit'):label_content(oid+'-label',row.get('labelKind','MATH'),row['label'],row.get('unit'))
+            if row.get('labelKind')=='TEXT' or row.get('unit'):label_content(oid+'-label',row.get('labelKind','MATH'),row['label'],row.get('unit'),row.get('labelWeight'))
             else:
                 node=elements.get(oid+'-label')
                 codes=[] if node is None else glyph_codes(node)
@@ -641,7 +1172,7 @@ def audit(p):
                 if codes and codes!=want:errors.append('TRACE_LABEL_MISMATCH:'+oid)
 
     # ---- filled regions (plane_regions_observer.py)
-    audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes)
+    audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes,leaders=leaders,leader_ok=leader_ok,strokes=strokes)
 
     # ---- facts read from the drawn primitives only
     for row in marks.get('facts',[]):

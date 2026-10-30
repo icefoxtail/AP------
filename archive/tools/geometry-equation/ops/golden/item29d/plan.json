@@ -1,0 +1,24 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "axisVariable": false,
+  "rows": [{"kind": "POINTS", "band": false, "points": [
+   {"id": "A", "value": "-5"},
+   {"id": "P", "value": "-5+2*sqrt(5)", "showValue": false},
+   {"id": "C", "value": "1"},
+   {"id": "Q", "value": "1+sqrt(5)", "showValue": false}
+  ]}],
+  "constructions": [
+   {"id": "cA", "center": "A", "radius": {"value": "2*sqrt(5)"}, "arc": {"side": "RIGHT"}, "hits": [{"id": "P", "branch": "RIGHT"}], "source": {"grid": true, "from": [-5, 0], "to": [-1, 2], "toName": "B"}},
+   {"id": "cC", "center": "C", "radius": {"value": "sqrt(5)"}, "arc": {"side": "RIGHT"}, "hits": [{"id": "Q", "branch": "RIGHT"}], "source": {"grid": true, "from": [1, 0], "to": [3, 1], "toName": "D"}}
+  ]
+ },
+ "numberLineCaption": {"text": "선분의 길이를 옮긴 호"},
+ "caption": "한 눈금의 길이가 1인 모눈 위의 선분 AB, CD를 컴퍼스로 수직선 위의 AP, CQ로 옮긴 작도",
+ "sourceConditions": [
+  {"id": "c1", "condition": "한 눈금의 길이가 1인 모눈 위의 두 선분 AB, CD", "mappedTo": ["numberLine.constructions"]},
+  {"id": "c2", "condition": "AB=AP가 되도록 A를 중심으로 한 호 위의 점 P", "mappedTo": ["numberLine.constructions"]},
+  {"id": "c3", "condition": "CD=CQ가 되도록 C를 중심으로 한 호 위의 점 Q", "mappedTo": ["numberLine.constructions"]}
+ ],
+ "newVisualInformation": ["모눈 위의 선분 AB, CD의 끝에서 수직선 위의 점 P, Q로 이어지는 호(P, Q의 값은 쓰지 않음)"]
+}

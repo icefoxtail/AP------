@@ -1,0 +1,345 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "C"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "10"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "10"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "45"
+     },
+     "turn": "CW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "lAB",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lBC",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lDE",
+    "op": "PERPENDICULAR_THROUGH",
+    "inputs": [
+     "D",
+     "lAB"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "E",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lBC",
+     "lDE"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAD",
+   "refs": [
+    "A",
+    "D"
+   ]
+  },
+  {
+   "id": "sDB",
+   "refs": [
+    "D",
+    "B"
+   ]
+  },
+  {
+   "id": "sEC",
+   "refs": [
+    "E",
+    "C"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sDE",
+   "refs": [
+    "D",
+    "E"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sBE",
+   "refs": [
+    "B",
+    "E"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sAC",
+     "sAD",
+     {
+      "path": [
+       "sBE",
+       "sEC"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "e2",
+    "count": 2,
+    "segments": [
+     "sEC",
+     "sDE",
+     "sDB"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "id": "aB",
+    "refs": [
+     "A",
+     "B",
+     "C"
+    ],
+    "value": 45,
+    "label": "45",
+    "arcs": 3,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aACD",
+    "refs": [
+     "A",
+     "C",
+     "D"
+    ],
+    "value": 67.5,
+    "label": "67.5",
+    "arcs": 1,
+    "equalGroup": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aCDA",
+    "refs": [
+     "C",
+     "D",
+     "A"
+    ],
+    "value": 67.5,
+    "label": "67.5",
+    "arcs": 1,
+    "equalGroup": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aDCE",
+    "refs": [
+     "D",
+     "C",
+     "E"
+    ],
+    "value": 22.5,
+    "label": "22.5",
+    "arcs": 2,
+    "equalGroup": 2,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aCDE",
+    "refs": [
+     "C",
+     "D",
+     "E"
+    ],
+    "value": 22.5,
+    "arcs": 2,
+    "equalGroup": 2,
+    "factRole": "DERIVED_INTERMEDIATE",
+    "noLabel": true
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dCE",
+    "from": "E",
+    "to": "C",
+    "label": "6",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BRACE",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "caption": "AC=BC=AD, ∠C=90°이므로 ∠B=45°이고 DE⊥AB이므로 BD=DE이다. 보조선 CD를 그으면 ∠ACD=∠CDA=67.5°, ∠DCE=∠CDE=22.5°이므로 DE=CE=6 cm이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AC=BC=AD, ∠C=90°, AB⊥DE, CE=6cm",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "보조선 CD를 그어 ∠ACD=∠CDA=67.5°, ∠DCE=∠CDE=22.5°가 풀이 순서대로 드러나고, DE=CE와 BD=DE가 같은 눈금(이중)으로 표시된다"
+ ],
+ "sourceQuote": "이등변삼각형 $ACD$에서",
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 580
+ },
+ "rightAngles": [
+  {
+   "id": "rC",
+   "refs": [
+    "A",
+    "C",
+    "E"
+   ]
+  },
+  {
+   "id": "rD",
+   "refs": [
+    "B",
+    "D",
+    "E"
+   ]
+  }
+ ]
+}

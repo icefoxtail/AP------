@@ -560,7 +560,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 높이가 5x인 원뿔을 그린 그림이다. 꼭짓점에서 밑면의 중심까지 점선으로 높이 5x를 나타내고 그 발에 직각 표시가 있으며, 밑면은 연하게 색칠하고 S라고 적었다. 위에 높이 5x, 부피 15x²y²가 적혀 있고 밑면의 크기는 임의의 비율로 그렸다.",
+    "solutionImageCaption": "높이가 5x이고 부피가 15x²y²인 원뿔이다. 색칠한 밑면의 넓이 S를 구한다. 밑면의 크기는 임의의 비율로 그렸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -789,7 +793,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 -2, -1, 0, 1, 2를 나타내고, x<n을 만족하는 값은 채운 점, 만족하지 않는 값은 빈 점으로 그렸다. 눈금 n의 위치를 문자로 표시했다.",
+    "solutionImageCaption": "x-1-n<-1은 x<n이다. 주어진 값 -2, -1, 0, 1, 2 중 x<n을 만족하는 값은 채운 점, 만족하지 않는 값은 빈 점으로 나타내고, 눈금 n의 위치를 표시했다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

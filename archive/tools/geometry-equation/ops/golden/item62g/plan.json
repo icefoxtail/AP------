@@ -1,0 +1,657 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "P1",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "X1",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "P1"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "S",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P1",
+     "X1"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "9"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Lp",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P1",
+     "X1"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "XL",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "Lp"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Lu",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "Lp",
+     "XL"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "120"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Ld",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "Lp",
+     "XL"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "300"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Mp",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P1",
+     "X1"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "30"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "XM",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "Mp"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Mu",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "Mp",
+     "XM"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "120"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Md",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "Mp",
+     "XM"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "300"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "P2",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P1",
+     "X1"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "9"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "30"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "X2",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "P2"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "N0",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P2",
+     "X2"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "7"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "355"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Np",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P2",
+     "X2"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "355"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "XN",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "Np"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Nu",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "Np",
+     "XN"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "120"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Nd",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "Np",
+     "XN"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "300"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "D1",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "P1"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "E2",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P2",
+     "X2"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "2"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "30"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "s1",
+   "refs": [
+    "S",
+    "P1"
+   ]
+  },
+  {
+   "id": "s2",
+   "refs": [
+    "P1",
+    "P2"
+   ]
+  },
+  {
+   "id": "s3",
+   "refs": [
+    "P2",
+    "N0"
+   ]
+  },
+  {
+   "id": "sL",
+   "refs": [
+    "Lu",
+    "Ld"
+   ]
+  },
+  {
+   "id": "sM",
+   "refs": [
+    "Mu",
+    "Md"
+   ]
+  },
+  {
+   "id": "sN",
+   "refs": [
+    "Nu",
+    "Nd"
+   ]
+  },
+  {
+   "id": "d1",
+   "refs": [
+    "P1",
+    "D1"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "d2",
+   "refs": [
+    "P2",
+    "E2"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "S",
+  "P1",
+  "P2",
+  "N0",
+  "Lp",
+  "Mp",
+  "Np",
+  "Lu",
+  "Ld",
+  "Mu",
+  "Md",
+  "Nu",
+  "Nd",
+  "D1",
+  "E2"
+ ],
+ "caption": "평행선 l, m, n에서 꺾인 점의 각 150°의 바깥각 30°, l과 m에서의 각 2x와 3x, 그리고 y의 이웃한 각 35°를 보인 그림",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "l∥m∥n, 꺾인 점의 각 150°, 2x, 3x, 55°, y",
+   "mappedTo": [
+    "S",
+    "P1",
+    "P2"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "꺾인 점의 바깥각 30°와 2x, 3x가 한 그림에 놓여 3x−2x=30°를 읽을 수 있고, y와 이웃한 각이 35°임이 드러난다."
+ ],
+ "sourceQuote": "두 번째 선분은 평행선들에 수직이다",
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a2x",
+    "refs": [
+     "S",
+     "Lp",
+     "Lu"
+    ],
+    "value": 60,
+    "label": "2x",
+    "labelKind": "MATH",
+    "arcs": 1
+   },
+   {
+    "id": "a150",
+    "refs": [
+     "S",
+     "P1",
+     "P2"
+    ],
+    "value": 150,
+    "label": "150",
+    "arcs": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "a30",
+    "refs": [
+     "D1",
+     "P1",
+     "P2"
+    ],
+    "value": 30,
+    "label": "30",
+    "arcs": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "ay",
+    "refs": [
+     "P1",
+     "P2",
+     "N0"
+    ],
+    "value": 145,
+    "label": "y",
+    "labelKind": "MATH",
+    "arcs": 1,
+    "factRole": "CONCLUSION"
+   },
+   {
+    "id": "a35",
+    "refs": [
+     "E2",
+     "P2",
+     "N0"
+    ],
+    "value": 35,
+    "label": "35",
+    "arcs": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "a55",
+    "refs": [
+     "N0",
+     "Np",
+     "Nd"
+    ],
+    "value": 55,
+    "label": "55",
+    "arcs": 1,
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "nl",
+    "ownerSegment": "sL",
+    "text": "l"
+   },
+   {
+    "id": "nm",
+    "ownerSegment": "sM",
+    "text": "m"
+   },
+   {
+    "id": "nn",
+    "ownerSegment": "sN",
+    "text": "n"
+   }
+  ],
+  "parallels": [
+   {
+    "id": "pp",
+    "count": 1,
+    "segments": [
+     "sL",
+     "sM",
+     "sN"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 440
+ },
+ "hiddenPointNames": [
+  "S",
+  "P1",
+  "P2",
+  "N0",
+  "Lp",
+  "Mp",
+  "Np",
+  "Lu",
+  "Ld",
+  "Mu",
+  "Md",
+  "Nu",
+  "Nd",
+  "D1",
+  "E2"
+ ],
+ "hiddenPointStyle": "NONE",
+ "rightAngles": [
+  {
+   "id": "r3x",
+   "refs": [
+    "P2",
+    "Mp",
+    "Mu"
+   ],
+   "label": "3x=90°",
+   "factRole": "GIVEN"
+  }
+ ]
+}

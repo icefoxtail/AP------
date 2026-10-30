@@ -135,6 +135,7 @@ def _fit_cubic_quartic(plan,coefficients):
 def _fit_overview_family(plan):
     if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
+    if 'axisScale' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
     if plan.get('family')=='rational':return _fit_rational_overview(plan)
@@ -234,9 +235,34 @@ def squeeze_ratio(points,height_limit):
     fit=((height_limit-2*EQUAL_UNIT_EDGE_PX)/yspan)/((QUADRATIC_PLOT_WIDTH-2*EQUAL_UNIT_EDGE_PX)/xspan)
     return max(AXIS_SQUEEZE_MIN_RATIO,min(1.0,fit))
 
+# graphPlan.axisScale {x,y} (piecewise-polynomial only): the author's own scale for each axis, for a graph whose axes measure different things (minutes
+# against kilometres). Only the proportion counts: {x:1,y:12} draws one y unit twelve times as long as one x unit. Positive integers, decimals or
+# rational strings, and the proportion stays within 1:64 .. 64:1.
+AXIS_SCALE_MAX_RATIO=Fraction(64)
+
+def axis_scale_ratio(plan):
+    """The y/x scale proportion of an axisScale, or None when the plan has none."""
+    if 'axisScale' not in plan:return None
+    scale=plan['axisScale']
+    if not isinstance(scale,dict) or set(scale)!={'x','y'}:raise ValueError('INVALID_AXIS_SCALE')
+    parts=[]
+    for axis in ('x','y'):
+        value=scale[axis]
+        if isinstance(value,bool) or not (isinstance(value,int) or isinstance(value,str) and re.fullmatch(r'\d{1,6}(?:/\d{1,6}|\.\d{1,6})?',value)):raise ValueError('INVALID_AXIS_SCALE')
+        try:parts.append(Fraction(str(value)))
+        except (ValueError,ZeroDivisionError):raise ValueError('INVALID_AXIS_SCALE') from None
+        if parts[-1]<=0:raise ValueError('INVALID_AXIS_SCALE')
+    ratio=parts[1]/parts[0]
+    if not 1/AXIS_SCALE_MAX_RATIO<=ratio<=AXIS_SCALE_MAX_RATIO:raise ValueError('AXIS_SCALE_RATIO_OUT_OF_RANGE')
+    return float(ratio)
+
 def axis_ratios(plan,points,height_limit):
     """One scale first; a squeeze (y at most halved) only after a failure: axisSqueeze (set by the runner after a layout failure) asks for it
-    straight away, and a figure too narrow at one scale tries it next."""
+    straight away, and a figure too narrow at one scale tries it next. An author's axisScale is the one ratio, and no squeeze may follow it."""
+    declared=axis_scale_ratio(plan)
+    if declared is not None:
+        if plan.get('axisSqueeze') not in (None,False):raise ValueError('AXIS_SCALE_WITH_SQUEEZE')
+        return [declared]
     squeeze=plan.get('axisSqueeze',False)
     if squeeze not in (True,False):raise ValueError('INVALID_AXIS_SQUEEZE')
     ratio=squeeze_ratio(points,height_limit)
@@ -1372,7 +1398,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -2310,7 +2336,9 @@ def fit_piecewise_discontinuous(plan):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2}
+OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4}
+# overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
+OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
 OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve'}
 OVERLAY_LATTICE_MAX_POINTS=40
@@ -2425,11 +2453,37 @@ def _overlay_curve_exact(plan,x_value,curve_id=None):
 def _overlay_number(value):
     return float(S.N(value,30))
 
+def _overlay_label_is_the_line(line):
+    """A free equation text on an overlay line (E31): when it is an equation of one '=' it is read exactly (labelValues gives the number a letter stands for in the
+    drawing) and must be the drawn line. A text with a letter that has no value is symbolic and is shown as written; a text without '=' is a name, not an equation."""
+    from linear_text import read_equation,read_values,same_line
+    text=line['label'];ident=line.get('id')
+    try:values=read_values(line.get('labelValues'))
+    except ValueError:_overlay_fail('OVERLAY_LABEL_VALUES_INVALID',ident)
+    if text.count('=')!=1:
+        if values:_overlay_fail('OVERLAY_LABEL_VALUES_WITHOUT_EQUATION',ident)
+        return
+    try:equation=read_equation(text,line.get('labelValues'))
+    except ValueError as error:
+        if str(error)=='LINE_TEXT_NOT_LINEAR':_overlay_fail('OVERLAY_LABEL_NOT_LINEAR',ident)
+        return
+    if equation is None:
+        if values and all(letter not in text for letter in values):_overlay_fail('OVERLAY_LABEL_VALUES_UNUSED',ident)
+        return
+    if line['kind']=='VERTICAL':
+        x=pp_exact_value(line['x']);coefficients=(Fraction(1),Fraction(0),-Fraction(int(x.p),int(x.q))) if x.is_Rational else None
+    else:
+        slope,intercept=pp_exact_value(line['slope']),pp_exact_value(line['intercept'])
+        coefficients=(Fraction(int(slope.p),int(slope.q)),Fraction(-1),Fraction(int(intercept.p),int(intercept.q))) if slope.is_Rational and intercept.is_Rational else None
+    if coefficients is not None and not same_line(equation,coefficients):_overlay_fail('OVERLAY_LABEL_NOT_THE_LINE',ident)
+
 def _overlay_line_text(line):
     if line.get('label') is not None:
         if not isinstance(line['label'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',line['label']):
             _overlay_fail('OVERLAY_LABEL_INVALID',line.get('id'))
+        _overlay_label_is_the_line(line)
         return line['label']
+    if line.get('labelValues') is not None:_overlay_fail('OVERLAY_LABEL_VALUES_WITHOUT_LABEL',line.get('id'))
     if line['kind']=='VERTICAL':return 'x='+pp_surd_text(line['x'])
     slope,intercept=line['slope'],line['intercept']
     if slope=='0':return 'y='+pp_surd_text(intercept)
@@ -2437,6 +2491,9 @@ def _overlay_line_text(line):
     if intercept=='0':return 'y='+slope_text
     sign='-' if intercept.startswith('-') else '+'
     return 'y='+slope_text+sign+pp_surd_text(intercept).lstrip('-')
+
+def _overlay_line_at_valid(value):
+    return value in ('START','END') or (isinstance(value,(int,float)) and not isinstance(value,bool) and math.isfinite(value) and 0<=value<=1)
 
 def _overlay_label_anchor(viewport,line):
     xmin,xmax,ymin,ymax=viewport;spanx=xmax-xmin;spany=ymax-ymin
@@ -2550,6 +2607,100 @@ def _overlay_lattice(plan,entry,exact_points):
         if any(abs(point['x']-ex)<1e-9 and abs(point['y']-ey)<1e-9 for ex,ey in exact_points):_overlay_fail('OVERLAY_LATTICE_POINT_COINCIDES',str(point['x'])+','+str(point['y']))
     return {'region':region,'strict':strict,'counts':counts,'xRange':list(span),bound_key:bound,'points':points,'columns':columns}
 
+def _overlay_math_name_is_the_curve(plan,entry,ident):
+    """A MATH name beside the drawn curve (E31): when the curve is one straight piece with rational coefficients (y=c0+c1*x) and the text is an equation that can be read exactly
+    (labelValues gives the number a letter stands for), it must be that line. Other curves, symbolic texts and names without '=' are shown as written."""
+    from linear_text import read_equation,read_values,same_line
+    text=entry['text']
+    try:read_values(entry.get('labelValues'))
+    except ValueError:_overlay_fail('OVERLAY_NAME_VALUES_INVALID',ident)
+    if text.count('=')!=1:return
+    try:equation=read_equation(text,entry.get('labelValues'))
+    except ValueError as error:
+        if str(error)=='LINE_TEXT_NOT_LINEAR':_overlay_fail('OVERLAY_NAME_NOT_LINEAR',ident)
+        return
+    pieces=plan.get('pieces')
+    if equation is None or plan.get('family')!='piecewise-polynomial' or not isinstance(pieces,list) or len(pieces)!=1:return
+    try:values=[pp_exact_value(c) for c in pieces[0].get('coefficients',[])]
+    except (ValueError,TypeError,AttributeError):return
+    if len(values)>2 and any(v!=0 for v in values[2:]):return
+    if not all(v.is_Rational for v in values):return
+    c0=values[0] if values else S.Integer(0);c1=values[1] if len(values)>1 else S.Integer(0)
+    if not same_line(equation,(Fraction(int(c1.p),int(c1.q)),Fraction(-1),Fraction(int(c0.p),int(c0.q)))):_overlay_fail('OVERLAY_NAME_NOT_THE_CURVE',ident)
+
+def _overlay_names(plan,rows,claim,lines,segments,by_point):
+    """overlays.names: {id,text,segment|line|curveX[,curve][,labelDirection]}. The text is a plain name (Korean, letters, digits, spaces, brackets) that
+    stands beside the segment or line it names, or beside the drawn curve at curveX. Each anchor is computed here exactly; nothing is dropped."""
+    names=[];by_segment={row['id']:row for row in segments};by_line={row['id']:row for row in lines}
+    for entry in rows:
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_NAME_INVALID','name')
+        if set(entry)-{'id','text','segment','line','curveX','curve','labelDirection','labelKind','labelValues'}:_overlay_fail('OVERLAY_NAME_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'name');claim('name:'+ident)
+        text=entry.get('text')
+        # labelKind MATH (E31): the equation of the drawn curve written beside it at curveX (y=2x-3/2), typeset as math; the default TEXT is a plain name.
+        kind=entry.get('labelKind','TEXT')
+        if kind not in ('TEXT','MATH') or ('labelValues' in entry and kind!='MATH'):_overlay_fail('OVERLAY_NAME_INVALID',ident)
+        from linear_text import TEXT_PATTERN
+        if kind=='MATH':
+            if not isinstance(text,str) or text!=text.strip() or TEXT_PATTERN.fullmatch(text) is None:_overlay_fail('OVERLAY_NAME_TEXT_INVALID',ident)
+        elif not isinstance(text,str) or text!=text.strip() or not re.fullmatch(OVERLAY_NAME_PATTERN,text):_overlay_fail('OVERLAY_NAME_TEXT_INVALID',ident)
+        forms=[key for key in ('segment','line','curveX') if key in entry]
+        if len(forms)!=1 or ('curve' in entry and 'curveX' not in entry) or (kind=='MATH' and forms[0]!='curveX'):_overlay_fail('OVERLAY_NAME_INVALID',ident)
+        row={'id':ident,'text':text}
+        if kind=='MATH':
+            row['labelKind']='MATH'
+            if 'labelValues' in entry:row['labelValues']=entry['labelValues']
+            _overlay_math_name_is_the_curve(plan,entry,ident)
+        if forms[0]=='segment':
+            target=by_segment.get(entry['segment'])
+            if target is None:_overlay_fail('OVERLAY_NAME_TARGET_UNKNOWN',ident)
+            (ax,ay),(bx,by)=[(by_point[target[end]]['x'],by_point[target[end]]['y']) for end in ('from','to')]
+            row.update({'kind':'SEGMENT','ref':target['id'],'at':[(ax+bx)/2,(ay+by)/2],'alternateAt':[[ax+(bx-ax)*s,ay+(by-ay)*s] for s in (.3,.7)]})
+        elif forms[0]=='line':
+            target=by_line.get(entry['line'])
+            if target is None:_overlay_fail('OVERLAY_NAME_TARGET_UNKNOWN',ident)
+            row.update({'kind':'LINE','ref':target['id'],'at':target['labelAt'],'alternateAt':target['labelAlternates']})
+        else:
+            x=_overlay_exact(entry['curveX'],ident);curve_id=entry.get('curve')
+            if plan.get('family')=='exp-log-pair' and curve_id is None:_overlay_fail('OVERLAY_CURVE_REQUIRED',ident)
+            if plan.get('family')!='exp-log-pair' and curve_id is not None:_overlay_fail('OVERLAY_CURVE_UNKNOWN',ident)
+            lo,hi=plan['domain']
+            if not lo<=float(S.N(x,30))<=hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',ident)
+            y=_overlay_curve_exact(plan,x,curve_id)
+            xmin,xmax,ymin,ymax=plan['viewport'];xf,yf=_overlay_number(x),_overlay_number(y)
+            if not (xmin<xf<xmax and ymin<yf<ymax):_overlay_fail('OVERLAY_NAME_OUTSIDE_VIEWPORT',ident)
+            row.update({'kind':'CURVE','at':[xf,yf]})
+        if 'labelDirection' in entry:
+            if entry['labelDirection'] not in ('N','NE','E','SE','S','SW','W','NW'):_overlay_fail('OVERLAY_LABEL_DIRECTION_INVALID',ident)
+            row['labelDirection']=entry['labelDirection']
+        names.append(row)
+    return names
+
+OVERLAY_QUADRANT_LABEL_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,12}'
+
+def _overlay_quadrants(plan,rows,claim):
+    """overlays.quadrants:[{id,quadrant,label?,fill?}] (E31): the coordinate quadrant 1..4 tinted (LIGHT | MEDIUM, under every stroke, out to the edge of the drawn window) and/or named
+    in plain Korean text inside it. The origin must lie strictly inside the framed window, and a quadrant is named at most once."""
+    out=[];seen=set()
+    xmin,xmax,ymin,ymax=plan['viewport']
+    for entry in rows:
+        if not isinstance(entry,dict) or set(entry)-{'id','quadrant','label','fill'}:_overlay_fail('OVERLAY_QUADRANT_INVALID',entry.get('id') if isinstance(entry,dict) else 'quadrant')
+        ident=_overlay_id(entry.get('id'),'quadrant');claim('quadrant:'+ident)
+        number=entry.get('quadrant')
+        if isinstance(number,bool) or number not in (1,2,3,4):_overlay_fail('OVERLAY_QUADRANT_INVALID',ident)
+        if number in seen:_overlay_fail('OVERLAY_QUADRANT_DUPLICATE',ident)
+        seen.add(number)
+        label,fill=entry.get('label'),entry.get('fill')
+        if label is None and fill is None:_overlay_fail('OVERLAY_QUADRANT_EMPTY',ident)
+        if label is not None and (not isinstance(label,str) or label!=label.strip() or not re.fullmatch(OVERLAY_QUADRANT_LABEL_PATTERN,label)):_overlay_fail('OVERLAY_QUADRANT_LABEL_INVALID',ident)
+        if fill is not None and fill not in ('LIGHT','MEDIUM'):_overlay_fail('OVERLAY_QUADRANT_FILL_INVALID',ident)
+        if not (xmin<0<xmax and ymin<0<ymax):_overlay_fail('OVERLAY_QUADRANT_ORIGIN_OUTSIDE_VIEW',ident)
+        row={'id':ident,'quadrant':number}
+        if label is not None:row['label']=label
+        if fill is not None:row['fill']=fill
+        out.append(row)
+    return out
+
 def _overlay_features(plan):
     raw=plan.get('overlays')
     if raw is None:return None
@@ -2564,19 +2715,29 @@ def _overlay_features(plan):
     lines=[]
     for entry in raw.get('lines',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_LINE_INVALID','line')
-        if set(entry)-{'id','slope','intercept','x','label'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
+        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues','style'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'line');claim('line:'+ident)
         if 'x' in entry:
             if 'slope' in entry or 'intercept' in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
             x=_overlay_exact(entry['x'],ident)
             line={'id':ident,'kind':'VERTICAL','x':pp_surd_text(x),'xValue':_overlay_number(x),'label':entry.get('label')}
+            if 'labelValues' in entry:line['labelValues']=entry['labelValues']
         else:
             if 'slope' not in entry or 'intercept' not in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
             slope=_overlay_exact(entry['slope'],ident);intercept=_overlay_exact(entry['intercept'],ident)
             line={'id':ident,'kind':'LINE','slope':pp_surd_text(slope),'intercept':pp_surd_text(intercept),'slopeValue':_overlay_number(slope),'interceptValue':_overlay_number(intercept),'label':entry.get('label')}
+        if 'labelValues' in entry:line['labelValues']=entry['labelValues']
+        # style (E31): SOLID (default) or DASHED, a thin dashed line (a line shifted from another, an auxiliary line).
+        if 'style' in entry:
+            if entry['style'] not in ('SOLID','DASHED'):_overlay_fail('OVERLAY_LINE_STYLE_INVALID',ident)
+            if entry['style']=='DASHED':line['style']='DASHED'
         line['text']=_overlay_line_text(line)
         if not _overlay_line_crosses_view(plan['viewport'],line):_overlay_fail('OVERLAY_LINE_OUTSIDE_VIEWPORT',ident)
         line['labelAt']=_overlay_label_anchor(plan['viewport'],line)
+        # labelAt (E31): START / END / a fraction 0..1 of the drawn line from its left (lower) end; the layout then keeps the equation label in that part of the line.
+        if 'labelAt' in entry:
+            if not _overlay_line_at_valid(entry['labelAt']):_overlay_fail('OVERLAY_LINE_LABEL_AT_INVALID',ident)
+            line['lineAt']=entry['labelAt']
         lines.append(line)
     by_line={line['id']:line for line in lines}
     points=[];by_point={};exact_by_point={}
@@ -2619,12 +2780,12 @@ def _overlay_features(plan):
         xmin,xmax,ymin,ymax=plan['viewport'];xf,yf=_overlay_number(x),_overlay_number(y)
         if not (xmin<xf<xmax and ymin<yf<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT',ident)
         row={'id':ident,'x':xf,'y':yf,'xExact':pp_surd_text(x),'yExact':pp_surd_text(y)}
-        # coordinates:true writes the point's coordinates beside it (A(-6,-3), or (x,y) for an unnamed point): integers only, which the observer reads back.
+        # coordinates:true writes the point's coordinates beside it (A(-6,-3), or (x,y) for an unnamed point): integers or fractions (3/2, -1/3; E31), which the observer reads back.
         if 'coordinates' in entry:
             if not isinstance(entry['coordinates'],bool):_overlay_fail('OVERLAY_COORDINATES_INVALID',ident)
             if entry['coordinates']:
-                if not (x.is_integer and y.is_integer):_overlay_fail('OVERLAY_COORDINATES_REQUIRE_INTEGERS',ident)
-                row['coordinates']=[str(int(x)),str(int(y))]
+                if not (x.is_Rational and y.is_Rational):_overlay_fail('OVERLAY_COORDINATES_REQUIRE_RATIONALS',ident)
+                row['coordinates']=[str(int(v)) if v.is_Integer else str(int(v.p))+'/'+str(int(v.q)) for v in (x,y)]
         # unnamed:true: a dot with no name letter (an unlabelled intersection of the source figure); with coordinates:true it keeps (x,y) alone.
         if 'unnamed' in entry:
             if not isinstance(entry['unnamed'],bool):_overlay_fail('OVERLAY_POINT_UNNAMED_INVALID',ident)
@@ -2693,6 +2854,8 @@ def _overlay_features(plan):
         polygons.append(row)
     for line in lines:line['labelAlternates']=_overlay_label_alternates(plan,line,lines,points)
     features={'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
+    if 'names' in raw:features['names']=_overlay_names(plan,raw.get('names'),claim,lines,segments,by_point)
+    if raw.get('quadrants'):features['quadrants']=_overlay_quadrants(plan,raw['quadrants'],claim)
     if raw.get('latticePoints') is not None:features['latticePoints']=_overlay_lattice(plan,raw['latticePoints'],[(point['x'],point['y']) for point in points])
     return features
 

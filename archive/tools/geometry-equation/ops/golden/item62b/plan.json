@@ -1,0 +1,115 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "rows": [
+   {
+    "kind": "POINTS",
+    "band": false,
+    "points": [
+     {
+      "id": "A",
+      "value": "3",
+      "hideName": true
+     },
+     {
+      "id": "B",
+      "value": "13",
+      "hideName": true
+     },
+     {
+      "id": "P",
+      "divides": {
+       "from": "A",
+       "to": "B",
+       "ratio": [
+        "5",
+        "5"
+       ]
+      },
+      "hideName": true
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": {
+       "value": "3",
+       "state": "OPEN"
+      },
+      "hi": {
+       "value": "13",
+       "state": "OPEN"
+      }
+     }
+    ]
+   },
+   {
+    "kind": "POINTS",
+    "band": false,
+    "points": [
+     {
+      "id": "C",
+      "value": "5",
+      "hideName": true
+     },
+     {
+      "id": "D",
+      "value": "9",
+      "hideName": true
+     },
+     {
+      "id": "E",
+      "value": "11",
+      "hideName": true
+     }
+    ],
+    "within": 2,
+    "label": "가능"
+   },
+   {
+    "kind": "POINTS",
+    "band": false,
+    "points": [
+     {
+      "id": "F",
+      "value": "3",
+      "hideName": true
+     },
+     {
+      "id": "G",
+      "value": "15",
+      "hideName": true
+     }
+    ],
+    "within": 2,
+    "label": "불가능"
+   }
+  ]
+ },
+ "numberLineCaption": {
+  "math": "8-5<x<8+5",
+  "text": " (단위 cm)"
+ },
+ "caption": "두 변이 5 cm, 8 cm이므로 나머지 한 변 x는 8-5<x<8+5, 즉 3<x<13이다. 보기 3, 5, 9, 11, 15 중 구간 안에 있는 값 5, 9, 11은 가능하고(점), 3과 15는 불가능하다(×).",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "삼각형의 두 변이 5cm, 8cm이면 나머지 한 변 x는 8-5<x<8+5, 즉 3<x<13",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "보기의 값 3, 5, 9, 11, 15",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "8을 가운데로 양쪽 5만큼인 3과 13이 구간의 끝이 되고, 보기 중 열린구간 (3,13) 안의 값(가능)과 밖의 값(불가능)을 줄을 나눠 보인다"
+ ]
+}

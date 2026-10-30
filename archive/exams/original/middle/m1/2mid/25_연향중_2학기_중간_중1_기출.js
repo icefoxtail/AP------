@@ -926,7 +926,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D와 l 밖의 점 P로 만들 수 있는 직선, 반직선, 선분을 종류별 패널로 나누어 보인 그림.",
+    "solutionImageCaption": "직선·반직선·선분을 종류별로 나누어 센다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

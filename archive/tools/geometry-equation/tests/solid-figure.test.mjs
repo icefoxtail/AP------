@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {compositePanels,compositePanelLayout,compositeStackSize,composeCompositeCandidate,isGridPanel,COMPOSITE_MAX_SOLID_GRID_PANELS} from '../production/composite-candidate-svg-v1.mjs';
-import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL} from '../production/solid-figure-v1.mjs';
+import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,figureFrame,project,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL} from '../production/solid-figure-v1.mjs';
 import {typesetter} from '../production/typography.mjs';
 
 const observer=fileURLToPath(new URL('../production/solid_figure_observer_worker.py',import.meta.url));
@@ -456,6 +456,38 @@ test('only edges or only vertices can be counted, beside letters or other length
   const c2=await panel(verticesOnly);
   assert.equal(c2.status,'COMPOSED',JSON.stringify(c2.detail));assert.equal(c2.staticAudit.status,'PASS',JSON.stringify(c2.staticAudit.errors));
   assert.equal((c2.svg.match(/data-label-role="count-vertex"/g)??[]).length,5);assert.doesNotMatch(c2.svg,/count-edge/);
+});
+// --- E33: count.near "EDGE" — an edge number stands nearer to its own whole edge than to any other numbered edge ---------------------------------
+const PENTAGON=[[3.095,2.234],[-0.903,2.96],[-3.563,-0.099],[-0.761,-2.994],[2.776,-1.4]];
+const countedPentagonPyramid=count=>figure({solids:[{kind:'PYRAMID',base:{kind:'POLYGON',points:PENTAGON},height:5.5,names:'......',count}],solidCaption:{text:'오각뿔'}});
+test('count.near "EDGE": parsed only with edges, refused otherwise, and a plan without it keeps the count request as it was',()=>{
+  const near=solveSolidFigure(countedPentagonPyramid({vertices:true,edges:true,near:'EDGE'}));
+  assert.deepEqual(near.solids[0].count,{vertices:true,edges:true,near:'EDGE'});
+  assert.deepEqual(solveSolidFigure(countedPentagonPyramid({vertices:true,edges:true})).solids[0].count,{vertices:true,edges:true});
+  const bad=count=>assert.throws(()=>solveSolidFigure(countedPentagonPyramid(count)),code('SOLID_COUNT_REQUEST_INVALID'),JSON.stringify(count));
+  bad({vertices:true,near:'EDGE'});          // near is about the edge numbers
+  bad({vertices:true,edges:false,near:'EDGE'});
+  bad({edges:true,near:'MIDPOINT'});         // the one value is "EDGE"
+  bad({edges:true,near:true});
+  bad({edges:true,near:null});
+});
+test('count.near "EDGE": the edge numbers of a rotated pentagonal pyramid stand beside their own edges, and the observer reads that back',async()=>{
+  const plan=countedPentagonPyramid({vertices:true,edges:true,near:'EDGE'});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  assert.equal((composed.svg.match(/data-label-role="count-edge"/g)??[]).length,10);
+  const r=await audit(plan,composed.svg);
+  assert.equal(r.status,'PASS',JSON.stringify(r.errors));
+  // the same figure placed without near (the number nearest to its own midpoint, wherever it falls) is not what near asked for:
+  // the pentagon's edges are many and slanted, so at least one number there is not clearly nearer to its own edge
+  const plain=await panel(countedPentagonPyramid({vertices:true,edges:true}));
+  assert.equal(plain.status,'COMPOSED',JSON.stringify(plain.detail));
+  const r2=await audit(plan,plain.svg);
+  const own=await audit(countedPentagonPyramid({vertices:true,edges:true}),plain.svg);
+  assert.equal(own.status,'PASS',JSON.stringify(own.errors));
+  assert.equal(r2.status,'FAIL');
+  assert.ok(r2.errors.every(e=>e.startsWith('SOLID_COUNT_LABEL_NEARER_TO_OTHER_EDGE')),JSON.stringify(r2.errors));
 });
 test('a counted figure with no room for its numbers is refused, and counting is refused with explicit codes',async()=>{
   const bad=(solid,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[solid]})),code(expected),expected);
@@ -1839,4 +1871,680 @@ test('E28c: balls with a section beside them: a cylinder of balls and a cylinder
   const composed=await composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-balls-grid|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:29.3,displayScale:0.384,fontFloorCssPx:11}});
   assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
   assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
+});
+
+// --- E33: stacked round solids (on:"<id>") -----------------------------------------------------------------------------------------------------------
+const stacked=(over={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:4,orientation:'APEX_DOWN',axis:{label:'l'}},{id:'s2',kind:'HEMISPHERE',radius:6,on:'s1'}],
+  dims:[{solid:'s2',radius:'center'},{solid:'s1',radius:'bottom'},{solid:'s1',slant:true},{solid:'s1',height:true}],solidCaption:{text:'반구와 원뿔대'},...over});
+test('E33: a hemisphere on a cone frustum is one stack: its guest is lifted by the host height, the joint circle is shared and the axis runs through both',async()=>{
+  const plan=stacked(),m=solveSolidFigure(plan);
+  assert.deepEqual(m.solids.map(s=>s.lift??0),[0,4]);
+  assert.equal(m.solids[0].covered,true);assert.equal(m.solids[1].covered,undefined);
+  assert.equal(m.solids[0].axis.span,10);
+  assert.equal(m.solids[1].points[0].p[2],4);// the centre of the hemisphere is raised with it
+  assert.equal(m.dims.find(d=>d.type==='HEIGHT').onAxis,true);// the axis carries the height: no line of its own
+  assert.equal(m.dims.find(d=>d.id==='dim-1').z,4);// the radius of the hemisphere is level with the joint circle
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg.match(/<path id="s1-top-back"[^>]*\/>/)[0],/data-vis="hidden"/);// the far half of the joint circle is behind the dome
+  assert.match(svg.match(/<path id="s1-top-front"[^>]*\/>/)[0],/data-vis="solid"/);
+  assert.match(svg.match(/<path id="s2-base-back"[^>]*\/>/)[0],/data-vis="hidden"/);
+  assert.equal((svg.match(/id="dim-4-line"/g)??[]).length,0);
+  assert.match(svg,/data-text-id="tl1" data-at-kind="AXIS" data-target="s1"/);
+  assert.match(svg.match(/<g id="text-tl1"[^>]*>/)[0],/data-tex="l"/);// a single letter on the axis is a math symbol
+  // tamper: the far half of the joint drawn as if it were seen; the dome moved off the axis; a short axis; a second line over the axis
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const back=svg.match(/<path id="s1-top-back"[^>]*\/>/)[0];
+  await failing(svg.replace(back,back.replace(/ stroke-dasharray="[^"]*"/,'').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH:s1-top-back');
+  const moved=svg.replace(/<path ([^>]*data-solid="s2"[^>]*)>/g,all=>{const d=/ d="M ([-\d.]+) ([-\d.]+) A ([-\d.]+) ([-\d.]+) 0 (\d) (\d) ([-\d.]+) ([-\d.]+)"/.exec(all);return all.replace(d[0],` d="M ${Number(d[1])+9} ${d[2]} A ${d[3]} ${d[4]} 0 ${d[5]} ${d[6]} ${Number(d[7])+9} ${d[8]}"`);});
+  await failing(moved,'SOLID_STACK_JOINT_OFF');
+  const axis=svg.match(/<line id="s1-axis"[^>]*\/>/)[0];
+  await failing(svg.replace(axis,axis.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)-30}"`)),'SOLID_AXIS_LINE_MISMATCH:s1');
+  const first=svg.match(/<line id="dim-2-line"[^>]*\/>/)[0];
+  await failing(svg.replace(first,first+first.replaceAll('dim-2','dim-4').replace('data-kind="RADIUS"','data-kind="HEIGHT"')),'SOLID_DIM_LINE_UNEXPECTED:dim-4');
+  // a radius line that does not run level with its circle
+  const radius=svg.match(/<line id="dim-1-line"[^>]*\/>/)[0];
+  await failing(svg.replace(radius,radius.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)+8}"`).replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)+8}"`)),'SOLID_DIM_LINE_MISMATCH:dim-1');
+});
+test('E33: a stack that cannot stand is refused with an explicit code',()=>{
+  const cyl={id:'s1',kind:'CYLINDER',radius:2,height:3};
+  const refused=(solids,expected,over)=>assert.throws(()=>solveSolidFigure(figure({solids,...over})),code(expected),expected);
+  refused([{id:'s1',kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:4,orientation:'APEX_DOWN'},{id:'s2',kind:'HEMISPHERE',radius:5,on:'s1'}],'SOLID_STACK_JOINT_MISMATCH:s1,s2');
+  refused([{id:'s1',kind:'CONE',radius:2,height:3},{id:'s2',kind:'CYLINDER',radius:2,height:3,on:'s1'}],'SOLID_STACK_JOINT_MISMATCH:s1,s2');// a cone's point is no joint circle
+  refused([{id:'s1',kind:'HEMISPHERE',radius:2},{id:'s2',kind:'CYLINDER',radius:2,height:3,on:'s1'}],'SOLID_STACK_JOINT_MISMATCH:s1,s2');// a dome has no flat top
+  refused([cyl,{id:'s2',kind:'CYLINDER',radius:2,height:3,on:'s7'}],'SOLID_STACK_UNKNOWN:s7');
+  refused([{...cyl,on:'s1'}],'SOLID_STACK_UNKNOWN:s1');
+  refused([cyl,{id:'s2',kind:'CYLINDER',radius:2,height:1,on:'s1'},{id:'s3',kind:'CYLINDER',radius:2,height:1,on:'s1'}],'SOLID_STACK_BRANCH:s1');
+  refused([{...cyl,on:'s2'},{id:'s2',kind:'CYLINDER',radius:2,height:3,on:'s1'}],'SOLID_STACK_CYCLE');
+  refused([cyl,{id:'s2',kind:'SPHERE',radius:2,on:'s1'}],'SOLID_STACK_UNSUPPORTED:SPHERE');
+  refused([{id:'s1',kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2},{...cyl,id:'s2',on:'s1'}],'SOLID_STACK_UNSUPPORTED:PRISM');
+  refused([cyl,{id:'s2',kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2,on:'s1'}],'SOLID_PARAM_INVALID');// a polyhedron does not stand on anything
+  refused([{...cyl,axis:true},{id:'s2',kind:'CONE',radius:2,height:3,on:'s1',axis:true}],'SOLID_AXIS_STACK_DUPLICATE');
+  refused([cyl,{id:'s2',kind:'CONE',radius:2,height:3,on:'s1'}],'SOLID_STACK_UNSUPPORTED:SECTION',{section:{solid:'s2',kind:'AXIAL'}});
+  refused([cyl,{id:'s2',kind:'CONE',radius:2,height:3,on:7}],'SOLID_STACK_INVALID');
+  refused([cyl,{id:'s2',kind:'HEMISPHERE',radius:2,axis:true}],'SOLID_AXIS_UNSUPPORTED:HEMISPHERE');// a lone hemisphere has no axis
+  refused([{id:'s1',kind:'CYLINDER',radius:3,height:9},{id:'s2',kind:'CONE_FRUSTUM',radius:2,topRadius:1,height:2,inside:'s1'},{id:'s3',kind:'CYLINDER',radius:1,height:1,on:'s2'}],'SOLID_STACK_UNSUPPORTED:NESTED');// a solid inside a cylinder carries nothing
+  refused([{id:'s1',kind:'SPHERE',radius:2,orientation:'APEX_DOWN'}],'SOLID_ORIENTATION_UNSUPPORTED:SPHERE');// only a hemisphere stands on its dome
+});
+test('E33: the stacks of the textbook (cone on cylinder, cone on a bowl, dome on cylinder, dome on a bowl) are composed and read back',async()=>{
+  const cases=[
+    [{id:'s1',kind:'CYLINDER',radius:3,height:4},{id:'s2',kind:'CONE',radius:3,height:5,on:'s1',axis:true}],
+    [{id:'s1',kind:'HEMISPHERE',radius:3,orientation:'APEX_DOWN',names:{center:'O'}},{id:'s2',kind:'CONE',radius:3,height:5,on:'s1',axis:{label:'회전축'}}],
+    [{id:'s1',kind:'CYLINDER',radius:3,height:6},{id:'s2',kind:'HEMISPHERE',radius:3,on:'s1'}],
+    [{id:'s1',kind:'HEMISPHERE',radius:4,orientation:'APEX_DOWN'},{id:'s2',kind:'HEMISPHERE',radius:4,on:'s1',axis:{label:'l'}}],
+    [{id:'s1',kind:'CYLINDER',radius:3,height:3},{id:'s2',kind:'CONE_FRUSTUM',radius:3,topRadius:2,height:3,on:'s1'},{id:'s3',kind:'CYLINDER',radius:2,height:2,on:'s2'}]
+  ];
+  for(const solids of cases){
+    const plan=figure({unit:'cm',solids,dims:[{solid:'s1',height:true},{solid:'s2',height:true}],solidCaption:{text:'쌓은 입체'}});
+    const composed=await panel(plan);
+    assert.equal(composed.status,'COMPOSED',JSON.stringify([solids.map(s=>s.kind),composed.detail]));
+    assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  }
+});
+test('E33: a bowl (a hemisphere standing on its dome) alone shows its flat disc whole and the lower half of its outline',async()=>{
+  const plan=figure({unit:'cm',solids:[{kind:'HEMISPHERE',radius:3,orientation:'APEX_DOWN',names:{center:'O'}}],dims:[{radius:'center'}],solidCaption:{text:'반구'}});
+  const m=solveSolidFigure(plan);
+  assert.equal(m.solids[0].points[0].p[2],3);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/id="s1-outline-lower"/);assert.doesNotMatch(svg,/id="s1-outline-upper"/);
+  assert.match(svg.match(/<path id="s1-top-back"[^>]*\/>/)[0],/data-vis="solid"/);// nothing stands on the disc: both halves of its rim are seen
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const back=svg.match(/<path id="s1-top-back"[^>]*\/>/)[0];
+  await failing(svg.replace(back,back.replace('stroke="#111"','stroke="#111" stroke-dasharray="5 4"').replace('data-vis="solid"','data-vis="hidden"')),'SOLID_EDGE_VISIBILITY_MISMATCH:s1-top-back');
+  const lower=svg.match(/<path id="s1-outline-lower"[^>]*\/>/)[0];
+  await failing(svg.replace(lower,lower.replace('id="s1-outline-lower"','id="s1-outline-upper"').replace('data-part="LOWER"','data-part="UPPER"')),'SOLID_HEMISPHERE_OUTLINE_PART:s1');
+});
+
+// --- E33: balls off the axis of a cylinder (at:{x,y,z?}, stack.layers) and an outside height dimension (dims[].side) ------------------------------------
+const EX_X=Math.cos(28*Math.PI/180);
+const ballsOff=(host,over={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CYLINDER',radius:12,height:40,...host}],dims:[{solid:'s1',radius:'top'},{solid:'s1',height:true,side:'LEFT'}],solidCaption:{text:'물통과 쇠구슬'},...over});
+test('E33: five balls of radius 6 in a cylinder of radius 12 are laid out 2 + 2 + 1 by layers: each row rests on the row below and the discs stay apart',()=>{
+  const m=solveSolidFigure(ballsOff({stack:{radius:6,layers:[2,2,1]}}));
+  const balls=m.solids.filter(s=>s.inside==='s1');
+  assert.deepEqual(balls.map(s=>s.id),['s1b1','s1b2','s1b3','s1b4','s1b5']);
+  assert.deepEqual(balls.map(s=>s.at.x),[-6,6,-6,6,0]);assert.ok(balls.every(s=>s.at.y===0));
+  assert.deepEqual(balls.slice(0,4).map(s=>s.centerZ),[6,6,18,18]);
+  assert.ok(Math.abs(balls[4].centerZ-(18+Math.sqrt(108)))<1e-5);// the top ball rests between the two below it: 6 across, 12 apart
+  assert.ok(balls[4].centerZ+6<40);// and the cylinder holds all of them
+  // the centre point of a ball carries its place off the axis (the host's shift along the screen is added to it)
+  const dx=balls[0].points[0].p[0]-m.solids[0].points[0].p[0];assert.ok(Math.abs(dx+6*EX_X)<1e-5,String(dx));
+  // an old stack and an old list are laid out as before (on the axis, one on the other)
+  const plain=solveSolidFigure(ballsIn({stack:{count:3,radius:3}}));
+  assert.deepEqual(plain.solids.filter(s=>s.inside).map(s=>[s.centerZ,s.at]),[[3,undefined],[9,undefined],[15,undefined]]);
+});
+test('E33: a ball with at:{x,y,z?} stands where it is told; one without a height falls onto the floor or the balls below it; refusals have codes',()=>{
+  const balls=inside=>solveSolidFigure(ballsOff({inside})).solids.filter(s=>s.inside);
+  const placed=balls([{kind:'SPHERE',radius:3,at:{x:-6,y:-4}},{kind:'SPHERE',radius:3,at:{x:6,y:4}},{kind:'SPHERE',radius:3,at:{x:-6,y:-4,z:20}}]);
+  assert.deepEqual(placed.map(s=>s.centerZ),[3,3,20]);// two fall to the floor, the third is told its height
+  assert.deepEqual(placed.map(s=>[s.at.x,s.at.y]),[[-6,-4],[6,4],[-6,-4]]);
+  const onTop=balls([{kind:'SPHERE',radius:3,at:{x:0,y:0}},{kind:'SPHERE',radius:3,at:{x:3,y:0}}]);
+  assert.ok(Math.abs(onTop[1].centerZ-(3+Math.sqrt(36-9)))<1e-5);// it falls onto the first ball, touching it
+  const refused=(inside,expected)=>assert.throws(()=>solveSolidFigure(ballsOff({inside})),code(expected),expected);
+  refused([{kind:'SPHERE',radius:3,at:{x:0,y:0}},{kind:'SPHERE',radius:3,at:{x:0,y:0,z:4}}],'SOLID_NEST_OVERLAP:s1b1,s1b2');// the second is inside the first
+  refused([{kind:'SPHERE',radius:3,at:{x:10,y:0}}],'SOLID_NEST_DOES_NOT_FIT:s1b1');// it sticks out of the cylinder
+  refused([{kind:'SPHERE',radius:3,at:{x:0,y:0,z:39}}],'SOLID_NEST_DOES_NOT_FIT:s1b1');// and through the lid
+  refused([{kind:'SPHERE',radius:3,at:{x:-3,y:0}},{kind:'SPHERE',radius:3,at:{x:3,y:0}},{kind:'SPHERE',radius:3,at:{x:0,y:5.2}}],'SOLID_BALLS_OVERLAP_ON_SCREEN');// one behind the others: its disc would be hidden
+  refused([{kind:'SPHERE',radius:3,centerZ:3,at:{x:0,y:0,z:3}}],'SOLID_BALLS_INVALID');// a height said twice
+  refused([{kind:'SPHERE',radius:3,at:{x:0,w:1}}],'SOLID_BALLS_INVALID');
+  refused([{kind:'SPHERE',radius:3,at:{x:'0'}}],'SOLID_BALLS_INVALID');
+  refused([{kind:'SPHERE',radius:3,at:5}],'SOLID_BALLS_INVALID');
+  const refusedStack=(stack,expected)=>assert.throws(()=>solveSolidFigure(ballsOff({stack})),code(expected),expected);
+  refusedStack({radius:6,layers:[2,2,1],count:5},'SOLID_BALLS_INVALID');
+  refusedStack({radius:6,layers:[]},'SOLID_BALLS_INVALID');
+  refusedStack({radius:6,layers:[1]},'SOLID_BALLS_INVALID');// one ball is no stack
+  refusedStack({radius:2,layers:[3,3,1]},'SOLID_BALLS_INVALID');// seven balls
+  refusedStack({radius:2,layers:[2,1.5]},'SOLID_BALLS_INVALID');
+  refusedStack({radius:6,layers:[3]},'SOLID_NEST_DOES_NOT_FIT:s1b1');// three side by side are 36 across
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:9},{kind:'CONE',radius:1,height:2,inside:'s1',at:{x:1,y:0}}],dims:[{height:true}]})),code('SOLID_NEST_INVALID'));// only a ball stands off the axis
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'SPHERE',radius:1,at:{x:1,y:0}}],dims:[{radius:'center'}]})),code('SOLID_NEST_INVALID'));
+});
+test('E33: dims[].side writes the height of a round solid on a dimension line outside it; refusals have codes',()=>{
+  const m=solveSolidFigure(ballsOff({stack:{radius:6,layers:[2,2,1]}}));
+  assert.equal(m.dims[1].side,'LEFT');
+  // the figure leaves room beside the solid for the line and its label, so a wide solid is drawn smaller
+  const wide=side=>figureFrame(solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:10,height:4}],dims:[{height:true,...(side?{side}:{})}]}))).scale;
+  assert.ok(wide('LEFT')<wide(undefined)&&wide('RIGHT')<wide(undefined));
+  assert.equal(wide('LEFT'),wide('RIGHT'));
+  const refused=(dims,expected,solids)=>assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:solids??[{id:'s1',kind:'CYLINDER',radius:3,height:9}],dims})),code(expected),expected);
+  refused([{height:true,side:'TOP'}],'SOLID_DIM_SIDE_INVALID');
+  refused([{radius:'top',side:'LEFT'}],'SOLID_DIM_SIDE_INVALID');// only a height says which side it stands on (for now)
+  refused([{height:true,side:'LEFT'}],'SOLID_DIM_SIDE_INVALID',[{kind:'PYRAMID',base:{kind:'RECT',width:3,depth:3},height:4}]);// a pyramid's height is outside already
+  refused([{solid:'s2',height:true,side:'LEFT'}],'SOLID_DIM_SIDE_INVALID',[{id:'s1',kind:'CYLINDER',radius:3,height:3},{id:'s2',kind:'CYLINDER',radius:3,height:3,on:'s1'}]);// a member of a stack
+  refused([{height:true,side:7}],'SOLID_DIM_SIDE_INVALID');
+});
+test('E33: five balls in a cylinder (2 + 2 + 1) with the height written outside are composed, read back, and each tamper is caught',async()=>{
+  const plan=ballsOff({stack:{radius:6,layers:[2,2,1]}});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.equal((svg.match(/data-role="sphere-outline"/g)??[]).length,10);// an upper and a lower half circle for each of the 5 balls
+  assert.match(svg,/id="dim-2-line"/);assert.match(svg,/id="dim-2-ext-top"/);assert.match(svg,/id="dim-2-ext-bottom"/);
+  assert.equal((svg.match(/id="dim-2-axis"/g)??[]).length,0);// no dashed line on the axis: the length is outside
+  const scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]),upper=id=>{const d=svg.match(new RegExp(`<path id="${id}-outline-upper"[^>]*d="M ([-\\d.]+) ([-\\d.]+) A ([-\\d.]+)`));return [Number(d[1])+scale*6,Number(d[2])];};
+  const [a,b,c,d,e]=['s1b1','s1b2','s1b3','s1b4','s1b5'].map(upper);
+  assert.ok(Math.abs(a[1]-b[1])<0.01&&Math.abs(c[1]-d[1])<0.01);// the balls of a row are level
+  assert.ok(Math.abs((b[0]-a[0])-scale*12)<0.05&&Math.abs(e[0]-(a[0]+b[0])/2)<0.05);// 12 apart (touching), the top one between them
+  assert.ok(Math.abs((a[1]-c[1])-scale*12*Math.cos(20*Math.PI/180))<0.05);// the rows are 12 apart in height
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(x=>x.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  // a ball drawn at the other side of its row: every arc of s1b2 moved 40 px to the left
+  const shift=(text,id,dx,dy=0)=>text.replace(new RegExp(`<path id="${id}-[^"]*"[^>]*/>`,'g'),all=>{const m=/ d="M ([-\d.]+) ([-\d.]+) A ([-\d.]+) ([-\d.]+) 0 (\d) (\d) ([-\d.]+) ([-\d.]+)"/.exec(all);return all.replace(m[0],` d="M ${Number(m[1])+dx} ${Number(m[2])+dy} A ${m[3]} ${m[4]} 0 ${m[5]} ${m[6]} ${Number(m[7])+dx} ${Number(m[8])+dy}"`);});
+  await failing(shift(svg,'s1b2',-40),'SOLID_NEST_AXIS_MISMATCH:s1b2');
+  await failing(shift(svg,'s1b5',0,-14),'SOLID_NEST_HEIGHT_MISMATCH:s1b5');// the top ball drawn higher than where it rests
+  // the outside dimension: the line moved, an extension line missing, a dashed line over the axis
+  const line=svg.match(/<line id="dim-2-line"[^>]*\/>/)[0];
+  await failing(svg.replace(line,line.replace(/ x1="([\d.]+)"/,(all,v)=>` x1="${Number(v)+9}"`).replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)+9}"`)),'SOLID_DIM_LINE_MISMATCH:dim-2');
+  const ext=svg.match(/<line id="dim-2-ext-top"[^>]*\/>/)[0];
+  await failing(svg.replace(ext,''),'SOLID_DIM_EXTENSION_MISMATCH:dim-2');
+  await failing(svg.replace(ext,ext.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)+7}"`)),'SOLID_DIM_EXTENSION_MISMATCH:dim-2');
+  // a sixth ball that the plan does not have
+  const fifth=svg.match(/<path id="s1b5-outline-upper"[^>]*\/>/)[0];
+  await failing(svg.replace(fifth,fifth+fifth.replace('s1b5-outline-upper','s1b6-outline-upper').replace('data-solid="s1b5"','data-solid="s1b6"')),'SOLID_SOLID_NOT_IN_PLAN:s1b6');
+});
+test('E33: a ball off the axis and toward the viewer (at.y) is composed and its radius line starts at the ball\'s own centre',async()=>{
+  const plan=ballsOff({height:30,inside:[{kind:'SPHERE',radius:8,at:{x:3,y:-2}}]},{dims:[{solid:'s1b1',radius:'center'},{solid:'s1',height:true,side:'RIGHT'}]});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg,scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]);
+  const upper=svg.match(/<path id="s1b1-outline-upper"[^>]*d="M ([-\d.]+) ([-\d.]+) A/),radius=svg.match(/<line id="dim-1-line"[^>]*x1="([-\d.]+)" y1="([-\d.]+)" x2="([-\d.]+)" y2="([-\d.]+)"/);
+  // the upper outline arc starts at the ball's right extreme: the radius line runs from the centre (one radius to the left of it) to that point
+  assert.ok(Math.abs(Number(radius[1])-(Number(upper[1])-scale*8))<0.05&&Math.abs(Number(radius[2])-Number(upper[2]))<0.05);
+  assert.ok(Math.abs(Number(radius[3])-Number(upper[1]))<0.05);
+  // the ball is toward the viewer (y = -2): its centre sits 2 sin(pitch) lower on the screen than a ball of the same height on the axis, and 3 to the right
+  const onAxis=await panel(ballsOff({height:30,inside:[{kind:'SPHERE',radius:8}]},{dims:[{solid:'s1b1',radius:'center'},{solid:'s1',height:true,side:'RIGHT'}]}));
+  const base=onAxis.svg.match(/<path id="s1b1-outline-upper"[^>]*d="M ([-\d.]+) ([-\d.]+) A/);
+  assert.ok(Math.abs((Number(upper[1])-Number(base[1]))-scale*3)<0.05,'3 to the right');
+  assert.ok(Math.abs((Number(upper[2])-Number(base[2]))-scale*2*Math.sin(20*Math.PI/180))<0.05,'2 toward the viewer is lower by 2 sin(pitch)');
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(x=>x.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const rl=svg.match(/<line id="dim-1-line"[^>]*\/>/)[0];
+  await failing(svg.replace(rl,rl.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)+6}"`).replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)+6}"`)),'SOLID_DIM_LINE_MISMATCH:dim-1');
+  // the whole ball drawn where an on-axis ball would stand: the guest no longer sits where the plan puts it
+  const shift=(text,id,dx,dy)=>text.replace(new RegExp(`<path id="${id}-[^"]*"[^>]*/>`,'g'),all=>{const m=/ d="M ([-\d.]+) ([-\d.]+) A ([-\d.]+) ([-\d.]+) 0 (\d) (\d) ([-\d.]+) ([-\d.]+)"/.exec(all);return all.replace(m[0],` d="M ${Number(m[1])+dx} ${Number(m[2])+dy} A ${m[3]} ${m[4]} 0 ${m[5]} ${m[6]} ${Number(m[7])+dx} ${Number(m[8])+dy}"`);});
+  await failing(shift(svg,'s1b1',-scale*3,-scale*2*Math.sin(20*Math.PI/180)),'SOLID_NEST_');
+});
+
+// --- E33: the cut sphere's wedge: its edge axis (cut.axis), the right angle between its two cut faces (cut.rightAngle) and the half axis a radius lies on (dims[].half) -------------------------
+test('E33: a wedge cut names the axis of its edge: Z stands upright (as before), Y runs into the picture, X along its width; the removed quarter keeps facing the viewer',()=>{
+  const faces=(kind,axis)=>solveSolidFigure(sphereCut({kind,...(axis?{axis}:{})},{dims:undefined})).solids[0].cut;
+  const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+  // Z is the default: the same piece as before
+  assert.ok(same(faces('THREE_QUARTERS').mask,faces('THREE_QUARTERS','Z').mask)&&same(faces('QUARTER').mask,faces('QUARTER','Z').mask));
+  // octant index = 4 (x<0) + 2 (y<0) + 1 (z<0): the removed quarter of THREE_QUARTERS is x>0 & y<0 (Z), x>0 & z>0 (Y), y<0 & z>0 (X): two octants each
+  const removed=cut=>cut.mask.map((m,i)=>m?-1:i).filter(i=>i>=0);
+  assert.deepEqual(removed(faces('THREE_QUARTERS','Z')),[2,3]);
+  assert.deepEqual(removed(faces('THREE_QUARTERS','Y')),[0,2]);
+  assert.deepEqual(removed(faces('THREE_QUARTERS','X')),[2,6]);
+  // the kept wedge of QUARTER is the opposite quarter in each frame
+  const kept=cut=>cut.mask.map((m,i)=>m?i:-1).filter(i=>i>=0);
+  assert.deepEqual(kept(faces('QUARTER','Z')),[4,5]);
+  assert.deepEqual(kept(faces('QUARTER','Y')),[5,7]);
+  assert.deepEqual(kept(faces('QUARTER','X')),[1,5]);
+  // the edge of the wedge (the radius where its two cut faces meet) is on that axis, and the two cut faces are a vertical and a horizontal half-disk for Y
+  for(const [axis,creases] of [['Z',['+Z','-Z']],['Y',['+Y','-Y']],['X',['+X','-X']]])assert.deepEqual(faces('THREE_QUARTERS',axis).creases.map(c=>c.id).sort(),creases,axis);
+  assert.deepEqual(faces('THREE_QUARTERS','Y').faces.map(f=>f.id).sort(),['X++','X-+','Z++','Z+-']);
+  assert.ok(faces('THREE_QUARTERS','Y').faces.every(f=>f.visible));// both cut faces face the viewer
+  // the checked field
+  const bad=(cut,expected)=>assert.throws(()=>solveSolidFigure(sphereCut(cut)),code(expected),expected);
+  bad({kind:'QUARTER',axis:'W'},'SOLID_SPHERE_CUT_AXIS_INVALID');
+  bad({kind:'QUARTER',axis:'y'},'SOLID_SPHERE_CUT_AXIS_INVALID');
+  bad({kind:'QUARTER',axis:7},'SOLID_SPHERE_CUT_AXIS_INVALID');
+  bad({kind:'HALF',axis:'Y'},'SOLID_SPHERE_CUT_AXIS_UNSUPPORTED:HALF');
+  bad({kind:'OCTANT',axis:'X'},'SOLID_SPHERE_CUT_AXIS_UNSUPPORTED:OCTANT');
+  bad({kind:'SEVEN_EIGHTHS',axis:'Z'},'SOLID_SPHERE_CUT_AXIS_UNSUPPORTED:SEVEN_EIGHTHS');
+});
+test('E33: rightAngle draws the two radii in the cut faces perpendicular to the edge and the square between them; refused where there is no wedge or it is behind',()=>{
+  const cutOf=(cut,over)=>solveSolidFigure(sphereCut(cut,{dims:undefined,...over})).solids[0].cut;
+  const radii=cut=>cut.rightAngle.radii.map(x=>(x.sign>0?'+':'-')+'XYZ'[x.axis]).sort();
+  assert.deepEqual(radii(cutOf({kind:'THREE_QUARTERS',axis:'Y',rightAngle:true})),['+X','+Z']);// the half axes along the removed quarter's two faces
+  assert.deepEqual(radii(cutOf({kind:'THREE_QUARTERS',rightAngle:true})),['+X','-Y']);// upright edge: the radii are horizontal
+  assert.deepEqual(radii(cutOf({kind:'QUARTER',axis:'Y',rightAngle:true})),['-X','-Z']);// the kept wedge's faces
+  assert.deepEqual(radii(cutOf({kind:'QUARTER',rightAngle:true})),['+Y','-X']);
+  assert.equal(cutOf({kind:'QUARTER'}).rightAngle,undefined);
+  assert.equal(cutOf({kind:'QUARTER',rightAngle:false}).rightAngle,undefined);
+  const bad=(cut,expected)=>assert.throws(()=>solveSolidFigure(sphereCut(cut,{dims:undefined})),code(expected),expected);
+  bad({kind:'HALF',rightAngle:true},'SOLID_SPHERE_CUT_RIGHT_ANGLE_UNSUPPORTED:HALF');
+  bad({kind:'OCTANT',rightAngle:true},'SOLID_SPHERE_CUT_RIGHT_ANGLE_UNSUPPORTED:OCTANT');
+  bad({kind:'SEVEN_EIGHTHS',rightAngle:true},'SOLID_SPHERE_CUT_RIGHT_ANGLE_UNSUPPORTED:SEVEN_EIGHTHS');
+  bad({kind:'QUARTER',rightAngle:'yes'},'SOLID_SPHERE_CUT_RIGHT_ANGLE_INVALID');
+  bad({kind:'THREE_QUARTERS',facing:'CURVED',rightAngle:true},'SOLID_SPHERE_CUT_RIGHT_ANGLE_HIDDEN');// the cut faces are behind
+  // a radius dimension names its half axis (it must belong to the piece and be seen)
+  const dimAxis=half=>solveSolidFigure(sphereCut({kind:'THREE_QUARTERS',axis:'Y',rightAngle:true},{dims:[{solid:'s1',radius:'center',half}]})).dims[0].axis;
+  assert.deepEqual(dimAxis('+X'),{axis:0,sign:1});
+  assert.deepEqual(dimAxis('+Z'),{axis:2,sign:1});
+  const badDim=(half,expected)=>assert.throws(()=>solveSolidFigure(sphereCut({kind:'THREE_QUARTERS',axis:'Y'},{dims:[{solid:'s1',radius:'center',half}]})),code(expected),expected);
+  badDim('+Q','SOLID_DIMS_INVALID');
+  badDim('X','SOLID_DIMS_INVALID');
+  badDim('+x','SOLID_DIMS_INVALID');
+  badDim(5,'SOLID_DIMS_INVALID');
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'SPHERE',radius:3}],dims:[{radius:'center',half:'+X'}]})),code('SOLID_DIMS_INVALID'));// only a cut sphere has half axes
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:4}],dims:[{radius:'bottom',half:'+X'}]})),code('SOLID_DIMS_INVALID'));
+});
+test('E33: the three-quarter sphere with the quarter taken out of its upper front: faces, radii, right angle and the equator radius label are composed and read back',async()=>{
+  const plan2=sphereCut({kind:'THREE_QUARTERS',axis:'Y',rightAngle:true},{unit:'cm',dims:[{solid:'s1',radius:'center',half:'+X'}]},{radius:3});
+  const svg=await sphereSvg(plan2);
+  assert.equal((svg.match(/data-role="cut-radius"/g)??[]).length,2);
+  assert.match(svg,/id="s1-cut-radius-\+X"/);assert.match(svg,/id="s1-cut-radius-\+Z"/);
+  assert.equal((svg.match(/data-role="cut-right-angle"/g)??[]).length,1);
+  const failing=async(tampered,prefix)=>{const r=await audit(plan2,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const radius=svg.match(/<line id="s1-cut-radius-\+X"[^>]*\/>/)[0];
+  await failing(svg.replace(radius,radius.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)-12}"`)),'SOLID_SPHERE_CUT_RADIUS_LINE_MISMATCH:+X');// a radius that stops short
+  await failing(svg.replace(radius,''),'SOLID_SPHERE_CUT_RADII_SET_MISMATCH');
+  await failing(svg.replace(radius,radius.replace('stroke="#111"','stroke="#111" stroke-dasharray="5 4"')),'SOLID_EDGE_VISIBILITY_MISMATCH');// the faces face the viewer: no dashes
+  const mark=svg.match(/<polyline id="s1-right-angle"[^>]*\/>/)[0];
+  await failing(svg.replace(mark,''),'SOLID_SPHERE_CUT_RIGHT_ANGLE_SET_MISMATCH');
+  await failing(svg.replace(mark,mark.replace(/points="([^"]+)"/,(all,pts)=>{const p=pts.split(' ');const [x,y]=p[1].split(',');p[1]=`${Number(x)+5},${Number(y)}`;return `points="${p.join(' ')}"`;})),'SOLID_SPHERE_CUT_RIGHT_ANGLE_CORNER');
+  await failing(svg.replace(mark,mark.replace(/points="([^"]+)"/,(all,pts)=>{const p=pts.split(' ');const [x,y]=p[0].split(',');p[0]=`${Number(x)+4},${Number(y)+4}`;return `points="${p.join(' ')}"`;})),'SOLID_SPHERE_CUT_RIGHT_ANGLE_');
+  // the radius dimension's line follows the half axis it names: +Z (the vertical radius) instead of +X is a different line
+  const dim=svg.match(/<line id="dim-1-line"[^>]*\/>/)[0];
+  const z=svg.match(/<line id="s1-cut-radius-\+Z"[^>]*x2="([\d.]+)" y2="([\d.]+)"/);
+  await failing(svg.replace(dim,dim.replace(/ x2="[\d.]+" y2="[\d.]+"/,` x2="${z[1]}" y2="${z[2]}"`)),'SOLID_SPHERE_CUT_RADIUS_LINE_MISMATCH:dim-1');
+  // the other pieces still compose with a wedge turned about the picture's width, and with the quarter that is kept
+  await sphereSvg(sphereCut({kind:'THREE_QUARTERS',axis:'X',rightAngle:true},{unit:'cm'},{radius:3}));
+  await sphereSvg(sphereCut({kind:'QUARTER',axis:'Y',rightAngle:true},{unit:'cm'},{radius:3}));
+});
+
+// --- E33: the height of a pyramid or a cone written directly on its dashed line, and the right angle at the foot of that line (dims[].direct, dims[].foot) ----------------------------------------
+const pyramidWith=(dim,solid={})=>figure({unit:'cm',solids:[{id:'s1',kind:'PYRAMID',base:{kind:'RECT',width:3,depth:4},height:5,names:'ABCDV',...solid}],dims:[{edge:'AB'},dim],solidCaption:{text:'사각뿔'}});
+test('E33: a direct height has no dimension frame; foot marks the foot of the height (the base vertex farthest right unless one is named)',()=>{
+  const m=solveSolidFigure(pyramidWith({height:true,label:'h',direct:true,foot:true}));
+  const h=m.dims[1];
+  assert.equal(h.direct,true);
+  assert.deepEqual(h.footMark,{to:'C',index:2});// of A(0,0) B(3,0) C(3,4) D(0,4) the screen x = x cos28 + y sin28 is largest at C
+  assert.deepEqual(h.top.slice(0,2),h.foot.slice(0,2));assert.equal(h.foot[2],0);assert.equal(h.top[2],5);// the foot is straight below the apex
+  assert.deepEqual(solveSolidFigure(pyramidWith({height:true,label:'h',direct:true,foot:'B'})).dims[1].footMark,{to:'B',index:1});
+  assert.deepEqual(solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'PYRAMID',base:{kind:'RECT',width:3,depth:4},height:5,names:'.....'}],dims:[{height:true,label:'h',direct:true,foot:'#b3'}]})).dims[0].footMark,{to:'s1.b3',index:3});// an unnamed pyramid: a reference
+  // a frustum's height runs from the centre of its top face
+  const f=solveSolidFigure(figure({unit:'cm',solids:[{kind:'FRUSTUM',base:{kind:'RECT',width:4,depth:4},height:3,topScale:0.5,names:'ABCDEFGH'}],dims:[{height:true,direct:true,foot:true}]})).dims[0];
+  assert.equal(f.top[2],3);assert.equal(f.foot[2],0);
+  // a cone or a cylinder: the dashed line goes to the rim on the screen's right
+  const cone=solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5}],dims:[{height:true,foot:true}]})).dims[0];
+  assert.deepEqual(cone.footMark,{to:'RIM'});
+  assert.equal(solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:5}],dims:[{height:true,direct:true,foot:true}]})).dims[0].footMark.to,'RIM');
+  // nothing new for a plan that says neither
+  const plain=solveSolidFigure(pyramidWith({height:true,label:'h'})).dims[1];
+  assert.equal(plain.direct,undefined);assert.equal(plain.footMark,undefined);
+  const refused=(dim,expected,solid)=>assert.throws(()=>solveSolidFigure(pyramidWith(dim,solid)),code(expected),expected);
+  refused({height:true,foot:true},'SOLID_DIM_FOOT_INVALID');// the right angle needs the direct line: the framed height has an axis too, but say so
+  refused({height:true,direct:true,foot:'V'},'SOLID_DIM_FOOT_INVALID');// the apex is no base vertex
+  refused({height:true,direct:true,foot:'Z'},'SOLID_DIM_FOOT_INVALID');// no such name
+  refused({height:true,direct:true,foot:5},'SOLID_DIM_DIRECT_INVALID');
+  refused({height:true,direct:'yes'},'SOLID_DIM_DIRECT_INVALID');
+  refused({edge:'BC',direct:true},'SOLID_DIM_DIRECT_INVALID');// only a height is direct
+  refused({edge:'BC',foot:true},'SOLID_DIM_DIRECT_INVALID');
+  refused({height:true,direct:true,side:'LEFT'},'SOLID_DIM_SIDE_INVALID');// the side is for the height of a rotation solid
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:3,names:'........'}],dims:[{height:true,direct:true}]})),code('SOLID_DIM'));// a prism's height is an edge
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5,orientation:'APEX_DOWN'}],dims:[{height:true,foot:true}]})),code('SOLID_DIM_FOOT_INVALID'));// no base circle
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5}],dims:[{height:true,foot:'A'}]})),code('SOLID_DIM_FOOT_INVALID'));// a cone has no base vertex to name
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'HEMISPHERE',radius:3}],dims:[{solid:'s1',height:true,foot:true}]})),code('SOLID_DIM_FOOT_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:5,axis:true},{kind:'CONE',radius:3,height:2,on:'s1'}],dims:[{solid:'s2',height:true,foot:true}]})),code('SOLID_DIM_FOOT_INVALID'));// a member of a stack
+});
+test('E33: a pyramid with its height written directly and the right angle at its foot is composed, read back and each tamper is caught',async()=>{
+  const plan=pyramidWith({height:true,label:'h',direct:true,foot:true});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/id="dim-2-axis"/);assert.match(svg,/id="dim-2-foot-ray"/);assert.match(svg,/id="dim-2-foot-right-angle"/);
+  assert.equal((svg.match(/id="dim-2-(line|ext-top|ext-bottom)"/g)??[]).length,0);// no frame
+  // the label stands beside the dashed line
+  const axis=svg.match(/<line id="dim-2-axis"[^>]*x1="([\d.]+)" y1="([\d.]+)" x2="([\d.]+)" y2="([\d.]+)"/);
+  const box=svg.match(/<g id="dim-2-label"[^>]*transform="translate\(([\d.]+) ([\d.]+)\)"/);
+  assert.ok(Math.abs(Number(box[1])-Number(axis[1]))<60,'the label is beside the axis');
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const el=id=>svg.match(new RegExp(`<(line|polyline) id="${id}"[^>]*/>`))[0];
+  const ray=el('dim-2-foot-ray'),mark=el('dim-2-foot-right-angle'),ax=el('dim-2-axis');
+  await failing(svg.replace(ray,ray.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)-14}"`)),'SOLID_FOOT_RAY_MISMATCH:dim-2');// the line stops short of the vertex
+  await failing(svg.replace(ray,ray.replace(/ stroke-dasharray="[^"]*"/,'').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH:dim-2-foot-ray');// inside the solid: dashed
+  await failing(svg.replace(mark,''),'SOLID_FOOT_MARK_SET_MISMATCH:dim-2');
+  const move=(index,dx,dy)=>mark.replace(/points="([^"]+)"/,(all,pts)=>{const p=pts.split(' ');const [x,y]=p[index].split(',');p[index]=`${Number(x)+dx},${Number(y)+dy}`;return `points="${p.join(' ')}"`;});
+  await failing(svg.replace(mark,move(1,6,0)),'SOLID_FOOT_MARK_CORNER:dim-2');// the corner is not the fourth corner of the square
+  await failing(svg.replace(mark,move(0,5,5)),'SOLID_FOOT_MARK_OFF_LINE:dim-2');
+  await failing(svg.replace(ax,ax.replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)-9}"`)),'SOLID_HEIGHT_AXIS_MISMATCH:dim-2');
+  await failing(svg.replace(ax,ax+ax.replace('dim-2-axis','dim-2-line').replace('data-role="height-axis"','data-role="dim-line"')),'SOLID_DIM_LINE_UNEXPECTED:dim-2');// a dimension line the plan did not ask for
+  // the same figure without foot has no ray and no mark: one that is drawn anyway is refused
+  const noFoot=pyramidWith({height:true,label:'h',direct:true});
+  const r=await audit(noFoot,svg);assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_FOOT_MARK_UNEXPECTED:dim-2')),JSON.stringify(r.errors));
+});
+test('E33: the framed height of a pyramid (without direct) is read back as well: dimension line 26 px left of the solid and an extension line at each end',async()=>{
+  const plan=pyramidWith({height:true,label:'h'});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const line=svg.match(/<line id="dim-2-line"[^>]*\/>/)[0],ext=svg.match(/<line id="dim-2-ext-top"[^>]*\/>/)[0];
+  await failing(svg.replace(line,line.replace(/ x1="([\d.]+)"/,(all,v)=>` x1="${Number(v)+8}"`).replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)+8}"`)),'SOLID_DIM_LINE_MISMATCH:dim-2:HEIGHT');
+  await failing(svg.replace(ext,''),'SOLID_DIM_EXTENSION_MISMATCH:dim-2');
+  await failing(svg.replace(ext,ext.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)+6}"`)),'SOLID_DIM_EXTENSION_MISMATCH:dim-2');
+});
+test('E33: a cone and a frustum with the right angle at the foot of the height are composed and read back',async()=>{
+  for(const [solids,dims] of [
+    [[{kind:'CONE',radius:5,height:6}],[{height:true,label:'h',foot:true}]],
+    [[{kind:'CYLINDER',radius:3,height:6}],[{height:true,label:'h',foot:true}]],
+    [[{kind:'FRUSTUM',base:{kind:'RECT',width:6,depth:4},height:4,topScale:0.5,names:'ABCDEFGH'}],[{height:true,label:'h',direct:true,foot:'C'}]],
+    [[{kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:5}],[{height:true,label:'h',foot:true}]]
+  ]){
+    const plan=figure({unit:'cm',solids,dims,solidCaption:{text:'높이의 발'}});
+    const composed=await panel(plan);
+    assert.equal(composed.status,'COMPOSED',JSON.stringify([solids.map(s=>s.kind),composed.detail]));
+    assert.equal(composed.staticAudit.status,'PASS',JSON.stringify([solids.map(s=>s.kind),composed.staticAudit.errors]));
+    assert.match(composed.svg,/id="dim-1-foot-right-angle"/);
+  }
+});
+
+// --- E33: dims[].side on an edge: the label stands on the named side of its segment on the screen ------------------------------------------------------------------------------------------
+test('E33: an edge length may say which side of its segment its label stands on; a side the segment does not face is refused with a code',()=>{
+  const m=solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',side:'BOTTOM'},{edge:'GC',side:'RIGHT'},{edge:'FG',label:'4',side:'TOP'}]}));
+  assert.deepEqual(m.dims.map(d=>d.side),['BOTTOM','RIGHT','TOP']);
+  assert.equal(solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG'}]})).dims[0].side,undefined);
+  const bad=(dims,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims})),code(expected),expected);
+  bad([{edge:'FG',side:'LEFT'}],'SOLID_DIM_SIDE_INVALID:d1');// the front-bottom edge is nearly horizontal: it has a top and a bottom
+  bad([{edge:'FG',side:'RIGHT'}],'SOLID_DIM_SIDE_INVALID:d1');
+  bad([{edge:'GC',side:'TOP'}],'SOLID_DIM_SIDE_INVALID:d1');// a vertical edge has a left and a right
+  bad([{edge:'GC',side:'BOTTOM'}],'SOLID_DIM_SIDE_INVALID:d1');
+  bad([{edge:'FG',side:'UP'}],'SOLID_DIM_SIDE_INVALID');
+  bad([{edge:'FG',side:'top'}],'SOLID_DIM_SIDE_INVALID');
+  bad([{edge:'FG',side:5}],'SOLID_DIM_SIDE_INVALID');
+  bad([{edge:'FG',side:null}],'SOLID_DIM_SIDE_INVALID');
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5}],dims:[{slant:true,side:'LEFT'}]})),code('SOLID_DIM_SIDE_INVALID'));// only an edge or a round solid's height
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5}],dims:[{radius:'bottom',side:'TOP'}]})),code('SOLID_DIM_SIDE_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:5}],dims:[{height:true,side:'TOP'}]})),code('SOLID_DIM_SIDE_INVALID'));// a round solid's height: LEFT or RIGHT
+});
+test('E33: a label on a named side of its edge is composed on that side and read back; a label moved to the other side is caught',async()=>{
+  const place=async side=>{
+    const plan=figure({unit:'cm',solids:[cuboid()],dims:[{edge:'FG',side},{edge:'FE',side:side==='TOP'?'RIGHT':'LEFT'}]});
+    const composed=await panel(plan);
+    assert.equal(composed.status,'COMPOSED',JSON.stringify([side,composed.detail]));
+    assert.equal(composed.staticAudit.status,'PASS',JSON.stringify([side,composed.staticAudit.errors]));
+    return {plan,svg:composed.svg};
+  };
+  const box=(svg,id)=>{const g=svg.match(new RegExp(`<g id="${id}"[^>]*transform="translate\\(([-\\d.]+) ([-\\d.]+)\\)"[^>]*><svg[^>]*?width="([\\d.]+)"[^>]*?height="([\\d.]+)"`));return {x:Number(g[1]),y:Number(g[2]),w:Number(g[3]),h:Number(g[4])};};
+  const edge=(svg,name)=>{const l=svg.match(new RegExp(`<line [^>]*data-edge="${name}"[^>]*x1="([\\d.]+)" y1="([\\d.]+)" x2="([\\d.]+)" y2="([\\d.]+)"`));return [[Number(l[1]),Number(l[2])],[Number(l[3]),Number(l[4])]];};
+  // how far the label's centre is from the edge's line towards the named direction (page coordinates, y down): positive = on that side
+  const towards=(svg,id,name,dir)=>{const b=box(svg,id),[a,c]=edge(svg,name),l=Math.hypot(c[0]-a[0],c[1]-a[1]),n=[-(c[1]-a[1])/l,(c[0]-a[0])/l],t=(b.x+b.w/2-a[0])*n[0]+(b.y+b.h/2-a[1])*n[1],facing=n[0]*dir[0]+n[1]*dir[1];return t*Math.sign(facing);};
+  const top=await place('TOP'),bottom=await place('BOTTOM');
+  assert.ok(towards(top.svg,'dim-1-label','FG',[0,-1])>0,'TOP: the label is above its edge');
+  assert.ok(towards(bottom.svg,'dim-1-label','FG',[0,1])>0,'BOTTOM: the label is below its edge');
+  assert.ok(towards(top.svg,'dim-2-label','FE',[1,0])>0,'RIGHT: the label is right of its edge');
+  assert.ok(towards(bottom.svg,'dim-2-label','FE',[-1,0])>0,'LEFT: the label is left of its edge');
+  // the two sides differ: the same edge's label is on opposite sides of its line
+  assert.ok(towards(top.svg,'dim-1-label','FG',[0,1])<0&&towards(bottom.svg,'dim-1-label','FG',[0,-1])<0);
+  // tamper: the label moved to the other side of the edge's line
+  const failing=async(plan,tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const b=box(top.svg,'dim-1-label'),[a0,a1]=edge(top.svg,'FG'),midY=(a0[1]+a1[1])/2;
+  const group=top.svg.match(new RegExp(`<g id="dim-1-label"[^>]*transform="translate\\([-\\d.]+ [-\\d.]+\\)"`))[0];
+  await failing(top.plan,top.svg.replace(group,group.replace(/translate\([^)]+\)/,`translate(${b.x} ${2*midY-b.y-b.h})`)),'SOLID_DIM_SIDE_MISMATCH:dim-1');
+  // and the same figure checked against a plan that asks for the other side
+  await failing({...top.plan,dims:[{edge:'FG',side:'BOTTOM'},top.plan.dims[1]]},top.svg,'SOLID_DIM_SIDE_MISMATCH:dim-1');
+  // a plan whose side the segment does not face is refused by the observer on its own
+  await failing({...top.plan,dims:[{edge:'FG',side:'LEFT'},top.plan.dims[1]]},top.svg,'SOLID_DIM_SIDE_PLAN_INVALID:dim-1');
+});
+test('E33: a short top edge of a long prism in a grid panel: the label on side TOP may stand past the end of its edge (above-left) where it finds no room otherwise',async()=>{
+  const triangle={capability:'solid-figure-v1',unit:'cm',solids:[{kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[8,0],[0,6]],plane:'XZ'},height:10,names:'......'}],
+    dims:[{edge:['#b0','#b1']},{edge:['#b2','#b1']},{edge:['#b2','#b0']},{edge:['#b1','#t1']}]};
+  const quad=side=>({capability:'solid-figure-v1',unit:'cm',solids:[{kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[10,0],[2,6],[0,6]],plane:'XZ'},height:18,names:'........'}],
+    dims:[{edge:['#b0','#b1']},{edge:['#b1','#b2']},{edge:['#b2','#b3'],...(side?{side}:{})},{edge:['#b3','#b0']},{edge:['#b1','#t1'],label:'h'}]});
+  const grid=side=>gridOf([solidPanel(triangle,'삼각기둥'),solidPanel(quad(side),'사각기둥')]);
+  const compose=async plan=>{
+    const checked=compositePanels(plan),framed={...plan,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))};
+    return composeCompositeCandidate({plan:framed,panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-side-grid|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:30,displayScale:0.375,fontFloorCssPx:11}});
+  };
+  // a prism 18 deep: the 2 cm top edge is short, the top face above it is a long narrow strip, and the label has no room on either side without being told
+  const without=await compose(grid(undefined));
+  assert.equal(without.status,'COMPOSITE_PANEL_NOT_COMPOSED',JSON.stringify(without.detail).slice(0,300));
+  assert.equal(without.detail.status,'SOLID_LABELS_NO_ROOM');assert.deepEqual(without.detail.detail.labels,['dim-3-label']);
+  const withSide=await compose(grid('TOP'));
+  assert.equal(withSide.status,'COMPOSED',JSON.stringify([withSide.status,withSide.detail]).slice(0,400));
+  assert.ok(withSide.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(withSide.panels.map(item=>item.staticAudit)));
+});
+
+// --- E33: the base of a round solid tinted (baseFill) and named inside the tint ---------------------------------------------------------------------------------------------------
+test('E33: baseFill tints the base circle of a cylinder, cone or frustum and may name it; what has no base circle is refused with a code',()=>{
+  const fillOf=(solid,dims)=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:4,height:6,...solid}],dims:dims??[{height:true}]})).solids[0].baseFill;
+  assert.deepEqual(fillOf({baseFill:true}),{face:'BOTTOM',fill:'LIGHT'});
+  assert.deepEqual(fillOf({baseFill:'MEDIUM'}),{face:'BOTTOM',fill:'MEDIUM'});
+  assert.deepEqual(fillOf({baseFill:{fill:'WARM',label:'S'}}),{face:'BOTTOM',fill:'WARM',label:'S'});
+  assert.deepEqual(fillOf({baseFill:{label:'밑면'}}),{face:'BOTTOM',fill:'LIGHT',label:'밑면'});
+  assert.equal(fillOf({}),undefined);
+  // the wide opening of an apex-down vessel (its top circle) and the top of a cylinder
+  assert.deepEqual(fillOf({orientation:'APEX_DOWN',baseFill:{face:'TOP'}}),{face:'TOP',fill:'LIGHT'});
+  const cylinder=solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:5,baseFill:{face:'TOP',label:'S'}}],dims:[{height:true}]})).solids[0];
+  assert.equal(cylinder.baseFill.face,'TOP');
+  assert.equal(solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE_FRUSTUM',radius:5,topRadius:2,height:4,baseFill:true}],dims:[{height:true}]})).solids[0].baseFill.fill,'LIGHT');
+  // a tint is something to look at: a plan with nothing else written is a figure
+  assert.ok(solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:4,height:6,baseFill:true}]})).solids[0].baseFill);
+  const bad=(solid,expected,over)=>assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:4,height:6,...solid}],dims:[{height:true}],...over})),code(expected),expected);
+  bad({baseFill:{fill:'RED'}},'SOLID_HIGHLIGHT_FILL_INVALID');
+  bad({baseFill:{face:'SIDE'}},'SOLID_BASE_FILL_INVALID');
+  bad({baseFill:{colour:'LIGHT'}},'SOLID_BASE_FILL_INVALID');
+  bad({baseFill:5},'SOLID_BASE_FILL_INVALID');
+  bad({baseFill:{label:'S^2'}},'SOLID_LABEL_TEXT_INVALID');// plain letters and Korean words only
+  bad({baseFill:{label:''}},'SOLID_LABEL_TEXT_INVALID');
+  bad({baseFill:{label:' S'}},'SOLID_LABEL_TEXT_INVALID');
+  bad({baseFill:{face:'TOP'}},'SOLID_BASE_FILL_INVALID');// the top of an apex-up cone is its point
+  bad({orientation:'APEX_DOWN',baseFill:true},'SOLID_BASE_FILL_INVALID');// the bottom of an apex-down cone is its point
+  for(const kind of ['SPHERE','HEMISPHERE'])assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind,radius:3,baseFill:true}],dims:[{radius:'center'}]})),code('SOLID_BASE_FILL_UNSUPPORTED:'+kind));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:3,names:'........',baseFill:true}],dims:[{edge:['#b0','#b1']}]})),code('SOLID_PARAM_INVALID'));// a face of a polyhedron is tinted by highlights
+  // on a stack a joint circle is no base
+  const stack=(a,b)=>solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'CYLINDER',radius:3,height:4,...a},{id:'s2',kind:'CONE',radius:3,height:4,on:'s1',...b}],dims:[{solid:'s1',height:true}]}));
+  assert.throws(()=>stack({baseFill:{face:'TOP'}},{}),code('SOLID_BASE_FILL_INVALID'));
+  assert.throws(()=>stack({},{baseFill:true}),code('SOLID_BASE_FILL_INVALID'));
+  assert.equal(stack({baseFill:true},{}).solids[0].baseFill.face,'BOTTOM');// the bottom of the lower solid is a base
+});
+test('E33: a tinted base is composed, named inside its ellipse and read back; each tamper is caught',async()=>{
+  const plan=figure({unit:'cm',solids:[{kind:'CONE',radius:6,height:8,baseFill:{fill:'LIGHT',label:'S'}}],dims:[{height:true,label:'5x'}],solidCaption:{text:'원뿔의 밑면'}});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  const fill=svg.match(/<ellipse id="s1-base-fill"[^>]*\/>/)[0];
+  assert.match(fill,/data-role="base-fill"/);assert.match(fill,/data-face="BOTTOM"/);assert.match(fill,/fill="#7fa6e8" fill-opacity="0.32" stroke="none"/);
+  assert.ok(svg.indexOf(fill)<svg.indexOf('id="s1-base-front"'),'the tint is painted beneath the strokes');
+  const label=svg.match(/<g id="text-tl1"[^>]*>/)[0];
+  assert.match(label,/data-at-kind="BASE"/);assert.match(label,/data-target="s1\|base"/);assert.match(label,/data-tex="S"/);// one letter: an italic symbol
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  await failing(svg.replace(fill,fill.replace(/ cx="([\d.]+)"/,(all,v)=>` cx="${Number(v)+9}"`)),'SOLID_BASE_FILL_ELLIPSE_MISMATCH:s1');
+  await failing(svg.replace(fill,fill.replace(/ ry="([\d.]+)"/,(all,v)=>` ry="${Number(v)*1.5}"`)),'SOLID_BASE_FILL_ELLIPSE_MISMATCH:s1');
+  await failing(svg.replace(fill,fill.replace('data-fill="LIGHT"','data-fill="WARM"')),'SOLID_BASE_FILL_ATTRIBUTE_MISMATCH:s1');
+  await failing(svg.replace(fill,fill.replace('fill-opacity="0.32"','fill-opacity="0.9"')),'SOLID_BASE_FILL_STYLE_MISMATCH:s1');
+  await failing(svg.replace(fill,fill.replace('data-face="BOTTOM"','data-face="TOP"')),'SOLID_BASE_FILL_ATTRIBUTE_MISMATCH:s1');
+  await failing(svg.replace(fill,''),'SOLID_BASE_FILL_SET_MISMATCH');
+  await failing(svg.replace(fill,'').replace('</svg>',`<g data-layer="20">${fill}</g></svg>`),'SOLID_BASE_FILL_NOT_BENEATH:s1');
+  await failing(svg.replace(fill,fill+fill.replace('id="s1-base-fill"','id="s1-base-fill-2"')),'SOLID_BASE_FILL_SET_MISMATCH');
+  // the plan without baseFill does not draw one
+  const r=await audit(figure({unit:'cm',solids:[{kind:'CONE',radius:6,height:8}],dims:[{height:true,label:'5x'}],solidCaption:{text:'원뿔의 밑면'}}),svg);
+  assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_BASE_FILL_SET_MISMATCH')),JSON.stringify(r.errors));
+  // the name moved out of its base
+  const group=svg.match(/<g id="text-tl1"[^>]*transform="translate\([-\d.]+ [-\d.]+\)"/)[0];
+  await failing(svg.replace(group,group.replace(/translate\([^)]+\)/,'translate(40 40)')),'SOLID_TEXT_LABEL_OUTSIDE_BASE:text-tl1');
+  // the name written as another letter than the plan's
+  await failing(svg.replace('data-tex="S"','data-tex="T"'),'SOLID_TEXT_LABEL_TEXT_MISMATCH:text-tl1');
+});
+test('E33: a cylinder top, an apex-down vessel opening and a frustum base are tinted and named; a Korean word is written as text',async()=>{
+  for(const [solid,dims] of [
+    [{kind:'CYLINDER',radius:3,height:6,baseFill:{face:'TOP',fill:'WARM',label:'밑면'}},[{height:true,label:'h'}]],
+    [{kind:'CONE',radius:5,height:6,orientation:'APEX_DOWN',baseFill:{face:'TOP',fill:'MEDIUM',label:'S'}},[{height:true,label:'h'}]],
+    [{kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:4,baseFill:{fill:'GREEN',label:'S'}},[{height:true,label:'h'}]],
+    [{kind:'CYLINDER',radius:3,height:6,baseFill:true},[{height:true,label:'h'},{radius:'top',label:'r'}]]
+  ]){
+    const plan=figure({unit:'cm',solids:[solid],dims,solidCaption:{text:'색칠한 밑면'}});
+    const composed=await panel(plan);
+    assert.equal(composed.status,'COMPOSED',JSON.stringify([solid.kind,composed.detail]));
+    assert.equal(composed.staticAudit.status,'PASS',JSON.stringify([solid.kind,composed.staticAudit.errors]));
+    assert.match(composed.svg,/data-role="base-fill"/);
+    if(solid.baseFill.label==='밑면')assert.match(composed.svg.match(/<g id="text-tl1"[^>]*>/)[0],/data-text="밑면"/);
+  }
+});
+
+// --- E33: small things (a) the solid caption with an exponent -------------------------------------------------------------------------------------------------------------------
+test('E33: solidCaption may be an expression with exponents ({math}) or an expression and a phrase ({math,text}); other shapes are refused',()=>{
+  const expand=cap=>expandSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG'}],solidCaption:cap}));
+  assert.deepEqual(expand({text:'직육면체'}).panels[0].caption,{text:'직육면체'});
+  assert.deepEqual(expand({math:'V=8a^5b^3'}).panels[0].caption,{math:'V=8a^5b^3'});
+  assert.deepEqual(expand({math:'V=8a^5b^3',text:'직육면체'}).panels[0].caption,{math:'V=8a^5b^3',text:'직육면체'});
+  assert.deepEqual(expand({math:'(2a^{2}b)^2'}).panels[0].caption,{math:'(2a^{2}b)^2'});
+  // the composite accepts the same caption (it is what typesets it)
+  assert.doesNotThrow(()=>compositePanels(expand({math:'V=8a^5b^3',text:'직육면체'})));
+  for(const bad of [{},{math:''},{math:'V=\\sqrt{2}'},{math:'x'.repeat(25)},{math:5},{math:'a b'},{text:'가'.repeat(25)},{text:'직육면체',color:'red'},{math:'a^2',text:''},'text',[]])
+    assert.throws(()=>expand(bad),code('SOLID_CAPTION_INVALID'),JSON.stringify(bad));
+  assert.equal(expand(undefined).panels[0].caption.text,'입체도형');// no caption: the default word
+});
+test('E33: the caption expression is set with its superscripts by MathJax and the figure stands on its caption alone',async()=>{
+  const plan=figure({solids:[cuboid()],highlights:[{face:'bottom'}],solidCaption:{math:'V=8a^5b^3',text:'직육면체'}});
+  const expanded=expandSolidFigure(plan),checked=compositePanels(expanded);
+  const composed=await composeCompositeCandidate({plan:{...expanded,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))},panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-caption-math|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,400));
+  // the expression is a MathJax fragment with two superscripts (a^5, b^3), the phrase a text fragment beside it
+  const math=composed.svg.match(/<g id="p1-p1-caption-math"[\s\S]*?<\/svg><\/g>/)[0];
+  assert.equal((math.match(/data-mml-node="msup"/g)??[]).length,2);
+  assert.match(composed.svg,/<g id="p1-p1-caption-text"/);
+});
+
+// --- E33: small things (b) Korean words as length labels, (c) the six tints on a net --------------------------------------------------------------------------------------------
+test('E33: a length of a solid may be labelled with a Korean word (모선, 높이, 밑변); it is plain text, no value is checked, and an observer reads it back',async()=>{
+  const plan=figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:3,height:4}],dims:[{solid:'s1',slant:true,label:'모선'},{solid:'s1',height:true,label:'높이'},{solid:'s1',radius:'bottom',label:'반지름'}]});
+  const model=solveSolidFigure(plan);
+  assert.deepEqual(model.dims.map(d=>[d.word,d.numeric,d.text]),[[true,false,'모선'],[true,false,'높이'],[true,false,'반지름']]);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  for(const [id,word] of [['dim-1','모선'],['dim-2','높이'],['dim-3','반지름']]){
+    const g=svg.match(new RegExp(`<g id="${id}-label"[^>]*>`))[0];
+    assert.match(g,new RegExp(`data-text="${word}"`));assert.match(g,/data-numeric="0"/);assert.doesNotMatch(g,/data-tex=/);
+  }
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  await failing(svg.replace('data-text="모선"','data-text="높이"'),'SOLID_DIM_WORD_MISMATCH:dim-1');
+  await failing(svg.replace(/(<g id="dim-2-label"[^>]*?) data-numeric="0"/,'$1 data-numeric="1"'),'SOLID_DIM_WORD_MISMATCH:dim-2');
+  // an edge of a polyhedron too; a word is not a number, so it does not have to equal the edge's length
+  const cube=figure({unit:'cm',solids:[cuboid()],dims:[{edge:'FG',label:'밑변'},{edge:'FE',label:'가로 길이'}]});
+  const cubeComposed=await panel(cube);
+  assert.equal(cubeComposed.status,'COMPOSED',JSON.stringify(cubeComposed.detail));
+  assert.equal(cubeComposed.staticAudit.status,'PASS',JSON.stringify(cubeComposed.staticAudit.errors));
+  const bad=(label,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label}]})),code(expected),expected);
+  bad('밑변!','SOLID_DIM_LABEL_INVALID:d1');
+  bad('아주 긴 낱말을 열두 자 넘게 쓴다','SOLID_DIM_LABEL_INVALID:d1');
+  bad('모선^2','SOLID_DIM_LABEL_INVALID:d1');
+  assert.doesNotThrow(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label:'4'}]})).dims);// a number still has to be right
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label:'7'}]})),code('SOLID_DIM_VALUE_MISMATCH'));
+});
+test('E33: a net tints a face with any of the six fills of a solid; the observer reads the colour and the opacity back',async()=>{
+  const plan=emphasisNet({highlights:[{face:'top',fill:'WARM'},{face:'bottom',fill:'GREEN'},{face:'side0',fill:'ROSE'},{face:'side1',fill:'VIOLET'},{face:'side2'},{face:'side3',fill:'MEDIUM'}]});
+  const model=solveSolidFigure(plan);
+  assert.deepEqual(model.highlights.map(h=>h.fill),['WARM','GREEN','ROSE','VIOLET','LIGHT','MEDIUM']);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/data-face="top" data-fill="WARM" fill="#f2a65a" fill-opacity="0.42"/);
+  assert.match(svg,/data-face="bottom" data-fill="GREEN" fill="#6fcf97" fill-opacity="0.42"/);
+  assert.match(svg,/data-face="side0" data-fill="ROSE" fill="#e98aa8" fill-opacity="0.42"/);
+  assert.match(svg,/data-face="side1" data-fill="VIOLET" fill="#a78bdb" fill-opacity="0.42"/);
+  assert.match(svg,/data-face="side2" data-fill="LIGHT" fill="#7fa6e8" fill-opacity="0.32"/);// the two old tints are written as before
+  assert.match(svg,/data-face="side3" data-fill="MEDIUM" fill="#7fa6e8" fill-opacity="0.55"/);
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  await failing(svg.replace('data-fill="WARM" fill="#f2a65a"','data-fill="WARM" fill="#6fcf97"'),'SOLID_NET_HIGHLIGHT_FILL_MISMATCH');
+  await failing(svg.replace('data-fill="VIOLET" fill="#a78bdb" fill-opacity="0.42"','data-fill="VIOLET" fill="#a78bdb" fill-opacity="0.55"'),'SOLID_NET_HIGHLIGHT_FILL_MISMATCH');
+  assert.throws(()=>solveSolidFigure(emphasisNet({highlights:[{face:'top',fill:'BLUE'}]})),code('SOLID_NET_HIGHLIGHT_INVALID'));
+});
+
+// --- E33: small things (d) the value or a symbol written beside an angle arc (marks.angles[].label) --------------------------------------------------------------------------------
+test('E33: an angle mark may carry its value or a symbol as a label; a number in it has to be the angle; bad labels have codes',()=>{
+  const labelled=label=>solveSolidFigure(figure({solids:[cuboid()],marks:{angles:[{refs:['B','A','D'],arcs:1,label}]}})).marks.angles[0];
+  assert.equal(labelled('90^\\circ').label,'90^\\circ');
+  assert.equal(labelled('y^\\circ').label,'y^\\circ');
+  assert.equal(labelled('\\angle A=90^\\circ').label,'\\angle A=90^\\circ');
+  assert.equal(labelled('x').label,'x');
+  assert.equal(labelled(undefined).label,undefined);
+  const bad=(label,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{angles:[{refs:['B','A','D'],arcs:1,label}]}})),code(expected),expected);
+  bad('80^\\circ','SOLID_MARK_ANGLE_LABEL_MISMATCH:an1');// the angle is a right angle
+  bad('\\angle A=55^\\circ','SOLID_MARK_ANGLE_LABEL_MISMATCH:an1');
+  bad('a'.repeat(25),'SOLID_MARK_ANGLE_LABEL_INVALID:an1');
+  bad('x?','SOLID_MARK_ANGLE_LABEL_INVALID:an1');
+  bad(5,'SOLID_MARK_ANGLE_LABEL_INVALID:an1');
+  bad('','SOLID_MARK_ANGLE_LABEL_INVALID:an1');
+  assert.doesNotThrow(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{angles:[{refs:['B','A','D'],arcs:1,label:'90.3^\\circ'}]}})));// within the half degree an angle value has
+});
+test('E33: the labels of two angle marks are composed beside their arcs and read back; each tamper is caught',async()=>{
+  const plan=figure({unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'POLYGON',points:[[0,0],[5.25,-2.904738],[8,0]]},height:9.931926,apex:[6.964429,-0.533333],names:'ABCV'}],
+    dims:[{edge:'AB',label:'6'}],marks:{angles:[{refs:['V','A','C'],arcs:1,label:'55^\\circ'},{refs:['A','C','V'],arcs:2,label:'z^\\circ'}]}});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  const groups=[...svg.matchAll(/<g id="angle-label-(an\d)"[^>]*data-mark="(an\d)"[^>]*data-tex="([^"]+)"/g)].map(m=>[m[1],m[2],m[3]]);
+  assert.deepEqual(groups,[['an1','an1','55^\\circ'],['an2','an2','z^\\circ']]);
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const group=id=>svg.match(new RegExp(`<g id="${id}"[^>]*>`))[0];
+  await failing(svg.replace(group('angle-label-an1'),group('angle-label-an1').replace('data-tex="55^\\circ"','data-tex="35^\\circ"')),'SOLID_ANGLE_LABEL_TEXT_MISMATCH:an1');
+  // the label of an angle moved far away from it, and to the other side of its vertex
+  await failing(svg.replace(group('angle-label-an1'),group('angle-label-an1').replace(/translate\([^)]+\)/,'translate(430 20)')),'SOLID_ANGLE_LABEL_FAR_FROM_ANGLE:an1');
+  await failing(svg.replace(/<g data-layer="90"><g id="angle-label-an2"[\s\S]*?<\/svg><\/g><\/g>/,''),'SOLID_ANGLE_LABEL_SET_MISMATCH');
+  // a plan that says another number than the angle is caught by the observer too (the engine refuses it first)
+  const lying={...plan,marks:{angles:[{refs:['V','A','C'],arcs:1,label:'45^\\circ'},plan.marks.angles[1]]}};
+  const r=await audit(lying,svg.replace('data-tex="55^\\circ"','data-tex="45^\\circ"').replace('data-value="55^\\circ"','data-value="45^\\circ"'));
+  assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_ANGLE_LABEL_VALUE_MISMATCH:an1')),JSON.stringify(r.errors));
+});
+
+// --- E33: small things (e) the parts of a cone's slant above and below the water level (dims.slant "top"|"bottom") and the names of the level's points (names.level/levelRim/rim) ---------------
+const waterCone=(over={},solidOver={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:6,height:8,names:{apex:'T',center:'A',level:'C',levelRim:'D',rim:'B'},...solidOver}],section:{solid:'s1',kind:'LEVEL',at:'2/5',fill:'BOTTOM'},
+  segments:[{from:'T',to:'A',style:'SOLID',role:'REF'},{from:'C',to:'D',style:'SOLID',role:'REF'},{from:'A',to:'B',style:'SOLID',role:'REF'}],dims:[{solid:'s1',slant:'top'},{solid:'s1',slant:'bottom'}],...over});
+test('E33: the slant of a cone may be measured in two parts at the water level; the level points D and B stand exactly on the right contour generator',()=>{
+  const m=solveSolidFigure(waterCone());
+  assert.deepEqual(m.dims.map(d=>[d.type,d.part,d.value,d.numeric]),[['SLANT','TOP',6,true],['SLANT','BOTTOM',4,true]]);// a slant of 10 cut at 2/5 of the height: 6 above and 4 below
+  assert.deepEqual(solveSolidFigure(waterCone({dims:[{solid:'s1',slant:true}]})).dims.map(d=>[d.part,d.value]),[[undefined,10]]);
+  const pts=Object.fromEntries(m.solids[0].points.map(q=>[q.name,q.p]));
+  assert.deepEqual(Object.keys(pts).sort(),['A','B','C','D','T']);
+  const scr=p=>project(p),cross=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
+  // T, D and B are collinear on the page (the generator is the straight line the outline draws), D between T and B in the ratio of the radii: 3/5 of the way down
+  const [T,D,B]=[pts.T,pts.D,pts.B].map(scr);
+  assert.ok(Math.abs(cross(T,D,B))<1e-5,'D is on the line TB');
+  const along=(D[0]-T[0])/(B[0]-T[0]);assert.ok(Math.abs(along-0.6)<1e-5,String(along));
+  assert.ok(Math.abs((pts.C[2]-pts.A[2])-3.2)<1e-9);// C is the centre of the level circle at 2/5 of 8
+  // the level circle's contour point is as far from the axis as the circle's radius, in the plane of the circle
+  assert.ok(Math.abs(Math.hypot(pts.D[0]-pts.C[0],pts.D[1]-pts.C[1])-3.6)<1e-5);// r = 6 * (1 - 2/5)... the water is the lower part: the level circle has radius 6 (1-2/5)=3.6
+  assert.ok(Math.abs(Math.hypot(pts.B[0]-pts.A[0],pts.B[1]-pts.A[1])-6)<1e-5);
+  // a frustum has parts too
+  const f=solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:4}],section:{solid:'s1',kind:'LEVEL',at:'1/2'},dims:[{slant:'top'},{slant:'bottom',label:'2.5'}]}));
+  assert.deepEqual(f.dims.map(d=>[d.part,d.value]),[['TOP',2.5],['BOTTOM',2.5]]);
+});
+test('E33: a slant part needs the solid\'s level section, and the level names need one too; what cannot be named or measured is refused with a code',()=>{
+  const bad=(over,expected,solidOver)=>assert.throws(()=>solveSolidFigure(waterCone(over,solidOver)),code(expected),expected);
+  bad({section:undefined},'SOLID_NAMES_INVALID');// level names without a level section
+  bad({section:undefined,solids:[{id:'s1',kind:'CONE',radius:6,height:8}],segments:undefined},'SOLID_DIM_SLANT_PART_NEEDS_LEVEL');
+  bad({dims:[{solid:'s1',slant:'middle'}]},'SOLID_DIMS_INVALID');
+  bad({dims:[{solid:'s1',slant:7}]},'SOLID_DIMS_INVALID');
+  bad({solids:[{id:'s1',kind:'CYLINDER',radius:3,height:8,names:{level:'C'}}]},'SOLID_NAMES_INVALID');// only a cone or a frustum
+  bad({solids:[{id:'s1',kind:'CYLINDER',radius:3,height:8}],segments:undefined,dims:[{solid:'s1',slant:'top'}]},'SOLID_DIMS_INVALID');
+  bad({},'SOLID_NAMES_INVALID',{orientation:'APEX_DOWN'});// an apex-down cone has no base circle for B (rim)
+  bad({},'SOLID_NAME_DUPLICATE:A',{names:{apex:'T',center:'A',level:'A',levelRim:'D',rim:'B'}});
+  bad({},'SOLID_NAMES_INVALID',{names:{apex:'T',level:'c'}});
+  bad({},'SOLID_NAMES_INVALID',{names:{apex:'T',base:'X'}});
+  // a level section of another solid does not serve this one
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:6,height:8,names:{level:'C'}},{id:'s2',kind:'CONE',radius:4,height:6}],section:{solid:'s2',kind:'LEVEL',at:'1/2'},dims:[{solid:'s2',slant:'top'}]})),code('SOLID_NAMES_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:6,height:8},{id:'s2',kind:'CONE',radius:4,height:6}],section:{solid:'s2',kind:'LEVEL',at:'1/2'},dims:[{solid:'s1',slant:'top'}]})),code('SOLID_DIM_SLANT_PART_NEEDS_LEVEL'));
+});
+test('E33: the water cone with its slant parts and level points is composed and read back; each tamper is caught',async()=>{
+  const plan=waterCone();
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  for(const name of ['T','A','B','C','D'])assert.match(svg,new RegExp(`<g id="name-${name}"`));
+  const failing=async(p,tampered,prefix)=>{const r=await audit(p,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const label=id=>svg.match(new RegExp(`<g id="${id}"[^>]*>`))[0];
+  await failing(plan,svg.replace(label('dim-1-label'),label('dim-1-label').replace(/translate\([^)]+\)/,'translate(30 30)')),'SOLID_DIM_FAR_FROM_SEGMENT:dim-1');
+  // the plan asks for the lower part where the label is written beside the upper one: a label far from its own part
+  await failing({...plan,dims:[{solid:'s1',slant:'bottom'},{solid:'s1',slant:'top'}]},svg,'SOLID_DIM_');
+  // another number than 6 on the upper part
+  await failing(plan,svg.replace(/(<g id="dim-1-label"[^>]*?) data-tex="6\\,\\mathrm\{cm\}"/,'$1 data-tex="7\\,\\mathrm{cm}"'),'SOLID_DIM_VALUE_MISMATCH:dim-1');
+  // a segment ending where D should be but is not: the plan names D, the line must reach it
+  const seg=svg.match(/<line id="segment-CD"[^>]*\/>/)[0];
+  await failing(plan,svg.replace(seg,seg.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)-12}"`)),'SOLID_SEGMENT_ENDPOINT_OFF:CD');
 });
