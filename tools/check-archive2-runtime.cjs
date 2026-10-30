@@ -26,6 +26,7 @@ const files = [
   'tests/svg-accessibility.test.cjs',
   'tests/svg-accessibility-integration.test.cjs',
   'tests/render-authority-question.test.js',
+  'tests/archive2-key-resolver.test.js',
 ];
 
 console.log('Archive2 Runtime Guard — ARCHIVE2_RUNTIME_CONTRACT_V1_20261006');
@@ -39,6 +40,12 @@ const canonicalProjection = spawnSync(process.execPath, ['archive/tools/build-ar
 });
 if (canonicalProjection.error) console.error(canonicalProjection.error.message);
 if (canonicalProjection.status !== 0 || canonicalProjection.error) process.exit(1);
+// Derived, read-only index of the Generated-only extension keys (S14b); the key resolver test checks it.
+const extensionKeys = spawnSync(process.execPath, ['archive/tools/build-archive2-extension-keys.mjs'], {
+  cwd: root, stdio: 'inherit', timeout: 120000,
+});
+if (extensionKeys.error) console.error(extensionKeys.error.message);
+if (extensionKeys.status !== 0 || extensionKeys.error) process.exit(1);
 const result = spawnSync(process.execPath, ['--test', '--test-concurrency=1', ...files], {
   cwd: root, stdio: 'inherit', timeout: 120000,
 });

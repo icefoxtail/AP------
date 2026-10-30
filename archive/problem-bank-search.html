@@ -4,6 +4,7 @@
 <title>공통 Meta 문항 검색 | Archive 2.0</title>
 <style>
 body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#17324f;margin:0}main{max-width:1080px;margin:auto;padding:24px}a{color:#155fa8}h1{font-size:26px}.filters{display:flex;flex-wrap:wrap;gap:12px;background:white;padding:18px;border-radius:12px}label{display:grid;gap:6px}select,button{font:inherit;padding:9px;border:1px solid #b8c9dc;border-radius:7px;background:white}article{background:white;padding:16px;margin:10px 0;border-radius:10px}article p{color:#516b83}#preview{white-space:pre-wrap;background:white;padding:20px;margin-top:16px}#preview img{max-width:100%;max-height:360px}#status{min-height:24px}nav{display:flex;gap:20px}button,a{cursor:pointer}#preview[hidden]{display:none}#preview table{border-collapse:collapse;white-space:normal}#preview td,#preview th{border:1px solid #a5b2c0;padding:6px}
+.kb{display:inline-block;font-size:11px;line-height:16px;padding:0 6px;border-radius:9px;margin-right:5px;border:1px solid #9db7d3;background:#eaf3fc;color:#1d4f86}.kb.ext{border-color:#e0a95b;background:#fff3df;color:#8a5200}.keys{margin:6px 0 0}.keys .key{display:inline-block;margin:0 14px 4px 0;color:#17324f}.keys .key small{color:#647c98}#keynote{min-height:20px;color:#647c98;font-size:13px}
 </style>
 <main>
 <nav><a href="workspace.html?view=compose">문제지 만들기</a><a href="generated-bank.html">생성 문항 선택·인쇄</a></nav>
@@ -32,6 +33,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <label>난이도<select id="difficulty"><option value="">전체</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option value="UNKNOWN">미지정</option></select></label>
 </div>
 <p id="status" role="status" aria-live="polite">문항 정보를 불러오는 중입니다.</p>
+<p id="keynote" role="status" aria-live="polite"></p>
 <div id="results"></div><button id="more" hidden>더 보기</button>
 <section id="preview" hidden aria-label="생성 문항 미리보기"></section>
 </main>
@@ -40,10 +42,11 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <script src="archive2-core.js?v=20261029-s14-1"></script>
 <script src="problem-bank-meta.js?v=20261029-s14-1"></script>
 <script src="archive2-source.js?v=20261029-source-meta-conflict-1"></script>
+<script src="archive2-key-resolver.js?v=20261030-s14b-1"></script>
 <script>
 'use strict';
 const el=id=>document.getElementById(id),shards=new Map();
-let inventory=[],matching=[],limit=40,holds=[],previewRequest=0,coreMetaFilterOptions={};
+let inventory=[],matching=[],limit=40,holds=[],previewRequest=0,coreMetaFilterOptions={},keyResolver=null;
 const filters=()=>{
  const f={};for(const k of ['rpmL1','rpmL2','rpmL3','rpmL4'])if(el(k).value)f[k]=el(k).value;
  if(el('source').value)f.sourceKind=el('source').value;
@@ -84,6 +87,52 @@ function refreshCoreMetaKeyOptions(){
  if(el('subUnitKey').value&&!subUnits.some(row=>row.subUnitKey===el('subUnitKey').value))el('subUnitKey').value='';
  options('subUnitKey','subUnitKey',inventory,subUnits);
 }
+const KEY_CHIPS=[['pt','유형'],['tpl','풀이'],['l4','세부 유형'],['cross','연결 개념'],['cond','조건']];
+// S14b: canonical (정식) and Generated-only extension (확장) keys in one read-only view. The resolver
+// loads lazily after the first paint; until then (or if it fails) the cards and filters stay as before.
+function keyChips(row){
+ if(!keyResolver)return null;
+ const view=keyResolver.describe(row),paragraph=document.createElement('p');paragraph.className='keys';
+ for(const [kind,label] of KEY_CHIPS){
+  for(const item of view.items.filter(entry=>entry.kind===kind&&!entry.blocked)){
+   const chip=document.createElement('span');chip.className='key';
+   if(item.badge){const badge=document.createElement('span');badge.className='kb'+(item.origin==='extension'?' ext':'');badge.dataset.origin=item.origin;badge.textContent=item.badge;badge.title=item.origin==='extension'?'Generated 전용 확장 키 (정식 키로 승격되기 전)':'정식 키';chip.append(badge);}
+   chip.append(document.createTextNode(`${label} ${item.label}`));
+   if(item.origin==='extension'&&item.parentLabel){const parent=document.createElement('small');parent.textContent=` ‹상위 ${item.parentLabel}${item.parentInferredFromItem?' (문항 기록)':''}›`;chip.append(parent);}
+   chip.title=item.key+(item.tier&&item.tier!=='active'?` · ${item.tier}`:'');
+   paragraph.append(chip);
+  }
+ }
+ if(view.violations.length){const warn=document.createElement('small');warn.textContent='원본 문항에는 확장 키를 붙이지 않으므로 표시하지 않습니다.';paragraph.append(warn);}
+ return paragraph.childNodes.length?paragraph:null;
+}
+function relabelKeyOptions(id,kind){
+ const select=el(id),selected=select.value,values=[...select.options].map(option=>option.value).filter(Boolean);
+ if(!values.length)return;
+ const groups=new Map(),flat=[];
+ for(const option of keyResolver.optionsFor(kind,values)){
+  const node=new Option(`${option.label}${option.badge?` · ${option.badge}`:''}`,option.value);node.title=option.key;
+  if(option.origin==='extension'&&option.groupLabel){const bucket=groups.get(option.groupLabel)||[];bucket.push(node);groups.set(option.groupLabel,bucket);}
+  else flat.push(node);
+ }
+ const children=[new Option('전체',''),...flat];
+ for(const [label,nodes] of groups){const group=document.createElement('optgroup');group.label=`확장 · ${label}`;group.append(...nodes);children.push(group);}
+ select.replaceChildren(...children);
+ if(values.includes(selected))select.value=selected;
+}
+function scheduleKeyResolver(){
+ const start=()=>{
+  el('keynote').textContent='분류 키의 정식·확장 표시를 불러오는 중입니다.';
+  Archive2KeyResolver.load({base:''}).then(({resolver,failedSources,elapsedMs})=>{
+   keyResolver=resolver;
+   for(const [id,kind] of [['problemTypeKey','pt'],['templateKey','tpl'],['crossConceptKey','cross'],['conditionKey','cond'],['rpmL4','l4']])relabelKeyOptions(id,kind);
+   el('keynote').textContent=`분류 키 표시: 정식 ${resolver.stats.canonicalKeys.toLocaleString()} · 확장 ${resolver.stats.extensionKeys.toLocaleString()} (상위 연결 ${resolver.stats.parentLinked.toLocaleString()})${failedSources.length?' · 일부 자료 없음':''}`;
+   window.__keyResolverState={ready:true,elapsedMs,failedSources};
+   render();
+  }).catch(error=>{el('keynote').textContent='';window.__keyResolverState={ready:false,error:String(error?.message||error)};});
+ };
+ if(typeof requestIdleCallback==='function')requestIdleCallback(start,{timeout:1500});else setTimeout(start,50);
+}
 function render(){
  matching=ProblemBankMeta.query(inventory,filters());
  el('status').textContent=`${matching.length.toLocaleString()}문항 · 기출/아카이브 ${matching.filter(r=>r.sourceKind!=='generated').length.toLocaleString()} · 생성 ${matching.filter(r=>r.sourceKind==='generated').length.toLocaleString()} · 검증 수준은 문항별 근거를 따릅니다.`;
@@ -102,6 +151,7 @@ function render(){
    :[row.rpmL1||'RPM L1 미지정',row.rpmL2||'RPM L2 미지정',row.rpmL3||'RPM L3 미지정',row.rpmL4||'RPM L4 미지정'];
   info.textContent=[row.standardCourse||'과목 미지정',...classification,`표준단원 ${unit}`,`세부분류 ${subUnit}`,`학습수준 ${row.level||'미지정'}`,`난이도 ${row.difficultyBucket??'미지정'}`].join(' / ');
   card.append(title,info);
+  const keyLine=keyChips(row);if(keyLine)card.append(keyLine);
   if(row.metaProjectionStatus==='SOURCE_META_STALE_OR_UNAVAILABLE'){
    const stale=document.createElement('p');stale.textContent='원본 Meta 분류가 현재 자료와 연결되지 않아 표시되지 않습니다.';card.append(stale);
   }
@@ -170,7 +220,7 @@ el('more').onclick=()=>{limit+=40;render();};
   options('course','standardCourse',inventory);
   refreshCoreMetaKeyOptions();
   for(const k of ['nativeL1','nativeL2','nativeL3','nativeL4','nativeCurriculum','rpmL1','rpmL2','rpmL3','rpmL4','problemTypeKey','templateKey','integrationPattern'])options(k,k,inventory);
-  metaAxisOptions('crossConceptKey','crossConceptKeys',inventory);metaAxisOptions('conditionKey','conditionKeys',inventory);render();
+  metaAxisOptions('crossConceptKey','crossConceptKeys',inventory);metaAxisOptions('conditionKey','conditionKeys',inventory);render();scheduleKeyResolver();
  }catch(e){el('status').textContent=e.message;}
 })();
 </script>
