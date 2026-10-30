@@ -568,6 +568,7 @@ window.APLab.catalog = {
     "|3 sin x − 1| 교점 개수"
    ],
    "legacy": "labs/대수/part2a.html",
+   "next": "next/labs/alg-trig-geometry.html",
    "glyph": "<path d=\"M6 40 H74 M15 8 V69\" stroke-opacity=\".4\"/><path d=\"M6 40 C14 8 22 8 30 40 S46 72 54 40 S70 8 75 27\" stroke-width=\"2.7\"/><path d=\"M6 40 C14 56 22 56 30 40 S46 24 54 40 S70 56 75 48\" stroke=\"#D8B77E\" stroke-width=\"1.8\"/>"
   },
   {
@@ -588,6 +589,7 @@ window.APLab.catalog = {
     "외접원 반지름 비와 사인값"
    ],
    "legacy": "labs/대수/part2b.html",
+   "next": "next/labs/alg-sine-cosine-law.html",
    "glyph": "<path d=\"M11 66 L33 10 L72 66 Z\" stroke-width=\"2.6\"/><path d=\"M33 10 V66\" stroke=\"#D8B77E\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><path d=\"M33 60 H39 V66\" stroke=\"#D8B77E\" stroke-width=\"1.5\"/><path d=\"M18 53 Q25 48 30 51\" stroke=\"#A78AC8\" stroke-width=\"1.8\"/><circle cx=\"33\" cy=\"10\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
