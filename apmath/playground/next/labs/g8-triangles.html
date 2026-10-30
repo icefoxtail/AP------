@@ -19,7 +19,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중2 · 삼각형 경험도감 (AP Math Lab 2.0 이식본) — 8개 탐구관 × 48개 장면
@@ -355,6 +355,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     c.restore();
   }
+  // [표시 보강] 선분 p→q 위 f 지점(0~1)에 눈금: 중점에 다른 선·이름표가 겹치는 장면에서 위치를 옮길 때 씀
+  function tickAt(p, q, f, n = 1, color = GCOL.gold, size = 7.5) { edgeTicks(p, lerp(p, q, 2 * f), n, color, size); }
   // 평행 표시(화살촉)
   function parallelArrows(p, q, n = 1, color = GCOL.gold) {
     if (PL.pass === 1) return;
@@ -380,8 +382,10 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     c.restore();
   }
+  // [표시 보강] 꼭짓점 v에서 p, q 방향이 이루는 각의 크기(도, 반올림) — 각 호 안에 '지금 값'을 적을 때 씁니다
+  const angDeg = (v, p, q) => { const a = Math.atan2(p.y - v.y, p.x - v.x), b = Math.atan2(q.y - v.y, q.x - v.x); let d = Math.abs(a - b) * 180 / Math.PI; if (d > 180) d = 360 - d; return Math.round(d); };
   /** 각 표시와 이름(원본 curvedAngle: reflex=true 면 큰 쪽 각). 이름은 호 바깥 13px, 각의 이등분선 위를 첫 후보로 삼고 겹치면 옮깁니다. */
-  function curvedAngle(vertex, p, q, color = GCOL.gold, r = 26, rings = 1, text = '', reflex = false) {
+  function curvedAngle(vertex, p, q, color = GCOL.gold, r = 26, rings = 1, text = '', reflex = false, turn = 0) { // [표시 보강] turn: 이름표를 각의 이등분선에서 옆으로 비킬 각(rad) — 이등분선이 그려진 각의 값이 선에 가리지 않게
     if (PL.pass === 1) return;
     const B = BOARD, c = B.ctx;
     const a = B.toS(vertex), b = B.toS(p), e = B.toS(q);
@@ -408,18 +412,22 @@ window.addEventListener('DOMContentLoaded', function () {
       c.restore();
       const str = cv(text);
       if (!str || B.thumb) return;
-      const mid = t1 + d / 2, size = tsz(12), w = tw(str, size, 800), h = size * 1.15;
+      // [표시 보강] 같은 각 기호 ● × 는 12px 에서 점·× 가 너무 작아 눈에 띄지 않음 → 기호만 크게
+      const sym = /^[●×]/.test(str) ? (str.length === 1 ? (str === '×' ? 19 : 15) : 13.5) : 12;
+      const mid = t1 + d / 2 + (d < 0 ? -turn : turn), size = tsz(sym), w = tw(str, size, 800), h = size * 1.15;
       let first = null, pick = null;
       search: for (const dr of [0, 12, 24, 38]) {
         for (const da of [0, 0.4, -0.4, 0.8, -0.8]) {
-          const x = a.x + Math.cos(mid + da) * (rr + 13 + dr), y = a.y + Math.sin(mid + da) * (rr + 13 + dr);
+          // [표시 보강] 호에서 이름표 크기만큼 떨어뜨림(원본은 고정 13px 라 가로로 긴 이름표가 자기 호에 걸렸음)
+          const ext = Math.abs(Math.cos(mid + da)) * w / 2 + Math.abs(Math.sin(mid + da)) * h / 2, rl = rr + 5 + ext + dr;
+          const x = a.x + Math.cos(mid + da) * rl, y = a.y + Math.sin(mid + da) * rl;
           const cand = { x, y, rect: { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 } };
           if (!first) first = cand;
           if (okSpot(cand.rect)) { pick = cand; break search; }
         }
       }
       pick = pick || first;
-      B._text(pick.x, pick.y, str, { color, size: lsz(12), weight: 800, align: 'center', baseline: 'middle' });
+      B._text(pick.x, pick.y, str, { color, size: lsz(sym), weight: 800, align: 'center', baseline: 'middle' });
       PL.placed.push(pick.rect);
     });
   }
@@ -745,7 +753,7 @@ window.addEventListener('DOMContentLoaded', function () {
             actionTxt: state.fold > 0.5 ? '🎬 점 P 아래로 이동' : '🎬 수직이등분선 따라 점 P 이동 실험!',
             parts: [
               { id: 0, name: `🟨 작도 조건: AM = BM (중점) & PM ⊥ AB (수직)`, desc: `PM은 두 직각삼각형의 공통변!`, val: `SAS 합동 조건`, color: GCOL.gold, ok: true },
-              { id: 1, name: `🟦 결론: 양 끝점까지의 거리 일치 (PA = PB)`, desc: `이 성질 때문에 외심 O에서 OA = OB = OC가 성립합니다!`, val: `PA = PB ⭕`, color: GCOL.cyan, ok: true }
+              { id: 1, name: `🟦 결론: 양 끝점까지의 거리 일치 (PA = PB)`, desc: `선분의 수직이등분선 위의 점은 양 끝점까지의 거리가 같으므로, 세 변의 수직이등분선이 만나는 외심 O에서 OA = OB = OC가 성립합니다!`, val: `PA = PB ⭕`, color: GCOL.cyan, ok: true }
             ],
             totalRes: `AM = BM, PM ⊥ AB, PM 공통 ➔ △PAM ≡ △PBM (SAS 합동) ➔ PA = PB`,
             rule: '선분의 수직이등분선 = 두 끝점 A, B에서 같은 거리에 있는 점들의 모임 (외심의 성질의 바탕)!',
@@ -786,7 +794,7 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: `△APE ≡ △APF (${isConv ? 'RHS' : 'RHA'} 합동)  ➔  수직거리 PE = PF, AE = AF`,
           rule: '서술형 주의: (각이등분 ⟹ PE=PF)는 RHA 합동, (PE=PF ⟹ 각이등분)은 RHS 합동으로 증명한다!',
           formulaHTML: `• <strong>각의 이등분선</strong> = 두 변 $AB, AC$로부터 같은 수직거리에 있는 점들의 모임 (<strong>내심 $I$의 성질의 바탕!</strong>)`,
-          notes: `• 이 성질 때문에 삼각형 세 내각의 이등분선이 만나는 <strong>내심 $I$에서 세 변까지의 수직거리($ID=IE=IF=r$)</strong>가 모두 같아집니다!`
+          notes: `• 각의 이등분선 위의 점에서 그 각의 두 변까지의 수직거리가 같으므로, 삼각형 세 내각의 이등분선이 만나는 <strong>내심 $I$에서 세 변까지의 수직거리($ID=IE=IF=r$)</strong>가 모두 같아집니다!`
         };
       }
 
@@ -812,7 +820,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         return {
           badge: `탐구 5 · 삼각형의 외심 O — 세 변의 수직이등분선의 교점 (OA = OB = OC = R)`,
-          hint: `꼭짓점 $A$를 위아래로 드래그하거나 우측 각도 칩을 눌러보세요! <strong class="text-sky-300">예각이면 내부</strong>, <strong class="text-amber-300">직각이면 빗변의 중점</strong>, <strong class="text-rose-400">둔각이면 외부</strong>로 외심 $O$가 이동하지만 언제나 <strong class="text-emerald-300">OA = OB = OC = R(${Rcm}cm)</strong>입니다!`,
+          hint: `꼭짓점 $A$를 위아래로 드래그하거나 [꼭지각 ∠A 바로 맞추기] 버튼을 눌러 보세요! <strong class="text-sky-300">예각이면 내부</strong>, <strong class="text-amber-300">직각이면 빗변의 중점</strong>, <strong class="text-rose-400">둔각이면 외부</strong>로 외심 $O$가 이동하지만 언제나 <strong class="text-emerald-300">OA = OB = OC = R(${Rcm}cm)</strong>입니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 전체 구조 보기' : '🎬 합동 삼각형 쌍 & ∠BOC(=2∠A) 강조!',
           parts: [
             { id: 0, name: `🟦 합동 쌍 ①: △OAF ≡ △OBF (변 AB 수직이등분)`, desc: `AF = BF (중점 F), OF ⊥ AB ➔ OA = OB (SAS/RHS)`, val: `OA = OB = ${Rcm}`, color: GCOL.cyan, ok: true },
@@ -867,8 +875,8 @@ window.addEventListener('DOMContentLoaded', function () {
           hint: `슬라이더를 오른쪽으로 밀어 <strong class="text-amber-300">내심 I로 나뉜 세 삼각형(△IBC, △ICA, △IAB)을 바닥에 나란히 펼쳐보세요!</strong> 세 조각의 높이가 모두 내접원 반지름 <strong class="text-pink-300">ID = IE = IF = r(${rCm}cm)</strong>로 같아 <strong class="text-emerald-300">S = ½r(a+b+c)</strong>가 됩니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 세 삼각형 다시 합치기' : '🎬 세 삼각형을 일렬로 펼쳐 넓이 확인!',
           parts: [
-            { id: 0, name: `🟨 꼭짓점 A 쪽 합동 쌍: △IAF ≡ △IAE (AF = AE)`, desc: `각이등분선 AI 기준 RHA 합동 ➔ 접점까지의 거리 AF = AE = x`, val: `AF = AE (|)`, color: GCOL.gold, ok: true },
-            { id: 1, name: `🟦 꼭짓점 B 쪽 합동 쌍: △IBF ≡ △IBD (BF = BD)`, desc: `각이등분선 BI 기준 RHA 합동 ➔ 접점까지의 거리 BF = BD = y`, val: `BF = BD (||)`, color: GCOL.cyan, ok: true },
+            { id: 0, name: `🟨 꼭짓점 A 쪽 합동 쌍: △IAF ≡ △IAE (AF = AE)`, desc: `각이등분선 AI 기준 RHA 합동 ➔ 꼭짓점 A에서 접점까지의 거리 AF = AE = x`, val: `AF = AE (|)`, color: GCOL.gold, ok: true },
+            { id: 1, name: `🟦 꼭짓점 B 쪽 합동 쌍: △IBF ≡ △IBD (BF = BD)`, desc: `각이등분선 BI 기준 RHA 합동 ➔ 꼭짓점 B에서 접점까지의 거리 BF = BD = y`, val: `BF = BD (||)`, color: GCOL.cyan, ok: true },
             { id: 2, name: `🩷 꼭짓점 C 쪽 합동 쌍: △ICD ≡ △ICE & ∠BIC = ${bic}°`, desc: `CD = CE = z | ∠BIC = 90° + ½∠A(${degA}°) = ${bic}°!`, val: `∠BIC = ${bic}°`, color: GCOL.pink, ok: true }
           ],
           totalRes: `ID = IE = IF = r(${rCm}cm) | S = ½r(a+b+c) | ∠A=${degA}° ➔ ∠BIC = 90°+½A = ${bic}°`,
@@ -884,7 +892,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const rCm = inc ? (inc.r / 10).toFixed(1) : '0';
         return {
           badge: `탐구 7 · 삼각형의 외심(O) · 내심(I) · 무게중심(G) 비교`,
-          hint: `우측의 <strong class="text-amber-300">외심 O · 내심 I · 무게중심 G 설명 카드를 클릭</strong>해 보세요! <strong class="text-sky-300">외심과 무게중심의 D,E,F는 '세 변의 중점'</strong>이지만, <strong class="text-emerald-300">내심의 D,E,F는 '수선의 발(접점)'</strong>이라 비대칭 삼각형에서는 위치가 다릅니다!`,
+          hint: `<strong class="text-amber-300">외심 O · 내심 I · 무게중심 G 카드를 눌러</strong> 보세요! <strong class="text-sky-300">외심과 무게중심의 D,E,F는 '세 변의 중점'</strong>이지만, <strong class="text-emerald-300">내심의 D,E,F는 '수선의 발(접점)'</strong>이라 비대칭 삼각형에서는 위치가 다릅니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 기본 비교 보기' : '🎬 O · I · G를 차례대로 강조해 보기!',
           parts: [
             { id: 0, name: `🔵 외심 O: 세 변의 수직이등분선 교점 (중점 D·E·F⊥)`, desc: `세 꼭짓점까지의 거리가 같음 (OA = OB = OC = R = ${Rcm}cm)`, val: `R = ${Rcm} cm`, color: GCOL.cyan, ok: true },
@@ -1003,14 +1011,18 @@ window.addEventListener('DOMContentLoaded', function () {
         curvedAngle(C, B, A, isIso ? GCOL.pink : GCOL.cyan, 28, isIso ? 1 : 2, `${Math.round(ang.degC)}°`);
       }
 
-      curvedAngle(A, B, D, GCOL.gold, 30, 1, '●');
-      curvedAngle(A, D, C, GCOL.gold, 34, 1, '●');
+      // [표시 보강] 이등분된 두 각은 같은 반지름·같은 ●, 꼭지각 ∠A 전체의 값은 바깥 호 안에(직각이면 직각 표시)
+      curvedAngle(A, B, D, GCOL.gold, 32, 1, '●');
+      curvedAngle(A, D, C, GCOL.gold, 32, 1, '●');
+      if (Math.abs(ang.degA - 90) < 1.5) drawRightAngleSign(A, B, C, 44, GCOL.white);
+      else curvedAngle(A, B, C, GCOL.white, 62, 1, `${Math.round(ang.degA)}°`, false, ang.degA > 44 ? 0.2 : 0);
       drawLine(A, D, GCOL.gold, 2.8, true, true, isIso ? 2 : 0);
 
       if (isIso) {
         drawRightAngleSign(D, A, C, 13, GCOL.gold);
         edgeTicks(B, D, 1, GCOL.green, 7.5);
         edgeTicks(D, C, 1, GCOL.green, 7.5);
+        if (sub === 'isoRight') edgeTicks(A, D, 1, GCOL.green, 7.5); // [표시 보강] AD = BD = CD
         drawPoint(D, 5.5, GCOL.gold, 'D(중점·수선의 발)', null, A);
 
         if (sub === 'isoPointP') {
@@ -1091,7 +1103,9 @@ window.addEventListener('DOMContentLoaded', function () {
         drawCircle(pB, r, GCOL.gold, null, 1.6, true);
         drawLine(pA, addPt(pA, multiply(n, 395)), GCOL.white, 1.6, true);
 
-        curvedAngle(pA, pB, C2, GCOL.gold, 34, 1, '34°(끼인각 아님)');
+        // [표시 보강] 각 값(34°)은 호 안에, '(끼인각 아님)'은 밑변 아래 따로 — 한 줄로 붙이면 긴 글자가 변 AC 와 겹쳤음
+        curvedAngle(pA, pB, C2, GCOL.gold, 42, 1, '34°');
+        labelLine({ x: pA.x + 95, y: pA.y + 26 }, '∠A = 34° (끼인각 아님)', GCOL.gold, 12);
         edgeTicks(pB, C1, 2, GCOL.cyan, 8);
         edgeTicks(pB, C2, 2, GCOL.pink, 8);
 
@@ -1178,6 +1192,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
         edgeTicks(A_pt, B_pt, 2, GCOL.gold, 8);
         edgeTicks(A_pt, C_pt, 2, GCOL.gold, 8);
+        // [표시 보강] 합동 대응변: BD = AE (|), AD = CE (|||)
+        edgeTicks(B_pt, D_pt, 1, GCOL.cyan, 7); edgeTicks(A_pt, E_pt, 1, GCOL.cyan, 7);
+        edgeTicks(A_pt, D_pt, 3, GCOL.green, 7); edgeTicks(C_pt, E_pt, 3, GCOL.green, 7);
         curvedAngle(A_pt, D_pt, B_pt, GCOL.cyan, 26, 1, '●');
         curvedAngle(B_pt, A_pt, D_pt, GCOL.pink, 26, 1, '×');
         curvedAngle(A_pt, C_pt, E_pt, GCOL.pink, 26, 1, '×');
@@ -1212,6 +1229,9 @@ window.addEventListener('DOMContentLoaded', function () {
           drawRightAngleSign(curD, rA, rC, 14, GCOL.pink);
           edgeTicks(rA, rB, 1, GCOL.cyan, 7.5); edgeTicks(rA, curD, 1, GCOL.cyan, 7.5);
           edgeTicks(rB, rC, 2, GCOL.green, 7.5); edgeTicks(curD, rC, 2, GCOL.green, 7.5);
+          // [표시 보강] 포개지는 대응각: ∠BAC = ∠DAC(●), ∠BCA = ∠DCA(×)
+          curvedAngle(rA, rB, rC, GCOL.cyan, 30, 1, '●'); curvedAngle(rA, rC, curD, GCOL.cyan, 30, 1, '●');
+          curvedAngle(rC, rB, rA, GCOL.pink, 30, 1, '×'); curvedAngle(rC, rA, curD, GCOL.pink, 30, 1, '×');
         }
         drawPoint(rA, 7, GCOL.gold, 'A', { x: -18, y: -8 });
         drawPoint(rB, 7, GCOL.cyan, 'B(90°)', { x: -25, y: 18 });
@@ -1363,6 +1383,13 @@ window.addEventListener('DOMContentLoaded', function () {
       drawTriangleFilled(pA, rB, rD, 'rgba(251, 191, 36, 0.26)', 1);
       drawLine(pA, rB, GCOL.gold, 3.2); drawLine(pA, rD, GCOL.gold, 3.2); drawLine(rB, rD, GCOL.gold, 3.4);
 
+      // [표시 보강] 정삼각형 ABC(AB=AC=BC), AD=AE, 60° 두 각, 같은 각 ∠BAD = ∠CAE(●)
+      edgeTicks(pA, pB, 1, GCOL.cyan, 7.5); edgeTicks(pA, pC, 1, GCOL.cyan, 7.5); edgeTicks(pB, pC, 1, GCOL.cyan, 7.5);
+      edgeTicks(pA, pD, 2, GCOL.pink, 7.5); edgeTicks(pA, pE, 2, GCOL.pink, 7.5);
+      curvedAngle(pA, pB, pD, GCOL.cyan, 34, 1, '●');
+      curvedAngle(pA, pC, pE, GCOL.cyan, 34, 1, '●');
+      curvedAngle(pA, pB, pC, GCOL.white, 58, 1, '60°');
+      curvedAngle(pA, pD, pE, GCOL.white, 58, 1, '60°');
       drawPoint(pA, 7, GCOL.gold, 'A(60° 회전축)', { x: -20, y: -12 });
       drawPoint(pB, 6, GCOL.cyan, 'B', { x: -18, y: 16 });
       drawPoint(pC, 6, GCOL.cyan, 'C', { x: 8, y: 18 });
@@ -1424,8 +1451,8 @@ window.addEventListener('DOMContentLoaded', function () {
         edgeTicks(D, E, 1, GCOL.gold, 7);
         edgeTicks(D, F, 1, GCOL.gold, 7);
 
-        curvedAngle(pA, pB, D, GCOL.gold, 28, 1, '●');
-        curvedAngle(pA, D, pC, GCOL.gold, 32, 1, '●');
+        curvedAngle(pA, pB, D, GCOL.gold, 30, 1, '●'); // [표시 보강] 같은 각은 같은 반지름
+        curvedAngle(pA, D, pC, GCOL.gold, 30, 1, '●');
 
         drawPoint(pA, 7, GCOL.gold, 'A', { x: 0, y: -14 });
         drawPoint(pB, 6.5, GCOL.cyan, 'B', { x: -18, y: 18 });
@@ -1457,8 +1484,8 @@ window.addEventListener('DOMContentLoaded', function () {
       drawExtendedLine(pA, pC, 0, 35, GCOL.cyan, 3.4, false);
       drawExtendedLine(pA, P, 0, 50, GCOL.gold, 2.8, true);
 
-      curvedAngle(pA, E, P, GCOL.gold, 34, 1, '●');
-      curvedAngle(pA, P, F, GCOL.gold, 38, 1, '●');
+      curvedAngle(pA, E, P, GCOL.gold, 36, 1, '●'); // [표시 보강] 같은 각은 같은 반지름
+      curvedAngle(pA, P, F, GCOL.gold, 36, 1, '●');
 
       drawLine(P, E, GCOL.pink, 3.4, false, true);
       drawLine(P, F, GCOL.pink, 3.4, false, true);
@@ -1535,10 +1562,20 @@ window.addEventListener('DOMContentLoaded', function () {
         drawLine(O, B, GCOL.gold, 2.8, false, layer === 'p1');
         drawLine(O, C, GCOL.gold, 2.8, false, layer === 'p1');
 
-        if (layer === 'p1' || sub === 'circumRight' || sub === 'circum3060') {
-          edgeTicks(O, A, 2, GCOL.gold, 8);
-          edgeTicks(O, B, 2, GCOL.gold, 8);
-          edgeTicks(O, C, 2, GCOL.gold, 8);
+        // [표시 보강] OA = OB = OC 눈금은 모든 렌즈·장면에서 그림(원본은 등거리 렌즈·직각 장면에서만 그려 표준 장면에는 반지름이 같다는 표시가 없었음)
+        // 직각삼각형 장면은 O 가 빗변 위라 중점에, 그 밖의 장면은 꼭짓점 쪽 0.7 지점에(중점 D·E·F 이름표가 O–꼭짓점 눈금에 가려지지 않게)
+        const tf = (sub === 'circumRight' || sub === 'circum3060') ? 0.5 : 0.7;
+        tickAt(O, A, tf, 2, GCOL.gold, 8);
+        tickAt(O, B, tf, 2, GCOL.gold, 8);
+        tickAt(O, C, tf, 2, GCOL.gold, 8);
+
+        // [표시 보강] 직각삼각형의 외심: OA = OB 이므로 ∠OAB = ∠OBA, OB = OC 이므로 ∠OBC = ∠OCB (같은 색·같은 값), 30-60-90 은 ∠BOC 도 표시
+        if ((sub === 'circumRight' || sub === 'circum3060') && layer !== 'p3') {
+          curvedAngle(A, B, O, GCOL.cyan, 30, 1, `${angDeg(A, B, O)}°`);
+          curvedAngle(B, O, A, GCOL.cyan, 30, 1, `${angDeg(B, O, A)}°`);
+          curvedAngle(B, C, O, GCOL.pink, 30, 1, `${angDeg(B, C, O)}°`);
+          curvedAngle(C, O, B, GCOL.pink, 30, 1, `${angDeg(C, O, B)}°`);
+          if (sub === 'circum3060') { const dA = Math.round(ang.degA); curvedAngle(O, B, C, GCOL.pink, 34, 1, `${dA <= 90 ? 2 * dA : 360 - 2 * dA}°`); } // 머리글(∠BOC = 2∠A)과 같은 값
         }
 
         if (layer === 'p3' || sub === 'circumAngle' || sub === 'circumObtuse') {
@@ -1668,7 +1705,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
       if (Math.abs(ang.degB - 90) < 1.5) {
         drawQuadFilled(B, D, I, F, 'rgba(251, 191, 36, 0.35)', GCOL.gold, 0);
-        labelLine(lerp(B, I, 0.5), 'r×r 정사각형', GCOL.gold, 11.5);
+        drawRightAngleSign(B, A, C, 14, GCOL.gold); // [표시 보강] 직각 모퉁이 B 의 직각 표시(D·F 는 아래에서 이미 표시)
+        labelLine(addPt(lerp(B, D, 0.5), { x: 4, y: 27 }), 'r×r 정사각형', GCOL.gold, 11.5); // [표시 보강] 정사각형 가운데는 네 변 눈금(휴대폰에서 글자가 눈금에 걸림) → 아랫변 바로 아래로
       }
 
       if (sub === 'incenterTangents' || sub === 'incenterRightSq' || layer === 'p1') {
@@ -1697,10 +1735,18 @@ window.addEventListener('DOMContentLoaded', function () {
         curvedAngle(C, I, B, GCOL.pink, 32, 1, 'z');
       }
 
+      // [표시 보강] 각이등분선이 나눈 두 각을 같은 표시로(A: 1겹 금색, B: 2겹 하늘색, C: 3겹 분홍). x·y·z 글자 표시가 켜진 장면(위)에서는 그 표시를 그대로 씁니다.
+      if (!(layer === 'def' || layer === 'p3' || sub === 'incenterAngle') && sub !== 'incenterUnfold') {
+        curvedAngle(A, B, I, GCOL.gold, 30, 1); curvedAngle(A, I, C, GCOL.gold, 30, 1);
+        curvedAngle(B, C, I, GCOL.cyan, 30, 2); curvedAngle(B, I, A, GCOL.cyan, 30, 2);
+        curvedAngle(C, A, I, GCOL.pink, 30, 3); curvedAngle(C, I, B, GCOL.pink, 30, 3);
+      }
+
       drawCircle(I, r, GCOL.green, 'rgba(52, 211, 153, 0.10)', 2.4);
       drawLine(I, D, GCOL.pink, 2.8); drawRightAngleSign(D, I, C, 11.5, GCOL.pink);
       drawLine(I, E, GCOL.pink, 2.8); drawRightAngleSign(E, I, A, 11.5, GCOL.pink);
       drawLine(I, F, GCOL.pink, 2.8); drawRightAngleSign(F, I, B, 11.5, GCOL.pink);
+      edgeTicks(I, D, 1, GCOL.pink, 7); edgeTicks(I, E, 1, GCOL.pink, 7); edgeTicks(I, F, 1, GCOL.pink, 7); // [표시 보강] ID = IE = IF = r
 
       drawPoint(D, 5, GCOL.pink, 'D(수선의 발)', null, I);
       drawPoint(E, 5, GCOL.pink, 'E(수선의 발)', null, I);
@@ -1774,6 +1820,19 @@ window.addEventListener('DOMContentLoaded', function () {
 
       if (Math.abs(ang.degB - 90) < 1.5) drawRightAngleSign(B, A, C, 14, GCOL.gold);
 
+      // [표시 보강] 정삼각형은 세 변 같은 눈금·세 각 같은 표시, 이등변삼각형은 AB = AC 눈금과 같은 두 밑각(점을 끌어 모양이 바뀌면 조건이 맞을 때만 표시)
+      if (sub === 'oigEquil' && Math.abs(ang.a - ang.b) < 2.5 && Math.abs(ang.b - ang.c) < 2.5) {
+        // 중점에는 중선·각이등분선·수직이등분선이 지나가 눈금이 가려지므로 꼭짓점에서 1/4 지점에
+        tickAt(A, B, 0.25, 1, GCOL.gold, 8); tickAt(B, C, 0.25, 1, GCOL.gold, 8); tickAt(C, A, 0.25, 1, GCOL.gold, 8);
+        curvedAngle(A, B, C, GCOL.gold, 30, 1, `${Math.round(ang.degA)}°`);
+        curvedAngle(B, C, A, GCOL.gold, 30, 1, `${Math.round(ang.degB)}°`);
+        curvedAngle(C, A, B, GCOL.gold, 30, 1, `${Math.round(ang.degC)}°`);
+      } else if (sub === 'oigIso' && Math.abs(ang.b - ang.c) < 2.5) {
+        tickAt(A, B, 0.3, 2, GCOL.gold, 8); tickAt(A, C, 0.3, 2, GCOL.gold, 8);
+        curvedAngle(B, C, A, GCOL.pink, 30, 1, `${Math.round(ang.degB)}°`);
+        curvedAngle(C, A, B, GCOL.pink, 30, 1, `${Math.round(ang.degC)}°`);
+      }
+
       if (showO && circum) {
         const { O, R, D, E, F } = circum;
         drawCircle(O, R, GCOL.cyan, 'rgba(56, 189, 248, 0.04)', 2.0, true, 0);
@@ -1781,6 +1840,9 @@ window.addEventListener('DOMContentLoaded', function () {
         drawTruePerpendicularBisector(C, A, E, O, 'rgba(56, 189, 248, 0.45)', 1.5, true, 0);
         drawTruePerpendicularBisector(A, B, F, O, 'rgba(56, 189, 248, 0.45)', 1.5, true, 0);
         if (sub === 'defCompare' || state.activePartIdx === 0) {
+          // [표시 보강] 중점 D_O: BD_O = D_O C 눈금과 수직이등분선의 직각 표시
+          edgeTicks(B, D, 1, GCOL.cyan, 7); edgeTicks(D, C, 1, GCOL.cyan, 7);
+          if (dist(O, D) > 3) drawRightAngleSign(D, O, C, 10, GCOL.cyan);
           drawPoint(D, 5, GCOL.cyan, 'D_O(BC중점)', { x: -35, y: 20 });
         }
         drawPoint(O, 7, GCOL.cyan, 'O(외심)', { x: -55, y: -10 });
@@ -1803,6 +1865,13 @@ window.addEventListener('DOMContentLoaded', function () {
         drawLine(B, E, GCOL.purple, 2.4, true, false, 2);
         drawLine(C, F, GCOL.purple, 2.4, true, false, 2);
         if (sub === 'centroidFocus' || state.activePartIdx === 2) {
+          // [표시 보강] 글·해설의 중점 D·E·F 를 그림에도: 점 이름과 같은 길이 눈금(BD = DC, CE = EA, AF = FB)
+          edgeTicks(B, D, 1, GCOL.gold, 7); edgeTicks(D, C, 1, GCOL.gold, 7);
+          edgeTicks(C, E, 2, GCOL.gold, 7); edgeTicks(E, A, 2, GCOL.gold, 7);
+          edgeTicks(A, F, 3, GCOL.gold, 7); edgeTicks(F, B, 3, GCOL.gold, 7);
+          drawPoint(D, 5, GCOL.purple, 'D(BC중점)', null, G);
+          drawPoint(E, 5, GCOL.purple, 'E(CA중점)', null, G);
+          drawPoint(F, 5, GCOL.purple, 'F(AB중점)', null, G);
           labelLine(lerp(A, G, 0.5), '2k', GCOL.gold, 13);
           labelLine(lerp(G, D, 0.5), '1k', GCOL.gold, 13);
         }
@@ -1982,10 +2051,14 @@ window.addEventListener('DOMContentLoaded', function () {
         drawLine(pD, pC, GCOL.pink, 3.4); drawLine(pC, pA, GCOL.pink, 3.4);
 
         drawLine(pA, pE, GCOL.gold, 2.8, true, false, 1);
-        drawPoint(pE, 5.5, GCOL.gold, 'E(AD연장선)', { x: 12, y: 4 });
+        drawPoint(pE, 5.5, GCOL.gold, 'E', { x: 12, y: 4 }); // [표시 보강] 연장선 위의 점은 'E' 로만 적음(AD 연장선은 점선으로 보임)
         curvedAngle(pD, pB, pE, GCOL.cyan, 28, 1, '∠A₁+∠B');
         curvedAngle(pD, pE, pC, GCOL.pink, 28, 1, '∠A₂+∠C');
-        curvedAngle(pA, pB, pC, GCOL.gold, 28, 1, '∠A');
+        // [표시 보강] 설명에 나오는 ∠A₁(= ∠BAD)·∠A₂(= ∠DAC)·∠BDC 를 그림에도: A 에서 보조선 AE 가 ∠A 를 둘로 나누고, D 에서는 두 외각을 합친 ∠BDC 를 바깥 호로
+        curvedAngle(pA, pB, pD, GCOL.cyan, 26, 1, '∠A₁');
+        curvedAngle(pA, pD, pC, GCOL.pink, 26, 1, '∠A₂');
+        curvedAngle(pA, pB, pC, GCOL.gold, 48, 1, '∠A', false, 0.3);
+        curvedAngle(pD, pB, pC, GCOL.gold, 80, 1, '∠BDC', false, 0.3);
         curvedAngle(pB, pD, pA, GCOL.cyan, 26, 1, '∠B');
         curvedAngle(pC, pA, pD, GCOL.pink, 26, 1, '∠C');
 
@@ -2035,6 +2108,11 @@ window.addEventListener('DOMContentLoaded', function () {
       drawLine(pA, P_rot, GCOL.gold, 3.2); drawLine(pC, P_rot, GCOL.pink, 2.8);
       curvedAngle(pA, P, P_rot, GCOL.gold, 32, 1, '60°');
       edgeTicks(pA, P, 1, GCOL.gold, 7.5); edgeTicks(pA, P_rot, 1, GCOL.gold, 7.5);
+      // [표시 보강] AB = AC(= BC), BP = CP′ 눈금과 같은 각 ∠BAP = ∠CAP′(●) — △ABP ≡ △ACP′ 의 SAS 조건이 그림에 보이게
+      edgeTicks(pA, pB, 2, GCOL.cyan, 7.5); edgeTicks(pA, pC, 2, GCOL.cyan, 7.5); edgeTicks(pB, pC, 2, GCOL.cyan, 7.5);
+      edgeTicks(pB, P, 3, GCOL.cyan, 7.5); edgeTicks(pC, P_rot, 3, GCOL.pink, 7.5);
+      curvedAngle(pA, pB, P, GCOL.cyan, 40, 1, '●');
+      curvedAngle(pA, pC, P_rot, GCOL.cyan, 40, 1, '●');
 
       drawTriangleFilled(pA, P, P_rot, 'rgba(251, 191, 36, 0.26)', 2);
       drawLine(P, P_rot, GCOL.gold, 3.4, true);
@@ -2089,7 +2167,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ======================================================================
      2.0 셸 연결 (새로 작성한 부분)
      ====================================================================== */
-  const TABS = ['이등변삼각형 & 네 선분', '직각삼각형의 합동 RHA/RHS', '삼각형의 합동 SSS/SAS/ASA', '각·수직이등분선', '외심 O & 수직이등분', '내심 I & 넓이·접점', '외심·내심·무게중심 비교', '고난도 각 & 보조선'];
+  const TABS = ['이등변삼각형 & 네 선분', '직각삼각형의 합동 RHA/RHS', '삼각형의 합동 SSS/SAS/ASA', '각·수직이등분선', '외심 O & 수직이등분', '내심 I & 넓이·꼭짓점에서 접점까지의 거리', '외심·내심·무게중심 비교', '고난도 각 & 보조선'];
   const SHORT = ['이등변·네 선분', '직각삼각형 합동', '삼각형 합동', '각·수직이등분선', '외심 O', '내심 I', 'O·I·G 비교', '고난도 각'];
   const QUESTIONS = [
     '이등변삼각형에서는 각의 이등분선·중선·수선이 한 선으로 겹칠까? 일반 삼각형에서는 어떻게 달라질까?',
@@ -2117,7 +2195,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const LENSES = [
     ['all', '🔍 전체 구조'],
     ['def', '📌 정의·중점·수선의 발(D·E·F)'],
-    ['p1', '✨ 같은 거리(R·r)·합동인 삼각형·접점'],
+    ['p1', '✨ 같은 거리(R·r)·합동인 삼각형·꼭짓점에서 접점까지의 거리'],
     ['p3', '🪡 ∠BOC=2∠A · ∠BIC=90°+½∠A · 외각']
   ];
   // [2.0 수정] 수직이등분선 위의 점 P: 변환은 한 바퀴 사인 곡선(P = -120 + 50·sin 2π·t)이라 0%·50%·100%가 모두 같은 자리.
