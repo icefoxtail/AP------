@@ -104,7 +104,7 @@ window.addEventListener('DOMContentLoaded', function () {
       activePartIdx: -1,
       fold: 0,
       cylR: 3, cylH: 6, coneR: 3, coneA: 6,
-      yaw: Math.PI, pitch: (85 * Math.PI) / 180
+      yaw: Math.PI, pitch: (85 * Math.PI) / 180 // [3D 기본] 원본 초깃값(평면도). 2.0 에서는 sync() 가 셸 상태(CAM.iso 시작)로 덮어씁니다.
     };
     const SUB_MENUS = {
       1: [
@@ -624,7 +624,7 @@ window.addEventListener('DOMContentLoaded', function () {
         return {
           badge: `탐구 1 · 정육면체 [${pNames[sub]}] — 평행면 3쌍 · 지퍼 모서리 · 꼭짓점 합체 추적`,
           hint: `슬라이더로 전개도를 접어보세요! <strong class="text-amber-300">한 칸 건너뛴 면끼리 마주보는 평행면(같은 색)</strong>이 되고, <strong class="text-sky-300">90° 오목 모퉁이에서 출발한 두 변이 지퍼처럼 맞물리며 꼭짓점 3개(A=G=I (십자형 기준))가 한 점으로 합체</strong>됩니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 2D 전개도로 펼치기' : '🎬 3D 정육면체로 접기!',
+          actionTxt: state.fold > 0.5 ? '🎬 전개도로 펼치기' : '🎬 3D 정육면체로 접기!', // [3D 기본] 펼쳐도 3D 시점이라 '2D' 표현 제거
           dim1Name: '한 모서리 길이', dim2Name: '비교 옵션',
           parts: [
             { id: 0, name: '🟡 평행면 쌍 ①: 면 ㈎ ↔ 면 ㈓', desc: '접었을 때 앞·뒤로 마주보는 평행면', val: '㈎ ∥ ㈓', color: '#fbbf24', ok: true },
@@ -2193,6 +2193,7 @@ window.addEventListener('DOMContentLoaded', function () {
     ['zipper', '🪡 지퍼 모서리(|,||)']
   ];
   const CAM = {
+    // [3D 기본] 모든 장면(전개도 0% · 접는 중 · 입체 100%)의 기본 시점 = 비스듬한 3D. 2D 평면도·정면 단면뷰는 선택 칩으로만 봅니다.
     iso: { yaw: (-30 * Math.PI) / 180, pitch: (36 * Math.PI) / 180 },
     top: { yaw: Math.PI, pitch: (86 * Math.PI) / 180 },
     front: { yaw: 0, pitch: (10 * Math.PI) / 180 }
@@ -2238,9 +2239,10 @@ window.addEventListener('DOMContentLoaded', function () {
       id, title: label, short: shortOf(it.label), reviewTab: true,
       question: QUESTIONS[m - 1],
       notesTitle: '시험장 오답 함정 & 3초 직관 비법',
-      // 원본 setMode / setSubType 의 초기화 규칙: 접기 0%(단면 장면은 15%), 평면도(단면 장면은 3D 시점)
+      // 원본 setMode / setSubType 의 초기화 규칙: 접기 0%(단면 장면은 15%)
+      // [3D 기본] 원본은 전개도 장면을 위에서 내려다본 평면도로 시작했지만, 2.0 은 모든 장면을 3D 시점(CAM.iso)으로 시작합니다.
       enter: (s, lab) => {
-        const cam = slice ? CAM.iso : CAM.top;
+        const cam = CAM.iso;
         s.yaw = cam.yaw; s.pitch = cam.pitch;
         s.fold = 0; s.cut = 0.15; s.nSlice = slice ? SLICES[id].length : 0;
         if (!lensList(m, id).includes(s.lens)) s.lens = 'all';
@@ -2276,7 +2278,8 @@ window.addEventListener('DOMContentLoaded', function () {
               lab.tween({ cut: (((sliceIdxOf(st, n) + 1) % n) + 0.5) / n }, 700);
             } else {
               const closing = st.fold <= 0.5;
-              lab.tween({ fold: closing ? 1 : 0, ...(closing ? CAM.iso : CAM.top) }, 1100);
+              // [3D 기본] 접을 때도 펼 때도 3D 시점을 유지(펼쳐도 평면도로 돌아가지 않음)
+              lab.tween({ fold: closing ? 1 : 0, ...CAM.iso }, 1100);
             }
           }
         },
@@ -2362,7 +2365,8 @@ window.addEventListener('DOMContentLoaded', function () {
         s.pitch = clamp(s.pitch + dy * 0.0075, PITCH_MIN, PITCH_MAX);
       }
     },
-    state: { lens: 'all', yaw: CAM.top.yaw, pitch: CAM.top.pitch, cylR: 3, cylH: 6, coneR: 3, coneA: 6 },
+    // [3D 기본] 시작 시점도 3D(CAM.iso)
+    state: { lens: 'all', yaw: CAM.iso.yaw, pitch: CAM.iso.pitch, cylR: 3, cylH: 6, coneR: 3, coneA: 6 },
     persist: ['lens'],
     params: {
       fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '전개도 펼치기(0%) ↔ 입체로 접기(100%)', hint: '손잡이를 천천히 끌며 어느 면이 어디로 접히는지 따라가 보세요', format: (v) => `${Math.round(v * 100)}%` },
