@@ -178,6 +178,8 @@ mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-eq
   - `author-guide-body.md`는 손으로 양쪽을 살린다.
   - `AUTHOR_GUIDE.md`는 theirs로 받고 재생성한다.
 - **정답지 항목 이름:** 묶음마다 겹치지 않게 한다(item63e33a, item29b, item31a, item36a, item80~83 등).
+- **정답지 비교 기준:** 저장소에 기준 SVG가 있는 항목은 46개뿐이다. 나머지 63개는 직전 병합 렌더와 바이트 비교를 해 왔다. 새 컨테이너에서는 첫 엔진 병합 전에 현재 main으로 manifest 전 항목을 한 번 렌더해 `.tmp/svg-m1/golden-out/`을 채우고, 그것을 기준으로 쓴다(`golden-one.sh`의 `WT`·`OUT`·`REFDIR` 환경변수).
+- **PR 생성 파일:** 시험지 JS·자산을 바꾼 PR은 archive2 등록 생성 파일(catalog·source-verification·runtime-bridge-receipt)이 오래된 상태라 `node tools/run-tests.js`의 `meta-foundation-derivative-runtime`이 실패한다. main으로 가는 PR에서는 `Archive Registration Sync` 워크플로가 생성 파일을 다시 만들어 PR 브랜치에 push하므로 직접 만들지 않는다.
 - **컨테이너·한도:** 컨테이너 재시작이나 사용량 한도로 끊기면 SendMessage로 같은 에이전트를 이어서 쓴다. 워크트리는 남아 있다.
 
 ## 8. 내용 수정·정책 기록 (이번 캠페인)
