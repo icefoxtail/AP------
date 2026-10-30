@@ -1454,3 +1454,103 @@ class TintedBase(unittest.TestCase):
         self.assertEqual([(i, k, t, g) for i, k, t, g, _ in planned],
                          [('text-tl1', 'AXIS', '회전축', 's1'), ('text-tl2', 'BASE', 'S', 's1|base'), ('text-tl3', 'BASE', '밑면', 's2|base'), ('text-tl4', 'SLANT', '모선', 's2')])
         self.assertEqual(axes, {'s1'})
+
+
+class AngleLabels(unittest.TestCase):
+    """E33: marks.angles[].label — its number is read from the plan's own text, the angle from the named points, the place from the page"""
+
+    def ctx(self, box, tex='90^\\circ', value=None):
+        import xml.etree.ElementTree as ET
+        g = ET.Element('g', {'id': 'angle-label-an1', 'data-label-role': 'angle-label', 'data-mark': 'an1', 'data-tex': tex, 'data-value': tex if value is None else value})
+        named = {'A': ('s1', (100.0, 100.0), (0.0, 0.0, 0.0)), 'B': ('s1', (160.0, 100.0), (3.0, 0.0, 0.0)), 'D': ('s1', (100.0, 40.0), (0.0, 3.0, 0.0))}
+        return {'errors': [], 'boxes': {'angle-label-an1': box}, 'norm': lambda x: x, 'named': named, 'labels': [g]}
+
+    PLAN = {'marks': {'angles': [{'refs': ['B', 'A', 'D'], 'arcs': 1, 'label': '90^\\circ'}]}}
+
+    def test_the_number_of_a_label_is_the_degrees_after_the_last_equals_sign(self):
+        self.assertEqual(O.angle_label_number('55^\\circ'), 55.0)
+        self.assertEqual(O.angle_label_number('\\angle A=55^\\circ'), 55.0)
+        self.assertEqual(O.angle_label_number('90.5^\\circ'), 90.5)
+        for symbol in ('y^\\circ', 'x', '55', '55^\\circ x', '', None): self.assertIsNone(O.angle_label_number(symbol))
+
+    def test_a_label_beside_its_arc_on_the_side_of_the_angle_passes(self):
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0))   # centre (125, 69): up and to the right of the vertex, between the two rays
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertEqual(ctx['errors'], [])
+
+    def test_wrong_number_text_place_and_missing_label_are_caught(self):
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0), tex='55^\\circ')
+        O.check_angle_labels({'marks': {'angles': [{'refs': ['B', 'A', 'D'], 'arcs': 1, 'label': '55^\\circ'}]}}, ctx)   # the angle is 90 degrees
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_VALUE_MISMATCH:an1'])
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0), tex='80^\\circ')
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_TEXT_MISMATCH:an1'])
+        ctx = self.ctx((40.0, 120.0, 30.0, 18.0))   # down and to the left: behind the vertex
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_OFF_SIDE:an1'])
+        ctx = self.ctx((300.0, 300.0, 30.0, 18.0))
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertIn('SOLID_ANGLE_LABEL_FAR_FROM_ANGLE:an1', ctx['errors'])
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0))
+        ctx['labels'] = []
+        O.check_angle_labels(self.PLAN, ctx)
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_SET_MISMATCH'])
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0))
+        O.check_angle_labels({}, ctx)   # a label nobody asked for
+        self.assertEqual(ctx['errors'], ['SOLID_ANGLE_LABEL_SET_MISMATCH'])
+        # a symbol is not compared with the angle
+        ctx = self.ctx((110.0, 60.0, 30.0, 18.0), tex='y^\\circ')
+        O.check_angle_labels({'marks': {'angles': [{'refs': ['B', 'A', 'D'], 'arcs': 1, 'label': 'y^\\circ'}]}}, ctx)
+        self.assertEqual(ctx['errors'], [])
+
+
+class SlantPartsAndLevelPoints(unittest.TestCase):
+    """E33: names.level/levelRim/rim of a cone with a LEVEL section and the parts of its slant, derived here from the plan alone"""
+
+    @staticmethod
+    def cone(**names):
+        return O.build_solid({'kind': 'CONE', 'radius': 6, 'height': 8, 'id': 's1', 'names': {'apex': 'T', 'center': 'A', **names}})
+
+    PLAN = {'section': {'solid': 's1', 'kind': 'LEVEL', 'at': '2/5', 'fill': 'BOTTOM'}}
+
+    def test_the_level_points_are_the_centre_and_the_contour_generator_points_of_the_two_circles(self):
+        solid = self.cone(level='C', levelRim='D', rim='B')
+        O.add_level_points(self.PLAN, [solid])
+        pts = {name: p for name, _pid, p in solid['points'] if name}
+        self.assertEqual(sorted(pts), ['A', 'B', 'C', 'D', 'T'])
+        self.assertEqual(pts['C'], (0.0, 0.0, 3.2))
+        # on the page T, D and B lie on one straight line (the contour generator), D 3/5 of the way down it (the radii 3.6 and 6)
+        T, D, B = (O.project(pts[k]) for k in 'TDB')
+        cross = (D[0] - T[0]) * (B[1] - T[1]) - (D[1] - T[1]) * (B[0] - T[0])
+        self.assertAlmostEqual(cross, 0.0, places=9)
+        self.assertAlmostEqual((D[0] - T[0]) / (B[0] - T[0]), 0.6, places=9)
+        # in the plane of each circle the point is a radius from its centre
+        self.assertAlmostEqual(math.hypot(pts['D'][0] - pts['C'][0], pts['D'][1] - pts['C'][1]), 3.6, places=9)
+        self.assertAlmostEqual(math.hypot(pts['B'][0] - pts['A'][0], pts['B'][1] - pts['A'][1]), 6.0, places=9)
+
+    def test_what_has_no_level_or_no_base_circle_is_refused(self):
+        for names, plan, kind in (({'level': 'C'}, {}, 'CONE'), ({'levelRim': 'D'}, {}, 'CONE'), ({'level': 'C'}, {'section': {'solid': 's9', 'kind': 'LEVEL', 'at': '1/2'}}, 'CONE'),
+                                  ({'level': 'C'}, {'section': {'kind': 'AXIAL'}}, 'CONE')):
+            solid = self.cone(**names)
+            with self.assertRaises(ValueError, msg=str((names, plan))): O.add_level_points(plan, [solid])
+        down = O.build_solid({'kind': 'CONE', 'radius': 6, 'height': 8, 'orientation': 'APEX_DOWN', 'id': 's1', 'names': {'rim': 'B'}})
+        with self.assertRaises(ValueError): O.add_level_points({}, [down])
+        with self.assertRaises(ValueError): O.build_solid({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'id': 's1', 'names': {'level': 'C'}})
+        # the rim needs no section
+        solid = self.cone(rim='B')
+        O.add_level_points({}, [solid])
+        self.assertEqual([n for n, _p, _q in solid['points'] if n], ['A', 'T', 'B'])
+
+    def test_a_slant_part_is_found_on_the_drawn_line_by_its_radius(self):
+        solid = self.cone()
+        seg = ((100.0, 50.0), (160.0, 250.0))   # apex above, base end below: the page's y grows down
+        top = O.slant_part_segment(seg, solid, 'top', 0.4)
+        bottom = O.slant_part_segment(seg, solid, 'bottom', 0.4)
+        # the level is at 2/5 of the height: its circle has 3/5 of the base radius, so it is 3/5 of the way from the apex
+        for got, want in ((top, ((100.0 + 36.0, 50.0 + 120.0), (100.0, 50.0))), (bottom, ((160.0, 250.0), (136.0, 170.0)))):
+            for p, q in zip(sorted(got), sorted(want)): self.assertAlmostEqual(math.hypot(p[0] - q[0], p[1] - q[1]), 0.0, places=6)
+        self.assertEqual(top[1], seg[0])
+        self.assertEqual(bottom[0], seg[1])
+        # the line given the other way round is the same
+        self.assertEqual(O.slant_part_segment((seg[1], seg[0]), solid, 'top', 0.4), top)
+        self.assertIsNone(O.slant_part_segment(seg, O.build_solid({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'id': 's2'}), 'top', 0.5))

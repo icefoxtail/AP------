@@ -151,6 +151,9 @@ def build_solid(spec):
             narrow = {'CYLINDER': r, 'CONE': 0.0, 'CONE_FRUSTUM': float(spec.get('topRadius', 0))}[kind]
             r0, r1 = (narrow, r) if down else (r, narrow)
         names = spec.get('names') or {}
+        # level / levelRim / rim: the centre of a LEVEL section's circle and the points of the right contour generator on that circle and on the base circle (cone or frustum only)
+        level_names = {k: names[k] for k in ('level', 'levelRim', 'rim') if names.get(k) is not None}
+        if level_names and kind not in ('CONE', 'CONE_FRUSTUM'): raise ValueError('SOLID_NAMES_INVALID')
         pts = []
         # at:{x,y}: a ball inside a cylinder stands off the axis (x along the screen's horizontal, y into the picture); its centre carries that
         at, hx, hy = None, 0.0, 0.0
@@ -188,7 +191,7 @@ def build_solid(spec):
             axis = {'label': axis.get('label') if isinstance(axis, dict) else None}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV',
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
-                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis, 'on': spec.get('on'), 'lift': 0.0, 'covered': False, 'at': at, 'hx': hx, 'hy': hy, 'base_fill': base_fill,
+                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis, 'on': spec.get('on'), 'lift': 0.0, 'covered': False, 'at': at, 'hx': hx, 'hy': hy, 'base_fill': base_fill, 'level_names': level_names,
                 'cz': (float(spec['centerZ']) if spec.get('centerZ') is not None else r) if kind == 'SPHERE' else (r if (kind == 'HEMISPHERE' and down) else 0.0)}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
 
@@ -677,6 +680,48 @@ def resolve_stacks(solids):
     return stacks
 
 
+def _contour_point(solid, rad, z):
+    """the world point of the circle (radius rad, height z) where the tangent from the cone's (virtual) apex touches it on the right of the screen: the contour generator is the straight line
+    the outline draws, and the circles being similar the same generator meets every circle"""
+    d = project((0.0, 0.0, _apex_z(solid)))[1] - project((0.0, 0.0, z))[1]
+    b = rad * math.sin(PITCH)
+    if abs(d) <= b + 1e-12: raise ValueError('SOLID_SILHOUETTE_DEGENERATE')
+    s_ = b / d
+    u = math.atan2(s_, math.sqrt(max(0.0, 1 - s_ * s_)))
+    return (rad * (math.cos(u) * SCREEN_X[0] + math.sin(u) * DEPTH[0]), rad * (math.cos(u) * SCREEN_X[1] + math.sin(u) * DEPTH[1]), z)
+
+
+def add_level_points(plan, solids):
+    """the named points of a LEVEL section on a cone or frustum (names:{level,levelRim,rim}), derived from the plan alone and added to the solid's points"""
+    for solid in solids:
+        ln = solid.get('level_names')
+        if not ln: continue
+        sec = plan.get('section') or {}
+        target = sec.get('solid') or next((x['id'] for x in solids if x['cat'] == 'REV'), None)
+        m = re.fullmatch(r'([1-9]\d?)/([1-9]\d?)', sec.get('at') or '') if sec.get('kind') == 'LEVEL' and target == solid['id'] else None
+        if (ln.get('level') or ln.get('levelRim')) and not m: raise ValueError('SOLID_NAMES_INVALID')
+        if ln.get('rim') and not solid['r0'] > 0: raise ValueError('SOLID_NAMES_INVALID')
+        pts = list(solid['points'])
+        if m:
+            f = int(m.group(1)) / int(m.group(2))
+            z, rad = f * solid['height'], solid['r0'] + (solid['r1'] - solid['r0']) * f
+            if ln.get('level'): pts.append((ln['level'], 'level', (0.0, 0.0, z)))
+            if ln.get('levelRim'): pts.append((ln['levelRim'], 'levelRim', _contour_point(solid, rad, z)))
+        if ln.get('rim'): pts.append((ln['rim'], 'rim', _contour_point(solid, solid['r0'], 0.0)))
+        solid['points'] = pts
+
+
+def slant_part_segment(seg, solid, part, f):
+    """the part (top / bottom) of a drawn right silhouette line above / below the level of fraction f: the line is straight and the circles similar, so a point of it is found by its radius"""
+    a, b = seg
+    hi, lo = (a, b) if a[1] <= b[1] else (b, a)   # the page's y grows down: the higher end has the smaller y
+    r_hi, r_lo = solid['r1'], solid['r0']
+    if abs(r_hi - r_lo) < 1e-12: return None
+    t = (solid['r0'] + (solid['r1'] - solid['r0']) * f - r_lo) / (r_hi - r_lo)
+    mid = (lo[0] + t * (hi[0] - lo[0]), lo[1] + t * (hi[1] - lo[1]))
+    return (mid, hi) if part == 'top' else (lo, mid)
+
+
 def hits_any(chain, P):
     """the ray from the world point P toward the viewer enters one of the solids of a stack (each is tested in its own frame: z measured from its own base)"""
     return any(hits_round(m, (P[0], P[1], P[2] - m['lift'])) for m in chain)
@@ -794,6 +839,7 @@ def _stroke_ok(el, expect_dashed, errors, ident):
 def audit_solids(plan, ctx):
     root, errors = ctx['root'], ctx['errors']
     solids = [build_solid(spec) for spec in expanded_solid_specs(plan)]
+    add_level_points(plan, solids)
     stacks = ctx['stacks'] = resolve_stacks(solids)
     stack_of = {m['id']: st for st in stacks for m in st['members']}
     ctx['stack_of'] = stack_of
@@ -1001,6 +1047,7 @@ def audit_solids(plan, ctx):
     check_dim_lines(plan, ctx)
     check_height_feet_and_poly_lines(plan, ctx)
     check_base_fills(plan, ctx)
+    check_angle_labels(plan, ctx)
     check_axes_and_text_labels(plan, ctx)
     check_slant_marks(plan, ctx)
 
@@ -1727,6 +1774,56 @@ def check_base_fills(plan, ctx):
         if el.get('fill') != color or abs(float(el.get('fill-opacity') or 0) - opacity) > 1e-9 or el.get('stroke') != 'none': errors.append('SOLID_BASE_FILL_STYLE_MISMATCH:' + sid)
         strokes = [order[id(e)] for e in root.iter() if e.get('data-solid') == sid and e.get('data-role') in ('ellipse-arc', 'silhouette', 'sphere-outline', 'edge')]
         if strokes and order[id(el)] > min(strokes): errors.append('SOLID_BASE_FILL_NOT_BENEATH:' + sid)
+
+
+ANGLE_LABEL_NUMBER = re.compile(r'(?:[^=]*=)?(\d+(?:\.\d+)?)\^\\circ')
+
+
+def angle_label_number(tex):
+    """the degrees of an angle label written 55^\circ or \angle A=55^\circ (the number after the last "="), None for a symbol"""
+    m = ANGLE_LABEL_NUMBER.fullmatch(tex or '')
+    return float(m.group(1)) if m else None
+
+
+def check_angle_labels(plan, ctx):
+    """marks.angles[].label: one MATH label per labelled angle, the plan's text, a number in it equal to the angle worked out from the named points, and its box beyond the arc on the
+    side of the angle (the page direction from the vertex to the box lies within 45 degrees of the angle's span on the page)"""
+    errors, boxes = ctx['errors'], ctx['boxes']
+    norm, named = ctx.get('norm'), ctx.get('named') or {}
+    marks = (plan.get('marks') or {}).get('angles') or []
+    planned = {(m.get('id') or 'an%d' % (k + 1)): m for k, m in enumerate(marks) if m.get('label') is not None}
+    drawn = {g.get('data-mark'): g for g in ctx['labels'] if g.get('data-label-role') == 'angle-label'}
+    if set(drawn) != set(planned) or sum(1 for g in ctx['labels'] if g.get('data-label-role') == 'angle-label') != len(planned): errors.append('SOLID_ANGLE_LABEL_SET_MISMATCH')
+    for mid, m in planned.items():
+        g = drawn.get(mid)
+        if g is None: continue
+        if g.get('data-tex') != m['label'] or g.get('data-value') != m['label']: errors.append('SOLID_ANGLE_LABEL_TEXT_MISMATCH:' + mid)
+        try: keys = [norm(r) if norm else r for r in m['refs']]
+        except (ValueError, KeyError, TypeError):
+            errors.append('SOLID_ANGLE_LABEL_PLAN_UNRESOLVED:' + mid)
+            continue
+        if any(k not in named for k in keys):
+            errors.append('SOLID_ANGLE_LABEL_PLAN_UNRESOLVED:' + mid)
+            continue
+        A, V, B = (named[k][2] for k in keys)
+        e1, e2 = vunit(vsub(A, V)), vunit(vsub(B, V))
+        measured = math.degrees(math.acos(max(-1.0, min(1.0, vdot(e1, e2)))))
+        n = angle_label_number(m['label'])
+        if n is not None and abs(n - measured) > 0.5: errors.append('SOLID_ANGLE_LABEL_VALUE_MISMATCH:' + mid)
+        box = boxes.get(g.get('id'))
+        if box is None: continue
+        pv, pa, pb = named[keys[1]][1], named[keys[0]][1], named[keys[2]][1]
+        cx, cy = box[0] + box[2] / 2 - pv[0], box[1] + box[3] / 2 - pv[1]
+        dist = math.hypot(cx, cy)
+        if dist > 80.0 or _box_seg_dist(box, pv, pv) < 1.5: errors.append('SOLID_ANGLE_LABEL_FAR_FROM_ANGLE:' + mid)
+        u1, u2 = (pa[0] - pv[0], pa[1] - pv[1]), (pb[0] - pv[0], pb[1] - pv[1])
+        l1, l2 = math.hypot(*u1), math.hypot(*u2)
+        if l1 < 1e-6 or l2 < 1e-6 or dist < 1e-6: continue
+        bis = (u1[0] / l1 + u2[0] / l2, u1[1] / l1 + u2[1] / l2)
+        half = math.acos(max(-1.0, min(1.0, (u1[0] * u2[0] + u1[1] * u2[1]) / (l1 * l2)))) / 2
+        if math.hypot(*bis) > 1e-6:
+            off = math.acos(max(-1.0, min(1.0, (bis[0] * cx + bis[1] * cy) / (math.hypot(*bis) * dist))))
+            if off > half + math.radians(45.0): errors.append('SOLID_ANGLE_LABEL_OFF_SIDE:' + mid)
 
 
 def check_height_feet_and_poly_lines(plan, ctx):
@@ -2805,7 +2902,13 @@ def expected_dim_values(plan, ctx):
                     f = int(m.group(1)) / int(m.group(2))
                     out[ident] = (solid['height'] * (1 - f) if d.get('level') == 'top' else solid['height'] * f, None, symbolic)
                 elif d.get('height') is not None: out[ident] = (solid['height'], None, symbolic)
-                else: out[ident] = (math.hypot(solid['r1'] - solid['r0'], solid['height']), None, symbolic)
+                else:
+                    whole = math.hypot(solid['r1'] - solid['r0'], solid['height'])
+                    if d['slant'] in ('top', 'bottom'):
+                        m = re.fullmatch(r'(\d+)/(\d+)', (plan.get('section') or {}).get('at') or '')
+                        f = int(m.group(1)) / int(m.group(2))
+                        whole = whole * (1 - f) if d['slant'] == 'top' else whole * f
+                    out[ident] = (whole, None, symbolic)
         except (KeyError, TypeError, ValueError):
             ctx['errors'].append('SOLID_DIM_PLAN_UNRESOLVED:' + ident)
     # the segments of radius / height / slant dimensions come from the drawn dim-lines (data-dim) or the silhouette; resolved in px by the dim line
@@ -2834,7 +2937,13 @@ def expected_dim_values(plan, ctx):
             v, _, s = out[ident]
             sid = dim_solid.get(ident)
             sil = [e for e in ctx['root'].iter(NS + 'line') if e.get('data-role') == 'silhouette' and e.get('data-side') == 'RIGHT' and (sid is None or e.get('data-solid') == sid)]
-            if sil: out[ident] = (v, ((_num(sil[0], 'x1'), _num(sil[0], 'y1')), (_num(sil[0], 'x2'), _num(sil[0], 'y2'))), s)
+            if sil:
+                seg = ((_num(sil[0], 'x1'), _num(sil[0], 'y1')), (_num(sil[0], 'x2'), _num(sil[0], 'y2')))
+                if d['slant'] in ('top', 'bottom'):
+                    m = re.fullmatch(r'(\d+)/(\d+)', (plan.get('section') or {}).get('at') or '')
+                    owner = next((x for x in solids if x['id'] == sid), None) or next((x for x in solids if x['kind'] in ('CONE', 'CONE_FRUSTUM')), None)
+                    seg = slant_part_segment(seg, owner, d['slant'], int(m.group(1)) / int(m.group(2))) if m and owner else None
+                out[ident] = (v, seg, s)
     # which vertex names must be labelled: every named vertex of every solid
     names = []
     for s in solids:

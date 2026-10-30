@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {compositePanels,compositePanelLayout,compositeStackSize,composeCompositeCandidate,isGridPanel,COMPOSITE_MAX_SOLID_GRID_PANELS} from '../production/composite-candidate-svg-v1.mjs';
-import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,figureFrame,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL} from '../production/solid-figure-v1.mjs';
+import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,figureFrame,project,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL} from '../production/solid-figure-v1.mjs';
 import {typesetter} from '../production/typography.mjs';
 
 const observer=fileURLToPath(new URL('../production/solid_figure_observer_worker.py',import.meta.url));
@@ -2420,4 +2420,99 @@ test('E33: a net tints a face with any of the six fills of a solid; the observer
   await failing(svg.replace('data-fill="WARM" fill="#f2a65a"','data-fill="WARM" fill="#6fcf97"'),'SOLID_NET_HIGHLIGHT_FILL_MISMATCH');
   await failing(svg.replace('data-fill="VIOLET" fill="#a78bdb" fill-opacity="0.42"','data-fill="VIOLET" fill="#a78bdb" fill-opacity="0.55"'),'SOLID_NET_HIGHLIGHT_FILL_MISMATCH');
   assert.throws(()=>solveSolidFigure(emphasisNet({highlights:[{face:'top',fill:'BLUE'}]})),code('SOLID_NET_HIGHLIGHT_INVALID'));
+});
+
+// --- E33: small things (d) the value or a symbol written beside an angle arc (marks.angles[].label) --------------------------------------------------------------------------------
+test('E33: an angle mark may carry its value or a symbol as a label; a number in it has to be the angle; bad labels have codes',()=>{
+  const labelled=label=>solveSolidFigure(figure({solids:[cuboid()],marks:{angles:[{refs:['B','A','D'],arcs:1,label}]}})).marks.angles[0];
+  assert.equal(labelled('90^\\circ').label,'90^\\circ');
+  assert.equal(labelled('y^\\circ').label,'y^\\circ');
+  assert.equal(labelled('\\angle A=90^\\circ').label,'\\angle A=90^\\circ');
+  assert.equal(labelled('x').label,'x');
+  assert.equal(labelled(undefined).label,undefined);
+  const bad=(label,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{angles:[{refs:['B','A','D'],arcs:1,label}]}})),code(expected),expected);
+  bad('80^\\circ','SOLID_MARK_ANGLE_LABEL_MISMATCH:an1');// the angle is a right angle
+  bad('\\angle A=55^\\circ','SOLID_MARK_ANGLE_LABEL_MISMATCH:an1');
+  bad('a'.repeat(25),'SOLID_MARK_ANGLE_LABEL_INVALID:an1');
+  bad('x?','SOLID_MARK_ANGLE_LABEL_INVALID:an1');
+  bad(5,'SOLID_MARK_ANGLE_LABEL_INVALID:an1');
+  bad('','SOLID_MARK_ANGLE_LABEL_INVALID:an1');
+  assert.doesNotThrow(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{angles:[{refs:['B','A','D'],arcs:1,label:'90.3^\\circ'}]}})));// within the half degree an angle value has
+});
+test('E33: the labels of two angle marks are composed beside their arcs and read back; each tamper is caught',async()=>{
+  const plan=figure({unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'POLYGON',points:[[0,0],[5.25,-2.904738],[8,0]]},height:9.931926,apex:[6.964429,-0.533333],names:'ABCV'}],
+    dims:[{edge:'AB',label:'6'}],marks:{angles:[{refs:['V','A','C'],arcs:1,label:'55^\\circ'},{refs:['A','C','V'],arcs:2,label:'z^\\circ'}]}});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  const groups=[...svg.matchAll(/<g id="angle-label-(an\d)"[^>]*data-mark="(an\d)"[^>]*data-tex="([^"]+)"/g)].map(m=>[m[1],m[2],m[3]]);
+  assert.deepEqual(groups,[['an1','an1','55^\\circ'],['an2','an2','z^\\circ']]);
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const group=id=>svg.match(new RegExp(`<g id="${id}"[^>]*>`))[0];
+  await failing(svg.replace(group('angle-label-an1'),group('angle-label-an1').replace('data-tex="55^\\circ"','data-tex="35^\\circ"')),'SOLID_ANGLE_LABEL_TEXT_MISMATCH:an1');
+  // the label of an angle moved far away from it, and to the other side of its vertex
+  await failing(svg.replace(group('angle-label-an1'),group('angle-label-an1').replace(/translate\([^)]+\)/,'translate(430 20)')),'SOLID_ANGLE_LABEL_FAR_FROM_ANGLE:an1');
+  await failing(svg.replace(/<g data-layer="90"><g id="angle-label-an2"[\s\S]*?<\/svg><\/g><\/g>/,''),'SOLID_ANGLE_LABEL_SET_MISMATCH');
+  // a plan that says another number than the angle is caught by the observer too (the engine refuses it first)
+  const lying={...plan,marks:{angles:[{refs:['V','A','C'],arcs:1,label:'45^\\circ'},plan.marks.angles[1]]}};
+  const r=await audit(lying,svg.replace('data-tex="55^\\circ"','data-tex="45^\\circ"').replace('data-value="55^\\circ"','data-value="45^\\circ"'));
+  assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_ANGLE_LABEL_VALUE_MISMATCH:an1')),JSON.stringify(r.errors));
+});
+
+// --- E33: small things (e) the parts of a cone's slant above and below the water level (dims.slant "top"|"bottom") and the names of the level's points (names.level/levelRim/rim) ---------------
+const waterCone=(over={},solidOver={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:6,height:8,names:{apex:'T',center:'A',level:'C',levelRim:'D',rim:'B'},...solidOver}],section:{solid:'s1',kind:'LEVEL',at:'2/5',fill:'BOTTOM'},
+  segments:[{from:'T',to:'A',style:'SOLID',role:'REF'},{from:'C',to:'D',style:'SOLID',role:'REF'},{from:'A',to:'B',style:'SOLID',role:'REF'}],dims:[{solid:'s1',slant:'top'},{solid:'s1',slant:'bottom'}],...over});
+test('E33: the slant of a cone may be measured in two parts at the water level; the level points D and B stand exactly on the right contour generator',()=>{
+  const m=solveSolidFigure(waterCone());
+  assert.deepEqual(m.dims.map(d=>[d.type,d.part,d.value,d.numeric]),[['SLANT','TOP',6,true],['SLANT','BOTTOM',4,true]]);// a slant of 10 cut at 2/5 of the height: 6 above and 4 below
+  assert.deepEqual(solveSolidFigure(waterCone({dims:[{solid:'s1',slant:true}]})).dims.map(d=>[d.part,d.value]),[[undefined,10]]);
+  const pts=Object.fromEntries(m.solids[0].points.map(q=>[q.name,q.p]));
+  assert.deepEqual(Object.keys(pts).sort(),['A','B','C','D','T']);
+  const scr=p=>project(p),cross=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
+  // T, D and B are collinear on the page (the generator is the straight line the outline draws), D between T and B in the ratio of the radii: 3/5 of the way down
+  const [T,D,B]=[pts.T,pts.D,pts.B].map(scr);
+  assert.ok(Math.abs(cross(T,D,B))<1e-5,'D is on the line TB');
+  const along=(D[0]-T[0])/(B[0]-T[0]);assert.ok(Math.abs(along-0.6)<1e-5,String(along));
+  assert.ok(Math.abs((pts.C[2]-pts.A[2])-3.2)<1e-9);// C is the centre of the level circle at 2/5 of 8
+  // the level circle's contour point is as far from the axis as the circle's radius, in the plane of the circle
+  assert.ok(Math.abs(Math.hypot(pts.D[0]-pts.C[0],pts.D[1]-pts.C[1])-3.6)<1e-5);// r = 6 * (1 - 2/5)... the water is the lower part: the level circle has radius 6 (1-2/5)=3.6
+  assert.ok(Math.abs(Math.hypot(pts.B[0]-pts.A[0],pts.B[1]-pts.A[1])-6)<1e-5);
+  // a frustum has parts too
+  const f=solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:4}],section:{solid:'s1',kind:'LEVEL',at:'1/2'},dims:[{slant:'top'},{slant:'bottom',label:'2.5'}]}));
+  assert.deepEqual(f.dims.map(d=>[d.part,d.value]),[['TOP',2.5],['BOTTOM',2.5]]);
+});
+test('E33: a slant part needs the solid\'s level section, and the level names need one too; what cannot be named or measured is refused with a code',()=>{
+  const bad=(over,expected,solidOver)=>assert.throws(()=>solveSolidFigure(waterCone(over,solidOver)),code(expected),expected);
+  bad({section:undefined},'SOLID_NAMES_INVALID');// level names without a level section
+  bad({section:undefined,solids:[{id:'s1',kind:'CONE',radius:6,height:8}],segments:undefined},'SOLID_DIM_SLANT_PART_NEEDS_LEVEL');
+  bad({dims:[{solid:'s1',slant:'middle'}]},'SOLID_DIMS_INVALID');
+  bad({dims:[{solid:'s1',slant:7}]},'SOLID_DIMS_INVALID');
+  bad({solids:[{id:'s1',kind:'CYLINDER',radius:3,height:8,names:{level:'C'}}]},'SOLID_NAMES_INVALID');// only a cone or a frustum
+  bad({solids:[{id:'s1',kind:'CYLINDER',radius:3,height:8}],segments:undefined,dims:[{solid:'s1',slant:'top'}]},'SOLID_DIMS_INVALID');
+  bad({},'SOLID_NAMES_INVALID',{orientation:'APEX_DOWN'});// an apex-down cone has no base circle for B (rim)
+  bad({},'SOLID_NAME_DUPLICATE:A',{names:{apex:'T',center:'A',level:'A',levelRim:'D',rim:'B'}});
+  bad({},'SOLID_NAMES_INVALID',{names:{apex:'T',level:'c'}});
+  bad({},'SOLID_NAMES_INVALID',{names:{apex:'T',base:'X'}});
+  // a level section of another solid does not serve this one
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:6,height:8,names:{level:'C'}},{id:'s2',kind:'CONE',radius:4,height:6}],section:{solid:'s2',kind:'LEVEL',at:'1/2'},dims:[{solid:'s2',slant:'top'}]})),code('SOLID_NAMES_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:6,height:8},{id:'s2',kind:'CONE',radius:4,height:6}],section:{solid:'s2',kind:'LEVEL',at:'1/2'},dims:[{solid:'s1',slant:'top'}]})),code('SOLID_DIM_SLANT_PART_NEEDS_LEVEL'));
+});
+test('E33: the water cone with its slant parts and level points is composed and read back; each tamper is caught',async()=>{
+  const plan=waterCone();
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  for(const name of ['T','A','B','C','D'])assert.match(svg,new RegExp(`<g id="name-${name}"`));
+  const failing=async(p,tampered,prefix)=>{const r=await audit(p,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const label=id=>svg.match(new RegExp(`<g id="${id}"[^>]*>`))[0];
+  await failing(plan,svg.replace(label('dim-1-label'),label('dim-1-label').replace(/translate\([^)]+\)/,'translate(30 30)')),'SOLID_DIM_FAR_FROM_SEGMENT:dim-1');
+  // the plan asks for the lower part where the label is written beside the upper one: a label far from its own part
+  await failing({...plan,dims:[{solid:'s1',slant:'bottom'},{solid:'s1',slant:'top'}]},svg,'SOLID_DIM_');
+  // another number than 6 on the upper part
+  await failing(plan,svg.replace(/(<g id="dim-1-label"[^>]*?) data-tex="6\\,\\mathrm\{cm\}"/,'$1 data-tex="7\\,\\mathrm{cm}"'),'SOLID_DIM_VALUE_MISMATCH:dim-1');
+  // a segment ending where D should be but is not: the plan names D, the line must reach it
+  const seg=svg.match(/<line id="segment-CD"[^>]*\/>/)[0];
+  await failing(plan,svg.replace(seg,seg.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)-12}"`)),'SOLID_SEGMENT_ENDPOINT_OFF:CD');
 });
