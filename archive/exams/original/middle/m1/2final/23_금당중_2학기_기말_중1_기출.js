@@ -47,9 +47,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:04834cab250f2d70046e4b637870ec5c15bf26fa7f60e6589304c7434abb58e7",
       "difficultyEvidenceSha": "sha256:a7ceb617299c0c8e16241c036a24683d7f68ed46e9403c85a85201cf407dcb61",
-      "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q1-solution.svg",
-      "solutionImageAlt": "해설 그림: 정비례 관계 y=2x의 그래프가 원점을 지나는 직선이고, 점 (2,4)에서 x축과 y축으로 내린 점선이 눈금 2와 4를 가리키며, 직선이 제1사분면과 제3사분면에 걸쳐 놓인 그림.",
-      "solutionImageCaption": "y=2x의 그래프는 원점과 점 (2,4)를 지난다.",
+      "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q1-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면에 원점과 점 (2, 4)를 지나는 직선 y=2x를 그리고 제1~제4사분면의 이름을 적은 그림. 점 (2, 4)에서 두 축으로 점선을 내려 눈금 2와 4를 보인다.",
+      "solutionImageCaption": "y=2x의 그래프는 원점과 점 (2, 4)를 지나며 제1사분면과 제3사분면에 놓인다.",
       "solutionImageSize": "medium"
     },
     {

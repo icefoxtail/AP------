@@ -935,9 +935,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면 위 삼각형 ABC에서 x=-1 위의 변 AB의 길이 5와, 점 C에서 직선 AB에 내린 수선(높이)의 길이 4, 수선의 발의 직각 표시를 나타낸 그림",
-    "solutionImageCaption": "밑변 AB=5이고 점 C에서 직선 AB까지의 높이는 4이다.",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 삼각형 ABC. 점 A(-1, 4), B(-1, -1), C(3, 0)이 있고 AB=5로 적혀 있다. 점 C에서 직선 AB에 내린 수선의 발 (-1, 0)까지의 길이 4가 굵은 선과 직각 표시로 나타나 있다.",
+    "solutionImageCaption": "AB는 x=-1 위에 놓여 AB=5이고, 점 C에서 직선 AB에 내린 수선(높이)의 길이는 4이다.",
     "solutionImageSize": "medium"
   },
   {
