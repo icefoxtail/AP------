@@ -225,7 +225,17 @@ window.addEventListener('DOMContentLoaded', function () {
   const playAction = (label) => ({ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : label), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } });
   const dualAction = { id: 'dual', icon: 'split', label: (s) => (s.dual ? '하단 동기화 뷰 켜짐' : '하단 동기화 뷰 보기'), on: (s) => s.dual, run: (s) => { s.dual = !s.dual; } };
   // 위·아래 동기화 뷰 (장면 3·4)
-  const panesOf = (frac, fy, dy) => (s) => (s.dual ? [{ id: 'main', frac, focusY: fy }, { id: 'deriv', frac: 1 - frac, focusY: dy }] : null);
+  // topPx: 휴대폰에서 위쪽 수식 칩(약 41px)이 위 창의 윗부분을 가리므로, 위 창의 그림을 그만큼(px) 아래로 내려 위쪽 라벨이 칩 밑에 오게 합니다.
+  const phoneShift = (px) => () => {
+    if (!(window.matchMedia && window.matchMedia('(max-width: 859px)').matches)) return 0;
+    const bd = window.lab && window.lab.board;
+    return px / ((bd && bd.k) || 28);
+  };
+  const panesOf = (frac, fy, dy, shift) => (s) => {
+    if (!s.dual) return null;
+    const sh = shift ? shift() : 0;
+    return [{ id: 'main', frac, focusY: sh ? [fy[0] + sh, fy[1] + sh] : fy }, { id: 'deriv', frac: 1 - frac, focusY: dy }];
+  };
   function inPane(b, id, fn) {
     b.use(id);
     b.ctx.save();
@@ -467,7 +477,7 @@ window.addEventListener('DOMContentLoaded', function () {
       solution: solutionOf(4),
       enter: (s) => { s.t = examData[4].snap.p1; s.dual = examData[4].snap.dualView; },
       focus: { x: [-3.0, 3.0], y: [-3.3, 3.3] },
-      panes: panesOf(0.55, [-3.3, 3.3], [-1.3, 4.3]),
+      panes: panesOf(0.55, [-3.3, 3.3], [-1.3, 4.3], phoneShift(22)),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 't', 1.5, -2.6, 2.6, dt); return true; },
       view: (s) => {
         const t = s.t, cnt = count4(t);
@@ -515,7 +525,9 @@ window.addEventListener('DOMContentLoaded', function () {
               b.point([x, 2.0], { color: 'red', r: 6, label: `불연속 t=${x < 0 ? '−2' : '2'} (g=2)`, dx: x < 0 ? -12 : 12, dy: -12, align: x < 0 ? 'right' : 'left' });
             });
             // 현재 t 위치 마커 (좌우로 끌 수 있음)
-            b.handle('tm', [t, cnt], { color: 'amber', ref: 't', label: `g(t)=${cnt}`, dx: 0, dy: cnt === 1 ? 20 : -18, align: 'center',
+            // t = ±2 (cnt 2)에서는 손잡이가 '불연속 t=±2 (g=2)' 점과 같은 자리이므로, 그 라벨의 반대쪽으로 g(t) 라벨을 둡니다.
+            const atJump = cnt === 2;
+            b.handle('tm', [t, cnt], { color: 'amber', ref: 't', label: `g(t)=${cnt}`, dx: atJump ? (t > 0 ? -12 : 12) : 0, dy: atJump ? -12 : cnt === 1 ? 20 : -18, align: atJump ? (t > 0 ? 'right' : 'left') : 'center',
               drag: (w) => { let v = w.x; if (Math.abs(v - 2.0) < 0.08) v = 2.0; if (Math.abs(v + 2.0) < 0.08) v = -2.0; s.t = clamp(+v.toFixed(2), -2.6, 2.6); } });
           });
       }
