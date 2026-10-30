@@ -464,11 +464,9 @@
       param: 1.0,               // 모드별 제어 파라미터 (예: δ 또는 Q의 속도 k)
       dualView: true,           // 위치 x(t) + 속도 v(t) 동시 관찰 뷰 (기본 ON)
       steps: { 1: true, 2: false, 3: false },
-      scale: 68,                // t축·세로축 공통 단위 길이(px). 두 축의 단위 길이는 항상 같다(1:1)
-      offsetX: 0,               // 사용자가 끌어 옮긴 양 (fitView가 정한 위치에 더해짐)
+      scale: 68,                // 가로축 t 스케일
+      offsetX: -120,
       offsetY: 0,
-      originX: 460,             // fitView가 정한 원점(x=0) px
-      originY: { main: 430, deriv: 640 }, // fitView가 정한 각 칠판의 y=0 높이 px
       showGrid: true,
       autoPlay: false,
       userZoomed: false,
@@ -698,60 +696,37 @@
       canvas.height = rect.height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      fitView();
+      const minDim = Math.min(rect.width, rect.height);
+      if (!state.userZoomed) {
+        state.scale = Math.max(48, Math.min(76, minDim / 9.2));
+      }
       render();
     }
 
     window.addEventListener('resize', resizeCanvas);
 
-    // 모드별 보기 창: 꼭 보여야 할 (t, 값) 범위. t축·세로축 단위 길이는 같게(1:1) 두고 이 범위가 들어오도록 scale을 정한다.
-    //   x: 시각 t 범위, px: 점 라벨이 차지하는 왼쪽·오른쪽 여백(px), y: 위치 x(t) 칠판 세로 범위, dy: 속도 v(t) 칠판 세로 범위
-    const VIEW = {
-      1: { x: [0, 3.5], px: [30, 190], y: [-5, 1], dy: [-3.6, 9.6] },
-      2: { x: [0, 3.5], px: [30, 190], y: [-0.6, 5], dy: [-0.6, 7.6] },
-      3: { x: [0, 3.5], px: [30, 190], y: [-5, 1], dy: [-3.6, 9.6] },
-      4: { x: [0, 3.5], px: [30, 210], y: [-0.6, 4.7], dy: [-0.6, 4.9] },
-      5: { x: [0, 3.5], px: [30, 190], y: [-5, 1], dy: [-3.6, 9.6] }
-    };
-
-    function fitView() {
-      if (state.userZoomed) return;
-      const rect = canvas.parentElement.getBoundingClientRect();
-      const W = rect.width;
-      const H = rect.height;
-      const v = VIEW[state.mode];
-      const trackH = H * 0.24;
-      const split = state.dualView ? H * 0.59 : H;
-      // 도구 막대·하단 판서 배너를 피해 그림을 놓는다 (좁은 화면에서는 피할 자리가 없다).
-      // 안내 패널은 맨 위 트랙 띠 안에 있어 위치 그래프 칠판과 겹치지 않는다.
-      const bar = canvas.parentElement.querySelector('.absolute.bottom-4').getBoundingClientRect();
-      const gapB = rect.bottom - bar.top + 8;
-      const padB = gapB < H * 0.2 ? Math.max(gapB, 84) : 28; // 84: 하단 판서 배너(step 3)를 피한다
-      const availW = Math.max(W - v.px[0] - v.px[1], 24);
-      const bandM = split - trackH - 28 - (state.dualView ? 28 : padB);
-      const bandD = H - split - 34 - padB;
-      let s = Math.min(54, availW / (v.x[1] - v.x[0]), bandM / (v.y[1] - v.y[0]));
-      if (state.dualView) s = Math.min(s, bandD / (v.dy[1] - v.dy[0]));
-      state.scale = Math.max(s, 2);
-      state.originX = v.px[0] + availW / 2 - state.scale * (v.x[0] + v.x[1]) / 2;
-      state.originY.main = trackH + 28 + bandM / 2 + state.scale * (v.y[0] + v.y[1]) / 2;
-      state.originY.deriv = split + 34 + bandD / 2 + state.scale * (v.dy[0] + v.dy[1]) / 2;
-    }
-
     // 캔버스 상단 22%는 1차원 수직선 트랙, 그 아래를 위치 x(t)와 속도 v(t)가 나눔
-    function getPaneCenterY(pane) {
-      return (pane === 'main' ? state.originY.main : state.originY.deriv) + state.offsetY;
+    function getPaneCenterY(pane, rectHeight) {
+      if (!state.dualView) {
+        return rectHeight * 0.62 + state.offsetY;
+      }
+      if (pane === 'main') {
+        return rectHeight * 0.42 + state.offsetY * 0.5;
+      } else {
+        return rectHeight * 0.80 + state.offsetY * 0.3;
+      }
     }
 
-    // y축 단위 길이도 x축과 같다 (어느 칠판이든 1:1)
     function getPaneScaleY(pane) {
-      return state.scale;
+      if (!state.dualView) return state.scale * 0.45;
+      return pane === 'main' ? state.scale * 0.32 : state.scale * 0.25;
     }
 
     // 가로축은 시간 t, 세로축은 x(t) 또는 v(t)
     function toScreen(t, val, pane = 'main') {
-      const cx = state.originX + state.offsetX;
-      const cy = getPaneCenterY(pane);
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const cx = rect.width * 0.35 + state.offsetX;
+      const cy = getPaneCenterY(pane, rect.height);
       const sy = getPaneScaleY(pane);
       return {
         x: cx + t * state.scale,
@@ -760,8 +735,9 @@
     }
 
     function toMath(px, py, pane = 'main') {
-      const cx = state.originX + state.offsetX;
-      const cy = getPaneCenterY(pane);
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const cx = rect.width * 0.35 + state.offsetX;
+      const cy = getPaneCenterY(pane, rect.height);
       const sy = getPaneScaleY(pane);
       return {
         x: (px - cx) / state.scale,
@@ -906,7 +882,7 @@
 
       // 트랙 중심 (우측 상단에 배치하여 좌측 배지와 겹치지 않게 함)
       const trackCenterX = w * 0.64;
-      const trackY = Math.max(trackH * 0.62, 46); // 낮은 화면에서도 속도 화살표 글자가 위로 잘리지 않게
+      const trackY = trackH * 0.62;
       const trackScale = Math.min(46, w * 0.055);
 
       const xToTrack = (posVal) => trackCenterX + posVal * trackScale;
@@ -979,7 +955,7 @@
         const arrowLen = Math.max(-65, Math.min(65, currV * 10));
         drawScreenLine(pxCurr, trackY - 26, pxCurr + arrowLen, trackY - 26, currV > 0 ? '#f472b6' : '#38bdf8', 2.8, false);
         ctx.fillStyle = currV > 0 ? '#f9a8d4' : '#7dd3fc';
-        ctx.fillText(`v=${currV.toFixed(1)} ${currV > 0 ? '→(전진)' : '←(후진)'}`, Math.min(pxCurr + arrowLen * 0.5, w - 40), trackY - 34);
+        ctx.fillText(`v=${currV.toFixed(1)} ${currV > 0 ? '→(전진)' : '←(후진)'}`, pxCurr + arrowLen * 0.5, trackY - 34);
       } else {
         ctx.fillStyle = '#fde047';
         ctx.fillText(`⚡ v = 0 (순간 정지!)`, pxCurr, trackY - 30);
@@ -1299,15 +1275,11 @@
     function toggleDualView() {
       state.dualView = !state.dualView;
       updateDualViewButtonUI();
-      fitView();
       render();
     }
 
     function setMode(m) {
       state.mode = m;
-      state.userZoomed = false; // 새 문항은 그 문항의 보기 창으로 시작한다
-      state.offsetX = 0;
-      state.offsetY = 0;
       state.steps = { 1: true, 2: false, 3: false };
       [1, 2, 3].forEach((s) => {
         const stepButton = document.getElementById(`stepBtn${s}`);
@@ -1364,7 +1336,6 @@
       const target = examData[state.mode].snap;
       state.dualView = target.dualView;
       updateDualViewButtonUI();
-      fitView();
 
       state.snapAnim.active = true;
       state.snapAnim.startT = state.t;
@@ -1428,13 +1399,13 @@
 
     function zoomCanvas(factor) {
       state.userZoomed = true;
-      state.scale = Math.max(2, Math.min(120, state.scale * factor));
+      state.scale = Math.max(30, Math.min(120, state.scale * factor));
       render();
     }
 
     function resetView() {
       state.userZoomed = false;
-      state.offsetX = 0;
+      state.offsetX = -120;
       state.offsetY = 0;
       resizeCanvas();
     }
@@ -1565,7 +1536,6 @@
     window.addEventListener('DOMContentLoaded', () => {
       setMode(1);
       resizeCanvas();
-      if (document.fonts) document.fonts.ready.then(resizeCanvas); // 웹폰트가 들어와 안내 패널 높이가 바뀌면 보기 창을 다시 맞춘다
       requestAnimationFrame(animateLoop);
     });
   </script>
