@@ -284,8 +284,9 @@ window.APLab.catalog = {
     "종이접기 & 최단거리 응용"
    ],
    "legacy": "labs/g8/피타고라스.html",
+   "next": "next/labs/g8-pythagoras.html",
    "glyph": "<path d=\"M12 64 L12 16 L60 64 Z\"/><path d=\"M12 16 L12 16 M12 16 L22 16 L22 26 L12 26\"/> <path d=\"M12 64 L12 54 L22 54\" stroke-dasharray=\"3 3\"/>",
-   "sceneTotal": 39
+   "sceneTotal": 40
   },
   {
    "id": "g9-trig-ratio",
