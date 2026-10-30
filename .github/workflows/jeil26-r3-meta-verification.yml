@@ -1,0 +1,51 @@
+name: Jeil26 R3 official meta resolver five-item verification
+on:
+  push:
+    branches:
+      - work/jeil26-r3-meta-20261030
+  pull_request:
+    branches: [main]
+    paths:
+      - 'archive/tools/meta-foundation/jeil26-r3-projection-check.mjs'
+      - 'archive/tools/meta-foundation/rpm-active-resolver.mjs'
+      - 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json'
+      - 'archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json'
+      - '.github/workflows/jeil26-r3-meta-verification.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  official-resolver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate and compile canonical registry
+        run: |
+          node --check archive/tools/meta-foundation/rpm-active-resolver.mjs
+          node --check archive/tools/meta-foundation/jeil26-r3-projection-check.mjs
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --write
+      - name: Execute official resolver on 5 repaired QIDs
+        run: |
+          node archive/tools/meta-foundation/jeil26-r3-projection-check.mjs
+      - name: Run relevant official resolver regressions
+        run: |
+          node --test archive/tools/meta-foundation/stage-meta-bridge.test.mjs archive/tools/meta-foundation/rpm-active-resolver.test.mjs
+      - name: Commit derived exact binding to this review branch only
+        if: github.event_name == 'push'
+        run: |
+          set -eu
+          git status --short
+          git add archive/data/meta-foundation/compiled/curriculum_bindings.json
+          git add archive/data/meta-foundation/canonical/registry_index.json
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m "chore(meta): regenerate exact H22 conditional-probability binding [skip ci]"
+            git push origin HEAD:work/jeil26-r3-meta-20261030
+          fi
