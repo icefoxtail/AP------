@@ -1604,7 +1604,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q023_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q23-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 AC 위의 점 P에서 ∠APB=125°, ∠BPC=55°이고, 두 삼각형 ABP와 ADP가 합동이 되도록 AB=AD, ∠BAP=∠PAD=45°, ∠ABP=∠ADP=10°를 표시한 그림이다.",
+    "solutionImageCaption": "대각선이 꼭지각을 이등분하고 AB=AD, AP는 공통이므로 색칠한 △ABP와 △ADP는 합동이고 ∠ADP=∠ABP=10°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -1668,6 +1671,9 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q024_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q24-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: BC=8cm, 높이 6cm인 평행사변형 ABCD에서 대각선의 교점 O, AO와 CO의 중점 M, N을 표시하고 △ABM과 △CBN을 색칠해 각각 넓이 6임을 보인 그림이다.",
+    "solutionImageCaption": "M, N이 AO, CO의 중점이므로 색칠한 △ABM과 △CBN의 넓이는 각각 △ABO, △CBO의 절반인 6이다.",
+    "solutionImageSize": "medium"
   }
 ];

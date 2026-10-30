@@ -675,7 +675,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q16.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q16.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 닮은 두 삼각뿔 ABCV와 A′B′C′V′를 나란히 그린 그림이다. 대응하는 모서리 AB=6cm와 A′B′=9cm, VC=x cm와 V′C′=15cm, BC=z cm와 B′C′=6cm를 표시했고 같은 크기의 대응각 ∠VAC, ∠V′A′C′를 호로 나타냈으며 닮음비는 2:3이다.",
+    "solutionImageCaption": "AB:A′B′=6:9=2:3이므로 대응하는 모서리 VC와 V′C′, BC와 B′C′의 길이의 비도 2:3이고, 대응하는 각의 크기는 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
