@@ -221,6 +221,9 @@
             page-break-inside: avoid;
         }
 
+        /* 본문에 인라인으로 들어간 SVG는 width 속성이 열 폭보다 커도 viewBox 비율을 유지하며 열 안에 맞춘다. */
+        .q-content svg[viewBox], .choice-text svg[viewBox] { max-width: 100%; height: auto; }
+
         /* [v1.9] PNG 자동 축소 단계 클래스 */
         .q-content img.img-fit-tight, .q-image-wrap img.img-fit-tight { max-width: 92%; max-height: 120px; }
         .q-content img.img-fit-tighter, .q-image-wrap img.img-fit-tighter { max-width: 84%; max-height: 105px; }
@@ -1531,23 +1534,77 @@ function autoCompress(container) {
         container.style.lineHeight = String(lineHeight);
     }
 }
+// 마지막 수단: 글꼴·그림 단계 축소로도 칸에 들어가지 않는 문항(고정 폭 그림, 긴 수식, 표, 큰 보기 그림)을
+// overflow:hidden 으로 잘라 내지 않고 칸에 맞게 비율을 줄인다. 원문 내용은 바꾸지 않고 표시 배율만 적용한다.
+const Q_FIT_SCALE_MIN = 0.2;
+function resetQuestionFitScale(box) {
+    const wrap = Array.from(box.children).find(child => child.classList.contains('q-fit-scale'));
+    if (!wrap) return;
+    while (wrap.firstChild) box.insertBefore(wrap.firstChild, wrap);
+    wrap.remove();
+    delete box.dataset.fitScale;
+}
+function questionBoxOverflows(box) {
+    return box.scrollHeight > box.clientHeight + 1 || box.scrollWidth > box.clientWidth + 2;
+}
+function fitQuestionOverflow(box) {
+    if (!box.clientWidth || !box.clientHeight || !questionBoxOverflows(box)) return 1;
+    const style = getComputedStyle(box);
+    const availableWidth = box.clientWidth - (parseFloat(style.paddingLeft) || 0) - (parseFloat(style.paddingRight) || 0);
+    const availableHeight = box.clientHeight - (parseFloat(style.paddingTop) || 0) - (parseFloat(style.paddingBottom) || 0);
+    if (!(availableWidth > 0) || !(availableHeight > 0)) return 1;
+    const wrap = document.createElement('div');
+    wrap.className = 'q-fit-scale';
+    wrap.style.cssText = 'display:flex; flex-direction:column; flex:none; transform-origin:0 0;';
+    while (box.firstChild) wrap.appendChild(box.firstChild);
+    box.appendChild(wrap);
+    const apply = scale => {
+        wrap.style.width = `${availableWidth / scale}px`;
+        wrap.style.height = `${availableHeight / scale}px`;
+        wrap.style.margin = `0 ${availableWidth - availableWidth / scale}px ${availableHeight - availableHeight / scale}px 0`;
+        wrap.style.transform = scale < 1 ? `scale(${scale})` : 'none';
+    };
+    const fitsAt = scale => {
+        apply(scale);
+        return wrap.scrollHeight <= wrap.clientHeight + 1 && wrap.scrollWidth <= wrap.clientWidth + 2;
+    };
+    // 자연 크기를 먼저 재서 시작 배율을 정하고, 넓어진 조판 폭으로 줄 수가 줄어드는 만큼 다시 키운다.
+    wrap.style.width = `${availableWidth}px`; wrap.style.height = 'auto'; wrap.style.margin = '0';
+    const naturalHeight = wrap.scrollHeight, naturalWidth = wrap.scrollWidth;
+    let scale = Math.max(Q_FIT_SCALE_MIN, Math.min(1, availableHeight / naturalHeight, availableWidth / naturalWidth));
+    for (let guard = 0; guard < 14 && scale > Q_FIT_SCALE_MIN && !fitsAt(scale); guard += 1)
+        scale = Math.max(Q_FIT_SCALE_MIN, scale * 0.94);
+    if (fitsAt(scale)) {
+        let low = scale, high = 1;
+        for (let step = 0; step < 5; step += 1) {
+            const mid = (low + high) / 2;
+            if (fitsAt(mid)) low = mid; else high = mid;
+        }
+        scale = low;
+    }
+    apply(scale);
+    box.dataset.fitScale = scale.toFixed(3);
+    return scale;
+}
 function fitQuestionBox(box) {
     const textClasses = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
     const imgClasses = ['', 'img-fit-tight', 'img-fit-tighter', 'img-fit-micro'];
     
     const imgs = box.querySelectorAll('.q-content img, .q-image-wrap img');
+    resetQuestionFitScale(box);
 
     for (const tCls of textClasses) {
         box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
         if (tCls) box.classList.add(tCls);
-        if (box.scrollHeight <= box.clientHeight + 1) return;
+        if (box.scrollHeight <= box.clientHeight + 1) return fitQuestionOverflow(box);
     }
 
     for (const iCls of imgClasses) {
         imgs.forEach(img => img.classList.remove('img-fit-tight', 'img-fit-tighter', 'img-fit-micro'));
         if (iCls) imgs.forEach(img => img.classList.add(iCls));
-        if (box.scrollHeight <= box.clientHeight + 1) return;
+        if (box.scrollHeight <= box.clientHeight + 1) return fitQuestionOverflow(box);
     }
+    return fitQuestionOverflow(box);
 }
 
 function makeSolutionHtmlChunks(html) {
