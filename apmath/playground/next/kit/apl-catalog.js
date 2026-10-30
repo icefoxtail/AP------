@@ -68,6 +68,7 @@ window.APLab.catalog = {
     "별모양·복잡한 외각 마스터"
    ],
    "legacy": "labs/g7/polygons-area.html?v=20261027-g7chalkboard",
+   "next": "next/labs/g7-polygons.html",
    "glyph": "<path d=\"M12 44 L32 16 L66 30 L60 60 L24 62 Z\"/><path d=\"M12 44 L60 60 M32 16 L60 60\"/>"
   },
   {
@@ -118,6 +119,7 @@ window.APLab.catalog = {
     "단면 슬라이서·꼭짓점 깎기"
    ],
    "legacy": "labs/g7/polyhedra.html?v=20261027-g7chalkboard",
+   "next": "next/labs/g7-polyhedra.html",
    "glyph": "<path d=\"M40 8 L68 26 L60 58 L26 66 L10 34 Z\"/><path d=\"M40 8 L40 38 L68 26 M40 38 L10 34 M40 38 L26 66 M40 38 L60 58\"/>",
    "tags": [
     "3D"
