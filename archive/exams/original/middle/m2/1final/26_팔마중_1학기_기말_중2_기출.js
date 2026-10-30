@@ -607,7 +607,7 @@ window.questionBank = [
       "움직이는점"
     ],
     "wide": false,
-    "content": "다음 직사각형 $ABCD$에서 점 $P$는 점 $D$를 출발하여 점 $C$까지 $DC$를 따라 초속 3 cm로 움직이고 있다. 점 $P$가 점 $D$를 출발한 지 $x$초 후의 사각형 $ABPD$의 넓이를 $y$ cm$^2$라 할 때, 사각형 $ABPD$의 넓이가 96 cm$^2$가 되는 것은 점 $P$가 점 $D$를 출발한 지 몇 초 후인가? [5점]",
+    "content": "다음 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 $BC$를 따라 초속 3 cm로 움직이고 있다. 점 $P$가 점 $B$를 출발한 지 $x$초 후의 사각형 $ABPD$의 넓이를 $y$ cm$^2$라 할 때, 사각형 $ABPD$의 넓이가 96 cm$^2$가 되는 것은 점 $P$가 점 $B$를 출발한 지 몇 초 후인가? [5점]",
     "choices": [
       "1초 후",
       "2초 후",
@@ -616,7 +616,7 @@ window.questionBank = [
       "5초 후"
     ],
     "answer": "③",
-    "solution": "$x$초 후\n$DP=3x$이므로\n\n$PC=15-3x$이다.\n\n직사각형 $ABCD$의 넓이는\n$15\\times8=120$이다.\n\n삼각형 $PBC$의 넓이는\n$\\dfrac12(15-3x)\\times8$\n$=60-12x$이다.\n\n따라서 사각형 $ABPD$의 넓이는\n$120-(60-12x)$\n$=60+12x$이다.\n\n넓이가 $96\\text{ cm}^2$이므로\n$60+12x=96$\n$12x=36$\n$x=3$이다.\n\n따라서 정답은 ③이다.",
+    "solution": "$x$초 후\n$BP=3x$이므로\n\n$PC=15-3x$이다.\n\n직사각형 $ABCD$의 넓이는\n$15\\times8=120$이다.\n\n삼각형 $DPC$의 넓이는\n$\\dfrac12(15-3x)\\times8$\n$=60-12x$이다.\n\n따라서 사각형 $ABPD$의 넓이는\n$120-(60-12x)$\n$=60+12x$이다.\n\n넓이가 $96\\text{ cm}^2$이므로\n$60+12x=96$\n$12x=36$\n$x=3$이다.\n\n따라서 정답은 ③이다.",
     "image": "assets/images/26_팔마중_1학기_기말_중2_기출/q16.png",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
