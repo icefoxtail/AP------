@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>벡터로 나타낸 도형 · AP Math 실험실</title>
-<meta name="description" content="기하 벡터로 나타낸 도형: 내분·외분과 일직선(1−t, t), 계수 합 m+n=k의 자취와 넓이, 방향벡터와 법선벡터로 나타낸 직선, 지름을 이용한 원의 벡터방정식을 직접 조작하며 탐구합니다.">
+<meta name="description" content="기하 벡터로 나타낸 도형: 선분 AB를 나누는 점(내분점)과 일직선 조건 OP=(1−t)OA+tOB, 계수 합 m+n=k일 때 점 P의 자취와 넓이, 방향벡터와 법선벡터로 나타낸 직선, 지름을 이용한 원의 벡터방정식을 직접 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -41,9 +41,9 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 4대 기출 문제·풀이 데이터 (원본 633–765행) ===== */
     const examData = {
       1: {
-        badge: "MODE 1 · 내분·외분 위치벡터와 세 점 A, B, P 일직선 조건 (m + n = 1)",
-        hint: "슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요! <span class='text-emerald-300 font-bold'>0 ≤ t ≤ 1 이면 선분 AB 위의 내분점</span>, 범위를 벗어나면 <span class='text-rose-300 font-bold'>연장선 위의 외분점</span>이 됩니다!",
-        tag: "수능·평가원 3점·4점 필수 개념",
+        badge: "MODE 1 · 내분점의 위치벡터와 세 점 A, B, P가 한 직선 위에 있을 조건 (m + n = 1)",
+        hint: "슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요. <span class='text-emerald-300 font-bold'>0 ≤ t ≤ 1 이면 점 P는 선분 AB 위의 내분점</span>이고, 범위를 벗어나면 <span class='text-rose-300 font-bold'>선분 AB의 연장선 위의 점</span>이 됩니다.",
+        tag: "세 점이 한 직선 위에 있을 조건",
         targetTime: "목표 시간: 5초",
         question: () => `평면 위의 서로 다른 세 점 ${tex('O, \\; A(-2, 4), \\; B(4, 2)')} 에 대하여 점 ${tex('P')}가 ${tex('\\overrightarrow{OP} = \\dfrac{2}{5}\\overrightarrow{OA} + k\\overrightarrow{OB}')} 를 만족시킨다. 점 ${tex('P')}가 직선 ${tex('AB')} 위에 있을 때 상수 ${tex('k')}의 값과 선분 길이의 비 ${tex('\\overline{AP} : \\overline{PB}')}를 구하시오.`,
         answerBadge: () => `${tex('k = \\dfrac{3}{5}, \\; \\overline{AP} : \\overline{PB} = 3 : 2')} (내분점)`,
@@ -51,31 +51,31 @@ window.addEventListener('DOMContentLoaded', function () {
           t1: 0.6 // k = 3/5 = 0.6
         },
         steps: [
-          "두 기준 위치벡터 a = OA(-2, 4), b = OB(4, 2) 및 직선 AB",
-          "크로스 곱 내분 공식: OP = (1-t)OA + t OB (계수 합 = 1)",
-          "내분 구간(0≤t≤1, 초록색) vs 외분 구간(t<0 또는 t>1, 분홍색)"
+          "두 위치벡터 a = OA(-2, 4), b = OB(4, 2)와 직선 AB",
+          "직선 AB 위의 점: OP = (1-t)OA + t OB (계수의 합 = 1)",
+          "0≤t≤1 (선분 AB 위, 초록색)과 t<0 또는 t>1 (연장선 위, 분홍색)"
         ],
         textbook: () => ({
           steps: `① 세 점 ${tex('A, B, P')}가 한 직선 위에 있으므로 실수배 조건 ${tex('\\overrightarrow{AP} = t\\overrightarrow{AB}')} 성립<br/>
-② 시점을 ${tex('O')}로 통일하여 전개:<br/>
+② 시점을 ${tex('O')}로 같게 하여 전개:<br/>
 &nbsp;&nbsp;${tex('\\overrightarrow{OP} - \\overrightarrow{OA} = t(\\overrightarrow{OB} - \\overrightarrow{OA}) \\implies \\overrightarrow{OP} = (1 - t)\\overrightarrow{OA} + t\\overrightarrow{OB}')}<br/>
 ③ 문제의 식과 계수를 비교하면 ${tex('1 - t = \\dfrac{2}{5} \\implies t = k = \\dfrac{3}{5}')}<br/>
 ④ 따라서 ${tex('\\overrightarrow{AP} = \\dfrac{3}{5}\\overrightarrow{AB}')} 이므로 ${tex('\\overline{AP} : \\overline{PB} = 3 : 2')}.`,
-          warning: "⚠️ 시험장에서 매번 AP = t AB를 시점 O로 쪼개서 유도하고 있으면 시간을 낭비합니다!"
+          warning: "주의: 매번 AP = t AB를 시점 O로 바꾸어 식을 유도하면 풀이가 길어집니다. 아래의 성질을 알면 바로 구할 수 있습니다."
         }),
         shortcut: () => ({
-          steps: `① <strong>[세 점 A, B, P 일직선 불변 법칙]</strong>: <strong class="text-amber-300">${tex('\\overrightarrow{OP} = m\\overrightarrow{OA} + n\\overrightarrow{OB}')} 에서 무조건 ${tex('m + n = 1')}</strong>!<br/>
-② 따라서 ${tex('\\dfrac{2}{5} + k = 1 \\implies')} 암산으로 즉시 <strong class="text-sky-300">${tex('k = \\dfrac{3}{5}')}</strong>!<br/>
-③ 내분 비율은 계수가 <strong>크로스(X자)</strong>로 교차하므로:<br/>
-&nbsp;&nbsp;<strong class="text-emerald-300">${tex('\\overline{AP} : \\overline{PB} = (\\overrightarrow{OB}\\text{의 계수}) : (\\overrightarrow{OA}\\text{의 계수}) = \\dfrac{3}{5} : \\dfrac{2}{5} = 3 : 2')}</strong>!`,
-          highlight: "💡 세 점 A, B, P가 한 직선 위에 있다 ⇔ 【 계수 합 m + n = 1 】! 특히 m > 0, n > 0 이면 무조건 선분 AB 위의 내분점입니다!"
+          steps: `① <strong>[세 점 A, B, P가 한 직선 위에 있을 조건]</strong>: <strong class="text-amber-300">${tex('\\overrightarrow{OP} = m\\overrightarrow{OA} + n\\overrightarrow{OB}')} 에서 ${tex('m + n = 1')}</strong>이다.<br/>
+② 따라서 ${tex('\\dfrac{2}{5} + k = 1 \\implies')} <strong class="text-sky-300">${tex('k = \\dfrac{3}{5}')}</strong>이다.<br/>
+③ 내분하는 비는 계수가 <strong>서로 엇갈려</strong> 대응하므로:<br/>
+&nbsp;&nbsp;<strong class="text-emerald-300">${tex('\\overline{AP} : \\overline{PB} = (\\overrightarrow{OB}\\text{의 계수}) : (\\overrightarrow{OA}\\text{의 계수}) = \\dfrac{3}{5} : \\dfrac{2}{5} = 3 : 2')}</strong>이다.`,
+          highlight: "세 점 A, B, P가 한 직선 위에 있다 ⇔ 계수의 합 m + n = 1 입니다. 특히 m > 0, n > 0 이면 점 P는 선분 AB 위의 내분점입니다."
         })
       },
 
       2: {
-        badge: "MODE 2 · 기출 1: 계수 합 조건(OP = m OA + n OB)에 따른 자취와 넓이",
-        hint: "좌측 상단의 <span class='text-amber-300 font-bold'>[조건별 자취 원클릭 스위치 5종]</span>을 눌러보세요! <span class='text-pink-300 font-bold'>m + n = k</span>가 왜 평행선분과 사다리꼴을 만드는지 즉시 이해됩니다!",
-        tag: "평가원·수능 4점 자취의 넓이 최고 빈출 킬러",
+        badge: "MODE 2 · 계수 합 조건(OP = m OA + n OB)에 따른 자취와 넓이",
+        hint: "좌측 상단의 <span class='text-amber-300 font-bold'>[조건별 자취 버튼 5개]</span>를 눌러 보세요. <span class='text-pink-300 font-bold'>m + n = k</span>가 왜 평행한 선분과 사다리꼴을 만드는지 알 수 있습니다.",
+        tag: "자취의 넓이 킬러",
         targetTime: "목표 시간: 5초",
         question: () => `넓이가 ${tex('S = 4')} 인 삼각형 ${tex('OAB')}에 대하여 점 ${tex('P')}가 다음 조건을 만족시킨다.<br/>
 <span class="text-amber-300 font-bold">${tex('\\overrightarrow{OP} = m\\overrightarrow{OA} + n\\overrightarrow{OB} \\quad (m \\ge 0, \\; n \\ge 0, \\; 1 \\le m + n \\le 2)')}</span><br/>
@@ -94,24 +94,24 @@ window.addEventListener('DOMContentLoaded', function () {
         textbook: () => ({
           steps: `① 경계선 ${tex('m + n = 2')} 식의 양변을 나누어 계수 합이 ${tex('1')}이 되도록 변형:<br/>
 &nbsp;&nbsp;${tex('\\overrightarrow{OP} = \\dfrac{m}{2}(2\\overrightarrow{OA}) + \\dfrac{n}{2}(2\\overrightarrow{OB}) \\quad \\left(\\text{단, } \\dfrac{m}{2} + \\dfrac{n}{2} = 1\\right)')}<br/>
-② ${tex("2\\overrightarrow{OA} = \\overrightarrow{OA'}, \\; 2\\overrightarrow{OB} = \\overrightarrow{OB'}")} 라 치환하면 점 ${tex('P')}는 선분 ${tex("A'B'")} 위의 점!<br/>
+② ${tex("2\\overrightarrow{OA} = \\overrightarrow{OA'}, \\; 2\\overrightarrow{OB} = \\overrightarrow{OB'}")} 라 하면 점 ${tex('P')}는 선분 ${tex("A'B'")} 위의 점이다.<br/>
 ③ 계수 범위 ${tex('m,n\\ge0, m+n\\le2')}가 만드는 큰 영역은 꼭짓점 ${tex("O,A',B'")}의 삼각형 ${tex("OA'B'")}이고, 닮음비가 ${tex('1:2')}이므로 넓이는 ${tex('4S=16')}.<br/>
 ④ 조건의 아래 경계 ${tex('m+n=1')} 안쪽 삼각형 넓이 ${tex('S=4')}를 빼면 띠 영역은 ${tex('4S-S=3S=12')}. 각 계수의 비음수 조건이 두 경계 사이의 사다리꼴 전체를 선택한다.`,
-          warning: "⚠️ 시험장에서 매번 양변을 k로 나누고 치환해서 닮음비를 구하면 실전에서는 시간이 걸립니다!"
+          warning: "주의: 매번 양변을 k로 나누어 계수의 합을 1로 만들고 닮음비를 구하면 풀이가 길어집니다."
         }),
         shortcut: () => ({
-          steps: `① <strong class="text-sky-300">${tex('m + n = 1 \\;(m,n \\ge 0)')}</strong> 이면 무조건 <strong class="text-sky-300">선분 ${tex('AB')}</strong>!<br/>
+          steps: `① <strong class="text-sky-300">${tex('m + n = 1 \\;(m,n \\ge 0)')}</strong> 이면 점 ${tex('P')}는 <strong class="text-sky-300">선분 ${tex('AB')}</strong> 위에 있다.<br/>
 ② ${tex('m+n=k')}를 고정하고 ${tex('k\\ne0')}라 하자. ${tex("A'=kA, B'=kB")}로 두면 ${tex('\\overrightarrow{OP}=(m/k)\\overrightarrow{OA\\prime}+(n/k)\\overrightarrow{OB\\prime}')}이며 계수 합은 1이다. 따라서 ${tex('m,n\\ge0')}이면 ${tex('P')}는 ${tex("A'B'")} 선분 위에 있다. 이 문항에서는 ${tex('k=1,2')} 경계가 된다.<br/>
 ③ 따라서 ${tex('1 \\le m + n \\le 2')} 영역은 닮음비 ${tex('1 : 2')} 인 두 삼각형 사이의 사다리꼴이므로:<br/>
-&nbsp;&nbsp;<strong class="text-amber-300">넓이 ${tex('= (2^2 - 1^2)S = 3S = 3 \\times 4 = 12')}</strong> (3초 암산 끝!)`,
-          highlight: "💡 족보 암기: ① m+n≤1 (삼각형 S) ② 0≤m,n≤1 (평행사변형 2S) ③ 1≤m+n≤2 (사다리꼴 3S) ④ m+n≤k (k²S)!"
+&nbsp;&nbsp;<strong class="text-amber-300">넓이 ${tex('= (2^2 - 1^2)S = 3S = 3 \\times 4 = 12')}</strong>이다.`,
+          highlight: "m, n ≥ 0 일 때 영역의 넓이: ① m+n≤1 (삼각형 S) ② 0≤m,n≤1 (평행사변형 2S) ③ 1≤m+n≤2 (사다리꼴 3S) ④ m+n≤k (k²S)"
         })
       },
 
       3: {
-        badge: "MODE 3 · 기출 2: 직선의 벡터방정식 — 방향벡터(∥) vs 법선벡터(⊥)",
-        hint: "직선을 만드는 두 가지 방법! <span class='text-sky-300 font-bold'>방향벡터 u와 평행(OP = OA + tu)</span>하거나 <span class='text-pink-300 font-bold'>법선벡터 n과 수직(AP · n = 0)</span>인 원리를 비교하세요!",
-        tag: "수능 기하 직선의 방정식 필수 유형",
+        badge: "MODE 3 · 직선의 벡터방정식 — 방향벡터(∥)와 법선벡터(⊥)",
+        hint: "직선을 나타내는 두 가지 방법을 비교해 보세요. <span class='text-sky-300 font-bold'>방향벡터 u와 평행(OP = OA + tu)</span>하거나 <span class='text-pink-300 font-bold'>법선벡터 n과 수직(AP · n = 0)</span>입니다.",
+        tag: "직선의 벡터방정식",
         targetTime: "목표 시간: 5초",
         question: () => `점 ${tex('A(1, 2)')}를 지나고 방향벡터가 ${tex('\\overrightarrow{u} = (3, 2)')} 인 직선 ${tex('l')}이 있다. 이 직선 ${tex('l')}의 법선벡터 ${tex('\\overrightarrow{n}')}을 구하고, 직선 ${tex('l')}이 점 ${tex('P(7, k)')}를 지날 때 상수 ${tex('k')}의 값을 구하시오.`,
         answerBadge: () => `${tex('\\overrightarrow{n} = (2, -3), \\; k = 6')}`,
@@ -120,29 +120,29 @@ window.addEventListener('DOMContentLoaded', function () {
         },
         steps: [
           "기준점 A(1, 2) 및 방향벡터 u = (3, 2) 표시",
-          "방향벡터 매개변수 방정식: OP = OA + t u (실수배 평행 이동)",
-          "수직인 법선벡터 n = (2, -3) 및 내적 방정식: (OP - OA) · n = 0"
+          "방향벡터를 이용한 방정식: OP = OA + t u (t는 실수)",
+          "u에 수직인 법선벡터 n = (2, -3)과 내적으로 나타낸 방정식: (OP - OA) · n = 0"
         ],
         textbook: () => ({
-          steps: `① 방향벡터 ${tex('\\overrightarrow{u} = (3, 2)')} 를 이용한 직선의 대칭방정식 작성:<br/>
+          steps: `① 방향벡터 ${tex('\\overrightarrow{u} = (3, 2)')} 를 이용하여 직선의 방정식을 세운다:<br/>
 &nbsp;&nbsp;${tex('\\dfrac{x - 1}{3} = \\dfrac{y - 2}{2}')}<br/>
 ② 양변에 ${tex('6')}을 곱해 일반형으로 정리:<br/>
 &nbsp;&nbsp;${tex('2(x - 1) = 3(y - 2) \\implies 2x - 3y + 4 = 0')}<br/>
 ③ 따라서 법선벡터는 ${tex('\\overrightarrow{n} = (2, -3)')} 이고, ${tex('x = 7')} 대입 시 ${tex('14 - 3k + 4 = 0 \\implies k = 6')}.`,
-          warning: "⚠️ 분수 형태의 대칭방정식으로 바꾼 뒤 다시 통분해서 일반형으로 고치면 계산 단계가 불필요하게 늘어납니다!"
+          warning: "주의: 분수 꼴의 방정식을 다시 통분하여 일반형으로 고치면 계산 단계가 늘어납니다."
         }),
         shortcut: () => ({
-          steps: `① <strong>[방향벡터 ↔ 법선벡터 1초 변환]</strong>: ${tex('\\overrightarrow{u} = (a, b)')} 와 수직(내적=0)인 법선벡터는 위치를 바꾸고 부호 하나만 바꾼 <strong class="text-pink-300">${tex('\\overrightarrow{n} = (b, -a) = (2, -3)')}</strong>!<br/>
-② <strong>[매개변수 직입]</strong>: <strong class="text-sky-300">${tex('P = A + t\\overrightarrow{u} = (1 + 3t, \\; 2 + 2t)')}</strong>!<br/>
-③ ${tex('x')}좌표가 ${tex('1 + 3t = 7 \\implies t = 2')} 이므로, 즉시 <strong class="text-amber-300">${tex('k = 2 + 2(2) = 6')}</strong>!`,
-          highlight: "💡 직선 위의 동점 P는 무조건 【 P(x₁ + at, y₁ + bt) 】 한 문자로 놓으세요! 연립방정식이 5초 만에 풀립니다!"
+          steps: `① <strong>[방향벡터와 법선벡터]</strong>: ${tex('\\overrightarrow{u} = (a, b)')} 와 수직(내적=0)인 법선벡터는 성분의 자리를 바꾸고 한쪽 부호만 바꾼 <strong class="text-pink-300">${tex('\\overrightarrow{n} = (b, -a) = (2, -3)')}</strong>이다.<br/>
+② <strong>[직선 위의 점 P]</strong>: <strong class="text-sky-300">${tex('P = A + t\\overrightarrow{u} = (1 + 3t, \\; 2 + 2t)')}</strong>이다.<br/>
+③ ${tex('x')}좌표가 ${tex('1 + 3t = 7 \\implies t = 2')} 이므로 <strong class="text-amber-300">${tex('k = 2 + 2(2) = 6')}</strong>이다.`,
+          highlight: "점 A(x₁, y₁)을 지나고 방향벡터가 (a, b)인 직선 위의 점 P는 P(x₁ + at, y₁ + bt)로 나타낼 수 있습니다. 문자를 t 하나만 쓰게 되어 식이 간단해집니다."
         })
       },
 
       4: {
-        badge: "MODE 4 · 기출 3: 원의 벡터방정식 — 지름의 원주각 직각 내적 (PA · PB = 0)",
-        hint: "수능 최고 빈출! <span class='text-amber-300 font-bold'>(OP - OA) · (OP - OB) = 0</span> 즉 <span class='text-sky-300 font-bold'>PA ⊥ PB (90°)</span>를 만족하는 점 P의 자취는 무조건 <span class='text-emerald-300 font-bold'>선분 AB를 지름으로 하는 원</span>입니다!",
-        tag: "평가원·수능 4점 킬러 불변의 자취 1위",
+        badge: "MODE 4 · 원의 벡터방정식 — 지름에 대한 원주각과 내적 (PA · PB = 0)",
+        hint: "<span class='text-amber-300 font-bold'>(OP - OA) · (OP - OB) = 0</span> 즉 <span class='text-sky-300 font-bold'>PA ⊥ PB (90°)</span>를 만족하는 점 P의 자취는 <span class='text-emerald-300 font-bold'>선분 AB를 지름으로 하는 원</span>입니다.",
+        tag: "원의 벡터방정식 킬러",
         targetTime: "목표 시간: 3초",
         question: () => `좌표평면 위의 두 점 ${tex('A(-3, -1), \\; B(3, 3)')} 에 대하여 벡터방정식<br/>
 <span class="text-amber-300 font-bold">${tex('(\\overrightarrow{OP} - \\overrightarrow{OA}) \\cdot (\\overrightarrow{OP} - \\overrightarrow{OB}) = 0')}</span><br/>
@@ -152,23 +152,23 @@ window.addEventListener('DOMContentLoaded', function () {
           theta4: (65 * Math.PI) / 180
         },
         steps: [
-          "두 고정점 A(-3, -1), B(3, 3) 및 지름 선분 AB (길이 2√13)",
-          "시점 통일: (OP - OA) · (OP - OB) = AP · BP = 0 (∠APB = 90°)",
-          "탈레스 원주각 정리: 선분 AB를 지름으로 하는 원 (중심 M(0,1), r=√13)"
+          "두 점 A(-3, -1), B(3, 3) 및 지름 선분 AB (길이 2√13)",
+          "시점을 바꾸어: (OP - OA) · (OP - OB) = AP · BP = 0 (∠APB = 90°)",
+          "지름에 대한 원주각은 90°: 선분 AB를 지름으로 하는 원 (중심 M(0,1), r=√13)"
         ],
         textbook: () => ({
           steps: `① 시점이 모두 ${tex('O')}인 벡터 차를 점에서 점으로 향하는 벡터로 바꾸면 ${tex('OP-OA=AP')}, ${tex('OP-OB=BP')}이다. 따라서 조건은 ${tex('AP\\cdot BP=0')}, 즉 ${tex('AP\\perp BP')}이다.<br/>
 ② ${tex('P=A')} 또는 ${tex('P=B')}이면 한 벡터가 영벡터라 내적이 0이므로 두 끝점도 자취에 포함된다. 그 밖에는 ${tex('\\angle APB=90^\\circ')}이다.<br/>
-③ 탈레스 정리의 역에 따라 ${tex('AB')}를 지름으로 하는 원 위의 점은 모두 직각을 만들고, 반대로 직각을 만드는 점은 그 원 위에 있다. 그러므로 필요충분하게 자취는 지름 ${tex('AB')}인 원 전체이다.<br/>
+③ 지름에 대한 원주각은 직각이므로 ${tex('AB')}를 지름으로 하는 원 위의 점은 모두 ${tex('\\angle APB=90^\\circ')}를 만들고, 반대로 ${tex('\\angle APB=90^\\circ')}인 점은 그 원 위에 있다. 그러므로 필요충분하게 자취는 지름 ${tex('AB')}인 원 전체이다.<br/>
 ④ ${tex('AB=\\sqrt{6^2+4^2}=2\\sqrt{13}')}이므로 반지름은 ${tex('\\sqrt{13}')}이다. 따라서 둘레 ${tex('2\\pi\\sqrt{13}')}와 넓이 ${tex('13\\pi')}.`,
-          warning: "⚠️ 시험장에서 P(x, y)를 대입해 이차식을 전개하고 완전제곱식으로 묶고 있으면 기하적 의미를 완전히 놓치게 됩니다!"
+          warning: "주의: P(x, y)를 대입해 식을 전개하고 완전제곱식으로 고치면 계산이 길어지고 도형의 의미를 놓치기 쉽습니다."
         }),
         shortcut: () => ({
-          steps: `① 시점 통일 공식에 의해 <strong class="text-sky-300">${tex('(\\overrightarrow{OP} - \\overrightarrow{OA}) \\cdot (\\overrightarrow{OP} - \\overrightarrow{OB}) = \\overrightarrow{AP} \\cdot \\overrightarrow{BP} = 0')}</strong>!<br/>
-② 즉 <strong class="text-amber-300">${tex('\\overrightarrow{AP} \\perp \\overrightarrow{BP} \\iff \\angle APB = 90^\\circ')}</strong> (지름에 대한 원주각 = ${tex('90^\\circ')})!<br/>
-③ 따라서 점 ${tex('P')}의 자취는 무조건 <strong class="text-emerald-300">선분 ${tex('AB')}를 지름으로 하는 원</strong>!<br/>
-④ 지름 ${tex('\\overline{AB} = \\sqrt{6^2 + 4^2} = 2\\sqrt{13} \\implies')} 반지름 <strong class="text-amber-300">${tex('r = \\sqrt{13}')}</strong> (넓이 ${tex('= \\pi r^2 = 13\\pi')})!`,
-          highlight: "💡 3대 원의 벡터방정식 암기: ① |OP - OC| = r (중심 C, 반지름 r) ② (OP-OA)·(OP-OB) = 0 (AB가 지름인 원) ③ (OP-OA)·(OB-OA) = 0 (점 A에서의 접선)!"
+          steps: `① 시점을 바꾸면 <strong class="text-sky-300">${tex('(\\overrightarrow{OP} - \\overrightarrow{OA}) \\cdot (\\overrightarrow{OP} - \\overrightarrow{OB}) = \\overrightarrow{AP} \\cdot \\overrightarrow{BP} = 0')}</strong>이다.<br/>
+② 즉 <strong class="text-amber-300">${tex('\\overrightarrow{AP} \\perp \\overrightarrow{BP} \\iff \\angle APB = 90^\\circ')}</strong> (지름에 대한 원주각 = ${tex('90^\\circ')}).<br/>
+③ 따라서 점 ${tex('P')}의 자취는 <strong class="text-emerald-300">선분 ${tex('AB')}를 지름으로 하는 원</strong>이다.<br/>
+④ 지름 ${tex('\\overline{AB} = \\sqrt{6^2 + 4^2} = 2\\sqrt{13} \\implies')} 반지름 <strong class="text-amber-300">${tex('r = \\sqrt{13}')}</strong> (넓이 ${tex('= \\pi r^2 = 13\\pi')})이다.`,
+          highlight: "원의 벡터방정식: ① |OP - OC| = r (중심 C, 반지름 r) ② (OP-OA)·(OP-OB) = 0 (AB가 지름인 원) ③ (OP-OA)·(OB-OA) = 0 (②의 원의 점 A에서의 접선)"
         })
       }
     };
@@ -407,7 +407,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const wA = Math.abs(n);
         const wB = Math.abs(m);
         const sumW = wA + wB || 1;
-        const statusStr = isInternal ? '선분 AB 내분점 (0 ≤ t ≤ 1)' : '연장선 외분점 (t < 0 또는 t > 1)';
+        const statusStr = isInternal ? '선분 AB 위의 점 (0 ≤ t ≤ 1)' : '연장선 위의 점 (t < 0 또는 t > 1)';
 
         drawBottomTapeBanner(
           rect,
@@ -613,7 +613,7 @@ window.addEventListener('DOMContentLoaded', function () {
             { weight: 0.5, label: `대칭 삼각형 (+S = 4.00) ➡ 총 2S = 8.00`, bg: 'rgba(56, 189, 248, 0.28)', color: '#38bdf8' }
           ];
         } else {
-          bannerTitle = `🎯 1 ≤ m+n ≤ 2 사다리꼴 넓이 = (2² - 1²)S = 3S = 12.00`;
+          bannerTitle = `④ 1 ≤ m+n ≤ 2 사다리꼴 넓이 = (2² - 1²)S = 3S = 12.00`;
           tapeSegs = [
             { weight: 0.25, label: `제외 S=4`, bg: 'rgba(16, 185, 129, 0.18)', color: '#34d399' },
             { weight: 0.75, label: `사다리꼴 ABB'A' 넓이 = 3S = 12.00`, bg: 'rgba(251, 191, 36, 0.30)', color: '#fbbf24' }
@@ -691,7 +691,7 @@ window.addEventListener('DOMContentLoaded', function () {
           rect,
           `직선 l: (x-1)/3 = (y-2)/2 ⇔ AP · n = 2(x-1) - 3(y-2) = 0`,
           [
-            { weight: wBase, label: `기준점 A(1, 2)`, bg: 'rgba(56, 189, 248, 0.26)', color: '#38bdf8' },
+            { weight: wBase, label: `점 A(1, 2)`, bg: 'rgba(56, 189, 248, 0.26)', color: '#38bdf8' },
             { weight: wStep, label: `+ t u (t=${t.toFixed(2)}) ➡ P(${P.x.toFixed(1)}, ${P.y.toFixed(1)})`, bg: 'rgba(52, 211, 153, 0.28)', color: '#34d399' }
           ],
           'rgba(52, 211, 153, 0.6)'
@@ -700,8 +700,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
       const safeOffsetP = getSafeLabelOffset(P, [A], { x: 12, y: -14 });
       drawChalkPoint(0, 0, 5, '#f8fafc', '', { x: 0, y: 0 }, 0, 'base');
-      drawChalkPoint(A.x, A.y, 6.5, '#38bdf8', `기준점 A(${A.x.toFixed(0)}, ${A.y.toFixed(0)})`, { x: -95, y: -10 }, 0, 'base');
-      drawChalkPoint(P.x, P.y, 8, '#fbbf24', `동점 P(${P.x.toFixed(1)}, ${P.y.toFixed(1)})`, safeOffsetP, 1, 'locus');
+      drawChalkPoint(A.x, A.y, 6.5, '#38bdf8', `점 A(${A.x.toFixed(0)}, ${A.y.toFixed(0)})`, { x: -95, y: -10 }, 0, 'base');
+      drawChalkPoint(P.x, P.y, 8, '#fbbf24', `점 P(${P.x.toFixed(1)}, ${P.y.toFixed(1)})`, safeOffsetP, 1, 'locus');
     }
 
     function renderMode4(rect) {
@@ -782,7 +782,7 @@ window.addEventListener('DOMContentLoaded', function () {
       drawChalkPoint(0, 0, 4.5, '#f8fafc', '', { x: 0, y: 0 }, 0, 'base');
       drawChalkPoint(A.x, A.y, 7, '#38bdf8', `A(${A.x.toFixed(0)}, ${A.y.toFixed(0)})`, { x: -75, y: 20 }, 0, 'base');
       drawChalkPoint(B.x, B.y, 7, '#f472b6', `B(${B.x.toFixed(0)}, ${B.y.toFixed(0)})`, { x: 10, y: -10 }, 0, 'base');
-      drawChalkPoint(P.x, P.y, 8, '#fbbf24', `동점 P (∠APB=90°)`, safeOffsetP, 2, 'locus');
+      drawChalkPoint(P.x, P.y, 8, '#fbbf24', `점 P (∠APB=90°)`, safeOffsetP, 2, 'locus');
     }
   /* ===== 원본 그대로: 실시간 값 (원본 updateLiveMonitor — 화면에 쓰는 대신 값을 돌려줌) ===== */
     function monitor() {
@@ -802,13 +802,13 @@ window.addEventListener('DOMContentLoaded', function () {
         out.labels[0] = '계수 m = 1-t / n = t';
         out.vals[0] = `m=${m.toFixed(2)} | n=${n.toFixed(2)}`;
         out.labels[1] = '계수 합 m + n';
-        out.vals[1] = `1.000 (직선 AB 위 불변)`;
+        out.vals[1] = `1.000 (직선 AB 위에서 일정)`;
         out.labels[2] = '점 P(x, y) 좌표';
         out.vals[2] = `P(${P.x.toFixed(2)}, ${P.y.toFixed(2)})`;
-        out.labels[3] = '내분 / 외분 판정';
+        out.labels[3] = '점 P의 위치';
         out.vals[3] = isInternal
-          ? `내분점 (${Math.abs(n).toFixed(2)} : ${Math.abs(m).toFixed(2)})`
-          : `외분점 (${Math.abs(n).toFixed(2)} : ${Math.abs(m).toFixed(2)})`;
+          ? `선분 AB 위의 점 (${Math.abs(n).toFixed(2)} : ${Math.abs(m).toFixed(2)})`
+          : `연장선 위의 점 (${Math.abs(n).toFixed(2)} : ${Math.abs(m).toFixed(2)})`;
 
       } else if (state.mode === 2) {
         const m = state.m2;
@@ -842,7 +842,7 @@ window.addEventListener('DOMContentLoaded', function () {
           out.labels[3] = '⑤ 0≤m,n≤1 넓이 (2S)';
           out.vals[3] = `2S = ${(2 * baseAreaS).toFixed(2)} (평행사변형)`;
         } else {
-          out.labels[3] = '🎯 1≤m+n≤2 넓이 (3S)';
+          out.labels[3] = '④ 1≤m+n≤2 넓이 (3S)';
           out.vals[3] = `3S = ${(3 * baseAreaS).toFixed(2)} (사다리꼴)`;
         }
 
@@ -859,9 +859,9 @@ window.addEventListener('DOMContentLoaded', function () {
         out.vals[0] = `u = (${u.x.toFixed(0)}, ${u.y.toFixed(0)})`;
         out.labels[1] = '법선벡터 n (수직 ⊥)';
         out.vals[1] = `n = (${u.y.toFixed(0)}, ${(-u.x).toFixed(0)})`;
-        out.labels[2] = '동점 P = A + t u';
+        out.labels[2] = '점 P = A + t u';
         out.vals[2] = `P(${P.x.toFixed(2)}, ${P.y.toFixed(2)})`;
-        out.labels[3] = '수직 내적 검증 AP · n';
+        out.labels[3] = '내적 AP · n';
         out.vals[3] = `AP · n = 0.000 (항상 수직)`;
 
       } else {
@@ -876,7 +876,7 @@ window.addEventListener('DOMContentLoaded', function () {
         out.vals[0] = `A(-3,-1), B(3,3) | M(0,1)`;
         out.labels[1] = '원의 반지름 r = |AB|/2';
         out.vals[1] = `r = √13 ≈ ${r.toFixed(3)}`;
-        out.labels[2] = '직각 내적 AP · BP';
+        out.labels[2] = '내적 AP · BP';
         out.vals[2] = `AP · BP = 0.000 (∠APB=90°)`;
         out.labels[3] = '원의 넓이 π r²';
         out.vals[3] = `13π ≈ ${(13 * Math.PI).toFixed(2)}`;
@@ -890,16 +890,16 @@ window.addEventListener('DOMContentLoaded', function () {
     { key: 'seg1', label: '① m+n=1 (선분 AB)', m: 0.5, n: 0.5 },
     { key: 'seg2', label: "② m+n=2 (선분 2A·2B)", m: 1.0, n: 1.0 },
     { key: 'tri1', label: '③ m+n≤1 (ΔOAB 넓이 S)', m: 0.35, n: 0.35 },
-    { key: 'trap', label: '④ 기출: 1≤m+n≤2 (사다리꼴 3S)', m: 0.8, n: 0.7 },
+    { key: 'trap', label: '④ 1≤m+n≤2 (사다리꼴 3S)', m: 0.8, n: 0.7 },
     { key: 'para', label: '⑤ 0≤m,n≤1 (평행사변형 2S)', m: 0.75, n: 0.85 }
   ];
-  const LENS = [['all', '전체 보기'], ['base', '기준 위치벡터'], ['locus', '자취·영역'], ['aux', '수직·내분 보조선']];
+  const LENS = [['all', '전체 보기'], ['base', '위치벡터 OA, OB'], ['locus', '자취·영역'], ['aux', '수직·내분 보조선']];
   const presetChips = (m) => (m === 2 ? MODE2.map((p) => ({
-    group: '조건별 자취 원클릭 스위치', label: p.label,
+    group: '조건별 자취 버튼', label: p.label,
     apply: (s) => { s.playing = false; s.preset2 = p.key; },
     set: { m2: p.m, n2: p.n }, ms: 380,
     on: (st) => st.preset2 === p.key
-  })) : []).concat(LENS.map(([k, label]) => ({ group: '관찰 렌즈', label, apply: (s) => { s.lens = k; }, on: (st) => st.lens === k })));
+  })) : []).concat(LENS.map(([k, label]) => ({ group: '강조해서 볼 요소', label, apply: (s) => { s.lens = k; }, on: (st) => st.lens === k })));
   const SNAP = { 1: { t1: 0.6 }, 2: { m2: 0.8, n2: 0.7 }, 3: { t3: 2.0 }, 4: { th4: 65 } };
   function snapPatch(m, s) { s.lens = 'all'; if (m === 2) s.preset2 = 'trap'; return { ...SNAP[m] }; } // 원본 snapToProblem: 값을 문제 조건으로 부드럽게 이동
 
@@ -908,13 +908,13 @@ window.addEventListener('DOMContentLoaded', function () {
     const st = state;
     if (m === 1) {
       const A = st.A1, B = st.B1, P = { x: (1 - s.t1) * A.x + s.t1 * B.x, y: (1 - s.t1) * A.y + s.t1 * B.y };
-      b.handle('P1', P, { color: 'amber', ariaLabel: '동점 P', drag: (w) => {
+      b.handle('P1', P, { color: 'amber', ariaLabel: '점 P', drag: (w) => {
         const vx = B.x - A.x, vy = B.y - A.y;
         s.t1 = clamp(((w.x - A.x) * vx + (w.y - A.y) * vy) / (vx * vx + vy * vy), -1, 2.4);
       } });
     } else if (m === 2) {
       const A = st.A2, B = st.B2, P = { x: s.m2 * A.x + s.n2 * B.x, y: s.m2 * A.y + s.n2 * B.y };
-      b.handle('P2', P, { color: 'amber', ariaLabel: '동점 P', drag: (w) => {
+      b.handle('P2', P, { color: 'amber', ariaLabel: '점 P', drag: (w) => {
         const det = A.x * B.y - A.y * B.x;
         if (Math.abs(det) > 0.01) {
           let mVal = clamp((w.x * B.y - w.y * B.x) / det, 0, 2), nVal = clamp((A.x * w.y - A.y * w.x) / det, 0, 2);
@@ -925,20 +925,20 @@ window.addEventListener('DOMContentLoaded', function () {
       } });
     } else if (m === 3) {
       const A = st.A3, u = st.u3, P = { x: A.x + s.t3 * u.x, y: A.y + s.t3 * u.y };
-      b.handle('P3', P, { color: 'amber', ariaLabel: '동점 P', drag: (w) => {
+      b.handle('P3', P, { color: 'amber', ariaLabel: '점 P', drag: (w) => {
         s.t3 = clamp(((w.x - A.x) * u.x + (w.y - A.y) * u.y) / (u.x * u.x + u.y * u.y), -1, 2.4); // 원본 BUG-02: 상한 2.4로 t=2.0 도달 보장
       } });
     } else {
       const r = Math.sqrt(13);
-      b.handle('P4', { x: r * Math.cos(st.theta4), y: 1 + r * Math.sin(st.theta4) }, { color: 'amber', ariaLabel: '동점 P', drag: (w) => { s.th4 = deg(Math.atan2(w.y - 1, w.x)); } });
+      b.handle('P4', { x: r * Math.cos(st.theta4), y: 1 + r * Math.sin(st.theta4) }, { color: 'amber', ariaLabel: '점 P', drag: (w) => { s.th4 = deg(Math.atan2(w.y - 1, w.x)); } });
     }
   }
 
   /* ===== 장면 글: 탭 이름·탐구 질문 (새로 쓴 부분) ===== */
-  const TITLE = ['내분·외분 & 일직선(1-t, t)', '기출1: 계수 합(m+n=k) 자취·넓이', '기출2: 방향벡터 vs 법선벡터 직선', '기출3: 원의 벡터방정식 (지름·접선)'];
-  const SHORT = ['내분·외분', '계수 합 자취', '방향·법선벡터', '원의 벡터방정식'];
+  const TITLE = ['내분점과 일직선 조건 (1−t, t)', '계수 합(m+n=k)에 따른 자취와 넓이', '방향벡터와 법선벡터로 나타낸 직선', '원의 벡터방정식 (지름·접선)'];
+  const SHORT = ['내분점·일직선', '계수 합 자취', '방향·법선벡터', '원의 벡터방정식'];
   const QUESTION = [
-    'OP = (1−t)OA + t·OB에서 t가 바뀌면 점 P는 어디를 지날까? 내분과 외분은 t의 어떤 범위일까?',
+    'OP = (1−t)OA + t·OB에서 t가 바뀌면 점 P는 어디를 지날까? 선분 AB 위의 점이 되는 t의 범위는 어디일까?',
     'OP = m·OA + n·OB에서 m+n의 값이나 범위에 따라 점 P는 어떤 도형 위를 움직일까?',
     '같은 직선을 방향벡터와 법선벡터로 각각 어떻게 나타낼 수 있을까?',
     '(OP−OA)·(OP−OB) = 0이면 점 P는 어떤 도형 위를 움직일까?'
@@ -956,7 +956,7 @@ window.addEventListener('DOMContentLoaded', function () {
       controls: m === 1 ? ['t1'] : m === 2 ? ['m2', 'n2'] : m === 3 ? ['t3'] : ['th4'],
       presets: () => presetChips(m),
       actions: () => [{
-        id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '자취 주행'), on: (s) => s.playing,
+        id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '자동 이동'), on: (s) => s.playing,
         run: (s) => { s.playing = !s.playing; }
       }],
       steps: d.steps,
@@ -1013,8 +1013,8 @@ window.addEventListener('DOMContentLoaded', function () {
         snap: (s) => snapPatch(m, s)
       },
       solution: {
-        standardTitle: '교과서식 정석 풀이', standardTag: '3분 소요',
-        quickTitle: '10초 컷 실전 기하 비기', quickTag: '10초 컷',
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이',
+        quickTitle: '10초 컷 · 핵심 성질을 이용한 풀이', quickTag: '10초 컷',
         standard: (s) => { s.sid = String(m); use(s); return d.textbook(); },
         quick: (s) => { s.sid = String(m); use(s); return d.shortcut(); }
       }
@@ -1031,11 +1031,11 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/기하와벡터/벡터로 나타낸 도형.html',
     board: { kind: 'cartesian', focus: FOCUS[0], minZoom: 0.3, maxZoom: 8 },
     params: {
-      t1: { value: 0.6, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '직선 매개변수 t (내분: 0~1 / 외분: −1.0~2.4)', format: (v) => `t = ${v.toFixed(2)} (${v >= -0.001 && v <= 1.001 ? '내분' : '외분'})` },
+      t1: { value: 0.6, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '실수 t (선분 AB 위: 0~1 / 연장선 위: −1.0~2.4)', format: (v) => `t = ${v.toFixed(2)} (${v >= -0.001 && v <= 1.001 ? '선분 AB 위' : '연장선 위'})` },
       m2: { value: 0.8, min: 0, max: 2, step: 0.05, color: 'sky', label: 'OA 계수 m', format: (v, s) => `m=${v.toFixed(2)}, n=${s.n2.toFixed(2)} (합 m+n=${(v + s.n2).toFixed(2)})` },
       n2: { value: 0.7, min: 0, max: 2, step: 0.05, color: 'rose', label: 'OB 계수 n', format: (v, s) => `m=${s.m2.toFixed(2)}, n=${v.toFixed(2)} (합 m+n=${(s.m2 + v).toFixed(2)})` },
-      t3: { value: 2, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '직선 매개변수 t (P = A + t·u, −1.0~2.4)', format: (v) => { const x = 1 + 3 * v, y = 2 + 2 * v; return `t = ${v.toFixed(2)} (P(${x.toFixed(1)}, ${y.toFixed(1)}))`; } },
-      th4: { value: 65, min: 0, max: 360, step: 1, color: 'amber', label: '원 위 동점 P 회전각 θ (어디로 가도 ∠APB = 90°!)', format: (v) => `${mod360(v).toFixed(1)}° (∠APB = 90.0° 고정)` }
+      t3: { value: 2, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '실수 t (P = A + t·u, −1.0~2.4)', format: (v) => { const x = 1 + 3 * v, y = 2 + 2 * v; return `t = ${v.toFixed(2)} (P(${x.toFixed(1)}, ${y.toFixed(1)}))`; } },
+      th4: { value: 65, min: 0, max: 360, step: 1, color: 'amber', label: '원 위의 점 P의 회전각 θ (어디에 있어도 ∠APB = 90°)', format: (v) => `${mod360(v).toFixed(1)}° (∠APB = 90.0° 고정)` }
     },
     state: { sid: '1', lens: 'all', preset2: 'trap', animDir: 1 },
     persist: ['lens', 'preset2'],
