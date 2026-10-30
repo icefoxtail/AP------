@@ -167,6 +167,7 @@ window.APLab.catalog = {
     "쌍원뿔·이중원뿔·구멍·모퉁이 파낸 입체 (6종)"
    ],
    "legacy": "labs/g7/입체도형의 겉넓이와 부피.html",
+   "next": "next/labs/g7-surface-volume.html",
    "glyph": "<path d=\"M22 24 L48 14 L72 28 L72 58 L48 68 L22 54 Z\"/><path d=\"M22 24 L48 38 L72 28 M48 38 L48 68\"/>",
    "tags": [
     "3D"
@@ -190,6 +191,7 @@ window.APLab.catalog = {
     "회전체 전개도 & 개미 최단거리 (4종)"
    ],
    "legacy": "labs/g7/다면체·회전체&겨냥도·전개도.html",
+   "next": "next/labs/g7-solids.html",
    "glyph": "<ellipse cx=\"38\" cy=\"18\" rx=\"26\" ry=\"10\"/><path d=\"M12 18 V54 M64 18 V54\"/><path d=\"M12 54 A26 10 0 0 0 64 54 M12 54 A26 10 0 0 1 64 54\" stroke-dasharray=\"4 4\"/>"
   },
   {
