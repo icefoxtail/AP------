@@ -33,7 +33,9 @@
    - 그림 안 문제 수정
        ① 연꼴 접기(빗변 공유 대칭): 0%가 100%와 같은 그림이라 "0% 원위치" 버튼과 슬라이더가 맞지 않았음 → 시작을 100%(완성)로 두고 0%는 접기 전
        ② 수직이등분선 위의 점 P: 변환 0%·50%·100% 버튼이 모두 같은 그림 → 25%·75%(P가 아래·위로)로 교체
-       ③ 옆으로 누운 이등변: 점을 끌면 꼭짓점이 엉뚱한 곳으로 튀던 문제(대칭 잠금이 위쪽 꼭지각 가정) → 이 장면은 자유 변형으로
+       ③ 옆으로 누운 이등변: 점을 끌면 꼭짓점이 엉뚱한 곳으로 튀던 문제(대칭 잠금이 위쪽 꼭지각 가정) → 가로 대칭축 전용 잠금(끌어도 AB = AC 유지)
+       ④ 직각이등변: B에서 직각인 56°·90°·34° 삼각형을 그려 설명(AB = AC)과 어긋남 → 꼭지각 90°·밑각 45°인 이등변으로
+       ⑤ 외심 궤적: 연한 점선이라 안 보임 → 굵은 테마색 선과 끝점
    - 효과가 없던 조작은 표시하지 않음: 변환(0→100%) 슬라이더·🎬 버튼이 그림을 바꾸지 않는 장면,
      꼭지각·모양 프리셋이 그림에 쓰이지 않는 장면, 해당 장면에 없는 외심 궤적·드래그 방식 버튼
    - 관찰 렌즈(전체/정의·중점/등거리·합동/각)는 그대로 동작: 원본의 lensAlpha 규칙을 어댑터가 그대로 적용하고
@@ -521,7 +523,13 @@ window.addEventListener('DOMContentLoaded', function () {
   function applySubTypeGeometry(s, mode, subId) {
     s.fold = 0.0;
     s.trace = [];
-    if (subId === 'isoRight' || subId === 'circumRight' || subId === 'incenterRightSq' || subId === 'oigRight') {
+    if (subId === 'isoRight') {
+      // [2.0 수정] 원본은 B에서 직각인 일반 직각삼각형(56°·90°·34°, AB≠AC)을 그려서, 이 장면의 설명(AB = AC, ∠B = ∠C,
+      // AD = BD = CD = ½BC)과 맞지 않았고 아래 띠에도 '일반삼각형(AB≠AC) 반례'가 떴습니다.
+      // → 꼭지각 ∠A = 90°인 직각이등변(밑각 45°)으로 그립니다. 꼭짓점을 끌어도 이등변은 유지(대칭 잠금).
+      snapAngleA(s, 90);
+      s.locked = true;
+    } else if (subId === 'circumRight' || subId === 'incenterRightSq' || subId === 'oigRight') {
       snapShape(s, 'right');
     } else if (subId === 'circum3060') {
       setPts(s, { x: -115, y: -155 }, { x: -115, y: 95 }, { x: 30, y: 95 });
@@ -535,7 +543,8 @@ window.addEventListener('DOMContentLoaded', function () {
     } else if (subId === 'isoSide') {
       setPts(s, { x: 140, y: 0 }, { x: -95, y: -120 }, { x: -95, y: 120 });
       // [2.0 수정] 원본은 모양 태그를 그대로 두어, 이 장면에서 점을 끌면 '위쪽 꼭지각' 가정의 대칭 잠금이 걸려
-      // 꼭짓점이 엉뚱한 곳(밑변 위)으로 튀어 삼각형이 납작하게 무너졌습니다 → 옆으로 누운 장면은 자유 변형으로 둡니다.
+      // 꼭짓점이 엉뚱한 곳(밑변 위)으로 튀어 삼각형이 납작하게 무너졌습니다. 그렇다고 자유 변형으로 두면 AB = AC 가 깨지는데
+      // 설명은 계속 AB = AC 라고 하므로, 옆으로 누운 장면 전용 대칭 잠금('side': 대칭축 y = 0)을 씁니다.
       s.shape = 'side';
     } else {
       snapAngleA(s, 52);
@@ -572,6 +581,25 @@ window.addEventListener('DOMContentLoaded', function () {
         P.B.y = Math.max(P.A.y + 30, localPt.y);
         P.A.x = P.B.x;
         P.C.y = P.B.y;
+      }
+    } else if (s.shape === 'side') {
+      // [2.0 수정] 옆으로 누운 이등변: 대칭축은 가로선 y = 0. 꼭짓점 A는 축 위에서만(좌우), 밑변의 두 꼭짓점 B·C는 축에 대칭으로 움직여
+      // 끌어도 AB = AC, ∠B = ∠C 가 유지됩니다. (B는 축 위쪽, C는 축 아래쪽에 두고 축에서 25 이상 떨어지게)
+      const baseX = P.B.x;
+      if (node === 'A') {
+        const dir = P.A.x >= baseX ? 1 : -1;
+        const d = (localPt.x - baseX) * dir; // 밑변에서 A 쪽으로 잰 거리
+        P.A.y = 0;
+        P.A.x = baseX + dir * Math.max(25, Math.min(380, d));
+      } else {
+        const sgn = node === 'B' ? -1 : 1; // B는 y<0, C는 y>0
+        const y = sgn * Math.max(25, sgn * localPt.y);
+        const dir = P.A.x >= baseX ? 1 : -1;
+        let x = localPt.x;
+        if ((P.A.x - x) * dir < 25) x = P.A.x - dir * 25; // 꼭짓점 A와 밑변이 겹치지 않게
+        P.B.x = P.C.x = x;
+        P.B.y = -Math.abs(y);
+        P.C.y = Math.abs(y);
       }
     } else {
       P[node].x = localPt.x;
@@ -2031,7 +2059,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
     if (state.showTrace && state.tracePoints.length > 1 && PL.pass === 2 && !BOARD._bbox) {
       // [2.0 수정] 원본은 캔버스 ctx에 직접 그렸던 외심 궤적 → 무대 경로 호출로
-      BOARD.path(state.tracePoints, { color: 'rgba(251, 191, 36, 0.45)', width: 2, dash: [4, 4] });
+      // [2.0 수정] 원본의 연한 점선(투명도 0.45, 2px)은 칠판·종이 모두에서 잘 안 보였습니다 → 테마 의미색(amber)을 불투명하게, 굵게, 빛나게.
+      BOARD.path(state.tracePoints, { color: 'amber', width: 3.6, dash: [7, 4], glow: true });
+      const tp = state.tracePoints[state.tracePoints.length - 1];
+      if (tp) BOARD.point(tp, { color: 'amber', r: 4 });
     }
 
     const m = state.mode;
