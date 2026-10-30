@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>원의 방정식 · AP Math 실험실</title>
-<meta name="description" content="공통수학 원의 방정식: 표준형·일반형, 축에 접하는 원, 아폴로니오스의 원, 원과 직선, 두 원과 공통현, 접선, 공통접선, 킬러 응용까지 8개 탐구관 32개 장면">
+<meta name="description" content="공통수학 원의 방정식: 표준형·일반형, 축에 접하는 원, 두 점까지의 거리의 비가 일정한 점의 자취, 원과 직선, 두 원과 공통현, 접선, 공통접선, 킬러 응용까지 8개 탐구관 32개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -71,14 +71,14 @@ window.addEventListener('DOMContentLoaded', function () {
         { id: 'threePts', label: '🔺 세 점을 지나는 원 (외접원 중심 찾기)' }
       ],
       2: [
-        { id: 'twoCircles21', label: '🔥 [킬러] 점 (2,1)을 지나고 x·y축 동시 접하는 두 원!' },
+        { id: 'twoCircles21', label: '🔥 [킬러] 점 (2,1)을 지나고 x축·y축에 동시에 접하는 두 원' },
         { id: 'touchX', label: '📏 x축에 접하는 원 (반지름 r = |b| 주의!)' },
         { id: 'touchY', label: '📐 y축에 접하는 원 (반지름 r = |a| 주의!)' },
-        { id: 'touchBothQuad', label: '🧭 x·y축에 동시에 접하는 원 (사분면 부호 4총사)' }
+        { id: 'touchBothQuad', label: '🧭 x·y축에 동시에 접하는 원 (사분면별 중심의 부호 4가지)' }
       ],
       3: [
-        { id: 'apolloCircle', label: '🛰️ [핵심] 아폴로니오스의 원 (PA:PB = 2:1 자취!)' },
-        { id: 'apolloMaxArea', label: '⛰️ 아폴로니오스 원에서 △PAB 넓이의 최댓값' },
+        { id: 'apolloCircle', label: '🛰️ [핵심] 두 점까지의 거리의 비가 2:1인 점의 자취 (PA:PB = 2:1)' },
+        { id: 'apolloMaxArea', label: '⛰️ 거리의 비가 2:1인 점 P의 자취(원)에서 △PAB 넓이의 최댓값' },
         { id: 'apolloMaxAngle', label: '🎯 각 ∠PAB의 크기가 최대가 되는 순간 (접선!)' },
         { id: 'midpointLocus', label: '📍 원 위의 점 P와 정점 A의 중점 M이 그리는 자취' }
       ],
@@ -96,7 +96,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { id: 'foldCircleArc', label: '📄 원 모양 종이를 접어 현이 축에 접할 때 (원 복원!)' }
       ],
       6: [
-        { id: 'tanExtVertical', label: '⚠️ [함정 1위] 외부 점에서 그은 접선 & 숨은 수직접선(x=r)!' },
+        { id: 'tanExtVertical', label: '⚠️ [함정] 원 밖의 점에서 그은 접선 & y축에 평행한 접선(x=r)' },
         { id: 'tanSlope', label: '📈 유형 1: 기울기 m이 주어진 두 접선 (y=mx±r√(m²+1))' },
         { id: 'tanPointOn', label: '📌 유형 2: 원 위의 점 (x₁,y₁)에서의 접선 (x₁x+y₁y=r²)' },
         { id: 'tanPerp90', label: '⬛ 두 접선이 서로 수직(90°)일 때 (정사각형 d=√2r 자취!)' }
@@ -104,11 +104,11 @@ window.addEventListener('DOMContentLoaded', function () {
       7: [
         { id: 'extCommonTan', label: '🎬 공통외접선의 길이 L = √(d² - (r-r′)²) 평행이동!' },
         { id: 'intCommonTan', label: '🎬 공통내접선의 길이 L = √(d² - (r+r′)²) 평행이동!' },
-        { id: 'polarChordCow', label: '🐮 두 접점 사이 현 AB(극선)의 길이 (소 공식 3초 컷!)' },
+        { id: 'polarChordCow', label: '🐮 원 밖의 점에서 그은 두 접선의 접점 A, B를 잇는 현 AB의 길이 (3초 컷!)' },
         { id: 'concyclicOAPB', label: '⭕ 네 점 O, A, P, B를 지나는 외접원 (지름 = OP!)' }
       ],
       8: [
-        { id: 'pappusMinSq', label: '🔥 [1등급] 원 위의 점 P에 대해 PA² + PB²의 최솟값 (중선정리!)' },
+        { id: 'pappusMinSq', label: '🔥 원 위의 점 P에 대해 PA² + PB²의 최솟값 (선분 AB의 중점 이용)' },
         { id: 'bisectAreaBoth', label: '✂️ 원과 직사각형 넓이를 동시에 이등분하는 직선' },
         { id: 'laserReflectTan', label: '🪞 x축에서 반사되어 원에 접하는 레이저 광선 (대칭원!)' }
       ]
@@ -215,9 +215,9 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🟥 함정 반례: R² ≤ 0 이면 원이 아니다!`, desc: `R² = 0 이면 한 점(점원), R² < 0 이면 허원(그려지지 않음!)`, val: `R² ≤ 0 탈락 ❌`, color: CCOL.red, ok: false }
             ],
             totalRes: `x² + y² - 4x - 2y + C = 0 이 원을 나타낼 조건: 2² + 1² - C > 0 ➔ C < 5`,
-            rule: '“방정식이 원을 나타내도록” 문제가 나오면 무조건 완전제곱식 우변(r²) > 0 부등식을 푼다!',
+            rule: '“방정식이 원을 나타내도록” 하는 문제는 완전제곱식으로 고친 뒤 우변(r²) > 0 인 부등식을 푼다!',
             formulaHTML: `• ${tex(`x^2+y^2+Ax+By+C=0 \\iff \\left(x+\\dfrac{A}{2}\\right)^2 + \\left(y+\\dfrac{B}{2}\\right)^2 = \\mathbf{\\dfrac{A^2+B^2-4C}{4} > 0}`)}`,
-            notes: `• 우변이 $r$이 아니라 <strong>$r^2$(반지름의 제곱)</strong>이라는 것도 절대 잊지 마세요! 우변이 $9$이면 반지름은 $9$가 아니라 $3$입니다.`
+            notes: `• 우변이 $r$이 아니라 <strong>$r^2$(반지름의 제곱)</strong>이라는 것도 잊지 마세요! 우변이 $9$이면 반지름은 $9$가 아니라 $3$입니다.`
           };
         }
         if (sub === 'diamEnds') {
@@ -268,7 +268,7 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: `중심 C(2, 1), 반지름 r = ${r} 인 원의 표준형: (x - 2)² + (y - 1)² = ${r * r}`,
           rule: '원의 방정식 = 사실은 원 위의 점 P(x, y)와 중심 C(a, b) 사이의 피타고라스 정리이다!',
           formulaHTML: `• ${tex(`\\overline{CP} = r \\iff \\sqrt{(x-a)^2 + (y-b)^2} = r \\iff \\mathbf{(x-a)^2 + (y-b)^2 = r^2}`)}`,
-          notes: `• 괄호 안을 $0$으로 만드는 값 $(a, b)$가 중심 좌표이고, 우변의 루트 값 $\\sqrt{r^2} = r$이 반지름입니다!`
+          notes: `• 괄호 안을 $0$으로 만드는 값 $(a, b)$가 중심 좌표이고, 우변 $r^2$의 양의 제곱근 $\\sqrt{r^2} = r$이 반지름입니다!`
         };
       }
 
@@ -276,7 +276,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 2) {
         if (sub === 'twoCircles21') {
           return {
-            badge: `탐구 2-A · 🔥 [내신 100% 출제] 점 (2, 1)을 지나고 x축·y축에 동시에 접하는 원은 왜 2개일까?`,
+            badge: `탐구 2-A · 🔥 점 (2, 1)을 지나고 x축·y축에 동시에 접하는 원은 왜 2개일까?`,
             hint: `점 $(2, 1)$이 제1사분면에 있으므로 중심을 <strong class="text-amber-300">(r, r)</strong>로 놓고 $(x-r)^2+(y-r)^2=r^2$에 $(2, 1)$을 대입하면 $r^2 - 6r + 5 = 0$이 되어 <strong class="text-sky-300">작은 원(r=1)</strong>과 <strong class="text-pink-300">큰 원(r=5)</strong> 두 개가 탄생합니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 두 원 동시에 보기' : '🎬 직선 y=x 따라 중심 (1,1) ↔ (5,5) 스캔!',
             p1Title: '지나는 점 (2,1)', p2Title: '사분면 (제1사분면)',
@@ -297,7 +297,7 @@ window.addEventListener('DOMContentLoaded', function () {
             ? `탐구 2-B · x축에 접하는 원 — 반지름 r은 중심의 x좌표가 아니라 『y좌표의 절댓값(|b|)!』`
             : isY
             ? `탐구 2-C · y축에 접하는 원 — 반지름 r은 중심의 y좌표가 아니라 『x좌표의 절댓값(|a|)!』`
-            : `탐구 2-D · x축과 y축에 동시에 접하는 원 — 사분면별 중심 부호 4총사와 대칭직선 y = ±x`,
+            : `탐구 2-D · x축과 y축에 동시에 접하는 원 — 사분면별 중심의 부호 4가지와 대칭직선 y = ±x`,
           hint: isX
             ? `원이 $x$축(가로축)에 접할 때 중심 $C(a, b)$에서 $x$축까지 수직으로 내린 반지름의 길이는 <strong class="text-amber-300">중심의 y좌표의 크기(|b|)</strong>입니다! ($a^2$으로 쓰면 오답!)`
             : isY
@@ -311,9 +311,9 @@ window.addEventListener('DOMContentLoaded', function () {
             { id: 2, name: `🟨 x·y축 동시 접할 때: 1사분면(r,r) · 2사분면(-r,r)`, desc: `3사분면(-r,-r) · 4사분면(r,-r)  [항상 r > 0 으로 둠!]`, val: `y = ±x 위 중심`, color: CCOL.gold, ok: true }
           ],
           totalRes: `x축 접원: r=|b|  |  y축 접원: r=|a|  |  동시 접원: 중심 (±r, ±r)은 직선 y = ±x 위에 존재!`,
-          rule: '외우지 말고 축에 접하는 작은 원을 1초 만에 그려보면 반지름이 |a|인지 |b|인지 즉시 보인다!',
+          rule: '외우지 말고 축에 접하는 원을 그려 보면 반지름이 |a|인지 |b|인지 알 수 있다!',
           formulaHTML: `• <strong>$x$축 접원</strong>: ${tex(`(x-a)^2 + (y-b)^2 = \\mathbf{b^2}`)}<br/>• <strong>$y$축 접원</strong>: ${tex(`(x-a)^2 + (y-b)^2 = \\mathbf{a^2}`)}`,
-          notes: `• <strong>[단골 문제]</strong>: “원 $x^2+y^2-6x+4y+k=0$이 $y$축에 접할 때 $k$의 값은?” $\\implies$ 중심이 $(3, -2)$이고 $y$축에 접하므로 반지름 $r = |3| = 3 \\implies r^2 = 9$입니다!`
+          notes: `• <strong>[예제]</strong>: “원 $x^2+y^2-6x+4y+k=0$이 $y$축에 접할 때 $k$의 값은?” $\\implies$ 중심이 $(3, -2)$이고 $y$축에 접하므로 반지름 $r = |3| = 3 \\implies r^2 = 9$입니다!`
         };
       }
 
@@ -321,7 +321,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 3) {
         if (sub === 'midpointLocus') {
           return {
-            badge: `탐구 3-D · 아폴로니오스 원 위의 점 P와 고정점 A의 중점 M의 자취`,
+            badge: `탐구 3-D · 거리의 비가 2 : 1인 점 P의 자취(원) 위의 점 P와 정점 A를 잇는 선분의 중점 M의 자취`,
             hint: `점 $P$는 중심 $C(5,0)$, 반지름 $4$인 원 위를 움직이고 $A(-3,0)$은 고정되어 있습니다. 중점 $M$을 구하려면 $P$와 $A$의 좌표를 각각 절반씩 평균 내세요.`,
             actionTxt: state.fold > 0.5 ? '🎬 중점 M의 원 보기' : '🎬 P와 A의 중점 M 따라가기',
             p1Title: '원 위의 점 P', p2Title: '중점 M의 자취',
@@ -337,19 +337,19 @@ window.addEventListener('DOMContentLoaded', function () {
           };
         }
         return {
-          badge: `탐구 3 · 🛰️ [핵심 킬러] 아폴로니오스의 원 — 두 정점 A(-3,0), B(3,0)에서 거리의 비 PA : PB = 2 : 1 인 점 P의 자취`,
-          hint: `슬라이더로 점 $P$를 움직여보세요! $PA : PB = 2 : 1$을 만족하는 점들을 모으면 직선이 아니라 <strong class="text-amber-300">AB를 2:1로 내분하는 점 M(1,0)과 외분하는 점 N(9,0)을 지름의 양 끝으로 하는 원(중심 (5,0), 반지름 r=4)</strong>이 됩니다!`,
+          badge: `탐구 3 · 🛰️ [핵심 킬러] 두 점 A(-3,0), B(3,0)까지의 거리의 비가 PA : PB = 2 : 1 인 점 P의 자취`,
+          hint: `슬라이더로 점 $P$를 움직여 보세요! $PA : PB = 2 : 1$을 만족하는 점들을 모으면 직선이 아니라 <strong class="text-amber-300">선분 AB를 2:1로 내분하는 점 M(1,0)과, 직선 AB 위에서 AN : BN = 2 : 1이고 선분 AB의 바깥쪽에 있는 점 N(9,0)을 지름의 양 끝으로 하는 원(중심 (5,0), 반지름 r=4)</strong>이 됩니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 자취 완성 보기' : '🎬 PA : PB = 2 : 1 유지하며 점 P 360° 자취 그리기!',
           p1Title: '비율 (2 : 1)', p2Title: '최대 넓이/각도',
           parts: [
             { id: 0, name: `🟦 지름의 왼쪽 끝 = 2 : 1 내분점 M(1, 0)`, desc: `선분 AB 안에서 2 : 1 인 점 (PM은 ∠APB의 내각 이등분선!)`, val: `내분점 M(1,0)`, color: CCOL.cyan, ok: true },
-            { id: 1, name: `🩷 지름의 오른쪽 끝 = 2 : 1 외분점 N(9, 0)`, desc: `선분 AB 연장선에서 2 : 1 인 점 (PN은 외각 이등분선!)`, val: `외분점 N(9,0)`, color: CCOL.pink, ok: true },
+            { id: 1, name: `🩷 지름의 오른쪽 끝 N(9, 0) (AN : BN = 2 : 1, 선분 AB의 바깥쪽)`, desc: `선분 AB 연장선에서 2 : 1 인 점 (PN은 외각 이등분선!)`, val: `선분 AB 바깥쪽의 점 N(9,0)`, color: CCOL.pink, ok: true },
             { id: 2, name: sub === 'apolloMaxAngle' ? `🟨 ∠PAB가 최대일 때 = 직선 AP가 원에 접할 때!` : `🟨 △PAB 넓이의 최댓값 = 밑변 AB(6) × 최대높이(반지름 r=4) ÷ 2`, desc: sub === 'apolloMaxAngle' ? `접점 P에서 반지름 CP와 접선 AP가 수직(∠CPA=90°)인 직각삼각형으로 접선 위치와 각을 구합니다.` : `점 P가 원의 꼭대기(5, 4)에 올 때 높이가 반지름 r=4로 최대!`, val: sub === 'apolloMaxAngle' ? `접선일 때 최대!` : `최대넓이 = 12`, color: CCOL.gold, ok: true }
           ],
-          totalRes: `2:1 내분점 M(1,0), 외분점 N(9,0) ➔ 중심 C(5,0), 반지름 r=4  |  △PAB 최대 넓이 = ½×6×4 = 12`,
-          rule: '아폴로니오스의 원 3초 공식: (m:n 내분점 M)과 (m:n 외분점 N)을 지름의 양 끝으로 하는 원!',
+          totalRes: `2:1 내분점 M(1,0), 선분 AB 바깥쪽의 점 N(9,0) ➔ 중심 C(5,0), 반지름 r=4  |  △PAB 최대 넓이 = ½×6×4 = 12`,
+          rule: '거리의 비가 m : n (m≠n)인 점의 자취는 원이다: 선분 AB를 m : n으로 내분하는 점 M과, 직선 AB 위에서 AN : BN = m : n이고 선분 AB 바깥쪽에 있는 점 N을 지름의 양 끝으로 한다!',
           formulaHTML: `• <strong>왜 원이 될까?</strong> 내각의 이등분선($PM$)과 외각의 이등분선($PN$)은 항상 수직(${tex(`\\angle MPN = 90^\\circ`)})이므로 점 $P$는 선분 $MN$을 지름으로 하는 원 위를 움직입니다!`,
-          notes: `• <strong>[시험 출제 2대 질문]</strong>:<br/>&nbsp;&nbsp;① “$\\triangle PAB$ 넓이의 최댓값은?” $\\implies \\dfrac{1}{2} \\times \\overline{AB} \\times (\\text{아폴로니오스 원의 반지름 } r)$!<br/>&nbsp;&nbsp;② “$\\angle PAB$의 크기가 최대일 때 $\\overline{AP}$의 길이는?” $\\implies AP$가 원의 <strong>접선</strong>일 때이므로 피타고라스 $\\sqrt{\\overline{AC}^2 - r^2}$!`
+          notes: `• <strong>[두 가지 문제]</strong>:<br/>&nbsp;&nbsp;① “$\\triangle PAB$ 넓이의 최댓값은?” $\\implies \\dfrac{1}{2} \\times \\overline{AB} \\times (\\text{자취(원)의 반지름 } r)$!<br/>&nbsp;&nbsp;② “$\\angle PAB$의 크기가 최대일 때 $\\overline{AP}$의 길이는?” $\\implies AP$가 원의 <strong>접선</strong>일 때이므로 피타고라스 $\\sqrt{\\overline{AC}^2 - r^2}$!`
         };
       }
 
@@ -378,7 +378,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         return {
           badge: `탐구 4 · 원(반지름 r=${r})과 직선의 위치관계 (d=${effD} vs r=${r}) & 현의 길이 L = 2√(r² - d²)`,
-          hint: `우측의 <strong class="text-sky-300">반지름 r 칩</strong>과 <strong class="text-pink-300">중심~직선 거리 d 칩</strong>을 눌러보세요! 판별식 $D$를 전개하지 말고 무조건 <strong class="text-amber-300">점과 직선 사이의 거리 d 와 반지름 r</strong>로 비교하며, 현의 길이는 <strong class="text-emerald-300">피타고라스 2√(r² - d²)</strong>로 구합니다!`,
+          hint: `우측의 <strong class="text-sky-300">반지름 r 칩</strong>과 <strong class="text-pink-300">중심~직선 거리 d 칩</strong>을 눌러보세요! 판별식 $D$를 전개하지 않고 <strong class="text-amber-300">점과 직선 사이의 거리 d 와 반지름 r</strong>을 비교하며, 현의 길이는 <strong class="text-emerald-300">피타고라스 2√(r² - d²)</strong>로 구합니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 최대거리(d+r) vs 최소거리 max(d-r,0) 스캔!',
           p1Title: '원 반지름 r', p2Title: '중심~직선 거리 d',
           parts: [
@@ -387,7 +387,7 @@ window.addEventListener('DOMContentLoaded', function () {
             { id: 2, name: `🩷 원 위의 점에서 직선까지 최대(d+r) · 최소 max(d-r,0)`, desc: `최댓값 M = ${effD} + ${r} = ${effD + r}, 최솟값 m = max(${effD} - ${r}, 0) = ${Math.max(0, effD-r)}. d<r이면 직선이 원과 만나므로 최소거리는 0입니다.`, val: `M=${effD+r}, m=${Math.max(0,effD-r)}`, color: CCOL.pink, ok: true }
           ],
           totalRes: effD < r ? `d(${effD}) < r(${r}) 두 점 교차 | 현의 길이 L = 2√(${r}²-${effD}²) = ${fullChord} | 원둘레에서 직선까지 최대거리 d+r=${effD+r}, 최소거리 0` : `d(${effD}) vs r(${r}) 판정 | 최대거리 = d+r(${effD+r}), 최소거리 = max(d-r,0)=${Math.max(0,effD-r)}`,
-          rule: '원의 방정식에서는 이차방정식 판별식(D)을 봉인하고 무조건 중심~직선 거리(d)와 반지름(r)을 쓴다!',
+          rule: '원과 직선의 위치 관계는 이차방정식의 판별식(D) 대신 중심에서 직선까지의 거리(d)와 반지름(r)을 비교하면 간단하다!',
           formulaHTML: `• <strong>현의 길이 공식</strong>: ${tex(`\\overline{AB} = 2\\overline{AH} = \\mathbf{2\\sqrt{r^2 - d^2}}`)} (두 점에서 만날 때 $d<r$)<br/>• <strong>원둘레에서 직선까지 최대·최소 거리</strong>: ${tex(`\\mathbf{M = d+r, \\qquad m = \\max(d-r,0)}`)}. $d<r$이면 직선과 원이 만나므로 최소거리는 $0$입니다.`,
           notes: `• 현의 절반 $\\sqrt{r^2-d^2}$만 구해놓고 <strong>$2$배</strong>를 안 해서 틀리는 실수를 가장 조심하세요!`
         };
@@ -397,24 +397,24 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 5) {
         if (sub === 'foldCircleArc') {
           return {
-            badge: `탐구 5-E · 📄 [내신 킬러] 원 모양 종이를 현 AB를 접는 선으로 접어 호가 x축 위 점에 접할 때!`,
+            badge: `탐구 5-E · 📄 [킬러] 원 모양 종이를 현 AB를 접는 선으로 접어 호가 x축 위 점에 접할 때!`,
             hint: `슬라이더로 접힌 호를 확장해 보세요! 접힌 호의 일부는 <strong class="text-pink-300">원래 원과 반지름(r)이 완전히 똑같고 x축에 접하는 두 번째 원 O₂의 일부분</strong>입니다! 따라서 직선 $AB$는 두 원의 <strong class="text-amber-300">공통현(O₁ - O₂ = 0)</strong>입니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 접힌 호만 보기' : '🎬 접힌 호를 두 번째 원 O₂로 완전 복원하기!',
             p1Title: '원래 반지름 r=4', p2Title: '접점 위치 (2,0)',
             parts: [
               { id: 0, name: `🟦 원래 원 O₁: x² + y² = 4² = 16 (반지름 r = 4)`, desc: `중심 (0, 0), 반지름 4 인 기준 원`, val: `O₁: x²+y²=16`, color: CCOL.cyan, ok: true },
               { id: 1, name: `🩷 복원한 두 번째 원 O₂: 점 (2, 0)에서 x축에 접함!`, desc: `반지름이 똑같이 4 이므로 중심은 (2, 4)! ➔ (x-2)²+(y-4)²=16`, val: `중심 C₂(2, 4)!`, color: CCOL.pink, ok: true },
-              { id: 2, name: `🟨 접는 선 AB의 정체 = 두 원의 공통현 (O₁ - O₂ = 0)!`, desc: `두 원의 식을 빼면 x + 2y - 5 = 0 직선식이 3초 만에 도출!`, val: `x + 2y - 5 = 0`, color: CCOL.gold, ok: true }
+              { id: 2, name: `🟨 접는 선 AB의 정체 = 두 원의 공통현 (O₁ - O₂ = 0)!`, desc: `두 원의 식을 변끼리 빼면 직선의 방정식 x + 2y - 5 = 0 이 나옵니다!`, val: `x + 2y - 5 = 0`, color: CCOL.gold, ok: true }
             ],
             totalRes: `복원 원 O₂: (x-2)² + (y-4)² = 16  ➔  O₁ - O₂ = 0 빼면 직선 AB: x + 2y - 5 = 0!`,
-            rule: '종이접기 원의 황금 법칙: 접힌 호는 원래 원과 반지름이 똑같은 새로운 원의 일부이다!',
+            rule: '종이접기 원: 접힌 호는 원래 원과 반지름이 같은 새로운 원의 일부이다!',
             formulaHTML: `• ① $(2, 0)$에서 $x$축에 접하고 반지름이 $4$인 원: ${tex(`(x-2)^2 + (y-4)^2 = 16 \\iff x^2+y^2-4x-8y+4=0`)}<br/>• ② $x^2+y^2-16 = 0$에서 빼면 공통현 $AB$: ${tex(`\\mathbf{4x + 8y - 20 = 0 \\iff x + 2y - 5 = 0}`)}!`,
             notes: `• 이 원리를 모르면 풀이가 한 페이지를 넘어가지만, <strong>“접힌 원 중심 찾기 + 두 식 빼기($O_1 - O_2 = 0$)”</strong>를 알면 15초 만에 끝납니다!`
           };
         }
         return {
           badge: `탐구 5 · 🎬 두 원의 교점을 지나는 원과 직선 (O₁ + k O₂ = 0) — 왜 k = -1을 넣으면 공통현 직선이 될까?`,
-          hint: `슬라이더를 오른쪽(100%)으로 밀어보세요! $O_1 + k O_2 = 0$은 두 원의 교점 $A, B$를 지나는 새로운 원을 나타내는데, <strong class="text-amber-300">유일하게 k = -1일 때만 이차항(x², y²)이 완전히 소거되어 두 교점을 지나는 직선(공통현의 방정식)</strong>이 됩니다!`,
+          hint: `슬라이더를 오른쪽(100%)으로 밀어 보세요! $O_1 + k O_2 = 0$은 두 원의 교점 $A, B$를 지나는 새로운 원을 나타내는데, <strong class="text-amber-300">유일하게 k = -1일 때만 이차항(x², y²)이 완전히 소거되어 두 교점을 지나는 직선(공통현의 방정식)</strong>이 됩니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 교점 지나는 원(k≠-1) 보기' : '🎬 k ➔ -1 로 변하며 공통현 직선으로 펴지기!',
           p1Title: '큰 원 반지름 r', p2Title: '중심거리 d',
           parts: [
@@ -433,19 +433,19 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 6) {
         if (sub === 'tanExtVertical') {
           return {
-            badge: `탐구 6-A · ⚠️ [시험 오답 1위 함정] 원 밖의 점 P(3, 4)에서 원 x²+y²=9에 그은 두 접선과 숨은 수직접선!`,
-            hint: `원 밖의 점에서는 <strong>무조건 접선이 2개</strong> 그어집니다! 그런데 점 $(3, 4)$의 $x$좌표가 반지름 $r=3$과 같기 때문에 한 접선이 <strong class="text-rose-400">y축에 평행한 수직 직선 x = 3 (기울기 m이 존재하지 않음!)</strong>이 되어 방정식에서는 $m$이 1개만 나옵니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 두 접선 함께 보기' : '🎬 숨어 있는 수직 접선 x = 3 집중 발광!',
+            badge: `탐구 6-A · ⚠️ [함정] 원 밖의 점 P(3, 4)에서 원 x²+y²=9에 그은 두 접선과 숨은 수직접선!`,
+            hint: `원 밖의 점에서는 <strong>접선이 항상 2개</strong> 그어집니다! 그런데 점 $(3, 4)$의 $x$좌표가 반지름 $r=3$과 같기 때문에 한 접선이 <strong class="text-rose-400">y축에 평행한 수직 직선 x = 3 (기울기 m이 존재하지 않음!)</strong>이 되어 방정식에서는 $m$이 1개만 나옵니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 두 접선 함께 보기' : '🎬 y축에 평행한 접선 x = 3 강조',
             p1Title: '반지름 r = 3', p2Title: '외부 점 P(3, 4)',
             parts: [
               { id: 0, name: `🟦 기울기 공식(d = r)으로 구해지는 완만한 접선 ①`, desc: `y - 4 = m(x - 3) 에서 d = 3 풀면 m = 7/24 (1개만 나옴!)`, val: `7x-24y+75=0`, color: CCOL.cyan, ok: true },
               { id: 1, name: `🟥 공식에서 누락되는 숨은 수직 접선 ②: x = 3!`, desc: `⚠️ 수직선은 기울기 m이 무한대라 m 방정식에서 증발함!`, val: `x = 3 (필수!)`, color: CCOL.red, ok: true },
               { id: 2, name: `🟨 접선의 길이 PT = √(OP² - r²) = 4`, desc: `수직 접점 (3, 0)에서 점 P(3, 4)까지의 길이 = 4!`, val: `접선 길이 = 4`, color: CCOL.gold, ok: true }
             ],
-            totalRes: `원 밖의 점 P(3, 4)에서 그은 두 접선: ① 7x - 24y + 75 = 0,  ② x = 3 (절대 누락 금지!)`,
-            rule: '원 밖의 점에서 그은 접선은 무조건 2개다! m이 1개만 나오면 그림을 그려 수직선 x = x₁을 찾아라!',
+            totalRes: `원 밖의 점 P(3, 4)에서 그은 두 접선: ① 7x - 24y + 75 = 0,  ② x = 3 (빠뜨리지 않도록 주의!)`,
+            rule: '원 밖의 점에서 그은 접선은 2개이다! 기울기 m이 1개만 나오면 그림을 그려 y축에 평행한 직선 x = x₁도 접선인지 확인한다!',
             formulaHTML: `• 점 $(3, 4)$를 지나는 직선 $mx - y - 3m + 4 = 0$과 원점 사이 거리 $d = 3$:<br/>&nbsp;&nbsp;${tex(`\\dfrac{|-3m+4|}{\\sqrt{m^2+1}} = 3 \\implies 9m^2-24m+16 = 9m^2+9 \\implies \\mathbf{m = \\dfrac{7}{24}}`)} ($m^2$이 지워져 1개만 나옴 $\\implies \\mathbf{x=3}$ 추가!)`,
-            notes: `• 서술형에서 $m = \\dfrac{7}{24}$ 하나만 적어 반타작 감점당하는 학생이 매년 속출합니다! <strong>“원 밖의 점 접선은 무조건 2개!”</strong>를 명심하세요.`
+            notes: `• $m = \\dfrac{7}{24}$ 하나만 답으로 적으면 틀립니다! <strong>“원 밖의 점에서 그은 접선은 2개!”</strong>임을 기억하세요.`
           };
         }
         if (sub === 'tanPerp90') {
@@ -462,7 +462,7 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: `두 접선이 수직인 점 P의 자취: 대각선 OP = √2 r  ➔  x² + y² = 2r² = ${2 * r * r}`,
             rule: '원 밖의 점에서 그은 두 접선이 수직(90°) ⟺ 중심·접점·외부점이 정사각형 ⟺ d = √2 r!',
             formulaHTML: `• ${tex(`\\square OAPB\\text{는 한 변이 } r\\text{인 정사각형} \\implies \\overline{OP} = \\sqrt{2}r \\implies \\mathbf{x^2 + y^2 = 2r^2}`)}`,
-            notes: `• 복잡한 기울기 곱 $m_1 m_2 = -1$(근과 계수의 관계)로 풀지 말고, 무조건 <strong>“한 변이 $r$인 정사각형의 대각선 $d = \\sqrt{2}r$”</strong>로 3초 만에 푸세요!`
+            notes: `• 두 접선의 기울기 $m_1, m_2$가 $m_1 m_2 = -1$임을 이용해 풀 수도 있지만, <strong>“한 변이 $r$인 정사각형의 대각선 $d = \\sqrt{2}r$”</strong>를 이용하면 더 간단합니다!`
           };
         }
         return {
@@ -476,8 +476,8 @@ window.addEventListener('DOMContentLoaded', function () {
           ],
           totalRes: `기울기 m: y = mx ± r√(m²+1)  |  원 위의 점 (x₁, y₁): x₁x + y₁y = r²`,
           rule: '중심이 (a, b)인 원 위의 점 (x₁, y₁)에서의 접선: (x₁-a)(x-a) + (y₁-b)(y-b) = r²!',
-          formulaHTML: `• 모든 접선 문제는 공식을 잊어버려도 <strong>(원의 중심에서 접선까지의 거리 $d$) = (반지름 $r$)</strong> 식 하나로 100% 풀립니다!`,
-          notes: `• 문제에서 주어진 점이 <strong>“원 위의 점”</strong>인지 <strong>“원 밖의 점”</strong>인지 대입해서 먼저 확인하세요! 원 밖의 점에는 절대 $x_1 x + y_1 y = r^2$을 쓰면 안 됩니다(그 식은 극선의 방정식입니다).`
+          formulaHTML: `• 모든 접선 문제는 공식을 잊어버려도 <strong>(원의 중심에서 접선까지의 거리 $d$) = (반지름 $r$)</strong> 식 하나로 풀 수 있습니다!`,
+          notes: `• 문제에서 주어진 점이 <strong>“원 위의 점”</strong>인지 <strong>“원 밖의 점”</strong>인지 대입해서 먼저 확인하세요! 원 밖의 점에는 $x_1 x + y_1 y = r^2$을 접선의 방정식으로 쓰면 안 됩니다(이 식은 두 접점을 지나는 직선의 방정식이 됩니다).`
         };
       }
 
@@ -485,17 +485,17 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 7) {
         if (sub === 'polarChordCow' || sub === 'concyclicOAPB') {
           return {
-            badge: `탐구 7-C · 🐮 원 밖의 점 P에서 그은 두 접점 A, B를 잇는 현(극선)의 길이 — 직각삼각형 소(牛) 공식!`,
-            hint: `중심 $O$와 점 $P$를 잇는 선분 $OP(d=5)$는 현 $AB$를 수직이등분합니다! 직각삼각형 $\\triangle OAP(3\\text{-}4\\text{-}5)$에서 <strong class="text-amber-300">소(牛) 넓이 공식 OA(3) × AP(4) = OP(5) × AH</strong>를 쓰면 <strong class="text-pink-300">AH = 12/5 ➔ 현 AB = 24/5</strong>가 3초 만에 나옵니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 네 점 O,A,P,B 외접원 보기' : '🎬 직각삼각형 △OAP 소(牛) 공식 강조!',
+            badge: `탐구 7-C · 🐮 원 밖의 점 P에서 그은 두 접선의 접점 A, B를 잇는 현 AB의 길이 — 직각삼각형의 넓이 이용`,
+            hint: `중심 $O$와 점 $P$를 잇는 선분 $OP(d=5)$는 현 $AB$를 수직이등분합니다! 직각삼각형 $\\triangle OAP(3\\text{-}4\\text{-}5)$에서 <strong class="text-amber-300">직각삼각형의 넓이를 두 가지로 나타낸 식 OA(3) × AP(4) = OP(5) × AH</strong>를 쓰면 <strong class="text-pink-300">AH = 12/5 ➔ 현 AB = 24/5</strong>를 구할 수 있습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 네 점 O,A,P,B 외접원 보기' : '🎬 직각삼각형 △OAP의 넓이를 두 가지로 나타내기',
             p1Title: '반지름 r = 3', p2Title: '거리 OP = 5',
             parts: [
               { id: 0, name: `🟦 1단계: 피타고라스로 접선의 길이 AP 구하기`, desc: `OA = 3, OP = 5 이므로 접선 AP = √(5² - 3²) = 4!`, val: `접선 AP = 4`, color: CCOL.cyan, ok: true },
-              { id: 1, name: `🟨 2단계: 직각삼각형 △OAP에서 소(牛) 넓이 공식!`, desc: `OA(3) × AP(4) = OP(5) × AH  ➔  높이 AH = 12 / 5`, val: `AH = 2.4 (12/5)`, color: CCOL.gold, ok: true },
+              { id: 1, name: `🟨 2단계: 직각삼각형 △OAP의 넓이를 두 가지로 나타내기!`, desc: `OA(3) × AP(4) = OP(5) × AH  ➔  높이 AH = 12 / 5`, val: `AH = 2.4 (12/5)`, color: CCOL.gold, ok: true },
               { id: 2, name: `🩷 3단계: 두 접점 사이 현 AB = 2 × AH = 24 / 5!`, desc: `보너스: ∠OAP=∠OBP=90° 이므로 □OAPB 외접원 지름 = OP(5)!`, val: `현 AB = 24/5`, color: CCOL.pink, ok: true }
             ],
-            totalRes: `3-4-5 직각삼각형 △OAP 소 공식: 3 × 4 = 5 × AH  ➔  AH = 12/5  ➔  현 AB = 24/5`,
-            rule: '접점 현 AB 길이 = 극선의 방정식을 구하지 말고 무조건 직각삼각형 △OAP의 소(牛) 공식으로 푼다!',
+            totalRes: `3-4-5 직각삼각형 △OAP의 넓이: 3 × 4 = 5 × AH  ➔  AH = 12/5  ➔  현 AB = 24/5`,
+            rule: '접점 A, B를 잇는 현 AB의 길이는 직선의 방정식을 구하지 않고 직각삼각형 △OAP의 넓이를 두 가지로 나타내어 구한다!',
             formulaHTML: `• ${tex(`\\overline{OA}\\cdot\\overline{AP} = \\overline{OP}\\cdot\\overline{AH} \\implies 3\\times 4 = 5\\times\\overline{AH} \\implies \\overline{AH} = \\dfrac{12}{5} \\implies \\mathbf{\\overline{AB} = 2\\overline{AH} = \\dfrac{24}{5}}`)}`,
             notes: `• 또한 $\\angle OAP = \\angle OBP = 90^\\circ$이므로 네 점 $O, A, P, B$를 지나는 원의 <strong>지름은 선분 $OP$</strong>입니다!`
           };
@@ -509,16 +509,16 @@ window.addEventListener('DOMContentLoaded', function () {
           actionTxt: state.fold > 0.5 ? '🎬 접선 원래 위치로' : '🎬 접선 AB를 중심 C₂로 평행이동해 직각삼각형 완성!',
           p1Title: '두 반지름 (4, 1)', p2Title: '중심거리 d = 6',
           parts: [
-            { id: 0, name: `🟨 직각삼각형의 빗변 = 두 원의 중심거리 d (6)`, desc: `90° 직각이 접선 쪽에 있으므로 중심거리 C₁C₂가 무조건 빗변!`, val: `빗변 d = 6`, color: CCOL.gold, ok: true },
+            { id: 0, name: `🟨 직각삼각형의 빗변 = 두 원의 중심거리 d (6)`, desc: `90° 직각이 접선 쪽에 있으므로 중심거리 C₁C₂가 빗변!`, val: `빗변 d = 6`, color: CCOL.gold, ok: true },
             { id: 1, name: isInt ? `🩷 평행이동으로 합쳐진 직각변: r + r' = 3 + 1 = 4!` : `🟦 평행이동으로 남은 직각변: r - r' = 4 - 1 = 3!`, desc: isInt ? `안쪽 X자 접선은 평행이동하면 반지름끼리 더해짐(+)` : `바깥쪽 접선은 평행이동하면 반지름끼리 빼짐(-)`, val: isInt ? `r + r' = 4` : `r - r' = 3`, color: isInt ? CCOL.pink : CCOL.cyan, ok: true },
-            { id: 2, name: isInt ? `🟩 공통내접선 길이 L = √(6² - 4²) = √20 = 2√5` : `🟩 공통외접선 길이 L = √(6² - 3²) = √27 = 3√3`, desc: `피타고라스 정리로 1초 완성!`, val: isInt ? `L = 2√5` : `L = 3√3`, color: CCOL.green, ok: true }
+            { id: 2, name: isInt ? `🟩 공통내접선 길이 L = √(6² - 4²) = √20 = 2√5` : `🟩 공통외접선 길이 L = √(6² - 3²) = √27 = 3√3`, desc: `피타고라스 정리로 구함!`, val: isInt ? `L = 2√5` : `L = 3√3`, color: CCOL.green, ok: true }
           ],
           totalRes: isInt
             ? `공통내접선 길이: L = √(d² - (r + r')²) = √(6² - (3+1)²) = 2√5`
             : `공통외접선 길이: L = √(d² - (r - r')²) = √(6² - (4-1)²) = 3√3`,
           rule: '공통외접선은 반지름 차(r - r′), 공통내접선은 반지름 합(r + r′), 빗변은 언제나 중심거리 d!',
           formulaHTML: `• <strong>공통외접선</strong>: ${tex(`L = \\mathbf{\\sqrt{d^2 - (r-r')^2}}`)}${isInt ? '' : ` $= \\sqrt{6^2-(4-1)^2} = \\mathbf{3\\sqrt{3}}$`}<br/>• <strong>공통내접선</strong>: ${tex(`L = \\mathbf{\\sqrt{d^2 - (r+r')^2}}`)}${isInt ? ` $= \\sqrt{6^2-(3+1)^2} = \\mathbf{2\\sqrt{5}}$` : ''}`,
-          notes: `• 누가 빗변인지 헷갈릴 때는 <strong>“접점 $A, B$가 $90^\\circ$ 직각이므로 $90^\\circ$ 맞은편인 중심거리 $d$가 무조건 빗변”</strong>임을 기억하세요!`
+          notes: `• 누가 빗변인지 헷갈릴 때는 <strong>“접점 $A, B$가 $90^\\circ$ 직각이므로 $90^\\circ$ 맞은편인 중심거리 $d$가 빗변”</strong>임을 기억하세요!`
         };
       }
 
@@ -527,7 +527,7 @@ window.addEventListener('DOMContentLoaded', function () {
         return {
           badge: `탐구 8-B · ✂️ 원과 직사각형(또는 마름모)의 넓이를 동시에 이등분하는 직선의 방정식`,
           hint: `원의 넓이를 이등분하려면 <strong class="text-sky-300">원의 중심 C₁</strong>을 지나야 하고, 직사각형(평행사변형)의 넓이를 이등분하려면 <strong class="text-pink-300">두 대각선의 교점(중점) C₂</strong>를 지나야 합니다! 따라서 <strong class="text-amber-300">두 중심 C₁과 C₂를 곧장 잇는 직선</strong>이 정답입니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 두 중심 C₁ ↔ C₂ 관통 직선 발광!',
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 두 중심 C₁, C₂를 지나는 직선 강조',
           p1Title: '원 중심 (-2,-1)', p2Title: '사각형 중심 (2,3)',
           parts: [
             { id: 0, name: `🟦 원의 넓이 이등분 조건: 원의 중심 C₁(-2, -1) 통과`, desc: `모든 지름은 원의 넓이를 정확히 반으로 나눔`, val: `C₁(-2, -1)`, color: CCOL.cyan, ok: true },
@@ -549,27 +549,27 @@ window.addEventListener('DOMContentLoaded', function () {
           parts: [
             { id: 0, name: `🟦 원래 원 C: (x - 3)² + (y - 3)² = 2²`, desc: `x축 위에서 반사된 광선이 접하는 목표 원`, val: `중심 (3, 3)`, color: CCOL.cyan, ok: true },
             { id: 1, name: `🩷 x축 대칭이동한 거울 속 원 C′: (x - 3)² + (y + 3)² = 2²`, desc: `중심 (3, 3)을 x축 대칭 ➔ C'(3, -3), 반지름 r = 2 그대로!`, val: `대칭중심 (3,-3)`, color: CCOL.pink, ok: true },
-            { id: 2, name: `🟨 점 A(-4, 2)에서 대칭원 C′에 그은 일직선 접선!`, desc: `입사각 = 반사각 이므로 대칭원에 접하는 직선과 100% 일치!`, val: `d = r = 2 적용!`, color: CCOL.gold, ok: true }
+            { id: 2, name: `🟨 점 A(-4, 2)에서 대칭원 C′에 그은 일직선 접선!`, desc: `입사각 = 반사각 이므로 대칭원에 접하는 직선과 일치함!`, val: `d = r = 2 적용!`, color: CCOL.gold, ok: true }
           ],
           totalRes: `원을 x축 대칭시킨 C'(3, -3), r=2 에 점 A(-4, 2)에서 그은 접선으로 일직선 풀이!`,
-          rule: '빛의 반사 + 원 접선/최단거리 = 무조건 원을 거울 축 너머로 대칭이동시켜 일직선으로 푼다!',
-          formulaHTML: `• 빛이 날아간 총 거리(점 $A \\to x$축 $\\to$ 접점 $T$) 역시 대칭원 접점 $T'$까지의 접선 길이 ${tex(`\\mathbf{\\overline{AT'} = \\sqrt{\\overline{AC'}^2 - r^2}}`)}로 3초 만에 구해집니다!`,
-          notes: `• 점 $A$를 $x$축에 대칭이동시켜 $A'(-4, -2)$에서 원래 원 $C(3, 3)$에 접선을 그어도 결과는 100% 동일합니다!`
+          rule: '빛의 반사 + 원의 접선/최단거리: 원을 반사하는 축에 대하여 대칭이동하여 일직선으로 만들어 푼다!',
+          formulaHTML: `• 빛이 날아간 총 거리(점 $A \\to x$축 $\\to$ 접점 $T$) 역시 대칭원 접점 $T'$까지의 접선 길이 ${tex(`\\mathbf{\\overline{AT'} = \\sqrt{\\overline{AC'}^2 - r^2}}`)}로 구해집니다!`,
+          notes: `• 점 $A$를 $x$축에 대칭이동시켜 $A'(-4, -2)$에서 원래 원 $C(3, 3)$에 접선을 그어도 결과가 같습니다!`
         };
       }
       // pappusMinSq 기본
       return {
-        badge: `탐구 8-A · 🔥 [내신 1등급 킬러] 정점 A, B와 원 위의 점 P에 대하여 PA² + PB²의 최솟값 구하기!`,
-        hint: `점 $P$가 원을 따라 돌 때 $PA^2 + PB^2$이 언제 최소인지 따로따로 구하면 안 풀립니다! <strong class="text-amber-300">파푸스의 중선정리 PA² + PB² = 2(PM² + AM²)</strong>을 쓰면 $AM$은 고정이므로 <strong class="text-emerald-300">중점 M에서 원 위 점 P까지 거리 PM이 최소(d - r)일 때</strong>가 정답입니다!`,
-        actionTxt: state.fold > 0.5 ? '🎬 일반 위치 점 P 보기' : '🎬 점 P를 중선 최단거리 위치(d - r)로 이동!',
+        badge: `탐구 8-A · 🔥 [킬러] 정점 A, B와 원 위의 점 P에 대하여 PA² + PB²의 최솟값 구하기!`,
+        hint: `점 $P$가 원을 따라 돌 때 $PA^2 + PB^2$이 언제 최소인지 따로따로 구하기는 어렵습니다! <strong class="text-amber-300">선분 AB의 중점 M에 대하여 PA² + PB² = 2(PM² + AM²)</strong>(두 점 사이의 거리 공식으로 확인할 수 있습니다)을 쓰면 $AM$은 고정이므로 <strong class="text-emerald-300">중점 M에서 원 위 점 P까지 거리 PM이 최소(d - r)일 때</strong>가 정답입니다!`,
+        actionTxt: state.fold > 0.5 ? '🎬 일반 위치 점 P 보기' : '🎬 점 P를 중점 M에서 가장 가까운 위치(PM = d - r)로 이동',
         p1Title: '원 반지름 r = 2', p2Title: '중점 거리 d = 5',
         parts: [
-          { id: 0, name: `🟦 1단계: 선분 AB의 중점 M 구하기 (고정점!)`, desc: `중선정리: PA² + PB² = 2(PM² + AM²) 에서 AM=3 고정!`, val: `AM² = 9 고정`, color: CCOL.cyan, ok: true },
+          { id: 0, name: `🟦 1단계: 선분 AB의 중점 M 구하기 (고정점!)`, desc: `PA² + PB² = 2(PM² + AM²) 에서 AM=3 고정!`, val: `AM² = 9 고정`, color: CCOL.cyan, ok: true },
           { id: 1, name: `🩷 2단계: 중점 M에서 원 위 점 P까지 최단거리 PM`, desc: `중심~M 거리 d(5) - 반지름 r(2) = 5 - 2 = 3 (최대=5+2=7)`, val: `PM 최소 = 3`, color: CCOL.pink, ok: true },
           { id: 2, name: `🟨 3단계: PA² + PB²의 최솟값과 최댓값 완성!`, desc: `최솟값 = 2(3² + 3²) = 36  |  최댓값 = 2(7² + 3²) = 116!`, val: `최소=36, 최대=116`, color: CCOL.gold, ok: true }
         ],
         totalRes: `PA² + PB² = 2(PM² + AM²)  ➔  PM 최소 = d-r = 3 대입  ➔  최솟값 = 2(3² + 3²) = 36!`,
-        rule: '원 위의 점 P에 대해 (PA² + PB²) 최대·최소를 물으면 100% 파푸스의 중선정리 2(PM² + AM²)이다!',
+        rule: '원 위의 점 P에 대해 (PA² + PB²)의 최댓값·최솟값은 PA² + PB² = 2(PM² + AM²) (M은 선분 AB의 중점)에서 PM이 최대·최소일 때 구한다!',
         formulaHTML: `• ${tex(`\\overline{PA}^2 + \\overline{PB}^2 = 2(\\overline{PM}^2 + \\overline{AM}^2) \\ge 2\\{(d-r)^2 + \\overline{AM}^2\\} = 2(3^2 + 3^2) = \\mathbf{36}`)}`,
         notes: `• 만약 제곱합이 아니라 그냥 **$\\triangle PAB$의 무게중심 $G$가 그리는 자취**를 물으면, $PG : PM = 2 : 1$이므로 원의 반지름을 $\\dfrac{1}{3}$배로 줄인 원(반지름 $\\dfrac{1}{3}r$)이 됩니다!`
       };
@@ -788,7 +788,7 @@ window.addEventListener('DOMContentLoaded', function () {
       pdot(A, 'A(-3, 0)', CCOL.white, { x: -25, y: 20 });
       pdot(B, 'B(3, 0)', CCOL.white, { x: -18, y: 20 });
       pdot(M, 'M(1,0) [내분점]', CCOL.cyan, { x: -45, y: -14 });
-      pdot(N, 'N(9,0) [외분점]', CCOL.pink, { x: -30, y: 20 });
+      pdot(N, 'N(9,0) [선분 AB 바깥쪽]', CCOL.pink, { x: -30, y: 20 });
       pdot(C, 'C(5,0)', CCOL.gold, { x: -15, y: 20 });
       dragP(P, C, Math.PI * 1.6, 'P (PA : PB = 2 : 1)', CCOL.gold, { x: -35, y: -14 }, sub !== 'apolloMaxArea' && sub !== 'apolloMaxAngle'); // [2.0 수정] 점 P를 직접 끌기(각도가 고정된 두 장면 제외)
 
@@ -801,13 +801,13 @@ window.addEventListener('DOMContentLoaded', function () {
         ]);
         drawBottomTapeBanner(rect, '고정점 A와 원 위 점 P의 중점 M 자취: 중심은 (1,0), 반지름은 4의 절반인 2!');
       } else {
-        drawMiniOverlayBox(rect, '🛰️ 아폴로니오스의 원 (2 : 1)', [
+        drawMiniOverlayBox(rect, '🛰️ 거리의 비가 2 : 1인 점의 자취(원)', [
           { txt: '① 2:1 내분점 M = (1, 0)', col: '#38bdf8' },
-          { txt: '② 2:1 외분점 N = (9, 0)', col: '#f472b6' },
+          { txt: '② AN : BN = 2 : 1 (선분 AB 바깥쪽) N = (9, 0)', col: '#f472b6' },
           { txt: '③ 중심 C = MN 중점 = (5, 0)', col: '#fbbf24' },
           { txt: '④ 반지름 r = CM = 4', col: '#34d399' }
         ]);
-        drawBottomTapeBanner(rect, '아폴로니오스의 원 (PA:PB = 2:1): 내분점 M(1,0)과 외분점 N(9,0)을 지름의 양 끝으로 하는 원 (중심 (5,0), r=4)!');
+        drawBottomTapeBanner(rect, '거리의 비가 PA:PB = 2:1인 점의 자취: 내분점 M(1,0)과 선분 AB 바깥쪽의 점 N(9,0)을 지름의 양 끝으로 하는 원 (중심 (5,0), r=4)');
       }
     }
 
@@ -917,7 +917,7 @@ window.addEventListener('DOMContentLoaded', function () {
         pdot(C2, '복원한 원 중심 C₂(2,4)', CCOL.pink, { x: 12, y: -10 });
         pdot(touchPt, '접점 (2,0)', CCOL.gold, { x: -20, y: 22 });
 
-        drawBottomTapeBanner(rect, '종이접기 원의 비법: 접힌 호를 반지름이 똑같은 원 O₂로 복원한 뒤 O₁ - O₂ = 0 을 빼면 직선 AB 완성!');
+        drawBottomTapeBanner(rect, '종이접기 원: 접힌 호를 반지름이 같은 원 O₂로 나타낸 뒤 O₁ - O₂ = 0 으로 하면 직선 AB의 방정식이 된다!');
         return;
       }
 
@@ -997,10 +997,10 @@ window.addEventListener('DOMContentLoaded', function () {
           { txt: '점 P(3, 4)의 x좌표 = 반지름 3', col: '#fef08a' },
           { txt: '① 7x - 24y + 75 = 0 (m=7/24)', col: '#38bdf8' },
           { txt: '② x = 3 (기울기 무한대 수직선!)', col: '#f43f5e' },
-          { txt: '∴ 원 밖 접선은 무조건 2개!', col: '#34d399' }
+          { txt: '∴ 원 밖의 점에서 그은 접선은 2개!', col: '#34d399' }
         ]);
 
-        drawBottomTapeBanner(rect, '원 밖의 점 P(3, 4)에서 x²+y²=3²에 그은 접선: x좌표가 반지름(3)과 같을 때는 수직 접선 x = 3 을 절대 빼먹지 마세요!');
+        drawBottomTapeBanner(rect, '원 밖의 점 P(3, 4)에서 x²+y²=3²에 그은 접선: x좌표가 반지름(3)과 같을 때는 y축에 평행한 접선 x = 3 도 빠뜨리지 마세요!');
         return;
       }
 
@@ -1091,7 +1091,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ptag((A.x + P.x) / 2 + 18, (A.y + P.y) / 2 - 8, '접선 AP = 4', CCOL.cyan, 13.5);
         ptag(H.x - 42, (A.y + H.y) / 2, 'AH = 12/5', CCOL.pink, 13.5);
 
-        drawBottomTapeBanner(rect, '극선(현 AB) 길이 3초 암산: 직각삼각형 △OAP(3-4-5) 소(牛) 공식 3 × 4 = 5 × AH ➔ AH = 12/5 ➔ 현 AB = 24/5!');
+        drawBottomTapeBanner(rect, '현 AB의 길이: 직각삼각형 △OAP(3-4-5)의 넓이 3 × 4 = 5 × AH ➔ AH = 12/5 ➔ 현 AB = 24/5');
         return;
       }
 
@@ -1232,15 +1232,15 @@ window.addEventListener('DOMContentLoaded', function () {
       pdot(M, 'M (AB의 중점!)', CCOL.cyan, { x: 12, y: 18 });
       pdot(P, state.fold > 0.8 ? 'P (PM = d-r 최소!)' : 'P(원 위의 점)', CCOL.gold, { x: -45, y: -14 });
 
-      drawBottomTapeBanner(rect, '파푸스의 중선정리: PA² + PB² = 2(PM² + AM²) ➔ 중점 M에서 원까지 최단거리 PM = d - r 일 때 최소!');
+      drawBottomTapeBanner(rect, 'PA² + PB² = 2(PM² + AM²) (M은 선분 AB의 중점) ➔ PM이 가장 짧은 d - r 일 때 최소!');
     }
 
   /* ======================================================================
      2.0 셸 연결 (새로 작성한 부분)
      ====================================================================== */
   const RENDER = { 1: renderMode1CircleBirth, 2: renderMode2AxisTouch, 3: renderMode3Apollonius, 4: renderMode4LineAndChord, 5: renderMode5TwoCirclesAndChord, 6: renderMode6Tangents, 7: renderMode7CommonTangents, 8: renderMode8KillerApplied };
-  const TABS = ['원의 탄생·표준형·지름', '축에 접하는 원·부호함정', '아폴로니오스의 원·자취', '원과 직선 (d vs r·현)', '두 원 위치·공통현(O₁-O₂)', '접선의 방정식 3대 유형', '공통외접선·내접선·극선', '킬러 응용 (중선·이등분·반사)'];
-  const SHORT = ['원의 탄생', '축에 접하는 원', '아폴로니오스', '원과 직선', '두 원·공통현', '접선', '공통접선', '킬러 응용'];
+  const TABS = ['원의 탄생·표준형·지름', '축에 접하는 원·부호함정', '거리의 비가 일정한 점의 자취', '원과 직선 (d vs r·현)', '두 원 위치·공통현(O₁-O₂)', '접선의 방정식 3대 유형', '공통외접선·공통내접선·접점을 잇는 현', '킬러 응용 (중점·이등분·반사)'];
+  const SHORT = ['원의 탄생', '축에 접하는 원', '거리의 비 자취', '원과 직선', '두 원·공통현', '접선', '공통접선', '킬러 응용'];
   const QUESTIONS = [
     '원의 방정식 (x−a)² + (y−b)² = r² 은 어떤 피타고라스 관계에서 나올까?',
     '좌표축에 접하는 원의 반지름은 중심의 좌표와 어떤 관계일까?',
@@ -1249,7 +1249,7 @@ window.addEventListener('DOMContentLoaded', function () {
     '두 원의 교점을 지나는 도형은 O₁ + kO₂ = 0 으로 어떻게 나타낼까?',
     '원 밖의 한 점에서 접선을 그으면, 접선은 몇 개이고 어떻게 구할까?',
     '두 원의 공통접선의 길이는 어떤 직각삼각형으로 구할 수 있을까?',
-    '원 위의 점과 정점 사이 거리 문제를 중선정리·대칭이동으로 어떻게 단순하게 풀까?'
+    '원 위의 점과 두 정점 사이의 거리에 관한 문제를 중점·대칭이동으로 어떻게 간단히 풀까?'
   ];
   // 이 장면에서 진행(0→100%)이 실제로 그림을 바꾸는 장면만 슬라이더·시연 버튼을 보여 줍니다.
   const FOLD = new Set(['stdDef', 'generalForm', 'diamEnds', 'apolloCircle', 'midpointLocus', 'chordLength', 'dVsR', 'pencilK', 'commonChordLen', 'twoPos5', 'bisectCircum', 'tanPerp90', 'extCommonTan', 'intCommonTan', 'polarChordCow', 'pappusMinSq']);
@@ -1292,7 +1292,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id, title: label, short: label, reviewTab: true, autoFit: true,
       question: QUESTIONS[m - 1],
-      notesTitle: '시험장 오답 함정 & 3초 직관',
+      notesTitle: '오답 함정과 풀이 요령',
       enter: (s) => {
         // 원본 setMode / setSubType 의 초기화 규칙 그대로(진행 0%, 렌즈가 없는 장면이면 전체 구조)
         s.fold = 0;
@@ -1305,7 +1305,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (id === 'stdDef' || m === 4) RAD_VALS.forEach((v) => out.push({ group: '반지름 r', label: `r=${v}`, apply: (st) => { st.r = v; }, on: (st) => st.r === v }));
         if (m === 4) DIST_VALS.forEach((v) => out.push({ group: '중심~직선 거리 d', label: `d=${v}`, apply: (st) => { st.d = v; }, on: (st) => st.d === v }));
         const lenses = lensList(m, id);
-        if (lenses.length) LENSES.filter(([k]) => lenses.includes(k)).forEach(([k, lbl]) => out.push({ group: '관찰 렌즈', label: lbl, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
+        if (lenses.length) LENSES.filter(([k]) => lenses.includes(k)).forEach(([k, lbl]) => out.push({ group: '보기 선택', label: lbl, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
         return out;
       },
       actions: () => {
