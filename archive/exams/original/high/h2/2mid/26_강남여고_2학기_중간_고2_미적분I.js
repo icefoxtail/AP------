@@ -1,4 +1,3 @@
-// Original exam CREATE candidate / R1 blindness as applicable. No release approval.
 window.examTitle = "26_강남여고_2학기_중간_고2_미적분I";
 window.questionBank = [
   {
