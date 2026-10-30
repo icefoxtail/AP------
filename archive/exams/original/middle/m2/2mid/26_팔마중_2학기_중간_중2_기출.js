@@ -674,7 +674,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-3",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q13.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각이등변삼각형 ABC에서 AC=AD는 같은 눈금, BC=AC는 변 BC 아래 지시선 라벨로 나타내고 ∠C=90°, DE⊥AB, ∠B=45°를 표시했다. 보조선 CD를 그어 ∠ACD=∠CDA=67.5°, ∠DCE=∠CDE(같은 이중 호)=22.5°이고, DE=CE=BD가 이중 눈금, CE=6cm이다.",
+    "solutionImageCaption": "보조선 CD를 그으면 ∠DCE=∠CDE=22.5°이므로 DE=CE이고, ∠B=45°이므로 BD=DE",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
