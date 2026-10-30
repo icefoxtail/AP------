@@ -1,3 +1,7 @@
+## CURRENT 공통 메타 진입 (2026-10-30)
+
+- 신규 CREATE/R1/R2/R3는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 적용한다. Primary RPM·CrossConcept/Condition/Integration은 실제 교육과정 풀이로 판정, PT/TPL은 공식 Resolver만 투영한다. 기존 역할별 원본·블라인드·출고 권한/품질 계약을 유지한다.
+
 # JS Archive / Problem Bank — JS 신규·수정·검수 시 Metadata 의미 판정 계약 (CURRENT v1.1)
 
 ## 적용 범위 및 문서 라우팅 (2026-10-22)

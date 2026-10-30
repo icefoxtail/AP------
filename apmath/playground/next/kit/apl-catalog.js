@@ -198,9 +198,9 @@ window.APLab.catalog = {
    "order": 1,
    "title": "삼각형 경험도감",
    "short": "삼각형",
-   "summary": "합동·각·내심과 외심·고난도 보조선 62개 배치 탐구.",
-   "keywords": "삼각형 합동 내심 외심 수심 보조선 62장면 삼각형 경험도감 중2 · 단원 01 62장면",
-   "badge": "62장면",
+   "summary": "합동·각·내심과 외심·고난도 보조선 48개 배치 탐구.",
+   "keywords": "삼각형 합동 내심 외심 수심 보조선 48장면 삼각형 경험도감 중2 · 단원 01 48장면",
+   "badge": "48장면",
    "scenes": [
     "이등변 & 4대선",
     "직각합동 RHA/RHS",
@@ -212,6 +212,7 @@ window.APLab.catalog = {
     "고난도 각 & 보조선"
    ],
    "legacy": "labs/g8/triangles-atlas.html",
+   "next": "next/labs/g8-triangles.html",
    "glyph": "<path d=\"M38 8 L76 68 L6 68 Z\"/><path d=\"M38 8 L38 68\"/><path d=\"M30 68 V58 H38\"/><circle cx=\"38\" cy=\"38\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
    "sceneTotal": 48
   },
@@ -223,9 +224,9 @@ window.APLab.catalog = {
    "order": 2,
    "title": "사각형 경험도감",
    "short": "사각형",
-   "summary": "판별·넓이·대각선·반례·회전 41개 장면. 사각형 분류 완전 정복.",
-   "keywords": "사각형 평행사변형 마름모 직사각형 대각선 판별 넓이 41장면 사각형 경험도감 중2 · 단원 02 41장면",
-   "badge": "41장면",
+   "summary": "판별·넓이·대각선·반례·회전 30개 장면. 사각형 분류 완전 정복.",
+   "keywords": "사각형 평행사변형 마름모 직사각형 대각선 판별 넓이 30장면 사각형 경험도감 중2 · 단원 02 30장면",
+   "badge": "30장면",
    "scenes": [
     "평행사변형 성질·5대 판정",
     "사각형 족보 진화 & 등변사다리꼴",
@@ -235,6 +236,7 @@ window.APLab.catalog = {
     "가짜 조건 반례 연구소 (오답 1위)"
    ],
    "legacy": "labs/g8/quadrilaterals-atlas.html",
+   "next": "next/labs/g8-quadrilaterals.html",
    "glyph": "<path d=\"M10 24 L58 14 L74 58 L26 68 Z\"/><path d=\"M10 24 L74 58 M58 14 L26 68\"/><circle cx=\"42\" cy=\"41\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
    "sceneTotal": 30
   },
@@ -247,8 +249,8 @@ window.APLab.catalog = {
    "title": "닮음 경험도감",
    "short": "닮음",
    "summary": "숨은 삼각형 분리·정렬·대응·비. 비율의 시각적 이해.",
-   "keywords": "닮음 비 삼각형 분리 정렬 대응 44장면 닮음 경험도감 중2 · 단원 03 44장면",
-   "badge": "44장면",
+   "keywords": "닮음 비 삼각형 분리 정렬 대응 31장면 닮음 경험도감 중2 · 단원 03 31장면",
+   "badge": "31장면",
    "scenes": [
     "포개진 삼각형·반전·SAS",
     "모래시계·평행선·각이등분선",
@@ -258,6 +260,7 @@ window.APLab.catalog = {
     "차원비(길이·넓이·부피) & 원뿔절단"
    ],
    "legacy": "labs/g8/similarity-atlas.html",
+   "next": "next/labs/g8-similarity.html",
    "glyph": "<path d=\"M8 58 L28 20 L48 58 Z\"/><path d=\"M50 68 L62 42 L76 68 Z\"/><path d=\"M8 58 L50 68 M28 20 L62 42\" stroke-dasharray=\"3 4\"/>",
    "sceneTotal": 31
   },
@@ -283,8 +286,9 @@ window.APLab.catalog = {
     "종이접기 & 최단거리 응용"
    ],
    "legacy": "labs/g8/피타고라스.html",
+   "next": "next/labs/g8-pythagoras.html",
    "glyph": "<path d=\"M12 64 L12 16 L60 64 Z\"/><path d=\"M12 16 L12 16 M12 16 L22 16 L22 26 L12 26\"/> <path d=\"M12 64 L12 54 L22 54\" stroke-dasharray=\"3 3\"/>",
-   "sceneTotal": 39
+   "sceneTotal": 40
   },
   {
    "id": "g9-trig-ratio",
@@ -332,6 +336,7 @@ window.APLab.catalog = {
     "원과 비례(할선·접선) & 착시반례"
    ],
    "legacy": "labs/g9/원.html",
+   "next": "next/labs/g9-circle.html",
    "glyph": "<circle cx=\"40\" cy=\"38\" r=\"28\"/><path d=\"M12 38 L40 10 L68 38\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
    "sceneTotal": 30
   },
@@ -619,6 +624,7 @@ window.APLab.catalog = {
     "사잇값 정리(IVT)"
    ],
    "legacy": "labs/미적분1/함수의 극한·연속.html",
+   "next": "next/labs/calc1-limits.html",
    "glyph": "<path d=\"M8 52 Q24 52 36 28\"/><path d=\"M44 28 Q56 52 72 52\"/><circle cx=\"40\" cy=\"28\" r=\"4\" stroke=\"currentColor\" fill=\"var(--surface2)\"/> <circle cx=\"40\" cy=\"28\" r=\"2\" fill=\"currentColor\" stroke=\"none\" opacity=\".3\"/>"
   },
   {
@@ -662,6 +668,7 @@ window.APLab.catalog = {
     "g(x)=∫ₐˣ f(t)dt 추론"
    ],
    "legacy": "labs/미적분1/도함수 ↔ 원함수.html",
+   "next": "next/labs/calc1-derivative-shape.html",
    "glyph": "<path d=\"M8 58 Q20 10 40 38 Q60 66 72 18\"/><path d=\"M8 50 Q20 46 40 40 Q60 34 72 30\" stroke-dasharray=\"3 3\"/>"
   },
   {
@@ -683,6 +690,7 @@ window.APLab.catalog = {
     "외부점 접선 개수(1·2·3)"
    ],
    "legacy": "labs/미적분1/삼차함수 비율관계.html",
+   "next": "next/labs/calc1-cubic.html",
    "glyph": "<path d=\"M8 60 Q24 12 40 38 Q56 64 72 16\"/>"
   },
   {
@@ -704,6 +712,7 @@ window.APLab.catalog = {
     "|f(x)-k| 미분가능성"
    ],
    "legacy": "labs/미적분1/사차함수 비율관계.html",
+   "next": "next/labs/calc1-quartic.html",
    "glyph": "<path d=\"M8 50 Q18 8 28 38 Q40 68 52 30 Q62 8 72 48\"/>"
   },
   {
@@ -725,6 +734,7 @@ window.APLab.catalog = {
     "f(g(x))=k 2단계 치환"
    ],
    "legacy": "labs/미적분1/합성함수·절댓값 그래프.html",
+   "next": "next/labs/calc1-composite.html",
    "glyph": "<path d=\"M8 64 L24 24 L40 64 L56 24 L72 64\"/>"
   },
   {
@@ -746,6 +756,7 @@ window.APLab.catalog = {
     "역함수 정적분 퍼즐"
    ],
    "legacy": "labs/미적분1/정적분과 넓이.html",
+   "next": "next/labs/calc1-integral.html",
    "glyph": "<path d=\"M8 64 Q40 4 72 64 Z\" fill=\"currentColor\" fill-opacity=\".12\"/> <path d=\"M8 64 Q40 4 72 64\"/> <line x1=\"8\" y1=\"64\" x2=\"72\" y2=\"64\"/>"
   },
   {
@@ -767,6 +778,7 @@ window.APLab.catalog = {
     "위치 x(t) vs 속도 v(t) 함정"
    ],
    "legacy": "labs/미적분1/속도·가속도·이동거리.html",
+   "next": "next/labs/calc1-motion.html",
    "glyph": "<path d=\"M8 60 Q20 58 32 30 Q44 8 56 30 Q68 50 72 48\"/><path d=\"M8 50 L72 50\" stroke-dasharray=\"3 3\"/><circle cx=\"44\" cy=\"12\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {

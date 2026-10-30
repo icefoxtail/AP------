@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>사각형 경험도감 · AP Math 실험실</title>
+<meta name="description" content="중2 사각형의 성질: 평행사변형 5대 판정, 사각형 족보 진화와 등변사다리꼴, 등적변형·나비 넓이·내부 점 P, 중점연결(바리뇽), 종이접기와 정사각형 회전, 가짜 조건 반례까지 6개 탐구관 30개 장면">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<script>
+/* ==========================================================================
+   중2 · 사각형 경험도감 (AP Math Lab 2.0 이식본) — 6개 탐구관 × 30개 장면
+   원본: labs/g8/quadrilaterals-atlas.html
+   이식 방식: "호환 이식" — 원본의 내용(getSpec)과 그리기 코드(drawQuadMasterScene)를
+   글자 그대로 옮기고, 이 실험실이 쓰던 그리기 함수 이름(qpoly·qline·qdot·qticks·qarrows·qright·qangle)만
+   아래 어댑터가 새 무대 엔진(APLab.Board)에 연결합니다. (삼각비의 pline·ppoly 계열과 이름이 달라 이 파일 안에 둡니다.)
+   원본과 다른 점 (코드 안에는 모두 [2.0 수정] 주석이 있습니다)
+   - 그림 오류 수정(원본 그림이 라벨·해설과 어긋난 곳)
+       ① 평행사변형 5장면: 그림 속 ∠B가 라벨(60°·70°·110°)보다 작게/크게 그려짐(70°→65°, 60°→53°)
+          → 기울기 계수 0.65를 0.5로 바꿔 ∠B = 라벨 값이 정확히 맞음
+       ② 대각선 조합기·직사각형/마름모/정사각형 진화: 교각 θ 라벨이 ∠AOB(= 180° - θ)에 붙어 있었음 → ∠BOC 에 붙임
+       ③ 등적변형 3-A: 설명·띠는 △ABC : △ACD = 60 : 40 인데 그림은 44 : 56 → D 위치를 옮겨 59.9 : 40.1
+       ④ 등적변형 3-B: 설명은 밑변 16 : 높이 10 (1.6) 인데 그림은 190 : 155 (1.2) → 밑변을 248로
+       ⑤ 반례5(알파벳 순서 함정): 해설은 AB=BC, CD=DA 인데 그림 틱은 AB=AD, CB=CD → 꼭짓점 이름을 돌려 해설과 일치
+       ⑦ 종이접기 5-A: 접은 각·엇각 이름이 서로 바뀌어 있었음(해설은 ∠EAC = ∠BAC 라 했으나 그림에서 33° ≠ 57°)
+         → 접은 각 = C쪽 ∠ECA = ∠BCA, 엇각 = A쪽 ∠EAC = ∠BCA 로 해설·그림 라벨을 맞춤
+       ⑧ 요약 띠(tape) 칸 글자가 휴대폰에서 말줄임으로 잘리던 6장면 → 칸 글자만 짧게(전체 문장은 띠 제목에 그대로)
+       ⑥ 반례1·3: M(AC중점)·N(BD중점) 이름표가 두 점 사이 가운데에서 겹쳐 어느 점 이름인지 모호 → 각자 자기 점 아래로
+   - 캔버스를 직접 그리던 곳(회전 삼각형 2곳, 나비 날개 넓이 글자)은 원본 코드를 그대로 두고 ctx 도우미가
+     점 변환·무대 글자로 바꿉니다(회전해도 점 이름은 똑바로 서 있음)
+   - 꼭짓점 D 끌기(탐구 1-C)는 무대의 끌 수 있는 점으로, '도형 변형 시연'은 변환 진행 슬라이더·재생 버튼으로
+   - 관찰 렌즈(전체/각도·평행/변·대각선/보조선)는 그대로 동작: 원본의 conceptSwitch 규칙을 어댑터가 그대로 적용하고
+     원본 LENS_OFF 표로 효과 없는 렌즈 버튼은 숨김
+   - 가독성: 이름표(점 이름·각 이름)가 서로·점과 겹치지 않게 원본 위치를 우선하되 겹치면 빈자리로 이동,
+     긴 점 이름은 두 줄로, ➔ ⭕ ❌ 는 → ○ × 로, 글자는 휴대폰에서도 92% 아래로 줄이지 않음. 모든 장면 미리보기는 글자 없이 그림만
+   - 효과가 없던 조작(해당 장면에서 쓰이지 않는 각·대각선비·변환 버튼)은 표시하지 않음
+   - 미니 상자 없음, 하단 띠(tape)는 무대 아래 요약 띠로 이동
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+
+  /* ===== 원본 그대로: 숫자 서식, 색 상수, 벡터 도우미 (원본 346–386행) ===== */
+    function fmtNum(v) {
+      if (Math.abs(v - Math.round(v)) < 1e-6) return String(Math.round(v));
+      return Number(v.toFixed(2)).toString();
+    }
+
+    const QCOL = {
+      cyan: '#38bdf8',
+      pink: '#f472b6',
+      green: '#34d399',
+      gold: '#fbbf24',
+      white: '#f1f5f9',
+      red: '#fb7185'
+    };
+
+    const qpt = (x, y) => ({ x, y });
+    const qmid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+    const qlerp = (a, b, t) => ({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+    const qdist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+    const qsub = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
+    const qadd = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
+    const qmul = (v, k) => ({ x: v.x * k, y: v.y * k });
+    const qnorm = (v) => { const l = Math.hypot(v.x, v.y) || 1; return { x: v.x / l, y: v.y / l }; };
+
+    function qproject(p, a, b) {
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const l2 = dx * dx + dy * dy || 1;
+      const u = ((p.x - a.x) * dx + (p.y - a.y) * dy) / l2;
+      return { x: a.x + u * dx, y: a.y + u * dy };
+    }
+    function qreflect(p, a, b) {
+      const f = qproject(p, a, b);
+      return { x: 2 * f.x - p.x, y: 2 * f.y - p.y };
+    }
+    function qintersect(a, b, c, d) {
+      const u = qsub(b, a), v = qsub(d, c);
+      const det = u.x * v.y - u.y * v.x;
+      if (Math.abs(det) < 1e-9) return qmid(a, c);
+      const w = qsub(c, a);
+      const t = (w.x * v.y - w.y * v.x) / det;
+      return qadd(a, qmul(u, t));
+    }
+
+
+  /* ===== 원본 상태 객체(이름 그대로) — 매 프레임 2.0 셸 상태에서 채웁니다 ===== */
+  const state = {
+    mode: 1,
+    subType: { 1: 'paraDefSides', 2: 'evoRect', 3: 'quadToTri', 4: 'varignonGen', 5: 'foldTape', 6: 'counterIsoTrap' },
+    conceptSwitch: 'all', activePartIdx: -1, fold: 0.0, foldTarget: null,
+    angPreset: 70, ratioPreset: 0.75, scale: 1.0, panX: 0, panY: 0,
+    customDOffset: null
+  };
+  const ANG_PRESETS = [60, 70, 90, 110];
+  const RATIO_PRESETS = [
+    { val: 0.65, label: '0.65(≠)' },
+    { val: 0.75, label: '0.75(≠)' },
+    { val: 1.00, label: '1.0(AC=BD!)' },
+    { val: 1.25, label: '1.25(≠)' }
+  ];
+
+  /* ===== 원본 그대로: 세부 시나리오 목록 (원본 429–472행) ===== */
+    const SUB_MENUS = {
+      1: [
+        { id: 'paraDefSides', label: '📌 정의 & 성질1: 대각선 합동 (△ABC≡△CDA)' },
+        { id: 'paraAngles', label: '📐 성질2 & 각이등분선 (이웃각 180°➔수직 90°!)' },
+        { id: 'paraDiag', label: '✂️ 성질3: 대각선 이등분 & 교점 O 통과선 (OE=OF)' },
+        { id: 'paraCond5', label: '🎯 판정 5번: 한 쌍 평행 + 그 길이 같음' },
+        { id: 'paraHidden', label: '🪄 평행사변형 속 새로운 평행사변형 (수선 E,F)' }
+      ],
+      2: [
+        { id: 'evoRect', label: '▭ 평행사변형 ➔ 직사각형 진화 (AC=BD, ∠A=90°)' },
+        { id: 'evoRhombus', label: '❖ 평행사변형 ➔ 마름모 진화 (AC⊥BD, AB=BC)' },
+        { id: 'evoSquare', label: '🟩 직사각형 + 마름모 합체 ➔ 정사각형 완성!' },
+        { id: 'isoTrapMaster', label: '🏛️ 등변사다리꼴 정의·성질 & 전설의 2대 보조선!' },
+        { id: 'diagSynthesis', label: '🎛️ 대각선 3대 속성 조합기 (이등분×길이×수직)' }
+      ],
+      3: [
+        { id: 'quadToTri', label: '✂️ [서술형 1위] 사각형 ABCD = 삼각형 ABE 작도!' },
+        { id: 'equiSlide', label: '🛷 평행선 미끄럼틀 등적변형 (넓이 100% 보존)' },
+        { id: 'butterflyWing', label: '🦋 사다리꼴 나비 날개 넓이 (S₁=S₂ & S₁·S₂=위·아래)' },
+        { id: 'insidePointP', label: '🎯 평행사변형 내부 점 P (위+아래 = 좌+우 = ½S!)' },
+        { id: 'paraHeightSplit', label: '📐 평행사변형 변 위의 점 E (△EBC = ½S)' }
+      ],
+      4: [
+        { id: 'varignonGen', label: '① 일반/오목사각형 중점연결 ➔ 항상 평행사변형!' },
+        { id: 'varignonRectToRhomb', label: '② 직사각형(AC=BD) 중점연결 ➔ 마름모!' },
+        { id: 'varignonIsoToRhomb', label: '③ [시험 1위] 등변사다리꼴 중점연결 ➔ 마름모!' },
+        { id: 'varignonRhombToRect', label: '④ 마름모(AC⊥BD) 중점연결 ➔ 직사각형!' },
+        { id: 'varignonSquareToSquare', label: '⑤ 정사각형 중점연결 ➔ 정사각형 (넓이 ½ 접기)' }
+      ],
+      5: [
+        { id: 'foldTape', label: '🎗️ 직사각형 종이테이프 대각선 접기 (EA=EC 이등변!)' },
+        { id: 'foldVertexToVertex', label: '📄 꼭짓점 C를 A에 겹치게 접기 ➔ 마름모 AECF!' },
+        { id: 'squarePerpLines', label: '✖️ 정사각형 속 수직선분 (AE⊥BF ➔ △ABE≡△BCF)' },
+        { id: 'squareInnerRot', label: '🌀 중심 O 회전 정사각형 (겹치는 넓이 항상 ¼!)' },
+        { id: 'squareEquiTri', label: '🔺 정사각형+정삼각형 결합 각도 킬러 (75°·150°!)' }
+      ],
+      6: [
+        { id: 'counterIsoTrap', label: '💥 반례1: AD∥BC + AB=CD (등변사다리꼴 함정!)' },
+        { id: 'counterKite', label: '💥 반례2: 대각선만 수직 AC⊥BD (연꼴 함정!)' },
+        { id: 'counterDiagEqual', label: '💥 반례3: 대각선 길이만 같음 AC=BD (직사각형 ❌)' },
+        { id: 'counterHalfBisect', label: '💥 반례4: 한쪽 대각선만 이등분 OB=OD (OA≠OC)' },
+        { id: 'counterFakeRhomb', label: '💥 반례5: 이웃한 두 쌍 같음(연꼴) vs 대변 같음(평사)' }
+      ]
+    };
+
+
+  /* ======================================================================
+     [2.0] 어댑터: 원본의 q* 그리기 함수 → 새 무대 엔진
+     - 원본의 규칙을 그대로 따릅니다: partIdx(-1=없음) → 강조 조각, 관찰 렌즈(conceptSwitch)에 따라 표시/숨김
+       (틱 | 은 전체·변, 평행 화살표 > 와 직각·각 표시는 전체·각도 렌즈에서만)
+     - 그림 안 글자는 화면 픽셀 크기로 그려져 확대·휴대폰에서도 읽히고, 자동 맞춤 계산에 글자 상자가 들어갑니다
+     - [가독성] 원본은 글자 위치를 고정 오프셋으로 찍어 화면이 작으면 이름표끼리·점과 겹쳤습니다.
+       장면을 두 번 훑어(1회: 점 위치 수집, 2회: 그리기) 점 이름·각 이름이 서로, 그리고 점과 겹치지 않도록
+       원본 위치를 우선하고 겹치면 가까운 빈자리로 옮깁니다. 긴 이름은 '(' 앞뒤 두 줄로 나눕니다.
+     ====================================================================== */
+  let BOARD = null;
+  let CUR = null; // 지금 그리는 셸 상태(끌기 점이 값을 되돌려 쓰는 곳)
+  const PL = { pass: 2, obst: [], placed: [] }; // pass 1: 점 수집 / pass 2: 그리기. obst=점 상자, placed=이미 놓은 글자 상자(화면 좌표)
+  const partOf = (p) => (p == null || p < 0 ? undefined : p);
+  const dashOf = (d) => (Array.isArray(d) && d.length ? d : null);
+  // 그림 안 글자: 원본의 ➔ ⭕ ❌ 는 글꼴에 따라 깨질 수 있어 → ○ × 로(국내 교과서 표기), 그 밖의 이모지는 뗍니다.
+  const cv = (s) => APLab.stripEmoji(String(s == null ? '' : s).replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×'));
+  const lensOK = (...names) => names.includes(state.conceptSwitch);
+
+  /* 원본의 ctx.save/translate/rotate/restore/fillText 를 그대로 두기 위한 도우미:
+     회전·이동은 그림 좌표의 '점 변환'으로 바꾸고(글자는 똑바로), fillText 는 무대 글자로 그립니다. */
+  const IDENT = [1, 0, 0, 1, 0, 0];
+  const XF = { m: IDENT, stack: [] }; // [a,b,c,d,e,f]: x' = a·x + c·y + e, y' = b·x + d·y + f (캔버스와 같은 방식)
+  const rp = (p) => {
+    if (!p) return p;
+    const [a, b, c, d, e, f] = XF.m;
+    return XF.m === IDENT ? p : { x: a * p.x + c * p.y + e, y: b * p.x + d * p.y + f };
+  };
+  const ctx = {
+    fillStyle: '#fff', font: '', textAlign: 'left',
+    save() { XF.stack.push(XF.m); },
+    restore() { XF.m = XF.stack.pop() || IDENT; },
+    translate(x, y) { const [a, b, c, d, e, f] = XF.m; XF.m = [a, b, c, d, a * x + c * y + e, b * x + d * y + f]; },
+    rotate(r) { const [a, b, c, d, e, f] = XF.m, co = Math.cos(r), si = Math.sin(r); XF.m = [a * co + c * si, b * co + d * si, -a * si + c * co, -b * si + d * co, e, f]; },
+    fillText(str, x, y) { qtext({ x, y }, str, this.fillStyle); }
+  };
+
+  const twCache = new Map();
+  function tw(str, size, weight) { // 글자 폭(px)
+    const B = BOARD, key = `${weight}|${size.toFixed(2)}|${B.font}|${str}`;
+    let w = twCache.get(key);
+    if (w == null) {
+      const c = B.ctx;
+      c.save();
+      c.font = `${weight} ${size}px ${B.font}`;
+      w = c.measureText(str).width;
+      c.restore();
+      if (twCache.size > 4000) twCache.clear();
+      twCache.set(key, w);
+    }
+    return w;
+  }
+  // 글자 크기: 칸이 작으면 Board가 글자를 최대 22% 줄이지만, 휴대폰에서 읽기 어려워 92% 아래로는 줄이지 않습니다(lsz = Board._text 에 넘길 크기)
+  const ES = () => Math.max(BOARD._ts(), 0.92);
+  const tsz = (base) => base * BOARD.fs * (BOARD.thumb ? 0.78 : ES());
+  const lsz = (base) => base * (BOARD.thumb ? 1 : ES() / BOARD._ts());
+  const hit = (a, b) => a.x0 < b.x1 && a.x1 > b.x0 && a.y0 < b.y1 && a.y1 > b.y0;
+  const isFree = (r) => !PL.obst.some((q) => hit(r, q)) && !PL.placed.some((q) => hit(r, q));
+  const isInside = (r) => { const a = BOARD._area(); return r.x0 >= a.x + 3 && r.x1 <= a.x + a.w - 3 && r.y0 >= a.y + 3 && r.y1 <= a.y + a.h - 3; };
+  // 자동 맞춤을 재는 중에는 무대 경계를 따지지 않고(글자 상자가 맞춤 범위를 정하도록), 실제 그릴 때만 무대 안에 두려 합니다.
+  const okSpot = (r) => isFree(r) && (BOARD._bbox || BOARD.thumb || isInside(r));
+  const RADII = [1, 1.45, 2];
+  const TURNS = [0, 0.7, -0.7, 1.4, -1.4, 2.1, -2.1, Math.PI];
+
+  function qpoly(pts, fill = 'rgba(52,211,153,0.20)', stroke = '#34d399', width = 3.2, partIdx = -1) {
+    if (PL.pass === 1) return;
+    BOARD.poly(pts.map(rp), { fill: fill || null, color: stroke || null, stroke: !!stroke, width, part: partOf(partIdx) });
+  }
+  function qline(a, b, color = '#fbbf24', width = 2.4, dash = [], glow = false, partIdx = -1) {
+    if (PL.pass === 1) return;
+    BOARD.seg(rp(a), rp(b), { color, width, dash: dashOf(dash), glow, part: partOf(partIdx) });
+  }
+  /** 점과 이름. 원본의 위치 규칙(중심 반대쪽 refCenter / 직접 오프셋 customOff)을 첫 후보로 삼고, 겹치면 빈자리로 옮깁니다. */
+  function qdot(p, text = '', col = '#ffffff', refCenter = null, customOff = null) {
+    p = rp(p); refCenter = rp(refCenter);
+    const B = BOARD, s = B.toS(p);
+    if (PL.pass === 1) { PL.obst.push({ x0: s.x - 8, y0: s.y - 8, x1: s.x + 8, y1: s.y + 8 }); return; }
+    B.point(p, { color: col, r: 5 });
+    if (B.thumb) return; // 모든 장면 미리보기(작은 그림)에는 글자를 넣지 않습니다
+    const str = cv(text);
+    if (!str) return;
+    // 첫 후보: 점에서 글자 기준점까지의 화면 오프셋(원본 baseline 'alphabetic' → 가운데 기준으로 환산)
+    let vx, vy;
+    if (customOff) { vx = customOff.x; vy = customOff.y - 4; }
+    else if (refCenter) {
+      const dx = p.x - refCenter.x, dy = p.y - refCenter.y, l = Math.hypot(dx, dy) || 1, ux = dx / l, uy = dy / l;
+      if (Math.abs(ux) > 0.5) { vx = ux > 0 ? 11 : -11; vy = uy * 14; } else { vx = ux * 21; vy = uy * 21; }
+    } else { vx = 10; vy = -14; }
+    // 긴 이름은 '(' 앞뒤 두 줄로 (그림을 작게 만들지 않도록)
+    const size = tsz(12.5), lh = size * 1.15, a = B._area();
+    let lines = [str];
+    const k = str.indexOf('(');
+    if (k > 0 && tw(str, size, 800) > Math.max(100, a.w * 0.28)) lines = [str.slice(0, k), str.slice(k)];
+    const w = Math.max(...lines.map((l) => tw(l, size, 800))), h = lines.length * lh;
+    const r0 = Math.max(12, Math.hypot(vx, vy)), a0 = Math.atan2(vy, vx);
+    let first = null, pick = null;
+    if (customOff && Math.abs(customOff.x) > 8) {
+      // 원본: 직접 오프셋 글자는 그 위치에서 오른쪽으로 쓰기 시작(왼쪽 정렬) → 그 자리를 첫 후보로
+      const x = s.x + vx, x0 = x;
+      first = { x, y: s.y + vy, align: 'left', rect: { x0, x1: x0 + w, y0: s.y + vy - h / 2, y1: s.y + vy + h / 2 } };
+      if (okSpot(first.rect)) pick = first;
+    }
+    if (!pick) search: for (const m of RADII) {
+      for (const dt of TURNS) {
+        const ux = Math.cos(a0 + dt), uy = Math.sin(a0 + dt), r = r0 * m;
+        let cx = ux * r, cy = uy * r, align;
+        if (Math.abs(ux) > 0.38) { align = ux > 0 ? 'left' : 'right'; cx = Math.sign(ux) * Math.max(Math.abs(cx), 10); }
+        else { align = 'center'; cy = (uy >= 0 ? 1 : -1) * Math.max(Math.abs(cy), 8 + h / 2); }
+        const x = s.x + cx, y = s.y + cy, x0 = align === 'left' ? x : align === 'right' ? x - w : x - w / 2;
+        const cand = { x, y, align, rect: { x0, x1: x0 + w, y0: y - h / 2, y1: y + h / 2 } };
+        if (!first) first = cand;
+        if (okSpot(cand.rect)) { pick = cand; break search; }
+      }
+    }
+    pick = pick || first;
+    lines.forEach((ln, i) => B._text(pick.x, pick.y + (i - (lines.length - 1) / 2) * lh, ln, { color: col, size: lsz(12.5), weight: 800, align: pick.align, baseline: 'middle' }));
+    PL.placed.push(pick.rect);
+  }
+  function qticks(a, b, n = 1, col = '#fbbf24', size = 7.5) {
+    if (PL.pass === 1 || !lensOK('all', 'sides')) return;
+    BOARD.ticks(rp(a), rp(b), { count: n, color: col, size });
+  }
+  function qarrows(a, b, n = 1, col = '#38bdf8', size = 6.5) { // 평행 표시(화살촉)
+    if (PL.pass === 1 || !lensOK('all', 'angles')) return;
+    const B = BOARD, c = B.ctx, A = B.toS(rp(a)), Z = B.toS(rp(b));
+    const mx = (A.x + Z.x) / 2, my = (A.y + Z.y) / 2, l = Math.hypot(Z.x - A.x, Z.y - A.y) || 1;
+    const ux = (Z.x - A.x) / l, uy = (Z.y - A.y) / l, vx = -uy, vy = ux;
+    c.save();
+    c.strokeStyle = B.color(col);
+    c.lineWidth = 2.2 * B.lw;
+    c.lineCap = 'round';
+    c.setLineDash([]);
+    c.shadowBlur = 0;
+    for (let i = 0; i < n; i++) {
+      const shift = (i - (n - 1) / 2) * 7.5;
+      const tx = mx + ux * (shift + 4), ty = my + uy * (shift + 4);
+      c.beginPath();
+      c.moveTo(tx - ux * size + vx * size * 0.85, ty - uy * size + vy * size * 0.85);
+      c.lineTo(tx, ty);
+      c.lineTo(tx - ux * size - vx * size * 0.85, ty - uy * size - vy * size * 0.85);
+      c.stroke();
+    }
+    c.restore();
+  }
+  function qright(v, p1, p2, size = 12, col = '#fbbf24') {
+    if (PL.pass === 1 || !lensOK('all', 'angles')) return;
+    BOARD.right(rp(v), rp(p1), rp(p2), { size, color: col });
+  }
+  /** 각 표시와 이름. 이름은 원본 위치(호 바깥 14px, 각의 이등분선 위)를 첫 후보로 삼고 겹치면 옮깁니다. */
+  function qangle(v, p1, p2, col = '#fbbf24', r = 24, rings = 1, label = '') {
+    if (PL.pass === 1 || !lensOK('all', 'angles')) return;
+    v = rp(v); p1 = rp(p1); p2 = rp(p2);
+    const B = BOARD;
+    B.angle(v, p1, p2, { color: col, r, rings, size: 12 });
+    if (B.thumb) return;
+    const str = cv(label);
+    if (!str) return;
+    const S = B.toS(v), P1 = B.toS(p1), P2 = B.toS(p2);
+    const t1 = Math.atan2(P1.y - S.y, P1.x - S.x), t2 = Math.atan2(P2.y - S.y, P2.x - S.x);
+    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, mid = t1 + d / 2;
+    const size = tsz(12), w = tw(str, size, 800), h = size * 1.15;
+    let first = null, pick = null;
+    search: for (const dr of [0, 12, 24, 38]) {
+      for (const da of [0, 0.4, -0.4, 0.8, -0.8]) {
+        const x = S.x + Math.cos(mid + da) * (r + 14 + dr), y = S.y + Math.sin(mid + da) * (r + 14 + dr);
+        const cand = { x, y, rect: { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 } };
+        if (!first) first = cand;
+        if (okSpot(cand.rect)) { pick = cand; break search; }
+      }
+    }
+    pick = pick || first;
+    B._text(pick.x, pick.y, str, { color: col, size: lsz(12), weight: 800, align: 'center', baseline: 'middle' });
+    PL.placed.push(pick.rect);
+  }
+  /** 그림 위 짧은 글자(나비 날개 넓이 값) — 원본의 ctx.fillText 를 대신합니다. 점 이름표가 이 글자를 피해 놓이도록 1회차에 자리를 알립니다. */
+  function qtext(p, str, col) {
+    if (BOARD.thumb) return;
+    p = rp(p);
+    const B = BOARD, s = B.toS(p), t = cv(str), size = tsz(12.5), w = tw(t, size, 800), h = size * 1.15;
+    if (PL.pass === 1) { PL.obst.push({ x0: s.x - w / 2, x1: s.x + w / 2, y0: s.y - h, y1: s.y + 4 }); return; }
+    B._text(s.x, s.y, t, { color: col, size: lsz(12.5), weight: 800, align: 'center', baseline: 'alphabetic' });
+  }
+  /** 끌 수 있는 점(꼭짓점 D). 원본의 '마우스로 D를 끌어 중점을 어긋나게' — 기본 위치(base)에서 8 이내면 제자리로 붙습니다. */
+  function qhandle(id, p, base) {
+    if (PL.pass === 1) return;
+    const st = CUR;
+    BOARD.handle(id, rp(p), {
+      color: 'amber', ariaLabel: '꼭짓점 D',
+      drag: (w) => {
+        // 무대의 그림 영역(도구 막대 자리 제외) 안으로만 끌 수 있게: 화면 좌표로 가두고 되돌립니다
+        const b = BOARD, a = b._area(), sp = b.toS(w);
+        const q = b.toW(Math.min(a.x + a.w - 22, Math.max(a.x + 22, sp.x)), Math.min(a.y + a.h - 22, Math.max(a.y + 22, sp.y)));
+        let dx = q.x - base.x, dy = q.y - base.y;
+        if (Math.hypot(dx, dy) < 8) { st.dx = null; st.dy = null; return; }
+        st.dx = Math.round(dx * 10) / 10;
+        st.dy = Math.round(dy * 10) / 10;
+      }
+    });
+  }
+
+  /* ===== 원본 그대로: 장면별 실시간 명세 getSpec (원본 739–1343행) ===== */
+    function getSpec() {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const ang = state.angPreset;
+      const dRatio = state.ratioPreset;
+
+      // ==================== [탭 1: 평행사변형 성질 · 5대 판정] ====================
+      if (m === 1) {
+        if (sub === 'paraDefSides') {
+          return {
+            badge: `탐구 1-A · 평행사변형의 정의(AB∥CD, AD∥BC) ➔ 성질1: 두 쌍의 대변 길이 같음 (△ABC ≡ △CDA)`,
+            hint: `대각선 $AC$를 그으면 평행선의 <strong>엇각 2쌍(•, ×)과 공통변 $AC$</strong>에 의해 <strong class="text-amber-300">$\\triangle ABC \\equiv \\triangle CDA$ (ASA 합동)</strong>이 됩니다! 슬라이더로 위쪽 삼각형을 $180^\\circ$ 회전시켜 완전히 포개어지는 것을 확인하세요!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원래 위치로 펼치기' : '🎬 180° 점대칭 회전 포개기!',
+            dim1Name: '꼭짓점 B 내각', dim2Name: '대변 비율',
+            val1Txt: `${ang}°`, val2Txt: `AB=CD, AD=BC`,
+            parts: [
+              { id: 0, name: `🔵 아래쪽 삼각형 △ABC (AB, BC, 공통변 AC)`, desc: `엇각 ∠BAC=•, ∠BCA=× 를 가진 기준 삼각형`, val: `ASA 합동 ⭕`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 180° 회전 합동인 위쪽 삼각형 △CDA`, desc: `접는 선대칭이 아니라 180° 돌려서 포개지는 점대칭 합동!`, val: `△ABC ≡ △CDA`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🟢 결론: 마주보는 두 쌍의 대변 길이 일치`, desc: `합동인 삼각형의 대응변이므로 AB = CD(|), AD = BC(||)`, val: `성질1 & 판정2`, color: '#34d399', ok: true }
+            ],
+            totalRes: `정의(AB∥CD, AD∥BC) ➔ △ABC ≡ △CDA (ASA 합동) ➔ AB=CD, AD=BC`,
+            rule: '평행사변형 대각선 1개는 사각형을 합동(ASA/SSS/SAS)인 두 삼각형으로 나눈다!',
+            formulaHTML: `• <strong>[정의 ➔ 성질1 증명]</strong>: ${tex('\\overline{AB}\\parallel\\overline{CD}')}(엇각 ${tex('\\angle BAC=\\angle DCA')}), ${tex('\\overline{AD}\\parallel\\overline{BC}')}(엇각 ${tex('\\angle BCA=\\angle DAC')}), ${tex('\\overline{AC}')} 공통 ${tex('\\implies \\mathbf{\\triangle ABC \\equiv \\triangle CDA}\\text{ (ASA 합동)}')}<br/>• <strong>[판정 2번 역증명]</strong>: ${tex('\\overline{AB}=\\overline{CD},\\; \\overline{AD}=\\overline{BC}')} 이면 ${tex('\\overline{AC}')} 공통으로 <strong>SSS 합동</strong>이 되어 엇각이 같아지므로 평행사변형!`,
+            notes: `• <strong>[함정 주의]</strong>: 평행사변형을 대각선 $AC$로 접으면 포개어지지 않습니다! 선대칭이 아니라 <strong>$180^\\circ$ 회전 점대칭($\\triangle ABC \\equiv \\triangle CDA$)</strong>이기 때문입니다.`,
+            tapeTitle: `평행사변형 둘레 구성: (가로 AD + 세로 AB) × 2 = 마주보는 대변끼리 1 : 1 일치!`,
+            tapeSegs: [
+              { text: `AB (|)`, weight: 0.2, color: '#fbbf24' },
+              { text: `BC (||)`, weight: 0.3, color: '#38bdf8' },
+              { text: `CD (|)`, weight: 0.2, color: '#fbbf24' },
+              { text: `DA (||)`, weight: 0.3, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'paraAngles') {
+          const angA = 180 - ang;
+          return {
+            badge: `탐구 1-B · 평행사변형 성질2(대각 같음) & 이웃한 두 내각의 이등분선 수직(90°) 교차 정리!`,
+            hint: `평행사변형에서 마주보는 대각은 같고(${tex(`\\angle A=\\angle C=${angA}^\\circ,\\; \\angle B=\\angle D=${ang}^\\circ`)}) <strong>이웃한 두 각의 합은 $180^\\circ$</strong>입니다! 따라서 두 각을 반씩 나눈 <strong class="text-pink-300">각의 이등분선끼리는 $\\bullet + \\times = 90^\\circ$가 되어 언제나 $90^\\circ$ 직교</strong>합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 대각 보기' : '🎬 각의 이등분선 90° 직교 & 이등변삼각형 작도!',
+            dim1Name: '예각 ∠B 크기', dim2Name: '이웃각 ∠A 크기',
+            val1Txt: `${ang}° (×2개)`, val2Txt: `${angA}° (•2개)`,
+            parts: [
+              { id: 0, name: `🟡 마주보는 대각 일치 (∠A=${angA}°, ∠B=${ang}°)`, desc: `2• + 2× = 180° (동측내각의 합 = 180°)`, val: `∠A+∠B = 180°`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 이웃한 두 각의 이등분선 교각 (∠APB = 90°!)`, desc: `• + × = 90° 이므로 △PAB에서 나머지 각 ∠APB = 90° 직각!`, val: `무조건 90° ⊥!`, color: '#f472b6', ok: true },
+              { id: 2, name: `🔵 각의 이등분선 연장 ➔ 이등변삼각형 △ABE 출현!`, desc: `이등분 각(×) = 평행선 엇각(∠AEB=×) ⇒ AB = AE 이등변!`, val: `AB = AE 이등변`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `∠A(${angA}°) + ∠B(${ang}°) = 180° ➔ 반씩 나눈 • + × = 90° ➔ ∠APB = 90° & AB = AE!`,
+            rule: '평행사변형 각의 이등분선 2대 법칙: ① 한 개 그으면 이등변삼각형!  ② 두 개 그으면 90° 직각!',
+            formulaHTML: `• ${tex(`\\angle A + \\angle B = 180^\\circ \\implies \\dfrac{1}{2}\\angle A(\\bullet) + \\dfrac{1}{2}\\angle B(\\times) = \\mathbf{90^\\circ}`)}<br/>• 따라서 ${tex('\\triangle PAB')}에서 ${tex('\\mathbf{\\angle APB = 180^\\circ - 90^\\circ = 90^\\circ}')} (항상 수직!)`,
+            notes: `• 더 나아가 평행사변형의 <strong>네 내각의 이등분선을 모두 그으면</strong> 교점 4개가 모두 $90^\\circ$로 만나 안쪽에 <strong>직사각형</strong>이 만들어집니다!`,
+            tapeTitle: `이웃한 두 내각의 합 = ∠A(${angA}°) + ∠B(${ang}°) = 180° ➔ 절반의 합(• + ×) = 90°!`,
+            tapeSegs: [
+              { text: `∠A = ${angA}° (2•)`, weight: angA / 180, color: '#fbbf24' },
+              { text: `∠B = ${ang}° (2×)`, weight: ang / 180, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'paraDiag') {
+          const isBroken = !!state.customDOffset;
+          return {
+            badge: `탐구 1-C · 성질3(판정4): 두 대각선이 서로 다른 것을 이등분 (OA=OC, OB=OD) & 교점 통과선(OE=OF)`,
+            hint: `두 대각선의 교점 $O$에서 <strong>$\\triangle OAB \\equiv \\triangle OCD$ (ASA 합동)</strong>이므로 $OA=OC, OB=OD$입니다! 또한 <strong>꼭짓점 D를 마우스로 드래그</strong>하면 중점 $M, N$이 갈라지며 평행사변형이 깨지는 반례를 직접 체험할 수 있습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 대각선 보기' : '🎬 교점 O 통과 직선 EF (OE=OF) 회전 시연!',
+            dim1Name: '대각선 중점 상태', dim2Name: '교점 통과선 EF',
+            val1Txt: isBroken ? 'M ≠ N (불일치 ❌)' : 'OA=OC, OB=OD ⭕', val2Txt: '항상 OE = OF!',
+            parts: [
+              { id: 0, name: `🟡 위·아래 / 좌·우 마주보는 삼각형 합동 (ASA)`, desc: `△OAB ≡ △OCD 및 △OAD ≡ △OCB (합동 2쌍, 넓이 4등분!)`, val: `넓이 각 ¼S`, color: '#fbbf24', ok: !isBroken },
+              { id: 1, name: `🩷 대각선 교점 O를 지나는 직선 EF (△OAE ≡ △OCF)`, desc: `OA=OC, 맞꼭지각, 엇각 일치로 ASA 합동 ⇒ OE = OF!`, val: `OE = OF 이등분`, color: '#f472b6', ok: !isBroken },
+              { id: 2, name: isBroken ? `❌ [드래그 반례] 중점 M과 N이 분리됨!` : `🟢 꼭짓점 D 드래그 실험 (정상 평행사변형)`, desc: isBroken ? `대각선 중점이 일치하지 않으면 평행사변형이 아님!` : `칠판의 점 D를 마우스로 끌어 중점을 어긋나게 해보세요!`, val: isBroken ? `평사 아님 ❌` : `중점 일치 ⭕`, color: isBroken ? '#f43f5e' : '#34d399', ok: !isBroken }
+            ],
+            totalRes: isBroken ? `중점 불일치(M ≠ N): 평행사변형 깨짐 ❌` : `OA=OC, OB=OD | 교점 O를 지나는 모든 직선은 넓이를 ½로 이등분!`,
+            rule: '평행사변형의 넓이를 이등분하는 직선은 무조건 대각선의 교점 O를 지난다!',
+            formulaHTML: `• <strong>대각선 4분할 넓이</strong>: 밑변이 $OA=OC, OB=OD$로 같으므로 ${tex('\\mathbf{S_{\\triangle OAB} = S_{\\triangle OBC} = S_{\\triangle OCD} = S_{\\triangle ODA} = \\dfrac{1}{4}\\square ABCD}')} (모양은 마주보는 것끼리만 합동, 넓이는 4개 모두 같음!)`,
+            notes: `• <strong>[단골 함정]</strong>: 대각선으로 나뉜 4개의 작은 삼각형이 모두 “합동”이라고 하면 틀립니다! 마주보는 2쌍만 합동이고, 4개 모두는 <strong>넓이만 같습니다($\\frac{1}{4}S$)</strong>!`,
+            tapeTitle: `평행사변형 대각선 4분할 넓이: △OAB(¼) = △OBC(¼) = △OCD(¼) = △ODA(¼)`,
+            tapeSegs: [
+              { text: `△OAB (¼S)`, weight: 0.25, color: '#fbbf24' },
+              { text: `△OBC (¼S)`, weight: 0.25, color: '#38bdf8' },
+              { text: `△OCD (¼S)`, weight: 0.25, color: '#fbbf24' },
+              { text: `△ODA (¼S)`, weight: 0.25, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'paraCond5') {
+          return {
+            badge: `탐구 1-D · 🎯 평행사변형 판정 5번 — 한 쌍의 대변이 평행하고 '그' 길이가 같다 (AB∥CD, AB=CD)`,
+            hint: `두 쌍을 다 조사할 필요 없이, <strong>오직 한 쌍의 변($AB, CD$)에 평행 화살표(&gt;&gt;)와 같은 길이 틱(|)이 동시에 붙어 있으면</strong> 대각선 $AC$에 의해 $\\triangle ABC \\equiv \\triangle CDA$ (SAS 합동)가 되어 무조건 평행사변형이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로' : '🎬 SAS 합동 180° 회전 포개기 증명!',
+            dim1Name: '판정 5번 핵심', dim2Name: '증명 합동 조건',
+            val1Txt: 'AB∥CD & AB=CD', val2Txt: 'SAS 합동!',
+            parts: [
+              { id: 0, name: `🟡 평행하고 길이도 같은 한 쌍 (AB ∥ CD, AB = CD)`, desc: `화살표(>>)와 길이 틱(|)이 반드시 '같은 변'에 있어야 함!`, val: `같은 쌍 일치 ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 평행선 엇각 ∠BAC = ∠DCA (끼인각 •) + 공통변 AC`, desc: `두 변(AB=CD, AC 공통)과 끼인각(•)이 같아 SAS 합동!`, val: `△ABC ≡ △CDA`, color: '#f472b6', ok: true },
+              { id: 2, name: `🔵 결론: 나머지 엇각도 같아져 AD ∥ BC 성립!`, desc: `결국 두 쌍의 대변이 모두 평행해져 평행사변형 완성!`, val: `평행사변형 확정`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `AB ∥ CD 이고 AB = CD ➔ △ABC ≡ △CDA (SAS 합동) ➔ 평행사변형 확정!`,
+            rule: '주의: 평행한 변(AD∥BC)과 길이가 같은 변(AB=CD)이 서로 다른 쌍이면 등변사다리꼴 반례(탐구 6)!',
+            formulaHTML: `• <strong>5대 판정 조건 총정리</strong>:<br/>&nbsp;&nbsp;① 정의: ${tex('\\overline{AB}\\parallel\\overline{CD},\\; \\overline{AD}\\parallel\\overline{BC}')} &nbsp;&nbsp;② 대변: ${tex('\\overline{AB}=\\overline{CD},\\; \\overline{AD}=\\overline{BC}')}<br/>&nbsp;&nbsp;③ 대각: ${tex('\\angle A=\\angle C,\\; \\angle B=\\angle D')} &nbsp;&nbsp;④ 대각선: ${tex('\\overline{OA}=\\overline{OC},\\; \\overline{OB}=\\overline{OD}')}<br/>&nbsp;&nbsp;⑤ 한 쌍: ${tex('\\mathbf{\\overline{AB}\\parallel\\overline{CD}\\text{ 이고 }\\overline{AB}=\\overline{CD}}')} (가장 많이 출제됨!)`,
+            notes: `• 보기에서 글자로만 조건이 주어지면 <strong>작은 사각형 $ABCD$를 직접 그려서 화살표와 틱 마크를 표시</strong>해 보세요! 같은 변에 겹치면 참(⭕), 다른 변으로 흩어지면 거짓(❌)입니다!`,
+            tapeTitle: `판정 5번 검증: 평행한 변(AB∥CD)과 길이가 같은 변(AB=CD)이 100% 동일한 쌍!`,
+            tapeSegs: [
+              { text: `AB: 평행(>>) + 길이 같음(|) 동시 만족!`, weight: 0.5, color: '#fbbf24' },
+              { text: `CD: 평행(>>) + 길이 같음(|) 동시 만족!`, weight: 0.5, color: '#38bdf8' }
+            ]
+          };
+        }
+        // paraHidden
+        return {
+          badge: `탐구 1-E · 🪄 평행사변형 속 새로운 평행사변형 — 대각선에 내린 수선의 발 E, F 연결 (□EBFD)`,
+          hint: `평행사변형 $ABCD$에서 꼭짓점 $B, D$에서 대각선 $AC$에 수선 $BE, DF$를 내리면, <strong>$\\triangle ABE \\equiv \\triangle CDF$ (RHA 합동)</strong>이므로 $BE = DF$이고, 둘 다 $AC$에 수직이라 $BE \\parallel DF$가 되어 <strong>판정 5번으로 사각형 $EBFD$는 평행사변형</strong>이 됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 수선 보기' : '🎬 RHA 합동 & 안쪽 평행사변형 EBFD 완성!',
+          dim1Name: '수선 합동 조건', dim2Name: '안쪽 □EBFD 판정 이유',
+          val1Txt: '△ABE ≡ △CDF (RHA)', val2Txt: '판정 5번 (BE∥DF, BE=DF)',
+          parts: [
+            { id: 0, name: `🟡 양쪽 직각삼각형 △ABE ≡ △CDF (RHA 합동!)`, desc: `∠AEB=∠CFD=90°(R), 빗변 AB=CD(H), 엇각 ∠BAE=∠DCF(A)`, val: `BE = DF, AE = CF`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🩷 한 직선 AC에 동시에 수직인 두 수선 (BE ∥ DF)`, desc: `동위각·엇각이 모두 90°이므로 BE와 DF는 서로 평행!`, val: `BE ∥ DF`, color: '#f472b6', ok: true },
+            { id: 2, name: `🟢 안쪽 사각형 EBFD = 평행사변형 (판정 5번 또는 4번!)`, desc: `한 쌍이 평행하고 그 길이가 같음(BE∥DF, BE=DF)!`, val: `□EBFD = 평사 ⭕`, color: '#34d399', ok: true }
+          ],
+          totalRes: `△ABE ≡ △CDF (RHA 합동) ➔ BE ∥ DF 이고 BE = DF (판정 5번) ➔ □EBFD는 평행사변형!`,
+          rule: '서술형 단골: "왜 □EBFD가 평행사변형인지 5대 판정 조건 중 하나로 답하시오" ➔ 판정 5번(또는 대각선 판정 4번)!',
+          formulaHTML: `• <strong>방법 1 (판정 5번)</strong>: ${tex('\\overline{BE}\\perp\\overline{AC},\\; \\overline{DF}\\perp\\overline{AC} \\implies \\overline{BE}\\parallel\\overline{DF}')} 이고 RHA 합동으로 ${tex('\\overline{BE}=\\overline{DF}')}!<br/>• <strong>방법 2 (판정 4번)</strong>: ${tex('\\overline{OA}=\\overline{OC}')} 에서 ${tex('\\overline{AE}=\\overline{CF}')} 를 빼면 ${tex('\\overline{OE}=\\overline{OF}')}, 그리고 ${tex('\\overline{OB}=\\overline{OD}')} 이므로 대각선이 서로 이등분!`,
+          notes: `• 평행사변형 내부에 새로운 사각형을 만들 때 <strong>“대각선 위에서 안쪽으로 줄였거나 수선을 내린 경우”</strong>는 판정 4번 또는 5번으로 100% 평행사변형이 됩니다!`,
+          tapeTitle: `대각선 AC 대칭 분할: AE = CF (양끝 합동) ➔ 안쪽 남은 OE = OF (중점 일치!)`,
+          tapeSegs: [
+            { text: `AE`, weight: 0.22, color: '#fbbf24' },
+            { text: `OE`, weight: 0.28, color: '#34d399' },
+            { text: `OF (=OE)`, weight: 0.28, color: '#34d399' },
+            { text: `FC (=AE)`, weight: 0.22, color: '#fbbf24' }
+          ]
+        };
+      }
+
+      // ==================== [탭 2: 사각형 족보 진화 & 등변사다리꼴] ====================
+      if (m === 2) {
+        if (sub === 'evoRect') {
+          return {
+            badge: `탐구 2-A · ▭ 평행사변형 ➔ 직사각형 진화! [정의: 네 내각 90°] vs [성질: 두 대각선 길이 같음 AC=BD]`,
+            hint: `평행사변형에서 <strong>한 내각이 $90^\\circ$($\\angle A=90^\\circ$ 또는 $\\angle A=\\angle B$)</strong>가 되거나 <strong>두 대각선의 길이가 같아지면($AC=BD \\iff OA=OB$)</strong> 직사각형으로 진화합니다! 슬라이더로 일반 평행사변형을 반듯한 직사각형으로 세워보세요!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기울어진 평행사변형으로' : '🎬 직사각형으로 진화시키기!',
+            dim1Name: '직사각형 정의', dim2Name: '직사각형 대각선 성질',
+            val1Txt: '네 각 모두 90°', val2Txt: 'AC=BD (OA=OB=OC=OD)',
+            parts: [
+              { id: 0, name: `📌 [직사각형의 정의] 네 내각의 크기가 모두 같은(90°) 사각형`, desc: `평행사변형 + (∠A = 90° 또는 이웃각 ∠A = ∠B)`, val: `정의: 네 각 90°`, color: '#38bdf8', ok: true },
+              { id: 1, name: `✨ [직사각형의 성질] 두 대각선 길이가 같고 서로 이등분`, desc: `평행사변형 + (AC = BD 또는 OA = OB) ⇒ 이등변삼각형 4개!`, val: `OA=OB=OC=OD`, color: '#fbbf24', ok: true },
+              { id: 2, name: `📐 대각선 합동 증명: △ABC ≡ △DCB (SAS 합동)`, desc: `AB = DC, BC 공통, 끼인각 ∠B = ∠C = 90° ⇒ AC = BD!`, val: `SAS 합동 증명`, color: '#34d399', ok: true }
+            ],
+            totalRes: `평행사변형 + [∠A=90° 또는 ∠A=∠B 또는 AC=BD 또는 OA=OB] ➔ 직사각형!`,
+            rule: '직사각형 대각선은 네 반쪽(OA=OB=OC=OD)이 모두 같아 안쪽 삼각형 4개가 모두 이등변삼각형이다!',
+            formulaHTML: `• <strong>기출 조건 번역</strong>: 평행사변형 $ABCD$에서 “${tex('\\angle A = \\angle B')}” 조건이 주어지면? <br/>&nbsp;&nbsp;${tex('\\implies \\angle A + \\angle B = 180^\\circ')} 인데 둘이 같으므로 ${tex('\\mathbf{\\angle A = \\angle B = 90^\\circ}')}가 되어 <strong>직사각형</strong>이 됩니다!`,
+            notes: `• <strong>[정의 vs 성질 구분]</strong>: “대각선의 길이가 같은 사각형”은 직사각형의 <strong>성질</strong>이지 정의가 아닙니다! 정의는 언제나 <strong>“네 내각의 크기가 모두 같은 사각형”</strong>입니다.`,
+            tapeTitle: `직사각형 반쪽 대각선 4개 길이 완전 일치: OA = OB = OC = OD = ½ AC`,
+            tapeSegs: [
+              { text: `OA (||)`, weight: 0.25, color: '#fbbf24' },
+              { text: `OB (||)`, weight: 0.25, color: '#38bdf8' },
+              { text: `OC (||)`, weight: 0.25, color: '#fbbf24' },
+              { text: `OD (||)`, weight: 0.25, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'evoRhombus') {
+          return {
+            badge: `탐구 2-B · ❖ 평행사변형 ➔ 마름모 진화! [정의: 네 변 길이 같음] vs [성질: 대각선 수직이등분 AC⊥BD]`,
+            hint: `평행사변형에서 <strong>이웃한 두 변의 길이가 같아지거나($AB=BC$)</strong> <strong>두 대각선이 수직으로 만나면($AC \\perp BD \\iff \\angle AOB=90^\\circ$)</strong> 마름모로 진화합니다! 이때 대각선은 내각을 정확히 이등분($\\bullet=\\bullet$)합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 일반 평행사변형으로' : '🎬 대각선 90° 수직 마름모로 진화!',
+            dim1Name: '마름모 정의', dim2Name: '마름모 대각선 성질',
+            val1Txt: 'AB=BC=CD=DA', val2Txt: 'AC ⊥ BD (수직이등분)',
+            parts: [
+              { id: 0, name: `📌 [마름모의 정의] 네 변의 길이가 모두 같은 사각형`, desc: `평행사변형 + (이웃한 변 AB = BC 또는 AB = AD)`, val: `네 변 길이 같음`, color: '#fbbf24', ok: true },
+              { id: 1, name: `✨ [마름모의 성질 1] 두 대각선이 서로 다른 것을 수직이등분!`, desc: `평행사변형 + (AC ⊥ BD 또는 ∠AOB = 90°) ⇒ 직각삼각형 4개 합동!`, val: `AC ⊥ BD (90°)`, color: '#f472b6', ok: true },
+              { id: 2, name: `✨ [마름모의 성질 2] 대각선이 내각을 이등분 (∠BAC = ∠DAC)`, desc: `엇각에 의해 △ABC가 AB=BC인 이등변삼각형이 되어 마름모!`, val: `내각 이등분 ⭕`, color: '#34d399', ok: true }
+            ],
+            totalRes: `평행사변형 + [AB=BC 또는 AC⊥BD 또는 ∠BAC=∠DAC] ➔ 마름모! | 넓이 = ½·AC·BD`,
+            rule: '대각선이 수직(AC⊥BD)인 모든 사각형(마름모·정사각형·연꼴)의 넓이 = ½ × (한 대각선) × (다른 대각선)!',
+            formulaHTML: `• <strong>왜 대각선이 내각을 이등분(${tex('\\angle BAC = \\angle DAC')})하면 마름모가 될까?</strong><br/>&nbsp;&nbsp;${tex('\\overline{AD}\\parallel\\overline{BC}')} 에서 엇각 ${tex('\\angle DAC = \\angle BCA')} 이므로 ${tex('\\angle BAC = \\angle BCA')}가 되어 ${tex('\\triangle ABC')}는 ${tex('\\mathbf{\\overline{AB}=\\overline{BC}}')}인 이등변삼각형이 됩니다!`,
+            notes: `• 직사각형은 대각선이 내각을 이등분하지 않지만(정사각형 제외), <strong>마름모는 대각선이 항상 내각을 반으로 이등분</strong>합니다!`,
+            tapeTitle: `마름모 네 변의 길이 1 : 1 : 1 : 1 일치 & 대각선으로 나뉜 직각삼각형 4개 SSS/SAS 합동!`,
+            tapeSegs: [
+              { text: `AB (|)`, weight: 0.25, color: '#fbbf24' },
+              { text: `BC (|)`, weight: 0.25, color: '#fbbf24' },
+              { text: `CD (|)`, weight: 0.25, color: '#fbbf24' },
+              { text: `DA (|)`, weight: 0.25, color: '#fbbf24' }
+            ]
+          };
+        }
+        if (sub === 'evoSquare') {
+          return {
+            badge: `탐구 2-C · 🟩 사각형 족보의 최종 보스 『정사각형』 = 직사각형 성질 + 마름모 성질 완전 합체!`,
+            hint: `<strong>직사각형이 정사각형이 되려면 마름모 조건($AB=BC$ 또는 $AC\\perp BD$)</strong>을 더해야 하고, <strong>마름모가 정사각형이 되려면 직사각형 조건($\\angle A=90^\\circ$ 또는 $AC=BD$)</strong>을 더해야 합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 진화 전 비교 보기' : '🎬 직사각형 + 마름모 ➔ 정사각형 합체!',
+            dim1Name: '직사각형 ➔ 정사각형', dim2Name: '마름모 ➔ 정사각형',
+            val1Txt: '+ 마름모 조건(AC⊥BD)', val2Txt: '+ 직사각형 조건(AC=BD)',
+            parts: [
+              { id: 0, name: `🟦 직사각형 유전자: 네 내각 90° & 대각선 길이 같음(AC=BD)`, desc: `마름모에 이 조건을 추가하면 정사각형으로 진화!`, val: `OA=OB=OC=OD`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟨 마름모 유전자: 네 변 같음 & 대각선 수직(AC⊥BD, 45°)`, desc: `직사각형에 이 조건을 추가하면 정사각형으로 진화!`, val: `AC ⊥ BD (90°)`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🟩 정사각형 완성: 합동인 직각이등변삼각형(45°-45°-90°) 4개!`, desc: `대각선 길이가 같고 서로를 수직이등분하며 내각을 45°로 이등분!`, val: `완전체 정사각형`, color: '#34d399', ok: true }
+            ],
+            totalRes: `정사각형 = 직사각형(90°, AC=BD) ∩ 마름모(네 변 같음, AC⊥BD)`,
+            rule: '포함 관계(벤다이어그램): 정사각형 ⊂ (직사각형, 마름모) ⊂ 평행사변형 ⊂ 사다리꼴 ⊂ 사각형!',
+            formulaHTML: `• <strong>[시험 100% 출제 함정]</strong>:<br/>&nbsp;&nbsp;① 직사각형에 ${tex('\\overline{AC}=\\overline{BD}')} 조건을 추가하면 정사각형이 된다? $\\implies$ <strong>거짓(❌, 원래 직사각형 성질임!)</strong><br/>&nbsp;&nbsp;② 직사각형에 ${tex('\\overline{AC}\\perp\\overline{BD}')} 조건을 추가하면 정사각형이 된다? $\\implies$ <strong>참(⭕, 마름모 조건 추가!)</strong>`,
+            notes: `• “내가 이미 가지고 있는 성질”을 또 주면 진화하지 않습니다! 반드시 <strong>반대편 라이벌(직사각형 ↔ 마름모)의 고유 성질</strong>을 가져와야 정사각형이 됩니다.`,
+            tapeTitle: `정사각형 대각선 4분할: 4개 모두 합동인 (45°·45°·90°) 직각이등변삼각형!`,
+            tapeSegs: [
+              { text: `직사각형 성질 (AC = BD)`, weight: 0.5, color: '#38bdf8' },
+              { text: `마름모 성질 (AC ⊥ BD)`, weight: 0.5, color: '#fbbf24' }
+            ]
+          };
+        }
+        if (sub === 'isoTrapMaster') {
+          return {
+            badge: `탐구 2-D · 🏛️ 등변사다리꼴의 정의·성질 & 내신 서술형 전설의 2대 보조선 (평행선 vs 수선)`,
+            hint: `등변사다리꼴의 <strong>정의는 “$AD\\parallel BC$이고 아랫변 양 끝각 $\\angle B=\\angle C$가 같은 사다리꼴”</strong>입니다! 왜 양옆 변이 같고($AB=DC$) 대각선 길이가 같은지($AC=BD$) <strong>2가지 핵심 보조선</strong>을 슬라이더로 확인하세요!`,
+            actionTxt: state.fold > 0.5 ? '🎬 보조선 ①(평행선 DE∥AB) 보기' : '🎬 보조선 ②(수선 AH, DK) 전환!',
+            dim1Name: '등변사다리꼴 정의', dim2Name: '2대 고유 성질',
+            val1Txt: 'AD∥BC, ∠B=∠C', val2Txt: '①AB=DC  ②AC=BD',
+            parts: [
+              { id: 0, name: `🟡 보조선 ① [각도·길이 구할 때]: 점 D에서 평행선 DE ∥ AB`, desc: `평행사변형 ABED(AB=DE) + 이등변삼각형 △DEC(DE=DC) ⇒ AB=DC!`, val: `평행사변형+이등변`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🟢 보조선 ② [높이·밑변 구할 때]: 두 수선 AH ⊥ BC, DK ⊥ BC`, desc: `△ABH ≡ △DCK (RHA 합동) ⇒ 양끝 BH = CK = (BC - AD) ÷ 2!`, val: `직사각형+RHA합동`, color: '#34d399', ok: true },
+              { id: 2, name: `🩷 성질 2: 두 대각선 길이 일치 (△ABC ≡ △DCB SAS 합동)`, desc: `AB=DC, ∠ABC=∠DCB, BC 공통 ⇒ AC = BD (OA=OD, OB=OC)!`, val: `AC = BD 일치!`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `등변사다리꼴: 정의(∠B=∠C) ➔ 성질(①AB=DC, ②AC=BD, OA=OD, OB=OC)`,
+            rule: '두 대각선의 길이가 같은(AC=BD) 사각형 3총사 = 직사각형 · 정사각형 · 등변사다리꼴!',
+            formulaHTML: `• <strong>보조선 ② 양끝 밑변 공식</strong>: 윗변 $AD=6$, 아랫변 $BC=14$이면 양쪽 직각삼각형 밑변은 ${tex('\\overline{BH} = \\overline{CK} = \\dfrac{14-6}{2} = \\mathbf{4\\text{ cm}}')}!<br/>• <strong>대각선 SAS 합동</strong>: ${tex('\\triangle ABC \\equiv \\triangle DCB\\text{ (SAS)} \\implies \\mathbf{\\overline{AC}=\\overline{BD}}')}`,
+            notes: `• <strong>[주의]</strong>: 등변사다리꼴에서 $OA=OD, OB=OC$는 성립하지만, 위아래 길이가 달라 <strong>$OA \\neq OC$ (대각선이 서로를 이등분하지는 않음!)</strong>입니다.`,
+            tapeTitle: `등변사다리꼴 아랫변 BC(14cm) 분해: 왼쪽 BH(4cm) + 가운데 HK(=윗변 AD=6cm) + 오른쪽 CK(4cm)`,
+            tapeSegs: [
+              { text: `BH = 4cm`, weight: 4 / 14, color: '#34d399' },
+              { text: `HK = AD = 6cm (직사각형)`, weight: 6 / 14, color: '#38bdf8' },
+              { text: `CK = 4cm`, weight: 4 / 14, color: '#34d399' }
+            ]
+          };
+        }
+        // diagSynthesis
+        const isEq = Math.abs(dRatio - 1.0) < 0.02;
+        const isPerp = ang === 90;
+        const curName = isEq && isPerp ? '정사각형 (Square)' : isEq ? '직사각형 (Rectangle)' : isPerp ? '마름모 (Rhombus)' : '평행사변형 (Parallelogram)';
+        return {
+          badge: `탐구 2-E · 🎛️ 대각선 3대 속성 조합기 — 우측 프리셋 칩(교각 θ × 길이비 BD/AC)을 눌러 사각형을 조립하세요!`,
+          hint: `우측의 <strong class="text-sky-300">교각 θ 프리셋(90° 수직 여부)</strong>과 <strong class="text-pink-300">대각선 길이비 프리셋(1.0 일치 여부)</strong>을 클릭해 보세요! 현재 조립된 사각형은 <strong class="text-amber-300">${curName}</strong>입니다!`,
+          actionTxt: '🎬 대각선 조건 자동 순환 테스트!',
+          dim1Name: '대각선 교각 θ', dim2Name: '대각선비 BD/AC',
+          val1Txt: `${ang}° (${isPerp ? '수직⊥!' : '비수직'})`, val2Txt: `${dRatio.toFixed(2)} (${isEq ? 'AC=BD!' : 'AC≠BD'})`,
+          parts: [
+            { id: 0, name: `🟢 기본 속성 ①: 서로 다른 것을 이등분 (OA=OC, OB=OD)`, desc: `이 조건 하나만 있으면 기본 '평행사변형' 완성`, val: `이등분 ⭕`, color: '#34d399', ok: true },
+            { id: 1, name: `🔵 추가 속성 ②: 두 대각선 길이 같음 (BD/AC = 1.0)`, desc: isEq ? `현재 ON! 네 반쪽 대각선이 모두 같아 직사각형 성질 획득!` : `현재 OFF (우측에서 '1.0(AC=BD!)' 칩을 눌러보세요!)`, val: isEq ? `AC = BD ⭕` : `AC ≠ BD`, color: '#38bdf8', ok: isEq },
+            { id: 2, name: `🟡 추가 속성 ③: 두 대각선 수직 직교 (θ = 90°)`, desc: isPerp ? `현재 ON! 대각선이 90°로 만나 마름모 성질 획득!` : `현재 OFF (우측에서 '90°' 칩을 눌러보세요!)`, val: isPerp ? `AC ⊥ BD ⭕` : `${ang}° (비수직)`, color: '#fbbf24', ok: isPerp }
+          ],
+          totalRes: `현재 조립 결과: ${curName}`,
+          rule: '이등분만 = 평행사변형 | 이등분+길이같음 = 직사각형 | 이등분+수직 = 마름모 | 3개 모두 = 정사각형!',
+          formulaHTML: `• <strong>대각선 조건 요약표</strong>:<br/>&nbsp;&nbsp;- <strong>이등분(O) · 길이같음(X) · 수직(X)</strong> $\\implies$ 평행사변형<br/>&nbsp;&nbsp;- <strong>이등분(O) · 길이같음(O) · 수직(X)</strong> $\\implies$ 직사각형<br/>&nbsp;&nbsp;- <strong>이등분(O) · 길이같음(X) · 수직(O)</strong> $\\implies$ 마름모<br/>&nbsp;&nbsp;- <strong>이등분(O) · 길이같음(O) · 수직(O)</strong> $\\implies$ 정사각형`,
+          notes: `• 만약 <strong>이등분(X) · 길이같음(O)</strong>이면 <strong>등변사다리꼴</strong>이고, <strong>이등분(한쪽만) · 수직(O)</strong>이면 <strong>연꼴(Kite)</strong>입니다!`,
+          tapeTitle: `현재 대각선 상태: 교각 θ = ${ang}° (${isPerp ? '수직' : '비수직'}) | 길이비 BD/AC = ${dRatio.toFixed(2)} ➔ ${curName}`,
+          tapeSegs: []
+        };
+      }
+
+      // ==================== [탭 3: 등적변형 · 나비 넓이 · 내부 점 P] ====================
+      if (m === 3) {
+        if (sub === 'quadToTri') {
+          return {
+            badge: `탐구 3-A · ✂️ [서술형 출제 1위] 꺾인 사각형 ABCD를 넓이가 같은 삼각형 ABE로 바꾸기!`,
+            hint: `꺾여 있는 땅 경계선 $AC$를 반듯하게 펴려면, <strong>꼭짓점 $D$를 지나 대각선 $AC$에 평행한 보조선 $DE$($AC\\parallel DE$)</strong>를 그어 밑변 $BC$의 연장선과 만나는 점 $E$로 꼭짓점 $D$를 미끄러뜨리면 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원래 사각형 ABCD로' : '🎬 점 D를 평행선 타고 E로 등적 이동!',
+            dim1Name: '핵심 보조선', dim2Name: '등적변형 결과',
+            val1Txt: 'AC ∥ DE (평행선)', val2Txt: '□ABCD = △ABE',
+            parts: [
+              { id: 0, name: `🔵 고정된 왼쪽 아래 삼각형 △ABC (넓이 60 cm²)`, desc: `움직이지 않고 그대로 유지되는 기본 영역`, val: `고정 60 cm²`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 평행선 레일(AC ∥ DE)을 타고 이동하는 △ACD ➔ △ACE`, desc: `밑변 AC가 공통이고 높이가 같으므로 S(△ACD) = S(△ACE) = 40 cm²!`, val: `등적 40 cm²`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🟢 합체 결론: □ABCD = △ABC + △ACE = 큰 삼각형 △ABE!`, desc: `꺾인 사각형이 넓이 100 cm²인 단일 삼각형 △ABE로 변신!`, val: `총 100 cm² 불변!`, color: '#34d399', ok: true }
+            ],
+            totalRes: `AC ∥ DE ➔ △ACD = △ACE (등적변형) ➔ □ABCD = △ABE (100 cm²)`,
+            rule: '등적변형 찾기 공식: 평행선 두 줄(AC ∥ DE) 중 한 줄(AC)을 공통 밑변으로 잡은 두 삼각형(△ACD=△ACE)을 찾아라!',
+            formulaHTML: `• <strong>[서술형 3줄 모범 답안]</strong>:<br/>&nbsp;&nbsp;① $\\overline{AC}\\parallel\\overline{DE}$ 이므로 밑변 $\\overline{AC}$가 공통인 $\\mathbf{\\triangle ACD = \\triangle ACE}$ 이다.<br/>&nbsp;&nbsp;② $\\square ABCD = \\triangle ABC + \\triangle ACD = \\triangle ABC + \\triangle ACE$<br/>&nbsp;&nbsp;③ 따라서 $\\mathbf{\\square ABCD = \\triangle ABE}$ 이다.`,
+            notes: `• 추가로 대각선 $AE$와 $CD$의 교점을 $O$라 하면, 사다리꼴 $ACED$의 나비 날개 성질에 의해 <strong>$\\triangle AOD = \\triangle COE$</strong>도 함께 성립합니다!`,
+            tapeTitle: `넓이 100% 보존: 사각형 ABCD(100cm²) = 고정 △ABC(60cm²) + 등적이동 △ACE(40cm²) = △ABE!`,
+            tapeSegs: [
+              { text: `고정된 △ABC (60cm²)`, weight: 0.6, color: '#38bdf8' },
+              { text: `등적이동 △ACD ➔ △ACE (40cm²)`, weight: 0.4, color: '#34d399' }
+            ]
+          };
+        }
+        if (sub === 'equiSlide') {
+          return {
+            badge: `탐구 3-B · 🛷 평행선 미끄럼틀 등적변형 — 꼭짓점 A가 평행선 위를 달려도 넓이는 100% 불변!`,
+            hint: `직선 $l \\parallel m$ 위에서 꼭짓점 $A$를 옆으로 아무리 멀리 끌고 가도, <strong>밑변 $BC(16\\text{cm})$와 수직 높이 $h(10\\text{cm})$가 변하지 않으므로 넓이($80\\text{cm}^2$)는 항상 일정</strong>합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 처음 위치 A로' : '🎬 꼭짓점 A 미끄럼틀 이동 시연!',
+            dim1Name: '고정 요소', dim2Name: '삼각형 넓이 S',
+            val1Txt: '밑변 16 × 높이 10', val2Txt: '80 cm² (불변!)',
+            parts: [
+              { id: 0, name: `🔵 처음 삼각형 △ABC (밑변 16, 높이 10)`, desc: `S = ½ × 16 × 10 = 80 cm²`, val: `넓이 80 cm²`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 미끄러진 삼각형 △A'BC (둘레는 길어지나 넓이는 동일!)`, desc: `옆변 길이는 변하지만 수직 높이 h=10은 그대로!`, val: `넓이 80 cm²`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🩷 밑변을 1 : 3 으로 나누는 점 M (높이가 같은 삼각형 밑변비)`, desc: `높이가 같으면 넓이비는 밑변의 길이비(1:3)와 같다!`, val: `넓이비 = 밑변비`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `l ∥ m ➔ S(△ABC) = S(△A'BC) = ½ × 16 × 10 = 80 cm² (둘레만 변함)`,
+            rule: '높이가 같은 두 삼각형의 넓이의 비 = 밑변의 길이의 비 (m : n)! (제곱비 아님 주의!)',
+            formulaHTML: `• <strong>등적변형</strong>: ${tex('l\\parallel m \\implies \\triangle ABC = \\triangle A\'BC = \\dfrac{1}{2}\\times\\overline{BC}\\times h')}<br/>• <strong>밑변 분할</strong>: 점 $M$이 $\\overline{BC}$를 $m:n$으로 나누면 ${tex('\\mathbf{\\triangle ABM : \\triangle ACM = m : n}')}!`,
+            notes: `• <strong>[닮음 제곱비 vs 등고 길이비 구분]</strong>: 두 삼각형이 ‘닮음’일 때는 넓이비가 $m^2:n^2$이지만, 평행선 사이에 끼어 <strong>‘높이가 같은’ 두 삼각형은 넓이비가 그냥 밑변비($m:n$)</strong>입니다!`,
+            tapeTitle: `평행선 사이 수직 높이 h(10cm) 고정 ➔ 꼭짓점 A가 어디로 가든 넓이 S = 80 cm² 일정!`,
+            tapeSegs: [
+              { text: `밑변 BC = 16cm (고정) × 수직높이 h = 10cm (고정) ÷ 2 = 80cm²`, weight: 1.0, color: '#fbbf24' }
+            ]
+          };
+        }
+        if (sub === 'butterflyWing') {
+          return {
+            badge: `탐구 3-C · 🦋 사다리꼴 대각선 나비 날개 넓이 (S₁ = S₂) & 네 조각 곱셈 법칙 (S₁·S₂ = S위·S아래)`,
+            hint: `$AD\\parallel BC$인 사다리꼴에서는 좌우 대칭이 아니어도 $\\triangle ABC = \\triangle DBC$에서 공통인 $\\triangle OBC$를 빼면 <strong class="text-amber-300">양쪽 나비 날개 넓이 $S_1(\\triangle ABO) = S_2(\\triangle DCO)$가 무조건 같습니다!</strong>`,
+            actionTxt: state.fold > 0.5 ? '🎬 나비 날개 완성뷰' : '🎬 △ABC=△DBC에서 공통 △OBC 빼기 시연!',
+            dim1Name: '대각선 내분비 (AO:OC)', dim2Name: '나비 날개 넓이',
+            val1Txt: '1 : 2 (예시)', val2Txt: 'S₁ = S₂ = 6 cm²',
+            parts: [
+              { id: 0, name: `🟡 양쪽 나비 날개 △ABO(S₁) = △DCO(S₂)`, desc: `S(△ABC) - S(△OBC) = S(△DBC) - S(△OBC) ⇒ S₁ = S₂ = 6 cm²!`, val: `S₁ = S₂ = 6 cm²`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 위쪽 △AOD(3 cm²) vs 🩷 아래쪽 △BOC(12 cm²)`, desc: `AO : OC = 1 : 2 이므로 밑변비에 의해 위(3) : 옆(6) : 아래(12)!`, val: `위=3, 아래=12`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🟢 [킬러 공식] 마주보는 넓이의 곱 일치: S₁ × S₂ = S위 × S아래!`, desc: `6 × 6 = 3 × 12 = 36 (어떤 사각형에서든 대각선 4조각 곱 일치!)`, val: `6×6 = 3×12 = 36`, color: '#34d399', ok: true }
+            ],
+            totalRes: `나비 날개 S₁ = S₂ = 6 cm² | S₁ × S₂ = S위(3) × S아래(12) = 36`,
+            rule: '사다리꼴 대각선이 보이면 1초 만에 양옆 날개에 똑같은 넓이(S₁ = S₂)를 적어 넣어라!',
+            formulaHTML: `• <strong>왜 $S_1 \\times S_2 = S_{\\text{위}} \\times S_{\\text{아래}}$ 가 항상 성립할까?</strong><br/>&nbsp;&nbsp;${tex('\\dfrac{S_{\\text{위}}}{S_1} = \\dfrac{\\overline{DO}}{\\overline{BO}} = \\dfrac{S_2}{S_{\\text{아래}}} \\implies \\mathbf{S_1 \\times S_2 = S_{\\text{위}} \\times S_{\\text{아래}}}')}!`,
+            notes: `• 문제에서 위쪽 넓이가 $4$, 아래쪽 넓이가 $9$라고 주어지면, 양옆 날개 넓이는 $S_1^2 = 4 \\times 9 = 36 \\implies \\mathbf{S_1 = S_2 = 6}$ 으로 즉시 암산할 수 있습니다!`,
+            tapeTitle: `사다리꼴 전체 넓이(27cm²) = 위(3) + 왼쪽날개(6) + 오른쪽날개(6) + 아래(12)`,
+            tapeSegs: [
+              { text: `위 (3)`, weight: 3 / 27, color: '#38bdf8' },
+              { text: `왼날개 S₁ (6)`, weight: 6 / 27, color: '#fbbf24' },
+              { text: `오른날개 S₂ (6)`, weight: 6 / 27, color: '#fbbf24' },
+              { text: `아래 (12)`, weight: 12 / 27, color: '#f472b6' }
+            ]
+          };
+        }
+        if (sub === 'insidePointP') {
+          return {
+            badge: `탐구 3-D · 🎯 평행사변형 내부의 임의의 점 P — (위+아래 넓이 합) = (좌+우 넓이 합) = ½ 전체!`,
+            hint: `평행사변형 내부 아무 곳에나 점 $P$를 찍고 네 꼭짓점과 이으면, 점 $P$를 지나는 <strong>십자 평행 보조선($EF\\parallel AD, GH\\parallel AB$)</strong>이 4개의 작은 평행사변형을 반씩($a,a / b,b / c,c / d,d$) 나누어 <strong class="text-amber-300">위+아래 = 좌+우 = 전체의 $\\frac{1}{2}$</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 위치로' : '🎬 점 P 회전 이동 & 십자 평행 보조선 증명!',
+            dim1Name: '위 + 아래 합', dim2Name: '좌 + 우 합',
+            val1Txt: 'a+b+c+d = ½S', val2Txt: 'a+b+c+d = ½S',
+            parts: [
+              { id: 0, name: `🔵 위쪽 △PAD + 아래쪽 △PBC = a + b + c + d`, desc: `높이의 합이 평행사변형 전체 높이 H와 같으므로 ½ × 밑변 × H = ½S!`, val: `합 = ½S (50%)`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 왼쪽 △PAB + 오른쪽 △PCD = a + c + b + d`, desc: `마찬가지로 좌·우 두 삼각형 넓이의 합도 정확히 전체의 절반(½S)!`, val: `합 = ½S (50%)`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🩷 점 P를 지나는 십자 평행 보조선 (EF ∥ AD, GH ∥ AB)`, desc: `작은 평행사변형 4개가 대각선에 의해 (a,a), (b,b), (c,c), (d,d)로 이등분!`, val: `a+b+c+d 증명!`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `S(△PAD) + S(△PBC) = S(△PAB) + S(△PCD) = ½ □ABCD (항상 50%!)`,
+            rule: '내부 점 P 공식: (위) + (아래) = (왼쪽) + (오른쪽) = 전체 평행사변형 넓이의 절반(1/2)!',
+            formulaHTML: `• <strong>[3초 실전 계산]</strong>: 전체 넓이가 $40\\text{ cm}^2$이고 $\\triangle PAB=8, \\triangle PBC=11, \\triangle PCD=x, \\triangle PDA=y$ 일 때:<br/>&nbsp;&nbsp;① 좌+우 = 절반: $8 + x = 20 \\implies \\mathbf{x = 12\\text{ cm}^2}$<br/>&nbsp;&nbsp;② 위+아래 = 절반: $y + 11 = 20 \\implies \\mathbf{y = 9\\text{ cm}^2}$`,
+            notes: `• 대각선 교점 $O$에서는 4조각이 모두 $\\frac{1}{4}S$로 같고, 일반 점 $P$에서는 마주보는 두 조각의 합이 $\\frac{1}{2}S$로 같습니다!`,
+            tapeTitle: `전체 넓이 100% 분할: [위 △PAD + 아래 △PBC = 50%] + [왼쪽 △PAB + 오른쪽 △PCD = 50%]`,
+            tapeSegs: [
+              { text: `위 + 아래 (a+b+c+d = 50%)`, weight: 0.5, color: '#38bdf8' },
+              { text: `왼쪽 + 오른쪽 (a+b+c+d = 50%)`, weight: 0.5, color: '#fbbf24' }
+            ]
+          };
+        }
+        // paraHeightSplit
+        return {
+          badge: `탐구 3-E · 📐 평행사변형 변 위의 점 E와 대각선 위 점 P의 등적변형 (△EBC = ½ □ABCD)`,
+          hint: `윗변 $AD$ 위의 아무 점 $E$를 잡아도 $\\triangle EBC$는 밑변 $BC$와 높이가 평행사변형과 같으므로 <strong>언제나 전체 넓이의 절반($\\frac{1}{2}S$)</strong>입니다! 슬라이더로 점 $E$를 움직여 확인하세요!`,
+          actionTxt: state.fold > 0.5 ? '🎬 처음 위치로' : '🎬 윗변 위 점 E 슬라이딩 등적 실험!',
+          dim1Name: '△EBC 넓이', dim2Name: '남은 양옆(△ABE+△DCE)',
+          val1Txt: '항상 ½ □ABCD', val2Txt: '항상 ½ □ABCD',
+          parts: [
+            { id: 0, name: `🟡 가운데 큰 삼각형 △EBC (= △ABC = △DBC)`, desc: `점 E가 AD 위 어디에 있든 밑변 BC와 높이가 일정하여 넓이 = ½S!`, val: `넓이 = ½S (50%)`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 양옆 남은 두 삼각형 합 (△ABE + △DCE)`, desc: `전체(S)에서 가운데(½S)를 뺀 나머지이므로 합이 항상 ½S!`, val: `합 = ½S (50%)`, color: '#38bdf8', ok: true }
+          ],
+          totalRes: `점 E가 변 AD 위 어디에 있든 S(△EBC) = S(△ABE) + S(△DCE) = ½ □ABCD!`,
+          rule: '평행사변형 한 변을 밑변으로 공유하고 맞은편 변 위에 꼭짓점이 있는 삼각형 넓이는 무조건 1/2!',
+          formulaHTML: `• ${tex('\\overline{AD}\\parallel\\overline{BC}')} 이므로 등적변형에 의해 꼭짓점 $E$를 꼭짓점 $A$로 옮기면:<br/>&nbsp;&nbsp;${tex('\\mathbf{S_{\\triangle EBC} = S_{\\triangle ABC} = \\dfrac{1}{2}\\square ABCD}')}!`,
+          notes: `• 이 원리가 바로 앞선 <strong>내부 점 $P$ 정리(탐구 3-D)</strong>의 극한 상태(점 $P$가 윗변 $AD$ 끝까지 올라가 위쪽 삼각형 넓이가 $0$이 된 경우)입니다!`,
+          tapeTitle: `평행사변형 등적 분할: 가운데 △EBC(50%) = 왼쪽 △ABE + 오른쪽 △DCE(50%)`,
+          tapeSegs: [
+            { text: `가운데 △EBC (50%)`, weight: 0.5, color: '#fbbf24' },
+            { text: `양옆 △ABE + △DCE (50%)`, weight: 0.5, color: '#38bdf8' }
+          ]
+        };
+      }
+
+      // ==================== [탭 4: 사각형 네 변의 중점연결 (바리뇽 마스터 5종)] ====================
+      if (m === 4) {
+        const vMap = {
+          varignonGen: {
+            outer: '일반 사각형 (또는 오목사각형)', inner: '항상 평행사변형',
+            diagCond: 'AC ≠ BD, 수직 아님',
+            hint: `바깥 사각형이 아무리 찌그러져 있어도, 마주보는 중점변이 대각선과 평행하고 길이가 절반(<strong class="text-sky-300">PQ=SR=½AC</strong>, <strong class="text-pink-300">PS=QR=½BD</strong>)이라 안쪽 사각형 $PQRS$는 <strong>무조건 평행사변형</strong>입니다! 슬라이더로 네 귀퉁이를 접어 넓이가 절반($\\frac{1}{2}$)임을 확인하세요!`,
+            rule: '바리뇽 정리: 모든 사각형의 중점연결 도형은 최소한 평행사변형이며, 둘레 = AC+BD, 넓이 = 1/2!'
+          },
+          varignonRectToRhomb: {
+            outer: '직사각형 (대각선 AC = BD)', inner: '마름모 (네 변 길이 같음!)',
+            diagCond: '원래 대각선 AC = BD 일치!',
+            hint: `[오답률 1위!] 직사각형의 중점을 연결하면 왜 직사각형이 아니라 <strong class="text-amber-300">마름모</strong>가 될까요? 직사각형은 <strong>두 대각선의 길이가 같아서($AC=BD$)</strong> 그 절반인 네 중점변($PQ=QR=RS=SP=\\frac{1}{2}AC$)이 모두 같아지기 때문입니다!`,
+            rule: '원래 사각형의 두 대각선 길이가 같으면(AC=BD: 직사각형·등변사다리꼴) ➔ 중점사각형은 마름모!'
+          },
+          varignonIsoToRhomb: {
+            outer: '등변사다리꼴 (대각선 AC = BD)', inner: '마름모 (네 변 길이 같음!)',
+            diagCond: '등변사다리꼴도 대각선 AC = BD 일치!',
+            hint: `[시험 출제 1순위!] 등변사다리꼴 역시 직사각형처럼 <strong>두 대각선의 길이가 같습니다($AC=BD$)</strong>! 따라서 그 절반인 네 변의 길이가 모두 같아져 안쪽 중점사각형 $PQRS$는 <strong class="text-amber-300">마름모</strong>가 됩니다!`,
+            rule: '시험 필승 암기: [등변사다리꼴의 중점 연결 = 마름모!] (이유: 등변사다리꼴의 두 대각선 길이가 같으므로)'
+          },
+          varignonRhombToRect: {
+            outer: '마름모 (대각선 AC ⊥ BD 수직)', inner: '직사각형 (네 각 90°!)',
+            diagCond: '원래 대각선 AC ⊥ BD 수직 직교!',
+            hint: `마름모의 중점을 연결하면 왜 <strong class="text-sky-300">직사각형</strong>이 될까요? 마름모는 <strong>두 대각선이 $90^\\circ$ 수직($AC\\perp BD$)</strong>으로 만나므로, 대각선과 각각 평행한 중점변 $PQ$와 $PS$도 $90^\\circ$ 수직으로 만나 네 각이 모두 직각이 되기 때문입니다!`,
+            rule: '원래 사각형의 두 대각선이 수직이면(AC⊥BD: 마름모·연꼴) ➔ 중점사각형은 직사각형!'
+          },
+          varignonSquareToSquare: {
+            outer: '정사각형 (AC = BD 이고 AC ⊥ BD)', inner: '정사각형 (마름모 + 직사각형!)',
+            diagCond: 'AC = BD (마름모화) + AC ⊥ BD (직사각형화)',
+            hint: `정사각형은 대각선 길이도 같고($AC=BD \\implies$ 마름모 성질) 서로 수직($AC\\perp BD \\implies$ 직사각형 성질)이므로, 중점을 연결한 사각형 $PQRS$도 완벽한 <strong class="text-emerald-300">정사각형(넓이 $\\frac{1}{2}$)</strong>이 됩니다!`,
+            rule: '정사각형 중점 연결 ➔ 정사각형! (한 번 연결할 때마다 넓이는 1/2 ➔ 1/4 ➔ 1/8 로 반감!)'
+          }
+        }[sub];
+
+        return {
+          badge: `탐구 4 · 💎 사각형 중점연결 마스터 — [바깥: ${vMap.outer}] ──중점연결──▶ [안쪽 PQRS: ${vMap.inner}]`,
+          hint: vMap.hint,
+          actionTxt: state.fold > 0.5 ? '🎬 귀퉁이 펼치기' : '🎬 바깥 4귀퉁이 접어 넓이 ½ 증명!',
+          dim1Name: '바깥 대각선 특징', dim2Name: '안쪽 □PQRS 정체',
+          val1Txt: vMap.diagCond, val2Txt: vMap.inner,
+          parts: [
+            { id: 0, name: `🔵 하늘색 대각선 브릿지: PQ ∥ AC ∥ SR (PQ = SR = ½AC)`, desc: `△ABC와 △ADC의 중점연결정리 ⇒ PQ + SR = AC!`, val: `가로합 = AC`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🩷 분홍색 대각선 브릿지: PS ∥ BD ∥ QR (PS = QR = ½BD)`, desc: `△ABD와 △CBD의 중점연결정리 ⇒ PS + QR = BD!`, val: `세로합 = BD`, color: '#f472b6', ok: true },
+            { id: 2, name: `🟢 안쪽 사각형 PQRS = ${vMap.inner}`, desc: `둘레 = AC + BD (두 대각선 합) | 넓이 = ½ □ABCD (귀퉁이 접기 증명!)`, val: `넓이 = ½ 전체`, color: '#34d399', ok: true }
+          ],
+          totalRes: `[${vMap.outer.split(' ')[0]}] 중점 연결 ➔ [${vMap.inner}] | 둘레 = AC+BD, 넓이 = ½S`,
+          rule: vMap.rule,
+          formulaHTML: `• <strong>중점연결 사각형 결정 원리 (바깥 대각선이 안쪽 변을 지배한다!)</strong>:<br/>&nbsp;&nbsp;① 바깥 대각선 길이 일치(${tex('\\overline{AC}=\\overline{BD}')}: 직사각형·등변사다리꼴) $\\implies$ 안쪽 네 변 같음 $\\implies$ <strong>마름모</strong>!<br/>&nbsp;&nbsp;② 바깥 대각선 수직 직교(${tex('\\overline{AC}\\perp\\overline{BD}')}: 마름모·연꼴) $\\implies$ 안쪽 네 각 $90^\\circ$ $\\implies$ <strong>직사각형</strong>!`,
+          notes: `• <strong>[1초 암기 요약]</strong>: 일반/평사 $\\to$ <strong>평사</strong> | 직사각형 $\\leftrightarrow$ <strong>마름모</strong> (서로 크로스 체인지!) | 등변사다리꼴 $\\to$ <strong>마름모</strong> | 정사각형 $\\to$ <strong>정사각형</strong>!`,
+          tapeTitle: `□PQRS 넓이 = 바깥 4개 귀퉁이 삼각형 넓이 합 = 전체 사각형 ABCD 넓이의 정확히 ½ (50%)!`,
+          tapeSegs: [
+            { text: `안쪽 중점사각형 □PQRS (50%)`, weight: 0.5, color: '#34d399' },
+            { text: `바깥 4귀퉁이 삼각형 합 (50% ➔ 접으면 완전히 포개짐!)`, weight: 0.5, color: '#fbbf24' }
+          ]
+        };
+      }
+
+      // ==================== [탭 5: 종이접기 & 정사각형 회전 합동 · 정삼각형 킬러] ====================
+      if (m === 5) {
+        if (sub === 'foldTape') {
+          return {
+            badge: `탐구 5-A · 🎗️ 직사각형 종이테이프 대각선 접기 — 겹쳐진 △AEC는 무조건 이등변삼각형(EA = EC)!`,
+            // [2.0 수정] 이 장면의 접은 각·엇각 이름(hint·desc·totalRes·formulaHTML·tapeSegs)을 바로잡았습니다.
+            // 원본: 접은 각 ∠EAC = ∠BAC, 엇각 ∠ECA = ∠BAC (그림에서 ∠EAC ≈ 33°, ∠BAC ≈ 57°로 어긋남).
+            // AC로 접으면 B→B' 이므로 접은 각은 C에서의 ∠ECA = ∠BCA, 엇각은 A에서의 ∠EAC = ∠DAC = ∠BCA 입니다.
+            hint: `직사각형 종이테이프를 $AC$를 접는 선으로 하여 접으면, <strong>① 접은 각의 크기가 같고($\\angle ECA = \\angle BCA = \\bullet$)</strong>, <strong>② 평행선의 엇각이 같아서($\\angle EAC = \\angle BCA = \\bullet$)</strong> 두 밑각이 같아지므로 <strong class="text-amber-300">$\\triangle AEC$는 항상 $EA = EC$인 이등변삼각형</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 종이 펼치기' : '🎬 대각선 AC로 접어 이등변삼각형 완성!',
+            dim1Name: '핵심 각도 원리', dim2Name: '겹친 △AEC 정체',
+            val1Txt: '접은각(•) = 엇각(•)', val2Txt: 'EA = EC 이등변삼각형!',
+            parts: [
+              { id: 0, name: `🟡 겹쳐진 이등변삼각형 △AEC (EA = EC)`, desc: `접은 각 ∠ECA(•) = 엇각 ∠EAC(•) 이므로 두 밑각 일치!`, val: `EA = EC ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 접혀 올라온 직각삼각형 △AB'C ≡ 원래 △ABC`, desc: `AB' = AB, B'C = BC, ∠B' = 90° 그대로 보존!`, val: `합동 보존`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `접은 각(∠ECA=•) = 평행선 엇각(∠EAC=•) ➔ △AEC는 EA = EC인 이등변삼각형!`,
+            rule: '평행한 종이테이프를 접으면 [접은 각 = 엇각]에 의해 겹치는 삼각형은 100% 이등변삼각형이다!',
+            formulaHTML: `• ① 접은 각: ${tex('\\angle ECA = \\angle BCA = \\bullet')}<br/>• ② 평행선($AD\\parallel BC$) 엇각: ${tex('\\angle EAC = \\angle BCA = \\bullet')}<br/>• ③ 따라서 ${tex('\\angle EAC = \\angle ECA \\implies \\mathbf{\\overline{EA} = \\overline{EC}}')} (이등변삼각형)!`,
+            notes: `• 만약 직각삼각형에서 직각변 $AB=6, BC=8$이 주어지면 $EA = EC = x$로 놓고 옆 직각삼각형 $\\triangle EDC$에서 $(8-x), 6, x$ 변들을 비교하거나 넓이를 구하는 문제로 확장됩니다!`,
+            tapeTitle: `종이접기 불변량: 접은 각(•) = 엇각(•) ➔ 두 밑각이 같으므로 무조건 이등변삼각형(EA = EC)!`,
+            tapeSegs: [
+              { text: `접은 각 ∠ECA (•)`, weight: 0.5, color: '#fbbf24' },
+              { text: `평행선 엇각 ∠EAC (•) ➔ EA = EC!`, weight: 0.5, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'foldVertexToVertex') {
+          return {
+            badge: `탐구 5-B · 📄 직사각형 꼭짓점 C를 A에 포개어지도록 접기 — 사각형 AECF는 마름모!`,
+            hint: `꼭짓점 $C$가 꼭짓점 $A$에 완전히 겹치도록 접는 선 $EF$로 접으면, <strong>접는 선 $EF$는 대각선 $AC$의 수직이등분선($EF\\perp AC, OA=OC$)</strong>이 되어 안쪽 사각형 $AECF$는 네 변이 모두 같은 <strong class="text-amber-300">마름모</strong>가 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 종이 펼치기' : '🎬 꼭짓점 C를 A에 포개어 접기!',
+            dim1Name: '접는 선 EF와 AC', dim2Name: '사각형 AECF 정체',
+            val1Txt: 'EF ⊥ AC (수직이등분)', val2Txt: '마름모 (AE=EC=CF=FA)',
+            parts: [
+              { id: 0, name: `🟡 마름모 AECF (AE = EC = CF = FA)`, desc: `대각선 AC와 EF가 서로를 수직이등분하므로 완벽한 마름모!`, val: `마름모 AECF ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 수직이등분선 EF ⊥ AC (OA = OC, OE = OF)`, desc: `접힌 점 C가 A에 도착하므로 AC와 EF는 90°로 직교!`, val: `∠AOF = 90°`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `점 C ➔ 점 A 대칭 접기 ➔ EF ⊥ AC 수직이등분 ➔ 사각형 AECF는 마름모!`,
+            rule: '한 점 C를 다른 점 A에 포개어 접으면, 접는 선 EF는 선분 AC의 수직이등분선이고 AECF는 마름모이다!',
+            formulaHTML: `• 접은 선분이므로 ${tex('\\overline{CF}=\\overline{AF},\\; \\overline{CE}=\\overline{AE}')} 이고, 평행선 엇각+접은각으로 ${tex('\\overline{AE}=\\overline{AF}')}<br/>• 따라서 ${tex('\\mathbf{\\overline{AE}=\\overline{EC}=\\overline{CF}=\\overline{FA}}')} 이므로 사각형 $AECF$는 <strong>마름모</strong>입니다!`,
+            notes: `• 마름모 $AECF$의 넓이를 구하라는 문제가 나오면 <strong>$\\dfrac{1}{2} \\times \\overline{AC} \\times \\overline{EF}$</strong> (두 대각선의 곱 $\\div 2$)로 1초 만에 구할 수 있습니다!`,
+            tapeTitle: `마름모 AECF 네 변 길이 일치: AE = EC = CF = FA (대각선 AC ⊥ EF 수직이등분!)`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'squarePerpLines') {
+          return {
+            badge: `탐구 5-C · ✖️ 정사각형 속 수직인 두 선분 (AE ⊥ BF) — △ABE ≡ △BCF (ASA 합동, AE = BF)!`,
+            hint: `정사각형 $ABCD$에서 선분 $AE$와 $BF$가 $90^\\circ$ 수직으로 만나면, <strong>$\\bullet + \\times = 90^\\circ$ 각도 돌리기</strong>에 의해 $\\angle BAE(\\bullet) = \\angle CBF(\\bullet)$가 되어 <strong class="text-amber-300">$\\triangle ABE \\equiv \\triangle BCF$ (ASA 합동)</strong>이 성립합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원위치로' : '🎬 △ABE를 90° 회전시켜 △BCF에 포개기!',
+            dim1Name: '합동 조건', dim2Name: '핵심 결론',
+            val1Txt: 'ASA 합동 (•+×=90°)', val2Txt: 'AE = BF, BE = CF',
+            parts: [
+              { id: 0, name: `🔵 세로 직각삼각형 △ABE (AB, ∠B=90°, ∠BAE=•)`, desc: `90° 회전시키면 가로 직각삼각형 △BCF와 완벽히 포개어짐!`, val: `빗변 AE`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 가로 직각삼각형 △BCF (BC, ∠C=90°, ∠CBF=•)`, desc: `AB=BC, ∠B=∠C=90°, ∠BAE=∠CBF(•) ⇒ ASA 합동!`, val: `빗변 BF (=AE)`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🩷 교점 P의 직각(90°) 증명 (• + × = 90°)`, desc: `△ABP에서 • + × = 90° 이므로 ∠APB = 180° - 90° = 90°!`, val: `AE ⊥ BF (90°)`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `AE ⊥ BF ⟺ △ABE ≡ △BCF (ASA 합동) ⟺ AE = BF 및 BE = CF!`,
+            rule: '정사각형 안에서 직각(90°)으로 교차하는 두 선분의 길이는 언제나 똑같다(AE = BF)!',
+            formulaHTML: `• ${tex('\\triangle ABP')}에서 ${tex('\\angle BAE(\\bullet) + \\angle ABP(\\times) = 90^\\circ')}<br/>• 그런데 ${tex('\\angle ABC = \\angle ABP(\\times) + \\angle CBF = 90^\\circ \\implies \\mathbf{\\angle CBF = \\bullet}')}<br/>• 따라서 ${tex('\\mathbf{\\triangle ABE \\equiv \\triangle BCF}\\text{ (ASA 합동)} \\implies \\overline{AE}=\\overline{BF}')}!`,
+            notes: `• 반대로 “$BE = CF$일 때 두 선분 $AE, BF$가 이루는 각의 크기를 구하시오”라고 물어도 $\\text{SAS}$ 합동에 의해 정답은 무조건 <strong>$90^\\circ$</strong>입니다!`,
+            tapeTitle: `정사각형 90° 회전 대칭 합동: △ABE ≡ △BCF ➔ 빗변 AE = BF, 밑변 BE = CF`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'squareInnerRot') {
+          return {
+            badge: `탐구 5-D · 🌀 정사각형 대각선 교점 O에 고정된 회전 정사각형 — 겹치는 넓이는 언제나 ¼!`,
+            hint: `한 정사각형의 꼭짓점을 다른 정사각형의 중심 $O$에 고정하고 아무 각도로 돌려도, <strong>빠져나간 $\\triangle OEB$와 새로 들어온 $\\triangle OFC$가 항상 ASA 합동</strong>이므로 겹치는 사각형 $OECF$의 넓이는 <strong class="text-emerald-300">원래 정사각형의 $\\frac{1}{4}$(25%)로 불변</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 각도 되돌리기' : '🎬 정사각형 회전 & 합동 조각 등적 비교!',
+            dim1Name: '합동 삼각형 쌍', dim2Name: '겹치는 사각형 OECF 넓이',
+            val1Txt: '△OEB ≡ △OFC (ASA)', val2Txt: '항상 ¼ □ABCD (25%!)',
+            parts: [
+              { id: 0, name: `🟡 빠져나간 삼각형 △OEB ≡ 🔵 새로 들어온 △OFC`, desc: `OB=OC, ∠OBE=∠OCF=45°, ∠BOE=∠COF(90°-•) ⇒ ASA 합동!`, val: `ASA 합동 ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🟢 겹쳐진 사각형 OECF 넓이 (= △OBC 넓이 = ¼ 전체!)`, desc: `S(□OECF) = S(△OEC) + S(△OFC) = S(△OEC) + S(△OEB) = S(△OBC)!`, val: `항상 ¼S (25%)`, color: '#34d399', ok: true }
+            ],
+            totalRes: `회전 각도와 무관하게 △OEB ≡ △OFC (ASA 합동) ➔ 겹치는 넓이 = S(△OBC) = ¼ □ABCD!`,
+            rule: '중심 O에 90° 꼭짓점이 꽂혀 회전하면, 겹치는 부분의 넓이는 무조건 정사각형 넓이의 1/4이다!',
+            formulaHTML: `• ${tex('\\angle BOC = 90^\\circ')} 이고 회전 정사각형의 한 각도 ${tex('\\angle EOF = 90^\\circ')} 이므로:<br/>&nbsp;&nbsp;공통각 ${tex('\\angle EOC')}를 빼면 ${tex('\\mathbf{\\angle BOE = \\angle COF}')}!<br/>• ${tex('\\overline{OB}=\\overline{OC},\\; \\angle OBE=\\angle OCF=45^\\circ')} 이므로 ${tex('\\mathbf{\\triangle OEB \\equiv \\triangle OFC}\\text{ (ASA 합동)}')}!`,
+            notes: `• 또한 $BE = CF$이므로 $CE + CF = CE + BE = BC$가 되어, <strong>선분 $CE + CF$의 길이의 합도 항상 정사각형의 한 변의 길이($BC$)로 일정</strong>합니다!`,
+            tapeTitle: `정사각형 전체 넓이 대비 겹치는 부분(□OECF) 비율 = 언제나 정확히 ¼ (25%) 불변!`,
+            tapeSegs: [
+              { text: `겹치는 영역 □OECF = △OBC (25%)`, weight: 0.25, color: '#34d399' },
+              { text: `나머지 영역 (75%)`, weight: 0.75, color: '#1e293b' }
+            ]
+          };
+        }
+        // squareEquiTri
+        return {
+          badge: `탐구 5-E · 🔺 [각도 킬러 1위] 정사각형 ABCD 안에 정삼각형 △EBC를 넣었을 때 (75° · 150°의 비밀!)`,
+          hint: `정사각형($AB=BC$) 안에 한 변을 공유하는 정삼각형($BC=BE=CE$)을 그리면, 저절로 <strong class="text-amber-300">선분 $AB = BE$가 같아져 양옆 $\\triangle ABE$와 $\\triangle DCE$가 꼭지각이 $30^\\circ$인 이등변삼각형($75^\\circ, 75^\\circ$)</strong>이 됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 뷰로' : '🎬 숨은 이등변삼각형(AB=BE) & 75°·150° 해부!',
+          dim1Name: '숨은 이등변 꼭지각', dim2Name: '꼭짓점 E 각도 (∠AED)',
+          val1Txt: '∠ABE = 90°-60° = 30°', val2Txt: '∠AED = 150° (∠EAD=15°!)',
+          parts: [
+            { id: 0, name: `🟢 정삼각형 △EBC (BC = BE = CE, 세 내각 모두 60°)`, desc: `정사각형의 한 변 BC와 길이가 똑같은 정삼각형`, val: `60° · 60° · 60°`, color: '#34d399', ok: true },
+            { id: 1, name: `🟡 양옆 숨은 이등변삼각형 △ABE ≡ △DCE (AB = BE!)`, desc: `꼭지각 ∠ABE = 90°-60° = 30° ⇒ 두 밑각은 (180°-30°)÷2 = 75°!`, val: `30° · 75° · 75°`, color: '#fbbf24', ok: true },
+            { id: 2, name: `🩷 위쪽 둔각 이등변삼각형 △AED (∠AED = 150°!)`, desc: `∠BAE = 75° ⇒ ∠EAD = 90°-75° = 15° ⇒ ∠AED = 180°-30° = 150°!`, val: `15° · 15° · 150°`, color: '#f472b6', ok: true }
+          ],
+          totalRes: `AB = BC = BE ➔ ∠ABE = 30° 이등변 ➔ ∠BAE = ∠BEA = 75°, ∠EAD = 15°, ∠AED = 150°!`,
+          rule: '정사각형 + 정삼각형 합체 그림이 나오면 1초 만에 양옆 변에 등변 틱(AB=BE)을 찍고 30°-75°-75°를 써라!',
+          formulaHTML: `• <strong>3단계 각도 추적 공식</strong>:<br/>&nbsp;&nbsp;① 정사각형 변 = 정삼각형 변 $\\implies \\mathbf{\\overline{AB} = \\overline{BC} = \\overline{BE}}$ (이등변삼각형 탄생!)<br/>&nbsp;&nbsp;② 꼭지각 ${tex('\\angle ABE = 90^\\circ - 60^\\circ = \\mathbf{30^\\circ}')} $\\implies$ 밑각 ${tex('\\angle BAE = \\angle BEA = \\dfrac{180^\\circ-30^\\circ}{2} = \\mathbf{75^\\circ}')}<br/>&nbsp;&nbsp;③ 따라서 ${tex('\\angle EAD = 90^\\circ - 75^\\circ = \\mathbf{15^\\circ}')}, ${tex('\\angle AED = 360^\\circ - (75^\\circ+60^\\circ+75^\\circ) = \\mathbf{150^\\circ}')}!`,
+          notes: `• 이 문제에서 등장하는 각도는 오직 <strong>$15^\\circ, 30^\\circ, 45^\\circ, 60^\\circ, 75^\\circ, 150^\\circ$</strong> 뿐입니다! 핵심 열쇠는 무조건 <strong>$AB = BE$ 이등변삼각형 찾기</strong>입니다.`,
+          tapeTitle: `점 E 주위 360° 분할: 왼쪽 ∠AEB(75°) + 아래 정삼각형 ∠BEC(60°) + 오른쪽 ∠DEC(75°) + 위쪽 ∠AED(150°)`,
+          tapeSegs: [
+            { text: `75°`, weight: 75 / 360, color: '#fbbf24' },
+            { text: `60°`, weight: 60 / 360, color: '#34d399' },
+            { text: `75°`, weight: 75 / 360, color: '#fbbf24' },
+            { text: `∠AED = 150°!`, weight: 150 / 360, color: '#f472b6' }
+          ]
+        };
+      }
+
+      // ==================== [탭 6: 가짜 조건 반례 연구소 (오답 1위)] ====================
+      const cMap = {
+        counterIsoTrap: {
+          title: '💥 [함정 반례 1위] AD ∥ BC 이고 AB = CD 인 사각형은 평행사변형이다? ➔ 거짓(등변사다리꼴)!',
+          hint: `한 쌍의 대변이 평행($AD\\parallel BC$)하고 <strong>다른 한 쌍의 대변의 길이가 같으면($AB=CD$)</strong> 평행사변형이 아니라 <strong class="text-rose-400">등변사다리꼴</strong>이 될 수 있습니다! 판정 5번이 되려면 반드시 <strong>평행한 바로 그 변($AD=BC$)</strong>의 길이가 같아야 합니다!`,
+          rule: 'AD ∥ BC (위아래 평행) + AB = CD (양옆 같음) = 100% 등변사다리꼴 함정 반례(❌)!',
+          p1: '🔵 주어진 평행 조건: 윗변 AD ∥ 아랫변 BC',
+          p2: '❌ 엇갈린 길이 조건: 양옆 변 AB = CD (AD = BC가 아님!)',
+          p3: '💥 반례 도형: 등변사다리꼴 (대각선 AC를 그어도 SSA라 합동 안 됨!)'
+        },
+        counterKite: {
+          title: '💥 [함정 반례 2위] 두 대각선이 수직(AC ⊥ BD)인 사각형은 마름모이다? ➔ 거짓(연꼴 Kite)!',
+          hint: `명제 앞에 <strong>“평행사변형 $ABCD$에서”</strong>라는 말이 없이 그냥 “사각형 $ABCD$에서 $AC\\perp BD$이면 마름모이다”라고 하면 <strong class="text-rose-400">거짓(❌)</strong>입니다! 위아래 길이가 다른 <strong>가오리연 모양(연꼴, $OA \\neq OC$)</strong>이 대표적인 반례입니다!`,
+          rule: '"평행사변형에서 AC⊥BD"는 마름모(⭕)이지만, "일반 사각형에서 AC⊥BD"는 연꼴 반례 때문에 거짓(❌)!',
+          p1: '🟡 만족하는 조건: 두 대각선이 90° 수직 직교 (AC ⊥ BD)',
+          p2: '❌ 깨진 조건: 대각선이 서로를 이등분하지 않음 (OA ≠ OC!)',
+          p3: '💥 반례 도형: 연꼴 (Kite — 이웃한 두 쌍 AB=AD, CB=CD만 같음)'
+        },
+        counterDiagEqual: {
+          title: '💥 [함정 반례 3위] 두 대각선의 길이가 같은(AC = BD) 사각형은 직사각형이다? ➔ 거짓(등변사다리꼴)!',
+          hint: `“평행사변형에서 $AC=BD$”이면 직사각형이 맞지만, 그냥 “사각형에서 두 대각선의 길이가 같으면($AC=BD$) 직사각형이다”라고 하면 <strong class="text-rose-400">등변사다리꼴 반례 때문에 거짓(❌)</strong>입니다!`,
+          rule: '일반 사각형에서 AC = BD 만으로는 직사각형이 되지 않는다! (중점 M ≠ N 인 등변사다리꼴 반례 존재)',
+          p1: '🟡 만족하는 조건: 두 대각선의 전체 길이 일치 (AC = BD)',
+          p2: '❌ 깨진 조건: 두 대각선의 중점 M과 N이 서로 다름 (OA ≠ OC, OB ≠ OD)',
+          p3: '💥 반례 도형: 등변사다리꼴 (네 내각이 90°가 아님!)'
+        },
+        counterHalfBisect: {
+          title: '💥 [함정 반례 4위] 한 대각선이 다른 대각선을 이등분(OB = OD)하면 평행사변형이다? ➔ 거짓!',
+          hint: `평행사변형 판정 4번은 두 대각선이 <strong>“서로” 다른 것을 이등분($OA=OC$ 이고 $OB=OD$)</strong>해야 합니다! 한쪽만 이등분($OB=OD, OA\\neq OC$)하면 평행사변형이 아닙니다!`,
+          rule: '반드시 OA = OC 와 OB = OD 두 개가 동시에 성립해야만 평행사변형이다!',
+          p1: '🔵 절반만 성립: 가로 대각선은 이등분됨 (OB = OD)',
+          p2: '❌ 나머지 불성립: 세로 대각선은 이등분 안 됨 (OA ≠ OC!)',
+          p3: '💥 반례 도형: 비대칭 사각형 / 연꼴 (평행사변형 아님 ❌)'
+        },
+        counterFakeRhomb: {
+          title: '💥 [함정 반례 5위] 알파벳 순서 함정 — (AB=BC, CD=DA: 연꼴 ❌) vs (AB=CD, BC=DA: 평사 ⭕)',
+          hint: `글자로만 조건을 줄 때 가장 많이 속는 함정입니다! <strong>$AB=CD, BC=DA$는 마주보는 대변이 같은 평행사변형(⭕)</strong>이지만, 알파벳을 살짝 바꾼 <strong class="text-rose-400">$AB=BC, CD=DA$는 이웃한 변끼리 같은 연꼴(❌)</strong>입니다!`,
+          rule: '글자 조건이 나오면 사각형 ABCD를 그리고 어느 변끼리 같은지 틱 마크(|, ||)를 직접 찍어보라!',
+          p1: '❌ 함정 조건: AB = BC 이고 CD = DA (이웃한 변끼리 같음 ➔ 연꼴!)',
+          p2: '⭕ 진짜 조건: AB = CD 이고 BC = DA (마주보는 대변끼리 같음 ➔ 평행사변형!)',
+          p3: '💡 마름모가 되려면: AB = BC = CD = DA (네 변이 모두 같아야 함!)'
+        }
+      }[sub];
+
+      return {
+        badge: `탐구 6 · ${cMap.title}`,
+        hint: cMap.hint,
+        actionTxt: state.fold > 0.5 ? '🎬 반례 도형 보기' : '🎬 정상 도형 vs 반례 도형 비교!',
+        dim1Name: '명제 판정', dim2Name: '핵심 반례 도형',
+        val1Txt: '거짓 (False ❌)', val2Txt: sub.includes('Trap') || sub.includes('Equal') ? '등변사다리꼴' : '연꼴 (Kite)',
+        parts: [
+          { id: 0, name: cMap.p1, desc: `문제에서 참인 것처럼 유혹하는 부분 조건`, val: `조건 일부 ⭕`, color: '#fbbf24', ok: true },
+          { id: 1, name: cMap.p2, desc: `평행사변형 전제가 빠져 있어서 깨지는 핵심 조건!`, val: `전제 누락 ❌`, color: '#f43f5e', ok: false },
+          { id: 2, name: cMap.p3, desc: `이 반례 하나 때문에 해당 명제는 무조건 거짓(❌)!`, val: `명제 거짓 ❌`, color: '#f43f5e', ok: false }
+        ],
+        totalRes: `판정: 거짓(❌) — 전제 조건("평행사변형에서") 누락 또는 쌍 불일치!`,
+        rule: cMap.rule,
+        formulaHTML: `• <strong>[시험장 OX 판별 1초 공식]</strong>:<br/>&nbsp;&nbsp;① 문제 맨 앞이 <strong>“사각형 $ABCD$에서~”</strong>로 시작하면 $\\implies$ <strong>등변사다리꼴</strong>이나 <strong>연꼴</strong> 반례가 있는지 무조건 의심하라!<br/>&nbsp;&nbsp;② 문제 맨 앞이 <strong>“평행사변형 $ABCD$에서~”</strong>로 시작하면 $\\implies$ 대각선 이등분이 이미 보장되어 있으므로 $AC=BD$(직사각형), $AC\\perp BD$(마름모)가 모두 참(⭕)이다!`,
+        notes: `• <strong>등변사다리꼴</strong>(대각선 길이만 같고 평사 아님)과 <strong>연꼴</strong>(대각선 수직이기만 하고 평사 아님) 두 도형만 머릿속에 넣어두면 중2 사각형 OX 문제는 100% 다 맞힙니다!`,
+        tapeTitle: `⚠️ 반례 경보: "일반 사각형에서"라는 말로 시작할 때는 등변사다리꼴(AC=BD)과 연꼴(AC⊥BD)을 조심하세요!`,
+        tapeSegs: []
+      };
+    }
+
+
+  /* ===== 원본 그대로: 장면별 그리기 (원본 1368–1985행)
+     [2.0 수정] 그림 코드는 아래 부분만 바꿨습니다(각각 코드 안에 [2.0 수정]·[2.0] 주석):
+                화면 폭별 배율 0.82/1.08 → 1.08 · 평행사변형 기울기 계수 0.65 → 0.5 (∠B = 라벨) · 교각 θ 라벨 ∠AOB → ∠BOC ·
+                꼭짓점 D 끌기 점(qhandle) 한 줄 추가 · 등적변형 3-A의 D 위치 · 등적변형 3-B의 밑변 길이 · 반례5의 꼭짓점 이름·틱 · 반례1·3의 M·N 이름표 위치.
+     캔버스 직접 호출(ctx.save·translate·rotate·fillText)은 위 ctx 도우미가 받습니다. ===== */
+    function drawQuadMasterScene(cx, cy, t, spec) {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const s = state.scale * 1.08; // [2.0] 원본은 화면 폭에 따라 0.82/1.08배로 그렸지만, 2.0 무대는 항상 그림 전체를 화면에 맞추므로 하나로 둡니다
+      const ang = state.angPreset;
+      const dRatio = state.ratioPreset;
+
+      // =====================================================================
+      // [모드 1] 평행사변형 정의 · 성질 · 5대 판정 & 내부 새로운 평행사변형
+      // =====================================================================
+      if (m === 1) {
+        const w = 195 * s, h = 112 * s;
+        // [2.0 수정] 원본의 0.65는 그림 속 ∠B가 라벨(ang°)보다 작게(70°→65°, 60°→53°) 그려지게 했습니다. 0.5로 두면 ∠B = ang° 가 정확합니다.
+        const skew = Math.tan(((90 - ang) * Math.PI) / 180) * h * 0.5;
+
+        const pA = qpt(cx - w / 2 + skew, cy - h / 2);
+        const pB = qpt(cx - w / 2 - skew, cy + h / 2);
+        const pC = qpt(cx + w / 2 - skew, cy + h / 2);
+        const defaultD = qpt(cx + w / 2 + skew, cy - h / 2);
+        const pD = sub === 'paraDiag' && state.customDOffset
+          ? qpt(defaultD.x + state.customDOffset.dx * s, defaultD.y + state.customDOffset.dy * s)
+          : defaultD;
+        const pO = qmid(pA, pC);
+        const pN = qmid(pB, pD);
+        const center = qmid(pO, pN);
+
+        if (sub === 'paraDefSides' || sub === 'paraCond5') {
+          const isCond5 = sub === 'paraCond5';
+          const sepPhase = Math.sin(t * Math.PI);
+          const sepX = sepPhase * 120 * s, sepY = sepPhase * -22 * s;
+
+          qpoly([pA, pB, pC], 'rgba(56, 189, 248, 0.28)', QCOL.cyan, 3.2, 0);
+          if (!isCond5) {
+            qarrows(pB, pC, 1, QCOL.cyan);
+          }
+          qarrows(pB, pA, 2, QCOL.gold);
+          qticks(pA, pB, 1, QCOL.gold, 8);
+          if (!isCond5) qticks(pB, pC, 2, QCOL.cyan, 8);
+          qangle(pA, pB, pC, QCOL.gold, 28, 1, '•');
+          if (!isCond5) qangle(pC, pA, pB, QCOL.pink, 30, 2, '×');
+
+          ctx.save();
+          const midAC = qpt(pO.x + sepX, pO.y + sepY);
+          ctx.translate(midAC.x, midAC.y);
+          ctx.rotate(t * Math.PI);
+          ctx.translate(-midAC.x, -midAC.y);
+
+          const sA = qpt(pA.x + sepX, pA.y + sepY);
+          const sC = qpt(pC.x + sepX, pC.y + sepY);
+          const sD = qpt(pD.x + sepX, pD.y + sepY);
+          qpoly([sA, sC, sD], 'rgba(251, 191, 36, 0.30)', QCOL.gold, 3.2, 1);
+          if (!isCond5) qarrows(sA, sD, 1, QCOL.cyan);
+          qarrows(sC, sD, 2, QCOL.gold);
+          qticks(sC, sD, 1, QCOL.gold, 8);
+          if (!isCond5) qticks(sA, sD, 2, QCOL.cyan, 8);
+          qangle(sC, sD, sA, QCOL.gold, 28, 1, '•');
+          if (!isCond5) qangle(sA, sC, sD, QCOL.pink, 30, 2, '×');
+          qdot(sD, t > 0.7 ? 'D(→B에 포개짐!)' : 'D', QCOL.gold, midAC);
+          ctx.restore();
+
+          qline(pA, pC, QCOL.white, 2.8, [6, 4], false, 1);
+          qdot(pA, 'A', QCOL.white, center);
+          qdot(pB, 'B', QCOL.cyan, center);
+          qdot(pC, 'C', QCOL.white, center);
+        } else if (sub === 'paraAngles') {
+          qpoly([pA, pB, pC, pD], 'rgba(52, 211, 153, 0.18)', QCOL.green, 3.4, 0);
+          qarrows(pA, pD, 1, QCOL.cyan); qarrows(pB, pC, 1, QCOL.cyan);
+
+          // ∠B의 이등분선과 AD의 교점 E (AB = AE인 이등변삼각형!)
+          const lenAB = qdist(pA, pB);
+          const dirAD = qnorm(qsub(pD, pA));
+          const pE = qadd(pA, qmul(dirAD, lenAB));
+          // ∠A의 이등분선과 BE의 교점 P (수직 90°!)
+          const pP = qmid(pB, pE);
+
+          if (t > 0.05 || state.conceptSwitch === 'aux' || state.activePartIdx !== -1) {
+            qpoly([pA, pB, pE], 'rgba(56, 189, 248, 0.26)', QCOL.cyan, 2.8, 2);
+            qpoly([pA, pB, pP], 'rgba(244, 114, 182, 0.34)', QCOL.pink, 3.0, 1);
+            qline(pB, pE, QCOL.cyan, 3.2, [], true, 2);
+            qline(pA, pP, QCOL.pink, 3.2, [], true, 1);
+            qright(pP, pA, pB, 13, QCOL.pink);
+            qticks(pA, pB, 2, QCOL.gold, 8);
+            qticks(pA, pE, 2, QCOL.gold, 8);
+            qangle(pE, pB, pA, QCOL.cyan, 26, 2, '×(엇각)');
+            qdot(pE, 'E(AB=AE 이등변!)', QCOL.cyan, null, { x: 0, y: -14 });
+            qdot(pP, 'P(90° 직교!)', QCOL.pink, null, { x: 14, y: 8 });
+          }
+
+          qangle(pA, pB, pP, QCOL.gold, 26, 1, '•');
+          qangle(pA, pP, pD, QCOL.gold, 30, 1, '•');
+          qangle(pB, pC, pE, QCOL.cyan, 26, 2, '×');
+          qangle(pB, pE, pA, QCOL.cyan, 30, 2, '×');
+          qangle(pC, pD, pB, QCOL.gold, 28, 1, `${180 - ang}°`);
+          qangle(pD, pA, pC, QCOL.cyan, 28, 2, `${ang}°`);
+
+          [pA, pB, pC, pD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+        } else if (sub === 'paraDiag') {
+          const isBroken = !!state.customDOffset && qdist(pO, pN) > 5;
+          qpoly([pA, pB, pC, pD], isBroken ? 'rgba(244, 63, 94, 0.18)' : 'rgba(52, 211, 153, 0.18)', isBroken ? QCOL.red : QCOL.green, 3.4, 0);
+          qline(pA, pC, QCOL.gold, 2.5, [6, 4], false, 0);
+          qline(pB, pD, QCOL.cyan, 2.5, [6, 4], false, 0);
+
+          if (!isBroken) {
+            const u = 0.25 + 0.5 * t;
+            const pE = qlerp(pA, pD, u), pF = qlerp(pC, pB, u);
+            qpoly([pO, pA, pE], 'rgba(251, 191, 36, 0.34)', QCOL.gold, 2.8, 1);
+            qpoly([pO, pC, pF], 'rgba(244, 114, 182, 0.34)', QCOL.pink, 2.8, 1);
+            qline(pE, pF, QCOL.white, 3.2, [], true, 1);
+            qticks(pO, pA, 1, QCOL.gold, 7); qticks(pO, pC, 1, QCOL.gold, 7);
+            qticks(pO, pB, 2, QCOL.cyan, 7); qticks(pO, pD, 2, QCOL.cyan, 7);
+            qticks(pO, pE, 3, QCOL.pink, 7.5); qticks(pO, pF, 3, QCOL.pink, 7.5);
+            qdot(pO, 'O(중점 일치)', QCOL.gold, null, { x: 14, y: 4 });
+            qdot(pE, 'E', QCOL.gold, null, { x: 0, y: -14 });
+            qdot(pF, 'F(OE=OF)', QCOL.pink, null, { x: 0, y: 20 });
+          } else {
+            qline(pO, pN, QCOL.red, 3.6, [], true, 2);
+            qdot(pO, 'M(AC중점)', QCOL.gold, null, { x: -45, y: -10 });
+            qdot(pN, 'N(BD중점)', QCOL.pink, null, { x: 14, y: 16 });
+          }
+
+          qdot(pA, 'A', QCOL.white, center);
+          qdot(pB, 'B', QCOL.white, center);
+          qdot(pC, 'C', QCOL.white, center);
+          qdot(pD, 'D(마우스 드래그!)', QCOL.gold, center);
+          qhandle('D', pD, defaultD); // [2.0] 원본의 캔버스 마우스 드래그 → 무대의 끌 수 있는 점
+        } else {
+          // paraHidden (대각선 수선의 발 E, F ➔ □EBFD 평행사변형!)
+          const pE = qproject(pB, pA, pC);
+          const pF = qproject(pD, pA, pC);
+
+          qpoly([pA, pB, pC, pD], 'rgba(148, 163, 184, 0.10)', 'rgba(148, 163, 184, 0.5)', 2.2);
+          qpoly([pA, pB, pE], 'rgba(251, 191, 36, 0.32)', QCOL.gold, 2.8, 0);
+          qpoly([pC, pD, pF], 'rgba(251, 191, 36, 0.32)', QCOL.gold, 2.8, 0);
+          qpoly([pE, pB, pF, pD], 'rgba(52, 211, 153, 0.34)', QCOL.green, 3.4, 2);
+
+          qline(pA, pC, QCOL.white, 2.4, [5, 4]);
+          qline(pB, pE, QCOL.pink, 3.6, [], true, 1);
+          qline(pD, pF, QCOL.pink, 3.6, [], true, 1);
+
+          qright(pE, pB, pA, 11, QCOL.pink);
+          qright(pF, pD, pC, 11, QCOL.pink);
+          qticks(pB, pE, 1, QCOL.pink, 7.5);
+          qticks(pD, pF, 1, QCOL.pink, 7.5);
+          qarrows(pB, pE, 1, QCOL.pink);
+          qarrows(pF, pD, 1, QCOL.pink);
+
+          [pA, pB, pC, pD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+          qdot(pE, 'E(⊥)', QCOL.pink, null, { x: -18, y: -10 });
+          qdot(pF, 'F(⊥)', QCOL.pink, null, { x: 14, y: 14 });
+        }
+      }
+
+      // =====================================================================
+      // [모드 2] 사각형 족보 진화 & 등변사다리꼴 2대 보조선 & 대각선 조합기
+      // =====================================================================
+      else if (m === 2) {
+        if (sub === 'isoTrapMaster') {
+          const topW = 96 * s, botW = 224 * s, h = 115 * s;
+          const pA = qpt(cx - topW / 2, cy - h / 2), pD = qpt(cx + topW / 2, cy - h / 2);
+          const pB = qpt(cx - botW / 2, cy + h / 2), pC = qpt(cx + botW / 2, cy + h / 2);
+          const center = qpt(cx, cy);
+
+          qpoly([pA, pB, pC, pD], 'rgba(56, 189, 248, 0.14)', QCOL.cyan, 3.4);
+          qarrows(pA, pD, 1, QCOL.cyan); qarrows(pB, pC, 1, QCOL.cyan);
+          qticks(pA, pB, 1, QCOL.gold, 8.5); qticks(pD, pC, 1, QCOL.gold, 8.5);
+          qangle(pB, pC, pA, QCOL.gold, 28, 1, '∠B');
+          qangle(pC, pD, pB, QCOL.gold, 28, 1, '∠C');
+
+          if (state.activePartIdx === 2) {
+            // 대각선 AC = BD SAS 합동 강조
+            qpoly([pA, pB, pC], 'rgba(244, 114, 182, 0.25)', QCOL.pink, 3.0, 2);
+            qpoly([pD, pC, pB], 'rgba(251, 191, 36, 0.25)', QCOL.gold, 3.0, 2);
+            qline(pA, pC, QCOL.pink, 3.8, [], true, 2);
+            qline(pB, pD, QCOL.gold, 3.8, [], true, 2);
+          } else if (t < 0.5 && state.activePartIdx !== 1) {
+            // 보조선 ①: 점 D에서 평행선 DE ∥ AB
+            const pE = qpt(pB.x + topW, pB.y);
+            qpoly([pA, pB, pE, pD], 'rgba(56, 189, 248, 0.22)', QCOL.cyan, 2.6, 0);
+            qpoly([pD, pE, pC], 'rgba(251, 191, 36, 0.32)', QCOL.gold, 3.2, 0);
+            qarrows(pB, pA, 2, QCOL.gold); qarrows(pE, pD, 2, QCOL.gold);
+            qticks(pD, pE, 1, QCOL.gold, 8.5);
+            qangle(pE, pC, pD, QCOL.gold, 26, 1, '동위각');
+            qdot(pE, 'E(보조선 DE∥AB: 이등변 △DEC!)', QCOL.gold, null, { x: -10, y: 22 });
+          } else {
+            // 보조선 ②: 점 A, D에서 밑변에 수선 AH, DK
+            const pH = qpt(pA.x, pB.y), pK = qpt(pD.x, pC.y);
+            qpoly([pA, pB, pH], 'rgba(52, 211, 153, 0.34)', QCOL.green, 3.0, 1);
+            qpoly([pD, pK, pC], 'rgba(52, 211, 153, 0.34)', QCOL.green, 3.0, 1);
+            qpoly([pA, pH, pK, pD], 'rgba(56, 189, 248, 0.18)', QCOL.cyan, 2.4, 1);
+            qright(pH, pA, pB, 11, QCOL.green);
+            qright(pK, pD, pC, 11, QCOL.green);
+            qticks(pB, pH, 2, QCOL.green, 7.5);
+            qticks(pK, pC, 2, QCOL.green, 7.5);
+            qdot(pH, 'H(BH=4cm)', QCOL.green, null, { x: -20, y: 22 });
+            qdot(pK, 'K(CK=4cm)', QCOL.green, null, { x: 10, y: 22 });
+          }
+
+          [pA, pB, pC, pD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+        } else {
+          // evoRect, evoRhombus, evoSquare, diagSynthesis
+          let curTheta = ang;
+          let curRatio = dRatio;
+          if (sub === 'evoRect') {
+            curTheta = 65;
+            curRatio = 0.7 + 0.3 * t; // t=1 일 때 1.0 (AC=BD 직사각형!)
+          } else if (sub === 'evoRhombus') {
+            curTheta = 65 + 25 * t;   // t=1 일 때 90° (AC⊥BD 마름모!)
+            curRatio = 0.68;
+          } else if (sub === 'evoSquare') {
+            curTheta = 65 + 25 * t;   // t=1 일 때 90°
+            curRatio = 0.7 + 0.3 * t; // t=1 일 때 1.0 (정사각형!)
+          }
+
+          const isEq = Math.abs(curRatio - 1.0) < 0.03;
+          const isPerp = Math.abs(curTheta - 90) < 1.5;
+
+          const pO = qpt(cx, cy);
+          const phi = (30 * Math.PI) / 180;
+          const rad = (curTheta * Math.PI) / 180;
+          const halfAC = 148 * s, halfBD = halfAC * curRatio;
+          const v1 = qpt(Math.cos(phi), Math.sin(phi));
+          const v2 = qpt(Math.cos(phi + rad), Math.sin(phi + rad));
+
+          const pA = qpt(cx - halfAC * v1.x, cy - halfAC * v1.y);
+          const pC = qpt(cx + halfAC * v1.x, cy + halfAC * v1.y);
+          const pB = qpt(cx + halfBD * v2.x, cy + halfBD * v2.y);
+          const pD = qpt(cx - halfBD * v2.x, cy - halfBD * v2.y);
+
+          const col = isEq && isPerp ? QCOL.green : isEq ? QCOL.cyan : isPerp ? QCOL.gold : QCOL.green;
+          qpoly([pA, pB, pC, pD], col + '30', col, 3.6, 0);
+          qline(pA, pC, isEq ? QCOL.gold : QCOL.cyan, 3.0, [], isEq, 1);
+          qline(pB, pD, isEq ? QCOL.gold : QCOL.pink, 3.0, [], isEq, 1);
+
+          if (isEq) {
+            qright(pA, pB, pD, 13, QCOL.cyan);
+            qright(pB, pC, pA, 13, QCOL.cyan);
+            qright(pC, pD, pB, 13, QCOL.cyan);
+            qright(pD, pA, pC, 13, QCOL.cyan);
+            qticks(pO, pA, 2, QCOL.gold, 7.5);
+            qticks(pO, pB, 2, QCOL.gold, 7.5);
+            qticks(pO, pC, 2, QCOL.gold, 7.5);
+            qticks(pO, pD, 2, QCOL.gold, 7.5);
+          } else {
+            qticks(pO, pA, 1, QCOL.cyan, 7); qticks(pO, pC, 1, QCOL.cyan, 7);
+            qticks(pO, pB, 2, QCOL.pink, 7); qticks(pO, pD, 2, QCOL.pink, 7);
+          }
+
+          if (isPerp) {
+            qright(pO, pA, pB, 14, QCOL.pink);
+            qticks(pA, pB, 1, QCOL.gold, 8.5);
+            qticks(pB, pC, 1, QCOL.gold, 8.5);
+            qticks(pC, pD, 1, QCOL.gold, 8.5);
+            qticks(pD, pA, 1, QCOL.gold, 8.5);
+          } else {
+            // [2.0 수정] 원본은 ∠AOB(= 180° - θ)에 θ°를 적었습니다. 두 대각선의 교각 θ는 ∠BOC 이므로 pA → pC 로 바꿉니다.
+            qangle(pO, pC, pB, QCOL.pink, 24, 1, `${Math.round(curTheta)}°`);
+          }
+
+          qdot(pO, 'O', QCOL.white, null, { x: 10, y: -8 });
+          [pA, pB, pC, pD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, pO));
+        }
+      }
+
+      // =====================================================================
+      // [모드 3] 평행선 등적변형 · 사다리꼴 나비 넓이 · 내부 점 P
+      // =====================================================================
+      else if (m === 3) {
+        if (sub === 'quadToTri') {
+          const A = qpt(cx - 140 * s, cy - 82 * s);
+          const B = qpt(cx - 110 * s, cy + 88 * s);
+          const C = qpt(cx + 35 * s, cy + 88 * s);
+          // [2.0 수정] 원본 D(70, -58)은 △ACD 를 △ABC 보다 더 크게 그려 '60 cm² + 40 cm²' 설명·띠와 어긋났습니다. D(27, -14)로 두면 넓이비가 59.9 : 40.1 로 맞습니다.
+          const D = qpt(cx + 27 * s, cy - 14 * s);
+          const fac = (B.y - D.y) / (C.y - A.y);
+          const E = qpt(D.x + fac * (C.x - A.x), B.y);
+          const Dmove = qlerp(D, E, t);
+
+          qpoly([A, B, C], 'rgba(56, 189, 248, 0.28)', QCOL.cyan, 3.2, 0);
+          qpoly([A, C, D], 'rgba(251, 191, 36, 0.14)', 'rgba(251, 191, 36, 0.55)', 2.0, 1);
+          qpoly([A, C, Dmove], 'rgba(52, 211, 153, 0.36)', QCOL.green, 3.4, 2);
+
+          qline(A, C, QCOL.gold, 3.0, [5, 4], true, 1);
+          qline(D, E, QCOL.gold, 3.0, [5, 4], true, 1);
+          qline(C, E, QCOL.pink, 3.0);
+          qarrows(A, C, 2, QCOL.gold, 7.5);
+          qarrows(D, E, 2, QCOL.gold, 7.5);
+
+          qdot(A, 'A', QCOL.white, null, { x: -16, y: -8 });
+          qdot(B, 'B', QCOL.white, null, { x: -16, y: 18 });
+          qdot(C, 'C', QCOL.white, null, { x: -6, y: 20 });
+          qdot(D, 'D(원래 꼭짓점)', QCOL.gold, null, { x: 10, y: -8 });
+          qdot(E, 'E(연장선 교점)', QCOL.pink, null, { x: 8, y: 20 });
+          if (t > 0.02) qdot(Dmove, t > 0.92 ? 'D→E(△ABE 완성!)' : 'D\'(등적 이동 중)', QCOL.green, null, { x: 14, y: -10 });
+        } else if (sub === 'equiSlide') {
+          const yTop = cy - 80 * s, yBot = cy + 75 * s, wLine = 250 * s;
+          qline(qpt(cx - wLine, yTop), qpt(cx + wLine, yTop), 'rgba(52, 211, 153, 0.55)', 2.2, [6, 5]);
+          qline(qpt(cx - wLine, yBot), qpt(cx + wLine, yBot), 'rgba(52, 211, 153, 0.55)', 2.2, [6, 5]);
+          qarrows(qpt(cx - 190 * s, yTop), qpt(cx - 150 * s, yTop), 1, QCOL.green);
+          qarrows(qpt(cx - 190 * s, yBot), qpt(cx - 150 * s, yBot), 1, QCOL.green);
+
+          // [2.0 수정] 설명은 '밑변 BC = 16, 높이 h = 10'(비 1.6)인데 원본 그림은 190 : 155 (비 1.2) 였습니다. 밑변을 248로 늘려 16 : 10 에 맞춥니다.
+          const pB = qpt(cx - 130 * s, yBot), pC = qpt(cx + 118 * s, yBot);
+          const pA0 = qpt(cx - 90 * s, yTop);
+          const pA = qpt((1 - t) * (cx - 90 * s) + t * (cx + 135 * s), yTop);
+          const pH = qpt(pA.x, yBot);
+          const pM = qlerp(pB, pC, 0.25);
+
+          qpoly([pA0, pB, pC], 'rgba(56, 189, 248, 0.16)', QCOL.cyan, 2.2, 0);
+          qpoly([pA, pB, pC], 'rgba(251, 191, 36, 0.34)', QCOL.gold, 3.5, 1);
+          if (state.activePartIdx === 2) {
+            qpoly([pA, pB, pM], 'rgba(244, 114, 182, 0.42)', QCOL.pink, 3.0, 2);
+            qdot(pM, 'M(1:3 내분)', QCOL.pink, null, { x: 0, y: 20 });
+          }
+
+          qline(pA, pH, QCOL.red, 2.6, [4, 4]);
+          qright(pH, pA, pC, 11, QCOL.red);
+          qdot(pA0, 'A(처음 80cm²)', QCOL.cyan, null, { x: -20, y: -14 });
+          qdot(pA, "A'(80cm² 불변!)", QCOL.gold, null, { x: 0, y: -14 });
+          qdot(pB, 'B', QCOL.white, null, { x: -16, y: 18 });
+          qdot(pC, 'C', QCOL.white, null, { x: 10, y: 18 });
+          qdot(pH, 'H(높이 h=10)', QCOL.red, null, { x: 8, y: 20 });
+        } else if (sub === 'butterflyWing') {
+          const topW = 96 * s, botW = 192 * s, h = 128 * s;
+          const pA = qpt(cx - topW / 2 + 18 * s, cy - h / 2), pD = qpt(cx + topW / 2 + 18 * s, cy - h / 2);
+          const pB = qpt(cx - botW / 2, cy + h / 2), pC = qpt(cx + botW / 2, cy + h / 2);
+          const pO = qintersect(pA, pC, pB, pD);
+
+          qpoly([pA, pB, pC, pD], 'rgba(15, 38, 29, 0.45)', QCOL.green, 2.8);
+          qarrows(pA, pD, 1, QCOL.cyan); qarrows(pB, pC, 1, QCOL.cyan);
+
+          qpoly([pO, pA, pD], 'rgba(56, 189, 248, 0.28)', QCOL.cyan, 2.4, 1);
+          qpoly([pO, pB, pC], 'rgba(244, 114, 182, 0.28)', QCOL.pink, 2.4, 1);
+          qpoly([pA, pB, pO], 'rgba(251, 191, 36, 0.50)', QCOL.gold, 3.2, 0);
+          qpoly([pD, pC, pO], 'rgba(251, 191, 36, 0.50)', QCOL.gold, 3.2, 0);
+
+          qdot(pO, 'O', QCOL.white, null, { x: 0, y: -14 });
+          [pA, pB, pC, pD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, pO));
+
+          ctx.save();
+          ctx.font = '800 12.5px Pretendard, sans-serif';
+          ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center';
+          ctx.fillText('위 = 3cm²', pO.x, pO.y - 34 * s);
+          ctx.fillText('아래 = 12cm²', pO.x, pO.y + 48 * s);
+          ctx.fillStyle = '#fef08a';
+          ctx.fillText('S₁ = 6cm²', pO.x - 52 * s, pO.y + 4 * s);
+          ctx.fillText('S₂ = 6cm²', pO.x + 56 * s, pO.y + 4 * s);
+          ctx.restore();
+        } else if (sub === 'insidePointP') {
+          const A = qpt(cx - 105 * s, cy - 82 * s), B = qpt(cx - 140 * s, cy + 82 * s);
+          const C = qpt(cx + 105 * s, cy + 82 * s), D = qpt(cx + 140 * s, cy - 82 * s);
+          const P = qpt(cx + (-32 + 64 * Math.cos(t * Math.PI * 2)) * s, cy + (16 + 26 * Math.sin(t * Math.PI * 2)) * s);
+
+          qpoly([P, A, D], 'rgba(56, 189, 248, 0.34)', QCOL.cyan, 2.6, 0);
+          qpoly([P, B, C], 'rgba(56, 189, 248, 0.34)', QCOL.cyan, 2.6, 0);
+          qpoly([P, A, B], 'rgba(251, 191, 36, 0.30)', QCOL.gold, 2.6, 1);
+          qpoly([P, D, C], 'rgba(251, 191, 36, 0.30)', QCOL.gold, 2.6, 1);
+
+          const uAB = qsub(B, A), uAD = qsub(D, A);
+          const E = qintersect(P, qadd(P, uAD), A, B), F = qintersect(P, qadd(P, uAD), D, C);
+          const G = qintersect(P, qadd(P, uAB), A, D), H = qintersect(P, qadd(P, uAB), B, C);
+          qline(E, F, QCOL.pink, 2.4, [5, 4], true, 2);
+          qline(G, H, QCOL.pink, 2.4, [5, 4], true, 2);
+
+          qdot(P, 'P(a+b+c+d = ½S!)', QCOL.gold, null, { x: 12, y: -10 });
+          [A, B, C, D].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, P));
+        } else {
+          // paraHeightSplit (윗변 위 점 E 슬라이딩: △EBC = ½S)
+          const A = qpt(cx - 105 * s, cy - 82 * s), B = qpt(cx - 140 * s, cy + 82 * s);
+          const C = qpt(cx + 105 * s, cy + 82 * s), D = qpt(cx + 140 * s, cy - 82 * s);
+          const E = qlerp(A, D, 0.2 + 0.65 * t);
+
+          qpoly([A, B, E], 'rgba(56, 189, 248, 0.26)', QCOL.cyan, 2.4, 1);
+          qpoly([D, E, C], 'rgba(56, 189, 248, 0.26)', QCOL.cyan, 2.4, 1);
+          qpoly([E, B, C], 'rgba(251, 191, 36, 0.40)', QCOL.gold, 3.4, 0);
+
+          qarrows(A, D, 1, QCOL.cyan); qarrows(B, C, 1, QCOL.cyan);
+          [A, B, C, D].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, qpt(cx, cy)));
+          qdot(E, 'E(S_△EBC = ½S 불변!)', QCOL.gold, null, { x: 0, y: -14 });
+        }
+      }
+
+      // =====================================================================
+      // [모드 4] 사각형 네 변의 중점연결 (바리뇽 마스터 5종 + 귀퉁이 접기 ½ 증명!)
+      // =====================================================================
+      else if (m === 4) {
+        let pA, pB, pC, pD;
+        if (sub === 'varignonRectToRhomb') {
+          pA = qpt(cx - 145 * s, cy - 88 * s); pD = qpt(cx + 145 * s, cy - 88 * s);
+          pB = qpt(cx - 145 * s, cy + 88 * s); pC = qpt(cx + 145 * s, cy + 88 * s);
+        } else if (sub === 'varignonIsoToRhomb') {
+          pA = qpt(cx - 72 * s, cy - 88 * s); pD = qpt(cx + 72 * s, cy - 88 * s);
+          pB = qpt(cx - 150 * s, cy + 88 * s); pC = qpt(cx + 150 * s, cy + 88 * s);
+        } else if (sub === 'varignonRhombToRect') {
+          pA = qpt(cx, cy - 102 * s); pC = qpt(cx, cy + 102 * s);
+          pB = qpt(cx - 138 * s, cy); pD = qpt(cx + 138 * s, cy);
+        } else if (sub === 'varignonSquareToSquare') {
+          const hs = 106 * s;
+          pA = qpt(cx - hs, cy - hs); pD = qpt(cx + hs, cy - hs);
+          pB = qpt(cx - hs, cy + hs); pC = qpt(cx + hs, cy + hs);
+        } else {
+          pA = qpt(cx - 115 * s, cy - 95 * s); pD = qpt(cx + 138 * s, cy - 72 * s);
+          pB = qpt(cx - 148 * s, cy + 82 * s); pC = qpt(cx + 112 * s, cy + 96 * s);
+        }
+
+        const pP = qmid(pA, pB), pQ = qmid(pB, pC), pR = qmid(pC, pD), pS = qmid(pD, pA);
+        const center = qmid(pP, pR);
+
+        qpoly([pA, pB, pC, pD], 'rgba(15, 38, 29, 0.55)', 'rgba(203, 213, 225, 0.65)', 2.4);
+
+        // 대각선 AC(시안) ↔ PQ, SR  /  대각선 BD(핑크) ↔ PS, QR 컬러 브릿지!
+        qline(pA, pC, QCOL.cyan, 2.4, [5, 4], false, 0);
+        qline(pB, pD, QCOL.pink, 2.4, [5, 4], false, 1);
+        if (sub === 'varignonRhombToRect' || sub === 'varignonSquareToSquare') {
+          const pO = qintersect(pA, pC, pB, pD);
+          qright(pO, pA, pB, 12, QCOL.gold);
+        }
+
+        qpoly([pP, pQ, pR, pS], 'rgba(52, 211, 153, 0.30)', null, 0, 2);
+        qline(pP, pQ, QCOL.cyan, 4.0, [], true, 0);
+        qline(pS, pR, QCOL.cyan, 4.0, [], true, 0);
+        qline(pP, pS, QCOL.pink, 4.0, [], true, 1);
+        qline(pQ, pR, QCOL.pink, 4.0, [], true, 1);
+
+        if (sub === 'varignonRectToRhomb' || sub === 'varignonIsoToRhomb' || sub === 'varignonSquareToSquare') {
+          qticks(pP, pQ, 1, QCOL.gold, 8); qticks(pQ, pR, 1, QCOL.gold, 8);
+          qticks(pR, pS, 1, QCOL.gold, 8); qticks(pS, pP, 1, QCOL.gold, 8);
+        }
+        if (sub === 'varignonRhombToRect' || sub === 'varignonSquareToSquare') {
+          qright(pP, pQ, pS, 11, QCOL.gold); qright(pQ, pR, pP, 11, QCOL.gold);
+          qright(pR, pS, pQ, 11, QCOL.gold); qright(pS, pP, pR, 11, QCOL.gold);
+        }
+
+        // 슬라이더 t > 0: 바깥 4개 귀퉁이 삼각형을 안으로 접어 넓이가 정확히 ½임을 시각 증명!
+        if (t > 0.01) {
+          const A_f = qlerp(pA, qreflect(pA, pP, pS), t);
+          const B_f = qlerp(pB, qreflect(pB, pP, pQ), t);
+          const C_f = qlerp(pC, qreflect(pC, pQ, pR), t);
+          const D_f = qlerp(pD, qreflect(pD, pR, pS), t);
+          qpoly([A_f, pP, pS], 'rgba(251, 191, 36, 0.42)', QCOL.gold, 2.2, 2);
+          qpoly([B_f, pP, pQ], 'rgba(56, 189, 248, 0.42)', QCOL.cyan, 2.2, 2);
+          qpoly([C_f, pQ, pR], 'rgba(244, 114, 182, 0.42)', QCOL.pink, 2.2, 2);
+          qpoly([D_f, pR, pS], 'rgba(52, 211, 153, 0.42)', QCOL.green, 2.2, 2);
+        }
+
+        [pA, pB, pC, pD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+        [pP, pQ, pR, pS].forEach((p, i) => qdot(p, `${'PQRS'[i]}(중점)`, QCOL.gold, center));
+      }
+
+      // =====================================================================
+      // [모드 5] 종이접기(테이프) & 정사각형 속 회전 합동 · 정삼각형 각도 킬러
+      // =====================================================================
+      else if (m === 5) {
+        const rA = qpt(cx - 132 * s, cy - 84 * s), rB = qpt(cx - 132 * s, cy + 84 * s);
+        const rC = qpt(cx + 132 * s, cy + 84 * s), rD = qpt(cx + 132 * s, cy - 84 * s);
+        const center = qpt(cx, cy);
+
+        if (sub === 'foldTape') {
+          qpoly([rA, rB, rC, rD], 'rgba(56, 189, 248, 0.10)', 'rgba(148, 163, 184, 0.5)', 2.2);
+          qarrows(rA, rD, 1, QCOL.cyan); qarrows(rB, rC, 1, QCOL.cyan);
+          qline(rA, rC, QCOL.gold, 3.2);
+
+          const B_ref = qreflect(rB, rA, rC);
+          const B_cur = qlerp(rB, B_ref, Math.max(0.2, t));
+          const E = qintersect(rA, rD, rC, B_ref);
+
+          qpoly([rA, B_cur, rC], 'rgba(56, 189, 248, 0.22)', QCOL.cyan, 2.8, 1);
+          qpoly([rA, E, rC], 'rgba(251, 191, 36, 0.42)', QCOL.gold, 3.6, 0);
+          qticks(E, rA, 2, QCOL.gold, 8.5);
+          qticks(E, rC, 2, QCOL.gold, 8.5);
+          // [2.0 수정] 접은 각은 C 쪽 ∠ECA, A 쪽 ∠EAC 는 평행선의 엇각입니다(원본 라벨은 서로 반대).
+          qangle(rA, E, rC, QCOL.gold, 30, 1, '•(엇각)');
+          qangle(rC, E, rA, QCOL.gold, 30, 1, '•(접은각)');
+
+          [rA, rB, rC, rD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+          qdot(B_cur, "B'(접힌 점)", QCOL.cyan, center);
+          qdot(E, 'E(EA=EC 이등변!)', QCOL.gold, null, { x: 0, y: 22 });
+        } else if (sub === 'foldVertexToVertex') {
+          const halfW = (rD.x - rA.x) / 2, halfH = (rB.y - rA.y) / 2;
+          const dx = (halfH * halfH) / halfW;
+          const E = qpt(cx + dx, rA.y), F = qpt(cx - dx, rB.y);
+          const O = qmid(rA, rC);
+          const C_fold = qlerp(rC, rA, Math.max(0.15, t));
+
+          qpoly([rA, rB, rC, rD], 'rgba(56, 189, 248, 0.08)', 'rgba(148, 163, 184, 0.5)', 2.2);
+          qpoly([rA, E, rC, F], 'rgba(251, 191, 36, 0.28)', QCOL.gold, 3.4, 0);
+          qpoly([E, C_fold, F], 'rgba(244, 114, 182, 0.24)', QCOL.pink, 2.6, 1);
+          qline(rA, rC, QCOL.cyan, 2.5, [5, 4], false, 1);
+          qline(E, F, QCOL.pink, 3.6, [], true, 1);
+          qright(O, rC, E, 13, QCOL.pink);
+          qticks(rA, E, 1, QCOL.gold, 7.5); qticks(E, rC, 1, QCOL.gold, 7.5);
+          qticks(rC, F, 1, QCOL.gold, 7.5); qticks(F, rA, 1, QCOL.gold, 7.5);
+
+          [rA, rB, rC, rD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+          qdot(E, 'E', QCOL.pink, null, { x: 0, y: -14 });
+          qdot(F, 'F', QCOL.pink, null, { x: 0, y: 22 });
+          qdot(O, 'O(EF⊥AC)', QCOL.cyan, null, { x: 14, y: 14 });
+        } else if (sub === 'squarePerpLines') {
+          const hs = 104 * s;
+          const a = qpt(cx - hs, cy - hs), b = qpt(cx - hs, cy + hs), c = qpt(cx + hs, cy + hs), d = qpt(cx + hs, cy - hs);
+          const E = qlerp(b, c, 0.38), F = qlerp(c, d, 0.38);
+          const P = qintersect(a, E, b, F);
+
+          qpoly([a, b, c, d], 'rgba(100, 116, 139, 0.10)', QCOL.white, 2.6);
+          qpoly([a, b, E], 'rgba(56, 189, 248, 0.32)', QCOL.cyan, 3.2, 0);
+          qpoly([b, c, F], 'rgba(251, 191, 36, 0.32)', QCOL.gold, 3.2, 1);
+          qright(b, a, c, 12, QCOL.cyan);
+          qright(c, b, d, 12, QCOL.gold);
+          qright(P, a, b, 12, QCOL.pink);
+          qangle(a, b, E, QCOL.cyan, 28, 1, '•');
+          qangle(b, c, F, QCOL.gold, 28, 1, '•');
+          qangle(b, P, a, QCOL.pink, 24, 2, '×');
+
+          if (t > 0.01) {
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate((-t * Math.PI) / 2);
+            ctx.translate(-cx, -cy);
+            qpoly([a, b, E], 'rgba(244, 114, 182, 0.40)', QCOL.pink, 3.0, 0);
+            ctx.restore();
+          }
+
+          [a, b, c, d].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+          qdot(E, 'E', QCOL.cyan, null, { x: -6, y: 20 });
+          qdot(F, 'F(AE=BF)', QCOL.gold, null, { x: 14, y: 4 });
+          qdot(P, 'P(90°)', QCOL.pink, null, { x: 14, y: -6 });
+        } else if (sub === 'squareInnerRot') {
+          const hs = 92 * s, side = 1.65 * hs;
+          const a = qpt(cx - hs, cy - hs), b = qpt(cx - hs, cy + hs), c = qpt(cx + hs, cy + hs), d = qpt(cx + hs, cy - hs);
+          const uRatio = 0.25 + 0.45 * t;
+          const E = qlerp(b, c, uRatio), F = qlerp(c, d, uRatio);
+          const angRot = Math.atan2(E.y - cy, E.x - cx);
+          const uVec = qpt(Math.cos(angRot), Math.sin(angRot));
+          const vVec = qpt(Math.cos(angRot - Math.PI / 2), Math.sin(angRot - Math.PI / 2));
+          const P1 = qadd(center, qmul(uVec, side)), P3 = qadd(center, qmul(vVec, side));
+          const P2 = qadd(P1, qmul(vVec, side));
+
+          qpoly([a, b, c, d], 'rgba(56, 189, 248, 0.12)', QCOL.cyan, 2.8);
+          qpoly([center, P1, P2, P3], 'rgba(251, 191, 36, 0.08)', QCOL.gold, 2.2);
+          qpoly([center, b, E], 'rgba(251, 191, 36, 0.36)', QCOL.gold, 2.8, 0);
+          qpoly([center, c, F], 'rgba(56, 189, 248, 0.36)', QCOL.cyan, 2.8, 0);
+          qpoly([center, E, c, F], 'rgba(52, 211, 153, 0.48)', QCOL.green, 3.4, 1);
+
+          qline(a, c, 'rgba(255,255,255,0.35)', 1.6, [4, 4]);
+          qline(b, d, 'rgba(255,255,255,0.35)', 1.6, [4, 4]);
+          qright(center, E, F, 12, QCOL.green);
+
+          [a, b, c, d].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+          qdot(center, 'O(중심 90°)', QCOL.gold, null, { x: -42, y: -12 });
+          qdot(E, 'E', QCOL.gold, null, { x: 0, y: 20 });
+          qdot(F, 'F(넓이 ¼ 불변!)', QCOL.cyan, null, { x: 16, y: 0 });
+        } else {
+          // squareEquiTri (정사각형 ABCD + 정삼각형 △EBC ➔ 75° · 150° 각도 킬러!)
+          const hs = 108 * s, side = 2 * hs;
+          const a = qpt(cx - hs, cy - hs), b = qpt(cx - hs, cy + hs), c = qpt(cx + hs, cy + hs), d = qpt(cx + hs, cy - hs);
+          const E = qpt(cx, cy + hs - (side * Math.sqrt(3)) / 2);
+
+          qpoly([a, b, c, d], 'rgba(148, 163, 184, 0.10)', QCOL.white, 2.6);
+          qpoly([E, b, c], 'rgba(52, 211, 153, 0.28)', QCOL.green, 3.2, 0);
+          qpoly([a, b, E], 'rgba(251, 191, 36, 0.34)', QCOL.gold, 3.0, 1);
+          qpoly([d, c, E], 'rgba(251, 191, 36, 0.34)', QCOL.gold, 3.0, 1);
+          qpoly([a, E, d], 'rgba(244, 114, 182, 0.28)', QCOL.pink, 3.0, 2);
+
+          qticks(a, b, 2, QCOL.gold, 8);
+          qticks(b, c, 2, QCOL.green, 8);
+          qticks(c, d, 2, QCOL.gold, 8);
+          qticks(b, E, 2, QCOL.gold, 8);
+          qticks(c, E, 2, QCOL.gold, 8);
+
+          qangle(b, E, a, QCOL.gold, 34, 1, '30°');
+          qangle(b, c, E, QCOL.green, 28, 1, '60°');
+          qangle(a, b, E, QCOL.gold, 28, 1, '75°');
+          qangle(E, a, b, QCOL.gold, 28, 1, '75°');
+          qangle(E, d, a, QCOL.pink, 24, 2, '150°!');
+
+          [a, b, c, d].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+          qdot(E, 'E(AB=BC=BE!)', QCOL.gold, null, { x: 0, y: -16 });
+        }
+      }
+
+      // =====================================================================
+      // [모드 6] 가짜 조건 반례 연구소 (등변사다리꼴 · 연꼴 · 한쪽 이등분)
+      // =====================================================================
+      else {
+        const center = qpt(cx, cy);
+        if (sub === 'counterIsoTrap' || sub === 'counterDiagEqual') {
+          const topW = 96 * s, botW = 220 * s, h = 115 * s;
+          const pA = qpt(cx - topW / 2, cy - h / 2), pD = qpt(cx + topW / 2, cy - h / 2);
+          const pB = qpt(cx - botW / 2, cy + h / 2), pC = qpt(cx + botW / 2, cy + h / 2);
+          const mAC = qmid(pA, pC), mBD = qmid(pB, pD), pO = qintersect(pA, pC, pB, pD);
+
+          qpoly([pA, pB, pC, pD], 'rgba(244, 63, 94, 0.20)', QCOL.red, 3.5, 2);
+          qarrows(pA, pD, 1, QCOL.cyan, 7.5);
+          qarrows(pB, pC, 1, QCOL.cyan, 7.5);
+          qticks(pA, pB, 1, QCOL.gold, 8.5);
+          qticks(pD, pC, 1, QCOL.gold, 8.5);
+
+          qline(pA, pC, QCOL.gold, 2.8, [5, 4], false, 0);
+          qline(pB, pD, QCOL.gold, 2.8, [5, 4], false, 0);
+          qline(mAC, mBD, QCOL.red, 3.6, [], true, 1);
+
+          qdot(pO, 'O(OA≠OC)', QCOL.white, null, { x: 0, y: -14 });
+          // [2.0 수정] 원본 오프셋(M: -48, N: +48)은 두 이름표가 두 점 사이 가운데에서 겹쳐 어느 점의 이름인지 알기 어려웠습니다 → 각 이름표를 자기 점의 바깥 아래쪽으로
+          qdot(mAC, 'M(AC중점)', QCOL.gold, null, { x: 8, y: 18 });
+          qdot(mBD, 'N(BD중점)', QCOL.cyan, null, { x: -58, y: 18 });
+          [pA, pB, pC, pD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
+        } else {
+          // counterKite, counterHalfBisect, counterFakeRhomb (연꼴 Kite 반례!)
+          const pO = qpt(cx, cy - 18 * s);
+          // [2.0 수정] 반례5(알파벳 순서 함정)는 '이웃한 변끼리 같음: AB=BC, CD=DA'를 다루는데 원본 그림은 AB=AD, CB=CD 로 틱이 찍혀 해설과 달랐습니다.
+          // 이 장면만 꼭짓점 이름을 돌려 AB=BC(|), CD=DA(||) 가 되게 그리고, 그림에 맞지 않는 O의 이등분 문구는 뺍니다.
+          const fake = sub === 'counterFakeRhomb';
+          const pT = qpt(cx, cy - 102 * s), pBm = qpt(cx, cy + 98 * s), pL = qpt(cx - 95 * s, pO.y), pR = qpt(cx + 95 * s, pO.y);
+          const [pA, pB, pC, pD] = fake ? [pL, pT, pR, pBm] : [pT, pL, pBm, pR];
+
+          qpoly([pA, pB, pC, pD], 'rgba(244, 63, 94, 0.20)', QCOL.red, 3.5, 2);
+          qline(pA, pC, QCOL.gold, 2.8, [], false, 1);
+          qline(pB, pD, QCOL.cyan, 2.8, [], false, 0);
+          qright(pO, pA, pD, 13, QCOL.white);
+
+          if (fake) {
+            qticks(pA, pB, 1, QCOL.gold, 8); qticks(pB, pC, 1, QCOL.gold, 8);
+            qticks(pC, pD, 2, QCOL.pink, 8); qticks(pD, pA, 2, QCOL.pink, 8);
+          } else {
+            qticks(pA, pB, 1, QCOL.gold, 8); qticks(pA, pD, 1, QCOL.gold, 8);
+            qticks(pC, pB, 2, QCOL.pink, 8); qticks(pC, pD, 2, QCOL.pink, 8);
+            qticks(pB, pO, 3, QCOL.cyan, 7); qticks(pO, pD, 3, QCOL.cyan, 7);
+          }
+
+          qdot(pO, fake ? 'O' : 'O(OB=OD 이지만 OA≠OC!)', QCOL.gold, null, { x: 14, y: 18 });
+          [pA, pB, pC, pD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, pO));
+        }
+      }
+    }
+
+
+  /* ===== 원본 그대로: 효과 없는 렌즈 버튼 숨김 표 (원본 2094–2099행) ===== */
+    const LENS_OFF = {
+      paraDiag: ['sides'], quadToTri: ['angles'], equiSlide: ['angles'], butterflyWing: ['angles'],
+      insidePointP: ['angles', 'sides', 'aux'], paraHeightSplit: ['angles'], varignonGen: ['angles', 'sides', 'aux'],
+      varignonRectToRhomb: ['sides'], varignonIsoToRhomb: ['sides'], varignonRhombToRect: ['angles'],
+      squarePerpLines: ['angles'], squareInnerRot: ['angles']
+    };
+
+
+  /* ======================================================================
+     2.0 셸 연결 (새로 작성한 부분)
+     ====================================================================== */
+  const TABS = ['평행사변형 성질·5대 판정', '사각형 족보 진화 & 등변사다리꼴', '등적변형 · 나비 넓이 · 내부 점 P', '중점연결 바리뇽 (직사각↔마름모)', '종이접기 & 정사각형 회전·정삼각형', '가짜 조건 반례 연구소 (오답 1위)'];
+  const SHORT = ['평행사변형', '족보 진화', '등적변형', '중점연결', '종이접기', '반례'];
+  const LENSES = [
+    ['all', '🔍 전체 구조'],
+    ['angles', '📐 각도·평행(•,×,∟,>>)'],
+    ['sides', '📏 변·대각선(|,||)'],
+    ['aux', '🪄 보조선·합동추적']
+  ];
+  // 이 장면에서 '변환(0→100%)'이 실제로 그림을 바꾸는 장면만 변환 조절을 보여 줍니다(원본 그리기 코드의 t 사용처).
+  const FOLD = new Set(['paraDefSides', 'paraAngles', 'paraDiag', 'paraCond5', 'isoTrapMaster', 'evoRect', 'evoRhombus', 'evoSquare',
+    'quadToTri', 'equiSlide', 'insidePointP', 'paraHeightSplit', 'varignonGen', 'varignonRectToRhomb', 'varignonIsoToRhomb', 'varignonRhombToRect',
+    'varignonSquareToSquare', 'foldTape', 'foldVertexToVertex', 'squarePerpLines', 'squareInnerRot']);
+  // 각 프리셋(60·70·90·110°)이 실제로 그림을 바꾸는 장면(탐구 1의 다섯 장면 = 꼭짓점 B의 내각, 대각선 조합기 = 대각선 교각 θ)과 대각선비 프리셋이 쓰이는 장면
+  const ANG_NAME = { paraDefSides: '평행사변형의 모양: ∠B', paraAngles: '평행사변형의 모양: ∠B', paraDiag: '평행사변형의 모양: ∠B', paraCond5: '평행사변형의 모양: ∠B', paraHidden: '평행사변형의 모양: ∠B', diagSynthesis: '대각선 교각 θ' };
+  const RATIO_USED = new Set(['diagSynthesis']);
+  const THUMB_T = (id) => (FOLD.has(id) ? 1 : 0); // 원본: 장면에 들어가면 변환이 100%로 자동 재생
+
+  const lensList = (m, id) => {
+    const off = (LENS_OFF[m] || []).concat(LENS_OFF[id] || []);
+    const rest = ['angles', 'sides', 'aux'].filter((x) => !off.includes(x));
+    return rest.length ? ['all'].concat(rest) : []; // 원본 syncLensButtons: 효과 있는 렌즈가 하나도 없으면 렌즈 전체를 숨김
+  };
+  function sync(s, m, id) {
+    state.mode = m;
+    state.subType[m] = id;
+    state.fold = s.fold;
+    state.angPreset = Math.round(s.ang);
+    state.ratioPreset = s.ratio;
+    state.activePartIdx = s.part == null ? -1 : s.part;
+    state.conceptSwitch = lensList(m, id).includes(s.lens) ? s.lens : 'all';
+    state.customDOffset = id === 'paraDiag' && (s.dx || s.dy) ? { dx: s.dx / 1.08, dy: s.dy / 1.08 } : null; // 원본은 (오프셋 × 배율)로 더함
+    state.scale = 1;
+  }
+  // 셸은 이모지(➔ ⭕ ❌ 포함)를 화면 표시에서 떼어 내므로, 문장 속 뜻이 사라지지 않게 → ○ × 로 미리 바꿔 넘깁니다(원문 getSpec은 그대로).
+  const arrow = (v) => (typeof v === 'string' ? v.replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×') : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
+  // [2.0 수정] 요약 띠의 칸 글자는 한 줄이라 휴대폰(390px)에서 길면 말줄임으로 잘렸습니다(탐구 1-D, 탐구 4의 5장면).
+  // 칸 글자만 줄이고, 전체 문장은 띠 위의 제목(tapeTitle, 줄바꿈됨)에 그대로 있습니다.
+  const TAPE_SHORT = {
+    'AB: 평행(>>) + 길이 같음(|) 동시 만족!': 'AB: 평행(>>)·같음(|)',
+    'CD: 평행(>>) + 길이 같음(|) 동시 만족!': 'CD: 평행(>>)·같음(|)',
+    '안쪽 중점사각형 □PQRS (50%)': '안쪽 □PQRS (50%)',
+    '바깥 4귀퉁이 삼각형 합 (50% → 접으면 완전히 포개짐!)': '바깥 귀퉁이 합 (50%)'
+  };
+  let booted = false;
+
+  function sceneOf(m, it) {
+    const id = it.id;
+    const label = arrow(it.label).replace(/^[▭❖]\s*/, ''); // 장면 이름 앞의 ▭ ❖ 는 글꼴에 따라 깨진 네모로 보여 뗍니다
+    return {
+      id, title: label, short: label, reviewTab: true, autoFit: true,
+      notesTitle: '시험장 오답 함정 & 3초 직관',
+      enter: (s, lab) => {
+        // 원본 setMode / setSubType: 변환을 0%로 되돌리고 D 끌기를 지운 뒤 100%로 자동 재생
+        s.fold = 0;
+        s.dx = null;
+        s.dy = null;
+        if (!lensList(m, id).includes(s.lens)) s.lens = 'all';
+        const shared = !booted && /[#&]fold=/.test(location.hash); // 공유 링크의 값은 그대로 존중
+        booted = true;
+        if (lab && s === lab.s && FOLD.has(id) && !shared) lab.tween({ fold: 1 }, 1300);
+      },
+      controls: () => (FOLD.has(id) ? ['fold'] : []),
+      presets: () => {
+        const out = [];
+        if (ANG_NAME[id]) ANG_PRESETS.forEach((v) => out.push({ group: ANG_NAME[id], label: id === 'diagSynthesis' && v === 90 ? '90°(⊥)' : `${v}°`, apply: (st) => { st.ang = v; }, on: (st) => Math.round(st.ang) === v }));
+        if (RATIO_USED.has(id)) RATIO_PRESETS.forEach((rp0) => out.push({ group: '대각선 길이비 BD/AC', label: rp0.label, apply: (st) => { st.ratio = rp0.val; }, on: (st) => Math.abs(st.ratio - rp0.val) < 0.01 }));
+        const lenses = lensList(m, id);
+        if (lenses.length) LENSES.filter(([k]) => lenses.includes(k)).forEach(([k, label]) => out.push({ group: '관찰 렌즈', label, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
+        if (FOLD.has(id)) [0, 0.5, 1].forEach((v) => out.push({ group: '변환 단계', label: v === 0 ? '0% 시작' : v === 1 ? '100% 완성' : '50%', set: { fold: v }, ms: 700, on: (st) => Math.abs(st.fold - v) < 0.01 }));
+        return out;
+      },
+      actions: () => {
+        const out = [];
+        if (id === 'diagSynthesis') {
+          // 원본 toggleFoldAnim: 평행사변형 → 직사각형 → 마름모 → 정사각형 → 평행사변형 순서로 조건을 바꿔 봅니다
+          out.push({
+            id: 'act', primary: true, icon: 'wand',
+            label: (st) => { sync(st, m, id); return getSpec().actionTxt; },
+            run: (st) => {
+              if (st.ang !== 90 && st.ratio !== 1.0) st.ratio = 1.0;
+              else if (st.ang !== 90 && st.ratio === 1.0) { st.ang = 90; st.ratio = 0.75; }
+              else if (st.ang === 90 && st.ratio !== 1.0) { st.ang = 90; st.ratio = 1.0; }
+              else { st.ang = 70; st.ratio = 0.75; }
+            }
+          });
+        } else if (FOLD.has(id)) {
+          out.push({
+            id: 'act', play: true, primary: true, icon: 'wand',
+            label: (st) => { sync(st, m, id); return getSpec().actionTxt; },
+            run: (st, lab) => { lab.tween({ fold: st.fold > 0.5 ? 0 : 1 }, 1100); }
+          });
+        }
+        if (id === 'paraDiag') out.push({ id: 'snapD', icon: 'target', label: 'D점 스냅 (평행사변형으로 되돌리기)', run: (st) => { st.dx = null; st.dy = null; } });
+        return out;
+      },
+      view: (s) => {
+        sync(s, m, id);
+        const spec = arrow(getSpec());
+        const wide = (t) => String(t).length > 14;
+        return {
+          guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(APLab.stripEmoji(spec.badge))}</div>${spec.hint}`,
+          readouts: [
+            { label: spec.dim1Name, value: spec.val1Txt, color: 'sky', wide: wide(spec.val1Txt) },
+            { label: spec.dim2Name, value: spec.val2Txt, color: 'rose', wide: wide(spec.val2Txt) }
+          ],
+          parts: spec.parts.map((p) => ({ id: p.id, name: p.name, desc: p.desc, value: p.val, color: p.ok === false ? 'red' : p.color, ok: p.ok })),
+          summary: spec.totalRes,
+          rule: spec.rule,
+          formula: spec.formulaHTML,
+          notes: spec.notes,
+          tape: { title: spec.tapeTitle, segments: spec.tapeSegs.map((sg) => ({ ...sg, text: TAPE_SHORT[sg.text] || sg.text })) }
+        };
+      },
+      draw: (b, s, v) => {
+        BOARD = b;
+        CUR = s;
+        const paint = (st) => {
+          sync(st, m, id);
+          XF.m = IDENT;
+          XF.stack = [];
+          if (st.grid) b.grid({ step: 38 });
+          // 두 번 훑기: 1회 점 위치 수집 → 2회 그리기(이름표가 점·다른 이름표와 겹치지 않게 놓음)
+          PL.obst = [];
+          PL.placed = [];
+          PL.pass = 1;
+          drawQuadMasterScene(0, 0, state.fold, null);
+          PL.pass = 2;
+          PL.placed = [];
+          drawQuadMasterScene(0, 0, state.fold, null);
+          XF.m = IDENT;
+          XF.stack = [];
+        };
+        // 자동 맞춤을 재는 중: 변환 진행(0·25·50·75·100%)과 모든 각·대각선비 프리셋 상태를 겹쳐 그려, 어느 상태에서도 그림·글자가 잘리지 않는 범위를 구합니다.
+        const paintAll = () => {
+          (FOLD.has(id) ? [0, 0.25, 0.5, 0.75, 1] : [s.fold]).forEach((f) => (ANG_NAME[id] ? ANG_PRESETS : [s.ang]).forEach((a) => (RATIO_USED.has(id) ? RATIO_PRESETS.map((r) => r.val) : [s.ratio]).forEach((r) => paint({ ...s, fold: f, ang: a, ratio: r }))));
+        };
+        if (b._bbox) { paintAll(); return; }
+        if (b.thumb) { // 모든 장면 미리보기: 장면 범위를 직접 재어 맞추고, 원본의 '완성' 상태로 그림
+          const bb = b.measure(paintAll);
+          if (bb) b.focus = b.fitBox(bb, { margin: 0.08, px: 5 });
+          paint({ ...s, fold: THUMB_T(id), part: null });
+          return;
+        }
+        paint(s);
+      }
+    };
+  }
+
+  const groups = Object.keys(SUB_MENUS).map((k) => {
+    const m = +k;
+    return { id: 'm' + m, title: TABS[m - 1], short: SHORT[m - 1], scenes: SUB_MENUS[m].map((it) => sceneOf(m, it)) };
+  });
+
+  APLab.createLab({
+    id: 'g8-quadrilaterals',
+    title: '사각형 경험도감',
+    courseName: '중2',
+    unit: '사각형의 성질 · 등적변형',
+    courseColor: 'var(--m-sky)',
+    home: '../index.html#g8',
+    legacy: '../../labs/g8/quadrilaterals-atlas.html',
+    board: { kind: 'figure', autoFit: true, minZoom: 0.4, maxZoom: 5 },
+    state: { lens: 'all', dx: null, dy: null },
+    persist: ['lens', 'dx', 'dy'],
+    params: {
+      fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '변환 진행 (0% → 100%)', hint: '회전 포개기 · 등적 이동 · 귀퉁이 접기 · 종이접기 같은 변환을 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
+      ang: { value: 70, min: 60, max: 110, step: 1, color: 'sky', label: '각 (∠B 또는 대각선 교각 θ)', format: (v) => `${Math.round(v)}°` },
+      ratio: { value: 0.75, min: 0.65, max: 1.25, step: 0.01, color: 'rose', label: '대각선비 BD/AC', format: (v) => v.toFixed(2) }
+    },
+    groups
+  });
+});
+</script>
+</body>
+</html>

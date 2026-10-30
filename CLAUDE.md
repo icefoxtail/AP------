@@ -6,6 +6,12 @@
 - **수정은 Sonnet 서브에이전트가 합니다.** Agent 도구를 `model: "sonnet"`, `isolation: "worktree"`로 부르고, 작업마다 수정 범위(파일 목록)와 완료 기준을 지시서에 적습니다.
 - **검수는 다른 Sonnet 서브에이전트가 합니다.** 수정한 에이전트와 다른 인스턴스가 완료 기준대로 직접 실행해 보고 PASS/FAIL을 판정합니다.
 - **PASS한 변경만 합칩니다.** FAIL이면 지적 사항을 같은 수정 에이전트에게 돌려보내 고친 뒤 다시 검수합니다.
-- 저장소 `main` 반영은 사용자가 정한 방식(PR)으로 합니다.
+- 저장소 `main` 반영은 사용자가 정한 방식(PR)으로 합니다. 검수를 통과한 변경은 메인이 PR을 만들어 바로 머지합니다.
+- **완료 기준은 "학생이 쓰기에 적당한가"입니다.** 수치상 완벽을 요구하지 않습니다. 지시서와 검수는 실제 화면에서 학생이 겪을 문제(오류, 깨진 그림, 가려지는 내용, 동작하지 않는 버튼)에 집중하고, 모든 상태를 전수로 재는 검증은 하지 않습니다. 도형은 "완벽하게 그려졌는가"가 아니라 "실제 화면(PC·휴대폰)에서 학생이 보고 이해할 수 있는가"로 판정합니다.
 
 서브에이전트로 실행 중이라면 이 절은 적용되지 않습니다. 받은 지시서대로 직접 작업하세요.
+
+## JS Archive 메타 (GPT·Claude·Gemini 공통 CURRENT)
+
+- JS Archive 신규 CREATE/R1/R2/R3 또는 원본 메타를 다룰 때는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 읽고 그대로 적용한다. 교육과정 내 학생용 풀이 → RPM Primary L1~L4 → CrossConcept/Condition/Integration을 판정하고, PT/TPL은 공식 Resolver 결과만 허용한다.
+- 실제 코드 명령: node archive/tools/meta-foundation/stage-meta-bridge.mjs --stage CREATE|R1|R2|R3 --input <stage-local decision.json> --out <stage-local evidence.json> (R1~R3은 candidate/relational/difficulty 증거 추가). 이 경로는 메타 전용이며 기존 Claude 메인·Sonnet 하위 검수/병합 역할이나 전체 학생 품질 PASS를 대신하지 않는다.

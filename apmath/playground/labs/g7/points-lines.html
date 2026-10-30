@@ -329,6 +329,11 @@
       return latexStr;
     }
 
+    // 해설 문자열(hint · formulaHTML · notes) 속 $...$ 구간을 위 tex()로 KaTeX 수식으로 바꿉니다.
+    function texInline(html) {
+      return html.replace(/\$([^$]+)\$/g, (m, src) => tex(src));
+    }
+
     // -------------------------------------------------------------------------
     // 1. 전역 상태 관리 (깔끔하게 다이어트된 2D 전용 State)
     // -------------------------------------------------------------------------
@@ -729,7 +734,7 @@
         const remain90 = 90 - 2 * foldAngle;
         return {
           badge: `탐구 4-B · 직사각형 종이 귀퉁이 접어 올리기 (직각 90°에서 접은 각 2개 빼기!)`,
-          hint: `직사각형의 오른쪽 아래 모서리($90^\circ$)를 접어 올리면, <strong class="text-amber-300">접기 전 각(${foldAngle}°)과 접은 후 각(${foldAngle}°)이 똑같이 겹칩니다!</strong> 따라서 남은 각 $x$는 <strong class="text-sky-300">90° - (${foldAngle}° + ${foldAngle}°) = ${remain90}°</strong>입니다!`,
+          hint: `직사각형의 오른쪽 아래 모서리($90^\\circ$)를 접어 올리면, <strong class="text-amber-300">접기 전 각(${foldAngle}°)과 접은 후 각(${foldAngle}°)이 똑같이 겹칩니다!</strong> 따라서 남은 각 $x$는 <strong class="text-sky-300">90° - (${foldAngle}° + ${foldAngle}°) = ${remain90}°</strong>입니다!`,
           actionTxt: state.animProg > 0.5 ? '🎬 귀퉁이 다시 펼치기' : '🎬 귀퉁이 접어 올리기!',
           dim1Name: '종이 가로/세로 비', dim2Name: '접은 각도 조절',
           parts: [
@@ -792,7 +797,7 @@
         totalRes: `점 P와 직선 l 사이의 거리 = 수선 PH = ${distH} cm`,
         rule: '점과 직선 사이의 거리 = 수선의 발 H까지의 수선 길이!',
         formulaHTML: `• <strong>직교(${tex('\\perp')})</strong>: 두 직선의 교각이 ${tex('90^\\circ')}(직각)일 때<br/>• <strong>수직이등분선</strong>: 선분 AB의 <strong>중점 M을 지나면서 수직(${tex('\\perp')})</strong>인 직선`,
-        notes: `• <strong>[기호 모양 암기]</strong>: 수직 기호 <strong>${tex('\\perp')}</strong>는 평평한 땅 위에 기둥이 $90^\circ$로 똑바로 서 있는 모양 그대로입니다!`,
+        notes: `• <strong>[기호 모양 암기]</strong>: 수직 기호 <strong>${tex('\\perp')}</strong>는 평평한 땅 위에 기둥이 $90^\\circ$로 똑바로 서 있는 모양 그대로입니다!`,
         bars: [
           { label: `🎯 최단거리 수선 PH (${distH}cm)`, weight: distH / (distH + parseFloat(oblLen)), color: '#fbbf24' },
           { label: `비스듬한 선분 PQ (${oblLen}cm)`, weight: parseFloat(oblLen) / (distH + parseFloat(oblLen)), color: '#f472b6' }
@@ -1677,9 +1682,18 @@
         .join('');
     }
 
+    // 해설 칸에 $...$ 수식을 넣습니다. 슬라이더·애니메이션이 매 프레임 render()를 부르므로 내용이 같으면 DOM을 다시 쓰지 않습니다.
+    function setRichHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el._html !== html) {
+        el._html = html;
+        el.innerHTML = texInline(html);
+      }
+    }
+
     function updateUI(spec) {
       document.getElementById('canvasModeBadge').textContent = spec.badge;
-      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      setRichHTML('canvasActionHint', spec.hint);
       document.getElementById('txtMainAction').textContent = spec.actionTxt;
 
       document.getElementById('dim1Label').textContent = spec.dim1Name;
@@ -1716,8 +1730,8 @@
 
       document.getElementById('totalResultBadge').textContent = spec.totalRes;
       document.getElementById('ruleBadge').textContent = spec.rule;
-      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
-      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+      setRichHTML('formulaBox', spec.formulaHTML);
+      setRichHTML('intuitionNotes', spec.notes);
 
       renderPresetChips();
     }

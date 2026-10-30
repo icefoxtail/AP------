@@ -3,7 +3,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>대수 Part 1-A. 지수·상용로그 연산 & 지수함수 단독 심화 8대 킬러 마스터</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 <!-- Tailwind CSS -->
@@ -400,7 +400,8 @@ return latex;
 
 function formatRichMath(text) {
 if (!text) return '';
-return text.replace(/\$\$([^$]+)\$\$/g, (_, tex) => renderMath(tex, true))
+return text.replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>')
+           .replace(/\$\$([^$]+)\$\$/g, (_, tex) => renderMath(tex, true))
 .replace(/\$([^$]+)\$/g, (_, tex) => renderMath(tex, false));
 }
 
@@ -549,7 +550,7 @@ stepDescs: [
 'Step 2: 밑이 소수($2$)일 때 $2^{\\frac{m}{n}}$이 자연수가 되려면 지수 $\\frac{m}{n}$이 자연수(또는 $0$), 즉 **분모 $n$이 분자 $m$의 약수**여야 합니다!',
 'Step 3: 칠판의 $(m, n)$ 순서쌍 매트릭스에서 $m$이 $n$의 배수인 격자점들만 골든 네온으로 점등하여 개수를 3초 만에 카운팅합니다.'
 ],
-trapWarning: '만약 밑이 $4$나 $8$처럼 거듭제곱수($\sqrt[n]{4^m} = 2^{\\frac{2m}{n}}$)이면, $n$은 $m$의 약수가 아니라 **$2m$의 약수**가 되어야 합니다! 반드시 밑을 **소인수분해**한 뒤 약수를 따지세요!',
+trapWarning: '만약 밑이 $4$나 $8$처럼 거듭제곱수($\\sqrt[n]{4^m} = 2^{\\frac{2m}{n}}$)이면, $n$은 $m$의 약수가 아니라 **$2m$의 약수**가 되어야 합니다! 반드시 밑을 **소인수분해**한 뒤 약수를 따지세요!',
 scenarios: [
 {
 chip: '기출 A (ⁿ√(2^m)이 자연수가 되는 순서쌍 스캐너)',

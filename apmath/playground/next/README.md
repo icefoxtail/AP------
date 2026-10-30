@@ -1,10 +1,10 @@
 # AP Math 실험실 2.0 — 무대 중심 디자인 + 공용 셸 (미리보기)
 
-기존 실험실(`../labs/`, `../teacher-hub.html`)은 **그대로 두고**, 같은 저장소 안에서 새 구조를 나란히 띄워 비교할 수 있게 만든 미리보기입니다.
+기존 실험실(`../labs/`)과 이전 허브(`../teacher-hub.html`)는 **그대로 쓸 수 있게 두고**(비교 중 발견된 오류는 기존 파일에서도 고쳤습니다), 같은 저장소 안에서 새 구조를 나란히 띄워 비교할 수 있게 만든 미리보기입니다. 처음 화면 AP Math Universe(`../index.html`)의 「실험실 입장」은 이제 이 새 허브(`next/index.html`)로 들어옵니다.
 
 | 화면 | 경로 |
 |---|---|
-| 새 허브 (목록 · 개념 노선도 · 검색 · 내 수업 목록) | `next/index.html` |
+| 새 허브 (목록 · 개념 노선도 · 검색 · 내 수업 목록). Universe → 「실험실 입장」의 도착점 | `next/index.html` |
 | 기존 ↔ 2.0 나란히 비교 (PC·태블릿·모바일 크기) | `next/compare.html` |
 | 미적분Ⅰ 접선과 미분계수 (직접 이식) | `next/labs/calc1-tangent.html` |
 | 중3 삼각비 (호환층 이식, 38장면) | `next/labs/g9-trig-ratio.html` |
@@ -44,7 +44,8 @@ next/
     vendor/qrcode.js    QR 생성기 (MIT, Kazuhiko Arase)
   labs/                 2.0 셸 위의 실험실
   tools/
-    catalog.test.mjs    카탈로그·키트 정합성 검사 (node --test, 브라우저 불필요)
+    catalog.test.mjs    카탈로그·키트·manifest·HTML 로컬 참조(404) 정합성 검사 (node --test, 브라우저 불필요)
+    gen-manifest.mjs    카탈로그에서 ../manifest.json 생성 (실험실을 더하거나 고친 뒤 실행)
     scene-smoke.mjs     모든 장면 자동 렌더 검사 (Playwright)
 ```
 
@@ -102,14 +103,22 @@ window.addEventListener('DOMContentLoaded', () => APLab.createLab({
 ## 5. 검사
 
 ```bash
-node --test apmath/playground/next/tools/catalog.test.mjs     # 카탈로그·경로·키트 문법·.gitignore 누락 (CI 등록 권장)
+node --test apmath/playground/next/tools/catalog.test.mjs     # 카탈로그·경로·키트 문법·.gitignore 누락·manifest·HTML 로컬 참조 (CI 등록됨)
+node apmath/playground/next/tools/gen-manifest.mjs              # 카탈로그를 바꿨다면 manifest.json 다시 만들기
 python3 -m http.server 8765 &                                   # 저장소 루트에서
 node apmath/playground/next/tools/scene-smoke.mjs               # 모든 장면 × (PC 칠판·PC 종이·휴대폰) 렌더 검사
 ```
 
 장면 검사는 실행 오류·빈 그림·빈 안내와 함께 **무대 밖으로 잘린 라벨**도 찾습니다(현재 3개 실험실 47장면 × 3 환경 모두 통과, 라벨 뒤집기를 끄면 공통접선 장면이 실패하는 것으로 검사 자체도 확인).
 
-같은 방식으로 기존 실험실 45개를 순회한 결과, 기존 파일에서 실행 오류 장면 5개를 찾았습니다(삼각비 4: 탭 8의 기본 장면 포함, 피타고라스 1). 또 기하 실험실 5개(공간도형·정사영·공간좌표·벡터 성분/내적·벡터로 나타낸 도형)는 선택 모듈로 붙인 공용 스크립트 3개(`board-relations.js`·`geometry-relations.js`·`student-guide.js`)를 잘못된 경로로 불러 모두 15건의 404가 납니다(실제 위치는 `playground/assets/`; 화면은 열리지만 모듈은 쓰이지 않음). 실행 오류 장면은 2.0 삼각비에서 고쳤고, 기존 파일은 이번 작업 범위 밖이라 수정하지 않았습니다(404는 경로를 `../../assets/`로 바로잡아 모듈을 켜거나, 쓰지 않을 모듈이면 참조를 지우면 해결).
+같은 방식으로 기존 실험실 45개를 순회해 찾은 문제는 모두 기존 파일에서 **고쳤습니다**.
+
+- 실행 오류 장면 5개(삼각비 4: 탭 8의 기본 장면 포함, 피타고라스 1) — 모두 복구, 삼각비 38장면은 오류 0건.
+- 삼각비·피타고라스의 ‘관찰 렌즈’ 버튼이 그림에 영향을 주지 않던 문제, 삼각비 안내문의 `$…$` 수식 원문 노출.
+- 기하 실험실 5개가 공용 스크립트(`board-relations.js`·`geometry-relations.js`·`student-guide.js`)를 잘못된 경로로 불러 나던 404 15건 — 공간도형 3D에만 관계 탐구 모듈(`geometry-relations.js`)을 올바른 경로로 켜고, 나머지는 쓰이지 않는 모듈 참조를 지웠습니다. 이후 `catalog.test.mjs`가 모든 HTML의 로컬 `<script src>`·`<link href>`가 실제 파일을 가리키는지 검사해 같은 일이 되풀이되지 않게 합니다.
+- 이전 허브(`teacher-hub.html`): 휴대폰에서 가로로 넘치던 문제(390px 화면에서 459px), 손으로 적은 개수(이제 카드에서 자동으로 셈), 낡은 `manifest.json`(이제 카탈로그에서 생성).
+
+지금 남은 기존 화면과의 차이는 오류가 아니라 **설계 차이**입니다 — 휴대폰에서 그림을 가리는 떠 있는 안내 상자, 작은 글씨, 외부 CDN 의존, 일부 실험실의 확대 금지(`user-scalable=no`) 등. 비교 화면(`compare.html`)의 설명은 이 차이를 다룹니다.
 
 ## 6. 키보드
 
