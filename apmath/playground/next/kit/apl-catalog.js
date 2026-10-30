@@ -725,6 +725,7 @@ window.APLab.catalog = {
     "f(g(x))=k 2단계 치환"
    ],
    "legacy": "labs/미적분1/합성함수·절댓값 그래프.html",
+   "next": "next/labs/calc1-composite.html",
    "glyph": "<path d=\"M8 64 L24 24 L40 64 L56 24 L72 64\"/>"
   },
   {
@@ -746,6 +747,7 @@ window.APLab.catalog = {
     "역함수 정적분 퍼즐"
    ],
    "legacy": "labs/미적분1/정적분과 넓이.html",
+   "next": "next/labs/calc1-integral.html",
    "glyph": "<path d=\"M8 64 Q40 4 72 64 Z\" fill=\"currentColor\" fill-opacity=\".12\"/> <path d=\"M8 64 Q40 4 72 64\"/> <line x1=\"8\" y1=\"64\" x2=\"72\" y2=\"64\"/>"
   },
   {
