@@ -65,7 +65,7 @@ export function segmentLabelSite(row,p,q){
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants','callouts'],
   quadrants:['id','quadrant','label','fill','factRole'],textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
-  pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed'],
+  pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed','anchor','side'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over'],
   equalLengths:['id','count','segments','pathMark','markStyle'],parallels:['id','count','segments','lines'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership'],
@@ -81,6 +81,11 @@ export const ARC_LABEL_PLACEMENTS=['AUTO','LEADER'];
 export const EQUAL_PATH_MARKS=['AUTO','TICK','BRACKET'];
 // labelWeight MATH (E32, opt-in): a plain-text label (labelKind TEXT) is drawn in the weight of the math labels beside it; without it a TEXT label keeps its thin face
 export const LABEL_WEIGHTS=['MATH'];
+// pathLabels[].anchor / side (E37): where along the path the label's leader starts (START = near the first point, END = near the last, or a fraction 0 < t < 1 of the path's length) and
+// on which side of the path, walking from the first point to the last, the label stands (LEFT or RIGHT as the page shows it). Neither is for a closed (perimeter) label.
+export const PATH_LABEL_ANCHORS={START:0.15,END:0.85};
+export const PATH_LABEL_SIDES=['LEFT','RIGHT'];
+export const pathLabelAnchorFraction=anchor=>typeof anchor==='string'&&Object.hasOwn(PATH_LABEL_ANCHORS,anchor)?PATH_LABEL_ANCHORS[anchor]:(typeof anchor==='number'&&Number.isFinite(anchor)&&anchor>0&&anchor<1?anchor:null);
 const weightOf=(row,kind,where)=>{
   if(row.labelWeight===undefined)return {};
   if(!LABEL_WEIGHTS.includes(row.labelWeight)||kind!=='TEXT')bad('MARK_LABEL_WEIGHT_INVALID:'+where+':'+row.id);
@@ -515,6 +520,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     keysOk(row,KEYS.pathLabels,'pathLabels');claim(row.id,'pathLabels');
     if(!Array.isArray(row.points)||row.points.length<3||row.points.length>8||row.points.some(id=>typeof id!=='string')||new Set(row.points).size!==row.points.length)bad('PATH_LABEL_POINTS_INVALID:'+row.id);
     if(row.closed!==undefined&&row.closed!==true)bad('PATH_LABEL_CLOSED_INVALID:'+row.id);
+    if(row.anchor!==undefined&&(row.closed===true||pathLabelAnchorFraction(row.anchor)===null))bad('PATH_LABEL_ANCHOR_INVALID:'+row.id);
+    if(row.side!==undefined&&(row.closed===true||!PATH_LABEL_SIDES.includes(row.side)))bad('PATH_LABEL_SIDE_INVALID:'+row.id);
     const closed=row.closed===true,ring=closed?[...row.points,row.points[0]]:row.points;   // closed: the label is for a whole perimeter, the last point joins back to the first
     const coords=ring.map(at),pathSegments=[];let total=0;
     for(let i=0;i+1<ring.length;i++){
@@ -535,7 +542,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(declared===null||declared<=0)bad('MARK_FIELD_INVALID:pathLabels.value:'+row.id);
       if(Math.abs(declared-total)>1e-6*Math.max(1,declared))bad('PATH_LABEL_FACT_MISMATCH:'+row.id+':declared='+declared+':drawn='+total.toFixed(6));
     }
-    objects.push({id:row.id,kind:'PATH_LABEL',refs:[...row.points],segments:pathSegments,...(closed?{closed:true}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...weightOf(row,kind,'pathLabels')});
+    objects.push({id:row.id,kind:'PATH_LABEL',refs:[...row.points],segments:pathSegments,...(closed?{closed:true}:{}),...(row.anchor!==undefined?{anchorAt:pathLabelAnchorFraction(row.anchor)}:{}),...(row.side!==undefined?{side:row.side}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...weightOf(row,kind,'pathLabels')});
     factRolesByLabel[row.id+'-label']=role(row);
   }
 

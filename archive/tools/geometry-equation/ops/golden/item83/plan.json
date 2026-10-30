@@ -1,0 +1,243 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "8"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "219",
+       "denominator": "13"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-23",
+       "denominator": "13"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "MIDPOINT",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "G",
+    "op": "CENTROID",
+    "inputs": [
+     "A",
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAD",
+   "refs": [
+    "A",
+    "D"
+   ]
+  },
+  {
+   "id": "sDB",
+   "refs": [
+    "D",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCA",
+   "refs": [
+    "C",
+    "A"
+   ]
+  },
+  {
+   "id": "sCG",
+   "refs": [
+    "C",
+    "G"
+   ]
+  },
+  {
+   "id": "sGD",
+   "refs": [
+    "G",
+    "D"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "G"
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "eAD",
+    "count": 1,
+    "segments": [
+     "sAD",
+     "sDB"
+    ]
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dAB",
+    "from": "A",
+    "to": "B",
+    "label": "10",
+    "unit": "cm",
+    "side": "LEFT",
+    "offset": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dCG",
+    "from": "C",
+    "to": "G",
+    "label": "10",
+    "unit": "cm",
+    "side": "ABOVE",
+    "style": "INLINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dGD",
+    "from": "G",
+    "to": "D",
+    "label": "5",
+    "unit": "cm",
+    "side": "ABOVE",
+    "style": "INLINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "tDB",
+    "ownerSegment": "sDB",
+    "text": "y=5",
+    "unit": "cm",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "pathLabels": [
+   {
+    "id": "pCD",
+    "points": [
+     "C",
+     "G",
+     "D"
+    ],
+    "label": "x=15",
+    "unit": "cm",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "anchor": 0.5,
+    "side": "RIGHT"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 440
+ },
+ "caption": "D는 AB의 중점이고 G는 무게중심이므로 BD=5 cm이고, 중선 CD 위에서 CG=10 cm, GD=5 cm이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "G는 △ABC의 무게중심, AB=10cm, CG=10cm, D는 AB 위의 점",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "D가 AB의 중점(AD=DB, BD=y)임",
+  "무게중심 G가 중선 CD를 CG:GD로 나눈 구간 CG=10, GD=5와 CD=x"
+ ],
+ "sourceQuote": "무게중심은 중선을 꼭짓점 쪽에서"
+}

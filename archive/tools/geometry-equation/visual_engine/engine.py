@@ -324,6 +324,7 @@ DIM_LABEL_SLIDES=(0.0,0.12,-0.12,0.24,-0.24)   # fractions of the dimension's le
 PATH_LABEL_ANCHOR_FRACTIONS=(0.5,0.4,0.6,0.3,0.7,0.2,0.8)   # where along the path (by length) the leader may start, the middle first
 PATH_LABEL_GAPS=(24,32,44,60)                                  # distance from the anchor to the label box: always far enough to need a visible leader
 PATH_LABEL_CORNER_CLEAR_PX=12.0                                 # closed path: a leader starts at least this far from a corner
+PATH_LABEL_ANCHOR_SLIDES=(0.0,0.03,-0.03,0.06,-0.06,0.09,-0.09)   # E37: an anchor the author names (anchorAt) may slide this fraction of the path along it to find room
 PATH_LABEL_CLEAR_PX=28.0                                       # an anchor farther than this from every other stroke is as good as any
 
 DIM_INLINE_TIP_INSET_PX=5.0        # style INLINE: the arrowheads' tips stand this far inside the two points (clear of their dots)
@@ -1020,6 +1021,14 @@ def prepare(spec):
                     elif o.get('kind')=='point' and isinstance(geometry_o,(list,tuple)) and len(geometry_o)>=3:nearest=min(nearest,math.dist(anchor,geometry_o[:2])-geometry_o[2])
                 return nearest
             anchors.sort(key=lambda anchor:-clearance(anchor))
+            if obj.get('anchorAt') is not None:
+                # E37: the leader starts where the author says (a fraction of the path's length), sliding only a little along the path; the other places are not tried
+                anchors=[]
+                for slide in PATH_LABEL_ANCHOR_SLIDES:
+                    t=obj['anchorAt']+slide
+                    if 0.02<=t<=0.98:
+                        spot=along(total*t)
+                        if all(math.dist(spot,other)>=1.0 for other in anchors):anchors.append(spot)
             closed=obj.get('closed') is True
             if closed:
                 # a perimeter label: the leader starts on a side, away from the corners, and the label stands outside the figure; the corners themselves
@@ -1027,6 +1036,13 @@ def prepare(spec):
                 clear_of_corners=[a for a in anchors if all(math.dist(a,v)>=PATH_LABEL_CORNER_CLEAR_PX for v in path)]
                 anchors=clear_of_corners+[v for v in path[:-1] if all(math.dist(v,a)>=1.0 for a in clear_of_corners)]
             site={'ids':list(obj['segments'])+(list(obj['refs']) if closed else []),'anchors':[list(a) for a in anchors],'gaps':PATH_LABEL_GAPS,**({'outside':[list(p) for p in path[:-1]]} if closed else {})}
+            if obj.get('side') is not None:
+                # E37: the label stands on the LEFT or RIGHT of the path (walking from its first point to its last, as the page shows it: y points down, so the left normal of (dx,dy) is (dy,-dx))
+                def side_normal(anchor):
+                    a,b=min(zip(path,path[1:]),key=lambda pair:point_segment_distance(anchor,pair[0],pair[1]))
+                    length=math.dist(a,b);dx,dy=(b[0]-a[0])/length,(b[1]-a[1])/length
+                    return [dy,-dx] if obj['side']=='LEFT' else [-dy,dx]
+                site['sideNormals']=[side_normal(a) for a in anchors]
             labels.append(weighted(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchors[0],{'pathOwned':site},obj.get('unit')),obj))
         elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
             # A ref is a segment, or (parallels[].lines, E31) a displayed line: its drawn chord inside the window, with the places where other lines and the axes cross it kept clear.

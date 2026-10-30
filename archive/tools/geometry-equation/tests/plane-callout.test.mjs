@@ -182,3 +182,56 @@ test('E37 angle callout: guide line to the vertex, a radius, the other sides, an
   assert.equal(err(fanRow({angles:[{id:'aX',refs:['C','B','M'],value:36,label:'36'}]})),'CALLOUT_TARGET_UNKNOWN:kB.angles:aX');
   assert.equal(err(fanRow({angles:[{id:'aX',refs:['C','B','I'],value:40,label:'40'}]})),'ANGLE_MARK_FACT_MISMATCH:kB__aX:declared=40:drawn=36.000');
 });
+
+// ---- path label anchor and side (E37): the leader of a total-length label starts where the author says along the path, and the label stands on the named side of it
+const pathPlan=(row,extra={})=>({...trianglePlan(null,{coordinateCanvas:{width:720,height:540}}),planeMarks:{pathLabels:[{id:'pCD',points:['D','G','C'],label:'x=15',unit:'cm',factRole:'DERIVED_INTERMEDIATE',...row}]},...extra});
+const leaderOf=(svg,label)=>{const tag=new RegExp('<line\\s[^>]*data-role="leader"[^>]*data-owner-label="'+label+'"[^>]*/>').exec(svg)?.[0];return tag&&['x1','y1','x2','y2'].map(name=>Number(attr(tag,name)));};
+const fractionAlong=(svg,leader,names)=>{   // the leader's start, projected on the polyline of the named points, as a fraction of its length
+  const pts=names.map(id=>scaled(svg,id)),pieces=pts.slice(1).map((q,i)=>[pts[i],q]),total=pieces.reduce((sum,[a,b])=>sum+Math.hypot(b[0]-a[0],b[1]-a[1]),0);
+  let run=0,best=null;
+  for(const [a,b] of pieces){
+    const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy),t=Math.max(0,Math.min(1,((leader[0]-a[0])*dx+(leader[1]-a[1])*dy)/(length*length)));
+    const distance=Math.hypot(leader[0]-(a[0]+dx*t),leader[1]-(a[1]+dy*t));
+    if(best===null||distance<best.distance)best={distance,fraction:(run+length*t)/total};
+    run+=length;
+  }
+  return best.fraction;
+};
+const sideOf=(svg,leader,names,labelId)=>{   // +1 when the label's centre is on the left of the path (first to last point, y down), -1 on the right
+  const pts=names.map(id=>scaled(svg,id)),a=pts[0],b=pts[pts.length-1],d=[b[0]-a[0],b[1]-a[1]],tag=tagOf(svg,labelId),m=/translate\(([-\d.]+)[ ,]([-\d.]+)\)/.exec(tag),inner=new RegExp('<g id="'+labelId+'"[^>]*>\\s*<svg[^>]*width="([\\d.]+)"[^>]*height="([\\d.]+)"').exec(svg);
+  const centre=[Number(m[1])+Number(inner[1])/2-leader[0],Number(m[2])+Number(inner[2])/2-leader[1]],normal=[d[1],-d[0]];
+  return Math.sign(centre[0]*normal[0]+centre[1]*normal[1]);
+};
+
+test('E37 path label: anchor START / END / a fraction puts the leader near the first point, the last point or there (END is exercised by the observer and plan checks); side LEFT / RIGHT puts the label on that side of the path; every audit passes',async()=>{
+  const model=await modelOf(triangle),names=['D','G','C'];
+  const seen=[];
+  for(const [anchor,side] of [['START','LEFT'],['START','RIGHT'],[0.3,'LEFT'],[0.3,'RIGHT']]){
+    const plan=pathPlan({anchor,side}),composed=await composeOf(plan,model);
+    expectComposed(composed);
+    const leader=leaderOf(composed.svg,'pCD-label'),want=typeof anchor==='number'?anchor:anchor==='START'?0.15:0.85;
+    assert.ok(Math.abs(fractionAlong(composed.svg,leader,names.map(id=>id))-want)<=0.1,'the leader starts at '+anchor+': '+fractionAlong(composed.svg,leader,names));
+    assert.equal(sideOf(composed.svg,leader,names,'pCD-label'),side==='LEFT'?1:-1,anchor+' '+side);
+    seen.push(leader);
+    const transform=await transformOf(plan,model);
+    assert.deepEqual((await observe(composed.svg,triangle,plan.planeMarks,plan.displaySegments,transform)).errors,[]);
+    if(anchor==='START'){
+      assert.ok(codes(await observe(composed.svg,triangle,{pathLabels:[{...plan.planeMarks.pathLabels[0],anchor:'END'}]},plan.displaySegments,transform)).includes('PATH_LABEL_ANCHOR_MISMATCH'));
+      assert.ok(codes(await observe(composed.svg,triangle,{pathLabels:[{...plan.planeMarks.pathLabels[0],side:side==='LEFT'?'RIGHT':'LEFT'}]},plan.displaySegments,transform)).includes('PATH_LABEL_SIDE_MISMATCH'));
+    }
+  }
+  assert.ok(Math.hypot(seen[0][0]-seen[2][0],seen[0][1]-seen[2][1])>20,'START (0.15) and 0.3 start the leader apart');
+});
+
+test('E37 path label: a plan without anchor and side is the old figure byte for byte; plan errors with explicit codes',async()=>{
+  const model=await modelOf(triangle);
+  const plain=await composeOf(pathPlan({}),model),again=await composeOf(pathPlan({}),model);
+  expectComposed(plain);assert.equal(plain.svg,again.svg);
+  const err=row=>specError(pathPlan(row),model);
+  assert.equal(err({anchor:'MIDDLE'}),'PATH_LABEL_ANCHOR_INVALID:pCD');
+  assert.equal(err({anchor:0}),'PATH_LABEL_ANCHOR_INVALID:pCD');
+  assert.equal(err({anchor:1}),'PATH_LABEL_ANCHOR_INVALID:pCD');
+  assert.equal(err({anchor:'0.5'}),'PATH_LABEL_ANCHOR_INVALID:pCD');
+  assert.equal(err({side:'UP'}),'PATH_LABEL_SIDE_INVALID:pCD');
+  assert.equal(specError(pathPlan({closed:true,side:'LEFT'}),model),'PATH_LABEL_SIDE_INVALID:pCD');
+});

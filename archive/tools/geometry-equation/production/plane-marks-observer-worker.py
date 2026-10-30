@@ -190,6 +190,25 @@ def box_polyline_distance(box,points):
             best=min(best,math.hypot(max(box[0]-x,0,x-(box[0]+box[2])),max(box[1]-y,0,y-(box[1]+box[3]))))
     return best
 
+# ---- path label anchor and side (E37): this observer's own copy of the rules
+PATH_LABEL_ANCHORS={'START':0.15,'END':0.85}   # START / END: near the first / last point of the path (a fraction of its length)
+PATH_LABEL_ANCHOR_TOLERANCE=0.1                # the engine slides a named anchor at most 0.09 of the path along it
+PATH_LABEL_SIDE_MIN_COS=0.3                    # the label box's centre, seen from the leader's start, leans at least this far to the declared side (cosine with that side's normal)
+def path_anchor_fraction(anchor):
+    if isinstance(anchor,str):return PATH_LABEL_ANCHORS.get(anchor)
+    if isinstance(anchor,(int,float)) and not isinstance(anchor,bool) and 0<anchor<1:return float(anchor)
+    return None
+def nearest_on_path(q,pts):
+    """(fraction of the path's length at the point of the polyline nearest q, unit direction of the piece it lies on)."""
+    total=sum(norm(sub(b,a)) for a,b in zip(pts,pts[1:]));best=None;run=0.0
+    for a,b in zip(pts,pts[1:]):
+        d=sub(b,a);length=norm(d)
+        t=max(0.0,min(1.0,((q[0]-a[0])*d[0]+(q[1]-a[1])*d[1])/(length*length)))
+        spot=(a[0]+d[0]*t,a[1]+d[1]*t);distance=norm(sub(q,spot))
+        if best is None or distance<best[0]:best=(distance,(run+length*t)/total,(d[0]/length,d[1]/length))
+        run+=length
+    return best[1],best[2]
+
 # ---- callouts (E37): this observer's own copy of the callout rules. A callout draws a path of the main figure again beside it (points named `<callout id>__<point id>`,
 # pieces `<callout id>__s<n>`, guide lines `<callout id>__g<n>`); its marks are ordinary marks on those copies. The copies are read back from the FINAL SVG and held against the
 # main figure's own (peer) points; the marks are then expanded onto the observed copies and checked by the ordinary mark audits below.
@@ -980,6 +999,19 @@ def audit(p):
             else:
                 leader_ok(oid+'-label',box,lambda q:min(point_segment_distance(q,c,d) for c,d in zip(path,path[1:]))<=1.0)
                 la=(float(node.get('x1')),float(node.get('y1')));lb=(float(node.get('x2')),float(node.get('y2')))
+                # anchor / side (E37): where along the path the leader starts, and on which side of the path (walking first point to last, as the page shows it: y down) the label stands
+                if row.get('anchor') is not None:
+                    wanted=path_anchor_fraction(row['anchor'])
+                    if wanted is None or closed:errors.append('PATH_LABEL_ANCHOR_INVALID:'+oid)
+                    else:
+                        drawn,_=nearest_on_path(la,path)
+                        if abs(drawn-wanted)>PATH_LABEL_ANCHOR_TOLERANCE:errors.append('PATH_LABEL_ANCHOR_MISMATCH:'+oid+':wanted=%.3f:drawn=%.3f'%(wanted,drawn))
+                if row.get('side') is not None:
+                    if row['side'] not in ('LEFT','RIGHT') or closed:errors.append('PATH_LABEL_SIDE_INVALID:'+oid)
+                    else:
+                        _,(dx,dy)=nearest_on_path(la,path);normal=(dy,-dx) if row['side']=='LEFT' else (-dy,dx)
+                        centre=(box[0]+box[2]/2-la[0],box[1]+box[3]/2-la[1])
+                        if norm(centre)<=1e-9 or (centre[0]*normal[0]+centre[1]*normal[1])/norm(centre)<PATH_LABEL_SIDE_MIN_COS:errors.append('PATH_LABEL_SIDE_MISMATCH:'+oid)
                 for sid,pts in strokes:
                     if closed and sid in ids:continue      # a perimeter leader may leave from a corner: that corner's own dot is where it starts
                     if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('PATH_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
