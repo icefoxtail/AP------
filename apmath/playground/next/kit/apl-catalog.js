@@ -683,6 +683,7 @@ window.APLab.catalog = {
     "외부점 접선 개수(1·2·3)"
    ],
    "legacy": "labs/미적분1/삼차함수 비율관계.html",
+   "next": "next/labs/calc1-cubic.html",
    "glyph": "<path d=\"M8 60 Q24 12 40 38 Q56 64 72 16\"/>"
   },
   {
@@ -704,6 +705,7 @@ window.APLab.catalog = {
     "|f(x)-k| 미분가능성"
    ],
    "legacy": "labs/미적분1/사차함수 비율관계.html",
+   "next": "next/labs/calc1-quartic.html",
    "glyph": "<path d=\"M8 50 Q18 8 28 38 Q40 68 52 30 Q62 8 72 48\"/>"
   },
   {
@@ -725,6 +727,7 @@ window.APLab.catalog = {
     "f(g(x))=k 2단계 치환"
    ],
    "legacy": "labs/미적분1/합성함수·절댓값 그래프.html",
+   "next": "next/labs/calc1-composite.html",
    "glyph": "<path d=\"M8 64 L24 24 L40 64 L56 24 L72 64\"/>"
   },
   {
@@ -746,6 +749,7 @@ window.APLab.catalog = {
     "역함수 정적분 퍼즐"
    ],
    "legacy": "labs/미적분1/정적분과 넓이.html",
+   "next": "next/labs/calc1-integral.html",
    "glyph": "<path d=\"M8 64 Q40 4 72 64 Z\" fill=\"currentColor\" fill-opacity=\".12\"/> <path d=\"M8 64 Q40 4 72 64\"/> <line x1=\"8\" y1=\"64\" x2=\"72\" y2=\"64\"/>"
   },
   {
@@ -767,6 +771,7 @@ window.APLab.catalog = {
     "위치 x(t) vs 속도 v(t) 함정"
    ],
    "legacy": "labs/미적분1/속도·가속도·이동거리.html",
+   "next": "next/labs/calc1-motion.html",
    "glyph": "<path d=\"M8 60 Q20 58 32 30 Q44 8 56 30 Q68 50 72 48\"/><path d=\"M8 50 L72 50\" stroke-dasharray=\"3 3\"/><circle cx=\"44\" cy=\"12\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {

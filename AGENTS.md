@@ -1,3 +1,7 @@
+## CURRENT TOP — 단일 메타 Resolver 연결 (2026-10-30)
+
+- 신규 기출 CREATE/R1/R2/R3에서 Primary RPM L1~L4 + CrossConcept/Condition/Integration을 교육과정 내 실제 풀이로 판정하고, PT/TPL은 [단일 진입·Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)의 공식 명령/ACTIVE 바인딩으로만 투영한다. 작업자가 PT/TPL을 자유 추정하거나 CrossConcept으로 Primary를 대체하지 않는다. 모델 공통 규칙이며 사후 FINAL QA의 기존 PT/TPL 재검 제외·예약 Git writer 금지/현재 캠페인 설정은 유지한다.
+
 ## CURRENT TOP — 작업별 진입 / 과거 Notion 필독 해제 (2026-10-22)
 
 - **범용으로 'GPT 작업 전 필독 라우터' 900줄과 Archive 생명주기를 매 작업 선열람하는 의무를 폐지한다.** 사용자 지정 범위·역할·현행 exact Git/Notion CURRENT **한 곳과 실물**에서 바로 시작한다. [Notion 공통 행동 규칙](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd)은 실제 공통 원칙·충돌이 있을 때만 확인하며, [캠페인별 상세 문서](https://app.notion.com/p/4010e68bd69f81b7a445c7c48abe1c05)는 **자기 캠페인 담당자만** 연다.

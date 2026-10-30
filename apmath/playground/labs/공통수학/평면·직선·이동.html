@@ -338,6 +338,11 @@
       return latexStr;
     }
 
+    // 해설 문자열(hint · formulaHTML · notes) 속 $...$ 구간을 위 tex()로 KaTeX 수식으로 바꿉니다.
+    function texInline(html) {
+      return html.replace(/\$([^$]+)\$/g, (m, src) => tex(src));
+    }
+
     function fmtNum(v) {
       if (Math.abs(v - Math.round(v)) < 1e-6) return String(Math.round(v));
       return Number(v.toFixed(2)).toString();
@@ -2026,9 +2031,18 @@
       ).join('');
     }
 
+    // 해설 칸에 $...$ 수식을 넣습니다. 슬라이더·애니메이션이 매 프레임 render()를 부르므로 내용이 같으면 DOM을 다시 쓰지 않습니다.
+    function setRichHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el._html !== html) {
+        el._html = html;
+        el.innerHTML = texInline(html);
+      }
+    }
+
     function updateUI(spec) {
       document.getElementById('canvasModeBadge').textContent = spec.badge;
-      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      setRichHTML('canvasActionHint', spec.hint);
       document.getElementById('txtFoldToggle').textContent = spec.actionTxt;
 
       document.getElementById('dim1Label').textContent = spec.dim1Name;
@@ -2065,8 +2079,8 @@
 
       document.getElementById('totalResultBadge').textContent = spec.totalRes;
       document.getElementById('ruleBadge').textContent = spec.rule;
-      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
-      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+      setRichHTML('formulaBox', spec.formulaHTML);
+      setRichHTML('intuitionNotes', spec.notes);
 
       renderPresetChips();
     }

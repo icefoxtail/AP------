@@ -137,11 +137,11 @@ test('FAMILY_ACTIVE remains unclosed without post-crosswalk template selection',
 });
 
 test('RPM semantics remain final when its exact compatibility binding is missing', () => {
-  const result = resolveMetaRoute(makeInput(rowFor('H1-RPM-029')), { repoRoot: root });
+  const result = resolveMetaRoute(makeInput(rowFor('H1-RPM-178')), { repoRoot: root });
   assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
   assert.equal(result.semanticStatus, 'FINAL');
   assert.equal(result.projectionStatus, 'PROJECTION_BINDING_PENDING');
-  assert.equal(result.mappedProblemTypeKey, 'PT_H1_ROOT_COEFFICIENT_RELATION');
+  assert.equal(result.mappedProblemTypeKey, 'PT_H1_LINEAR_SYSTEM_INEQUALITY');
   assert.equal(result.problemTypeKey, '');
   assert.equal(result.templateKey, '');
 });
@@ -307,16 +307,16 @@ test('difficulty is a separate fresh blind pass and may disagree with legacy lev
 });
 
 test('crosswalk binding gap cannot pass FINAL even if caller adds a selectable key', () => {
-  const resolution = resolveMetaRoute(makeInput(rowFor('H1-RPM-029')), { repoRoot: root });
-  const forged = { ...resolution, problemTypeKey: 'PT_H1_ROOT_COEFFICIENT_RELATION', templateKey: 'TPL_H1_VIETA_SYMMETRIC_VALUE' };
+  const resolution = resolveMetaRoute(makeInput(rowFor('H1-RPM-178')), { repoRoot: root });
+  const forged = { ...resolution, problemTypeKey: 'PT_H1_LINEAR_SYSTEM_INEQUALITY', templateKey: 'TPL_H1_LINEAR_INEQUALITY_INTERVAL' };
   const { evidenceSha, ...body } = forged;
   const evidence = { ...forged, evidenceSha: objectSha(body) };
-  const result = validateResolverEvidence(makeInput(rowFor('H1-RPM-029')), evidence, { repoRoot: root });
+  const result = validateResolverEvidence(makeInput(rowFor('H1-RPM-178')), evidence, { repoRoot: root });
   assert.equal(result.status, 'FAIL');
 });
 
 test('RPM semantic FINAL with a pending legacy projection is META_ONLY and does not block R2E release', () => {
-  const input = makeInput(rowFor('H1-RPM-029'));
+  const input = makeInput(rowFor('H1-RPM-178'));
   const resolverEvidence = resolveMetaRoute(input, { repoRoot: root });
   assert.equal(resolverEvidence.semanticStatus, 'FINAL');
   assert.equal(resolverEvidence.disposition, 'RPM_SEMANTIC_FINAL');
