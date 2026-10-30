@@ -1,0 +1,85 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "FREQUENCY_POLYGON",
+  "yKind": "RELATIVE",
+  "boundaries": [
+   "10",
+   "20",
+   "30",
+   "40",
+   "50",
+   "60",
+   "70"
+  ],
+  "series": [
+   {
+    "name": "수영(50명)",
+    "relativeFrequencies": [
+     "0.02",
+     "0.10",
+     "0.18",
+     "0.28",
+     "0.26",
+     "0.16"
+    ]
+   },
+   {
+    "name": "볼링(40명)",
+    "relativeFrequencies": [
+     "0.10",
+     "0.20",
+     "0.25",
+     "0.30",
+     "0.10",
+     "0.05"
+    ]
+   }
+  ],
+  "highlightPoints": [
+   {
+    "series": 0,
+    "class": 3,
+    "tone": 1,
+    "showValue": true
+   },
+   {
+    "series": 1,
+    "class": 3,
+    "tone": 1,
+    "showValue": true
+   },
+   {
+    "series": 1,
+    "class": 2,
+    "tone": 1,
+    "showValue": true
+   }
+  ],
+  "xTitle": "연령(세)",
+  "yTitle": "상대도수",
+  "grid": true
+ },
+ "caption": "수영 회원 50명과 볼링 회원 40명의 연령별 상대도수분포다각형에서 40대의 두 점과 볼링 30대의 점을 짚은 그림",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "계급 10세 이상 70세 미만, 계급의 크기 10, 계급 6개",
+   "mappedTo": "chart.boundaries"
+  },
+  {
+   "id": "c2",
+   "condition": "수영 회원 50명의 상대도수 0.02, 0.10, 0.18, 0.28, 0.26, 0.16",
+   "mappedTo": "chart.series[0]"
+  },
+  {
+   "id": "c3",
+   "condition": "볼링 회원 40명의 상대도수 0.10, 0.20, 0.25, 0.30, 0.10, 0.05",
+   "mappedTo": "chart.series[1]"
+  }
+ ],
+ "newVisualInformation": [
+  "40대 계급에서 수영과 볼링의 상대도수 점을 짚어 두 집단의 전체 인원이 다름을 함께 보게 함",
+  "볼링 30대 계급의 상대도수 점을 짚어 인원수로 바꾸는 값을 읽게 함"
+ ]
+}

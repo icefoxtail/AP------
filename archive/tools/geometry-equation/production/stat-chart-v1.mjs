@@ -50,6 +50,15 @@ const qtex=a=>decimalOf(a)??`${a[0]<0n?'-':''}\\frac{${a[0]<0n?-a[0]:a[0]}}{${a[
 const qfrac=a=>a[1]===1n?String(a[0]):`${a[0]<0n?'-':''}\\frac{${a[0]<0n?-a[0]:a[0]}}{${a[1]}}`;
 const P=text=>parseQ(text,'STAT_MODEL_NUMBER_INVALID'),N=text=>qnum(P(text));
 const titleText=(v,code,fallback)=>{if(v===undefined)return fallback;if(typeof v!=='string'||v.length<1||v.length>14||/[\u0000-\u001f<>&"\\]/.test(v))bad(code);return v;};
+/** An axis title of a frequency chart: at most 14 characters as before, or up to 28 with a single space to break at into two lines of at most 14 each (E34). */
+const titleLines=text=>{
+  if(text.length<=14)return [text];
+  if(/^ | $|  /.test(text))return null;
+  let best=null;
+  for(let i=0;i<text.length;i++)if(text[i]===' '){const a=text.slice(0,i),b=text.slice(i+1);if(a.length<=14&&b.length<=14){const d=Math.abs(a.length-b.length);if(!best||d<best.d)best={d,lines:[a,b]};}}
+  return best&&best.lines;
+};
+const axisTitle=(v,fallback)=>typeof v==='string'&&v.length>14&&v.length<=28&&!/[\u0000-\u001f<>&"\\]/.test(v)&&titleLines(v)!==null?v:titleText(v,'STAT_TITLE_INVALID',fallback);
 const intIn=(v,lo,hi,code)=>{if(!Number.isInteger(v)||v<lo||v>hi)bad(code);return v;};
 const median=sorted=>{const n=sorted.length;return n%2?sorted[(n-1)/2]:qdiv(qadd(sorted[n/2-1],sorted[n/2]),Q(2n));};
 /** The Korean curriculum quartiles: Q2 the median, Q1 the median of the lower half and Q3 of the upper half, the middle value excluded when n is odd. */
@@ -273,7 +282,7 @@ function solveFreq(c){
   const ticks=[];for(let t=step;qcmp(t,top)<=0;t=qadd(t,step))ticks.push(qstr(t));
   return {schemaVersion:MODEL_VERSION,kind:c.kind,yKind,polygon,grid:c.grid===true,showValues:c.showValues===true,highlight,
     ...(tone2.length?{highlightTone2:tone2}:{}),...(marks.length?{marks}:{}),...(restored.length?{restored,showRestoredValues:c.showRestoredValues===true}:{}),...(hidden.length?{hideValues:hidden}:{}),...(sums.length?{classSums:sums}:{}),...(unknown.length?{unknown:unknown.map(u=>({class:u.class,label:u.label,...(u.rel!==null?{relHeight:qstr(u.rel)}:{})}))}:{}),...(c.showEndValues===true?{showEndValues:true}:{}),
-    xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID','계급'),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',yKind==='FREQUENCY'?'도수(명)':'상대도수'),
+    xTitle:axisTitle(c.xTitle,'계급'),yTitle:axisTitle(c.yTitle,yKind==='FREQUENCY'?'도수(명)':'상대도수'),
     boundaries:b.map(qstr),width:qstr(width),classes:classes.map(k=>({lo:qstr(k.lo),hi:qstr(k.hi),mid:qstr(k.mid)})),
     series:series.map(s=>({name:s.name,frequencies:s.frequencies,total:s.total,values:s.values.map(v=>v===null?null:qstr(v)),
       vertices:[[qstr(qsub(classes[0].mid,width)),'0'],...classes.map((k,i)=>s.values[i]===null?null:[qstr(k.mid),qstr(s.values[i])]),[qstr(qadd(classes[n-1].mid,width)),'0']],
@@ -548,6 +557,19 @@ function solveTree(c){
     nodes:nodes.map(n=>({id:n.id,parent:n.parent,depth:n.depth,label:n.label,p:n.p&&qstr(n.p),path:hasP&&!n.children.length?qstr(n.path):null,children:n.children})),leaves:leaves.map(n=>n.id)};
 }
 
+// --- text widths for the frame: a figure whose legend, axis title or leaf labels need more room than the standard frame grows (E34) ---------------------------------
+// The size of the figure must be known before it is composed (the Archive measures that size), so the room labels need is worked out from the model with the same
+// typesetter and the policy's font size that composing uses. Without a policy the smallest base font (20 px) is assumed.
+let measureTypeset=null;
+const DEFAULT_FONT_PX=20,MEASURE_IDENTITY={visualAssetKey:'sha256:stat-chart-measure'};
+function labelSize(label,fontPx){
+  try{
+    measureTypeset??=typesetter();
+    return measureTypeset({id:'measure',owner:'measure',factRole:'DERIVED_INTERMEDIATE',fontPx,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},MEASURE_IDENTITY).intrinsic;
+  }catch(error){return {width:0,height:0};}   // a label that cannot be typeset is refused by composing with its own code
+}
+const textWidth=(text,fontPx)=>labelSize({kind:'TEXT',text},fontPx).width;
+
 // --- geometry shared by the charts -------------------------------------------------------------------------------------------------------
 const W=548,SAFE=12,MAPL=76,MAPR=422,ARROW_TIP=434,TITLE_X=442,AXIS_TOP=54,TICK=5,LABEL_BELOW=34;
 const STYLE={
@@ -588,7 +610,8 @@ const SUM_Y0=36,SUM_PITCH=44,SUM_INSET=2.5,SUM_ARM=5,SUM_TEXT_H=33,SUM_TEXT_GAP=
 const SUM_JOIN_DROP=10; // a group of class runs (classSums[].classes): each run's bracket sends a stem this far down to one joining line, the label hangs beneath it
 const UNKNOWN_BAR_FRACTION=0.4; // a hidden class drawn as a dotted outline this fraction of the plot high: a place-holder, not a value
 const MARK_R={1:8,2:6};
-function freqSpec(m){
+function freqSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
   const n=m.classes.length,w=N(m.width),b0=N(m.boundaries[0]),bn=N(m.boundaries[n]),poly=m.kind==='FREQUENCY_POLYGON'||m.polygon;
   const marks=m.marks??[],sums=m.classSums??[],restored=m.restored??[],tone2=m.highlightTone2??[];
   let lowU,yAxisU,breakU=null;
@@ -598,7 +621,10 @@ function freqSpec(m){
   const groups=sums.some(sm=>sm.runs),pitch=SUM_PITCH+(groups?SUM_JOIN_DROP:0),rowOf=sums.map(()=>null);
   [...sums.keys()].sort((a,b)=>(groups?(sums[a].runs?1:0)-(sums[b].runs?1:0):0)||a-b).forEach(k=>{const sm=sums[k];let r=0;while(sums.some((o,j)=>rowOf[j]===r&&j!==k&&o.from<=sm.to&&sm.from<=o.to))r++;rowOf[k]=r;});
   const sumRows=rowOf.length?Math.max(...rowOf)+1:0;
-  const highU=bn+(poly?.8:.45)*w,PLOT_H=210,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=sumRows?BASE+SUM_Y0+(sumRows-1)*pitch+(groups?SUM_JOIN_DROP:0)+SUM_TEXT_GAP+SUM_TEXT_H+SAFE:BASE+TICK+4+LABEL_BELOW+SAFE;
+  // axis titles longer than 14 characters break into two lines (a y title adds a line of room above the axis); the legend and the x title may widen the frame
+  const xLines=titleLines(m.xTitle),yLines=titleLines(m.yTitle),lineH=Math.ceil(1.5*fontPx),top=AXIS_TOP+(yLines.length-1)*lineH;
+  const right=Math.max(...xLines.map(line=>TITLE_X+textWidth(line,fontPx)),...(m.series.length>1?m.series.map(sr=>TITLE_X+27+textWidth(sr.name,fontPx)):[0])),extraWidth=Math.max(0,Math.ceil(right+SAFE)-W);
+  const highU=bn+(poly?.8:.45)*w,PLOT_H=210,PT=top+18,BASE=PT+PLOT_H,H=sumRows?BASE+SUM_Y0+(sumRows-1)*pitch+(groups?SUM_JOIN_DROP:0)+SUM_TEXT_GAP+SUM_TEXT_H+SAFE:BASE+TICK+4+LABEL_BELOW+SAFE;
   const px=u=>r6(MAPL+(u-lowU)/(highU-lowU)*(MAPR-MAPL)),T=N(m.y.top),py=v=>r6(BASE-v/T*PLOT_H),yAxisPx=px(yAxisU);
   const prims=[],labels=[];
   const ys=m.y.ticks.map(t=>({t,v:N(t)}));
@@ -618,7 +644,7 @@ function freqSpec(m){
     prims.push(rect(`unknown-s0-${u.class}`,'bar-unknown','barU',x0,BASE-h,x1-x0,h,{series:0,class:u.class},40));
     labels.push(math(`unknown-${u.class}-label`,'unknown-label',`unknown-s0-${u.class}`,DISPLAY+u.label,u.label,'center','middle',(x0+x1)/2,BASE-h/2,{class:u.class}));
   }
-  arrows(prims,{xStartPx:px(lowU),yAxisPx,base:BASE});
+  arrows(prims,{xStartPx:px(lowU),yAxisPx,base:BASE,tipY:top});
   if(breakU!==null)breakMark(prims,'x',px(breakU),BASE);
   for(const [i,bb] of m.boundaries.entries()){
     const x=px(N(bb));
@@ -630,8 +656,11 @@ function freqSpec(m){
     labels.push(math(`y-tick-${t.replace('/','_')}-label`,'y-tick',`y-tick-${t.replace('/','_')}`,DISPLAY+qtex(P(t)),t,'end','middle',yAxisPx-TICK-4,py(v),{value:t}));
   }
   if(breakU!==null)labels.push(math('origin','origin','x-axis','O','O','end','top',yAxisPx-6,BASE+4));
-  labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
-  labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,AXIS_TOP-4));
+  xLines.forEach((line,j)=>labels.push(textLabel(j?`x-title-${j+1}`:'x-title','axis-title','x-axis',line,'start','middle',TITLE_X,BASE+(j-(xLines.length-1)/2)*lineH)));
+  yLines.forEach((line,j)=>{ // a y title wider than the room left of the axis starts at the frame's edge instead of overhanging it
+    const wide=yAxisPx-textWidth(line,fontPx)/2<SAFE;
+    labels.push(textLabel(j?`y-title-${j+1}`:'y-title','axis-title','y-axis',line,wide?'start':'center','bottom',wide?SAFE:yAxisPx,top-4-(yLines.length-1-j)*lineH));
+  });
   const at=(s,k)=>[px(N(m.series[s].vertices[k][0])),py(N(m.series[s].vertices[k][1]))]; // the drawn place of a (known) polygon vertex
   if(poly)for(const [s,sr] of m.series.entries()){
     const pts=sr.vertices.map(v=>v===null?null:[px(N(v[0])),py(N(v[1]))]);
@@ -661,8 +690,10 @@ function freqSpec(m){
     labels.push({...math(`end-value-${k?'last':'first'}`,'end-value',`vertex-s0-${k}`,DISPLAY+'0','0','center','bottom',ax,ay-gap,{vertex:k}),place:{x:ax,y:ay,gap}});
   }
   for(const mk of marks)if(mk.showValue)valueLabel(`value-s${mk.series}-c${mk.class}`,`vertex-s${mk.series}-${mk.class+1}`,mk.series,mk.class,{value:m.series[mk.series].values[mk.class],class:mk.class,series:mk.series});
+  // legend entries stand 30 apart; a font so large that two lines would touch (the frame grew, so the policy's font did) spaces them by its own line height
+  const legendHeight=m.series.length>1?labelSize({kind:'TEXT',text:'수영'},fontPx).height:0,legendPitch=legendHeight<=30?30:Math.ceil(legendHeight)+1;
   if(m.series.length>1)for(const [s,sr] of m.series.entries()){
-    const y=PT+14+s*30;
+    const y=PT+14+s*legendPitch;
     prims.push(L(`legend-line-${s}`,'legend-line','legend'+s,TITLE_X,y,TITLE_X+20,y,{series:s}));
     labels.push(textLabel(`legend-${s}`,'legend',`legend-line-${s}`,sr.name,'start','middle',TITLE_X+27,y,{series:s}));
   }
@@ -682,7 +713,7 @@ function freqSpec(m){
     if(sm.label!==null)labels.push(textLabel(`${id}-label`,'class-sum',id,sm.label+sm.unit,'center','top',(xl+xr)/2,yb+SUM_TEXT_GAP,{series:sm.series,from:sm.from,to:sm.to}));
   });
   const newer=marks.length||sums.length||restored.length||tone2.length||(m.unknown??[]).length||m.showEndValues||m.series.some(sr=>sr.vertices.includes(null)); // a plan using none of the newer fields keeps its figure exactly
-  return {size:{width:W,height:H},prims,labels,valueClearance:newer?2.5:0};
+  return {size:{width:W+extraWidth,height:H},prims,labels,valueClearance:newer?2.5:0};
 }
 function stemSpec(m){
   const classes=m.classGroups??[],two=m.groups.length===2,PITCH=24,STEMW=48,PAD=14,HEAD_H=34,LBL=m.rankLabels?18:0,ROW_H=(classes.length?54:30)+LBL,RAISE=classes.length?10:0,X0=SAFE+6; // RAISE: leaves sit above the row middle so a class bracket and its count fit under them; LBL: room above each row for the order numbers of circled leaves
@@ -837,11 +868,11 @@ function treeSpec(m){
   return {size:{width,height},prims,labels,centers:Object.fromEntries([...c.entries()]),tree:true};
 }
 const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec};
-export const statChartSize=model=>({...SPEC_BY_KIND[model.kind](model).size});
-export function statChartSpec(plan,model){
+export const statChartSize=(model,ctx)=>({...SPEC_BY_KIND[model.kind](model,ctx).size});
+export function statChartSpec(plan,model,ctx){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.chart))bad('STAT_CHART_PLAN_INVALID');
   if(objectSha(solveStatChart(plan.chart))!==objectSha(model))bad('STAT_MODEL_MISMATCH');
-  const spec=SPEC_BY_KIND[model.kind](model);
+  const spec=SPEC_BY_KIND[model.kind](model,ctx);
   return {schemaVersion:SPEC_VERSION,...spec};
 }
 
@@ -988,7 +1019,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
     let spec;
-    try{spec=statChartSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
+    try{spec=statChartSpec(plan,model,{fontPx:typographyPolicy.baseFontPx});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
     lineage.specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
     for(const label of spec.labels){

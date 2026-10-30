@@ -84,10 +84,18 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     if(authored.capability===scf.FIGURE_CAPABILITY){
       // A standalone statistics / probability figure: solved exactly, composed once, read back by its own observer, then the same Archive capture.
       stage='stat-chart';
-      const model=scf.checkStatChartPlan(authored),size=scf.statChartSize(model);
+      const model=scf.checkStatChartPlan(authored);let size=scf.statChartSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      // A frame that grows to fit its labels (a long legend, a long x title, tree path probabilities) depends on the font size the measurement gives: measure again at the size that font needs.
+      for(let again=1;again<=3;again++){
+        const exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx});
+        if(exact.width===size.width&&exact.height===size.height)break;
+        size=exact;
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      }
       stage='compose';
       const composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};

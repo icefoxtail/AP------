@@ -38,6 +38,21 @@ def frac(raw, code):
     fail(code)
 
 
+def title_lines(text):
+    """The lines an axis title of a frequency chart is written in (this observer's own rule): up to 14 characters on one line; 15 to 28 characters break at the single space that
+    leaves the two lines most alike (the first such space), each at most 14 characters; anything else cannot be drawn."""
+    if not isinstance(text, str) or not 1 <= len(text) <= 28 or re.search(r'[\x00-\x1f<>&"\\]', text): fail('STAT_TITLE_INVALID')
+    if len(text) <= 14: return [text]
+    if text.startswith(' ') or text.endswith(' ') or '  ' in text: fail('STAT_TITLE_INVALID')
+    best = None
+    for i, ch in enumerate(text):
+        if ch == ' ' and len(text[:i]) <= 14 and len(text[i + 1:]) <= 14:
+            d = abs(len(text[:i]) - len(text[i + 1:]))
+            if best is None or d < best[0]: best = (d, [text[:i], text[i + 1:]])
+    if best is None: fail('STAT_TITLE_INVALID')
+    return best[1]
+
+
 def leaf_particle(digit):
     """The particle after a leaf digit in the key text, from the digit's Korean reading: a syllable with a final consonant (영 일 삼 육 칠 팔) takes 은, one without (이 사 오 구) takes 는."""
     reading = '영일이삼사오육칠팔구'[digit]
@@ -142,6 +157,14 @@ class Doc:
             if found: self.err('SC_TITLE_UNEXPECTED:' + label_id)
             return
         if len(found) != 1 or found[0].get('data-text') != expected: self.err('SC_TITLE_MISMATCH:' + label_id)
+
+    def check_title_lines(self, label_id, expected, owner_axis):
+        """A title of one line is label `label_id`; a longer one is `label_id` and `label_id-2`, one line each, nothing beyond."""
+        lines = title_lines(expected)
+        for j, line in enumerate(lines):
+            self.check_title(label_id if j == 0 else '%s-%d' % (label_id, j + 1), line, owner_axis)
+        for j in range(len(lines), 4):
+            if any(l.get('id') == '%s-%d' % (label_id, j + 1) for l in self.labels): self.err('SC_TITLE_UNEXPECTED:%s-%d' % (label_id, j + 1))
 
     def near(self, a, b, code, tol=TOL):
         if abs(a - b) > tol: self.err(code)
@@ -599,8 +622,8 @@ def audit_freq(chart, doc):
         if len(mine) != len(want_stems) or sorted(round(num(e, 'x1'), 1) for e in mine) != sorted(round(x, 1) for x in want_stems) \
                 or any(abs(num(e, 'x1') - num(e, 'x2')) > TOL or abs(num(e, 'y1') - yb) > TOL or abs(num(e, 'y2') - pts[1][1]) > TOL for e in mine): doc.err('SC_CLASS_SUM_STEMS:' + tag)
         sum_label(m, join, (centres_x[0] + centres_x[-1]) / 2, pts[1][1], tag)
-    doc.check_title('x-title', chart.get('xTitle', '계급'), 'x')
-    doc.check_title('y-title', chart.get('yTitle', '도수(명)' if y_kind == 'FREQUENCY' else '상대도수'), 'y')
+    doc.check_title_lines('x-title', chart.get('xTitle', '계급'), 'x')
+    doc.check_title_lines('y-title', chart.get('yTitle', '도수(명)' if y_kind == 'FREQUENCY' else '상대도수'), 'y')
     legends = doc.label_role('legend')
     if len(series) > 1:
         if sorted(l.get('data-text') for l in legends) != sorted(s['name'] for s in series): doc.err('SC_LEGEND_NAMES')
