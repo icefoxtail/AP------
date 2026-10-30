@@ -955,9 +955,13 @@
         {
           "templateKey": "TPL_CIRCULAR_PERMUTATION",
           "templateLabelKo": "원순열"
+        },
+        {
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "templateLabelKo": "중복순열·반복 선택 및 배정"
         }
       ],
-      "selectionRule": "같은 것이 있는 배열인지 원순열인지에 따라 listed template 선택",
+      "selectionRule": "같은 것이 있는 순열, 원순열, 중복순열의 풀이 결정 단계로 후보 template를 선택한다. 중복순열 후보는 활성 템플릿의 PT_COUNTING_REPEATED_ASSIGNMENT parent를 사용한다.",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2022",
@@ -965,6 +969,9 @@
         "standardUnitKey": "H22-PS-01",
         "subUnitKey": "H22-PS-01-CORE",
         "ownerPack": "PROBABILITY_STATISTICS"
+      },
+      "familyProblemTypeOverrides": {
+        "TPL_REPEATED_PERMUTATION_ASSIGNMENT": "PT_COUNTING_REPEATED_ASSIGNMENT"
       }
     },
     {
