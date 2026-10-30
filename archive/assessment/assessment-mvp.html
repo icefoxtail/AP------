@@ -965,7 +965,7 @@
     function startDiagnosticAssessment(pack) {
       const draft = createDiagnosticAssessmentDraft(pack);
       if (!draft) return;
-      const url = './assessment-' + 'analysis.html?packId=' + encodeURIComponent(pack.id) +
+      const url = './assessment-analysis.html?packId=' + encodeURIComponent(pack.id) +
         '&diagnosticId=' + encodeURIComponent(draft.diagnosticId) +
         '&mode=diagnostic-input';
       window.location.href = url;
@@ -1036,7 +1036,7 @@
         return;
       }
       if (mode === 'analysis') {
-        const analysisUrl = './assessment-' + 'analysis.html?packId=' + encodeURIComponent(pack.id);
+        const analysisUrl = './assessment-analysis.html?packId=' + encodeURIComponent(pack.id);
         window.location.href = analysisUrl;
         return;
       }

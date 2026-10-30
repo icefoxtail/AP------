@@ -1655,6 +1655,7 @@
         filters.yearFrom ||
         filters.yearTo ||
         filters.family ||
+        filters.file ||
         filters.query,
     );
   }
@@ -1664,6 +1665,7 @@
   function finderActiveMarkup(filters) {
     const active = [
       ["학교", filters.school],
+      ["시험지", filters.file ? String(filters.file).split("/").pop() : ""],
       ["시험", filters.axis ? finderAxisLabel(filters.axis) : ""],
       [
         "연도",
@@ -1763,6 +1765,7 @@
         (f.yearTo && examYear > Number(f.yearTo))
       )
         return false;
+      if (f.file && C.normalizeFile(exam.file) !== C.normalizeFile(f.file)) return false;
       if (f.axis && `${exam.semester}-${exam.examType}` !== f.axis)
         return false;
       if (!unifiedIndex() && f.family && !f.grade && !exam.courseFamilies.includes(f.family))
@@ -3899,7 +3902,7 @@
   }
   const FINDER_URL_KEYS = [
     "grade", "curriculumKey", "courseKey", "semanticSubject", "school",
-    "yearFrom", "yearTo", "axis", "query", "family", "material",
+    "yearFrom", "yearTo", "axis", "query", "family", "material", "file",
   ];
   const RECENT_URL_KEYS = ["from", "to", "grade", "subject", "query"];
   const QUICK_URL_KEYS = { grade: "qgrade", subject: "qsubject" };
@@ -5285,7 +5288,7 @@
         return;
       }
       $("content").innerHTML =
-        `<div class="empty">${esc(e.message)}<p><a href="index.html">기존 아카이브 열기</a></p></div>`;
+        `<div class="empty">${esc(e.message)}<p><a href="index.html?legacy=1">기존 아카이브 열기</a></p></div>`;
       status(e.message, true);
     }
   })();

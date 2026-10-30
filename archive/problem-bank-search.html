@@ -44,6 +44,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 </section>
 <section id="preview" hidden aria-label="문항 미리보기"></section>
 </main>
+<script src="archive-asset-base.js?v=20261030-s20-1"></script>
 <script src="mixer-selector.js?v=20261009-meta1"></script>
 <script src="archive2-canonical.js?v=20261030-release-sync-1"></script>
 <script src="archive2-core.js?v=20261029-s14-1"></script>
@@ -227,7 +228,7 @@ async function previewOriginal(row,button){
   if(request!==previewRequest)return;
   el('preview').replaceChildren();const stem=document.createElement('div');safeStem(stem,q.content);el('preview').append(stem);
   for(const [i,value] of (q.choices||[]).entries()){const p=document.createElement('p');p.textContent='①②③④⑤'[i]+' '+value;el('preview').append(p);}
-  if(q.image){if(!validOriginalImage(q.image))throw Error('문항 이미지 경로 오류');const img=document.createElement('img');img.src=q.image;img.alt='문제 그림';el('preview').append(img);}
+  if(q.image){if(!validOriginalImage(q.image))throw Error('문항 이미지 경로 오류');const img=document.createElement('img');img.src=window.resolveExamImageUrl?resolveExamImageUrl(q.image):q.image;img.alt='문제 그림';el('preview').append(img);}
   if(window.MathJax?.typesetPromise)await MathJax.typesetPromise([el('preview')]);
  }catch(e){if(request===previewRequest)el('preview').textContent=e.message;}finally{button.disabled=false;}
 }
