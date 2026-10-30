@@ -9,7 +9,7 @@ import re
 FUNCTIONS={'sqrt':math.sqrt,'sin':math.sin,'cos':math.cos,'tan':math.tan,
            'log':math.log,'ln':math.log,'exp':math.exp,'abs':abs}
 CALL_SYMBOLS=set('fghpq')|{'logb'}
-TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,°])')
+TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβγδθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,°])')
 
 @dataclass(frozen=True)
 class Expr:
@@ -116,7 +116,7 @@ def serialize(node,mode='tex'):
             if not re.fullmatch(r'[A-Za-z]{1,8}',node.value):raise ValueError('INVALID_ENTITY_NOTATION')
             return r'\mathrm{'+node.value+'}' if mode=='tex' else escape(node.value)
         if k=='variable':
-            if not re.fullmatch(r'[A-Za-zαβθ]{1,16}',node.value):raise ValueError('INVALID_VARIABLE_NOTATION')
+            if not re.fullmatch(r'[A-Za-zαβγδθ]{1,16}',node.value):raise ValueError('INVALID_VARIABLE_NOTATION')
             return escape(node.value)
         if k=='constant':
             if node.value not in {'pi','π','e'}:raise ValueError('UNKNOWN_CONSTANT')
@@ -127,7 +127,7 @@ def serialize(node,mode='tex'):
         return s(a[0])+(r'\,\mathrm{'+node.value+'}' if mode=='tex' else ' '+escape(node.value))
     if k=='symbol':
         if mode=='svg':return '<tspan font-style="italic">'+escape(node.value)+'</tspan>'
-        return {'pi':r'\pi','π':r'\pi','α':r'\alpha','β':r'\beta','θ':r'\theta'}.get(node.value,node.value) if mode=='tex' else ('π' if node.value=='pi' else node.value)
+        return {'pi':r'\pi','π':r'\pi','α':r'\alpha','β':r'\beta','γ':r'\gamma','δ':r'\delta','θ':r'\theta'}.get(node.value,node.value) if mode=='tex' else ('π' if node.value=='pi' else node.value)
     if k=='list':return (',\\;' if mode=='tex' else ', ').join(s(v) for v in a)
     if k=='group':return '('+s(a[0])+')'
     if k=='tuple':return '('+','.join(s(v) for v in a)+')'

@@ -43,8 +43,8 @@ export function textNamesPoint(text,id){
 }
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums'],
-  textLabels:['id','at','text','labelKind','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides'],
+  textLabels:['id','at','text','labelKind','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','unit','side','style','offset','value','factRole'],
   pathLabels:['id','points','label','labelKind','unit','value','factRole'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight'],
@@ -60,7 +60,7 @@ export const ANGLE_EMPHASIS_GROUPS=3;
 export const ANGLE_LABEL_PLACEMENTS=['AUTO','LEADER'];
 export const TRACE_JOIN_MAX_DEGREES=300;   // a joined trace arc (the stated intersections plus spanDeg) may sweep at most this far round its centre
 // A label's `unit` (cm, m, mm) is written after a MATH label's expression; a TEXT label is plain Korean text and takes none.
-export const LABEL_UNITS=['cm','m','mm'];
+export const LABEL_UNITS=['cm','m','mm','kg'];
 const bad=code=>{throw Error(code);};
 const keysOk=(row,allowed,where)=>{for(const key of Object.keys(row))if(!allowed.includes(key))bad('MARK_FIELD_UNKNOWN:'+where+'.'+key);};
 const numberOf=value=>{const n=typeof value==='string'&&value.trim()!==''?Number(value):value;return typeof n==='number'&&Number.isFinite(n)?n:null;};
@@ -296,6 +296,22 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const anchor=row.anchor??(typeof target==='string'?undefined:'CENTER');
     objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.id,text:angleSumText(infos[0].value,infos[1].value),at:place,freeLabel:true,priority:1,...(anchor?{anchor}:{})});
     factRolesByLabel[row.id]=role(row,'DERIVED_INTERMEDIATE');
+  }
+
+  // --- common sides (E30): the word 공통 (or a short text of your own) beside a drawn segment that two figures share
+  for(const row of list(marks.commonSides,'commonSides')){
+    if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:commonSides');
+    keysOk(row,KEYS.commonSides,'commonSides');claim(row.id,'commonSides');
+    const [p,q]=segEnds(row.segment);
+    const text=row.text??'공통';
+    plainTextOk(text,'commonSides.text',row.id);
+    if(text.length>6)bad('MARK_FIELD_INVALID:commonSides.text:'+row.id);
+    if(row.labelAt!==undefined&&!['START','MID','END'].includes(row.labelAt))bad('SEGMENT_LABEL_AT_INVALID:'+row.id);
+    const lerp=t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];
+    const mid=row.labelAt==='START'?lerp(0):row.labelAt==='END'?lerp(1):[(p[0]+q[0])/2,(p[1]+q[1])/2];
+    const others=(row.labelAt==='START'?[0.06,0.15,0.3]:row.labelAt==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
+    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.segment,text,at:mid,lineOwned:true,alternateAt:others,gaps:[8,6,10,20,32,48],priority:1,labelKind:'TEXT'});
+    factRolesByLabel[row.id]=role(row);
   }
 
   // --- dimension lines: a length between two points on a parallel line, with a bar, arrow or brace style

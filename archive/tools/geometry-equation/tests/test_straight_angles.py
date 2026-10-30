@@ -1,4 +1,4 @@
-"""Straight angles (E30): the engine draws the half turn on the named screen side, the semantic model checks the new fields, and the math grammar takes the degree sign.
+"""Straight angles (E30): the engine draws the half turn on the named screen side, the semantic model checks the new fields, and the math grammar takes gamma, delta, the degree sign and the kg unit.
 No Chrome here; the typeset figure and the observer are exercised by tests/plane-straight-angles.test.mjs."""
 import math
 import sys
@@ -57,8 +57,15 @@ class StraightAngleSemanticTests(unittest.TestCase):
         validate(spec_of([{'id':'aBOE','kind':'ANGLE_MARK','refs':['B','O','E'],'value':180}]))
 
 class MathGrammarTests(unittest.TestCase):
+    def test_gamma_and_delta_are_symbols(self):
+        self.assertEqual(serialize(parse('γ'),'tex'),r'\gamma');self.assertEqual(serialize(parse('δ+γ'),'tex'),r'\delta+\gamma')
+        self.assertEqual(serialize(parse('2γ'),'plain'),'2γ')
     def test_the_degree_sign_and_equations_of_degrees(self):
         self.assertEqual(serialize(parse_list('15°+75°=90°'),'tex'),r'15^{\circ}+75^{\circ}=90^{\circ}')
         self.assertEqual(serialize(parse_list('3x=90°'),'tex'),r'3x=90^{\circ}')
+    def test_kg_is_a_unit_after_a_number_or_a_letter(self):
+        from visual_engine.engine import mark_label
+        label=mark_label('l','t','5','MATH',(0,0),{},'kg');self.assertEqual(label['tex'],r'5\mathrm{kg}')
+        self.assertEqual(mark_label('l','t','x','MATH',(0,0),{},'kg')['tex'],r'x\,\mathrm{kg}')
 
 if __name__=='__main__':unittest.main()

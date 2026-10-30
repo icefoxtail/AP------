@@ -1,4 +1,4 @@
-// Straight angles, angle sums and right-angle expression labels on a plane figure (E30).
+// Straight angles, angle sums, right-angle expression labels, common sides, Greek gamma/delta and the kg unit on a plane figure (E30).
 // Real SymPy/Cindy workers and real Chrome; the typography policy is the same FIXTURE as plane-marks.test.mjs. Run with --test-concurrency=1.
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
@@ -95,4 +95,25 @@ test('plan checks: a straight angle needs a straight line and a side; a sum need
   assert.match(specError(marks,{rightAngles:[{id:'rAOF',refs:['A','O','F'],label:'직각'}]}),/^RIGHT_ANGLE_LABEL_INVALID:rAOF/);
   assert.match(specError(marks,{rightAngles:[{id:'rAOF',refs:['A','O','F'],label:'sqrt(2)'}]}),/^RIGHT_ANGLE_LABEL_INVALID:rAOF/);
   assert.match(specError(marks,{rightAngles:[{id:'rAOF',refs:['A','O','F'],label:7}]}),/^RIGHT_ANGLE_LABEL_INVALID:rAOF/);
+});
+
+test('Greek gamma and delta label angles, a kg unit follows a length label, and a common side writes 공통 beside its segment',async()=>{
+  const extra={angles:[
+    {id:'aBOA',refs:['B','O','A'],value:35,label:'γ',labelKind:'MATH',arcs:1},{id:'aFOE',refs:['F','O','E'],value:55,label:'δ',labelKind:'MATH',arcs:1}],
+    expressionLabels:[{id:'tOC',ownerSegment:'sOC',text:'5',unit:'kg'}],commonSides:[{id:'cOA',segment:'sOA'},{id:'cOD',segment:'sOD',text:'같음',labelAt:'END'}]};
+  const next=await composeConstructionCandidate({plan:planOf(extra),model,identity,typographyPolicy:policy,browser});
+  assert.equal(next.status,'COMPOSED',JSON.stringify(next.detail));
+  assert.equal(next.staticAudit.planeMarks.status,'PASS',JSON.stringify(next.staticAudit.planeMarks.errors));
+  const glyphs=id=>{const group=new RegExp('<g id="'+id+'"[\\s\\S]*?</svg></g>').exec(next.svg)[0];return [...group.matchAll(/data-c="([0-9A-F]+)"/g)].map(m=>m[1]);};
+  assert.deepEqual(glyphs('aBOA-label'),['1D6FE']);assert.deepEqual(glyphs('aFOE-label'),['1D6FF']);   // italic gamma and delta
+  assert.deepEqual(glyphs('tOC'),['35','6B','67']);                                                       // 5 kg: the unit letters last
+  assert.match(next.svg,/id="cOA"[^>]*data-text="공통"/);assert.match(next.svg,/id="cOD"[^>]*data-text="같음"/);
+  const result=await pythonWorker({action:'planeMarksAudit',svg:next.svg,points:reconstruct(graph).points,marks:extra,segments:planOf(extra).displaySegments,rightAngles:planOf(extra).rightAngles,transform},{script:OBSERVER});
+  assert.equal(result.result.status,'PASS',JSON.stringify(result.result.errors));
+  // the observer reads the text back: another word, another unit
+  const bad=clone(extra);bad.commonSides[0].text='같은';assert.ok(codes((await pythonWorker({action:'planeMarksAudit',svg:next.svg,points:reconstruct(graph).points,marks:bad,segments:planOf(extra).displaySegments,rightAngles:[],transform},{script:OBSERVER})).result).includes('LABEL_TEXT_MISMATCH'));
+  assert.match(specError({commonSides:[{id:'c',segment:'nope'}]}),/^MARK_TARGET_UNKNOWN:nope/);
+  assert.match(specError({commonSides:[{id:'c',segment:'sOA',text:'공통변입니다요'}]}),/^MARK_FIELD_INVALID:commonSides\.text:c/);
+  assert.match(specError({commonSides:[{id:'c',segment:'sOA',labelAt:'MIDDLE'}]}),/^SEGMENT_LABEL_AT_INVALID:c/);
+  assert.match(specError({commonSides:[{id:'c',segment:'sOA',color:'red'}]}),/^MARK_FIELD_UNKNOWN:commonSides\.color/);
 });

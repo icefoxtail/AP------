@@ -401,7 +401,8 @@ def audit(p):
 
     # ---- segment expression labels
     segment_lines={sid:drawn_segment(sid) for sid in {s['id'] for s in p.get('segments',[])}}
-    for row in marks.get('expressionLabels',[]):
+    common_rows=[{'id':r['id'],'ownerSegment':r.get('segment'),'text':r.get('text','공통'),'labelKind':'TEXT','labelAt':r.get('labelAt')} for r in marks.get('commonSides',[]) if isinstance(r,dict)]
+    for row in [*marks.get('expressionLabels',[]),*common_rows]:
         oid=row['id'];box=label_clear(oid)
         own=segment_lines.get(row['ownerSegment'])
         if box is None or own is None:continue

@@ -66,7 +66,7 @@ def validate(spec):
         # A plane mark label is plain TEXT or math; a unit (cm, m, mm) follows a math label of an expression label, a circular arc or a trace only.
         if 'unit' in obj:
             if obj['kind'] not in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
-            if obj['unit'] not in {'cm','m','mm'}:raise ValueError('MARK_UNIT_INVALID:'+str(obj.get('id')))
+            if obj['unit'] not in {'cm','m','mm','kg'}:raise ValueError('MARK_UNIT_INVALID:'+str(obj.get('id')))
             if obj['kind']!='EQUATION_LABEL' and obj.get('labelText') is None:raise ValueError('MARK_UNIT_REQUIRES_LABEL:'+str(obj.get('id')))
             if obj.get('labelKind','DEGREE' if obj['kind']=='CIRCULAR_ARC' else 'MATH')!='MATH':raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+str(obj.get('id')))
         if 'labelKind' in obj and obj['kind'] in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:
