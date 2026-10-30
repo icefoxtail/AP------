@@ -807,8 +807,10 @@ window.addEventListener('DOMContentLoaded', function () {
     [-1, 1].forEach((sg) => { const ang = m + sg * half; D = Math.max(D, (hw * Math.abs(Math.sin(ang)) + hh * Math.abs(Math.cos(ang))) / Math.sin(half) + 2); });
     D = Math.min(D, o.max || 130);
     if (lines.length && D - 12 > r) r = Math.min(D - 12, o.rmax || 70);
+    if (o.out && lines.length) { r = o.r || 28; D = r + 16; } // o.out: 각이 너무 좁은 그림에서는 라벨을 꼭짓점 바깥쪽(반대 방향)에 둠
     b.angle(V, q1, q2, { color: o.color, r, rings: o.rings || 1 });
-    lines.forEach((x, i) => b._text(s0.x + Math.cos(m) * D, s0.y + Math.sin(m) * D + (i - (lines.length - 1) / 2) * 13.5, x, { color: o.color, size: o.size || 12.5, align: 'center', baseline: 'middle', weight: 800 }));
+    const mL = o.out ? m + Math.PI : m;
+    lines.forEach((x, i) => b._text(s0.x + Math.cos(mL) * D, s0.y + Math.sin(mL) * D + (i - (lines.length - 1) / 2) * 13.5, x, { color: o.color, size: o.size || 12.5, align: 'center', baseline: 'middle', weight: 800 }));
   }
 
   // 긴 이름표는 무대 폭에 맞춰 줄바꿈(공백 기준, 공백이 없으면 글자 단위)
@@ -858,9 +860,9 @@ window.addEventListener('DOMContentLoaded', function () {
     c.restore();
   }
 
-  function registerDragHandle(id, x, y, label, onDrag) {
+  function registerDragHandle(id, x, y, label, onDrag, extra = {}) {
     BOARD.handle(id, { x: x * ROOT, y: y * ROOT }, {
-      color: 'sky', label: BOARD.thumb ? '' : cv(label),
+      color: 'sky', ...extra, label: BOARD.thumb ? '' : cv(label),
       drag: (w) => { onDrag(w.x / ROOT, w.y / ROOT); CUR.dragX = state.dragXRatio; CUR.dragY = state.dragYRatio; }
     });
   }
@@ -1224,10 +1226,10 @@ window.addEventListener('DOMContentLoaded', function () {
             for (let i = 0; i < n; i++) {
               const v1 = verts[i], v2 = verts[(i + 1) % n];
               const ang = Math.round((((Math.atan2(v2.y - pO.y, v2.x - pO.x) - Math.atan2(v1.y - pO.y, v1.x - pO.x)) * 180) / Math.PI + 720) % 360);
-              angMark(pO, v1, v2, { color: i % 2 === 0 ? '#38bdf8' : '#34d399', rings: 1, r: ringPx, rmax: ringPx + 30, label: n <= 5 ? `${ang}°` : '', max: R * 0.8 * ROOT * BOARD.k });
+              angMark(pO, v1, v2, { color: i % 2 === 0 ? '#38bdf8' : '#34d399', rings: 1, r: ringPx, rmax: ringPx + 30, label: n <= 8 ? `${ang}°` : '', max: R * 0.8 * ROOT * BOARD.k });
             }
           }
-          registerDragHandle('O', pO.x, pO.y, '점 O (360° 빼기!)', (nx, ny) => { const q = clampInPoly(nx - cx, ny - cy, R, n); state.dragXRatio = 0.35 + q.x / 70; state.dragYRatio = 0.45 + q.y / 70; });
+          registerDragHandle('O', pO.x, pO.y, '점 O (360° 빼기!)', (nx, ny) => { const q = clampInPoly(nx - cx, ny - cy, R, n); state.dragXRatio = 0.35 + q.x / 70; state.dragYRatio = 0.45 + q.y / 70; }, { dx: 0, dy: -((26 + t * 10 + 6) * ROOT * BOARD.k + 56), align: 'center', baseline: 'middle' }); // [표시 보강] 점 O 이름표는 각 값 라벨 위쪽으로 띄움
         } else if (sub === 'allDiag') {
           ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); verts.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
           ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.stroke();
@@ -1286,7 +1288,11 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'stepExt') {
           if (p2 === 1) {
             // 기본 삼각형 외각 색종이 이동
-            const yBot = cy + 70, pB = { x: cx - 145, y: yBot }, pC = { x: cx + 30, y: yBot }, pD = { x: cx + 185, y: yBot }, pA = { x: cx - 60, y: cy - 90 };
+            const A = p1 <= 12 ? p1 * 6 : 50 /* [2.0 수정] 칩 72°(p1=12)가 50°로 그려지던 것 */, B = 60;
+            // [표시 보강] 삼각형을 ∠A·∠B 값에서 사인법칙으로 만들어 그림의 각이 표시한 값과 같게 합니다(원본은 어떤 ∠A에서도 같은 모양). 높이가 넘치면 전체를 줄임
+            const abU = Math.sin(((180 - A - B) * Math.PI) / 180) / Math.sin((A * Math.PI) / 180), bRad = (B * Math.PI) / 180;
+            const Lbc = Math.min(175, 160 / (abU * Math.sin(bRad)));
+            const yBot = cy + 70, pB = { x: cx - 145, y: yBot }, pC = { x: cx - 145 + Lbc, y: yBot }, pD = { x: cx - 145 + Lbc * 1.9, y: yBot }, pA = { x: cx - 145 + abU * Lbc * Math.cos(bRad), y: yBot - abU * Lbc * Math.sin(bRad) };
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
             ctx.fillStyle = 'rgba(56, 189, 248, 0.16)'; ctx.fill();
             ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
@@ -1299,7 +1305,6 @@ window.addEventListener('DOMContentLoaded', function () {
               drawParallelArrows(pB.x, pB.y, pA.x, pA.y, 2); drawParallelArrows(pC.x, pC.y, pE.x, pE.y, 2);
             }
             const angCA = Math.atan2(pA.y - pC.y, pA.x - pC.x), angCE = Math.atan2(pE.y - pC.y, pE.x - pC.x);
-            const A = p1 <= 12 ? p1 * 6 : 50 /* [2.0 수정] 칩 72°(p1=12)가 50°로 그려지던 것 */, B = 60;
             // [표시 보강] 안쪽 ∠A·∠B는 삼각형 안에 항상 표시(색종이 이동 전 위치), 이동 중·후의 호는 아래 원본 호가 C 쪽으로 옮겨 그립니다
             angMark(pA, pB, pC, { color: '#38bdf8', rings: 1, r: 30, label: `∠A=${A}°` });
             angMark(pB, pC, pA, { color: '#fb7185', rings: 1, r: 30, label: `∠B=${B}°` });
@@ -1387,7 +1392,19 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         } else if (sub === 'boomBow') {
           if (p2 < 3) {
-            const pA = { x: cx, y: cy - 110 }, pB = { x: cx - 125, y: cy + 90 }, pC = { x: cx + 125, y: cy + 90 }, pD = { x: cx, y: cy + 12 };
+            const a = p1 * 4;
+            // [표시 보강] 점을 각도값에서 만듭니다(원본은 ∠a가 바뀌어도 같은 모양): A가 꼭대기, B·C는 A에서 ±a/2 로 벌어진 두 변 위,
+            // D는 B에서 ∠ABD=30°, C에서 ∠ACD=25° 로 그은 두 선의 교점 → 그림의 각 a·b·c·x(=a+55°)가 표시한 값과 같습니다.
+            const hf = (a * Math.PI) / 360, Lab = 200 / Math.cos(hf), dRad = Math.PI / 180;
+            const pA = { x: cx, y: cy - 110 }, pB = { x: cx - Lab * Math.sin(hf), y: cy + 90 }, pC = { x: cx + Lab * Math.sin(hf), y: cy + 90 };
+            const d1 = Math.atan2(pA.y - pB.y, pA.x - pB.x) + 30 * dRad, d2 = Math.atan2(pA.y - pC.y, pA.x - pC.x) - 25 * dRad;
+            const u1 = { x: Math.cos(d1), y: Math.sin(d1) }, u2 = { x: Math.cos(d2), y: Math.sin(d2) };
+            const crs = (u, w) => u.x * w.y - u.y * w.x;
+            const sB = crs({ x: pC.x - pB.x, y: pC.y - pB.y }, u2) / crs(u1, u2);
+            const pD = { x: pB.x + sB * u1.x, y: pB.y + sB * u1.y };
+            // 보조선 끝점 E: ①B→D 연장선과 AC의 교점, ②A→D 연장선과 BC의 교점
+            const tAC = crs({ x: pB.x - pA.x, y: pB.y - pA.y }, u1) / crs({ x: pC.x - pA.x, y: pC.y - pA.y }, u1);
+            const pE = p2 === 1 ? { x: pA.x + tAC * (pC.x - pA.x), y: pA.y + tAC * (pC.y - pA.y) } : { x: pA.x + (pD.x - pA.x) * ((pB.y - pA.y) / (pD.y - pA.y)), y: pB.y };
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
             ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
             ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
@@ -1397,14 +1414,13 @@ window.addEventListener('DOMContentLoaded', function () {
               ctx.beginPath();
               if (p2 === 1) {
                 // BD 연장선과 AC의 교점 E
-                ctx.moveTo(pB.x, pB.y); ctx.lineTo(cx + 52, cy - 22);
+                ctx.moveTo(pB.x, pB.y); ctx.lineTo(pE.x, pE.y);
               } else {
                 // AD 연장선 가르기
-                ctx.moveTo(pA.x, pA.y); ctx.lineTo(cx, cy + 95);
+                ctx.moveTo(pA.x, pA.y); ctx.lineTo(pE.x, pE.y);
               }
               ctx.stroke(); ctx.setLineDash([]);
             }
-            const a = p1 * 4;
             drawSmartLabel(pA.x, pA.y, cx, cy, `A(∠a=${a}°)`, '#38bdf8');
             drawSmartLabel(pB.x, pB.y, cx, cy, `B(∠b=30°)`, '#fb7185');
             drawSmartLabel(pC.x, pC.y, cx, cy, `C(∠c=25°)`, '#34d399');
@@ -1414,27 +1430,33 @@ window.addEventListener('DOMContentLoaded', function () {
             angMark(pB, pA, pD, { color: '#fb7185', rings: 1, r: 30, label: '30°' });
             angMark(pC, pA, pD, { color: '#34d399', rings: 1, r: 30, label: '25°' });
             angMark(pD, pB, pC, { color: '#fda4af', rings: 2, r: 26, label: `${a + 55}°` });
-            if (state.steps[2] || t > 0.05 || state.lens === 'aux') drawSmartLabel(p2 === 1 ? cx + 52 : cx, p2 === 1 ? cy - 22 : cy + 95, cx, cy, 'E', '#fb7185', 12); // 연장선 끝점
+            if (state.steps[2] || t > 0.05 || state.lens === 'aux') drawSmartLabel(pE.x, pE.y, cx, cy, 'E', '#fb7185', 12); // 연장선 끝점
           } else {
-            const pO = { x: cx, y: cy }, pA = { x: cx - 145, y: cy - 80 }, pB = { x: cx - 130, y: cy + 85 }, pC = { x: cx + 140, y: cy - 85 }, pD = { x: cx + 130, y: cy + 75 };
+            const sumAB = p1 * 10;
+            // [표시 보강] 점을 각도값에서 만듭니다(원본은 값이 바뀌어도 같은 모양): 맞꼭지각 ∠AOB=∠COD=180°−(∠a+∠b),
+            // 왼쪽 삼각형은 ∠a=0.6(a+b)·∠b=0.4(a+b)(합만 정해져 있으므로 임의로 나눔), 오른쪽은 ∠c=42°·∠d=(a+b)−42° — 사인법칙으로 변의 길이를 정함
+            const dg = Math.PI / 180, thO = (180 - sumAB) * dg, aDeg = sumAB * 0.6, bDeg2 = sumAB * 0.4, cDeg = 42, dDeg = sumAB - 42, sn = (v) => Math.sin(v * dg);
+            const k1 = 150 / Math.max(sn(aDeg), sn(bDeg2)), k2 = 150 / Math.max(sn(cDeg), sn(dDeg));
+            const ray = (ang, len) => ({ x: cx + len * Math.cos(ang), y: cy + len * Math.sin(ang) });
+            const pO = { x: cx, y: cy }, pA = ray(Math.PI + thO / 2, k1 * sn(bDeg2)), pB = ray(Math.PI - thO / 2, k1 * sn(aDeg)), pC = ray(-thO / 2, k2 * sn(dDeg)), pD = ray(thO / 2, k2 * sn(cDeg));
             ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.closePath();
             ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.8; ctx.stroke();
 
             ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
             ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.8; ctx.stroke();
 
-            const sumAB = p1 * 10;
             drawSmartLabel(pA.x, pA.y, cx, cy, 'A(∠a)', '#38bdf8');
             drawSmartLabel(pB.x, pB.y, cx, cy, `B(∠a+∠b=${sumAB}°)`, '#38bdf8');
             drawSmartLabel(pC.x, pC.y, cx, cy, 'C(∠c=42°)', '#fb7185');
             drawSmartLabel(pD.x, pD.y, cx, cy, `D(∠d=${sumAB-42}°)`, '#34d399');
             // [표시 보강] 맞꼭지각 ∠AOB = ∠COD(같은 노랑 2겹 호, 180°−(∠a+∠b)), 날개 끝각 a·b(하늘)·c·d(분홍)에도 호와 값을 표시
-            angMark(pO, pA, pB, { color: '#fbbf24', rings: 2, r: 26, label: `${180 - sumAB}°` });
-            angMark(pO, pC, pD, { color: '#fbbf24', rings: 2, r: 26, label: `${180 - sumAB}°` });
-            angMark(pA, pO, pB, { color: '#38bdf8', rings: 1, r: 26, label: 'a' });
-            angMark(pB, pO, pA, { color: '#38bdf8', rings: 1, r: 26, label: 'b' });
-            angMark(pC, pO, pD, { color: '#fb7185', rings: 1, r: 26, label: '42°' });
-            angMark(pD, pO, pC, { color: '#fb7185', rings: 1, r: 26, label: `${sumAB - 42}°` });
+            const rr = (v, q1, q2) => Math.max(12, Math.min(26, 0.3 * Math.min(Math.hypot(q1.x - v.x, q1.y - v.y), Math.hypot(q2.x - v.x, q2.y - v.y)) * ROOT * BOARD.k)); // 작은 화면·가는 삼각형에서는 호와 값 라벨을 꼭짓점 쪽으로 붙여 겹침을 줄임
+            angMark(pO, pA, pB, { color: '#fbbf24', rings: 2, r: rr(pO, pA, pB), label: `${180 - sumAB}°` });
+            angMark(pO, pC, pD, { color: '#fbbf24', rings: 2, r: rr(pO, pC, pD), label: `${180 - sumAB}°` });
+            angMark(pA, pO, pB, { color: '#38bdf8', rings: 1, r: rr(pA, pO, pB), label: 'a' });
+            angMark(pB, pO, pA, { color: '#38bdf8', rings: 1, r: rr(pB, pO, pA), label: 'b' });
+            angMark(pC, pO, pD, { color: '#fb7185', rings: 1, r: rr(pC, pO, pD), label: '42°' });
+            angMark(pD, pO, pC, { color: '#fb7185', rings: 1, r: rr(pD, pO, pC), label: `${sumAB - 42}°`, out: Math.hypot(pC.x - pD.x, pC.y - pD.y) * ROOT * BOARD.k < 90 });
           }
         } else if (sub === 'starMaster') {
           const R = Math.min(rect.width, rect.height) * 0.30 * state.scale;
@@ -1449,18 +1471,19 @@ window.addEventListener('DOMContentLoaded', function () {
             drawSmartLabel(t1[0].x, t1[0].y, cx, cy, '✡ 육각별 = 삼각형 2개 (180°×2 = 360°!)', '#e2e8f0', 22);
           } else {
             // 오각별(☆) 해법 ①(외각 2개 이사) vs 해법 ②(아래쪽 나비넥타이 보조선 CD 연결!)
-            const pts = Array.from({ length: 5 }, (_, i) => {
-              const a = -Math.PI / 2 + (i * Math.PI * 2) / 5;
-              return { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) };
-            });
+            // [표시 보강] 별을 각도값에서 만듭니다(원본은 ∠a가 바뀌어도 늘 정오각별). 위쪽 작은 삼각형 AFG의 세 각을 ∠a, F=∠c+∠e=110°−∠a, G=∠b+∠d=70° 로 두고
+            // (식에 적힌 값과 같음), 가로선 EC 위에 E·C, 변 AF·AG 의 연장선 위에 B·D 를 정오각별과 비슷한 높이에 둡니다 → 그림의 각이 표시한 값과 같습니다.
+            const aS = p1 * 4, hS = 0.691 * R, dxF = hS / Math.tan(((110 - aS) * Math.PI) / 180), dxG = hS / Math.tan((70 * Math.PI) / 180);
+            const pA0 = { x: cx - (dxG - dxF) / 2, y: cy - R }, yE = cy - 0.309 * R, yBt = cy + 0.809 * R;
+            const pF = { x: pA0.x - dxF, y: yE }, pG = { x: pA0.x + dxG, y: yE };
+            const onLine = (q) => ({ x: pA0.x + ((q.x - pA0.x) * (yBt - pA0.y)) / (q.y - pA0.y), y: yBt });
+            const pts = [pA0, { x: cx + 0.951 * R, y: yE }, onLine(pG), onLine(pF), { x: cx - 0.951 * R, y: yE }];
             // pts[0]=A(위), pts[1]=C(우상), pts[2]=D(우하), pts[3]=B(좌하), pts[4]=E(좌상)
             const order = [0, 2, 4, 1, 3, 0];
             ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); order.forEach((idx) => ctx.lineTo(pts[idx].x, pts[idx].y));
             ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.6; ctx.stroke();
 
-            const rIn = R * 0.382;
-            const pF = { x: cx + rIn * Math.cos(-Math.PI/2 - Math.PI/5), y: cy + rIn * Math.sin(-Math.PI/2 - Math.PI/5) };
-            const pG = { x: cx + rIn * Math.cos(-Math.PI/2 + Math.PI/5), y: cy + rIn * Math.sin(-Math.PI/2 + Math.PI/5) };
+
 
             if (p2 === 2) {
               // 해법 ②: 아래쪽 두 끝점 B(pts[3])와 D(pts[2])를 잇는 나비넥타이 보조선!
@@ -1475,10 +1498,11 @@ window.addEventListener('DOMContentLoaded', function () {
               ctx.fillStyle = 'rgba(56, 189, 248, 0.24)'; ctx.fill();
               ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
 
-              const bPt = { x: pts[4].x + t*(pF.x - pts[4].x), y: pts[4].y + t*(pF.y - pts[4].y) };
-              const dPt = { x: pts[2].x + t*(pF.x - pts[2].x), y: pts[2].y + t*(pF.y - pts[2].y) };
-              const cPt = { x: pts[1].x + t*(pG.x - pts[1].x), y: pts[1].y + t*(pG.y - pts[1].y) };
-              const ePt = { x: pts[3].x + t*(pG.x - pts[3].x), y: pts[3].y + t*(pG.y - pts[3].y) };
+              // [표시 보강] 각 b·d(파랑)는 ∠G(=∠b+∠d)로, c·e(분홍)는 ∠F(=∠c+∠e)로 모입니다 — 각 끝점이 자기 변을 따라 이동(E→G는 EC 위, D→G는 AD 위, C→F는 EC 위, B→F는 AB 위)
+              const bPt = { x: pts[4].x + t*(pG.x - pts[4].x), y: pts[4].y + t*(pG.y - pts[4].y) };
+              const dPt = { x: pts[2].x + t*(pG.x - pts[2].x), y: pts[2].y + t*(pG.y - pts[2].y) };
+              const cPt = { x: pts[1].x + t*(pF.x - pts[1].x), y: pts[1].y + t*(pF.y - pts[1].y) };
+              const ePt = { x: pts[3].x + t*(pF.x - pts[3].x), y: pts[3].y + t*(pF.y - pts[3].y) };
               [
                 { p: pts[0], c: '#34d399' }, { p: bPt, c: '#38bdf8' }, { p: dPt, c: '#38bdf8' }, { p: cPt, c: '#fb7185' }, { p: ePt, c: '#fb7185' }
               ].forEach((it) => {
