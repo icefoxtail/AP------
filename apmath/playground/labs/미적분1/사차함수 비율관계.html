@@ -1390,13 +1390,16 @@
       // Step 3: f(x) = k 의 교점 탐색 및 미분가능(기울기 0) vs 첨점(기울기 ≠ 0) 판별
       if (state.steps[3]) {
         const crossings = [];
+        const addCrossing = (rootX, gap = 0.003) => {
+          if (!crossings.some((r) => Math.abs(r - rootX) < gap)) crossings.push(rootX);
+        };
         let prevX = minX;
         let prevDiff = evalF(prevX) - k;
 
+        // ① 부호가 바뀌는 근(단순근·삼중근)만 이분법으로 정밀 탐색
         for (let x = minX + 0.02; x <= maxX; x += 0.02) {
           const currDiff = evalF(x) - k;
-          if (Math.abs(currDiff) < 0.015 || prevDiff * currDiff < 0) {
-            // 이분법 정밀 탐색
+          if (prevDiff * currDiff < 0) {
             let lo = prevX;
             let hi = x;
             for (let iter = 0; iter < 12; iter++) {
@@ -1404,20 +1407,23 @@
               if ((evalF(lo) - k) * (evalF(mid) - k) <= 0) hi = mid;
               else lo = mid;
             }
-            const rootX = (lo + hi) / 2;
-            if (!crossings.some((r) => Math.abs(r - rootX) < 0.12)) {
-              crossings.push(rootX);
-            }
+            addCrossing((lo + hi) / 2);
           }
           prevX = x;
           prevDiff = currDiff;
         }
 
+        // ② 부호가 바뀌지 않는 접점(중근)은 f'(x)=0 인 점 α·γ·β 중 f=k 인 곳만 인정
+        const rootsFp = getRoots();
+        [rootsFp.alpha, rootsFp.gamma, rootsFp.beta].forEach((c) => {
+          if (c >= minX && c <= maxX && Math.abs(evalF(c) - k) < 0.02) addCrossing(c, 0.12);
+        });
+
         crossings.forEach((rx) => {
           const slope = Math.abs(evalFp(rx));
           const isSmooth = slope < 0.15;
           if (isSmooth) {
-            drawChalkPoint(rx, k, 6.5, '#10b981', `미분가능 (${rx.toFixed(1)}, f'=0)`, { x: -65, y: -14 });
+            drawChalkPoint(rx, k, 6.5, '#10b981', `미분가능 (${(Math.abs(rx) < 0.05 ? 0 : rx).toFixed(1)}, f'=0)`, { x: 10, y: -14 });
           } else {
             drawChalkPoint(rx, k, 7.0, '#f43f5e', `⚡첨점(미분불가 x=${rx.toFixed(2)})`, { x: 10, y: 20 });
           }

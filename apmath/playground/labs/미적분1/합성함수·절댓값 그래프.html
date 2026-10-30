@@ -516,31 +516,56 @@
       return 0.5 * x * x + state.p1;
     }
 
-    // 구간 [minX, maxX] 에서 fn(x) = targetY 의 교점 x좌표 배열 탐색
+    // 구간 [minX, maxX] 에서 fn(x) = targetY 의 교점 x좌표 배열 탐색 (오름차순)
+    // 부호가 바뀌는 곳은 이분법으로, 눈금 사이에서 두 번 바뀌는 가까운 두 근과 부호가 안 바뀌는 접점(중근)은
+    // 극값을 찾아 처리해, 접점(예: t=0, k=2)을 두 번 세지 않고 한 번만 셉니다.
     function findLevelCrossings(fn, targetY, minX = -3.8, maxX = 3.8, step = 0.015) {
-      const roots = [];
-      let prevX = minX;
-      let prevDiff = fn(prevX) - targetY;
-
-      for (let x = minX + step; x <= maxX; x += step) {
-        const currDiff = fn(x) - targetY;
-        if (Math.abs(currDiff) < 0.012 || prevDiff * currDiff < 0) {
-          let lo = prevX;
-          let hi = x;
-          for (let i = 0; i < 10; i++) {
-            const mid = (lo + hi) / 2;
-            if ((fn(lo) - targetY) * (fn(mid) - targetY) <= 0) hi = mid;
-            else lo = mid;
-          }
-          const rx = (lo + hi) / 2;
-          if (!roots.some((r) => Math.abs(r - rx) < 0.09)) {
-            roots.push(rx);
-          }
-        }
-        prevX = x;
-        prevDiff = currDiff;
+      const g = (x) => fn(x) - targetY;
+      const n = Math.ceil((maxX - minX) / step);
+      const xs = [];
+      const ds = [];
+      for (let i = 0; i <= n; i++) {
+        const x = minX + i * step;
+        xs.push(x);
+        ds.push(g(x));
       }
-      return roots;
+      const roots = [];
+      const bisect = (lo, hi) => {
+        let glo = g(lo);
+        for (let j = 0; j < 45; j++) {
+          const mid = (lo + hi) / 2;
+          const gm = g(mid);
+          if (glo * gm <= 0) hi = mid;
+          else { lo = mid; glo = gm; }
+        }
+        return (lo + hi) / 2;
+      };
+      const extreme = (lo, hi, wantMax) => {
+        for (let j = 0; j < 60; j++) {
+          const m1 = lo + (hi - lo) / 3, m2 = hi - (hi - lo) / 3;
+          const first = wantMax ? g(m1) > g(m2) : g(m1) < g(m2);
+          if (first) hi = m2;
+          else lo = m1;
+        }
+        return (lo + hi) / 2;
+      };
+      for (let i = 0; i < n; i++) {
+        if (ds[i] === 0) roots.push(xs[i]);
+        else if (ds[i] * ds[i + 1] < 0) roots.push(bisect(xs[i], xs[i + 1]));
+      }
+      for (let i = 1; i < n; i++) {
+        const d0 = ds[i - 1], d1 = ds[i], d2 = ds[i + 1];
+        const lowPoint = d1 > 0 && d1 < d0 && d1 <= d2;   // 0 위쪽에서 오목하게 내려온 곳(극소)
+        const highPoint = d1 < 0 && d1 > d0 && d1 >= d2;  // 0 아래쪽에서 볼록하게 올라온 곳(극대)
+        if (!lowPoint && !highPoint) continue;
+        const xm = extreme(xs[i - 1], xs[i + 1], highPoint);
+        const gm = g(xm);
+        const crossed = lowPoint ? gm < -1e-12 : gm > 1e-12;
+        if (crossed) { roots.push(bisect(xs[i - 1], xm)); roots.push(bisect(xm, xs[i + 1])); }
+        else if (Math.abs(gm) < 1e-6) roots.push(xm); // 접점(중근)
+      }
+      roots.sort((p, q) => p - q);
+      return roots.filter((r, i) => i === 0 || r - roots[i - 1] > 1e-7);
     }
 
     // -------------------------------------------------------------------------
