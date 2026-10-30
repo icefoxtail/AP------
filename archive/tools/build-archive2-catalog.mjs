@@ -923,9 +923,10 @@ for (const [sourceFile, sourceRows] of sourceRecords) {
   const shardText = JSON.stringify(shard) + "\n";
   const shardPath = sourceShardPrefix + hash(sourceFile) + ".json";
   shardTexts.set(shardPath, shardText);
+  // The shard path is derived (sourceShardPrefix + hash(sourceFile) + ".json"), so the index row
+  // omits it; the consumers recompute it. This keeps the index small as the bank grows.
   sourceIndexRows.push({
     sourceFile,
-    path: shardPath,
     sha256: hash(shardText),
     qCount: Number(exam.qCount),
   });

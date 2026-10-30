@@ -149,9 +149,48 @@
     };
     if (UnitCore.hasIdentityRule(identityRecord, pid))
       return computeUnit(record, grade, pid, profile, key, unitLabel);
+    // Registered textbook sets whose standardUnitKey is the textbook's own chapter numbering are
+    // classified by the unit label only (see textbookChapterUnit). Their results also depend on the
+    // record's subject, so the memo key carries the source folder as well.
+    if (isChapterKeyed(record)) {
+      const memoKey = `chapter\u0000${pid}\u0000${text(record.sourceFile).split("/")[1]}\u0000${unitLabel}`;
+      if (!unitMemo.has(memoKey)) unitMemo.set(memoKey, textbookChapterUnit(record, grade, pid, profile, unitLabel));
+      return unitMemo.get(memoKey);
+    }
     const memoKey = `${pid}\u0000${key}\u0000${unitLabel}`;
     if (!unitMemo.has(memoKey)) unitMemo.set(memoKey, computeUnit(record, grade, pid, profile, key, unitLabel));
     return unitMemo.get(memoKey);
+  }
+  // Textbook chapter-keyed sources (archive/data/textbook-source-manifest-v1.json, unitKeys
+  // "chapter"): the key numbers textbook chapters (H22-C2-02 is 집합과 명제 there but 직선의 방정식
+  // in the unit profile), so it is never used as a profile key. The question's own unit label is
+  // matched to a unit of the same subject by exact name; a chapter-level label that spans several
+  // units, or any label without an exact unit name, stays in the subject's "단원 미분류" scope.
+  const chapterNameMaps = new Map();
+  function chapterNameMap(pid, profile) {
+    if (chapterNameMaps.has(pid)) return chapterNameMaps.get(pid);
+    const seen = new Map();
+    for (const unit of profile.units) {
+      const name = norm(unit.name);
+      seen.set(name, seen.has(name) ? "" : unit.key);
+    }
+    for (const [name, key] of Object.entries(SUPPLEMENTAL_LABELS[pid] || {})) {
+      if (!seen.has(name)) seen.set(name, key);
+      else if (seen.get(name) !== key) seen.set(name, "");
+    }
+    chapterNameMaps.set(pid, seen);
+    return seen;
+  }
+  function isChapterKeyed(record) {
+    return Core.Canonical?.textbookSource?.(record.sourceFile)?.unitKeys === "chapter";
+  }
+  function textbookChapterUnit(record, grade, pid, profile, unitLabel) {
+    const unitKey = chapterNameMap(pid, profile).get(norm(unitLabel));
+    const row = unitKey && profile.units.find((unit) => unit.key === unitKey);
+    if (!row) return null;
+    const subject = inferSubject(record, grade);
+    if (subject && subject.course !== row.course) return null;
+    return { unitKey: row.key, reason: "textbook-label" };
   }
   function computeUnit(record, grade, pid, profile, key, unitLabel) {
     const numberedId = Number(record.sourceQuestionNo);

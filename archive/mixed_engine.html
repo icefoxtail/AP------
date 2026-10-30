@@ -428,7 +428,7 @@
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20260923.1">
     <script src="render-state-normalizer.js?v=20260912.1"></script>
     <script src="screen-runtime.js?v=20260913.1"></script>
-    <script src="question-image-readiness.js?v=20260915.2"></script>
+    <script src="question-image-readiness.js?v=20261030-s11-1"></script>
     <script src="common-fast-runtime.js?v=20261010-q19-typeset-diagnostic-2"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
@@ -2082,7 +2082,9 @@ function collectQuestionImages(root) {
 }
 
 function normalizeQuestionImageSources(root) {
-    return window.APQuestionImageReadiness.normalizeQuestionImageSources(root, withArchiveAssetCacheBuster);
+    const readiness = window.APQuestionImageReadiness;
+    return readiness.normalizeQuestionImageSources(root, (src, image) => withArchiveAssetCacheBuster(
+        readiness.resolveSourceRelativeImage(src, readiness.sourceFileOfImage(image))));
 }
 
 function validateQuestionImageReadiness(root) {

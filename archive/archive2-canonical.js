@@ -23,7 +23,32 @@
       .replace(/^\/+/, "");
   const gradeRank = (grade) =>
     ({ 중1: 1, 중2: 2, 중3: 3, 고1: 4, 고2: 5, 고3: 6 })[grade] || 0;
+  // Reviewed textbook folder -> grade evidence (and the unit-key vocabulary of its questions).
+  // Textbook paths (textbooks/<folder>/...) carry no high/hN segment, so the grade comes from this
+  // table. It mirrors the reviewed manifest archive/data/textbook-source-manifest-v1.json
+  // (tests/archive2-textbook-manifest.test.js keeps the two identical); the Worker bundles this
+  // module, so the table lives here rather than in a fetch.
+  const TEXTBOOK_SOURCES = Object.freeze({
+    "동아출판_공통수학1": { grade: "고1", unitKeys: "chapter" },
+    "미래엔_공통수학1": { grade: "고1", unitKeys: "chapter" },
+    "미래엔_공통수학2": { grade: "고1", unitKeys: "chapter" },
+    "미래엔_대수": { grade: "고2", unitKeys: "chapter" },
+    "백발백중_공통수학2": { grade: "고1", unitKeys: "profile" },
+    "비상교육_공통수학1": { grade: "고1", unitKeys: "chapter" },
+    "비상교육_공통수학2": { grade: "고1", unitKeys: "profile" },
+    "비상교육_대수": { grade: "고2", unitKeys: "chapter" },
+    "비상교육_미적분1": { grade: "고2", unitKeys: "chapter" },
+  });
+  const textbookSource = (file) => {
+    const normalized = normalizeFile(file);
+    if (!normalized.startsWith("textbooks/")) return null;
+    const folder = normalized.split("/")[1] || "";
+    return Object.prototype.hasOwnProperty.call(TEXTBOOK_SOURCES, folder) ? TEXTBOOK_SOURCES[folder] : null;
+  };
   const pathGrade = (file) => {
+    const textbook = textbookSource(file);
+    if (textbook) return textbook.grade;
+    if (normalizeFile(file).startsWith("textbooks/")) return "";
     const match = normalizeFile(file).match(
       /(?:^|\/)(?:original\/)?(high\/h([123])|middle\/m([123]))\//,
     );
@@ -533,6 +558,14 @@
     return { manifest, projectionVersion, files, resources, runtimeInputPaths: runtimePaths };
   }
 
+  // The shard path of an index row is fully determined by its source file
+  // (SOURCE_VERIFICATION_SHARD_PREFIX + sha256(sourceFile) + ".json"), so current indexes omit it to
+  // stay small as the bank grows; a row that still carries one must stay inside the shard prefix and
+  // is compared with the derived path at lookup time.
+  const validOptionalShardPath = (row) =>
+    row?.path === undefined ||
+    (String(row.path).startsWith(SOURCE_VERIFICATION_SHARD_PREFIX) && String(row.path).endsWith(".json"));
+
   async function loadSourceVerificationShard(
     fetcher,
     baseUrl,
@@ -616,8 +649,7 @@
       const file = normalizeFile(row?.sourceFile);
       if (
         !file || seenFiles.has(file) || file !== text(row?.sourceFile) ||
-        !String(row?.path || "").startsWith(SOURCE_VERIFICATION_SHARD_PREFIX) ||
-        !String(row?.path || "").endsWith(".json") ||
+        !validOptionalShardPath(row) ||
         !SHA256.test(text(row?.sha256)) ||
         !Number.isInteger(Number(row?.qCount)) || Number(row.qCount) < 1
       )
@@ -628,10 +660,10 @@
     if (!sourceEntry)
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source is not indexed");
     const expectedShardPath = SOURCE_VERIFICATION_SHARD_PREFIX + await sha256(normalizedSource) + ".json";
-    if (sourceEntry.path !== expectedShardPath)
+    if (sourceEntry.path !== undefined && sourceEntry.path !== expectedShardPath)
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source shard path is invalid");
     let shardBody;
-    try { shardBody = (await read(sourceEntry.path)).replace(/\r\n/g, "\n"); }
+    try { shardBody = (await read(expectedShardPath)).replace(/\r\n/g, "\n"); }
     catch (error) {
       if (error.code) throw error;
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source shard unavailable");
@@ -729,8 +761,7 @@
       const file = normalizeFile(row?.sourceFile);
       if (
         !file || sourceFiles.has(file) || file !== text(row?.sourceFile) ||
-        !String(row?.path || "").startsWith(SOURCE_VERIFICATION_SHARD_PREFIX) ||
-        !String(row?.path || "").endsWith(".json") ||
+        !validOptionalShardPath(row) ||
         !SHA256.test(text(row?.sha256)) ||
         !Number.isInteger(Number(row?.qCount)) || Number(row.qCount) < 1
       )
@@ -1528,6 +1559,8 @@
     manifestInputPathsFromRuntimePacks,
     normalizeFile,
     pathGrade,
+    TEXTBOOK_SOURCES,
+    textbookSource,
     resolveSourceGrade,
     resolveSnapshotSourceGrade,
     assignmentFingerprint,

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "archive-textbook-source-manifest-v1",
+  "decidedBy": "user",
+  "decidedAt": "2026-10-29",
+  "purpose": "Explicit, reviewed grade evidence for the registered textbook source folders under archive/exams/textbooks/. Textbook paths carry no high/hN grade segment, so the catalog builder, the Archive 2.0 core matcher and the Worker saved-paper replay (archive/archive2-canonical.js pathGrade) all resolve a textbook source grade from this manifest. Keyed by the first folder below textbooks/.",
+  "curriculumPolicy": "Folder/curriculum identity is recorded as found. A 2015 key is never converted into a 2022 key or vice versa (docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md:242).",
+  "gradeBasis": "2022 revised curriculum course placement: 공통수학1/공통수학2 are taken in 고1, 대수/미적분Ⅰ in 고2. 백발백중_공통수학2 and 비상교육_공통수학2 are 공통수학2 sets already registered with grade 고1.",
+  "folders": {
+    "동아출판_공통수학1": {
+      "publisher": "동아출판",
+      "subject": "공통수학1",
+      "questionStandardCourse": "공통수학1",
+      "grade": "고1",
+      "curriculum": "2022",
+      "unitKeys": "chapter"
+    },
+    "미래엔_공통수학1": {
+      "publisher": "미래엔",
+      "subject": "공통수학1",
+      "questionStandardCourse": "공통수학1",
+      "grade": "고1",
+      "curriculum": "2022",
+      "unitKeys": "chapter"
+    },
+    "미래엔_공통수학2": {
+      "publisher": "미래엔",
+      "subject": "공통수학2",
+      "questionStandardCourse": "공통수학2",
+      "grade": "고1",
+      "curriculum": "2022",
+      "unitKeys": "chapter"
+    },
+    "미래엔_대수": {
+      "publisher": "미래엔",
+      "subject": "대수",
+      "questionStandardCourse": "대수",
+      "grade": "고2",
+      "curriculum": "2022",
+      "unitKeys": "chapter"
+    },
+    "백발백중_공통수학2": {
+      "publisher": "백발백중",
+      "subject": "공통수학2",
+      "questionStandardCourse": "공통수학2",
+      "grade": "고1",
+      "curriculum": "2022",
+      "unitKeys": "profile"
+    },
+    "비상교육_공통수학1": {
+      "publisher": "비상교육",
+      "subject": "공통수학1",
+      "questionStandardCourse": "공통수학1",
+      "grade": "고1",
+      "curriculum": "2022",
+      "unitKeys": "chapter"
+    },
+    "비상교육_공통수학2": {
+      "publisher": "비상교육",
+      "subject": "공통수학2",
+      "questionStandardCourse": "공통수학2",
+      "grade": "고1",
+      "curriculum": "2022",
+      "unitKeys": "profile"
+    },
+    "비상교육_대수": {
+      "publisher": "비상교육",
+      "subject": "대수",
+      "questionStandardCourse": "대수",
+      "grade": "고2",
+      "curriculum": "2022",
+      "unitKeys": "chapter"
+    },
+    "비상교육_미적분1": {
+      "publisher": "비상교육",
+      "subject": "미적분I",
+      "questionStandardCourse": "미적분1",
+      "grade": "고2",
+      "curriculum": "2022",
+      "unitKeys": "chapter"
+    }
+  },
+  "unregisteredDuplicateFolders": {
+    "비상_미적분1": {
+      "duplicateOf": "비상교육_미적분1",
+      "reason": "27 files (8 JS and 19 images) byte-identical to 비상교육_미적분1. Not registered, so the catalog never carries the same questions twice; the 비상교육 folder is kept because it follows the naming of the other 비상교육 sets. This folder stays in the tree because docs/reports/archive-inline-image-inventory-20260915.json and its exact-count test (tests/archive-inline-image-inventory.test.js) reference both folder paths; deleting it requires regenerating that sealed inventory baseline."
+    }
+  },
+  "unitKeysPolicy": {
+    "profile": "question standardUnitKey values are Archive unit-profile keys (H22-C-0N, H22-C2-0N ...); the unified unit layer classifies by key exactly as for every other source.",
+    "chapter": "question standardUnitKey values are the textbook chapter numbering (H22-C1-0N, H22-C2-0N, H22-AL-0N, H22-MC1-0N). That numbering is NOT the unit-profile numbering (for example H22-C2-02 is 집합과 명제 here but 직선의 방정식 in the profile), so the key is never used as a profile key; the question standardUnit label is matched to a unit by exact name, otherwise the question stays in the subject 단원 미분류 scope."
+  }
+}

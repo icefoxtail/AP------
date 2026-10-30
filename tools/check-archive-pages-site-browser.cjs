@@ -181,7 +181,13 @@ async function main() {
       const sourceIndexResponse = await fetch(new URL('data/archive2-source-verification-index.json', document.baseURI));
       if (!sourceIndexResponse.ok) throw new Error('source verification index HTTP '+sourceIndexResponse.status);
       const sourceIndex = await sourceIndexResponse.json();
-      const shardPath = sourceIndex.files?.[0]?.path;
+      // The shard path is derived from the source file (prefix + sha256(sourceFile) + ".json").
+      const firstSource = sourceIndex.files?.[0];
+      let shardPath = firstSource?.path;
+      if (!shardPath && firstSource?.sourceFile) {
+        const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(firstSource.sourceFile));
+        shardPath = 'data/archive2-source-verification/v1/' + Array.from(new Uint8Array(digest), (v) => v.toString(16).padStart(2, '0')).join('') + '.json';
+      }
       const shardResponse = shardPath ? await fetch(new URL(shardPath, document.baseURI)) : null;
       const consumerResponse = await fetch(new URL('data/generated-lite-consumer/v1/index.json', document.baseURI));
       if (!consumerResponse.ok) throw new Error('generated consumer index HTTP '+consumerResponse.status);

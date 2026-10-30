@@ -19,6 +19,9 @@ pdf_archive/
 # Product textbook archive is an explicit, versioned production lane.
 !archive/exams/textbooks/
 !archive/exams/textbooks/**
+# Reviewed textbook folder -> grade manifest and its regression test (S11) are versioned.
+!archive/data/textbook-source-manifest-v1.json
+!tests/archive2-textbook-manifest.test.js
 # Local History 확장 프로그램 임시 파일 제외
 **/*.lh
 **/.history/
