@@ -348,7 +348,8 @@
 
     // 해설 문자열(hint · formulaHTML · notes) 속 $...$ 구간을 위 tex()로 KaTeX 수식으로 바꿉니다.
     function texInline(html) {
-      return html.replace(/\$([^$]+)\$/g, (m, src) => tex(src));
+      // **굵게** 표시를 <strong> 으로 바꾼 뒤 수식을 렌더링합니다(별표가 그대로 보이지 않게).
+      return html.replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>').replace(/\$([^$]+)\$/g, (m, src) => tex(src));
     }
 
     const CCOL = {

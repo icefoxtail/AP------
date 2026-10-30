@@ -399,7 +399,8 @@ return latex;
 
 function formatRichMath(text) {
 if (!text) return '';
-return text.replace(/\$\$([^$]+)\$\$/g, (_, tex) => renderMath(tex, true))
+return text.replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>')
+           .replace(/\$\$([^$]+)\$\$/g, (_, tex) => renderMath(tex, true))
 .replace(/\$([^$]+)\$/g, (_, tex) => renderMath(tex, false));
 }
 
