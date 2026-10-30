@@ -1,0 +1,68 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "HISTOGRAM",
+  "polygon": true,
+  "boundaries": [
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17"
+  ],
+  "series": [
+   {
+    "frequencies": [
+     1,
+     5,
+     8,
+     null,
+     null,
+     5,
+     2
+    ]
+   }
+  ],
+  "xTitle": "시간",
+  "yTitle": "도수(명)",
+  "grid": true,
+  "highlightClasses": [
+   0,
+   1,
+   2
+  ],
+  "classSums": [
+   {
+    "from": 0,
+    "to": 2,
+    "label": "14",
+    "unit": "명"
+   },
+   {
+    "from": 3,
+    "to": 4,
+    "label": "?"
+   }
+  ]
+ },
+ "caption": "일부가 지워진 인터넷 이용 시간의 도수분포다각형에서 13시간 미만의 세 계급(1+5+8=14명)을 묶고 지워진 13시간 이상 15시간 미만의 두 계급을 따로 묶어 나타낸 그림",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "계급 10~17시간(크기 1시간, 7개), 보이는 도수 1, 5, 8, 5, 2 (13~14, 14~15시간 계급은 지워짐)",
+   "mappedTo": "chart"
+  },
+  {
+   "id": "c2",
+   "condition": "13시간 미만인 세 계급의 도수의 합 1+5+8=14명",
+   "mappedTo": "chart.classSums[0]"
+  }
+ ],
+ "newVisualInformation": [
+  "13시간 미만 세 계급을 진하게 칠하고 그 합 14명을 괄호로 묶어 보임",
+  "지워진 두 계급(13~14, 14~15시간)은 막대와 꺾은선을 그리지 않고 합을 묻는 괄호만 둠"
+ ]
+}

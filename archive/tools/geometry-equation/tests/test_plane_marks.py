@@ -12,7 +12,8 @@ GEOMETRY=Path(__file__).resolve().parents[1]
 PRODUCTION=GEOMETRY/'production'
 sys.path.insert(0,str(GEOMETRY))
 sys.path.insert(0,str(PRODUCTION))
-from visual_engine.engine import build
+from visual_engine.engine import build,mark_label
+from visual_engine.semantic_model import validate
 import construction
 
 def observer_module():
@@ -374,5 +375,299 @@ class RegionLabelOwnershipTests(unittest.TestCase):
         codes=self.codes(self.svg_with((8.0,0.0),(8.0,0.0)))
         self.assertIn('REGION_LABEL_OUTSIDE',codes)
         self.assertIn('REGION_LABEL_IN_OTHER_REGION',codes)
+
+class UnmarkedPointTests(unittest.TestCase):
+    """A POINT with marker NONE (a plane figure's hiddenPointStyle NONE) stays in the geometry but draws neither a dot nor a name."""
+    points={'F':(0.0,0.0),'R':(6.0,0.0),'T':(3.0,4.0)}
+    def objects(self,marker=None):
+        points=self.points
+        rows=[{'id':k,'kind':'POINT','at':list(v),'name':None,**({'marker':marker} if marker else {})} for k,v in points.items()]
+        return rows+[seg('sFR',points,'F','R'),seg('sFT',points,'F','T'),{'id':'aF','kind':'ANGLE_MARK','refs':['R','F','T'],'value':53.13010235415598,'arcs':1}]
+    def svg(self,objects):
+        spec=spec_of(self.points,[])
+        spec['objects']=objects
+        return build(spec)['svg']
+    def circles(self,svg):return re.findall(r'<circle\s(?:[^>]*\s)?id="([^"]+)"',svg)
+    def test_default_hidden_point_is_a_bare_dot(self):
+        self.assertEqual(sorted(self.circles(self.svg(self.objects()))),['F','R','T'])
+    def test_marker_none_draws_no_dot_and_the_marks_still_stand(self):
+        svg=self.svg(self.objects('NONE'))
+        self.assertEqual(self.circles(svg),[])
+        self.assertIn('id="sFR"',svg);self.assertIn('id="sFT"',svg);self.assertIn('data-mark="angle"',svg)
+    def test_marker_none_on_some_points_keeps_the_others(self):
+        rows=self.objects()
+        for row in rows:
+            if row['id']=='T':row['marker']='NONE'
+        self.assertEqual(sorted(self.circles(self.svg(rows))),['F','R'])
+    def test_marker_contract(self):
+        rows=self.objects();rows[0].pop('at');rows[0].update({'kind':'LINE','coefficients':[1,0,0],'marker':'NONE'})   # only a POINT carries a marker
+        with self.assertRaisesRegex(ValueError,'INVALID_POINT_MARKER'):validate(spec_of(self.points,[])|{'objects':rows})
+        for bad in ('DOT','none',True,None):
+            rows=self.objects();rows[0]['marker']=bad
+            with self.assertRaisesRegex(ValueError,'INVALID_POINT_MARKER'):validate(spec_of(self.points,[])|{'objects':rows})
+        rows=self.objects();rows[0]['marker']='NONE';rows[0]['name']='F'   # a markerless point cannot carry a name
+        with self.assertRaisesRegex(ValueError,'INVALID_POINT_MARKER'):validate(spec_of(self.points,[])|{'objects':rows})
+        rows=self.objects();rows[0]['marker']='NONE';del rows[0]['name']
+        with self.assertRaisesRegex(ValueError,'INVALID_POINT_MARKER'):validate(spec_of(self.points,[])|{'objects':rows})
+        rows=self.objects();rows[0]['marker']='NONE'
+        self.assertEqual(validate(spec_of(self.points,[])|{'objects':rows})['semanticStatus'],'PASS')
+
+class LabelKindTests(unittest.TestCase):
+    """Plain TEXT labels and units (cm, m, mm): the label objects the engine makes, its refusals, and the observer reading a hand-made label group back."""
+    def test_unit_is_attached_after_a_number_and_one_space_after_a_letter(self):
+        for text,plain,tex in [('3','3cm',r'3\mathrm{cm}'),('2.5','2.5cm',r'2.5\mathrm{cm}'),('x','x cm',r'x\,\mathrm{cm}'),('(x+1)','(x+1)cm',r'(x+1)\mathrm{cm}')]:
+            label=mark_label('l','t',text,'MATH',(0,0),{},'cm')
+            self.assertEqual((label['text'],label['tex']),(plain,tex),text);self.assertTrue(label['math']);self.assertTrue(label['bindText'])
+        self.assertEqual(mark_label('l','t','7','MATH',(0,0),{},'mm')['tex'],r'7\mathrm{mm}')
+    def test_text_label_is_plain_korean_text(self):
+        label=mark_label('l','t','반직선 AB','TEXT',(0,0),{'gaps':(8,)})
+        self.assertEqual((label['text'],label['layoutText'],label['math'],label['bindText'],label['gaps']),('반직선 AB','반직선 AB',False,True,(8,)))
+        self.assertNotIn('tex',label);self.assertNotIn('markup',label)
+    def test_no_unit_is_the_old_label_byte_for_byte(self):
+        label=mark_label('l','t','40','DEGREE',(0,0),{})
+        self.assertEqual((label['text'],label['tex'],'bindText' in label),('40°',r'40^{\circ}',False))
+        self.assertEqual(mark_label('l','t','x','MATH',(0,0),{})['text'],'x')
+    def test_unit_with_a_degree_name_or_text_label_is_refused(self):
+        for kind in ('DEGREE','NAME','TEXT'):
+            with self.assertRaises(ValueError,msg=kind):mark_label('l','t','AB' if kind=='NAME' else '3',kind,(0,0),{},'cm')
+    def test_spec_refuses_unknown_unit_kind_and_misplaced_unit(self):
+        pts={'A':(0.0,0.0),'B':(6.0,0.0)}
+        def build_with(extra):
+            return build(spec_of(pts,[seg('sAB',pts,'A','B'),{'id':'e1','kind':'EQUATION_LABEL','text':'6','at':[3.0,0.0],**extra}]))
+        self.assertIsNotNone(build_with({'unit':'cm'}))
+        for extra,code in [({'unit':'km'},'MARK_UNIT_INVALID'),({'unit':'cm','labelKind':'TEXT'},'MARK_UNIT_REQUIRES_MATH_LABEL'),({'labelKind':'SYMBOL'},'MARK_LABEL_KIND_INVALID')]:
+            with self.assertRaises(ValueError,msg=code) as caught:build_with(extra)
+            self.assertTrue(str(caught.exception).startswith(code),str(caught.exception))
+        with self.assertRaises(ValueError) as caught:build(spec_of(pts,[{**seg('sAB',pts,'A','B'),'unit':'cm'}]))
+        self.assertEqual(str(caught.exception),'UNKNOWN_OR_MISSING_COMPONENT_FIELD')
+        arc={'id':'arc','kind':'CIRCULAR_ARC','centerPoint':'A','startPoint':'B','endPoint':'B','sweep':'CCW','unit':'cm'}
+        with self.assertRaises(ValueError):build(spec_of(pts,[arc]))
+
+    # the observer, on a label group made by hand (the typeset glyph codes MathJax leaves: data-c)
+    def setUp(self):
+        self.points={'A':(0.0,0.0),'B':(6.0,0.0)}
+        result=build(spec_of(self.points,[seg('sAB',self.points,'A','B')]));self.svg=result['svg'];self.transform=result['witness']['coordinateModel']
+    def group(self,label_id,attributes,glyphs=(),text_path=False):
+        m=self.transform;x=m['originX']+3.0*m['sx']-15.0;y=m['originY']-14.0-16.0
+        inner=''.join('<path data-c="'+code+'" d="M0 0 L5 0"/>' for code in glyphs)+('<path d="M0 0 L5 0" fill="#111"/>' if text_path else '')
+        return ('<g id="'+label_id+'" data-owner="sAB" data-fragment-sha="sha256:'+'0'*64+'" '+attributes+' transform="translate('+('%.3f'%x)+' '+('%.3f'%y)+')">'
+                '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="14" viewBox="0 0 30 14">'+inner+'</svg></g>')
+    def codes(self,group,row):
+        svg=self.svg.replace('</svg>',group+'</svg>')
+        report=OBSERVER.audit({'svg':svg,'points':{k:list(v) for k,v in self.points.items()},'marks':{'expressionLabels':[row]},'segments':[{'id':'sAB','refs':['A','B']}],'transform':self.transform})
+        return [error.split(':')[0] for error in report['errors']]
+    def test_observer_reads_a_unit_label_back(self):
+        row={'id':'n','ownerSegment':'sAB','text':'6','unit':'cm'}
+        good=self.group('n',r'data-tex="6\mathrm{cm}"',['36','63','6D'])
+        self.assertEqual(self.codes(good,row),[])
+        self.assertIn('LABEL_UNIT_MISMATCH',self.codes(self.group('n',r'data-tex="6\mathrm{cm}"',['36','63','6E']),row))
+        self.assertIn('LABEL_UNIT_MISMATCH',self.codes(self.group('n',r'data-tex="6"',['36']),row))
+        self.assertIn('LABEL_TEXT_MISMATCH',self.codes(self.group('n',r'data-tex="7\mathrm{cm}"',['37','63','6D']),row))
+        self.assertIn('LABEL_UNIT_SPACING_MISMATCH',self.codes(self.group('n',r'data-tex="6\,\mathrm{cm}"',['36','63','6D']),row))
+        letter={'id':'n','ownerSegment':'sAB','text':'x','unit':'cm'}
+        self.assertEqual(self.codes(self.group('n',r'data-tex="x\,\mathrm{cm}"',['1D465','63','6D']),letter),[])
+        self.assertIn('LABEL_UNIT_SPACING_MISMATCH',self.codes(self.group('n',r'data-tex="x\mathrm{cm}"',['1D465','63','6D']),letter))
+        self.assertIn('LABEL_TEXT_MISMATCH',self.codes(self.group('n',r'data-tex="x\,\mathrm{cm}"',['1D466','63','6D']),letter))
+    def test_observer_reads_a_text_label_back(self):
+        row={'id':'n','ownerSegment':'sAB','text':'반직선 AB','labelKind':'TEXT'}
+        self.assertEqual(self.codes(self.group('n','data-text="반직선 AB"',text_path=True),row),[])
+        self.assertIn('LABEL_TEXT_MISMATCH',self.codes(self.group('n','data-text="반직선 BA"',text_path=True),row))
+        self.assertIn('LABEL_TEXT_MISMATCH',self.codes(self.group('n','',text_path=True),row))
+        self.assertIn('LABEL_KIND_MISMATCH',self.codes(self.group('n','data-text="반직선 AB"',['41']),row))
+        self.assertIn('LABEL_KIND_MISMATCH',self.codes(self.group('n','data-text="6" data-tex="6"',['36']),{'id':'n','ownerSegment':'sAB','text':'6'}))
+    def test_observer_is_silent_for_the_old_math_label(self):
+        self.assertEqual(self.codes(self.group('n','',['36']),{'id':'n','ownerSegment':'sAB','text':'6'}),[])
+
+
+class SegmentEmphasisTests(unittest.TestCase):
+    """displaySegments emphasis (BOLD, ACCENT): the declared segment is heavy (and red), every other segment keeps the default style; the observer reads the final SVG."""
+    def setUp(self):
+        self.points={'A':(0.0,0.0),'B':(6.0,0.0),'C':(3.0,4.0)}
+        self.segments=[{'id':'sAB','refs':['A','B'],'emphasis':'BOLD'},{'id':'sBC','refs':['B','C'],'emphasis':'ACCENT','arrow':'END'},{'id':'sCA','refs':['C','A']}]
+        objects=[seg('sAB',self.points,'A','B',emphasis='BOLD'),seg('sBC',self.points,'B','C',emphasis='ACCENT',arrow='END'),seg('sCA',self.points,'C','A')]
+        result=build(spec_of(self.points,objects));self.svg=result['svg'];self.transform=result['witness']['coordinateModel']
+    def tag(self,identifier,svg=None):return re.search(r'<line\s(?:[^>]*\s)?id="'+re.escape(identifier)+r'"[^>]*/>',svg or self.svg).group(0)
+    def audit(self,svg=None,segments=None):
+        return OBSERVER.audit({'svg':svg or self.svg,'points':{k:list(v) for k,v in self.points.items()},'marks':{},'segments':segments if segments is not None else self.segments,'transform':self.transform})
+    def codes(self,**kw):return [error.split(':')[0] for error in self.audit(**kw)['errors']]
+    def test_only_the_declared_segments_are_emphasized(self):
+        self.assertEqual(self.audit()['errors'],[])
+        self.assertIn('stroke-width="3.2"',self.tag('sAB'));self.assertIn('stroke="#111"',self.tag('sAB'))
+        self.assertIn('stroke-width="3.2"',self.tag('sBC'));self.assertIn('stroke="#c0392b"',self.tag('sBC'))
+        self.assertIn('stroke-width="1.6"',self.tag('sCA'));self.assertIn('stroke="#111"',self.tag('sCA'))
+        rows={row['id']:row for row in self.audit()['observations'] if row.get('type')=='SEGMENT_EMPHASIS'}
+        self.assertEqual({k:v['emphasis'] for k,v in rows.items()},{'sAB':'BOLD','sBC':'ACCENT'})
+    def test_the_arrowhead_of_an_accent_segment_is_red(self):
+        head=re.search(r'<polygon\s(?:[^>]*\s)?id="sBC-arrow-end"[^>]*/>',self.svg).group(0)
+        self.assertIn('fill="#c0392b"',head);self.assertIn('stroke="#c0392b"',head)
+    def test_an_emphasized_segment_is_above_the_plain_ones(self):
+        self.assertLess(self.svg.index('id="sCA"'),self.svg.index('id="sAB"'))
+    def test_tamper_missing_wrong_or_undeclared_emphasis(self):
+        plain=json.loads(json.dumps(self.segments))
+        for row in plain:row.pop('emphasis',None)
+        undeclared=[error.split(':')[1] for error in self.audit(segments=plain)['errors'] if error.startswith('SEGMENT_EMPHASIS_UNDECLARED')]
+        self.assertEqual(sorted(undeclared),['sAB','sBC'])
+        more=json.loads(json.dumps(self.segments));more[2]['emphasis']='BOLD'
+        self.assertIn('SEGMENT_EMPHASIS_MISSING',self.codes(segments=more))
+        swapped=json.loads(json.dumps(self.segments));swapped[0]['emphasis']='ACCENT';swapped[1]['emphasis']='BOLD'
+        self.assertEqual(self.codes(segments=swapped).count('SEGMENT_EMPHASIS_COLOR_MISMATCH'),2)
+        thin=self.svg.replace(self.tag('sAB'),self.tag('sAB').replace('stroke-width="3.2"','stroke-width="1.6"'))
+        self.assertIn('SEGMENT_EMPHASIS_MISSING',self.codes(svg=thin))
+        red=self.svg.replace(self.tag('sCA'),self.tag('sCA').replace('stroke="#111"','stroke="#c0392b"'))
+        self.assertIn('SEGMENT_EMPHASIS_UNDECLARED',self.codes(svg=red))
+        heavy=self.svg.replace(self.tag('sCA'),self.tag('sCA').replace('stroke-width="1.6"','stroke-width="3.2"'))
+        self.assertIn('SEGMENT_EMPHASIS_UNDECLARED',self.codes(svg=heavy))
+    def test_a_segment_on_an_axis_is_heavy_without_being_emphasis(self):
+        spec=spec_of(self.points,[seg('sAB',self.points,'A','B'),seg('sBC',self.points,'B','C',emphasis='BOLD')]);spec['axes']=True
+        result=build(spec);segments=[{'id':'sAB','refs':['A','B']},{'id':'sBC','refs':['B','C'],'emphasis':'BOLD'}]
+        self.assertIn('stroke-width="3.2"',self.tag('sAB',result['svg']))
+        report=OBSERVER.audit({'svg':result['svg'],'points':{k:list(v) for k,v in self.points.items()},'marks':{},'segments':segments,'transform':result['witness']['coordinateModel']})
+        self.assertEqual(report['errors'],[])
+    def test_no_emphasis_is_the_old_figure_byte_for_byte(self):
+        plain=build(spec_of(self.points,[seg('sAB',self.points,'A','B'),seg('sBC',self.points,'B','C'),seg('sCA',self.points,'C','A')]))['svg']
+        self.assertNotIn('c0392b',plain);self.assertEqual(plain.count('stroke-width="1.6"'),3)
+    def test_engine_refuses_a_bad_emphasis(self):
+        for extra in ({'emphasis':'RED'},{'emphasis':True},{'emphasis':'BOLD'}):
+            kind={'kind':'LEADER_LINE'} if extra['emphasis']=='BOLD' else {}
+            with self.assertRaises(ValueError,msg=str(extra)) as caught:build(spec_of(self.points,[{**seg('sAB',self.points,'A','B'),**kind,**extra}]))
+            self.assertEqual(str(caught.exception),'INVALID_SEGMENT_EMPHASIS')
+        with self.assertRaises(ValueError):build(spec_of(self.points,[{'id':'q','kind':'EQUATION_LABEL','text':'x','at':[1.0,1.0],'emphasis':'BOLD'}]))
+
+
+class AngleNameLabelTests(unittest.TestCase):
+    """E16: an angle named by one letter (the angle A) as well as by up to four."""
+    def test_one_letter_and_longer_names_are_accepted(self):
+        for name in ('A','ABC','A1','AB12'):
+            label=mark_label('a-label','a',name,'NAME',(10.0,10.0),{})
+            self.assertEqual(label['text'],'∠'+name);self.assertEqual(label['tex'],'\\angle '+name)
+    def test_bad_names_are_refused(self):
+        for name in ('','a','AbC','ABCDE','A B','1A'):
+            with self.assertRaises(ValueError,msg=name) as caught:mark_label('a-label','a',name,'NAME',(10.0,10.0),{})
+            self.assertEqual(str(caught.exception),'ANGLE_LABEL_NAME_INVALID')
+
+
+class AngleEmphasisGroupTests(unittest.TestCase):
+    """E18: angles of one emphasisGroup draw their arcs in one colour; an angle that is a corresponding-angle pair member AND a vertical-angle pair member
+    keeps its arc count (equalGroup) while the colour tells the relation. The observer reads the stroke back from the final SVG."""
+    COLOURS={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}
+    def setUp(self):
+        self.points,objects=parallelogram()
+        for row in objects:
+            if row['id']=='aD':row['emphasisGroup']=1
+            if row['id']=='aC':row['emphasisGroup']=2
+        result=build(spec_of(self.points,objects));self.svg=result['svg'];self.transform=result['witness']['coordinateModel']
+        self.marks=json.loads(json.dumps(MARKS));self.marks['angles'][0]['emphasisGroup']=1;self.marks['angles'][1]['emphasisGroup']=2
+    def audit(self,svg=None,marks=None):
+        return OBSERVER.audit({'svg':svg or self.svg,'points':{k:list(v) for k,v in self.points.items()},'marks':marks or self.marks,'segments':SEGMENTS,'transform':self.transform})['errors']
+    def arc(self,oid,k=1):return re.search(r'<polyline\s(?:[^>]*\s)?id="'+oid+'-arc-'+str(k)+r'"[^>]*/>',self.svg).group(0)
+    def test_every_arc_of_a_group_takes_the_group_colour(self):
+        self.assertEqual(self.audit(),[])
+        self.assertIn('stroke="'+self.COLOURS[1]+'"',self.arc('aD'))
+        for k in (1,2):self.assertIn('stroke="'+self.COLOURS[2]+'"',self.arc('aC',k))
+        self.assertIn('stroke="#111"',self.arc('aOut',1))        # no group: the default stroke
+    def test_the_sector_keeps_the_light_grey_fill(self):
+        self.assertIn('fill="#d9d9d9"',re.search(r'<polygon\s(?:[^>]*\s)?id="aD-sector"[^>]*/>',self.svg).group(0))
+    def test_a_plan_without_emphasis_groups_is_the_old_figure_byte_for_byte(self):
+        plain=build(spec_of(*[parallelogram()[0],parallelogram()[1]]))['svg']
+        self.assertNotIn('c0392b',plain);self.assertNotIn('1f5fa8',plain)
+    def test_tamper_wrong_missing_or_undeclared_colour(self):
+        wrong=self.svg.replace(self.arc('aD'),self.arc('aD').replace(self.COLOURS[1],self.COLOURS[3]))
+        self.assertIn('ANGLE_EMPHASIS_COLOR_MISMATCH:aD',self.audit(svg=wrong))
+        plain=self.svg.replace(self.arc('aD'),self.arc('aD').replace('stroke="'+self.COLOURS[1]+'"','stroke="#111"'))
+        self.assertIn('ANGLE_EMPHASIS_COLOR_MISMATCH:aD',self.audit(svg=plain))
+        red=self.svg.replace(self.arc('aOut',1),self.arc('aOut',1).replace('stroke="#111"','stroke="'+self.COLOURS[1]+'"'))
+        self.assertIn('ANGLE_EMPHASIS_UNDECLARED:aOut',self.audit(svg=red))
+        marks=json.loads(json.dumps(self.marks));marks['angles'][0]['emphasisGroup']=7
+        self.assertIn('ANGLE_EMPHASIS_GROUP_INVALID:aD',self.audit(marks=marks))
+    def test_engine_refuses_a_bad_group(self):
+        for value in (0,4,'1',True,None):
+            points,objects=parallelogram()
+            for row in objects:
+                if row['id']=='aD':row['emphasisGroup']=value
+            with self.assertRaises(ValueError,msg=repr(value)) as caught:build(spec_of(points,objects))
+            self.assertEqual(str(caught.exception),'INVALID_ANGLE_EMPHASIS_GROUP')
+        with self.assertRaises(ValueError) as caught:build(spec_of(self.points,[seg('sAB',self.points,'A','B',emphasisGroup=1)]))
+        self.assertEqual(str(caught.exception),'INVALID_ANGLE_EMPHASIS_GROUP')
+
+
+class AngleLabelOwnershipTests(unittest.TestCase):
+    """E12: the observer reads, from the final SVG, that an angle label belongs to its own arc: a leader starts ON that arc (radius and sweep), never crosses a
+    drawn line, the label is not inside another angle's sector, and a label without a leader is not far from its vertex. Label boxes are synthetic here
+    (their measuring needs Chrome; the end-to-end case is tests/plane-angle-labels.test.mjs)."""
+    @classmethod
+    def setUpClass(cls):
+        cls.points,objects=parallelogram();result=build(spec_of(cls.points,objects));cls.svg=result['svg'];cls.transform=result['witness']['coordinateModel']
+        t=cls.transform;cls.forward=lambda self,q:(t['originX']+q[0]*t['sx'],t['originY']-q[1]*t['sy'])
+        cls.vertex=cls.forward(cls,cls.points['D'])
+        arc=re.search(r'<polyline\s(?:[^>]*\s)?id="aD-arc-1"[^>]*/>',cls.svg).group(0)
+        pairs=[tuple(map(float,part.split(','))) for part in re.search(r'\spoints="([^"]*)"',arc).group(1).split()]
+        cls.radius=math.dist(pairs[0],cls.vertex)
+        cls.marks=json.loads(json.dumps(MARKS));cls.marks['angles'][0].pop('noLabel');cls.marks['angles'][0]['label']='70'   # aD carries a label
+    def on_circle(self,degrees,radius=None):
+        radius=self.radius if radius is None else radius;a=math.radians(degrees)
+        return (self.vertex[0]+radius*math.cos(a),self.vertex[1]-radius*math.sin(a))      # math degrees: the wedge of aD runs from 0 to 70
+    def with_label(self,center,leader_from=None,size=(30.0,18.0),leader=True):
+        x,y=center[0]-size[0]/2,center[1]-size[1]/2
+        group='<g id="aD-label" data-fragment-sha="sha256:test" transform="translate(%.6f,%.6f)"><svg xmlns="http://www.w3.org/2000/svg" width="%.3f" height="%.3f"></svg></g>'%(x,y,size[0],size[1])
+        if leader_from is not None:
+            # the leader ends on the label box edge nearest to its start
+            ex=min(max(leader_from[0],x),x+size[0]);ey=min(max(leader_from[1],y),y+size[1])
+            if x<leader_from[0]<x+size[0] and y<leader_from[1]<y+size[1]:ex=x
+            group+='<line id="aD-label-owner-leader" data-role="leader" data-owner-label="aD-label" data-owner="aD" x1="%.6f" y1="%.6f" x2="%.6f" y2="%.6f" stroke="#666" stroke-width="0.8" fill="none"/>'%(leader_from[0],leader_from[1],ex,ey)
+        return self.svg.replace('</svg>',group+'</svg>')
+    def codes(self,svg,marks=None):
+        report=OBSERVER.audit({'svg':svg,'points':{k:list(v) for k,v in self.points.items()},'marks':marks or self.marks,'segments':SEGMENTS,'transform':self.transform})
+        return report['errors']
+    def only(self,errors,prefix):return [e for e in errors if e.startswith(prefix)]
+    def test_a_label_beside_its_arc_passes(self):
+        self.assertEqual(self.codes(self.with_label(self.on_circle(35,60))),[])
+    def test_a_leader_from_the_middle_of_the_arc_passes(self):
+        self.assertEqual(self.codes(self.with_label(self.on_circle(35,70),leader_from=self.on_circle(35))),[])
+    def test_a_leader_from_an_end_of_the_arc_passes(self):
+        # the arc meets the ray DC at 0 degrees: the leader leaves from there, to a label below the ray
+        label=(self.vertex[0]+self.radius+30,self.vertex[1]+26)
+        errors=self.codes(self.with_label(label,leader_from=self.on_circle(0)))
+        self.assertEqual([e for e in errors if e.startswith('MARK_LEADER')],[],errors)      # (the reflex angle aOut's arcs share this vertex, so the leader does cross those)
+    def test_a_leader_from_outside_the_sweep_of_the_arc_is_not_on_the_arc(self):
+        # the arc's radius, but at -40 degrees: that point is not on the arc of this angle
+        label=(self.vertex[0]+self.radius+30,self.vertex[1]+60)
+        self.assertIn('MARK_LEADER_NOT_ON_OWNER:aD-label',self.codes(self.with_label(label,leader_from=self.on_circle(-40))))
+    def test_a_leader_from_another_radius_is_not_on_the_arc(self):
+        self.assertIn('MARK_LEADER_NOT_ON_OWNER:aD-label',self.codes(self.with_label(self.on_circle(35,90),leader_from=self.on_circle(35,self.radius+9))))
+    def test_a_leader_never_crosses_a_drawn_line(self):
+        # from the middle of the arc across the ray DA (70 degrees) to a label outside the angle
+        label=self.on_circle(95,90)
+        self.assertIn('ANGLE_LABEL_LEADER_CROSSES:aD:sDA',self.codes(self.with_label(label,leader_from=self.on_circle(35))))
+    def test_a_label_without_a_leader_far_from_its_vertex_is_refused(self):
+        errors=self.codes(self.with_label(self.on_circle(35,170)))
+        self.assertIn('ANGLE_LABEL_TOO_FAR:aD',errors)
+        # the same far label tied to its arc by a leader along the bisector is fine
+        self.assertEqual(self.only(self.codes(self.with_label(self.on_circle(35,170),leader_from=self.on_circle(35))),'ANGLE_LABEL_TOO_FAR'),[])
+    def test_a_label_inside_another_angles_sector_is_refused(self):
+        # aOut (the reflex side of the same vertex, ring 2) has a sector up to its outer arc: a label standing there reads as aOut's value
+        errors=self.codes(self.with_label(self.on_circle(200,20),leader_from=self.on_circle(35)))
+        self.assertTrue(self.only(errors,'ANGLE_LABEL_IN_OTHER_ANGLE:aD:aOut'),errors)
+    def test_the_old_figure_without_labels_is_unchanged(self):
+        self.assertEqual(self.codes(self.svg,marks=MARKS),[])
+    def test_the_label_of_a_reflex_angle_is_placed_outside_on_a_leader_from_its_arc(self):
+        # aOut is the 290 degree side of the vertex D (ring 2, three arcs): its label cannot sit inside next to aD's, so it goes outside on a leader
+        points,objects=parallelogram()
+        for row in objects:
+            if row['id']=='aOut':row['labelText']='290'
+            if row['id']=='aD':row['labelText']='70'
+        layout=build(spec_of(points,objects))['witness']['layout']
+        self.assertEqual(layout['unresolved'],[])
+        placed={row['id']:row for row in layout['labels']}
+        outer=placed['aOut-label'];self.assertTrue(outer['placement'].startswith('OWNER_LEADER_'),outer['placement'])
+        ws=outer['wedgeSearch'];leader=next(row for row in layout['leaders'] if row['ownerLabelId']=='aOut-label')
+        a=leader['from'];self.assertAlmostEqual(math.dist(a,ws['vertex']),ws['arcRadius'],places=6)                      # on the outermost arc's radius ...
+        theta=math.atan2(a[1]-ws['vertex'][1],a[0]-ws['vertex'][0]);along=((theta-ws['start'])*(1 if ws['delta']>0 else -1))%(2*math.pi)
+        self.assertLessEqual(along,abs(ws['delta'])+1e-9)                                                                  # ... and within its sweep
+        box=outer['box'];centre=(box['x']+box['width']/2,box['y']+box['height']/2)
+        for other in ('aD',):
+            sector=[placed[other+'-label']['wedgeSearch']['vertex'],placed[other+'-label']['wedgeSearch']['start'],placed[other+'-label']['wedgeSearch']['delta'],placed[other+'-label']['wedgeSearch']['arcRadius']]
+            from visual_engine.label_layout import sector_contains
+            self.assertFalse(sector_contains(centre,sector))
+
 
 if __name__=='__main__':unittest.main()

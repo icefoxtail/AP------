@@ -44,7 +44,7 @@ def safe_math_markup(value):
     return value
 
 def owner_attrs(value):
-    fields={'owner':'data-owner','ownerPoints':'data-owner-points','sourceLabel':'data-source-label','annotation':'data-annotation','ownerKind':'data-owner-kind','factRole':'data-fact-role','state':'data-state','branch':'data-branch','featureKind':'data-feature-kind','poleSide':'data-pole-side','centerPoint':'data-center-point','ownerRadius':'data-owner-radius','sweep':'data-sweep','mark':'data-mark','markId':'data-mark-id','markIndex':'data-mark-index','markCount':'data-mark-count','markSide':'data-mark-side','markSegment':'data-mark-segment','markEnd':'data-mark-end'}
+    fields={'owner':'data-owner','ownerPoints':'data-owner-points','sourceLabel':'data-source-label','annotation':'data-annotation','ownerKind':'data-owner-kind','factRole':'data-fact-role','state':'data-state','branch':'data-branch','featureKind':'data-feature-kind','poleSide':'data-pole-side','centerPoint':'data-center-point','ownerRadius':'data-owner-radius','sweep':'data-sweep','mark':'data-mark','markId':'data-mark-id','markIndex':'data-mark-index','markCount':'data-mark-count','markSide':'data-mark-side','markSegment':'data-mark-segment','markEnd':'data-mark-end','markPart':'data-mark-part'}
     return ''.join(' '+name+'="'+esc(' '.join(value[key]) if isinstance(value[key],(list,tuple)) else value[key])+'"' for key,name in fields.items() if key in value)
 
 def validate_fragment_font(root,font_px):
@@ -89,6 +89,7 @@ def compose(prepared,layout,viewport,fragments=None):
         if p.get('requiredLabelId'):attrs+=' data-required-label-id="'+esc(p['requiredLabelId'])+'"'
         if p.get('fill'):attrs=attrs.replace('fill="none"','fill="'+esc(p['fill'])+'"')
         if p.get('noStroke'):attrs=attrs.replace('stroke="'+tokens['primary']+'"','stroke="none"')
+        if p.get('stroke'):attrs=attrs.replace('stroke="'+tokens['primary']+'"','stroke="'+esc(p['stroke'])+'"',1)
         if p.get('dash'):attrs+=' stroke-dasharray="'+esc(p['dash'])+'"'
         if p.get('fillRule'):attrs+=' fill-rule="'+esc(p['fillRule'])+'"'
         if kind=='circle':
@@ -152,6 +153,8 @@ def compose(prepared,layout,viewport,fragments=None):
             validate_fragment_font(root,fragment['fontPx'])
             binding=''
             if label['kind']=='TICK_LABEL':binding=(f' data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'+(f' data-tick-pi-value="{esc(label["tickPiValue"])}"' if label.get('tickPiValue') is not None else '')+(f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"' if label.get('tickLabelCallout') else ''))
+            # A plain-text or unit label of a plane mark keeps what it says on its group, so the observer can read it back from the final SVG.
+            if label.get('bindText'):binding+=(f' data-tex="{esc(label["tex"])}"' if label.get('math') else f' data-text="{esc(label["text"])}"')
             role=' data-visual-role="tick-label"' if label['kind']=='TICK_LABEL' else ''
             layers.append((90,index,f'<g id="{oid}" data-label-kind="{esc(label["kind"])}"{role} data-priority="{label.get("priority",2)}" data-font-px="{num(fragment["fontPx"])}" data-owner="{esc(fragment["owner"])}" data-fragment-sha="{esc(fragment["fragmentSha256"])}"{binding} transform="translate({num(box["x"])} {num(box["y"])})">'+fragment['svg']+'</g>'))
             continue

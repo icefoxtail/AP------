@@ -21,6 +21,7 @@ import * as sol from './solid-figure-v1.mjs';
 import * as scf from './stat-chart-v1.mjs';
 import * as sdg from './set-diagram-v1.mjs';
 import * as ell from './ellipse-figure-v1.mjs';
+import * as cfv from './container-fill-v1.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
@@ -97,6 +98,23 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       row.status='ARCHIVE_BOUND';row.sizeClass='full';
       return finish();
     }
+    if(authored.capability===cfv.FIGURE_CAPABILITY){
+      // A standalone vessel-and-water-height figure: the exact volumes derived once, composed, read back by its own observer, then the same Archive capture.
+      stage='container-fill';
+      const model=cfv.checkContainerFillPlan(authored),size=cfv.containerFillSize(model);
+      stage='measure';
+      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      stage='compose';
+      const composed=await cfv.composeContainerFillFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
+      stage='capture';
+      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
+      await bind({plan:authored,model,composed,capture});
+      row.status='ARCHIVE_BOUND';row.sizeClass='full';
+      return finish();
+    }
     if(authored.capability===ell.FIGURE_CAPABILITY){
       // A standalone axis-aligned ellipse figure: the exact foci/vertices/chords derived once, composed, read back by its own observer, then the same Archive capture.
       stage='ellipse';
@@ -152,12 +170,21 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
         framedPanels.push({caption:panel.caption,plan:panelPlan});panelModels.push(m.result);
         panelSizes.push({width:spec.viewport.width,height:spec.viewport.height});
       }
-      plan={...current,panels:framedPanels};const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),comp.compositePanelLayout(checked));
-      stage='measure';
-      measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${attempt?'-retry'+attempt:''}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      stage='compose';
-      composed=await comp.composeCompositeCandidate({plan,panels:framedPanels.map((panel,i)=>({plan:panel.plan,model:panelModels[i]})),identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});
+      plan={...current,panels:framedPanels};const stackLayout=comp.compositePanelLayout(checked);
+      // The caption rows are as tall as the captions need at the measured font (E7): a figure whose captions fit keeps the standard row, so its measured size is the
+      // first one; when the composed figure came out taller (or shorter) than measured, the policy is measured again for the size it really has and composed again.
+      let captionRow=comp.COMPOSITE_CAPTION_ROW;
+      for(let pass=0;pass<3;pass++){
+        const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),stackLayout,captionRow);
+        stage='measure';
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${attempt?'-retry'+attempt:''}${pass?'-size'+pass:''}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+        stage='compose';
+        composed=await comp.composeCompositeCandidate({plan,panels:framedPanels.map((panel,i)=>({plan:panel.plan,model:panelModels[i]})),identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});
+        const composedHeight=composed.status==='COMPOSED'?Number(/<svg [^>]*\sheight="([\d.]+)"/.exec(composed.svg)?.[1]):height;
+        if(composed.status!=='COMPOSED'||!(composedHeight>0)||Math.abs(composedHeight-height)<1e-6)break;
+        captionRow+=(composedHeight-height)/stackLayout.rows;
+      }
       const failed=composed.status==='COMPOSITE_PANEL_NOT_COMPOSED'&&composed.detail?.status==='LAYOUT_INVENTORY_INCOMPLETE'?composed.detail:null;
       if(!failed||attempt===2)break;
       // A plane panel has no graph band or y-squeeze fallback: its own observer reports the label it could not place, and the panel fails as written.

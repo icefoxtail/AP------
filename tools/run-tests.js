@@ -255,6 +255,10 @@ const requiredCommands = [
   {
     label: 'tests/generated-source-svg-namespace.test.cjs',
     args: ['--test', 'tests/generated-source-svg-namespace.test.cjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/catalog.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/catalog.test.mjs']
   }
 ];
 

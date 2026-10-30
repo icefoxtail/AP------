@@ -170,7 +170,7 @@ window.questionBank = [
       "45개"
     ],
     "answer": "④",
-    "solution": "분모가 $75$인 기약분수의 분자는\n$1$부터 $74$까지 중 $75$와 서로소인 수이다.\n\n$75=3\\times5^2$\n\n개수는\n\n$75\\left(1-\\dfrac13\\right)\\left(1-\\dfrac15\\right)$\n\n$=75\\times\\dfrac23\\times\\dfrac45$\n\n$=40$\n\n따라서 정답은 ④이다.",
+    "solution": "분모가 $75$인 기약분수의 분자는\n$1$부터 $74$까지 중 $75$와 서로소인 수이다.\n\n$75=3\\times5^2$이므로 $75$와 서로소가 아닌 수는\n$3$의 배수이거나 $5$의 배수이다.\n\n$1$부터 $74$까지에서\n\n$3$의 배수는 $3\\times1,\\ \\cdots,\\ 3\\times24$이므로 $24$개\n\n$5$의 배수는 $5\\times1,\\ \\cdots,\\ 5\\times14$이므로 $14$개\n\n$3$과 $5$의 공배수인 $15$의 배수는 $15\\times1,\\ \\cdots,\\ 15\\times4$이므로 $4$개\n\n$15$의 배수는 $3$의 배수와 $5$의 배수에서 두 번 세어졌으므로\n$3$의 배수 또는 $5$의 배수의 개수는\n\n$24+14-4=34$(개)\n\n따라서 $75$와 서로소인 수의 개수는\n\n$74-34=40$(개)\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -333,7 +333,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_팔마중_1학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 -4 이상 10/3 이하의 범위를 닫힌 끝점으로 굵게 나타내고, 그 범위 안의 정수 -4, -3, -2, -1, 0, 1, 2, 3을 점으로 찍은 그림이다.",
+    "solutionImageCaption": "-4 이상 10/3 이하의 범위 안에 놓인 정수를 수직선에 점으로 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -558,7 +562,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_팔마중_1학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 -26/5보다 크고 -11/5보다 작은 범위를 열린 끝점으로 굵게 나타내고, 그 범위 안의 정수 -5, -4, -3을 점으로 찍은 그림이다.",
+    "solutionImageCaption": "-26/5<x<-11/5의 범위 안에 놓인 정수를 수직선에 점으로 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -656,7 +664,7 @@ window.questionBank = [
       "$a=8, b=4$"
     ],
     "answer": "④",
-    "solution": "$30!$에서 $5$의 지수는\n\n$\\left\\lfloor\\dfrac{30}{5}\\right\\rfloor\n+\\left\\lfloor\\dfrac{30}{25}\\right\\rfloor$\n\n$=6+1=7$\n\n$7$의 지수는\n\n$\\left\\lfloor\\dfrac{30}{7}\\right\\rfloor=4$\n\n따라서\n\n$a=7,\\quad b=4$\n\n정답은 ④이다.",
+    "solution": "$1\\times2\\times3\\times\\cdots\\times30$에서\n소인수 $5$는 $5$의 배수에 들어 있다.\n\n$5$의 배수는 $5,\\ 10,\\ 15,\\ 20,\\ 25,\\ 30$의 $6$개이고,\n이 중 $25=5^2$에는 $5$가 $2$번 곱해져 있으므로 $5$가 하나 더 있다.\n\n$a=6+1=7$\n\n소인수 $7$은 $7$의 배수에 들어 있다.\n\n$7$의 배수는 $7,\\ 14,\\ 21,\\ 28$의 $4$개이고,\n$7^2=49>30$이므로 $7$이 $2$번 이상 곱해진 수는 없다.\n\n$b=4$\n\n따라서\n\n$a=7,\\quad b=4$\n\n정답은 ④이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -809,7 +817,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_팔마중_1학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 처음 위치 0과 두 학생 B, A의 위치를 왼쪽부터 차례로 점으로 찍은 그림으로, 두 학생의 위치 사이 간격이 위치의 차임을 보여 준다.",
+    "solutionImageCaption": "처음 위치 0에서 출발한 두 학생 A, B의 위치를 수직선에 나타낸 것이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

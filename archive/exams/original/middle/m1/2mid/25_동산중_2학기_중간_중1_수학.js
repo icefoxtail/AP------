@@ -481,7 +481,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 수직선에서 눈금 사이가 몇 등분되어 있는지를 먼저 확인한다.\nㄱ은 $-4$에 대응하는 점이므로 ①은 옳다.\nㄴ은 $-3$과 $-2$ 사이가 $3$등분된 눈금 중 $-3$에서 오른쪽으로 한 칸 간 점이므로 $-3+\\dfrac{1}{3}=-\\dfrac{8}{3}$에 대응한다. 즉 $-\\dfrac{7}{3}$이 아니므로 ②는 옳지 않다.\nㄷ은 $-1$과 $0$ 사이가 $4$등분된 눈금 중 $-1$에서 오른쪽으로 한 칸 간 점이므로 $-1+\\dfrac{1}{4}=-\\dfrac{3}{4}$에 대응한다. ③은 옳다.\nㄹ은 $+1$과 $+2$의 한가운데 점이므로 $+\\dfrac{3}{2}$에 대응한다. ④는 옳다.\nㅁ은 $+3$과 $+4$ 사이가 $3$등분된 눈금 중 $+3$에서 오른쪽으로 한 칸 간 점이므로 $3+\\dfrac{1}{3}=\\dfrac{10}{3}$에 대응한다. ⑤는 옳다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_동산중_2학기_중간_중1_수학/q12.png",
+    "image": "assets/images/25_동산중_2학기_중간_중1_수학/q12-source-repaired.svg",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -498,7 +498,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:8b6596aac6577db2a5eb361d33ce8b84a52265f7340024050bc1cf4d9a807120",
-    "difficultyEvidenceSha": "sha256:71fc1e1da5f22bb5cc0a349b5388e85219637f12bcc3e97874b69e90197d977c"
+    "difficultyEvidenceSha": "sha256:71fc1e1da5f22bb5cc0a349b5388e85219637f12bcc3e97874b69e90197d977c",
+    "solutionImage": "assets/images/25_동산중_2학기_중간_중1_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -4부터 +4까지 정수 눈금이 있고 -3과 -2 사이, +3과 +4 사이는 3등분, -1과 0 사이는 4등분, +1과 +2 사이는 2등분한 눈금이 있다. 눈금 위에 점 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ이 찍혀 있고 ㄷ은 -3/4, ㄹ은 3/2, ㅁ은 10/3이라고 적혀 있다.",
+    "solutionImageCaption": "수직선에서 -3과 -2 사이를 3등분한 눈금 한 칸은 1/3이므로 ㄴ은 -3에서 오른쪽으로 한 칸 간 점이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -580,7 +584,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_동산중_2학기_중간_중1_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -7, -2, 0에 대응하는 점이 찍혀 있고 -7에 대응하는 점이 -2에 대응하는 점보다 왼쪽에 있다.",
+    "solutionImageCaption": "수직선 위에서 -7에 대응하는 점은 -2에 대응하는 점보다 왼쪽에 있으므로 -7<-2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,

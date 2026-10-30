@@ -217,7 +217,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD에서 꼭짓점 A와 B의 외각(x+15°, 110°)은 붉은 호로, 네 내각(165°−x, 70°, 2x, 55°)은 파란 호로 표시한 그림이다. B의 내각은 외각 110°와 이웃해 70°이다.",
+    "solutionImageCaption": "B의 내각은 110°의 이웃각 70°, A의 내각은 x+15°의 이웃각 165°−x이고 네 내각의 합은 360°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -326,7 +330,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q06-solution.svg"
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 12 cm인 정육각형에서 왼쪽 꼭짓점을 중심으로 한 반지름 12 cm, 중심각 120°의 호를 그린 그림이다. 색칠한 부분의 둘레는 굵게 표시한 직선 변 4개와 길이 8π cm의 호이다.",
+    "solutionImageCaption": "호의 반지름은 12 cm, 중심각은 120°이고, 둘레는 직선 4×12 cm와 호 8π cm로 이루어진다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -380,7 +387,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 세 지름 AB, CD, EF가 만드는 여섯 개의 중심각을 마주 보는 각끼리 같은 색과 호 개수로 짝지어 15, 14, 3으로 표시하고, 호 DF를 굵게 하여 3 cm로 나타낸 그림이다.",
+    "solutionImageCaption": "마주 보는 각이 같아 15, 14, 3이 반대편에도 있으므로 전체는 64이고, 호 DF(3 cm)는 원 둘레의 3/64이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -418,7 +429,7 @@ window.questionBank = [
       "선분 $CF$와 선분 $EF$의 길이는 같다."
     ],
     "answer": "④",
-    "solution": "정오각형의 한 내각은 108°이고 모든 변의 길이는 같다.\nAB=AE이므로 이등변삼각형 ABE의 밑각은 (180°−108°)÷2=36°이다.\nAB=BC이므로 이등변삼각형 ABC에서 ∠BCA도 36°이다.\n\nF는 BE와 AC 위의 점이므로 ∠CBF=∠ABC−∠ABE=108°−36°=72°이고, ∠BCF=∠BCA=36°이다.\n따라서 삼각형 BFC의 내각의 합에서 ∠BFC=180°−72°−36°=72°이다.\n\n다른 진술은 모두 참이므로 75°라고 한 진술만 옳지 않다. 정답은 ④이다.", "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q08-solution.svg", "solutionImageAlt": "정오각형의 이등변삼각형과 대각선 교점 F의 각", "solutionImageCaption": "A와 B의 내각 108°, 이등변삼각형의 36° 및 ∠BFC=72°", "solutionImageSize": "full",
+    "solution": "정오각형의 한 내각은 108°이고 모든 변의 길이는 같다.\nAB=AE이므로 이등변삼각형 ABE의 밑각은 (180°−108°)÷2=36°이다.\nAB=BC이므로 이등변삼각형 ABC에서 ∠BCA도 36°이다.\n\nF는 BE와 AC 위의 점이므로 ∠CBF=∠ABC−∠ABE=108°−36°=72°이고, ∠BCF=∠BCA=36°이다.\n따라서 삼각형 BFC의 내각의 합에서 ∠BFC=180°−72°−36°=72°이다.\n\n다른 진술은 모두 참이므로 75°라고 한 진술만 옳지 않다. 정답은 ④이다.", "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q8-solution-v2.svg", "solutionImageAlt": "해설 그림: 정오각형 ABCDE에 대각선 AC, BE를 그어 교점 F를 잡고, ∠ABE와 ∠BCA는 36°, ∠CBF와 ∠BFC는 72°, ∠ABC는 108°로 같은 값끼리 같은 색과 호 개수로 표시한 그림이다.", "solutionImageCaption": "∠ABC=108°가 ∠ABE=36°와 ∠CBF=72°로 나뉘고, 삼각형 BFC에서 ∠BFC=72°이다.", "solutionImageSize": "medium",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "candidate_evidence",
@@ -488,7 +499,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변을 공유한 정오각형과 정육각형의 공유한 변 아래 꼭짓점에서 정오각형의 내각 108°, 정육각형의 내각 120°, ∠x를 서로 다른 색의 호로 표시한 그림이다. 세 각이 한 바퀴를 이룬다.",
+    "solutionImageCaption": "한 꼭짓점에서 108°, 120°, ∠x가 한 바퀴 360°를 이룬다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -1147,7 +1162,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$118^\\circ$",
     "solution": "삼각형의 꼭짓점에서 외각 x는 두 마주 보는 내각의 합이다.\n왼쪽 아래 내각은 표시된 외각 x+2°와 이웃하므로 180°−(x+2°)이다.\n따라서 x=180−(x+2)+58=236−x이고 2x=236이다.\n그러므로 x=118°이다.",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/s01-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q21-solution-v2.svg",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "candidate_evidence",
@@ -1163,7 +1178,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImageAlt": "해설 그림: 삼각형의 꼭대기에서 한 변의 연장선과 다른 변 사이의 외각 x를 붉은 호로, 왼쪽 아래 꼭짓점의 외각 x+2°를 초록 호로 표시하고, 두 내각 180°−(x+2°)와 58°를 파란 호로 표시한 그림이다.",
+    "solutionImageCaption": "꼭대기 외각 x는 이웃하지 않는 두 내각 180°−(x+2°)와 58°의 합이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -1198,7 +1216,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$14\\pi\\text{ cm}^2$",
     "solution": "그림에서 $AB=AD=BC=2\\text{ cm}$, $DC=4\\text{ cm}$이고 $AB\\parallel DC$이다.\nP의 중심각은 $60^\\circ$, 반지름은 2 cm이므로 $P=\\pi\\times2^2\\times\\dfrac{60}{360}=\\dfrac{2}{3}\\pi\\text{ cm}^2$이다.\nQ의 중심각은 $60^\\circ$, 반지름은 4 cm이므로 $Q=\\pi\\times4^2\\times\\dfrac{60}{360}=\\dfrac{8}{3}\\pi\\text{ cm}^2$이다.\nR의 중심각은 $120^\\circ$, 반지름은 6 cm이므로 $R=\\pi\\times6^2\\times\\dfrac{120}{360}=12\\pi\\text{ cm}^2$이다.\n\n따라서 $R+Q-P=12\\pi+\\dfrac{8}{3}\\pi-\\dfrac{2}{3}\\pi=14\\pi\\text{ cm}^2$이다.",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/s02-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q22-solution-v2.svg",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -1214,7 +1232,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImageAlt": "해설 그림: 사다리꼴 ADCB의 변 AB, DC를 연장해 만든 세 부채꼴 P, Q, R을 색을 달리해 칠한 그림이다. 중심각은 P 60°, Q 60°, R 120°로 호를 그려 표시했고 반지름은 각각 2 cm, 4 cm, 6 cm이다.",
+    "solutionImageCaption": "부채꼴 P, Q, R의 반지름은 2 cm, 4 cm, 6 cm이고 중심각은 60°, 60°, 120°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1247,7 +1268,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$6\\text{ cm}$",
     "solution": "원기둥의 반지름은 3 cm이고, 쇠공 3개의 지름이 각각 6 cm이므로 원기둥의 높이는 $18\\text{ cm}$이다.\n처음 물의 부피는 원기둥 부피에서 구 세 개의 부피를 뺀 값이다.\n$\\pi\\times3^2\\times18-3\\times\\dfrac{4}{3}\\pi\\times3^3=162\\pi-108\\pi=54\\pi\\text{ cm}^3$이다.\n\n쇠공을 꺼낸 뒤 물은 밑면 넓이 $9\\pi$인 원기둥을 채우므로 높이는 $54\\pi\\div9\\pi=6\\text{ cm}$이다.",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/s03-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q23-solution-v2.svg",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -1263,7 +1284,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImageAlt": "해설 그림: 왼쪽은 원기둥 모양의 통에 반지름 3cm인 쇠공 3개가 세로로 꼭 맞게 들어 있는 그림이고, 오른쪽은 공을 꺼낸 같은 통의 아래쪽을 물이 채운 높이 h를 나타낸 그림이다.",
+    "solutionImageCaption": "쇠공을 꺼낸 뒤 남은 물이 통의 아래쪽을 채우는 높이 h",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,

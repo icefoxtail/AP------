@@ -1,0 +1,442 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "F",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "R0",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "F"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "F",
+     "R0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "340"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "104"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "F",
+     "R0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "352"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "84"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "F",
+     "R0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "70"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "84"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-195"
+      },
+      {
+       "kind": "integer",
+       "value": "-10"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "193"
+      },
+      {
+       "kind": "integer",
+       "value": "-8"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "13"
+      },
+      {
+       "kind": "integer",
+       "value": "-205"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "lAD",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lBE",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "B",
+     "E"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "X",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lAD",
+     "lBE"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAF",
+   "refs": [
+    "A",
+    "F"
+   ]
+  },
+  {
+   "id": "sFP",
+   "refs": [
+    "F",
+    "P"
+   ]
+  },
+  {
+   "id": "sPE",
+   "refs": [
+    "P",
+    "E"
+   ]
+  },
+  {
+   "id": "sAX",
+   "refs": [
+    "A",
+    "X"
+   ]
+  },
+  {
+   "id": "sXD",
+   "refs": [
+    "X",
+    "D"
+   ]
+  },
+  {
+   "id": "sBX",
+   "refs": [
+    "B",
+    "X"
+   ]
+  },
+  {
+   "id": "sXE",
+   "refs": [
+    "X",
+    "E"
+   ]
+  },
+  {
+   "id": "sXF",
+   "refs": [
+    "X",
+    "F"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "X",
+  "P"
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aF",
+    "refs": [
+     "A",
+     "F",
+     "E"
+    ],
+    "value": 20,
+    "arcs": 1,
+    "style": "ARC",
+    "factRole": "GIVEN",
+    "label": "20"
+   },
+   {
+    "id": "aT1",
+    "refs": [
+     "B",
+     "X",
+     "D"
+    ],
+    "noLabel": true,
+    "arcs": 1,
+    "equalGroup": 1,
+    "style": "ARC",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aT2",
+    "refs": [
+     "A",
+     "X",
+     "E"
+    ],
+    "label": "t",
+    "arcs": 1,
+    "equalGroup": 1,
+    "style": "ARC",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aA",
+    "refs": [
+     "F",
+     "A",
+     "X"
+    ],
+    "noLabel": true,
+    "arcs": 1,
+    "style": "ARC",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aE",
+    "refs": [
+     "F",
+     "E",
+     "X"
+    ],
+    "noLabel": true,
+    "arcs": 1,
+    "style": "ARC",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aB",
+    "refs": [
+     "X",
+     "B",
+     "C"
+    ],
+    "noLabel": true,
+    "arcs": 1,
+    "style": "ARC",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aC",
+    "refs": [
+     "B",
+     "C",
+     "D"
+    ],
+    "noLabel": true,
+    "arcs": 1,
+    "style": "ARC",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aD",
+    "refs": [
+     "C",
+     "D",
+     "X"
+    ],
+    "noLabel": true,
+    "arcs": 1,
+    "style": "ARC",
+    "factRole": "GIVEN"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rBXDC",
+    "fill": "LIGHT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "shapes": [
+     {
+      "polygon": [
+       "B",
+       "X",
+       "D",
+       "C"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "caption": "두 직선 AD, BE의 교점 X를 잡고 XF를 그으면 ∠BXD와 ∠AXE는 맞꼭지각 t이고, 사각형 BXDC의 내각의 합과 삼각형 AXF, EXF의 내각의 합을 따로 계산할 수 있다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "∠AFE=20°이고 ∠A, ∠B, ∠C, ∠D, ∠E는 오각별 모양 그림의 각",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 직선 AD, BE의 교점 X와 보조선 XF",
+  "맞꼭지각 ∠BXD=∠AXE=t",
+  "사각형 BXDC"
+ ],
+ "sourceQuote": "두 직선 $AD$와 $BE$가 만나는 점을 $X$라 놓고",
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 600
+ },
+ "hiddenPointNames": [
+  "P"
+ ],
+ "hiddenPointStyle": "NONE"
+}

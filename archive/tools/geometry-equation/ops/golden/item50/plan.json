@@ -1,0 +1,535 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "Q",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "X",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "Q"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "P",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "Q",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "10"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "65"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "PX",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "P"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "Q",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "65"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "Q"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P",
+     "PX"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "65"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "P"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Qlow",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "Q",
+     "P"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "2"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Ctop",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P",
+     "PX"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "8"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "65"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Ll",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "Q"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "-8"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Lr",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "Q"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "16"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Pl",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "P"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "-12"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Pr",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "P"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "12"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sQA",
+   "refs": [
+    "Q",
+    "A"
+   ]
+  },
+  {
+   "id": "sAP",
+   "refs": [
+    "A",
+    "P"
+   ]
+  },
+  {
+   "id": "sPC",
+   "refs": [
+    "P",
+    "C"
+   ]
+  },
+  {
+   "id": "sCt",
+   "refs": [
+    "C",
+    "Ctop"
+   ]
+  },
+  {
+   "id": "sQl",
+   "refs": [
+    "Qlow",
+    "Q"
+   ]
+  },
+  {
+   "id": "sLl",
+   "refs": [
+    "Ll",
+    "Q"
+   ]
+  },
+  {
+   "id": "sQB",
+   "refs": [
+    "Q",
+    "B"
+   ]
+  },
+  {
+   "id": "sBr",
+   "refs": [
+    "B",
+    "Lr"
+   ]
+  },
+  {
+   "id": "sPl",
+   "refs": [
+    "Pl",
+    "P"
+   ],
+   "emphasis": "ACCENT"
+  },
+  {
+   "id": "sPD",
+   "refs": [
+    "P",
+    "D"
+   ],
+   "emphasis": "ACCENT"
+  },
+  {
+   "id": "sDr",
+   "refs": [
+    "D",
+    "Pr"
+   ],
+   "emphasis": "ACCENT"
+  }
+ ],
+ "displayPoints": [
+  "Q",
+  "P",
+  "A",
+  "B",
+  "C",
+  "D",
+  "Qlow",
+  "Ctop",
+  "Ll",
+  "Lr",
+  "Pl",
+  "Pr"
+ ],
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 520
+ },
+ "caption": "같은 반지름의 호를 그리므로 PC=PD=QA=QB이고, ∠AQB와 ∠CPD는 같은 방법으로 옮겨 그린 동위각이므로 크기가 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "l ∥ PD, 같은 반지름의 호 PC=PD=QA=QB, ∠AQB=∠CPD",
+   "mappedTo": [
+    "Q",
+    "P",
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "PC, PD, QA, QB가 같은 반지름임을 같은 눈금으로, ∠AQB=∠CPD를 같은 호 표시로 보여 준다."
+ ],
+ "sourceQuote": "직선 $l$ 위에 있지 않은 한 점 $P$를 지나고 직선 $l$에 평행한",
+ "planeMarks": {
+  "traces": [
+   {
+    "id": "tQ",
+    "center": "Q",
+    "radius": {
+     "point": "B"
+    },
+    "through": [
+     "A",
+     "B"
+    ],
+    "spanDeg": 80,
+    "label": "㉤",
+    "labelKind": "TEXT"
+   },
+   {
+    "id": "tA",
+    "center": "A",
+    "radius": {
+     "point": "B"
+    },
+    "through": [
+     "B"
+    ],
+    "spanDeg": 60,
+    "label": "㉥",
+    "labelKind": "TEXT"
+   },
+   {
+    "id": "tP",
+    "center": "P",
+    "radius": {
+     "point": "D"
+    },
+    "through": [
+     "C",
+     "D"
+    ],
+    "spanDeg": 80,
+    "label": "㉡",
+    "labelKind": "TEXT"
+   },
+   {
+    "id": "tC",
+    "center": "C",
+    "radius": {
+     "point": "D"
+    },
+    "through": [
+     "D"
+    ],
+    "spanDeg": 60,
+    "label": "㉢",
+    "labelKind": "TEXT"
+   }
+  ],
+  "equalLengths": [
+   {
+    "id": "eR",
+    "count": 1,
+    "segments": [
+     "sQA",
+     "sQB",
+     "sPC",
+     "sPD"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "id": "aQ",
+    "refs": [
+     "B",
+     "Q",
+     "A"
+    ],
+    "arcs": 2,
+    "equalGroup": 1,
+    "noLabel": true
+   },
+   {
+    "id": "aP",
+    "refs": [
+     "D",
+     "P",
+     "C"
+    ],
+    "arcs": 2,
+    "equalGroup": 1,
+    "noLabel": true
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "nl",
+    "ownerSegment": "sBr",
+    "text": "l"
+   },
+   {
+    "id": "nO1",
+    "ownerSegment": "sCt",
+    "text": "㉠",
+    "labelKind": "TEXT"
+   },
+   {
+    "id": "nO4",
+    "ownerSegment": "sDr",
+    "text": "㉣",
+    "labelKind": "TEXT"
+   }
+  ]
+ },
+ "hiddenPointNames": [
+  "Qlow",
+  "Ctop",
+  "Ll",
+  "Lr",
+  "Pl",
+  "Pr"
+ ]
+}

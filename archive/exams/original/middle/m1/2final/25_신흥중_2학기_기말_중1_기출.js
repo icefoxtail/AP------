@@ -40,7 +40,11 @@ window.questionBank = [
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 1,
     "sourceQuestionNo": "1",
-    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60"
+    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 원 O에서 부채꼴 OAB와 중심각 ∠AOB, 현 AB와 그 위쪽 활꼴, 지름 CD와 반원을 세 그림으로 나누어 색으로 구분해 보여 준다.",
+    "solutionImageCaption": "부채꼴, 활꼴, 현, 지름, 반원의 뜻을 한 원에서 비교한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -72,7 +76,7 @@ window.questionBank = [
     "answer": "①, ⑤",
     "solution": "[키포인트] 같은 원에서 호의 길이와 부채꼴의 넓이는 중심각에 정비례하지만, 현과 삼각형의 넓이는 그렇지 않다.\n\n먼저 중심각의 비를 구하면 $60:20=3:1$이다. 이 비를 그대로 사용할 수 있는 대상부터 구별한다.\n\n① 같은 원의 호의 길이는 중심각에 비례하므로 $\\overset{\\frown}{AB}:\\overset{\\frown}{CD}=60:20=3:1$이다. 따라서 참이다.\n\n② 현은 두 끝점을 곧게 이은 선분이다. $60^\\circ$의 호를 $20^\\circ$씩 셋으로 나누면 그에 대응하는 세 현의 길이는 모두 $\\overline{CD}$와 같다. 그러나 두 끝점을 곧게 잇는 $\\overline{AB}$는 그 세 현을 차례로 이은 꺾은선보다 짧다. 따라서 $\\overline{AB}\\lt3\\overline{CD}$이므로 거짓이다.\n\n③ 삼각형 $AOB$의 두 변 $OA,OB$는 반지름이다. 중심각 $60^\\circ$의 부채꼴을 세 개의 $20^\\circ$ 부채꼴로 나누고 각 부채꼴의 두 반지름을 이으면, 넓이가 $\\triangle COD$와 같은 삼각형 세 개가 생긴다. 이 세 삼각형의 합은 $\\triangle AOB$보다 크다. 따라서 $\\triangle AOB$의 넓이는 $3\\times\\triangle COD$의 넓이와 같지 않아 거짓이다.\n\n④ 중심각 $60^\\circ$의 부채꼴 $AOB$의 넓이는 원 전체 넓이의 $\\dfrac16$이다. $\\triangle AOB$는 이 부채꼴 안에 있고 그보다 넓이가 작다. 따라서 원의 넓이는 $\\triangle AOB$ 넓이의 $6$배보다 크므로 거짓이다.\n\n⑤ 두 부채꼴의 넓이도 중심각의 비와 같다. $\\dfrac{20}{60}=\\dfrac13$이므로 참이다.\n\n따라서 정답은 ①, ⑤이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q2.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q2-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q2-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
@@ -82,9 +86,9 @@ window.questionBank = [
     "sourcePage": 1,
     "sourceQuestionNo": "2",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "호와 부채꼴: 중심각 3 : 1, 호의 길이도 3 : 1, 넓이도 3 : 1",
-    "solutionImageCaption": "①, ⑤"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 원 O에서 60° 중심각의 부채꼴 AOB와 20° 중심각의 부채꼴 COD의 호를 비교하고, 60°를 20°씩 셋으로 나눈 세 현이 CD와 같으며 현 AB가 꺾은선보다 짧고 세 삼각형 합이 삼각형 AOB보다 넓은 부분이 색으로 드러난다.",
+    "solutionImageCaption": "중심각의 비 3:1은 호와 부채꼴에는 그대로, 현과 삼각형에는 그대로 적용되지 않음을 보여 준다."
   },
   {
     "id": 3,
@@ -116,7 +120,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 반원에서 반지름 두 개가 같은 이등변삼각형을 찾고, 평행선으로 작은 중심각을 구한다.\n\n$OA=OD$는 같은 원의 반지름이므로 $\\triangle AOD$는 이등변삼각형이다.\n$\\angle DAO=36^\\circ$이므로 밑각 $\\angle ADO$도 $36^\\circ$이다.\n\n삼각형 내각의 합을 이용하면\n$\\angle AOD=180^\\circ-(36^\\circ+36^\\circ)=108^\\circ$이다.\n\n그림에서 $AD\\parallel OC$이고 $A,O,B$는 한 직선 위에 있으므로 평행선에서 생기는 각의 크기를 비교하면 $\\angle BOC=36^\\circ$이다.\n\n호 $AD$와 호 $BC$는 같은 원의 호이므로 길이의 비는 각각의 중심각의 비와 같다.\n$\\overset{\\frown}{BC}:24=36:108=1:3$이므로\n$\\overset{\\frown}{BC}=24\\div3=8\\rm\\,cm$이다.\n\n따라서 정답은 ②이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q3.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q3-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q3-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
@@ -126,9 +130,9 @@ window.questionBank = [
     "sourcePage": 1,
     "sourceQuestionNo": "3",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "평행선과 중심각: ∠AOD = 108°, ∠BOC = 36°, BC 호 = 24×36/108",
-    "solutionImageCaption": "8 cm"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 반원 O에서 AD∥OC이고 ∠DAO=∠ADO=36°, ∠AOD=108°, ∠BOC=36°를 표시하고, 호 AD=24cm와 호 BC를 굵게 보이며 두 부채꼴 AOD와 BOC를 색칠한 그림이다.",
+    "solutionImageCaption": "OA=OD이므로 ∠ADO=∠DAO=36°, ∠AOD=108°이고 AD∥OC에서 ∠BOC=36°이므로 호 AD : 호 BC = 108 : 36이다."
   },
   {
     "id": 4,
@@ -160,7 +164,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 색칠 부분의 경계는 큰 호, 작은 호, 반지름 방향의 직선 두 개로 이루어진다. 안쪽의 빈 부분은 넓이에 넣지 않는다.\n\n큰 부채꼴의 반지름은 $8\\rm\\,cm$, 작은 부채꼴의 반지름은 $4\\rm\\,cm$, 중심각은 모두 $45^\\circ$이다.\n\n큰 호의 길이는 $2\\pi\\times8\\times\\dfrac{45}{360}=2\\pi\\rm\\,cm$이다.\n작은 호의 길이는 $2\\pi\\times4\\times\\dfrac{45}{360}=\\pi\\rm\\,cm$이다.\n\n두 호를 잇는 직선 부분은 각각 $8-4=4\\rm\\,cm$이므로 합계 $4+4=8\\rm\\,cm$이다.\n\n따라서 색칠 부분의 둘레는\n$2\\pi+\\pi+8=3\\pi+8\\rm\\,cm$이므로 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q4.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q4-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q4-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [],
@@ -170,9 +174,9 @@ window.questionBank = [
     "sourcePage": 1,
     "sourceQuestionNo": "4",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "안쪽·바깥쪽 원호: 바깥 호 = 2π, 안쪽 호 = π, 직선 두 부분 = 8",
-    "solutionImageCaption": "3π+8 cm"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 중심각 45°, 안쪽 반지름 4cm, 바깥 반지름 8cm인 부채꼴 모양의 색칠한 부분에서 바깥 호 2π cm와 안쪽 호 π cm, 빨간 직선 두 개 4cm와 4cm를 구분해 보여 준다.",
+    "solutionImageCaption": "색칠한 부분의 둘레는 두 호와 두 직선으로 이루어진다."
   },
   {
     "id": 5,
@@ -257,7 +261,12 @@ window.questionBank = [
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 2,
     "sourceQuestionNo": "6",
-    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60"
+    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 정칠각뿔 세 개를 나란히 그린 그림. 첫째는 밑면의 모서리 7개를 빨갛게, 둘째는 꼭짓점으로 향하는 옆 모서리 7개를 빨갛게 표시했고, 셋째는 밑면 1개(진한 파랑)와 옆면 7개(연한 파랑)를 색으로 나누어 보인다.",
+    "solutionImageCaption": "칠각뿔의 모서리는 밑면 7개와 옆 모서리 7개로 14개이고, 면은 밑면 1개와 옆면 7개로 8개이며 꼭짓점도 8개이다.",
+    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q6-solution-v2.svg"
   },
   {
     "id": 7,
@@ -298,7 +307,12 @@ window.questionBank = [
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 2,
     "sourceQuestionNo": "7",
-    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60"
+    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정이십면체와 정육면체 세 개를 나란히 그린 그림. 정이십면체는 한 꼭짓점에 모인 정삼각형 5개를 주황색으로 칠했다. 정육면체 세 개는 각각 위쪽 모서리 4개, 아래쪽 모서리 4개, 위아래를 잇는 모서리 4개를 빨갛게 표시했다.",
+    "solutionImageCaption": "한 꼭짓점에 정삼각형이 5개 모이는 정다면체는 정이십면체이고, 정육면체의 모서리는 위쪽 4개, 아래쪽 4개, 위아래를 잇는 4개로 모두 12개이다.",
+    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution-v2.svg"
   },
   {
     "id": 8,
@@ -371,7 +385,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 삼각기둥의 겉넓이는 삼각형 밑면 두 개와 직사각형 옆면 세 개의 넓이를 더한다.\n\n그림의 밑면은 서로 수직인 두 변이 $3\\rm\\,cm$, $4\\rm\\,cm$인 직각삼각형이다. 따라서 밑면 한 개의 넓이는\n$\\dfrac{3\\times4}{2}=6\\rm\\,cm^2$이다.\n\n다른 변은 $5\\rm\\,cm$이고, 기둥의 높이는 $6\\rm\\,cm$이다. 옆면 세 개의 가로 길이의 합은 밑면 둘레와 같으므로\n옆넓이 $=(3+4+5)\\times6=72\\rm\\,cm^2$이다.\n\n따라서 겉넓이는 $2\\times6+72=84\\rm\\,cm^2$이다.\n\n정답은 ②이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q9.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q9-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q9-solution-v3.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
     "crossConceptKeys": [],
@@ -381,9 +395,9 @@ window.questionBank = [
     "sourcePage": 2,
     "sourceQuestionNo": "9",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "삼각기둥 겉넓이: 삼각형 둘 = 12, 옆면 셋 = 72, 겉넓이 = 12+72",
-    "solutionImageCaption": "84 cm²"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 삼각기둥의 전개도. 합동인 직각삼각형 밑면 2개(파랑)와 세로 6cm, 가로 5cm, 4cm, 3cm인 직사각형 옆면 3개가 이어져 있고, 직각삼각형의 직각 표시와 각 면의 넓이(밑면 6cm², 옆면 30cm², 24cm², 18cm²)가 적혀 있다.",
+    "solutionImageCaption": "삼각기둥은 밑면 2개와 가로가 3, 4, 5이고 세로가 6인 직사각형 옆면 3개로 펼쳐진다."
   },
   {
     "id": 10,
@@ -415,7 +429,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 반구의 곡면을 합하면 구의 겉넓이가 되고, 원기둥에서는 옆면만 바깥에 드러난다.\n\n반지름은 $4\\rm\\,cm$, 원기둥 높이는 $6\\rm\\,cm$이다.\n\n두 반구의 곡면 넓이의 합은 구의 겉넓이와 같으므로\n$4\\pi\\times4^2=64\\pi\\rm\\,cm^2$이다.\n\n원기둥의 옆넓이는\n$2\\pi\\times4\\times6=48\\pi\\rm\\,cm^2$이다.\n\n붙인 두 원형 면은 겉으로 드러나지 않으므로 더하지 않는다.\n따라서 겉넓이는\n$64\\pi+48\\pi=112\\pi\\rm\\,cm^2$이므로 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q10.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q10-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q10-solution-v3.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
     "crossConceptKeys": [],
@@ -425,9 +439,9 @@ window.questionBank = [
     "sourcePage": 3,
     "sourceQuestionNo": "10",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "겉면만 계산: 반구 둘 = 구 1개, 곡면 넓이 = 64π, 원기둥 옆넓이 = 48π",
-    "solutionImageCaption": "112π cm²"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 두 반구를 합친 반지름 4cm인 구, 원기둥 옆면의 전개도(가로 8π cm, 세로 6 cm, 위아래 원은 겉면이 아니라 점선과 회색으로 표시), 맞붙인 반구의 단면 두 개를 나란히 보여, 곡면 두 개와 옆면만 겉넓이에 넣고 맞붙은 원은 제외함을 나타낸 그림.",
+    "solutionImageCaption": "두 반구의 곡면은 구 하나의 겉면이고, 원기둥은 옆면(가로 8π, 세로 6인 직사각형)만 겉넓이에 들어가며 맞붙인 원은 제외한다."
   },
   {
     "id": 11,
@@ -459,7 +473,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 기둥과 뿔은 같은 정사각형 밑면을 공유한다. 각각의 부피를 구한 다음 더한다.\n\n밑면은 한 변이 $6\\rm\\,cm$인 정사각형이므로 넓이는\n$6\\times6=36\\rm\\,cm^2$이다.\n\n사각기둥의 높이는 $3\\rm\\,cm$이므로 부피는\n$36\\times3=108\\rm\\,cm^3$이다.\n\n사각뿔의 높이 $4\\rm\\,cm$는 꼭짓점에서 밑면으로 내린 수선의 길이이다. 옆으로 기울어진 모서리 길이와 혼동하지 않는다.\n사각뿔의 부피는 $\\dfrac13\\times36\\times4=48\\rm\\,cm^3$이다.\n\n두 도형은 내부에서 겹치지 않고 밑면만 맞닿아 있으므로 부피를 더하면 된다.\n$108+48=156\\rm\\,cm^3$이다.\n\n따라서 정답은 ③이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q11.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q11-solution-v3.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
     "crossConceptKeys": [],
@@ -469,9 +483,9 @@ window.questionBank = [
     "sourcePage": 3,
     "sourceQuestionNo": "11",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "기둥과 뿔: 기둥 = 6×6×3, 뿔 = 6×6×4÷3, 108+48",
-    "solutionImageCaption": "156 cm³"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 사각기둥과 사각뿔을 나누어 보인 그림. 왼쪽 사각기둥은 밑면이 한 변 6cm인 정사각형이고 높이는 3cm이며, 오른쪽 사각뿔은 같은 정사각형 밑면(한 변 6cm)과 꼭짓점에서 밑면에 내린 수선의 길이 4cm를 보인다. 두 입체가 맞닿는 정사각형 밑면은 파랗게 칠했다.",
+    "solutionImageCaption": "사각기둥(밑면 6×6, 높이 3)과 사각뿔(밑면 6×6, 수선의 길이 4)로 나누어 부피를 구한다."
   },
   {
     "id": 12,
@@ -592,7 +606,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 줄기와 잎 그림에서는 잎 하나가 학생 한 명을 뜻하고, 줄기는 십의 자리, 잎은 일의 자리를 나타낸다.\n\n잎의 개수는 줄기 $0,1,2,3,4$에서 차례로 $6,8,4,1,1$개이므로 전체는 $6+8+4+1+1=20$명이다.\n\n① 잎이 가장 많은 줄기는 $1$이므로 참이다.\n② 학생은 모두 $20$명으로 참이다.\n③ $20$권 이상은 줄기 $2,3,4$에 해당하므로 $4+1+1=6$명으로 참이다.\n④ 최댓값은 $42$권, 최솟값은 $2$권이므로 차는 $42-2=40$권으로 참이다.\n\n⑤ '10번째로 많이'는 큰 값부터 세어 10번째이다. 학생이 20명이므로 작은 값부터는 $20-10+1=11$번째이다. 줄기 0에 6명이 있으므로 줄기 1의 5번째 잎을 찾는다.\n줄기 1의 잎을 작은 순서로 나열하면 $0,0,1,1,2,2,2,3$이다. 5번째 잎은 $2$이므로 기록은 $12$권이다.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q14.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q14-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -602,9 +616,9 @@ window.questionBank = [
     "sourcePage": 4,
     "sourceQuestionNo": "14",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "큰 수부터 열 번째: 전체 학생 = 20명, 10번째 큰 수는, 11번째 작은 수",
-    "solutionImageCaption": "12권"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 대출한 책의 수를 나타낸 줄기와 잎 그림. 큰 값부터 10번째까지의 잎 10개를 동그라미로 묶고 큰 값부터 센 순번 1~10을 동그라미 위에 썼으며, 줄기 4, 3, 2의 잎 1개, 1개, 4개와 줄기 1에서 큰 쪽 4개를 괄호로 묶어 개수를 쓴 그림",
+    "solutionImageCaption": "큰 값부터 10번째까지의 잎에 순번을 쓰고 줄기별 개수를 묶은 줄기와 잎 그림"
   },
   {
     "id": 15,
@@ -637,7 +651,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 10장 이상인 학생의 수부터 구하고 남은 학생 수에서 5장 미만을 뺀다.\n\n전체 학생이 $30$명이므로 10장 이상인 학생은\n$30\\times\\dfrac{70}{100}=21$명이다.\n\n10장 미만인 학생은\n$30-21=9$명이다.\n\n그중 $0$장 이상 $5$장 미만인 학생은 $3$명이므로\n$5$장 이상 $10$장 미만인 학생은\n$9-3=6$명이다.\n\n따라서 정답은 ①이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q15.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q15-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
     "crossConceptKeys": [],
@@ -647,9 +661,9 @@ window.questionBank = [
     "sourcePage": 4,
     "sourceQuestionNo": "15",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "모르는 도수 채우기: 10장 이상 = 21명, 10장 미만 = 9명, 5~10장 = 9−3",
-    "solutionImageCaption": "6명"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 칭찬 스티커 수의 히스토그램. 0~5장, 5~10장 막대는 연하게, 10장 이상인 10~15, 15~20, 20~25장 세 막대는 진하게 칠해 전체 30명 중 10장 이상 학생을 구별한 그림",
+    "solutionImageCaption": "10장 이상인 세 계급을 진하게 표시한 칭찬 스티커 수 히스토그램"
   },
   {
     "id": 16,
@@ -682,7 +696,7 @@ window.questionBank = [
     "answer": "③, ⑤",
     "solution": "[키포인트] 히스토그램에서는 막대의 너비가 계급의 크기이고 막대의 높이가 도수이다. '몇 번째로 많이'는 오른쪽 계급부터 센다.\n\n그림의 계급은 $0$ 이상 $10$ 미만부터 $60$ 이상 $70$ 미만까지 7개이고, 계급의 크기는 모두 $10\\rm\\,km$이다.\n왼쪽부터 도수는 $2,5,8,4,2,3,1$명이다.\n\n① 계급이 7개이므로 참이다.\n② 계급 너비가 $10\\rm\\,km$이므로 참이다.\n③ $20\\rm\\,km$ 미만은 앞 두 계급이므로 $2+5=7$명이다. 8명이라는 설명은 거짓이다.\n④ 가장 작은 도수는 $1$명이며 $60$ 이상 $70$ 미만 계급이므로 참이다.\n⑤ 거리 순서로 가장 큰 계급에 1명, 그다음 계급인 $50$ 이상 $60$ 미만에 3명이 있다. 따라서 4번째로 많이 걸은 회원은 두 번째 계급에 속하고 그 계급의 도수는 3명이다. 2명이 아니므로 거짓이다.\n\n따라서 정답은 ③, ⑤이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q16.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q16-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q16-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -692,9 +706,9 @@ window.questionBank = [
     "sourcePage": 4,
     "sourceQuestionNo": "16",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "두 조건 재검토: 20 km 미만 = 2+5, 20 km 미만 = 7명, 4번째 큰 기록",
-    "solutionImageCaption": "50~60 km: 3명"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 걸은 거리의 히스토그램(도수 2, 5, 8, 4, 2, 3, 1명). 20 km 미만인 왼쪽 두 막대(2명, 5명)와 큰 쪽부터 센 오른쪽 두 막대(1명, 3명)를 진하게 표시한 그림",
+    "solutionImageCaption": "20 km 미만 계급과 큰 쪽부터 세는 계급을 진하게 표시한 히스토그램"
   },
   {
     "id": 17,
@@ -727,7 +741,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 5번째로 큰 기록이 어느 계급에 속하는지 오른쪽부터 누적 도수를 세고, 그 계급의 상대도수를 백분율로 바꾼다.\n\n그래프에서 $0$ 이상 $10$ 미만부터 $40$ 이상 $50$ 미만까지 도수는 차례로 $2,3,5,6,4$명이다.\n전체 학생 수는 $2+3+5+6+4=20$명이다.\n\n가장 큰 기록인 $40$개 이상 $50$개 미만 계급에 4명이 있다. 따라서 1번째부터 4번째까지의 학생이 이 계급에 속하고, 5번째 학생은 바로 왼쪽의 $30$개 이상 $40$개 미만 계급에 속한다.\n\n따라서 $a=30$, $b=40$이다. 이 계급의 도수는 6명이므로\n$c=\\dfrac6{20}\\times100=30$이다.\n\n$a+b+c=30+40+30=100$이다.\n\n따라서 정답은 ①이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q17.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q17-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q17-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -737,9 +751,9 @@ window.questionBank = [
     "sourcePage": 4,
     "sourceQuestionNo": "17",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "5번째로 많은 기록: 40~50 계급에 4명, 다음은 30~40 계급, 그 계급 6/20 = 30%",
-    "solutionImageCaption": "30+40+30=100"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 팔 굽혀 펴기 기록의 히스토그램과 도수분포다각형(도수 2, 3, 5, 6, 4명). 큰 기록 쪽의 30~40개(6명), 40~50개(4명) 두 막대를 진하게 표시해 5번째 학생의 계급을 찾게 한 그림",
+    "solutionImageCaption": "큰 쪽의 두 계급을 진하게 표시한 히스토그램과 도수분포다각형"
   },
   {
     "id": 18,
@@ -772,7 +786,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 상대도수는 '그 학교 전체 학생 중 해당 계급에 속한 비율'이다. 실제 학생 수와 상대도수는 구별해야 한다.\n\n① 각 학교의 전체 학생 수는 그래프에 주어져 있지 않다. 상대도수 그래프만 보고 같다고 할 수 없으므로 거짓이다.\n\n② $20$시간 미만의 상대도수 합은 A 학교가 $0.10+0.25+0.35=0.70$, B 학교가 $0.10+0.15+0.25=0.50$이다. A의 비율이 오히려 더 크고 두 학교의 전체 학생 수도 모르므로 A의 실제 인원이 적다고 단정할 수 없다. 거짓이다.\n\n③ A는 $10$시간 이상 $20$시간 미만에 상대도수가 많이 모여 있고, B는 $20$시간 이상인 계급 쪽의 상대도수가 상대적으로 더 크다. 따라서 A가 더 긴 시간에 몰려 있다는 말은 거짓이다.\n\n④ A 학교에서 $20$시간 이상인 비율은 $0.20+0.10=0.30$이다. 전체가 200명이면 $200\\times0.30=60$명이므로 참이다.\n\n⑤ B 학교의 $20$시간 이상 $25$시간 미만 상대도수 $0.30$을 백분율로 바꾸면 $0.30\\times100=30\\%$이다. $0.3\\%$가 아니므로 거짓이다.\n\n따라서 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q18.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q18-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -782,9 +796,9 @@ window.questionBank = [
     "sourcePage": 5,
     "sourceQuestionNo": "18",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "상대도수의 합: A: 20시간 이상, 0.20+0.10 = 0.30, 200×0.30",
-    "solutionImageCaption": "60명"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: A, B 두 중학교의 여가 활동 시간에 대한 상대도수 분포를 나타낸 두 도수분포다각형. A 중학교(실선)에서 20시간 이상인 두 계급의 점을 동그라미로 표시해 상대도수 0.2, 0.1을 쓰고 그 합 0.30을 괄호로 묶은 그림",
+    "solutionImageCaption": "A 중학교의 20시간 이상 두 계급의 상대도수와 합을 나타낸 두 도수분포다각형"
   },
   {
     "id": 19,
@@ -811,7 +825,7 @@ window.questionBank = [
     "answer": "$50\\pi-100\\rm\\,cm^2$",
     "solution": "[키포인트] 색칠된 렌즈 모양은 반지름이 $10\\rm\\,cm$인 두 사분원이 겹치는 부분이다. 두 사분원의 넓이 합에서 정사각형의 넓이를 빼면 겹친 부분만 남는다.\n\n정사각형의 한 변이 $10\\rm\\,cm$이므로 넓이는 $10\\times10=100\\rm\\,cm^2$이다.\n\n그림에서 양쪽의 곡선은 각각 반지름 $10\\rm\\,cm$, 중심각 $90^\\circ$인 사분원의 호이다.\n사분원 하나의 넓이는 $\\pi\\times10^2\\times\\dfrac{90}{360}=25\\pi\\rm\\,cm^2$이다.\n\n두 사분원은 합쳐서 정사각형 전체를 덮고, 색칠한 부분에서는 서로 겹친다. 따라서 두 사분원의 넓이를 더하면 색칠한 부분을 두 번 센 것이다.\n\n색칠 부분의 넓이는\n$(25\\pi+25\\pi)-100=50\\pi-100\\rm\\,cm^2$이다.\n\n따라서 구하는 넓이는 $(50\\pi-100)\\rm\\,cm^2$이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q19.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q19-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q19-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [],
@@ -821,9 +835,9 @@ window.questionBank = [
     "sourcePage": 5,
     "sourceQuestionNo": "서술형 1",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "두 사분원의 공통부분: 사분원 하나 = 25π, 두 개를 합한 뒤, 정사각형 100을 뺌",
-    "solutionImageCaption": "50π−100 cm²"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 한 변이 10cm인 정사각형 안에서 두 사분원의 호가 만드는 렌즈 모양 S를 진하게, 두 사분원이 덮는 나머지 두 부분을 각각 25π-S로 표시해 겹침 구조를 보여 준다.",
+    "solutionImageCaption": "두 사분원이 정사각형을 덮고 렌즈 모양이 겹친다."
   },
   {
     "id": 20,
