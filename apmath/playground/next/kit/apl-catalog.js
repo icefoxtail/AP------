@@ -620,6 +620,7 @@ window.APLab.catalog = {
     "사잇값 정리(IVT)"
    ],
    "legacy": "labs/미적분1/함수의 극한·연속.html",
+   "next": "next/labs/calc1-limits.html",
    "glyph": "<path d=\"M8 52 Q24 52 36 28\"/><path d=\"M44 28 Q56 52 72 52\"/><circle cx=\"40\" cy=\"28\" r=\"4\" stroke=\"currentColor\" fill=\"var(--surface2)\"/> <circle cx=\"40\" cy=\"28\" r=\"2\" fill=\"currentColor\" stroke=\"none\" opacity=\".3\"/>"
   },
   {
@@ -663,6 +664,7 @@ window.APLab.catalog = {
     "g(x)=∫ₐˣ f(t)dt 추론"
    ],
    "legacy": "labs/미적분1/도함수 ↔ 원함수.html",
+   "next": "next/labs/calc1-derivative-shape.html",
    "glyph": "<path d=\"M8 58 Q20 10 40 38 Q60 66 72 18\"/><path d=\"M8 50 Q20 46 40 40 Q60 34 72 30\" stroke-dasharray=\"3 3\"/>"
   },
   {
