@@ -500,9 +500,23 @@
       ctx.restore();
     }
 
+    // 관찰 렌즈: 그려지는 요소를 axis(대칭축·꼭짓점·경계) / roots(교점·최대최소·실근) / aux(차함수·접선·반례곡선) 그룹에 태깅하고,
+    // 선택한 렌즈의 그룹은 선명하게, 나머지 그룹은 흐리게, 그룹이 없는 기본 도형은 반쯤 흐리게 그린다. (좌표평면은 항상 선명)
+    function lensAlpha(group) {
+      const sw = state.conceptSwitch;
+      return sw === 'all' || group === sw ? 1 : group ? 0.14 : 0.4;
+    }
+
+    function dotLens(text) {
+      if (/반례|차함수|변환|h\(x\)/.test(text)) return 'aux';
+      if (/꼭짓점|대칭|경계|축|꺾인/.test(text)) return 'axis';
+      return 'roots';
+    }
+
     // 일반 함수 y = fn(x) 연속 곡선 그리기
     function drawFuncCurve(fn, xMin, xMax, ox, oy, unit, color = '#38bdf8', width = 3.2, dash = [], partIdx = -1) {
       ctx.save();
+      ctx.globalAlpha = lensAlpha(dash.length ? 'aux' : null);
       let lw = width;
       if (state.activePartIdx !== -1 && partIdx !== -1 && state.activePartIdx === partIdx) {
         lw = width + 2.2;
@@ -531,6 +545,7 @@
       const pL = toScreen(a, 0, ox, oy, unit);
       const pR = toScreen(b, 0, ox, oy, unit);
       ctx.save();
+      ctx.globalAlpha = lensAlpha('axis');
       ctx.fillStyle = 'rgba(52, 211, 153, 0.11)';
       ctx.fillRect(pL.x, 45, pR.x - pL.x, oy + 160);
       ctx.strokeStyle = 'rgba(52, 211, 153, 0.65)';
@@ -551,8 +566,10 @@
       ctx.restore();
     }
 
-    function qline(a, b, color = '#fbbf24', width = 2.4, dash = [], glow = false, partIdx = -1) {
+    function qline(a, b, color = '#fbbf24', width = 2.4, dash = [], glow = false, partIdx = -1, group = null) {
       ctx.save();
+      // 수직선(x = 상수)은 대칭축·경계, 수평선(y = k)은 교점 스캔, 기울어진 선은 접선·보조선
+      ctx.globalAlpha = lensAlpha(group || (Math.abs(a.x - b.x) < 0.5 ? 'axis' : Math.abs(a.y - b.y) < 0.5 ? 'roots' : 'aux'));
       let lw = width, isGlow = glow;
       if (state.activePartIdx !== -1 && partIdx !== -1 && state.activePartIdx === partIdx) {
         lw = width + 2.2;
@@ -573,8 +590,9 @@
       ctx.restore();
     }
 
-    function qdot(p, text = '', col = '#ffffff', ox = 10, oy = -12, r = 5.4) {
+    function qdot(p, text = '', col = '#ffffff', ox = 10, oy = -12, r = 5.4, group = null) {
       ctx.save();
+      ctx.globalAlpha = lensAlpha(group || dotLens(text));
       ctx.beginPath();
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
       ctx.fillStyle = col;
@@ -1319,8 +1337,8 @@
           drawFuncCurve(fnCur, -3.5, 4.8, ox, oy, unit, QCOL.gold, 3.8, [], 1);
 
           // 교점 x = -1, x = 3 수직 불변 가이드라인!
-          qline(S(-1, -4.5), S(-1, 5.5), QCOL.pink, 2.2, [5, 4], true, 2);
-          qline(S(3, -4.5), S(3, 5.5), QCOL.pink, 2.2, [5, 4], true, 2);
+          qline(S(-1, -4.5), S(-1, 5.5), QCOL.pink, 2.2, [5, 4], true, 2, 'roots');
+          qline(S(3, -4.5), S(3, 5.5), QCOL.pink, 2.2, [5, 4], true, 2, 'roots');
 
           const pInt1 = S(-1, gnCur(-1)), pInt2 = S(3, gnCur(3));
           qdot(pInt1, '교점 α = -1 (불변!)', QCOL.pink, -95, -14);
@@ -1344,8 +1362,8 @@
 
           const alpha = (3 - Math.sqrt(17)) / 2, beta = (3 + Math.sqrt(17)) / 2;
           const pA = S(alpha, alpha + 1), pB = S(beta, beta + 1), pH = S(beta, alpha + 1);
-          qline(pA, pH, QCOL.gold, 3.4, [5, 4], true, 0);
-          qline(pH, pB, QCOL.cyan, 3.4, [5, 4], true, 1);
+          qline(pA, pH, QCOL.gold, 3.4, [5, 4], true, 0, 'aux');
+          qline(pH, pB, QCOL.cyan, 3.4, [5, 4], true, 1, 'aux');
           qline(pA, pB, QCOL.pink, 4.2, [], true, 2);
 
           qdot(pA, 'A(α = (3-√17)/2)', QCOL.white, -72, -12);
@@ -1765,6 +1783,33 @@
       render();
     }
 
+    // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
+    const LENS_OFF = {
+      diffFuncFlatten: ['axis'], tangentDiscriminant: ['axis'], chordLengthVieta: ['axis'], minDistMaxArea: ['axis'],
+      symmetryRootSum: ['aux'], inscribedRectParabola: ['aux'], absWholeFold: ['axis'], absXSymmetry: ['roots'],
+      absLineRotTangent: ['axis', 'aux'], absPiecewiseSplit: ['roots', 'aux'], maxMinEnvelope: ['axis'],
+      sepBothGreater: ['roots'], sepBetweenOneShot: ['aux'], sepInsideInterval: ['aux'],
+      sepOneRootInInterval: ['aux'], alwaysPositiveAll: ['axis'], restrictedIneqMinMax: ['aux'],
+      specialSol4Cases: ['axis', 'aux'], integerCountBoundary: ['aux'], compIneqTransform: ['axis'],
+      trapLeadingZero: ['axis', 'aux'], trapMaxLtMin: ['axis', 'aux'], trapKIndepDoubleRoot: ['axis', 'aux'],
+      trapIrrationalCoeffs: ['axis', 'aux'], trapParabolaMeetSegment: ['axis']
+    };
+
+    function syncLensButtons() {
+      const ids = ['all', 'axis', 'roots', 'aux'];
+      const off = (LENS_OFF[state.mode] || []).concat(LENS_OFF[state.subType[state.mode]] || []);
+      const none = ids.every((id) => id === 'all' || off.includes(id));
+      if (none || off.includes(state.conceptSwitch)) state.conceptSwitch = 'all';
+      ids.forEach((id) => {
+        const btn = document.getElementById(`sw-${id}`);
+        btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
+        btn.classList.toggle('active', id === state.conceptSwitch);
+      });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
+      document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
+    }
+
     function setMode(m) {
       state.mode = m;
       state.activePartIdx = -1;
@@ -1773,6 +1818,7 @@
       }
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }
@@ -1782,6 +1828,7 @@
       state.activePartIdx = -1;
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }

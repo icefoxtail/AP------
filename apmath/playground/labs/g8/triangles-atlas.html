@@ -625,6 +625,13 @@
       ctx.restore();
     }
 
+    // 관찰 렌즈: 그려지는 요소를 def(중점·수선의 발 점, 직각 기호) / p1(등거리 눈금) / p3(각 호) 그룹에 태깅하고,
+    // 선택한 렌즈의 그룹은 선명하게, 나머지 그룹은 흐리게 그린다. (꼭짓점 점·이름, 선분, 도형은 그대로)
+    function lensAlpha(group) {
+      const sw = state.conceptSwitch;
+      return sw === 'all' || !group || group === sw ? 1 : 0.14;
+    }
+
     function drawLine(p1, p2, color = '#ffffff', width = 2.2, dashed = false, glow = false, partIdx = undefined) {
       const dimmed = isPartDimmed(partIdx);
       const hi = isPartHighlighted(partIdx);
@@ -684,6 +691,7 @@
     function drawPoint(pt, radius = 6.0, color = '#fbbf24', label = '', offset = null, refCenter = null) {
       const s = toScreen(pt);
       ctx.save();
+      ctx.globalAlpha = lensAlpha(/중점|수선의 발/.test(label) ? 'def' : null); // 중점·수선의 발만 def, 꼭짓점 점·이름은 항상 선명
       ctx.beginPath();
       ctx.arc(s.x, s.y, radius, 0, Math.PI * 2);
       ctx.fillStyle = color;
@@ -728,6 +736,7 @@
       const ub = { x: (db.x / lb) * sPx, y: (db.y / lb) * sPx };
 
       ctx.save();
+      ctx.globalAlpha = lensAlpha('def');
       ctx.beginPath();
       ctx.moveTo(v.x, v.y);
       ctx.lineTo(v.x + ua.x, v.y + ua.y);
@@ -792,6 +801,7 @@
       const m = { x: (sP.x + sQ.x) / 2, y: (sP.y + sQ.y) / 2 };
 
       ctx.save();
+      ctx.globalAlpha = lensAlpha('p1');
       ctx.strokeStyle = color;
       ctx.lineWidth = 2.3;
       ctx.lineCap = 'round';
@@ -838,6 +848,7 @@
       const rScaled = r * Math.min(1.25, Math.max(0.78, state.scale));
 
       ctx.save();
+      ctx.globalAlpha = lensAlpha('p3');
       ctx.beginPath();
       ctx.moveTo(a.x, a.y);
       ctx.arc(a.x, a.y, rScaled, t1, t1 + d, d < 0);
@@ -2591,12 +2602,38 @@
       }
     }
 
+    // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
+    const LENS_OFF = {
+      rhsPair: ['p3'], kiteFold: ['p3'], ssaCounter: ['def'], sss: ['def', 'p1', 'p3'], sas: ['def'], asa: ['def'],
+      bowtie: ['def'], parallelZ: ['def'], rot60: ['def', 'p1', 'p3'], perpBisect: ['p3'], incenterParallel: ['def'],
+      oigAll: ['def', 'p1', 'p3'], oigEquil: ['def', 'p1', 'p3'], oigIso: ['def', 'p1', 'p3'],
+      oigRight: ['def', 'p1', 'p3'], centroidFocus: ['def', 'p1', 'p3'], defCompare: ['def', 'p1', 'p3'],
+      domino: ['def'], parallelIso: ['def'], inBisect: ['def', 'p1', 'p3'], inExBisect: ['def', 'p1', 'p3'],
+      exExBisect: ['def', 'p1', 'p3'], boomerang: ['def', 'p1', 'p3'], rightAlt: ['p1'], equilRot: ['def']
+    };
+
+    function syncLensButtons() {
+      const ids = ['all', 'def', 'p1', 'p3'];
+      const off = (LENS_OFF[state.mode] || []).concat(LENS_OFF[state.subType[state.mode]] || []);
+      const none = ids.every((id) => id === 'all' || off.includes(id));
+      if (none || off.includes(state.conceptSwitch)) state.conceptSwitch = 'all';
+      ids.forEach((id) => {
+        const btn = document.getElementById(`sw-${id}`);
+        btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
+        btn.classList.toggle('active', id === state.conceptSwitch);
+      });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
+      document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
+    }
+
     function setMode(m) {
       state.mode = m;
       state.activePartIdx = -1;
       for (let i = 1; i <= 8; i++) {
         document.getElementById(`tab-${i}`).classList.toggle('active', i === m);
       }
+      syncLensButtons();
       renderSubBar();
       applySubTypeGeometry(m, state.subType[m]);
       render();
@@ -2605,6 +2642,7 @@
     function setSubType(mode, subId) {
       state.subType[mode] = subId;
       state.activePartIdx = -1;
+      syncLensButtons();
       renderSubBar();
       applySubTypeGeometry(mode, subId);
       render();
