@@ -171,17 +171,17 @@ window.addEventListener('DOMContentLoaded', function () {
         { id: 'rayCompare', label: '⚡ 반직선 AB vs BA 비교' },
         { id: 'lineTypes', label: '📏 직선(↔)·반직선(→)·선분(―)' },
         { id: 'sameRay', label: '🔦 4점: 같은 반직선(BC=BD)' },
-        { id: 'intersect', label: '✨ 4점: 공통부분(BD∩CA=BC)' },
+        { id: 'intersect', label: '✨ 4점: 공통부분(반직선 BD와 CA → 선분 BC)' },
         { id: 'shortest', label: '🏃 두 점 사이 최단거리=선분' }
       ],
       2: [
-        { id: 'midPoint', label: '⚖️ 두 중점 거리 불변량(MN=½AB)' },
-        { id: 'doubleMid', label: '🪜 중점의 중점(½·¼·¾ 블록)' },
-        { id: 'trisect', label: '🧱 삼등분점+중점(6칸 레고블록!)' },
-        { id: 'ratioBlock', label: '🎯 비례식 번역(AC=2CB 칸수블록)' }
+        { id: 'midPoint', label: '⚖️ 두 중점 사이의 거리(MN=½AB)' },
+        { id: 'doubleMid', label: '🪜 중점의 중점(½·¼·¾ 칸 나누기)' },
+        { id: 'trisect', label: '🧱 삼등분점+중점(6칸으로 나누기)' },
+        { id: 'ratioBlock', label: '🎯 길이의 비를 칸 수로 바꾸기(AC=2CB)' }
       ],
       3: [
-        { id: 'collinear', label: '⚡ 일직선 점 m개 중복 흡수(-중복+1)' },
+        { id: 'collinear', label: '⚡ 한 직선 위의 점 m개(겹치는 직선 빼고 1개 더하기)' },
         { id: 'circlePts', label: '⭕ 원형 배치 점 n개 선의 개수' },
         { id: 'verticalAng', label: '✂️ 맞꼭지각 원리 & n(n-1)쌍' },
         { id: 'clockAng', label: '🕒 시침(0.5°)·분침(6°) 각도 추격' }
@@ -189,7 +189,7 @@ window.addEventListener('DOMContentLoaded', function () {
       4: [
         { id: 'paperFold', label: '🧻 직사각형 종이 테이프 접기(이등변!)' },
         { id: 'paperFoldCorner', label: '📐 직사각형 귀퉁이 대각선 접기' },
-        { id: 'bisect90', label: '⚡ 평각의 두 이등분선 = 90° 불변!' },
+        { id: 'bisect90', label: '⚡ 평각의 두 이등분선이 이루는 각 = 90°' },
         { id: 'perpDist', label: '📍 직교(⊥)·수선의 발(H) 최단거리' }
       ]
     };
@@ -205,14 +205,14 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 1) {
         if (sub === 'rayCompare') {
           return {
-            badge: '탐구 1-A · 반직선 AB vs 반직선 BA 손전등 레이저 비교',
-            hint: `칠판의 <strong class="text-sky-300">점 A, 점 B를 마우스로 드래그</strong>해 보세요! 반직선은 <strong class="text-amber-300">출발점(손전등 위치)과 뻗어 나가는 방향</strong>이 정해져 있어서 <strong class="text-rose-400">반직선 AB와 반직선 BA는 서로 다른 도형</strong>입니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 레이저 접기' : '🎬 손전등 레이저 발사!',
+            badge: '탐구 1-A · 반직선 AB vs 반직선 BA 손전등 빛 비교',
+            hint: `칠판의 <strong class="text-sky-300">점 A, 점 B를 마우스로 끌어</strong> 보세요! 반직선은 <strong class="text-amber-300">출발점(손전등 위치)과 뻗어 나가는 방향</strong>이 정해져 있어서 <strong class="text-rose-400">반직선 AB와 반직선 BA는 서로 다른 도형</strong>입니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 빛 접기' : '🎬 손전등 빛 발사!',
             dim1Name: '기준 길이 L', dim2Name: '비교 각도',
             parts: [
               { id: 0, name: '🔦 반직선 AB (A 출발 → B 방향 무한)', desc: '시작점 A 고정, B를 뚫고 끝없이 진행', val: '출발점 A', color: '#fbbf24', ok: true },
               { id: 1, name: '🔦 반직선 BA (B 출발 → A 방향 무한)', desc: '시작점 B 고정, A를 뚫고 정반대로 진행', val: '출발점 B', color: '#f472b6', ok: true },
-              { id: 2, name: '✨ 두 반직선이 겹치는 공통부분(교집합)', desc: 'A와 B 사이에 끼인 구간만 동시에 지남', val: '선분 AB', color: '#34d399', ok: true }
+              { id: 2, name: '✨ 두 반직선이 겹치는 공통부분', desc: 'A와 B 사이에 끼인 구간만 동시에 지남', val: '선분 AB', color: '#34d399', ok: true }
             ],
             totalRes: '반직선 AB ≠ 반직선 BA (공통부분 = 선분 AB)',
             rule: '반직선 일치 조건: (출발점 일치) + (방향 일치)',
@@ -227,7 +227,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         if (sub === 'lineTypes') {
           return {
-            badge: '탐구 1-B · 직선(↔) · 반직선(→) · 선분(―) 3총사 한눈에 비교',
+            badge: '탐구 1-B · 직선(↔) · 반직선(→) · 선분(―) 세 도형 비교',
             hint: `세 도형 중 <strong class="text-emerald-300">유일하게 자로 길이를 잴 수 있는 도형은 양 끝점이 막혀 있는 『선분 AB(${L}cm)』</strong> 딱 하나뿐입니다!`,
             actionTxt: state.animProg > 0.5 ? '🎬 선분에서 다시 뻗어나가기' : '🎬 양쪽으로 무한 연장하기',
             dim1Name: '선분 AB 길이 L', dim2Name: '비교 옵션',
@@ -249,9 +249,9 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         if (sub === 'sameRay') {
           return {
-            badge: '탐구 1-C · [한 직선 위의 네 점 A-B-C-D] 같은 반직선 1초 판별기',
-            hint: `점 B에서 오른쪽 C를 향해 쏜 레이저(<strong class="text-amber-300">반직선 BC</strong>)는 어차피 C를 뚫고 D까지 계속 날아갑니다! 따라서 <strong class="text-sky-300">반직선 BD와 100% 똑같은 반직선</strong>입니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 레이저 초기화' : '🎬 두 반직선 동시 발사!',
+            badge: '탐구 1-C · [한 직선 위의 네 점 A-B-C-D] 같은 반직선 찾기',
+            hint: `점 B에서 오른쪽 C를 향해 쏜 빛(<strong class="text-amber-300">반직선 BC</strong>)는 어차피 C를 뚫고 D까지 계속 날아갑니다! 따라서 <strong class="text-sky-300">반직선 BD와 같은 반직선</strong>입니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 빛 초기화' : '🎬 두 반직선 동시 발사!',
             dim1Name: '전체 구간 간격', dim2Name: '비교 옵션',
             parts: [
               { id: 0, name: '🔦 반직선 BC (점 B 출발 → 오른쪽)', desc: '점 C를 지나 오른쪽으로 끝없이 진행', val: '출발점 B, 방향 →', color: '#fbbf24', ok: true },
@@ -259,30 +259,30 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: '❌ 반직선 AC (점 A 출발 → 오른쪽)', desc: '방향은 같지만 출발점이 A라서 다름!', val: '출발점 불일치 ❌', color: '#f43f5e', ok: false }
             ],
             totalRes: '반직선 BC = 반직선 BD (일치!)',
-            rule: '앞글자(출발점)가 다르면 볼 것도 없이 탈락!',
+            rule: '맨 앞글자(출발점)가 다르면 다른 반직선입니다!',
             formulaHTML: `• ${tex('\\overrightarrow{BC} = \\overrightarrow{BD}')} (출발점 B 동일 + 오른쪽 방향 동일 ⭕)<br/>• ${tex('\\overrightarrow{CB} = \\overrightarrow{CA}')} (출발점 C 동일 + 왼쪽 방향 동일 ⭕)<br/>• ${tex('\\overrightarrow{AB} = \\overrightarrow{AC} = \\overrightarrow{AD}')} (출발점 A 동일 + 오른쪽 방향 동일 ⭕)`,
-            notes: `• <strong>[1초 판별 비법]</strong>: 기호 ${tex('\\overrightarrow{BC}')}와 같은 반직선을 고를 때는 <strong>맨 앞글자가 똑같이 B로 시작하는지</strong>부터 확인하세요!`,
+            notes: `• <strong>[같은 반직선을 찾는 방법]</strong>: 기호 ${tex('\\overrightarrow{BC}')}와 같은 반직선을 고를 때는 <strong>맨 앞글자가 똑같이 B로 시작하는지</strong>부터 확인하세요!`,
             bars: [
               { label: '❌ A~B 구간(반직선 AC만 있음)', weight: 0.28, color: '#f43f5e' },
-              { label: '⭕ 점 B부터 오른쪽 끝까지 (반직선 BC = 반직선 BD 완벽 일치!)', weight: 0.72, color: '#fbbf24' }
+              { label: '⭕ 점 B부터 오른쪽 끝까지 (반직선 BC = 반직선 BD, 일치!)', weight: 0.72, color: '#fbbf24' }
             ]
           };
         }
         if (sub === 'intersect') {
           return {
-            badge: '탐구 1-D · [한 직선 위의 네 점 A-B-C-D] 두 반직선의 공통부분(교집합) 스캐너',
-            hint: `점 B에서 오른쪽으로 가는 <strong class="text-amber-300">반직선 BD</strong>와 점 C에서 왼쪽으로 가는 <strong class="text-pink-300">반직선 CA</strong>가 서로 마주 보며 달릴 때, 위·아래 두 레이저가 동시에 겹치는 구간은 <strong class="text-emerald-300">선분 BC</strong>입니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 다시 쏘기' : '🎬 양쪽 레이저 교차 발사!',
+            badge: '탐구 1-D · [한 직선 위의 네 점 A-B-C-D] 두 반직선의 공통부분 찾기',
+            hint: `점 B에서 오른쪽으로 가는 <strong class="text-amber-300">반직선 BD</strong>와 점 C에서 왼쪽으로 가는 <strong class="text-pink-300">반직선 CA</strong>가 서로 마주 보며 달릴 때, 위·아래 두 빛이 동시에 겹치는 구간은 <strong class="text-emerald-300">선분 BC</strong>입니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 다시 쏘기' : '🎬 양쪽 빛 교차 발사!',
             dim1Name: '점 간격 스케일', dim2Name: '비교 옵션',
             parts: [
               { id: 0, name: '🔦 위층: 반직선 BD (B에서 오른쪽 →)', desc: 'B, C, D를 지나 오른쪽 끝까지', val: 'B → 오른쪽 무한', color: '#fbbf24', ok: true },
               { id: 1, name: '🔦 아래층: 반직선 CA (C에서 왼쪽 ←)', desc: 'C, B, A를 지나 왼쪽 끝까지', val: 'C → 왼쪽 무한', color: '#f472b6', ok: true },
-              { id: 2, name: '✨ 겹치는 공통부분 (BD ∩ CA)', desc: '위층과 아래층에 모두 칠해진 가운데 구간', val: '선분 BC!', color: '#34d399', ok: true }
+              { id: 2, name: '✨ 겹치는 공통부분 (반직선 BD와 CA에 모두 포함된 부분)', desc: '위층과 아래층에 모두 칠해진 가운데 구간', val: '선분 BC!', color: '#34d399', ok: true }
             ],
             totalRes: '공통부분 = 선분 BC (합치면 직선 AD)',
-            rule: '마주 보는 두 반직선의 교집합 = 두 출발점 사이의 선분',
-            formulaHTML: `• 공통부분(교집합): ${tex('\\overrightarrow{BD} \\cap \\overrightarrow{CA} = \\overline{BC}')}<br/>• 합친 도형(합집합): ${tex('\\overrightarrow{BD} \\cup \\overrightarrow{CA} = \\overleftrightarrow{AD}')} (직선 전체)`,
-            notes: `• 한 줄 위에서 두 반직선을 겹쳐 그리면 어디가 공통부분인지 헷갈립니다. 칠판처럼 <strong>위층·아래층 2층으로 살짝 띄워서 그린 뒤 둘 다 있는 구간</strong>에 기둥을 세우면 100% 정확합니다!`,
+            rule: '마주 보는 두 반직선의 공통부분 = 두 출발점 사이의 선분',
+            formulaHTML: `• 공통부분: 반직선 ${tex('\\overrightarrow{BD}')}와 반직선 ${tex('\\overrightarrow{CA}')}에 모두 포함된 부분은 ${tex('\\overline{BC}')}입니다.<br/>• 합친 도형: 두 반직선을 합치면 ${tex('\\overleftrightarrow{AD}')} (직선 전체)가 됩니다.`,
+            notes: `• 한 줄 위에서 두 반직선을 겹쳐 그리면 어디가 공통부분인지 헷갈립니다. 칠판처럼 <strong>위층·아래층 2층으로 살짝 띄워서 그린 뒤 둘 다 있는 구간</strong>을 표시하면 공통부분을 정확히 찾을 수 있습니다!`,
             bars: [
               { label: '← 반직선 CA만', weight: 0.32, color: '#f472b6' },
               { label: '✨공통부분 = 선분 BC!', weight: 0.36, color: '#34d399' },
@@ -294,7 +294,7 @@ window.addEventListener('DOMContentLoaded', function () {
         return {
           badge: `탐구 1-E · 두 점 A, B 사이의 거리(최단거리 = 선분)와 중점 M(|)`,
           hint: `두 점 A, B를 잇는 수많은 길 중 가장 짧은 <strong class="text-emerald-300">선분 AB의 길이(${L}cm)</strong>를 수학에서 <strong>『두 점 A, B 사이의 거리』</strong>라고 부릅니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 경로 비교 리셋' : '🎬 최단거리 비교!',
+          actionTxt: state.animProg > 0.5 ? '🎬 경로 비교 처음으로' : '🎬 최단거리 비교!',
           dim1Name: '선분 AB 길이 L', dim2Name: '곡선 굽힘 정도',
           parts: [
             { id: 0, name: `❌ 굽은 곡선 경로 / 꺾인 경로`, desc: `돌아가므로 최단거리가 아님`, val: `${(L * 1.28).toFixed(1)} cm`, color: '#f43f5e', ok: false },
@@ -302,9 +302,9 @@ window.addEventListener('DOMContentLoaded', function () {
             { id: 2, name: `⚖️ 선분 AB의 중점 M (등변 마크 |)`, desc: `AM = MB = ½AB 똑같이 2등분`, val: `각 ${L / 2} cm`, color: '#fbbf24', ok: true }
           ],
           totalRes: `거리 AB = ${L} cm, 중점 AM = MB = ${L / 2} cm`,
-          rule: '수학에서 거리(Distance) = 무조건 최단거리(선분)!',
+          rule: '두 점 사이의 거리 = 두 점을 잇는 선 중 가장 짧은 선분 AB의 길이!',
           formulaHTML: `• 두 점 A, B 사이의 거리 ${tex(`= \\overline{AB} = ${L}\\text{ cm}`)}<br/>• 중점 M: ${tex(`\\overline{AM} = \\overline{MB} = \\dfrac{1}{2}\\overline{AB} = ${L / 2}\\text{ cm}`)}`,
-          notes: `• <strong>[함정 주의]</strong>: '두 점 A, B를 잇는 선 중 가장 짧은 것은 직선 AB이다?' ➔ <strong>거짓(❌)</strong>! 직선은 끝이 없으므로 <strong>선분 AB</strong>라고 해야 맞습니다.`,
+          notes: `• <strong>[주의]</strong>: '두 점 A, B를 잇는 선 중 가장 짧은 것은 직선 AB이다?' ➔ <strong>거짓(❌)</strong>! 직선은 끝이 없으므로 <strong>선분 AB</strong>라고 해야 맞습니다.`,
           bars: [
             { label: `AM = ½AB (${L / 2}cm)`, weight: 0.5, color: '#fbbf24' },
             { label: `MB = ½AB (${L / 2}cm)`, weight: 0.5, color: '#34d399' }
@@ -320,19 +320,19 @@ window.addEventListener('DOMContentLoaded', function () {
           const lenAC = +(L * cRatio).toFixed(1), lenCB = +(L * (1 - cRatio)).toFixed(1);
           const lenMC = +(lenAC / 2).toFixed(2), lenCN = +(lenCB / 2).toFixed(2);
           return {
-            badge: `탐구 2-A · [불변량 1위] 동점 C가 어디로 움직여도 두 중점 사이 거리 MN = ½AB = ${halfL}cm 일정!`,
-            hint: `칠판의 <strong class="text-amber-300">노란 점 C를 마우스로 좌우로 드래그</strong>해 보세요! 왼쪽이 2○, 오른쪽이 2△ 이므로 가운데 <strong class="text-amber-300">MN(= ○ + △)은 언제나 전체 AB(${L}cm)의 정확히 절반(${halfL}cm)</strong>입니다!`,
-            actionTxt: '🎬 점 C 좌우로 움직여 불변량 확인!',
+            badge: `탐구 2-A · 움직이는 점 C가 어디에 있어도 두 중점 사이의 거리 MN = ½AB = ${halfL}cm 일정!`,
+            hint: `칠판의 <strong class="text-amber-300">노란 점 C를 마우스로 좌우로 끌어</strong> 보세요! 왼쪽이 2○, 오른쪽이 2△ 이므로 가운데 <strong class="text-amber-300">MN(= ○ + △)은 언제나 전체 AB(${L}cm)의 정확히 절반(${halfL}cm)</strong>입니다!`,
+            actionTxt: '🎬 점 C를 좌우로 움직여 MN의 길이 확인!',
             dim1Name: '전체 선분 AB 길이', dim2Name: '비교 옵션',
             parts: [
               { id: 0, name: `🔵 왼쪽 조각의 절반 MC (= ○)`, desc: `AC(${lenAC}cm)의 중점 M ➔ ½AC`, val: `${lenMC} cm`, color: '#38bdf8', ok: true },
               { id: 1, name: `🩷 오른쪽 조각의 절반 CN (= △)`, desc: `CB(${lenCB}cm)의 중점 N ➔ ½CB`, val: `${lenCN} cm`, color: '#f472b6', ok: true },
-              { id: 2, name: `🟡 두 중점 사이 거리 MN (= ○ + △)`, desc: `½(AC + CB) = ½AB (절대 안 변함!)`, val: `${halfL} cm 불변!`, color: '#fbbf24', ok: true }
+              { id: 2, name: `🟡 두 중점 사이 거리 MN (= ○ + △)`, desc: `½(AC + CB) = ½AB (점 C가 움직여도 변하지 않음)`, val: `${halfL} cm (일정)`, color: '#fbbf24', ok: true }
             ],
             totalRes: `MN = ○ + △ = ½AB = ${halfL} cm (항상 일정!)`,
             rule: '○○ + △△ = L  ⟹  ○ + △ = ½L',
             formulaHTML: `• ${tex(`\\overline{AB} = 2\\text{○} + 2\\text{△} = ${L}\\text{ cm}`)}<br/>• ${tex(`\\overline{MN} = \\overline{MC} + \\overline{CN} = \\text{○} + \\text{△} = \\dfrac{1}{2}\\overline{AB} = ${halfL}\\text{ cm}`)}`,
-            notes: `• <strong>[거꾸로 묻는 문제]</strong>: 만약 ${tex(`\\overline{MN} = ${halfL}\\text{ cm}`)}라고 알려주고 전체 ${tex('\\overline{AB}')}를 구하라고 하면, 무조건 <strong>2배인 ${tex(`${L}\\text{ cm}`)}</strong>입니다!`,
+            notes: `• <strong>[거꾸로 묻는 문제]</strong>: 만약 ${tex(`\\overline{MN} = ${halfL}\\text{ cm}`)}라고 알려주고 전체 ${tex('\\overline{AB}')}를 구하라고 하면, <strong>MN의 2배인 ${tex(`${L}\\text{ cm}`)}</strong>입니다!`,
             bars: [
               { label: `AM(○=${lenMC})`, weight: cRatio / 2, color: '#1e3a8a' },
               { label: `✨MC(○=${lenMC})`, weight: cRatio / 2, color: '#38bdf8' },
@@ -344,9 +344,9 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'doubleMid') {
           const qtr = L / 4;
           return {
-            badge: `탐구 2-B · 중점의 중점 단계별 쪼개기 (4칸 레고 블록: ½ ➔ ¼ ➔ ¾)`,
+            badge: `탐구 2-B · 중점의 중점 단계별 쪼개기 (전체를 4칸으로 나누기: ½ ➔ ¼ ➔ ¾)`,
             hint: `선분 AB의 중점을 M, 다시 오른쪽 MB의 중점을 N이라 하면, 전체를 <strong class="text-amber-300">똑같은 4칸(1칸 = ¼AB = ${qtr}cm)</strong>으로 쪼갠 것과 같습니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 단계별 쪼개기 리셋' : '🎬 ½ ➔ ¼ 쪼개기 실행',
+            actionTxt: state.animProg > 0.5 ? '🎬 단계별 쪼개기 처음으로' : '🎬 ½ ➔ ¼ 쪼개기 실행',
             dim1Name: '전체 선분 AB 길이', dim2Name: '비교 옵션',
             parts: [
               { id: 0, name: `① 왼쪽 절반 AM (2칸 = ½AB)`, desc: `전체 4칸 중 왼쪽 2칸`, val: `${2 * qtr} cm`, color: '#38bdf8', ok: true },
@@ -354,9 +354,9 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `③ 구하는 선분 AN (= AM + MN = 3칸)`, desc: `2칸 + 1칸 = 전체의 ¾!`, val: `${3 * qtr} cm`, color: '#34d399', ok: true }
             ],
             totalRes: `MN = ¼AB (${qtr}cm), AN = ¾AB (${3 * qtr}cm)`,
-            rule: '중점을 두 번 찍으면 무조건 전체 = 4칸 블록!',
+            rule: '중점을 두 번 잡으면 전체는 똑같은 4칸으로 나뉩니다!',
             formulaHTML: `• 가장 작은 조각 ${tex(`\\overline{MN} = \\overline{NB} = 1\\text{칸} = \\dfrac{1}{4}\\overline{AB} = ${qtr}\\text{ cm}`)}<br/>• ${tex(`\\overline{AM} = 2\\text{칸}(${2 * qtr}\\text{cm}) \\implies \\overline{AN} = 3\\text{칸} = \\dfrac{3}{4}\\overline{AB} = ${3 * qtr}\\text{ cm}`)}`,
-            notes: `• 분수 식(${tex('\\frac{1}{2} + \\frac{1}{4}')})으로 계산하지 말고, 가장 작게 쪼개진 조각(${tex('MN, NB')})을 <strong>1칸</strong>으로 놓으면 전체가 <strong>4칸</strong>이 되어 암산으로 끝납니다!`,
+            notes: `• 분수 식(${tex('\\frac{1}{2} + \\frac{1}{4}')})으로 계산하지 말고, 가장 작게 쪼개진 조각(${tex('MN, NB')})을 <strong>1칸</strong>으로 놓으면 전체가 <strong>4칸</strong>이 되어 쉽게 계산할 수 있습니다!`,
             bars: [
               { label: `AM = 2칸 (${2 * qtr}cm)`, weight: 0.5, color: '#38bdf8' },
               { label: `MN = 1칸 (${qtr}cm)`, weight: 0.25, color: '#fbbf24' },
@@ -367,9 +367,9 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'trisect') {
           const unit = L / 6;
           return {
-            badge: `탐구 2-C · 삼등분점(P, Q)과 중점(M)이 함께 나올 때 — 『6칸 레고 블록』 비법!`,
-            hint: `<strong class="text-sky-300">3등분(삼등분점 P, Q)</strong>과 <strong class="text-amber-300">2등분(중점 M)</strong>이 섞여 나오면, 2와 3의 최소공배수인 <strong class="text-emerald-300">『전체 AB = 6칸 블록(1칸=${unit}cm)』</strong>으로 놓으세요!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 블록 눈금 리셋' : '🎬 6칸 레고 블록 합체!',
+            badge: `탐구 2-C · 삼등분점(P, Q)과 중점(M)이 함께 나올 때 — 전체를 6칸으로 나누어 생각하기`,
+            hint: `<strong class="text-sky-300">3등분(삼등분점 P, Q)</strong>과 <strong class="text-amber-300">2등분(중점 M)</strong>이 섞여 나오면, 2와 3의 최소공배수인 <strong class="text-emerald-300">『전체 AB = 6칸(1칸=${unit}cm)』</strong>으로 놓으세요!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 눈금 처음으로' : '🎬 6칸으로 나누어 보기',
             dim1Name: '전체 선분 AB (6의 배수)', dim2Name: '비교 옵션',
             parts: [
               { id: 0, name: `🔵 삼등분점 P (2칸 지점) · Q (4칸 지점)`, desc: `6칸을 3등분 ➔ 2칸씩 (${2 * unit}cm)`, val: `P=2칸, Q=4칸`, color: '#38bdf8', ok: true },
@@ -377,9 +377,9 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🎯 구하는 선분 PM (3칸 - 2칸 = 딱 1칸!)`, desc: `중점 M(3칸)과 P(2칸) 사이 = 1/6 AB`, val: `${unit} cm (1칸)`, color: '#34d399', ok: true }
             ],
             totalRes: `PM = MQ = 1칸(1/6 AB = ${unit}cm), PQ = 2칸(${2 * unit}cm)`,
-            rule: '2등분 + 3등분 = 최소공배수 6칸 레고 블록!',
+            rule: '2등분과 3등분이 함께 나오면 2와 3의 최소공배수 6칸으로 나누기!',
             formulaHTML: `• 점 위치 번호: <strong>A(0칸) — P(2칸) — M(3칸) — Q(4칸) — B(6칸)</strong><br/>• ${tex(`\\overline{PM} = 3 - 2 = 1\\text{칸} = \\dfrac{1}{6}\\overline{AB} = ${unit}\\text{ cm}`)}`,
-            notes: `• 통분(${tex('\\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}')})을 할 필요 없이, 눈금 숫자 <strong>(3칸 - 2칸 = 1칸)</strong>만 빼면 어떤 구간이든 1초 만에 구해집니다!`,
+            notes: `• 통분(${tex('\\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}')})을 하지 않고, 눈금 숫자 <strong>(3칸 - 2칸 = 1칸)</strong>만 빼도 어떤 구간이든 바로 구할 수 있습니다!`,
             bars: [
               { label: `AP (2칸=${2 * unit})`, weight: 2 / 6, color: '#38bdf8' },
               { label: `✨PM (1칸=${unit})`, weight: 1 / 6, color: '#fbbf24' },
@@ -391,12 +391,12 @@ window.addEventListener('DOMContentLoaded', function () {
         // ratioBlock
         const unit = L / 3;
         return {
-          badge: `탐구 2-D · 비례 조건식 번역기 — 『AC = 2CB 이고 M이 AC의 중점일 때』`,
+          badge: `탐구 2-D · 길이의 비를 칸 수로 바꾸기 — 『AC = 2CB 이고 M이 AC의 중점일 때』`,
           hint: `<strong class="text-amber-300">“AC = 2CB”</strong>라는 식을 보면 숫자가 곱해진 짧은 쪽 <strong class="text-pink-300">CB를 『1칸』</strong>으로 놓으세요! 그러면 <strong class="text-sky-300">AC는 『2칸』</strong>이고, 그 중점 M이 찍히면 <strong class="text-emerald-300">AM = MC = CB = 모두 1칸씩</strong> 똑같아집니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 블록 다시 세기' : '🎬 1칸 블록 매칭!',
+          actionTxt: state.animProg > 0.5 ? '🎬 칸 다시 세기' : '🎬 1칸씩 대응해 보기',
           dim1Name: '전체 선분 AB 길이', dim2Name: '비교 옵션',
           parts: [
-            { id: 0, name: `🩷 기준 짧은 조각 CB = 1칸`, desc: `AC = 2CB 에서 짧은 CB를 1칸으로 설정`, val: `${unit} cm (1칸)`, color: '#f472b6', ok: true },
+            { id: 0, name: `🩷 기준 짧은 조각 CB = 1칸`, desc: `AC = 2CB 에서 짧은 CB를 1칸으로 정함`, val: `${unit} cm (1칸)`, color: '#f472b6', ok: true },
             { id: 1, name: `🔵 AC(2칸)의 중점 M ➔ AM = MC = 1칸`, desc: `2칸을 반으로 나누니 각각 1칸!`, val: `각 ${unit} cm`, color: '#38bdf8', ok: true },
             { id: 2, name: `🎯 선분 MB의 길이 (= MC + CB = 2칸)`, desc: `전체 3칸 중 2칸 = 2/3 AB`, val: `${2 * unit} cm (2칸)`, color: '#fbbf24', ok: true }
           ],
@@ -425,28 +425,28 @@ window.addEventListener('DOMContentLoaded', function () {
           const numRays = isCol ? 2 * totalPairs - 2 * colPairs + 2 * (mCol - 1) : 2 * totalPairs;
           return {
             badge: isCol
-              ? `탐구 3-A · 전체 점 ${nPts}개 중 한 직선 위에 ${mCol}개가 있을 때 (중복 직선 흡수 -${colPairs} + 1!)`
+              ? `탐구 3-A · 전체 점 ${nPts}개 중 한 직선 위에 ${mCol}개가 있을 때 (겹치는 직선 ${colPairs}개를 빼고 1개를 더하기)`
               : `탐구 3-B · 어느 세 점도 한 직선 위에 없는 점 ${nPts}개로 만드는 선의 개수`,
             hint: isCol
-              ? `슬라이더를 움직여 점 ${mCol}개를 바닥 일직선 위로 내려앉혀 보세요! 바닥 점들끼리 만든 <strong class="text-rose-400">${colPairs}개의 직선이 단 1개의 대표 직선(+1)으로 흡수</strong>됩니다! (단, 선분은 줄어들지 않음!)`
+              ? `슬라이더를 움직여 점 ${mCol}개를 바닥의 한 직선 위로 내려 보세요! 바닥의 점들끼리 만든 <strong class="text-rose-400">${colPairs}개의 직선은 모두 같은 직선 1개(+1)</strong>가 됩니다! (단, 선분은 줄어들지 않음!)`
               : `점 ${nPts}개 중 2개를 뽑아 잇는 직선과 선분은 <strong class="text-amber-300">${nPts}×(${nPts}-1)÷2 = ${totalPairs}개</strong>이고, 반직선은 방향이 2가지씩이라 2배인 <strong class="text-sky-300">${numRays}개</strong>입니다!`,
-            actionTxt: isCol ? (state.animProg > 0.5 ? '🎬 원형 배치로 분리해 보기' : '🎬 일직선 중복 흡수 실행!') : '🎬 연결선 스캔',
-            dim1Name: '전체 점 개수 제어', dim2Name: '일직선 점 개수 제어',
+            actionTxt: isCol ? (state.animProg > 0.5 ? '🎬 원 위에 배치해 보기' : '🎬 한 직선 위로 모으기!') : '🎬 연결선 살펴보기',
+            dim1Name: '전체 점 개수', dim2Name: '한 직선 위의 점 개수',
             parts: [
               { id: 0, name: `📏 서로 다른 선분의 개수 (감소 없음!)`, desc: `끝점이 다르면 다른 선분 ➔ (${nPts}×${nPts - 1})÷2`, val: `${numSeg} 개`, color: '#34d399', ok: true },
-              { id: 1, name: `↔️ 서로 다른 직선의 개수 ${isCol ? '(중복 흡수!)' : ''}`, desc: isCol ? `전체(${totalPairs}) - 중복(${colPairs}) + 대표직선(1)` : `선분 개수와 동일`, val: `${numLines} 개`, color: '#fbbf24', ok: true },
-              { id: 2, name: `➡️ 서로 다른 반직선의 개수`, desc: isCol ? `일직선 위 ${mCol}개 점에서는 2(${mCol}-1)=${2 * (mCol - 1)}개 생존` : `직선 개수의 2배`, val: `${numRays} 개`, color: '#38bdf8', ok: true }
+              { id: 1, name: `↔️ 서로 다른 직선의 개수 ${isCol ? '(겹치는 직선은 1개로 셈)' : ''}`, desc: isCol ? `전체(${totalPairs}) - 겹치는 직선(${colPairs}) + 한 직선(1)` : `선분 개수와 동일`, val: `${numLines} 개`, color: '#fbbf24', ok: true },
+              { id: 2, name: `➡️ 서로 다른 반직선의 개수`, desc: isCol ? `한 직선 위의 ${mCol}개 점에서는 2(${mCol}-1)=${2 * (mCol - 1)}개` : `직선 개수의 2배`, val: `${numRays} 개`, color: '#38bdf8', ok: true }
             ],
             totalRes: `선분 ${numSeg}개 | 직선 ${numLines}개 | 반직선 ${numRays}개`,
-            rule: isCol ? '직선 = 전체 - 일직선중복 + 1 (대표 직선 1개 생존!)' : '직선=선분=n(n-1)/2, 반직선=n(n-1)',
+            rule: isCol ? '직선 = 전체 - 한 직선 위의 점끼리 만든 직선 + 1' : '직선의 개수 = 선분의 개수 = n(n-1)/2, 반직선의 개수 = n(n-1)',
             formulaHTML: isCol
-              ? `• <strong>선분</strong>: 일직선 위에 있어도 끝점이 다르면 다른 선분 ➔ <strong>${numSeg}개 그대로!</strong><br/>• <strong>직선</strong>: ${tex(`${totalPairs} - ${colPairs}(\\text{중복}) + 1(\\text{바닥 대표직선}) = \\mathbf{${numLines}\\text{개}}`)}`
+              ? `• <strong>선분</strong>: 한 직선 위에 있어도 끝점이 다르면 다른 선분 ➔ <strong>${numSeg}개 그대로!</strong><br/>• <strong>직선</strong>: ${tex(`${totalPairs} - ${colPairs}(\\text{겹치는 직선}) + 1(\\text{한 직선}) = \\mathbf{${numLines}\\text{개}}`)}`
               : `• <strong>직선 = 선분</strong>: ${tex(`\\dfrac{${nPts}\\times(${nPts}-1)}{2} = \\mathbf{${totalPairs}\\text{개}}`)}<br/>• <strong>반직선</strong>: ${tex(`${nPts}\\times(${nPts}-1) = \\mathbf{${numRays}\\text{개}}`)}`,
-            notes: `• <strong>[가장 많이 틀리는 실수]</strong>: 일직선 위의 점 ${mCol}개로 만든 직선 ${colPairs}개를 뺀 뒤에 <strong>『+1』을 안 더해서 1개 적게 쓰는 실수</strong>를 절대 조심하세요!`,
+            notes: `• <strong>[자주 틀리는 부분]</strong>: 한 직선 위의 점 ${mCol}개로 만든 직선 ${colPairs}개를 뺀 뒤에 <strong>『+1』을 더하지 않아 1개 적게 쓰는 실수</strong>를 조심하세요!`,
             bars: isCol
               ? [
                   { label: `개별 직선(${totalPairs - colPairs}개)`, weight: 0.72, color: '#38bdf8' },
-                  { label: `✨합쳐진 바닥 대표직선(+1개)`, weight: 0.28, color: '#fbbf24' }
+                  { label: `✨한 직선 위의 점끼리 만든 직선(+1개)`, weight: 0.28, color: '#fbbf24' }
                 ]
               : [
                   { label: `직선·선분(${totalPairs}개)`, weight: 0.5, color: '#fbbf24' },
@@ -464,8 +464,8 @@ window.addEventListener('DOMContentLoaded', function () {
             dim1Name: '만나는 직선 개수 n', dim2Name: '교차 각도 θ',
             parts: [
               { id: 0, name: `🟡 마주 보는 맞꼭지각 (∠a = ∠c = ${deg}°)`, desc: `180° - ∠b 로 둘 다 크기가 항상 같음!`, val: `${deg}° = ${deg}°`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🔵 직선 2개를 짝짓는 조합 수`, desc: `(${nLines} × ${nLines - 1}) ÷ 2 가지`, val: `${pairs / 2} 가지`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🎯 전체 맞꼭지각 쌍 (조합 × 2쌍)`, desc: `${nLines} × (${nLines} - 1) 쌍 (합쳐진 각 포함!)`, val: `총 ${pairs} 쌍`, color: '#34d399', ok: true }
+              { id: 1, name: `🔵 직선 2개를 짝짓는 방법의 수`, desc: `(${nLines} × ${nLines - 1}) ÷ 2 가지`, val: `${pairs / 2} 가지`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🎯 전체 맞꼭지각 쌍 (짝짓는 방법의 수 × 2쌍)`, desc: `${nLines} × (${nLines} - 1) 쌍 (합쳐진 각 포함!)`, val: `총 ${pairs} 쌍`, color: '#34d399', ok: true }
             ],
             totalRes: `직선 ${nLines}개 교차 ➔ 맞꼭지각 총 ${pairs}쌍`,
             rule: '직선 n개 맞꼭지각 쌍 = n(n - 1)쌍',
@@ -486,18 +486,18 @@ window.addEventListener('DOMContentLoaded', function () {
         const smallAng = diff > 180 ? 360 - diff : diff;
         return {
           badge: `탐구 3-D · 시침(1분에 0.5°)과 분침(1분에 6°)이 이루는 각도 추적기`,
-          hint: `분침이 돌아갈 때 <strong class="text-amber-300">시침도 숫자 3(90°)에 멈춰 있지 않고 1분에 0.5°씩 앞으로 도망갑니다!</strong> 따라서 3시 ${min}분일 때 시침은 <strong class="text-amber-300">90° + ${0.5 * min}° = ${hAng}°</strong>에 있습니다!`,
+          hint: `분침이 돌아갈 때 <strong class="text-amber-300">시침도 숫자 3(90°)에 멈춰 있지 않고 1분에 0.5°씩 앞으로 움직입니다!</strong> 따라서 3시 ${min}분일 때 시침은 <strong class="text-amber-300">90° + ${0.5 * min}° = ${hAng}°</strong>에 있습니다!`,
           actionTxt: '🎬 바늘 움직임 확인',
-          dim1Name: '기준 시각(3시)', dim2Name: '분(Minute) 조절',
+          dim1Name: '기준 시각(3시)', dim2Name: '분 조절',
           parts: [
             { id: 0, name: `🔵 분침 회전 각도 (1분에 6°씩)`, desc: `6° × ${min}분`, val: `${mAng}°`, color: '#38bdf8', ok: true },
-            { id: 1, name: `🟡 시침 회전 각도 (1시간 30° + 1분 0.5°)`, desc: `30°×3시 + 0.5°×${min}분 (야금야금 이동!)`, val: `${hAng}°`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🟡 시침 회전 각도 (1시간 30° + 1분 0.5°)`, desc: `30°×3시 + 0.5°×${min}분 (시침도 조금씩 이동!)`, val: `${hAng}°`, color: '#fbbf24', ok: true },
             { id: 2, name: `🎯 두 바늘이 이루는 작은 쪽 각`, desc: `|${mAng}° - ${hAng}°|`, val: `${smallAng}°`, color: '#34d399', ok: true }
           ],
           totalRes: `3시 ${min}분 사잇각 = ${smallAng}°`,
           rule: '1분 동안 분침은 6°, 시침은 0.5° 이동 (5.5°씩 추격!)',
-          formulaHTML: `• <strong>시침 각도</strong>: ${tex(`30^\\circ \\times (\\text{시}) + 0.5^\\circ \\times (\\text{분}) = 90^\\circ + ${0.5 * min}^\\circ = ${hAng}^\\circ`)}<br/>• <strong>분침 각도</strong>: ${tex(`6^\\circ \\times (\\text{분}) = ${mAng}^\\circ`)}<br/>• <strong>1초 공식</strong>: ${tex(`|30^\\circ \\times \\text{시} - 5.5^\\circ \\times \\text{분}| = \\mathbf{${smallAng}^\\circ}`)}`,
-          notes: `• 분침(6°/분)이 시침(0.5°/분)을 <strong>1분에 5.5°씩 따라잡는다</strong>고 기억하면 어떤 시각이든 5초 만에 풀 수 있습니다!`,
+          formulaHTML: `• <strong>시침 각도</strong>: ${tex(`30^\\circ \\times (\\text{시}) + 0.5^\\circ \\times (\\text{분}) = 90^\\circ + ${0.5 * min}^\\circ = ${hAng}^\\circ`)}<br/>• <strong>분침 각도</strong>: ${tex(`6^\\circ \\times (\\text{분}) = ${mAng}^\\circ`)}<br/>• <strong>두 바늘 사이의 각을 바로 구하는 식</strong>: ${tex(`|30^\\circ \\times \\text{시} - 5.5^\\circ \\times \\text{분}| = \\mathbf{${smallAng}^\\circ}`)}`,
+          notes: `• 분침(6°/분)이 시침(0.5°/분)을 <strong>1분에 5.5°씩 따라잡는다</strong>고 기억하면 어떤 시각이든 쉽게 풀 수 있습니다!`,
           bars: [
             { label: `시침 위치 (${hAng}°)`, weight: 0.45, color: '#fbbf24' },
             { label: `✨두 바늘 차이 (${smallAng}°)`, weight: 0.55, color: '#38bdf8' }
@@ -510,19 +510,19 @@ window.addEventListener('DOMContentLoaded', function () {
         const foldDeg = Math.min(75, Math.max(40, deg));
         const xDeg = 180 - 2 * foldDeg;
         return {
-          badge: `탐구 4-A · [필수 킬러] 직사각형 종이 테이프 접기 — 『접은 각 = 엇각 ⟹ 이등변삼각형!』`,
+          badge: `탐구 4-A · 직사각형 종이 테이프 접기 — 『접은 각 = 엇각 ⟹ 이등변삼각형!』`,
           hint: `슬라이더를 움직이거나 <strong class="text-amber-300">[🎬 종이 접기 실행]</strong>을 눌러 종이 테이프를 직접 접어보세요! <strong class="text-amber-300">① 접은 각(∠ABC=${foldDeg}°) = 원래 각(∠EBC=${foldDeg}°)</strong>이고, 위아래 변이 평행하므로 <strong class="text-emerald-300">② 엇각(∠ACB=${foldDeg}°)</strong>도 같아져 <strong class="text-rose-400">ΔABC는 AB = AC 인 이등변삼각형</strong>이 됩니다!`,
           actionTxt: state.animProg > 0.5 ? '🎬 종이 테이프 다시 펼치기' : '🎬 종이 테이프 접어 올리기!',
           dim1Name: '테이프 폭 스케일', dim2Name: '접은 각도 ∠ABC',
           parts: [
-            { id: 0, name: `🟡 ① 접은 각 ∠ABC = 원래 각 ∠EBC`, desc: `종이를 접어 포개었으므로 크기가 100% 같음!`, val: `${foldDeg}° (●)`, color: '#fbbf24', ok: true },
+            { id: 0, name: `🟡 ① 접은 각 ∠ABC = 원래 각 ∠EBC`, desc: `종이를 접어 포개었으므로 크기가 같음!`, val: `${foldDeg}° (●)`, color: '#fbbf24', ok: true },
             { id: 1, name: `🟢 ② 평행선의 엇각 ∠ACB = ∠EBC`, desc: `테이프 위·아래 변이 평행(>)하므로 엇각 동일!`, val: `${foldDeg}° (●)`, color: '#34d399', ok: true },
             { id: 2, name: `🩷 ③ 이등변삼각형 ΔABC (AB = AC ||)`, desc: `두 밑각(∠B=∠C=${foldDeg}°)이 같으므로 꼭지각 ∠A = 180°-${2 * foldDeg}°`, val: `∠BAC = ${xDeg}°`, color: '#f43f5e', ok: true }
           ],
           totalRes: `∠ACB = ${foldDeg}°, ∠BAC = ${xDeg}°, AB = AC (이등변!)`,
-          rule: '접은 각(●) = 엇각(●)  ⟹  겹친 삼각형은 무조건 이등변삼각형!',
+          rule: '접은 각(●) = 엇각(●)  ⟹  겹친 삼각형은 항상 이등변삼각형!',
           formulaHTML: `• <strong>1단계(접은 각)</strong>: ${tex(`\\angle ABC = \\angle EBC = ${foldDeg}^\\circ`)}<br/>• <strong>2단계(엇각)</strong>: ${tex(`\\angle ACB = \\angle EBC = ${foldDeg}^\\circ`)}<br/>• <strong>3단계(이등변 결론)</strong>: 밑각 2개가 모두 ${tex(`${foldDeg}^\\circ`)}이므로 <strong>${tex(`\\overline{AB} = \\overline{AC}`)}</strong> 이고, 꼭지각 ${tex(`\\angle BAC = 180^\\circ - 2\\times ${foldDeg}^\\circ = \\mathbf{${xDeg}^\\circ}`)}!`,
-          notes: `• <strong>[변의 길이 함정 주의!]</strong>: 접는 선이 $BC$일 때 두 밑각이 $B$와 $C$이므로, 길이가 같은 두 변은 $BC$가 아니라 꼭짓점 $A$에서 양쪽으로 내려온 <strong>$AB = AC$ (빨간색 네온 변 2개!)</strong>입니다!`,
+          notes: `• <strong>[변의 길이 주의!]</strong>: 접는 선이 $BC$일 때 두 밑각이 $B$와 $C$이므로, 길이가 같은 두 변은 $BC$가 아니라 꼭짓점 $A$에서 양쪽으로 내려온 <strong>$AB = AC$ (빨간색으로 표시한 변 2개!)</strong>입니다!`,
           bars: [
             { label: `밑각 ∠B (${foldDeg}°)`, weight: foldDeg / 180, color: '#fbbf24' },
             { label: `밑각 ∠C (${foldDeg}°)`, weight: foldDeg / 180, color: '#34d399' },
@@ -544,7 +544,7 @@ window.addEventListener('DOMContentLoaded', function () {
             { id: 2, name: `🎯 남은 각 ∠x 의 크기`, desc: `90° - 2 × ${foldAngle}°`, val: `∠x = ${remain90}°`, color: '#34d399', ok: true }
           ],
           totalRes: `2×(${foldAngle}°) + ∠x = 90°  ⟹  ∠x = ${remain90}°`,
-          rule: '종이를 접으면 접는 선 양옆의 두 각(●, ●)은 무조건 쌍둥이!',
+          rule: '종이를 접으면 접는 선 양옆의 두 각(●, ●)은 크기가 서로 같습니다!',
           formulaHTML: `• 접기 전 자리(점선)와 접은 후 자리(실선)의 각은 똑같으므로 <strong>항상 2배(${tex('2\\bullet')})</strong>가 됩니다!<br/>• ${tex(`\\angle x = 90^\\circ - 2 \\times ${foldAngle}^\\circ = \\mathbf{${remain90}^\\circ}`)}`,
           notes: `• 종이접기 문제는 어떤 모양이든 <strong>① 접기 전과 접은 후의 같은 각에 똑같은 동그라미(●) 표시하기</strong>가 출발점입니다!`,
           bars: [
@@ -560,19 +560,19 @@ window.addEventListener('DOMContentLoaded', function () {
         const angCOB = 180 - angAOC;
         const half1 = +(angAOC / 2).toFixed(1), half2 = +(angCOB / 2).toFixed(1);
         return {
-          badge: `탐구 4-C · 평각(180°)의 두 각의 이등분선이 이루는 각 = 언제나 90° 직각 불변량!`,
-          hint: `칠판의 <strong class="text-amber-300">반직선 OC를 마우스로 좌우로 드래그</strong>해 보세요! <strong class="text-sky-300">2● + 2× = 180°(평각)</strong>이므로 양변을 2로 나눈 <strong class="text-amber-300">∠MON = ● + × = 언제나 90°(직각 ∟)</strong>입니다!`,
-          actionTxt: '🎬 반직선 OC 좌우 회전 (90° 불변 확인!)',
+          badge: `탐구 4-C · 평각(180°)의 두 각의 이등분선이 이루는 각 = 언제나 90°(직각)!`,
+          hint: `칠판의 <strong class="text-amber-300">반직선 OC를 마우스로 좌우로 끌어</strong> 보세요! <strong class="text-sky-300">2● + 2× = 180°(평각)</strong>이므로 양변을 2로 나눈 <strong class="text-amber-300">∠MON = ● + × = 언제나 90°(직각 ∟)</strong>입니다!`,
+          actionTxt: '🎬 반직선 OC 좌우 회전 (항상 90°인지 확인!)',
           dim1Name: '반지름 스케일', dim2Name: '비교 각도',
           parts: [
             { id: 0, name: `🔵 왼쪽 각의 절반 ∠MOC (= ●)`, desc: `∠AOC(${angAOC}°)의 이등분선 OM`, val: `${half1}°`, color: '#38bdf8', ok: true },
             { id: 1, name: `🩷 오른쪽 각의 절반 ∠CON (= ×)`, desc: `∠COB(${angCOB}°)의 이등분선 ON`, val: `${half2}°`, color: '#f472b6', ok: true },
-            { id: 2, name: `🟡 두 이등분선 사잇각 ∠MON (= ● + ×)`, desc: `½ × 180° = 90° (OM ⊥ ON 직교!)`, val: `90.0° 불변!`, color: '#fbbf24', ok: true }
+            { id: 2, name: `🟡 두 이등분선 사잇각 ∠MON (= ● + ×)`, desc: `½ × 180° = 90° (OM ⊥ ON 직교!)`, val: `90.0° (항상 일정)`, color: '#fbbf24', ok: true }
           ],
           totalRes: `∠MON = ● + × = ½ × 180° = 90° (항상 직각!)`,
-          rule: '2● + 2× = 180°  ⟹  ● + × = 90° (선분 중점 MN=½AB와 쌍둥이!)',
+          rule: '2● + 2× = 180°  ⟹  ● + × = 90° (두 중점 사이의 거리 MN=½AB와 같은 원리)',
           formulaHTML: `• ${tex(`2\\bullet + 2\\times = 180^\\circ \\implies \\bullet + \\times = 90^\\circ`)}<br/>• 만약 전체 각이 평각(${tex('180^\\circ')})이 아니라 ${tex('130^\\circ')}라면? 두 이등분선이 이루는 각은 절반인 <strong>${tex('65^\\circ')}</strong>입니다!`,
-          notes: `• <strong>[완벽한 쌍둥이 구조]</strong>: 탐구 2-A의 <strong>『두 중점 사이 거리 = 전체 선분의 ½』</strong>과 탐구 4-C의 <strong>『두 각의 이등분선 사잇각 = 전체 각의 ½』</strong>은 완전히 같은 원리입니다!`,
+          notes: `• <strong>[같은 원리]</strong>: 탐구 2-A의 <strong>『두 중점 사이 거리 = 전체 선분의 ½』</strong>과 탐구 4-C의 <strong>『두 각의 이등분선 사잇각 = 전체 각의 ½』</strong>은 완전히 같은 원리입니다!`,
           bars: [
             { label: `●(${half1}°)`, weight: ratioC / 2, color: '#1e3a8a' },
             { label: `✨●(${half1}°)`, weight: ratioC / 2, color: '#38bdf8' },
@@ -587,18 +587,18 @@ window.addEventListener('DOMContentLoaded', function () {
       const oblLen = Math.hypot(distH, qOffset).toFixed(1);
       return {
         badge: `탐구 4-D · 직교(⊥)와 수선의 발(H), 그리고 점과 직선 사이의 최단거리`,
-        hint: `직선 $l$ 밖의 점 $P$에서 직선 $l$ 위의 점 $Q$를 잇는 선분 중 가장 짧은 것은 <strong class="text-amber-300">90° 수직(⊥)으로 꽂히는 수선 PH(${distH}cm)</strong>이며, 교점 $H$를 <strong class="text-emerald-300">수선의 발</strong>이라고 부릅니다!`,
-        actionTxt: '🎬 직선 위 점 Q 좌우 스캔',
+        hint: `직선 $l$ 밖의 점 $P$에서 직선 $l$ 위의 점 $Q$를 잇는 선분 중 가장 짧은 것은 <strong class="text-amber-300">90°로 수직(⊥)이 되는 수선 PH(${distH}cm)</strong>이며, 교점 $H$를 <strong class="text-emerald-300">수선의 발</strong>이라고 부릅니다!`,
+        actionTxt: '🎬 직선 위의 점 Q를 좌우로 움직여 보기',
         dim1Name: '수선 길이 비례 L', dim2Name: '비교 옵션',
         parts: [
           { id: 0, name: `🎯 수선 PH (l ⊥ PH, 90° 직각 ∟)`, desc: `점 P와 직선 l 사이의 거리 (최단거리!)`, val: `${distH}.0 cm`, color: '#fbbf24', ok: true },
-          { id: 1, name: `📍 교점 H = 수선의 발 (Foot of Perpendicular)`, desc: `수선이 직선 l에 닿은 발바닥 교점`, val: `교점 H`, color: '#34d399', ok: true },
+          { id: 1, name: `📍 교점 H = 수선의 발`, desc: `수선이 직선 l과 만나는 점`, val: `교점 H`, color: '#34d399', ok: true },
           { id: 2, name: `🩷 비스듬한 사선 PQ 길이`, desc: `직각삼각형의 빗변이므로 항상 PH보다 김`, val: `${oblLen} cm`, color: '#f472b6', ok: false }
         ],
         totalRes: `점 P와 직선 l 사이의 거리 = 수선 PH = ${distH} cm`,
         rule: '점과 직선 사이의 거리 = 수선의 발 H까지의 수선 길이!',
         formulaHTML: `• <strong>직교(${tex('\\perp')})</strong>: 두 직선의 교각이 ${tex('90^\\circ')}(직각)일 때<br/>• <strong>수직이등분선</strong>: 선분 AB의 <strong>중점 M을 지나면서 수직(${tex('\\perp')})</strong>인 직선`,
-        notes: `• <strong>[기호 모양 암기]</strong>: 수직 기호 <strong>${tex('\\perp')}</strong>는 평평한 땅 위에 기둥이 $90^\\circ$로 똑바로 서 있는 모양 그대로입니다!`,
+        notes: `• <strong>[기호의 모양]</strong>: 수직 기호 <strong>${tex('\\perp')}</strong>는 평평한 땅 위에 기둥이 $90^\\circ$로 똑바로 서 있는 모양 그대로입니다!`,
         bars: [
           { label: `🎯 최단거리 수선 PH (${distH}cm)`, weight: distH / (distH + parseFloat(oblLen)), color: '#fbbf24' },
           { label: `비스듬한 선분 PQ (${oblLen}cm)`, weight: parseFloat(oblLen) / (distH + parseFloat(oblLen)), color: '#f472b6' }
@@ -776,7 +776,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.beginPath(); ctx.moveTo(pts.B.x, cy); ctx.lineTo(pts.C.x, cy);
           ctx.strokeStyle = '#34d399'; ctx.lineWidth = 8; ctx.stroke();
           ctx.fillStyle = '#6ee7b7'; ctx.font = '800 13.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
-          ctx.fillText('✨ 공통부분(교집합) = 선분 BC!', (pts.B.x + pts.C.x) / 2, y1 - 28);
+          ctx.fillText('✨ 공통부분 = 선분 BC!', (pts.B.x + pts.C.x) / 2, y1 - 28);
         }
 
         Object.keys(pts).forEach((k) => {
@@ -894,8 +894,8 @@ window.addEventListener('DOMContentLoaded', function () {
       BOARD.handle('A', pA, { color: 'sky', drag: (w) => { state.ptA.x = (w.x - cx) / state.scale; state.ptA.y = (w.y - cy) / state.scale; } });
       BOARD.handle('B', pB, { color: 'red', drag: (w) => { state.ptB.x = (w.x - cx) / state.scale; state.ptB.y = (w.y - cy) / state.scale; } });
       ctx.font = '800 13px Pretendard, sans-serif'; ctx.fillStyle = '#ffffff';
-      ctx.textAlign = 'right'; ctx.fillText('점 A (드래그!)', pA.x - 16, pA.y + 4);
-      ctx.textAlign = 'left'; ctx.fillText('점 B (드래그!)', pB.x + 16, pB.y + 4);
+      ctx.textAlign = 'right'; ctx.fillText('점 A (끌어 보세요)', pA.x - 16, pA.y + 4);
+      ctx.textAlign = 'left'; ctx.fillText('점 B (끌어 보세요)', pB.x + 16, pB.y + 4);
       ctx.restore();
     }
 
@@ -929,12 +929,12 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.beginPath(); ctx.moveTo(xM, cy); ctx.lineTo(xM, yBr); ctx.lineTo(xN, yBr); ctx.lineTo(xN, cy);
         ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 4; ctx.stroke();
         ctx.fillStyle = '#fef08a'; ctx.font = '800 14px Pretendard, monospace'; ctx.textAlign = 'center';
-        ctx.fillText(`불변 길이 MN = ○ + △ = ½AB = ${L / 2} cm (점 C를 드래그해도 항상 일정!)`, (xM + xN) / 2, yBr - 14);
+        ctx.fillText(`MN의 길이 = ○ + △ = ½AB = ${L / 2} cm (점 C를 끌어도 항상 일정!)`, (xM + xN) / 2, yBr - 14);
 
         [
           { x: xA, l: 'A', c: '#ffffff', r: 6.5 },
           { x: xM, l: '중점 M', c: '#38bdf8', r: 6 },
-          { x: xC, l: '동점 C (드래그!)', c: '#fbbf24', r: 8.5 },
+          { x: xC, l: '움직이는 점 C (끌어 보세요)', c: '#fbbf24', r: 8.5 },
           { x: xN, l: '중점 N', c: '#f472b6', r: 6 },
           { x: xB, l: 'B', c: '#ffffff', r: 6.5 }
         ].forEach((p) => {
@@ -947,7 +947,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // [2.0 수정] 동점 C: 원본은 끄는 위치와 점이 그려지는 위치의 식이 달라(점이 마우스를 따라오지 않음) 실제 핸들로 바꿈
         BOARD.handle('C', { x: xC, y: cy }, { color: 'amber', r: 7.5, drag: (w) => { CUR.anim = clamp((((w.x - xA) / (xB - xA)) - 0.2) / 0.6, 0, 1); } });
         ctx.font = '800 12.5px Pretendard, sans-serif'; ctx.fillStyle = '#fbbf24'; ctx.textAlign = 'center';
-        ctx.fillText('동점 C (드래그!)', xC, cy + 25);
+        ctx.fillText('움직이는 점 C (끌어 보세요)', xC, cy + 25);
       } else if (sub === 'doubleMid') {
         const totalW = xB - xA, boxW = totalW / 4, qtr = L / 4;
         for (let i = 0; i < 4; i++) {
@@ -973,7 +973,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.fillText(it.l, px, cy + 25);
         });
         ctx.fillStyle = '#6ee7b7'; ctx.font = '800 14px Pretendard, sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(`🪜 중점의 중점 = 전체 4칸 블록! (MN = 1칸 = ¼AB = ${qtr}cm, AN = 3칸 = ¾AB = ${3 * qtr}cm)`, cx, cy - 48);
+        ctx.fillText(`🪜 중점의 중점 → 전체를 4칸으로 나눔 (MN = 1칸 = ¼AB = ${qtr}cm, AN = 3칸 = ¾AB = ${3 * qtr}cm)`, cx, cy - 48);
       } else if (sub === 'trisect') {
         const totalW = xB - xA, boxW = totalW / 6, unit = L / 6;
         for (let i = 0; i < 6; i++) {
@@ -1000,7 +1000,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.fillText(it.l, px, cy + 25);
         });
         ctx.fillStyle = '#fef08a'; ctx.font = '800 14px Pretendard, sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(`🧱 6칸 레고 블록 법칙: 선분 PM = (3칸 - 2칸) = 딱 1칸 = 1/6 AB = ${unit} cm!`, cx, cy - 48);
+        ctx.fillText(`🧱 6칸으로 나누기: 선분 PM = (3칸 - 2칸) = 1칸 = 1/6 AB = ${unit} cm!`, cx, cy - 48);
       } else {
         // ratioBlock
         const totalW = xB - xA, boxW = totalW / 3, unit = L / 3;
@@ -1028,7 +1028,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.fillText(it.l, px, cy + 25);
         });
         ctx.fillStyle = '#6ee7b7'; ctx.font = '800 14px Pretendard, sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(`🎯 조건식 번역: CB = 1칸으로 놓으면 AC = 2칸, 중점 M에 의해 AM = MC = CB = 모두 1칸!`, cx, cy - 48);
+        ctx.fillText(`🎯 길이의 비를 칸 수로: CB = 1칸으로 놓으면 AC = 2칸, 중점 M에 의해 AM = MC = CB = 모두 1칸!`, cx, cy - 48);
       }
 
       ctx.restore();
@@ -1323,7 +1323,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.font = '800 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
         ctx.fillStyle = '#38bdf8'; ctx.fillText('M (이등분선 ●)', pM.x, pM.y - 12);
         ctx.fillStyle = '#f472b6'; ctx.fillText('N (이등분선 ×)', pN.x, pN.y - 12);
-        ctx.fillStyle = '#e2e8f0'; ctx.fillText('C (마우스로 좌우 드래그!)', pC.x, pC.y - 12);
+        ctx.fillStyle = '#e2e8f0'; ctx.fillText('C (마우스로 좌우로 끌어 보세요)', pC.x, pC.y - 12);
         // [2.0 수정] 반직선 OC 끝점 C: 원본은 드래그 위치 식이 달라 반직선이 마우스를 따라오지 않았습니다 → 각도를 직접 읽는 핸들
         BOARD.handle('C', pC, { color: 'ink', drag: (w) => { const ang = Math.atan2(w.y - pO.y, w.x - pO.x); const r = ang > 0 ? (w.x < pO.x ? 0 : 1) : (ang + Math.PI) / Math.PI; CUR.anim = clamp((r - 0.22) / 0.56, 0, 1); } });
         ctx.fillStyle = '#fef08a'; ctx.fillText('🎯 ∠MON = ● + × = 90° (언제나 직각 ∟!)', pO.x, pO.y + 30);
@@ -1358,7 +1358,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // [2.0 수정] 스캔 점 Q: 원본은 직선 위 어디를 끌어도 위치가 맞지 않았음 → 점 Q를 실제 핸들로
         BOARD.handle('Q', pQ, { color: 'rose', drag: (w) => { CUR.anim = clamp(0.5 + (w.x - cx) / (320 * state.scale), 0, 1); } });
         ctx.font = '800 13px Pretendard, sans-serif'; ctx.fillStyle = '#f472b6'; ctx.textAlign = 'center';
-        ctx.fillText('스캔 점 Q (드래그!)', pQ.x, pQ.y + 24);
+        ctx.fillText('움직이는 점 Q (끌어 보세요)', pQ.x, pQ.y + 24);
       }
 
       ctx.restore();
@@ -1371,11 +1371,11 @@ window.addEventListener('DOMContentLoaded', function () {
   const RENDER = { 1: renderTab1Rays, 2: renderTab2Blocks, 3: renderTab3PointsAndClock, 4: renderTab4PaperAndAngles };
   const TABS = [
     '직선·반직선·선분 & 공통부분 (5종)',
-    '중점·삼등분·조건식 블록 (4종)',
+    '중점·삼등분·길이의 비 (4종)',
     '선의 개수·맞꼭지각·시계 (4종)',
     '종이 테이프 접기·이등분선·직교 (4종)'
   ];
-  const SHORT = ['직선·반직선·선분', '중점·삼등분·조건식', '선의 개수·맞꼭지각·시계', '종이 접기·이등분선·직교'];
+  const SHORT = ['직선·반직선·선분', '중점·삼등분·길이의 비', '선의 개수·맞꼭지각·시계', '종이 접기·이등분선·직교'];
   const QUESTIONS = [
     '반직선 AB와 BA, 선분 AB와 BA는 같은 도형일까? 어디까지가 공통부분일까?',
     '선분이 중점·삼등분점으로 나뉘면 길이를 어떻게 한눈에 셀 수 있을까?',
@@ -1421,7 +1421,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id, title: label, short: label, reviewTab: true, autoFit: true,
       question: QUESTIONS[m - 1],
-      notesTitle: '헷갈리는 포인트와 직관',
+      notesTitle: '헷갈리기 쉬운 점과 직관',
       enter: (s) => { s.anim = m === 2 ? 0.35 : 1; }, // 원본 setMode/setSub: 진행도 초기화(탭 2는 35%)
       controls: () => ((ANIM.has(id) ? ['anim'] : []).concat(id === 'verticalAng' ? ['theta'] : id === 'paperFold' ? ['fold'] : id === 'paperFoldCorner' ? ['fa'] : id === 'clockAng' ? ['minute'] : [])),
       presets: (s) => {
@@ -1432,14 +1432,14 @@ window.addEventListener('DOMContentLoaded', function () {
         if (ANIM.has(id)) [0, 0.5, 1].forEach((v) => out.push({ group: '진행도', label: v === 0 ? '0% 시작' : v === 1 ? '100% 완성' : '50%', set: { anim: v }, ms: 700, on: (st) => Math.abs(st.anim - v) < 0.01 }));
         if (L_CHIPS.has(id)) [6, 12, 18, 24].forEach((v) => out.push({ group: arrowOnly(spec.dim1Name), label: `${v} cm`, apply: (st) => { st.L = v; }, on: (st) => Math.round(st.L) === v }));
         if (id === 'collinear' || id === 'circlePts') [4, 5, 6, 7].forEach((n) => out.push({ group: '전체 점 개수', label: `${n}개`, apply: (st) => { st.L = PT_L[n]; }, on: (st) => nPtsOf(Math.round(st.L)) === n }));
-        if (id === 'collinear') [3, 4, 5, 6].filter((k) => k <= nPtsOf(Math.round(s.L)) - 1).forEach((k) => out.push({ group: '일직선 위 점 개수', label: `${k}개`, apply: (st) => { st.deg = M_DEG[k]; }, on: (st) => mColOf(Math.round(st.L), st.deg) === k }));
+        if (id === 'collinear') [3, 4, 5, 6].filter((k) => k <= nPtsOf(Math.round(s.L)) - 1).forEach((k) => out.push({ group: '한 직선 위의 점 개수', label: `${k}개`, apply: (st) => { st.deg = M_DEG[k]; }, on: (st) => mColOf(Math.round(st.L), st.deg) === k }));
         if (id === 'verticalAng') {
           [2, 3, 4, 5, 6].forEach((n) => out.push({ group: '만나는 직선 개수 n', label: `${n}개`, apply: (st) => { st.L = LINE_L[n]; }, on: (st) => nLinesOf(Math.round(st.L)) === n }));
           [40, 55, 65, 75].forEach((d) => out.push({ group: '교차 각도 θ', label: `${d}°`, set: { theta: d }, ms: 500, on: (st) => Math.round(st.theta) === d }));
         }
         if (id === 'paperFold') [40, 55, 65, 75].forEach((d) => out.push({ group: '접은 각도 ∠ABC', label: `${d}°`, set: { fold: d }, ms: 500, on: (st) => Math.round(st.fold) === d }));
         if (id === 'paperFoldCorner') [20, 25, 30, 35, 40].forEach((d) => out.push({ group: '접은 각도(●)', label: `${d}°`, set: { fa: d }, ms: 500, on: (st) => Math.round(st.fa) === d }));
-        if (id === 'clockAng') [10, 20, 30, 40, 50].forEach((d) => out.push({ group: '분(Minute)', label: `${d}분`, set: { minute: d }, ms: 500, on: (st) => Math.round(st.minute) === d }));
+        if (id === 'clockAng') [10, 20, 30, 40, 50].forEach((d) => out.push({ group: '분', label: `${d}분`, set: { minute: d }, ms: 500, on: (st) => Math.round(st.minute) === d }));
         return out;
       },
       actions: () => {
@@ -1459,7 +1459,7 @@ window.addEventListener('DOMContentLoaded', function () {
           formula: spec.formulaHTML,
           notes: spec.notes,
           // 원본 하단 '실시간 길이·각도 블록 구조' 막대 → 무대 아래 띠(그림을 가리지 않음)
-          tape: { title: '실시간 길이·각도 블록 구조 · ' + spec.totalRes, segments: spec.bars.map((x) => ({ text: x.label, weight: x.weight, color: x.color })) }
+          tape: { title: '길이·각도의 구성 · ' + spec.totalRes, segments: spec.bars.map((x) => ({ text: x.label, weight: x.weight, color: x.color })) }
         };
       },
       draw: (b, s) => {
@@ -1502,7 +1502,7 @@ window.addEventListener('DOMContentLoaded', function () {
     state: { lens: 'exploded', ptA: { x: -125, y: 12 }, ptB: { x: 120, y: -15 } },
     persist: ['lens'],
     params: {
-      anim: { value: 1, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행도 (0% → 100%)', hint: '레이저 발사 · 점 이동 · 종이 접기를 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
+      anim: { value: 1, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행도 (0% → 100%)', hint: '빛 발사 · 점 이동 · 종이 접기를 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
       L: { value: 12, min: 4, max: 24, step: 1, color: 'sky', label: '기준 길이 / 개수' },
       deg: { value: 55, min: 20, max: 130, step: 1, color: 'rose', label: '각도' },
       theta: { value: 55, min: 40, max: 75, step: 1, color: 'rose', label: '교차 각도 θ', hint: '마주 보는 맞꼭지각이 언제나 같은지 확인합니다', format: (v) => `${Math.round(v)}°` },

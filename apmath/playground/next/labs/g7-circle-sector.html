@@ -91,12 +91,12 @@
 <aside class="right"><section class="card"><span class="eyebrow" id="tag">1. 개념의 시작</span><h2 id="title">원의 기본 요소</h2><p id="description"></p><div class="compare"><div class="chip"><span style="color:var(--sky)" id="periLabel">둘레 · 선 (cm)</span><strong id="periNum">—</strong></div><div class="chip"><span style="color:var(--mint)" id="areaLabel">넓이 · 면 (cm²)</span><strong id="areaNum">—</strong></div></div><div class="formula" id="formula">—</div></section><section class="card"><h3>현재 조작 · 왜 그런가?</h3><div class="step-title" id="stepTitle"></div><p class="step-explain" id="stepText"></p><div class="alert" id="warning"></div></section><section class="card"><h3>스스로 확인</h3><p id="question"></p><button class="button" id="showAnswer">정답·해설 보기</button><div class="answer" id="answer"></div></section><div class="tiny">원과 부채꼴 통합 실험실 · 각 도형의 수치와 색상은 현재 선택과 연동됩니다.</div></aside>
 </main>
 <section id="transformLab" hidden aria-label="원과 부채꼴 변환군 시각 실험실">
-  <div class="tl-heading"><div><div class="tl-kicker" id="tlKicker">CHAPTER 01 · 선과 면을 움직여 발견하기</div><h1 id="tlLabTitle">도형 넣기·파내기 · 선과 면의 변환</h1><p id="tlLabDescription">문제를 풀기보다 중심각과 반지름을 직접 바꾸고, 선·면·분할을 관찰하세요.</p></div><button type="button" class="tl-reset" id="tlReset">↺ 처음 모양으로</button></div>
+  <div class="tl-heading"><div><div class="tl-kicker" id="tlKicker">1장 · 선과 면을 움직여 발견하기</div><h1 id="tlLabTitle">도형 넣기·파내기 · 선과 면의 변환</h1><p id="tlLabDescription">문제를 풀기보다 중심각과 반지름을 직접 바꾸고, 선·면·분할을 관찰하세요.</p></div><button type="button" class="tl-reset" id="tlReset">↺ 처음 모양으로</button></div>
   <div class="tl-family" id="tlFamily" aria-label="변환군과 경험 선택">
     <span class="tl-family-label">F01 · 넣기·파내기</span>
     <button type="button" data-tl-family="sector" class="active">① 고리 부채꼴</button><button type="button" data-tl-family="circle">② 원 안의 작은 원</button><button type="button" data-tl-family="f01-03">③ 반원 둘</button><button type="button" data-tl-family="f01-04">④ 사분원과 반원</button><button type="button" data-tl-family="f01-05">⑤ 정사각형과 사분원</button><button type="button" data-tl-family="f01-06">⑥ 활꼴</button><button type="button" data-tl-family="f01-07">⑦ 30° 부채꼴</button><button type="button" data-tl-family="f01-08">⑧ 분리된 두 영역</button>
-    <span class="tl-family-label">F03 · 겹치기·상쇄</span>
-    <button type="button" data-tl-family="f03-01">① 같은 반원</button><button type="button" data-tl-family="f03-02">② 반원과 직사각형</button><button type="button" data-tl-family="f03-03">③ 정사각형과 사분원</button><button type="button" data-tl-family="f03-04">④ 마주 보는 사분원</button><button type="button" data-tl-family="f03-05">⑤ 같은 중심 부채꼴</button><button type="button" data-tl-family="f03-06">⑥ 반원과 45° 부채꼴</button><button type="button" data-tl-family="f03-07">⑦ 같은 넓이 상쇄</button><button type="button" data-tl-family="f03-08">⑧ 선택한 면의 경계</button>
+    <span class="tl-family-label">F03 · 겹치기·빼기</span>
+    <button type="button" data-tl-family="f03-01">① 같은 반원</button><button type="button" data-tl-family="f03-02">② 반원과 직사각형</button><button type="button" data-tl-family="f03-03">③ 정사각형과 사분원</button><button type="button" data-tl-family="f03-04">④ 마주 보는 사분원</button><button type="button" data-tl-family="f03-05">⑤ 같은 중심 부채꼴</button><button type="button" data-tl-family="f03-06">⑥ 반원과 45° 부채꼴</button><button type="button" data-tl-family="f03-07">⑦ 같은 넓이 더하고 빼기</button><button type="button" data-tl-family="f03-08">⑧ 선택한 면의 경계</button>
   </div>
   <div class="tl-grid">
     <div class="tl-stage">
@@ -146,7 +146,7 @@ const PI=Math.PI;
 const zones=[
  {name:'① 원 알아보기',short:'원의 요소',items:[['center','중심·반지름'],['diameter','지름·원주'],['arc','호·현'],['sector','부채꼴'],['segment','활꼴']]},
  {name:'② 기본형',short:'기본형',items:[['circle','원'],['semi','반원'],['quarter','사분원'],['sector','부채꼴'],['segment','활꼴']]},
- {name:'③ 길이·둘레',short:'외곽 경계',items:[['semi','반원 둘레'],['quarter','사분원 둘레'],['sector','부채꼴 둘레'],['segment','활꼴 둘레'],['cutout','파낸 반원'],['track','운동장 트랙']]},
+ {name:'③ 길이·둘레',short:'바깥 경계',items:[['semi','반원 둘레'],['quarter','사분원 둘레'],['sector','부채꼴 둘레'],['segment','활꼴 둘레'],['cutout','파낸 반원'],['track','운동장 트랙']]},
  {name:'④ 넓이 원리',short:'넓이의 원리',items:[['circleProof','원을 잘게 나누기'],['sectorProof','부채꼴 넓이']]},
  {name:'⑤ 색칠한 넓이',short:'조각 실험',items:[['subtract','전체에서 빼기'],['split','보조선으로 두 조각'],['move','조각 옮겨 채우기'],['combine','면 더하고 빼기']]},
  {name:'⑥ 응용 문제',short:'구조로 풀기',items:[['leaf','나뭇잎'],['cutout','파낸 반원'],['track','운동장 트랙'],['combine','반원 합·차']]},
@@ -331,7 +331,7 @@ function buildAutoStepTexts(segs,intro,periVal,areaVal){
  if(!segs?.length)return [intro];
  const arr=[intro];
  segs.forEach((s,i)=>{
-  arr.push(`${i+1}단계 [${s.name}]: 길이는 ${cm(s.len)}이며 전체 외곽 둘레(${cm(periVal)})의 ${fmt(s.len/periVal*100,1)}%를 차지합니다.${i===segs.length-1?` 모든 경계를 합하면 둘레 ${cm(periVal)}${Number.isFinite(areaVal)?`, 넓이 ${cm2(areaVal)}`:''}가 완성됩니다.`:''}`);
+  arr.push(`${i+1}단계 [${s.name}]: 길이는 ${cm(s.len)}이며 전체 바깥 둘레(${cm(periVal)})의 ${fmt(s.len/periVal*100,1)}%를 차지합니다.${i===segs.length-1?` 모든 경계를 합하면 둘레 ${cm(periVal)}${Number.isFinite(areaVal)?`, 넓이 ${cm2(areaVal)}`:''}가 완성됩니다.`:''}`);
  });
  return arr;
 }
@@ -386,7 +386,7 @@ function baseGeometry(type,ctx){
   segs=[arc(PI,2*PI,COL.arc,'반원호 (πr)'),boundaryLine(right,left,COL.line,'지름 (2r)')];
   area=PI*r*r/2;
   formula=S.zone===2?`반원 둘레 = 반원호(πr = ${svgCm(sx(r))}) + 지름(2r = ${cm(2*r)}) = ${svgCm(sx(r,1,2*r))}`:'둘레 = πr + 2r,  넓이 = πr² × (180°/360°) = πr²/2';
-  info=S.zone===2?'반원의 외곽 경계는 위쪽 굽은 반원호(πr)와 아래쪽 곧은 지름(2r)을 합친 길이입니다.':'반원은 중심각이 180°인 부채꼴(원의 1/2)입니다. 점선 원 전체와 비교해 보세요.';
+  info=S.zone===2?'반원의 바깥 경계는 위쪽 굽은 반원호(πr)와 아래쪽 곧은 지름(2r)을 합친 길이입니다.':'반원은 중심각이 180°인 부채꼴(원의 1/2)입니다. 점선 원 전체와 비교해 보세요.';
   question='반원 둘레를 πr이라고 하면 무엇을 빠뜨렸나요?';
   answer='아래쪽을 막아주는 직선인 지름 2r를 빠뜨렸습니다. 반원의 둘레는 πr + 2r입니다.';
   over+=edgeTick(left,O,COL.white)+edgeTick(O,right,COL.white)+crossAt(O)+label(cx,cy+22,'O',COL.white);
@@ -402,7 +402,7 @@ function baseGeometry(type,ctx){
   formula=S.zone===2?`사분원 둘레 = 호(${svgCm(sx(r,2))}) + 반지름 2개(${cm(2*r)}) = ${svgCm(sx(r,2,2*r))}`:'둘레 = πr/2 + 2r,  넓이 = πr² × (90°/360°) = πr²/4';
   info=S.zone===2?'사분원의 둘레를 따라가면 90° 호 1개와 수직으로 만나는 반지름 2개를 지나갑니다.':'사분원은 중심각이 90°인 부채꼴로, 점선 원 전체의 1/4(25%)에 해당합니다.';
   question='사분원의 반지름 두 개는 둘레에 포함될까요?';
-  answer='네. 사분원 면을 감싸는 외곽 경계선이므로 반지름 2개(2r)를 반드시 더해야 합니다.';
+  answer='네. 사분원 면을 감싸는 바깥 경계선이므로 반지름 2개(2r)를 반드시 더해야 합니다.';
   over+=edgeTick(O,pTop,COL.white)+edgeTick(O,pRight,COL.white)+drawAngleMarker(cx,cy,R,-PI/2,0,90)+crossAt(O)+label(posO.x,posO.y+5,'O',COL.white);
   if(S.zone===1)over+=badge(cx,cy-R-24,230,26,`원 전체의 90°/360° = 1/4 (25%)`);
   else over+=label(cx+R*.68,cy-R-38,`① 호 πr/2 = ${svgCm(sx(r,2))}`,COL.arc,13.5);
@@ -452,7 +452,7 @@ function baseGeometry(type,ctx){
    if(S.zone===1)over+=badge(cx,cy+R+45,250,26,'활꼴 넓이 = 부채꼴 OAB − △OAB');
    warn=S.angle===180
     ?'중심각이 180°일 때는 현 AB가 원의 중심 O를 지나는 지름(2r)이 되어, 활꼴과 부채꼴이 모두 반원으로 일치합니다!'
-    :'일반 각도의 현 길이와 활꼴 넓이 수치 계산은 삼각비를 배우는 상위 학년 과정입니다. 중1 과정에서는 구조(부채꼴 − 삼각형)와 경계(호 + 현)를 정확히 구분합니다.';
+    :'일반 각도의 현 길이와 활꼴 넓이를 수로 계산하는 것은 중1 과정에서 다루지 않습니다. 중1 과정에서는 구조(부채꼴 − 삼각형)와 경계(호 + 현)를 정확히 구분합니다.';
   }
  }
  if(['arc','sector','segment'].includes(type)){
@@ -497,7 +497,7 @@ function compositeGeometry(type){
   info=S.zone===5?`[응용 풀이] 가로·세로가 ${2*r}cm인 정사각형 양옆에 반지름 ${r}cm인 반원 2개(원 1개)를 붙인 트랙입니다.`:'양쪽 두 반원을 합치면 반지름 r인 원 1개이고, 가운데는 한 변이 2r인 정사각형입니다. 내부 세로 점선은 둘레에 포함되지 않습니다.';
   formula=`둘레 = 원주(2πr) + 직선 2개(4r) = ${svgCm(sx(2*r,1,4*r))},  넓이 = 원(πr²) + 정사각형(4r²) = ${cm2(area)}`;
   question='운동장 안쪽 직사각형의 세로 점선을 둘레에 더하나요?';
-  answer='아닙니다. 내부 보조선(접합선)이므로 도형의 외곽 둘레가 아닙니다. 둘레는 위·아래 직선(4r)과 양쪽 반원호 합(2πr)뿐입니다.';
+  answer='아닙니다. 내부 보조선(접합선)이므로 도형의 바깥 둘레가 아닙니다. 둘레는 위·아래 직선(4r)과 양쪽 반원호 합(2πr)뿐입니다.';
  }
  else if(type==='leaf'){
   const x=cx-R/2,y=cy-R/2;const A=p(x,y),C=p(x+R,y+R),B=p(x,y+R),D=p(x+R,y);
@@ -520,11 +520,11 @@ function compositeGeometry(type){
    boundaryArc(cx-small,cy,small,0,-PI,COL.line,'왼 위 파낸 반원호 (πr/2)')
   ];
   area=PI*r*r/2;
-  over=line(left.x,cy,right.x,cy,COL.aux,1.8,'6 6','math-aux')+crossAt(mid)+badge(cx,cy-R-26,330,28,`등적 상쇄: 큰 반원 − 작은 반원 + 작은 반원`)+dimLine(mid.x,cy+small+38,right.x,cy+small+38,`작은 지름 r = ${r} cm (반지름 ${r/2} cm)`,COL.arc2,cy);
+  over=line(left.x,cy,right.x,cy,COL.aux,1.8,'6 6','math-aux')+crossAt(mid)+badge(cx,cy-R-26,330,28,`넓이 변화 없음: 큰 반원 − 작은 반원 + 작은 반원`)+dimLine(mid.x,cy+small+38,right.x,cy+small+38,`작은 지름 r = ${r} cm (반지름 ${r/2} cm)`,COL.arc2,cy);
   info='큰 반원(반지름 r)에서 왼쪽 작은 반원(반지름 r/2)을 빼고 오른쪽 아래에 같은 작은 반원을 붙인 도형입니다. 넓이는 큰 반원과 같고, 둘레는 곡선 3개의 합(2πr)입니다.';
   formula=`넓이 = 큰 반원 = πr²/2 = ${cm2(area)},  둘레 = 큰 호(πr) + 작은 호 2개(πr) = 2πr = ${svgCm(sx(2*r))}`;
   question='왼쪽 위에서 파낸 반원을 오른쪽 아래에 붙이면 넓이와 둘레는 어떻게 될까요?';
-  answer='더하고 뺀 작은 반원의 넓이가 상쇄되어 넓이는 큰 반원(πr²/2)과 같고, 둘레는 직선 없이 호 3개로 이루어져 원주 전체(2πr)와 같아집니다.';
+  answer='더한 작은 반원과 뺀 작은 반원의 넓이가 같아 서로 없어지므로 넓이는 큰 반원(πr²/2)과 같고, 둘레는 직선 없이 호 3개로 이루어져 원주 전체(2πr)와 같아집니다.';
  }
  const marked=markSegments(segments,refPx);
  const periVal=marked.reduce((t,s)=>t+s.len,0);
@@ -673,8 +673,8 @@ function areaExperiment(type){
   formula=`넓이 = 직사각형(3r × 2r) = 6r² = ${cm2(area)} (원래 둘레 = 6r + 2πr = ${svgCm(sx(2*r,1,6*r))})`;
   info='오른쪽에 볼록 튀어나온 반원 조각(반지름 r)을 왼쪽으로 3r만큼 평행이동하면 왼쪽의 오목한 반원 홈에 빈틈없이 들어맞아 직사각형이 됩니다.';
   question='곡선 조각을 옮겨 직사각형이 된 뒤, 둘레도 직사각형의 둘레와 같을까요?';
-  answer='아닙니다! 조각을 옮기면 넓이(면)는 그대로 보존되지만, 곡선(2πr)이 직선(4r)으로 바뀌었으므로 원래 둘레(6r+2πr)와 직사각형 둘레(10r)는 다릅니다.';
-  warn='등적변형(조각 옮기기)은 넓이를 구할 때만 사용합니다. 둘레는 반드시 이동 전 원래 도형의 바깥 경계에서 구해야 합니다.';
+  answer='아닙니다! 조각을 옮기면 넓이(면)는 그대로이지만, 곡선(2πr)이 직선(4r)으로 바뀌었으므로 원래 둘레(6r+2πr)와 직사각형 둘레(10r)는 다릅니다.';
+  warn='조각을 옮기는 방법은 넓이를 구할 때만 사용합니다. 둘레는 반드시 이동 전 원래 도형의 바깥 경계에서 구해야 합니다.';
   title='곡선 조각으로 직사각형 만들기';
   stepTexts=[
    `1단계 [원본 관찰]: 왼쪽은 반원만큼 파여 있고 오른쪽은 반원만큼 튀어나온 도형입니다 (원래 둘레 ${svgCm(sx(2*r,1,6*r))}).`,
@@ -703,7 +703,7 @@ function areaExperiment(type){
   if(showAux)draw+=line(left,cy,right,cy,COL.amber,2.4,'6 5','math-aux');
   if((step===4||t>.9)&&Math.hypot(man.x,man.y)<3){
    draw+=svgPath(`M${left} ${cy} A${R} ${R} 0 0 1 ${right} ${cy} Z`,{fill:'none',stroke:COL.amber,width:3.6,dash:'7 5',cls:'math-peri'});
-   draw+=badge(cx,cy+R+45,370,30,`큰 반원 1개로 합체 완성! 넓이 = ${svgCm2(sx(r*r,2))}`);
+   draw+=badge(cx,cy+R+45,370,30,`큰 반원 1개가 완성! 넓이 = ${svgCm2(sx(r*r,2))}`);
   }
   draw+=badge(450+ox,66+oy,360,28,'오른쪽 아래 작은 반원을 회전·이동해 왼쪽 위 빈 홈 채우기');
   area=PI*r*r/2;per=2*PI*r;
@@ -749,7 +749,7 @@ function renderProof(type){
    out+=line(startX,topY-16,startX+totalW,topY-16,COL.amber,2.5,'','math-peri')+label(startX+totalW/2,topY-26,`가로 ≈ 원주의 절반 (πr = ${svgCm(sx(r))})`,COL.amber,14);
    out+=line(startX-14,topY,startX-14,botY,COL.line,2.5,'','math-peri')+label(startX-42,(topY+botY)/2+5,`세로 r`,COL.line,13.5);
   }
-  out+=label(sourceX,445,'원판 → 합동 부채꼴 분할',COL.white,14)+label(startX+totalW/2,445,`조각 ${N}개 맞물림: 직사각형(πr × r)에 수렴`,COL.white,14);
+  out+=label(sourceX,445,'원판 → 합동 부채꼴 분할',COL.white,14)+label(startX+totalW/2,445,`조각 ${N}개 맞물림: 직사각형(πr × r)에 가까워짐`,COL.white,14);
   area=PI*r*r;peri=2*PI*r;
   formula=`원의 넓이 = 가로(원주의 1/2 = πr) × 세로(반지름 = r) = πr² = ${cm2(area)}`;
   info='원을 합동인 부채꼴 조각으로 잘게 나누어 위·아래로 엇갈려 맞물리면 직사각형에 가까워집니다. 분할 수(8/16/32/64)와 반지름을 바꿔 확인하세요.';
@@ -758,7 +758,7 @@ function renderProof(type){
   stepTexts=[
    `1단계 [원본 원]: 반지름 ${r}cm인 원을 합동인 부채꼴 ${N}조각으로 똑같이 나눕니다.`,
    `2단계 [조각 분리]: 위쪽 조각(파랑)과 아래쪽 조각(초록)을 최단 회전 경로로 이동하기 시작합니다.`,
-   `3단계 [엇갈려 맞물림]: 조각들을 위·아래로 지그재그로 맞물려 평행사변형 모양으로 배열합니다.`,
+   `3단계 [엇갈려 맞물림]: 조각들을 위·아래로 번갈아 맞물려 평행사변형 모양으로 배열합니다.`,
    `4단계 [공식 유도]: 조각 수가 많아질수록 가로가 πr(${svgCm(sx(r))}), 세로가 r(${r}cm)인 직사각형이 되어 넓이 πr²(${cm2(area)})이 유도됩니다!`
   ];
  }else{
@@ -847,7 +847,7 @@ function stage1Exact(m){
  const exactCircle=pi(2*r),exactCircleArea=pi(rr);
  const chord=pieces[1];
  const caseFormula={
-  center:`반지름 ${P(rational(r))}, 원주 ${P(exactCircle)}, 원의 넓이 ${A(exactCircleArea)}. 반지름은 원의 외곽 둘레에 더하지 않습니다.`,
+  center:`반지름 ${P(rational(r))}, 원주 ${P(exactCircle)}, 원의 넓이 ${A(exactCircleArea)}. 반지름은 원의 바깥 둘레에 더하지 않습니다.`,
   diameter:`지름 ${P(rational(2*r))}, 원주 ${P(exactCircle)}. 원주율은 원주를 지름으로 나눈 일정한 값 \\(\\pi\\)입니다.`,
   circle:`원주 \\(2\\pi r\\) = ${P(exactCircle)}, 넓이 \\(\\pi r^2\\) = ${A(exactCircleArea)}`,
   semi:`반원 둘레 = 반원호 ${P(pi(r))} + 지름 ${P(rational(2*r))} = ${fullP}. 넓이 ${fullA}`,
@@ -878,18 +878,18 @@ function stage1Exact(m){
    `반지름 ${P(rational(r))}, 중심각 ${a}°인 부채꼴을 관찰합니다.`,
    '부채꼴을 짝수 개의 크기가 같은 조각으로 나눕니다.',
    '조각을 위·아래 교대로 회전해 맞물립니다. 가로는 호의 절반에 가까워집니다.',
-   `호의 길이는 ${arca}, 부채꼴 넓이는 ${fullA}입니다. 이 조각 배열은 근사적 관찰입니다.`
+   `호의 길이는 ${arca}, 부채꼴 넓이는 ${fullA}입니다. 이 조각 배열은 직사각형에 가까운 모양을 관찰한 것이며, 정확한 직사각형은 아닙니다.`
   ];
  }else if(z===4){
   const focus=t==='subtract'?`사분원의 넓이 ${A(pi(rr,4))}에서 삼각형의 넓이 ${A(rational(rr,2))}를 뺍니다.`:
    t==='split'?`합동인 두 활꼴의 넓이를 합하면 ${fullA}입니다.`:
-   t==='move'?`곡선 조각을 옮기면 넓이는 ${fullA}로 보존되지만 둘레는 달라집니다.`:
+   t==='move'?`곡선 조각을 옮기면 넓이는 ${fullA}로 변하지 않지만 둘레는 달라집니다.`:
    `같은 반원 조각을 더하고 빼면 넓이는 ${fullA}입니다.`;
   m.stepTexts=[
    start,
    t==='subtract'?'현을 그어 사분원과 직각이등변삼각형으로 나눕니다.':t==='split'?'대각선을 그리고 각 활꼴에 해당하는 사분원을 찾습니다.':'보조선을 통해 옮길 조각과 남길 조각을 구분합니다.',
    t==='split'?'합동인 두 활꼴을 벌려 사분원의 윤곽과 직각삼각형을 확인합니다.':'색칠된 조각을 원래 도형에서 분리합니다.',
-   t==='split'?'각 사분원에서 빨간 직각삼각형을 실제로 떼어 이동시킵니다.':'분리한 조각을 드래그하거나 단계 버튼으로 이동시킵니다.',
+   t==='split'?'각 사분원에서 빨간 직각삼각형을 실제로 떼어 이동시킵니다.':'분리한 조각을 끌거나 단계 버튼으로 이동시킵니다.',
    focus
   ];
  }else if(m.segs.length){
@@ -948,7 +948,7 @@ function showModel(m){
  $('scene').innerHTML=geometry+`<g id="geomLayer">${m.draw}</g><g id="boundaryLayer">${arcShapes}</g>`+traceMarker(m.segs)+(m.hud||'')+`<g id="handleLayer">${m.handle||''}</g>`;
  const name=current()[1];
  $('boardCaption').textContent=`${zones[S.zone].short} · ${name}`;
- $('boardHint').textContent=S.zone===4?'단계·슬라이더로 면을 분리하고 조각을 직접 끌어보세요':S.zone===2?'칠판의 선이나 펼친 둘레·하단 줄자 버튼을 누르면 해당 구간이 강조됩니다':'도형 핸들과 슬라이더를 직접 조작하세요 (배경 드래그 시 화면 이동)';
+ $('boardHint').textContent=S.zone===4?'단계·슬라이더로 면을 분리하고 조각을 직접 끌어보세요':S.zone===2?'칠판의 선이나 펼친 둘레·하단 줄자 버튼을 누르면 해당 구간이 강조됩니다':'도형 핸들과 슬라이더를 직접 조작하세요 (빈 곳을 끌면 화면 이동)';
  $('tag').textContent=zones[S.zone].name;
  $('title').textContent=name;
  $('description').textContent=m.info||'그림에서 서로 다른 선과 면을 눌러 확인해 보세요.';
@@ -963,7 +963,7 @@ function showModel(m){
  const mStep=maxStep(),n=mStep+1;
  $('stepCounter').textContent=`${S.step+1} / ${n}`;
  const titles=S.zone===4
-  ?['원본 도형 관찰','보조선 및 구조 파악','조각 분리 시작','실제 조각 등적 이동','결과와 넓이 수식 연결']
+  ?['원본 도형 관찰','보조선 및 구조 파악','조각 분리 시작','실제 조각을 넓이가 같게 옮기기','결과와 넓이 수식 연결']
   :S.zone===3
   ?['원본 도형 관찰','부채꼴 조각 분할','조각 회전·재배열','가로·세로와 넓이 공식 유도']
   :S.step===0
@@ -987,7 +987,7 @@ function showModel(m){
  $('morphVal').textContent=Math.round(S.morph*100)+'%';
  $('rulerBox').classList.toggle('hidden',!m.segs.length);
  renderRuler(m);
- $('legend').innerHTML=`<span><i class="bar-color" style="background:${COL.arc}"></i>호·곡선</span><span><i class="bar-color" style="background:${COL.line}"></i>외곽 선분</span><span><i class="bar-color" style="background:${COL.arc2}"></i>다른 호 / 색칠 면</span><span><i class="bar-color dashed"></i>보조선(둘레 제외)</span>`;
+ $('legend').innerHTML=`<span><i class="bar-color" style="background:${COL.arc}"></i>호·곡선</span><span><i class="bar-color" style="background:${COL.line}"></i>바깥 선분</span><span><i class="bar-color" style="background:${COL.arc2}"></i>다른 호 / 색칠 면</span><span><i class="bar-color dashed"></i>보조선(둘레 제외)</span>`;
  $('zoneLabel').textContent=`${S.zone+1}/6 구역`;
  if(S.zone===3&&m.type==='circleProof')$('boardHint').textContent=`조각 ${S.circleCount}개 · 최단 회전 경로 부채꼴 맞물림`;
 }
@@ -1529,7 +1529,7 @@ function tlRenderF01(){
   'f01-08':['반원에서 삼각형을 빼 두 영역 남기기','삼각형을 빼면 원호 양쪽에 분리된 면이 남습니다.']}[id];
  tlGet('tlShapeName').textContent=titles[0];tlGet('tlStageHint').textContent=titles[1];
  play.textContent=TL.animationType?'❚❚ 정지':'▶ 재생';play.classList.toggle('playing',Boolean(TL.animationType));
- play.setAttribute('aria-label',TL.animationType?'애니메이션 정지':TL.mode==='area'?'넓이 애니메이션 재생':TL.mode==='perimeter'?'둘레 애니메이션 재생':'넓이와 둘레 애니메이션 재생');
+ play.setAttribute('aria-label',TL.animationType?'움직임 정지':TL.mode==='area'?'넓이 움직임 재생':TL.mode==='perimeter'?'둘레 움직임 재생':'넓이와 둘레 움직임 재생');
  document.querySelectorAll('[data-tl-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.tlMode===TL.mode);b.setAttribute('aria-pressed',String(b.dataset.tlMode===TL.mode))});
  tlGet('tlAreaNum').innerHTML=mathHTML(`\\(${m.areaMetric}\\)`);tlGet('tlPeriNum').innerHTML=mathHTML(`\\(${m.periMetric}\\)`);
  tlGet('tlFormulaArea').innerHTML='<div class="tl-formula-label">넓이 분해 · 원래 면 − 꺼낸 조각</div>'+m.areaLines.map(x=>`<div class="tl-mathline">${mathHTML(`\\(${x}\\)`)}</div>`).join('');
@@ -1628,10 +1628,10 @@ function tlF03Model(id,st,g){
   partsOut.push(linePart('두 반원의 합친 지름 경계','#fbbf24',pA,pB2));
   title='같은 반원 두 개를 옆으로 움직여 겹치기';stage='합동인 반원을 옆으로 옮겨 포개기';hint='A만 · B만 · 공통 부분은 항상 같은 색';
   labels=tlTextSvg('A',cxA,cy-rp-13,'#8fe3ff',mobile?11:13,'middle')+tlTextSvg('B',cxB,cy-rp-13,'#ffb4c0',mobile?11:13,'middle');
-  if(st.shift===0){areaLines=[`S_A=S_B=\\dfrac{\\pi r^2}{2}`,`S_{A\\cap B}=\\dfrac{\\pi r^2}{2}`,`S_{A\\cup B}=\\dfrac{\\pi r^2}{2}`];periLines=[`L_{A\\cup B}=\\pi r+2r`];}
-  else if(st.shift===R){areaLines=[`S_{A\\cap B}=\\left(\\dfrac{\\pi}{3}-\\dfrac{\\sqrt3}{4}\\right)r^2`,`S_{A\\cup B}=S_A+S_B-S_{A\\cap B}`,`=24\\pi+9\\sqrt3\\,\\mathrm{cm}^{2}`];periLines=[`L_{A\\cup B}=2r\\left(\\pi-\\dfrac{\\pi}{3}\\right)+2r+r`,`=\\dfrac{4\\pi r}{3}+3r=8\\pi+18\\,\\mathrm{cm}`];}
-  else if(st.shift===2*R){areaLines=[`S_{A\\cap B}=0`,`S_{A\\cup B}=2\\cdot\\dfrac{\\pi r^2}{2}=\\pi r^2`];periLines=[`L_{A\\cup B}=2(\\pi r+2r)`];}
-  else {areaLines=[`S_{A\\cap B}=${areaText(commonArea)}`,`S_{A\\cup B}=S_A+S_B-S_{A\\cap B}`];periLines=[`L_{A\\cup B}=2r(\\pi-\\beta)+2r+d`];}
+  if(st.shift===0){areaLines=[`S_A=S_B=\\dfrac{\\pi r^2}{2}`,`S_{\\text{공통}}=\\dfrac{\\pi r^2}{2}`,`S_{\\text{합친 면}}=\\dfrac{\\pi r^2}{2}`];periLines=[`L_{\\text{합친 면}}=\\pi r+2r`];}
+  else if(st.shift===R){areaLines=[`S_{\\text{공통}}=\\left(\\dfrac{\\pi}{3}-\\dfrac{\\sqrt3}{4}\\right)r^2`,`S_{\\text{합친 면}}=S_A+S_B-S_{\\text{공통}}`,`=24\\pi+9\\sqrt3\\,\\mathrm{cm}^{2}`];periLines=[`L_{\\text{합친 면}}=2r\\left(\\pi-\\dfrac{\\pi}{3}\\right)+2r+r`,`=\\dfrac{4\\pi r}{3}+3r=8\\pi+18\\,\\mathrm{cm}`];}
+  else if(st.shift===2*R){areaLines=[`S_{\\text{공통}}=0`,`S_{\\text{합친 면}}=2\\cdot\\dfrac{\\pi r^2}{2}=\\pi r^2`];periLines=[`L_{\\text{합친 면}}=2(\\pi r+2r)`];}
+  else {areaLines=[`S_{\\text{공통}}=${areaText(commonArea)}`,`S_{\\text{합친 면}}=S_A+S_B-S_{\\text{공통}}`];periLines=[`L_{\\text{합친 면}}=2r(\\pi-\\beta)+2r+d`];}
   areaMetric=st.shift===0?'18\\pi\\,\\mathrm{cm}^{2}':st.shift===R?'24\\pi+9\\sqrt3\\,\\mathrm{cm}^{2}':st.shift===2*R?'36\\pi\\,\\mathrm{cm}^{2}':`${fmt(unionArea)}\\,\\mathrm{cm}^{2}`;
   periMetric=st.shift===0?'6\\pi+12\\,\\mathrm{cm}':st.shift===R?'8\\pi+18\\,\\mathrm{cm}':st.shift===2*R?'12\\pi+24\\,\\mathrm{cm}':`${fmt(unionPerimeter)}\\,\\mathrm{cm}`;
   areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`\\pi r^2`;note='두 반원의 넓이를 더하면 겹친 부분을 두 번 세게 됩니다. 공통 부분을 한 번 빼면 실제 합친 넓이가 됩니다.';
@@ -1654,10 +1654,10 @@ function tlF03Model(id,st,g){
   title='반원과 직사각형을 지름 기준으로 올리고 내리기';stage='직사각형을 위아래로 움직여 공통 면 찾기';hint='실제 원호와 직사각형의 교점으로 면을 나눔';
   labels=tlTextSvg('반원 A',cx,cy-rp-14,'#8fe3ff',mobile?11:13,'middle')+tlTextSvg('직사각형 B',cx,Math.min(vh-18,yBottom+19),'#ffb4c0',mobile?11:13,'middle');
   const commonTex=st.top===-6?'\\dfrac{\\pi r^2}{2}':st.top===-3?'\\left(\\dfrac{\\pi}{6}+\\dfrac{\\sqrt3}{4}\\right)r^2':'0';
-  areaLines=[`S_{A\\cup B}=S_A+S_B-S_{A\\cap B}`,`S_{A\\cap B}=${commonTex}`,`S_{A\\cap B}=${areaText(commonArea)}`];
-  if(st.top===-6)periLines=[`L_{A\\cup B}=2(2r+r)=6r`];
-  else if(st.top===-3)periLines=[`L_{A\\cup B}=\\dfrac{2\\pi r}{3}+6r-\\sqrt3r`];
-  else periLines=[`L_{A\\cup B}=\\pi r+4r`];
+  areaLines=[`S_{\\text{합친 면}}=S_A+S_B-S_{\\text{공통}}`,`S_{\\text{공통}}=${commonTex}`,`S_{\\text{공통}}=${areaText(commonArea)}`];
+  if(st.top===-6)periLines=[`L_{\\text{합친 면}}=2(2r+r)=6r`];
+  else if(st.top===-3)periLines=[`L_{\\text{합친 면}}=\\dfrac{2\\pi r}{3}+6r-\\sqrt3r`];
+  else periLines=[`L_{\\text{합친 면}}=\\pi r+4r`];
   areaMetric=st.top===-6?'72\\,\\mathrm{cm}^{2}':st.top===-3?'12\\pi+72-9\\sqrt3\\,\\mathrm{cm}^{2}':'18\\pi+72\\,\\mathrm{cm}^{2}';
   periMetric=st.top===-6?'36\\,\\mathrm{cm}':st.top===-3?'4\\pi+36-6\\sqrt3\\,\\mathrm{cm}':'6\\pi+24\\,\\mathrm{cm}';
   areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric='18\\pi';note='A만 있는 원호 부분, 직사각형에만 있는 부분, 두 도형의 공통 부분을 서로 다른 색으로 확인합니다.';
@@ -1670,8 +1670,8 @@ function tlF03Model(id,st,g){
   partsOut.push(linePart('정사각형 윗변','#fbbf24',{x,y},{x:x+sp,y}),linePart('정사각형 오른쪽 변','#fbbf24',{x:x+sp,y},{x:x+sp,y:y+sp}),linePart('정사각형 아랫변','#fbbf24',{x:x+sp,y:y+sp},{x,y:y+sp}),linePart('정사각형 왼쪽 변','#fbbf24',{x,y:y+sp},{x,y}));
   title='정사각형 모서리에 사분원을 덮었다 걷기';stage='정사각형과 사분원의 공통 면';hint='공통 면과 정사각형에만 남는 면을 비교';
   labels=tlTextSvg('정사각형 B',centerX,y-13,'#c8dfd0',mobile?11:13,'middle')+tlTextSvg('사분원 A',x+sp*.72,y+sp*.68,'#d6f4ff',mobile?10:12,'middle');
-  areaLines=st.covered?[`S_{A\\cap B}=\\dfrac{\\pi s^2}{4}`,`S_{B\\setminus A}=s^2-\\dfrac{\\pi s^2}{4}`,`S_B=S_{A\\cap B}+S_{B\\setminus A}`]:[`S_B=s^2=64\\,\\mathrm{cm}^{2}`,`사분원을 걷으면 공통 부분은 색칠되지 않음`];
-  periLines=[`L_{A\\cup B}=4s`];
+  areaLines=st.covered?[`S_{\\text{공통}}=\\dfrac{\\pi s^2}{4}`,`S_{\\text{B만}}=s^2-\\dfrac{\\pi s^2}{4}`,`S_B=S_{\\text{공통}}+S_{\\text{B만}}`]:[`S_B=s^2=64\\,\\mathrm{cm}^{2}`,`사분원을 걷으면 공통 부분은 색칠되지 않음`];
+  periLines=[`L_{\\text{합친 면}}=4s`];
   areaMetric=`${side*side}\\,\\mathrm{cm}^{2}`;periMetric=`${4*side}\\,\\mathrm{cm}`;areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`${side}^2`;
   note=st.covered?'정사각형을 먼저 채운 뒤 사분원을 덮어 공통 면과 정사각형에만 있는 면을 봅니다.':'사분원을 걷어 내면 공통 면이 빠지고, 정사각형 전체가 다시 드러납니다.';
   observation=st.covered?'공통 면은 사분원 전체입니다. 정사각형의 나머지는 넓이에서 사분원만큼 빠집니다.':'점선은 사분원을 덮었던 자리입니다. 사분원과 겹치던 면을 제거 전후로 비교하세요.';splitText=st.covered?'사분원은 정사각형 안에 완전히 포함됩니다.':'점선 사분원은 덮었던 위치를 가리키고, 색칠 면은 정사각형 전체입니다.';
@@ -1683,13 +1683,13 @@ function tlF03Model(id,st,g){
   commonArea=st.second?(PI/2-1)*side*side:0;unionArea=st.second?side*side:PI*side*side/4;unionPerimeter=st.second?4*side:PI*side/2+2*side;
   if(st.second){partsOut.push(linePart('정사각형 윗변','#fbbf24',{x,y},{x:x+sp,y}),linePart('정사각형 오른쪽 변','#fbbf24',{x:x+sp,y},{x:x+sp,y:y+sp}),linePart('정사각형 아랫변','#fbbf24',{x:x+sp,y:y+sp},{x,y:y+sp}),linePart('정사각형 왼쪽 변','#fbbf24',{x,y:y+sp},{x,y}));}
   else {partsOut.push(arcPart('첫째 사분원호','#38bdf8',x,y,sp,0,90),linePart('첫째 반지름','#fbbf24',{x,y},{x:x+sp,y}),linePart('둘째 반지름','#fbbf24',{x,y},{x,y:y+sp}));}
-  title='정사각형의 마주 보는 사분원 둘을 차례로 놓기';stage='두 사분원이 덮는 공통 부분';hint='사분원 둘의 합집합이 정사각형을 덮어요';
+  title='정사각형의 마주 보는 사분원 둘을 차례로 놓기';stage='두 사분원이 덮는 공통 부분';hint='두 사분원을 합치면 정사각형을 덮어요';
   labels=tlTextSvg('사분원 A',x+sp*.34,y+sp*.34,'#a9eaff',mobile?10:12,'middle')+(st.second?tlTextSvg('사분원 B',x+sp*.67,y+sp*.67,'#ffc2cb',mobile?10:12,'middle'):'');
-  areaLines=st.second?[`S_{A\\cap B}=S_A+S_B-S_{A\\cup B}`,`=(\\dfrac{\\pi}{2}-1)s^2`,`S_{A\\cup B}=s^2`]:[`S_A=\\dfrac{\\pi s^2}{4}`];
-  periLines=st.second?[`L_{A\\cup B}=4s`]:[`L_A=2s+\\dfrac{\\pi s}{2}`];
+  areaLines=st.second?[`S_{\\text{공통}}=S_A+S_B-S_{\\text{합친 면}}`,`=(\\dfrac{\\pi}{2}-1)s^2`,`S_{\\text{합친 면}}=s^2`]:[`S_A=\\dfrac{\\pi s^2}{4}`];
+  periLines=st.second?[`L_{\\text{합친 면}}=4s`]:[`L_A=2s+\\dfrac{\\pi s}{2}`];
   areaMetric=st.second?`${side*side}\\,\\mathrm{cm}^{2}`:`\\dfrac{\\pi\\times${side}^2}{4}\\,\\mathrm{cm}^{2}`;periMetric=st.second?`${4*side}\\,\\mathrm{cm}`:`${2*side}+${tlF01Pi(side/2)}\\,\\mathrm{cm}`;areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`${side}^2`;
   note='서로 반대인 꼭짓점을 중심으로 만든 사분원 두 개는 정사각형 전체를 덮습니다. 두 넓이의 합에서 정사각형 넓이를 빼면 공통 면이 남습니다.';
-  observation='마주 보는 꼭짓점 사이 거리가 정사각형의 대각선이므로 공통 렌즈의 두 원호가 정확히 만납니다.';splitText=st.second?'공통 부분은 두 사분원 넓이의 합에서 정사각형 넓이를 뺀 값입니다.':'먼저 한 사분원을 놓고, 반대쪽 꼭짓점의 사분원을 올려 겹침을 만듭니다.';
+  observation='마주 보는 꼭짓점 사이 거리가 정사각형의 대각선이므로 공통 부분의 두 원호가 정확히 만납니다.';splitText=st.second?'공통 부분은 두 사분원 넓이의 합에서 정사각형 넓이를 뺀 값입니다.':'먼저 한 사분원을 놓고, 반대쪽 꼭짓점의 사분원을 올려 겹침을 만듭니다.';
   bg=bgRect+(st.second?'':`<path d="${square}" fill="none" stroke="#c5dccd" stroke-opacity=".45" stroke-width="1.5"/>`);
  }else if(id==='f03-05'){
   const r=7,rr=r*s,cx=centerX,cy=centerY,t=st.turn,commonDeg=Math.max(0,120-t),unionDeg=t<=120?120+t:240;
@@ -1700,8 +1700,8 @@ function tlF03Model(id,st,g){
   else {[-60,60,-60+t,60+t].forEach((ang,i)=>partsOut.push(linePart(`부채꼴 경계 반지름 ${i+1}`,i<2?'#38bdf8':'#fb7185',{x:cx,y:cy},tlPolar(cx,cy,rr,ang))));partsOut.push(arcPart('A의 원호','#38bdf8',cx,cy,rr,-60,60),arcPart('B의 원호','#fb7185',cx,cy,rr,-60+t,60+t));}
   title='같은 중심의 부채꼴 하나를 회전하기';stage='공통 중심각을 바꾸어 겹친 면 보기';hint='공통 중심각 · 호 길이 · 넓이가 같이 변해요';
   labels=tlTextSvg('A',cx+rr*.62,cy-rr*.29,'#9de9ff',mobile?11:13,'middle')+tlTextSvg('B',cx+rr*.67,cy+rr*.38,'#ffbac5',mobile?11:13,'middle');
-  areaLines=[`\\theta_c=\\max(120^\\circ-${t}^\\circ,0^\\circ)`,`S_{A\\cap B}=\\dfrac{\\theta_c}{360^\\circ}\\pi r^2`,`l_{A\\cap B}=\\dfrac{\\theta_c}{360^\\circ}2\\pi r`];
-  periLines=[`L_{합집합}=${t<=120?`2r+\\dfrac{${unionDeg}}{360}2\\pi r`:`2(2r+\\dfrac{120}{360}2\\pi r)`}`];
+  areaLines=[`\\theta_c=\\max(120^\\circ-${t}^\\circ,0^\\circ)`,`S_{\\text{공통}}=\\dfrac{\\theta_c}{360^\\circ}\\pi r^2`,`l_{\\text{공통}}=\\dfrac{\\theta_c}{360^\\circ}2\\pi r`];
+  periLines=[`L_{\\text{합친 면}}=${t<=120?`2r+\\dfrac{${unionDeg}}{360}2\\pi r`:`2(2r+\\dfrac{120}{360}2\\pi r)`}`];
   areaMetric=t<=120?`${tlF01Pi(r*r*unionDeg,360)}\\,\\mathrm{cm}^{2}`:`${tlF01Pi(2*r*r,3)}\\,\\mathrm{cm}^{2}`;periMetric=t<=120?`${2*r}+${tlF01Pi(r*unionDeg,180)}\\,\\mathrm{cm}`:`${4*r}+${tlF01Pi(4*r,3)}\\,\\mathrm{cm}`;areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`\\dfrac{\\pi r^2}{3}`;
   note='반지름이 같은 두 부채꼴을 같은 중심에서 돌립니다. 겹친 중심각이 줄어드는 만큼 공통 호와 공통 넓이도 줄어듭니다.';
   observation=`현재 공통 중심각은 ${commonDeg}°입니다. 각도 비율을 호 길이와 넓이에 각각 적용합니다.`;splitText='같은 중심과 같은 반지름을 고정하고 회전각만 바꾸어 공통 중심각의 변화를 봅니다.';
@@ -1717,8 +1717,8 @@ function tlF03Model(id,st,g){
   const relation=commonDeg===45?'완전히 포함':commonDeg>0?'부분 겹침':'겹침 없음';
   areaMetric=`${tlF01Pi(r*r*(225-commonDeg),360)}\\,\\mathrm{cm}^{2}`;
   periMetric=end<=0?`${tlF01Pi(r)}+${2*r}\\,\\mathrm{cm}`:start<=0?`${2*r}+${tlF01Pi(r*(180+end),180)}\\,\\mathrm{cm}`:`${4*r}+${tlF01Pi(5*r,4)}\\,\\mathrm{cm}`;
-  areaLines=[`\\theta_c=${commonDeg}^\\circ`,`S_{A\\cap B}=\\dfrac{${commonDeg}}{360}\\pi r^2`,`S_{A\\cup B}=S_A+S_B-S_{A\\cap B}`,`=${areaMetric}`];
-  periLines=[`L_{A\\cup B}=${periMetric}`];
+  areaLines=[`\\theta_c=${commonDeg}^\\circ`,`S_{\\text{공통}}=\\dfrac{${commonDeg}}{360}\\pi r^2`,`S_{\\text{합친 면}}=S_A+S_B-S_{\\text{공통}}`,`=${areaMetric}`];
+  periLines=[`L_{\\text{합친 면}}=${periMetric}`];
   areaNum=unionArea;perimeterNum=unionPerimeter;originalMetric=`\\dfrac{\\pi r^2}{2}`;
   note='45° 부채꼴을 같은 중심에서 돌리면 반원에 완전히 들어 있다가 경계를 가로질러 부분 겹침, 겹침 없음으로 바뀝니다.';
   observation=`현재 관계: ${relation}. 공통 중심각이 ${commonDeg}°일 때만 공통 부채꼴 면이 남습니다.`;splitText='반원은 180°, 작은 부채꼴은 45°입니다. 회전 위치에 따라 겹친 중심각이 달라집니다.';
@@ -1731,8 +1731,8 @@ function tlF03Model(id,st,g){
   partsOut.push({name:'A에만 남는 L자 경계',color:'#38bdf8',length:aOnlyLen,lenPx:aOnlyLen*s,d:aOnly},{name:'B에만 남는 직사각형 경계',color:'#fb7185',length:bOnlyLen,lenPx:bOnlyLen*s,d:bOnly});
   title='넓이가 같은 두 도형에서 공통 부분 빼기';stage='정사각형과 긴 직사각형의 공통 면';hint='공통 부분을 양쪽에서 빼고 남은 넓이 비교';
   labels=tlTextSvg('A · 정사각형 4u×4u',x+sq/2,y-13,'#9de9ff',mobile?10:12,'middle')+tlTextSvg('B · 직사각형 8u×2u',rectX+rectW/2,rectY+rectH+20,'#ffbac5',mobile?10:12,'middle');
-  areaLines=[`S_A=S_B=16u^2=64\\,\\mathrm{cm}^{2}`,`S_{A\\cap B}=4u^2=16\\,\\mathrm{cm}^{2}`,`S_{A\\setminus B}=S_{B\\setminus A}=12u^2=48\\,\\mathrm{cm}^{2}`];
-  periLines=[`L_{A\\setminus B}=L_{B\\setminus A}=16u=32\\,\\mathrm{cm}`,`두 조각의 둘레 합=64\\,\\mathrm{cm}`];
+  areaLines=[`S_A=S_B=16u^2=64\\,\\mathrm{cm}^{2}`,`S_{\\text{공통}}=4u^2=16\\,\\mathrm{cm}^{2}`,`S_{\\text{A만}}=S_{\\text{B만}}=12u^2=48\\,\\mathrm{cm}^{2}`];
+  periLines=[`L_{\\text{A만}}=L_{\\text{B만}}=16u=32\\,\\mathrm{cm}`,`두 조각의 둘레 합=64\\,\\mathrm{cm}`];
   areaMetric=st.showCommon?'48+48=96\\,\\mathrm{cm}^{2}':'48\\,\\mathrm{cm}^{2}';periMetric='32+32=64\\,\\mathrm{cm}';areaNum=st.showCommon?2*exclusive:exclusive;perimeterNum=2*aOnlyLen;originalMetric='64\\,\\mathrm{cm}^{2}';
   note='A는 4u×4u 정사각형, B는 8u×2u 직사각형으로 넓이가 같습니다. 두 도형에서 공통인 2u×2u 면을 함께 빼면 남은 넓이도 같습니다.';
   observation='A에만 남는 부분은 L자이고 B에만 남는 부분은 직사각형입니다. 모양이 달라도 두 넓이는 각각 12u²입니다.';splitText=st.showCommon?'노란 공통 부분을 양쪽에서 제거하면 파란 L자와 분홍 직사각형이 남습니다.':'공통 부분을 뺀 뒤 두 도형의 남은 부분만 비교합니다.';
@@ -1755,20 +1755,20 @@ function tlF03Model(id,st,g){
   if(selection==='common'){
    areaMetric=Math.abs(st.distance-r)<1e-8?'(2\\pi/3-\\sqrt3/2)r^2\\,\\mathrm{cm}^{2}':`${fmt(commonArea)}\\,\\mathrm{cm}^{2}`;
    periMetric=Math.abs(st.distance-r)<1e-8?'4\\pi r/3\\,\\mathrm{cm}':`${fmt(commonPerimeter)}\\,\\mathrm{cm}`;
-   areaLines=[Math.abs(st.distance-r)<1e-8?'S_{A\\cap B}=(\\dfrac{2\\pi}{3}-\\dfrac{\\sqrt3}{2})r^2\\,\\mathrm{cm}^{2}':`S_{A\\cap B}=${fmt(commonArea)}\\,\\mathrm{cm}^{2}`];
-   periLines=[Math.abs(st.distance-r)<1e-8?'L_{A\\cap B}=\\dfrac{4\\pi r}{3}\\,\\mathrm{cm}':`L_{A\\cap B}=4r\\beta\\,\\mathrm{cm}`];
+   areaLines=[Math.abs(st.distance-r)<1e-8?'S_{\\text{공통}}=(\\dfrac{2\\pi}{3}-\\dfrac{\\sqrt3}{2})r^2\\,\\mathrm{cm}^{2}':`S_{\\text{공통}}=${fmt(commonArea)}\\,\\mathrm{cm}^{2}`];
+   periLines=[Math.abs(st.distance-r)<1e-8?'L_{\\text{공통}}=\\dfrac{4\\pi r}{3}\\,\\mathrm{cm}':`L_{\\text{공통}}=4r\\beta\\,\\mathrm{cm}`];
   }else if(selection==='union'){
    areaMetric=Math.abs(st.distance-r)<1e-8?'(4\\pi/3+\\sqrt3/2)r^2\\,\\mathrm{cm}^{2}':Math.abs(st.distance-2*r)<1e-8?'2\\pi r^2\\,\\mathrm{cm}^{2}':`${fmt(unionArea)}\\,\\mathrm{cm}^{2}`;
    periMetric=Math.abs(st.distance-r)<1e-8?'8\\pi r/3\\,\\mathrm{cm}':Math.abs(st.distance-2*r)<1e-8?'4\\pi r\\,\\mathrm{cm}':`${fmt(unionPerimeter)}\\,\\mathrm{cm}`;
-   areaLines=[`S_{A\\cup B}=2\\pi r^2-S_{A\\cap B}`,Math.abs(st.distance-r)<1e-8?'=(\\dfrac{4\\pi}{3}+\\dfrac{\\sqrt3}{2})r^2\\,\\mathrm{cm}^{2}':`=${fmt(unionArea)}\\,\\mathrm{cm}^{2}`];
-   periLines=[Math.abs(st.distance-r)<1e-8?'L_{A\\cup B}=\\dfrac{8\\pi r}{3}\\,\\mathrm{cm}':'L_{A\\cup B}=4\\pi r-4r\\beta\\,\\mathrm{cm}'];
+   areaLines=[`S_{\\text{합친 면}}=2\\pi r^2-S_{\\text{공통}}`,Math.abs(st.distance-r)<1e-8?'=(\\dfrac{4\\pi}{3}+\\dfrac{\\sqrt3}{2})r^2\\,\\mathrm{cm}^{2}':`=${fmt(unionArea)}\\,\\mathrm{cm}^{2}`];
+   periLines=[Math.abs(st.distance-r)<1e-8?'L_{\\text{합친 면}}=\\dfrac{8\\pi r}{3}\\,\\mathrm{cm}':'L_{\\text{합친 면}}=4\\pi r-4r\\beta\\,\\mathrm{cm}'];
   }else{
    areaMetric=Math.abs(st.distance-2*r)<1e-8?'2\\pi r^2\\,\\mathrm{cm}^{2}':`${fmt(xorArea)}\\,\\mathrm{cm}^{2}`;periMetric='4\\pi r\\,\\mathrm{cm}';
-   areaLines=[`S_{A\\setminus B}+S_{B\\setminus A}=2(\\pi r^2-S_{A\\cap B})`,`=${fmt(xorArea)}\\,\\mathrm{cm}^{2}`];
-   periLines=['L_{A\\setminus B}+L_{B\\setminus A}=4\\pi r','안쪽 원호도 각 초승달의 경계'];
+   areaLines=[`S_{\\text{A만}}+S_{\\text{B만}}=2(\\pi r^2-S_{\\text{공통}})`,`=${fmt(xorArea)}\\,\\mathrm{cm}^{2}`];
+   periLines=['L_{\\text{A만}}+L_{\\text{B만}}=4\\pi r','안쪽 원호도 각 초승달의 경계'];
   }
-  note='같은 원 두 개를 고정한 채 합친 면, 공통 면, 한쪽만 남긴 면을 선택해 보세요. 선택한 영역의 외곽선만 둘레에 포함됩니다.';
-  observation=selection==='union'?'합친 면에서는 겹친 안쪽 원호가 내부 구분선이므로 둘레에서 빠집니다.':selection==='common'?'공통 렌즈의 둘레는 두 원호가 이어져 만들어집니다.':'한쪽만 남긴 두 초승달에는 안쪽 원호도 각각 경계로 포함됩니다.';
+  note='같은 원 두 개를 고정한 채 합친 면, 공통 면, 한쪽만 남긴 면을 선택해 보세요. 선택한 영역의 바깥 경계선만 둘레에 포함됩니다.';
+  observation=selection==='union'?'합친 면에서는 겹친 안쪽 원호가 내부 구분선이므로 둘레에서 빠집니다.':selection==='common'?'공통 부분의 둘레는 두 원호가 이어져 만들어집니다.':'한쪽만 남긴 두 초승달에는 안쪽 원호도 각각 경계로 포함됩니다.';
   splitText='A만, B만, 공통 부분의 색은 고정입니다. 아래 선택 버튼은 어떤 면을 합칠지와 어떤 선을 둘레로 셀지를 바꿉니다.';
  }
  const selectionOpacity=TL.mode==='perimeter'?.14:.60,commonOpacity=TL.animationType==='f03-area'?.18+.42*TL.f03Progress:1;
@@ -1816,15 +1816,15 @@ function tlRenderF03(){
  tlUpdateFamilyControls();
  if(controls.dataset.family!==id){controls.dataset.family=id;controls.innerHTML=tlF03ControlMarkup(id,st);}
  tlGet('tlKicker').textContent='F03 · 세 영역을 겹쳐 넓이와 경계 발견하기';
- tlGet('tlLabTitle').textContent='겹치기·상쇄 · 공통 면의 관계';
+ tlGet('tlLabTitle').textContent='겹치기·빼기 · 공통 면의 관계';
  tlGet('tlLabDescription').textContent='A만 있는 부분 · B만 있는 부분 · 공통 부분을 같은 색으로 구분하고, 실제 교점과 경계를 관찰합니다.';
  tlGet('tlShapeName').textContent=m.stage;tlGet('tlStageHint').textContent=m.hint;
  play.textContent=TL.animationType?'❚❚ 정지':'▶ 재생';play.classList.toggle('playing',Boolean(TL.animationType));
- play.setAttribute('aria-label',TL.animationType?'애니메이션 정지':TL.mode==='area'?'겹친 넓이 강조 재생':TL.mode==='perimeter'?'선택한 경계 추적 재생':'공통 면과 경계 재생');
+ play.setAttribute('aria-label',TL.animationType?'움직임 정지':TL.mode==='area'?'겹친 넓이 강조 재생':TL.mode==='perimeter'?'선택한 경계를 따라가는 재생':'공통 면과 경계 재생');
  document.querySelectorAll('[data-tl-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.tlMode===TL.mode);b.setAttribute('aria-pressed',String(b.dataset.tlMode===TL.mode))});
  tlGet('tlAreaNum').innerHTML=mathHTML(`\\(${m.areaMetric}\\)`);tlGet('tlPeriNum').innerHTML=mathHTML(`\\(${m.periMetric}\\)`);
  tlGet('tlFormulaArea').innerHTML='<div class="tl-formula-label">넓이 관계 · 실제 공통 면</div>'+m.areaLines.map(x=>`<div class="tl-mathline">${mathHTML(`\\(${x}\\)`)}</div>`).join('');
- tlGet('tlFormulaPeri').innerHTML='<div class="tl-formula-label">선택한 합집합의 실제 바깥 경계</div>'+m.periLines.map(x=>`<div class="tl-mathline">${mathHTML(`\\(${x}\\)`)}</div>`).join('');
+ tlGet('tlFormulaPeri').innerHTML='<div class="tl-formula-label">선택한 합친 면의 실제 바깥 경계</div>'+m.periLines.map(x=>`<div class="tl-mathline">${mathHTML(`\\(${x}\\)`)}</div>`).join('');
  tlGet('tlSplit').innerHTML=[['a','A 도형'],['b','B 도형'],['selected','현재 색칠 면']].map(([kind,label])=>`<div class="tl-split-part">${tlF03Mini(m,g,kind)}<b>${label}</b></div>`).join('');
  tlGet('tlSplitText').textContent=`${m.splitText} 색은 파랑=A만, 분홍=B만, 노랑=공통 부분입니다.`;tlGet('tlAreaObservation').textContent=m.observation;
  tlGet('tlLegend').innerHTML=m.parts.map((part,i)=>`<button type="button" data-tl-focus="${i}" class="${TL.focus===i?'active':''}"><span class="tl-dot" style="background:${part.color}"></span>${part.name} · ${part.length<.01?'0':tlF01Num(part.length)} cm</button>`).join('');
@@ -1836,7 +1836,7 @@ function tlRenderF03(){
 }
 function renderTransformLab(){
  if(TL.family.startsWith('f03-')){tlRenderF03();return;}
- tlGet('tlKicker').textContent='CHAPTER 01 · 선과 면을 움직여 발견하기';
+ tlGet('tlKicker').textContent='1장 · 선과 면을 움직여 발견하기';
  tlGet('tlLabTitle').textContent='도형 넣기·파내기 · 선과 면의 변환';
  tlGet('tlLabDescription').textContent='문제를 풀기보다 중심각과 반지름을 직접 바꾸고, 선·면·분할을 관찰하세요.';
  if(TL.family.startsWith('f01-')){tlRenderF01();return;}
@@ -1850,9 +1850,9 @@ function renderTransformLab(){
  const play=tlGet('tlPlay');
  play.textContent=TL.animationType?'❚❚ 정지':'▶ 재생';
  play.classList.toggle('playing',Boolean(TL.animationType));
- play.setAttribute('aria-label',TL.animationType?'애니메이션 정지':TL.mode==='area'?'넓이 애니메이션 재생':TL.mode==='perimeter'?'둘레 애니메이션 재생':'넓이와 둘레 애니메이션 재생');
+ play.setAttribute('aria-label',TL.animationType?'움직임 정지':TL.mode==='area'?'넓이 움직임 재생':TL.mode==='perimeter'?'둘레 움직임 재생':'넓이와 둘레 움직임 재생');
  tlGet('tlShapeName').textContent=TL.r===0?(full?'원':TL.angle===180?'반원':TL.angle===90?'사분원':'부채꼴'):(full?'고리 모양 원':TL.angle===180?'고리 모양 반원':TL.angle===90?'고리 모양 사분원':'고리 모양 부채꼴');
- tlGet('tlStageHint').textContent=full?'360°에서는 양끝 직선 경계가 없어집니다.':'노란 손잡이를 드래그해 중심각을 조절할 수 있습니다.';
+ tlGet('tlStageHint').textContent=full?'360°에서는 양끝 직선 경계가 없어집니다.':'노란 손잡이를 끌어 중심각을 조절할 수 있습니다.';
  document.querySelectorAll('[data-tl-angle]').forEach(b=>b.classList.toggle('active',+b.dataset.tlAngle===TL.angle));
  document.querySelectorAll('[data-tl-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.tlMode===TL.mode);b.setAttribute('aria-pressed',String(b.dataset.tlMode===TL.mode))});
  tlGet('tlAreaNum').innerHTML=mathHTML(`\\(${tlRatTex(...v.area,true)}\\,\\mathrm{cm}^{2}\\)`);
@@ -2277,7 +2277,7 @@ function tlRenderF02(){
  tlGet('tlShapeName').textContent=spec.name;
  tlGet('tlStageHint').textContent=spec.discovery;
  play.textContent=TL.animationType?'❚❚ 정지':'▶ 재생';play.classList.toggle('playing',Boolean(TL.animationType));
- play.setAttribute('aria-label',TL.animationType?'애니메이션 정지':TL.mode==='perimeter'?'둘레 추적 재생':'조각 분리·합치기 재생');
+ play.setAttribute('aria-label',TL.animationType?'움직임 정지':TL.mode==='perimeter'?'둘레를 따라가는 재생':'조각 분리·합치기 재생');
  document.querySelectorAll('[data-tl-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.tlMode===TL.mode);b.setAttribute('aria-pressed',String(b.dataset.tlMode===TL.mode))});
  const arcArea=tlRatTex(st.R*st.R*spec.total,360,true),pieceArea=tlRatTex(st.R*st.R*spec.total,360*st.n,true);
  tlGet('tlAreaNum').innerHTML=mathHTML(`\\(${arcArea}\\,\\mathrm{cm}^{2}\\)`);
@@ -2345,7 +2345,7 @@ function f04(id,st,g){
   title='반원 돌출부를 같은 반원 홈으로 옮기기';stage='반원 조각을 들어 올려 반대쪽 홈에 맞추기';hint='같은 반원 조각을 옮기므로 전체 넓이는 그대로';
   areaLines=['S_1=S_b+S_p-S_h','S_2=S_b-S_h+S_p','S_1=S_2'];periLines=[`L=${fmt(perimeterNum)}\\,\\mathrm{cm}`];
   areaMetric=`${fmt(w/s*2*r)}\\,\\mathrm{cm}^{2}`;periMetric=`${fmt(perimeterNum)}\\,\\mathrm{cm}`;areaNum=w/s*2*r;
-  note='왼쪽 돌출부와 오른쪽 홈은 같은 반원입니다. 반원을 옮기면 왼쪽 홈과 오른쪽 돌출이 서로 바뀌지만 넓이는 보존됩니다.';observation='이동 중에는 조각을 판 바깥으로 들어 옮깁니다. 목적지 홈은 같은 반원의 경계로 정확히 맞습니다.';splitText='노란 반원은 처음 위치와 홈 위치에서 크기와 모양이 같습니다.';shapeA=piece;highlightPath=piece;
+  note='왼쪽 돌출부와 오른쪽 홈은 같은 반원입니다. 반원을 옮기면 왼쪽 홈과 오른쪽 돌출이 서로 바뀌지만 넓이는 변하지 않습니다.';observation='이동 중에는 조각을 판 바깥으로 들어 옮깁니다. 목적지 홈은 같은 반원의 경계로 정확히 맞습니다.';splitText='노란 반원은 처음 위치와 홈 위치에서 크기와 모양이 같습니다.';shapeA=piece;highlightPath=piece;
  }else if(id==='f04-02'){
   const r=4,R=r*s,cy=centerY,x0=centerX-3*R,x1=centerX+3*R,t=st.move/100,px=x0+(x1-x0)*t,turn=90*t;
   const piece=tlF03Sector(px,cy,R,180+turn,270+turn),home=tlF03Sector(x1,cy,R,270,360),source=tlF03Sector(x0,cy,R,180,270);
@@ -2353,7 +2353,7 @@ function f04(id,st,g){
   partsOut.push(arc('사분원 원호','#fbbf24',px,cy,R,180+turn,270+turn),line('사분원 반지름 1','#fbbf24',{x:px,y:cy},tlPolar(px,cy,R,180+turn)),line('사분원 반지름 2','#fbbf24',{x:px,y:cy},tlPolar(px,cy,R,270+turn)));
   title='사분원 돌출 조각을 90° 회전해 홈에 넣기';stage='평행이동으로 맞지 않는 조각은 회전해 맞춥니다';hint='곡선과 두 반지름이 같은 사분원 홈에 포개집니다';
   areaLines=['S_{조각}=\\dfrac{\\pi r^2}{4}'];periLines=['L_{조각}=2r+\\dfrac{\\pi r}{2}'];areaMetric='4\\pi\\,\\mathrm{cm}^{2}';periMetric='8+2\\pi\\,\\mathrm{cm}';areaNum=pi*r*r/4;perimeterNum=2*r+pi*r/2;
-  note='사분원 조각을 90° 돌려 같은 크기의 홈에 넣습니다. 회전은 모양과 넓이를 보존합니다.';observation=`현재 회전각 ${fmt(turn)}°입니다. 끝에 가면 두 반지름과 원호가 홈 경계에 정확히 맞습니다.`;splitText='점선은 조각의 출발 모양과 홈을 나타내며 노란 조각은 실제 회전·이동합니다.';shapeA=source;shapeB=home;highlightPath=piece;
+  note='사분원 조각을 90° 돌려 같은 크기의 홈에 넣습니다. 회전은 모양과 넓이를 바꾸지 않습니다.';observation=`현재 회전각 ${fmt(turn)}°입니다. 끝에 가면 두 반지름과 원호가 홈 경계에 정확히 맞습니다.`;splitText='점선은 조각의 출발 모양과 홈을 나타내며 노란 조각은 실제 회전·이동합니다.';shapeA=source;shapeB=home;highlightPath=piece;
  }else if(id==='f04-03'||id==='f04-04'){
   const r=3,R=r*s,cy=centerY,xL=centerX-3*R,xR=centerX+3*R,t=st.move/100;
   const qLeft=(cx,yy)=>tlF03Sector(cx,yy,R,180,270),qRight=(cx,yy)=>tlF03Sector(cx,yy,R,270,360);
@@ -2374,7 +2374,7 @@ function f04(id,st,g){
    partsOut.push(line('첫째 사분원 반지름','#38bdf8',{x:c1.x,y:c1.y},tlPolar(c1.x,c1.y,R,180)),line('첫째 사분원 반지름','#38bdf8',{x:c1.x,y:c1.y},tlPolar(c1.x,c1.y,R,270)),line('둘째 사분원 반지름','#fb7185',{x:c2.x,y:c2.y},tlPolar(c2.x,c2.y,R,270)),line('둘째 사분원 반지름','#fb7185',{x:c2.x,y:c2.y},tlPolar(c2.x,c2.y,R,360)));
   }
   const area=pi*r*r/2,perimeter=joined?pi*r+2*r:pi*r+4*r;
-  title=id==='f04-03'?'반원 조각을 둘로 잘라 두 홈을 채우기':'사분원 두 조각으로 반원 홈 채우기';stage=id==='f04-03'?'한 반원을 정확히 두 사분원으로 나누어 옮깁니다':'두 사분원은 회전·이동해 반원 홈을 빈틈없이 채웁니다';hint='각 조각을 나누거나 합쳐도 넓이는 보존';
+  title=id==='f04-03'?'반원 조각을 둘로 잘라 두 홈을 채우기':'사분원 두 조각으로 반원 홈 채우기';stage=id==='f04-03'?'한 반원을 정확히 두 사분원으로 나누어 옮깁니다':'두 사분원은 회전·이동해 반원 홈을 빈틈없이 채웁니다';hint='각 조각을 나누거나 합쳐도 넓이는 변하지 않음';
   areaLines=['2\\cdot\\dfrac{\\pi r^2}{4}=\\dfrac{\\pi r^2}{2}'];periLines=[joined?'L=\\pi r+2r':'L=\\pi r+4r'];areaMetric='\\dfrac{9\\pi}{2}\\,\\mathrm{cm}^{2}';periMetric=joined?'3\\pi+6\\,\\mathrm{cm}':'3\\pi+12\\,\\mathrm{cm}';areaNum=area;perimeterNum=perimeter;
   note=id==='f04-03'?'반원 하나를 두 사분원으로 나누면 두 떨어진 홈을 각각 채울 수 있습니다.':'두 사분원이 합동이고 반원 홈의 면을 정확히 채웁니다.';observation='접합한 반지름은 홈을 채운 뒤 내부선이 되므로 둘레에 더하지 않습니다.';splitText='파란색·분홍색 사분원은 각각 실제로 이동하는 합동 조각입니다.';shapeA=a;shapeB=b;highlightPath=a+' '+b;
  }else if(id==='f04-05'){
@@ -2404,10 +2404,10 @@ function f04(id,st,g){
   const reveal=st.reveal/100;svg=`<defs>${m1}${m2}</defs><path d="${small1} ${small2}" fill="#b6dbc5" fill-opacity="${.22*(1-reveal)}"/><path d="${big}" fill="#fbbf24" fill-opacity="${.13*(1-reveal)}"/><path d="${small1}" fill="#38bdf8" fill-opacity="${.2+.64*reveal}" mask="url(#hippo1)"/><path d="${small2}" fill="#fb7185" fill-opacity="${.2+.64*reveal}" mask="url(#hippo2)"/><path d="${big}" fill="none" stroke="#c8d8cf" stroke-width="2" stroke-dasharray="6 5"/><path d="M ${tlXY(A)} L ${tlXY(B)} L ${tlXY(C)} Z" fill="none" stroke="#fbbf24" stroke-width="2"/>`;
   const angleA=(Math.atan2(A.y-cy,A.x-cx)*180/PI+360)%360,angleB=(Math.atan2(B.y-cy,B.x-cx)*180/PI+360)%360,angleC=(Math.atan2(C.y-cy,C.x-cx)*180/PI+360)%360;
   partsOut.push(arc('첫째 초승달의 작은 반원호','#38bdf8',(A.x+B.x)/2,yA,2*u,0,180),arc('둘째 초승달의 작은 반원호','#fb7185',A.x,yA-1.5*u,1.5*u,-90,-270),arc('큰 반원호 · AB 구간','#fbbf24',cx,cy,R,angleB,angleA),arc('큰 반원호 · AC 구간','#fbbf24',cx,cy,R,angleA,angleC));
-  title='직각삼각형의 세 반원과 히포크라테스 초승달';stage='두 초승달의 넓이 합은 직각삼각형 넓이';hint='초승달을 삼각형에 끼우지 않고 면적을 상쇄';
+  title='직각삼각형의 세 반원과 두 초승달 모양';stage='두 초승달의 넓이 합은 직각삼각형 넓이';hint='두 초승달의 넓이를 직접 구하지 않고 겹치는 면을 빼서 구합니다';
   areaLines=['S_{L_1}+S_{L_2}=S_{\\triangle ABC}','=\\dfrac{3\\cdot4}{2}=6\\,\\mathrm{cm}^{2}','\\dfrac{\\pi\\cdot2^2}{2}+\\dfrac{\\pi(3/2)^2}{2}=\\dfrac{\\pi(5/2)^2}{2}'];periLines=['L_{L_1}+L_{L_2}=6\\pi\\,\\mathrm{cm}'];
   areaMetric='6\\,\\mathrm{cm}^{2}';periMetric='6\\pi\\,\\mathrm{cm}';areaNum=6;perimeterNum=6*pi;
-  note='직각삼각형의 세 변을 지름으로 반원을 만듭니다. 두 작은 반원의 전체 넓이는 큰 반원과 같으므로 겹치는 면을 상쇄하면 두 초승달의 합이 삼각형 넓이와 같습니다.';
+  note='직각삼각형의 세 변을 지름으로 반원을 만듭니다. 두 작은 반원의 전체 넓이는 큰 반원과 같으므로 겹치는 면을 빼면 두 초승달의 합이 삼각형 넓이와 같습니다.';
   observation='노란 점선 큰 반원은 비교용 경계입니다. 초승달 영역은 작은 반원에서 큰 반원과 겹치는 면을 뺀 부분입니다.';splitText='초승달 두 영역을 각각 색칠해 합을 삼각형 넓이와 비교합니다.';shapeA=small1;shapeB=small2;highlightPath=small1+' '+small2;
  }
  return {title,stage,hint,svg,parts:partsOut,areaLines,periLines,areaMetric,periMetric,areaNum,perimeterNum,note,observation,splitText,shapeA,shapeB,commonPath,regionMode:'all',highlightPath};
@@ -2424,23 +2424,23 @@ function f05(id,st,g){
   shapeA=big;shapeB=small;svg=`<path d="${big} ${small}" fill="#38bdf8" fill-opacity=".52" fill-rule="evenodd"/>`;
   parts.push(arc('큰 원호 A→C',col[0],cx,cy,R,180,360),arc('작은 원호 C→B',col[1],c2,cy,r2,360,180),arc('작은 원호 B→A',col[2],c1,cy,r1,360,180));
   const k=(id==='f05-08'?st.segment:st.focus)-1;parts.forEach((p,i)=>svg+=`<path d="${p.d}" fill="none" stroke="${p.color}" stroke-width="${i===k?6:2}"/>`);
-  svg+=tlTextSvg('A',x0,cy+18)+tlTextSvg('B',m,cy+18)+tlTextSvg('C',x1,cy+18)+[cx,c1,c2].map((x,i)=>`<circle cx="${x}" cy="${cy}" r="${i===[0,2,1][k]?5:3}" fill="${i===[0,2,1][k]?'#fbbf24':'#b9d5c5'}"/>`+tlTextSvg(['O','O₁','O₂'][i],x,cy+36,'#ffe6a0',11,'middle')).join('');areaMetric='8\\pi\\,\\mathrm{cm}^{2}';periMetric='12\\pi\\,\\mathrm{cm}';areaNum=8*PI;perimeterNum=12*PI;areaLines=['S=\\dfrac{\\pi R^2}{2}-\\dfrac{\\pi r_1^2}{2}-\\dfrac{\\pi r_2^2}{2}=8\\pi'];periLines=['L=\\pi R+\\pi r_1+\\pi r_2=12\\pi'];stage=id==='f05-08'?'A→C→B→A로 원호를 이어 닫기':'크기가 다른 세 반원호가 닫힌 경계를 만듭니다';hint='중심과 시작점·끝점을 순서대로 확인';note='세 원호의 끝점이 이어져 한 경계를 만듭니다. 지름은 색칠 면의 외곽선에 더하지 않습니다.';observation=['A에서 C까지, 중심 O','C에서 B까지, 중심 O₂','B에서 A까지, 중심 O₁'][k]||'A에서 C까지, 중심 O';
+  svg+=tlTextSvg('A',x0,cy+18)+tlTextSvg('B',m,cy+18)+tlTextSvg('C',x1,cy+18)+[cx,c1,c2].map((x,i)=>`<circle cx="${x}" cy="${cy}" r="${i===[0,2,1][k]?5:3}" fill="${i===[0,2,1][k]?'#fbbf24':'#b9d5c5'}"/>`+tlTextSvg(['O','O₁','O₂'][i],x,cy+36,'#ffe6a0',11,'middle')).join('');areaMetric='8\\pi\\,\\mathrm{cm}^{2}';periMetric='12\\pi\\,\\mathrm{cm}';areaNum=8*PI;perimeterNum=12*PI;areaLines=['S=\\dfrac{\\pi R^2}{2}-\\dfrac{\\pi r_1^2}{2}-\\dfrac{\\pi r_2^2}{2}=8\\pi'];periLines=['L=\\pi R+\\pi r_1+\\pi r_2=12\\pi'];stage=id==='f05-08'?'A→C→B→A로 원호를 이어 닫기':'크기가 다른 세 반원호가 닫힌 경계를 만듭니다';hint='중심과 시작점·끝점을 순서대로 확인';note='세 원호의 끝점이 이어져 한 경계를 만듭니다. 지름은 색칠 면의 바깥 경계선에 더하지 않습니다.';observation=['A에서 C까지, 중심 O','C에서 B까지, 중심 O₂','B에서 A까지, 중심 O₁'][k]||'A에서 C까지, 중심 O';
  }else if(id==='f05-03'){
   const x1=cx-R,x2=cx+R,a=tlF01SemiPath(x1,cy,R),b=st.orientation==='same'?tlF01SemiPath(x2,cy,R):lower(x2,cy,R);shapeA=a;shapeB=b;svg=`<path d="${a}" fill="#38bdf8" fill-opacity=".6"/><path d="${b}" fill="#fb7185" fill-opacity=".6"/>`;parts.push(arc('첫 반원호',col[0],x1,cy,R,180,360),arc('둘째 반원호',col[1],x2,cy,R,st.orientation==='same'?180:0,st.orientation==='same'?360:180),line('첫 지름',col[3],{x:x1-R,y:cy},{x:x1+R,y:cy}),line('둘째 지름',col[3],{x:x2-R,y:cy},{x:x2+R,y:cy}));areaMetric='36\\pi\\,\\mathrm{cm}^{2}';periMetric='12\\pi+24\\,\\mathrm{cm}';areaNum=36*PI;perimeterNum=12*PI+24;areaLines=['S=2\\cdot\\dfrac{\\pi r^2}{2}=\\pi r^2'];periLines=['L=2\\pi r+4r'];stage='반원호 둘의 방향을 바꾸어 보기';hint='같은 호 길이도 배치에 따라 다른 모양';note='같은 반원호 두 개를 같은 방향 또는 반대 방향에 놓습니다. 호의 길이 합은 같고 영역의 모양은 달라집니다.';observation='두 반원의 지름도 각 영역의 경계입니다.';
  }else if(id==='f05-04'||id==='f05-05'){
   const d=(id==='f05-04'?st.distance:6),D=d*s,x1=cx-D/2,x2=cx+D/2,beta=Math.acos(Math.min(1,d/(2*r))),deg=beta*180/PI,lens=2*r*r*beta-d/2*Math.sqrt(Math.max(0,4*r*r-d*d)),cres=id==='f05-05'&&st.region==='crescent';shapeA=tlF03Circle(x1,cy,R);shapeB=tlF03Circle(x2,cy,R);
   if(cres){svg=`<defs><mask id="f05cres" maskUnits="userSpaceOnUse" x="0" y="0" width="760" height="520" style="mask-type:luminance"><rect width="760" height="520" fill="#fff"/><path d="${shapeB}" fill="#000"/></mask></defs><path d="${shapeA}" fill="#38bdf8" fill-opacity=".7" mask="url(#f05cres)"/><path d="${shapeB}" fill="none" stroke="#fb7185" stroke-dasharray="5 5"/>`;parts.push(arc('A의 바깥 큰 원호',col[0],x1,cy,R,deg,360-deg),arc('B의 안쪽 작은 원호',col[1],x2,cy,R,180+deg,180-deg));areaNum=PI*r*r-lens;perimeterNum=2*PI*r;areaMetric='12\\pi+18\\sqrt3\\,\\mathrm{cm}^{2}';periMetric='12\\pi\\,\\mathrm{cm}';}
-  else {svg=tlF03Regions(shapeA,shapeB,id,{mode:'common',opacity:.18,commonOpacity:.72});if(deg>0)parts.push(arc('첫 원의 렌즈 원호',col[0],x1,cy,R,360-deg,360+deg),arc('둘째 원의 렌즈 원호',col[1],x2,cy,R,180+deg,180-deg));areaNum=lens;perimeterNum=4*r*beta;areaMetric=d===6?'24\\pi-18\\sqrt3\\,\\mathrm{cm}^{2}':`${tlF01Num(lens)}\\,\\mathrm{cm}^{2}`;periMetric=d===6?'8\\pi\\,\\mathrm{cm}':`${tlF01Num(perimeterNum)}\\,\\mathrm{cm}`;}
-  areaLines=[cres?'S_{A\\setminus B}=S_A-S_{A\\cap B}':'S_{A\\cap B}=S_{sector1}+S_{sector2}-S_{rhombus}'];periLines=[`L=${periMetric}`];stage=cres?'같은 두 원에서 한쪽만 남긴 초승달':'두 원의 공통 렌즈';hint='선택한 면을 닫는 원호만 둘레에 포함';note='같은 원 배치라도 공통 면과 차집합은 서로 다른 원호를 경계로 채택합니다.';observation='원의 교점을 실제 좌표로 계산해 선택한 두 원호를 연결합니다.';
+  else {svg=tlF03Regions(shapeA,shapeB,id,{mode:'common',opacity:.18,commonOpacity:.72});if(deg>0)parts.push(arc('첫 원의 공통 부분 원호',col[0],x1,cy,R,360-deg,360+deg),arc('둘째 원의 공통 부분 원호',col[1],x2,cy,R,180+deg,180-deg));areaNum=lens;perimeterNum=4*r*beta;areaMetric=d===6?'24\\pi-18\\sqrt3\\,\\mathrm{cm}^{2}':`${tlF01Num(lens)}\\,\\mathrm{cm}^{2}`;periMetric=d===6?'8\\pi\\,\\mathrm{cm}':`${tlF01Num(perimeterNum)}\\,\\mathrm{cm}`;}
+  areaLines=[cres?'S_{\\text{A만}}=S_A-S_{\\text{공통}}':'S_{\\text{공통}}=S_{\\text{부채꼴1}}+S_{\\text{부채꼴2}}-S_{\\text{마름모}}'];periLines=[`L=${periMetric}`];stage=cres?'같은 두 원에서 한쪽만 남긴 초승달':'두 원의 공통 부분';hint='선택한 면을 닫는 원호만 둘레에 포함';note='같은 원 배치라도 공통 면과 한쪽만 남긴 면은 서로 다른 원호를 경계로 채택합니다.';observation='원의 교점을 실제 좌표로 계산해 선택한 두 원호를 연결합니다.';
  }else if(id==='f05-06'){
-  const q=8*s,x=cx-q/2,y=cy-q/2,a=tlF03Sector(x,y,q,0,90),b=tlF03Sector(x+q,y+q,q,180,270);shapeA=a;shapeB=b;svg=`<rect x="${x}" y="${y}" width="${q}" height="${q}" fill="none" stroke="#9dbdaf" stroke-dasharray="5 5"/>`+tlF03Regions(a,b,id,{mode:'common',opacity:.12,commonOpacity:st.shade?.8:.3});parts.push(arc('첫 90° 원호',col[0],x,y,q,0,90),arc('둘째 90° 원호',col[1],x+q,y+q,q,180,270));areaMetric='32\\pi-64\\,\\mathrm{cm}^{2}';periMetric='8\\pi\\,\\mathrm{cm}';areaNum=(PI/2-1)*64;perimeterNum=8*PI;areaLines=['S_{petal}=2\\cdot\\dfrac{\\pi s^2}{4}-s^2'];periLines=['L=2\\cdot\\dfrac{\\pi s}{2}=\\pi s'];stage='정사각형 속 두 사분원호로 꽃잎 한 장';hint='두 90° 원호가 닫힌 경계를 이룹니다';note='두 사분원 넓이의 합에서 정사각형 넓이를 빼면 공통 꽃잎의 넓이가 됩니다.';observation='대각선과 사각형 변은 꽃잎의 둘레가 아닙니다.';
+  const q=8*s,x=cx-q/2,y=cy-q/2,a=tlF03Sector(x,y,q,0,90),b=tlF03Sector(x+q,y+q,q,180,270);shapeA=a;shapeB=b;svg=`<rect x="${x}" y="${y}" width="${q}" height="${q}" fill="none" stroke="#9dbdaf" stroke-dasharray="5 5"/>`+tlF03Regions(a,b,id,{mode:'common',opacity:.12,commonOpacity:st.shade?.8:.3});parts.push(arc('첫 90° 원호',col[0],x,y,q,0,90),arc('둘째 90° 원호',col[1],x+q,y+q,q,180,270));areaMetric='32\\pi-64\\,\\mathrm{cm}^{2}';periMetric='8\\pi\\,\\mathrm{cm}';areaNum=(PI/2-1)*64;perimeterNum=8*PI;areaLines=['S_{\\text{꽃잎}}=2\\cdot\\dfrac{\\pi s^2}{4}-s^2'];periLines=['L=2\\cdot\\dfrac{\\pi s}{2}=\\pi s'];stage='정사각형 속 두 사분원호로 꽃잎 한 장';hint='두 90° 원호가 닫힌 경계를 이룹니다';note='두 사분원 넓이의 합에서 정사각형 넓이를 빼면 공통 꽃잎의 넓이가 됩니다.';observation='대각선과 사각형 변은 꽃잎의 둘레가 아닙니다.';
  }else{
   const pr=2*s,offset=3*s,axes=[[0,-1],[1,0],[0,1],[-1,0]],d=2*s,areaOne=8*PI/3-2*Math.sqrt(3);let defs='',fills='';
   axes.forEach(([dx,dy],i)=>{const mx=cx+dx*offset,my=cy+dy*offset,a={x:mx-dx*d/2,y:my-dy*d/2},b={x:mx+dx*d/2,y:my+dy*d/2},pa=tlF03Circle(a.x,a.y,pr),pb=tlF03Circle(b.x,b.y,pr),phi=Math.atan2(dy,dx)*180/PI;defs+=`<clipPath id="petal${i}"><path d="${pb}"/></clipPath>`;fills+=`<path d="${pa}" fill="${col[i]}" fill-opacity=".7" clip-path="url(#petal${i})"/>`;parts.push(arc(`꽃잎 ${i+1} 원호 1`,col[i],a.x,a.y,pr,phi-60,phi+60),arc(`꽃잎 ${i+1} 원호 2`,col[i],b.x,b.y,pr,phi+120,phi+240));});
   svg=`<defs>${defs}</defs><rect x="${cx-5*s}" y="${cy-5*s}" width="${10*s}" height="${10*s}" fill="none" stroke="#9dbdaf"/>${fills}<rect x="${cx-2*s}" y="${cy-2*s}" width="${4*s}" height="${4*s}" fill="${st.showCenter?'#fbbf24':'none'}" fill-opacity=".28" stroke="#fbbf24" stroke-dasharray="5 5"/>`;
   if(st.showCenter){parts.length=0;const a={x:cx-2*s,y:cy-2*s},b={x:cx+2*s,y:cy-2*s},c={x:cx+2*s,y:cy+2*s},d0={x:cx-2*s,y:cy+2*s};parts.push(line('중앙 윗변',col[3],a,b),line('중앙 오른쪽 변',col[3],b,c),line('중앙 아랫변',col[3],c,d0),line('중앙 왼쪽 변',col[3],d0,a));areaNum=16;perimeterNum=16;areaMetric='16\\,\\mathrm{cm}^{2}';periMetric='16\\,\\mathrm{cm}';areaLines=['S=4\\times4=16'];periLines=['L=4\\times4=16'];}
   else {areaNum=4*areaOne;perimeterNum=32*PI/3;areaMetric='32\\pi/3-8\\sqrt3\\,\\mathrm{cm}^{2}';periMetric='32\\pi/3\\,\\mathrm{cm}';areaLines=['S_{4}=4(8\\pi/3-2\\sqrt3)'];periLines=['L_{4}=4\\cdot 8\\pi/3'];}
-  stage='회전 복제한 네 꽃잎과 가운데 빈 정사각형';hint='각 꽃잎의 두 원호와 중앙 빈 면을 따로 셉니다';note='같은 렌즈 꽃잎 네 개를 90°씩 회전해 배치했습니다. 가운데 한 변 4 cm의 정사각형은 빈 면입니다.';observation=st.showCenter?'선택한 중앙 정사각형의 네 변을 경계로 셉니다.':'꽃잎마다 두 원호가 있으므로 네 장의 경계는 여덟 원호입니다.';
+  stage='회전 복제한 네 꽃잎과 가운데 빈 정사각형';hint='각 꽃잎의 두 원호와 중앙 빈 면을 따로 셉니다';note='같은 꽃잎 모양 네 개를 90°씩 회전해 배치했습니다. 가운데 한 변 4 cm의 정사각형은 빈 면입니다.';observation=st.showCenter?'선택한 중앙 정사각형의 네 변을 경계로 셉니다.':'꽃잎마다 두 원호가 있으므로 네 장의 경계는 여덟 원호입니다.';
  }
  return {title:stage,stage,hint,svg,parts,areaMetric,periMetric,areaNum,perimeterNum,areaLines,periLines,note,observation,splitText:note,shapeA,shapeB,regionMode:'all'};
 }
@@ -2468,14 +2468,14 @@ function f06(id,st,g){
  }else{
   const tri=id==='f06-06',floor=cy+4*s,x0=tri?cx-8*s:cx-12*s,points=tri?[{x:x0,y:floor},{x:x0+4*s,y:floor},{x:x0+2*s,y:floor-2*Math.sqrt(3)*s}]:[{x:x0,y:floor},{x:x0+6*s,y:floor},{x:x0+6*s,y:floor-3*s},{x:x0,y:floor-3*s}],pivots=tri?[1,2,0]:[1,2,3,0],stepAngle=tri?120:90;let current=points.map(p=>({...p})),roll=st.roll;
   for(let j=0;j<pivots.length;j++){const f=Math.max(0,Math.min(1,roll-j));if(!f)break;const o=current[pivots[j]],p=current[0],rad=Math.hypot(p.x-o.x,p.y-o.y),start=Math.atan2(p.y-o.y,p.x-o.x)*180/PI;addArc(`접점 ${j+1}의 이동 원호`,colors[j],o,rad,start,start+stepAngle*f);total+=rad/s*stepAngle*f*PI/180;current=current.map(q=>rotatePoint(q,o,stepAngle*f));if(f<1)break;}
-  shapeA=poly(current);svg=`<path d="M 20 ${floor} H ${vw-20}" stroke="#bad7c6" stroke-width="2"/><path d="${shapeA}" fill="#38bdf8" fill-opacity=".3" stroke="#bdebd0" stroke-width="2"/>${dot(current[0],colors[0])}`;radiusText=tri?'4,\\;4,\\;0\\,\\mathrm{cm}':'6,\\;3\\sqrt5,\\;3,\\;0\\,\\mathrm{cm}';lengthText=`${tlF01Num(total)}\\,\\mathrm{cm}`;areaLines=[tri?'\\theta=120^\\circ':'\\theta=90^\\circ',`l\\approx${tlF01Num(total)}\\,\\mathrm{cm}`];periLines=['l_i=\\dfrac{\\theta_i}{360}2\\pi r_i'];stage=tri?'정삼각형이 한 변씩 바닥을 따라 넘어갑니다':'긴 변과 짧은 변이 번갈아 바닥에 닿습니다';hint='현재 접점이 회전 중심이며 접점인 꼭짓점은 잠시 멈춥니다';note='각 구간은 고정된 접점 주위의 회전으로 계산합니다. 추적 점이 접점이 되는 구간에서는 움직이지 않습니다.';observation=`현재 ${tlF01Num(roll)}번 변을 넘긴 상태입니다.`;
+  shapeA=poly(current);svg=`<path d="M 20 ${floor} H ${vw-20}" stroke="#bad7c6" stroke-width="2"/><path d="${shapeA}" fill="#38bdf8" fill-opacity=".3" stroke="#bdebd0" stroke-width="2"/>${dot(current[0],colors[0])}`;radiusText=tri?'4,\\;4,\\;0\\,\\mathrm{cm}':'6,\\;3\\sqrt5,\\;3,\\;0\\,\\mathrm{cm}';lengthText=`${tlF01Num(total)}\\,\\mathrm{cm}`;areaLines=[tri?'\\theta=120^\\circ':'\\theta=90^\\circ',`l\\approx${tlF01Num(total)}\\,\\mathrm{cm}`];periLines=['l_i=\\dfrac{\\theta_i}{360}2\\pi r_i'];stage=tri?'정삼각형이 한 변씩 바닥을 따라 넘어갑니다':'긴 변과 짧은 변이 번갈아 바닥에 닿습니다';hint='현재 접점이 회전 중심이며 접점인 꼭짓점은 잠시 멈춥니다';note='각 구간은 고정된 접점 주위의 회전으로 계산합니다. 표시한 점이 접점이 되는 구간에서는 움직이지 않습니다.';observation=`현재 ${tlF01Num(roll)}번 변을 넘긴 상태입니다.`;
  }
  return {title:stage,stage,hint,svg,parts,areaMetric:radiusText,periMetric:lengthText,areaNum:0,perimeterNum:total,areaLines,periLines,note,observation,splitText:note,shapeA,shapeB:'',regionMode:'all'};
 }
 const groups={
- f04:['반원 돌출·홈','사분원 회전','반원 조각 둘로','사분원 둘로 채우기','합동 활꼴','같은 넓이 다른 모양','히포크라테스 초승달'],
- f05:['태극형 S자','아르벨로스 세 원호','반원 두 개 물결','대칭 렌즈','초승달 차집합','정사각형 꽃잎','꽃잎 넷과 중앙','원호 경계 이어 보기'],
- f06:['한 점의 회전','삼각형 꼭짓점 추적','직사각형 꼭짓점 추적','회전 중심 바꾸기','회전 중심 연속 변경','삼각형 굴리기','직사각형 굴리기','경로와 직선거리']
+ f04:['반원 돌출·홈','사분원 회전','반원 조각 둘로','사분원 둘로 채우기','합동 활꼴','같은 넓이 다른 모양','직각삼각형 위의 두 초승달'],
+ f05:['S자 모양 경계','큰 반원과 두 작은 반원의 경계','반원 두 개 물결','두 원의 공통 부분','한쪽만 남긴 초승달','정사각형 꽃잎','꽃잎 넷과 중앙','원호 경계 이어 보기'],
+ f06:['한 점의 회전','삼각형 꼭짓점의 이동 경로','직사각형 꼭짓점의 이동 경로','회전 중심 바꾸기','회전 중심 연속 변경','삼각형 굴리기','직사각형 굴리기','경로와 직선거리']
 };
 const labels={f04:'잘라서 채우기',f05:'복합 원호',f06:'점의 이동'};
 const nav=tlGet('tlFamily');
@@ -2483,7 +2483,7 @@ for(const [group,names] of Object.entries(groups)){
  const head=document.createElement('span');head.className='tl-family-label';head.textContent=`${group.toUpperCase()} · ${labels[group]}`;nav.appendChild(head);
  names.forEach((name,i)=>{const b=document.createElement('button');b.type='button';b.dataset.tlFamily=`${group}-${String(i+1).padStart(2,'0')}`;b.textContent=`${['①','②','③','④','⑤','⑥','⑦','⑧'][i]} ${name}`;nav.appendChild(b);});
 }
-const groupSelect=document.createElement('select');groupSelect.className='tl-group-select';groupSelect.setAttribute('aria-label','변환군 선택');groupSelect.innerHTML='<option value="f01">F01 · 넣기·파내기</option><option value="f02">F02 · 나누기·합치기</option><option value="f03">F03 · 겹치기·상쇄</option><option value="f04">F04 · 잘라서 채우기</option><option value="f05">F05 · 복합 원호</option><option value="f06">F06 · 점의 이동</option>';nav.prepend(groupSelect);
+const groupSelect=document.createElement('select');groupSelect.className='tl-group-select';groupSelect.setAttribute('aria-label','변환군 선택');groupSelect.innerHTML='<option value="f01">F01 · 넣기·파내기</option><option value="f02">F02 · 나누기·합치기</option><option value="f03">F03 · 겹치기·빼기</option><option value="f04">F04 · 잘라서 채우기</option><option value="f05">F05 · 복합 원호</option><option value="f06">F06 · 점의 이동</option>';nav.prepend(groupSelect);
 function groupOf(id){return id==='sector'||id==='circle'?'f01':id.slice(0,3);}
 function showGroup(group){groupSelect.value=group;nav.querySelectorAll('.tl-family-label').forEach(x=>x.hidden=true);nav.querySelectorAll('[data-tl-family]').forEach(b=>{b.hidden=groupOf(b.dataset.tlFamily)!==group;});}
 groupSelect.addEventListener('change',()=>{const group=groupSelect.value;showGroup(group);const b=[...nav.querySelectorAll('[data-tl-family]')].find(x=>groupOf(x.dataset.tlFamily)===group);if(b)b.click();});
@@ -2495,12 +2495,12 @@ function layout(id){const mobile=innerWidth<=660,vw=mobile?480:760,vh=mobile?400
 function range(key,title,min,max,step,value,unit){return `<div class="tl-range"><label for="ex-${key}">${title}</label><input id="ex-${key}" data-ex-range="${key}" type="range" min="${min}" max="${max}" step="${step}" value="${value}"><output id="ex-${key}-value">${value}${unit}</output></div>`;}
 function choice(text,key,value,active){return `<button type="button" class="tl-f03-choice${active?' active':''}" data-ex-key="${key}" data-ex-value="${value}" aria-pressed="${active}">${text}</button>`;}
 function controls(id,st){
- if(id.startsWith('f04-')){let k=id==='f04-06'?'overlay':id==='f04-07'?'reveal':'move';return range(k,id==='f04-07'?'공통 면 상쇄':'조각 이동·회전',0,100,1,st[k],'%');}
+ if(id.startsWith('f04-')){let k=id==='f04-06'?'overlay':id==='f04-07'?'reveal':'move';return range(k,id==='f04-07'?'공통 면 빼기':'조각 이동·회전',0,100,1,st[k],'%');}
  if(id==='f05-01')return choice('영역 A','region','A',st.region==='A')+choice('영역 B','region','B',st.region==='B')+choice('기본 색','swap','false',!st.swap)+choice('색 바꾸기','swap','true',st.swap)+range('split','공통 S 경계 강조',0,100,1,st.split,'%');
  if(id==='f05-02'||id==='f05-08'){const k=id==='f05-02'?'focus':'segment';return range(k,'강조할 경계',1,3,1,st[k],'번');}
  if(id==='f05-03')return choice('같은 방향','orientation','same',st.orientation==='same')+choice('반대 방향','orientation','opposite',st.orientation==='opposite');
  if(id==='f05-04')return range('distance','중심 사이 거리',3,12,.5,st.distance,' cm');
- if(id==='f05-05')return choice('렌즈','region','lens',st.region==='lens')+choice('초승달','region','crescent',st.region==='crescent');
+ if(id==='f05-05')return choice('공통 부분','region','lens',st.region==='lens')+choice('초승달','region','crescent',st.region==='crescent');
  if(id==='f05-06')return choice('꽃잎 강조','shade','true',st.shade)+choice('경계 보기','shade','false',!st.shade);
  if(id==='f05-07')return choice('네 꽃잎','showCenter','false',!st.showCenter)+choice('중앙 빈 면','showCenter','true',st.showCenter);
  if(id==='f06-04')return choice('꼭짓점','pivot','corner',st.pivot==='corner')+choice('변의 중점','pivot','midpoint',st.pivot==='midpoint')+choice('도형 중심','pivot','center',st.pivot==='center');
@@ -2797,7 +2797,7 @@ tlGet('tlPlay').addEventListener('click',e=>{
   const TL_GROUPS = [
     { key: 'f01', title: '변환 F01 · 넣기·파내기', short: 'F01 넣기·파내기' },
     { key: 'f02', title: '변환 F02 · 나누기·합치기', short: 'F02 나누기·합치기' },
-    { key: 'f03', title: '변환 F03 · 겹치기·상쇄', short: 'F03 겹치기·상쇄' },
+    { key: 'f03', title: '변환 F03 · 겹치기·빼기', short: 'F03 겹치기·빼기' },
     { key: 'f04', title: '변환 F04 · 잘라서 채우기', short: 'F04 잘라서 채우기' },
     { key: 'f05', title: '변환 F05 · 복합 원호', short: 'F05 복합 원호' },
     { key: 'f06', title: '변환 F06 · 점의 이동', short: 'F06 점의 이동' }
@@ -2980,7 +2980,7 @@ tlGet('tlPlay').addEventListener('click',e=>{
     },
     groups
   });
-  // 원본 코드가 그림(SVG)이나 문구를 바꾸면(애니메이션 포함) 무대와 패널을 다시 그립니다.
+  // 원본 코드가 그림(SVG)이나 문구를 바꾸면(움직임 포함) 무대와 패널을 다시 그립니다.
   const mo = new MutationObserver(() => { if (window.lab) window.lab.invalidate(true); });
   [svgMain, svgTL].forEach((n) => mo.observe(n, { childList: true, subtree: true, attributes: true }));
   bindClicks(window.lab);
