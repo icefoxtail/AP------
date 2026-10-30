@@ -1117,7 +1117,139 @@ def audit_tree(chart, doc):
     return {'leaves': len(leaves), 'paths': {n['id']: str(n['path']) for n in leaves} if has_p else None}
 
 
-AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree}
+# --- the dot plot (E34): stacks of dots over a number line --------------------------------------------------------------------------------------
+# This observer's own copies of the drawing rules: the first dot sits DOT_FIRST above the line, the others a diameter and DOT_GAP apart, the radius is the smaller of DOT_MAX_R and
+# 0.45 of a unit; a segment of the line runs a unit beyond its data on each side, rounded out to the label step; a cut line leaves between its two parts room for the two numbers
+# next to the cut (half the width of each, 14.5 px a digit, and 8 px).
+DOT_FIRST, DOT_GAP, DOT_MAX_R, DOT_MINOR = 7.0, 1.5, 5.5, 3.0
+DOT_MAX_STACK, DOT_MAX_POINTS = 12, 60
+
+
+def dot_plan(chart):
+    """The data of a dot plot from the plan alone: ([(value, count)] ascending, break (from, to) or None)."""
+    def whole(v):
+        if isinstance(v, str) and re.fullmatch(r'\d{1,4}', v): v = int(v)
+        if isinstance(v, bool) or not isinstance(v, int) or not 0 <= v <= 9999: fail('STAT_DOT_VALUE_INVALID')
+        return v
+    if ('values' in chart) == ('counts' in chart): fail('STAT_DOT_PLOT_INVALID')
+    tally = {}
+    if 'values' in chart:
+        raw = chart['values']
+        if not isinstance(raw, list) or not 1 <= len(raw) <= DOT_MAX_POINTS: fail('STAT_DOT_PLOT_INVALID')
+        for v in raw: tally[whole(v)] = tally.get(whole(v), 0) + 1
+    else:
+        raw = chart['counts']
+        if not isinstance(raw, list) or not 1 <= len(raw) <= DOT_MAX_POINTS: fail('STAT_DOT_PLOT_INVALID')
+        for e in raw:
+            if not isinstance(e, dict) or set(e) != {'value', 'count'}: fail('STAT_DOT_PLOT_INVALID')
+            v, k = whole(e['value']), e['count']
+            if isinstance(k, bool) or not isinstance(k, int) or not 1 <= k <= DOT_MAX_STACK: fail('STAT_DOT_STACK_TOO_TALL')
+            if v in tally: fail('STAT_DOT_PLOT_INVALID')
+            tally[v] = k
+    if max(tally.values()) > DOT_MAX_STACK or sum(tally.values()) > DOT_MAX_POINTS: fail('STAT_DOT_STACK_TOO_TALL')
+    points = sorted(tally.items())
+    br = None
+    if 'axisBreak' in chart:
+        b = chart['axisBreak']
+        if not isinstance(b, dict) or set(b) != {'from', 'to'}: fail('STAT_DOT_BREAK_INVALID')
+        lo, hi = b['from'], b['to']
+        if any(isinstance(x, bool) or not isinstance(x, int) or not 0 <= x <= 9999 for x in (lo, hi)) or hi - lo < 2: fail('STAT_DOT_BREAK_INVALID')
+        if any(lo < v < hi for v, _ in points) or not any(v <= lo for v, _ in points) or not any(v >= hi for v, _ in points): fail('STAT_DOT_BREAK_INVALID')
+        br = (lo, hi)
+    return points, br
+
+
+def audit_dot(chart, doc):
+    points, br = dot_plan(chart)
+    x_axis = doc.by_id.get('x-axis')
+    if x_axis is None: fail('SC_AXIS_MISSING')
+    axis_y = num(x_axis, 'y1')
+    values = [v for v, _ in points]
+    groups = [[v for v in values if v <= br[0]], [v for v in values if v >= br[1]]] if br else [values]
+    majors = doc.role('line', 'x-tick')
+    ticks = []
+    for tick in majors:
+        label = doc.label_of(tick.get('id'), 'x-tick')
+        if label is None: continue
+        try: value = tex_number(label.get('data-tex'))
+        except ValueError as e: doc.err(str(e) + ':' + label.get('id')); continue
+        if value.denominator != 1 or frac(tick.get('data-value'), 'SC_TICK_VALUE_INVALID') != value: doc.err('SC_TICK_VALUE_MISMATCH:' + tick.get('id')); continue
+        if abs(num(tick, 'x1') - num(tick, 'x2')) > TOL or abs(num(tick, 'y1') - axis_y) > TOL or not num(tick, 'y2') > axis_y: doc.err('SC_TICK_NOT_PERPENDICULAR:' + tick.get('id'))
+        if abs(centre(label)[0] - num(tick, 'x1')) > LABEL_TOL: doc.err('SC_TICK_LABEL_NOT_CENTRED:' + label.get('id'))
+        ticks.append((int(value), num(tick, 'x1')))
+    ticks.sort()
+    if len({v for v, _ in ticks}) != len(ticks): doc.err('SC_DOT_TICK_DUPLICATE')
+    # one linear scale per segment of the line, the same unit length in all of them
+    scale, unit, step = [], None, None
+    cut = (max(groups[0]) + min(groups[1])) / 2 if br else None      # a tick belongs to the part of the line whose data lie on its side of the middle of the gap between the data
+    seg_ticks = [[t for t in ticks if (t[0] <= cut if k == 0 else t[0] > cut)] for k in range(2)] if br else [ticks]
+    for k, group in enumerate(seg_ticks):
+        if len(group) < 2: fail('SC_AXIS_TICKS_MISSING:x-tick')
+        (v0, c0), (v1, c1) = group[0], group[-1]
+        slope = (c1 - c0) / (v1 - v0)
+        if slope <= 0: doc.err('SC_AXIS_DIRECTION:x-tick'); slope = abs(slope) or 1.0
+        for v, c in group:
+            if abs(c0 + (v - v0) * slope - c) > 0.05: doc.err('SC_AXIS_NOT_LINEAR:x-tick')
+        diffs = {group[i + 1][0] - group[i][0] for i in range(len(group) - 1)}
+        if len(diffs) != 1: doc.err('SC_DOT_TICKS_NOT_EVEN')
+        if step is None: step = min(diffs)
+        elif min(diffs) != step: doc.err('SC_DOT_TICKS_NOT_EVEN')
+        if unit is None: unit = slope
+        elif abs(slope - unit) > 0.02: doc.err('SC_DOT_UNIT_DIFFERS')
+        scale.append((v0, c0, group))
+    if step is None or unit is None: fail('SC_AXIS_TICKS_MISSING:x-tick')
+    if chart.get('step') is not None and chart['step'] != step: doc.err('SC_DOT_STEP_MISMATCH')
+    def x_of(value):
+        k = next((i for i, (_, _, group) in enumerate(scale) if group[0][0] <= value <= group[-1][0]), None)     # the part of the line that covers the value
+        if k is None: doc.err('SC_DOT_VALUE_OFF_AXIS:%d' % value); k = 0
+        v0, c0, _ = scale[k]
+        return c0 + (value - v0) * unit
+    # each segment runs one unit past its data on both sides, rounded out to the step (never below 0)
+    for k, data in enumerate(groups):
+        lo, hi = max(0, ((min(data) - 1) // step) * step), -(-(max(data) + 1) // step) * step
+        if (scale[k][2][0][0], scale[k][2][-1][0]) != (lo, hi): doc.err('SC_DOT_SEGMENT_RANGE:%d' % k)
+    r_want = min(DOT_MAX_R, 0.45 * unit)
+    # the minor ticks: every integer of a segment that is not a label tick, only when the step is more than 1
+    minors = doc.role('line', 'x-minor')
+    want_minor = set()
+    if step > 1:
+        for _, _, group in scale: want_minor |= {v for v in range(group[0][0], group[-1][0] + 1) if v % step}
+    drawn = {}
+    for tick in minors:
+        v = frac(tick.get('data-value'), 'SC_TICK_VALUE_INVALID')
+        if v.denominator != 1: doc.err('SC_DOT_MINOR_VALUE'); continue
+        drawn[int(v)] = drawn.get(int(v), 0) + 1
+        if abs(num(tick, 'x1') - x_of(int(v))) > TOL or abs(num(tick, 'x2') - num(tick, 'x1')) > TOL or abs(num(tick, 'y1') - axis_y) > TOL or not 0 < num(tick, 'y2') - axis_y < 5: doc.err('SC_DOT_MINOR_PLACE:%d' % int(v))
+    if set(drawn) != want_minor or any(n != 1 for n in drawn.values()): doc.err('SC_DOT_MINOR_SET')
+    # the line is cut where the plan says, with the gap between its parts
+    breaks = [e for e in doc.role('line', 'axis-break') if e.get('data-axis') == 'x']
+    if (len(breaks) == 2) != (br is not None) or len(breaks) not in (0, 2): doc.err('SC_AXIS_BREAK_MISMATCH')
+    if br:
+        left_end, right_start = scale[0][1] + (scale[0][2][-1][0] - scale[0][0]) * unit, scale[1][1]
+        want_gap = 14.5 * (len(str(scale[0][2][-1][0])) + len(str(scale[1][2][0][0]))) / 2 + 8
+        if abs((right_start - left_end) - want_gap) > 0.1: doc.err('SC_DOT_GAP')
+        mids = [(num(e, 'x1') + num(e, 'x2')) / 2 for e in breaks]
+        if any(not left_end < m < right_start for m in mids): doc.err('SC_DOT_BREAK_PLACE')
+    # the dots: one per datum, at its value, stacked from the line
+    dots = [e for e in doc.circles if e.get('data-role') == 'dot']
+    by_value = {}
+    for e in dots: by_value.setdefault(e.get('data-value'), []).append(e)
+    if set(by_value) != {str(v) for v, _ in points}: doc.err('SC_DOT_VALUE_SET')
+    pitch = 2 * r_want + DOT_GAP
+    for value, count in points:
+        mine = sorted(by_value.get(str(value), []), key=lambda e: -num(e, 'cy'))
+        if len(mine) != count: doc.err('SC_DOT_COUNT:%d' % value); continue
+        for j, e in enumerate(mine):
+            if abs(num(e, 'cx') - x_of(value)) > TOL: doc.err('SC_DOT_X:%d' % value)
+            if abs(num(e, 'r') - r_want) > 0.02: doc.err('SC_DOT_RADIUS:%d' % value)
+            if abs(num(e, 'cy') - (axis_y - DOT_FIRST - r_want - j * pitch)) > 0.05: doc.err('SC_DOT_STACK:%d' % value)
+            if e.get('data-index') != str(j + 1): doc.err('SC_DOT_INDEX:%d' % value)
+    if len(dots) != sum(c for _, c in points): doc.err('SC_DOT_TOTAL')
+    doc.check_title('x-title', chart.get('xTitle', ''), 'x')
+    return {'dots': sum(c for _, c in points), 'values': {str(v): c for v, c in points}, 'step': step}
+
+
+AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'DOT_PLOT': audit_dot}
 
 
 def audit(chart, svg):

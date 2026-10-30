@@ -75,6 +75,7 @@ export function solveStatChart(chart){
     case 'SCATTER':return solveScatter(chart);
     case 'DICE_TABLE':return solveDice(chart);
     case 'TREE':return solveTree(chart);
+    case 'DOT_PLOT':return solveDot(chart);
     default:return bad('STAT_KIND_UNSUPPORTED');
   }
 }
@@ -464,6 +465,58 @@ function solveScatter(c){
   return {schemaVersion:MODEL_VERSION,kind:'SCATTER',xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
     xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',''),
     points:points.map(p=>({x:qstr(p.x),y:qstr(p.y),name:p.name,onDiagonal:qcmp(p.x,p.y)===0})),onDiagonal:points.filter(p=>qcmp(p.x,p.y)===0).length};
+}
+// Dot plot (E34): the data as stacks of dots over a number line, one dot per datum. values [whole numbers] (or counts [{value,count}]); the engine tallies them, picks the label step
+// (every integer between the labelled ticks gets a short tick) and gives the line a segment that runs a unit beyond the data on each side. axisBreak {from,to}: the data have a
+// gap (an outlier far from the rest): values are all <= from or >= to, and the line is cut there by a break mark so that both parts keep one unit length.
+const DOT_MAX_POINTS=60,DOT_MAX_STACK=12,DOT_MIN_UNIT_PX=6.2,DOT_STEPS=[1,2,5,10,20,50,100],DOT_MAPL=40,DOT_MAPR=422,DOT_MAX_TICKS=14;
+const dotSegments=(points,br,step)=>{
+  const groups=br?[points.filter(p=>p.v<=br.from),points.filter(p=>p.v>=br.to)]:[points];
+  return groups.map(g=>{const lo=Math.max(0,Math.floor((g[0].v-1)/step)*step),hi=Math.ceil((g.at(-1).v+1)/step)*step;return {lo,hi};});
+};
+// where the line is cut the two end numbers next to the break need room: the gap is half the width of each (14.5 px a digit) and 8 px
+const dotGapPx=segments=>segments.length>1?14.5*(String(segments[0].hi).length+String(segments[1].lo).length)/2+8:0;
+const dotUnitPx=segments=>(DOT_MAPR-DOT_MAPL-dotGapPx(segments))/segments.reduce((t,g)=>t+g.hi-g.lo,0);
+function solveDot(c){
+  onlyKeys(c,['kind','values','counts','step','xTitle','axisBreak'],'STAT_CHART_PLAN_INVALID');
+  if((c.values===undefined)===(c.counts===undefined))bad('STAT_DOT_PLOT_INVALID');
+  const whole=v=>{const n=typeof v==='string'&&/^\d{1,4}$/.test(v)?Number(v):v;return intIn(n,0,9999,'STAT_DOT_VALUE_INVALID');};
+  const tally=new Map();
+  if(c.values!==undefined){
+    if(!Array.isArray(c.values)||c.values.length<1||c.values.length>DOT_MAX_POINTS)bad('STAT_DOT_PLOT_INVALID');
+    for(const raw of c.values){const v=whole(raw);tally.set(v,(tally.get(v)??0)+1);}
+  }else{
+    if(!Array.isArray(c.counts)||c.counts.length<1||c.counts.length>DOT_MAX_POINTS)bad('STAT_DOT_PLOT_INVALID');
+    for(const e of c.counts){
+      onlyKeys(e,['value','count'],'STAT_DOT_PLOT_INVALID');
+      if(e.value===undefined||e.count===undefined)bad('STAT_DOT_PLOT_INVALID');
+      const v=whole(e.value),k=intIn(e.count,1,DOT_MAX_STACK,'STAT_DOT_STACK_TOO_TALL');
+      if(tally.has(v))bad('STAT_DOT_PLOT_INVALID');
+      tally.set(v,k);
+    }
+  }
+  const points=[...tally.entries()].map(([v,count])=>({v,count})).sort((a,b)=>a.v-b.v);
+  if(points.some(p=>p.count>DOT_MAX_STACK))bad('STAT_DOT_STACK_TOO_TALL');
+  const total=points.reduce((t,p)=>t+p.count,0);
+  if(total>DOT_MAX_POINTS)bad('STAT_DOT_PLOT_INVALID');
+  let br=null;
+  if(c.axisBreak!==undefined){
+    onlyKeys(c.axisBreak,['from','to'],'STAT_DOT_BREAK_INVALID');
+    const from=intIn(c.axisBreak.from,0,9999,'STAT_DOT_BREAK_INVALID'),to=intIn(c.axisBreak.to,0,9999,'STAT_DOT_BREAK_INVALID');
+    if(to-from<2||points.some(p=>p.v>from&&p.v<to)||!points.some(p=>p.v<=from)||!points.some(p=>p.v>=to))bad('STAT_DOT_BREAK_INVALID');
+    br={from,to};
+  }
+  // the labelled ticks must leave room for their numbers: a step is wide enough when it is more than the longest number of the line (14.5 px a digit and 6 px between) apart
+  const fits=step=>{
+    const seg=dotSegments(points,br,step),unit=dotUnitPx(seg);
+    return (seg.length<2||seg[0].hi<seg[1].lo)&&seg.every(g=>g.hi-g.lo>=step&&(g.hi-g.lo)/step+1<=DOT_MAX_TICKS&&(step*unit>=14.5*String(g.hi).length+6||(g.hi-g.lo)/step<1))&&unit>=DOT_MIN_UNIT_PX;
+  };
+  let step;
+  if(c.step!==undefined){step=intIn(c.step,1,500,'STAT_DOT_STEP_INVALID');if(!fits(step))bad('STAT_DOT_PLOT_TOO_DENSE');}
+  else{step=DOT_STEPS.find(fits)??bad('STAT_DOT_PLOT_TOO_DENSE');}
+  const segments=dotSegments(points,br,step);
+  return {schemaVersion:MODEL_VERSION,kind:'DOT_PLOT',step,xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),total,maxStack:Math.max(...points.map(p=>p.count)),
+    points:points.map(p=>({value:String(p.v),count:p.count})),segments,...(br?{axisBreak:br}:{})};
 }
 // The dice predicate: a small expression grammar (integers, the two die letters, + - *, parentheses) compared to numbers; any/all/not combine.
 function exprTokens(text){
@@ -867,7 +920,30 @@ function treeSpec(m){
   }
   return {size:{width,height},prims,labels,centers:Object.fromEntries([...c.entries()]),tree:true};
 }
-const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec};
+// The dot plot: the line along the bottom (a break mark where the plan cuts it), a labelled tick every `step`, a short tick at every other integer, and the dots: the first one
+// DOT_FIRST above the line, the others one pitch (a diameter and DOT_GAP) apart; the dot radius follows the length of a unit so that neighbours never touch.
+const DOT_FIRST=7,DOT_GAP=1.5,DOT_MAX_R=5.5,DOT_MINOR=3;
+function dotSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,segs=m.segments,gap=dotGapPx(segs);
+  const unit=dotUnitPx(segs),r=r6(Math.min(DOT_MAX_R,.45*unit)),pitch=2*r+DOT_GAP;
+  const stackH=DOT_FIRST+m.maxStack*pitch+10,BASE=r6(SAFE+20+stackH),H=Math.ceil(BASE+TICK+4+LABEL_BELOW+SAFE);
+  const right=m.xTitle?TITLE_X+textWidth(m.xTitle,fontPx):0,extraWidth=Math.max(0,Math.ceil(right+SAFE)-W);
+  const px=v=>{const k=segs.findIndex(g=>v>=g.lo&&v<=g.hi);return r6(DOT_MAPL+(k?(segs[0].hi-segs[0].lo)*unit+gap:0)+(v-segs[k].lo)*unit);};
+  const prims=[],labels=[];
+  arrows(prims,{xStartPx:SAFE+14,yAxisPx:null,base:BASE});
+  if(segs.length>1)breakMark(prims,'x',r6((px(segs[0].hi)+px(segs[1].lo))/2),BASE);
+  for(const g of segs)for(let v=g.lo;v<=g.hi;v++){
+    const x=px(v);
+    if(v%m.step===0){
+      prims.push(L(`x-tick-${v}`,'x-tick','tick',x,BASE,x,BASE+TICK,{axis:'x',value:String(v)}));
+      labels.push(math(`x-tick-${v}-label`,'x-tick',`x-tick-${v}`,DISPLAY+String(v),String(v),'center','top',x,BASE+TICK+4,{value:String(v)}));
+    }else prims.push(L(`x-minor-${v}`,'x-minor','tick',x,BASE,x,BASE+DOT_MINOR,{axis:'x',value:String(v)}));
+  }
+  for(const p of m.points)for(let j=0;j<p.count;j++)prims.push({t:'circle',id:`dot-${p.value}-${j+1}`,role:'dot',cls:'dot',cx:px(Number(p.value)),cy:r6(BASE-DOT_FIRST-r-j*pitch),r,data:{value:p.value,index:j+1},layer:70});
+  if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
+  return {size:{width:W+extraWidth,height:H},prims,labels};
+}
+const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,DOT_PLOT:dotSpec};
 export const statChartSize=(model,ctx)=>({...SPEC_BY_KIND[model.kind](model,ctx).size});
 export function statChartSpec(plan,model,ctx){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.chart))bad('STAT_CHART_PLAN_INVALID');

@@ -1,0 +1,39 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "DOT_PLOT",
+  "values": [
+   7,
+   15,
+   11,
+   114,
+   5,
+   5,
+   13,
+   10,
+   8,
+   12
+  ],
+  "axisBreak": {
+   "from": 15,
+   "to": 114
+  },
+  "xTitle": "개수(개)"
+ },
+ "caption": "민서네 반 학생 10명이 하루 동안 보낸 문자 메시지 개수를 점도표로 나타내고, 나머지 자료에서 멀리 떨어진 114개는 수직선을 끊어 나타낸 그림",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "자료 7, 15, 11, 114, 5, 5, 13, 10, 8, 12 (10개, 단위 개)",
+   "mappedTo": "chart.values"
+  },
+  {
+   "id": "c2",
+   "condition": "평균, 중앙값, 최빈값은 정답이므로 그림에 쓰지 않는다",
+   "mappedTo": "chart"
+  }
+ ],
+ "newVisualInformation": [
+  "자료 10개를 값별로 점을 쌓아 나타내어 5가 두 번 나오고 114가 다른 값에서 멀리 떨어져 있음을 한눈에 보게 한다"
+ ]
+}
