@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>벡터의 성분 · 내적 · AP Math 실험실</title>
+<meta name="description" content="기하 벡터의 성분·내적: 정사영(바닥×그림자), 성분 내적과 사잇각·수직 판정, 원 위 동점 내적의 최댓값·최솟값, 중점 제곱차 PA·PB = PM² − L²를 직접 조작하며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<script>
+/* ==========================================================================
+   기하 · 벡터의 성분 · 내적 (AP Math Lab 2.0 이식본) — 4개 장면
+   원본: labs/기하와벡터/벡터의 성분·내적.html
+   - 문제·단계·정석/빠른 풀이 문구(examData), 장면 그리기(renderMode1~4), 분필 그리기 도우미,
+     실시간 값(updateLiveMonitor)·부호 판정(updateSignBadge)은 원본 코드를 그대로 옮겼습니다.
+   - 바뀐 점: 셸·레이아웃은 공용 키트가 담당(휴대폰에서도 끌 수 있는 점이 패널·도구에 가려지지 않도록 무대가 자동 배치),
+     점은 후광이 있는 손잡이로 끌기, 원본의 떠 있는 안내 상자·하단 띠는 수식 칩·상태 배지·하단 띠로 이동,
+     글자는 무대 밖으로 잘리지 않게 안으로 밀어 넣음, 풀이 문구는 값이 바뀔 때 열려 있는 채로 갱신.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const clamp = APLab.clamp;
+  const tex = (s) => APLab.tex(s);
+  const R2D = 180 / Math.PI, D2R = Math.PI / 180;
+  let BD = null;     // 지금 그리는 무대
+  let state = null;  // 지금 장면의 값(원본 state와 같은 이름·모양으로 셸 상태 s에서 만듭니다)
+  let TAPE = null;   // 원본의 하단 상자 → 셸의 하단 띠
+  let CUR = null;    // 프리셋 실행 중인 셸 상태·실험실
+  const mod360 = (x) => ((x % 360) + 360) % 360;
+  const deg = (rad) => mod360(rad * R2D);
+
+  /* ===== 원본 그대로: 각도 보간 도우미 (원본 555–566행) ===== */
+    function normalizeAngleDiff(targetRad, startRad) {
+      let diff = targetRad - startRad;
+      while (diff > Math.PI) diff -= Math.PI * 2;
+      while (diff < -Math.PI) diff += Math.PI * 2;
+      return diff;
+    }
+
+    function wrapAnglePositive(rad) {
+      let a = rad % (Math.PI * 2);
+      if (a < 0) a += Math.PI * 2;
+      return a;
+    }
+
+  /* ===== 원본 그대로: 4대 기출 문제·풀이 데이터 (원본 617–793행) ===== */
+    const examData = {
+      1: {
+        badge: "MODE 1 · 내적의 기하학적 정의: 『바닥 길이 × 정사영 그림자 길이』",
+        hint: "하단 슬라이더나 마우스로 <span class='text-pink-300 font-bold'>점 B(수선 레일 이동)</span>나 <span class='text-sky-300 font-bold'>점 A(바닥 길이)</span>를 드래그해 보세요! 높이가 바뀌어도 <span class='text-amber-300 font-bold'>내적은 일정</span>합니다!",
+        tag: "평가원 3점·4점 도형 내적 1순위 비기",
+        targetTime: "목표 시간: 3초",
+        question: () => `그림과 같이 밑변의 길이가 ${tex(`\\overline{OA} = ${state.A1.x.toFixed(0)}`)} 인 도형에서 점 ${tex('B')}에서 직선 ${tex('OA')}에 내린 수선의 발을 ${tex('H')}라 하자. 부호 있는 그림자 위치가 ${tex(`x_H = ${state.B1.x.toFixed(1)}`)} 일 때, 점 ${tex('B')}의 높이 ${tex('y_B')}와 무관하게 내적 ${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{OB}')}의 값을 구하시오.`,
+        answerBadge: () => {
+          const val = state.A1.x * state.B1.x;
+          return `${tex(`\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = ${state.A1.x.toFixed(1)} \\times (${state.B1.x.toFixed(1)}) = ${val.toFixed(1)}`)} (일정)`;
+        },
+        snap: {
+          Ax: 6.0,
+          Ay: 0.0,
+          Bx: 3.0,
+          By: 4.0
+        },
+        presets: [
+          { label: "예각 정사영 (x_H=+3)", action: () => applyModePreset(1, { Ax: 6, Bx: 3, By: 4 }) },
+          { label: "수직 90° (x_H=0)", action: () => applyModePreset(1, { Ax: 6, Bx: 0, By: 4 }) },
+          { label: "둔각 음수 (x_H=-2)", action: () => applyModePreset(1, { Ax: 6, Bx: -2, By: 3.5 }) }
+        ],
+        steps: [
+          "두 위치벡터 OA(바닥 벡터)와 OB 및 끼인각 θ 표시",
+          "점 B에서 직선 OA에 내린 수선의 발 H 및 정사영 그림자 OH",
+          "수선 레일(BH) 불변성 & 기하 공식: OA · OB = |OA| × x_H"
+        ],
+        textbook: () => {
+          const ax = state.A1.x;
+          const xh = state.B1.x;
+          const by = state.B1.y;
+          const ob = Math.hypot(xh, by);
+          const dot = ax * xh;
+          return {
+            steps: `① 기준 그림에서 ${tex('A=')} ${tex(`(${ax.toFixed(1)},0)`)}이므로 ${tex('\\overrightarrow{OA}')}는 양의 x축 방향이다. 점 ${tex('B=')} ${tex(`(${xh.toFixed(1)},${by.toFixed(1)})`)}에서 내린 수선의 발은 ${tex(`H(${xh.toFixed(1)},0)`)}.<br/>
+② 직각삼각형 ${tex('OBH')}에서 ${tex(`|OB|\\approx ${ob.toFixed(2)}, \\quad |OH|=${Math.abs(xh).toFixed(1)}`)}이지만, ${tex('x_H')}는 직선 위에서 부호를 가진 좌표이므로 ${tex(`x_H=${xh.toFixed(1)}`)}이다. ${xh < 0 ? '발 H가 O의 반대쪽에 있으므로 정사영은 음수이다.' : xh === 0 ? 'H=O이므로 정사영은 0이다.' : 'H가 O와 같은 쪽에 있으므로 정사영은 양수이다.'}<br/>
+③ 정사영 정의로 ${tex('\\overrightarrow{OA}\\cdot\\overrightarrow{OB}=|OA|x_H')}이다. 따라서 ${tex(`(${ax.toFixed(1)})(${xh.toFixed(1)})=${dot.toFixed(1)}`)}. ${tex('y_B')}가 달라져도 발의 위치가 같으면 내적은 변하지 않는다.`,
+            warning: "각도와 빗변을 이용해도 되지만, 부호 있는 정사영 x_H를 쓰면 높이 y_B가 식에서 바로 사라진다."
+          };
+        },
+        shortcut: () => ({
+          steps: `① ${tex('OA')}가 x축 위에 있으므로 ${tex('OB')}의 부호 있는 정사영은 ${tex(`x_H=${state.B1.x.toFixed(1)}`)}이다. 길이 ${tex('|OH|')}만 사용하면 왼쪽에 놓인 경우의 음수 부호를 잃는다.<br/>
+② 따라서 ${tex(`OA\\cdot OB=|OA|x_H=${state.A1.x.toFixed(1)}\\times(${state.B1.x.toFixed(1)})=${(state.A1.x * state.B1.x).toFixed(1)}`)}. 높이 ${tex('y_B')}에는 의존하지 않는다.`,
+          highlight: "내적은 한 벡터의 크기와 다른 벡터의 부호 있는 정사영의 곱이다."
+        })
+      },
+
+      2: {
+        badge: "MODE 2 · 성분으로 표현된 내적 & 두 벡터가 이루는 각 (cos θ)",
+        hint: "마우스로 <span class='text-pink-300 font-bold'>점 B</span>를 드래그하여 <span class='text-sky-300 font-bold'>90° 수직(내적 = 0)</span>이 되는 지점과 <span class='text-rose-400 font-bold'>둔각(내적 &lt; 0)</span> 영역을 직접 확인해 보세요!",
+        tag: "수능·내신 필수 성분 연산 & 수직 조건",
+        targetTime: "목표 시간: 5초",
+        question: () => `좌표평면 위의 두 벡터 ${tex('\\overrightarrow{a} = (4, 2), \\; \\overrightarrow{b} = (1, 3)')} 에 대하여 내적 ${tex('\\overrightarrow{a} \\cdot \\overrightarrow{b}')}의 값과 두 벡터가 이루는 예각의 크기 ${tex('\\theta')}를 구하시오.`,
+        answerBadge: () => `${tex('\\overrightarrow{a} \\cdot \\overrightarrow{b} = 10, \\; \\theta = 45^\\circ \\left(\\dfrac{\\pi}{4}\\right)')}`,
+        snap: {
+          Ax: 4.0,
+          Ay: 2.0,
+          Bx: 1.0,
+          By: 3.0
+        },
+        presets: [
+          { label: "기출 45° (1, 3)", action: () => applyModePreset(2, { Ax: 4, Ay: 2, Bx: 1, By: 3 }) },
+          { label: "수직 90° (-1.5, 3)", action: () => applyModePreset(2, { Ax: 4, Ay: 2, Bx: -1.5, By: 3 }) },
+          { label: "둔각 135° (-3, 1)", action: () => applyModePreset(2, { Ax: 4, Ay: 2, Bx: -3, By: 1 }) }
+        ],
+        steps: [
+          "두 성분 벡터 a = (x₁, y₁), b = (x₂, y₂) 및 원점 사잇각 θ",
+          "성분별 곱의 합: a · b = x₁x₂ + y₁y₂ 및 세로 분수 cos θ 판서",
+          "벡터 a에 수직(⊥)인 경계선 (내적 = 0) 및 예각/둔각 부호 영역"
+        ],
+        textbook: () => ({
+          steps: `① 세 변의 길이 계산: ${tex('|\\overrightarrow{a}| = \\sqrt{20}, \\; |\\overrightarrow{b}| = \\sqrt{10}, \\; |\\overrightarrow{b} - \\overrightarrow{a}| = \\sqrt{(-3)^2 + 1^2} = \\sqrt{10}')}<br/>
+② 삼각형 ${tex('OAB')}에서 제2코사인법칙 적용:<br/>
+&nbsp;&nbsp;${tex('\\cos\\theta = \\dfrac{20 + 10 - 10}{2\\sqrt{20}\\sqrt{10}} = \\dfrac{20}{20\\sqrt{2}} = \\dfrac{1}{\\sqrt{2}} \\implies \\theta = 45^\\circ')}<br/>
+③ 다시 ${tex('\\overrightarrow{a} \\cdot \\overrightarrow{b} = \\sqrt{20}\\sqrt{10}\\cos 45^\\circ = 10')} 계산...`,
+          warning: "⚠️ 성분이 주어진 상태에서 코사인법칙으로 각도를 구하려고 하면 계산이 3배 길어집니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[성분 내적 공식]</strong>: ${tex('x')}끼리 곱하고 ${tex('y')}끼리 곱해서 더한다!<br/>
+&nbsp;&nbsp;<strong class="text-emerald-300">${tex('\\overrightarrow{a} \\cdot \\overrightarrow{b} = 4 \\times 1 + 2 \\times 3 = 4 + 6 = 10')}</strong><br/>
+② <strong>[사잇각 공식]</strong>: <strong class="text-amber-300">${tex('\\cos\\theta = \\dfrac{\\overrightarrow{a} \\cdot \\overrightarrow{b}}{|\\overrightarrow{a}||\\overrightarrow{b}|} = \\dfrac{10}{\\sqrt{20}\\sqrt{10}} = \\dfrac{10}{10\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2} \\implies \\theta = 45^\\circ')}</strong>!`,
+          highlight: "성분 내적은 x₁x₂+y₁y₂이다. 두 벡터가 0이 아닐 때 내적 0은 수직을 뜻한다. 영벡터가 끼면 내적은 0이지만 영벡터와 이루는 각은 정의되지 않는다."
+        })
+      },
+
+      3: {
+        badge: "MODE 3 · 기출 1: 원 위의 동점 P 내적 최대·최소 (원의 중심 C 분해)",
+        hint: "원 위의 <span class='text-amber-300 font-bold'>점 P</span>를 회전시켜 보세요! 반지름 벡터 <span class='text-pink-300 font-bold'>CP가 고정 벡터 OA와 같은 방향일 때 최대</span>가 됩니다! (극값 근처 자동 자석 스냅)",
+        tag: "평가원 4점 내적 최대·최소 단골 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => {
+          const rSq = (state.r34 * state.r34).toFixed(state.r34 % 1 === 0 ? 0 : 2);
+          return `좌표평면에서 고정된 점 ${tex('A(3, 4)')}와 원 ${tex(`(x - 2)^2 + (y - 1)^2 = ${rSq}`)} (반지름 ${tex(`r = ${state.r34.toFixed(1)}`)}) 위를 움직이는 점 ${tex('P')}가 있다. 내적 ${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{OP}')}의 최댓값 ${tex('M')}과 최솟값 ${tex('m')}을 구하시오.`;
+        },
+        answerBadge: () => {
+          const maxV = (10 + 5 * state.r34).toFixed(1).replace(/\.0$/, '');
+          const minV = (10 - 5 * state.r34).toFixed(1).replace(/\.0$/, '');
+          return `최대 ${tex(`M = ${maxV}`)}, 최소 ${tex(`m = ${minV}`)}`;
+        },
+        snap: {
+          theta34: Math.atan2(4, 3),
+          r34: 2.0
+        },
+        presets: [
+          { label: "동방향 최대 (P_max)", action: () => applyModePreset(3, { theta34: Math.atan2(4, 3), r34: state.r34 }) },
+          { label: "수직 중립 (OA⊥CP)", action: () => applyModePreset(3, { theta34: Math.atan2(4, 3) + Math.PI / 2, r34: state.r34 }) },
+          { label: "역방향 최소 (P_min)", action: () => applyModePreset(3, { theta34: Math.atan2(4, 3) + Math.PI, r34: state.r34 }) }
+        ],
+        steps: [
+          "고정 벡터 OA(길이 5) 및 중심 C(2, 1), 반지름 r 인 원 작도",
+          "중심 경유 분해: OA · OP = OA · (OC + CP) = OA·OC + OA·CP",
+          "CP가 OA와 같은 방향일 때 최대(+5r), 반대 방향일 때 최소(-5r)"
+        ],
+        textbook: () => ({
+          steps: `① 원 위의 점 ${tex('P')}를 매개변수로 치환: ${tex(`P(2 + ${state.r34.toFixed(1)}\\cos\\theta, \\; 1 + ${state.r34.toFixed(1)}\\sin\\theta)`)}<br/>
+② 성분 내적 전개:<br/>
+&nbsp;&nbsp;${tex(`OA\\cdot OP = 3(2 + ${state.r34.toFixed(1)}\\cos\\theta) + 4(1 + ${state.r34.toFixed(1)}\\sin\\theta) = 10 + ${3 * state.r34}\\cos\\theta + ${4 * state.r34}\\sin\\theta`)}<br/>
+③ ${tex('3\\cos\\theta+4\\sin\\theta')}의 최댓값은 ${tex('\\sqrt{3^2+4^2}=5')}, 최솟값은 ${tex('-5')}이다. 따라서 반지름이 ${tex(`r=${state.r34.toFixed(1)}`)}일 때 변동항의 범위는 ${tex(`[-${(5 * state.r34).toFixed(1)},${(5 * state.r34).toFixed(1)}]`)}.<br/>
+④ 고정항 ${tex('OA\\cdot OC=10')}을 더해 최댓값 ${tex(`10+5r=${(10 + 5 * state.r34).toFixed(1)}`)}, 최솟값 ${tex(`10-5r=${(10 - 5 * state.r34).toFixed(1)}`)}.`,
+          warning: "중심 분해는 원의 중심이 주어졌을 때 좌표로 계산하든 도형에서 분해하든 성립한다."
+        }),
+        shortcut: () => ({
+          steps: `① 원 위의 점 ${tex('P')}가 내적에 등장하면 무조건 <strong>[원의 중심 ${tex('C')}로 쪼개기]</strong>!<br/>
+&nbsp;&nbsp;<strong class="text-amber-300">${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{OP} = \\overrightarrow{OA} \\cdot (\\overrightarrow{OC} + \\overrightarrow{CP}) = \\underbrace{\\overrightarrow{OA} \\cdot \\overrightarrow{OC}}_{\\text{고정값 } 10} + \\overrightarrow{OA} \\cdot \\overrightarrow{CP}')}</strong><br/>
+② 고정 내적값: ${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{OC} = 3 \\times 2 + 4 \\times 1 = 10')}.<br/>
+③ 회전 내적값 ${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{CP}')}는 두 벡터가 <strong>같은 방향일 때 최대(${tex('+|\\overrightarrow{OA}|r = +5r')})</strong>, <strong>반대 방향일 때 최소(${tex('-5r')})</strong>!<br/>
+④ 현재 반지름 ${tex(`r=${state.r34.toFixed(1)}`)}에서는 <strong class="text-sky-300">최대 ${tex(`10+5r=${(10 + 5 * state.r34).toFixed(1)}`)}</strong>, <strong class="text-pink-300">최소 ${tex(`10-5r=${(10 - 5 * state.r34).toFixed(1)}`)}</strong>!`,
+          highlight: "💡 『고정벡터 u · 원위동점 P = (u · 중심 C) ± |u|r』 — 내적 킬러를 5초 만에 끝내는 불변 공식입니다!"
+        })
+      },
+
+      4: {
+        badge: "MODE 4 · 기출 2: 시점이 동점 P인 두 벡터의 내적 (PA · PB = PM² - L²)",
+        hint: "시점이 움직이는 내적 <span class='text-amber-300 font-bold'>PA · PB</span>는 무조건 선분 AB의 <span class='text-emerald-300 font-bold'>중점 M</span>을 찍어 <span class='text-amber-300 font-bold'>PM² - (AB/2)²</span>으로 바꾸세요!",
+        tag: "수능 기하 29번·30번 최고난도 킬러 비기",
+        targetTime: "목표 시간: 5초",
+        question: () => `길이가 ${tex('4')}인 고정된 선분 ${tex('AB')}와 그 중점 ${tex('M')}이 있다. 점 ${tex('M')}으로부터 거리가 ${tex('5')}인 점 ${tex('C')}를 중심으로 하고 반지름이 ${tex(`r = ${state.r34.toFixed(1)}`)}인 원 위를 움직이는 점 ${tex('P')}에 대하여, 내적 ${tex('\\overrightarrow{PA} \\cdot \\overrightarrow{PB}')}의 최댓값과 최솟값을 구하시오.`,
+        answerBadge: () => {
+          const maxPM = 5 + state.r34;
+          const minPM = 5 - state.r34;
+          const maxVal = (maxPM * maxPM - 4).toFixed(2).replace(/\.00$/, '');
+          const minVal = (minPM * minPM - 4).toFixed(2).replace(/\.00$/, '');
+          return `최대 ${tex(`= ${maxVal}`)}, 최소 ${tex(`= ${minVal}`)}`;
+        },
+        snap: {
+          theta34: Math.atan2(4, 3),
+          r34: 2.0
+        },
+        presets: [
+          { label: "최대 거리 P_max (PM=5+r)", action: () => applyModePreset(4, { theta34: Math.atan2(4, 3), r34: state.r34 }) },
+          { label: "측면 궤도 (θ+90°)", action: () => applyModePreset(4, { theta34: Math.atan2(4, 3) + Math.PI / 2, r34: state.r34 }) },
+          { label: "최소 거리 P_min (PM=5-r)", action: () => applyModePreset(4, { theta34: Math.atan2(4, 3) + Math.PI, r34: state.r34 }) }
+        ],
+        steps: [
+          "고정 선분 AB(길이 4), 원 C 및 움직이는 두 벡터 PA, PB",
+          "중점 분해: PA = PM + MA, PB = PM + MB (단, MA = -MB, L = 2)",
+          "합차공식 전개: PA · PB = |PM|² - |MA|² = PM² - 2² (거리 문제로 환원!)"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('M')}을 원점으로 두고 ${tex('AM=BM=2')}이므로 ${tex('A(-2, 0), \\; B(2, 0), \\; P(x, y)')}로 둔다.<br/>
+② ${tex('\\overrightarrow{PA} = (-2 - x, -y), \\; \\overrightarrow{PB} = (2 - x, -y)')}<br/>
+③ 성분 내적을 전개하면:<br/>
+&nbsp;&nbsp;${tex('\\overrightarrow{PA} \\cdot \\overrightarrow{PB} = (-2 - x)(2 - x) + (-y)(-y) = x^2 - 4 + y^2 = (x^2 + y^2) - 4')}<br/>
+④ ${tex('x^2+y^2=PM^2')}이므로 ${tex('PA\\cdot PB=PM^2-4')}. 한편 ${tex('MC=5')}이고 원의 반지름 ${tex(`r=${state.r34.toFixed(1)}`)}은 5보다 작다. 따라서 ${tex(`5-r\\le PM\\le 5+r`)}.<br/>
+⑤ ${tex(`PA\\cdot PB`)}는 ${tex('PM')}이 커질수록 커지므로 최솟값 ${tex(`(5-r)^2-4=${((5 - state.r34) ** 2 - 4).toFixed(2).replace(/\.00$/, '')}`)}, 최댓값 ${tex(`(5+r)^2-4=${((5 + state.r34) ** 2 - 4).toFixed(2).replace(/\.00$/, '')}`)}.`,
+          warning: "⚠️ 시점 P가 움직이면 |PA|, |PB| 길이와 끼인각 θ가 동시에 다 변하기 때문에 일반 내적 공식 |PA||PB|cosθ 로는 절대 못 풉니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 시점 ${tex('P')}가 움직이고 종점 ${tex('A, B')}가 고정되어 있으면 무조건 <strong>[선분 AB의 중점 M]</strong>을 경유!<br/>
+② 합차공식에 의해 각도 ${tex('\\theta')}가 완전히 사라집니다:<br/>
+&nbsp;&nbsp;<strong class="text-amber-300">${tex('\\overrightarrow{PA} \\cdot \\overrightarrow{PB} = (\\overrightarrow{PM} + \\overrightarrow{MA}) \\cdot (\\overrightarrow{PM} - \\overrightarrow{MA}) = \\overline{PM}^2 - \\overline{AM}^2')}</strong><br/>
+③ ${tex('\\overline{AM}=2')}이고 ${tex(`r=${state.r34.toFixed(1)}<MC=5`)}이므로 ${tex(`5-r\\le PM\\le 5+r`)}. 따라서 ${tex('PM')}의 최솟값과 최댓값은 원의 중심을 ${tex('M')}에서 바라본 가까운 점과 먼 점에서 각각 얻는다.<br/>
+④ ${tex('PM^2-4')}는 ${tex('PM\\ge0')}에서 증가하므로 내적의 최솟값은 ${tex(`(5-r)^2-4=${((5 - state.r34) ** 2 - 4).toFixed(2).replace(/\.00$/, '')}`)}, 최댓값은 ${tex(`(5+r)^2-4=${((5 + state.r34) ** 2 - 4).toFixed(2).replace(/\.00$/, '')}`)}.`,
+          highlight: "💡 『PA · PB = PM² - (AB절반)²』 — 움직이는 두 벡터의 내적을 점 M과 점 P 사이의 거리(PM) 문제로 바꾸는 기적의 공식입니다!"
+        })
+      }
+    };
+
+  /* ===== 셸 상태(s)에서 원본 state 모양 만들기 ===== */
+  function use(s) {
+    state = {
+      mode: +s.sid, conceptSwitch: s.lens, activePartIdx: s.part == null ? null : s.part,
+      A1: { x: s.A1x, y: 0 }, B1: { x: s.B1x, y: s.B1y },
+      A2: { x: s.A2x, y: s.A2y }, B2: { x: s.B2x, y: s.B2y },
+      A3: { x: 3, y: 4 }, C3: { x: 2, y: 1 }, r34: s.r34, theta34: s.th34 * D2R,
+      A4: { x: -2, y: -2.5 }, B4: { x: 2, y: -2.5 }, C4: { x: 3, y: 1.5 },
+      steps: { 1: s.step >= 1, 2: s.step >= 2, 3: s.step >= 3 },
+      scale: BD ? BD.k : 44
+    };
+    return state;
+  }
+
+  /* ===== 원본의 그리기 환경 → 새 무대 엔진 연결 ===== */
+  // 원본 코드가 쓰는 ctx 직접 그리기: 색은 테마 의미색으로 바꾸고(칠판·종이 모두 대응), 종이 테마에서는 번쩍임(그림자)을 끕니다.
+  const ctx = new Proxy({}, {
+    get(_, k) { const c = BD.ctx, v = c[k]; return typeof v === 'function' ? v.bind(c) : v; },
+    set(_, k, v) {
+      const c = BD.ctx;
+      if ((k === 'fillStyle' || k === 'strokeStyle' || k === 'shadowColor') && typeof v === 'string') v = BD.color(v);
+      else if (k === 'shadowBlur' && !BD.glowOn) v = 0;
+      c[k] = v;
+      return true;
+    }
+  });
+  const toScreen = (x, y) => BD.toS(x, y);
+  // [2.0 수정] 글자가 무대 가장자리나 위쪽 칩·아래쪽 도구에 가려지지 않게 안으로 밀어 넣습니다.
+  const clampX = (x0, w) => clamp(x0, 4, Math.max(4, BD.W - (BD.insets.right || 0) - 4 - w));
+  const clampY = (y) => clamp(y, (BD.insets.top || 0) + 14, Math.max(30, BD.H - (BD.insets.bottom || 0) - 6));
+  // [2.0 수정] 먼저 놓인 글자와 겹치면 위·아래로 비켜 놓습니다(예: 동점 P가 최대점과 같은 자리일 때).
+  const LBOX = [];
+  function placeLabel(x0, y, w) {
+    const hit = (yy) => LBOX.some((q) => x0 < q.x1 && x0 + w > q.x0 && yy - 12 < q.y1 && yy + 4 > q.y0);
+    let yy = clampY(y);
+    for (const d of [0, -16, 16, -32, 32]) { const t = clampY(y + d); if (!hit(t)) { yy = t; break; } }
+    LBOX.push({ x0, x1: x0 + w, y0: yy - 12, y1: yy + 4 });
+    return yy;
+  }
+  function setTape(text) { TAPE = text; } // 원본 하단 상자 → 하단 띠
+
+  /* ===== 원본 그대로: 조각 하이라이트·관찰 렌즈 가시성 (원본 877–891행) ===== */
+    function isLayerVisible(stepNum, lensGroup) {
+      if (!state.steps[stepNum]) return false;
+      if (state.conceptSwitch === 'all') return true;
+      return state.conceptSwitch === lensGroup;
+    }
+
+    function applyPartStyle(partIdx, baseWidth = 2, baseBlur = 8) {
+      if (state.activePartIdx === null || partIdx === undefined) {
+        return { alpha: 1.0, width: baseWidth, blur: baseBlur };
+      }
+      if (state.activePartIdx === partIdx) {
+        return { alpha: 1.0, width: baseWidth + 2.0, blur: Math.max(20, baseBlur * 2.5) };
+      }
+      return { alpha: 0.25, width: baseWidth, blur: 0 };
+    }
+  /* ===== 원본 그대로: 분필 그리기 도우미 (원본 896–1012행, 글자 안으로 밀어 넣기만 추가) ===== */
+    function drawChalkLine(x1, y1, x2, y2, color = '#ffffff', width = 2, dashed = false, glow = false, partIdx = undefined) {
+      const p1 = toScreen(x1, y1);
+      const p2 = toScreen(x2, y2);
+      const st = applyPartStyle(partIdx, width, glow ? 10 : 0);
+
+      ctx.save();
+      ctx.globalAlpha = st.alpha;
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([6, 6]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = st.width;
+      ctx.lineCap = 'round';
+      if (st.blur > 0) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = st.blur;
+      }
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+    function drawVectorArrow(x1, y1, x2, y2, color = '#fbbf24', width = 3, label = '', dashed = false, labelOffset = { x: 0, y: -12 }, partIdx = undefined) {
+      const p1 = toScreen(x1, y1);
+      const p2 = toScreen(x2, y2);
+      const dx = p2.x - p1.x;
+      const dy = p2.y - p1.y;
+      const len = Math.hypot(dx, dy);
+      if (len < 2) return;
+
+      const st = applyPartStyle(partIdx, width, dashed ? 4 : 10);
+      const angle = Math.atan2(dy, dx);
+      const headLen = Math.min(14, Math.max(9, st.width * 4.0));
+
+      ctx.save();
+      ctx.globalAlpha = st.alpha;
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+      ctx.lineWidth = st.width;
+      ctx.lineCap = 'round';
+      ctx.shadowColor = color;
+      ctx.shadowBlur = st.blur;
+
+      if (dashed) ctx.setLineDash([6, 5]);
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x - Math.cos(angle) * (headLen * 0.5), p2.y - Math.sin(angle) * (headLen * 0.5));
+      ctx.stroke();
+
+      ctx.setLineDash([]);
+      ctx.beginPath();
+      ctx.moveTo(p2.x, p2.y);
+      ctx.lineTo(p2.x - headLen * Math.cos(angle - Math.PI / 6.5), p2.y - headLen * Math.sin(angle - Math.PI / 6.5));
+      ctx.lineTo(p2.x - headLen * 0.72 * Math.cos(angle), p2.y - headLen * 0.72 * Math.sin(angle));
+      ctx.lineTo(p2.x - headLen * Math.cos(angle + Math.PI / 6.5), p2.y - headLen * Math.sin(angle + Math.PI / 6.5));
+      ctx.closePath();
+      ctx.fill();
+
+      if (label) {
+        const mx = (p1.x + p2.x) / 2 + labelOffset.x;
+        const my = (p1.y + p2.y) / 2 + labelOffset.y;
+        ctx.shadowColor = 'rgba(0,0,0,0.95)';
+        ctx.shadowBlur = 6;
+        ctx.font = 'bold 13px Pretendard, monospace';
+        ctx.textAlign = 'center';
+        const lw = ctx.measureText(label).width, lx = clampX(mx - lw / 2, lw); ctx.fillText(label, lx + lw / 2, placeLabel(lx, my, lw)); // [2.0 수정] 글자를 무대 안으로·겹치지 않게
+      }
+      ctx.restore();
+    }
+    function drawChalkPoint(x, y, radius = 5.5, color = '#fbbf24', label = '', labelOffset = { x: 10, y: -10 }, partIdx = undefined) {
+      const pt = toScreen(x, y);
+      const st = applyPartStyle(partIdx, 2, 12);
+
+      ctx.save();
+      ctx.globalAlpha = st.alpha;
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, state.activePartIdx === partIdx && partIdx !== undefined ? radius + 2 : radius, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = st.blur;
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      if (label) {
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = 'rgba(0,0,0,0.95)';
+        ctx.font = 'bold 13px Pretendard, sans-serif';
+        ctx.fillStyle = color;
+        const lw = ctx.measureText(label).width, lx = clampX(pt.x + labelOffset.x, lw); ctx.fillText(label, lx, placeLabel(lx, pt.y + labelOffset.y, lw)); // [2.0 수정] 글자를 무대 안으로·겹치지 않게
+      }
+      ctx.restore();
+    }
+    function drawRightAngleMark(foot, dirAlongLine, dirToPoint, sizePx = 11, color = '#fbbf24', partIdx = undefined) {
+      const pFoot = toScreen(foot.x, foot.y);
+      const u = { x: dirAlongLine.x, y: -dirAlongLine.y };
+      const v = { x: dirToPoint.x, y: -dirToPoint.y };
+
+      const p1 = { x: pFoot.x + u.x * sizePx, y: pFoot.y + u.y * sizePx };
+      const p2 = { x: p1.x + v.x * sizePx, y: p1.y + v.y * sizePx };
+      const p3 = { x: pFoot.x + v.x * sizePx, y: pFoot.y + v.y * sizePx };
+      const st = applyPartStyle(partIdx, 1.6, 6);
+
+      ctx.save();
+      ctx.globalAlpha = st.alpha;
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = st.width;
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.lineTo(p3.x, p3.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+  /* ===== 원본 그대로: 장면 그리기 (원본 1123–1462행, 하단 상자만 setTape로) ===== */
+    function renderMode1(rect) {
+      const A = state.A1; // (x_A, 0)
+      const B = state.B1; // (x_H, y_B)
+      const H = { x: B.x, y: 0 };
+      const dotVal = A.x * B.x;
+
+      // Step 3 (partIdx = 2, lens = 'aux'): 수선 레일(x = x_H 직선) 및 하단 정사영 게이지 바
+      if (isLayerVisible(3, 'aux')) {
+        drawChalkLine(H.x, -9, H.x, 9, 'rgba(251, 191, 36, 0.45)', 2.0, true, false, 2);
+        const sRailTop = toScreen(H.x, 4.4);
+        const st3 = applyPartStyle(2, 1, 4);
+        ctx.save();
+        ctx.globalAlpha = st3.alpha;
+        ctx.font = 'bold 12px Pretendard';
+        ctx.fillStyle = '#fde047';
+        ctx.textAlign = 'center';
+        { const t = `등내적 수선 레일 (x = ${H.x.toFixed(1)})`, w = ctx.measureText(t).width; ctx.fillText(t, clampX(sRailTop.x - w / 2, w) + w / 2, clampY(sRailTop.y - 8)); } // [2.0 수정] 글자를 무대 안으로
+        ctx.restore();
+
+        setTape(`정사영 내적: OA · OB = 바닥(|OA|=${A.x.toFixed(1)}) × 그림자(x_H=${H.x >= 0 ? '+' : ''}${H.x.toFixed(2)}) = ${dotVal.toFixed(2)}`); // [2.0 수정] 하단 상자 → 하단 띠
+      }
+
+      // Step 2 (partIdx = 1, lens = 'proj'): 점 B에서 직선 OA에 내린 수선 BH 및 정사영 그림자 선분 OH
+      if (isLayerVisible(2, 'proj')) {
+        drawChalkLine(B.x, B.y, H.x, H.y, '#fbbf24', 2.4, true, false, 1);
+        // [BUG-03 수정] H.x <= 0일 때는 선분 OA가 있는 오른쪽(+1)을 향하도록 직각 기호 방향 교정
+        if (Math.abs(B.y) > 0.15) {
+          drawRightAngleMark(H, { x: H.x > 0 ? -1 : 1, y: 0 }, { x: 0, y: B.y >= 0 ? 1 : -1 }, 11, '#fbbf24', 1);
+        }
+
+        const shadowColor = H.x >= 0 ? '#fbbf24' : '#f43f5e';
+        drawChalkLine(0, -0.18, H.x, -0.18, shadowColor, 5.0, false, true, 1);
+        drawChalkPoint(H.x, 0, 5.5, shadowColor, `H(${H.x.toFixed(1)}, 0) [그림자]`, { x: -45, y: 24 }, 1);
+      }
+
+      // Step 1 (partIdx = 0, lens = 'vec'): 두 위치벡터 OA, OB 및 사잇각 호
+      if (isLayerVisible(1, 'vec')) {
+        const sO = toScreen(0, 0);
+        const lenBPx = Math.hypot(B.x, B.y) * state.scale;
+        // [BUG-03 수정] 각도 호의 반지름이 벡터 길이보다 커지지 않도록 동적 스케일링 및 방향 일관성 확보
+        const arcR = Math.min(34, Math.max(12, lenBPx * 0.45));
+        const angB = Math.atan2(-B.y, B.x);
+        const st1 = applyPartStyle(0, 2.2, 6);
+
+        if (lenBPx > 16) {
+          ctx.save();
+          ctx.globalAlpha = st1.alpha;
+          ctx.beginPath();
+          ctx.arc(sO.x, sO.y, arcR, 0, angB, B.y >= 0);
+          ctx.strokeStyle = H.x >= 0 ? '#34d399' : '#f43f5e';
+          ctx.lineWidth = st1.width;
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        drawVectorArrow(0, 0, A.x, A.y, '#38bdf8', 3.4, `바닥 OA (길이 ${A.x.toFixed(1)})`, false, { x: 10, y: 22 }, 0);
+        drawVectorArrow(0, 0, B.x, B.y, '#f472b6', 3.4, `OB (|OB|=${Math.hypot(B.x, B.y).toFixed(2)})`, false, { x: -45, y: -12 }, 0);
+        drawChalkPoint(0, 0, 5, '#f8fafc', '', { x: 0, y: 0 }, 0);
+        drawChalkPoint(A.x, A.y, 7.0, '#38bdf8', `A(${A.x.toFixed(1)}, 0) [드래그]`, { x: -30, y: -12 }, 0);
+        drawChalkPoint(B.x, B.y, 8.0, '#f472b6', `B(${B.x.toFixed(1)}, ${B.y.toFixed(1)})`, { x: 12, y: -10 }, 0);
+      }
+    }
+
+    // =========================================================================
+    // [모드 2 렌더링] 성분 내적 & 사잇각 cos θ 및 수직(내적=0) 경계선
+    // =========================================================================
+    function renderMode2(rect) {
+      const A = state.A2;
+      const B = state.B2;
+      // [BUG-01 수정] 0으로 나누기(NaN) 완벽 방어
+      const lenA = Math.max(1e-4, Math.hypot(A.x, A.y));
+      const lenB = Math.max(1e-4, Math.hypot(B.x, B.y));
+      const dot = A.x * B.x + A.y * B.y;
+      const cosT = Math.min(1, Math.max(-1, dot / (lenA * lenB)));
+      const degT = (Math.acos(cosT) * 180) / Math.PI;
+
+      // Step 3 (partIdx = 2, lens = 'aux'): 벡터 A에 수직(⊥)인 경계 직선 (내적 = 0)
+      if (isLayerVisible(3, 'aux')) {
+        const ux = -A.y / lenA;
+        const uy = A.x / lenA;
+        const span = 12;
+        drawChalkLine(-ux * span, -uy * span, ux * span, uy * span, 'rgba(251, 191, 36, 0.55)', 2.0, true, false, 2);
+
+        // [BUG-02 수정] 외적 부호를 판별하여 벡터 B가 있는 쪽의 수직 경계선과 직각 기호를 이루도록 동적 반전
+        const cross = A.x * B.y - A.y * B.x;
+        const signPerp = cross >= 0 ? 1 : -1;
+        drawRightAngleMark({ x: 0, y: 0 }, { x: A.x / lenA, y: A.y / lenA }, { x: ux * signPerp, y: uy * signPerp }, 12, '#fbbf24', 2);
+
+        const sPerp = toScreen(ux * 3.8, uy * 3.8);
+        const st3 = applyPartStyle(2, 1, 4);
+        ctx.save();
+        ctx.globalAlpha = st3.alpha;
+        ctx.font = 'bold 12px Pretendard';
+        ctx.fillStyle = '#fde047';
+        { const t = '수직 경계선 (a · b = 0, θ = 90°)', w = ctx.measureText(t).width; ctx.fillText(t, clampX(sPerp.x - 80, w), clampY(sPerp.y - 10)); } // [2.0 수정] 글자를 무대 안으로
+        ctx.restore();
+      }
+
+      // Step 2 (partIdx = 1, lens = 'proj'): 성분 보조선 및 하단 세로 분수 cos θ 공식 판서
+      if (isLayerVisible(2, 'proj')) {
+        drawChalkLine(A.x, A.y, A.x, 0, 'rgba(56, 189, 248, 0.35)', 1.5, true, false, 1);
+        drawChalkLine(B.x, B.y, B.x, 0, 'rgba(244, 114, 182, 0.35)', 1.5, true, false, 1);
+
+        setTape(`a·b = ${dot.toFixed(1)}  |  cos θ = ${dot.toFixed(1)} / ${(lenA * lenB).toFixed(2)} = ${cosT.toFixed(3)} (θ = ${degT.toFixed(1)}°)`); // [2.0 수정] 하단 상자·세로 분수 → 하단 띠
+      }
+
+      // Step 1 (partIdx = 0, lens = 'vec'): 두 벡터 OA, OB 및 끼인각 호
+      if (isLayerVisible(1, 'vec')) {
+        const sO = toScreen(0, 0);
+        const angA = Math.atan2(-A.y, A.x);
+        const angB = Math.atan2(-B.y, B.x);
+        const arcR = Math.min(34, Math.max(14, Math.min(lenA, lenB) * state.scale * 0.45));
+        const st1 = applyPartStyle(0, 2.4, 6);
+
+        ctx.save();
+        ctx.globalAlpha = st1.alpha;
+        ctx.beginPath();
+        ctx.arc(sO.x, sO.y, arcR, angA, angB, isCounterClockwise(angA, angB));
+        ctx.strokeStyle = dot >= 0 ? '#34d399' : '#f43f5e';
+        ctx.lineWidth = st1.width;
+        ctx.stroke();
+        ctx.restore();
+
+        drawVectorArrow(0, 0, A.x, A.y, '#38bdf8', 3.4, `a(${A.x.toFixed(1)}, ${A.y.toFixed(1)})`, false, { x: 25, y: 16 }, 0);
+        drawVectorArrow(0, 0, B.x, B.y, '#f472b6', 3.4, `b(${B.x.toFixed(1)}, ${B.y.toFixed(1)})`, false, { x: -35, y: -12 }, 0);
+        drawChalkPoint(0, 0, 5, '#f8fafc', '', { x: 0, y: 0 }, 0);
+        drawChalkPoint(A.x, A.y, 7.5, '#38bdf8', '', { x: 0, y: 0 }, 0);
+        drawChalkPoint(B.x, B.y, 7.5, '#f472b6', '', { x: 0, y: 0 }, 0);
+      }
+    }
+
+    // =========================================================================
+    // [모드 3 렌더링] 기출 1 - 원 위의 동점 P 내적 최대·최소 (원의 중심 C 분해)
+    // =========================================================================
+    function renderMode3(rect) {
+      const A = state.A3; // (3, 4), 길이 5
+      const C = state.C3; // (2, 1)
+      const r = state.r34;
+      const theta = state.theta34;
+      const P = { x: C.x + r * Math.cos(theta), y: C.y + r * Math.sin(theta) };
+
+      const lenA = Math.hypot(A.x, A.y);
+      const angOA = Math.atan2(A.y, A.x);
+      const Pmax = { x: C.x + r * Math.cos(angOA), y: C.y + r * Math.sin(angOA) };
+      const Pmin = { x: C.x - r * Math.cos(angOA), y: C.y - r * Math.sin(angOA) };
+
+      const dotFixed = A.x * C.x + A.y * C.y;
+      const dotRot = A.x * (P.x - C.x) + A.y * (P.y - C.y);
+      const dotTotal = dotFixed + dotRot;
+
+      // Step 1 (partIdx = 0, lens = 'vec'): 고정 벡터 OA 및 원 C 작도
+      if (isLayerVisible(1, 'vec')) {
+        const sC = toScreen(C.x, C.y);
+        const st1 = applyPartStyle(0, 2.2, 8);
+        ctx.save();
+        ctx.globalAlpha = st1.alpha;
+        ctx.beginPath();
+        ctx.arc(sC.x, sC.y, r * state.scale, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.06)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.75)';
+        ctx.lineWidth = st1.width;
+        ctx.stroke();
+        ctx.restore();
+
+        drawVectorArrow(0, 0, A.x, A.y, '#38bdf8', 3.4, `고정 OA(3, 4) [길이 5]`, false, { x: -45, y: -12 }, 0);
+        drawChalkPoint(0, 0, 5, '#f8fafc', '', { x: 0, y: 0 }, 0);
+        drawChalkPoint(A.x, A.y, 6.5, '#38bdf8', 'A(3, 4)', { x: 10, y: -8 }, 0);
+        drawChalkPoint(C.x, C.y, 5.5, '#34d399', 'C(2, 1)', { x: 8, y: 20 }, 0);
+      }
+
+      // Step 3 (partIdx = 2, lens = 'aux'): OA 방향과 평행한 중심 통과 기준선 & 최대/최소 점 표시
+      if (isLayerVisible(3, 'aux')) {
+        const ux = Math.cos(angOA);
+        const uy = Math.sin(angOA);
+        drawChalkLine(C.x - ux * (r + 1.2), C.y - uy * (r + 1.2), C.x + ux * (r + 1.2), C.y + uy * (r + 1.2), 'rgba(251, 191, 36, 0.5)', 1.8, true, false, 2);
+
+        drawChalkPoint(Pmax.x, Pmax.y, 5.5, '#34d399', `최대 P_max (${(dotFixed + lenA * r).toFixed(1)})`, { x: 10, y: -10 }, 2);
+        drawChalkPoint(Pmin.x, Pmin.y, 5.5, '#f43f5e', `최소 P_min (${(dotFixed - lenA * r).toFixed(1)})`, { x: -125, y: 20 }, 2);
+
+        setTape(`OA·OP = OA·OC(${dotFixed.toFixed(0)}) + OA·CP(${dotRot >= 0 ? '+' : ''}${dotRot.toFixed(2)}) = ${dotTotal.toFixed(2)} ∈ [${(dotFixed - lenA * r).toFixed(1)}, ${(dotFixed + lenA * r).toFixed(1)}]`); // [2.0 수정] 하단 상자 → 하단 띠
+      }
+
+      // Step 2 (partIdx = 1, lens = 'proj'): 중심 분해 벡터 OC + CP = OP
+      if (isLayerVisible(2, 'proj')) {
+        drawVectorArrow(0, 0, C.x, C.y, '#34d399', 2.8, 'OC(고정)', false, { x: 18, y: 16 }, 1);
+        drawVectorArrow(C.x, C.y, P.x, P.y, '#f472b6', 3.2, 'CP(회전)', false, { x: 22, y: -8 }, 1);
+        drawVectorArrow(0, 0, P.x, P.y, 'rgba(251, 191, 36, 0.65)', 2.2, '', true, { x: 0, y: 0 }, 1);
+      }
+
+      // 동점 P는 Step 1 또는 Step 2가 켜져 있을 때 항상 렌더링
+      if (state.steps[1] || state.steps[2]) {
+        drawChalkPoint(P.x, P.y, 8, '#fbbf24', `동점 P`, { x: 12, y: -12 }, 1);
+      }
+    }
+
+    // =========================================================================
+    // [모드 4 렌더링] 기출 2 - 중점 제곱차 공식 (PA · PB = PM² - AM²)
+    // =========================================================================
+    function renderMode4(rect) {
+      const A = state.A4; // (-2, -2.5)
+      const B = state.B4; // (2, -2.5)
+      const M = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 }; // (0, -2.5)
+      const L = Math.hypot(A.x - M.x, A.y - M.y); // 절반 길이 = 2.0
+
+      const C = state.C4; // (3, 1.5), MC 거리 = 5.0
+      const r = state.r34;
+      const theta = state.theta34;
+      const P = { x: C.x + r * Math.cos(theta), y: C.y + r * Math.sin(theta) };
+
+      const distPM = Math.hypot(P.x - M.x, P.y - M.y);
+      const dotVal = distPM * distPM - L * L;
+
+      // [BUG-08 수정] 원 C 작도를 Step 1 내부로 이동하여 보조선 토글과 완벽히 동기화
+      // Step 1 (partIdx = 0, lens = 'vec'): 원 C, 고정 선분 AB 및 움직이는 두 벡터 PA, PB
+      if (isLayerVisible(1, 'vec')) {
+        const sC = toScreen(C.x, C.y);
+        const st1 = applyPartStyle(0, 2.2, 8);
+        ctx.save();
+        ctx.globalAlpha = st1.alpha;
+        ctx.beginPath();
+        ctx.arc(sC.x, sC.y, r * state.scale, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(192, 132, 252, 0.07)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(192, 132, 252, 0.75)';
+        ctx.lineWidth = st1.width;
+        ctx.stroke();
+        ctx.restore();
+
+        drawChalkLine(A.x, A.y, B.x, B.y, '#e2e8f0', 3.0, false, false, 0);
+        drawVectorArrow(P.x, P.y, A.x, A.y, '#38bdf8', 2.6, 'PA', false, { x: -22, y: -6 }, 0);
+        drawVectorArrow(P.x, P.y, B.x, B.y, '#f472b6', 2.6, 'PB', false, { x: 22, y: -6 }, 0);
+        drawChalkPoint(A.x, A.y, 6, '#38bdf8', 'A(-2, -2.5)', { x: -32, y: 22 }, 0);
+        drawChalkPoint(B.x, B.y, 6, '#f472b6', 'B(2, -2.5)', { x: -10, y: 22 }, 0);
+        drawChalkPoint(C.x, C.y, 5, '#c084fc', '중심 C(MC=5)', { x: 10, y: 18 }, 0);
+      }
+
+      // Step 2 (partIdx = 1, lens = 'proj'): 선분 AB의 중점 M 및 핵심 연결선 PM, MA, MB
+      if (isLayerVisible(2, 'proj')) {
+        drawVectorArrow(P.x, P.y, M.x, M.y, '#fbbf24', 3.6, `PM (길이 = ${distPM.toFixed(2)})`, false, { x: -58, y: 0 }, 1);
+        drawVectorArrow(M.x, M.y, A.x, A.y, '#34d399', 2.8, `MA (L=${L.toFixed(0)})`, false, { x: 0, y: -12 }, 1);
+        drawVectorArrow(M.x, M.y, B.x, B.y, '#34d399', 2.8, `MB (L=${L.toFixed(0)})`, false, { x: 0, y: -12 }, 1);
+        drawChalkPoint(M.x, M.y, 6.5, '#34d399', '중점 M', { x: -20, y: 24 }, 1);
+      }
+
+      // Step 3 (partIdx = 2, lens = 'aux'): M -> C 연장선 위의 최대/최소 점 및 하단 PM^2 - L^2 판서 배너
+      if (isLayerVisible(3, 'aux')) {
+        const angMC = Math.atan2(C.y - M.y, C.x - M.x);
+        const ux = Math.cos(angMC);
+        const uy = Math.sin(angMC);
+        drawChalkLine(M.x, M.y, C.x + ux * (r + 0.8), C.y + uy * (r + 0.8), 'rgba(251, 191, 36, 0.45)', 1.8, true, false, 2);
+
+        const Pmax = { x: C.x + r * ux, y: C.y + r * uy };
+        const Pmin = { x: C.x - r * ux, y: C.y - r * uy };
+        drawChalkPoint(Pmax.x, Pmax.y, 5.5, '#34d399', `최대 P (PM=${(5 + r).toFixed(1)})`, { x: 10, y: -8 }, 2);
+        drawChalkPoint(Pmin.x, Pmin.y, 5.5, '#f43f5e', `최소 P (PM=${(5 - r).toFixed(1)})`, { x: 12, y: 16 }, 2);
+
+        setTape(`중점 제곱차: PA · PB = PM²(${distPM.toFixed(2)}²) - AM²(${L.toFixed(0)}²) = ${dotVal.toFixed(2)}`); // [2.0 수정] 하단 상자 → 하단 띠
+      }
+
+      if (state.steps[1] || state.steps[2]) {
+        drawChalkPoint(P.x, P.y, 8, '#fbbf24', '동점 P', { x: 12, y: -12 }, 1);
+      }
+    }
+  /* ===== 원본 그대로: 보조 함수 (원본 1464–1469, 2051–2058행) ===== */
+    function isCounterClockwise(a1, a2) {
+      let diff = a2 - a1;
+      while (diff < -Math.PI) diff += Math.PI * 2;
+      while (diff > Math.PI) diff -= Math.PI * 2;
+      return diff < 0;
+    }
+
+    function clampNonZeroVec(x, y, minR = 0.25) {
+      const r = Math.hypot(x, y);
+      if (r < minR) {
+        const ang = r < 1e-5 ? 0 : Math.atan2(y, x);
+        return { x: minR * Math.cos(ang), y: minR * Math.sin(ang) };
+      }
+      return { x, y };
+    }
+  /* ===== 원본 그대로: 실시간 값 (원본 1514–1623행 — 화면에 쓰는 대신 값을 돌려줌) ===== */
+    function monitor() {
+      const out = { labels: [], vals: [], eq: '', sign: null };
+      // [BUG-07 수정] 모든 모드 전환 및 드래그 시 #statLabel1 ~ #statLabel4를 해당 모드 물리량으로 동기화
+      if (state.mode === 1) {
+        const A = state.A1;
+        const B = state.B1;
+        const lenB = Math.hypot(B.x, B.y);
+        const dot = A.x * B.x;
+        const cosT = lenB > 0.001 ? B.x / lenB : 0;
+        const degT = (Math.acos(Math.min(1, Math.max(-1, cosT))) * 180) / Math.PI;
+
+        out.eq = (`\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = |\\overrightarrow{OA}| \\times x_H = ${dot.toFixed(1)}`);
+        out.sign = signOf(1, dot);
+
+        out.labels[0] = '① 바닥 벡터 |OA| 및 성분';
+        out.labels[1] = '② 정사영 그림자 위치 x_H';
+        out.labels[2] = '③ 사잇각 θ 및 cos θ';
+        out.labels[3] = '④ 정사영 내적 OA · OB';
+
+        out.vals[0] = `|OA| = ${A.x.toFixed(2)} | (${A.x.toFixed(1)}, 0)`;
+        out.vals[1] = `x_H = ${B.x >= 0 ? '+' : ''}${B.x.toFixed(2)}`;
+        out.vals[2] = `θ = ${degT.toFixed(1)}° (cosθ=${cosT.toFixed(2)})`;
+        out.vals[3] = `OA · OB = ${dot.toFixed(2)} (높이 불변)`;
+
+
+      } else if (state.mode === 2) {
+        const A = state.A2;
+        const B = state.B2;
+        const lenA = Math.max(1e-4, Math.hypot(A.x, A.y));
+        const lenB = Math.max(1e-4, Math.hypot(B.x, B.y));
+        const dot = A.x * B.x + A.y * B.y;
+        const cosT = Math.min(1, Math.max(-1, dot / (lenA * lenB)));
+        const degT = (Math.acos(cosT) * 180) / Math.PI;
+        const degB = ((Math.atan2(B.y, B.x) * 180) / Math.PI + 360) % 360;
+
+        out.eq = (`\\overrightarrow{a} \\cdot \\overrightarrow{b} = x_1 x_2 + y_1 y_2 = ${dot.toFixed(1)}`);
+        out.sign = signOf(2, dot);
+
+        out.labels[0] = '① 벡터 a 성분 및 크기 |a|';
+        out.labels[1] = '② 벡터 b 성분 및 크기 |b|';
+        out.labels[2] = '③ 사잇각 θ 및 cos θ';
+        out.labels[3] = '④ 성분 내적 a · b = x₁x₂ + y₁y₂';
+
+        out.vals[0] = `a(${A.x.toFixed(1)}, ${A.y.toFixed(1)}) | |a|=${lenA.toFixed(2)}`;
+        out.vals[1] = `b(${B.x.toFixed(1)}, ${B.y.toFixed(1)}) | |b|=${lenB.toFixed(2)}`;
+        out.vals[2] = `θ = ${degT.toFixed(1)}° (cosθ=${cosT.toFixed(3)})`;
+        out.vals[3] = `a · b = ${dot.toFixed(2)}`;
+
+      } else if (state.mode === 3) {
+        const A = state.A3;
+        const C = state.C3;
+        const r = state.r34;
+        const P = { x: C.x + r * Math.cos(state.theta34), y: C.y + r * Math.sin(state.theta34) };
+        const dotFixed = A.x * C.x + A.y * C.y;
+        const dotRot = A.x * (P.x - C.x) + A.y * (P.y - C.y);
+        const dotTotal = dotFixed + dotRot;
+        const deg = ((state.theta34 * 180) / Math.PI + 360) % 360;
+
+        out.eq = (`\\overrightarrow{OA} \\cdot \\overrightarrow{OP} = \\overrightarrow{OA}\\cdot\\overrightarrow{OC} + \\overrightarrow{OA}\\cdot\\overrightarrow{CP} = ${dotTotal.toFixed(1)}`);
+        out.sign = signOf(3, dotTotal, dotRot);
+
+        out.labels[0] = '① 중심 고정 내적 OA · OC';
+        out.labels[1] = '② 동점 회전 내적 OA · CP';
+        out.labels[2] = '③ 내적 최댓값 M / 최솟값 m';
+        out.labels[3] = '④ 현재 전체 내적 OA · OP';
+
+        out.vals[0] = `OA·OC (고정) = ${dotFixed.toFixed(2)}`;
+        out.vals[1] = `OA·CP (회전) = ${dotRot >= 0 ? '+' : ''}${dotRot.toFixed(2)}`;
+        out.vals[2] = `최대 ${(dotFixed + 5 * r).toFixed(1)} / 최소 ${(dotFixed - 5 * r).toFixed(1)}`;
+        out.vals[3] = `현재 내적 = ${dotTotal.toFixed(2)}`;
+
+      } else {
+        const M = { x: 0, y: -2.5 };
+        const C = state.C4;
+        const r = state.r34;
+        const P = { x: C.x + r * Math.cos(state.theta34), y: C.y + r * Math.sin(state.theta34) };
+        const distPM = Math.hypot(P.x - M.x, P.y - M.y);
+        const dotVal = distPM * distPM - 4;
+        const deg = ((state.theta34 * 180) / Math.PI + 360) % 360;
+
+        out.eq = (`\\overrightarrow{PA} \\cdot \\overrightarrow{PB} = \\overline{PM}^2 - \\overline{AM}^2 = ${dotVal.toFixed(1)}`);
+        out.sign = signOf(4, dotVal);
+
+        out.labels[0] = '① 중점 거리 |PM|';
+        out.labels[1] = '② 중점 거리 제곱 PM²';
+        out.labels[2] = '③ 선분 절반 제곱 AM² (L²)';
+        out.labels[3] = '④ 중점 제곱차 PA · PB = PM²-AM²';
+
+        out.vals[0] = `중점 거리 |PM| = ${distPM.toFixed(2)}`;
+        out.vals[1] = `PM² = ${(distPM * distPM).toFixed(2)}`;
+        out.vals[2] = `AM² (고정) = 2² = 4.00`;
+        out.vals[3] = `PA · PB = ${dotVal.toFixed(2)}`;
+
+      }
+      return out;
+    }
+
+  /* ===== 원본 updateSignBadge: 예각·직각·둔각 판정 → 상태 배지 ===== */
+  function signOf(mode, val, extraVal = 0) {
+    const W = { tone: 'warn' }, G = { tone: 'ok' }, R = { tone: 'bad' };
+    if (mode === 1 || mode === 2) {
+      if (Math.abs(val) < 0.08) return { ...W, text: '수직 90° (내적 = 0)' };
+      return val > 0 ? { ...G, text: '예각 (내적 > 0)' } : { ...R, text: '둔각 (내적 < 0)' };
+    }
+    if (mode === 3) {
+      if (Math.abs(extraVal) < 0.15) return { ...W, text: `OA ⊥ CP (회전내적 = 0 | 전체 = ${val.toFixed(1)})` };
+      return extraVal > 0 ? { ...G, text: `OA·CP > 0 (동방향 보강 | 내적 = ${val.toFixed(1)})` } : { ...R, text: `OA·CP < 0 (역방향 상쇄 | 내적 = ${val.toFixed(1)})` };
+    }
+    if (Math.abs(val) < 0.1) return { ...W, text: 'PM = AM (∠APB = 90°, 내적 = 0)' };
+    return val > 0 ? { ...G, text: 'PM > AM (예각 ∠APB < 90°, 내적 > 0)' } : { ...R, text: 'PM < AM (둔각 ∠APB > 90°, 내적 < 0)' };
+  }
+
+  /* ===== 문제 조건 스냅 / 프리셋 (원본 examData의 snap·presets 값 그대로) ===== */
+  function snapFlat(m) {
+    const sn = examData[m].snap;
+    if (m === 1) return { A1x: sn.Ax, B1x: sn.Bx, B1y: sn.By };
+    if (m === 2) return { A2x: sn.Ax, A2y: sn.Ay, B2x: sn.Bx, B2y: sn.By };
+    return { th34: mod360(sn.theta34 * R2D), r34: sn.r34 };
+  }
+  // 원본 BUG-05 수정: 각도는 가장 짧은 경로로 돌아갑니다. (끝나면 셸 tick에서 0~360으로 되돌림)
+  function shortestTheta(s, targetRad) {
+    const cur = mod360(s.th34);
+    let d = mod360(targetRad * R2D - cur);
+    if (d > 180) d -= 360;
+    s.th34 = cur;
+    return cur + d;
+  }
+  function snapPatch(m, s) {
+    s.lens = 'all'; s.pi = 0;
+    const p = snapFlat(m);
+    if (m >= 3) p.th34 = shortestTheta(s, examData[m].snap.theta34);
+    return p;
+  }
+  // 원본 applyModePreset(m, spec): 프리셋 버튼이 부르는 함수 — 현재 값에서 목표값으로 부드럽게 이동
+  function applyModePreset(m, spec) {
+    const s = CUR.s, lab = CUR.lab;
+    s.playing = false;
+    let patch;
+    if (m === 1) patch = { A1x: spec.Ax !== undefined ? spec.Ax : s.A1x, B1x: spec.Bx !== undefined ? spec.Bx : s.B1x, B1y: spec.By !== undefined ? spec.By : s.B1y };
+    else if (m === 2) patch = {
+      A2x: spec.Ax !== undefined ? spec.Ax : s.A2x, A2y: spec.Ay !== undefined ? spec.Ay : s.A2y,
+      B2x: spec.Bx !== undefined ? spec.Bx : s.B2x, B2y: spec.By !== undefined ? spec.By : s.B2y
+    };
+    else patch = { th34: shortestTheta(s, spec.theta34 !== undefined ? spec.theta34 : state.theta34), r34: spec.r34 !== undefined ? spec.r34 : s.r34 };
+    lab.tween(patch, 520);
+  }
+  const LENS = [['all', '전체 보기'], ['vec', '기본 벡터·사잇각'], ['proj', '정사영·분해'], ['aux', '킬러 보조선·극값']];
+  const presetChips = (m) => examData[m].presets.map((p, i) => ({
+    group: '기출 프리셋', label: p.label,
+    apply: (s, lab) => { s.pi = i; CUR = { s, lab }; use(s); p.action(); },
+    on: (st) => st.pi === i
+  })).concat(LENS.map(([k, label]) => ({ group: '관찰 렌즈', label, apply: (s) => { s.lens = k; }, on: (st) => st.lens === k })));
+
+  /* ===== 열려 있는 풀이 문구를 값이 바뀔 때 다시 씁니다(원본 syncLiveExplanations) ===== */
+  let solKey = '';
+  function refreshSolutions() {
+    const lab = window.lab;
+    if (!lab || !lab.refs || !lab.refs.solution) return;
+    const sol = lab.scene.solution, dets = lab.refs.solution.querySelectorAll('details.apl-acc');
+    [sol.standard, sol.quick].forEach((src, i) => {
+      const d = dets[i];
+      if (d && d.open) lab._fillSolution(d.querySelector('.apl-acc-body'), src);
+    });
+  }
+
+  /* ===== 끌 수 있는 점(원본 handlePointerDown / handlePointerMove 규칙 그대로) ===== */
+  function drawHandles(b, s, m) {
+    if (m === 1) {
+      b.handle('B1', { x: s.B1x, y: s.B1y }, { color: 'rose', ariaLabel: '점 B', drag: (w) => {
+        let nx = clamp(w.x, -5, 6);
+        if (Math.abs(nx) < 0.12) nx = 0; // 수직(x_H=0) 마그네틱 스냅
+        s.B1x = nx; s.B1y = clamp(w.y, -5.5, 5.5);
+      } });
+      b.handle('A1', { x: s.A1x, y: 0 }, { color: 'sky', ariaLabel: '점 A (바닥 길이)', step: 0.5, drag: (w) => { s.A1x = Math.round(clamp(w.x, 2, 8) * 2) / 2; } });
+    } else if (m === 2) {
+      const setVec = (kx, ky) => (w) => { const c = clampNonZeroVec(clamp(w.x, -6, 6), clamp(w.y, -6, 6), 0.3); s[kx] = c.x; s[ky] = c.y; };
+      b.handle('B2', { x: s.B2x, y: s.B2y }, { color: 'rose', ariaLabel: '점 B', drag: setVec('B2x', 'B2y') });
+      b.handle('A2', { x: s.A2x, y: s.A2y }, { color: 'sky', ariaLabel: '점 A', drag: setVec('A2x', 'A2y') });
+    } else {
+      const C = m === 3 ? state.C3 : state.C4;
+      b.handle('P34', { x: C.x + s.r34 * Math.cos(s.th34 * D2R), y: C.y + s.r34 * Math.sin(s.th34 * D2R) }, { color: 'amber', ariaLabel: '동점 P', drag: (w) => {
+        let raw = Math.atan2(w.y - C.y, w.x - C.x);
+        if (raw < 0) raw += Math.PI * 2;
+        // 원본 BUG-14: 최대/최소 극값 지점(±3.8° 이내) 도달 시 자동 자석 스냅
+        const ref = Math.atan2(4, 3), minA = wrapAnglePositive(ref + Math.PI);
+        if (Math.abs(normalizeAngleDiff(raw, ref)) < 0.068) raw = ref;
+        else if (Math.abs(normalizeAngleDiff(raw, minA)) < 0.068) raw = minA;
+        s.th34 = deg(raw);
+      } });
+    }
+  }
+
+  /* ===== 장면 글: 탭 이름·탐구 질문 (새로 쓴 부분) ===== */
+  const TITLE = ['정사영 기하학 (바닥×그림자)', '성분 내적 & 사잇각·수직 판정', '기출1: 원 위 동점 내적 최대·최소', '기출2: 중점 제곱차 (PA·PB=PM²-L²)'];
+  const SHORT = ['정사영', '성분·사잇각', '원 위 동점', '중점 제곱차'];
+  const QUESTION = [
+    '점 B의 높이가 바뀌어도 OA·OB의 값이 변하지 않는 이유는 무엇일까?',
+    '성분만 알면 내적과 사잇각을 어떻게 구할까? 두 벡터가 수직일 때는 어떻게 될까?',
+    '원 위의 점 P가 움직일 때 OA·OP는 언제 최대이고 언제 최소일까?',
+    '시점 P가 움직이는 PA·PB를 어떻게 거리 PM의 문제로 바꿀 수 있을까?'
+  ];
+
+  function sceneOf(m) {
+    const d = examData[m];
+    return {
+      id: 'm' + m, title: TITLE[m - 1], short: SHORT[m - 1],
+      question: QUESTION[m - 1], guide: d.hint,
+      controls: m === 1 ? ['B1y', 'B1x'] : m === 2 ? ['ang2'] : ['th34', 'r34'],
+      presets: () => presetChips(m),
+      actions: () => [{
+        id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '자동 회전'), on: (s) => s.playing,
+        run: (s) => { s.playing = !s.playing; }
+      }],
+      steps: d.steps,
+      enter: (s) => { s.sid = String(m); s.lens = 'all'; s.pi = 0; s.animDir = 1; Object.assign(s, snapFlat(m)); },
+      focus: m === 1 ? { x: [-2, 8.6], y: [-2.6, 6.2] } : m === 2 ? { x: [-3, 6.6], y: [-3, 5.6] } : m === 3 ? { x: [-2.6, 6.4], y: [-3.2, 5.8] } : { x: [-4.6, 7], y: [-5.2, 5.4] },
+      tick: (s, dt, lab) => {
+        if (!lab._tween && (s.th34 < 0 || s.th34 >= 360)) s.th34 = mod360(s.th34);
+        if (!s.playing) return false;
+        const f = dt * 60;
+        if (m === 1) {
+          s.B1y += 0.06 * s.animDir * f;
+          if (s.B1y > 5.0) s.animDir = -1;
+          if (s.B1y < -5.0) s.animDir = 1;
+        } else if (m === 2) {
+          const ang = Math.atan2(s.B2y, s.B2x) + 0.015 * f;
+          const len = Math.max(0.5, Math.hypot(s.B2x, s.B2y) || Math.sqrt(10)); // 원본 BUG-01: 원점 고착 방지
+          s.B2x = len * Math.cos(ang); s.B2y = len * Math.sin(ang);
+        } else s.th34 = mod360(s.th34 + 0.018 * f * R2D);
+        return true;
+      },
+      view: (s) => {
+        s.sid = String(m);
+        use(s);
+        if (m === 2) s.ang2 = deg(Math.atan2(s.B2y, s.B2x));
+        if (s.part != null && s.step < s.part + 1) s.step = s.part + 1; // 원본: 조각을 고르면 그 단계가 자동으로 켜짐
+        const o = monitor();
+        const key = JSON.stringify([m, s.A1x, s.B1x, s.B1y, s.r34]);
+        if (key !== solKey) { solKey = key; Promise.resolve().then(refreshSolutions); }
+        return {
+          guide: d.hint,
+          chips: [{ k: '내적 공식', tex: o.eq, color: 'amber' }],
+          status: o.sign,
+          readouts: o.labels.map((label, i) => ({ label: label.replace(/^[①②③④]\s*/, ''), value: o.vals[i], color: ['sky', 'amber', 'rose', 'green'][i], wide: String(o.vals[i]).length > 15 })),
+          parts: d.steps.map((name, i) => ({ id: i, name, color: ['sky', 'amber', 'rose'][i] })),
+          formula: '<div style="text-align:center">' + APLab.tex(o.eq, true) + '</div>'
+        };
+      },
+      draw: (b, s, v) => {
+        BD = b; s.sid = String(m); use(s);
+        TAPE = null; LBOX.length = 0;
+        if (s.grid) b.grid();
+        b.axes();
+        [null, renderMode1, renderMode2, renderMode3, renderMode4][m]({ width: b.W, height: b.H });
+        drawHandles(b, s, m);
+        v.tape = TAPE ? { title: TAPE } : null;
+      },
+      problem: {
+        tag: d.tag, time: d.targetTime,
+        text: (s) => { s.sid = String(m); use(s); return d.question(); },
+        answer: (s) => { s.sid = String(m); use(s); return d.answerBadge(); },
+        snap: (s) => snapPatch(m, s)
+      },
+      solution: {
+        standardTitle: '교과서식 정석 풀이 (성분·제곱 전개)', standardTag: '3분 소요',
+        quickTitle: '10초 컷 실전 기하 비기', quickTag: '10초 컷',
+        standard: (s) => { s.sid = String(m); use(s); return d.textbook(); },
+        quick: (s) => { s.sid = String(m); use(s); return d.shortcut(); }
+      }
+    };
+  }
+
+  APLab.createLab({
+    id: 'geom-vector-dot',
+    title: '벡터의 성분 · 내적',
+    courseName: '기하',
+    unit: '벡터 · 성분과 내적',
+    courseColor: 'var(--m-rose)',
+    home: '../index.html#geom',
+    legacy: '../../labs/기하와벡터/벡터의 성분·내적.html',
+    board: { kind: 'cartesian', focus: { x: [-2, 8.6], y: [-2.6, 6.2] }, minZoom: 0.3, maxZoom: 8 },
+    params: {
+      B1y: { value: 4, min: -5.5, max: 5.5, step: 0.1, color: 'rose', label: '수선 레일 이동 y_B (바꿔도 내적은 불변!)', format: (v, s) => `y_B = ${v.toFixed(2)} (내적 = ${(s.A1x * s.B1x).toFixed(1)} 고정)` },
+      B1x: { value: 3, min: -5, max: 6, step: 0.1, color: 'amber', label: '정사영 수선의 발 x_H (음수면 둔각 내적 < 0)', format: (v) => `x_H = ${v >= 0 ? '+' : ''}${v.toFixed(2)}` },
+      A1x: { value: 6, min: 2, max: 8, step: 0.5, color: 'sky', label: '바닥 길이 |OA|', format: (v) => v.toFixed(1) },
+      ang2: {
+        value: 71.6, min: 0, max: 360, step: 0.5, color: 'rose', label: '벡터 b 회전 각도 θ_B (드래그하여 90° 수직 맞추기)',
+        format: (v, s) => {
+          const lenA = Math.max(1e-4, Math.hypot(s.A2x, s.A2y)), lenB = Math.max(1e-4, Math.hypot(s.B2x, s.B2y));
+          const t = (Math.acos(clamp((s.A2x * s.B2x + s.A2y * s.B2y) / (lenA * lenB), -1, 1)) * 180) / Math.PI;
+          return `${v.toFixed(1)}° (사잇각 θ = ${t.toFixed(1)}°)`;
+        },
+        onInput: (s) => { const len = Math.max(0.5, Math.hypot(s.B2x, s.B2y) || Math.sqrt(10)); s.B2x = len * Math.cos(s.ang2 * D2R); s.B2y = len * Math.sin(s.ang2 * D2R); }
+      },
+      A2x: { value: 4, min: -6, max: 6, step: 0.1, color: 'sky', label: 'a의 x성분', format: (v) => v.toFixed(1) },
+      A2y: { value: 2, min: -6, max: 6, step: 0.1, color: 'sky', label: 'a의 y성분', format: (v) => v.toFixed(1) },
+      B2x: { value: 1, min: -6, max: 6, step: 0.1, color: 'rose', label: 'b의 x성분', format: (v) => v.toFixed(1) },
+      B2y: { value: 3, min: -6, max: 6, step: 0.1, color: 'rose', label: 'b의 y성분', format: (v) => v.toFixed(1) },
+      th34: { value: 53.13, min: 0, max: 360, step: 0.5, color: 'amber', label: '원 위 동점 회전각 θ (360° 스트레스 테스트)', format: (v) => `${mod360(v).toFixed(1)}°` },
+      r34: { value: 2, min: 1, max: 3.5, step: 0.1, color: 'sky', label: '원의 반지름 r', format: (v) => `r = ${v.toFixed(2)}` }
+    },
+    state: { sid: '1', lens: 'all', pi: 0, animDir: 1 },
+    persist: ['lens'],
+    scenes: [1, 2, 3, 4].map(sceneOf)
+  });
+});
+</script>
+</body>
+</html>
