@@ -131,7 +131,11 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=-ax-1과 직선 y=2x-3/2가 서로 평행하게 그려져 있고, 두 직선은 y축과 (0,-1), (0,-3/2)에서 만난다. 각 직선의 식은 그 직선의 오른쪽 위 끝에서 지시선으로 연결되어 있다.",
+    "solutionImageCaption": "두 직선 y=-ax-1과 y=2x-3/2이 서로 평행하면서 y절편이 (0,-1), (0,-3/2)로 달라 만나지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,

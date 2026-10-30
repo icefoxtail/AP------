@@ -567,9 +567,9 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q008_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC의 외심 O와 내심 I에서 ∠BIC=108°, ∠A=36°, ∠B=∠C=72°, ∠OBC=54°, ∠IBC=36°를 표시하고 구하는 ∠OBI는 호로만 강조한 그림이다.",
-    "solutionImageCaption": "외심 O와 내심 I가 BC의 수직이등분선 위에 있고 ∠OBC와 ∠IBC의 차가 ∠OBI이다.",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC의 외심 O와 내심 I에서 ∠BIC=108°, ∠A=36°, ∠C=72°를 표시한 그림 오른쪽에, 꼭짓점 B에 모인 반직선 BC, BI, BO, BA를 같은 방향 그대로 크게 다시 그려 ∠IBC=36°와 ∠OBC=54°를 호와 값으로 보이고 구하는 ∠OBI는 호로만 강조했다.",
+    "solutionImageCaption": "꼭짓점 B에서 BC, BI, BO, BA가 이루는 각을 옆에 크게 따로 그려 ∠IBC, ∠OBC와 구하는 ∠OBI의 호가 겹치지 않게 했다.",
     "solutionImageSize": "medium"
   },
   {

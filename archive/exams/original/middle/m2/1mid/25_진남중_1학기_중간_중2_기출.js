@@ -787,7 +787,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 -11≤x≤3 구간에만 그려진 오른쪽 아래로 내려가는 직선 y=ax+1/3이다. 왼쪽 끝점에는 최댓값 4가 점선으로 x=-11, y=4 눈금에 이어져 있고, 오른쪽 끝점에는 최솟값 b가 표시되어 있다.",
+    "solutionImageCaption": "a<0이므로 직선은 오른쪽 아래로 내려가고, -11≤x≤3에서 최댓값 4는 왼쪽 끝점(x=-11)에서, 최솟값 b는 오른쪽 끝점(x=3)에서 생긴다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

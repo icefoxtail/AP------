@@ -592,7 +592,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 점 P(0,1), A(3,9), B(7,5)와 선분 PA, PB, AB가 삼각형 모양으로 그려져 있고, 점 P를 지나는 직선 y=ax+1이 두 선분 PA, PB 사이를 지나 선분 AB와 만난다.",
+    "solutionImageCaption": "직선 y=ax+1은 a의 값에 관계없이 점 P(0,1)을 지나므로, 선분 AB와 만나려면 점 P에서 점 A로 가는 직선과 점 B로 가는 직선 사이에 놓여야 한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
