@@ -510,6 +510,10 @@
     editSavedPaperId: "",
     urlSources: [],
     urlRange: "",
+    // S9: repeatable `uid` URL parameter (per-item selection from the Meta search page) and the
+    // resolved route (accepted records + rejected UIDs). Null while the compose pool is unrestricted.
+    urlUids: [],
+    uidRoute: null,
     scopeNotice: "",
   };
   let finderFilterRenderTimer = null;
@@ -773,8 +777,11 @@
       buckets: state.buckets,
       rounds: state.rounds,
       includeExtended: state.includeExtended,
+      uidRoute: state.uidRoute,
     };
     try {
+      // The restored draft's own scopes are listed, not the UID route's fixed scope.
+      state.uidRoute = null;
       state.filters = restoredFilters;
       state.scopes = [];
       state.sources = data.sources;
@@ -844,6 +851,9 @@
       state.saveResultState = data.savedPaperIds?.length ? "SAVED" : data.saveError ? "FAILED" : "";
     }
     if (state.saveResultState === "SAVING") state.saveResultState = "RESULT_UNKNOWN";
+    const hadUidRoute = Boolean(state.uidRoute || state.urlUids.length);
+    state.uidRoute = null;
+    state.urlUids = [];
     state.filters = restoredFilters;
     state.scopes = restoredScopeKeys;
     state.scopeNotice = droppedScopeCount
@@ -885,6 +895,7 @@
     state.ackWarnings = false;
     state.view = "compose";
     state.inspector = "summary";
+    if (hadUidRoute) replaceUrlState();
     render();
     status(
       (data.indexVersion === state.catalog.indexVersion
@@ -947,6 +958,8 @@
   function applySavedPaperRevision(paper) {
     const validated = validateSavedPaperRevision(paper);
     const snapshot = validated.snapshot;
+    state.uidRoute = null;
+    state.urlUids = [];
     const title = String(snapshot.meta.title || paper.title || "저장 시험지 수정본");
     const header = snapshot.meta.printHeaderOptions || { title };
     state.draftId = crypto.randomUUID();
@@ -1056,6 +1069,15 @@
   let renderingScopes = false;
   let renderPoolCache = null;
   function scopeOptions() {
+    // S9: a UID route is one fixed scope over exactly the requested questions (no per-click scan).
+    if (state.uidRoute) {
+      const result = state.uidRoute.scopes;
+      if (renderingScopes) {
+        scopeRenderCache = result;
+        displayedScopes = result;
+      }
+      return result;
+    }
     const index = unifiedIndex();
     return index ? unifiedScopeOptions(index) : canonicalScopeOptions();
   }
@@ -1304,6 +1326,8 @@
   }
   function pool() {
     if (renderingScopes && renderPoolCache) return renderPoolCache;
+    // A failed UID route never falls back to the whole catalog.
+    if (state.uidRoute && !state.uidRoute.scopes.length) return [];
     const scopes = selectedScopeOptions();
     const recipeUids = activeAssessmentRecipeUids();
     const uids = scopes.length ? new Set(scopes.flatMap(scope => scope.scopeQuestionUids)) : null;
@@ -2243,6 +2267,7 @@
   }
 
   function renderScopes() {
+    if (state.uidRoute) return renderUidRoute();
     if (
       !unifiedIndex() &&
       C.isHighSemanticSubjectGrade?.(state.filters.grade) &&
@@ -2404,7 +2429,7 @@
       null,
     )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label></div>
       <div class="compose-difficulty"><strong id="compose-difficulty-label">난이도</strong>${bucketButtons(state.buckets)}<p class="muted">고르지 않으면 전체에서 출제합니다. 난이도를 고르면 해당 난이도가 확인된 문항만 선택합니다.</p></div>
-      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy" data-meta-facets><strong>개념·유형·풀이로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="metaL3" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.l3, state.filters.metaL3, "전체 개념")}</select></label><label>유형<select data-filter="metaPT" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.pt, state.filters.metaPT, "전체 유형")}</select></label><label>풀이<select data-filter="metaTPL" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.tpl, state.filters.metaTPL, "전체 풀이")}</select></label><label class="check"><input type="checkbox" data-filter="metaApprovedOnly" data-group="compose" ${state.filters.metaApprovedOnly ? "checked" : ""} ${facetDisabled}>승인된 분류만</label></div><p class="muted">${esc(facetNote)}</p>${legacyAdvanced ? `<div class="compose-detail-fields"><label>기존 개념 조건<select data-filter="L3" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>기존 유형 조건<select data-filter="L4" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.types, state.filters.L4, "전체 유형")}</select></label></div>` : ""}</div></details>
+      ${state.uidRoute ? "" : `<details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy" data-meta-facets><strong>개념·유형·풀이로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="metaL3" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.l3, state.filters.metaL3, "전체 개념")}</select></label><label>유형<select data-filter="metaPT" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.pt, state.filters.metaPT, "전체 유형")}</select></label><label>풀이<select data-filter="metaTPL" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.tpl, state.filters.metaTPL, "전체 풀이")}</select></label><label class="check"><input type="checkbox" data-filter="metaApprovedOnly" data-group="compose" ${state.filters.metaApprovedOnly ? "checked" : ""} ${facetDisabled}>승인된 분류만</label></div><p class="muted">${esc(facetNote)}</p>${legacyAdvanced ? `<div class="compose-detail-fields"><label>기존 개념 조건<select data-filter="L3" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>기존 유형 조건<select data-filter="L4" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.types, state.filters.L4, "전체 유형")}</select></label></div>` : ""}</div></details>`}
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ") || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
       <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 문항을 완결된 최근 연도부터(2025년, 2024년, 2023년 순) 선택하고, 올해 시험은 그다음, 연도를 알 수 없는 자료는 마지막에 선택합니다. 같은 연도 안에서는 문항을 섞습니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
@@ -2590,7 +2615,7 @@
   }
   function renderCompose() {
     return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">${state.derivationSource ? "원본 Saved Paper에서 복사한 새 Draft입니다. 원본은 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
-    <div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div><div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+    <div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div><div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
@@ -3904,6 +3929,8 @@
         url.searchParams.set("status", state.savedLibraryStatusFilter);
     } else if (state.view === "compose" && state.editSavedPaperId) {
       url.searchParams.set("edit_saved_paper", state.editSavedPaperId);
+    } else if (state.view === "compose" && state.uidRoute) {
+      for (const uid of state.uidRoute.requested) url.searchParams.append("uid", uid);
     } else if (state.view === "compose" && state.sources.length) {
       for (const source of state.sources) url.searchParams.append("source", source);
       if (state.distribution === "all") url.searchParams.set("range", "all");
@@ -3984,6 +4011,8 @@
       return;
     }
     if (state.selected.length) save();
+    const hadUidRoute = Boolean(state.uidRoute || state.urlUids.length);
+    clearUidRoute({ url: false });
     delete state.filters.L3;
     delete state.filters.L4;
     for (const key of META_FACET_FILTERS) state.filters[key] = "";
@@ -4027,6 +4056,7 @@
       view: "compose",
     });
     derivedBaseLoad = null;
+    if (hadUidRoute) replaceUrlState();
     render();
     scheduleSave();
   }
@@ -4044,8 +4074,10 @@
         if (b.dataset.navKey === "quick" && isQuickAssessmentView()) return;
         state.assignmentStatusLoadVersion++;
         rememberCurrentHistoryEntry();
-        if (b.dataset.view === "compose" && state.view !== "compose" && !state.selected.length)
+        if (b.dataset.view === "compose" && state.view !== "compose" && !state.selected.length) {
           state.sources = [];
+          clearUidRoute({ url: false });
+        }
         state.view = b.dataset.view;
         if (state.view === "saved") state.savedPaperId = "";
         urlState();
@@ -4158,6 +4190,7 @@
           "bucket-all",
           "source-toggle",
           "sources-clear",
+          "uid-route-clear",
           "targets-clear",
         ].includes(a)
       )
@@ -4346,6 +4379,10 @@
       } else if (a === "sources-clear") {
         state.sources = [];
         invalidate();
+        render();
+      } else if (a === "uid-route-clear") {
+        invalidate();
+        clearUidRoute();
         render();
       } else if (
         a === "scope-all" ||
@@ -4929,6 +4966,7 @@
     state.assignmentStatusLoadVersion++;
     const previousSelection = state.recentSelectedAssignmentId;
     readUrl();
+    syncUidRoute();
     if ($("modal")?.open && previousSelection !== state.recentSelectedAssignmentId)
       $("modal").close();
     render();
@@ -4978,6 +5016,7 @@
     state.editSavedPaperId = p.get("edit_saved_paper") || "";
     state.urlSources = [...new Set(p.getAll("source").map((value) => String(value || "").trim()).filter(Boolean))];
     state.urlRange = p.get("range") === "all" ? "all" : "";
+    state.urlUids = [...new Set(p.getAll("uid").map((value) => String(value || "").trim()).filter(Boolean))];
     state.find = {};
     // Finder / 출제 내역 filters are never read from a quick-assessment URL.
     const quickRoute = isQuickAssessmentView();
@@ -5000,6 +5039,137 @@
   function replaceFinderUrlState() {
     if (state.view !== "find") return;
     history.replaceState(history.state || {}, "", routeUrl());
+  }
+  // S9: compose restricted to exactly the questions named by repeated `uid` URL parameters
+  // (Meta search page -> "선택한 문항으로 문제지 만들기"). The restriction reuses the
+  // scopeQuestionUids machinery: one fixed scope whose UID list is the request. Unknown or
+  // technically unusable UIDs (identity / source reference / unit placement) and selections that
+  // cannot form one paper fail closed with a visible message; nothing is selected silently.
+  const UID_ROUTE_SCOPE_KEY = "uid-selection";
+  const UID_ROUTE_MAX = 400;
+  const UID_ROUTE_REASONS = Object.freeze({
+    UNKNOWN_UID: "현재 아카이브 목록에 없는 문항입니다.",
+    IDENTITY: "문항 식별 정보를 확인할 수 없습니다.",
+    SOURCE: "원본 파일 연결을 확인할 수 없습니다.",
+    NO_UNIT_PLACEMENT: "학년·단원 위치를 확인할 수 없습니다.",
+  });
+  function resolveUidRoute(requested) {
+    const index = unifiedIndex();
+    const route = { requested: [...requested], records: [], rejected: [], error: "", grade: "", scopes: [], entries: [] };
+    if (requested.length > UID_ROUTE_MAX) {
+      route.error = `한 번에 ${UID_ROUTE_MAX}문항까지만 선택할 수 있습니다. (요청 ${requested.length}문항)`;
+      return route;
+    }
+    for (const uid of requested) {
+      const record = state.byUid?.get(uid);
+      if (!record) { route.rejected.push({ uid, reason: "UNKNOWN_UID" }); continue; }
+      const check = workspaceEligibility(record);
+      if (!check.ok) {
+        route.rejected.push({ uid, reason: check.reasons?.includes("identity") ? "IDENTITY" : "SOURCE" });
+        continue;
+      }
+      const entry = index ? index.byUid.get(uid) : null;
+      if (index && !entry) { route.rejected.push({ uid, reason: "NO_UNIT_PLACEMENT" }); continue; }
+      route.records.push(record);
+      route.entries.push(entry);
+    }
+    if (route.rejected.length) {
+      route.error = `요청한 ${requested.length}문항 중 ${route.rejected.length}문항을 사용할 수 없어 문제지를 만들지 않았습니다.`;
+      route.records = [];
+      route.entries = [];
+      return route;
+    }
+    // One paper is one grade (the plan validator and the selection matcher both require it).
+    let grades = null;
+    route.records.forEach((record, i) => {
+      const views = route.entries[i]?.views ||
+        [record.effectiveBrowseGrade || record.sourceGrade || record.grade].filter(Boolean);
+      grades = grades ? grades.filter((grade) => views.includes(grade)) : [...views];
+    });
+    if (!grades?.length) {
+      route.error = "선택한 문항이 서로 다른 학년에 걸쳐 있어 한 문제지로 만들 수 없습니다. 학년별로 나누어 선택해 주세요.";
+      route.records = [];
+      route.entries = [];
+      return route;
+    }
+    const primary = route.entries[0]?.grade;
+    route.grade = grades.includes(primary) ? primary : grades[0];
+    const uids = route.records.map((record) => record.questionUid);
+    route.scopes = [{
+      key: UID_ROUTE_SCOPE_KEY,
+      L1: "선택한 문항",
+      L2: `선택한 문항 ${uids.length}개`,
+      label: `선택한 문항 ${uids.length}개`,
+      fullLabel: `선택한 문항 ${uids.length}개`,
+      basicScope: true,
+      unified: true,
+      unclassified: false,
+      paths: unique(route.records.map((record) => C.generalPathKey(record))),
+      scopeQuestionUids: uids,
+      facetQuestionUids: uids,
+      count: uids.length,
+      eligibleCount: uids.length,
+      supplemental: false,
+    }];
+    return route;
+  }
+  function applyUidRoute() {
+    if (state.view !== "compose" || !state.urlUids.length || !state.catalog?.records || state.editSavedPaperId)
+      return;
+    const route = resolveUidRoute(state.urlUids);
+    state.uidRoute = route;
+    state.sources = [];
+    state.urlSources = [];
+    state.urlRange = "";
+    state.buckets = [];
+    state.custom = {};
+    state.selected = [];
+    state.pins = [];
+    state.rows = [];
+    state.prepared = [];
+    state.undo = [];
+    state.ackWarnings = false;
+    // A failed route keeps the current filters, so clearing it returns to the normal unit list.
+    if (route.grade) state.filters = { grade: route.grade };
+    state.scopes = route.scopes.map((scope) => scope.key);
+    state.distribution = "all";
+    state.title = "선택한 문항 문제지";
+    state.header.title = state.title;
+    state.scopeNotice = "";
+  }
+  function clearUidRoute({ url = true } = {}) {
+    if (!state.uidRoute && !state.urlUids.length) return;
+    state.uidRoute = null;
+    state.urlUids = [];
+    state.scopes = [];
+    state.distribution = "equal";
+    if (url && state.view === "compose") replaceUrlState();
+  }
+  // Boot and popstate: make the route match the URL (apply, replace or drop it).
+  function syncUidRoute() {
+    const wanted = state.view === "compose" && !state.editSavedPaperId ? state.urlUids : [];
+    const current = state.uidRoute?.requested || [];
+    if (wanted.length === current.length && wanted.every((uid, i) => uid === current[i])) return;
+    if (!wanted.length) { clearUidRoute({ url: false }); return; }
+    if (state.receipts.length || !state.catalog?.records) return;
+    applyUidRoute();
+  }
+  function renderUidRoute() {
+    const route = state.uidRoute;
+    const back = '<a href="problem-bank-search.html">검색으로 돌아가기</a>';
+    const clear = button("uid-route-clear", "전체 범위에서 직접 고르기", 'class="small"');
+    if (route.error) {
+      const rows = route.rejected.slice(0, 10).map((item) =>
+        `<li><code>${esc(item.uid.length > 24 ? item.uid.slice(0, 24) + "…" : item.uid)}</code> · ${esc(UID_ROUTE_REASONS[item.reason] || item.reason)}</li>`).join("");
+      const more = route.rejected.length > 10 ? `<li>외 ${route.rejected.length - 10}문항</li>` : "";
+      return `<div class="resultbar"><h2>출제 범위</h2></div><div class="callout danger" role="alert" data-uid-route="rejected"><strong>선택한 문항으로 문제지를 만들 수 없습니다.</strong><p>${esc(route.error)}</p>${rows || more ? `<ul>${rows}${more}</ul>` : ""}<p>${back} · ${clear}</p></div>`;
+    }
+    const names = route.records.slice(0, 8).map((record, i) =>
+      `${esc([record.year, record.school].filter(Boolean).join(" "))} ${esc(record.sourceQuestionNo ?? record.sourceOrdinal)}번`).join(" · ");
+    const rest = route.records.length > 8 ? ` 외 ${route.records.length - 8}문항` : "";
+    const scope = route.scopes[0];
+    return `<div class="resultbar"><h2>출제 범위</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${back} · ${clear}</p></div>
+      <div class="scope-list"><div class="scope-group"><div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(scope.key)}" ${scopeIsSelected(scope) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(scope.label)}</label><small>${scope.count}문항</small></div></div></div>`;
   }
   function applySourceRoute() {
     if (state.view !== "compose" || !state.urlSources.length || !state.catalog?.records) return;
@@ -5082,8 +5252,10 @@
       );
       readUrl();
       applySourceRoute();
+      syncUidRoute();
+      if (state.uidRoute?.error) status(state.uidRoute.error, true);
       if (!(savedOnBoot && state.view === "saved")) render();
-      status(state.view === "saved"
+      if (!state.uidRoute?.error) status(state.view === "saved"
         ? "저장한 시험지를 불러왔습니다."
         : `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 자동출제 승인 ${state.catalog.health.automatic.toLocaleString()} · 문제지 만들기 범위에 포함 ${state.healthComposeScope.toLocaleString()}`);
       const previous = drafts();
@@ -5101,7 +5273,7 @@
         const sourceId = state.editSavedPaperId;
         status("원본 Saved Paper snapshot을 확인해 새 Draft를 준비하고 있습니다.");
         await openSavedPaperRevision(sourceId);
-      } else if (previous.length && state.view === "compose")
+      } else if (previous.length && state.view === "compose" && !state.uidRoute)
         showDialog(
           "이전 작업이 있습니다",
           `<p>${esc(previous[0].header?.title || previous[0].title)} · ${previous[0].selected?.length || 0}문항</p>${button("restore", "이전 작업 복원", 'data-draft="0" class="primary"')} ${button("close-dialog", "새로 시작")}`,

@@ -129,7 +129,7 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <script src="problem-bank-meta.js?v=20261029-s14-1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
-<script src="generated-mock-selection.js?v=20261010-mock-builder-2"></script>
+<script src="generated-mock-selection.js?v=20261030-s9-1"></script>
 </head>
 <body>
 <header><div class="header-inner"><a href="workspace.html">Archive 2.0</a><span>모의고사 만들기</span></div></header>
@@ -234,7 +234,8 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <script>
 "use strict";
 const INDEX="data/generated-lite-consumer/v1/index.json";
-// Hash-bound builder roster; general exam cards are discovered from the Consumer index.
+// Hash-bound builder roster (strategy metadata for the known exams). Further source exams are derived
+// from the Consumer index rows that are selectable (see deriveSourceExamRows) once the index is loaded.
 const SOURCE_EXAMS=Object.freeze({
  "4cfce909c023e5c4df4a759945c8cc3e0a63ec76":{school:"팔마고",year:2025,grade:"고1",subject:"공통수학2",semester:2,term:"중간",count:23,strategy:"purpose-variants"},
  "8266fa476906e9134b94f23e803bd3b2fb26ece4":{school:"복성고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"기말",count:23,strategy:"legacy"},
@@ -372,12 +373,25 @@ const SOURCE_FILTERS=Object.freeze([
  {id:"source-semester",key:"semester",label:value=>value+"학기"},
  {id:"source-term",key:"term",label:value=>value}
 ]);
-const SOURCE_EXAM_ROWS=Object.entries(SOURCE_EXAMS).map(([sha,exam])=>({...exam,sha}));
+const PURPOSE_VARIANT_UID=/(?:^|-)Q\d+-[ABC][1-3]$/;
+const KNOWN_SOURCE_EXAM_ROWS=Object.entries(SOURCE_EXAMS).map(([sha,exam])=>({...exam,sha}));
+let SOURCE_EXAM_ROWS=KNOWN_SOURCE_EXAM_ROWS.slice();
+// Source exams of the mock builder = the hash-bound roster (kept as is) + exams derived from the index
+// (GeneratedMockSelection.deriveSourceExams: selectable rows only, never an exam that still has a
+// consumerSelectable:false draft row).
+function deriveSourceExamRows(){
+ return mockSelection.deriveSourceExams({rows:selectableRows,allRows:rows,knownShas:Object.keys(SOURCE_EXAMS),identityOf:examIdentity});
+}
+function refreshSourceExamRows(){
+ const current=sourceExamChoice?.sha;
+ SOURCE_EXAM_ROWS=[...KNOWN_SOURCE_EXAM_ROWS,...deriveSourceExamRows()];
+ if(current)sourceExamChoice=SOURCE_EXAM_ROWS.find(exam=>exam.sha===current)||sourceExamChoice;
+}
 function examTitle(e){return e.year+" "+e.school+" "+e.grade+" "+e.semester+"학기 "+e.term;}
 function examRows(e){return e?.rows||[];}
 function belongsToSourceExam(row,exam=sourceExamChoice){return Boolean(row&&exam&&row.sourceExamBlobSha===exam.sha&&row.school===exam.school&&row.year===exam.year&&row.grade===exam.grade&&row.subject===exam.subject);}
 function purposeVariantRows(e=sourceExamChoice){
- return selectableRows.filter(row=>belongsToSourceExam(row,e)&&/(?:^|-)Q\d+-[ABC][1-3]$/.test(row.uid));
+ return selectableRows.filter(row=>belongsToSourceExam(row,e)&&PURPOSE_VARIANT_UID.test(row.uid));
 }
 function coveredQids(pool){return [...new Set(pool.map(row=>Number(row.sourceQid)).filter(Number.isInteger))].sort((a,b)=>a-b);}
 function qidsOutside(covered,count){const set=new Set(covered);return Array.from({length:count},(_,index)=>index+1).filter(qid=>!set.has(qid));}
@@ -841,6 +855,7 @@ status("시험지와 승인된 유사문항을 불러오고 있습니다.");
   searchableRows=selectableRows.map(row=>({row,searchText:generatedSearchText(row)}));
   const requestedUid=typeof location==='object'?new URLSearchParams(location.search).get('uid'):null;
   if(requestedUid&&selectableRows.some(row=>row.uid===requestedUid)){$("generated-search").value=requestedUid;$("manual-section").open=true;}
+  refreshSourceExamRows();
   indexReady=true;if(!sourceExamChoice)sourceExamChoice=SOURCE_EXAM_ROWS[0]||null;
   if(sourceExamChoice)setSourceControls(sourceExamChoice);
   renderSourceSelection();renderTeacherMockControls();
