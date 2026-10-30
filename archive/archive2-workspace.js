@@ -3877,14 +3877,16 @@
     "yearFrom", "yearTo", "axis", "query", "family", "material",
   ];
   const RECENT_URL_KEYS = ["from", "to", "grade", "subject", "query"];
+  const QUICK_URL_KEYS = { grade: "qgrade", subject: "qsubject" };
   function routeUrl() {
     const url = new URL("workspace.html", location.href);
     url.searchParams.set("view", state.view);
     if (state.view === "compose" && state.assessmentRecipe)
       url.searchParams.set("recipe", state.assessmentRecipe);
     if (isQuickAssessmentView()) {
-      if (quickState.grade) url.searchParams.set("grade", quickState.grade);
-      if (quickState.subject) url.searchParams.set("subject", quickState.subject);
+      // Quick-only names: `grade`/`subject` belong to the Finder and 출제 내역.
+      if (quickState.grade) url.searchParams.set(QUICK_URL_KEYS.grade, quickState.grade);
+      if (quickState.subject) url.searchParams.set(QUICK_URL_KEYS.subject, quickState.subject);
     }
     if (state.view === "find") {
       for (const key of FINDER_URL_KEYS)
@@ -4965,9 +4967,9 @@
       ? p.get("view")
       : "home";
     if (isQuickAssessmentView()) {
-      const grade = p.get("grade") || "";
+      const grade = p.get(QUICK_URL_KEYS.grade) || "";
       quickState.grade = Unified?.GRADES.includes(grade) ? grade : "";
-      quickState.subject = quickState.grade ? p.get("subject") || "" : "";
+      quickState.subject = quickState.grade ? p.get(QUICK_URL_KEYS.subject) || "" : "";
       quickState.bundle.clear();
     }
     state.savedPaperId = p.get("paper_id") || "";
@@ -4977,12 +4979,14 @@
     state.urlSources = [...new Set(p.getAll("source").map((value) => String(value || "").trim()).filter(Boolean))];
     state.urlRange = p.get("range") === "all" ? "all" : "";
     state.find = {};
+    // Finder / 출제 내역 filters are never read from a quick-assessment URL.
+    const quickRoute = isQuickAssessmentView();
     for (const k of FINDER_URL_KEYS)
-      if (p.has(k)) state.find[k] = p.get(k);
+      if (!quickRoute && p.has(k)) state.find[k] = p.get(k);
     const requestedPage = Number.parseInt(p.get("page") || "0", 10);
     state.page = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 0;
     state.recentFilters = Object.fromEntries(
-      RECENT_URL_KEYS.map((key) => [key, p.get(key) || ""]),
+      RECENT_URL_KEYS.map((key) => [key, quickRoute ? "" : p.get(key) || ""]),
     );
     state.recentClassId = p.get("class") || "";
     state.recentSelectedAssignmentId = p.get("assignment_id") || "";

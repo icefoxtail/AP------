@@ -539,7 +539,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   for (const file of ['archive2-core.js', 'unit-past-exams-core.js', 'archive2-unified-units.js', 'problem-bank-meta.js'])
     assert.match(workspace, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   // The workspace itself moved on with the quick assessments (S8).
-  assert.match(workspace, /archive2-workspace\.js\?v=20261030-s8-1/);
+  assert.match(workspace, /archive2-workspace\.js\?v=20261030-s8-2/);
   const unitPage = read('unit-past-exams.html');
   for (const file of ['archive2-core.js', 'unit-past-exams-core.js', 'unit-past-exams.js'])
     assert.match(unitPage, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));

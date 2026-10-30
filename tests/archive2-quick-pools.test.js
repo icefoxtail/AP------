@@ -314,7 +314,11 @@ test('screens: the grade choice picks a usable default subject; middle school ha
   const html = h.w.renderQuick();
   assert.equal(h.w.quickState.subject, 'MIDDLE');
   assert.doesNotMatch(html, /data-action="quick-subject"/);
-  assert.match(h.w.routeUrl().search, /grade=%EC%A4%911|grade=중1/);
+  const quickUrl = h.w.routeUrl();
+  assert.equal(quickUrl.searchParams.get('qgrade'), '중1');
+  assert.equal(quickUrl.searchParams.get('qsubject'), 'MIDDLE');
+  assert.equal(quickUrl.searchParams.has('grade'), false, 'grade/subject belong to the Finder and 출제 내역');
+  assert.equal(quickUrl.searchParams.has('subject'), false);
 });
 
 test('opening a unit selects the preset mix once per usable step and publishes 4 distinct questions', async () => {
@@ -380,4 +384,53 @@ test('workspace has no leftover per-curriculum quick course options', () => {
   const source = read('archive2-workspace.js');
   assert.doesNotMatch(source, /quickAssessmentUnits|renderFiveMinute|openFiveMinuteUnit|five-minute-course|five-minute-grade/);
   assert.doesNotMatch(source, /\$\{unit\.courseKey\}|curriculumKey\}`\)\.join|· \$\{unit\.curriculumKey\}/);
+});
+
+test('quick-assessment URL state stays out of the Finder and 출제 내역', async () => {
+  const data = await catalog();
+  const h = harness(data);
+  const at = search => { h.ctx.location = new URL('https://archive.test/archive/workspace.html' + search); };
+  // a reload of a quick screen restores the quick selection only
+  at('?view=five-minute&qgrade=고1&qsubject=COMMON_MATH_1');
+  h.w.readUrl();
+  assert.equal(h.w.state.view, 'five-minute');
+  assert.equal(h.w.quickState.grade, '고1');
+  assert.equal(h.w.quickState.subject, 'COMMON_MATH_1');
+  assert.ok(!h.w.state.find.grade, 'no Finder grade from a quick URL');
+  assert.ok(Object.values(h.w.state.recentFilters).every(value => value === ''));
+  // the route a click on 출제 내역 / 기출·자료 writes carries nothing from the quick screen
+  for (const view of ['recent', 'find']) {
+    h.w.state.view = view;
+    const params = h.w.routeUrl().searchParams;
+    for (const key of ['grade', 'subject', 'qgrade', 'qsubject'])
+      assert.equal(params.has(key), false, `${view} must not carry ${key}`);
+  }
+  // reading that route back leaves the filters empty
+  at('?view=recent');
+  h.w.readUrl();
+  assert.equal(h.w.state.recentFilters.grade, '');
+  assert.equal(h.w.state.recentFilters.subject, '');
+  // an older quick link that used grade/subject does not fill another view's filters
+  at('?view=five-minute&grade=고1&subject=COMMON_MATH_1');
+  h.w.readUrl();
+  assert.equal(h.w.quickState.grade, '');
+  assert.ok(!h.w.state.find.grade, 'no Finder grade from a quick URL');
+  assert.equal(h.w.state.recentFilters.subject, '');
+  // the Finder and 출제 내역 keep their own grade/subject parameters
+  at('?view=find&grade=고1');
+  h.w.readUrl();
+  assert.equal(h.w.state.find.grade, '고1');
+  assert.equal(h.w.routeUrl().searchParams.get('grade'), '고1');
+  at('?view=recent&grade=고1&subject=ALGEBRA');
+  h.w.readUrl();
+  assert.equal(h.w.state.recentFilters.grade, '고1');
+  assert.equal(h.w.state.recentFilters.subject, 'ALGEBRA');
+  assert.equal(h.w.routeUrl().searchParams.get('subject'), 'ALGEBRA');
+  // switching quick -> recent -> find keeps the filters clean
+  at('?view=unit-test&qgrade=고2&qsubject=ALGEBRA');
+  h.w.readUrl();
+  for (const view of ['recent', 'find']) {
+    h.w.state.view = view;
+    assert.equal(h.w.routeUrl().searchParams.has('grade'), false);
+  }
 });
