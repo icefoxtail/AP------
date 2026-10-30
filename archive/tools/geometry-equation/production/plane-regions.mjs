@@ -4,11 +4,31 @@
 // circle or highlighted arc), because the fill only colours what the picture bounds. The independent check of the FINAL SVG is the `regions`
 // section of plane-marks-observer-worker.py, which recomputes the boundary from the Cindy peer's points.
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={region:['id','fill','pattern','label','labelKind','factRole','shapes','holes'],shape:['polygon','sector','segment','loop'],sector:['center','from','to','side'],loop:['start','steps'],step:['to','arc'],arc:['center','side']};
+const KEYS={region:['id','fill','pattern','label','labelKind','labelName','unit','labelPlacement','labelAt','factRole','shapes','holes'],shape:['polygon','sector','segment','loop'],sector:['center','from','to','side'],loop:['start','steps'],step:['to','arc'],arc:['center','side']};
 const FILLS=['LIGHT','MEDIUM'];
 // A source that says 빗금친 (hatched) needs a real hatch pattern, not a second grey: PATTERNS adds diagonal strokes clipped to the region.
 const PATTERNS=['HATCH'];
 const LABEL_KINDS=['MATH','TEXT'];
+// labelPlacement (E32): AUTO (default) writes the label inside the region where it has the most room; LEADER writes it OUTSIDE the region on a leader that starts on
+// the region's outer boundary (a region cut into small cells by drawn lines, or too narrow to hold its value); AUTO_LEADER tries inside first and falls back to the leader.
+export const REGION_LABEL_PLACEMENTS=['AUTO','LEADER','AUTO_LEADER'];
+// labelName / unit (E32): the region's name and the unit of its value are written with it as one plain-text label, 부채꼴 AOB=40cm². The value is a short
+// expression (digits, letters, pi, + - * and brackets); a unit with a power is written cm^2.
+export const REGION_LABEL_UNITS=['cm','m','mm','kg','cm^2','m^2','mm^2','cm^3','m^3','mm^3'];
+const REGION_VALUE=/^[0-9A-Za-z+\-*().,\s\u03C0]{1,24}$/u;
+const SUPERSCRIPTS={2:'\u00B2',3:'\u00B3'};
+/** The value of a region label as printed text: pi -> π, - -> the minus sign, * -> ×; a slash (a fraction) is refused because the label is one text line. */
+export function regionValueText(value){
+  if(typeof value!=='string'||!REGION_VALUE.test(value)||!value.trim())return null;
+  return value.trim().replace(/pi/gu,'\u03C0').replace(/-/gu,'\u2212').replace(/\*/gu,'\u00D7').replace(/\s+/gu,' ');
+}
+export const regionUnitText=unit=>{const m=/^([a-z]+)(?:\^([23]))?$/u.exec(String(unit));return m?m[1]+(m[2]?SUPERSCRIPTS[m[2]]:''):null;};
+/** The whole text of a name/unit region label: name=value+unit (a space before the unit only when the value ends in a letter), e.g. △ABC=6cm², 부채꼴 AOB=40cm². */
+export function regionLabelText(row){
+  const value=regionValueText(row.label);if(value===null)return null;
+  const unit=row.unit===undefined?'':regionUnitText(row.unit);
+  return (row.labelName===undefined?'':row.labelName+'=')+value+(unit?(/[A-Za-z\u03C0]$/u.test(value)?' ':'')+unit:'');
+}
 const SIDES=['MINOR','MAJOR','CCW','CW','FULL'];
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
 const bad=code=>{throw Error(code);};
@@ -217,12 +237,40 @@ export function regionSpec(plan,model,points,usedIds){
     }
     if(row.label!==undefined){
       if(typeof row.label!=='string'||!row.label.trim()||row.label.length>40)bad('REGION_FIELD_INVALID:label:'+row.id);
-      const kind=row.labelKind??'MATH';
+      const named=row.labelName!==undefined||row.unit!==undefined;
+      const kind=row.labelKind??(named?'TEXT':'MATH');
       if(!LABEL_KINDS.includes(kind))bad('REGION_FIELD_INVALID:labelKind:'+row.id);
       const role=row.factRole??'GIVEN';if(!FACT_ROLES.includes(role))bad('REGION_FIELD_INVALID:factRole:'+row.id);
-      object.labelText=row.label;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role;
+      if(named){
+        // name=value+unit as one plain-text label in the weight of a math label (E32)
+        if(kind!=='TEXT')bad('REGION_LABEL_NAME_REQUIRES_TEXT:'+row.id);
+        if(row.labelName!==undefined&&(typeof row.labelName!=='string'||!row.labelName.trim()||row.labelName.length>20||/[\r\n\t\\$=]/u.test(row.labelName)))bad('REGION_LABEL_NAME_INVALID:'+row.id);
+        if(row.unit!==undefined&&!REGION_LABEL_UNITS.includes(row.unit))bad('MARK_UNIT_INVALID:regions:'+row.id);
+        const text=regionLabelText(row);
+        if(text===null||text.length>40)bad('REGION_LABEL_VALUE_UNSUPPORTED:'+row.id);
+        object.labelText=text;object.labelKind='TEXT';object.labelWeight='MATH';
+      }else{object.labelText=row.label;object.labelKind=kind;}
+      factRolesByLabel[row.id+'-label']=role;
+      if(row.labelPlacement!==undefined){
+        if(!REGION_LABEL_PLACEMENTS.includes(row.labelPlacement))bad('REGION_LABEL_PLACEMENT_INVALID:'+row.id);
+        if(row.labelPlacement!=='AUTO')object.labelPlacement=row.labelPlacement;
+      }
+      if(row.labelAt!==undefined){
+        // labelAt: the place the label stands (inside the region; for LEADER the place outside it), a source coordinate [x,y] or a displayed point
+        let place;
+        if(typeof row.labelAt==='string'){const p=points[row.labelAt];if(!p)bad('REGION_LABEL_AT_INVALID:'+row.id);place=p.approximation;}
+        else if(Array.isArray(row.labelAt)&&row.labelAt.length===2&&row.labelAt.every(v=>typeof v==='number'&&Number.isFinite(v)))place=[row.labelAt[0],row.labelAt[1]];
+        else bad('REGION_LABEL_AT_INVALID:'+row.id);
+        if(row.labelPlacement!=='LEADER'){
+          let inside=false;
+          for(const loop of all){const state=locate(place,loop.dense,eps);if(state===0)bad('REGION_LABEL_AT_OUTSIDE:'+row.id);if(state===1)inside=!inside;}
+          if(!inside)bad('REGION_LABEL_AT_OUTSIDE:'+row.id);
+        }
+        object.labelAt=[place[0],place[1]];
+      }
     }
     else if(row.labelKind!==undefined)bad('REGION_FIELD_INVALID:labelKind:'+row.id);
+    else if(row.labelName!==undefined||row.unit!==undefined||row.labelPlacement!==undefined||row.labelAt!==undefined)bad('REGION_LABEL_FIELDS_NEED_LABEL:'+row.id);
     objects.push(object);
   }
   return {objects,factRolesByLabel};

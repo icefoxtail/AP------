@@ -487,6 +487,96 @@ def angle_labels_first_order(label):
     wedge=label.get('wedgeSearch')
     return (label.get('priority',2),0 if wedge else 1,abs(wedge['delta']) if wedge else 0.0,label['id'])
 
+# ---- region labels on a leader (E32) ------------------------------------------------------------------------------------------------------------------
+# A region whose label does not fit inside it (or that a drawn line cuts into small cells) writes the label OUTSIDE, on a straight leader that starts on the region's outer
+# boundary and runs away from it. The label box stays out of this region and every other filled region (and off their boundaries), and the leader crosses no stroke and enters
+# no filled region.
+REGION_LEADER_CLEARANCE_PX=3.0
+REGION_LEADER_MIN_ALIGNMENT=0.3     # a compass box direction must point at least this much (cosine) along the anchor's outward normal
+REGION_LEADER_SAMPLE_STEP_PX=4.0
+
+def point_in_even_odd(point,polygons):
+    inside=False
+    for poly in polygons:
+        for (ax,ay),(bx,by) in zip(poly,poly[1:]+poly[:1]):
+            if (ay>point[1])!=(by>point[1]) and point[0]<(bx-ax)*(point[1]-ay)/(by-ay)+ax:inside=not inside
+    return inside
+
+def box_outside_regions(box,region_polygons):
+    """True when no part of the box lies in any of the regions (each an even-odd list of screen polygons) or within REGION_LEADER_CLEARANCE_PX of their boundaries."""
+    probes=[(box.x+box.width*i/4,box.y+box.height*j/2) for i in range(5) for j in range(3)]
+    padded=box.expand(REGION_LEADER_CLEARANCE_PX)
+    for polygons in region_polygons:
+        if any(point_in_even_odd(p,polygons) for p in probes):return False
+        if any(segment_hits_box(a,b,padded) for poly in polygons for a,b in zip(poly,poly[1:]+poly[:1])):return False
+    return True
+
+def leader_avoids_regions(start,end,region_polygons,skip=3.0):
+    """True when the leader enters none of the regions after its first `skip` px (it starts on the boundary of its own region)."""
+    length=math.dist(start,end)
+    if length<=1e-9:return False
+    steps=max(2,int(length//REGION_LEADER_SAMPLE_STEP_PX))
+    for k in range(steps+1):
+        d=length*k/steps
+        if d<skip:continue
+        point=(start[0]+(end[0]-start[0])*d/length,start[1]+(end[1]-start[1])*d/length)
+        if any(point_in_even_odd(point,polygons) for polygons in region_polygons):return False
+    return True
+
+def region_leader_placement(label,w,h,occupied,acceptable):
+    """(box, leader start, leader end, direction) for a region label standing outside its region on a leader from the region's boundary, or None."""
+    site=label['regionLeader'];own=site['polygons']
+    all_regions=[own]+[row['polygons'] for row in site.get('regions',[]) if row.get('id')!=label.get('target')]
+    anchors=list(site['anchors']);near=site.get('near')
+    if near is not None:anchors.sort(key=lambda row:math.dist(row['at'],near))
+    for row in anchors:
+        start=tuple(row['at']);normal=tuple(row['normal'])
+        incident={o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+                  and any(point_segment_distance(start,c,d)<=0.5 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+        incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=0.5}
+        support=abs(normal[0])*w/2+abs(normal[1])*h/2
+        for gap in site['gaps']:
+            reach=gap+support;center=(start[0]+normal[0]*reach,start[1]+normal[1]*reach)
+            boxes=[Box(center[0]-w/2,center[1]-h/2,w,h)]
+            for direction in DIRECTIONS:
+                dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
+                if (dx*normal[0]+dy*normal[1])/math.hypot(dx,dy)<REGION_LEADER_MIN_ALIGNMENT:continue
+                boxes.append(candidate(start,w,h,direction,gap))
+            for box in boxes:
+                if not acceptable(box,owner_check=False) or not box_outside_regions(box,all_regions):continue
+                end=visible_owner_leader(start,box,occupied,incident)
+                if end is None or not leader_avoids_regions(start,end,all_regions):continue
+                theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360
+                return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
+    return None
+
+def arc_leader_placement(label,w,h,occupied,acceptable):
+    """(box, leader start, leader end, direction) for an arc label on a leader from its own arc (E32): the outer side of the arc first (every anchor, the shortest leader first), the
+    inner side only when no outside place is free (a label inside a lens would take the room of the lens's own value); every box clear of the marks and the leader clear of every
+    stroke but the arc it starts on."""
+    site=label['arcLeader'];owner_ids=set(site['ownerIds'])
+    for sign in (1,-1):
+        for row in site['anchors']:
+            start=tuple(row['at']);normal=tuple(row['normal'])
+            incident=owner_ids|{o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+                                and any(point_segment_distance(start,c,d)<=0.5 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+            incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=0.5}
+            direction_vector=(normal[0]*sign,normal[1]*sign);support=abs(direction_vector[0])*w/2+abs(direction_vector[1])*h/2
+            for gap in site['gaps']:
+                reach=gap+support;center=(start[0]+direction_vector[0]*reach,start[1]+direction_vector[1]*reach)
+                boxes=[Box(center[0]-w/2,center[1]-h/2,w,h)]
+                for name in DIRECTIONS:
+                    dx=1 if 'E' in name else -1 if 'W' in name else 0;dy=1 if 'S' in name else -1 if 'N' in name else 0
+                    if (dx*direction_vector[0]+dy*direction_vector[1])/math.hypot(dx,dy)<REGION_LEADER_MIN_ALIGNMENT:continue
+                    boxes.append(candidate(start,w,h,name,gap))
+                for box in boxes:
+                    if not acceptable(box,owner_check=False):continue
+                    end=visible_owner_leader(start,box,occupied,incident)
+                    if end is None:continue
+                    theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360
+                    return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
+    return None
+
 def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False):
     """The placement pass, and - only when some angle label found no place in it - a second pass that places the angle labels narrowest angle first
     (a vertex with several nested angles); the second result replaces the first only when it leaves fewer labels unresolved, so a layout that
@@ -579,6 +669,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         # labelPlacement LEADER on an angle mark (E12b): no search inside the angle and no box beside the arc; only the outside leader from its own arc, with the whole box outside the wedge.
         force_leader=bool(label.get('wedgeSearch',{}).get('forceLeader'))
         if force_leader:default_gaps=()
+        if label.get('regionLeader',{}).get('only'):default_gaps=()
         if tick_callout is not None:
             offset=tick_callout['offsetUser'];center=[label['at'][0]+offset[0],label['at'][1]+offset[1]]
             box=Box(center[0]-w/2,center[1]-h/2,w,h)
@@ -687,6 +778,19 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         label['_selectedLeaderPath']=[list(start),list(end)]
                     if acceptable(box) and box_owned(label, box):
                         chosen=box;method='OWNER_BOUND_RELOCATION';break
+            if 'arcLeader' in label and chosen is None:
+                # labelPlacement LEADER on a circular arc (E32): on a leader from the arc, outside or inside its circle
+                default_gaps=()
+                found=arc_leader_placement(label,w,h,occupied,acceptable)
+                if found is not None:
+                    box,start,end,direction=found
+                    label={**label,'at':list(start)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction
+            if 'regionLeader' in label and chosen is None:
+                # labelPlacement LEADER / AUTO_LEADER on a filled region (E32): outside the region on a leader from its outer boundary
+                found=region_leader_placement(label,w,h,occupied,acceptable)
+                if found is not None:
+                    box,start,end,direction=found
+                    label={**label,'at':list(start)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction
             if chosen is None and leader_fallbacks and label.get('leaderRequiresClearPath'):
                 start=label['leaderFrom'];owner_ids=set(label.get('leaderOwnerIds',()))
                 max_length=label.get('leaderMaxLength',label.get('font',13.25)*6)

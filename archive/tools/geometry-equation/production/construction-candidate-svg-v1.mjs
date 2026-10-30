@@ -152,7 +152,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
       if(label.kind==='CONDITION_BOX')throw new Stop('UNSUPPORTED_MULTILINE_LABEL',{labelId:label.id});
       const numericTick=label.kind==='GRAPH_ANNOTATION'&&/^[-−\d.]+$/.test(label.text);
       const role=spec.displayFacts.factRolesByLabel?.[label.id]||plan.mathPlan?.nodes.find(node=>node.id===label.target)?.factRole||'DERIVED_INTERMEDIATE';
-      try{fragments[label.id]=typeset({id:label.id,owner:label.target||label.id,factRole:role,fontPx:typographyPolicy.baseFontPx,...(label.math||label.kind==='POINT_NAME'||numericTick?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text})},identity);}
+      try{fragments[label.id]=typeset({id:label.id,owner:label.target||label.id,factRole:role,fontPx:typographyPolicy.baseFontPx,...(label.math||label.kind==='POINT_NAME'||numericTick?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},identity);}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('FRAGMENT_TYPESET_ERROR',{labelId:label.id,code:error.message});}
     }
     lineage.fragmentSha256s=Object.fromEntries(Object.entries(fragments).map(([id,fragment])=>[id,fragment.fragmentSha256]));

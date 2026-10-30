@@ -15,6 +15,8 @@ RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MA
 FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide'}
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'}}
 
+FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset'}   # E32 additions to the component fields (kept apart from the long set above)
+
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
     if isinstance(a,(int,float)) and isinstance(b,(int,float)):
@@ -78,7 +80,12 @@ def validate(spec):
         if 'freeLabel' in obj and (obj['kind']!='EQUATION_LABEL' or obj['freeLabel'] is not True):raise ValueError('INVALID_FREE_LABEL')
         if 'anchor' in obj and ('freeLabel' not in obj or obj['anchor'] not in {'CENTER','N','NE','E','SE','S','SW','W','NW'}):raise ValueError('INVALID_FREE_LABEL_ANCHOR')
         # labelPlacement LEADER puts an angle mark's label outside its angle on a leader from its own arc; nothing else carries it.
-        if 'labelPlacement' in obj and (obj['kind']!='ANGLE_MARK' or obj['labelPlacement']!='LEADER'):raise ValueError('INVALID_ANGLE_LABEL_PLACEMENT')
+        if 'labelPlacement' in obj and not ((obj['kind'] in {'ANGLE_MARK','CIRCULAR_ARC'} and obj['labelPlacement']=='LEADER') or (obj['kind']=='FILL_REGION' and obj['labelPlacement'] in {'LEADER','AUTO_LEADER'})):raise ValueError('INVALID_ANGLE_LABEL_PLACEMENT')
+        if 'paths' in obj and obj['kind']!='EQUAL_MARK':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
+        if 'pathMark' in obj and (obj['kind']!='EQUAL_MARK' or obj['pathMark'] not in {'TICK','BRACKET'} or 'paths' not in obj):raise ValueError('EQUAL_MARK_PATH_MARK_INVALID:'+str(obj.get('id')))
+        # labelWeight MATH (E32) draws a plain-text label in the weight of a math label; labelAt places a region's label at a source coordinate.
+        if 'labelWeight' in obj and (obj['labelWeight']!='MATH' or obj.get('labelKind')!='TEXT' or obj['kind'] not in {'FILL_REGION','EQUATION_LABEL'}):raise ValueError('INVALID_LABEL_WEIGHT:'+str(obj.get('id')))
+        if obj['kind']=='FILL_REGION' and 'labelAt' in obj and (not isinstance(obj['labelAt'],list) or len(obj['labelAt'])!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in obj['labelAt'])):raise ValueError('REGION_LABEL_AT_INVALID:'+str(obj.get('id')))
         # A first layout direction for a label at its point (the layout still tries the other directions).
         if 'preferred' in obj and (obj['kind'] not in {'POINT_NAME','COORDINATE_LABEL'} or obj['preferred'] not in {'N','NE','E','SE','S','SW','W','NW'}):raise ValueError('INVALID_LABEL_PREFERRED_DIRECTION')
         if 'priority' in obj and (isinstance(obj['priority'],bool) or not isinstance(obj['priority'],int) or not 0<=obj['priority']<=4):raise ValueError('INVALID_PRIORITY')

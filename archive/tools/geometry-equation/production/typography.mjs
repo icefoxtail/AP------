@@ -5,6 +5,7 @@ import path from 'node:path';
 import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 export const MATH_GLYPH_STROKE_UNITS=30;
+export const TEXT_MATH_WEIGHT_STROKE_EM=0.06;   // weight:'MATH' on a TEXT label: the outline stroke (em) that gives the thin Noto face the weight of the math labels beside it (checked by eye against the MathJax glyphs)
 export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.join(dependencyRoot,'NotoSansKR.ttf'),fontSha256=dependencyLock.font.sha256}={}) {
   const raw=fs.readFileSync(fontPath),actual=bytesSha(raw);
   if(!fontSha256 || fontSha256!==actual)throw Error('FONT_HASH_LOCK_REQUIRED');
@@ -40,7 +41,9 @@ export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.jo
       baseline=label.fontPx*font.ascender/font.unitsPerEm;
       const p=font.getPath(label.text,0,baseline,label.fontPx);
       const b=p.getBoundingBox();width=Math.max(font.getAdvanceWidth(label.text,label.fontPx),b.x2);height=Math.max(b.y2,baseline-label.fontPx*font.descender/font.unitsPerEm);
-      content='<path d="'+p.toPathData(5)+'" fill="#111"/>';
+      // weight:'MATH' (E32, opt-in): the plain text is drawn with the same outline stroke a math label gets (MATH_GLYPH_STROKE_UNITS of 1000 per em), so it is as heavy as the formulas beside it
+      const weightStroke=label.weight==='MATH'?' stroke="#111" stroke-width="'+(label.fontPx*TEXT_MATH_WEIGHT_STROKE_EM).toFixed(4)+'" stroke-linejoin="round"':'';
+      content='<path d="'+p.toPathData(5)+'" fill="#111"'+weightStroke+'/>';
       // tight:true sets the box to the ink itself (a short symbol in a small face needs no room for the line's ascent and descent); the default keeps the font's line box
       if(label.tight===true){
         const ink=font.getPath(label.text,-b.x1,baseline-b.y1,label.fontPx);

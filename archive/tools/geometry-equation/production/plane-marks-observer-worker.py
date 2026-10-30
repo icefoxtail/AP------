@@ -151,6 +151,7 @@ def audit(p):
     declared|={('dimension',r['id']) for r in marks.get('dimensions',[])}
     declared|={('arrow',s['id']) for s in p.get('segments',[]) if s.get('arrow')}
     declared|={('region',r['id']) for r in marks.get('regions',[])}
+    declared|={('equal-bracket',r['id']) for r in marks.get('equalLengths',[]) if any(isinstance(entry,dict) for entry in r.get('segments',[]))}
     declared|={('region-hatch',r['id']) for r in marks.get('regions',[]) if r.get('pattern')=='HATCH'}
     for key in by_mark:
         if key not in declared:errors.append('UNDECLARED_MARK:'+key[0]+':'+str(key[1]))
@@ -739,7 +740,7 @@ def audit(p):
                 if codes and codes!=want:errors.append('TRACE_LABEL_MISMATCH:'+oid)
 
     # ---- filled regions (plane_regions_observer.py)
-    audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes)
+    audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes,leaders=leaders,leader_ok=leader_ok,strokes=strokes)
 
     # ---- facts read from the drawn primitives only
     for row in marks.get('facts',[]):
