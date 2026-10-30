@@ -1,0 +1,288 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "X",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "k",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "6"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "6"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "6"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "165"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "6"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "90"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "6"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "15"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [
+  "k"
+ ],
+ "displaySegments": [
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  },
+  {
+   "id": "sOC",
+   "refs": [
+    "O",
+    "C"
+   ]
+  },
+  {
+   "id": "sOD",
+   "refs": [
+    "O",
+    "D"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "caption": "색칠한 두 부채꼴의 중심각은 15°와 75°이므로 합이 90°이고, 두 부채꼴의 넓이의 합은 원 넓이의 1/4(30cm²)이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "원 O에서 부채꼴 AOB와 COD, ∠AOB=15°, ∠COD=5∠AOB",
+   "mappedTo": [
+    "O",
+    "A",
+    "B"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 부채꼴을 색칠하고 중심각 15°, 75°를 표시했다."
+ ],
+ "sourceQuote": "오른쪽 그림에서 두 부채꼴 $AOB$와 $COD$의 넓이의 합이",
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aAOB",
+    "refs": [
+     "B",
+     "O",
+     "A"
+    ],
+    "value": 15,
+    "label": "15",
+    "style": "ARC",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aCOD",
+    "refs": [
+     "C",
+     "O",
+     "D"
+    ],
+    "value": 75,
+    "label": "75",
+    "style": "ARC",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rAOB",
+    "fill": "LIGHT",
+    "factRole": "GIVEN",
+    "shapes": [
+     {
+      "sector": {
+       "center": "O",
+       "from": "A",
+       "to": "B"
+      }
+     }
+    ]
+   },
+   {
+    "id": "rCOD",
+    "fill": "LIGHT",
+    "factRole": "GIVEN",
+    "shapes": [
+     {
+      "sector": {
+       "center": "O",
+       "from": "C",
+       "to": "D"
+      }
+     }
+    ]
+   }
+  ],
+  "angleSums": [
+   {
+    "id": "sSum",
+    "angles": [
+     "aAOB",
+     "aCOD"
+    ],
+    "label": "90°",
+    "at": [
+     0,
+     -2.4
+    ],
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 520,
+  "height": 480
+ }
+}

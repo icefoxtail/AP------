@@ -543,7 +543,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_동산중_2학기_중간_중1_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 원점 0과 원점에서 같은 거리에 있는 두 점 -a, a를 나타내고, 두 점 사이의 거리 10을 괄호로 표시했다.",
+    "solutionImageCaption": "절댓값이 같고 부호가 다른 두 수는 원점에서 같은 거리에 있다. 두 수를 -a, a라 하면 두 점 -a와 a 사이의 거리는 10이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,

@@ -357,8 +357,32 @@ def denominator_lower(poly,a,b):
     bound=low if low>0 else -high if high<0 else S.Integer(0)
     return max(0,float(bound)*(1-1e-12))
 
+AXIS_SCALE_PROPORTION_LIMIT=64
+
+def axis_scale_proportion(scale):
+    """Independent read of a plan's axisScale {x,y}: the exact y/x proportion, or None when the field is malformed or outside 1:64 .. 64:1."""
+    if not isinstance(scale,dict) or set(scale)!={'x','y'}:return None
+    parts=[]
+    for axis in ('x','y'):
+        value=scale[axis]
+        if isinstance(value,bool) or not isinstance(value,(int,str)) or not re.fullmatch(r'\d+(?:/\d+|\.\d+)?',str(value)):return None
+        try:part=S.Rational(str(value))
+        except (TypeError,ValueError,S.SympifyError):return None
+        if not part>0:return None
+        parts.append(part)
+    proportion=parts[1]/parts[0]
+    return proportion if S.Rational(1,AXIS_SCALE_PROPORTION_LIMIT)<=proportion<=AXIS_SCALE_PROPORTION_LIMIT else None
+
 def axis_ratio_errors(plan,transform):
-    """One scale on both axes, or y at the recorded axisRatio (between 1/2 and 1, a squeeze after a failure at one scale) times the x scale."""
+    """One scale on both axes, or y at the recorded axisRatio (between 1/2 and 1, a squeeze after a failure at one scale) times the x scale.
+    With an author's axisScale {x,y} the ratio is y/x as the author wrote it (recomputed here), whatever the figure's proportions: the plan's
+    axisRatio must repeat it and the observed final-SVG scale must follow it."""
+    if 'axisScale' in plan:
+        proportion=axis_scale_proportion(plan['axisScale'])
+        if proportion is None or plan.get('overviewPolicy')!='PIECEWISE_POLYNOMIAL_OVERVIEW_v1' or plan.get('axisSqueeze') not in (None,False):return ['AXIS_SCALE_INVALID']
+        declared=float(proportion);recorded=plan.get('axisRatio')
+        if isinstance(recorded,bool) or not isinstance(recorded,(int,float)) or abs(recorded-declared)>1e-9*declared:return ['AXIS_SCALE_RATIO_MISMATCH']
+        return ['EQUAL_UNIT_SCALE_MISMATCH'] if abs(transform['sy']-declared*transform['sx'])>1e-6*transform['sx'] else []
     ratio=plan.get('axisRatio',1)
     if plan.get('applicationAxes') is True:
         # Application-problem axes (a count against a money amount): each axis has its own scale, so any positive ratio is the declared one.
@@ -2461,13 +2485,72 @@ def _pp_coeff_coefficients(values):
     if not isinstance(values,list) or len(values)>4:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
     return [_ov_reader(item) for item in values]
 
+def _ov_label_codes(text):
+    """The glyph codes (a set of acceptable hex codes per glyph, in reading order) of a free equation text: letters are themselves or their italic math code, - is the minus
+    sign; spaces, * (an implicit product) and the / of a stacked fraction or the ^ of a power draw no glyph of their own."""
+    out=[]
+    for ch in text.replace(' ',''):
+        if ch in '*/^':continue
+        if ch=='-':out.append({'2212','2D'})
+        elif 'a'<=ch<='z':out.append({format(ord(ch),'X'),format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X')})
+        elif 'A'<=ch<='Z':out.append({format(ord(ch),'X'),format(0x1D434+ord(ch)-65,'X')})
+        else:out.append({format(ord(ch),'X')})
+    return out
+
+def _ov_label_problem(line):
+    """The independent reading (sympy) of an overlay line's free equation text: 'OVERLAY_LABEL_NOT_THE_LINE' when the text is an equation with no letter left but x and y
+    (labelValues gives the number the other letters stand for in the drawing) and is not the line drawn; 'OVERLAY_LABEL_NOT_LINEAR' for a power or a product of x and y;
+    None for a symbolic text (a letter with no value), a name without '=' or a surd line."""
+    text=line.get('label')
+    if not isinstance(text,str) or text.count('=')!=1:return None
+    from sympy.parsing.sympy_parser import parse_expr,standard_transformations,implicit_multiplication_application,convert_xor
+    names={c:S.Symbol(c) for c in set(re.findall('[A-Za-z]',text))}
+    values=line.get('labelValues') or {}
+    left,right=text.split('=')
+    try:
+        expression=parse_expr(left,local_dict=names,transformations=standard_transformations+(implicit_multiplication_application,convert_xor))-parse_expr(right,local_dict=names,transformations=standard_transformations+(implicit_multiplication_application,convert_xor))
+        expression=expression.subs({names[key]:S.Rational(value) for key,value in values.items() if key in names})
+    except (SyntaxError,TypeError,ValueError,ZeroDivisionError):return None
+    xs,ys=names.get('x',S.Symbol('x')),names.get('y',S.Symbol('y'))
+    if expression.free_symbols-{xs,ys}:return None
+    poly=S.Poly(S.expand(expression),xs,ys)
+    if poly.total_degree()>1:return 'OVERLAY_LABEL_NOT_LINEAR'
+    a,b,c=poly.coeff_monomial(xs),poly.coeff_monomial(ys),poly.coeff_monomial(1)
+    if line['kind']=='VERTICAL':want=(S.Integer(1),S.Integer(0),-line['x'])
+    else:want=(line['slope'],S.Integer(-1),line['intercept'])
+    if not all(value.is_Rational for value in (*want,a,b,c)):return None
+    if a==0 and b==0:return 'OVERLAY_LABEL_NOT_THE_LINE'
+    same=a*want[1]==b*want[0] and a*want[2]==c*want[0] and b*want[2]==c*want[1]
+    return None if same else 'OVERLAY_LABEL_NOT_THE_LINE'
+
+def _ov_math_name_problem(plan,name):
+    """A MATH name beside a single straight piece (E31), read again here with sympy: 'OVERLAY_NAME_NOT_THE_CURVE' when the text is an equation with no letter left but x and y that
+    is not the drawn line y=c0+c1*x; 'OVERLAY_NAME_NOT_LINEAR' for a power or a product of x and y; None for anything it cannot compare."""
+    pieces=plan.get('pieces')
+    if plan.get('family')!='piecewise-polynomial' or not isinstance(pieces,list) or len(pieces)!=1:return None
+    try:values=[_ov_reader(c) for c in pieces[0].get('coefficients',[])]
+    except (ValueError,TypeError,AttributeError):return None
+    if len(values)>2 and any(v!=0 for v in values[2:]):return None
+    c0=values[0] if values else S.Integer(0);c1=values[1] if len(values)>1 else S.Integer(0)
+    problem=_ov_label_problem({'label':name['text'],'labelValues':name.get('labelValues'),'kind':'LINE','slope':c1,'intercept':c0})
+    return {'OVERLAY_LABEL_NOT_THE_LINE':'OVERLAY_NAME_NOT_THE_CURVE','OVERLAY_LABEL_NOT_LINEAR':'OVERLAY_NAME_NOT_LINEAR'}.get(problem)
+
 def _ov_line(entry):
     if not isinstance(entry,dict):raise ValueError('OVERLAY_LINE_INVALID')
+    # labelAt (E31): START / END / a fraction 0..1 of the drawn line from its left (lower) end, read from the raw field here.
+    at=entry.get('labelAt')
+    if at is not None and not (at in ('START','END') or (isinstance(at,(int,float)) and not isinstance(at,bool) and 0<=at<=1)):raise ValueError('OVERLAY_LINE_LABEL_AT_INVALID')
+    extra={'lineAt':at} if at is not None else {}
+    if entry.get('label') is not None:extra['label']=entry['label']
+    if 'style' in entry:
+        if entry['style'] not in ('SOLID','DASHED'):raise ValueError('OVERLAY_LINE_STYLE_INVALID')
+        extra['style']=entry['style']
+    if entry.get('labelValues') is not None:extra['labelValues']=entry['labelValues']
     if 'x' in entry:
         if 'slope' in entry or 'intercept' in entry:raise ValueError('OVERLAY_LINE_INVALID')
-        return {'id':entry.get('id'),'kind':'VERTICAL','x':_ov_reader(entry.get('x'))}
+        return {'id':entry.get('id'),'kind':'VERTICAL','x':_ov_reader(entry.get('x')),**extra}
     if 'slope' not in entry or 'intercept' not in entry:raise ValueError('OVERLAY_LINE_INVALID')
-    return {'id':entry.get('id'),'kind':'LINE','slope':_ov_reader(entry.get('slope')),'intercept':_ov_reader(entry.get('intercept'))}
+    return {'id':entry.get('id'),'kind':'LINE','slope':_ov_reader(entry.get('slope')),'intercept':_ov_reader(entry.get('intercept')),**extra}
 
 def _ov_expected(plan):
     """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
@@ -2507,8 +2590,8 @@ def _ov_expected(plan):
         points[ident]=(x,y)
         if entry.get('unnamed') is True:unnamed.add(ident)
         if entry.get('coordinates') is True:
-            if not (x.is_integer and y.is_integer):raise ValueError('OVERLAY_COORDINATES_REQUIRE_INTEGERS')
-            coordinates[ident]=(int(x),int(y))
+            if not (x.is_Rational and y.is_Rational):raise ValueError('OVERLAY_COORDINATES_REQUIRE_RATIONALS')
+            coordinates[ident]=(x,y)
     def point_ref(value):
         if value not in points:raise ValueError('OVERLAY_POINT_UNKNOWN')
         return points[value]
@@ -2536,13 +2619,46 @@ def _ov_expected(plan):
             if label_kind not in ('MATH','TEXT'):raise ValueError('OVERLAY_POLYGON_LABEL_KIND_INVALID')
             if not isinstance(label,str) or not label.strip() or len(label)>40 or any(ord(char)<32 for char in label) or (label_kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',label)):raise ValueError('OVERLAY_POLYGON_LABEL_INVALID')
         polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT'),'label':label,'labelKind':label_kind})
-    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+    names=[];seen_names=set()
+    for entry in raw.get('names',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_NAME_INVALID')
+        ident=entry.get('id');text=entry.get('text')
+        math_kind=entry.get('labelKind','TEXT')
+        if math_kind not in ('TEXT','MATH'):raise ValueError('OVERLAY_NAME_INVALID')
+        pattern=OV_NAME_PATTERN if math_kind=='TEXT' else r'[0-9A-Za-z=+\-*/().^ ]{1,40}'
+        if not isinstance(ident,str) or ident in seen_names or not isinstance(text,str) or text!=text.strip() or not re.fullmatch(pattern,text):raise ValueError('OVERLAY_NAME_INVALID')
+        seen_names.add(ident);forms=[key for key in ('segment','line','curveX') if key in entry]
+        if len(forms)!=1 or (math_kind=='MATH' and forms[0]!='curveX'):raise ValueError('OVERLAY_NAME_INVALID')
+        row={'id':ident,'text':text,'form':forms[0],'labelKind':math_kind,'labelValues':entry.get('labelValues')}
+        if forms[0]=='segment':
+            if entry['segment'] not in [segment['id'] for segment in segments]:raise ValueError('OVERLAY_NAME_TARGET_UNKNOWN')
+            row['ref']=entry['segment']
+        elif forms[0]=='line':
+            if entry['line'] not in by_line:raise ValueError('OVERLAY_NAME_TARGET_UNKNOWN')
+            row['ref']=entry['line']
+        else:
+            x=_ov_reader(entry['curveX']);lo,hi=plan.get('domain',[None,None])
+            if lo is not None and not lo<=float(S.N(x,30))<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+            row['at']=(float(S.N(x,30)),float(S.N(_ov_curve_value(plan,x,entry.get('curve')),30)))
+        names.append(row)
+    quadrants=[];seen_quadrants=set()
+    for entry in raw.get('quadrants',[]) or []:
+        # quadrants (E31): read again from the raw field here
+        if not isinstance(entry,dict) or set(entry)-{'id','quadrant','label','fill'}:raise ValueError('OVERLAY_QUADRANT_INVALID')
+        number=entry.get('quadrant');label=entry.get('label');fill=entry.get('fill')
+        if not isinstance(entry.get('id'),str) or isinstance(number,bool) or number not in (1,2,3,4) or number in seen_quadrants:raise ValueError('OVERLAY_QUADRANT_INVALID')
+        if label is None and fill is None:raise ValueError('OVERLAY_QUADRANT_INVALID')
+        if label is not None and (not isinstance(label,str) or label!=label.strip() or not re.fullmatch(r'[가-힣A-Za-z0-9 ()]{1,12}',label)):raise ValueError('OVERLAY_QUADRANT_INVALID')
+        if fill is not None and fill not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_QUADRANT_INVALID')
+        seen_quadrants.add(number);quadrants.append({'id':entry['id'],'quadrant':number,'label':label,'fill':fill})
+    return {'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
 
 OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
 
 def _ov_int_codes(value):
-    """MathJax glyph codes (data-c) of an integer: a minus sign (U+2212) then its digits."""
-    return (['2212'] if value<0 else [])+OV_DIGIT(abs(value))
+    """MathJax glyph codes (data-c) of a rational number: a minus sign (U+2212), then its digits; a fraction (E31) stacks, so its numerator digits come before its denominator digits."""
+    value=S.Rational(value)
+    return (['2212'] if value<0 else [])+OV_DIGIT(abs(int(value.p)))+(OV_DIGIT(int(value.q)) if value.q!=1 else [])
 
 def _ov_length_codes(value):
     """Glyph codes of a segment length written as an integer or p*sqrt(q): the digits, the radical U+221A, the radicand digits."""
@@ -2571,6 +2687,17 @@ def _ov_lattice(plan,entry):
         if ys:columns[x]=(len(ys),max(ys));points.extend((x,y) for y in ys)
     return {'points':points,'columns':columns,'counts':entry.get('counts',False) is True}
 
+def _ov_final_window(viewport):
+    """The window a graph figure is drawn in. The figure shows its axes, so the origin and the unit points (1,0) and (0,1) must lie strictly inside it; when one does not (a
+    framed window that stops short of y=1, say) the drawing window is the plan's window widened by 8 % of the whole span on every side, the rule of visual_engine/viewport.py
+    restated here from the plan. Every overlay line is cut by this window, not by the plan's own."""
+    xmin,xmax,ymin,ymax=viewport
+    unit_points=((0.0,0.0),(1.0,0.0),(0.0,1.0))
+    if all(xmin<x<xmax and ymin<y<ymax for x,y in unit_points):return list(viewport)
+    xs=[xmin,xmax]+[x for x,_ in unit_points];ys=[ymin,ymax]+[y for _,y in unit_points]
+    lo_x,hi_x,lo_y,hi_y=min(xs),max(xs),min(ys),max(ys);dx=(hi_x-lo_x)*.08;dy=(hi_y-lo_y)*.08
+    return [lo_x-dx,hi_x+dx,lo_y-dy,hi_y+dy]
+
 def _ov_clip(viewport,line):
     xmin,xmax,ymin,ymax=viewport
     if line['kind']=='VERTICAL':
@@ -2585,6 +2712,7 @@ def _ov_clip(viewport,line):
             if xmin-1e-6<=x<=xmax+1e-6 and not any(abs(x-a)<1e-6 for a,_ in ends):ends.append((max(xmin,min(xmax,x)),y))
     return ends[:2]
 
+OV_LINE_AT_TOLERANCE=.4      # lineAt: the label's place along its drawn line (0 = left end) is within this fraction of the place the plan names
 OV_LABEL_STRICT_OWN_MAX_PX=12.0
 OV_LABEL_STRICT_MARGIN_PX=12.0
 OV_LABEL_LOOSE_OWN_MAX_PX=60.0
@@ -2592,6 +2720,10 @@ OV_LABEL_LOOSE_MARGIN_PX=-8.0
 OV_COORDINATE_LABEL_OWN_MAX_PX=60.0
 OV_COORDINATE_LABEL_MARGIN_PX=4.0
 OV_LEADER_TOLERANCE_PX=1.5
+OV_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
+OV_NAME_CURVE_ANCHOR_MAX_PX=48.0
+OV_NAME_CURVE_OWN_MAX_PX=18.0
+OV_NAME_CURVE_MARGIN_PX=6.0
 
 def _ov_point_segment_distance(point,a,b):
     dx,dy=b[0]-a[0],b[1]-a[1];length2=dx*dx+dy*dy
@@ -2668,9 +2800,13 @@ def overlays_audit(plan,svg,transform):
             obj_id='overlay-line-'+str(line['id']);claimed.add(obj_id)
             got=read_line(obj_id)
             if got is None:errors.append('OVERLAY_LINE_MISSING:'+str(line['id']));continue
-            want=_ov_clip(plan['viewport'],line)
+            # the composed figure is cut by its final window, the bare model (no labels) by the plan's own
+            want=_ov_clip(_ov_final_window(plan['viewport']) if 'data-label-kind' in svg else plan['viewport'],line)
             if len(want)!=2:errors.append('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+str(line['id']));continue
             if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_LINE_MISMATCH:'+str(line['id']))
+            if 'data-label-kind' in svg:
+                # style (E31): a DASHED overlay line carries a stroke-dasharray, a SOLID one (the default) none
+                if (lines[obj_id].get('stroke-dasharray') is not None)!=(line.get('style')=='DASHED'):errors.append('OVERLAY_LINE_STYLE_MISMATCH:'+str(line['id']))
         for ident,(x,y) in expected['points'].items():
             claimed.add(ident);got=read_circle(ident)
             if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)
@@ -2750,6 +2886,21 @@ def overlays_audit(plan,svg,transform):
                     # An equation written the ordinary way has no leader and sits within a generous distance of its line, never clearly nearer another
                     # overlay line; one moved away by the layout's fallback carries a leader that starts on its line and ends on the label box.
                     label_belongs(label_id,'overlay-line-'+str(line['id']),'OVERLAY_LINE',False,[segment for other in expected['lines'] if other is not line for segment in [px_segment('overlay-line-'+str(other['id']))] if segment is not None])
+                    if isinstance(line.get('label'),str):
+                        # a free equation text (E31): drawn as written (glyph codes), and an equation of the line itself when it can be read
+                        want=_ov_label_codes(line['label']);got=_ov_glyph_codes(node)
+                        if len(got)!=len(want) or any(code not in allowed for code,allowed in zip(got,want)):errors.append('OVERLAY_LABEL_TEXT_MISMATCH:'+str(line['id']))
+                        problem=_ov_label_problem(line)
+                        if problem:errors.append(problem+':'+str(line['id']))
+                    if line.get('lineAt') is not None:
+                        # lineAt: where along its drawn line the equation stands: the leader's start, or the box centre's foot on the line.
+                        own=px_segment('overlay-line-'+str(line['id']));box=_region_label_box(groups,label_id)
+                        if own is not None and box is not None:
+                            a,b=sorted(own,key=lambda point:(point[0],-point[1]));leader=leaders.get(label_id)
+                            spot=(float(leader.get('x1')),float(leader.get('y1'))) if leader is not None else (box[0]+box[2]/2,box[1]+box[3]/2)
+                            along=((spot[0]-a[0])*(b[0]-a[0])+(spot[1]-a[1])*(b[1]-a[1]))/max(1e-9,(b[0]-a[0])**2+(b[1]-a[1])**2)
+                            want=line['lineAt'];target={'START':.08,'END':.92}.get(want,want)
+                            if abs(along-target)>OV_LINE_AT_TOLERANCE:errors.append('OVERLAY_LINE_LABEL_NOT_AT:'+str(line['id']))
             # unnamed:true points carry no name label at all (a coordinate label alone is the `(x,y)` form).
             for ident in expected['unnamed']:
                 if any(node.get('data-owner')==ident and node.get('data-label-kind')=='POINT_NAME' for node in groups.values()):errors.append('OVERLAY_POINT_NAME_UNEXPECTED:'+ident)
@@ -2766,6 +2917,15 @@ def overlays_audit(plan,svg,transform):
                 box=_region_label_box(groups,label_id);own=circles.get(ident)
                 if box is None or own is None:errors.append('OVERLAY_COORDINATES_LABEL_BOX_UNREADABLE:'+ident);continue
                 dot=lambda node_id:(float(circles[node_id].get('cx')),float(circles[node_id].get('cy')))
+                tie=leaders.get(label_id)
+                if tie is not None:
+                    # (E31) moved off its point to the nearest free sector: a leader that starts on its own dot and ends on the label box names the owner
+                    try:start=(float(tie.get('x1')),float(tie.get('y1')));end=(float(tie.get('x2')),float(tie.get('y2')))
+                    except (TypeError,ValueError):errors.append('OVERLAY_COORDINATES_LEADER_UNREADABLE:'+ident);continue
+                    edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
+                    if tie.get('data-owner')!=ident or math.dist(start,dot(ident))>float(circles[ident].get('r') or 0)+OV_LEADER_TOLERANCE_PX:errors.append('OVERLAY_COORDINATES_LEADER_NOT_ON_OWNER:'+ident)
+                    if min(_ov_point_segment_distance(end,a,b) for a,b in edges)>OV_LEADER_TOLERANCE_PX:errors.append('OVERLAY_COORDINATES_LEADER_NOT_ON_LABEL:'+ident)
+                    continue
                 own_distance=_ov_point_box_distance(dot(ident),box)
                 if own_distance>OV_COORDINATE_LABEL_OWN_MAX_PX or any(_ov_point_box_distance(dot(other),box)<own_distance+OV_COORDINATE_LABEL_MARGIN_PX for other in expected['points'] if other!=ident and other in circles):errors.append('OVERLAY_COORDINATES_LABEL_AMBIGUOUS_OWNER:'+ident)
             # length:true segments: the exact length (an integer or p*sqrt(q)), owned by its segment (strictly nearest, or a leader).
@@ -2779,6 +2939,68 @@ def overlays_audit(plan,svg,transform):
                 others=[px for other in expected['segments'] if other is not segment for px in [px_segment('overlay-segment-'+str(other['id']))] if px is not None]
                 others+=[px for other in expected['lines'] for px in [px_segment('overlay-line-'+str(other['id']))] if px is not None]
                 label_belongs(label_id,'overlay-segment-'+str(segment['id']),'OVERLAY_SEGMENT_LENGTH',True,others)
+            # names: a plain-text label (its text on the group, no math glyphs) that belongs to the segment or line it names (strictly nearest, or a
+            # leader), or stands beside the drawn curve near its anchor point, nearer the curve than any overlay segment or line.
+            curve_segments=[]
+            for node in root.iter():
+                if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve' and not (node.get('id') or '').startswith('overlay-'):
+                    try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+                    except ValueError:values=[]
+                    curve_segments+=[((values[i],values[i+1]),(values[i+2],values[i+3])) for i in range(0,len(values)-3,2)]
+            for name in expected['names']:
+                label_id='overlay-name-'+str(name['id']);claimed.add(label_id);node=groups.get(label_id)
+                if node is None:errors.append('OVERLAY_NAME_LABEL_MISSING:'+str(name['id']));continue
+                if name['labelKind']=='MATH':
+                    # an equation of the drawn curve (E31): typeset math whose glyphs are the text's; for a single straight piece the text is read exactly and must be that line
+                    want=_ov_label_codes(name['text']);got=_ov_glyph_codes(node)
+                    if node.get('data-text') is not None or len(got)!=len(want) or any(code not in allowed for code,allowed in zip(got,want)):errors.append('OVERLAY_NAME_LABEL_TEXT_MISMATCH:'+str(name['id']));continue
+                    problem=_ov_math_name_problem(plan,name)
+                    if problem:errors.append(problem+':'+str(name['id']))
+                elif node.get('data-text')!=name['text'] or node.get('data-tex') is not None or _ov_glyph_codes(node) or not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_NAME_LABEL_TEXT_MISMATCH:'+str(name['id']));continue
+                overlay_px=[px for kind,rows in (('segment',expected['segments']),('line',expected['lines'])) for other in rows for px in [px_segment('overlay-'+kind+'-'+str(other['id']))] if px is not None]
+                if name['form']!='curveX':
+                    owner='overlay-'+name['form']+'-'+str(name['ref'])
+                    if node.get('data-owner')!=owner:errors.append('OVERLAY_NAME_LABEL_OWNER_MISMATCH:'+str(name['id']));continue
+                    others=[px for px in overlay_px if px!=px_segment(owner)]+curve_segments
+                    label_belongs(label_id,owner,'OVERLAY_NAME',True,others)
+                    continue
+                box=_region_label_box(groups,label_id)
+                if box is None or not curve_segments:errors.append('OVERLAY_NAME_LABEL_BOX_UNREADABLE:'+str(name['id']));continue
+                anchor=(ox+name['at'][0]*sx,oy-name['at'][1]*sy)
+                if _ov_point_box_distance(anchor,box)>OV_NAME_CURVE_ANCHOR_MAX_PX:errors.append('OVERLAY_NAME_LABEL_NOT_AT_CURVE:'+str(name['id']));continue
+                own_distance=min(_ov_box_segment_distance(box,*piece) for piece in curve_segments)
+                if own_distance>OV_NAME_CURVE_OWN_MAX_PX:errors.append('OVERLAY_NAME_LABEL_NOT_NEAR_CURVE:'+str(name['id']))
+                elif any(_ov_box_segment_distance(box,*other)<own_distance+OV_NAME_CURVE_MARGIN_PX for other in overlay_px):errors.append('OVERLAY_NAME_LABEL_AMBIGUOUS_OWNER:'+str(name['id']))
+            # quadrants (E31): the tinted rectangle between the origin and the end of the drawn axes on that side, under every stroke, and the plain-text name inside it.
+            if expected['quadrants']:
+                by_id={node.get('id'):node for node in root.iter() if node.get('id')}
+                axis_px={name:px_segment(name) for name in ('x-axis','y-axis')}
+                if any(value is None for value in axis_px.values()):errors.append('OVERLAY_QUADRANT_AXES_MISSING')
+                else:
+                    xs=sorted(point[0] for point in axis_px['x-axis']);ys=sorted(point[1] for point in axis_px['y-axis'])
+                    document={id(node):index for index,node in enumerate(root.iter())}
+                    for quadrant in expected['quadrants']:
+                        ident='overlay-quadrant-'+quadrant['id'];claimed.add(ident+'-fill');claimed.add(ident+'-label')
+                        number=quadrant['quadrant'];edge_x=xs[1] if number in (1,4) else xs[0];edge_y=ys[0] if number in (1,2) else ys[1]
+                        rect=[(ox,oy),(edge_x,oy),(edge_x,edge_y),(ox,edge_y)]
+                        within=lambda point:min(ox,edge_x)-.5<=point[0]<=max(ox,edge_x)+.5 and min(oy,edge_y)-.5<=point[1]<=max(oy,edge_y)+.5
+                        fill=by_id.get(ident+'-fill')
+                        if quadrant['fill'] is not None:
+                            if fill is None or fill.tag.split('}')[-1]!='polygon':errors.append('OVERLAY_QUADRANT_FILL_MISSING:'+quadrant['id'])
+                            else:
+                                points=[tuple(float(value) for value in pair.split(',')) for pair in (fill.get('points') or '').split()]
+                                if len(points)!=4 or any(not any(math.hypot(a[0]-b[0],a[1]-b[1])<=.05 for b in points) for a in rect):errors.append('OVERLAY_QUADRANT_FILL_MISMATCH:'+quadrant['id'])
+                                if (fill.get('fill') or '').lower()!={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[quadrant['fill']]:errors.append('OVERLAY_QUADRANT_FILL_TONE_MISMATCH:'+quadrant['id'])
+                                if any(document[id(node)]<document[id(fill)] and node.tag.split('}')[-1] in {'line','polyline','polygon','circle','path'} and node.get('stroke') not in (None,'none') for node in root.iter()):errors.append('OVERLAY_QUADRANT_FILL_COVERS_STROKE:'+quadrant['id'])
+                        elif fill is not None:errors.append('OVERLAY_QUADRANT_FILL_UNDECLARED:'+quadrant['id'])
+                        label_node=groups.get(ident+'-label')
+                        if quadrant['label'] is not None:
+                            if label_node is None:errors.append('OVERLAY_QUADRANT_LABEL_MISSING:'+quadrant['id'])
+                            else:
+                                if label_node.get('data-text')!=quadrant['label'] or label_node.get('data-tex') is not None or _ov_glyph_codes(label_node):errors.append('OVERLAY_QUADRANT_LABEL_TEXT_MISMATCH:'+quadrant['id'])
+                                box=_region_label_box(groups,ident+'-label')
+                                if box is None or not all(within(point) for point in ((box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3]))):errors.append('OVERLAY_QUADRANT_LABEL_OUTSIDE:'+quadrant['id'])
+                        elif label_node is not None:errors.append('OVERLAY_QUADRANT_LABEL_UNDECLARED:'+quadrant['id'])
             # latticePoints counts:true: one label per column, its digits the column's count, owned by (nearest to) that column's dots.
             lattice=expected.get('lattice')
             if lattice is not None and lattice['counts']:

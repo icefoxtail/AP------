@@ -1,0 +1,292 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-3"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "2"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "-2"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "MIDPOINT",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBP",
+   "refs": [
+    "B",
+    "P"
+   ]
+  },
+  {
+   "id": "sPC",
+   "refs": [
+    "P",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sDA",
+   "refs": [
+    "D",
+    "A"
+   ]
+  },
+  {
+   "id": "sAO",
+   "refs": [
+    "A",
+    "O"
+   ]
+  },
+  {
+   "id": "sOC",
+   "refs": [
+    "O",
+    "C"
+   ]
+  },
+  {
+   "id": "sBO",
+   "refs": [
+    "B",
+    "O"
+   ]
+  },
+  {
+   "id": "sOD",
+   "refs": [
+    "O",
+    "D"
+   ]
+  },
+  {
+   "id": "sAP",
+   "refs": [
+    "A",
+    "P"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "O",
+  "P"
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sBP",
+     "sPC"
+    ]
+   },
+   {
+    "id": "e2",
+    "count": 2,
+    "segments": [
+     "sBO",
+     "sOD"
+    ]
+   },
+   {
+    "id": "e3",
+    "count": 3,
+    "segments": [
+     "sAO",
+     "sOC"
+    ]
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lOD",
+    "ownerSegment": "sOD",
+    "text": "3",
+    "unit": "cm"
+   },
+   {
+    "id": "lOC",
+    "ownerSegment": "sOC",
+    "text": "2",
+    "unit": "cm"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rABC",
+    "fill": "LIGHT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "shapes": [
+     {
+      "polygon": [
+       "A",
+       "B",
+       "P",
+       "C",
+       "O"
+      ]
+     }
+    ],
+    "label": "6",
+    "labelName": "△ABC",
+    "unit": "cm^2",
+    "labelPlacement": "LEADER"
+   }
+  ]
+ },
+ "caption": "마름모의 대각선은 서로를 이등분하므로 BD=6cm, AC=4cm이고 △ABC는 마름모의 절반이다. P가 BC의 중점이므로 △ABP와 △APC는 밑변과 높이가 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "마름모 ABCD, 두 대각선의 교점 O, OD=3cm, OC=2cm, P는 BC의 중점",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "P"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "대각선이 서로를 이등분(같은 눈금)하고 BP=PC이므로 선분 AP가 △ABC를 같은 넓이의 두 삼각형으로 나눔"
+ ],
+ "sourceQuote": "마름모의 대각선은 서로를 이등분하므로",
+ "coordinateCanvas": {
+  "width": 600,
+  "height": 420
+ }
+}

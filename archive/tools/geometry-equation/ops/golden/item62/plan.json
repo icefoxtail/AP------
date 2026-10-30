@@ -1,0 +1,228 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Px",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Py",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "-1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "-1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "gPx",
+   "refs": [
+    "P",
+    "Px"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "gPy",
+   "refs": [
+    "P",
+    "Py"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "O",
+  "P",
+  "Px",
+  "Py"
+ ],
+ "hiddenPointNames": [
+  "P",
+  "Px",
+  "Py"
+ ],
+ "unmarkedPointNames": [
+  "Px",
+  "Py"
+ ],
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "planeMarks": {
+  "textLabels": [
+   {
+    "id": "tq1",
+    "at": [
+     2,
+     1.9
+    ],
+    "text": "제1사분면"
+   },
+   {
+    "id": "ts1",
+    "at": [
+     2,
+     1.15
+    ],
+    "text": "(+,+)",
+    "labelKind": "TEXT"
+   },
+   {
+    "id": "tq2",
+    "at": [
+     -2,
+     1.9
+    ],
+    "text": "제2사분면"
+   },
+   {
+    "id": "ts2",
+    "at": [
+     -2,
+     1.15
+    ],
+    "text": "(-,+)",
+    "labelKind": "TEXT"
+   },
+   {
+    "id": "tq3",
+    "at": [
+     -2,
+     -1.15
+    ],
+    "text": "제3사분면"
+   },
+   {
+    "id": "ts3",
+    "at": [
+     -2,
+     -1.9
+    ],
+    "text": "(-,-)",
+    "labelKind": "TEXT"
+   },
+   {
+    "id": "tq4",
+    "at": [
+     2,
+     -1.9
+    ],
+    "text": "제4사분면"
+   },
+   {
+    "id": "ts4",
+    "at": [
+     2,
+     -2.6
+    ],
+    "text": "a>0, b<0",
+    "labelKind": "MATH"
+   },
+   {
+    "id": "tP",
+    "at": "P",
+    "text": "P(a,b)",
+    "anchor": "E"
+   }
+  ]
+ },
+ "caption": "제4사분면 위의 점은 x좌표가 양수, y좌표가 음수이므로 점 (a,b)에서 a>0, b<0이고, 사분면마다 두 좌표의 부호는 제1사분면 (+,+), 제2사분면 (-,+), 제3사분면 (-,-), 제4사분면 (+,-)이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "점 P(a,b)는 제4사분면 위의 점이다.",
+   "mappedTo": [
+    "P",
+    "Px",
+    "Py"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "사분면마다 x좌표와 y좌표의 부호와, 제4사분면의 점 P(a,b)에서 a>0, b<0"
+ ],
+ "sourceQuote": "점 $P(a,b)$가 제4사분면에 있으므로",
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 560
+ }
+}

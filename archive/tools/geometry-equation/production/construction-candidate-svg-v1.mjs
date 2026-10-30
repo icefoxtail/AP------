@@ -9,7 +9,8 @@ import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {bindMeasuredOwnerSafeLabelRepair} from './layout-repair.mjs';
 import {auditMeasuredOwnerSafeLabelRepair} from './layout-repair-audit.mjs';
-import {unmarkedPointIds} from './plane-marks.mjs';
+import {unmarkedPointIds,isPlaneFigure} from './plane-marks.mjs';
+import {calloutPointIds} from './plane-callouts.mjs';
 
 export const CANDIDATE_SVG_VERSION='construction-candidate-svg-v1';
 const CAPABILITY='construction-spike-v1';
@@ -152,7 +153,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
       if(label.kind==='CONDITION_BOX')throw new Stop('UNSUPPORTED_MULTILINE_LABEL',{labelId:label.id});
       const numericTick=label.kind==='GRAPH_ANNOTATION'&&/^[-−\d.]+$/.test(label.text);
       const role=spec.displayFacts.factRolesByLabel?.[label.id]||plan.mathPlan?.nodes.find(node=>node.id===label.target)?.factRole||'DERIVED_INTERMEDIATE';
-      try{fragments[label.id]=typeset({id:label.id,owner:label.target||label.id,factRole:role,fontPx:typographyPolicy.baseFontPx,...(label.math||label.kind==='POINT_NAME'||numericTick?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text})},identity);}
+      try{fragments[label.id]=typeset({id:label.id,owner:label.target||label.id,factRole:role,fontPx:typographyPolicy.baseFontPx,...(label.math||label.kind==='POINT_NAME'||numericTick?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},identity);}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('FRAGMENT_TYPESET_ERROR',{labelId:label.id,code:error.message});}
     }
     lineage.fragmentSha256s=Object.fromEntries(Object.entries(fragments).map(([id,fragment])=>[id,fragment.fragmentSha256]));
@@ -175,6 +176,9 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     const built=await call(worker,'build',{action:'build',spec:bridged.spec,measurements,fragments});
     if(typeof built.svg!=='string'||!built.svg.includes('<svg')||!built.witness?.layout)throw new Stop('WORKER_ERROR',{stage:'build',code:'BUILD_RESULT_INVALID'});
     built.svg=restoreCurveBranches(built.svg,bridged.tags);
+    // E32: an axis-free plane figure that draws no label at all (a trapezoid of unnamed points with only marks) is not refused for having none when its plan carries a caption (the caption says it):
+    // the root says so (data-text-free), and the rendered-layout check reads that mark, here and in the Archive replay of the same bytes
+    if(isPlaneFigure(plan)&&typeof plan.caption==='string'&&plan.caption.trim()!==''&&!prepared.labels.length&&!built.svg.includes('data-text-free='))built.svg=built.svg.replace('<svg ','<svg data-text-free="true" ');
     const {svg,witness}=built,{unresolved,suppressed,repairs=[]}=witness.layout;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     lineage.witnessSha256=digest(witness,'witness','OUTPUT_NOT_CANONICAL');
@@ -219,11 +223,14 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     // Graph lines are audited against the plan's own exact slope and intercept (a=slope, b=-1, c=intercept for ax+by+c=0).
     // A piecewise polynomial's referenceLines are y=c (a=0, b=-1, c) or, with slope and intercept, y=m*x+c (a=m, b=-1, c).
     const graphLines=graph?Object.fromEntries([...(plan.graphPlan.lines||[]).map(line=>['line-'+line.id,[exactValue(line.slope),-1,exactValue(line.intercept)]]),...((plan.capability==='piecewise-polynomial-spike-v1'||plan.capability==='piecewise-discontinuous-spike-v1')?(plan.graphPlan.referenceLines||[]).map(line=>['line-'+line.id,[line.slope===undefined?0:exactValue(String(line.slope)),-1,exactValue(String(line.slope===undefined?line.y:line.intercept))]]):[])]):null;
-    const audit=await call(pythonWorker,'staticAudit',{svg,points:peerOf(displayed?.points,peer?.points),lines:graph?graphLines:peerOf(displayed?.lines,peer?.lines),circles:peerOf(displayed?.circles,peer?.circles),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH',unmarkedPoints:unmarkedPointIds(plan)},{script:OBSERVER_SCRIPT});
+    const audit=await call(pythonWorker,'staticAudit',{svg,points:peerOf(displayed?.points,peer?.points),lines:graph?graphLines:peerOf(displayed?.lines,peer?.lines),circles:peerOf(displayed?.circles,peer?.circles),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH',unmarkedPoints:unmarkedPointIds(plan),...(calloutPointIds(plan).length?{extraPoints:calloutPointIds(plan)}:{}),
+      // The equation labels of displayed SOURCE_LINEs (E31): the observer reads each one's owner, place and, for a free text, glyphs back from the final XML.
+      hiddenCoordinateLabels:graph?[]:(plan.coordinateLabels||[]).filter(id=>(plan.hiddenPointNames||[]).includes(id)),
+      lineLabels:graph?[]:(plan.lineLabels||[]).map(row=>({id:row.nodeId+'-equation',owner:row.nodeId,...(row.labelAt!==undefined?{labelAt:row.labelAt}:{}),...(row.text!==undefined?{text:row.text}:{}),...(row.values!==undefined?{values:row.values}:{})}))},{script:OBSERVER_SCRIPT});
     // runPhase2 715: graphs also need the graph observer on the final SVG at the intrinsic scale.
     const graphAudit=graph?await call(pythonWorker,'graphAudit',{graphPlan:plan.graphPlan,svg,transform:{...observerFrame(witness.coordinateModel),displayScale:1}},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000}):null;
     // The plane-marks observer recomputes every stated angle, length, parallel and arc fact from the Cindy peer's points and the drawn primitives.
-    const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},segments:plan.displaySegments||[],transform:witness.coordinateModel},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
+    const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
     lineage.staticAuditSha256=digest(graph?{primitive:audit,graph:graphAudit}:planeAudit?{primitive:audit,planeMarks:planeAudit}:audit,'staticAudit','OUTPUT_NOT_CANONICAL');
     const auditErrors=Array.isArray(audit.errors)?[...audit.errors]:[];
     // The observer reports the bytes it parsed; they must be the bytes the render below receives.

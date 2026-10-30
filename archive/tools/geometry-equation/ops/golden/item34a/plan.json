@@ -1,0 +1,66 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "axisVariable": false,
+  "rows": [
+   {
+    "kind": "POINTS",
+    "points": [
+     {
+      "id": "A",
+      "value": "-5",
+      "name": "뉴욕"
+     },
+     {
+      "id": "B",
+      "value": "0",
+      "name": "그리니치"
+     },
+     {
+      "id": "C",
+      "value": "4",
+      "name": "두바이"
+     }
+    ],
+    "spans": [
+     {
+      "from": "A",
+      "to": "C",
+      "label": "시차",
+      "style": "BRACE"
+     }
+    ]
+   }
+  ]
+ },
+ "numberLineCaption": {
+  "text": "그리니치를 0으로 한 세 도시"
+ },
+ "caption": "그리니치를 0으로 하면 뉴욕은 -5, 두바이는 4이므로 두 도시의 시차는 두 점 사이의 거리이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "뉴욕은 그리니치보다 5시간 느리고 두바이는 4시간 빠르다",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "두바이와 뉴욕의 시차는 두 점 사이의 거리이다",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  },
+  {
+   "id": "c3",
+   "condition": "뉴욕의 요일과 시각은 정답이므로 그림에 쓰지 않는다",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "뉴욕 -5, 그리니치 0, 두바이 4를 이름과 함께 한 수직선에 찍고, 두 도시 사이의 시차가 두 점 사이의 간격임을 괄호로 보인다"
+ ]
+}

@@ -1,0 +1,327 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "12"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "9"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "lAC",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "E",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "D",
+     "lAC"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  },
+  {
+   "id": "sDC",
+   "refs": [
+    "D",
+    "C"
+   ]
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "id": "sEC",
+   "refs": [
+    "E",
+    "C"
+   ]
+  },
+  {
+   "id": "sAD",
+   "refs": [
+    "A",
+    "D"
+   ]
+  },
+  {
+   "id": "sDE",
+   "refs": [
+    "D",
+    "E"
+   ]
+  }
+ ],
+ "rightAngles": [
+  {
+   "id": "rB",
+   "refs": [
+    "A",
+    "B",
+    "D"
+   ]
+  },
+  {
+   "id": "rE",
+   "refs": [
+    "D",
+    "E",
+    "C"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "eAB",
+    "count": 1,
+    "segments": [
+     "sAB",
+     "sAE"
+    ]
+   },
+   {
+    "id": "eBD",
+    "count": 2,
+    "segments": [
+     "sBD",
+     "sDE"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "id": "aBAD",
+    "refs": [
+     "B",
+     "A",
+     "D"
+    ],
+    "arcs": 1,
+    "equalGroup": 1,
+    "noLabel": true
+   },
+   {
+    "id": "aDAE",
+    "refs": [
+     "D",
+     "A",
+     "E"
+    ],
+    "arcs": 1,
+    "equalGroup": 1,
+    "noLabel": true
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dAB",
+    "from": "A",
+    "to": "B",
+    "label": "12",
+    "side": "LEFT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dBD",
+    "from": "B",
+    "to": "D",
+    "label": "4",
+    "side": "BELOW",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dAE",
+    "from": "A",
+    "to": "E",
+    "label": "12",
+    "side": "ABOVE",
+    "offset": "AUTO",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "dEC",
+    "from": "E",
+    "to": "C",
+    "label": "3",
+    "side": "ABOVE",
+    "offset": "AUTO",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "dAC",
+    "from": "A",
+    "to": "C",
+    "label": "15",
+    "side": "ABOVE",
+    "offset": "AUTO",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "tDE",
+    "ownerSegment": "sDE",
+    "text": "4",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rgDEC",
+    "fill": "LIGHT",
+    "shapes": [
+     {
+      "polygon": [
+       "D",
+       "E",
+       "C"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "caption": "직각삼각형 ABD와 AED는 빗변 AD가 공통이고 ∠BAD=∠DAE이므로 합동이다. 따라서 AE=AB=12, DE=BD=4이고 EC=AC-AE=3이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "∠B=90°, AD는 ∠A의 이등분선, DE⊥AC, AB=12, AC=15, BD=4",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "△ABD≡△AED 표시(같은 호·같은 눈금)와 AE=12, DE=4, EC=3"
+ ],
+ "sourceQuote": "$AD$는 공통 빗변이므로",
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 560
+ }
+}

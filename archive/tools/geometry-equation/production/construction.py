@@ -1,6 +1,7 @@
 """Small closed SymPy Geometry spike, not a general constraint solver."""
 import math
 import re
+from decimal import Decimal
 from graphlib import TopologicalSorter, CycleError
 import sympy as S
 import mpmath
@@ -70,6 +71,15 @@ def exact(value):
         return result
     raise ValueError('UNSUPPORTED_EXACT_OUTPUT')
 
+DECIMAL_ZERO_BELOW=S.Float('1e-30',34)
+
+def plain_decimal(value,digits=34):
+    """A decimal string of value to `digits` significant digits in plain positional form (no exponent). SymPy prints an expression that is exactly zero
+    but not simplified as 0.e-149 (a mantissa-less float), which no number grammar accepts; a result that small is the number 0."""
+    number=S.N(value,digits)
+    if number==0 or abs(number)<DECIMAL_ZERO_BELOW:return '0'
+    return format(Decimal(str(number)),'f')
+
 def exact_or_decimal(value):
     """The exact typed scalar, or - for a value without a short closed form (a point placed by a non-special angle) - a 34 digit decimal."""
     def small(node):
@@ -80,7 +90,7 @@ def exact_or_decimal(value):
         result=exact(value)
         if len(str(result))<=480 and small(result):return result
     except (ValueError,RecursionError):pass
-    return {'kind':'decimal','value':str(S.N(value,34))}
+    return {'kind':'decimal','value':plain_decimal(value)}
 
 def _rational_from_mp(x):
     from fractions import Fraction

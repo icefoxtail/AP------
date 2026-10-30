@@ -30,7 +30,11 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원점 O와 y축의 눈금 2, 4가 있고, 점 (4,0), (4,2), (4,4)를 지나는 세로 직선 x=4가 식 라벨과 함께 그려져 있다.",
+    "solutionImageCaption": "방정식 x=4의 해는 x좌표가 4인 점 (4,y) 전체이므로 점 (4,0), (4,2), (4,4)가 모두 직선 x=4 위에 놓인다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -61,7 +65,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 윗변과 아랫변이 평행한 사다리꼴에서 왼쪽 다리 양 끝의 두 내각이 호 한 개와 호 두 개로 표시되고 '두 각의 합 180°'가 적혀 있으며, 오른쪽 다리는 비스듬히 기울어 있다.",
+    "solutionImageCaption": "윗변과 아랫변이 평행한 사다리꼴에서 한 다리 양 끝의 두 내각의 합이 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -123,7 +131,11 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=-ax-1과 직선 y=2x-3/2가 서로 평행하게 그려져 있고, 두 직선은 y축과 (0,-1), (0,-3/2)에서 만난다. 각 직선의 식은 그 직선의 오른쪽 위 끝에서 지시선으로 연결되어 있다.",
+    "solutionImageCaption": "두 직선 y=-ax-1과 y=2x-3/2이 서로 평행하면서 y절편이 (0,-1), (0,-3/2)로 달라 만나지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -154,7 +166,11 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 음수이고 x절편과 y절편이 모두 음수인 직선 x+ay-b=0이 좌표평면에 그려져 있고, 두 절편이 축 위의 점으로 표시되어 있다.",
+    "solutionImageCaption": "a>0, b<0일 때 직선 x+ay-b=0은 기울기가 음수이고 x절편 b와 y절편 b/a가 모두 음수이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -185,7 +201,11 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선 x=0, x+y-4=0, 3x-y-4=0이 이루는 삼각형이 옅게 칠해져 있고, 꼭짓점 (0,4), (0,-4), (2,2)와 꼭짓점 (2,2)에서 직선 x=0까지의 높이 2를 나타내는 점선이 표시되어 있다.",
+    "solutionImageCaption": "세 직선으로 둘러싸인 삼각형의 꼭짓점은 (0,4), (0,-4), (2,2)이고 꼭짓점 (2,2)에서 직선 x=0까지의 거리는 2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -218,7 +238,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠XOY의 이등분선 OP 위의 점 P에서 변 OX, OY에 내린 수선의 발 A, B가 있고, 같은 호로 표시된 ∠POA와 ∠POB, 두 직각 표시, 같은 길이로 표시된 PA와 PB, 빨간 굵은 선으로 강조된 공통 변 OP가 그려져 있다.",
+    "solutionImageCaption": "각의 이등분선 위의 점 P에서 두 변에 내린 수선의 발 A, B에 대해 ∠POA=∠POB, OP는 공통, ∠OAP=∠OBP=90°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -252,7 +276,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 O는 AC, BC의 수직이등분선의 교점이다. OD⊥BC, OE⊥AC와 BD=DC, AE=EC를 표시하고 OA=OB=OC를 같은 눈금으로 나타냈으며, 삼각형 AOB를 칠하고 AB의 중점에서 O로 이은 수선을 보였다.",
+    "solutionImageCaption": "O가 AC, BC의 수직이등분선 위에 있으므로 OA=OC, OB=OC이고 OA=OB=OC이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -285,7 +313,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I와 외심 O를 나타낸 그림. ∠A=x(80°), ∠BIC=130°, ∠BOC=y(160°)를 표시하고 OA=OB=OC를 같은 눈금으로, ∠OAB=p와 ∠OAC=q를 호로 나타냈다.",
+    "solutionImageCaption": "내심 I에서 ∠BIC=130°이고 외심 O에서 OA=OB=OC이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -318,7 +350,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 외심 O에서 세 꼭짓점 A, B, C로 이은 반지름 OA=OB=OC를 같은 눈금으로 나타내고, 세 중심각 96°, 144°, 120°와 꼭짓점 C에서 ∠ACO=30°, ∠OCB=18°를 표시한 그림.",
+    "solutionImageCaption": "중심각의 비 4:6:5에서 세 중심각을 구하고 꼭짓점 C의 두 밑각을 나타낸 그림.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -351,7 +387,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F를 표시한 그림. AD=AF=4cm, BD=BE=5cm를 같은 눈금으로 나타내고 CE=CF를 x로 나타냈다.",
+    "solutionImageCaption": "접점에서 꼭짓점까지의 길이가 같다: AF=AD=4cm, BE=BD=5cm, CE=CF=x.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -384,7 +424,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 ∠A의 이등분선 AD를 긋고 D에서 AB에 내린 수선의 발 H를 표시한 그림. DH=DC=6cm를 같은 눈금으로 나타내고 AB=24cm를 밑변으로 하는 삼각형 ABD를 칠했다.",
+    "solutionImageCaption": "D에서 AB에 내린 수선 DH는 DC와 같은 6cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -450,7 +494,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 ∠C=108°, ∠D=72°와 DE가 ∠D를 이등분한 ∠ADE=∠EDC=36°, AE⊥DE인 직각 표시, 평행한 변의 화살표, 구하는 ∠DAE=x를 나타낸 그림.",
+    "solutionImageCaption": "∠D=72°를 DE가 이등분하여 ∠ADE=36°이고 ∠AED=90°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -516,7 +564,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD를 선분 EF로 접어 점 C가 점 A에 포개진 그림. ∠EAF=72°, ∠AEC=108°, ∠AEF=∠FEC=54°, ∠EFA=54°를 표시하고 EA=EC이며, ∠EFD와 ∠GFE가 대응각이라 같음을 같은 호 표시로 나타낸다.",
+    "solutionImageCaption": "접어 겹친 선분 EF가 ∠AEC를 54°씩 나누고 ∠EFD=∠GFE이다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -549,7 +601,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위의 점 P에서 BP:PC=3:2이고 △ABC의 넓이가 75cm²임을 BC 아래 치수선 옆에 적고, 꼭짓점 A에서 BC에 내린 공통 높이와 △ABP, △APC를 서로 다른 색으로 칠해 나타낸 그림.",
+    "solutionImageCaption": "높이가 같은 두 삼각형의 넓이비는 밑변의 비 3:2이다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -582,7 +638,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 점 D, A, E와 수선 DB=6cm, EC=8cm, 직각이등변삼각형 ABC의 직각 A를 그리고 △ADB와 △CEA의 대응각·변을 표시하며 AD=8cm, AE=6cm, DE=14cm와 사다리꼴 DBCE의 넓이 98cm²를 나타낸 그림.",
+    "solutionImageCaption": "합동인 두 직각삼각형으로 AD=CE=8cm, AE=DB=6cm, DE=14cm를 얻는다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -615,7 +675,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠C=90°인 직각삼각형 ABC의 외접원(중심 O가 빗변 AB의 중점)과 내접원(중심 I)을 그리고 AB=5cm, BC=3cm, AC=4cm를 표시했으며 I에서 세 변에 내린 같은 길이의 수선 r을 점선으로 나타낸 그림.",
+    "solutionImageCaption": "외심 O는 AB의 중점이고 내심 I에서 세 변까지의 거리 r은 같다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -648,7 +712,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD에서 AB 위의 점 E와 대각선 BD 위의 점 F를 잡아 BE=BF=12, BC=18을 표시하고, ∠BEF, ∠EFB, ∠DFC, ∠DCF가 같음을 호 표시로 나타내며 DF=DC=18을 두 눈금과 길이로 표시한 그림.",
+    "solutionImageCaption": "네 각 ∠BEF, ∠EFB, ∠DFC, ∠DCF가 같으므로 DF=DC이다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -669,11 +737,15 @@ window.questionBank=[
     "content": "[서술형 1] 다음 세 일차방정식의 그래프가 삼각형을 이루지 않도록 하는 수 $a$의 값들의 합을 구하고, 구하는 과정을 서술하시오. (단, $a\\ne0$) [7점]\n$x+y-5=0,\\quad -3x+y+7=0,\\quad ax+y+4=0$",
     "choices": [],
     "answer": "$-4$",
-    "solution": "[키포인트] 세 직선이 삼각형을 만들지 않는 경우는 두 직선이 평행하거나 세 직선이 한 점에서 만나는 경우이다.\ne0$이다.\n첫째 직선은 $y=-x+5$이므로 세 번째 직선의 기울기 $-a$가 $-1$이면 $a=1$이다. 둘째 직선은 $y=3x-7$이므로 $-a=3$에서 $a=-3$이다. 첫째와 둘째 직선의 교점은 $x+y=5$, $-3x+y=-7$을 풀어 $(3,2)$이다. 이 점이 세 번째 직선 위에 있으면 $3a+2+4=0$이므로 $a=-2$이다. 따라서 합은 $1+(-3)+(-2)=-4$이다.\n따라서 구하는 값은 $-4$이다.",
+    "solution": "[키포인트] 세 직선이 삼각형을 만들지 않는 경우는 두 직선이 평행하거나 세 직선이 한 점에서 만나는 경우이다.\n첫째 직선은 $y=-x+5$이므로 세 번째 직선의 기울기 $-a$가 $-1$이면 $a=1$이다. 둘째 직선은 $y=3x-7$이므로 $-a=3$에서 $a=-3$이다. 첫째와 둘째 직선의 교점은 $x+y=5$, $-3x+y=-7$을 풀어 $(3,2)$이다. 이 점이 세 번째 직선 위에 있으면 $3a+2+4=0$이므로 $a=-2$이다. 따라서 합은 $1+(-3)+(-2)=-4$이다.\n따라서 구하는 값은 $-4$이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 x+y-5=0, -3x+y+7=0과 두 직선의 교점 (3,2)를 표시하고, 세 번째 직선 ax+y+4=0이 첫째 직선과 평행한 경우, 둘째 직선과 평행한 경우, 두 직선의 교점을 지나는 경우의 세 위치를 한 좌표평면에 그린 그림. 서로 평행한 두 직선에는 같은 개수의 화살표가 표시되어 있다.",
+    "solutionImageCaption": "세 번째 직선이 평행하거나 교점을 지나면 삼각형이 만들어지지 않는다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -700,7 +772,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 꼭지각 A의 56°, 같은 길이 표시(AB와 AC), 밑각 B와 C를 같은 빨간 겹호로 표시하고, CD가 이등분하는 ∠ACD와 ∠DCB를 같은 파란 호로, D에서 ∠BDC의 호를 보여 준다.",
+    "solutionImageCaption": "AB=AC인 이등변삼각형에서 두 밑각이 같고 CD가 ∠C를 이등분함을 표시한 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -727,6 +803,10 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 두 대각선이 O에서 직각으로 만나고 OC=6cm이며 OD(x)와 같은 길이 표시가 있다. E에서 ∠BEO=65°, 꼭짓점 B에서 ∠ABE=y(빨강), ∠EBO=25°(파랑), ∠ABO=45°(초록) 호를 보여 준다.",
+    "solutionImageCaption": "정사각형의 대각선 성질과 ∠BEO=65°에서 꼭짓점 B의 세 각 y, 25°, 45°의 관계를 표시한 그림이다.",
+    "solutionImageSize": "medium"
   }
 ];

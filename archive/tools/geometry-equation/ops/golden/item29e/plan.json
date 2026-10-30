@@ -1,0 +1,23 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "axisVariable": false,
+  "rows": [{"kind": "POINTS", "band": false, "points": [
+   {"id": "O", "value": "0"},
+   {"id": "P", "value": "sqrt(2)", "showValue": false},
+   {"id": "Q", "value": "sqrt(3)", "showValue": false}
+  ]}],
+  "constructions": [
+   {"id": "c1", "center": "O", "radius": {"value": "sqrt(2)"}, "arc": {"side": "RIGHT"}, "hits": [{"id": "P", "branch": "RIGHT"}], "source": {"grid": true, "from": [0, 0], "to": [1, 1], "toName": "A"}},
+   {"id": "c2", "center": "O", "radius": {"value": "sqrt(3)"}, "arc": {"side": "RIGHT"}, "hits": [{"id": "Q", "branch": "RIGHT"}], "source": {"perpendicular": {"at": "P", "height": "1", "toName": "B"}}}
+  ]
+ },
+ "numberLineCaption": {"text": "컴퍼스로 그린 두 호"},
+ "caption": "원점 O를 중심으로 하고 정사각형의 대각선 OA를 반지름으로 하는 호가 수직선과 만나는 점 P, P에서 세운 수선 BP를 한 변으로 하는 직각삼각형 OBP의 빗변 OB를 반지름으로 하는 호가 수직선과 만나는 점 Q",
+ "sourceConditions": [
+  {"id": "c1", "condition": "원점 O를 중심으로 OA를 반지름으로 하는 원이 수직선과 만나는 점 P (OA는 한 변의 길이가 1인 정사각형의 대각선)", "mappedTo": ["numberLine.constructions"]},
+  {"id": "c2", "condition": "직각삼각형 OBP에서 BP=1", "mappedTo": ["numberLine.constructions"]},
+  {"id": "c3", "condition": "OB=OQ인 점 Q", "mappedTo": ["numberLine.constructions"]}
+ ],
+ "newVisualInformation": ["정사각형의 대각선 OA를 반지름으로 한 호, 점 P에서 세운 수선 BP와 직각삼각형 OBP의 빗변 OB를 반지름으로 한 호를 수직선에 나타낸다(점 P, Q의 값은 쓰지 않음)"]
+}

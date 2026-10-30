@@ -458,7 +458,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 주사위 A의 눈 x를 가로, 주사위 B의 눈 y를 세로로 놓은 6×6 표에서 2x-y=5를 만족시키는 (3,1), (4,3), (5,5) 세 칸이 색칠되어 있다.",
+    "solutionImageCaption": "2x-y=5를 만족시키는 칸을 색칠한 두 주사위 A, B의 6×6 표",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -601,7 +605,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 해인이가 각 판에서 이기면 승(확률 3/4), 지면 패(확률 1/4)로 가지를 나누고, 한 사람이 2승을 하면 끝나도록 그린 수형도이다. 여섯 경우마다 지나는 가지의 확률의 곱이 적혀 있고, 해인이가 이기는 승승, 승패승, 패승승은 굵은 선과 동그라미로 표시되어 있다.",
+    "solutionImageCaption": "해인이의 승패에 따라 먼저 2점을 얻으면 끝나는 게임을 나타낸 수형도(이기는 세 경우 표시, 각 경우의 확률)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

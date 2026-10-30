@@ -1,0 +1,383 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "8"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "6"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "MIDPOINT",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "MIDPOINT",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "F",
+    "op": "MIDPOINT",
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "lAB",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lBC",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "pD",
+    "op": "PERPENDICULAR_THROUGH",
+    "inputs": [
+     "D",
+     "lAB"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "pE",
+    "op": "PERPENDICULAR_THROUGH",
+    "inputs": [
+     "E",
+     "lBC"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "O",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "pD",
+     "pE"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAD",
+   "refs": [
+    "A",
+    "D"
+   ]
+  },
+  {
+   "id": "sDB",
+   "refs": [
+    "D",
+    "B"
+   ]
+  },
+  {
+   "id": "sBE",
+   "refs": [
+    "B",
+    "E"
+   ]
+  },
+  {
+   "id": "sEC",
+   "refs": [
+    "E",
+    "C"
+   ]
+  },
+  {
+   "id": "sCF",
+   "refs": [
+    "C",
+    "F"
+   ]
+  },
+  {
+   "id": "sFA",
+   "refs": [
+    "F",
+    "A"
+   ]
+  },
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  },
+  {
+   "id": "sOC",
+   "refs": [
+    "O",
+    "C"
+   ]
+  },
+  {
+   "id": "sOD",
+   "refs": [
+    "O",
+    "D"
+   ]
+  },
+  {
+   "id": "sOE",
+   "refs": [
+    "O",
+    "E"
+   ]
+  },
+  {
+   "id": "sOF",
+   "refs": [
+    "O",
+    "F"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "O"
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sOA",
+     "sOB",
+     "sOC"
+    ]
+   },
+   {
+    "id": "e2",
+    "count": 2,
+    "segments": [
+     "sFA",
+     "sCF"
+    ]
+   },
+   {
+    "id": "e3",
+    "count": 3,
+    "segments": [
+     "sAD",
+     "sDB"
+    ]
+   },
+   {
+    "id": "e4",
+    "count": 1,
+    "markStyle": "CIRCLE",
+    "segments": [
+     "sBE",
+     "sEC"
+    ]
+   }
+  ],
+  "regions": [
+   {
+    "id": "rg1",
+    "fill": "LIGHT",
+    "shapes": [
+     {
+      "polygon": [
+       "O",
+       "F",
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "rg2",
+    "fill": "MEDIUM",
+    "shapes": [
+     {
+      "polygon": [
+       "O",
+       "F",
+       "C"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "caption": "외심 O는 세 꼭짓점에서 같은 거리에 있어 OA=OB=OC이고, OF⊥AC이므로 AF=FC이다. 색칠한 △OFA와 △OFC는 OF가 공통, ∠OFA=∠OFC=90°, AF=FC이므로 합동이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "점 O는 △ABC의 외심, OD⊥AB, OE⊥BC, OF⊥AC",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "OA=OB=OC, AF=FC 눈금과 합동인 두 직각삼각형 OFA, OFC(색칠)가 드러난다."
+ ],
+ "sourceQuote": "현을 이등분하여 $AF=FC$이다",
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 520
+ },
+ "rightAngles": [
+  {
+   "id": "rD",
+   "refs": [
+    "O",
+    "D",
+    "A"
+   ]
+  },
+  {
+   "id": "rE",
+   "refs": [
+    "O",
+    "E",
+    "C"
+   ]
+  },
+  {
+   "id": "rF1",
+   "refs": [
+    "O",
+    "F",
+    "A"
+   ]
+  },
+  {
+   "id": "rF2",
+   "refs": [
+    "O",
+    "F",
+    "C"
+   ]
+  }
+ ]
+}

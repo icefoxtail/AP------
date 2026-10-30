@@ -1,0 +1,10 @@
+// usage: node diag-mathjax.cjs <data path relative to archive/> [mode=sol]
+const {chromium}=require('playwright');const http=require('http'),fs=require('fs'),path=require('path');
+const ROOT='/home/user/AP------/';const types={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.woff':'font/woff','.woff2':'font/woff2','.ttf':'font/ttf'};
+const srv=http.createServer((q,r)=>{const p=decodeURIComponent(new URL(q.url,'http://x').pathname),f=path.resolve(ROOT,'.'+p);if(!fs.existsSync(f)||fs.statSync(f).isDirectory()){r.writeHead(404);r.end();return;}r.writeHead(200,{'content-type':types[path.extname(f)]||'application/octet-stream'});fs.createReadStream(f).pipe(r);});
+(async()=>{await new Promise(r=>srv.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+srv.address().port;
+const [data,mode]=process.argv.slice(2);const b=await chromium.launch();const p=await b.newPage({viewport:{width:1100,height:1400}});
+await p.goto(base+'/archive/engine.html?preview=1&mode='+(mode||'sol')+'&data='+encodeURIComponent(data),{waitUntil:'domcontentloaded'});
+const seen=new Map();for(let t=0;t<120;t++){const got=await p.evaluate(()=>[...document.querySelectorAll("mjx-merror")].map(e=>({err:e.getAttribute("data-mjx-error")||"",txt:e.textContent.slice(0,160),ctx:(e.closest("mjx-container")?.parentElement?.textContent||"").replace(/\s+/g," ").slice(0,200)})));for(const g of got)seen.set(g.err+g.txt,g);if(await p.evaluate(()=>document.documentElement.dataset.apRenderError))break;await p.waitForTimeout(100);}console.log(JSON.stringify([...seen.values()],null,1));
+const out=await p.evaluate(()=>[...document.querySelectorAll('mjx-merror')].map(e=>{const c=e.closest('[data-q-id],[data-qid],.question,.q-item,article,section');return {err:e.getAttribute('data-mjx-error')||e.textContent.slice(0,120),ctx:(c?c.textContent:e.parentElement.textContent).replace(/\s+/g,' ').slice(0,160)};}));
+console.log(JSON.stringify(out,null,1));console.log('renderError=',await p.evaluate(()=>document.documentElement.dataset.apRenderError));await b.close();srv.close();})();

@@ -747,9 +747,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 130cm부터 180cm까지 계급 크기 10cm인 도수분포 히스토그램에서 주어진 도수 4, 9, 3의 막대를 그리고, 문제에서 비어 있던 140~150 계급은 막대 없이 두며, 묻는 160~170 계급은 값 없는 점선 막대로 나타냈다. 160cm 이상인 두 계급을 짙게 칠해 괄호로 묶고 합 6명을 적은 그림",
-    "solutionImageCaption": "160cm 이상인 두 계급을 묶으면 전체 30명의 20%인 6명이다.",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 키(cm)별 학생 수를 나타낸 히스토그램. 130~140은 4명, 150~160은 9명, 170~180은 3명이고, 160~170 계급은 점선 테두리 안에 물음표로 표시되어 있다. 160 이상의 두 계급을 괄호로 묶어 6명이라고 적혀 있다.",
+    "solutionImageCaption": "160cm 이상인 두 계급을 묶어 6명으로 나타낸 도수분포 히스토그램이다.",
     "solutionImageSize": "medium"
   },
   {

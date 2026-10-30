@@ -247,7 +247,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x(분), 세로축 y(km)인 좌표평면에 토끼와 거북이의 그래프를 함께 그린 그림. 토끼의 그래프는 x축의 10 위치에서 시작해 y=2까지 올라간 뒤 수평으로 이어지고, 거북이의 그래프는 원점에서 오른쪽 위로 곧게 올라가 토끼의 그래프와 두 점에서 만난다. 두 교점은 점으로만 표시했고, x축에는 10부터 60까지 10 간격으로, y축에는 1과 2가 적혀 있다.",
+    "solutionImageCaption": "토끼와 거북이의 그래프가 두 점에서 만난다. 두 교점의 x좌표를 읽는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -471,7 +475,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 네 줄 그림. 첫 수직선에는 8의 양쪽으로 5씩 떨어진 3과 13이 점으로, 둘째 수직선에는 3<x<13이 빈 점 두 개와 굵은 선으로 나타나 있다. 아래 두 줄에는 가능한 값 5, 9, 11이 겹동그라미로, 불가능한 값 3, 15가 ×로 표시되어 있다.",
+    "solutionImageCaption": "두 변이 5 cm, 8 cm이면 나머지 한 변 x는 3<x<13이므로, 이 범위 안의 5, 9, 11은 가능하고 3, 15는 불가능하다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -931,9 +939,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면 위 삼각형 ABC에서 x=-1 위의 변 AB의 길이 5와, 점 C에서 직선 AB에 내린 수선(높이)의 길이 4, 수선의 발의 직각 표시를 나타낸 그림",
-    "solutionImageCaption": "밑변 AB=5이고 점 C에서 직선 AB까지의 높이는 4이다.",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 삼각형 ABC. 점 A(-1, 4), B(-1, -1), C(3, 0)이 있고 AB=5로 적혀 있다. 점 C에서 직선 AB에 내린 수선의 발 (-1, 0)까지의 길이 4가 굵은 선과 직각 표시로 나타나 있다.",
+    "solutionImageCaption": "AB는 x=-1 위에 놓여 AB=5이고, 점 C에서 직선 AB에 내린 수선(높이)의 길이는 4이다.",
     "solutionImageSize": "medium"
   },
   {

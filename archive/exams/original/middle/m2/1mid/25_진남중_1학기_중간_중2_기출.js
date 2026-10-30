@@ -549,7 +549,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 밑면이 한 변 2a²b인 정사각형인 직육면체이다. 색칠한 밑면의 두 변에 2a²b, 옆모서리에 높이 h가 적혀 있고, 그림 위에 부피 V=8a⁵b³이 쓰여 있다.",
+    "solutionImageCaption": "밑면(색칠)이 한 변 2a²b인 정사각형이고 높이가 h, 부피가 8a⁵b³인 직육면체이며, 변의 비율은 모양만 나타낸 것이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -783,7 +787,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 -11≤x≤3 구간에만 그려진 오른쪽 아래로 내려가는 직선 y=ax+1/3이다. 왼쪽 끝점에는 최댓값 4가 점선으로 x=-11, y=4 눈금에 이어져 있고, 오른쪽 끝점에는 최솟값 b가 표시되어 있다.",
+    "solutionImageCaption": "a<0이므로 직선은 오른쪽 아래로 내려가고, -11≤x≤3에서 최댓값 4는 왼쪽 끝점(x=-11)에서, 최솟값 b는 오른쪽 끝점(x=3)에서 생긴다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

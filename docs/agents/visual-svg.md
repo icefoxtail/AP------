@@ -14,6 +14,6 @@
 - SVG 필요인데 자산 없음/학생 UI 미연결/렌더 미검증이면 신규 RELEASE DONE 금지. 기존 승인본은 일괄 무효화하지 않고 UID별로 보강한다. 신규 엔진 중복 제작·미지원 renderer 지원 허위 주장 금지.
 - **실행 정본:** [문제은행 전 문항 문제·해설 Visual/SVG 게이트 CURRENT](../../docs/rules/04_VISUAL/Problem_Bank_All_Items_Problem_And_Solution_Visual_Gate_CURRENT_v1.md). 이번 문서 반영은 POLICY_ONLY이며 전수조사·SVG 신규 제작/렌더 완료를 의미하지 않는다.
 
-## SVG 해설 그림 엔진 라인 (2026-10-26)
+## SVG 해설 그림 엔진 라인 (2026-10-30)
 
-해설 그림 SVG 엔진(`archive/tools/geometry-equation/`)을 이어서 작업하는 실행자는 먼저 `archive/tools/geometry-equation/HANDOFF_SVG_ENGINE.md`를 끝까지 읽고 그 방식(컨트롤러는 지시·검토·병합, 구현은 opencode DeepSeek 작업자, 짧은 단계·감독 스크립트)과 남은 일 순서를 따른다. 그림 작성 규칙 정본은 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`.
+해설 그림 SVG 엔진(`archive/tools/geometry-equation/`)과 기출 해설 그림 캠페인을 이어서 하는 실행자는 먼저 `archive/tools/geometry-equation/HANDOFF_SVG_ENGINE.md`를 끝까지 읽고 그 방식(메인 Claude는 오케스트레이터, 수정·검수는 서로 다른 Sonnet 서브에이전트, 도구는 `archive/tools/geometry-equation/ops/svg-m1/`을 `.tmp/svg-m1/`로 복원)과 남은 일 순서를 따른다. 그림 작성 규칙 정본은 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`. 2026-10-26판 opencode DeepSeek 방식은 끝났고 지금은 Sonnet 방식이다.

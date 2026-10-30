@@ -15,6 +15,42 @@ HATCH_SPACING=0.6       # svg px: consecutive hatch strokes keep one gap
 HATCH_MIN_LINES=3       # fewer drawn strokes than this is not a hatch, it is a stray mark
 HATCH_COVERAGE=0.5      # the hatch must cover at least this share of the region's extent along its normal
 
+LEADER_BOUNDARY_TOLERANCE=1.5   # svg px: a region label's leader starts on the region's boundary (the dense outline of an arc lies a hair inside the true circle)
+LEADER_PROBE=3.0                # svg px: just beyond the start the leader is already outside its own region
+REGION_LABEL_AT_SLACK=26.0      # svg px: a label placed at labelAt stands within this distance of it (the engine looks within 24 px)
+REGION_WEIGHT_STROKE_EM=0.06    # a plain-text name/value label is drawn with this outline stroke (em), the weight of a math label (this observer's own copy)
+REGION_UNIT_POWERS={'2':'\u00b2','3':'\u00b3'}
+
+def region_label_text(row):
+    """The exact text of a name/unit region label as the plan says it (name=value+unit), or None for a plain region label. Written here from the declared rule."""
+    if row.get('labelName') is None and row.get('unit') is None:return None
+    value=row.get('label')
+    if not isinstance(value,str) or not value.strip() or not re.fullmatch(r'[0-9A-Za-z+\-*().,\s\u03c0]{1,24}',value):return None
+    text=re.sub(r'\s+',' ',value.strip().replace('pi','\u03c0').replace('-','\u2212').replace('*','\u00d7'))
+    unit=''
+    if row.get('unit') is not None:
+        m=re.fullmatch(r'([a-z]+)(?:\^([23]))?',str(row['unit']))
+        if m is None:return None
+        unit=m.group(1)+(REGION_UNIT_POWERS[m.group(2)] if m.group(2) else '')
+    return (row['labelName']+'=' if row.get('labelName') is not None else '')+text+(((' ' if re.search(r'[A-Za-z\u03c0]$',text) else '')+unit) if unit else '')
+
+def audit_named_label(node,oid,expected,errors):
+    """A name/unit region label is plain text (outlines, no math glyphs) whose group keeps its text; its outline carries the weight stroke of a math label."""
+    if node is None:return
+    if any(tag(n)=='path' and n.get('data-c') for n in node.iter()) or node.get('data-tex') is not None:errors.append('LABEL_KIND_MISMATCH:'+oid+'-label')
+    if node.get('data-text')!=expected:errors.append('LABEL_TEXT_MISMATCH:'+oid+'-label')
+    try:font=float(node.get('data-font-px'))
+    except (TypeError,ValueError):font=None
+    paths=[n for n in node.iter() if tag(n)=='path']
+    if font is not None and paths and any(abs(float(n.get('stroke-width','0'))-font*REGION_WEIGHT_STROKE_EM)>0.01 or n.get('stroke')!='#111' for n in paths):errors.append('LABEL_WEIGHT_MISMATCH:'+oid+'-label')
+
+def properly_cross(a,b,c,d):
+    """True when the segments a-b and c-d cross at a point inside both (touching at an end does not count)."""
+    u=(b[0]-a[0],b[1]-a[1]);v=(d[0]-c[0],d[1]-c[1]);w=(c[0]-a[0],c[1]-a[1])
+    determinant=u[0]*v[1]-u[1]*v[0]
+    if abs(determinant)<1e-9:return False
+    t=(w[0]*v[1]-w[1]*v[0])/determinant;s=(w[0]*u[1]-w[1]*u[0])/determinant
+    return 1e-6<t<1-1e-6 and 1e-6<s<1-1e-6
 def tag(node):return node.tag.split('}')[-1]
 def sub(p,q):return (p[0]-q[0],p[1]-q[1])
 def norm(v):return math.hypot(v[0],v[1])
@@ -136,7 +172,7 @@ def audit_hatch(record,hatch_nodes,order,errors,observations):
     if any(order[id(node)]<order[id(record['node'])] for node in hatch_nodes):errors.append('REGION_HATCH_COVERED_BY_FILL:'+oid)
     observations.append({'id':oid,'type':'REGION_HATCH','strokes':len(spans),'angleDegrees':max(angles)-min(angles)})
 
-def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes=None):
+def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes=None,leaders=None,leader_ok=None,strokes=None):
     label_boxes=label_boxes or {}
     rows=marks.get('regions',[])
     if not rows:return
@@ -235,18 +271,54 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
         observations.append({'id':oid,'type':'REGION','loops':len(polygons),'pattern':row.get('pattern'),'labelKind':row.get('labelKind','MATH'),
                              'areaPx2':sum(abs(0.5*sum(p[0]*q[1]-q[0]*p[1] for p,q in zip(poly,poly[1:]+poly[:1]))) for poly in polygons)})
     # ---- labels: a region's label belongs to THAT region and to no other one
+    by_id={n.get('id'):n for n in elements if n.get('id')}
     for record in records:
         row=record['row'];oid=record['oid'];box=label_clear(oid+'-label') if row.get('label') is not None else None
         if row.get('label') is None:continue
         if box is None:continue
         corners=[(box[0],box[1]),(box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])]
         centre=(box[0]+box[2]/2,box[1]+box[3]/2)
-        if record['ok'] and not all(area_state(corner,record['polygons'])==1 for corner in corners):errors.append('REGION_LABEL_OUTSIDE:'+oid)
-        if record['ok']:
-            for other in records:
-                if other is record or not other['ok']:continue
-                if any(area_state(point,other['polygons'])==1 for point in [*corners,centre]):
-                    errors.append('REGION_LABEL_IN_OTHER_REGION:'+oid+':'+other['oid']);break
+        probes=[(box[0]+box[2]*i/4,box[1]+box[3]*j/2) for i in range(5) for j in range(3)]
+        placement=row.get('labelPlacement','AUTO')
+        leader=(leaders or {}).get(oid+'-label')
+        # name / unit labels (E32): one plain-text label whose exact text, kind and weight are recomputed here from the plan
+        expected=region_label_text(row)
+        if expected is None and row.get('labelWeight')=='MATH' and row.get('labelKind')=='TEXT':expected=str(row.get('label'))    # a plain-text region name drawn in the weight of the math labels
+        if expected is not None:audit_named_label(by_id.get(oid+'-label'),oid,expected,errors)
+        if placement=='LEADER' and leader is None:errors.append('REGION_LABEL_LEADER_MISSING:'+oid)
+        elif placement=='AUTO' and leader is not None:errors.append('REGION_LABEL_LEADER_UNEXPECTED:'+oid)
+        if leader is not None and record['ok']:
+            # the label stands outside every region; its leader starts on this region's boundary and runs away from it, never entering a region or crossing a stroke
+            if any(area_state(point,other['polygons'])==1 for other in records if other['ok'] for point in probes):errors.append('REGION_LABEL_NOT_OUTSIDE:'+oid)
+            a=(float(leader.get('x1')),float(leader.get('y1')));b=(float(leader.get('x2')),float(leader.get('y2')));length=norm(sub(b,a))
+            boundary=lambda q:min(point_segment_distance(q,poly[i],poly[(i+1)%len(poly)]) for poly in record['polygons'] for i in range(len(poly)))<=LEADER_BOUNDARY_TOLERANCE
+            if leader_ok is not None:leader_ok(oid+'-label',box,boundary)
+            if length>1e-9:
+                unit=((b[0]-a[0])/length,(b[1]-a[1])/length)
+                if area_state((a[0]+unit[0]*LEADER_PROBE,a[1]+unit[1]*LEADER_PROBE),record['polygons'])!=-1:errors.append('REGION_LEADER_ENTERS_REGION:'+oid)
+                steps=max(2,int(length//4))
+                for k in range(steps+1):
+                    d=length*k/steps
+                    if d<LEADER_PROBE:continue
+                    point=(a[0]+unit[0]*d,a[1]+unit[1]*d)
+                    if any(area_state(point,other['polygons'])==1 for other in records if other['ok']):errors.append('REGION_LEADER_IN_REGION:'+oid);break
+                for sid,pts in (strokes or []):
+                    if any(properly_cross(a,b,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('REGION_LEADER_CROSSES:'+oid+':'+str(sid))
+            observations.append({'id':oid,'type':'REGION_LABEL_LEADER','lengthPx':length})
+        else:
+            if record['ok'] and not all(area_state(corner,record['polygons'])==1 for corner in corners):errors.append('REGION_LABEL_OUTSIDE:'+oid)
+            if record['ok']:
+                for other in records:
+                    if other is record or not other['ok']:continue
+                    if any(area_state(point,other['polygons'])==1 for point in [*corners,centre]):
+                        errors.append('REGION_LABEL_IN_OTHER_REGION:'+oid+':'+other['oid']);break
+            # labelAt (E32): the label stands at the place the plan states
+            if row.get('labelAt') is not None:
+                try:
+                    place=peer_point(row['labelAt']) if isinstance(row['labelAt'],str) else tuple(row['labelAt'])
+                    target=forward(place)
+                    if norm(sub(centre,target))>REGION_LABEL_AT_SLACK:errors.append('REGION_LABEL_NOT_AT_PLACE:'+oid)
+                except (KeyError,TypeError,ValueError):errors.append('REGION_LABEL_AT_INVALID:'+oid)
         # a region's own label must not sit right beside another label (a length or an angle): it would read as one text
         for other,obox in label_boxes.items():
             if other==oid+'-label':continue

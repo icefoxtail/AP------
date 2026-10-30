@@ -130,7 +130,11 @@ window.questionBank = [
     difficultyBoundaryFlag: "NONE",
     legacyLevelCompatibility: "NORMAL",
     subUnitConfidence: "candidate_evidence",
-    subUnitClassificationDepth: "complete_candidate"
+    subUnitClassificationDepth: "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 (-3, 4)를 지나는 수평선과 x축에 같은 평행 표시를 하고, 그 점에서 x축까지 내린 점선의 높이 4와 x축 위의 눈금 -3을 보여 준다.",
+    "solutionImageCaption": "점 (-3, 4)를 지나는 수평선이 x축과 평행함을 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     id: 4,
@@ -172,7 +176,11 @@ window.questionBank = [
     difficultyBoundaryFlag: "NONE",
     legacyLevelCompatibility: "NORMAL",
     subUnitConfidence: "candidate_evidence",
-    subUnitClassificationDepth: "complete_candidate"
+    subUnitClassificationDepth: "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 x-y+4=0, 2x+y+2=0과 y축으로 둘러싸인 삼각형을 색칠하고, y축과 만나는 점 (0,4), (0,-2)와 두 직선의 교점 (-2,2), 교점에서 y축까지의 높이를 점선으로 보여 준다.",
+    "solutionImageCaption": "두 직선과 y축으로 둘러싸인 삼각형의 꼭짓점과 높이를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     id: 5,
@@ -259,7 +267,11 @@ window.questionBank = [
     difficultyBoundaryFlag: "NONE",
     legacyLevelCompatibility: "NORMAL",
     subUnitConfidence: "rule_inferred",
-    subUnitClassificationDepth: "complete_rule"
+    subUnitClassificationDepth: "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 같은 평행한 두 직선 y=4/3x+2와 y=4/3x-1/3을 그리고, 각 직선이 y축과 만나는 점을 표시해 y절편만 다름을 보여 준다.",
+    "solutionImageCaption": "해가 없는 연립방정식의 두 직선은 기울기가 같고 y절편만 다른 평행선이다.",
+    "solutionImageSize": "medium"
   },
   {
     id: 7,
@@ -1031,7 +1043,11 @@ window.questionBank = [
     difficultyBoundaryFlag: "NONE",
     legacyLevelCompatibility: "NORMAL",
     subUnitConfidence: "candidate_evidence",
-    subUnitClassificationDepth: "complete_candidate"
+    subUnitClassificationDepth: "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 완만한 직선 위의 두 점 (-4,1), (-2,2)와 가파른 직선 위의 두 점 (0,-1), (1,2)를 눈금과 점선으로 읽고, 두 직선이 만나는 점의 위치를 표시한 좌표평면 그림이다.",
+    "solutionImageCaption": "각 직선 위의 두 점을 읽고 두 직선의 교점을 표시한 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     id: 24,

@@ -7,6 +7,7 @@ import html
 from .geometry_model import finite
 
 DIRECTIONS=('N','NE','E','SE','S','SW','W','NW')
+PATH_LABEL_SIDE_MIN_DOT=0.5   # E37: a direction counts as on a path's side when its cosine with that side's normal is at least this (45 degrees either way is 0.707)
 OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
@@ -20,6 +21,10 @@ TICK_LABEL_GAPS=(8,12,16)
 TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
 # Gaps tried from each alternate anchor of a lineFallback label (nearest first; from NEAR_RELOCATION_LEADER_MIN_GAP on, a visible leader is needed).
 LINE_FALLBACK_GAPS=(8,6,10,20,32,48)
+# The wide search of a line-owned label (E31): when no ordinary anchor found room, anchors are sampled over the whole drawn chord of the line.
+WIDE_LINE_GAPS=(8,6,10,14,20,28,38,50,64)
+WIDE_LINE_STEPS=24                 # anchors at t = 1/(steps+1) ... steps/(steps+1) along the drawn line, the ones nearest the preferred anchor first
+LEADER_NEAR_START_MIN_PX=1.5       # a leader starting beside a parallel neighbour keeps at least this far from it (near_start leaders)
 
 @dataclass(frozen=True)
 class Box:
@@ -120,7 +125,9 @@ def segment_segment_distance(a,b,c,d):
         if cross(ab,ac)*cross(ab,ad)<=1e-12 and cross(cd,ca)*cross(cd,cb)<=1e-12:return 0.0
     return min(point_segment_distance(a,c,d),point_segment_distance(b,c,d),point_segment_distance(c,a,b),point_segment_distance(d,a,b))
 
-def leader_clear(start,end,obstacles,owner_ids,clearance=6.0):
+def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False):
+    """near_start (E31): a leader that starts on its own line right beside a parallel neighbour (closer than `clearance`) may leave it when it only moves
+    away from that neighbour: the closest approach to the neighbour is its start, which keeps at least LEADER_NEAR_START_MIN_PX from it, and it never crosses it."""
     def intersection_points(a,b,c,d):
         cross=lambda u,v:u[0]*v[1]-u[1]*v[0]
         r=(b[0]-a[0],b[1]-a[1]);s=(d[0]-c[0],d[1]-c[1]);den=cross(r,s);q=(c[0]-a[0],c[1]-a[1])
@@ -153,6 +160,13 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0):
         if owner:
             points=[point for c,d in segments for point in intersection_points(start,end,c,d)]
             if any(math.dist(point,start)>1e-4 for point in points):return False
+            continue
+        if near_start:
+            for c,d in segments:
+                gap=segment_segment_distance(start,end,c,d)
+                if gap>clearance:continue
+                start_gap=point_segment_distance(start,c,d)
+                if start_gap<LEADER_NEAR_START_MIN_PX or gap<start_gap-1e-6:return False
             continue
         if any(segment_segment_distance(start,end,c,d)<=clearance for c,d in segments):return False
     return True
@@ -302,12 +316,16 @@ def box_segment_distance(box,a,b,samples=32):
 LINE_LABEL_OWN_MAX=10.0
 LINE_LABEL_OTHER_MARGIN=24.0
 
-def line_label_unambiguous(box,own,others):
+# ownership NEAREST (E32): a label in a crowded corner (the side of a small triangle among its other sides) names its line when that line is the nearest one by this much only
+RELAXED_LINE_LABEL_OWN_MAX=14.0
+RELAXED_LINE_LABEL_MARGIN=4.0
+
+def line_label_unambiguous(box,own,others,own_max=LINE_LABEL_OWN_MAX,margin=LINE_LABEL_OTHER_MARGIN):
     """A label box names its line without a leader only when its own drawn line is the nearest by a clear margin."""
     pairs=lambda o:list(zip(o["geometry"],o["geometry"][1:]))
     own_distance=min(box_segment_distance(box,c,d) for c,d in pairs(own))
-    if own_distance>LINE_LABEL_OWN_MAX:return False
-    return all(min(box_segment_distance(box,c,d) for c,d in pairs(o))>=own_distance+LINE_LABEL_OTHER_MARGIN for o in others)
+    if own_distance>own_max:return False
+    return all(min(box_segment_distance(box,c,d) for c,d in pairs(o))>=own_distance+margin for o in others)
 
 def segment_on_line(owner,c,d,tolerance=0.5):
     """True when the segment c-d lies on the (infinite) line through the drawn segment `owner`: a polygon edge or a segment drawn over the line it
@@ -327,7 +345,7 @@ def competing_lines(owner,obstacles):
 
 def owner_line_incident_ids(owner,start,occupied):
     """The line a label names and every other drawn line with a piece over it that passes through the anchor: a leader may touch these only there."""
-    return {owner['id']}|{o.get('id') for o in occupied if o.get('kind')=='line' and o is not owner and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+    return {owner['id']}|{o.get('id') for o in occupied if o.get('kind') in {'line','curve'} and o is not owner and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
         and any(segment_on_line(owner,c,d) and point_segment_distance(start,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
 
 def owner_incident_ids(start,owner_marker,occupied):
@@ -338,10 +356,18 @@ def owner_incident_ids(start,owner_marker,occupied):
     incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=1e-3}
     return incident
 
-def visible_owner_leader(start,box,occupied,incident):
+def line_between(start,box,occupied,incident):
+    """(E31 lineBarrier) True when a line, axis or curve that does not pass through the anchor crosses the straight way from the anchor to the box: the label would read as sitting beyond it."""
+    center=(box.x+box.width/2,box.y+box.height/2)
+    if math.hypot(center[0]-start[0],center[1]-start[1])<=1e-9:return False
+    end=owner_leader_endpoint(box,start,center)
+    return any(o.get('kind') in {'line','axis','auxiliary','curve'} and o.get('id') not in incident and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+               and any(segment_segment_distance(start,end,c,d)<=1.0 for c,d in zip(o['geometry'],o['geometry'][1:])) for o in occupied)
+
+def visible_owner_leader(start,box,occupied,incident,near_start=False):
     """End of a leader from the point to the label box, or None when it would touch other geometry or hide along a line through the point."""
     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
-    if not leader_clear(start,end,occupied,incident):return None
+    if not leader_clear(start,end,occupied,incident,near_start=near_start):return None
     # A leader running along a line through the point (within 15 degrees) hides under that line: not a visible leader.
     if any(o.get('id') in incident and o.get('kind') in {'line','axis','auxiliary','curve','leader'} and isinstance(o.get('geometry'),(list,tuple))
            and any(point_segment_distance(start,c,d)<=1e-3 and leader_hides_along(start,end,c,d) for c,d in zip(o['geometry'],o['geometry'][1:]))
@@ -487,6 +513,96 @@ def angle_labels_first_order(label):
     wedge=label.get('wedgeSearch')
     return (label.get('priority',2),0 if wedge else 1,abs(wedge['delta']) if wedge else 0.0,label['id'])
 
+# ---- region labels on a leader (E32) ------------------------------------------------------------------------------------------------------------------
+# A region whose label does not fit inside it (or that a drawn line cuts into small cells) writes the label OUTSIDE, on a straight leader that starts on the region's outer
+# boundary and runs away from it. The label box stays out of this region and every other filled region (and off their boundaries), and the leader crosses no stroke and enters
+# no filled region.
+REGION_LEADER_CLEARANCE_PX=3.0
+REGION_LEADER_MIN_ALIGNMENT=0.3     # a compass box direction must point at least this much (cosine) along the anchor's outward normal
+REGION_LEADER_SAMPLE_STEP_PX=4.0
+
+def point_in_even_odd(point,polygons):
+    inside=False
+    for poly in polygons:
+        for (ax,ay),(bx,by) in zip(poly,poly[1:]+poly[:1]):
+            if (ay>point[1])!=(by>point[1]) and point[0]<(bx-ax)*(point[1]-ay)/(by-ay)+ax:inside=not inside
+    return inside
+
+def box_outside_regions(box,region_polygons):
+    """True when no part of the box lies in any of the regions (each an even-odd list of screen polygons) or within REGION_LEADER_CLEARANCE_PX of their boundaries."""
+    probes=[(box.x+box.width*i/4,box.y+box.height*j/2) for i in range(5) for j in range(3)]
+    padded=box.expand(REGION_LEADER_CLEARANCE_PX)
+    for polygons in region_polygons:
+        if any(point_in_even_odd(p,polygons) for p in probes):return False
+        if any(segment_hits_box(a,b,padded) for poly in polygons for a,b in zip(poly,poly[1:]+poly[:1])):return False
+    return True
+
+def leader_avoids_regions(start,end,region_polygons,skip=3.0):
+    """True when the leader enters none of the regions after its first `skip` px (it starts on the boundary of its own region)."""
+    length=math.dist(start,end)
+    if length<=1e-9:return False
+    steps=max(2,int(length//REGION_LEADER_SAMPLE_STEP_PX))
+    for k in range(steps+1):
+        d=length*k/steps
+        if d<skip:continue
+        point=(start[0]+(end[0]-start[0])*d/length,start[1]+(end[1]-start[1])*d/length)
+        if any(point_in_even_odd(point,polygons) for polygons in region_polygons):return False
+    return True
+
+def region_leader_placement(label,w,h,occupied,acceptable):
+    """(box, leader start, leader end, direction) for a region label standing outside its region on a leader from the region's boundary, or None."""
+    site=label['regionLeader'];own=site['polygons']
+    all_regions=[own]+[row['polygons'] for row in site.get('regions',[]) if row.get('id')!=label.get('target')]
+    anchors=list(site['anchors']);near=site.get('near')
+    if near is not None:anchors.sort(key=lambda row:math.dist(row['at'],near))
+    for row in anchors:
+        start=tuple(row['at']);normal=tuple(row['normal'])
+        incident={o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+                  and any(point_segment_distance(start,c,d)<=0.5 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+        incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=0.5}
+        support=abs(normal[0])*w/2+abs(normal[1])*h/2
+        for gap in site['gaps']:
+            reach=gap+support;center=(start[0]+normal[0]*reach,start[1]+normal[1]*reach)
+            boxes=[Box(center[0]-w/2,center[1]-h/2,w,h)]
+            for direction in DIRECTIONS:
+                dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
+                if (dx*normal[0]+dy*normal[1])/math.hypot(dx,dy)<REGION_LEADER_MIN_ALIGNMENT:continue
+                boxes.append(candidate(start,w,h,direction,gap))
+            for box in boxes:
+                if not acceptable(box,owner_check=False) or not box_outside_regions(box,all_regions):continue
+                end=visible_owner_leader(start,box,occupied,incident)
+                if end is None or not leader_avoids_regions(start,end,all_regions):continue
+                theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360
+                return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
+    return None
+
+def arc_leader_placement(label,w,h,occupied,acceptable):
+    """(box, leader start, leader end, direction) for an arc label on a leader from its own arc (E32): the outer side of the arc first (every anchor, the shortest leader first), the
+    inner side only when no outside place is free (a label inside a lens would take the room of the lens's own value); every box clear of the marks and the leader clear of every
+    stroke but the arc it starts on."""
+    site=label['arcLeader'];owner_ids=set(site['ownerIds'])
+    for sign in (1,-1):
+        for row in site['anchors']:
+            start=tuple(row['at']);normal=tuple(row['normal'])
+            incident=owner_ids|{o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+                                and any(point_segment_distance(start,c,d)<=0.5 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+            incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=0.5}
+            direction_vector=(normal[0]*sign,normal[1]*sign);support=abs(direction_vector[0])*w/2+abs(direction_vector[1])*h/2
+            for gap in site['gaps']:
+                reach=gap+support;center=(start[0]+direction_vector[0]*reach,start[1]+direction_vector[1]*reach)
+                boxes=[Box(center[0]-w/2,center[1]-h/2,w,h)]
+                for name in DIRECTIONS:
+                    dx=1 if 'E' in name else -1 if 'W' in name else 0;dy=1 if 'S' in name else -1 if 'N' in name else 0
+                    if (dx*direction_vector[0]+dy*direction_vector[1])/math.hypot(dx,dy)<REGION_LEADER_MIN_ALIGNMENT:continue
+                    boxes.append(candidate(start,w,h,name,gap))
+                for box in boxes:
+                    if not acceptable(box,owner_check=False):continue
+                    end=visible_owner_leader(start,box,occupied,incident)
+                    if end is None:continue
+                    theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360
+                    return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
+    return None
+
 def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False):
     """The placement pass, and - only when some angle label found no place in it - a second pass that places the angle labels narrowest angle first
     (a vertex with several nested angles); the second result replaces the first only when it leaves fewer labels unresolved, so a layout that
@@ -495,7 +611,16 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     if any(any(label['id']==label_id and 'wedgeSearch' in label for label in labels) for label_id in result['unresolved']):
         retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,angle_labels_first_order)
         if len(retry['unresolved'])<len(result['unresolved']):return retry
+    if any(any(label['id']==label_id and label.get('kind')=='TICK_LABEL' for label in labels) for label_id in result['unresolved']):
+        # A tick number beside a point name (the O of the origin and the tick 3 right next to it) found no room because the name took its place first
+        # (equal priority, ordered by id): the second pass places the tick numbers first, so the point name moves to the free side instead.
+        retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
+        if len(retry['unresolved'])<len(result['unresolved']):return retry
     return result
+
+def tick_labels_first_order(label):
+    """The tick-label retry order: at one priority the tick numbers go first (each is bound to its axis tick and may stand on two sides only), then every other label as in the first pass."""
+    return (label.get('priority',2),0 if label.get('kind')=='TICK_LABEL' else 1,label['id'])
 
 def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False,order=None):
     """P0..P4, 8 candidates, coordinate relocation, suppression, side panel.
@@ -557,14 +682,16 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         # collinearOwners: a polygon edge or segment drawn over the labelled line is that line, not a competitor, and a leader may start on it.
         collinear_owners=bool(label.get('collinearOwners'))
         other_lines=(competing_lines(line_owner,obstacles) if collinear_owners else [o for o in obstacles if o.get('kind')=='line' and o is not line_owner]) if line_owner is not None else []
+        owner_limits=(RELAXED_LINE_LABEL_OWN_MAX,RELAXED_LINE_LABEL_MARGIN) if label.get('ownership')=='NEAREST' else (LINE_LABEL_OWN_MAX,LINE_LABEL_OTHER_MARGIN)
         # leaderOwned: ids of the marks (angle arcs, highlighted arcs) a label names; beyond the near gaps a visible leader from its anchor ties it to them.
         leader_owned_ids=set(label.get('leaderOwned',()))
         other_sectors=label.get('wedgeSearch',{}).get('others',())
         def acceptable(box,owner_check=True):
             return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
                 and not (other_sectors and box_in_other_sectors(box,other_sectors))
-                and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines))
+                and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines,*owner_limits))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
+                and (owner_marker is None or not owner_check or not label.get('lineBarrier') or not line_between(tuple(label['at']),box,occupied,owner_incident_ids(tuple(label['at']),owner_marker,occupied)))
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
         def tie_to_owner(end):
             leader_id=label['id']+'-owner-leader'
@@ -579,6 +706,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         # labelPlacement LEADER on an angle mark (E12b): no search inside the angle and no box beside the arc; only the outside leader from its own arc, with the whole box outside the wedge.
         force_leader=bool(label.get('wedgeSearch',{}).get('forceLeader'))
         if force_leader:default_gaps=()
+        if label.get('regionLeader',{}).get('only'):default_gaps=()
         if tick_callout is not None:
             offset=tick_callout['offsetUser'];center=[label['at'][0]+offset[0],label['at'][1]+offset[1]]
             box=Box(center[0]-w/2,center[1]-h/2,w,h)
@@ -635,13 +763,20 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 # A path total-length label (E7): off the path, on a visible leader from a point of the path; the leader touches only the path's own segments, at its start.
                 default_gaps=()
                 site=label['pathOwned'];owner_ids=set(site['ids'])
-                for anchor in site['anchors']:
+                for anchor_index,anchor in enumerate(site['anchors']):
                     for gap in site['gaps']:
                         for direction in DIRECTIONS:
+                            if site.get('sideNormals'):
+                                # E37: only the directions that point to the declared side of the path (a path label with side LEFT / RIGHT)
+                                dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
+                                normal=site['sideNormals'][anchor_index]
+                                if (dx*normal[0]+dy*normal[1])/math.hypot(dx,dy)<PATH_LABEL_SIDE_MIN_DOT:continue
                             box=candidate(anchor,w,h,direction,gap)
                             if not acceptable(box,owner_check=False):continue
+                            if site.get('outside') and not box_outside_regions(box,[[[tuple(p) for p in site['outside']]]]):continue     # closed path: the label stands outside the perimeter
                             end=visible_owner_leader(tuple(anchor),box,occupied,owner_ids)
                             if end is None:continue
+                            if site.get('outside') and not leader_avoids_regions(tuple(anchor),end,[[[tuple(p) for p in site['outside']]]]):continue
                             label={**label,'at':list(anchor)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                         if chosen is not None:break
                     if chosen is not None:break
@@ -687,6 +822,19 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         label['_selectedLeaderPath']=[list(start),list(end)]
                     if acceptable(box) and box_owned(label, box):
                         chosen=box;method='OWNER_BOUND_RELOCATION';break
+            if 'arcLeader' in label and chosen is None:
+                # labelPlacement LEADER on a circular arc (E32): on a leader from the arc, outside or inside its circle
+                default_gaps=()
+                found=arc_leader_placement(label,w,h,occupied,acceptable)
+                if found is not None:
+                    box,start,end,direction=found
+                    label={**label,'at':list(start)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction
+            if 'regionLeader' in label and chosen is None:
+                # labelPlacement LEADER / AUTO_LEADER on a filled region (E32): outside the region on a leader from its outer boundary
+                found=region_leader_placement(label,w,h,occupied,acceptable)
+                if found is not None:
+                    box,start,end,direction=found
+                    label={**label,'at':list(start)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction
             if chosen is None and leader_fallbacks and label.get('leaderRequiresClearPath'):
                 start=label['leaderFrom'];owner_ids=set(label.get('leaderOwnerIds',()))
                 max_length=label.get('leaderMaxLength',label.get('font',13.25)*6)
@@ -773,6 +921,40 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         label={**label,'at':list(alternate)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                     if chosen:break
                 if chosen:break
+        if chosen is None and line_owner is not None:
+            # Wide search (E31): no anchor the author's list names found room. The drawn line is sampled end to end (the anchors nearest the preferred one
+            # first), the nearer places that need no leader before the leader ones; when the line has a parallel neighbour so close that no leader may start
+            # beside it, the leader that starts on its own line and only moves away from that neighbour (near_start) is tried in a second pass.
+            geometry_line=line_owner['geometry'];chord_a,chord_b=geometry_line[0],geometry_line[-1]
+            # wideRange: the band of the drawn line the author asked the label to stand in, counted along the line as drawn (from its first point), or
+            # from its left (lower) end when wideLeftFirst (lineAt).
+            if label.get('wideLeftFirst') and (chord_b[0],-chord_b[1])<(chord_a[0],-chord_a[1]):chord_a,chord_b=chord_b,chord_a
+            chord=(chord_b[0]-chord_a[0],chord_b[1]-chord_a[1]);chord2=chord[0]**2+chord[1]**2
+            if chord2>1e-9:
+                preferred=max(0.0,min(1.0,((label['at'][0]-chord_a[0])*chord[0]+(label['at'][1]-chord_a[1])*chord[1])/chord2))
+                band=label.get('wideRange') or (0.0,1.0)
+                fractions=sorted((t for t in (k/(WIDE_LINE_STEPS+1) for k in range(1,WIDE_LINE_STEPS+1)) if band[0]-1e-9<=t<=band[1]+1e-9),key=lambda t:(round(abs(t-preferred),9),t))
+                wide_anchors=[(chord_a[0]+chord[0]*t,chord_a[1]+chord[1]*t) for t in fractions]
+                for near_start in (False,True):
+                    for gap in WIDE_LINE_GAPS:
+                        for anchor in wide_anchors:
+                            for direction in DIRECTIONS:
+                                base=candidate(anchor,w,h,direction,gap)
+                                # the box straight out from the anchor, then slid sideways along its side (a box above a crowded end between two strokes is rarely centred on the anchor)
+                                slides=((0,0),)+(tuple((k*w/4,0) for k in (-1,1,-2,2)) if direction in ('N','S') else tuple((0,k*h/2) for k in (-1,1,-2,2)) if direction in ('E','W') else ())
+                                for dx,dy in slides:
+                                    box=base if not (dx or dy) else Box(base.x+dx,base.y+dy,w,h)
+                                    if gap<NEAR_RELOCATION_LEADER_MIN_GAP:
+                                        if near_start or not acceptable(box):continue
+                                        label={**label,'at':list(anchor)};chosen=box;method='AUTO_'+direction;break
+                                    if not acceptable(box,owner_check=False):continue
+                                    end=visible_owner_leader(anchor,box,occupied,owner_line_incident_ids(line_owner,anchor,occupied) if collinear_owners else {line_owner['id']},near_start=near_start)
+                                    if end is None:continue
+                                    label={**label,'at':list(anchor)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                                if chosen:break
+                            if chosen:break
+                        if chosen:break
+                    if chosen:break
         if chosen is None and line_owner is None and label.get('lineFallback') and label.get('alternateAt'):
             # lineFallback: a label that was placed the ordinary way (no ownership rule) and found no room; the same line may be written from the other
             # anchors on it, now under the line-owned rules (its own line clearly the nearest, or a visible leader from the anchor on the line).
@@ -782,7 +964,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 fallback_others=competing_lines(fallback_owner,obstacles) if collinear_owners else [o for o in obstacles if o.get('kind')=='line' and o is not fallback_owner]
                 def acceptable_fallback(box,owner_check=True):
                     return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
-                        and (not owner_check or line_label_unambiguous(box,fallback_owner,fallback_others)))
+                        and (not owner_check or line_label_unambiguous(box,fallback_owner,fallback_others,*owner_limits)))
                 for alternate in label['alternateAt']:
                     for gap in LINE_FALLBACK_GAPS:
                         for direction in DIRECTIONS:
@@ -837,8 +1019,10 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 box=Box(panel.x,panel.y+row,pw,ph)
                 if panel.contains(box) and acceptable(box):
                     chosen=box;method='SIDE_PANEL';label={**label,'text':text,'markup':html.escape(label.get('panelPrefix',''))+label['markup'] if label.get('markup') else None};break
-        if (chosen is None and label['kind']=='POINT_NAME' and not label.get('directions') and not label.get('gaps')
-                and label.get('preferred') is None):
+        if (chosen is None and ((label['kind']=='POINT_NAME' and not label.get('directions') and not label.get('gaps') and label.get('preferred') is None)
+                or (label['kind']=='COORDINATE_LABEL' and owner_marker is not None and label.get('ringLeader')))):
+            # (E31) The same last resort for the coordinates of an unnamed point (ringLeader: an overlay point with unnamed+coordinates, a hidden construction point that writes its coordinates):
+            # a box in the nearest free sector, on a visible leader from the point.
             # A point where several strokes meet (the centre of a circle with its radii) leaves no free cardinal direction for its name: the name
             # goes into the nearest free sector around the point, closest to it first. When that sector is outside the point's Voronoi cell (a long
             # name, a narrow sector) a visible leader from the point ties the name back to it.

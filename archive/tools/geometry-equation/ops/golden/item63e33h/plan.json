@@ -1,0 +1,170 @@
+{
+ "capability": "solid-figure-v1",
+ "unit": "cm",
+ "solids": [
+  {
+   "kind": "PYRAMID",
+   "base": {
+    "kind": "POLYGON",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      5.25,
+      -2.904738
+     ],
+     [
+      8.0,
+      0
+     ]
+    ]
+   },
+   "height": 9.931926,
+   "apex": [
+    6.964429,
+    -0.533333
+   ],
+   "names": "ABCV"
+  },
+  {
+   "kind": "PYRAMID",
+   "base": {
+    "kind": "POLYGON",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      7.875,
+      -4.357106
+     ],
+     [
+      12.0,
+      0
+     ]
+    ]
+   },
+   "height": 14.897889,
+   "apex": [
+    10.446643,
+    -0.8
+   ],
+   "names": "A′B′C′V′"
+  }
+ ],
+ "dims": [
+  {
+   "from": "A",
+   "to": "B",
+   "label": "6"
+  },
+  {
+   "from": "V",
+   "to": "C",
+   "label": "x\\ \\mathrm{cm}"
+  },
+  {
+   "from": "B",
+   "to": "C",
+   "label": "z\\ \\mathrm{cm}"
+  },
+  {
+   "from": "A′",
+   "to": "B′",
+   "label": "9"
+  },
+  {
+   "from": "V′",
+   "to": "C′",
+   "label": "15"
+  },
+  {
+   "from": "B′",
+   "to": "C′",
+   "label": "6"
+  }
+ ],
+ "segments": [
+  {
+   "from": "V",
+   "to": "C",
+   "style": "AUTO",
+   "role": "ACCENT"
+  },
+  {
+   "from": "V′",
+   "to": "C′",
+   "style": "AUTO",
+   "role": "ACCENT"
+  },
+  {
+   "from": "B",
+   "to": "C",
+   "style": "AUTO",
+   "role": "REF"
+  },
+  {
+   "from": "B′",
+   "to": "C′",
+   "style": "AUTO",
+   "role": "REF"
+  }
+ ],
+ "highlights": [
+  {
+   "polygon": [
+    "V",
+    "B",
+    "C"
+   ]
+  },
+  {
+   "polygon": [
+    "V′",
+    "B′",
+    "C′"
+   ]
+  }
+ ],
+ "marks": {
+  "angles": [
+   {
+    "refs": [
+     "V",
+     "A",
+     "C"
+    ],
+    "arcs": 1,
+    "equalGroup": "g1",
+    "label": "55^\\circ"
+   },
+   {
+    "refs": [
+     "V′",
+     "A′",
+     "C′"
+    ],
+    "arcs": 1,
+    "equalGroup": "g1",
+    "label": "y^\\circ"
+   }
+  ]
+ },
+ "solidCaption": {
+  "text": "닮음비 2 : 3"
+ },
+ "caption": "두 삼각뿔이 닮은 도형이므로 AB:A′B′=6:9=2:3이다. 대응하는 모서리 VC와 V′C′, BC와 B′C′의 길이의 비도 2:3이고, 대응하는 각 ∠VAC와 ∠V′A′C′의 크기는 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "두 삼각뿔이 닮음이고 AB에 대응하는 모서리가 A′B′, AB=6, A′B′=9, V′C′=15, B′C′=6, ∠A=55°",
+   "mappedTo": "solids"
+  }
+ ],
+ "newVisualInformation": [
+  "대응하는 모서리 AB:A′B′=2:3과 VC, BC에 대응하는 모서리 V′C′, B′C′, 같은 각 표시"
+ ]
+}

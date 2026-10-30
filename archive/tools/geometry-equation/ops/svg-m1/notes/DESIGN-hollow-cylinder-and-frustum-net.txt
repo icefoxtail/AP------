@@ -1,0 +1,20 @@
+E33 design only (not built; each would take more than 2h with its observer)
+
+1) CONE_FRUSTUM net (annular sector ring), net:{kind:"CONE_FRUSTUM", radius:R, topRadius:r, height|slant}
+   - model: slant l = sqrt((R-r)^2+h^2) when the height is given; the generator down to the cone apex is L = l*R/(R-r), the small one L-l;
+     the ring is the sector of angle theta = 360*R/L degrees between the radii L-l and L; arc lengths 2*pi*r and 2*pi*R
+     shapes:{ring:{rOuter:L, rInner:L-l, angleDeg}, bottom:{cx,cy,r:R}, top:{cx,cy,r:r}} (each circle hangs tangent to its arc at the arc midpoint)
+   - dims parts: slant (a straight edge), arcOuter, arcInner, radiusTop, radiusBottom, angle; excluded parts ["bottom","top"]
+   - codes: reuse SOLID_FRUSTUM_TOP_NOT_SMALLER, SOLID_CONE_SLANT_TOO_SHORT (slant <= R-r), SOLID_NET_EMPHASIS_UNSUPPORTED, SOLID_NET_EXCLUDED_INVALID
+   - observer: re-derive l, L, theta from the plan only; read the two arcs and the two straight edges from the ring path in the SVG
+     (centre, both radii, both end angles); check the circles are tangent at the arc midpoints and the dimension texts
+   - render: reuse the cone-net path code with an inner arc; netExcluded, faceLabels and the dimension labels are shared with the cone net.
+
+2) HOLLOW_CYLINDER (pipe, ring column), kind:"HOLLOW_CYLINDER", radius:R, innerRadius:r, height:h
+   - model: outer cylinder plus the same-axis inner cylinder. The top face is an annulus (two ellipses, tinted between); the inner wall is seen through the hole:
+     its far half is visible, its near half hidden; at the bottom the near outer arc is visible and the inner arc hidden (dashed)
+   - dims: outer radius, inner radius (leader to the inner ellipse), height, wall thickness R-r; names:{center,top}; an AXIAL section shows the two walls as rectangles
+   - codes: SOLID_HOLLOW_INNER_NOT_SMALLER, SOLID_HOLLOW_PARAM_INVALID
+   - observer: its own depth test for the inner wall (contour generator points of the inner ellipse by the tangent parameter);
+     tamper cases: the inner wall drawn over the near outer wall, the hole not showing the far wall
+   - the stack machinery (on / nested) already reads round tops through roundTopRadius, so a hollow top needs roundTopRadius = R only.

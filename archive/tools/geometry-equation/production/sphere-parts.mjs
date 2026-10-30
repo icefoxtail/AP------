@@ -10,6 +10,9 @@ const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
 const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
 export const SPHERE_CUT_KINDS=Object.freeze(['HALF','QUARTER','OCTANT','THREE_QUARTERS','SEVEN_EIGHTHS']);
 export const SPHERE_CUT_FACING=Object.freeze(['CUT','CURVED']);
+export const SPHERE_CUT_EDGE_AXES=Object.freeze(['X','Y','Z']);
+// coordinates the KEEP functions below read (their third one is the wedge's edge axis): Z as it is, Y as (x, -z, y), X as (z, y, x)
+const EDGE_FRAME={Z:s=>s,Y:s=>[s[0],-s[2],s[1]],X:s=>[s[2],s[1],s[0]]};
 const isPlain=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 export const AXES=Object.freeze([[1,0,0],[0,1,0],[0,0,1]]);
 /** The three coordinate planes: id is the axis they are perpendicular to, i and j the two axes inside the plane. */
@@ -23,6 +26,9 @@ export const octantName=s=>s.map(sg).join('');
 // Which octants stay. The default facing "CUT" turns the cut faces toward the viewer (the viewer looks from +x, -y, +z): a half with its flat disk, a
 // quarter wedge and a single octant seen into their corner, a notch cut out of the near side. "CURVED" is the same piece turned about the centre by a half turn,
 // so the curved surface faces the viewer and the cut faces are behind.
+// A QUARTER or THREE_QUARTERS wedge has an edge, the radius where its two cut faces meet; `axis` says which coordinate axis that edge lies on: "Z" (the default, standing
+// upright), "Y" (a horizontal edge running into the picture: a vertical and a horizontal half-disk, the quarter removed from the upper right front) or "X" (a horizontal
+// edge along the picture's width). The signs are chosen so that the removed quarter (kept quarter, for QUARTER) still faces the viewer the same way.
 const KEEP={
   HALF:s=>s[1]>0,
   QUARTER:s=>s[0]<0&&s[1]>0,
@@ -30,20 +36,26 @@ const KEEP={
   THREE_QUARTERS:s=>!(s[0]>0&&s[1]<0),
   SEVEN_EIGHTHS:s=>!(s[0]>0&&s[1]<0&&s[2]>0)
 };
-export function octantMask(kind,facing){
-  const keep=KEEP[kind];
-  return [...Array(8).keys()].map(i=>{const s=octantSigns(i);return keep(facing==='CURVED'?s.map(v=>-v):s)?1:0;});
+export function octantMask(kind,facing,axis='Z'){
+  const keep=KEEP[kind],frame=EDGE_FRAME[axis];
+  return [...Array(8).keys()].map(i=>{const s=octantSigns(i);return keep(frame(facing==='CURVED'?s.map(v=>-v):s))?1:0;});
 }
-/** The checked author cut: {kind,facing?}. A plane that does not pass through the centre is refused. */
+/** The checked author cut: {kind,facing?,axis?,rightAngle?}. A plane that does not pass through the centre is refused. */
 export function checkSphereCut(raw){
-  if(!isPlain(raw)||Object.keys(raw).some(key=>!['kind','facing','offset','explode'].includes(key)))bad('SOLID_SPHERE_CUT_INVALID');
+  if(!isPlain(raw)||Object.keys(raw).some(key=>!['kind','facing','offset','explode','axis','rightAngle'].includes(key)))bad('SOLID_SPHERE_CUT_INVALID');
   if(raw.explode!==undefined)bad('SOLID_SPHERE_CUT_EXPLODE_UNSUPPORTED');
   if(raw.offset!==undefined&&raw.offset!==0)bad('SOLID_SPHERE_CUT_OFF_CENTRE');
   if(typeof raw.kind!=='string')bad('SOLID_SPHERE_CUT_INVALID');
   if(!SPHERE_CUT_KINDS.includes(raw.kind))bad('SOLID_SPHERE_CUT_KIND_UNSUPPORTED:'+raw.kind.slice(0,24));
   const facing=raw.facing??'CUT';
   if(!SPHERE_CUT_FACING.includes(facing))bad('SOLID_SPHERE_CUT_FACING_INVALID');
-  return {kind:raw.kind,facing};
+  // axis: the edge of a wedge (QUARTER, THREE_QUARTERS); rightAngle: the two radii perpendicular to that edge, one in each cut face, with the right-angle mark between them
+  const wedge=raw.kind==='QUARTER'||raw.kind==='THREE_QUARTERS';
+  if(raw.axis!==undefined&&(typeof raw.axis!=='string'||!SPHERE_CUT_EDGE_AXES.includes(raw.axis)))bad('SOLID_SPHERE_CUT_AXIS_INVALID');
+  if(raw.axis!==undefined&&!wedge)bad('SOLID_SPHERE_CUT_AXIS_UNSUPPORTED:'+raw.kind);
+  if(raw.rightAngle!==undefined&&raw.rightAngle!==true&&raw.rightAngle!==false)bad('SOLID_SPHERE_CUT_RIGHT_ANGLE_INVALID');
+  if(raw.rightAngle===true&&!wedge)bad('SOLID_SPHERE_CUT_RIGHT_ANGLE_UNSUPPORTED:'+raw.kind);
+  return {kind:raw.kind,facing,axis:raw.axis??'Z',rightAngle:raw.rightAngle===true};
 }
 
 /** The point (relative to the centre) of the rim arc `arc` {plane,quad} at theta in [0, pi/2]: from the plane's first axis toward its second, by the quadrant's signs. */
@@ -93,7 +105,7 @@ function visibilityRuns(hiddenAt){
  * Returns {kind,facing,mask,faces,arcs,creases,limb,radiusAxis}; all numbers rounded.
  */
 export function sphereCutModel(r,rawCut,frame){
-  const {kind,facing}=checkSphereCut(rawCut),mask=octantMask(kind,facing),V=frame.view;
+  const {kind,facing,axis,rightAngle}=checkSphereCut(rawCut),mask=octantMask(kind,facing,axis),V=frame.view;
   const kept=s=>mask[octantIndex(s)]===1;
   // quarter-disks and their rims: one per (plane, quadrant); a boundary face when exactly one of the two octants it separates stays
   const faces=[],arcs=[];
@@ -136,15 +148,27 @@ export function sphereCutModel(r,rawCut,frame){
   }
   // the radius a length label can lie on: a half axis that belongs to the piece and is seen, the most horizontal on the screen (the right one when equal)
   let radiusAxis=null,best=null;
+  const seenAxes=[],edgeRadii=[];
   for(let k=0;k<3;k++)for(const s of [1,-1]){
     const plane=SPHERE_PLANES.find(p=>p.n===k);
-    let any=false;
-    for(const a of [1,-1])for(const b of [1,-1]){const o=[0,0,0];o[k]=s;o[plane.i]=a;o[plane.j]=b;if(kept(o))any=true;}
+    let any=false,count=0;
+    for(const a of [1,-1])for(const b of [1,-1]){const o=[0,0,0];o[k]=s;o[plane.i]=a;o[plane.j]=b;if(kept(o)){any=true;count++;}}
     if(!any)continue;
-    if([0.25,0.5,0.75].some(u=>rayHitsPiece(AXES[k].map(v=>v*s*r*u),V,r,mask)))continue;
+    const seen=![0.25,0.5,0.75].some(u=>rayHitsPiece(AXES[k].map(v=>v*s*r*u),V,r,mask));
+    // a half axis with two of its four octants kept lies in a cut face (a radius perpendicular to the wedge's edge: the edge itself has one or three)
+    if(count===2&&!creases.some(c=>c.axis===k&&c.sign===s))edgeRadii.push({axis:k,sign:s,seen});
+    if(!seen)continue;
+    seenAxes.push({axis:k,sign:s});
     const horizontal=Math.abs(dot(AXES[k].map(v=>v*s),frame.ex)),right=dot(AXES[k].map(v=>v*s),frame.ex)>0?1:0;
     const score=[r6(horizontal),right];
     if(!best||score[0]>best[0]+1e-9||(Math.abs(score[0]-best[0])<=1e-9&&score[1]>best[1])){best=score;radiusAxis={axis:k,sign:s};}
   }
-  return {kind,facing,mask,faces,arcs,creases,limb,radiusAxis};
+  // the right-angle mark of a wedge: the two radii in its cut faces perpendicular to the edge, both seen
+  let rightAngleMark=null;
+  if(rightAngle){
+    if(edgeRadii.length!==2)bad('SOLID_SPHERE_CUT_RIGHT_ANGLE_UNSUPPORTED:'+kind);
+    if(edgeRadii.some(x=>!x.seen))bad('SOLID_SPHERE_CUT_RIGHT_ANGLE_HIDDEN');
+    rightAngleMark={radii:edgeRadii.map(({axis:k,sign})=>({axis:k,sign}))};
+  }
+  return {kind,facing,axis,mask,faces,arcs,creases,limb,radiusAxis,seenAxes,...(rightAngleMark?{rightAngle:rightAngleMark}:{})};
 }

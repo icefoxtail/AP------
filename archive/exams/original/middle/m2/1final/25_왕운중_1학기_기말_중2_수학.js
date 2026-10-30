@@ -1477,7 +1477,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "기울기·절편·점 대입·교점 성질을 각각 계산해 진술을 검증한다."
+    "difficultyReason": "기울기·절편·점 대입·교점 성질을 각각 계산해 진술을 검증한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=-3x+1이 y축 위의 점 (0,1)을 지나고, 점선으로 x 방향 2와 y 방향 6의 변화량이 표시되어 있다. 기울기가 같은 직선 y=-3x-1과 y절편이 같은 직선 y=2x+1이 함께 그려져 있고, 점 (2,5)가 표시되어 있다.",
+    "solutionImageCaption": "일차함수 y=-3x+1의 그래프와 y절편, x가 2만큼 변할 때 y의 변화량, 비교용 직선 y=-3x-1과 y=2x+1, 점 (2,5)를 한 좌표평면에 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

@@ -2,6 +2,7 @@
 // The producer draws a name as MathJax glyph outlines; every outline path carries its glyph code (data-c) and sits at base / subscript (scaled,
 // below the baseline) / superscript (scaled, above) level. This reads those back from the svg bytes and compares them with the glyphs the PLAN's
 // display name must produce: capital letter (math italic, U+1D434 + index), primes (U+2032 each, superscript), subscript digits (U+0030 + n, subscript).
+import {calloutCopies} from './plane-callouts.mjs';
 const NAME=/^([A-Z])(′′|″|''|′|')?(?:_\{([1-9]{1,2})\}|_([1-9])|([₁-₉]{1,2}))?$/u;
 const SUBS='₁₂₃₄₅₆₇₈₉';
 const hex=n=>n.toString(16).toUpperCase();
@@ -72,7 +73,9 @@ export function observeDisplayedPointNames(svg,expectations){
 export function planNameExpectations(plan){
   const names=plan?.pointNames;
   if(!names||typeof names!=='object')return [];
-  if(plan.mathPlan)return Object.entries(names).map(([id,name])=>({owner:id,name}));
+  // a plane figure's callouts (E37) draw their points again under the same names: the copy `<callout id>__<point id>` shows the name of the point it copies
+  const copies=calloutCopies(plan).filter(copy=>typeof names[copy.point]==='string').map(copy=>({owner:copy.id,name:names[copy.point]}));
+  if(plan.mathPlan)return [...Object.entries(names).map(([id,name])=>({owner:id,name})),...copies];
   const required=plan.graphPlan?.requiredPoints??[],overlay=new Set((plan.graphPlan?.overlays?.points??[]).map(point=>point?.id));
   return Object.entries(names).flatMap(([id,name])=>{
     const index=required.findIndex(point=>point?.id===id);

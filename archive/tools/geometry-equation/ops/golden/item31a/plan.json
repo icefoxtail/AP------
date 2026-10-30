@@ -1,0 +1,244 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "U0",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "l1",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "2"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "-1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "-3"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "l2",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "2"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "l3",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "-1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "xax",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "yax",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Q",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "l1",
+     "l2"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "Y1",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "l3",
+     "yax"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "X1",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "l1",
+     "xax"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayLines": [
+  "l1",
+  "l2",
+  "l3"
+ ],
+ "displayCircles": [],
+ "displaySegments": [],
+ "displayPoints": [
+  "O",
+  "Q",
+  "Y1",
+  "X1"
+ ],
+ "hiddenPointNames": [
+  "Q",
+  "Y1",
+  "X1"
+ ],
+ "coordinateLabels": [
+  "Q",
+  "Y1",
+  "X1"
+ ],
+ "lineLabels": [
+  {
+   "nodeId": "l1",
+   "form": "SLOPE_INTERCEPT"
+  },
+  {
+   "nodeId": "l2",
+   "form": "SLOPE_INTERCEPT"
+  },
+  {
+   "nodeId": "l3",
+   "text": "y=ax+1",
+   "values": {
+    "a": "1"
+   }
+  }
+ ],
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 560
+ },
+ "caption": "두 직선 y=2x-3, y=-1/2x-1/2은 점 (1,-1)에서 만나고, 직선 y=ax+1은 y절편 (0,1)을 지난다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "두 직선 y=2x-3, y=-1/2x-1/2의 교점은 (1,-1)이다",
+   "mappedTo": [
+    "l1",
+    "l2",
+    "Q"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "직선 y=ax+1의 y절편은 1이다",
+   "mappedTo": [
+    "l3",
+    "Y1"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 직선의 교점 (1,-1), y=2x-3의 x절편 (3/2,0), y=ax+1의 y절편 (0,1)"
+ ],
+ "sourceQuote": "두 직선 $y=2x-3$"
+}

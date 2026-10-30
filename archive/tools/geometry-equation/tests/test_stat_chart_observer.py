@@ -269,5 +269,60 @@ class FrequencyMarks(unittest.TestCase):
         self.assertEqual(S.clearance(box,[('segs',[((0,15),(40,15))],0.6)]),-0.6)
 
 
+class NormalCurvePlan(unittest.TestCase):
+    """E36: what the observer derives from a normal-curve plan alone (no Chrome; composed figures are exercised by tests/stat-chart-normal.test.mjs)."""
+    base={'kind':'NORMAL_CURVE','curves':[{'id':'X','mean':'50','sd':'2'}],'ticks':['47','50','52'],'zAxis':True,
+          'shades':[{'from':'47','to':'50'},{'from':'50','to':'52'}],'areaLabels':[{'shade':0,'text':'0.4332'},{'shade':1,'text':'0.3413'}]}
+
+    def refuses(self,chart,code):
+        with self.assertRaises(ValueError) as context: S.normal_plan(chart)
+        self.assertEqual(str(context.exception),code)
+
+    def test_decimal_and_tex_of_a_position(self):
+        for q,d,t in ((Fraction(3),'3','3'),(Fraction(3,2),'1.5','1.5'),(Fraction(1,2),'0.5','0.5'),(Fraction(-3,2),'-1.5','-1.5'),(Fraction(0),'0','0'),(Fraction(1,3),None,'\\frac{1}{3}'),(Fraction(-1,3),None,'-\\frac{1}{3}')):
+            self.assertEqual(S.decimal_of(q),d)
+            self.assertEqual(S.tex_num(q),t)
+        self.assertEqual(S.normal_tex('m-3\u03c3'),'m-3\\sigma')
+        self.assertEqual(S.normal_tex('\u03bc+\u03c3'),'\\mu +\\sigma')
+
+    def test_window_ticks_and_areas_come_from_the_plan(self):
+        plan=S.normal_plan(self.base)
+        self.assertEqual((plan['lo'],plan['hi'],plan['framed']),(Fraction(42),Fraction(58),False))
+        self.assertEqual([(t['u'],t['text'],t['z']) for t in plan['ticks']],[(Fraction(47),'47',Fraction(-3,2)),(Fraction(50),'50',Fraction(0)),(Fraction(52),'52',Fraction(1))])
+        self.assertAlmostEqual(plan['shades'][0]['area'],0.433193,places=5)
+        self.assertAlmostEqual(plan['shades'][1]['area'],0.341345,places=5)
+        # a tail runs to infinity; the sum and difference of table values are read exactly
+        tail=S.normal_plan({**self.base,'ticks':['50','52'],'shades':[{'from':None,'to':'52'}],'areaLabels':[{'shade':0,'text':'0.5+0.3413'}]})
+        self.assertAlmostEqual(tail['shades'][0]['area'],0.841345,places=5)
+        self.assertEqual(S.label_value('0.5-0.0668'),Fraction(4332,10000))
+
+    def test_framed_curve_writes_its_own_letters(self):
+        plan=S.normal_plan({'kind':'NORMAL_CURVE','curves':[{'id':'X','mean':'m','sd':'\u03c3'}],'ticks':[{'z':'-3'},{'z':'0'},{'z':'1.5'},{'z':'2','text':'k'}]})
+        self.assertTrue(plan['framed'])
+        self.assertEqual([t['text'] for t in plan['ticks']],['m-3\u03c3','m','m+1.5\u03c3','k'])
+        mixed=S.normal_plan({'kind':'NORMAL_CURVE','curves':[{'id':'X','mean':'20','sd':'\u03c3'}],'ticks':[{'z':'-1.5','text':'k'},{'z':'0'}]})
+        self.assertEqual([t['text'] for t in mixed['ticks']],['k','20'])
+
+    def test_refusals_match_the_producers_codes(self):
+        self.refuses({**self.base,'curves':[{'id':'X','mean':'50','sd':'0'}]},'STAT_NORMAL_SD_INVALID')
+        self.refuses({**self.base,'ticks':['47','47']},'STAT_NORMAL_TICK_DUPLICATE')
+        self.refuses({**self.base,'ticks':['70']},'STAT_NORMAL_TICK_OUT_OF_WINDOW')
+        self.refuses({**self.base,'shades':[{'from':'48','to':'50'}]},'STAT_NORMAL_BOUNDARY_NOT_TICKED')
+        self.refuses({**self.base,'areaLabels':[{'shade':0,'text':'0.4000'}]},'STAT_NORMAL_AREA_LABEL_MISMATCH')
+        self.refuses({**self.base,'symmetry':[{'pair':['47','52']}]},'STAT_NORMAL_SYMMETRY_MISMATCH')
+        self.refuses({**self.base,'areaLabels':[{'shade':0,'text':'p'},{'shade':1,'text':'p'}]},'STAT_NORMAL_AREA_SYMBOL_UNEQUAL')
+        self.refuses({'kind':'NORMAL_CURVE','curves':[{'id':'X','mean':'0','sd':'1'},{'id':'Y','mean':'9','sd':'1'}],'ticks':['0']},'STAT_NORMAL_WINDOW_TOO_WIDE')
+        self.refuses({**self.base,'curves':[{'id':'X','mean':'50','sd':'2'},{'id':'Y','mean':'52','sd':'2'}]},'STAT_NORMAL_Z_AXIS_AMBIGUOUS')
+
+    def test_polygon_helpers(self):
+        square=[(0.0,0.0),(10.0,0.0),(10.0,10.0),(0.0,10.0)]
+        self.assertTrue(S.inside_polygon((5.0,5.0),square))
+        self.assertFalse(S.inside_polygon((11.0,5.0),square))
+        self.assertAlmostEqual(S.polygon_clearance((5.0,2.0),square),2.0)
+        self.assertEqual(S.shoelace(square),100.0)
+        self.assertTrue(S.segments_cross((0,0),(10,10),(0,10),(10,0)))
+        self.assertFalse(S.segments_cross((0,0),(10,0),(10,0),(10,10)))     # touching at an end is not crossing
+
+
 if __name__=='__main__':
     unittest.main()

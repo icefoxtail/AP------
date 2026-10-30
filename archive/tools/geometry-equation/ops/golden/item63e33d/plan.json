@@ -1,0 +1,94 @@
+{
+ "capability": "solid-figure-v1",
+ "solids": [
+  {
+   "kind": "PRISM",
+   "base": {
+    "kind": "RECT",
+    "width": 2,
+    "depth": 1
+   },
+   "height": 9,
+   "names": "........"
+  },
+  {
+   "kind": "PYRAMID",
+   "base": {
+    "kind": "RECT",
+    "width": 3,
+    "depth": 4
+   },
+   "height": 3,
+   "names": "....."
+  }
+ ],
+ "dims": [
+  {
+   "edge": [
+    "s1#b0",
+    "s1#b1"
+   ],
+   "label": "2a"
+  },
+  {
+   "edge": [
+    "s1#b1",
+    "s1#b2"
+   ],
+   "label": "b"
+  },
+  {
+   "edge": [
+    "s1#b0",
+    "s1#t0"
+   ],
+   "label": "6a+3b"
+  },
+  {
+   "edge": [
+    "s2#b0",
+    "s2#b1"
+   ],
+   "label": "3a"
+  },
+  {
+   "edge": [
+    "s2#b1",
+    "s2#b2"
+   ],
+   "label": "4b"
+  },
+  {
+   "solid": "s2",
+   "height": true,
+   "label": "h",
+   "direct": true,
+   "foot": true
+  }
+ ],
+ "solidCaption": {
+  "text": "직육면체 그릇과 사각뿔 그릇"
+ },
+ "caption": "직육면체 그릇(가로 2a, 세로 b, 높이 6a+3b)의 물을 사각뿔 그릇(밑면 가로 3a, 세로 4b, 높이 h)에 전부 부었다. 각 치수는 문제에 나온 문자 그대로 쓴 것이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "밑면의 가로 2a, 세로 b, 높이 6a+3b인 직육면체 모양의 그릇",
+   "mappedTo": [
+    "solids",
+    "dims"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "가로 3a, 세로 4b인 직사각형을 밑면으로 하는 사각뿔 모양의 그릇",
+   "mappedTo": [
+    "solids",
+    "dims"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "사각뿔 그릇의 높이 h를 꼭짓점에서 밑면에 내린 수선(점선, 수직 표시)으로 보인 두 그릇의 치수"
+ ]
+}

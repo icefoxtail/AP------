@@ -84,12 +84,21 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     if(authored.capability===scf.FIGURE_CAPABILITY){
       // A standalone statistics / probability figure: solved exactly, composed once, read back by its own observer, then the same Archive capture.
       stage='stat-chart';
-      const model=scf.checkStatChartPlan(authored),size=scf.statChartSize(model);
+      const model=scf.checkStatChartPlan(authored);let size=scf.statChartSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      // A frame that grows to fit its labels (a long legend, a long x title, tree path probabilities) depends on the font size the measurement gives, and the font on the size: measure again at the
+      // larger size until the font that size gives needs no more room (sizes only grow; the figure is then composed at exactly the measured size).
+      for(let again=1;again<=6;again++){
+        const exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx});
+        if(exact.width<=size.width&&exact.height<=size.height)break;
+        size={width:Math.max(size.width,exact.width),height:Math.max(size.height,exact.height)};
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      }
       stage='compose';
-      const composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+      const composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
       const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
@@ -199,7 +208,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
         continue;
       }
       // Then that panel is re-framed with y squeezed (at most halved) for one more try.
-      if(gp.axisSqueeze===true)break;
+      if(gp.axisSqueeze===true||gp.axisScale!==undefined)break;
       (row.fallback??=[]).push({from:clip(composed.detail),to:'AXIS_SQUEEZE',panel:failed.panel});
       current={...current,panels:current.panels.map((panel,i)=>i===failed.panel?{...panel,plan:{...panel.plan,graphPlan:{...panel.plan.graphPlan,axisSqueeze:true}}}:panel)};
       }
@@ -255,7 +264,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       // Construction labels are <point>-coordinate; graph key point labels are required-point-<n>-coordinates (n counts from 1).
       const unresolvedIds=composed.detail?.unresolved||[];
       const stuck=(plan.graphPlan?unresolvedIds.map(id=>/^required-point-(\d+)-coordinates$/.exec(id)).filter(Boolean).map(m=>keyPoints[Number(m[1])-1]).filter(bandable).map(point=>point.id)
-        :unresolvedIds.filter(id=>id.endsWith('-coordinate')).map(id=>id.slice(0,-'-coordinate'.length))).filter(id=>!(plan.coordinatePanel||[]).includes(id));
+        :unresolvedIds.filter(id=>id.endsWith('-coordinate')).map(id=>id.slice(0,-'-coordinate'.length))).filter(id=>!(plan.coordinatePanel||[]).includes(id)&&!(plan.hiddenPointNames||[]).includes(id));
       if(stuck.length){
         row.fallback.push({from:clip(composed.detail),to:'COORDINATE_PANEL_PARTIAL',points:stuck});
         plan={...plan,coordinatePanel:[...(plan.coordinatePanel||[]),...stuck],labelDirections:Object.fromEntries(Object.entries(plan.labelDirections||{}).filter(([id])=>!stuck.includes(id)))};
@@ -268,7 +277,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       }
     }
     // Fallback 3 (quadratic graphs): still no room at one scale -> re-frame with y squeezed (at most halved) and compose once more.
-    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&authored.graphPlan&&authored.graphPlan.axisSqueeze!==true){
+    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&authored.graphPlan&&authored.graphPlan.axisSqueeze!==true&&authored.graphPlan.axisScale===undefined){
       const f=await pythonWorker({action:'frame_graph',graphPlan:{...authored.graphPlan,axisSqueeze:true}});
       if(f.status==='OK'&&f.result.graphPlan.axisRatio<1){
         const m2=await pythonWorker({action:'graph',graphPlan:f.result.graphPlan});

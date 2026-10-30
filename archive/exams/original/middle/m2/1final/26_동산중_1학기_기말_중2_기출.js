@@ -411,7 +411,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기 2인 직선 y=2x+2 위에 가로 1, 세로 2인 기울기 삼각형을 그리고, 점선 y=2x를 함께 그려 두 직선이 평행임을 보인다.",
+    "solutionImageCaption": "직선에서 x가 1만큼 늘 때 y는 2만큼 늘고, 점선은 y=2x의 그래프이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -689,7 +693,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: a=1, b=-1일 때 y=ax+b의 그래프 y=x-1과 y=(a/b)x-a의 그래프 y=-x-1을 같은 좌표평면에 그려 두 직선이 지나는 사분면을 비교한다.",
+    "solutionImageCaption": "a=1, b=-1인 예로 y=ax+b와 y=(a/b)x-a의 그래프를 한 좌표평면에 그린 것이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -762,7 +770,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD(가로 25cm, 세로 10cm)를 점 P로 나누어, 삼각형 ABP는 넓이 20x(BP=4x)로, 사다리꼴 APCD는 넓이 y로 서로 다른 색으로 구분해 보인다.",
+    "solutionImageCaption": "x초 후 BP=4x이므로 삼각형 ABP의 넓이는 20x이고, 직사각형에서 이를 뺀 나머지가 사다리꼴 APCD의 넓이 y이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -894,7 +906,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 일차방정식 x+2y-8=0의 그래프인 직선 y=-1/2x+4 위에 점 (-2,5)와 자연수 해인 점 (2,3), (4,2), (6,1)을 표시한다.",
+    "solutionImageCaption": "직선 x+2y-8=0 위의 점 (-2,5)와, x, y가 자연수인 점 (2,3), (4,2), (6,1)을 좌표평면에 나타낸 것이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -963,7 +979,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 4x+3y-12=0의 그래프 y=-4/3x+4가 x축과 (3,0), y축과 (0,4)에서 만나며 제1, 2, 4사분면을 지나는 모양을 보인다.",
+    "solutionImageCaption": "직선 4x+3y-12=0은 x축과 점 (3,0), y축과 점 (0,4)에서 만나고 오른쪽 아래로 향한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -1640,6 +1660,10 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 2x-3y+12=0, 4x+3y+6=0과 x축으로 둘러싸인 삼각형을 색칠하고, 두 직선의 교점에서 x축까지의 높이 2를 점선과 직각 표시로 보인다.",
+    "solutionImageCaption": "두 직선의 x절편은 -6, -3/2이고, 두 직선은 점 (-3,2)에서 만난다. 이 점에서 x축까지의 높이는 2이다.",
+    "solutionImageSize": "medium"
   }
 ];
