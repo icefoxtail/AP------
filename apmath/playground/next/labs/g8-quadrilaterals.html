@@ -33,6 +33,9 @@
        ③ 등적변형 3-A: 설명·띠는 △ABC : △ACD = 60 : 40 인데 그림은 44 : 56 → D 위치를 옮겨 59.9 : 40.1
        ④ 등적변형 3-B: 설명은 밑변 16 : 높이 10 (1.6) 인데 그림은 190 : 155 (1.2) → 밑변을 248로
        ⑤ 반례5(알파벳 순서 함정): 해설은 AB=BC, CD=DA 인데 그림 틱은 AB=AD, CB=CD → 꼭짓점 이름을 돌려 해설과 일치
+       ⑦ 종이접기 5-A: 접은 각·엇각 이름이 서로 바뀌어 있었음(해설은 ∠EAC = ∠BAC 라 했으나 그림에서 33° ≠ 57°)
+         → 접은 각 = C쪽 ∠ECA = ∠BCA, 엇각 = A쪽 ∠EAC = ∠BCA 로 해설·그림 라벨을 맞춤
+       ⑧ 요약 띠(tape) 칸 글자가 휴대폰에서 말줄임으로 잘리던 6장면 → 칸 글자만 짧게(전체 문장은 띠 제목에 그대로)
        ⑥ 반례1·3: M(AC중점)·N(BD중점) 이름표가 두 점 사이 가운데에서 겹쳐 어느 점 이름인지 모호 → 각자 자기 점 아래로
    - 캔버스를 직접 그리던 곳(회전 삼각형 2곳, 나비 날개 넓이 글자)은 원본 코드를 그대로 두고 ctx 도우미가
      점 변환·무대 글자로 바꿉니다(회전해도 점 이름은 똑바로 서 있음)
@@ -790,22 +793,25 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'foldTape') {
           return {
             badge: `탐구 5-A · 🎗️ 직사각형 종이테이프 대각선 접기 — 겹쳐진 △AEC는 무조건 이등변삼각형(EA = EC)!`,
-            hint: `직사각형 종이테이프를 $AC$를 접는 선으로 하여 접으면, <strong>① 접은 각의 크기가 같고($\\angle EAC = \\angle BAC = \\bullet$)</strong>, <strong>② 평행선의 엇각이 같아서($\\angle ECA = \\angle BAC = \\bullet$)</strong> 두 밑각이 같아지므로 <strong class="text-amber-300">$\\triangle AEC$는 항상 $EA = EC$인 이등변삼각형</strong>입니다!`,
+            // [2.0 수정] 이 장면의 접은 각·엇각 이름(hint·desc·totalRes·formulaHTML·tapeSegs)을 바로잡았습니다.
+            // 원본: 접은 각 ∠EAC = ∠BAC, 엇각 ∠ECA = ∠BAC (그림에서 ∠EAC ≈ 33°, ∠BAC ≈ 57°로 어긋남).
+            // AC로 접으면 B→B' 이므로 접은 각은 C에서의 ∠ECA = ∠BCA, 엇각은 A에서의 ∠EAC = ∠DAC = ∠BCA 입니다.
+            hint: `직사각형 종이테이프를 $AC$를 접는 선으로 하여 접으면, <strong>① 접은 각의 크기가 같고($\\angle ECA = \\angle BCA = \\bullet$)</strong>, <strong>② 평행선의 엇각이 같아서($\\angle EAC = \\angle BCA = \\bullet$)</strong> 두 밑각이 같아지므로 <strong class="text-amber-300">$\\triangle AEC$는 항상 $EA = EC$인 이등변삼각형</strong>입니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 종이 펼치기' : '🎬 대각선 AC로 접어 이등변삼각형 완성!',
             dim1Name: '핵심 각도 원리', dim2Name: '겹친 △AEC 정체',
             val1Txt: '접은각(•) = 엇각(•)', val2Txt: 'EA = EC 이등변삼각형!',
             parts: [
-              { id: 0, name: `🟡 겹쳐진 이등변삼각형 △AEC (EA = EC)`, desc: `접은 각 ∠EAC(•) = 엇각 ∠ECA(•) 이므로 두 밑각 일치!`, val: `EA = EC ⭕`, color: '#fbbf24', ok: true },
+              { id: 0, name: `🟡 겹쳐진 이등변삼각형 △AEC (EA = EC)`, desc: `접은 각 ∠ECA(•) = 엇각 ∠EAC(•) 이므로 두 밑각 일치!`, val: `EA = EC ⭕`, color: '#fbbf24', ok: true },
               { id: 1, name: `🔵 접혀 올라온 직각삼각형 △AB'C ≡ 원래 △ABC`, desc: `AB' = AB, B'C = BC, ∠B' = 90° 그대로 보존!`, val: `합동 보존`, color: '#38bdf8', ok: true }
             ],
-            totalRes: `접은 각(∠EAC=•) = 평행선 엇각(∠ECA=•) ➔ △AEC는 EA = EC인 이등변삼각형!`,
+            totalRes: `접은 각(∠ECA=•) = 평행선 엇각(∠EAC=•) ➔ △AEC는 EA = EC인 이등변삼각형!`,
             rule: '평행한 종이테이프를 접으면 [접은 각 = 엇각]에 의해 겹치는 삼각형은 100% 이등변삼각형이다!',
-            formulaHTML: `• ① 접은 각: ${tex('\\angle EAC = \\angle BAC = \\bullet')}<br/>• ② 평행선($AD\\parallel BC$) 엇각: ${tex('\\angle ECA = \\angle BAC = \\bullet')}<br/>• ③ 따라서 ${tex('\\angle EAC = \\angle ECA \\implies \\mathbf{\\overline{EA} = \\overline{EC}}')} (이등변삼각형)!`,
+            formulaHTML: `• ① 접은 각: ${tex('\\angle ECA = \\angle BCA = \\bullet')}<br/>• ② 평행선($AD\\parallel BC$) 엇각: ${tex('\\angle EAC = \\angle BCA = \\bullet')}<br/>• ③ 따라서 ${tex('\\angle EAC = \\angle ECA \\implies \\mathbf{\\overline{EA} = \\overline{EC}}')} (이등변삼각형)!`,
             notes: `• 만약 직각삼각형에서 직각변 $AB=6, BC=8$이 주어지면 $EA = EC = x$로 놓고 옆 직각삼각형 $\\triangle EDC$에서 $(8-x), 6, x$ 변들을 비교하거나 넓이를 구하는 문제로 확장됩니다!`,
             tapeTitle: `종이접기 불변량: 접은 각(•) = 엇각(•) ➔ 두 밑각이 같으므로 무조건 이등변삼각형(EA = EC)!`,
             tapeSegs: [
-              { text: `접은 각 ∠EAC (•)`, weight: 0.5, color: '#fbbf24' },
-              { text: `평행선 엇각 ∠ECA (•) ➔ EA = EC!`, weight: 0.5, color: '#38bdf8' }
+              { text: `접은 각 ∠ECA (•)`, weight: 0.5, color: '#fbbf24' },
+              { text: `평행선 엇각 ∠EAC (•) ➔ EA = EC!`, weight: 0.5, color: '#38bdf8' }
             ]
           };
         }
@@ -1435,8 +1441,9 @@ window.addEventListener('DOMContentLoaded', function () {
           qpoly([rA, E, rC], 'rgba(251, 191, 36, 0.42)', QCOL.gold, 3.6, 0);
           qticks(E, rA, 2, QCOL.gold, 8.5);
           qticks(E, rC, 2, QCOL.gold, 8.5);
-          qangle(rA, E, rC, QCOL.gold, 30, 1, '•(접은각)');
-          qangle(rC, E, rA, QCOL.gold, 30, 1, '•(엇각)');
+          // [2.0 수정] 접은 각은 C 쪽 ∠ECA, A 쪽 ∠EAC 는 평행선의 엇각입니다(원본 라벨은 서로 반대).
+          qangle(rA, E, rC, QCOL.gold, 30, 1, '•(엇각)');
+          qangle(rC, E, rA, QCOL.gold, 30, 1, '•(접은각)');
 
           [rA, rB, rC, rD].forEach((p, i) => qdot(p, 'ABCD'[i], QCOL.white, center));
           qdot(B_cur, "B'(접힌 점)", QCOL.cyan, center);
@@ -1647,6 +1654,14 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   // 셸은 이모지(➔ ⭕ ❌ 포함)를 화면 표시에서 떼어 내므로, 문장 속 뜻이 사라지지 않게 → ○ × 로 미리 바꿔 넘깁니다(원문 getSpec은 그대로).
   const arrow = (v) => (typeof v === 'string' ? v.replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×') : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
+  // [2.0 수정] 요약 띠의 칸 글자는 한 줄이라 휴대폰(390px)에서 길면 말줄임으로 잘렸습니다(탐구 1-D, 탐구 4의 5장면).
+  // 칸 글자만 줄이고, 전체 문장은 띠 위의 제목(tapeTitle, 줄바꿈됨)에 그대로 있습니다.
+  const TAPE_SHORT = {
+    'AB: 평행(>>) + 길이 같음(|) 동시 만족!': 'AB: 평행(>>)·같음(|)',
+    'CD: 평행(>>) + 길이 같음(|) 동시 만족!': 'CD: 평행(>>)·같음(|)',
+    '안쪽 중점사각형 □PQRS (50%)': '안쪽 □PQRS (50%)',
+    '바깥 4귀퉁이 삼각형 합 (50% → 접으면 완전히 포개짐!)': '바깥 귀퉁이 합 (50%)'
+  };
   let booted = false;
 
   function sceneOf(m, it) {
@@ -1714,7 +1729,7 @@ window.addEventListener('DOMContentLoaded', function () {
           rule: spec.rule,
           formula: spec.formulaHTML,
           notes: spec.notes,
-          tape: { title: spec.tapeTitle, segments: spec.tapeSegs }
+          tape: { title: spec.tapeTitle, segments: spec.tapeSegs.map((sg) => ({ ...sg, text: TAPE_SHORT[sg.text] || sg.text })) }
         };
       },
       draw: (b, s, v) => {
