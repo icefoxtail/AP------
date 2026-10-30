@@ -58,6 +58,8 @@ const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
 // (a pair of corresponding angles AND a pair of vertical angles) shows which relation each arc belongs to; equalGroup (the arc count) is independent of it.
 export const ANGLE_EMPHASIS_GROUPS=3;
 export const ANGLE_LABEL_PLACEMENTS=['AUTO','LEADER'];
+export const ARC_LABEL_PLACEMENTS=['AUTO','LEADER'];
+export const EQUAL_PATH_MARKS=['AUTO','TICK','BRACKET'];
 export const TRACE_JOIN_MAX_DEGREES=300;   // a joined trace arc (the stated intersections plus spanDeg) may sweep at most this far round its centre
 // A label's `unit` (cm, m, mm) is written after a MATH label's expression; a TEXT label is plain Korean text and takes none.
 export const LABEL_UNITS=['cm','m','mm','kg'];
@@ -453,6 +455,12 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(kind==='TEXT'&&row.label!==undefined)plainTextOk(String(row.label),'arcs.label',row.id);
     const unit=unitOf(row,kind,row.label!==undefined,'arcs');
     const object={id:row.id,kind:'CIRCULAR_ARC',centerPoint:row.center,startPoint:row.from,endPoint:row.to,sweep,highlight:row.highlight!==false};
+    // labelPlacement LEADER (E32): the label stands anywhere free, outside or inside the circle, on a leader that starts on this arc (a thin arc, several arcs of one circle); AUTO (default) is unchanged
+    if(row.labelPlacement!==undefined){
+      if(!ARC_LABEL_PLACEMENTS.includes(row.labelPlacement))bad('ARC_LABEL_PLACEMENT_INVALID:'+row.id);
+      if(row.label===undefined)bad('ARC_LABEL_PLACEMENT_NEEDS_LABEL:'+row.id);
+      if(row.labelPlacement==='LEADER')object.labelPlacement='LEADER';
+    }
     if(row.label!==undefined){object.labelText=String(row.label);object.labelKind=kind;if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }

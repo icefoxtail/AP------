@@ -126,3 +126,33 @@ test('E32 dimensions: extension NONE, offsetPx and an inline dimension compose a
   assert.equal(specError(linePlan({dimensions:four}),model),'DIMENSION_TIERS_EXCEEDED:g');
 });
 
+// ---- arc labels (feature 3): plain-text labels without a degree sign, and a label on a leader from its own arc, for each of several arcs of one circle
+const half=plane([source('O',0,0),node('X','TRANSLATE_POINT',['O'],'POINT',{dx:int(1),dy:int(0)}),node('k','CIRCLE_CENTER_RADIUS',['O'],'CIRCLE',{radius:int(5)}),
+  node('A','POLAR_POINT',['O','X'],'POINT',{length:int(5),angleDeg:int(20),turn:'CCW'}),node('B','POLAR_POINT',['O','X'],'POINT',{length:int(5),angleDeg:int(110),turn:'CCW'}),node('C','POLAR_POINT',['O','X'],'POINT',{length:int(5),angleDeg:int(160),turn:'CCW'})]);
+const arcPlan=(arcs,extra={})=>({capability:'construction-spike-v1',caption:'원 O 위의 세 점 A, B, C이다.',mathPlan:half,displayPoints:['O','A','B','C'],displayLines:[],displayCircles:[],
+  displaySegments:[{id:'sOA',refs:['O','A']},{id:'sOB',refs:['O','B']},{id:'sOC',refs:['O','C']}],coordinateCanvas:{width:560,height:480},planeMarks:{arcs},...extra});
+const arcRows=extra=>[{id:'arcAB',circle:'k',center:'O',from:'A',to:'B',side:'MINOR',label:'3:1',labelKind:'TEXT',...extra},{id:'arcBC',circle:'k',center:'O',from:'B',to:'C',side:'MINOR',label:'호 BC',labelKind:'TEXT',...extra}];
+
+test('E32 arcs: plain-text labels (no degree sign) on a leader from each of two arcs of one circle; every audit passes',async()=>{
+  const model=await modelOf(half),plan=arcPlan(arcRows({labelPlacement:'LEADER'})),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  assert.equal(attr(tagOf(composed.svg,'arcAB-label'),'data-text'),'3:1');
+  assert.equal(attr(tagOf(composed.svg,'arcBC-label'),'data-text'),'호 BC');
+  const first=leaderTag(composed.svg,'arcAB-label'),second=leaderTag(composed.svg,'arcBC-label');
+  assert.ok(first&&second,'each label is tied to its own arc by a leader');
+  const transform=await transformOf(plan,model),run=(svg,marks=plan.planeMarks)=>observe(svg,half,marks,plan.displaySegments,transform);
+  assert.deepEqual((await run(composed.svg)).errors,[]);
+  assert.ok(codes(await run(composed.svg.replace(first,''))).includes('ARC_LABEL_LEADER_MISSING'));
+  // the leader of the first label moved onto the second arc is refused: it must start within its own arc
+  const moved=composed.svg.replace(first,first.replace(/\sx1="[^"]*"/,' x1="'+attr(second,'x1')+'"').replace(/\sy1="[^"]*"/,' y1="'+attr(second,'y1')+'"'));
+  assert.ok(codes(await run(moved)).includes('MARK_LEADER_NOT_ON_OWNER'));
+});
+
+test('E32 arcs: without labelPlacement the figure is the old one byte for byte; plan errors',async()=>{
+  const model=await modelOf(half);
+  const plain=await composeOf(arcPlan(arcRows({})),model),explicit=await composeOf(arcPlan(arcRows({labelPlacement:'AUTO'})),model);
+  expectComposed(plain);assert.equal(plain.svg,explicit.svg);
+  assert.equal(specError(arcPlan(arcRows({labelPlacement:'INSIDE'})),model),'ARC_LABEL_PLACEMENT_INVALID:arcAB');
+  assert.equal(specError(arcPlan([{id:'arcAB',circle:'k',center:'O',from:'A',to:'B',side:'MINOR',labelPlacement:'LEADER'}]),model),'ARC_LABEL_PLACEMENT_NEEDS_LABEL:arcAB');
+});
+

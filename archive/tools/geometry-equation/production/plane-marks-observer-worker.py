@@ -34,6 +34,7 @@ def wrap180(x):return (x+180.0)%360.0-180.0
 TRACE_LABEL_AT_TOLERANCE=45.0       # degrees: a trace label's direction from the centre against the place its labelAt names
 ANGLE_LABEL_MAX_DISTANCE_PX=90.0    # an angle label without a leader stands within this distance of its vertex (its nearest edge: the label reads as that arc's value)
 ANGLE_LEADER_END_TOLERANCE=0.5      # degrees: a leader may start at an end of its arc, where the arc meets a ray
+ARC_LEADER_SPAN_SLACK_DEGREES=0.8     # degrees: a leader of an arc label (labelPlacement LEADER) starts within the arc's own span, this much slack at the ends
 
 # ---- free text labels (E30): this observer's own copy of the placement rules and of the glyph codes a MATH label shows
 TEXT_LABEL_HANGUL=re.compile('[\u1100-\u11ff\u3130-\u318f\uac00-\ud7af]')
@@ -696,11 +697,26 @@ def audit(p):
         box=label_clear(oid+'-label')
         if box is None:return
         c=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
-        if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
-        if not leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5):
-            # no leader: the label must be nearer its own arc than another arc of the same circle
-            angle=direction_degrees(sub(c,center));mine=arc_gap(row,angle)
-            if any(other is not row and other.get('circle')==row.get('circle') and other.get('center')==row.get('center') and arc_gap(other,angle)+1e-9<mine for other in marks.get('arcs',[])):errors.append('ARC_LABEL_AMBIGUOUS_OWNER:'+oid)
+        if row.get('labelPlacement')=='LEADER':
+            # labelPlacement LEADER (E32): anywhere free (inside or outside the circle) on a leader that starts ON this arc (within its span), crossing no other stroke
+            node=leaders.get(oid+'-label')
+            if node is None:errors.append('ARC_LABEL_LEADER_MISSING:'+oid)
+            else:
+                def on_own_arc(q):
+                    point=inverse(*q)
+                    return abs(norm(sub(point,center))-radius)*sx<=1.5 and arc_gap(row,direction_degrees(sub(point,center)))<=ARC_LEADER_SPAN_SLACK_DEGREES
+                leader_ok(oid+'-label',box,on_own_arc)
+                la=(float(node.get('x1')),float(node.get('y1')));lb=(float(node.get('x2')),float(node.get('y2')))
+                own={oid}|{n.get('id') for n in root.iter() if tag(n)=='circle' and n.get('data-role')=='circle' and abs(float(n.get('r'))-radius*sx)<=0.6 and norm(sub(inverse(float(n.get('cx')),float(n.get('cy'))),center))*sx<=0.6}
+                for sid,pts in strokes:
+                    if sid in own:continue
+                    if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('ARC_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+        else:
+            if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
+            if not leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5):
+                # no leader: the label must be nearer its own arc than another arc of the same circle
+                angle=direction_degrees(sub(c,center));mine=arc_gap(row,angle)
+                if any(other is not row and other.get('circle')==row.get('circle') and other.get('center')==row.get('center') and arc_gap(other,angle)+1e-9<mine for other in marks.get('arcs',[])):errors.append('ARC_LABEL_AMBIGUOUS_OWNER:'+oid)
         kind=row.get('labelKind','MATH' if row.get('unit') else 'DEGREE')
         if kind=='TEXT' or row.get('unit'):label_content(oid+'-label',kind,row['label'],row.get('unit'))
     for row in marks.get('arcs',[]):

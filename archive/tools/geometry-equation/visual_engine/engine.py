@@ -739,7 +739,12 @@ def prepare(spec):
                     dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
                     return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
                 directions=sorted(DIRECTIONS,key=alignment)
-                labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]},obj.get('unit')))
+                arc_label=mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]},obj.get('unit'))
+                if obj.get('labelPlacement')=='LEADER':
+                    # E32: a thin arc (a lens, a quarter arc between two others) writes its label on a leader that starts ON this arc, on either side of it
+                    arc_label['arcLeader']={'anchors':_arc_leader_anchors(value,vp),'gaps':list(ARC_LEADER_GAPS),'ownerIds':[oid]}
+                    arc_label['priority']=3   # after the region values: a label on a leader can stand a little further, a region value needs its room
+                labels.append(arc_label)
         elif kind=='TRACE_ARC':
             # Construction traces (compass arcs): a thin solid arc of the declared radius around each intersection the trace produces.
             if not vp.equal:raise ValueError('TRACE_ARC_REQUIRES_EQUAL_UNITS')
