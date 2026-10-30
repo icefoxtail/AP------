@@ -44,14 +44,14 @@ export function textNamesPoint(text,id){
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides'],
-  textLabels:['id','at','text','labelKind','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelAt','factRole'],
-  dimensions:['id','from','to','label','labelKind','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
-  pathLabels:['id','points','label','labelKind','unit','value','factRole'],
+  textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
+  dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
+  pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over'],
-  equalLengths:['id','count','segments','pathMark'],parallels:['id','count','segments'],
-  expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit','labelAt','ownership'],
-  arcs:['id','circle','center','from','to','side','label','labelKind','unit','labelPlacement','highlight','factRole'],
-  traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','unit','factRole'],
+  equalLengths:['id','count','segments','pathMark','markStyle'],parallels:['id','count','segments'],
+  expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership'],
+  arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole'],
+  traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','labelWeight','unit','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
 // emphasisGroup (angles): angles of one group draw their arcs in one colour (group 1 red, 2 blue, 3 green), so an angle that belongs to two relations
@@ -60,6 +60,15 @@ export const ANGLE_EMPHASIS_GROUPS=3;
 export const ANGLE_LABEL_PLACEMENTS=['AUTO','LEADER'];
 export const ARC_LABEL_PLACEMENTS=['AUTO','LEADER'];
 export const EQUAL_PATH_MARKS=['AUTO','TICK','BRACKET'];
+// labelWeight MATH (E32, opt-in): a plain-text label (labelKind TEXT) is drawn in the weight of the math labels beside it; without it a TEXT label keeps its thin face
+export const LABEL_WEIGHTS=['MATH'];
+const weightOf=(row,kind,where)=>{
+  if(row.labelWeight===undefined)return {};
+  if(!LABEL_WEIGHTS.includes(row.labelWeight)||kind!=='TEXT')bad('MARK_LABEL_WEIGHT_INVALID:'+where+':'+row.id);
+  return {labelWeight:'MATH'};
+};
+// markStyle (E32): TICK (default, 1 to 3 ticks) or CIRCLE (1 or 2 small open circles on the segment); groups are told apart by style and count, so five or six equal groups fit
+export const EQUAL_MARK_STYLES=['TICK','CIRCLE'];
 export const TRACE_JOIN_MAX_DEGREES=300;   // a joined trace arc (the stated intersections plus spanDeg) may sweep at most this far round its centre
 // A label's `unit` (cm, m, mm) is written after a MATH label's expression; a TEXT label is plain Korean text and takes none.
 export const LABEL_UNITS=['cm','m','mm','kg'];
@@ -317,6 +326,9 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       // TICK = ticks at the nearest clear place on the path; BRACKET = always the bracket
       if(row.pathMark!==undefined&&(kind!=='EQUAL_MARK'||!EQUAL_PATH_MARKS.includes(row.pathMark)||!entries.some(entry=>entry.ids.length>1)))bad('EQUAL_MARK_PATH_MARK_INVALID:'+row.id);
       if(!Number.isInteger(row.count)||row.count<1||row.count>max)bad('MARK_COUNT_INVALID:'+row.id);
+      const markStyle=row.markStyle??'TICK';
+      if(row.markStyle!==undefined&&(kind!=='EQUAL_MARK'||!EQUAL_MARK_STYLES.includes(row.markStyle)))bad('EQUAL_MARK_STYLE_INVALID:'+row.id);
+      if(markStyle==='CIRCLE'&&(row.count>2||entries.some(entry=>entry.ids.length>1)))bad('EQUAL_MARK_STYLE_INVALID:'+row.id);
       const ends=entries.map(entry=>segEnds(entry.rep));
       if(kind==='EQUAL_MARK'){
         const lengths=entries.map(entry=>entry.ids.reduce((sum,id)=>{const [p,q]=segEnds(id);return sum+norm(sub(q,p));},0));
@@ -325,11 +337,12 @@ export function planeMarkSpec(plan,model,points,segmentIds){
         const units=ends.map(([p,q])=>{const d=sub(q,p),n=norm(d);return [d[0]/n,d[1]/n];});
         if(units.some(u=>Math.abs(u[0]*units[0][1]-u[1]*units[0][0])>Math.sin(ANGLE_TOLERANCE_DEGREES*Math.PI/180)))bad(codeLength+':'+row.id);
       }
-      // Two groups of one kind with the same tick count could not be told apart.
-      if(counts.has(row.count))bad((kind==='EQUAL_MARK'?'EQUAL_MARK_GROUP_AMBIGUOUS:':'PARALLEL_MARK_GROUP_AMBIGUOUS:')+row.id+'&'+counts.get(row.count));
-      counts.set(row.count,row.id);
+      // Two groups of one kind with the same style and tick count could not be told apart.
+      const groupKey=markStyle+':'+row.count;
+      if(counts.has(groupKey))bad((kind==='EQUAL_MARK'?'EQUAL_MARK_GROUP_AMBIGUOUS:':'PARALLEL_MARK_GROUP_AMBIGUOUS:')+row.id+'&'+counts.get(groupKey));
+      counts.set(groupKey,row.id);
       const paths=Object.fromEntries(entries.filter(entry=>entry.ids.length>1).map(entry=>[entry.rep,entry.ids]));
-      objects.push({id:row.id,kind,refs:entries.map(entry=>entry.rep),count:row.count,...(Object.keys(paths).length?{paths}:{}),...(row.pathMark!==undefined&&row.pathMark!=='AUTO'?{pathMark:row.pathMark}:{})});
+      objects.push({id:row.id,kind,refs:entries.map(entry=>entry.rep),count:row.count,...(Object.keys(paths).length?{paths}:{}),...(row.pathMark!==undefined&&row.pathMark!=='AUTO'?{pathMark:row.pathMark}:{}),...(markStyle==='CIRCLE'?{markStyle:'CIRCLE'}:{})});
     }
   }
 
@@ -352,7 +365,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(row.ownership!==undefined&&!['STRICT','NEAREST'].includes(row.ownership))bad('SEGMENT_LABEL_OWNERSHIP_INVALID:'+row.id);
     objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:mid,lineOwned:true,
       alternateAt:others,gaps:[8,6,10,20,32,48],priority:1,
-      ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...(row.ownership==='NEAREST'?{ownership:'NEAREST'}:{})});
+      ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...(row.ownership==='NEAREST'?{ownership:'NEAREST'}:{}),...weightOf(row,kind,'expressionLabels')});
     factRolesByLabel[row.id]=role(row);
   }
 
@@ -375,7 +388,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     // A coordinate pair written beside a point must be that point's coordinates (an optional one-letter name before it is not checked here).
     const written=byPoint&&kind==='MATH'?TEXT_LABEL_COORDINATE.exec(row.text.trim()):null;
     if(written&&(Math.abs(Number(written[1])-place[0])>1e-6||Math.abs(Number(written[2])-place[1])>1e-6))bad('TEXT_LABEL_COORDINATE_MISMATCH:'+row.id+':declared=('+written[1]+','+written[2]+'):point=('+Number(place[0].toFixed(6))+','+Number(place[1].toFixed(6))+')');
-    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.id,text:row.text,at:place,freeLabel:true,priority:1,...(anchor?{anchor}:{}),...(kind==='TEXT'?{labelKind:'TEXT'}:{})});
+    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.id,text:row.text,at:place,freeLabel:true,priority:1,...(anchor?{anchor}:{}),...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...weightOf(row,kind,'textLabels')});
     factRolesByLabel[row.id]=role(row);
   }
 
@@ -416,7 +429,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const lerp=t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];
     const mid=row.labelAt==='START'?lerp(0):row.labelAt==='END'?lerp(1):[(p[0]+q[0])/2,(p[1]+q[1])/2];
     const others=(row.labelAt==='START'?[0.06,0.15,0.3]:row.labelAt==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
-    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.segment,text,at:mid,lineOwned:true,alternateAt:others,gaps:[8,6,10,20,32,48],priority:1,labelKind:'TEXT'});
+    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.segment,text,at:mid,lineOwned:true,alternateAt:others,gaps:[8,6,10,20,32,48],priority:1,labelKind:'TEXT',...weightOf(row,'TEXT','commonSides')});
     factRolesByLabel[row.id]=role(row);
   }
 
@@ -452,7 +465,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     }
     const frame=dimensionFrame(a,b,row.side,offset,row.offsetPx,style);
     if(!frame.ok)bad('DIMENSION_SIDE_AMBIGUOUS:'+row.id);
-    objects.push({id:row.id,kind:'DIMENSION_LINE',refs:[row.from,row.to],side:row.side,style,offset,...(row.offsetPx!==undefined?{offsetPx:row.offsetPx}:{}),...(row.extension==='NONE'?{extension:'NONE'}:{}),...(row.offset==='AUTO'?{autoOffset:true}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
+    objects.push({id:row.id,kind:'DIMENSION_LINE',refs:[row.from,row.to],side:row.side,style,offset,...(row.offsetPx!==undefined?{offsetPx:row.offsetPx}:{}),...(row.extension==='NONE'?{extension:'NONE'}:{}),...(row.offset==='AUTO'?{autoOffset:true}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...weightOf(row,kind,'dimensions')});
     factRolesByLabel[row.id+'-label']=role(row);
   }
 
@@ -461,9 +474,11 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:pathLabels');
     keysOk(row,KEYS.pathLabels,'pathLabels');claim(row.id,'pathLabels');
     if(!Array.isArray(row.points)||row.points.length<3||row.points.length>8||row.points.some(id=>typeof id!=='string')||new Set(row.points).size!==row.points.length)bad('PATH_LABEL_POINTS_INVALID:'+row.id);
-    const coords=row.points.map(at),pathSegments=[];let total=0;
-    for(let i=0;i+1<row.points.length;i++){
-      const a=row.points[i],b=row.points[i+1];
+    if(row.closed!==undefined&&row.closed!==true)bad('PATH_LABEL_CLOSED_INVALID:'+row.id);
+    const closed=row.closed===true,ring=closed?[...row.points,row.points[0]]:row.points;   // closed: the label is for a whole perimeter, the last point joins back to the first
+    const coords=ring.map(at),pathSegments=[];let total=0;
+    for(let i=0;i+1<ring.length;i++){
+      const a=ring[i],b=ring[i+1];
       const hit=(plan.displaySegments||[]).find(s=>segmentIds.has(s.id)&&Array.isArray(s.refs)&&((s.refs[0]===a&&s.refs[1]===b)||(s.refs[0]===b&&s.refs[1]===a)));
       if(!hit)bad('PATH_LABEL_SEGMENT_NOT_DRAWN:'+row.id+':'+a+'-'+b);
       pathSegments.push(hit.id);total+=norm(sub(coords[i+1],coords[i]));
@@ -480,7 +495,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(declared===null||declared<=0)bad('MARK_FIELD_INVALID:pathLabels.value:'+row.id);
       if(Math.abs(declared-total)>1e-6*Math.max(1,declared))bad('PATH_LABEL_FACT_MISMATCH:'+row.id+':declared='+declared+':drawn='+total.toFixed(6));
     }
-    objects.push({id:row.id,kind:'PATH_LABEL',refs:[...row.points],segments:pathSegments,labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
+    objects.push({id:row.id,kind:'PATH_LABEL',refs:[...row.points],segments:pathSegments,...(closed?{closed:true}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...weightOf(row,kind,'pathLabels')});
     factRolesByLabel[row.id+'-label']=role(row);
   }
 
@@ -512,7 +527,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(row.label===undefined)bad('ARC_LABEL_PLACEMENT_NEEDS_LABEL:'+row.id);
       if(row.labelPlacement==='LEADER')object.labelPlacement='LEADER';
     }
-    if(row.label!==undefined){object.labelText=String(row.label);object.labelKind=kind;if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);}
+    if(row.label!==undefined){object.labelText=String(row.label);object.labelKind=kind;if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);Object.assign(object,weightOf(row,kind,'arcs'));}
     objects.push(object);
   }
 
@@ -570,7 +585,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       else if(unit?!/^(?:[0-9]+(?:\.[0-9]+)?|[A-Za-z])$/.test(label)||/^0+(?:\.0+)?$/.test(label):!/^[1-9][0-9]?$/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);
     }
     const object={id:row.id,kind:'TRACE_ARC',centerPoint:row.center,through:[...row.through],spanDeg:span,...(radiusPoint?{radiusPoint}:{radiusSegment}),...(join?{span:'JOIN'}:{}),...(row.labelAt!==undefined?{labelAt:row.labelAt}:{})};
-    if(label!==null){object.labelText=label;if(kind==='TEXT')object.labelKind='TEXT';if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);}
+    if(label!==null){object.labelText=label;if(kind==='TEXT')object.labelKind='TEXT';if(unit)object.unit=unit;factRolesByLabel[row.id+'-label']=role(row);Object.assign(object,weightOf(row,kind,'traces'));}
     objects.push(object);
   }
 
@@ -620,12 +635,14 @@ export function arcLabelBoxEstimate(row){
   const text=String(row.label),font=ARC_LABEL_FONT_ESTIMATE_PX,kind=row.labelKind??(row.unit!==undefined?'MATH':'DEGREE');
   const hangul=/[ᄀ-ᇿ㄰-㆏㈀-㋿가-힯]/;
   let em;
-  if(kind==='TEXT')em=[...text].reduce((sum,ch)=>sum+(hangul.test(ch)?1.05:0.6),0);
+  // a plain-text label with a symbol (△ABC=75cm², ∠A) stands taller and wider than its letters suggest (E32): the symbols take a full em and the line box is 1.5 em
+  const symbolic=kind==='TEXT'&&/[△▲▽∠□◇∥⊥²³]/u.test(text);
+  if(kind==='TEXT')em=[...text].reduce((sum,ch)=>sum+(hangul.test(ch)?1.05:/[△▲▽∠□◇∥⊥]/u.test(ch)?1.15:0.6),0);
   else{
     em=[...text.replace(/\s+/g,'')].length*0.62+(kind==='DEGREE'?0.45:kind==='NAME'?0.8:0);
     if(row.unit!==undefined)em+=String(row.unit).length*0.6+(/[A-Za-z]$/.test(text)?0.25:0);
   }
-  return {width:Math.ceil(em*font),height:Math.ceil(font*(kind!=='TEXT'&&/[\/^_]|sqrt/.test(text)?2.0:1.1))};
+  return {width:Math.ceil(em*font),height:Math.ceil(font*(kind!=='TEXT'&&/[\/^_]|sqrt/.test(text)?2.0:symbolic?1.5:1.1))};
 }
 // Where each labelled arc's label hangs: the arc's middle (model units), the outward unit vector, the arc's own extreme points and the label size estimate.
 export function arcLabelSites(plan,model,points){

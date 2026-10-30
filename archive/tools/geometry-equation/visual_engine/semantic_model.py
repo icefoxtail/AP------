@@ -15,7 +15,7 @@ RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MA
 FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide'}
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'}}
 
-FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership'}   # E32 additions to the component fields (kept apart from the long set above)
+FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -82,11 +82,12 @@ def validate(spec):
         # labelPlacement LEADER puts an angle mark's label outside its angle on a leader from its own arc; nothing else carries it.
         if 'labelPlacement' in obj and not ((obj['kind'] in {'ANGLE_MARK','CIRCULAR_ARC'} and obj['labelPlacement']=='LEADER') or (obj['kind']=='FILL_REGION' and obj['labelPlacement'] in {'LEADER','AUTO_LEADER'})):raise ValueError('INVALID_ANGLE_LABEL_PLACEMENT')
         if 'paths' in obj and obj['kind']!='EQUAL_MARK':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
+        if 'markStyle' in obj and (obj['kind']!='EQUAL_MARK' or obj['markStyle']!='CIRCLE' or obj.get('count') not in {1,2} or 'paths' in obj):raise ValueError('EQUAL_MARK_STYLE_INVALID:'+str(obj.get('id')))
         if 'ownership' in obj and (obj['kind']!='EQUATION_LABEL' or obj['ownership']!='NEAREST' or not obj.get('lineOwned')):raise ValueError('SEGMENT_LABEL_OWNERSHIP_INVALID:'+str(obj.get('id')))
         if 'over' in obj and (obj['kind']!='ANGLE_MARK' or not isinstance(obj['over'],list) or not obj['over'] or any(not isinstance(v,str) for v in obj['over'])):raise ValueError('ANGLE_OVER_INVALID:'+str(obj.get('id')))
         if 'pathMark' in obj and (obj['kind']!='EQUAL_MARK' or obj['pathMark'] not in {'TICK','BRACKET'} or 'paths' not in obj):raise ValueError('EQUAL_MARK_PATH_MARK_INVALID:'+str(obj.get('id')))
         # labelWeight MATH (E32) draws a plain-text label in the weight of a math label; labelAt places a region's label at a source coordinate.
-        if 'labelWeight' in obj and (obj['labelWeight']!='MATH' or obj.get('labelKind')!='TEXT' or obj['kind'] not in {'FILL_REGION','EQUATION_LABEL'}):raise ValueError('INVALID_LABEL_WEIGHT:'+str(obj.get('id')))
+        if 'labelWeight' in obj and (obj['labelWeight']!='MATH' or obj.get('labelKind')!='TEXT' or obj['kind'] not in {'FILL_REGION','EQUATION_LABEL','CIRCULAR_ARC','DIMENSION_LINE','PATH_LABEL','TRACE_ARC'}):raise ValueError('INVALID_LABEL_WEIGHT:'+str(obj.get('id')))
         if obj['kind']=='FILL_REGION' and 'labelAt' in obj and (not isinstance(obj['labelAt'],list) or len(obj['labelAt'])!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in obj['labelAt'])):raise ValueError('REGION_LABEL_AT_INVALID:'+str(obj.get('id')))
         # A first layout direction for a label at its point (the layout still tries the other directions).
         if 'preferred' in obj and (obj['kind'] not in {'POINT_NAME','COORDINATE_LABEL'} or obj['preferred'] not in {'N','NE','E','SE','S','SW','W','NW'}):raise ValueError('INVALID_LABEL_PREFERRED_DIRECTION')
@@ -187,15 +188,17 @@ def validate(spec):
         if obj['kind'] != 'PATH_LABEL': continue
         # A path total-length label: three or more displayed points joined by drawn segments (one per consecutive pair), one label for the whole length.
         refs=obj['refs'];sids=obj.get('segments')
+        if 'closed' in obj and obj['closed'] is not True:raise ValueError('PATH_LABEL_CLOSED_INVALID:'+obj['id'])
+        closed=obj.get('closed') is True;ring=refs+refs[:1] if closed else refs      # closed: the perimeter, the last point joins back to the first
         if not 3<=len(refs)<=8 or len(set(refs))!=len(refs) or any(objects.get(ref,{}).get('kind')!='POINT' for ref in refs):raise ValueError('PATH_LABEL_POINTS_INVALID:'+obj['id'])
-        if not isinstance(sids,list) or len(sids)!=len(refs)-1 or any(objects.get(sid,{}).get('kind')!='SEGMENT' for sid in sids):raise ValueError('PATH_LABEL_SEGMENT_NOT_DRAWN:'+obj['id'])
-        for a,b,sid in zip(refs,refs[1:],sids):
+        if not isinstance(sids,list) or len(sids)!=len(ring)-1 or any(objects.get(sid,{}).get('kind')!='SEGMENT' for sid in sids):raise ValueError('PATH_LABEL_SEGMENT_NOT_DRAWN:'+obj['id'])
+        for a,b,sid in zip(ring,ring[1:],sids):
             ends=geometry[sid]
             if not ({tuple(ends[0]),tuple(ends[1])}=={tuple(geometry[a]),tuple(geometry[b])}):raise ValueError('PATH_LABEL_SEGMENT_NOT_DRAWN:'+obj['id']+':'+a+'-'+b)
         text=obj.get('labelText')
         if not isinstance(text,str) or not text.strip() or len(text)>40:raise ValueError('PATH_LABEL_LABEL_REQUIRED:'+obj['id'])
-        geometry[obj['id']]={'points':[geometry[ref] for ref in refs]}
-        relations.append({'id':obj['id'],'kind':'PATH_LABEL','status':'PASS','observed':sum(math.dist(geometry[a],geometry[b]) for a,b in zip(refs,refs[1:]))})
+        geometry[obj['id']]={'points':[geometry[ref] for ref in ring]}
+        relations.append({'id':obj['id'],'kind':'PATH_LABEL','status':'PASS','observed':sum(math.dist(geometry[a],geometry[b]) for a,b in zip(ring,ring[1:]))})
     for obj in spec['objects']:
         if obj['kind'] != 'CIRCULAR_ARC': continue
         refs=(obj['centerPoint'],obj['startPoint'],obj['endPoint'])

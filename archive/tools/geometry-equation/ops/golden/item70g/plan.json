@@ -1,0 +1,642 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "9"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "20"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "20"
+      },
+      {
+       "kind": "integer",
+       "value": "9"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "m0",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "n0",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "20"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "t1",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "9"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "v1",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "t2",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "8"
+      },
+      {
+       "kind": "integer",
+       "value": "9"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "v2",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "8"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "t3",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "12"
+      },
+      {
+       "kind": "integer",
+       "value": "9"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "v3",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "12"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "t4",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "16"
+      },
+      {
+       "kind": "integer",
+       "value": "9"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "v4",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "16"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "u1",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "w1",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "u2",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "w2",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "u3",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "15"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "w3",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "15"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "m0",
+  "n0",
+  "t1",
+  "v1",
+  "t2",
+  "v2",
+  "t3",
+  "v3",
+  "t4",
+  "v4",
+  "u1",
+  "w1",
+  "u2",
+  "w2",
+  "u3",
+  "w3"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAD",
+   "refs": [
+    "A",
+    "D"
+   ]
+  },
+  {
+   "id": "sDC",
+   "refs": [
+    "D",
+    "C"
+   ]
+  },
+  {
+   "id": "sCB",
+   "refs": [
+    "C",
+    "B"
+   ]
+  },
+  {
+   "id": "sBA",
+   "refs": [
+    "B",
+    "A"
+   ]
+  },
+  {
+   "id": "sMN",
+   "refs": [
+    "m0",
+    "n0"
+   ]
+  },
+  {
+   "id": "sT1",
+   "refs": [
+    "t1",
+    "v1"
+   ]
+  },
+  {
+   "id": "sT2",
+   "refs": [
+    "t2",
+    "v2"
+   ]
+  },
+  {
+   "id": "sT3",
+   "refs": [
+    "t3",
+    "v3"
+   ]
+  },
+  {
+   "id": "sT4",
+   "refs": [
+    "t4",
+    "v4"
+   ]
+  },
+  {
+   "id": "sW1",
+   "refs": [
+    "u1",
+    "w1"
+   ]
+  },
+  {
+   "id": "sW2",
+   "refs": [
+    "u2",
+    "w2"
+   ]
+  },
+  {
+   "id": "sW3",
+   "refs": [
+    "u3",
+    "w3"
+   ]
+  }
+ ],
+ "hiddenPointNames": [
+  "m0",
+  "n0",
+  "t1",
+  "v1",
+  "t2",
+  "v2",
+  "t3",
+  "v3",
+  "t4",
+  "v4",
+  "u1",
+  "w1",
+  "u2",
+  "w2",
+  "u3",
+  "w3"
+ ],
+ "hiddenPointStyle": "NONE",
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 480
+ },
+ "planeMarks": {
+  "dimensions": [
+   {
+    "id": "dTop",
+    "from": "A",
+    "to": "D",
+    "label": "5x",
+    "unit": "cm",
+    "side": "ABOVE",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "DERIVED_INTERMEDIATE",
+    "extension": "NONE"
+   },
+   {
+    "id": "dBot",
+    "from": "B",
+    "to": "C",
+    "label": "4y",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "DERIVED_INTERMEDIATE",
+    "extension": "NONE"
+   },
+   {
+    "id": "dRight",
+    "from": "D",
+    "to": "C",
+    "label": "(x+y)",
+    "unit": "cm",
+    "side": "RIGHT",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "DERIVED_INTERMEDIATE",
+    "extension": "NONE"
+   },
+   {
+    "id": "dLtop",
+    "from": "A",
+    "to": "m0",
+    "label": "y",
+    "unit": "cm",
+    "side": "LEFT",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "DERIVED_INTERMEDIATE",
+    "extension": "NONE"
+   },
+   {
+    "id": "dLbot",
+    "from": "m0",
+    "to": "B",
+    "label": "x",
+    "unit": "cm",
+    "side": "LEFT",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "DERIVED_INTERMEDIATE",
+    "extension": "NONE"
+   }
+  ],
+  "pathLabels": [
+   {
+    "id": "pPer",
+    "points": [
+     "A",
+     "D",
+     "C",
+     "B"
+    ],
+    "closed": true,
+    "label": "둘레 87cm",
+    "labelKind": "TEXT",
+    "labelWeight": "MATH",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "caption": "벽돌 1장의 짧은 변을 x cm, 긴 변을 y cm라 하면 직사각형 ABCD의 가로는 위쪽 5x cm, 아래쪽 4y cm로 같고 세로는 (x+y) cm이며 둘레는 87 cm이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "모양과 크기가 같은 직사각형 벽돌 9장(위 5장, 아래 4장)을 붙여 직사각형 ABCD를 만들었다.",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "벽돌 1장의 짧은 변 x cm, 긴 변 y cm. 위쪽 짧은 변 5개가 아래쪽 긴 변 4개와 같은 길이(5x=4y)이고, 세로는 x+y이다.",
+   "mappedTo": [
+    "sAD",
+    "sCB",
+    "sBA",
+    "sDC"
+   ]
+  },
+  {
+   "id": "c3",
+   "condition": "직사각형 ABCD의 둘레의 길이는 87 cm이다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "위쪽 짧은 변 5개의 합 5x와 아래쪽 긴 변 4개의 합 4y가 직사각형의 같은 가로 길이이고, 세로가 x+y라는 것"
+ ],
+ "sourceQuote": "그림에서 위쪽의 짧은 변 $5$개가 아래쪽의 긴 변"
+}

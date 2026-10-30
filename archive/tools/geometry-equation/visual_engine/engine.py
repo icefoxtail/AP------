@@ -30,6 +30,11 @@ ROOT=Path(__file__).resolve().parents[4]
 def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False)
 def sha(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
+def weighted(label,obj):
+    """labelWeight MATH (E32): a plain-text mark label is drawn in the weight of a math label (the typesetter strokes its outline); every other label is left as it is."""
+    if obj.get('labelWeight')=='MATH' and label.get('math') is False:label['weight']='MATH'
+    return label
+
 def mark_label(label_id,target,text,label_kind,at,extra,unit=None):
     """A label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC), 'MATH' = the expression as it stands (a symbol such as theta names the angle;
     with `unit` the unit follows it: 3cm, x cm), 'TEXT' = plain Korean text in the text font, never parsed as math (a name such as ㉠ or 호 AB)."""
@@ -247,6 +252,8 @@ def _region_leader_anchors(polygons,obstacles,corners,straight_edges=(),avoid=()
 
 # ---- one equal-length mark for a path of pieces (E32) -------------------------------------------------------------------------------------------------
 EQUAL_PATH_CLEAR_PX=8.0   # the mark of a whole path (B-E-D) stands at least this far from every inner joint and displayed point
+EQUAL_CIRCLE_RADIUS_PX=3.6   # markStyle CIRCLE: the circle's radius and the distance between two circles' centres
+EQUAL_CIRCLE_PITCH_PX=9.0
 EQUAL_BRACKET_OFFSET_PX=12.0   # the bracket of a path stands this far beside it (its ticks centred on it)
 EQUAL_BRACKET_CAP_HALF_PX=4.0  # its two end caps are 8 px long, perpendicular to it and centred on its ends
 EQUAL_BRACKET_CLEAR_PX=3.0     # no stroke or point comes nearer than this to any part of it
@@ -313,6 +320,7 @@ DIM_LABEL_SLIDES=(0.0,0.12,-0.12,0.24,-0.24)   # fractions of the dimension's le
 
 PATH_LABEL_ANCHOR_FRACTIONS=(0.5,0.4,0.6,0.3,0.7,0.2,0.8)   # where along the path (by length) the leader may start, the middle first
 PATH_LABEL_GAPS=(24,32,44,60)                                  # distance from the anchor to the label box: always far enough to need a visible leader
+PATH_LABEL_CORNER_CLEAR_PX=12.0                                 # closed path: a leader starts at least this far from a corner
 PATH_LABEL_CLEAR_PX=28.0                                       # an anchor farther than this from every other stroke is as good as any
 
 DIM_INLINE_TIP_INSET_PX=5.0        # style INLINE: the arrowheads' tips stand this far inside the two points (clear of their dots)
@@ -740,7 +748,7 @@ def prepare(spec):
                     dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
                     return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
                 directions=sorted(DIRECTIONS,key=alignment)
-                arc_label=mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]},obj.get('unit'))
+                arc_label=weighted(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]},obj.get('unit')),obj)
                 if obj.get('labelPlacement')=='LEADER':
                     # E32: a thin arc (a lens, a quarter arc between two others) writes its label on a leader that starts ON this arc, on either side of it
                     arc_label['arcLeader']={'anchors':_arc_leader_anchors(value,vp),'gaps':list(ARC_LEADER_GAPS),'ownerIds':[oid]}
@@ -777,7 +785,7 @@ def prepare(spec):
                 directions=outward_direction_order(anchor,vp.screen(centre)) if anchored else ('E','NE','N','SE','S','NW','W','SW')
                 if obj.get('labelKind')=='TEXT' or obj.get('unit') is not None:
                     # a plain Korean order sign such as ㉠, or a radius length with its unit (3cm): the same owner-bound label as an arc's
-                    label=mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'directions':directions,'gaps':(8,12,18,26)},obj.get('unit'))
+                    label=weighted(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'directions':directions,'gaps':(8,12,18,26)},obj.get('unit')),obj)
                     label['font']=tokens['tickLabel']
                     labels.append(label)
                 else:
@@ -961,7 +969,7 @@ def prepare(spec):
                         dim_primitive(part,'polygon','indicator',points=[tip,(base[0]-out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]+out[0]*DIM_ARROW_HALF_WIDTH_PX),(base[0]+out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]-out[0]*DIM_ARROW_HALF_WIDTH_PX)],fill='#111')
             # The label stands on the outer side of the dimension line (of the brace's tip), centred on it; the layout slides it along the line when the middle is taken.
             anchor=at(p,length/2,dist)
-            labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'dimensionPlacement':{'anchor':list(anchor),'normal':list(n),'tangent':list(d),'length':length,'gaps':DIM_INLINE_LABEL_GAPS if inline else DIM_AUTO_LABEL_GAPS if obj.get('autoOffset') else DIM_LABEL_GAPS,'slides':DIM_LABEL_SLIDES}},obj.get('unit')))
+            labels.append(weighted(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'dimensionPlacement':{'anchor':list(anchor),'normal':list(n),'tangent':list(d),'length':length,'gaps':DIM_INLINE_LABEL_GAPS if inline else DIM_AUTO_LABEL_GAPS if obj.get('autoOffset') else DIM_LABEL_GAPS,'slides':DIM_LABEL_SLIDES}},obj.get('unit')),obj))
         elif kind=='PATH_LABEL':
             # One label for the whole length of a bent path: it stands off the path, tied to it by a visible leader that starts ON a drawn segment of the path.
             path=[vp.screen(p) for p in value['points']];lengths=[math.dist(a,b) for a,b in zip(path,path[1:])];total=sum(lengths)
@@ -990,7 +998,14 @@ def prepare(spec):
                     elif o.get('kind')=='point' and isinstance(geometry_o,(list,tuple)) and len(geometry_o)>=3:nearest=min(nearest,math.dist(anchor,geometry_o[:2])-geometry_o[2])
                 return nearest
             anchors.sort(key=lambda anchor:-clearance(anchor))
-            labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchors[0],{'pathOwned':{'ids':list(obj['segments']),'anchors':[list(a) for a in anchors],'gaps':PATH_LABEL_GAPS}},obj.get('unit')))
+            closed=obj.get('closed') is True
+            if closed:
+                # a perimeter label: the leader starts on a side, away from the corners, and the label stands outside the figure; the corners themselves
+                # come last (where dimension lines cover every side, a leader leaving a corner diagonally is the one way out between them)
+                clear_of_corners=[a for a in anchors if all(math.dist(a,v)>=PATH_LABEL_CORNER_CLEAR_PX for v in path)]
+                anchors=clear_of_corners+[v for v in path[:-1] if all(math.dist(v,a)>=1.0 for a in clear_of_corners)]
+            site={'ids':list(obj['segments'])+(list(obj['refs']) if closed else []),'anchors':[list(a) for a in anchors],'gaps':PATH_LABEL_GAPS,**({'outside':[list(p) for p in path[:-1]]} if closed else {})}
+            labels.append(weighted(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchors[0],{'pathOwned':site},obj.get('unit')),obj))
         elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
             ends=[(vp.screen(geometry[r][0]),vp.screen(geometry[r][1])) for r in obj['refs']];count=obj['count']
             reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1]);paths=obj.get('paths',{})
@@ -1036,7 +1051,11 @@ def prepare(spec):
                 if kind=='PARALLEL_MARK' and d[0]*reference[0]+d[1]*reference[1]<0:d=(-d[0],-d[1]);n=(-d[1],d[0])
                 for i in range(count):
                     shift=(i-(count-1)/2)*(5 if kind=='EQUAL_MARK' else 6);c=(mid[0]+d[0]*shift,mid[1]+d[1]*shift)
-                    if kind=='EQUAL_MARK':
+                    if kind=='EQUAL_MARK' and obj.get('markStyle')=='CIRCLE':
+                        # E32: a small open circle on the segment instead of a tick (the fourth, fifth ... equal group); two circles stand 9 px apart
+                        c=(mid[0]+d[0]*(i-(count-1)/2)*EQUAL_CIRCLE_PITCH_PX,mid[1]+d[1]*(i-(count-1)/2)*EQUAL_CIRCLE_PITCH_PX)
+                        primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'circle','at':c,'radius':EQUAL_CIRCLE_RADIUS_PX,'token':'secondaryShape','layer':55,'role':'indicator','mark':'equal','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count},'circle')
+                    elif kind=='EQUAL_MARK':
                         primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'line','from':(c[0]-n[0]*5.5,c[1]-n[1]*5.5),'to':(c[0]+n[0]*5.5,c[1]+n[1]*5.5),'token':'secondaryShape','layer':55,'role':'indicator','mark':'equal','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count},'curve')
                     else:
                         tip=(c[0]+d[0]*3.5,c[1]+d[1]*3.5);back=(c[0]-d[0]*3.5,c[1]-d[1]*3.5)
@@ -1060,7 +1079,7 @@ def prepare(spec):
             elif kind=='EQUATION_LABEL' and obj.get('labelKind')=='TEXT':
                 # A plain Korean label on a plane figure (an order sign such as ㉠, a ray name): the text font, never parsed as math.
                 if obj.get('unit') is not None:raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+oid)
-                label.update(text=obj['text'],layoutText=obj['text'],math=False,bindText=True)
+                label.update(text=obj['text'],layoutText=obj['text'],math=False,bindText=True);weighted(label,obj)
             elif kind in {'EQUATION_LABEL','LENGTH_LABEL'} or obj.get('math'):
                 tree=_parse_list(obj['text']) if obj.get('freeLabel') else parse(obj['text']);notation=spec['displayFacts'].get('notationByLabel',{}).get(oid,{})
                 entity=notation.get('entity')

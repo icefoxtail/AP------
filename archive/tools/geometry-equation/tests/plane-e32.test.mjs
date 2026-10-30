@@ -233,3 +233,84 @@ test('E32 angles: plan errors for over and a segment label with ownership NEARES
   const label=extra=>paraPlan(paraAngles({}),{planeMarks:{expressionLabels:[{id:'t1',ownerSegment:'sBC',text:'8',unit:'cm',...extra}]}});
   assert.equal(specError(label({ownership:'LOOSE'}),model),'SEGMENT_LABEL_OWNERSHIP_INVALID:t1');
 });
+
+// ---- small additions (feature 6): a plane figure without any label, equal groups drawn with circles, weighted TEXT labels and a closed perimeter label
+const trap=plane([source('pBL',0,0),source('pBR',9,0),source('pTR',7,5),source('pTL',1,5)]);
+const trapPlan=(extra={},marks={parallels:[{id:'par1',count:1,segments:['sTop','sBot']}]})=>({capability:'construction-spike-v1',caption:'윗변과 아랫변이 평행한 사다리꼴이다.',mathPlan:trap,displayPoints:['pBL','pBR','pTR','pTL'],hiddenPointNames:['pBL','pBR','pTR','pTL'],hiddenPointStyle:'NONE',displayLines:[],displayCircles:[],
+  displaySegments:[['sBot','pBL','pBR'],['sRight','pBR','pTR'],['sTop','pTR','pTL'],['sLeft','pTL','pBL']].map(([id,a,b])=>({id,refs:[a,b]})),coordinateCanvas:{width:560,height:360},planeMarks:marks,...extra});
+
+test('E32 text-free plane figure: points and lines only, accepted because the caption carries the text; one label brings the usual rules back',async()=>{
+  const model=await modelOf(trap),composed=await composeOf(trapPlan(),model);
+  expectComposed(composed);
+  assert.match(composed.svg,/<svg\s[^>]*data-text-free="true"/,'the figure says it draws no label of its own');
+  const labelled=await composeOf(trapPlan({},{parallels:[{id:'par1',count:1,segments:['sTop','sBot']}],expressionLabels:[{id:'t1',ownerSegment:'sBot',text:'9',unit:'cm'}]}),model);
+  expectComposed(labelled);
+  assert.doesNotMatch(labelled.svg,/data-text-free/);
+});
+
+const circleGroups=[{id:'e1',count:1,segments:['sAB','sCD','sDA']},{id:'e2',count:2,segments:['sBO','sOD']},{id:'e3',count:3,segments:['sAO','sOC']},{id:'e4',count:1,markStyle:'CIRCLE',segments:['sBP','sPC']}];
+const circlePlan=(groups,extra={})=>({...rhombusPlan(),planeMarks:{equalLengths:groups},...extra});
+
+test('E32 equal marks: a fourth group is drawn with circles (markStyle CIRCLE); the observer reads them back; an explicit TICK changes nothing',async()=>{
+  const model=await modelOf(rhombus),plan=circlePlan(circleGroups),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  const circles=[...composed.svg.matchAll(/<circle\s[^>]*data-mark="equal"[^>]*\/>/g)].map(match=>match[0]);
+  assert.equal(circles.length,2,'one circle on each of the two segments of the group');
+  assert.deepEqual(circles.map(tag=>attr(tag,'data-mark-segment')).sort(),['sBP','sPC']);
+  assert.ok(circles.every(tag=>attr(tag,'fill')==='none'&&Math.abs(Number(attr(tag,'r'))-3.6)<1e-9));
+  const transform=await transformOf(plan,model),run=(svg,marks=plan.planeMarks)=>observe(svg,rhombus,marks,plan.displaySegments,transform);
+  assert.deepEqual((await run(composed.svg)).errors,[]);
+  const tick={equalLengths:circleGroups.map(row=>row.id==='e4'?{id:'e4',count:1,segments:['sBP','sPC']}:row)};
+  assert.ok(codes(await run(composed.svg,tick)).includes('EQUAL_MARK_STYLE_MISMATCH'),'ticks declared where circles are drawn');
+  const explicit=await composeOf(circlePlan([{id:'e1',count:1,segments:['sAB','sCD']},{id:'e2',count:2,segments:['sBO','sOD']}]),model);
+  const implicit=await composeOf(circlePlan([{id:'e1',count:1,markStyle:'TICK',segments:['sAB','sCD']},{id:'e2',count:2,markStyle:'TICK',segments:['sBO','sOD']}]),model);
+  assert.equal(explicit.svg,implicit.svg,'markStyle TICK is the default: same bytes');
+});
+
+test('E32 equal marks: plan errors for markStyle',async()=>{
+  const model=await modelOf(rhombus);
+  const err=groups=>specError(circlePlan(groups),model);
+  assert.equal(err([{id:'e1',count:1,markStyle:'SQUARE',segments:['sAB','sCD']}]),'EQUAL_MARK_STYLE_INVALID:e1');
+  assert.equal(err([{id:'e1',count:3,markStyle:'CIRCLE',segments:['sAB','sCD']}]),'EQUAL_MARK_STYLE_INVALID:e1');
+  assert.equal(err([{id:'e1',count:1,markStyle:'CIRCLE',segments:['sAB','sCD']},{id:'e2',count:1,markStyle:'CIRCLE',segments:['sBO','sOD']}]),'EQUAL_MARK_GROUP_AMBIGUOUS:e2&e1');
+});
+
+const weightPlan=(weight,extra={})=>({...rhombusPlan(),planeMarks:{expressionLabels:[{id:'tBO',ownerSegment:'sBO',text:'밑변',labelKind:'TEXT',...(weight?{labelWeight:weight}:{})}],...extra}});
+const labelGroup=(svg,id)=>new RegExp('<g id="'+id+'"[^>]*>.*?</g>','s').exec(svg)?.[0];
+
+test('E32 weighted text: labelWeight MATH writes a plain-text label as heavy as a math label; without the field the label is unchanged; the observer reads the stroke back',async()=>{
+  const model=await modelOf(rhombus),weighted=weightPlan('MATH'),composed=await composeOf(weighted,model);
+  expectComposed(composed);
+  assert.match(labelGroup(composed.svg,'tBO'),/stroke-width="[\d.]+"/);
+  const plain=await composeOf(weightPlan(null),model);
+  expectComposed(plain);
+  assert.doesNotMatch(labelGroup(plain.svg,'tBO'),/stroke-width/,'no field, no stroke: the label is exactly as before');
+  const transform=await transformOf(weighted,model),run=(svg,marks)=>observe(svg,rhombus,marks,weighted.displaySegments,transform);
+  assert.deepEqual((await run(composed.svg,weighted.planeMarks)).errors,[]);
+  assert.ok(codes(await run(composed.svg,weightPlan(null).planeMarks)).includes('LABEL_WEIGHT_UNDECLARED'));
+  assert.ok(codes(await run(plain.svg,weighted.planeMarks)).includes('LABEL_WEIGHT_MISMATCH'));
+  assert.equal(specError(weightPlan('BOLD'),model),'MARK_LABEL_WEIGHT_INVALID:expressionLabels:tBO');
+  assert.equal(specError({...weighted,planeMarks:{expressionLabels:[{id:'tBO',ownerSegment:'sBO',text:'6',labelWeight:'MATH'}]}},model),'MARK_LABEL_WEIGHT_INVALID:expressionLabels:tBO','a math label has no use for it');
+});
+
+const perimeter={id:'pPer',points:['A','B','P','C','D'],closed:true,label:'둘레 20cm',labelKind:'TEXT'};
+const perimeterPlan=(row={})=>({...rhombusPlan(),planeMarks:{pathLabels:[{...perimeter,...row}]}});
+
+test('E32 closed path label: one total for a whole perimeter, outside the figure on a leader that never enters it; the observer checks the closing side',async()=>{
+  const model=await modelOf(rhombus),plan=perimeterPlan(),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  assert.ok(leaderTag(composed.svg,'pPer-label'),'the label is tied to the perimeter by a leader');
+  const transform=await transformOf(plan,model),run=(svg,marks=plan.planeMarks)=>observe(svg,rhombus,marks,plan.displaySegments,transform);
+  const report=await run(composed.svg);
+  assert.deepEqual(report.errors,[]);
+  assert.equal(report.observations.find(row=>row.type==='PATH_LABEL').closed,true);
+  assert.deepEqual((await run(composed.svg,perimeterPlan({value:4*Math.sqrt(13)}).planeMarks)).errors,[]);
+  assert.ok(codes(await run(composed.svg,perimeterPlan({value:12}).planeMarks)).includes('PATH_LABEL_FACT_MISMATCH'));
+});
+
+test('E32 closed path label: plan errors',async()=>{
+  const model=await modelOf(rhombus);
+  assert.equal(specError(perimeterPlan({closed:false}),model),'PATH_LABEL_CLOSED_INVALID:pPer');
+  assert.equal(specError(perimeterPlan({points:['A','B','C','D']}),model),'PATH_LABEL_SEGMENT_NOT_DRAWN:pPer:B-C');
+  assert.equal(specError(perimeterPlan({points:['A','B']}),model),'PATH_LABEL_POINTS_INVALID:pPer');
+});

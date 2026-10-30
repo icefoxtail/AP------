@@ -9,7 +9,7 @@ import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {bindMeasuredOwnerSafeLabelRepair} from './layout-repair.mjs';
 import {auditMeasuredOwnerSafeLabelRepair} from './layout-repair-audit.mjs';
-import {unmarkedPointIds} from './plane-marks.mjs';
+import {unmarkedPointIds,isPlaneFigure} from './plane-marks.mjs';
 
 export const CANDIDATE_SVG_VERSION='construction-candidate-svg-v1';
 const CAPABILITY='construction-spike-v1';
@@ -175,6 +175,9 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     const built=await call(worker,'build',{action:'build',spec:bridged.spec,measurements,fragments});
     if(typeof built.svg!=='string'||!built.svg.includes('<svg')||!built.witness?.layout)throw new Stop('WORKER_ERROR',{stage:'build',code:'BUILD_RESULT_INVALID'});
     built.svg=restoreCurveBranches(built.svg,bridged.tags);
+    // E32: an axis-free plane figure that draws no label at all (a trapezoid of unnamed points with only marks) is not refused for having none when its plan carries a caption (the caption says it):
+    // the root says so (data-text-free), and the rendered-layout check reads that mark, here and in the Archive replay of the same bytes
+    if(isPlaneFigure(plan)&&typeof plan.caption==='string'&&plan.caption.trim()!==''&&!prepared.labels.length&&!built.svg.includes('data-text-free='))built.svg=built.svg.replace('<svg ','<svg data-text-free="true" ');
     const {svg,witness}=built,{unresolved,suppressed,repairs=[]}=witness.layout;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     lineage.witnessSha256=digest(witness,'witness','OUTPUT_NOT_CANONICAL');

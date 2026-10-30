@@ -158,6 +158,8 @@ def brace_expected(length,dist):
     return half+[(length-u,v) for u,v in reversed(half)][1:]
 
 EQUAL_PATH_CLEAR_PX=8.0   # the mark of a whole path stands at least this far (svg px) from every inner joint
+TEXT_WEIGHT_STROKE_EM=0.06   # labelWeight MATH on a plain-text label: the outline stroke, in em (this observer's own copy)
+EQUAL_CIRCLE_RADIUS_PX=3.6   # markStyle CIRCLE: the radius of an equal-length circle (this observer's own copy)
 NEAREST_OWNER_MARGIN_PX=3.0   # ownership NEAREST: a segment label's own segment is nearer than every other one by at least this (svg px)
 EQUAL_PATH_MIDDLE_TOLERANCE_PX=0.6   # the centre of the marks of a whole path stands at its middle, this far at most (svg px)
 EQUAL_BRACKET_OFFSET_PX=12.0        # the bracket of a path: this far beside it, 8 px end caps (this observer's own copy of the rule)
@@ -271,7 +273,7 @@ def audit(p):
         if 'a'<=ch<='z':out.add(format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X'))
         if 'A'<=ch<='Z':out.add(format(0x1D434+ord(ch)-65,'X'))
         return out
-    def label_content(label_id,kind,text,unit):
+    def label_content(label_id,kind,text,unit,weight=None):
         """What a plain-text (labelKind TEXT) or unit-bearing label of the plan says, read back from the final SVG. A TEXT label is plain outlines (no math glyphs)
         whose text the typesetting step left on its group as data-text; a unit label is checked glyph by glyph (the unit letters last, a plain number's digits first)
         and, for a simple expression, against the exact TeX spacing: a number takes the unit attached (3cm), a letter one thin space (x cm)."""
@@ -281,6 +283,14 @@ def audit(p):
         if kind=='TEXT':
             if codes or node.get('data-tex') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
             if node.get('data-text')!=str(text):errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+            # labelWeight MATH (E32): the outline carries the weight stroke of a math label; without the field it carries none (the old thin face)
+            try:font=float(node.get('data-font-px'))
+            except (TypeError,ValueError):font=None
+            outlines=[n for n in node.iter() if tag(n)=='path']
+            if font is not None and outlines:
+                stroked=[n for n in outlines if str(n.get('stroke','none')).lower() not in ('none','')]
+                if weight=='MATH' and (len(stroked)!=len(outlines) or any(abs(float(n.get('stroke-width','0'))-font*TEXT_WEIGHT_STROKE_EM)>0.01 for n in stroked)):errors.append('LABEL_WEIGHT_MISMATCH:'+label_id)
+                if weight!='MATH' and stroked:errors.append('LABEL_WEIGHT_UNDECLARED:'+label_id)
             return
         if node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
         if not unit:return
@@ -526,7 +536,15 @@ def audit(p):
                 if len(mine)!=row['count']:errors.append(('EQUAL_MARK_MISSING:' if kind=='equal' else 'PARALLEL_MARK_MISSING:')+oid+':'+sid);continue
                 unit=((b[0]-a[0])/length,(b[1]-a[1])/length)
                 for n in mine:
-                    if kind=='equal':
+                    if kind=='equal' and row.get('markStyle')=='CIRCLE':
+                        # markStyle CIRCLE (E32): open circles of 3.6 px radius centred on the segment, 9 px apart, centred on the segment's chosen spot
+                        if tag(n)!='circle':errors.append('EQUAL_MARK_STYLE_MISMATCH:'+oid+':'+sid);continue
+                        centre=inverse(float(n.get('cx')),float(n.get('cy')))
+                        if abs(float(n.get('r'))-EQUAL_CIRCLE_RADIUS_PX)>0.05 or str(n.get('fill','none')).lower() not in ('none',''):errors.append('EQUAL_MARK_TICK_SIZE:'+oid+':'+sid)
+                        across=abs((centre[0]-a[0])*unit[1]-(centre[1]-a[1])*unit[0]);along=(centre[0]-a[0])*unit[0]+(centre[1]-a[1])*unit[1]
+                        if across*sx>0.01 or not 0.15*length<=along<=0.85*length:errors.append('EQUAL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid)
+                    elif kind=='equal':
+                        if tag(n)!='line':errors.append('EQUAL_MARK_STYLE_MISMATCH:'+oid+':'+sid);continue
                         t0,t1=line_model(n);centre=((t0[0]+t1[0])/2,(t0[1]+t1[1])/2);vec=sub(t1,t0)
                         if abs(norm(vec)*sx-TICK_LENGTH_PX)>0.05:errors.append('EQUAL_MARK_TICK_SIZE:'+oid+':'+sid)
                         across=abs((centre[0]-a[0])*unit[1]-(centre[1]-a[1])*unit[0]);along=(centre[0]-a[0])*unit[0]+(centre[1]-a[1])*unit[1]
@@ -560,7 +578,7 @@ def audit(p):
 
     # ---- segment expression labels
     segment_lines={sid:drawn_segment(sid) for sid in {s['id'] for s in p.get('segments',[])}}
-    common_rows=[{'id':r['id'],'ownerSegment':r.get('segment'),'text':r.get('text','공통'),'labelKind':'TEXT','labelAt':r.get('labelAt')} for r in marks.get('commonSides',[]) if isinstance(r,dict)]
+    common_rows=[{'id':r['id'],'ownerSegment':r.get('segment'),'text':r.get('text','공통'),'labelKind':'TEXT','labelAt':r.get('labelAt'),'labelWeight':r.get('labelWeight')} for r in marks.get('commonSides',[]) if isinstance(r,dict)]
     for row in [*marks.get('expressionLabels',[]),*common_rows]:
         oid=row['id'];box=label_clear(oid)
         own=segment_lines.get(row['ownerSegment'])
@@ -573,7 +591,7 @@ def audit(p):
             qm=inverse(*q);return point_segment_distance(qm,*own)*sx<=1.0
         if leader_ok(oid,box,anchored):pass
         elif any(distance_to(sid)+1e-9<mine+(NEAREST_OWNER_MARGIN_PX/sx if row.get('ownership')=='NEAREST' else 0.0) for sid in segment_lines if sid!=row['ownerSegment']):errors.append('SEGMENT_LABEL_AMBIGUOUS_OWNER:'+oid)
-        label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'))
+        label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'),row.get('labelWeight'))
         if row.get('labelAt') is not None:
             # labelAt START / END: the label stands nearer the first / second end of its segment than the other end (its projection on the segment, 0 = first end, 1 = second)
             if row['labelAt'] not in ('START','MID','END'):errors.append('SEGMENT_LABEL_AT_INVALID:'+oid)
@@ -633,7 +651,7 @@ def audit(p):
         kind=row.get('labelKind') or ('TEXT' if TEXT_LABEL_HANGUL.search(text) else 'MATH')
         anchor=row.get('anchor') if row.get('anchor') is not None else ('CENTER' if not isinstance(at,str) else None)
         if anchor is not None and anchor not in TEXT_LABEL_ANCHORS:errors.append('TEXT_LABEL_ANCHOR_INVALID:'+oid);continue
-        label_content(oid,kind,text,None)
+        label_content(oid,kind,text,None,row.get('labelWeight'))
         node=elements.get(oid)
         if kind=='MATH' and node is not None:
             want=math_label_codes(text);codes=glyph_codes(node)
@@ -760,7 +778,7 @@ def audit(p):
             for other,line in dimension_lines.items():
                 if other!=oid and box_polyline_distance(box,line)+1e-9<mine:errors.append('DIMENSION_LABEL_AMBIGUOUS_OWNER:'+oid+':'+other)
         label,unit=dimension_label_parts(row)
-        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit)
+        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit,row.get('labelWeight'))
         # the dimension line itself (or the brace) never crosses a drawn stroke: its own parts and another dimension's extension lines excepted
         line=dimension_lines[oid]
         if oid in dimension_inline:continue      # an inline dimension has no line of its own: the segment it stands on is drawn anyway
@@ -774,12 +792,14 @@ def audit(p):
     for row in marks.get('pathLabels',[]):
         oid=row['id'];ids=row.get('points') or []
         if len(ids)<3 or len(set(ids))!=len(ids):errors.append('PATH_LABEL_POINTS_INVALID:'+oid);continue
-        path=[forward(peer_point(pid)) for pid in ids];owned=[]
-        for a_id,b_id in zip(ids,ids[1:]):
+        if row.get('closed') is not None and row.get('closed') is not True:errors.append('PATH_LABEL_CLOSED_INVALID:'+oid)
+        closed=row.get('closed') is True;ring_ids=ids+ids[:1] if closed else ids      # closed: a perimeter, the last point joins back to the first
+        path=[forward(peer_point(pid)) for pid in ring_ids];owned=[]
+        for a_id,b_id in zip(ring_ids,ring_ids[1:]):
             hit=next((s for s in p.get('segments',[]) if set(s.get('refs') or [])=={a_id,b_id}),None)
             if hit is None or drawn_segment(hit['id']) is None:errors.append('PATH_LABEL_SEGMENT_NOT_DRAWN:'+oid+':'+a_id+'-'+b_id)
             else:owned.append(hit['id'])
-        total=sum(norm(sub(peer_point(b_id),peer_point(a_id))) for a_id,b_id in zip(ids,ids[1:]))
+        total=sum(norm(sub(peer_point(b_id),peer_point(a_id))) for a_id,b_id in zip(ring_ids,ring_ids[1:]))
         if row.get('value') is not None and abs(total-float(row['value']))>1e-6*max(1.0,float(row['value'])):errors.append('PATH_LABEL_FACT_MISMATCH:'+oid+':declared=%s:drawn=%.6f'%(row['value'],total))
         box=label_clear(oid+'-label')
         if box is not None:
@@ -789,10 +809,24 @@ def audit(p):
                 leader_ok(oid+'-label',box,lambda q:min(point_segment_distance(q,c,d) for c,d in zip(path,path[1:]))<=1.0)
                 la=(float(node.get('x1')),float(node.get('y1')));lb=(float(node.get('x2')),float(node.get('y2')))
                 for sid,pts in strokes:
+                    if closed and sid in ids:continue      # a perimeter leader may leave from a corner: that corner's own dot is where it starts
                     if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('PATH_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+                if closed:
+                    # a perimeter label stands outside the figure, its leader never enters it
+                    ring=path[:-1]
+                    def inside(q):
+                        hit=False
+                        for (ax,ay),(bx,by) in zip(ring,ring[1:]+ring[:1]):
+                            if (ay>q[1])!=(by>q[1]) and q[0]<(bx-ax)*(q[1]-ay)/(by-ay)+ax:hit=not hit
+                        return hit
+                    if any(inside((box[0]+box[2]*i/4,box[1]+box[3]*j/2)) for i in range(5) for j in range(3)):errors.append('PATH_LABEL_NOT_OUTSIDE:'+oid)
+                    span=norm(sub(lb,la))
+                    if span>1e-9:
+                        steps=max(2,int(span//4))
+                        if any(inside((la[0]+(lb[0]-la[0])*k/steps,la[1]+(lb[1]-la[1])*k/steps)) for k in range(steps+1) if span*k/steps>=3.0):errors.append('PATH_LABEL_LEADER_ENTERS:'+oid)
         label,unit=dimension_label_parts(row)
-        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit)
-        observations.append({'id':oid,'type':'PATH_LABEL','points':ids,'lengthModel':total,'segments':owned})
+        label_content(oid+'-label',row.get('labelKind','MATH'),label,unit,row.get('labelWeight'))
+        observations.append({'id':oid,'type':'PATH_LABEL','points':ids,'lengthModel':total,'segments':owned,**({'closed':True} if closed else {})})
 
     # ---- highlighted circle arcs
     def arc_span(row):
@@ -833,7 +867,7 @@ def audit(p):
                 angle=direction_degrees(sub(c,center));mine=arc_gap(row,angle)
                 if any(other is not row and other.get('circle')==row.get('circle') and other.get('center')==row.get('center') and arc_gap(other,angle)+1e-9<mine for other in marks.get('arcs',[])):errors.append('ARC_LABEL_AMBIGUOUS_OWNER:'+oid)
         kind=row.get('labelKind','MATH' if row.get('unit') else 'DEGREE')
-        if kind=='TEXT' or row.get('unit'):label_content(oid+'-label',kind,row['label'],row.get('unit'))
+        if kind=='TEXT' or row.get('unit'):label_content(oid+'-label',kind,row['label'],row.get('unit'),row.get('labelWeight'))
     for row in marks.get('arcs',[]):
         oid=row['id'];nodes=by_mark.get(('arc',oid),[])
         if row.get('highlight',True) is not True and row.get('highlight') is not None:continue
@@ -926,7 +960,7 @@ def audit(p):
                     at=row['labelAt'];anchor=first if at=='START' else first+sweep if at=='END' else first+sweep/2 if at=='MID' else float(at)
                     if abs(wrap180(direction_degrees(sub(middle,center))-anchor))>TRACE_LABEL_AT_TOLERANCE:errors.append('TRACE_LABEL_NOT_AT_ANCHOR:'+oid)
                 leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
-            if row.get('labelKind')=='TEXT' or row.get('unit'):label_content(oid+'-label',row.get('labelKind','MATH'),row['label'],row.get('unit'))
+            if row.get('labelKind')=='TEXT' or row.get('unit'):label_content(oid+'-label',row.get('labelKind','MATH'),row['label'],row.get('unit'),row.get('labelWeight'))
             else:
                 node=elements.get(oid+'-label')
                 codes=[] if node is None else glyph_codes(node)

@@ -118,7 +118,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
     });
     const safeMargin=svg.getAttribute('data-publication-profile')==='fragment-publication-spike-v1'?12:32;
     const rootMatrix=svg.getScreenCTM();
-    return{runtime:'playwright-chromium',synthetic:false,svg:rect(r),viewBox:{x:v.x,y:v.y,width:v.width,height:v.height},coordinateScale:Math.hypot(rootMatrix.a,rootMatrix.b),publicationViewport,safeMargin,publicationProfile:svg.getAttribute('data-publication-profile'),labels,geometry,fontStatus:document.fonts.status};
+    return{runtime:'playwright-chromium',synthetic:false,svg:rect(r),viewBox:{x:v.x,y:v.y,width:v.width,height:v.height},coordinateScale:Math.hypot(rootMatrix.a,rootMatrix.b),publicationViewport,safeMargin,publicationProfile:svg.getAttribute('data-publication-profile'),...(svg.getAttribute('data-text-free')==='true'?{textFree:true}:{}),labels,geometry,fontStatus:document.fonts.status};
   },publicationViewport);
 }
 const right=b=>b.x+b.width,bottom=b=>b.y+b.height;
@@ -241,7 +241,10 @@ function properCross(a,b,c,d) {
   const u=[b[0]-a[0],b[1]-a[1]],v=[d[0]-c[0],d[1]-c[1]],w=[c[0]-a[0],c[1]-a[1]];
   const cross=(p,q)=>p[0]*q[1]-p[1]*q[0];const determinant=cross(u,v);if(Math.abs(determinant)<1e-9)return false;
   const t=cross(w,v)/determinant,s=cross(w,u)/determinant;
-  return t>1e-6&&t<1-1e-6&&s>1e-6&&s<1-1e-6;
+  // A leader starts exactly on the stroke it labels, but Chrome hands back its coordinates rounded to float precision (about 2e-5 px off): a crossing within 0.001 px of an
+  // end of either stroke is that rounding, not a crossing (E32: partial-length labels' leaders were refused for "crossing" their own segment at the start point).
+  const lengthU=Math.hypot(u[0],u[1]),lengthV=Math.hypot(v[0],v[1]);
+  return t>1e-6&&t<1-1e-6&&s>1e-6&&s<1-1e-6&&t*lengthU>1e-3&&(1-t)*lengthU>1e-3&&s*lengthV>1e-3&&(1-s)*lengthV>1e-3;
 }
 function isOwnRegionExit(leader,other,geometry) {
   if(leader.ownerKind!=='REGION'||leader.points?.length!==2)return false;
@@ -253,7 +256,7 @@ function isOwnRegionExit(leader,other,geometry) {
   return region.points.some((p,i)=>i>0&&((near(region.points[i-1],other.points[0])&&near(p,other.points[1]))||(near(region.points[i-1],other.points[1])&&near(p,other.points[0]))));
 }
 // textFreeFigure: a panel that draws no label of its own (its caption, outside the panel, carries the text) is not refused for having none; its fonts must still be loaded.
-export function analyzeRenderedLayout(capture,{textFreeFigure=false}={}) {
+export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree===true}={}) {
   if(capture.synthetic!==false||capture.runtime!=='playwright-chromium')throw Error('ACTUAL_BROWSER_CAPTURE_REQUIRED');
   const errors=[];let labelCollisionCount=0,criticalCollisionCount=0,observedLabelCollisionCount=0,observedCriticalCollisionCount=0,clippedTextCount=0,overflowCount=0;
   const scale=Number.isFinite(capture.coordinateScale)?capture.coordinateScale:capture.svg.width/capture.viewBox.width;const pad=capture.safeMargin*scale;

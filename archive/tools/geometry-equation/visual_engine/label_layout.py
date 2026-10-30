@@ -736,8 +736,10 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         for direction in DIRECTIONS:
                             box=candidate(anchor,w,h,direction,gap)
                             if not acceptable(box,owner_check=False):continue
+                            if site.get('outside') and not box_outside_regions(box,[[[tuple(p) for p in site['outside']]]]):continue     # closed path: the label stands outside the perimeter
                             end=visible_owner_leader(tuple(anchor),box,occupied,owner_ids)
                             if end is None:continue
+                            if site.get('outside') and not leader_avoids_regions(tuple(anchor),end,[[[tuple(p) for p in site['outside']]]]):continue
                             label={**label,'at':list(anchor)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                         if chosen is not None:break
                     if chosen is not None:break

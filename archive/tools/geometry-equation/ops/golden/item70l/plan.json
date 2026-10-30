@@ -1,0 +1,358 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "15"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "3",
+       "denominator": "2"
+      },
+      {
+       "kind": "rational",
+       "numerator": "113932982",
+       "denominator": "9569471"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "1",
+       "denominator": "2"
+      },
+      {
+       "kind": "rational",
+       "numerator": "8193151",
+       "denominator": "2064480"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "21",
+       "denominator": "2"
+      },
+      {
+       "kind": "rational",
+       "numerator": "8193151",
+       "denominator": "2064480"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "I",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "9",
+       "denominator": "2"
+      },
+      {
+       "kind": "rational",
+       "numerator": "8193151",
+       "denominator": "2064480"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAD",
+   "refs": [
+    "A",
+    "D"
+   ]
+  },
+  {
+   "id": "sDB",
+   "refs": [
+    "D",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "id": "sEC",
+   "refs": [
+    "E",
+    "C"
+   ]
+  },
+  {
+   "id": "sDI",
+   "refs": [
+    "D",
+    "I"
+   ]
+  },
+  {
+   "id": "sIE",
+   "refs": [
+    "I",
+    "E"
+   ]
+  },
+  {
+   "id": "sBI",
+   "refs": [
+    "B",
+    "I"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sCI",
+   "refs": [
+    "C",
+    "I"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "I"
+ ],
+ "planeMarks": {
+  "parallels": [
+   {
+    "id": "pDE",
+    "count": 1,
+    "segments": [
+     "sDI",
+     "sIE",
+     "sBC"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "id": "a1",
+    "refs": [
+     "D",
+     "B",
+     "I"
+    ],
+    "value": 41.409622,
+    "noLabel": true,
+    "arcs": 1,
+    "equalGroup": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "a2",
+    "refs": [
+     "I",
+     "B",
+     "C"
+    ],
+    "value": 41.409622,
+    "noLabel": true,
+    "arcs": 1,
+    "equalGroup": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "a3",
+    "refs": [
+     "D",
+     "I",
+     "B"
+    ],
+    "value": 41.409622,
+    "noLabel": true,
+    "arcs": 1,
+    "equalGroup": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "tDI",
+    "ownerSegment": "sDI",
+    "text": "4"
+   },
+   {
+    "id": "tIE",
+    "ownerSegment": "sIE",
+    "text": "6"
+   },
+   {
+    "id": "tAD",
+    "ownerSegment": "sAD",
+    "text": "8"
+   },
+   {
+    "id": "tDB",
+    "ownerSegment": "sDB",
+    "text": "4"
+   },
+   {
+    "id": "tAE",
+    "ownerSegment": "sAE",
+    "text": "12"
+   },
+   {
+    "id": "tEC",
+    "ownerSegment": "sEC",
+    "text": "6"
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dAB",
+    "from": "A",
+    "to": "B",
+    "label": "12",
+    "side": "LEFT",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "dAC",
+    "from": "A",
+    "to": "C",
+    "label": "18",
+    "side": "RIGHT",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 560
+ },
+ "caption": "DE와 BC가 평행하므로 ∠DIB=∠IBC=∠DBI이고 BD=DI=4, CE=IE=6이며, AD=8, AE=12를 더해 AB=12, AC=18이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "내심 I를 지나고 BC에 평행한 직선이 AB, AC와 만나는 점 D, E",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I",
+    "pDE"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "AD=8, AE=12, DI=4, IE=6",
+   "mappedTo": [
+    "tAD",
+    "tAE",
+    "tDI",
+    "tIE"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "엇각과 이등분선으로 같은 호 표식이 붙은 ∠DBI, ∠IBC, ∠DIB와 BD=4, CE=6, AB=12, AC=18의 길이 표시"
+ ],
+ "sourceQuote": "$\\angle DBI=\\angle BID$, 따라서 $BD=DI=4$"
+}

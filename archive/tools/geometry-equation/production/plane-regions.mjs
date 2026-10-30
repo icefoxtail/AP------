@@ -4,7 +4,7 @@
 // circle or highlighted arc), because the fill only colours what the picture bounds. The independent check of the FINAL SVG is the `regions`
 // section of plane-marks-observer-worker.py, which recomputes the boundary from the Cindy peer's points.
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={region:['id','fill','pattern','label','labelKind','labelName','unit','labelPlacement','labelAt','factRole','shapes','holes'],shape:['polygon','sector','segment','loop'],sector:['center','from','to','side'],loop:['start','steps'],step:['to','arc'],arc:['center','side']};
+const KEYS={region:['id','fill','pattern','label','labelKind','labelWeight','labelName','unit','labelPlacement','labelAt','factRole','shapes','holes'],shape:['polygon','sector','segment','loop'],sector:['center','from','to','side'],loop:['start','steps'],step:['to','arc'],arc:['center','side']};
 const FILLS=['LIGHT','MEDIUM'];
 // A source that says 빗금친 (hatched) needs a real hatch pattern, not a second grey: PATTERNS adds diagonal strokes clipped to the region.
 const PATTERNS=['HATCH'];
@@ -249,7 +249,11 @@ export function regionSpec(plan,model,points,usedIds){
         const text=regionLabelText(row);
         if(text===null||text.length>40)bad('REGION_LABEL_VALUE_UNSUPPORTED:'+row.id);
         object.labelText=text;object.labelKind='TEXT';object.labelWeight='MATH';
-      }else{object.labelText=row.label;object.labelKind=kind;}
+      }else{
+        object.labelText=row.label;object.labelKind=kind;
+        // labelWeight MATH (E32, opt-in): a plain-text region name such as △ABP is drawn in the weight of the math labels
+        if(row.labelWeight!==undefined){if(row.labelWeight!=='MATH'||kind!=='TEXT')bad('MARK_LABEL_WEIGHT_INVALID:regions:'+row.id);object.labelWeight='MATH';}
+      }
       factRolesByLabel[row.id+'-label']=role;
       if(row.labelPlacement!==undefined){
         if(!REGION_LABEL_PLACEMENTS.includes(row.labelPlacement))bad('REGION_LABEL_PLACEMENT_INVALID:'+row.id);
@@ -270,7 +274,7 @@ export function regionSpec(plan,model,points,usedIds){
       }
     }
     else if(row.labelKind!==undefined)bad('REGION_FIELD_INVALID:labelKind:'+row.id);
-    else if(row.labelName!==undefined||row.unit!==undefined||row.labelPlacement!==undefined||row.labelAt!==undefined)bad('REGION_LABEL_FIELDS_NEED_LABEL:'+row.id);
+    else if(row.labelName!==undefined||row.unit!==undefined||row.labelPlacement!==undefined||row.labelAt!==undefined||row.labelWeight!==undefined)bad('REGION_LABEL_FIELDS_NEED_LABEL:'+row.id);
     objects.push(object);
   }
   return {objects,factRolesByLabel};

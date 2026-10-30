@@ -1,0 +1,382 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "15"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "42",
+       "denominator": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "56",
+       "denominator": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "I",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "8"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "kI",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "I"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "4"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "lAB",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lBC",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lCA",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "C",
+     "A"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "fAB",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "I",
+     "lAB"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "fBC",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "I",
+     "lBC"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "fCA",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "I",
+     "lCA"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [
+  "kI"
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "I",
+  "fAB",
+  "fBC",
+  "fCA"
+ ],
+ "hiddenPointNames": [
+  "fAB",
+  "fBC",
+  "fCA"
+ ],
+ "hiddenPointStyle": "NONE",
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCA",
+   "refs": [
+    "C",
+    "A"
+   ]
+  },
+  {
+   "id": "sIA",
+   "refs": [
+    "I",
+    "A"
+   ]
+  },
+  {
+   "id": "sIB",
+   "refs": [
+    "I",
+    "B"
+   ]
+  },
+  {
+   "id": "sIC",
+   "refs": [
+    "I",
+    "C"
+   ]
+  },
+  {
+   "id": "rAB",
+   "refs": [
+    "I",
+    "fAB"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "rBC",
+   "refs": [
+    "I",
+    "fBC"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "rCA",
+   "refs": [
+    "I",
+    "fCA"
+   ],
+   "dashed": true
+  }
+ ],
+ "rightAngles": [
+  {
+   "id": "raAB",
+   "refs": [
+    "I",
+    "fAB",
+    "A"
+   ]
+  },
+  {
+   "id": "raBC",
+   "refs": [
+    "I",
+    "fBC",
+    "C"
+   ]
+  },
+  {
+   "id": "raCA",
+   "refs": [
+    "I",
+    "fCA",
+    "A"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "eR",
+    "count": 1,
+    "segments": [
+     "rAB",
+     "rBC",
+     "rCA"
+    ]
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "tAB",
+    "ownerSegment": "sAB",
+    "text": "14",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "tCA",
+    "ownerSegment": "sCA",
+    "text": "13",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "tBC",
+    "ownerSegment": "sBC",
+    "text": "15",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "tR",
+    "ownerSegment": "rBC",
+    "text": "r=4",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rgT",
+    "fill": "LIGHT",
+    "label": "84",
+    "labelName": "△ABC",
+    "unit": "cm^2",
+    "labelPlacement": "LEADER",
+    "labelAt": [
+     15.5,
+     9.5
+    ],
+    "labelWeight": "MATH",
+    "factRole": "GIVEN",
+    "shapes": [
+     {
+      "polygon": [
+       "A",
+       "B",
+       "C"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "caption": "내심 I에서 세 변에 내린 수선의 길이는 모두 반지름 r이므로, △ABC의 넓이 84는 세 작은 삼각형 IAB, IBC, ICA의 넓이의 합과 같다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "점 I는 △ABC의 내심이고 변의 길이는 14, 13, 15",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "I"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "△ABC의 넓이는 84",
+   "mappedTo": [
+    "rgT",
+    "tArea"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "내심 I에서 세 변에 내린 수선(점선, 직각, 같은 길이 r)과 세 작은 삼각형으로의 분할"
+ ],
+ "sourceQuote": "내심 $I$에서 세 변에 내린 수선의 길이는 모두 내접원의 반지름 $r$이다",
+ "coordinateCanvas": {
+  "width": 520,
+  "height": 440
+ }
+}

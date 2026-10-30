@@ -283,6 +283,7 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
         leader=(leaders or {}).get(oid+'-label')
         # name / unit labels (E32): one plain-text label whose exact text, kind and weight are recomputed here from the plan
         expected=region_label_text(row)
+        if expected is None and row.get('labelWeight')=='MATH' and row.get('labelKind')=='TEXT':expected=str(row.get('label'))    # a plain-text region name drawn in the weight of the math labels
         if expected is not None:audit_named_label(by_id.get(oid+'-label'),oid,expected,errors)
         if placement=='LEADER' and leader is None:errors.append('REGION_LABEL_LEADER_MISSING:'+oid)
         elif placement=='AUTO' and leader is not None:errors.append('REGION_LABEL_LEADER_UNEXPECTED:'+oid)

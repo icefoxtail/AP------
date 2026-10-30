@@ -1,0 +1,196 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "pBL",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "pBR",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "9"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "pTR",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "7"
+      },
+      {
+       "kind": "integer",
+       "value": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "pTL",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayPoints": [
+  "pBL",
+  "pBR",
+  "pTR",
+  "pTL"
+ ],
+ "hiddenPointNames": [
+  "pBL",
+  "pBR",
+  "pTR",
+  "pTL"
+ ],
+ "hiddenPointStyle": "NONE",
+ "displaySegments": [
+  {
+   "id": "sBot",
+   "refs": [
+    "pBL",
+    "pBR"
+   ]
+  },
+  {
+   "id": "sRight",
+   "refs": [
+    "pBR",
+    "pTR"
+   ]
+  },
+  {
+   "id": "sTop",
+   "refs": [
+    "pTR",
+    "pTL"
+   ]
+  },
+  {
+   "id": "sLeft",
+   "refs": [
+    "pTL",
+    "pBL"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "parallels": [
+   {
+    "id": "par1",
+    "count": 1,
+    "segments": [
+     "sTop",
+     "sBot"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "id": "aTL",
+    "refs": [
+     "pTR",
+     "pTL",
+     "pBL"
+    ],
+    "value": 101.31,
+    "arcs": 1,
+    "noLabel": true,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aBL",
+    "refs": [
+     "pTL",
+     "pBL",
+     "pBR"
+    ],
+    "value": 78.69,
+    "arcs": 2,
+    "noLabel": true,
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 360
+ },
+ "caption": "윗변과 아랫변이 평행한 사다리꼴에서 한 다리의 양 끝에 있는 두 내각(호 한 개, 호 두 개)의 합은 180°이지만 두 다리는 평행하지 않다.",
+ "sourceQuote": "한 쌍의 대변만 평행한 사다리꼴일 수도 있으므로",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "한 쌍의 대변이 평행한 사다리꼴이고 이웃하는 두 내각의 합이 180°이다.",
+   "mappedTo": [
+    "pTL",
+    "pBL",
+    "pBR",
+    "pTR"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "평행한 두 대변의 표시와 한 다리 양 끝의 두 내각 표시, 나머지 두 변은 평행하지 않은 사다리꼴"
+ ]
+}
