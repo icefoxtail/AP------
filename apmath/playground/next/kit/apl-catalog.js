@@ -771,6 +771,7 @@ window.APLab.catalog = {
     "위치 x(t) vs 속도 v(t) 함정"
    ],
    "legacy": "labs/미적분1/속도·가속도·이동거리.html",
+   "next": "next/labs/calc1-motion.html",
    "glyph": "<path d=\"M8 60 Q20 58 32 30 Q44 8 56 30 Q68 50 72 48\"/><path d=\"M8 50 L72 50\" stroke-dasharray=\"3 3\"/><circle cx=\"44\" cy=\"12\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
