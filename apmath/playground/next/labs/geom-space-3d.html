@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>공간도형 3D · AP Math 실험실</title>
-<meta name="description" content="기하: 꼬인 위치와 정사면체 수직, 삼수선의 정리, 이면각, 직육면체 대각선과 삼면각을 3D로 돌려 보며 탐구합니다.">
+<meta name="description" content="기하: 꼬인 위치와 정사면체의 마주 보는 모서리, 삼수선의 정리, 이면각, 직육면체 대각선과 세 각의 관계를 입체로 돌려 보며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -18,7 +18,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 공간도형 3D (AP Math Lab 2.0 이식본)
@@ -35,9 +35,9 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 4대 기출 문제 & 두 풀이 (원본 538–656행) ===== */
     const examData = {
       1: {
-        badge: "MODE 1 · 꼬인 위치의 두 직선이 이루는 각 & 정사면체 마주보는 모서리 90°",
-        hint: "<span class='text-sky-300 font-bold'>[📐 핵심 단면 정면 뷰]</span> 버튼을 눌러보세요! 마주보는 모서리 <span class='text-pink-300 font-bold'>CD가 점 M 하나로 겹치면서 AB와 정확히 90° 수직</span>을 이루는 원리가 단번에 보입니다!",
-        tag: "평가원·수능 필수 암기 성질 1위",
+        badge: "장면 1 · 꼬인 위치의 두 직선이 이루는 각과 정사면체의 마주 보는 모서리",
+        hint: "<span class='text-sky-300 font-bold'>[핵심 단면 정면에서 보기]</span> 버튼을 눌러 보세요. 마주 보는 두 모서리 중 <span class='text-pink-300 font-bold'>CD가 한 점 M으로 보이는 방향에서 AB와 CD가 이루는 각이 90°</span>임을 확인할 수 있습니다.",
+        tag: "정사면체에서 마주 보는 두 모서리의 성질",
         targetTime: "목표 시간: 3초",
         question: () => `한 모서리의 길이가 ${tex('6')}인 정사면체 ${tex('ABCD')}에서 선분 ${tex('AB')}의 중점을 ${tex('N')}, 선분 ${tex('CD')}의 중점을 ${tex('M')}이라 하자. 꼬인 위치에 있는 두 직선 ${tex('AB')}와 ${tex('CD')}가 이루는 각의 크기 ${tex('\\theta')}와 두 모서리 사이의 최단 거리 ${tex('\\overline{MN}')}의 길이를 구하시오.`,
         answerBadge: () => `${tex('\\theta = 90^\\circ, \\; \\overline{MN} = 3\\sqrt{2}')}`,
@@ -45,47 +45,47 @@ window.addEventListener('DOMContentLoaded', function () {
         sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (0 * Math.PI) / 180 }, // CD 축 방향 정면 뷰
         steps: [
           "꼬인 위치에 있는 마주보는 두 모서리 AB(청색)와 CD(분홍색)",
-          "CD의 중점 M 연결: 정삼각형 높이 AM ⊥ CD, BM ⊥ CD",
-          "수직 단면 ΔABM ⊥ 직선 CD ⇒ AB ⊥ CD (90°) 및 최단거리 MN = 3√2"
+          "CD의 중점 M을 잡으면 정삼각형의 높이(중선) AM ⊥ CD, BM ⊥ CD",
+          "직선 CD ⊥ 평면 ABM ⇒ AB ⊥ CD (90°), 두 모서리 사이의 최단 거리 MN = 3√2"
         ],
         textbook: () => ({
           steps: `① ${tex('M')}은 ${tex('CD')}의 중점이다. 정삼각형 ${tex('ACD, BCD')}에서 중선은 밑변을 수직이등분하므로 ${tex('AM\\perp CD, BM\\perp CD')}이다.<br/>
-② ${tex('AM, BM')}은 서로 다른 두 직선으로 평면 ${tex('ABM')}에서 만나므로, 직선 ${tex('CD')}는 그 평면에 수직이다. 따라서 평면 안의 ${tex('AB')}와도 수직이다. 이 결론은 화면에서 직각처럼 보이는지와 무관하다.<br/>
+② ${tex('AM, BM')}은 서로 다른 두 직선으로 평면 ${tex('ABM')}에서 만나므로, 직선 ${tex('CD')}는 그 평면에 수직이다. 따라서 평면 안의 ${tex('AB')}와도 수직이다. AB ⊥ CD라는 결론은 화면에서 직각처럼 보이는지와 관계없이 성립한다.<br/>
 ③ 정삼각형 높이 ${tex('AM=3\\sqrt3')}; ${tex('N')}은 ${tex('AB')}의 중점이므로 이등변삼각형 ${tex('ABM')}에서 ${tex('MN\\perp AB')}이고 ${tex('MN^2=AM^2-AN^2=27-9=18')}. 따라서 각은 ${tex('90^\\circ')}, 최단거리는 ${tex('MN=3\\sqrt2')}이다.`,
-          warning: "삼수선·평면수직 결론은 실제 두 교차 직선에 대한 수직 조건으로 확인한다. 투시 화면의 각도만으로 공간의 직각을 판정하지 않는다."
+          warning: "직선과 평면이 수직인지는 평면 위에서 한 점에서 만나는 두 직선과 모두 수직인지로 확인합니다. 화면에 그려진 각도만 보고 공간에서의 직각을 판정하지 않습니다."
         }),
         shortcut: () => ({
-          steps: `① 선분 ${tex('CD')}의 중점 ${tex('M')}을 찍으면 이등변(정삼각형) 성질에 의해:<br/>
+          steps: `① 선분 ${tex('CD')}의 중점 ${tex('M')}을 잡으면 정삼각형 ${tex('ACD, BCD')}의 중선은 밑변에 수직이므로:<br/>
 &nbsp;&nbsp;<strong class="text-sky-300">${tex('\\overline{AM} \\perp \\overline{CD}')}</strong> 이고 <strong class="text-sky-300">${tex('\\overline{BM} \\perp \\overline{CD}')}</strong>!<br/>
-② 따라서 직선 ${tex('CD')}는 <strong class="text-amber-300">평면 ${tex('ABM')} 전체와 수직(${tex('\\overline{CD} \\perp \\triangle ABM')})</strong>이므로 평면 위의 직선 <strong class="text-emerald-300">${tex('AB')}와도 무조건 ${tex('90^\\circ')} 수직</strong>!<br/>
-③ 이등변삼각형 ${tex('ABM')}에서 ${tex('\\overline{AM} = 3\\sqrt{3}, \\; \\overline{AN} = 3')} 이므로 최단거리 <strong class="text-amber-300">${tex('\\overline{MN} = \\sqrt{27 - 9} = 3\\sqrt{2}')}</strong>!`,
-          highlight: "💡 『정사면체에서 마주보는(꼬인 위치) 두 모서리는 무조건 90° 수직이다!』 (계산 없이 1초 즉답 필수 상식)"
+② 직선 ${tex('CD')}가 점 ${tex('M')}에서 만나는 두 직선 ${tex('AM, BM')}과 모두 수직이므로 <strong class="text-amber-300">평면 ${tex('ABM')}과 수직(${tex('\\overline{CD} \\perp \\triangle ABM')})</strong>이고, 따라서 평면 위의 직선 <strong class="text-emerald-300">${tex('AB')}와도 ${tex('90^\\circ')}로 수직</strong>이다.<br/>
+③ 이등변삼각형 ${tex('ABM')}에서 ${tex('\\overline{AM} = 3\\sqrt{3}, \\; \\overline{AN} = 3')} 이므로 두 모서리 사이의 최단 거리는 <strong class="text-amber-300">${tex('\\overline{MN} = \\sqrt{27 - 9} = 3\\sqrt{2}')}</strong>이다.`,
+          highlight: "정사면체에서 마주 보는(꼬인 위치에 있는) 두 모서리는 서로 수직입니다. 한 모서리 CD의 중점 M에서 AM ⊥ CD, BM ⊥ CD임을 보이면 CD가 평면 ABM에 수직이므로 AB ⊥ CD임을 설명할 수 있습니다."
         })
       },
 
       2: {
-        badge: "MODE 2 · 기출 1: 삼수선의 정리 3단계 & 이중 피타고라스 킬러",
-        hint: "공간 밖의 점 P에서 바닥에 내린 수선 <span class='text-pink-300 font-bold'>PO(①)</span>, 바닥 직선 l에 내린 수선 <span class='text-sky-300 font-bold'>OH(②)</span>를 이으면 빗변 <span class='text-amber-300 font-bold'>PH(③)도 직선 l과 무조건 수직</span>이 됩니다!",
-        tag: "수능·평가원 3점·4점 100% 출제 공식",
+        badge: "장면 2 · 삼수선의 정리 3단계와 이중 피타고라스 킬러",
+        hint: "평면 밖의 점 P에서 바닥 평면에 내린 수선 <span class='text-pink-300 font-bold'>PO(①)</span>, 수선의 발 O에서 바닥 직선 l에 내린 수선 <span class='text-sky-300 font-bold'>OH(②)</span>를 그으면 <span class='text-amber-300 font-bold'>PH(③)도 직선 l과 수직</span>이 됩니다(삼수선의 정리).",
+        tag: "삼수선의 정리",
         targetTime: "목표 시간: 5초",
         question: () => `평면 ${tex('\\alpha')} 위에 있지 않은 점 ${tex('P')}에서 평면 ${tex('\\alpha')}에 내린 수선의 발을 ${tex('O')}, 점 ${tex('O')}에서 평면 ${tex('\\alpha')} 위의 직선 ${tex('l')}에 내린 수선의 발을 ${tex('H')}라 하자. ${tex('\\overline{PO} = 4, \\; \\overline{OH} = 3')} 이고 직선 ${tex('l')} 위의 점 ${tex('A')}에 대하여 ${tex('\\overline{PA} = 7')} 일 때, 선분 ${tex('\\overline{AH}')}의 길이를 구하시오.`,
         answerBadge: () => `${tex('\\overline{PH} = 5, \\; \\overline{AH} = 2\\sqrt{6} \\approx 4.90')}`,
         cam: { yaw: (-42 * Math.PI) / 180, pitch: (25 * Math.PI) / 180 },
         sectionCam: { yaw: 0, pitch: 0 },
         steps: [
-          "제1수선: 공간 점 P에서 바닥 평면 α에 내린 수선 PO ⊥ α (길이 4)",
-          "제2수선: 수선의 발 O에서 바닥 직선 l에 내린 수선 OH ⊥ l (길이 3)",
-          "제3수선(결론): 자동으로 PH ⊥ l (길이 5) ⇒ 직각삼각형 ΔPHA 완성!"
+          "첫 번째 수선: 평면 밖의 점 P에서 바닥 평면 α에 내린 수선 PO ⊥ α (길이 4)",
+          "두 번째 수선: 수선의 발 O에서 바닥 직선 l에 내린 수선 OH ⊥ l (길이 3)",
+          "세 번째 수선(결론): PH ⊥ l (길이 5) ⇒ 직각삼각형 PHA를 이용할 수 있다"
         ],
         textbook: () => ({
           steps: `① ${tex('\\overline{PO} \\perp \\alpha')} 이므로 ${tex('\\overline{PO} \\perp l')}, 또한 가정에 의해 ${tex('\\overline{OH} \\perp l')}<br/>
 ② 직선 ${tex('l')}이 평면 ${tex('POH')} 위의 두 직선 ${tex('PO, OH')}와 수직이므로 ${tex('l \\perp \\text{평면 } POH')}<br/>
-③ 따라서 평면 ${tex('POH')}에 포함된 직선 ${tex('PH')}도 직선 ${tex('l')}과 수직(${tex('\\overline{PH} \\perp l')})임을 증명 후<br/>
-④ 두 직각삼각형 ${tex('\\triangle POH, \\triangle PHA')}에서 각각 피타고라스 정리 연립...`,
-          warning: "⚠️ 공간도형에서 어느 각이 90°인지 찾지 못해 헤매면 아예 식을 세울 수 없습니다!"
+③ 따라서 평면 ${tex('POH')}에 포함된 직선 ${tex('PH')}도 직선 ${tex('l')}과 수직(${tex('\\overline{PH} \\perp l')})이다.<br/>
+④ 두 직각삼각형 ${tex('\\triangle POH, \\triangle PHA')}에서 피타고라스 정리를 차례로 적용하여 ${tex('\\overline{PH}')}, ${tex('\\overline{AH}')}의 길이를 구한다.`,
+          warning: "주의: 어느 각이 90°인지 먼저 찾아야 직각삼각형을 이용해 길이에 대한 식을 세울 수 있습니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex('PO\\perp\\alpha')}이고 ${tex('l\\subset\\alpha')}이므로 ${tex('PO\\perp l')}; 가정에서 ${tex('OH\\perp l')}. 두 교차 직선 ${tex('PO,OH')}가 평면 ${tex('POH')}를 정하므로 ${tex('l\\perp(POH)')}, 특히 ${tex('PH\\perp l')}. 이것이 이 배치에서 쓰는 삼수선의 결론이다.<br/>
+          steps: `① ${tex('PO\\perp\\alpha')}이고 ${tex('l\\subset\\alpha')}이므로 ${tex('PO\\perp l')}; 가정에서 ${tex('OH\\perp l')}. 두 교차 직선 ${tex('PO,OH')}가 평면 ${tex('POH')}를 정하므로 ${tex('l\\perp(POH)')}, 특히 ${tex('PH\\perp l')}. PH ⊥ l이라는 이 결론이 삼수선의 정리이다.<br/>
 ② 직각삼각형 ${tex('POH')}에서 ${tex('PH^2=PO^2+OH^2=4^2+3^2=25')}, 따라서 ${tex('PH=5')}.<br/>
 ③ ${tex('A,H')}는 ${tex('l')} 위에 있으므로 ${tex('PH\\perp AH')}. 직각삼각형 ${tex('PHA')}에서 ${tex('AH^2=PA^2-PH^2=7^2-5^2=24')}; 길이는 양수이므로 ${tex('AH=2\\sqrt6')}이다.`,
           highlight: "먼저 수직 조건으로 직각삼각형 PHA를 정당화한 뒤 피타고라스를 적용한다. 그림의 투영 모양만으로 직각을 정하지 않는다."
@@ -93,9 +93,9 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       3: {
-        badge: "MODE 3 · 기출 2: 두 평면이 이루는 이면각(교선 수선) & 정사면체 cos θ = 1/3",
-        hint: "두 평면이 만나는 <span class='text-sky-300 font-bold'>교선 BC의 중점 M</span>에 양쪽에서 수선을 내려야 진짜 이면각 <span class='text-amber-300 font-bold'>θ (정사면체는 cos θ = 1/3)</span>가 만들어집니다!",
-        tag: "수능 기하 4점 이면각 & 정사영 최고 빈출",
+        badge: "장면 3 · 두 평면이 이루는 이면각과 정사면체의 cos θ = 1/3",
+        hint: "두 평면이 만나는 <span class='text-sky-300 font-bold'>교선 BC의 중점 M</span>에서 각 평면 위에 교선과 수직인 선분 MA, MD를 그으면, ∠AMD가 이면각 <span class='text-amber-300 font-bold'>θ</span>입니다(정사면체에서는 cos θ = 1/3).",
+        tag: "이면각과 정사영",
         targetTime: "목표 시간: 3초",
         question: () => `한 모서리의 길이가 ${tex('6')}인 정사면체 ${tex('ABCD')}에서 두 면 ${tex('ABC')}와 ${tex('DBC')}가 이루는 이면각의 크기를 ${tex('\\theta')}라 할 때, ${tex('\\cos\\theta')}의 값과 꼭짓점 ${tex('A')}에서 밑면 ${tex('DBC')}에 내린 수선의 발 ${tex('G')}까지의 높이 ${tex('h')}를 구하시오.`,
         answerBadge: () => `${tex('\\cos\\theta = \\dfrac{1}{3}, \\; h = 2\\sqrt{6} \\approx 4.90')}`,
@@ -103,28 +103,28 @@ window.addEventListener('DOMContentLoaded', function () {
         sectionCam: { yaw: 0, pitch: 0 }, // BC 평행 시선: 교선을 점으로, 이면각 단면을 참모양으로
         steps: [
           "두 평면이 만나는 교선 BC 및 교선의 중점 M 표시",
-          "교선에 내린 두 수선 AM ⊥ BC, DM ⊥ BC (길이 3√3) 및 이면각 θ",
+          "교선에 수직인 두 선분 AM ⊥ BC, DM ⊥ BC (길이 3√3)가 이루는 각이 이면각 θ",
           "A에서 밑면에 내린 수선의 발 G(무게중심, 2:1 내분) ⇒ cos θ = GM / AM = 1/3"
         ],
         textbook: () => ({
           steps: `① 교선 ${tex('BC')}의 중점 ${tex('M')}에 대하여 ${tex('\\overline{AM} = \\overline{DM} = 3\\sqrt{3}')} 이고 ${tex('\\overline{AD} = 6')}<br/>
-② 삼각형 ${tex('AMD')}에서 제2코사인법칙 적용:<br/>
+② 삼각형 ${tex('AMD')}에서 코사인법칙 적용:<br/>
 &nbsp;&nbsp;${tex('\\cos\\theta = \\dfrac{\\overline{AM}^2 + \\overline{DM}^2 - \\overline{AD}^2}{2 \\cdot \\overline{AM} \\cdot \\overline{DM}} = \\dfrac{27 + 27 - 36}{2 \\cdot 27} = \\dfrac{18}{54} = \\dfrac{1}{3}')}<br/>
-③ ${tex('\\sin\\theta = \\sqrt{1 - (1/3)^2} = \\dfrac{2\\sqrt{2}}{3}')} 구한 뒤 ${tex('h = \\overline{AM}\\sin\\theta = 2\\sqrt{6}')} 계산...`,
-          warning: "⚠️ 시험장에서 정사면체 이면각이 나올 때마다 코사인법칙을 쓰고 있으면 시간을 크게 손해 봅니다!"
+③ ${tex('\\sin\\theta = \\sqrt{1 - (1/3)^2} = \\dfrac{2\\sqrt{2}}{3}')}을 구한 뒤 ${tex('h = \\overline{AM}\\sin\\theta = 3\\sqrt{3} \\cdot \\dfrac{2\\sqrt{2}}{3} = 2\\sqrt{6}')}을 계산한다.`,
+          warning: "주의: 정사면체의 이면각은 코사인법칙으로도 구할 수 있지만, 무게중심의 성질을 이용하면 계산이 더 간단해집니다."
         }),
         shortcut: () => ({
-          steps: `① 정사면체 꼭짓점 ${tex('A')}에서 밑면 ${tex('\\triangle DBC')}에 내린 수선의 발 <strong class="text-emerald-300">${tex('G')}는 무조건 밑면의 무게중심(중선 ${tex('DM')}을 ${tex('2 : 1')} 내분)</strong>!<br/>
-② 따라서 직각삼각형 ${tex('\\triangle AGM')}에서 밑변 ${tex('\\overline{GM}')}은 중선 ${tex('\\overline{DM}(=\\overline{AM})')}의 정확히 <strong class="text-amber-300">${tex('\\dfrac{1}{3}')}배</strong>!<br/>
-③ 계산 없이 즉시 <strong class="text-sky-300">${tex('\\cos\\theta = \\dfrac{\\overline{GM}}{\\overline{AM}} = \\dfrac{1}{3}')}</strong>, <strong class="text-pink-300">${tex('\\sin\\theta = \\dfrac{2\\sqrt{2}}{3}')}</strong>!`,
-          highlight: "💡 정사면체 필수 암기 3종 세트: ① 마주보는 모서리 교각 = 90° ② 두 면의 이면각 cos θ = 1/3 ③ 모서리와 밑면의 각 cos α = 1/√3 !"
+          steps: `① 정사면체의 꼭짓점 ${tex('A')}에서 밑면 ${tex('\\triangle DBC')}에 내린 수선의 발을 ${tex('G')}라 하면, ${tex('A')}에서 ${tex('B, C, D')}까지의 거리가 모두 같으므로 ${tex('G')}는 정삼각형 ${tex('DBC')}의 외심이다. 정삼각형에서는 외심과 무게중심이 같으므로 <strong class="text-emerald-300">${tex('G')}는 중선 ${tex('DM')}을 ${tex('2 : 1')}로 내분하는 점</strong>이다.<br/>
+② 따라서 직각삼각형 ${tex('\\triangle AGM')}에서 밑변 ${tex('\\overline{GM}')}의 길이는 중선 ${tex('\\overline{DM}(=\\overline{AM})')}의 <strong class="text-amber-300">${tex('\\dfrac{1}{3}')}배</strong>이다.<br/>
+③ 따라서 <strong class="text-sky-300">${tex('\\cos\\theta = \\dfrac{\\overline{GM}}{\\overline{AM}} = \\dfrac{1}{3}')}</strong>, <strong class="text-pink-300">${tex('\\sin\\theta = \\dfrac{2\\sqrt{2}}{3}')}</strong>이다.`,
+          highlight: "정사면체의 성질: ① 마주 보는 두 모서리가 이루는 각은 90° ② 두 면이 이루는 이면각 θ에 대하여 cos θ = 1/3 ③ 한 꼭짓점에서 밑면으로 이어지는 모서리와 밑면이 이루는 각 α에 대하여 cos α = 1/√3"
         })
       },
 
       4: {
-        badge: "MODE 4 · 기출 3: 직육면체 대각선과 삼면각 코사인 정리 (cos α = cos β · cos γ)",
-        hint: "공간에서 비스듬한 직선과 직선이 이루는 각 <span class='text-amber-300 font-bold'>α</span>는 무조건 바닥 정사영을 거쳐 <span class='text-sky-300 font-bold'>cos α = cos β × cos γ</span>로 3초 만에 구합니다!",
-        tag: "평가원·사관학교 고난도 4점 시크릿 공식",
+        badge: "장면 4 · 직육면체 대각선과 세 각의 관계 (cos α = cos β · cos γ)",
+        hint: "꼬인 위치에 있는 대각선 AG와 모서리 EF가 이루는 각 <span class='text-amber-300 font-bold'>α</span>는, AG를 밑면에 정사영시킨 EG를 이용하여 <span class='text-sky-300 font-bold'>cos α = cos β × cos γ</span>로 구할 수 있습니다.",
+        tag: "정사영과 직육면체의 대각선",
         targetTime: "목표 시간: 5초",
         question: () => `가로, 세로, 높이가 각각 ${tex('3, \\; 4, \\; 5')} 인 직육면체에서 대각선 ${tex('AG')}가 밑면 ${tex('EFGH')}와 이루는 각을 ${tex('\\beta')}, 밑면의 대각선 ${tex('EG')}가 모서리 ${tex('EF(3)')}와 이루는 각을 ${tex('\\gamma')}, 대각선 ${tex('AG')}가 모서리 ${tex('EF')}와 이루는 각을 ${tex('\\alpha')}라 할 때, ${tex('\\cos\\beta, \\; \\cos\\gamma, \\; \\cos\\alpha')}의 값을 구하시오.`,
         answerBadge: () => `${tex('\\cos\\beta = \\dfrac{1}{\\sqrt{2}}, \\; \\cos\\gamma = \\dfrac{3}{5}, \\; \\cos\\alpha = \\dfrac{3}{5\\sqrt{2}}')}`,
@@ -133,22 +133,22 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           "직육면체 외곽선 및 공간 대각선 AG (길이 √(3²+4²+5²) = 5√2)",
           "바닥 대각선 정사영 EG (길이 5) ⇒ 대각선~밑면 각 β (cos β = EG/AG)",
-          "삼수선 직각삼각형 ΔAEG(∠AEG=90°) ⇒ 삼면각 공식 cos α = cos β · cos γ"
+          "직각삼각형 AEG(∠AEG=90°) ⇒ cos α = cos β · cos γ"
         ],
         textbook: () => ({
           steps: `① 세 점 ${tex('A, E, G')}를 연결하고 공간에서 각 변의 길이를 피타고라스 정리로 계산:<br/>
 &nbsp;&nbsp;${tex('\\overline{EF} = 3, \\; \\overline{FG} = 4, \\; \\overline{AE} = 5 \\implies \\overline{EG} = 5, \\; \\overline{AG} = 5\\sqrt{2}')}<br/>
-② 모서리 ${tex('EF')}를 점 ${tex('A')}로 평행이동시킨 뒤 대각선 ${tex('BG = \\sqrt{4^2 + 5^2} = \\sqrt{41}')} 계산<br/>
-③ 삼각형 ${tex('ABG')}에서 제2코사인법칙으로 ${tex('\\cos\\alpha')} 계산...`,
-          warning: "⚠️ 공간에서 비스듬한 두 직선의 사잇각 α를 구하려고 제2코사인법칙을 쓰면 계산이 복잡해집니다!"
+② 모서리 ${tex('EF')}와 평행한 선분 ${tex('AB')}를 이용하여 삼각형 ${tex('ABG')}를 만들고, ${tex('BG = \\sqrt{4^2 + 5^2} = \\sqrt{41}')}을 구한다.<br/>
+③ 삼각형 ${tex('ABG')}에서 코사인법칙으로 ${tex('\\cos\\alpha')}를 구한다.`,
+          warning: "주의: 꼬인 위치에 있는 두 직선이 이루는 각 α를 코사인법칙으로 직접 구하려면 삼각형을 새로 만들어 세 변의 길이를 모두 구해야 하므로 계산이 길어집니다."
         }),
         shortcut: () => ({
           steps: `① 실제 공간 좌표에서 ${tex('EF=(3,0,0), EG=(3,4,0), AG=(3,4,5)')}로 둘 수 있다. 길이는 ${tex('EF=3, EG=5, AG=5\\sqrt2')}. ${tex('AG')}의 밑면 정사영은 ${tex('EG')}이므로 ${tex('\\cos\\beta=EG/AG=1/\\sqrt2')}; 밑면에서 ${tex('EF,EG')}의 각은 ${tex('\\cos\\gamma=EF/EG=3/5')}.<br/>
-② 화면에 그려진 투시 각은 실제 공간각과 다를 수 있다. 각은 위의 길이비(또는 공간 내적)로 판정한다.<br/>
-③ 두 비를 곱하면 <strong>[이 직육면체 대각선에서 성립하는 삼면각 관계]</strong>:<br/>
+② 화면에 그려진 각은 실제 공간에서의 각과 다르게 보일 수 있다. 각의 크기는 EG/AG, EF/EG와 같은 길이의 비(또는 벡터의 내적)로 구한다.<br/>
+③ 두 비를 곱하면 <strong>[이 직육면체에서 성립하는 세 각 α, β, γ의 관계]</strong>:<br/>
 &nbsp;&nbsp;<strong class="text-amber-300">${tex('\\cos\\alpha = \\dfrac{\\overline{EF}}{\\overline{AG}} = \\underbrace{\\dfrac{\\overline{EG}}{\\overline{AG}}}_{\\cos\\beta} \\times \\underbrace{\\dfrac{\\overline{EF}}{\\overline{EG}}}_{\\cos\\gamma} = \\cos\\beta \\cdot \\cos\\gamma')}</strong><br/>
 ④ ${tex('\\cos\\alpha=\\dfrac{EF}{AG}=\\dfrac{3}{5\\sqrt2}=\\dfrac{EG}{AG}\\cdot\\dfrac{EF}{EG}=\\cos\\beta\\cos\\gamma')}.`,
-          highlight: "이 예에서는 대각선의 성분이 (3,4,5)이므로 해당 곱 관계가 성립한다. 임의의 세 공간각에 적용하는 만능 공식으로 외우지 않는다."
+          highlight: "이 문제에서는 AG의 성분이 (3, 4, 5)이고 EF가 한 좌표축과 평행하므로 cos α = cos β · cos γ가 성립합니다. 어떤 세 각에나 쓸 수 있는 공식은 아닙니다."
         })
       }
     };
@@ -324,13 +324,13 @@ window.addEventListener('DOMContentLoaded', function () {
     top: { yaw: 0, pitch: 84 },
     front: { yaw: 0, pitch: 5 }
   });
-  const TITLES = ['꼬인 위치 & 정사면체 수직(90°)', '기출1: 삼수선의 정리 킬러', '기출2: 이면각 & 정사면체(cosθ=1/3)', '기출3: 직육면체 대각선 & 삼면각'];
-  const SHORT = ['꼬인 위치 90°', '삼수선의 정리', '이면각 1/3', '대각선·삼면각'];
+  const TITLES = ['꼬인 위치와 정사면체의 마주 보는 모서리(90°)', '삼수선의 정리 킬러', '이면각과 정사면체(cos θ = 1/3)', '직육면체 대각선과 세 각의 관계'];
+  const SHORT = ['꼬인 위치 90°', '삼수선의 정리', '이면각 1/3', '대각선과 세 각'];
   const QUESTIONS = [
     '꼬인 위치의 두 모서리가 수직인지, 그림의 겉모습이 아니라 무엇으로 판정할까?',
-    '세 번의 수선 중 마지막 PH ⟂ l은 왜 저절로 성립할까?',
-    '두 평면이 이루는 각은 어디에서 재야 ‘진짜’ 이면각일까?',
-    '비스듬한 두 직선의 각을 정사영으로 쪼개 구할 수 있을까?'
+    '수선 PO, OH를 그으면 PH ⟂ l이 왜 성립할까?',
+    '이면각은 교선 위의 한 점에서 어떤 두 선분이 이루는 각으로 재야 할까?',
+    '꼬인 위치에 있는 두 직선이 이루는 각을 정사영을 이용해 두 각의 코사인의 곱으로 나타낼 수 있을까?'
   ];
   const PART_COLORS = ['sky', 'green', 'amber'];
 
@@ -339,29 +339,29 @@ window.addEventListener('DOMContentLoaded', function () {
     if (m === 1) return [
       { label: '정사면체 모서리 길이 a', value: 'a = ' + norm(sub(g.A, g.B)).toFixed(2), color: 'sky' },
       { label: '중선 길이 AM = BM', value: '3√3 ≈ 5.20', color: 'green' },
-      { label: '꼬인 직선 교각 / 최단거리', value: 'θ = 90.0° | MN = 3√2 ≈ ' + norm(sub(g.M, g.N)).toFixed(2), color: 'amber', wide: true }
+      { label: '두 직선이 이루는 각 / 최단 거리', value: 'θ = 90.0° | MN = 3√2 ≈ ' + norm(sub(g.M, g.N)).toFixed(2), color: 'amber', wide: true }
     ];
     if (m === 2) {
       const h = state.h2, ph = Math.hypot(h, 3.0), pa = Math.hypot(ph, Math.sqrt(24));
       return [
-        { label: '수선 높이 PO / 바닥 OH', value: `PO = ${h.toFixed(2)} | OH = 3.00`, color: 'rose' },
-        { label: '제3수선 빗변 PH 길이', value: `PH = ${ph.toFixed(2)}`, color: 'amber', note: 'PH = √(h²+9)' },
-        { label: '공간 빗변 PA 길이', value: `PA = ${pa.toFixed(2)}`, color: 'green', note: 'AH = 2√6', wide: true }
+        { label: '선분 PO의 길이 / 선분 OH의 길이', value: `PO = ${h.toFixed(2)} | OH = 3.00`, color: 'rose' },
+        { label: '선분 PH의 길이', value: `PH = ${ph.toFixed(2)}`, color: 'amber', note: 'PH = √(h²+9)' },
+        { label: '선분 PA의 길이', value: `PA = ${pa.toFixed(2)}`, color: 'green', note: 'AH = 2√6', wide: true }
       ];
     }
     if (m === 3) {
       const d = state.theta3 * R2D, c = Math.cos(state.theta3), h = 3 * Math.sqrt(3) * Math.sin(state.theta3);
       const reg = Math.abs(state.theta3 - regularAngle) < 1e-7;
       return [
-        { label: '교선 수선 길이 AM = DM', value: '3√3 ≈ 5.20', color: 'rose' },
-        { label: '이면각 θ 및 cos θ', value: `${d.toFixed(1)}° | cosθ = ${c.toFixed(3)}`, color: 'amber' },
-        { label: '꼭짓점 높이 h = AM sinθ', value: `h = ${h.toFixed(3)}`, color: 'green', note: reg ? '정사면체 2√6' : '가변 이면각', wide: true }
+        { label: '교선에 수직인 선분 AM = DM의 길이', value: '3√3 ≈ 5.20', color: 'rose' },
+        { label: '이면각 θ와 cos θ', value: `${d.toFixed(1)}° | cosθ = ${c.toFixed(3)}`, color: 'amber' },
+        { label: '꼭짓점 A의 높이 h = AM sin θ', value: `h = ${h.toFixed(3)}`, color: 'green', note: reg ? '정사면체일 때 2√6' : '이면각이 변하는 경우', wide: true }
       ];
     }
     return [
       { label: '직육면체 가로·세로·높이', value: '3 × 4 × 5', color: 'ink', note: '대각선 5√2' },
-      { label: '밑면 각 cos β / 평면 각 cos γ', value: 'cosβ = 1/√2 | cosγ = 3/5', color: 'sky' },
-      { label: '삼면각 곱 cos α = cosβ·cosγ', value: '3 / (5√2) ≈ 0.424', color: 'amber', wide: true }
+      { label: 'cos β (AG와 밑면) / cos γ (EG와 EF)', value: 'cosβ = 1/√2 | cosγ = 3/5', color: 'sky' },
+      { label: 'cos α = cos β · cos γ', value: '3 / (5√2) ≈ 0.424', color: 'amber', wide: true }
     ];
   }
   function chips(m) {
@@ -386,21 +386,21 @@ window.addEventListener('DOMContentLoaded', function () {
         const c = CAMS(m);
         const near = (st, t) => Math.abs(st.yaw - t.yaw) < 1 && Math.abs(st.pitch - t.pitch) < 1;
         return [
-          { group: '시점', label: '입체 일람', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
-          { group: '시점', label: '핵심 단면 정면 뷰', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
+          { group: '시점', label: '입체로 보기', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
+          { group: '시점', label: '핵심 단면 정면에서 보기', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
           { group: '시점', label: '위에서 보기(평면도)', set: c.top, ms: 600, on: (st) => near(st, c.top) },
           { group: '시점', label: '정면도', set: c.front, ms: 600, on: (st) => near(st, c.front) },
-          { group: '관찰 렌즈', label: '전체 보기', apply: (st) => { st.lens = 'all'; }, on: (st) => st.lens === 'all' },
-          { group: '관찰 렌즈', label: '원래 도형', apply: (st) => { st.lens = 'shape'; }, on: (st) => st.lens === 'shape' },
-          { group: '관찰 렌즈', label: '수선·단면', apply: (st) => { st.lens = 'perp'; }, on: (st) => st.lens === 'perp' },
-          { group: '관찰 렌즈', label: '정사영', apply: (st) => { st.lens = 'projection'; }, on: (st) => st.lens === 'projection' }
+          { group: '강조해서 볼 요소', label: '전체 보기', apply: (st) => { st.lens = 'all'; }, on: (st) => st.lens === 'all' },
+          { group: '강조해서 볼 요소', label: '원래 도형', apply: (st) => { st.lens = 'shape'; }, on: (st) => st.lens === 'shape' },
+          { group: '강조해서 볼 요소', label: '수선·단면', apply: (st) => { st.lens = 'perp'; }, on: (st) => st.lens === 'perp' },
+          { group: '강조해서 볼 요소', label: '정사영', apply: (st) => { st.lens = 'projection'; }, on: (st) => st.lens === 'projection' }
         ];
       },
-      actions: [{ id: 'spin', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '3D 자동 회전'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+      actions: [{ id: 'spin', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '입체 자동 회전'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
       tick: (s, dt) => { if (!s.playing) return false; s.yaw += 34 * dt; if (s.yaw > 180) s.yaw -= 360; return true; },
       steps: d.steps,
       problem: { tag: d.tag, time: d.targetTime, text: d.question, answer: d.answerBadge, snap: () => ({ h2: 4.0, th: REG_DEG, ...CAMS(m).iso }) },
-      solution: { standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분', quickTitle: '빠른 풀이 · 핵심 원리', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
+      solution: { standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 핵심 성질을 이용한 풀이', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
       view: (s) => {
         sync(s, m);
         return {
@@ -444,10 +444,10 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     },
     params: {
-      yaw: { value: -35, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전 (yaw)', format: (v) => `${Math.round(v)}°` },
-      pitch: { value: 24, min: -15, max: 85, step: 1, color: 'muted', label: '위아래 기울기 (pitch)', format: (v) => `${Math.round(v)}°` },
+      yaw: { value: -35, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전', format: (v) => `${Math.round(v)}°` },
+      pitch: { value: 24, min: -15, max: 85, step: 1, color: 'muted', label: '위아래 기울기', format: (v) => `${Math.round(v)}°` },
       h2: { value: 4, min: 1.5, max: 6, step: 0.1, color: 'rose', label: '점 P의 높이 PO', hint: 'PO가 바뀌어도 PH ⟂ l은 그대로입니다', format: (v) => `h = ${v.toFixed(2)} (PH = ${Math.hypot(v, 3).toFixed(2)})` },
-      th: { value: 70.53, min: 20, max: 150, step: 0.5, color: 'amber', label: '두 면을 접은 각 θ', hint: '70.5° 근처에서 정사면체(cos θ = 1/3)에 딱 맞춰집니다', format: (v) => { const t = thetaOf(v); return `${(t * R2D).toFixed(1)}° (cos θ = ${Math.cos(t).toFixed(3)})`; } }
+      th: { value: 70.53, min: 20, max: 150, step: 0.5, color: 'amber', label: '두 면을 접은 각 θ', hint: '70.5° 부근에서 정사면체의 이면각(cos θ = 1/3)이 됩니다', format: (v) => { const t = thetaOf(v); return `${(t * R2D).toFixed(1)}° (cos θ = ${Math.cos(t).toFixed(3)})`; } }
     },
     state: { lens: 'all' },
     persist: ['lens'],

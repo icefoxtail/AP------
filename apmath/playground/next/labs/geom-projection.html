@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>정사영 3D · AP Math 실험실</title>
-<meta name="description" content="기하: 정사영 넓이 S′ = S cosθ, 원기둥 타원 단면의 역정사영, 정육면체 단면의 이면각(1/√3), 비스듬한 태양광 그림자를 3D로 돌려 보며 탐구합니다.">
+<meta name="description" content="기하: 정사영의 넓이 S′ = S cosθ, 원기둥을 자른 타원 단면의 넓이, 정육면체 단면의 이면각(1/√3), 비스듬한 태양 광선의 그림자를 입체로 돌려 보며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -18,7 +18,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 정사영 3D (AP Math Lab 2.0 이식본)
@@ -38,9 +38,9 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 4대 기출 문제 & 두 풀이 (원본 573–693행) ===== */
     const examData = {
       1: {
-        badge: "MODE 1 · 정사영 넓이 공식 (S' = S cos θ) — 교선 평행 길이 불변의 법칙",
+        badge: "장면 1 · 정사영의 넓이 (S' = S cos θ) — 교선과 평행한 선분의 길이는 변하지 않음",
         hint: "슬라이더로 <span class='text-amber-300 font-bold'>평면 각도 θ</span>를 조절해 보세요! <span class='text-emerald-300 font-bold'>교선에 평행한 밑변 BC(8)는 그대로</span>이고, <span class='text-pink-300 font-bold'>수직인 높이 AM(6)만 cos θ배</span> 축소됩니다!",
-        tag: "수능·평가원 필수 기본 개념",
+        tag: "정사영의 넓이",
         targetTime: "목표 시간: 5초",
         question: () => `두 평면 ${tex('\\alpha, \\beta')}가 이루는 각의 크기가 ${tex('\\theta = 60^\\circ')} 이다. 평면 ${tex('\\beta')} 위에 밑변이 교선과 평행하고 길이가 ${tex('\\overline{BC} = 8')}, 높이가 ${tex('\\overline{AM} = 6')} 인 삼각형 ${tex('ABC')} (넓이 ${tex('S = 24')})가 있을 때, 이 삼각형의 평면 ${tex('\\alpha')} 위로의 정사영 ${tex("A'BC")}의 높이 ${tex("\\overline{A'M}")}과 넓이 ${tex("S'")}를 구하시오.`,
         answerBadge: () => `${tex("\\overline{A'M} = 3, \\; S' = S\\cos 60^\\circ = 12")}`,
@@ -50,26 +50,26 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           "경사 평면 β 위의 원래 삼각형 ΔABC (밑변 8, 높이 6, 넓이 S = 24)",
           "꼭짓점 A에서 바닥 평면 α에 내린 수선의 발 A' 및 정사영 ΔA'BC",
-          "밑변 BC(8) 불변 & 높이 A'M = 6 cos 60° = 3 ⇒ S' = S cos 60° = 12"
+          "밑변 BC(8)는 그대로, 높이 A'M = 6 cos 60° = 3 ⇒ S' = S cos 60° = 12"
         ],
         textbook: () => ({
           steps: `① ${tex('AM')}은 ${tex('\\beta')} 안에서 교선 ${tex('BC')}에 수직이고, ${tex('A')}의 수선의 발을 ${tex("A'")}라 둔다. ${tex("A'M")}은 ${tex('AM')}의 ${tex('\\alpha')} 위 정사영이다.<br/>
 ② 두 평면의 각이 ${tex('60^\\circ')}이므로 단면 ${tex("AA'M")}에서 ${tex('\\angle AMA\'=60^\\circ')}; 따라서 실제 길이 ${tex("A'M=AM\\cos60^\\circ=6\\cdot\\frac12=3")}이다. 이 각은 평면 단면에서 정의되며, 투시 화면의 각도 측정값이 아니다.<br/>
-③ ${tex('BC')}는 교선 방향이므로 투영해도 길이 ${tex('8')}을 유지한다. 따라서 ${tex("S'=\\frac12\\cdot8\\cdot3=12")}이고 넓이 공식으로도 ${tex("S'=S\\cos60^\\circ=12")}를 얻는다.`,
-          warning: "⚠️ 선분의 정사영을 구할 때 무조건 l cos θ를 곱하면 틀립니다! 교선과 평행한 선분은 정사영해도 길이가 절대 줄어들지 않습니다!"
+③ ${tex('BC')}는 교선 방향이므로 정사영해도 길이 ${tex('8')}을 유지한다. 따라서 ${tex("S'=\\frac12\\cdot8\\cdot3=12")}이고 넓이 공식으로도 ${tex("S'=S\\cos60^\\circ=12")}를 얻는다.`,
+          warning: "주의: 선분의 정사영의 길이를 구할 때 항상 l cos θ를 곱하는 것은 아닙니다. 교선과 평행한 선분은 정사영해도 길이가 변하지 않습니다."
         }),
         shortcut: () => ({
-          steps: `① <strong>[정사영 넓이 불변 법칙]</strong>: 도형의 모양과 무관하게 무조건 <strong class="text-sky-300">${tex("S' = S\\cos\\theta")}</strong>!<br/>
+          steps: `① <strong>[정사영의 넓이]</strong>: 도형의 모양과 관계없이 <strong class="text-sky-300">${tex("S' = S\\cos\\theta")}</strong>이다.<br/>
 ② 원래 넓이 ${tex('S = \\dfrac{1}{2} \\times 8 \\times 6 = 24')}.<br/>
 ③ 따라서 <strong class="text-amber-300">${tex("S' = 24 \\times \\cos 60^\\circ = 24 \\times \\dfrac{1}{2} = 12")}</strong> (3초 컷!)`,
-          highlight: "💡 핵심 구분: ① 교선에 평행한 선분 길이 = 불변(100%) ② 교선에 수직인 선분 길이 = l cos θ ③ 도형의 넓이 = 무조건 S cos θ!"
+          highlight: "정리: ① 교선에 평행한 선분의 정사영의 길이는 변하지 않는다. ② 교선에 수직인 선분의 정사영의 길이는 l cos θ이다. ③ 도형의 정사영의 넓이는 S cos θ이다."
         })
       },
 
       2: {
-        badge: "MODE 2 · 기출 1: 원기둥을 자른 타원 단면의 넓이 (역정사영 S = S' / cos θ)",
-        hint: "원기둥을 비스듬히 자른 <span class='text-pink-300 font-bold'>타원 단면의 넓이 S</span>를 구할 때는 타원 공식을 쓰지 말고, 바닥 원의 넓이 <span class='text-sky-300 font-bold'>S'를 cos θ로 나누는 역정사영</span>을 쓰세요!",
-        tag: "평가원·수능 4점 단골 역발상 킬러",
+        badge: "장면 2 · 원기둥을 자른 타원 단면의 넓이 (S = S' / cos θ)",
+        hint: "원기둥을 비스듬히 자른 <span class='text-pink-300 font-bold'>타원 단면의 넓이 S</span>를 구할 때는 타원의 넓이 공식 대신, 밑면 원의 넓이 <span class='text-sky-300 font-bold'>S'(타원 단면의 정사영의 넓이)를 cos θ로 나누는 방법</span>을 써 보세요.",
+        tag: "정사영을 이용한 단면의 넓이 킬러",
         targetTime: "목표 시간: 5초",
         question: () => `밑면의 반지름의 길이가 ${tex('r = 3')} 인 원기둥을 밑면과 ${tex('60^\\circ')}의 각을 이루는 평면으로 자를 때 생기는 단면(타원)의 넓이 ${tex('S')}와 타원의 장축의 길이 ${tex('2a')}, 단축의 길이 ${tex('2b')}를 구하시오.`,
         answerBadge: () => `단면 넓이 ${tex('S = 18\\pi')}, 장축 ${tex('= 12')}, 단축 ${tex('= 6')}`,
@@ -77,29 +77,29 @@ window.addEventListener('DOMContentLoaded', function () {
         cam: { yaw: (-35 * Math.PI) / 180, pitch: (22 * Math.PI) / 180 },
         sectionCam: { yaw: 0, pitch: 0 },
         steps: [
-          "바닥 밑면 원 (반지름 r = 3, 정사영 넓이 S' = πr² = 9π)",
-          "60° 경사 평면으로 자른 타원 단면 (단축 b = r = 3 불변!)",
-          "역정사영 공식: S cos 60° = 9π ⇒ 타원 넓이 S = 9π / (1/2) = 18π"
+          "밑면 원 (반지름 r = 3, 정사영의 넓이 S' = πr² = 9π)",
+          "60° 기울어진 평면으로 자른 타원 단면 (단축의 반 b = r = 3으로 변하지 않음)",
+          "정사영의 넓이 관계: S cos 60° = 9π ⇒ 타원 단면의 넓이 S = 9π / (1/2) = 18π"
         ],
         textbook: () => ({
           steps: `① 경사 단면의 정사영은 반지름 ${tex('3')}인 밑면 원이므로 ${tex("S'=9\\pi")}. 평면과 밑면의 예각은 ${tex('60^\\circ')}이다.<br/>
 ② 정사영 넓이 관계 ${tex("S'=S\\cos60^\\circ")}에서 ${tex('S=9\\pi/(1/2)=18\\pi')}.<br/>
-③ 단면 타원의 교선 평행 단축은 지름 그대로 ${tex('2b=6')}; 수직 방향은 ${tex('60^\\circ')} 경사만큼 확대되어 ${tex('2a=6/\\cos60^\\circ=12')}. 따라서 반축은 ${tex('a=6,b=3')}이다. ${tex('\\theta=90^\\circ')}이면 정사영 넓이는 0이 되어 유한한 단면 넓이를 역산할 수 없고, 이 경우 타원은 유한한 단면으로 성립하지 않는다.`,
+③ 단면 타원의 교선 평행 단축은 지름 그대로 ${tex('2b=6')}; 수직 방향은 ${tex('60^\\circ')} 경사만큼 확대되어 ${tex('2a=6/\\cos60^\\circ=12')}. 따라서 반축은 ${tex('a=6,b=3')}이다. ${tex('\\theta=90^\\circ')}이면 정사영 넓이는 0이 되어 유한한 단면 넓이를 역산할 수 없고, 타원은 유한한 단면으로 성립하지 않는다.`,
           warning: "정사영 역산은 cos θ > 0일 때만 유한한 단면 넓이를 복원한다. θ=90°에서는 0으로 나누지 않는다."
         }),
         shortcut: () => ({
-          steps: `① 경사 단면(넓이 ${tex('S')})을 바닥으로 정사영하면 <strong>반지름 ${tex('3')}인 밑면 원(넓이 ${tex("S' = 9\\pi")})</strong>이 됩니다!<br/>
-② <strong>[역정사영 공식]</strong>: ${tex("S \\cos 60^\\circ = S' = 9\\pi")}<br/>
-③ 양변에 ${tex('2')}를 곱하면 장축을 구할 필요도 없이 즉시 <strong class="text-amber-300">${tex('S = \\dfrac{9\\pi}{\\cos 60^\\circ} = 18\\pi')}</strong>!<br/>
-&nbsp;&nbsp;(교선 방향인 단축 ${tex('2b = 6')}은 불변, 수직 방향인 장축 ${tex('2a = 6 / \\cos 60^\\circ = 12')})`,
-          highlight: "💡 비스듬히 잘린 단면의 넓이 S를 구할 때는 언제나 【 S = 바닥 넓이 S' / cos θ 】 역정사영 공식으로 3초 컷 하세요!"
+          steps: `① 경사 단면(넓이 ${tex('S')})을 바닥으로 정사영하면 <strong>반지름 ${tex('3')}인 밑면 원(넓이 ${tex("S' = 9\\pi")})</strong>이 된다.<br/>
+② <strong>[정사영의 넓이 관계]</strong>: ${tex("S \\cos 60^\\circ = S' = 9\\pi")}<br/>
+③ 양변을 ${tex('\\cos 60^\\circ = \\dfrac{1}{2}')}로 나누면 장축을 구하지 않아도 <strong class="text-amber-300">${tex('S = \\dfrac{9\\pi}{\\cos 60^\\circ} = 18\\pi')}</strong>이다.<br/>
+&nbsp;&nbsp;(교선 방향인 단축 ${tex('2b = 6')}은 변하지 않고, 수직 방향인 장축 ${tex('2a = 6 / \\cos 60^\\circ = 12')})`,
+          highlight: "비스듬히 잘린 단면의 넓이 S는 정사영의 넓이 S'에서 S = S' / cos θ 로 구할 수 있습니다. 3초 컷!"
         })
       },
 
       3: {
-        badge: "MODE 3 · 기출 2: 정육면체 대각선 단면(정삼각형 BDE)과 정사영으로 이면각 구하기",
-        hint: "보조선을 그어 이면각을 구하기 힘들 때는 <span class='text-pink-300 font-bold'>원래 넓이 S</span>와 <span class='text-sky-300 font-bold'>바닥 그림자 넓이 S'</span>를 각각 구해 나누면 <span class='text-amber-300 font-bold'>cos θ = S' / S = 1/√3</span>이 바로 나옵니다!",
-        tag: "수능 기하 4점 이면각 역산 최고 빈출",
+        badge: "장면 3 · 정육면체의 단면(정삼각형 BDE)과 정사영으로 이면각 구하기",
+        hint: "보조선을 그어 이면각을 구하기 어려울 때는 <span class='text-pink-300 font-bold'>원래 도형의 넓이 S</span>와 <span class='text-sky-300 font-bold'>밑면에 정사영시킨 도형의 넓이 S'</span>를 구하여 나누면 <span class='text-amber-300 font-bold'>cos θ = S' / S = 1/√3</span>이 됩니다.",
+        tag: "정사영의 넓이로 이면각 구하기",
         targetTime: "목표 시간: 5초",
         question: () => `한 모서리의 길이가 ${tex('4')}인 정육면체 ${tex('ABCD-EFGH')}에서 세 꼭짓점 ${tex('B, D, E')}를 지나는 평면과 밑면 ${tex('EFGH')}가 이루는 예각의 크기를 ${tex('\\theta')}라 할 때, 정사영을 이용하여 ${tex('\\cos\\theta')}의 값을 구하시오.`,
         answerBadge: () => `${tex('\\cos\\theta = \\dfrac{S\'}{S} = \\dfrac{8}{8\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}}')}`,
@@ -107,29 +107,29 @@ window.addEventListener('DOMContentLoaded', function () {
         cam: { yaw: (-36 * Math.PI) / 180, pitch: (24 * Math.PI) / 180 },
         sectionCam: { yaw: (-45 * Math.PI) / 180, pitch: 0 },
         steps: [
-          "정육면체 대각선 단면 ΔBDE (한 변이 4√2인 정삼각형, S = 8√3)",
-          "꼭짓점 B, D, E를 밑면 EFGH로 수직 투영한 정사영 ΔFEH (직각이등변삼각형, S' = 8)",
-          "이면각 역산 공식: cos θ = S' / S = 8 / (8√3) = 1 / √3 (보조선 불필요!)"
+          "정육면체의 단면 ΔBDE (한 변이 4√2인 정삼각형, S = 8√3)",
+          "꼭짓점 B, D, E를 밑면 EFGH에 정사영시킨 ΔFEH (직각이등변삼각형, S' = 8)",
+          "정사영의 넓이 관계에서 cos θ = S' / S = 8 / (8√3) = 1 / √3 (보조선이 필요 없음)"
         ],
         textbook: () => ({
-          steps: `① 실제 교선 방향은 BD에 평행합니다. BD와 FH의 중점을 이용하여 이면각을 계산합니다. 기존  ${tex('M')}을 잡고 ${tex('\\overline{BM} \\perp \\overline{EG}, \\; \\overline{FM} \\perp \\overline{EG}')} 수선 작도<br/>
-② ${tex('\\overline{FM} = 2\\sqrt{2}')}, 높이 ${tex('\\overline{BF} = 4')} 로부터 피타고라스 정리로 ${tex('\\overline{BM} = \\sqrt{16 + 8} = 2\\sqrt{6}')} 계산<br/>
-③ 직각삼각형 ${tex('BFM')}에서 ${tex('\\cos\\theta = \\dfrac{\\overline{FM}}{\\overline{BM}} = \\dfrac{2\\sqrt{2}}{2\\sqrt{6}} = \\dfrac{1}{\\sqrt{3}}')} 도출...`,
-          warning: "⚠️ 교선이 보이지 않거나 비대칭 단면일 때는 수선의 발 M을 작도하는 데 시간이 오래 걸립니다!"
+          steps: `① 평면 ${tex('BDE')}와 밑면 ${tex('EFGH')}의 교선은 점 ${tex('E')}를 지나고 ${tex('BD')}와 평행한 직선이다. ${tex('FH')}의 중점을 ${tex('M')}, ${tex('BD')}의 중점을 M′이라 하면 EM, EM′은 모두 교선에 수직이므로 이면각은 ∠MEM′이다.<br/>
+② 좌표의 차로 ${tex('\\overline{EM} = 2\\sqrt{2}, \\; \\overline{MM\\prime} = 4')}이고 ${tex('EM \\perp MM\\prime')}이므로 피타고라스 정리로 ${tex('\\overline{EM\\prime} = \\sqrt{8 + 16} = 2\\sqrt{6}')}.<br/>
+③ 직각삼각형 EMM′에서 ${tex('\\cos\\theta = \\dfrac{\\overline{EM}}{\\overline{EM\\prime}} = \\dfrac{2\\sqrt{2}}{2\\sqrt{6}} = \\dfrac{1}{\\sqrt{3}}')}이다.`,
+          warning: "주의: 교선이 보이지 않거나 단면이 대칭이 아닐 때는 수선의 발을 작도하는 데 시간이 오래 걸립니다."
         }),
         shortcut: () => ({
-          steps: `① <strong>[정사영으로 이면각 역산하기]</strong>: 보조선 그리지 말고 <strong class="text-amber-300">${tex("\\cos\\theta = \\dfrac{\\text{정사영 넓이 } S'}{\\text{원래 넓이 } S}")}</strong>!<br/>
+          steps: `① <strong>[정사영으로 이면각 구하기]</strong>: 보조선을 그리지 않고 <strong class="text-amber-300">${tex("\\cos\\theta = \\dfrac{\\text{정사영의 넓이 } S'}{\\text{원래 넓이 } S}")}</strong>를 이용한다.<br/>
 ② 원래 도형 ${tex('\\triangle BDE')}는 한 변이 ${tex('4\\sqrt{2}')}인 정삼각형이므로 <strong class="text-pink-300">${tex('S = \\dfrac{\\sqrt{3}}{4}(4\\sqrt{2})^2 = 8\\sqrt{3}')}</strong>.<br/>
 ③ 바닥 정사영 ${tex('\\triangle FEH')}는 밑변·높이가 ${tex('4')}인 직각삼각형이므로 <strong class="text-sky-300">${tex("S' = \\dfrac{1}{2} \\times 4 \\times 4 = 8")}</strong>.<br/>
-④ 즉시 <strong class="text-emerald-300">${tex("\\cos\\theta = \\dfrac{8}{8\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}}")}</strong> (5초 컷!)`,
-          highlight: "💡 정육면체 대각선 정삼각형 단면(BDE)과 밑면이 이루는 각은 언제나 【 cos θ = 1 / √3 】입니다! (정사면체 1/3과 함께 필수 암기)"
+④ 따라서 <strong class="text-emerald-300">${tex("\\cos\\theta = \\dfrac{8}{8\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}}")}</strong> (5초 컷!)`,
+          highlight: "정육면체의 세 꼭짓점 B, D, E를 지나는 단면(정삼각형 BDE)과 밑면이 이루는 각 θ에서 cos θ = 1/√3 입니다. (정사면체의 이면각 cos θ = 1/3과 비교해 보세요.)"
         })
       },
 
       4: {
-        badge: "MODE 4 · 기출 3: 비스듬한 태양광(사선 투영)과 바닥 그림자 넓이 킬러",
-        hint: "빛이 수직으로 오지 않고 비스듬히 올 때는 <span class='text-amber-300 font-bold'>빛에 수직인 기준면(단면적 S cos β)</span>을 거친 뒤 바닥 경사각으로 나누는 <span class='text-sky-300 font-bold'>S' = S cos β / cos α</span> 공식을 씁니다!",
-        tag: "수능 29번·30번 최고난도 그림자 킬러",
+        badge: "장면 4 · 비스듬한 태양 광선과 지면에 생기는 그림자의 넓이 킬러",
+        hint: "빛이 수직으로 오지 않고 비스듬히 올 때는 <span class='text-amber-300 font-bold'>광선에 수직인 평면에 정사영시킨 넓이(S cos β)</span>를 구한 뒤 지면과 이루는 각 α의 코사인으로 나누는 <span class='text-sky-300 font-bold'>S' = S cos β / cos α</span>를 씁니다.",
+        tag: "그림자의 넓이 킬러",
         targetTime: "목표 시간: 10초",
         question: () => `지면 ${tex('\\alpha')}와 ${tex('30^\\circ')}의 각을 이루는 평면 위에 넓이가 ${tex('S = 12')} 인 원판이 놓여 있다. 태양 광선이 지면과 ${tex('60^\\circ')}의 각을 이루면서 원판의 면에 수직으로 비출 때, 지면 ${tex('\\alpha')}에 생기는 그림자의 넓이 ${tex("S'")}를 구하시오.`,
         answerBadge: () => `${tex("S' = \\dfrac{S}{\\cos 30^\\circ} = \\dfrac{12}{\\sqrt{3}/2} = 8\\sqrt{3}")}`,
@@ -138,22 +138,22 @@ window.addEventListener('DOMContentLoaded', function () {
         cam: { yaw: (-25 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
         sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (4 * Math.PI) / 180 },
         steps: [
-          "지면과 30° 이루는 원판(넓이 S = 12) 및 60° 입사 태양 광선 (원판과 90° 수직!)",
+          "지면과 30°를 이루는 원판(넓이 S = 12)과 지면과 60°를 이루는 태양 광선 (원판에 수직)",
           "지면 α 위에 길게 늘어나는 타원 그림자 (넓이 S')",
-          "바닥 그림자 S'를 빛에 수직인 원판 S로 정사영: S' cos 30° = S ⇒ S' = S / cos 30°"
+          "지면의 그림자 S'를 광선에 수직인 원판 S로 정사영시키면: S' cos 30° = S ⇒ S' = S / cos 30°"
         ],
         textbook: () => ({
           steps: `① 단면 직각삼각형에서 원판의 지름을 ${tex('2r')}이라 할 때, 지면에 맺히는 그림자의 가로 길이는:<br/>
 &nbsp;&nbsp;${tex('2a = \\dfrac{2r}{\\sin 60^\\circ} = \\dfrac{2r}{\\cos 30^\\circ}')}<br/>
 ② 교선 방향의 세로 지름 ${tex('2b = 2r')}은 불변이므로<br/>
-③ 타원 그림자의 넓이 ${tex("S' = \\pi a b = \\dfrac{\\pi r^2}{\\cos 30^\\circ} = \\dfrac{12}{\\sqrt{3}/2} = 8\\sqrt{3}")} 계산...`,
-          warning: "⚠️ 광선이 원판과 수직이 아닌 일반 각도로 비추는 고난도 기출에서는 도형 길이만으로는 계산이 매우 헷갈립니다!"
+③ 타원 그림자의 넓이 ${tex("S' = \\pi a b = \\dfrac{\\pi r^2}{\\cos 30^\\circ} = \\dfrac{12}{\\sqrt{3}/2} = 8\\sqrt{3}")}을 계산한다.`,
+          warning: "주의: 광선이 원판에 수직이 아닌 경우에는 도형의 길이만으로 구하기 어렵습니다."
         }),
         shortcut: () => ({
           steps: `① 원판은 지면과 ${tex('30^\\circ')} 기울고 광선은 지면과 ${tex('60^\\circ')}를 이루므로 광선은 원판에 수직이다. 광선 방향 정사영에서 원판과 지면 사이 각은 ${tex('30^\\circ')}이다.<br/>
 ② 원판의 직경 중 경사 방향 성분은 지면 그림자에서 ${tex('1/\\cos30^\\circ')}배 늘고, 교선 방향 직경은 그대로다. 따라서 그림자 넓이 배율도 ${tex('1/\\cos30^\\circ')}이다.<br/>
 ③ ${tex("S'=S/\\cos30^\\circ=12/(\\sqrt3/2)=8\\sqrt3")}. 화면의 3D 투시 각 대신 주어진 실제 지면각으로 계산한다. 광선이 원판에 수직이 아니라면 배율은 일반적으로 ${tex("\\sin(\\text{원판-광선 각})/\\sin(\\text{지면-광선 각})")}이다.`,
-          highlight: "💡 일반 사선 광선 만능 공식: 【 바닥 그림자 S' = (도형 넓이 S × sin(도형~빛 각도)) / sin(바닥~빛 각도) 】!"
+          highlight: "광선이 원판에 수직이 아닐 때의 일반적인 관계: 지면의 그림자 S' = S × sin(원판과 광선이 이루는 각) / sin(지면과 광선이 이루는 각)"
         })
       }
     };
@@ -320,8 +320,8 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DPolygon([F,E,H],'rgba(56,189,248,.22)','#38bdf8',2.8,false,{part:1,group:'projection'});
         draw3DLine(B,F,'#fbbf24',2.4,true,false,{part:1,group:'aux'});draw3DLine(D,H,'#fbbf24',2.4,true,false,{part:1,group:'aux'});
         draw3DRightAngle(E,F,H,.48,'#38bdf8',{part:1,group:'projection'});
-        draw3DPoint(F,5,'#38bdf8','F = proj(B)',{x:10,y:12},{part:1,group:'projection'});
-        draw3DPoint(H,5,'#38bdf8','H = proj(D)',{x:-100,y:12},{part:1,group:'projection'});
+        draw3DPoint(F,5,'#38bdf8','F (B의 정사영)',{x:10,y:12},{part:1,group:'projection'});
+        draw3DPoint(H,5,'#38bdf8','H (D의 정사영)',{x:-100,y:12},{part:1,group:'projection'});
       }
       if(state.steps[1]){
         draw3DPolygon([B,D,E],'rgba(244,114,182,.26)','#f472b6',3,false,{part:0,group:'source'});
@@ -351,7 +351,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if(state.steps[1]){
         draw3DPolygon(disk,'rgba(244,114,182,.26)','#f472b6',2.9,false,{part:0,group:'source'});
         draw3DLine(start,center,'#fde047',3,false,true,{part:0,group:'aux'});
-        draw3DPoint(start,5,'#fde047',`태양광 θ₂=${state.sunDeg}°`,{x:-55,y:-10},{part:0,group:'aux',priority:1});
+        draw3DPoint(start,5,'#fde047',`태양 광선 θ₂=${state.sunDeg}°`,{x:-55,y:-10},{part:0,group:'aux',priority:1});
         draw3DPoint(center,5,'#f472b6','원판 S=12',{x:12,y:-12},{part:0,group:'source'});
       }
       if(state.steps[3]){
@@ -385,7 +385,7 @@ window.addEventListener('DOMContentLoaded', function () {
     section: { yaw: examData[m].sectionCam.yaw * R2D, pitch: examData[m].sectionCam.pitch * R2D },
     top: { yaw: 0, pitch: 90 }
   });
-  const TITLES = ["정사영 기본 (S' = S cosθ)", '기출1: 원기둥 타원 단면 역정사영', '기출2: 정육면체 단면 이면각(1/√3)', '기출3: 비스듬한 태양광 그림자'];
+  const TITLES = ["정사영의 넓이 (S' = S cosθ)", '원기둥을 자른 타원 단면의 넓이', '정육면체의 단면과 이면각(1/√3)', '비스듬한 태양 광선과 그림자'];
   const SHORT = ['정사영 기본', '타원 단면', '정육면체 단면', '태양광 그림자'];
   const QUESTIONS = [
     '기울어진 도형을 바로 위에서 비추면 넓이는 얼마나 줄어들까?',
@@ -407,7 +407,7 @@ window.addEventListener('DOMContentLoaded', function () {
       { label: '원래 삼각형 넓이 S', value: 'S = 24 (BC=8, AM=6)', color: 'rose' },
       { label: '이면각 θ / cosθ', value: `${dt.toFixed(1)}° | ${co.toFixed(4)}`, color: 'amber' },
       { label: '정사영 넓이 S′', value: (24 * co).toFixed(2), color: 'sky' },
-      { label: '밑변 불변 / 높이의 정사영', value: `BC = 8 | A′M = ${(6 * co).toFixed(3)}`, color: 'green' }
+      { label: '밑변(변하지 않음) / 높이의 정사영', value: `BC = 8 | A′M = ${(6 * co).toFixed(3)}`, color: 'green' }
     ];
     if (m === 2) return [
       { label: '바닥 원 S′', value: 'S′ = 9π', color: 'rose' },
@@ -419,13 +419,13 @@ window.addEventListener('DOMContentLoaded', function () {
       { label: '정삼각형 BDE 넓이 S', value: `8√3 ≈ ${(8 * Math.sqrt(3)).toFixed(3)}`, color: 'rose' },
       { label: '바닥 정사영 FEH 넓이 S′', value: '8.000', color: 'amber' },
       { label: 'cosθ = S′/S', value: (1 / Math.sqrt(3)).toFixed(6), color: 'sky' },
-      { label: 'M′EM 직각단면', value: 'EM = 2√2, MM′ = 4', color: 'green' }
+      { label: '직각삼각형 EMM′', value: 'EM = 2√2, MM′ = 4', color: 'green' }
     ];
     const b = state.boardDeg, s = state.sunDeg, normal = 12 * Math.sin(rad(b + s)), area = normal / Math.sin(rad(s));
     return [
       { label: '원판 넓이 S / θ₁', value: `S = 12 | ${Math.round(b)}°`, color: 'rose' },
       { label: '태양광 지면각 θ₂', value: `${s}° | 원판-광선 각 ${Math.round(b + s)}°`, color: 'amber' },
-      { label: '빛 수직 단면 S⊥', value: normal.toFixed(3), color: 'sky' },
+      { label: '광선에 수직인 평면 위의 정사영 S⊥', value: normal.toFixed(3), color: 'sky' },
       { label: '지면 그림자 S′', value: `${area.toFixed(3)} (현재 각 기준)`, color: 'green' }
     ];
   }
@@ -454,16 +454,16 @@ window.addEventListener('DOMContentLoaded', function () {
         const c = CAMS(m);
         const near = (st, t) => Math.abs(st.yaw - t.yaw) < 1 && Math.abs(st.pitch - t.pitch) < 1;
         return [
-          { group: '시점', label: '3D 입체 뷰', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
-          { group: '시점', label: '옆면 직각삼각형 뷰 (핵심)', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
-          { group: '시점', label: '위에서 내려다보기 (정사영)', set: c.top, ms: 600, on: (st) => near(st, c.top) },
-          { group: '관찰 렌즈', label: '전체 보기', apply: (st) => { st.lens = 'all'; }, on: (st) => st.lens === 'all' },
-          { group: '관찰 렌즈', label: '원래 도형 S', apply: (st) => { st.lens = 'source'; }, on: (st) => st.lens === 'source' },
-          { group: '관찰 렌즈', label: '정사영 S′', apply: (st) => { st.lens = 'projection'; }, on: (st) => st.lens === 'projection' },
-          { group: '관찰 렌즈', label: '이면각·투영선', apply: (st) => { st.lens = 'aux'; }, on: (st) => st.lens === 'aux' }
+          { group: '시점', label: '입체로 보기', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
+          { group: '시점', label: '옆에서 본 직각삼각형 (핵심)', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
+          { group: '시점', label: '위에서 보기 (정사영)', set: c.top, ms: 600, on: (st) => near(st, c.top) },
+          { group: '강조해서 볼 요소', label: '전체 보기', apply: (st) => { st.lens = 'all'; }, on: (st) => st.lens === 'all' },
+          { group: '강조해서 볼 요소', label: '원래 도형 S', apply: (st) => { st.lens = 'source'; }, on: (st) => st.lens === 'source' },
+          { group: '강조해서 볼 요소', label: '정사영 S′', apply: (st) => { st.lens = 'projection'; }, on: (st) => st.lens === 'projection' },
+          { group: '강조해서 볼 요소', label: '이면각·정사영을 만드는 선', apply: (st) => { st.lens = 'aux'; }, on: (st) => st.lens === 'aux' }
         ];
       },
-      actions: [{ id: 'spin', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : m === 3 ? '3D 자동 회전' : '평면 자동 개폐'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+      actions: [{ id: 'spin', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : m === 3 ? '입체 자동 회전' : '평면 자동 개폐'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
       tick: (s, dt) => {
         if (!s.playing) return false;
         if (m <= 2) { // 원본: 평면 기울기 5°~85° 왕복
@@ -482,7 +482,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       steps: d.steps,
       problem: { tag: d.tag, time: d.targetTime, text: d.question, answer: d.answerBadge, snap: () => (m === 4 ? { board: 30, sun: 60, ...CAMS(m).iso } : m === 3 ? { ...CAMS(m).iso } : { th: 60, ...CAMS(m).iso }) },
-      solution: { standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
+      solution: { standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
       view: (s) => {
         sync(s, m);
         const perp = m === 4 && Math.abs(state.boardDeg + state.sunDeg - 90) < 1e-9;
@@ -531,8 +531,8 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     },
     params: {
-      yaw: { value: -38, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전 (yaw)', format: (v) => `${Math.round(v)}°` },
-      pitch: { value: 24, min: -12, max: 90, step: 1, color: 'muted', label: '위아래 기울기 (pitch)', format: (v) => `${Math.round(v)}°` },
+      yaw: { value: -38, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전', format: (v) => `${Math.round(v)}°` },
+      pitch: { value: 24, min: -12, max: 90, step: 1, color: 'muted', label: '위아래 기울기', format: (v) => `${Math.round(v)}°` },
       th: { value: 60, min: 0, max: 85, step: 0.5, color: 'amber', label: '경사 평면 기울기(이면각) θ', hint: '교선에 평행한 길이는 그대로, 수직인 길이만 cosθ배', format: (v) => `θ = ${v.toFixed(1)}° (cos θ = ${Math.cos(v / R2D).toFixed(3)})` },
       board: { value: 30, min: 10, max: 60, step: 1, color: 'rose', label: '원판 기울기 θ₁', format: (v, s) => `θ₁ = ${Math.round(v)}° (원판-광선 각 ${Math.round(v + s.sun)}°)` },
       sun: { value: 60, min: 30, max: 85, step: 1, color: 'amber', label: '광선-지면 경사각 θ₂', hint: 'θ₁ + θ₂ = 90°일 때 광선이 원판에 수직', format: (v, s) => `θ₂ = ${Math.round(v)}° (지면각)` }
