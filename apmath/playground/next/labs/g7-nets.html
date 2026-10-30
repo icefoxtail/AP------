@@ -19,7 +19,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중1 · 전개도와 입체 단면 (AP Math Lab 2.0 이식본) — 6개 탐구관 × 30개 장면
@@ -584,7 +584,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'invalid') {
           return {
             badge: '탐구 1-E · 정육면체가 안 되는 전개도: 4칸 한 줄의 아래쪽에만 2칸이 붙으면 왜 정육면체를 만들 수 없을까?',
-            hint: `슬라이더를 오른쪽으로 당겨 접어 보세요. 4칸 한 줄의 아래쪽에 2칸이 나란히 붙어 있으면, 접었을 때 <strong class="text-rose-400">면 ㈎와 면 ㈓가 앞면 자리에서 서로 겹치고 뒷면 자리는 비게 됩니다.</strong>`,
+            hint: `슬라이더를 100% 쪽으로 당겨 접어 보세요. 4칸 한 줄의 아래쪽에 2칸이 나란히 붙어 있으면, 접었을 때 <strong class="text-rose-400">면 ㈎와 면 ㈓가 앞면 자리에서 서로 겹치고 뒷면 자리는 비게 됩니다.</strong>`,
             actionTxt: state.fold > 0.5 ? '🎬 다시 펼치기' : '🎬 접어서 겹치는 면 확인',
             dim1Name: '모서리 기준', dim2Name: '비교 옵션',
             parts: [
@@ -671,7 +671,7 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: '옆면 가로 합 = 14cm | 직육면체 겉넓이 = 24 + 28 = 52 cm²',
             rule: '각기둥·원기둥의 옆넓이 = (밑면의 둘레) × (높이)',
             formulaHTML: `• ${tex('\\text{겉넓이} = (4\\times 3)\\times 2 + (3+4+3+4)\\times 2 = 24 + 28 = 52\\text{ cm}^2')}`,
-            notes: `• 옆면 직사각형 4개를 따로 구하지 말고, 아래 띠처럼 <strong>한 번에 펼쳐서 (밑면의 둘레) × (높이)</strong>로 구하세요.`
+            notes: `• 옆면 직사각형 4개를 따로 구하지 말고, <strong>한 번에 펼쳐서 (밑면의 둘레) × (높이)</strong>로 구하세요.`
           };
         }
         if (sub === 'prismTrap') {
@@ -762,7 +762,7 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: '한 꼭짓점에 모인 내각의 합이 360°보다 작아야 입체가 만들어집니다. (정다면체는 5가지뿐)',
             rule: '정삼각형 3·4·5개, 정사각형 3개(270°), 정오각형 3개(324°)를 모은 5가지뿐입니다.',
             formulaHTML: `• <strong>정사각형(90°)</strong>: 3개 모이면 $270^\\circ$(정육면체 ⭕), 4개 모이면 $360^\\circ$(불가 ❌)<br/>• <strong>정오각형(108°)</strong>: 3개 모이면 $324^\\circ$(정십이면체 ⭕), 4개 모이면 $432^\\circ$(불가 ❌)<br/>• <strong>정육각형(120°)</strong>: 3개만 모여도 $360^\\circ$가 되어 정다면체를 만들 수 없습니다!`,
-            notes: `• 이 조건 때문에 정다면체는 <strong>정사면체·정육면체·정팔면체·정십이면체·정이십면체의 5가지뿐</strong>입니다.`
+            notes: `• 한 꼭짓점에 모인 각의 합이 360°보다 작아야 한다는 조건 때문에 정다면체는 <strong>정사면체·정육면체·정팔면체·정십이면체·정이십면체의 5가지뿐</strong>입니다.`
           };
         }
         if (sub === 'tetra') {
@@ -901,7 +901,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ];
         return {
           badge: `탐구 6-A · 🔪 [핵심 킬러] 원뿔을 자르는 4가지 방법과 단면의 모양 — ${sliceTitles[sliceIdx]}`,
-          hint: `슬라이더를 움직이거나 아래 4개 단면 카드를 직접 눌러 보세요. 오른쪽 위의 <strong>[🔪 잘린 단면의 모양]</strong> 상자에서 원뿔을 자를 때 왜 <strong>원 · 이등변삼각형 · 한쪽으로 길쭉한 둥근 모양 · 종 모양의 곡선</strong>이 나오는지 바로 확인할 수 있습니다!`,
+          hint: `슬라이더를 움직이거나 단면 카드 ①~④를 직접 눌러 보세요. <strong>[🔪 잘린 단면의 모양]</strong> 상자에서 원뿔을 자를 때 왜 <strong>원 · 이등변삼각형 · 한쪽으로 길쭉한 둥근 모양 · 종 모양의 곡선</strong>이 나오는지 바로 확인할 수 있습니다!`,
           actionTxt: '🎬 4가지 단면을 차례로 보기',
           dim1Name: '밑면 반지름 r', dim2Name: '원뿔 크기 스케일',
           parts: [
@@ -2370,7 +2370,7 @@ window.addEventListener('DOMContentLoaded', function () {
     persist: ['lens'],
     params: {
       fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '전개도 펼치기(0%) ↔ 입체로 접기(100%)', hint: '손잡이를 천천히 끌며 어느 면이 어디로 접히는지 따라가 보세요', format: (v) => `${Math.round(v * 100)}%` },
-      cut: { value: 0.15, min: 0, max: 1, step: 0.005, color: 'rose', label: '단면 바꾸기', hint: '막대를 움직이면 단면의 종류가 바뀝니다. 아래 버튼을 눌러도 됩니다', format: (v, st) => { const n = (st && st.nSlice) || 4; return `${Math.min(n - 1, Math.floor(v * (n - 0.01))) + 1}번 단면 (${Math.round(v * 100)}%)`; } }
+      cut: { value: 0.15, min: 0, max: 1, step: 0.005, color: 'rose', label: '단면 바꾸기', hint: '막대를 움직이면 단면의 종류가 바뀝니다. ‘단면 고르기’ 버튼을 눌러도 됩니다', format: (v, st) => { const n = (st && st.nSlice) || 4; return `${Math.min(n - 1, Math.floor(v * (n - 0.01))) + 1}번 단면 (${Math.round(v * 100)}%)`; } }
     },
     groups
   });

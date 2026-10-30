@@ -32,7 +32,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중1 · 다면체와 정다면체 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 4개 장면 = 16장면
@@ -512,7 +512,7 @@ window.addEventListener('DOMContentLoaded', function () {
             q: `<strong>${base.name}(F=${base.F}, E=${base.E}, V=${base.V})</strong>의 각 모서리의 <strong>${isMid ? '중점(1/2)' : '삼등분점(1/3)'}</strong>을 지나도록 모든 꼭짓점을 잘라 낸 입체의 <strong>면의 수 F', 모서리의 수 E', 꼭짓점의 수 V'</strong>는? (E는 처음 입체의 모서리의 수)`,
             opts: [
               { t: `① F'=${F_new}, E'=${E_new}, V'=${V_new}`, ok: true, msg: isMid ? `정답! 중점(1/2)까지 자르면 모서리 양 끝에서 자른 점이 중점에서 한 점으로 만나 V' = 처음 모서리의 수 E = ${V_new}개가 됩니다.` : `정답! 삼등분점(1/3 지점)까지 자르면 모서리마다 새 꼭짓점이 2개씩 생겨 V' = 2E = ${V_new}개, E' = 3E = ${E_new}개가 됩니다.` },
-              { t: `② F'=${F_new}, E'=${isMid?base.E*3:base.E*2}, V'=${isMid?base.E*2:base.E}`, ok: false, msg: `삼등분점까지 자르는 경우와 중점까지 자르는 경우를 서로 바꾸어 계산했습니다. 위의 버튼으로 두 경우를 번갈아 눌러 비교해 보세요.` },
+              { t: `② F'=${F_new}, E'=${isMid?base.E*3:base.E*2}, V'=${isMid?base.E*2:base.E}`, ok: false, msg: `삼등분점까지 자르는 경우와 중점까지 자르는 경우를 서로 바꾸어 계산했습니다. ‘자르는 위치’ 버튼으로 두 경우를 번갈아 눌러 비교해 보세요.` },
               { t: `③ F'=${base.F}, E'=${E_new}, V'=${V_new}`, ok: false, msg: `잘린 꼭짓점 ${base.V}곳마다 새로운 면이 하나씩 생겨 F' = ${base.F}+${base.V} = ${F_new}개입니다.` }
             ],
             ans: isMid
@@ -1361,7 +1361,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const sp = specOf(s, m, id);
         const lb = LABELS[id];
         return {
-          guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(sp.badge)}</div>무대의 빈 곳을 끌어 입체를 <b>돌려 보세요</b>. F는 면의 수, E는 모서리의 수, V는 꼭짓점의 수입니다.${usesAnim(m, id, s) ? ' 조절 막대나 실행 버튼으로 접고 펼치며, 위의 버튼으로 값과 유형을 바꿀 수 있습니다.' : ' 위의 버튼으로 값과 유형을 바꾸면서 그림과 식이 어떻게 달라지는지 비교해 보세요.'}`,
+          guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(sp.badge)}</div>그림의 빈 곳을 끌어 입체를 <b>돌려 보세요</b>. F는 면의 수, E는 모서리의 수, V는 꼭짓점의 수입니다.${usesAnim(m, id, s) ? ' 조절 막대나 실행 버튼으로 접고 펼치며, 값과 유형을 고르는 버튼으로 값을 바꿀 수 있습니다.' : ' 값과 유형을 고르는 버튼으로 값을 바꾸면서 그림과 식이 어떻게 달라지는지 비교해 보세요.'}`,
           status: { tone: 'info', text: `시점 ${Math.round(s.yaw * R2D)}° · ${Math.round(s.pitch * R2D)}° — 빈 곳을 끌면 회전` },
           chips: [{ html: sp.eqHTML }],
           readouts: sp.stats.map((t, i) => ({ label: lb[i], value: t, color: COLOR4[i], wide: true })),

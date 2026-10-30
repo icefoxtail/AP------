@@ -21,7 +21,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중1 · 입체도형의 겉넓이와 부피 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 18개 장면
@@ -168,7 +168,7 @@ window.addEventListener('DOMContentLoaded', function () {
             volRule: 'S = 2πr(r + h)  |  V = πr²h',
             volHTML: `• <strong>겉넓이</strong>(공통인 $2\\pi r$로 묶기):<br/>&nbsp;&nbsp;${tex(`S = 2\\pi r^2 + 2\\pi r h = \\mathbf{2\\pi r(r + h)} = ${2 * r}\\pi \\times (${r} + ${h}) = \\mathbf{${totalS}\\pi\\text{ cm}^2}`)}<br/>• <strong>부피</strong>: ${tex(`V = \\pi r^2 h = \\pi \\times ${r}^2 \\times ${h} = \\mathbf{${totalV}\\pi\\text{ cm}^3}`)}`,
             totalV: `${totalV}π cm³`,
-            notes: `• 우측 상단 <strong>넓이 그림</strong>을 보세요! 가로가 $2\\pi r$로 똑같은 직사각형 2개(세로 $r$과 세로 $h$)를 이어 붙이면 세로가 $(r+h)$인 하나의 직사각형이 됩니다!`,
+            notes: `• <strong>넓이 그림</strong>을 보세요! 가로가 $2\\pi r$로 똑같은 직사각형 2개(세로 $r$과 세로 $h$)를 이어 붙이면 세로가 $(r+h)$인 하나의 직사각형이 됩니다!`,
             bars: [
               { label: `2πr × r (${base2}π)`, len: `${base2}π`, weight: r / (r + h), color: '#fbbf24' },
               { label: `2πr × h (${lat}π) ➔ 합쳐서 2πr(r+h) = ${totalS}π!`, len: `${lat}π`, weight: h / (r + h), color: '#38bdf8' }
@@ -559,7 +559,7 @@ window.addEventListener('DOMContentLoaded', function () {
           volRule: '모퉁이(꼭짓점 부분)를 잘라 내면: 부피는 감소(-), 겉넓이는 변함없음(0)',
           volHTML: `• <strong>부피(감소)</strong>: ${tex(`V = ${origV} - ${cutV} = \\mathbf{${origV - cutV}\\text{ cm}^3}`)}<br/>• <strong>겉넓이(변함없음)</strong>: 오목하게 들어간 3개 면을 앞·위·오른쪽으로 밀어내면 원래 정육면체가 되므로 <strong>처음 겉넓이 ${origS}$\\text{ cm}^2$ 그대로</strong>입니다!`,
           totalV: `${origV - cutV} cm³`,
-          notes: `• 이 성질을 알면 ㄱ자 모양인 면의 넓이를 일일이 나누어 구할 필요가 없습니다! <strong>(잘라 내기 전 직육면체의 겉넓이)</strong>만 구하면 됩니다!`,
+          notes: `• 모퉁이를 잘라 내도 겉넓이가 변하지 않는다는 것을 알면 ㄱ자 모양인 면의 넓이를 일일이 나누어 구할 필요가 없습니다! <strong>(잘라 내기 전 직육면체의 겉넓이)</strong>만 구하면 됩니다!`,
           bars: [
             { label: `남은 바깥면(${origS - threeFaces})`, len: `${origS - threeFaces}`, weight: 0.72, color: '#38bdf8' },
             { label: `✨새 안쪽 3면(+${threeFaces}) = 없어진 3면 ➔ 모두 ${origS}cm² 그대로`, len: `+${threeFaces}`, weight: 0.28, color: '#fbbf24' }
@@ -663,7 +663,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   const isNarrow = () => !!(MAINB && MAINB._area().w < 640);
   // 해설이 '우측 상단 2D …'를 가리키는 문장은 좁은 화면에서 단추 안내를 덧붙입니다.
-  const phoneWords = (html) => (isNarrow() ? html.replace(/우측 상단 (<strong[^>]*>넓이 그림[^<]*<\/strong>)/g, '$1(휴대폰은 무대 오른쪽 위의 「넓이 그림 보기」 단추)') : html);
+  const phoneWords = (html) => (isNarrow() ? html.replace(/(<strong[^>]*>넓이 그림[^<]*<\/strong>)/g, '$1(휴대폰에서는 「넓이 그림 보기」 버튼을 누르세요)') : html);
   // [2.0 수정] 원본은 캔버스 크기로 고정 배율(약 46~52px)을 정해 넓은 화면에서 그림이 작았습니다.
   // 그림을 한 번 '재기만' 하여(진행도 0~100% 다섯 단계를 겹쳐) 도형을 감싸는 상자의 중심과 반경을 구하고, 무대 안쪽 영역에 맞춥니다.
   // 중심·반경은 카메라와 무관해 돌려도 크기가 변하지 않고(도형 중심을 축으로 회전), 치수(r·h·n)를 바꾸면 그에 맞게 다시 맞춰집니다.

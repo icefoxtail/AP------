@@ -21,7 +21,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중1 · 다면체·회전체 & 겨냥도·전개도 종합 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 18개 장면
@@ -190,7 +190,7 @@ window.addEventListener('DOMContentLoaded', function () {
             parts: [
               { id: 0, name: `🟡 서로 평행하지만 합동이 아닌 두 밑면`, desc: `작은 윗밑면(1) + 큰 아랫밑면(1) ➔ 모양은 같고 크기가 다름`, val: `밑면 2개`, color: '#fbbf24', ok: true },
               { id: 1, name: `🟢 사다리꼴 모양의 옆면 ${n}개`, desc: `직사각형이 아니라 위로 좁아지는 사다리꼴!`, val: `옆면 ${n}개`, color: '#34d399', ok: true },
-              { id: 2, name: `❌ 잘려 나간 위쪽 작은 ${korN}각뿔`, desc: `밑면에 평행한 평면으로 잘라 냄`, val: `상단 분리`, color: '#f43f5e', ok: false }
+              { id: 2, name: `❌ 잘려 나간 위쪽 작은 ${korN}각뿔`, desc: `밑면에 평행한 평면으로 잘라 냄`, val: `위쪽 분리`, color: '#f43f5e', ok: false }
             ],
             totalRes: `${korN}각뿔대: 면 ${F}개, 모서리 ${E}개, 꼭짓점 ${V}개 (=각기둥과 같음)`,
             rule: `n각뿔대 개수 = n각기둥 개수 (단, 옆면은 사다리꼴!)`,
@@ -253,7 +253,7 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: `60° × ${kTri}개 = ${sumDeg}° ➔ ${resultSolid}`,
           rule: `입체 꼭짓점 생성 조건: (한 꼭짓점에 모인 다각형 내각의 합) < 360°`,
           formulaHTML: `• <strong>정삼각형(60°)</strong>: 3개(180° ⭕), 4개(240° ⭕), 5개(300° ⭕), <strong>6개(360° ❌ 불가능!)</strong><br/>• <strong>정사각형(90°)</strong>: 3개(270° ⭕ 정육면체), <strong>4개(360° ❌ 불가능!)</strong><br/>• <strong>정오각형(108°)</strong>: 3개(324° ⭕ 정십이면체), <strong>4개(432° ❌ 불가능!)</strong><br/>• <strong>정육각형(120°) 이상</strong>: 최소 3개만 모여도 $120^\\circ \\times 3 = 360^\\circ$라 정다면체를 아예 만들 수 없습니다!`,
-          notes: `• 이 조건으로 <strong>“정다면체는 왜 5가지뿐인가?”</strong>를 설명할 수 있습니다. (정삼각형에서 3가지 + 정사각형에서 1가지 + 정오각형에서 1가지 = 모두 5가지)`,
+          notes: `• 한 꼭짓점에 모인 각의 합이 360°보다 작아야 한다는 조건으로 <strong>“정다면체는 왜 5가지뿐인가?”</strong>를 설명할 수 있습니다. (정삼각형에서 3가지 + 정사각형에서 1가지 + 정오각형에서 1가지 = 모두 5가지)`,
           bars: canFold
             ? [
                 { label: `정삼각형 ${kTri}개 합 (${sumDeg}°)`, weight: sumDeg / 360, color: '#38bdf8' },
@@ -283,7 +283,7 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: '평행한 면 3쌍: (A↔F), (B↔D), (C↔E) | 접으면 맞붙는 모서리가 있음',
             rule: '한 칸 건너뛴 면은 평행(마주 봄), 직각으로 오목하게 꺾인 곳의 모서리는 접으면 맞붙음',
             formulaHTML: `• <strong>평행한 면 찾기</strong>: 일직선에서 <strong>한 칸 건너뛴 면</strong>, 또는 'ㄱ'자 모양에서 대각선 끝 면끼리 마주 봅니다.<br/>• <strong>겹치는 꼭짓점과 맞붙는 모서리 찾기</strong>: 직각으로 꺾인 곳의 꼭짓점에서 출발해 양쪽으로 한 칸씩 나아가면서 맞붙는 모서리를 따라가면 겹치는 꼭짓점을 찾을 수 있습니다.`,
-            notes: `• 위쪽의 표시할 내용에서 <strong>[📐 맞붙는 모서리·최단 거리선]</strong>을 선택하고 접었다 펼쳐 보세요! 노란색 모서리 두 개가 만나 하나가 되는 모습이 보입니다.`,
+            notes: `• ‘표시할 내용’에서 <strong>[📐 맞붙는 모서리·최단 거리선]</strong>을 선택하고 접었다 펼쳐 보세요! 노란색 모서리 두 개가 만나 하나가 되는 모습이 보입니다.`,
             bars: [
               { label: '쌍① (A↔F)', weight: 0.33, color: '#fbbf24' },
               { label: '쌍② (B↔D)', weight: 0.33, color: '#38bdf8' },
@@ -328,7 +328,7 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: '마주보는 눈의 합 = (1+6) = (2+5) = (3+4) = 모두 7!',
             rule: '주사위 법칙: 평행한 두 면(한 칸 건너뛴 면)의 숫자 합 = 7',
             formulaHTML: `• 전개도에서 빈칸 $A, B, C$에 들어갈 주사위 눈을 구할 때는:<br/>&nbsp;&nbsp;1단계: 각 면에서 <strong>한 칸 건너뛴 마주 보는 면</strong>을 찾는다.<br/>&nbsp;&nbsp;2단계: <strong>$7 - (\\text{마주 보는 면의 눈})$</strong>을 계산하면 구하는 눈의 수가 나옵니다!`,
-            notes: `• 우측 상단 <strong>단면·전개도 그림</strong>에 표시된 주사위 눈(1~6)의 배치와 입체 주사위의 위·아래·양옆의 눈을 비교해 보세요!`,
+            notes: `• <strong>단면·전개도 그림</strong>에 표시된 주사위 눈(1~6)의 배치와 입체 주사위의 위·아래·양옆의 눈을 비교해 보세요!`,
             bars: [
               { label: '1 ↔ 6 (합 7)', weight: 0.33, color: '#fbbf24' },
               { label: '2 ↔ 5 (합 7)', weight: 0.33, color: '#38bdf8' },
@@ -346,8 +346,8 @@ window.addEventListener('DOMContentLoaded', function () {
           nPrefix: '선택 ', hPrefix: '비율 ',
           parts: isOcta
             ? [
-                { id: 0, name: '🟡 위쪽 사각뿔을 이루는 정삼각형 4개', desc: '위 꼭짓점 V₁에서 4개 면이 만남', val: '상단 4면', color: '#fbbf24', ok: true },
-                { id: 1, name: '🔵 아래쪽 사각뿔을 이루는 정삼각형 4개', desc: '아래 꼭짓점 V₂에서 4개 면이 만남', val: '하단 4면', color: '#38bdf8', ok: true },
+                { id: 0, name: '🟡 위쪽 사각뿔을 이루는 정삼각형 4개', desc: '위 꼭짓점 V₁에서 4개 면이 만남', val: '위쪽 4면', color: '#fbbf24', ok: true },
+                { id: 1, name: '🔵 아래쪽 사각뿔을 이루는 정삼각형 4개', desc: '아래 꼭짓점 V₂에서 4개 면이 만남', val: '아래쪽 4면', color: '#38bdf8', ok: true },
                 { id: 2, name: '🎯 정팔면체 완성 (F=8, E=12, V=6)', desc: '한 꼭짓점에 정삼각형이 4개씩 모임!', val: '정팔면체!', color: '#34d399', ok: true }
               ]
             : [
@@ -363,8 +363,8 @@ window.addEventListener('DOMContentLoaded', function () {
           notes: `• 버튼 <strong>3·4(정사각뿔)</strong>와 <strong>5·6(정팔면체)</strong>을 번갈아 눌러 두 도형의 전개도와 입체 구조를 비교해 보세요!`,
           bars: isOcta
             ? [
-                { label: '상단 정삼각형 4개', weight: 0.5, color: '#fbbf24' },
-                { label: '하단 정삼각형 4개 (합치면 정팔면체)', weight: 0.5, color: '#38bdf8' }
+                { label: '위쪽 정삼각형 4개', weight: 0.5, color: '#fbbf24' },
+                { label: '아래쪽 정삼각형 4개 (합치면 정팔면체)', weight: 0.5, color: '#38bdf8' }
               ]
             : [
                 { label: '정사각형 밑면 1개', weight: 0.35, color: '#38bdf8' },
@@ -455,7 +455,7 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: `${titles[modeIdx]}`,
             rule: `회전축에서 떨어진 도형을 돌리면 가운데가 뚫린 입체가 됩니다.`,
             formulaHTML: `• <strong>빗변을 축으로 회전할 때 (경우 4)</strong>: 변의 길이가 $3, 4, 5$인 직각삼각형을 빗변($5$)을 축으로 돌릴 때 회전 반지름 $r$은 삼각형의 넓이를 두 가지로 구한 $\\dfrac{1}{2}\\times3\\times4 = \\dfrac{1}{2}\\times5\\times r$에서 $r = \\dfrac{12}{5}$입니다. 이 원을 밑면으로 하는 <strong>원뿔 2개를 붙인 입체</strong>가 됩니다!`,
-            notes: `• 우측 상단 <strong>단면·전개도 그림</strong>을 보세요! 회전축을 포함한 단면은 언제나 <strong>원래 도형과, 그것을 회전축에 대하여 선대칭으로 옮긴 도형을 붙인 모양</strong>입니다.`,
+            notes: `• <strong>단면·전개도 그림</strong>을 보세요! 회전축을 포함한 단면은 언제나 <strong>원래 도형과, 그것을 회전축에 대하여 선대칭으로 옮긴 도형을 붙인 모양</strong>입니다.`,
             bars: [
               { label: `원래 도형`, weight: 0.5, color: '#fbbf24' },
               { label: `선대칭 도형을 붙임 ➔ ${secShapes[modeIdx].split(' ')[0]}`, weight: 0.5, color: '#38bdf8' }
@@ -553,11 +553,11 @@ window.addEventListener('DOMContentLoaded', function () {
           parts: [
             { id: 0, name: `🔵 안쪽 짧은 호의 길이 = 윗밑면 원주`, desc: `반지름 r₁ = ${r1} cm ➔ 안쪽 호 = ${2 * r1}π cm`, val: `안쪽 호 ${2 * r1}π`, color: '#38bdf8', ok: true },
             { id: 1, name: `🟡 바깥쪽 긴 호의 길이 = 아랫밑면 원주`, desc: `반지름 r₂ = ${r2} cm ➔ 바깥 호 = ${2 * r2}π cm`, val: `바깥 호 ${2 * r2}π`, color: '#fbbf24', ok: true },
-            { id: 2, name: `❌ 잘려 나간 원래 작은 원뿔의 모선`, desc: `점선으로 표시된 상단 원뿔을 복원하여 계산!`, val: `큰원뿔 - 작은원뿔`, color: '#f43f5e', ok: false }
+            { id: 2, name: `❌ 잘려 나간 원래 작은 원뿔의 모선`, desc: `점선으로 표시된 위쪽 원뿔을 복원하여 계산!`, val: `큰원뿔 - 작은원뿔`, color: '#f43f5e', ok: false }
           ],
           totalRes: `안쪽 호 = ${2 * r1}π cm | 바깥쪽 호 = ${2 * r2}π cm (부채꼴 띠)`,
           rule: `원뿔대는 '원래 큰 원뿔'을 되살려 비례식으로 풉니다.`,
-          formulaHTML: `• 종이컵(원뿔대)을 책상 위에 눕혀 굴리면 일직선으로 가지 않고 <strong>원을 그리며 빙글빙글 돕니다</strong>.<br/>• 우측 상단 <strong>단면·전개도 그림</strong>에서 휘어진 띠 모양의 옆면과 위·아래 크기가 다른 두 밑면 원을 확인하세요!`,
+          formulaHTML: `• 종이컵(원뿔대)을 책상 위에 눕혀 굴리면 일직선으로 가지 않고 <strong>원을 그리며 빙글빙글 돕니다</strong>.<br/>• <strong>단면·전개도 그림</strong>에서 휘어진 띠 모양의 옆면과 위·아래 크기가 다른 두 밑면 원을 확인하세요!`,
           notes: `• <strong>[함정 주의]</strong>: 각뿔대의 옆면은 평평한 <strong>사다리꼴</strong>이지만, 원뿔대의 옆면을 펼치면 사다리꼴이 아니라 곡선으로 휘어진 <strong>부채꼴의 일부분</strong>입니다!`,
           bars: [
             { label: `윗밑면 호 (${2 * r1}π)`, weight: 0.34, color: '#38bdf8' },
@@ -598,7 +598,7 @@ window.addEventListener('DOMContentLoaded', function () {
         formulaHTML: isConeAnt
           ? `• <strong>원뿔에서 구하는 방법</strong>:<br/>&nbsp;&nbsp;1단계: 중심각 $\\theta = 360^\\circ \\times \\dfrac{r}{a} = 360^\\circ \\times \\dfrac{${rCone}}{${aCone}} = \\mathbf{${degCone}^\\circ}$를 구한다.<br/>&nbsp;&nbsp;2단계: 부채꼴 양 끝점 $A$와 $A'$를 <strong>직선(현)</strong>으로 잇는다!`
           : `• <strong>기둥에서 구하는 방법</strong>:<br/>&nbsp;&nbsp;1단계: 옆면들을 모두 펼쳐 큰 직사각형 1개로 만든다 (가로 = 밑면 둘레 ${perimPrism}cm).<br/>&nbsp;&nbsp;2단계: 출발점과 도착점을 잇는 <strong>곧은 대각선</strong>을 긋는다!`,
-        notes: `• 우측 상단 <strong>단면·전개도 그림</strong>을 보세요! 입체에서는 나선처럼 휘어 감기지만, 전개도 위에서는 점(🐜)이 <strong>빨간색 선분</strong> 위를 움직입니다!`,
+        notes: `• <strong>단면·전개도 그림</strong>을 보세요! 입체에서는 나선처럼 휘어 감기지만, 전개도 위에서는 점(🐜)이 <strong>빨간색 선분</strong> 위를 움직입니다!`,
         bars: [
           { label: `🐜 현재 이동한 위치 (${Math.round(state.antProg * 100)}%)`, weight: Math.max(0.15, state.antProg), color: '#f43f5e' },
           { label: `전개도 위에서는 곧은 선분`, weight: Math.max(0.1, 1 - state.antProg), color: '#fbbf24' }
@@ -671,7 +671,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   const isNarrow = () => !!(MAINB && MAINB._area().w < 640);
   // 해설이 '우측 상단 2D …'를 가리키는 문장은 좁은 화면에서 단추 안내를 덧붙입니다.
-  const phoneWords = (html) => (isNarrow() ? html.replace(/우측 상단 (<strong[^>]*>단면·전개도 그림[^<]*<\/strong>)/g, '$1(휴대폰은 무대 오른쪽 위의 「단면·전개도 그림 보기」 단추)') : html);
+  const phoneWords = (html) => (isNarrow() ? html.replace(/(<strong[^>]*>단면·전개도 그림[^<]*<\/strong>)/g, '$1(휴대폰에서는 「단면·전개도 그림 보기」 버튼을 누르세요)') : html);
   // [2.0 수정] 원본은 캔버스 크기로 고정 배율(약 46~52px)을 정해 넓은 화면에서 그림이 작았습니다.
   // 그림을 한 번 '재기만' 하여(진행도 0~100% 다섯 단계를 겹쳐) 도형을 감싸는 상자의 중심과 반경을 구하고, 무대 안쪽 영역에 맞춥니다.
   // 중심·반경은 카메라와 무관해 돌려도 크기가 변하지 않고(도형 중심을 축으로 회전), 치수(r·h·n)를 바꾸면 그에 맞게 다시 맞춰집니다.
