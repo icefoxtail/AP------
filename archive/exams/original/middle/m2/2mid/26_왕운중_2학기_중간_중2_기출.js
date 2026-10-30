@@ -1542,7 +1542,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q022_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q22-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 변의 길이가 AB=14, BC=15, CA=13이고 넓이가 84인 삼각형 ABC의 내접원과 내심 I를 그린 그림이다. I에서 세 변에 내린 같은 길이 r=4의 점선(직각 표시)과, I에서 세 꼭짓점을 이은 선분으로 삼각형이 세 작은 삼각형으로 나뉜다.",
+    "solutionImageCaption": "내심 I에서 세 변까지의 거리는 모두 반지름 r이므로, 넓이 84는 세 작은 삼각형의 넓이의 합 ½r(14+13+15)와 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
