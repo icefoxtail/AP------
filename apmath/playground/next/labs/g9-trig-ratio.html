@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>삼각비 · AP Math 실험실</title>
-<meta name="description" content="중3 삼각비: 삼각비의 뜻, 특수각, 반지름 1 사분원, 직각·일반삼각형의 변, 높이, 넓이, 사각형 넓이까지 8개 탐구관 38개 장면">
+<meta name="description" content="중3 삼각비: 삼각비의 뜻, 30°·45°·60°의 삼각비, 반지름이 1인 사분원, 직각삼각형과 삼각형의 변의 길이, 높이, 넓이, 사각형의 넓이까지 8개 탐구관 38개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -18,7 +18,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중3 · 삼각비 (AP Math Lab 2.0 이식본) — 8개 탐구관 × 38개 장면
@@ -81,58 +81,58 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 세부 시나리오 목록 (원본 407–462행) ===== */
     const SUB_MENUS = {
       1: [
-        { id: 'defSCT', label: '✍️ 기본 정의 (sin·cos·tan 필기체 궤적)' },
-        { id: 'refAngleSwap', label: '🔄 [오답 1위] 기준각 ∠A ↔ ∠B(90°-A) 역전!' },
-        { id: 'oneToOther', label: '🔢 한 삼각비(sin A=3/5)로 나머지 구하기' },
-        { id: 'simRightTri', label: '📐 수선 닮음 삼각형 (큰 삼각형 변으로 읽기!)' },
+        { id: 'defSCT', label: '✍️ 기본 정의 (sin·cos·tan을 필기체로 쓰며 변의 비 기억하기)' },
+        { id: 'refAngleSwap', label: '🔄 [주의] 기준각이 ∠A에서 ∠B(90°-A)로 바뀌면 높이와 밑변이 서로 바뀐다' },
+        { id: 'oneToOther', label: '🔢 삼각비 하나(sin A=3/5)로 나머지 삼각비 구하기' },
+        { id: 'simRightTri', label: '📐 빗변에 수선을 내려 생긴 닮은 직각삼각형 (큰 삼각형의 변으로 구하기)' },
         { id: 'solid3DTrig', label: '🧊 입체도형 속 삼각비 (정육면체 대각선 ∠AGH)' }
       ],
       2: [
         { id: 'cut3060', label: '🔺 30°·60°의 탄생: 정삼각형 반 자르기 (1:√3:2)' },
         { id: 'cut45', label: '⬛ 45°의 탄생: 정사각형 대각선 자르기 (1:1:√2)' },
-        { id: 'chainSpecial', label: '🪜 이어 붙인 두 특수각 삼각형 (45°+30° 연쇄)' },
+        { id: 'chainSpecial', label: '🪜 이어 붙인 두 직각삼각형 (45° 직각삼각형 + 30° 직각삼각형)' },
         { id: 'lineSlope', label: '📈 일차함수 직선의 기울기 = tan θ!' },
-        { id: 'tan15Iso', label: '🔥 [심화] 30° 외각 이등변으로 tan 15° = 2-√3 유도' }
+        { id: 'tan15Iso', label: '🔥 [심화] 이등변삼각형을 이용하여 tan 15° = 2-√3 구하기' }
       ],
       3: [
-        { id: 'unitCircle', label: '🕹️ [핵심] 반지름 1 사분원 점 A 드래그 실험!' },
+        { id: 'unitCircle', label: '🕹️ [핵심] 반지름이 1인 사분원 위의 점 A를 움직여 보기' },
         { id: 'whyOuterTan', label: '❓ 왜 tan x는 안쪽 AB/OB 대신 바깥 CD로 읽을까?' },
-        { id: 'limit04590', label: '📊 0°·45°·90° 극한 & 대소 역전 경계선(45°)' },
-        { id: 'absSignJudge', label: '🔥 [내신 킬러] √(sin x - cos x)² 부호 판별기' },
+        { id: 'limit04590', label: '📊 0°·45°·90°의 삼각비의 값 & sin x, cos x의 크기가 바뀌는 경계(45°)' },
+        { id: 'absSignJudge', label: '🔥 [킬러] √(sin x - cos x)²의 부호 판단하기 (45° 기준)' },
         { id: 'trigTableCalc', label: '📋 삼각비의 표 읽기 & 소수점 선분 길이 변환' }
       ],
       4: [
         { id: 'findFromHyp', label: '📏 빗변 c와 각 A 알 때 (높이 c sin A, 밑변 c cos A)' },
         { id: 'findFromBase', label: '📐 밑변 b와 각 A 알 때 (높이 b tan A, 빗변 b/cos A)' },
-        { id: 'pendulumSwing', label: '🕰️ [오답 1위] 흔들리는 그네·시계추 높이 h = L(1-cos θ)!' },
+        { id: 'pendulumSwing', label: '🕰️ [주의] 흔들리는 그네·시계추가 올라간 높이 h = L(1-cos θ)' },
         { id: 'treeEyeHeight', label: '🌲 눈높이(h₀)가 있는 나무 꼭대기 높이 (b tan A + h₀)' },
         { id: 'brokenTreeCone', label: '⚡ 부러진 나무 높이 & 원뿔 모선·높이·부피' }
       ],
       5: [
         { id: 'sasAcuteLen', label: '✂️ 두 변(b,c)과 예각 A 알 때: 수선 CH 내려 풀기' },
-        { id: 'sasObtuseLen', label: '🔥 두 변과 둔각(120°) 알 때: 바깥 연장선에 수선!' },
-        { id: 'asaSplit75', label: '🎯 한 변과 양 끝각(45°, 60° ➔ 꼭지각 75° 쪼개기!)' },
-        { id: 'trapDontSplit60', label: '🚫 [함정] 왜 특수각(60°)을 쪼개는 수선을 그으면 안 될까?' }
+        { id: 'sasObtuseLen', label: '🔥 두 변과 둔각(120°) 알 때: 변의 연장선에 수선 내리기' },
+        { id: 'asaSplit75', label: '🎯 한 변과 양 끝각(45°, 60°) 알 때: ∠A(75°)를 45°와 30°로 나누기' },
+        { id: 'trapDontSplit60', label: '🚫 [함정] 왜 60° 각을 나누는 수선을 그으면 풀기 어려울까?' }
       ],
       6: [
         { id: 'heightAcute', label: '⛰️ [필수1] 예각삼각형 높이 h = a / (tan x + tan y)' },
         { id: 'heightObtuse', label: '🌋 [필수2] 둔각삼각형 높이 h = a / (tan x - tan y)' },
-        { id: 'std4560Height', label: '⚡ (45° + 60°) 표준 예각 높이 3초 암산 (BH=h, CH=√3h)' },
-        { id: 'std3060Mountain', label: '🏔️ (30° vs 60°) 둔각 산 높이 측량 (숨은 이등변 발견!)' }
+        { id: 'std4560Height', label: '⚡ 양 끝각이 45°, 60°인 예각삼각형의 높이 (BH=h, CH=(√3/3)h)' },
+        { id: 'std3060Mountain', label: '🏔️ 양 끝각이 30°, 60°인 둔각삼각형으로 산의 높이 구하기 (이등변삼각형 찾기)' }
       ],
       7: [
         { id: 'areaAcute', label: '🟩 예각삼각형 넓이 S = ½ bc sin A (높이 c sin A)' },
         { id: 'areaObtuse', label: '🟥 둔각삼각형 넓이 S = ½ bc sin(180°-A) (외각 높이!)' },
-        { id: 'equilFormula', label: '💎 정삼각형 높이(√3/2 a)와 넓이(√3/4 a²) 공식 유도' },
-        { id: 'regPolygonArea', label: '⬡ 정육각형·정팔각형·정십이각형 넓이 쪼개기' },
-        { id: 'angleBisectLen', label: '🔥 [킬러 응용] 넓이 분할(S=S₁+S₂)로 각이등분선 AD 구하기!' }
+        { id: 'equilFormula', label: '💎 정삼각형의 높이(√3/2 a)와 넓이(√3/4 a²) 구하기' },
+        { id: 'regPolygonArea', label: '⬡ 정육각형·정팔각형·정십이각형의 넓이 (삼각형으로 나누어 구하기)' },
+        { id: 'angleBisectLen', label: '🔥 [킬러 응용] 넓이를 나누어(S=S₁+S₂) 각의 이등분선 AD의 길이 구하기' }
       ],
       8: [
-        { id: 'quadUnfold2x', label: '🎬 [핵심 증명] 왜 사각형 대각선 넓이는 ½ pq sin θ 일까? (2배 확장!)' },
+        { id: 'quadUnfold2x', label: '🎬 [핵심] 왜 사각형의 넓이는 ½ pq sin θ일까? (넓이가 2배인 평행사변형 이용)' },
         { id: 'paraArea', label: '▱ 평행사변형 넓이 S = ab sin θ (= 삼각형 2개 합)' },
         { id: 'rhombusSquare', label: '💠 마름모 넓이 (a² sin θ vs ½ pq)' },
-        { id: 'quadDiagHalf', label: '❌ 두 대각선(p,q)과 교각 θ가 주어진 일반 사각형 넓이' },
-        { id: 'quadSplitSum', label: '🧩 일반 사각형을 대각선으로 쪼개어 넓이 합(S₁+S₂) 구하기' }
+        { id: 'quadDiagHalf', label: '❌ 두 대각선의 길이(p, q)와 두 대각선이 이루는 각 θ가 주어진 사각형의 넓이' },
+        { id: 'quadSplitSum', label: '🧩 사각형을 대각선으로 나누어 넓이의 합(S₁+S₂) 구하기' }
       ]
     };
 
@@ -182,26 +182,26 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 1) {
         if (sub === 'refAngleSwap') {
           return {
-            badge: `탐구 1-B · 🔄 [오답 1위] 기준각이 ∠A ↔ ∠B(90°-A)로 바뀔 때 밑변과 높이(대변)의 역전!`,
-            hint: `슬라이더를 오른쪽으로 밀어 직각삼각형을 회전시켜 보세요! 기준각이 $\\angle A$에서 위쪽 $\\angle B(=90^\\circ-A)$로 바뀌면 <strong class="text-pink-300">기준각과 마주보는 대변(높이)과 이웃한 밑변이 서로 뒤바뀌어</strong> <strong class="text-amber-300">sin B = cos A, cos B = sin A</strong>가 됩니다!`,
+            badge: `탐구 1-B · 🔄 [주의] 기준각이 ∠A에서 ∠B(90°-A)로 바뀔 때 밑변과 높이(대변)가 서로 바뀐다`,
+            hint: `슬라이더를 오른쪽으로 밀어 직각삼각형을 회전시켜 보세요! 기준각이 $\\angle A$에서 위쪽 $\\angle B(=90^\\circ-A)$로 바뀌면 <strong class="text-pink-300">기준각과 마주 보는 대변(높이)과 이웃한 밑변이 서로 바뀌어</strong> <strong class="text-amber-300">sin B = cos A, cos B = sin A</strong>가 됩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 ∠A를 바닥 기준각으로 복원' : '🎬 회전시켜 ∠B를 바닥 기준각으로 놓기!',
             p1Title: '기준각 ∠A', p2Title: '삼각형 비례(3:4:5)',
             parts: [
               { id: 0, name: `🟦 ∠A 기준: 높이(대변) = BC(3), 밑변 = AC(4)`, desc: `sin A = 3/5, cos A = 4/5, tan A = 3/4`, val: `sin A = 3/5`, color: TCOL.cyan, ok: true },
               { id: 1, name: `🩷 ∠B(90°-A) 기준: 높이(대변) = AC(4), 밑변 = BC(3)!`, desc: `∠B의 맞은편 변 AC(4)가 높이가 됨! (역전 주의!)`, val: `sin B = 4/5`, color: TCOL.pink, ok: true },
-              { id: 2, name: `🟨 여각(90°-A) 핵심 항등식 3총사`, desc: `sin(90°-A) = cos A, cos(90°-A) = sin A, tan A·tan B = 1`, val: `sin B = cos A`, color: TCOL.gold, ok: true }
+              { id: 2, name: `🟨 여각(90°-A)의 삼각비 사이의 관계 3가지`, desc: `sin(90°-A) = cos A, cos(90°-A) = sin A, tan A·tan B = 1`, val: `sin B = cos A`, color: TCOL.gold, ok: true }
             ],
             totalRes: `∠A + ∠B = 90° 일 때: sin B = cos A (4/5), cos B = sin A (3/5), tan A × tan B = 1`,
-            rule: '절대 법칙: “높이(대변)”는 위쪽 세로선이 아니라 언제나 “기준각과 마주보는 맞은편 변”이다!',
+            rule: '기억할 점: “높이(대변)”는 위쪽 세로선이 아니라 언제나 “기준각과 마주 보는 변”이다!',
             formulaHTML: `• <strong>여각 관계</strong>: ${tex(`\\sin(90^\\circ-A) = \\cos A = \\dfrac{4}{5}, \\quad \\cos(90^\\circ-A) = \\sin A = \\dfrac{3}{5}`)}<br/>• <strong>탄젠트 역수</strong>: ${tex(`\\tan A \\times \\tan B = \\dfrac{3}{4} \\times \\dfrac{4}{3} = \\mathbf{1}`)}`,
-            notes: `• 시험에서 위쪽에 있는 각 $\\angle B$의 삼각비를 물으면, 고개를 돌리거나 <strong>“$\\angle B$와 마주보는 변 $AC$에 [높이]라고 한글로 먼저 적어놓고”</strong> 분수를 만드세요!`
+            notes: `• 문제에서 위쪽에 있는 각 $\\angle B$의 삼각비를 구할 때는 먼저 <strong>“$\\angle B$와 마주 보는 변 $AC$에 [높이]라고 적어 놓고”</strong> 분수를 만드세요!`
           };
         }
         if (sub === 'oneToOther') {
           return {
             badge: `탐구 1-C · 한 삼각비 값(예: sin A = 3/5)이 주어졌을 때 나머지 삼각비 구하기`,
-            hint: `$\\sin A = \\dfrac{3}{5}$이 주어지면 빗변을 $5$, 마주보는 높이를 $3$으로 놓은 뒤 <strong class="text-emerald-300">피타고라스 정리(5² - 3² = 4²)로 밑변 4를 먼저 구합니다!</strong>`,
-            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 피타고라스 밑변 4 도출 강조!',
+            hint: `$\\sin A = \\dfrac{3}{5}$이 주어지면 빗변을 $5$, 마주 보는 높이를 $3$으로 놓은 뒤 <strong class="text-emerald-300">피타고라스 정리(5² - 3² = 4²)로 밑변 4를 먼저 구합니다!</strong>`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 피타고라스 정리로 밑변 4 구하기',
             p1Title: '기준각 선택', p2Title: '확대 배수',
             parts: [
               { id: 0, name: `🟦 1단계: 주어진 sin A = 3/5 으로 두 변 표시`, desc: `빗변 c = 5, 대변(높이) a = 3 배치`, val: `c=5, a=3`, color: TCOL.cyan, ok: true },
@@ -209,26 +209,26 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🟨 3단계: cos A 와 tan A 완성!`, desc: `cos A = 밑변/빗변 = 4/5, tan A = 높이/밑변 = 3/4`, val: `cos=4/5, tan=3/4`, color: TCOL.gold, ok: true }
             ],
             totalRes: `sin A = 3/5  ➔  피타고라스 밑변 = 4  ➔  cos A = 4/5, tan A = 3/4`,
-            rule: '삼각비 1개를 알려주면 직각삼각형을 작게 그려서 피타고라스로 세 번째 변부터 채운다!',
-            formulaHTML: `• <strong>보너스 법칙</strong>: 언제나 ${tex(`\\tan A = \\dfrac{\\sin A}{\\cos A} = \\dfrac{3/5}{4/5} = \\dfrac{3}{4}`)} 및 ${tex(`\\sin^2 A + \\cos^2 A = 1`)} 이 성립합니다!`,
+            rule: '삼각비 하나가 주어지면 직각삼각형을 그린 뒤, 피타고라스 정리로 나머지 한 변부터 구한다!',
+            formulaHTML: `• <strong>참고</strong>: 항상 ${tex(`\\tan A = \\dfrac{\\sin A}{\\cos A} = \\dfrac{3/5}{4/5} = \\dfrac{3}{4}`)} 및 ${tex(`\\sin^2 A + \\cos^2 A = 1`)} 이 성립합니다!`,
             notes: `• 만약 $\\tan A = 2$처럼 정수로 주어지면 분모를 $1$로 보아 $\\tan A = \\dfrac{2}{1}$ (밑변 $1$, 높이 $2 \\implies$ 빗변 $\\sqrt{1^2+2^2}=\\sqrt{5}$)로 놓으면 즉시 풀립니다!`
           };
         }
         if (sub === 'simRightTri') {
           return {
-            badge: `탐구 1-D · [단골 출제] 빗변 수선으로 쪼개진 닮음 직각삼각형에서 sin x · cos y 구하기`,
+            badge: `탐구 1-D · 직각삼각형의 빗변에 수선을 내려 생긴 닮은 직각삼각형에서 sin x, cos y 구하기`,
             hint: `작은 직각삼각형 $\\triangle ABH$의 변 $AH, BH$를 구하느라 시간 낭비하지 마세요! $\\bullet + \\times = 90^\\circ$에 의해 <strong class="text-amber-300">작은 각 x = 큰 각 ∠C, 작은 각 y = 큰 각 ∠B</strong>이므로 <strong class="text-sky-300">세 변(6, 8, 10)을 다 아는 큰 삼각형 △ABC에서 바로 읽으면 3초 컷</strong>입니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 작은 각 x, y ➔ 큰 각 ∠C, ∠B 복제 강조!',
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 작은 각 x, y와 크기가 같은 큰 삼각형의 각 ∠C, ∠B 보기',
             p1Title: '구할 각 선택', p2Title: '삼각형 (6-8-10)',
             parts: [
               { id: 0, name: `🟦 각 x (= ∠BAH)의 정체 ➔ 큰 직각삼각형의 ∠C!`, desc: `x + ∠B = 90° 이고 ∠C + ∠B = 90° 이므로 x = ∠C!`, val: `x = ∠C`, color: TCOL.cyan, ok: true },
               { id: 1, name: `🩷 각 y (= ∠CAH)의 정체 ➔ 큰 직각삼각형의 ∠B!`, desc: `따라서 sin x = sin C = 6/10 = 3/5, cos y = cos B = 6/10 = 3/5!`, val: `y = ∠B`, color: TCOL.pink, ok: true },
-              { id: 2, name: `🟨 큰 직각삼각형 △ABC의 세 변 (6 : 8 : 10 = 3 : 4 : 5)`, desc: `소 공식으로 AH=4.8을 구할 필요가 전혀 없음!`, val: `3초 암산 ⭕`, color: TCOL.gold, ok: true }
+              { id: 2, name: `🟨 큰 직각삼각형 △ABC의 세 변 (6 : 8 : 10 = 3 : 4 : 5)`, desc: `작은 삼각형에서 AH=4.8을 구할 필요가 전혀 없음!`, val: `바로 구함 ⭕`, color: TCOL.gold, ok: true }
             ],
             totalRes: `x = ∠C, y = ∠B 이므로 큰 △ABC(6,8,10)에서: sin x = sin C = 3/5, cos x = 4/5, tan x = 3/4`,
-            rule: '각의 크기가 같으면 삼각형의 크기(닮음)에 상관없이 삼각비의 값은 무조건 똑같다!',
+            rule: '각의 크기가 같으면 삼각형의 크기에 관계없이(닮음) 삼각비의 값은 같다!',
             formulaHTML: `• ${tex(`\\sin x = \\sin C = \\dfrac{\\overline{AB}}{\\overline{BC}} = \\dfrac{6}{10} = \\mathbf{\\dfrac{3}{5}}, \\quad \\cos x = \\cos C = \\dfrac{\\overline{AC}}{\\overline{BC}} = \\dfrac{8}{10} = \\mathbf{\\dfrac{4}{5}}`)}`,
-            notes: `• <strong>[시험장 3초 비법]</strong>: 수선 $AH$로 쪼개진 그림에서 $\\sin x, \\cos y$를 물으면 절대 $AH$ 길이를 구하지 마세요! 제일 바깥 큰 직각삼각형의 세 변으로만 답을 내세요.`
+            notes: `• <strong>[풀이 요령]</strong>: 수선 $AH$로 나뉜 그림에서 $\\sin x, \\cos y$를 구할 때는 $AH$의 길이를 구하지 않고, 가장 큰 직각삼각형 $ABC$의 세 변만 이용합니다.`
           };
         }
         if (sub === 'solid3DTrig') {
@@ -243,16 +243,16 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🟨 입체 대각선(빗변): AG = √((√2)² + 1²) = √3`, desc: `sin ∠AGE = 1/√3 = √3/3, cos = √6/3, tan = √2/2!`, val: `빗변 = √3`, color: TCOL.gold, ok: true }
             ],
             totalRes: `정육면체 대각선 직각삼각형 비 (1 : √2 : √3) ➔ sin θ = √3/3, cos θ = √6/3, tan θ = √2/2`,
-            rule: '정육면체 대각선 황금 비율: (높이 1) : (밑면 대각선 √2) : (입체 대각선 √3)!',
+            rule: '한 모서리가 1인 정육면체에서 세 변의 길이의 비는 (모서리 1) : (밑면의 대각선 √2) : (정육면체의 대각선 √3)이다!',
             formulaHTML: `• ${tex(`\\sin x = \\dfrac{1}{\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3}, \\quad \\cos x = \\dfrac{\\sqrt{2}}{\\sqrt{3}} = \\dfrac{\\sqrt{6}}{3}, \\quad \\tan x = \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}`)}`,
-            notes: `• 3D 그림에서 $\\angle AEG$가 비스듬해 보여도 실제로는 바닥면 전체와 기둥 $AE$가 수직이므로 <strong>$\\angle AEG = 90^\\circ$ 직각</strong>입니다!`
+            notes: `• 입체도형 그림에서 $\\angle AEG$가 비스듬해 보여도 실제로는 바닥면 전체와 기둥 $AE$가 수직이므로 <strong>$\\angle AEG = 90^\\circ$ 직각</strong>입니다!`
           };
         }
         // defSCT 기본
         return {
-          badge: `탐구 1-A · 삼각비의 뜻 (sin A · cos A · tan A 필기체 알파벳 s · c · t 궤적과 변의 비)`,
-          hint: `우측의 <strong class="text-amber-300">sin · cos · tan 조각 카드를 클릭</strong>하거나 슬라이더를 움직여보세요! 직각삼각형에서 기준각 $A$가 정해지면 90° 맞은편이 <strong class="text-amber-300">빗변(c)</strong>, 각 $A$ 맞은편이 <strong class="text-pink-300">대변(높이 a)</strong>, 남은 변이 <strong class="text-sky-300">밑변(b)</strong>입니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 도형 보기' : '🎬 s(사인) · c(코사인) · t(탄젠트) 궤적 시연!',
+          badge: `탐구 1-A · 삼각비의 뜻 (sin A, cos A, tan A를 필기체 s, c, t로 쓰며 변의 비 기억하기)`,
+          hint: `<strong class="text-amber-300">sin · cos · tan 조각 카드를 클릭</strong>하거나 슬라이더를 움직여 보세요! 직각삼각형에서 기준각 $A$가 정해지면 90° 맞은편이 <strong class="text-amber-300">빗변(c)</strong>, 각 $A$ 맞은편이 <strong class="text-pink-300">대변(높이 a)</strong>, 남은 변이 <strong class="text-sky-300">밑변(b)</strong>입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 도형 보기' : '🎬 s(사인) · c(코사인) · t(탄젠트)를 쓰는 방향으로 변 보기',
           p1Title: '기준각 θ 선택', p2Title: '빗변 스케일',
           parts: [
             { id: 0, name: `🩷 sin A = (대변 a) / (빗변 c)  [필기체 s: 빗변 타고 높이로!]`, desc: `3-4-5 삼각형에서 sin A = 3 / 5 = 0.6`, val: `sin A = 3/5`, color: TCOL.pink, ok: true },
@@ -260,9 +260,9 @@ window.addEventListener('DOMContentLoaded', function () {
             { id: 2, name: `🟨 tan A = (대변 a) / (밑변 b)  [필기체 t: 밑변에서 높이로 올라가기!]`, desc: `3-4-5 삼각형에서 tan A = 3 / 4 = 0.75`, val: `tan A = 3/4`, color: TCOL.gold, ok: true }
           ],
           totalRes: `sin A = a/c (3/5)  |  cos A = b/c (4/5)  |  tan A = a/b (3/4)`,
-          rule: '사인(sin)과 코사인(cos)의 분모는 무조건 『빗변』이고, 탄젠트(tan)의 분모는 『밑변』이다!',
+          rule: '사인(sin)과 코사인(cos)의 분모는 항상 『빗변』이고, 탄젠트(tan)의 분모는 『밑변』이다!',
           formulaHTML: `• ${tex(`\\sin A = \\dfrac{\\text{대변(높이)}}{\\text{빗변}} = \\dfrac{a}{c}, \\quad \\cos A = \\dfrac{\\text{밑변}}{\\text{빗변}} = \\dfrac{b}{c}, \\quad \\tan A = \\dfrac{\\text{대변(높이)}}{\\text{밑변}} = \\dfrac{a}{b}`)}`,
-          notes: `• “삼각비”에서 “비(Ratio)”는 분수 비율이라는 뜻입니다. 삼각형의 크기를 2배, 3배로 키워도 약분하면 삼각비의 값은 변하지 않습니다!`
+          notes: `• “삼각비”에서 “비”는 두 변의 길이의 비를 분수로 나타낸 값이라는 뜻입니다. 삼각형의 크기를 2배, 3배로 키워도 약분하면 삼각비의 값은 변하지 않습니다!`
         };
       }
 
@@ -270,60 +270,60 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 2) {
         if (sub === 'cut45') {
           return {
-            badge: `탐구 2-B · [45° 특수각의 탄생] 한 변이 1인 정사각형을 대각선으로 반 자르기 (1 : 1 : √2)`,
+            badge: `탐구 2-B · [45° 직각삼각형] 한 변이 1인 정사각형을 대각선으로 반 자르기 (1 : 1 : √2)`,
             hint: `슬라이더로 정사각형을 대각선으로 잘라보세요! 직각이등변삼각형($45^\\circ\\text{-}45^\\circ\\text{-}90^\\circ$)의 세 변의 길이 비는 피타고라스 정리($1^2+1^2=(\\sqrt{2})^2$)에 의해 언제나 <strong class="text-amber-300">1 : 1 : √2</strong>입니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 정사각형으로 합치기' : '🎬 대각선으로 잘라 45° 직각이등변 만들기!',
-            p1Title: '특수각 (45°)', p2Title: '한 변 배율',
+            p1Title: '각도 (45°)', p2Title: '한 변 배율',
             parts: [
               { id: 0, name: `🟦 두 직각변의 비: 밑변 : 높이 = 1 : 1`, desc: `정사각형의 이웃한 두 변이므로 길이가 같음`, val: `tan 45° = 1`, color: TCOL.cyan, ok: true },
               { id: 1, name: `🟨 대각선(빗변)의 비: √(1² + 1²) = √2`, desc: `직각변에 √2를 곱하면 빗변, 빗변을 √2로 나누면 직각변!`, val: `1 : 1 : √2`, color: TCOL.gold, ok: true },
-              { id: 2, name: `🩷 sin 45° = cos 45° = 1/√2 = √2/2 (완벽 일치!)`, desc: `밑변과 높이가 같으므로 45°에서 사인과 코사인이 같음!`, val: `sin=cos=√2/2`, color: TCOL.pink, ok: true }
+              { id: 2, name: `🩷 sin 45° = cos 45° = 1/√2 = √2/2`, desc: `밑변과 높이가 같으므로 45°에서 사인과 코사인이 같음!`, val: `sin=cos=√2/2`, color: TCOL.pink, ok: true }
             ],
             totalRes: `45° 직각이등변 비 (1 : 1 : √2) ➔ sin 45° = √2/2, cos 45° = √2/2, tan 45° = 1`,
-            rule: '45°가 보이면 무조건 (1 : 1 : √2)! 사인과 코사인이 똑같고 탄젠트는 1이다!',
+            rule: '한 예각이 45°인 직각삼각형은 세 변의 길이의 비가 1 : 1 : √2이다! sin 45°와 cos 45°는 같고 tan 45°는 1이다!',
             formulaHTML: `• ${tex(`\\sin 45^\\circ = \\cos 45^\\circ = \\dfrac{1}{\\sqrt{2}} = \\mathbf{\\dfrac{\\sqrt{2}}{2}}, \\qquad \\tan 45^\\circ = \\dfrac{1}{1} = \\mathbf{1}`)}`,
-            notes: `• 빗변이 정수(예: $6$)로 주어지고 직각변을 구할 때는 $6 \\div \\sqrt{2} = \\dfrac{6\\sqrt{2}}{2} = \\mathbf{3\\sqrt{2}}$ (절반에 $\\sqrt{2}$ 붙이기!)로 1초 암산하세요.`
+            notes: `• 빗변이 정수(예: $6$)로 주어지고 직각변을 구할 때는 $6 \\div \\sqrt{2} = \\dfrac{6\\sqrt{2}}{2} = \\mathbf{3\\sqrt{2}}$ (빗변의 길이의 절반에 $\\sqrt{2}$를 곱한 값)으로 구할 수 있습니다.`
           };
         }
         if (sub === 'chainSpecial') {
           return {
-            badge: `탐구 2-C · 이어 붙인 두 특수각 직각삼각형 (45° 삼각형 + 30°·60° 삼각형 징검다리 연쇄)`,
-            hint: `왼쪽 $45^\\circ$ 직각삼각형($1:1:\\sqrt{2}$)에서 공통 수선 <strong class="text-emerald-300">AH = 6</strong>을 먼저 구한 뒤, 오른쪽 $30^\\circ\\text{-}60^\\circ$ 직각삼각형($1:\\sqrt{3}:2$)으로 건너가 <strong class="text-amber-300">AC = 12, CH = 6√3</strong>을 도미노처럼 구합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 전체 보기' : '🎬 왼쪽(1:1:√2) ➔ 오른쪽(1:√3:2) 징검다리 강조!',
+            badge: `탐구 2-C · 이어 붙인 두 직각삼각형 (45° 직각삼각형과 30°·60° 직각삼각형이 변 AH를 공유)`,
+            hint: `왼쪽 $45^\\circ$ 직각삼각형($1:1:\\sqrt{2}$)에서 공통 수선 <strong class="text-emerald-300">AH = 6</strong>을 먼저 구한 뒤, 오른쪽 $30^\\circ\\text{-}60^\\circ$ 직각삼각형($1:\\sqrt{3}:2$)으로 건너가 <strong class="text-amber-300">AC = 12, CH = 6√3</strong>을 차례로 구합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 전체 보기' : '🎬 왼쪽(1:1:√2) ➔ 오른쪽(1:√3:2) 순서로 보기',
             p1Title: '각 조합(45°·30°)', p2Title: '공통 높이 AH=6',
             parts: [
               { id: 0, name: `🟦 1단계: 왼쪽 45° 직각삼각형 △ABH (1 : 1 : √2)`, desc: `AB = 6√2 이므로 BH = AH = 6 cm!`, val: `AH = BH = 6`, color: TCOL.cyan, ok: true },
-              { id: 1, name: `🟩 징검다리 공통 높이: AH = 6 cm`, desc: `오른쪽 30° 직각삼각형에서 30° 맞은편(비율 1) 변!`, val: `비율 1 = 6cm`, color: TCOL.green, ok: true },
+              { id: 1, name: `🟩 두 삼각형의 공통 높이: AH = 6 cm`, desc: `오른쪽 30° 직각삼각형에서 30° 맞은편(비율 1) 변!`, val: `비율 1 = 6cm`, color: TCOL.green, ok: true },
               { id: 2, name: `🟨 2단계: 오른쪽 30° 직각삼각형 △ACH (1 : √3 : 2)`, desc: `빗변 AC = 2×6 = 12, 밑변 CH = √3×6 = 6√3!`, val: `AC=12, CH=6√3`, color: TCOL.gold, ok: true }
             ],
             totalRes: `AB = 6√2  ➔  공통변 AH = 6  ➔  AC = 12 cm, CH = 6√3 cm`,
-            rule: '특수각 삼각형 2개가 붙어 있으면 무조건 “공통변”의 길이를 다리 삼아 건너간다!',
+            rule: '직각삼각형 두 개가 변을 공유하면, 공통변의 길이를 먼저 구한 뒤 다른 삼각형에서 나머지 변을 구한다!',
             formulaHTML: `• 왼쪽($45^\\circ$): ${tex(`\\overline{AH} = 6\\sqrt{2}\\sin 45^\\circ = 6`)} $\\longrightarrow$ 오른쪽($30^\\circ$): ${tex(`\\overline{AC} = \\dfrac{6}{\\sin 30^\\circ} = \\mathbf{12}`)}`,
-            notes: `• 삼각비 분수 식을 세우지 않아도 도형 위에 <strong>(1 : 1 : $\\sqrt{2}$)</strong>와 <strong>(1 : $\\sqrt{3}$ : 2)</strong> 동그라미 비율만 적어 넣으면 암산으로 풀립니다!`
+            notes: `• 삼각비 분수 식을 세우지 않아도 도형 위에 <strong>(1 : 1 : $\\sqrt{2}$)</strong>와 <strong>(1 : $\\sqrt{3}$ : 2)</strong> 세 변의 길이의 비만 적어 넣으면 쉽게 구할 수 있습니다!`
           };
         }
         if (sub === 'lineSlope') {
           return {
-            badge: `탐구 2-D · [일차함수 융합] 직선이 x축의 양의 방향과 이루는 각 θ와 기울기 (= tan θ!)`,
+            badge: `탐구 2-D · [일차함수와 삼각비] 직선이 x축의 양의 방향과 이루는 각 θ와 기울기 (= tan θ!)`,
             hint: `일차함수 직선의 <strong>기울기</strong>는 $\\dfrac{y\\text{의 증가량}}{x\\text{의 증가량}}$이고, 직각삼각형에서 $\\tan\\theta = \\dfrac{\\text{높이}}{\\text{밑변}}$이므로 언제나 <strong class="text-amber-300">(직선의 기울기) = tan θ</strong>입니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 기울기 = 높이/밑변 = tan θ 강조!',
             p1Title: '각 θ (30°·45°·60°)', p2Title: '절편 스케일',
             parts: [
               { id: 0, name: `🟦 직선의 기울기 정의: (y의 증가량) / (x의 증가량)`, desc: `x절편(-A)에서 y절편(B)까지 가로 OA, 세로 OB`, val: `기울기 = OB/OA`, color: TCOL.cyan, ok: true },
-              { id: 1, name: `🟨 삼각비 탄젠트 정의: tan θ = (대변 OB) / (밑변 OA)`, desc: `두 정의가 100% 일치! 즉, 기울기 a = tan θ!`, val: `a = tan θ!`, color: TCOL.gold, ok: true },
-              { id: 2, name: `🩷 보너스: 원점 O에서 직선에 내린 수선의 길이 OH`, desc: `소(牛) 넓이 공식 OA × OB = AB × OH 또는 OH = OA sin θ`, val: `수선 OH 측량`, color: TCOL.pink, ok: true }
+              { id: 1, name: `🟨 삼각비 탄젠트 정의: tan θ = (대변 OB) / (밑변 OA)`, desc: `두 값이 같습니다! 즉, 기울기 a = tan θ!`, val: `a = tan θ!`, color: TCOL.gold, ok: true },
+              { id: 2, name: `🩷 참고: 원점 O에서 직선에 내린 수선의 길이 OH`, desc: `삼각형 OAB의 넓이를 두 가지로 나타내면 OA × OB = AB × OH 또는 OH = OA sin θ`, val: `수선 OH의 길이`, color: TCOL.pink, ok: true }
             ],
             totalRes: `직선 y = ax + b 가 x축 양의 방향과 이루는 각이 θ일 때: 기울기 a = tan θ!`,
-            rule: '일차함수와 삼각비 연결 공식: (직선의 기울기) = (y증가량)/(x증가량) = tan θ!',
+            rule: '일차함수의 기울기와 삼각비의 관계: (직선의 기울기) = (y의 증가량)/(x의 증가량) = tan θ!',
             formulaHTML: `• 예: $x$축과 이루는 각이 $30^\\circ$이고 $y$절편이 $2$인 직선 $\\implies$ 기울기 $a = \\tan 30^\\circ = \\dfrac{\\sqrt{3}}{3} \\implies \\mathbf{y = \\dfrac{\\sqrt{3}}{3}x + 2}$!`,
             notes: `• 거꾸로 직선의 방정식 $3x - 4y + 12 = 0$을 주고 $\\sin\\theta, \\cos\\theta$를 물으면, <strong>$x$절편($-4$)과 $y$절편($3$)을 구해 $3:4:5$ 직각삼각형</strong>을 그리면 끝납니다!`
           };
         }
         if (sub === 'tan15Iso') {
           return {
-            badge: `탐구 2-E · 🔥 [심화 경시 단골] 30° 직각삼각형 뒤에 이등변을 붙여 tan 15° = 2 - √3 유도하기!`,
-            hint: `$15^\\circ$는 특수각 표에 없지만, <strong class="text-amber-300">30° 직각삼각형(1 : √3 : 2)의 빗변(2)과 같은 길이(2)를 밑변 뒤에 이어 붙여 이등변삼각형</strong>을 만들면 외각 원리($15^\\circ + 15^\\circ = 30^\\circ$)로 $15^\\circ$가 탄생합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 30° 삼각형만 보기' : '🎬 뒤에 길이 2를 이어 붙여 15° 이등변 완성!',
+            badge: `탐구 2-E · 🔥 [심화] 30° 직각삼각형에 이등변삼각형을 붙여 tan 15° = 2 - √3 구하기`,
+            hint: `$15^\\circ$는 30°·45°·60°의 삼각비의 값 표에 없지만, <strong class="text-amber-300">30° 직각삼각형(1 : √3 : 2)의 빗변(2)과 같은 길이(2)를 밑변 뒤에 이어 붙여 이등변삼각형</strong>을 만들면 삼각형의 외각의 성질($15^\\circ + 15^\\circ = 30^\\circ$)로 $15^\\circ$인 각이 생깁니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 30° 삼각형만 보기' : '🎬 길이 2를 이어 붙여 밑각이 15°인 이등변삼각형 만들기',
             p1Title: '각 분할 (15°+15°=30°)', p2Title: '비율 (1:√3:2)',
             parts: [
               { id: 0, name: `🟦 앞쪽 30°-60°-90° 직각삼각형 △ADC (1 : √3 : 2)`, desc: `높이 AC = 1, 밑변 DC = √3, 빗변 AD = 2`, val: `AC=1, DC=√3, AD=2`, color: TCOL.cyan, ok: true },
@@ -338,10 +338,10 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         // cut3060 기본
         return {
-          badge: `탐구 2-A · [30°·60° 특수각의 탄생] 한 변이 2인 정삼각형을 수선으로 반 자르기 (1 : √3 : 2)`,
-          hint: `슬라이더로 한 변의 길이가 $2$인 정삼각형을 꼭지각 수선으로 반 잘라보세요! 밑변이 절반($1$)이 되고 피타고라스 정리($2^2 - 1^2 = (\\sqrt{3})^2$)에 의해 높이가 $\\sqrt{3}$이 되어 <strong class="text-amber-300">1 : √3 : 2 황금 비율</strong>이 탄생합니다!`,
+          badge: `탐구 2-A · [30°·60° 직각삼각형] 한 변이 2인 정삼각형을 수선으로 반 자르기 (1 : √3 : 2)`,
+          hint: `슬라이더로 한 변의 길이가 $2$인 정삼각형을 꼭지각 수선으로 반 잘라보세요! 밑변이 절반($1$)이 되고 피타고라스 정리($2^2 - 1^2 = (\\sqrt{3})^2$)에 의해 높이가 $\\sqrt{3}$이 되어 <strong class="text-amber-300">세 변의 길이의 비 1 : √3 : 2</strong>가 됩니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 정삼각형으로 합치기' : '🎬 수선으로 반 잘라 30°·60° 직각삼각형 만들기!',
-          p1Title: '특수각 (30°·60°)', p2Title: '정삼각형 한 변=2',
+          p1Title: '각도 (30°·60°)', p2Title: '정삼각형 한 변=2',
           parts: [
             { id: 0, name: `🟦 가장 짧은 변 (30° 맞은편) = 1`, desc: `정삼각형 한 변(2)이 수직이등분되어 절반(1)이 됨!`, val: `sin 30° = 1/2`, color: TCOL.cyan, ok: true },
             { id: 1, name: `🟩 중간 길이 변 (60° 맞은편 높이) = √3`, desc: `피타고라스 √(2² - 1²) = √3 (가장 짧은 변의 √3배!)`, val: `sin 60° = √3/2`, color: TCOL.green, ok: true },
@@ -350,7 +350,7 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: `30°-60°-90° 길이 비 (1 : √3 : 2) ➔ sin 30°=1/2, cos 30°=√3/2, tan 30°=√3/3, tan 60°=√3`,
           rule: '30° 맞은편이 제일 짧은 1, 90° 맞은편 빗변이 2, 60° 맞은편이 √3 (1 < √3 ≈ 1.732 < 2)!',
           formulaHTML: `• <strong>30° 세트</strong>: ${tex(`\\sin 30^\\circ = \\dfrac{1}{2}, \\; \\cos 30^\\circ = \\dfrac{\\sqrt{3}}{2}, \\; \\tan 30^\\circ = \\dfrac{1}{\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3}`)}<br/>• <strong>60° 세트</strong>: ${tex(`\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}, \\; \\cos 60^\\circ = \\dfrac{1}{2}, \\; \\tan 60^\\circ = \\sqrt{3}`)}`,
-          notes: `• <strong>[$\\sqrt{3}$과 $2$ 안 헷갈리는 법]</strong>: $\\sqrt{3} \\approx 1.732$이므로 $2$보다 작습니다! 따라서 <strong>가장 긴 빗변이 무조건 $2$</strong>이고 직각변이 $\\sqrt{3}$입니다.`
+          notes: `• <strong>[$\\sqrt{3}$과 $2$를 구별하는 방법]</strong>: $\\sqrt{3} \\approx 1.732$이므로 $2$보다 작습니다! 따라서 <strong>가장 긴 변인 빗변이 $2$</strong>이고 나머지 직각변이 $\\sqrt{3}$입니다.`
         };
       }
 
@@ -358,42 +358,42 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 3) {
         const sVal = Math.sin(rad).toFixed(3);
         const cVal = Math.cos(rad).toFixed(3);
-        const tVal = deg >= 88 ? '∞(무한)' : Math.tan(rad).toFixed(3);
+        const tVal = deg >= 88 ? '정할 수 없음' : Math.tan(rad).toFixed(3);
 
         if (sub === 'absSignJudge') {
           const isUnder45 = deg < 45;
           return {
-            badge: `탐구 3-D · 🔥 [내신 킬러] 45° 경계선 기준 √(sin x - cos x)² 절댓값 부호 판별기 (현재 x = ${deg}°)`,
-            hint: `제곱근 성질 $\\sqrt{A^2} = |A|$에서, <strong class="text-sky-300">0° < x < 45°이면 높이(sin x)보다 밑변(cos x)이 더 길어 sin x - cos x < 0 (음수, 마이너스 달고 나옴!)</strong>이고, <strong class="text-pink-300">45° < x < 90°이면 sin x - cos x > 0 (양수!)</strong>입니다!`,
+            badge: `탐구 3-D · 🔥 [킬러] 45°를 기준으로 √(sin x - cos x)²의 부호 판단하기 (현재 x = ${deg}°)`,
+            hint: `제곱근 성질 $\\sqrt{A^2} = |A|$에서, <strong class="text-sky-300">0° < x < 45°이면 높이(sin x)보다 밑변(cos x)이 더 길어 sin x - cos x < 0 (음수이므로 부호를 바꾸어 근호 밖으로 나옴!)</strong>이고, <strong class="text-pink-300">45° < x < 90°이면 sin x - cos x > 0 (양수!)</strong>입니다!`,
             actionTxt: '🎬 30°(음수 구간) ↔ 60°(양수 구간) 비교 전환!',
             p1Title: '각도 x 선택', p2Title: '구간 판정',
             parts: [
               { id: 0, name: `🩷 현재 높이 sin ${deg}° = ${sVal}`, desc: `사분원 안쪽 세로 선분 AB의 길이`, val: `sin = ${sVal}`, color: TCOL.pink, ok: true },
               { id: 1, name: `🟦 현재 밑변 cos ${deg}° = ${cVal}`, desc: `사분원 안쪽 가로 선분 OB의 길이`, val: `cos = ${cVal}`, color: TCOL.cyan, ok: true },
-              { id: 2, name: isUnder45 ? `🟥 0°<x<45° 판정: sin x < cos x ➔ 부호 음수(-)!` : `🟩 45°<x<90° 판정: sin x > cos x ➔ 부호 양수(+)!`, desc: isUnder45 ? `√(sin x - cos x)² = -(sin x - cos x) = cos x - sin x!` : `√(sin x - cos x)² = +(sin x - cos x) = sin x - cos x!`, val: isUnder45 ? `음수(-) 반전!` : `양수(+) 그대로`, color: isUnder45 ? TCOL.red : TCOL.green, ok: !isUnder45 }
+              { id: 2, name: isUnder45 ? `🟥 0°<x<45° 판정: sin x < cos x ➔ 부호 음수(-)!` : `🟩 45°<x<90° 판정: sin x > cos x ➔ 부호 양수(+)!`, desc: isUnder45 ? `√(sin x - cos x)² = -(sin x - cos x) = cos x - sin x!` : `√(sin x - cos x)² = +(sin x - cos x) = sin x - cos x!`, val: isUnder45 ? `음수(-): 부호를 바꿈` : `양수(+) 그대로`, color: isUnder45 ? TCOL.red : TCOL.green, ok: !isUnder45 }
             ],
             totalRes: isUnder45
               ? `x = ${deg}° (< 45°): sin x < cos x 이므로 √(sin x - cos x)² = cos x - sin x`
               : `x = ${deg}° (> 45°): sin x > cos x 이므로 √(sin x - cos x)² = sin x - cos x`,
-            rule: '45° 대소 경계 법칙: 0°~45°는 cos x > sin x | 45°에서 sin=cos=√2/2 < tan(1) | 45°~90°는 tan x > 1 > sin x > cos x!',
+            rule: '45°를 기준으로 한 크기 비교: 0°<x<45°이면 sin x < cos x | x=45°이면 sin x = cos x = √2/2 < tan 45° = 1 | 45°<x<90°이면 cos x < sin x < 1 < tan x',
             formulaHTML: `• <strong>$0^\\circ < x < 45^\\circ$일 때</strong>: ${tex(`\\sin x < \\cos x \\implies \\sqrt{(\\sin x - \\cos x)^2} = \\mathbf{\\cos x - \\sin x}`)}<br/>• <strong>$45^\\circ < x < 90^\\circ$일 때</strong>: ${tex(`\\cos x < \\sin x < 1 < \\tan x \\implies \\sqrt{(\\sin x - \\tan x)^2} = \\mathbf{\\tan x - \\sin x}`)}`,
-            notes: `• 시험에서 “$45^\\circ < x < 90^\\circ$일 때”가 나오면 머릿속으로 <strong>$x = 60^\\circ$ ($\sin 60^\\circ = \\frac{\\sqrt{3}}{2}, \\cos 60^\\circ = \\frac{1}{2}, \\tan 60^\\circ = \\sqrt{3}$)를 대입</strong>해서 양수인지 음수인지 판별하면 절대 안 틀립니다!`
+            notes: `• 문제에서 “$45^\\circ < x < 90^\\circ$일 때”가 나오면 <strong>$x = 60^\\circ$ ($\sin 60^\\circ = \\frac{\\sqrt{3}}{2}, \\cos 60^\\circ = \\frac{1}{2}, \\tan 60^\\circ = \\sqrt{3}$)를 대입</strong>하여 양수인지 음수인지 확인할 수 있습니다!`
           };
         }
         return {
-          badge: `탐구 3 · 반지름 1인 사분원(Unit Quarter Circle) — sin ${deg}° = AB(${sVal}), cos ${deg}° = OB(${cVal}), tan ${deg}° = CD(${tVal})`,
-          hint: `캔버스 위 <strong class="text-amber-300">사분원의 점 A를 마우스로 직접 잡고 0°~85°로 움직여 보세요!</strong> 분모가 $1$이 되도록 맞추면 <strong class="text-pink-300">sin x = 안쪽 세로 AB</strong>, <strong class="text-sky-300">cos x = 안쪽 가로 OB</strong>, 그리고 <strong class="text-amber-300">tan x = 바깥쪽 접선 세로 CD</strong>의 길이와 정확히 같아집니다!`,
-          actionTxt: '🎬 0° ➔ 30° ➔ 45° ➔ 60° 스윕 시뮬레이션!',
-          p1Title: '각도 x 원클릭', p2Title: '반지름 r = 1',
+          badge: `탐구 3 · 반지름이 1인 사분원 — sin ${deg}° = AB(${sVal}), cos ${deg}° = OB(${cVal}), tan ${deg}° = CD(${tVal})`,
+          hint: `그림에서 <strong class="text-amber-300">사분원의 점 A를 마우스로 직접 잡고 0°~85°로 움직여 보세요!</strong> 분모가 $1$이 되도록 맞추면 <strong class="text-pink-300">sin x = 안쪽 세로 AB</strong>, <strong class="text-sky-300">cos x = 안쪽 가로 OB</strong>, 그리고 <strong class="text-amber-300">tan x = 바깥쪽 접선 세로 CD</strong>의 길이와 정확히 같아집니다!`,
+          actionTxt: '🎬 0° ➔ 30° ➔ 45° ➔ 60°로 각도를 바꾸며 보기',
+          p1Title: '각도 x 선택', p2Title: '반지름 r = 1',
           parts: [
             { id: 0, name: `🩷 sin ${deg}° = AB / OA = AB / 1 = 선분 AB 길이!`, desc: `안쪽 작은 직각삼각형 △OAB의 세로 높이 (점 A의 y좌표)`, val: `AB = ${sVal}`, color: TCOL.pink, ok: true },
             { id: 1, name: `🟦 cos ${deg}° = OB / OA = OB / 1 = 선분 OB 길이!`, desc: `안쪽 작은 직각삼각형 △OAB의 가로 밑변 (점 A의 x좌표)`, val: `OB = ${cVal}`, color: TCOL.cyan, ok: true },
-            { id: 2, name: `🟨 tan ${deg}° = CD / OC = CD / 1 = 바깥 선분 CD 길이!`, desc: `⚠️ 왜 AB/OB로 안 읽을까? 분모 OC = 1 인 바깥 △OCD를 써야 선분 1개로 읽힘!`, val: `CD = ${tVal}`, color: TCOL.gold, ok: true }
+            { id: 2, name: `🟨 tan ${deg}° = CD / OC = CD / 1 = 바깥 선분 CD 길이!`, desc: `⚠️ 왜 AB/OB로 구하지 않을까? 분모 OC = 1인 바깥 △OCD를 쓰면 선분 CD 하나의 길이로 나타나기 때문!`, val: `CD = ${tVal}`, color: TCOL.gold, ok: true }
           ],
           totalRes: `x = ${deg}°: sin x = AB(${sVal})  |  cos x = OB(${cVal})  |  tan x = 바깥 접선 CD(${tVal})`,
-          rule: '사분원 3대 선분: sin x = 안쪽 세로(AB) · cos x = 안쪽 가로(OB) · tan x = 바깥 세로(CD)!',
+          rule: '사분원에서 세 선분의 길이: sin x = 안쪽 세로(AB) · cos x = 안쪽 가로(OB) · tan x = 바깥 세로(CD)!',
           formulaHTML: `• <strong>왜 $\\tan x = \\overline{CD}$ 일까?</strong> 안쪽 $\\triangle OAB$에서는 밑변 $\\overline{OB} \\ne 1$이지만, 바깥 큰 $\\triangle OCD$에서는 밑변 $\\overline{OC} = 1$(반지름)이므로 ${tex(`\\tan x = \\dfrac{\\overline{CD}}{\\overline{OC}} = \\dfrac{\\overline{CD}}{1} = \\mathbf{\\overline{CD}}`)}가 됩니다!`,
-          notes: `• <strong>[양 끝값 암기]</strong>: $\\sin 0^\\circ = 0, \\cos 0^\\circ = 1, \\tan 0^\\circ = 0$ 이고, $\\sin 90^\\circ = 1, \\cos 90^\\circ = 0$ 이며 $\\tan 90^\\circ$는 정할 수 없습니다(무한대)!`
+          notes: `• <strong>[0°와 90°의 삼각비의 값]</strong>: $\\sin 0^\\circ = 0, \\cos 0^\\circ = 1, \\tan 0^\\circ = 0$ 이고, $\\sin 90^\\circ = 1, \\cos 90^\\circ = 0$ 이며 $\\tan 90^\\circ$의 값은 정할 수 없습니다!`
         };
       }
 
@@ -404,10 +404,10 @@ window.addEventListener('DOMContentLoaded', function () {
           const adjLen = (L * cosVal).toFixed(2);
           const hRise = (L * (1 - cosVal)).toFixed(2);
           return {
-            badge: `탐구 4-C · 🕰️ [시험 오답 1위!] 흔들리는 그네·시계추(길이 L=${L})가 θ=${deg}°만큼 벌어졌을 때 올라간 높이 h`,
+            badge: `탐구 4-C · 🕰️ [주의] 흔들리는 그네·시계추(길이 L=${L})가 θ=${deg}°만큼 벌어졌을 때 올라간 높이 h`,
             hint: `슬라이더로 추를 흔들어 보세요! 올라간 높이 $h$를 구할 때 $\\sin$을 쓰면 오답입니다! 위쪽 직각삼각형에서 <strong class="text-sky-300">내려온 수직 길이 OH = L cos θ(${adjLen})</strong>를 구한 뒤, <strong class="text-amber-300">원래 전체 줄 길이 L(${L})에서 빼서 h = L - L cos θ = ${hRise}</strong>로 구해야 합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 시계추 원위치' : '🎬 시계추 스윙 & 올라간 높이 h = L(1-cos θ) 시연!',
-            p1Title: '스윙 각도 θ', p2Title: '줄 길이 L',
+            actionTxt: state.fold > 0.5 ? '🎬 시계추 원위치' : '🎬 시계추를 흔들며 올라간 높이 h = L(1-cos θ) 보기',
+            p1Title: '흔들리는 각도 θ', p2Title: '줄 길이 L',
             parts: [
               { id: 0, name: `⬜ 원래 맨 아래까지 전체 줄 길이 = L (${L} cm)`, desc: `OB = OA = 반지름 L 로 줄의 길이는 불변!`, val: `전체 L = ${L}`, color: TCOL.white, ok: true },
               { id: 1, name: `🟦 위쪽 직각삼각형 △OAH의 세로 밑변: OH = L cos ${deg}°`, desc: `⚠️ 각 θ가 위 꼭짓점 O에 있으므로 세로선 OH가 cos θ!`, val: `OH = ${adjLen}`, color: TCOL.cyan, ok: true },
@@ -416,7 +416,7 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: `줄 길이 L=${L}, 각 ${deg}° 일 때 올라간 높이 h = ${L}(1 - cos ${deg}°) = ${hRise} cm`,
             rule: '시계추·그네 공식: 각 θ가 위쪽에 매달려 있으므로 세로 길이는 L sin θ가 아니라 L cos θ이다!',
             formulaHTML: `• ${tex(`\\overline{OH} = L\\cos\\theta \\implies \\mathbf{h = \\overline{BH} = L - L\\cos\\theta = L(1 - \\cos\\theta)}`)}<br/>• 특히 $\\theta = 60^\\circ$일 때는 $\\cos 60^\\circ = \\dfrac{1}{2}$이므로 올라간 높이는 줄 길이의 딱 절반(${tex(`\\mathbf{\\dfrac{1}{2}L}`)})입니다!`,
-            notes: `• 학생의 80%가 “세로선이니까 $\\sin$이겠지?” 하고 $L\\sin\\theta$를 골라 틀립니다! <strong>위쪽 각 $\\theta$를 끼고 돌아가는 변이므로 세로선 $OH = L\\cos\\theta$</strong>입니다.`
+            notes: `• “세로선이니까 $\\sin$이겠지?” 하고 $L\\sin\\theta$로 구하면 틀립니다! <strong>위쪽 각 $\\theta$를 끼고 돌아가는 변이므로 세로선 $OH = L\\cos\\theta$</strong>입니다.`
           };
         }
         if (sub === 'treeEyeHeight') {
@@ -447,17 +447,17 @@ window.addEventListener('DOMContentLoaded', function () {
             : `탐구 4-A · 빗변 c(${L})와 기준각 A(${deg}°)를 알 때 높이(c sin A)와 밑변(c cos A) 표현하기`,
           hint: isFromBase
             ? `밑변 $b = ${L}$와 각 $A = ${deg}^\\circ$를 알 때는 <strong class="text-pink-300">높이 a = b tan A = ${L} tan ${deg}°(${hVal})</strong>이고, 빗변은 코사인의 역수인 <strong class="text-amber-300">c = b / cos A</strong>입니다!`
-            : `빗변 $c = ${L}$와 각 $A = ${deg}^\\circ$를 알 때는 분모가 빗변($c$)이므로 양변에 $c$를 곱해 <strong class="text-pink-300">높이 a = c sin A(${hVal})</strong>, <strong class="text-sky-300">밑변 b = c cos A(${bVal})</strong>로 1초 만에 표현합니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 변의 길이 공식 화살표 시연!',
+            : `빗변 $c = ${L}$와 각 $A = ${deg}^\\circ$를 알 때는 분모가 빗변($c$)이므로 양변에 $c$를 곱해 <strong class="text-pink-300">높이 a = c sin A(${hVal})</strong>, <strong class="text-sky-300">밑변 b = c cos A(${bVal})</strong>로 표현합니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 변의 길이를 구하는 식을 화살표로 보기',
           p1Title: '기준각 A 선택', p2Title: isFromBase ? '밑변 길이 b' : '빗변 길이 c',
           parts: [
             { id: 0, name: isFromBase ? `🩷 높이(대변) a = b tan A = ${L} tan ${deg}°` : `🩷 높이(대변) a = c sin A = ${L} sin ${deg}°`, desc: isFromBase ? `tan A = a/b 의 양변에 b를 곱함!` : `sin A = a/c 의 양변에 c를 곱함!`, val: `a = ${hVal}`, color: TCOL.pink, ok: true },
             { id: 1, name: isFromBase ? `🟨 빗변 c = b / cos A = ${L} / cos ${deg}°` : `🟦 밑변 b = c cos A = ${L} cos ${deg}°`, desc: isFromBase ? `cos A = b/c 에서 c와 cos A 자리 바꾸기!` : `cos A = b/c 의 양변에 c를 곱함!`, val: isFromBase ? `c = ${(L/Math.cos(rad)).toFixed(2)}` : `b = ${bVal}`, color: isFromBase ? TCOL.gold : TCOL.cyan, ok: true }
           ],
           totalRes: isFromBase ? `밑변 b=${L} 기준: 높이 a = ${L} tan ${deg}°, 빗변 c = ${L} / cos ${deg}°` : `빗변 c=${L} 기준: 높이 a = ${L} sin ${deg}°(${hVal}), 밑변 b = ${L} cos ${deg}°(${bVal})`,
-          rule: '곱하기 vs 나누기 1초 구분: 구하려는 변이 삼각비 분수의 “분자”에 있으면 곱하고(×), “분모”에 있으면 나눈다(÷)!',
+          rule: '곱할지 나눌지 정하는 방법: 구하려는 변이 삼각비 분수의 “분자”에 있으면 곱하고(×), “분모”에 있으면 나눈다(÷)!',
           formulaHTML: `• <strong>빗변 $c$를 알 때 (제일 중요!)</strong>: ${tex(`\\mathbf{\\text{높이 } a = c\\sin A, \\qquad \\text{밑변 } b = c\\cos A}`)}<br/>• <strong>밑변 $b$를 알 때</strong>: ${tex(`\\mathbf{\\text{높이 } a = b\\tan A, \\qquad \\text{빗변 } c = \\dfrac{b}{\\cos A}}`)}`,
-          notes: `• 이 공식($\\text{높이} = c\\sin A, \\text{밑변} = c\\cos A$)은 뒤이어 나오는 일반삼각형의 변의 길이(탭 5)와 삼각형 넓이 공식(탭 7)의 핵심 엔진입니다!`
+          notes: `• 이 식($\\text{높이} = c\\sin A, \\text{밑변} = c\\cos A$)은 뒤에 나오는 삼각형의 변의 길이(탭 5)와 삼각형의 넓이(탭 7)를 구할 때 기본이 됩니다!`
         };
       }
 
@@ -466,8 +466,8 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'sasObtuseLen') {
           return {
             badge: `탐구 5-B · 🔥 두 변(b=4, c=6)과 둔각(∠B=120°)이 주어졌을 때 대변 AC의 길이 구하기`,
-            hint: `끼인각이 $120^\\circ$ 둔각일 때는 삼각형 안쪽이 아니라 <strong class="text-amber-300">밑변 BC의 바깥쪽 연장선에 수선의 발 H</strong>를 내려야 합니다! 그러면 바깥에 <strong class="text-sky-300">외각 60° 특수각 직각삼각형(△ABH)</strong>이 생겨 큰 직각삼각형 $\\triangle ACH$의 피타고라스로 풀립니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 기본 삼각형만 보기' : '🎬 바깥 연장선에 수선 AH 내려 60° 외각 만들기!',
+            hint: `끼인각이 $120^\\circ$ 둔각일 때는 삼각형 안쪽이 아니라 <strong class="text-amber-300">밑변 BC의 바깥쪽 연장선에 수선의 발 H</strong>를 내려야 합니다! 그러면 바깥에 <strong class="text-sky-300">외각이 60°인 직각삼각형(△ABH)</strong>이 생겨 큰 직각삼각형 $\\triangle ACH$의 피타고라스로 풀립니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 삼각형만 보기' : '🎬 변의 연장선에 수선 AH를 내려 외각 60° 만들기',
             p1Title: '둔각 (120°·135°·150°)', p2Title: '변 스케일',
             parts: [
               { id: 0, name: `🟦 1단계: 바깥 60° 직각삼각형 △ABH (빗변 AB = 6)`, desc: `외각 ∠ABH = 180°-120° = 60° ➔ BH = 3, 높이 AH = 3√3!`, val: `BH=3, AH=3√3`, color: TCOL.cyan, ok: true },
@@ -475,38 +475,38 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🟨 3단계: △ACH에서 피타고라스 정리로 AC 구하기!`, desc: `AC = √(CH² + AH²) = √(7² + (3√3)²) = √(49 + 27) = √76 = 2√19!`, val: `AC = 2√19`, color: TCOL.gold, ok: true }
             ],
             totalRes: `외각 60°에서 BH=3, AH=3√3  ➔  전체 직각삼각형 △ACH에서 AC = √(7² + (3√3)²) = 2√19`,
-            rule: '120° · 135° · 150° 둔각이 보이면 무조건 바깥 연장선에 수선을 내려 외각(60°·45°·30°)을 쓴다!',
+            rule: '한 각이 둔각(120°·135°·150°)이면 그 각의 한 변의 연장선에 수선을 내려 외각(60°·45°·30°)을 이용한다!',
             formulaHTML: `• ${tex(`\\overline{AC} = \\sqrt{(\\overline{BC}+\\overline{BH})^2 + \\overline{AH}^2} = \\sqrt{(4+3)^2 + (3\\sqrt{3})^2} = \\sqrt{49+27} = \\mathbf{2\\sqrt{19}}`)}`,
-            notes: `• $120^\\circ$를 반으로 쪼개어 $60^\\circ$로 만들겠다고 각이등분선을 그으면 직각($90^\\circ$)이 안 생겨서 삼각비를 전혀 쓸 수 없습니다! 무조건 <strong>바깥 연장선에 수선</strong>을 내리세요.`
+            notes: `• $120^\\circ$를 반으로 쪼개어 $60^\\circ$로 만들겠다고 각이등분선을 그으면 직각($90^\\circ$)이 안 생겨서 삼각비를 쓸 수 없습니다! <strong>바깥쪽 연장선에 수선</strong>을 내려야 합니다.`
           };
         }
         if (sub === 'asaSplit75' || sub === 'trapDontSplit60') {
           const isTrap = sub === 'trapDontSplit60';
           return {
             badge: isTrap
-              ? `탐구 5-D · 🚫 [함정 비교] 왜 특수각(60°) 꼭짓점에서 수선을 내리면 문제가 안 풀릴까?`
-              : `탐구 5-C · 한 변(BC)과 양 끝각(45°, 60°)이 주어졌을 때 — 비특수각 꼭지각 A(75°)를 45°+30°로 쪼개기!`,
+              ? `탐구 5-D · 🚫 [함정 비교] 왜 60° 각의 꼭짓점에서 수선을 내리면 풀기 어려울까?`
+              : `탐구 5-C · 한 변(BC)과 양 끝각(45°, 60°)이 주어졌을 때 — ∠A(75°)를 45°와 30°로 나누기`,
             hint: isTrap
-              ? `만약 $60^\\circ$ 꼭짓점에서 수선을 내리면 소중한 특수각 $60^\\circ$가 몇 도인지 모를 두 각으로 쪼개져 버립니다(❌)! <strong class="text-amber-300">수선은 반드시 특수각(45°, 60°)을 온전히 살려두는 제3의 꼭짓점 A(75°)에서 내려야 합니다!</strong>`
-              : `세 내각이 $45^\\circ, 60^\\circ, 75^\\circ$일 때는 <strong class="text-amber-300">비특수각인 꼭짓점 A(75°)에서 밑변 BC에 수선 AH를 내립니다!</strong> 그러면 $75^\\circ$가 자연스럽게 <strong class="text-sky-300">45° + 30° 두 특수각 직각삼각형</strong>으로 쪼개집니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 올바른 수선 AH 보기' : '🎬 75° = 45° + 30° 황금 분할 확인!',
-            p1Title: '양 끝각 (45°·60°)', p2Title: '쪼갤 꼭짓점 A(75°)',
+              ? `만약 $60^\\circ$인 꼭짓점에서 수선을 내리면 $60^\\circ$가 크기를 알 수 없는 두 각으로 나뉘어 버립니다(❌)! <strong class="text-amber-300">수선은 45°, 60°인 각을 그대로 두고 남은 꼭짓점 A(75°)에서 내려야 합니다!</strong>`
+              : `세 내각이 $45^\\circ, 60^\\circ, 75^\\circ$일 때는 <strong class="text-amber-300">꼭짓점 A(75°)에서 밑변 BC에 수선 AH를 내립니다!</strong> 그러면 $75^\\circ$가 <strong class="text-sky-300">45°와 30°</strong>로 나뉘어 각이 45°, 30°인 직각삼각형 두 개가 생깁니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 올바른 수선 AH 보기' : '🎬 75° = 45° + 30°로 나뉘는지 확인',
+            p1Title: '양 끝각 (45°·60°)', p2Title: '수선을 내릴 꼭짓점 A(75°)',
             parts: [
-              { id: 0, name: `🟨 황금 수선: 비특수각 꼭짓점 A(75°)에서 AH ⊥ BC 내리기!`, desc: `75°가 왼쪽 45°와 오른쪽 30° 두 특수각으로 완벽 분할됨!`, val: `75° = 45° + 30°`, color: TCOL.gold, ok: true },
+              { id: 0, name: `🟨 꼭짓점 A(75°)에서 AH ⊥ BC 내리기!`, desc: `75°가 왼쪽 45°와 오른쪽 30°로 나뉨!`, val: `75° = 45° + 30°`, color: TCOL.gold, ok: true },
               { id: 1, name: `🟦 오른쪽 60° 직각삼각형 △ACH (1 : √3 : 2)`, desc: `AC = 6 이면 CH = 3, 높이 AH = 3√3`, val: `CH=3, AH=3√3`, color: TCOL.cyan, ok: true },
               { id: 2, name: `🩷 왼쪽 45° 직각삼각형 △ABH (1 : 1 : √2)`, desc: `AH = 3√3 이므로 BH = 3√3, AB = 3√6 ➔ BC = 3√3 + 3!`, val: `AB = 3√6`, color: TCOL.pink, ok: true }
             ],
             totalRes: `꼭짓점 A(75°)에서 수선 AH 내리기 ➔ 오른쪽(30°·60°)에서 AH=3√3 ➔ 왼쪽(45°)에서 AB=3√6!`,
-            rule: '보조선 불변의 법칙: 특수각(30°·45°·60°)은 절대 쪼개지 말고, 비특수각(75°·105°) 꼭짓점에서 수선을 내려라!',
-            formulaHTML: `• <strong>단골 쪼개기 조합 2가지</strong>:<br/>&nbsp;&nbsp;① $75^\\circ = \\mathbf{45^\\circ + 30^\\circ}$ (양 끝각이 $45^\\circ, 60^\\circ$일 때)<br/>&nbsp;&nbsp;② $105^\\circ = \\mathbf{45^\\circ + 60^\\circ}$ (양 끝각이 $45^\\circ, 30^\\circ$일 때)`,
-            notes: `• 문제에 $75^\\circ$나 $105^\\circ$가 보이면 고민할 것도 없이 <strong>그 각의 꼭짓점에서 마주보는 변으로 수선($\\perp$)</strong>을 그으세요! 100% 특수각 2개로 쪼개집니다.`
+            rule: '수선을 긋는 방법: 30°·45°·60°인 각은 나누지 않고, 75°·105°인 각의 꼭짓점에서 마주 보는 변에 수선을 내린다!',
+            formulaHTML: `• <strong>각을 나누는 두 가지 경우</strong>:<br/>&nbsp;&nbsp;① $75^\\circ = \\mathbf{45^\\circ + 30^\\circ}$ (양 끝각이 $45^\\circ, 60^\\circ$일 때)<br/>&nbsp;&nbsp;② $105^\\circ = \\mathbf{45^\\circ + 60^\\circ}$ (양 끝각이 $45^\\circ, 30^\\circ$일 때)`,
+            notes: `• $75^\\circ$나 $105^\\circ$인 각이 있으면 <strong>그 각의 꼭짓점에서 마주 보는 변으로 수선($\\perp$)</strong>을 그으세요! 30°, 45°, 60° 중 두 각으로 나뉩니다.`
           };
         }
         // sasAcuteLen 기본
         return {
           badge: `탐구 5-A · 두 변(AB=8, BC=10)과 끼인각(∠B=60°)을 알 때 대변 AC의 길이 구하기`,
-          hint: `일반삼각형에는 바로 피타고라스 정리를 쓸 수 없으므로, 특수각 $\\angle B(60^\\circ)$를 살려두기 위해 <strong class="text-amber-300">꼭짓점 A에서 밑변 BC에 수선 AH를 내려 직각삼각형 2개로 쪼갠 뒤</strong> 피타고라스 정리를 씁니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 삼각형 보기' : '🎬 수선 AH 내려 1단계 ➔ 2단계 풀이 시연!',
+          hint: `직각삼각형이 아닌 삼각형에는 바로 피타고라스 정리를 쓸 수 없으므로, $\\angle B(60^\\circ)$를 그대로 두기 위해 <strong class="text-amber-300">꼭짓점 A에서 밑변 BC에 수선 AH를 내려 직각삼각형 2개로 쪼갠 뒤</strong> 피타고라스 정리를 씁니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 삼각형 보기' : '🎬 수선 AH를 내려 1단계 ➔ 2단계 풀이 보기',
           p1Title: '끼인각 B (60°)', p2Title: '두 변 (8, 10)',
           parts: [
             { id: 0, name: `🟦 1단계: 왼쪽 60° 직각삼각형 △ABH (빗변 AB = 8)`, desc: `BH = 8 cos 60° = 4, 높이 AH = 8 sin 60° = 4√3!`, val: `BH=4, AH=4√3`, color: TCOL.cyan, ok: true },
@@ -525,28 +525,28 @@ window.addEventListener('DOMContentLoaded', function () {
         const isObtuse = sub === 'heightObtuse' || sub === 'std3060Mountain';
         return {
           badge: isObtuse
-            ? `탐구 6-B · 🌋 [내신 100% 출제] 둔각삼각형의 높이 h 구하기 — h = a / (tan x - tan y)`
-            : `탐구 6-A · ⛰️ [내신 100% 출제] 예각삼각형의 높이 h 구하기 — h = a / (tan x + tan y)`,
+            ? `탐구 6-B · 🌋 둔각삼각형의 높이 h 구하기 — h = a / (tan x - tan y)`
+            : `탐구 6-A · ⛰️ 예각삼각형의 높이 h 구하기 — h = a / (tan x + tan y)`,
           hint: isObtuse
             ? `밑변 $BC = a(10)$와 양 끝각이 주어졌을 때, <strong class="text-amber-300">높이를 h로 놓고 위쪽 각 x(60°), y(30°)를 이용하면</strong> 큰 밑변 <strong class="text-sky-300">BH = h tan 60° = √3h</strong>에서 작은 밑변 <strong class="text-pink-300">CH = h tan 30° = (√3/3)h</strong>를 뺀 값이 $a(10)$입니다!`
-            : `밑변 $BC = a(12)$와 양 끝각($45^\\circ, 60^\\circ$)이 주어졌을 때, 밑각 대신 <strong class="text-amber-300">높이 h를 기준으로 위쪽 여각 x(45°), y(30°)</strong>를 쓰면 분모에 루트가 안 생기고 <strong class="text-sky-300">BH = h tan x</strong>, <strong class="text-pink-300">CH = h tan y</strong>를 더해 단번에 풀립니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 BH ± CH = a 밑변 조립식 강조!',
+            : `밑변 $BC = a(12)$와 양 끝각($45^\\circ, 60^\\circ$)이 주어졌을 때, 밑각 대신 <strong class="text-amber-300">높이 h를 기준으로 위쪽 여각 x(45°), y(30°)</strong>를 쓰면 분모에 근호가 생기지 않고 <strong class="text-sky-300">BH = h tan x</strong>, <strong class="text-pink-300">CH = h tan y</strong>를 더해 단번에 풀립니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 BH ± CH = a 로 밑변 나타내기',
           p1Title: isObtuse ? '둔각 세트 (30°·60°)' : '예각 세트 (45°·60°)', p2Title: '밑변 길이 a',
           parts: [
             { id: 0, name: isObtuse ? `🟦 전체 긴 밑변: BH = h tan x (x = 90°-30° = 60°)` : `🟦 왼쪽 조각 밑변: BH = h tan x (x = 90°-45° = 45°)`, desc: isObtuse ? `∠B=30° 이므로 윗각 x=60° ➔ BH = √3 h!` : `∠B=45° 이므로 윗각 x=45° ➔ BH = h tan 45° = h!`, val: isObtuse ? `BH = √3 h` : `BH = h`, color: TCOL.cyan, ok: true },
             { id: 1, name: isObtuse ? `🩷 빼야 할 바깥 밑변: -CH = -h tan y (y = 90°-60° = 30°)` : `🩷 오른쪽 조각 밑변: +CH = +h tan y (y = 90°-60° = 30°)`, desc: isObtuse ? `바깥 외각이 60° 이므로 윗각 y=30° ➔ CH = (√3/3) h!` : `∠C=60° 이므로 윗각 y=30° ➔ CH = h tan 30° = (√3/3) h!`, val: isObtuse ? `-CH = -(√3/3)h` : `+CH = +(√3/3)h`, color: TCOL.pink, ok: !isObtuse },
-            { id: 2, name: isObtuse ? `🟨 밑변의 차 방정식: BH - CH = a ➔ h 도출!` : `🟨 밑변의 합 방정식: BH + CH = a ➔ h 도출!`, desc: isObtuse ? `h(tan 60° - tan 30°) = 10 ➔ h = 5√3!` : `h(tan 45° + tan 30°) = 12 ➔ h = 6(3 - √3)!`, val: isObtuse ? `h = a/(tan x-tan y)` : `h = a/(tan x+tan y)`, color: TCOL.gold, ok: true }
+            { id: 2, name: isObtuse ? `🟨 밑변의 차로 식 세우기: BH - CH = a ➔ h 구하기!` : `🟨 밑변의 합으로 식 세우기: BH + CH = a ➔ h 구하기!`, desc: isObtuse ? `h(tan 60° - tan 30°) = 10 ➔ h = 5√3!` : `h(tan 45° + tan 30°) = 12 ➔ h = 6(3 - √3)!`, val: isObtuse ? `h = a/(tan x-tan y)` : `h = a/(tan x+tan y)`, color: TCOL.gold, ok: true }
           ],
           totalRes: isObtuse
             ? `둔각 높이 공식: BH - CH = a  ⟺  h = a / (tan x - tan y)  [윗각 x, y 사용!]`
             : `예각 높이 공식: BH + CH = a  ⟺  h = a / (tan x + tan y)  [윗각 x, y 사용!]`,
-          rule: '높이 h 공식의 핵심: 밑각(B, C) 대신 “수선 AH가 만드는 위쪽 각(x = 90°-B, y = 90°-C)”의 탄젠트를 써라!',
+          rule: '높이 h를 구하는 방법: 밑각(B, C) 대신 “수선 AH가 만드는 위쪽 각(x = 90°-B, y = 90°-C)”의 탄젠트를 이용한다!',
           formulaHTML: isObtuse
             ? `• <strong>둔각일 때 (빼기)</strong>: ${tex(`\\overline{BC} = \\overline{BH} - \\overline{CH} = h\\tan x - h\\tan y = a \\implies \\mathbf{h = \\dfrac{a}{\\tan x - \\tan y}}`)}`
             : `• <strong>예각일 때 (더하기)</strong>: ${tex(`\\overline{BC} = \\overline{BH} + \\overline{CH} = h\\tan x + h\\tan y = a \\implies \\mathbf{h = \\dfrac{a}{\\tan x + \\tan y}}`)}`,
           notes: sub === 'std3060Mountain'
-            ? `• <strong>[(30° vs 60°) 산 높이 3초 암산 비법]</strong>: $\\angle B = 30^\\circ$이고 외각이 $60^\\circ$이면 $\\angle BAC = 60^\\circ - 30^\\circ = 30^\\circ$가 되어 <strong>$\\triangle ABC$ 자체가 $BC = AC = a$인 이등변삼각형</strong>입니다! 따라서 $AC = a$에서 바로 $h = a\\sin 60^\\circ = \\mathbf{\\dfrac{\\sqrt{3}}{2}a}$로 1초 만에 풀립니다!`
-            : `• 왜 밑각 대신 윗각($x, y$)을 쓸까요? 밑각을 쓰면 $BH = \\dfrac{h}{\\tan B}$처럼 번분수가 생기지만, <strong>높이 $h$를 밑변으로 보는 윗각 $x, y$를 쓰면 $BH = h\\tan x$로 깔끔한 일차식</strong>이 되기 때문입니다!`
+            ? `• <strong>[양 끝각이 30°, 60°일 때 산의 높이 구하는 요령]</strong>: $\\angle B = 30^\\circ$이고 외각이 $60^\\circ$이면 $\\angle BAC = 60^\\circ - 30^\\circ = 30^\\circ$가 되어 <strong>$\\triangle ABC$ 자체가 $BC = AC = a$인 이등변삼각형</strong>입니다! 따라서 $AC = a$에서 바로 $h = a\\sin 60^\\circ = \\mathbf{\\dfrac{\\sqrt{3}}{2}a}$로 구할 수 있습니다!`
+            : `• 왜 밑각 대신 윗각($x, y$)을 쓸까요? 밑각을 쓰면 $BH = \\dfrac{h}{\\tan B}$처럼 분모에 $\\tan B$가 있는 분수가 되지만, <strong>높이 $h$를 밑변으로 보는 윗각 $x, y$를 쓰면 $BH = h\\tan x$로 깔끔한 일차식</strong>이 되기 때문입니다!`
         };
       }
 
@@ -554,7 +554,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 7) {
         if (sub === 'angleBisectLen') {
           return {
-            badge: `탐구 7-E · 🔥 [킬러 응용] 넓이 분할(전체 S = S₁ + S₂)을 이용해 각의 이등분선 AD의 길이(x) 구하기!`,
+            badge: `탐구 7-E · 🔥 [킬러 응용] 넓이를 나누어(전체 S = S₁ + S₂) 각의 이등분선 AD의 길이(x) 구하기`,
             hint: `두 변 $AB=6, AC=4$와 끼인각 $\\angle A=60^\\circ$인 삼각형에서 각의 이등분선 $AD = x$를 그으면 $60^\\circ$가 <strong class="text-amber-300">30° + 30°</strong>로 나뉩니다! <strong class="text-emerald-300">(전체 넓이) = (왼쪽 넓이) + (오른쪽 넓이)</strong> 식을 세우면 $x$가 단번에 풀립니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 전체 삼각형으로 합치기' : '🎬 왼쪽 △ABD(30°) + 오른쪽 △ACD(30°) 분리 비교!',
             p1Title: '끼인각 60° (30°+30°)', p2Title: '두 변 (c=6, b=4)',
@@ -564,9 +564,9 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🩷 오른쪽 조각 △ACD 넓이 (두 변 x, 4와 끼인각 30°)`, desc: `S₂ = ½ × x × 4 × sin 30° = x ➔ 1.5x + x = 6√3 ➔ x = 12√3/5!`, val: `x = 12√3 / 5`, color: TCOL.pink, ok: true }
             ],
             totalRes: `전체 넓이(6√3) = S₁(1.5x) + S₂(x) = 2.5x  ➔  각이등분선 AD(x) = 12√3 / 5`,
-            rule: '내각의 이등분선 길이 구하기 = 무조건 [전체 넓이 S = 왼쪽 넓이 S₁ + 오른쪽 넓이 S₂] 방정식!',
+            rule: '각의 이등분선의 길이 구하기: [전체 넓이 S = 왼쪽 넓이 S₁ + 오른쪽 넓이 S₂]로 식을 세운다!',
             formulaHTML: `• ${tex(`\\dfrac{1}{2}\\cdot 6\\cdot 4\\sin 60^\\circ = \\dfrac{1}{2}\\cdot 6\\cdot x\\sin 30^\\circ + \\dfrac{1}{2}\\cdot x\\cdot 4\\sin 30^\\circ \\implies 6\\sqrt{3} = \\dfrac{5}{2}x \\implies \\mathbf{x = \\dfrac{12\\sqrt{3}}{5}}`)}`,
-            notes: `• 만약 끼인각이 $120^\\circ$이고 각이등분선을 그었다면 $60^\\circ + 60^\\circ$로 나뉘어 $\\dfrac{bc}{b+c}$ (두 변의 곱 $\\div$ 두 변의 합!)으로 1초 만에 구해집니다!`
+            notes: `• 만약 끼인각이 $120^\\circ$이고 각이등분선을 그었다면 $60^\\circ + 60^\\circ$로 나뉘어 $\\dfrac{bc}{b+c}$ (두 변의 곱 $\\div$ 두 변의 합!)으로 구해집니다!`
           };
         }
         if (sub === 'equilFormula' || sub === 'regPolygonArea') {
@@ -574,7 +574,7 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: isPoly
               ? `탐구 7-D · 반지름 R인 원에 내접하는 정다각형(정육각형·정팔각형·정십이각형)의 넓이`
-              : `탐구 7-C · 한 변의 길이가 a(${L})인 정삼각형의 높이(√3/2 a)와 넓이(√3/4 a²) 공식 유도`,
+              : `탐구 7-C · 한 변의 길이가 a(${L})인 정삼각형의 높이(√3/2 a)와 넓이(√3/4 a²) 구하기`,
             hint: isPoly
               ? `반지름이 $R=6$인 원에 내접하는 정$n$각형은 중심 $O$를 기준으로 <strong class="text-amber-300">두 변이 R, R이고 중심각이 360°÷n 인 합동 이등변삼각형 n개</strong>로 쪼개어 구합니다!`
               : `한 변의 길이가 $a=${L}$이고 끼인각이 $60^\\circ$인 정삼각형의 넓이는 <strong class="text-amber-300">S = ½ × a × a × sin 60° = (√3/4)a²</strong>입니다!`,
@@ -585,7 +585,7 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 1, name: isPoly ? `🟨 이등변삼각형 1개 넓이 × n개!` : `🟨 정삼각형의 넓이 S = ½ a² sin 60° = (√3 / 4)a²`, desc: isPoly ? `n × (½ × R × R × sin(360°/n))` : `a=${L} 일 때 넓이 S = ${(L*L)/4}√3!`, val: isPoly ? `n × ½R²sinθ` : `S = ${(L * L) / 4}√3`, color: TCOL.gold, ok: true }
             ],
             totalRes: isPoly ? `정n각형 넓이 = n × (½ R² sin(360°/n))` : `한 변 a=${L} 정삼각형: 높이 h = ${L/2}√3, 넓이 S = ${(L*L)/4}√3`,
-            rule: '정삼각형 2대 공식(필수 암기!): 높이 h = (√3/2)a   |   넓이 S = (√3/4)a²',
+            rule: '정삼각형의 높이와 넓이: 높이 h = (√3/2)a   |   넓이 S = (√3/4)a²',
             formulaHTML: isPoly
               ? `• <strong>정팔각형($n=8, \\theta=45^\\circ$)</strong>: ${tex(`8 \\times \\left(\\dfrac{1}{2} R^2 \\sin 45^\\circ\\right)`)}<br/>• <strong>정십이각형($n=12, \\theta=30^\\circ$)</strong>: ${tex(`12 \\times \\left(\\dfrac{1}{2} R^2 \\sin 30^\\circ\\right)`)}`
               : `• ${tex(`h = a\\sin 60^\\circ = \\mathbf{\\dfrac{\\sqrt{3}}{2}a}, \\qquad S = \\dfrac{1}{2}\\cdot a\\cdot \\dfrac{\\sqrt{3}}{2}a = \\mathbf{\\dfrac{\\sqrt{3}}{4}a^2}`)}`,
@@ -601,7 +601,7 @@ window.addEventListener('DOMContentLoaded', function () {
             : `탐구 7-A · 🟩 예각삼각형(∠B = ${effDeg}°)의 넓이 공식 — S = ½ ac sin B`,
           hint: isObt
             ? `끼인각이 $120^\\circ$ 둔각일 때는 꼭짓점 $A$에서 내린 수선의 발 $H$가 밑변 바깥 연장선에 떨어집니다! 따라서 <strong class="text-pink-300">높이 h = c sin(180°-120°) = c sin 60°</strong>가 되어 <strong class="text-amber-300">S = ½ ac sin(180°-B)</strong>입니다!`
-            : `삼각형의 넓이는 $\\dfrac{1}{2}\\times(\\text{밑변 } a)\\times(\\text{높이 } h)$인데, 직각삼각형에서 <strong class="text-pink-300">높이 h = c sin B</strong>이므로 이를 대입하면 <strong class="text-amber-300">S = ½ ac sin B</strong>가 탄생합니다!`,
+            : `삼각형의 넓이는 $\\dfrac{1}{2}\\times(\\text{밑변 } a)\\times(\\text{높이 } h)$인데, 직각삼각형에서 <strong class="text-pink-300">높이 h = c sin B</strong>이므로 넓이 식의 $h$에 $c\\sin B$를 대입하면 <strong class="text-amber-300">S = ½ ac sin B</strong>가 탄생합니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 높이 h = c sin B 수선 강조!',
           p1Title: '끼인각 B 선택', p2Title: '두 변 (c=8, a=10)',
           parts: [
@@ -612,7 +612,7 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: isObt ? `둔각(120°) 넓이 S = ½ × 8 × 10 × sin(180°-120°) = 20√3 cm²` : `예각(${effDeg}°) 넓이 S = ½ × 8 × 10 × sin ${effDeg}° = ${(40*Math.sin((effDeg*Math.PI)/180)).toFixed(1)} cm²`,
           rule: '삼각형 넓이 = ½ × (이웃한 두 변의 곱) × sin(끼인각 또는 180°-둔각)!',
           formulaHTML: `• <strong>예각($B < 90^\\circ$)</strong>: ${tex(`S = \\dfrac{1}{2}ac\\sin B`)}<br/>• <strong>둔각($B > 90^\\circ$)</strong>: ${tex(`S = \\dfrac{1}{2}ac\\sin(180^\\circ - B)`)} (외각의 사인값 사용!)`,
-          notes: `• <strong>[둔각 빠른 변환]</strong>: $120^\\circ$가 나오면 $\\sin 60^\\circ$, $135^\\circ$가 나오면 $\\sin 45^\\circ$, $150^\\circ$가 나오면 $\\sin 30^\\circ$를 그대로 곱하면 됩니다!`
+          notes: `• <strong>[둔각일 때의 사인의 값]</strong>: $120^\\circ$가 나오면 $\\sin 60^\\circ$, $135^\\circ$가 나오면 $\\sin 45^\\circ$, $150^\\circ$가 나오면 $\\sin 30^\\circ$를 그대로 곱하면 됩니다!`
         };
       }
 
@@ -620,13 +620,13 @@ window.addEventListener('DOMContentLoaded', function () {
       const isDiag = sub === 'quadUnfold2x' || sub === 'quadDiagHalf';
       return {
         badge: isDiag
-          ? `탐구 8 · 🎬 [핵심 증명] 두 대각선(p, q)과 교각(θ)이 주어진 사각형 넓이 S = ½ pq sin θ (왜 ½이 붙을까?)`
+          ? `탐구 8 · 🎬 [핵심] 두 대각선의 길이(p, q)와 두 대각선이 이루는 각 θ가 주어진 사각형의 넓이 S = ½ pq sin θ (왜 ½이 붙을까?)`
           : `탐구 8 · 평행사변형과 마름모의 넓이 공식 — S = ab sin θ (½이 붙지 않는다!)`,
         hint: isDiag
           ? `슬라이더를 오른쪽으로 밀어 <strong class="text-amber-300">사각형의 네 꼭짓점을 지나고 두 대각선(p, q)에 평행한 바깥 평행사변형</strong>을 펼쳐보세요! 바깥 큰 평행사변형 넓이(<strong class="text-sky-300">pq sin θ</strong>)의 정확히 <strong class="text-pink-300">절반(½)</strong>이 원래 사각형의 넓이입니다!`
           : `평행사변형 $ABCD$를 대각선 $AC$로 자르면 <strong class="text-amber-300">합동인 삼각형 2개(△ABC ≡ △CDA)</strong>가 됩니다! 따라서 삼각형 넓이($\\frac{1}{2}ab\\sin\\theta$)에 2배를 하여 <strong class="text-emerald-300">½이 사라진 S = ab sin θ</strong>가 됩니다!`,
         actionTxt: state.fold > 0.5 ? '🎬 원래 사각형으로 접기' : isDiag ? '🎬 대각선 평행선 펼쳐 2배 큰 평행사변형 만들기!' : '🎬 대각선으로 잘라 합동 삼각형 2개 확인!',
-        p1Title: '교각 / 끼인각 θ', p2Title: isDiag ? '대각선 (p=8, q=10)' : '이웃한 변 (a=6, b=8)',
+        p1Title: '이루는 각 θ', p2Title: isDiag ? '대각선 (p=8, q=10)' : '이웃한 변 (a=6, b=8)',
         parts: [
           { id: 0, name: isDiag ? `🟦 첫 번째 대각선의 길이: AC = p (8 cm)` : `🟦 아래쪽 삼각형 △ABC 넓이 = ½ ab sin θ`, desc: isDiag ? `바깥 큰 평행사변형의 한 변의 길이와 같음!` : `전체 평행사변형의 절반(½)`, val: isDiag ? `대각선 p = 8` : `½ ab sin θ`, color: TCOL.cyan, ok: true },
           { id: 1, name: isDiag ? `🩷 두 번째 대각선의 길이: BD = q (10 cm)` : `🩷 위쪽 합동 삼각형 △CDA 넓이 = ½ ab sin θ`, desc: isDiag ? `바깥 큰 평행사변형의 다른 한 변의 길이와 같음!` : `두 삼각형을 합치면 ½ × 2 = 1!`, val: isDiag ? `대각선 q = 10` : `+½ ab sin θ`, color: TCOL.pink, ok: true },
@@ -635,11 +635,11 @@ window.addEventListener('DOMContentLoaded', function () {
         totalRes: isDiag
           ? `일반 사각형 대각선 넓이: S = ½ pq sin θ (바깥 평행사변형 pq sin θ 의 절반!)`
           : `평행사변형 넓이: S = ab sin θ (합동 삼각형 2개의 합이므로 ½ 없음!)`,
-        rule: '½ 유무 완벽 구분: 평행사변형 두 변(ab sin θ)은 ½ 없고, 사각형 두 대각선(½ pq sin θ)은 ½ 있다!',
+        rule: '½이 붙는 경우와 안 붙는 경우: 평행사변형(이웃한 두 변)은 ab sin θ로 ½이 없고, 사각형(두 대각선)은 ½ pq sin θ로 ½이 있다!',
         formulaHTML: isDiag
           ? `• <strong>대각선 넓이 증명</strong>: 바깥 큰 평행사변형 넓이 $= pq\\sin\\theta \\implies$ 안쪽 사각형 넓이 ${tex(`\\mathbf{S = \\dfrac{1}{2}pq\\sin\\theta}`)}!`
           : `• <strong>평행사변형 넓이 증명</strong>: ${tex(`S = 2 \\times \\left(\\dfrac{1}{2}ab\\sin\\theta\\right) = \\mathbf{ab\\sin\\theta}`)}`,
-        notes: `• <strong>[등변사다리꼴 꿀팁]</strong>: 등변사다리꼴은 두 대각선의 길이가 같습니다($p = q$)! 따라서 한 대각선 길이 $p$와 교각 $\\theta$만 주면 $\\mathbf{S = \\dfrac{1}{2}p^2\\sin\\theta}$로 바로 구합니다.`
+        notes: `• <strong>[등변사다리꼴]</strong>: 등변사다리꼴은 두 대각선의 길이가 같습니다($p = q$)! 따라서 한 대각선의 길이 $p$와 두 대각선이 이루는 각 $\\theta$만 알면 $\\mathbf{S = \\dfrac{1}{2}p^2\\sin\\theta}$로 바로 구합니다.`
       };
     }
 
@@ -677,14 +677,14 @@ window.addEventListener('DOMContentLoaded', function () {
         pangle(G, A, E, TCOL.pink, 32, 1, 'x');
 
         pdot(A, 'A', TCOL.green, null, { x: -18, y: -8 });
-        pdot(E, 'E(90° 직각!)', TCOL.gold, null, { x: -35, y: 18 });
+        pdot(E, 'E(90°)', TCOL.gold, null, { x: -35, y: 18 });
         pdot(G, 'G(기준각 x)', TCOL.pink, null, { x: 12, y: 6 });
 
         ptag((A.x + E.x) / 2 - 36, (A.y + E.y) / 2, '높이 AE = 1', TCOL.green);
         ptag((E.x + G.x) / 2 + 10, (E.y + G.y) / 2 + 20, '밑면 대각선 EG = √2', TCOL.cyan);
         ptag((A.x + G.x) / 2 + 15, (A.y + G.y) / 2 - 12, '입체 대각선 AG = √3', TCOL.gold, 14);
 
-        drawMiniOverlayBox(rect, '🧊 정육면체 대각선 황금비', [
+        drawMiniOverlayBox(rect, '🧊 정육면체의 대각선과 직각삼각형', [
           { txt: '세로 모서리(높이) = 1', col: '#34d399' },
           { txt: '밑면 대각선(밑변) = √2', col: '#38bdf8' },
           { txt: '입체 대각선(빗변) = √3', col: '#fbbf24' },
@@ -724,7 +724,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ptag((A.x + C.x) / 2 + 32, (A.y + C.y) / 2 - 6, 'AC = 8', TCOL.green, 14);
         ptag(cx, B.y + 38, '빗변 BC = 10 (6 : 8 : 10 = 3 : 4 : 5)', TCOL.gold, 14);
 
-        drawBottomTapeBanner(rect, '닮음 각 복제(x = ∠C, y = ∠B): 큰 △ABC(6,8,10)에서 바로 sin x = sin C = 6/10 = 3/5, cos x = 4/5!');
+        drawBottomTapeBanner(rect, '닮음에 의해 x = ∠C, y = ∠B: 큰 △ABC(6,8,10)에서 바로 sin x = sin C = 6/10 = 3/5, cos x = 4/5!');
         return;
       }
 
@@ -846,7 +846,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ptag((H.x + C.x) / 2, C.y + 22, 'CH = 6√3', TCOL.gold, 13.5);
         ptag((A.x + C.x) / 2 + 28, (A.y + C.y) / 2 - 8, 'AC = 12 (2배!)', TCOL.gold, 14);
 
-        drawBottomTapeBanner(rect, '징검다리 특수각 연쇄: 왼쪽 45°(1:1:√2)에서 공통변 AH=6 구하기 ➔ 오른쪽 30°(1:√3:2)에서 AC=12, CH=6√3!');
+        drawBottomTapeBanner(rect, '공통변 이용: 왼쪽 45°(1:1:√2)에서 공통변 AH=6 구하기 ➔ 오른쪽 30°(1:√3:2)에서 AC=12, CH=6√3!');
         return;
       }
 
@@ -906,7 +906,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ptag((B.x + D.x) / 2, B.y + 22, 'BD = AD = 2', TCOL.pink, 13.5);
         ptag((A.x + D.x) / 2 - 12, (A.y + D.y) / 2 - 10, 'AD = 2', TCOL.gold, 13.5);
 
-        drawBottomTapeBanner(rect, '15° 특수비 유도: 전체 밑변 BC = 2 + √3, 높이 AC = 1  ➔  tan 15° = 1 / (2+√3) = 2 - √3!', [
+        drawBottomTapeBanner(rect, '15°의 삼각비 구하기: 전체 밑변 BC = 2 + √3, 높이 AC = 1  ➔  tan 15° = 1 / (2+√3) = 2 - √3!', [
           { text: '이등변 연장 BD = 2', weight: 2 / 3.732, color: TCOL.pink },
           { text: '30° 밑변 DC = √3', weight: 1.732 / 3.732, color: TCOL.cyan }
         ]);
@@ -946,13 +946,13 @@ window.addEventListener('DOMContentLoaded', function () {
       ptag(M.x + 54, (A.y + M.y) / 2, '60° 맞은편(높이) = √3', TCOL.green, 14);
       ptag((A.x + B.x) / 2 - 38, (A.y + B.y) / 2 - 8, '90° 맞은편(빗변) = ②', TCOL.gold, 14.5);
 
-      drawMiniOverlayBox(rect, '📋 특수각(30°·45°·60°) 삼각비 표', [
+      drawMiniOverlayBox(rect, '📋 30°·45°·60°의 삼각비 표', [
         { txt: 'sin : 1/2 (30°) · √2/2 (45°) · √3/2 (60°)', col: '#f472b6' },
         { txt: 'cos : √3/2 (30°) · √2/2 (45°) · 1/2 (60°)', col: '#38bdf8' },
         { txt: 'tan : √3/3 (30°) ·  1   (45°) ·  √3  (60°)', col: '#fbbf24' }
       ]);
 
-      drawBottomTapeBanner(rect, '정삼각형(한 변 2)을 반 자른 30°-60°-90° 직각삼각형 비: ①(30° 대변) : √3(60° 대변) : ②(빗변)');
+      drawBottomTapeBanner(rect, '정삼각형(한 변 2)을 반 자른 30°-60°-90° 직각삼각형의 변의 길이의 비: ①(30° 대변) : √3(60° 대변) : ②(빗변)');
     }
 
     // =========================================================================
@@ -1003,7 +1003,7 @@ window.addEventListener('DOMContentLoaded', function () {
       pdot(B, 'B', TCOL.cyan, null, { x: -6, y: 20 });
       pdot(C, 'C(1, 0)', TCOL.white, null, { x: -10, y: 20 });
       pdot(topY, '(0, 1)', TCOL.white, null, { x: -38, y: 4 });
-      pdot(A, 'A(드래그!)', TCOL.pink, null, { x: -32, y: -12 });
+      pdot(A, 'A(끌어서 움직이기)', TCOL.pink, null, { x: -32, y: -12 });
       if (D.y > cy - 220 * s) pdot(D, 'D', TCOL.gold, null, { x: 10, y: 4 });
 
       const sVal = Math.sin(rad).toFixed(3), cVal = Math.cos(rad).toFixed(3), tVal = Math.tan(rad).toFixed(3);
@@ -1190,7 +1190,7 @@ window.addEventListener('DOMContentLoaded', function () {
           pline(C, badH, TCOL.red, 2.8, [4, 4]);
           // [표시 보강] 잘못 내린 수선과 AB의 직각 표시
           pright(badH, C, A, 11, TCOL.red);
-          ptag((C.x + badH.x) / 2, (C.y + badH.y) / 2, '❌ 60°를 쪼개면 망함!', TCOL.red, 12.5);
+          ptag((C.x + badH.x) / 2, (C.y + badH.y) / 2, '❌ 60°를 나누면 풀기 어려움', TCOL.red, 12.5);
         }
 
         pdot(A, 'A(75° = 45°+30°!)', TCOL.gold, null, { x: -45, y: -14 });
@@ -1202,7 +1202,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ptag(H.x - 36, (A.y + H.y) / 2 + 10, 'AH = 3√3', TCOL.gold, 13.5);
         ptag((A.x + B.x) / 2 - 32, (A.y + B.y) / 2, 'AB = 3√6', TCOL.pink, 14);
 
-        drawBottomTapeBanner(rect, '특수각 보존 법칙: 45°와 60°는 살려두고 비특수각 꼭짓점 A(75°)에서 수선 AH를 내려 45°+30°로 쪼갠다!');
+        drawBottomTapeBanner(rect, '45°와 60°인 각은 그대로 두고, 꼭짓점 A(75°)에서 수선 AH를 내려 75°를 45°+30°로 나눈다!');
         return;
       }
 
@@ -1276,7 +1276,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ptag((B.x + H.x) / 2, B.y - 10, 'BH = h tan x (h)', TCOL.cyan, 13.5);
         ptag((H.x + C.x) / 2 + 8, C.y - 10, 'CH = h tan y', TCOL.pink, 13.5);
 
-        drawMiniOverlayBox(rect, '⛰️ 예각 높이 h 3단계 유도', [
+        drawMiniOverlayBox(rect, '⛰️ 예각삼각형의 높이 h 구하는 3단계', [
           { txt: '① 윗각 x = 90°-B, y = 90°-C', col: '#fef08a' },
           { txt: '② BH = h tan x, CH = h tan y', col: '#38bdf8' },
           { txt: '③ BH + CH = h(tan x + tan y) = a', col: '#f472b6' },
@@ -1321,7 +1321,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ptag((B.x + C.x) / 2, B.y - 10, 'BC = a (BH - CH)', TCOL.cyan, 13.5);
         ptag((C.x + H.x) / 2, C.y - 10, 'CH = h tan y', TCOL.pink, 13);
 
-        drawMiniOverlayBox(rect, '🌋 둔각 높이 h 3단계 유도', [
+        drawMiniOverlayBox(rect, '🌋 둔각삼각형의 높이 h 구하는 3단계', [
           { txt: '① 큰 윗각 x=60°, 작은 윗각 y=30°', col: '#fef08a' },
           { txt: '② 전체 BH = h tan x, 바깥 CH = h tan y', col: '#38bdf8' },
           { txt: '③ BH - CH = h(tan x - tan y) = a', col: '#f472b6' },
@@ -1543,8 +1543,8 @@ window.addEventListener('DOMContentLoaded', function () {
       [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], TCOL.white, O));
       pdot(O, 'O', TCOL.gold, null, { x: 8, y: -10 });
 
-      drawMiniOverlayBox(rect, '🎬 왜 대각선 넓이는 ½이 붙을까?', [
-        { txt: '① 대각선 평행선으로 바깥 □EFGH 작도', col: '#fef08a' },
+      drawMiniOverlayBox(rect, '🎬 왜 사각형의 넓이에 ½이 붙을까?', [
+        { txt: '① 두 대각선에 평행한 선으로 바깥 □EFGH 그리기', col: '#fef08a' },
         { txt: '② 바깥 평행사변형 넓이 = pq sin θ', col: '#38bdf8' },
         { txt: '③ 4개 조각마다 안쪽이 딱 절반(½)!', col: '#f472b6' },
         { txt: '∴ 사각형 넓이 S = ½ pq sin θ', col: '#34d399' }
@@ -1560,14 +1560,14 @@ window.addEventListener('DOMContentLoaded', function () {
      2.0 셸 연결 (새로 작성한 부분)
      ====================================================================== */
   const RENDER = { 1: renderMode1TrigDef, 2: renderMode2SpecialAngles, 3: renderMode3UnitCircle, 4: renderMode4RightLengths, 5: renderMode5GeneralLengths, 6: renderMode6TriangleHeight, 7: renderMode7TriangleArea, 8: renderMode8QuadArea };
-  const TABS = ['삼각비 뜻 & 기준각 전환', '특수각(30°·45°·60°) & 기울기', '반지름 1 사분원 & 대소비교', '직각삼각형 변 & 실생활 측량', '일반삼각형 변 (특수각 보존!)', '삼각형 높이 h (tan x ± tan y)', '삼각형 넓이 & 각이등분선', '평행사변형 & 대각선 넓이'];
-  const SHORT = ['삼각비 뜻', '특수각', '사분원', '직각삼각형 변', '일반삼각형 변', '삼각형 높이', '삼각형 넓이', '사각형 넓이'];
+  const TABS = ['삼각비 뜻 & 기준각 전환', '30°·45°·60°의 삼각비 & 기울기', '반지름이 1인 사분원 & 크기 비교', '직각삼각형의 변 & 실생활 측량', '삼각형의 변의 길이 (수선 긋기)', '삼각형 높이 h (tan x ± tan y)', '삼각형 넓이 & 각이등분선', '평행사변형 & 대각선 넓이'];
+  const SHORT = ['삼각비 뜻', '30°·45°·60°', '사분원', '직각삼각형의 변', '삼각형의 변', '삼각형 높이', '삼각형 넓이', '사각형 넓이'];
   const QUESTIONS = [
     '기준각이 바뀌면, 같은 삼각형에서 높이(대변)와 밑변은 어떻게 바뀔까?',
     '30°·45°·60°의 삼각비는 어떤 도형을 반으로 자를 때 생겨날까?',
     '반지름이 1이면 sin·cos·tan의 값이 어떤 선분의 길이가 될까?',
     '빗변이나 밑변 하나와 각 하나만 알면 나머지 변을 어떻게 구할까?',
-    '특수각을 살리려면 수선을 어느 꼭짓점에서 내려야 할까?',
+    '30°·45°·60°인 각을 그대로 두려면 수선을 어느 꼭짓점에서 내려야 할까?',
     '밑변과 양 끝각만 알 때, 높이 h는 어떻게 구할까?',
     '높이를 그리지 않고도 두 변과 끼인각으로 넓이를 구할 수 있을까?',
     '사각형의 넓이에는 왜 ½이 붙기도 하고 안 붙기도 할까?'
@@ -1592,7 +1592,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id, title: it.label, short: it.label, reviewTab: true, autoFit: true,
       question: QUESTIONS[m - 1],
-      notesTitle: '시험장 오답 함정 & 3초 직관',
+      notesTitle: '오답 함정과 풀이 요령',
       enter: (s) => {
         // 원본 setMode / setSubType 의 초기화 규칙 그대로
         s.fold = 0;
