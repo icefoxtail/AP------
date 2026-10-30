@@ -288,7 +288,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD를 보기 ㄱ~ㄹ의 조건에 따라 2×2로 나타낸 네 그림이다. ㄱ은 AB=BC=5cm, CD=DA=7cm를 적은 사각형, ㄴ은 두 대각선과 ∠ABD=∠BDC, ∠ACB=∠DAC를 같은 호로 표시한 그림, ㄷ은 AD=BC 눈금과 ∠A, ∠B를 표시한 그림, ㄹ은 AD∥BC 표시와 대각선의 교점 O에서 ∠OAD=∠ODA를 표시한 그림이다.",
+    "solutionImageCaption": "보기 ㄱ~ㄹ의 조건을 각각 그림으로 나타냈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -392,7 +396,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4cm인 원 O 안에 꼭짓점 B가 원 위에 있는 직사각형 OABC가 있고, 두 대각선 OB와 AC의 절반 위에 같은 길이 눈금이 하나씩 있으며, 원의 반지름 하나(O에서 원 위 왼쪽 점까지)에 4cm가 적혀 있다.",
+    "solutionImageCaption": "직사각형의 두 대각선 OB와 AC는 길이가 같고 OB는 원의 반지름이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,

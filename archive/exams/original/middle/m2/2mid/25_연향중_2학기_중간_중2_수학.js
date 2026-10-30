@@ -30,7 +30,11 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원점 O와 y축의 눈금 2, 4가 있고, 점 (4,0), (4,2), (4,4)를 지나는 세로 직선 x=4가 식 라벨과 함께 그려져 있다.",
+    "solutionImageCaption": "방정식 x=4의 해는 x좌표가 4인 점 (4,y) 전체이므로 점 (4,0), (4,2), (4,4)가 모두 직선 x=4 위에 놓인다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
