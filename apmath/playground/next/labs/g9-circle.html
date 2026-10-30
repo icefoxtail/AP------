@@ -141,7 +141,7 @@ window.addEventListener('DOMContentLoaded', function () {
        원본 위치를 우선하고 겹치면 가까운 빈자리로 옮깁니다. 긴 이름은 '(' 앞뒤 두 줄로 나눕니다.
      ====================================================================== */
   let BOARD = null;
-  const PL = { pass: 2, obst: [], placed: [] }; // pass 1: 점 수집 / pass 2: 그리기. obst=점 상자, placed=이미 놓은 글자 상자(화면 좌표)
+  const PL = { pass: 2, obst: [], placed: [], segs: [], arcs: [] }; // pass 1: 점 수집 / pass 2: 그리기. obst=점 상자, placed=이미 놓은 글자 상자(화면 좌표), segs=[표시 보강] 그려질 선분(각 값 글자가 선 위에 놓이지 않게)
   const partOf = (p) => (p == null || p < 0 ? undefined : p);
   const dashOf = (d) => (Array.isArray(d) && d.length ? d : null);
   // 그림 안 글자: 원본의 ➔ ⭕ ❌ 는 글꼴에 따라 깨질 수 있어 → ○ × 로(국내 교과서 표기), 그 밖의 이모지는 뗍니다.
@@ -188,11 +188,11 @@ window.addEventListener('DOMContentLoaded', function () {
     BOARD.arc(center, r, (startDeg * Math.PI) / 180, (endDeg * Math.PI) / 180, { color, width, ccw, glow: true, part: partOf(partIdx) });
   }
   function cpoly(pts, fill = 'rgba(52,211,153,0.18)', stroke = '#34d399', width = 2.8, partIdx = -1) {
-    if (PL.pass === 1) return;
+    if (PL.pass === 1) { if (stroke) pts.forEach((p, i) => segNote(p, pts[(i + 1) % pts.length])); return; } // [표시 보강] 변도 기록
     BOARD.poly(pts, { fill: fill || null, color: stroke || null, stroke: !!stroke, width, part: partOf(partIdx) });
   }
   function cline(a, b, color = '#fbbf24', width = 2.5, dash = [], glow = false, partIdx = -1) {
-    if (PL.pass === 1) return;
+    if (PL.pass === 1) { segNote(a, b); return; } // [표시 보강] 선분 기록
     BOARD.seg(a, b, { color, width, dash: dashOf(dash), glow, part: partOf(partIdx) });
   }
   /** 점과 이름. 원본의 위치 규칙(중심 반대쪽 refCenter / 직접 오프셋 customOff)을 첫 후보로 삼고, 겹치면 빈자리로 옮깁니다. */
@@ -264,30 +264,186 @@ window.addEventListener('DOMContentLoaded', function () {
     if (PL.pass === 1 || !lensOK('all', 'angles')) return;
     BOARD.right(v, p1, p2, { size, color: col });
   }
-  /** 각 표시와 이름. 이름은 원본 위치(호 바깥 14px, 각의 이등분선 위)를 첫 후보로 삼고 겹치면 옮깁니다. */
-  function cangle(v, p1, p2, col = '#fbbf24', r = 24, rings = 1, label = '') {
+  /* [표시 보강] 각 표시용 도우미 ------------------------------------------------ */
+  function segNote(a, b) { PL.segs.push({ a: BOARD.toS(a), b: BOARD.toS(b) }); } // 1회차에 그려질 선분(화면 좌표)을 모읍니다
+  const segHitsRect = (s, r) => { // 선분이 글자 상자(1px 여유)를 지나는가 (Liang–Barsky)
+    const x0 = r.x0 - 1, x1 = r.x1 + 1, y0 = r.y0 - 1, y1 = r.y1 + 1, dx = s.b.x - s.a.x, dy = s.b.y - s.a.y;
+    const p = [-dx, dx, -dy, dy], q = [s.a.x - x0, x1 - s.a.x, s.a.y - y0, y1 - s.a.y];
+    let u0 = 0, u1 = 1;
+    for (let i = 0; i < 4; i++) {
+      if (p[i] === 0) { if (q[i] < 0) return false; continue; }
+      const u = q[i] / p[i];
+      if (p[i] < 0) { if (u > u1) return false; if (u > u0) u0 = u; } else { if (u < u0) return false; if (u < u1) u1 = u; }
+    }
+    return true;
+  };
+  /** 선분 a→b 위 f 지점(0~1)에 같은 길이 눈금. 길이 이름표가 가운데를 덮을 때 비껴서 표시합니다. */
+  function cticksAt(a, b, f, n = 1, col = '#fbbf24', size = 7.5) {
+    if (PL.pass === 1 || !lensOK('all', 'sides')) return;
+    BOARD.ticks(f <= 0.5 ? a : clerp(a, b, 2 * f - 1), f <= 0.5 ? clerp(a, b, 2 * f) : b, { count: n, color: col, size });
+  }
+  /** 두 변 사이의 각도(°) — 현재 점에서 바로 계산(고정 숫자 대신) */
+  const cdeg = (v, p, q) => {
+    const a = Math.atan2(p.y - v.y, p.x - v.x), b = Math.atan2(q.y - v.y, q.x - v.x);
+    let d = Math.abs(a - b) % (Math.PI * 2);
+    if (d > Math.PI) d = Math.PI * 2 - d;
+    return (d * 180) / Math.PI;
+  };
+  /** 각 표시와 값.
+   *  [표시 보강] 값(label)은 호의 부채꼴 '안쪽'에 놓고(들어갈 만큼 호를 키움), 못 들어가면 호 바로 바깥에 둡니다.
+   *  '∠A=80°'·'x=52°'처럼 '='이 있거나 '45° 불변!'·'180°(지름)'처럼 값 뒤에 설명이 붙으면 값만 안쪽에, 나머지(이름·설명)는 바깥에 둡니다
+   *  (꼭짓점 이름 ∠A 는 점 이름표가 이미 있어 생략). note 를 주면 바깥 글자를 직접 정합니다. reflex=true 면 반대쪽(180° 넘는) 각.
+   *  선·점·다른 이름표를 피해 자리를 고릅니다. 같은 크기의 각은 같은 색·같은 호 개수로 불러 주세요. */
+  function cangle(v, p1, p2, col = '#fbbf24', r = 24, rings = 1, label = '', note = '', reflex = false) {
     if (PL.pass === 1 || !lensOK('all', 'angles')) return;
-    const B = BOARD;
-    B.angle(v, p1, p2, { color: col, r, rings, size: 12 });
-    if (B.thumb) return;
-    const str = cv(label);
-    if (!str) return;
+    const B = BOARD, TAU = Math.PI * 2;
     const S = B.toS(v), P1 = B.toS(p1), P2 = B.toS(p2);
     const t1 = Math.atan2(P1.y - S.y, P1.x - S.x), t2 = Math.atan2(P2.y - S.y, P2.x - S.x);
-    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, mid = t1 + d / 2;
-    const size = tsz(12), w = tw(str, size, 800), h = size * 1.15;
-    let first = null, pick = null;
-    search: for (const dr of [0, 12, 24, 38]) {
-      for (const da of [0, 0.4, -0.4, 0.8, -0.8]) {
-        const x = S.x + Math.cos(mid + da) * (r + 14 + dr), y = S.y + Math.sin(mid + da) * (r + 14 + dr);
-        const cand = { x, y, rect: { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 } };
-        if (!first) first = cand;
-        if (okSpot(cand.rect)) { pick = cand; break search; }
+    let d = ((t2 - t1 + Math.PI * 3) % TAU) - Math.PI;
+    if (reflex) d = d > 0 ? d - TAU : d + TAU;
+    const sg = d < 0 ? -1 : 1, ad = Math.abs(d), mid = t1 + d / 2;
+    const arcs = (rr) => {
+      if (!reflex) { B.angle(v, p1, p2, { color: col, r: rr, rings, size: 12 }); return; }
+      const c = B.ctx, k = B.thumb ? 0.7 : 1, q0 = rr * k;
+      c.save();
+      c.beginPath(); c.moveTo(S.x, S.y); c.arc(S.x, S.y, q0, t1, t1 + d, d < 0); c.closePath();
+      c.fillStyle = B.color(col, 0.15); c.fill();
+      c.strokeStyle = B.color(col); c.lineWidth = 2 * B.lw; c.setLineDash([]);
+      for (let i = 0; i < rings; i++) { const q = q0 - i * 4.5; if (q > 4) { c.beginPath(); c.arc(S.x, S.y, q, t1, t1 + d, d < 0); c.stroke(); } }
+      c.restore();
+    };
+    let str = cv(label), outer = cv(note);
+    if (B.thumb || (!str && !outer)) { arcs(r); return; }
+    const isSym = (t) => /^[•×○]$/.test(t), sym = isSym(str), fz = 1; // 기호(•×○)는 글자 대신 일정한 크기로 직접 그림
+    const size = tsz(12), h = sym ? 16 : size * 1.15, ringPad = 4.5 * (rings - 1);
+    const wOf = (t, sz) => (isSym(t) ? 16 : tw(t, sz, 800) + 3);
+    const drawSym = (ch, x, y) => {
+      const c = B.ctx, q = 4 * B.lw;
+      c.save();
+      c.setLineDash([]); c.shadowBlur = 0; c.lineCap = 'round'; c.lineWidth = 2.2 * B.lw;
+      c.fillStyle = B.colors.halo; c.beginPath(); c.arc(x, y, q + 3.5, 0, TAU); c.fill(); // 선 위에서도 보이도록 바탕 원
+      c.strokeStyle = B.color(col); c.fillStyle = B.color(col);
+      c.beginPath();
+      if (ch === '•') { c.arc(x, y, q * 0.95, 0, TAU); c.fill(); }
+      else if (ch === '○') { c.arc(x, y, q, 0, TAU); c.stroke(); }
+      else { c.moveTo(x - q, y - q); c.lineTo(x + q, y + q); c.moveTo(x + q, y - q); c.lineTo(x - q, y + q); c.stroke(); }
+      c.restore();
+    };
+    const put = (x, y, t, base) => (isSym(t) ? drawSym(t, x, y) : B._text(x, y, t, { color: col, size: lsz(base), weight: 800, align: 'center', baseline: 'middle' }));
+    const lenMin = Math.min(Math.hypot(P1.x - S.x, P1.y - S.y), Math.hypot(P2.x - S.x, P2.y - S.y));
+    const rCap = Math.max(r, Math.min(50, lenMin * 0.6)), tn = Math.tan(Math.min(ad / 2, 1.45));
+    const ownRay = (s) => { // 이 각의 두 변(꼭짓점을 지나는 같은 방향의 직선 포함)
+      const ex = s.b.x - s.a.x, ey = s.b.y - s.a.y, L = Math.hypot(ex, ey) || 1;
+      if (Math.abs((S.x - s.a.x) * ey - (S.y - s.a.y) * ex) / L > 2.5) return false;
+      const sn = (u) => Math.abs(Math.sin(Math.atan2(ey, ex) - u));
+      return sn(t1) < 0.05 || sn(t2) < 0.05;
+    };
+    const lineFree = (rc) => !PL.segs.some((s) => !ownRay(s) && segHitsRect(s, rc)); // 이 각의 변이 아닌 다른 선을 지나지 않는가
+    const okSpotA = (rc) => okSpot(rc) && !PL.arcs.some((q) => hit(rc, q)); // 다른 각의 호도 피함
+    const corners = (rc) => [[rc.x0, rc.y0], [rc.x1, rc.y0], [rc.x0, rc.y1], [rc.x1, rc.y1]];
+    const inWedge = (x, y) => { // 부채꼴(반지름 제한 없음) 안인가
+      const u = ((((Math.atan2(y - S.y, x - S.x) - t1) * sg) % TAU) + TAU) % TAU;
+      return u >= 0.02 && u <= ad - 0.02;
+    };
+    const inside = (txt) => { // 호 안쪽(필요하면 호를 키워서)
+      const w = wOf(txt, size), need = w + (h / 2) / tn + 7 + ringPad, rr = Math.max(r, need);
+      if (rr > rCap + 0.5) return null;
+      const hi = rr - ringPad - w / 2 - 3, lo = w / 2 + (h / 2) / tn + 1;
+      let loose = null;
+      for (const rho of [hi, (hi + lo) / 2, lo]) {
+        if (rho < lo - 0.5) continue;
+        for (const f of [0, 0.35, -0.35, 0.62, -0.62]) {
+          const a = mid + (f * d) / 2, x = S.x + Math.cos(a) * rho, y = S.y + Math.sin(a) * rho;
+          const rc = { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 };
+          if (!corners(rc).every(([px, py]) => inWedge(px, py) && Math.hypot(px - S.x, py - S.y) <= rr - ringPad - 2)) continue;
+          if (!okSpotA(rc)) continue;
+          if (lineFree(rc)) return { rr, x, y, rc };
+          loose = loose || { rr, x, y, rc };
+        }
+      }
+      return loose;
+    };
+    const beyond = (txt) => { // 좁은 각: 호는 그대로 두고, 호 바로 너머 각의 '안쪽'(두 변 사이)에 값을 놓음
+      if (isSym(txt)) return null; // 기호(•×○)는 좁은 각 안에 들어가지 않으므로 호 바로 바깥에
+      const w = wOf(txt, size), lim = Math.min(r + 30, lenMin * 0.85);
+      let loose = null;
+      for (let rho = r + 8; rho <= lim; rho += 4) {
+        for (const f of [0, 0.3, -0.3, 0.55, -0.55]) {
+          const a = mid + (f * d) / 2, x = S.x + Math.cos(a) * rho, y = S.y + Math.sin(a) * rho;
+          const rc = { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 };
+          const nx = Math.min(Math.max(S.x, rc.x0), rc.x1), ny = Math.min(Math.max(S.y, rc.y0), rc.y1);
+          if (Math.hypot(nx - S.x, ny - S.y) < r + 3) continue; // 호와 겹치지 않게
+          if (!corners(rc).every(([px, py]) => inWedge(px, py))) continue;
+          if (!okSpotA(rc)) continue;
+          if (lineFree(rc)) return { rr: r, x, y, rc };
+          loose = loose || { rr: r, x, y, rc };
+        }
+      }
+      return loose;
+    };
+    const outside = (txt, rr, sz, tight) => { // 호 바로 바깥(이등분선 쪽)에, 글자 상자의 안쪽 끝이 호에 닿도록. 어떤 선도 안 지나는 자리를 먼저(기호 tight 는 이등분선 위, 각의 변은 지나도 됨)
+      const sy = isSym(txt), w = sy ? 16 : tw(txt, sz, 800), hh = sy ? 16 : sz * 1.15;
+      let first = null, own = null, loose = null;
+      for (const dr of tight ? [0, 6, 14, 24, 36, 50] : [0, 12, 24, 38]) {
+        for (const da of tight ? [0, 0.2, -0.2] : [0, 0.4, -0.4, 0.8, -0.8, 1.2, -1.2]) {
+          const a = mid + da, dist = rr + 6 + dr + Math.abs(Math.cos(a)) * w / 2 + Math.abs(Math.sin(a)) * hh / 2;
+          const x = S.x + Math.cos(a) * dist, y = S.y + Math.sin(a) * dist;
+          const rc = { x0: x - w / 2, x1: x + w / 2, y0: y - hh / 2, y1: y + hh / 2 };
+          const cand = { x, y, rc };
+          if (!first) first = cand;
+          if (!okSpotA(rc)) continue;
+          if (!lineFree(rc)) { loose = loose || cand; continue; }
+          if (tight || !PL.segs.some((s) => segHitsRect(s, rc))) return cand;
+          own = own || cand;
+        }
+      }
+      return own || loose || first;
+    };
+    // 값 후보: 전체 글자 → ('=' 앞은 이름, 뒤는 값) 또는 (값 + 뒤따르는 설명). 안쪽 → 호 너머 각 안쪽 순서로 시도
+    const cand = [[str, outer]];
+    if (str && !outer) {
+      const eq = str.indexOf('=');
+      if (eq > 0) {
+        const nm = str.slice(0, eq).trim();
+        let val = str.slice(eq + 1).trim(), bang = '';
+        if (val.endsWith('!')) { val = val.slice(0, -1); bang = '!'; }
+        cand.push([val, /^∠[A-Za-z'’]+$/.test(nm) ? '' : nm + bang]);
+      } else {
+        const m = str.match(/^(\S*?[°θ•×])\s*(.+)$/);
+        if (m) cand.push([m[1], m[2]]);
       }
     }
-    pick = pick || first;
-    B._text(pick.x, pick.y, str, { color: col, size: lsz(12), weight: 800, align: 'center', baseline: 'middle' });
-    PL.placed.push(pick.rect);
+    let res = null, txt = str, tail = outer;
+    search: for (const fn of [inside, beyond]) {
+      for (const [t, tl] of cand) {
+        const q = t ? fn(t) : null;
+        if (q) { res = q; txt = t; tail = tl; break search; }
+      }
+    }
+    const regArc = (rr) => { // 그린 호도 '차지한 자리'로 기록: 이후의 이름표가 호 위에 겹쳐 놓이지 않게
+      const q = rr, n = Math.max(2, Math.ceil((q * ad) / 9));
+      for (let i = 0; i <= n; i++) { const a = t1 + (d * i) / n, x = S.x + Math.cos(a) * q, y = S.y + Math.sin(a) * q; PL.arcs.push({ x0: x - 3, x1: x + 3, y0: y - 3, y1: y + 3 }); }
+    };
+    if (res) {
+      arcs(res.rr);
+      put(res.x, res.y, txt, 12);
+      PL.placed.push(res.rc);
+      regArc(res.rr);
+    } else {
+      arcs(r);
+      regArc(r);
+      if (str) {
+        const o = outside(str, r, size, sym);
+        put(o.x, o.y, str, 12);
+        PL.placed.push(o.rc);
+      }
+      tail = outer;
+    }
+    if (tail) {
+      const o = outside(tail, res ? res.rr : r, tsz(11), isSym(tail));
+      put(o.x, o.y, tail, 11);
+      PL.placed.push(o.rc);
+    }
   }
   /** 길이 이름표(둥근 상자). 원본처럼 선분 중점에서 수직 방향으로 offsetNormal(px)만큼 떨어뜨려 놓되, 겹치면 선분을 따라/반대쪽으로 옮깁니다. */
   function cbadge(a, b, text, col = '#fbbf24', offsetNormal = 15, pos = 0.5, partIdx = -1) {
@@ -1104,7 +1260,10 @@ window.addEventListener('DOMContentLoaded', function () {
           cticks(pM, pC, 1, CCOL.pink, 7);
           cticks(pA, pM, 2, CCOL.gold, 8);
           cticks(pM, pB, 2, CCOL.gold, 8);
-          cangle(O, pM, pA, CCOL.gold, 26, 1, '60°');
+          cticksAt(O, pA, 0.35, 3, CCOL.white, 7); // [표시 보강] 반지름 OA = OB
+          cticksAt(O, pB, 0.35, 3, CCOL.white, 7);
+          cangle(O, pM, pA, CCOL.gold, 26, 1, '60°'); // [표시 보강] ∠AOM = ∠BOM = 60° (같은 각 = 같은 색·같은 호)
+          cangle(O, pM, pB, CCOL.gold, 26, 1, '60°');
 
           cbadge(O, pA, `R = ${Rval}`, CCOL.gold, -16, 0.5, 1);
           cbadge(O, pM, `½R=${Rval / 2}`, CCOL.pink, 26, 0.5, 0);
@@ -1130,6 +1289,7 @@ window.addEventListener('DOMContentLoaded', function () {
           cticks(pM, pB, 2, CCOL.gold, 8);
           cticks(O, pA, 1, CCOL.white, 7.5);
           cticks(O, pB, 1, CCOL.white, 7.5);
+          cright(pM, O, pB, 12, CCOL.pink); // [표시 보강] 두 직각삼각형 모두 직각(RHS 합동의 R)
 
           const d = Math.round(Rval * 0.6), am = Math.round(Rval * 0.8);
           cbadge(O, pA, `R = ${Rval}cm`, CCOL.gold, -16, 0.5, 0);
@@ -1184,6 +1344,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
           cpoly([oArch, pA, pM], 'rgba(244, 114, 182, 0.28)', CCOL.pink, 3.0, 1);
           cright(pM, oArch, pA, 12, CCOL.pink);
+          cticksAt(pA, pM, 0.28, 2, CCOL.gold, 8); // [표시 보강] AM = BM (M 은 현 AB 의 중점)
+          cticksAt(pM, pB, 0.72, 2, CCOL.gold, 8);
 
           cbadge(pA, pM, 'AM = 8 cm', CCOL.gold, -16, 0.5, 0);
           cbadge(pC, pM, 'CM = 4 cm', CCOL.cyan, 28, 0.5, 0);
@@ -1308,6 +1470,8 @@ window.addEventListener('DOMContentLoaded', function () {
           cticks(pP, pB, 2, CCOL.gold, 8.5);
           cticks(pA, pH, 1, CCOL.pink, 7);
           cticks(pH, pB, 1, CCOL.pink, 7);
+          cticks(cO, pA, 3, CCOL.white, 7.5); // [표시 보강] 반지름 OA = OB (RHS 의 S)
+          cticks(cO, pB, 3, CCOL.white, 7.5);
 
           cangle(cO, pA, pB, CCOL.cyan, 28, 1, `${180 - ang}°`);
           cangle(pP, pB, pA, CCOL.gold, 34, 1, `${ang}°`);
@@ -1342,6 +1506,10 @@ window.addEventListener('DOMContentLoaded', function () {
           cright(pD, pI, pB, 10, CCOL.green);
           cright(pE, pI, pB, 10, CCOL.green);
           cright(pF, pI, pC, 10, CCOL.pink);
+          cticksAt(pA, pD, 0.22, 1, CCOL.gold, 7.5); // [표시 보강] 한 점에서 그은 두 접선은 길이가 같다: AD = AF (금색 한 줄), CE = CF (하늘색 두 줄)
+          cticksAt(pA, pF, 0.22, 1, CCOL.gold, 7.5);
+          cticksAt(pC, pE, 0.25, 2, CCOL.cyan, 7.5);
+          cticksAt(pC, pF, 0.25, 2, CCOL.cyan, 7.5);
 
           cbadge(pB, pE, 'r = 2', CCOL.green, 16, 0.5, 0);
           cbadge(pA, pD, '6-r = 4', CCOL.gold, -20, 0.5, 1);
@@ -1393,6 +1561,7 @@ window.addEventListener('DOMContentLoaded', function () {
           cticks(pA, Tpts[0], 1, CCOL.gold, 7); cticks(pA, Tpts[1], 1, CCOL.gold, 7);
           cticks(pB, Tpts[1], 2, CCOL.cyan, 7); cticks(pB, Tpts[2], 2, CCOL.cyan, 7);
           cticks(pC, Tpts[2], 3, CCOL.green, 7); cticks(pC, Tpts[3], 3, CCOL.green, 7);
+          cticks(pD, Tpts[3], 4, CCOL.pink, 7); cticks(pD, Tpts[0], 4, CCOL.pink, 7); // [표시 보강] d 쌍(분홍)에도 눈금(네 줄)
 
           cbadge(pA, pD, 'AD = a+d (8cm)', CCOL.gold, -16, 0.5, 0);
           cbadge(pB, pC, 'BC = b+c (10cm)', CCOL.green, 16, 0.5, 0);
@@ -1421,6 +1590,10 @@ window.addEventListener('DOMContentLoaded', function () {
           cline(pE, pB, CCOL.pink, 4.0, [], true, 1);
           cline(pE, pP, CCOL.pink, 4.0, [], true, 1);
           cright(pC, pD, pE, 12, CCOL.cyan);
+          cticksAt(pD, pA, 0.25, 1, CCOL.gold, 7.5); // [표시 보강] 접선 길이: DA = DP (금색 한 줄), EP = EB (분홍 두 줄)
+          cticksAt(pD, pP, 0.25, 1, CCOL.gold, 7.5);
+          cticksAt(pE, pP, 0.25, 2, CCOL.pink, 7.5);
+          cticksAt(pE, pB, 0.25, 2, CCOL.pink, 7.5);
 
           cbadge(pA, pD, 'DA = 9 cm', CCOL.gold, -16, 0.5, 0);
           cbadge(pD, pP, 'DP = 9', CCOL.gold, -16, 0.5, 0);
@@ -1450,12 +1623,20 @@ window.addEventListener('DOMContentLoaded', function () {
           cpoly([O, pP, pB], 'rgba(56, 189, 248, 0.22)', CCOL.cyan, 2.6, 1);
 
           cline(pP, pQ, CCOL.pink, 3.2, [6, 4], true, 2);
-          cticks(O, pP, 1, CCOL.pink, 7.5);
-          cticks(O, pA, 1, CCOL.gold, 7.5);
-          cticks(O, pB, 1, CCOL.cyan, 7.5);
+          cticks(O, pP, 1, CCOL.white, 7.5); // [표시 보강] 반지름 OP = OA = OB: 같은 눈금(흰색 한 줄)
+          cticks(O, pA, 1, CCOL.white, 7.5);
+          cticks(O, pB, 1, CCOL.white, 7.5);
 
-          cangle(pP, pA, pB, CCOL.gold, 34, 1, `원주각 ${ang}°(•+×)`);
-          cangle(O, pA, pB, CCOL.pink, 28, 2, `중심각 ${ang * 2}°(2•+2×)`);
+          // [표시 보강] 본문의 •·× 를 그림에 표시: •(금색 한 호) = ∠APO = ∠PAO, ×(하늘색 한 호) = ∠BPO = ∠PBO (이등변삼각형 밑각)
+          //            외각 ∠AOQ = 2•(금색 두 호), ∠QOB = 2×(하늘색 두 호), 원주각 ∠APB = •+×, 중심각 ∠AOB = 2•+2×
+          cangle(pP, pA, O, CCOL.gold, 20, 1, '•');
+          cangle(pA, O, pP, CCOL.gold, 22, 1, '•');
+          cangle(pP, O, pB, CCOL.cyan, 20, 1, '×');
+          cangle(pB, pP, O, CCOL.cyan, 22, 1, '×');
+          cangle(O, pA, pQ, CCOL.gold, 40, 2, '2•');
+          cangle(O, pQ, pB, CCOL.cyan, 40, 2, '2×');
+          cangle(pP, pA, pB, CCOL.pink, 46, 1, `${ang}°`, '원주각(•+×)');
+          cangle(O, pA, pB, CCOL.pink, 64, 2, `${ang * 2}°`, '중심각(2•+2×)');
 
           cdot(O, 'O', CCOL.white, null, { x: 18, y: -4 });
           cdot(pP, 'P(•+×)', CCOL.gold, O);
@@ -1475,8 +1656,8 @@ window.addEventListener('DOMContentLoaded', function () {
           cline(pP1, pB, 'rgba(56, 189, 248, 0.4)', 2.0);
 
           cpoly([pP_cur, pA, pB], 'rgba(56, 189, 248, 0.24)', CCOL.cyan, 3.2, 1);
-          cangle(pP1, pA, pB, CCOL.cyan, 26, 1, `${ang}°`);
-          cangle(pP_cur, pA, pB, CCOL.gold, 30, 1, `${ang}° 불변!`);
+          cangle(pP1, pA, pB, CCOL.gold, 26, 1, `${ang}°`); // [표시 보강] 같은 호 AB 의 원주각은 같은 각 → 같은 색(금색)·같은 호 한 개
+          if (t > 0.04) cangle(pP_cur, pA, pB, CCOL.gold, 26, 1, `${ang}°`, '불변!');
           cangle(O, pA, pB, CCOL.pink, 24, 2, `${ang * 2}°`);
 
           cdot(O, 'O', CCOL.white, null, { x: 0, y: -14 });
@@ -1515,8 +1696,8 @@ window.addEventListener('DOMContentLoaded', function () {
           if (t > 0.85) {
             cright(pC, pA_cur, pB, 13, CCOL.pink);
           }
-          cangle(pA_orig, pB, pC, CCOL.cyan, 26, 1, '∠A');
-          cangle(pA_cur, pB, pC, CCOL.gold, 28, 1, "∠A'=∠A");
+          cangle(pA_orig, pB, pC, CCOL.gold, 26, 1, '30°', '∠A'); // [표시 보강] ∠A = ∠A' (호 BC = 중심각 60° 의 원주각 30°) → 같은 색·같은 호
+          if (t > 0.04) cangle(pA_cur, pB, pC, CCOL.gold, 26, 1, '30°', "∠A'=∠A");
 
           cbadge(pB, pC, `BC = ${Rval}`, CCOL.gold, 16, 0.5, 2); // [2.0 수정] BC = R (위 그림 수정과 같은 이유)
           cbadge(pB, pA_diam, `지름 2R = ${2 * Rval}cm`, CCOL.pink, -18, 0.45, 1);
@@ -1542,7 +1723,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
           const curAngD = Math.round(ang / (1 + t * 0.35));
           cangle(pA, pB, pC, CCOL.gold, 28, 1, `${ang}°`);
-          cangle(pD_cur, pB, pC, isOut ? CCOL.red : CCOL.green, 28, 1, isOut ? `${curAngD}°(≠)` : `${ang}°(일치!)`);
+          cangle(pD_cur, pB, pC, isOut ? CCOL.red : CCOL.gold, 28, 1, isOut ? `${curAngD}°` : `${ang}°`, isOut ? '(≠)' : '(일치!)'); // [표시 보강] 한 원 위(일치)일 때 ∠BAC 와 같은 색·같은 호
 
           cdot(pA, 'A', CCOL.gold, O);
           cdot(pB, 'B', CCOL.white, O);
@@ -1577,7 +1758,7 @@ window.addEventListener('DOMContentLoaded', function () {
           cangle(O, pB, pA, CCOL.pink, 24, 1, `${ang * 2}°`);
           cangle(pE, pA, pB, CCOL.gold, 32, 1, `${ang}°`);
           cangle(pC, pD, pB, CCOL.cyan, 26, 2, '∠C');
-          cangle(pE, pB, pD, CCOL.cyan, 26, 2, '180°-∠C');
+          cangle(pE, pB, pD, CCOL.green, 26, 2, '180°-∠C'); // [표시 보강] ∠C 와 합이 180° 인 '다른' 각 → 다른 색
 
           cdot(O, 'O', CCOL.white, null, { x: 14, y: 4 });
           cdot(pA, 'A', CCOL.white, O);
@@ -1596,24 +1777,32 @@ window.addEventListener('DOMContentLoaded', function () {
           const pE_ext = cadd(pC, cmul(dirBC, 78 * s));
 
           cpoly([pA, pB, pC, pD], 'rgba(52, 211, 153, 0.20)', CCOL.green, 3.2, 0);
-          cline(pC, pE_ext, CCOL.pink, 3.2, [], false, 1);
+          cline(pC, pE_ext, CCOL.pink, 3.2, [7, 5], false, 1); // [표시 보강] 연장선은 점선
 
           if (sub === 'cyclicQuad180' && (t > 0.1 || state.conceptSwitch === 'aux')) {
             cline(O, pB, CCOL.gold, 2.4, [5, 4], false, 2);
             cline(O, pD, CCOL.gold, 2.4, [5, 4], false, 2);
-            cdot(O, 'O(중심각 합 360°)', CCOL.gold, null, { x: 0, y: 18 });
+            cdot(O, 'O(중심각 합 360°)', CCOL.gold, null, { x: -38, y: 4 });
+            // [표시 보강] 중심각: ∠A 가 보는 호 BCD = 2∠A(금색), ∠C 가 보는 호 BAD = 2∠C(하늘색) → 합 360°
+            cangle(O, pB, pD, CCOL.gold, 30, 1, `${angA * 2}°`, '', angA * 2 > 180);
+            cangle(O, pB, pD, CCOL.cyan, 30, 2, `${angC * 2}°`, '', angC * 2 > 180);
           }
           if (sub === 'cyclicConditions3') {
             cline(pA, pC, CCOL.cyan, 2.2, [5, 4], false, 0);
             cline(pB, pD, CCOL.cyan, 2.2, [5, 4], false, 0);
           }
 
-          cangle(pA, pB, pD, CCOL.gold, 28, 1, `∠A=${angA}°`);
-          cangle(pC, pD, pB, CCOL.cyan, 28, 2, `∠C=${angC}°`);
-          cangle(pC, pE_ext, pD, CCOL.pink, 30, 1, `외각=${angA}°!`);
+          if (sub === 'cyclicConditions3') { // [표시 보강] 판정 ①: 호 BC 를 같은 쪽에서 본 ∠BAC = ∠BDC (분홍 한 호, 값은 호 너머 각 안쪽)
+            cangle(pA, pB, pC, CCOL.pink, 22, 1, `${fmtNum(angA / 2)}°`);
+            cangle(pD, pB, pC, CCOL.pink, 22, 1, `${fmtNum(angA / 2)}°`);
+          }
+          // [표시 보강] 내대각 ∠A 와 외각 ∠DCE 는 같은 각 → 같은 색(금색)·같은 호 한 개. ∠C 는 다른 각 → 하늘색 두 호. 값은 각 안쪽에.
+          cangle(pA, pB, pD, CCOL.gold, sub === 'cyclicConditions3' ? 64 : 28, 1, `${angA}°`);
+          cangle(pC, pD, pB, CCOL.cyan, 28, 2, `${angC}°`);
+          cangle(pC, pE_ext, pD, CCOL.gold, 28, 1, `${angA}°`, '외각');
 
           [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, O));
-          cdot(pE_ext, 'E(연장선)', CCOL.pink, null, { x: 10, y: 16 });
+          cdot(pE_ext, 'E', CCOL.pink, null, { x: 10, y: 16 }); // [표시 보강] 연장선 끝점은 점 이름만
         } else {
           // cyclicCrossExt (내접사각형 두 대변 연장선 교점 P, Q 킬러)
           const cO = cpt(cx - 42 * s, cy - 28 * s);
@@ -1638,6 +1827,9 @@ window.addEventListener('DOMContentLoaded', function () {
           cpoly([pD, pC, pP], 'rgba(56, 189, 248, 0.18)', CCOL.cyan, 2.6, 1);
           cpoly([pB, pC, pQ], 'rgba(244, 114, 182, 0.18)', CCOL.pink, 2.6, 2);
 
+          // [표시 보강] 내대각 ∠A = x 를 바깥으로 복사: 외각 ∠DCP = ∠BCQ = ∠A → 같은 색(금색)·같은 호 한 개 (좁은 각이라 먼저 자리를 잡음)
+          cangle(pC, pD, pP, CCOL.gold, 24, 1, 'x');
+          cangle(pC, pB, pQ, CCOL.gold, 24, 1, 'x');
           cangle(pA, pB, pD, CCOL.gold, 24, 1, 'x=52°');
           cangle(pP, pA, pB, CCOL.cyan, 30, 1, '32°');
           cangle(pQ, pA, pD, CCOL.pink, 30, 2, '44°');
@@ -1669,11 +1861,12 @@ window.addEventListener('DOMContentLoaded', function () {
             cline(pA, pD, CCOL.pink, 3.2, [6, 4], true, 2);
             cright(pA, pD, pT, 13, CCOL.pink);
             cright(pC, pA, pD, 12, CCOL.pink);
+            cangle(pA, pD, pB, CCOL.pink, 22, 2, `${90 - ang}°`); // [표시 보강] ∠DAB = 90° - θ (접현각과 더해 직각 ∠DAT)
             cdot(pD, 'D(지름 보조선 90°!)', CCOL.pink, null, { x: 0, y: -16 });
           }
 
-          cangle(pA, pB, pT, CCOL.gold, 34, 1, `접현각 ${ang}°`);
-          cangle(pC, pA, pB, CCOL.gold, 32, 1, `원주각 ${ang}°!`);
+          cangle(pA, pB, pT, CCOL.gold, 34, 1, `${ang}°`, '접현각'); // [표시 보강] 접현각 = 원주각: 같은 색·같은 호, 값은 각 안쪽
+          cangle(pC, pA, pB, CCOL.gold, 32, 1, `${ang}°`, '원주각!');
 
           if (sub === 'altSegmentInscribed') {
             cangle(pA, pS, pC, CCOL.pink, 32, 2, '65°');
@@ -1701,19 +1894,22 @@ window.addEventListener('DOMContentLoaded', function () {
           cpoly([pT, pC, pD], 'rgba(251, 191, 36, 0.24)', CCOL.gold, 3.0, 1);
           cline(pA, pB, CCOL.green, 3.8, [], true, 2);
           cline(pC, pD, CCOL.green, 3.8, [], true, 2);
-          carrows(pB, pA, 1, CCOL.green, 7.5);
+          carrows(pA, pB, 1, CCOL.green, 7.5); // [표시 보강] 평행 표시는 두 선이 같은 방향(아래쪽)을 가리켜야 함
           carrows(pC, pD, 1, CCOL.green, 7.5);
 
           // 접점 T를 지나는 공통내접선 PQ!
-          const pP = cpt(pT.x, cy - 115 * s), pQ = cpt(pT.x, cy + 115 * s);
+          const pP = cpt(pT.x, cy + 115 * s), pQ = cpt(pT.x, cy - 115 * s); // [표시 보강] 본문의 ∠BTP·∠CTQ 가 접현각이 되도록 P 는 아래, Q 는 위
           cline(pP, pQ, CCOL.pink, 3.4, [6, 4], true, 0);
 
+          // [표시 보강] ∠A = ∠BTP(접현각) = ∠CTQ(맞꼭지각) = ∠D(접현각): 모두 같은 색(금색)·같은 호 한 개·같은 기호 •
           cangle(pA, pB, pT, CCOL.gold, 24, 1, '•');
-          cangle(pD, pC, pT, CCOL.gold, 22, 1, '•(엇각!)');
+          cangle(pD, pC, pT, CCOL.gold, 22, 1, '•', '(엇각!)');
+          cangle(pT, pB, pP, CCOL.gold, 24, 1, '•');
+          cangle(pT, pC, pQ, CCOL.gold, 24, 1, '•');
 
           cdot(pT, 'T(외접점)', CCOL.pink, null, { x: 16, y: -6 });
-          cdot(pP, 'P(공통내접선)', CCOL.pink, null, { x: 0, y: -14 });
-          cdot(pQ, 'Q', CCOL.pink, null, { x: 0, y: 18 });
+          cdot(pP, 'P(공통내접선)', CCOL.pink, null, { x: 0, y: 18 });
+          cdot(pQ, 'Q', CCOL.pink, null, { x: 0, y: -14 });
           cdot(pA, 'A', CCOL.white, O1); cdot(pB, 'B', CCOL.white, O1);
           cdot(pC, 'C', CCOL.white, O2); cdot(pD, 'D(AB∥CD!)', CCOL.white, O2);
         } else if (sub === 'twoCirclesInTangent') {
@@ -1737,9 +1933,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
           carrows(pA, pB, 1, CCOL.green, 7.5);
           carrows(pC, pD, 1, CCOL.green, 7.5);
-          cangle(pT, pB, pQ, CCOL.pink, 30, 1, `${ang}°`);
-          cangle(pA, pT, pB, CCOL.gold, 22, 1, `${ang}°`);
-          cangle(pC, pT, pD, CCOL.cyan, 26, 1, `${ang}°(동위각!)`);
+          // [표시 보강] 본문대로 ∠ATP(공통 접현각) = ∠ABT = ∠CDT: 같은 색(금색)·같은 호 한 개 (A 는 TC 위의 점이라 ∠ATP = ∠CTP)
+          cangle(pT, pA, pP, CCOL.gold, 30, 1, `${ang}°`);
+          cangle(pB, pA, pT, CCOL.gold, 22, 1, `${ang}°`);
+          cangle(pD, pC, pT, CCOL.gold, 26, 1, `${ang}°`, '(동위각!)');
 
           cdot(pT, 'T(내접점)', CCOL.pink, null, { x: 0, y: 22 });
           cdot(pA, 'A', CCOL.gold, O_sml); cdot(pB, 'B', CCOL.gold, O_sml);
@@ -1759,17 +1956,19 @@ window.addEventListener('DOMContentLoaded', function () {
           if (t > 0.3 || state.activePartIdx === 1) {
             cpoly([pA, pT, pB], 'rgba(56, 189, 248, 0.18)', CCOL.cyan, 2.4, 1);
             cright(pT, pA, pB, 11, CCOL.cyan);
-          }
+          } else cline(pA, pT, 'rgba(56, 189, 248, 0.5)', 2, [5, 4]); // [표시 보강] 원주각 • 의 변 BT 를 보조로 표시
           cline(pB, pT, CCOL.cyan, 2.8);
           cright(pT, cO, pP, 13, CCOL.gold);
 
-          cangle(pB, pA, pT, CCOL.cyan, 28, 1, '28°(•)');
+          // [표시 보강] 본문 기준 점 이름: 지름의 양 끝은 A(P 에 가까운 쪽)·B(먼 쪽). 원주각 ∠ABT = 접현각 ∠PTA = • (28°): 같은 색(하늘색)·같은 호 한 개
+          cangle(pA, pB, pT, CCOL.cyan, 28, 1, '28°', '•');
+          cangle(pT, pP, pB, CCOL.cyan, 28, 1, '28°', '•');
           cangle(cO, pT, pP, CCOL.gold, 26, 2, '56°(2•)');
           cangle(pP, pT, cO, CCOL.pink, 32, 1, 'x=34°!');
 
           cdot(cO, 'O', CCOL.white, null, { x: 0, y: 20 });
-          cdot(pA, 'A', CCOL.white, null, { x: -14, y: 16 });
-          cdot(pB, 'B', CCOL.white, null, { x: 0, y: 20 });
+          cdot(pA, 'B', CCOL.white, null, { x: -14, y: 16 }); // [표시 보강] 본문과 같게 P 에 가까운 끝이 A, 먼 끝이 B
+          cdot(pB, 'A', CCOL.white, null, { x: 0, y: 20 });
           cdot(pP, 'P(x=34°)', CCOL.pink, null, { x: 14, y: 16 });
           cdot(pT, 'T(접점 90°!)', CCOL.gold, null, { x: 0, y: -16 });
         }
@@ -1794,7 +1993,9 @@ window.addEventListener('DOMContentLoaded', function () {
           cline(pA, pC, CCOL.green, 3.6, [], true, 0);
           cline(pC, pB, CCOL.green, 3.6, [], true, 0);
 
-          cangle(pP, pA, pC, CCOL.green, 28, 1, '30°');
+          cticks(pA, pC, 2, CCOL.white, 8); // [표시 보강] 호 AC = 호 CB 이므로 현 AC = CB
+          cticks(pC, pB, 2, CCOL.white, 8);
+          cangle(pP, pA, pC, CCOL.green, 28, 1, '30°'); // [표시 보강] 같은 호의 원주각 → 같은 색·같은 호 한 개 (값은 따로 놓음)
           cangle(pP, pC, pB, CCOL.green, 28, 1, '30°');
           cbadge(pA, pB, '큰 현 AB < 2·AC (2배 아님 ❌!)', CCOL.red, -18, 0.5, 1);
 
@@ -1819,6 +2020,11 @@ window.addEventListener('DOMContentLoaded', function () {
           cline(pA, pB, CCOL.gold, 3.8, [], true, 0);
           cline(pC, pD, CCOL.cyan, 3.8, [], true, 1);
 
+          // [표시 보강] 맞꼭지각 ∠APC = ∠DPB(초록 한 호 •), 호 CB 의 원주각 ∠CAB = ∠CDB(분홍 두 호 ×) → △PAC ∽ △PDB
+          cangle(pP, pA, pC, CCOL.green, 26, 1, '•');
+          cangle(pP, pD, pB, CCOL.green, 26, 1, '•');
+          cangle(pA, pP, pC, CCOL.pink, 24, 2, '×');
+          cangle(pD, pB, pP, CCOL.pink, 24, 2, '×');
           cbadge(pP, pA, 'PA = 3', CCOL.gold, -15, 0.5, 0);
           cbadge(pP, pB, 'PB = 8', CCOL.gold, -15, 0.5, 0);
           cbadge(pP, pC, 'PC = 4', CCOL.cyan, 15, 0.5, 1);
@@ -1848,8 +2054,16 @@ window.addEventListener('DOMContentLoaded', function () {
             cpoly([pA, pB, pD, pC], 'rgba(52, 211, 153, 0.18)', CCOL.green, 2.4);
             cline(pP, pB, CCOL.gold, 3.6, [], true, 0);
             cline(pP, pD, CCOL.cyan, 3.6, [], true, 1);
+            cline(pA, pD, 'rgba(255,255,255,0.5)', 2, [5, 4]); // [표시 보강] △PAD ∽ △PCB 의 변 AD, CB (닮음의 각을 표시하기 위한 보조선)
+            cline(pC, pB, 'rgba(255,255,255,0.5)', 2, [5, 4]);
 
             // [2.0 수정] 긴 이름표 'AB = 5 (전체 PB=9!)'·'CD = 9 (전체 PD=12!)'가 휴대폰에서 원 속 할선을 거의 다 가렸습니다 → 이름표는 짧게, 전체 길이와 곱셈식은 그림 아래 글로 옮깁니다.
+            // [표시 보강] 공통각 ∠P(초록 •), ∠PAD = ∠PCB(분홍 ×), ∠PDA = ∠PBC(금색 두 호 ○) → △PAD ∽ △PCB
+            cangle(pP, pB, pD, CCOL.green, 30, 1, '•');
+            cangle(pA, pP, pD, CCOL.pink, 24, 1, '×');
+            cangle(pC, pP, pB, CCOL.pink, 24, 1, '×');
+            cangle(pD, pP, pA, CCOL.gold, 24, 2, '○');
+            cangle(pB, pP, pC, CCOL.gold, 24, 2, '○');
             cbadge(pP, pA, 'PA = 4', CCOL.gold, -15, 0.5, 0);
             cbadge(pA, pB, 'AB = 5', CCOL.gold, -16, 0.5, 0);
             cbadge(pP, pC, 'PC = 3', CCOL.cyan, 15, 0.5, 1);
@@ -1867,6 +2081,10 @@ window.addEventListener('DOMContentLoaded', function () {
             cline(pP, pB, CCOL.pink, 3.6, [], true, 1);
 
             // [2.0 수정] 위 장면과 같은 이유로 긴 이름표를 줄였습니다(전체 PB = 9 는 아래 풀이·띠에, 6² = 4×9 = 36 은 P의 이름표에 있음).
+            // [표시 보강] 공통각 ∠P(초록 •), 접현각 ∠PTA = 원주각 ∠PBT(분홍 두 호 ×) → △PAT ∽ △PTB
+            cangle(pP, pT, pB, CCOL.green, 30, 1, '•');
+            cangle(pT, pP, pA, CCOL.pink, 24, 2, '×');
+            cangle(pB, pP, pT, CCOL.pink, 24, 2, '×');
             cbadge(pP, pT, '접선 PT = 6', CCOL.gold, 18, 0.5, 0);
             cbadge(pP, pA, 'PA = 4', CCOL.pink, -15, 0.5, 1);
             cbadge(pA, pB, 'AB = 5', CCOL.pink, -16, 0.5, 1);
@@ -1886,14 +2104,24 @@ window.addEventListener('DOMContentLoaded', function () {
           const iA = cpolar(O_left, rSmall, -125), iD = cpolar(O_left, rSmall, -55);
           const iB = cpolar(O_left, rSmall, 150), iC = cpolar(O_left, rSmall, 30);
           cpoly([iA, iB, iC, iD], 'rgba(52, 211, 153, 0.26)', CCOL.green, 3.2, 1);
-          [iA, iB, iC, iD].forEach(p => cdot(p, '', CCOL.green));
+          // [표시 보강] 꼭짓점 이름과 각(값은 현재 점에서 계산): 등변사다리꼴은 ∠A = ∠D(금색 한 호), ∠B = ∠C(하늘색 두 호), ∠A + ∠C = 180°
+          [iA, iB, iC, iD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.green, O_left));
+          cangle(iA, iD, iB, CCOL.gold, 17, 1, `${fmtNum(cdeg(iA, iD, iB))}°`);
+          cangle(iD, iC, iA, CCOL.gold, 17, 1, `${fmtNum(cdeg(iD, iC, iA))}°`);
+          cangle(iB, iA, iC, CCOL.cyan, 17, 2, `${fmtNum(cdeg(iB, iA, iC))}°`);
+          cangle(iC, iB, iD, CCOL.cyan, 17, 2, `${fmtNum(cdeg(iC, iB, iD))}°`);
 
           // 우측: 평행사변형/마름모 (❌ - 한 꼭짓점이 원 밖으로 삐져나감!)
           ccircle(O_right, rSmall, CCOL.red, 'rgba(244, 63, 94, 0.06)', 2.4, [5, 4], 2);
           const p1 = cpolar(O_right, rSmall, -130), p2 = cpolar(O_right, rSmall, 140), p3 = cpolar(O_right, rSmall, 40);
           const p4 = cadd(p1, csub(p3, p2)); // 평행사변형의 네 번째 꼭짓점 (원 밖으로 벗어남!)
           cpoly([p1, p2, p3, p4], 'rgba(244, 63, 94, 0.24)', CCOL.red, 3.2, 2);
-          [p1, p2, p3].forEach(p => cdot(p, '', CCOL.white));
+          // [표시 보강] 평행사변형: 마주보는 각이 같다(∠A = ∠C 빨강 한 호, ∠B = ∠D 분홍 두 호). 값은 현재 점에서 계산
+          cangle(p1, p4, p2, CCOL.red, 17, 1, `${fmtNum(cdeg(p1, p4, p2))}°`);
+          cangle(p3, p2, p4, CCOL.red, 17, 1, `${fmtNum(cdeg(p3, p2, p4))}°`);
+          cangle(p2, p1, p3, CCOL.pink, 17, 2, `${fmtNum(cdeg(p2, p1, p3))}°`);
+          cangle(p4, p3, p1, CCOL.pink, 17, 2, `${fmtNum(cdeg(p4, p3, p1))}°`);
+          [p1, p2, p3].forEach((p, i) => cdot(p, 'ABC'[i], CCOL.white, O_right));
           cdot(p4, '원 밖 이탈!(∠A+∠C≠180°)', CCOL.red, null, { x: 0, y: -14 });
 
           // [2.0 수정] 캔버스 직접 글자 → 무대 글자. 같은 문구를 두 줄로 나눠 좁은 화면에서도 두 설명이 겹치지 않게 합니다.
@@ -2022,6 +2250,7 @@ window.addEventListener('DOMContentLoaded', function () {
           // 두 번 훑기: 1회 점 위치 수집 → 2회 그리기(이름표가 점·다른 이름표와 겹치지 않게 놓음)
           PL.obst = [];
           PL.placed = [];
+          PL.segs = []; PL.arcs = []; // [표시 보강]
           PL.pass = 1;
           drawCircleMasterScene(0, 0, state.fold, null);
           PL.pass = 2;
