@@ -83,3 +83,46 @@ test('E32 regions: plan errors for the name, the unit, the value, the placement 
   assert.equal(specError(rhombusPlan({label:undefined,labelPlacement:'LEADER'}),model),'REGION_LABEL_FIELDS_NEED_LABEL:rABC');
 });
 
+// ---- dimension lines (feature 2): tiers by themselves, no extension lines, a first tier nearer or further, crossing arcs, and a length written on a segment inside the figure
+const lineGraph=plane([source('A',0,0),source('B',36,0),source('C',60,0),midpoint('M','A','B'),midpoint('N','B','C')]);
+const lineSegments=[{id:'sAM',refs:['A','M']},{id:'sMB',refs:['M','B']},{id:'sBN',refs:['B','N']},{id:'sNC',refs:['N','C']}];
+const linePlan=(planeMarks,extra={})=>({capability:'construction-spike-v1',caption:'M, N이 각각 AB, BC의 중점이다.',mathPlan:lineGraph,displayPoints:['A','M','B','N','C'],displayLines:[],displayCircles:[],
+  displaySegments:lineSegments,coordinateCanvas:{width:720,height:380},planeMarks,...extra});
+const stacked=[{id:'dAB',from:'A',to:'B',label:'36',unit:'cm',side:'BELOW',offset:'AUTO'},{id:'dBC',from:'B',to:'C',label:'24',unit:'cm',side:'BELOW',offset:'AUTO'},{id:'dAC',from:'A',to:'C',label:'60',unit:'cm',side:'BELOW',offset:'AUTO'}];
+
+test('E32 dimensions: offset AUTO stacks overlapping dimensions of one line in tiers (AB and BC share a tier, AC stands outside them)',async()=>{
+  const model=await modelOf(lineGraph),plan=linePlan({dimensions:stacked}),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  const origin=Number(attr(tagOf(composed.svg,'B'),'cy'));
+  assert.ok(Math.abs(Number(attr(tagOf(composed.svg,'dAB-line'),'y1'))-(origin+24))<1e-6,'AB: tier 1');
+  assert.ok(Math.abs(Number(attr(tagOf(composed.svg,'dBC-line'),'y1'))-(origin+24))<1e-6,'BC: tier 1 (its span only touches the span of AB)');
+  assert.ok(Math.abs(Number(attr(tagOf(composed.svg,'dAC-line'),'y1'))-(origin+24+44))<1e-6,'AC: tier 2');
+  const transform=await transformOf(plan,model);
+  assert.deepEqual((await observe(composed.svg,lineGraph,plan.planeMarks,plan.displaySegments,transform)).errors,[]);
+  // the observer derives the tiers itself: a fixed offset that disagrees with the drawn line is refused
+  const fixed={dimensions:stacked.map(row=>row.id==='dAC'?{...row,offset:1}:row)};
+  assert.ok(codes(await observe(composed.svg,lineGraph,fixed,plan.displaySegments,transform)).includes('DIMENSION_OFFSET_MISMATCH'));
+});
+
+test('E32 dimensions: extension NONE, offsetPx and an inline dimension compose and pass; plan errors',async()=>{
+  const model=await modelOf(lineGraph);
+  const rows=[{id:'dAB',from:'A',to:'B',label:'36',unit:'cm',side:'BELOW',style:'ARROW',extension:'NONE',offsetPx:16},{id:'dBC',from:'B',to:'C',label:'24',unit:'cm',side:'ABOVE',offsetPx:40},
+    {id:'dMN',from:'M',to:'N',label:'30',unit:'cm',side:'ABOVE',style:'INLINE'}];
+  const plan=linePlan({dimensions:rows}),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  const origin=Number(attr(tagOf(composed.svg,'B'),'cy'));
+  assert.equal(tagOf(composed.svg,'dAB-ext-from'),undefined);
+  assert.ok(Math.abs(Number(attr(tagOf(composed.svg,'dAB-line'),'y1'))-(origin+16))<1e-6);
+  assert.ok(Math.abs(Number(attr(tagOf(composed.svg,'dBC-line'),'y1'))-(origin-40))<1e-6);
+  assert.ok(tagOf(composed.svg,'dMN-arrow-from')&&tagOf(composed.svg,'dMN-arrow-to')&&!tagOf(composed.svg,'dMN-line'),'an inline dimension draws two arrowheads and no line');
+  const transform=await transformOf(plan,model);
+  assert.deepEqual((await observe(composed.svg,lineGraph,plan.planeMarks,plan.displaySegments,transform)).errors,[]);
+  const err=(change,extra)=>specError(linePlan({dimensions:[{...rows[0],...change}]},extra),model);
+  assert.equal(err({offsetPx:5}),'DIMENSION_OFFSET_PX_INVALID:dAB');
+  assert.equal(err({extension:'SHORT'}),'DIMENSION_EXTENSION_INVALID:dAB');
+  assert.equal(err({crossArcs:'yes'}),'DIMENSION_CROSS_ARCS_INVALID:dAB');
+  assert.equal(specError(linePlan({dimensions:[{id:'d',from:'A',to:'B',label:'36',side:'ABOVE',style:'INLINE',offsetPx:20}]}),model),'DIMENSION_INLINE_FIELD_INVALID:d');
+  const four=['d','e','f','g'].map(id=>({id,from:'A',to:'B',label:'36',side:'ABOVE',offset:'AUTO'}));
+  assert.equal(specError(linePlan({dimensions:four}),model),'DIMENSION_TIERS_EXCEEDED:g');
+});
+

@@ -315,14 +315,18 @@ PATH_LABEL_ANCHOR_FRACTIONS=(0.5,0.4,0.6,0.3,0.7,0.2,0.8)   # where along the pa
 PATH_LABEL_GAPS=(24,32,44,60)                                  # distance from the anchor to the label box: always far enough to need a visible leader
 PATH_LABEL_CLEAR_PX=28.0                                       # an anchor farther than this from every other stroke is as good as any
 
-def dimension_frame(p,q,side,offset,oid):
+DIM_INLINE_TIP_INSET_PX=5.0        # style INLINE: the arrowheads' tips stand this far inside the two points (clear of their dots)
+DIM_INLINE_LABEL_GAPS=(6,10,16,24)  # style INLINE: the label's nearest edge stands this far beside the segment
+DIM_AUTO_LABEL_GAPS=(8,12,18,26,9,10,11,14,16,22)   # offset AUTO: dimensions stacked in tiers leave a label only the 44 px between two lines, so finer gaps are tried after the usual ones
+
+def dimension_frame(p,q,side,offset,oid,first=DIM_FIRST_PX,inline=False):
     """(length, unit direction p->q, outward unit normal, distance of the dimension line from p-q) in screen px. The normal is the one of the two
     perpendiculars that points more along the named screen side; a segment (nearly) perpendicular to that side is ambiguous."""
     length=math.dist(p,q);d=((q[0]-p[0])/length,(q[1]-p[1])/length)
     want=DIM_SIDE_VECTORS[side]
     n=max(((-d[1],d[0]),(d[1],-d[0])),key=lambda v:v[0]*want[0]+v[1]*want[1])
     if n[0]*want[0]+n[1]*want[1]<DIM_SIDE_MIN_DOT:raise ValueError('DIMENSION_SIDE_AMBIGUOUS:'+oid)
-    return length,d,n,DIM_FIRST_PX+DIM_STEP_PX*(offset-1)
+    return length,d,n,0.0 if inline else first+DIM_STEP_PX*(offset-1)
 
 def outward_direction_order(anchor,centre):
     """The eight compass directions (screen: N is up), the one that points most away from `centre` first, for a label hung outside a circle at `anchor`."""
@@ -917,20 +921,28 @@ def prepare(spec):
         elif kind=='DIMENSION_LINE':
             if not vp.equal:raise ValueError('DIMENSION_REQUIRES_EQUAL_UNITS')
             p,q=vp.screen(value['from']),vp.screen(value['to']);style=obj.get('style','BAR')
-            length,d,n,dist=dimension_frame(p,q,obj['side'],obj.get('offset',1),oid)
+            inline=style=='INLINE';extension=obj.get('extension','FULL')
+            length,d,n,dist=dimension_frame(p,q,obj['side'],obj.get('offset',1),oid,obj.get('offsetPx',DIM_FIRST_PX),inline)
             if length<DIM_MIN_LENGTH_PX:raise ValueError('DIMENSION_TOO_SHORT:'+oid)
             at=lambda base,u,v:(base[0]+d[0]*u+n[0]*v,base[1]+d[1]*u+n[1]*v)
             def dim_primitive(part,shape,token,**fields):
                 primitive({'id':oid+'-'+part,'kind':shape,'token':token,'layer':52,'role':'indicator','mark':'dimension','markId':oid,'markPart':part,**fields},'curve')
             foot_from,foot_to=at(p,0,dist),at(q,0,dist)
-            if style=='BRACE':
+            if inline:
+                # E32: the length of a segment inside the figure, written on the segment itself: an arrowhead inside each of its two points pointing at the point, no line of its own
+                for part,base,out in (('arrow-from',p,(-d[0],-d[1])),('arrow-to',q,d)):
+                    tip=(base[0]-out[0]*DIM_INLINE_TIP_INSET_PX,base[1]-out[1]*DIM_INLINE_TIP_INSET_PX);back=(tip[0]-out[0]*DIM_ARROW_LENGTH_PX,tip[1]-out[1]*DIM_ARROW_LENGTH_PX)
+                    dim_primitive(part,'polygon','indicator',points=[tip,(back[0]-out[1]*DIM_ARROW_HALF_WIDTH_PX,back[1]+out[0]*DIM_ARROW_HALF_WIDTH_PX),(back[0]+out[1]*DIM_ARROW_HALF_WIDTH_PX,back[1]-out[0]*DIM_ARROW_HALF_WIDTH_PX)],fill='#111')
+            elif style=='BRACE':
                 start=dist-2*DIM_BRACE_RADIUS_PX
                 if start<DIM_EXT_GAP_PX+2:raise ValueError('DIMENSION_BRACE_TOO_NEAR:'+oid)
                 if length<4*DIM_BRACE_RADIUS_PX+16:raise ValueError('DIMENSION_TOO_SHORT:'+oid)
                 dim_primitive('brace','polyline','auxiliary',points=[at(p,u,v) for u,v in brace_points(length,start,dist)])
             else:
                 end_pad=DIM_TICK_HALF_PX if style=='BAR' else -DIM_ARROW_OVERSHOOT_PX
+                if extension!='NONE' and dist-end_pad<DIM_EXT_GAP_PX+2:raise ValueError('DIMENSION_OFFSET_TOO_NEAR:'+oid)
                 for part,base in (('ext-from',p),('ext-to',q)):
+                    if extension=='NONE':continue
                     dim_primitive(part,'line','indicator',**{'from':at(base,0,DIM_EXT_GAP_PX),'to':at(base,0,dist-end_pad)})
                 dim_primitive('line','line','auxiliary',**{'from':foot_from,'to':foot_to})
                 if style=='BAR':
@@ -942,7 +954,7 @@ def prepare(spec):
                         dim_primitive(part,'polygon','indicator',points=[tip,(base[0]-out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]+out[0]*DIM_ARROW_HALF_WIDTH_PX),(base[0]+out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]-out[0]*DIM_ARROW_HALF_WIDTH_PX)],fill='#111')
             # The label stands on the outer side of the dimension line (of the brace's tip), centred on it; the layout slides it along the line when the middle is taken.
             anchor=at(p,length/2,dist)
-            labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'dimensionPlacement':{'anchor':list(anchor),'normal':list(n),'tangent':list(d),'length':length,'gaps':DIM_LABEL_GAPS,'slides':DIM_LABEL_SLIDES}},obj.get('unit')))
+            labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'dimensionPlacement':{'anchor':list(anchor),'normal':list(n),'tangent':list(d),'length':length,'gaps':DIM_INLINE_LABEL_GAPS if inline else DIM_AUTO_LABEL_GAPS if obj.get('autoOffset') else DIM_LABEL_GAPS,'slides':DIM_LABEL_SLIDES}},obj.get('unit')))
         elif kind=='PATH_LABEL':
             # One label for the whole length of a bent path: it stands off the path, tied to it by a visible leader that starts ON a drawn segment of the path.
             path=[vp.screen(p) for p in value['points']];lengths=[math.dist(a,b) for a,b in zip(path,path[1:])];total=sum(lengths)

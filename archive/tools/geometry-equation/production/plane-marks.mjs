@@ -45,12 +45,12 @@ export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides'],
   textLabels:['id','at','text','labelKind','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelAt','factRole'],
-  dimensions:['id','from','to','label','labelKind','unit','side','style','offset','value','factRole'],
+  dimensions:['id','from','to','label','labelKind','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','unit','value','factRole'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight'],
-  equalLengths:['id','count','segments'],parallels:['id','count','segments'],
+  equalLengths:['id','count','segments','pathMark'],parallels:['id','count','segments'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit','labelAt'],
-  arcs:['id','circle','center','from','to','side','label','labelKind','unit','highlight','factRole'],
+  arcs:['id','circle','center','from','to','side','label','labelKind','unit','labelPlacement','highlight','factRole'],
   traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','unit','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
@@ -98,8 +98,44 @@ export function textLabelExtentPoints(plan){
 // planeMarks.dimensions:[{id,from,to,label,labelKind?,unit?,side,style?,offset?,value?,factRole?}] writes a length between two displayed points on a line
 // parallel to them, on one screen side (ABOVE, BELOW, LEFT, RIGHT: the perpendicular that points that way), as a bar (default), arrows or a brace.
 export const DIMENSION_SIDES=['ABOVE','BELOW','LEFT','RIGHT'];
-export const DIMENSION_STYLES=['BAR','ARROW','BRACE'];
+export const DIMENSION_STYLES=['BAR','ARROW','BRACE','INLINE'];
 export const DIMENSION_FIRST_PX=24,DIMENSION_STEP_PX=44;   // the same px distances as the engine draws (the independent observer keeps its own copy)
+// E32: offset "AUTO" stacks dimensions that share one line and side in tiers by themselves; extension NONE draws no extension lines; offsetPx moves the first tier
+// closer to (or further from) the points; crossArcs lets the dimension line cross circular arcs; style INLINE writes the length on the segment itself (arrowheads at its
+// two points, the label beside it) for a segment inside the figure.
+export const DIMENSION_EXTENSIONS=['FULL','NONE'];
+export const DIMENSION_OFFSET_PX_MIN=8,DIMENSION_OFFSET_PX_MAX=120,DIMENSION_MAX_TIER=3;
+const dimensionDistance=(style,offset,offsetPx)=>style==='INLINE'?0:(offsetPx??DIMENSION_FIRST_PX)+DIMENSION_STEP_PX*(offset-1);
+/** The tier (1..3) every dimension stands on, as {id:tier}: a number is kept, "AUTO" is the lowest tier whose rows on the same line and side do not overlap it (shorter spans first, so the
+ *  longest total stands outermost). Rows that are not usable are skipped here (planeMarkSpec reports them). */
+export function resolveDimensionOffsets(plan,points){
+  const rows=(Array.isArray(plan?.planeMarks?.dimensions)?plan.planeMarks.dimensions:[]).filter(row=>row&&typeof row==='object'&&points[row.from]&&points[row.to]&&row.from!==row.to&&DIMENSION_SIDES.includes(row.side));
+  const model=new Map(rows.map(row=>{const a=points[row.from].approximation,b=points[row.to].approximation;return [row.id,{row,a,b,length:norm(sub(b,a))}];}));
+  const all=[...model.values()].filter(item=>item.length>1e-12),scale=Math.max(1e-9,...all.map(item=>item.length));
+  const sameLine=(p,q)=>{
+    const d=[(p.b[0]-p.a[0])/p.length,(p.b[1]-p.a[1])/p.length];
+    if(Math.abs(d[0]*(q.b[1]-q.a[1])-d[1]*(q.b[0]-q.a[0]))>1e-6*q.length)return false;
+    return [q.a,q.b].every(point=>Math.abs(d[0]*(point[1]-p.a[1])-d[1]*(point[0]-p.a[0]))<=1e-6*scale);
+  };
+  const out={};
+  const groups=[];
+  for(const item of all){const group=groups.find(g=>g[0].row.side===item.row.side&&sameLine(g[0],item));if(group)group.push(item);else groups.push([item]);}
+  for(const group of groups){
+    const base=group[0],d=[(base.b[0]-base.a[0])/base.length,(base.b[1]-base.a[1])/base.length];
+    const span=item=>{const s=[item.a,item.b].map(point=>(point[0]-base.a[0])*d[0]+(point[1]-base.a[1])*d[1]);return [Math.min(...s),Math.max(...s)];};
+    const taken=[];   // {tier, span}
+    for(const item of group)if(Number.isInteger(item.row.offset))taken.push({tier:item.row.offset,span:span(item)});
+    for(const item of [...group].filter(item=>item.row.offset==='AUTO').sort((p,q)=>p.length-q.length||String(p.row.id).localeCompare(String(q.row.id)))){
+      const [lo,hi]=span(item);
+      let tier=1;
+      while(taken.some(other=>other.tier===tier&&hi>other.span[0]+1e-6*scale&&other.span[1]>lo+1e-6*scale))tier++;
+      if(tier>DIMENSION_MAX_TIER)bad('DIMENSION_TIERS_EXCEEDED:'+item.row.id);
+      taken.push({tier,span:[lo,hi]});out[item.row.id]=tier;
+    }
+  }
+  for(const item of all)if(Number.isInteger(item.row.offset))out[item.row.id]=item.row.offset;
+  return out;
+}
 const DIMENSION_SIDE_VECTORS={BELOW:[0,1],ABOVE:[0,-1],LEFT:[-1,0],RIGHT:[1,0]};
 /** A dimension's label text and unit: a trailing `\\,cm` (thin space and unit) written inside the label is the unit, so "24\\,cm" is the label 24 with unit cm. */
 export function dimensionLabelParts(row){
@@ -110,10 +146,27 @@ export function dimensionLabelParts(row){
   }
   return {label,unit};
 }
-function dimensionFrame(p,q,side,offset){
+function dimensionFrame(p,q,side,offset,offsetPx,style){
   const length=Math.hypot(q[0]-p[0],q[1]-p[1]),d=[(q[0]-p[0])/length,(q[1]-p[1])/length],want=DIMENSION_SIDE_VECTORS[side];
   const score=v=>v[0]*want[0]+v[1]*want[1],candidates=[[-d[1],d[0]],[d[1],-d[0]]],n=score(candidates[0])>=score(candidates[1])?candidates[0]:candidates[1];
-  return {length,d,n,dist:DIMENSION_FIRST_PX+DIMENSION_STEP_PX*(offset-1),ok:score(n)>=0.2};
+  return {length,d,n,dist:dimensionDistance(style,offset,offsetPx),ok:score(n)>=0.2};
+}
+
+/** An equalLengths entry {"path":[ids]} (E32): displayed segments chained end to end through shared points; returns {rep: the first id, ids}. */
+function equalPathEntry(entry,rowId,kind,plan,segEnds){
+  if(kind!=='EQUAL_MARK')bad('PARALLEL_MARK_PATH_UNSUPPORTED:'+rowId);
+  if(!entry||typeof entry!=='object'||Array.isArray(entry)||Object.keys(entry).join()!=='path'||!Array.isArray(entry.path)||entry.path.length<2||entry.path.length>6||entry.path.some(id=>typeof id!=='string')||new Set(entry.path).size!==entry.path.length)bad('EQUAL_MARK_PATH_INVALID:'+rowId);
+  const refs=entry.path.map(id=>{const s=(plan.displaySegments||[]).find(row=>row.id===id);if(!s)bad('MARK_TARGET_UNKNOWN:'+id);return s.refs;});
+  entry.path.forEach(segEnds);
+  // the walk: the end of the first piece that the second piece shares is the joint; every later piece must contain the point the walk stands at
+  const joint=refs[0].find(point=>refs[1].includes(point));
+  if(joint===undefined)bad('EQUAL_MARK_PATH_NOT_CONNECTED:'+rowId+':'+entry.path[1]);
+  let stand=refs[1].find(point=>point!==joint);
+  for(let i=2;i<refs.length;i++){
+    if(!refs[i].includes(stand))bad('EQUAL_MARK_PATH_NOT_CONNECTED:'+rowId+':'+entry.path[i]);
+    stand=refs[i].find(point=>point!==stand);
+  }
+  return {rep:entry.path[0],ids:[...entry.path]};
 }
 
 // Returns {objects, factRolesByLabel}; throws an Error whose message is an UPPER_SNAKE code (optionally ':detail').
@@ -315,6 +368,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
   }
 
   // --- dimension lines: a length between two points on a parallel line, with a bar, arrow or brace style
+  const autoOffsets=resolveDimensionOffsets(plan,points);
   for(const row of list(marks.dimensions,'dimensions')){
     if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:dimensions');
     keysOk(row,KEYS.dimensions,'dimensions');claim(row.id,'dimensions');
@@ -324,8 +378,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(!DIMENSION_SIDES.includes(row.side))bad('DIMENSION_SIDE_INVALID:'+row.id);
     const style=row.style??'BAR';
     if(!DIMENSION_STYLES.includes(style))bad('DIMENSION_STYLE_INVALID:'+row.id);
-    const offset=row.offset??1;
+    // offset: 1..3, or "AUTO" (the tier is derived from the other dimensions on the same line and side)
+    const offset=row.offset==='AUTO'?(autoOffsets[row.id]??bad('DIMENSION_OFFSET_INVALID:'+row.id)):(row.offset??1);
     if(!Number.isInteger(offset)||offset<1||offset>3)bad('DIMENSION_OFFSET_INVALID:'+row.id);
+    if(row.extension!==undefined&&!DIMENSION_EXTENSIONS.includes(row.extension))bad('DIMENSION_EXTENSION_INVALID:'+row.id);
+    if(row.offsetPx!==undefined&&(typeof row.offsetPx!=='number'||!Number.isFinite(row.offsetPx)||row.offsetPx<DIMENSION_OFFSET_PX_MIN||row.offsetPx>DIMENSION_OFFSET_PX_MAX))bad('DIMENSION_OFFSET_PX_INVALID:'+row.id);
+    if(row.crossArcs!==undefined&&typeof row.crossArcs!=='boolean')bad('DIMENSION_CROSS_ARCS_INVALID:'+row.id);
+    if(style==='INLINE'&&(row.offset!==undefined&&row.offset!==1||row.offsetPx!==undefined||row.extension!==undefined||row.crossArcs!==undefined))bad('DIMENSION_INLINE_FIELD_INVALID:'+row.id);
     const parts=dimensionLabelParts(row);
     if(parts.conflict)bad('MARK_UNIT_INVALID:dimensions:'+row.id);
     const kind=row.labelKind??'MATH';
@@ -338,9 +397,9 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(declared===null||declared<=0)bad('MARK_FIELD_INVALID:dimensions.value:'+row.id);
       if(Math.abs(declared-distance)>1e-6*Math.max(1,declared))bad('DIMENSION_FACT_MISMATCH:'+row.id+':declared='+declared+':drawn='+distance.toFixed(6));
     }
-    const frame=dimensionFrame(a,b,row.side,offset);
+    const frame=dimensionFrame(a,b,row.side,offset,row.offsetPx,style);
     if(!frame.ok)bad('DIMENSION_SIDE_AMBIGUOUS:'+row.id);
-    objects.push({id:row.id,kind:'DIMENSION_LINE',refs:[row.from,row.to],side:row.side,style,offset,labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
+    objects.push({id:row.id,kind:'DIMENSION_LINE',refs:[row.from,row.to],side:row.side,style,offset,...(row.offsetPx!==undefined?{offsetPx:row.offsetPx}:{}),...(row.extension==='NONE'?{extension:'NONE'}:{}),...(row.offset==='AUTO'?{autoOffset:true}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
     factRolesByLabel[row.id+'-label']=role(row);
   }
 
@@ -605,11 +664,12 @@ export function arcLabelFraming(plan,model,points,bounds,canvas){
 const DIMENSION_LABEL_GAP_PX=8,DIMENSION_VIEW_SAFE_PX=14;
 export function dimensionSites(plan,points){
   const rows=Array.isArray(plan?.planeMarks?.dimensions)?plan.planeMarks.dimensions:[],sites=[];
+  let tiers={};try{tiers=resolveDimensionOffsets(plan,points);}catch{/* planeMarkSpec reports the real error */}
   for(const row of rows){
     if(!row||typeof row!=='object')continue;
     try{
       const a=points[row.from].approximation,b=points[row.to].approximation,parts=dimensionLabelParts(row),kind=row.labelKind??'MATH';
-      sites.push({from:a,to:b,side:row.side,offset:row.offset??1,...arcLabelBoxEstimate({label:String(parts.label),labelKind:kind,unit:parts.unit})});
+      sites.push({from:a,to:b,side:row.side,offset:row.offset==='AUTO'?(tiers[row.id]??1):(row.offset??1),offsetPx:row.offsetPx,style:row.style??'BAR',...arcLabelBoxEstimate({label:String(parts.label),labelKind:kind,unit:parts.unit})});
     }catch{/* planeMarkSpec reports the real error */}
   }
   return sites;
@@ -626,7 +686,7 @@ export function dimensionFraming(plan,model,points,bounds,canvas){
     for(const site of sites){
       const P=[left+(site.from[0]-xMin)*sx,top+(yMax-site.from[1])*sx],Q=[left+(site.to[0]-xMin)*sx,top+(yMax-site.to[1])*sx];
       if(!(Math.hypot(Q[0]-P[0],Q[1]-P[1])>1e-9))continue;
-      const {n,dist}=dimensionFrame(P,Q,site.side,site.offset);
+      const {n,dist}=dimensionFrame(P,Q,site.side,site.offset,site.offsetPx,site.style);
       const support=Math.abs(n[0])*site.width/2+Math.abs(n[1])*site.height/2,reach=dist+DIMENSION_LABEL_GAP_PX+support,mid=[(P[0]+Q[0])/2,(P[1]+Q[1])/2];
       const centre=[mid[0]+n[0]*reach,mid[1]+n[1]*reach];
       const corners=[[P[0]+n[0]*dist,P[1]+n[1]*dist],[Q[0]+n[0]*dist,Q[1]+n[1]*dist],

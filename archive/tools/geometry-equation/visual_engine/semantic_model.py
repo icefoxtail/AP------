@@ -167,9 +167,14 @@ def validate(spec):
         refs=obj['refs']
         if len(refs)!=2 or len(set(refs))!=2 or any(objects.get(ref,{}).get('kind')!='POINT' for ref in refs):raise ValueError('DIMENSION_POINT_REFS_REQUIRED:'+obj['id'])
         if obj['side'] not in {'ABOVE','BELOW','LEFT','RIGHT'}:raise ValueError('DIMENSION_SIDE_INVALID:'+obj['id'])
-        if obj.get('style','BAR') not in {'BAR','ARROW','BRACE'}:raise ValueError('DIMENSION_STYLE_INVALID:'+obj['id'])
+        if obj.get('style','BAR') not in {'BAR','ARROW','BRACE','INLINE'}:raise ValueError('DIMENSION_STYLE_INVALID:'+obj['id'])
         offset=obj.get('offset',1)
         if isinstance(offset,bool) or not isinstance(offset,int) or not 1<=offset<=3:raise ValueError('DIMENSION_OFFSET_INVALID:'+obj['id'])
+        # E32: extension NONE draws no extension lines; offsetPx (8..120) is the distance of the first tier; style INLINE stands on the segment itself and takes neither
+        if obj.get('extension','FULL') not in {'FULL','NONE'}:raise ValueError('DIMENSION_EXTENSION_INVALID:'+obj['id'])
+        if 'autoOffset' in obj and obj['autoOffset'] is not True:raise ValueError('DIMENSION_OFFSET_INVALID:'+obj['id'])
+        if 'offsetPx' in obj and (isinstance(obj['offsetPx'],bool) or not isinstance(obj['offsetPx'],(int,float)) or not 8<=obj['offsetPx']<=120):raise ValueError('DIMENSION_OFFSET_PX_INVALID:'+obj['id'])
+        if obj.get('style')=='INLINE' and ('offsetPx' in obj or 'extension' in obj or offset!=1):raise ValueError('DIMENSION_INLINE_FIELD_INVALID:'+obj['id'])
         text=obj.get('labelText')
         if not isinstance(text,str) or not text.strip() or len(text)>40:raise ValueError('DIMENSION_LABEL_REQUIRED:'+obj['id'])
         p,q=geometry[refs[0]],geometry[refs[1]]
