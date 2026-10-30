@@ -574,7 +574,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 일차방정식 -5x+2y+1=0과 -10x+4y+3=0의 그래프인 두 직선이 그려져 있고, 각 직선 옆에 그 직선의 식이 지시선과 함께 적혀 있다.",
+    "solutionImageCaption": "일차방정식 -5x+2y+1=0과 -10x+4y+3=0의 그래프를 좌표평면에 그린 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

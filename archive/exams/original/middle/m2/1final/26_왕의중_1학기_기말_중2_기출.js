@@ -473,7 +473,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 개략도이다. 직선 y=ax+6과 직선 y=-2x+6이 y축 위의 같은 점에서 만나고, 두 직선과 x축으로 둘러싸인 삼각형이 색칠되어 있다. 삼각형의 높이 6, 오른쪽 밑변 3, 왼쪽 밑변 6/a와 넓이 15가 적혀 있다.",
+    "solutionImageCaption": "두 직선 y=ax+6, y=-2x+6과 x축으로 둘러싸인 삼각형은 밑변이 3+6/a, 높이가 6이고 넓이가 15이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
