@@ -101,7 +101,7 @@ def audit(p):
             if oid in elements:errors.append('HIDDEN_POINT_MARKER_PRESENT:'+oid)
             ex,ey=ox+sx*expected_points[oid][0],oy-sy*expected_points[oid][1]
             if any(math.hypot(cx-ex,cy-ey)<=max(1.5,r) for _,cx,cy,r in dots):errors.append('HIDDEN_POINT_MARKER_AT_POINT:'+oid)
-        kept={oid for oid in expected_points if oid not in unmarked}
+        kept={oid for oid in expected_points if oid not in unmarked}|set(p.get('extraPoints') or [])   # E37: the dots of a callout's copies are the plan's own (planeMarks.callouts)
         for n,_,_,_ in dots:
             if n.get('data-role')=='point' and n.get('id') not in kept:errors.append('UNEXPECTED_POINT_MARKER:'+str(n.get('id')))
     for oid,expected in expected_points.items():

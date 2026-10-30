@@ -32,6 +32,7 @@ import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
 import {planeMarkSpec,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints,TEXT_LABEL_MATH,TEXT_LABEL_HANGUL,TEXT_LABEL_FUNCTIONS} from './plane-marks.mjs';
 import {regionExtentPoints} from './plane-regions.mjs';
+import {calloutEntries,calloutExtentPoints,calloutDimensionSites,calloutSpec} from './plane-callouts.mjs';
 
 const GRAPH_OVERVIEW_CANVAS=Object.freeze({width:610,height:420,panel:140});
 const QUADRATIC_OVERVIEW_CANVAS=Object.freeze({width:384,height:320,panel:140});
@@ -771,6 +772,9 @@ function specForFamily(plan,model,id){
     return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),...(degree<=2||cubicBand?{topInset:canvas.topInset+bandExtra}:{}),...(p.equalUnits===true&&(p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),...(axisVariable!=='x'?{axisVariable}:{}),...(degree<=2?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(header?{}:{formula:[canvas.width/2,72]}),...bandCenters}}:cubicBand?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{formula:[canvas.width/2,72]}}:{}),...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{})},objects};
   }
   const displayed=displayGeometryInventory(plan,model),points=displayed.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);for(const q of [...regionExtentPoints(plan,points),...traceJoinExtentPoints(plan,points),...textLabelExtentPoints(plan)]){xs.push(q[0]);ys.push(q[1]);}   // a region's arc can bulge past the displayed points, and so can a joined trace arc
+  // callouts (E37): the pulled-out copies stand beside the main figure's box, inside the same frame ([] without planeMarks.callouts: nothing below changes)
+  const callouts=calloutEntries(plan,points,{xMin:Math.min(...xs),xMax:Math.max(...xs),yMin:Math.min(...ys),yMax:Math.max(...ys)},new Set(Array.isArray(plan.hiddenPointNames)?plan.hiddenPointNames:[]));
+  for(const q of calloutExtentPoints(callouts)){xs.push(q[0]);ys.push(q[1]);}
   // A plane figure (no axes) is fitted tightly: the engine's own margin already leaves room for the point names.
   const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1e-9),pad=span*(isPlaneFigure(plan)?.06:.35);
   // hiddenPointNames:[point IDs] draws derived helper points as bare dots: never a GIVEN/CONCLUSION point. (E31) A hidden point may also be listed in coordinateLabels: its name stays
@@ -900,6 +904,7 @@ function specForFamily(plan,model,id){
   // planeMarks (plane-marks.mjs): angle arcs, equal ticks, parallel arrows, expression labels, highlighted arcs; each is checked against the model here.
   const planeMarkFacts=planeMarkSpec(plan,model,points,new Set((plan.displaySegments||[]).map(s=>s.id)));
   objects.push(...planeMarkFacts.objects);Object.assign(factRolesByLabel,planeMarkFacts.factRolesByLabel);
+  const calloutFacts=calloutSpec(plan,model,callouts,pointNames);objects.push(...calloutFacts.objects);Object.assign(factRolesByLabel,calloutFacts.factRolesByLabel);   // E37
   const coordinateCanvas=plan.coordinateCanvas??{width:384,height:320};
   if(plan.coordinateCanvas!==undefined&&model.coordinateMode!=='SOURCE_COORDINATES'&&!isPlaneFigure(plan))throw Error('COORDINATE_CANVAS_SOURCE_FRAME_REQUIRED');
   if(!Number.isSafeInteger(coordinateCanvas.width)||coordinateCanvas.width<384||coordinateCanvas.width>720||!Number.isSafeInteger(coordinateCanvas.height)||coordinateCanvas.height<320||coordinateCanvas.height>600)throw Error('COORDINATE_CANVAS_BOUNDS_INVALID');
@@ -910,7 +915,7 @@ function specForFamily(plan,model,id){
   if(height>600)throw Error('COORDINATE_PANEL_TOO_TALL');
   const equationLabelCenters=Object.fromEntries(panelLabels.map((labelId,i)=>[labelId,[panelLabels.length===1?coordinateCanvas.width/2:coordinateCanvas.width*(i%2?.72:.28),panelCenters[Math.floor(i/2)]]]));
   // A plane figure with a label on a circular arc (outside its circle) widens its frame so the label has canvas room; every other figure keeps the tight frame.
-  const frame=dimensionFraming(plan,model,points,arcLabelFraming(plan,model,points,{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad},coordinateCanvas),coordinateCanvas);
+  const frame=dimensionFraming(plan,model,points,arcLabelFraming(plan,model,points,{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad},coordinateCanvas),coordinateCanvas,calloutDimensionSites(callouts));
   return {id,visualType:'line_circle_geometry',viewport:{xMin:frame.xMin,xMax:frame.xMax,yMin:frame.yMin,yMax:frame.yMax,width:coordinateCanvas.width,height,panel:0,...(topInset?{topInset}:{})},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id),...axisTickDisplayFacts(plan),...(panelLabels.length?{equationLabelCenters}:{}),...(axisCoincidentLines.length?{axisCoincidentLines}:{})},objects};
 }
 

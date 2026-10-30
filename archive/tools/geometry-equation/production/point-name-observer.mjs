@@ -72,7 +72,9 @@ export function observeDisplayedPointNames(svg,expectations){
 export function planNameExpectations(plan){
   const names=plan?.pointNames;
   if(!names||typeof names!=='object')return [];
-  if(plan.mathPlan)return Object.entries(names).map(([id,name])=>({owner:id,name}));
+  // a plane figure's callouts (E37) draw their points again under the same names: the copy `<callout id>__<point id>` shows the name of the point it copies
+  const copies=(Array.isArray(plan.planeMarks?.callouts)?plan.planeMarks.callouts:[]).flatMap(row=>Array.isArray(row?.path)&&typeof row.id==='string'?row.path.filter(id=>typeof names[id]==='string').map(id=>({owner:row.id+'__'+id,name:names[id]})):[]);
+  if(plan.mathPlan)return [...Object.entries(names).map(([id,name])=>({owner:id,name})),...copies];
   const required=plan.graphPlan?.requiredPoints??[],overlay=new Set((plan.graphPlan?.overlays?.points??[]).map(point=>point?.id));
   return Object.entries(names).flatMap(([id,name])=>{
     const index=required.findIndex(point=>point?.id===id);

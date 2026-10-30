@@ -10,6 +10,7 @@ import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-lay
 import {bindMeasuredOwnerSafeLabelRepair} from './layout-repair.mjs';
 import {auditMeasuredOwnerSafeLabelRepair} from './layout-repair-audit.mjs';
 import {unmarkedPointIds,isPlaneFigure} from './plane-marks.mjs';
+import {calloutPointIds} from './plane-callouts.mjs';
 
 export const CANDIDATE_SVG_VERSION='construction-candidate-svg-v1';
 const CAPABILITY='construction-spike-v1';
@@ -222,7 +223,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     // Graph lines are audited against the plan's own exact slope and intercept (a=slope, b=-1, c=intercept for ax+by+c=0).
     // A piecewise polynomial's referenceLines are y=c (a=0, b=-1, c) or, with slope and intercept, y=m*x+c (a=m, b=-1, c).
     const graphLines=graph?Object.fromEntries([...(plan.graphPlan.lines||[]).map(line=>['line-'+line.id,[exactValue(line.slope),-1,exactValue(line.intercept)]]),...((plan.capability==='piecewise-polynomial-spike-v1'||plan.capability==='piecewise-discontinuous-spike-v1')?(plan.graphPlan.referenceLines||[]).map(line=>['line-'+line.id,[line.slope===undefined?0:exactValue(String(line.slope)),-1,exactValue(String(line.slope===undefined?line.y:line.intercept))]]):[])]):null;
-    const audit=await call(pythonWorker,'staticAudit',{svg,points:peerOf(displayed?.points,peer?.points),lines:graph?graphLines:peerOf(displayed?.lines,peer?.lines),circles:peerOf(displayed?.circles,peer?.circles),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH',unmarkedPoints:unmarkedPointIds(plan),
+    const audit=await call(pythonWorker,'staticAudit',{svg,points:peerOf(displayed?.points,peer?.points),lines:graph?graphLines:peerOf(displayed?.lines,peer?.lines),circles:peerOf(displayed?.circles,peer?.circles),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH',unmarkedPoints:unmarkedPointIds(plan),...(calloutPointIds(plan).length?{extraPoints:calloutPointIds(plan)}:{}),
       // The equation labels of displayed SOURCE_LINEs (E31): the observer reads each one's owner, place and, for a free text, glyphs back from the final XML.
       hiddenCoordinateLabels:graph?[]:(plan.coordinateLabels||[]).filter(id=>(plan.hiddenPointNames||[]).includes(id)),
       lineLabels:graph?[]:(plan.lineLabels||[]).map(row=>({id:row.nodeId+'-equation',owner:row.nodeId,...(row.labelAt!==undefined?{labelAt:row.labelAt}:{}),...(row.text!==undefined?{text:row.text}:{}),...(row.values!==undefined?{values:row.values}:{})}))},{script:OBSERVER_SCRIPT});

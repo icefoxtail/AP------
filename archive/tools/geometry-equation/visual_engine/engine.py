@@ -77,6 +77,7 @@ FREE_LABEL_GAPS=(8,12,18,26) # px: the gaps a free text label beside a point or 
 LINE_AT_NAMED={'START':.08,'END':.92}   # lineAt names: a line label near the left (lower) end / the right (upper) end of the drawn line
 LINE_AT_BAND=.25            # the wide search of a lineAt label stays within this fraction of the line round the stated place
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT on a plane figure's segment (the same red as a solid figure's accent edge)
+GUIDE_STROKE='#8a8a8a'      # a callout's guide line from the main figure to the pulled-out copy: light grey, dotted (E37)
 ANGLE_EMPHASIS_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle mark: red, blue, green arcs
 # A source that says 빗금친 (hatched) is drawn with real diagonal strokes clipped to the region, not with a second grey:
 # up-right diagonals as in the textbook, about 9 px apart, at the thin indicator width.
@@ -695,6 +696,9 @@ def prepare(spec):
         elif kind in {'LINE','AUXILIARY_LINE'}:
             hits=clip_line(value,vp.bounds)
             if len(hits)==2:primitive({'id':oid,'kind':'line','from':vp.screen(hits[0]),'to':vp.screen(hits[1]),'token':'auxiliary' if kind=='AUXILIARY_LINE' else 'secondaryShape' if kind=='LINE' and obj.get('dash') else 'tangent' if oid in tangent_lines else 'mainShape','layer':20 if kind=='AUXILIARY_LINE' else 40,'role':'auxiliary' if kind=='AUXILIARY_LINE' else 'line','dash':'4 3' if kind=='AUXILIARY_LINE' or (kind=='LINE' and obj.get('dash')) else ''},'auxiliary' if kind=='AUXILIARY_LINE' else 'line')
+        elif kind=='SEGMENT' and obj.get('guide') is True:
+            # E37: a light dotted guide line from a point of the main figure to its pulled-out copy (planeMarks.callouts link); labels keep clear of it like any line
+            primitive({'id':oid,'kind':'line','from':vp.screen(value[0]),'to':vp.screen(value[1]),'token':'leaderLine','layer':25,'role':'guide','stroke':GUIDE_STROKE,'dash':'2 4'},'line')
         elif kind in {'SEGMENT','LEADER_LINE'}:
             a,b=vp.screen(value[0]),vp.screen(value[1]);origin=vp.screen((0,0));overlap=None
             # A SEGMENT lying on a displayed axis (both ends within 0.5 screen px of it) is hidden under the thinner axis stroke: draw it heavier and above the axis.

@@ -16,6 +16,7 @@ FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'},'QUADRANT':{'quadrant'}}
 
 FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
+FIELDS|={'guide'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -63,6 +64,8 @@ def validate(spec):
         if 'pattern' in obj and obj['kind']!='FILL_REGION':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
         # emphasis (BOLD, ACCENT) singles out one drawn segment; nothing else carries it.
         if 'emphasis' in obj and (obj['kind']!='SEGMENT' or obj['emphasis'] not in {'BOLD','ACCENT'}):raise ValueError('INVALID_SEGMENT_EMPHASIS')
+        # guide (E37): a plane figure's callout guide line; only a SEGMENT carries it, with none of the segment styles
+        if 'guide' in obj and (obj['kind']!='SEGMENT' or obj['guide'] is not True or any(key in obj for key in ('dash','arrow','emphasis'))):raise ValueError('INVALID_SEGMENT_GUIDE:'+str(obj.get('id')))
         # emphasisGroup (1..3) colours the arcs of one angle mark; nothing else carries it.
         if 'emphasisGroup' in obj and (obj['kind']!='ANGLE_MARK' or isinstance(obj['emphasisGroup'],bool) or obj['emphasisGroup'] not in {1,2,3}):raise ValueError('INVALID_ANGLE_EMPHASIS_GROUP')
         # A plane mark label is plain TEXT or math; a unit (cm, m, mm) follows a math label of an expression label, a circular arc or a trace only.

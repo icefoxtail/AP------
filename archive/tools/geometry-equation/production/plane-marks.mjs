@@ -30,6 +30,11 @@ export function planNameTexts(plan,exceptPointId){
   for(const row of Array.isArray(marks.expressionLabels)?marks.expressionLabels:[])add(row?.text);
   for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])add(row?.label);
   for(const row of Array.isArray(marks.pathLabels)?marks.pathLabels:[])add(row?.label);
+  for(const callout of Array.isArray(marks.callouts)?marks.callouts:[]){   // E37: the texts a callout's own marks write
+    for(const row of Array.isArray(callout?.dimensions)?callout.dimensions:[])add(row?.label);
+    for(const row of Array.isArray(callout?.marks?.expressionLabels)?callout.marks.expressionLabels:[])add(row?.text);
+    for(const row of Array.isArray(callout?.angles)?callout.angles:[])add(row?.label);
+  }
   // A free text label anchored AT a point (at: its id) is how the figure writes that point's own label (P(a,b) beside P): it never counts against that point.
   for(const row of Array.isArray(marks.textLabels)?marks.textLabels:[])if(!(typeof row?.at==='string'&&row.at===exceptPointId))add(row?.text);
   for(const row of Array.isArray(plan?.scalarLabels)?plan.scalarLabels:[]){add(row?.prefix);add(row?.unit);}
@@ -57,7 +62,7 @@ export function segmentLabelSite(row,p,q){
   const others=(at==='START'?[0.06,0.15,0.3]:at==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
   return {at:mid,others,band:at==='START'?[0,.25]:at==='END'?[.75,1]:null};
 }
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants','callouts'],
   quadrants:['id','quadrant','label','fill','factRole'],textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed'],
@@ -653,6 +658,7 @@ export function planeMarkPointRefs(plan){
   for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])refs.push(row?.from,row?.to);
   for(const row of Array.isArray(marks.pathLabels)?marks.pathLabels:[])if(Array.isArray(row?.points))refs.push(...row.points);
   for(const row of Array.isArray(marks.textLabels)?marks.textLabels:[])if(typeof row?.at==='string')refs.push(row.at);
+  for(const row of Array.isArray(marks.callouts)?marks.callouts:[]){if(Array.isArray(row?.path))refs.push(...row.path);}   // E37: the points a callout draws again
   for(const row of Array.isArray(marks.angleSums)?marks.angleSums:[])if(typeof row?.at==='string')refs.push(row.at);
   for(const row of Array.isArray(marks.traces)?marks.traces:[]){refs.push(row?.center,row?.radius?.point,...(Array.isArray(row?.through)?row.through:[]));}
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
@@ -785,9 +791,9 @@ export function dimensionSites(plan,points){
   }
   return sites;
 }
-export function dimensionFraming(plan,model,points,bounds,canvas){
+export function dimensionFraming(plan,model,points,bounds,canvas,extraSites=[]){
   if(!planeMarksAllowed(plan,model))return bounds;
-  const sites=dimensionSites(plan,points);
+  const sites=[...dimensionSites(plan,points),...extraSites];   // extraSites (E37): the dimension lines of the callouts
   if(!sites.length)return bounds;
   let {xMin,xMax,yMin,yMax}=bounds;
   for(let pass=0;pass<80;pass++){
