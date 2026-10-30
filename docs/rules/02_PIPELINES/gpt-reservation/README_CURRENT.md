@@ -9,6 +9,9 @@
 
 ## 예약단계 메타 기록 경계 — 단일 정본 링크 (2026-10-22)
 
+- <b>2022 미적분Ⅰ에서 2015 수학Ⅱ의 공유 PT/TPL을 재사용할 때</b> [Notion 공통 메타 의미·ACTIVE 바인딩 SOP](https://app.notion.com/p/4090e68bd69f81e4b0bbf2a683df1b27)를 CREATE/R1/R2/R3의 동일 판정 순서로 적용한다. 현재 H22 표준단원 L1/L2→RPM L3/L4→2015 공유 ACTIVE PT/TPL→2022 exact PT binding→UID·Consumer 상태를 구분한다. crosswalk의 과거 GAP만으로 현재 ACTIVE 부재·의미 HOLD를 단정하지 않는다. 이 링크는 기존 메타 정본·독립 검수·역할 권한/품질 계약을 대체하지 않는다.
+
+
 - CREATE/R1/R2/R3/MASTER의 실제 의미 메타 확인과 해당 역할별 검수·인계 분모는 **각 역할 CURRENT**를 따른다. 단독으로 완료 여부를 정할 때 이 공용 README의 과거 문구를 확대 적용하지 않는다.
 - 메타 파일을 **읽거나 소형 JSON/stage-local 패킷으로 쓸 때**는 [공용 조회·소형 쓰기 계약](../../../architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md)을 적용한다. 공용 `question_metadata.json` 직접 대형 수정·업로드, REVIEW2 허위 승인 금지. 예약 worker는 Git writer가 아니며 실제 등록은 인가된 writer/Actions가 맡는다.
 - [Notion 02-06 메타데이터 라우트](https://app.notion.com/p/4010e68bd69f81588ea0cc325bbe51cb)에서만 등록기 장애·의미 판단·조건부 참고 문서를 탐색한다. 문서 변경은 기존 예약 프롬프트·Library/Drive stage·ON/OFF를 자동 변경하지 않는다.
