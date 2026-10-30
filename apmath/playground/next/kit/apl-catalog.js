@@ -384,6 +384,7 @@ window.APLab.catalog = {
     "아폴로니오스 원 & 함정 연구소"
    ],
    "legacy": "labs/공통수학/평면·직선·이동.html",
+   "next": "next/labs/common-lines.html",
    "glyph": "<line x1=\"8\" y1=\"38\" x2=\"72\" y2=\"38\"/><line x1=\"40\" y1=\"8\" x2=\"40\" y2=\"68\"/><path d=\"M18 18 L38 28 L58 18\" stroke-dasharray=\"0\"/><path d=\"M18 58 L38 48 L58 58\" stroke-dasharray=\"3 3\"/>",
    "sceneTotal": 30
   },
@@ -431,6 +432,7 @@ window.APLab.catalog = {
     "꺾인 함수와 역함수 3교점"
    ],
    "legacy": "labs/공통수학/합성함수·유리함수·무리함수.html",
+   "next": "next/labs/common-functions.html",
    "glyph": "<path d=\"M8 68 Q20 10 40 38 Q60 66 72 8\"/><circle cx=\"8\" cy=\"68\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"72\" cy=\"8\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
