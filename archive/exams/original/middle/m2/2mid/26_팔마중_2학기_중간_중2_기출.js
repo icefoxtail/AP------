@@ -890,7 +890,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-4",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q17.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: △ABC의 외심 O에서 중심각 ∠BOC가 40°로, 꼭짓점 A의 각이 20°로 표시되고, △OBC의 내심 I에서 BI와 CI가 ∠OBC, ∠OCB를 이등분하는 호 표식과 ∠BIC의 호가 그려진 그림.",
+    "solutionImageCaption": "외심 O의 중심각 ∠BOC와 내심 I에서의 이등분선 표식을 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -940,7 +944,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-4",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q18.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠A=90°, ∠B=66°인 직각삼각형 ABC에서 변 BC의 중점 D에 대해 DA=DB=DC 눈금과 ∠DAC=∠ACD=24°, ∠ADC=132°가 표시되고, △ACD의 외심 E에서 EA=EC 눈금과 ∠AEC=96°가 표시된 그림.",
+    "solutionImageCaption": "외심 D와 E에서 생기는 이등변삼각형의 같은 변과 각의 크기를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -991,7 +999,11 @@ window.questionBank = [
     "sourcePage": "5-4",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q19.png",
     "imageStatus": "present",
-    "sourceCorrection": "원본 다섯 보기 139,140,141,142,143에 계산값 154가 없어 정답이 존재하지 않는다. ⑤ 143→154로 교체한 SOURCE-CORRECTED 문항."
+    "sourceCorrection": "원본 다섯 보기 139,140,141,142,143에 계산값 154가 없어 정답이 존재하지 않는다. ⑤ 143→154로 교체한 SOURCE-CORRECTED 문항.",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 사다리꼴 ABCD는 AB=4cm, CD=8cm이고 D에서 BC에 내린 높이 4cm로 ∠C=30°, ∠D=150°가 표시되며, 아래쪽 닮은 사다리꼴 EFGH는 EF=2cm, HG=x=4cm, ∠H=150°가 표시된 그림.",
+    "solutionImageCaption": "닮음비 1/2와 높이 4cm, 빗변 8cm로 구한 각과 변의 길이를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -1086,7 +1098,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-5",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q21.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC(∠B=90°, ∠C=35°, ∠A=55°)와 직각삼각형 JKL(∠K=90°, ∠L=55°, ∠J=35°)이 나란히 있고, 두 삼각형의 빗변 AC와 JL이 모두 6cm로 표시된 그림.",
+    "solutionImageCaption": "두 직각삼각형의 빗변의 길이와 예각의 크기를 나란히 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -1130,7 +1146,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-5",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q22.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: O가 외심이자 내심인 삼각형 ABC에서 OA=OB=OC 눈금과 세 변의 같은 길이 눈금, AO·BO·CO가 각을 이등분하는 호 표식이 있고, ∠A는 x=60°, ∠OBC는 y=30°로 표시된 그림.",
+    "solutionImageCaption": "외심이면서 내심인 점 O에서 같은 길이와 이등분된 각의 표식을 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1174,7 +1194,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-5",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q23.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD를 세 그림으로 나타냈다. 첫째 그림은 두 대각선의 교점 O에서 OA=OC, OB=OD 눈금, 둘째 그림은 BD 위의 E, F에서 BE=DF와 OE=OF 눈금, 셋째 그림은 대각선 AC, EF가 O에서 이등분되는 사각형 AECF를 색칠해 보여 준다.",
+    "solutionImageCaption": "대각선의 교점 O에서 이등분되는 선분의 같은 길이 표시와 사각형 AECF를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
