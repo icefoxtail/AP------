@@ -76,6 +76,38 @@ test('2.0 페이지가 불러오는 키트 파일이 존재하고 문법이 맞�
   }
 });
 
+test('모든 HTML이 불러오는 로컬 스크립트·스타일·아이콘 파일이 존재한다 (404 방지)', () => {
+  // 외부(http·//)·data:·#는 건너뜁니다. 주석 처리된 태그는 무시하고, ?쿼리·#해시는 떼고, %XX 인코딩은 풀어 확인합니다.
+  const VENDOR = path.join(NEXT, 'kit', 'vendor');
+  const pages = [];
+  (function walk(dir) {
+    for (const name of fs.readdirSync(dir)) {
+      const full = path.join(dir, name);
+      if (fs.statSync(full).isDirectory()) { if (full !== VENDOR) walk(full); continue; }
+      if (name.endsWith('.html')) pages.push(full);
+    }
+  })(PLAYGROUND);
+  assert.ok(pages.length > 40, `HTML 파일을 거의 찾지 못했습니다 (${pages.length}개)`);
+  const broken = [];
+  let checked = 0;
+  for (const page of pages) {
+    const html = fs.readFileSync(page, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+    for (const m of html.matchAll(/<(script|link)\b[^>]*>/gi)) {
+      const attr = m[1].toLowerCase() === 'script' ? 'src' : 'href';
+      const a = m[0].match(new RegExp(`\\b${attr}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'));
+      const ref = a && (a[1] ?? a[2] ?? a[3]);
+      if (!ref || /^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(ref)) continue;
+      const clean = strip(ref);
+      if (!clean) continue;
+      checked += 1;
+      const target = clean.startsWith('/') ? path.join(PLAYGROUND, clean) : path.resolve(path.dirname(page), clean);
+      if (!fs.existsSync(target)) broken.push(`${path.relative(PLAYGROUND, page)} → ${ref}`);
+    }
+  }
+  assert.ok(checked > 50, `확인한 참조가 너무 적습니다 (${checked}개)`);
+  assert.deepEqual(broken, [], `없는 파일을 가리키는 참조:\n${broken.join('\n')}`);
+});
+
 test('2.0 파일이 .gitignore에 걸려 배포에서 빠지지 않는다', () => {
   // 저장소 루트 .gitignore의 `catalog.js` 규칙 때문에 목록 파일이 커밋에서 빠진 적이 있습니다.
   const files = [];
