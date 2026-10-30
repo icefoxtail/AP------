@@ -46,7 +46,7 @@
 
   /* ---------- 상단 ---------- */
   const search = h('input', { type: 'search', placeholder: '단원·개념·장면 검색 (예: 접선, 사분원, 정사영)', 'aria-label': '실험실 검색', autocomplete: 'off' });
-  const teachSw = h('button', { class: 'hub-switch', 'aria-pressed': String(state.teach), title: '켜면 2.0 실험실이 수업 모드(큰 글씨·발표 막대)로 열립니다', html: `<span class="knob"></span><span class="txt">수업 모드로 열기</span>` });
+  const teachSw = h('button', { class: 'hub-switch', 'aria-pressed': String(state.teach), title: '켜면 2.0 실험실이 수업 모드(큰 글씨·굵은 선·단계 안내 줄)로 열립니다', html: `<span class="knob"></span><span class="txt">수업 모드로 열기</span>` });
   const themeBtn = h('button', { class: 'apl-icon-btn', 'aria-label': '테마 바꾸기' });
   const syncTheme = () => (themeBtn.innerHTML = icon(APLab.theme.current() === 'paper' ? 'moon' : 'sun'));
   syncTheme();
@@ -64,7 +64,7 @@
   // 3D 우주(처음 화면)와 이전 허브로 가는 얇은 링크 줄. 머리글 위에 놓여 스크롤하면 사라집니다.
   const trail = h('nav', { class: 'hub-trail', 'aria-label': '다른 화면' }, h('div', { class: 'hub-trail-in' },
     h('a', { href: '../index.html', html: `${icon('back')}<span>AP Math Universe</span>` }),
-    h('a', { href: '../teacher-hub.html', text: '이전 허브' })));
+    h('a', { href: '../teacher-hub.html', text: '이전 실험실 목록' })));
 
   /* ---------- 히어로 ---------- */
   const total = CAT.labs.length;
@@ -75,9 +75,9 @@
     h('div', {},
       h('h1', { html: '그림을 움직이면,<br><em>개념이 보입니다.</em>' }),
       h('p', { html: `중1 기본 도형부터 미적분Ⅰ·기하까지. 점을 끌고, 풀이를 한 단계씩 그림에 드러내고, 수업에서는 크게 띄워 판서합니다. 같은 대상은 언제나 같은 색으로 연결됩니다.` }),
-      h('div', { class: 'hub-stats', html: `<span class="hub-stat"><b>${total}</b>실험실</span><span class="hub-stat"><b>${sceneTotal}</b>탐구 장면</span><span class="hub-stat"><b>${CAT.courses.length}</b>학년·과목</span><span class="hub-stat"><b>${v2count}</b>2.0 셸 적용</span>` }),
+      h('div', { class: 'hub-stats', html: `<span class="hub-stat"><b>${total}</b>실험실</span><span class="hub-stat"><b>${sceneTotal}</b>탐구 장면</span><span class="hub-stat"><b>${CAT.courses.length}</b>학년·과목</span><span class="hub-stat"><b>${v2count}</b>2.0 화면 적용</span>` }),
       h('div', { class: 'hub-cta', id: 'hubCta' })),
-    h('div', { class: 'hub-hero-stage' }, heroCanvas, h('div', { class: 'cap', html: '<span>실험실 엔진으로 그린 실시간 그림</span><span>할선 → 접선</span>' })));
+    h('div', { class: 'hub-hero-stage' }, heroCanvas, h('div', { class: 'cap', html: '<span>실시간으로 그린 그림</span><span>평균변화율 → 미분계수</span>' })));
   let hero = null;
 
   function startHero() {
@@ -104,7 +104,7 @@
       b.seg([a + hh, ya], [a + hh, yb], { color: 'sky', width: 1.6, dash: [4, 4], alpha: 0.8 });
       b.point([a + hh, yb], { color: 'sky', r: 5 });
       b.handle('P', [a, ya], { color: 'amber' });
-      b.stext(14, 26, `할선 기울기 ${APLab.fmt(sec)}  →  접선 기울기 ${APLab.fmt(m)}`, { color: 'ink', size: 13, align: 'left', weight: 750 });
+      b.stext(14, 26, `평균변화율 ${APLab.fmt(sec)}  →  미분계수 ${APLab.fmt(m)}`, { color: 'ink', size: 13, align: 'left', weight: 750 });
       b.end();
       if (!reduce && visible) requestAnimationFrame(frame);
     };
@@ -144,7 +144,7 @@
   const shelf = h('div', { class: 'hub-shelf' });
   const content = h('div', {});
   const wrap = h('main', { class: 'hub-wrap' }, heroEl, bar, shelf, content,
-    h('footer', { class: 'hub-foot-note', html: `<span>AP Math 실험실 2.0 미리보기 · 카탈로그 ${esc(CAT.version)} · 실험실 ${total}개</span><span><a href="./compare.html">기존 ↔ 2.0 비교</a> · <a href="../teacher-hub.html">이전 허브</a> · <a href="../index.html">AP Math Universe</a> · <a href="./README.md">설계·이식 안내</a></span>` }));
+    h('footer', { class: 'hub-foot-note', html: `<span>AP Math 실험실 2.0 미리보기 · 카탈로그 ${esc(CAT.version)} · 실험실 ${total}개</span><span><a href="./compare.html">기존 ↔ 2.0 비교</a> · <a href="../teacher-hub.html">이전 실험실 목록</a> · <a href="../index.html">AP Math Universe</a> · <a href="./README.md">설계·이식 안내</a></span>` }));
   document.body.append(h('div', { class: 'hub' }, trail, top, wrap));
 
   /* ---------- 렌더 ---------- */
@@ -319,7 +319,7 @@
     });
     svg += '</svg>';
     const box = h('div', { class: 'hub-metro' },
-      h('div', { class: 'legend', html: CAT.strands.map((s) => `<span style="--c:${hue(s.hue)}"><i></i>${esc(s.name)}</span>`).join('') + `<span><svg width="18" height="18"><circle cx="9" cy="9" r="6" fill="var(--m-ink)" stroke="var(--stage)" stroke-width="3"/></svg>환승역(두 노선이 만나는 개념)</span><span><svg width="18" height="18"><circle cx="9" cy="9" r="7" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/></svg>2.0 셸 적용</span>` }),
+      h('div', { class: 'legend', html: CAT.strands.map((s) => `<span style="--c:${hue(s.hue)}"><i></i>${esc(s.name)}</span>`).join('') + `<span><svg width="18" height="18"><circle cx="9" cy="9" r="6" fill="var(--m-ink)" stroke="var(--stage)" stroke-width="3"/></svg>환승역(두 노선이 만나는 개념)</span><span><svg width="18" height="18"><circle cx="9" cy="9" r="7" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/></svg>2.0 화면 적용</span>` }),
       h('div', { html: svg }),
       h('div', { class: 'note', text: '왼쪽(중1)에서 오른쪽(고등)으로 갈수록 같은 개념이 깊어집니다. 역을 누르면 실험실이 열립니다. 검색하면 해당 역만 또렷하게 표시됩니다.' }));
     box.querySelectorAll('a[data-id]').forEach((a) => a.addEventListener('click', () => remember(LAB[a.dataset.id])));
