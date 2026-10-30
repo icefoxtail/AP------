@@ -221,8 +221,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q5.png",
-    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: △ABC의 외심 O에서 세 변에 내린 수선과 세 꼭짓점으로 이은 선분을 그리고, OA=OB=OC와 AF=FC를 눈금으로 표시했으며 합동인 △OFA와 △OFC를 색칠했다.",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: △ABC의 외심 O에서 세 변에 내린 수선과 세 꼭짓점으로 이은 선분을 그리고, OA=OB=OC, AF=FC, AD=DB, BE=EC를 서로 다른 눈금·동그라미 묶음으로 표시했으며 합동인 △OFA와 △OFC를 색칠했다.",
     "solutionImageCaption": "외심의 OA=OB=OC와 합동인 △OFA, △OFC를 보여 준다.",
     "solutionImageSize": "medium"
   },

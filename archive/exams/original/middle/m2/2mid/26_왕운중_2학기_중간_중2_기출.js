@@ -1475,7 +1475,7 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q021_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q21-solution-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q21-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AD가 ∠A를 이등분하고 DE⊥AC임을 직각·호 표시로 나타내고, △ABD≡△AED(같은 눈금)와 AB=12, AC=15, BD=4, AE=12, DE=4, EC=3을 적었으며 △DEC를 색칠했다.",
     "solutionImageCaption": "△ABD와 △AED가 합동이므로 AE=AB=12, DE=BD=4이고 EC=AC-AE=3이다.",
     "solutionImageSize": "medium"

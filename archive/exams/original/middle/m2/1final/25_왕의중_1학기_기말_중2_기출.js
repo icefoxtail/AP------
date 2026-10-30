@@ -268,8 +268,8 @@ window.questionBank = [
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 벽돌 9장(위 5장, 아래 4장)으로 만든 직사각형 ABCD에서 위쪽 가로 5x cm와 아래쪽 가로 4y cm가 같고, 세로가 (x+y) cm이며 왼쪽 변에 긴 변 y cm와 짧은 변 x cm가 표시된 그림이다.",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벽돌 9장(위 5장, 아래 4장)으로 만든 직사각형 ABCD에서 위쪽 가로 5x cm와 아래쪽 가로 4y cm가 같고, 세로가 (x+y) cm이며 왼쪽 변에 긴 변 y cm와 짧은 변 x cm가 표시되고, 꼭짓점 D에서 지시선으로 둘레 87cm가 적힌 그림이다.",
     "solutionImageCaption": "벽돌 1장의 짧은 변을 x cm, 긴 변을 y cm라 하면 직사각형 ABCD의 가로는 위쪽 5x cm, 아래쪽 4y cm로 같고 세로는 (x+y) cm이며 둘레는 87 cm이다.",
     "solutionImageSize": "medium"
   },

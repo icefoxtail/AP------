@@ -491,8 +491,8 @@ window.questionBank=[
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 ∠C=108°와 DE가 ∠D를 이등분한 ∠ADE=∠EDC=36°, AE⊥DE인 직각 표시, 평행한 변의 화살표, 구하는 ∠DAE=x를 나타낸 그림.",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 ∠C=108°, ∠D=72°와 DE가 ∠D를 이등분한 ∠ADE=∠EDC=36°, AE⊥DE인 직각 표시, 평행한 변의 화살표, 구하는 ∠DAE=x를 나타낸 그림.",
     "solutionImageCaption": "∠D=72°를 DE가 이등분하여 ∠ADE=36°이고 ∠AED=90°이다.",
     "solutionImageSize": "medium"
   },
@@ -598,8 +598,8 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위의 점 P에서 BP:PC=3:2이고 △ABC의 넓이가 75cm²임을 표시하고, 꼭짓점 A에서 BC에 내린 공통 높이와 △ABP, △APC를 서로 다른 색으로 칠해 나타낸 그림.",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위의 점 P에서 BP:PC=3:2이고 △ABC의 넓이가 75cm²임을 BC 아래 치수선 옆에 적고, 꼭짓점 A에서 BC에 내린 공통 높이와 △ABP, △APC를 서로 다른 색으로 칠해 나타낸 그림.",
     "solutionImageCaption": "높이가 같은 두 삼각형의 넓이비는 밑변의 비 3:2이다",
     "solutionImageSize": "medium"
   },
