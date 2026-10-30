@@ -81,7 +81,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q2.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q2.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 밑각 ∠B=x와 ∠C가 각각 55°, 꼭지각이 70°이고 이등분선 AD가 ∠A를 35°씩 나누며 AD가 BC와 직각을 이룬다.",
+    "solutionImageCaption": "이등분선 AD로 나뉜 35°, 35°와 D에서의 직각을 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -122,7 +126,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q3.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q3.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 DEF를 나란히 놓고 두 삼각형의 빗변 AB, DE를 붉은 굵은 선으로, 직각변 AC, BC, DF, EF를 일반 선으로 구분해 표시한다.",
+    "solutionImageCaption": "두 직각삼각형의 빗변과 직각변을 구분해 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -163,7 +171,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q4.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q4.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠C=90°인 직각삼각형 ABC에서 AD가 ∠A를 이등분하고 DE⊥AB이다. 눈금과 각 표식으로 △ACD≅△AED를 나타내고 BE=4, BD=5, DC=DE=3을 적었으며 △BDE가 색칠되어 있다.",
+    "solutionImageCaption": "△ACD≅△AED로 얻는 길이와 색칠한 △BDE를 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -204,7 +216,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q5.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q5.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: △ABC의 외심 O에서 세 변에 내린 수선과 세 꼭짓점으로 이은 선분을 그리고, OA=OB=OC와 AF=FC를 눈금으로 표시했으며 합동인 △OFA와 △OFC를 색칠했다.",
+    "solutionImageCaption": "외심의 OA=OB=OC와 합동인 △OFA, △OFC를 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -245,7 +261,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q6.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q6.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: △ABC의 외심 O에서 AO, BO의 연장선이 BC, AC와 만나는 점 D, E를 나타낸다. OA=OB이고 ∠AOB=128°, ∠OAB=∠OBA=26°, ∠C=64°이다.",
+    "solutionImageCaption": "OA=OB인 이등변삼각형 AOB의 각 128°, 26°, 26°를 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
