@@ -31,7 +31,11 @@ test('Phase 1B sidecar preserves every non-empty production subunit', () => {
   }));
   assert.equal(metadata.consistency.sourceFingerprintFailures, 0);
   assert.equal(metadata.consistency.sourceClassificationConflicts, 0);
-  assert.equal(identity.records.length, 11034);
+  // Growing production identity table: floor from 2026-10-30 plus defect invariants (no duplicates, no gaps).
+  assert.ok(identity.records.length >= 11034, String(identity.records.length));
+  assert.equal(new Set(identity.records.map(record => record.questionUid)).size, identity.records.length, 'duplicate identity uid');
+  const metadataUids = new Set(metadata.records.map(record => record.questionUid));
+  assert.deepEqual(identity.records.filter(record => !metadataUids.has(record.questionUid)).map(record => record.questionUid), [], 'identity uid without metadata record');
   assert.equal(metadata.records.length, identity.records.length);
   assert.equal(classificationRecords.length, identity.records.length);
   assert.equal(metadata.canonicalSubUnitLabels['H15-M2-03-DERIVATIVE'], '미분');

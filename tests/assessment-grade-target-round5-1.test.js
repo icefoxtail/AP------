@@ -74,9 +74,9 @@ assert(assessmentMvp.includes('grade_label'), 'assessment-mvp.html: grade_label�
 assert(assessmentMvp.includes('pack_id'), 'assessment-mvp.html: pack_id가 있어야 한다');
 assert(assessmentMvp.includes('pack_hash'), 'assessment-mvp.html: pack_hash가 있어야 한다');
 
-// 11. 분석표 미구현 확인
+// 11. 분석표 화면은 평가 보관함(assessment-mvp)에서만 연결한다. archive/index.html에는 링크가 없어야 한다.
 assert(!archiveIndex.includes('assessment-analysis.html'), 'archive/index.html: 분석표 화면 링크가 없어야 한다');
-assert(!assessmentMvp.includes('assessment-analysis.html'), 'assessment-mvp.html: 분석표 화면 링크가 없어야 한다');
+assert(assessmentMvp.includes('assessment-analysis.html'), 'assessment-mvp.html: 분석표 화면 링크가 있어야 한다');
 
 // 12. 기존 assessment 모달 문구는 유지하고, archive는 통합 패널 계약을 확인한다.
 for (const requiredText of ['출제 대상', '반별', '학년별', '해당 학년에 출제할 반이 없습니다.']) {

@@ -92,7 +92,7 @@ assert(
 
 assert(mvpHtml.includes('분석표'), 'assessment-mvp.html should include analysis action text');
 assert(
-  mvpHtml.includes("'./assessment-' + 'analysis.html?packId='"),
+  mvpHtml.includes("'./assessment-analysis.html?packId='"),
   'assessment-mvp.html should link analysis page with packId'
 );
 assert(mvpHtml.includes('data-action="analysis"'), 'assessment-mvp.html should add an analysis action button');

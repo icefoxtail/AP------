@@ -1794,6 +1794,7 @@
         return '<button type="button" class="unit-grade-card" data-profile="' + profileId + '" onclick="UnitPastExams.selectProfile(\'' + profileId + '\')"><strong>' + escapeHtml(item.gradeLabel) + '</strong></button>';
       }).join('');
       root.innerHTML = '<section class="unit-catalog"><div class="unit-catalog-head"><div><h2>학년을 선택하세요</h2></div></div><div class="unit-grade-cards">' + grades + '</div></section>';
+      setStatus('학년을 선택해 주세요.');
       return;
     }
 
@@ -1980,7 +1981,7 @@
   async function init() {
     const app = document.getElementById('unit-content');
     if (!core) { renderSafeFallback('단원 집계 모듈을 불러오지 못했습니다.'); return; }
-    if (!isTeacherSession()) { app.innerHTML = '<div class="unit-error">단원별 기출은 AP Math OS 선생님 로그인 후 사용할 수 있습니다.<br><a href="index.html">아카이브로 돌아가기</a></div>'; return; }
+    if (!isTeacherSession()) { app.innerHTML = '<div class="unit-error">단원별 기출은 AP Math OS 선생님 로그인 후 사용할 수 있습니다.<br><a href="index.html">아카이브로 돌아가기</a></div>'; setStatus('선생님 로그인 후 사용할 수 있습니다.', true); return; }
     if (!Array.isArray(window.questionIndex)) { renderSafeFallback('question-index.js를 불러오지 못했습니다.'); return; }
     try { await loadMetadata(); } catch (error) { state.metadataError = true; console.warn(error); }
     state.index = joinApprovedMetadata(window.questionIndex);

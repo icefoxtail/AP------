@@ -52,8 +52,9 @@ for (const [label, html] of [
 ]) {
   assert(!html.includes('ASSESSMENT:'), `${label} should not write ASSESSMENT:<packId> to archive_file`);
   assert(!html.includes('created_by'), `${label} should not send created_by`);
-  assert(!html.includes('assessment-analysis.html'), `${label} should not add analysis screen links`);
 }
+// The analysis screen is linked only from the assessment archive (assessment-mvp.html), never from the archive index.
+assert(!archiveIndex.includes('assessment-analysis.html'), 'archive/index.html should not link the analysis screen');
 
 assert(
   archiveIndex.includes('qCount'),

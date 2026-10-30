@@ -8,7 +8,7 @@ const html = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'u
 const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
 
 test('Mixer adapter dual-runs canonical normalization without changing storage, pack, QPP, or legacy renderer behavior', () => {
-  assert.match(html, /src="print-contract\.js\?v=20260906\.2"/);
+  assert.match(html, /src="print-contract\.js\?v=20261009\.1"/);
   assert.match(html, /src="render-authority\.js\?v=20261014-svg-alt-1"/);
   assert.match(html, /src="data\/svg-accessibility-index\.js\?v=20261014\.1"/);
   assert.match(html, /src="svg-accessibility\.js\?v=20261014\.1"/);
@@ -22,7 +22,7 @@ test('Mixer adapter dual-runs canonical normalization without changing storage, 
   assert.match(html, /resolveSourceRef: \(question, index\)/);
   assert.match(html, /getMixedQuestionIdentity\(q\)/);
   assert.match(html, /compareAnswerSemantics/);
-  assert.match(html, /layout-authority\.js\?v=20260906\.15/);
+  assert.match(html, /layout-authority\.js\?v=20261009\.1/);
   assert.match(html, /function recordMixedLayoutPromotionGate\(area\)/);
   assert.match(html, /recordMixedLayoutPromotionGate\(area\)/);
   assert.match(html, /layoutMeasurementLedger/);
