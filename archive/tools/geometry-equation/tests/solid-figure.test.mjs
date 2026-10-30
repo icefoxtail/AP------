@@ -1840,3 +1840,90 @@ test('E28c: balls with a section beside them: a cylinder of balls and a cylinder
   assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,500));
   assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit)));
 });
+
+// --- E33: stacked round solids (on:"<id>") -----------------------------------------------------------------------------------------------------------
+const stacked=(over={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:4,orientation:'APEX_DOWN',axis:{label:'l'}},{id:'s2',kind:'HEMISPHERE',radius:6,on:'s1'}],
+  dims:[{solid:'s2',radius:'center'},{solid:'s1',radius:'bottom'},{solid:'s1',slant:true},{solid:'s1',height:true}],solidCaption:{text:'반구와 원뿔대'},...over});
+test('E33: a hemisphere on a cone frustum is one stack: its guest is lifted by the host height, the joint circle is shared and the axis runs through both',async()=>{
+  const plan=stacked(),m=solveSolidFigure(plan);
+  assert.deepEqual(m.solids.map(s=>s.lift??0),[0,4]);
+  assert.equal(m.solids[0].covered,true);assert.equal(m.solids[1].covered,undefined);
+  assert.equal(m.solids[0].axis.span,10);
+  assert.equal(m.solids[1].points[0].p[2],4);// the centre of the hemisphere is raised with it
+  assert.equal(m.dims.find(d=>d.type==='HEIGHT').onAxis,true);// the axis carries the height: no line of its own
+  assert.equal(m.dims.find(d=>d.id==='dim-1').z,4);// the radius of the hemisphere is level with the joint circle
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg.match(/<path id="s1-top-back"[^>]*\/>/)[0],/data-vis="hidden"/);// the far half of the joint circle is behind the dome
+  assert.match(svg.match(/<path id="s1-top-front"[^>]*\/>/)[0],/data-vis="solid"/);
+  assert.match(svg.match(/<path id="s2-base-back"[^>]*\/>/)[0],/data-vis="hidden"/);
+  assert.equal((svg.match(/id="dim-4-line"/g)??[]).length,0);
+  assert.match(svg,/data-text-id="tl1" data-at-kind="AXIS" data-target="s1"/);
+  assert.match(svg.match(/<g id="text-tl1"[^>]*>/)[0],/data-tex="l"/);// a single letter on the axis is a math symbol
+  // tamper: the far half of the joint drawn as if it were seen; the dome moved off the axis; a short axis; a second line over the axis
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const back=svg.match(/<path id="s1-top-back"[^>]*\/>/)[0];
+  await failing(svg.replace(back,back.replace(/ stroke-dasharray="[^"]*"/,'').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH:s1-top-back');
+  const moved=svg.replace(/<path ([^>]*data-solid="s2"[^>]*)>/g,all=>{const d=/ d="M ([-\d.]+) ([-\d.]+) A ([-\d.]+) ([-\d.]+) 0 (\d) (\d) ([-\d.]+) ([-\d.]+)"/.exec(all);return all.replace(d[0],` d="M ${Number(d[1])+9} ${d[2]} A ${d[3]} ${d[4]} 0 ${d[5]} ${d[6]} ${Number(d[7])+9} ${d[8]}"`);});
+  await failing(moved,'SOLID_STACK_JOINT_OFF');
+  const axis=svg.match(/<line id="s1-axis"[^>]*\/>/)[0];
+  await failing(svg.replace(axis,axis.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)-30}"`)),'SOLID_AXIS_LINE_MISMATCH:s1');
+  const first=svg.match(/<line id="dim-2-line"[^>]*\/>/)[0];
+  await failing(svg.replace(first,first+first.replaceAll('dim-2','dim-4').replace('data-kind="RADIUS"','data-kind="HEIGHT"')),'SOLID_DIM_LINE_UNEXPECTED:dim-4');
+  // a radius line that does not run level with its circle
+  const radius=svg.match(/<line id="dim-1-line"[^>]*\/>/)[0];
+  await failing(svg.replace(radius,radius.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)+8}"`).replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)+8}"`)),'SOLID_DIM_LINE_MISMATCH:dim-1');
+});
+test('E33: a stack that cannot stand is refused with an explicit code',()=>{
+  const cyl={id:'s1',kind:'CYLINDER',radius:2,height:3};
+  const refused=(solids,expected,over)=>assert.throws(()=>solveSolidFigure(figure({solids,...over})),code(expected),expected);
+  refused([{id:'s1',kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:4,orientation:'APEX_DOWN'},{id:'s2',kind:'HEMISPHERE',radius:5,on:'s1'}],'SOLID_STACK_JOINT_MISMATCH:s1,s2');
+  refused([{id:'s1',kind:'CONE',radius:2,height:3},{id:'s2',kind:'CYLINDER',radius:2,height:3,on:'s1'}],'SOLID_STACK_JOINT_MISMATCH:s1,s2');// a cone's point is no joint circle
+  refused([{id:'s1',kind:'HEMISPHERE',radius:2},{id:'s2',kind:'CYLINDER',radius:2,height:3,on:'s1'}],'SOLID_STACK_JOINT_MISMATCH:s1,s2');// a dome has no flat top
+  refused([cyl,{id:'s2',kind:'CYLINDER',radius:2,height:3,on:'s7'}],'SOLID_STACK_UNKNOWN:s7');
+  refused([{...cyl,on:'s1'}],'SOLID_STACK_UNKNOWN:s1');
+  refused([cyl,{id:'s2',kind:'CYLINDER',radius:2,height:1,on:'s1'},{id:'s3',kind:'CYLINDER',radius:2,height:1,on:'s1'}],'SOLID_STACK_BRANCH:s1');
+  refused([{...cyl,on:'s2'},{id:'s2',kind:'CYLINDER',radius:2,height:3,on:'s1'}],'SOLID_STACK_CYCLE');
+  refused([cyl,{id:'s2',kind:'SPHERE',radius:2,on:'s1'}],'SOLID_STACK_UNSUPPORTED:SPHERE');
+  refused([{id:'s1',kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2},{...cyl,id:'s2',on:'s1'}],'SOLID_STACK_UNSUPPORTED:PRISM');
+  refused([cyl,{id:'s2',kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2,on:'s1'}],'SOLID_PARAM_INVALID');// a polyhedron does not stand on anything
+  refused([{...cyl,axis:true},{id:'s2',kind:'CONE',radius:2,height:3,on:'s1',axis:true}],'SOLID_AXIS_STACK_DUPLICATE');
+  refused([cyl,{id:'s2',kind:'CONE',radius:2,height:3,on:'s1'}],'SOLID_STACK_UNSUPPORTED:SECTION',{section:{solid:'s2',kind:'AXIAL'}});
+  refused([cyl,{id:'s2',kind:'CONE',radius:2,height:3,on:7}],'SOLID_STACK_INVALID');
+  refused([cyl,{id:'s2',kind:'HEMISPHERE',radius:2,axis:true}],'SOLID_AXIS_UNSUPPORTED:HEMISPHERE');// a lone hemisphere has no axis
+  refused([{id:'s1',kind:'CYLINDER',radius:3,height:9},{id:'s2',kind:'CONE_FRUSTUM',radius:2,topRadius:1,height:2,inside:'s1'},{id:'s3',kind:'CYLINDER',radius:1,height:1,on:'s2'}],'SOLID_STACK_UNSUPPORTED:NESTED');// a solid inside a cylinder carries nothing
+  refused([{id:'s1',kind:'SPHERE',radius:2,orientation:'APEX_DOWN'}],'SOLID_ORIENTATION_UNSUPPORTED:SPHERE');// only a hemisphere stands on its dome
+});
+test('E33: the stacks of the textbook (cone on cylinder, cone on a bowl, dome on cylinder, dome on a bowl) are composed and read back',async()=>{
+  const cases=[
+    [{id:'s1',kind:'CYLINDER',radius:3,height:4},{id:'s2',kind:'CONE',radius:3,height:5,on:'s1',axis:true}],
+    [{id:'s1',kind:'HEMISPHERE',radius:3,orientation:'APEX_DOWN',names:{center:'O'}},{id:'s2',kind:'CONE',radius:3,height:5,on:'s1',axis:{label:'회전축'}}],
+    [{id:'s1',kind:'CYLINDER',radius:3,height:6},{id:'s2',kind:'HEMISPHERE',radius:3,on:'s1'}],
+    [{id:'s1',kind:'HEMISPHERE',radius:4,orientation:'APEX_DOWN'},{id:'s2',kind:'HEMISPHERE',radius:4,on:'s1',axis:{label:'l'}}],
+    [{id:'s1',kind:'CYLINDER',radius:3,height:3},{id:'s2',kind:'CONE_FRUSTUM',radius:3,topRadius:2,height:3,on:'s1'},{id:'s3',kind:'CYLINDER',radius:2,height:2,on:'s2'}]
+  ];
+  for(const solids of cases){
+    const plan=figure({unit:'cm',solids,dims:[{solid:'s1',height:true},{solid:'s2',height:true}],solidCaption:{text:'쌓은 입체'}});
+    const composed=await panel(plan);
+    assert.equal(composed.status,'COMPOSED',JSON.stringify([solids.map(s=>s.kind),composed.detail]));
+    assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  }
+});
+test('E33: a bowl (a hemisphere standing on its dome) alone shows its flat disc whole and the lower half of its outline',async()=>{
+  const plan=figure({unit:'cm',solids:[{kind:'HEMISPHERE',radius:3,orientation:'APEX_DOWN',names:{center:'O'}}],dims:[{radius:'center'}],solidCaption:{text:'반구'}});
+  const m=solveSolidFigure(plan);
+  assert.equal(m.solids[0].points[0].p[2],3);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/id="s1-outline-lower"/);assert.doesNotMatch(svg,/id="s1-outline-upper"/);
+  assert.match(svg.match(/<path id="s1-top-back"[^>]*\/>/)[0],/data-vis="solid"/);// nothing stands on the disc: both halves of its rim are seen
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const back=svg.match(/<path id="s1-top-back"[^>]*\/>/)[0];
+  await failing(svg.replace(back,back.replace('stroke="#111"','stroke="#111" stroke-dasharray="5 4"').replace('data-vis="solid"','data-vis="hidden"')),'SOLID_EDGE_VISIBILITY_MISMATCH:s1-top-back');
+  const lower=svg.match(/<path id="s1-outline-lower"[^>]*\/>/)[0];
+  await failing(svg.replace(lower,lower.replace('id="s1-outline-lower"','id="s1-outline-upper"').replace('data-part="LOWER"','data-part="UPPER"')),'SOLID_HEMISPHERE_OUTLINE_PART:s1');
+});

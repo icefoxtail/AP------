@@ -1100,3 +1100,98 @@ class BallsInACylinder(unittest.TestCase):
                      {'inside': [{'kind': 'CONE', 'radius': 1}]}, {'inside': [{'kind': 'SPHERE', 'radius': 1}] * 7}):
             self.assertRaises(ValueError, self.specs, host)
         self.assertRaises(ValueError, O.expanded_solid_specs, {'solids': [{'kind': 'CONE', 'radius': 2, 'height': 3, 'stack': {'count': 2, 'radius': 1}}]})
+
+
+class StackedRoundSolids(unittest.TestCase):
+    """E33: on:"<id>" stands a round solid on the flat top circle of another, on one axis; the lifts, the shared joint circle, the axis through the stack and what a
+    joint circle hides are derived here from the plan alone"""
+
+    def build(self, *specs):
+        solids = [O.build_solid({**spec, 'id': spec.get('id') or 's%d' % (i + 1)}) for i, spec in enumerate(specs)]
+        return solids, O.resolve_stacks(solids)
+
+    @staticmethod
+    def frustum(**over):
+        return {'kind': 'CONE_FRUSTUM', 'radius': 6, 'topRadius': 3, 'height': 4, 'orientation': 'APEX_DOWN', **over}
+
+    def test_the_guest_stands_on_the_top_circle_of_its_host_and_the_axis_runs_through_both(self):
+        solids, stacks = self.build(self.frustum(axis={'label': 'l'}, names={'center': 'P'}), {'kind': 'HEMISPHERE', 'radius': 6, 'on': 's1', 'names': {'center': 'O'}})
+        self.assertEqual([m['id'] for m in stacks[0]['members']], ['s1', 's2'])
+        self.assertEqual([m['lift'] for m in stacks[0]['members']], [0.0, 4.0])
+        self.assertEqual(stacks[0]['height'], 10.0)
+        self.assertEqual((solids[0]['covered'], solids[1]['covered']), (True, False))
+        self.assertEqual(solids[0]['axis'], {'label': 'l', 'span': 10.0})
+        self.assertEqual(solids[1]['points'][0][2], (0.0, 0.0, 4.0))   # the hemisphere's own centre is raised with it
+        self.assertEqual(solids[0]['points'][0][2], (0.0, 0.0, 0.0))
+
+    def test_a_bowl_has_its_flat_disc_on_top_and_carries_a_guest_there(self):
+        solids, stacks = self.build({'kind': 'HEMISPHERE', 'radius': 3, 'orientation': 'APEX_DOWN', 'names': {'center': 'O'}}, {'kind': 'CONE', 'radius': 3, 'height': 5, 'on': 's1', 'axis': True})
+        self.assertEqual(solids[0]['points'][0][2], (0.0, 0.0, 3.0))   # the disc is at the top, a radius above the pole
+        self.assertEqual([m['lift'] for m in stacks[0]['members']], [0.0, 3.0])
+        self.assertEqual(solids[1]['axis'], {'label': None, 'span': 8.0})
+        # a ball made of two hemispheres: the dome on the bowl
+        solids, stacks = self.build({'kind': 'HEMISPHERE', 'radius': 2, 'orientation': 'APEX_DOWN'}, {'kind': 'HEMISPHERE', 'radius': 2, 'on': 's1', 'axis': {'label': 'l'}})
+        self.assertEqual(stacks[0]['height'], 4.0)
+
+    def test_a_chain_adds_up_the_heights(self):
+        solids, stacks = self.build({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'CYLINDER', 'radius': 2, 'height': 1.5, 'on': 's1'}, {'kind': 'CONE', 'radius': 2, 'height': 2, 'on': 's2'})
+        self.assertEqual([m['lift'] for m in stacks[0]['members']], [0.0, 3.0, 4.5])
+        self.assertEqual(stacks[0]['height'], 6.5)
+        self.assertEqual([s['covered'] for s in solids], [True, True, False])
+
+    def test_the_joint_circle_has_one_radius_and_the_grammar_is_kept(self):
+        cases = [
+            ((self.frustum(), {'kind': 'HEMISPHERE', 'radius': 5, 'on': 's1'}), 'SOLID_STACK_JOINT_MISMATCH'),   # the radii at the joint differ
+            (({'kind': 'CONE', 'radius': 2, 'height': 3}, {'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's1'}), 'SOLID_STACK_JOINT_MISMATCH'),   # a cone's point is no circle
+            (({'kind': 'HEMISPHERE', 'radius': 2}, {'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's1'}), 'SOLID_STACK_JOINT_MISMATCH'),   # a dome has no flat top
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's9'}), 'SOLID_STACK_UNKNOWN'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's1'},), 'SOLID_STACK_UNKNOWN'),   # on itself
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'CYLINDER', 'radius': 2, 'height': 1, 'on': 's1'}, {'kind': 'CYLINDER', 'radius': 2, 'height': 1, 'on': 's1'}), 'SOLID_STACK_BRANCH'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's2'}, {'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'on': 's1'}), 'SOLID_STACK_CYCLE'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'SPHERE', 'radius': 2, 'on': 's1'}), 'SOLID_STACK_UNSUPPORTED:SPHERE'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3}, {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 1, 'on': 's1'}), 'SOLID_STACK_UNSUPPORTED:PRISM'),
+            (({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'axis': True}, {'kind': 'CONE', 'radius': 2, 'height': 3, 'on': 's1', 'axis': True}), 'SOLID_AXIS_STACK_DUPLICATE'),
+        ]
+        for specs, code in cases:
+            with self.assertRaises(ValueError) as caught:
+                self.build(*specs)
+            self.assertTrue(str(caught.exception).startswith(code), (code, str(caught.exception)))
+        # a lone hemisphere has no axis; a hemisphere that stands on something may carry the stack's
+        self.assertRaises(ValueError, O.build_solid, {'kind': 'HEMISPHERE', 'radius': 2, 'axis': True, 'id': 's1'})
+        self.assertEqual(O.build_solid({'kind': 'HEMISPHERE', 'radius': 2, 'axis': True, 'on': 's1', 'id': 's2'})['axis'], {'label': None})
+
+    def test_the_far_half_of_a_joint_circle_is_behind_the_guest_and_the_near_half_is_seen(self):
+        (host, guest), stacks = self.build({'kind': 'CYLINDER', 'radius': 2, 'height': 5}, {'kind': 'CONE', 'radius': 2, 'height': 4, 'on': 's1'})
+        front = (2 * math.cos(O.YAW - math.pi / 2), 2 * math.sin(O.YAW - math.pi / 2), 5.0)   # the joint circle, facing the viewer
+        back = (-front[0], -front[1], 5.0)
+        chain = stacks[0]['members']
+        self.assertFalse(O.hits_round(host, back))   # a lone cylinder shows its whole top rim
+        self.assertTrue(O.hits_any(chain, back))      # with a cone on it the far half is hidden
+        self.assertFalse(O.hits_any(chain, front))
+        # a dome on a frustum, a bowl under a cone
+        (frustum, dome), stacks = self.build(self.frustum(), {'kind': 'HEMISPHERE', 'radius': 6, 'on': 's1'})
+        front = (6 * math.cos(O.YAW - math.pi / 2), 6 * math.sin(O.YAW - math.pi / 2), 4.0)
+        back = (-front[0], -front[1], 4.0)
+        self.assertTrue(O.hits_any(stacks[0]['members'], back))
+        self.assertFalse(O.hits_any(stacks[0]['members'], front))
+        (bowl, cone), stacks = self.build({'kind': 'HEMISPHERE', 'radius': 3, 'orientation': 'APEX_DOWN'}, {'kind': 'CONE', 'radius': 3, 'height': 5, 'on': 's1'})
+        front = (3 * math.cos(O.YAW - math.pi / 2), 3 * math.sin(O.YAW - math.pi / 2), 3.0)
+        back = (-front[0], -front[1], 3.0)
+        self.assertTrue(O.hits_any(stacks[0]['members'], back))
+        self.assertFalse(O.hits_any(stacks[0]['members'], front))
+
+    def test_a_bowl_and_a_dome_hide_the_far_side_of_their_curved_surface_and_a_bowl_never_hides_its_own_rim(self):
+        away = O.vunit((-O.VIEW[0], -O.VIEW[1], 0.0))   # the horizontal direction from the viewer into the picture
+        a = math.radians(20)
+        bowl = O.build_solid({'kind': 'HEMISPHERE', 'radius': 2, 'orientation': 'APEX_DOWN', 'id': 's1'})
+        self.assertEqual((bowl['cz'], bowl['height']), (2.0, 2.0))
+        self.assertFalse(O.hits_round(bowl, (2 * away[0], 2 * away[1], 2.0)))   # the flat disc is the top: its far rim is seen
+        # 20 degrees below the rim the ray from the far side runs through the body under the disc's plane; from the near side it leaves at once
+        self.assertTrue(O.hits_round(bowl, (2 * math.cos(a) * away[0], 2 * math.cos(a) * away[1], 2.0 - 2 * math.sin(a))))
+        self.assertFalse(O.hits_round(bowl, (-2 * math.cos(a) * away[0], -2 * math.cos(a) * away[1], 2.0 - 2 * math.sin(a))))
+        dome = O.build_solid({'kind': 'HEMISPHERE', 'radius': 2, 'id': 's2'})
+        self.assertEqual(dome['cz'], 0.0)
+        self.assertTrue(O.hits_round(dome, (2 * away[0], 2 * away[1], 0.0)))   # the far rim of the flat disc is behind the dome
+        self.assertFalse(O.hits_round(dome, (-2 * away[0], -2 * away[1], 0.0)))
+        self.assertTrue(O.hits_round(dome, (2 * math.cos(a) * away[0], 2 * math.cos(a) * away[1], 2 * math.sin(a))))
+        self.assertFalse(O.hits_round(dome, (-2 * math.cos(a) * away[0], -2 * math.cos(a) * away[1], 2 * math.sin(a))))

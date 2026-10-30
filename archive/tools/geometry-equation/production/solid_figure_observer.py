@@ -90,6 +90,8 @@ def base_polygon(base):
 
 def build_solid(spec):
     kind = spec['kind']
+    # only round solids stand on one another (on:"<id>")
+    if spec.get('on') is not None and kind in ('PRISM', 'PYRAMID', 'FRUSTUM', 'REGULAR_POLYHEDRON', 'BIPYRAMID'): raise ValueError('SOLID_STACK_UNSUPPORTED:' + kind)
     if kind == 'REGULAR_POLYHEDRON': return build_regular(spec)
     if kind == 'BIPYRAMID': return build_bipyramid(spec)
     if kind in ('PRISM', 'PYRAMID', 'FRUSTUM'):
@@ -134,8 +136,10 @@ def build_solid(spec):
         orientation = spec.get('orientation', 'APEX_UP')
         if orientation not in ('APEX_UP', 'APEX_DOWN'):
             raise ValueError('SOLID_ORIENTATION_UNSUPPORTED')
-        if orientation == 'APEX_DOWN' and not cone:
+        # a hemisphere may stand on its dome (APEX_DOWN: the pole is the lowest point, the flat disc the top)
+        if orientation == 'APEX_DOWN' and not cone and kind != 'HEMISPHERE':
             raise ValueError('SOLID_ORIENTATION_UNSUPPORTED')
+        if spec.get('on') is not None and not isinstance(spec.get('on'), str): raise ValueError('SOLID_STACK_INVALID')
         down = orientation == 'APEX_DOWN'
         if kind == 'SPHERE': h, r0, r1 = 2 * r, r, r
         elif kind == 'HEMISPHERE': h, r0, r1 = r, r, r
@@ -146,7 +150,7 @@ def build_solid(spec):
         names = spec.get('names') or {}
         pts = []
         if kind == 'SPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, float(spec['centerZ']) if spec.get('centerZ') is not None else r)))
-        elif kind == 'HEMISPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, 0.0)))
+        elif kind == 'HEMISPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, r if down else 0.0)))
         else:
             pts.append((names.get('center'), 'center', (0.0, 0.0, h if down and kind == 'CONE' else 0.0)))
             if kind == 'CONE': pts.append((names.get('apex'), 'apex', (0.0, 0.0, 0.0 if down else h)))
@@ -156,12 +160,13 @@ def build_solid(spec):
             check_cut_spec(spec['cut'])
         axis = spec.get('axis')
         if axis is not None:
-            if kind not in ('CYLINDER', 'CONE', 'CONE_FRUSTUM') or spec.get('inside') is not None: raise ValueError('SOLID_AXIS_UNSUPPORTED:' + kind)
+            # a hemisphere carries an axis only when it stands on another solid (a stack's axis may be written on its top member)
+            if kind not in ('CYLINDER', 'CONE', 'CONE_FRUSTUM') and not (kind == 'HEMISPHERE' and spec.get('on') is not None) or spec.get('inside') is not None: raise ValueError('SOLID_AXIS_UNSUPPORTED:' + kind)
             axis = {'label': axis.get('label') if isinstance(axis, dict) else None}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV',
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
-                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis,
-                'cz': (float(spec['centerZ']) if spec.get('centerZ') is not None else r) if kind == 'SPHERE' else 0.0}
+                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis, 'on': spec.get('on'), 'lift': 0.0, 'covered': False,
+                'cz': (float(spec['centerZ']) if spec.get('centerZ') is not None else r) if kind == 'SPHERE' else (r if (kind == 'HEMISPHERE' and down) else 0.0)}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
 
 
@@ -562,17 +567,18 @@ def hits_round(solid, P):
     V = VIEW
     r0, r1, h = solid['r0'], solid['r1'], solid['height']
     if solid['cat'] == 'SPHERE':
-        c = (0.0, 0.0, solid.get('cz', r0) if solid['kind'] == 'SPHERE' else 0.0)
+        c = (0.0, 0.0, solid['cz'])
         d = vsub(P, c)
         b = vdot(d, V)
         cc = vdot(d, d) - r0 * r0
         disc = b * b - cc
         if disc <= 0: return False
-        for s in (-b - math.sqrt(disc), -b + math.sqrt(disc)):
-            if s > 1e-6:
-                Q = vadd(P, vmul(V, s))
-                if solid['kind'] == 'SPHERE' or Q[2] >= -1e-9: return True
-        return False
+        lo, hi = max(-b - math.sqrt(disc), 1e-6), -b + math.sqrt(disc)   # the stretch of the ray inside the whole ball
+        if solid['kind'] == 'HEMISPHERE':
+            # the body is the half of the ball on one side of the flat disc's plane; the ray climbs (V points up), so a bowl (z <= height) keeps only the early part of it and a dome (z >= 0) the late part
+            if solid['orientation'] == 'APEX_DOWN': hi = min(hi, (solid['height'] - P[2]) / V[2])
+            else: lo = max(lo, -P[2] / V[2])
+        return hi - lo > 1e-6
     slope = (r1 - r0) / h
     # |P_xy + s V_xy|^2 = (r0 + slope (P_z + s V_z))^2
     px, py, pz = P
@@ -590,6 +596,65 @@ def hits_round(solid, P):
             z = pz + s * V[2]
             if -1e-9 <= z <= h + 1e-9 and r0 + slope * z >= -1e-9: return True
     return False
+
+
+# --- stacked round solids (E33): on:"<id>" puts a round solid on the flat top circle of another, on one axis ---------------------------------------
+# Derived here from the plan alone: the guest's base circle is the host's top circle (equal radii), so the guest's own z=0 lies at the host's top; one member's axis runs
+# through the whole stack; a rim that something stands on has its far half behind that guest.
+def _top_radius(s_):
+    if s_['cat'] == 'REV': return s_['r1']
+    return s_['r0'] if s_['kind'] == 'HEMISPHERE' and s_['orientation'] == 'APEX_DOWN' else 0.0
+
+
+def _bottom_radius(s_):
+    if s_['cat'] == 'REV': return s_['r0']
+    return s_['r0'] if s_['kind'] == 'HEMISPHERE' and s_['orientation'] != 'APEX_DOWN' else 0.0
+
+
+def resolve_stacks(solids):
+    """[{'root', 'members' (solid dicts, bottom first), 'height'}]; each member gets 'lift' (the height of its base above the stack's foot), the hosts get 'covered', the member that
+    owns an axis gets axis['span'] (the whole stack's height) and every point of a member is raised by its lift."""
+    by_id = {s_['id']: s_ for s_ in solids}
+    guest_of = {}
+    for g in solids:
+        if g.get('on') is None: continue
+        host = by_id.get(g['on'])
+        if host is None or host is g: raise ValueError('SOLID_STACK_UNKNOWN')
+        for s_ in (g, host):
+            if s_['cat'] == 'POLY' or s_['kind'] == 'SPHERE': raise ValueError('SOLID_STACK_UNSUPPORTED:' + s_['kind'])
+            if s_.get('inside') or s_.get('cut'): raise ValueError('SOLID_STACK_UNSUPPORTED:NESTED')
+        if host['id'] in guest_of: raise ValueError('SOLID_STACK_BRANCH')
+        guest_of[host['id']] = g
+    stacks, seen = [], set()
+    for root in solids:
+        if root.get('on') is not None or root['id'] not in guest_of: continue
+        chain, lift, host = [root], 0.0, root
+        while host['id'] in guest_of:
+            guest = guest_of[host['id']]
+            rad = _top_radius(host)
+            if not rad > 0 or abs(rad - _bottom_radius(guest)) > 1e-9 * max(1.0, rad): raise ValueError('SOLID_STACK_JOINT_MISMATCH')
+            lift += host['height']
+            guest['lift'] = lift
+            host['covered'] = True
+            chain.append(guest)
+            host = guest
+        for member in chain:
+            member['points'] = [(n, i, (p[0], p[1], p[2] + member['lift'])) for n, i, p in member['points']]
+            seen.add(member['id'])
+        total = lift + chain[-1]['height']
+        owners = [m for m in chain if m.get('axis') is not None]
+        if len(owners) > 1: raise ValueError('SOLID_AXIS_STACK_DUPLICATE')
+        if owners: owners[0]['axis'] = {**owners[0]['axis'], 'span': total}
+        stacks.append({'root': root['id'], 'members': chain, 'height': total})
+    if any(s_.get('on') is not None and s_['id'] not in seen for s_ in solids): raise ValueError('SOLID_STACK_CYCLE')
+    for s_ in solids:
+        if s_.get('axis') is not None and s_['kind'] == 'HEMISPHERE' and s_['id'] not in seen: raise ValueError('SOLID_AXIS_UNSUPPORTED:HEMISPHERE')
+    return stacks
+
+
+def hits_any(chain, P):
+    """the ray from the world point P toward the viewer enters one of the solids of a stack (each is tested in its own frame: z measured from its own base)"""
+    return any(hits_round(m, (P[0], P[1], P[2] - m['lift'])) for m in chain)
 
 
 # --- SVG helpers ------------------------------------------------------------------------------------------------------------------------------
@@ -704,6 +769,9 @@ def _stroke_ok(el, expect_dashed, errors, ident):
 def audit_solids(plan, ctx):
     root, errors = ctx['root'], ctx['errors']
     solids = [build_solid(spec) for spec in expanded_solid_specs(plan)]
+    stacks = ctx['stacks'] = resolve_stacks(solids)
+    stack_of = {m['id']: st for st in stacks for m in st['members']}
+    ctx['stack_of'] = stack_of
     ctx['solids'] = solids
     # nothing is drawn for a solid the plan does not have (a ball that is not in the plan, a second solid that was not asked for)
     drawn_solids = {e.get('data-solid') for e in root.iter() if e.get('data-solid')}
@@ -743,6 +811,11 @@ def audit_solids(plan, ctx):
     if scale is None: return
     if declared and abs(declared - scale) > 0.012 * scale: errors.append('SOLID_DECLARED_SCALE_MISMATCH')
     ctx['scale'] = scale
+    # the members of a stack share the world frame: each one's own curves, drawn from its own lift, put the origin at one place (axis and joint circle coincide)
+    for st in stacks:
+        known = [m['id'] for m in st['members'] if m['id'] in frames]
+        for sid_ in known[1:]:
+            if math.hypot(frames[sid_][0] - frames[known[0]][0], frames[sid_][1] - frames[known[0]][1]) > POS_TOL: errors.append('SOLID_STACK_JOINT_OFF:%s,%s' % (known[0], sid_))
     for solid in solids:
         sid = solid['id']
         if sid not in frames: continue
@@ -765,7 +838,7 @@ def audit_solids(plan, ctx):
         else:
             for name, pid, p in solid['points']:
                 if name: named[name] = (sid, px(p), p)
-            check_round(solid, root, px, scale, errors, ctx['segments'], (plan.get('section') if (plan.get('section') or {}).get('kind') == 'LEVEL' and (_section_solid(plan, solids) or {}).get('id') == solid['id'] else None))
+            check_round(solid, root, px, scale, errors, ctx['segments'], (plan.get('section') if (plan.get('section') or {}).get('kind') == 'LEVEL' and (_section_solid(plan, solids) or {}).get('id') == solid['id'] else None), stack_of[sid]['members'] if sid in stack_of else [solid])
     for g in ctx['labels']:
         if g.get('data-label-role') in COUNT_ROLES and g.get('data-solid') not in counted: errors.append('SOLID_COUNT_LABEL_UNEXPECTED:' + str(g.get('id')))
     ctx['named'] = named
@@ -1111,7 +1184,7 @@ def _round_frame(solid, root, errors):
         xs = [v for a in outline for v in (a[0], a[6])]
         S = (max(xs) - min(xs)) / (2 * solid['r0'])
         cx, cy = (max(xs) + min(xs)) / 2, outline[0][1]
-        q = project((0.0, 0.0, solid.get('cz', solid['r0']) if solid['kind'] == 'SPHERE' else 0.0))
+        q = project((0.0, 0.0, solid['lift'] + solid['cz']))
         return S, (cx - S * q[0], cy + S * q[1])
     places = {'bottom': (0.0, solid['r0']), 'top': (solid['height'], solid['r1']), 'equator': (solid['r0'], solid['r0'])}
     fronts = []
@@ -1132,12 +1205,14 @@ def _round_frame(solid, root, errors):
     cx = (x0 + x1) / 2
     dy = ry * math.sqrt(max(0.0, 1 - min(1.0, ((x0 - cx) / rx) ** 2))) if rx else 0.0
     cy = y0 + dy
-    q = project((0.0, 0.0, zc))
+    q = project((0.0, 0.0, solid['lift'] + zc))
     return S, (cx - S * q[0], cy + S * q[1])
 
 
-def check_round(solid, root, px, scale, errors, segments, section=None):
+def check_round(solid, root, px, scale, errors, segments, section=None, chain=None):
     sid = solid['id']
+    chain = chain or [solid]
+    lift = solid['lift']
     if solid.get('cut'):
         check_cut_sphere(solid, root, px, scale, errors, segments)
         return
@@ -1157,18 +1232,20 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
 
     def circle(name):
         if name == 'level': return px((0.0, 0.0, level[0])), level[1]
-        if name == 'bottom': return px((0.0, 0.0, 0.0)), r0
-        if name == 'top': return px((0.0, 0.0, h)), r1
-        return px((0.0, 0.0, solid.get('cz', r0))), r0   # sphere equator
+        if name == 'bottom': return px((0.0, 0.0, lift)), r0
+        if name == 'top': return px((0.0, 0.0, lift + h)), r1
+        return px((0.0, 0.0, lift + solid['cz'])), r0   # sphere equator
     pts_by_circle = {}
     for e, (x0, y0, rx, ry, large, sweep, x1, y1) in arcs:
         role = e.get('data-role')
         if role == 'sphere-outline':
-            c = px((0.0, 0.0, solid.get('cz', r0) if solid['kind'] == 'SPHERE' else 0.0))
+            c = px((0.0, 0.0, lift + solid['cz']))
             if abs(rx - scale * r0) > POS_TOL or abs(ry - scale * r0) > POS_TOL: errors.append('SOLID_SPHERE_OUTLINE_RADIUS:' + sid)
             for (x, y) in ((x0, y0), (x1, y1)):
                 if abs(math.hypot(x - c[0], y - c[1]) - scale * r0) > POS_TOL: errors.append('SOLID_SPHERE_OUTLINE_OFF:' + sid)
             upper = e.get('data-part') == 'UPPER'
+            # a dome (the default) shows the upper half of its outline circle, a bowl (APEX_DOWN) the lower half; a whole ball both
+            if solid['kind'] == 'HEMISPHERE' and upper == (solid['orientation'] == 'APEX_DOWN'): errors.append('SOLID_HEMISPHERE_OUTLINE_PART:' + sid)
             for k in range(24):
                 t0, t1 = math.pi * k / 24 + (0 if upper else math.pi), math.pi * (k + 1) / 24 + (0 if upper else math.pi)
                 segments.append(((c[0] + scale * r0 * math.cos(t0), c[1] - scale * r0 * math.sin(t0)), (c[0] + scale * r0 * math.cos(t1), c[1] - scale * r0 * math.sin(t1))))
@@ -1198,18 +1275,21 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
             pts_by_circle.setdefault(cname, []).append(((x0, y0), (x1, y1)))
             continue
         votes = 0
-        z = h if cname == 'top' else (level[0] if cname == 'level' else (solid.get('cz', r0) if cname == 'equator' else 0.0))
+        z = lift + (h if cname == 'top' else (level[0] if cname == 'level' else (solid['cz'] if cname == 'equator' else 0.0)))
         for k in range(7):
             u = u0 + span * (k + 0.5) / 7
             # screen param u -> world circle point: sx = r cos u, sy = r sin(pitch) sin u + z cos(pitch); the circle point with that screen image
             t = u + YAW
             P = (rad * math.cos(t), rad * math.sin(t), z)
-            if hits_round(solid, P): votes += 1
+            if hits_any(chain, P): votes += 1
         _stroke_ok(e, votes >= 4, errors, e.get('id'))
         if votes not in (0, 7): errors.append('SOLID_ARC_STRADDLES_VISIBILITY:' + e.get('id'))
         pts_by_circle.setdefault(cname, []).append(((x0, y0), (x1, y1)))
     if solid['cat'] == 'SPHERE':
-        if solid['kind'] == 'HEMISPHERE' and not any(e.get('data-circle') == 'bottom' for e, _ in arcs): errors.append('SOLID_BASE_ARC_MISSING:' + sid)
+        if solid['kind'] == 'HEMISPHERE':
+            flat = 'top' if solid['orientation'] == 'APEX_DOWN' else 'bottom'
+            if sorted(e.get('data-half') for e, _ in arcs if e.get('data-circle') == flat) != ['BACK', 'FRONT']: errors.append('SOLID_BASE_ARC_MISSING:' + sid)
+            if any(e.get('data-circle') not in (flat, 'level', None) for e, _ in arcs): errors.append('SOLID_ELLIPSE_ROLE_UNKNOWN:' + sid)
         if level is not None and sorted(e.get('data-half') for e, _ in arcs if e.get('data-circle') == 'level') != ['BACK', 'FRONT']: errors.append('SOLID_LEVEL_ARC_MISSING:' + sid)
         return
     # silhouette lines: tangent to the circles they end on, through the (virtual) apex of the cone
@@ -1218,7 +1298,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
     names = family | ({'level'} if level else set())
     if set(pts_by_circle) != names: errors.append('SOLID_ELLIPSE_SET_MISMATCH:' + sid)
     apex_z = 0.0 if (solid['kind'] == 'CONE' and solid['orientation'] == 'APEX_DOWN') else h
-    apex = px((0.0, 0.0, apex_z))
+    apex = px((0.0, 0.0, lift + apex_z))
     for e in lines:
         a, b = (_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2'))
         for cname in ('bottom', 'top'):
@@ -1530,6 +1610,12 @@ def _section_solid(plan, solids):
     return next((s for s in solids if s['cat'] == 'SPHERE' and not s.get('cut') and not s.get('inside')), None)
 
 
+def axis_carries(ctx, solid):
+    """a member of a stack that has an axis: its height is written along that axis, with no line of its own"""
+    st = (ctx.get('stack_of') or {}).get(solid['id'])
+    return st is not None and any(m.get('axis') is not None for m in st['members'])
+
+
 def check_dim_lines(plan, ctx):
     """The level, level-radius and round height dimension lines run along the model's axis and the level circle."""
     root, frames, scale = ctx.get('root'), ctx.get('px') or {}, ctx.get('scale')
@@ -1554,14 +1640,19 @@ def check_dim_lines(plan, ctx):
         if sid is None:
             if kind == 'LEVEL': sid = section.get('solid')
             if sid is None:
-                sid = next((x['id'] for x in solids.values() if x['cat'] == 'REV'), None)
+                # a dimension with no solid belongs to the first rotation solid (a radius: the first rotation solid or ball), as the plan's grammar says
+                sid = next((x['id'] for x in solids.values() if x['cat'] == 'REV' or (kind == 'RADIUS' and x['cat'] == 'SPHERE')), None)
         solid = solids.get(sid)
-        if solid is None or solid['cat'] == 'POLY' or sid not in frames:
+        if solid is None or solid['cat'] == 'POLY' or sid not in frames or solid.get('cut'):
             continue
         Tx, Ty = frames[sid]
         cos_p = math.cos(PITCH)
-        y_of = lambda z: Ty - scale * z * cos_p
+        lift = solid.get('lift', 0.0)
+        y_of = lambda z: Ty - scale * (z + lift) * cos_p
         if kind == 'HEIGHT':
+            if axis_carries(ctx, solid):
+                ctx['errors'].append('SOLID_DIM_LINE_UNEXPECTED:' + dim)   # the stack's axis carries this height: no second line over it
+                continue
             want = ((Tx, y_of(0.0)), (Tx, y_of(solid['height'])))
         elif kind == 'LEVEL':
             mm = re.fullmatch(r'(\d+)/(\d+)', section.get('at') or '')
@@ -1571,6 +1662,14 @@ def check_dim_lines(plan, ctx):
             # level:"top" dimensions the part above the plane (apex/top down to the section)
             want = ((Tx, y_of(zl)), (Tx, y_of(solid['height']))) if d.get('level') == 'top' else ((Tx, y_of(0.0)), (Tx, y_of(zl)))
         else:
+            if d.get('radius') in ('center', 'bottom', 'top'):
+                # a radius runs from the axis to the rim of its circle, level with that circle
+                which = d['radius']
+                zr, rr = (solid['cz'], solid['r0']) if which == 'center' else ((0.0, solid['r0']) if which == 'bottom' else (solid['height'], solid['r1']))
+                want = ((Tx, y_of(zr)), (Tx + scale * rr, y_of(zr)))
+                got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
+                if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':' + str(kind))
+                continue
             if d.get('radius') != 'level':
                 continue
             mm = re.fullmatch(r'(\d+)/(\d+)', section.get('at') or '')
@@ -1674,12 +1773,13 @@ def check_axes_and_text_labels(plan, ctx):
     cos_p = math.cos(PITCH)
     for sid in axes:
         solid = by_id.get(sid)
-        if solid is None or solid['cat'] != 'REV' or sid not in frames:
+        if solid is None or solid['cat'] == 'POLY' or sid not in frames:
             errors.append('SOLID_AXIS_SOLID_UNKNOWN:' + str(sid))
             continue
         Tx, Ty = frames[sid]
-        ext = AXIS_EXT * solid['height']
-        want = ((Tx, Ty - scale * (-ext) * cos_p), (Tx, Ty - scale * (solid['height'] + ext) * cos_p))
+        total = (solid.get('axis') or {}).get('span', solid['height'])   # a stack's axis runs through the whole stack, from its foot
+        ext = AXIS_EXT * total
+        want = ((Tx, Ty - scale * (-ext) * cos_p), (Tx, Ty - scale * (total + ext) * cos_p))
         axis_px[sid] = want
         els = drawn_axis.get(sid)
         if not els: continue
@@ -1692,7 +1792,10 @@ def check_axes_and_text_labels(plan, ctx):
     for lid, kind, text, target, extra in planned:
         g = drawn.get(lid)
         if g is None: continue
-        if g.get('data-text') != text or g.get('data-value') != text: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)
+        if kind == 'AXIS' and re.fullmatch(r'[A-Za-z]', text):
+            # a single letter on the axis (the rotation axis l) is a math symbol, set in italics
+            if g.get('data-tex') != text or g.get('data-value') != text or g.get('data-text') is not None: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)
+        elif g.get('data-text') != text or g.get('data-value') != text: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)
         if g.get('data-at-kind') != kind or g.get('data-target') != target: errors.append('SOLID_TEXT_LABEL_TARGET_MISMATCH:' + lid)
         box = boxes.get(lid)
         if box is None: continue
@@ -2365,8 +2468,16 @@ def expected_dim_values(plan, ctx):
         if e.get('data-role') == 'dim-line' and e.get('data-dim') in out:
             v, _, s = out[e.get('data-dim')]
             out[e.get('data-dim')] = (v, ((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2'))), s)
+    frames, scale_px = ctx.get('px') or {}, ctx.get('scale')
     for k, d in enumerate(plan.get('dims') or []):
         ident = 'dim-%d' % (k + 1)
+        sid_h = dim_solid.get(ident)
+        if d.get('height') is not None and ident in out and sid_h in frames and scale_px:
+            owner = next((x for x in solids if x['id'] == sid_h), None)
+            if owner is not None and owner['cat'] != 'POLY' and axis_carries(ctx, owner):
+                Tx, Ty = frames[sid_h]
+                v, _, sym = out[ident]
+                out[ident] = (v, ((Tx, Ty - scale_px * owner['lift'] * math.cos(PITCH)), (Tx, Ty - scale_px * (owner['lift'] + owner['height']) * math.cos(PITCH))), sym)
         if d.get('slant') is not None and ident in out:
             v, _, s = out[ident]
             sid = dim_solid.get(ident)
