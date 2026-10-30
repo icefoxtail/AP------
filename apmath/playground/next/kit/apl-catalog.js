@@ -249,8 +249,8 @@ window.APLab.catalog = {
    "title": "닮음 경험도감",
    "short": "닮음",
    "summary": "숨은 삼각형 분리·정렬·대응·비. 비율의 시각적 이해.",
-   "keywords": "닮음 비 삼각형 분리 정렬 대응 44장면 닮음 경험도감 중2 · 단원 03 44장면",
-   "badge": "44장면",
+   "keywords": "닮음 비 삼각형 분리 정렬 대응 31장면 닮음 경험도감 중2 · 단원 03 31장면",
+   "badge": "31장면",
    "scenes": [
     "포개진 삼각형·반전·SAS",
     "모래시계·평행선·각이등분선",
@@ -260,6 +260,7 @@ window.APLab.catalog = {
     "차원비(길이·넓이·부피) & 원뿔절단"
    ],
    "legacy": "labs/g8/similarity-atlas.html",
+   "next": "next/labs/g8-similarity.html",
    "glyph": "<path d=\"M8 58 L28 20 L48 58 Z\"/><path d=\"M50 68 L62 42 L76 68 Z\"/><path d=\"M8 58 L50 68 M28 20 L62 42\" stroke-dasharray=\"3 4\"/>",
    "sceneTotal": 31
   },
