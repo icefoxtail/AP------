@@ -32,5 +32,13 @@ Verified locally: syntax and structure tests, observer tests, planner tests, sim
 
 ## Open items / decisions
 
-- `archive-inline-image-inventory` pins counts that change with every publish. Either bump the constants (and regenerate the report) together with each exam that adds inline images, or replace the constants by the committed report as the single source (the test already asserts `report == generated`).
+- ~~`archive-inline-image-inventory` pins counts that change with every publish.~~ Resolved 2026-10-30, see below.
 - Branch protection / required checks: make `test` (job of `CI`) required only after several consecutive green runs on `main` with this change live. Draft PR #956 (CI only for `archive/**`) would re-create the blind spot for `tools/`, `tests/` and workflow edits; close it, or narrow it to `paths-ignore` of pure documentation.
+
+## Inline image inventory: pinned counts replaced by defect invariants (2026-10-30, user decision)
+
+Explicit user approval of the proposal for observation 4 above. `tests/archive-inline-image-inventory.test.js` and `archive/tools/build-inline-image-inventory.mjs --check` no longer pin snapshot totals (`total`, `productionTotal`, extension counts, `qImageAndInlineTotal`, `qImageRecords.length`, `missingProductionAssetCount`) and no longer require `docs/reports/archive-inline-image-inventory-20260915.json` to equal the live inventory. The dated report is kept untouched as a historical snapshot; `--write` rewrites it on explicit request only. `--check` fails on validation errors only and prints the current totals.
+
+Still enforced (defects): exam parse failures, unsupported or invalid image `src` (`relativePathInvalidCount` 0), `errorCount` 0, any missing production asset that is not in `archive/data/inline-image-known-missing-v1.json` (current missing must be a subset of the known list), `baselineMainSha`, `testFixtureTotal` 4 with exactly one missing fixture, textbook `qNN` naming/existence, the 25_제일고 q9 record, the 24_순천여고 q12/16/20/23 source-corrected images and 24_순천고 q8.
+
+Changed: a known-missing entry that is no longer observed missing is a WARNING (`resolvedKnownMissing` in the tool output and a console warning in the test), not an error. Reason `asset-restored`: the image now exists. Reason `reference-removed`: the exam source no longer references it. The owner may shrink the known list later; the list was not edited here.
