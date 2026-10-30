@@ -801,6 +801,7 @@ window.APLab.catalog = {
     "기출3: 접선 마름모·페달 닮음"
    ],
    "legacy": "labs/기하와벡터/포물선.html",
+   "next": "next/labs/geom-parabola.html",
    "glyph": "<path d=\"M8 68 Q40 4 72 68\"/><line x1=\"8\" y1=\"52\" x2=\"72\" y2=\"52\" stroke-dasharray=\"3 3\"/><circle cx=\"40\" cy=\"30\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -841,6 +842,7 @@ window.APLab.catalog = {
     "기출3: 접선(각이등분) & 수선곱"
    ],
    "legacy": "labs/기하와벡터/쌍곡선.html",
+   "next": "next/labs/geom-hyperbola.html",
    "glyph": "<path d=\"M8 68 Q14 38 28 18\"/><path d=\"M52 18 Q66 38 72 68\"/><line x1=\"8\" y1=\"8\" x2=\"72\" y2=\"68\" stroke-dasharray=\"3 3\"/><line x1=\"72\" y1=\"8\" x2=\"8\" y2=\"68\" stroke-dasharray=\"3 3\"/>"
   },
   {
