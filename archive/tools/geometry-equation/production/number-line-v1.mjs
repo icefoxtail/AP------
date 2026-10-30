@@ -223,7 +223,7 @@ function placeSymbols(points,orderIds){
     if(!target||!target.symbolic||target.raw.mirrorOf!==undefined||target===point||point.id!==(target.id.startsWith('-')?target.id.slice(1):'-'+target.id))bad('NUMBER_LINE_SYMBOL_MIRROR_INVALID');
     nodes.push({kind:'var',k:varOf.get(target.id),sign:-1});
   }
-  const constNode=v=>{let i=nodes.findIndex(node=>node.kind==='const'&&cmpR(node.v,v)===0);if(i<0){i=nodes.length;nodes.push({kind:'const',v,approx:num(v)});}return i;};
+  const constNode=v=>{let i=nodes.findIndex(node=>node.kind==='const'&&cmpP(node.v,v)===0);if(i<0){i=nodes.length;nodes.push({kind:'const',v,approx:num(v)});}return i;};
   const Z=points.some(point=>point.symbolic&&point.raw.mirrorOf!==undefined)?constNode(rat(0n)):-1;
   const virtualZ=Z>=0&&!nodes[Z].point;
   const edges=[];
@@ -235,7 +235,7 @@ function placeSymbols(points,orderIds){
     let [lo,hi]=between.map(token=>{if(typeof token!=='string')bad('NUMBER_LINE_SYMBOL_BETWEEN_INVALID');return byId.has(token)?nodeOf.get(token):constNode(parseValue(token,'NUMBER_LINE_SYMBOL_BETWEEN_INVALID'));});
     const me=nodeOf.get(point.id);
     if(lo===me||hi===me||lo===hi)bad('NUMBER_LINE_SYMBOL_BETWEEN_INVALID');
-    if(nodes[lo].kind==='const'&&nodes[hi].kind==='const'&&cmpR(nodes[lo].v,nodes[hi].v)>0)[lo,hi]=[hi,lo];
+    if(nodes[lo].kind==='const'&&nodes[hi].kind==='const'&&cmpP(nodes[lo].v,nodes[hi].v)>0)[lo,hi]=[hi,lo];
     edges.push([lo,me],[me,hi]);
   }
   if(orderIds!==undefined){
@@ -244,7 +244,7 @@ function placeSymbols(points,orderIds){
   }
   // the strict order the plan states, closed under transitivity, the sign of a mirror pair (a<-a means a<0<-a) and reflection in 0 (u<v gives -v<-u)
   const n=nodes.length,lt=Array.from({length:n},()=>Array(n).fill(false));
-  for(let i=0;i<n;i++)for(let j=0;j<n;j++)if(i!==j&&nodes[i].kind==='const'&&nodes[j].kind==='const'&&cmpR(nodes[i].v,nodes[j].v)<0)lt[i][j]=true;
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++)if(i!==j&&nodes[i].kind==='const'&&nodes[j].kind==='const'&&cmpP(nodes[i].v,nodes[j].v)<0)lt[i][j]=true;
   for(const [i,j] of edges)lt[i][j]=true;
   const partner=nodes.map((node,i)=>node.kind==='var'?nodes.findIndex((other,j)=>j!==i&&other.kind==='var'&&other.k===node.k):i===Z?Z:-1);
   for(let round=0;round<n+3;round++){
@@ -306,16 +306,31 @@ function placeSymbols(points,orderIds){
   const grid=x.map(value=>Math.round(value*SYMBOL_GRID)),exact=node=>{if(node.kind==='const')return node.v;const r=rat(BigInt(grid[node.k]),BigInt(SYMBOL_GRID));return node.sign===1?r:sub(ZERO,r);};
   for(const [a,b] of pairs){
     const ea=exact(a),eb=exact(b);
-    if(cmpR(ea,eb)>=0||(a.kind==='var'||b.kind==='var')&&num(eb)-num(ea)<SYMBOL_MIN_GAP)bad('NUMBER_LINE_SYMBOL_CONSTRAINT_UNSATISFIABLE');
+    if(cmpP(ea,eb)>=0||(a.kind==='var'||b.kind==='var')&&num(eb)-num(ea)<SYMBOL_MIN_GAP)bad('NUMBER_LINE_SYMBOL_CONSTRAINT_UNSATISFIABLE');
   }
   return new Map(points.filter(point=>point.symbolic).map(point=>[point.id,exact(nodes[nodeOf.get(point.id)])]));
+}
+// Values of marked points may use different radicals (the spiral sqrt(2), sqrt(3), sqrt(5)): cmpP is cmpR for them. With at most one radical involved it is exact; with two different ones (the roots are
+// independent over the rationals, so there is no tie unless the values are the same) it decides on POINT_DIGITS decimals and refuses values closer than 1e-30 (NUMBER_LINE_VALUES_TOO_CLOSE).
+// (SET rows keep one radical per plan: cmpR.)
+const POINT_TEN=10n**40n;
+function bigSqrt(n){
+  if(n<2n)return n;
+  let x=1n<<BigInt(Math.ceil(n.toString(2).length/2));
+  for(;;){const y=(x+n/x)>>1n;if(y>=x)return x;x=y;}
+}
+const scaledReal=x=>x.p[0]*POINT_TEN/x.p[1]+(x.s===1n?0n:x.q[0]*bigSqrt(x.s*POINT_TEN*POINT_TEN)/x.q[1]);
+function cmpP(a,b){
+  const x=toReal(a),y=toReal(b);
+  if(!(x.s!==1n&&y.s!==1n&&x.s!==y.s))return cmpR(a,b);
+  const d=scaledReal(x)-scaledReal(y);
+  if(d>-(10n**10n)&&d<10n**10n)bad('NUMBER_LINE_VALUES_TOO_CLOSE');
+  return d>0n?1:-1;
 }
 const addReal=(a,b,sign=1)=>{
   const x=toReal(a),y=toReal(b),s=x.s!==1n&&y.s!==1n&&x.s!==y.s?bad('NUMBER_LINE_RADICALS_MIXED'):(x.s!==1n?x.s:y.s);
   return real(sign>0?add(x.p,y.p):sub(x.p,y.p),sign>0?add(x.q,y.q):sub(x.q,y.q),s);
 };
-/** Every radical of the exact values (p+q*sqrt(s), s>1) of one figure must be the same one: the exact comparison is for one surd at a time. */
-const checkOneRadical=values=>{if(new Set(values.filter(isReal).map(value=>value.s).filter(s=>s!==1n)).size>1)bad('NUMBER_LINE_RADICALS_MIXED');};
 
 // --- compass constructions (E35) ---------------------------------------------------------------------------------------------------------------
 // numberLine.constructions: [{id,row?,center,radius:{value},arc:{side},hits:[{id,branch}]}]: a compass arc round a drawn point with an exact radius, over the number line; the arc
@@ -324,18 +339,34 @@ const MAX_CONSTRUCTIONS=4,ARC_SIDES=['LEFT','RIGHT','BOTH'],ARC_BRANCHES=['LEFT'
 /**
  * source:{grid:true,from:[x,y],to:[x,y],toName?} (a construction's optional source): the segment whose length the compass carries, drawn on a lattice that stands on the number line, one cell
  * one unit of the line. It starts on the line at the centre (from=[the centre's value,0], an integer) and ends on a lattice point above it and to one side (to=[x,y], y>=1, x not the centre's); its length sqrt(dx^2+dy^2) must be
- * the radius exactly. toName: an optional capital letter written at its end (a name the problem gives, not a point of the figure).
+ * the radius exactly. toName: an optional capital letter written at its end (a name the problem gives, not a point of the figure; one name once).
  */
-function solveSource(raw,center,radius,points){
+const sqReal=x=>{const r=toReal(x);return r.s===1n?asReal(mul(r.p,r.p)):real(add(mul(r.p,r.p),mul(mul(r.q,r.q),[r.s,1n])),mul([2n,1n],mul(r.p,r.q)),r.s);};
+const toNameOk=(name,points,used)=>typeof name==='string'&&CAPITAL.test(name)&&!points.some(point=>point.id===name)&&!used.has(name);
+function solveSource(raw,center,radius,points,used){
   const code='NUMBER_LINE_CONSTRUCTION_SOURCE_INVALID';
+  // source:{perpendicular:{at,height,toName?}} (a chained construction): a perpendicular of an exact height is raised on the line at the point `at` (usually the hit of an earlier arc) and the hypotenuse
+  // of the right triangle centre-at-tip is the radius: sqrt(|at-centre|^2+height^2) must be the radius exactly. The arc then runs from its hit to the tip.
+  if(raw?.perpendicular!==undefined){
+    onlyKeys(raw,['perpendicular'],code);
+    const q=raw.perpendicular;onlyKeys(q,['at','height','toName'],code);
+    const at=typeof q.at==='string'?points.find(point=>point.id===q.at&&!point.symbolic):undefined;
+    if(!at||at===center)bad(code);
+    const height=parseValue(q.height,code);
+    if(cmpR(height,ZERO)<=0)bad(code);
+    if(q.toName!==undefined&&!toNameOk(q.toName,points,used))bad(code);
+    if(cmpR(addReal(sqReal(addReal(at.v,center.v,-1)),sqReal(height)),sqReal(radius))!==0)bad('NUMBER_LINE_CONSTRUCTION_SOURCE_LENGTH_MISMATCH');
+    if(q.toName!==undefined)used.add(q.toName);
+    return {perpendicular:{at:q.at,height:{value:ratText(height),approx:num(height)},...(q.toName!==undefined?{toName:q.toName}:{})}};
+  }
   onlyKeys(raw,['grid','from','to','toName'],code);
   if(raw.grid!==true)bad(code);
   const pair=value=>{if(!Array.isArray(value)||value.length!==2)bad(code);return value.map(entry=>{const number=typeof entry==='string'&&/^-?\d{1,2}$/.test(entry)?Number(entry):entry;if(!Number.isInteger(number)||Math.abs(number)>99)bad(code);return number;});};
   const [fx,fy]=pair(raw.from),[tx,ty]=pair(raw.to);
   if(fy!==0||isReal(center.v)||center.v[1]!==1n||center.v[0]!==BigInt(fx)||ty<1||ty>SOURCE_MAX_CELLS||tx===fx||Math.abs(tx-fx)>SOURCE_MAX_CELLS)bad(code);
-  if(raw.toName!==undefined&&(typeof raw.toName!=='string'||!CAPITAL.test(raw.toName)||points.some(point=>point.id===raw.toName)))bad(code);
-  const d=BigInt((tx-fx)**2+ty**2),r=toReal(radius),square=r.s===1n?asReal(mul(r.p,r.p)):real(add(mul(r.p,r.p),mul(mul(r.q,r.q),[r.s,1n])),mul([2n,1n],mul(r.p,r.q)),r.s);
-  if(cmpR(square,rat(d))!==0)bad('NUMBER_LINE_CONSTRUCTION_SOURCE_LENGTH_MISMATCH');
+  if(raw.toName!==undefined&&!toNameOk(raw.toName,points,used))bad(code);
+  if(cmpR(sqReal(radius),rat(BigInt((tx-fx)**2+ty**2)))!==0)bad('NUMBER_LINE_CONSTRUCTION_SOURCE_LENGTH_MISMATCH');
+  if(raw.toName!==undefined)used.add(raw.toName);
   return {from:[fx,fy],to:[tx,ty],...(raw.toName!==undefined?{toName:raw.toName}:{})};
 }
 function solveConstructions(raw,pointInfo){
@@ -343,7 +374,7 @@ function solveConstructions(raw,pointInfo){
   if(!Array.isArray(raw)||raw.length<1||raw.length>MAX_CONSTRUCTIONS)bad(code);
   const rowNumbers=[...pointInfo.keys()];
   if(!rowNumbers.length)bad('NUMBER_LINE_CONSTRUCTION_NEEDS_POINTS_ROW');
-  const seen=new Set(),out=[];
+  const seen=new Set(),out=[],usedNames=new Set();
   for(const item of raw){
     onlyKeys(item,['id','row','center','radius','arc','hits','source'],code);
     if(typeof item.id!=='string'||!CONSTRUCTION_ID.test(item.id)||seen.has(item.id))bad(code);
@@ -360,19 +391,18 @@ function solveConstructions(raw,pointInfo){
     onlyKeys(item.arc,['side'],'NUMBER_LINE_CONSTRUCTION_ARC_INVALID');
     if(!ARC_SIDES.includes(item.arc.side))bad('NUMBER_LINE_CONSTRUCTION_ARC_INVALID');
     if(!Array.isArray(item.hits)||item.hits.length<1||item.hits.length>2)bad('NUMBER_LINE_CONSTRUCTION_HITS_INCOMPLETE');
-    checkOneRadical([radius,...info.points.filter(point=>!point.symbolic).map(point=>point.v)]);
     const hits=item.hits.map(hit=>{
       onlyKeys(hit,['id','branch'],code);
       if(!ARC_BRANCHES.includes(hit.branch))bad(code);
       const point=find(hit.id);if(!point||point===center)bad('NUMBER_LINE_CONSTRUCTION_POINT_UNKNOWN');
-      if(cmpR(addReal(center.v,radius,hit.branch==='RIGHT'?1:-1),point.v)!==0)bad('NUMBER_LINE_CONSTRUCTION_HIT_MISMATCH');
+      if(cmpP(addReal(center.v,radius,hit.branch==='RIGHT'?1:-1),point.v)!==0)bad('NUMBER_LINE_CONSTRUCTION_HIT_MISMATCH');
       return {id:hit.id,branch:hit.branch};
     });
     const branches=hits.map(hit=>hit.branch);
     if(new Set(branches).size!==branches.length||new Set(hits.map(hit=>hit.id)).size!==hits.length)bad('NUMBER_LINE_CONSTRUCTION_HITS_INCOMPLETE');
     const want=item.arc.side==='BOTH'?['LEFT','RIGHT']:[item.arc.side];
     if(branches.length!==want.length||want.some(side=>!branches.includes(side)))bad('NUMBER_LINE_CONSTRUCTION_HITS_INCOMPLETE');
-    const source=item.source===undefined?undefined:solveSource(item.source,center,radius,info.points);
+    const source=item.source===undefined?undefined:solveSource(item.source,center,radius,info.points,usedNames);
     out.push({rowNumber,model:{id:item.id,center:item.center,radius:{value:ratText(radius),approx:num(radius)},side:item.arc.side,hits:[...hits].sort((a,b)=>a.branch<b.branch?-1:1),...(source?{source}:{})}});
   }
   return out;
@@ -457,15 +487,14 @@ export function solveNumberLineFigure(numberLine){
         point.division={from,to,ratio:[...ratio]};
       }
       const known=points.filter(point=>!point.symbolic).map(point=>point.v);
-      checkOneRadical(known);
-      if(known.some((x,i)=>known.slice(i+1).some(y=>cmpR(x,y)===0)))bad('NUMBER_LINE_POINTS_COINCIDE');
+      if(known.some((x,i)=>known.slice(i+1).some(y=>cmpP(x,y)===0)))bad('NUMBER_LINE_POINTS_COINCIDE');
       if(points.some(point=>point.symbolic)){
         if(row.within!==undefined||row.subdivisions!==undefined)bad('NUMBER_LINE_SYMBOL_UNSUPPORTED');
         const placed=placeSymbols(points,row.order);
         for(const point of points)if(point.symbolic)point.v=placed.get(point.id);
       }else if(row.order!==undefined)bad('NUMBER_LINE_SYMBOL_ORDER_INVALID');
       const values=points.map(point=>point.v);
-      if(values.some((x,i)=>values.slice(i+1).some(y=>cmpR(x,y)===0)))bad('NUMBER_LINE_POINTS_COINCIDE');
+      if(values.some((x,i)=>values.slice(i+1).some(y=>cmpP(x,y)===0)))bad('NUMBER_LINE_POINTS_COINCIDE');
       const spans=row.spans===undefined?null:solveSpans(row.spans,byId);
       const within=row.within===undefined?null:solved[row.within-1].pieces;
       solved.push({kind:'POINTS',points:points.map(point=>{
@@ -510,7 +539,7 @@ const HEAD_HIDDEN=8;      // a SET row whose inequality label is hidden keeps on
 // Compass arcs (E35): an arc leaves the line at its hit point and rises at most ARC_RISE_MAX px (along at most ARC_SPAN_DEG degrees); the row's head keeps that room (plus the dot's margin).
 const ARC_RISE_MAX=72,ARC_SPAN_DEG=32,ARC_MIN_RADIUS=14,ARC_HEAD=ARC_RISE_MAX+8,ARC_STROKE=1.2,ARC_LABEL_CLEAR=1.2,ARC_SAMPLES=32,HIT_NAME_GAP=3,SYMBOL_DOT_GAP=14;
 // A source grid (E35): the segment whose length is the radius, on a lattice of unit cells that stands on the number line (one cell is one unit of the line); the arc then runs from its hit to the segment's end.
-const SOURCE_MAX_CELLS=12,SOURCE_MARGIN=12,SOURCE_MAX_RISE=220,SOURCE_STROKE=2.4,LATTICE_STROKE=.8,LATTICE_COLOR='#bdbdbd';
+const SOURCE_RIGHT_ANGLE=9,SOURCE_MAX_CELLS=12,SOURCE_MARGIN=12,SOURCE_MAX_RISE=220,SOURCE_STROKE=2.4,LATTICE_STROKE=.8,LATTICE_COLOR='#bdbdbd';
 
 const axisLeftOf=model=>{const longest=Math.max(0,...model.rows.map(row=>row.label?[...row.label].length:0));return longest?Math.max(AXIS_LEFT,SAFE+ROW_LABEL_CHAR_PX*longest+ROW_LABEL_GAP):AXIS_LEFT;};
 const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
@@ -527,7 +556,7 @@ function pieceTex(variable,piece){
 function figureMap(model){
   const finite=[];
   for(const row of model.rows){
-    if(row.kind==='POINTS')finite.push(...row.points.map(point=>point.approx),...(row.scale?.integers??[]).map(Number),...(row.constructions??[]).flatMap(construction=>construction.source?[construction.source.to[0]]:[]));
+    if(row.kind==='POINTS')finite.push(...row.points.map(point=>point.approx),...(row.scale?.integers??[]).map(Number),...(row.constructions??[]).flatMap(construction=>construction.source?.to?[construction.source.to[0]]:[]));
     else{for(const piece of row.pieces)for(const end of [piece.lower,piece.upper])if(end)finite.push(end.approx);finite.push(...(row.integers??[]).map(Number));}
   }
   let lo=Math.min(...finite),hi=Math.max(...finite);
@@ -560,7 +589,7 @@ export function figureLayout(model){
     if(points&&row.constructions?.length){
       head=Math.max(head,ARC_HEAD);
       // a source grid stands over the line as high as its segment's end
-      const rise=Math.max(0,...row.constructions.map(construction=>construction.source?construction.source.to[1]:0))*figureMap(model).unitPx;
+      const rise=Math.max(0,...row.constructions.map(construction=>construction.source?construction.source.perpendicular?construction.source.perpendicular.height.approx:construction.source.to[1]:0))*figureMap(model).unitPx;
       if(rise>0)head=Math.max(head,Math.ceil(rise)+SOURCE_MARGIN);
     }
     // spans: each takes a band of its own, under the row's labels or over its names (the head grows by the bands above)
@@ -609,11 +638,16 @@ export function numberLineFigureSpec(plan,model){
         for(const m of row.scale.minor)ticks.push({id:`r${n}-subtick-${numSlug(m.value)}`,role:'minor',value:m.value,parts:m.parts,x:px(m.approx),y1:r6(axisY-MINOR_TICK_HALF),y2:r6(axisY+MINOR_TICK_HALF)});
       }
       // compass arcs (E35): the points the arcs land on; an arc rises from its hit towards its centre, so the hit's name is written on the other side of the dot
-      // (the centre of a construction with a source grid keeps its name off the grid: on the side away from the segment)
+      // (the centre of a construction with a source keeps its name off it: on the side away from the segment)
+      const sourceEnd=construction=>{
+        const source=construction.source,centre=placed.find(item=>item.id===construction.center);
+        if(source.perpendicular){const at=placed.find(item=>item.id===source.perpendicular.at);return {ux:at.approx,rise:source.perpendicular.height.approx,dir:at.approx>=centre.approx?1:-1};}
+        return {ux:source.to[0],rise:source.to[1],dir:source.to[0]>=source.from[0]?1:-1};
+      };
       const nameSides=new Map(),addSide=(id,side)=>(nameSides.get(id)??nameSides.set(id,new Set()).get(id)).add(side);
       for(const construction of row.constructions??[]){
         for(const hit of construction.hits)addSide(hit.id,hit.branch);
-        if(construction.source)addSide(construction.center,construction.source.to[0]>=construction.source.from[0]?'LEFT':'RIGHT');
+        if(construction.source)addSide(construction.center,sourceEnd(construction).dir>=0?'LEFT':'RIGHT');
       }
       const nameAnchor=point=>{
         const sides=nameSides.get(point.id),y=r6(axisY-END_RADIUS-4);
@@ -659,25 +693,38 @@ export function numberLineFigureSpec(plan,model){
           const center=placed.find(item=>item.id===construction.center),cx=center.x,R=r6(construction.radius.approx*unitPx),source=construction.source;
           if(R<ARC_MIN_RADIUS)bad('NUMBER_LINE_CONSTRUCTION_ARC_TOO_SMALL');
           const theta=Math.min(ARC_SPAN_DEG*Math.PI/180,Math.asin(Math.min(1,ARC_RISE_MAX/R)));
-          // the source grid: a lattice of unit cells over the line, the segment from the centre to its end (an arc on that side runs on to the end)
+          // the source: a lattice of unit cells over the line with the segment from the centre to its end (kind GRID), or a perpendicular raised on the line with the hypotenuse of its right triangle
+          // (kind PERPENDICULAR); an arc on the side of the end runs on to the end
+          const end=source?sourceEnd(construction):null;
           if(source){
-            const [fx,fy]=source.from,[tx,ty]=source.to,top=r6(ty*unitPx);
+            const top=r6(end.rise*unitPx);
             if(top>SOURCE_MAX_RISE)bad('NUMBER_LINE_CONSTRUCTION_SOURCE_TOO_TALL');
-            const id=`r${n}-src-${construction.id}`,left=Math.min(fx,tx),right=Math.max(fx,tx),item={id,construction:construction.id,from:[fx,fy],to:[tx,ty],
-              segment:{x1:px(fx),y1:axisY,x2:px(tx),y2:r6(axisY-top)},verticals:[],horizontals:[]};
-            for(let k=left;k<=right;k++)item.verticals.push({id:`${id}-v${k<0?'m'+(-k):k}`,x:px(k),y1:axisY,y2:r6(axisY-top)});
-            for(let j=1;j<=ty;j++)item.horizontals.push({id:`${id}-h${j}`,y:r6(axisY-j*unitPx),x1:px(left),x2:px(right)});
+            const id=`r${n}-src-${construction.id}`,endX=px(end.ux),tipY=r6(axisY-top);
+            let item;
+            if(source.perpendicular){
+              const sign=end.dir,RA=SOURCE_RIGHT_ANGLE;
+              item={id,construction:construction.id,kind:'PERPENDICULAR',at:source.perpendicular.at,height:source.perpendicular.height.value,
+                perp:{x1:endX,y1:axisY,x2:endX,y2:tipY},hyp:{x1:cx,y1:axisY,x2:endX,y2:tipY},rightAngle:`M ${r6(endX-sign*RA)} ${axisY} L ${r6(endX-sign*RA)} ${r6(axisY-RA)} L ${endX} ${r6(axisY-RA)}`,
+                checkLines:[[endX,axisY,endX,tipY],[cx,axisY,endX,tipY],[r6(endX-sign*RA),axisY,r6(endX-sign*RA),r6(axisY-RA)],[r6(endX-sign*RA),r6(axisY-RA),endX,r6(axisY-RA)]]};
+            }else{
+              const [fx,fy]=source.from,[tx,ty]=source.to,left=Math.min(fx,tx),right=Math.max(fx,tx);
+              item={id,construction:construction.id,kind:'GRID',from:[fx,fy],to:[tx,ty],segment:{x1:px(fx),y1:axisY,x2:endX,y2:tipY},verticals:[],horizontals:[]};
+              for(let k=left;k<=right;k++)item.verticals.push({id:`${id}-v${k<0?'m'+(-k):k}`,x:px(k),y1:axisY,y2:tipY});
+              for(let j=1;j<=ty;j++)item.horizontals.push({id:`${id}-h${j}`,y:r6(axisY-j*unitPx),x1:px(left),x2:px(right)});
+              item.checkLines=[...item.verticals.map(line=>[line.x,line.y1,line.x,line.y2]),...item.horizontals.map(line=>[line.x1,line.y,line.x2,line.y]),[item.segment.x1,item.segment.y1,item.segment.x2,item.segment.y2]];
+            }
             (spec.sources??=[]).push(item);
-            if(source.toName){
-              const sx=px(tx),right_=tx>=fx;
-              labels.push({id:`${id}-name`,role:'source-name',owner:id,kind:'MATH',tex:source.toName,plain:source.toName,value:source.toName,anchor:{x:r6(sx+(right_?HIT_NAME_GAP:-HIT_NAME_GAP)),y:r6(axisY-top-4),align:right_?'above-right':'above-left'},rowHeight:30,row:n});
+            const name=source.perpendicular?source.perpendicular.toName:source.toName;
+            if(name){
+              const right_=end.dir>=0;
+              labels.push({id:`${id}-name`,role:'source-name',owner:source.perpendicular?`${id}-hyp`:id,kind:'MATH',tex:name,plain:name,value:name,anchor:{x:r6(endX+(right_?HIT_NAME_GAP:-HIT_NAME_GAP)),y:r6(tipY-4),align:right_?'above-right':'above-left'},rowHeight:30,row:n});
             }
           }
           for(const hit of construction.hits){
             const dir=hit.branch==='RIGHT'?1:-1,x0=r6(cx+dir*R);
             let x1=r6(cx+dir*R*Math.cos(theta)),y1=r6(axisY-R*Math.sin(theta));
             // on the side of the segment's end the arc runs from its hit exactly to that end (the end is on the circle: the segment is a radius)
-            if(source&&dir*(source.to[0]-source.from[0])>=0){x1=px(source.to[0]);y1=r6(axisY-source.to[1]*unitPx);}
+            if(source&&dir*end.dir>0){x1=px(end.ux);y1=r6(axisY-end.rise*unitPx);}
             spec.constructions.push({id:`r${n}-con-${construction.id}-${hit.branch.toLowerCase()}`,construction:construction.id,center:construction.center,hit:hit.id,branch:hit.branch,radius:construction.radius.value,
               cx,cy:axisY,R,x0,y0:axisY,x1,y1,d:`M ${x0} ${axisY} A ${R} ${R} 0 0 ${dir===1?0:1} ${x1} ${y1}`});
           }
@@ -764,7 +811,7 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
     // a compass arc never runs through a label or another dot; nor does a source grid (its lines, its segment) run through a label
     for(const row of spec.rows){
       for(const src of row.sources??[]){
-        const lines=[...src.verticals.map(line=>[line.x,line.y1,line.x,line.y2]),...src.horizontals.map(line=>[line.x1,line.y,line.x2,line.y]),[src.segment.x1,src.segment.y1,src.segment.x2,src.segment.y2]];
+        const lines=src.checkLines;
         for(const {label,box} of placed)for(const [x1,y1,x2,y2] of lines){
           const samples=Math.max(2,Math.ceil(Math.hypot(x2-x1,y2-y1)/2));
           if(Array.from({length:samples+1},(_,k)=>[x1+(x2-x1)*k/samples,y1+(y2-y1)*k/samples]).some(([x,y])=>x>box.x-ARC_LABEL_CLEAR&&x<box.x+box.width+ARC_LABEL_CLEAR&&y>box.y-ARC_LABEL_CLEAR&&y<box.y+box.height+ARC_LABEL_CLEAR))throw new Stop('NUMBER_LINE_CONSTRUCTION_SOURCE_ON_LABEL',{source:src.id,label:label.id});
@@ -797,6 +844,11 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
       for(const band of row.bands)body+=`<g data-layer="40"><line id="${band.id}" data-role="solution-band" data-row="${n}" data-piece="${band.piece}" data-from="${esc(band.from)}" data-to="${esc(band.to)}" stroke="#111" stroke-width="${band.result?4.8:3.2}" stroke-linecap="butt" fill="none" x1="${band.x1}" y1="${band.y}" x2="${band.x2}" y2="${band.y}"/></g>`;
       for(const src of row.sources??[]){
         const head=`data-row="${n}" data-construction="${src.construction}"`;
+        if(src.kind==='PERPENDICULAR'){
+          const part=(key,role,seg)=>`<line id="${src.id}-${key}" data-role="${role}" ${head} data-at="${src.at}"${key==='perp'?` data-height="${esc(src.height)}"`:''} stroke="#111" stroke-width="${SOURCE_STROKE}" stroke-linecap="round" fill="none" x1="${seg.x1}" y1="${seg.y1}" x2="${seg.x2}" y2="${seg.y2}"/>`;
+          body+=`<g data-layer="46">${part('perp','source-perpendicular',src.perp)}${part('hyp','source-hypotenuse',src.hyp)}<path id="${src.id}-right" data-role="source-right-angle" ${head} stroke="#111" stroke-width="1" fill="none" d="${src.rightAngle}"/></g>`;
+          continue;
+        }
         body+=`<g data-layer="25">${src.verticals.map(line=>`<line id="${line.id}" data-role="grid-line" ${head} data-axis="y" stroke="${LATTICE_COLOR}" stroke-width="${LATTICE_STROKE}" fill="none" x1="${line.x}" y1="${line.y1}" x2="${line.x}" y2="${line.y2}"/>`).join('')}${src.horizontals.map(line=>`<line id="${line.id}" data-role="grid-line" ${head} data-axis="x" stroke="${LATTICE_COLOR}" stroke-width="${LATTICE_STROKE}" fill="none" x1="${line.x1}" y1="${line.y}" x2="${line.x2}" y2="${line.y}"/>`).join('')}</g>`;
         body+=`<g data-layer="46"><line id="${src.id}" data-role="source-segment" ${head} data-from="${src.from.join(',')}" data-to="${src.to.join(',')}" stroke="#111" stroke-width="${SOURCE_STROKE}" stroke-linecap="round" fill="none" x1="${src.segment.x1}" y1="${src.segment.y1}" x2="${src.segment.x2}" y2="${src.segment.y2}"/></g>`;
       }

@@ -75,10 +75,15 @@ test('constructions that cannot be drawn faithfully are refused with their codes
   // the sides the arc covers need their hits: BOTH needs two, LEFT or RIGHT exactly its own
   assert.doesNotThrow(()=>plan([con('c1','A','4','BOTH',['P','RIGHT'],['Q','LEFT'])]));
   for(const bad of [con('c1','A','4','BOTH',['P','RIGHT']),con('c1','A','4','RIGHT',['Q','LEFT']),con('c1','A','4','RIGHT',['P','RIGHT'],['Q','LEFT']),con('c1','A','4','BOTH',['P','RIGHT'],['P','RIGHT']),{...good,hits:[]},{...good,hits:'P'}])assert.throws(()=>plan([bad]),code('NUMBER_LINE_CONSTRUCTION_HITS_INCOMPLETE'),JSON.stringify(bad));
-  // an exact surd radius lands exactly: sqrt(8) is 2*sqrt(2), and sqrt(2)+sqrt(3) can not be told apart exactly (one radical per figure)
+  // an exact surd radius lands exactly: sqrt(8) is 2*sqrt(2); sqrt(3) is not sqrt(2) (different radicals are told apart on 40 decimals, never confused); a radius and a centre with different radicals
+  // can not be added exactly
   assert.doesNotThrow(()=>solveNumberLineFigure({rows:[pts([['A','0'],['P','2*sqrt(2)']])],constructions:[con('c1','A','sqrt(8)','RIGHT',['P','RIGHT'])]}));
-  assert.throws(()=>solveNumberLineFigure({rows:[pts([['A','0'],['P','sqrt(3)']])],constructions:[con('c1','A','sqrt(2)','RIGHT',['P','RIGHT'])]}),code('NUMBER_LINE_RADICALS_MIXED'));
-  assert.throws(()=>solveNumberLineFigure({rows:[pts([['A','sqrt(2)'],['P','sqrt(3)']])]}),code('NUMBER_LINE_RADICALS_MIXED'));
+  assert.throws(()=>solveNumberLineFigure({rows:[pts([['A','0'],['P','sqrt(3)']])],constructions:[con('c1','A','sqrt(2)','RIGHT',['P','RIGHT'])]}),code('NUMBER_LINE_CONSTRUCTION_HIT_MISMATCH'));
+  assert.throws(()=>solveNumberLineFigure({rows:[pts([['A','sqrt(2)'],['P','sqrt(3)+sqrt(2)']])],constructions:[con('c1','A','sqrt(3)','RIGHT',['P','RIGHT'])]}),code('NUMBER_LINE_RADICALS_MIXED'));
+  // the points of one row may use different radicals (the spiral): ordered exactly, a coincidence still detected
+  const spiral=solveNumberLineFigure({rows:[pts([['P','sqrt(3)'],['O','0'],['Q','sqrt(2)'],['R','-sqrt(5)'],['S','1+sqrt(2)']])]});
+  assert.deepEqual(spiral.rows[0].points.map(point=>point.value),['sqrt(3)','0','sqrt(2)','-sqrt(5)','1+sqrt(2)']);
+  assert.throws(()=>solveNumberLineFigure({rows:[pts([['A','sqrt(8)'],['B','2*sqrt(2)']])]}),code('NUMBER_LINE_POINTS_COINCIDE'));
   // arcs go over the row: a span above it has no room
   assert.throws(()=>plan([good],[pts([['A','0'],['P','4'],['Q','-4']],{spans:[{from:'A',to:'P',style:'ARROW'}]})]),code('NUMBER_LINE_CONSTRUCTION_SPAN_ABOVE'));
   assert.doesNotThrow(()=>plan([good],[pts([['A','0'],['P','4'],['Q','-4']],{spans:[{from:'A',to:'P'}]})]));
@@ -255,6 +260,70 @@ test('tamper: a wrong segment, lattice, arc end, length or name make the observe
   const noName=clone(withSource);delete noName.constructions[0].source.toName;
   await bad(svg,noName,'NL_CONSTRUCTION_SOURCE_NAME_UNEXPECTED');
   assert.equal((await audit(svg,withSource)).status,'PASS');
+});
+
+// A chained construction (21 금당중 1학기 중간 중3 q9): the diagonal OA of the unit square is the radius of the first arc (to P); a perpendicular BP=1 is raised at P; the hypotenuse OB is the radius of the second arc (to Q).
+const spiral={axisVariable:false,rows:[pts([['O','0'],['P','sqrt(2)',{showValue:false}],['Q','sqrt(3)',{showValue:false}]],{band:false})],
+  constructions:[{...con('c1','O','sqrt(2)','RIGHT',['P','RIGHT']),source:{grid:true,from:[0,0],to:[1,1],toName:'A'}},{...con('c2','O','sqrt(3)','RIGHT',['Q','RIGHT']),source:{perpendicular:{at:'P',height:'1',toName:'B'}}}]};
+
+test('a chained construction: the perpendicular and the hypotenuse of its right triangle are checked exactly, points may use different radicals',()=>{
+  const m=solveNumberLineFigure(spiral);
+  assert.deepEqual(m.rows[0].constructions[1].source,{perpendicular:{at:'P',height:{value:'1',approx:1},toName:'B'}});
+  assert.deepEqual(m.rows[0].points.map(point=>point.tex),['0','\\sqrt{2}','\\sqrt{3}']);
+  assert.ok(figureLayout(m).rows[0].head>=figureLayout(solveNumberLineFigure({...spiral,constructions:spiral.constructions.map(({source,...rest})=>rest)})).rows[0].head);
+  // a surd height: the right triangle 1, sqrt(3), 2
+  assert.doesNotThrow(()=>solveNumberLineFigure({rows:[pts([['O','0'],['A','1'],['R','2']])],constructions:[{...con('k','O','2','RIGHT',['R','RIGHT']),source:{perpendicular:{at:'A',height:'sqrt(3)'}}}]}));
+  const refuse=(source,codeName)=>assert.throws(()=>solveNumberLineFigure({...spiral,constructions:[spiral.constructions[0],{...spiral.constructions[1],source}]}),code(codeName),JSON.stringify(source));
+  const good=spiral.constructions[1].source;
+  for(const bad of [{perpendicular:'P'},{perpendicular:{at:'P'}},{perpendicular:{...good.perpendicular,extra:1}},{...good,grid:true},{perpendicular:{...good.perpendicular,at:'Z'}},{perpendicular:{...good.perpendicular,at:'O'}},{perpendicular:{...good.perpendicular,at:7}},
+    {perpendicular:{...good.perpendicular,height:'0'}},{perpendicular:{...good.perpendicular,height:'-1'}},{perpendicular:{...good.perpendicular,height:'1.5'}},{perpendicular:{...good.perpendicular,toName:'a'}},{perpendicular:{...good.perpendicular,toName:'A'}},{perpendicular:{...good.perpendicular,toName:'Q'}},{perpendicular:{...good.perpendicular,toName:7}}])
+    refuse(bad,'NUMBER_LINE_CONSTRUCTION_SOURCE_INVALID');
+  // the hypotenuse must be the radius exactly: sqrt(2+1) is sqrt(3), not sqrt(2+4) nor 2
+  for(const height of ['2','sqrt(2)','1/2'])refuse({perpendicular:{...good.perpendicular,height}},'NUMBER_LINE_CONSTRUCTION_SOURCE_LENGTH_MISMATCH');
+  refuse({perpendicular:{at:'Q',height:'1'}},'NUMBER_LINE_CONSTRUCTION_SOURCE_LENGTH_MISMATCH');
+  // one end name is written once, whatever source it belongs to
+  assert.throws(()=>solveNumberLineFigure({...spiral,constructions:[spiral.constructions[0],{...spiral.constructions[1],source:{perpendicular:{...good.perpendicular,toName:'A'}}}]}),code('NUMBER_LINE_CONSTRUCTION_SOURCE_INVALID'));
+  // too tall to draw
+  const tall2={rows:[pts([['O','0'],['A','5'],['R','13']])],constructions:[{...con('k','O','13','RIGHT',['R','RIGHT']),source:{perpendicular:{at:'A',height:'12'}}}]};
+  assert.throws(()=>numberLineFigureSpec({capability:'number-line-v1',numberLine:tall2},solveNumberLineFigure(tall2)),code('NUMBER_LINE_CONSTRUCTION_SOURCE_TOO_TALL'));
+});
+
+test('the chained construction composes: both arcs end on their sources, the right angle is marked, the observer recomputes it all',async()=>{
+  const composed=await compose(spiral,'spiral');
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));assert.equal(composed.renderedLayout.status,'PASS');
+  const svg=composed.svg;
+  for(const role of ['source-perpendicular','source-hypotenuse','source-right-angle','source-segment'])assert.equal((svg.match(new RegExp(`data-role="${role}"`,'g'))||[]).length,1,role);
+  assert.match(svg,/id="r1-src-c2-perp" data-role="source-perpendicular"[^>]*data-at="P" data-height="1"/);
+  assert.ok(svg.includes('data-tex="A"')&&svg.includes('data-tex="B"'));
+  assert.equal((await audit(svg,spiral)).status,'PASS');
+  // the second arc ends on the tip of the perpendicular
+  const perp=svg.match(/<line id="r1-src-c2-perp"[^>]*>/)[0],arc=svg.match(/<path id="r1-con-c2-right"[^>]*>/)[0];
+  const x2=+/ x2="([\d.]+)"/.exec(perp)[1],y2=+/ y2="([\d.]+)"/.exec(perp)[1];
+  const [,x1,y1]=/ d="M [\d.]+ [\d.]+ A [\d.]+ [\d.]+ 0 0 [01] ([\d.]+) ([\d.]+)"/.exec(arc).map(Number);
+  assert.ok(Math.abs(x1-x2)<0.01&&Math.abs(y1-y2)<0.01);
+});
+
+test('tamper: a wrong perpendicular, hypotenuse, right angle, height or name make the observer fail',async()=>{
+  const {svg}=await compose(spiral,'spiral-tamper');
+  const bad=async(mutated,plan,prefix)=>assert.ok(has(await audit(mutated,plan),prefix),prefix);
+  const attr=(id,name,fn)=>svg.replace(new RegExp(`(<line id="${id}"[^>]*? ${name}=")([\\d.]+)`),(m,head,value)=>head+fn(Number(value)));
+  await bad(attr('r1-src-c2-perp','y2',v=>v+6),spiral,'NL_CONSTRUCTION_SOURCE_SEGMENT');
+  await bad(attr('r1-src-c2-hyp','x1',v=>v+6),spiral,'NL_CONSTRUCTION_SOURCE_SEGMENT');
+  await bad(svg.replace(/(<path id="r1-src-c2-right"[^>]*? d="M )([\d.]+)/,(m,head,x)=>head+(Number(x)-4)),spiral,'NL_CONSTRUCTION_SOURCE_RIGHT_ANGLE');
+  await bad(svg.replace('data-height="1"','data-height="2"'),spiral,'NL_CONSTRUCTION_SOURCE_ATTRIBUTES');
+  await bad(svg.replace('data-at="P"','data-at="Q"'),spiral,'NL_CONSTRUCTION_SOURCE_ATTRIBUTES');
+  await bad(svg.replace(/<path id="r1-src-c2-right"[^>]*\/>/,''),spiral,'NL_CONSTRUCTION_SOURCE_MISSING');
+  await bad(svg.replace(/(<path id="r1-con-c2-right"[^>]*? d="M [\d.]+ [\d.]+ A [\d.]+ [\d.]+ 0 0 [01] [\d.]+ )([\d.]+)/,(m,head,y)=>head+(Number(y)+5)),spiral,'NL_CONSTRUCTION_ARC_NOT_AT_SOURCE');
+  await bad(svg.replace('data-tex="B"','data-tex="C"'),spiral,'NL_CONSTRUCTION_SOURCE_NAME');
+  await bad(svg.replace(/(id="r1-src-c2-name"[^>]*?transform="translate\()([\d.]+)/,(m,head,x)=>head+(Number(x)-30)),spiral,'NL_CONSTRUCTION_SOURCE_NAME_PLACE');
+  const taller=clone(spiral);taller.constructions[1].source.perpendicular.height='2';
+  await bad(svg,taller,'NL_CONSTRUCTION_SOURCE_LENGTH');
+  const elsewhere=clone(spiral);elsewhere.constructions[1].source.perpendicular.at='Q';
+  await bad(svg,elsewhere,'NL_CONSTRUCTION_SOURCE_LENGTH');
+  const none=clone(spiral);delete none.constructions[1].source;
+  await bad(svg,none,'NL_CONSTRUCTION_SOURCE_COUNT');
+  assert.equal((await audit(svg,spiral)).status,'PASS');
 });
 
 test('a lattice line through the name of another point is refused when composing',async()=>{

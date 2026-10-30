@@ -282,6 +282,7 @@ TICK_MARK_HALF_PX = 7.5          # E35: the TICK style, a short vertical stroke 
 SYMBOL_ID = re.compile('^-?[a-z]$')
 SYMBOL_SEPARATION_PX = 10.0
 NAME_BESIDE_ARC_PX = 12.0
+SOURCE_RIGHT_ANGLE_PX = 9.0          # the side of the right angle mark at the foot of a source perpendicular
 ARC_PATH = re.compile(r'^M (-?[\d.e]+) (-?[\d.e]+) A (-?[\d.e]+) (-?[\d.e]+) 0 0 ([01]) (-?[\d.e]+) (-?[\d.e]+)$')
 ARC_MIN_RISE_PX, ARC_MAX_RISE_PX, ARC_MAX_ANGLE_DEG, ARC_CLEAR_PX, ARC_SAMPLES = 8.0, 80.0, 40.0, 1.2, 48
 
@@ -490,7 +491,14 @@ def _construction_plans(numberLine, rows):
             if len(point_rows) != 1: raise ValueError('NL_OBSERVER_PLAN_INVALID')
             row = point_rows[0]
         source = item.get('source')
-        if source is not None:
+        if isinstance(source, dict) and 'perpendicular' in source:
+            # a chained construction: a perpendicular of an exact height raised at the point `at`; the hypotenuse is the radius
+            q = source['perpendicular']
+            if set(source) != {'perpendicular'} or not isinstance(q, dict) or set(q) - {'at', 'height', 'toName'} or not isinstance(q.get('at'), str): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+            height = _value(q.get('height'), 'NL_OBSERVER_PLAN_INVALID')
+            if not height > 0 or q.get('toName') is not None and not (isinstance(q['toName'], str) and re.fullmatch('[A-Z]', q['toName'])): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+            source = {'kind': 'PERPENDICULAR', 'at': q['at'], 'height': height, 'toName': q.get('toName')}
+        elif source is not None:
             if not isinstance(source, dict) or set(source) - {'grid', 'from', 'to', 'toName'} or source.get('grid') is not True: raise ValueError('NL_OBSERVER_PLAN_INVALID')
             def cell(pair):
                 if not isinstance(pair, list) or len(pair) != 2: raise ValueError('NL_OBSERVER_PLAN_INVALID')
@@ -500,7 +508,7 @@ def _construction_plans(numberLine, rows):
                     if isinstance(entry, bool) or not isinstance(entry, int): raise ValueError('NL_OBSERVER_PLAN_INVALID')
                     out.append(entry)
                 return tuple(out)
-            source = {'from': cell(source.get('from')), 'to': cell(source.get('to')), 'toName': source.get('toName')}
+            source = {'kind': 'GRID', 'from': cell(source.get('from')), 'to': cell(source.get('to')), 'toName': source.get('toName')}
             if source['toName'] is not None and not (isinstance(source['toName'], str) and re.fullmatch('[A-Z]', source['toName'])): raise ValueError('NL_OBSERVER_PLAN_INVALID')
         if row not in point_rows or not isinstance(item.get('radius'), dict) or not isinstance(item.get('arc'), dict) or not isinstance(item.get('hits'), list): raise ValueError('NL_OBSERVER_PLAN_INVALID')
         radius = _value(item['radius'].get('value'), 'NL_OBSERVER_PLAN_INVALID')
@@ -514,6 +522,14 @@ def _construction_plans(numberLine, rows):
     return out
 
 
+def _source_end(plan, values):
+    """Where a construction's source segment ends, from the plan alone: (its place on the line in units, its height over the line in units, +1 or -1: the side of the centre it is on)."""
+    source = plan['source']
+    if source['kind'] == 'GRID': return source['to'][0], source['to'][1], 1 if source['to'][0] >= source['from'][0] else -1
+    if source['at'] not in values or plan['center'] not in values: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+    return values[source['at']], source['height'], 1 if values[source['at']] >= values[plan['center']] else -1
+
+
 def _check_constructions(index, plans, values, px, unit_scale, axis_y, root, by_id, circles, label_boxes, owners):
     """Every compass arc of row `index`, recomputed from the plan: the circle round the centre point with the exact radius, landing on the hit (centre +- radius, exactly), drawn over the
     line, short of a quarter turn, with the centre's side of the sweep right; clear of every label and of every dot but its own hit."""
@@ -521,9 +537,13 @@ def _check_constructions(index, plans, values, px, unit_scale, axis_y, root, by_
     drawn = [e for e in root.iter(NS + 'path') if e.get('data-role') == 'construction-arc' and e.get('data-row') == str(index)]
     wanted = [(plan, hit_id, branch) for plan in plans for hit_id, branch in plan['hits']]
     if len(drawn) != len(wanted): errors.append('NL_CONSTRUCTION_ARC_COUNT:%d' % index)
-    # source grids: exactly those the plan asks for
-    drawn_sources = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'source-segment' and e.get('data-row') == str(index)]
-    if len(drawn_sources) != sum(1 for plan in plans if plan['source'] is not None) or any(e.get('data-role') == 'grid-line' and e.get('data-row') == str(index) and e.get('data-construction') not in {plan['id'] for plan in plans if plan['source'] is not None} for e in root.iter(NS + 'line')):
+    # sources: exactly those the plan asks for (a grid: its segment and lattice lines; a perpendicular: the perpendicular, the hypotenuse and the right angle mark)
+    grids = {plan['id'] for plan in plans if plan['source'] is not None and plan['source']['kind'] == 'GRID'}
+    perps = [plan for plan in plans if plan['source'] is not None and plan['source']['kind'] == 'PERPENDICULAR']
+    in_row = lambda e: e.get('data-row') == str(index)
+    count = lambda role: sum(1 for e in root.iter() if e.get('data-role') == role and in_row(e))
+    if count('source-segment') != len(grids) or count('source-perpendicular') != len(perps) or count('source-hypotenuse') != len(perps) or count('source-right-angle') != len(perps) \
+            or any(e.get('data-role') == 'grid-line' and in_row(e) and e.get('data-construction') not in grids for e in root.iter(NS + 'line')):
         errors.append('NL_CONSTRUCTION_SOURCE_COUNT:%d' % index)
     for plan in plans:
         if plan['source'] is not None and plan['center'] in values: errors.extend(_check_source(index, plan, values, px, unit_scale, axis_y, root, by_id, label_boxes, owners))
@@ -553,10 +573,11 @@ def _check_constructions(index, plans, values, px, unit_scale, axis_y, root, by_
         angle = math.degrees(math.atan2(rise, direction * (x1 - cx)))
         source = plan['source']
         # on the side of its source segment's end the arc runs from its hit exactly to that end; otherwise it only rises a little over the line
-        connected = source is not None and direction * (source['to'][0] - source['from'][0]) >= 0
+        end_x, end_rise, end_side = _source_end(plan, values) if source is not None else (None, None, 0)
+        connected = source is not None and direction == end_side
         if connected:
-            if abs(x1 - px(source['to'][0])) > TOL or abs(y1 - (axis_y - source['to'][1] * unit_scale)) > TOL: errors.append('NL_CONSTRUCTION_ARC_NOT_AT_SOURCE:' + aid)
-            max_rise, max_angle = source['to'][1] * unit_scale + TOL, 90.0 + 1e-6
+            if abs(x1 - px(end_x)) > TOL or abs(y1 - (axis_y - float(end_rise) * unit_scale)) > TOL: errors.append('NL_CONSTRUCTION_ARC_NOT_AT_SOURCE:' + aid)
+            max_rise, max_angle = float(end_rise) * unit_scale + TOL, 90.0 + 1e-6
         else: max_rise, max_angle = ARC_MAX_RISE_PX, ARC_MAX_ANGLE_DEG
         if not ARC_MIN_RISE_PX <= rise <= max_rise or not 0 < angle <= max_angle: errors.append('NL_CONSTRUCTION_ARC_EXTENT:' + aid)
         cross = (x0 - cx) * (y1 - cy) - (y0 - cy) * (x1 - cx)
@@ -576,6 +597,7 @@ def _check_source(index, plan, values, px, unit_scale, axis_y, root, by_id, labe
     """The source grid of one construction, recomputed from the plan: the segment from the centre (on the line) to its end, with length sqrt(dx^2+dy^2) equal to the radius exactly, on a lattice of
     unit cells (one cell is one unit of the line) that covers exactly the segment's box; no lattice line or segment runs through a label; the end's name (if the plan gives one) stands beside it."""
     errors = []
+    if plan['source']['kind'] == 'PERPENDICULAR': return _check_perpendicular(index, plan, values, px, unit_scale, axis_y, root, by_id, label_boxes, owners)
     source, cid = plan['source'], plan['id']
     (fx, fy), (tx, ty) = source['from'], source['to']
     sid = 'r%d-src-%s' % (index, cid)
@@ -614,6 +636,53 @@ def _check_source(index, plan, values, px, unit_scale, axis_y, root, by_id, labe
             end_x = px(tx)
             beside = box[0] >= end_x - TOL and box[0] - end_x <= NAME_BESIDE_ARC_PX if tx >= fx else box[0] + box[2] <= end_x + TOL and end_x - (box[0] + box[2]) <= NAME_BESIDE_ARC_PX
             if not beside or box[1] + box[3] > top + TOL: errors.append('NL_CONSTRUCTION_SOURCE_NAME_PLACE:' + sid)
+    return errors
+
+
+def _check_perpendicular(index, plan, values, px, unit_scale, axis_y, root, by_id, label_boxes, owners):
+    """The perpendicular source of a chained construction, recomputed from the plan: a perpendicular of the exact height raised on the line at the point `at`, the hypotenuse from the centre to its tip,
+    the right angle mark at the foot; |at - centre|^2 + height^2 must be the radius squared exactly; no line runs through a label; the tip's name (if the plan gives one) stands beside the tip."""
+    errors = []
+    source, cid = plan['source'], plan['id']
+    sid = 'r%d-src-%s' % (index, cid)
+    at, centre = source['at'], plan['center']
+    if at not in values or at == centre or source['height'] <= 0: errors.append('NL_CONSTRUCTION_SOURCE_PLAN:' + sid); return errors
+    height, leg = source['height'], values[at] - values[centre]
+    if S.simplify(plan['radius'] ** 2 - (leg ** 2 + height ** 2)) != 0: errors.append('NL_CONSTRUCTION_SOURCE_LENGTH:' + sid)
+    perp, hyp, mark = by_id.get(sid + '-perp'), by_id.get(sid + '-hyp'), by_id.get(sid + '-right')
+    if perp is None or hyp is None or mark is None or perp.get('data-role') != 'source-perpendicular' or hyp.get('data-role') != 'source-hypotenuse' or mark.get('data-role') != 'source-right-angle':
+        errors.append('NL_CONSTRUCTION_SOURCE_MISSING:' + sid); return errors
+    for element in (perp, hyp, mark):
+        if element.get('data-construction') != cid or element.get('data-row') != str(index) or element.get('data-at') not in (None, at) or (element is not mark and element.get('data-at') != at): errors.append('NL_CONSTRUCTION_SOURCE_ATTRIBUTES:' + sid)
+    try:
+        if S.simplify(_value(perp.get('data-height'), 'NL_CONSTRUCTION_SOURCE_ATTRIBUTES') - height) != 0: errors.append('NL_CONSTRUCTION_SOURCE_ATTRIBUTES:' + sid)
+    except ValueError: errors.append('NL_CONSTRUCTION_SOURCE_ATTRIBUTES:' + sid)
+    foot_x, centre_x, tip_y = px(values[at]), px(values[centre]), axis_y - float(height) * unit_scale
+    got_perp = tuple(_num(perp, name) for name in ('x1', 'y1', 'x2', 'y2'))
+    got_hyp = tuple(_num(hyp, name) for name in ('x1', 'y1', 'x2', 'y2'))
+    if any(abs(a - b) > TOL for a, b in zip(got_perp, (foot_x, axis_y, foot_x, tip_y))) or any(abs(a - b) > TOL for a, b in zip(got_hyp, (centre_x, axis_y, foot_x, tip_y))): errors.append('NL_CONSTRUCTION_SOURCE_SEGMENT:' + sid)
+    # the right angle mark: a small square corner between the perpendicular and the line, on the centre's side of the foot
+    sign = 1 if values[at] > values[centre] else -1
+    nums = re.findall(r'-?\d+(?:\.\d+)?(?:e-?\d+)?', mark.get('d') or '')
+    commands = re.findall(r'[ML]', mark.get('d') or '')
+    corner = [(foot_x - sign * SOURCE_RIGHT_ANGLE_PX, axis_y), (foot_x - sign * SOURCE_RIGHT_ANGLE_PX, axis_y - SOURCE_RIGHT_ANGLE_PX), (foot_x, axis_y - SOURCE_RIGHT_ANGLE_PX)]
+    if commands != ['M', 'L', 'L'] or len(nums) != 6 or any(abs(float(nums[2 * k]) - corner[k][0]) > TOL or abs(float(nums[2 * k + 1]) - corner[k][1]) > TOL for k in range(3)): errors.append('NL_CONSTRUCTION_SOURCE_RIGHT_ANGLE:' + sid)
+    lines = [got_perp, got_hyp, (corner[0][0], corner[0][1], corner[1][0], corner[1][1]), (corner[1][0], corner[1][1], corner[2][0], corner[2][1])]
+    for label_id, b in label_boxes:
+        for x1, y1, x2, y2 in lines:
+            steps = max(2, int(math.hypot(x2 - x1, y2 - y1) / 2) + 1)
+            if any(b[0] - ARC_CLEAR_PX < x1 + (x2 - x1) * k / steps < b[0] + b[2] + ARC_CLEAR_PX and b[1] - ARC_CLEAR_PX < y1 + (y2 - y1) * k / steps < b[1] + b[3] + ARC_CLEAR_PX for k in range(steps + 1)):
+                errors.append('NL_CONSTRUCTION_SOURCE_ON_LABEL:%s:%s' % (sid, label_id)); break
+    names = [l for l in owners.get(sid + '-hyp', []) if l.get('data-label-role') == 'source-name']
+    if source['toName'] is None:
+        if names: errors.append('NL_CONSTRUCTION_SOURCE_NAME_UNEXPECTED:' + sid)
+    elif len(names) != 1 or names[0].get('data-tex') != source['toName'] or names[0].get('data-text') is not None: errors.append('NL_CONSTRUCTION_SOURCE_NAME:' + sid)
+    else:
+        box = _label_box(names[0])
+        if box is None: errors.append('NL_LABEL_GEOMETRY_UNREADABLE:' + str(names[0].get('id')))
+        else:
+            beside = box[0] >= foot_x - TOL and box[0] - foot_x <= NAME_BESIDE_ARC_PX if values[at] >= values[centre] else box[0] + box[2] <= foot_x + TOL and foot_x - (box[0] + box[2]) <= NAME_BESIDE_ARC_PX
+            if not beside or box[1] + box[3] > tip_y + TOL: errors.append('NL_CONSTRUCTION_SOURCE_NAME_PLACE:' + sid)
     return errors
 
 
@@ -724,7 +793,7 @@ def audit_figure(numberLine, svg, pointNames=None):
     for index_, plans_ in con_plans.items():
         for plan_ in plans_:
             for hit_id_, branch_ in plan_['hits']: name_sides.setdefault((str(index_), hit_id_), set()).add(branch_)
-            if plan_['source'] is not None: name_sides.setdefault((str(index_), plan_['center']), set()).add('LEFT' if plan_['source']['to'][0] >= plan_['source']['from'][0] else 'RIGHT')
+            if plan_['source'] is not None: name_sides.setdefault((str(index_), plan_['center']), set()).add('LEFT' if _source_end(plan_, rows[index_ - 1]['values'])[2] > 0 else 'RIGHT')
     unit_scale = (px_right - px_left) / (unit_right - unit_left)
     label_boxes = [(label.get('id'), box) for label, box in ((l, _label_box(l)) for l in labels) if box is not None]
     for index, row in enumerate(rows, start=1):
