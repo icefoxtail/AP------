@@ -170,6 +170,7 @@
       if (this.def.enter) this.def.enter(this.s, sc, this);
       if (sc.enter) sc.enter(this.s, this);
       const bd = this.def.board || {};
+      this.board.aspect = (sc.aspect || bd.aspect) === 'free' ? 'free' : '1:1'; // 장면별 선택: 생략하면 board.aspect(기본 1:1)
       this.board.setPanes(call(sc.panes, this.s) || null);
       let focus = call(sc.focus, this.s) || call(bd.focus, this.s);
       if (!focus && (sc.autoFit || bd.autoFit)) focus = this._measureFocus(sc);
@@ -1026,8 +1027,8 @@
       const grid = h('div', { class: 'apl-keys' });
       keys.forEach(([ks, d]) => grid.append(h('span', { html: ks.map((k) => `<span class="apl-kbd">${APLab.esc(k)}</span>`).join('') }), h('span', { text: d })));
       // board.aspect:'free'(시간 그래프 등)인 실험실만 1:1 안내 대신 축척이 따로라는 안내를 보여 줍니다.
-      const aspectNote = (this.def.board || {}).aspect === 'free'
-        ? '이 실험실의 그래프는 가로(시간)와 세로(위치·속도)의 <b>단위가 달라 축척을 따로</b> 둡니다. 그래프가 무대를 가득 채우는 대신 기울기의 각도는 실제와 다르게 보여요.'
+      const aspectNote = ((this.scene && this.scene.aspect) || (this.def.board || {}).aspect) === 'free'
+        ? (this.scene && this.scene.aspectNote) || '이 실험실의 그래프는 가로(시간)와 세로(위치·속도)의 <b>단위가 달라 축척을 따로</b> 둡니다. 그래프가 무대를 가득 채우는 대신 기울기의 각도는 실제와 다르게 보여요.'
         : '무대는 가로·세로 축척이 항상 같아서 <b>직각은 직각으로, 기울기 1은 45°로</b> 보입니다.';
       const legend = h('div', { class: 'apl-card soft', html: `
         <div class="apl-section-h" style="margin-bottom:8px"><span>${icon('spark')}색과 모양의 약속</span></div>
@@ -1061,7 +1062,7 @@
           if (sc.enter) sc.enter(st, this);
           if (sc.problem && sc.problem.snap && sc.thumbSnap !== false) Object.assign(st, call(sc.problem.snap, st));
           const focus = call(sc.focus, st) || call(bd.focus, st);
-          APLab.Board.renderThumb(cv, { kind: bd.kind || 'cartesian', focus, pad: bd.thumbPad, aspect: bd.aspect }, (b) => {
+          APLab.Board.renderThumb(cv, { kind: bd.kind || 'cartesian', focus, pad: bd.thumbPad, aspect: sc.aspect || bd.aspect }, (b) => {
             if (sc.panes) b.setPanes(call(sc.panes, st));
             const v = (sc.view ? sc.view(st, this) : this.def.view ? this.def.view(st, sc, this) : {}) || {};
             (sc.draw || this.def.draw)(b, st, v, this);
