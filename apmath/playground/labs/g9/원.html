@@ -338,6 +338,12 @@
       return latexStr;
     }
 
+    // 해설 문자열(hint · formulaHTML · notes) 속 $...$ 구간을 위 tex()로 KaTeX 수식으로 바꿉니다.
+    function texInline(html) {
+      // **굵게** 표시를 <strong> 으로 바꾼 뒤 수식을 렌더링합니다(별표가 그대로 보이지 않게).
+      return html.replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>').replace(/\$([^$]+)\$/g, (m, src) => tex(src));
+    }
+
     function fmtNum(v) {
       if (Math.abs(v - Math.round(v)) < 1e-6) return String(Math.round(v));
       return Number(v.toFixed(1)).toString();
@@ -497,6 +503,35 @@
       if (fCol) { ctx.fillStyle = fCol; ctx.fill(); }
       if (sCol) { ctx.strokeStyle = sCol; ctx.lineWidth = lw; ctx.stroke(); }
       ctx.restore();
+    }
+
+    // 반원·부채꼴(중심으로 닫은 채움 + 윤곽) — 반원을 품은 직사각형 장면용
+    function csector(center, r, startDeg, endDeg, fill, stroke, width = 2.8) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(center.x, center.y);
+      ctx.arc(center.x, center.y, r, (startDeg * Math.PI) / 180, (endDeg * Math.PI) / 180, false);
+      ctx.closePath();
+      if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+      if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = width; ctx.lineJoin = 'round'; ctx.stroke(); }
+      ctx.restore();
+    }
+
+    // 세 점 A, P, B 를 지나는 원호의 점들(접힌 아치용). 세 점이 거의 한 직선이면 선분.
+    function carcThroughPts(A, P, B, n = 40) {
+      const dd = 2 * (A.x * (P.y - B.y) + P.x * (B.y - A.y) + B.x * (A.y - P.y));
+      if (Math.abs(dd) < 1e-3) return [A, B];
+      const a2 = A.x * A.x + A.y * A.y, p2 = P.x * P.x + P.y * P.y, b2 = B.x * B.x + B.y * B.y;
+      const ux = (a2 * (P.y - B.y) + p2 * (B.y - A.y) + b2 * (A.y - P.y)) / dd;
+      const uy = (a2 * (B.x - P.x) + p2 * (A.x - B.x) + b2 * (P.x - A.x)) / dd;
+      const r = Math.hypot(A.x - ux, A.y - uy);
+      const TAU = Math.PI * 2, wrap = (x) => ((x % TAU) + TAU) % TAU;
+      const aA = Math.atan2(A.y - uy, A.x - ux), aP = Math.atan2(P.y - uy, P.x - ux), aB = Math.atan2(B.y - uy, B.x - ux);
+      const dAB = wrap(aB - aA), dAP = wrap(aP - aA);
+      const sweep = dAP <= dAB ? dAB : dAB - TAU; // A에서 B로, P를 지나는 쪽으로
+      const pts = [];
+      for (let i = 0; i <= n; i++) { const a = aA + (sweep * i) / n; pts.push({ x: ux + r * Math.cos(a), y: uy + r * Math.sin(a) }); }
+      return pts;
     }
 
     function carc(center, r, startDeg, endDeg, color = '#fbbf24', width = 5.0, ccw = false, partIdx = -1) {
@@ -1488,7 +1523,12 @@
 
       const spec = getSpec();
       const cx = rect.width * 0.48 + state.panX;
-      const cy = rect.height * 0.46 + state.panY;
+      // 좌측 상단 플로팅 패널(시나리오·렌즈 바)이 도형 윗부분(꼭짓점·치수)을 가리지 않도록 중심을 패널 아래로 내립니다.
+      // 패널이 칠판을 거의 덮지 않는 좁은 화면에서는 기존 위치(높이의 46%) 그대로입니다.
+      const sPx = state.scale * (canvas.parentElement.clientWidth < 700 ? 0.82 : 1.08);
+      const panelBottom = document.getElementById('sw-all').parentElement.getBoundingClientRect().bottom - rect.top;
+      const freeTop = panelBottom + 8, freeBottom = rect.height - 104;
+      const cy = Math.max(rect.height * 0.46, Math.min(freeTop + 150 * sPx, (freeTop + freeBottom) / 2)) + state.panY;
       const t = state.fold;
 
       ctx.save();
@@ -1526,12 +1566,11 @@
           cline(O, pC, CCOL.pink, 2.6, [5, 4], false, 0);
           cline(O, pM, CCOL.pink, 3.6, [], true, 0);
 
-          // 접힌 아치 곡선
+          // 접힌 아치 곡선: 세 점 A, 꼭대기, B 를 지나는 원호 (t=0 은 원래 호 ACB, t=100% 에서 꼭대기가 정확히 중심 O)
+          const archPts = carcThroughPts(pA, cpt(cx, cy + Rpx * (1 - t)), pB);
           ctx.save();
           ctx.beginPath();
-          ctx.moveTo(pA.x, pA.y);
-          const ctrlY = clerp(cpt(cx, cy + Rpx * 1.15), cpt(cx, cy - Rpx * 0.15), Math.max(0.25, t)).y;
-          ctx.quadraticCurveTo(cx, ctrlY, pB.x, pB.y);
+          archPts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
           ctx.strokeStyle = CCOL.gold;
           ctx.lineWidth = 3.2;
           ctx.fillStyle = 'rgba(251, 191, 36, 0.16)';
@@ -1841,13 +1880,13 @@
           const pA = cpt(cx - 4.5 * uPx, cy - 6 * uPx);
           const pD = cpt(cx + 4.5 * uPx, cy - 6 * uPx);
           const pC = cpt(cx + 4.5 * uPx, cy + 6 * uPx);
-          const cO = cpt(pB.x + 6 * uPx, cy);
+          const cO = cpt(pB.x, cy); // 반원의 중심은 변 AB 의 중점 (반지름 6, 지름 AB = 12)
           const pE = cpt(pB.x + 4 * uPx, pB.y);
           const pP = clerp(pD, pE, 9 / 13);
 
           cpoly([pA, pB, pC, pD], 'rgba(56, 189, 248, 0.08)', CCOL.white, 2.4);
           cpoly([pD, pE, pC], 'rgba(56, 189, 248, 0.28)', CCOL.cyan, 3.2, 2);
-          ccircle(cO, 6 * uPx, CCOL.green, 'rgba(52, 211, 153, 0.14)', 2.8);
+          csector(cO, 6 * uPx, -90, 90, 'rgba(52, 211, 153, 0.14)', CCOL.green, 2.8);
 
           cline(pD, pA, CCOL.gold, 4.0, [], true, 0);
           cline(pD, pP, CCOL.gold, 4.0, [], true, 0);
@@ -1933,12 +1972,13 @@
           cdot(pP, 'P(무조건 90° 직각!)', CCOL.pink, O);
         } else if (sub === 'inscribedTrig') {
           ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
-          const pB = cpolar(O, Rpx, 150), pC = cpolar(O, Rpx, 30);
+          // 해설이 sin A = R / 2R = 1/2 (BC = R) 이므로 호 BC 의 중심각을 60° 로 그립니다 (∠A = 30°).
+          const pB = cpolar(O, Rpx, 120), pC = cpolar(O, Rpx, 60);
           const pA_orig = cpolar(O, Rpx, -115);
-          const pA_diam = cpolar(O, Rpx, -30); // B와 정반대 지름 끝점!
-          const pA_cur = cpolar(O, Rpx, -115 + t * 85);
+          const pA_diam = cpolar(O, Rpx, -60); // B와 정반대 지름 끝점!
+          const pA_cur = cpolar(O, Rpx, -115 + t * 55);
 
-          carc(O, Rpx, 30, 150, CCOL.gold, 5.0, false, 2);
+          carc(O, Rpx, 60, 120, CCOL.gold, 5.0, false, 2);
           cpoly([pA_orig, pB, pC], 'rgba(56, 189, 248, 0.14)', 'rgba(56, 189, 248, 0.5)', 2.0, 0);
           cpoly([pA_cur, pB, pC], 'rgba(251, 191, 36, 0.28)', CCOL.gold, 3.4, 1);
           cline(pB, pA_diam, CCOL.pink, 2.8, [5, 4], false, 1);
@@ -1949,7 +1989,7 @@
           cangle(pA_orig, pB, pC, CCOL.cyan, 26, 1, '∠A');
           cangle(pA_cur, pB, pC, CCOL.gold, 28, 1, "∠A'=∠A");
 
-          cbadge(pB, pC, `BC = ${Rval}√3`, CCOL.gold, 16, 0.5, 2);
+          cbadge(pB, pC, `BC = ${Rval}`, CCOL.gold, 16, 0.5, 2);
           cbadge(pB, pA_diam, `지름 2R = ${2 * Rval}cm`, CCOL.pink, -18, 0.45, 1);
 
           cdot(O, 'O', CCOL.white, null, { x: -14, y: -10 });
@@ -1960,7 +2000,8 @@
         } else {
           // fourPointsCircle (네 점 A, B, C, D가 한 원 위에 있을 조건)
           ccircle(O, Rpx, CCOL.green, 'rgba(52, 211, 153, 0.07)', 2.6, [6, 4]);
-          const pB = cpolar(O, Rpx, 145), pC = cpolar(O, Rpx, 35);
+          // 호 BC 의 중심각이 2θ 가 되도록 B, C 를 잡아 A, D 에서 본 원주각이 표시한 θ 와 같게 그립니다.
+          const pB = cpolar(O, Rpx, 90 + ang), pC = cpolar(O, Rpx, 90 - ang);
           const pA = cpolar(O, Rpx, -125);
           const pD_on = cpolar(O, Rpx, -55);
           const pD_cur = cpolar(O, Rpx + t * 55 * s, -55);
@@ -1970,7 +2011,9 @@
           cpoly([pA, pB, pC], 'rgba(251, 191, 36, 0.22)', CCOL.gold, 2.8, 0);
           cpoly([pD_cur, pB, pC], isOut ? 'rgba(244, 63, 94, 0.24)' : 'rgba(52, 211, 153, 0.24)', isOut ? CCOL.red : CCOL.green, 3.0, 1);
 
-          const curAngD = Math.round(ang / (1 + t * 0.35));
+          // D' 에서 실제로 그려진 ∠BD'C 를 그대로 계산해 표시합니다.
+          const angDRaw = Math.abs(Math.atan2(pB.y - pD_cur.y, pB.x - pD_cur.x) - Math.atan2(pC.y - pD_cur.y, pC.x - pD_cur.x));
+          const curAngD = Math.round(((angDRaw > Math.PI ? 2 * Math.PI - angDRaw : angDRaw) * 180) / Math.PI);
           cangle(pA, pB, pC, CCOL.gold, 28, 1, `${ang}°`);
           cangle(pD_cur, pB, pC, isOut ? CCOL.red : CCOL.green, 28, 1, isOut ? `${curAngD}°(≠)` : `${ang}°(일치!)`);
 
@@ -2015,10 +2058,11 @@
           cdot(pE, `E(합=${180 + ang}°!)`, CCOL.gold, O);
         } else if (sub === 'cyclicQuad180' || sub === 'cyclicExterior' || sub === 'cyclicConditions3') {
           ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
-          const pA = cpolar(O, Rpx, -115);
+          // 호 BCD = 2∠A 가 되도록 배치해 표시한 ∠A, ∠C(= 180° - ∠A) 가 그림의 각과 같게 그립니다.
           const pB = cpolar(O, Rpx, 145);
-          const pC = cpolar(O, Rpx, 45);
-          const pD = cpolar(O, Rpx, -35);
+          const pC = cpolar(O, Rpx, 145 - angA);
+          const pD = cpolar(O, Rpx, 145 - 2 * angA);
+          const pA = cpolar(O, Rpx, -35 - angA);
           const dirBC = cnorm(csub(pC, pB));
           const pE_ext = cadd(pC, cmul(dirBC, 78 * s));
 
@@ -2043,16 +2087,23 @@
           cdot(pE_ext, 'E(연장선)', CCOL.pink, null, { x: 10, y: 16 });
         } else {
           // cyclicCrossExt (내접사각형 두 대변 연장선 교점 P, Q 킬러)
-          const cO = cpt(cx - 42 * s, cy - 28 * s);
+          const cO = cpt(cx - 100 * s, cy - 28 * s); // 연장선 교점 P 가 오른쪽 끝에 놓이므로 원을 왼쪽으로 옮겨 P 의 이름표가 잘리지 않게 함
           const rC = 92 * s;
           ccircle(cO, rC, CCOL.cyan, 'rgba(56, 189, 248, 0.08)', 2.6);
 
+          // 호 AB=128°, BC=40°, CD=64°, DA=128° 로 잡고 두 직선의 교점을 계산하면 ∠A=52°, ∠P=32°, ∠Q=44° 가 그림에서도 정확하고
+          // P 는 AD·BC 의 연장선 위에, Q 는 AB·DC 의 연장선 위에 놓입니다.
           const pA = cpolar(cO, rC, -145);
-          const pB = cpolar(cO, rC, 145);
-          const pC = cpolar(cO, rC, 55);
-          const pD = cpolar(cO, rC, -35);
-          const pP = cpt(cx + 150 * s, cy - 20 * s);
-          const pQ = cpt(cx - 22 * s, cy + 145 * s);
+          const pB = cpolar(cO, rC, 87);
+          const pC = cpolar(cO, rC, 47);
+          const pD = cpolar(cO, rC, -17);
+          const meet = (p1, p2, p3, p4) => { // 직선 p1p2 와 직선 p3p4 의 교점
+            const u = csub(p2, p1), v = csub(p4, p3), w = csub(p3, p1);
+            const det = u.x * v.y - u.y * v.x || 1;
+            return cadd(p1, cmul(u, (w.x * v.y - w.y * v.x) / det));
+          };
+          const pP = meet(pA, pD, pB, pC); // 변 AD 와 BC 의 연장선의 교점
+          const pQ = meet(pA, pB, pD, pC); // 변 AB 와 DC 의 연장선의 교점
 
           cpoly([pA, pB, pC, pD], 'rgba(52, 211, 153, 0.22)', CCOL.green, 3.2, 0);
           cpoly([pD, pC, pP], 'rgba(56, 189, 248, 0.18)', CCOL.cyan, 2.6, 1);
@@ -2246,25 +2297,35 @@
           cdot(pP, 'P(3×8 = 4×6 = 24!)', CCOL.white, null, { x: 0, y: -16 });
           [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, O));
         } else if (sub === 'powerOutside' || sub === 'powerTangentSecant') {
-          const cO = cpt(cx - 52 * s, cy);
+          // 좁은 화면에서 P 의 긴 이름표가 오른쪽 끝에서 잘리지 않도록 도형 전체를 조금 왼쪽에 둡니다.
+          const cO = cpt(cx - 88 * s, cy);
           const rC = 96 * s;
           ccircle(cO, rC, CCOL.cyan, 'rgba(56, 189, 248, 0.08)', 2.8);
-          const pP = cpt(cx + 158 * s, cy);
-          const pB = cpolar(cO, rC, -150), pA = cpolar(cO, rC, -32);
+          const pP = cpt(cx + 122 * s, cy);
+          // P 에서 나가는 직선(위쪽 22°, 아래쪽 6°)이 원과 만나는 가까운 점·먼 점으로 A, B (C, D) 를 잡아 할선이 점을 지나게 합니다.
+          const secant = (deg) => {
+            const a = (deg * Math.PI) / 180, d = { x: Math.cos(a), y: Math.sin(a) };
+            const bq = d.x * (pP.x - cO.x) + d.y * (pP.y - cO.y), c2 = (pP.x - cO.x) ** 2 + (pP.y - cO.y) ** 2 - rC * rC;
+            const q = Math.sqrt(Math.max(0, bq * bq - c2));
+            return { near: cadd(pP, cmul(d, -bq - q)), far: cadd(pP, cmul(d, -bq + q)) };
+          };
+          const sUp = secant(202);
+          const pB = sUp.far, pA = sUp.near;
 
           if (sub === 'powerOutside') {
-            const pD = cpolar(cO, rC, 145), pC = cpolar(cO, rC, 38);
+            const sLow = secant(174); // 아래쪽 할선 위의 C(가까운 점), D(먼 점)
+            const pD = sLow.far, pC = sLow.near;
             cpoly([pA, pB, pD, pC], 'rgba(52, 211, 153, 0.18)', CCOL.green, 2.4);
             cline(pP, pB, CCOL.gold, 3.6, [], true, 0);
             cline(pP, pD, CCOL.cyan, 3.6, [], true, 1);
 
-            cbadge(pP, pA, 'PA = 4', CCOL.gold, -15, 0.5, 0);
+            cbadge(pP, pA, 'PA = 4', CCOL.gold, 15, 0.5, 0);
             cbadge(pA, pB, 'AB = 5 (전체 PB=9!)', CCOL.gold, -16, 0.5, 0);
-            cbadge(pP, pC, 'PC = 3', CCOL.cyan, 15, 0.5, 1);
+            cbadge(pP, pC, 'PC = 3', CCOL.cyan, -15, 0.5, 1);
             cbadge(pC, pD, 'CD = 9 (전체 PD=12!)', CCOL.cyan, 16, 0.5, 1);
 
             [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, cO));
-            cdot(pP, 'P(4×9 = 3×12 = 36!)', CCOL.gold, null, { x: 0, y: -16 });
+            cdot(pP, 'P(4×9 = 3×12 = 36!)', CCOL.gold, null, { x: -30, y: -16 });
           } else {
             const alpha = Math.acos(rC / cdist(cO, pP));
             const pT = cpt(cO.x + rC * Math.cos(alpha), cO.y + rC * Math.sin(alpha));
@@ -2346,9 +2407,18 @@
       ).join('');
     }
 
+    // 해설 칸에 $...$ 수식을 넣습니다. 슬라이더·애니메이션이 매 프레임 render()를 부르므로 내용이 같으면 DOM을 다시 쓰지 않습니다.
+    function setRichHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el._html !== html) {
+        el._html = html;
+        el.innerHTML = texInline(html);
+      }
+    }
+
     function updateUI(spec) {
       document.getElementById('canvasModeBadge').textContent = spec.badge;
-      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      setRichHTML('canvasActionHint', spec.hint);
       document.getElementById('txtFoldToggle').textContent = spec.actionTxt;
 
       document.getElementById('dim1Label').textContent = spec.dim1Name;
@@ -2385,8 +2455,8 @@
 
       document.getElementById('totalResultBadge').textContent = spec.totalRes;
       document.getElementById('ruleBadge').textContent = spec.rule;
-      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
-      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+      setRichHTML('formulaBox', spec.formulaHTML);
+      setRichHTML('intuitionNotes', spec.notes);
 
       renderPresetChips();
     }
@@ -2411,6 +2481,31 @@
       render();
     }
 
+    // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
+    const LENS_OFF = {
+      tangentPerimTri: ['sides'], pitotQuad: ['sides'], inscribedMoveArc: ['angles'], thalesSemiCircle: ['angles'],
+      fourPointsCircle: ['angles'], cyclicPentagon: ['angles'], cyclicQuad180: ['angles'], cyclicExterior: ['angles'],
+      cyclicCrossExt: ['angles'], cyclicConditions3: ['angles'], altSegmentThm: ['angles'],
+      altSegmentInscribed: ['angles'], twoCirclesExTangent: ['angles'], twoCirclesInTangent: ['angles'],
+      tangentDiameterExt: ['angles'], powerInside: ['sides'], powerOutside: ['sides'], powerTangentSecant: ['sides'],
+      trapCyclicQuadFamily: ['angles', 'sides', 'aux']
+    };
+
+    function syncLensButtons() {
+      const ids = ['all', 'angles', 'sides', 'aux'];
+      const off = (LENS_OFF[state.mode] || []).concat(LENS_OFF[state.subType[state.mode]] || []);
+      const none = ids.every((id) => id === 'all' || off.includes(id));
+      if (none || off.includes(state.conceptSwitch)) state.conceptSwitch = 'all';
+      ids.forEach((id) => {
+        const btn = document.getElementById(`sw-${id}`);
+        btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
+        btn.classList.toggle('active', id === state.conceptSwitch);
+      });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
+      document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
+    }
+
     function setMode(m) {
       state.mode = m;
       state.activePartIdx = -1;
@@ -2419,6 +2514,7 @@
       }
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }
@@ -2428,6 +2524,7 @@
       state.activePartIdx = -1;
       state.fold = 0.0;
       state.foldTarget = subId === 'fourPointsCircle' ? 0.0 : 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }

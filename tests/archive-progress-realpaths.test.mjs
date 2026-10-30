@@ -41,7 +41,7 @@ test('bounded >100 closed PR scan preserves verified statuses and carries a sepa
  const api=async route=>{
   if(route.startsWith('/pulls?')||route.startsWith('/pulls/'))return fake(route);
   if(route.includes('/runs?'))return {workflow_runs:[]};
-  if(route.startsWith('/contents/'))return {content:Buffer.from(JSON.stringify(earlier)).toString('base64'),sha:D};
+  if(route.startsWith('/contents/'))return {encoding:'base64',content:Buffer.from(JSON.stringify(earlier)).toString('base64'),sha:D};
   if(route.startsWith('/compare/'))return {status:'ahead'};
   throw Error('unknown '+route);
  };
@@ -218,7 +218,7 @@ test('successful old proof is not fetched repeatedly when no new observer events
    id:route.includes('archive-registration')?20:30,run_attempt:2,event:'push',conclusion:'success',
    head_sha:route.includes('archive-registration')?B:D,updated_at:at(route.includes('archive-registration')?3:4),
    html_url:link('actions/runs',route.includes('archive-registration')?20:30),head_branch:'main'}]};
-  if(route.startsWith('/contents/'))return {content:Buffer.from(JSON.stringify(previous)).toString('base64'),sha:A};
+  if(route.startsWith('/contents/'))return {encoding:'base64',content:Buffer.from(JSON.stringify(previous)).toString('base64'),sha:A};
   if(route.startsWith('/compare/'))return {status:'ahead'};
   throw Error('unexpected '+route);
  };

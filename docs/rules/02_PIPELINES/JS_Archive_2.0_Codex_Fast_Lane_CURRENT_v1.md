@@ -1,4 +1,11 @@
+## CURRENT 공통 메타 진입 (2026-10-30)
+
+- 신규 CREATE/R1/R2/R3는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 적용한다. Primary RPM·CrossConcept/Condition/Integration은 실제 교육과정 풀이로 판정, PT/TPL은 공식 Resolver만 투영한다. 기존 역할별 원본·블라인드·출고 권한/품질 계약을 유지한다.
+
 ## 출고 단계의 정책 소유권 (2026-10-22)
+
+- <b>2022 미적분Ⅰ / 2015 수학Ⅱ 메타 재사용</b>은 [Notion CREATE·R1·R2·R3 공통 판정 SOP](https://app.notion.com/p/4090e68bd69f81e4b0bbf2a683df1b27)의 현재 과정 L1/L2·RPM L3/L4·GLOBAL ACTIVE PT/TPL·H22 exact binding·UID 등록 구분을 따른다. 기존 2015 의미를 재사용하되 H15 단원키는 복사하지 않고, 과거 crosswalk GAP은 실제 최신 ACTIVE binding을 재조회한다. 이 링크는 아래 Codex 단계별 검수·원본·출고 권한을 변경하지 않는다.
+
 
 - Codex 신규 원본 컨베이어의 **CREATE/R1/R2/R3 수학·메타·해설·시각 품질과 단계별 인계**는 이 Fast Lane 문서 본문을 따른다.
 - 사용자가 **Git main 운영병합이나 감독 출고**를 지정한 경우, 승인·상태값 해석·Git PR/main·CI/학생 배포 분리의 단일 실행 정본은 [MAIN_FIRST / CI_DEFERRED](../../operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md)이다. 관련 사례/캠페인 예외는 [Notion 02-07](https://app.notion.com/p/4010e68bd69f813f80bce486f1cc364b)에서만 선택한다.

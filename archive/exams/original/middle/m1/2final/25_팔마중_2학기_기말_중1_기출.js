@@ -40,7 +40,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:f5f06ff1424cceed4a9180580749f5151f6a29fc2a277541143e889d7e606fea",
-      "difficultyEvidenceSha": "sha256:2b95e27ed6490637581fdfa9747fffc17a14d96582c4cf27e1d246174045c68d"
+      "difficultyEvidenceSha": "sha256:2b95e27ed6490637581fdfa9747fffc17a14d96582c4cf27e1d246174045c68d",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 오각기둥의 꼭짓점에 1부터 10까지, 모서리에 ①부터 ⑮까지 번호를 붙이고 보이지 않는 모서리는 점선으로 나타낸 그림. 밑면 모서리 ①~⑤, 옆모서리 ⑥~⑩, 윗면 모서리 ⑪~⑮이다.",
+      "solutionImageCaption": "오각기둥의 꼭짓점 10개와 모서리 15개를 번호로 센다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 2,
@@ -79,16 +83,16 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q2-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q2-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d3737c91e955173519eb985278eed2db615060b3bfe201ec8e4130524e19a243",
       "difficultyEvidenceSha": "sha256:62448c61b15efbbc1a55115992f208d692ff340768710c7afda04e25cc81f961",
-      "solutionImageAlt": "호의 길이와 중심각을 비례로 대응시킨 표: 1 cm에 20°, 140°에 x cm, 4 cm에 y°",
-      "solutionImageCaption": "같은 원에서 호의 길이와 중심각이 비례하는 관계를 표의 대응값으로 읽는다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 한 원의 중심 O에서 중심각 20°에는 호 1cm, 중심각 140°에는 호 x cm, 중심각 y°에는 호 4cm가 대응하도록 반지름과 호를 표시한 그림이다.",
+      "solutionImageCaption": "같은 원에서 호의 길이는 중심각의 크기에 비례한다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 3,
@@ -132,7 +136,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:6080d19d7d0990e0b3acf21355942ee2f8d368c86a1774b545b759baef3738d8",
-      "difficultyEvidenceSha": "sha256:d190b88dc9bea39fc48d946b741722297cf3e0f19ca5d207e8d5c553a2dddef6"
+      "difficultyEvidenceSha": "sha256:d190b88dc9bea39fc48d946b741722297cf3e0f19ca5d207e8d5c553a2dddef6",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q3-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 6cm인 두 원 O, O'가 서로의 중심을 지나고, 중심 O'에서 지름 AB와 교점 방향의 두 반지름으로 이루어진 중심각 60°의 부채꼴(호 2π cm)을 색칠해 보인 그림이다.",
+      "solutionImageCaption": "O'를 중심으로 한 색칠한 부채꼴은 두 반지름과 중심각 60°의 호로 이루어진다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 4,
@@ -217,7 +225,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:8e759587ee2239d348cc1cd660e23df26792063c2508ee60fca26fbdab8f27ec",
-      "difficultyEvidenceSha": "sha256:26f3fe9fa96c54e820484dfd573c09abc62522717af299fefa061f9a3693e7c0"
+      "difficultyEvidenceSha": "sha256:26f3fe9fa96c54e820484dfd573c09abc62522717af299fefa061f9a3693e7c0",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 회전축을 포함하는 평면으로 원뿔을 자른 단면은 밑변 2r, 높이 h인 이등변삼각형이고, 원뿔대를 자른 단면은 사다리꼴임을 두 입체에 색칠해 나란히 보인 그림.",
+      "solutionImageCaption": "회전축을 포함하는 평면으로 자른 단면은 원뿔은 이등변삼각형, 원뿔대는 사다리꼴이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 6,
@@ -256,16 +268,16 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q6-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q6-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:743b5a2ff90e86618d6a92c29c914528bb73dc9a12ea97411cf4e4191c8b171d",
       "difficultyEvidenceSha": "sha256:136ae04d2441895ddc66b2742967f44bbe4e9631cf0dbec733030bbb57ebe95c",
-      "solutionImageAlt": "반원기둥의 겉넓이를 양쪽 반원, 반원호가 만든 곡면, 지름이 만든 직사각형으로 나눈 도식",
-      "solutionImageCaption": "겉넓이는 양쪽 반원 9π, 곡면 36π, 직사각형 72 cm²를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 반원기둥의 겉넓이를 이루는 세 부분을 나란히 보인 그림. 지름 6cm(반지름 3cm)인 합동인 반원 2개, 가로 12cm 세로 6cm인 지름이 만든 직사각형, 가로 12cm 세로 3π cm인 반원호가 만든 곡면의 직사각형이다.",
+      "solutionImageCaption": "반원기둥의 겉넓이는 반원 2개, 지름이 만든 직사각형 6×12, 곡면 직사각형 3π×12를 더한 것이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 7,
@@ -304,16 +316,16 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q7-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q7-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:59a45a5ba8f0805f75d9748595b6440768aed75d6145fca7ce04df34709e8f82",
       "difficultyEvidenceSha": "sha256:57adf611e0c5e896c036ecc288be95d8d8cc607d7609a5af29f44980a2ffffa7",
-      "solutionImageAlt": "사각기둥 밑면을 대각선으로 나누고 두 삼각형의 변과 높이를 표시한 도식",
-      "solutionImageCaption": "밑면 넓이는 3×4÷2와 5×4÷2의 합이며 기둥 높이는 6 cm다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 밑면 사각형을 대각선 5cm로 나눈 그림으로, 3cm와 4cm가 직각을 이루는 직각삼각형(넓이 6cm²)과 대각선에 내린 높이가 4cm인 삼각형(넓이 10cm²)을 색을 달리해 보인다.",
+      "solutionImageCaption": "사각형을 대각선으로 나눈 두 삼각형의 넓이는 각각 6cm²와 10cm²이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 8,
@@ -357,7 +369,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:6398c086747116a3dae1290bce2a495726680b5060b95f692553d1818813a90b",
-      "difficultyEvidenceSha": "sha256:8365b056bcb29b453bc456da3661a0a8f259a951520316b898056bf866d04e0a"
+      "difficultyEvidenceSha": "sha256:8365b056bcb29b453bc456da3661a0a8f259a951520316b898056bf866d04e0a",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 모서리가 x인 정육면체에서 면의 대각선 AC, CF, FA를 이어 잘라 낸 삼각뿔 B-ACF를 보이고, 꼭짓점 B에서 만나는 세 모서리 BA, BC, BF를 빨갛게 강조한 그림. 세 모서리는 길이가 같고 서로 수직이다.",
+      "solutionImageCaption": "잘려 나간 부분은 B에서 만나는 서로 수직인 세 모서리의 길이가 모두 x인 삼각뿔이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 9,
@@ -401,7 +417,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:b920be036a24aa0354bd651b631832f913f31b94593251c55dad9ca7f1a42c33",
-      "difficultyEvidenceSha": "sha256:c1e379cb001a10c9b319491f9f659d4dc7339c1911988ab28f4ca18772415402"
+      "difficultyEvidenceSha": "sha256:c1e379cb001a10c9b319491f9f659d4dc7339c1911988ab28f4ca18772415402",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 반구 2개를 합쳐 반지름 3cm인 구 하나(부피 36π)로 보고, 가운데 반지름 3cm 높이 5cm인 원기둥(부피 45π)과 나란히 분해해 보인 그림.",
+      "solutionImageCaption": "반구 2개는 구 하나(부피 36π)이고 가운데는 원기둥(부피 45π)이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 10,
@@ -440,16 +460,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q10-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q10-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:45107247151597cf7cb91253aee080eb33a271ea9c308462e81cb12b01b38c5b",
       "difficultyEvidenceSha": "sha256:83efa0c7a190b5ec8a8b8ce4a8e3abcb1520d52cee522ebc6dafda4f1aa5c857",
-      "solutionImageAlt": "반원 안의 이등변삼각형 ABC와 점 D, E, 중심 O를 표시하고 중심각 DOE가 120°임을 나타낸 그림",
-      "solutionImageCaption": "삼각형의 밑각과 반원의 중심각을 이용해 ∠DOE=120°를 확인한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 반원과 꼭지각 30°인 이등변삼각형 ABC를 그리고, 밑각 75°, 반지름 OA=OD=OE=OB, ∠AOD=∠EOB=30°, 중심각 ∠DOE=120°와 색칠한 부채꼴 DOE를 표시한 그림이다.",
+      "solutionImageCaption": "밑각 75°에서 ∠AOD=∠EOB=30°이므로 부채꼴 DOE의 중심각은 120°이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 11,
@@ -626,7 +646,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9ac2a63bd06e9c5f9352c32f3266d84c4c93b9fe14f9958bd43f40cd292650b4",
-      "difficultyEvidenceSha": "sha256:86679c25dcd91481cb739b2238cdb1e8854bdc0eff2c7afb045ff78d52bcaa34"
+      "difficultyEvidenceSha": "sha256:86679c25dcd91481cb739b2238cdb1e8854bdc0eff2c7afb045ff78d52bcaa34",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q14-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 줄넘기 기록의 줄기와 잎 그림에 줄기별 잎의 개수 4, 6, 7, 5, 3을 괄호로 표시하고, 가장 낮은 기록 5, 큰 쪽에서 6번째 기록, 가장 높은 기록 45를 동그라미로 강조한 그림",
+      "solutionImageCaption": "줄기별 잎의 개수와 최솟값, 큰 쪽 6번째 값, 최댓값을 표시한 줄기와 잎 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 15,
@@ -714,7 +738,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:a2ee703dcaacfa752c9a39f27aaeabe4cf2ad752008f63e7e8d4af56b1fbf1ce",
-      "difficultyEvidenceSha": "sha256:d12ae6e45faa28e8e2613d2f84984edc312763b4bb0dc94d09f97b5816b16cf1"
+      "difficultyEvidenceSha": "sha256:d12ae6e45faa28e8e2613d2f84984edc312763b4bb0dc94d09f97b5816b16cf1",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 멀리 던지기 기록의 히스토그램. 보이는 계급의 도수 3, 6, 5, 2명과 전체 25명에서 복원한 40m 이상 45m 미만 계급의 도수 9명을 진하게 표시한 그림",
+      "solutionImageCaption": "찢어진 계급의 도수를 25-(3+6+5+2)로 복원해 진하게 나타낸 히스토그램",
+      "solutionImageSize": "medium"
     },
     {
       "id": 17,
@@ -758,7 +786,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:798d110f44e515b50f5defd94aa639356c6581bebe6d821d37980667133daba9",
-      "difficultyEvidenceSha": "sha256:cdb83a1912e8c55a8856d13844fa3ab4b0c32a3ff7a1854548efe6c1d22c3c13"
+      "difficultyEvidenceSha": "sha256:cdb83a1912e8c55a8856d13844fa3ab4b0c32a3ff7a1854548efe6c1d22c3c13",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: A동아리 남학생(실선)과 여학생(점선)의 윗몸일으키기 횟수를 나타낸 두 도수분포다각형. 남학생의 120회 이상 140회 미만 계급 2명과 100회 이상 120회 미만 계급 5명을 그래프에서 읽을 수 있다.",
+      "solutionImageCaption": "남학생과 여학생의 도수분포다각형을 한 그래프에 나타낸 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 18,
@@ -846,7 +878,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:94bf77e2c039a1535d8e42e8f36fd7376bb3089997a51ffc9f190f4ae72fc7ad",
-      "difficultyEvidenceSha": "sha256:dda4011424b46ae3db915c20f575fe41028a146fffed49772dee3505b4a24e66"
+      "difficultyEvidenceSha": "sha256:dda4011424b46ae3db915c20f575fe41028a146fffed49772dee3505b4a24e66",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 일부가 지워진 인터넷 이용 시간의 도수분포다각형과 히스토그램. 13시간 미만의 세 계급(도수 1, 5, 8명)을 진하게 칠하고 그 합 14명을 괄호로 묶었으며, 지워진 13시간 이상 15시간 미만의 두 계급은 막대와 꺾은선 없이 합을 묻는 괄호(?)만 그린 그림",
+      "solutionImageCaption": "13시간 미만 세 계급의 합과 지워진 두 계급의 합을 괄호로 나타낸 그림",
+      "solutionImageSize": "medium"
     },
     {
       "id": 20,
@@ -921,16 +957,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q21-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q21-solution-v2.svg",
       "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
       "templateKey": "TPL_M1_ROTATION_SOLID_FRUSTUM_NET_AXIS_SECTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:cb4b7fba0c7d6ef121554db97b2dcc75879516e3804ca50e143d28fd74dc9368",
       "difficultyEvidenceSha": "sha256:868826eaa1a84d0018426877b25967d2614b7936cec7e130a3184aaf8ba8a0c6",
-      "solutionImageAlt": "원뿔대의 고리 모양 부채꼴 전개도와 회전축을 포함하는 사다리꼴 단면",
-      "solutionImageCaption": "단면의 평행한 변은 10 cm와 4 cm이고 높이는 4 cm라 넓이는 28 cm²다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원뿔대(윗면 반지름 5cm, 아랫면 반지름 2cm, 높이 4cm, 모선 5cm)와 회전축을 포함하는 평면으로 자른 단면 사다리꼴을 색칠해 보인 그림.",
+      "solutionImageCaption": "회전축을 포함하는 평면으로 원뿔대를 자른 단면은 윗변 10cm, 아랫변 4cm, 높이 4cm인 사다리꼴이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 22,
@@ -969,7 +1005,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:78e65762f00c91e633d4842181a325b43178082f7656d1eb6e3212882250fb5b",
-      "difficultyEvidenceSha": "sha256:c1c7d61ffbb9e79dd3561757b55765648512942e748f89e96adbbe53a2fd79ca"
+      "difficultyEvidenceSha": "sha256:c1c7d61ffbb9e79dd3561757b55765648512942e748f89e96adbbe53a2fd79ca",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 3cm인 구를 중심을 지나는 평면으로 한 번 자르면 두 조각에 원판 모양의 단면이 하나씩 생기고, 서로 수직인 세 평면으로 자른 8조각 중 한 조각에는 4분원 모양의 단면 3개가 있음을 나란히 보여 주는 그림이다.",
+      "solutionImageCaption": "한 번 자른 두 조각과 8조각 중 한 조각의 단면 (반지름 3 cm)",
+      "solutionImageSize": "medium"
     },
     {
       "id": 23,
@@ -1046,6 +1086,10 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:7a3be09da6a004f7a41bcf26791e99120879105c0b310e9b941a385b7ea46341",
-      "difficultyEvidenceSha": "sha256:42a96af742ae7d54f7417b0eb9440e720002ca9dc99019f6aed72017916bd87e"
+      "difficultyEvidenceSha": "sha256:42a96af742ae7d54f7417b0eb9440e720002ca9dc99019f6aed72017916bd87e",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: A반(실선)과 B반(점선)의 수학 성적을 나타낸 두 도수분포다각형. 80점 이상 계급의 도수를 두 반에서 같은 눈금으로 읽을 수 있다.",
+      "solutionImageCaption": "A반과 B반의 도수분포다각형을 한 그래프에 나타낸 그림",
+      "solutionImageSize": "medium"
     }
   ];

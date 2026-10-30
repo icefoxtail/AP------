@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$=3(x-1)^2-(3-a)$이다.",
+  "caption": "a=−9일 때 y=3x²−6x−9는 x=−1, 3에서 x축과 만나고 그 사이에서 x축 아래에 있다. 이 영역의 넓이가 32이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9",
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "3x^2-6x-9",
+    "functionName": "f",
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-1",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -12
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-solution.svg"
+  }
+}

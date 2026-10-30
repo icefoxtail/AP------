@@ -1,0 +1,131 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$20=3\\cdot6+2$이므로",
+  "caption": "주기 3인 함수에서 [0,1]의 넓이 S_1은 [3,4]의 넓이 S_3과 같다. 따라서 [0,2]의 적분은 S_3과 S_2의 합이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "5",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-28",
+          "11",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "fill": "MEDIUM"
+      },
+      {
+        "id": "S3",
+        "upper": "f",
+        "lower": "axis",
+        "from": "3",
+        "to": "4",
+        "fill": "LIGHT"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 2.5,
+        "y": 2.25
+      },
+      {
+        "id": "D",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "E",
+        "x": 5.5,
+        "y": 2.25
+      },
+      {
+        "id": "F",
+        "x": 7,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "C": [
+        "5/2",
+        "9/4"
+      ],
+      "E": [
+        "11/2",
+        "9/4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q15-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q15-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q15-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q15-solution.svg"
+  }
+}

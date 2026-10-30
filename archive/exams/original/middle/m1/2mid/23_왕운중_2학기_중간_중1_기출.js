@@ -60,7 +60,7 @@ window.questionBank = [
       "제2사분면과 제4사분면을 지난다."
     ],
     "answer": "⑤",
-    "solution": "y=-\\dfrac{12}{x}에서\nxy=-12\n\n비례상수가 음수이므로 그래프는\n제2사분면과 제4사분면을 지난다.\n\n원점을 지나지 않고\nx축, y축과 만나지 않는다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "$y=-\\dfrac{12}{x}$에서\n$xy=-12$\n\n비례상수가 음수이므로 그래프는\n제2사분면과 제4사분면을 지난다.\n\n원점을 지나지 않고\n$x$축, $y$축과 만나지 않는다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
@@ -73,7 +73,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 y=-12/x의 쌍곡선이 제2·4사분면에 놓이고, 곡선 위의 점 (-3,4), (3,-4)와 곡선 위에 있지 않은 점 (-3,-4)를 점선으로 이어 비교한 그림",
+    "solutionImageCaption": "y=-12/x의 그래프는 제2사분면과 제4사분면에 있고 (-3,-4)는 그래프 위의 점이 아니다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -113,7 +117,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각뿔의 꼭짓점에 번호를 붙이고, 밑면의 모서리(검정)와 옆모서리(빨강)에 번호를 붙여 보이지 않는 모서리를 점선으로 나타낸 그림이다.",
+    "solutionImageCaption": "오각뿔의 꼭짓점과 밑면, 옆모서리에 번호를 붙여 센 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -137,7 +145,7 @@ window.questionBank = [
       "$5$개"
     ],
     "answer": "④",
-    "solution": "정비례는\ny=kx\n꼴이다.\n\nㄱ. y=\\dfrac12x → 정비례\nㄴ. y=-\\dfrac3x → 반비례\nㄷ. x=-7y → y=-\\dfrac17x → 정비례\nㄹ. \\dfrac yx=-4 → y=-4x → 정비례\nㅁ. xy=1 → y=\\dfrac1x → 반비례\nㅂ. y=-x → 정비례\n\n따라서 정비례는\nㄱ, ㄷ, ㄹ, ㅂ\n\n모두 4개이므로 정답은 ④이다.",
+    "solution": "정비례는\n$y=kx$\n꼴이다.\n\nㄱ. $y=\\dfrac{1}{2}x$ → 정비례\nㄴ. $y=-\\dfrac{3}{x}$ → 반비례\nㄷ. $x=-7y$ → $y=-\\dfrac{1}{7}x$ → 정비례\nㄹ. $\\dfrac{y}{x}=-4$ → $y=-4x$ → 정비례\nㅁ. $xy=1$ → $y=\\dfrac{1}{x}$ → 반비례\nㅂ. $y=-x$ → 정비례\n\n따라서 정비례는\nㄱ, ㄷ, ㄹ, ㅂ\n\n모두 4개이므로 정답은 ④이다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
@@ -172,7 +180,7 @@ window.questionBank = [
     "content": "$y$가 $x$에 정비례하는 것과 반비례하는 것을 바르게 짝지은 것은? [3.5점]<div class=\"note-box\">ㄱ. 한 변의 길이가 $x\\,\\mathrm{cm}$인 정오각형의 둘레의 길이 $y\\,\\mathrm{cm}$이다.<br>ㄴ. 우유 $15\\,\\mathrm{L}$를 $x$명이 똑같이 나누어 마셨을 때, 한 사람이 마신 우유의 양 $y\\,\\mathrm{L}$이다.<br>ㄷ. 정가 $x$원에서 $10\\%$를 할인한 가격은 $y$원이다.<br>ㄹ. $x$시간 동안 $15\\,\\mathrm{km}$ 거리를 달린 속력은 시속 $y\\,\\mathrm{km}$이다.<br>ㅁ. 남학생 수가 $x$이고, 여학생 수가 $y$인 반의 전체 학생 수는 $30$명이다.</div>",
     "choices": [],
     "answer": "①",
-    "solution": "ㄱ.\n정오각형의 둘레\ny=5x\n→ 정비례\n\nㄴ.\n한 사람이 마신 우유\ny=\\dfrac{15}{x}\n→ 반비례\n\nㄷ.\n10\\% 할인 가격\ny=0.9x\n→ 정비례\n\nㄹ.\n속력\ny=\\dfrac{15}{x}\n→ 반비례\n\nㅁ.\nx+y=30\n→ 정비례도 반비례도 아님\n\n따라서\n정비례: ㄱ, ㄷ\n반비례: ㄴ, ㄹ\n\n정답은 ①이다.",
+    "solution": "ㄱ.\n정오각형의 둘레\n$y=5x$\n→ 정비례\n\nㄴ.\n한 사람이 마신 우유\n$y=\\dfrac{15}{x}$\n→ 반비례\n\nㄷ.\n$10\\%$ 할인 가격\n$y=0.9x$\n→ 정비례\n\nㄹ.\n속력\n$y=\\dfrac{15}{x}$\n→ 반비례\n\nㅁ.\n$x+y=30$\n→ 정비례도 반비례도 아님\n\n따라서\n정비례: ㄱ, ㄷ\n반비례: ㄴ, ㄹ\n\n정답은 ①이다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
@@ -207,7 +215,7 @@ window.questionBank = [
     "content": "아래 그림은 $\\angle AOB$와 크기가 같은 각을 반직선 $O'X$를 한 변으로 하여 작도한 것이다. 다음 중 작도 과정을 순서대로 나열한 것은? [4점]",
     "choices": [],
     "answer": "⑤",
-    "solution": "각을 옮기는 작도 순서는\n\n1. 원래 각에서 같은 반지름의 호를 그린다.\n2. 새 꼭짓점 O'에서 같은 반지름의 호를 그린다.\n3. 원래 호의 두 교점 사이 거리를 컴퍼스로 잰다.\n4. 그 길이를 새 호에 옮긴다.\n5. O'와 새 교점을 연결한다.\n\n그림의 기호 순서로는 선택지 ⑤와 같다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "각을 옮기는 작도 순서는\n\n1. 원래 각에서 같은 반지름의 호를 그린다.\n2. 새 꼭짓점 $O'$에서 같은 반지름의 호를 그린다.\n3. 원래 호의 두 교점 사이 거리를 컴퍼스로 잰다.\n4. 그 길이를 새 호에 옮긴다.\n5. $O'$와 새 교점을 연결한다.\n\n그림의 기호 순서로는 선택지 ⑤와 같다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -224,7 +232,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:79cf48f81296c4aa063d4bc6c344bb7ed2f5ed00f1bcdb06f6365fd0dc6b119f",
-    "difficultyEvidenceSha": "sha256:29f26065348b625cba10c799ef3127d21debff67176d323f992a086f68abc056"
+    "difficultyEvidenceSha": "sha256:29f26065348b625cba10c799ef3127d21debff67176d323f992a086f68abc056",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠AOB와 같은 각을 O'X를 한 변으로 옮기는 작도 그림으로, 같은 반지름의 호(OC=OD=O'E=O'F)와 옮긴 현의 길이 CD=EF, 기호 ㉠~㉤ 위치를 보여 준다.",
+    "solutionImageCaption": "같은 반지름의 호와 옮긴 현 길이 CD=EF로 ∠AOB와 크기가 같은 각이 작도된다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -251,7 +263,7 @@ window.questionBank = [
       "$20^\\circ$"
     ],
     "answer": "①",
-    "solution": "한 직선 위의 각의 합을 이용한다.\n\n2x+(4x+50^\\circ)+(2x+10^\\circ)=180^\\circ\n\n8x+60=180\n\n8x=120\n\nx=15^\\circ\n\n따라서 정답은 ①이다.",
+    "solution": "한 직선 위의 각의 합을 이용한다.\n\n$2x+(4x+50^\\circ)+(2x+10^\\circ)=180^\\circ$\n\n$8x+60=180$\n\n$8x=120$\n\n$x=15^\\circ$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -264,7 +276,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 점에서 만나는 세 직선에서, 아래쪽 2x°와 (2x+10)°의 맞꼭지각을 같은 색의 호로 위쪽에 옮겨 놓아 한 직선 위에 2x°, (4x+50)°, (2x+10)°가 이어짐을 보여 주는 그림",
+    "solutionImageCaption": "맞꼭지각을 위쪽에 옮기면 한 직선 위의 세 각 2x°, (4x+50)°, (2x+10)°의 합이 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -290,7 +306,7 @@ window.questionBank = [
       "$\\angle A=30^\\circ,\\ \\angle B=60^\\circ,\\ \\angle C=90^\\circ$"
     ],
     "answer": "②, ③",
-    "solution": "①\n11<6+4\n가 성립하지 않으므로 삼각형이 만들어지지 않는다.\n\n②\nAB=AC=7,\\ \\angle A=100^\\circ\n→ SAS로 하나로 정해진다.\n\n③\nAB=10,\\ \\angle A=48^\\circ,\\ \\angle C=76^\\circ\n→ 한 변과 두 각으로 하나로 정해진다.\n\n④ 두 변과 끼인각이 아닌 한 각\n→ 하나로 정해진다고 할 수 없다.\n\n⑤ 세 각만 주어짐\n→ 크기가 정해지지 않는다.\n\n따라서 정답은 ②, ③이다.",
+    "solution": "①\n$11<6+4$\n가 성립하지 않으므로 삼각형이 만들어지지 않는다.\n\n②\n$AB=AC=7,\\ \\angle A=100^\\circ$\n→ SAS로 하나로 정해진다.\n\n③\n$AB=10,\\ \\angle A=48^\\circ,\\ \\angle C=76^\\circ$\n→ 한 변과 두 각으로 하나로 정해진다.\n\n④ 두 변과 끼인각이 아닌 한 각\n→ 하나로 정해진다고 할 수 없다.\n\n⑤ 세 각만 주어짐\n→ 크기가 정해지지 않는다.\n\n따라서 정답은 ②, ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -303,7 +319,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 AB=11cm 선분에 4cm와 6cm 괄호를 놓아 합이 11cm에 못 미침을 보이고, 오른쪽에는 BC=11cm, ∠B=28°에서 반지름 8cm인 원호가 반직선과 두 점에서 만나 삼각형이 두 개 생김을 보이는 그림",
+    "solutionImageCaption": "①은 6+4<11이라 삼각형이 만들어지지 않고, ④는 원호가 반직선과 두 점에서 만나 삼각형이 두 개 생긴다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -330,7 +350,7 @@ window.questionBank = [
       "$\\overrightarrow{AD}$와 $\\overrightarrow{CD}$의 공통인 부분은 $\\overrightarrow{CD}$이다."
     ],
     "answer": "③",
-    "solution": "점의 순서가\nA-B-C-D\n이다.\n\n\\overrightarrow{AB}=\\overrightarrow{AC}\n\n\\overleftrightarrow{BC}=\\overleftrightarrow{CD}\n\n\\overline{BC}=\\overline{CB}\n\n또\n\\overrightarrow{AD}와 \\overrightarrow{CD}의 공통 부분은\n\\overrightarrow{CD}\n\n하지만\n\\overrightarrow{BC}와 \\overrightarrow{CD}는\n시작점이 각각 B,C이므로 같은 반직선이 아니다.\n\n따라서 정답은 ③이다.",
+    "solution": "점의 순서가\n$A$-$B$-$C$-$D$\n이다.\n\n$\\overrightarrow{AB}=\\overrightarrow{AC}$\n\n$\\overleftrightarrow{BC}=\\overleftrightarrow{CD}$\n\n$\\overline{BC}=\\overline{CB}$\n\n또\n$\\overrightarrow{AD}$와 $\\overrightarrow{CD}$의 공통 부분은\n$\\overrightarrow{CD}$\n\n하지만\n$\\overrightarrow{BC}$와 $\\overrightarrow{CD}$는\n시작점이 각각 $B,C$이므로 같은 반직선이 아니다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -343,7 +363,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D에서 반직선 AB·AC, BC, CD가 각각 어느 점에서 시작해 오른쪽으로 뻗는지 네 칸으로 나누어 빨간색으로 보이고, 반직선 AD와 CD가 겹치는 부분을 함께 보여 주는 그림",
+    "solutionImageCaption": "반직선은 시작점과 뻗는 방향으로 정해지며, 반직선 AD와 CD가 겹치는 부분은 C에서 시작한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -370,7 +394,7 @@ window.questionBank = [
       "$130^\\circ$"
     ],
     "answer": "④",
-    "solution": "그림에서 150^\\circ의 보각은\n\n180^\\circ-150^\\circ\n=30^\\circ\n\n접으면 접는 선을 기준으로 대응하는 각의 크기가 같으므로\n30^\\circ가 한 번 더 생긴다.\n\n따라서\n\nx=180^\\circ-30^\\circ-30^\\circ\n=120^\\circ\n\n정답은 ④이다.",
+    "solution": "그림에서 $150^\\circ$의 보각은\n\n$180^\\circ-150^\\circ$\n$=30^\\circ$\n\n접으면 접는 선을 기준으로 대응하는 각의 크기가 같으므로\n$30^\\circ$가 한 번 더 생긴다.\n\n따라서\n\n$x=180^\\circ-30^\\circ-30^\\circ$\n$=120^\\circ$\n\n정답은 ④이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -383,7 +407,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 종이를 접은 그림에서 접는 선(빨강), 150°의 보각 30°와 접어서 생긴 같은 크기의 30°, 그리고 이 둘과 삼각형을 이루는 ∠x를 표시한 그림",
+    "solutionImageCaption": "150°의 보각 30°와 접어서 생긴 같은 크기의 30°가 ∠x와 함께 삼각형을 이룬다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -410,7 +438,7 @@ window.questionBank = [
       "$92^\\circ$"
     ],
     "answer": "③",
-    "solution": "\\triangle ABC\\equiv\\triangle BDE이므로\n\n\\angle C=\\angle E=62^\\circ\n\n따라서 \\triangle ABC에서\n\n\\angle B\n=180^\\circ-28^\\circ-62^\\circ\n=90^\\circ\n\n합동에 의해\n\\angle DBE=\\angle A=28^\\circ\n\n그러므로\n\n\\angle ABF=90^\\circ-28^\\circ\n=62^\\circ\n\n\\triangle ABF에서\n\n\\angle AFB\n=180^\\circ-28^\\circ-62^\\circ\n=90^\\circ\n\n정답은 ③이다.",
+    "solution": "$\\triangle ABC\\equiv\\triangle BDE$이므로\n\n$\\angle C=\\angle E=62^\\circ$\n\n따라서 $\\triangle ABC$에서\n\n$\\angle B$\n$=180^\\circ-28^\\circ-62^\\circ$\n$=90^\\circ$\n\n합동에 의해\n$\\angle DBE=\\angle A=28^\\circ$\n\n그러므로\n\n$\\angle ABF=90^\\circ-28^\\circ$\n$=62^\\circ$\n\n$\\triangle ABF$에서\n\n$\\angle AFB$\n$=180^\\circ-28^\\circ-62^\\circ$\n$=90^\\circ$\n\n정답은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -423,7 +451,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동인 △ABC와 △BDE의 대응각(28°끼리, 62°끼리)을 같은 수의 호로 표시하고 ∠B=90°, ∠ABF=62°와 구하는 ∠AFB를 나타낸 그림",
+    "solutionImageCaption": "합동의 대응각 28°, 62°와 ∠ABF=62°로 △ABF의 나머지 각 ∠AFB를 구한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -450,7 +482,7 @@ window.questionBank = [
       "$280^\\circ$"
     ],
     "answer": "③",
-    "solution": "각 꺾인 점을 지나 l,m과 평행한 보조선을 그린다.\n\n평행선의 동위각·엇각으로 옮기면\n두 표시각의 합은\n\nx+y\n=180^\\circ+40^\\circ+55^\\circ\n=275^\\circ\n\n따라서 정답은 ③이다.",
+    "solution": "각 꺾인 점을 지나 $l,m$과 평행한 보조선을 그린다.\n\n평행선의 동위각·엇각으로 옮기면\n두 표시각의 합은\n\n$x+y$\n$=180^\\circ+40^\\circ+55^\\circ$\n$=275^\\circ$\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -463,7 +495,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 꺾인 점에서 l, m에 평행한 보조선을 긋고 엇각 40°, 55°를 옮겨 표시하고 보조선 사이에 낀 두 각의 합이 180°임을 나타낸 그림",
+    "solutionImageCaption": "보조선으로 엇각 40°, 55°를 옮기면 x+y는 180°에 40°와 55°를 더한 값이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -500,7 +536,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동 조건 다섯 가지를 같은 변(눈금 수)과 같은 각(호)으로 나란히 보이고 마지막은 끼인각이 아닌 각만 같아 삼각형이 달라질 수 있음을 나타낸 그림",
+    "solutionImageCaption": "각 보기의 같은 변과 같은 각의 위치를 비교해 끼인각이 아닌 경우를 찾는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -561,7 +601,7 @@ window.questionBank = [
       "$(ab,\\dfrac b{a^2})$"
     ],
     "answer": "⑤",
-    "solution": "점 P(a,b)가 제4사분면에 있으므로\n\na>0,\\quad b<0\n\n⑤의 점은\n\n(ab,\\dfrac{b}{a^2})\n\nab<0\n\na^2>0이므로\n\\dfrac{b}{a^2}<0\n\n따라서 두 좌표가 모두 음수이므로\n제3사분면 위의 점이다.\n\n정답은 ⑤이다.",
+    "solution": "점 $P(a,b)$가 제4사분면에 있으므로\n\n$a>0,\\quad b<0$\n\n⑤의 점은\n\n$(ab,\\dfrac{b}{a^2})$\n\n$ab<0$\n\n$a^2>0$이므로\n$\\dfrac{b}{a^2}<0$\n\n따라서 두 좌표가 모두 음수이므로\n제3사분면 위의 점이다.\n\n정답은 ⑤이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -574,7 +614,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 네 사분면에 x좌표, y좌표의 부호 (+,+), (-,+), (-,-), (+,-)를 표시하고 제4사분면에 점 P를 나타낸 그림",
+    "solutionImageCaption": "P가 제4사분면 위의 점이므로 a>0, b<0이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -601,7 +645,7 @@ window.questionBank = [
       "면 $AGC$와 만나는 면은 $4$개다."
     ],
     "answer": "④",
-    "solution": "그림의 절단면과 모서리 관계를 확인한다.\n\n① AC와 BE는 공간에서 만나지 않는다.\n② AD와 CG는 평행하지 않는다.\n③ AG와 꼬인 위치인 모서리는 5개이다.\n④ 면 AGC와 평행한 모서리는 없다.\n⑤ 면 AGC와 만나는 면의 수는 보기의 진술과 일치하지 않는다.\n\n따라서 옳은 것은 ④이다.",
+    "solution": "그림의 절단면과 모서리 관계를 확인한다.\n\n① $AC$와 $BE$는 공간에서 만나지 않고 평행하지도 않으므로 꼬인 위치이다.\n② $AD$와 $CG$는 평행하지 않다(만나지도 않는 꼬인 위치).\n③ $AG$와 만나지도 평행하지도 않은 모서리는 $BC$, $BE$, $CF$, $DE$, $EF$의 $5$개이다. ($4$개가 아니다.)\n④ $AB$, $AD$, $BC$, $CF$, $DG$, $FG$는 점 $A$, $C$, $G$에서 면 $AGC$와 만나고, $BE$, $DE$, $EF$는 각각 $AD$, $AB$, $BC$와 같은 방향의 모서리이므로 연장하면 면 $AGC$와 만난다. 따라서 면 $AGC$와 평행한 모서리는 없다.\n⑤ 면 $AGC$와 모서리를 공유하며 만나는 면은 면 $ABC$, 면 $ADG$, 면 $CFG$의 $3$개이다. ($4$개가 아니다.)\n\n따라서 옳은 것은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -619,7 +663,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:06f0587768aa48b02ecf2fd65fe8052e52864c4c4ce4d325655b7516b8f1e3ee",
-    "difficultyEvidenceSha": "sha256:74a478c8bd1447e674909c94339dfbc414d4d2fc77d85b2f63cdbde69133743f"
+    "difficultyEvidenceSha": "sha256:74a478c8bd1447e674909c94339dfbc414d4d2fc77d85b2f63cdbde69133743f",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체를 세 꼭짓점 A, G, C를 지나는 평면으로 잘라 한 꼭짓점을 떼어 낸 입체로, 절단면 AGC가 주황색으로 칠해져 있고 남은 일곱 꼭짓점 A~G에 이름이 붙어 있다.",
+    "solutionImageCaption": "세 꼭짓점 A, G, C를 지나는 평면으로 자른 입체와 절단면 AGC",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -646,7 +694,7 @@ window.questionBank = [
       "아기의 몸무게가 $10\\,\\mathrm{kg}$이 된 때는 12개월에서 5주 후이다."
     ],
     "answer": "③",
-    "solution": "세로축 y는\n12개월 때의 9\\,\\mathrm{kg}에서 얼마나 변했는지를 뜻한다.\n\n2주와 3주:\ny=-1\n→ 몸무게가 같다.\n\n6주:\ny=1.5\n→ 9+1.5=10.5\\,\\mathrm{kg}\n\n5주:\ny=1\n→ 10\\,\\mathrm{kg}\n\n1주에서는\ny=-0.5\n이므로\n\n몸무게\n=9-0.5\n=8.5\\,\\mathrm{kg}\n\n8\\,\\mathrm{kg}라고 한 ③이 옳지 않다.",
+    "solution": "세로축 $y$는\n12개월 때의 $9\\,\\mathrm{kg}$에서 얼마나 변했는지를 뜻한다.\n\n2주와 3주:\n$y=-1$\n→ 몸무게가 같다.\n\n6주:\n$y=1.5$\n→ $9+1.5=10.5\\,\\mathrm{kg}$\n\n5주:\n$y=1$\n→ $10\\,\\mathrm{kg}$\n\n1주에서는\n$y=-0.5$\n이므로\n\n몸무게\n$=9-0.5$\n$=8.5\\,\\mathrm{kg}$\n\n$8\\,\\mathrm{kg}$라고 한 ③이 옳지 않다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -659,7 +707,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O(0주)에 기준 9 kg을 표시하고, 1주부터 6주까지 여섯 점에 몸무게 8.5, 8, 8, 9, 10, 10.5(kg)를 표시하며 1주 후의 점을 빨간 선으로 강조한 그림",
+    "solutionImageCaption": "원점 O는 12개월 때의 기준 9 kg이고, 세로축 y는 9 kg에서 변한 양이므로 몸무게는 9+y이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -686,7 +738,7 @@ window.questionBank = [
       "$10\\,\\mathrm{cm}$"
     ],
     "answer": "②",
-    "solution": "AB=L이라 하자.\n\nAC=\\dfrac14L\n\nCB=L-\\dfrac14L\n=\\dfrac34L\n\nCM=MB이므로\nCM=\\dfrac12CB\n=\\dfrac38L\n\nAM=AC+CM\n\n5\n=\\dfrac14L+\\dfrac38L\n=\\dfrac58L\n\nL=8\n\n따라서\nAB=8\\,\\mathrm{cm}\n\n정답은 ②이다.",
+    "solution": "$AB=L$이라 하자.\n\n$AC=\\dfrac{1}{4}L$\n\n$CB=L-\\dfrac{1}{4}L$\n$=\\dfrac{3}{4}L$\n\n$CM=MB$이므로\n$CM=\\dfrac{1}{2}CB$\n$=\\dfrac{3}{8}L$\n\n$AM=AC+CM$\n\n$5$\n$=\\dfrac{1}{4}L+\\dfrac{3}{8}L$\n$=\\dfrac{5}{8}L$\n\n$L=8$\n\n따라서\n$AB=8\\,\\mathrm{cm}$\n\n정답은 ②이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -699,7 +751,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB 위의 점 C, M에서 AC=L/4, CM=MB=3L/8, AM=5cm, AB=L인 길이 관계를 치수선으로 나타낸 그림",
+    "solutionImageCaption": "AB=L이라 하면 AM=AC+CM=5L/8이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -726,7 +782,7 @@ window.questionBank = [
       "면 $IJH$와 만나지 않는 면은 $1$개이다."
     ],
     "answer": "②",
-    "solution": "전개도를 접어 삼각기둥을 만든다.\n\n모서리 AB와 같은 방향의 옆모서리는\n나머지 두 옆모서리이다.\n\n따라서 AB와 평행한 다른 모서리는 2개이다.\n\n3개라고 한 ②가 옳지 않다.\n\n정답은 ②이다.",
+    "solution": "전개도를 접어 삼각기둥을 만든다.\n\n모서리 $AB$와 같은 방향의 옆모서리는\n나머지 두 옆모서리이다.\n\n따라서 $AB$와 평행한 다른 모서리는 2개이다.\n\n3개라고 한 ②가 옳지 않다.\n\n정답은 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -739,7 +795,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각기둥의 전개도와 접은 모양에서 세 옆모서리 AB(=ID), JC, HE를 빨강으로 표시해 서로 평행함을 나타낸 그림이다.",
+    "solutionImageCaption": "전개도와 접은 삼각기둥에서 평행한 세 옆모서리",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -763,7 +823,7 @@ window.questionBank = [
       "ㄱ, ㄹ, ㅁ"
     ],
     "answer": "①",
-    "solution": "점 (ab,bc)가 제2사분면이므로\n\nab<0,\\quad bc>0\n\n따라서\na와 b의 부호는 반대,\nb와 c의 부호는 같다.\n\nㄱ. ab<0 → 참\n\nㄴ. b,c가 둘 다 양수라고 정해지지 않음 → 거짓\n\nㄷ. a의 부호가 하나로 정해지지 않음 → 거짓\n\nㄹ.\n-\\dfrac ac>0,\\quad ab<0\n이므로 제4사분면 → 참\n\nㅁ.\n\\dfrac ab<0\n이므로 y=\\dfrac abx는 제2·4사분면을 지남 → 거짓\n\n따라서 ㄱ, ㄹ이고 정답은 ①이다.",
+    "solution": "점 $(ab,bc)$가 제2사분면이므로\n\n$ab<0,\\quad bc>0$\n\n따라서\n$a$와 $b$의 부호는 반대,\n$b$와 $c$의 부호는 같다.\n\nㄱ. $ab<0$ → 참\n\nㄴ. $b,c$가 둘 다 양수라고 정해지지 않음 → 거짓\n\nㄷ. $a$의 부호가 하나로 정해지지 않음 → 거짓\n\nㄹ.\n$-\\dfrac{a}{c}>0,\\quad ab<0$\n이므로 제4사분면 → 참\n\nㅁ.\n$\\dfrac{a}{b}<0$\n이므로 $y=\\dfrac{a}{b}x$는 제2·4사분면을 지남 → 거짓\n\n따라서 ㄱ, ㄹ이고 정답은 ①이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -798,7 +858,7 @@ window.questionBank = [
     "content": "좌표평면 위의 네 점 $A(-4,5)$, $B(-4,-2)$, $C(6,-2)$, $D(6,1)$을 꼭짓점으로 하는 사각형 $ABCD$의 넓이를 구하고 그 풀이과정을 쓰시오. [5점]",
     "choices": [],
     "answer": "$50$",
-    "solution": "AB와 CD는 서로 평행한 세로변이다.\n\nAB=5-(-2)=7\n\nCD=1-(-2)=3\n\n두 평행한 변 사이의 거리는\n\n6-(-4)=10\n\n따라서 사각형 ABCD의 넓이는\n\n\\dfrac{7+3}{2}\\times10\n\n=5\\times10\n\n=50",
+    "solution": "$AB$와 $CD$는 서로 평행한 세로변이다.\n\n$AB=5-(-2)=7$\n\n$CD=1-(-2)=3$\n\n두 평행한 변 사이의 거리는\n\n$6-(-4)=10$\n\n따라서 사각형 $ABCD$의 넓이는\n\n$\\dfrac{7+3}{2}\\times10$\n\n$=5\\times10$\n\n$=50$",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -811,7 +871,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 사각형 ABCD에서 세로로 평행한 변 AB=7, CD=3과 두 변 사이의 거리인 BC=10을 표시하고 사각형 안을 연하게 칠한 그림이다.",
+    "solutionImageCaption": "평행한 두 변 AB, CD와 두 변 사이의 거리 BC를 나타낸 사다리꼴 ABCD",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -834,7 +898,7 @@ window.questionBank = [
     "content": "다음 그림에서 $\\triangle ABC$는 정삼각형이고, $\\overline{BD}=\\overline{CE}$이다.",
     "choices": [],
     "answer": "$\\triangle ABD\\equiv\\triangle BCE$; $\\overline{AB}=\\overline{BC}$, $\\overline{BD}=\\overline{CE}$, $\\angle ABD=\\angle BCE$; 두 변의 길이와 그 끼인각의 크기가 각각 같으므로 SAS 합동",
-    "solution": "\\triangle ABC가 정삼각형이므로\n\nAB=BC\n\n\\angle ABC=\\angle BCA=60^\\circ\n\n또\nBD=CE\n\n따라서\n\nAB=BC\nBD=CE\n\\angle ABD=\\angle BCE=60^\\circ\n\n두 변과 그 끼인각이 각각 같으므로\n\n\\triangle ABD\\equiv\\triangle BCE\n(SAS 합동)",
+    "solution": "$\\triangle ABC$가 정삼각형이므로\n\n$AB=BC$\n\n$\\angle ABC=\\angle BCA=60^\\circ$\n\n또\n$BD=CE$\n\n따라서\n\n$AB=BC$\n$BD=CE$\n$\\angle ABD=\\angle BCE=60^\\circ$\n\n두 변과 그 끼인각이 각각 같으므로\n\n$\\triangle ABD\\equiv\\triangle BCE$\n(SAS 합동)",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -847,7 +911,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC에서 BC 위의 점 D, CA 위의 점 E를 잡아 △ABD(빨강)와 △BCE(검정 굵은 선)를 강조하고, AB=BC, BD=CE 눈금과 ∠ABD, ∠BCE의 60° 호를 표시한 그림이다.",
+    "solutionImageCaption": "△ABD와 △BCE에서 대응하는 두 변과 끼인각이 각각 같음을 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -869,8 +937,8 @@ window.questionBank = [
     "imageSize": "tall",
     "content": "아래 그림은 직선 $l$위에 있지 않은 한 점 $P$를 지나고 직선 $l$에 평행한 직선을 작도한 것이다.",
     "choices": [],
-    "answer": "(1) 점 $P$와 직선 $l$ 위의 한 점 $A$를 지나는 직선 $m$을 긋고, 점 $A$를 중심으로 호를 그어 $m$, $l$과 만나는 점을 각각 $B$, $C$라 한다. 점 $P$를 중심으로 같은 반지름의 호를 그어 $m$과 만나는 점을 $Q$라 하고, $\\overline{BC}$의 길이를 반지름으로 하여 점 $Q$를 중심으로 호를 그어 앞의 호와 만나는 점을 $R$이라 한 뒤 직선 $PR$을 긋는다. (2) 두 직선이 한 직선과 만날 때 엇각의 크기가 같으면 두 직선은 평행하다.",
-    "solution": "(1)\n점 P와 직선 l 위의 점 A를 지나는 직선 m을 긋는다.\n\n점 A를 중심으로 호를 그어\nm,l과 만나는 점을 B,C라 한다.\n\n점 P를 중심으로 같은 반지름의 호를 그어\nm과 만나는 점을 Q라 한다.\n\nBC의 길이를 컴퍼스로 옮겨\n점 Q를 중심으로 앞의 호와 만나는 점 R을 잡는다.\n\n직선 PR을 긋는다.\n\n(2)\n이때\n\\angle BCA=\\angle QRP\n\n두 직선이 한 직선과 만날 때\n엇각의 크기가 같으면 두 직선은 평행하므로\n\nPR\\parallel l",
+    "answer": "(1) ㄱ → ㅁ → ㅂ → ㄷ → ㄹ → ㄴ (ㅂ과 ㄷ은 순서를 바꾸어도 된다) (2) 두 직선이 한 직선과 만날 때 엇각의 크기가 같으면 두 직선은 평행하다.",
+    "solution": "(1)\nㄱ 점 $P$와 직선 $l$ 위의 점 $A$를 지나는 직선 $m$을 긋는다.\n\nㅁ 점 $A$를 중심으로 호를 그어\n$m,l$과 만나는 점을 $B,C$라 한다.\n\nㅂ 컴퍼스로 $BC$의 길이를 잰다.\n\nㄷ 점 $P$를 중심으로 같은 반지름의 호를 그어\n$m$과 만나는 점을 $Q$라 한다.\n\nㄹ $BC$의 길이를 컴퍼스로 옮겨\n점 $Q$를 중심으로 앞의 호와 만나는 점 $R$을 잡는다.\n\nㄴ 직선 $PR$을 긋는다.\n\n따라서 작도 순서는 ㄱ → ㅁ → ㅂ → ㄷ → ㄹ → ㄴ이다. ($BC$를 재는 ㅂ과 점 $P$를 중심으로 호를 긋는 ㄷ은 서로 순서를 바꾸어도 된다.)\n\n(2)\n작도에서 $AB=PQ$, $AC=PR$, $BC=QR$이므로\n$\\triangle ABC\\equiv\\triangle PQR$이다.\n\n이때 직선 $m$이 두 직선 $l$, $PR$과 만나서 생기는 엇각\n$\\angle BAC=\\angle QPR$\n\n두 직선이 한 직선과 만날 때\n엇각의 크기가 같으면 두 직선은 평행하므로\n\n$PR\\parallel l$",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -883,7 +951,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 점 A, 점 P를 지나는 직선 m과 평행선 PR 작도에서 호 ㅁ, ㅂ, ㄷ, ㄹ과 직선 ㄱ, ㄴ을 표시하고, AB=PQ, AC=PR, BC=QR 눈금과 엇각 ∠BAC, ∠QPR의 표시를 나타낸 그림이다.",
+    "solutionImageCaption": "평행선 작도 과정과 같은 길이, 엇각 ∠BAC=∠QPR를 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -905,7 +977,7 @@ window.questionBank = [
     "content": "$y=\\dfrac ax$의 그래프가 아래와 같을 때, 그래프 위의 점 중에서 $x$좌표와 $y$좌표가 모두 음의 정수인 점을 모두 나열하고, 그 풀이과정을 쓰시오. [5점]",
     "choices": [],
     "answer": "$(-1,-10),\\ (-2,-5),\\ (-5,-2),\\ (-10,-1)$",
-    "solution": "그래프가 점 (2,5)를 지나므로\n\n5=\\dfrac a2\n\na=10\n\n따라서\n\ny=\\dfrac{10}{x}\n\nx,y가 모두 음의 정수이려면\nxy=10이고 두 수가 모두 음수여야 한다.\n\n10의 양의 약수쌍은\n\n1\\times10\n2\\times5\n5\\times2\n10\\times1\n\n따라서 해당 점은\n\n(-1,-10)\n(-2,-5)\n(-5,-2)\n(-10,-1)",
+    "solution": "그래프가 점 $(2,5)$를 지나므로\n\n$5=\\dfrac{a}{2}$\n\n$a=10$\n\n따라서\n\n$y=\\dfrac{10}{x}$\n\n$x,y$가 모두 음의 정수이려면\n$xy=10$이고 두 수가 모두 음수여야 한다.\n\n$10$의 양의 약수쌍은\n\n$1\\times10$\n$2\\times5$\n$5\\times2$\n$10\\times1$\n\n따라서 해당 점은\n\n$(-1,-10)$\n$(-2,-5)$\n$(-5,-2)$\n$(-10,-1)$",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
@@ -918,6 +990,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 y=10/x의 그래프가 점 (2,5)를 지남을 점선으로 보이고, 제3사분면 그래프 위에서 두 좌표가 모두 정수인 점들을 점으로 표시한 그림이다.",
+    "solutionImageCaption": "y=10/x의 그래프와 주어진 점 (2,5), 제3사분면의 정수 좌표 점들",
+    "solutionImageSize": "medium"
   }
 ];

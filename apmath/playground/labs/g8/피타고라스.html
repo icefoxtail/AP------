@@ -346,6 +346,11 @@
       return latexStr;
     }
 
+    // 해설 문자열(hint · formulaHTML · notes) 속 $...$ 구간을 위 tex()로 KaTeX 수식으로 바꿉니다.
+    function texInline(html) {
+      return html.replace(/\$([^$]+)\$/g, (m, src) => tex(src));
+    }
+
     const PCOL = {
       cyan: '#38bdf8',
       pink: '#f472b6',
@@ -473,6 +478,11 @@
       ]
     };
 
+    // 장면별로 강조할 요소가 없어 효과가 없는 관찰 렌즈 — 그 장면에서는 해당 렌즈 버튼을 숨깁니다 (여기 적지 않은 렌즈는 모든 장면에서 씁니다)
+    const LENS_OFF = {
+      aux: ['chainTri', 'bhaskaraIn', 'garfield', 'fam345', 'fam51213', 'fam81517', 'fam72425', 'trap34x', 'equilateral', 'semicircles', 'findHypSemi', 'triFold']
+    };
+
     // -------------------------------------------------------------------------
     // 2. 캔버스 초기화 & 시각적 기하 증거 드로잉 함수
     // -------------------------------------------------------------------------
@@ -515,15 +525,29 @@
       return state.activePartIdx !== -1 && state.activePartIdx === partIdx;
     }
 
-    function pline(a, b, color = '#fbbf24', width = 2.4, dash = [], glow = false, partIdx = undefined) {
+    // 관찰 렌즈(state.conceptSwitch): 그리는 요소마다 그룹('def' · 'area' · 'aux', 여럿이면 공백으로 구분)을 붙여 두고,
+    // 선택한 렌즈에 속한 요소는 굵게(hi) · 속하지 않은 요소는 흐리게(a) 그립니다. 그룹이 없는('') 바탕 요소는 항상 그대로입니다.
+    //   def  직각(∟)·빗변·꼭짓점: 직각·각 표시, 꼭짓점 점, 빗변·변 길이 이름표, 핵심 선분
+    //   area 넓이·제곱합 블록   : 정사각형·반원·조각 도형, 제곱·넓이 이름표, 하단 비율 띠·요약 상자
+    //   aux  보조선·닮음·모눈   : 점선 보조선, 모눈 칸, 수선의 발 H 같은 보조점, 닮음 삼각형·전개도
+    function lensFx(group) {
+      const sw = state.conceptSwitch;
+      if (sw === 'all' || !group) return { a: 1, hi: false };
+      const on = group.split(' ').includes(sw);
+      return { a: on ? 1 : 0.2, hi: on };
+    }
+
+    function pline(a, b, color = '#fbbf24', width = 2.4, dash = [], glow = false, partIdx = undefined, lens = dash.length ? 'aux' : (partIdx !== undefined || glow) ? 'def' : '') {
       const dimmed = isPartDimmed(partIdx);
       const hi = isPartHighlighted(partIdx);
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.strokeStyle = dimmed ? 'rgba(148, 163, 184, 0.22)' : color;
-      ctx.lineWidth = hi ? width + 2.0 : dimmed ? 1.2 : width;
+      ctx.lineWidth = hi ? width + 2.0 : dimmed ? 1.2 : fx.hi ? width + 1.6 : width;
       ctx.lineCap = 'round';
       ctx.setLineDash(dash);
-      if (glow || hi) {
+      if (glow || hi || fx.hi) {
         ctx.shadowColor = color;
         ctx.shadowBlur = hi ? 16 : 10;
       }
@@ -534,10 +558,12 @@
       ctx.restore();
     }
 
-    function ppoly(pts, fill = 'rgba(52,211,153,0.20)', stroke = '#34d399', width = 2.8, partIdx = undefined) {
+    function ppoly(pts, fill = 'rgba(52,211,153,0.20)', stroke = '#34d399', width = 2.8, partIdx = undefined, lens = partIdx !== undefined ? 'area' : '') {
       const dimmed = isPartDimmed(partIdx);
       const hi = isPartHighlighted(partIdx);
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.beginPath();
       pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
       ctx.closePath();
@@ -547,8 +573,8 @@
       }
       if (stroke) {
         ctx.strokeStyle = dimmed ? 'rgba(148, 163, 184, 0.22)' : stroke;
-        ctx.lineWidth = hi ? width + 1.8 : dimmed ? 1.0 : width;
-        if (hi) {
+        ctx.lineWidth = hi ? width + 1.8 : dimmed ? 1.0 : fx.hi ? width + 1.4 : width;
+        if (hi || fx.hi) {
           ctx.shadowColor = stroke;
           ctx.shadowBlur = 15;
         }
@@ -557,14 +583,15 @@
       ctx.restore();
     }
 
-    function pdot(p, text = '', col = '#ffffff', refCenter = null, customOff = null) {
-      if (state.conceptSwitch === 'area' && !text.includes('90°') && !text.includes('드래그')) return;
+    function pdot(p, text = '', col = '#ffffff', refCenter = null, customOff = null, lens = /드래그/.test(text) ? '' : /^[HL]\b|수선의 발|대칭점/.test(text) ? 'aux' : /^[A-Z][₀']?(\(|$)/.test(text) ? 'def' : '') {
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 5.0, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, fx.hi ? 6.8 : 5.0, 0, Math.PI * 2);
       ctx.fillStyle = col;
       ctx.shadowColor = col;
-      ctx.shadowBlur = 8;
+      ctx.shadowBlur = fx.hi ? 16 : 8;
       ctx.fill();
       ctx.lineWidth = 1.8;
       ctx.strokeStyle = '#ffffff';
@@ -591,11 +618,13 @@
       ctx.restore();
     }
 
-    function pright(v, p1, p2, size = 12, col = '#fbbf24') {
+    function pright(v, p1, p2, size = 12, col = '#fbbf24', lens = 'def') {
       const d1 = norm(sub(p1, v)), d2 = norm(sub(p2, v));
       const u1 = mul(d1, size), u2 = mul(d2, size);
       const c1 = add(v, u1), c12 = add(c1, u2), c2 = add(v, u2);
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.beginPath();
       ctx.moveTo(v.x, v.y); ctx.lineTo(c1.x, c1.y); ctx.lineTo(c12.x, c12.y); ctx.lineTo(c2.x, c2.y);
       ctx.closePath();
@@ -604,19 +633,21 @@
       ctx.beginPath();
       ctx.moveTo(c1.x, c1.y); ctx.lineTo(c12.x, c12.y); ctx.lineTo(c2.x, c2.y);
       ctx.strokeStyle = col;
-      ctx.lineWidth = 2.2;
+      ctx.lineWidth = fx.hi ? 3.4 : 2.2;
       ctx.stroke();
       ctx.restore();
     }
 
-    function ptick(p1, p2, count = 1, col = '#fbbf24', size = 6.5) {
+    function ptick(p1, p2, count = 1, col = '#fbbf24', size = 6.5, lens = 'def') {
       const m = mid(p1, p2);
       const d = norm(sub(p2, p1));
       const n = { x: -d.y, y: d.x };
       const gap = 4.5;
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.strokeStyle = col;
-      ctx.lineWidth = 2.2;
+      ctx.lineWidth = fx.hi ? 3.4 : 2.2;
       for (let i = 0; i < count; i++) {
         const off = (i - (count - 1) / 2) * gap;
         const c = add(m, mul(d, off));
@@ -628,12 +659,14 @@
       ctx.restore();
     }
 
-    function pangle(v, p1, p2, col = '#fbbf24', r = 24, rings = 1, label = '') {
+    function pangle(v, p1, p2, col = '#fbbf24', r = 24, rings = 1, label = '', lens = 'def') {
       const t1 = Math.atan2(p1.y - v.y, p1.x - v.x);
       const t2 = Math.atan2(p2.y - v.y, p2.x - v.x);
       const d = (t2 - t1 + Math.PI * 3) % (Math.PI * 2) - Math.PI;
+      const fx = lensFx(lens);
 
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.beginPath();
       ctx.moveTo(v.x, v.y);
       ctx.arc(v.x, v.y, r, t1, t1 + d, d < 0);
@@ -642,7 +675,7 @@
       ctx.fill();
 
       ctx.strokeStyle = col;
-      ctx.lineWidth = 2.0;
+      ctx.lineWidth = fx.hi ? 3.4 : 2.0;
       for (let i = 0; i < rings; i++) {
         const rad = r - i * 4.5;
         if (rad > 4) {
@@ -667,9 +700,11 @@
       ctx.restore();
     }
 
-    function ptag(x, y, msg, color = '#fef08a', size = 13) {
+    function ptag(x, y, msg, color = '#fef08a', size = 13, lens = /²|넓이/.test(msg) ? 'area' : /변|높이|거리|^\d+$|^[A-Z]{2}\s?=|^[①②] /.test(msg) ? 'def' : '') {
+      const fx = lensFx(lens);
       ctx.save();
-      ctx.font = `800 ${size}px Pretendard, sans-serif`;
+      ctx.globalAlpha *= fx.a;
+      ctx.font = `800 ${fx.hi ? size + 1.5 : size}px Pretendard, sans-serif`;
       ctx.textAlign = 'center';
       ctx.lineWidth = 3.5;
       ctx.strokeStyle = 'rgba(5, 16, 12, 0.94)';
@@ -680,19 +715,21 @@
     }
 
     // 선분 p1 -> p2 바깥쪽으로 정사각형(및 n×n 모눈 타일) 작도
-    function drawOutwardSquare(p1, p2, fillCol, strokeCol, gridN = 0, labelText = '', outSign = 1, partIdx = undefined) {
+    function drawOutwardSquare(p1, p2, fillCol, strokeCol, gridN = 0, labelText = '', outSign = 1, partIdx = undefined, lens = 'area') {
       const dx = p2.x - p1.x, dy = p2.y - p1.y;
       const nx = outSign * dy, ny = -outSign * dx;
       const p3 = { x: p2.x + nx, y: p2.y + ny };
       const p4 = { x: p1.x + nx, y: p1.y + ny };
 
-      ppoly([p1, p2, p3, p4], fillCol, strokeCol, 2.8, partIdx);
+      ppoly([p1, p2, p3, p4], fillCol, strokeCol, 2.8, partIdx, lens);
 
-      const showGrid = (state.conceptSwitch === 'all' || state.conceptSwitch === 'aux' || state.conceptSwitch === 'area') && !isPartDimmed(partIdx);
+      const showGrid = !isPartDimmed(partIdx);
       if (showGrid && gridN > 0 && gridN <= 15) {
+        const gfx = lensFx('area aux');
         ctx.save();
+        ctx.globalAlpha *= gfx.a;
         ctx.strokeStyle = strokeCol + '40';
-        ctx.lineWidth = 1.0;
+        ctx.lineWidth = gfx.hi ? 1.8 : 1.0;
         for (let i = 1; i < gridN; i++) {
           const r = i / gridN;
           const a1 = lerp(p1, p2, r), a2 = lerp(p4, p3, r);
@@ -706,30 +743,32 @@
       }
 
       const center = mid(p1, p3);
-      if (labelText && !isPartDimmed(partIdx)) ptag(center.x, center.y + 4, labelText, strokeCol, 13.5);
+      if (labelText && !isPartDimmed(partIdx)) ptag(center.x, center.y + 4, labelText, strokeCol, 13.5, lens);
       return { p1, p2, p3, p4, center };
     }
 
-    function drawOutwardEquilateral(p1, p2, fillCol, strokeCol, labelText = '', outSign = 1, partIdx = undefined) {
+    function drawOutwardEquilateral(p1, p2, fillCol, strokeCol, labelText = '', outSign = 1, partIdx = undefined, lens = 'area') {
       const m = mid(p1, p2);
       const dx = p2.x - p1.x, dy = p2.y - p1.y;
       const hFactor = (Math.sqrt(3) / 2) * outSign;
       const apex = { x: m.x + dy * hFactor, y: m.y - dx * hFactor };
-      ppoly([p1, p2, apex], fillCol, strokeCol, 2.8, partIdx);
+      ppoly([p1, p2, apex], fillCol, strokeCol, 2.8, partIdx, lens);
       const c = { x: (p1.x + p2.x + apex.x) / 3, y: (p1.y + p2.y + apex.y) / 3 };
-      if (labelText && !isPartDimmed(partIdx)) ptag(c.x, c.y + 4, labelText, strokeCol, 13);
+      if (labelText && !isPartDimmed(partIdx)) ptag(c.x, c.y + 4, labelText, strokeCol, 13, lens);
       return apex;
     }
 
-    function drawOutwardSemicircle(p1, p2, fillCol, strokeCol, labelText = '', anticlockwise = false, partIdx = undefined) {
+    function drawOutwardSemicircle(p1, p2, fillCol, strokeCol, labelText = '', anticlockwise = false, partIdx = undefined, lens = 'area') {
       const dimmed = isPartDimmed(partIdx);
       const hi = isPartHighlighted(partIdx);
+      const fx = lensFx(lens);
       const m = mid(p1, p2);
       const r = dist(p1, p2) / 2;
       const ang1 = Math.atan2(p1.y - m.y, p1.x - m.x);
       const ang2 = Math.atan2(p2.y - m.y, p2.x - m.x);
 
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.beginPath();
       ctx.arc(m.x, m.y, r, ang1, ang2, anticlockwise);
       ctx.closePath();
@@ -739,15 +778,15 @@
       }
       if (strokeCol) {
         ctx.strokeStyle = dimmed ? 'rgba(148,163,184,0.22)' : strokeCol;
-        ctx.lineWidth = hi ? 4.4 : dimmed ? 1.0 : 2.8;
-        if (hi) { ctx.shadowColor = strokeCol; ctx.shadowBlur = 15; }
+        ctx.lineWidth = hi ? 4.4 : dimmed ? 1.0 : fx.hi ? 4.2 : 2.8;
+        if (hi || fx.hi) { ctx.shadowColor = strokeCol; ctx.shadowBlur = 15; }
         ctx.stroke();
       }
       ctx.restore();
 
       const midAng = ang1 + (anticlockwise ? -Math.PI / 2 : Math.PI / 2);
       if (labelText && !dimmed) {
-        ptag(m.x + Math.cos(midAng) * r * 0.55, m.y + Math.sin(midAng) * r * 0.55 + 4, labelText, strokeCol, 13);
+        ptag(m.x + Math.cos(midAng) * r * 0.55, m.y + Math.sin(midAng) * r * 0.55 + 4, labelText, strokeCol, 13, lens);
       }
     }
 
@@ -759,10 +798,12 @@
       const bw = Math.min(545, rect.width - 36);
       const sx = (rect.width - bw) / 2;
 
+      const fx = lensFx(segments && segments.length ? 'area' : '');
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.fillStyle = 'rgba(7, 20, 15, 0.94)';
-      ctx.strokeStyle = 'rgba(52, 211, 153, 0.5)';
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = fx.hi ? 'rgba(251, 191, 36, 0.85)' : 'rgba(52, 211, 153, 0.5)';
+      ctx.lineWidth = fx.hi ? 2.6 : 1.5;
       ctx.beginPath();
       ctx.roundRect(sx - 12, by - 24, bw + 24, 54, 12);
       ctx.fill();
@@ -797,16 +838,18 @@
       ctx.restore();
     }
 
-    function drawMiniOverlayBox(rect, title, lines) {
+    function drawMiniOverlayBox(rect, title, lines, lens = 'area') {
       if (rect.width < 560) return;
       const boxW = 225, boxH = 32 + lines.length * 22;
       const bx = rect.width - boxW - 14;
       const by = 14;
+      const fx = lensFx(lens);
 
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.fillStyle = 'rgba(7, 20, 15, 0.94)';
       ctx.strokeStyle = '#fbbf24';
-      ctx.lineWidth = 1.8;
+      ctx.lineWidth = fx.hi ? 3.0 : 1.8;
       ctx.beginPath();
       ctx.roundRect(bx, by, boxW, boxH, 12);
       ctx.fill();
@@ -1337,6 +1380,7 @@
     // 5. 메인 렌더링 파이프라인 (모드 1 ~ 8)
     // -------------------------------------------------------------------------
     function render() {
+      syncLensBar();
       const rect = canvas.parentElement.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
       drawChalkGrid(rect);
@@ -1364,20 +1408,22 @@
     // [탭 1 렌더링] 세 정사각형 넓이 (a²+b²=c²) & 격자 정사각형 & 연쇄 삼각형
     // =========================================================================
     function renderMode1ThreeSquares(rect, cx, cy) {
-      const sub = state.subType[1];
+      const subId = state.subType[1];
       const s = state.scale * 0.98;
       const fam = getActiveTriple();
       const k = state.multK;
       const a = fam.a * k, b = fam.b * k, c = fam.c * k;
 
-      if (sub === 'tiltedGrid') {
+      if (subId === 'tiltedGrid') {
         const u = 36 * s;
         const half = 2.5 * u;
         const ox = cx - half, oy = cy - half;
 
+        const gfx = lensFx('aux');
         ctx.save();
+        ctx.globalAlpha *= gfx.a;
         ctx.strokeStyle = 'rgba(255,255,255,0.22)';
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = gfx.hi ? 2.2 : 1.2;
         for (let i = 0; i <= 5; i++) {
           ctx.beginPath();
           ctx.moveTo(ox + i * u, oy); ctx.lineTo(ox + i * u, oy + 5 * u);
@@ -1403,8 +1449,8 @@
         pright(A, B, D, 12, PCOL.gold);
 
         ptag(cx, cy + 4, '넓이 S = 3² + 2² = 13', PCOL.gold, 14);
-        ptag(ox + 1.5 * u, oy - 12, '3칸', PCOL.cyan, 12);
-        ptag(ox - 20, oy + 1 * u, '2칸', PCOL.cyan, 12);
+        ptag(ox + 1.5 * u, oy - 12, '3칸', PCOL.cyan, 12, 'aux');
+        ptag(ox - 20, oy + 1 * u, '2칸', PCOL.cyan, 12, 'aux');
         [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, pt(cx, cy)));
 
         drawBottomTapeBanner(rect, '바깥 5×5 정사각형(25) = 기울어진 정사각형(3²+2²=13) + 귀퉁이 직각삼각형 4개(4×3=12)', [
@@ -1414,7 +1460,7 @@
         return;
       }
 
-      if (sub === 'chainTri') {
+      if (subId === 'chainTri') {
         const u = 14.5 * s;
         const B = pt(cx - 85 * s, cy + 75 * s);
         const A = pt(B.x, B.y - 3 * u);
@@ -1444,7 +1490,7 @@
         return;
       }
 
-      if (sub === 'rotated') {
+      if (subId === 'rotated') {
         const rotAng = state.fold * (Math.PI * 0.25);
         const center = pt(cx, cy - 10 * s);
         const B0 = pt(cx - 82 * s, cy + 25 * s), C0 = pt(cx + 82 * s, cy + 25 * s);
@@ -1470,7 +1516,7 @@
       }
 
       // std345 & findLeg
-      const isFindLeg = sub === 'findLeg';
+      const isFindLeg = subId === 'findLeg';
       const maxDim = Math.max(fam.a, fam.b, fam.c);
       const u = (115 / maxDim) * s;
 
@@ -1586,7 +1632,7 @@
         const ox = cx - L / 2, oy = cy - L / 2 - 12 * s;
         const p = (x, y) => pt(ox + x, oy + y);
         const corners = [p(0, 0), p(0, L), p(L, L), p(L, 0)];
-        ppoly(corners, 'rgba(251,191,36,0.18)', PCOL.gold, 3.0, 0);
+        ppoly(corners, 'rgba(251,191,36,0.18)', PCOL.gold, 3.0, 0, 'area aux');
 
         const parts = [
           { o: p(0, 0), u: pt(0, a), v: pt(b, 0), dst: p(a, 0), theta: 0 },
@@ -1606,6 +1652,7 @@
             2.4,
             1
           );
+          if (state.conceptSwitch === 'def') pright(tri[0], tri[1], tri[2], 10, PCOL.gold);
         });
 
         if (t < 0.15) {
@@ -1780,7 +1827,10 @@
       pline(B, A0, 'rgba(251,191,36,0.45)', 2.0, [5, 4]);
       pdot(A0, 'A₀(90° 기준 c=10)', 'rgba(251,191,36,0.75)', null, { x: -10, y: -12 });
 
+      const afx = lensFx('aux');
       ctx.save();
+      ctx.globalAlpha *= afx.a;
+      if (afx.hi) ctx.lineWidth = 2.6;
       ctx.beginPath();
       ctx.arc(C.x, C.y, lenA, -Math.PI * 0.85, -Math.PI * 0.15);
       ctx.strokeStyle = 'rgba(255,255,255,0.22)';
@@ -1845,10 +1895,10 @@
         ppoly([A, B, C], 'rgba(255, 255, 255, 0.06)', PCOL.white, 2.6);
         pright(A, B, C, 14, PCOL.gold);
 
-        pline(D, E, PCOL.cyan, 4.4, [], true, 0);
-        pline(B, C, PCOL.cyan, 4.4, [], true, 0);
-        pline(B, E, PCOL.pink, 4.0, [6, 4], true, 1);
-        pline(C, D, PCOL.pink, 4.0, [6, 4], true, 1);
+        pline(D, E, PCOL.cyan, 4.4, [], true, 0, 'area aux');
+        pline(B, C, PCOL.cyan, 4.4, [], true, 0, 'area def');
+        pline(B, E, PCOL.pink, 4.0, [6, 4], true, 1, 'area aux');
+        pline(C, D, PCOL.pink, 4.0, [6, 4], true, 1, 'area aux');
 
         pdot(A, 'A(90°)', PCOL.gold, null, { x: -22, y: -10 });
         pdot(B, 'B', PCOL.cyan, null, { x: -18, y: 16 });
@@ -1875,10 +1925,10 @@
         pline(pt(cx - rw, P.y), pt(cx + rw, P.y), 'rgba(255,255,255,0.35)', 1.8, [4, 4]);
         pline(pt(P.x, cy - rh), pt(P.x, cy + rh), 'rgba(255,255,255,0.35)', 1.8, [4, 4]);
 
-        pline(P, A, PCOL.cyan, 4.2, [], true, 0);
-        pline(P, C, PCOL.cyan, 4.2, [], true, 0);
-        pline(P, B, PCOL.pink, 4.2, [], true, 1);
-        pline(P, D, PCOL.pink, 4.2, [], true, 1);
+        pline(P, A, PCOL.cyan, 4.2, [], true, 0, 'area');
+        pline(P, C, PCOL.cyan, 4.2, [], true, 0, 'area');
+        pline(P, B, PCOL.pink, 4.2, [], true, 1, 'area');
+        pline(P, D, PCOL.pink, 4.2, [], true, 1, 'area');
 
         const unit = 10 * s;
         const pa2 = Math.round((dist(P, A) / unit) ** 2);
@@ -1923,10 +1973,10 @@
       pline(B, D, PCOL.white, 2.2, [5, 4]);
       pright(O, A, D, 13, PCOL.gold);
 
-      pline(A, B, PCOL.cyan, 4.4, [], true, 0);
-      pline(C, D, PCOL.cyan, 4.4, [], true, 0);
-      pline(B, C, PCOL.gold, 4.4, [], true, 1);
-      pline(D, A, PCOL.gold, 4.4, [], true, 1);
+      pline(A, B, PCOL.cyan, 4.4, [], true, 0, 'area');
+      pline(C, D, PCOL.cyan, 4.4, [], true, 0, 'area');
+      pline(B, C, PCOL.gold, 4.4, [], true, 1, 'area');
+      pline(D, A, PCOL.gold, 4.4, [], true, 1, 'area');
 
       pdot(O, 'O(90°)', PCOL.gold, null, { x: 10, y: 16 });
       [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, O));
@@ -1972,7 +2022,7 @@
 
         const mBC = mid(B, C), rBC = dist(B, C) / 2;
         if (state.fold < 0.35) {
-          drawOutwardSemicircle(C, B, 'rgba(56, 189, 248, 0.28)', PCOL.cyan, '큰 반원 S₃ (= S₁+S₂)', false, 1);
+          drawOutwardSemicircle(C, B, 'rgba(56, 189, 248, 0.28)', PCOL.cyan, '큰 반원 S₃ (= S₁+S₂)', false, 1, 'aux');
         } else {
           ctx.save();
           ctx.beginPath();
@@ -1980,8 +2030,10 @@
           ctx.closePath();
           ctx.fillStyle = '#0c221b';
           ctx.fill();
+          const sfx = lensFx('aux');
+          ctx.globalAlpha *= sfx.a;
           ctx.strokeStyle = PCOL.cyan;
-          ctx.lineWidth = 2.6;
+          ctx.lineWidth = sfx.hi ? 4.2 : 2.6;
           ctx.setLineDash([5, 4]);
           ctx.stroke();
           ctx.restore();
@@ -1999,7 +2051,7 @@
       ppoly([A, B, C], isLune ? 'rgba(52, 211, 153, 0.44)' : 'rgba(255, 255, 255, 0.14)', PCOL.green, 3.4, 2);
       pright(A, B, C, 13, PCOL.gold);
       if (isLune) {
-        ptag((A.x + B.x + C.x) / 3, (A.y + B.y + C.y) / 3 + 12, isIso ? '△ABC = 32 (1개=16)' : `△ABC 넓이 = ${(a * b) / 2}`, PCOL.green, 13.5);
+        ptag((A.x + B.x + C.x) / 3, (A.y + B.y + C.y) / 3 + 12, isIso ? '△ABC = 32 (1개=16)' : `△ABC 넓이 = ${(a * b) / 2}`, PCOL.green, 13.5, 'area');
       }
 
       pdot(A, 'A(90°)', PCOL.gold, null, { x: -12, y: -14 });
@@ -2028,8 +2080,8 @@
       const H = pt(cx - 145 * s + 104.4 * s, cy + 48 * s);
       const A = pt(H.x, cy + 48 * s - 139.2 * s);
 
-      ppoly([A, B, H], 'rgba(56, 189, 248, 0.16)', PCOL.cyan, 2.4, 0);
-      ppoly([A, H, C], 'rgba(52, 211, 153, 0.16)', PCOL.green, 2.4, 1);
+      ppoly([A, B, H], 'rgba(56, 189, 248, 0.16)', PCOL.cyan, 2.4, 0, 'area aux');
+      ppoly([A, H, C], 'rgba(52, 211, 153, 0.16)', PCOL.green, 2.4, 1, 'area aux');
       pline(A, B, PCOL.white, 3.2);
       pline(A, C, PCOL.white, 3.2);
       pline(B, C, PCOL.white, 3.2);
@@ -2039,10 +2091,10 @@
       pright(H, A, B, 12, PCOL.cyan);
       pright(H, A, C, 12, PCOL.green);
 
-      pangle(B, A, C, PCOL.cyan, 28, 1, '●');
-      pangle(C, A, B, PCOL.pink, 30, 2, '×');
-      pangle(A, B, H, PCOL.pink, 28, 2, '×');
-      pangle(A, H, C, PCOL.cyan, 32, 1, '●');
+      pangle(B, A, C, PCOL.cyan, 28, 1, '●', 'def aux');
+      pangle(C, A, B, PCOL.pink, 30, 2, '×', 'def aux');
+      pangle(A, B, H, PCOL.pink, 28, 2, '×', 'def aux');
+      pangle(A, H, C, PCOL.cyan, 32, 1, '●', 'def aux');
 
       let focusIdx = state.activePartIdx;
       if (focusIdx === -1) {
@@ -2086,7 +2138,7 @@
         { txt: `큰 △ABC : (${AB}, ${AC}, ${BC})`, col: '#fef08a' },
         { txt: `왼 △HBA : (${BH}, ${AH}, ${AB})`, col: '#38bdf8' },
         { txt: `오 △HAC : (${AH}, ${CH}, ${AC})`, col: '#34d399' }
-      ]);
+      ], 'aux');
 
       drawBottomTapeBanner(rect, `① AB²=BH·BC(${AB*AB}) | ② AC²=CH·CB(${AC*AC}) | ③ AH²=BH·CH(${AH*AH}) | ④ AB·AC=BC·AH(${AB*AC})`, [
         { text: `BH = ${BH} (AB²=${BH}×${BC})`, weight: 9 / 25, color: PCOL.cyan },
@@ -2188,7 +2240,7 @@
 
         const P = pt(lerp(H1, H2, state.reflectPx).x, yLine);
 
-        ppoly([A, K_pt, B_ref], 'rgba(251, 191, 36, 0.16)', PCOL.gold, 2.2, 1);
+        ppoly([A, K_pt, B_ref], 'rgba(251, 191, 36, 0.16)', PCOL.gold, 2.2, 1, 'area aux');
         pright(K_pt, A, B_ref, 12, PCOL.gold);
 
         pline(A, H1, PCOL.white, 2.0, [4, 4]);
@@ -2207,8 +2259,8 @@
         pdot(K_pt, 'K(90°)', PCOL.gold, null, { x: -25, y: 14 });
 
         const curDist = (Math.hypot(12 * state.reflectPx, 3) + Math.hypot(12 * (1 - state.reflectPx), 6)).toFixed(2);
-        ptag((K_pt.x + B_ref.x) / 2, B_ref.y + 20, '가로 거리 = 12 cm', PCOL.gold);
-        ptag(K_pt.x - 48, (A.y + K_pt.y) / 2, '세로 합 = 3+6 = 9', PCOL.gold);
+        ptag((K_pt.x + B_ref.x) / 2, B_ref.y + 20, '가로 거리 = 12 cm', PCOL.gold, 13, 'aux');
+        ptag(K_pt.x - 48, (A.y + K_pt.y) / 2, '세로 합 = 3+6 = 9', PCOL.gold, 13, 'aux');
 
         drawBottomTapeBanner(rect, `현재 AP + PB = ${curDist} cm  |  일직선 최솟값 AB' = √(12² + (3+6)²) = 15.00 cm!`, [
           { text: '가로 = 12 (12²=144)', weight: 144 / 225, color: PCOL.cyan },
@@ -2227,7 +2279,7 @@
       const ox = cx - totalW / 2, oy = cy - h / 2 - 12 * s;
 
       const A = pt(ox, oy + h), B = pt(ox + totalW, oy + h), G = pt(ox + totalW, oy), D = pt(ox, oy);
-      ppoly([D, A, B, G], 'rgba(56, 189, 248, 0.18)', PCOL.cyan, 2.8, 0);
+      ppoly([D, A, B, G], 'rgba(56, 189, 248, 0.18)', PCOL.cyan, 2.8, 0, 'area aux');
       if (!isCyl) {
         pline(pt(ox + w1, oy), pt(ox + w1, oy + h), PCOL.white, 2.2, [5, 4]);
         ptag(ox + w1 / 2, oy + h + 20, '앞면 가로 5', PCOL.cyan);
@@ -2311,9 +2363,18 @@
       document.getElementById('valP1').textContent = FAMILY_LIST[state.famIdx].label;
     }
 
+    // 해설 칸에 $...$ 수식을 넣습니다. 슬라이더·애니메이션이 매 프레임 render()를 부르므로 내용이 같으면 DOM을 다시 쓰지 않습니다.
+    function setRichHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el._html !== html) {
+        el._html = html;
+        el.innerHTML = texInline(html);
+      }
+    }
+
     function updateUI(spec) {
       document.getElementById('canvasModeBadge').textContent = spec.badge;
-      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      setRichHTML('canvasActionHint', spec.hint);
       document.getElementById('txtFoldToggle').textContent = spec.actionTxt;
       document.getElementById('dim1Label').textContent = spec.p1Title || '직각삼각형 족보';
       document.getElementById('dim2Label').textContent = spec.p2Title || '배수 스케일 ×k';
@@ -2347,8 +2408,8 @@
 
       document.getElementById('totalResultBadge').textContent = spec.totalRes;
       document.getElementById('ruleBadge').textContent = spec.rule;
-      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
-      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+      setRichHTML('formulaBox', spec.formulaHTML);
+      setRichHTML('intuitionNotes', spec.notes);
 
       renderPresetChips();
     }
@@ -2364,6 +2425,19 @@
         document.getElementById(`sw-${id}`).classList.toggle('active', id === sw);
       });
       render();
+    }
+
+    // 현재 장면에 효과가 없는 렌즈 버튼은 숨기고, 숨겨진 렌즈가 켜져 있었다면 '전체 구조'로 되돌립니다.
+    function syncLensBar() {
+      const sub = state.subType[state.mode];
+      ['def', 'area', 'aux'].forEach((id) => {
+        const off = (LENS_OFF[id] || []).includes(sub);
+        document.getElementById(`sw-${id}`).hidden = off;
+        if (off && state.conceptSwitch === id) state.conceptSwitch = 'all';
+      });
+      ['all', 'def', 'area', 'aux'].forEach((id) => {
+        document.getElementById(`sw-${id}`).classList.toggle('active', id === state.conceptSwitch);
+      });
     }
 
     function setMode(m) {

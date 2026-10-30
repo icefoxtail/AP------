@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>함수의 극한과 연속 · AP Math 실험실</title>
+<meta name="description" content="미적분Ⅰ 함수의 극한과 연속: 좌·우극한과 연속 판정, 0/0 부정형과 접선 기울기의 비, 곱함수의 영점 힐링, 교점 개수 함수 g(t), 사잇값 정리를 직접 조작하며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<script>
+/* ==========================================================================
+   미적분Ⅰ · 함수의 극한과 연속 (AP Math Lab 2.0 이식본)
+   원본: labs/미적분1/함수의 극한·연속.html
+   - 문제·단계·정석/빠른 풀이 문구(examData)는 원본을 그대로 옮겼습니다.
+   - 수학 함수(좌·우 곡선, f/g, 곱함수 h, x³−3x, 사잇값 함수)는 원본과 같은 식입니다.
+   - 바뀐 점: 셸·레이아웃은 공용 키트가 담당, 무대는 1:1 축척, 끌 수 있는 점(후광)으로 통일,
+     모드마다 조절 막대를 따로 둠(원본은 p₁·p₂ 하나를 모드마다 다른 뜻으로 재사용),
+     상·하 동기화 뷰는 의미가 있는 장면(곱함수·교점 개수 함수)에만 둠.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const { tex, fmt, clamp } = APLab;
+  const asc = (v, d = 1) => fmt(v, d).replace('−', '-'); // 수식(tex)용: 유니코드 마이너스 대신 '-'
+
+  /* ---------- 1. 함수 (원본 renderMode1~5 · renderMode3Bottom · renderMode4Bottom) ---------- */
+  const fLeft1 = (x) => -0.5 * x * x + 2.5;                 // 모드1 x<1
+  const fRight1 = (gap) => (x) => x + 1.0 + gap;             // 모드1 x>1
+  const fnF2 = (x) => x * x + 2.0 * x - 3.0;                 // 모드2 f(x) = (x-1)(x+3)
+  const fnG2 = (x) => x - 1.0;                               // 모드2 g(x)
+  const nearOne = (x) => (Math.abs(x - 1.0) < 0.05 ? (x >= 1.0 ? 1.05 : 0.95) : x); // x=1에서는 0/0 이므로 비켜 놓음
+  const hLeft3 = (r) => (x) => (x + 1.0) * (x - r);          // 모드3 h(x) = f(x)g(x), x<1
+  const hRight3 = (r) => (x) => (x - 1.0) * (x - r);         // 모드3 h(x) = f(x)g(x), x≥1
+  const fn4 = (x) => x * x * x - 3.0 * x;                    // 모드4 f(x)
+  const count4 = (t) => (Math.abs(Math.abs(t) - 2.0) < 0.06 ? 2 : Math.abs(t) < 2.0 ? 3 : 1); // 교점 개수 g(t)
+  const fn5 = (x) => 0.5 * x * x * x - 1.5 * x - 0.5;        // 모드5 f(x)
+  const ROOT5 = 1.879;                                       // f(x)=0 의 실근 (1, 2) 안
+  // x³ − 3x = t 의 실근 (모드4의 교점 위치 표시)
+  function roots4(t) {
+    if (Math.abs(Math.abs(t) - 2.0) < 1e-9) return t > 0 ? [2, -1] : [-2, 1];
+    if (Math.abs(t) < 2.0) {
+      const th = Math.acos(t / 2) / 3;
+      return [2 * Math.cos(th), 2 * Math.cos(th + (2 * Math.PI) / 3), 2 * Math.cos(th + (4 * Math.PI) / 3)];
+    }
+    return [Math.sign(t) * 2 * Math.cosh(Math.acosh(Math.abs(t) / 2) / 3)];
+  }
+
+  /* ---------- 2. 문제·풀이 데이터 (원본 examData 그대로) ---------- */
+    const examData = {
+      1: {
+        badge: "MODE 1 · 좌극한 · 우극한 · 함숫값 3요소와 연속성 판정 스캐너",
+        hint: "좌측 상단 <span class='text-amber-300 font-bold'>연속 상태 프리셋(①연속 / ②구멍 불연속 / ③점프 불연속)</span>을 눌러보거나 칠판의 <span class='text-pink-300 font-bold'>함숫값 점 f(1)</span>을 드래그해 보세요!",
+        tag: "수능·평가원 3점·4점 연속의 정의 필수",
+        targetTime: "목표 시간: 3초",
+        question: () => `함수 ${tex('f(x) = \\begin{cases} -\\dfrac{1}{2}x^2 + \\dfrac{5}{2} & (x < 1) \\\\ k & (x = 1) \\\\ x + 1 + \\Delta h & (x > 1) \\end{cases}')} 이 ${tex('x = 1')} 에서 연속이 되도록 하는 상수 ${tex('\\Delta h')}와 함숫값 ${tex('k = f(1)')}의 값을 구하시오.`,
+        answerBadge: () => `${tex('\\Delta h = 0, \\; k = 2')}`,
+        snap: { p1: 0.0, p2: 2.0, dualView: false },
+        steps: [
+          "Step 1 · x=1에서 왼쪽 곡선 −½x²+5/2와 오른쪽 직선 x+1+Δh의 접근을 비교합니다.",
+          "Step 2 · 좌우 접근 높이를 맞추고, 경계의 닫힌 점 (1,k)를 극한 높이와 따로 봅니다.",
+          "Step 3 · 좌극한·우극한·f(1)의 세 높이가 일치하는지 칠판의 연속 판정선으로 확인합니다."
+        ],
+        textbook: () => ({
+          steps: `① 좌극한 계산: ${tex('\\lim_{x \\to 1-} \\left(-\\dfrac{1}{2}x^2 + \\dfrac{5}{2}\\right) = 2')}<br/>
+② 우극한 계산: ${tex('\\lim_{x \\to 1+} (x + 1 + \\Delta h) = 2 + \\Delta h')}<br/>
+③ 극한값이 존재하려면 좌극한 = 우극한이어야 하므로 ${tex('2 = 2 + \\Delta h \\implies \\Delta h = 0')}<br/>
+④ 따라서 연속이 되려면 ${tex('k=f(1)=2')}여야 합니다. 극한의 존재 조건으로 정한 ${tex('\\Delta h=0')}와 함수값 조건을 함께 확인합니다.`,
+          warning: "⚠️ 극한값은 존재하지만 함숫값과 다른 '구멍 뚫린 불연속'과 좌·우극한이 다른 '점프 불연속'을 그래프에서 명확히 구분해야 합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 다항함수로 쪼개진 구간함수의 연속 조건은 위·아래 식에 <strong>경계값 ${tex('x = 1')}만 바로 대입</strong>하면 끝!<br/>
+② ${tex('2 = k = 2 + \\Delta h')} 에서 1초 만에 <strong class="text-amber-300">${tex('\\Delta h = 0, \\; k = 2')}</strong>!`,
+          highlight: "💡 『좌극한 = 우극한 ⇔ 극한값 존재』이고, 거기에 『= 함숫값 f(a)』까지 같아야 연속이 완성됩니다!"
+        })
+      },
+
+      2: {
+        badge: "MODE 2 · 0/0 부정형 극한의 기하학적 의미 (= 두 접선의 기울기 비)",
+        hint: "탐침점 <span class='text-amber-300 font-bold'>x</span>를 교점 <span class='text-pink-300 font-bold'>a = 1</span> 쪽으로 드래그해 보세요! 분모·분자가 동시에 0으로 갈 때 <span class='text-sky-300 font-bold'>함숫값의 비 f(x)/g(x)는 두 접선의 기울기 비 f'(1)/g'(1)</span>로 수렴합니다!",
+        tag: "수능 미정계수 결정 3초 컷 비기",
+        targetTime: "목표 시간: 3초",
+        question: () => `두 다항함수 ${tex('f(x) = x^2 + ax - 3')}, ${tex('g(x) = x - 1')} 에 대하여 ${tex('\\lim_{x \\to 1} \\dfrac{f(x)}{g(x)} = b')} 일 때, 상수 ${tex('a, b')}의 값을 구하시오.`,
+        answerBadge: () => `${tex('a = 2, \\; b = f\'(1) = 4')}`,
+        // f(x) = x^2 + 2x - 3 = (x-1)(x+3), g(x) = x - 1 => f'(1)/g'(1) = 4 / 1 = 4!
+        snap: { p1: 1.8, p2: 2.0, dualView: false },
+        steps: [
+          "Step 1 · 분모 x−1이 0으로 가는 점에서 분자 x²+ax−3의 값도 확인합니다.",
+          "Step 2 · 정한 a를 분자에 넣어 (x−1) 인수를 드러내고, x≠1에서 약분합니다.",
+          "Step 3 · 공통 영점 A(1,0) 근처에서 남은 인자의 극한을 두 곡선의 접선과 함께 확인합니다."
+        ],
+        textbook: () => ({
+          steps: `① ${tex('x \\to 1')} 일 때 분모 ${tex('x - 1 \\to 0')} 이고 극한값이 수렴하므로 분자도 ${tex('0')}으로 수렴:<br/>
+&nbsp;&nbsp;${tex('f(1) = 1 + a - 3 = 0 \\implies a = 2')}<br/>
+② ${tex('a = 2')} 를 대입하여 분자를 인수분해:<br/>
+&nbsp;&nbsp;${tex('\\lim_{x \\to 1} \\dfrac{x^2 + 2x - 3}{x - 1} = \\lim_{x \\to 1} \\dfrac{(x - 1)(x + 3)}{x - 1}')}<br/>
+③ 약분한 식은 ${tex('x+3')}이므로 ${tex('b=\\lim_{x\\to1}(x+3)=4')}입니다. ${tex('x=1')} 자체에서 나눈 것이 아니라 그 점에 가까운 ${tex('x\\ne1')}에서 약분했습니다.`,
+          warning: "⚠️ 삼차·사차식이 분자·분모에 있을 때 조립제법으로 인수분해하고 약분하면 시간이 많이 걸립니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[1단계: 0/0 확인]</strong> ${tex('f(1) = 0 \\implies 1 + a - 3 = 0 \\implies')} 즉시 <strong class="text-amber-300">${tex('a = 2')}</strong>!<br/>
+② <strong>[2단계: 접선 기울기 비(미분계수 정의)]</strong> ${tex('f(1)=g(1)=0')} 이므로<br/>
+&nbsp;&nbsp;<strong class="text-pink-300">${tex('\\lim_{x \\to 1} \\dfrac{f(x) - f(1)}{g(x) - g(1)} = \\dfrac{f\'(1)}{g\'(1)}')}</strong>!<br/>
+③ 인수분해 없이 분자·분모 미분 후 ${tex('x=1')} 대입: <strong class="text-sky-300">${tex('b = \\dfrac{2(1) + 2}{1} = 4')}</strong>!`,
+          highlight: "💡 0/0 꼴 극한의 본질은 『공통 영점 (a, 0) 근처에서 곡선을 접선으로 근사한 기울기의 비 f'(a)/g'(a)』입니다!"
+        })
+      },
+
+      3: {
+        badge: "MODE 3 · 불연속 함수 f(x) × 연속 함수 g(x) 의 연속 조건 (영점 힐링 법칙)",
+        hint: "상단 칠판의 하늘색 직선 <span class='text-sky-300 font-bold'>g(x) = x - r</span> 의 x절편 <span class='text-amber-300 font-bold'>r</span>을 마우스로 드래그해 보세요! <span class='text-pink-300 font-bold'>r = 1 이 되어 불연속점을 0으로 눌러주는 순간</span> 하단 곱함수 f(x)g(x)가 스르륵 이어집니다!",
+        tag: "수능·평가원 출제율 100% 1순위 킬러 법칙",
+        targetTime: "목표 시간: 3초",
+        question: () => `함수 ${tex('f(x) = \\begin{cases} x + 1 & (x < 1) \\\\ x - 1 & (x \\ge 1) \\end{cases}')} 과 일차함수 ${tex('g(x) = x - r')} 에 대하여, 곱함수 ${tex('h(x) = f(x)g(x)')} 가 실수 전체의 집합에서 연속이 되도록 하는 상수 ${tex('r')}의 값을 구하시오.`,
+        answerBadge: () => `${tex('g(1) = 0 \\implies r = 1')} (영점 힐링)`,
+        snap: { p1: 1.0, p2: 2.0, dualView: true },
+        steps: [
+          "Step 1 · x=1에서 f의 좌측 높이와 우측값을 읽고, g(x)=x−r의 절편을 표시합니다.",
+          "Step 2 · 상단 f와 g를 곱한 하단 h의 좌극한·우극한·함숫값을 대조합니다.",
+          "Step 3 · g(1)이 만드는 곱의 경계조건을 풀고 h(1)까지 이어지는지 확인합니다."
+        ],
+        textbook: () => ({
+          steps: `① ${tex('x = 1')} 에서 ${tex('f(x)g(x)')}의 좌극한 계산:<br/>
+&nbsp;&nbsp;${tex('\\lim_{x \\to 1-} f(x)g(x) = 2 \\times (1 - r)')}<br/>
+② ${tex('x = 1')} 에서 우극한 및 함숫값 계산:<br/>
+&nbsp;&nbsp;${tex('\\lim_{x \\to 1+} f(x)g(x) = f(1)g(1) = 0 \\times (1 - r) = 0')}<br/>
+③ 두 극한이 같아야 하므로 ${tex('2(1-r)=0')}에서 ${tex('r=1')}입니다. 이때 경계값도 ${tex('h(1)=f(1)g(1)=0')}이므로 공통 극한과 같아 연속입니다.`,
+          warning: "⚠️ 불연속점이 여러 개일 때 매번 좌극한·우극한·함숫값 표를 그려서 계산하면 시간을 크게 낭비합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① ${tex('f(x)')}는 ${tex('x = 1')} 에서 좌극한(${tex('2')}) $\\ne$ 우극한(${tex('0')})으로 끊어진 <strong>불연속 함수</strong>!<br/>
+② 끊어진 두 값을 곱해서 같게 만들 수 있는 유일한 숫자는 <strong class="text-amber-300">오직 『 0 』</strong>뿐!<br/>
+③ 따라서 연속함수 ${tex('g(x)')}가 불연속점 ${tex('x = 1')} 에서 <strong>0이 되어 덮어주면(Healing)</strong> 끝: 계산 없이 1초 만에 <strong class="text-emerald-300">${tex('g(1) = 0 \\implies r = 1')}</strong>!`,
+          highlight: "💡 『불연속 함수 f(x) × 연속 함수 g(x) 가 x=a에서 연속 ⇔ 연속 함수가 그 점에서 0이 된다: g(a) = 0』!"
+        })
+      },
+
+      4: {
+        badge: "MODE 4 · 직선 y = t 와의 교점의 개수 함수 g(t)의 불연속점 생성 원리",
+        hint: "상단 칠판의 노란 수평선 <span class='text-amber-300 font-bold'>y = t</span>를 위아래로 드래그해 보세요! 하단 칠판에 교점의 개수 함수 <span class='text-sky-300 font-bold'>g(t)</span>가 그려지며, <span class='text-pink-300 font-bold'>극대·극소에 접하는 순간(t = ±2)에만 불연속</span>이 됨을 확인할 수 있습니다!",
+        tag: "수능 14번·22번 새로운 정의 함수 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `함수 ${tex('f(x) = x^3 - 3x')} 의 그래프와 직선 ${tex('y = t')} 가 만나는 점의 개수를 ${tex('g(t)')}라 하자. 함수 ${tex('g(t)')}가 불연속이 되는 모든 실수 ${tex('t')}의 값과 그때의 함숫값 ${tex('g(t)')}를 구하시오.`,
+        answerBadge: () => `${tex('t = -2, \\; 2')} 에서 불연속 (${tex('g(-2) = g(2) = 2')})`,
+        snap: { p1: 2.0, p2: 0.0, dualView: true },
+        steps: [
+          "Step 1 · f(x)=x³−3x의 도함수와 극점 x=−1,1에서 수평선 경계 높이를 구합니다.",
+          "Step 2 · y=t를 극댓값·극솟값 바깥, 사이, 경계에 놓고 상단 교점을 하단 g(t)에 기록합니다.",
+          "Step 3 · t=±2에서 접점과 나머지 교점을 따로 세어 주변 구간의 계단 높이와 비교합니다."
+        ],
+        textbook: () => ({
+          steps: `① ${tex('f(x) = x^3 - 3x')} 를 미분하여 극댓값 ${tex('f(-1) = 2')}, 극솟값 ${tex('f(1) = -2')} 구하기<br/>
+② ${tex('t<-2')}와 ${tex('t>2')}에서는 교점이 1개, ${tex('-2<t<2')}에서는 3개입니다. ${tex('t=2')}에서는 접점 ${tex('x=-1')}과 다른 교점 1개, ${tex('t=-2')}에서도 접점과 다른 교점 1개라 각각 2개입니다.<br/>
+③ 경계에서 값이 2이고 양쪽에서는 1 또는 3이므로 ${tex('g(t)')}는 ${tex('t=\\pm2')}에서 불연속입니다.`,
+          warning: "⚠️ 교점의 개수 함수나 실근의 개수 함수가 불연속이 되는 순간은 구간별로 식을 다 세울 필요 없이 '접하는 순간'만 찾으면 끝납니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 곡선과 움직이는 직선의 교점의 개수가 갑자기 바뀌는(불연속이 되는) 순간은 무조건 <strong class="text-pink-300">【 직선이 곡선에 접하는 순간 】</strong>!<br/>
+② 수평선 ${tex('y = t')} 가 삼차함수에 접하는 순간은 곧 <strong>극댓값과 극솟값</strong>!<br/>
+③ ${tex('f(x) = x(x^2 - 3)')} 에서 극대·극소는 ${tex('x = \\pm 1')} 이므로 즉시 <strong class="text-amber-300">${tex('t = \\pm 2')} 에서 불연속</strong> (접할 때 교점은 2개)!`,
+          highlight: "💡 『교점의 개수 함수 g(t)가 불연속이 되는 순간 ⇔ 직선과 곡선이 접하는 순간(Tangent) 또는 경계점 통과 순간!』"
+        })
+      },
+
+      5: {
+        badge: "MODE 5 · 사잇값 정리(IVT)를 이용한 실근 존재 구간 레이더",
+        hint: "구간 양 끝점 <span class='text-amber-300 font-bold'>a</span>와 <span class='text-sky-300 font-bold'>b</span>를 드래그해 보세요! <span class='text-pink-300 font-bold'>f(a)와 f(b)의 부호가 반대(f(a)·f(b) &lt; 0)</span>이면 열린구간 (a, b) 안에 반드시 실근 c가 존재합니다!",
+        tag: "수능·내신 사잇값 정리 실근 판정 필수",
+        targetTime: "목표 시간: 5초",
+        question: () => `연속함수 ${tex('f(x) = \\dfrac{1}{2}x^3 - \\dfrac{3}{2}x - \\dfrac{1}{2}')} 에 대하여 방정식 ${tex('f(x) = 0')} 의 실근이 열린구간 ${tex('(1, 2)')} 에 적어도 하나 존재함을 사잇값 정리를 이용하여 보이시오.`,
+        answerBadge: () => `${tex('f(1) = -1.5 < 0, \\; f(2) = 0.5 > 0 \\implies f(1)f(2) < 0')} (존재)`,
+        snap: { p1: 1.0, p2: 2.0, dualView: false },
+        steps: [
+          "Step 1 · 다항함수 f(x)=½x³−3/2x−1/2가 닫힌구간 [1,2]에서 연속임을 확인합니다.",
+          "Step 2 · f(1), f(2)의 정확한 값을 계산해 0이 양 끝값 사이인지 부호선으로 표시합니다.",
+          "Step 3 · 사잇값 정리를 적용해 c∈(1,2)의 존재를 말하고, 해의 개수와 구별합니다."
+        ],
+        textbook: () => ({
+          steps: `① 다항함수 ${tex('f(x)')}는 닫힌구간 ${tex('[1, 2]')}에서 연속이다.<br/>
+② 양 끝점에서의 함숫값을 각각 대입하여 계산:<br/>
+&nbsp;&nbsp;${tex('f(1) = \\dfrac{1}{2} - \\dfrac{3}{2} - \\dfrac{1}{2} = -\\dfrac{3}{2} < 0')}<br/>
+&nbsp;&nbsp;${tex('f(2) = 4 - 3 - \\dfrac{1}{2} = \\dfrac{1}{2} > 0')}<br/>
+③ ${tex('f(1)f(2) < 0')} 이므로 사잇값 정리에 의해 ${tex('f(c) = 0')} 인 ${tex('c')}가 ${tex('(1, 2)')}에 적어도 하나 존재한다.`,
+          warning: "⚠️ 서술형에서도 ① 닫힌구간 [a, b]에서 연속, ② f(a)·f(b) < 0 두 가지 핵심 문장만 정확히 적으면 만점입니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 양 끝값을 대입해 <strong>부호가 반대인지(${tex('f(a)f(b) < 0')})</strong>만 확인하면 끝!<br/>
+② ${tex('f(1) = -1.5 \\; (-)')}, ${tex('f(2) = +0.5 \\; (+)')} 로 부호가 바뀌었으므로 ${tex('x')}축을 최소 한 번 관통!<br/>
+③ 따라서 열린구간 ${tex('(1, 2)')} 안에 무조건 실근 존재 (실제 근 ${tex('c \\approx 1.88')})!`,
+          highlight: "💡 방정식 g(x) = h(x) 의 실근 존재 구간을 물을 때도 무조건 빼서 만든 차함수 【 f(x) = g(x) - h(x) 의 양 끝 부호 변화 】만 확인하세요!"
+        })
+      }
+    };
+
+  /* ---------- 3. 공통 부품 ---------- */
+  // 원본 안내 문구의 위치 표현만 새 화면에 맞춥니다(프리셋은 이제 조절 막대 아래에 있음).
+  const guideOf = (m, extra) => examData[m].hint.replace('좌측 상단 ', '아래 ') + (extra || '');
+  function problemOf(m, snap) {
+    const d = examData[m];
+    return { tag: d.tag, time: d.targetTime, text: d.question, answer: d.answerBadge, snap };
+  }
+  function solutionOf(m) {
+    return {
+      standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분',
+      quickTitle: '10초 컷 · 핵심 비기', quickTag: '10초 컷',
+      standard: examData[m].textbook,
+      quick: examData[m].shortcut
+    };
+  }
+  const sg = (v, d = 1) => (v < 0 ? '-' : '+') + ' ' + asc(Math.abs(v), d); // tex용 부호 있는 수
+  const quiet = (b) => { if (b.thumb) b._text = function () { return this; }; }; // '모든 장면' 썸네일에서는 글자를 빼고 그림만 보여 줍니다
+  function bounce(s, key, speed, lo, hi, dt) {
+    s[key] += speed * s.animDir * dt;
+    if (s[key] < lo) { s[key] = lo; s.animDir = 1; }
+    if (s[key] > hi) { s[key] = hi; s.animDir = -1; }
+  }
+  const playAction = (label) => ({ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : label), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } });
+  const dualAction = { id: 'dual', icon: 'split', label: (s) => (s.dual ? '하단 동기화 뷰 켜짐' : '하단 동기화 뷰 보기'), on: (s) => s.dual, run: (s) => { s.dual = !s.dual; } };
+  // 위·아래 동기화 뷰 (장면 3·4)
+  // topPx: 휴대폰에서 위쪽 수식 칩(약 41px)이 위 창의 윗부분을 가리므로, 위 창의 그림을 그만큼(px) 아래로 내려 위쪽 라벨이 칩 밑에 오게 합니다.
+  const phoneShift = (px) => () => {
+    if (!(window.matchMedia && window.matchMedia('(max-width: 859px)').matches)) return 0;
+    const bd = window.lab && window.lab.board;
+    return px / ((bd && bd.k) || 28);
+  };
+  const panesOf = (frac, fy, dy, shift) => (s) => {
+    if (!s.dual) return null;
+    const sh = shift ? shift() : 0;
+    return [{ id: 'main', frac, focusY: sh ? [fy[0] + sh, fy[1] + sh] : fy }, { id: 'deriv', frac: 1 - frac, focusY: dy }];
+  };
+  function inPane(b, id, fn) {
+    b.use(id);
+    b.ctx.save();
+    if (b.panes) b.clip();
+    fn();
+    b.ctx.restore();
+  }
+  function lowerPane(b, s, title, axes, curves, marks) {
+    if (!s.dual) return;
+    b.use('deriv');
+    const r = b.paneRect('deriv');
+    const c = b.ctx;
+    c.save();
+    c.fillStyle = b.color('halo', 0.35);
+    c.fillRect(r.x, r.y, r.w, r.h);
+    c.restore();
+    c.save();
+    b.clip();
+    if (s.grid) b.grid();
+    b.axes(axes);
+    curves();
+    c.restore();
+    c.save();
+    c.strokeStyle = b.color('sky', 0.55);
+    c.lineWidth = 1.5;
+    c.beginPath();
+    c.moveTo(r.x, r.y + 0.5);
+    c.lineTo(r.x + r.w, r.y + 0.5);
+    c.stroke();
+    c.restore();
+    b.stext(r.x + 14, r.y + 20, title, { color: 'sky', size: 12.5, align: 'left', weight: 800 });
+    marks();
+    b.use('main'); // 끌기 계산은 마지막으로 쓴 창을 기준으로 하므로 첫 창으로 되돌립니다
+  }
+
+  /* ---------- 4. 장면 정의 ---------- */
+  const scenes = [
+    /* ===== MODE 1 · 좌극한·우극한·함숫값과 연속 ===== */
+    {
+      id: 'continuity', title: '좌·우극한 & 연속 판정', short: '좌·우극한',
+      question: 'x → 1 일 때 왼쪽 극한, 오른쪽 극한, 함숫값 f(1) 세 높이가 모두 같으면 그래프는 어떻게 보일까?',
+      guide: guideOf(1, ' 그림의 <b>하늘색 점</b>(단차)도 직접 끌 수 있습니다.'),
+      controls: ['gap', 'k', 'd'],
+      presets: [
+        { label: '① 연속 (좌=우=함숫값)', color: 'green', set: { gap: 0, k: 2 }, on: (s) => Math.abs(s.gap) <= 0.03 && Math.abs(s.k - 2) <= 0.03 },
+        { label: '② 구멍 불연속 (극한 존재 · 함숫값 불일치)', color: 'amber', set: { gap: 0, k: 0.5 }, on: (s) => Math.abs(s.gap) <= 0.03 && Math.abs(s.k - 2) > 0.03 },
+        { label: '③ 점프 불연속 (좌극한 ≠ 우극한)', color: 'red', set: { gap: -1.5, k: 0.5 }, on: (s) => Math.abs(s.gap) > 0.03 }
+      ],
+      actions: [playAction('자동 실험 (탐침 접근)')],
+      steps: examData[1].steps,
+      problem: problemOf(1, () => ({ gap: examData[1].snap.p1, k: examData[1].snap.p2 })),
+      solution: solutionOf(1),
+      enter: (s) => { s.gap = examData[1].snap.p1; s.k = examData[1].snap.p2; s.dual = false; },
+      focus: { x: [-1.2, 3.2], y: [-2.3, 4.7] },
+      tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'd', 0.72, 0.08, 0.95, dt); return true; },
+      view: (s) => {
+        const gap = s.gap, f1 = s.k;
+        const jump = Math.abs(gap) > 0.03, hole = !jump && Math.abs(f1 - 2.0) > 0.03;
+        const banner = jump ? `좌극한(2.0) ≠ 우극한(${fmt(2 + gap, 1)}) : 극한값이 존재하지 않으므로 점프 불연속!`
+          : hole ? `극한값(2.0)은 존재하지만 함숫값 f(1)=${fmt(f1, 1)} 과 달라 구멍 불연속!`
+          : '좌극한(2.0) = 우극한(2.0) = 함숫값 f(1)(2.0) 모두 일치하므로 연속!';
+        return {
+          chips: [
+            { k: '함수식', tex: `x<1: -0.5x^2+2.5 \\; | \\; x>1: x+1 ${sg(gap)}`, color: 'ink' },
+            { k: '극한/연속', tex: `L_{-} = 2, \\; L_{+} = ${asc(2 + gap)}, \\; f(1) = ${asc(f1)}`, color: 'sky' }
+          ],
+          status: jump ? { tone: 'bad', text: '점프 불연속 (극한 없음)' } : hole ? { tone: 'warn', text: '구멍 불연속 (극한은 존재)' } : { tone: 'ok', text: '연속 (좌극한 = 우극한 = 함숫값)' },
+          alert: jump ? { tone: 'bad', text: `좌극한(2.0)과 우극한(${fmt(2 + gap, 1)})이 달라 극한값이 존재하지 않으므로 불연속입니다!` }
+            : hole ? { tone: 'warn', text: `극한값(2.0)은 존재하지만 함숫값 f(1)=${fmt(f1, 1)} 과 달라 불연속입니다!` } : null,
+          readouts: [
+            { label: '좌극한 lim(x→1−) f(x)', value: `L₋ = ${fmt(2)}`, color: 'amber', ref: 'left' },
+            { label: '우극한 lim(x→1+) f(x)', value: `L₊ = ${fmt(2 + gap)}`, color: 'sky', ref: 'right' },
+            { label: '함숫값 f(1)', value: `f(1) = ${fmt(f1)}`, color: 'rose', ref: 'f1' },
+            { label: '최종 연속성 판정', value: jump ? '불연속 (극한 없음)' : hole ? '불연속 (함숫값 다름)' : '연속 완성', color: jump ? 'red' : hole ? 'amber' : 'green' }
+          ],
+          tape: s.step >= 3 ? { title: banner } : null
+        };
+      },
+      draw: (b, s) => {
+        quiet(b);
+        const gap = s.gap, f1 = s.k;
+        inPane(b, 'main', () => {
+          if (s.grid) b.grid();
+          b.axes();
+          // 좌측 곡선 x<1 과 우측 직선 x>1
+          b.plot(fLeft1, { to: 1, color: 'ink', width: 3.2, glow: true, ref: 'left' });
+          b.plot(fRight1(gap), { from: 1, color: 'sky', width: 3.2, glow: true, ref: 'right' });
+          // Step 2 : y축으로의 좌·우극한 투영선
+          if (s.step >= 2) {
+            b.seg([0, 2.0], [1, 2.0], { color: 'amber', alpha: 0.7, width: 1.6, dash: true, ref: 'left' });
+            b.seg([0, 2.0 + gap], [1, 2.0 + gap], { color: 'sky', alpha: 0.7, width: 1.6, dash: true, ref: 'right' });
+          }
+          // Step 1 : 양방향 수렴 탐침 (1 − d, 1 + d)
+          if (s.step >= 1) {
+            const xL = 1.0 - s.d, yL = fLeft1(xL), xR = 1.0 + s.d, yR = xR + 1.0 + gap;
+            b.seg([xL, 0], [xL, yL], { color: 'amber', alpha: 0.6, width: 1.6, dash: true });
+            b.seg([xR, 0], [xR, yR], { color: 'sky', alpha: 0.6, width: 1.6, dash: true });
+            b.point([xL, yL], { color: 'amber', r: 5, label: `x→1− (${fmt(yL)})`, dx: -10, dy: -12, align: 'right' });
+            b.point([xR, yR], { color: 'sky', r: 5, label: `x→1+ (${fmt(yR)})`, dx: 10, dy: -12 });
+          }
+        });
+        // 좌극한·우극한(빈 동그라미)과 함숫값(채운 점)
+        b.point([1, 2.0], { hollow: true, color: 'amber', r: 6.5, label: `좌극한 ${fmt(2, 1)}`, dx: -12, dy: 18, align: 'right', ref: 'left' });
+        b.point([1, 2.0 + gap], { hollow: true, color: 'sky', r: 6.5, label: `우극한 ${fmt(2 + gap, 1)}`, dx: 12, dy: 18, ref: 'right' });
+        b.handle('f1', [1, f1], { color: 'rose', r: 7.5, priority: 1, ref: 'f1', label: `f(1)=${fmt(f1)}`, dx: 0, dy: 38, align: 'center',
+          drag: (w) => { let y = w.y; if (Math.abs(y - 2.0) < 0.08) y = 2.0; s.k = clamp(+y.toFixed(2), -2.0, 3.0); } });
+        // 우측 직선 위의 손잡이: 위아래로 끌면 단차 Δh 가 바뀝니다 (0 근처에서 자석처럼 붙음)
+        b.handle('gap', [2.3, 2.3 + 1.0 + gap], { color: 'sky', ref: 'right', label: 'Δh 조절', dx: 12, dy: -14,
+          drag: (w) => { let v = w.y - 3.3; if (Math.abs(v) < 0.1) v = 0; s.gap = clamp(+v.toFixed(2), -1.8, 2.4); } });
+      }
+    },
+
+    /* ===== MODE 2 · 0/0 부정형 = 접선 기울기의 비 ===== */
+    {
+      id: 'zero-zero', title: '0/0 부정형 & 기울기비', short: '0/0 부정형',
+      question: '분모와 분자가 동시에 0으로 갈 때, 함숫값의 비 f(x)/g(x)는 무엇에 가까워질까?',
+      guide: guideOf(2),
+      controls: ['px'],
+      actions: [playAction('탐침 이동 애니메이션')],
+      steps: examData[2].steps,
+      problem: problemOf(2, () => ({ px: examData[2].snap.p1 })),
+      solution: solutionOf(2),
+      enter: (s) => { s.px = examData[2].snap.p1; s.dual = false; },
+      focus: { x: [-0.8, 2.8], y: [-3.5, 5.5] },
+      tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'px', 1.2, 0.0, 2.0, dt); return true; },
+      view: (s) => {
+        const xp = nearOne(s.px), ratio = xp + 3.0;
+        return {
+          chips: [
+            { k: '함수식', tex: 'f(x) = x^2 + 2x - 3, \\; g(x) = x - 1', color: 'ink' },
+            { k: '극한', tex: "\\lim_{x\\to 1} \\dfrac{f(x)}{g(x)} = \\dfrac{f'(1)}{g'(1)} = 4", color: 'sky' }
+          ],
+          status: Math.abs(xp - 1) <= 0.1 ? { tone: 'ok', text: `x ≈ 1 : 비율 ${fmt(ratio)} ≈ 4 (기울기의 비)` } : { tone: 'info', text: `비율 f(x)/g(x) = ${fmt(ratio)}` },
+          readouts: [
+            { label: '탐침점 x', value: `x = ${fmt(xp)}`, color: 'amber', ref: 'f' },
+            { label: '비율 f(x)/g(x)', value: fmt(ratio), color: 'sky', ref: 'g' },
+            { label: "접선 기울기 f′(1) | g′(1)", value: '4.0 | 1.0', color: 'rose', ref: 'tan' },
+            { label: '극한값', value: '4.00', color: 'green' }
+          ],
+          tape: s.step >= 3 ? { title: `0/0 부정형: f(${fmt(xp)})/g(${fmt(xp)}) = ${fmt(ratio)}  →  x→1 일 때 기울기 비 f′(1)/g′(1) = 4.00 수렴!`,
+            segments: [{ text: "f′(1) = 4", weight: 4, color: 'rose' }, { text: "g′(1) = 1", weight: 1, color: 'sky' }] } : null
+        };
+      },
+      draw: (b, s) => {
+        quiet(b);
+        const xp = nearOne(s.px), yf = fnF2(xp), yg = fnG2(xp), side = xp >= 1 ? 1 : -1;
+        inPane(b, 'main', () => {
+          if (s.grid) b.grid();
+          b.axes();
+          b.plot(fnF2, { color: 'ink', width: 3, glow: true, ref: 'f' });
+          b.line([1, 0], 1, { color: 'sky', width: 2.8, glow: true, ref: 'g' });
+          // Step 2 : x = 1 에서의 접선 y = 4(x − 1)
+          if (s.step >= 2) b.line([1, 0], 4, { extent: 1.5, color: 'rose', width: 2.3, dash: true, glow: true, ref: 'tan' });
+          // Step 1 : 탐침점에서 f(x) 와 g(x) 높이 비교
+          if (s.step >= 1) b.seg([xp, 0], [xp, yf], { color: 'amber', width: 2.4, ref: 'f' });
+        });
+        b.point([1, 0], { hollow: true, color: 'rose', r: 7, label: '공통영점 (1, 0)', dx: -12 * side, dy: -14, align: side > 0 ? 'right' : 'left', ref: 'tan' });
+        if (s.step >= 1) b.point([xp, yg], { color: 'sky', r: 6, ref: 'g', label: `g(${fmt(xp)})=${fmt(yg)}`, dx: 10 * side, dy: side > 0 ? 18 : -12, align: side > 0 ? 'left' : 'right' });
+        b.handle('px', [xp, yf], { color: 'amber', r: 7, ref: 'f', label: `f(${fmt(xp)})=${fmt(yf)}`, dx: 10 * side, dy: side > 0 ? -12 : 18, align: side > 0 ? 'left' : 'right',
+          drag: (w) => { s.px = clamp(+w.x.toFixed(2), 0.0, 2.0); } });
+      }
+    },
+
+    /* ===== MODE 3 · 불연속 f(x) × 연속 g(x) = 영점 힐링 ===== */
+    {
+      id: 'product', title: '곱함수 f(x)g(x) 연속', short: '곱함수 연속',
+      question: '끊어진 함수 f(x)에 일차함수 g(x)를 곱하면 x = 1 에서 이어질 수 있을까? 그러려면 g는 무엇이 되어야 할까?',
+      guide: guideOf(3),
+      controls: ['r'],
+      actions: [dualAction, playAction('영점 r 이동 애니메이션')],
+      steps: examData[3].steps,
+      problem: problemOf(3, () => ({ r: examData[3].snap.p1, dual: examData[3].snap.dualView })),
+      solution: solutionOf(3),
+      enter: (s) => { s.r = examData[3].snap.p1; s.dual = examData[3].snap.dualView; },
+      focus: { x: [-1.8, 3.4], y: [-1.0, 3.3] },
+      panes: panesOf(0.44, [-1.0, 3.3], [-2.7, 2.7]),
+      tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'r', 1.2, 0.0, 2.2, dt); return true; },
+      view: (s) => {
+        const r = s.r, healed = Math.abs(r - 1.0) < 0.04, hl = 2.0 * (1.0 - r);
+        return {
+          chips: [
+            { k: '곱함수', tex: `h(x) = f(x) \\cdot (x ${sg(-r, 2)})`, color: 'ink' },
+            { k: 'g(1)', tex: `g(1) = ${asc(1 - r, 2)} ${healed ? '= 0 \\; (\\text{연속!})' : '\\ne 0 \\; (\\text{불연속})'}`, color: healed ? 'green' : 'rose' }
+          ],
+          status: healed ? { tone: 'ok', text: 'g(1) = 0 영점 힐링 성공 (곱함수 연속)' } : { tone: 'bad', text: 'g(1) ≠ 0 (곱함수 x=1 에서 불연속)' },
+          alert: healed ? null : { tone: 'bad', text: `연속함수 g(x)의 근 r=${fmt(r)} 이 불연속점 x=1 과 일치하지 않아 곱함수 f(x)g(x)가 불연속입니다!` },
+          readouts: [
+            { label: 'h(1−) 좌극한', value: fmt(hl), color: 'rose', ref: 'h' },
+            { label: 'h(1+) 우극한', value: fmt(0), color: 'sky', ref: 'h' },
+            { label: 'g(x)의 영점 r', value: fmt(r), color: 'amber', ref: 'g' },
+            { label: '판정', value: healed ? '실수 전체 연속' : 'x=1 불연속', color: healed ? 'green' : 'red' }
+          ],
+          tape: s.step >= 3 ? { title: healed ? 'g(1) = 0 영점 힐링 달성! 불연속점 x = 1 에서 곱함수 f(x)g(x)가 연속이 되었습니다!'
+            : `g(1) = ${fmt(1 - r)} ≠ 0 : 불연속점 x = 1 에서 곱함수 f(x)g(x)가 끊어져 있습니다!` } : null
+        };
+      },
+      draw: (b, s) => {
+        quiet(b);
+        const r = s.r, healed = Math.abs(r - 1.0) < 0.04, hl = 2.0 * (1.0 - r);
+        inPane(b, 'main', () => {
+          if (s.grid) b.grid();
+          b.axes();
+          b.vline(1, { color: 'red', alpha: 0.55, width: 1.6, dash: true });
+          // 불연속 함수 f(x) : x<1 일 때 x+1, x≥1 일 때 x−1
+          b.plot((x) => x + 1.0, { to: 1, color: 'ink', width: 3, glow: true, ref: 'f' });
+          b.plot((x) => x - 1.0, { from: 1, color: 'ink', width: 3, glow: true, ref: 'f' });
+          // 연속 일차함수 g(x) = x − r
+          b.line([r, 0], 1, { color: 'sky', width: 2.6, glow: true, ref: 'g' });
+        });
+        b.point([1, 2], { hollow: true, color: 'ink', r: 6, label: 'f(1−)=2', dx: -10, dy: -10, align: 'right', ref: 'f' });
+        b.point([1, 0], { color: 'ink', r: 6, label: 'f(1+)=0', dx: 10, dy: 18, ref: 'f' });
+        b.handle('r', [r, 0], { color: 'amber', ref: 'g', label: `g(x) 영점 r=${fmt(r)}`, dx: -12, dy: -14, align: 'right',
+          drag: (w) => { let v = w.x; if (Math.abs(v - 1.0) < 0.08) v = 1.0; s.r = clamp(+v.toFixed(2), 0.0, 2.2); } });
+        lowerPane(b, s, '▼ 곱함수 h(x) = f(x) · g(x)', {},
+          () => {
+            b.vline(1, { color: 'red', alpha: 0.55, width: 1.6, dash: true });
+            b.plot(hLeft3(r), { to: 1, color: healed ? 'green' : 'rose', width: 3, glow: true, ref: 'h' });
+            b.plot(hRight3(r), { from: 1, color: healed ? 'green' : 'sky', width: 3, glow: true, ref: 'h' });
+          },
+          () => {
+            if (healed) b.point([1, 0], { color: 'green', r: 7.5, label: '영점 힐링 성공! h(1)=0 연속 완성!', dx: 14, dy: -14, ref: 'h' });
+            else {
+              b.point([1, hl], { hollow: true, color: 'rose', r: 6, label: `좌극한=${fmt(hl)}`, dx: -10, dy: -10, align: 'right', ref: 'h' });
+              b.point([1, 0], { color: 'sky', r: 6, label: '우극한=0.00 (끊어짐!)', dx: 12, dy: 18, ref: 'h' });
+            }
+          });
+      }
+    },
+
+    /* ===== MODE 4 · 교점 개수 함수 g(t) ===== */
+    {
+      id: 'count', title: '교점 개수 함수 g(t)', short: '교점 개수 g(t)',
+      question: '수평선 y = t 를 위아래로 움직이면 교점의 개수는 언제, 왜 달라질까?',
+      guide: guideOf(4, ' 하단 그래프의 <b>노란 점</b>을 좌우로 끌어도 t가 바뀝니다.'),
+      controls: ['t'],
+      actions: [dualAction, playAction('수평선 스캔 애니메이션')],
+      steps: examData[4].steps,
+      problem: problemOf(4, () => ({ t: examData[4].snap.p1, dual: examData[4].snap.dualView })),
+      solution: solutionOf(4),
+      enter: (s) => { s.t = examData[4].snap.p1; s.dual = examData[4].snap.dualView; },
+      focus: { x: [-3.0, 3.0], y: [-3.3, 3.3] },
+      panes: panesOf(0.55, [-3.3, 3.3], [-1.3, 4.3], phoneShift(22)),
+      tick: (s, dt) => { if (!s.playing) return false; bounce(s, 't', 1.5, -2.6, 2.6, dt); return true; },
+      view: (s) => {
+        const t = s.t, cnt = count4(t);
+        return {
+          chips: [
+            { k: '함수식', tex: `f(x) = x^3 - 3x, \\; y = t \\; (${asc(t, 2)})`, color: 'ink' },
+            { k: '교점 개수', tex: `g(${asc(t, 2)}) = ${cnt}\\text{개}`, color: 'amber' }
+          ],
+          status: cnt === 2 ? { tone: 'key', text: '접하는 순간 (g(t) 불연속점!)' } : { tone: 'info', text: `교점 개수 스캔 중 · ${cnt}개` },
+          readouts: [
+            { label: '수평선 높이 t', value: `t = ${fmt(t)}`, color: 'amber', ref: 't' },
+            { label: '교점 개수 g(t)', value: `${cnt}개`, color: 'green', ref: 't' },
+            { label: '불연속 기준', value: 't = −2, 2', color: 'rose' },
+            { label: '판정', value: cnt === 2 ? '불연속 지점(접함)' : '연속 구간', color: cnt === 2 ? 'red' : 'sky' }
+          ],
+          tape: s.step >= 3 ? { title: '교점 개수 함수 g(t) : 직선 y = t 가 극대(t=2) · 극소(t=−2)에 접하는 순간에만 불연속!' } : null
+        };
+      },
+      draw: (b, s) => {
+        quiet(b);
+        const t = s.t, cnt = count4(t);
+        inPane(b, 'main', () => {
+          if (s.grid) b.grid();
+          b.axes();
+          b.plot(fn4, { color: 'ink', width: 3, glow: true, ref: 'f' });
+          b.hline(t, { color: 'amber', width: 2.6, glow: true, ref: 't' });
+        });
+        roots4(t).forEach((x) => b.point([x, t], { color: 'rose', r: 4.5, ref: 't' }));
+        b.point([-1.0, 2.0], { color: 'rose', r: 5.5, label: '극대(−1, 2)', dx: -10, dy: -10, align: 'right' });
+        b.point([1.0, -2.0], { color: 'sky', r: 5.5, label: '극소(1, −2)', dx: -10, dy: 16, align: 'right' });
+        b.handle('t', [2.35, t], { color: 'amber', ref: 't', label: `t = ${fmt(t)}`, dx: 14, dy: -14,
+          drag: (w) => { let v = w.y; if (Math.abs(v - 2.0) < 0.08) v = 2.0; if (Math.abs(v + 2.0) < 0.08) v = -2.0; s.t = clamp(+v.toFixed(2), -2.6, 2.6); } });
+        lowerPane(b, s, '▼ 교점 개수 함수 g(t) (가로축 = t)', { xLabel: 't', yLabel: 'g(t)' },
+          () => {
+            const vb = b.viewBox();
+            // t < −2 : 1개, −2 < t < 2 : 3개, t > 2 : 1개 (t = ±2 에서는 2개)
+            b.seg([vb.x0 - 1, 1.0], [-2.0, 1.0], { color: 'sky', width: 3, glow: true });
+            b.seg([-2.0, 3.0], [2.0, 3.0], { color: 'green', width: 3, glow: true });
+            b.seg([2.0, 1.0], [vb.x1 + 1, 1.0], { color: 'sky', width: 3, glow: true });
+          },
+          () => {
+            [-2.0, 2.0].forEach((x) => {
+              b.point([x, 1.0], { hollow: true, color: 'sky', r: 5.5 });
+              b.point([x, 3.0], { hollow: true, color: 'green', r: 5.5 });
+              b.point([x, 2.0], { color: 'red', r: 6, label: `불연속 t=${x < 0 ? '−2' : '2'} (g=2)`, dx: x < 0 ? -12 : 12, dy: -12, align: x < 0 ? 'right' : 'left' });
+            });
+            // 현재 t 위치 마커 (좌우로 끌 수 있음)
+            // t = ±2 (cnt 2)에서는 손잡이가 '불연속 t=±2 (g=2)' 점과 같은 자리이므로, 그 라벨의 반대쪽으로 g(t) 라벨을 둡니다.
+            const atJump = cnt === 2;
+            b.handle('tm', [t, cnt], { color: 'amber', ref: 't', label: `g(t)=${cnt}`, dx: atJump ? (t > 0 ? -12 : 12) : 0, dy: atJump ? -12 : cnt === 1 ? 20 : -18, align: atJump ? (t > 0 ? 'right' : 'left') : 'center',
+              drag: (w) => { let v = w.x; if (Math.abs(v - 2.0) < 0.08) v = 2.0; if (Math.abs(v + 2.0) < 0.08) v = -2.0; s.t = clamp(+v.toFixed(2), -2.6, 2.6); } });
+          });
+      }
+    },
+
+    /* ===== MODE 5 · 사잇값 정리 ===== */
+    {
+      id: 'ivt', title: '사잇값 정리(IVT)', short: '사잇값 정리',
+      question: '구간 양 끝값 f(a), f(b)의 부호가 서로 반대이면, 그 사이에서 그래프는 x축을 반드시 지날까?',
+      guide: guideOf(5),
+      controls: ['a', 'b'],
+      actions: [playAction('구간 이동 애니메이션')],
+      steps: examData[5].steps,
+      problem: problemOf(5, () => ({ a: examData[5].snap.p1, b: examData[5].snap.p2 })),
+      solution: solutionOf(5),
+      enter: (s) => { s.a = examData[5].snap.p1; s.b = examData[5].snap.p2; s.dual = false; },
+      focus: { x: [-2.0, 2.9], y: [-2.2, 2.4] },
+      tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'a', 1.2, -0.5, 2.2, dt); return true; },
+      view: (s) => {
+        const fa = fn5(s.a), fb = fn5(s.b), prod = fa * fb;
+        return {
+          chips: [
+            { k: '함수식', tex: 'f(x) = \\dfrac{1}{2}x^3 - \\dfrac{3}{2}x - \\dfrac{1}{2}', color: 'ink' },
+            { k: '부호', tex: `f(a)f(b) = ${asc(prod, 2)}`, color: prod < 0 ? 'green' : 'rose' }
+          ],
+          status: prod < 0 ? { tone: 'ok', text: 'f(a)f(b) < 0 (실근 존재 확정)' } : { tone: 'warn', text: '양 끝 부호 동일 · 판정 불가' },
+          readouts: [
+            { label: `f(a)  (a = ${fmt(s.a, 1)})`, value: fmt(fa), color: 'amber', ref: 'A' },
+            { label: `f(b)  (b = ${fmt(s.b, 1)})`, value: fmt(fb), color: 'violet', ref: 'B' },
+            { label: '곱 f(a)·f(b)', value: fmt(prod), color: prod < 0 ? 'green' : 'rose', ref: 'box' },
+            { label: '판정', value: prod < 0 ? '실근 존재' : '판정 불가', color: prod < 0 ? 'green' : 'muted' }
+          ],
+          tape: s.step >= 3 ? { title: `f(a)·f(b) = ${fmt(prod)} ${prod < 0 ? '< 0  ⇒  사잇값 정리에 의해 구간 내 실근 반드시 존재!' : '≥ 0  ⇒  양 끝 부호가 같아 판정 불가'}` } : null
+        };
+      },
+      draw: (b, s) => {
+        quiet(b);
+        const a = s.a, bb = s.b, fa = fn5(a), fb = fn5(bb);
+        const lo = Math.min(a, bb), hi = Math.max(a, bb), hasRoot = fa * fb < 0;
+        inPane(b, 'main', () => {
+          if (s.grid) b.grid();
+          b.axes();
+          // Step 1 : 구간 [a, b] 레이더 박스와 양 끝 높이(부호색)
+          if (s.step >= 1) {
+            const vb = b.viewBox();
+            b.poly([[lo, vb.y0], [hi, vb.y0], [hi, vb.y1], [lo, vb.y1]], { fill: hasRoot ? 'green' : 'red', fillAlpha: hasRoot ? 0.14 : 0.12, color: null, ref: 'box' });
+            b.seg([a, 0], [a, fa], { color: fa >= 0 ? 'rose' : 'sky', width: 3, ref: 'A' });
+            b.seg([bb, 0], [bb, fb], { color: fb >= 0 ? 'rose' : 'sky', width: 3, ref: 'B' });
+          }
+          b.plot(fn5, { color: 'ink', width: 3, glow: true });
+        });
+        // Step 2 : 실제 근 x ≈ 1.879
+        if (s.step >= 2 && lo < ROOT5 && hi > ROOT5) b.point([ROOT5, 0], { color: 'green', r: 7, label: '실근 포착 c ≈ 1.88', dx: 10, dy: 20 });
+        const aLeft = a <= bb; // 왼쪽 점의 라벨은 왼쪽으로, 오른쪽 점의 라벨은 오른쪽으로 (겹침 방지)
+        b.handle('ha', [a, fa], { color: 'amber', r: 7, ref: 'A', label: `A(${fmt(a)}, f=${fmt(fa)})`, dx: aLeft ? -12 : 12, dy: fa >= 0 ? -12 : 20, align: aLeft ? 'right' : 'left',
+          drag: (w) => { s.a = clamp(+w.x.toFixed(2), -1.6, 2.2); } });
+        b.handle('hb', [bb, fb], { color: 'violet', r: 7, ref: 'B', label: `B(${fmt(bb)}, f=${fmt(fb)})`, dx: aLeft ? 12 : -12, dy: fb >= 0 ? -12 : 20, align: aLeft ? 'left' : 'right',
+          drag: (w) => { s.b = clamp(+w.x.toFixed(2), -1.6, 2.2); } });
+      }
+    }
+  ];
+
+  /* ---------- 5. 실험실 등록 ---------- */
+  APLab.createLab({
+    id: 'calc1-limits',
+    title: '함수의 극한 · 연속',
+    courseName: '미적분Ⅰ',
+    unit: '함수의 극한과 연속',
+    courseColor: 'var(--m-orange)',
+    home: '../index.html#calc1',
+    legacy: '../../labs/미적분1/함수의 극한·연속.html',
+    board: { kind: 'cartesian', focus: { x: [-1.2, 3.2], y: [-2.3, 4.7] }, pad: 0.04 },
+    params: {
+      gap: { value: 0, min: -2.0, max: 2.5, step: 0.05, color: 'sky', label: '우측 단차 Δh (우극한 = 2 + Δh)', hint: 'Δh = 0 이면 좌극한과 우극한이 같아집니다', format: (v) => `Δh = ${fmt(v)}` },
+      k: { value: 2, min: -2.0, max: 3.0, step: 0.05, color: 'rose', label: '함숫값 f(1) = k', hint: 'k = 2 이면 극한값과 함숫값이 같아집니다', format: (v) => `f(1) = ${fmt(v)}` },
+      d: { value: 0.65, min: 0.08, max: 0.95, step: 0.01, color: 'amber', label: '탐침 거리 d (x = 1 ± d)', hint: 'd를 줄이면 x → 1 로 접근합니다', format: (v) => `d = ${fmt(v)}` },
+      px: { value: 1.8, min: 0.0, max: 2.0, step: 0.05, color: 'amber', label: '탐침점 x', hint: 'x = 1 에 가까이 보내 보세요 (x = 1 은 0/0 이라 피합니다)', format: (v) => `x = ${fmt(nearOne(v))}` },
+      r: { value: 1, min: 0.0, max: 2.2, step: 0.05, color: 'sky', label: 'g(x) = x − r 의 영점 r', hint: 'r = 1 이면 불연속점 x = 1 에서 g(1) = 0', format: (v) => `r = ${fmt(v)}` },
+      t: { value: 2, min: -2.6, max: 2.6, step: 0.1, color: 'amber', label: '수평선 높이 t', hint: 't = ±2 에서 직선이 곡선에 접합니다', format: (v) => `t = ${fmt(v)}` },
+      a: { value: 1, min: -1.6, max: 2.2, step: 0.05, color: 'amber', label: '구간의 한 끝 a', hint: 'f(a)·f(b) < 0 이면 사이에 실근이 있습니다', format: (v) => `a = ${fmt(v)}` },
+      b: { value: 2, min: -1.6, max: 2.2, step: 0.05, color: 'violet', label: '구간의 다른 끝 b', format: (v) => `b = ${fmt(v)}` }
+    },
+    state: { dual: false, animDir: -1 },
+    persist: ['dual'],
+    scenes
+  });
+});
+</script>
+</body>
+</html>

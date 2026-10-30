@@ -276,4 +276,112 @@ class LayoutTests(unittest.TestCase):
         plain=layout([{**eq,'lineOwned':False}],[own,near,left],Box(0,0,400,400))
         self.assertEqual(plain['leaders'],[])
 
+class AngleLabelOutsideTests(unittest.TestCase):
+    """E12: an angle label that finds no room inside its angle goes outside it on a leader that starts ON its own arc and never crosses a line."""
+    V=(300.0,300.0)
+    def narrow_item(self,delta_deg=20.0,**extra):
+        v=self.V;start=-math.radians(90+delta_deg/2);delta=math.radians(delta_deg)   # a wedge opening upward (screen y runs down)
+        bis=start+delta/2;arc=28.0
+        at=[v[0]+arc*math.cos(bis),v[1]+arc*math.sin(bis)]
+        ws={'vertex':list(v),'bisector':bis,'start':start,'delta':delta,'rMin':arc+4,'rMax':arc+44,'rFar':250,'arcRadius':arc,**extra}
+        item=label('a-label',at,'20',kind='EQUATION_LABEL',priority=0,target='a',wedgeSearch=ws,gaps=(24,32,48,64),leaderOwned=['arc1'])
+        rays=[{'id':'ray1','kind':'line','geometry':[list(v),[v[0]+300*math.cos(start),v[1]+300*math.sin(start)]]},
+              {'id':'ray2','kind':'line','geometry':[list(v),[v[0]+300*math.cos(start+delta),v[1]+300*math.sin(start+delta)]]}]
+        arc1={'id':'arc1','kind':'curve','geometry':[[v[0]+arc*math.cos(start+delta*i/16),v[1]+arc*math.sin(start+delta*i/16)] for i in range(17)]}
+        return item,rays,arc1,start,delta,arc
+    def splitter(self):
+        return {'id':'split','kind':'line','geometry':[list(self.V),[self.V[0],self.V[1]-300]]}   # a dashed line splitting the wedge along its bisector
+    def test_a_crowded_narrow_angle_takes_a_leader_from_the_end_of_its_arc(self):
+        item,rays,arc1,start,delta,arc=self.narrow_item()
+        r=layout([item],[*rays,arc1,self.splitter()],Box(0,0,720,600),measurements={'a-label':(40,20)})
+        self.assertEqual(r['unresolved'],[],r)
+        placed=r['labels'][0];self.assertTrue(placed['placement'].startswith('OWNER_LEADER_'),placed['placement'])
+        leader=r['leaders'][0];self.assertEqual(leader['ownerLabelId'],'a-label')
+        a=leader['from'];self.assertAlmostEqual(math.dist(a,self.V),arc,places=6)             # on the arc's radius ...
+        theta=math.atan2(a[1]-self.V[1],a[0]-self.V[0])
+        self.assertTrue(min(abs((theta-start+math.pi)%(2*math.pi)-math.pi),abs((theta-start-delta+math.pi)%(2*math.pi)-math.pi))<1e-6)   # ... at an end of the arc
+    def test_the_leader_never_crosses_a_drawn_line(self):
+        item,rays,arc1,*_=self.narrow_item()
+        obstacles=[*rays,arc1,self.splitter()];r=layout([item],obstacles,Box(0,0,720,600),measurements={'a-label':(40,20)})
+        a,b=r['leaders'][0]['from'],r['leaders'][0]['to']
+        for o in obstacles:
+            if o['id']=='arc1':continue
+            for c,d in zip(o['geometry'],o['geometry'][1:]):
+                u=(b[0]-a[0],b[1]-a[1]);w=(d[0]-c[0],d[1]-c[1]);det=u[0]*w[1]-u[1]*w[0]
+                if abs(det)<1e-9:continue
+                t=((c[0]-a[0])*w[1]-(c[1]-a[1])*w[0])/det;s=((c[0]-a[0])*u[1]-(c[1]-a[1])*u[0])/det
+                self.assertFalse(1e-6<t<1-1e-6 and 1e-6<s<1-1e-6,(o['id'],t,s))
+    def test_a_label_never_stands_inside_another_angles_sector(self):
+        item,rays,arc1,start,delta,arc=self.narrow_item(delta_deg=60.0)
+        wide=[list(self.V),start-math.radians(30),delta+math.radians(60),70.0]   # a wider angle at the same vertex whose sector reaches 70 px
+        item['wedgeSearch']['others']=[wide]
+        r=layout([item],[*rays,arc1],Box(0,0,720,600),measurements={'a-label':(40,20)})
+        self.assertEqual(r['unresolved'],[])
+        box=Box(**r['labels'][0]['box']);self.assertFalse(box_in_other_sectors(box,[wide]))
+    def test_a_far_label_takes_a_leader_when_the_engine_asks_for_one(self):
+        # a 20 degree wedge needs the label far inside it (the existing behaviour); with farDistance the label is tied to the arc instead
+        item,rays,arc1,*_=self.narrow_item()
+        far=layout([item],[*rays,arc1],Box(0,0,720,600),measurements={'a-label':(40,20)})
+        self.assertIn(far['labels'][0]['placement'],('ANGLE_WEDGE_INSIDE','ANGLE_WEDGE_INSIDE_FAR'))
+        self.assertGreater(box_point_distance(Box(**far['labels'][0]['box']),self.V),90)
+        item2,*_=self.narrow_item(farDistance=90.0)
+        near=layout([item2],[*rays,arc1],Box(0,0,720,600),measurements={'a-label':(40,20)})
+        self.assertTrue(near['labels'][0]['placement'].startswith('OWNER_LEADER_'),near['labels'][0]['placement'])
+        self.assertLessEqual(box_point_distance(Box(**near['labels'][0]['box']),self.V),90)
+    def test_the_far_label_is_kept_as_the_last_resort(self):
+        item,rays,arc1,*_=self.narrow_item(farDistance=90.0)
+        # a wall of lines around the vertex leaves no leader anywhere: the far label is still placed inside the angle (the observer reports ANGLE_LABEL_TOO_FAR)
+        wall=[{'id':'wall%d'%k,'kind':'line','geometry':[[self.V[0]-400,self.V[1]-y],[self.V[0]+400,self.V[1]-y]]} for k,y in enumerate((60,75,90,105,120))]
+        r=layout([item],[*rays,arc1,*wall],Box(0,0,720,600),measurements={'a-label':(40,20)})
+        self.assertIn(r['status'],('PASS','POLISH_REQUIRED'))
+    def test_nested_angles_are_retried_narrowest_first_only_when_the_first_pass_fails(self):
+        v=self.V;arc=28.0
+        def wedge(i,start_deg,delta_deg,ring):
+            start=math.radians(start_deg);delta=math.radians(delta_deg);bis=start+delta/2;radius=arc+9*ring
+            ws={'vertex':list(v),'bisector':bis,'start':start,'delta':delta,'rMin':radius+4,'rMax':radius+44,'rFar':160,'arcRadius':radius,'others':[]}
+            return label(i+'-label',[v[0]+radius*math.cos(bis),v[1]+radius*math.sin(bis)],'80',kind='EQUATION_LABEL',priority=0,target=i,wedgeSearch=ws,gaps=(24,32,48,64),leaderOwned=[i+'-arc'])
+        inner=wedge('b',-90.0,80.0,0);outer=wedge('a',-90.0,140.0,1)
+        sectors={'a':[list(v),outer['wedgeSearch']['start'],outer['wedgeSearch']['delta'],outer['wedgeSearch']['arcRadius']],'b':[list(v),inner['wedgeSearch']['start'],inner['wedgeSearch']['delta'],inner['wedgeSearch']['arcRadius']]}
+        outer['wedgeSearch']['others']=[sectors['b']];inner['wedgeSearch']['others']=[sectors['a']]
+        order=sorted([outer,inner],key=angle_labels_first_order)
+        self.assertEqual([x['id'] for x in order],['b-label','a-label'])   # narrow first
+        r=layout([outer,inner],[],Box(0,0,720,600),measurements={'a-label':(40,20),'b-label':(40,20)})
+        self.assertEqual(r['unresolved'],[])
+        for row in r['labels']:
+            other='a' if row['id']=='b-label' else 'b'
+            self.assertFalse(box_in_other_sectors(Box(**row['box']),[sectors[other]]),row['id'])
+
+
+class TickLabelSlideTests(unittest.TestCase):
+    """E20: two tick labels meeting near the origin (x=-1 and y=1) may leave one of them no clean centred box on its axis-normal sides: it then slides
+    along its axis by at most the owner-alignment tolerance and still names its own tick. A label that fits centred is placed exactly as before."""
+    def fixtures(self,blocker=True):
+        tick={'id':'model-y-unit','kind':'line','role':'tick','axis':'y','value':1,'geometry':[(100,100),(96,100)]}
+        axis={'id':'y-axis','kind':'axis','role':'axis','axis':'y','geometry':[(100,0),(100,200)]}
+        wall={'id':'wall','kind':'line','geometry':[(110,0),(110,200)]}                      # nothing fits east of the tick
+        other={'id':'tick-x--1-label','kind':'label','geometry':Box(70,109,30,10)}              # the neighbouring tick label, just below the west boxes
+        item=label('tick-y-1-label',(100,100),'1','TICK_LABEL',0,tickId='model-y-unit',tickAxis='y',tickValue=1,tickDisplayValue='1',directions=('W','E'),gaps=(8,12,16),allowSuppress=False)
+        return item,[tick,axis,wall,*([other] if blocker else [])]
+    def test_a_blocked_centred_label_slides_along_its_axis(self):
+        item,obstacles=self.fixtures()
+        result=layout([item],obstacles,Box(0,0,300,220),measurements={item['id']:(14,12)},require_measurements=True)
+        self.assertEqual(result['unresolved'],[],result)
+        placed=result['labels'][0];box=Box(**placed['box'])
+        self.assertTrue(placed['placement'].startswith('TICK_SLIDE_'),placed['placement'])
+        self.assertTrue(tick_box_respects_owner(box,item['at'],'y'))
+        self.assertLessEqual(abs(box.y+box.height/2-100),TICK_LABEL_ALIGNMENT_TOLERANCE)
+        self.assertGreater(abs(box.y+box.height/2-100),0)
+        self.assertFalse(any(collision(box,o) for o in obstacles))
+    def test_a_label_that_fits_centred_is_placed_as_before(self):
+        item,obstacles=self.fixtures(blocker=False)
+        placed=layout([item],obstacles,Box(0,0,300,220),measurements={item['id']:(14,12)},require_measurements=True)['labels'][0]
+        self.assertEqual(placed['placement'],'AUTO_W')
+        self.assertAlmostEqual(placed['box']['y']+placed['box']['height']/2,100)
+    def test_a_slide_never_leaves_the_owner_alignment(self):
+        item,obstacles=self.fixtures()
+        obstacles[-1]['geometry']=Box(70,100,30,40)                                        # a tall neighbour: no slide within the tolerance clears it
+        result=layout([item],obstacles,Box(0,0,300,220),measurements={item['id']:(14,12)},require_measurements=True)
+        self.assertEqual(result['unresolved'],['tick-y-1-label'])
+
+
 if __name__=='__main__':unittest.main()

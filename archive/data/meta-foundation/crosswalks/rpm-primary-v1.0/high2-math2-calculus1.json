@@ -29,10 +29,10 @@
     "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE canonical/binding validation"
   },
   "summary": {
-    "recordCount": 98,
-    "DIRECT_ACTIVE": 45,
+    "recordCount": 99,
+    "DIRECT_ACTIVE": 48,
     "FAMILY_ACTIVE": 3,
-    "DIRECT_BINDING_GAP": 47,
+    "DIRECT_BINDING_GAP": 45,
     "FAMILY_BINDING_GAP": 3,
     "RPM_ONLY": 0,
     "byScope": {
@@ -44,9 +44,9 @@
         "RPM_ONLY": 0
       },
       "미적분I": {
-        "DIRECT_ACTIVE": 0,
+        "DIRECT_ACTIVE": 3,
         "FAMILY_ACTIVE": 0,
-        "DIRECT_BINDING_GAP": 47,
+        "DIRECT_BINDING_GAP": 45,
         "FAMILY_BINDING_GAP": 3,
         "RPM_ONLY": 0
       }
@@ -1662,14 +1662,21 @@
         "l4": "사잇값 정리"
       },
       "standardUnitKey": "H22-M1-02",
-      "subUnitKey": null,
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "subUnitKey": "H22-M1-02-INTERMEDIATE_VALUE",
+      "mappingStatus": "DIRECT_ACTIVE",
       "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
       "problemTypeLabelKo": "사잇값 정리의 활용",
       "ownerPack": "LIMIT_CONTINUITY",
       "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
       "templateLabelKo": "사잇값 정리로 특정 값·실근의 존재 확인",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-02",
+        "subUnitKey": "H22-M1-02-INTERMEDIATE_VALUE",
+        "ownerPack": "LIMIT_CONTINUITY"
+      }
     },
     {
       "id": "H2-M2-RPM-061",
@@ -1761,15 +1768,22 @@
         "l3": "미분가능성과 연속",
         "l4": "미분가능 조건"
       },
-      "standardUnitKey": "H22-M1-04",
-      "subUnitKey": null,
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "standardUnitKey": "H22-M1-03",
+      "subUnitKey": "H22-M1-03-DIFFERENTIABILITY_CONDITION",
+      "mappingStatus": "DIRECT_ACTIVE",
       "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
       "problemTypeLabelKo": "미분가능 조건",
       "ownerPack": "DERIVATIVE",
       "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
       "templateLabelKo": "한 점의 미분가능 조건",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-03",
+        "subUnitKey": "H22-M1-03-DIFFERENTIABILITY_CONDITION",
+        "ownerPack": "DERIVATIVE"
+      }
     },
     {
       "id": "H2-M2-RPM-066",
@@ -2430,6 +2444,33 @@
       "templateKey": "TPL_LIMIT_SQUEEZE",
       "templateLabelKo": "함수의 대소 관계를 이용한 극한값 계산",
       "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M2-RPM-099",
+      "curriculum": "2022",
+      "scope": "미적분I",
+      "rpmPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "도함수",
+        "l4": "함수방정식의 미분과 불변식"
+      },
+      "standardUnitKey": "H22-M1-04",
+      "subUnitKey": "H22-M1-04-DERIVATIVE_FUNCTION_DETERMINATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+      "problemTypeLabelKo": "함수방정식",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTIONAL_EQUATION_DIFFERENTIAL_INVARIANT",
+      "templateLabelKo": "함수방정식 미분으로 불변식 구성",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-04",
+        "subUnitKey": "H22-M1-04-DERIVATIVE_FUNCTION_DETERMINATION",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
     }
   ]
 }

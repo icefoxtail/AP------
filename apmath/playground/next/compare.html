@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>기존 ↔ 2.0 비교 · AP Math 실험실</title>
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="./kit/apl.css">
+<style>
+  .cmp { max-width: 1680px; margin: 0 auto; padding: 18px 20px 60px; display: grid; gap: 16px; }
+  .cmp-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .cmp-top h1 { margin: 0; font-size: var(--fs-2xl); letter-spacing: -.035em; font-weight: 850; }
+  .cmp-top p { margin: 4px 0 0; color: var(--text-2); font-size: var(--fs-sm); }
+  .cmp-ctl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .seg { display: inline-grid; grid-auto-flow: column; padding: 3px; border-radius: 999px; background: var(--card-2); border: 1px solid var(--line); }
+  .seg button { min-height: 34px; padding: 0 14px; border: 0; border-radius: 999px; background: transparent; color: var(--text-2); font-size: var(--fs-xs); font-weight: 750; }
+  .seg button[aria-pressed="true"] { background: var(--card); color: var(--text); box-shadow: var(--shadow-sm); }
+  .cmp-panes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .pane { display: grid; gap: 8px; min-width: 0; }
+  .pane-h { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .pane-h b { font-size: var(--fs-sm); font-weight: 800; display: inline-flex; gap: 8px; align-items: center; }
+  .pane-h a { font-size: var(--fs-xs); color: var(--text-2); }
+  .frame { position: relative; border-radius: 14px; border: 1px solid var(--line-2); overflow: hidden; background: #000; box-shadow: var(--shadow); }
+  .frame iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; background: #fff; }
+  .notes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .note-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 14px 16px; }
+  .note-card h3 { margin: 0 0 8px; font-size: var(--fs-sm); font-weight: 800; color: var(--text-2); }
+  .note-card ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: var(--fs-sm); line-height: 1.6; }
+  .note-card.old li::marker { color: var(--m-red); }
+  .note-card.new li::marker { color: var(--m-green); }
+  @media (max-width: 900px) { .cmp-panes, .notes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="apl">
+<main class="cmp">
+  <div class="cmp-top">
+    <div>
+      <h1>기존 ↔ 2.0 비교</h1>
+      <p>같은 수학, 같은 해설 — 화면 구조만 바꿨습니다. 두 화면 모두 실제로 조작할 수 있습니다.</p>
+    </div>
+    <div class="cmp-ctl">
+      <div class="seg" id="pairSeg" role="group" aria-label="비교 대상"></div>
+      <div class="seg" id="devSeg" role="group" aria-label="화면 크기"></div>
+      <a class="apl-btn sm" href="./index.html">2.0 허브로</a>
+    </div>
+  </div>
+  <div class="cmp-panes">
+    <section class="pane"><div class="pane-h"><b><span class="apl-tag" style="--c:var(--m-red)">기존</span><span id="oldName"></span></b><a id="oldLink" target="_blank" rel="noopener">새 탭에서 열기 ↗</a></div><div class="frame" id="oldFrame"></div></section>
+    <section class="pane"><div class="pane-h"><b><span class="apl-tag" style="--c:var(--m-green)">2.0</span><span id="newName"></span></b><a id="newLink" target="_blank" rel="noopener">새 탭에서 열기 ↗</a></div><div class="frame" id="newFrame"></div></section>
+  </div>
+  <div class="notes">
+    <div class="note-card old"><h3>기존 화면의 설계상 특징 <span style="font-weight:600;color:var(--muted)">(발견된 오류는 기존 파일에서도 고쳤습니다)</span></h3><ul id="oldNotes"></ul></div>
+    <div class="note-card new"><h3>2.0에서 바뀐 점</h3><ul id="newNotes"></ul></div>
+  </div>
+</main>
+<script>
+(function () {
+  const PAIRS = [
+    {
+      id: 'tangent', label: '미적분Ⅰ 접선과 미분계수',
+      old: '../labs/' + encodeURIComponent('미적분1') + '/' + encodeURIComponent('접선과 미분계수.html'),
+      neu: './labs/calc1-tangent.html',
+      oldNotes: [
+        '그림 위에 안내 상자 3개(모드 배지·수식·도구)가 떠 있어 모바일에서는 그래프가 거의 가려집니다.',
+        'y축 배율이 x축의 0.82배라 기울기 1이 45°로 보이지 않고, 장면 4의 법선이 직선과 수직으로 보이지 않습니다.',
+        '오른쪽 패널에 문제·단계·두 풀이·모니터·슬라이더가 한꺼번에(10~12px 글씨) 쌓여 있습니다.',
+        'Tailwind 실행형 CDN·FontAwesome·KaTeX·글꼴 등 외부 CDN 4종에 의존합니다(콘솔 경고 발생).',
+        '확대 금지(user-scalable=no)로 휴대폰에서 손가락 확대가 막혀 있습니다.'
+      ],
+      newNotes: [
+        '무대(그래프)가 화면의 약 70%를 차지하고, 칩·배지는 가장자리에만 작게 놓여 그림을 가리지 않습니다.',
+        '항상 1:1 축척: 직각은 직각으로, 기울기 1은 45°로 보입니다(수선의 발에 직각 표시 추가).',
+        '탐구 → 정리 → 문제의 3단 구조. 풀이 단계를 누를 때마다 그림에 보조선이 드러나고, 정답 잠금(단계 확인 후 공개)은 그대로입니다.',
+        '장면 3에 끌 수 있는 점 2개(단차 Δh, 기울기 p) 추가 — 미분가능 상태에서 자석처럼 딱 맞습니다.',
+        '수업 모드(T)·판서(D)·QR 공유·장면 썸네일·URL로 상태 저장. KaTeX는 로컬 파일로 오프라인에서도 동작합니다.'
+      ]
+    },
+    {
+      id: 'trig', label: '중3 삼각비',
+      old: '../labs/g9/' + encodeURIComponent('삼각비.html'),
+      neu: './labs/g9-trig-ratio.html',
+      oldNotes: [
+        'PC에서는 탐구 안내 상자(위)와 시연·확대 도구줄(아래)이 그림 위에 떠 있어 도형 가까이에서는 일부를 덮을 수 있습니다.',
+        '휴대폰에서는 안내 카드·탭·관찰 렌즈가 그림 위에 길게 쌓여, 390×844 화면에서 그림이 화면의 40% 아래에서야 시작합니다.',
+        '휴대폰 화면에 10~11px 정도의 작은 글씨가 많습니다.',
+        'Tailwind 실행형 CDN·FontAwesome·KaTeX·글꼴 등 외부 CDN 4종에 의존해 인터넷 연결이 필요합니다.'
+      ],
+      newNotes: [
+        '원본의 해설(getSpec)과 그리기 코드(renderMode1~8)를 글자 그대로 옮기고, 그리기 함수 이름만 호환층이 새 엔진에 연결했습니다.',
+        '38개 장면 전부 자동 검사로 오류 0건입니다. 원본에서 깨져 있던 4개 장면은 기존 화면에서도 같은 방식으로 고쳐 두 화면 모두 오류가 없습니다.',
+        '설명 상자는 접을 수 있는 무대 카드로, 하단 띠는 그림 아래 별도 줄로 옮겨 도형을 가리지 않습니다.',
+        '장면마다 그림 크기를 자동으로 맞추고(자동 맞춤), 종이·칠판 테마에서 같은 의미의 색을 유지합니다.',
+        '관찰 렌즈의 연결 강조(고른 조각만 또렷하게)와 안내문 $…$ 수식의 KaTeX 렌더링을 2.0도 지원합니다(기존 화면에도 같은 기능이 고쳐져 있습니다).'
+      ]
+    },
+    {
+      id: 'space', label: '기하 공간도형 3D',
+      old: '../labs/' + encodeURIComponent('기하와벡터') + '/' + encodeURIComponent('공간도형 3D.html'),
+      neu: './labs/geom-space-3d.html',
+      oldNotes: [
+        '그림 위에 안내 상자 4개(모드 설명·핵심 정리·관찰 렌즈·시점 변환)가 떠 있어, 휴대폰에서는 상자들이 무대 윗부분을 차지하고 도형이 아래로 밀립니다.',
+        '라벨 위치가 PC 캔버스 기준의 고정 픽셀(예: ‘O (수선의 발)’은 점에서 왼쪽 105px)이라 좁은 화면을 고려하지 않습니다.',
+        'Tailwind 실행형 CDN·FontAwesome·KaTeX·글꼴 등 외부 CDN 4종에 의존하고, 확대 금지(user-scalable=no)로 손가락 확대가 막혀 있습니다.'
+      ],
+      newNotes: [
+        '원본의 해설(examData)과 3D 그리기 코드(renderMode1~4)를 글자 그대로 옮기고, 3D 투영만 공용 apl-space.js가 맡습니다. 정사영·공간좌표 실험실도 같은 도우미로 옮길 수 있습니다.',
+        '빈 곳을 끌면 회전, 두 손가락으로 확대. 시점 버튼(입체 일람·핵심 단면·평면도·정면도)은 카메라가 부드럽게 돌아가며 이동합니다.',
+        '회전할 때마다 점과 라벨이 모두 화면 안에 들어오도록 자동으로 맞춥니다. 휴대폰에서도 라벨이 잘리지 않는 것을 자동 검사로 확인합니다.',
+        '안내 상자 4개는 패널의 조작부(시점·관찰 렌즈·회전 막대)와 무대 위 수식 칩 1개로 정리해, 무대에는 도형만 남습니다.',
+        '장면 3 이면각: 접은 각 θ 막대가 70.5°(cos θ = 1/3) 근처에서 정사면체에 자석처럼 딱 맞춰집니다.'
+      ]
+    },
+    {
+      id: 'hub', label: '실험실 허브',
+      old: '../teacher-hub.html',
+      neu: './index.html',
+      oldNotes: [
+        '카드가 손으로 쓴 HTML이라 실험실을 더할 때마다 카드를 직접 추가해야 합니다(개수는 이제 카드에서 자동으로 셉니다).',
+        '모든 카드의 버튼이 같은 ‘실험실 열기’라, 안에 어떤 장면이 있는지 알기 어렵고 장면으로 바로 들어갈 수도 없습니다(장면 수 배지만 있습니다).',
+        '개념이 이어지는 노선도, ★ 내 수업 목록, 최근 연 실험실, 수업 모드 스위치가 없습니다.'
+      ],
+      newNotes: [
+        'apl-catalog.js 한 곳에 실험실을 등록하면 목록·개수·검색·노선도가 자동으로 만들어집니다.',
+        '단원 묶음, 장면 이름까지 찾는 검색, 중1→고등 개념이 이어지는 ‘개념 노선도’.',
+        '교사용: ★ 내 수업 목록, 최근 연 실험실, ‘수업 모드로 열기’ 스위치.',
+        '카드에 장면 목록을 보여 주고, 2.0 실험실은 장면으로 바로 들어갑니다(#n=3).'
+      ]
+    }
+  ];
+  const DEV = [
+    { id: 'pc', label: 'PC 1440', w: 1440, h: 900 },
+    { id: 'tab', label: '태블릿 1024', w: 1024, h: 768 },
+    { id: 'mo', label: '모바일 390', w: 390, h: 844 }
+  ];
+  const q = new URLSearchParams(location.search);
+  let pair = PAIRS.find((p) => p.id === q.get('pair')) || PAIRS[0];
+  let dev = DEV.find((d) => d.id === q.get('dev')) || DEV[0];
+  const $ = (id) => document.getElementById(id);
+  function seg(el, items, cur, on) {
+    el.innerHTML = '';
+    items.forEach((it) => {
+      const b = document.createElement('button');
+      b.textContent = it.label;
+      b.setAttribute('aria-pressed', String(it === cur));
+      b.addEventListener('click', () => on(it));
+      el.append(b);
+    });
+  }
+  function frame(box, src) {
+    box.innerHTML = '';
+    const f = document.createElement('iframe');
+    f.src = src;
+    f.title = src;
+    f.width = dev.w;
+    f.height = dev.h;
+    f.loading = 'lazy';
+    box.append(f);
+    fit();
+  }
+  function fit() {
+    document.querySelectorAll('.frame').forEach((box) => {
+      const f = box.querySelector('iframe');
+      if (!f) return;
+      const maxW = box.parentElement.clientWidth;
+      const maxH = Math.max(380, window.innerHeight * 0.74);
+      const k = Math.min(1, maxW / dev.w, maxH / dev.h);
+      f.style.width = dev.w + 'px';
+      f.style.height = dev.h + 'px';
+      f.style.transform = `scale(${k})`;
+      box.style.width = dev.w * k + 'px';
+      box.style.height = dev.h * k + 'px';
+    });
+  }
+  function render() {
+    seg($('pairSeg'), PAIRS, pair, (p) => { pair = p; sync(); });
+    seg($('devSeg'), DEV, dev, (d) => { dev = d; sync(); });
+    $('oldName').textContent = pair.label;
+    $('newName').textContent = pair.label;
+    $('oldLink').href = pair.old;
+    $('newLink').href = pair.neu;
+    frame($('oldFrame'), pair.old);
+    frame($('newFrame'), pair.neu);
+    $('oldNotes').innerHTML = pair.oldNotes.map((t) => `<li>${t}</li>`).join('');
+    $('newNotes').innerHTML = pair.newNotes.map((t) => `<li>${t}</li>`).join('');
+  }
+  function sync() {
+    const u = new URL(location.href);
+    u.searchParams.set('pair', pair.id);
+    u.searchParams.set('dev', dev.id);
+    history.replaceState(null, '', u);
+    render();
+  }
+  window.addEventListener('resize', fit);
+  render();
+})();
+</script>
+</body>
+</html>

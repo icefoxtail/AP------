@@ -1,0 +1,232 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "40"
+      },
+      {
+       "kind": "integer",
+       "value": "28"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "M",
+    "op": "MIDPOINT",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P1",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "A"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "28"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "6"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "P2",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "A"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "12"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "16"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAM",
+   "refs": [
+    "A",
+    "M"
+   ]
+  },
+  {
+   "id": "sMB",
+   "refs": [
+    "M",
+    "B"
+   ]
+  },
+  {
+   "id": "sR1",
+   "refs": [
+    "A",
+    "P1"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sR2",
+   "refs": [
+    "P1",
+    "P2"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sR3",
+   "refs": [
+    "P2",
+    "B"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "M",
+  "B",
+  "P1",
+  "P2"
+ ],
+ "caption": "A에서 B까지 두 점 사이의 거리는 선분 AB의 길이 193 m이고 중점 M에서 AM=BM=96.5 m이다. 점선의 도로 경로는 총거리 305 m라서 두 점 사이의 거리와 같지 않다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AB=193m, M은 AB의 중점, 도로 총거리 305m",
+   "mappedTo": [
+    "A",
+    "B",
+    "M",
+    "P1",
+    "P2"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "직선 거리 193 m와 도로 경로의 총거리 305 m의 비교, AM=BM=96.5 m"
+ ],
+ "sourceQuote": "두 점 사이의 거리는 두 점을 잇는 선분의 길이이고",
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 520
+ },
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sAM",
+     "sMB"
+    ]
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "tAM",
+    "ownerSegment": "sAM",
+    "text": "96.5",
+    "unit": "m"
+   },
+   {
+    "id": "tMB",
+    "ownerSegment": "sMB",
+    "text": "96.5",
+    "unit": "m"
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dAB",
+    "from": "A",
+    "to": "B",
+    "label": "193",
+    "unit": "m",
+    "side": "ABOVE",
+    "style": "ARROW",
+    "offset": 3,
+    "factRole": "GIVEN"
+   }
+  ],
+  "pathLabels": [
+   {
+    "id": "road",
+    "points": [
+     "A",
+     "P1",
+     "P2",
+     "B"
+    ],
+    "label": "총거리 305 m",
+    "labelKind": "TEXT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "hiddenPointNames": [
+  "P1",
+  "P2"
+ ]
+}

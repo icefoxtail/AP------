@@ -1,0 +1,210 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "꼭짓점마다 정삼각형 5개"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "kind": "REGULAR_POLYHEDRON",
+            "faces": 20,
+            "side": 3,
+            "names": "............",
+            "count": {
+              "vertices": true
+            }
+          }
+        ],
+        "highlights": [
+          {
+            "face": "f0",
+            "fill": "WARM"
+          },
+          {
+            "face": "f1",
+            "fill": "WARM"
+          },
+          {
+            "face": "f2",
+            "fill": "WARM"
+          },
+          {
+            "face": "f3",
+            "fill": "WARM"
+          },
+          {
+            "face": "f4",
+            "fill": "WARM"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "위쪽 모서리"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 4,
+              "depth": 4
+            },
+            "height": 4,
+            "names": "........",
+            "count": {
+              "vertices": true
+            }
+          }
+        ],
+        "segments": [
+          {
+            "from": "#t0",
+            "to": "#t1",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#t1",
+            "to": "#t2",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#t2",
+            "to": "#t3",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#t3",
+            "to": "#t0",
+            "style": "AUTO",
+            "role": "ACCENT"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "아래쪽 모서리"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 4,
+              "depth": 4
+            },
+            "height": 4,
+            "names": "........",
+            "count": {
+              "vertices": true
+            }
+          }
+        ],
+        "segments": [
+          {
+            "from": "#b0",
+            "to": "#b1",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#b1",
+            "to": "#b2",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#b2",
+            "to": "#b3",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#b3",
+            "to": "#b0",
+            "style": "AUTO",
+            "role": "ACCENT"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "위아래를 잇는 모서리"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 4,
+              "depth": 4
+            },
+            "height": 4,
+            "names": "........",
+            "count": {
+              "vertices": true
+            }
+          }
+        ],
+        "segments": [
+          {
+            "from": "#b0",
+            "to": "#t0",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#b1",
+            "to": "#t1",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#b2",
+            "to": "#t2",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#b3",
+            "to": "#t3",
+            "style": "AUTO",
+            "role": "ACCENT"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "한 꼭짓점에 정삼각형이 5개 모이는 정다면체는 정이십면체이다(왼쪽 위 그림에서 한 꼭짓점에 모인 면을 주황색으로 칠했다). 면이 정사각형인 정다면체는 정육면체로, 모서리가 위쪽 4개, 아래쪽 4개, 위아래를 잇는 4개(각각 빨강)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 꼭짓점에 모인 면의 개수가 5인 정다면체",
+      "mappedTo": "panel-1"
+    },
+    {
+      "id": "c2",
+      "condition": "면의 모양이 정사각형인 정다면체의 모서리의 개수",
+      "mappedTo": "panel-2+panel-3+panel-4"
+    }
+  ],
+  "newVisualInformation": [
+    "한 꼭짓점에 모인 정삼각형 5개로 정이십면체를 알아보는 모습",
+    "정육면체의 모서리를 위 4·아래 4·세로 4로 나눠 센 모습"
+  ]
+}

@@ -81,7 +81,30 @@ def audit(p):
             n=elements[oid];value=inverse(float(n.get('x1')),float(n.get('y1')))
             if math.dist(value,coordinate)>1e-8:errors.append('OBSERVED_UNIT_MISMATCH')
     if p.get('coordinateMode')=='CONSTRUCTED_REALIZATION' and abs(sx-sy)>1e-9:errors.append('UNEQUAL_GEOMETRY_UNITS')
-    for oid,expected in (p.get('points') or {}).items():
+    # unmarkedPoints: point ids the PLAN declares without any marker (hiddenPointStyle NONE on a plane figure). The observer takes them from
+    # the plan, never from the engine: such a point has no dot in the final SVG, every other point still must have one.
+    unmarked=p.get('unmarkedPoints') or []
+    if not isinstance(unmarked,list) or any(not isinstance(v,str) for v in unmarked):raise ValueError('INVALID_UNMARKED_POINTS')
+    unmarked=set(unmarked)
+    expected_points=p.get('points') or {}
+    for oid in sorted(unmarked-set(expected_points)):errors.append('UNMARKED_POINT_UNKNOWN:'+oid)
+    if unmarked:
+        # Every drawn dot (data-role point, or any small filled circle outside a glyph fragment) belongs to a point that must carry one.
+        dots=[]
+        for n in root.iter():
+            if n.tag.split('}')[-1]!='circle' or any(a.get('data-fragment-sha') for a in chain(n)):continue
+            try:r=float(n.get('r'));cx=float(n.get('cx'));cy=float(n.get('cy'))
+            except (TypeError,ValueError):continue
+            if n.get('data-role')=='point' or (r<=8 and str(presentation_value(n,'fill') or 'none').strip().lower()!='none'):dots.append((n,cx,cy,r))
+        for oid in sorted(unmarked&set(expected_points)):
+            if oid in elements:errors.append('HIDDEN_POINT_MARKER_PRESENT:'+oid)
+            ex,ey=ox+sx*expected_points[oid][0],oy-sy*expected_points[oid][1]
+            if any(math.hypot(cx-ex,cy-ey)<=max(1.5,r) for _,cx,cy,r in dots):errors.append('HIDDEN_POINT_MARKER_AT_POINT:'+oid)
+        kept={oid for oid in expected_points if oid not in unmarked}
+        for n,_,_,_ in dots:
+            if n.get('data-role')=='point' and n.get('id') not in kept:errors.append('UNEXPECTED_POINT_MARKER:'+str(n.get('id')))
+    for oid,expected in expected_points.items():
+        if oid in unmarked:continue
         n=elements.get(oid)
         if n is None or n.tag.split('}')[-1]!='circle' or n.get('data-role')!='point':errors.append('POINT_MISSING:'+oid);continue
         value=inverse(float(n.get('cx')),float(n.get('cy')));delta=math.dist(value,expected)

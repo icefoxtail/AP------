@@ -5,6 +5,12 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
 import problemBankMeta from "../problem-bank-meta.js";
+import {
+  buildMixedSourceShard,
+  buildMixedUidBucket,
+  mixedIndexSchemaVersion,
+  readMixedEmitSchema,
+} from "./mixed-verification-codec.mjs";
 
 const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -855,6 +861,9 @@ const compactMixedAssignments = (rows) => (Array.isArray(rows) ? rows : []).map(
       .map((field) => [field, assignment.reviewEvidence[field]]));
   return row;
 });
+// Layout of the mixed verification data: archive/tools/archive2-mixed-verification-policy.json (default v1, see
+// mixed-verification-codec.mjs for why v2 is opt-in).
+const mixedEmitSchema = readMixedEmitSchema(root);
 const mixedRecordsByUid = new Map();
 for (const [sourceFile, sourceRows] of sourceRecords) {
   const exam = resolvedCatalog.exams.find((row) => core.normalizeFile(row.file) === sourceFile);
@@ -930,13 +939,13 @@ for (const [sourceFile, sourceRows] of sourceRecords) {
     sha256: hash(shardText),
     qCount: Number(exam.qCount),
   });
-  const mixedShard = {
-    schemaVersion: "archive2-mixed-source-verification-v1",
+  const mixedShard = buildMixedSourceShard({
+    schema: mixedEmitSchema,
     sourceFile,
     sourceSha256: sourceShaByFile.get(sourceFile) || "",
     qCount: Number(exam.qCount),
-    records: mixedRecords,
-  };
+    rows: mixedRecords,
+  });
   const mixedShardText = JSON.stringify(mixedShard) + "\n";
   const mixedShardPath = mixedSourceShardPrefix + hash(sourceFile) + ".json";
   mixedSourceShardTexts.set(mixedShardPath, mixedShardText);
@@ -981,12 +990,14 @@ for (const [uid, record] of [...mixedRecordsByUid.entries()].sort(([a], [b]) => 
 const mixedUidBucketRows = [];
 for (const [prefix, records] of mixedBucketRecords) {
   const bucketPath = mixedUidBucketPrefix + prefix + ".json";
-  const bucketText = JSON.stringify({
-    schemaVersion: "archive2-mixed-source-verification-uid-bucket-v1",
+  const bucket = buildMixedUidBucket({
+    schema: mixedEmitSchema,
     prefix,
-    ...(prefix === "f" ? { context: mixedContext } : {}),
-    records,
-  }) + "\n";
+    context: mixedContext,
+    rows: records,
+    sourceFiles: sourceIndexRows.map((row) => row.sourceFile),
+  });
+  const bucketText = JSON.stringify(bucket) + "\n";
   mixedUidBucketTexts.set(bucketPath, bucketText);
   mixedUidBucketRows.push({
     prefix,
@@ -1003,7 +1014,7 @@ const sourceIndex = {
   generatedFromCatalogIndexVersion: indexVersion,
   baseProjectionVersion,
   mixedLookup: {
-    schemaVersion: "archive2-mixed-source-verification-index-v1",
+    schemaVersion: mixedIndexSchemaVersion(mixedEmitSchema),
     resolverVersion: core.Canonical.RESOLVER_VERSION,
     baseProjectionVersion,
     context: {

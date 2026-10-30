@@ -20,7 +20,7 @@ def _exact_float(text):
 from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
-from .label_layout import Box,layout,approximate_size,DIRECTIONS
+from .label_layout import Box,layout,approximate_size,DIRECTIONS,point_segment_distance
 from .svg_composer import compose,num as _num
 from .style_tokens import load
 from .config import resolve_output
@@ -30,17 +30,24 @@ ROOT=Path(__file__).resolve().parents[4]
 def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False)
 def sha(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
-def mark_label(label_id,target,text,label_kind,at,extra):
-    """A math label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC), 'MATH' = the expression as it stands (a symbol such as theta names the angle)."""
+def mark_label(label_id,target,text,label_kind,at,extra,unit=None):
+    """A label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC), 'MATH' = the expression as it stands (a symbol such as theta names the angle;
+    with `unit` the unit follows it: 3cm, x cm), 'TEXT' = plain Korean text in the text font, never parsed as math (a name such as ㉠ or 호 AB)."""
     tokens=load()
+    if unit is not None and label_kind!='MATH':raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL')
+    if label_kind=='TEXT':
+        return {'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':text,'layoutText':text,'math':False,'bindText':True,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
     if label_kind=='NAME':
-        if not re.fullmatch(r'[A-Z][A-Z0-9]{1,3}',text):raise ValueError('ANGLE_LABEL_NAME_INVALID')
+        # One capital letter (the angle A written as the letter alone) or up to four letters/digits (ABC -> the angle ABC).
+        if not re.fullmatch(r'[A-Z][A-Z0-9]{0,3}',text):raise ValueError('ANGLE_LABEL_NAME_INVALID')
         plain='∠'+text;markup=html.escape(plain);tex='\\angle '+text
     elif label_kind in ('DEGREE','MATH'):
         tree=Expr('degree','',(parse(text),)) if label_kind=='DEGREE' else parse(text)
+        if unit is not None:tree=Expr('quantity',unit,(tree,))
         plain=serialize(tree,'plain');markup=serialize(tree,'svg');tex=serialize(tree,'tex')
     else:raise ValueError('ANGLE_LABEL_KIND_INVALID')
     label={'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':plain,'markup':markup,'tex':tex,'math':True,'sourceMath':text,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
+    if unit is not None:label['bindText']=True
     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
     return label
 
@@ -59,6 +66,8 @@ def _sample_graph_boundary(rows,vp):
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 # A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
 SECTOR_FILL='#d9d9d9'
+ACCENT_STROKE='#c0392b'      # emphasis ACCENT on a plane figure's segment (the same red as a solid figure's accent edge)
+ANGLE_EMPHASIS_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle mark: red, blue, green arcs
 # A source that says 빗금친 (hatched) is drawn with real diagonal strokes clipped to the region, not with a second grey:
 # up-right diagonals as in the textbook, about 9 px apart, at the thin indicator width.
 HATCH_ANGLE=math.radians(-45.0)
@@ -157,6 +166,61 @@ def _region_label_centres(polygons,obstacles,step=3.0,limit=900):
         if all(math.hypot(x-px,y-py)>=4.0 for px,py in chosen):chosen.append((x,y))
         if len(chosen)>=limit:break
     return [list(p) for p in chosen]
+
+# ---- dimension lines (E7): a length written between two points on a line parallel to them, on one side of the figure ----------------------------------
+# The dimension line stands DIM_FIRST_PX from the two points (further levels DIM_STEP_PX apart, so a label fits between two levels). Its ends are the feet of
+# the perpendiculars from the two points. BAR: thin extension lines from the points and a short perpendicular tick at each end; ARROW: the same with an
+# arrowhead at each end instead of a tick; BRACE: a curly brace whose two ends stand just off the points and whose tip, DIM_FIRST_PX away, points outward.
+DIM_FIRST_PX=24.0
+DIM_STEP_PX=44.0
+DIM_EXT_GAP_PX=4.0               # an extension line starts this far from its point (clear of the point's dot)
+DIM_TICK_HALF_PX=4.5             # a BAR tick is 9 px long, centred on the dimension line's end
+DIM_ARROW_OVERSHOOT_PX=3.0       # an ARROW's extension line runs this far past the dimension line
+DIM_ARROW_LENGTH_PX=10.0
+DIM_ARROW_HALF_WIDTH_PX=3.6
+DIM_BRACE_RADIUS_PX=6.0          # the brace is built of quarter circles of this radius: its depth from the two ends to the tip is twice it
+DIM_BRACE_SAMPLES=10             # points per quarter circle
+DIM_MIN_LENGTH_PX=40.0
+DIM_SIDE_VECTORS={'BELOW':(0.0,1.0),'ABOVE':(0.0,-1.0),'LEFT':(-1.0,0.0),'RIGHT':(1.0,0.0)}
+DIM_SIDE_MIN_DOT=0.2             # the chosen side must point at least this much (cosine) along the named screen direction
+DIM_LABEL_GAPS=(8,12,18,26)
+DIM_LABEL_SLIDES=(0.0,0.12,-0.12,0.24,-0.24)   # fractions of the dimension's length a label may slide along it when the middle is taken
+
+PATH_LABEL_ANCHOR_FRACTIONS=(0.5,0.4,0.6,0.3,0.7,0.2,0.8)   # where along the path (by length) the leader may start, the middle first
+PATH_LABEL_GAPS=(24,32,44,60)                                  # distance from the anchor to the label box: always far enough to need a visible leader
+PATH_LABEL_CLEAR_PX=28.0                                       # an anchor farther than this from every other stroke is as good as any
+
+def dimension_frame(p,q,side,offset,oid):
+    """(length, unit direction p->q, outward unit normal, distance of the dimension line from p-q) in screen px. The normal is the one of the two
+    perpendiculars that points more along the named screen side; a segment (nearly) perpendicular to that side is ambiguous."""
+    length=math.dist(p,q);d=((q[0]-p[0])/length,(q[1]-p[1])/length)
+    want=DIM_SIDE_VECTORS[side]
+    n=max(((-d[1],d[0]),(d[1],-d[0])),key=lambda v:v[0]*want[0]+v[1]*want[1])
+    if n[0]*want[0]+n[1]*want[1]<DIM_SIDE_MIN_DOT:raise ValueError('DIMENSION_SIDE_AMBIGUOUS:'+oid)
+    return length,d,n,DIM_FIRST_PX+DIM_STEP_PX*(offset-1)
+
+def outward_direction_order(anchor,centre):
+    """The eight compass directions (screen: N is up), the one that points most away from `centre` first, for a label hung outside a circle at `anchor`."""
+    ox,oy=anchor[0]-centre[0],anchor[1]-centre[1];norm=math.hypot(ox,oy) or 1.0
+    def alignment(direction):
+        dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
+        return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
+    return tuple(sorted(DIRECTIONS,key=alignment))
+
+def brace_points(length,start,tip):
+    """A curly brace along u in [0,length]: its two ends at v=start (vertical tangent), a horizontal run at start+r, and the tip at v=tip in the middle (both
+    halves arrive vertically), as (u,v) pairs from the left end to the right end. The depth tip-start must be twice the radius."""
+    r=DIM_BRACE_RADIUS_PX;half=[]
+    for k in range(DIM_BRACE_SAMPLES+1):
+        a=math.pi/2*k/DIM_BRACE_SAMPLES;half.append((r-r*math.cos(a),start+r*math.sin(a)))                   # end hook: (0,start) -> (r,start+r)
+    for k in range(DIM_BRACE_SAMPLES+1):
+        a=-math.pi/2+math.pi/2*k/DIM_BRACE_SAMPLES;half.append((length/2-r+r*math.cos(a),start+2*r+r*math.sin(a)))   # towards the tip: (L/2-r,start+r) -> (L/2,start+2r)
+    left=half;right=[(length-u,v) for u,v in reversed(half)]
+    return left+right[1:]
+
+# An angle label whose nearest edge is farther than this (px) from its vertex is no longer read as its arc's value: it takes a leader to the arc instead
+# (the golden figures keep every label within 71 px, so they are unchanged). The plane-marks observer checks the same distance on the final SVG (ANGLE_LABEL_TOO_FAR).
+ANGLE_LABEL_FAR_DISTANCE_PX=90.0
 
 def prepare(spec):
     semantic=validate(spec);spec=semantic['spec'];geometry=semantic['geometry'];tokens=load();critical=[]
@@ -266,10 +330,14 @@ def prepare(spec):
         for oid,axis,value,at,delta in unit_ticks:
             p=vp.screen(at);primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
         axis_labels=[]
-        if show_x:axis_labels.append(('axis-x',(xmax,0),spec['displayFacts'].get('axisVariable','x')))
-        if show_y:axis_labels.append(('axis-y',(0,ymax),'y'))
-        for oid,at,text in axis_labels:
-            labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
+        axis_titles=spec['displayFacts'].get('axisTitles',{})
+        if not isinstance(axis_titles,dict) or set(axis_titles)-{'x','y'} or any(not isinstance(v,str) or not v for v in axis_titles.values()):raise ValueError('INVALID_AXIS_TITLES')
+        if show_x:axis_labels.append(('axis-x',(xmax,0),spec['displayFacts'].get('axisVariable','x'),axis_titles.get('x')))
+        if show_y:axis_labels.append(('axis-y',(0,ymax),'y',axis_titles.get('y')))
+        for oid,at,text,title in axis_labels:
+            # A plain Korean title (a name with its unit) is a text label that must find room (never suppressed); the letter is a math label.
+            if title is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
+            else:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
         visible_axes=[]
         if show_x:visible_axes.append(('x',xmin,xmax))
         if show_y:visible_axes.append(('y',ymin,ymax))
@@ -319,7 +387,16 @@ def prepare(spec):
         if tick_callouts:raise ValueError('TICK_LABEL_CALLOUT_OWNER_NOT_FOUND')
         if tick_pi_labels is not None and len(used_pi)!=len(tick_pi_labels):raise ValueError('TICK_PI_LABEL_UNUSED')
     rational_features=spec['displayFacts'].get('rationalGraphFeatures')
-    if rational_features is not None:
+    if rational_features is not None and rational_features.get('schemaVersion')=='RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1':
+        # Inverse proportion: an asymptote on a coordinate axis is the axis itself, so only an off-axis vertical asymptote is drawn (dashed).
+        xmin,xmax,ymin,ymax=vp.bounds
+        vertical=rational_features.get('asymptotes',{}).get('vertical')
+        if not isinstance(vertical,dict) or not isinstance(vertical.get('drawn'),bool) or rational_features.get('asymptotes',{}).get('horizontal',{}).get('drawn') is not False:raise ValueError('RATIONAL_FEATURE_INVENTORY_REQUIRED')
+        if vertical['drawn']:
+            singular_x=float(Fraction(vertical['x']))
+            a,b=vp.screen((singular_x,ymin)),vp.screen((singular_x,ymax))
+            primitive({'id':'rational-asymptote-vertical','kind':'line','from':a,'to':b,'token':'auxiliary','layer':25,'role':'asymptote','dash':'5 4'},'line')
+    elif rational_features is not None:
         if rational_features.get('schemaVersion')!='RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1':raise ValueError('RATIONAL_FEATURE_INVENTORY_REQUIRED')
         xmin,xmax,ymin,ymax=vp.bounds
         horizontal=float(Fraction(rational_features['horizontalAsymptoteY']))
@@ -456,8 +533,10 @@ def prepare(spec):
         for pole in trig_interval_features.get('poles',[]):
             x=float(Fraction(pole['x']))*factor
             primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4','poleSide':pole.get('side','RIGHT')},'line')
-    point_marks=[vp.screen(geometry[v['id']]) for v in spec['objects'] if v['kind']=='POINT']
+    # A POINT with marker 'NONE' (hiddenPointStyle NONE on a plane figure) stays in the geometry for marks and segments but draws no dot and no name.
+    point_marks=[vp.screen(geometry[v['id']]) for v in spec['objects'] if v['kind']=='POINT' and v.get('marker')!='NONE']
     mark_spots=[]   # where equal ticks / parallel arrows already stand: a second mark on the same segment keeps clear of the first
+    angle_sectors={}   # angle mark id -> (vertex, start direction, signed sweep, outermost arc radius) in screen px: the area a label must not stand in
     by_id={v['id']:v for v in spec['objects']}
     tangent_lines={v['refs'][0] for v in spec['objects'] if v['kind']=='TANGENT'}
     # Drawn lines ax+by+c=0, for SEGMENTs that lie on one (they would vanish under the heavier line stroke).
@@ -466,8 +545,9 @@ def prepare(spec):
     named={v.get('target') for v in spec['objects'] if v['kind'] in {'POINT_NAME','COORDINATE_LABEL'}}
     for obj in spec['objects']:
         oid=obj['id'];kind=obj['kind'];value=geometry.get(oid)
-        if kind=='POINT':
-            primitive({'id':oid,'kind':'circle','at':vp.screen(value),'radius':tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'],'layer':70,'role':'point','token':'indicator'},'point')
+        if kind=='POINT' and obj.get('marker')=='NONE':pass   # an unmarked point: it draws neither a dot nor a name
+        elif kind=='POINT':
+            primitive({'id':oid,'kind':'circle','at':vp.screen(value),'radius':obj['markerRadius'] if obj.get('markerRadius') is not None else tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'],'layer':70,'role':'point','token':'indicator'},'point')
             point_names=semantic.get('publication',{}).get('sourcePointLabels',{})
             point_name=point_names.get(oid,obj.get('name',oid))
             if oid not in named and point_name is not None:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':point_name,'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
@@ -482,7 +562,9 @@ def prepare(spec):
                 elif show_y and abs(a[0]-origin[0])<=.5 and abs(b[0]-origin[0])<=.5:overlap='y'
                 # The same for a SEGMENT on a drawn line (both ends within 0.5 screen px of it): heavier and above the line.
                 elif any(math.hypot(l[0],l[1])>0 and all(abs(l[0]*p[0]+l[1]*p[1]+l[2])/math.hypot(l[0],l[1])*vp.sx<=.5 for p in value) for _,l in drawn_lines):overlap='line'
-            primitive({'id':oid,'kind':'line','from':a,'to':b,'token':'leaderLine' if kind=='LEADER_LINE' else 'axisOverlapShape' if overlap else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 45 if overlap=='line' else 35 if overlap else 30,'role':'leader' if kind=='LEADER_LINE' else 'line',**({'axisOverlap':overlap} if overlap else {}),**({'dash':'6 4'} if kind=='SEGMENT' and obj.get('dash') else {})},'leader' if kind=='LEADER_LINE' else 'line')
+            # emphasis BOLD / ACCENT (a plane figure's one singled-out segment): the heavy stroke above the other segments, ACCENT also in red.
+            emphasis=obj.get('emphasis') if kind=='SEGMENT' else None
+            primitive({'id':oid,'kind':'line','from':a,'to':b,'token':'leaderLine' if kind=='LEADER_LINE' else 'axisOverlapShape' if overlap or emphasis else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 45 if overlap=='line' else 38 if emphasis else 35 if overlap else 30,'role':'leader' if kind=='LEADER_LINE' else 'line',**({'axisOverlap':overlap} if overlap else {}),**({'dash':'6 4'} if kind=='SEGMENT' and obj.get('dash') else {}),**({'stroke':ACCENT_STROKE} if emphasis=='ACCENT' else {})},'leader' if kind=='LEADER_LINE' else 'line')
             if kind=='SEGMENT' and obj.get('arrow'):
                 # A ray / extension: arrowheads whose tips stand exactly on the segment's end points (START = the first point, END = the second).
                 if obj['arrow'] not in {'START','END','BOTH'}:raise ValueError('INVALID_SEGMENT_ARROW')
@@ -492,7 +574,7 @@ def prepare(spec):
                     if obj['arrow']!='BOTH' and obj['arrow']!=end:continue
                     ux,uy=(tip[0]-back[0])/length,(tip[1]-back[1])/length
                     base=(tip[0]-ux*10,tip[1]-uy*10)
-                    primitive({'id':oid+'-arrow-'+end.lower(),'kind':'polygon','points':[tip,(base[0]-uy*3.6,base[1]+ux*3.6),(base[0]+uy*3.6,base[1]-ux*3.6)],'token':'indicator','layer':62,'role':'indicator','fill':'#111','mark':'arrow','markId':oid,'markEnd':end},'curve')
+                    primitive({'id':oid+'-arrow-'+end.lower(),'kind':'polygon','points':[tip,(base[0]-uy*3.6,base[1]+ux*3.6),(base[0]+uy*3.6,base[1]-ux*3.6)],'token':'indicator','layer':62,'role':'indicator','fill':ACCENT_STROKE if emphasis=='ACCENT' else '#111','mark':'arrow','markId':oid,'markEnd':end,**({'stroke':ACCENT_STROKE} if emphasis=='ACCENT' else {})},'curve')
         elif kind=='CIRCLE':
             primitive({'id':oid,'kind':'circle','at':vp.screen(value.center),'radius':value.radius*vp.sx,'token':'mainShape','layer':40,'role':'circle'},'circle')
         elif kind=='POLYGON':
@@ -501,6 +583,18 @@ def prepare(spec):
             if obj.get('fill') and obj['fill']!='NONE':
                 primitive({'id':oid+'-fill','kind':'polygon','points':vertices,'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS.get(obj['fill'],REGION_FILLS['LIGHT']),'noStroke':True},'curve')
             primitive({'id':oid,'kind':'polyline','points':vertices+[vertices[0]],'token':'secondaryShape','layer':35,'role':'overlayPolygon'},'line')
+            if obj.get('labelText') is not None:
+                # An optional label (a formula such as b, or plain Korean text) inside the polygon where it has the most room, like a region label.
+                if obj.get('labelKind','MATH')=='TEXT':
+                    label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'layoutText':obj['labelText'],'math':False,
+                           'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':[vertices],'labelGap':14}
+                else:
+                    tree=parse(obj['labelText']);markup=serialize(tree,'svg')
+                    label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
+                           'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':[vertices],'labelGap':14}
+                    label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
+                label['candidateCenters']=_region_label_centres([vertices],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(vertices[0])
+                labels.append(label)
         elif kind=='CIRCULAR_ARC':
             primitive({'id':oid,'kind':'polyline','points':[vp.screen(p) for p in value.sample_points()],
                        'token':'axisOverlapShape' if obj.get('highlight') else 'mainShape','layer':46 if obj.get('highlight') else 40,'role':'circularArc',
@@ -515,13 +609,22 @@ def prepare(spec):
                     dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
                     return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
                 directions=sorted(DIRECTIONS,key=alignment)
-                labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]}))
+                labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]},obj.get('unit')))
         elif kind=='TRACE_ARC':
             # Construction traces (compass arcs): a thin solid arc of the declared radius around each intersection the trace produces.
             if not vp.equal:raise ValueError('TRACE_ARC_REQUIRES_EQUAL_UNITS')
             centre=value['center'];radius=value['radius'];span_degrees=value['spanDeg'];span=math.radians(span_degrees)
             steps=max(8,math.ceil(span_degrees/3))
-            for index,(_pid,_target,angle) in enumerate(value['through'],1):
+            join=value.get('join')
+            if join:
+                # span JOIN: one continuous arc round the centre, counter-clockwise from its start
+                steps=max(8,math.ceil(math.degrees(join['sweep'])/3))
+                points=[vp.screen((centre[0]+radius*math.cos(join['start']+join['sweep']*i/steps),centre[1]+radius*math.sin(join['start']+join['sweep']*i/steps))) for i in range(steps+1)]
+                primitive({'id':oid+'-1','kind':'polyline','points':points,'token':'auxiliary','layer':48,'role':'traceArc',
+                           'mark':'trace','markId':oid,'markIndex':1,'markCount':1,
+                           'centerPoint':obj['centerPoint'],'ownerRadius':radius,'sweep':'CCW','ownerPoints':[obj['centerPoint']]},'curve')
+            else:
+              for index,(_pid,_target,angle) in enumerate(value['through'],1):
                 points=[vp.screen((centre[0]+radius*math.cos(angle-span/2+span*i/steps),centre[1]+radius*math.sin(angle-span/2+span*i/steps))) for i in range(steps+1)]
                 primitive({'id':oid+'-'+str(index),'kind':'polyline','points':points,'token':'auxiliary','layer':48,'role':'traceArc',
                            'mark':'trace','markId':oid,'markIndex':index,'markCount':len(value['through']),
@@ -529,10 +632,22 @@ def prepare(spec):
             if obj.get('labelText') is not None:
                 _pid,_target,angle=value['through'][0]
                 gap=10.0
+                # labelAt (E8b): the label stands at the start / middle / end of the drawn arc or in a stated direction; a joined arc defaults to its middle.
+                label_at=obj.get('labelAt');anchored=label_at is not None or bool(join)
+                if label_at is not None or join:
+                    arc_start,arc_sweep=(join['start'],join['sweep']) if join else (angle-span/2,span)
+                    angle={'START':arc_start,'END':arc_start+arc_sweep,'MID':arc_start+arc_sweep/2,None:arc_start+arc_sweep/2}[label_at] if label_at in {'START','END','MID',None} else math.radians(label_at)
                 anchor=vp.screen((centre[0]+(radius+gap/vp.sx)*math.cos(angle),centre[1]+(radius+gap/vp.sy)*math.sin(angle)))
-                labels.append({'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'tex':obj['labelText'],'math':True,'sourceMath':obj['labelText'],
-                               'font':tokens['tickLabel'],'priority':0,'at':list(anchor),'allowSuppress':False,
-                               'directions':('E','NE','N','SE','S','NW','W','SW'),'gaps':(8,12,18,26)})
+                directions=outward_direction_order(anchor,vp.screen(centre)) if anchored else ('E','NE','N','SE','S','NW','W','SW')
+                if obj.get('labelKind')=='TEXT' or obj.get('unit') is not None:
+                    # a plain Korean order sign such as ㉠, or a radius length with its unit (3cm): the same owner-bound label as an arc's
+                    label=mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'directions':directions,'gaps':(8,12,18,26)},obj.get('unit'))
+                    label['font']=tokens['tickLabel']
+                    labels.append(label)
+                else:
+                    labels.append({'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'tex':obj['labelText'],'math':True,'sourceMath':obj['labelText'],
+                                   'font':tokens['tickLabel'],'priority':0,'at':list(anchor),'allowSuppress':False,
+                                   'directions':directions,'gaps':(8,12,18,26)})
         elif kind=='FILL_REGION':
             # A filled region: one even-odd <path> (shapes minus holes) with exact SVG arcs, drawn beneath every stroke. The label is placed inside it.
             if not vp.equal:raise ValueError('REGION_REQUIRES_EQUAL_UNITS')
@@ -636,18 +751,78 @@ def prepare(spec):
                 ring=obj.get('ring',1);first=min(28.0,max(16.0,.25*rays))+9.0*(ring-1)
                 if rays<first+4.5*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
                 steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+4.5*(count-1)
+                angle_sectors[oid]=([v[0],v[1]],start,delta,outer_radius)
                 if style=='SECTOR':
                     # The fill's boundary is the outermost arc, so the darkest edge of the wedge is a real stroke drawn over it.
                     wedge=[v]+[(v[0]+outer_radius*math.cos(start+delta*i/steps),v[1]+outer_radius*math.sin(start+delta*i/steps)) for i in range(steps+1)]
                     primitive({'id':oid+'-sector','kind':'polygon','points':wedge,'token':'secondaryShape','layer':12,'role':'angleSector','mark':'angle','markId':oid,'markIndex':0,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER','fill':SECTOR_FILL,'noStroke':True,'ownerPoints':obj['refs']})
+                group_stroke=ANGLE_EMPHASIS_STROKES.get(obj.get('emphasisGroup'))
                 for k in range(count):
                     radius=first+4.5*k
-                    primitive({'id':oid+'-arc-'+str(k+1),'kind':'polyline','points':[(v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)) for i in range(steps+1)],'token':'secondaryShape','layer':60,'role':'indicator','ownerPoints':obj['refs'],'mark':'angle','markId':oid,'markIndex':k+1,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER'},'curve')
+                    primitive({'id':oid+'-arc-'+str(k+1),'kind':'polyline','points':[(v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)) for i in range(steps+1)],'token':'secondaryShape','layer':60,'role':'indicator','ownerPoints':obj['refs'],'mark':'angle','markId':oid,'markIndex':k+1,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER',**({'stroke':group_stroke} if group_stroke else {})},'curve')
                 if obj.get('labelText') is not None:
                     middle=start+delta/2;anchor=(v[0]+outer_radius*math.cos(middle),v[1]+outer_radius*math.sin(middle))
-                    labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*rays)),'rFar':max(outer_radius+12.0,.92*rays),'arcRadius':outer_radius},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
+                    labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*rays)),'rFar':max(outer_radius+12.0,.92*rays),'arcRadius':outer_radius,'farDistance':ANGLE_LABEL_FAR_DISTANCE_PX,**({'forceLeader':True} if obj.get('labelPlacement')=='LEADER' else {})},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
                 continue
             primitive({'id':oid,'kind':'polyline','points':pts,'token':'indicator','layer':60,'role':'indicator'},'curve')
+        elif kind=='DIMENSION_LINE':
+            if not vp.equal:raise ValueError('DIMENSION_REQUIRES_EQUAL_UNITS')
+            p,q=vp.screen(value['from']),vp.screen(value['to']);style=obj.get('style','BAR')
+            length,d,n,dist=dimension_frame(p,q,obj['side'],obj.get('offset',1),oid)
+            if length<DIM_MIN_LENGTH_PX:raise ValueError('DIMENSION_TOO_SHORT:'+oid)
+            at=lambda base,u,v:(base[0]+d[0]*u+n[0]*v,base[1]+d[1]*u+n[1]*v)
+            def dim_primitive(part,shape,token,**fields):
+                primitive({'id':oid+'-'+part,'kind':shape,'token':token,'layer':52,'role':'indicator','mark':'dimension','markId':oid,'markPart':part,**fields},'curve')
+            foot_from,foot_to=at(p,0,dist),at(q,0,dist)
+            if style=='BRACE':
+                start=dist-2*DIM_BRACE_RADIUS_PX
+                if start<DIM_EXT_GAP_PX+2:raise ValueError('DIMENSION_BRACE_TOO_NEAR:'+oid)
+                if length<4*DIM_BRACE_RADIUS_PX+16:raise ValueError('DIMENSION_TOO_SHORT:'+oid)
+                dim_primitive('brace','polyline','auxiliary',points=[at(p,u,v) for u,v in brace_points(length,start,dist)])
+            else:
+                end_pad=DIM_TICK_HALF_PX if style=='BAR' else -DIM_ARROW_OVERSHOOT_PX
+                for part,base in (('ext-from',p),('ext-to',q)):
+                    dim_primitive(part,'line','indicator',**{'from':at(base,0,DIM_EXT_GAP_PX),'to':at(base,0,dist-end_pad)})
+                dim_primitive('line','line','auxiliary',**{'from':foot_from,'to':foot_to})
+                if style=='BAR':
+                    for part,foot in (('tick-from',foot_from),('tick-to',foot_to)):
+                        dim_primitive(part,'line','auxiliary',**{'from':(foot[0]-n[0]*DIM_TICK_HALF_PX,foot[1]-n[1]*DIM_TICK_HALF_PX),'to':(foot[0]+n[0]*DIM_TICK_HALF_PX,foot[1]+n[1]*DIM_TICK_HALF_PX)})
+                else:
+                    for part,tip,out in (('arrow-from',foot_from,(-d[0],-d[1])),('arrow-to',foot_to,d)):
+                        base=(tip[0]-out[0]*DIM_ARROW_LENGTH_PX,tip[1]-out[1]*DIM_ARROW_LENGTH_PX)
+                        dim_primitive(part,'polygon','indicator',points=[tip,(base[0]-out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]+out[0]*DIM_ARROW_HALF_WIDTH_PX),(base[0]+out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]-out[0]*DIM_ARROW_HALF_WIDTH_PX)],fill='#111')
+            # The label stands on the outer side of the dimension line (of the brace's tip), centred on it; the layout slides it along the line when the middle is taken.
+            anchor=at(p,length/2,dist)
+            labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchor,{'dimensionPlacement':{'anchor':list(anchor),'normal':list(n),'tangent':list(d),'length':length,'gaps':DIM_LABEL_GAPS,'slides':DIM_LABEL_SLIDES}},obj.get('unit')))
+        elif kind=='PATH_LABEL':
+            # One label for the whole length of a bent path: it stands off the path, tied to it by a visible leader that starts ON a drawn segment of the path.
+            path=[vp.screen(p) for p in value['points']];lengths=[math.dist(a,b) for a,b in zip(path,path[1:])];total=sum(lengths)
+            def along(distance):
+                for (a,b),length in zip(zip(path,path[1:]),lengths):
+                    if distance<=length+1e-9:t=distance/length;return (a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t)
+                    distance-=length
+                return path[-1]
+            anchors=[]
+            for fraction in PATH_LABEL_ANCHOR_FRACTIONS:
+                anchor=along(total*fraction)
+                if all(math.dist(anchor,other)>=1.0 for other in anchors):anchors.append(anchor)
+            for (a,b),length in sorted(zip(zip(path,path[1:]),lengths),key=lambda row:-row[1]):          # then the middle of every segment, longest first
+                anchor=((a[0]+b[0])/2,(a[1]+b[1])/2)
+                if all(math.dist(anchor,other)>=1.0 for other in anchors):anchors.append(anchor)
+            # A leader that starts where the path crosses or nears another stroke would read as that stroke's label: anchors that stand clear of every other stroke
+            # (the segment the anchor is on excepted) come first; within that, the order above (the middle of the path first) stays.
+            def clearance(anchor):
+                nearest=PATH_LABEL_CLEAR_PX
+                for o in obstacles:
+                    geometry_o=o.get('geometry')
+                    if o.get('kind') in {'line','curve','auxiliary','axis'} and isinstance(geometry_o,(list,tuple)):
+                        for c,e in zip(geometry_o,geometry_o[1:]):
+                            gap=point_segment_distance(anchor,c,e)
+                            if gap>1e-6:nearest=min(nearest,gap)
+                    elif o.get('kind')=='point' and isinstance(geometry_o,(list,tuple)) and len(geometry_o)>=3:nearest=min(nearest,math.dist(anchor,geometry_o[:2])-geometry_o[2])
+                return nearest
+            anchors.sort(key=lambda anchor:-clearance(anchor))
+            labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchors[0],{'pathOwned':{'ids':list(obj['segments']),'anchors':[list(a) for a in anchors],'gaps':PATH_LABEL_GAPS}},obj.get('unit')))
         elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
             ends=[(vp.screen(geometry[r][0]),vp.screen(geometry[r][1])) for r in obj['refs']];count=obj['count']
             reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1])
@@ -683,17 +858,29 @@ def prepare(spec):
                 label['renderedLines']=[{**row,'markup':serialize(parse(row['text']),'svg') if row['math'] else None} for row in rows]
                 label['lines']=[serialize(parse(row['text']),'plain') if row['math'] else row['text'] for row in rows]
                 label['text']='\n'.join(label['lines']);label['hasMath']=any(v['math'] for v in rows)
+            elif kind=='EQUATION_LABEL' and obj.get('labelKind')=='TEXT':
+                # A plain Korean label on a plane figure (an order sign such as ㉠, a ray name): the text font, never parsed as math.
+                if obj.get('unit') is not None:raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+oid)
+                label.update(text=obj['text'],layoutText=obj['text'],math=False,bindText=True)
             elif kind in {'EQUATION_LABEL','LENGTH_LABEL'} or obj.get('math'):
                 tree=parse(obj['text']);notation=spec['displayFacts'].get('notationByLabel',{}).get(oid,{})
                 entity=notation.get('entity')
                 if entity and tree.kind=='binary' and tree.value=='=' and tree.args[0].kind=='symbol' and tree.args[0].value==entity:tree=Expr('binary','=',(Expr('entity',entity),tree.args[1]))
-                if notation.get('unit'):
+                if obj.get('unit') is not None:
+                    # a plane-mark expression label with its own unit: attached after a number (3cm), one space after a letter (x cm)
+                    if tree.kind=='binary' and tree.value=='=':tree=Expr('binary','=',(tree.args[0],Expr('quantity',obj['unit'],(tree.args[1],))))
+                    else:tree=Expr('quantity',obj['unit'],(tree,))
+                    label['bindText']=True
+                elif notation.get('unit'):
                     if tree.kind=='binary' and tree.value=='=':tree=Expr('binary','=',(tree.args[0],Expr('unit',notation['unit'],(tree.args[1],))))
                     else:tree=Expr('unit',notation['unit'],(tree,))
                 label.update(text=serialize(tree,'plain'),markup=serialize(tree,'svg'),tex=serialize(tree,'tex'),sourceMath=obj['text'],math=True)
                 label['layoutText']=''.join(ET.fromstring('<text>'+label['markup']+'</text>').itertext())
                 if kind=='LENGTH_LABEL' and abs(float(evaluate(parse(obj['text'])))-obj['value'])>1e-9:raise ValueError('DISPLAY_LENGTH_PARITY_FAIL')
             labels.append(label)
+    # An angle label never stands inside another angle mark's sector (it would read as that angle's value): each wedge search knows the other sectors.
+    for label in labels:
+        if 'wedgeSearch' in label:label['wedgeSearch']['others']=[sector for other,sector in angle_sectors.items() if other!=label.get('target')]
     equation_centers=spec['displayFacts'].get('equationLabelCenters',{})
     if not isinstance(equation_centers,dict):raise ValueError('INVALID_EQUATION_LABEL_CENTERS')
     for label_id,center in equation_centers.items():

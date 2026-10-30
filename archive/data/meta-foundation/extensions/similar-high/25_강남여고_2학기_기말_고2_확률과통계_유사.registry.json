@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "stem": "25_강남여고_2학기_기말_고2_확률과통계_유사",
+  "status": "GENERATED_ACTIVE",
+  "registryScope": "GENERATED_ONLY_NOT_RPM_LOCKED",
+  "extensions": [
+    {
+      "key": "EXT-CROSS-SYMMETRIC_PMF_MEAN_FIXED",
+      "kind": "CROSS",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "label": "대칭인 확률분포표의 평균 고정",
+      "definition": "확률분포표가 어떤 값을 중심으로 좌우 대칭이면 평균이 그 중심값이라는 사실을 이용해, 평균 계산 없이 분산·이차 적률의 차이만 비교하는 개념.",
+      "parent": {
+        "conceptKey": "CC_PROBABILITY_DISTRIBUTION_TABLE",
+        "conceptLabel": "확률분포표의 확률 총합 1 성질",
+        "related": [
+          "CC_EXPECTATION_SECOND_MOMENT",
+          "CC_PROBABILITY_DENSITY_SYMMETRY"
+        ]
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "standardCourse": "확률과 통계",
+      "curriculumKey": "2015",
+      "basis": "연속분포의 대칭은 CC_PROBABILITY_DENSITY_SYMMETRY/CC_NORMAL_DISTRIBUTION_SYMMETRY가 있으나 이산확률분포표의 대칭 평균 고정을 가리키는 canonical 개념이 없어 확장했다.",
+      "firstUsed": {
+        "stem": "25_강남여고_2학기_기말_고2_확률과통계_유사",
+        "questionOrdinal": 18
+      },
+      "provenance": {
+        "createdBy": "GEN2_HIGH_SIMILAR_20261029",
+        "sourceExamUid": "25_강남여고_2학기_기말_고2_확률과통계",
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계.js",
+        "note": "Generated-only extension; RPM LOCKED canonical key is not changed (canonicalRpmPromotion=false)."
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-NORMAL_LINEAR_TRANSFORM",
+      "kind": "CROSS",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "label": "정규분포를 따르는 확률변수의 일차변환",
+      "definition": "X가 N(m,σ²)을 따를 때 Y=aX+b가 N(am+b, a²σ²)을 따른다는 사실(평균과 분산의 변환과 정규성 유지)을 이용하는 개념. a<0이어도 표준편차는 |a|σ이다.",
+      "parent": {
+        "conceptKey": "CC_LINEAR_EXPECTATION_PROPERTY",
+        "conceptLabel": "일차변환된 확률변수의 기댓값",
+        "related": [
+          "CC_Z_SCORE_STANDARDIZATION"
+        ]
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "standardCourse": "확률과 통계",
+      "curriculumKey": "2015",
+      "basis": "canonical CC_LINEAR_EXPECTATION_PROPERTY는 평균만 다루며 분산 변환과 정규분포 유지 및 음수 계수의 표준편차를 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "25_강남여고_2학기_기말_고2_확률과통계_유사",
+        "questionOrdinal": 22
+      },
+      "provenance": {
+        "createdBy": "GEN2_HIGH_SIMILAR_20261029",
+        "sourceExamUid": "25_강남여고_2학기_기말_고2_확률과통계",
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계.js",
+        "note": "Generated-only extension; RPM LOCKED canonical key is not changed (canonicalRpmPromotion=false)."
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-SCORE_RULE_TO_SUCCESS_COUNT",
+      "kind": "CROSS",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "label": "득점·실점 규칙의 성공 횟수 일차식 환산",
+      "definition": "시행마다 얻는 점수와 잃는 점수가 정해진 게임에서 최종 점수 조건을 성공 횟수에 대한 일차부등식으로 바꾸어 이항분포의 확률 문제로 환원하는 개념.",
+      "parent": {
+        "conceptKey": "CC_LINEAR_INEQUALITY",
+        "conceptLabel": "일차부등식의 풀이",
+        "related": [
+          "CC_COIN_TOSS_EXPERIMENT",
+          "CC_BINOMIAL_PROBABILITY"
+        ]
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+      "standardCourse": "확률과 통계",
+      "curriculumKey": "2015",
+      "basis": "CC_COIN_TOSS_EXPERIMENT은 동전 던지기 시행 자체를, CC_LINEAR_INEQUALITY는 일반 부등식만 다루며 득실 규칙을 횟수식으로 환산하는 연결 개념이 canonical에 없다.",
+      "firstUsed": {
+        "stem": "25_강남여고_2학기_기말_고2_확률과통계_유사",
+        "questionOrdinal": 21
+      },
+      "provenance": {
+        "createdBy": "GEN2_HIGH_SIMILAR_20261029",
+        "sourceExamUid": "25_강남여고_2학기_기말_고2_확률과통계",
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계.js",
+        "note": "Generated-only extension; RPM LOCKED canonical key is not changed (canonicalRpmPromotion=false)."
+      },
+      "aliases": []
+    }
+  ],
+  "aliasProposals": []
+}

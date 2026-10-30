@@ -1,0 +1,117 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$x^2-4x+3=(x-1)(x-3)$이다.",
+  "caption": "구간함수 f는 x=−3, 1, 3에서 부호가 바뀌므로 네 부분의 넓이를 각각 칠해 더한다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-4",
+        "to": "-3",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-3",
+        "to": "0",
+        "fill": "MEDIUM"
+      },
+      {
+        "id": "S3",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "S4",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "3",
+        "fill": "MEDIUM"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -4,
+        "y": -1
+      },
+      {
+        "id": "B",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "id": "D",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "E",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": -1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q13-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q13-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q13-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q13-solution.svg"
+  }
+}

@@ -3099,6 +3099,99 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
+      "file": "similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사.js",
+      "school": "강남여고",
+      "topic": "수학II",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "유형",
+      "qCount": 25,
+      "rangeStartUnitKey": "H15-M2-03",
+      "rangeStartUnit": "미분계수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-03",
+          "rangeStartUnit": "미분계수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "similar/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계_유사.js",
+      "school": "강남여고",
+      "topic": "확률과통계",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "확률과 통계",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "H15-PS-05",
+      "rangeStartUnit": "확률분포",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-PS-06",
+      "rangeEndUnit": "통계적 추정",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-05",
+          "rangeStartUnit": "확률분포",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-PS-06",
+          "rangeEndUnit": "통계적 추정",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.js",
+      "school": "금당고",
+      "topic": "확률과통계",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "확률과 통계",
+      "contentType": "유형",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-PS-03",
+      "rangeStartUnit": "확률의 뜻과 활용",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-PS-06",
+      "rangeEndUnit": "통계적 추정",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-03",
+          "rangeStartUnit": "확률의 뜻과 활용",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-PS-06",
+          "rangeEndUnit": "통계적 추정",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
       "file": "similar/high/h2/2final/25_매산고_2학기_기말_고2_수학II_유사.js",
       "school": "매산고",
       "topic": "수학II",
@@ -3128,6 +3221,68 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.js",
+      "school": "순천고",
+      "topic": "수학II",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "H15-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "similar/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계_유사.js",
+      "school": "순천고",
+      "topic": "확률과통계",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "확률과 통계",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "H15-PS-05",
+      "rangeStartUnit": "확률분포",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-PS-06",
+      "rangeEndUnit": "통계적 추정",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-05",
+          "rangeStartUnit": "확률분포",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-PS-06",
+          "rangeEndUnit": "통계적 추정",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
     },
     {
       "file": "similar/high/h2/1mid/25_제일고_1학기_중간_고2_유사.js",
@@ -30615,6 +30770,17 @@ window.mainDB = {
       "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P66-69_20261026_유사50.js",
       "school": "백발백중",
       "topic": "백발백중 공통수학2(하) 함수 66~69쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P70-73_20261030_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 함수 70~73쪽 유사문항 50",
       "grade": "고1",
       "examType": "textbook",
       "subject": "공통수학2",

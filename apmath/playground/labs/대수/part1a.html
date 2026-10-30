@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>대수 Part 1. 지수·로그함수 8대 킬러 유형 마스터 칠판</title>
   
   <!-- Pretendard Webfont -->
@@ -423,7 +423,8 @@
     // Replace inline $...$ with KaTeX HTML string
     function formatRichMath(text) {
       if (!text) return '';
-      return text.replace(/\$\$([^$]+)\$\$/g, (_, tex) => renderMath(tex, true))
+      return text.replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>')
+                 .replace(/\$\$([^$]+)\$\$/g, (_, tex) => renderMath(tex, true))
                  .replace(/\$([^$]+)\$/g, (_, tex) => renderMath(tex, false));
     }
 

@@ -130,7 +130,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행선 l, m과 한 점에서 만나는 두 직선이 있고, 그 점의 60°와 40°가 합쳐진 동위각 x(100°)와 40°의 이웃각 y(140°)가 표식으로 드러난다.",
+    "solutionImageCaption": "l∥m이므로 ∠x는 60°+40°=100°와 같고 ∠y는 40°의 이웃각 140°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -197,7 +201,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: AD와 BC가 평행하고 점 A, B에서 직각인 사다리꼴 ABCD에 대각선 AC, BD가 점 O에서 만난다. AB⊥BC이므로 점 A에서 BC에 내린 수선의 발이 B임을 보여 준다. 수선 AB는 굵은 빨간 선으로 강조했다.",
+    "solutionImageCaption": "AD∥BC이고 ∠B=90°이므로 점 A에서 BC에 내린 수선의 발은 B이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -263,7 +271,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 점 Q와 l 밖의 점 P에서 같은 반지름의 호를 그려 QA=QB=PC=PD이고, 각 AQB와 각 CPD가 같은 호 표시로 크기가 같음을 보여 준다. 각 호와 직선 옆의 ㉠~㉥은 문제 그림의 작도 기호이다.",
+    "solutionImageCaption": "같은 반지름의 호로 PC=PD=QA=QB이고 ∠AQB=∠CPD이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -393,7 +405,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O인 원에서 45° 부채꼴의 호가 3cm이고, 135° 부채꼴을 45°씩 세 부분으로 나누면 각 호가 3cm로 같음을 보여 준다.",
+    "solutionImageCaption": "135°는 45°의 3배이므로 호의 길이도 3cm의 3배이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -458,7 +474,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위에 A, M, B, N, C가 차례로 있고 M, N은 각각 AB, BC의 중점이다. BC=x cm이면 AB=2x이고 MB=x cm이며 MN=9cm가 길이 표시선으로 나타난다.",
+    "solutionImageCaption": "BC=x, AB=2x이고 M, N이 중점이므로 MN=MB+BN이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -525,7 +545,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체를 네 모서리의 중점 M, N, P, Q를 지나는 평면으로 잘라 낸 입체이다. 절단면 MNPQ는 직사각형으로 칠했고, 모서리 MQ는 굵은 선, MQ와 꼬인 위치에 있는 모서리 7개는 빨간색이며 보이지 않는 모서리는 점선이다.",
+    "solutionImageCaption": "MQ(굵은 선)와 꼬인 위치인 모서리 7개를 빨간색으로 나타낸 그림",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -591,7 +615,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행선 l, m 사이의 꺾은선에서 두 꼭짓점을 지나는 점선 보조선을 긋고, 엇각 30°, t, y를 표시하여 x=30°+t, 75°=t+y임을 보여 준다.",
+    "solutionImageCaption": "보조 평행선으로 x=30°+t이고 t+y=75°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -654,7 +682,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=7이고 ∠A=30°인 반직선 위에, B를 중심으로 반지름 5인 호가 반직선과 만나는 두 점 C₁, C₂를 표시했다. 삼각형 ABC₁과 ABC₂ 모두 BC=5이므로 조건을 만족해 삼각형이 하나로 정해지지 않는다.",
+    "solutionImageCaption": "조건 ③을 만족하는 두 삼각형 ABC₁, ABC₂",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -786,7 +818,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 C가 선분 AB 위에 있고 정삼각형 ACD, CBE를 세운 그림이다. AC=DC, CE=CB를 같은 눈금으로, ∠ACE와 ∠DCB가 모두 120°임을 호로 표시했고 삼각형 ACE와 DCB를 칠해 합동임을 보였다.",
+    "solutionImageCaption": "합동인 두 삼각형 ACE, DCB",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -852,7 +888,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정오각형 ABCDE와 정팔각형 DEFGHIJK가 변 DE를 공유하고, BC와 JK의 연장선이 점 L에서 만난다. 오각형의 내각 a=108°, 팔각형의 내각 b=135°, 사각형 CDKL의 한 각 ∠CDK=117°를 표시했고, 사각형의 나머지 각 c, d, e는 이름만 표시했다.",
+    "solutionImageCaption": "내각 a, b와 사각형 CDKL의 각 c, d, e",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -983,7 +1023,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB인 반원 O 위의 두 점 C, D에서 OC와 BD가 평행이다. 보조선 OD(점선)를 그어 ∠AOC=∠OBD=x, OB=OD, ∠BOD=180°-2x를 표시했다. 호 AC는 10cm, 호 BD는 16cm이다.",
+    "solutionImageCaption": "평행선과 이등변삼각형으로 구한 중심각의 관계",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -1049,7 +1093,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원의 중심 O에서 반지름 OD, OE를 그은 그림이다. ∠A=50°인 이등변삼각형 ABC의 밑각 65°에서 이등변삼각형 BOD, EOC의 두 밑각은 65°, 꼭지각은 50°이고 부채꼴 DOE(칠한 부분)의 중심각은 80°이다.",
+    "solutionImageCaption": "이등변삼각형과 부채꼴 DOE의 중심각",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -1113,7 +1161,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체 세 개로 ①, ③, ④의 반례를 나타낸 그림. 왼쪽은 밑면(평면 P)에 수직인 모서리 l과 P에 평행한 모서리 m이 꼬인 위치, 가운데는 l에 수직인 m, n이 평행하지 않음, 오른쪽은 l과 평행한 m, l에 수직인 n이 만나지 않는 경우를 보인다.",
+    "solutionImageCaption": "직육면체의 모서리로 ①, ③, ④가 성립하지 않는 경우를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1179,7 +1231,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC와 CDE가 꼭짓점 C를 공유한다. CA=CB, CD=CE를 같은 눈금으로, ∠ACD=∠BCE를 같은 호로 표시하고 합동인 삼각형 ACD와 BCE를 칠했다. ∠DBE=80°이다.",
+    "solutionImageCaption": "합동인 두 삼각형 ACD, BCE",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1245,7 +1301,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 별 모양 오각형에서 두 직선 AD와 BE의 교점 X를 잡고 보조선 XF를 점선으로 그은 그림. 맞꼭지각 ∠BXD와 ∠AXE는 t°로 표시하고 사각형 BXDC를 색칠했으며 ∠AFE=20°를 나타낸다.",
+    "solutionImageCaption": "교점 X와 보조선 XF로 사각형 BXDC와 두 삼각형 AXF, EXF의 각을 나누어 본다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -1312,7 +1372,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 울타리의 꼭짓점 A에 묶인 끈 6 m가 닿는 영역을 세 부분으로 나눈 그림. A 중심 반지름 6 m의 3/4원(27π), 위쪽 모서리를 돌아 반지름 3 m인 사분원(9π/4), 왼쪽 모서리를 돌아 반지름 2 m인 사분원(π)을 색으로 구분했다.",
+    "solutionImageCaption": "끈이 울타리를 돌아 닿는 영역을 세 부분으로 나눈 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -1370,7 +1434,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위에 A, M, B, N, C가 차례로 놓인 그림. AB=2k, BC=3k를 아래 치수선으로, M은 AB의 중점이라 MB=k, N은 BC의 중점이라 BN=3k/2를 같은 눈금과 라벨로 나타냈다.",
+    "solutionImageCaption": "점의 순서 A, M, B, N, C와 각 선분의 길이를 k로 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -1430,7 +1498,11 @@ window.questionBank = [
     "integrationPattern": "DIRECT",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 AB 위의 점 O에서 반직선 OC, OD, OE를 그은 그림. ∠AOC=2x, ∠COD=x, ∠DOE=y, ∠EOB=2y로 표시해 네 각의 합이 평각 180°임을 보여 준다.",
+    "solutionImageCaption": "직선 AB 위의 네 각을 2x, x, y, 2y로 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1491,7 +1563,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 8 cm인 정사각형 ABCD에서 A, B를 중심으로 하는 반지름 8의 호가 만나는 점 E를 잡은 그림. AB=AE=BE로 정삼각형 ABE이고 ∠BAE=∠ABE=60°이며, 두 호와 변 AB로 둘러싸인 색칠한 부분을 나타낸다.",
+    "solutionImageCaption": "정삼각형 ABE와 두 부채꼴이 겹쳐 만든 색칠한 부분을 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -1552,6 +1628,10 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "tagConfidence": "candidate_manual",
-    "tagStatus": "candidate_manual"
+    "tagStatus": "candidate_manual",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC에서 BD=CE인 점 D, E를 잡고 AD와 BE의 교점 P를 나타낸 그림. BD, CE에 같은 눈금, ∠ABD=∠BCE=60°, 합동에서 같은 ∠ADB=∠BEC를 이중 호로 표시하고 삼각형 PBD를 색칠했다.",
+    "solutionImageCaption": "합동인 삼각형 ABD와 BCE에서 대응하는 변과 각을 같은 표시로 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   }
 ];

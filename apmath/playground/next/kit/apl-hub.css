@@ -1,0 +1,200 @@
+/* ==========================================================================
+   AP Math Lab · 허브(실험실 목록) 전용 스타일 — apl.css 위에 얹어 씁니다.
+   ========================================================================== */
+:root, :root[data-theme="board"] {
+  --h-teal: #35c9b0; --h-blue: #5aa8ff; --h-indigo: #8f89ff; --h-violet: #bd8fff;
+  --h-gold: #f4bd4e; --h-orange: #ff9b5e; --h-pink: #ff7ba9; --h-green: #4fdc9a;
+}
+:root[data-theme="paper"] {
+  --h-teal: #0f9580; --h-blue: #1f72d6; --h-indigo: #4f46e5; --h-violet: #8a46e0;
+  --h-gold: #b07800; --h-orange: #d4600f; --h-pink: #d63a72; --h-green: #11965c;
+}
+
+.hub { min-height: 100svh; }
+.hub-top {
+  position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bar) 92%, transparent);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+}
+.hub-top-in { max-width: 1320px; margin: 0 auto; padding: 10px 20px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 16px; align-items: center; }
+.hub-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+.hub-mark { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; background: var(--card); border: 1px solid var(--line-2); }
+.hub-mark svg { width: 26px; height: 26px; }
+.hub-brand b { font-size: var(--fs-lg); font-weight: 850; letter-spacing: -.03em; display: block; line-height: 1.15; }
+.hub-brand small { font-size: var(--fs-2xs); color: var(--text-3); font-weight: 700; letter-spacing: .02em; }
+.hub-search { position: relative; max-width: 560px; width: 100%; justify-self: center; }
+.hub-search .apl-ico { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-3); }
+.hub-search input {
+  width: 100%; min-height: 44px; padding: 0 64px 0 40px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--card);
+  color: var(--text); font-size: var(--fs-sm); outline: none; transition: border-color var(--dur), box-shadow var(--dur);
+}
+.hub-search input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.hub-search .apl-kbd { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
+.hub-tools { display: flex; align-items: center; gap: 6px; }
+.hub-switch { display: inline-flex; align-items: center; gap: 9px; min-height: 40px; padding: 0 12px 0 10px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--card); font-size: var(--fs-xs); font-weight: 750; color: var(--text-2); }
+.hub-switch .knob { width: 34px; height: 20px; border-radius: 999px; background: var(--line-2); position: relative; transition: background var(--dur); }
+.hub-switch .knob::after { content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--card); box-shadow: var(--shadow-sm); transition: transform var(--dur) var(--ease); }
+.hub-switch[aria-pressed="true"] { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+.hub-switch[aria-pressed="true"] .knob { background: var(--accent); }
+.hub-switch[aria-pressed="true"] .knob::after { transform: translateX(14px); }
+
+/* 다른 화면(AP Math Universe · 이전 허브)으로 가는 얇은 링크 줄 */
+.hub-trail { background: var(--bar); border-bottom: 1px solid var(--line); }
+.hub-trail-in { max-width: 1320px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.hub-trail a { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; color: var(--text-2); font-size: var(--fs-xs); font-weight: 700; text-decoration: none; }
+.hub-trail a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+.hub-trail .apl-ico { width: 14px; height: 14px; }
+
+.hub-wrap { max-width: 1320px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* 히어로 */
+.hub-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 28px; align-items: center; padding: 34px 0 26px; }
+.hub-hero h1 { margin: 0; font-size: clamp(28px, 3.3vw, 44px); line-height: 1.18; letter-spacing: -.045em; font-weight: 850; }
+.hub-hero h1 em { font-style: normal; color: var(--accent); }
+.hub-hero p { margin: 14px 0 0; color: var(--text-2); font-size: var(--fs-md); line-height: 1.75; max-width: 560px; }
+.hub-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.hub-stat { display: inline-flex; align-items: baseline; gap: 6px; padding: 8px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-size: var(--fs-xs); color: var(--text-2); font-weight: 650; }
+.hub-stat b { font-size: var(--fs-lg); color: var(--text); font-weight: 850; font-variant-numeric: tabular-nums; }
+.hub-cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.hub-cta a.apl-btn { text-decoration: none; }
+.hub-hero-stage {
+  position: relative; border-radius: var(--r-xl); overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16 / 10.5;
+  background: radial-gradient(120% 90% at 50% 42%, var(--stage-hi), var(--stage) 55%, var(--stage-lo)); box-shadow: var(--shadow);
+}
+.hub-hero-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hub-hero-stage .cap { position: absolute; left: 14px; bottom: 12px; right: 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px; pointer-events: none; }
+.hub-hero-stage .cap span { font-size: var(--fs-2xs); font-weight: 750; color: var(--text-2); background: var(--glass); padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+
+/* 과정 선택 + 보기 전환 */
+.hub-bar { position: sticky; top: 65px; z-index: 20; display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 10px 0; background: linear-gradient(var(--bg) 70%, transparent); }
+.hub-courses { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 2px; }
+.hub-courses::-webkit-scrollbar { display: none; }
+.hub-course {
+  flex: none; display: inline-flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 14px; border-radius: 999px;
+  border: 1px solid var(--line-2); background: var(--card); color: var(--text-2); font-size: var(--fs-sm); font-weight: 750; white-space: nowrap;
+}
+.hub-course .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--hc, var(--accent)); }
+.hub-course .cnt { font-size: var(--fs-2xs); color: var(--text-3); font-weight: 750; }
+.hub-course[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.hub-course[aria-pressed="true"] .cnt { color: color-mix(in srgb, var(--bg) 70%, transparent); }
+.hub-view { flex: none; display: inline-grid; grid-auto-flow: column; padding: 3px; border-radius: 999px; background: var(--card-2); border: 1px solid var(--line); }
+.hub-view button { min-height: 32px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--text-2); font-size: var(--fs-xs); font-weight: 750; display: inline-flex; align-items: center; gap: 6px; }
+.hub-view button[aria-pressed="true"] { background: var(--card); color: var(--text); box-shadow: var(--shadow-sm); }
+.hub-view .apl-ico { width: 15px; height: 15px; }
+
+/* 이어서 하기 / 내 수업 */
+.hub-shelf { margin: 8px 0 18px; display: grid; gap: 10px; }
+.hub-shelf h2 { margin: 0; font-size: var(--fs-sm); font-weight: 800; color: var(--text-2); display: flex; align-items: center; gap: 8px; }
+.hub-shelf-row { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 4px; }
+.hub-mini { flex: none; display: flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); text-decoration: none; color: var(--text); font-size: var(--fs-xs); font-weight: 750; }
+.hub-mini:hover { border-color: var(--hc, var(--accent)); }
+.hub-mini i { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--hc, var(--accent)) 16%, transparent); color: var(--hc, var(--accent)); font-style: normal; }
+.hub-mini i svg { width: 20px; height: 20px; }
+.hub-mini small { display: block; color: var(--text-3); font-weight: 650; font-size: var(--fs-2xs); }
+
+/* 과정 섹션 */
+.hub-sec { margin-top: 26px; scroll-margin-top: 130px; }
+.hub-sec-h { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; padding: 6px 0 12px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.hub-sec-h h2 { margin: 0; font-size: var(--fs-2xl); font-weight: 850; letter-spacing: -.035em; display: flex; align-items: center; gap: 10px; }
+.hub-sec-h h2 .lv { font-size: var(--fs-xs); font-weight: 750; color: var(--hc); padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--hc) 14%, transparent); letter-spacing: 0; }
+.hub-sec-h p { margin: 4px 0 0; color: var(--text-3); font-size: var(--fs-sm); }
+.hub-sec-h .meta { color: var(--text-3); font-size: var(--fs-xs); font-weight: 700; white-space: nowrap; }
+.hub-unit { margin: 18px 0 10px; font-size: var(--fs-xs); font-weight: 800; color: var(--text-2); display: flex; align-items: center; gap: 10px; letter-spacing: .02em; }
+.hub-unit::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+.hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(282px, 1fr)); gap: 14px; }
+.hub-card {
+  --hc: var(--accent); position: relative; display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden;
+  background: var(--card); border: 1px solid var(--line); transition: transform var(--dur) var(--ease), border-color var(--dur), box-shadow var(--dur);
+}
+.hub-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--hc) 55%, var(--line)); box-shadow: var(--shadow); }
+.hub-card:focus-within { border-color: var(--hc); }
+.hub-thumb {
+  position: relative; height: 128px; display: grid; place-items: center; overflow: hidden;
+  background:
+    linear-gradient(var(--m-grid) 1px, transparent 1px) 0 0 / 22px 22px,
+    linear-gradient(90deg, var(--m-grid) 1px, transparent 1px) 0 0 / 22px 22px,
+    radial-gradient(120% 100% at 50% 40%, var(--stage-hi), var(--stage) 60%, var(--stage-lo));
+  border-bottom: 1px solid var(--line);
+}
+.hub-thumb svg { width: 122px; height: 110px; color: var(--hc); filter: drop-shadow(0 0 calc(var(--m-glow) * 10px) color-mix(in srgb, var(--hc) 45%, transparent)); transition: transform .35s var(--ease); }
+.hub-card:hover .hub-thumb svg { transform: scale(1.07) rotate(-1.5deg); }
+.hub-badges { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; gap: 6px; justify-content: space-between; pointer-events: none; }
+.hub-badges > span { display: inline-flex; gap: 5px; }
+.hub-badge { padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 800; background: var(--glass); border: 1px solid var(--line-2); color: var(--text-2); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.hub-badge.v2 { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+.hub-body { padding: 14px 15px 10px; display: grid; gap: 6px; flex: 1; align-content: start; }
+.hub-crumb { font-size: var(--fs-2xs); font-weight: 750; color: var(--hc); }
+.hub-card h3 { margin: 0; font-size: var(--fs-lg); font-weight: 800; letter-spacing: -.03em; line-height: 1.35; }
+.hub-card h3 a { text-decoration: none; color: inherit; }
+.hub-card h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.hub-card p { margin: 0; color: var(--text-2); font-size: var(--fs-xs); line-height: 1.6; }
+.hub-scenes { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.hub-scenes > * { position: relative; z-index: 2; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: var(--card-2); border: 1px solid var(--line); color: var(--text-2); text-decoration: none; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.hub-scenes a:hover { border-color: var(--hc); color: var(--text); }
+.hub-scenes .more { color: var(--text-3); }
+.hub-foot { position: relative; z-index: 2; display: flex; align-items: center; gap: 6px; padding: 10px 12px 12px 15px; }
+.hub-foot .go { margin-right: auto; display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-xs); font-weight: 800; color: var(--hc); text-decoration: none; }
+.hub-foot .go .apl-ico { width: 16px; height: 16px; }
+.hub-foot .legacy { font-size: var(--fs-2xs); color: var(--text-3); text-decoration: none; font-weight: 700; padding: 6px 8px; border-radius: 8px; }
+.hub-foot .legacy:hover { background: var(--hover); color: var(--text); }
+.hub-pin { width: 34px; height: 34px; border-radius: 10px; border: 1px solid transparent; background: transparent; color: var(--text-3); display: grid; place-items: center; }
+.hub-pin:hover { background: var(--hover); color: var(--text); }
+.hub-pin[aria-pressed="true"] { color: var(--m-amber); }
+.hub-pin[aria-pressed="true"] svg path { fill: currentColor; }
+.hub-pin .apl-ico { width: 18px; height: 18px; }
+
+.hub-empty { padding: 60px 20px; text-align: center; color: var(--text-3); border: 1px dashed var(--line-2); border-radius: var(--r-lg); margin-top: 18px; }
+.hub-empty b { display: block; color: var(--text); font-size: var(--fs-lg); margin-bottom: 6px; }
+
+/* 노선도 */
+.hub-metro { margin-top: 18px; border: 1px solid var(--line); border-radius: var(--r-xl); background: radial-gradient(140% 120% at 30% 0%, var(--stage-hi), var(--stage) 55%, var(--stage-lo)); overflow: auto; position: relative; }
+.hub-metro svg { display: block; }
+.hub-metro .col-h { font-size: 13px; font-weight: 850; fill: var(--text); }
+.hub-metro .col-s { font-size: 11px; font-weight: 650; fill: var(--text-3); }
+.hub-metro .ln-name { font-size: 12px; font-weight: 800; }
+.hub-metro .st-name { font-size: 12px; font-weight: 750; fill: var(--text); paint-order: stroke; stroke: var(--stage); stroke-width: 4px; stroke-linejoin: round; }
+.hub-metro a { cursor: pointer; }
+.hub-metro a:hover .st-name, .hub-metro a:focus .st-name { fill: var(--accent); }
+.hub-metro a:hover circle.st, .hub-metro a:focus circle.st { stroke-width: 5; }
+.hub-metro .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 14px 18px 0; font-size: var(--fs-xs); font-weight: 750; color: var(--text-2); }
+.hub-metro .legend span { display: inline-flex; align-items: center; gap: 6px; }
+.hub-metro .legend i { width: 18px; height: 5px; border-radius: 3px; background: var(--c); display: inline-block; }
+.hub-metro .note { padding: 0 18px 14px; font-size: var(--fs-2xs); color: var(--text-3); }
+
+.hub-foot-note { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--text-3); font-size: var(--fs-xs); display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: space-between; }
+.hub-foot-note a { color: var(--text-2); }
+
+@media (max-width: 960px) {
+  .hub-hero { grid-template-columns: 1fr; padding-top: 22px; }
+  .hub-hero-stage { aspect-ratio: 16 / 8.5; }
+}
+@media (max-width: 720px) {
+  .hub-trail-in { padding: 0 14px; }
+  .hub-trail a { min-height: 38px; }
+  .hub-top-in { grid-template-columns: auto auto; grid-template-areas: "brand tools" "search search"; padding: 8px 14px 10px; gap: 8px 10px; }
+  .hub-brand { grid-area: brand; }
+  .hub-tools { grid-area: tools; justify-self: end; }
+  .hub-search { grid-area: search; max-width: none; }
+  .hub-search .apl-kbd { display: none; }
+  .hub-switch .txt { font-size: 0; }
+  .hub-switch .txt::after { content: "수업"; font-size: var(--fs-xs); }
+  .hub-view button { padding: 0 10px; font-size: 0; gap: 0; }
+  .hub-view button .apl-ico { width: 17px; height: 17px; }
+  .hub-bar { gap: 8px; }
+  .hub-wrap { padding: 0 14px 60px; }
+  .hub-bar { top: 108px; }
+  .hub-hero p { font-size: var(--fs-sm); }
+  .hub-grid { grid-template-columns: 1fr; gap: 10px; }
+  .hub-card { display: grid; grid-template-columns: 104px minmax(0, 1fr); }
+  .hub-thumb { height: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--line); }
+  .hub-thumb svg { width: 74px; height: 70px; }
+  .hub-badges { top: 6px; left: 6px; right: 6px; flex-direction: column; align-items: flex-start; }
+  .hub-badges > span:last-child { display: none; }
+  .hub-body { padding: 12px 12px 4px; }
+  .hub-card h3 { font-size: var(--fs-md); }
+  .hub-card p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .hub-foot { grid-column: 2; padding: 6px 10px 10px 12px; }
+  .hub-scenes { display: none; }
+  .hub-sec-h h2 { font-size: var(--fs-xl); }
+  .hub-sec-h .meta { display: none; }
+}

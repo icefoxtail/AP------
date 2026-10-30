@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>공간좌표 3D · AP Math 실험실</title>
+<meta name="description" content="기하: 공간좌표의 수선의 발·대칭이동 최단거리, 평면 교점의 내분비, 구와 평면의 교선원, 구 밖의 점의 최대·최소와 접선의 길이를 3D로 돌려 보며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-space.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<script>
+/* ==========================================================================
+   기하 · 공간좌표 3D (AP Math Lab 2.0 이식본)
+   원본: labs/기하와벡터/공간좌표_3D.html
+   - 문제·단계·두 풀이(examData), 장면 그리기(renderMode1~4), 하단 띠 데이터(makeTapeData)는 원본 그대로입니다.
+   - 원본의 수학 좌표(x, y, z: z가 위쪽)와 draw3D… 함수 이름·인자는 그대로 두고, 실제 그리기만 3D 무대 도우미(apl-space.js)가 맡습니다.
+   - 바뀐 점: 빈 곳을 끌면 회전(무대 공통 기능), 두 손가락 확대, 원근 대신 직교 투영(공간도형 3D와 같음),
+     하단 띠는 그림 아래 별도 줄, 그림은 점·라벨이 모두 들어오도록 자동 맞춤, 분수는 KaTeX 라벨.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+  const { clamp } = APLab;
+
+  /* ===== 원본 상태(이름 그대로) — 매 프레임 2.0 셸 상태에서 채웁니다 ===== */
+  const state = { mode: 1, t12: 1 / 3, d3: 3.0, theta4: Math.acos(3 / 5), lens: 'all', partIdx: null, steps: { 1: true, 2: false, 3: false } };
+
+  /* ===== 원본 그대로: 4대 기출 문제 & 두 풀이 (원본 590–717행) ===== */
+    const examData = {
+      1: {
+        badge: "MODE 1 · 공간좌표 수선의 발·대칭이동 & 평면 경유 최단거리 (AB')",
+        hint: "하단 슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요! <span class='text-sky-300 font-bold'>xy평면 위의 점 P</span>가 대칭점 <span class='text-pink-300 font-bold'>B'(3, 4, -4)를 잇는 일직선</span>과 만날 때 최단거리 <span class='text-amber-300 font-bold'>7</span>이 됩니다!",
+        tag: "수능·평가원 3점·4점 필수 최단거리 유형",
+        targetTime: "목표 시간: 5초",
+        question: () => `좌표공간에서 두 점 ${tex('A(1, 1, 2), \\; B(3, 4, 4)')} 와 ${tex('xy')}평면 위를 움직이는 점 ${tex('P')}가 있다. ${tex('\\overline{AP} + \\overline{PB}')}의 최솟값과 그때의 점 ${tex('P')}가 선분 ${tex('AB')}의 정사영을 내분하는 비를 구하시오.`,
+        answerBadge: () => `최솟값 ${tex('= \\overline{AB\'} = 7')}, 내분비 ${tex('= 2 : 4 = 1 : 2')}`,
+        tSnap: 1 / 3,
+        cam: { yaw: (35 * Math.PI) / 180, pitch: (20 * Math.PI) / 180 },
+        sectionCam: { yaw: Math.atan2(3, 2), pitch: 0 },
+        steps: [
+          "두 점 A(1, 1, 2), B(3, 4, 4) 및 xy평면 수선의 발 A₀(1,1,0), B₀(3,4,0)",
+          "xy평면 위의 동점 P 및 꺾인 경로 AP + PB 표시",
+          "점 B의 xy평면 대칭점 B'(3, 4, -4) 연결 ⇒ 일직선 최단거리 AB' = 7"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('xy')}평면 위의 점을 ${tex('P(x, y, 0)')}이라 두면:<br/>
+&nbsp;&nbsp;${tex('\\overline{AP} + \\overline{PB} = \\sqrt{(x-1)^2 + (y-1)^2 + 4} + \\sqrt{(x-3)^2 + (y-4)^2 + 16}')}<br/>
+② 점 ${tex('B(3, 4, 4)')}를 ${tex('xy')}평면에 대칭이동한 점 ${tex("B'(3, 4, -4)")}를 잡으면 ${tex("\\overline{PB} = \\overline{PB'}")}<br/>
+③ 따라서 ${tex("\\overline{AP} + \\overline{PB} = \\overline{AP} + \\overline{PB'} \\ge \\overline{AB'}")}<br/>
+④ 두 점 ${tex("A(1, 1, 2), B'(3, 4, -4)")} 사이의 거리 공식 적용:<br/>
+&nbsp;&nbsp;${tex("\\overline{AB'} = \\sqrt{(3-1)^2 + (4-1)^2 + (-4-2)^2} = \\sqrt{4 + 9 + 36} = 7")}.`,
+          warning: "⚠️ 수선의 발이나 대칭이동에서 어느 좌표의 부호가 바뀌는지 헷갈리면 부호 실수로 오답이 나옵니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[수선의 발 & 대칭이동 1초 암기법]</strong>:<br/>
+&nbsp;&nbsp;• 『<strong>이름에 있는 문자만 살리고</strong> 나머지 0』 ⇒ ${tex('xy')}평면 수선의 발: <strong class="text-sky-300">${tex('(x, y, 0)')}</strong><br/>
+&nbsp;&nbsp;• 『<strong>이름에 없는 문자만 부호 반대</strong>』 ⇒ ${tex('xy')}평면 대칭이동: <strong class="text-pink-300">${tex("B'(3, 4, -4)")}</strong><br/>
+② 최단거리 ${tex("= \\overline{AB'} = \\sqrt{2^2 + 3^2 + (-6)^2} =")} <strong class="text-amber-300">${tex('\\sqrt{4 + 9 + 36} = 7')}</strong>!<br/>
+③ 최단점 ${tex('P')}는 높이가 ${tex('2 : 4')} 이므로 정사영 선분을 무조건 <strong class="text-emerald-300">${tex('1 : 2')}로 내분</strong>!`,
+          highlight: "💡 3차원 피타고라스 황금 조합 암기: ① (1, 2, 2) → 3  ② (2, 3, 6) → 7  ③ (1, 4, 8) → 9  ④ (3, 4, 12) → 13 !"
+        })
+      },
+
+      2: {
+        badge: "MODE 2 · 기출 1: 선분 AB가 좌표평면과 만나는 교점 & 내분비 (|z₁| : |z₂|)",
+        hint: "선분 AB가 <span class='text-sky-300 font-bold'>xy평면(z = 0)을 뚫고 지나가는 교점 P</span>는 무조건 두 점의 높이 절댓값 비인 <span class='text-amber-300 font-bold'>|z₁| : |z₂| 내분점</span>입니다!",
+        tag: "평가원·수능 4점 내분점 10초 컷 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `좌표공간의 두 점 ${tex('A(-2, 1, 4), \\; B(4, -5, -2)')} 를 잇는 선분 ${tex('AB')}가 ${tex('xy')}평면과 만나는 점을 ${tex('P')}라 하자. 점 ${tex('P')}가 선분 ${tex('AB')}를 내분하는 비 ${tex('m : n')}과 점 ${tex('P')}의 좌표를 구하시오.`,
+        answerBadge: () => `${tex('2 : 1')} 내분점, ${tex('P(2, -3, 0)')}`,
+        tSnap: 2 / 3, // |4| : |-2| = 4 : 2 = 2 : 1 내분점 (t = 2/3)
+        cam: { yaw: (-32 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
+        sectionCam: { yaw: (-45 * Math.PI) / 180, pitch: (2 * Math.PI) / 180 },
+        steps: [
+          "xy평면 위쪽 점 A(-2, 1, 4)와 아래쪽 점 B(4, -5, -2) 연결",
+          "xy평면 수선의 발 A₀, B₀ 및 닮음인 두 직각삼각형 ΔAA₀P ∽ ΔBB₀P",
+          "높이 비 |z₁| : |z₂| = 4 : 2 = 2 : 1 내분점 ⇒ P(2, -3, 0) 즉시 도출!"
+        ],
+        textbook: () => ({
+          steps: `① 선분 ${tex('AB')}를 ${tex('m : n')}으로 내분하는 점 ${tex('P')}의 좌표를 세 문자 모두 작성:<br/>
+&nbsp;&nbsp;${tex('P\\left(\\dfrac{4m - 2n}{m+n}, \\; \\dfrac{-5m + n}{m+n}, \\; \\dfrac{-2m + 4n}{m+n}\\right)')}<br/>
+② ${tex('xy')}평면 위의 점이므로 ${tex('z')}좌표가 ${tex('0')}이어야 함:<br/>
+&nbsp;&nbsp;${tex('\\dfrac{-2m + 4n}{m+n} = 0 \\implies 2m = 4n \\implies m : n = 2 : 1')}<br/>
+③ 다시 ${tex('m = 2, n = 1')}을 ${tex('x, y')}좌표 식에 대입하여 ${tex('P(2, -3, 0)')} 계산...`,
+          warning: "⚠️ m, n 미지수로 내분점 공식을 세 번 다 적은 뒤에 비율을 구하면 식이 번거롭고 시간이 걸립니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 선분 ${tex('AB')}가 ${tex('xy')}평면(${tex('z=0')})을 뚫는다는 것은 <strong>높이(${tex('z')}좌표)가 ${tex('+4')}에서 ${tex('-2')}로 바뀌며 ${tex('0')}을 지난다</strong>는 뜻!<br/>
+② 따라서 내분비는 계산할 필요 없이 무조건 <strong class="text-amber-300">높이의 절댓값 비 ${tex('|z_1| : |z_2| = 4 : 2 = 2 : 1')}</strong>!<br/>
+③ ${tex('2 : 1')} 내분 공식으로 <strong class="text-emerald-300">${tex('x = \\dfrac{8 - 2}{3} = 2, \\; y = \\dfrac{-10 + 1}{3} = -3 \\implies P(2, -3, 0)')}</strong>!`,
+          highlight: "💡 평면 교점 내분비 1초 공식: ① xy평면 교점 = |z₁|:|z₂| ② yz평면 교점 = |x₁|:|x₂| ③ zx평면 교점 = |y₁|:|y₂| !"
+        })
+      },
+
+      3: {
+        badge: "MODE 3 · 구와 평면: d ≤ R일 때 r = √(R² - d²)",
+        hint: "중심에서 평면까지의 거리 <span class='text-pink-300 font-bold'>d</span>와 반지름 <span class='text-amber-300 font-bold'>R</span>을 비교하세요. <span class='text-emerald-300'>d&lt;R</span>이면 원, <span class='text-sky-300'>d=R</span>이면 한 점에서 접하고, <span class='text-rose-300'>d&gt;R</span>이면 만나지 않습니다. 반지름 공식 <span class='text-amber-300'>r=√(R²−d²)</span>은 <span class='text-emerald-300'>d≤R</span>일 때만 적용합니다.",
+        tag: "수능 기하 4점 구의 방정식 최고 빈출",
+        targetTime: "목표 시간: 5초",
+        question: () => `구 ${tex('x^2 + y^2 + (z - 3)^2 = 25')} 가 ${tex('xy')}평면(${tex('z = 0')})과 만나서 생기는 도형(교선원)의 반지름의 길이 ${tex('r')}과 넓이를 구하시오.`,
+        answerBadge: () => `교선원 반지름 ${tex('r = 4')}, 넓이 ${tex('= 16\\pi')}`,
+        dSnap: 3.0,
+        cam: { yaw: (-35 * Math.PI) / 180, pitch: (20 * Math.PI) / 180 },
+        sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (0 * Math.PI) / 180 },
+        steps: [
+          "구의 중심 C(0, 0, 3) 및 구의 반지름 R = 5 와이어프레임",
+          "중심 C에서 xy평면에 내린 수선의 발 H(0, 0, 0) 및 거리 d = 3",
+          "피타고라스 직각삼각형 ΔCHP: 교선원 반지름 r = √(5² - 3²) = 4"
+        ],
+        textbook: () => ({
+          steps: `① 중심 ${tex('C(0,0,3)')}에서 ${tex('xy')}평면까지의 수선의 발은 ${tex('H(0,0,0)')}, 거리 ${tex('CH=d=3')}이다. 평면 위 교점 ${tex('P')}에 대해 ${tex('CH\\perp HP')}이므로 먼저 단면의 직각삼각형을 확인한다.<br/>
+② 반지름 ${tex('CP=5')}이므로 ${tex('HP^2=CP^2-CH^2=25-9=16')}; 따라서 ${tex('r=HP=4')}. 구의 방정식에 ${tex('z=0')}을 대입해도 같은 결과가 나온다:<br/>
+&nbsp;&nbsp;${tex('x^2+y^2=16, \\; z=0')}. 그러므로 교선은 중심 ${tex('H')}인 반지름 ${tex('4')}의 원, 넓이는 ${tex('16\\pi')}이다.<br/>
+③ 일반적으로 중심과 평면 사이 거리 ${tex('d')}에 대해 ${tex('d< R')}이면 원, ${tex('d=R')}이면 한 점(접함), ${tex('d>R')}이면 만나지 않는다.`,
+          warning: "⚠️ 평면이 좌표평면(z=0)이 아니라 비스듬한 평면으로 주어지는 4점 기출에서는 대입법 자체가 불가능합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[구는 무조건 중심 C에서 수선의 발 H를 내린다!]</strong><br/>
+② 구의 반지름(빗변) <strong class="text-sky-300">${tex('R = 5')}</strong>, 중심 ${tex('C(0,0,3)')}에서 평면까지 수직 거리 <strong class="text-pink-300">${tex('d = 3')}</strong>!<br/>
+③ 직각삼각형 피타고라스 정리에 의해 교선원 반지름은 언제나:<br/>
+&nbsp;&nbsp;<strong class="text-amber-300">${tex('r = \\sqrt{R^2 - d^2} = \\sqrt{5^2 - 3^2} = 4')}</strong> ⇒ 넓이 <strong class="text-emerald-300">${tex('= 16\\pi')}</strong>!`,
+          highlight: "d < R이면 교선은 원, d = R이면 한 점에서 접하고, d > R이면 교점이 없습니다. 원이 생기는 경우에만 직각삼각형 CHP에서 R² = d² + r²를 적용합니다."
+        })
+      },
+
+      4: {
+        badge: "MODE 4 · 기출 3: 구 밖의 점에서 최대·최소 거리(d±R) & 접선의 길이",
+        hint: "구 밖의 점 P에서 구 위의 동점 Q까지 거리는 중심을 관통할 때 <span class='text-emerald-300 font-bold'>최대(d+R)</span>·<span class='text-rose-400 font-bold'>최소(d-R)</span>가 되며, 접점 T까지는 <span class='text-amber-300 font-bold'>직각삼각형 ΔCTP (l = √(d²-R²))</span>를 이룹니다!",
+        tag: "수능·평가원 4점 구와 접선 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `원점 ${tex('C(0, 0, 0)')}을 중심으로 하고 반지름이 ${tex('R = 3')} 인 구 ${tex('x^2 + y^2 + z^2 = 9')} 와 구 밖의 점 ${tex('P(4, 0, 3)')} 이 있다. 구 위의 점 ${tex('Q')}에 대하여 ${tex('\\overline{PQ}')}의 최댓값 ${tex('M')}, 최솟값 ${tex('m')}, 그리고 점 ${tex('P')}에서 구에 그은 접선의 길이 ${tex('l = \\overline{PT}')}를 구하시오.`,
+        answerBadge: () => `${tex('M = 8, \\; m = 2, \\; \\text{접선장 } l = 4')}`,
+        thetaSnap: Math.acos(3 / 5),
+        cam: { yaw: (-28 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
+        sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (0 * Math.PI) / 180 },
+        steps: [
+          "구 중심 C(0,0,0), 반지름 R = 3 및 외부 점 P(4,0,3) 연결 (중심거리 d = 5)",
+          "중심 관통선 위의 최댓값 Q_max(d+R = 8) 및 최솟값 Q_min(d-R = 2)",
+          "접점 T에서의 수직 반지름 CT ⊥ PT ⇒ 접선의 길이 l = √(5² - 3²) = 4"
+        ],
+        textbook: () => ({
+          steps: `① 구의 중심 ${tex('C(0, 0, 0)')}에서 점 ${tex('P(4, 0, 3)')}까지의 거리 계산:<br/>
+&nbsp;&nbsp;${tex('d = \\overline{CP} = \\sqrt{4^2 + 0^2 + 3^2} = 5')}<br/>
+② 삼각부등식 ${tex('|\\overline{CP} - \\overline{CQ}| \\le \\overline{PQ} \\le \\overline{CP} + \\overline{CQ}')} 에 의해 ${tex('M = 8, \\; m = 2')}<br/>
+③ 접선 ${tex('PT')}는 접점 반지름 ${tex('CT')}와 수직(${tex('\\angle CTP = 90^\\circ')})이므로 피타고라스 정리로 ${tex('l = \\sqrt{5^2 - 3^2} = 4')}.`,
+          warning: "⚠️ 구에 그은 접점들이 모이면 '접점 원(고깔모자 밑면)'이 되는데, 3D로만 생각하면 반지름 r' = Rl / d (소공식)를 놓치기 쉽습니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 중심거리 <strong class="text-sky-300">${tex('d = \\overline{CP} = \\sqrt{4^2 + 3^2} = 5')}</strong>, 구 반지름 <strong class="text-pink-300">${tex('R = 3')}</strong> 확인!<br/>
+② 중심 관통선에서 <strong class="text-emerald-300">최대 ${tex('M = d + R = 8')}</strong>, <strong class="text-rose-300">최소 ${tex('m = d - R = 2')}</strong> (1초 컷!)<br/>
+③ 접점 ${tex('T')}에서는 무조건 <strong class="text-amber-300">${tex('3 : 4 : 5')} 직각삼각형 ${tex('\\triangle CTP')}</strong>가 만들어지므로 접선장 <strong class="text-amber-300">${tex('l = \\sqrt{5^2 - 3^2} = 4')}</strong>!<br/>
+&nbsp;&nbsp;(보너스: 접점들이 이루는 원의 반지름은 소공식 ${tex("r' = \\dfrac{R \\times l}{d} = \\dfrac{12}{5}")}!)`,
+          highlight: "💡 구 밖의 점 P 문제 3종 세트: ① 최대/최소 = d ± R ② 접선 길이 l = √(d² - R²) ③ 접점 원 반지름 = (R × l) / d (직각삼각형 소공식)!"
+        })
+      }
+    };
+
+  /* ===== 호환층: 원본 draw3D… 이름·인자 → 3D 무대 도우미 =====
+     원본 좌표는 z가 위쪽인 수학 좌표입니다. 무대 도우미는 y가 위쪽이라 w()로 (x, y, z) → (x, z, −y) 로 바꿉니다
+     (원본 project3D의 vx = x, vy = z, vz = −y 와 같은 규칙). */
+  let SP = null, BRD = null;
+  const R2D = 180 / Math.PI;
+  const w = (p) => ({ x: p.x, y: p.z, z: -p.y });
+  /* 원본 inPart와 같은 규칙: 선택한 조각 밖은 흐리게, '작도' 렌즈에서는 3단계(결론) 조각을 흐리게 */
+  function inPart(partIdx, callback) {
+    const focused = state.partIdx;
+    const faint = focused !== null && focused !== partIdx;
+    const c = BRD.ctx;
+    c.save();
+    if (faint) c.globalAlpha *= state.lens === 'focus' ? .1 : .22;
+    else if (state.lens === 'construction' && partIdx === 2) c.globalAlpha *= .32;
+    callback();
+    c.restore();
+  }
+  function draw3DLine(p1, p2, color = '#ffffff', width = 2.2, dashed = false, glow = false) {
+    SP.line(w(p1), w(p2), { color, width, dash: dashed ? [6, 6] : null, glow });
+  }
+  function draw3DPolygon(pts, fillColor = 'rgba(52, 211, 153, 0.14)', strokeColor = null, lineWidth = 2.0, dashed = false) {
+    if (pts.length < 3) return;
+    SP.poly(pts.map(w), { fill: fillColor, color: strokeColor || null, stroke: !!strokeColor, width: lineWidth, dash: dashed ? [5, 5] : null });
+  }
+  /* 점 라벨: 원본처럼 겹치지 않는 자리를 찾아 놓습니다(원본 drawPointLabels의 후보 위치와 같음).
+     맞춤 계산 중에는 글자 상자만 기록하고, 실제로 그릴 때는 큐에 모았다가 flushLabels()가 놓습니다. */
+  let LQ = [];
+  function draw3DPoint(pt, radius = 5.5, color = '#fbbf24', label = '', offset = { x: 10, y: -10 }) {
+    const show = label && state.lens !== 'construction';
+    if (BRD._bbox) { SP.point(w(pt), { r: radius, color, label: show ? label : '', dx: offset.x, dy: offset.y, align: 'left', baseline: 'alphabetic' }); return; }
+    SP.point(w(pt), { r: radius, color });
+    if (show) { const s = BRD.toS(SP.P(w(pt))); LQ.push({ x: s.x, y: s.y, label, color, dx: offset.x, dy: offset.y, alpha: BRD.ctx.globalAlpha }); }
+  }
+  function flushLabels() {
+    const c = BRD.ctx, ins = BRD.insets, placed = [];
+    const right = BRD.W - ins.right - 6, top = ins.top + 4, bottom = BRD.H - ins.bottom - 4, size = 12.5 * BRD.fs;
+    const hit = (a, b) => a.l < b.r + 3 && a.r > b.l - 3 && a.t < b.b + 3 && a.b > b.t - 3;
+    c.save();
+    c.font = `800 ${size}px ${BRD.font}`;
+    for (const it of LQ.filter((i) => !i.low).concat(LQ.filter((i) => i.low))) { // 축 이름(low)은 점 라벨 다음에 놓습니다
+      const wd = c.measureText(it.label).width + 6, h = size + 4;
+      const cands = [[it.dx, it.dy], [13, -20], [-wd - 12, -12], [12, 25], [-wd - 12, 25], [23, 1], [-wd - 15, 1], [0, -33], [0, 39]];
+      let best = null, bc = Infinity;
+      for (const [dx, dy] of cands) {
+        const x = clamp(it.x + dx, 6, Math.max(6, right - wd)), y = clamp(it.y + dy, top + h, bottom);
+        const box = { l: x, r: x + wd, t: y - h + 2, b: y + 3 };
+        const cost = placed.reduce((s, p) => s + (hit(box, p) ? 3000 : 0), 0) + Math.hypot(x - it.x, y - it.y) * 0.4;
+        if (cost < bc) { bc = cost; best = { x, y, box }; }
+        if (cost < 60) break;
+      }
+      placed.push(best.box);
+      c.save();
+      c.globalAlpha = it.alpha;
+      BRD.stext(best.x, best.y, it.label, { color: it.color, size: 12.5, weight: 800, align: 'left', baseline: 'alphabetic' });
+      c.restore();
+    }
+    c.restore();
+    LQ = [];
+  }
+  /* 직각 표시: 원본처럼 3D 안에서 두 방향으로 그린 ㄱ자 */
+  function draw3DRightAngle(originPt, ptA, ptB, sizeMath = 0.42, color = '#fbbf24') {
+    const vA = { x: ptA.x - originPt.x, y: ptA.y - originPt.y, z: ptA.z - originPt.z };
+    const lenA = Math.hypot(vA.x, vA.y, vA.z);
+    const vB = { x: ptB.x - originPt.x, y: ptB.y - originPt.y, z: ptB.z - originPt.z };
+    const lenB = Math.hypot(vB.x, vB.y, vB.z);
+    if (lenA < 0.01 || lenB < 0.01) return;
+    const uA = { x: (vA.x / lenA) * sizeMath, y: (vA.y / lenA) * sizeMath, z: (vA.z / lenA) * sizeMath };
+    const uB = { x: (vB.x / lenB) * sizeMath, y: (vB.y / lenB) * sizeMath, z: (vB.z / lenB) * sizeMath };
+    const at = (a, b) => SP.P(w({ x: originPt.x + a.x + b.x, y: originPt.y + a.y + b.y, z: originPt.z + a.z + b.z }));
+    const O0 = { x: 0, y: 0, z: 0 };
+    BRD.path([at(uA, O0), at(uA, uB), at(O0, uB)], { color, width: 1.8 });
+  }
+  /* 구: 대원 3개(점선) + 시선에 수직인 외곽 원(직교 투영에서는 반지름 R인 원) */
+  function draw3DSphereWireframe(center, R, color = 'rgba(56, 189, 248, 0.35)') {
+    const N = 44;
+    const eqPts = [], xzPts = [], yzPts = [];
+    for (let i = 0; i < N; i++) {
+      const phi = (i / N) * Math.PI * 2;
+      const c = Math.cos(phi), s = Math.sin(phi);
+      eqPts.push({ x: center.x + R * c, y: center.y + R * s, z: center.z });
+      xzPts.push({ x: center.x + R * c, y: center.y, z: center.z + R * s });
+      yzPts.push({ x: center.x, y: center.y + R * c, z: center.z + R * s });
+    }
+    draw3DPolygon(eqPts, null, color, 1.5, true);
+    draw3DPolygon(xzPts, null, color, 1.5, true);
+    draw3DPolygon(yzPts, null, color, 1.5, true);
+    BRD.circle(SP.P(w(center)), R, { fill: 'rgba(56, 189, 248, 0.07)', color: 'rgba(56, 189, 248, 0.8)', width: 2.4, glow: true });
+  }
+  /* 원본의 캔버스 분수 → KaTeX 라벨 */
+  function drawFormulaFractionNear(pt, num, den) {
+    const t = (v) => String(v).replace(/×/g, '\\times ').replace(/[−–]/g, '-');
+    BRD.math('frac', SP.P(w(pt)), `\\dfrac{${t(num)}}{${t(den)}}`, { color: 'amber', dx: 30, dy: 24, box: true });
+  }
+
+  /* ===== 원본 그대로: 보조 원 그리기 (원본 930–939행) ===== */
+    function draw3DCircle(center,radius,u,v,color='#fbbf24',fill='rgba(251,191,36,.12)',width=2) {
+      const N=96,pts=[];
+      for(let i=0;i<N;i++){
+        const t=2*Math.PI*i/N;
+        pts.push({x:center.x+radius*(u.x*Math.cos(t)+v.x*Math.sin(t)),
+                  y:center.y+radius*(u.y*Math.cos(t)+v.y*Math.sin(t)),
+                  z:center.z+radius*(u.z*Math.cos(t)+v.z*Math.sin(t))});
+      }
+      draw3DPolygon(pts,fill,color,width);
+    }
+
+  /* ===== 원본 그대로: 좌표 직육면체 (원본 940–954행, 한 줄만 [2.0 수정]) ===== */
+    function drawCoordinateBox(A) {
+      const x=A.x,y=A.y,z=A.z;
+      const vertices=[];
+      for(const ix of [0,x])for(const iy of [0,y])for(const iz of [0,z]) vertices.push({x:ix,y:iy,z:iz});
+      for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){
+        const n=(vertices[i].x!==vertices[j].x)+(vertices[i].y!==vertices[j].y)+(vertices[i].z!==vertices[j].z);
+        if(n===1)draw3DLine(vertices[i],vertices[j],'rgba(125,211,252,.70)',1.8,true);
+      }
+      // [2.0 수정] 원본의 draw3DPoint({x,y:0},…,'xy 수선의 발')은 z가 없어 좌표가 NaN이라 아무것도 그려지지 않았습니다.
+      // 같은 점은 1단계의 A₀(1,1,0) 라벨로 이미 그려지므로 호출을 뺐습니다.
+      draw3DPoint({x, y:0,z:0},3.0,'#7dd3fc','x축 발',{x:8,y:-9});
+      draw3DPoint({x:0,y,z:0},3.0,'#7dd3fc','y축 발',{x:-51,y:-8});
+      draw3DPoint({x:0,y:0,z},3.0,'#7dd3fc','z축 발',{x:9,y:-7});
+      draw3DPoint({x,y:0,z},3,'#86efac','xz 수선',{x:6,y:16});
+      draw3DPoint({x:0,y,z},3,'#86efac','yz 수선',{x:5,y:14});
+    }
+
+  /* ===== 원본 그대로: 모드별 장면 그리기 (원본 1079–1317행) ===== */
+    // =========================================================================
+    // [모드 1 렌더링] 공간좌표 수선의 발 & xy평면 대칭이동 최단거리 (AB' = 7)
+    // =========================================================================
+    function renderMode1(rect) {
+      const A = { x: 1, y: 1, z: 2 };
+      const B = { x: 3, y: 4, z: 4 };
+      const Bp = { x: 3, y: 4, z: -4 }; // xy평면 대칭점 B'(3, 4, -4)
+
+      const A0 = { x: A.x, y: A.y, z: 0 };
+      const B0 = { x: B.x, y: B.y, z: 0 };
+
+      const t = state.t12;
+      const P = {
+        x: A0.x + t * (B0.x - A0.x),
+        y: A0.y + t * (B0.y - A0.y),
+        z: 0
+      };
+
+      // Step 1: 두 점 A, B에서 xy평면에 내린 수선의 발 A0, B0 및 정사영 선분
+      if (state.steps[1]) inPart(0,()=>{
+        drawCoordinateBox(A);
+        draw3DLine(A, A0, 'rgba(56, 189, 248, 0.7)', 2.2, true);
+        draw3DLine(B, B0, 'rgba(244, 114, 182, 0.7)', 2.2, true);
+        draw3DLine(A0, B0, 'rgba(255, 255, 255, 0.45)', 2.0, true);
+
+        draw3DPoint(A0, 4.5, '#38bdf8', 'A₀(1,1,0)', { x: -65, y: 16 });
+        draw3DPoint(B0, 4.5, '#f472b6', 'B₀(3,4,0)', { x: 10, y: 16 });
+      });
+
+      // Step 3: 점 B의 xy평면 대칭점 B'(3, 4, -4) 및 일직선 최단거리 AB'
+      if (state.steps[3]) inPart(2,()=>{
+        draw3DLine(B0, Bp, 'rgba(244, 114, 182, 0.6)', 2.2, true);
+        draw3DLine(P, Bp, '#f472b6', 2.4, true);
+        draw3DLine(A, Bp, '#fbbf24', 3.4, false, true); // 일직선 최단 경로 AB'
+        draw3DPoint(Bp, 6.5, '#f43f5e', "대칭점 B'(3, 4, -4)", { x: 12, y: 14 });
+
+        const mathPx = 1 + t * 2;
+        const mathPy = 1 + t * 3;
+        const curDist = Math.hypot(mathPx - 1, mathPy - 1, 2) + Math.hypot(3 - mathPx, 4 - mathPy, 4);
+
+        if(state.lens==='measure')drawFormulaFractionNear(P,'5','3');
+      });
+
+
+
+      // Step 2: xy평면 위의 경유점 P 및 실제 꺾인 경로 AP + PB
+      if (state.steps[2]) inPart(1,()=>{
+        draw3DLine(A, P, '#34d399', 3.4, false, true);
+        draw3DLine(P, B, '#34d399', 3.4, false, true);
+        draw3DPoint(P, 7.5, '#fbbf24', `경유점 P (t=${t.toFixed(2)})`, { x: -95, y: -12 });
+      });
+
+      draw3DPoint(A, 7, '#38bdf8', 'A(1, 1, 2)', { x: -75, y: -12 });
+      draw3DPoint(B, 7, '#f472b6', 'B(3, 4, 4)', { x: 12, y: -10 });
+    }
+
+    // =========================================================================
+    // [모드 2 렌더링] 기출 1 - 선분 AB가 xy평면과 만나는 교점 & 내분비 (|z1| : |z2|)
+    // =========================================================================
+    function renderMode2(rect) {
+      const A = { x: -2, y: 1, z: 4 };
+      const B = { x: 4, y: -5, z: -2 };
+      const A0 = { x: A.x, y: A.y, z: 0 };
+      const B0 = { x: B.x, y: B.y, z: 0 };
+
+      const t = state.t12;
+      const P = {
+        x: A.x + t * (B.x - A.x),
+        y: A.y + t * (B.y - A.y),
+        z: A.z + t * (B.z - A.z)
+      };
+
+      // 실제 xy평면 교점 P_hit (t = 2/3)
+      const Phit = {
+        x: A.x + (2 / 3) * (B.x - A.x),
+        y: A.y + (2 / 3) * (B.y - A.y),
+        z: 0
+      };
+
+      // Step 2: 수선의 발 A0, B0 및 닮음인 두 직각삼각형 ΔAA0P_hit ∽ ΔBB0P_hit
+      if (state.steps[2]) inPart(1,()=>{
+        draw3DPolygon([A, A0, Phit], 'rgba(56, 189, 248, 0.22)');
+        draw3DPolygon([B, B0, Phit], 'rgba(244, 114, 182, 0.22)');
+
+        draw3DLine(A, A0, '#38bdf8', 3.0, true);
+        draw3DLine(B, B0, '#f472b6', 3.0, true);
+        draw3DLine(A0, B0, '#fde047', 2.4, true);
+
+        draw3DRightAngle(A0, A, Phit, 0.38, '#38bdf8');
+        draw3DRightAngle(B0, B, Phit, 0.38, '#f472b6');
+
+        draw3DPoint(A0, 5, '#38bdf8', 'A₀ (높이 |z₁|=4)', { x: -105, y: 16 });
+        draw3DPoint(B0, 5, '#f472b6', 'B₀ (깊이 |z₂|=2)', { x: 10, y: -10 });
+      });
+
+      // Step 1: 선분 AB 연결
+      if (state.steps[1]) inPart(0,()=>{
+        draw3DLine(A, B, '#e2e8f0', 3.2, false, true);
+      });
+
+      // Step 3: xy평면 관통 교점 P(2, -3, 0) 강조 및 하단 세로 분수 배너
+      if (state.steps[3]) inPart(2,()=>{
+        draw3DPoint(Phit, 7, '#34d399', '교점 P(2, -3, 0) [2:1 내분]', { x: 14, y: -12 });
+
+        if(state.lens==='measure')drawFormulaFractionNear(Phit,'2×4 + 1×(-2)','2+1');
+      });
+
+
+
+      draw3DPoint(A, 7, '#38bdf8', 'A(-2, 1, 4)', { x: -85, y: -12 });
+      draw3DPoint(B, 7, '#f472b6', 'B(4, -5, -2)', { x: 12, y: 16 });
+      if (Math.abs(t - 2 / 3) > 0.02) {
+        draw3DPoint(P, 6.5, '#fbbf24', `동점 (t=${t.toFixed(2)})`, { x: 10, y: -10 });
+      }
+    }
+
+    // =========================================================================
+    // [모드 3 렌더링] 기출 2 - 구와 평면의 교선원 반지름 공식 (r = √(R² - d²))
+    // =========================================================================
+    function renderMode3(rect) {
+      // 모든 렌더 좌표는 모눈과 동일한 수학 단위 (축소계수 금지).
+      const mathR = 5.0;
+      const mathD = state.d3;
+      const mathR_sec = Math.sqrt(Math.max(0, mathR * mathR - mathD * mathD));
+
+      const R = mathR;
+      const d = mathD;
+      const rSec = mathR_sec;
+
+      const C = { x: 0, y: 0, z: d }; // 구의 중심 C(0, 0, d)
+      const H = { x: 0, y: 0, z: 0 }; // xy평면 수선의 발 H(0, 0, 0)
+      const P = { x: rSec, y: 0, z: 0 }; // 교선원 위의 대표점 P
+
+      // Step 1: 3D 구 와이어프레임 및 중심 C
+      if (state.steps[1]) inPart(0,()=>{
+        draw3DSphereWireframe(C, R);
+      });
+
+      // Step 2: xy평면과 만나서 생기는 교선원(Section Circle) 렌더링
+      if (state.steps[2] && rSec > 0.05) inPart(1,()=>{
+        const N = 48;
+        const secPts = [];
+        for (let i = 0; i < N; i++) {
+          const phi = (i / N) * Math.PI * 2;
+          secPts.push({ x: rSec * Math.cos(phi), y: rSec * Math.sin(phi), z: 0 });
+        }
+        draw3DPolygon(secPts, 'rgba(251, 191, 36, 0.25)', '#fbbf24', 3.2);
+      });
+
+      // Step 3: 피타고라스 직각삼각형 ΔCHP (빗변 R = 5, 높이 d, 밑변 r)
+      if (state.steps[3] && mathD <= mathR + 1e-9) inPart(2,()=>{
+        if (mathD < mathR - 1e-9) draw3DPolygon([C, H, P], 'rgba(244, 114, 182, 0.24)');
+        draw3DLine(C, H, '#f472b6', 3.6, false, true); // 거리 d
+        if (mathD < mathR - 1e-9) draw3DLine(H, P, '#fbbf24', 3.6, false, true); // 교선원 반지름 r
+        if (mathD <= mathR + 1e-9) draw3DLine(C, P, '#38bdf8', 3.6, false, true); // 교선원 위 점까지의 구 반지름 R = 5
+
+        if (d > 0.15 && rSec > 0.15) {
+          draw3DRightAngle(H, C, P, 0.38, '#fbbf24');
+        }
+
+      });
+
+
+
+      draw3DPoint(C, 6.5, '#f472b6', `구 중심 C(0,0,${mathD.toFixed(1)})`, { x: 12, y: -10 });
+      draw3DPoint(H, 5.5, '#34d399', '수선의 발 H(0,0,0)', { x: -115, y: 18 });
+      if (mathD < mathR - 1e-9) draw3DPoint(P, 6.5, '#fbbf24', `교선원 위 P (r≈${mathR_sec.toFixed(2)})`, { x: 12, y: 16 });
+      else if (Math.abs(mathD-mathR) <= 1e-9) draw3DPoint(H, 6.5, '#fbbf24', '접점 H (r=0)', { x: 12, y: 16 });
+    }
+
+    // =========================================================================
+    // [모드 4 렌더링] 기출 3 - 구 밖의 점 P에서 최대·최소(d±R) 및 접선장 l = √(d²-R²)
+    // =========================================================================
+    function renderMode4(rect) {
+      // 수학적 구 중심 C(0,0,0), 반지름 R = 3, 외부 점 P(4, 0, 3) -> 중심거리 d = 5, 접선장 l = 4
+      const C = { x: 0, y: 0, z: 0 };
+      const R = 3;
+      const P = { x: 4, y: 0, z: 3 };
+
+      const angCP = Math.atan2(3.0, 4.0); // xz평면 위 CP의 각도
+      const ux = Math.cos(angCP);
+      const uz = Math.sin(angCP);
+
+      // 최댓값 점 Q_max(d+R = 8) 및 최솟값 점 Q_min(d-R = 2)
+      const Qmax = { x: -R * ux, y: 0, z: -R * uz };
+      const Qmin = { x: R * ux, y: 0, z: R * uz };
+
+      // 접점 T (∠CTP = 90°, cos(∠TCP) = R/d = 3/5)
+      const alpha = Math.acos(3 / 5);
+      const angT = angCP + alpha;
+      const T = { x: R * Math.cos(angT), y: 0, z: R * Math.sin(angT) };
+
+      // 동점 Q
+      const phi = angCP + state.theta4;
+      const Q = { x: R * Math.cos(phi), y: 0, z: R * Math.sin(phi) };
+
+      const theta=state.theta4;
+      const pq=Math.sqrt(34-30*Math.cos(theta));
+      // Step 1: 구 와이어프레임 및 중심 C, 외부 점 P
+      if (state.steps[1]) inPart(0,()=>{
+        draw3DSphereWireframe(C, R);
+      });
+
+      // Step 2: 중심 관통선 및 최대(Q_max, 8), 최소(Q_min, 2) 표시
+      if (state.steps[2]) inPart(1,()=>{
+        draw3DLine(Qmax, P, 'rgba(52, 211, 153, 0.75)', 2.4, true);
+        draw3DPoint(Qmax, 6, '#34d399', '최대 Q_max (d+R = 8)', { x: -135, y: 18 });
+        draw3DPoint(Qmin, 6, '#f43f5e', '최소 Q_min (d-R = 2)', { x: 12, y: 16 });
+      });
+
+      // Step 3: 접선 PT (길이 l = 4) 및 직각삼각형 ΔCTP (∠CTP = 90°)
+      if (state.steps[3]) inPart(2,()=>{
+        // CP의 단위벡터 n, 접점 원 중심 = (R²/d)n; 반지름 R*l/d = 12/5.
+        const n={x:4/5,y:0,z:3/5};
+        const circleCenter={x:(R*R/5)*n.x,y:0,z:(R*R/5)*n.z};
+        const basisU={x:-3/5,y:0,z:4/5},basisV={x:0,y:1,z:0};
+        draw3DCircle(circleCenter,12/5,basisU,basisV,'#fbbf24','rgba(251,191,36,.17)',2.8);
+        const Tp={x:R*Math.cos(angCP-alpha),y:0,z:R*Math.sin(angCP-alpha)};
+        draw3DLine(P,Tp,'rgba(251,191,36,.7)',2,true);
+        draw3DPoint(Tp,5,'#fde68a',"대칭 접점 T′",{x:12,y:14});
+        draw3DPolygon([C, T, P], 'rgba(251, 191, 36, 0.22)');
+        draw3DLine(C, T, '#f472b6', 3.2, false, true); // 반지름 R = 3
+        draw3DLine(P, T, '#fbbf24', 3.6, false, true); // 접선 l = 4
+        draw3DLine(C, P, '#38bdf8', 2.8);              // 중심거리 d = 5
+        draw3DRightAngle(T, C, P, 0.36, '#fbbf24');
+
+        draw3DPoint(T, 6.5, '#fbbf24', '접점 T (∠CTP=90°, PT=4)', { x: -65, y: -14 });
+
+        if(state.lens==='measure')drawFormulaFractionNear(circleCenter,'12','5');
+      });
+
+
+
+      // 동점 Q 표시
+      draw3DLine(P, Q, 'rgba(255,255,255,0.45)', 1.6, true);
+      draw3DPoint(Q, 5.5, '#e2e8f0', `Q (PQ=${pq.toFixed(2)})`, { x: -18, y: -10 });
+      draw3DPoint(C, 6, '#38bdf8', '중심 C(0,0,0)', { x: -45, y: 22 });
+      draw3DPoint(P, 7.5, '#fbbf24', '외부 점 P(4, 0, 3)', { x: 12, y: -10 });
+    }
+
+  /* ===== 원본 그대로: 하단 띠 데이터 (원본 1410–1430행) ===== */
+    function makeTapeData(){
+      if(state.mode===1){
+        const t=state.t12,x=1+2*t,y=1+3*t;
+        const a=Math.hypot(x-1,y-1,2),b=Math.hypot(x-3,y-4,4);
+        return {caption:`AP + PB = ${(a+b).toFixed(2)} ≥ AB′ = 7.00 · 최단 P=(5/3,2,0)`,blocks:[{label:`AP ${a.toFixed(2)}`,value:a,color:'#34d399'},{label:`PB ${b.toFixed(2)}`,value:b,color:'#38bdf8'}],fraction:['5','3']};
+      }
+      if(state.mode===2){
+        const t=state.t12;
+        return {caption:`xy평면 교점 P(2,-3,0) · 내분비 4:2=2:1 · 현재 t=${t.toFixed(2)}, z=${(4-6*t).toFixed(2)}`,blocks:[{label:'AP · 2',value:2,color:'#38bdf8'},{label:'PB · 1',value:1,color:'#f472b6'}],fraction:['2×4−2','3']};
+      }
+      if(state.mode===3){
+        const R=5,d=state.d3;
+        if(d>R+1e-9)return {caption:'d > R, 교점 없음',blocks:[]};
+        if(Math.abs(d-R)<=1e-9)return {caption:'d = R, 평면과 한 점에서 접함 (원형 단면 없음)',blocks:[{label:'d = R = 5',value:R,color:'#f472b6'}]};
+        const r=Math.sqrt(R*R-d*d),exact=Math.abs(d-Math.round(d))<1e-9&&Math.abs(r-Math.round(r))<1e-9;
+        const marker=exact?'=':'≈';
+        return {caption:`R² = d² + r² · 25 ${marker} ${d.toFixed(1)}² + ${r.toFixed(2)}²  |  넓이 ${marker} ${(r*r).toFixed(2)}π`,blocks:[{label:`d ${d.toFixed(1)}`,value:d,color:'#f472b6'},{label:`r ${marker} ${r.toFixed(2)}`,value:r,color:'#fbbf24'}]};
+      }
+      const pq=Math.sqrt(34-30*Math.cos(state.theta4));
+      return {caption:`현재 PQ = ${pq.toFixed(2)}  ·  최소 2 / 최대 8  ·  접선 PT=4  ·  접점 원 r′=12/5`,blocks:[{label:`PQ ${pq.toFixed(2)}`,value:pq,color:'#38bdf8'},{label:'PT 4',value:4,color:'#fbbf24'}],fraction:['12','5']};
+    }
+
+  /* ======================================================================
+     2.0 셸 연결 (새로 작성한 부분)
+     ====================================================================== */
+  /* 좌표축·xy평면(원본 draw3DAxesAndXYPlane과 같은 그림). ext: 장면 크기에 맞춘 축 이름 위치 */
+  function draw3DAxesAndXYPlane(showGrid, ext) {
+    const range = state.mode === 2 ? 6 : 5;
+    if (showGrid) {
+      draw3DPolygon([{ x: -range, y: -range, z: 0 }, { x: range, y: -range, z: 0 }, { x: range, y: range, z: 0 }, { x: -range, y: range, z: 0 }], 'rgba(16, 185, 129, 0.06)', 'rgba(52, 211, 153, 0.28)', 1.2);
+      for (let i = -range; i <= range; i++) {
+        draw3DLine({ x: i, y: -range, z: 0 }, { x: i, y: range, z: 0 }, 'rgba(16, 185, 129, 0.09)', 1);
+        draw3DLine({ x: -range, y: i, z: 0 }, { x: range, y: i, z: 0 }, 'rgba(16, 185, 129, 0.09)', 1);
+      }
+    }
+    // X축(붉은 분필), Y축(초록 분필), Z축(하늘색 분필 - 위쪽 높이!)
+    draw3DLine({ x: -range, y: 0, z: 0 }, { x: Math.max(range, ext.x) + 0.6, y: 0, z: 0 }, 'rgba(248, 113, 113, 0.65)', 2.0);
+    draw3DLine({ x: 0, y: -range, z: 0 }, { x: 0, y: Math.max(range, ext.y) + 0.6, z: 0 }, 'rgba(52, 211, 153, 0.65)', 2.0);
+    draw3DLine({ x: 0, y: 0, z: -ext.zn }, { x: 0, y: 0, z: ext.z + 0.4 }, 'rgba(56, 189, 248, 0.75)', 2.2);
+    const tag = (p, str, color) => {
+      if (BRD._bbox) { SP.text(w(p), str, { color, size: 12.5, weight: 800, align: 'left', baseline: 'alphabetic', dx: 5, dy: -5 }); return; }
+      const s = BRD.toS(SP.P(w(p)));
+      LQ.push({ x: s.x, y: s.y, label: str, color, dx: 5, dy: -5, alpha: 1, low: true });
+    };
+    tag({ x: ext.x, y: 0, z: 0 }, 'x축', '#fca5a5');
+    tag({ x: 0, y: ext.y, z: 0 }, 'y축', '#6ee7b7');
+    tag({ x: 0, y: 0, z: ext.z }, 'z축(높이)', '#7dd3fc');
+  }
+
+  /* 모드별 ‘화면에 꼭 들어와야 할 점’(원본 renderMode의 좌표와 같음)과 구 */
+  const KEY = (m) => {
+    const O = { x: 0, y: 0, z: 0 };
+    if (m === 1) return { pts: [{ x: 1, y: 1, z: 2 }, { x: 3, y: 4, z: 4 }, { x: 3, y: 4, z: -4 }, { x: 1, y: 1, z: 0 }, { x: 3, y: 4, z: 0 }] };
+    if (m === 2) return { pts: [{ x: -2, y: 1, z: 4 }, { x: 4, y: -5, z: -2 }, { x: -2, y: 1, z: 0 }, { x: 4, y: -5, z: 0 }, { x: 2, y: -3, z: 0 }] };
+    if (m === 3) return { pts: [{ x: 0, y: 0, z: state.d3 }, O], sphere: { c: { x: 0, y: 0, z: state.d3 }, R: 5 } };
+    return { pts: [O, { x: 4, y: 0, z: 3 }], sphere: { c: O, R: 3 } };
+  };
+  function extOf(k) {
+    const all = k.pts.slice();
+    if (k.sphere) {
+      const { c, R } = k.sphere;
+      all.push({ x: c.x + R, y: c.y, z: c.z }, { x: c.x - R, y: c.y, z: c.z }, { x: c.x, y: c.y + R, z: c.z }, { x: c.x, y: c.y - R, z: c.z }, { x: c.x, y: c.y, z: c.z + R }, { x: c.x, y: c.y, z: c.z - R });
+    }
+    return {
+      x: Math.max(2, ...all.map((p) => Math.abs(p.x))) + 1,
+      y: Math.max(2, ...all.map((p) => Math.abs(p.y))) + 1,
+      z: Math.max(2, ...all.map((p) => p.z)) + 1,
+      zn: Math.max(3, -Math.min(...all.map((p) => p.z)) + 0.6)
+    };
+  }
+  /* 점·구·축 이름·점 라벨이 모두 화면 안에 들어오도록 무대를 맞춥니다(바닥 평면은 장식이라 넘쳐도 됩니다). */
+  function fitScene(k, ext, drawFn) {
+    const pts = [...k.pts, { x: 0, y: 0, z: 0 }, { x: ext.x, y: 0, z: 0 }, { x: 0, y: ext.y, z: 0 }, { x: 0, y: 0, z: ext.z }].map((p) => SP.P(w(p)));
+    if (k.sphere) {
+      const c = SP.P(w(k.sphere.c)), R = k.sphere.R;
+      pts.push({ x: c.x + R, y: c.y }, { x: c.x - R, y: c.y }, { x: c.x, y: c.y + R }, { x: c.x, y: c.y - R });
+    }
+    const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
+    const bb = BRD.measure(drawFn);
+    BRD.setFocus(BRD.fitBox({ x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys), texts: bb ? bb.texts : [] }, { margin: 0.12, px: 8 }), false);
+  }
+  /* 원본 makeTapeData → 셸의 하단 띠 */
+  function tapeOf(t) {
+    const frac = t.fraction ? `   $\\dfrac{${String(t.fraction[0]).replace(/×/g, '\\times ').replace(/[−–]/g, '-')}}{${t.fraction[1]}}$` : '';
+    return { title: t.caption + frac, segments: (t.blocks || []).map((b) => ({ text: b.label, weight: b.value, color: b.color })) };
+  }
+
+  const RENDER = { 1: renderMode1, 2: renderMode2, 3: renderMode3, 4: renderMode4 };
+  const TH4_TANGENT = Math.acos(3 / 5) * R2D; // 접점 T가 되는 각도 ≈ 53.13°
+  const th4Of = (d) => (Math.abs(d - TH4_TANGENT) < 0.3 ? Math.acos(3 / 5) : d / R2D);
+  function sync(s, m) {
+    state.mode = m;
+    state.t12 = m === 1 ? s.t1 : s.t2;
+    state.d3 = s.d;
+    state.theta4 = th4Of(s.th);
+    state.lens = s.lens;
+    state.partIdx = s.part ? s.part - 1 : null;
+    for (let i = 1; i <= 3; i++) state.steps[i] = s.step >= i || state.partIdx === i - 1;
+  }
+  const cam = (s) => ({ yaw: s.yaw / R2D, pitch: s.pitch / R2D });
+  const CAMS = (m) => ({
+    iso: { yaw: examData[m].cam.yaw * R2D, pitch: examData[m].cam.pitch * R2D },
+    section: { yaw: examData[m].sectionCam.yaw * R2D, pitch: examData[m].sectionCam.pitch * R2D },
+    xy: { yaw: 0, pitch: 85 }
+  });
+  const TITLES = ['수선의 발 & 대칭 최단거리', '기출1: 내분점 & 평면 교점(|z₁|:|z₂|)', '기출2: 구와 평면의 교선원(R²-d²)', '기출3: 구 밖의 점 최대·최소 & 접선장'];
+  const SHORT = ['수선의 발·대칭', '내분점·교점', '구와 평면', '구 밖의 점'];
+  const QUESTIONS = [
+    'xy평면 위를 거쳐 가는 가장 짧은 경로는 한 점을 대칭이동하면 어떻게 구할까?',
+    '선분이 xy평면을 뚫는 점은 두 끝점의 높이 비로 바로 구할 수 있을까?',
+    '구와 평면이 만나는 교선원의 반지름은 중심까지의 거리 d로 어떻게 정해질까?',
+    '구 밖의 한 점에서 구 위의 점까지 거리의 최대·최소와 접선의 길이는 얼마일까?'
+  ];
+  const PART_COLORS = ['sky', 'green', 'amber'];
+  const dist1 = (t) => Math.hypot(t * 2, t * 3, 2) + Math.hypot(3 - (1 + 2 * t), 4 - (1 + 3 * t), 4);
+
+  function readouts(m) {
+    if (m === 1) {
+      const t = state.t12, px = 1 + t * 2, py = 1 + t * 3;
+      return [
+        { label: '두 점 A, B 공간좌표', value: 'A(1,1,2) | B(3,4,4)', color: 'sky' },
+        { label: "xy평면 대칭점 B'", value: "B'(3, 4, -4) [z부호 반대]", color: 'rose' },
+        { label: '현재 AP+PB vs 최단거리', value: `현재 ${dist1(t).toFixed(2)} | 최소 7.00`, color: 'amber' },
+        { label: '경유점 P 좌표 (z = 0)', value: `P(${px.toFixed(2)}, ${py.toFixed(2)}, 0)`, color: 'green' }
+      ];
+    }
+    if (m === 2) {
+      const t = state.t12;
+      return [
+        { label: '두 점 A, B 높이 (z좌표)', value: 'z₁ = +4 | z₂ = -2', color: 'sky' },
+        { label: 'xy평면(z=0) 교점 내분비', value: '|4| : |-2| = 2 : 1 내분', color: 'rose' },
+        { label: '현재 내분점 좌표', value: `(${(-2 + t * 6).toFixed(1)}, ${(1 - t * 6).toFixed(1)}, ${(4 - t * 6).toFixed(1)})`, color: 'amber' },
+        { label: '평면 관통 교점 P', value: 'P(2, -3, 0)', color: 'green' }
+      ];
+    }
+    if (m === 3) {
+      const d = state.d3, r = Math.sqrt(Math.max(0, 25 - d * d));
+      const tangent = Math.abs(d - 5) <= 1e-9;
+      const relation = d < 5 - 1e-9 ? '교선은 원' : tangent ? '한 점에서 접함' : '교점 없음';
+      return [
+        { label: '구 반지름 R / 중심 높이 d', value: `R = 5.00 | d = ${d.toFixed(2)}`, color: 'sky' },
+        { label: d > 5 ? '교선 판정' : relation, value: d > 5 ? 'd > R, 교점 없음' : tangent ? 'd = R, 접점 H (r = 0)' : `r = ${r.toFixed(3)}`, color: 'rose' },
+        { label: d < 5 ? '교선원 둘레 2πr' : tangent ? '접점의 교선원 둘레' : '교선 판정', value: d < 5 ? `${(2 * r).toFixed(2)}π` : tangent ? '원형 단면이 아닌 한 점' : 'd > R, 교점 없음', color: 'amber' },
+        { label: d < 5 ? '교선원 넓이 πr²' : tangent ? '접점의 교선원 넓이' : '교선 판정', value: d < 5 ? `${(r * r).toFixed(2)}π` : tangent ? '원형 단면이 아닌 한 점' : 'd > R, 교점 없음', color: 'green' }
+      ];
+    }
+    const pq = Math.sqrt(34 - 30 * Math.cos(state.theta4));
+    return [
+      { label: '중심거리 d = |CP| / 반지름 R', value: 'd = 5.00 | R = 3.00', color: 'sky' },
+      { label: '최댓값 M = d + R', value: 'M = 5 + 3 = 8.00', color: 'rose' },
+      { label: '최솟값 m = d - R', value: 'm = 5 - 3 = 2.00', color: 'amber' },
+      { label: '현재 PQ / 고정 접선장 PT', value: `PQ = ${pq.toFixed(3)} | PT = 4.00`, color: 'green' }
+    ];
+  }
+  function chips(m) {
+    if (m === 1) return [{ tex: "\\overline{AP} + \\overline{PB} = \\overline{AP} + \\overline{PB'} \\ge \\overline{AB'}" }, { tex: '\\min = 7.00', color: 'amber' }];
+    if (m === 2) return [{ tex: 'm : n = |z_1| : |z_2| = 4 : 2 = 2 : 1' }, { tex: 'P(2, -3, 0)', color: 'amber' }];
+    if (m === 3) {
+      const d = state.d3, relation = d < 5 - 1e-9 ? '교선은 원' : Math.abs(d - 5) <= 1e-9 ? '한 점에서 접함' : '교점 없음';
+      return [{ tex: 'd \\le R: \\; r = \\sqrt{R^2 - d^2}' }, { tex: `d=${d.toFixed(1)}, \\; R=5, \\; \\text{${relation}}`, color: 'amber' }];
+    }
+    const deg = Math.round(state.theta4 * R2D), pq = Math.sqrt(34 - 30 * Math.cos(state.theta4));
+    return [{ tex: 'M = d+R, \\; m = d-R, \\; l = \\sqrt{d^2 - R^2}' }, { tex: `PQ = \\sqrt{34-30\\cos(${deg}^\\circ)} = ${pq.toFixed(2)}`, color: 'amber' }];
+  }
+  function statusOf(s, m) {
+    const view = `시점 ${Math.round(s.yaw)}° · ${Math.round(s.pitch)}° — 빈 곳을 끌면 회전`;
+    if (m !== 3) return { tone: 'info', text: view };
+    const d = state.d3;
+    if (d > 5 + 1e-9) return { tone: 'warn', text: 'd > R: 평면이 구와 만나지 않습니다 (교점 없음)' };
+    if (Math.abs(d - 5) <= 1e-9) return { tone: 'key', text: 'd = R: 평면이 구에 한 점(H)에서 접합니다' };
+    return { tone: 'info', text: view };
+  }
+
+  function sceneOf(m) {
+    const d = examData[m];
+    const tParam = m === 1 ? 't1' : m === 2 ? 't2' : m === 3 ? 'd' : 'th';
+    const iso = () => CAMS(m).iso;
+    return {
+      id: 'mode' + m, title: TITLES[m - 1], short: SHORT[m - 1],
+      question: QUESTIONS[m - 1],
+      guide: d.hint,
+      enter: (s) => { const c = iso(); s.yaw = c.yaw; s.pitch = c.pitch; s.t1 = 1 / 3; s.t2 = 2 / 3; s.d = 3; s.th = TH4_TANGENT; s.lens = 'all'; },
+      controls: () => [tParam, 'yaw', 'pitch'],
+      presets: () => {
+        const c = CAMS(m);
+        const near = (st, t) => Math.abs(st.yaw - t.yaw) < 1 && Math.abs(st.pitch - t.pitch) < 1;
+        return [
+          { group: '시점', label: '제1팔분면 입체 뷰', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
+          { group: '시점', label: '2D 대원 단면 뷰 (필살기)', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
+          { group: '시점', label: 'xy평면 위에서 보기', set: c.xy, ms: 600, on: (st) => near(st, c.xy) },
+          { group: '관찰 렌즈', label: '전체', apply: (st) => { st.lens = 'all'; st.part = null; }, on: (st) => st.lens === 'all' },
+          { group: '관찰 렌즈', label: '작도', apply: (st) => { st.lens = 'construction'; }, on: (st) => st.lens === 'construction' },
+          { group: '관찰 렌즈', label: '길이·비율', apply: (st) => { st.lens = 'measure'; }, on: (st) => st.lens === 'measure' },
+          { group: '관찰 렌즈', label: '조각 확대', apply: (st) => { st.lens = 'focus'; if (st.part == null) st.part = 1; }, on: (st) => st.lens === 'focus' }
+        ];
+      },
+      actions: [{ id: 'spin', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '3D 자동 회전'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+      tick: (s, dt) => { if (!s.playing) return false; s.yaw += 34 * dt; if (s.yaw > 180) s.yaw -= 360; return true; },
+      steps: d.steps,
+      problem: {
+        tag: d.tag, time: d.targetTime, text: d.question, answer: d.answerBadge,
+        snap: () => ({ [tParam]: m === 1 ? 1 / 3 : m === 2 ? 2 / 3 : m === 3 ? 3 : TH4_TANGENT, ...iso() })
+      },
+      solution: { standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
+      view: (s) => {
+        sync(s, m);
+        return {
+          chips: chips(m),
+          status: statusOf(s, m),
+          readouts: readouts(m),
+          parts: d.steps.map((t, i) => ({ id: i + 1, name: `조각 ${i + 1}`, desc: t, color: PART_COLORS[i] }))
+        };
+      },
+      draw: (b, s, v) => {
+        BRD = b;
+        sync(s, m);
+        SP = APLab.space(b, cam(s));
+        const k = KEY(m), ext = extOf(k), rect = { width: b.W, height: b.H };
+        const paint = () => { draw3DAxesAndXYPlane(s.grid, ext); RENDER[m](rect); };
+        fitScene(k, ext, paint);
+        LQ = [];
+        paint();
+        flushLabels();
+        v.tape = tapeOf(makeTapeData());
+      }
+    };
+  }
+
+  APLab.createLab({
+    id: 'geom-space-coord',
+    title: '공간좌표 3D',
+    courseName: '기하',
+    unit: '공간도형과 공간좌표',
+    courseColor: 'var(--m-rose)',
+    home: '../index.html#geom',
+    legacy: '../../labs/기하와벡터/공간좌표_3D.html',
+    board: {
+      kind: 'cartesian', focus: { x: [-4, 4], y: [-4, 4] }, pad: 0.05,
+      // 빈 곳을 끌면 카메라 회전(원본과 같은 감도)
+      orbit: (s, dx, dy) => {
+        s.yaw += dx * 0.0085 * R2D;
+        if (s.yaw > 180) s.yaw -= 360;
+        if (s.yaw < -180) s.yaw += 360;
+        s.pitch = clamp(s.pitch + dy * 0.0075 * R2D, -15, 85);
+      }
+    },
+    params: {
+      yaw: { value: 35, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전 (yaw)', format: (v) => `${Math.round(v)}°` },
+      pitch: { value: 22, min: -15, max: 85, step: 1, color: 'muted', label: '위아래 기울기 (pitch)', format: (v) => `${Math.round(v)}°` },
+      t1: { value: 1 / 3, min: 0, max: 1, step: 0.01, color: 'amber', label: '경유점 위치 t (P는 xy평면 위)', hint: 'P가 A₀B₀ 위를 움직입니다. t = 1/3 에서 AP + PB 가 최소(일직선)', format: (v) => `t = ${v.toFixed(2)} (AP+PB = ${dist1(v).toFixed(2)})` },
+      t2: { value: 2 / 3, min: 0, max: 1, step: 0.01, color: 'amber', label: '내분 비율 t (A → B)', hint: 't = 2/3 에서 선분이 xy평면(z = 0)을 뚫습니다', format: (v) => `t = ${v.toFixed(2)} (z = ${(4 - 6 * v).toFixed(2)})` },
+      d: { value: 3, min: 0, max: 6, step: 0.1, color: 'rose', label: '구 중심 높이 d = |z_C|', hint: 'd ≤ R 일 때 교선원의 반지름 r = √(R²−d²)', format: (v) => { const r = Math.sqrt(Math.max(0, 25 - v * v)); const rel = v < 5 - 1e-9 ? '교선은 원' : Math.abs(v - 5) <= 1e-9 ? '한 점에서 접함' : '교점 없음'; return `d = ${v.toFixed(2)} (${rel}${v < 5 ? `, r≈${r.toFixed(2)}` : ''})`; } },
+      th: { value: 53.13, min: 0, max: 360, step: 0.5, color: 'amber', label: '구 위 동점 Q의 각도 θ', hint: '53° 근처에서 Q가 접점 T와 겹칩니다 (최대 d+R · 최소 d−R · 접선장 l)', format: (v) => { const t = th4Of(v); return `θ = ${Math.round(t * R2D)}° (PQ = ${Math.sqrt(34 - 30 * Math.cos(t)).toFixed(2)} / PT = 4.00)`; } }
+    },
+    state: { lens: 'all' },
+    persist: ['lens'],
+    scenes: [1, 2, 3, 4].map(sceneOf)
+  });
+});
+</script>
+</body>
+</html>
