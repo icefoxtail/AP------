@@ -1,4 +1,3 @@
-// R1 independent review + R2 student explanations + R3 candidate. Original scan unchanged; see provenance.
 window.examTitle = "26_순천고_2학기_중간_고2_확률과통계";
 window.questionBank = [
   {
