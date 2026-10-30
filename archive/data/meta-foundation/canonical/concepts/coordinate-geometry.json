@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.1.7",
+  "shardVersion": "1.1.8",
   "status": "ACTIVE",
-  "conceptCount": 43,
+  "conceptCount": 44,
   "concepts": [
     {
       "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
@@ -1941,6 +1941,41 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_POLYGON_AREA_SHOELACE",
+      "canonicalLabelKo": "다각형의 좌표 넓이",
+      "definition": "다각형 꼭짓점 좌표를 순서대로 사용해 신발끈 공식 또는 분할로 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-09"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_POLYGON_AREA_SHOELACE for PT_FUNCTION_GRAPH_GEOMETRY/TPL_GRAPH_AREA_BY_SYMMETRY at H22-C2-09-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_GEOMETRY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-09"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     }
