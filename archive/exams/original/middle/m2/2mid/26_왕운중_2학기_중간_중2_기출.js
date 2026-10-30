@@ -67,7 +67,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q001_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q001_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 ∠B의 이등분선 BD가 만드는 두 각 36°, 삼각형 BDC의 ∠C와 ∠BDC가 모두 72°임을 호 표식과 눈금으로 보인 그림",
+    "solutionImageCaption": "AB=AC이고 BD가 ∠B를 이등분하므로 삼각형 BDC의 세 각이 36°, 72°, 72°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -134,7 +138,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q002_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q002_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 DEF의 직각 B, E 표시와 빗변 AC, DF에 같은 길이 눈금, ∠A와 ∠D에 같은 호 표식을 그려 RHA 합동 조건을 보인 그림",
+    "solutionImageCaption": "빗변의 길이 AC=DF와 한 예각 ∠A=∠D가 각각 같으면 두 직각삼각형은 RHA 합동이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -271,7 +279,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q004_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q4-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 외심 O가 변 BC 아래쪽에 있는 삼각형 ABC에서 ∠B=45°, ∠BOC=160°, ∠BAC=100°, ∠C=35°를 표시하고, 직각삼각형 ADC의 외심 O′이 AC의 중점이며 O′A=O′C=O′D=O′O임을 눈금으로 보인 그림",
+    "solutionImageCaption": "O가 BC 아래에 있어 ∠BAC=100°, ∠C=35°이고 O′은 AC의 중점이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -338,7 +349,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_r2_adjudicated",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q005_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q005_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 BDE와 CEF에서 BE=CF, BD=CE 눈금과 ∠B=∠C=50°를 표시하고, AC 위에 AF=3, FC=5 길이를 나타내어 AC=AF+FC임을 보인 그림",
+    "solutionImageCaption": "BE=CF, BD=CE로 두 직각삼각형이 합동이므로 ∠B=∠C이고 AC=AF+FC이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -405,7 +420,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q006_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q006_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: BA=BC인 이등변삼각형에서 꼭짓각의 이등분선 BD가 AC와 수직이고 D가 AC의 중점임을 직각 표시와 눈금으로 보이고, BD 위의 점 P에 대해 AP=CP와 ∠BAP=∠BCP를 표식으로 나타낸 그림",
+    "solutionImageCaption": "BD가 AC의 수직이등분선이므로 AP=CP이고 ∠BAP=∠BCP이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
