@@ -556,7 +556,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD를 선분 EF로 접어 점 C가 점 A에 포개진 그림. ∠EAF=72°, ∠AEC=108°, ∠AEF=∠FEC=54°, ∠EFA=54°를 표시하고 EA=EC이며, ∠EFD와 ∠GFE가 대응각이라 같음을 같은 호 표시로 나타낸다.",
+    "solutionImageCaption": "접어 겹친 선분 EF가 ∠AEC를 54°씩 나누고 ∠EFD=∠GFE이다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -589,7 +593,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위의 점 P에서 BP:PC=3:2이고 △ABC의 넓이가 75cm²임을 표시하고, 꼭짓점 A에서 BC에 내린 공통 높이와 △ABP, △APC를 서로 다른 색으로 칠해 나타낸 그림.",
+    "solutionImageCaption": "높이가 같은 두 삼각형의 넓이비는 밑변의 비 3:2이다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -622,7 +630,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 점 D, A, E와 수선 DB=6cm, EC=8cm, 직각이등변삼각형 ABC의 직각 A를 그리고 △ADB와 △CEA의 대응각·변을 표시하며 AD=8cm, AE=6cm, DE=14cm와 사다리꼴 DBCE의 넓이 98cm²를 나타낸 그림.",
+    "solutionImageCaption": "합동인 두 직각삼각형으로 AD=CE=8cm, AE=DB=6cm, DE=14cm를 얻는다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -655,7 +667,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠C=90°인 직각삼각형 ABC의 외접원(중심 O가 빗변 AB의 중점)과 내접원(중심 I)을 그리고 AB=5cm, BC=3cm, AC=4cm를 표시했으며 I에서 세 변에 내린 같은 길이의 수선 r을 점선으로 나타낸 그림.",
+    "solutionImageCaption": "외심 O는 AB의 중점이고 내심 I에서 세 변까지의 거리 r은 같다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -688,7 +704,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD에서 AB 위의 점 E와 대각선 BD 위의 점 F를 잡아 BE=BF=12, BC=18을 표시하고, ∠BEF, ∠EFB, ∠DFC, ∠DCF가 같음을 호 표시로 나타내며 DF=DC=18을 두 눈금과 길이로 표시한 그림.",
+    "solutionImageCaption": "네 각 ∠BEF, ∠EFB, ∠DFC, ∠DCF가 같으므로 DF=DC이다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -713,7 +733,11 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 x+y-5=0, -3x+y+7=0과 교점을 표시하고, 세 번째 직선 ax+y+4=0이 첫째 직선과 평행한 경우, 둘째 직선과 평행한 경우, 두 직선의 교점을 지나는 경우의 세 위치를 그린 그림.",
+    "solutionImageCaption": "세 번째 직선이 평행하거나 교점을 지나면 삼각형이 만들어지지 않는다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -771,6 +795,10 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 두 대각선이 O에서 직각으로 만나고 OC=6cm이며 OD(x)와 같은 길이 표시가 있다. E에서 ∠BEO=65°, 꼭짓점 B에서 ∠ABE=y(빨강), ∠EBO=25°(파랑), ∠ABO=45°(초록) 호를 보여 준다.",
+    "solutionImageCaption": "정사각형의 대각선 성질과 ∠BEO=65°에서 꼭짓점 B의 세 각 y, 25°, 45°의 관계를 표시한 그림이다.",
+    "solutionImageSize": "medium"
   }
 ];
