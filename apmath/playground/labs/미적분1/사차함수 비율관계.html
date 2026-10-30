@@ -516,9 +516,11 @@
       kLine: 2.0,               // Mode 5 수평선 y = k 스캐너
       dualView: false,          // 상하 동기화 뷰
       steps: { 1: true, 2: false, 3: false },
-      scale: 48,
-      offsetX: -75,
-      offsetY: -20,
+      scale: 48,                // x·y 공통 단위 길이(px). 두 축의 단위 길이는 항상 같다(1:1)
+      offsetX: 0,               // 사용자가 끌어 옮긴 양 (fitView가 정한 위치에 더해짐)
+      offsetY: 0,
+      originX: 460,             // fitView가 정한 원점(x=0) px
+      originY: { main: 430, deriv: 640 }, // fitView가 정한 각 칠판의 y=0 높이 px
       showGrid: true,
       autoPlay: false,
       animDir: 1,
@@ -768,35 +770,68 @@
       canvas.height = rect.height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const minDim = Math.min(rect.width, rect.height);
-      if (!state.userZoomed) {
-        state.scale = Math.max(32, Math.min(52, minDim / 13.8));
-      }
+      fitView();
       render();
     }
 
     window.addEventListener('resize', resizeCanvas);
 
-    function getPaneCenterY(pane, rectHeight) {
-      if (!state.dualView) {
-        return rectHeight * 0.48 + state.offsetY;
+    // 모드별 보기 창: 꼭 보여야 할 world 범위. x·y 단위 길이는 같게(1:1) 두고 이 범위가 들어오도록 scale을 정한다.
+    //   x: 가로 범위, px: 점 라벨이 차지하는 왼쪽·오른쪽 여백(px), y: 주 칠판 세로 범위, dy: 동시 뷰의 아래 칠판 세로 범위
+    const VIEW = {
+      1: { x: [0, 4], px: [125, 150], y: [-5.5, 2.8], dy: [-4.5, 2] },
+      2: { x: [-1.83, 3.83], px: [105, 136], y: [-2.8, 2.8], dy: [-3.5, 3.5] },
+      3: { x: [-1, 3], px: [120, 116], y: [-2.8, 2.8], dy: [-3.5, 3.5] },
+      4: { x: [-1, 3], px: [120, 195], y: [-8.3, 2.8], dy: [-6.2, 1.8] },
+      5: { x: [-0.22, 4], px: [113, 150], y: [-5.5, 4.8], dy: [-4.5, 2] }
+    };
+
+    function fitView() {
+      if (state.userZoomed) return;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const W = rect.width;
+      const H = rect.height;
+      const v = VIEW[state.mode];
+      const split = state.dualView ? H * 0.58 : H;
+      // 안내 패널·도구 막대를 피해 그림을 놓는다. 넓은 화면에서 패널이 칠판 높이의 큰 부분을 가리면 패널 오른쪽 빈 곳에 놓되
+      // 그 자리가 좁아 그림이 더 작아지면 패널 아래 가운데에 놓는다. 좁은 화면(칠판 전체가 패널에 덮임)에서는 칠판 안에 맞추기만 한다.
+      const panel = canvas.parentElement.querySelector('.absolute.top-3').getBoundingClientRect();
+      const bar = canvas.parentElement.querySelector('.absolute.bottom-4').getBoundingClientRect();
+      const gapT = panel.bottom - rect.top + 10;
+      const gapB = rect.bottom - bar.top + 8;
+      const tall = gapT > split * 0.4 && W >= 900;
+      const padB = gapB < H * 0.2 ? Math.max(gapB, 84) : 28; // 84: 하단 판서 배너(step 3)를 피한다
+      const bandD = H - split - 34 - padB;
+      const place = (left, padT) => {
+        const availW = Math.max(W - left - v.px[0] - v.px[1], 24);
+        const bandM = split - padT - (state.dualView ? 28 : padB);
+        let s = Math.min(54, availW / (v.x[1] - v.x[0]), bandM / (v.y[1] - v.y[0]));
+        if (state.dualView) s = Math.min(s, bandD / (v.dy[1] - v.dy[0]));
+        return { left, padT, availW, bandM, s };
+      };
+      let p = place(tall ? panel.right - rect.left + 8 : 0, gapT > split * 0.4 ? 28 : gapT);
+      if (tall) {
+        const q = place(0, gapT);
+        if (q.s > p.s * 1.15) p = q;
       }
-      if (pane === 'main') {
-        return rectHeight * 0.28 + state.offsetY * 0.55;
-      } else {
-        return rectHeight * 0.78 + state.offsetY * 0.30;
-      }
+      state.scale = Math.max(p.s, 2);
+      state.originX = p.left + v.px[0] + p.availW / 2 - state.scale * (v.x[0] + v.x[1]) / 2;
+      state.originY.main = p.padT + p.bandM / 2 + state.scale * (v.y[0] + v.y[1]) / 2;
+      state.originY.deriv = split + 34 + bandD / 2 + state.scale * (v.dy[0] + v.dy[1]) / 2;
     }
 
+    function getPaneCenterY(pane) {
+      return (pane === 'main' ? state.originY.main : state.originY.deriv) + state.offsetY;
+    }
+
+    // y축 단위 길이도 x축과 같다 (어느 칠판이든 1:1)
     function getPaneScaleY(pane) {
-      if (!state.dualView) return state.scale * 0.78;
-      return pane === 'main' ? state.scale * 0.54 : state.scale * 0.42;
+      return state.scale;
     }
 
     function toScreen(x, y, pane = 'main') {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      const cx = rect.width * 0.46 + state.offsetX;
-      const cy = getPaneCenterY(pane, rect.height);
+      const cx = state.originX + state.offsetX;
+      const cy = getPaneCenterY(pane);
       const sy = getPaneScaleY(pane);
       return {
         x: cx + x * state.scale,
@@ -805,9 +840,8 @@
     }
 
     function toMath(px, py, pane = 'main') {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      const cx = rect.width * 0.46 + state.offsetX;
-      const cy = getPaneCenterY(pane, rect.height);
+      const cx = state.originX + state.offsetX;
+      const cy = getPaneCenterY(pane);
       const sy = getPaneScaleY(pane);
       return {
         x: (px - cx) / state.scale,
@@ -1722,11 +1756,15 @@
     function toggleDualView() {
       state.dualView = !state.dualView;
       updateDualViewButtonUI();
+      fitView();
       render();
     }
 
     function setMode(m) {
       state.mode = m;
+      state.userZoomed = false; // 새 문항은 그 문항의 보기 창으로 시작한다
+      state.offsetX = 0;
+      state.offsetY = 0;
       state.steps = { 1: true, 2: false, 3: false };
       [1, 2, 3].forEach((s) => {
         const stepButton = document.getElementById(`stepBtn${s}`);
@@ -1785,6 +1823,7 @@
       const target = examData[state.mode].snap;
       state.dualView = target.dualView;
       updateDualViewButtonUI();
+      fitView();
 
       state.snapAnim.active = true;
       state.snapAnim.startA = state.a;
@@ -1869,14 +1908,14 @@
 
     function zoomCanvas(factor) {
       state.userZoomed = true;
-      state.scale = Math.max(22, Math.min(110, state.scale * factor));
+      state.scale = Math.max(2, Math.min(110, state.scale * factor));
       render();
     }
 
     function resetView() {
       state.userZoomed = false;
-      state.offsetX = -75;
-      state.offsetY = -20;
+      state.offsetX = 0;
+      state.offsetY = 0;
       resizeCanvas();
     }
 
@@ -2078,6 +2117,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       setMode(1);
       resizeCanvas();
+      if (document.fonts) document.fonts.ready.then(resizeCanvas); // 웹폰트가 들어와 안내 패널 높이가 바뀌면 보기 창을 다시 맞춘다
       requestAnimationFrame(animateLoop);
     });
   </script>
