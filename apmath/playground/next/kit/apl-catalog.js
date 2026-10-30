@@ -360,6 +360,7 @@ window.APLab.catalog = {
     "1등급 결정타 함정 연구소"
    ],
    "legacy": "labs/공통수학/이차함수.html",
+   "next": "next/labs/common-quadratic.html",
    "glyph": "<path d=\"M8 68 Q40 8 72 68\"/><line x1=\"40\" y1=\"8\" x2=\"40\" y2=\"70\" stroke-dasharray=\"3 3\"/><circle cx=\"40\" cy=\"24\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
    "sceneTotal": 30
   },
@@ -408,6 +409,7 @@ window.APLab.catalog = {
     "킬러 응용 (중선·이등분·반사)"
    ],
    "legacy": "labs/공통수학/원의 방정식.html",
+   "next": "next/labs/common-circle-eq.html",
    "glyph": "<circle cx=\"40\" cy=\"42\" r=\"24\"/><line x1=\"8\" y1=\"42\" x2=\"72\" y2=\"42\" stroke-dasharray=\"3 3\"/><line x1=\"40\" y1=\"8\" x2=\"40\" y2=\"72\" stroke-dasharray=\"3 3\"/><circle cx=\"40\" cy=\"42\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
    "sceneTotal": 32
   },
