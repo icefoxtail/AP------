@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 포물선 실전 킬러 랩 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 3개 시나리오 = 12장면
@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 4대 모드 × 3종 세부 시나리오 기출·솔루션 데이터 (원본 535–869행) ===== */
     const examData = {
       1: {
-        badge: "MODE 1 · 포물선의 정의, 정삼각형, 최단 거리",
+        badge: "장면 1 · 포물선의 정의, 정삼각형, 최단 거리",
         hint: "노란 점 P를 위아래로 끌어 보며 <span class='text-pink-300 font-bold'>PF = PH = x₁ + p</span>가 항상 성립함과, PA + PF가 가장 작을 때 <span class='text-amber-300 font-bold'>점 P가 점 A에서 준선에 내린 수선 위에 놓임</span>을 확인하세요.",
         subTitles: ["① 기본 정의 (PF=6)", "② 정삼각형 PFH", "③ 최솟값 PA+PF"],
         subData: {
@@ -125,7 +125,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       2: {
-        badge: "MODE 2 · 초점을 지나는 현의 두 부분의 길이 a, b: 1/a + 1/b = 1/p 와 cosθ",
+        badge: "장면 2 · 초점을 지나는 현의 두 부분의 길이 a, b: 1/a + 1/b = 1/p 와 cosθ",
         hint: "초점을 지나는 현의 끝점 A 또는 B를 끌어 돌려 보며(a = AF, b = BF), <span class='text-sky-300 font-bold'>1/a + 1/b = 1/p</span>가 항상 성립함과 직각삼각형 ABE에서 <span class='text-amber-300 font-bold'>cosθ = (a-b)/(a+b)</span>임을 확인하세요.",
         subTitles: ["① 길이비 3:1 (θ=60°)", "② 길이비 2:1 (cosθ=1/3)", "③ 축에 수직인 현 (θ=90°)"],
         subData: {
@@ -152,7 +152,7 @@ window.addEventListener('DOMContentLoaded', function () {
               steps: `① 초점을 지나는 현의 두 부분의 길이 ${tex('a, b')} 사이에는 <strong class="text-sky-300">${tex('\\dfrac{1}{a} + \\dfrac{1}{b} = \\dfrac{1}{p}')}</strong>이 성립하므로 ${tex('p = 2, a = 8')}을 대입한다:<br/>
 &nbsp;&nbsp;${tex('\\dfrac{1}{8} + \\dfrac{1}{b} = \\dfrac{1}{2} \\implies \\dfrac{1}{b} = \\dfrac{3}{8} \\implies')} <strong class="text-amber-300">${tex('b = \\dfrac{8}{3}')}</strong><br/>
 ② 길이비가 ${tex('a : b = 3 : 1')} 이므로 직각삼각형 ${tex('\\triangle ABE')}에서 <strong class="text-emerald-300">${tex('\\cos\\theta = \\dfrac{3-1}{3+1} = \\dfrac{1}{2} \\implies \\theta = 60^\\circ, \\; m = \\sqrt{3}')}</strong>이다.`,
-              highlight: "초점을 지나는 현에서 a = AF, b = BF라 하면 1/a + 1/b = 1/p 이고, 직각삼각형 ABE에서 cosθ = (a-b)/(a+b) 입니다. 이 두 관계로 연립방정식 없이 b와 기울기를 구할 수 있습니다."
+              highlight: "초점을 지나는 현에서 a = AF, b = BF라 하면 1/a + 1/b = 1/p 이고, 직각삼각형 ABE에서 cosθ = (a-b)/(a+b) 입니다. 두 관계 1/a + 1/b = 1/p 와 cosθ = (a-b)/(a+b)로 연립방정식 없이 b와 기울기를 구할 수 있습니다."
             })
           },
           2: {
@@ -207,7 +207,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       3: {
-        badge: "MODE 3 · 초점을 지나는 현을 지름으로 하는 원과 준선, 두 접선의 수직",
+        badge: "장면 3 · 초점을 지나는 현을 지름으로 하는 원과 준선, 두 접선의 수직",
         hint: "원 C는 항상 준선에 접하고(<span class='text-amber-300 font-bold'>d = R</span>), 양 끝점 A, B에서 그은 <span class='text-purple-300 font-bold'>두 접선은 준선 위의 점 Q(=H_M)에서 90°로 만납니다</span>.",
         subTitles: ["① 원과 준선 접함 (d=R)", "② 두 접선 직교 (∠AH_MB=90°)", "③ θ=45°일 때의 원"],
         subData: {
@@ -277,7 +277,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 근과 계수의 관계에서 ${tex('x_A + x_B = 12')}<br/>
 ③ 현의 길이 ${tex('\\overline{AB} = (x_A + 2) + (x_B + 2) = (x_A + x_B) + 4 = 16')}<br/>
 ④ 따라서 원의 반지름 ${tex('R = \\dfrac{16}{2} = 8')}.`,
-              warning: "주의: 초점을 지나는 현이 x축과 이루는 각이 θ이면 |AB| = 4p / sin²θ 가 성립합니다. 이 관계를 쓰면 이차방정식을 세우지 않아도 됩니다."
+              warning: "주의: 초점을 지나는 현이 x축과 이루는 각이 θ이면 |AB| = 4p / sin²θ 가 성립합니다. |AB| = 4p / sin²θ 를 쓰면 이차방정식을 세우지 않아도 됩니다."
             }),
             shortcut: () => ({
               steps: `① 현 ${tex('AB')}의 길이는 <strong class="text-sky-300">${tex('\\overline{AB} = a + b = \\dfrac{4p}{\\sin^2\\theta}')}</strong>이다. ${tex('\\left(a = \\dfrac{2p}{1 - \\cos\\theta}, \\; b = \\dfrac{2p}{1 + \\cos\\theta}\\right)')}<br/>
@@ -290,7 +290,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       4: {
-        badge: "MODE 4 · 포물선의 접선과 마름모 TFPH, 초점에서 접선에 내린 수선의 발",
+        badge: "장면 4 · 포물선의 접선과 마름모 TFPH, 초점에서 접선에 내린 수선의 발",
         hint: "접점 P를 옮겨도 <span class='text-purple-300 font-bold'>접선의 x절편은 -x₁</span>이고, 초점 F에서 접선에 내린 수선의 발 <span class='text-amber-300 font-bold'>K(0, y₁/2)는 항상 y축 위</span>에 놓입니다!",
         subTitles: ["① 마름모 둘레 20 (x₁=3)", "② 정사각형 TFPH (x₁=p)", "③ 직각삼각형의 닮음"],
         subData: {
@@ -336,7 +336,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ② ${tex('y^2 = 8x')} 와 연립: ${tex('(x + 2)^2 = 8x \\implies (x - 2)^2 = 0 \\implies P(2, 4)')}<br/>
 ③ ${tex('T(-2, 0), F(2, 0), P(2, 4), H(-2, 4)')} 이므로 가로 ${tex('4')}, 세로 ${tex('4')}인 정사각형<br/>
 ④ 넓이 ${tex('= 4 \\times 4 = 16')}.`,
-              warning: "참고: 기울기가 1인 접선의 접점은 초점을 지나고 축에 수직인 현의 끝점 P(p, 2p)입니다. 이를 알면 연립방정식이 필요 없습니다."
+              warning: "참고: 기울기가 1인 접선의 접점은 초점을 지나고 축에 수직인 현의 끝점 P(p, 2p)입니다. 접점이 P(p, 2p)임을 알면 연립방정식이 필요 없습니다."
             }),
             shortcut: () => ({
               steps: `① 접선의 기울기가 ${tex('1')} (${tex('45^\\circ')})이면 접선 위의 두 점 ${tex('T(-x_1, 0), P(x_1, y_1)')}에서 ${tex('y_1 = 2x_1')}이고, ${tex('y_1^2 = 4px_1')}과 연립하면 <strong class="text-amber-300">${tex('x_1 = p = 2')}</strong>이다.<br/>
@@ -1049,7 +1049,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   const groups = [1, 2, 3, 4].map((m) => ({
     id: 'm' + m,
-    title: examData[m].badge.replace(/^MODE \d+ · /, ''),
+    title: examData[m].badge.replace(/^장면 \d+ · /, ''),
     short: GROUP_SHORT[m],
     scenes: [1, 2, 3].map((sub) => sceneOf(m, sub))
   }));

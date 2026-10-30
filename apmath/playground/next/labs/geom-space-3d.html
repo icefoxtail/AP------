@@ -18,7 +18,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 공간도형 3D (AP Math Lab 2.0 이식본)
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ],
         textbook: () => ({
           steps: `① ${tex('M')}은 ${tex('CD')}의 중점이다. 정삼각형 ${tex('ACD, BCD')}에서 중선은 밑변을 수직이등분하므로 ${tex('AM\\perp CD, BM\\perp CD')}이다.<br/>
-② ${tex('AM, BM')}은 서로 다른 두 직선으로 평면 ${tex('ABM')}에서 만나므로, 직선 ${tex('CD')}는 그 평면에 수직이다. 따라서 평면 안의 ${tex('AB')}와도 수직이다. 이 결론은 화면에서 직각처럼 보이는지와 관계없이 성립한다.<br/>
+② ${tex('AM, BM')}은 서로 다른 두 직선으로 평면 ${tex('ABM')}에서 만나므로, 직선 ${tex('CD')}는 그 평면에 수직이다. 따라서 평면 안의 ${tex('AB')}와도 수직이다. AB ⊥ CD라는 결론은 화면에서 직각처럼 보이는지와 관계없이 성립한다.<br/>
 ③ 정삼각형 높이 ${tex('AM=3\\sqrt3')}; ${tex('N')}은 ${tex('AB')}의 중점이므로 이등변삼각형 ${tex('ABM')}에서 ${tex('MN\\perp AB')}이고 ${tex('MN^2=AM^2-AN^2=27-9=18')}. 따라서 각은 ${tex('90^\\circ')}, 최단거리는 ${tex('MN=3\\sqrt2')}이다.`,
           warning: "직선과 평면이 수직인지는 평면 위에서 한 점에서 만나는 두 직선과 모두 수직인지로 확인합니다. 화면에 그려진 각도만 보고 공간에서의 직각을 판정하지 않습니다."
         }),
@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', function () {
 &nbsp;&nbsp;<strong class="text-sky-300">${tex('\\overline{AM} \\perp \\overline{CD}')}</strong> 이고 <strong class="text-sky-300">${tex('\\overline{BM} \\perp \\overline{CD}')}</strong>!<br/>
 ② 직선 ${tex('CD')}가 점 ${tex('M')}에서 만나는 두 직선 ${tex('AM, BM')}과 모두 수직이므로 <strong class="text-amber-300">평면 ${tex('ABM')}과 수직(${tex('\\overline{CD} \\perp \\triangle ABM')})</strong>이고, 따라서 평면 위의 직선 <strong class="text-emerald-300">${tex('AB')}와도 ${tex('90^\\circ')}로 수직</strong>이다.<br/>
 ③ 이등변삼각형 ${tex('ABM')}에서 ${tex('\\overline{AM} = 3\\sqrt{3}, \\; \\overline{AN} = 3')} 이므로 두 모서리 사이의 최단 거리는 <strong class="text-amber-300">${tex('\\overline{MN} = \\sqrt{27 - 9} = 3\\sqrt{2}')}</strong>이다.`,
-          highlight: "정사면체에서 마주 보는(꼬인 위치에 있는) 두 모서리는 서로 수직입니다. 위와 같이 한 모서리의 중점을 지나는 평면이 다른 모서리와 수직임을 보이면 설명할 수 있습니다."
+          highlight: "정사면체에서 마주 보는(꼬인 위치에 있는) 두 모서리는 서로 수직입니다. 한 모서리 CD의 중점 M에서 AM ⊥ CD, BM ⊥ CD임을 보이면 CD가 평면 ABM에 수직이므로 AB ⊥ CD임을 설명할 수 있습니다."
         })
       },
 
@@ -85,7 +85,7 @@ window.addEventListener('DOMContentLoaded', function () {
           warning: "주의: 어느 각이 90°인지 먼저 찾아야 직각삼각형을 이용해 길이에 대한 식을 세울 수 있습니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex('PO\\perp\\alpha')}이고 ${tex('l\\subset\\alpha')}이므로 ${tex('PO\\perp l')}; 가정에서 ${tex('OH\\perp l')}. 두 교차 직선 ${tex('PO,OH')}가 평면 ${tex('POH')}를 정하므로 ${tex('l\\perp(POH)')}, 특히 ${tex('PH\\perp l')}. 이것이 이 배치에서 쓰는 삼수선의 결론이다.<br/>
+          steps: `① ${tex('PO\\perp\\alpha')}이고 ${tex('l\\subset\\alpha')}이므로 ${tex('PO\\perp l')}; 가정에서 ${tex('OH\\perp l')}. 두 교차 직선 ${tex('PO,OH')}가 평면 ${tex('POH')}를 정하므로 ${tex('l\\perp(POH)')}, 특히 ${tex('PH\\perp l')}. PH ⊥ l이라는 이 결론이 삼수선의 정리이다.<br/>
 ② 직각삼각형 ${tex('POH')}에서 ${tex('PH^2=PO^2+OH^2=4^2+3^2=25')}, 따라서 ${tex('PH=5')}.<br/>
 ③ ${tex('A,H')}는 ${tex('l')} 위에 있으므로 ${tex('PH\\perp AH')}. 직각삼각형 ${tex('PHA')}에서 ${tex('AH^2=PA^2-PH^2=7^2-5^2=24')}; 길이는 양수이므로 ${tex('AH=2\\sqrt6')}이다.`,
           highlight: "먼저 수직 조건으로 직각삼각형 PHA를 정당화한 뒤 피타고라스를 적용한다. 그림의 투영 모양만으로 직각을 정하지 않는다."
@@ -144,7 +144,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }),
         shortcut: () => ({
           steps: `① 실제 공간 좌표에서 ${tex('EF=(3,0,0), EG=(3,4,0), AG=(3,4,5)')}로 둘 수 있다. 길이는 ${tex('EF=3, EG=5, AG=5\\sqrt2')}. ${tex('AG')}의 밑면 정사영은 ${tex('EG')}이므로 ${tex('\\cos\\beta=EG/AG=1/\\sqrt2')}; 밑면에서 ${tex('EF,EG')}의 각은 ${tex('\\cos\\gamma=EF/EG=3/5')}.<br/>
-② 화면에 그려진 각은 실제 공간에서의 각과 다르게 보일 수 있다. 각의 크기는 위의 길이의 비(또는 벡터의 내적)로 구한다.<br/>
+② 화면에 그려진 각은 실제 공간에서의 각과 다르게 보일 수 있다. 각의 크기는 EG/AG, EF/EG와 같은 길이의 비(또는 벡터의 내적)로 구한다.<br/>
 ③ 두 비를 곱하면 <strong>[이 직육면체에서 성립하는 세 각 α, β, γ의 관계]</strong>:<br/>
 &nbsp;&nbsp;<strong class="text-amber-300">${tex('\\cos\\alpha = \\dfrac{\\overline{EF}}{\\overline{AG}} = \\underbrace{\\dfrac{\\overline{EG}}{\\overline{AG}}}_{\\cos\\beta} \\times \\underbrace{\\dfrac{\\overline{EF}}{\\overline{EG}}}_{\\cos\\gamma} = \\cos\\beta \\cdot \\cos\\gamma')}</strong><br/>
 ④ ${tex('\\cos\\alpha=\\dfrac{EF}{AG}=\\dfrac{3}{5\\sqrt2}=\\dfrac{EG}{AG}\\cdot\\dfrac{EF}{EG}=\\cos\\beta\\cos\\gamma')}.`,

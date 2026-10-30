@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 벡터로 나타낸 도형 (AP Math Lab 2.0 이식본) — 4개 장면
@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 4대 기출 문제·풀이 데이터 (원본 633–765행) ===== */
     const examData = {
       1: {
-        badge: "MODE 1 · 내분점의 위치벡터와 세 점 A, B, P가 한 직선 위에 있을 조건 (m + n = 1)",
+        badge: "장면 1 · 내분점의 위치벡터와 세 점 A, B, P가 한 직선 위에 있을 조건 (m + n = 1)",
         hint: "슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요. <span class='text-emerald-300 font-bold'>0 ≤ t ≤ 1 이면 점 P는 선분 AB 위의 내분점</span>이고, 범위를 벗어나면 <span class='text-rose-300 font-bold'>선분 AB의 연장선 위의 점</span>이 됩니다.",
         tag: "세 점이 한 직선 위에 있을 조건",
         targetTime: "목표 시간: 5초",
@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', function () {
 &nbsp;&nbsp;${tex('\\overrightarrow{OP} - \\overrightarrow{OA} = t(\\overrightarrow{OB} - \\overrightarrow{OA}) \\implies \\overrightarrow{OP} = (1 - t)\\overrightarrow{OA} + t\\overrightarrow{OB}')}<br/>
 ③ 문제의 식과 계수를 비교하면 ${tex('1 - t = \\dfrac{2}{5} \\implies t = k = \\dfrac{3}{5}')}<br/>
 ④ 따라서 ${tex('\\overrightarrow{AP} = \\dfrac{3}{5}\\overrightarrow{AB}')} 이므로 ${tex('\\overline{AP} : \\overline{PB} = 3 : 2')}.`,
-          warning: "주의: 매번 AP = t AB를 시점 O로 바꾸어 식을 유도하면 풀이가 길어집니다. 아래의 성질을 알면 바로 구할 수 있습니다."
+          warning: "주의: 매번 AP = t AB를 시점 O로 바꾸어 식을 유도하면 풀이가 길어집니다. 세 점이 한 직선 위에 있을 조건(계수의 합 m + n = 1)을 알면 바로 구할 수 있습니다."
         }),
         shortcut: () => ({
           steps: `① <strong>[세 점 A, B, P가 한 직선 위에 있을 조건]</strong>: <strong class="text-amber-300">${tex('\\overrightarrow{OP} = m\\overrightarrow{OA} + n\\overrightarrow{OB}')} 에서 ${tex('m + n = 1')}</strong>이다.<br/>
@@ -73,8 +73,8 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       2: {
-        badge: "MODE 2 · 계수 합 조건(OP = m OA + n OB)에 따른 자취와 넓이",
-        hint: "좌측 상단의 <span class='text-amber-300 font-bold'>[조건별 자취 버튼 5개]</span>를 눌러 보세요. <span class='text-pink-300 font-bold'>m + n = k</span>가 왜 평행한 선분과 사다리꼴을 만드는지 알 수 있습니다.",
+        badge: "장면 2 · 계수 합 조건(OP = m OA + n OB)에 따른 자취와 넓이",
+        hint: "<span class='text-amber-300 font-bold'>[조건별 자취 버튼 5개]</span>를 눌러 보세요. <span class='text-pink-300 font-bold'>m + n = k</span>가 왜 평행한 선분과 사다리꼴을 만드는지 알 수 있습니다.",
         tag: "자취의 넓이 킬러",
         targetTime: "목표 시간: 5초",
         question: () => `넓이가 ${tex('S = 4')} 인 삼각형 ${tex('OAB')}에 대하여 점 ${tex('P')}가 다음 조건을 만족시킨다.<br/>
@@ -96,7 +96,7 @@ window.addEventListener('DOMContentLoaded', function () {
 &nbsp;&nbsp;${tex('\\overrightarrow{OP} = \\dfrac{m}{2}(2\\overrightarrow{OA}) + \\dfrac{n}{2}(2\\overrightarrow{OB}) \\quad \\left(\\text{단, } \\dfrac{m}{2} + \\dfrac{n}{2} = 1\\right)')}<br/>
 ② ${tex("2\\overrightarrow{OA} = \\overrightarrow{OA'}, \\; 2\\overrightarrow{OB} = \\overrightarrow{OB'}")} 라 하면 점 ${tex('P')}는 선분 ${tex("A'B'")} 위의 점이다.<br/>
 ③ 계수 범위 ${tex('m,n\\ge0, m+n\\le2')}가 만드는 큰 영역은 꼭짓점 ${tex("O,A',B'")}의 삼각형 ${tex("OA'B'")}이고, 닮음비가 ${tex('1:2')}이므로 넓이는 ${tex('4S=16')}.<br/>
-④ 조건의 아래 경계 ${tex('m+n=1')} 안쪽 삼각형 넓이 ${tex('S=4')}를 빼면 띠 영역은 ${tex('4S-S=3S=12')}. 각 계수의 비음수 조건이 두 경계 사이의 사다리꼴 전체를 선택한다.`,
+④ 큰 삼각형에서 경계 ${tex('m+n=1')} 안쪽의 삼각형 넓이 ${tex('S=4')}를 빼면 띠 영역은 ${tex('4S-S=3S=12')}. 각 계수의 비음수 조건이 두 경계 사이의 사다리꼴 전체를 선택한다.`,
           warning: "주의: 매번 양변을 k로 나누어 계수의 합을 1로 만들고 닮음비를 구하면 풀이가 길어집니다."
         }),
         shortcut: () => ({
@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       3: {
-        badge: "MODE 3 · 직선의 벡터방정식 — 방향벡터(∥)와 법선벡터(⊥)",
+        badge: "장면 3 · 직선의 벡터방정식 — 방향벡터(∥)와 법선벡터(⊥)",
         hint: "직선을 나타내는 두 가지 방법을 비교해 보세요. <span class='text-sky-300 font-bold'>방향벡터 u와 평행(OP = OA + tu)</span>하거나 <span class='text-pink-300 font-bold'>법선벡터 n과 수직(AP · n = 0)</span>입니다.",
         tag: "직선의 벡터방정식",
         targetTime: "목표 시간: 5초",
@@ -140,7 +140,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       4: {
-        badge: "MODE 4 · 원의 벡터방정식 — 지름에 대한 원주각과 내적 (PA · PB = 0)",
+        badge: "장면 4 · 원의 벡터방정식 — 지름에 대한 원주각과 내적 (PA · PB = 0)",
         hint: "<span class='text-amber-300 font-bold'>(OP - OA) · (OP - OB) = 0</span> 즉 <span class='text-sky-300 font-bold'>PA ⊥ PB (90°)</span>를 만족하는 점 P의 자취는 <span class='text-emerald-300 font-bold'>선분 AB를 지름으로 하는 원</span>입니다.",
         tag: "원의 벡터방정식 킬러",
         targetTime: "목표 시간: 3초",
@@ -949,7 +949,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneOf(m) {
     const d = examData[m];
-    const hint = d.hint.replace('좌측 상단의', '조절 막대 아래의'); // [2.0 수정] 프리셋 바가 더 이상 좌측 상단에 없음
+    const hint = d.hint; // [2.0 수정] 프리셋 바가 더 이상 좌측 상단에 없음
     return {
       id: 'm' + m, title: TITLE[m - 1], short: SHORT[m - 1],
       question: QUESTION[m - 1], guide: hint,

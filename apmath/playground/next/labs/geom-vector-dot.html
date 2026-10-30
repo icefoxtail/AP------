@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 벡터의 성분 · 내적 (AP Math Lab 2.0 이식본) — 4개 장면
@@ -56,8 +56,8 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 4대 기출 문제·풀이 데이터 (원본 617–793행) ===== */
     const examData = {
       1: {
-        badge: "MODE 1 · 내적의 기하학적 의미: 『|OA| × (OB를 직선 OA에 정사영시킨 길이)』",
-        hint: "아래 슬라이더나 마우스로 <span class='text-pink-300 font-bold'>점 B(높이 y_B 이동)</span>나 <span class='text-sky-300 font-bold'>점 A(|OA|의 길이)</span>를 끌어 보세요. 높이가 바뀌어도 <span class='text-amber-300 font-bold'>내적은 일정</span>합니다.",
+        badge: "장면 1 · 내적의 기하학적 의미: 『|OA| × (OB를 직선 OA에 정사영시킨 길이)』",
+        hint: "슬라이더나 마우스로 <span class='text-pink-300 font-bold'>점 B(높이 y_B 이동)</span>나 <span class='text-sky-300 font-bold'>점 A(|OA|의 길이)</span>를 끌어 보세요. 높이가 바뀌어도 <span class='text-amber-300 font-bold'>내적은 일정</span>합니다.",
         tag: "내적과 정사영",
         targetTime: "목표 시간: 3초",
         question: () => `그림과 같이 밑변의 길이가 ${tex(`\\overline{OA} = ${state.A1.x.toFixed(0)}`)} 인 도형에서 점 ${tex('B')}에서 직선 ${tex('OA')}에 내린 수선의 발을 ${tex('H')}라 하자. 부호 있는 그림자 위치가 ${tex(`x_H = ${state.B1.x.toFixed(1)}`)} 일 때, 점 ${tex('B')}의 높이 ${tex('y_B')}와 무관하게 내적 ${tex('\\overrightarrow{OA} \\cdot \\overrightarrow{OB}')}의 값을 구하시오.`,
@@ -102,7 +102,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       2: {
-        badge: "MODE 2 · 성분으로 나타낸 내적과 두 벡터가 이루는 각 (cos θ)",
+        badge: "장면 2 · 성분으로 나타낸 내적과 두 벡터가 이루는 각 (cos θ)",
         hint: "<span class='text-pink-300 font-bold'>점 B</span>를 끌어서 <span class='text-sky-300 font-bold'>90°로 수직(내적 = 0)</span>이 되는 위치와 <span class='text-rose-400 font-bold'>둔각(내적 &lt; 0)</span>이 되는 영역을 확인해 보세요.",
         tag: "성분으로 나타낸 내적과 수직 조건",
         targetTime: "목표 시간: 5초",
@@ -140,7 +140,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       3: {
-        badge: "MODE 3 · 원 위의 점 P에서 내적의 최댓값·최솟값 (원의 중심 C를 이용한 분해)",
+        badge: "장면 3 · 원 위의 점 P에서 내적의 최댓값·최솟값 (원의 중심 C를 이용한 분해)",
         hint: "원 위의 <span class='text-amber-300 font-bold'>점 P</span>를 돌려 보세요. 반지름 벡터 <span class='text-pink-300 font-bold'>CP가 고정된 벡터 OA와 같은 방향일 때 최대</span>가 됩니다. (최대·최소 위치 근처에서는 그 위치에 자동으로 맞춰집니다.)",
         tag: "원 위의 점에서 내적의 최댓값·최솟값 킬러",
         targetTime: "목표 시간: 5초",
@@ -186,7 +186,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       4: {
-        badge: "MODE 4 · 시점 P가 움직이는 두 벡터의 내적 (PA · PB = PM² - L²)",
+        badge: "장면 4 · 시점 P가 움직이는 두 벡터의 내적 (PA · PB = PM² - L²)",
         hint: "시점 P가 움직이는 내적 <span class='text-amber-300 font-bold'>PA · PB</span>는 선분 AB의 <span class='text-emerald-300 font-bold'>중점 M</span>을 잡아 <span class='text-amber-300 font-bold'>PM² - (AB/2)²</span>으로 바꿀 수 있습니다.",
         tag: "시점이 움직이는 내적 킬러",
         targetTime: "목표 시간: 5초",

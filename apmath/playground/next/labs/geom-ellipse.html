@@ -21,7 +21,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 타원 (AP Math Lab 2.0 이식본) — 4개 탭 × 10개 장면
@@ -167,7 +167,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // -------------------------------------------------------------------------
     const scenarioDB = {
       '1-A': {
-        badge: "MODE 1-A · 타원의 정의(PF'+PF=2a)와 삼각형의 둘레 킬러",
+        badge: "장면 1-A · 타원의 정의(PF'+PF=2a)와 삼각형의 둘레 킬러",
         hint: "노란 점 P를 끌어도 <span class='text-pink-300 font-bold'>PF' + PF = 2a = 10</span>으로 일정함을 확인하세요. 단축 꼭짓점 B에서는 <span class='text-sky-300 font-bold'>세 변의 길이가 c, b, a인 직각삼각형 BOF</span>가 만들어집니다.",
         tag: "타원의 정의",
         targetTime: "목표 시간: 5초",
@@ -186,7 +186,7 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           "두 초점 F(4, 0), F'(-4, 0) 및 선분 PF, PF' 연결",
           "타원에 외접하는 직사각형(2a × 2b)과 네 꼭짓점 표시",
-          "단축 꼭짓점 B에서 피타고라스 정리 a² = b² + c², 아래 띠에서 PF' + PF = 2a 확인"
+          "단축 꼭짓점 B에서 피타고라스 정리 a² = b² + c², 요약 띠에서 PF' + PF = 2a 확인"
         ],
         textbook: {
           steps: `① 초점 좌표: c = √(25 - 9) = 4 ⇒ F(4, 0), F'(-4, 0)<br/>
@@ -204,7 +204,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       '1-B': {
-        badge: "MODE 1-B · 직각삼각형 PF'F(∠F'PF = 90°)와 넓이 S = b²",
+        badge: "장면 1-B · 직각삼각형 PF'F(∠F'PF = 90°)와 넓이 S = b²",
         hint: "<span class='text-sky-300 font-bold'>F'F를 지름으로 하는 원(x²+y²=c²)</span>과 타원의 교점 P에서 <span class='text-amber-300 font-bold'>∠F'PF = 90°</span>가 되며, 이때 ΔPF'F의 넓이는 <span class='text-amber-300 font-bold'>b² = 9</span>입니다.",
         tag: "타원과 원의 교점, 직각삼각형의 넓이 킬러",
         targetTime: "목표 시간: 5초",
@@ -236,7 +236,7 @@ window.addEventListener('DOMContentLoaded', function () {
           warning: "주의: 매번 p + q = 2a, p² + q² = 4c²으로 식을 세워 곱셈 공식을 쓰면 계산이 길어집니다. pq = 2b²임을 알면 간단합니다."
         },
         shortcut: {
-          steps: `① 타원에서 <strong class="text-sky-300">∠F'PF = 90°</strong>이면 <strong class="text-pink-300">PF'·PF = 2b²</strong>이다. (위 풀이에서 2pq = (2a)² − (2c)² = 4b²)<br/>
+          steps: `① 타원에서 <strong class="text-sky-300">∠F'PF = 90°</strong>이면 <strong class="text-pink-300">PF'·PF = 2b²</strong>이다. (교과서식 풀이에서 2pq = (2a)² − (2c)² = 4b²)<br/>
 ② 따라서 직각삼각형의 넓이는 <strong class="text-amber-300">S = ½·PF'·PF = b²</strong>이다.<br/>
 ③ 타원의 방정식 <span class="font-mono">x²/25 + y²/9 = 1</span>에서 y²의 분모가 <strong class="text-amber-300">b² = 9</strong>이므로 넓이는 9이다. (3초 컷!)`,
           highlight: "∠F'PF = α 일 때도 넓이는 S = b²·tan(α/2) 이며, α = 90°이면 tan 45° = 1 이므로 S = b² 입니다."
@@ -244,7 +244,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       '1-C': {
-        badge: "MODE 1-C · 초점 F를 지나는 직선과 삼각형 ΔPQF'의 둘레 = 4a (일정) 킬러",
+        badge: "장면 1-C · 초점 F를 지나는 직선과 삼각형 ΔPQF'의 둘레 = 4a (일정) 킬러",
         hint: "초점 F를 지나는 직선을 어느 각도로 돌려도, 타원과의 두 교점 P, Q와 다른 쪽 초점 F'을 꼭짓점으로 하는 <span class='text-amber-300 font-bold'>ΔPQF'의 둘레는 항상 4a = 20</span>입니다.",
         tag: "초점을 지나는 현과 삼각형의 둘레",
         targetTime: "목표 시간: 5초",
@@ -256,14 +256,14 @@ window.addEventListener('DOMContentLoaded', function () {
           { label: "135°로 기울어진 현", a: 5.0, b: 3.0, theta: (3 * Math.PI) / 4 }
         ],
         parts: [
-          { idx: 0, title: "① 상단 타원 정의 쌍 (PF' + PF = 2a)", desc: "점 P에 대한 두 초점 거리 합 = 2a = 10", color: "#f472b6" },
-          { idx: 1, title: "② 하단 타원 정의 쌍 (QF' + QF = 2a)", desc: "점 Q에 대한 두 초점 거리 합 = 2a = 10", color: "#38bdf8" },
+          { idx: 0, title: "① 점 P에 대한 타원의 정의 (PF' + PF = 2a)", desc: "점 P에 대한 두 초점 거리 합 = 2a = 10", color: "#f472b6" },
+          { idx: 1, title: "② 점 Q에 대한 타원의 정의 (QF' + QF = 2a)", desc: "점 Q에 대한 두 초점 거리 합 = 2a = 10", color: "#38bdf8" },
           { idx: 2, title: "③ 직각삼각형의 닮음(AA 닮음)과 둘레 4a", desc: "ΔPFHₚ ∼ ΔQFH_q 및 PF:QF=|yₚ|:|y_q|", color: "#fbbf24" }
         ],
         steps: [
           "초점 F를 지나는 직선과 타원의 두 교점 P, Q 표시",
           "반대쪽 초점 F'과 연결한 삼각형 ΔPQF' 색칠 및 변 표시",
-          "(PF'+PF) + (QF'+QF) = 2a + 2a = 4a (아래 띠에서 확인)"
+          "(PF'+PF) + (QF'+QF) = 2a + 2a = 4a (요약 띠에서 확인)"
         ],
         textbook: {
           steps: `① 초점 F(4,0)을 지나는 직선 y = m(x - 4)를 타원 식에 대입<br/>
@@ -280,7 +280,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       '2-A': {
-        badge: "MODE 2-A · 중심이 같은 두 원으로 나타낸 타원 위의 점 P(a cosθ, b sinθ)",
+        badge: "장면 2-A · 중심이 같은 두 원으로 나타낸 타원 위의 점 P(a cosθ, b sinθ)",
         hint: "노란 점 <span class='text-amber-300 font-bold'>P</span> 또는 큰 원 위의 점 <span class='text-sky-300 font-bold'>Q</span>를 끌어 보세요. Q의 x좌표(a cosθ)와 R의 y좌표(b sinθ)로 타원 위의 점 P가 정해집니다.",
         tag: "두 원과 타원 위의 점의 좌표 킬러",
         targetTime: "목표 시간: 10초",
@@ -317,8 +317,8 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       '2-B': {
-        badge: "MODE 2-B · 원에서 타원으로의 세로 방향 축소와 내접삼각형 최대 넓이",
-        hint: "조작 패널의 <span class='text-amber-300 font-bold'>[원 → 타원 y축 방향 축소 (b/a배)]</span> 슬라이더를 움직여 보세요. 반지름 a인 원의 각 점에서 y좌표를 <span class='text-sky-300 font-bold'>b/a배</span>로 줄이면 타원이 됩니다. 이렇게 y축 방향으로만 줄이면 가로 방향의 길이(밑변)는 그대로이고 높이와 넓이는 b/a배가 됩니다.",
+        badge: "장면 2-B · 원에서 타원으로의 세로 방향 축소와 내접삼각형 최대 넓이",
+        hint: "<span class='text-amber-300 font-bold'>[원 → 타원 y축 방향 축소 (b/a배)]</span> 슬라이더를 움직여 보세요. 반지름 a인 원의 각 점에서 y좌표를 <span class='text-sky-300 font-bold'>b/a배</span>로 줄이면 타원이 됩니다. 이렇게 y축 방향으로만 줄이면 가로 방향의 길이(밑변)는 그대로이고 높이와 넓이는 b/a배가 됩니다.",
         tag: "타원에 내접하는 삼각형의 최대 넓이 킬러",
         targetTime: "목표 시간: 10초",
         question: `타원 <span class="font-mono text-amber-300 font-bold">x²/25 + y²/9 = 1</span> 에 내접하는 삼각형 <span class="font-mono">ΔP₁P₂P₃</span>의 넓이의 최댓값을 구하시오. (단, 원 <span class="font-mono text-sky-300">x² + y² = 25</span> 에 내접하는 정삼각형 <span class="font-mono">ΔQ₁Q₂Q₃</span>에서 y좌표를 b/a배로 줄이는 것을 이용하시오.)`,
@@ -354,7 +354,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       '2-C': {
-        badge: "MODE 2-C · 원의 접선과 타원의 접선이 x축에서 만나는 점 T(a²/x₁, 0)",
+        badge: "장면 2-C · 원의 접선과 타원의 접선이 x축에서 만나는 점 T(a²/x₁, 0)",
         hint: "x₁≠0일 때 타원 위의 점 <span class='text-amber-300 font-bold'>P</span>에서의 접선과 큰 원 위의 점 <span class='text-sky-300 font-bold'>Q</span>에서의 접선은 x축 위의 <span class='text-pink-300 font-bold'>같은 점 T(a²/x₁, 0)</span>에서 만납니다. x₁=0이면 두 접선은 x축과 평행하므로 x절편이 없습니다.",
         tag: "원의 접선과 타원의 접선 킬러",
         targetTime: "목표 시간: 5초",
@@ -389,8 +389,8 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       '3-A': {
-        badge: "MODE 3-A · 접선에 대한 초점의 대칭점 F''과 삼각형의 중점연결정리 (OH₁ = a)",
-        hint: "조작 패널의 <span class='text-amber-300 font-bold'>[초점 F → 대칭점 F'' 접기]</span> 슬라이더를 움직여 보세요. 초점 F를 접선에 대하여 대칭이동한 점 <span class='text-pink-300 font-bold'>F''</span>을 잡으면 F', P, F''이 한 직선 위에 놓여 <span class='text-amber-300 font-bold'>F'F'' = 2a</span>가 되고, 삼각형의 중점연결정리로 <span class='text-sky-300 font-bold'>OH₁ = a</span>임을 알 수 있습니다.",
+        badge: "장면 3-A · 접선에 대한 초점의 대칭점 F''과 삼각형의 중점연결정리 (OH₁ = a)",
+        hint: "<span class='text-amber-300 font-bold'>[초점 F → 대칭점 F'' 접기]</span> 슬라이더를 움직여 보세요. 초점 F를 접선에 대하여 대칭이동한 점 <span class='text-pink-300 font-bold'>F''</span>을 잡으면 F', P, F''이 한 직선 위에 놓여 <span class='text-amber-300 font-bold'>F'F'' = 2a</span>가 되고, 삼각형의 중점연결정리로 <span class='text-sky-300 font-bold'>OH₁ = a</span>임을 알 수 있습니다.",
         tag: "접선에 대한 초점의 대칭점 킬러",
         targetTime: "목표 시간: 10초",
         question: `타원 <span class="font-mono text-amber-300 font-bold">x²/25 + y²/9 = 1</span> 위의 점 <span class="font-mono">P</span>에서의 접선 <span class="font-mono">l</span>에 대하여 초점 <span class="font-mono">F(4,0)</span>에서 내린 수선의 발을 <span class="font-mono text-pink-300 font-bold">H₁</span>, <span class="font-mono">F</span>를 접선 <span class="font-mono">l</span>에 대칭이동한 점을 <span class="font-mono text-amber-300 font-bold">F''</span>이라 할 때, 선분 <span class="font-mono text-pink-300 font-bold">F'F''</span>과 선분 <span class="font-mono text-sky-300 font-bold">OH₁</span>의 길이를 각각 구하시오.`,
@@ -425,7 +425,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       '3-B': {
-        badge: "MODE 3-B · 두 초점에서 접선까지의 거리의 곱 (d₁ × d₂ = b²)",
+        badge: "장면 3-B · 두 초점에서 접선까지의 거리의 곱 (d₁ × d₂ = b²)",
         hint: "접점 P를 타원 위 어디로 끌어도 두 초점에서 접선에 내린 수선의 길이의 곱 <span class='text-sky-300 font-bold'>d₁ × d₂ = 9.000 (b²)</span>이 변하지 않음을 확인하세요.",
         tag: "두 초점에서 접선까지의 거리의 곱 킬러",
         targetTime: "목표 시간: 3초",
@@ -462,7 +462,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       '4-A': {
-        badge: "MODE 4-A · 타원 법선(내각 이등분선 N)과 접선(외각 이등분선 T)",
+        badge: "장면 4-A · 타원 법선(내각 이등분선 N)과 접선(외각 이등분선 T)",
         hint: "법선 PN은 <span class='text-sky-300 font-bold'>∠F'PF를 이등분</span>하므로 <span class='text-amber-300 font-bold'>F'N : NF = PF' : PF</span>입니다. 접선 PT는 ∠F'PF의 외각을 이등분하며, 접선이 x축과 만나는 점 T는 F'T : TF = PF' : PF를 만족합니다.",
         tag: "접선·법선과 각의 이등분선",
         targetTime: "목표 시간: 10초",
@@ -499,7 +499,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       '4-B': {
-        badge: "MODE 4-B · 서로 수직인 두 접선의 교점의 자취 (원 x²+y² = a²+b²)",
+        badge: "장면 4-B · 서로 수직인 두 접선의 교점의 자취 (원 x²+y² = a²+b²)",
         hint: "보라색 점 <span class='text-purple-300 font-bold'>M</span>을 끌어 보세요. 타원 밖의 점 M에서 그은 <span class='text-amber-300 font-bold'>두 접선이 서로 수직(90°)</span>이 되는 점 M의 자취는 원점이 중심이고 반지름이 <span class='text-sky-300 font-bold'>√(a²+b²)</span>인 원입니다.",
         tag: "서로 수직인 두 접선 킬러",
         targetTime: "목표 시간: 5초",
@@ -530,7 +530,7 @@ window.addEventListener('DOMContentLoaded', function () {
         },
         shortcut: {
           steps: `① 가장 간단한 위치인 <strong class="text-sky-300">수평인 접선 y = b와 수직인 접선 x = a가 만나는 점 M(a, b)</strong>를 생각한다.<br/>
-② 이 점에서 두 접선은 이미 서로 수직이므로 점 M(a, b)는 구하는 도형 위의 점이다. 위 풀이에서 보듯 이 도형은 원점이 중심인 원이므로 <strong class="text-amber-300">OM = √(a² + b²) = √(25 + 9) = √34</strong>이다.<br/>
+② 이 점에서 두 접선은 이미 서로 수직이므로 점 M(a, b)는 구하는 도형 위의 점이다. 교과서식 풀이에서 보듯 이 도형(점 M의 자취)은 원점이 중심인 원이므로 <strong class="text-amber-300">OM = √(a² + b²) = √(25 + 9) = √34</strong>이다.<br/>
 ③ 따라서 점 M의 자취는 반지름 √(a²+b²)인 원 <strong class="text-purple-300">x² + y² = a² + b² = 34</strong>이다.`,
           highlight: "서로 수직인 두 접선의 교점의 자취는, 타원에 외접하는 직사각형의 네 꼭짓점 (±a, ±b)를 지나는 원, 즉 반지름이 √(a²+b²)인 원입니다."
         }
@@ -857,7 +857,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (state.steps[1] && c < b-1e-6) {
         drawCornerMessage(rect,'직각 교점 없음: c < b',`∠F'PF의 최댓값 ${(2*Math.atan2(c,b)*180/Math.PI).toFixed(1)}° < 90°  |  OP ≥ b > c`,'#fb7185');
       } else if (state.steps[1] && Math.abs(c-b)<1e-6) {
-        drawCornerMessage(rect,'경계 c=b: 위·아래 두 점만 직각','지름이 F′F인 원과 타원이 B, B′에서 접합니다.','#fbbf24');
+        drawCornerMessage(rect,'경계 c=b: 점 B, B′에서만 직각','지름이 F′F인 원과 타원이 B, B′에서 접합니다.','#fbbf24');
       }
 
       // Step 3: 하단 넓이 공식 증명 배너
@@ -934,7 +934,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const perim = dPFp + dQFp + dPQ;
         drawBottomHUD(
           rect,
-          `[상단 쌍] PF'(${dPFp.toFixed(2)})+PF(${dPF.toFixed(2)}) = ${formatNum(2 * a)}  |  [하단 쌍] QF'(${dQFp.toFixed(2)})+QF(${dQF.toFixed(2)}) = ${formatNum(2 * a)}`,
+          `[점 P에 대한 쌍] PF'(${dPFp.toFixed(2)})+PF(${dPF.toFixed(2)}) = ${formatNum(2 * a)}  |  [점 Q에 대한 쌍] QF'(${dQFp.toFixed(2)})+QF(${dQF.toFixed(2)}) = ${formatNum(2 * a)}`,
           `∴ ΔPQF' 둘레 = (PF'+PF) + (QF'+QF) = 4a = ${perim.toFixed(2)} (현 PQ의 길이 = ${dPQ.toFixed(2)})`
         );
       }
@@ -1863,7 +1863,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const p0 = d.presets[0];
     const dragP = (s) => (w) => { s.theta = normTheta(Math.atan2(w.y / s.b, w.x / s.a)); };
     return {
-      id, title: d.badge.replace(/^MODE\s*/, ''), short: it.label.replace(/^\d-[A-C]\.\s*/, ''),
+      id, title: d.badge, short: it.label.replace(/^\d-[A-C]\.\s*/, ''),
       question: QUESTIONS[id],
       focus: id === '3-A' ? (s) => focus3A(s) : FOCUS[id],
       guide: d.hint,

@@ -18,7 +18,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 공간좌표 3D (AP Math Lab 2.0 이식본)
@@ -38,8 +38,8 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 4대 기출 문제 & 두 풀이 (원본 590–717행) ===== */
     const examData = {
       1: {
-        badge: "MODE 1 · 공간좌표에서 수선의 발·대칭이동과 평면을 지나는 최단 거리 (AB')",
-        hint: "아래 슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요. <span class='text-sky-300 font-bold'>xy평면 위의 점 P</span>가 A와 대칭점 <span class='text-pink-300 font-bold'>B'(3, 4, -4)를 잇는 선분</span> 위에 놓일 때 AP + PB가 최소가 되어 그 값은 <span class='text-amber-300 font-bold'>7</span>입니다.",
+        badge: "장면 1 · 공간좌표에서 수선의 발·대칭이동과 평면을 지나는 최단 거리 (AB')",
+        hint: "슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요. <span class='text-sky-300 font-bold'>xy평면 위의 점 P</span>가 A와 대칭점 <span class='text-pink-300 font-bold'>B'(3, 4, -4)를 잇는 선분</span> 위에 놓일 때 AP + PB가 최소가 되어 최솟값은 <span class='text-amber-300 font-bold'>7</span>입니다.",
         tag: "평면을 지나는 최단 경로",
         targetTime: "목표 시간: 5초",
         question: () => `좌표공간에서 두 점 ${tex('A(1, 1, 2), \\; B(3, 4, 4)')} 와 ${tex('xy')}평면 위를 움직이는 점 ${tex('P')}가 있다. ${tex('\\overline{AP} + \\overline{PB}')}의 최솟값과 그때의 점 ${tex('P')}가 선분 ${tex('AB')}의 정사영을 내분하는 비를 구하시오.`,
@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       2: {
-        badge: "MODE 2 · 선분 AB가 좌표평면과 만나는 점과 내분하는 비 (|z₁| : |z₂|)",
+        badge: "장면 2 · 선분 AB가 좌표평면과 만나는 점과 내분하는 비 (|z₁| : |z₂|)",
         hint: "선분 AB가 <span class='text-sky-300 font-bold'>xy평면(z = 0)과 만나는 점 P</span>는 두 점의 z좌표의 절댓값의 비 <span class='text-amber-300 font-bold'>|z₁| : |z₂|</span>로 선분 AB를 내분하는 점입니다.",
         tag: "내분점 10초 컷 킬러",
         targetTime: "목표 시간: 5초",
@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', function () {
         cam: { yaw: (-32 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
         sectionCam: { yaw: (-45 * Math.PI) / 180, pitch: (2 * Math.PI) / 180 },
         steps: [
-          "xy평면 위쪽 점 A(-2, 1, 4)와 아래쪽 점 B(4, -5, -2) 연결",
+          "z좌표가 양수인 점 A(-2, 1, 4)와 음수인 점 B(4, -5, -2) 연결",
           "xy평면 수선의 발 A₀, B₀ 및 닮음인 두 직각삼각형 ΔAA₀P ∽ ΔBB₀P",
           "z좌표의 절댓값의 비 |z₁| : |z₂| = 4 : 2 = 2 : 1 로 내분 ⇒ P(2, -3, 0)"
         ],
@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       3: {
-        badge: "MODE 3 · 구와 평면: d ≤ R일 때 r = √(R² - d²)",
+        badge: "장면 3 · 구와 평면: d ≤ R일 때 r = √(R² - d²)",
         hint: "중심에서 평면까지의 거리 <span class='text-pink-300 font-bold'>d</span>와 반지름 <span class='text-amber-300 font-bold'>R</span>을 비교하세요. <span class='text-emerald-300'>d&lt;R</span>이면 원, <span class='text-sky-300'>d=R</span>이면 한 점에서 접하고, <span class='text-rose-300'>d&gt;R</span>이면 만나지 않습니다. 반지름 공식 <span class='text-amber-300'>r=√(R²−d²)</span>은 <span class='text-emerald-300'>d≤R</span>일 때만 적용합니다.",
         tag: "구와 평면이 만나서 생기는 원",
         targetTime: "목표 시간: 5초",
@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       4: {
-        badge: "MODE 4 · 구 밖의 점에서 거리의 최대·최소(d±R)와 접선의 길이",
+        badge: "장면 4 · 구 밖의 점에서 거리의 최대·최소(d±R)와 접선의 길이",
         hint: "구 밖의 점 P에서 구 위의 점 Q까지의 거리는 Q가 직선 PC 위에 있을 때 <span class='text-emerald-300 font-bold'>최대(d+R)</span>·<span class='text-rose-400 font-bold'>최소(d-R)</span>가 되며, 접점 T에 대해서는 <span class='text-amber-300 font-bold'>직각삼각형 ΔCTP (l = √(d²-R²))</span>가 만들어집니다.",
         tag: "구 밖의 점과 접선 킬러",
         targetTime: "목표 시간: 5초",

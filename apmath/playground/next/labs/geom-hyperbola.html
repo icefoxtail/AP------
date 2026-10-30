@@ -19,7 +19,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 쌍곡선 실전 킬러 랩 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 3개 시나리오 = 12장면
@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 4대 실전 기출 문제 & 3분 정석 vs 10초 컷 풀이 데이터 (원본 648–786행) ===== */
     const examData = {
       1: {
-        badge: "MODE 1 · 쌍곡선의 정의와 거리의 차(|PF' - PF| = 2a) 킬러",
+        badge: "장면 1 · 쌍곡선의 정의와 거리의 차(|PF' - PF| = 2a) 킬러",
         hint: "점 P를 끌어도 두 초점까지의 거리의 차 <span class='text-pink-300 font-bold'>|PF' - PF| = 2a = 6</span>이 변하지 않음을 확인하세요. <span class='text-amber-300 font-bold'>[문제 조건으로 그림 맞추기]</span>를 누르면 PF'=11, PF=5인 위치로 이동합니다.",
         tag: "쌍곡선의 정의",
         targetTime: "목표 시간: 5초",
@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       2: {
-        badge: "MODE 2 · 초점에서 점근선에 내린 수선의 길이 (= b)",
+        badge: "장면 2 · 초점에서 점근선에 내린 수선의 길이 (= b)",
         hint: "초점 <span class='text-rose-400 font-bold'>F(c, 0)에서 점근선에 내린 수선의 길이는 항상 b</span>이고, 원점에서 수선의 발 H까지의 거리는 <span class='text-amber-300 font-bold'>항상 a</span>임을 확인하세요.",
         tag: "초점에서 점근선에 내린 수선",
         targetTime: "목표 시간: 3초",
@@ -116,7 +116,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       3: {
-        badge: "MODE 3 · 쌍곡선 위의 점에서 두 점근선에 내린 수선의 길이의 곱",
+        badge: "장면 3 · 쌍곡선 위의 점에서 두 점근선에 내린 수선의 길이의 곱",
         hint: "쌍곡선 위의 점 P를 어디로 끌어도 두 점근선에 내린 수선의 길이의 곱 <span class='text-sky-300 font-bold'>l₁ × l₂ = a²b² / c²</span>이 일정함을 확인하세요.",
         tag: "두 점근선까지의 거리의 곱 킬러",
         targetTime: "목표 시간: 5초",
@@ -150,7 +150,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       4: {
-        badge: "MODE 4 · 쌍곡선의 접선(내각의 이등분선)과 초점에서 접선까지의 거리의 곱(b²)",
+        badge: "장면 4 · 쌍곡선의 접선(내각의 이등분선)과 초점에서 접선까지의 거리의 곱(b²)",
         hint: "쌍곡선 위의 점 P에서의 <span class='text-sky-300 font-bold'>접선은 ∠F'PF를 이등분</span>하며, 두 초점에서 접선에 내린 수선의 길이의 곱은 <span class='text-purple-300 font-bold'>d₁ × d₂ = b²</span>으로 일정합니다.",
         tag: "접선과 각의 이등분선 킬러",
         targetTime: "목표 시간: 5초",
@@ -633,7 +633,7 @@ window.addEventListener('DOMContentLoaded', function () {
           `${mtex(String.raw`a=b`)}이면 점근선이 ${mtex(String.raw`y=\pm x`)}이므로 x축과 45°씩 기울어 서로 수직이다.`,
           `${mtex(String.raw`a:b:c=1:1:\sqrt2`)}이므로 삼각형 OFH는 직각이등변삼각형이다.`,
           `이심률은 ${mtex(String.raw`e=\dfrac ca=\sqrt2`)}.`
-        ],warning:'a≠b가 되면 두 점근선은 서로 수직이 아닙니다. 현재 두 점근선이 이루는 예각과 이심률은 아래에서 다시 계산합니다.',insight:'a=b이면 두 점근선이 서로 수직이고 이심률은 √2입니다.'
+        ],warning:'a≠b가 되면 두 점근선은 서로 수직이 아닙니다. 현재 두 점근선이 이루는 예각과 이심률은 현재 값으로 다시 계산됩니다.',insight:'a=b이면 두 점근선이 서로 수직이고 이심률은 √2입니다.'
       },
       '2-3':{
         formal:[
@@ -670,7 +670,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ],
         shortcut:[
           `어느 P에서나 두 점근선까지 거리의 곱은 같다. 그래서 가장 간단한 꼭짓점 A에서 값을 구한다.`,
-          `A에서는 위·아래 점근선까지 수선이 거울대칭이므로 두 길이가 모두 ${mtex(String.raw`ab/c`)}.`,
+          `A에서 두 점근선까지 내린 수선은 x축에 대하여 대칭이므로 두 길이가 모두 ${mtex(String.raw`ab/c`)}.`,
           `하나의 길이를 제곱해 바로 ${mtex(String.raw`(ab/c)^2=144/25`)}. P가 이동하면 두 길이는 달라져도 곱은 유지된다.`
         ],warning:'두 수선의 길이가 같다는 표시는 꼭짓점 A에서만 성립합니다. 일반적인 점 P에서는 두 길이가 다릅니다.',insight:'일정한 값은 가장 대칭적인 점(꼭짓점)에서 먼저 구하고, 다른 점 P에서도 성립하는지 식으로 확인합니다.'
       },
