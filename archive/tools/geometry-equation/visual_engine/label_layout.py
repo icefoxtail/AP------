@@ -7,6 +7,7 @@ import html
 from .geometry_model import finite
 
 DIRECTIONS=('N','NE','E','SE','S','SW','W','NW')
+PATH_LABEL_SIDE_MIN_DOT=0.5   # E37: a direction counts as on a path's side when its cosine with that side's normal is at least this (45 degrees either way is 0.707)
 OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
@@ -762,9 +763,14 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 # A path total-length label (E7): off the path, on a visible leader from a point of the path; the leader touches only the path's own segments, at its start.
                 default_gaps=()
                 site=label['pathOwned'];owner_ids=set(site['ids'])
-                for anchor in site['anchors']:
+                for anchor_index,anchor in enumerate(site['anchors']):
                     for gap in site['gaps']:
                         for direction in DIRECTIONS:
+                            if site.get('sideNormals'):
+                                # E37: only the directions that point to the declared side of the path (a path label with side LEFT / RIGHT)
+                                dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
+                                normal=site['sideNormals'][anchor_index]
+                                if (dx*normal[0]+dy*normal[1])/math.hypot(dx,dy)<PATH_LABEL_SIDE_MIN_DOT:continue
                             box=candidate(anchor,w,h,direction,gap)
                             if not acceptable(box,owner_check=False):continue
                             if site.get('outside') and not box_outside_regions(box,[[[tuple(p) for p in site['outside']]]]):continue     # closed path: the label stands outside the perimeter

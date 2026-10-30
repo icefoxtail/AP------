@@ -190,6 +190,157 @@ def box_polyline_distance(box,points):
             best=min(best,math.hypot(max(box[0]-x,0,x-(box[0]+box[2])),max(box[1]-y,0,y-(box[1]+box[3]))))
     return best
 
+# ---- path label anchor and side (E37): this observer's own copy of the rules
+PATH_LABEL_ANCHORS={'START':0.15,'END':0.85}   # START / END: near the first / last point of the path (a fraction of its length)
+PATH_LABEL_ANCHOR_TOLERANCE=0.1                # the engine slides a named anchor at most 0.09 of the path along it
+PATH_LABEL_SIDE_MIN_COS=0.3                    # the label box's centre, seen from the leader's start, leans at least this far to the declared side (cosine with that side's normal)
+def path_anchor_fraction(anchor):
+    if isinstance(anchor,str):return PATH_LABEL_ANCHORS.get(anchor)
+    if isinstance(anchor,(int,float)) and not isinstance(anchor,bool) and 0<anchor<1:return float(anchor)
+    return None
+def nearest_on_path(q,pts):
+    """(fraction of the path's length at the point of the polyline nearest q, unit direction of the piece it lies on)."""
+    total=sum(norm(sub(b,a)) for a,b in zip(pts,pts[1:]));best=None;run=0.0
+    for a,b in zip(pts,pts[1:]):
+        d=sub(b,a);length=norm(d)
+        t=max(0.0,min(1.0,((q[0]-a[0])*d[0]+(q[1]-a[1])*d[1])/(length*length)))
+        spot=(a[0]+d[0]*t,a[1]+d[1]*t);distance=norm(sub(q,spot))
+        if best is None or distance<best[0]:best=(distance,(run+length*t)/total,(d[0]/length,d[1]/length))
+        run+=length
+    return best[1],best[2]
+
+# ---- callouts (E37): this observer's own copy of the callout rules. A callout draws a path of the main figure again beside it (points named `<callout id>__<point id>`,
+# pieces `<callout id>__s<n>`, guide lines `<callout id>__g<n>`); its marks are ordinary marks on those copies. The copies are read back from the FINAL SVG and held against the
+# main figure's own (peer) points; the marks are then expanded onto the observed copies and checked by the ordinary mark audits below.
+CALLOUT_SEP='__'
+CALLOUT_RELATIVE=1e-6        # relative tolerance of a copy's lengths against the main path's (the SVG keeps full precision)
+CALLOUT_POINT_TOLERANCE=1e-8 # model units: a piece or a guide line's end against the point it joins
+CALLOUT_ANGLE_TOLERANCE=0.001   # degrees: a pulled-out ray's direction, and the angle between two rays, against the main figure's own
+GUIDE_STROKE='#8a8a8a'
+GUIDE_DASH='2 4'
+def expand_callouts(p,elements,inverse,errors,observations):
+    """Returns (points, marks, segments) with the callouts' observed copies, their pieces and their marks added; findings go to `errors`."""
+    marks=dict(p.get('marks') or {});points=dict(p['points']);segments=list(p.get('segments') or [])
+    rows=marks.get('callouts') or []
+    if not rows:return points,marks,segments
+    def codes(node):return [n.get('data-c','').upper() for n in node.iter() if tag(n)=='path' and n.get('data-c')]
+    ids=[r for s in segments for r in (s.get('refs') or []) if r in points] or list(points)
+    main=[points[r] for r in ids];box=(min(q[0] for q in main),max(q[0] for q in main),min(q[1] for q in main),max(q[1] for q in main))
+    dims=list(marks.get('dimensions') or []);equal=list(marks.get('equalLengths') or []);labels=list(marks.get('expressionLabels') or []);angles=list(marks.get('angles') or [])
+    expected_guides=set();taken=set()
+    for row in rows:
+        cid=str(row.get('id'));prefix=cid+CALLOUT_SEP;kind=row.get('kind')
+        if cid in taken:errors.append('CALLOUT_ID_DUPLICATE:'+cid);continue
+        taken.add(cid)
+        if kind not in ('SEGMENT','ANGLE'):errors.append('CALLOUT_KIND_INVALID:'+cid);continue
+        # the points the copies stand for, and the pieces drawn between them (a path's consecutive pairs, or the rays from the vertex)
+        if kind=='SEGMENT':
+            path=list(row.get('path') or []);piece_pairs=[(path[i],path[i+1]) for i in range(len(path)-1)];piece_prefix='s'
+        else:
+            path=[row.get('vertex')]+list(row.get('rays') or []);piece_pairs=[(path[0],ray) for ray in path[1:]];piece_prefix='r'
+        if len(path)<2 or len(set(path))!=len(path) or any((not isinstance(r,str)) or r not in p['points'] for r in path):errors.append('CALLOUT_PATH_INVALID:'+cid);continue
+        seen={};complete=True
+        for pid in path:
+            node=elements.get(prefix+pid)
+            if node is None or tag(node)!='circle' or node.get('data-role')!='point':errors.append('CALLOUT_POINT_MISSING:'+cid+':'+pid);complete=False;continue
+            seen[pid]=inverse(float(node.get('cx')),float(node.get('cy')))
+            copy_label=elements.get(prefix+pid+'-name');main_label=elements.get(pid+'-name')
+            # the copy carries the same name as the point it copies (the same glyphs as that point's own name label)
+            if copy_label is None or main_label is None or not codes(copy_label) or codes(copy_label)!=codes(main_label):errors.append('CALLOUT_NAME_MISMATCH:'+cid+':'+pid)
+        if not complete:continue
+        P={r:tuple(p['points'][r]) for r in path};Q=seen;scale=None
+        if kind=='SEGMENT':
+            d=[norm(sub(P[b],P[a])) for a,b in piece_pairs];e=[norm(sub(Q[b],Q[a])) for a,b in piece_pairs]
+            if min(d)<=1e-9 or min(e)<=1e-9:errors.append('CALLOUT_PATH_DEGENERATE:'+cid);continue
+            scale=e[0]/d[0]
+            # the lengths are enlarged by one factor and nothing else changes: every piece is `scale` times the main piece, in a straight line
+            if any(abs(ei-scale*di)>CALLOUT_RELATIVE*max(1.0,ei) for di,ei in zip(d,e)):errors.append('CALLOUT_RATIO_MISMATCH:'+cid)
+            if row.get('scale') is not None and abs(scale-float(row['scale']))>CALLOUT_RELATIVE*max(1.0,scale):errors.append('CALLOUT_SCALE_MISMATCH:'+cid+':declared=%s:drawn=%.6f'%(row['scale'],scale))
+            total=norm(sub(Q[path[-1]],Q[path[0]]))
+            if abs(total-sum(e))>CALLOUT_RELATIVE*max(1.0,total):errors.append('CALLOUT_NOT_STRAIGHT:'+cid)
+            orientation=row.get('orientation','HORIZONTAL')
+            if orientation not in ('HORIZONTAL','VERTICAL'):errors.append('CALLOUT_ORIENTATION_INVALID:'+cid)
+            else:
+                axis=1 if orientation=='HORIZONTAL' else 0
+                if any(abs(Q[r][axis]-Q[path[0]][axis])>CALLOUT_RELATIVE*max(1.0,total) for r in path):errors.append('CALLOUT_ORIENTATION_MISMATCH:'+cid)
+                chord=sub(P[path[-1]],P[path[0]]);run=sub(Q[path[-1]],Q[path[0]])
+                # it runs the way the path runs on the page: left to right when the main path goes rightwards, downwards when it goes down
+                want=(1 if chord[0]>=0 else -1) if orientation=='HORIZONTAL' else (-1 if chord[1]<=0 else 1)
+                if run[1-axis]*want<=0:errors.append('CALLOUT_DIRECTION_MISMATCH:'+cid)
+        else:
+            # the fan: every ray the same length (radius), every direction the main figure's own (nothing turned), so every angle between two rays is the original's
+            vertex=path[0];rays=path[1:];lengths=[norm(sub(Q[r],Q[vertex])) for r in rays]
+            if min(norm(sub(P[r],P[vertex])) for r in rays)<=1e-9 or min(lengths)<=1e-9:errors.append('CALLOUT_RAY_DEGENERATE:'+cid);continue
+            if max(lengths)-min(lengths)>CALLOUT_RELATIVE*max(1.0,max(lengths)):errors.append('CALLOUT_RAY_LENGTH_MISMATCH:'+cid)
+            if row.get('radius') is not None and abs(lengths[0]-float(row['radius']))>CALLOUT_RELATIVE*max(1.0,lengths[0]):errors.append('CALLOUT_RADIUS_MISMATCH:'+cid+':declared=%s:drawn=%.6f'%(row['radius'],lengths[0]))
+            for r in rays:
+                turned=wrap180(direction_degrees(sub(Q[r],Q[vertex]))-direction_degrees(sub(P[r],P[vertex])))
+                if abs(turned)>CALLOUT_ANGLE_TOLERANCE:errors.append('CALLOUT_ANGLE_MISMATCH:'+cid+':'+r)
+            for i,a in enumerate(rays):
+                for b in rays[i+1:]:
+                    if abs(angle_between(Q[a],Q[vertex],Q[b])-angle_between(P[a],P[vertex],P[b]))>CALLOUT_ANGLE_TOLERANCE:errors.append('CALLOUT_ANGLE_MISMATCH:'+cid+':'+a+b)
+        qbox=(min(Q[r][0] for r in path),max(Q[r][0] for r in path),min(Q[r][1] for r in path),max(Q[r][1] for r in path))
+        at=row.get('at','RIGHT')
+        side={'RIGHT':qbox[0]>box[1],'LEFT':qbox[1]<box[0],'ABOVE':qbox[2]>box[3],'BELOW':qbox[3]<box[2]}.get(at)
+        if side is None:errors.append('CALLOUT_AT_INVALID:'+cid)
+        elif not side:errors.append('CALLOUT_SIDE_MISMATCH:'+cid+':'+str(at))
+        # the pieces are drawn between the copies
+        for i,(a,b) in enumerate(piece_pairs):
+            sid=prefix+piece_prefix+str(i+1);node=elements.get(sid)
+            if node is None or tag(node)!='line':errors.append('CALLOUT_SEGMENT_MISSING:'+cid+':'+sid);continue
+            ends=[inverse(float(node.get('x1')),float(node.get('y1'))),inverse(float(node.get('x2')),float(node.get('y2')))]
+            if any(norm(sub(x,y))>CALLOUT_POINT_TOLERANCE for x,y in zip(ends,[Q[a],Q[b]])):errors.append('CALLOUT_SEGMENT_MISMATCH:'+cid+':'+sid)
+            segments.append({'id':sid,'refs':[prefix+a,prefix+b]})
+        for pid in path:points[prefix+pid]=seen[pid]
+        # guide lines: exactly the declared ones, light grey and dotted, each joining a main point to its copy
+        link=row.get('link','NONE')
+        if link not in ('NONE','ENDS' if kind=='SEGMENT' else 'VERTEX'):errors.append('CALLOUT_LINK_INVALID:'+cid)
+        wanted=[('g1',path[0]),('g2',path[-1])] if (link=='ENDS' and kind=='SEGMENT') else [('g1',path[0])] if (link=='VERTEX' and kind=='ANGLE') else []
+        for gid,pid in wanted:
+            node=elements.get(prefix+gid);expected_guides.add(prefix+gid)
+            if node is None or tag(node)!='line' or node.get('data-role')!='guide':errors.append('CALLOUT_GUIDE_MISSING:'+cid+':'+gid);continue
+            ends=[inverse(float(node.get('x1')),float(node.get('y1'))),inverse(float(node.get('x2')),float(node.get('y2')))]
+            here,copy=P[pid],seen[pid]
+            if not ((norm(sub(ends[0],here))<=CALLOUT_POINT_TOLERANCE and norm(sub(ends[1],copy))<=CALLOUT_POINT_TOLERANCE) or (norm(sub(ends[1],here))<=CALLOUT_POINT_TOLERANCE and norm(sub(ends[0],copy))<=CALLOUT_POINT_TOLERANCE)):errors.append('CALLOUT_GUIDE_NOT_ON_POINTS:'+cid+':'+gid)
+            if str(node.get('stroke') or '').lower()!=GUIDE_STROKE or node.get('stroke-dasharray')!=GUIDE_DASH:errors.append('CALLOUT_GUIDE_STYLE_MISMATCH:'+cid+':'+gid)
+        # the marks: ordinary marks on the observed copies
+        if kind=='SEGMENT':
+            # a declared dimension value is the length on the main figure's own path (the copy is `scale` times as long)
+            for dim in row.get('dimensions') or []:
+                if dim.get('from') not in path or dim.get('to') not in path or dim.get('from')==dim.get('to'):errors.append('CALLOUT_TARGET_UNKNOWN:'+cid+':'+str(dim.get('id')));continue
+                out={**dim,'id':prefix+dim['id'],'from':prefix+dim['from'],'to':prefix+dim['to']}
+                if dim.get('value') is not None:
+                    i,j=sorted((path.index(dim['from']),path.index(dim['to'])));declared=float(dim['value']);along=sum(d[i:j])
+                    if abs(declared-along)>CALLOUT_RELATIVE*max(1.0,declared):errors.append('CALLOUT_DIMENSION_FACT_MISMATCH:'+cid+'.'+str(dim['id'])+':declared=%s:main=%.6f'%(dim['value'],along))
+                    out['value']=declared*scale
+                dims.append(out)
+        else:
+            for angle in row.get('angles') or []:
+                refs=angle.get('refs') or []
+                if len(refs)!=3 or refs[1]!=path[0] or refs[0] not in path[1:] or refs[2] not in path[1:] or refs[0]==refs[2]:errors.append('CALLOUT_ANGLE_REFS_INVALID:'+cid+':'+str(angle.get('id')));continue
+                out={**angle,'id':prefix+angle['id'],'refs':[prefix+r for r in refs]}
+                if angle.get('equalGroup') is not None:out['equalGroup']=cid+':'+str(angle['equalGroup'])      # an equal group is the callout's own, never the main figure's
+                if angle.get('over'):out['over']=[prefix+r for r in angle['over']]
+                angles.append(out)
+        def piece_of(pair,piece_pairs=piece_pairs,prefix=prefix,piece_prefix=piece_prefix):
+            for i,(a,b) in enumerate(piece_pairs):
+                if [a,b]==list(pair) or [b,a]==list(pair):return prefix+piece_prefix+str(i+1)
+            return None
+        extra=row.get('marks') or {}
+        for mark in extra.get('equalLengths') or []:
+            pieces=[piece_of(pair) for pair in mark.get('segments') or []]
+            if any(piece is None for piece in pieces):errors.append('CALLOUT_SEGMENT_UNKNOWN:'+cid+':'+str(mark.get('id')));continue
+            equal.append({**mark,'id':prefix+mark['id'],'segments':pieces})
+        for mark in extra.get('expressionLabels') or []:
+            piece=piece_of(mark.get('segment') or [])
+            if piece is None:errors.append('CALLOUT_SEGMENT_UNKNOWN:'+cid+':'+str(mark.get('id')));continue
+            labels.append({**{k:v for k,v in mark.items() if k!='segment'},'id':prefix+mark['id'],'ownerSegment':piece})
+        observations.append({'id':cid,'type':'CALLOUT','kind':kind,'path':list(path),'at':at,**({'scale':scale} if scale is not None else {})})
+    for node_id,node in elements.items():
+        if tag(node)=='line' and node.get('data-role')=='guide' and node_id not in expected_guides:errors.append('CALLOUT_GUIDE_UNDECLARED:'+str(node_id))
+    marks['dimensions']=dims;marks['equalLengths']=equal;marks['expressionLabels']=labels;marks['angles']=angles
+    return points,marks,segments
+
 def audit(p):
     root=ET.fromstring(p['svg']);errors=[];observations=[]
     model=p['transform'];ox,oy,sx,sy=[model[k] for k in ('originX','originY','sx','sy')]
@@ -198,7 +349,8 @@ def audit(p):
     inverse=lambda x,y:((x-ox)/sx,(oy-y)/sy)
     forward=lambda q:(ox+q[0]*sx,oy-q[1]*sy)   # model -> svg
     elements={n.get('id'):n for n in root.iter() if n.get('id')}
-    peer=p['points'];marks=p.get('marks') or {}
+    peer,marks,expanded=expand_callouts(p,elements,inverse,errors,observations)   # E37: callouts' observed copies, pieces and marks join the main figure's
+    p={**p,'segments':expanded}
     def peer_point(pid):
         if pid not in peer:raise ValueError('MARK_TARGET_UNKNOWN:'+pid)
         return tuple(peer[pid])
@@ -847,6 +999,19 @@ def audit(p):
             else:
                 leader_ok(oid+'-label',box,lambda q:min(point_segment_distance(q,c,d) for c,d in zip(path,path[1:]))<=1.0)
                 la=(float(node.get('x1')),float(node.get('y1')));lb=(float(node.get('x2')),float(node.get('y2')))
+                # anchor / side (E37): where along the path the leader starts, and on which side of the path (walking first point to last, as the page shows it: y down) the label stands
+                if row.get('anchor') is not None:
+                    wanted=path_anchor_fraction(row['anchor'])
+                    if wanted is None or closed:errors.append('PATH_LABEL_ANCHOR_INVALID:'+oid)
+                    else:
+                        drawn,_=nearest_on_path(la,path)
+                        if abs(drawn-wanted)>PATH_LABEL_ANCHOR_TOLERANCE:errors.append('PATH_LABEL_ANCHOR_MISMATCH:'+oid+':wanted=%.3f:drawn=%.3f'%(wanted,drawn))
+                if row.get('side') is not None:
+                    if row['side'] not in ('LEFT','RIGHT') or closed:errors.append('PATH_LABEL_SIDE_INVALID:'+oid)
+                    else:
+                        _,(dx,dy)=nearest_on_path(la,path);normal=(dy,-dx) if row['side']=='LEFT' else (-dy,dx)
+                        centre=(box[0]+box[2]/2-la[0],box[1]+box[3]/2-la[1])
+                        if norm(centre)<=1e-9 or (centre[0]*normal[0]+centre[1]*normal[1])/norm(centre)<PATH_LABEL_SIDE_MIN_COS:errors.append('PATH_LABEL_SIDE_MISMATCH:'+oid)
                 for sid,pts in strokes:
                     if closed and sid in ids:continue      # a perimeter leader may leave from a corner: that corner's own dot is where it starts
                     if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('PATH_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
