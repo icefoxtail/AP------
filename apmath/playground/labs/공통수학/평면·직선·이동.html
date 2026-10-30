@@ -524,8 +524,8 @@
     }
 
     function dotLens(text) {
-      if (/대칭|반사|접는|이동|원본|고정점|압정|[′'″]/.test(text)) return 'aux';
-      if (/직교|직각|90°|수선|기울기|m=|m'/.test(text)) return 'angles';
+      if (/직교|직각|90°|수직|수선|기울기|m=|m'/.test(text)) return 'angles';
+      if (/대칭|반사|접는|이동|원본|고정점|압정|f\(|[′'″]/.test(text)) return 'aux';
       if (/\d\)|\d,|거리|내분|외분|비율|중점|중심/.test(text)) return 'sides';
       return null;
     }
@@ -2093,13 +2093,15 @@
 
     // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
     const LENS_OFF = {
-      divInternalExternal: ['angles'], divExtendedLine: ['angles'], centroidParaCoord: ['angles'],
-      distMinSumSq: ['angles'], fixedPointPencil: ['angles', 'sides'], areaBisectLines: ['angles', 'aux'],
-      threeLinesNoTri: ['angles', 'aux'], shoelaceArea: ['angles'], compositeStepByStep: ['angles'],
-      paradoxPointVsFig: ['angles', 'sides'], symmetry4Basic: ['angles', 'sides'], lineSlideSame: ['angles'],
-      reflectTriPerim: ['angles', 'sides'], reflectSingleAxis: ['angles'], reflectDoubleAxes: ['angles'],
-      billiardMirrorRoom: ['angles', 'sides'], diffMaxLine: ['angles', 'aux'], trapApollonius: ['angles'],
-      trapLineSegmentMeet: ['sides'], trapInterceptZero: ['angles', 'aux'], trapPerpDivideZero: ['angles', 'sides']
+      divInternalExternal: ['angles'], divExtendedLine: ['angles'], pappusMedian: ['angles'],
+      centroidParaCoord: ['angles', 'aux'], distMinSumSq: ['angles', 'aux'], perpSlopeMinus1: ['aux'],
+      fixedPointPencil: ['angles', 'sides'], perpBisectorOrtho: ['aux'], areaBisectLines: ['angles', 'aux'],
+      threeLinesNoTri: ['angles', 'aux'], shoelaceArea: ['angles', 'sides', 'aux'], pointLineDist: ['aux'],
+      angleBisectorLine: ['sides'], compositeStepByStep: ['angles', 'sides'], paradoxPointVsFig: ['angles', 'sides'],
+      symmetry4Basic: ['angles', 'sides'], lineSlideSame: ['angles'], reflectTriPerim: ['angles', 'sides'],
+      reflectSingleAxis: ['angles'], reflectDoubleAxes: ['angles'], billiardMirrorRoom: ['angles', 'sides'],
+      diffMaxLine: ['angles', 'aux'], trapApollonius: ['angles'], trapLineSegmentMeet: ['sides'],
+      trapInterceptZero: ['angles', 'aux'], trapPerpDivideZero: ['sides', 'aux']
     };
 
     function syncLensButtons() {
@@ -2112,7 +2114,9 @@
         btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
         btn.classList.toggle('active', id === state.conceptSwitch);
       });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
       document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
     }
 
     function setMode(m) {

@@ -2431,7 +2431,9 @@
         btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
         btn.classList.toggle('active', id === state.conceptSwitch);
       });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
       document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
     }
 
     function setMode(m) {

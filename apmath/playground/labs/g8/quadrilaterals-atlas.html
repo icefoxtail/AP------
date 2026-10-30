@@ -2078,10 +2078,11 @@
 
     // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
     const LENS_OFF = {
-      paraDiag: ['sides'], quadToTri: ['angles'], equiSlide: ['angles'], butterflyWing: ['angles'],
-      insidePointP: ['angles', 'sides', 'aux'], paraHeightSplit: ['angles'], varignonGen: ['angles', 'sides', 'aux'],
-      varignonRectToRhomb: ['sides'], varignonIsoToRhomb: ['sides'], varignonRhombToRect: ['angles'],
-      squarePerpLines: ['angles'], squareInnerRot: ['angles']
+      paraAngles: ['angles'], paraDiag: ['sides'], paraCond5: ['angles'], quadToTri: ['angles'],
+      equiSlide: ['angles'], butterflyWing: ['angles'], insidePointP: ['angles', 'sides', 'aux'],
+      paraHeightSplit: ['angles'], varignonGen: ['angles', 'sides', 'aux'], varignonRectToRhomb: ['sides'],
+      varignonIsoToRhomb: ['sides'], varignonRhombToRect: ['angles'], squarePerpLines: ['angles'],
+      squareInnerRot: ['angles']
     };
 
     function syncLensButtons() {
@@ -2094,7 +2095,9 @@
         btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
         btn.classList.toggle('active', id === state.conceptSwitch);
       });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
       document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
     }
 
     function setMode(m) {

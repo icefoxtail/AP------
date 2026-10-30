@@ -495,9 +495,10 @@
     }
 
     function labelLens(text) {
-      if (/자취|공통현|평행|이동|대칭|반사|중점|k = |y = x/.test(text)) return 'aux';
+      if (/자취|공통현|평행|이동|대칭|반사|k = |y = x/.test(text)) return 'aux';
+      if (/직각|∠|빗변|AH|√/.test(text)) return 'pyth';
       if (/중심|반지름|거리|\br\b|\bd\b|R²|[CO][₁₂]?\(|^[CO][₁₂]?$/.test(text)) return 'def';
-      if (/직각|∠|빗변|\||AH|√/.test(text)) return 'pyth';
+      if (/\|/.test(text)) return 'pyth';
       return null;
     }
 
@@ -1871,9 +1872,10 @@
 
     // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
     const LENS_OFF = {
-      stdDef: ['aux'], generalForm: ['pyth'], diamEnds: ['def'], threePts: ['pyth'], twoCircles21: ['pyth'],
-      touchX: ['aux'], touchY: ['aux'], touchBothQuad: ['pyth'], apolloMaxArea: ['aux'], apolloMaxAngle: ['aux'],
-      foldCircleArc: ['pyth'], tanSlope: ['aux'], tanPointOn: ['aux'], laserReflectTan: ['pyth']
+      stdDef: ['aux'], generalForm: ['def', 'pyth', 'aux'], diamEnds: ['aux'], threePts: ['pyth'],
+      twoCircles21: ['pyth'], touchX: ['aux'], touchY: ['aux'], touchBothQuad: ['pyth'], apolloMaxArea: ['aux'],
+      apolloMaxAngle: ['aux'], chordLength: ['aux'], dVsR: ['aux'], equilMaxMin: ['aux'], foldCircleArc: ['pyth'],
+      tanSlope: ['aux'], tanPointOn: ['aux'], polarChordCow: ['aux'], laserReflectTan: ['pyth']
     };
 
     function syncLensButtons() {
@@ -1886,7 +1888,9 @@
         btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
         btn.classList.toggle('active', id === state.conceptSwitch);
       });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
       document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
     }
 
     function setMode(m) {
