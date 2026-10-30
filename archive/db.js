@@ -30065,6 +30065,17 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학2"
     },
     {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P70-73_20261030_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 함수 70~73쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
       "file": "textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js",
       "school": "비상교육",
       "topic": "비상 공통수학2 도형의 방정식 익힘책 고1",
