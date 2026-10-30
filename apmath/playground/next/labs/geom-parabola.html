@@ -426,8 +426,61 @@ window.addEventListener('DOMContentLoaded', function () {
   function drawEqualTickMarks(m1, m2, color = '#fbbf24', partIdx = null, lensGroup = 'all') {
     withAlpha(lensAlpha(lensGroup), () => BOARD.ticks([m1.x, m1.y], [m2.x, m2.y], { count: 2, color }));
   }
+  // [표시 보강] 각 호는 바로 그리되 각도 글자는 줄에 모았다가 포물선 곡선까지 그린 뒤 맨 위에 씁니다(곡선이 글자를 가리지 않게).
+  const LBLQ = [];
+  function angleWithLabel(v, p1, p2, o) {
+    BOARD.angle(v, p1, p2, { ...o, label: '' });
+    if (!o.label) return;
+    const a = BOARD.toS(v[0], v[1]), b = BOARD.toS(p1[0], p1[1]), c = BOARD.toS(p2[0], p2[1]);
+    const t1 = Math.atan2(b.y - a.y, b.x - a.x), t2 = Math.atan2(c.y - a.y, c.x - a.x);
+    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, m = t1 + d / 2, lr = (o.r || 26) + (o.labelGap || 14);
+    LBLQ.push({ x: a.x + Math.cos(m) * lr, y: a.y + Math.sin(m) * lr, text: o.label, color: o.color, size: o.size || 11, alpha: BOARD.ctx.globalAlpha });
+  }
+  // [표시 보강] 직각의 값('90°')을 각의 안쪽(이등분선 방향)에 씁니다. p1·p2는 꼭짓점 v에서 나가는 두 반직선 위의 수학 좌표 점.
+  function queueRightText(v, p1, p2, color = '#fde047', distPx = 34, lensGroup = 'all') {
+    const a = BOARD.toS(v.x, v.y), b = BOARD.toS(p1.x, p1.y), c = BOARD.toS(p2.x, p2.y);
+    const lb = Math.hypot(b.x - a.x, b.y - a.y) || 1, lc = Math.hypot(c.x - a.x, c.y - a.y) || 1;
+    let bx = (b.x - a.x) / lb + (c.x - a.x) / lc, by = (b.y - a.y) / lb + (c.y - a.y) / lc;
+    const bl = Math.hypot(bx, by) || 1; bx /= bl; by /= bl;
+    LBLQ.push({ x: a.x + bx * distPx, y: a.y + by * distPx, text: '90°', color, size: 11, alpha: BOARD.ctx.globalAlpha * lensAlpha(lensGroup) });
+  }
+  function flushAngleLabels() {
+    const c = BOARD.ctx;
+    for (const q of LBLQ) { c.save(); c.globalAlpha = q.alpha; BOARD._text(q.x, q.y, q.text, { color: q.color, size: q.size, align: 'center', baseline: 'middle', weight: 800 }); c.restore(); }
+    LBLQ.length = 0;
+  }
   function drawAngleArc(center, dir1, dir2, radiusPx = 22, color = '#fde047', text = '', partIdx = null, lensGroup = 'all') {
-    withAlpha(lensAlpha(lensGroup), () => BOARD.angle([center.x, center.y], [center.x + dir1.x, center.y + dir1.y], [center.x + dir2.x, center.y + dir2.y], { r: radiusPx, color, label: text, size: 11, part: partOf(partIdx) }));
+    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([center.x, center.y], [center.x + dir1.x, center.y + dir1.y], [center.x + dir2.x, center.y + dir2.y], { r: radiusPx, color, label: text, size: 11, part: partOf(partIdx) }));
+  }
+  // [표시 보강] 평행 표시(화살촉 ››): 선분 p–q의 가운데에 그립니다. 평행한 두 선분에 같은 개수를 그려 '평행'을 보입니다.
+  function drawParallelMark(p, q, color = '#fde047', count = 1, lensGroup = 'all') {
+    withAlpha(lensAlpha(lensGroup), () => {
+      const a = BOARD.toS(p.x, p.y), b = BOARD.toS(q.x, q.y), c = BOARD.ctx;
+      const l = Math.hypot(b.x - a.x, b.y - a.y) || 1, d = { x: (b.x - a.x) / l, y: (b.y - a.y) / l }, n = { x: -d.y, y: d.x };
+      const m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      c.save();
+      c.strokeStyle = BOARD.color(color);
+      c.lineWidth = 2;
+      c.setLineDash([]);
+      for (let i = 0; i < count; i++) {
+        const o = (i - (count - 1) / 2) * 7;
+        const t = { x: m.x + d.x * o, y: m.y + d.y * o };
+        c.beginPath();
+        c.moveTo(t.x - d.x * 4 + n.x * 5, t.y - d.y * 4 + n.y * 5);
+        c.lineTo(t.x + d.x * 3, t.y + d.y * 3);
+        c.lineTo(t.x - d.x * 4 - n.x * 5, t.y - d.y * 4 - n.y * 5);
+        c.stroke();
+      }
+      c.restore();
+    });
+  }
+  // [표시 보강] 같은 각 표시: 꼭짓점 v에서 두 반직선 사이 각에 호와 각도 값(°)을 같은 색·같은 기호로 그립니다.
+  function drawEqAngle(v, p1, p2, color = '#fde047', rings = 1, r = 24, text = null, lensGroup = 'all', labelGap = 14) {
+    const d1 = { x: p1.x - v.x, y: p1.y - v.y }, d2 = { x: p2.x - v.x, y: p2.y - v.y };
+    const cosv = (d1.x * d2.x + d1.y * d2.y) / ((Math.hypot(d1.x, d1.y) * Math.hypot(d2.x, d2.y)) || 1);
+    const deg = Math.acos(Math.max(-1, Math.min(1, cosv))) * 180 / Math.PI;
+    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([v.x, v.y], [p1.x, p1.y], [p2.x, p2.y], { r, rings, color, label: text == null ? `${deg.toFixed(1)}°` : text, size: 11, labelGap }));
+    return deg;
   }
   // 하단 비율 줄자 → 셸의 요약 띠(무대 아래). 비율 막대의 weight 합계 = 1.0
   function drawBottomTapeBanner(rect, titleStr, tapeSegs, partIdx = 2) {
@@ -576,6 +629,12 @@ window.addEventListener('DOMContentLoaded', function () {
             if (Math.abs(realPF - realFH) < 0.15) {
               drawEqualTickMarks(F, H, '#fbbf24', 2, 'def');
               drawAngleArc(F, { x: P.x - F.x, y: P.y - F.y }, { x: H.x - F.x, y: H.y - F.y }, 24, '#fde047', '60°', 2, 'sim');
+              // [표시 보강] 정삼각형의 세 내각을 모두 같은 표시(노랑 호 + 60°)로, PH ∥ x축에 의한 엇각 ∠PFx도 같은 60°로 표시
+              drawEqAngle(P, F, H, '#fde047', 1, 40, '60°', 'sim', 34);
+              drawEqAngle(H, P, F, '#fde047', 1, 24, '60°', 'sim');
+              drawEqAngle(F, { x: F.x + 1, y: F.y }, P, '#fde047', 2, 34, '60°', 'sim');
+              drawParallelMark(P, H, '#fde047', 1, 'sim');
+              drawParallelMark({ x: F.x + 1.5, y: 0 }, { x: F.x + 2.5, y: 0 }, '#fde047', 1, 'sim');
             }
           }
 
@@ -590,7 +649,8 @@ window.addEventListener('DOMContentLoaded', function () {
             drawChalkArrow(P.x, P.y, P.x + 3.8, P.y, '#fde047', 2.4, 2, 'tan');
 
             // 입사각 α = 반사각 α 호 표시
-            drawAngleArc(P, { x: F.x - P.x, y: F.y - P.y }, { x: -ut.x, y: -ut.y }, 22, '#f472b6', 'α', 2, 'tan');
+            // [표시 보강] 같은 각 α는 같은 색(노랑)·같은 기호로 표시(이전: 분홍/노랑으로 달라 같은 각임이 안 보임)
+            drawAngleArc(P, { x: F.x - P.x, y: F.y - P.y }, { x: -ut.x, y: -ut.y }, 22, '#fde047', 'α', 2, 'tan');
             drawAngleArc(P, { x: 1, y: 0 }, ut, 22, '#fde047', 'α', 2, 'tan');
           }
 
@@ -652,7 +712,15 @@ window.addEventListener('DOMContentLoaded', function () {
           drawChalkLine(B.x, B.y, E.x, E.y, '#34d399', 2.0, true, false, 1, 'sim');
           drawRightAngleMark(E, { x: A.x >= E.x ? 1 : -1, y: 0 }, { x: 0, y: -1 }, 10, '#34d399', 1, 'sim');
           drawChalkPoint(E.x, E.y, 4.0, '#34d399', `E (|a-b|=${fmtNum(Math.abs(a - b))})`, { x: -45, y: -12 }, 1, 'sim');
-          drawAngleArc(A, { x: E.x - A.x, y: 0 }, { x: B.x - A.x, y: B.y - A.y }, 24, '#fde047', 'θ', 1, 'sim');
+          // [표시 보강] θ에 값(°)을 넣고, AE ∥ x축에 의한 엇각을 초점 F에도 같은 색·같은 표시로 그립니다(같은 각이 어디인지)
+          const eDir = E.x >= A.x ? 1 : -1;
+          const thTxt = (safeTheta <= Math.PI / 2 + 1e-6 ? 'θ=' : '') + fmtNum(Math.abs(Math.atan2(B.y - A.y, (B.x - A.x) * eDir)) * 180 / Math.PI, 1) + '°';
+          drawEqAngle(A, { x: A.x + eDir, y: A.y }, B, '#fde047', 1, 28, thTxt, 'sim');
+          drawEqAngle(F, { x: F.x - eDir, y: 0 }, A, '#fde047', 1, 28, thTxt, 'sim');
+        } else {
+          // [표시 보강] θ = 90° (통경): 초점 F에서 x축과 초점현이 직각
+          drawRightAngleMark(F, { x: 1, y: 0 }, { x: 0, y: A.y >= 0 ? 1 : -1 }, 12, '#fde047', 1, 'sim');
+          queueRightText(F, { x: F.x + 1, y: 0 }, { x: F.x, y: A.y >= 0 ? 1 : -1 }, '#fde047', 34, 'sim');
         }
 
         // 초점 분할선 (-p, 0) ~ (p, 0)
@@ -699,12 +767,16 @@ window.addEventListener('DOMContentLoaded', function () {
         drawChalkLine(A.x, A.y, B.x, B.y, '#e2e8f0', 2.2, false, false, 0, 'all');
 
         withAlpha(lensAlpha('def'), () => BOARD.circle(M, realR, { color: '#38bdf8', fill: '#38bdf8', fillAlpha: 0.06, width: isPartHighlighted(0) ? 3.4 : 2.4, glow: true, part: 0 }));
+        // [표시 보강] 원의 반지름 MA = MB 같은 길이 표시(다음 단계에서 M~H_M도 같은 표시 → d = R)
+        drawEqualTickMarks(M, A, '#38bdf8', 0, 'def');
+        drawEqualTickMarks(M, B, '#38bdf8', 0, 'def');
       }
 
       // Step 2 (partIdx = 1): 중심 M에서 준선에 내린 수선의 발 H_M 및 두 접선 QA, QB 직교(90°)
       if (state.steps[2]) {
         drawChalkLine(M.x, M.y, HM.x, HM.y, '#fbbf24', 2.6, true, true, 1, 'sim');
         drawRightAngleMark(HM, { x: 0, y: -1 }, { x: 1, y: 0 }, 10, '#fbbf24', 1, 'sim');
+        drawEqualTickMarks(M, HM, '#38bdf8', 1, 'sim'); // [표시 보강] d = MH_M 이 반지름 R(MA, MB)과 같다는 같은 길이 표시
 
         // 양 끝점 A, B에서의 두 접선 QA, QB 연결 (항상 점 HM에서 90°로 직교!)
         drawChalkLine(HM.x, HM.y, A.x, A.y, '#c084fc', 2.0, false, true, 1, 'tan');
@@ -718,7 +790,8 @@ window.addEventListener('DOMContentLoaded', function () {
         const lQB = Math.hypot(vQB.x, vQB.y);
         const uQB = { x: vQB.x / lQB, y: vQB.y / lQB };
 
-        drawRightAngleMark(HM, uQA, uQB, 11, '#e879f9', 1, 'tan');
+        drawRightAngleMark(HM, uQA, uQB, 20, '#e879f9', 1, 'tan'); // [표시 보강] ∠AQB=90° 표시를 키워 준선 직각 표시와 겹치지 않게
+        queueRightText(HM, A, B, '#e879f9', 42, 'tan'); // [표시 보강] ∠AQB = 90° 값을 각 안쪽에
 
         drawChalkPoint(M.x, M.y, 5.5, '#fbbf24', `중심 M(${fmtNum(M.x)}, ${fmtNum(M.y)})`, { x: 10, y: -10 }, 1, 'sim');
         drawChalkPoint(HM.x, HM.y, 6.0, '#f43f5e', `접점 Q=H_M(-${fmtNum(p, 1)}, ${fmtNum(HM.y)})`, { x: -138, y: -8 }, 1, 'tan');
@@ -736,6 +809,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const lFQ = Math.hypot(vFQ.x, vFQ.y);
         const uFQ = { x: vFQ.x / lFQ, y: vFQ.y / lFQ };
         drawRightAngleMark(F, uFA, uFQ, 10, '#fde047', 2, 'tan');
+        queueRightText(F, { x: F.x + uFA.x, y: F.y + uFA.y }, { x: F.x + uFQ.x, y: F.y + uFQ.y }, '#fde047', 28, 'tan'); // [표시 보강] QF ⊥ AB 의 90° 값
 
         withAlpha(lensAlpha('tan'), () => { // 접점 Q 둘레의 노란 고리(화면 반지름 11px)
           const sHM = BOARD.toS(HM.x, HM.y), c = BOARD.ctx;
@@ -829,11 +903,14 @@ window.addEventListener('DOMContentLoaded', function () {
           const lKF = Math.hypot(vKF.x, vKF.y);
           const uKF = { x: vKF.x / lKF, y: vKF.y / lKF };
 
-          drawRightAngleMark(K, { x: ux, y: uy }, uKF, 11, '#fde047', 2, 'tan');
+          drawRightAngleMark(K, { x: ux, y: uy }, uKF, 14, '#fde047', 2, 'tan'); // [표시 보강] 직각 표시 확대(11→14)
           drawRightAngleMark(O, { x: 1, y: 0 }, { x: 0, y: py >= 0 ? 1 : -1 }, 9, '#34d399', 2, 'sim');
+          // [표시 보강] △OFK ~ △KFP 의 같은 각: 초점 F에서 ∠OFK = ∠KFP (마름모 대각선 FH가 ∠TFP를 이등분) — 같은 색·같은 표시와 각도 값
+          drawEqAngle(F, T, K, '#34d399', 1, 28, null, 'sim');
+          drawEqAngle(F, K, P, '#34d399', 1, 28, null, 'sim');
         }
 
-        drawChalkPoint(K.x, K.y, 5.0, '#fde047', `K(0, ${fmtNum(py / 2)}) [FK=${fmtNum(realFK)}]`, { x: 10, y: 15 }, 2, 'tan');
+        drawChalkPoint(K.x, K.y, 5.0, '#fde047', `K(0, ${fmtNum(py / 2)}) [FK=${fmtNum(realFK)}]`, { x: 44, y: 40 }, 2, 'tan'); // [표시 보강] K의 직각 표시(우측)를 이름표가 가리지 않게 마름모 안쪽으로 이동
 
         drawBottomTapeBanner(
           rect,
@@ -947,6 +1024,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const F = { x: p, y: 0 };
       const rect = { width: b.W, height: b.H };
 
+      LBLQ.length = 0;
       RENDER[m](p, F, rect);
       drawParabolaCurve(p);
       drawChalkPoint(F.x, 0, 5.5, '#f43f5e', `F(${fmtNum(p, 1)}, 0)`, { x: 8, y: 18 });
@@ -954,7 +1032,9 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 1 || m === 4) {
         const py = state.py;
         const px = (py * py) / (4 * p);
-        b.handle('P', [px, py], { color: 'amber', r: 7.5, label: `P(${fmtNum(px)}, ${fmtNum(py)})`, dx: 12, dy: py >= 0 ? -16 : 16, drag: (w) => { s.py = clamp(w.y, -8, 8); } });
+        // [표시 보강] 모드 1의 3단계는 점 P 오른쪽 위에 반사각 α 표시가 오므로, P 이름표를 왼쪽 위로 옮겨 겹치지 않게 합니다.
+        const flipP = m === 1 && s.step >= 3 && sub !== 3;
+        b.handle('P', [px, py], { color: 'amber', r: 7.5, label: `P(${fmtNum(px)}, ${fmtNum(py)})`, align: flipP ? 'right' : 'left', dx: flipP ? -12 : 12, dy: py >= 0 ? -16 : 16, drag: (w) => { s.py = clamp(w.y, -8, 8); } });
       } else {
         const chord = getFocalChordPoints(p, state.theta);
         // 원본 handlePointerMove: 초점 F를 중심으로 끝점을 돌려 θ를 정함(20°~160°)
@@ -968,6 +1048,7 @@ window.addEventListener('DOMContentLoaded', function () {
         b.handle('A', [chord.A.x, chord.A.y], { color: 'amber', r: 7.5, label: `A(${fmtNum(chord.A.x)}, ${fmtNum(chord.A.y)})`, dx: 12, dy: -14, drag: turn('A') });
         b.handle('B', [chord.B.x, chord.B.y], { color: 'sky', r: 6.5, label: `B(${fmtNum(chord.B.x)}, ${fmtNum(chord.B.y)})`, dx: 12, dy: 14, drag: turn('B') });
       }
+      flushAngleLabels(); // [표시 보강] 각도 글자는 곡선·손잡이 위에(가려지지 않게)
       v.tape = sink.tape;
     };
   }
