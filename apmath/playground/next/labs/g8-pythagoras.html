@@ -289,6 +289,36 @@ window.addEventListener('DOMContentLoaded', function () {
     lensRun(lens, (fx) => BOARD.text(p, cv(msg), { color, size: fx.hi ? size + 1.5 : size, align, baseline: 'alphabetic', weight: 800, dx, dy }));
   }
 
+  /* ===== [표시 보강] 평행 표시·선분 위 눈금 위치·각도 글자 ===== */
+  /** 평행 표시(화살촉): 선분 p1→p2 위 pos 지점에 count 개. 같은 방향으로 평행한 두 선분에 같은 개수를 붙입니다. */
+  function ppar(p1, p2, count = 1, col = '#fbbf24', pos = 0.5, lens = 'def') {
+    if (BOARD.thumb) return;
+    lensRun(lens, () => {
+      const B = BOARD, c = B.ctx, S1 = B.toS(p1), S2 = B.toS(p2);
+      const l = Math.hypot(S2.x - S1.x, S2.y - S1.y) || 1, ux = (S2.x - S1.x) / l, uy = (S2.y - S1.y) / l, nx = -uy, ny = ux, sz = 6.5;
+      c.save();
+      c.strokeStyle = B.color(col); c.lineWidth = 2.3 * B.lw; c.lineCap = 'round'; c.setLineDash([]); c.shadowBlur = 0;
+      for (let i = 0; i < count; i++) {
+        const off = (i - (count - 1) / 2) * 7, cx = S1.x + (S2.x - S1.x) * pos + ux * off, cy = S1.y + (S2.y - S1.y) * pos + uy * off;
+        c.beginPath();
+        c.moveTo(cx - ux * sz + nx * sz * 0.85, cy - uy * sz + ny * sz * 0.85);
+        c.lineTo(cx + ux * sz * 0.4, cy + uy * sz * 0.4);
+        c.lineTo(cx - ux * sz - nx * sz * 0.85, cy - uy * sz - ny * sz * 0.85);
+        c.stroke();
+      }
+      c.restore();
+    });
+  }
+  /** 같은 길이 눈금을 선분 위 pos 지점에(이름표·평행 표시와 겹치지 않게) */
+  const ptickAt = (p1, p2, pos, count = 1, col = '#fbbf24') => ptick(lerp(p1, p2, pos - 0.02), lerp(p1, p2, pos + 0.02), count, col);
+  /** 그림의 점으로 잰 각도 글자(그림이 바뀌어도 값이 따라옴) */
+  const angDeg = (V, P1, P2) => {
+    const a = Math.atan2(P1.y - V.y, P1.x - V.x), b = Math.atan2(P2.y - V.y, P2.x - V.x);
+    let d = (Math.abs(a - b) * 180) / Math.PI;
+    if (d > 180) d = 360 - d;
+    return `${Math.round(d)}°`;
+  };
+
   /* ===== [2.0] 도우미: 원호를 꺾은선으로(반원 도형·접힌 반원), 직각 꼭짓점 위치 ===== */
   /** 캔버스 arc(m, r, ang1, ang2, anticlockwise)와 같은 방향의 호 위의 점들(화면 각도 그대로) */
   function arcPts(m, r, ang1, ang2, anticlockwise, n = 48) {
@@ -911,10 +941,19 @@ window.addEventListener('DOMContentLoaded', function () {
         ppoly(shift([c2, C, B], -pushOut, pushOut), 'rgba(56, 189, 248, 0.28)', PCOL.cyan, 2.2, 1);
         ppoly(shift([c3, D, C], pushOut, pushOut), 'rgba(56, 189, 248, 0.28)', PCOL.cyan, 2.2, 1);
         ppoly(shift([c4, A, D], pushOut, -pushOut), 'rgba(56, 189, 248, 0.28)', PCOL.cyan, 2.2, 1);
-        pright(c1, B, A, 11, PCOL.cyan);
+        // [표시 보강] 귀퉁이 직각삼각형 4개는 합동: 직각 표시(옮겨진 삼각형을 따라감)와 같은 길이 눈금(3칸 |, 2칸 ||)
+        [[c1, B, A, -pushOut, -pushOut], [c2, C, B, -pushOut, pushOut], [c3, D, C, pushOut, pushOut], [c4, A, D, pushOut, -pushOut]].forEach(([k0, p0, q0, dx, dy]) => {
+          const K0 = pt(k0.x + dx, k0.y + dy), P0 = pt(p0.x + dx, p0.y + dy), Q0 = pt(q0.x + dx, q0.y + dy);
+          pright(K0, P0, Q0, 11, PCOL.cyan);
+          ptick(K0, P0, 2, PCOL.cyan);
+          ptick(K0, Q0, 1, PCOL.cyan);
+        });
 
         ppoly([A, B, C, D], 'rgba(251, 191, 36, 0.38)', PCOL.gold, 3.6, 0);
         pright(A, B, D, 12, PCOL.gold);
+        // [표시 보강] 기울어진 정사각형: 네 직각과 네 변의 같은 길이 눈금(|||)
+        pright(B, A, C, 12, PCOL.gold); pright(C, B, D, 12, PCOL.gold); pright(D, C, A, 12, PCOL.gold);
+        ptick(A, B, 3, PCOL.gold); ptick(B, C, 3, PCOL.gold); ptick(C, D, 3, PCOL.gold); ptick(D, A, 3, PCOL.gold);
 
         ptag(cx, cy + 4, '넓이 S = 3² + 2² = 13', PCOL.gold, 14);
         ptag(ox + 1.5 * u, oy - 12, '3칸', PCOL.cyan, 12, 'aux');
@@ -1050,6 +1089,16 @@ window.addEventListener('DOMContentLoaded', function () {
         pline(A, L, PCOL.gold, 2.2, [5, 4]);
         pright(A, B, C, 11, PCOL.gold);
         pright(H, A, C, 10, PCOL.gold);
+        // [표시 보강] 정사각형의 직각(점 B 에서 90° 회전하는 각 ∠ABF, ∠CBD)과 SAS 합동의 같은 길이 눈금: BF = BA (|), BD = BC (||)
+        pright(B, A, F, 11, PCOL.cyan);
+        pright(B, C, D, 11, PCOL.green);
+        ptick(B, F, 1, PCOL.cyan); ptick(A, B, 1, PCOL.cyan);
+        ptick(B, D, 2, PCOL.green); ptick(B, C, 2, PCOL.green);
+        // 끼인각 ∠FBC = ∠ABD (= 90° + ∠ABC, ●) — 합동 단계(②·③)에서 보임
+        if (t > 0.33) {
+          pangle(B, F, C, PCOL.pink, 36, 1, '●');
+          pangle(B, A, D, PCOL.pink, 26, 1, '●');
+        }
 
         // ★ 연속 3구간 유클리드 변형 애니메이션 (t: 0 ~ 1) ★
         let activeTri = [F, A, B];
@@ -1057,6 +1106,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (t <= 0.33) {
           const u = t / 0.33;
           pline(G, C, PCOL.pink, 2.0, [5, 4]);
+          ppar(G, C, 1, PCOL.pink, 0.3); ppar(F, B, 1, PCOL.pink, 0.5); // [표시 보강] GC ∥ FB
           activeTri = [F, lerp(A, C, u), B];
           stepDesc = '① 평행선(GC∥FB) 등적변형: △FAB = △FBC';
         } else if (t <= 0.67) {
@@ -1068,6 +1118,7 @@ window.addEventListener('DOMContentLoaded', function () {
         } else {
           const u = (t - 0.67) / 0.33;
           pline(A, L, PCOL.pink, 2.4, [5, 4]);
+          ppar(A, L, 1, PCOL.pink, 0.3); ppar(B, D, 1, PCOL.pink, 0.5); // [표시 보강] AL ∥ BD
           activeTri = [lerp(A, H, u), B, D];
           stepDesc = '③ 평행선(AL∥BD) 등적변형: △ABD = △HBD (완성!)';
         }
@@ -1123,8 +1174,15 @@ window.addEventListener('DOMContentLoaded', function () {
             2.4,
             1
           );
-          if (state.conceptSwitch === 'def') pright(tri[0], tri[1], tri[2], 10, PCOL.gold);
+          // [표시 보강] 직각 표시는 모든 렌즈에서 보이게(원본은 '직각' 렌즈에서만), 합동 삼각형의 두 예각: ● (u쪽 끝) · × (v쪽 끝) — 해설의 '● + × = 90°'
+          pright(tri[0], tri[1], tri[2], 10, PCOL.gold);
+          pangle(tri[1], tri[0], tri[2], PCOL.cyan, 17, 1, '●');
+          pangle(tri[2], tri[0], tri[1], PCOL.pink, 17, 2, '×');
         });
+        if (t < 0.15) { // 가운데 사각형의 네 각은 180° - (● + ×) = 90°
+          const qs = [p(0, a), p(b, 0), p(L, b), p(a, L)];
+          qs.forEach((q0, i) => pright(q0, qs[(i + 1) % 4], qs[(i + 3) % 4], 10, PCOL.gold));
+        }
 
         if (t < 0.15) {
           ptag(cx, oy + L / 2 + 4, '가운데 정사각형 c² = 100', PCOL.gold, 14);
@@ -1156,6 +1214,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ppoly([D, A, S], 'rgba(52, 211, 153, 0.36)', PCOL.green, 2.6, 0);
         pright(P, A, B, 10, PCOL.gold);
         pright(Q, B, C, 10, PCOL.gold);
+        pright(R, C, D, 10, PCOL.gold); pright(S, D, A, 10, PCOL.gold); // [표시 보강] 네 직각삼각형 모두의 직각
 
         [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, pt(cx, oy + L / 2)));
         ptag(cx, oy + L / 2 + 4, '(b-a)²=2²=4', PCOL.gold, 12.5);
@@ -1185,6 +1244,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
         pangle(E, B, C, PCOL.cyan, 25, 1, '●');
         pangle(E, A, D, PCOL.pink, 25, 2, '×');
+        // [표시 보강] 같은 각은 같은 표시: ∠BEC = ∠DAE (●), ∠AED = ∠CBE (×) — 합동인 두 직각삼각형, 그리고 같은 길이 눈금
+        pangle(A, D, E, PCOL.cyan, 25, 1, '●');
+        pangle(B, C, E, PCOL.pink, 25, 2, '×');
+        ptick(B, C, 1, PCOL.cyan); ptick(E, D, 1, PCOL.green);
+        ptick(C, E, 2, PCOL.cyan); ptick(D, A, 2, PCOL.green);
+        ptick(B, E, 3, PCOL.gold); ptick(E, A, 3, PCOL.gold);
 
         pdot(A, 'A', PCOL.green, null, { x: 10, y: -8 });
         pdot(B, 'B', PCOL.cyan, null, { x: -16, y: -8 });
@@ -1416,6 +1481,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ppoly([A, B, C, D], 'rgba(52, 211, 153, 0.10)', PCOL.white, 3.0);
         pright(A, B, D, 11, PCOL.white);
         pright(B, C, A, 11, PCOL.white);
+        pright(C, D, B, 11, PCOL.white); pright(D, A, C, 11, PCOL.white); // [표시 보강] 직사각형의 네 직각
 
         pline(pt(cx - rw, P.y), pt(cx + rw, P.y), 'rgba(255,255,255,0.35)', 1.8, [4, 4]);
         pline(pt(P.x, cy - rh), pt(P.x, cy + rh), 'rgba(255,255,255,0.35)', 1.8, [4, 4]);
@@ -1557,6 +1623,11 @@ window.addEventListener('DOMContentLoaded', function () {
       const isLune = sub === 'hippoLune' || sub === 'isoLune';
       ppoly([A, B, C], isLune ? 'rgba(52, 211, 153, 0.44)' : 'rgba(255, 255, 255, 0.14)', PCOL.green, 3.4, 2);
       pright(A, B, C, 13, PCOL.gold);
+      if (isIso) { // [표시 보강] 직각이등변삼각형: AB = AC (눈금), 두 밑각은 같은 45°
+        ptick(A, B, 2, PCOL.green); ptick(A, C, 2, PCOL.green);
+        pangle(B, C, A, PCOL.green, 26, 1, '45°');
+        pangle(C, B, A, PCOL.green, 26, 1, '45°');
+      }
       if (isLune) {
         ptag((A.x + B.x + C.x) / 3, (A.y + B.y + C.y) / 3 + 12, isIso ? '△ABC = 32 (1개=16)' : `△ABC 넓이 = ${(a * b) / 2}`, PCOL.green, 13.5, 'area');
       }
@@ -1601,10 +1672,12 @@ window.addEventListener('DOMContentLoaded', function () {
       pright(H, A, B, 12, PCOL.cyan);
       pright(H, A, C, 12, PCOL.green);
 
-      pangle(B, A, C, PCOL.cyan, 28, 1, '●', 'def aux');
-      pangle(C, A, B, PCOL.pink, 30, 2, '×', 'def aux');
-      pangle(A, B, H, PCOL.pink, 28, 2, '×', 'def aux');
-      pangle(A, H, C, PCOL.cyan, 32, 1, '●', 'def aux');
+      // [표시 보강] 같은 각은 같은 표시·같은 값: ∠B = ∠HAC (●), ∠C = ∠BAH (×) — 그림에서 잰 각도(● + × = 90°)
+      const degB = angDeg(B, A, C), degC = angDeg(C, A, B);
+      pangle(B, A, C, PCOL.cyan, 28, 1, `●${degB}`, 'def aux');
+      pangle(C, A, B, PCOL.pink, 30, 2, `×${degC}`, 'def aux');
+      pangle(A, B, H, PCOL.pink, 28, 2, `×${degC}`, 'def aux');
+      pangle(A, H, C, PCOL.cyan, 32, 1, `●${degB}`, 'def aux');
 
       let focusIdx = state.activePartIdx;
       if (focusIdx === -1) {
@@ -1641,8 +1714,9 @@ window.addEventListener('DOMContentLoaded', function () {
       ptag((A.x + B.x) / 2 - 28, (A.y + B.y) / 2 - 8, `AB = ${AB}`, PCOL.cyan);
       ptag((A.x + C.x) / 2 + 28, (A.y + C.y) / 2 - 8, `AC = ${AC}`, PCOL.green);
       ptag(H.x + 34, (A.y + H.y) / 2, `AH = ${AH}`, PCOL.gold);
-      ptag((B.x + H.x) / 2, B.y - 10, `BH = ${BH}`, PCOL.cyan);
-      ptag((H.x + C.x) / 2, C.y - 10, `CH = ${CH}`, PCOL.green);
+      // [표시 보강] 밑변 B·C 의 각도 값(●53° · ×37°)과 겹치지 않게 BH·CH 이름표를 밑변 아래로
+      ptag((B.x + H.x) / 2, B.y + 36, `BH = ${BH}`, PCOL.cyan);
+      ptag((H.x + C.x) / 2, C.y + 36, `CH = ${CH}`, PCOL.green);
 
       drawMiniOverlayBox(rect, '👑 3개 AA 닮음 삼각형 (3:4:5)', [
         { txt: `큰 △ABC : (${AB}, ${AC}, ${BC})`, col: '#fef08a' },
@@ -1684,6 +1758,12 @@ window.addEventListener('DOMContentLoaded', function () {
         pright(E, A, F, 12, PCOL.gold);
         ptick(F, D, 1, PCOL.gold);
         ptick(F, E, 1, PCOL.gold);
+        // [표시 보강] 접기: AE = AD (눈금 ||), 같은 각 ∠BAE = ∠CEF (●), ∠AEB = ∠EFC (×) — E 에서 ● + 90° + × = 180°
+        ptick(A, D, 2, PCOL.gold); ptick(A, E, 2, PCOL.gold);
+        pangle(A, B, E, PCOL.cyan, 28, 1, `●${angDeg(A, B, E)}`);
+        pangle(E, C, F, PCOL.cyan, 26, 1, `●${angDeg(A, B, E)}`);
+        pangle(E, B, A, PCOL.pink, 24, 2, `×${angDeg(E, B, A)}`);
+        pangle(F, E, C, PCOL.pink, 24, 2, `×${angDeg(E, B, A)}`);
 
         pdot(A, 'A', PCOL.white, null, { x: -16, y: -8 });
         pdot(B, 'B(90°)', PCOL.cyan, null, { x: -22, y: 18 });
@@ -1726,6 +1806,7 @@ window.addEventListener('DOMContentLoaded', function () {
         pright(E, D, B, 12, PCOL.gold);
         ptick(A, D, 1, PCOL.gold);
         ptick(Bt, D, 1, PCOL.gold);
+        ptick(A, E, 2, PCOL.gold); ptick(E, B, 2, PCOL.gold); // [표시 보강] E 는 빗변의 중점: AE = EB
 
         pdot(A, 'A', PCOL.gold, null, { x: -16, y: -8 });
         pdot(B, 'B(접기 전)', PCOL.cyan, null, { x: 10, y: 16 });
@@ -1764,6 +1845,10 @@ window.addEventListener('DOMContentLoaded', function () {
         pline(A, P, PCOL.gold, 4.0, [], true, 0);
         pline(P, B, PCOL.cyan, 3.6, [], false, 0);
         pline(P, B_ref, PCOL.gold, 4.0, [], true, 0);
+        // [표시 보강] 대칭: BH = B'H (눈금 ||), PB = PB' (눈금 |), 점 A 에서 직선 l 에 내린 수선의 발 H₁ 의 직각
+        pright(H1, A, H2, 11, PCOL.white);
+        ptick(B, H2, 2, PCOL.pink); ptick(H2, B_ref, 2, PCOL.pink);
+        ptick(P, B, 1, PCOL.white); ptick(P, B_ref, 1, PCOL.white);
 
         pdot(A, 'A(높이 3)', PCOL.white, null, { x: -20, y: -10 });
         pdot(B, 'B(높이 6)', PCOL.cyan, null, { x: 10, y: -8 });
