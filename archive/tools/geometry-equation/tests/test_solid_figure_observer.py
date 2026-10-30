@@ -1263,3 +1263,68 @@ class BallsOffTheAxis(unittest.TestCase):
         # the same points are not on a ball standing on the axis
         axis_ball = O.build_solid({'kind': 'SPHERE', 'radius': 3, 'inside': 's1', 'centerZ': 3, 'id': 's1b2'})
         self.assertFalse(O.hits_round(axis_ball, far))
+
+
+class WedgeEdgeAxisAndRightAngle(unittest.TestCase):
+    """E33: cut.axis puts the edge of a wedge on X, Y or Z; cut.rightAngle names the two radii in the cut faces perpendicular to that edge; dims[].half picks a radius's half axis.
+    Everything is derived from the cut alone, by point membership and the depth test of the observer."""
+
+    @staticmethod
+    def sphere(**cut):
+        return O.build_solid({'kind': 'SPHERE', 'radius': 3, 'id': 's1', 'cut': cut})
+
+    def test_the_checked_cut_carries_its_axis_and_right_angle_and_refuses_what_has_no_wedge(self):
+        self.assertEqual(O.check_cut_spec({'kind': 'THREE_QUARTERS'}), {'kind': 'THREE_QUARTERS', 'facing': 'CUT', 'axis': 'Z', 'rightAngle': False})
+        self.assertEqual(O.check_cut_spec({'kind': 'QUARTER', 'axis': 'Y', 'rightAngle': True}), {'kind': 'QUARTER', 'facing': 'CUT', 'axis': 'Y', 'rightAngle': True})
+        for cut in ({'kind': 'QUARTER', 'axis': 'W'}, {'kind': 'QUARTER', 'axis': 'y'}, {'kind': 'QUARTER', 'axis': 3}, {'kind': 'HALF', 'axis': 'Y'}, {'kind': 'OCTANT', 'axis': 'X'},
+                    {'kind': 'SEVEN_EIGHTHS', 'axis': 'Z'}, {'kind': 'HALF', 'rightAngle': True}, {'kind': 'OCTANT', 'rightAngle': True}, {'kind': 'QUARTER', 'rightAngle': 'yes'}):
+            self.assertRaises(ValueError, O.check_cut_spec, cut)
+
+    def test_the_removed_quarter_and_the_kept_one_in_each_frame(self):
+        r = 3.0
+        def inside(kind, axis, d, facing='CUT'):
+            return O.cut_inside(O.check_cut_spec({'kind': kind, 'axis': axis, 'facing': facing}), d, r)
+        # THREE_QUARTERS: x>0 & y<0 is out for Z (as before), x>0 & z>0 for Y, y<0 & z>0 for X; points on the other sides stay
+        self.assertFalse(inside('THREE_QUARTERS', 'Z', (1.0, -1.0, 0.5)))
+        self.assertTrue(inside('THREE_QUARTERS', 'Z', (1.0, 1.0, 0.5)))
+        self.assertFalse(inside('THREE_QUARTERS', 'Y', (1.0, 0.5, 1.0)))
+        self.assertFalse(inside('THREE_QUARTERS', 'Y', (1.0, -0.5, 1.0)))
+        self.assertTrue(inside('THREE_QUARTERS', 'Y', (1.0, 0.5, -1.0)))
+        self.assertTrue(inside('THREE_QUARTERS', 'Y', (-1.0, 0.5, 1.0)))
+        self.assertFalse(inside('THREE_QUARTERS', 'X', (0.5, -1.0, 1.0)))
+        self.assertFalse(inside('THREE_QUARTERS', 'X', (-0.5, -1.0, 1.0)))
+        self.assertTrue(inside('THREE_QUARTERS', 'X', (0.5, 1.0, 1.0)))
+        # QUARTER keeps the quarter opposite: x<0 & z<0 (Y), z<0 & y>0 (X), x<0 & y>0 (Z)
+        self.assertTrue(inside('QUARTER', 'Y', (-1.0, 0.5, -1.0)))
+        self.assertFalse(inside('QUARTER', 'Y', (-1.0, 0.5, 1.0)))
+        self.assertTrue(inside('QUARTER', 'X', (0.5, 1.0, -1.0)))
+        self.assertFalse(inside('QUARTER', 'X', (0.5, -1.0, -1.0)))
+        self.assertTrue(inside('QUARTER', 'Z', (-1.0, 1.0, 0.5)))
+        # turned about the centre (CURVED) every point is read from the other side
+        self.assertFalse(inside('THREE_QUARTERS', 'Y', (-1.0, 0.5, -1.0), 'CURVED'))   # read as (1, -0.5, 1): in the removed quarter
+        self.assertTrue(inside('THREE_QUARTERS', 'Y', (1.0, 0.5, 1.0), 'CURVED'))
+
+    def test_the_edge_and_the_two_faces_of_the_wedge_follow_the_axis(self):
+        for axis, creases in (('Z', {'+Z', '-Z'}), ('Y', {'+Y', '-Y'}), ('X', {'+X', '-X'})):
+            self.assertEqual(set(O.cut_features(self.sphere(kind='THREE_QUARTERS', axis=axis))['creases']), creases, axis)
+        faces = O.cut_features(self.sphere(kind='THREE_QUARTERS', axis='Y'))['faces']
+        self.assertEqual(sorted(faces), ['X++', 'X-+', 'Z++', 'Z+-'])   # a vertical and a horizontal half-disk, each two quarter-disks
+        self.assertTrue(all(f['visible'] for f in faces.values()))
+
+    def test_the_radii_of_the_right_angle_lie_in_the_cut_faces_and_a_wedge_turned_away_hides_them(self):
+        def radii(**cut):
+            return sorted((('+' if s > 0 else '-') + 'XYZ'[k], seen) for k, s, seen in O.cut_edge_radii(self.sphere(**cut)))
+        self.assertEqual(radii(kind='THREE_QUARTERS', axis='Y'), [('+X', True), ('+Z', True)])
+        self.assertEqual(radii(kind='THREE_QUARTERS'), [('+X', True), ('-Y', True)])
+        self.assertEqual(radii(kind='QUARTER', axis='Y'), [('-X', True), ('-Z', True)])
+        self.assertEqual(radii(kind='QUARTER'), [('+Y', True), ('-X', True)])
+        self.assertTrue(all(not seen for _name, seen in radii(kind='THREE_QUARTERS', axis='Y', facing='CURVED')))
+        # the half axes a radius label may lie on: the seen ones; a named half axis is taken only when it is one of them
+        solid = self.sphere(kind='THREE_QUARTERS', axis='Y')
+        self.assertEqual(O.cut_radius_axis(solid, '+X'), (0, 1))
+        self.assertEqual(O.cut_radius_axis(solid, '+Z'), (2, 1))
+        names = lambda items: [('+' if s_ > 0 else '-') + 'XYZ'[k_] for k_, s_ in items]
+        self.assertEqual(names(O.cut_seen_axes(solid)), ['+X', '+Y', '-Y', '+Z'])   # -X and -Z are inside the piece: not seen
+        self.assertIsNone(O.cut_radius_axis(solid, '-X'))
+        self.assertIsNone(O.cut_radius_axis(solid, '-Z'))
+        self.assertEqual(O.cut_radius_axis(solid), (0, 1))   # unnamed: the most horizontal on the screen, the right one when equal

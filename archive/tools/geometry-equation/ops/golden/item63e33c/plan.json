@@ -1,0 +1,38 @@
+{
+ "capability": "solid-figure-v1",
+ "unit": "cm",
+ "solids": [
+  {
+   "kind": "SPHERE",
+   "radius": 3,
+   "names": {
+    "center": "O"
+   },
+   "cut": {
+    "kind": "THREE_QUARTERS",
+    "axis": "Y",
+    "rightAngle": true
+   }
+  }
+ ],
+ "dims": [
+  {
+   "radius": "center",
+   "half": "+X"
+  }
+ ],
+ "solidCaption": {
+  "text": "구의 1/4을 잘라 낸 입체"
+ },
+ "caption": "반지름 3cm인 구에서 1/4을 잘라 내면 반지름 3cm인 반원 모양의 절단면 두 개가 서로 수직으로 드러난다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "반지름의 길이가 3cm인 구의 1/4이 잘린 입체도형",
+   "mappedTo": "solids"
+  }
+ ],
+ "newVisualInformation": [
+  "남은 3/4 구에 드러난 반지름 3인 반원 모양의 절단면 두 개와 두 절단면 사이의 직각"
+ ]
+}

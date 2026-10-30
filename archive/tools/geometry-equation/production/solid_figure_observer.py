@@ -847,7 +847,7 @@ def audit_solids(plan, ctx):
         else:
             for name, pid, p in solid['points']:
                 if name: named[name] = (sid, px(p), p)
-            check_round(solid, root, px, scale, errors, ctx['segments'], (plan.get('section') if (plan.get('section') or {}).get('kind') == 'LEVEL' and (_section_solid(plan, solids) or {}).get('id') == solid['id'] else None), stack_of[sid]['members'] if sid in stack_of else [solid])
+            check_round(solid, root, px, scale, errors, ctx['segments'], (plan.get('section') if (plan.get('section') or {}).get('kind') == 'LEVEL' and (_section_solid(plan, solids) or {}).get('id') == solid['id'] else None), stack_of[sid]['members'] if sid in stack_of else [solid], plan.get('dims'))
     for g in ctx['labels']:
         if g.get('data-label-role') in COUNT_ROLES and g.get('data-solid') not in counted: errors.append('SOLID_COUNT_LABEL_UNEXPECTED:' + str(g.get('id')))
     ctx['named'] = named
@@ -1253,12 +1253,12 @@ def _round_frame(solid, root, errors):
     return S, (cx - S * q[0], cy + S * q[1])
 
 
-def check_round(solid, root, px, scale, errors, segments, section=None, chain=None):
+def check_round(solid, root, px, scale, errors, segments, section=None, chain=None, plan_dims=None):
     sid = solid['id']
     chain = chain or [solid]
     lift = solid['lift']
     if solid.get('cut'):
-        check_cut_sphere(solid, root, px, scale, errors, segments)
+        check_cut_sphere(solid, root, px, scale, errors, segments, plan_dims)
         return
     arcs = [(e, _parse_arc(e.get('d'))) for e in root.iter(NS + 'path') if e.get('data-solid') == sid]
     lines = [e for e in root.iter(NS + 'line') if e.get('data-solid') == sid and e.get('data-role') == 'silhouette']
@@ -1988,19 +1988,29 @@ CUT_FACE_VERTEX_TOL = 1.2  # px
 
 
 def check_cut_spec(cut):
-    if not isinstance(cut, dict) or set(cut) - {'kind', 'facing', 'offset', 'explode'}: raise ValueError('SOLID_SPHERE_CUT_INVALID')
+    if not isinstance(cut, dict) or set(cut) - {'kind', 'facing', 'offset', 'explode', 'axis', 'rightAngle'}: raise ValueError('SOLID_SPHERE_CUT_INVALID')
     if cut.get('explode') is not None: raise ValueError('SOLID_SPHERE_CUT_EXPLODE_UNSUPPORTED')
     if cut.get('offset') not in (None, 0): raise ValueError('SOLID_SPHERE_CUT_OFF_CENTRE')
     if not isinstance(cut.get('kind'), str): raise ValueError('SOLID_SPHERE_CUT_INVALID')
     if cut['kind'] not in CUT_KINDS: raise ValueError('SOLID_SPHERE_CUT_KIND_UNSUPPORTED')
     if cut.get('facing', 'CUT') not in CUT_FACING: raise ValueError('SOLID_SPHERE_CUT_FACING_INVALID')
-    return {'kind': cut['kind'], 'facing': cut.get('facing', 'CUT')}
+    # axis: the edge of a wedge (QUARTER, THREE_QUARTERS) lies on this coordinate axis; rightAngle: the two radii perpendicular to that edge and the square between them
+    wedge = cut['kind'] in ('QUARTER', 'THREE_QUARTERS')
+    if cut.get('axis') is not None and (not isinstance(cut['axis'], str) or cut['axis'] not in ('X', 'Y', 'Z')): raise ValueError('SOLID_SPHERE_CUT_AXIS_INVALID')
+    if cut.get('axis') is not None and not wedge: raise ValueError('SOLID_SPHERE_CUT_AXIS_UNSUPPORTED:' + cut['kind'])
+    if cut.get('rightAngle') is not None and cut['rightAngle'] not in (True, False): raise ValueError('SOLID_SPHERE_CUT_RIGHT_ANGLE_INVALID')
+    if cut.get('rightAngle') is True and not wedge: raise ValueError('SOLID_SPHERE_CUT_RIGHT_ANGLE_UNSUPPORTED:' + cut['kind'])
+    return {'kind': cut['kind'], 'facing': cut.get('facing', 'CUT'), 'axis': cut.get('axis') or 'Z', 'rightAngle': cut.get('rightAngle') is True}
 
 
 def cut_inside(cut, d, r):
     """is the point d (relative to the centre) in the piece: the closed ball meeting the half-spaces of the kind"""
     if vlen(d) > r * (1 + 1e-9): return False
     x, y, z = (-d[0], -d[1], -d[2]) if cut['facing'] == 'CURVED' else d
+    # the wedge's edge axis: "Z" as it is, "Y" reads the point as (x, -z, y), "X" as (z, y, x) (so the removed quarter faces the viewer the same way)
+    axis = cut.get('axis', 'Z')
+    if axis == 'Y': x, y, z = x, -z, y
+    elif axis == 'X': x, y, z = z, y, x
     kind = cut['kind']
     if kind == 'HALF': return y >= 0
     if kind == 'QUARTER': return x <= 0 and y >= 0
@@ -2050,18 +2060,43 @@ def cut_features(solid):
     return {'cut': cut, 'faces': faces, 'creases': creases}
 
 
-def cut_radius_axis(solid):
-    """the half axis a radius label lies on: part of the piece, seen, the most horizontal on the screen (the right one when equal); None when none is seen"""
+def cut_seen_axes(solid):
+    """the half axes (k, sign) that belong to the piece and are seen (the depth test along the half axis)"""
     cut, r = check_cut_spec(solid['cut']), solid['r0']
-    best = None
+    out = []
     for k in range(3):
         for s in (1, -1):
             if not any(_around_axis(cut, k, s, r)): continue
             if any(cut_hits(cut, vmul(AXIS_VEC[k], u * r * s), r) for u in (0.25, 0.5, 0.75)): continue
-            sx = vdot(vmul(AXIS_VEC[k], s), SCREEN_X)
-            score = (round(abs(sx), 9), 1 if sx > 0 else 0)
-            if best is None or score > best[0]: best = (score, (k, s))
+            out.append((k, s))
+    return out
+
+
+def cut_radius_axis(solid, half=None):
+    """the half axis a radius label lies on: part of the piece, seen, the most horizontal on the screen (the right one when equal); None when none is seen. `half` ("+X") names it."""
+    seen = cut_seen_axes(solid)
+    if half is not None:
+        want = ('XYZ'.index(half[1]), 1 if half[0] == '+' else -1)
+        return want if want in seen else None
+    best = None
+    for k, s in seen:
+        sx = vdot(vmul(AXIS_VEC[k], s), SCREEN_X)
+        score = (round(abs(sx), 9), 1 if sx > 0 else 0)
+        if best is None or score > best[0]: best = (score, (k, s))
     return None if best is None else best[1]
+
+
+def cut_edge_radii(solid):
+    """the radii a wedge's right angle is drawn on: the half axes lying in a cut face (two of the four octants around them stay) that are not the wedge's edge, [(k, sign, seen)]"""
+    cut, r = check_cut_spec(solid['cut']), solid['r0']
+    feats = cut_features(solid)
+    out = []
+    for k in range(3):
+        for s in (1, -1):
+            if ('+' if s > 0 else '-') + 'XYZ'[k] in feats['creases']: continue
+            if sum(_around_axis(cut, k, s, r)) != 2: continue
+            out.append((k, s, not any(cut_hits(cut, vmul(AXIS_VEC[k], u * r * s), r) for u in (0.25, 0.5, 0.75))))
+    return out
 
 
 def _parse_arc_full(d):
@@ -2175,7 +2210,7 @@ def _cut_frame(solid, root, errors):
     return S, (centre[0] - S * q[0], centre[1] + S * q[1])
 
 
-def check_cut_sphere(solid, root, px, scale, errors, segments):
+def check_cut_sphere(solid, root, px, scale, errors, segments, plan_dims=None):
     sid, r = solid['id'], solid['r0']
     feats = cut_features(solid)
     cut = feats['cut']
@@ -2191,7 +2226,7 @@ def check_cut_sphere(solid, root, px, scale, errors, segments):
         return tuple(r * (math.cos(th) * f['e1'][k] + math.sin(th) * f['e2'][k]) for k in range(3))
     # the elements of this solid are all known roles
     for e in root.iter():
-        if e.get('data-solid') == sid and e.get('data-role') not in ('cut-face', 'cut-arc', 'cut-crease', 'sphere-limb', 'center-dot', 'dim-line'):
+        if e.get('data-solid') == sid and e.get('data-role') not in ('cut-face', 'cut-arc', 'cut-crease', 'sphere-limb', 'center-dot', 'dim-line', 'cut-radius', 'cut-right-angle'):
             errors.append('SOLID_SPHERE_CUT_ELEMENT_UNKNOWN:%s:%s' % (sid, e.get('data-role')))
     # rim arcs: one set of pieces per boundary quarter-disk, tiling the arc, each solid or dashed as the depth test says
     arcs = _cut_pieces(root, sid, 'cut-arc', 'path')
@@ -2334,16 +2369,55 @@ def check_cut_sphere(solid, root, px, scale, errors, segments):
     if named != bool(dots) or len(dots) > 1: errors.append('SOLID_SPHERE_CUT_CENTRE_DOT_MISMATCH:' + sid)
     for e in dots:
         if math.hypot(_num(e, 'cx') - C[0], _num(e, 'cy') - C[1]) > POS_TOL: errors.append('SOLID_SPHERE_CUT_CENTRE_DOT_OFF:' + sid)
-    # the radius dimension line: from the centre along the chosen half axis
-    axis = cut_radius_axis(solid)
+    # the radius dimension line: from the centre along the chosen half axis (the most horizontal seen one, or the one the dimension names: half)
     for e in root.iter(NS + 'line'):
         if e.get('data-solid') != sid or e.get('data-role') != 'dim-line' or e.get('data-kind') != 'RADIUS': continue
+        mdim = re.fullmatch(r'dim-(\d+)', e.get('data-dim') or '')
+        entry = plan_dims[int(mdim.group(1)) - 1] if mdim and 0 < int(mdim.group(1)) <= len(plan_dims or []) else {}
+        axis = cut_radius_axis(solid, entry.get('half'))
         if axis is None:
             errors.append('SOLID_SPHERE_CUT_RADIUS_HIDDEN:' + sid)
             continue
         want = (loc((0.0, 0.0, 0.0)), loc(vmul(AXIS_VEC[axis[0]], axis[1] * r)))
         got = ((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')))
         if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): errors.append('SOLID_SPHERE_CUT_RADIUS_LINE_MISMATCH:' + str(e.get('data-dim')))
+    # a wedge's right angle: the two radii in the cut faces perpendicular to the edge, drawn from the centre to the rim, and the square between them
+    radii = [e for e in root.iter(NS + 'line') if e.get('data-solid') == sid and e.get('data-role') == 'cut-radius']
+    marks = [e for e in root.iter(NS + 'polyline') if e.get('data-solid') == sid and e.get('data-role') == 'cut-right-angle']
+    want_radii = cut_edge_radii(solid) if cut['rightAngle'] else []
+    if cut['rightAngle'] and (len(want_radii) != 2 or not all(seen for _k, _s, seen in want_radii)): errors.append('SOLID_SPHERE_CUT_RIGHT_ANGLE_PLAN_UNRESOLVED:' + sid)
+    if sorted(e.get('data-edge') or '' for e in radii) != sorted(('+' if s_ > 0 else '-') + 'XYZ'[k_] for k_, s_, _ in want_radii): errors.append('SOLID_SPHERE_CUT_RADII_SET_MISMATCH:' + sid)
+    for e in radii:
+        name = e.get('data-edge') or ''
+        if len(name) != 2 or name[1] not in 'XYZ' or name[0] not in '+-': continue
+        v = vmul(AXIS_VEC['XYZ'.index(name[1])], (1 if name[0] == '+' else -1) * r)
+        want = (loc((0.0, 0.0, 0.0)), loc(v))
+        got = ((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')))
+        if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): errors.append('SOLID_SPHERE_CUT_RADIUS_LINE_MISMATCH:' + name)
+        if _dashed(e): errors.append('SOLID_EDGE_VISIBILITY_MISMATCH:' + str(e.get('id')))   # the radii lie in faces that face the viewer
+        segments.append(got)
+    if len(marks) != (1 if want_radii else 0): errors.append('SOLID_SPHERE_CUT_RIGHT_ANGLE_SET_MISMATCH:' + sid)
+    for e in marks:
+        pts = _points(e.get('points'))
+        if len(pts) != 3 or len(want_radii) != 2:
+            errors.append('SOLID_SPHERE_CUT_RIGHT_ANGLE_SHAPE:' + sid)
+            continue
+        C0 = loc((0.0, 0.0, 0.0))
+        v1, v2 = [vmul(AXIS_VEC[k_], s_) for k_, s_, _ in want_radii]
+        q1, q2 = project(v1), project(v2)
+        d1, d2 = (scale * q1[0], -scale * q1[1]), (scale * q2[0], -scale * q2[1])   # the two radii's directions on the page (y down)
+        # the square: its first and last points lie on the two radii, the middle one is the fourth corner of the parallelogram they span with the centre
+        a, b = (pts[0][0] - C0[0], pts[0][1] - C0[1]), (pts[2][0] - C0[0], pts[2][1] - C0[1])
+        la, lb = math.hypot(*d1), math.hypot(*d2)
+        ka, kb = (a[0] * d1[0] + a[1] * d1[1]) / (la * la), (b[0] * d2[0] + b[1] * d2[1]) / (lb * lb)   # world lengths along each radius
+        off_a = abs(a[0] * d1[1] - a[1] * d1[0]) / la
+        off_b = abs(b[0] * d2[1] - b[1] * d2[0]) / lb
+        if off_a > POS_TOL or off_b > POS_TOL: errors.append('SOLID_SPHERE_CUT_RIGHT_ANGLE_OFF_RADIUS:' + sid)
+        # a leg is at least 3 px, at most 20 px (and a fifth of the radius): a small square that reads as a right angle
+        if abs(ka - kb) * max(la, lb) > POS_TOL or not (3.0 / min(la, lb) - 1e-6 <= ka <= 0.2 * r * 1.0001 and ka * max(la, lb) <= 20.0 + POS_TOL): errors.append('SOLID_SPHERE_CUT_RIGHT_ANGLE_SIZE:' + sid)
+        corner = (C0[0] + a[0] + b[0], C0[1] + a[1] + b[1])
+        if math.hypot(pts[1][0] - corner[0], pts[1][1] - corner[1]) > POS_TOL: errors.append('SOLID_SPHERE_CUT_RIGHT_ANGLE_CORNER:' + sid)
+        for k2 in range(2): segments.append((pts[k2], pts[k2 + 1]))
 
 
 # --- labels --------------------------------------------------------------------------------------------------------------------------------

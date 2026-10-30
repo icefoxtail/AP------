@@ -2036,3 +2036,83 @@ test('E33: a ball off the axis and toward the viewer (at.y) is composed and its 
   const shift=(text,id,dx,dy)=>text.replace(new RegExp(`<path id="${id}-[^"]*"[^>]*/>`,'g'),all=>{const m=/ d="M ([-\d.]+) ([-\d.]+) A ([-\d.]+) ([-\d.]+) 0 (\d) (\d) ([-\d.]+) ([-\d.]+)"/.exec(all);return all.replace(m[0],` d="M ${Number(m[1])+dx} ${Number(m[2])+dy} A ${m[3]} ${m[4]} 0 ${m[5]} ${m[6]} ${Number(m[7])+dx} ${Number(m[8])+dy}"`);});
   await failing(shift(svg,'s1b1',-scale*3,-scale*2*Math.sin(20*Math.PI/180)),'SOLID_NEST_');
 });
+
+// --- E33: the cut sphere's wedge: its edge axis (cut.axis), the right angle between its two cut faces (cut.rightAngle) and the half axis a radius lies on (dims[].half) -------------------------
+test('E33: a wedge cut names the axis of its edge: Z stands upright (as before), Y runs into the picture, X along its width; the removed quarter keeps facing the viewer',()=>{
+  const faces=(kind,axis)=>solveSolidFigure(sphereCut({kind,...(axis?{axis}:{})},{dims:undefined})).solids[0].cut;
+  const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+  // Z is the default: the same piece as before
+  assert.ok(same(faces('THREE_QUARTERS').mask,faces('THREE_QUARTERS','Z').mask)&&same(faces('QUARTER').mask,faces('QUARTER','Z').mask));
+  // octant index = 4 (x<0) + 2 (y<0) + 1 (z<0): the removed quarter of THREE_QUARTERS is x>0 & y<0 (Z), x>0 & z>0 (Y), y<0 & z>0 (X): two octants each
+  const removed=cut=>cut.mask.map((m,i)=>m?-1:i).filter(i=>i>=0);
+  assert.deepEqual(removed(faces('THREE_QUARTERS','Z')),[2,3]);
+  assert.deepEqual(removed(faces('THREE_QUARTERS','Y')),[0,2]);
+  assert.deepEqual(removed(faces('THREE_QUARTERS','X')),[2,6]);
+  // the kept wedge of QUARTER is the opposite quarter in each frame
+  const kept=cut=>cut.mask.map((m,i)=>m?i:-1).filter(i=>i>=0);
+  assert.deepEqual(kept(faces('QUARTER','Z')),[4,5]);
+  assert.deepEqual(kept(faces('QUARTER','Y')),[5,7]);
+  assert.deepEqual(kept(faces('QUARTER','X')),[1,5]);
+  // the edge of the wedge (the radius where its two cut faces meet) is on that axis, and the two cut faces are a vertical and a horizontal half-disk for Y
+  for(const [axis,creases] of [['Z',['+Z','-Z']],['Y',['+Y','-Y']],['X',['+X','-X']]])assert.deepEqual(faces('THREE_QUARTERS',axis).creases.map(c=>c.id).sort(),creases,axis);
+  assert.deepEqual(faces('THREE_QUARTERS','Y').faces.map(f=>f.id).sort(),['X++','X-+','Z++','Z+-']);
+  assert.ok(faces('THREE_QUARTERS','Y').faces.every(f=>f.visible));// both cut faces face the viewer
+  // the checked field
+  const bad=(cut,expected)=>assert.throws(()=>solveSolidFigure(sphereCut(cut)),code(expected),expected);
+  bad({kind:'QUARTER',axis:'W'},'SOLID_SPHERE_CUT_AXIS_INVALID');
+  bad({kind:'QUARTER',axis:'y'},'SOLID_SPHERE_CUT_AXIS_INVALID');
+  bad({kind:'QUARTER',axis:7},'SOLID_SPHERE_CUT_AXIS_INVALID');
+  bad({kind:'HALF',axis:'Y'},'SOLID_SPHERE_CUT_AXIS_UNSUPPORTED:HALF');
+  bad({kind:'OCTANT',axis:'X'},'SOLID_SPHERE_CUT_AXIS_UNSUPPORTED:OCTANT');
+  bad({kind:'SEVEN_EIGHTHS',axis:'Z'},'SOLID_SPHERE_CUT_AXIS_UNSUPPORTED:SEVEN_EIGHTHS');
+});
+test('E33: rightAngle draws the two radii in the cut faces perpendicular to the edge and the square between them; refused where there is no wedge or it is behind',()=>{
+  const cutOf=(cut,over)=>solveSolidFigure(sphereCut(cut,{dims:undefined,...over})).solids[0].cut;
+  const radii=cut=>cut.rightAngle.radii.map(x=>(x.sign>0?'+':'-')+'XYZ'[x.axis]).sort();
+  assert.deepEqual(radii(cutOf({kind:'THREE_QUARTERS',axis:'Y',rightAngle:true})),['+X','+Z']);// the half axes along the removed quarter's two faces
+  assert.deepEqual(radii(cutOf({kind:'THREE_QUARTERS',rightAngle:true})),['+X','-Y']);// upright edge: the radii are horizontal
+  assert.deepEqual(radii(cutOf({kind:'QUARTER',axis:'Y',rightAngle:true})),['-X','-Z']);// the kept wedge's faces
+  assert.deepEqual(radii(cutOf({kind:'QUARTER',rightAngle:true})),['+Y','-X']);
+  assert.equal(cutOf({kind:'QUARTER'}).rightAngle,undefined);
+  assert.equal(cutOf({kind:'QUARTER',rightAngle:false}).rightAngle,undefined);
+  const bad=(cut,expected)=>assert.throws(()=>solveSolidFigure(sphereCut(cut,{dims:undefined})),code(expected),expected);
+  bad({kind:'HALF',rightAngle:true},'SOLID_SPHERE_CUT_RIGHT_ANGLE_UNSUPPORTED:HALF');
+  bad({kind:'OCTANT',rightAngle:true},'SOLID_SPHERE_CUT_RIGHT_ANGLE_UNSUPPORTED:OCTANT');
+  bad({kind:'SEVEN_EIGHTHS',rightAngle:true},'SOLID_SPHERE_CUT_RIGHT_ANGLE_UNSUPPORTED:SEVEN_EIGHTHS');
+  bad({kind:'QUARTER',rightAngle:'yes'},'SOLID_SPHERE_CUT_RIGHT_ANGLE_INVALID');
+  bad({kind:'THREE_QUARTERS',facing:'CURVED',rightAngle:true},'SOLID_SPHERE_CUT_RIGHT_ANGLE_HIDDEN');// the cut faces are behind
+  // a radius dimension names its half axis (it must belong to the piece and be seen)
+  const dimAxis=half=>solveSolidFigure(sphereCut({kind:'THREE_QUARTERS',axis:'Y',rightAngle:true},{dims:[{solid:'s1',radius:'center',half}]})).dims[0].axis;
+  assert.deepEqual(dimAxis('+X'),{axis:0,sign:1});
+  assert.deepEqual(dimAxis('+Z'),{axis:2,sign:1});
+  const badDim=(half,expected)=>assert.throws(()=>solveSolidFigure(sphereCut({kind:'THREE_QUARTERS',axis:'Y'},{dims:[{solid:'s1',radius:'center',half}]})),code(expected),expected);
+  badDim('+Q','SOLID_DIMS_INVALID');
+  badDim('X','SOLID_DIMS_INVALID');
+  badDim('+x','SOLID_DIMS_INVALID');
+  badDim(5,'SOLID_DIMS_INVALID');
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'SPHERE',radius:3}],dims:[{radius:'center',half:'+X'}]})),code('SOLID_DIMS_INVALID'));// only a cut sphere has half axes
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:4}],dims:[{radius:'bottom',half:'+X'}]})),code('SOLID_DIMS_INVALID'));
+});
+test('E33: the three-quarter sphere with the quarter taken out of its upper front: faces, radii, right angle and the equator radius label are composed and read back',async()=>{
+  const plan2=sphereCut({kind:'THREE_QUARTERS',axis:'Y',rightAngle:true},{unit:'cm',dims:[{solid:'s1',radius:'center',half:'+X'}]},{radius:3});
+  const svg=await sphereSvg(plan2);
+  assert.equal((svg.match(/data-role="cut-radius"/g)??[]).length,2);
+  assert.match(svg,/id="s1-cut-radius-\+X"/);assert.match(svg,/id="s1-cut-radius-\+Z"/);
+  assert.equal((svg.match(/data-role="cut-right-angle"/g)??[]).length,1);
+  const failing=async(tampered,prefix)=>{const r=await audit(plan2,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const radius=svg.match(/<line id="s1-cut-radius-\+X"[^>]*\/>/)[0];
+  await failing(svg.replace(radius,radius.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)-12}"`)),'SOLID_SPHERE_CUT_RADIUS_LINE_MISMATCH:+X');// a radius that stops short
+  await failing(svg.replace(radius,''),'SOLID_SPHERE_CUT_RADII_SET_MISMATCH');
+  await failing(svg.replace(radius,radius.replace('stroke="#111"','stroke="#111" stroke-dasharray="5 4"')),'SOLID_EDGE_VISIBILITY_MISMATCH');// the faces face the viewer: no dashes
+  const mark=svg.match(/<polyline id="s1-right-angle"[^>]*\/>/)[0];
+  await failing(svg.replace(mark,''),'SOLID_SPHERE_CUT_RIGHT_ANGLE_SET_MISMATCH');
+  await failing(svg.replace(mark,mark.replace(/points="([^"]+)"/,(all,pts)=>{const p=pts.split(' ');const [x,y]=p[1].split(',');p[1]=`${Number(x)+5},${Number(y)}`;return `points="${p.join(' ')}"`;})),'SOLID_SPHERE_CUT_RIGHT_ANGLE_CORNER');
+  await failing(svg.replace(mark,mark.replace(/points="([^"]+)"/,(all,pts)=>{const p=pts.split(' ');const [x,y]=p[0].split(',');p[0]=`${Number(x)+4},${Number(y)+4}`;return `points="${p.join(' ')}"`;})),'SOLID_SPHERE_CUT_RIGHT_ANGLE_');
+  // the radius dimension's line follows the half axis it names: +Z (the vertical radius) instead of +X is a different line
+  const dim=svg.match(/<line id="dim-1-line"[^>]*\/>/)[0];
+  const z=svg.match(/<line id="s1-cut-radius-\+Z"[^>]*x2="([\d.]+)" y2="([\d.]+)"/);
+  await failing(svg.replace(dim,dim.replace(/ x2="[\d.]+" y2="[\d.]+"/,` x2="${z[1]}" y2="${z[2]}"`)),'SOLID_SPHERE_CUT_RADIUS_LINE_MISMATCH:dim-1');
+  // the other pieces still compose with a wedge turned about the picture's width, and with the quarter that is kept
+  await sphereSvg(sphereCut({kind:'THREE_QUARTERS',axis:'X',rightAngle:true},{unit:'cm'},{radius:3}));
+  await sphereSvg(sphereCut({kind:'QUARTER',axis:'Y',rightAngle:true},{unit:'cm'},{radius:3}));
+});

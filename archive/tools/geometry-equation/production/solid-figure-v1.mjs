@@ -1097,7 +1097,9 @@ function solveSolids(plan){
   if(plan.dims!==undefined){
     if(!Array.isArray(plan.dims)||plan.dims.length>10)bad('SOLID_DIMS_INVALID');
     plan.dims.forEach((d,k)=>{
-      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side'],'SOLID_DIMS_INVALID');
+      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side','half'],'SOLID_DIMS_INVALID');
+      // half:"+X" ... "-Z": which half axis of a cut sphere its radius lies along (it must belong to the piece and be seen)
+      if(d.half!==undefined&&(d.radius!=='center'||typeof d.half!=='string'||!/^[+-][XYZ]$/.test(d.half)))bad('SOLID_DIMS_INVALID');
       // side:"LEFT"|"RIGHT" of a round solid's height: the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis
       if(d.side!==undefined&&(d.height===undefined||(d.side!=='LEFT'&&d.side!=='RIGHT')))bad('SOLID_DIM_SIDE_INVALID');
       if((d.from===undefined)!==(d.to===undefined))bad('SOLID_DIMS_INVALID');
@@ -1134,9 +1136,16 @@ function solveSolids(plan){
             if(which==='top'&&!(solid.r1>0))bad('SOLID_DIMS_INVALID');
             z=which==='top'?solid.height:0;rimR=which==='top'?solid.r1:solid.r0;
           }
-          // a cut sphere's radius lies along one of its seen half axes (sphere-parts.mjs picks it), not along the screen's horizontal
+          // a cut sphere's radius lies along one of its seen half axes (sphere-parts.mjs picks the most horizontal one unless `half` names it), not along the screen's horizontal
           if(solid.cut&&!solid.cut.radiusAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN');
-          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z:liftOf(solid)?r6(z+liftOf(solid)):z,r:r6(rimR),...(solid.cut?{axis:solid.cut.radiusAxis}:{}),...dimLabel(d.label,rimR,unitName,code)});
+          if(d.half!==undefined&&!solid.cut)bad('SOLID_DIMS_INVALID');
+          let cutAxis=solid.cut?.radiusAxis;
+          if(d.half!==undefined){
+            const k='XYZ'.indexOf(d.half[1]),sg=d.half[0]==='+'?1:-1;
+            cutAxis=solid.cut.seenAxes.find(a=>a.axis===k&&a.sign===sg);
+            if(!cutAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN:'+d.half);
+          }
+          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z:liftOf(solid)?r6(z+liftOf(solid)):z,r:r6(rimR),...(solid.cut?{axis:cutAxis}:{}),...dimLabel(d.label,rimR,unitName,code)});
         }else if(d.level!==undefined){
           if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id||solid.category!=='REV')bad('SOLID_DIMS_INVALID');
           // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
@@ -2123,6 +2132,18 @@ function specCutSphere(solid,ctx,arcPrim){
       line(`${sid}-crease-${crease.id}-${k+1}`,'cut-crease',a,b,{solid:sid,edge:crease.id,vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1});
     });
   }
+  // a wedge's right angle: the two radii perpendicular to its edge, one in each cut face, and a small square between them (in their plane, projected)
+  if(cut.rightAngle){
+    const [ra,rb]=cut.rightAngle.radii.map(x=>CUT_AXES[x.axis].map(c=>c*x.sign));
+    for(const x of cut.rightAngle.radii){
+      const name=(x.sign>0?'+':'-')+'XYZ'[x.axis];
+      line(`${sid}-cut-radius-${name}`,'cut-radius',centre,scr(CUT_AXES[x.axis].map(c=>c*x.sign*r)),{solid:sid,edge:name,vis:'solid'});
+    }
+    const p1=project(ra),p2=project(rb),l1=Math.hypot(p1[0],p1[1]),l2=Math.hypot(p2[0],p2[1]),k=Math.min(0.2*r,20/(S*Math.max(l1,l2)));
+    if(k*S*Math.min(l1,l2)<3)bad('SOLID_SPHERE_CUT_RIGHT_ANGLE_TOO_SMALL');
+    const pts=[ra.map(c=>c*k),ra.map((c,i)=>(c+rb[i])*k),rb.map(c=>c*k)].map(q=>scr(q));
+    prims.push({t:'polyline',id:sid+'-right-angle',role:'cut-right-angle',points:pts,solid:sid});
+  }
   if(solid.points.some(q=>q.name))prims.push({t:'dot',id:'centre-'+sid,role:'center-dot',solid:sid,cx:centre[0],cy:centre[1],r:2.4});
 }
 /** A circle (plan units) as a polygon in px, for the region a face label must stay inside. */
@@ -2399,7 +2420,7 @@ function renderPrims(spec,model){
   for(const p of spec.prims){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
-      const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
+      const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'||p.role==='cut-radius'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal')&&p.accent?`data-accent="${p.accent}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
@@ -2412,7 +2433,7 @@ function renderPrims(spec,model){
     }else if(p.t==='dot'){
       body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
     }else if(p.t==='polyline'){
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.role==='net-right-angle'?`data-face="${p.face}" data-corner="${p.corner}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid&&p.role==='cut-right-angle'?`data-solid="${p.solid}"`:'',p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.role==='net-right-angle'?`data-face="${p.face}" data-corner="${p.corner}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="55"><polyline ${attrs} stroke="#111" stroke-width="1.2" fill="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
     }
   }
