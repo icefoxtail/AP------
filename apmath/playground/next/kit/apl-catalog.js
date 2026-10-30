@@ -198,9 +198,9 @@ window.APLab.catalog = {
    "order": 1,
    "title": "삼각형 경험도감",
    "short": "삼각형",
-   "summary": "합동·각·내심과 외심·고난도 보조선 62개 배치 탐구.",
-   "keywords": "삼각형 합동 내심 외심 수심 보조선 62장면 삼각형 경험도감 중2 · 단원 01 62장면",
-   "badge": "62장면",
+   "summary": "합동·각·내심과 외심·고난도 보조선 48개 배치 탐구.",
+   "keywords": "삼각형 합동 내심 외심 수심 보조선 48장면 삼각형 경험도감 중2 · 단원 01 48장면",
+   "badge": "48장면",
    "scenes": [
     "이등변 & 4대선",
     "직각합동 RHA/RHS",
@@ -212,6 +212,7 @@ window.APLab.catalog = {
     "고난도 각 & 보조선"
    ],
    "legacy": "labs/g8/triangles-atlas.html",
+   "next": "next/labs/g8-triangles.html",
    "glyph": "<path d=\"M38 8 L76 68 L6 68 Z\"/><path d=\"M38 8 L38 68\"/><path d=\"M30 68 V58 H38\"/><circle cx=\"38\" cy=\"38\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
    "sceneTotal": 48
   },
