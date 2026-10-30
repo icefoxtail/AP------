@@ -98,7 +98,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-1",
     "imageStatus": "not_required",
-    "sourceCorrection": "원본 선택지③은 AC=BD만 제시되어 ②와 ③ 모두 평행사변형을 보장하지 않는다. 단일정답 복구를 위해 ③에 AB∥CD를 추가했다. 원본과 불일치하는 수정본임."
+    "sourceCorrection": "원본 선택지③은 AC=BD만 제시되어 ②와 ③ 모두 평행사변형을 보장하지 않는다. 단일정답 복구를 위해 ③에 AB∥CD를 추가했다. 원본과 불일치하는 수정본임.",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=CD이고 ∠A=∠D인 등변사다리꼴 ABCD로, AD∥BC이지만 AB와 CD는 평행하지 않아 평행사변형이 아닌 반례를 보여 준다.",
+    "solutionImageCaption": "AB=CD, ∠A=∠D이어도 평행사변형이 되지 않는 반례",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -148,7 +152,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-1",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q03.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD 안의 점 P에서 AB, CD에 내린 수선(거리)과, P가 나누는 네 삼각형을 두 쌍(△APB·△CPD, △APD·△BPC)으로 색을 달리해 보여 준다.",
+    "solutionImageCaption": "점 P에서 평행한 두 변까지의 거리와 네 삼각형의 두 쌍",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -299,7 +307,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-2",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q06.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD를 C가 A에 겹치도록 접은 모양으로, B·E·C가 일직선 위에서 ∠AEB=60°, ∠AEF=∠FEC=60°, ∠AEC=120°와 ∠EFD의 위치를 보여 준다.",
+    "solutionImageCaption": "접은 선 EF가 ∠AEC=120°를 60°씩 이등분하는 모양",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
