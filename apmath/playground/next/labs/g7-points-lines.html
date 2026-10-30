@@ -707,6 +707,28 @@ window.addEventListener('DOMContentLoaded', function () {
       ctx.restore();
     }
 
+    /* [표시 보강] 각 표시 도우미 angMark(b, 꼭짓점 v, 반직선 방향 p1·p2, {color, rings, r, label}):
+       꼭짓점에서 p1→p2 쪽 작은 각에 호(rings겹)를 긋고, 값·기호(label, 배열이면 여러 줄)를 호 바깥의 그 각 '부채꼴 안쪽'에 놓습니다.
+       화면 픽셀 기준이라 확대·축소·끌기로 도형이 바뀌어도 현재 점에서 다시 계산되고, 각이 좁으면 글자가 걸치지 않도록 꼭짓점에서 더 멀리 둡니다. */
+    function angMark(b, v, p1, p2, o = {}) {
+      const unit = (p) => { const dx = p.x - v.x, dy = p.y - v.y, l = Math.hypot(dx, dy) || 1; return { x: v.x + (dx / l) * 1e-3, y: v.y + (dy / l) * 1e-3 }; };
+      const q1 = unit(p1), q2 = unit(p2);
+      const s0 = b.toS(v), a = b.toS(q1), c = b.toS(q2);
+      const t1 = Math.atan2(a.y - s0.y, a.x - s0.x), t2 = Math.atan2(c.y - s0.y, c.x - s0.x);
+      const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, w = Math.abs(d), m = t1 + d / 2;
+      let r = o.r || 28;
+      const lines = b.thumb || o.label == null || o.label === '' ? [] : [].concat(o.label).map(String);
+      const hw = (Math.max(0, ...lines.map((x) => x.length)) * 7.2) / 2 + 3, hh = lines.length * 7 + 1;
+      const half = Math.max(w / 2, 0.07);
+      let D = r + 11;
+      [-1, 1].forEach((sg) => { const ang = m + sg * half; D = Math.max(D, (hw * Math.abs(Math.sin(ang)) + hh * Math.abs(Math.cos(ang))) / Math.sin(half) + 2); });
+      D = Math.min(D, o.max || 130);
+      if (lines.length && D - 12 > r) r = Math.min(D - 12, o.rmax || 70); // 좁은 각은 호도 라벨 가까이까지 키워 어느 각의 값인지 잇습니다
+      b.angle(v, q1, q2, { color: o.color, r, rings: o.rings || 1 });
+      if (!lines.length) return;
+      lines.forEach((x, i) => b._text(s0.x + Math.cos(m) * D, s0.y + Math.sin(m) * D + (i - (lines.length - 1) / 2) * 13.5, x, { color: o.color, size: o.size || 12.5, align: 'center', baseline: 'middle', weight: 800 }));
+    }
+
   /* ===== 원본 그대로: 탭별 그리기 (원본 1000–1645행; 점 끌기 4곳만 무대 핸들로 교체) ===== */
     // ==================== [탭 1 렌더링: 직선·반직선·선분 & 공통부분] ====================
     function renderTab1Rays(rect) {
@@ -1124,6 +1146,14 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.stroke();
         }
         ctx.beginPath(); ctx.arc(cx, cy, 6.5, 0, Math.PI * 2); ctx.fillStyle = '#ffffff'; ctx.fill();
+        { // [표시 보강] 맞꼭지각 ∠a=∠c(노랑 2겹 호) · 이웃한 ∠b=∠d(분홍 1겹 호): 같은 각끼리 같은 표시, 값은 각 안쪽
+          const O = { x: cx, y: cy }, dr = (a) => ({ x: cx + 100 * Math.cos(a), y: cy + 100 * Math.sin(a) });
+          const sup = Math.round(180 - state.deg);
+          angMark(BOARD, O, dr(ang0), dr(ang1), { color: '#fbbf24', rings: 2, r: 30, label: `a=${state.deg}°` });
+          angMark(BOARD, O, dr(ang0 + Math.PI), dr(ang1 + Math.PI), { color: '#fbbf24', rings: 2, r: 30, label: `c=${state.deg}°` });
+          angMark(BOARD, O, dr(ang1), dr(ang0 + Math.PI), { color: '#f472b6', rings: 1, r: 54, label: `b=${sup}°` });
+          angMark(BOARD, O, dr(ang1 + Math.PI), dr(ang0 + 2 * Math.PI), { color: '#f472b6', rings: 1, r: 54, label: `d=${sup}°` });
+        }
         ctx.fillStyle = '#fef08a'; ctx.font = '800 13.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
         ctx.fillText(`마주 보는 맞꼭지각 ∠a = ∠c = ${state.deg}° | 총 ${nLines * (nLines - 1)}쌍`, cx, cy - R - 18);
       } else {
@@ -1159,6 +1189,22 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
 
         ctx.beginPath(); ctx.arc(cx, cy, 6, 0, Math.PI * 2); ctx.fillStyle = '#ffffff'; ctx.fill();
+        { // [표시 보강] 시침·분침의 사잇각에 호와 값을 넣고, 바늘 끝에 이름·각을 붙입니다(현재 분에서 다시 계산)
+          const O = { x: cx, y: cy }, tip = (a, l) => ({ x: cx + l * Math.cos(a), y: cy + l * Math.sin(a) });
+          const between = (smallArc * 180 / Math.PI).toFixed(1);
+          const narrow = smallArc * 180 / Math.PI < 24; // 두 바늘이 거의 겹치면 값이 바늘 위에 얹히므로, 분침 바깥쪽 옆에 따로 적음
+          angMark(BOARD, O, tip(hRad, 100), tip(mRad, 100), { color: '#fbbf24', rings: 1, r: Math.max(26, R * 0.3 * BOARD.k), label: narrow ? '' : `${between}°`, max: R * 0.5 * BOARD.k });
+          if (narrow) {
+            const sg = Math.sin(hRad - mRad) > 0 ? -1 : 1;
+            BOARD.text(tip(mRad, R * 0.3), `${between}°`, { color: '#fbbf24', size: 12.5, dx: -Math.sin(mRad) * sg * 14, dy: Math.cos(mRad) * sg * 14, baseline: 'middle' });
+          }
+          const tag = (a, o, len, txt, col) => { // 바늘 이름·각: 다른 바늘의 반대쪽(바깥쪽) 옆에 붙임
+            const sg = Math.sin(o - a) > 0 ? -1 : 1, nx = -Math.sin(a) * sg, ny = Math.cos(a) * sg, hw = txt.length * 3.9 + 6;
+            BOARD.text(tip(a, len), txt, { color: col, size: 12, dx: nx * (Math.abs(nx) * hw + 8), dy: ny * (Math.abs(ny) * 14 + 6) * 0.9 + ny * Math.abs(nx) * 2, baseline: 'middle' });
+          };
+          tag(hRad, mRad, R * 0.36, `시침 ${hourAngDeg}°`, '#fbbf24');
+          tag(mRad, hRad, R * 0.62, `분침 ${minAngDeg}°`, '#38bdf8');
+        }
         ctx.fillStyle = '#fef08a'; ctx.font = '800 13.5px Pretendard, sans-serif';
         ctx.fillText(`🕒 3시 ${min}분 | 시침 ${hourAngDeg}° · 분침 ${minAngDeg}° · 사잇각 ${(smallArc * 180 / Math.PI).toFixed(1)}°`, cx, cy - R - 20);
       }
@@ -1242,11 +1288,22 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         ctx.font = '800 13px Pretendard, monospace'; ctx.textAlign = 'center';
-        ctx.fillStyle = '#fef08a'; ctx.fillText(`①접은각 ● ${foldDeg}°`, bx - 18, by - 22);
-        ctx.fillStyle = '#94a3b8'; ctx.fillText(`원래각 ● ${foldDeg}°`, bx + 58, by - 14);
-        ctx.fillStyle = '#6ee7b7'; ctx.fillText(`②엇각 ● ${foldDeg}°`, cxPt - 36, cyPt + 24);
-        if (t > 0.65) {
-          ctx.fillStyle = '#fda4af'; ctx.fillText(`꼭지각 ∠A=${xDeg}°`, ax - 42, ay + 24);
+        { // [표시 보강] 같은 각 ●(원래각·접은각·엇각)은 같은 노랑 1겹 호, 꼭지각 ∠A는 분홍 2겹 호 — 값은 각 안쪽
+          const pB = { x: bx, y: by }, pC = { x: cxPt, y: cyPt }, pA = { x: ax, y: ay };
+          const small = BOARD.k < 1; // 작은 화면(휴대폰): 삼각형이 작아 라벨이 겹치므로 호만 그리고 값은 그림 아래 한 줄에 모아 적음
+          const nm = (n, v) => (small ? '' : [n, v]);
+          const rr = (l1, l2) => Math.max(9, Math.min(30, 0.28 * Math.min(l1, l2) * BOARD.k)); // 변이 짧으면 호도 작게
+          const sBC = Math.hypot(cxPt - bx, cyPt - by), sAB = Math.hypot(ax - bx, ay - by), sAC = Math.hypot(cxPt - ax, cyPt - ay);
+          angMark(BOARD, pB, { x: bx + 100, y: by }, pC, { color: '#fbbf24', rings: 1, r: small ? rr(sBC, sBC) : 30, label: nm('원래각', `●${foldDeg}°`) });
+          angMark(BOARD, pC, { x: cxPt - 100, y: cyPt }, pB, { color: '#fbbf24', rings: 1, r: small ? rr(sBC, sAC) : 30, label: nm('②엇각', `●${foldDeg}°`) });
+          if (small) {
+            BOARD.text(pB, `●=${foldDeg}°`, { color: '#fbbf24', size: 12.5, dx: t > 0.65 ? -36 : 0, dy: 48, baseline: 'middle' });
+            if (t > 0.65) BOARD.text(pB, `∠A=${xDeg}°`, { color: '#fda4af', size: 12.5, dx: 36, dy: 48, baseline: 'middle' });
+          }
+          if (t > 0.65) {
+            angMark(BOARD, pB, pC, pA, { color: '#fbbf24', rings: 1, r: small ? rr(sBC, sAB) : 30, label: nm('①접은각', `●${foldDeg}°`) });
+            angMark(BOARD, pA, pC, pB, { color: '#fda4af', rings: 2, r: small ? rr(sAB, sAC) : 28, label: nm('꼭지각', `∠A=${xDeg}°`) });
+          }
         }
 
         [
@@ -1294,6 +1351,20 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.fillStyle = 'rgba(251, 191, 36, 0.42)'; ctx.fill();
         ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 3; ctx.stroke();
 
+        { // [표시 보강] 접은 선 BE 양옆의 같은 각 ●(원래각·접은각)은 같은 노랑 호, 남은 각 ∠x는 초록 2겹 호. 90°는 점선 수직 보조선으로 보임
+          const down = { x: pB.x + 100, y: pB.y }, crease = pE, edge = pC_folded, up = { x: pB.x, y: pB.y - 100 };
+          const done = t > 0.97; // 접기가 끝난 뒤에만 접은 각·남은 각이 성립
+          if (done) {
+            ctx.save(); ctx.setLineDash([5, 4]); ctx.strokeStyle = 'rgba(148, 163, 184, 0.7)'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pB.x, y0 + h * 0.18); ctx.stroke(); ctx.restore();
+            BOARD.right(pB, { x: pB.x + 1e-3, y: pB.y }, { x: pB.x, y: pB.y - 1e-3 }, { size: 12, color: '#94a3b8' });
+          }
+          angMark(BOARD, pB, down, crease, { color: '#fbbf24', rings: 1, r: 34, label: `●${foldAngle}°` });
+          if (done) {
+            angMark(BOARD, pB, crease, edge, { color: '#fbbf24', rings: 1, r: 34, label: `●${foldAngle}°` });
+            angMark(BOARD, pB, edge, up, { color: '#34d399', rings: 2, r: 34, label: `∠x=${remain90}°` });
+          }
+        }
         ctx.font = '800 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
         ctx.fillStyle = '#fef08a';
         ctx.fillText(`원래각 ●(${foldAngle}°) = 접은각 ●(${foldAngle}°) | 남은 각 ∠x = 90° - ${2 * foldAngle}° = ${remain90}°`, cx, y0 - 16);
@@ -1319,6 +1390,14 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pN.x, pN.y); ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 4.5; ctx.stroke();
 
         drawRightAngle2D(pO, pM, pN, 18, '#fbbf24');
+        { // [표시 보강] 같은 각 ●(∠AOM=∠MOC)은 파랑 호, ×(∠CON=∠NOB)는 분홍 호 — 값은 각 안쪽, 점 A·O·B 이름 표시
+          const dA = Math.round(180 * ratioC), h1 = +(dA / 2).toFixed(1), h2 = +((180 - dA) / 2).toFixed(1);
+          angMark(BOARD, pO, pA, pM, { color: '#38bdf8', rings: 1, r: 46, max: R * BOARD.k * 0.68, label: `●${h1}°` });
+          angMark(BOARD, pO, pM, pC, { color: '#38bdf8', rings: 1, r: 46, max: R * BOARD.k * 0.68, label: `●${h1}°` });
+          angMark(BOARD, pO, pC, pN, { color: '#f472b6', rings: 1, r: 46, max: R * BOARD.k * 0.68, label: `×${h2}°` });
+          angMark(BOARD, pO, pN, pB, { color: '#f472b6', rings: 1, r: 46, max: R * BOARD.k * 0.68, label: `×${h2}°` });
+          [[pA, 'A', 0, 15], [pB, 'B', 0, 15], [pO, 'O', -15, 13]].forEach(([q, nm, ox, oy]) => BOARD.text(q, nm, { color: '#e2e8f0', size: 13, dx: ox, dy: oy, baseline: 'middle' }));
+        }
 
         ctx.font = '800 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
         ctx.fillStyle = '#38bdf8'; ctx.fillText('M (이등분선 ●)', pM.x, pM.y - 12);
