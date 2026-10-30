@@ -1,8 +1,9 @@
 """E31 (1): the wide search of a line-owned label, leaders that start beside a parallel neighbour, and the tick-first retry."""
-import math,sys,unittest
+import math,sys,unittest,unittest.mock
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from visual_engine.label_layout import *
+import visual_engine.label_layout as label_layout_module
 
 def label(i,at,text='P',kind='POINT_NAME',priority=1,**more):
     return {'id':i,'kind':kind,'at':at,'text':text,'font':13.25,'priority':priority,**more}
@@ -143,5 +144,35 @@ class TickFirstRetryTests(unittest.TestCase):
         first=layout([name,item],obstacles,Box(0,0,320,220),measurements={item['id']:(14,12),name['id']:(18,16)})
         self.assertEqual(first['unresolved'],[])
         self.assertEqual(first['labels'][0]['id'],'O-name')
+
+class LineBarrierTests(unittest.TestCase):
+    """E31 (8): the coordinates of a hidden construction point (lineBarrier) never stand beyond a line the point is not on. Only the ring of the last resort is left to the label here
+    (no cardinal candidate), at one radius, so the only free boxes are the ones beyond the second line."""
+    def fixtures(self,barrier,west=True):
+        point={'id':'K','kind':'point','geometry':(100,200,3.2)}
+        own=line('own',(60,380),(140,20))                         # the point's own line (steep, through K)
+        other=line('other',(127,380),(133,20))                    # a second steep line 30 px to the right of K: a box beyond it would read as that line's
+        blocks=[line('west',(40,380),(40,20))] if west else []     # and a third on the left, so that the left side is no free sector
+        item={'id':'K-coordinate','kind':'COORDINATE_LABEL','at':(100,200),'text':'(1,-2)','font':13.25,'priority':2,'target':'K','directions':(),'gaps':(),
+              'measuredFragmentSha256':'sha256:'+'0'*64,'measuredFragmentOwner':'K','measuredFactRole':'DERIVED_INTERMEDIATE','ringLeader':True,**({'lineBarrier':True} if barrier else {})}
+        return item,[point,own,other,*blocks]
+    def run_layout(self,barrier,west=True):
+        item,obstacles=self.fixtures(barrier,west)
+        with unittest.mock.patch.object(label_layout_module,'POINT_NAME_RING_RADII',(120,)):
+            return layout([item],obstacles,Box(0,0,400,400),measurements={item['id']:(70,24)},require_measurements=True),obstacles
+    def test_without_the_barrier_the_label_stands_beyond_the_second_line(self):
+        result,obstacles=self.run_layout(False)
+        self.assertEqual(result['unresolved'],[],result)
+        self.assertTrue(line_between((100,200),Box(**result['labels'][0]['box']),obstacles,{'K','own'}))      # what the barrier looks for
+    def test_with_the_barrier_the_label_is_refused_rather_than_placed_beyond_it(self):
+        result,obstacles=self.run_layout(True)
+        self.assertEqual(result['unresolved'],['K-coordinate'],result)
+        self.assertEqual(result['labels'],[])
+    def test_with_the_barrier_a_free_side_is_still_taken(self):
+        result,obstacles=self.run_layout(True,west=False)
+        self.assertEqual(result['unresolved'],[],result)
+        box=Box(**result['labels'][0]['box'])
+        self.assertFalse(line_between((100,200),box,obstacles,{'K','own'}))
+        self.assertLess(box.x+box.width/2,100)                      # the left of its own line
 
 if __name__=='__main__':unittest.main()

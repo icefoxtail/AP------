@@ -318,6 +318,27 @@ def audit(p):
                 tie=next((n for n in root.iter() if n.tag.split('}')[-1]=='line' and n.get('data-role')=='leader' and n.get('data-owner-label')==pid+'-coordinate'),None)
                 tied=tie is not None and pid in dots and math.dist((float(tie.get('x1')),float(tie.get('y1'))),dots[pid])<=4.8
                 if not tied and (near(dots[pid])>60.0 or any(math.dist(c,dots[pid])>=math.dist(c,dot) for c in corners for other,dot in dots.items() if other!=pid)):errors.append('HIDDEN_POINT_COORDINATE_LABEL_AMBIGUOUS_OWNER:'+str(pid))
+                if not tied:
+                    # and no line or axis that does not pass through the dot runs between the dot and its label (it would read as a label of the far side)
+                    dot=dots[pid];center=(box[0]+box[2]/2,box[1]+box[3]/2);dx,dy=center[0]-dot[0],center[1]-dot[1]
+                    if math.hypot(dx,dy)>1e-9:
+                        fraction=min(math.inf if abs(dx)<=1e-12 else (box[2]/2)/abs(dx),math.inf if abs(dy)<=1e-12 else (box[3]/2)/abs(dy));reach=(center[0]-dx*fraction,center[1]-dy*fraction)
+                        def pt_seg(q,a,b):
+                            ex,ey=b[0]-a[0],b[1]-a[1];n2=ex*ex+ey*ey
+                            if n2<=1e-18:return math.dist(q,a)
+                            t=max(0.0,min(1.0,((q[0]-a[0])*ex+(q[1]-a[1])*ey)/n2));return math.hypot(q[0]-(a[0]+t*ex),q[1]-(a[1]+t*ey))
+                        def seg_seg(a,b,c,d):
+                            cross=lambda u,v:u[0]*v[1]-u[1]*v[0];r=(b[0]-a[0],b[1]-a[1]);u=(d[0]-c[0],d[1]-c[1]);den=cross(r,u);q=(c[0]-a[0],c[1]-a[1])
+                            if abs(den)>1e-12:
+                                t=cross(q,u)/den;w=cross(q,r)/den
+                                if 0<=t<=1 and 0<=w<=1:return 0.0
+                            return min(pt_seg(a,c,d),pt_seg(b,c,d),pt_seg(c,a,b),pt_seg(d,a,b))
+                        for n in root.iter():
+                            if n.tag.split('}')[-1]=='line' and n.get('data-role') in ('line','axis'):
+                                try:ends=((float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2'))))
+                                except (TypeError,ValueError):continue
+                                if pt_seg(dot,*ends)<=0.05:continue
+                                if seg_seg(dot,reach,*ends)<=1.0:errors.append('HIDDEN_POINT_COORDINATE_LABEL_BEYOND_LINE:'+str(pid)+':'+str(n.get('id')));break
             observations.append({'id':pid+'-coordinate','type':'HIDDEN_POINT_COORDINATE_LABEL','owner':pid})
     wrappers=[n for n in root.iter() if n.get('data-fragment-sha')]
     if set(n.get('id') for n in wrappers)!=set(p['fragments']):errors.append('FRAGMENT_INVENTORY_MISMATCH')

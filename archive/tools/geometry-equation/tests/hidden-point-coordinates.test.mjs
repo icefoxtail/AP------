@@ -70,3 +70,10 @@ test('a label tied to another point by a leader is not that point\'s',async()=>{
   const far=FIXTURE.svg.replace(leader,leader.replace(/ x1="([^"]+)"/,(m,v)=>' x1="'+(Number(v)+60)+'"'));
   assert.ok(codes(await observe({svg:far})).includes('HIDDEN_POINT_COORDINATE_LABEL_AMBIGUOUS_OWNER:Q'));
 });
+
+test('a label that sits beyond a line its point is not on is named (lineBarrier: it would read as the far side\'s)',async()=>{
+  const beyond=FIXTURE.svg.replace('translate(222.588235294 146.117647059)','translate(222.588235294 300)');assert.notEqual(beyond,FIXTURE.svg);
+  assert.ok(codes(await observe({svg:beyond})).includes('HIDDEN_POINT_COORDINATE_LABEL_BEYOND_LINE:Y1'));
+  // the lines a point is on never count: X1 is on the x-axis and on l1, and its label stands just below them
+  assert.ok(!codes(await observe({})).some(code=>code.startsWith('HIDDEN_POINT_COORDINATE_LABEL_BEYOND_LINE')));
+});

@@ -355,6 +355,14 @@ def owner_incident_ids(start,owner_marker,occupied):
     incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=1e-3}
     return incident
 
+def line_between(start,box,occupied,incident):
+    """(E31 lineBarrier) True when a line, axis or curve that does not pass through the anchor crosses the straight way from the anchor to the box: the label would read as sitting beyond it."""
+    center=(box.x+box.width/2,box.y+box.height/2)
+    if math.hypot(center[0]-start[0],center[1]-start[1])<=1e-9:return False
+    end=owner_leader_endpoint(box,start,center)
+    return any(o.get('kind') in {'line','axis','auxiliary','curve'} and o.get('id') not in incident and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+               and any(segment_segment_distance(start,end,c,d)<=1.0 for c,d in zip(o['geometry'],o['geometry'][1:])) for o in occupied)
+
 def visible_owner_leader(start,box,occupied,incident,near_start=False):
     """End of a leader from the point to the label box, or None when it would touch other geometry or hide along a line through the point."""
     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
@@ -682,6 +690,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 and not (other_sectors and box_in_other_sectors(box,other_sectors))
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines,*owner_limits))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
+                and (owner_marker is None or not owner_check or not label.get('lineBarrier') or not line_between(tuple(label['at']),box,occupied,owner_incident_ids(tuple(label['at']),owner_marker,occupied)))
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
         def tie_to_owner(end):
             leader_id=label['id']+'-owner-leader'

@@ -842,7 +842,7 @@ function specForFamily(plan,model,id){
       factRolesByLabel[labelId]=node.factRole;
       continue;
     }
-    objects.push({id:id+'-coordinate',kind:'COORDINATE_LABEL',target:id,exact:coordinates.map(scalarExpression),...(hiddenNames.has(id)?{ringLeader:true}:{}),...(labelDirections[id]?{preferred:labelDirections[id]}:{})});
+    objects.push({id:id+'-coordinate',kind:'COORDINATE_LABEL',target:id,exact:coordinates.map(scalarExpression),...(hiddenNames.has(id)?{ringLeader:true,lineBarrier:true}:{}),...(labelDirections[id]?{preferred:labelDirections[id]}:{})});
     factRolesByLabel[id+'-coordinate']=node.factRole;
   }
   // lineLabels:[{nodeId,form:'SLOPE_INTERCEPT'|'GENERAL'}] writes the equation of a displayed SOURCE_LINE beside it, built from its exact coefficients.
