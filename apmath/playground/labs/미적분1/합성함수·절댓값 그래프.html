@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>합성함수·절댓값 그래프 킬러 랩 (Composite & Absolute Value Master Lab)</title>
   <!-- Pretendard Webfont -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -682,9 +682,9 @@
         shortcut: () => ({
           steps: `① <strong>[1단계: 속함수 치환 ${tex('u = g(x)')}]</strong> 바깥 방정식 ${tex('f(u) = u^3 - 3u = 0')} 의 실근은 <strong class="text-amber-300">${tex('u = -\\sqrt{3}, \\; 0, \\; \\sqrt{3}')}</strong>!<br/>
 ② <strong>[2단계: 하단 ${tex('g(x) = \\dfrac{1}{2}x^2 - 1')} (최솟값 ${tex('-1')})에 수평선 3줄 긋기]</strong><br/>
-&nbsp;&nbsp;• ${tex('g(x) = -\\sqrt{3} \\; (\\approx -1.73 < -1)')} $\\implies$ 교점 <strong>0개</strong><br/>
-&nbsp;&nbsp;• ${tex('g(x) = 0 \\; (> -1)')} $\\implies$ 교점 <strong class="text-pink-300">2개</strong><br/>
-&nbsp;&nbsp;• ${tex('g(x) = \\sqrt{3} \\; (\\approx 1.73 > -1)')} $\\implies$ 교점 <strong class="text-sky-300">2개</strong><br/>
+&nbsp;&nbsp;• ${tex('g(x) = -\\sqrt{3} \\; (\\approx -1.73 < -1)')} ${tex('\\implies')} 교점 <strong>0개</strong><br/>
+&nbsp;&nbsp;• ${tex('g(x) = 0 \\; (> -1)')} ${tex('\\implies')} 교점 <strong class="text-pink-300">2개</strong><br/>
+&nbsp;&nbsp;• ${tex('g(x) = \\sqrt{3} \\; (\\approx 1.73 > -1)')} ${tex('\\implies')} 교점 <strong class="text-sky-300">2개</strong><br/>
 ③ 합치면 5초 만에 <strong class="text-emerald-300">총 ${tex('0 + 2 + 2 = 4')}개</strong>!`,
           highlight: "💡 합성방정식 f(g(x)) = k 는 무조건 【 ① f(u) = k 의 근 u₁, u₂, u₃ 구하기 → ② g(x) = uᵢ 수평선 그어 교점 개수 더하기 】 2단계로 푸세요!"
         })

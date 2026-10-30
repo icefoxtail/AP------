@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>함수의 극한과 연속 킬러 랩 (Limit & Continuity Master Lab)</title>
   <!-- Pretendard Webfont -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -588,7 +588,7 @@
           warning: "⚠️ 불연속점이 여러 개일 때 매번 좌극한·우극한·함숫값 표를 그려서 계산하면 시간을 크게 낭비합니다!"
         }),
         shortcut: () => ({
-          steps: `① ${tex('f(x)')}는 ${tex('x = 1')} 에서 좌극한(${tex('2')}) $\\ne$ 우극한(${tex('0')})으로 끊어진 <strong>불연속 함수</strong>!<br/>
+          steps: `① ${tex('f(x)')}는 ${tex('x = 1')} 에서 좌극한(${tex('2')}) ${tex('\\ne')} 우극한(${tex('0')})으로 끊어진 <strong>불연속 함수</strong>!<br/>
 ② 끊어진 두 값을 곱해서 같게 만들 수 있는 유일한 숫자는 <strong class="text-amber-300">오직 『 0 』</strong>뿐!<br/>
 ③ 따라서 연속함수 ${tex('g(x)')}가 불연속점 ${tex('x = 1')} 에서 <strong>0이 되어 덮어주면(Healing)</strong> 끝: 계산 없이 1초 만에 <strong class="text-emerald-300">${tex('g(1) = 0 \\implies r = 1')}</strong>!`,
           highlight: "💡 『불연속 함수 f(x) × 연속 함수 g(x) 가 x=a에서 연속 ⇔ 연속 함수가 그 점에서 0이 된다: g(a) = 0』!"
@@ -675,7 +675,7 @@
     //   x: 가로 범위, px: 점 라벨이 차지하는 왼쪽·오른쪽 여백(px), y: 주 칠판 세로 범위, dy: 동시 뷰의 아래 칠판 세로 범위
     const VIEW = {
       1: { x: [0.35, 1.65], px: [105, 120], y: [-0.4, 3.2], dy: [-0.5, 2.6] },
-      2: { x: [1, 1.8], px: [135, 135], y: [-0.5, 4.3], dy: [-2, 0.6] },
+      2: { x: [-1, 1.8], px: [40, 135], y: [-4.5, 4.3], dy: [-2, 0.6] },
       3: { x: [1, 1], px: [95, 205], y: [-0.5, 2.5], dy: [-2.4, 2.4] },
       4: { x: [-2, 2], px: [120, 110], y: [-2.6, 2.6], dy: [-0.2, 3.6] },
       5: { x: [1, 2], px: [125, 190], y: [-2, 1], dy: [-1.6, 1.6] }
