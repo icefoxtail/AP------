@@ -404,6 +404,24 @@ window.addEventListener('DOMContentLoaded', function () {
       ctx.stroke();
       ctx.restore();
     }
+  /* [표시 보강] 각·평행·같은 길이 표시 도우미 */
+    // 꼭짓점 v에서 반직선 p1→p2 사이 각을 호+각도 값(°)으로 표시(같은 각은 같은 색·같은 기호로 호출)
+    function markAngle(v, p1, p2, color, label, r = 28) {
+      BD.angle([v.x, v.y], [p1.x, p1.y], [p2.x, p2.y], { r, color, label, size: 11.5, labelGap: 13 });
+    }
+    function degBetween(v, p1, p2) {
+      const ax = p1.x - v.x, ay = p1.y - v.y, bx = p2.x - v.x, by = p2.y - v.y;
+      const k = (ax * bx + ay * by) / ((Math.hypot(ax, ay) * Math.hypot(bx, by)) || 1);
+      return Math.acos(Math.max(-1, Math.min(1, k))) * 180 / Math.PI;
+    }
+    function parallelMark(p, q, color = '#fbbf24') {
+      const a = toScreen(p.x, p.y), b = toScreen(q.x, q.y), L = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+      if (L < 40) return;
+      const d = { x: (b.x - a.x) / L, y: (b.y - a.y) / L }, n = { x: -d.y, y: d.x }, t = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      BD.ctx.save(); BD.ctx.strokeStyle = BD.color(color); BD.ctx.lineWidth = 2; BD.ctx.setLineDash([]);
+      BD.ctx.beginPath(); BD.ctx.moveTo(t.x - d.x * 4 + n.x * 5, t.y - d.y * 4 + n.y * 5); BD.ctx.lineTo(t.x + d.x * 3, t.y + d.y * 3); BD.ctx.lineTo(t.x - d.x * 4 - n.x * 5, t.y - d.y * 4 - n.y * 5); BD.ctx.stroke();
+      BD.ctx.restore();
+    }
   /* ===== 원본 그대로: 장면 그리기 (원본 1123–1462행, 하단 상자만 setTape로) ===== */
     function renderMode1(rect) {
       const A = state.A1; // (x_A, 0)
@@ -437,7 +455,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         const shadowColor = H.x >= 0 ? '#fbbf24' : '#f43f5e';
         drawChalkLine(0, -0.18, H.x, -0.18, shadowColor, 5.0, false, true, 1);
-        drawChalkPoint(H.x, 0, 5.5, shadowColor, `H(${H.x.toFixed(1)}, 0) [정사영]`, { x: -45, y: 24 }, 1);
+        drawChalkPoint(H.x, 0, 5.5, shadowColor, `H(${H.x.toFixed(1)}, 0) [정사영]`, { x: -45, y: 46 }, 1); // [표시 보강] 바닥 OA 이름표와 겹치지 않게 아래로
       }
 
       // Step 1 (partIdx = 0, lens = 'vec'): 두 위치벡터 OA, OB 및 사잇각 호
@@ -458,6 +476,8 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.lineWidth = st1.width;
           ctx.stroke();
           ctx.restore();
+          // [표시 보강] 끼인각 θ 에 각도 값(°)을 각 안쪽에 표시(이전: 호만 있고 θ·값이 없었음)
+          markAngle({ x: 0, y: 0 }, { x: A.x >= 0 ? 1 : -1, y: 0 }, B, H.x >= 0 ? '#34d399' : '#f43f5e', `θ=${degBetween({ x: 0, y: 0 }, { x: A.x >= 0 ? 1 : -1, y: 0 }, B).toFixed(1)}°`, arcR);
         }
 
         drawVectorArrow(0, 0, A.x, A.y, '#38bdf8', 3.4, `OA (길이 ${A.x.toFixed(1)})`, false, { x: 10, y: 22 }, 0);
@@ -527,6 +547,9 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.lineWidth = st1.width;
         ctx.stroke();
         ctx.restore();
+        // [표시 보강] 끼인각 θ 값(°)을 각 안쪽에 표시, θ=90°이면 직각 표시도 함께
+        markAngle({ x: 0, y: 0 }, A, B, Math.abs(degT - 90) < 1.5 ? '#fbbf24' : dot >= 0 ? '#34d399' : '#f43f5e', `θ=${degT.toFixed(1)}°`, arcR);
+        if (Math.abs(degT - 90) < 1.5) drawRightAngleMark({ x: 0, y: 0 }, { x: A.x / lenA, y: A.y / lenA }, { x: B.x / lenB, y: B.y / lenB }, 12, '#fbbf24', 0);
 
         drawVectorArrow(0, 0, A.x, A.y, '#38bdf8', 3.4, `a(${A.x.toFixed(1)}, ${A.y.toFixed(1)})`, false, { x: 25, y: 16 }, 0);
         drawVectorArrow(0, 0, B.x, B.y, '#f472b6', 3.4, `b(${B.x.toFixed(1)}, ${B.y.toFixed(1)})`, false, { x: -35, y: -12 }, 0);
@@ -581,8 +604,11 @@ window.addEventListener('DOMContentLoaded', function () {
         const ux = Math.cos(angOA);
         const uy = Math.sin(angOA);
         drawChalkLine(C.x - ux * (r + 1.2), C.y - uy * (r + 1.2), C.x + ux * (r + 1.2), C.y + uy * (r + 1.2), 'rgba(251, 191, 36, 0.5)', 1.8, true, false, 2);
+        // [표시 보강] 중심을 지나는 기준선 ∥ OA (같은 평행 표시)
+        parallelMark({ x: 0, y: 0 }, A, '#fbbf24');
+        parallelMark(C, { x: C.x + ux * (r + 1.2), y: C.y + uy * (r + 1.2) }, '#fbbf24');
 
-        drawChalkPoint(Pmax.x, Pmax.y, 5.5, '#34d399', `최대 P_max (${(dotFixed + lenA * r).toFixed(1)})`, { x: 10, y: -10 }, 2);
+        drawChalkPoint(Pmax.x, Pmax.y, 5.5, '#34d399', `최대 P_max (${(dotFixed + lenA * r).toFixed(1)})`, { x: 14, y: 16 }, 2); // [표시 보강] 동점 P 이름표와 겹치지 않게
         drawChalkPoint(Pmin.x, Pmin.y, 5.5, '#f43f5e', `최소 P_min (${(dotFixed - lenA * r).toFixed(1)})`, { x: -125, y: 20 }, 2);
 
         setTape(`OA·OP = OA·OC(${dotFixed.toFixed(0)}) + OA·CP(${dotRot >= 0 ? '+' : ''}${dotRot.toFixed(2)}) = ${dotTotal.toFixed(2)} ∈ [${(dotFixed - lenA * r).toFixed(1)}, ${(dotFixed + lenA * r).toFixed(1)}]`); // [2.0 수정] 하단 상자 → 하단 띠
@@ -593,6 +619,8 @@ window.addEventListener('DOMContentLoaded', function () {
         drawVectorArrow(0, 0, C.x, C.y, '#34d399', 2.8, 'OC (고정)', false, { x: 18, y: 16 }, 1);
         drawVectorArrow(C.x, C.y, P.x, P.y, '#f472b6', 3.2, 'CP (방향이 변함)', false, { x: 22, y: -8 }, 1);
         drawVectorArrow(0, 0, P.x, P.y, 'rgba(251, 191, 36, 0.65)', 2.2, '', true, { x: 0, y: 0 }, 1);
+        // [표시 보강] OA·CP = |OA|·r·cos φ 의 끼인각 φ: C에서 (OA와 같은 방향 반직선)과 CP 사이 각을 호와 값으로 표시
+        if (r > 0.2) markAngle(C, { x: C.x + Math.cos(angOA), y: C.y + Math.sin(angOA) }, P, '#f472b6', `φ=${degBetween(C, { x: C.x + Math.cos(angOA), y: C.y + Math.sin(angOA) }, P).toFixed(0)}°`, Math.min(30, r * state.scale * 0.5));
       }
 
       // 동점 P는 Step 1 또는 Step 2가 켜져 있을 때 항상 렌더링
@@ -637,6 +665,13 @@ window.addEventListener('DOMContentLoaded', function () {
         drawChalkLine(A.x, A.y, B.x, B.y, '#e2e8f0', 3.0, false, false, 0);
         drawVectorArrow(P.x, P.y, A.x, A.y, '#38bdf8', 2.6, 'PA', false, { x: -22, y: -6 }, 0);
         drawVectorArrow(P.x, P.y, B.x, B.y, '#f472b6', 2.6, 'PB', false, { x: 22, y: -6 }, 0);
+        // [표시 보강] ∠APB 호와 값(예각 초록·둔각 빨강·직각이면 직각 표시) — 아래 '예각/둔각/90°' 판정이 그림에 보이도록
+        { const dA = Math.hypot(A.x - P.x, A.y - P.y), dB = Math.hypot(B.x - P.x, B.y - P.y);
+          if (dA > 0.3 && dB > 0.3) {
+            const apb = degBetween(P, A, B), rt = Math.abs(apb - 90) < 1.5;
+            markAngle(P, A, B, rt ? '#fbbf24' : apb < 90 ? '#34d399' : '#f43f5e', `∠APB=${apb.toFixed(1)}°`, 26);
+            if (rt) drawRightAngleMark(P, { x: (A.x - P.x) / dA, y: (A.y - P.y) / dA }, { x: (B.x - P.x) / dB, y: (B.y - P.y) / dB }, 12, '#fbbf24', 0);
+          } }
         drawChalkPoint(A.x, A.y, 6, '#38bdf8', 'A(-2, -2.5)', { x: -32, y: 22 }, 0);
         drawChalkPoint(B.x, B.y, 6, '#f472b6', 'B(2, -2.5)', { x: -10, y: 22 }, 0);
         drawChalkPoint(C.x, C.y, 5, '#c084fc', '중심 C(MC=5)', { x: 10, y: 18 }, 0);
@@ -647,6 +682,7 @@ window.addEventListener('DOMContentLoaded', function () {
         drawVectorArrow(P.x, P.y, M.x, M.y, '#fbbf24', 3.6, `PM (길이 = ${distPM.toFixed(2)})`, false, { x: -58, y: 0 }, 1);
         drawVectorArrow(M.x, M.y, A.x, A.y, '#34d399', 2.8, `MA (L=${L.toFixed(0)})`, false, { x: 0, y: -12 }, 1);
         drawVectorArrow(M.x, M.y, B.x, B.y, '#34d399', 2.8, `MB (L=${L.toFixed(0)})`, false, { x: 0, y: -12 }, 1);
+        BD.ticks(M, A, { count: 1, color: '#fde047' }); BD.ticks(M, B, { count: 1, color: '#fde047' }); // [표시 보강] MA = MB (중점)
         drawChalkPoint(M.x, M.y, 6.5, '#34d399', '중점 M', { x: -20, y: 24 }, 1);
       }
 
@@ -659,8 +695,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
         const Pmax = { x: C.x + r * ux, y: C.y + r * uy };
         const Pmin = { x: C.x - r * ux, y: C.y - r * uy };
-        drawChalkPoint(Pmax.x, Pmax.y, 5.5, '#34d399', `최대 P (PM=${(5 + r).toFixed(1)})`, { x: 10, y: -8 }, 2);
-        drawChalkPoint(Pmin.x, Pmin.y, 5.5, '#f43f5e', `최소 P (PM=${(5 - r).toFixed(1)})`, { x: 12, y: 16 }, 2);
+        drawChalkPoint(Pmax.x, Pmax.y, 5.5, '#34d399', `최대 P (PM=${(5 + r).toFixed(1)})`, { x: 14, y: 16 }, 2); // [표시 보강] 동점 P 이름표와 겹치지 않게
+        drawChalkPoint(Pmin.x, Pmin.y, 5.5, '#f43f5e', `최소 P (PM=${(5 - r).toFixed(1)})`, { x: 16, y: 36 }, 2);
 
         setTape(`중점 M 이용: PA · PB = PM²(${distPM.toFixed(2)}²) - AM²(${L.toFixed(0)}²) = ${dotVal.toFixed(2)}`); // [2.0 수정] 하단 상자 → 하단 띠
       }

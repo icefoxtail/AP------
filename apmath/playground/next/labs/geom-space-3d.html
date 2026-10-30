@@ -208,11 +208,18 @@ window.addEventListener('DOMContentLoaded', function () {
     styled(part, group, () => SP.point(p, { r: radius, color, label, dx: offset.x, dy: offset.y, align: 'left' }));
   }
   function draw3DRightAngle(o, a, b, size = 0.48, color = '#fbbf24', part = 0, group = 'perp') {
-    styled(part, group, () => SP.right(o, a, b, { color, size: 11 }));
+    styled(part, group, () => SP.right(o, a, b, { color, size: 14 })); // [표시 보강] 직각 표시를 11→14px로 키움(투시 화면에서 작아 안 보였음)
   }
   function draw3DAngleArc(o, a, b, radius = 0.85, color = '#fbbf24', label = '', part = 0, group = 'perp') {
     styled(part, group, (g) => SP.arc(o, a, b, radius, { color, label, glow: true }));
   }
+  // [표시 보강] 세 점이 이루는 실제 공간각(°) — 각 호의 값에 씁니다.
+  function angDeg(o, a, b) {
+    const u = unit(sub(a, o)), v = unit(sub(b, o));
+    return deg(Math.acos(Math.max(-1, Math.min(1, dot(u, v)))));
+  }
+  // [표시 보강] 각 이름표: 좁은 화면(휴대폰)에서는 'β45°'처럼 짧게 써서 서로 겹치지 않게 합니다.
+  function angLabel(sym, v) { return B && B.W < 520 ? `${sym}${Math.round(v)}°` : `${sym} ${v.toFixed(1)}°`; }
   function drawBottomTapeBanner(rect, message, opts = {}) {
     const f = opts.fraction;
     sink.tape = { title: message + (f ? `   ${f.before || ''} $\\dfrac{${f.num}}{${f.den}}$ ${f.after || ''}` : '') };
@@ -289,6 +296,8 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DPolygon([E,F,G],'rgba(56,189,248,.15)',null,1,2,'projection');
         draw3DLine(E,G,'#38bdf8',3.3,false,true,2,'projection');draw3DLine(E,F,'#34d399',3.5,false,true,2,'projection');
         draw3DRightAngle(F,E,G,.46,'#34d399',2,'perp');
+        // [표시 보강] β = 대각선 AG가 밑면(정사영 EG)과 이루는 각 ∠AGE (cos β = EG/AG = 1/√2)
+        draw3DAngleArc(G,A,E,B&&B.W<520?.45:.5,'#38bdf8',angLabel('β',angDeg(G,A,E)),2,'projection');
       }
       if(state.steps[3]){
         draw3DPolygon([A,E,G],'rgba(251,191,36,.18)',null,1,3,'perp');
@@ -296,6 +305,10 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DLine(A,F,'#34d399',2.4,true,false,3,'perp');
         draw3DRightAngle(E,A,G,.52,'#fbbf24',3,'perp');
         draw3DRightAngle(F,A,G,.52,'#34d399',3,'perp');
+        // [표시 보강] γ = 밑면에서 EG와 EF(∥ HG)가 이루는 각, α = AG와 EF(∥ HG)가 이루는 각 — 세 각 β, γ, α 를 G에서 서로 다른 색 호와 값으로 표시
+        draw3DLine(G,H,'#a78bfa',2.6,true,false,3,'perp');
+        draw3DAngleArc(G,E,H,B&&B.W<520?1.7:1.25,'#a78bfa',angLabel('γ',angDeg(G,E,H)),3,'perp');
+        draw3DAngleArc(G,A,H,B&&B.W<520?1.7:2.2,'#fbbf24',angLabel('α',angDeg(G,A,H)),3,'perp');
         drawBottomTapeBanner(r,'cos α = cos β × cos γ  |  cos β = 1/√2, cos γ = 3/5',{
           fraction:{before:'cos α =',num:'3',den:'5√2',after:'≈ 0.424'}});
       }
