@@ -46,7 +46,7 @@ for(const [idText,spec] of Object.entries(specs)) {
       sourceIdentityKey:sourceId, contentHash:sha(q.content),
       choicesHash:sha(q.choices), imageRefHash:sha(q.image || '') },
     solutionIdentity:{status:'VERIFIED_FINAL',independentVerification:true,solutionHash:sha(q.solution)},
-    curriculumContext:{grade:'H2',curriculum:'2022',scope:'확률과통계',subjectFamily:'PROBABILITY_STATISTICS',
+    curriculumContext:{grade:'H2',curriculum:'2022',scope:'확률과통계',subjectFamily:'',
       standardCourse:q.standardCourse,standardUnitKey:q.standardUnitKey,subUnitKey:q.subUnitKey},
     semanticDecision:{primaryMethod:spec.method,decisiveStep:spec.step,rpmPath:{
       curriculum:'2022',scope:'확률과통계',majorUnit:spec.major,midUnit:spec.mid,l3:spec.l3,l4:spec.l4}}
