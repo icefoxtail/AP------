@@ -429,7 +429,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=-3/4x+6이 점 (4,3)과 x절편 8을 지나 오른쪽 아래로 향하고, x가 6 늘 때 y가 9/2 줄어드는 기울기 삼각형과 평행한 직선 y=-3/4x-3을 함께 보인다.",
+    "solutionImageCaption": "점 (4,3)을 지나는 직선 y=-3/4x+6은 x절편 8, y절편 6이고 오른쪽 아래로 향하며, x가 6 늘 때 y는 9/2만큼 줄어든다. 아래의 직선은 평행한 y=-3/4x-3이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -749,7 +753,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 (0,1)을 지나는 직선 y=ax+1을 세 가지로 점선으로 그렸다. a=2인 직선은 y=2x-3과, a=-1/2인 직선은 y=-1/2x-1/2와 평행하고, a=-2인 직선은 두 실선이 만나는 점 (1,-1)을 지난다.",
+    "solutionImageCaption": "직선 y=ax+1은 항상 점 (0,1)을 지난다. a=2, -1/2이면 각각 y=2x-3, y=-1/2x-1/2와 평행하고, a=-2이면 두 직선의 교점 (1,-1)을 지난다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -855,7 +863,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 준서가 그린 직선(두 점 (1,0), (3,4))은 기울기 2를, 지우가 그린 직선 y=4x-6(두 점 (1,-2), (3,6))은 y절편 -6을 알려 준다. 두 값을 합친 실제 그래프 y=2x-6이 y축 위 점 (0,-6)에서 지우의 직선과 만나는 모습을 보인다.",
+    "solutionImageCaption": "준서가 그린 직선은 실제 기울기 2를, 지우가 그린 직선 y=4x-6은 실제 y절편 -6을 알려 주고, 실제 그래프는 y=2x-6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

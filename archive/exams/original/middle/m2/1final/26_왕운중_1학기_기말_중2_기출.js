@@ -264,7 +264,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 타일 11장으로 만든 큰 직사각형이다. 위와 아래에는 긴 변 x가 가로인 타일 3장씩, 가운데에는 짧은 변 y가 가로인 타일 5장이 놓여 가로는 3x와 5y로, 세로는 y, x, y를 합한 x+2y로 표시되어 있다.",
+    "solutionImageCaption": "타일의 긴 변을 x, 짧은 변을 y라 하면 가로는 3x=5y, 세로는 y+x+y=x+2y이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -499,7 +503,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 수로 그린 좌표평면이다. 점선은 오른쪽 아래로 내려가며 y축과 양의 부분에서 만나는 y=bx-a의 그래프이고, 굵은 직선은 오른쪽 위로 올라가며 y축과 음의 부분에서 만나는 y=abx+(a+b)의 그래프로, 제3사분면에서 제4사분면을 거쳐 제1사분면으로 지난다.",
+    "solutionImageCaption": "예시 수로 그린 개략도에서 y=abx+(a+b)는 기울기가 양수, y절편이 음수인 직선이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -602,7 +610,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 직선 y=-2x+9, y=x+3, y=3이 둘러싸는 삼각형 ABC를 색칠한 그림이다. B는 y축 위, C는 직선 y=-2x+9 위의 점이며 밑변 BC의 길이는 3, 점 A에서 BC에 내린 수선의 길이(높이)는 2로 표시되어 있다.",
+    "solutionImageCaption": "삼각형 ABC에서 밑변 BC=3, 높이는 2이고, 꼭짓점은 A(2,5), B(0,3), C(3,3)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -752,7 +764,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원이, 미남이, 처음 일차함수의 세 직선이 그려져 있다. 원이의 직선과 처음 함수의 직선은 y축 위의 같은 점을 지나고, 미남이의 직선(x절편 4, y절편 -3)과 처음 함수의 직선은 평행하며, x=4에서 처음 함수의 직선 위의 점까지의 높이가 k로 표시되어 있다.",
+    "solutionImageCaption": "원이의 직선에서 y절편을, 미남이의 직선에서 기울기를 얻어 처음 함수의 직선을 그리고, x=4에서의 높이를 k로 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -783,6 +799,10 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 y=x+4, y=-3x-4와 세 번째 직선 y=ax+3을 좌표평면에 그린 세 장의 그림이다. 첫째는 세 번째 직선이 y=x+4와 평행한 경우, 둘째는 y=-3x-4와 평행한 경우, 셋째는 세 번째 직선이 두 직선의 교점을 지나 세 직선이 한 점에서 만나는 경우이다.",
+    "solutionImageCaption": "세 직선이 삼각형을 이루지 않는 세 경우를 y=ax+3의 위치로 비교한 그림이다.",
+    "solutionImageSize": "medium"
   }
 ];
