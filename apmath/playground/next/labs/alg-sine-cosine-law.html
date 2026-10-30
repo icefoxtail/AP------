@@ -35,8 +35,8 @@ window.addEventListener('DOMContentLoaded', function () {
        d* 그리기 도우미(선·원·다각형·점·각·치수선·배지)만 새 무대 엔진(APLab.Board)에 연결했습니다.
        원본과 다른 점
        - 원본의 칠판(Step 카드·풀이 비교·정답 배지)은 셸의 정리 탭(단계·풀이 비교)과 문제 탭(정답은 3단계 후 공개)으로 이동
-       - 실시간 측정 문구는 '핵심 결과' 칸에 표시, 정답이 드러나는 스냅 버튼은 3단계부터(원본과 같음)
-       - 끌 수 있는 점은 후광이 있는 핸들이며 잡은 자리 그대로 따라옵니다(원본은 점이 포인터 위치로 튐)
+       - 실시간 측정 문구는 '핵심 결과' 칸에 표시, 정답이 드러나는 맞추기 버튼은 3단계부터(원본과 같음)
+       - 끌 수 있는 점은 테두리가 빛나는 핸들이며 잡은 자리 그대로 따라옵니다(원본은 점이 포인터 위치로 튐)
        - 무대 확대·이동은 셸의 기본 동작(휠·핀치·빈 곳 끌기)을 사용
        ========================================================================== */
 
@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 1 · 수선의 발과 직각삼각형',
         tabLabel: '기본 1 · 수선의 발을 내려 밑변의 길이와 넓이 구하기',
         title: '[기본 1] 꼭짓점에서 수선의 발을 내려 밑변의 길이와 넓이 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>예각삼각형 $ABC$에서 $\\overline{AB} = 5$, $\\cos B = \\dfrac{3}{5}$, $\\overline{AC} = 2\\sqrt{5}$일 때, 선분 $BC$의 길이와 삼각형 $ABC$의 넓이를 구하시오.</div>
         `,
@@ -96,7 +96,7 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         ],
         alg: `
-          <div class="font-bold text-amber-300 mb-1">🔍 코사인법칙을 이용한 정석 풀이와 오답 함정</div>
+          <div class="font-bold text-amber-300 mb-1">🔍 코사인법칙을 이용한 풀이와 오답 함정</div>
           <div>1) $\\overline{BC} = x$라 하고 $\\triangle ABC$에서 코사인법칙을 쓰면 $(2\\sqrt{5})^2 = x^2 + 5^2 - 2 \\cdot x \\cdot 5 \\cdot \\dfrac{3}{5}$에서 $x^2 - 6x + 5 = 0 \\implies x = 1$ 또는 $x = 5$입니다.</div>
           <div>2) <strong>[주의할 함정]</strong> $x = 1$이면 $\\overline{AB}^2 = 25 > \\overline{BC}^2 + \\overline{AC}^2 = 1 + 20 = 21$이 되어 $\\angle C > \\dfrac{\\pi}{2}$(둔각)이므로 예각삼각형 조건에 모순입니다. 수선의 발을 내리면 $H$가 선분 $BC$ 안쪽에 놓여야 하므로 $x = 3 + 2 = 5$만 자연스럽게 선택됩니다.</div>
         `,
@@ -108,7 +108,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 2 · 세 변과 수선의 발',
         tabLabel: '기본 2 · 세 변의 길이가 주어진 삼각형의 높이와 넓이 구하기',
         title: '[기본 2] 세 변의 길이가 주어진 삼각형의 높이와 넓이 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>세 변의 길이가 $\\overline{AB} = 13$, $\\overline{BC} = 14$, $\\overline{CA} = 15$인 삼각형 $ABC$가 있다. 꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $H$라 할 때, 선분 $AH$의 길이와 삼각형 $ABC$의 넓이를 구하시오.</div>
         `,
@@ -146,7 +146,7 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         ],
         alg: `
-          <div class="font-bold text-amber-300 mb-1">🔍 코사인법칙을 이용한 정석 풀이 비교</div>
+          <div class="font-bold text-amber-300 mb-1">🔍 코사인법칙을 이용한 풀이 비교</div>
           <div>1) 코사인법칙으로 $\\cos B = \\dfrac{13^2 + 14^2 - 15^2}{2 \\times 13 \\times 14} = \\dfrac{140}{364} = \\dfrac{5}{13}$를 구합니다.</div>
           <div>2) $\\sin B = \\sqrt{1 - \\left(\\dfrac{5}{13}\\right)^2} = \\dfrac{12}{13}$이므로 $\\overline{AH} = \\overline{AB}\\sin B = 13 \\times \\dfrac{12}{13} = 12$, 넓이는 $\\dfrac{1}{2} \\times 13 \\times 14 \\times \\dfrac{12}{13} = 84$입니다.</div>
         `,
@@ -158,7 +158,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 3 · 공통현과 두 외접원',
         tabLabel: '기본 3 · 공통현을 공유하는 두 외접원의 반지름 구하기',
         title: '[기본 3] 공통현을 공유하는 두 외접원의 반지름 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>선분 $AC$를 공유하는 두 삼각형 $ABC$와 $ADC$의 외접원의 반지름의 길이를 각각 $R_1, R_2$라 하자. $\\dfrac{\\sin B}{\\sin D} = \\dfrac{3}{4}$이고 $R_2 = 3$일 때, $R_1$의 값을 구하시오.</div>
         `,
@@ -171,7 +171,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.90, label: '큰 원 (R₁=4.6)' }
         ],
         auxHints: [
-          '슬라이더로 왼쪽 외접원의 반지름 R₁을 변화시키며 원주각 ∠B와 ∠D의 크기를 비교해 보세요.',
+          '조절 막대로 왼쪽 외접원의 반지름 R₁을 변화시키며 원주각 ∠B와 ∠D의 크기를 비교해 보세요.',
           '1단계: 두 외접원이 공유하는 공통현 AC를 연결합니다.',
           '2단계: 각 삼각형에서 사인법칙을 적용하여 AC = 2R₁sinB = 2R₂sinD임을 확인합니다.',
           '3단계: 반지름의 비 R₁ : R₂는 사인값의 역비 sinD : sinB = 4 : 3이므로 R₁ = 4입니다.',
@@ -208,7 +208,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 4 · 두 외접원과 사인법칙',
         tabLabel: '기본 4 · 두 외접원의 반지름의 비로 원주각의 사인값 구하기',
         title: '[기본 4] 두 외접원의 반지름의 비로 원주각의 사인값 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>선분 $AC$를 공유하는 두 삼각형 $ABC$와 $ADC$의 외접원의 반지름의 길이가 각각 $R_1 = \\dfrac{9}{2}$, $R_2 = 3$이다. $\\sin B = \\dfrac{5}{9}$일 때, $\\sin D$의 값을 구하시오. (단, $0 < \\angle D < \\dfrac{\\pi}{2}$)</div>
         `,
@@ -221,7 +221,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.92, label: '긴 공통현 (AC=5.6)' }
         ],
         auxHints: [
-          '슬라이더로 공통현 AC의 길이를 조절하며 sin B = 5/9 (≈ 0.556)가 되는 순간을 찾아보세요.',
+          '조절 막대로 공통현 AC의 길이를 조절하며 sin B = 5/9 (≈ 0.556)가 되는 순간을 찾아보세요.',
           '1단계: 삼각형 ABC에서 사인법칙으로 공통현 AC = 2R₁sinB의 길이를 구합니다.',
           '2단계: 삼각형 ADC에서 사인법칙 AC = 2R₂sinD에 AC의 길이를 대입합니다.',
           '3단계: R₁sinB = R₂sinD 관계에서 sin D = 5/6임을 확인합니다.',
@@ -247,7 +247,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ],
         alg: `
           <div class="font-bold text-amber-300 mb-1">🔍 두 풀이 비교 (공통현 계산 vs 반지름 비 직결)</div>
-          <div>1) <strong>정석 풀이</strong>: $\\overline{AC} = 2R_1\\sin B = 5$를 먼저 구한 뒤 $\\sin D = \\dfrac{\\overline{AC}}{2R_2} = \\dfrac{5}{6}$를 구합니다.</div>
+          <div>1) <strong>기본 풀이</strong>: $\\overline{AC} = 2R_1\\sin B = 5$를 먼저 구한 뒤 $\\sin D = \\dfrac{\\overline{AC}}{2R_2} = \\dfrac{5}{6}$를 구합니다.</div>
           <div>2) <strong>비례식 풀이</strong>: 두 외접원의 반지름의 비가 $R_1 : R_2 = \\dfrac{9}{2} : 3 = 3 : 2$이므로 $\\sin D = \\dfrac{3}{2}\\sin B = \\dfrac{5}{6}$입니다.</div>
         `,
         answer: 'sin D = 5/6'
@@ -258,7 +258,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 5 · 수선의 발과 원주각',
         tabLabel: '기본 5 · 두 수선의 발이 만드는 외접원과 선분 길이 구하기',
         title: '[기본 5] 두 수선의 발로 만들어진 사각형의 외접원과 선분 길이 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>예각삼각형 $ABC$에서 $\\overline{BC} = 6$, $\\angle A = \\dfrac{\\pi}{3}$이다. 두 꼭짓점 $B, C$에서 변 $AC, AB$에 내린 수선의 발을 각각 $D, E$라 할 때, 네 점 $B, C, D, E$를 지나는 원의 반지름의 길이 $R$와 선분 $DE$의 길이를 구하시오.</div>
         `,
@@ -271,7 +271,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.6667, label: '🎯 조건 만족 (∠A = π/3, R=3, DE=3)' }
         ],
         auxHints: [
-          '슬라이더로 ∠A의 크기를 바꾸어 보며 두 수선의 발 D, E의 위치 변화를 관찰해 보세요.',
+          '조절 막대로 ∠A의 크기를 바꾸어 보며 두 수선의 발 D, E의 위치 변화를 관찰해 보세요.',
           '1단계: 두 수선의 발 D, E에서 ∠BDC = ∠BEC = π/2임을 표시합니다.',
           '2단계: 원주각이 π/2로 같으므로 선분 BC를 지름으로 하는 원(반지름 R = 3) 위에 B, C, D, E가 놓입니다.',
           '3단계: △ADE ∽ △ABC (SAS 닮음, 닮음비 cos A)이므로 DE = BC cos(π/3) = 3입니다.',
@@ -308,7 +308,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 6 · 삼각형의 중선과 보각',
         tabLabel: '기본 6 · 삼각형의 중선의 길이 구하기',
         title: '[기본 6] 코사인법칙으로 삼각형의 중선의 길이 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>삼각형 $ABC$에서 $\\overline{AB} = 5$, $\\overline{AC} = 7$, $\\overline{BC} = 6$이다. 변 $BC$의 중점을 $M$이라 할 때, 선분 $AM$의 길이를 구하시오.</div>
         `,
@@ -346,7 +346,7 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         ],
         alg: `
-          <div class="font-bold text-amber-300 mb-1">🔍 전체 삼각형에서 cos B를 먼저 구하는 정석 풀이</div>
+          <div class="font-bold text-amber-300 mb-1">🔍 전체 삼각형에서 cos B를 먼저 구하는 풀이</div>
           <div>1) $\\triangle ABC$에서 코사인법칙으로 $\\cos B = \\dfrac{5^2 + 6^2 - 7^2}{2 \\times 5 \\times 6} = \\dfrac{12}{60} = \\dfrac{1}{5}$을 구합니다.</div>
           <div>2) $\\triangle ABM$에서 다시 코사인법칙을 쓰면 $\\overline{AM}^2 = 5^2 + 3^2 - 2 \\times 5 \\times 3 \\times \\dfrac{1}{5} = 25 + 9 - 6 = 28 \\implies \\overline{AM} = 2\\sqrt{7}$로 동일한 결과를 얻습니다.</div>
         `,
@@ -358,7 +358,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 7 · 내접원과 접선의 길이',
         tabLabel: '기본 7 · 삼각형의 내접원 반지름과 접선의 길이 구하기',
         title: '[기본 7] 삼각형의 내접원의 반지름과 접선의 길이 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>세 변의 길이가 $\\overline{AB} = 5$, $\\overline{BC} = 6$, $\\overline{CA} = 7$인 삼각형 $ABC$에 내접하는 원이 세 변 $AB, BC, CA$와 만나는 접점을 각각 $F, D, E$라 하자. 선분 $AF$의 길이와 내접원의 반지름의 길이 $r$를 구하시오.</div>
         `,
@@ -371,7 +371,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.75, label: '긴 밑변 (BC=7.5)' }
         ],
         auxHints: [
-          '슬라이더로 밑변 BC의 길이를 조절하며 내접원의 세 접점 D, E, F가 변을 나누는 비율을 관찰해 보세요.',
+          '조절 막대로 밑변 BC의 길이를 조절하며 내접원의 세 접점 D, E, F가 변을 나누는 비율을 관찰해 보세요.',
           '1단계: 내접원의 중심 I에서 세 접점 D, E, F에 이르는 선분은 각 변과 수직(π/2)이고 길이가 r로 같습니다.',
           '2단계: 원 밖의 한 꼭짓점에서 그은 두 접선의 길이가 같음을 이용해 AF = s - BC = 9 - 6 = 3을 구합니다.',
           '3단계: 코사인법칙으로 넓이 S = 6√6을 구하고 S = r·s에서 r = 2√6/3을 도출합니다.',
@@ -421,7 +421,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.9167, label: 'AC = 10' }
         ],
         auxHints: [
-          '슬라이더로 밑변 AC의 길이를 조절하며 직각삼각형의 외접원과 내접원을 동시에 관찰해 보세요.',
+          '조절 막대로 밑변 AC의 길이를 조절하며 직각삼각형의 외접원과 내접원을 동시에 관찰해 보세요.',
           '1단계: 직각삼각형(∠A = π/2)의 외접원의 지름은 빗변 BC = 10이므로 외접원 반지름 R = 5입니다.',
           '2단계: 직각 꼭짓점 A와 내심 I, 접점 E, F가 이루는 사각형 AFIE는 한 변의 길이가 r인 정사각형입니다.',
           '3단계: r = (6 + 8 - 10) / 2 = 2이므로 R + r = 5 + 2 = 7입니다.',
@@ -460,7 +460,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🔥 심화 1 · 수선의 발 삼각형의 넓이 비',
         tabLabel: '심화 1 · 두 수선의 발을 이은 삼각형과 전체 삼각형의 넓이의 비 구하기',
         title: '[심화 1] 두 수선의 발을 이은 삼각형과 전체 삼각형의 넓이의 비 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>예각삼각형 $ABC$에서 $\\overline{BC} = 5$, $\\cos A = \\dfrac{3}{5}$이다. 두 꼭짓점 $B, C$에서 변 $AC, AB$에 내린 수선의 발을 각각 $D, E$라 할 때, 선분 $DE$의 길이와 두 삼각형 $ADE, ABC$의 넓이의 비 $\\dfrac{\\text{넓이}(\\triangle ADE)}{\\text{넓이}(\\triangle ABC)}$를 구하시오.</div>
         `,
@@ -510,7 +510,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🔥 심화 2 · 내분점과 코사인법칙 연립',
         tabLabel: '심화 2 · 밑변의 내분점과 꼭짓점을 이은 선분의 길이 구하기',
         title: '[심화 2] 밑변의 내분점과 꼭짓점을 이은 선분의 길이 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>삼각형 $ABC$에서 $\\overline{AB} = 5$, $\\overline{AC} = 6$, $\\overline{BC} = 6$이다. 변 $BC$를 $1 : 2$로 내분하는 점을 $D$라 할 때, 선분 $AD$의 길이의 제곱 $\\overline{AD}^2$의 값을 구하시오.</div>
         `,
@@ -548,9 +548,9 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         ],
         alg: `
-          <div class="font-bold text-amber-300 mb-1">🔍 전체 삼각형의 cos B 대입법 및 스튜어트 관계식 비교</div>
-          <div>1) <strong>$\\cos B$ 대입 정석 풀이</strong>: $\\triangle ABC$에서 $\\cos B = \\dfrac{5^2+6^2-6^2}{2\\cdot 5\\cdot 6} = \\dfrac{5}{12}$를 구한 뒤, $\\triangle ABD$에서 $\\overline{AD}^2 = 5^2 + 2^2 - 2\\cdot 5\\cdot 2\\cdot\\dfrac{5}{12} = 29 - \\dfrac{25}{3} = \\dfrac{62}{3}$을 얻습니다.</div>
-          <div>2) <strong>참고(스튜어트 관계식)</strong>: 일반 내분점 공식 $b^2 m + c^2 n = a(x^2 + mn)$에 대입해도 $6^2(2) + 5^2(4) = 6(x^2 + 8) \\implies x^2 = \\dfrac{62}{3}$으로 동일합니다.</div>
+          <div class="font-bold text-amber-300 mb-1">🔍 전체 삼각형의 cos B 대입법과 인접 보각을 이용한 풀이 비교</div>
+          <div>1) <strong>$\\cos B$ 대입 풀이</strong>: $\\triangle ABC$에서 $\\cos B = \\dfrac{5^2+6^2-6^2}{2\\cdot 5\\cdot 6} = \\dfrac{5}{12}$를 구한 뒤, $\\triangle ABD$에서 $\\overline{AD}^2 = 5^2 + 2^2 - 2\\cdot 5\\cdot 2\\cdot\\dfrac{5}{12} = 29 - \\dfrac{25}{3} = \\dfrac{62}{3}$을 얻습니다.</div>
+          <div>2) <strong>인접 보각을 이용한 풀이</strong>: $\\triangle ABD$, $\\triangle ACD$에서 각각 코사인법칙을 쓰고 두 보각의 코사인 값의 합이 $0$임을 이용해 소거하면, $\\overline{BC}=a=6$, $\\overline{CA}=b=6$, $\\overline{AB}=c=5$, $\\overline{BD}=m=2$, $\\overline{DC}=n=4$에 대하여 $b^2 m + c^2 n = a(x^2 + mn) \\implies 6^2(2) + 5^2(4) = 6(x^2 + 8) \\implies x^2 = \\dfrac{62}{3}$으로 같은 값이 나옵니다.</div>
         `,
         answer: 'AD² = 62/3 (≈ 20.67)'
       },
@@ -560,7 +560,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🔥 심화 3 · 할선과 코사인법칙 근과 계수의 관계',
         tabLabel: '심화 3 · 원 밖의 점에서 그은 접선과 할선의 길이의 곱 구하기',
         title: '[심화 3] 원 밖의 점에서 그은 접선과 할선의 길이의 곱 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>반지름의 길이가 $R = 2\\sqrt{3}$인 원의 중심 $O$로부터의 거리가 $\\overline{PO} = 6$인 원 밖의 점 $P$가 있다. 점 $P$에서 원에 그은 접선의 접점을 $T$라 하고, 점 $P$를 지나는 직선이 원과 만나는 두 점을 $A, B$라 할 때, 선분 $PT$의 길이와 $\\overline{PA} \\cdot \\overline{PB}$의 값을 구하시오.</div>
         `,
@@ -573,7 +573,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.90, label: '접선 근처 할선 (θ ≈ 29°)' }
         ],
         auxHints: [
-          '점 B를 드래그하거나 슬라이더를 움직여 할선의 각도가 바뀌어도 PA · PB의 값이 일정한지 관찰해 보세요.',
+          '점 B를 끌거나 조절 막대를 움직여 할선의 각도가 바뀌어도 PA · PB의 값이 일정한지 관찰해 보세요.',
           '1단계: 접점 T에서 반지름 OT와 접선 PT는 수직(∠PTO = π/2)이므로 PT² = PO² - R² = 24입니다.',
           '2단계: △POA에서 코사인법칙으로 세운 x에 대한 이차방정식의 두 근이 PA, PB임을 확인합니다.',
           '3단계: 이차방정식의 근과 계수의 관계에 의해 PA · PB = PO² - R² = PT² = 24로 일정합니다.',
@@ -599,8 +599,8 @@ window.addEventListener('DOMContentLoaded', function () {
         ],
         alg: `
           <div class="font-bold text-amber-300 mb-1">🔍 두 근의 합(PA + PB)의 기하적 의미 비교</div>
-          <div>1) **두 근의 곱**: $\\overline{PA} \\cdot \\overline{PB} = \\overline{PO}^2 - R^2 = \\overline{PT}^2 = 24$ (원의 방멱 성질).</div>
-          <div>2) **두 근의 합**: $\\overline{PA} + \\overline{PB} = 2\\overline{PO}\\cos\\theta = 2\\overline{PM}$ (원의 중심 $O$에서 현 $AB$에 내린 수선의 발을 $M$이라 할 때 $2\\overline{PM}$과 같습니다).</div>
+          <div>1) <strong>두 근의 곱</strong>: $\\overline{PA} \\cdot \\overline{PB} = \\overline{PT}^2 = \\overline{PO}^2 - R^2 = 24$ (원 밖의 점 $P$에서 그은 접선 $PT$와 할선 $PAB$에 대하여 $\\overline{PA}\\cdot\\overline{PB} = \\overline{PT}^2$이고, 직각삼각형 $PTO$에서 $\\overline{PT}^2 = \\overline{PO}^2 - R^2$입니다).</div>
+          <div>2) <strong>두 근의 합</strong>: $\\overline{PA} + \\overline{PB} = 2\\overline{PO}\\cos\\theta = 2\\overline{PM}$ (원의 중심 $O$에서 현 $AB$에 내린 수선의 발을 $M$이라 할 때 $2\\overline{PM}$과 같습니다).</div>
         `,
         answer: 'PT = 2√6, PA · PB = 24'
       },
@@ -610,7 +610,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🔥 심화 4 · 두 할선과 뒤집힌 닮음삼각형',
         tabLabel: '심화 4 · 원 밖의 점에서 그은 두 할선과 현의 길이의 비 구하기',
         title: '[심화 4] 원 밖의 점에서 그은 두 할선과 현의 길이의 비 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>원 밖의 한 점 $P$에서 원에 그은 두 할선이 원과 만나는 점을 각각 $A, B$ ($\\overline{PA} < \\overline{PB}$)와 $C, D$ ($\\overline{PC} < \\overline{PD}$)라 하자. $\\overline{PA} = 3$, $\\overline{PB} = 8$, $\\overline{PC} = 4$일 때, 선분 $PD$의 길이와 두 선분 $AD, BC$의 길이의 비 $\\dfrac{\\overline{AD}}{\\overline{BC}}$를 구하시오.</div>
         `,
@@ -623,7 +623,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.9423, label: '🎯 조건 만족 (PC=4, PD=6, AD:BC=3:4)' }
         ],
         auxHints: [
-          '점 D를 드래그하거나 슬라이더를 움직여 PC = 4가 되는 위치를 찾아보세요.',
+          '점 D를 끌거나 조절 막대를 움직여 PC = 4가 되는 위치를 찾아보세요.',
           '1단계: 원에 내접하는 사각형 ABCD에서 외각 성질로 ∠PAD = ∠PCB임을 확인합니다.',
           '2단계: 공통각 ∠P와 함께 △PAD ∽ △PCB (AA 닮음)가 성립하므로 PA · PB = PC · PD에서 PD = 6입니다.',
           '3단계: 대응변의 비 AD : BC = PA : PC = 3 : 4임을 도출합니다.',
@@ -660,7 +660,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🔥 심화 5 · 원에 내접하는 정삼각형과 현의 합',
         tabLabel: '심화 5 · 원에 내접하는 정삼각형과 원 위의 점 사이의 거리 구하기',
         title: '[심화 5] 원에 내접하는 정삼각형과 원 위의 점 사이의 거리 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>원에 내접하는 정삼각형 $ABC$에서 꼭짓점 $B$를 포함하지 않는 호 $AC$ 위의 한 점 $P$에 대하여 $\\overline{PA} = 3$, $\\overline{PC} = 5$이다. 정삼각형 $ABC$의 한 변의 길이와 선분 $PB$의 길이를 구하시오.</div>
         `,
@@ -673,7 +673,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.6826, label: '대칭 반대쪽 (PA=5, PC=3)' }
         ],
         auxHints: [
-          '호 AC 위의 점 P를 드래그하여 PA = 3, PC = 5가 되는 위치와 PB의 길이를 관찰해 보세요.',
+          '호 AC 위의 점 P를 끌어 PA = 3, PC = 5가 되는 위치와 PB의 길이를 관찰해 보세요.',
           '1단계: 원에 내접하는 사각형 ABCP에서 ∠APC = π - π/3 = 2π/3이므로 코사인법칙으로 AC = 7을 구합니다.',
           '2단계: 선분 PB 위에 PK = PA = 3인 점 K를 잡으면 ∠APB = π/3이므로 △APK는 정삼각형입니다.',
           '3단계: △ABK ≡ △CBP (SAS 합동)이므로 BK = PC = 5가 되어 PB = PA + PC = 3 + 5 = 8입니다.',
@@ -698,8 +698,8 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         ],
         alg: `
-          <div class="font-bold text-amber-300 mb-1">🔍 코사인법칙 이차방정식 풀이 및 톨레미 관계식 비교</div>
-          <div>1) <strong>코사인법칙 정석 풀이</strong>: $\\triangle APB$에서 $\\overline{PB}=x, \\angle APB = \\dfrac{\\pi}{3}$로 놓고 $7^2 = 3^2 + x^2 - 2\\cdot 3\\cdot x\\cos\\dfrac{\\pi}{3} \\implies x^2 - 3x - 40 = 0 \\implies (x-8)(x+5)=0$에서 $x = 8$을 얻습니다.</div>
+          <div class="font-bold text-amber-300 mb-1">🔍 코사인법칙 이차방정식 풀이 및 닮은 삼각형을 이용한 풀이 비교</div>
+          <div>1) <strong>코사인법칙 풀이</strong>: $\\triangle APB$에서 $\\overline{PB}=x, \\angle APB = \\dfrac{\\pi}{3}$로 놓고 $7^2 = 3^2 + x^2 - 2\\cdot 3\\cdot x\\cos\\dfrac{\\pi}{3} \\implies x^2 - 3x - 40 = 0 \\implies (x-8)(x+5)=0$에서 $x = 8$을 얻습니다.</div>
           <div>2) <strong>참고(내접사각형 대각선 관계식)</strong>: $L\\cdot\\overline{PA} + L\\cdot\\overline{PC} = L\\cdot\\overline{PB}$에서 한 변의 길이 $L=7$을 약분하면 $\\overline{PA} + \\overline{PC} = \\overline{PB} = 8$이 바로 나옵니다.</div>
         `,
         answer: '한 변 AC = 7, PB = 8'
@@ -711,7 +711,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🔥 심화 6 · 원에 내접하는 사각형의 대각선 관계',
         tabLabel: '심화 6 · 원에 내접하는 사각형의 두 대각선의 곱 구하기',
         title: '[심화 6] 원에 내접하는 사각형에서 보조선과 닮음으로 대각선의 길이 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>원에 내접하는 사각형 $ABCD$에서 $\\overline{AB} = 3$, $\\overline{BC} = 5$, $\\overline{CD} = 8$, $\\overline{DA} = 3$이고 대각선 $\\overline{AC} = 7$일 때, 다른 대각선 $\\overline{BD}$의 길이를 구하시오.</div>
         `,
@@ -749,9 +749,9 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         ],
         alg: `
-          <div class="font-bold text-amber-300 mb-1">🔍 코사인법칙 정합성 검산과 보조선 닮음 풀이 비교</div>
-          <div>1) <strong>코사인법칙 검산</strong>: $\\triangle ABC$에서 $\\overline{AC}^2 = 3^2+5^2-30\\cos B = 49 \\implies \\cos B = -\\dfrac{1}{2}$ ($\\angle B = \\dfrac{2\\pi}{3}$)이고, 내접사각형 성질 $\\angle D = \\pi - B = \\dfrac{\\pi}{3}$에서 $\\triangle ADC$의 $\\overline{AC}^2 = 8^2+3^2-48\\cos\\dfrac{\\pi}{3} = 73 - 24 = 49$로 100% 일치합니다.</div>
-          <div>2) <strong>보조선 닮음(톨레미 관계식) 풀이</strong>: $\\cos A$를 다시 구할 필요 없이 마주보는 대변의 곱의 합 $3\\times 8 + 5\\times 3 = 7\\overline{BD} \\implies \\overline{BD} = \\dfrac{39}{7}$로 즉시 구해집니다.</div>
+          <div class="font-bold text-amber-300 mb-1">🔍 코사인법칙으로 확인하기와 닮은 삼각형을 이용한 풀이 비교</div>
+          <div>1) <strong>코사인법칙 검산</strong>: $\\triangle ABC$에서 $\\overline{AC}^2 = 3^2+5^2-30\\cos B = 49 \\implies \\cos B = -\\dfrac{1}{2}$ ($\\angle B = \\dfrac{2\\pi}{3}$)이고, 내접사각형 성질 $\\angle D = \\pi - B = \\dfrac{\\pi}{3}$에서 $\\triangle ADC$의 $\\overline{AC}^2 = 8^2+3^2-48\\cos\\dfrac{\\pi}{3} = 73 - 24 = 49$로 일치합니다.</div>
+          <div>2) <strong>닮은 삼각형을 이용한 보조선 풀이</strong>: $\\cos A$를 다시 구하지 않고도, 원에 내접하는 사각형에서 두 대각선의 길이의 곱이 마주 보는 두 쌍의 변의 길이의 곱의 합과 같음을 이용하면 $\\overline{AC}\\cdot\\overline{BD} = \\overline{AB}\\cdot\\overline{CD} + \\overline{BC}\\cdot\\overline{DA}$이므로 $7\\overline{BD} = 3\\times 8 + 5\\times 3 \\implies \\overline{BD} = \\dfrac{39}{7}$로 바로 구해집니다.</div>
         `,
         answer: 'BD = 39/7 (≈ 5.57)'
       },
@@ -761,7 +761,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🔥 심화 7 · 평행사변형의 두 대각선과 보각',
         tabLabel: '심화 7 · 평행사변형의 두 변과 한 대각선으로 다른 대각선 구하기',
         title: '[심화 7] 평행사변형의 이웃한 두 각의 코사인 관계로 대각선의 길이 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>이웃하는 두 변의 길이가 $\\overline{AB} = 3$, $\\overline{BC} = 5$이고 한 대각선의 길이가 $\\overline{AC} = 7$인 평행사변형 $ABCD$에서 다른 대각선 $BD$의 길이를 구하시오.</div>
         `,
@@ -774,7 +774,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.8571, label: '둔각 (∠A=2π/3, AC=√19, BD=7)' }
         ],
         auxHints: [
-          '슬라이더로 ∠A의 크기를 바꾸어 보며 두 대각선 AC² + BD²의 합이 항상 일정한지 확인해 보세요.',
+          '조절 막대로 ∠A의 크기를 바꾸어 보며 두 대각선 AC² + BD²의 합이 항상 일정한지 확인해 보세요.',
           '1단계: 평행사변형의 두 대각선 AC와 BD를 연결하고 이웃한 두 각 ∠B와 ∠A = π - B를 표시합니다.',
           '2단계: △ABC에서 AC² = 3² + 5² - 30 cos B, △ABD에서 BD² = 3² + 5² + 30 cos B를 세웁니다.',
           '3단계: 두 식을 더하면 코사인 항이 소거되어 7² + BD² = 2(3² + 5²) = 68에서 BD = √19입니다.',
@@ -799,7 +799,7 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         ],
         alg: `
-          <div class="font-bold text-amber-300 mb-1">🔍 cos B의 값을 직접 구하여 대입하는 정석 풀이 비교</div>
+          <div class="font-bold text-amber-300 mb-1">🔍 cos B의 값을 직접 구하여 대입하는 풀이 비교</div>
           <div>1) $\\triangle ABC$에서 $7^2 = 3^2 + 5^2 - 2\\cdot 3\\cdot 5\\cos B \\implies 49 = 34 - 30\\cos B \\implies \\cos B = -\\dfrac{1}{2}$ ($\\angle B = \\dfrac{2\\pi}{3}$)입니다.</div>
           <div>2) $\\angle A = \\pi - \\dfrac{2\\pi}{3} = \\dfrac{\\pi}{3}$이므로 $\\triangle ABD$에서 $\\overline{BD}^2 = 3^2 + 5^2 - 2\\cdot 3\\cdot 5\\cos\\dfrac{\\pi}{3} = 34 - 15 = 19 \\implies \\overline{BD} = \\sqrt{19}$로 일치합니다.</div>
         `,
@@ -811,7 +811,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🔥 심화 8 · 대각선의 평행이동과 등적변형',
         tabLabel: '심화 8 · 대각선을 평행이동하여 삼각형으로 합체하고 넓이 구하기',
         title: '[심화 8] 대각선을 평행이동하여 삼각형의 넓이로 사각형의 넓이 구하기',
-        strategyLabel: '🎯 실전 최적 풀이',
+        strategyLabel: '🎯 효율적인 풀이',
         statement: `
           <div>$\\overline{AB} = 4$, $\\overline{AD} = 3$, $\\angle DAB = \\dfrac{\\pi}{3}$인 평행사변형 $ABCD$에서, 꼭짓점 $C$를 지나고 대각선 $BD$에 평행한 직선이 반직선 $AB$와 만나는 점을 $E$라 하자. 선분 $AE$의 길이와 삼각형 $ACE$의 넓이를 구하시오.</div>
         `,
@@ -825,7 +825,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 1.00, label: '🎯 평행이동 완료 (CE // BD, AE=8, 넓이=6√3)' }
         ],
         auxHints: [
-          '슬라이더를 오른쪽으로 움직여 대각선 BD를 꼭짓점 C를 지나는 선분 CE로 평행이동시켜 보세요.',
+          '조절 막대를 오른쪽으로 움직여 대각선 BD를 꼭짓점 C를 지나는 선분 CE로 평행이동시켜 보세요.',
           '1단계: 평행사변형 ABCD의 두 대각선 AC, BD와 밑변 AB = 4, 옆변 AD = 3을 확인합니다.',
           '2단계: BD // CE이고 DC // BE이므로 사각형 DBEC는 평행사변형이며 BE = DC = 4입니다.',
           '3단계: AE = 4 + 4 = 8이고, 평행선 등적변형(△BCD = △BCE)에 의해 △ACE의 넓이는 평행사변형 넓이 6√3과 같습니다.',
@@ -1010,7 +1010,7 @@ window.addEventListener('DOMContentLoaded', function () {
       c.fillText(text, cx, cy);
       c.restore();
     }
-    // 꼭짓점: 끌 수 있는 점(onDrag 있음)은 후광이 있는 핸들로, 아닌 점은 보통 점으로 그립니다
+    // 꼭짓점: 끌 수 있는 점(onDrag 있음)은 테두리가 빛나는 핸들로, 아닌 점은 보통 점으로 그립니다
     function dVertex(p, label = '', col = C.white, off = { x: 8, y: -8 }, isHandle = false, onDrag = null) {
       const o = { label: txt(label).replace(/\s*\[[^\]]*드래그[^\]]*\]/g, ''), dx: off.x || 0, dy: off.y || 0, align: off.align || 'left', baseline: 'middle' };
       if (o.align === 'center') { // 가운데 정렬 라벨이 무대 위·아래 가장자리를 넘으면 반대쪽으로 넘깁니다
@@ -1133,7 +1133,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         setMetric(
           `현재 AC ≈ ${ac.toFixed(2)} | BH = 3, AH = 4, CH = ${ch.toFixed(2)} ➔ BC = ${bc.toFixed(2)}, 넓이 = ${(0.5 * bc * ah).toFixed(1)} (조건: BC=5, 넓이=10)`,
-          `현재 AC ≈ ${ac.toFixed(2)}, 밑변 BC = ${bc.toFixed(2)} (점 C를 드래그하여 AC = 2√5 ≈ 4.47 위치 탐색)`
+          `현재 AC ≈ ${ac.toFixed(2)}, 밑변 BC = ${bc.toFixed(2)} (점 C를 끌어 AC = 2√5 ≈ 4.47 위치 탐색)`
         );
         return;
       }
@@ -2112,7 +2112,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       // -----------------------------------------------------------------------
       // 🔥 [심화 7] adv-7: 평행사변형의 두 대각선 제곱합 AC² + BD² = 2(AB² + BC²)
-      // [P0-1 수리] 3단계 배지에서 현재 슬라이더의 AC, BD 제곱합(=68 불변)과 조건 AC=7 대입 결과를 분리 표기하여 모순 제거
+      // [P0-1 수리] 3단계 배지에서 현재 조절 막대의 AC, BD 제곱합(=68 불변)과 조건 AC=7 대입 결과를 분리 표기하여 모순 제거
       // -----------------------------------------------------------------------
       if (id === 'adv-7') {
         const sc = u * 0.90;
@@ -2180,7 +2180,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       // -----------------------------------------------------------------------
       // 🔥 [심화 8] adv-8: 대각선 BD를 평행이동하여 합체 삼각형 △ACE와 넓이 구하기
-      // [P1-2 수리] 초기 진입(t=0) 시에는 원래 대각선 BD 위에 놓여 있고, 슬라이더 조작 또는 2단계 이상 진입 시 평행이동 진행
+      // [P1-2 수리] 초기 진입(t=0) 시에는 원래 대각선 BD 위에 놓여 있고, 조절 막대 조작 또는 2단계 이상 진입 시 평행이동 진행
       // -----------------------------------------------------------------------
       if (id === 'adv-8') {
         const sc = u * 0.82;
@@ -2294,13 +2294,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function sceneOf(p) {
       const idx = PROBLEMS.indexOf(p);
-      const stepsHtml = p.steps.map((st) => `<p><strong>Step ${st.step}. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`).join('');
+      const stepsHtml = p.steps.map((st) => `<p><strong>${st.step}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`).join('');
       return {
         id: p.id,
         title: p.title,
         short: SHORT[p.id],
         question: rm(p.statement),
-        guide: `<b>${p.sliderTitle.replace(/[:：]\s*$/, '')}</b> — ${p.auxHints[0]} <b>정리</b> 탭에서 Step을 누르면 보조선이 하나씩 나타나고, 3단계까지 보면 정답이 열립니다.`,
+        guide: `<b>${p.sliderTitle.replace(/[:：]\s*$/, '')}</b> — ${p.auxHints[0]} <b>정리</b> 탭에서 단계 단추를 누르면 보조선이 하나씩 나타나고, 3단계까지 보면 정답이 열립니다.`,
         startStep: 0,
         controls: ['t'],
         presets: (s) => (s.step >= 3 ? p.snaps.map((sn) => ({ label: sn.label, set: { t: sn.t }, ms: 450, on: (st) => Math.abs(st.t - sn.t) < 0.003 })) : []),
@@ -2313,7 +2313,7 @@ window.addEventListener('DOMContentLoaded', function () {
           if (lab && s === lab.s) lab.params.t.label = p.sliderTitle.replace(/[:：]\s*$/, ''); // 실제 장면 입장일 때만 조절 막대의 이름을 바꿉니다
         },
         solution: {
-          standardTitle: APLab.stripEmoji(p.strategyLabel) || '실전 풀이', standardTag: '단계별',
+          standardTitle: APLab.stripEmoji(p.strategyLabel) || '풀이', standardTag: '단계별',
           quickTitle: '풀이 비교', quickTag: '비교',
           standard: { steps: stepsHtml },
           quick: { steps: rm(p.alg) }
@@ -2328,7 +2328,7 @@ window.addEventListener('DOMContentLoaded', function () {
           }
           lastStep[p.id] = step;
           const out = {};
-          if (step >= 1) { const st = p.steps[step - 1]; out.formula = `<p><strong>Step ${st.step}. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`; }
+          if (step >= 1) { const st = p.steps[step - 1]; out.formula = `<p><strong>${st.step}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`; }
           if (step >= 3) out.notes = rm(p.aha);
           return out;
         },
@@ -2353,7 +2353,7 @@ window.addEventListener('DOMContentLoaded', function () {
       params: {
         t: {
           value: 0.5, min: 0, max: 1, step: 0.005, color: 'amber', label: '도형 조작',
-          hint: '그림의 후광이 있는 점을 끌어도 같은 값이 바뀝니다',
+          hint: '그림의 테두리가 빛나는 점을 끌어도 같은 값이 바뀝니다',
           format: (v) => `${Math.round(v * 100)}%`,
           onInput: (s) => {
             if (s.step >= 3) {

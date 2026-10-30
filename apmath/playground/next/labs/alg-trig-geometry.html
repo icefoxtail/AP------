@@ -108,7 +108,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 01 · 둘레가 일정한 부채꼴의 최대 넓이',
         tabLabel: '기본 01 · 부채꼴의 둘레가 일정할 때 넓이의 최댓값 구하기',
         title: '[기본 01] 둘레의 길이가 20으로 일정한 부채꼴의 넓이의 최댓값과 중심각',
-        solType: '🎯 실전 최적 풀이',
+        solType: '🎯 효율적인 풀이',
         dragMode: 'horizontal',
         statement: `
           <div>둘레의 길이가 $20$으로 일정한 부채꼴 중에서 그 넓이가 최대인 부채꼴의 반지름의 길이 $r$, 호의 길이 $l$, 중심각의 크기 $\\theta\\,(\\text{rad})$ 및 넓이의 최댓값 $S_{\\max}$를 구하시오.</div>
@@ -124,23 +124,23 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. 둘레 조건 2r + l = 20 에서 호의 길이 l 을 r 로 나타내기',
+            title: '1단계. 둘레 조건 2r + l = 20 에서 호의 길이 l 을 r 로 나타내기',
             desc: `부채꼴의 둘레의 길이는 반지름 $2$개와 호의 길이 $1$개의 합이므로 $2r + l = 20 \\implies \\mathbf{l = 20 - 2r}$ ($0 < r < 10$이고, 중심각 $\\theta \\le 2\\pi$인 부채꼴의 경우 $r \\ge \\dfrac{20}{2+2\\pi}$)입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 넓이 S(r) 이차함수의 대칭축에서 최댓값 구하기',
+            title: '2단계. 넓이 S(r) 이차함수의 대칭축에서 최댓값 구하기',
             desc: `부채꼴의 넓이 공식 $S = \\dfrac{1}{2}rl$에 대입하면<br/>$S(r) = \\dfrac{1}{2}r(20 - 2r) = -r^2 + 10r = -(r - 5)^2 + 25$이므로, 대칭축 **$\\mathbf{r = 5}$에서 최댓값 $\\mathbf{S_{\\max} = 25}$**를 갖습니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 그때의 호의 길이 l = 10 과 중심각 θ = 2 rad 확인',
+            title: '3단계. 그때의 호의 길이 l = 10 과 중심각 θ = 2 rad 확인',
             desc: `$r = 5$일 때 호의 길이는 $l = 20 - 2(5) = \\mathbf{10}$이고,<br/>호도법 정의 $l = r\\theta$에 의해 중심각의 크기는 $\\theta = \\dfrac{l}{r} = \\dfrac{10}{5} = \\mathbf{2\\,(\\text{rad})}$입니다.`
           }
         ],
         alg: `
           <div class="font-bold text-amber-300 mb-1">📖 이차함수 완전제곱식 vs 산술·기하평균 비교</div>
-          <div>1) <strong>이차함수 정석 풀이:</strong> $S(r) = -r^2 + 10r = -(r-5)^2 + 25$로 묶어 꼭짓점 $(5, 25)$를 찾습니다.</div>
+          <div>1) <strong>이차함수를 이용한 풀이:</strong> $S(r) = -r^2 + 10r = -(r-5)^2 + 25$로 묶어 꼭짓점 $(5, 25)$를 찾습니다.</div>
           <div>2) <strong>산술·기하평균 구조 풀이:</strong> 합 $2r + l = 20$이 일정하므로 곱 $2r \\cdot l$은 $2r = l = 10$일 때 최대입니다. 따라서 $r = 5, l = 10, \\theta = \\dfrac{l}{r} = 2\\text{ rad}$, $S_{\\max} = \\dfrac{1}{2} \\times 5 \\times 10 = 25$를 즉시 얻을 수 있습니다.</div>
         `,
         answer: 'r = 5, l = 10, θ = 2 rad, 넓이 최댓값 = 25'
@@ -168,33 +168,33 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. 점 P 에서 x축에 수선을 내려 기준 직각삼각형(4/5, 3/5) 완성',
+            title: '1단계. 점 P 에서 x축에 수선을 내려 기준 직각삼각형(4/5, 3/5) 완성',
             desc: `단위원($x^2+y^2=1$) 위의 제$1$사분면 점 $P$에서 $y = \\sin\\theta = \\dfrac{3}{5}$이므로,<br/>피타고라스 정리에 의해 $x = \\cos\\theta = \\sqrt{1 - \\left(\\dfrac{3}{5}\\right)^2} = \\mathbf{\\dfrac{4}{5}}$입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. +π/2 회전이동한 점 Q(π/2 + θ)의 합동 직각삼각형',
+            title: '2단계. +π/2 회전이동한 점 Q(π/2 + θ)의 합동 직각삼각형',
             desc: `기준 직각삼각형을 $+\\dfrac{\\pi}{2}$만큼 회전하면 제$2$사분면에 가로·세로가 바뀐 합동 직각삼각형이 놓이므로,<br/>$Q(-\\sin\\theta, \\cos\\theta) = \\left(-\\dfrac{3}{5}, \\dfrac{4}{5}\\right) \\implies \\mathbf{\\cos\\left(\\dfrac{\\pi}{2}+\\theta\\right) = x_Q = -\\dfrac{3}{5}}$입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 직선 y = x 대칭이동한 점 R(π/2 - θ)의 y좌표와 합산',
+            title: '3단계. 직선 y = x 대칭이동한 점 R(π/2 - θ)의 y좌표와 합산',
             desc: `점 $P\\left(\\dfrac{4}{5}, \\dfrac{3}{5}\\right)$를 직선 $y=x$에 대칭이동하면 $R\\left(\\dfrac{3}{5}, \\dfrac{4}{5}\\right)$이므로 $\\mathbf{\\sin\\left(\\dfrac{\\pi}{2}-\\theta\\right) = y_R = \\dfrac{4}{5}}$입니다.<br/>따라서 구하는 합은 $-\\dfrac{3}{5} + \\dfrac{4}{5} = \\mathbf{\\dfrac{1}{5}}$입니다.`
           }
         ],
         alg: `
           <div class="font-bold text-amber-300 mb-1">📖 공식 대입 풀이 vs 단위원 합동 풀이 비교</div>
           <div>1) <strong>교과서 각변환 공식:</strong> $\\cos\\left(\\dfrac{\\pi}{2}+\\theta\\right) = -\\sin\\theta$, $\\sin\\left(\\dfrac{\\pi}{2}-\\theta\\right) = \\cos\\theta$ 공식을 적용해 $-\\dfrac{3}{5} + \\dfrac{4}{5} = \\dfrac{1}{5}$을 계산합니다.</div>
-          <div>2) <strong>단위원 합동 직독:</strong> 제$2$사분면 회전점 $Q$의 $x$좌표는 음수($-y_P$), $y=x$ 대칭점 $R$의 $y$좌표는 $x_P$임을 도형에서 바로 읽어 부호 실수를 원천 차단합니다.</div>
+          <div>2) <strong>단위원 합동 풀이:</strong> 제$2$사분면 회전점 $Q$의 $x$좌표는 음수($-y_P$), $y=x$ 대칭점 $R$의 $y$좌표는 $x_P$임을 도형에서 바로 읽어 부호 실수를 줄일 수 있습니다.</div>
         `,
         answer: '정답: 1/5  (cos(π/2+θ) = -3/5, sin(π/2-θ) = 4/5)'
       },
       {
         id: 'bas-3',
         unit: 'Ⅱ-2. 삼각함수의 그래프의 주기와 대칭성',
-        badge: '🌱 기본 03 · 삼각함수의 대칭축과 교점의 가중치 합',
+        badge: '🌱 기본 03 · 삼각함수의 대칭축과 교점의 합',
         tabLabel: '기본 03 · 삼각함수의 주기와 대칭축을 이용한 네 교점의 합',
-        title: '[기본 03] 함수 y = sin 2x 와 직선 y = k 의 네 교점의 대칭성과 가중치 합',
+        title: '[기본 03] 함수 y = sin 2x 와 직선 y = k 의 네 교점의 대칭성과 합',
         solType: '⚡ 실전 10초 컷',
         dragMode: 'vertical',
         statement: `
@@ -208,28 +208,28 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.448717948718, label: '🎯 k = 1/2 (특수각 교점 확인: 합 = 9π/2 불변!)' },
           { t: 0.917981286903, label: 'k = √3/2 (높은 수평선: 합 = 9π/2 불변!)' }
         ],
-        aha: `네 교점 $x_1, x_2, x_3, x_4$의 **전체 정중앙 대칭축은 $S = \\dfrac{3\\pi}{4}$**입니다! 따라서 바깥쪽 짝꿍의 합 $x_1 + x_4 = 2S = \\dfrac{3\\pi}{2}$과 안쪽 짝꿍의 합 $x_2 + x_3 = 2S = \\dfrac{3\\pi}{2}$이 서로 같으므로, **$k$의 값에 관계없이 $(x_1+x_4) + 2(x_2+x_3) = 6S = \\dfrac{9\\pi}{2}$**입니다!`,
+        aha: `네 교점 $x_1, x_2, x_3, x_4$의 **전체 가운데 대칭축은 $S = \\dfrac{3\\pi}{4}$**입니다! 따라서 바깥쪽 두 교점의 합 $x_1 + x_4 = 2S = \\dfrac{3\\pi}{2}$과 안쪽 두 교점의 합 $x_2 + x_3 = 2S = \\dfrac{3\\pi}{2}$이 서로 같으므로, **$k$의 값에 관계없이 $(x_1+x_4) + 2(x_2+x_3) = 6S = \\dfrac{9\\pi}{2}$**입니다!`,
         steps: [
           {
             step: 1,
-            title: 'Step 1. 함수 y = sin 2x 의 주기와 각 봉우리의 대칭축 찾기',
+            title: '1단계. 함수 y = sin 2x 의 주기와 각 봉우리의 대칭축 찾기',
             desc: `$f(x) = \\sin 2x$의 주기는 $T = \\dfrac{2\\pi}{2} = \\pi$입니다.<br/>첫 번째 양(+)의 봉우리 대칭축은 $S_1 = \\dfrac{\\pi}{4}$ ($x_1+x_2 = \\dfrac{\\pi}{2}$), 두 번째 양(+)의 봉우리 대칭축은 $S_2 = \\dfrac{5\\pi}{4}$ ($x_3+x_4 = \\dfrac{5\\pi}{2}$)입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 네 교점 전체의 정중앙 대칭축 S = 3π/4 와 동심원 짝짓기',
+            title: '2단계. 네 교점 전체의 가운데 대칭축 S = 3π/4에 대하여 두 교점씩 짝짓기',
             desc: `두 봉우리 대칭축 $S_1 = \\dfrac{\\pi}{4}$와 $S_2 = \\dfrac{5\\pi}{4}$의 한가운데인 **$S = \\dfrac{3\\pi}{4}$**에 대하여,<br/>바깥쪽 두 점 $(x_1, x_4)$와 안쪽 두 점 $(x_2, x_3)$는 각각 $S$로부터 같은 거리만큼 떨어져 있습니다.`
           },
           {
             step: 3,
-            title: 'Step 3. (x₁ + x₄) + 2(x₂ + x₃) 로 묶어 9π/2 도출',
+            title: '3단계. (x₁ + x₄) + 2(x₂ + x₃) 로 묶어 9π/2 도출',
             desc: `$x_1 + x_4 = 2S = \\dfrac{3\\pi}{2}$이고, $x_2 + x_3 = 2S = \\dfrac{3\\pi}{2}$이므로,<br/>$x_1 + 2x_2 + 2x_3 + x_4 = (x_1 + x_4) + 2(x_2 + x_3) = \\dfrac{3\\pi}{2} + 2 \\times \\dfrac{3\\pi}{2} = \\mathbf{\\dfrac{9\\pi}{2}}$입니다.`
           }
         ],
         alg: `
-          <div class="font-bold text-amber-300 mb-1">📖 첫 번째 근 α 설정 풀이 vs 정중앙 대칭축 풀이 비교</div>
+          <div class="font-bold text-amber-300 mb-1">📖 첫 번째 근 α 설정 풀이 vs 가운데 대칭축 풀이 비교</div>
           <div>1) <strong>교과서 $\\alpha$ 설정 풀이:</strong> $x_1 = \\alpha$라 두면 $x_2 = \\dfrac{\\pi}{2}-\\alpha$, $x_3 = \\pi+\\alpha$, $x_4 = \\dfrac{3\\pi}{2}-\\alpha$이므로 대입하여 정리하면 $\\alpha + 2\\left(\\dfrac{\\pi}{2}-\\alpha\\right) + 2(\\pi+\\alpha) + \\left(\\dfrac{3\\pi}{2}-\\alpha\\right) = \\dfrac{9\\pi}{2}$가 됩니다.</div>
-          <div>2) <strong>대칭축 짝짓기 풀이:</strong> 계수가 대칭($1, 2, 2, 1$)이므로 정중앙 대칭축 $S = \\dfrac{3\\pi}{4}$에 계수의 합 $(1+2+2+1)=6$을 곱해 $6 \\times \\dfrac{3\\pi}{4} = \\dfrac{9\\pi}{2}$로 즉시 구합니다.</div>
+          <div>2) <strong>대칭축 짝짓기 풀이:</strong> 계수가 대칭($1, 2, 2, 1$)이므로 가운데 대칭축 $S = \\dfrac{3\\pi}{4}$에 계수의 합 $(1+2+2+1)=6$을 곱해 $6 \\times \\dfrac{3\\pi}{4} = \\dfrac{9\\pi}{2}$로 즉시 구합니다.</div>
         `,
         answer: '정답: 9π/2  (x₁+x₄ = 3π/2, x₂+x₃ = 3π/2)'
       },
@@ -239,7 +239,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 04 · 절댓값 삼각함수의 봉우리와 교점 개수',
         tabLabel: '기본 04 · 절댓값 삼각함수 |a sin x + c|와 직선의 교점 개수',
         title: '[기본 04] 함수 f(x) = |3 sin x - 1| 의 그래프와 직선 y = t 의 교점 개수 경계',
-        solType: '🔍 핵심 정석 풀이',
+        solType: '🔍 핵심 풀이',
         dragMode: 'vertical',
         statement: `
           <div>$0 \\le x < 2\\pi$에서 정의된 함수 $f(x) = |3\\sin x - 1|$의 그래프와 직선 $y = t$가 만나는 점의 개수가 $3$일 때의 실수 $t$의 값을 $a$, 만나는 점의 개수가 $1$일 때의 실수 $t$의 값을 $b$라 하자.</div>
@@ -256,17 +256,17 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. 접어 올리기 전 함수 y = 3 sin x - 1 의 최댓값·최솟값 확인',
+            title: '1단계. 접어 올리기 전 함수 y = 3 sin x - 1 의 최댓값·최솟값 확인',
             desc: `$y = 3\\sin x - 1$은 중심선이 $y = -1$이고, $x = \\dfrac{\\pi}{2}$에서 최댓값 $3 - 1 = 2$, $x = \\dfrac{3\\pi}{2}$에서 최솟값 $-3 - 1 = -4$를 갖습니다.`
           },
           {
             step: 2,
-            title: 'Step 2. x축 아래를 접어 올린 두 봉우리 높이 (작은 봉우리 2, 큰 봉우리 4)',
+            title: '2단계. x축 아래를 접어 올린 두 봉우리 높이 (작은 봉우리 2, 큰 봉우리 4)',
             desc: `절댓값 $f(x) = |3\\sin x - 1|$을 취하면 $x = \\dfrac{\\pi}{2}$에서 **작은 봉우리 꼭짓점 $\\left(\\dfrac{\\pi}{2}, 2\\right)$**, $x = \\dfrac{3\\pi}{2}$에서 **큰 봉우리 꼭짓점 $\\left(\\dfrac{3\\pi}{2}, 4\\right)$**가 형성됩니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 실수 t 의 값에 따른 교점 개수 판독 (a = 2, b = 4)',
+            title: '3단계. 실수 t 의 값에 따른 교점 개수 판독 (a = 2, b = 4)',
             desc: `$0 \\le x < 2\\pi$에서 $0 < t < 2$이면 교점이 $4$개, **$\\mathbf{t = 2}$이면 작은 봉우리에 접하여 교점이 $\\mathbf{3}$개($a = 2$)**, $2 < t < 4$이면 $2$개, **$\\mathbf{t = 4}$이면 큰 봉우리에 접하여 교점이 $\\mathbf{1}$개($b = 4$)**입니다.<br/>따라서 $a + b = 2 + 4 = \\mathbf{6}$입니다.`
           }
         ],
@@ -283,7 +283,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 05 · 치환 삼각방정식의 실근의 개수와 합',
         tabLabel: '기본 05 · 치환 삼각방정식 sin x = t 의 실근의 개수와 합',
         title: '[기본 05] 삼각방정식 2 cos²x - sin x - 1 = 0 의 치환과 실근의 합',
-        solType: '🎯 실전 최적 풀이',
+        solType: '🎯 효율적인 풀이',
         dragMode: 'vertical',
         statement: `
           <div>$0 \\le x < 2\\pi$일 때, 방정식 $2\\cos^2 x - \\sin x - 1 = 0$의 서로 다른 모든 실근의 개수와 그 합을 구하시오.</div>
@@ -292,25 +292,25 @@ window.addEventListener('DOMContentLoaded', function () {
         defaultT: 0.75,
         snaps: [
           { t: 0.75, label: '🎯 t = 1/2 (x = π/6, 5π/6 ➔ 2개, 합 = π)' },
-          { t: 0.0, label: '🎯 t = -1 (x = 3π/2 극소 접점 ➔ 1개)' },
+          { t: 0.0, label: '🎯 t = -1 (x = 3π/2 최솟값인 점에서 접함 ➔ 1개)' },
           { t: 0.5, label: 't = 0 (x = 0, π ➔ 참고 비교)' }
         ],
         aha: `$\\cos^2 x = 1 - \\sin^2 x$를 대입하여 인수분해하면 $(2\\sin x - 1)(\\sin x + 1) = 0$입니다! **$\\sin x = \\dfrac{1}{2}$에서는 대칭축 $x = \\dfrac{\\pi}{2}$ 대칭인 두 근(합 $\\pi$)**이 나오고, **$\\sin x = -1$에서는 최소점 $x = \\dfrac{3\\pi}{2}$ 한 개**만 나오므로 총 $3$개의 실근을 갖습니다.`,
         steps: [
           {
             step: 1,
-            title: 'Step 1. cos²x = 1 - sin²x 대입 및 sin x = t (-1 ≤ t ≤ 1) 인수분해',
+            title: '1단계. cos²x = 1 - sin²x 대입 및 sin x = t (-1 ≤ t ≤ 1) 인수분해',
             desc: `$2(1 - \\sin^2 x) - \\sin x - 1 = 0 \\implies 2\\sin^2 x + \\sin x - 1 = 0$입니다.<br/>인수분해하면 $(2\\sin x - 1)(\\sin x + 1) = 0$이므로 **$\\sin x = \\dfrac{1}{2}$ 또는 $\\sin x = -1$**입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. sin x = 1/2 의 실근과 대칭축(x = π/2) 합 구하기',
+            title: '2단계. sin x = 1/2 의 실근과 대칭축(x = π/2) 합 구하기',
             desc: `$0 \\le x < 2\\pi$에서 직선 $y = \\dfrac{1}{2}$과 $y = \\sin x$의 교점은 **$x = \\dfrac{\\pi}{6},\\; \\dfrac{5\\pi}{6}$ ($2$개)**이며, 두 근의 합은 $2 \\times \\dfrac{\\pi}{2} = \\mathbf{\\pi}$입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. sin x = -1 의 접점 실근(x = 3π/2) 합산',
-            desc: `$0 \\le x < 2\\pi$에서 직선 $y = -1$과 $y = \\sin x$는 극소점 **$x = \\dfrac{3\\pi}{2}$ ($1$개)**에서 접합니다.<br/>따라서 서로 다른 실근은 총 **$3$개**이고, 모든 실근의 합은 $\\pi + \\dfrac{3\\pi}{2} = \\mathbf{\\dfrac{5\\pi}{2}}$입니다.`
+            title: '3단계. sin x = -1 의 접점 실근(x = 3π/2) 합산',
+            desc: `$0 \\le x < 2\\pi$에서 직선 $y = -1$과 $y = \\sin x$는 최솟값을 갖는 점 **$x = \\dfrac{3\\pi}{2}$ ($1$개)**에서 접합니다.<br/>따라서 서로 다른 실근은 총 **$3$개**이고, 모든 실근의 합은 $\\pi + \\dfrac{3\\pi}{2} = \\mathbf{\\dfrac{5\\pi}{2}}$입니다.`
           }
         ],
         alg: `
@@ -327,7 +327,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 06 · 외접원의 지름 보조선과 사인법칙',
         tabLabel: '기본 06 · 외접원의 지름 보조선으로 이해하는 사인법칙',
         title: '[기본 06] 외접원의 지름 보조선(2R)과 원주각 이동을 통한 사인법칙 유도',
-        solType: '🎯 실전 최적 풀이',
+        solType: '🎯 효율적인 풀이',
         dragMode: 'angle',
         statement: `
           <div>반지름의 길이가 $R = 4$인 원에 내접하는 삼각형 $ABC$에서 $\\angle A = \\dfrac{\\pi}{3}$일 때, 선분 $BC$의 길이를 구하고, 원주 위의 점 $B$에서 외접원의 중심 $O$를 지나는 지름 $BA'$을 그었을 때 직각삼각형 $A'BC$의 선분 $A'C$의 길이를 구하시오.</div>
@@ -339,21 +339,21 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.5, label: '중앙 위치 A (원주각 ∠A = π/3 불변)' },
           { t: 0.85, label: '오른쪽 호 위치 A (원주각 ∠A = π/3 불변)' }
         ],
-        aha: `원주각의 성질에 의해 꼭짓점 $A$를 외접원 둘레를 따라 **지름의 끝점 $A'$로 옮겨도 원주각 $\\angle A' = \\angle A = \\dfrac{\\pi}{3}$는 변하지 않으며, 반원의 원주각 $\\angle A'CB = \\dfrac{\\pi}{2}$($90^\\circ$)**가 됩니다! 따라서 빗변이 지름 $2R = 8$인 특수 직각삼각형($1:\\sqrt{3}:2$)이 바로 만들어집니다.`,
+        aha: `원주각의 성질에 의해 꼭짓점 $A$를 외접원 둘레를 따라 **지름의 끝점 $A'$로 옮겨도 원주각 $\\angle A' = \\angle A = \\dfrac{\\pi}{3}$는 변하지 않으며, 반원의 원주각 $\\angle A'CB = \\dfrac{\\pi}{2}$($90^\\circ$)**가 됩니다! 따라서 빗변이 지름 $2R = 8$인 각이 $30^\\circ, 60^\\circ, 90^\\circ$인 직각삼각형(변의 길이의 비 $1:\\sqrt{3}:2$)이 바로 만들어집니다.`,
         steps: [
           {
             step: 1,
-            title: 'Step 1. 외접원의 반지름 R = 4 와 지름 2R = 8 확인',
+            title: '1단계. 외접원의 반지름 R = 4 와 지름 2R = 8 확인',
             desc: `외접원의 반지름이 $R = 4$이므로, 점 $B$에서 외심 $O$를 지나는 지름 $A'B$를 그으면 빗변의 길이는 $\\overline{A'B} = 2R = \\mathbf{8}$입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 원주각 이동(∠A\' = ∠A = π/3)과 반원의 원주각(∠A\'CB = π/2)',
+            title: '2단계. 원주각 이동(∠A\' = ∠A = π/3)과 반원의 원주각(∠A\'CB = π/2)',
             desc: `호 $BC$에 대한 원주각의 크기는 일정하므로 $\\angle A' = \\angle A = \\dfrac{\\pi}{3}$이고, 지름 $A'B$에 대한 원주각이므로 **$\\angle A'CB = \\dfrac{\\pi}{2}$($90^\\circ$)**입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 직각삼각형 A\'BC 에서 BC = 4√3, A\'C = 4 도출',
+            title: '3단계. 직각삼각형 A\'BC 에서 BC = 4√3, A\'C = 4 도출',
             desc: `빗변 $\\overline{A'B} = 8$, $\\angle A' = \\dfrac{\\pi}{3}$인 직각삼각형 $A'BC$에서<br/>$\\overline{BC} = 8\\sin\\dfrac{\\pi}{3} = \\mathbf{4\\sqrt{3}}$, $\\overline{A'C} = 8\\cos\\dfrac{\\pi}{3} = \\mathbf{4}$입니다.`
           }
         ],
@@ -369,7 +369,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 07 · 내접사각형의 대각 성질과 코사인법칙',
         tabLabel: '기본 07 · 원에 내접하는 사각형의 대각 성질과 코사인법칙',
         title: '[기본 07] 원에 내접하는 사각형의 마주보는 각(θ, π - θ)과 공통 대각선 AC',
-        solType: '🎯 실전 최적 풀이',
+        solType: '🎯 효율적인 풀이',
         dragMode: 'angle',
         statement: `
           <div>원에 내접하는 사각형 $ABCD$에서 $\\overline{AB} = 2$, $\\overline{BC} = 3$, $\\overline{CD} = 4$, $\\overline{DA} = 3$일 때, $\\cos B$의 값과 대각선 $AC$의 길이를 구하시오.</div>
@@ -385,17 +385,17 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. 공통 대각선 AC 를 그어 △ABC 와 △ADC 로 분할',
+            title: '1단계. 공통 대각선 AC 를 그어 △ABC 와 △ADC 로 분할',
             desc: `대각선 $AC$를 그으면 위쪽 삼각형 $\\triangle ABC$($\\overline{AB}=2, \\overline{BC}=3$)에서 코사인법칙에 의해<br/>$\\overline{AC}^2 = 2^2 + 3^2 - 2(2)(3)\\cos B = \\mathbf{13 - 12\\cos B}$입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 내접사각형 대각 성질(∠D = π - B ➔ cos D = -cos B) 적용',
+            title: '2단계. 내접사각형 대각 성질(∠D = π - B ➔ cos D = -cos B) 적용',
             desc: `아래쪽 삼각형 $\\triangle ADC$($\\overline{CD}=4, \\overline{DA}=3$)에서 $\\angle D = \\pi - B$이므로 $\\cos D = -\\cos B$를 대입하면<br/>$\\overline{AC}^2 = 4^2 + 3^2 - 2(4)(3)\\cos(\\pi - B) = \\mathbf{25 + 24\\cos B}$입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 두 식을 연립하여 cos B = -1/3, AC = √17 도출',
+            title: '3단계. 두 식을 연립하여 cos B = -1/3, AC = √17 도출',
             desc: `$13 - 12\\cos B = 25 + 24\\cos B \\implies 36\\cos B = -12 \\implies \\mathbf{\\cos B = -\\dfrac{1}{3}}$입니다.<br/>이를 대입하면 $\\overline{AC}^2 = 13 - 12\\left(-\\dfrac{1}{3}\\right) = 17 \\implies \\mathbf{\\overline{AC} = \\sqrt{17}}$입니다.`
           }
         ],
@@ -412,7 +412,7 @@ window.addEventListener('DOMContentLoaded', function () {
         badge: '🌱 기본 08 · 삼각형의 각의 이등분선과 넓이 분할',
         tabLabel: '기본 08 · 삼각형의 각의 이등분선 길이와 넓이 분할',
         title: '[기본 08] 삼각형의 넓이 분할(S = S₁ + S₂)을 이용한 각의 이등분선 길이',
-        solType: '🎯 실전 최적 풀이',
+        solType: '🎯 효율적인 풀이',
         dragMode: 'horizontal',
         statement: `
           <div>$\\overline{AB} = 6$, $\\overline{AC} = 3$, $\\angle A = \\dfrac{2\\pi}{3}$인 삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 할 때, 선분 $AD$의 길이를 구하시오.</div>
@@ -428,17 +428,17 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. 전체 삼각형 ABC 의 넓이 S 구하기',
+            title: '1단계. 전체 삼각형 ABC 의 넓이 S 구하기',
             desc: `두 변의 길이 $6, 3$과 끼인각 $\\angle A = \\dfrac{2\\pi}{3}$를 알므로,<br/>$\\text{넓이}(\\triangle ABC) = \\dfrac{1}{2} \\times 6 \\times 3 \\times \\sin\\dfrac{2\\pi}{3} = 9 \\times \\dfrac{\\sqrt{3}}{2} = \\mathbf{\\dfrac{9\\sqrt{3}}{2}}$입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 이등분된 각(π/3, π/3)을 이용해 두 부분 삼각형 넓이 S₁, S₂ 표현',
+            title: '2단계. 이등분된 각(π/3, π/3)을 이용해 두 부분 삼각형 넓이 S₁, S₂ 표현',
             desc: `$\\overline{AD} = x$라 하면 $\\angle BAD = \\angle CAD = \\dfrac{\\pi}{3}$이므로,<br/>$\\text{넓이}(\\triangle ABD) = \\dfrac{1}{2}\\cdot 6x\\sin\\dfrac{\\pi}{3} = \\dfrac{3\\sqrt{3}}{2}x$, $\\text{넓이}(\\triangle ACD) = \\dfrac{1}{2}\\cdot 3x\\sin\\dfrac{\\pi}{3} = \\dfrac{3\\sqrt{3}}{4}x$입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 넓이 합 등식 S = S₁ + S₂ 로부터 AD = 2 도출',
+            title: '3단계. 넓이 합 등식 S = S₁ + S₂ 로부터 AD = 2 도출',
             desc: `$\\dfrac{3\\sqrt{3}}{2}x + \\dfrac{3\\sqrt{3}}{4}x = \\dfrac{9\\sqrt{3}}{4}x = \\dfrac{9\\sqrt{3}}{2}$에서 양변을 $\\dfrac{9\\sqrt{3}}{4}$으로 나누면 **$\\mathbf{x = \\overline{AD} = 2}$**입니다.`
           }
         ],
@@ -456,10 +456,10 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-1',
         unit: 'Ⅱ-1. 일반각과 삼각함수의 뜻',
-        badge: '🔥 심화 01 · 4.8점 (동경 대칭과 퇴화 삼각형 판별)',
+        badge: '🔥 심화 01 (동경 대칭과 삼각형이 되지 않는 경우 판별)',
         tabLabel: '심화 01 · 두 동경의 대칭 조건과 삼각형을 이루는 각의 합',
         title: '[창작 심화 1] 직선 y = x 대칭 동경과 삼각형 성립(비일직선) 조건 추론',
-        solType: '🎯 실전 최적 풀이',
+        solType: '🎯 효율적인 풀이',
         dragMode: 'angle',
         statement: `
           <div>$0 < \\theta < 2\\pi$인 각 $\\theta$에 대하여, 각 $\\theta$를 나타내는 동경과 단위원 $x^2 + y^2 = 1$의 교점을 $P$, 각 $5\\theta$를 나타내는 동경과 단위원의 교점을 $Q$라 하자. 두 점 $P, Q$가 다음 조건을 모두 만족시킬 때, 모든 각 $\\theta$의 값의 합을 구하시오.</div>
@@ -473,7 +473,7 @@ window.addEventListener('DOMContentLoaded', function () {
         defaultT: 0.2083333333,
         snaps: [
           { t: 0.2083333333, label: '🎯 θ = 5π/12 (조건 만족 ①)' },
-          { t: 0.375, label: '⚠️ θ = 3π/4 (O,P,Q 일직선 퇴화!)' },
+          { t: 0.375, label: '⚠️ θ = 3π/4 (O, P, Q가 일직선이라 삼각형이 되지 않음)' },
           { t: 0.5416666667, label: '🎯 θ = 13π/12 (조건 만족 ②)' },
           { t: 0.0416666667, label: 'θ = π/12 (sinθ < cosθ 제외)' }
         ],
@@ -481,17 +481,17 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. 직선 y = x 대칭 조건 (두 각의 평균 = π/4 또는 5π/4)',
+            title: '1단계. 직선 y = x 대칭 조건 (두 각의 평균 = π/4 또는 5π/4)',
             desc: `두 동경 $\\theta, 5\\theta$가 직선 $y = x$에 대칭이므로 $\\theta + 5\\theta = 2n\\pi + \\dfrac{\\pi}{2}$ ($n$은 정수)입니다.<br/>$\\theta = \\dfrac{n\\pi}{3} + \\dfrac{\\pi}{12}$ ($n=0,1,2,3,4,5$)에서 $\\dfrac{\\pi}{3}$ 간격으로 **총 6개의 후보 각**이 나타납니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 부등식 sin θ > cos θ 영역(직선 y = x 위쪽) 판별',
+            title: '2단계. 부등식 sin θ > cos θ 영역(직선 y = x 위쪽) 판별',
             desc: `단위원에서 $\\sin\\theta > \\cos\\theta \\iff y > x$이므로 직선 $y = x$의 위쪽 반평면인 $\\dfrac{\\pi}{4} < \\theta < \\dfrac{5\\pi}{4}$에 속하는 각을 고르면<br/>$\\mathbf{\\theta \\in \\left\\{\\dfrac{5\\pi}{12},\\; \\dfrac{3\\pi}{4},\\; \\dfrac{13\\pi}{12}\\right\\}}$의 3개로 압축됩니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 조건 (다) 삼각형 OPQ 성립 여부(일직선 퇴화 제외) 검증',
+            title: '3단계. 조건 (다) 삼각형 OPQ 성립 여부(일직선인 경우 제외) 검증',
             desc: `$\\theta = \\dfrac{3\\pi}{4}$이면 $P\\left(-\\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{2}}{2}\\right)$, $Q\\left(\\dfrac{\\sqrt{2}}{2}, -\\dfrac{\\sqrt{2}}{2}\\right)$가 되어 **세 점 $O, P, Q$가 한 직선($y=-x$) 위에 놓여 삼각형이 되지 않습니다!**<br/>따라서 조건을 만족하는 각은 $\\dfrac{5\\pi}{12}, \\dfrac{13\\pi}{12}$ 두 개뿐이며, 합은 $\\dfrac{5\\pi}{12} + \\dfrac{13\\pi}{12} = \\mathbf{\\dfrac{3\\pi}{2}}$입니다.`
           }
         ],
@@ -505,7 +505,7 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-2',
         unit: 'Ⅱ-1. 단위원의 대칭성과 삼각함수 사이의 관계',
-        badge: '🔥 심화 02 · 4.8점 (단위원과 기울기 -1 직선 대칭)',
+        badge: '🔥 심화 02 (단위원과 기울기 -1 직선 대칭)',
         tabLabel: '심화 02 · 단위원과 기울기 -1인 직선의 교점 및 대칭 넓이',
         title: '[창작 심화 2] 단위원과 직선 x + y = k 의 교점 대칭성과 정삼각형 높이 추론',
         solType: '⚡ 실전 10초 컷',
@@ -525,17 +525,17 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. △OPQ 넓이 = √3/4 에서 끼인각 ∠POQ = π/3 (정삼각형) 도출',
+            title: '1단계. △OPQ 넓이 = √3/4 에서 끼인각 ∠POQ = π/3 (정삼각형) 도출',
             desc: `$\\text{넓이}(\\triangle OPQ) = \\dfrac{1}{2}\\cdot 1\\cdot 1\\cdot\\sin(\\angle POQ) = \\dfrac{\\sqrt{3}}{4} \\implies \\sin(\\angle POQ) = \\dfrac{\\sqrt{3}}{2}$입니다.<br/>$1 < k < \\sqrt{2}$이므로 $\\angle POQ < \\dfrac{\\pi}{2}$이어서 **$\\angle POQ = \\dfrac{\\pi}{3}$**이고, $\\triangle OPQ$는 한 변의 길이가 $1$인 정삼각형입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 정삼각형의 높이 h = √3/2 와 점~직선 거리로 k² = 3/2 구하기',
+            title: '2단계. 정삼각형의 높이 h = √3/2 와 점~직선 거리로 k² = 3/2 구하기',
             desc: `원점 $O$에서 직선 $x + y - k = 0$에 내린 수선의 발 $M$에 대하여 정삼각형의 높이는 $\\overline{OM} = \\dfrac{\\sqrt{3}}{2}$입니다.<br/>한편 직각이등변삼각형 성질에 의해 $\\overline{OM} = \\dfrac{k}{\\sqrt{2}} = \\dfrac{\\sqrt{3}}{2}$이므로 **$k = \\dfrac{\\sqrt{6}}{2} \\implies \\mathbf{k^2 = \\dfrac{3}{2}}$**입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 직선 y = x 대칭성(sin β = cos α)과 곱셈공식으로 sin α sin β = 1/4 도출',
+            title: '3단계. 직선 y = x 대칭성(sin β = cos α)과 곱셈공식으로 sin α sin β = 1/4 도출',
             desc: `단위원과 직선 $y = -x + k$는 모두 $y = x$에 대칭이므로 $\\beta = \\dfrac{\\pi}{2} - \\alpha \\implies \\mathbf{\\sin\\beta = \\cos\\alpha}$입니다.<br/>점 $P(\\cos\\alpha, \\sin\\alpha)$가 $x + y = k$ 위에 있으므로 $\\cos\\alpha + \\sin\\alpha = k$의 양변을 제곱하면 $1 + 2\\sin\\alpha\\cos\\alpha = k^2 = \\dfrac{3}{2} \\implies \\sin\\alpha\\cos\\alpha = \\dfrac{1}{4}$입니다.<br/>따라서 $2k^2 + 4\\sin\\alpha\\sin\\beta = 2\\left(\\dfrac{3}{2}\\right) + 4\\left(\\dfrac{1}{4}\\right) = 3 + 1 = \\mathbf{4}$입니다.`
           }
         ],
@@ -549,7 +549,7 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-3',
         unit: 'Ⅱ-2. 삼각함수의 그래프의 대칭성과 도형의 넓이',
-        badge: '🔥 심화 03 · 4.8점 (기울기 비와 점대칭 평행사변형)',
+        badge: '🔥 심화 03 (기울기 비와 점대칭 평행사변형)',
         tabLabel: '심화 03 · 삼각함수 그래프 위의 네 교점이 이루는 평행사변형의 넓이',
         title: '[창작 심화 3] 함수 f(x) = 3 sin(πx/6) 의 선대칭·점대칭과 평행사변형 넓이 추론',
         solType: '⚡ 실전 10초 컷',
@@ -567,21 +567,21 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.30, label: '🎯 k = 3/2 (x₁=1, x₂=5 ➔ 기울기 비 5:1, 넓이 = 12!)' },
           { t: 0.70, label: '높은 수평선 (x₁=2, x₂=4 ➔ 기울기 비 2:1)' }
         ],
-        aha: `두 점 $A(x_1, k), B(x_2, k)$는 **$y$좌표가 $k$로 같으므로**, 원점과 이은 기울기의 비 $\\dfrac{k/x_1}{k/x_2} = \\dfrac{x_2}{x_1} = 5 : 1$은 곧 **$x$좌표의 비 $x_1 : x_2 = 1 : 5$**를 뜻합니다! 대칭축 $x = 3$에 의해 $x_1 + x_2 = 6$이므로 계산 없이 **$x_1 = 1, x_2 = 5$**가 바로 튀어나옵니다.`,
+        aha: `두 점 $A(x_1, k), B(x_2, k)$는 **$y$좌표가 $k$로 같으므로**, 원점과 이은 기울기의 비 $\\dfrac{k/x_1}{k/x_2} = \\dfrac{x_2}{x_1} = 5 : 1$은 곧 **$x$좌표의 비 $x_1 : x_2 = 1 : 5$**를 뜻합니다! 대칭축 $x = 3$에 의해 $x_1 + x_2 = 6$이므로 계산 없이 **$x_1 = 1, x_2 = 5$**가 바로 구해집니다.`,
         steps: [
           {
             step: 1,
-            title: 'Step 1. 직선 OA, OB 의 기울기 비 5 : 1 과 선대칭(x₁ + x₂ = 6) 결합',
+            title: '1단계. 직선 OA, OB 의 기울기 비 5 : 1 과 선대칭(x₁ + x₂ = 6) 결합',
             desc: `함수 $f(x) = 3\\sin\\left(\\dfrac{\\pi}{6}x\\right)$의 주기는 $12$이고 첫 봉우리의 대칭축은 $x = 3$이므로 $x_1 + x_2 = 6$입니다.<br/>또한 $\\dfrac{k/x_1}{k/x_2} = \\dfrac{x_2}{x_1} = 5 \\implies x_2 = 5x_1$을 대입하면 **$\\mathbf{x_1 = 1,\\; x_2 = 5}$**로 유일하게 결정됩니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 점 A(1, k) 대입으로 k = 3/2 및 윗변 길이 AB = 4 구하기',
+            title: '2단계. 점 A(1, k) 대입으로 k = 3/2 및 윗변 길이 AB = 4 구하기',
             desc: `$x_1 = 1$을 함수식에 대입하면 $k = f(1) = 3\\sin\\dfrac{\\pi}{6} = \\mathbf{\\dfrac{3}{2}}$입니다.<br/>윗변의 길이는 $\\overline{AB} = x_2 - x_1 = 5 - 1 = \\mathbf{4}$입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 점 (6, 0) 점대칭성과 평행사변형 ABDC 의 넓이 도출',
+            title: '3단계. 점 (6, 0) 점대칭성과 평행사변형 ABDC 의 넓이 도출',
             desc: `점 $(6, 0)$에 대한 대칭성에 의해 $x_3 = 7, x_4 = 11$이므로 아랫변 $\\overline{CD} = 11 - 7 = 4 = \\overline{AB}$입니다.<br/>따라서 평행사변형 $ABDC$의 밑변은 $4$, 높이는 $2k = 3$이므로 넓이는 $4 \\times 3 = \\mathbf{12}$입니다.`
           }
         ],
@@ -595,10 +595,10 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-4',
         unit: 'Ⅱ-2. 절댓값 삼각함수의 실근 개수 추론',
-        badge: '🔥 심화 04 · 4.9점 (교점 3개가 되는 두 경계 추론)',
+        badge: '🔥 심화 04 (교점 3개가 되는 두 경계 추론)',
         tabLabel: '심화 04 · 절댓값 삼각함수에서 실근이 3개가 되는 두 경계값 추론',
         title: '[창작 심화 4] 닫힌 구간 [0, 2π]에서 |a sin x + b| = t 의 실근이 3개인 두 경계',
-        solType: '🔍 핵심 정석 풀이',
+        solType: '🔍 핵심 풀이',
         dragMode: 'vertical',
         statement: `
           <div>두 상수 $a, b$ ($a > 0, b < 0$)에 대하여 닫힌 구간 $[0, 2\\pi]$에서 정의된 함수 $f(x) = |a\\sin x + b|$가 다음 조건을 만족시킨다.</div>
@@ -618,17 +618,17 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. 닫힌 구간 [0, 2π] 에서 x = 0, π, 2π 높이(|b|)와 작은 봉우리(a - |b|) 비교',
+            title: '1단계. 닫힌 구간 [0, 2π] 에서 x = 0, π, 2π 높이(|b|)와 작은 봉우리(a - |b|) 비교',
             desc: `$b < 0$이므로 $x = 0, \\pi, 2\\pi$에서 $f(x) = |b|$ (기본 3점 보유)이고, $x = \\dfrac{\\pi}{2}$에서 작은 봉우리 높이는 $|a - |b||$입니다.<br/>만약 $a - |b| > |b|$이면 $t = |b|$에서 작은 산과도 2번 더 만나 교점이 $5$개가 되므로, 교점이 $3$개인 $t$가 $2$개 존재할 수 없습니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 작은 봉우리 a - |b| = 1 과 끝점 높이 |b| = 2 확정 (a = 3, b = -2)',
+            title: '2단계. 작은 봉우리 a - |b| = 1 과 끝점 높이 |b| = 2 확정 (a = 3, b = -2)',
             desc: `작은 봉우리 높이가 $|b|$보다 낮아야($0 < a - |b| < |b|$) **$t = a - |b|$에서 $3$개**(꼭짓점 $\\dfrac{\\pi}{2}$ + 양옆 2개), **$t = |b|$에서 $3$개**($x = 0, \\pi, 2\\pi$)가 됩니다.<br/>따라서 $a - |b| = 1,\\; |b| = 2 \\implies \\mathbf{b = -2,\\; a = 3}$입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 큰 봉우리 최댓값 M = a + |b| = 5 및 최종 합 도출',
+            title: '3단계. 큰 봉우리 최댓값 M = a + |b| = 5 및 최종 합 도출',
             desc: `$f(x) = |3\\sin x - 2|$의 최댓값은 $x = \\dfrac{3\\pi}{2}$에서의 큰 봉우리 높이인 **$M = |-3 - 2| = \\mathbf{5}$**입니다.<br/>따라서 $a - b + M = 3 - (-2) + 5 = \\mathbf{10}$입니다.`
           }
         ],
@@ -643,10 +643,10 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-5',
         unit: 'Ⅱ-2. 삼각방정식의 실근 개수와 극값 접선 조건',
-        badge: '🔥 심화 05 · 4.8점 (실근이 3개가 되는 상수 k 추론)',
+        badge: '🔥 심화 05 (실근이 3개가 되는 상수 k 추론)',
         tabLabel: '심화 05 · 삼각방정식 2 sin²x - (2k+1)sin x + k = 0 의 실근 조건',
         title: '[창작 심화 5] 인수분해 가능한 삼각방정식의 실근 개수가 3이 되는 극값 조건',
-        solType: '🔍 핵심 정석 풀이',
+        solType: '🔍 핵심 풀이',
         dragMode: 'vertical',
         statement: `
           <div>$0 \\le x < 2\\pi$일 때, $x$에 대한 방정식</div>
@@ -660,21 +660,21 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.7083333333, label: '⚠️ k = 1/2 (중근 함정! 실근 2개뿐)' },
           { t: 0.0833333333, label: '🎯 k = -1 (x = 3π/2 접점 ➔ 실근 3개, 최대 합 S = 5π/2!)' }
         ],
-        aha: `주어진 방정식을 인수분해하면 $(2\\sin x - 1)(\\sin x - k) = 0$입니다! $\\sin x = \\dfrac{1}{2}$에서 이미 $2$개의 실근($\\dfrac{\\pi}{6}, \\dfrac{5\\pi}{6}$, 합 $\\pi$)이 나오므로, 전체 실근이 $3$개가 되려면 **$\\sin x = k$가 극대·극소 꼭짓점에 접하여 새로운 실근을 정확히 $1$개만 추가($k = 1$ 또는 $k = -1$)**해야 합니다!`,
+        aha: `주어진 방정식을 인수분해하면 $(2\\sin x - 1)(\\sin x - k) = 0$입니다! $\\sin x = \\dfrac{1}{2}$에서 이미 $2$개의 실근($\\dfrac{\\pi}{6}, \\dfrac{5\\pi}{6}$, 합 $\\pi$)이 나오므로, 전체 실근이 $3$개가 되려면 **$\\sin x = k$가 최댓값·최솟값을 갖는 점에서 접하여 새로운 실근을 정확히 $1$개만 추가($k = 1$ 또는 $k = -1$)**해야 합니다!`,
         steps: [
           {
             step: 1,
-            title: 'Step 1. (2 sin x - 1)(sin x - k) = 0 인수분해 및 고정 실근 2개 확인',
+            title: '1단계. (2 sin x - 1)(sin x - k) = 0 인수분해 및 고정 실근 2개 확인',
             desc: `좌변을 인수분해하면 $(2\\sin x - 1)(\\sin x - k) = 0$이므로 $\\sin x = \\dfrac{1}{2}$ 또는 $\\sin x = k$입니다.<br/>$0 \\le x < 2\\pi$에서 $\\sin x = \\dfrac{1}{2}$의 해는 $x = \\dfrac{\\pi}{6},\\; \\dfrac{5\\pi}{6}$ ($2$개, 합 $= \\pi$)로 고정되어 있습니다.`
           },
           {
             step: 2,
-            title: 'Step 2. sin x = k 가 새로운 실근 1개만 갖기 위한 조건 (k = 1 또는 k = -1)',
+            title: '2단계. sin x = k 가 새로운 실근 1개만 갖기 위한 조건 (k = 1 또는 k = -1)',
             desc: `전체 서로 다른 실근이 $3$개가 되려면 $\\sin x = k$가 $\\dfrac{\\pi}{6}, \\dfrac{5\\pi}{6}$가 아닌 실근을 **오직 $1$개**만 가져야 합니다.<br/>$[0, 2\\pi)$에서 $y = \\sin x$와 $y = k$가 한 점에서 만나는 경우는 **$\\mathbf{k = 1}$ ($x = \\dfrac{\\pi}{2}$)** 또는 **$\\mathbf{k = -1}$ ($x = \\dfrac{3\\pi}{2}$)**뿐이므로 곱은 $P = 1 \\times (-1) = \\mathbf{-1}$입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 각 k 에 대한 세 실근의 합 비교 및 S = 5π/2 도출',
+            title: '3단계. 각 k 에 대한 세 실근의 합 비교 및 S = 5π/2 도출',
             desc: `• $k = 1$일 때: 세 실근 $\\dfrac{\\pi}{6}, \\dfrac{\\pi}{2}, \\dfrac{5\\pi}{6}$의 합은 $\\pi + \\dfrac{\\pi}{2} = \\dfrac{3\\pi}{2}$입니다.<br/>• $k = -1$일 때: 세 실근 $\\dfrac{\\pi}{6}, \\dfrac{5\\pi}{6}, \\dfrac{3\\pi}{2}$의 합은 $\\pi + \\dfrac{3\\pi}{2} = \\mathbf{\\dfrac{5\\pi}{2} = S}$ (최대)입니다.<br/>따라서 $P \\times \\dfrac{S}{\\pi} = (-1) \\times \\dfrac{5}{2} = \\mathbf{-\\dfrac{5}{2}}$입니다.`
           }
         ],
@@ -688,10 +688,10 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-6',
         unit: 'Ⅱ-3. 사인법칙·코사인법칙과 삼각형 넓이의 최댓값',
-        badge: '🔥 심화 06 · 4.9점 (외접원 위 삼각형의 최대 넓이·둘레)',
+        badge: '🔥 심화 06 (외접원 위 삼각형의 최대 넓이·둘레)',
         tabLabel: '심화 06 · 외접원의 반지름과 사인·코사인법칙 결합 최대 넓이 추론',
         title: '[창작 심화 6] 외접원에 내접하는 삼각형 ABC 의 높이 최대화와 정삼각형 대칭 조건',
-        solType: '🎯 실전 최적 풀이',
+        solType: '🎯 효율적인 풀이',
         dragMode: 'angle',
         statement: `
           <div>반지름의 길이가 $R = 2\\sqrt{3}$인 원에 내접하는 삼각형 $ABC$가 다음 조건을 만족시킨다.</div>
@@ -712,17 +712,17 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. 사인법칙으로 고정된 현 BC 의 길이 6 구하기',
+            title: '1단계. 사인법칙으로 고정된 현 BC 의 길이 6 구하기',
             desc: `조건 (가)에서 $\\angle A$는 예각이고 $\\sin A = \\dfrac{\\sqrt{3}}{2}$이므로 $\\angle A = \\dfrac{\\pi}{3}$입니다.<br/>사인법칙에 의해 $\\overline{BC} = 2R\\sin A = 2(2\\sqrt{3}) \\times \\dfrac{\\sqrt{3}}{2} = \\mathbf{6}$으로 일정합니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 외심 O 를 지나는 수직이등분선에서 최대 높이 h = 3√3 도출',
+            title: '2단계. 외심 O 를 지나는 수직이등분선에서 최대 높이 h = 3√3 도출',
             desc: `밑변 $\\overline{BC} = 6$이 일정하므로 넓이가 최대이려면 점 $A$에서 $BC$까지의 높이 $h$가 최대여야 합니다.<br/>수선이 외심 $O$를 지날 때 $\\overline{AB} = \\overline{AC} = 6$인 정삼각형이 되며, 이때 $\\mathbf{L = \\overline{AB} + \\overline{AC} = 12}$입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. 최대 넓이 S_max = 9√3 계산 및 최종 값 도출',
+            title: '3단계. 최대 넓이 S_max = 9√3 계산 및 최종 값 도출',
             desc: `한 변의 길이가 $6$인 정삼각형의 넓이는 $S_{\\max} = \\dfrac{\\sqrt{3}}{4} \\times 6^2 = \\mathbf{9\\sqrt{3}}$입니다.<br/>따라서 $L + \\sqrt{3}\\,S_{\\max} = 12 + \\sqrt{3}(9\\sqrt{3}) = 12 + 27 = \\mathbf{39}$입니다.`
           }
         ],
@@ -736,10 +736,10 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-7',
         unit: 'Ⅱ-3. 내접사각형의 넓이 비와 사인·코사인법칙 결합',
-        badge: '🔥 심화 07 · 5.0점 (내접사각형의 넓이 비와 외접원 반지름)',
+        badge: '🔥 심화 07 (내접사각형의 넓이 비와 외접원 반지름)',
         tabLabel: '심화 07 · 원에 내접하는 사각형에서 대각선 길이와 외접원의 넓이',
         title: '[창작 심화 7] 내접사각형의 보각 사인 불변성(sin(π-B)=sin B)과 외접원 넓이 추론',
-        solType: '🎯 실전 최적 풀이',
+        solType: '🎯 효율적인 풀이',
         dragMode: 'angle',
         statement: `
           <div>원에 내접하는 사각형 $ABCD$에서 $\\overline{AB} = 3$, $\\overline{BC} = 5$, $\\overline{CD} = 2$, $\\angle B = \\dfrac{\\pi}{3}$이다. 대각선 $AC$로 나누어진 두 삼각형 $ABC$와 $ACD$의 넓이의 비가 $5 : 2$일 때, 사각형 $ABCD$의 외접원의 넓이를 $S_{\\text{원}}$이라 하자.</div>
@@ -756,23 +756,23 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           {
             step: 1,
-            title: 'Step 1. 마주보는 각의 사인 등식(sin D = sin B)으로 변 DA = 3 구하기',
+            title: '1단계. 마주보는 각의 사인 등식(sin D = sin B)으로 변 DA = 3 구하기',
             desc: `원에 내접하는 사각형이므로 $\\angle D = \\pi - \\angle B = \\dfrac{2\\pi}{3}$이고, $\\sin D = \\sin B = \\dfrac{\\sqrt{3}}{2}$입니다.<br/>따라서 넓이 비는 $\\dfrac{\\triangle ABC}{\\triangle ACD} = \\dfrac{3 \\times 5}{2 \\times \\overline{DA}} = \\dfrac{5}{2} \\implies \\mathbf{\\overline{DA} = 3}$입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 코사인법칙으로 공통 대각선 AC = √19 도출 및 검산',
+            title: '2단계. 코사인법칙으로 공통 대각선 AC = √19 도출 및 검산',
             desc: `$\\triangle ABC$에서 코사인법칙을 적용하면 $\\overline{AC}^2 = 3^2 + 5^2 - 2(3)(5)\\cos\\dfrac{\\pi}{3} = 34 - 15 = \\mathbf{19} \\implies \\overline{AC} = \\sqrt{19}$입니다.<br/>($\\triangle ACD$에서도 $2^2 + 3^2 - 2(2)(3)\\cos\\dfrac{2\\pi}{3} = 13 + 6 = 19$로 완벽히 일치합니다!)`
           },
           {
             step: 3,
-            title: 'Step 3. 사인법칙으로 외접원의 반지름 R 및 넓이 S_원 = 19π/3 도출',
+            title: '3단계. 사인법칙으로 외접원의 반지름 R 및 넓이 S_원 = 19π/3 도출',
             desc: `$\\triangle ABC$에서 사인법칙에 의해 $2R = \\dfrac{\\overline{AC}}{\\sin B} = \\dfrac{\\sqrt{19}}{\\sqrt{3}/2} \\implies R = \\sqrt{\\dfrac{19}{3}}$입니다.<br/>외접원의 넓이는 $S_{\\text{원}} = \\pi R^2 = \\dfrac{19}{3}\\pi$이므로, $\\dfrac{3}{\\pi}S_{\\text{원}} + \\overline{DA} = 19 + 3 = \\mathbf{22}$입니다.`
           }
         ],
         alg: `
-          <div class="font-bold text-amber-300 mb-1">📖 내접사각형 고난도 문항 2단계 필승 공식</div>
-          <div>1) <strong>넓이 비 조건이 주어질 때:</strong> $\\sin(\\pi - B) = \\sin B$가 약분되므로 $\\text{넓이}(\\triangle ABC) : \\text{넓이}(\\triangle ACD) = (a \\cdot b) : (c \\cdot d)$를 이용해 미지변의 길이를 먼저 구합니다.</div>
+          <div class="font-bold text-amber-300 mb-1">📖 내접사각형 문제에서 쓰는 두 가지 방법</div>
+          <div>1) <strong>넓이의 비가 주어질 때:</strong> $\\sin(\\pi - B) = \\sin B$이므로 $\\triangle ABC$와 $\\triangle ACD$의 넓이를 각각 $\\dfrac{1}{2}\\cdot(\\text{두 변의 곱})\\cdot\\sin$ 꼴로 나타내면 $\\sin$이 약분되어 $\\text{넓이}(\\triangle ABC) : \\text{넓이}(\\triangle ACD) = (\\overline{AB} \\cdot \\overline{BC}) : (\\overline{CD} \\cdot \\overline{DA})$가 됩니다. 이를 이용해 모르는 변의 길이를 먼저 구합니다.</div>
           <div>2) <strong>외접원의 반지름 $R$을 구할 때:</strong> 사각형 전체에 사인법칙을 쓸 수 없으므로, 반드시 대각선 $AC$를 그어 삼각형 $\\triangle ABC$의 외접원으로 바꾸어 $2R = \\dfrac{\\overline{AC}}{\\sin B}$를 적용합니다!</div>
         `,
         answer: '정답: 22  (DA = 3, AC = √19, 외접원 넓이 = 19π/3)'
@@ -780,7 +780,7 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-8',
         unit: 'Ⅱ-3. 분할 삼각형과 인접 보각의 코사인법칙',
-        badge: '🔥 심화 08 · 5.0점 (인접 보각 코사인 소거와 분할선 길이)',
+        badge: '🔥 심화 08 (인접 보각 코사인 소거와 분할선 길이)',
         tabLabel: '심화 08 · 공통각과 인접 보각을 활용한 분할 삼각형의 선분 길이',
         title: '[창작 심화 8] 변 BC 의 내분점 D 에서 인접 보각(cos α + cos(π-α) = 0)을 이용한 선분 AD 추론',
         solType: '⚡ 실전 10초 컷',
@@ -792,31 +792,31 @@ window.addEventListener('DOMContentLoaded', function () {
         defaultT: 0.3333333333,
         snaps: [
           { t: 0.3333333333, label: '🎯 1 : 2 내분점 D! (BD = 2, CD = 4 ➔ AD = 5)' },
-          { t: 0.5, label: '중점 M (BD = 3, CD = 3 ➔ 중선 정리 비교)' },
+          { t: 0.5, label: '중점 M (BD = 3, CD = 3 ➔ AD의 길이 비교)' },
           { t: 0.6666666667, label: '2 : 1 내분점 (BD = 4, CD = 2)' }
         ],
-        aha: `삼각형 내부를 가르는 선분 $\\overline{AD} = x$의 길이는 밑변 위의 점 $D$에서 양쪽 각 $\\angle ADB = \\alpha$, $\\angle ADC = \\pi - \\alpha$가 서로 **일직선 보각이므로 $\\cos\\alpha + \\cos(\\pi - \\alpha) = 0$**이라는 사실(또는 공통각 $\\cos B = \\dfrac{1}{5}$ 재활용)로 단숨에 구할 수 있습니다!`,
+        aha: `삼각형 내부를 가르는 선분 $\\overline{AD} = x$의 길이는 밑변 위의 점 $D$에서 양쪽 각 $\\angle ADB = \\alpha$, $\\angle ADC = \\pi - \\alpha$가 서로 **일직선 보각이므로 $\\cos\\alpha + \\cos(\\pi - \\alpha) = 0$**이라는 사실(또는 공통각 $\\cos B = \\dfrac{1}{5}$ 이용)으로 바로 구할 수 있습니다!`,
         steps: [
           {
             step: 1,
-            title: 'Step 1. 변 BC = 6 의 1 : 2 내분 길이 BD = 2, CD = 4 구하기',
+            title: '1단계. 변 BC = 6 의 1 : 2 내분 길이 BD = 2, CD = 4 구하기',
             desc: `점 $D$가 $\\overline{BC} = 6$을 $1 : 2$로 내분하므로 **$\\overline{BD} = 2$, $\\overline{CD} = 4$**입니다.`
           },
           {
             step: 2,
-            title: 'Step 2. 인접 보각(∠ADB = α, ∠ADC = π - α)에서 코사인법칙 세우기',
+            title: '2단계. 인접 보각(∠ADB = α, ∠ADC = π - α)에서 코사인법칙 세우기',
             desc: `$\\overline{AD} = x$라 하면, 왼쪽 $\\triangle ABD$에서 $\\cos\\alpha = \\dfrac{x^2 + 2^2 - 5^2}{2 \\cdot 2 \\cdot x} = \\dfrac{x^2 - 21}{4x}$이고,<br/>오른쪽 $\\triangle ACD$에서 $\\cos(\\pi - \\alpha) = \\dfrac{x^2 + 4^2 - 7^2}{2 \\cdot 4 \\cdot x} = \\dfrac{x^2 - 33}{8x}$입니다.`
           },
           {
             step: 3,
-            title: 'Step 3. cos α + cos(π - α) = 0 으로 연립하여 AD = 5 도출',
+            title: '3단계. cos α + cos(π - α) = 0 으로 연립하여 AD = 5 도출',
             desc: `$\\dfrac{x^2 - 21}{4x} + \\dfrac{x^2 - 33}{8x} = 0$의 양변에 $8x$를 곱하면 $2(x^2 - 21) + (x^2 - 33) = 0$입니다.<br/>$3x^2 = 75 \\implies x^2 = 25 \\implies \\mathbf{\\overline{AD} = 5}$입니다.`
           }
         ],
         alg: `
           <div class="font-bold text-amber-300 mb-1">📖 인접 보각($\\alpha, \\pi-\\alpha$) 연립 vs 공통각($\\angle B$) 코사인법칙 비교</div>
-          <div>1) <strong>인접 보각 풀이(스튜어트 원리):</strong> $\\cos\\alpha + \\cos(\\pi-\\alpha) = 0$을 이용해 $b^2 m + c^2 n = a(x^2 + mn) \\implies 7^2(2) + 5^2(4) = 6(x^2 + 8) \\implies 198 = 6(x^2+8) \\implies x^2 = 25$를 얻습니다.</div>
-          <div>2) <strong>공통각 $\\angle B$ 풀이:</strong> 전체 삼각형 $\\triangle ABC$에서 $\\cos B = \\dfrac{5^2+6^2-7^2}{2\\cdot 5\\cdot 6} = \\dfrac{12}{60} = \\dfrac{1}{5}$을 먼저 구한 뒤, 작은 삼각형 $\\triangle ABD$에서 $\\overline{AD}^2 = 5^2 + 2^2 - 2(5)(2)\\left(\\dfrac{1}{5}\\right) = 29 - 4 = 25 \\implies \\overline{AD} = 5$로 구해도 100% 일치합니다!</div>
+          <div>1) <strong>인접 보각 풀이:</strong> $\\triangle ABD$, $\\triangle ACD$에서 각각 코사인법칙을 쓰고 $\\cos\\alpha + \\cos(\\pi-\\alpha) = 0$을 이용해 $\\cos\\alpha$를 소거하면, $\\overline{BC}=a=6$, $\\overline{CA}=b=7$, $\\overline{AB}=c=5$, $\\overline{BD}=m=2$, $\\overline{DC}=n=4$에 대하여 $b^2 m + c^2 n = a(x^2 + mn) \\implies 7^2(2) + 5^2(4) = 6(x^2 + 8) \\implies 198 = 6(x^2+8) \\implies x^2 = 25$를 얻습니다.</div>
+          <div>2) <strong>공통각 $\\angle B$ 풀이:</strong> 전체 삼각형 $\\triangle ABC$에서 $\\cos B = \\dfrac{5^2+6^2-7^2}{2\\cdot 5\\cdot 6} = \\dfrac{12}{60} = \\dfrac{1}{5}$을 먼저 구한 뒤, 작은 삼각형 $\\triangle ABD$에서 $\\overline{AD}^2 = 5^2 + 2^2 - 2(5)(2)\\left(\\dfrac{1}{5}\\right) = 29 - 4 = 25 \\implies \\overline{AD} = 5$로 구해도 같은 값이 나옵니다.</div>
         `,
         answer: '정답: AD = 5  (BD = 2, CD = 4, cos B = 1/5)'
       }
@@ -1255,14 +1255,14 @@ window.addEventListener('DOMContentLoaded', function () {
           const sMidTop = toScr(Math.PI * 0.75, 1.45, ox, oy, ux, uy);
           const sMidBot = toScr(Math.PI * 0.75, -1.35, ox, oy, ux, uy);
           dLine(sMidBot, sMidTop, C.pink, 2.6, [6, 4], true);
-          dDot(toScr(Math.PI * 0.75, -1.15, ox, oy, ux, uy), '정중앙 대칭축 S = 3π/4', C.pink, { x: -58, y: 18 }, false);
+          dDot(toScr(Math.PI * 0.75, -1.15, ox, oy, ux, uy), '가운데 대칭축 S = 3π/4', C.pink, { x: -58, y: 18 }, false);
 
           const pX1 = toScr(xs[0], k, ox, oy, ux, uy);
           const pX2 = toScr(xs[1], k, ox, oy, ux, uy);
           const pX3 = toScr(xs[2], k, ox, oy, ux, uy);
           const pX4 = toScr(xs[3], k, ox, oy, ux, uy);
-          drawDimension(pX2, pX3, -24, '안쪽 짝꿍 중점 = 3π/4 (x₂+x₃ = 3π/2)', C.green);
-          drawDimension(pX1, pX4, -52, '바깥 짝꿍 중점 = 3π/4 (x₁+x₄ = 3π/2)', C.gold);
+          drawDimension(pX2, pX3, -24, '안쪽 두 교점의 중점 = 3π/4 (x₂+x₃ = 3π/2)', C.green);
+          drawDimension(pX1, pX4, -52, '바깥쪽 두 교점의 중점 = 3π/4 (x₁+x₄ = 3π/2)', C.gold);
         }
 
         dCurve((x) => Math.sin(2 * x), 0, Math.PI * 2, ox, oy, ux, uy, C.cyan, 3.8);
@@ -1389,7 +1389,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (step >= 3) {
           const r3 = toScr(Math.PI * 1.5, -1, ox, oy, ux, uy);
-          dDot(r3, 'x₃ = 3π/2 (극소 접점 1개!)', C.pink, { x: -65, y: 22 }, false);
+          dDot(r3, 'x₃ = 3π/2 (최솟값인 점에서 접함, 1개)', C.pink, { x: -65, y: 22 }, false);
         }
 
         dCurve((x) => Math.sin(x), 0, Math.PI * 2, ox, oy, ux, uy, C.cyan, 3.8);
@@ -1659,7 +1659,7 @@ window.addEventListener('DOMContentLoaded', function () {
         dDot(Q, 'Q(5θ)', C.pink, { x: 10, y: 16 }, false, true);
 
         setMetric(
-          `현재 θ = ${fmtPi(theta)} | sinθ ${Py > Px ? '>' : '<'} cosθ | △OPQ 넓이 = ${crossArea.toFixed(2)} ${isCollinear ? '(일직선 퇴화!)' : '(삼각형 성립)'}`
+          `현재 θ = ${fmtPi(theta)} | sinθ ${Py > Px ? '>' : '<'} cosθ | △OPQ 넓이 = ${crossArea.toFixed(2)} ${isCollinear ? '(일직선이라 삼각형이 되지 않음)' : '(삼각형 성립)'}`
         );
         return;
       }
@@ -2127,7 +2127,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const rm = (str) => (str ? APLab.stripEmoji(str)
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\$([^$]+)\$/g, (_, m) => tex(m)) : '');
-    const stepName = (st) => st.title.replace(/^Step\s*\d+\.\s*/, '');
+    const stepName = (st) => st.title.replace(/^(?:Step\s*|\d+단계)\s*\d*\.\s*/, '');
 
     // 슬라이더 옆에 보이는 값 (원본 syncSliderReadout)
     const READOUT = {
@@ -2171,13 +2171,13 @@ window.addEventListener('DOMContentLoaded', function () {
     function sceneOf(p) {
       const idx = PROBLEMS.indexOf(p);
       const trap = TRAP.includes(p.id);
-      const stepsHtml = p.steps.map((st) => `<p><strong>Step ${st.step}. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`).join('');
+      const stepsHtml = p.steps.map((st) => `<p><strong>${st.step}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`).join('');
       return {
         id: p.id,
         title: p.title,
         short: SHORT[p.id],
         question: rm(p.statement),
-        guide: `<b>${p.sliderTitle.replace(/[:：]\s*$/, '')}</b> — 조절 막대를 움직이거나 그림의 <b>후광이 있는 점</b>을 ${VERB[p.dragMode] || '끌어'} 보세요. <b>정리</b> 탭에서 Step을 누르면 보조선이 하나씩 나타나고, 3단계까지 보면 정답이 열립니다.`,
+        guide: `<b>${p.sliderTitle.replace(/[:：]\s*$/, '')}</b> — 조절 막대를 움직이거나 그림의 <b>테두리가 빛나는 점</b>을 ${VERB[p.dragMode] || '끌어'} 보세요. <b>정리</b> 탭에서 단계 단추를 누르면 보조선이 하나씩 나타나고, 3단계까지 보면 정답이 열립니다.`,
         startStep: 0,
         controls: ['t'],
         presets: (s) => (s.step >= 3 ? p.snaps.map((sn) => ({ label: sn.label, set: { t: sn.t }, ms: 450, on: (st) => Math.abs(st.t - sn.t) < 0.003 })) : []),
@@ -2201,7 +2201,7 @@ window.addEventListener('DOMContentLoaded', function () {
         view: (s) => {
           const step = Math.min(3, s.step || 0);
           const out = {};
-          if (step >= 1) { const st = p.steps[step - 1]; out.formula = `<p><strong>Step ${st.step}. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`; }
+          if (step >= 1) { const st = p.steps[step - 1]; out.formula = `<p><strong>${st.step}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`; }
           if (step >= 3) out.notes = rm(p.aha);
           return out;
         },
@@ -2226,7 +2226,7 @@ window.addEventListener('DOMContentLoaded', function () {
       params: {
         t: {
           value: 0.5, min: 0, max: 1, step: 0.005, color: 'amber', label: '도형 조작',
-          hint: '그림의 후광이 있는 점을 끌어도 같은 값이 바뀝니다',
+          hint: '그림의 테두리가 빛나는 점을 끌어도 같은 값이 바뀝니다',
           format: (v, s) => (READOUT[s.cur] ? READOUT[s.cur](v) : `${Math.round(v * 100)}%`),
           onInput: (s) => {
             if (s.step >= 3) {

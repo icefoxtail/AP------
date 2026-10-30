@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>거듭제곱근·상용로그·지수함수 · AP Math 실험실</title>
-<meta name="description" content="대수 거듭제곱근·상용로그·지수함수 심화 8대 킬러: n제곱근 실근 매트릭스, 자연수 조건 약수 스캐너, 상용로그 소수부분 톱니파, 계수 흡수와 가로 간격 불변량, 수평 내분비, 등차↔등비, 현수선 치환, 점근선 반사를 직접 조작하며 탐구합니다.">
+<meta name="description" content="거듭제곱근·상용로그·지수함수 심화 8대 킬러: 거듭제곱근의 실근의 개수, 거듭제곱근이 자연수가 되는 조건, 상용로그의 정수부분과 소수부분, 지수함수의 계수와 가로 방향의 간격, 밑이 다른 두 지수함수와 수평선, 지수함수 위의 세 점, 2ˣ + 2⁻ˣ 꼴의 방정식, 절댓값을 포함한 지수함수의 그래프를 직접 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -22,11 +22,11 @@
 /* ==========================================================================
    대수 · 거듭제곱근·상용로그·지수함수 심화 8대 킬러 (AP Math Lab 2.0 이식본)
    원본: labs/대수/part1a2.html
-   - KILLER_MODES(유형·기출 문제·정석/비기 풀이·함정 문구), 슬라이더 정의, 실시간 값(HUD) 계산,
-     쌍둥이 변형 생성, 유형별 칠판 그리기(renderType1~8)는 원본 코드를 그대로 옮겼습니다.
+   - KILLER_MODES(유형·문제·교과서 풀이/간단한 풀이·함정 문구), 슬라이더 정의, 실시간 값(HUD) 계산,
+     숫자를 바꾼 문제 생성, 유형별 칠판 그리기(renderType1~8)는 원본 코드를 그대로 옮겼습니다.
    - 바뀐 점: 원본의 자체 캔버스·mathToScreen·drawMath* 도우미는 같은 이름의 얇은 연결층(아래 2번)으로
      공용 무대(APLab.Board)에 그립니다. 원본의 '보조선 1·2·3 개별 켜기'는 셸의 단계 재생(1→2→3 누적)으로,
-     3개 보조 버튼(y축 대칭 곡선·|f(x)|·정수 격자 도트)과 쌍둥이 변형은 조작부 버튼으로, 점 끌기는 무대 손잡이로 옮겼습니다.
+     3개 보조 버튼(y축 대칭 곡선·|f(x)|·정수 격자 도트)과 숫자를 바꾼 문제는 조작부 버튼으로, 점 끌기는 무대 손잡이로 옮겼습니다.
    - [2.0 수정] 눈금 간격 2.5·0.25 반올림 오표기 방지(간격 직접 지정) / EXP 02: 좁은 화면에서 격자 라벨 생략(서로 겹침) / EXP 05: H·A·B 라벨 위치 분리 / EXP 07: t=2에서 ±α 점·라벨이 꼭짓점과 겹쳐 뭉개지던 것 정리.
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
@@ -38,394 +38,394 @@ window.addEventListener('DOMContentLoaded', function () {
   const KILLER_MODES = [
 {
 id: 'type1',
-code: 'EXP 01',
-shortTitle: '거듭제곱근 실근 매트릭스 심화',
+code: '유형 1',
+shortTitle: '거듭제곱근의 실근의 개수 (심화)',
 icon: 'fa-root-variable',
-stepLabels: ['이차함수 f(k) 부호 경계', 'xⁿ = f(k) 홀·짝 교점 분기', 'f(n)×g(n) 곱 판별 스캐너'],
+stepLabels: ['f(k)의 부호가 바뀌는 곳', 'xⁿ = f(k)의 실근 (n이 홀수일 때와 짝수일 때)', 'g(k, n)의 합 구하기'],
 stepDescs: [
-'Step 1: 다항함수 $f(k) = (k-r_1)(k-r_2)$의 그래프에서 부호가 바뀌는 영점 경계($k = r_1, r_2$)를 칠판에 작도합니다.',
-'Step 2: 방정식 $x^n = f(k)$의 실근 개수는 $n$이 **홀수일 때 부호 무관 항상 $1$개**, $n$이 **짝수일 때 $f(k) > 0, =0, <0$에 따라 $2, 1, 0$개**로 갈라집니다.',
-'Step 3: 두 조건이 곱해진 결합 방정식이나 $\\sum_{n=2}^{m} g(k, n)$의 값을 홀수 고정값($1$)과 짝수 계단함수로 5초 만에 판독합니다.'
+'이차함수 $f(k) = (k-r_1)(k-r_2)$의 그래프에서 $f(k) = 0$인 $k = r_1, r_2$를 그림에 표시합니다. 이 두 값을 경계로 $f(k)$의 부호가 바뀝니다.',
+'방정식 $x^n = f(k)$의 실근의 개수는 $n$이 **홀수이면 $f(k)$의 부호에 관계없이 항상 $1$개**이고, $n$이 **짝수이면 $f(k) > 0$, $f(k) = 0$, $f(k) < 0$에 따라 각각 $2, 1, 0$개**입니다.',
+'$\\sum_{n=2}^{m} g(k, n)$의 값은 $n$이 홀수인 항(항상 $1$)과 $n$이 짝수인 항($f(k)$의 부호에 따라 $2, 1, 0$)으로 나누어 구합니다.'
 ],
-trapWarning: '$n$이 짝수일 때 $f(k) = 0$이면 실근은 $+0, -0$ 두 개가 아니라 **$x = 0$ 단 $1$개**입니다!',
+trapWarning: '주의: $n$이 짝수일 때 $f(k) = 0$이면 실근은 $+0, -0$ 두 개가 아니라 **$x = 0$ 하나뿐**입니다.',
 scenarios: [
 {
-chip: '기출 A (n제곱근 실근 개수 합산 킬러)',
-source: '수능·평가원 4점 최빈출',
+chip: '문제 A (실근의 개수의 합 킬러)',
+source: '거듭제곱근의 실근의 개수의 합',
 params: { k: 4, n: 4, r1: 2, r2: 6 },
 snapParams: { k: 4, n: 4, r1: 2, r2: 6 },
 problem: '$f(x) = (x-2)(x-6)$에 대하여 $f(k)$의 $n$제곱근 중 실수인 것의 개수를 $g(k, n)$이라 하자. $g(k, 4) = 0$을 만족시키는 모든 자연수 $k$의 값의 합과, $k=2$일 때 $\\sum_{n=2}^{5} g(2, n)$의 값을 구하시오.',
-textbookTitle: 'n=2,3,4,5 각각 부호 조사하여 합산',
+textbookTitle: 'n=2, 3, 4, 5일 때 각각 구하여 더하기',
 textbookSteps: [
 '1) $n=4$(짝수)에서 $g(k,4)=0 \\iff f(k) < 0 \\iff 2 < k < 6$이므로 자연수 $k = 3, 4, 5$의 합은 $12$이다.',
 '2) $k=2$일 때 $f(2) = 0$이다. $0$의 $n$제곱근 중 실수인 것은 $n$의 홀짝에 관계없이 $0$ 하나뿐이다.',
 '3) 따라서 $\\sum_{n=2}^{5} g(2, n) = 1 + 1 + 1 + 1 = 4$이다.'
 ],
-secretTitle: '홀짝·부호 2×3 매트릭스 & 영점(f(k)=0) 올 1 법칙!',
+secretTitle: 'f(k)=0이면 n에 관계없이 실근은 1개',
 secretSteps: [
-'⚡ **[영점 법칙]** $f(k) = 0$인 절편($k=2, 6$)에서는 $n$이 홀수든 짝수든 실근 개수가 **전부 $1$개**입니다!',
-'⚡ **[음수 구간 합]** $g(k, \\text{짝수}) = 0$인 자연수 $k$는 두 근 $(2, 6)$ 사이의 자연수 $3, 4, 5$이므로 대칭축 $4 \\times 3 = 12$!'
+'$f(k) = 0$, 즉 $k = 2, 6$일 때에는 $n$이 홀수이든 짝수이든 $x^n = 0$의 실근이 $x = 0$ 하나뿐이므로 $g(k, n) = 1$입니다.',
+'$n$이 짝수일 때 $g(k, n) = 0$인 자연수 $k$는 $f(k) < 0$, 즉 $2 < k < 6$인 $3, 4, 5$이고, 합은 (가운데 항)$\\times 3 = 4 \\times 3 = 12$입니다.'
 ]
 },
 {
-chip: '기출 B (합이 홀수가 되는 경계점 찾기)',
-source: '평가원 모의평가 변형',
+chip: '문제 B (실근의 개수의 합이 5가 되는 k)',
+source: '거듭제곱근의 실근의 개수의 합',
 params: { k: 6, n: 6, r1: 1, r2: 7 },
 snapParams: { k: 7, n: 6, r1: 1, r2: 7 },
 problem: '$f(x) = (x-1)(x-7)$에서 $\\sum_{n=2}^{6} g(k, n) = 5$를 만족시키는 모든 자연수 $k$의 합을 구하시오.',
-textbookTitle: 'f(k)>0, =0, <0 3가지 케이스 비교',
+textbookTitle: 'f(k)의 부호에 따라 세 경우로 나누어 비교하기',
 textbookSteps: [
 '1) $f(k)>0$이면 $2+1+2+1+2 = 8$, $f(k)<0$이면 $0+1+0+1+0 = 2$이다.',
 '2) $f(k)=0$이면 $1+1+1+1+1 = 5$이므로 $k=1, 7$이고 합은 $8$이다.'
 ],
-secretTitle: '합이 항의 개수(5개)와 같다 ⟺ 모든 항이 1 ⟺ f(k) = 0!',
+secretTitle: 'n=2~6의 합이 5이면 짝수 n에서도 1이어야 하므로 f(k)=0',
 secretSteps: [
-'⚡ $n=2\\sim 6$ (총 $5$개 항)의 합이 $5$가 되려면 짝수 차수에서도 $1$개씩 나와야 하므로 **무조건 $f(k) = 0$인 두 근 $k = 1, 7$**입니다!'
+'$n = 2 \\sim 6$ (항 $5$개)의 합이 $5$가 되려면, 홀수 $n$에서는 항상 $1$이고 짝수 $n$에서는 세 값이 서로 같으므로 짝수 $n$에서도 $1$이어야 합니다. 따라서 **$f(k) = 0$인 두 근 $k = 1, 7$**입니다.'
 ]
 }
 ]
 },
 {
 id: 'type2',
-code: 'EXP 02',
-shortTitle: '자연수·유리수 조건 약수 스캐너',
+code: '유형 2',
+shortTitle: '거듭제곱근이 자연수가 되는 순서쌍',
 icon: 'fa- grip',
-stepLabels: ['분수지수 a^(m/n) 변환', 'n이 m의 약수 격자 점등', '순서쌍 (m, n) 개수 합산'],
+stepLabels: ['분수 지수로 나타내기', 'm이 n의 배수인 순서쌍 찾기', '순서쌍 (m, n)의 개수 구하기'],
 stepDescs: [
-'Step 1: 거듭제곱근 $\\sqrt[n]{2^m}$을 분수지수 **$2^{\\frac{m}{n}}$**으로 즉시 변환합니다.',
-'Step 2: 밑이 소수($2$)일 때 $2^{\\frac{m}{n}}$이 자연수가 되려면 지수 $\\frac{m}{n}$이 자연수(또는 $0$), 즉 **분모 $n$이 분자 $m$의 약수**여야 합니다!',
-'Step 3: 칠판의 $(m, n)$ 순서쌍 매트릭스에서 $m$이 $n$의 배수인 격자점들만 골든 네온으로 점등하여 개수를 3초 만에 카운팅합니다.'
+'거듭제곱근 $\\sqrt[n]{2^m}$을 분수 지수 **$2^{\\frac{m}{n}}$**으로 나타냅니다.',
+'밑이 소수 $2$일 때 $2^{\\frac{m}{n}}$이 자연수가 되려면 지수 $\\frac{m}{n}$이 자연수(또는 $0$)이어야 합니다. 즉 **$n$이 $m$의 약수**($m$이 $n$의 배수)여야 합니다.',
+'$(m, n)$ 순서쌍을 격자점으로 나타내고, $m$이 $n$의 배수인 점만 금색으로 표시하여 개수를 셉니다.'
 ],
-trapWarning: '만약 밑이 $4$나 $8$처럼 거듭제곱수($\\sqrt[n]{4^m} = 2^{\\frac{2m}{n}}$)이면, $n$은 $m$의 약수가 아니라 **$2m$의 약수**가 되어야 합니다! 반드시 밑을 **소인수분해**한 뒤 약수를 따지세요!',
+trapWarning: '주의: 밑이 $4$나 $8$처럼 소수의 거듭제곱이면 ($\\sqrt[n]{4^m} = 2^{\\frac{2m}{n}}$) $n$이 $m$의 약수가 아니라 **$2m$의 약수**여야 합니다. 먼저 밑을 **소인수분해**한 뒤 약수를 따집니다.',
 scenarios: [
 {
-chip: '기출 A (ⁿ√(2^m)이 자연수가 되는 순서쌍 스캐너)',
-source: '수능·교육청·내신 4점 단골',
+chip: '문제 A (ⁿ√(2^m)이 자연수가 되는 순서쌍)',
+source: '거듭제곱근이 자연수가 되는 순서쌍의 개수',
 params: { maxM: 12, maxN: 6 },
 snapParams: { maxM: 12, maxN: 6 },
 problem: '$1 \\le m \\le 12,\\; 2 \\le n \\le 6$인 두 자연수 $m, n$에 대하여 $\\sqrt[n]{2^m}$이 자연수가 되도록 하는 모든 순서쌍 $(m, n)$의 개수를 구하시오.',
-textbookTitle: 'n = 2, 3, 4, 5, 6일 때 각각 m의 배수 나열',
+textbookTitle: 'n=2, 3, 4, 5, 6일 때 m의 값을 각각 나열하기',
 textbookSteps: [
 '1) $\\sqrt[n]{2^m} = 2^{\\frac{m}{n}}$이 자연수가 되려면 $m$이 $n$의 배수여야 한다.',
 '2) $n=2$일 때 $m \\in \\{2,4,6,8,10,12\\}$ ($6$개), $n=3$일 때 $\\{3,6,9,12\\}$ ($4$개).',
 '3) $n=4$일 때 $3$개, $n=5$일 때 $2$개, $n=6$일 때 $2$개이므로 총 $6+4+3+2+2 = 17$개이다.'
 ],
-secretTitle: 'm을 기준으로 약수 세지 말고, 분모 n을 고정하고 ⌊M / n⌋ 배수 개수를 더해라!',
+secretTitle: 'n을 고정하고 1 ≤ m ≤ M에서 n의 배수의 개수(M÷n의 몫)를 더하기',
 secretSteps: [
-'⚡ **[몫 공식]** $1 \\le m \\le M$에서 $n$의 배수의 개수는 무조건 가우스 몫 **$\\left\\lfloor \\frac{M}{n} \\right\\rfloor$**개입니다!',
-'⚡ $\\lfloor\\frac{12}{2}\\rfloor + \\lfloor\\frac{12}{3}\\rfloor + \\lfloor\\frac{12}{4}\\rfloor + \\lfloor\\frac{12}{5}\\rfloor + \\lfloor\\frac{12}{6}\\rfloor = 6 + 4 + 3 + 2 + 2 = 17$개 5초 암산!'
+'$1 \\le m \\le M$에서 $n$의 배수의 개수는 $M$을 $n$으로 나눈 몫 **$\\left\\lfloor \\frac{M}{n} \\right\\rfloor$**개입니다. ($\\lfloor\\ \\rfloor$는 소수점 아래를 버리는 기호입니다.)',
+'$\\lfloor\\frac{12}{2}\\rfloor + \\lfloor\\frac{12}{3}\\rfloor + \\lfloor\\frac{12}{4}\\rfloor + \\lfloor\\frac{12}{5}\\rfloor + \\lfloor\\frac{12}{6}\\rfloor = 6 + 4 + 3 + 2 + 2 = 17$개'
 ]
 },
 {
-chip: '기출 B (상한 M=15, N=5 배수 카운팅 연습)',
-source: '내신·모의고사 변형',
+chip: '문제 B (M=15, N=5일 때 배수의 개수)',
+source: '거듭제곱근이 자연수가 되는 순서쌍의 개수',
 params: { maxM: 15, maxN: 5 },
 snapParams: { maxM: 15, maxN: 5 },
 problem: '$1 \\le m \\le 15,\\; 2 \\le n \\le 5$에서 $2^{\\frac{m}{n}}$이 자연수가 되는 순서쌍 $(m, n)$의 총개수를 $\\sum_{n=2}^{5} \\lfloor \\frac{15}{n} \\rfloor$으로 구하시오.',
-textbookTitle: '각 n에 대한 몫 계산',
+textbookTitle: 'n마다 15÷n의 몫 구하기',
 textbookSteps: [
 '1) $n=2$: $7$개, $n=3$: $5$개, $n=4$: $3$개, $n=5$: $3$개.',
 '2) 합계는 $7 + 5 + 3 + 3 = 18$개이다.'
 ],
-secretTitle: '칠판의 골든 도트 매트릭스에서 각 가로줄(n)의 점 개수를 확인하세요!',
+secretTitle: '그림에서 가로줄(n)마다 금색 점의 개수 확인하기',
 secretSteps: [
-'⚡ $7 + 5 + 3 + 3 = 18$개! 칠판에서 각 층마다 배수 간격으로 찍힌 황금색 점들을 확인하세요.'
+'$7 + 5 + 3 + 3 = 18$개입니다. 그림에서 $n$마다 $n$의 배수 간격으로 찍힌 금색 점을 확인해 보세요.'
 ]
 }
 ]
 },
 {
 id: 'type3',
-code: 'EXP 03',
-shortTitle: '상용로그 정수·소수부분 톱니파 킬러',
+code: '유형 3',
+shortTitle: '상용로그의 정수부분과 소수부분 킬러',
 icon: 'fa-stairs',
-stepLabels: ['가우스 계단 [log x]', '소수부분 톱니파 {log x}', '차=정수 / 합=정수 타겟팅'],
+stepLabels: ['정수부분 [log x]', '소수부분의 그래프', '차가 정수일 때 / 합이 정수일 때'],
 stepDescs: [
-'Step 1: $\\log_{10} x = n + \\alpha$ ($n$은 정수, $0 \\le \\alpha < 1$)에서 정수부분 $n = [\\log x]$를 계단함수로 표시합니다.',
-'Step 2: $y = k\\log x - [k\\log x]$는 $[0, 1)$ 사이를 반복하며 올라가는 **기울기 $k$인 톱니파(Sawtooth Wave) 그래프**가 됩니다!',
-'Step 3: ① **소수부분이 같다** $\\iff (\\text{두 로그의 차}) = \\text{정수}$, ② **소수부분의 합이 $1$이다** $\\iff (\\text{두 로그의 합}) = \\text{정수}$ (단, $\\alpha \\neq 0$!)로 5초 만에 풉니다.'
+'$\\log_{10} x = n + \\alpha$ ($n$은 정수, $0 \\le \\alpha < 1$)에서 정수부분 $n = [\\log x]$를 계단 모양의 그래프로 나타냅니다. ($[a]$는 $a$를 넘지 않는 최대의 정수)',
+'$y = k\\log x - [k\\log x]$ ($k\\log x$의 소수부분)는 $0$ 이상 $1$ 미만의 값을 반복하며, 기울기가 $k$인 선분이 반복되는 톱니 모양의 그래프가 됩니다.',
+'① 두 로그의 **소수부분이 같다** $\\iff$ (두 로그의 차)가 정수. ② 두 로그의 **소수부분의 합이 $1$이다** $\\iff$ (두 로그의 합)이 정수 (단, 소수부분이 $0$이 아니어야 함).'
 ],
-trapWarning: '**"소수부분의 합이 $1$이다"** 문제에서 가장 치명적인 함정은, 합이 정수가 되더라도 **소수부분이 $0$이 되는 점($0 + 0 \\neq 1$)은 반드시 답에서 제외**해야 한다는 것입니다!',
+trapWarning: '주의: **"소수부분의 합이 $1$이다"** 문제에서 가장 치명적인 함정은, 합이 정수가 되더라도 **소수부분이 $0$인 경우($0 + 0 \\neq 1$)는 답에서 제외**해야 한다는 것입니다.',
 scenarios: [
 {
-chip: '기출 A (소수부분이 같을 조건 vs 합이 1일 조건)',
-source: '내신·모의고사 4점 최고 빈출 킬러',
+chip: '문제 A (소수부분이 같을 조건)',
+source: '킬러 · 상용로그의 소수부분이 같을 조건',
 params: { multP: 3, modeSum: 0 },
 snapParams: { multP: 3, modeSum: 0 },
 problem: '$10 \\le x < 100$ ($1 \\le \\log x < 2$)에서 $\\log x$의 소수부분과 $\\log x^3$의 소수부분이 **같도록** 하는 모든 실수 $x$의 값의 곱을 구하시오.',
-textbookTitle: 'log x = 1 + α 놓고 3 + 3α 범위 나누기',
+textbookTitle: 'log x = 1+α로 놓고 3α의 범위를 나누어 풀기',
 textbookSteps: [
 '1) $\\log x = 1 + \\alpha$ ($0 \\le \\alpha < 1$)라 하면 $3\\log x = 3 + 3\\alpha$이다.',
 '2) $0 \\le 3\\alpha < 1, 1 \\le 3\\alpha < 2, 2 \\le 3\\alpha < 3$ 세 구간으로 나누어 각각 방정식을 푼다.',
 '3) $\\alpha = 0, \\frac{1}{2}$을 얻어 $\\log x = 1, \\frac{3}{2}$이므로 곱은 $10^1 \\times 10^{1.5} = 10^{2.5}$이다.'
 ],
-secretTitle: '구간 나누기 금지! (소수부분 같다 ⟺ 빼면 정수 2log x = N)',
+secretTitle: '소수부분이 같으면 두 로그의 차가 정수 (2log x가 정수)',
 secretSteps: [
-'⚡ **[1초 공식]** 소수부분이 같으면 빼서 소수부분을 날립니다! **$3\\log x - \\log x = 2\\log x = (\\text{정수})$**!',
-'⚡ $1 \\le \\log x < 2 \\implies 2 \\le 2\\log x < 4$이므로 정수값은 $2, 3$! 따라서 $\\log x = \\frac{2}{2}, \\frac{3}{2}$이고 모든 $x$의 곱은 $10^{1 + 1.5} = 10^{\\frac{5}{2}}$ 5초 컷!'
+'소수부분이 같으면 두 로그의 차에서 소수부분이 없어지므로 **$3\\log x - \\log x = 2\\log x = (\\text{정수})$**입니다.',
+'$1 \\le \\log x < 2 \\implies 2 \\le 2\\log x < 4$이므로 정수값은 $2, 3$입니다. 따라서 $\\log x = \\frac{2}{2}, \\frac{3}{2}$이고, 모든 $x$의 곱은 $10^{1 + 1.5} = 10^{\\frac{5}{2}}$입니다. 5초 컷!'
 ]
 },
 {
-chip: '기출 B (소수부분의 합이 1일 조건 & α=0 함정 제거)',
-source: '수험생 90%가 틀리는 서술형 킬러',
+chip: '문제 B (소수부분의 합이 1일 조건과 α=0 함정)',
+source: '킬러 · 상용로그의 소수부분의 합이 1일 조건',
 params: { multP: 2, modeSum: 1 },
 snapParams: { multP: 2, modeSum: 1 },
 problem: '$10 < x < 100$ ($1 < \\log x < 2$)에서 $\\log x$의 소수부분과 $\\log x^2$의 소수부분의 **합이 $1$**이 되도록 하는 모든 실수 $x$의 곱을 구하시오.',
-textbookTitle: '두 로그를 더해 정수 놓은 뒤 α=0 제외',
+textbookTitle: '두 로그의 합이 정수임을 이용하고 소수부분이 0인 경우 제외하기',
 textbookSteps: [
 '1) 소수부분의 합이 $1$이므로 두 로그를 더한 $\\log x + 2\\log x = 3\\log x$는 정수이다.',
 '2) $1 < \\log x < 2 \\implies 3 < 3\\log x < 6$에서 정수는 $4, 5$이므로 $\\log x = \\frac{4}{3}, \\frac{5}{3}$이다.',
 '3) 두 경우 모두 소수부분이 $0$이 아니므로 성립하고, 곱은 $10^{\\frac{4}{3}+\\frac{5}{3}} = 10^3 = 1000$이다.'
 ],
-secretTitle: '합이 1 ⟺ 더하면 정수 (3log x = 정수) & 정수가 되는 끝점 제외!',
+secretTitle: '소수부분의 합이 1이면 두 로그의 합이 정수 (3log x가 정수), 소수부분이 0인 점은 제외',
 secretSteps: [
-'⚡ 만약 범위에 $x=10$($\\log x = 1$)이 포함되어 있더라도 소수부분이 $0 + 0 = 0 \\neq 1$이므로 반드시 제외해야 합니다!'
+'범위에 $x=10$($\\log x = 1$)이 포함되어 있더라도 소수부분이 $0 + 0 = 0 \\neq 1$이므로 제외해야 합니다.'
 ]
 }
 ]
 },
 {
 id: 'type4',
-code: 'EXP 04',
-shortTitle: '지수 계수 흡수 & 가로 간격 불변량',
+code: '유형 4',
+shortTitle: '지수함수의 계수와 가로 방향의 간격',
 icon: 'fa-arrows-left-right',
-stepLabels: ['계수 k ➔ x축 평행이동', '수평 절단 선분 AB = log₂k', '등적 평행사변형·직사각형'],
+stepLabels: ['계수 k는 x축의 방향으로의 평행이동', '수평선이 두 곡선을 자른 선분 AB = log₂k', '직사각형으로 바꾸어 넓이 구하기'],
 stepDescs: [
-'Step 1: $y = k \\cdot 2^x = 2^{x + \\log_2 k}$이므로, 지수함수 앞의 곱셈 계수 $k$는 **왼쪽으로 $\\log_2 k$만큼 순수 가로 평행이동**시킨 것입니다!',
-'Step 2: 따라서 수평선 $y = t$를 어느 높이에 그어도 두 곡선 사이의 **가로 선분 길이 $\\overline{AB} = \\log_2 k$는 높이 $t$와 무관하게 일정**합니다!',
-'Step 3: 두 수평선 $y = t_1, y = t_2$와 두 지수 곡선으로 둘러싸인 넓이는 곡선 조각을 옮겨 붙이면 **직사각형 넓이 $\\Delta y \\times \\log_2 k$**가 됩니다.'
+'$y = k \\cdot 2^x = 2^{x + \\log_2 k}$이므로, 지수함수 앞에 곱한 계수 $k$는 $x$축의 방향으로 $-\\log_2 k$만큼(왼쪽으로 $\\log_2 k$만큼) 평행이동한 것과 같습니다.',
+'따라서 수평선 $y = t$를 어느 높이에 그어도 두 곡선 사이의 **가로 선분의 길이 $\\overline{AB} = \\log_2 k$는 높이 $t$와 관계없이 일정**합니다.',
+'두 수평선 $y = t_1, y = t_2$와 두 지수 곡선으로 둘러싸인 부분의 넓이는, 곡선 부분을 평행이동하여 겹치면 **직사각형의 넓이 $\\Delta y \\times \\log_2 k$**와 같습니다.'
 ],
-trapWarning: '$y = 3 \\cdot 2^x$을 보고 "위로 3배 늘렸다"고만 생각하면 문제를 못 풉니다! 수능에서는 무조건 **$2^{x + \\log_2 3}$ ($x$축으로 $-\\log_2 3$ 평행이동)**으로 번역해야 풀립니다!',
+trapWarning: '$y = 3 \\cdot 2^x$을 "위로 3배 늘렸다"고만 생각하면 풀기 어려운 문제가 있습니다. 이때는 **$2^{x + \\log_2 3}$ ($x$축의 방향으로 $-\\log_2 3$만큼 평행이동)**으로 바꾸어 생각합니다.',
 scenarios: [
 {
-chip: '기출 A (k·2^x 계수 변환과 가로 선분 불변량)',
-source: '수능·평가원 4점 필수 비기',
+chip: '문제 A (계수 k와 가로 선분의 길이)',
+source: '지수함수의 계수와 평행이동',
 params: { multK: 4, yCut1: 1.5, yCut2: 4.5 },
 snapParams: { multK: 4, yCut1: 2.0, yCut2: 5.0 },
 problem: '두 곡선 $y = 2^x$과 $y = 4 \\cdot 2^x$이 두 직선 $y = 2, y = 5$와 만나는 네 점으로 둘러싸인 영역의 넓이 $S$와 수평 선분 $\\overline{AB}$의 길이를 구하시오.',
-textbookTitle: 'y = t와 연립하여 x좌표 차 계산',
+textbookTitle: 'y=t와 연립하여 x좌표의 차 구하기',
 textbookSteps: [
 '1) $2^{x_2} = t \\implies x_2 = \\log_2 t$이고, $4\\cdot 2^{x_1} = t \\implies x_1 = \\log_2 t - 2$이다.',
 '2) 따라서 가로 선분 길이는 $x_2 - x_1 = 2$로 일정하다.',
-'3) $y=2$부터 $y=5$까지 세로 높이는 $3$이므로 등적변형에 의해 넓이는 $2 \\times 3 = 6$이다.'
+'3) $y=2$부터 $y=5$까지 세로 높이는 $3$이므로, 평행이동하여 직사각형으로 바꾸면 넓이는 $2 \\times 3 = 6$이다.'
 ],
-secretTitle: 'k·a^x = a^(x + log_a k) ➔ 가로 간격은 무조건 log_a k!',
+secretTitle: 'k·aˣ = a^(x+log_a k)이므로 가로 간격은 log_a k',
 secretSteps: [
-'⚡ **[1초 공식]** $4 \\cdot 2^x = 2^{x+2}$이므로 두 곡선의 **가로 간격은 높이에 상관없이 무조건 $2$**입니다!',
-'⚡ **[넓이 암산]** $(\\text{가로 간격 } 2) \\times (\\text{세로 높이 차 } 5 - 2) = 6$ 끝!'
+'$4 \\cdot 2^x = 2^{x+2}$이므로 두 곡선의 **가로 간격은 높이에 관계없이 항상 $2$**입니다.',
+'$(\\text{가로 간격 } 2) \\times (\\text{세로 높이의 차 } 5 - 2) = 6$입니다.'
 ]
 },
 {
-chip: '기출 B (3·2^x과 2^x의 무리수 평행이동 log₂3)',
-source: '평가원 4점 준킬러',
+chip: '문제 B (3·2ˣ과 2ˣ의 가로 간격 log₂3)',
+source: '준킬러 · 지수함수의 계수와 가로 간격',
 params: { multK: 3, yCut1: 1.5, yCut2: 4.0 },
 snapParams: { multK: 3, yCut1: 1.0, yCut2: 4.0 },
 problem: '두 곡선 $y = 2^x$과 $y = 3 \\cdot 2^x$이 직선 $y = t$와 만나는 두 점 사이의 거리 $\\overline{AB}$를 구하시오.',
-textbookTitle: '3 = 2^(log₂3) 지수 법칙 변환',
+textbookTitle: '3 = 2^(log₂3)을 이용하여 지수로 바꾸기',
 textbookSteps: [
 '1) $3 \\cdot 2^x = 2^{\\log_2 3} \\cdot 2^x = 2^{x + \\log_2 3}$이다.',
 '2) 따라서 $x$축 방향으로 $-\\log_2 3$만큼 평행이동한 곡선이므로 $\\overline{AB} = \\log_2 3$이다.'
 ],
-secretTitle: '앞의 계수 3이 거듭제곱수가 아니어도 가로 길이는 무조건 log₂3!',
+secretTitle: '계수 3이 2의 거듭제곱이 아니어도 가로 길이는 log₂3',
 secretSteps: [
-'⚡ 칠판에서 수평선 $y = t$를 위아래로 드래그하며 $\\overline{AB} = \\log_2 3 \\approx 1.585$가 불변임을 확인하세요!'
+'수평선 $y = t$를 위아래로 끌어 보며 $\\overline{AB} = \\log_2 3 \\approx 1.585$가 일정함을 확인해 보세요.'
 ]
 }
 ]
 },
 {
 id: 'type5',
-code: 'EXP 05',
-shortTitle: '밑이 다른 두 지수함수 수평 내분비',
+code: '유형 5',
+shortTitle: '밑이 다른 두 지수함수와 수평선',
 icon: 'fa-ruler-horizontal',
-stepLabels: ['y축 수선의 발 H(0, t)', '가로 선분 비 HA : HB', '밑 거듭제곱 b = a^(p/q) 직독'],
+stepLabels: ['y축 위의 점 H(0, t)', '가로 선분의 길이의 비 HA : HB', '두 밑 사이의 관계식'],
 stepDescs: [
-'Step 1: 수평선 $y = t$ ($t > 1$)가 $y$축과 만나는 점 $H(0, t)$ 및 두 곡선 $y = a^x, y = b^x$와 만나는 점 $A, B$를 찍습니다.',
-'Step 2: $\\overline{HA} = \\log_a t, \\overline{HB} = \\log_b t$이므로, **두 선분의 길이 비 $\\overline{HA} : \\overline{HB}$는 높이 $t$와 무관하게 일정**합니다!',
-'Step 3: $\\overline{HA} : \\overline{HB} = p : q$이면 $\\log_a t : \\log_b t = p : q \\implies \\mathbf{b^q = a^p}$로 3초 만에 두 밑의 관계를 뽑아냅니다!'
+'수평선 $y = t$ ($t > 1$)가 $y$축과 만나는 점 $H(0, t)$와 두 곡선 $y = a^x, y = b^x$와 만나는 점 $A, B$를 표시합니다.',
+'$\\overline{HA} = \\log_a t, \\overline{HB} = \\log_b t$이므로, **두 선분의 길이의 비 $\\overline{HA} : \\overline{HB}$는 높이 $t$와 관계없이 일정**합니다.',
+'$\\overline{HA} : \\overline{HB} = p : q$이면 $\\log_a t : \\log_b t = p : q$이므로, 두 밑 사이에 $\\mathbf{b^q = a^p}$가 성립합니다.'
 ],
-trapWarning: '더 가파르게 올라가는 곡선(축에 더 가까운 곡선)의 밑이 더 **큽니다**! 즉 $\\overline{HA} < \\overline{HB}$이면 밑은 거꾸로 **$a > b$**입니다!',
+trapWarning: '주의: 더 가파르게 올라가는 곡선($y$축에 더 가까운 곡선)의 밑이 더 **큽니다**. 즉 $\\overline{HA} < \\overline{HB}$이면 $a > b$입니다.',
 scenarios: [
 {
-chip: '기출 A (수평선 1:2 내분점 ➔ 밑 a = b² 직독)',
-source: '수능·평가원 4점 단골 유형',
+chip: '문제 A (HA : HB = 1 : 2)',
+source: '밑이 다른 두 지수함수와 수평선',
 params: { baseA: 4, baseB: 2, lineT: 4.0 },
 snapParams: { baseA: 4, baseB: 2, lineT: 4.0 },
 problem: '직선 $y = t$ ($t > 1$)가 $y$축 및 두 곡선 $y = a^x, y = b^x$ ($1 < b < a$)와 만나는 점을 차례로 $H, A, B$라 하자. 점 $A$가 선분 $HB$의 중점($\\overline{HA} : \\overline{HB} = 1 : 2$)일 때, $\\log_b a$의 값을 구하시오.',
-textbookTitle: 'log_a t와 log_b t 밑변환 공식 연립',
+textbookTitle: '로그의 밑의 변환을 이용하여 a와 b의 관계 구하기',
 textbookSteps: [
 '1) $A(\\log_a t, t), B(\\log_b t, t)$이고 $\\overline{HB} = 2\\overline{HA}$이다.',
-'2) $\\log_b t = 2\\log_a t \\implies \\frac{\\ln t}{\\ln b} = \\frac{2\\ln t}{\\ln a}$.',
-'3) $\\ln t \\neq 0$을 약분하면 $\\ln a = 2\\ln b \\implies a = b^2$이므로 $\\log_b a = 2$이다.'
+'2) $\\log_b t = 2\\log_a t \\implies \\frac{\\log t}{\\log b} = \\frac{2\\log t}{\\log a}$.',
+'3) $t > 1$이므로 $\\log t \\neq 0$이고, 약분하면 $\\log a = 2\\log b \\implies a = b^2$이므로 $\\log_b a = 2$이다.'
 ],
-secretTitle: '가로 길이 비 HA : HB = 1 : k ⟺ 밑 거듭제곱 a = b^k (1초 공식!)',
+secretTitle: 'HA : HB = 1 : k이면 a = bᵏ',
 secretSteps: [
-'⚡ **[역비 거듭제곱 법칙]** 같은 높이 $t$에 도달하는 데 걸린 가로 시간($x$)이 $1 : 2$라는 것은, 안쪽 곡선의 밑 $a$가 바깥쪽 밑 $b$의 **제곱($a = b^2$)**만큼 빨리 자란다는 뜻입니다!'
+'$\\overline{HA} : \\overline{HB} = 1 : 2$는 같은 높이 $t$에 이르는 데 필요한 $x$의 값의 비가 $1 : 2$라는 뜻입니다. $a^{x_A} = b^{x_B} = t$이고 $x_B = 2x_A$이므로 $a^{x_A} = b^{2x_A}$, 즉 $a = b^2$입니다.'
 ]
 },
 {
-chip: '기출 B (HA : AB = 2 : 1 ➔ HB : HA = 3 : 2)',
-source: '모의고사 4점 변형',
+chip: '문제 B (HA : AB = 2 : 1)',
+source: '밑이 다른 두 지수함수와 수평선',
 params: { baseA: 4, baseB: 2.52, lineT: 3.5 },
 snapParams: { baseA: 8, baseB: 4, lineT: 4.0 },
 problem: '$\\overline{HA} : \\overline{AB} = 2 : 1$ (즉 $\\overline{HA} : \\overline{HB} = 2 : 3$)일 때 두 밑 $a, b$의 관계식을 구하시오.',
-textbookTitle: '내분 비율을 원점 거리 비로 전환',
+textbookTitle: '선분의 길이의 비를 로그로 나타내기',
 textbookSteps: [
 '1) $\\overline{HA} : \\overline{HB} = 2 : 3$이므로 $3\\log_a t = 2\\log_b t$이다.',
 '2) 따라서 $a^2 = b^3$ ($a = b^{1.5}$)이 성립한다.'
 ],
-secretTitle: 'HA : HB = p : q ⟹ a^p = b^q 크로스 지수 법칙!',
+secretTitle: 'HA : HB = p : q이면 aᵖ = bᵠ',
 secretSteps: [
-'⚡ 원점($y$축)으로부터의 거리 비가 $p : q$이면 무조건 **$a^p = b^q$**입니다!'
+'$H$에서 두 점 $A, B$까지의 거리의 비가 $p : q$이면 **$a^p = b^q$**입니다. 여기서는 $p : q = 2 : 3$이므로 $a^2 = b^3$입니다.'
 ]
 }
 ]
 },
 {
 id: 'type6',
-code: 'EXP 06',
-shortTitle: '지수 위 세 점 일직선 (등차x ⟺ 등비y)',
+code: '유형 6',
+shortTitle: '지수함수 위의 세 점 (x좌표가 등차수열이면 y좌표는 등비수열)',
 icon: 'fa-chart-line',
-stepLabels: ['x좌표 등차 간격(t-d, t, t+d)', 'y좌표 등비중항(y₂² = y₁y₃)', '할선 기울기 일치 연립'],
+stepLabels: ['x좌표가 등차수열 (t-d, t, t+d)', 'y좌표의 등비중항 (y₂² = y₁y₃)', '기울기가 같음을 이용하기'],
 stepDescs: [
-'Step 1: 지수 곡선 $y = a^x$ 위의 세 점 $A, B, C$의 **$x$좌표가 등차수열($x_1, x_2, x_3$ 간격 일정)**을 이루면, 함숫값 **$y$좌표는 무조건 등비수열($y_2^2 = y_1 y_3$)**을 이룹니다!',
-'Step 2: 만약 한 직선이 지수 곡선이나 평행이동된 지수 곡선과 만나는 세 점의 선분 길이 비가 $1 : 1$ (중점)이면, $x$좌표 차와 $y$좌표 차가 모두 같아야 합니다.',
-'Step 3: 이를 통해 복잡한 연립방정식 없이 등비중항과 기울기 비율로 좌표를 즉시 확정합니다.'
+'지수 곡선 $y = a^x$ 위의 세 점 $A, B, C$의 **$x$좌표 $x_1, x_2, x_3$이 등차수열**을 이루면, **$y$좌표는 등비수열($y_2^2 = y_1 y_3$)**을 이룹니다.',
+'한 직선이 지수 곡선이나 평행이동한 지수 곡선과 만나는 세 점에서 가운데 점이 양 끝 점을 잇는 선분의 중점이면, 인접한 두 점의 $x$좌표의 차와 $y$좌표의 차가 각각 같아야 합니다.',
+'이를 이용하면 복잡한 연립방정식을 풀지 않고도 등비중항과 기울기로 점의 좌표를 정할 수 있습니다.'
 ],
-trapWarning: '볼록한 단일 지수함수 $y = a^x$ 하나와 직선은 최대 **2번**밖에 만날 수 없습니다! 세 점이 한 직선 위에 있으려면 대칭이동($y=-a^{-x}$)되거나 두 지수함수가 결합된 경우입니다.',
+trapWarning: '주의: 지수함수 $y = a^x$의 그래프와 직선은 최대 **2개**의 점에서 만납니다. 따라서 세 점이 한 직선 위에 있으려면 대칭이동한 곡선($y = -a^{-x}$)이 함께 있거나 두 지수함수가 함께 주어진 경우여야 합니다.',
 scenarios: [
 {
-chip: '기출 A (x좌표 등차수열 ⟺ y좌표 등비수열)',
-source: '수능·평가원 4점 수열·지수 결합형',
+chip: '문제 A (x좌표가 등차수열이면 y좌표는 등비수열)',
+source: '지수함수와 등차수열·등비수열',
 params: { xMid: 2.0, stepD: 1.0 },
 snapParams: { xMid: 2.0, stepD: 1.0 },
 problem: '곡선 $y = 2^x$ 위의 세 점 $A(x_1, y_1), B(x_2, y_2), C(x_3, y_3)$에 대하여 $x_1, x_2, x_3$이 이 순서대로 공차가 $1$인 등차수열을 이루고 $y_1 + y_2 + y_3 = 14$일 때, 점 $B$의 좌표 $(x_2, y_2)$를 구하시오.',
-textbookTitle: 'x₁ = k-1, x₂ = k, x₃ = k+1 대입 풀이',
+textbookTitle: 'x₁=k−1, x₂=k, x₃=k+1로 놓고 풀기',
 textbookSteps: [
 '1) $y_1 = 2^{k-1}, y_2 = 2^k, y_3 = 2^{k+1}$이므로 공비가 $2$인 등비수열이다.',
 '2) $y_2$로 묶으면 $\\frac{1}{2}y_2 + y_2 + 2y_2 = \\frac{7}{2}y_2 = 14 \\implies y_2 = 4$.',
 '3) $2^k = 4 \\implies k = 2$이므로 $B(2, 4)$이다.'
 ],
-secretTitle: '지수함수에 등차수열을 넣으면 공비 r = a^d인 등비수열이 나온다!',
+secretTitle: 'x좌표의 공차가 d이면 y좌표는 공비가 aᵈ인 등비수열',
 secretSteps: [
-'⚡ **[변환 공식]** $x$의 공차가 $d = 1$이면 $y = 2^x$의 **공비는 $r = 2^d = 2^1 = 2$**입니다!',
-'⚡ $1 : 2 : 4$ 비율의 합이 $14$이므로 가운데 항은 $y_2 = 4$, 따라서 $B(2, 4)$ 3초 컷!'
+'$x$좌표의 공차가 $d = 1$이면 $y = 2^x$의 $y$좌표는 **공비가 $r = 2^d = 2^1 = 2$인 등비수열**입니다.',
+'세 $y$좌표의 비가 $1 : 2 : 4$이고 합이 $14$이므로 가운데 항은 $y_2 = 14 \\times \\frac{2}{7} = 4$입니다. 따라서 $B(2, 4)$입니다. 3초 컷!'
 ]
 },
 {
-chip: '기출 B (공차 d = 2일 때 공비 r = 4 비율)',
-source: '모의고사 4점 변형',
+chip: '문제 B (공차 d = 2, 공비 r = 4)',
+source: '지수함수와 등차수열·등비수열',
 params: { xMid: 1.5, stepD: 1.5 },
 snapParams: { xMid: 1.0, stepD: 1.5 },
 problem: '곡선 $y = 2^x$ 위의 세 점의 $x$좌표가 등차수열을 이루고 양 끝 점의 $y$좌표가 $y_1 = 1, y_3 = 16$일 때, 가운데 점 $B$의 좌표 $(x_2, y_2)$를 등비중항으로 구하시오.',
-textbookTitle: 'x₁=0, x₃=4 구한 뒤 중점 대입',
+textbookTitle: 'x₁=0, x₃=4를 구한 뒤 가운데 점의 좌표 구하기',
 textbookSteps: [
 '1) $x_1 = 0, x_3 = 4$이므로 등차중항 $x_2 = 2$이다.',
 '2) 따라서 $y_2 = 2^2 = 4$이다.'
 ],
-secretTitle: '등비중항 y₂ = √(y₁·y₃) = √(1 × 16) = 4 직독!',
+secretTitle: '등비중항 y₂ = √(y₁y₃) = √(1 × 16) = 4',
 secretSteps: [
-'⚡ $x$좌표를 구할 필요도 없이 **$y_2 = \\sqrt{y_1 y_3} = \\sqrt{16} = 4$**가 바로 나옵니다!'
+'$x$좌표를 구하지 않아도 **$y_2 = \\sqrt{y_1 y_3} = \\sqrt{16} = 4$**가 바로 구해집니다. (등비중항: $y_2^2 = y_1 y_3$, $y_2 > 0$)'
 ]
 }
 ]
 },
 {
 id: 'type7',
-code: 'EXP 07',
-shortTitle: '대칭형 aˣ + a⁻ˣ (현수선) & t ≥ 2 치환',
+code: '유형 7',
+shortTitle: 'aˣ + a⁻ˣ 꼴의 방정식과 치환 (t ≥ 2)',
 icon: 'fa-bezier-curve',
-stepLabels: ['2^x 와 2^(-x) 대칭 날개', '합 함수 y = 2^x + 2^(-x)', '산술기하 최솟값 t = 2 경계'],
+stepLabels: ['y=2ˣ과 y=2⁻ˣ의 대칭', '두 함수의 합 y = 2ˣ + 2⁻ˣ', '산술평균과 기하평균으로 구한 최솟값 2'],
 stepDescs: [
-'Step 1: $y = 2^x$과 $y$축 대칭인 $y = 2^{-x}$를 칠판에 점선으로 함께 그립니다.',
-'Step 2: 두 함수를 더한 **$g(x) = 2^x + 2^{-x}$**는 $y$축 대칭(우함수)인 U자 모양 **현수선(Catenary)** 개형이 되며, 산술·기하평균에 의해 **$x = 0$에서 최솟값 $2$**를 갖습니다!',
-'Step 3: 방정식 $(4^x + 4^{-x}) - 2k(2^x + 2^{-x}) + m = 0$에서 $t = 2^x + 2^{-x}$ ($t \\ge 2$)로 치환하면, **$t > 2$인 근 1개당 $x$는 $\\pm\\alpha$ 2개**, **$t = 2$인 근은 $x = 0$ 단독 1개**로 매핑됩니다!'
+'$y = 2^x$과 $y$축에 대하여 대칭인 $y = 2^{-x}$를 점선으로 함께 그립니다.',
+'두 함수의 합 **$g(x) = 2^x + 2^{-x}$**의 그래프는 $y$축에 대하여 대칭이고 U자 모양입니다. 산술평균과 기하평균의 관계에 의하여 $2^x + 2^{-x} \\ge 2\\sqrt{2^x \\cdot 2^{-x}} = 2$이므로 **$x = 0$에서 최솟값 $2$**를 갖습니다.',
+'방정식 $(4^x + 4^{-x}) - 2k(2^x + 2^{-x}) + m = 0$에서 $t = 2^x + 2^{-x}$ ($t \\ge 2$)로 치환하면, **$t > 2$인 근 하나마다 $x$는 $\\pm\\alpha$ 2개**, **$t = 2$인 근은 $x = 0$ 1개**가 대응됩니다.'
 ],
-trapWarning: '$2^x + 2^{-x} = t$로 치환할 때 $4^x + 4^{-x}$는 그냥 $t^2$이 아니라 곱셈공식 변형에 의해 **$t^2 - 2$**입니다! 상수 $-2$를 빼먹으면 100% 틀립니다!',
+trapWarning: '주의: $2^x + 2^{-x} = t$로 치환할 때 $(2^x + 2^{-x})^2 = 4^x + 2 + 4^{-x}$이므로 $4^x + 4^{-x}$는 $t^2$이 아니라 **$t^2 - 2$**입니다. 상수 $-2$를 빼먹으면 틀립니다.',
 scenarios: [
 {
-chip: '기출 A (2^x + 2^(-x) = t ≥ 2 치환과 실근 개수)',
-source: '수능·평가원·내신 4점 준킬러',
+chip: '문제 A (치환과 실근의 개수)',
+source: '준킬러 · aˣ + a⁻ˣ 꼴의 방정식',
 params: { lineT: 2.0 },
 snapParams: { lineT: 2.0 },
 problem: '방정식 $(4^x + 4^{-x}) - 5(2^x + 2^{-x}) + 8 = 0$의 서로 다른 실근 $x$의 개수와 모든 실근의 합을 구하시오.',
-textbookTitle: '2^x + 2^(-x) = t 치환 후 이차방정식 풀이',
+textbookTitle: '2ˣ + 2⁻ˣ = t로 치환하여 이차방정식 풀기',
 textbookSteps: [
 '1) $2^x + 2^{-x} = t$ ($t \\ge 2$)로 치환하면 $4^x + 4^{-x} = t^2 - 2$이다.',
 '2) $(t^2 - 2) - 5t + 8 = t^2 - 5t + 6 = (t-2)(t-3) = 0 \\implies t = 2$ 또는 $t = 3$.',
 '3) $t = 2$에서 $x = 0$ ($1$개), $t = 3 > 2$에서 $y$축 대칭인 두 근 $\\pm\\alpha$ ($2$개, 합 $0$)가 나오므로 총 실근은 $3$개, 합은 $0$이다.'
 ],
-secretTitle: '우함수(y축 대칭) 방정식의 실근이 홀수 개 ⟺ 무조건 x = 0 (t = 2) 통과!',
+secretTitle: 'x 대신 −x를 넣어도 같은 방정식: 실근이 홀수 개이면 x=0이 근',
 secretSteps: [
-'⚡ **[대칭 근 매핑]** $t = 2^x + 2^{-x}$에서 **$t > 2 \\implies x$ 실근 2개(합 $0$)**, **$t = 2 \\implies x = 0$ 실근 1개**, **$t < 2 \\implies$ 실근 0개**입니다!',
-'⚡ 우함수이므로 어떤 양수 $t$들이 해가 되든 **모든 실근 $x$의 합은 대칭 상쇄로 무조건 $0$**입니다!'
+'$t = 2^x + 2^{-x}$에서 **$t > 2 \\implies x$의 실근 2개(합 $0$)**, **$t = 2 \\implies x = 0$의 실근 1개**, **$t < 2 \\implies$ 실근 0개**입니다.',
+'이 방정식은 $x$ 대신 $-x$를 넣어도 같으므로 $\\alpha$가 근이면 $-\\alpha$도 근입니다. 따라서 모든 실근 $x$의 합은 $0$입니다.'
 ]
 },
 {
-chip: '기출 B (t = 2.5일 때 대칭 두 근 ±α 확인)',
-source: '내신·모의고사 필수 유형',
+chip: '문제 B (t = 2.5일 때 두 근 ±α)',
+source: 'aˣ + a⁻ˣ 꼴의 방정식',
 params: { lineT: 3.0 },
 snapParams: { lineT: 2.5 },
 problem: '방정식 $2^x + 2^{-x} = \\frac{5}{2}$ ($2.5$)의 두 실근 $\\alpha, \\beta$에 대하여 $\\alpha + \\beta$와 $\\alpha\\beta$의 값을 구하시오.',
-textbookTitle: '양변에 2^x 곱해 인수분해',
+textbookTitle: '양변에 2ˣ을 곱하여 인수분해하기',
 textbookSteps: [
 '1) $2(2^x)^2 - 5(2^x) + 2 = (2\\cdot 2^x - 1)(2^x - 2) = 0$.',
 '2) $2^x = 2^{-1}$ 또는 $2^x = 2^1 \\implies x = -1, 1$이다.',
 '3) 따라서 합은 $0$, 곱은 $-1$이다.'
 ],
-secretTitle: 't = 2 + 1/2 = 2.5 ⟹ x = ±1 1초 직독!',
+secretTitle: '2 + 1/2 = 2.5이므로 x = ±1',
 secretSteps: [
-'⚡ $2 + \\frac{1}{2} = 2.5 \\implies x = \\pm 1$, $4 + \\frac{1}{4} = 4.25 \\implies x = \\pm 2$는 시험장에 자주 나오는 역수 합 세트입니다!'
+'$x = 1$이면 $2^1 + 2^{-1} = 2 + \\frac{1}{2} = 2.5$, $x = 2$이면 $2^2 + 2^{-2} = 4 + \\frac{1}{4} = 4.25$입니다. 따라서 $2^x + 2^{-x} = 2.5$의 근은 $x = \\pm 1$입니다.'
 ]
 }
 ]
 },
 {
 id: 'type8',
-code: 'EXP 08',
-shortTitle: '|aˣ - k| = t 점근선 반사 & 합 불변량',
+code: '유형 8',
+shortTitle: '|aˣ − k| = t의 두 근의 합',
 icon: 'fa-arrows-up-to-line',
-stepLabels: ['반사된 점근선 y = k', '왼쪽 날개 -(a^x-k) = t', 'a^(x₁+x₂) = k² - t² 공식'],
+stepLabels: ['접혀 올라간 점근선 y = k', '왼쪽 교점: −(aˣ−k) = t', 'a^(x₁+x₂) = k² − t²'],
 stepDescs: [
-'Step 1: $y = |2^x - k|$는 원래 점근선 $y = -k$가 $x$축에 반사되어 **위로 접혀 올라온 점근선 $y = +k$**를 가집니다.',
-'Step 2: 수평선 $y = t$가 두 점에서 만날 조건은 **$0 < t < k$**이며, 왼쪽 교점은 $-(2^{x_1} - k) = t$, 오른쪽 교점은 $+(2^{x_2} - k) = t$에서 발생합니다.',
-'Step 3: $2^{x_1} = k - t$와 $2^{x_2} = k + t$를 곱하면 합차공식에 의해 **$2^{x_1 + x_2} = k^2 - t^2 \\implies x_1 + x_2 = \\log_2(k^2 - t^2)$**으로 3초 만에 두 근의 합이 나옵니다!'
+'$y = |2^x - k|$의 점근선은, $y = 2^x - k$의 점근선 $y = -k$가 절댓값 때문에 위로 접혀 올라온 **$y = k$**입니다.',
+'수평선 $y = t$가 서로 다른 두 점에서 만나는 조건은 **$0 < t < k$**이며, 왼쪽 교점은 $-(2^{x_1} - k) = t$, 오른쪽 교점은 $2^{x_2} - k = t$에서 구해집니다.',
+'$2^{x_1} = k - t$와 $2^{x_2} = k + t$를 곱하면 $(k-t)(k+t) = k^2 - t^2$이므로 **$2^{x_1 + x_2} = k^2 - t^2 \\implies x_1 + x_2 = \\log_2(k^2 - t^2)$**입니다.'
 ],
-trapWarning: '$t \\ge k$가 되면 왼쪽 접힌 날개는 점근선 $y = k$에 막혀 더 이상 올라가지 못하므로 교점이 **$2$개에서 $1$개로 급감**합니다!',
+trapWarning: '주의: $t \\ge k$이면 왼쪽 부분은 점근선 $y = k$보다 높이 올라가지 못하므로 교점이 $2$개에서 $1$개로 줄어듭니다.',
 scenarios: [
 {
-chip: '기출 A (|2^x - k| = t 합차공식 2^(x₁+x₂) = k²-t²)',
-source: '수능·평가원 4점 준킬러 필수',
+chip: '문제 A (2^(x₁+x₂) = k² − t²)',
+source: '준킬러 · 절댓값을 포함한 지수함수와 수평선의 교점',
 params: { asymK: 4, lineT: 2.0 },
 snapParams: { asymK: 4, lineT: 2.0 },
 problem: '함수 $y = |2^x - 4|$의 그래프와 직선 $y = 2$가 만나는 두 점의 $x$좌표를 $x_1, x_2$라 하자. $2^{x_1+x_2}$의 값을 구하고, 직선 $y=t$가 그래프와 서로 다른 두 점에서 만나도록 하는 모든 자연수 $t$의 합을 구하시오.',
-textbookTitle: '구간별로 절댓값 부호 나누어 각각 풀이',
+textbookTitle: '절댓값 기호를 풀어 경우를 나누어 풀기',
 textbookSteps: [
 '1) 왼쪽 날개에서 $-(2^{x_1} - 4) = 2 \\implies 2^{x_1} = 2$.',
 '2) 오른쪽 날개에서 $2^{x_2} - 4 = 2 \\implies 2^{x_2} = 6$.',
 '3) 따라서 $2^{x_1 + x_2} = 2^{x_1}\\cdot 2^{x_2} = 2 \\times 6 = 12$이고, 교점이 $2$개인 자연수는 $0 < t < 4$에서 $1, 2, 3$ (합 $6$)이다.'
 ],
-secretTitle: '개별 근 구하기 금지! 2^(x₁+x₂) = k² - t² = 4² - 2² = 12 (3초 암산!)',
+secretTitle: '두 근을 각각 구하지 않고 2^(x₁+x₂) = k² − t² = 4² − 2² = 12',
 secretSteps: [
-'⚡ **[합차공식 불변량]** $a^{x_1} = k - t$이고 $a^{x_2} = k + t$이므로 두 식을 곱하면 무조건 **$a^{x_1 + x_2} = (k-t)(k+t) = k^2 - t^2$**입니다!',
-'⚡ $4^2 - 2^2 = 16 - 4 = 12$ 끝!'
+'$a^{x_1} = k - t$이고 $a^{x_2} = k + t$이므로 두 식을 곱하면 **$a^{x_1 + x_2} = (k-t)(k+t) = k^2 - t^2$**입니다.',
+'$4^2 - 2^2 = 16 - 4 = 12$입니다.'
 ]
 },
 {
-chip: '기출 B (x₁ + x₂ = 0 대칭이 되는 높이 t = √(k²-1))',
-source: '평가원 4점 고난도 변형',
+chip: '문제 B (x₁ + x₂ = 0이 되는 t)',
+source: '절댓값을 포함한 지수함수와 수평선의 교점',
 params: { asymK: 3, lineT: 2.828 },
 snapParams: { asymK: 3, lineT: 2.828 },
 problem: '함수 $y = |2^x - 3|$과 직선 $y = t$가 만나는 두 교점의 $x$좌표의 합이 $x_1 + x_2 = 0$ ($y$축 대칭)이 되도록 하는 $t^2$의 값을 구하시오.',
-textbookTitle: 'x₁ = -α, x₂ = α 대입 후 연립',
+textbookTitle: 'x₁=−α, x₂=α로 놓고 연립하기',
 textbookSteps: [
 '1) $x_1 + x_2 = 0 \\iff 2^{x_1 + x_2} = 2^0 = 1$이다.',
 '2) $3 - 2^{-\\alpha} = 2^\\alpha - 3 = t$를 제곱하여 정리한다.',
 '3) $k^2 - t^2 = 9 - t^2 = 1 \\implies t^2 = 8$이다.'
 ],
-secretTitle: 'x₁ + x₂ = 0 ⟺ k² - t² = 1 ⟹ t² = k² - 1 = 8 (2초 컷!)',
+secretTitle: 'x₁+x₂=0이면 k²−t²=1이므로 t² = k²−1 = 8 (2초 컷!)',
 secretSteps: [
-'⚡ 합차공식 $2^{x_1+x_2} = k^2 - t^2$을 알면 $2^0 = 1 = 3^2 - t^2 \\implies t^2 = 8$이 2초 만에 암산됩니다!'
+'$2^{x_1+x_2} = k^2 - t^2$을 이용하면 $2^0 = 1 = 3^2 - t^2 \\implies t^2 = 8$입니다. (2초 컷!)'
 ]
 }
 ]
@@ -435,36 +435,36 @@ secretSteps: [
   /* ---------- 슬라이더 정의 (원본 buildSlidersForCurrentMode 의 defs 그대로) ---------- */
   const SLIDERS = {
   type1: [
-{ key: 'k', label: '대입값 k (f(k) 부호 조절)', min: 0, max: 8, step: 0.2 },
-{ key: 'n', label: '제곱근 차수 n (홀/짝)', min: 2, max: 7, step: 1 }
+{ key: 'k', label: 'k의 값 (f(k)의 부호가 바뀜)', min: 0, max: 8, step: 0.2 },
+{ key: 'n', label: '거듭제곱근의 지수 n (홀수·짝수)', min: 2, max: 7, step: 1 }
 ],
   type2: [
-{ key: 'maxM', label: '분자 지수 상한 M (1 ≤ m ≤ M)', min: 6, max: 16, step: 1 },
-{ key: 'maxN', label: '제곱근 분모 상한 N (2 ≤ n ≤ N)', min: 3, max: 6, step: 1 }
+{ key: 'maxM', label: 'm의 최댓값 M (1 ≤ m ≤ M)', min: 6, max: 16, step: 1 },
+{ key: 'maxN', label: 'n의 최댓값 N (2 ≤ n ≤ N)', min: 3, max: 6, step: 1 }
 ],
   type3: [
-{ key: 'multP', label: '진수 거듭제곱 지수 p (log x^p)', min: 2, max: 4, step: 1 },
-{ key: 'modeSum', label: '조건 전환 (0: 소수부분 같음, 1: 합이 1)', min: 0, max: 1, step: 1 }
+{ key: 'multP', label: '진수의 지수 p (log xᵖ)', min: 2, max: 4, step: 1 },
+{ key: 'modeSum', label: '조건 선택 (0: 소수부분이 같음, 1: 소수부분의 합이 1)', min: 0, max: 1, step: 1 }
 ],
   type4: [
-{ key: 'multK', label: '앞의 곱셈 계수 k (y = k·2^x)', min: 2, max: 8, step: 0.5 },
+{ key: 'multK', label: '곱한 계수 k (y = k·2ˣ)', min: 2, max: 8, step: 0.5 },
 { key: 'yCut1', label: '아래 수평선 높이 y = t₁', min: 1.0, max: 3.0, step: 0.25 },
 { key: 'yCut2', label: '위 수평선 높이 y = t₂', min: 3.5, max: 6.5, step: 0.25 }
 ],
   type5: [
-{ key: 'baseA', label: '안쪽 곡선 밑 a (y = a^x)', min: 2.5, max: 8.0, step: 0.5 },
-{ key: 'baseB', label: '바깥 곡선 밑 b (y = b^x)', min: 1.6, max: 3.5, step: 0.2 },
-{ key: 'lineT', label: '수평 절단선 높이 y = t', min: 1.5, max: 6.0, step: 0.25 }
+{ key: 'baseA', label: '곡선 y = aˣ의 밑 a (y축에 더 가까운 곡선)', min: 2.5, max: 8.0, step: 0.5 },
+{ key: 'baseB', label: '곡선 y = bˣ의 밑 b', min: 1.6, max: 3.5, step: 0.2 },
+{ key: 'lineT', label: '수평선의 높이 y = t', min: 1.5, max: 6.0, step: 0.25 }
 ],
   type6: [
 { key: 'xMid', label: '가운데 점 B의 x좌표 (x₂)', min: 0.5, max: 2.5, step: 0.25 },
-{ key: 'stepD', label: 'x좌표 등차 간격 d', min: 0.5, max: 2.0, step: 0.25 }
+{ key: 'stepD', label: 'x좌표의 공차 d', min: 0.5, max: 2.0, step: 0.25 }
 ],
   type7: [
-{ key: 'lineT', label: '치환 값 t (= 2^x + 2^(-x))', min: 1.5, max: 5.0, step: 0.1 }
+{ key: 'lineT', label: 't의 값 (t = 2ˣ + 2⁻ˣ)', min: 1.5, max: 5.0, step: 0.1 }
 ],
   type8: [
-{ key: 'asymK', label: '지수 절댓값 점근선 k (|2^x - k|)', min: 2.0, max: 5.0, step: 0.5 },
+{ key: 'asymK', label: '점근선 y = k (|2ˣ − k|의 그래프)', min: 2.0, max: 5.0, step: 0.5 },
 { key: 'lineT', label: '수평선 높이 y = t', min: 0.5, max: 4.5, step: 0.1 }
 ]
   };
@@ -473,7 +473,7 @@ secretSteps: [
   const QUESTIONS = [
     'n제곱근 실근 개수 g(k, n)은 f(k)의 부호와 n의 홀짝에 따라 어떻게 달라질까? f(k) = 0 이면 어떨까?',
     '2^(m/n)이 자연수가 되는 순서쌍 (m, n)은 격자 위에서 어떤 모양으로 놓일까?',
-    '소수부분이 같거나 합이 1이 되는 log x는 톱니파 그래프에서 어디에 있을까?',
+    '소수부분이 같거나 소수부분의 합이 1이 되는 log x는 소수부분의 그래프(톱니 모양)에서 어디에 있을까?',
     'y = k·2ˣ과 y = 2ˣ 사이의 가로 간격은 높이 t가 변하면 함께 변할까?',
     '같은 높이 t에서 두 지수곡선까지의 가로 거리의 비는 t가 변해도 일정할까?',
     'x좌표가 등차수열을 이루면 y = 2ˣ의 함숫값은 어떤 수열을 이룰까?',
@@ -482,8 +482,8 @@ secretSteps: [
   ];
   const GUIDES = [
     '금색 점 P를 좌우로 끌어 k를 바꾸고, 조절 막대의 n으로 홀수·짝수를 바꿔 보세요.',
-    '금색 점을 끌어 상한 M, N을 바꾸고, 보조선을 하나씩 켜 보세요.',
-    '조절 막대로 p와 조건(소수부분 같음 / 합이 1)을 바꾸고, 보조선을 하나씩 켜 보세요.',
+    '금색 점을 끌어 최댓값 M, N을 바꾸고, 보조선을 하나씩 켜 보세요.',
+    '조절 막대로 p와 조건(소수부분이 같음 / 소수부분의 합이 1)을 바꾸고, 보조선을 하나씩 켜 보세요.',
     '점 B와 t₂ 점을 위아래로 끌어 두 수평선의 높이를 바꿔 보세요.',
     '금색 점 B를 위아래로 끌어 높이 t를 바꾸고, 조절 막대로 밑 a, b를 바꿔 보세요.',
     '금색 점 B를 좌우로 끌고, 조절 막대로 공차 d를 바꿔 보세요.',
@@ -702,10 +702,10 @@ hudEq = (
 `$f(k) = (${p.k.toFixed(1)}-${p.r1})(${p.k.toFixed(1)}-${p.r2}) = ${fk.toFixed(2)}, \\quad x^{${n}} = f(k) \\implies \\text{실근 } ${cnt}\\text{개}$`
 );
 cards = [
-{ title: `실근 개수 g(k, ${n})`, val: `${cnt}개`, sub: isEven ? '짝수 차수 (부호 종속)' : '홀수 차수 (무조건 1개!)' },
-{ title: '홀수 제곱근 불변량', val: '1.000', sub: '오차 0.000% (f(k) 무관)' },
-{ title: '음수 구간 자연수 개수', val: `${p.r2 - p.r1 - 1}개`, sub: `구간 (${p.r1}, ${p.r2}) 내부` },
-{ title: '음수 구간 자연수 합', val: `${((p.r1 + p.r2) / 2) * (p.r2 - p.r1 - 1)}`, sub: '대칭축 × 개수 암산' }
+{ title: `실근 개수 g(k, ${n})`, val: `${cnt}개`, sub: isEven ? 'n이 짝수: f(k)의 부호에 따라 달라짐' : 'n이 홀수: 항상 1개' },
+{ title: '홀수 제곱근의 실근의 개수', val: '1개', sub: 'f(k)에 관계없이 항상 1개' },
+{ title: 'f(k) < 0인 자연수 k의 개수', val: `${p.r2 - p.r1 - 1}개`, sub: `${p.r1} < k < ${p.r2}` },
+{ title: 'f(k) < 0인 자연수 k의 합', val: `${((p.r1 + p.r2) / 2) * (p.r2 - p.r1 - 1)}`, sub: '(가운데 값) × (개수)' }
 ];
 } else if (mId === 'type2') {
 const M = Math.round(p.maxM);
@@ -721,10 +721,10 @@ hudEq = (
 `$\\sqrt[n]{2^m} = 2^{\\frac{m}{n}} \\in \\mathbb{N} \\iff n \\mid m \\implies \\sum_{n=2}^{${N}} \\left\\lfloor \\frac{${M}}{n} \\right\\rfloor = ${list.join('+')} = ${total}\\text{개}$`
 );
 cards = [
-{ title: '자연수 조건 총 순서쌍', val: `${total}개`, sub: `몫 합산: ${list.join(' + ')}` },
-{ title: '가우스 몫 공식 오차', val: '0.000%', sub: '전수 조사와 100% 일치' },
-{ title: 'n = 2일 때 배수 개수', val: `${Math.floor(M / 2)}개`, sub: `⌊${M} / 2⌋ 짝수 m` },
-{ title: 'n = 3일 때 배수 개수', val: `${Math.floor(M / 3)}개`, sub: `⌊${M} / 3⌋ 3의 배수 m` }
+{ title: '자연수 조건 총 순서쌍', val: `${total}개`, sub: `몫의 합: ${list.join(' + ')}` },
+{ title: '몫의 합 − 직접 센 개수', val: '0', sub: '두 방법으로 센 결과가 같음' },
+{ title: 'n = 2일 때 배수 개수', val: `${Math.floor(M / 2)}개`, sub: `⌊${M} / 2⌋ (m은 2의 배수)` },
+{ title: 'n = 3일 때 배수 개수', val: `${Math.floor(M / 3)}개`, sub: `⌊${M} / 3⌋ (m은 3의 배수)` }
 ];
 } else if (mId === 'type3') {
 const P = Math.round(p.multP);
@@ -742,23 +742,23 @@ isSum
 : `$\\{\\log x\\} = \\{${P}\\log x\\} \\iff ${coeff}\\log x \\in \\mathbb{Z} \\implies \\log x \\in \\left\\{${sols.join(', ')}\\right\\}$`
 );
 cards = [
-{ title: isSum ? '소수부분 합=1 해 개수' : '소수부분 같음 해 개수', val: `${sols.length}개`, sub: isSum ? `정수점(α=0) 1개 제외됨!` : `정수점 포함 (${coeff}개)` },
-{ title: '유효 log x 값들', val: sols.join(', '), sub: `등분 간격 1 / ${coeff}` },
-{ title: '톱니파 기울기 계수', val: `${coeff}배`, sub: isSum ? `p + 1 = ${P} + 1` : `p - 1 = ${P} - 1` },
-{ title: '소수부분 차이 불변량', val: '0.000%', sub: '정수 계단 돌파 지점 일치' }
+{ title: isSum ? '소수부분의 합이 1인 x의 개수' : '소수부분이 같은 x의 개수', val: `${sols.length}개`, sub: isSum ? `소수부분이 0인 경우(log x가 정수) 1개 제외` : `소수부분이 0인 경우 포함 (${coeff}개)` },
+{ title: '조건을 만족시키는 log x의 값', val: sols.join(', '), sub: `간격 1 / ${coeff}` },
+{ title: '정수가 되는 log x의 계수', val: `${coeff}배`, sub: isSum ? `p + 1 = ${P} + 1` : `p - 1 = ${P} - 1` },
+{ title: '조건 확인 (소수부분의 차, 합일 때는 합 − 1)', val: '0.000', sub: '해에서 조건이 성립함' }
 ];
 } else if (mId === 'type4') {
 const dx = Math.log2(p.multK);
 const dy = p.yCut2 - p.yCut1;
 const area = dx * dy;
 hudEq = (
-`$y = ${p.multK.toFixed(1)}\\cdot 2^x = 2^{x + \\log_2 ${p.multK.toFixed(1)}} \\implies \\text{가로 선분 } \\overline{AB} = \\log_2 ${p.multK.toFixed(1)} = ${dx.toFixed(3)} \\text{ (불변!)}$`
+`$y = ${p.multK.toFixed(1)}\\cdot 2^x = 2^{x + \\log_2 ${p.multK.toFixed(1)}} \\implies \\text{가로 선분 } \\overline{AB} = \\log_2 ${p.multK.toFixed(1)} = ${dx.toFixed(3)}$`
 );
 cards = [
-{ title: '가로 선분 길이 AB', val: dx.toFixed(3), sub: `log₂(${p.multK.toFixed(1)}) 상수 불변량` },
-{ title: '높이 t 변화에 따른 오차', val: '0.000%', sub: `y=${p.yCut1}과 y=${p.yCut2}에서 동일` },
-{ title: '등적 직사각형 넓이 S', val: area.toFixed(3), sub: `가로(${dx.toFixed(2)}) × 세로(${dy.toFixed(2)})` },
-{ title: '계수 ➔ 평행이동 번역', val: `x축 -${dx.toFixed(2)}`, sub: '앞의 곱셈 ➔ 지수 덧셈' }
+{ title: '가로 선분 길이 AB', val: dx.toFixed(3), sub: `log₂(${p.multK.toFixed(1)})로 일정` },
+{ title: '두 높이에서 가로 선분 길이의 차', val: '0.000', sub: `y=${p.yCut1}과 y=${p.yCut2}에서 같음` },
+{ title: '직사각형으로 바꾼 넓이 S', val: area.toFixed(3), sub: `가로(${dx.toFixed(2)}) × 세로(${dy.toFixed(2)})` },
+{ title: '계수 k를 평행이동으로 나타내기', val: `x축 -${dx.toFixed(2)}`, sub: '곱셈 k → 지수의 덧셈 x + log₂k' }
 ];
 } else if (mId === 'type5') {
 const xA = Math.log(p.lineT) / Math.log(p.baseA);
@@ -768,10 +768,10 @@ hudEq = (
 `$y = ${p.baseA.toFixed(1)}^x, \\; y = ${p.baseB.toFixed(2)}^x \\cap (y = ${p.lineT.toFixed(2)}) \\implies \\frac{\\overline{HB}}{\\overline{HA}} = \\log_b a = ${ratio.toFixed(3)}$`
 );
 cards = [
-{ title: '가로 길이 비 HB / HA', val: ratio.toFixed(3), sub: `높이 t=${p.lineT.toFixed(1)}와 무관!` },
-{ title: '밑 로그 비율 log_b(a)', val: (Math.log(p.baseA) / Math.log(p.baseB)).toFixed(3), sub: '오차 0.000% 항상 일치' },
+{ title: '가로 길이 비 HB / HA', val: ratio.toFixed(3), sub: `높이 t=${p.lineT.toFixed(1)}와 관계없음` },
+{ title: '로그 log_b(a)의 값', val: (Math.log(p.baseA) / Math.log(p.baseB)).toFixed(3), sub: 'HB / HA와 같음' },
 { title: '점 A / 점 B의 x좌표', val: `${xA.toFixed(2)}, ${xB.toFixed(2)}`, sub: `log_a(t), log_b(t)` },
-{ title: '두 밑의 거듭제곱 관계', val: `a = b^(${ratio.toFixed(2)})`, sub: '수평 내분비 직독 공식' }
+{ title: '두 밑의 관계', val: `a = b^(${ratio.toFixed(2)})`, sub: 'a = b^(HB/HA)' }
 ];
 } else if (mId === 'type6') {
 const x1 = p.xMid - p.stepD;
@@ -784,9 +784,9 @@ hudEq = (
 );
 cards = [
 { title: '가운데 함숫값 제곱 y₂²', val: (y2 * y2).toFixed(3), sub: `y₂ = ${y2.toFixed(3)}` },
-{ title: '양끝 함숫값 곱 y₁ · y₃', val: (y1 * y3).toFixed(3), sub: '등비중항 오차 0.000%' },
+{ title: '양끝 함숫값 곱 y₁ · y₃', val: (y1 * y3).toFixed(3), sub: 'y₂² = y₁y₃ (등비중항)' },
 { title: 'y좌표 공비 r (= 2^d)', val: r.toFixed(3), sub: `x 공차 d = ${p.stepD.toFixed(2)}` },
-{ title: '세 함숫값의 합 y₁+y₂+y₃', val: (y1 + y2 + y3).toFixed(2), sub: `y₂(1/r + 1 + r) 일치` }
+{ title: '세 함숫값의 합 y₁+y₂+y₃', val: (y1 + y2 + y3).toFixed(2), sub: `y₂(1/r + 1 + r)과 같음` }
 ];
 } else if (mId === 'type7') {
 const t = p.lineT;
@@ -796,10 +796,10 @@ hudEq = (
 `$2^x + 2^{-x} = ${t.toFixed(2)} \\implies \\text{실근 } ${cnt}\\text{개 (합 } 0\\text{)}, \\quad 4^x + 4^{-x} = t^2 - 2 = ${sqVal.toFixed(2)}$`
 );
 cards = [
-{ title: '실근 x의 개수', val: `${cnt}개`, sub: t > 2 ? '±α 대칭 2개' : (Math.abs(t-2)<0.01 ? '꼭짓점 x=0 단독 1개!' : 't < 2 해 없음') },
-{ title: '모든 실근 x의 합', val: '0.000', sub: '우함수(y축 대칭) 불변량' },
+{ title: '실근 x의 개수', val: `${cnt}개`, sub: t > 2 ? '±α 대칭 2개' : (Math.abs(t-2)<0.01 ? '꼭짓점 x=0 하나뿐' : 't < 2 해 없음') },
+{ title: '모든 실근 x의 합', val: '0.000', sub: '근은 ±α 쌍이므로 합은 0' },
 { title: '제곱식 4^x + 4^(-x) 값', val: sqVal.toFixed(2), sub: `t² - 2 = ${t.toFixed(1)}² - 2` },
-{ title: '산술·기하 최솟값 경계', val: '2.000', sub: 'x = 0에서 등호 성립' }
+{ title: '2ˣ + 2⁻ˣ의 최솟값', val: '2.000', sub: 'x = 0에서 등호 성립' }
 ];
 } else if (mId === 'type8') {
 const k = p.asymK;
@@ -811,13 +811,13 @@ const sumX = hasTwo ? Math.log2(prod2) : NaN;
 hudEq = (
 hasTwo
 ? `$|2^x - ${k.toFixed(1)}| = ${t.toFixed(1)} \\implies 2^{x_1+x_2} = ${k.toFixed(1)}^2 - ${t.toFixed(1)}^2 = ${prod2.toFixed(2)}, \\; x_1+x_2 = ${sumX.toFixed(3)}$`
-: `$|2^x - ${k.toFixed(1)}| = ${t.toFixed(1)} \\implies t \\ge k \\text{ 구간이므로 교점 1개만 존재!}$`
+: `$|2^x - ${k.toFixed(1)}| = ${t.toFixed(1)} \\implies t \\ge k \\text{이므로 교점 1개만 존재}$`
 );
 cards = [
-{ title: '교점 개수', val: hasTwo ? '2개 (0 < t < k)' : '1개 (t ≥ k)', sub: `반사 점근선 높이 k = ${k}` },
-{ title: '지수 곱 2^(x₁+x₂)', val: hasTwo ? prod2.toFixed(3) : '단일근', sub: '합차공식 k² - t² 일치' },
+{ title: '교점 개수', val: hasTwo ? '2개 (0 < t < k)' : '1개 (t ≥ k)', sub: `점근선 y = k = ${k}` },
+{ title: '지수 곱 2^(x₁+x₂)', val: hasTwo ? prod2.toFixed(3) : '단일근', sub: 'k² − t²과 같음' },
 { title: '두 실근의 합 x₁ + x₂', val: hasTwo ? sumX.toFixed(3) : '단일근', sub: hasTwo ? `log₂(${prod2.toFixed(2)})` : '-' },
-{ title: '합차공식 항등식 오차', val: '0.000%', sub: '(k-t)(k+t) = k² - t²' }
+{ title: '(k−t)(k+t) − (k²−t²)의 값', val: '0', sub: '곱셈 공식' }
 ];
 }
 
@@ -840,7 +840,7 @@ q.r2 = pick[1];
 q.k = (pick[0] + pick[1]) / 2;
 const cnt = pick[1] - pick[0] - 1;
 const sumK = q.k * cnt;
-problem = `**[🎲 쌍둥이 변형]** $f(x) = (x-${pick[0]})(x-${pick[1]})$에서 짝수 제곱근 실근이 $0$개인 자연수 $k$는 총 $${cnt}$개이며, 그 합은 대칭축 $${q.k} \\times ${cnt} = ${sumK}$입니다!`;
+problem = `**[숫자를 바꾼 문제]** $f(x) = (x-${pick[0]})(x-${pick[1]})$에서 짝수 제곱근의 실근이 $0$개인 자연수 $k$는 총 $${cnt}$개이며, 그 합은 (가운데 값)×(개수)이므로 $${q.k} \\times ${cnt} = ${sumK}$입니다.`;
 } else if (mId === 'type2') {
 const mVal = [10, 12, 14, 16][Math.floor(Math.random() * 4)];
 const nVal = [4, 5, 6][Math.floor(Math.random() * 3)];
@@ -848,7 +848,7 @@ q.maxM = mVal;
 q.maxN = nVal;
 let tot = 0;
 for (let n = 2; n <= nVal; n++) tot += Math.floor(mVal / n);
-problem = `**[🎲 쌍둥이 변형]** $1 \\le m \\le ${mVal},\\; 2 \\le n \\le ${nVal}$에서 $\\sqrt[n]{2^m}$이 자연수가 되는 순서쌍 $(m, n)$의 총개수는 가우스 몫 공식으로 **${tot}개**입니다!`;
+problem = `**[숫자를 바꾼 문제]** $1 \\le m \\le ${mVal},\\; 2 \\le n \\le ${nVal}$에서 $\\sqrt[n]{2^m}$이 자연수가 되는 순서쌍 $(m, n)$의 총개수는 $n$마다 $${mVal}$을 $n$으로 나눈 몫을 더하여 **${tot}개**입니다.`;
 } else if (mId === 'type3') {
 const pVal = [2, 3, 4][Math.floor(Math.random() * 3)];
 const isSum = Math.random() < 0.5 ? 0 : 1;
@@ -856,39 +856,39 @@ q.multP = pVal;
 q.modeSum = isSum;
 const coeff = isSum ? pVal + 1 : pVal - 1;
 problem = isSum
-? `**[🎲 쌍둥이 변형]** $1 < \\log x < 2$에서 $\\log x$와 $\\log x^{${pVal}}$의 **소수부분의 합이 $1$**일 조건은 **$(1+${pVal})\\log x = ${coeff}\\log x = \\text{정수}$**입니다!`
-: `**[🎲 쌍둥이 변형]** $1 \\le \\log x < 2$에서 $\\log x$와 $\\log x^{${pVal}}$의 **소수부분이 같을** 조건은 **$(${pVal}-1)\\log x = ${coeff}\\log x = \\text{정수}$**입니다!`;
+? `**[숫자를 바꾼 문제]** $1 < \\log x < 2$에서 $\\log x$와 $\\log x^{${pVal}}$의 **소수부분의 합이 $1$**일 조건은 **$(1+${pVal})\\log x = ${coeff}\\log x = \\text{정수}$**입니다.`
+: `**[숫자를 바꾼 문제]** $1 \\le \\log x < 2$에서 $\\log x$와 $\\log x^{${pVal}}$의 **소수부분이 같을** 조건은 **$(${pVal}-1)\\log x = ${coeff}\\log x = \\text{정수}$**입니다.`;
 } else if (mId === 'type4') {
 const kVal = [2, 4, 8][Math.floor(Math.random() * 3)];
 const dx = Math.log2(kVal);
 q.multK = kVal;
-problem = `**[🎲 쌍둥이 변형]** $y = 2^x$과 $y = ${kVal}\\cdot 2^x = 2^{x+${dx}}$의 가로 간격 불변량은 **$\\overline{AB} = \\log_2 ${kVal} = ${dx}$**입니다!`;
+problem = `**[숫자를 바꾼 문제]** $y = 2^x$과 $y = ${kVal}\\cdot 2^x = 2^{x+${dx}}$의 가로 간격은 높이에 관계없이 일정하며 **$\\overline{AB} = \\log_2 ${kVal} = ${dx}$**입니다.`;
 } else if (mId === 'type5') {
 const r = [2, 3][Math.floor(Math.random() * 2)];
 q.baseB = 2;
 q.baseA = Math.pow(2, r);
-problem = `**[🎲 쌍둥이 변형]** 수평선 $y=t$에서 $\\overline{HA} : \\overline{HB} = 1 : ${r}$이면 밑은 역비 거듭제곱으로 **$a = b^{${r}}$** ($\log_b a = ${r}$)입니다!`;
+problem = `**[숫자를 바꾼 문제]** 수평선 $y=t$에서 $\\overline{HA} : \\overline{HB} = 1 : ${r}$이면 **$a = b^{${r}}$** ($\\log_b a = ${r}$)입니다.`;
 } else if (mId === 'type6') {
 const dVal = [1, 1.5, 2][Math.floor(Math.random() * 3)];
 q.stepD = dVal;
 const ratioR = Math.pow(2, dVal).toFixed(2);
-problem = `**[🎲 쌍둥이 변형]** $y = 2^x$ 위의 세 점의 $x$좌표가 공차 $d = ${dVal}$인 등차수열을 이루면, $y$좌표는 공비가 **$r = 2^{${dVal}} = ${ratioR}$**인 등비수열($y_2^2 = y_1 y_3$)을 이룹니다!`;
+problem = `**[숫자를 바꾼 문제]** $y = 2^x$ 위의 세 점의 $x$좌표가 공차 $d = ${dVal}$인 등차수열을 이루면, $y$좌표는 공비가 **$r = 2^{${dVal}} = ${ratioR}$**인 등비수열($y_2^2 = y_1 y_3$)을 이룹니다.`;
 } else if (mId === 'type7') {
 const tVal = [2.0, 2.5, 3.0, 4.25][Math.floor(Math.random() * 4)];
 q.lineT = tVal;
-problem = `**[🎲 쌍둥이 변형]** $2^x + 2^{-x} = ${tVal}$의 실근은 ${tVal === 2 ? '꼭짓점 $x=0$ **단 1개**' : '$y$축 대칭인 **2개(합 $= 0.000$)**'}입니다!`;
+problem = `**[숫자를 바꾼 문제]** $2^x + 2^{-x} = ${tVal}$의 실근은 ${tVal === 2 ? '$x=0$ **하나뿐**' : '$y$축에 대하여 대칭인 **2개(합 $= 0$)**'}입니다.`;
 } else if (mId === 'type8') {
 const kVal = [3, 4, 5][Math.floor(Math.random() * 3)];
 const tVal = [1, 2][Math.floor(Math.random() * 2)];
 q.asymK = kVal;
 q.lineT = tVal;
 const prod = kVal * kVal - tVal * tVal;
-problem = `**[🎲 쌍둥이 변형]** $|2^x - ${kVal}| = ${tVal}$의 두 교점 $x_1, x_2$에 대하여 합차공식 불변량으로 **$2^{x_1 + x_2} = ${kVal}^2 - ${tVal}^2 = ${prod}$**입니다!`;
+problem = `**[숫자를 바꾼 문제]** $|2^x - ${kVal}| = ${tVal}$의 두 교점 $x_1, x_2$에 대하여 **$2^{x_1 + x_2} = ${kVal}^2 - ${tVal}^2 = ${prod}$**입니다.`;
 }
     Object.assign(s, mapP(m, q));
     s.twinSnap = mapP(m, q);
     s.twinText = APLab.stripEmoji(problem);
-    APLab.toast('새로운 쌍둥이 숫자 변형 문제가 만들어졌습니다');
+    APLab.toast('숫자를 바꾼 새 문제가 만들어졌습니다');
   }
 
   /* ---------- 5. 유형별 칠판 그리기 (원본 renderType1~8 그대로, 상태 s 를 인자로 받도록만 바꿈) ---------- */
@@ -957,7 +957,7 @@ drawMathPoint(m, n, '', 'rgba(148, 163, 184, 0.25)', 3);
 
 if ((ST.step >= 3)) {
 const rPos = mathToScreen(M + 1.8, n);
-drawCanvasBadge(ctx, `n=${n}층: ⌊${M}/${n}⌋ = ${rowCnt}개`, rPos.x, rPos.y, '#38bdf8');
+drawCanvasBadge(ctx, `n=${n}인 줄: ⌊${M}/${n}⌋ = ${rowCnt}개`, rPos.x, rPos.y, '#38bdf8');
 }
 }
 
@@ -1000,7 +1000,7 @@ const isZeroTrap = (isSum && m === coeff);
 drawMathPoint(
 uSol,
 0,
-isZeroTrap ? `✕ α=0 제외!` : `logx=${m}/${coeff}`,
+isZeroTrap ? `✕ 소수부분 0 (제외)` : `logx=${m}/${coeff}`,
 isZeroTrap ? '#fb7185' : '#fbbf24',
 7
 );
@@ -1138,7 +1138,7 @@ drawMathPoint(-alpha, p.lineT, `-α=${(-alpha).toFixed(2)}`, '#38bdf8', 6.5);
 drawMathPoint(alpha, p.lineT, `+α=${alpha.toFixed(2)}`, '#38bdf8', 6.5);
 }
 
-drawMathPoint(0, 2, '산술기하 최솟값 (0, 2)', '#fb7185', 6.5, false, null, { dx: 12, dy: 22 });
+drawMathPoint(0, 2, '최솟값 (0, 2)', '#fb7185', 6.5, false, null, { dx: 12, dy: 22 });
 drawMathPoint(0, p.lineT, `y = t (${p.lineT.toFixed(2)}) [위아래 드래그]`, '#fbbf24', 8, true, (mPos) => {
 ST[K('lineT')] = Math.max(1.5, Math.min(5.0, Math.round(mPos.y * 10) / 10));
 }, { dx: 0, dy: -24, align: 'center' }); // [2.0 수정] 두 근 라벨(−α, +α)과 겹치지 않게 위로
@@ -1172,7 +1172,7 @@ const x1 = Math.log2(k - t);
 drawMathPoint(x1, t, `x₁=${x1.toFixed(2)}`, '#fb7185', 6.5);
 if ((ST.step >= 3)) {
 const fPos = mathToScreen((x1 + x2) / 2, t + 1.0);
-drawCanvasBadge(ctx, `⚡ 합차공식 불변량: 2^(x₁+x₂) = k² - t² = ${(k*k - t*t).toFixed(2)}`, fPos.x, fPos.y, '#fbbf24');
+drawCanvasBadge(ctx, `2^(x₁+x₂) = k² − t² = ${(k*k - t*t).toFixed(2)}`, fPos.x, fPos.y, '#fbbf24');
 }
 }
 
@@ -1211,8 +1211,8 @@ ST[K('lineT')] = Math.max(0.5, Math.min(4.5, Math.round(mPos.y * 10) / 10));
   const READ_COLORS = ['amber', 'sky', 'green', 'violet'];
   const MUTATORS = [
     { id: 'symY', key: 'mut_symY', icon: 'split', label: 'y축 대칭 곡선(a⁻ˣ)' },
-    { id: 'abs', key: 'mut_abs', icon: 'spark', label: '|f(x)| 절댓값 반전' },
-    { id: 'dots', key: 'mut_dots', icon: 'grid', label: '정수 격자 도트' }
+    { id: 'abs', key: 'mut_abs', icon: 'spark', label: '|f(x)|의 그래프 보기' },
+    { id: 'dots', key: 'mut_dots', icon: 'grid', label: '격자점 표시' }
   ];
 
   function sceneOf(m, j) {
@@ -1221,7 +1221,7 @@ ST[K('lineT')] = Math.max(0.5, Math.min(4.5, Math.round(mPos.y * 10) / 10));
     return {
       id: 't' + (m + 1) + 'ab'[j],
       title: sc.chip,
-      short: '기출 ' + 'AB'[j],
+      short: '문제 ' + 'AB'[j],
       question: QUESTIONS[m],
       guide: GUIDES[m],
       startStep: 2,
@@ -1231,7 +1231,7 @@ ST[K('lineT')] = Math.max(0.5, Math.min(4.5, Math.round(mPos.y * 10) / 10));
       controls: (SLIDERS[md.id] || []).map((d) => pk(m, d.key)),
       actions: () => [
         ...MUTATORS.map((a) => ({ id: a.id, icon: a.icon, label: a.label, on: (s) => !!s[a.key], run: (s) => { s[a.key] = !s[a.key]; } })),
-        { id: 'twin', icon: 'wand', label: '쌍둥이 숫자 변형', primary: true, run: (s) => twin(s, m) }
+        { id: 'twin', icon: 'wand', label: '숫자를 바꾼 문제', primary: true, run: (s) => twin(s, m) }
       ],
       steps: md.stepDescs.map((d, i) => stepText(md.stepLabels[i] + ': ' + d.replace(/^Step\s*\d+\s*:\s*/, ''))),
       problem: {
@@ -1241,8 +1241,8 @@ ST[K('lineT')] = Math.max(0.5, Math.min(4.5, Math.round(mPos.y * 10) / 10));
         snap: (s) => s.twinSnap || mapP(m, sc.snapParams)
       },
       solution: {
-        standardTitle: sc.textbookTitle, standardTag: '교과서 정석',
-        quickTitle: sc.secretTitle, quickTag: '10초 컷 비기',
+        standardTitle: sc.textbookTitle, standardTag: '교과서 풀이',
+        quickTitle: sc.secretTitle, quickTag: '10초 컷',
         standard: { steps: lines(sc.textbookSteps) },
         quick: { steps: lines(sc.secretSteps) }
       },
