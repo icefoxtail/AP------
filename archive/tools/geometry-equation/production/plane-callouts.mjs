@@ -11,15 +11,16 @@
 // The copies are real points of the picture named `<callout id>__<point id>`; its marks are the ordinary plane marks, written on the copies and checked by the same code
 // (planeMarkSpec) and by the independent observer, which also reads the copies back against the main figure's own points.
 import {planeMarkSpec,dimensionSites,PLANE_RECIPE,isPlaneFigure} from './plane-marks.mjs';
-export const CALLOUT_KINDS=['SEGMENT'];
+export const CALLOUT_KINDS=['SEGMENT','ANGLE'];
 export const CALLOUT_SIDES=['RIGHT','LEFT','ABOVE','BELOW'];
 export const CALLOUT_ORIENTATIONS=['HORIZONTAL','VERTICAL'];
-export const CALLOUT_LINKS={SEGMENT:['NONE','ENDS']};
-export const CALLOUT_MAX=3,CALLOUT_PATH_MAX=6;
+export const CALLOUT_LINKS={SEGMENT:['NONE','ENDS'],ANGLE:['NONE','VERTEX']};
+export const CALLOUT_MAX=3,CALLOUT_PATH_MAX=6,CALLOUT_RAYS_MAX=5;
+export const CALLOUT_RAY_MIN_DEGREES=0.5;   // two rays of one fan closer than this are one ray
 export const CALLOUT_SCALE_MIN=0.5,CALLOUT_SCALE_MAX=4;
 export const CALLOUT_SEP='__';
 export const CALLOUT_ID=/^[A-Za-z][A-Za-z0-9]{0,7}$/;
-const KEYS={SEGMENT:['id','kind','path','at','scale','gap','orientation','link','dimensions','marks'],marks:['equalLengths','expressionLabels']};
+const KEYS={SEGMENT:['id','kind','path','at','scale','gap','orientation','link','dimensions','marks'],ANGLE:['id','kind','vertex','rays','at','radius','gap','link','angles','marks'],marks:['equalLengths','expressionLabels']};
 const bad=code=>{throw Error(code);};
 const sub=(p,q)=>[p[0]-q[0],p[1]-q[1]];
 const norm=v=>Math.hypot(v[0],v[1]);
@@ -29,8 +30,12 @@ const MARK_ID_KEYS=['angles','equalLengths','parallels','expressionLabels','arcs
 
 /** The callout rows of a plan ([] without any). */
 export const calloutRows=plan=>Array.isArray(plan?.planeMarks?.callouts)?plan.planeMarks.callouts:[];
+/** The main points a callout row draws again, from the row alone: a SEGMENT's path, an ANGLE's vertex and rays. */
+export const calloutRowPoints=row=>!isObject(row)?[]:(row.kind==='ANGLE'?[row.vertex,...(Array.isArray(row.rays)?row.rays:[])]:Array.isArray(row.path)?row.path:[]).filter(id=>typeof id==='string');
+/** The copies a plan's callouts draw, from the plan alone: [{id:'<callout id>__<point id>',point:'<point id>'}]. */
+export const calloutCopies=plan=>calloutRows(plan).flatMap(row=>isObject(row)&&typeof row.id==='string'?calloutRowPoints(row).map(point=>({id:row.id+CALLOUT_SEP+point,point})):[]);
 /** The point ids a plan's callouts draw (their copies), from the plan alone: `<callout id>__<point id>`. */
-export const calloutPointIds=plan=>calloutRows(plan).flatMap(row=>isObject(row)&&typeof row.id==='string'&&Array.isArray(row.path)?row.path.filter(id=>typeof id==='string').map(id=>row.id+CALLOUT_SEP+id):[]);
+export const calloutPointIds=plan=>calloutCopies(plan).map(copy=>copy.id);
 /** The scoped id of a callout's own point, segment or mark. */
 export const calloutScopedId=(calloutId,id)=>calloutId+CALLOUT_SEP+id;
 
@@ -98,6 +103,24 @@ export function calloutEntries(plan,points,bounds,hidden=new Set()){
       entry.pieces=path.slice(1).map((id,i)=>({id:'s'+(i+1),from:path[i],to:id,mainLength:lengths[i]}));
       if(link==='ENDS')entry.guides=[path[0],path[path.length-1]].map((id,i)=>({id:'g'+(i+1),mainPoint:id,mainAt:coords[i?path.length-1:0]}));
     }
+    if(row.kind==='ANGLE'){
+      const {vertex,rays}=row;
+      if(typeof vertex!=='string'||!Array.isArray(rays)||rays.length<2||rays.length>CALLOUT_RAYS_MAX||rays.some(id=>typeof id!=='string')||new Set(rays).size!==rays.length||rays.includes(vertex))bad('CALLOUT_RAYS_INVALID:'+cid);
+      const v=main(vertex),vectors=rays.map(id=>sub(main(id),v)),lengths=vectors.map(norm);
+      if(lengths.some(length=>!(length>1e-9)))bad('CALLOUT_RAY_DEGENERATE:'+cid);
+      const units=vectors.map((vec,i)=>[vec[0]/lengths[i],vec[1]/lengths[i]]);
+      for(let i=0;i<units.length;i++)for(let j=i+1;j<units.length;j++)if(Math.acos(Math.max(-1,Math.min(1,units[i][0]*units[j][0]+units[i][1]*units[j][1])))*180/Math.PI<CALLOUT_RAY_MIN_DEGREES)bad('CALLOUT_RAYS_COINCIDE:'+cid);
+      // every ray of the fan is as long as `radius` (default 0.7 of the longest main ray): only lengths are enlarged, every direction is the main figure's own
+      const radius=row.radius===undefined?0.7*Math.max(...lengths):numberOf(row.radius);
+      if(radius===null||!(radius>0)||radius>20*span)bad('CALLOUT_RADIUS_INVALID:'+cid);
+      const offsets=[[0,0],...units.map(u=>[u[0]*radius,u[1]*radius])];
+      const shift=place(offsets,at,gap,bounds);
+      entry.local[vertex]=[shift[0],shift[1]];
+      rays.forEach((id,i)=>{entry.local[id]=[offsets[i+1][0]+shift[0],offsets[i+1][1]+shift[1]];});
+      entry.order=[vertex,...rays];entry.radius=radius;entry.vertex=vertex;entry.rays=[...rays];
+      entry.pieces=rays.map((id,i)=>({id:'r'+(i+1),from:vertex,to:id}));
+      if(link==='VERTEX')entry.guides=[{id:'g1',mainPoint:vertex,mainAt:v}];
+    }
     // ---- the marks, written with the main figure's ids and moved onto the copies
     entry.segmentIds=new Set(entry.pieces.map(piece=>prefix+piece.id));
     const pieceOf=(pair,where,id)=>{
@@ -126,6 +149,16 @@ export function calloutEntries(plan,points,bounds,hidden=new Set()){
       return out;
     });
     if(dimensions.length)marks.dimensions=dimensions;
+    // angle marks of a fan: an angle between two of its rays at its vertex, written with the main figure's ids (the same value, equal marks, labels)
+    const angleRows=list(row.angles,'angles').map(a=>{
+      object(a,'angles');
+      if(!Array.isArray(a.refs)||a.refs.length!==3||a.refs[1]!==entry.vertex||a.refs[0]===a.refs[2])bad('CALLOUT_ANGLE_REFS_INVALID:'+cid+'.'+a.id);
+      const refs=a.refs.map(id=>inside(id,'angles',a.id));
+      const out={...a,id:prefix+a.id,refs};
+      if(a.over!==undefined)out.over=Array.isArray(a.over)?a.over.map(id=>typeof id==='string'?prefix+id:id):a.over;
+      return out;
+    });
+    if(angleRows.length)marks.angles=angleRows;
     const extra=row.marks===undefined?{}:object(row.marks,'marks');
     for(const key of Object.keys(extra))if(!KEYS.marks.includes(key))bad('CALLOUT_FIELD_INVALID:'+cid+'.marks.'+key);
     const equal=list(extra.equalLengths,'marks.equalLengths').map(e=>{

@@ -127,3 +127,58 @@ test('E37 segment callout: a plan without callouts is the old figure byte for by
   expectComposed(without);assert.equal(without.svg,again.svg);
   assert.ok(!without.svg.includes('__'),'no callout element in a figure without callouts');
 });
+
+// ---- angle callout: the fan at B of an isosceles triangle with its circumcentre O and incentre I (26 왕운중 2학기 중간 q8), drawn again to the right with the arcs and values of the angles at B
+const frac=(n,d)=>({kind:'rational',numerator:String(n),denominator:String(d)});
+const fanNodes=plane([source('B',0,0),source('C',10,0),node('A','SOURCE_POINT',[],'POINT',{coordinates:[int(5),frac('24210259','1573278')]}),node('O','SOURCE_POINT',[],'POINT',{coordinates:[int(5),frac('63317959','9200638')]}),
+  node('I','SOURCE_POINT',[],'POINT',{coordinates:[int(5),frac('12098833','3330523')]}),source('M',5,0)]);
+const fanSegments=[['sAB','A','B'],['sBC','B','C'],['sCA','C','A'],['sBO','B','O'],['sCO','C','O'],['sBI','B','I'],['sCI','C','I']].map(([id,a,b])=>({id,refs:[a,b]}));
+const fanRow=(extra={})=>({id:'kB',kind:'ANGLE',vertex:'B',rays:['C','I','O','A'],at:'RIGHT',angles:[
+  {id:'aIBC',refs:['C','B','I'],value:36,label:'36',ring:1,style:'ARC',factRole:'DERIVED_INTERMEDIATE'},
+  {id:'aOBC',refs:['C','B','O'],value:54,label:'54',ring:2,style:'ARC',factRole:'DERIVED_INTERMEDIATE'},
+  {id:'aOBI',refs:['I','B','O'],value:18,noLabel:true,ring:3,emphasisGroup:1,factRole:'CONCLUSION'}],...extra});
+const fanPlan=(row=fanRow(),extra={})=>({capability:'construction-spike-v1',caption:'이등변삼각형 ABC의 외심 O와 내심 I에서 B의 각을 따로 그렸다.',mathPlan:fanNodes,displayPoints:['A','B','C','O','I','M'],displayLines:[],displayCircles:[],
+  displaySegments:fanSegments,coordinateCanvas:{width:720,height:600},planeMarks:{callouts:[row]},...extra});
+
+test('E37 angle callout: the fan at B drawn again keeps every angle of the original, with the arcs and values of the angles at B; every audit passes',async()=>{
+  const model=await modelOf(fanNodes),plan=fanPlan(),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  const transform=await transformOf(plan,model),report=await observe(composed.svg,fanNodes,plan.planeMarks,plan.displaySegments,transform);
+  assert.deepEqual(report.errors,[]);
+  const angle=id=>report.observations.find(row=>row.type==='ANGLE'&&row.id===id).drawnDegrees;
+  assert.ok(Math.abs(angle('kB__aIBC')-36)<0.01&&Math.abs(angle('kB__aOBC')-54)<0.01&&Math.abs(angle('kB__aOBI')-18)<0.01,'the original angles, whatever the lengths');
+  const b=['B','C','I','O','A'].map(id=>scaled(composed.svg,'kB__'+id)),lengths=b.slice(1).map(q=>Math.hypot(q[0]-b[0][0],q[1]-b[0][1]));
+  assert.ok(lengths.every(l=>Math.abs(l-lengths[0])<1e-6),'every ray of the fan is as long as the radius');
+  // tamper: a ray end moved along its own ray changes its length, one moved across it turns it
+  const iTag=tagOf(composed.svg,'kB__I'),at=scaled(composed.svg,'kB__I');
+  const longer=composed.svg.replace(iTag,iTag.replace(/\scx="[^"]*"/,' cx="'+(at[0]+25).toFixed(3)+'"'));
+  assert.ok(codes(await observe(longer,fanNodes,plan.planeMarks,plan.displaySegments,transform)).some(code=>['CALLOUT_RAY_LENGTH_MISMATCH','CALLOUT_ANGLE_MISMATCH'].includes(code)));
+  assert.ok(codes(await observe(composed.svg,fanNodes,{callouts:[fanRow({radius:5})]},plan.displaySegments,transform)).includes('CALLOUT_RADIUS_MISMATCH'));
+  assert.ok(codes(await observe(composed.svg,fanNodes,{callouts:[fanRow({at:'ABOVE'})]},plan.displaySegments,transform)).includes('CALLOUT_SIDE_MISMATCH'));
+  // the display names of a plan are read back on the copies too
+  assert.equal(observeDisplayedPointNames(composed.svg,planNameExpectations({...plan,pointNames:{B:'B',C:'C',I:'I',O:'O',A:'A'}})).errors.length,0);
+  assert.equal(planNameExpectations({...plan,pointNames:{B:'B'}}).filter(row=>row.owner==='kB__B').length,1);
+});
+
+test('E37 angle callout: guide line to the vertex, a radius, the other sides, and plan errors with explicit codes',async()=>{
+  const model=await modelOf(fanNodes);
+  const guided=fanPlan(fanRow({link:'VERTEX',radius:9,at:'BELOW'}),{coordinateCanvas:{width:640,height:600}}),composed=await composeOf(guided,model);
+  expectComposed(composed);
+  const guide=tagOf(composed.svg,'kB__g1');assert.equal(attr(guide,'stroke'),'#8a8a8a');assert.equal(attr(guide,'data-role'),'guide');
+  const transform=await transformOf(guided,model);
+  assert.deepEqual((await observe(composed.svg,fanNodes,guided.planeMarks,guided.displaySegments,transform)).errors,[]);
+  assert.ok(codes(await observe(composed.svg.replace(guide,''),fanNodes,guided.planeMarks,guided.displaySegments,transform)).includes('CALLOUT_GUIDE_MISSING'));
+  const err=(row,extra)=>specError(fanPlan(row,extra),model);
+  assert.equal(err(fanRow({rays:['C']})),'CALLOUT_RAYS_INVALID:kB');
+  assert.equal(err(fanRow({rays:['C','B']})),'CALLOUT_RAYS_INVALID:kB');
+  assert.equal(err(fanRow({rays:['C','C']})),'CALLOUT_RAYS_INVALID:kB');
+  assert.equal(err(fanRow({vertex:undefined})),'CALLOUT_RAYS_INVALID:kB');
+  assert.equal(err(fanRow({rays:['C','M']})),'CALLOUT_RAYS_COINCIDE:kB');
+  assert.equal(err(fanRow({radius:0})),'CALLOUT_RADIUS_INVALID:kB');
+  assert.equal(err(fanRow({link:'ENDS'})),'CALLOUT_LINK_INVALID:kB');
+  assert.equal(err(fanRow({path:['C','I']})),'CALLOUT_FIELD_INVALID:kB.path');
+  assert.equal(err(fanRow({dimensions:[]})),'CALLOUT_FIELD_INVALID:kB.dimensions');
+  assert.equal(err(fanRow({angles:[{id:'aX',refs:['C','I','O'],value:18,label:'18'}]})),'CALLOUT_ANGLE_REFS_INVALID:kB.aX');
+  assert.equal(err(fanRow({angles:[{id:'aX',refs:['C','B','M'],value:36,label:'36'}]})),'CALLOUT_TARGET_UNKNOWN:kB.angles:aX');
+  assert.equal(err(fanRow({angles:[{id:'aX',refs:['C','B','I'],value:40,label:'40'}]})),'ANGLE_MARK_FACT_MISMATCH:kB__aX:declared=40:drawn=36.000');
+});

@@ -658,7 +658,7 @@ export function planeMarkPointRefs(plan){
   for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])refs.push(row?.from,row?.to);
   for(const row of Array.isArray(marks.pathLabels)?marks.pathLabels:[])if(Array.isArray(row?.points))refs.push(...row.points);
   for(const row of Array.isArray(marks.textLabels)?marks.textLabels:[])if(typeof row?.at==='string')refs.push(row.at);
-  for(const row of Array.isArray(marks.callouts)?marks.callouts:[]){if(Array.isArray(row?.path))refs.push(...row.path);}   // E37: the points a callout draws again
+  for(const row of Array.isArray(marks.callouts)?marks.callouts:[]){if(Array.isArray(row?.path))refs.push(...row.path);if(row?.kind==='ANGLE'){refs.push(row.vertex);if(Array.isArray(row.rays))refs.push(...row.rays);}}   // E37: the points a callout draws again
   for(const row of Array.isArray(marks.angleSums)?marks.angleSums:[])if(typeof row?.at==='string')refs.push(row.at);
   for(const row of Array.isArray(marks.traces)?marks.traces:[]){refs.push(row?.center,row?.radius?.point,...(Array.isArray(row?.through)?row.through:[]));}
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}

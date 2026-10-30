@@ -1,0 +1,334 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "8"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "C",
+     "B"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "6"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "108"
+     },
+     "turn": "CW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "D"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "-8"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "D",
+     "A"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "36"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lDE",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "D",
+     "P"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lAE",
+    "op": "PERPENDICULAR_THROUGH",
+    "inputs": [
+     "A",
+     "lDE"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "E",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lDE",
+     "lAE"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sDA",
+   "refs": [
+    "D",
+    "A"
+   ]
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "id": "sED",
+   "refs": [
+    "E",
+    "D"
+   ]
+  }
+ ],
+ "rightAngles": [
+  {
+   "id": "rE",
+   "refs": [
+    "A",
+    "E",
+    "D"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aC",
+    "refs": [
+     "B",
+     "C",
+     "D"
+    ],
+    "value": 108,
+    "label": "108",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aX",
+    "refs": [
+     "D",
+     "A",
+     "E"
+    ],
+    "label": "x",
+    "factRole": "CONCLUSION"
+   }
+  ],
+  "parallels": [
+   {
+    "id": "pAD",
+    "count": 1,
+    "segments": [
+     "sDA",
+     "sBC"
+    ]
+   },
+   {
+    "id": "pAB",
+    "count": 2,
+    "segments": [
+     "sAB",
+     "sCD"
+    ]
+   }
+  ],
+  "callouts": [
+   {
+    "id": "kD",
+    "kind": "ANGLE",
+    "vertex": "D",
+    "rays": [
+     "A",
+     "E",
+     "C"
+    ],
+    "at": "BELOW",
+    "angles": [
+     {
+      "id": "aADE",
+      "refs": [
+       "A",
+       "D",
+       "E"
+      ],
+      "value": 36,
+      "label": "36",
+      "equalGroup": 1,
+      "arcs": 1,
+      "factRole": "DERIVED_INTERMEDIATE"
+     },
+     {
+      "id": "aEDC",
+      "refs": [
+       "E",
+       "D",
+       "C"
+      ],
+      "value": 36,
+      "label": "36",
+      "equalGroup": 1,
+      "arcs": 1,
+      "factRole": "DERIVED_INTERMEDIATE"
+     },
+     {
+      "id": "aADC",
+      "refs": [
+       "A",
+       "D",
+       "C"
+      ],
+      "value": 72,
+      "label": "72",
+      "arcs": 1,
+      "over": [
+       "aADE",
+       "aEDC"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+     }
+    ]
+   }
+  ]
+ },
+ "caption": "평행사변형에서 ∠C=108°이므로 ∠D=72°이고, DE가 ∠D를 이등분하므로 ∠ADE=∠EDC=36°, AE⊥DE이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "평행사변형 ABCD, ∠C=108°, DE는 ∠D의 이등분선, AE⊥DE",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "∠ADE=∠EDC=36° (같은 호), AB∥DC, AD∥BC"
+ ],
+ "sourceQuote": "$DE$가 $\\angle D$를 이등분하므로",
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 600
+ }
+}
