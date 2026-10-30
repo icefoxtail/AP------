@@ -690,7 +690,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:296415b08f569fa0ec2cf719814d7e047ef542cef7480c62aa779d73cbe8b2ac",
-      "difficultyEvidenceSha": "sha256:486da0c2993b17a9ea979fa077bbea76ce636572b444e365bb16986eb260504c"
+      "difficultyEvidenceSha": "sha256:486da0c2993b17a9ea979fa077bbea76ce636572b444e365bb16986eb260504c",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 밝기(럭스)별 도수를 나타낸 히스토그램. 보이는 막대의 도수는 4, 6, 5, 2이고, 찢어져 보이지 않는 두 계급은 점선 테두리로 나타냈다. 16~18럭스 계급에는 2x, 20~22럭스 계급에는 x가 적혀 있고, 아래 괄호에 전체 50개가 표시되어 있다.",
+      "solutionImageCaption": "히스토그램에서 보이는 도수 4, 6, 5, 2와, 점선으로 나타낸 16~18럭스의 2x개, 20~22럭스의 x개를 묶어 전체 50개로 나타냈다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 16,

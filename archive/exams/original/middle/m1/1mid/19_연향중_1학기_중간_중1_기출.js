@@ -297,7 +297,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 열린 점 -9/2와 9/2를 찍고, 그 사이에 놓인 정수 -4부터 4까지를 점으로 나타낸 그림이다.",
+    "solutionImageCaption": "절댓값이 같고 차가 9인 두 수 -9/2, 9/2 사이의 정수를 수직선에 점으로 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,

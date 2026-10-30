@@ -1018,14 +1018,17 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "solutionImage": "",
+    "solutionImage": "assets/images/26_왕의중_1학기_중간_중2_수학/q18-solution.svg",
     "tags": [
       "객관식",
       "일차부등식",
       "일차부등식"
     ],
     "itemStatus": "READY_FOR_REVIEW",
-    "sourceMode": "EXTRACTED_JS_ASSETS"
+    "sourceMode": "EXTRACTED_JS_ASSETS",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄에 두 부등식의 해를 나타낸 그림이다. 첫째 줄은 x≥-3/2이고 둘째 줄은 x≥(-2a+1)/2이며, 해가 서로 같으려면 두 끝점이 같은 자리여야 함을 보여 준다.",
+    "solutionImageCaption": "두 부등식의 해가 같으려면 끝점이 같아야 한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
