@@ -589,21 +589,23 @@ window.addEventListener('DOMContentLoaded', function () {
           };
         }
         // pitotRectTrap
+        // [2.0 수정] 원본 문장의 숫자(DP=DA=6, DE=6+x=10, BE=2 …)는 수학적으로 맞지 않고(6+x=10 이면 x=4 인데 EC=2 → 10² ≠ 2² + 12²) 그림·띠·공식(가로 9, DE=13, EC=5)과도 달랐습니다.
+        //            그림·띠·공식이 맞으므로 문장·수치를 그림에 맞춰 고쳤습니다: DP=DA=9, EP=EB=x=4, DE=9+x=13, EC=9-x=5 (반지름 6, AB=12).
         return {
-          badge: `탐구 2-E · 🏛️ [심화 킬러] 원을 품은 직사각형 & 접선 피타고라스 (DE = DA + CE)`,
-          hint: `세 변이 원(반지름 $6\\text{cm}$, 세로 $AB=12\\text{cm}$)에 접하는 직사각형에서 접선 $DE$를 그으면, <strong>위쪽 접선 $DP=DA=6\\text{cm}$</strong>이고 <strong>아래쪽 접선 $EP=EC=x$</strong>입니다! 오른쪽 직각삼각형 $\\triangle DEC$에서 피타고라스를 쓰면 $x=4\\text{cm}$가 단번에 풀립니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 뷰로' : '🎬 오른쪽 직각삼각형 △DEC (6+x, 6-x, 12) 해부!',
-          dim1Name: '빗변 DE의 길이', dim2Name: '오른쪽 밑변 EC (= x)',
-          val1Txt: 'DE = 6 + x (10 cm)', val2Txt: 'x = 4 cm (BE=2cm)',
+          badge: `탐구 2-E · 🏛️ [심화 킬러] 반원을 품은 직사각형 & 접선 피타고라스 (DE = DA + BE)`,
+          hint: `세로 $AB=12\\text{cm}$를 지름으로 하는 반원(반지름 $6\\text{cm}$)이 변 $AD$(점 $A$)와 $BC$(점 $B$)에 접하는 가로 $9\\text{cm}$ 직사각형에서 접선 $DE$를 그으면, <strong>위쪽 접선 $DP=DA=9\\text{cm}$</strong>이고 <strong>아래쪽 접선 $EP=EB=x$</strong>입니다! 오른쪽 직각삼각형 $\\triangle DEC$에서 피타고라스를 쓰면 $x=4\\text{cm}$가 단번에 풀립니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 뷰로' : '🎬 오른쪽 직각삼각형 △DEC (9+x, 9-x, 12) 해부!',
+          dim1Name: '빗변 DE의 길이', dim2Name: '아래쪽 접선 EP = EB (= x)',
+          val1Txt: 'DE = 9 + x (13 cm)', val2Txt: 'x = 4 cm (EC = 5 cm)',
           parts: [
-            { id: 0, name: `🟡 위쪽 접선 쌍: DP = DA = 반지름 6 cm`, desc: `왼쪽 사각형은 한 변이 반지름 6cm인 정사각형 영역!`, val: `DP = DA = 6`, color: '#fbbf24', ok: true },
-            { id: 1, name: `🩷 아래쪽 미지수 접선 쌍: EP = EC = x (4 cm)`, desc: `따라서 빗변 DE = 6 + x!`, val: `EP = EC = x`, color: '#f472b6', ok: true },
-            { id: 2, name: `🔵 직각삼각형 △DEC 피타고라스: (6+x)² = x² + 12²`, desc: `36 + 12x + x² = x² + 144 ⇒ 12x = 108이 아니라 가로 길이 연동!`, val: `DE=13, EC=5 등`, color: '#38bdf8', ok: true }
+            { id: 0, name: `🟡 위쪽 접선 쌍: DP = DA = 가로 9 cm`, desc: `점 D에서 반원에 그은 두 접선(DA, DP)의 길이는 같다!`, val: `DP = DA = 9`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🩷 아래쪽 미지수 접선 쌍: EP = EB = x (4 cm)`, desc: `점 E에서 그은 두 접선(EB, EP)의 길이도 같으므로 빗변 DE = 9 + x!`, val: `EP = EB = x`, color: '#f472b6', ok: true },
+            { id: 2, name: `🔵 직각삼각형 △DEC 피타고라스: (9+x)² = (9-x)² + 12²`, desc: `81 + 18x + x² = 81 - 18x + x² + 144 ⇒ 36x = 144 ⇒ x = 4!`, val: `DE=13, EC=5`, color: '#38bdf8', ok: true }
           ],
-          totalRes: `사각형 ABED가 외접사각형이면 DE + AB = AD + BE (피토 정리로도 1초 해결!)`,
+          totalRes: `DE = DA + EB = 9 + x, EC = 9 - x ➔ (9+x)² = (9-x)² + 12² ➔ x = 4 cm (DE = 13, EC = 5)`,
           rule: '원을 품은 직사각형 2단계 해법: ① 접선 성질(DE = a + x)로 변 표시  ② 오른쪽 △DEC에서 피타고라스!',
-          formulaHTML: `• 직사각형 가로가 $9\\text{cm}$, 세로가 $12\\text{cm}$(반지름 $6$)일 때:<br/>&nbsp;&nbsp;$\\overline{DA} = \\overline{DP} = 9$, $\\overline{EC} = \\overline{EP} = x$ 로 놓으면 $\\triangle DEC$에서:<br/>&nbsp;&nbsp;${tex('\\overline{DE} = 9+x,\\; \\overline{DC}=12,\\; \\overline{EC}=9-x')} (또는 ${tex('x')}) ${tex('\\implies (9+x)^2 = (9-x)^2 + 12^2 \\implies 36x = 144 \\implies \\mathbf{x = 4\\text{ cm}}')}!`,
-          notes: `• 왼쪽 사각형 $ABED$가 원에 외접하는 사다리꼴일 때는 피토 정리(<strong>$AB + DE = AD + BE$</strong>)를 쓰면 $x$를 더 빠르게 구할 수 있습니다!`,
+          formulaHTML: `• 직사각형 가로가 $9\\text{cm}$, 세로가 $12\\text{cm}$(반지름 $6$)일 때:<br/>&nbsp;&nbsp;$\\overline{DA} = \\overline{DP} = 9$, $\\overline{EB} = \\overline{EP} = x$ 로 놓으면 $\\triangle DEC$에서:<br/>&nbsp;&nbsp;${tex('\\overline{DE} = 9+x,\\; \\overline{DC}=12,\\; \\overline{EC}=9-x')} ${tex('\\implies (9+x)^2 = (9-x)^2 + 12^2 \\implies 36x = 144 \\implies \\mathbf{x = 4\\text{ cm}}')}!`,
+          notes: `• <strong>[함정]</strong> 반원의 지름 $AB$는 접선이 아닙니다. 그래서 사각형 $ABED$에 피토 정리($AB + DE = AD + BE$)를 쓰면 안 됩니다($12 + 13 \\neq 9 + 4$). 점 $D$, $E$에서 반원에 그은 <strong>접선의 길이가 서로 같다</strong>는 성질만 쓰세요!`,
           tapeTitle: `빗변 접선 DE(13cm) = 위쪽 접선 DP(=DA=9cm) + 아래쪽 접선 EP(=EB=4cm)`,
           tapeSegs: [
             { text: `DP = DA = 9 cm`, weight: 9 / 13, color: '#fbbf24' },
@@ -1141,9 +1143,11 @@ window.addEventListener('DOMContentLoaded', function () {
           cdot(pM, 'M(수직이등분)', CCOL.pink, null, { x: 0, y: 22 });
         } else if (sub === 'chordEqualDist') {
           ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
-          const pA = cpolar(O, Rpx, 145), pB = cpolar(O, Rpx, 215);
-          const rotAng = t * 110;
-          const pC = cpolar(O, Rpx, 35 + rotAng), pD = cpolar(O, Rpx, -35 + rotAng);
+          // [2.0 수정] 원본은 현의 반각이 35°(OM ≈ 0.82R)라 표시한 OM = 0.6R, AB = 1.6R 과 그림이 달랐습니다 → 반각 53.13°(3-4-5). 포개기는 180° 회전(C→B, D→A)으로 두 현이 완전히 겹칩니다.
+          const hA = (Math.acos(0.6) * 180) / Math.PI; // 53.13°
+          const pA = cpolar(O, Rpx, 180 - hA), pB = cpolar(O, Rpx, 180 + hA);
+          const rotAng = t * 180;
+          const pC = cpolar(O, Rpx, hA + rotAng), pD = cpolar(O, Rpx, -hA + rotAng);
           const pM = cmid(pA, pB), pN = cmid(pC, pD);
 
           cpoly([O, pA, pB], 'rgba(251, 191, 36, 0.22)', CCOL.gold, 3.0, 1);
@@ -1283,7 +1287,8 @@ window.addEventListener('DOMContentLoaded', function () {
         } else if (sub === 'tangentLen') {
           const cO = cpt(cx - 52 * s, cy);
           const rC = 96 * s;
-          const pP = cpt(cx + 150 * s, cy);
+          // [2.0 수정] 원본은 P가 고정이라 θ 표시(30~70°)와 그려진 ∠APB(약 57°)가 달랐습니다 → ∠APB = θ 가 되도록 OP = r / sin(θ/2)
+          const pP = cpt(cO.x + rC / Math.sin((ang * Math.PI) / 360), cy);
           const distOP = cdist(cO, pP);
           const alpha = Math.acos(rC / distOP);
           const pA = cpt(cO.x + rC * Math.cos(-alpha), cO.y + rC * Math.sin(-alpha));
@@ -1553,11 +1558,13 @@ window.addEventListener('DOMContentLoaded', function () {
         const angA = ang + 35, angC = 180 - angA;
         if (sub === 'cyclicPentagon') {
           ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          // [2.0 수정] 원본은 다섯 점이 고정이라 중심각 2θ 표시(60~140°)와 그려진 ∠AOB(75°)가 달랐습니다 → 호 AB = 2θ, 나머지 네 호는 같은 크기
+          const uArc = (360 - 2 * ang) / 4;
           const pA = cpolar(O, Rpx, -155);
-          const pB = cpolar(O, Rpx, 130);
-          const pC = cpolar(O, Rpx, 60);
-          const pD = cpolar(O, Rpx, -15);
-          const pE = cpolar(O, Rpx, -85);
+          const pB = cpolar(O, Rpx, -155 - 2 * ang);
+          const pC = cpolar(O, Rpx, -155 - 2 * ang - uArc);
+          const pD = cpolar(O, Rpx, -155 - 2 * ang - 2 * uArc);
+          const pE = cpolar(O, Rpx, -155 - 2 * ang - 3 * uArc);
 
           cpoly([pB, pC, pD, pE], 'rgba(56, 189, 248, 0.22)', CCOL.cyan, 3.0, 1);
           cpoly([pA, pB, pE], 'rgba(251, 191, 36, 0.24)', CCOL.gold, 3.0, 2);
@@ -1717,7 +1724,8 @@ window.addEventListener('DOMContentLoaded', function () {
           ccircle(O_big, rBig, CCOL.cyan, 'rgba(56, 189, 248, 0.06)', 2.8);
           ccircle(O_sml, rSml, CCOL.gold, 'rgba(251, 191, 36, 0.12)', 2.8);
 
-          const pC = cpolar(O_big, rBig, -135), pD = cpolar(O_big, rBig, -45);
+          // [2.0 수정] 원본은 C, D가 고정(밑각 67.5°)이라 세 각의 θ 표시와 그림이 달랐습니다 → 호 TD = 2θ 가 되도록 C, D를 배치(∠TCD = ∠TDC = θ)
+          const pC = cpolar(O_big, rBig, 90 + 2 * ang), pD = cpolar(O_big, rBig, 90 - 2 * ang);
           const pA = clerp(pT, pC, rSml / rBig), pB = clerp(pT, pD, rSml / rBig);
           const pP = cpt(cx - 165 * s, pT.y), pQ = cpt(cx + 165 * s, pT.y);
 
@@ -1841,13 +1849,15 @@ window.addEventListener('DOMContentLoaded', function () {
             cline(pP, pB, CCOL.gold, 3.6, [], true, 0);
             cline(pP, pD, CCOL.cyan, 3.6, [], true, 1);
 
+            // [2.0 수정] 긴 이름표 'AB = 5 (전체 PB=9!)'·'CD = 9 (전체 PD=12!)'가 휴대폰에서 원 속 할선을 거의 다 가렸습니다 → 이름표는 짧게, 전체 길이와 곱셈식은 그림 아래 글로 옮깁니다.
             cbadge(pP, pA, 'PA = 4', CCOL.gold, -15, 0.5, 0);
-            cbadge(pA, pB, 'AB = 5 (전체 PB=9!)', CCOL.gold, -16, 0.5, 0);
+            cbadge(pA, pB, 'AB = 5', CCOL.gold, -16, 0.5, 0);
             cbadge(pP, pC, 'PC = 3', CCOL.cyan, 15, 0.5, 1);
-            cbadge(pC, pD, 'CD = 9 (전체 PD=12!)', CCOL.cyan, 16, 0.5, 1);
+            cbadge(pC, pD, 'CD = 9', CCOL.cyan, 16, 0.5, 1);
 
             [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, cO));
-            cdot(pP, 'P(4×9 = 3×12 = 36!)', CCOL.gold, null, { x: 0, y: -16 });
+            cdot(pP, 'P', CCOL.gold, null, { x: 0, y: -16 });
+            cnote(cpt(cO.x + 40 * s, cO.y + rC + 34 * s), ['전체 PB = 9, PD = 12', '4×9 = 3×12 = 36!'], '#fbbf24');
           } else {
             const alpha = Math.acos(rC / cdist(cO, pP));
             const pT = cpt(cO.x + rC * Math.cos(alpha), cO.y + rC * Math.sin(alpha));
@@ -1856,9 +1866,10 @@ window.addEventListener('DOMContentLoaded', function () {
             cline(pP, pT, CCOL.gold, 4.0, [], true, 0);
             cline(pP, pB, CCOL.pink, 3.6, [], true, 1);
 
-            cbadge(pP, pT, '접선 PT = 6 (PT²=36)', CCOL.gold, 18, 0.5, 0);
+            // [2.0 수정] 위 장면과 같은 이유로 긴 이름표를 줄였습니다(전체 PB = 9 는 아래 풀이·띠에, 6² = 4×9 = 36 은 P의 이름표에 있음).
+            cbadge(pP, pT, '접선 PT = 6', CCOL.gold, 18, 0.5, 0);
             cbadge(pP, pA, 'PA = 4', CCOL.pink, -15, 0.5, 1);
-            cbadge(pA, pB, 'AB = 5 (전체 PB=9!)', CCOL.pink, -16, 0.5, 1);
+            cbadge(pA, pB, 'AB = 5', CCOL.pink, -16, 0.5, 1);
 
             cdot(pA, 'A', CCOL.white, cO);
             cdot(pB, 'B', CCOL.white, cO);
@@ -1922,6 +1933,11 @@ window.addEventListener('DOMContentLoaded', function () {
     altSegmentThm: '접현각 θ', altSegmentInscribed: '접현각 θ', twoCirclesExTangent: '기준각 θ', twoCirclesInTangent: '접현각 θ'
   };
   const RAD_USED = new Set(['chordFoldArc', 'chordBisect', 'chordEqualDist', 'chordConcentric', 'tangentPerimTri', 'inscribedTrig']);
+  // [2.0 수정] 현의 두 장면은 OM = 0.6R, AM = 0.8R 을 반올림해 쓰므로 R이 5의 배수일 때만 피타고라스(3-4-5)가 정확합니다 → 그 값만 제공
+  const RAD_LIST = { chordBisect: [5, 10, 15, 20], chordEqualDist: [5, 10, 15, 20] };
+  const radList = (id) => RAD_LIST[id] || RAD_PRESETS;
+  // [2.0 수정] θ에 따라 그림의 가로 길이가 크게 달라지는 장면: θ를 바꿀 때마다 화면 맞춤을 다시 계산합니다.
+  const REFIT = new Set(['tangentLen']);
   const THUMB_T = (id) => (FOLD.has(id) ? (id === 'fourPointsCircle' ? 0 : 1) : 0); // 원본: 장면에 들어가면 변환이 100%로 자동 재생(네 점 장면만 0%)
 
   const lensList = (m, id) => {
@@ -1935,6 +1951,8 @@ window.addEventListener('DOMContentLoaded', function () {
     state.fold = s.fold;
     state.angPreset = Math.round(s.ang);
     state.radPreset = Math.round(s.rad);
+    // [2.0 수정] 예전 공유 링크 등으로 R이 3-4-5 가 안 되는 값(6·8·12)으로 들어와도 가장 가까운 정확한 값으로 맞춥니다.
+    if (RAD_LIST[id] && !RAD_LIST[id].includes(state.radPreset)) state.radPreset = RAD_LIST[id].reduce((p, v) => (Math.abs(v - state.radPreset) < Math.abs(p - state.radPreset) ? v : p));
     state.activePartIdx = s.part == null ? -1 : s.part;
     state.conceptSwitch = lensList(m, id).includes(s.lens) ? s.lens : 'all';
     state.scale = 1;
@@ -1954,6 +1972,7 @@ window.addEventListener('DOMContentLoaded', function () {
       enter: (s, lab) => {
         // 원본 setSubType: 변환을 0%로 되돌린 뒤 100%로(네 점 장면은 0%) 자동 재생
         s.fold = 0;
+        if (!radList(id).includes(Math.round(s.rad))) s.rad = 10; // [2.0 수정] 현 장면은 5·10·15·20 만 사용
         if (!lensList(m, id).includes(s.lens)) s.lens = 'all';
         const shared = !booted && /[#&]fold=/.test(location.hash); // 공유 링크의 값은 그대로 존중
         booted = true;
@@ -1963,7 +1982,7 @@ window.addEventListener('DOMContentLoaded', function () {
       presets: () => {
         const out = [];
         if (ANG_NAME[id]) ANG_PRESETS.forEach((v) => out.push({ group: ANG_NAME[id], label: `${v}°`, apply: (st) => { st.ang = v; }, on: (st) => Math.round(st.ang) === v }));
-        if (RAD_USED.has(id)) RAD_PRESETS.forEach((v) => out.push({ group: '반지름 / 기준 길이 R (cm)', label: `R=${v}`, apply: (st) => { st.rad = v; }, on: (st) => Math.round(st.rad) === v }));
+        if (RAD_USED.has(id)) radList(id).forEach((v) => out.push({ group: '반지름 / 기준 길이 R (cm)', label: `R=${v}`, apply: (st) => { st.rad = v; }, on: (st) => Math.round(st.rad) === v }));
         const lenses = lensList(m, id);
         if (lenses.length) LENSES.filter(([k]) => lenses.includes(k)).forEach(([k, label]) => out.push({ group: '관찰 렌즈', label, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
         if (FOLD.has(id)) [0, 0.5, 1].forEach((v) => out.push({ group: '변환 단계', label: v === 0 ? '0% 시작' : v === 1 ? '100% 완성' : '50%', set: { fold: v }, ms: 700, on: (st) => Math.abs(st.fold - v) < 0.01 }));
@@ -1995,7 +2014,7 @@ window.addEventListener('DOMContentLoaded', function () {
           tape: { title: spec.tapeTitle, segments: spec.tapeSegs }
         };
       },
-      draw: (b, s, v) => {
+      draw: (b, s, v, lab) => {
         BOARD = b;
         const paint = (st) => {
           sync(st, m, id);
@@ -2011,7 +2030,7 @@ window.addEventListener('DOMContentLoaded', function () {
         };
         // 자동 맞춤을 재는 중: 변환 0%·100%와 모든 기준각 상태를 겹쳐 그려, 어느 상태에서도 그림·글자가 잘리지 않는 범위를 구합니다.
         const paintAll = () => {
-          (FOLD.has(id) ? [0, 1] : [s.fold]).forEach((f) => (ANG_NAME[id] ? ANG_PRESETS : [s.ang]).forEach((a) => paint({ ...s, fold: f, ang: a })));
+          (FOLD.has(id) ? [0, 1] : [s.fold]).forEach((f) => (ANG_NAME[id] && !REFIT.has(id) ? ANG_PRESETS : [s.ang]).forEach((a) => paint({ ...s, fold: f, ang: a })));
         };
         if (b._bbox) { paintAll(); return; }
         if (b.thumb) { // 모든 장면 미리보기: 장면 범위를 직접 재어 맞추고, 원본의 '완성' 상태로 그림
@@ -2019,6 +2038,10 @@ window.addEventListener('DOMContentLoaded', function () {
           if (bb) b.focus = b.fitBox(bb, { margin: 0.08, px: 5 });
           paint({ ...s, fold: THUMB_T(id), part: null });
           return;
+        }
+        if (REFIT.has(id) && lab) { // [2.0 수정] θ가 바뀌면(칩·공유 링크) 현재 θ에 맞춰 화면 맞춤을 다시 계산
+          const key = id + ':' + Math.round(s.ang);
+          if (b.__fitKey !== key) { b.__fitKey = key; const f = lab._measureFocus(lab.scene); if (f) b.setFocus(f, true); }
         }
         paint(s);
       }
@@ -2044,7 +2067,7 @@ window.addEventListener('DOMContentLoaded', function () {
     params: {
       fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '변환 진행 (0% → 100%)', hint: '접기 · 점 이동 · 보조선 작도 · 접선 펼치기 같은 변환을 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
       ang: { value: 45, min: 30, max: 70, step: 1, color: 'sky', label: '기준각 θ', format: (v) => `${Math.round(v)}°` },
-      rad: { value: 10, min: 6, max: 12, step: 1, color: 'rose', label: '반지름 R', format: (v) => `${Math.round(v)}` }
+      rad: { value: 10, min: 5, max: 20, step: 1, /* [2.0 수정] 현 장면 R=5·15·20 허용 */ color: 'rose', label: '반지름 R', format: (v) => `${Math.round(v)}` }
     },
     groups
   });
