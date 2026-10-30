@@ -779,8 +779,9 @@ function specForFamily(plan,model,id){
   // source figure does not name): it is drawn without its name and is refused when pointNames, coordinateLabels or a caption/label text still names it.
   // hiddenPointStyle 'DOT' (default) draws the hidden point as a bare dot, 'NONE' (plane or coordinate figure only) draws no dot at all (a textbook line
   // crossing or polygon vertex, the foot of a perpendicular that only guides a dashed segment).
-  const hiddenNames=new Set(plan.hiddenPointNames??[]),planeFigure=isPlaneFigure(plan),markFigure=planeFigure||isCoordinateFigure(plan,model);
-  if(!Array.isArray(plan.hiddenPointNames??[])||[...hiddenNames].some(id=>{const node=plan.mathPlan.nodes.find(n=>n.id===id);return !Object.hasOwn(points,id)||!node||(node.op==='SOURCE_POINT'?!markFigure:node.factRole!=='DERIVED_INTERMEDIATE');}))throw Error('INVALID_HIDDEN_POINT_NAMES');
+  const hiddenNames=new Set(plan.hiddenPointNames??[]),planeFigure=isPlaneFigure(plan),coordinateFigure=isCoordinateFigure(plan,model),markFigure=planeFigure||coordinateFigure;
+  // (E31) a hidden point may write its coordinates only in a coordinate figure (axes); a plane figure or any other construction still refuses it.
+  if(!Array.isArray(plan.hiddenPointNames??[])||[...hiddenNames].some(id=>{const node=plan.mathPlan.nodes.find(n=>n.id===id);return !Object.hasOwn(points,id)||!node||(node.op==='SOURCE_POINT'?!markFigure:node.factRole!=='DERIVED_INTERMEDIATE')||(!coordinateFigure&&(plan.coordinateLabels||[]).includes(id));}))throw Error('INVALID_HIDDEN_POINT_NAMES');
   if(plan.hiddenPointStyle!==undefined&&!['DOT','NONE'].includes(plan.hiddenPointStyle))throw Error('INVALID_HIDDEN_POINT_STYLE');
   if(plan.hiddenPointStyle==='NONE'){
     if(!markFigure)throw Error('HIDDEN_POINT_STYLE_REQUIRES_PLANE_FIGURE');
