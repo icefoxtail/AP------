@@ -3,6 +3,10 @@
    - 캔버스 위에 좌표계·격자·곡선·도형·라벨·드래그 핸들을 그리는 공용 엔진입니다.
    - kind: 'cartesian'(수학 좌표, y 위쪽) | 'figure'(도형 설계 좌표, y 아래쪽)
    - 항상 가로·세로 1:1 축척을 지켜 수직·각도·길이가 그림에서도 정확하게 보입니다.
+     예외(선택): aspect:'free' — 가로축이 시간처럼 세로축과 단위가 다른 그래프(위치-시간·속도-시간)용입니다.
+       · 가로 배율은 focus.x 로, 세로 배율은 창(pane)마다 focusY(없으면 focus.y)로 따로 정해 창을 가득 채웁니다.
+       · 기본값은 1:1 이며 옵션을 주지 않은 실험실의 동작은 전혀 바뀌지 않습니다.
+       · free 에서 격자·눈금 간격은 step/tickStep(가로), stepY/tickStepY(세로)로 따로 줍니다. autoFit(measure/fitBox)과 원·호는 지원하지 않습니다(원·호 반지름은 가로 배율).
    - 라벨은 화면 픽셀 크기로 그려 확대·축소·모바일에서도 읽을 수 있게 유지합니다.
    - 색은 이름(ink/sky/rose/amber/green/violet/red/orange/muted)으로 쓰며 테마에 따라 바뀝니다.
      기존 실험실의 헥사 색을 그대로 넘겨도 같은 뜻의 의미색으로 자동 변환됩니다.
@@ -32,6 +36,7 @@
       this.kind = opts.kind || 'cartesian';
       this.focus = opts.focus || { x: [-5, 5], y: [-4, 4] };
       this.pad = opts.pad == null ? 0.07 : opts.pad;
+      this.aspect = opts.aspect === 'free' ? 'free' : '1:1'; // 'free' = 가로·세로 배율을 따로 정함(위 설명)
       this.insets = { top: 0, right: 0, bottom: 0, left: 0 };
       this.zoom = 1;
       this.panX = 0;
@@ -179,10 +184,22 @@
       const fw = f.x[1] - f.x[0];
       const fh = f.y[1] - f.y[0];
       const padPx = this.pad * Math.min(a.w, a.h);
+      if (this.aspect === 'free') return Math.max(0.0001, ((a.w - padPx * 2) / fw) * this.zoom); // free: k = 가로 배율
       let availH = a.h;
       if (this.panes) availH = a.h * this.panes[0].frac;
       const k0 = Math.min((a.w - padPx * 2) / fw, (availH - padPx * 2) / fh);
       return Math.max(0.0001, k0 * this.zoom);
+    }
+    /** 세로 배율. 1:1 이면 k 와 같고, free 이면 지금 창(paneId)의 focusY(없으면 focus.y)를 창 높이에 맞춥니다. */
+    get ky() {
+      if (this.aspect !== 'free') return this.k;
+      const r = this._paneRect(this.paneId);
+      const a = this._area();
+      const f = this.focus;
+      const fy = (r.pane && r.pane.focusY) || f.y;
+      let padY = this.pad * Math.min(a.w, a.h);
+      if (this.panes) padY = Math.min(padY, r.h * 0.1);
+      return Math.max(0.0001, ((r.h - padY * 2) / Math.max(1e-9, fy[1] - fy[0])) * this.zoom);
     }
     _origin() {
       const f = this.focus;
@@ -190,7 +207,8 @@
       let cy = (f.y[0] + f.y[1]) / 2;
       const r = this._paneRect(this.paneId);
       if (r.pane && r.pane.focusY) cy = (r.pane.focusY[0] + r.pane.focusY[1]) / 2;
-      return { cx, cy, sx: r.x + r.w / 2 + this.panX, sy: r.y + r.h / 2 + this.panY, k: this.k };
+      const k = this.k;
+      return { cx, cy, sx: r.x + r.w / 2 + this.panX, sy: r.y + r.h / 2 + this.panY, k, ky: this.aspect === 'free' ? this.ky : k };
     }
     toS(x, y) {
       if (typeof x === 'object') ({ x, y } = x);
@@ -202,12 +220,12 @@
         if (y > bb.y1) bb.y1 = y;
       }
       const o = this._origin();
-      const sy = this.kind === 'figure' ? o.sy + (y - o.cy) * o.k : o.sy - (y - o.cy) * o.k;
+      const sy = this.kind === 'figure' ? o.sy + (y - o.cy) * o.ky : o.sy - (y - o.cy) * o.ky;
       return { x: o.sx + (x - o.cx) * o.k, y: sy };
     }
     toW(sx, sy) {
       const o = this._origin();
-      const y = this.kind === 'figure' ? o.cy + (sy - o.sy) / o.k : o.cy - (sy - o.sy) / o.k;
+      const y = this.kind === 'figure' ? o.cy + (sy - o.sy) / o.ky : o.cy - (sy - o.sy) / o.ky;
       return { x: o.cx + (sx - o.sx) / o.k, y };
     }
     /** 현재 화면에 보이는 세계 좌표 범위 */
@@ -331,6 +349,9 @@
       const vb = this.viewBox();
       const step = o.step || niceStep(34 / k);
       const major = step * (o.majorEvery || 5);
+      // free 에서만 세로 간격이 따로입니다(1:1 에서는 가로와 같아 기존 동작 그대로)
+      const stepY = this.aspect === 'free' ? o.stepY || niceStep(34 / this.ky) : step;
+      const majorY = stepY * (o.majorEvery || 5);
       c.lineWidth = 1;
       const lines = (isMajor) => {
         c.beginPath();
@@ -341,8 +362,8 @@
           c.moveTo(Math.round(s) + 0.5, r.y);
           c.lineTo(Math.round(s) + 0.5, r.y + r.h);
         }
-        for (let y = Math.ceil(vb.y0 / step) * step; y <= vb.y1; y += step) {
-          const m = Math.abs(y / major - Math.round(y / major)) < 1e-6;
+        for (let y = Math.ceil(vb.y0 / stepY) * stepY; y <= vb.y1; y += stepY) {
+          const m = Math.abs(y / majorY - Math.round(y / majorY)) < 1e-6;
           if (m !== isMajor) continue;
           const s = this.toS(0, y).y;
           c.moveTo(r.x, Math.round(s) + 0.5);
@@ -392,7 +413,8 @@
       if (org.x >= r.x && org.x <= r.x + r.w) arrow(org.x, r.y + 2, -Math.PI / 2);
       if (o.ticks !== false) {
         const vb = this.viewBox();
-        let step = o.tickStep || niceStep(46 / k);
+        const step = o.tickStep || niceStep(46 / k);
+        const stepY = this.aspect === 'free' ? o.tickStepY || niceStep(46 / this.ky) : step;
         c.font = `600 ${11.5 * this.fs}px ${this.font}`;
         c.fillStyle = this.colors.tick;
         c.textAlign = 'center';
@@ -407,10 +429,10 @@
         c.textAlign = 'right';
         c.textBaseline = 'middle';
         const tx = clamp(org.x - 7, r.x + 26, r.x + r.w - 4);
-        for (let y = Math.ceil(vb.y0 / step) * step; y <= vb.y1; y += step) {
-          if (Math.abs(y) < step / 2) continue;
+        for (let y = Math.ceil(vb.y0 / stepY) * stepY; y <= vb.y1; y += stepY) {
+          if (Math.abs(y) < stepY / 2) continue;
           const s = this.toS(0, y).y;
-          c.fillText(fmtTick(y, step), tx, s);
+          c.fillText(fmtTick(y, stepY), tx, s);
           c.fillRect(org.x - 3, s - 0.5, 6, 1);
         }
         c.textAlign = 'right';
@@ -733,7 +755,7 @@
       c.stroke();
       c.restore();
       if (o.label) this._pointLabel(s, { ...o, color: col });
-      if (!this.thumb) this.handles.push({ id, x: s.x, y: s.y, w, drag: o.drag, step: o.step, priority: o.priority || 0, label: o.ariaLabel || o.label || id });
+      if (!this.thumb) this.handles.push({ id, x: s.x, y: s.y, w, drag: o.drag, step: o.step, ky: this.aspect === 'free' ? this.ky : undefined, priority: o.priority || 0, label: o.ariaLabel || o.label || id });
       return this;
     }
     /** 캔버스 글자(후광 포함). p는 세계 좌표. */
@@ -957,8 +979,9 @@
         this._kbFocus = true;
         const [dx, dy] = dirs[e.key];
         const step = h.step || (e.shiftKey ? 40 : 8) / this.k;
+        const stepY = h.step || (e.shiftKey ? 40 : 8) / (h.ky || this.k); // free: 창마다 세로 배율이 다름
         const sy = this.kind === 'figure' ? -dy : dy;
-        h.drag({ x: h.w.x + dx * step, y: h.w.y + sy * step }, e);
+        h.drag({ x: h.w.x + dx * step, y: h.w.y + sy * stepY }, e);
         this.onInteract('drag');
         e.preventDefault();
         e.stopPropagation();
