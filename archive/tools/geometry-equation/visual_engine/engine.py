@@ -1025,9 +1025,28 @@ def prepare(spec):
             site={'ids':list(obj['segments'])+(list(obj['refs']) if closed else []),'anchors':[list(a) for a in anchors],'gaps':PATH_LABEL_GAPS,**({'outside':[list(p) for p in path[:-1]]} if closed else {})}
             labels.append(weighted(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchors[0],{'pathOwned':site},obj.get('unit')),obj))
         elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
-            ends=[(vp.screen(geometry[r][0]),vp.screen(geometry[r][1])) for r in obj['refs']];count=obj['count']
-            reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1]);paths=obj.get('paths',{})
-            for ref,(p,q) in zip(obj['refs'],ends):
+            # A ref is a segment, or (parallels[].lines, E31) a displayed line: its drawn chord inside the window, with the places where other lines and the axes cross it kept clear.
+            ends=[];crossings=[]
+            for r in obj['refs']:
+                g=geometry[r]
+                if isinstance(g,Line):
+                    hits=clip_line(g,vp.bounds)
+                    if len(hits)!=2:raise ValueError('MARK_LINE_NOT_IN_VIEW:'+r)
+                    ends.append((vp.screen(hits[0]),vp.screen(hits[1])))
+                    mine=[g.a,g.b,g.c]
+                    others=[coefficients for line_id,coefficients in drawn_lines if line_id!=r]+([[0.,1.,0.]] if show_x else [])+([[1.,0.,0.]] if show_y else [])
+                    here=[]
+                    for a2,b2,c2 in others:
+                        det=mine[0]*b2-a2*mine[1]
+                        if abs(det)<=1e-12:continue
+                        here.append(vp.screen(((mine[1]*c2-b2*mine[2])/det,(mine[2]*a2-c2*mine[0])/det)))
+                    crossings.append(here)
+                else:
+                    ends.append((vp.screen(g[0]),vp.screen(g[1])));crossings.append([])
+            count=obj['count']
+            reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1])
+            paths=obj.get('paths',{})
+            for index,(ref,(p,q)) in enumerate(zip(obj['refs'],ends)):
                 if ref in paths:
                     # E32: one mark for a whole path of pieces (B-E-D): at the path's middle (by length) or at the nearest of a few other places clear of every displayed point,
                     # the inner joints (E) above all; on whichever piece that place falls
@@ -1063,7 +1082,7 @@ def prepare(spec):
                     if length<30+6*count:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
                     d=((q[0]-p[0])/length,(q[1]-p[1])/length);n=(-d[1],d[0])
                     # The marks sit at the middle of the segment, or at the nearest of a few other places that keeps clear of any displayed point (a midpoint M, a foot H).
-                    spots=[.5,.3,.7,.2,.8];room=lambda t:min([math.dist((p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t),at) for at in [*point_marks,*mark_spots] if math.dist(at,p)>1e-6 and math.dist(at,q)>1e-6]+[1e9])
+                    spots=[.5,.3,.7,.2,.8] if not crossings[index] else [.5,.35,.65,.25,.75,.2,.8];room=lambda t:min([math.dist((p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t),at) for at in [*point_marks,*mark_spots,*crossings[index]] if math.dist(at,p)>1e-6 and math.dist(at,q)>1e-6]+[1e9])
                     spot=next((t for t in spots if room(t)>=10*count+12),max(spots,key=room))
                     mid=(p[0]+(q[0]-p[0])*spot,p[1]+(q[1]-p[1])*spot);mark_spots.append(mid)
                 if kind=='PARALLEL_MARK' and d[0]*reference[0]+d[1]*reference[1]<0:d=(-d[0],-d[1]);n=(-d[1],d[0])

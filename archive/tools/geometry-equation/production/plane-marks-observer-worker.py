@@ -490,7 +490,7 @@ def audit(p):
     for field,kind in (('equalLengths','equal'),('parallels','parallel')):
         for row in marks.get(field,[]):
             oid=row['id'];items=by_mark.get((kind,oid),[]);drawn=[];path_lengths={}
-            for entry in row['segments']:
+            for entry in (row.get('segments') if row.get('segments') is not None else row.get('lines',[])):
                 if isinstance(entry,dict):
                     # E32: one mark for a whole path {"path":[ids]}: the pieces drawn end to end; the ticks stand on the path (on the piece they fall on), clear of its inner joints
                     path_ids=entry.get('path') or [];sid=path_ids[0] if path_ids else '?'
@@ -575,7 +575,7 @@ def audit(p):
             else:
                 units=[((b[0]-a[0])/norm(sub(b,a)),(b[1]-a[1])/norm(sub(b,a))) for a,b in drawn]
                 if any(abs(u[0]*units[0][1]-u[1]*units[0][0])>math.sin(math.radians(ANGLE_TOLERANCE)) for u in units):errors.append('PARALLEL_MARK_NOT_PARALLEL:'+oid)
-                observations.append({'id':oid,'type':'PARALLEL','segments':row['segments']})
+                observations.append({'id':oid,'type':'PARALLEL','segments':row.get('segments') if row.get('segments') is not None else row.get('lines')})
 
     # ---- segment expression labels
     segment_lines={sid:drawn_segment(sid) for sid in {s['id'] for s in p.get('segments',[])}}

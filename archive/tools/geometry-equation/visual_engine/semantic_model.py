@@ -327,7 +327,9 @@ def validate(spec):
                 if obj.get('outer') is True:observed=360-observed
                 ok=(abs(observed-180)<=0.5 and parity(180.0,finite(obj['value']))) if obj.get('straight') is True else parity(observed,finite(obj['value']))
             elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
-                if len(refs)<2 or len(set(refs))!=len(refs) or any(objects[r]['kind']!='SEGMENT' for r in refs):raise ValueError('SEGMENT_REFS_REQUIRED')
+                # parallel marks may stand on displayed lines (E31: parallels[].lines) instead of segments, never on a mix; equal marks need segments
+                allowed={'SEGMENT'} if kind=='EQUAL_MARK' else {'SEGMENT'} if all(objects[r]['kind']=='SEGMENT' for r in refs) else {'LINE'}
+                if len(refs)<2 or len(set(refs))!=len(refs) or any(objects[r]['kind'] not in allowed for r in refs):raise ValueError('SEGMENT_REFS_REQUIRED')
                 if isinstance(obj.get('count'),bool) or not isinstance(obj.get('count'),int) or not 1<=obj['count']<=(3 if kind=='EQUAL_MARK' else 2):raise ValueError('MARK_COUNT_INVALID')
                 if kind=='EQUAL_MARK':
                     # E32: an entry may stand for a whole path of drawn segments (paths[ref] = the piece ids, first = ref): its length is the pieces' total
@@ -338,6 +340,8 @@ def validate(spec):
                     if not ok:raise ValueError('EQUAL_MARK_LENGTH_MISMATCH:'+obj['id'])
                 else:
                     def unit(r):
+                        if objects[r]['kind']=='LINE':
+                            line=geometry[r];n=math.hypot(line.a,line.b);return (line.b/n,-line.a/n)
                         p,q=geometry[r];n=math.dist(p,q);return ((q[0]-p[0])/n,(q[1]-p[1])/n)
                     units=[unit(r) for r in refs];observed=[abs(u[0]*units[0][1]-u[1]*units[0][0]) for u in units]
                     ok=all(value<=math.sin(math.radians(0.5)) for value in observed)

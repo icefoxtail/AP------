@@ -62,7 +62,7 @@ const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over'],
-  equalLengths:['id','count','segments','pathMark','markStyle'],parallels:['id','count','segments'],
+  equalLengths:['id','count','segments','pathMark','markStyle'],parallels:['id','count','segments','lines'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership'],
   arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole'],
   traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','labelWeight','unit','factRole'],
@@ -331,11 +331,15 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     for(const row of list(marks[field],field)){
       if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:'+field);
       keysOk(row,KEYS[field],field);claim(row.id,field);
-      if(!Array.isArray(row.segments)||row.segments.length<2)bad('MARK_FIELD_INVALID:'+field+'.segments:'+row.id);
+      // parallels[].lines (E31): the arrows stand on displayed LINES (displayLines) instead of segments; one of `segments` / `lines`, never both.
+      const onLines=field==='parallels'&&row.lines!==undefined;
+      if(onLines&&row.segments!==undefined)bad('MARK_FIELD_INVALID:'+field+'.lines_and_segments:'+row.id);
+      const refs=onLines?row.lines:row.segments;
+      if(!Array.isArray(refs)||refs.length<2||(onLines&&(new Set(refs).size!==refs.length||refs.some(ref=>typeof ref!=='string'))))bad('MARK_FIELD_INVALID:'+field+(onLines?'.lines:':'.segments:')+row.id);
       // E32: an equalLengths entry may be a whole path, {"path":[segment ids]}: pieces joined end to end (B-E-D), whose total length is the length that is equal
-      const entries=row.segments.map(entry=>typeof entry==='string'?{rep:entry,ids:[entry]}:equalPathEntry(entry,row.id,kind,plan,segEnds));
+      const entries=onLines?refs.map(id=>({rep:id,ids:[id]})):refs.map(entry=>typeof entry==='string'?{rep:entry,ids:[entry]}:equalPathEntry(entry,row.id,kind,plan,segEnds));
       const flat=entries.flatMap(entry=>entry.ids);
-      if(new Set(flat).size!==flat.length)bad('MARK_FIELD_INVALID:'+field+'.segments:'+row.id);
+      if(new Set(flat).size!==flat.length)bad('MARK_FIELD_INVALID:'+field+(onLines?'.lines:':'.segments:')+row.id);
       // pathMark (E32), for the path entries of an equalLengths row: AUTO (default) = ticks at the path's middle, or a bracket beside a straight path when the middle is too near an inner point;
       // TICK = ticks at the nearest clear place on the path; BRACKET = always the bracket
       if(row.pathMark!==undefined&&(kind!=='EQUAL_MARK'||!EQUAL_PATH_MARKS.includes(row.pathMark)||!entries.some(entry=>entry.ids.length>1)))bad('EQUAL_MARK_PATH_MARK_INVALID:'+row.id);
@@ -343,7 +347,12 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       const markStyle=row.markStyle??'TICK';
       if(row.markStyle!==undefined&&(kind!=='EQUAL_MARK'||!EQUAL_MARK_STYLES.includes(row.markStyle)))bad('EQUAL_MARK_STYLE_INVALID:'+row.id);
       if(markStyle==='CIRCLE'&&(row.count>2||entries.some(entry=>entry.ids.length>1)))bad('EQUAL_MARK_STYLE_INVALID:'+row.id);
-      const ends=entries.map(entry=>segEnds(entry.rep));
+      const lineDirection=id=>{
+        const fact=model.lines?.[id],displayed=Array.isArray(plan.displayLines)&&plan.displayLines.includes(id);
+        if(!displayed||!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)bad('MARK_TARGET_UNKNOWN:'+id);
+        const [la,lb]=fact.approximation;return [lb,-la];
+      };
+      const ends=onLines?entries.map(entry=>[[0,0],lineDirection(entry.rep)]):entries.map(entry=>segEnds(entry.rep));
       if(kind==='EQUAL_MARK'){
         const lengths=entries.map(entry=>entry.ids.reduce((sum,id)=>{const [p,q]=segEnds(id);return sum+norm(sub(q,p));},0));
         if(lengths.some(l=>Math.abs(l-lengths[0])>1e-6*Math.max(1,lengths[0])))bad(codeLength+':'+row.id);
