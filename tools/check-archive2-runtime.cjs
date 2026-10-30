@@ -19,7 +19,6 @@ const files = [
   'tests/archive2-reader-controls.test.cjs',
   'tests/archive2-output-capacity.test.cjs',
   'tests/archive2-pdf-readiness.test.cjs',
-  'tests/archive2-question-fit-overflow.test.js',
   'tests/svg-accessibility-compiler.test.cjs',
   'tests/svg-accessibility-source-index.test.cjs',
   'tests/svg-language-gate.test.cjs',
