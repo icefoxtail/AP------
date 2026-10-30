@@ -651,7 +651,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
  "caption":"x=1에서 좌극한 -2, 우극한 2, 함수값 f(1)=1인 불연속함수의 그래프."}
 ```
 
-- `pieces`는 왼쪽부터 1~6개다. 각 조각은 `{"coefficients":[상수, x, x²], "domain":[lo, hi], "start":"OPEN"|"CLOSED", "end":"OPEN"|"CLOSED"}`이고 계수는 3-4와 같은 정확한 문자열(정수·분수·`p+q*sqrt(r)`, 한 plan에 근호 하나)이다. 차수는 2 이하(일차식은 두 개, 상수는 한 개)다.
+- `pieces`는 왼쪽부터 1~8개다. 각 조각은 `{"coefficients":[상수, x, x²], "domain":[lo, hi], "start":"OPEN"|"CLOSED", "end":"OPEN"|"CLOSED"}`이고 계수는 3-4와 같은 정확한 문자열(정수·분수·`p+q*sqrt(r)`, 한 plan에 근호 하나)이다. 차수는 2 이하(일차식은 두 개, 상수는 한 개)다.
 - `domain`의 두 끝은 정확한 값 또는 `null`이다. `null`은 무한 구간이며 **첫 조각의 왼쪽 끝과 마지막 조각의 오른쪽 끝에만** 쓸 수 있다. 그 끝은 그림 패널 끝까지 그려진다.
 - `start`/`end`는 그 끝을 포함하는지다(기본 `CLOSED`). **조각은 자기 구간 위에만 그려지므로 점프한 두 조각 사이에 이어지는 선이 생기지 않는다.** 엔진이 열린 끝은 빈 점, 닫힌 끝은 채운 점으로 그린다. 저자는 점을 직접 쓰지 않는다.
 - **경계의 함수값은 정확히 하나로 정해져야 한다.** 같은 x에서 두 조각이 만날 때 한쪽 끝이 `CLOSED`이면 그 값이 함수값이고, 양쪽이 모두 `OPEN`이면 `jumpValues`에 `{"x","y"}`를 써야 한다(없으면 `PIECEWISE_DISCONTINUITY_UNDECLARED`). 쓴 값이 닫힌 끝의 값과 다르면 `PIECEWISE_VALUE_CONFLICT`이고, 같은 x에서 양쪽이 모두 `CLOSED`이면 `PIECEWISE_DOMAIN_OVERLAP`이다. 조각이 겹쳐도 `PIECEWISE_DOMAIN_OVERLAP`이다.
@@ -662,9 +662,19 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - `axisTickValues`는 눈금을 직접 정할 때만 쓴다. `functionName`(한 글자, y 제외)을 주면 곡선 곁에 `f(x)`가 쓰인다.
 - 가로·세로 배율은 같고, 너무 좁으면 엔진이 세로를 최대 1/2까지 줄인다. 표시할 특징끼리 4px보다 가까우면 `PIECEWISE_DISCONTINUOUS_FEATURES_BELOW_RESOLUTION`, 그래도 폭이 모자라면 `PIECEWISE_DISCONTINUOUS_CURVE_TOO_NARROW`이다.
 
+- **접근 화살표 `limitArrows`**(최대 6개): `[{"at":"1","side":"LEFT","toY":"-2"}]`는 곡선 **위**에 점 `(at,toY)`로 다가가는 짧은 화살표(`side`는 접근하는 쪽, `LEFT`/`RIGHT`)와, 그 점에서 두 축까지의 점선(축 위의 점이면 그쪽 점선은 없다)을 그린다. `toY`는 그쪽에서 `at`에 닿는 조각의 극한값과 **정확히 같아야** 한다(`PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_VALUE_MISMATCH`, 한 조각도 없으면 `..._AT_INVALID`). 화살표가 들어갈 곡선이 약 30px보다 짧으면 `..._LIMIT_ARROW_NO_ROOM`이다. 라벨은 `axisTickValues`로 문제가 준 눈금값만 쓴다(점선 곁에 눈금 라벨 자리가 없으면 `LAYOUT_INVENTORY_INCOMPLETE tick-..`: 그 눈금을 뺀다). 독립 관측기가 조각, 접근값, 방향, 화살표 끝 간격과 점선 위치를 plan에서 다시 계산해 최종 SVG와 대조한다.
+- **두 함수 위아래 `referenceCurves` + `"layout":"STACKED"`**: `graphPlan`은 f의 plan이고 `"referenceCurves":[{"id":"g","pieces":[...],"jumpValues":[...],"requiredPoints":[],"axisTickValues":{...}}]`가 g다(같은 조각 문법, 함수는 최대 2개). 위 패널 `y=f(x)`, 아래 패널 `y=g(x)`가 **같은 x 창**(`"xWindow":[lo,hi]`, 생략하면 두 함수의 유한한 끝점)과 같은 x 배율로 그려진다. `limitArrows[].curve`("f"/"g")가 화살표가 속한 함수다. 같은 축에 색으로 구분하는 `SHARED`는 없다(`PIECEWISE_DISCONTINUOUS_PAIR_LAYOUT_UNSUPPORTED`). 각 패널은 한 함수 plan이라 위 규칙(조각 최대 8, 한 x에 값 하나)이 그대로 적용된다. 원호(반원, 사분원)는 조각이 아니다(2차 이하 다항식만).
+```json
+{"capability":"piecewise-discontinuous-spike-v1","graphPlan":{"family":"piecewise-discontinuous","layout":"STACKED","xWindow":[-2,2],
+ "pieces":[{"coefficients":["0","1"],"domain":[-2,0]},{"coefficients":["1"],"domain":[0,2],"start":"OPEN"}],
+ "referenceCurves":[{"id":"g","pieces":[{"coefficients":["2","-1"],"domain":[-2,1],"end":"OPEN"},{"coefficients":["0"],"domain":[1,2]}],"jumpValues":[]}],
+ "limitArrows":[{"curve":"f","at":"0","side":"RIGHT","toY":"1"},{"curve":"g","at":"1","side":"LEFT","toY":"1"}],
+ "requiredPoints":[],"axisTickValues":{"x":[],"y":[]}},"caption":"..."}
+```
+
 한계와 오류 코드(가짜 지원 없이 거절):
-- 조각 7개 이상 `PIECEWISE_TOO_MANY_PIECES`, 잘못된 조각 `PIECEWISE_DISCONTINUOUS_PIECE_INVALID:<n>`, 계수 문법 오류 `PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID`, 잘못된 끝 상태 `PIECEWISE_ENDPOINT_STATE_INVALID:<n>`, 계단 구간 오류 `STEP_INTERVAL_INVALID`, 알 수 없는 필드 `PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:<field>`.
-- **쓰지 않는 필드:** `formula`(불연속함수의 머리줄 식), `referenceCurves`(둘째 불연속 곡선), `domain`, `viewport`는 받지 않는다. 필요하면 caption에 식을 쓰고, 두 함수가 모두 필요하면 그림을 포기하거나 EXEMPT/UNSUPPORTED로 쓴다.
+- 조각 9개 이상(계단 `step`은 7칸 이상) `PIECEWISE_TOO_MANY_PIECES`, 잘못된 조각 `PIECEWISE_DISCONTINUOUS_PIECE_INVALID:<n>`, 계수 문법 오류 `PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID`, 잘못된 끝 상태 `PIECEWISE_ENDPOINT_STATE_INVALID:<n>`, 계단 구간 오류 `STEP_INTERVAL_INVALID`, 알 수 없는 필드 `PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:<field>`.
+- **쓰지 않는 필드:** `formula`(불연속함수의 머리줄 식), `domain`, `viewport`는 받지 않는다. 필요하면 caption에 식을 쓰고, 두 함수가 모두 필요하면 아래 **두 함수·접근 화살표**를 쓴다. 그 밖의 경우는 EXEMPT/UNSUPPORTED로 쓴다.
 - 수직선, 세로선, 차수 3 이상 조각, 색칠 영역, 기울어진 기준선은 지원하지 않는다. UNSUPPORTED.
 
 ### 3-16. 평면도형 여러 개를 한 그림에: `composite-panels-v1` 평면 패널 격자

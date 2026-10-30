@@ -502,6 +502,15 @@ def _produce_piecewise_discontinuous(plan,vp):
     for index,point in enumerate(plan.get('requiredPoints',[]),1):
         cx,cy=vp.screen((point['x'],point['y']))
         parts.append(f'<circle id="required-point-{index}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+    for arrow in features.get('limitArrows',[]):
+        a,b=vp.screen(tuple(arrow['from'])),vp.screen(tuple(arrow['to']));target=vp.screen((arrow['atValue'],arrow['toYValue']))
+        if arrow['guideX']:
+            e=vp.screen((arrow['atValue'],0.0));parts.append(f'<line id="{arrow["id"]}-guide-x" data-role="limitGuide" x1="{target[0]:.12g}" y1="{target[1]:.12g}" x2="{e[0]:.12g}" y2="{e[1]:.12g}" stroke="black" stroke-dasharray="6 4"/>')
+        if arrow['guideY']:
+            e=vp.screen((0.0,arrow['toYValue']));parts.append(f'<line id="{arrow["id"]}-guide-y" data-role="limitGuide" x1="{target[0]:.12g}" y1="{target[1]:.12g}" x2="{e[0]:.12g}" y2="{e[1]:.12g}" stroke="black" stroke-dasharray="6 4"/>')
+        length=math.dist(a,b);ux,uy=(b[0]-a[0])/length,(b[1]-a[1])/length;base=(b[0]-ux*10,b[1]-uy*10)
+        parts.append(f'<line id="{arrow["id"]}" data-role="limitArrow" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
+        parts.append(f'<polygon id="{arrow["id"]}-arrow-end" data-role="limitArrow" points="{b[0]:.12g},{b[1]:.12g} {base[0]-uy*3.6:.12g},{base[1]+ux*3.6:.12g} {base[0]+uy*3.6:.12g},{base[1]-ux*3.6:.12g}" fill="#111" stroke="black"/>')
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 

@@ -51,7 +51,7 @@ class Framing(unittest.TestCase):
         p=copy.deepcopy(JUMP);del p['jumpValues'];cases.append((p,'PIECEWISE_DISCONTINUITY_UNDECLARED:1'))
         p=copy.deepcopy(JUMP);p['pieces'][1]['domain']=['0','3'];cases.append((p,'PIECEWISE_DOMAIN_OVERLAP:0'))
         p=copy.deepcopy(JUMP);p['pieces'][0]['start']='HALF';cases.append((p,'PIECEWISE_ENDPOINT_STATE_INVALID:1'))
-        p=copy.deepcopy(JUMP);p['pieces']=[{'coefficients':['0'],'domain':[index,index+1]} for index in range(7)];cases.append((p,'PIECEWISE_TOO_MANY_PIECES'))
+        p=copy.deepcopy(JUMP);p['pieces']=[{'coefficients':['0'],'domain':[index,index+1]} for index in range(9)];cases.append((p,'PIECEWISE_TOO_MANY_PIECES'))
         p=copy.deepcopy(JUMP);p['referenceLines'][0]['intersectionX']=['-1'];cases.append((p,'PIECEWISE_INTERSECTION_MISMATCH:k:engine finds 2'))
         p=copy.deepcopy(JUMP);p['referenceLines'][0]['intersectionX']=['-2','1'];cases.append((p,'PIECEWISE_INTERSECTION_MISMATCH:k:engine finds 2'))
         p=copy.deepcopy(STEP);p['step']['xFrom']=4;cases.append((p,'STEP_INTERVAL_INVALID'))
@@ -94,5 +94,63 @@ class Observer(unittest.TestCase):
         self.assertNotEqual(bridged,svg);self.assertEqual(audit(g,bridged,transform)['status'],'FAIL')
         missing_crossing=re.sub(r'<circle id="intersection-k-1"[^>]*/>','',svg)
         self.assertNotEqual(missing_crossing,svg);self.assertEqual(audit(g,missing_crossing,transform)['status'],'FAIL')
+
+# y=x+1 on [-3,1) (open at 1, limit 2) and y=x^2 on [1,3] (f(1)=1): the left limit 2 and the right limit 1 at x=1.
+ARROWS=copy.deepcopy(JUMP);ARROWS['pieces'][1]['start']='OPEN';ARROWS['pieces'][0]['coefficients']=['1','1'];ARROWS['jumpValues']=[{'x':'1','y':'1'}];del ARROWS['referenceLines']
+ARROWS['limitArrows']=[{'at':'1','side':'LEFT','toY':'2'},{'at':'1','side':'RIGHT','toY':'1'}]
+
+class LimitArrows(unittest.TestCase):
+    def build(self,plan=ARROWS):
+        g=fit_overview(plan)['graphPlan'];model=produce(g);return g,model['svg'],model['transform']
+    def test_features_lie_on_the_curve_short_of_the_point(self):
+        g=fit_overview(ARROWS)['graphPlan'];rows=g['piecewiseDiscontinuousFeatures']['limitArrows']
+        self.assertEqual([(row['id'],row['at'],row['toY'],row['side'],row['piece']) for row in rows],[('limit-arrow-1','1','2','LEFT',1),('limit-arrow-2','1','1','RIGHT',2)])
+        self.assertEqual([(row['guideX'],row['guideY']) for row in rows],[(True,True)]*2)
+        self.assertLess(rows[0]['to'][0],1.0);self.assertLess(rows[0]['from'][0],rows[0]['to'][0]);self.assertGreater(rows[1]['to'][0],1.0)
+        self.assertAlmostEqual(rows[0]['from'][1],rows[0]['from'][0]+1,places=9);self.assertAlmostEqual(rows[1]['to'][1],rows[1]['to'][0]**2,places=9)
+    def test_guides_vanish_on_an_axis(self):
+        p=copy.deepcopy(ARROWS);p['pieces'][0]['coefficients']=['0','1'];p['pieces'][1]['coefficients']=['0','0','1']
+        p['limitArrows']=[{'at':'1','side':'LEFT','toY':'1'}]
+        row=fit_overview(p)['graphPlan']['piecewiseDiscontinuousFeatures']['limitArrows'][0];self.assertTrue(row['guideX'] and row['guideY'])
+        p['pieces'][0]['coefficients']=['-1','1'];p['limitArrows']=[{'at':'1','side':'LEFT','toY':'0'}]
+        row=fit_overview(p)['graphPlan']['piecewiseDiscontinuousFeatures']['limitArrows'][0];self.assertFalse(row['guideX']);self.assertTrue(row['guideY'])
+    def test_model_passes_the_independent_observer(self):
+        g,svg,transform=self.build();result=audit(g,svg,transform)
+        self.assertEqual(result['status'],'PASS',result['errors'])
+    def test_claims_fail_closed(self):
+        cases=[]
+        p=copy.deepcopy(ARROWS);p['limitArrows']=[{'at':'1','side':'LEFT','toY':'3'}];cases.append((p,'PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_VALUE_MISMATCH:1'))
+        p=copy.deepcopy(ARROWS);p['limitArrows']=[{'at':'5','side':'LEFT','toY':'3'}];cases.append((p,'PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_AT_INVALID:1'))
+        p=copy.deepcopy(ARROWS);p['limitArrows']=[{'at':'1','side':'UP','toY':'2'}];cases.append((p,'PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_INVALID:1'))
+        p=copy.deepcopy(ARROWS);p['limitArrows']=[{'at':'1','side':'LEFT','toY':'2','x':1}];cases.append((p,'PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_INVALID:1'))
+        p=copy.deepcopy(ARROWS);p['limitArrows']=[{'at':'1','side':'LEFT','toY':'2'}]*7;cases.append((p,'PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_INVALID'))
+        p=copy.deepcopy(ARROWS);p['xWindow']=[0,2];cases.append((p,'PIECEWISE_DISCONTINUOUS_X_WINDOW_TOO_SMALL'))
+        p=copy.deepcopy(ARROWS);p['xWindow']=[3,1];cases.append((p,'PIECEWISE_DISCONTINUOUS_X_WINDOW_INVALID'))
+        for plan,code in cases:
+            got=refused(plan);self.assertTrue(got is not None and got.startswith(code),(code,got))
+    def test_arrow_needs_room(self):
+        p=copy.deepcopy(ARROWS);p['pieces'][0]['domain']=['0.9'.replace('0.9','9/10'),'1'];p['pieces'][0]['coefficients']=['1','1']
+        p['pieces'].insert(0,{'coefficients':['0'],'domain':[-3,'9/10'],'end':'OPEN'});p['pieces'][1]['start']='CLOSED'
+        self.assertEqual(refused(p),'PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_NO_ROOM:1')
+    def test_observer_reads_the_drawing(self):
+        g,svg,transform=self.build()
+        tampered={
+         'tip pulled off the curve':re.sub(r'(<line id="limit-arrow-1" [^>]*y2=")([0-9.]+)',lambda m:m.group(1)+str(float(m.group(2))+9),svg),
+         'arrow missing':re.sub(r'<line id="limit-arrow-2"[^>]*/>','',svg),
+         'head missing':re.sub(r'<polygon id="limit-arrow-1-arrow-end"[^>]*/>','',svg),
+         'guide missing':re.sub(r'<line id="limit-arrow-1-guide-x"[^>]*/>','',svg),
+         'guide moved':re.sub(r'(<line id="limit-arrow-1-guide-y" [^>]*x2=")([0-9.]+)',lambda m:m.group(1)+str(float(m.group(2))+20),svg),
+         'guide solid':re.sub(r'(<line id="limit-arrow-1-guide-x"[^>]*?) stroke-dasharray="6 4"',r'\1',svg),
+        }
+        for name,bad in tampered.items():
+            self.assertNotEqual(bad,svg,name);self.assertEqual(audit(g,bad,transform)['status'],'FAIL',name)
+        # The arrow reversed (tail nearer the point than the tip) is a wrong approach direction.
+        line=re.search(r'<line id="limit-arrow-1" [^>]*x1="([0-9.]+)" y1="([0-9.]+)" x2="([0-9.]+)" y2="([0-9.]+)"',svg)
+        x1,y1,x2,y2=line.groups();swapped=svg.replace(f'x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}"',f'x1="{x2}" y1="{y2}" x2="{x1}" y2="{y1}"',1)
+        self.assertEqual(audit(g,swapped,transform)['status'],'FAIL')
+    def test_eight_pieces_and_no_new_field_means_no_arrow_elements(self):
+        p={'family':'piecewise-discontinuous','pieces':[{'coefficients':[str(index%2)],'domain':[index,index+1],'end':'OPEN'} for index in range(8)],'requiredPoints':[],'axisTickValues':{'x':[],'y':[]}}
+        self.assertIsNone(refused(p))
+        g=fit_overview(JUMP)['graphPlan'];self.assertNotIn('limitArrows',g['piecewiseDiscontinuousFeatures']);self.assertNotIn('limit-arrow',produce(g)['svg'])
 
 if __name__=='__main__':unittest.main()

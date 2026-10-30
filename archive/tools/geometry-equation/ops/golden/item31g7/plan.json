@@ -1,0 +1,288 @@
+{
+ "capability": "piecewise-discontinuous-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-discontinuous",
+  "layout": "STACKED",
+  "xWindow": [
+   -2,
+   6
+  ],
+  "functionName": "f",
+  "pieces": [
+   {
+    "coefficients": [
+     "1",
+     "2",
+     "1"
+    ],
+    "domain": [
+     -2,
+     -1
+    ],
+    "end": "OPEN"
+   },
+   {
+    "coefficients": [
+     "0"
+    ],
+    "domain": [
+     -1,
+     0
+    ],
+    "end": "OPEN"
+   },
+   {
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     0,
+     1
+    ],
+    "start": "OPEN",
+    "end": "OPEN"
+   },
+   {
+    "coefficients": [
+     "2",
+     "-1"
+    ],
+    "domain": [
+     1,
+     2
+    ],
+    "end": "OPEN"
+   },
+   {
+    "coefficients": [
+     "-2",
+     "1"
+    ],
+    "domain": [
+     2,
+     3
+    ],
+    "end": "OPEN"
+   },
+   {
+    "coefficients": [
+     "4",
+     "-1"
+    ],
+    "domain": [
+     3,
+     4
+    ],
+    "end": "OPEN"
+   },
+   {
+    "coefficients": [
+     "0"
+    ],
+    "domain": [
+     4,
+     5
+    ],
+    "start": "OPEN",
+    "end": "OPEN"
+   },
+   {
+    "coefficients": [
+     "25",
+     "-10",
+     "1"
+    ],
+    "domain": [
+     5,
+     6
+    ]
+   }
+  ],
+  "jumpValues": [
+   {
+    "x": "0",
+    "y": "1"
+   },
+   {
+    "x": "4",
+    "y": "1"
+   }
+  ],
+  "requiredPoints": [],
+  "axisTickValues": {
+   "x": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "y": [
+    1
+   ]
+  },
+  "referenceCurves": [
+   {
+    "id": "g",
+    "name": "g",
+    "pieces": [
+     {
+      "coefficients": [
+       "-2",
+       "-1"
+      ],
+      "domain": [
+       -2,
+       -1
+      ],
+      "end": "OPEN"
+     },
+     {
+      "coefficients": [
+       "0",
+       "0",
+       "1"
+      ],
+      "domain": [
+       -1,
+       0
+      ],
+      "end": "OPEN"
+     },
+     {
+      "coefficients": [
+       "0",
+       "0",
+       "1"
+      ],
+      "domain": [
+       0,
+       1
+      ],
+      "start": "OPEN"
+     },
+     {
+      "coefficients": [
+       "-2",
+       "1"
+      ],
+      "domain": [
+       1,
+       2
+      ],
+      "start": "OPEN"
+     },
+     {
+      "coefficients": [
+       "2",
+       "-1"
+      ],
+      "domain": [
+       2,
+       3
+      ],
+      "start": "OPEN",
+      "end": "OPEN"
+     },
+     {
+      "coefficients": [
+       "16",
+       "-8",
+       "1"
+      ],
+      "domain": [
+       3,
+       4
+      ],
+      "end": "OPEN"
+     },
+     {
+      "coefficients": [
+       "16",
+       "-8",
+       "1"
+      ],
+      "domain": [
+       4,
+       5
+      ],
+      "start": "OPEN"
+     },
+     {
+      "coefficients": [
+       "-6",
+       "1"
+      ],
+      "domain": [
+       5,
+       6
+      ],
+      "start": "OPEN"
+     }
+    ],
+    "jumpValues": [
+     {
+      "x": "0",
+      "y": "-1"
+     },
+     {
+      "x": "4",
+      "y": "-1"
+     }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+     "x": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "y": [
+      1
+     ]
+    }
+   }
+  ],
+  "limitArrows": [
+   {
+    "curve": "f",
+    "at": "1",
+    "side": "LEFT",
+    "toY": "1"
+   },
+   {
+    "curve": "g",
+    "at": "1",
+    "side": "RIGHT",
+    "toY": "-1"
+   },
+   {
+    "curve": "g",
+    "at": "3",
+    "side": "LEFT",
+    "toY": "-1"
+   }
+  ]
+ },
+ "caption": "x=2에 대칭으로 복원한 -2≤x≤6의 y=f(x), y=g(x) 그래프. 점선과 화살표는 안쪽 함수가 한쪽에서 접근하는 값을 표시한다.",
+ "sourceQuote": "$y=f(x)$와 $y=g(x)$의 그래프는 직선 $x=2$에 대하여 대칭일 때",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "-2<=x<=2에서 f, g의 그래프는 그림과 같다",
+   "mappedTo": "graphPlan.pieces"
+  },
+  {
+   "id": "c2",
+   "condition": "y=f(x)와 y=g(x)의 그래프는 직선 x=2에 대하여 대칭",
+   "mappedTo": "graphPlan.pieces[4..7]"
+  }
+ ],
+ "newVisualInformation": [
+  "x=2 대칭으로 복원한 2<x<=6의 그래프와 x=0,4,5 부근의 열린 점·닫힌 점",
+  "안쪽 함수가 한쪽에서 접근하는 값을 나타내는 접근 화살표와 점선"
+ ]
+}

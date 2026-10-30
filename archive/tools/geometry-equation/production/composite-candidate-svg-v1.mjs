@@ -107,7 +107,7 @@ export function compositePanels(plan){
     if(solid&&(plan.chain!==SOLID_CAPABILITY||plan.panels.length!==1))bad('SOLID_PANEL_PLACEMENT_'+index);
     // A number line (quadratic-inequality-chain-v1) is the last panel of a two-panel stack, under its quadratic graph.
     if(numberLine&&(three||index!==plan.panels.length-1||!panel.plan.numberLine||typeof panel.plan.numberLine!=='object'||Object.keys(panel.plan).some(key=>!['capability','numberLine','pointNames'].includes(key))))bad('NUMBER_LINE_PANEL_PLACEMENT_'+index);
-    if(!numberLine&&!solid&&(!panel?.plan||!['polynomial-spike-v1','piecewise-polynomial-spike-v1'].includes(panel.plan.capability)||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object'))bad('PANEL_PLAN_'+index);
+    if(!numberLine&&!solid&&(!panel?.plan||!['polynomial-spike-v1','piecewise-polynomial-spike-v1','piecewise-discontinuous-spike-v1'].includes(panel.plan.capability)||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object'))bad('PANEL_PLAN_'+index);
     if(numberLine||solid)return {index,plan:panel.plan,caption};
     // compositeHeader is the composite's own field: an author never writes it, and a two-panel stack keeps the standard formula header.
     if(!three&&Object.hasOwn(panel.plan.graphPlan,'compositeHeader'))bad('PANEL_COMPOSITE_HEADER_'+index);

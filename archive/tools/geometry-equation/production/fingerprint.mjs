@@ -13,7 +13,7 @@ const producer={
   'exponential-affine-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
   'logarithmic-affine-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
   'piecewise-polynomial-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
-  'piecewise-discontinuous-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
+  'piecewise-discontinuous-spike-v1':['production/discontinuous-pair-v1.mjs','production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
   'trigonometric-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
   'exp-log-pair-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
 };

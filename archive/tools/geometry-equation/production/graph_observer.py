@@ -2164,7 +2164,7 @@ def _pd_pieces(plan):
         width=S.Rational(x_to-x_from,len(heights))
         return [{'coefficients':[height,S.Integer(0),S.Integer(0)],'a':S.Rational(x_from+index*width),'b':S.Rational(x_from+(index+1)*width),'start':'CLOSED','end':'CLOSED' if index==len(heights)-1 else 'OPEN'} for index,height in enumerate(heights)]
     raw=plan['pieces']
-    if not isinstance(raw,list) or not 1<=len(raw)<=6:raise ValueError('PIECEWISE_TOO_MANY_PIECES')
+    if not isinstance(raw,list) or not 1<=len(raw)<=8:raise ValueError('PIECEWISE_TOO_MANY_PIECES')
     pieces=[]
     for entry in raw:
         if not isinstance(entry,dict) or set(entry)-{'coefficients','domain','start','end'} or 'coefficients' not in entry or 'domain' not in entry:raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
@@ -2255,6 +2255,51 @@ def _pd_crossings(pieces,level,jumps):
     for at,value in jumps:
         if _pp_same(value,level) and not any(abs(S.N(at,60)-other)<tolerance for other in found):found.append(S.N(at,60))
     return sorted(found)
+
+def _pd_limit_arrow_errors(plan,pieces,features,root,to_model,sx,sy,display,x_tol,y_tol):
+    """limitArrows, recomputed from the raw plan: the piece that reaches `at` from the stated side must approach exactly toY; then the FINAL drawing
+    is read back: the arrow (line + head) lies ON that piece, on the stated side, tip short of the approached point, and the two dashed guides run
+    from that point to the axes (none when the point is on an axis)."""
+    errors=[];raw=plan.get('limitArrows',[])
+    if not isinstance(raw,list):return ['PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_INVALID']
+    frozen=features.get('limitArrows',[]) if isinstance(features,dict) else []
+    nodes={node.get('id'):node for node in root.iter() if node.get('id')}
+    drawn=[n for n in nodes if str(n).startswith('limit-arrow-') and not str(n).endswith(('-arrow-end','-guide-x','-guide-y'))]
+    if len(drawn)!=len(raw) or len(frozen)!=len(raw):errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_COUNT_MISMATCH')
+    for index,entry in enumerate(raw,1):
+        tag=str(index)
+        try:
+            at=_pp_coeff(entry['at']);to_y=_pp_coeff(entry['toY']);left=entry['side']=='LEFT'
+            if entry['side'] not in ('LEFT','RIGHT'):raise ValueError('side')
+        except (ValueError,KeyError,TypeError):errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_INVALID:'+tag);continue
+        owner=[piece for piece in pieces if (piece['a'] is None or (S.N(piece['a'],60)<S.N(at,60) if left else S.N(piece['a'],60)<=S.N(at,60))) and (piece['b'] is None or (S.N(at,60)<=S.N(piece['b'],60) if left else S.N(at,60)<S.N(piece['b'],60)))]
+        if len(owner)!=1:errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_AT_INVALID:'+tag);continue
+        piece=owner[0]
+        if not _pp_same(_pd_value(piece,at),to_y):errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_VALUE_MISMATCH:'+tag);continue
+        line=nodes.get('limit-arrow-'+tag);head=nodes.get('limit-arrow-'+tag+'-arrow-end')
+        if line is None or head is None or line.tag.split('}')[-1]!='line' or head.tag.split('}')[-1]!='polygon':errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_MISSING:'+tag);continue
+        tail=to_model(float(line.get('x1')),float(line.get('y1')));tip=to_model(float(line.get('x2')),float(line.get('y2')))
+        a_f,b_f=float(at),float(to_y)
+        side=-1 if left else 1
+        def on_piece(point):
+            if (point[0]-a_f)*side<=0 or (piece['a'] is not None and point[0]<float(piece['a'])-x_tol) or (piece['b'] is not None and point[0]>float(piece['b'])+x_tol):return False
+            return abs(float(_pd_value(piece,S.Float(point[0],30)))-point[1])<=y_tol+abs(float(S.diff(sum(c*x**k for k,c in enumerate(piece['coefficients'])),x).subs(x,point[0])))*x_tol
+        if not on_piece(tail) or not on_piece(tip):errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_OFF_CURVE:'+tag)
+        if abs(tail[0]-a_f)<=abs(tip[0]-a_f):errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_DIRECTION:'+tag)
+        gap=math.hypot((tip[0]-a_f)*sx*display,(tip[1]-b_f)*sy*display);length=math.hypot((tip[0]-tail[0])*sx*display,(tip[1]-tail[1])*sy*display)
+        if not 8<=gap<=24:errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_TIP_GAP:'+tag)
+        if length<24:errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_TOO_SHORT:'+tag)
+        values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:e-?\d+)?',head.get('points',''))]
+        if len(values)!=6 or abs(to_model(values[0],values[1])[0]-tip[0])>x_tol or abs(to_model(values[0],values[1])[1]-tip[1])>y_tol:errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_HEAD_MISMATCH:'+tag)
+        for axis,end,present in (('x',(a_f,0.0),abs(b_f)>1e-12),('y',(0.0,b_f),abs(a_f)>1e-12)):
+            guide=nodes.get('limit-arrow-'+tag+'-guide-'+axis)
+            if not present:
+                if guide is not None:errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_GUIDE_UNEXPECTED:'+tag+axis)
+                continue
+            if guide is None or 'stroke-dasharray' not in guide.attrib and guide.get('data-dash') is None and 'dash' not in (guide.get('style') or '') and 'stroke-dasharray' not in (guide.get('style') or ''):errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_GUIDE_MISSING:'+tag+axis);continue
+            p1=to_model(float(guide.get('x1')),float(guide.get('y1')));p2=to_model(float(guide.get('x2')),float(guide.get('y2')))
+            if not ((abs(p1[0]-a_f)<=x_tol and abs(p1[1]-b_f)<=y_tol and abs(p2[0]-end[0])<=x_tol and abs(p2[1]-end[1])<=y_tol) or (abs(p2[0]-a_f)<=x_tol and abs(p2[1]-b_f)<=y_tol and abs(p1[0]-end[0])<=x_tol and abs(p1[1]-end[1])<=y_tol)):errors.append('PIECEWISE_DISCONTINUOUS_LIMIT_GUIDE_MISPLACED:'+tag+axis)
+    return errors
 
 def piecewise_discontinuous_audit(plan,svg,transform):
     """Independent: the pieces, their endpoint states and jumps, the declared values, the in-piece vertices and every crossing with each
@@ -2376,6 +2421,7 @@ def piecewise_discontinuous_audit(plan,svg,transform):
             if len(dots)!=sum(key is None and not flag for key,flag in zip(keys,marker_flags)):errors.append('PIECEWISE_INTERSECTION_DOT_COUNT_MISMATCH:'+str(line_id))
             for k,(value,key,flag) in enumerate(zip(roots,keys,marker_flags),1):
                 if key is None and not flag and not dot_at('intersection-'+str(line_id)+'-'+str(k),value,level):errors.append('PIECEWISE_INTERSECTION_DOT_MISSING:'+str(line_id)+'-'+str(k))
+        errors.extend(_pd_limit_arrow_errors(plan,pieces,features,root,to_model,sx,sy,display,x_tol,y_tol))
         marks=[]
         for mark in sorted(set([(float(at),float(value)) for at,value,_ in markers]+[(float(at),float(value)) for at,value,_ in extrema]+[(float(root),level) for _,level,roots,_,_ in expected for root in roots])):
             if not any(abs(mark[0]-other[0])<=1e-9*max(1,abs(mark[0])) and abs(mark[1]-other[1])<=1e-9*max(1,abs(mark[1])) for other in marks):marks.append(mark)

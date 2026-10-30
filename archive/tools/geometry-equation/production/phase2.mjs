@@ -1145,6 +1145,15 @@ function piecewiseDiscontinuousSpec(plan,id){
       if(line.labelIntersections===true)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:[point.x,levelText]});
     }
   }
+  // limitArrows: the engine computed each arrow ON the curve (tail and tip) and the dashed guides from the approached point to both axes; the figure only draws them.
+  const limitArrows=features.limitArrows??[];
+  if(!Array.isArray(limitArrows)||limitArrows.length!==(p.limitArrows??[]).length)throw Error('PIECEWISE_DISCONTINUOUS_FEATURE_INVENTORY_REQUIRED');
+  for(const arrow of limitArrows){
+    if(typeof arrow?.id!=='string'||!Array.isArray(arrow.from)||!Array.isArray(arrow.to)||![arrow.atValue,arrow.toYValue,...arrow.from,...arrow.to].every(Number.isFinite))throw Error('PIECEWISE_DISCONTINUOUS_FEATURE_INVENTORY_REQUIRED');
+    if(arrow.guideX)objects.push({id:arrow.id+'-guide-x',kind:'SEGMENT',from:[arrow.atValue,arrow.toYValue],to:[arrow.atValue,0],dash:true});
+    if(arrow.guideY)objects.push({id:arrow.id+'-guide-y',kind:'SEGMENT',from:[arrow.atValue,arrow.toYValue],to:[0,arrow.toYValue],dash:true});
+    objects.push({id:arrow.id,kind:'SEGMENT',from:arrow.from,to:arrow.to,arrow:'END'});
+  }
   const longCoordinate=objects.some(object=>panelLabels.includes(object.id)&&object.text.length>10),columns=longCoordinate?1:2;
   const coordinateRows=Math.ceil(panelLabels.length/columns),textOf=labelId=>objects.find(object=>object.id===labelId)?.text??'';
   const rows=[...lineLabels.map(labelId=>[labelId]),...Array.from({length:coordinateRows},(_,r)=>panelLabels.slice(r*columns,r*columns+columns))];
