@@ -363,11 +363,11 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       return loose;
     };
-    const beyond = (txt) => { // 좁은 각: 호는 그대로 두고, 호 바로 너머 각의 '안쪽'(두 변 사이)에 값을 놓음
+    const beyond = (txt, far) => { // 좁은 각: 호는 그대로 두고, 호 너머 각의 '안쪽'(두 변 사이)에 값을 놓음(far: 아주 좁은 각은 폭이 충분한 더 먼 곳, 선을 안 지나는 자리만)
       if (isSym(txt)) return null; // 기호(•×○)는 좁은 각 안에 들어가지 않으므로 호 바로 바깥에
-      const w = wOf(txt, size), lim = Math.min(r + 30, lenMin * 0.85);
+      const w = wOf(txt, size), lim = far ? Math.min(r + 110, lenMin * 0.75) : Math.min(r + 30, lenMin * 0.85);
       let loose = null;
-      for (let rho = r + 8; rho <= lim; rho += 4) {
+      for (let rho = far ? r + 30 : r + 8; rho <= lim; rho += 4) {
         for (const f of [0, 0.3, -0.3, 0.55, -0.55]) {
           const a = mid + (f * d) / 2, x = S.x + Math.cos(a) * rho, y = S.y + Math.sin(a) * rho;
           const rc = { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 };
@@ -376,7 +376,7 @@ window.addEventListener('DOMContentLoaded', function () {
           if (!corners(rc).every(([px, py]) => inWedge(px, py))) continue;
           if (!okSpotA(rc)) continue;
           if (lineFree(rc)) return { rr: r, x, y, rc };
-          loose = loose || { rr: r, x, y, rc };
+          if (!far) loose = loose || { rr: r, x, y, rc };
         }
       }
       return loose;
@@ -414,7 +414,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     }
     let res = null, txt = str, tail = outer;
-    search: for (const fn of [inside, beyond]) {
+    search: for (const fn of [inside, beyond, (t) => beyond(t, true)]) {
       for (const [t, tl] of cand) {
         const q = t ? fn(t) : null;
         if (q) { res = q; txt = t; tail = tl; break search; }
@@ -1006,18 +1006,18 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'altSegmentThm') {
           return {
             badge: `탐구 5-A · 📐 접선과 현이 이루는 각(접현각) 완벽 증명 — 왜 ∠BAT = ∠BCA 일까?`,
-            hint: `접점 $A$를 지나는 <strong class="text-pink-300">지름 보조선 $AD$</strong>를 그어보세요! 접선과 지름은 수직($\\angle DAT = 90^\\circ$)이고 반원의 원주각도 직각($\\angle ACD = 90^\\circ$)이므로, $90^\\circ$에서 똑같은 각을 뺀 <strong class="text-amber-300">접현각 $\\angle BAT(${ang}^\\circ)$와 원주각 $\\angle BCA(${ang}^\\circ)$는 무조건 같습니다!</strong>`,
+            hint: `접점 $A$를 지나는 <strong class="text-pink-300">지름 보조선 $AD$</strong>를 그어보세요! 접선과 지름은 수직($\\angle DAT = 90^\\circ$)이고 반원의 원주각도 직각($\\angle ABD = 90^\\circ$)이므로, $90^\\circ$에서 똑같은 각을 뺀 <strong class="text-amber-300">접현각 $\\angle BAT(${ang}^\\circ)$와 원주각 $\\angle BCA(${ang}^\\circ)$는 무조건 같습니다!</strong>`,
             actionTxt: state.fold > 0.5 ? '🎬 지름 보조선 숨기기' : '🎬 지름 보조선 AD(90°)로 접현각 완벽 증명!',
             dim1Name: '접현각 ∠BAT', dim2Name: '호 AB의 원주각 ∠BCA',
             val1Txt: `${ang}°`, val2Txt: `∠BCA = ${ang}° (100% 일치!)`,
             parts: [
               { id: 0, name: `🟡 접선 AT와 현 AB가 이루는 각 (접현각 ∠BAT = ${ang}°)`, desc: `접선과 현 사이의 끼인각 (현 AB가 품은 호 AB를 바라봄)`, val: `∠BAT = ${ang}°`, color: '#fbbf24', ok: true },
               { id: 1, name: `🔵 현 AB가 품은 호 AB에 대한 원주각 (∠BCA = ${ang}°)`, desc: `호 AB의 반대편 꼭짓점 C에 생기는 원주각`, val: `∠BCA = ${ang}°`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🩷 [증명 열쇠] 지름 보조선 AD (∠DAT = 90°, ∠ACD = 90°)`, desc: `∠BAT = 90° - ∠DAB = ∠ADC = ∠BCA (원주각 이동 증명!)`, val: `90° 보조선 증명`, color: '#f472b6', ok: true }
+              { id: 2, name: `🩷 [증명 열쇠] 지름 보조선 AD (∠DAT = 90°, ∠ABD = 90°)`, desc: `∠BAT = 90° - ∠DAB = ∠ADB = ∠BCA (원주각 이동 증명!)`, val: `90° 보조선 증명`, color: '#f472b6', ok: true }
             ],
             totalRes: `접현각 정리: ∠BAT(${ang}°) = 호 AB에 대한 원주각 ∠BCA(${ang}°) = ½ ∠AOB(${ang * 2}°)`,
             rule: '접현각 찾는 1초 화살표 법칙: 접선 쪽 각을 낀 현(AB)을 타고 건너편 꼭짓점(C)으로 점프하라!',
-            formulaHTML: `• <strong>지름 보조선 증명</strong>:<br/>&nbsp;&nbsp;① 지름 $\\overline{AD} \\perp \\text{접선 }AT \\implies \\angle DAB + \\angle BAT = 90^\\circ$<br/>&nbsp;&nbsp;② 반원의 원주각 $\\angle ACD = 90^\\circ \\implies \\angle DAB + \\angle ADC = 90^\\circ$<br/>&nbsp;&nbsp;③ $\\therefore \\angle BAT = \\angle ADC = \\mathbf{\\angle BCA}$!`,
+            formulaHTML: `• <strong>지름 보조선 증명</strong>:<br/>&nbsp;&nbsp;① 지름 $\\overline{AD} \\perp \\text{접선 }AT \\implies \\angle DAB + \\angle BAT = 90^\\circ$<br/>&nbsp;&nbsp;② 반원의 원주각 $\\angle ABD = 90^\\circ \\implies \\angle DAB + \\angle ADB = 90^\\circ$<br/>&nbsp;&nbsp;③ $\\therefore \\angle BAT = \\angle ADB = \\mathbf{\\angle BCA}$!`,
             notes: `• <strong>[짝꿍 혼동 주의]</strong>: 오른쪽 접현각 $\\angle BAT$의 짝꿍은 바로 위쪽 각($\\angle ABC$)이 아니라, <strong>현 $AB$의 맞은편 각인 $\\angle BCA$</strong>입니다!`,
             tapeTitle: `직각 90° 분해: 접현각 ∠BAT(${ang}°) + 보조선 각 ∠DAB(${90 - ang}°) = 90° (원주각 ∠BCA = ${ang}°)`,
             tapeSegs: [
@@ -1857,11 +1857,12 @@ window.addEventListener('DOMContentLoaded', function () {
           cline(pS, pT, CCOL.gold, 3.8, [], true, 0);
 
           if (sub === 'altSegmentThm' && (t > 0.1 || state.conceptSwitch === 'aux' || state.activePartIdx === 2)) {
-            cpoly([pA, pD, pC], 'rgba(244, 114, 182, 0.20)', CCOL.pink, 2.4, 2);
+            cpoly([pA, pD, pB], 'rgba(244, 114, 182, 0.20)', CCOL.pink, 2.4, 2); // [표시 보강] 직각삼각형 ABD (지름 AD 의 원주각 ∠ABD = 90°)
             cline(pA, pD, CCOL.pink, 3.2, [6, 4], true, 2);
             cright(pA, pD, pT, 13, CCOL.pink);
-            cright(pC, pA, pD, 12, CCOL.pink);
+            cright(pB, pA, pD, 12, CCOL.pink);
             cangle(pA, pD, pB, CCOL.pink, 22, 2, `${90 - ang}°`); // [표시 보강] ∠DAB = 90° - θ (접현각과 더해 직각 ∠DAT)
+            cangle(pD, pA, pB, CCOL.gold, 30, 1, `${ang}°`); // [표시 보강] ∠ADB = θ: 접현각 ∠BAT·원주각 ∠BCA 와 같은 각 → 같은 색(금색)·같은 호 한 개
             cdot(pD, 'D(지름 보조선 90°!)', CCOL.pink, null, { x: 0, y: -16 });
           }
 
