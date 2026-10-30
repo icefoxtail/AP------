@@ -321,6 +321,23 @@ const checkOneRadical=values=>{if(new Set(values.filter(isReal).map(value=>value
 // numberLine.constructions: [{id,row?,center,radius:{value},arc:{side},hits:[{id,branch}]}]: a compass arc round a drawn point with an exact radius, over the number line; the arc
 // meets the line at the points listed as hits, which must be exactly center+radius (branch RIGHT) or center-radius (branch LEFT). The arc is only drawn over the line.
 const MAX_CONSTRUCTIONS=4,ARC_SIDES=['LEFT','RIGHT','BOTH'],ARC_BRANCHES=['LEFT','RIGHT'],CONSTRUCTION_ID=/^[a-z][A-Za-z0-9]{0,5}$/;
+/**
+ * source:{grid:true,from:[x,y],to:[x,y],toName?} (a construction's optional source): the segment whose length the compass carries, drawn on a lattice that stands on the number line, one cell
+ * one unit of the line. It starts on the line at the centre (from=[the centre's value,0], an integer) and ends on a lattice point above it and to one side (to=[x,y], y>=1, x not the centre's); its length sqrt(dx^2+dy^2) must be
+ * the radius exactly. toName: an optional capital letter written at its end (a name the problem gives, not a point of the figure).
+ */
+function solveSource(raw,center,radius,points){
+  const code='NUMBER_LINE_CONSTRUCTION_SOURCE_INVALID';
+  onlyKeys(raw,['grid','from','to','toName'],code);
+  if(raw.grid!==true)bad(code);
+  const pair=value=>{if(!Array.isArray(value)||value.length!==2)bad(code);return value.map(entry=>{const number=typeof entry==='string'&&/^-?\d{1,2}$/.test(entry)?Number(entry):entry;if(!Number.isInteger(number)||Math.abs(number)>99)bad(code);return number;});};
+  const [fx,fy]=pair(raw.from),[tx,ty]=pair(raw.to);
+  if(fy!==0||isReal(center.v)||center.v[1]!==1n||center.v[0]!==BigInt(fx)||ty<1||ty>SOURCE_MAX_CELLS||tx===fx||Math.abs(tx-fx)>SOURCE_MAX_CELLS)bad(code);
+  if(raw.toName!==undefined&&(typeof raw.toName!=='string'||!CAPITAL.test(raw.toName)||points.some(point=>point.id===raw.toName)))bad(code);
+  const d=BigInt((tx-fx)**2+ty**2),r=toReal(radius),square=r.s===1n?asReal(mul(r.p,r.p)):real(add(mul(r.p,r.p),mul(mul(r.q,r.q),[r.s,1n])),mul([2n,1n],mul(r.p,r.q)),r.s);
+  if(cmpR(square,rat(d))!==0)bad('NUMBER_LINE_CONSTRUCTION_SOURCE_LENGTH_MISMATCH');
+  return {from:[fx,fy],to:[tx,ty],...(raw.toName!==undefined?{toName:raw.toName}:{})};
+}
 function solveConstructions(raw,pointInfo){
   const code='NUMBER_LINE_CONSTRUCTION_INVALID';
   if(!Array.isArray(raw)||raw.length<1||raw.length>MAX_CONSTRUCTIONS)bad(code);
@@ -328,7 +345,7 @@ function solveConstructions(raw,pointInfo){
   if(!rowNumbers.length)bad('NUMBER_LINE_CONSTRUCTION_NEEDS_POINTS_ROW');
   const seen=new Set(),out=[];
   for(const item of raw){
-    onlyKeys(item,['id','row','center','radius','arc','hits'],code);
+    onlyKeys(item,['id','row','center','radius','arc','hits','source'],code);
     if(typeof item.id!=='string'||!CONSTRUCTION_ID.test(item.id)||seen.has(item.id))bad(code);
     seen.add(item.id);
     let rowNumber;
@@ -355,7 +372,8 @@ function solveConstructions(raw,pointInfo){
     if(new Set(branches).size!==branches.length||new Set(hits.map(hit=>hit.id)).size!==hits.length)bad('NUMBER_LINE_CONSTRUCTION_HITS_INCOMPLETE');
     const want=item.arc.side==='BOTH'?['LEFT','RIGHT']:[item.arc.side];
     if(branches.length!==want.length||want.some(side=>!branches.includes(side)))bad('NUMBER_LINE_CONSTRUCTION_HITS_INCOMPLETE');
-    out.push({rowNumber,model:{id:item.id,center:item.center,radius:{value:ratText(radius),approx:num(radius)},side:item.arc.side,hits:[...hits].sort((a,b)=>a.branch<b.branch?-1:1)}});
+    const source=item.source===undefined?undefined:solveSource(item.source,center,radius,info.points);
+    out.push({rowNumber,model:{id:item.id,center:item.center,radius:{value:ratText(radius),approx:num(radius)},side:item.arc.side,hits:[...hits].sort((a,b)=>a.branch<b.branch?-1:1),...(source?{source}:{})}});
   }
   return out;
 }
@@ -491,6 +509,8 @@ const SPAN_PAD=4,SPAN_HALF=6,SPAN_LABEL_GAP=3,SPAN_LABEL_ROW=30,SPAN_BAND=SPAN_P
 const HEAD_HIDDEN=8;      // a SET row whose inequality label is hidden keeps only the margin above its integer points
 // Compass arcs (E35): an arc leaves the line at its hit point and rises at most ARC_RISE_MAX px (along at most ARC_SPAN_DEG degrees); the row's head keeps that room (plus the dot's margin).
 const ARC_RISE_MAX=72,ARC_SPAN_DEG=32,ARC_MIN_RADIUS=14,ARC_HEAD=ARC_RISE_MAX+8,ARC_STROKE=1.2,ARC_LABEL_CLEAR=1.2,ARC_SAMPLES=32,HIT_NAME_GAP=3,SYMBOL_DOT_GAP=14;
+// A source grid (E35): the segment whose length is the radius, on a lattice of unit cells that stands on the number line (one cell is one unit of the line); the arc then runs from its hit to the segment's end.
+const SOURCE_MAX_CELLS=12,SOURCE_MARGIN=12,SOURCE_MAX_RISE=220,SOURCE_STROKE=2.4,LATTICE_STROKE=.8,LATTICE_COLOR='#bdbdbd';
 
 const axisLeftOf=model=>{const longest=Math.max(0,...model.rows.map(row=>row.label?[...row.label].length:0));return longest?Math.max(AXIS_LEFT,SAFE+ROW_LABEL_CHAR_PX*longest+ROW_LABEL_GAP):AXIS_LEFT;};
 const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
@@ -502,6 +522,21 @@ function pieceTex(variable,piece){
   if(piece.lo&&piece.hi)return {tex:piece.lo.tex+rel(piece.lo)+variable+rel(piece.hi)+piece.hi.tex,plain:piece.lo.text+relText(piece.lo)+variable+relText(piece.hi)+piece.hi.text};
   if(piece.lo)return {tex:variable+(piece.lo.state==='CLOSED'?'\\ge ':'>')+piece.lo.tex,plain:variable+(piece.lo.state==='CLOSED'?'≥':'>')+piece.lo.text};
   return {tex:variable+rel(piece.hi)+piece.hi.tex,plain:variable+relText(piece.hi)+piece.hi.text};
+}
+/** The shared unit-to-px map of a figure: the values shown, padded (a source grid's end too); unitPx is px per unit (compass arcs and source grids are drawn at true scale). */
+function figureMap(model){
+  const finite=[];
+  for(const row of model.rows){
+    if(row.kind==='POINTS')finite.push(...row.points.map(point=>point.approx),...(row.scale?.integers??[]).map(Number),...(row.constructions??[]).flatMap(construction=>construction.source?[construction.source.to[0]]:[]));
+    else{for(const piece of row.pieces)for(const end of [piece.lower,piece.upper])if(end)finite.push(end.approx);finite.push(...(row.integers??[]).map(Number));}
+  }
+  let lo=Math.min(...finite),hi=Math.max(...finite);
+  const intsAll=model.rows.flatMap(row=>row.integers??[]).map(Number);
+  const span=hi-lo,pad=span===0?2:Math.max(.8,.12*span);
+  lo-=pad;hi+=pad;
+  if(intsAll.length){lo=Math.min(lo,Math.min(...intsAll)-.75);hi=Math.max(hi,Math.max(...intsAll)+.75);}
+  const AXL=axisLeftOf(model),MAPL=AXL+(MAP_LEFT-AXIS_LEFT);     // a row label moves every axis start (and the map) right by the room it needs
+  return {lo,hi,AXL,MAPL,unitPx:(MAP_RIGHT-MAPL)/(hi-lo)};
 }
 /** Row tops, axis heights and the total height; known before any label is typeset. */
 export function figureLayout(model){
@@ -522,7 +557,12 @@ export function figureLayout(model){
       custom={nameRow,valueAbove};
     }
     // compass arcs over the row: room for the tallest arc (a fixed rise, whatever the scale)
-    if(points&&row.constructions?.length)head=Math.max(head,ARC_HEAD);
+    if(points&&row.constructions?.length){
+      head=Math.max(head,ARC_HEAD);
+      // a source grid stands over the line as high as its segment's end
+      const rise=Math.max(0,...row.constructions.map(construction=>construction.source?construction.source.to[1]:0))*figureMap(model).unitPx;
+      if(rise>0)head=Math.max(head,Math.ceil(rise)+SOURCE_MARGIN);
+    }
     // spans: each takes a band of its own, under the row's labels or over its names (the head grows by the bands above)
     const spans=points?row.spans??[]:[],spanAbove=spans.filter(span=>span.side==='ABOVE').length*SPAN_BAND,spanBelow=spans.filter(span=>span.side==='BELOW').length*SPAN_BAND;
     head+=spanAbove;
@@ -542,17 +582,7 @@ export const figurePointNames=(plan,model)=>pointNameModel(plan,model.rows.flatM
 export function numberLineFigureSpec(plan,model){
   if(plan?.capability!==NUMBER_LINE_CAPABILITY||!plan.numberLine)bad('NUMBER_LINE_PLAN_INVALID');
   if(objectSha(solveNumberLineFigure(plan.numberLine))!==objectSha(model))bad('NUMBER_LINE_MODEL_MISMATCH');
-  const names=figurePointNames(plan,model),finite=[];
-  for(const row of model.rows){
-    if(row.kind==='POINTS')finite.push(...row.points.map(point=>point.approx),...(row.scale?.integers??[]).map(Number));
-    else{for(const piece of row.pieces)for(const end of [piece.lower,piece.upper])if(end)finite.push(end.approx);finite.push(...(row.integers??[]).map(Number));}
-  }
-  let lo=Math.min(...finite),hi=Math.max(...finite);
-  const intsAll=model.rows.flatMap(row=>row.integers??[]).map(Number);
-  const span=hi-lo,pad=span===0?2:Math.max(.8,.12*span);
-  lo-=pad;hi+=pad;
-  if(intsAll.length){lo=Math.min(lo,Math.min(...intsAll)-.75);hi=Math.max(hi,Math.max(...intsAll)+.75);}
-  const AXL=axisLeftOf(model),MAPL=AXL+(MAP_LEFT-AXIS_LEFT);     // a row label moves every axis start (and the map) right by the room it needs
+  const names=figurePointNames(plan,model),{lo,hi,AXL,MAPL,unitPx}=figureMap(model);
   const px=u=>r6(MAPL+(u-lo)/(hi-lo)*(MAP_RIGHT-MAPL)),layout=figureLayout(model),v=model.variable;
   const rows=[],labels=[];
   if(model.parameter&&!model.parameter.hideNote){
@@ -579,11 +609,15 @@ export function numberLineFigureSpec(plan,model){
         for(const m of row.scale.minor)ticks.push({id:`r${n}-subtick-${numSlug(m.value)}`,role:'minor',value:m.value,parts:m.parts,x:px(m.approx),y1:r6(axisY-MINOR_TICK_HALF),y2:r6(axisY+MINOR_TICK_HALF)});
       }
       // compass arcs (E35): the points the arcs land on; an arc rises from its hit towards its centre, so the hit's name is written on the other side of the dot
-      const hitBranches=new Map();
-      for(const construction of row.constructions??[])for(const hit of construction.hits)(hitBranches.get(hit.id)??hitBranches.set(hit.id,new Set()).get(hit.id)).add(hit.branch);
+      // (the centre of a construction with a source grid keeps its name off the grid: on the side away from the segment)
+      const nameSides=new Map(),addSide=(id,side)=>(nameSides.get(id)??nameSides.set(id,new Set()).get(id)).add(side);
+      for(const construction of row.constructions??[]){
+        for(const hit of construction.hits)addSide(hit.id,hit.branch);
+        if(construction.source)addSide(construction.center,construction.source.to[0]>=construction.source.from[0]?'LEFT':'RIGHT');
+      }
       const nameAnchor=point=>{
-        const branches=hitBranches.get(point.id),y=r6(axisY-END_RADIUS-4);
-        if(branches?.size===1)return branches.has('RIGHT')?{x:r6(point.x+HIT_NAME_GAP),y,align:'above-right'}:{x:r6(point.x-HIT_NAME_GAP),y,align:'above-left'};
+        const sides=nameSides.get(point.id),y=r6(axisY-END_RADIUS-4);
+        if(sides?.size===1)return sides.has('RIGHT')?{x:r6(point.x+HIT_NAME_GAP),y,align:'above-right'}:{x:r6(point.x-HIT_NAME_GAP),y,align:'above-left'};
         return {x:point.x,y,align:'above'};
       };
       for(const point of placed){
@@ -620,13 +654,30 @@ export function numberLineFigureSpec(plan,model){
       }
       // compass arcs: a circle round the centre, drawn from each hit up to at most ARC_SPAN_DEG degrees (and ARC_RISE_MAX px); the arc touches the line only at its hit
       if(row.constructions){
-        const unitPx=(MAP_RIGHT-MAPL)/(hi-lo);spec.constructions=[];
+        spec.constructions=[];
         for(const construction of row.constructions){
-          const center=placed.find(item=>item.id===construction.center),cx=center.x,R=r6(construction.radius.approx*unitPx);
+          const center=placed.find(item=>item.id===construction.center),cx=center.x,R=r6(construction.radius.approx*unitPx),source=construction.source;
           if(R<ARC_MIN_RADIUS)bad('NUMBER_LINE_CONSTRUCTION_ARC_TOO_SMALL');
           const theta=Math.min(ARC_SPAN_DEG*Math.PI/180,Math.asin(Math.min(1,ARC_RISE_MAX/R)));
+          // the source grid: a lattice of unit cells over the line, the segment from the centre to its end (an arc on that side runs on to the end)
+          if(source){
+            const [fx,fy]=source.from,[tx,ty]=source.to,top=r6(ty*unitPx);
+            if(top>SOURCE_MAX_RISE)bad('NUMBER_LINE_CONSTRUCTION_SOURCE_TOO_TALL');
+            const id=`r${n}-src-${construction.id}`,left=Math.min(fx,tx),right=Math.max(fx,tx),item={id,construction:construction.id,from:[fx,fy],to:[tx,ty],
+              segment:{x1:px(fx),y1:axisY,x2:px(tx),y2:r6(axisY-top)},verticals:[],horizontals:[]};
+            for(let k=left;k<=right;k++)item.verticals.push({id:`${id}-v${k<0?'m'+(-k):k}`,x:px(k),y1:axisY,y2:r6(axisY-top)});
+            for(let j=1;j<=ty;j++)item.horizontals.push({id:`${id}-h${j}`,y:r6(axisY-j*unitPx),x1:px(left),x2:px(right)});
+            (spec.sources??=[]).push(item);
+            if(source.toName){
+              const sx=px(tx),right_=tx>=fx;
+              labels.push({id:`${id}-name`,role:'source-name',owner:id,kind:'MATH',tex:source.toName,plain:source.toName,value:source.toName,anchor:{x:r6(sx+(right_?HIT_NAME_GAP:-HIT_NAME_GAP)),y:r6(axisY-top-4),align:right_?'above-right':'above-left'},rowHeight:30,row:n});
+            }
+          }
           for(const hit of construction.hits){
-            const dir=hit.branch==='RIGHT'?1:-1,x0=r6(cx+dir*R),x1=r6(cx+dir*R*Math.cos(theta)),y1=r6(axisY-R*Math.sin(theta));
+            const dir=hit.branch==='RIGHT'?1:-1,x0=r6(cx+dir*R);
+            let x1=r6(cx+dir*R*Math.cos(theta)),y1=r6(axisY-R*Math.sin(theta));
+            // on the side of the segment's end the arc runs from its hit exactly to that end (the end is on the circle: the segment is a radius)
+            if(source&&dir*(source.to[0]-source.from[0])>=0){x1=px(source.to[0]);y1=r6(axisY-source.to[1]*unitPx);}
             spec.constructions.push({id:`r${n}-con-${construction.id}-${hit.branch.toLowerCase()}`,construction:construction.id,center:construction.center,hit:hit.id,branch:hit.branch,radius:construction.radius.value,
               cx,cy:axisY,R,x0,y0:axisY,x1,y1,d:`M ${x0} ${axisY} A ${R} ${R} 0 0 ${dir===1?0:1} ${x1} ${y1}`});
           }
@@ -710,8 +761,15 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
       const roles=[placed[i].label.role,other.label.role];
       throw new Stop(roles.every(role=>role==='integer')?'NUMBER_LINE_INTEGER_POINTS_TOO_DENSE':'NUMBER_LINE_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
     }
-    // a compass arc never runs through a label or another dot
+    // a compass arc never runs through a label or another dot; nor does a source grid (its lines, its segment) run through a label
     for(const row of spec.rows){
+      for(const src of row.sources??[]){
+        const lines=[...src.verticals.map(line=>[line.x,line.y1,line.x,line.y2]),...src.horizontals.map(line=>[line.x1,line.y,line.x2,line.y]),[src.segment.x1,src.segment.y1,src.segment.x2,src.segment.y2]];
+        for(const {label,box} of placed)for(const [x1,y1,x2,y2] of lines){
+          const samples=Math.max(2,Math.ceil(Math.hypot(x2-x1,y2-y1)/2));
+          if(Array.from({length:samples+1},(_,k)=>[x1+(x2-x1)*k/samples,y1+(y2-y1)*k/samples]).some(([x,y])=>x>box.x-ARC_LABEL_CLEAR&&x<box.x+box.width+ARC_LABEL_CLEAR&&y>box.y-ARC_LABEL_CLEAR&&y<box.y+box.height+ARC_LABEL_CLEAR))throw new Stop('NUMBER_LINE_CONSTRUCTION_SOURCE_ON_LABEL',{source:src.id,label:label.id});
+        }
+      }
       for(const arc of row.constructions??[]){
         const dir=arc.branch==='RIGHT'?1:-1,theta=Math.atan2(arc.cy-arc.y1,dir*(arc.x1-arc.cx));
         const samples=Array.from({length:ARC_SAMPLES+1},(_,k)=>[arc.cx+dir*arc.R*Math.cos(theta*k/ARC_SAMPLES),arc.cy-arc.R*Math.sin(theta*k/ARC_SAMPLES)]);
@@ -737,6 +795,11 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
         }
       }
       for(const band of row.bands)body+=`<g data-layer="40"><line id="${band.id}" data-role="solution-band" data-row="${n}" data-piece="${band.piece}" data-from="${esc(band.from)}" data-to="${esc(band.to)}" stroke="#111" stroke-width="${band.result?4.8:3.2}" stroke-linecap="butt" fill="none" x1="${band.x1}" y1="${band.y}" x2="${band.x2}" y2="${band.y}"/></g>`;
+      for(const src of row.sources??[]){
+        const head=`data-row="${n}" data-construction="${src.construction}"`;
+        body+=`<g data-layer="25">${src.verticals.map(line=>`<line id="${line.id}" data-role="grid-line" ${head} data-axis="y" stroke="${LATTICE_COLOR}" stroke-width="${LATTICE_STROKE}" fill="none" x1="${line.x}" y1="${line.y1}" x2="${line.x}" y2="${line.y2}"/>`).join('')}${src.horizontals.map(line=>`<line id="${line.id}" data-role="grid-line" ${head} data-axis="x" stroke="${LATTICE_COLOR}" stroke-width="${LATTICE_STROKE}" fill="none" x1="${line.x1}" y1="${line.y}" x2="${line.x2}" y2="${line.y}"/>`).join('')}</g>`;
+        body+=`<g data-layer="46"><line id="${src.id}" data-role="source-segment" ${head} data-from="${src.from.join(',')}" data-to="${src.to.join(',')}" stroke="#111" stroke-width="${SOURCE_STROKE}" stroke-linecap="round" fill="none" x1="${src.segment.x1}" y1="${src.segment.y1}" x2="${src.segment.x2}" y2="${src.segment.y2}"/></g>`;
+      }
       for(const arc of row.constructions??[])body+=`<g data-layer="50"><path id="${arc.id}" data-role="construction-arc" data-row="${n}" data-construction="${arc.construction}" data-center="${arc.center}" data-hit="${arc.hit}" data-branch="${arc.branch}" data-radius="${esc(arc.radius)}" stroke="#111" stroke-width="${ARC_STROKE}" fill="none" d="${arc.d}"/></g>`;
       for(const dot of row.dots){
         const open=dot.state==='OPEN',cross=dot.style==='CROSS',tickMark=dot.style==='TICK',mark=cross||tickMark;

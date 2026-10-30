@@ -178,6 +178,90 @@ test('an arc that runs through a label or another dot is refused when composing'
   assert.equal((await compose(onLabel,'on-label')).status,'NUMBER_LINE_CONSTRUCTION_ARC_ON_LABEL');
 });
 
+// The source of the radius (item29's own picture): the segments AB and CD on a lattice that stands on the line, one cell one unit; the arcs run from their ends down to P and Q.
+const withSource={axisVariable:false,rows:[pts([['A','-5'],['P','-5+2*sqrt(5)',{showValue:false}],['C','1'],['Q','1+sqrt(5)',{showValue:false}]],{band:false})],
+  constructions:[{...con('cA','A','2*sqrt(5)','RIGHT',['P','RIGHT']),source:{grid:true,from:[-5,0],to:[-1,2],toName:'B'}},{...con('cC','C','sqrt(5)','RIGHT',['Q','RIGHT']),source:{grid:true,from:[1,0],to:[3,1],toName:'D'}}]};
+// the textbook square: the diagonal of the unit square is sqrt(2); the arc round 0 runs from the end of the diagonal down to sqrt(2) (and a plain arc on the other side)
+const square={axisVariable:false,rows:[pts([['L','-sqrt(2)',{hideName:true}],['O','0',{hideName:true}],['R','sqrt(2)',{hideName:true}]],{band:false})],
+  constructions:[{...con('k','O','sqrt(2)','BOTH',['L','LEFT'],['R','RIGHT']),source:{grid:true,from:[0,0],to:[1,1]}}]};
+
+test('a source grid: the engine checks the segment length against the radius exactly and keeps room for the lattice',()=>{
+  const m=solveNumberLineFigure(withSource);
+  assert.deepEqual(m.rows[0].constructions.map(c=>c.source),[{from:[-5,0],to:[-1,2],toName:'B'},{from:[1,0],to:[3,1],toName:'D'}]);
+  assert.ok(figureLayout(m).rows[0].head>=figureLayout(solveNumberLineFigure({...withSource,constructions:withSource.constructions.map(({source,...rest})=>rest)})).rows[0].head,'a lattice needs at least the head of its arcs');
+  // a source given as integer strings, the unit square, a source without the end's name
+  assert.doesNotThrow(()=>solveNumberLineFigure({...square}));
+  const strings=clone(withSource);strings.constructions[0].source.from=['-5','0'];strings.constructions[0].source.to=['-1','2'];assert.doesNotThrow(()=>solveNumberLineFigure(strings));
+  assert.ok(!('toName' in solveNumberLineFigure(square).rows[0].constructions[0].source));
+});
+
+test('sources that cannot be drawn faithfully are refused with their codes',()=>{
+  const make=source=>solveNumberLineFigure({...withSource,constructions:[{...withSource.constructions[0],source}]});
+  const good=withSource.constructions[0].source;
+  assert.doesNotThrow(()=>make(good));
+  for(const bad of ['x',7,null,[],{...good,grid:false},{...good,grid:'yes'},{from:good.from,to:good.to},{...good,extra:1},{...good,from:[-4,0]},{...good,from:[-5,1]},{...good,from:[-5]},{...good,from:'-5,0'},{...good,to:[-1,0]},{...good,to:[-5,2]},{...good,to:[-1,-2]},{...good,to:[-1.5,2]},{...good,to:[-1,'two']},{...good,to:[11,2]},{...good,to:[-1,13]},{...good,toName:'b'},{...good,toName:'A'},{...good,toName:'P'},{...good,toName:7},{...good,toName:'BC'}])
+    assert.throws(()=>make(bad),code('NUMBER_LINE_CONSTRUCTION_SOURCE_INVALID'),JSON.stringify(bad));
+  // the segment of the picture must be the radius exactly: (4,2) is 2*sqrt(5), (4,3) is 5
+  for(const to of [[-1,3],[-2,2],[0,2]])assert.throws(()=>make({...good,to}),code('NUMBER_LINE_CONSTRUCTION_SOURCE_LENGTH_MISMATCH'),JSON.stringify(to));
+  // a centre that is not an integer, a letter point or a surd cannot stand on the lattice
+  assert.throws(()=>solveNumberLineFigure({rows:[pts([['A','3/2'],['P','7/2']])],constructions:[{...con('k','A','2','RIGHT',['P','RIGHT']),source:{grid:true,from:[1,0],to:[1,2]}}]}),code('NUMBER_LINE_CONSTRUCTION_SOURCE_INVALID'));
+  // a lattice as high as its segment: too tall to draw
+  assert.throws(()=>numberLineFigureSpec({capability:'number-line-v1',numberLine:tall},solveNumberLineFigure(tall)),code('NUMBER_LINE_CONSTRUCTION_SOURCE_TOO_TALL'));
+});
+const tall={rows:[pts([['O','0'],['R','13']])],constructions:[{...con('k','O','13','RIGHT',['R','RIGHT']),source:{grid:true,from:[0,0],to:[5,12]}}]};
+
+test('item29 with its source grids composes; the observer recomputes the segments, the lattice and the arcs that end on them',async()=>{
+  const composed=await compose(withSource,'source');
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));assert.equal(composed.renderedLayout.status,'PASS');
+  const svg=composed.svg;
+  assert.equal((svg.match(/data-role="source-segment"/g)||[]).length,2);
+  assert.equal((svg.match(/data-role="grid-line"/g)||[]).length,(5+2)+(3+1),'verticals and horizontals of the 4x2 and the 2x1 lattice');
+  assert.match(svg,/id="r1-src-cA" data-role="source-segment"[^>]*data-from="-5,0" data-to="-1,2"/);
+  assert.ok(svg.includes('data-tex="B"')&&svg.includes('data-tex="D"'));
+  assert.equal((await audit(svg,withSource)).status,'PASS');
+  // the arc round A ends on B: its end is the end of the segment
+  const seg=svg.match(/<line id="r1-src-cA"[^>]*>/)[0],arc=svg.match(/<path id="r1-con-cA-right"[^>]*>/)[0];
+  const x2=+/ x2="([\d.]+)"/.exec(seg)[1],y2=+/ y2="([\d.]+)"/.exec(seg)[1];
+  const [,x1,y1]=/ d="M [\d.]+ [\d.]+ A [\d.]+ [\d.]+ 0 0 [01] ([\d.]+) ([\d.]+)"/.exec(arc).map(Number);
+  assert.ok(Math.abs(x1-x2)<0.01&&Math.abs(y1-y2)<0.01);
+  const sq=await compose(square,'square');
+  assert.equal(sq.status,'COMPOSED',JSON.stringify(sq.detail));
+  assert.equal((await audit(sq.svg,square)).status,'PASS');
+});
+
+test('tamper: a wrong segment, lattice, arc end, length or name make the observer fail',async()=>{
+  const {svg}=await compose(withSource,'source-tamper');
+  const bad=async(mutated,plan,prefix,message)=>assert.ok(has(await audit(mutated,plan),prefix),message||prefix);
+  const segment=id=>new RegExp(`(<line id="${id}" data-role="source-segment"[^>]*? )(x1|y1|x2|y2)="([\\d.]+)"`);
+  await bad(svg.replace(segment('r1-src-cA'),(m,head,name,value)=>head+name+'="'+(Number(value)+5)+'"'),withSource,'NL_CONSTRUCTION_SOURCE_SEGMENT');
+  await bad(svg.replace(/<line id="r1-src-cA-v-?\w+" data-role="grid-line"[^>]*\/>/,''),withSource,'NL_CONSTRUCTION_SOURCE_GRID_COUNT');
+  await bad(svg.replace(/(<line id="r1-src-cA-h1"[^>]*? y1=")([\d.]+)/,(m,head,y)=>head+(Number(y)-3)),withSource,'NL_CONSTRUCTION_SOURCE_GRID_LINE');
+  await bad(svg.replace('data-to="-1,2"','data-to="-1,3"'),withSource,'NL_CONSTRUCTION_SOURCE_ATTRIBUTES');
+  // the arc no longer ends on the segment's end
+  await bad(svg.replace(/(<path id="r1-con-cA-right"[^>]*? d="M [\d.]+ [\d.]+ A [\d.]+ [\d.]+ 0 0 [01] )([\d.]+)/,(m,head,x)=>head+(Number(x)+4)),withSource,'NL_CONSTRUCTION_ARC_NOT_AT_SOURCE');
+  // the name of the end: wrong letter, moved over the lattice
+  await bad(svg.replace('data-tex="B"','data-tex="E"'),withSource,'NL_CONSTRUCTION_SOURCE_NAME');
+  await bad(svg.replace(/(id="r1-src-cA-name"[^>]*?transform="translate\()([\d.]+)/,(m,head,x)=>head+(Number(x)-30)),withSource,'NL_CONSTRUCTION_SOURCE_NAME_PLACE');
+  // the centre's name must keep off the lattice (the segment leaves its dot to the right)
+  await bad(svg.replace(/(id="r1-pt-A-name"[^>]*?transform="translate\()([\d.]+)/,(m,head,x)=>head+(Number(x)+14)),withSource,'NL_CONSTRUCTION_NAME_SIDE');
+  // the plan says other things: another length, no source at all, a source that does not start at the centre
+  const longer=clone(withSource);longer.constructions[0].source.to=[-1,3];
+  await bad(svg,longer,'NL_CONSTRUCTION_SOURCE_LENGTH');
+  const none=clone(withSource);delete none.constructions[1].source;
+  await bad(svg,none,'NL_CONSTRUCTION_SOURCE_COUNT');
+  const off=clone(withSource);off.constructions[0].source.from=[-4,0];
+  await bad(svg,off,'NL_CONSTRUCTION_SOURCE_PLAN');
+  const noName=clone(withSource);delete noName.constructions[0].source.toName;
+  await bad(svg,noName,'NL_CONSTRUCTION_SOURCE_NAME_UNEXPECTED');
+  assert.equal((await audit(svg,withSource)).status,'PASS');
+});
+
+test('a lattice line through the name of another point is refused when composing',async()=>{
+  const crossed={rows:[pts([['A','-5'],['E','-3'],['P','-5+2*sqrt(5)',{showValue:false}]],{band:false})],constructions:[{...con('cA','A','2*sqrt(5)','RIGHT',['P','RIGHT']),source:{grid:true,from:[-5,0],to:[-1,2]}}]};
+  assert.equal((await compose(crossed,'crossed')).status,'NUMBER_LINE_CONSTRUCTION_SOURCE_ON_LABEL');
+});
+
 test('a plan without constructions or letter points draws exactly as before',async()=>{
   const plain={rows:[pts([['A','-2'],['B','4']])]};
   const composed=await compose(plain,'plain');
