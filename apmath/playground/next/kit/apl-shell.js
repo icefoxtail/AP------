@@ -300,7 +300,6 @@
       r.controls = h('div', { class: 'apl-section' });
       pane.append(r.controls);
       this._ctlIds = null;
-      this._ctlKey = null;
       // 실시간 값
       r.alert = h('div', { hidden: true });
       r.readouts = h('div', { class: 'apl-readouts' });
@@ -320,8 +319,8 @@
       const presets = call(sc.presets, this.s) || [];
       const actions = call(sc.actions, this.s) || [];
       const key = JSON.stringify([ids, presets.map((p) => p.label), actions.map((a) => a.id + (a.label || ''))]);
-      if (key === this._ctlKey) return false;
-      this._ctlKey = key;
+      if (key === box.__ctlKey) return false; // 캐시 키는 조작부 상자에 붙입니다 → 상자를 새로 만드는 어떤 경로든 자동으로 다시 짓습니다
+      box.__ctlKey = key;
       box.innerHTML = '';
       this._ctls = {};
       for (const id of ids) {
