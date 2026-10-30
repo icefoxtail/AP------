@@ -808,7 +808,8 @@ window.addEventListener('DOMContentLoaded', function () {
           if (hitPt) {
             draw3DLine(A, hitPt, '#c084fc', 2.4, true, true);
             draw3DLine(C, hitPt, '#c084fc', 2.4, true, true);
-            draw3DPoint(hitPt, 6.5, '#c084fc', `⚡ 연장선 교점! (${ce.name}는 한 평면에서 만남 ➔ 꼬인위치 ❌)`, { x: 10, y: -10 });
+            // [2.0 수정] 좁은 화면(휴대폰)에서는 긴 설명 대신 짧은 이름표: 긴 이름표 두 개가 자동 맞춤을 밀어 입체가 아주 작아졌음(정육각기둥)
+            draw3DPoint(hitPt, 6.5, '#c084fc', BOARD.W < 640 ? `교점(${ce.name} ×)` : `⚡ 연장선 교점! (${ce.name}는 한 평면에서 만남 ➔ 꼬인위치 ❌)`, { x: 10, y: -10 });
           }
         });
       }
