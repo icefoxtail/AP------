@@ -26,6 +26,7 @@ window.APLab.catalog = {
     "종이 테이프 접기·이등분선·직교 (4종)"
    ],
    "legacy": "labs/g7/points-lines.html",
+   "next": "next/labs/g7-points-lines.html",
    "glyph": "<path d=\"M10 52 L64 18\"/><circle cx=\"16\" cy=\"48\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"58\" cy=\"22\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M38 58 L70 58\"/>"
   },
   {
