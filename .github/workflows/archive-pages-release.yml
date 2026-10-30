@@ -7,7 +7,8 @@ name: Archive Pages Release
 #
 # Verification steps keep `continue-on-error: true` so that every diagnostic still runs and is uploaded in
 # the evidence artifact; the gate reads each step's real `outcome` and decides. Step ids and classes:
-#   REQUIRED (gate fails the build): reg_materialize, reg_verify, reg_guard, reg_commit (push events only),
+#   REQUIRED (gate fails the build): reg_materialize, reg_verify, reg_guard, reg_commit (push events only; a lost
+#     push race or main moving after the push is a warning, not a failure),
 #     qid9_source, projection_write, projection_check, main_source_projection, qid9_parity, selection_tests,
 #     chrome_generated_bank, chrome_geumdang, chrome_qid9_student, mock_qa,
 #     archive2_runtime (Archive 2.0 runtime contract), staged_site_chrome (staged-site Chrome smoke),
@@ -192,19 +193,33 @@ jobs:
           # Never force-pushes. If another writer moved main first, the helper resets to the new tip,
           # re-derives and re-verifies there (same script as the steps above), and pushes the fresh
           # result (max 3 attempts); an identical tree already on main is success.
+          # Losing that race (RETRY_EXHAUSTED) or main moving again after the push is not a verification
+          # failure: every later verification step still checks this tree, and the newer main has its own
+          # queued run that commits and releases it. Both are warnings so busy merge periods do not freeze
+          # the student site (2026-10-30). Any other helper failure still fails this required step.
+          helper_log="$RELEASE_EVIDENCE_DIR/registration-sync.log"
+          set +e
           node tools/ci/git-push-derived-with-retry.mjs \
             --paths-file tools/ci/archive-pages-registration.paths \
             --message "chore(archive): sync registration artifacts [skip ci]" \
             --regenerate "bash tools/ci/archive-pages-registration-derive.sh all" \
             --remote origin --branch main --max-attempts 3 \
-            --label "Pages registration sync" --summary-file "$GITHUB_STEP_SUMMARY"
+            --label "Pages registration sync" --summary-file "$GITHUB_STEP_SUMMARY" 2>&1 | tee "$helper_log"
+          helper_status=${PIPESTATUS[0]}
+          set -e
+          if [[ "$helper_status" -ne 0 ]]; then
+            if grep -q 'result=RETRY_EXHAUSTED' "$helper_log"; then
+              echo "::warning title=Registration commit deferred::main kept advancing during this run; the newer main's queued release commits the registration artifacts. This verified tree is still released."
+              printf 'registration_commit=deferred_race\n' >> "$RELEASE_EVIDENCE_DIR/context.txt"
+              exit 0
+            fi
+            exit "$helper_status"
+          fi
           git fetch --no-tags origin main
           registered_sha="$(git rev-parse HEAD)"
           remote_sha="$(git rev-parse origin/main)"
           if [[ "$registered_sha" != "$remote_sha" ]]; then
-            echo "main advanced while Archive registration ran; refusing to release stale output" >&2
-            echo "registered=$registered_sha remote=$remote_sha" >&2
-            exit 1
+            echo "::warning title=main advanced after registration::registered=$registered_sha remote=$remote_sha; the newer main is released by its own queued run."
           fi
           {
             printf 'registration_input_sha=%s\n' "$GITHUB_SHA"
