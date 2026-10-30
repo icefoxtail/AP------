@@ -129,6 +129,7 @@
         kind: bd.kind || 'cartesian',
         focus: bd.focus,
         pad: bd.pad,
+        aspect: bd.aspect, // 'free' = 가로·세로 배율을 따로(시간 그래프). 생략하면 1:1
         labelLayer: ui.labels,
         minZoom: bd.minZoom,
         maxZoom: bd.maxZoom,
@@ -1024,12 +1025,16 @@
       ];
       const grid = h('div', { class: 'apl-keys' });
       keys.forEach(([ks, d]) => grid.append(h('span', { html: ks.map((k) => `<span class="apl-kbd">${APLab.esc(k)}</span>`).join('') }), h('span', { text: d })));
+      // board.aspect:'free'(시간 그래프 등)인 실험실만 1:1 안내 대신 축척이 따로라는 안내를 보여 줍니다.
+      const aspectNote = (this.def.board || {}).aspect === 'free'
+        ? '이 실험실의 그래프는 가로(시간)와 세로(위치·속도)의 <b>단위가 달라 축척을 따로</b> 둡니다. 그래프가 무대를 가득 채우는 대신 기울기의 각도는 실제와 다르게 보여요.'
+        : '무대는 가로·세로 축척이 항상 같아서 <b>직각은 직각으로, 기울기 1은 45°로</b> 보입니다.';
       const legend = h('div', { class: 'apl-card soft', html: `
         <div class="apl-section-h" style="margin-bottom:8px"><span>${icon('spark')}색과 모양의 약속</span></div>
         <div class="apl-rich" style="font-size:var(--fs-xs)">
           <p><b>후광이 있는 점</b>은 손으로 끌 수 있습니다. 무대를 두 손가락으로 벌리면 확대, 빈 곳을 끌면 이동합니다.</p>
           <p><b>같은 대상은 같은 색</b>입니다. 조절 막대·실시간 값·그림의 선이 같은 색이면 같은 것을 가리킵니다. 실시간 값에 마우스를 올리면 그림에서 해당 부분이 강조됩니다.</p>
-          <p>무대는 가로·세로 축척이 항상 같아서 <b>직각은 직각으로, 기울기 1은 45°로</b> 보입니다.</p>
+          <p>${aspectNote}</p>
         </div>` });
       APLab.dialog({ title: '도움말 · 단축키', body: h('div', { style: { display: 'grid', gap: '14px' } }, legend, grid) });
     }
@@ -1056,7 +1061,7 @@
           if (sc.enter) sc.enter(st, this);
           if (sc.problem && sc.problem.snap && sc.thumbSnap !== false) Object.assign(st, call(sc.problem.snap, st));
           const focus = call(sc.focus, st) || call(bd.focus, st);
-          APLab.Board.renderThumb(cv, { kind: bd.kind || 'cartesian', focus, pad: bd.thumbPad }, (b) => {
+          APLab.Board.renderThumb(cv, { kind: bd.kind || 'cartesian', focus, pad: bd.thumbPad, aspect: bd.aspect }, (b) => {
             if (sc.panes) b.setPanes(call(sc.panes, st));
             const v = (sc.view ? sc.view(st, this) : this.def.view ? this.def.view(st, sc, this) : {}) || {};
             (sc.draw || this.def.draw)(b, st, v, this);
