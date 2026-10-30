@@ -1123,7 +1123,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q016_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q016_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD의 두 대각선이 점 O에서 만나고 AO, BO, CO, DO를 같은 눈금으로 표시했으며, AC=4x+6과 BO=4x-2를 적었다.",
+    "solutionImageCaption": "직사각형의 두 대각선은 길이가 같고 서로를 이등분하므로 AC=2BO이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -1190,7 +1194,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q017_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q017_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD 바깥의 점 E에서 BC=CD=CE를 눈금으로 표시하고, ∠DCE=θ와 ∠DEC, ∠BEC를 θ로 나타냈으며 구하는 ∠BED를 빨간 호로 표시했다.",
+    "solutionImageCaption": "BC=CD=CE이므로 이등변삼각형 CDE와 BCE의 밑각을 θ로 나타내고, ∠BED는 ∠DEC에서 ∠BEC를 뺀 각이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1257,7 +1265,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q018_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q018_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD에서 AE⊥CD, ∠AFD=115°, ∠BDC=25°를 표시하고 대각선 BD, AC가 각을 이등분함을 같은 호 개수로 보이며 구하는 ∠ACB를 빨간 호로 표시했다.",
+    "solutionImageCaption": "AE⊥CD이고 ∠AFD=115°이므로 ∠BDC=25°이고, 마름모의 대각선은 꼭짓점의 각을 이등분한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1324,7 +1336,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q019_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q019_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF에서 대응각을 같은 개수의 호(A와 D, B와 E, C와 F)로 표시하고 ∠A=39°, ∠F=110°, 대응변 BC=6cm, EF=8cm를 굵은 선으로 보였다.",
+    "solutionImageCaption": "같은 개수의 호로 표시한 각이 대응각이고, 대응변 BC와 EF의 길이는 6cm, 8cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -1391,7 +1407,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q020_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q020_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF를 색칠하고 대응변 AB=9cm, DE=15cm를 굵은 선으로, △DEF의 넓이 50cm²를 영역 안에 적었다.",
+    "solutionImageCaption": "대응변 AB와 DE의 길이는 9cm, 15cm이고 △DEF의 넓이는 50cm²이며, 닮음비가 3:5이므로 넓이의 비는 9:25이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -1455,7 +1475,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q021_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q21-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AD가 ∠A를 이등분하고 DE⊥AC임을 직각·호 표시로 나타내고, △ABD≡△AED(같은 눈금)와 AB=12, AC=15, BD=4, AE=12, DE=4, EC=3을 적었으며 △DEC를 색칠했다.",
+    "solutionImageCaption": "△ABD와 △AED가 합동이므로 AE=AB=12, DE=BD=4이고 EC=AC-AE=3이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
