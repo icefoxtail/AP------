@@ -10,11 +10,20 @@ name: Archive Pages Release
 #   REQUIRED (gate fails the build): reg_materialize, reg_verify, reg_guard, reg_commit (push events only),
 #     qid9_source, projection_write, projection_check, main_source_projection, qid9_parity, selection_tests,
 #     chrome_generated_bank, chrome_geumdang, chrome_qid9_student, mock_qa,
-#     archive2_runtime (Archive 2.0 runtime contract), staged_site_chrome (staged-site Chrome smoke).
+#     archive2_runtime (Archive 2.0 runtime contract), staged_site_chrome (staged-site Chrome smoke),
+#     worker_order (APMS Worker deploy ordering, below).
 #     The manifest test and `pages_build` carry no continue-on-error and fail the job directly.
 #   ADVISORY (warning only, never blocks): main_sha_confirm (main advancing during the run is expected).
 # Every verification step has a step-level timeout sized from normal durations (runs 819-831) with margin, so a
 # hung browser check fails fast instead of consuming the job budget (cancelled runs 720, 792, 828).
+#
+# Worker ordering (owner decision 2026-10-30): when the release range (latest successful github-pages deployment ..
+# HEAD) changes the APMS Worker or a module it bundles (tools/ci/apms-worker-bundle-paths.txt), the new data may
+# use rows an old Worker cannot read, so the Worker must be deployed first. Step `worker_order` waits (bounded,
+# 14 minutes, inside the 15-minute step cap) for a successful apms-worker-deploy.yml run on a SHA containing
+# those changes; a failed/cancelled run or a timeout fails the gate, so the existing site stays live. With no
+# Worker-bundled change nothing waits. It runs after the long verifications so the deploy usually finished
+# already, and it only gates the Pages deploy, never the Git merge.
 #
 # Self-heal: a cancelled run's `[skip ci]` registration commit is never deployed by any later event, so a
 # scheduled run re-checks every 3 hours. It builds only when the latest successful github-pages deployment
@@ -41,6 +50,7 @@ permissions:
   pages: write
   id-token: write
   deployments: read
+  actions: read
 
 concurrency:
   group: github-pages
@@ -342,6 +352,19 @@ jobs:
           node tools/check-generated-bank-browser.cjs \
             2>&1 | tee "$RELEASE_EVIDENCE_DIR/generated-bank-staged-site-browser.log"
 
+      - name: Wait for the APMS Worker deploy when this release changes Worker-bundled files
+        id: worker_order
+        timeout-minutes: 15
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: |
+          node tools/ci/apms-worker-deploy-gate.mjs \
+            --timeout-minutes 14 --interval-seconds 20 \
+            --evidence-file "$RELEASE_EVIDENCE_DIR/context.txt" --summary-file "$GITHUB_STEP_SUMMARY" \
+            2>&1 | tee "$RELEASE_EVIDENCE_DIR/worker-order.log"
+
       - name: Confirm deployment is built from current registered main
         id: main_sha_confirm
         timeout-minutes: 5
@@ -366,7 +389,7 @@ jobs:
           STEPS_JSON: ${{ toJSON(steps) }}
         run: |
           node tools/ci/archive-pages-release-gate.mjs \
-            --required reg_materialize,reg_verify,reg_guard,reg_commit,qid9_source,projection_write,projection_check,main_source_projection,qid9_parity,selection_tests,chrome_generated_bank,chrome_geumdang,chrome_qid9_student,mock_qa,archive2_runtime,staged_site_chrome \
+            --required reg_materialize,reg_verify,reg_guard,reg_commit,qid9_source,projection_write,projection_check,main_source_projection,qid9_parity,selection_tests,chrome_generated_bank,chrome_geumdang,chrome_qid9_student,mock_qa,archive2_runtime,staged_site_chrome,worker_order \
             --skip-ok reg_commit \
             --advisory main_sha_confirm \
             --evidence-file "$RELEASE_EVIDENCE_DIR/context.txt" \

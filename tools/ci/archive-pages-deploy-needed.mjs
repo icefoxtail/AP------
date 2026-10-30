@@ -50,7 +50,7 @@ export async function decideDeployNeeded({ get, repo, eventName, mainSha }) {
   }
 }
 
-function makeGet(token) {
+export function makeGet(token) {
   return async route => {
     const res = await fetch(`https://api.github.com${route}`, {
       headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" },

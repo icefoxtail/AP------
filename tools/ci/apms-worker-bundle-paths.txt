@@ -1,0 +1,15 @@
+# Files that change the deployed APMS Worker (ap-math-os-v2612): the Worker directory itself plus every shared
+# module outside it that wrangler bundles into the Worker (index.js import graph). One GitHub `paths:` glob per
+# line ('**' crosses '/'). Used by tools/ci/apms-worker-deploy-gate.mjs (Pages ordering gate).
+#
+# tests/apms-worker-deploy.test.mjs recomputes the bundled set with esbuild from the Worker's real imports and
+# fails when this list or the push filter in .github/workflows/apms-worker-deploy.yml drifts from it.
+# The deploy workflow file itself is a trigger path there, but not listed here: it carries no Worker code, so
+# changing it alone must not hold back the student site.
+apmath/worker-backup/**
+archive/archive2-canonical.js
+archive/archive2-core.js
+archive/archive2-history.js
+archive/archive2-output-contract.js
+archive/archive2-output.js
+archive/mixer-selector.js
