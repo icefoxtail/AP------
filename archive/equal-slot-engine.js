@@ -63,6 +63,9 @@
             if (ignored(node)) continue;
             const style = root.getComputedStyle(node);
             if (style.display === 'none') continue;
+            // MathJax stretchy extenders (overline/underline/arrow rules) clip their
+            // oversized mjx-spacer with overflow:hidden; it is never painted outside.
+            if (node.parentElement?.tagName === 'MJX-EXT') continue;
             include(geo.local(node));
         }
         const walker = box.ownerDocument.createTreeWalker(box, 4);

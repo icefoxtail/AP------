@@ -187,15 +187,35 @@ test("grade-only plans accept a merged set of canonical paths", () => {
   assert.deepEqual(core.validatePlan(req), []);
   assert.equal(core.rowMatches(base, req.rows[0]), true);
 });
-test("newest eligible years fill each row first, independent of input order and seed", () => {
+test("recency policy: complete years newest first, then the current year, unknown years last", () => {
+  assert.equal(core.RECENCY_POLICY.currentExamYear, 2026);
+  const rank = (year, current) => core.recencyRank(year, current);
+  assert.ok(rank(2025) < rank(2024) && rank(2024) < rank(2023));
+  assert.ok(rank(2015) < rank(2026), "any complete year precedes the current year");
+  assert.ok(rank(2026) < rank(undefined) && rank(2026) < rank(0) && rank(2026) < rank("x"));
+  assert.equal(rank(0), rank(null));
+  assert.equal(rank(1800), rank(undefined));
+  // The current year is configured once; moving it by one school year moves the whole order.
+  assert.ok(rank(2026, 2027) < rank(2027, 2027) && rank(2025, 2027) > rank(2026, 2027));
+  assert.deepEqual(core.sortYearsByRecency([2026, 2023, 0, 2025, 2024, 2021]), [2025, 2024, 2023, 2021, 2026, 0]);
+  // A stale constant never hides newer data: years after the current year still precede unknown ones.
+  assert.ok(rank(2027) > rank(2026) && rank(2027) < rank(undefined));
+  assert.deepEqual([{ year: 2026 }, { year: undefined }, { year: 2025 }, { year: 2023 }].sort(core.compareRecency).map(r => r.year),
+    [2025, 2023, 2026, undefined]);
+  // Browsing lists keep the plain calendar order.
+  assert.deepEqual([{ year: 2025 }, { year: 2026 }].sort(core.compareNewest).map(r => r.year), [2026, 2025]);
+});
+test("most recent complete years fill each row first, independent of input order and seed", () => {
   const pool = [2021, 2025, 2026, 2025, 2026, undefined].map((year, i) => ({ ...record(i + 1), year }));
   for (const seed of ['one', 'two', 'three']) {
     const req = { ...request([{ id: 'a', count: 4 }], pool), seed };
     const result = core.selectBlueprint([...pool].reverse(), req);
     assert.equal(result.ok, true);
-    assert.deepEqual(result.selected.map(r => r.year), [2026, 2026, 2025, 2025]);
+    assert.deepEqual(result.selected.map(r => r.year), [2025, 2025, 2021, 2026]);
     const all = core.selectBlueprint(pool, { ...req, rows: [{ id: 'a', count: 6 }] });
-    assert.deepEqual(all.selected.map(r => r.year), [2026, 2026, 2025, 2025, 2021, undefined]);
+    assert.deepEqual(all.selected.map(r => r.year), [2025, 2025, 2021, 2026, 2026, undefined]);
+    const two = core.selectBlueprint(pool, { ...req, rows: [{ id: 'a', count: 2 }] });
+    assert.deepEqual(two.selected.map(r => r.year), [2025, 2025]);
   }
 });
 test("latest-first keeps year/source restrictions, pins, difficulty and history authoritative", () => {

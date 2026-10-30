@@ -1,9 +1,9 @@
 {
   "schemaVersion": "ARCHIVE2_MIXED_VERIFICATION_POLICY_V1",
-  "emitSchema": "v1",
+  "emitSchema": "v2",
   "documentation": {
     "what": "Layout of the CI-generated mixed source verification data (archive/data/archive2-source-verification/mixed-v1/) that archive/tools/build-archive2-catalog.mjs emits.",
-    "default": "v1: readable by every deployed archive2-canonical.js, including the hand-deployed Worker (apmath/worker-backup). Student pages and the Worker both keep working without any Worker redeploy.",
+    "default": "v2 since 2026-10-30 (APMS Worker Deploy run #1 on main d03ded7c deployed a Worker that reads it). v1 was the earlier default: readable by every deployed archive2-canonical.js, including the hand-deployed Worker (apmath/worker-backup). Student pages and the Worker both keep working without any Worker redeploy.",
     "v2": "Compact rows, about 64 MB smaller in the Pages package. archive2-canonical.js in this repository reads both layouts; a Worker deployed before the v2 reader existed answers 503 for mixed worksheet validation against v2 data.",
     "howToEnableV2": [
       "1. Redeploy the Worker from a main that contains the v2 reader (archive/archive2-canonical.js decodeMixedRows).",

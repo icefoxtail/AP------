@@ -10,7 +10,8 @@ const {
   formatChoiceForDisplay,
   createMockSelection,
   replaceVariant,
-  regenerateUnlocked
+  regenerateUnlocked,
+  deriveSourceExams
 } = require('../archive/generated-mock-selection.js');
 
 function row(sourceQid, purpose, number, difficultyBucket) {
@@ -256,4 +257,61 @@ test('the actual Palma pool satisfies a five-level mixed quota within the intera
   assert.deepEqual(result.difficultyCounts, { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1 });
   assert.equal(new Set(result.items.map(item => item.row.sourceQid)).size, 5);
   assert.ok(elapsedMs < 500, `selection took ${elapsedMs}ms for the real indexed Palma pool`);
+});
+
+// S9: the builder's source exams come from the index, never from drafts.
+const identityOf = row => {
+  const m = String(row.sourceExamPath || '').split('/').pop().match(/^(\d{2,4})_([^_]+)_(\d+)학기_(중간|기말)_(고\d|중\d)/);
+  if (!m) return null;
+  const year = Number(m[1]) < 100 ? 2000 + Number(m[1]) : Number(m[1]);
+  return row.school === m[2] && Number(row.year) === year && row.grade === m[5]
+    ? { year, school: m[2], grade: m[5], semester: Number(m[3]), term: m[4] } : null;
+};
+const derivedRow = (extra = {}) => ({
+  uid: 'ALITE-X-Q01-A1', school: '테스트고', year: 2026, grade: '고1', subject: '공통수학1', sourceQid: 1,
+  sourceExamBlobSha: 'a'.repeat(40), sourceExamPath: 'archive/exams/original/high/h1/1mid/26_테스트고_1학기_중간_고1_기출.js', ...extra
+});
+
+test('deriveSourceExams derives exams from selectable rows with purpose/legacy strategy and a declared or lower-bound count', () => {
+  const rows = [
+    derivedRow(), derivedRow({ uid: 'ALITE-X-Q07-B2', sourceQid: 7 }),
+    derivedRow({ sourceExamBlobSha: 'b'.repeat(40), uid: 'LEGACY-1', sourceExamQuestionCount: 26,
+      sourceExamPath: 'archive/exams/original/high/h1/1final/26_테스트고_1학기_기말_고1_기출.js' })
+  ];
+  const result = deriveSourceExams({ rows, allRows: rows, knownShas: [], identityOf });
+  assert.equal(result.length, 2);
+  const mid = result.find(exam => exam.term === '중간');
+  assert.deepEqual({ ...mid }, { school: '테스트고', year: 2026, grade: '고1', subject: '공통수학1', semester: 1, term: '중간', count: 7, strategy: 'purpose-variants', sha: 'a'.repeat(40) });
+  const final = result.find(exam => exam.term === '기말');
+  assert.equal(final.strategy, 'legacy');
+  assert.equal(final.count, 26);
+});
+
+test('deriveSourceExams keeps the known roster out, hides any exam with a consumerSelectable:false row, and ignores unusable rows', () => {
+  const sha = 'a'.repeat(40);
+  const draft = { sourceExamBlobSha: 'c'.repeat(40), sourceExamPath: 'archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js', school: '금당고', year: 2025 };
+  const allRows = [
+    derivedRow(), derivedRow({ uid: 'ALITE-G-Q01-A1', ...draft }),
+    derivedRow({ uid: 'ALITE-G-Q02-A1', sourceQid: 2, ...draft, consumerSelectable: false })
+  ];
+  // the page passes only selectable rows as `rows`; the non-selectable draft row is still in allRows
+  const selectable = allRows.filter(row => row.consumerSelectable !== false);
+  assert.deepEqual(deriveSourceExams({ rows: selectable, allRows, knownShas: [], identityOf }).map(exam => exam.school), ['테스트고']);
+  assert.deepEqual(deriveSourceExams({ rows: selectable, allRows, knownShas: [sha], identityOf }), []);
+  const bad = [derivedRow({ sourceQid: 0 }), derivedRow({ sourceExamBlobSha: 'short' }), derivedRow({ subject: '' }),
+    derivedRow({ school: '다른고' }), derivedRow({ sourceExamPath: '' })];
+  assert.deepEqual(deriveSourceExams({ rows: bad, allRows: bad, knownShas: [], identityOf }), []);
+});
+
+test('on the real index no derived source exam carries a consumerSelectable:false draft row (금당고 2025 stays out)', () => {
+  const index = JSON.parse(fs.readFileSync(path.join(__dirname, '../archive/data/generated-lite-consumer/v1/index.json'), 'utf8'));
+  const ProblemBankMeta = require('../archive/problem-bank-meta.js');
+  const disabled = index.userDisabledUids || [];
+  const selectable = index.records.filter(row => ProblemBankMeta.isGeneratedSelectable(row, disabled));
+  const known = ['4cfce909c023e5c4df4a759945c8cc3e0a63ec76', '8266fa476906e9134b94f23e803bd3b2fb26ece4', '69ad80ffa9ec80b2592bee26ffce247f8d7013d1'];
+  const derived = deriveSourceExams({ rows: selectable, allRows: index.records, knownShas: known, identityOf });
+  const draftShas = new Set(index.records.filter(row => row.consumerSelectable === false).map(row => row.sourceExamBlobSha));
+  assert.ok(draftShas.has('44b8dc33534f3e40990bbebf9fc113d37d7f51ae'), '금당고 2025 still carries draft rows');
+  for (const exam of derived) assert.ok(!draftShas.has(exam.sha), exam.sha);
+  assert.ok(!derived.some(exam => exam.school === '금당고'));
 });

@@ -82,6 +82,63 @@ const foundationTemplates = new Map(foundationTaxonomy.templates.map((r) => [r.t
 const foundationCrossConcepts = new Set(foundationConcepts.concepts.map((r) => r.conceptKey));
 const foundationConditionKeys = new Set(foundationConditions.conditions.map((r) => r.conditionKey));
 const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.curriculum, r.standardUnitKey, r.subUnitKey, r.problemTypeKey].join("\u0000")));
+// ---- S14 usable-meta hint lane -------------------------------------------------------------
+// User direction 2026-10-29: the recorded concept (L3), problem type (PT) and solution template
+// (TPL) must be usable by teachers in 문제지 만들기 / 단원별 기출 without fabricating values and
+// without upgrading any approval. The lane is ADDITIVE and DISPLAY/SELECTION-ONLY: it never
+// touches the canonical assignment, curriculumKey/courseKey/L1/L2 or the strict approval metric.
+// A value is exposed only when (a) the metadata row joins the exact source question, (b) the row
+// is bound to the question's CONTENT fingerprint (stem + choices + image, i.e. what the
+// classification describes) and (c) PT/TPL are ACTIVE labelled keys of the compiled taxonomy
+// registry with a consistent PT->TPL parent. Each facet keeps its own status code: A = approved
+// field status, P = recorded but not approved (검토 대기). Explicit field HOLDs are not exposed.
+const hintActiveProblemTypes = new Map(foundationTaxonomy.problemTypes
+  .filter((row) => row.status === "ACTIVE").map((row) => [row.problemTypeKey, row]));
+const hintActiveTemplates = new Map(foundationTaxonomy.templates
+  .filter((row) => row.status === "ACTIVE").map((row) => [row.templateKey, row]));
+const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
+  ? "A" : /hold/i.test(String(value || "")) ? "H" : "P";
+const hintStats = { joined: 0, exact: 0, content: 0, changedContent: 0,
+  pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
+  holdSkipped: 0 };
+function buildMetaHint(meta, binding) {
+  if (!meta || !binding) return {};
+  const status = meta.fieldStatus || {};
+  const hold = meta.foundationTaxonomyStatus === "HOLD";
+  const l3Value = String(meta.L3 || meta.nativeL3 || "").trim();
+  const l3State = hintFieldStatus(status.concept);
+  const l3Held = l3State === "H" || ["HOLD", "ROUTE_OUT"].includes(meta.l3Disposition);
+  const ptKey = String(meta.problemTypeKey || "").trim();
+  const tplKey = String(meta.templateKey || "").trim();
+  const ptState = hintFieldStatus(status.problemType), tplState = hintFieldStatus(status.template);
+  let pt = "", tpl = "";
+  if (ptKey) {
+    if (!hintActiveProblemTypes.has(ptKey)) hintStats.ptUnregistered++;
+    else if (hold || ptState === "H") hintStats.holdSkipped++;
+    else pt = ptKey;
+  }
+  if (tplKey) {
+    const row = hintActiveTemplates.get(tplKey);
+    if (!row) hintStats.tplUnregistered++;
+    else if (hold || tplState === "H") hintStats.holdSkipped++;
+    else if (!pt || row.parentProblemTypeKey !== pt) hintStats.tplParentMismatch++;
+    else tpl = tplKey;
+  }
+  const l3 = l3Value && !l3Held ? l3Value : "";
+  const approvedStandard = String(meta.metadataStatus || "").startsWith("approved_") &&
+    /^approved(_|$)/i.test(String(status.standardUnit || ""));
+  const recordedCurriculum = String(meta.curriculumKey || meta.curriculum || "").trim();
+  const curriculum = approvedStandard && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
+  const out = {};
+  if (l3 || pt || tpl) {
+    out.metaHintStatus = (l3 ? l3State : "-") + (pt ? ptState : "-") + (tpl ? tplState : "-");
+    if (l3) { out.metaHintL3 = l3; hintStats.l3++; }
+    if (pt) { out.metaHintPT = pt; hintStats.pt++; }
+    if (tpl) { out.metaHintTPL = tpl; hintStats.tpl++; }
+  }
+  if (curriculum) { out.metaHintCurriculum = curriculum; hintStats.curriculum++; }
+  return out;
+}
 const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion", "l3Disposition", "l4Disposition", "semanticDisposition"]);
 const metaV2SidecarRevision = value => {
   const revision = String(value || "");
@@ -395,6 +452,20 @@ for (const exam of exams) {
           assignmentFp: assignmentFingerprint,
         })
       : { assignment: null, reason: sourceGradeEvidence.status };
+    // Binding of the metadata row to this question (S14). "exact": the row was approved against
+    // exactly these bytes. "content": only the answer/solution bytes changed after approval; the
+    // stem, choices and image the classification describes are byte-identical (assignment
+    // fingerprint), so the recorded values still describe this question. Anything else is not
+    // provably safe and stays out of meta-based filtering (the question itself stays usable).
+    let metaBinding = "";
+    if (validJoin) {
+      hintStats.joined++;
+      if (meta.contentFingerprint === assignmentFingerprint) {
+        metaBinding = meta.sourceFingerprint === fingerprint ? "exact" : "content";
+        hintStats[metaBinding]++;
+      } else hintStats.changedContent++;
+    }
+    const metaHint = buildMetaHint(meta, metaBinding);
     const record = {
       sourceFile: file,
       sourceOrdinal: ordinal,
@@ -422,6 +493,7 @@ for (const exam of exams) {
       ...(question.reviewStatus && /^meta-foundation:[^:]+:exam-(?:final_qa|review2)-v2:/.test(meta?.metadataRevision || "")
         ? { sourceReviewStatus: question.reviewStatus } : {}),
       legacyStandardUnitKey: question.standardUnitKey || "",
+      legacyStandardUnit: question.standardUnit || "",
       legacySubUnitKey: question.subUnitKey || "",
       identityStatus,
       sourceIntegrityStatus: identityStatus === "VERIFIED" ? "VERIFIED" : "UNRESOLVED",
@@ -460,6 +532,8 @@ for (const exam of exams) {
           : "HOLD",
       // RPM Primary semantic confirmation is independent of PT/TPL projection materialization.
       taxonomyStatus: registrationPending ? "UNKNOWN" : (node ? "CONFIRMED" : "UNKNOWN"),
+      ...(metaBinding ? { metaBinding } : {}),
+      ...metaHint,
       ...(foundationScoped ? { foundationTaxonomyStatus: meta?.foundationTaxonomyStatus === "HOLD" ? "HOLD" : (foundationValid === true ? "CONFIRMED" : (meta?.foundationTaxonomyStatus || "HOLD")) } : {}),
       metadataConflicts,
       gradeConflict: sourceGradeEvidence.status !== "VALID",
@@ -494,6 +568,7 @@ for (const exam of exams) {
         gradeCourseAllowlist: projectionPolicy.gradeCourseAllowlist || [],
         scopeParents: basicScopeLinks.records || [],
         canonicalParents: uniqueCanonicalParents,
+        allowContentBoundRevision: true,
       });
       record.metaProjectionStatus = displayResult.projection
         ? "DISPLAY_ONLY_SOURCE_BOUND"
@@ -857,9 +932,10 @@ for (const [sourceFile, sourceRows] of sourceRecords) {
   const shardText = JSON.stringify(shard) + "\n";
   const shardPath = sourceShardPrefix + hash(sourceFile) + ".json";
   shardTexts.set(shardPath, shardText);
+  // The shard path is derived (sourceShardPrefix + hash(sourceFile) + ".json"), so the index row
+  // omits it; the consumers recompute it. This keeps the index small as the bank grows.
   sourceIndexRows.push({
     sourceFile,
-    path: shardPath,
     sha256: hash(shardText),
     qCount: Number(exam.qCount),
   });
@@ -1043,5 +1119,6 @@ console.log(JSON.stringify({
   mixedUidBucketCount: mixedUidBucketRows.length,
   mixedLookupRecordCount: mixedRecordsByUid.size,
   mixedLookupContextBytes: Buffer.byteLength(mixedContextText),
+  metaHint: hintStats,
   ...catalog.health,
 }, null, 2));

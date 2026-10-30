@@ -398,7 +398,11 @@ test("workspace readUrl and popstate paths reconcile parsed Finder state", () =>
   const workspace = fs.readFileSync("archive/archive2-workspace.js", "utf8");
   assert.match(
     workspace,
-    /state\.find,\s*C\.reconcileFinderFilters\(state\.find, state\.catalog\.taxonomy\)/s,
+    /Object\.assign\(state\.find,\s*reconcileFinderFilters\(state\.find\)\)/s,
+  );
+  assert.match(
+    workspace,
+    /function reconcileFinderFilters\(filters\)\s*\{\s*if \(!unifiedIndex\(\)\) return C\.reconcileFinderFilters\(filters, state\.catalog\.taxonomy\);/,
   );
   assert.match(workspace, /function replaceFinderUrlState\(\)\s*\{[\s\S]*?history\.replaceState\(history\.state \|\| \{\}, "", routeUrl\(\)\)/);
   assert.match(workspace, /url\.searchParams\.set\("page", String\(state\.page\)\)/);

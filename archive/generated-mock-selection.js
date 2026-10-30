@@ -295,5 +295,40 @@
     return selection;
   }
 
-  return Object.freeze({ PURPOSES, BUCKETS, classifyPurpose, difficultyBucket, formatChoiceForDisplay, createMockSelection, replaceVariant, regenerateUnlocked });
+  const PURPOSE_UID = /(?:^|-)Q\d+-[ABC][1-3]$/;
+  const BLOB_SHA = /^[a-f0-9]{40}$/i;
+
+  // Source exams the mock builder offers beyond its hash-bound roster, derived from index rows.
+  // - Only the rows handed in (the caller passes the selectable ones) can create an exam.
+  // - An exam that still carries any row the index itself marks consumerSelectable:false is a draft
+  //   exam in progress; it is not offered, so drafts never appear as a builder source.
+  // - count = the index's sourceExamQuestionCount when present, else the highest source question
+  //   number seen (a lower bound). identityOf(row) -> {school,year,grade,semester,term} | null.
+  function deriveSourceExams({ rows, allRows, knownShas, identityOf }) {
+    const known = new Set(knownShas || []);
+    const draftShas = new Set((allRows || rows || []).filter(row => row?.consumerSelectable === false)
+      .map(row => String(row.sourceExamBlobSha || '')));
+    const groups = new Map();
+    for (const row of rows || []) {
+      const sha = String(row?.sourceExamBlobSha || '');
+      if (!BLOB_SHA.test(sha) || known.has(sha) || draftShas.has(sha) || row.consumerSelectable === false) continue;
+      if (!Number.isInteger(Number(row.sourceQid)) || Number(row.sourceQid) < 1 || typeof row.subject !== 'string' || !row.subject) continue;
+      const identity = identityOf(row);
+      if (!identity) continue;
+      const key = [sha, identity.school, identity.year, identity.grade, identity.semester, identity.term, row.subject].join('\n');
+      if (!groups.has(key)) groups.set(key, { identity, sha, subject: row.subject, maxQid: 0, declared: 0, purpose: false });
+      const group = groups.get(key);
+      group.maxQid = Math.max(group.maxQid, Number(row.sourceQid));
+      const declared = Number(row.sourceExamQuestionCount);
+      if (Number.isInteger(declared) && declared > group.declared) group.declared = declared;
+      if (PURPOSE_UID.test(String(row.uid || ''))) group.purpose = true;
+    }
+    return [...groups.values()].map(group => ({
+      school: group.identity.school, year: group.identity.year, grade: group.identity.grade,
+      subject: group.subject, semester: group.identity.semester, term: group.identity.term,
+      count: Math.max(group.declared, group.maxQid), strategy: group.purpose ? 'purpose-variants' : 'legacy', sha: group.sha
+    }));
+  }
+
+  return Object.freeze({ PURPOSES, BUCKETS, classifyPurpose, difficultyBucket, formatChoiceForDisplay, createMockSelection, replaceVariant, regenerateUnlocked, deriveSourceExams });
 });

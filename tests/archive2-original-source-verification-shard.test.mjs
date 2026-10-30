@@ -29,7 +29,10 @@ const sourceIndex = JSON.parse(indexText);
 const sourceFile = "original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js";
 const sourceEntry = sourceIndex.files.find((row) => row.sourceFile === sourceFile);
 assert.ok(sourceEntry, "selected original source must have a verification shard");
-const shardRelative = "archive/" + sourceEntry.path;
+// The shard path is derived from the source file; index rows no longer repeat it (index size).
+const shardPathOf = (file) => canonical.SOURCE_VERIFICATION_SHARD_PREFIX + sha256(file) + ".json";
+assert.equal(Object.hasOwn(sourceEntry, "path"), false, "index rows omit the derivable shard path");
+const shardRelative = "archive/" + shardPathOf(sourceFile);
 const shardPath = path.join(root, shardRelative);
 const shardText = fs.readFileSync(shardPath, "utf8");
 const sourceShard = JSON.parse(shardText);
@@ -236,7 +239,7 @@ test("source verification index binds every source row to the full canonical res
   assert.equal(Object.hasOwn(sourceShard, "baseProjectionVersion"), false);
   assert.equal(sourceIndex.files.length, catalog.exams.length);
   assert.equal(new Set(sourceIndex.files.map((row) => row.sourceFile)).size, sourceIndex.files.length);
-  assert.equal(new Set(sourceIndex.files.map((row) => row.path)).size, sourceIndex.files.length);
+  assert.equal(new Set(sourceIndex.files.map((row) => shardPathOf(row.sourceFile))).size, sourceIndex.files.length);
 
   const sourceHashes = new Map(
     catalog.sourceHashes.map(([file, sha]) => [core.normalizeFile(file), String(sha || "").toLowerCase()]),
@@ -245,7 +248,7 @@ test("source verification index binds every source row to the full canonical res
   let shardBytes = 0;
   for (const entry of sourceIndex.files) {
     const normalizedFile = core.normalizeFile(entry.sourceFile);
-    const file = path.resolve(archiveDir, entry.path);
+    const file = path.resolve(archiveDir, shardPathOf(entry.sourceFile));
     const fromArchive = path.relative(archiveDir, file);
     assert.equal(fromArchive.startsWith("..") || path.isAbsolute(fromArchive), false);
     const body = fs.readFileSync(file, "utf8");
@@ -602,5 +605,35 @@ test("mixed assignment validation uses indexed verification with a legacy full-c
     assert.ok(assets.requests.includes("archive/data/archive2-catalog.json"));
     assert.equal(assets.requests.includes(indexRelative), true);
     assert.equal(assets.requests.some((row) => row.startsWith("archive/data/archive2-source-verification/")), false);
+  }
+});
+
+test("registered textbook sources validate through the Worker original-snapshot path with their raw figures intact", async () => {
+  const textbookFile = "textbooks/미래엔_공통수학1/미래엔_공통수학1_경우의수_대단원마무리_고1/미래엔_공통수학1_경우의수_대단원마무리_고1.js";
+  const exam = catalog.exams.find((row) => core.normalizeFile(row.file) === textbookFile);
+  assert.ok(exam, "textbook source is registered in the catalog");
+  assert.equal(exam.grade, "고1");
+  const questions = archiveSource.evaluate(fs.readFileSync(path.join(archiveDir, "exams", textbookFile), "utf8"), textbookFile);
+  const rows = catalog.records
+    .filter((row) => row.sourceFile === textbookFile)
+    .sort((a, b) => Number(a.sourceOrdinal) - Number(b.sourceOrdinal));
+  assert.equal(rows.length, questions.length);
+  assert.ok(rows.every((row) => row.sourceGrade === "고1" && row.sourceGradeStatus === "VALID"));
+  assert.ok(questions.some((question) => /<img src="q04\.png"/.test(question.content)), "the figure is referenced by its bare file name");
+
+  const assets = createAssetEnv();
+  const result = await validateOriginalSnapshot(
+    assets.env,
+    { questions },
+    { archive_file: "exams/" + textbookFile, question_count: questions.length, index_version: manifest.projectionVersion },
+  );
+  assert.deepEqual(assets.requests, [manifestRelative, indexRelative, "archive/" + shardPathOf(textbookFile)]);
+  assert.equal(result.exam.file, textbookFile);
+  assert.equal(result.questions.length, questions.length);
+  for (let index = 0; index < questions.length; index++) {
+    assert.equal(result.questions[index].questionUid, rows[index].questionUid);
+    assert.equal(result.questions[index].sourceArchiveFile, textbookFile);
+    for (const field of ["content", "choices", "answer", "solution", "image"])
+      assert.deepEqual(result.questions[index][field], questions[index][field], "raw question bytes are retained: " + field);
   }
 });

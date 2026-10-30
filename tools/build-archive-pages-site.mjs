@@ -188,7 +188,9 @@ function addSourceVerificationShards(selection, root, config) {
     fail('source verification index has an unsupported schema');
   const seen = new Set();
   for (const row of index.files) {
-    const itemPath = String(row?.path || '').replace(/\\/g, '/');
+    // The shard path is derived from the source file; a row that still carries a path is used as is.
+    const itemPath = String(row?.path ?? (typeof row?.sourceFile === 'string' && row.sourceFile
+      ? `${config.pathPrefix}${sha256Text(row.sourceFile)}.json` : '')).replace(/\\/g, '/');
     const prefix = config.pathPrefix;
     const basename = itemPath.startsWith(prefix) ? itemPath.slice(prefix.length) : '';
     if (!/^[a-f0-9]{64}\.json$/i.test(basename) || !SHA256_RE.test(String(row?.sha256 || '')))

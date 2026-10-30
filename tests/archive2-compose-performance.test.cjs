@@ -7,7 +7,7 @@ const { performance } = require('node:perf_hooks');
 const { catalog, core } = require('./helpers/archive2-scope-harness.cjs');
 const problemBankMeta = require('../archive/problem-bank-meta.js');
 
-function app() {
+function app(useMode = 'strict') {
   const nodes = { content: { addEventListener() {} } };
   const listeners = {};
   const window = {
@@ -28,7 +28,7 @@ function app() {
     },
   });
   const { state, render } = window.testApp;
-  Object.assign(state, { catalog: structuredClone(catalog), view: 'compose', filters: { grade: '고1' } });
+  Object.assign(state, { catalog: structuredClone(catalog), view: 'compose', filters: { grade: '고1' }, useMode });
   state.metaIndex = window.ProblemBankMeta.buildIndex(state.catalog.records, []);
   state.metaIndexSource = state.catalog.records;
   state.finderIndex = core.buildFinderIndex(state.catalog);
@@ -97,4 +97,77 @@ test('select all and count edits do not block the production-size composition fo
     assert.ok(elapsed < 450, `form blocks input for ${elapsed.toFixed(1)}ms`);
     assert.match(a.nodes.content.innerHTML, /data-action="generate"/);
   }
+});
+
+// Production boot switches state.useMode to "general" (archive2-workspace.js), and
+// 고2/고3 subject selection resolves the subject projection for every record.
+test('general useMode and 고2/고3 semantic subject selections stay responsive', t => {
+  const a = app('general');
+  assert.equal(a.state.useMode, 'general');
+  assert.ok(a.state.catalog.records.length >= 10000, 'performance requires the full production-size archive');
+  a.render(); // first render builds lazily created indexes, like the first screen after boot
+  const cases = [{ grade: '고1' }, { grade: '중3' }];
+  for (const [grade, subjects] of [
+    ['고2', ['ALGEBRA', 'CALCULUS', 'PROB_STATS', 'CALCULUS_ADVANCED', 'GEOMETRY']],
+    ['고3', ['ALGEBRA', 'CALCULUS', 'PROB_STATS', 'CALCULUS_ADVANCED', 'GEOMETRY']],
+  ]) for (const semanticSubject of subjects) cases.push({ grade, semanticSubject });
+  for (const useMode of ['general', 'strict']) {
+    a.state.useMode = useMode;
+    for (const filters of cases) {
+      a.state.filters = { ...filters };
+      a.state.scopes = [];
+      const start = performance.now();
+      a.render();
+      const elapsed = performance.now() - start;
+      t.diagnostic(`${useMode} ${JSON.stringify(filters)}: ${elapsed.toFixed(1)}ms`);
+      assert.ok(a.nodes.content.innerHTML.length > 0, `${JSON.stringify(filters)} rendered nothing`);
+      assert.ok(elapsed < 500, `${useMode} ${JSON.stringify(filters)} blocks input for ${elapsed.toFixed(1)}ms`);
+    }
+  }
+});
+
+// The first grade/subject change after boot evaluates records that the default
+// 고1 screen never touched, so none of the per-record caches are filled yet. Use a
+// fresh catalog clone per grade so every cache starts cold, like a real page load.
+test('first 고2/고3 selection after boot (cold caches) stays responsive in general mode', t => {
+  for (const [grade, subjects] of [
+    ['고2', ['ALGEBRA', 'CALCULUS', 'PROB_STATS']],
+    ['고3', ['CALCULUS_ADVANCED', 'GEOMETRY', 'ALGEBRA']],
+  ]) {
+    const a = app('general');
+    a.render(); // boot screen: default 고1
+    for (const filters of [{ grade }, ...subjects.map(semanticSubject => ({ grade, semanticSubject }))]) {
+      a.state.filters = { ...filters };
+      a.state.scopes = [];
+      const start = performance.now();
+      a.render();
+      const elapsed = performance.now() - start;
+      t.diagnostic(`cold general ${JSON.stringify(filters)}: ${elapsed.toFixed(1)}ms`);
+      assert.ok(a.nodes.content.innerHTML.length > 0, `${JSON.stringify(filters)} rendered nothing`);
+      assert.ok(elapsed < 500, `cold general ${JSON.stringify(filters)} blocks input for ${elapsed.toFixed(1)}ms`);
+    }
+  }
+});
+
+test('memoized subject projection is identical to the canonical resolver and follows policy edits', () => {
+  const policy = catalog.projectionPolicy;
+  const seen = new Set();
+  let compared = 0;
+  for (const record of catalog.records) {
+    const key = [record.sourceGrade, record.curriculumKey, record.courseKey, record.standardUnitKey, record.legacyStandardUnitKey].join('|');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const expected = core.Canonical.resolveSubjectProjection(record, policy) || '';
+    assert.equal(core.subjectProjectionForRecord(record, '', policy), expected, key);
+    assert.equal(core.subjectProjectionForRecord(record, '', policy), expected, key);
+    compared += 1;
+  }
+  assert.ok(compared > 10);
+  const record = { sourceGrade: '고1', curriculumKey: '2015', courseKey: '수학(상)', standardUnitKey: 'ZZ-TEST-UNIT' };
+  const clonePolicy = structuredClone(policy);
+  const before = core.subjectProjectionForRecord(record, '', clonePolicy);
+  assert.equal(before, core.Canonical.resolveSubjectProjection(record, clonePolicy) || '');
+  clonePolicy.gradeCourseAllowlist = clonePolicy.gradeCourseAllowlist.filter(row => !(row.grade === '고1' && row.courseKey === '수학(상)'));
+  assert.equal(core.subjectProjectionForRecord(record, '', clonePolicy), core.Canonical.resolveSubjectProjection(record, clonePolicy) || '');
+  assert.equal(core.subjectProjectionForRecord(record, '', null), '');
 });

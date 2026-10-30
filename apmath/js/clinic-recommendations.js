@@ -404,10 +404,8 @@
         }
         const identity = identityOf(record);
         return identity.verified && record?.identityStatus === 'VERIFIED' &&
-            record?.sourceIntegrityStatus === 'VERIFIED' && record?.sourceStatus === 'VERIFIED' &&
-            Boolean(identity.fingerprint) &&
-            !['SOURCE_BLOCKED', 'SOURCE_REPAIR_REQUIRED', 'SOLUTION_REPAIR_REQUIRED', 'ANSWER_REPAIR_REQUIRED'].includes(record?.sourceQualityDisposition) &&
-            record?.sourceIssueHold !== true && record?.sourceDefectCandidate !== true;
+            record?.sourceIntegrityStatus === 'VERIFIED' &&
+            Boolean(identity.fingerprint);
     }
 
     function advancedPathEligible(record, archive2Core, canonicalAuthority) {

@@ -63,7 +63,15 @@ test('a detailed filter uses only the exact reviewed assignment and parent chain
   };
   const result = core.selectBlueprint(catalog.records, request);
   assert.equal(result.ok, true, JSON.stringify(result));
-  assert.equal(result.selected[0].questionUid, target.questionUid);
+  // The exact reviewed target is a candidate of this PT/TPL filter; with the recency policy the
+  // selection is a candidate of the best recency year among them (the target itself only when it
+  // is the most recent complete year).
+  const candidates = catalog.records.filter(row => core.matches(row, filters, request) && core.eligibility(row, request).ok);
+  assert.ok(candidates.some(row => row.questionUid === target.questionUid));
+  const bestRank = Math.min(...candidates.map(row => core.recencyRank(core.sourceYear(row))));
+  assert.ok(candidates
+    .filter(row => core.recencyRank(core.sourceYear(row)) === bestRank)
+    .some(row => row.questionUid === result.selected[0].questionUid));
   assert.equal(core.review(result.selected, request).status !== 'HARD_BLOCK', true);
   const wrongLeaf = { ...target, L2: '잘못된 parent', rowId: 'unit' };
   assert.equal(core.basicEligibility(wrongLeaf, { canonicalAuthority: catalog.canonicalAuthority }).ok, false);

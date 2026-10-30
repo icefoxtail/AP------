@@ -126,7 +126,8 @@
             );
             const imageHTML = deps.renderQuestionImageHTML(q);
             const choicesHTML = deps.renderChoicesHTML(q);
-            box.innerHTML = `<div class="q-num">${i + 1}.</div>
+            const sectionHtml = typeof deps.getSectionHeadingHtml === 'function' ? deps.getSectionHeadingHtml(q, i, 'box') : '';
+            box.innerHTML = `${sectionHtml}<div class="q-num">${i + 1}.</div>
                              <div class="q-content">${formattedContent}</div>
                              ${imageHTML}
                              ${choicesHTML}`;

@@ -135,13 +135,53 @@
     if (isHighSemanticSubjectGrade(grade)) return highSemanticSubjectOptions();
     return [];
   };
+  // resolveSubjectProjection is a pure function of the policy and five record
+  // fields, but compose evaluates it for every catalog record several times
+  // per render (~25k records, multi-second for 고2/고3). Memoize per policy
+  // object by the exact resolver inputs. The cache is dropped when the policy
+  // arrays the resolver reads are replaced or resized, and resolver outputs are
+  // never altered.
+  const subjectProjectionCaches = new WeakMap();
+  function subjectProjectionCacheFor(policy) {
+    if (!policy || typeof policy !== "object") return null;
+    const arrays = [
+      policy.gradeCourseAllowlist,
+      policy.allowedGradeCourses,
+      policy.high1CompatibilityProjections,
+      policy.high23SharedSubjects,
+    ];
+    const signature = [policy.canonicalMasterSha256, canonical, ...arrays,
+      ...arrays.map((rows) => (Array.isArray(rows) ? rows.length : -1))];
+    let entry = subjectProjectionCaches.get(policy);
+    if (entry && entry.signature.length === signature.length &&
+        entry.signature.every((value, index) => value === signature[index]))
+      return entry.values;
+    entry = { signature, values: new Map() };
+    subjectProjectionCaches.set(policy, entry);
+    return entry.values;
+  }
+  function resolveSubjectProjectionCached(record, policy) {
+    const resolve = canonical?.resolveSubjectProjection;
+    if (!resolve) return "";
+    const cache = subjectProjectionCacheFor(policy);
+    if (!cache) return resolve(record, policy) || "";
+    const key = `${record.sourceGrade ?? ""}\u0000${record.curriculumKey ?? ""}\u0000${
+      record.courseKey ?? ""}\u0000${record.standardUnitKey ?? ""}\u0000${
+      record.legacyStandardUnitKey ?? ""}`;
+    let value = cache.get(key);
+    if (value === undefined) {
+      value = resolve(record, policy) || "";
+      cache.set(key, value);
+    }
+    return value;
+  }
   function subjectProjectionForRecord(record = {}, grade = "", projectionPolicy = null) {
     const sourceGrade = text(record.sourceGrade);
     if (!sourceGrade || (grade && text(grade) !== sourceGrade)) return "";
-    return canonical?.resolveSubjectProjection?.(
+    return resolveSubjectProjectionCached(
       record,
       projectionPolicy || record.projectionPolicy || null,
-    ) || "";
+    );
   }
   function browseGradeMatchesRecord(record = {}, grade = "", projectionPolicy = null) {
     const sourceGrade = text(record.sourceGrade),
@@ -442,6 +482,27 @@
     return Number.isInteger(year) && year >= 1900 && year <= 2100 ? year : 0;
   };
   const compareNewest = (a, b) => sourceYear(b) - sourceYear(a);
+  // Recency policy (user decision 2026-10-29): exam preparation prefers the most recent COMPLETE
+  // school year first (2025, 2024, 2023, ... descending), then the current year (its exams can
+  // still be incomplete), then years newer than the configured current year (only possible when
+  // this constant is stale), and unknown years last. This is the single definition used by
+  // 문제지 만들기, 단원별 기출 and the quick assessments; bump currentExamYear once per school year.
+  const RECENCY_POLICY = Object.freeze({
+    currentExamYear: 2026,
+    order: "완결된 최근 연도(2025, 2024, 2023 순)를 먼저, 올해 자료는 그다음, 연도를 알 수 없는 자료는 마지막",
+  });
+  const RECENCY_CURRENT_BAND = 1000;
+  const RECENCY_UNKNOWN = 1000000;
+  function recencyRank(year, currentExamYear = RECENCY_POLICY.currentExamYear) {
+    const value = Number(year);
+    if (!Number.isInteger(value) || value < 1900 || value > 2100) return RECENCY_UNKNOWN;
+    return value < currentExamYear
+      ? currentExamYear - 1 - value
+      : RECENCY_CURRENT_BAND + (value - currentExamYear);
+  }
+  const compareRecency = (a, b) => recencyRank(sourceYear(a)) - recencyRank(sourceYear(b));
+  // Years ordered by recencyRank, e.g. [2026, 2024, 2025, 0] -> [2025, 2024, 2026, 0].
+  const sortYearsByRecency = (years) => [...years].sort((a, b) => recencyRank(a) - recencyRank(b));
   function taxonomyPaths(master) {
     const paths = [];
     for (const row of master.records || [])
@@ -517,6 +578,14 @@
   // metadata approval path. Keep identity/integrity and the source payload
   // contract hard, while leaving taxonomy/approval/version status as
   // supplemental metadata state for later repair.
+  //
+  // User decision 2026-10-29: review/quality annotations about the ORIGINAL source
+  // (sourceIssueHold, sourceDefectCandidate, sourceQualityDisposition, source-release
+  // fingerprint HOLD, "pending review" metadata) are NOT usage gates. They are handled
+  // upstream by the correction protocol and the scheduled meta/SVG review lines; the
+  // records and the strict basicEligibility() approval metric are left untouched. Only
+  // technical gates remain here: the question must have a verified identity, an intact
+  // source reference and a fingerprint so it can load, be restored and render.
   function generalUseEligibility(record = {}) {
     const reasons = [];
     if (!UID.test(record.questionUid || "") || record.identityStatus !== "VERIFIED")
@@ -529,16 +598,16 @@
       !text(record.sourceFingerprint)
     )
       reasons.push("source");
-    if (["SOURCE_BLOCKED", "SOURCE_REPAIR_REQUIRED", "SOLUTION_REPAIR_REQUIRED",
-      "ANSWER_REPAIR_REQUIRED"].includes(record.sourceQualityDisposition))
-      reasons.push("source");
-    if (record.sourceIssueHold === true || record.sourceDefectCandidate === true)
-      reasons.push("source_issue");
     return { ok: reasons.length === 0, reasons: [...new Set(reasons)] };
   }
   const eligibility = basicEligibility;
-  function difficultyEligible(record) {
-    return record.sourceStatus === "VERIFIED" &&
+  // metaBinding "content": only the answer/solution bytes changed after the metadata was approved;
+  // the stem/choices/image the difficulty describes are byte-identical (see build-archive2-catalog).
+  // In general use mode that still counts as a recorded difficulty; strict mode and every other
+  // caller (APMS recommendations) keep requiring the exactly verified source.
+  function difficultyEligible(record, options = {}) {
+    return (record.sourceStatus === "VERIFIED" ||
+      (options.useMode === "general" && record.metaBinding === "content")) &&
       Number.isInteger(record.difficultyBucket) && record.difficultyBucket >= 1 && record.difficultyBucket <= 5 &&
       ["high", "medium", "low"].includes(record.difficultyConfidence) &&
       ["NONE", "B12", "B23", "B34", "B45"].includes(record.difficultyBoundaryFlag) &&
@@ -554,22 +623,146 @@
       (advancedAuthority(record) !== "mf" || !record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
       !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   }
+  // ---- S14: recorded concept (L3) / problem type (PT) / solution template (TPL) facets ----------
+  // The catalog carries the recorded values in an additive, content-bound lane (metaHint*). They
+  // are DISPLAY/SELECTION facets: never canonical assignments, never an approval. Every value keeps
+  // its own status ("approved" = approved field status, "pending" = recorded, not approved) so the
+  // UI can label it 승인 / 검토 대기. Records whose metadata row is not bound to the current stem,
+  // choices and image carry no facets (they stay usable, only meta-based filtering skips them).
+  const META_FACET_KEYS = Object.freeze(["metaL3", "metaPT", "metaTPL", "metaApprovedOnly"]);
+  const META_STATUS_LABEL = Object.freeze({ approved: "승인", pending: "검토 대기" });
+  const facetStatusOf = (code) => (code === "A" ? "approved" : code === "P" ? "pending" : "");
+  const metaFacetCache = new WeakMap();
+  function metaFacetsOf(record) {
+    if (!record || typeof record !== "object") return null;
+    if (metaFacetCache.has(record)) return metaFacetCache.get(record);
+    const code = text(record.metaHintStatus);
+    // Canonically validated values (the strict path) are approved by construction and win.
+    const strictPt = text(record.problemTypeKey), strictTpl = text(record.templateKey);
+    const hintL3 = text(record.metaHintL3);
+    const pt = strictPt || text(record.metaHintPT);
+    const tpl = strictTpl || text(record.metaHintTPL);
+    const l3 = hintL3 || text(record.L3);
+    let result = null;
+    if (l3 || pt || tpl) {
+      result = {
+        l3, pt, tpl,
+        l3Status: hintL3 ? facetStatusOf(code[0]) : l3 ? "approved" : "",
+        ptStatus: strictPt ? "approved" : pt ? facetStatusOf(code[1]) : "",
+        tplStatus: strictTpl ? "approved" : tpl ? facetStatusOf(code[2]) : "",
+        binding: text(record.metaBinding),
+      };
+      // A hint without a readable status code is never shown as approved.
+      for (const facet of ["l3", "pt", "tpl"])
+        if (result[facet] && !result[facet + "Status"]) result[facet + "Status"] = "pending";
+    }
+    metaFacetCache.set(record, result);
+    return result;
+  }
+  const hasMetaFacetFilter = (filters = {}) =>
+    META_FACET_KEYS.some((key) => filters[key]);
+  const approvedOnlyOn = (filters = {}) =>
+    filters.metaApprovedOnly === true || filters.metaApprovedOnly === "1" || filters.metaApprovedOnly === "true";
+  // skip: a facet name whose own selection is ignored (faceted option counts).
+  function metaFacetPasses(facets, filters = {}, skip = "") {
+    const selected = {
+      l3: skip === "l3" ? "" : text(filters.metaL3),
+      pt: skip === "pt" ? "" : text(filters.metaPT),
+      tpl: skip === "tpl" ? "" : text(filters.metaTPL),
+    };
+    const any = selected.l3 || selected.pt || selected.tpl;
+    const approvedOnly = approvedOnlyOn(filters);
+    if (!any && !approvedOnly) return true;
+    if (!facets) return false;
+    for (const name of ["l3", "pt", "tpl"])
+      if (selected[name] && facets[name] !== selected[name]) return false;
+    if (approvedOnly) {
+      const required = any ? ["l3", "pt", "tpl"].filter((name) => selected[name])
+        : ["l3", "pt", "tpl"].filter((name) => facets[name]);
+      if (!required.length || required.some((name) => facets[name + "Status"] !== "approved")) return false;
+    }
+    return true;
+  }
+  const metaFacetMatches = (record, filters = {}) =>
+    !hasMetaFacetFilter(filters) || metaFacetPasses(metaFacetsOf(record), filters);
+  // Option lists for the three facet selectors over an already scope/eligibility filtered list.
+  // Selections are faceted: each list ignores its own selection but honours the others.
+  // labelOf(kind, key) names PT/TPL keys; keys without a name are skipped, never invented.
+  function metaFacetOptions(records, filters = {}, labelOf = () => "") {
+    const buckets = { l3: new Map(), pt: new Map(), tpl: new Map() };
+    let facetRecords = 0;
+    for (const record of records) {
+      const facets = metaFacetsOf(record);
+      if (!facets) continue;
+      facetRecords++;
+      for (const name of ["l3", "pt", "tpl"]) {
+        const key = facets[name];
+        if (!key || !metaFacetPasses(facets, filters, name)) continue;
+        const bucket = buckets[name];
+        let option = bucket.get(key);
+        if (!option) {
+          const label = name === "l3" ? key : text(labelOf(name, key));
+          if (!label) continue;
+          option = { value: key, label, total: 0, approved: 0, pending: 0 };
+          bucket.set(key, option);
+        }
+        option.total++;
+        if (facets[name + "Status"] === "approved") option.approved++; else option.pending++;
+      }
+    }
+    const sort = (map) => [...map.values()].sort((a, b) => a.label.localeCompare(b.label, "ko"));
+    return { l3: sort(buckets.l3), pt: sort(buckets.pt), tpl: sort(buckets.tpl), facetRecords };
+  }
+  // "12문항 · 승인 5 · 검토 대기 7": the status mix of one facet option, "승인" only if all are.
+  function metaFacetStatusText(option) {
+    const mix = option.pending === 0 ? "승인" : option.approved === 0 ? "검토 대기"
+      : `승인 ${option.approved} · 검토 대기 ${option.pending}`;
+    return `${option.total}문항 · ${mix}`;
+  }
+  // Problem-type key used to spread one paper over different types (no type = never repeats).
+  const selectionTypeKey = (record) => metaFacetsOf(record)?.pt || "";
+  // Overlays are rebuilt only when the fallback taxonomy object or its values
+  // change; every other field is read live from the record via the prototype.
+  const generalOverlays = new WeakMap();
+  const GENERAL_FALLBACK_FIELDS = ["curriculumKey", "courseKey", "L1", "L2"];
+  // Same truthiness as text(value) without allocating a trimmed copy when the
+  // value is already a non-blank string; this runs ~100k times per render.
+  const hasText = (value) => typeof value === "string"
+    ? value.trim().length > 0
+    : value != null && text(value) !== "";
   function generalFilterRecord(record, options = {}) {
     if (options.useMode !== "general") return record;
     const fallback = record?.unverifiedTaxonomy;
-    const fields = ["curriculumKey", "courseKey", "L1", "L2"];
-    if (!fallback || fields.some((field) => text(record[field]))) return record;
-    if (fields.some((field) => !text(fallback[field]))) return record;
-    return {
-      ...record,
-      ...Object.fromEntries(fields.map((field) => [field, fallback[field]])),
-    };
+    const fields = GENERAL_FALLBACK_FIELDS;
+    if (!fallback) return record;
+    for (const field of fields) if (hasText(record[field])) return record;
+    for (const field of fields) if (!hasText(fallback[field])) return record;
+    const cached = generalOverlays.get(record);
+    if (cached && cached.fallback === fallback &&
+        fields.every((field, index) => cached.values[index] === fallback[field]))
+      return cached.overlay;
+    // Read-only overlay: filters only read properties, so inherit the record
+    // through the prototype instead of copying every field for every record.
+    const overlay = Object.create(record);
+    for (const field of fields)
+      Object.defineProperty(overlay, field, {
+        value: fallback[field], enumerable: true, writable: true, configurable: true,
+      });
+    generalOverlays.set(record, {
+      fallback, overlay, values: fields.map((field) => fallback[field]),
+    });
+    return overlay;
+  }
+  // Path key a record carries when general-use filtering overlays its unverified fallback
+  // taxonomy. Selection requests (and the server-side replay of them) must name exactly this key.
+  function generalPathKey(record, depth = 4) {
+    return pathKey(generalFilterRecord(record, { useMode: "general" }), depth);
   }
   function matches(record, filters = {}, options = {}) {
     const filterRecord = options.useMode === "general"
       ? generalFilterRecord(record, options)
       : record;
-    if (Array.isArray(filters.scopeQuestionUids) && !filters.scopeQuestionUids.includes(record.questionUid))
+    if (Array.isArray(filters.scopeQuestionUids) && !uidSetFor(filters.scopeQuestionUids).has(record.questionUid))
       return false;
     if (
       filters.primaryPaths?.length &&
@@ -603,6 +796,7 @@
         (selected.startsWith("mf:") || selected.startsWith("rpm:") ? selected : `rpm:${selected}`)))
         return false;
     }
+    if (hasMetaFacetFilter(filters) && !metaFacetMatches(record, filters)) return false;
     for (const field of PATH_FIELDS) {
       if (field === "L3" || field === "L4") continue;
       if (
@@ -615,7 +809,7 @@
     }
     if (
       filters.difficultyBuckets?.length &&
-      (!difficultyEligible(record) || !filters.difficultyBuckets.includes(record.difficultyBucket))
+      (!difficultyEligible(record, options) || !filters.difficultyBuckets.includes(record.difficultyBucket))
     )
       return false;
     if (
@@ -658,6 +852,18 @@
     }
     return next;
   }
+  // `scopeQuestionUids` lists can hold thousands of UIDs and are tested once per record and per
+  // row on every render. Membership is answered from a Set cached per array; the cache entry is
+  // rebuilt if the array's length changes, so an array extended in place is never answered stale.
+  const uidSets = new WeakMap();
+  function uidSetFor(list) {
+    let entry = uidSets.get(list);
+    if (!entry || entry.size !== list.length) {
+      entry = { size: list.length, set: new Set(list) };
+      uidSets.set(list, entry);
+    }
+    return entry.set;
+  }
   function composeExclusions(context = {}) {
     const sets = {};
     const union = new Set();
@@ -668,6 +874,10 @@
     return { sets, union };
   }
   function rowMatches(record, row, options = {}) {
+    // The UID scope is the cheapest test and every condition is required, so test it first:
+    // most records belong to no scope row and never reach the path-key computation.
+    if (Array.isArray(row.scopeQuestionUids) && !uidSetFor(row.scopeQuestionUids).has(record.questionUid))
+      return false;
     const filterRecord = options.useMode === "general"
       ? generalFilterRecord(record, options)
       : record;
@@ -676,9 +886,8 @@
       : !row.path || pathKey(filterRecord, row.depth || 4) === row.path;
     return (
       pathsMatch &&
-      (!Array.isArray(row.scopeQuestionUids) || row.scopeQuestionUids.includes(record.questionUid)) &&
       (!row.difficultyBuckets?.length ||
-        (difficultyEligible(record) && row.difficultyBuckets.includes(record.difficultyBucket)))
+        (difficultyEligible(record, options) && row.difficultyBuckets.includes(record.difficultyBucket)))
     );
   }
   function validatePlan(request) {
@@ -718,6 +927,43 @@
       errors.push("선택 학생의 출제 이력을 먼저 확인해야 합니다.");
     return errors;
   }
+  // S14 type diversity. The recency order is untouched: this only reorders WITHIN the year being
+  // consumed, replacing a pick whose problem type was already chosen (earlier in the paper, in an
+  // earlier row or by a pin) by another candidate of the same year whose type is new, when one
+  // exists. Questions without a recorded type never count as repeats, and when no new type is
+  // left the originally chosen questions stay, so the count and the year spread never change.
+  function diversifyByType(picked, yearPool, usedTypes, seed) {
+    const seen = new Set(usedTypes);
+    const kept = [], repeats = [];
+    for (const record of picked) {
+      const type = selectionTypeKey(record);
+      if (type && seen.has(type)) repeats.push(record);
+      else { kept.push(record); if (type) seen.add(type); }
+    }
+    if (!repeats.length) return picked;
+    const pickedUids = new Set(picked.map((record) => record.questionUid));
+    const isNewType = (record) => { const type = selectionTypeKey(record); return !type || !seen.has(type); };
+    let rest = yearPool.filter((record) => !pickedUids.has(record.questionUid) && isNewType(record));
+    let need = repeats.length;
+    while (need > 0 && rest.length) {
+      const more = selector.selectCandidates(rest, { count: need }, { selectionSeed: seed }).selected;
+      if (!more.length) break;
+      const moreUids = new Set(more.map((record) => record.questionUid));
+      for (const record of more) {
+        const type = selectionTypeKey(record);
+        if (type && seen.has(type)) continue;
+        kept.push(record);
+        if (type) seen.add(type);
+        need--;
+      }
+      rest = rest.filter((record) => !moreUids.has(record.questionUid) && isNewType(record));
+    }
+    for (const record of repeats) {
+      if (kept.length >= picked.length) break;
+      kept.push(record);
+    }
+    return kept;
+  }
   function selectBlueprint(records, request, context = {}, options = {}) {
     const started = Date.now();
     const errors = validatePlan(request);
@@ -742,6 +988,8 @@
     );
     if (byUid.size !== candidates.length) errors.push("후보 UID가 중복됩니다.");
     const selected = [];
+    const usedTypes = new Set();
+    const noteType = (record) => { const type = selectionTypeKey(record); if (type) usedTypes.add(type); };
     const rows = request.rows || [];
     const rowResults = rows.map((row) => ({
       id: row.id,
@@ -768,6 +1016,7 @@
       }
       selected.push({ ...record, rowId: row.id });
       used.add(record.questionUid);
+      noteType(record);
       result.selected++;
     }
     // Constrained rows go first; each UID is consumed at most once across rows.
@@ -806,12 +1055,13 @@
         while (result.selected < row.count && groups.size) {
           const group = [...groups.values()].sort((a, b) =>
             (conceptCounts.get(a.concept) || 0) - (conceptCounts.get(b.concept) || 0) ||
-            Math.max(...b.records.map(sourceYear)) - Math.max(...a.records.map(sourceYear)) ||
+            Math.min(...a.records.map(record => recencyRank(sourceYear(record)))) -
+              Math.min(...b.records.map(record => recencyRank(sourceYear(record)))) ||
             a.key.localeCompare(b.key, "en"))[0];
           groups.delete(group.key);
-          const newestYear = Math.max(...group.records.map(sourceYear));
+          const bestRank = Math.min(...group.records.map(record => recencyRank(sourceYear(record))));
           const selection = selector.selectCandidates(
-            group.records.filter(record => sourceYear(record) === newestYear),
+            group.records.filter(record => recencyRank(sourceYear(record)) === bestRank),
             { count: 1 },
             { selectionSeed: request.seed || VERSION },
           );
@@ -819,24 +1069,25 @@
           if (!record || used.has(record.questionUid)) continue;
           selected.push({ ...record, rowId: row.id });
           used.add(record.questionUid);
+          noteType(record);
           result.selected++;
           selectedGroups.add(group.key);
           conceptCounts.set(group.concept, (conceptCounts.get(group.concept) || 0) + 1);
         }
       }
-      // Recency is a priority after hard scope/quality/history gates. Preserve
-      // the existing seeded selection within each year; unknown years go last.
-      for (const year of [...new Set(pool.map(sourceYear))].sort((a, b) => b - a)) {
+      // Recency is a priority after hard scope/quality/history gates (RECENCY_POLICY: complete
+      // years newest first, then the current year, unknown years last). The existing seeded
+      // selection is preserved within each year.
+      for (const year of sortYearsByRecency(new Set(pool.map(sourceYear)))) {
         const remaining = row.count - result.selected;
         if (!remaining) break;
-        const selection = selector.selectCandidates(
-          pool.filter((record) => !used.has(record.questionUid) && sourceYear(record) === year),
-          { count: remaining },
-          { selectionSeed: request.seed || VERSION },
-        );
-        for (const record of selection.selected) {
+        const yearPool = pool.filter((record) => !used.has(record.questionUid) && sourceYear(record) === year);
+        const seed = request.seed || VERSION;
+        const selection = selector.selectCandidates(yearPool, { count: remaining }, { selectionSeed: seed });
+        for (const record of diversifyByType(selection.selected, yearPool, usedTypes, seed)) {
           selected.push({ ...record, rowId: row.id });
           used.add(record.questionUid);
+          noteType(record);
           result.selected++;
         }
       }
@@ -844,7 +1095,7 @@
     selected.sort(
       (a, b) =>
         rows.findIndex((r) => r.id === a.rowId) -
-        rows.findIndex((r) => r.id === b.rowId) || compareNewest(a, b),
+        rows.findIndex((r) => r.id === b.rowId) || compareRecency(a, b),
     );
     const shortages = rowResults
       .filter((r) => r.selected < r.requested)
@@ -873,10 +1124,22 @@
         excludedByReason: reasons,
         elapsedMs: Date.now() - started,
         representativeCoverage,
+        typeCoverage: typeCoverage(selected),
       },
       seed: request.seed,
       selectorVersion: VERSION,
     };
+  }
+  // Problem-type spread of a paper: how many questions carry a recorded type and how many distinct
+  // types they cover (informational; questions without a type are neither repeats nor coverage).
+  function typeCoverage(selected) {
+    const counts = new Map();
+    for (const record of selected || []) {
+      const type = selectionTypeKey(record);
+      if (type) counts.set(type, (counts.get(type) || 0) + 1);
+    }
+    const typed = [...counts.values()].reduce((sum, n) => sum + n, 0);
+    return { typedCount: typed, distinctTypes: counts.size, repeatedCount: typed - counts.size };
   }
   function review(selected, request, context = {}) {
     const hardFailures = validatePlan(request);
@@ -955,6 +1218,7 @@
     META_FIELDS,
     OPTIONAL_METADATA_FIELDS,
     pathKey,
+    generalPathKey,
     basicScopeParent,
     normalizeFile,
     normalizeSearch,
@@ -980,6 +1244,10 @@
     finderMatches,
     sourceYear,
     compareNewest,
+    RECENCY_POLICY,
+    recencyRank,
+    compareRecency,
+    sortYearsByRecency,
     taxonomyPaths,
     eligibility,
     basicEligibility,
@@ -988,6 +1256,15 @@
     advancedEligible,
     advancedAuthority,
     advancedFilterValue,
+    META_FACET_KEYS,
+    META_STATUS_LABEL,
+    metaFacetsOf,
+    metaFacetPasses,
+    metaFacetMatches,
+    metaFacetOptions,
+    metaFacetStatusText,
+    selectionTypeKey,
+    typeCoverage,
     matches,
     migrateLegacyAdvancedFilters,
     composeExclusions,

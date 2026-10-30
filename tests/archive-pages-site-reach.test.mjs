@@ -96,5 +96,25 @@ test('data fetched directly by shipped pages stays in the site', () => {
     'archive/question-index.js',
     'archive/question-identity.js',
     'archive/db.js',
+    // problem-bank-search.html lazily loads the key resolver, its extension index and the RPM crosswalks it follows.
+    'archive/archive2-key-resolver.js',
+    'archive/data/archive2-extension-keys.json',
+    ...fs.readdirSync(path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0'))
+      .filter((name) => name.endsWith('.json')).map((name) => `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/${name}`),
   ]) assert.ok(shipped.has(required), required);
+});
+
+test('every local script and stylesheet a shipped page names is in the site', () => {
+  const missing = [];
+  for (const entry of plan.entries) {
+    if (!/^(?:archive\/[^/]+|archive\/assessment\/[^/]+|index)\.html$/.test(entry.path)) continue;
+    const source = fs.readFileSync(path.join(root, entry.path), 'utf8');
+    for (const match of source.matchAll(/<(?:script|link)\b[^>]*?\b(?:src|href)=["']([^"'#?]+)/gi)) {
+      const ref = match[1];
+      if (/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(ref)) continue;
+      const target = ref.startsWith('/') ? ref.slice(1) : path.posix.normalize(path.posix.join(path.posix.dirname(entry.path), ref));
+      if (!shipped.has(target)) missing.push(`${entry.path} -> ${target}`);
+    }
+  }
+  assert.deepEqual(missing, []);
 });

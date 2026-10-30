@@ -45,8 +45,8 @@ assert.ok(pdfReadiness.includes('image.decode()'), 'required images must decode 
 assert.ok(pdfReadiness.includes('layout overflow detected'), 'layout overflow should block PDF sealing');
 assert.ok(mixedEngine.includes('archive2-pdf-readiness.js?v=20261002-output-envelope-v3'), 'mixed engine should load the shared readiness gate');
 assert.ok(screenEngine.includes('archive2-pdf-readiness.js?v=20261002-output-envelope-v3'), 'screen engine should load the shared readiness gate');
-assert.ok(mixedEngine.includes('exam-render-executor.js?v=20261002-output-envelope-v3'), 'mixed engine should load the current shared slot renderer');
-assert.ok(screenEngine.includes('exam-render-executor.js?v=20261002-output-envelope-v3'), 'screen engine should load the current shared slot renderer');
+assert.ok(mixedEngine.includes('exam-render-executor.js?v=20261029-sections-1'), 'mixed engine should load the current shared slot renderer');
+assert.ok(screenEngine.includes('exam-render-executor.js?v=20261029-sections-1'), 'screen engine should load the current shared slot renderer');
 assert.ok(pdfRoute.includes('env.EXAM_PDF_BUCKET.put'), 'generated PDF should be saved to R2');
 assert.ok(pdfRoute.includes('env.EXAM_PDF_BUCKET.get'), 'downloads should stream the saved R2 object');
 assert.ok(pdfRoute.includes("url.searchParams.set('class'"), 'rendered PDFs should preserve class QR identity');

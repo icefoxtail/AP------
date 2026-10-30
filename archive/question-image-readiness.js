@@ -36,6 +36,26 @@
         return images;
     }
 
+    // Registered textbook sources keep their figures beside the source JS (textbooks/<folder>/<set>/qNN.png)
+    // and reference them by that bare file name, which the engine pages (archive/) cannot resolve on their
+    // own. The src is resolved here, at render time, against the directory of the question's own source
+    // file; the exam JS, the catalog fingerprints and the frozen snapshots keep the original bytes.
+    const SOURCE_RELATIVE_IMAGE = /^q\d+[A-Za-z0-9_.-]*\.(?:png|jpe?g|webp|svg)$/i;
+
+    function sourceFileOfImage(image) {
+        const ref = String(image?.closest?.('[data-source-ref]')?.dataset?.sourceRef || '');
+        const hash = ref.indexOf('#');
+        return hash > 0 ? ref.slice(0, hash) : '';
+    }
+
+    function resolveSourceRelativeImage(src, sourceArchiveFile) {
+        const raw = String(src || '').trim();
+        const file = String(sourceArchiveFile || '').trim().replace(/\\/g, '/').replace(/^\/?(?:archive\/)?exams\//, '');
+        if (!SOURCE_RELATIVE_IMAGE.test(raw) || !file.startsWith('textbooks/') || file.split('/').some(part => part === '..' || part === '.')) return src;
+        const directory = file.slice(0, file.lastIndexOf('/'));
+        return directory ? `exams/${directory}/${raw}` : src;
+    }
+
     function inspectImage(image) {
         if (!image) return { status: 'error', reason: 'MISSING_IMAGE' };
         if (image.complete !== true) return { status: 'pending', reason: 'LOAD_PENDING', src: imageSource(image) };
@@ -149,6 +169,8 @@
         collectImages,
         collectQuestionImages,
         normalizeQuestionImageSources,
+        sourceFileOfImage,
+        resolveSourceRelativeImage,
         inspectImage,
         waitForImage,
         waitForImages,

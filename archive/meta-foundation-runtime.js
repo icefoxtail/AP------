@@ -238,11 +238,24 @@
     window.ARCHIVE_META_FOUNDATION_RUNTIMES = packs;
     window.ARCHIVE_META_FOUNDATION_RUNTIME = runtime;
     finalCatalog = window.Archive2Canonical.resolveCatalog({ versionBundle: bundle });
+    // One pass over the resolved records: the strict (automatic) count and the
+    // per-reason exclusion tally must come from the same final canonical
+    // authority. The build-time reason counts in archive2-catalog.json predate
+    // the runtime overlay and are not reused.
+    const exclusionReasons = {};
+    let automatic = 0;
+    for (const record of finalCatalog.records) {
+      const result = window.Archive2Core.basicEligibility(record, { canonicalAuthority: finalCatalog.canonicalAuthority });
+      if (result.ok) automatic += 1;
+      for (const reason of result.reasons) exclusionReasons[reason] = (exclusionReasons[reason] || 0) + 1;
+    }
+    const buildHealth = finalCatalog.health || {};
     finalCatalog.health = {
-      ...(finalCatalog.health || {}),
-      automatic: finalCatalog.records.filter((record) =>
-        window.Archive2Core.basicEligibility(record, { canonicalAuthority: finalCatalog.canonicalAuthority }).ok,
-      ).length,
+      exams: buildHealth.exams,
+      questions: buildHealth.questions,
+      metadataRecords: buildHealth.metadataRecords,
+      automatic,
+      exclusionReasons,
     };
     finalByUid = new Map(finalCatalog.records.filter((record) => record.questionUid)
       .map((record) => [record.questionUid, record]));
