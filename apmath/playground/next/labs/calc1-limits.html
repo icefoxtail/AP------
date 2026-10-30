@@ -497,7 +497,7 @@ window.addEventListener('DOMContentLoaded', function () {
         });
         roots4(t).forEach((x) => b.point([x, t], { color: 'rose', r: 4.5, ref: 't' }));
         b.point([-1.0, 2.0], { color: 'rose', r: 5.5, label: '극대(−1, 2)', dx: -10, dy: -10, align: 'right' });
-        b.point([1.0, -2.0], { color: 'sky', r: 5.5, label: '극소(1, −2)', dx: 10, dy: 16 });
+        b.point([1.0, -2.0], { color: 'sky', r: 5.5, label: '극소(1, −2)', dx: -10, dy: 16, align: 'right' });
         b.handle('t', [2.35, t], { color: 'amber', ref: 't', label: `t = ${fmt(t)}`, dx: 14, dy: -14,
           drag: (w) => { let v = w.y; if (Math.abs(v - 2.0) < 0.08) v = 2.0; if (Math.abs(v + 2.0) < 0.08) v = -2.0; s.t = clamp(+v.toFixed(2), -2.6, 2.6); } });
         lowerPane(b, s, '▼ 교점 개수 함수 g(t) (가로축 = t)', { xLabel: 't', yLabel: 'g(t)' },
@@ -512,10 +512,10 @@ window.addEventListener('DOMContentLoaded', function () {
             [-2.0, 2.0].forEach((x) => {
               b.point([x, 1.0], { hollow: true, color: 'sky', r: 5.5 });
               b.point([x, 3.0], { hollow: true, color: 'green', r: 5.5 });
-              b.point([x, 2.0], { color: 'red', r: 6, label: `불연속 t=${x < 0 ? '−2' : '2'} (g=2)`, dx: x < 0 ? -12 : 12, dy: 18, align: x < 0 ? 'right' : 'left' });
+              b.point([x, 2.0], { color: 'red', r: 6, label: `불연속 t=${x < 0 ? '−2' : '2'} (g=2)`, dx: x < 0 ? -12 : 12, dy: -12, align: x < 0 ? 'right' : 'left' });
             });
             // 현재 t 위치 마커 (좌우로 끌 수 있음)
-            b.handle('tm', [t, cnt], { color: 'amber', ref: 't', label: `현재 g(${fmt(t)}) = ${cnt}개`, dx: 0, dy: -18, align: 'center',
+            b.handle('tm', [t, cnt], { color: 'amber', ref: 't', label: `g(t)=${cnt}`, dx: 0, dy: cnt === 1 ? 20 : -18, align: 'center',
               drag: (w) => { let v = w.x; if (Math.abs(v - 2.0) < 0.08) v = 2.0; if (Math.abs(v + 2.0) < 0.08) v = -2.0; s.t = clamp(+v.toFixed(2), -2.6, 2.6); } });
           });
       }

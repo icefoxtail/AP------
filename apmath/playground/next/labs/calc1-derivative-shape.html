@@ -370,23 +370,52 @@ window.addEventListener('DOMContentLoaded', function () {
     const ch = chartOf(m, s);
     const P = ch.roots.map((q) => b.toS(q.x, 0).x);
     const half = ch.roots.map((q) => tw(q.label) / 2 + 5);
+    const onScreen = (px) => px >= r.x + 4 && px <= r.x + r.w - 4;
     const xs = [];
+    // 정렬 배치가 가능한지: 근이 화면 안에 있는데 그 옆 구간에 부호 글자(짧은 꼴)가 들어갈 자리가 없으면 '극소극대극소'처럼 붙어 읽히므로
+    // 아래의 '순서대로 늘어놓기' 배치로 바꿉니다. (x 위치와의 정렬은 위·아래 그림의 세로선이 대신 알려 줍니다.)
+    let crowded = false;
     ch.ints.forEach((it, i) => {
-      const left = i === 0 ? r.x + 8 : P[i - 1] + half[i - 1];
-      const right = i === P.length ? r.x + r.w - 8 : P[i] - half[i];
-      const lo = Math.max(left, r.x + 6), hi = Math.min(right, r.x + r.w - 6);
-      if (hi - lo < 14) return;
-      const txt = tw(it.full) + 10 <= hi - lo ? it.full : it.short;
-      const w = tw(txt);
-      const cx = (lo + hi) / 2;
-      b.stext(cx, cy, txt, { color: it.color, size: SZ, align: 'center', baseline: 'middle', weight: 800 });
-      xs.push(cx - w / 2);
+      const lRoot = i > 0 ? P[i - 1] : null, rRoot = i < P.length ? P[i] : null;
+      const left = lRoot == null ? r.x + 8 : lRoot + half[i - 1];
+      const right = rRoot == null ? r.x + r.w - 8 : rRoot - half[i];
+      const bothOn = (lRoot == null || onScreen(lRoot)) && (rRoot == null || onScreen(rRoot));
+      if (bothOn && right - left < tw(it.short) + 6) crowded = true;
     });
-    ch.roots.forEach((q, i) => {
-      if (P[i] < r.x + 4 || P[i] > r.x + r.w - 4) return;
-      b.stext(P[i], cy, q.label, { color: q.color, size: SZ, align: 'center', baseline: 'middle', weight: 800 });
-      xs.push(P[i] - half[i]);
-    });
+    if (crowded) {
+      const toks = [];
+      ch.ints.forEach((it, i) => {
+        toks.push({ txt: it.short, color: it.color });
+        if (i < ch.roots.length) toks.push({ txt: ch.roots[i].label, color: ch.roots[i].color });
+      });
+      const GAP = 9;
+      const total = toks.reduce((a, t) => a + tw(t.txt), 0) + GAP * (toks.length - 1);
+      const on = P.filter(onScreen);
+      const mid = on.length ? on.reduce((a, v) => a + v, 0) / on.length : r.x + r.w / 2;
+      let x = clamp(mid - total / 2, r.x + 8, Math.max(r.x + 8, r.x + r.w - 8 - total));
+      xs.push(x);
+      toks.forEach((t) => {
+        b.stext(x, cy, t.txt, { color: t.color, size: SZ, align: 'left', baseline: 'middle', weight: 800 });
+        x += tw(t.txt) + GAP;
+      });
+    } else {
+      ch.ints.forEach((it, i) => {
+        const left = i === 0 ? r.x + 8 : P[i - 1] + half[i - 1];
+        const right = i === P.length ? r.x + r.w - 8 : P[i] - half[i];
+        const lo = Math.max(left, r.x + 6), hi = Math.min(right, r.x + r.w - 6);
+        if (hi - lo < 14) return;
+        const txt = tw(it.full) + 10 <= hi - lo ? it.full : it.short;
+        const w = tw(txt);
+        const cx = (lo + hi) / 2;
+        b.stext(cx, cy, txt, { color: it.color, size: SZ, align: 'center', baseline: 'middle', weight: 800 });
+        xs.push(cx - w / 2);
+      });
+      ch.roots.forEach((q, i) => {
+        if (!onScreen(P[i])) return;
+        b.stext(P[i], cy, q.label, { color: q.color, size: SZ, align: 'center', baseline: 'middle', weight: 800 });
+        xs.push(P[i] - half[i]);
+      });
+    }
     if (!xs.length || Math.min(...xs) > 78) b.stext(r.x + 10, cy, '증감표', { color: 'amber', size: 11, align: 'left', baseline: 'middle', weight: 800 });
   }
 
@@ -419,13 +448,26 @@ window.addEventListener('DOMContentLoaded', function () {
   const dragK = (s) => (w) => { let k = w.y; if (Math.abs(k - (-3.0)) < 0.18) k = -3.0; s.k = clamp(+k.toFixed(2), -4.0, 2.0); };
   const dragPin = (s) => (w) => { s.a = clamp(+w.x.toFixed(2), -1.5, 3.2); };
 
-  // 창 밖으로 나간 점은 그리지 않고, 창 가장자리 가까이의 가운데 정렬 라벨은 안쪽으로 뒤집어 잘리지 않게 합니다.
+  // 위쪽 수식 칩(떠 있는 상자)이 가리는 영역 — drawScene 이 그릴 때마다 갱신합니다.
+  let chipBox = null;
+  function readChipBox(b, lab) {
+    chipBox = null;
+    if (b.thumb || !lab || !lab.ui) return;
+    const el = lab.ui.chips.firstElementChild;
+    if (!el) return;
+    const cr = b.canvas.getBoundingClientRect(), r = el.getBoundingClientRect();
+    chipBox = { x0: r.left - cr.left, x1: r.right - cr.left, y1: r.bottom - cr.top };
+  }
+  // 창 밖으로 나간 점은 그리지 않고, 라벨이 창 위·아래 가장자리나 위쪽 수식 칩에 닿으면 점의 반대쪽으로 뒤집어 잘리거나 가려지지 않게 합니다.
   function mark(b, id, x, y, o) {
     const r = b.paneRect(id), p = b.toS(x, y);
     if (p.x < r.x - 6 || p.x > r.x + r.w + 6 || p.y < r.y - 6 || p.y > r.y + r.h + 6) return;
-    if (o.label && o.align === 'center') {
-      if (o.dy < 0 && p.y + o.dy < r.y + 8) o = { ...o, dy: -o.dy };
-      else if (o.dy > 0 && p.y + o.dy > r.y + r.h - 8) o = { ...o, dy: -o.dy };
+    if (chipBox && id === 'main' && p.y < chipBox.y1 + 2 && p.x > chipBox.x0 - 6 && p.x < chipBox.x1 + 6) return; // 수식 칩 밑에 가려진 점은 그리지 않음
+    if (o.label && o.dy) {
+      const ly = p.y + o.dy;
+      const underChip = chipBox && id === 'main' && ly < chipBox.y1 + 10 && p.x > chipBox.x0 - 70 && p.x < chipBox.x1 + 70;
+      if (o.dy < 0 && (ly < r.y + 8 || underChip)) o = { ...o, dy: -o.dy };
+      else if (o.dy > 0 && ly > r.y + r.h - 8) o = { ...o, dy: -o.dy };
     }
     b.point([x, y], o);
   }
@@ -436,16 +478,17 @@ window.addEventListener('DOMContentLoaded', function () {
     if (m === 2) {
       const lam = lamOf(s), g = gammaOf(s);
       const L = (x) => `(${fmt(x, 0)}, ${fmt(f(x), 1)})`;
+      // 점끼리 가까워도 라벨이 겹치지 않게: 왼쪽 점은 왼쪽 아래, 오른쪽 점은 오른쪽 아래, 극대는 위에 둡니다.
       if (lam < 0.02) {
         mark(b, 'main', -1, f(-1), { color: 'violet', r: 6.5, label: `변곡접점${L(-1)}`, dx: -10, dy: -14, align: 'right' });
-        mark(b, 'main', 3, f(3), { color: 'green', r: 6.5, label: `극소${L(3)}`, dx: 0, dy: 20, align: 'center' });
+        mark(b, 'main', 3, f(3), { color: 'green', r: 6.5, label: `극소${L(3)}`, dx: 10, dy: 18, align: 'left' });
       } else if (lam > 0.98) {
-        mark(b, 'main', -1, f(-1), { color: 'green', r: 6.5, label: `극소${L(-1)}`, dx: 0, dy: 20, align: 'center' });
-        mark(b, 'main', 3, f(3), { color: 'violet', r: 6.5, label: `변곡접점${L(3)}`, dx: 10, dy: -14 });
+        mark(b, 'main', -1, f(-1), { color: 'green', r: 6.5, label: `극소${L(-1)}`, dx: -10, dy: 18, align: 'right' });
+        mark(b, 'main', 3, f(3), { color: 'violet', r: 6.5, label: `변곡접점${L(3)}`, dx: 10, dy: -14, align: 'left' });
       } else {
-        mark(b, 'main', -1, f(-1), { color: 'green', r: 6, label: `극소${L(-1)}`, dx: 0, dy: 20, align: 'center' });
+        mark(b, 'main', -1, f(-1), { color: 'green', r: 6, label: `극소${L(-1)}`, dx: -10, dy: 18, align: 'right' });
         mark(b, 'main', g, f(g), { color: 'rose', r: 6.5, label: `극대(${fmt(g, 1)}, ${fmt(f(g), 1)})`, dx: 0, dy: -18, align: 'center' });
-        mark(b, 'main', 3, f(3), { color: 'green', r: 6, label: `극소${L(3)}`, dx: 0, dy: 20, align: 'center' });
+        mark(b, 'main', 3, f(3), { color: 'green', r: 6, label: `극소${L(3)}`, dx: 10, dy: 18, align: 'left' });
       }
       return;
     }
@@ -495,8 +538,9 @@ window.addEventListener('DOMContentLoaded', function () {
     if (m === 4) b.handle('k', [2.5, s.k], { color: 'violet', r: 7, ref: 'k', label: `k = ${fmt(s.k)}`, dx: 12, dy: -14, drag: dragK(s) });
   }
 
-  function drawScene(b, s, m) {
+  function drawScene(b, s, m, lab) {
     quiet(b);
+    readChipBox(b, lab);
     const f = (x) => evalTop(m, s, x);
     const fd = (x) => evalBottom(m, s, x);
     // 1) 위: 원함수
@@ -640,7 +684,7 @@ window.addEventListener('DOMContentLoaded', function () {
       panes: panes3([-3.6, 4.4], [-5.0, 1.8]),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'delta', 0.9, -0.4, 1.6, dt); return true; },
       view: viewOf(1),
-      draw: (b, s) => drawScene(b, s, 1)
+      draw: (b, s, v, lab) => drawScene(b, s, 1, lab)
     },
 
     /* ===== MODE 2 · 삼차 도함수 → 사차 원함수 개형 ===== */
@@ -664,7 +708,7 @@ window.addEventListener('DOMContentLoaded', function () {
       panes: panes3((s) => { const mid = (evalTop(2, s, -1) - s.C2 + evalTop(2, s, 3) - s.C2) / 2; return [mid - 10.0, mid + 13.0]; }, [-9.6, 2.2]),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'lam', 0.48, 0.0, 1.0, dt); return true; },
       view: viewOf(2),
-      draw: (b, s) => drawScene(b, s, 2)
+      draw: (b, s, v, lab) => drawScene(b, s, 2, lab)
     },
 
     /* ===== MODE 3 · 극값의 부호 곱과 실근 개수 ===== */
@@ -683,7 +727,7 @@ window.addEventListener('DOMContentLoaded', function () {
       panes: panes3([-5.2, 5.8], [-5.0, 1.8]),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'C', 1.8, -2.8, 2.8, dt); return true; },
       view: viewOf(3),
-      draw: (b, s) => drawScene(b, s, 3)
+      draw: (b, s, v, lab) => drawScene(b, s, 3, lab)
     },
 
     /* ===== MODE 4 · f′ 와 g′ 의 교점 → 차함수 h = f − g 개형 ===== */
@@ -706,7 +750,7 @@ window.addEventListener('DOMContentLoaded', function () {
       panes: panes3([-4.4, 5.2], [-5.4, 2.3]),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'k', 1.8, -4.0, 2.0, dt); return true; },
       view: viewOf(4),
-      draw: (b, s) => drawScene(b, s, 4)
+      draw: (b, s, v, lab) => drawScene(b, s, 4, lab)
     },
 
     /* ===== MODE 5 · g(x) = ∫ₐˣ f(t)dt 개형 ===== */
@@ -725,7 +769,7 @@ window.addEventListener('DOMContentLoaded', function () {
       panes: panes3([-3.2, 6.6], [-5.0, 1.8]),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'a', 1.8, -1.2, 3.0, dt); return true; },
       view: viewOf(5),
-      draw: (b, s) => drawScene(b, s, 5)
+      draw: (b, s, v, lab) => drawScene(b, s, 5, lab)
     }
   ];
 
