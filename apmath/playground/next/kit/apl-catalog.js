@@ -459,6 +459,7 @@ window.APLab.catalog = {
     "치환 방부등식과 근의 분리"
    ],
    "legacy": "labs/대수/part1a.html",
+   "next": "next/labs/alg-explog.html",
    "glyph": "<path d=\"M8 68 H72 M14 8 V69\" stroke-opacity=\".45\"/><path d=\"M15 61 Q39 62 45 49 T67 10\" stroke-width=\"2.7\"/><path d=\"M22 67 Q28 32 42 25 T68 21\" stroke=\"#D8B77E\" stroke-width=\"1.7\"/><circle cx=\"45\" cy=\"49\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -483,6 +484,7 @@ window.APLab.catalog = {
     "|aˣ − k| = t 점근선 반사"
    ],
    "legacy": "labs/대수/part1a2.html",
+   "next": "next/labs/alg-exp-deep.html",
    "glyph": "<path d=\"M8 67 H74 M13 7 V68\" stroke-opacity=\".4\"/><path d=\"M15 59 Q41 58 47 45 T70 7\" stroke-width=\"2.8\"/><path d=\"M12 48 Q25 41 41 40 T70 37\" stroke=\"#D8B77E\" stroke-width=\"1.8\" stroke-dasharray=\"4 4\"/><circle cx=\"47\" cy=\"45\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
