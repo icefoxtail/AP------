@@ -883,6 +883,7 @@ window.APLab.catalog = {
     "기출3: 비스듬한 태양광 그림자"
    ],
    "legacy": "labs/기하와벡터/정사영 3D.html",
+   "next": "next/labs/geom-projection.html",
    "glyph": "<path d=\"M8 62 L48 14 L72 48 L32 70 Z\" stroke-dasharray=\"0\"/><path d=\"M8 62 L48 62 L72 62\" stroke-dasharray=\"4 3\"/><path d=\"M48 14 L48 62\" stroke-dasharray=\"3 3\"/>",
    "tags": [
     "3D"
@@ -906,6 +907,7 @@ window.APLab.catalog = {
     "기출3: 구 밖의 점 최대·최소 & 접선장"
    ],
    "legacy": "labs/기하와벡터/공간좌표_3D.html",
+   "next": "next/labs/geom-space-coord.html",
    "glyph": "<line x1=\"40\" y1=\"68\" x2=\"40\" y2=\"8\"/><line x1=\"8\" y1=\"50\" x2=\"72\" y2=\"50\"/><line x1=\"14\" y1=\"20\" x2=\"66\" y2=\"62\"/> <circle cx=\"52\" cy=\"28\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/>",
    "tags": [
     "3D"
