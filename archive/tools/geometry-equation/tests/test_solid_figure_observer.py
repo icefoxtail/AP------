@@ -1328,3 +1328,40 @@ class WedgeEdgeAxisAndRightAngle(unittest.TestCase):
         self.assertIsNone(O.cut_radius_axis(solid, '-X'))
         self.assertIsNone(O.cut_radius_axis(solid, '-Z'))
         self.assertEqual(O.cut_radius_axis(solid), (0, 1))   # unnamed: the most horizontal on the screen, the right one when equal
+
+
+class HeightFeet(unittest.TestCase):
+    """E33: the height of a pyramid or frustum (apex or top centre straight down to the base plane) and its foot, derived from the plan's solids alone"""
+
+    def test_the_foot_is_straight_below_the_apex_or_the_centre_of_the_top_face(self):
+        pyramid = O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 4, 'depth': 2}, 'height': 6, 'names': 'ABCDV', 'id': 's1'})
+        top, foot = O.poly_height_points(pyramid)
+        self.assertEqual(top, (2.0, 1.0, 6.0))
+        self.assertEqual(foot, (2.0, 1.0, 0.0))
+        # an apex pushed off the centre (an oblique pyramid): its foot is below it, not at the centre of the base
+        oblique = O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 4, 'depth': 2}, 'height': 6, 'apex': [3, 2], 'names': 'ABCDV', 'id': 's1'})
+        self.assertEqual(O.poly_height_points(oblique), ((3.0, 2.0, 6.0), (3.0, 2.0, 0.0)))
+        frustum = O.build_solid({'kind': 'FRUSTUM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 4}, 'height': 3, 'topScale': 0.5, 'names': 'ABCDEFGH', 'id': 's1'})
+        top, foot = O.poly_height_points(frustum)
+        self.assertEqual((round(top[0], 9), round(top[1], 9), top[2]), (2.0, 2.0, 3.0))
+        self.assertEqual(foot[2], 0.0)
+
+    def test_a_height_dimension_belongs_to_the_named_solid_or_the_first_that_has_a_height_line(self):
+        solids = [O.build_solid({'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 3, 'names': UNNAMED, 'id': 's1'}),
+                  O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 2, 'depth': 2}, 'height': 3, 'names': 'ABCDV', 'id': 's2'}),
+                  O.build_solid({'kind': 'CONE', 'radius': 2, 'height': 3, 'id': 's3'})]
+        self.assertEqual(O.height_dim_solid({}, {'height': True}, solids)['id'], 's2')   # a prism's height is an edge: the pyramid is the first with a height line
+        self.assertEqual(O.height_dim_solid({}, {'height': True, 'solid': 's3'}, solids)['id'], 's3')
+        self.assertIsNone(O.height_dim_solid({}, {'height': True, 'solid': 's9'}, solids))
+
+    def test_two_segments_are_the_same_line_whichever_end_comes_first(self):
+        a, b = (10.0, 20.0), (40.0, 60.0)
+        self.assertTrue(O._same_segment(a, b, a, b) and O._same_segment(a, b, b, a))
+        self.assertTrue(O._same_segment(a, b, (10.4, 20.0), (40.0, 60.4)))
+        self.assertFalse(O._same_segment(a, b, (10.0, 20.0), (40.0, 62.0)))
+        self.assertFalse(O._same_segment(a, b, (10.0, 20.0), (10.0, 20.0)))
+
+    def test_the_default_foot_vertex_is_the_base_vertex_farthest_right_on_the_screen(self):
+        pyramid = O.build_solid({'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 3, 'depth': 4}, 'height': 5, 'names': 'ABCDV', 'id': 's1'})
+        xs = [O.project(v[1])[0] for v in pyramid['verts'][:4]]
+        self.assertEqual(xs.index(max(xs)), 2)   # C(3, 4): 3 cos 28 + 4 sin 28

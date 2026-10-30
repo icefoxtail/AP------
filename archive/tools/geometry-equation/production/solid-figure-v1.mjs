@@ -1097,7 +1097,11 @@ function solveSolids(plan){
   if(plan.dims!==undefined){
     if(!Array.isArray(plan.dims)||plan.dims.length>10)bad('SOLID_DIMS_INVALID');
     plan.dims.forEach((d,k)=>{
-      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side','half'],'SOLID_DIMS_INVALID');
+      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side','half','direct','foot'],'SOLID_DIMS_INVALID');
+      // direct:true (a pyramid's or frustum's height): the length is written beside the dashed line from the apex (top centre) straight down to the base plane, with no
+      // dimension frame around it; foot:true | "<base vertex>": a right-angle mark at the foot of that line, between it and a dashed line in the base plane to a vertex (a
+      // cone or cylinder: to the rim on the screen's right)
+      if((d.direct!==undefined&&d.direct!==true)||(d.foot!==undefined&&d.foot!==true&&typeof d.foot!=='string')||((d.direct!==undefined||d.foot!==undefined)&&d.height===undefined))bad('SOLID_DIM_DIRECT_INVALID');
       // half:"+X" ... "-Z": which half axis of a cut sphere its radius lies along (it must belong to the piece and be seen)
       if(d.half!==undefined&&(d.radius!=='center'||typeof d.half!=='string'||!/^[+-][XYZ]$/.test(d.half)))bad('SOLID_DIMS_INVALID');
       // side:"LEFT"|"RIGHT" of a round solid's height: the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis
@@ -1162,7 +1166,31 @@ function solveSolids(plan){
           // a stack that has an axis writes the heights of its members along that axis, with no line of their own
           const st=stacks.find(x=>x.members.includes(solid.id)),onAxis=solid.category!=='POLY'&&!!st&&st.members.some(id=>solids.find(x=>x.id===id).axis);
           if(d.side!==undefined&&(solid.category!=='REV'||st))bad('SOLID_DIM_SIDE_INVALID');
-          dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...(onAxis?{onAxis:true}:{}),...(d.side!==undefined?{side:d.side}:{}),...dimLabel(d.label,h,unitName,code)});
+          // direct: only a pyramid or a frustum (a rotation solid's height already runs on its axis); foot: the foot of the height has a right angle mark
+          if(d.direct!==undefined&&(!(solid.category==='REV'||solid.kind==='PYRAMID'||solid.kind==='FRUSTUM')||d.side!==undefined||st))bad('SOLID_DIM_DIRECT_INVALID');
+          let footMark;
+          if(d.foot!==undefined){
+            if(d.side!==undefined||st||solid.category==='SPHERE'||solid.cuts)bad('SOLID_DIM_FOOT_INVALID');
+            if(solid.category==='REV'){
+              if(!(solid.r0>0))bad('SOLID_DIM_FOOT_INVALID');
+              if(d.foot!==true)bad('SOLID_DIM_FOOT_INVALID');
+              footMark={to:'RIM'};
+            }else{
+              if(!(solid.kind==='PYRAMID'||solid.kind==='FRUSTUM')||d.direct!==true)bad('SOLID_DIM_FOOT_INVALID');
+              const n=ringSize(solid);
+              let index;
+              if(d.foot===true){
+                // the base vertex that stands farthest to the right on the screen (the lowest index when equal): the dashed line to it runs across the base
+                index=0;for(let i=1;i<n;i++)if(project(solid.vertices[i].p)[0]>project(solid.vertices[index].p)[0]+1e-9)index=i;
+              }else{
+                const key=vref(d.foot,'SOLID_DIM_FOOT_INVALID');
+                index=solid.vertices.findIndex((v,i)=>vertexKeys(solid,i).includes(key));
+                if(index<0||index>=n)bad('SOLID_DIM_FOOT_INVALID');
+              }
+              footMark={to:vertexKeys(solid,index)[0],index};
+            }
+          }
+          dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...(onAxis?{onAxis:true}:{}),...(d.side!==undefined?{side:d.side}:{}),...(d.direct===true&&solid.category==='POLY'?{direct:true}:{}),...(footMark?{footMark}:{}),...dimLabel(d.label,h,unitName,code)});
         }else{
           if(d.slant!==true||(solid.kind!=='CONE'&&solid.kind!=='CONE_FRUSTUM'))bad('SOLID_DIMS_INVALID');
           const l=Math.hypot(solid.radius-solid.topRadius,solid.height);
@@ -1632,6 +1660,20 @@ function ellipseOf(S,solid,rad,z){
   return {cx:c[0]+(solid.offset??0),cy:c[1],a:rad,b:rad*sP};
 }
 /**
+ * The right angle at the foot of a height (dims[].foot): a dashed line in the base plane from the foot F to the point T (a base vertex, or the rim on the screen's right for a
+ * rotation solid) and a small square between it and the height line, drawn in their plane (so it is seen as a parallelogram). World points; the square's side is a fifth of
+ * the shorter of the two lines, at most 20 px.
+ */
+function footRightAngle(d,F,T,ctx){
+  const {S,pt,prims,line}=ctx,up=[0,0,1],along=unit(sub(T,F)),len2=len(sub(T,F));
+  const l1=Math.hypot(...project(up)),l2=Math.hypot(...project(along));
+  const k=Math.min(0.2*len2,20/(S*Math.max(l1,l2)));
+  if(k*S*Math.min(l1,l2)<3)bad('SOLID_DIM_FOOT_TOO_SMALL:'+d.id);
+  line(d.id+'-foot-ray','foot-ray',pt(project(F)),pt(project(T)),{solid:d.solid,dim:d.id,kind:'FOOT',vis:'hidden'});
+  const pts=[add(F,mulv(up,k)),add(F,mulv(add(up,along),k)),add(F,mulv(along,k))].map(q=>pt(project(q)));
+  prims.push({t:'polyline',id:d.id+'-foot-right-angle',role:'foot-right-angle',points:pts,dim:d.id,solid:d.solid});
+}
+/**
  * The outside height dimension of a round solid (dims[].side LEFT|RIGHT), in px: the x of the dimension line (26 px beyond the widest side of the solid, kept inside the safe margin),
  * and the two points on the solid's side that its extension lines end on (the base circle's and the top circle's extreme on that side; an apex stands on the axis).
  */
@@ -1769,10 +1811,13 @@ function spec3d(plan,model,ctx){
         // (with extension lines to the apex and the base-centre level) so the length never has to sit between two edges.
         const top=pt(project(d.top)),foot=pt(project(d.foot));
         line(d.id+'-axis','height-axis',foot,top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'hidden'});
-        const x=heightDimX(solid,X);
-        line(d.id+'-line','dim-line',[x,foot[1]],[x,top[1]],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
-        line(d.id+'-ext-top','dim-ext',[x,top[1]],top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
-        line(d.id+'-ext-bottom','dim-ext',[x,foot[1]],foot,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        if(!d.direct){
+          const x=heightDimX(solid,X);
+          line(d.id+'-line','dim-line',[x,foot[1]],[x,top[1]],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+          line(d.id+'-ext-top','dim-ext',[x,top[1]],top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+          line(d.id+'-ext-bottom','dim-ext',[x,foot[1]],foot,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        }
+        if(d.footMark)footRightAngle(d,d.foot,solid.vertices[d.footMark.index].p,ctx);
       }
       else if(d.side){
         // outside the solid on its LEFT or RIGHT: a vertical dimension line from the base circle's level to the top circle's, with an extension line level with each circle
@@ -1786,6 +1831,7 @@ function spec3d(plan,model,ctx){
         const bottom=[0,0,liftOf(solid)],top=[0,0,liftOf(solid)+solid.height];
         const sh=mulv(EX,solid.offset??0);
         if(!d.onAxis)line(d.id+'-line','dim-line',pt(project(add(bottom,sh))),pt(project(add(top,sh))),{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'hidden'});
+        if(d.footMark)footRightAngle(d,add(bottom,sh),add(add(bottom,sh),mulv(EX,solid.r0)),ctx);
       }
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
@@ -1870,7 +1916,7 @@ function spec3d(plan,model,ctx){
       labels.push({...label,segment:[pt(c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
     }else if(d.type==='HEIGHT'){
       const solid=model.solids.find(s=>s.id===d.solid);
-      if(solid.category==='POLY'){const top=pt(project(d.top)),foot=pt(project(d.foot)),x=heightDimX(solid,X);labels.push({...label,segment:[[x,foot[1]],[x,top[1]]],segmentOf:'height'});}
+      if(solid.category==='POLY'){const top=pt(project(d.top)),foot=pt(project(d.foot)),x=heightDimX(solid,X);labels.push({...label,segment:d.direct?[foot,top]:[[x,foot[1]],[x,top[1]]],segmentOf:'height'});}
       else if(d.side){const g=sideHeightDim(d,solid,ctx);labels.push({...label,segment:[[g.x,g.bottom[1]],[g.x,g.top[1]]],segmentOf:'height',preferredSide:d.side==='LEFT'?-1:1});}
       else{const sh=mulv(EX,solid.offset??0);labels.push({...label,segment:[pt(project(add([0,0,liftOf(solid)],sh))),pt(project(add([0,0,liftOf(solid)+solid.height],sh)))],segmentOf:'height'});}
     }else if(d.type==='LEVEL'){
@@ -2433,7 +2479,7 @@ function renderPrims(spec,model){
     }else if(p.t==='dot'){
       body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
     }else if(p.t==='polyline'){
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid&&p.role==='cut-right-angle'?`data-solid="${p.solid}"`:'',p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.role==='net-right-angle'?`data-face="${p.face}" data-corner="${p.corner}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid&&(p.role==='cut-right-angle'||p.role==='foot-right-angle')?`data-solid="${p.solid}"`:'',p.role==='foot-right-angle'?`data-dim="${p.dim}"`:'',p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.role==='net-right-angle'?`data-face="${p.face}" data-corner="${p.corner}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="55"><polyline ${attrs} stroke="#111" stroke-width="1.2" fill="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
     }
   }

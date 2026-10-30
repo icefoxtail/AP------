@@ -2116,3 +2116,92 @@ test('E33: the three-quarter sphere with the quarter taken out of its upper fron
   await sphereSvg(sphereCut({kind:'THREE_QUARTERS',axis:'X',rightAngle:true},{unit:'cm'},{radius:3}));
   await sphereSvg(sphereCut({kind:'QUARTER',axis:'Y',rightAngle:true},{unit:'cm'},{radius:3}));
 });
+
+// --- E33: the height of a pyramid or a cone written directly on its dashed line, and the right angle at the foot of that line (dims[].direct, dims[].foot) ----------------------------------------
+const pyramidWith=(dim,solid={})=>figure({unit:'cm',solids:[{id:'s1',kind:'PYRAMID',base:{kind:'RECT',width:3,depth:4},height:5,names:'ABCDV',...solid}],dims:[{edge:'AB'},dim],solidCaption:{text:'사각뿔'}});
+test('E33: a direct height has no dimension frame; foot marks the foot of the height (the base vertex farthest right unless one is named)',()=>{
+  const m=solveSolidFigure(pyramidWith({height:true,label:'h',direct:true,foot:true}));
+  const h=m.dims[1];
+  assert.equal(h.direct,true);
+  assert.deepEqual(h.footMark,{to:'C',index:2});// of A(0,0) B(3,0) C(3,4) D(0,4) the screen x = x cos28 + y sin28 is largest at C
+  assert.deepEqual(h.top.slice(0,2),h.foot.slice(0,2));assert.equal(h.foot[2],0);assert.equal(h.top[2],5);// the foot is straight below the apex
+  assert.deepEqual(solveSolidFigure(pyramidWith({height:true,label:'h',direct:true,foot:'B'})).dims[1].footMark,{to:'B',index:1});
+  assert.deepEqual(solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'PYRAMID',base:{kind:'RECT',width:3,depth:4},height:5,names:'.....'}],dims:[{height:true,label:'h',direct:true,foot:'#b3'}]})).dims[0].footMark,{to:'s1.b3',index:3});// an unnamed pyramid: a reference
+  // a frustum's height runs from the centre of its top face
+  const f=solveSolidFigure(figure({unit:'cm',solids:[{kind:'FRUSTUM',base:{kind:'RECT',width:4,depth:4},height:3,topScale:0.5,names:'ABCDEFGH'}],dims:[{height:true,direct:true,foot:true}]})).dims[0];
+  assert.equal(f.top[2],3);assert.equal(f.foot[2],0);
+  // a cone or a cylinder: the dashed line goes to the rim on the screen's right
+  const cone=solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5}],dims:[{height:true,foot:true}]})).dims[0];
+  assert.deepEqual(cone.footMark,{to:'RIM'});
+  assert.equal(solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:5}],dims:[{height:true,direct:true,foot:true}]})).dims[0].footMark.to,'RIM');
+  // nothing new for a plan that says neither
+  const plain=solveSolidFigure(pyramidWith({height:true,label:'h'})).dims[1];
+  assert.equal(plain.direct,undefined);assert.equal(plain.footMark,undefined);
+  const refused=(dim,expected,solid)=>assert.throws(()=>solveSolidFigure(pyramidWith(dim,solid)),code(expected),expected);
+  refused({height:true,foot:true},'SOLID_DIM_FOOT_INVALID');// the right angle needs the direct line: the framed height has an axis too, but say so
+  refused({height:true,direct:true,foot:'V'},'SOLID_DIM_FOOT_INVALID');// the apex is no base vertex
+  refused({height:true,direct:true,foot:'Z'},'SOLID_DIM_FOOT_INVALID');// no such name
+  refused({height:true,direct:true,foot:5},'SOLID_DIM_DIRECT_INVALID');
+  refused({height:true,direct:'yes'},'SOLID_DIM_DIRECT_INVALID');
+  refused({edge:'BC',direct:true},'SOLID_DIM_DIRECT_INVALID');// only a height is direct
+  refused({edge:'BC',foot:true},'SOLID_DIM_DIRECT_INVALID');
+  refused({height:true,direct:true,side:'LEFT'},'SOLID_DIM_SIDE_INVALID');// the side is for the height of a rotation solid
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:3,names:'........'}],dims:[{height:true,direct:true}]})),code('SOLID_DIM'));// a prism's height is an edge
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5,orientation:'APEX_DOWN'}],dims:[{height:true,foot:true}]})),code('SOLID_DIM_FOOT_INVALID'));// no base circle
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:3,height:5}],dims:[{height:true,foot:'A'}]})),code('SOLID_DIM_FOOT_INVALID'));// a cone has no base vertex to name
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'HEMISPHERE',radius:3}],dims:[{solid:'s1',height:true,foot:true}]})),code('SOLID_DIM_FOOT_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:5,axis:true},{kind:'CONE',radius:3,height:2,on:'s1'}],dims:[{solid:'s2',height:true,foot:true}]})),code('SOLID_DIM_FOOT_INVALID'));// a member of a stack
+});
+test('E33: a pyramid with its height written directly and the right angle at its foot is composed, read back and each tamper is caught',async()=>{
+  const plan=pyramidWith({height:true,label:'h',direct:true,foot:true});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/id="dim-2-axis"/);assert.match(svg,/id="dim-2-foot-ray"/);assert.match(svg,/id="dim-2-foot-right-angle"/);
+  assert.equal((svg.match(/id="dim-2-(line|ext-top|ext-bottom)"/g)??[]).length,0);// no frame
+  // the label stands beside the dashed line
+  const axis=svg.match(/<line id="dim-2-axis"[^>]*x1="([\d.]+)" y1="([\d.]+)" x2="([\d.]+)" y2="([\d.]+)"/);
+  const box=svg.match(/<g id="dim-2-label"[^>]*transform="translate\(([\d.]+) ([\d.]+)\)"/);
+  assert.ok(Math.abs(Number(box[1])-Number(axis[1]))<60,'the label is beside the axis');
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const el=id=>svg.match(new RegExp(`<(line|polyline) id="${id}"[^>]*/>`))[0];
+  const ray=el('dim-2-foot-ray'),mark=el('dim-2-foot-right-angle'),ax=el('dim-2-axis');
+  await failing(svg.replace(ray,ray.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)-14}"`)),'SOLID_FOOT_RAY_MISMATCH:dim-2');// the line stops short of the vertex
+  await failing(svg.replace(ray,ray.replace(/ stroke-dasharray="[^"]*"/,'').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH:dim-2-foot-ray');// inside the solid: dashed
+  await failing(svg.replace(mark,''),'SOLID_FOOT_MARK_SET_MISMATCH:dim-2');
+  const move=(index,dx,dy)=>mark.replace(/points="([^"]+)"/,(all,pts)=>{const p=pts.split(' ');const [x,y]=p[index].split(',');p[index]=`${Number(x)+dx},${Number(y)+dy}`;return `points="${p.join(' ')}"`;});
+  await failing(svg.replace(mark,move(1,6,0)),'SOLID_FOOT_MARK_CORNER:dim-2');// the corner is not the fourth corner of the square
+  await failing(svg.replace(mark,move(0,5,5)),'SOLID_FOOT_MARK_OFF_LINE:dim-2');
+  await failing(svg.replace(ax,ax.replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)-9}"`)),'SOLID_HEIGHT_AXIS_MISMATCH:dim-2');
+  await failing(svg.replace(ax,ax+ax.replace('dim-2-axis','dim-2-line').replace('data-role="height-axis"','data-role="dim-line"')),'SOLID_DIM_LINE_UNEXPECTED:dim-2');// a dimension line the plan did not ask for
+  // the same figure without foot has no ray and no mark: one that is drawn anyway is refused
+  const noFoot=pyramidWith({height:true,label:'h',direct:true});
+  const r=await audit(noFoot,svg);assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_FOOT_MARK_UNEXPECTED:dim-2')),JSON.stringify(r.errors));
+});
+test('E33: the framed height of a pyramid (without direct) is read back as well: dimension line 26 px left of the solid and an extension line at each end',async()=>{
+  const plan=pyramidWith({height:true,label:'h'});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const line=svg.match(/<line id="dim-2-line"[^>]*\/>/)[0],ext=svg.match(/<line id="dim-2-ext-top"[^>]*\/>/)[0];
+  await failing(svg.replace(line,line.replace(/ x1="([\d.]+)"/,(all,v)=>` x1="${Number(v)+8}"`).replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)+8}"`)),'SOLID_DIM_LINE_MISMATCH:dim-2:HEIGHT');
+  await failing(svg.replace(ext,''),'SOLID_DIM_EXTENSION_MISMATCH:dim-2');
+  await failing(svg.replace(ext,ext.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)+6}"`)),'SOLID_DIM_EXTENSION_MISMATCH:dim-2');
+});
+test('E33: a cone and a frustum with the right angle at the foot of the height are composed and read back',async()=>{
+  for(const [solids,dims] of [
+    [[{kind:'CONE',radius:5,height:6}],[{height:true,label:'h',foot:true}]],
+    [[{kind:'CYLINDER',radius:3,height:6}],[{height:true,label:'h',foot:true}]],
+    [[{kind:'FRUSTUM',base:{kind:'RECT',width:6,depth:4},height:4,topScale:0.5,names:'ABCDEFGH'}],[{height:true,label:'h',direct:true,foot:'C'}]],
+    [[{kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:5}],[{height:true,label:'h',foot:true}]]
+  ]){
+    const plan=figure({unit:'cm',solids,dims,solidCaption:{text:'높이의 발'}});
+    const composed=await panel(plan);
+    assert.equal(composed.status,'COMPOSED',JSON.stringify([solids.map(s=>s.kind),composed.detail]));
+    assert.equal(composed.staticAudit.status,'PASS',JSON.stringify([solids.map(s=>s.kind),composed.staticAudit.errors]));
+    assert.match(composed.svg,/id="dim-1-foot-right-angle"/);
+  }
+});

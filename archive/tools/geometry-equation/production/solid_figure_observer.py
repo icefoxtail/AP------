@@ -983,6 +983,7 @@ def audit_solids(plan, ctx):
         if el.get('data-role') == 'dim-line':
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
     check_dim_lines(plan, ctx)
+    check_height_feet_and_poly_lines(plan, ctx)
     check_axes_and_text_labels(plan, ctx)
     check_slant_marks(plan, ctx)
 
@@ -1664,6 +1665,110 @@ def axis_carries(ctx, solid):
     """a member of a stack that has an axis: its height is written along that axis, with no line of its own"""
     st = (ctx.get('stack_of') or {}).get(solid['id'])
     return st is not None and any(m.get('axis') is not None for m in st['members'])
+
+
+def height_dim_solid(plan, d, solids):
+    """the solid a height dimension belongs to: the one named, else the first rotation solid, pyramid or frustum"""
+    if d.get('solid') is not None: return next((x for x in solids if x['id'] == d['solid']), None)
+    return next((x for x in solids if x['cat'] == 'REV' or x['kind'] in ('PYRAMID', 'FRUSTUM')), None)
+
+
+def poly_height_points(solid):
+    """(top, foot) of a pyramid's or frustum's height: the apex (the centre of the top ring) and the point of the base plane straight below it"""
+    verts = solid['verts']
+    if solid['kind'] == 'PYRAMID': top = verts[-1][1]
+    else:
+        ring = [v[1] for v in verts[len(verts) // 2:]]
+        top = tuple(sum(p[i] for p in ring) / len(ring) for i in range(3))
+    return top, (top[0], top[1], 0.0)
+
+
+def check_height_feet_and_poly_lines(plan, ctx):
+    """The height dimensions of a pyramid or frustum, and the right angle at the foot of a height (dims[].foot): derived from the plan's solids alone.
+    A pyramid's height is the dashed line from its apex to the foot below it; with direct:true nothing else is drawn around it (no dimension line, no extension lines), otherwise a
+    dimension line stands 26 px left of the solid with an extension line to each end. foot:true | "<base vertex>": a dashed line in the base plane from the foot to that vertex (true: the
+    base vertex that stands farthest right on the screen; a cone or cylinder: the rim on the screen's right) and a small square between it and the height line."""
+    root, errors, frames, scale = ctx['root'], ctx['errors'], ctx.get('px') or {}, ctx.get('scale')
+    solids = ctx.get('solids') or []
+    if scale is None or not plan.get('dims'): return
+    norm = ctx.get('norm')
+    width = float(root.get('width') or 0)
+    for k, d in enumerate(plan['dims']):
+        if d.get('height') is None: continue
+        dim = 'dim-%d' % (k + 1)
+        solid = height_dim_solid(plan, d, solids)
+        if solid is None or solid['id'] not in frames or solid.get('cut'): continue
+        Tx, Ty = frames[solid['id']]
+        px = lambda p: (Tx + scale * project(p)[0], Ty - scale * project(p)[1])
+        drawn_lines = [e for e in root.iter(NS + 'line') if e.get('data-dim') == dim]
+        roles = {}
+        for e in drawn_lines: roles.setdefault(e.get('data-role'), []).append(e)
+        seg = lambda e: ((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')))
+        F = T = None
+        if solid['cat'] == 'POLY' and solid['kind'] in ('PYRAMID', 'FRUSTUM') and not solid.get('cut'):
+            top, foot = poly_height_points(solid)
+            a, b = px(foot), px(top)
+            axes = roles.get('height-axis', [])
+            if len(axes) != 1 or not _same_segment(*seg(axes[0]), a, b): errors.append('SOLID_HEIGHT_AXIS_MISMATCH:' + dim)
+            elif not _dashed(axes[0]) or axes[0].get('data-vis') != 'hidden': errors.append('SOLID_EDGE_VISIBILITY_MISMATCH:' + dim + '-axis')
+            frame_lines = roles.get('dim-line', []) + roles.get('dim-ext', [])
+            if d.get('direct') is True:
+                if frame_lines: errors.append('SOLID_DIM_LINE_UNEXPECTED:' + dim)
+            else:
+                x = max(SAFE_PX + 2, min(px(v[1])[0] for v in solid['verts']) - 26)
+                dl = roles.get('dim-line', [])
+                if len(dl) != 1 or not _same_segment(*seg(dl[0]), (x, a[1]), (x, b[1])): errors.append('SOLID_DIM_LINE_MISMATCH:%s:HEIGHT' % dim)
+                exts = roles.get('dim-ext', [])
+                for end in (a, b):
+                    if not any(_same_segment(*seg(e), (x, end[1]), end) for e in exts): errors.append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+                if len(exts) != 2: errors.append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+            F = foot
+            if d.get('foot') is not None:
+                n = len(solid['verts']) - 1 if solid['kind'] == 'PYRAMID' else len(solid['verts']) // 2
+                if d['foot'] is True:
+                    index = 0
+                    for i in range(1, n):
+                        if project(solid['verts'][i][1])[0] > project(solid['verts'][index][1])[0] + 1e-9: index = i
+                else:
+                    key = norm(d['foot']) if norm else d['foot']
+                    index = next((i for i in range(len(solid['verts'])) if key in vertex_keys(solid, i)), -1)
+                    if not 0 <= index < n:
+                        errors.append('SOLID_DIM_FOOT_PLAN_UNRESOLVED:' + dim)
+                        continue
+                T = solid['verts'][index][1]
+        elif solid['cat'] == 'REV' and d.get('foot') is not None:
+            F = (0.0, 0.0, solid['lift'])
+            T = vadd(F, vmul(SCREEN_X, solid['r0']))
+        if d.get('foot') is None:
+            if roles.get('foot-ray') or any(e.get('data-role') == 'foot-right-angle' and e.get('data-dim') == dim for e in root.iter(NS + 'polyline')): errors.append('SOLID_FOOT_MARK_UNEXPECTED:' + dim)
+            continue
+        if F is None or T is None:
+            errors.append('SOLID_DIM_FOOT_PLAN_UNRESOLVED:' + dim)
+            continue
+        # the dashed line in the base plane
+        rays = roles.get('foot-ray', [])
+        if len(rays) != 1 or not _same_segment(*seg(rays[0]), px(F), px(T)): errors.append('SOLID_FOOT_RAY_MISMATCH:' + dim)
+        elif not _dashed(rays[0]) or rays[0].get('data-vis') != 'hidden': errors.append('SOLID_EDGE_VISIBILITY_MISMATCH:' + dim + '-foot-ray')
+        ctx['segments'].extend(seg(e) for e in rays)
+        # the square: first and last point on the two lines, the middle one the parallelogram's fourth corner; its side is at most a fifth of the dashed line and 20 px
+        marks = [e for e in root.iter(NS + 'polyline') if e.get('data-role') == 'foot-right-angle' and e.get('data-dim') == dim]
+        if len(marks) != 1:
+            errors.append('SOLID_FOOT_MARK_SET_MISMATCH:' + dim)
+            continue
+        pts = _points(marks[0].get('points'))
+        if len(pts) != 3:
+            errors.append('SOLID_FOOT_MARK_SHAPE:' + dim)
+            continue
+        c0, up_px, to_px = px(F), px(vadd(F, (0.0, 0.0, 1.0))), px(vadd(F, vunit(vsub(T, F))))
+        d1, d2 = (up_px[0] - c0[0], up_px[1] - c0[1]), (to_px[0] - c0[0], to_px[1] - c0[1])   # a unit of each line on the page
+        a_, b_ = (pts[0][0] - c0[0], pts[0][1] - c0[1]), (pts[2][0] - c0[0], pts[2][1] - c0[1])
+        l1, l2 = math.hypot(*d1), math.hypot(*d2)
+        ka, kb = (a_[0] * d1[0] + a_[1] * d1[1]) / (l1 * l1), (b_[0] * d2[0] + b_[1] * d2[1]) / (l2 * l2)
+        if abs(a_[0] * d1[1] - a_[1] * d1[0]) / l1 > POS_TOL or abs(b_[0] * d2[1] - b_[1] * d2[0]) / l2 > POS_TOL: errors.append('SOLID_FOOT_MARK_OFF_LINE:' + dim)
+        if abs(ka - kb) > 1e-3 or not (3.0 / min(l1, l2) - 1e-6 <= ka <= 0.2 * vlen(vsub(T, F)) * 1.0001 and ka * max(l1, l2) <= 20.0 + POS_TOL): errors.append('SOLID_FOOT_MARK_SIZE:' + dim)
+        corner = (c0[0] + a_[0] + b_[0], c0[1] + a_[1] + b_[1])
+        if math.hypot(pts[1][0] - corner[0], pts[1][1] - corner[1]) > POS_TOL: errors.append('SOLID_FOOT_MARK_CORNER:' + dim)
+        for m in range(2): ctx['segments'].append((pts[m], pts[m + 1]))
 
 
 def check_dim_lines(plan, ctx):
@@ -2613,6 +2718,13 @@ def expected_dim_values(plan, ctx):
         sid_h = dim_solid.get(ident)
         if d.get('height') is not None and ident in out and sid_h in frames and scale_px:
             owner = next((x for x in solids if x['id'] == sid_h), None)
+            if owner is not None and owner['cat'] == 'POLY' and d.get('direct') is True and owner['kind'] in ('PYRAMID', 'FRUSTUM'):
+                # a direct height: the label stands beside the dashed line from the apex down to the foot
+                top, foot = poly_height_points(owner)
+                Tx, Ty = frames[sid_h]
+                p = lambda q: (Tx + scale_px * project(q)[0], Ty - scale_px * project(q)[1])
+                v, _, sym = out[ident]
+                out[ident] = (v, (p(foot), p(top)), sym)
             if owner is not None and owner['cat'] != 'POLY' and axis_carries(ctx, owner):
                 Tx, Ty = frames[sid_h]
                 v, _, sym = out[ident]
