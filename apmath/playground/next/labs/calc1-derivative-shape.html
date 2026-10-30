@@ -321,7 +321,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const sp = hi - lo;
     // 휴대폰에서는 아래 오른쪽의 도구 막대가 창 아래쪽을 가리므로, 도함수 창 아래에 여유를 더 둡니다.
     const narrow = window.matchMedia && window.matchMedia('(max-width: 859px)').matches;
-    return [lo - (narrow ? 0.7 : 0.22) * sp - 0.4, hi + 0.22 * sp + 0.4];
+    // 위쪽에도 여유를 더 둡니다: 창 제목(도함수 y = f′(x))과 α 라벨이 같은 높이에 겹치지 않도록(γ = −1 근처에서 도함수가 x축에 닿아 있을 때).
+    return [lo - (narrow ? 0.7 : 0.22) * sp - 0.4, hi + (narrow ? 0.45 : 0.22) * sp + 0.4];
   }
   const panesQuartic = (s) => {
     const fb = s.chart ? BAND : 0, fm = s.chart ? 0.5 : 0.55;
@@ -528,15 +529,21 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     const eff = effDeltaOf(m, s);
     const rootsShown = m === 3 && s.step >= 2; // 장면 3 Step 2 에서는 변곡점 자리에 실근 x₂ 가 겹치므로 라벨을 실근 쪽에 맡김
+    const rts = rootsShown ? solveCubicRoots(1, 0, -3 * s.delta, s.C) : [];
+    // 극값이 x축 가까이 있고 그 근처에 실근 라벨(x축 위·아래 약 20px)이 있으면, 극값 라벨을 실근 라벨보다 바깥 줄로 밀어 겹치지 않게 합니다(극소 = 0 이면 실근 x₂ 가 극소점과 같은 자리).
+    const extDy = (x, y, dy) => {
+      if (!rts.some((u) => Math.abs(b.toS(u + 1.0, 0).x - b.toS(x, 0).x) < 150)) return dy;
+      const p = b.toS(x, y), ay = b.toS(0, 0).y;
+      return dy > 0 ? Math.max(dy, ay + 44 - p.y) : Math.min(dy, ay - 42 - p.y);
+    };
     mark(b, 'main', 1, f(1), { color: 'violet', r: 5.5, label: rootsShown ? '' : `변곡점(1, ${fmt(f(1), 1)})`, dx: 12, dy: -12 });
     if (eff > 0.005) {
       const h = Math.sqrt(eff);
-      mark(b, 'main', 1 - h, f(1 - h), { color: 'rose', r: 6.5, label: `극대(${fmt(1 - h)}, ${fmt(f(1 - h))})`, dx: 0, dy: -18, align: 'center', ref: 'root' });
-      mark(b, 'main', 1 + h, f(1 + h), { color: 'green', r: 6.5, label: `극소(${fmt(1 + h)}, ${fmt(f(1 + h))})`, dx: 0, dy: 20, align: 'center', ref: 'root' });
+      mark(b, 'main', 1 - h, f(1 - h), { color: 'rose', r: 6.5, label: `극대(${fmt(1 - h)}, ${fmt(f(1 - h))})`, dx: 0, dy: extDy(1 - h, f(1 - h), -18), align: 'center', ref: 'root' });
+      mark(b, 'main', 1 + h, f(1 + h), { color: 'green', r: 6.5, label: `극소(${fmt(1 + h)}, ${fmt(f(1 + h))})`, dx: 0, dy: extDy(1 + h, f(1 + h), 20), align: 'center', ref: 'root' });
     }
     // 장면 3 Step 2 : 방정식 f(x) = 0 의 실근(x절편)
     if (rootsShown) {
-      const rts = solveCubicRoots(1, 0, -3 * s.delta, s.C);
       rts.forEach((u, idx) => {
         const rx = u + 1.0;
         const side = rts.length === 3 ? [-1, 0, 1][idx] : 0; // 왼쪽·가운데·오른쪽 근의 라벨을 서로 다른 쪽에 둡니다
