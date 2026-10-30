@@ -47,9 +47,9 @@ const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','
   textLabels:['id','at','text','labelKind','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','unit','value','factRole'],
-  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight'],
+  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over'],
   equalLengths:['id','count','segments','pathMark'],parallels:['id','count','segments'],
-  expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit','labelAt'],
+  expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit','labelAt','ownership'],
   arcs:['id','circle','center','from','to','side','label','labelKind','unit','labelPlacement','highlight','factRole'],
   traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','unit','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
@@ -171,6 +171,42 @@ function equalPathEntry(entry,rowId,kind,plan,segEnds){
   return {rep:entry.path[0],ids:[...entry.path]};
 }
 
+/** angles[].over (E32): this angle's wedge encloses the wedges of the listed angles at the same vertex (a whole angle over its halves). Returns {id:{ring}} for the rows that have it:
+ *  the ring is one outside every enclosed angle's ring (the outer arc), or the author's own ring when it is outside them too. */
+export function resolveAngleOver(rows,at){
+  const byId=new Map(rows.filter(row=>row&&typeof row==='object'&&typeof row.id==='string').map(row=>[row.id,row]));
+  const wedgeOf=row=>{
+    const [a,v,c]=row.refs.map(at),s=Math.atan2(a[1]-v[1],a[0]-v[0]),t=Math.atan2(c[1]-v[1],c[0]-v[0]),sweep=((t-s)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);
+    return sweep>Math.PI?{start:t,sweep:2*Math.PI-sweep}:{start:s,sweep};
+  };
+  const within=(ray,wedge)=>{const off=((ray-wedge.start)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);return off<=wedge.sweep+1e-6||off>=2*Math.PI-1e-6;};
+  const out={},busy=new Set();
+  const ringOf=row=>{
+    const base=row.ring??1;
+    if(row.over===undefined)return base;
+    if(out[row.id])return out[row.id].ring;
+    if(busy.has(row.id))bad('ANGLE_OVER_INVALID:'+row.id);
+    busy.add(row.id);
+    if(!Array.isArray(row.over)||!row.over.length||new Set(row.over).size!==row.over.length||row.over.some(id=>typeof id!=='string'||id===row.id||!byId.has(id)))bad('ANGLE_OVER_INVALID:'+row.id);
+    if(!Array.isArray(row.refs)||row.refs.length!==3||row.straight===true||(row.side??'INNER')!=='INNER')bad('ANGLE_OVER_INVALID:'+row.id);
+    const mine=wedgeOf(row);let needed=1;
+    for(const id of row.over){
+      const child=byId.get(id);
+      if(!Array.isArray(child.refs)||child.refs.length!==3||child.refs[1]!==row.refs[1]||child.straight===true||(child.side??'INNER')!=='INNER')bad('ANGLE_OVER_NOT_ENCLOSED:'+row.id+':'+id);
+      const [a,v,c]=child.refs.map(at),inner=wedgeOf(child);
+      if(!(within(Math.atan2(a[1]-v[1],a[0]-v[0]),mine)&&within(Math.atan2(c[1]-v[1],c[0]-v[0]),mine))||!(inner.sweep<mine.sweep-1e-6))bad('ANGLE_OVER_NOT_ENCLOSED:'+row.id+':'+id);
+      needed=Math.max(needed,ringOf(child)+1);
+    }
+    busy.delete(row.id);
+    const ring=row.ring===undefined?needed:row.ring;
+    if(!Number.isInteger(ring)||ring<needed||ring>3)bad('ANGLE_OVER_RING_INVALID:'+row.id);
+    out[row.id]={ring};
+    return ring;
+  };
+  for(const row of rows)if(row&&typeof row==='object'&&row.over!==undefined)ringOf(row);
+  return out;
+}
+
 // Returns {objects, factRolesByLabel}; throws an Error whose message is an UPPER_SNAKE code (optionally ':detail').
 export function planeMarkSpec(plan,model,points,segmentIds){
   const marks=plan.planeMarks;
@@ -203,6 +239,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
 
   // --- angle arcs
   const groups=new Map(),angleInfo=new Map();
+  const overInfo=resolveAngleOver(list(marks.angles,'angles'),at);   // angles[].over (E32): whole angles over their halves
   for(const row of list(marks.angles,'angles')){
     if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:angles');
     keysOk(row,KEYS.angles,'angles');claim(row.id,'angles');
@@ -230,11 +267,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(declared!==null&&Math.abs(declared-measured)>ANGLE_TOLERANCE_DEGREES)bad('ANGLE_MARK_FACT_MISMATCH:'+row.id+':declared='+declared+':drawn='+measured.toFixed(3));
     const arcs=row.arcs??1;
     if(!Number.isInteger(arcs)||arcs<1||arcs>3)bad('ANGLE_ARC_COUNT_INVALID:'+row.id);
-    const ring=row.ring??1;
+    const overRow=overInfo[row.id];
+    const ring=row.ring??overRow?.ring??1;
     if(!Number.isInteger(ring)||ring<1||ring>3)bad('ANGLE_RING_INVALID:'+row.id);
-    // Textbook look: a small filled sector by default (SECTOR); ARC keeps the stroke-only arcs.
-    const style=row.style??'SECTOR';
+    // Textbook look: a small filled sector by default (SECTOR); ARC keeps the stroke-only arcs (a whole angle over its halves draws arcs only).
+    const style=row.style??(overRow?'ARC':'SECTOR');
     if(!['SECTOR','ARC'].includes(style))bad('ANGLE_MARK_STYLE_INVALID:'+row.id);
+    if(overRow&&style!=='ARC')bad('ANGLE_OVER_STYLE_INVALID:'+row.id);
     const kind=row.labelKind??'DEGREE';
     // DEGREE writes the value with a degree sign, NAME writes the angle by its letters (ABC -> the angle ABC) and MATH writes a symbol such as theta.
     if(!['DEGREE','NAME','MATH'].includes(kind))bad('MARK_FIELD_INVALID:angles.labelKind:'+row.id);
@@ -246,6 +285,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     // labelPlacement LEADER (E12b): the label stands outside its angle on a leader from its own arc even where the angle has room for it; AUTO (default) keeps the old search.
     if(row.labelPlacement!==undefined&&!ANGLE_LABEL_PLACEMENTS.includes(row.labelPlacement))bad('ANGLE_LABEL_PLACEMENT_INVALID:'+row.id);
     if(row.labelPlacement==='LEADER'&&text===null)bad('ANGLE_LABEL_PLACEMENT_NEEDS_LABEL:'+row.id);
+    // a whole angle over its halves writes its label outside its outer ring (on a leader) unless the author says otherwise
+    const placement=row.labelPlacement??(overRow&&text!==null?'LEADER':undefined);
     if(row.equalGroup!==undefined){
       if(!Number.isInteger(row.equalGroup)||row.equalGroup<1)bad('MARK_FIELD_INVALID:angles.equalGroup:'+row.id);
       const g=groups.get(row.equalGroup)??{measured,arcs,style,ids:[]};
@@ -254,7 +295,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(g.style!==style)bad('ANGLE_EQUAL_GROUP_STYLE_MISMATCH:'+row.id);
       g.ids.push(row.id);groups.set(row.equalGroup,g);
     }
-    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(straight?{straight:true,straightSide:side}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(row.labelPlacement==='LEADER'?{labelPlacement:'LEADER'}:{})};
+    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(straight?{straight:true,straightSide:side}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(placement==='LEADER'?{labelPlacement:'LEADER'}:{}),...(overRow?{over:[...row.over]}:{})};
     if(text!==null){object.labelText=text;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
@@ -307,9 +348,11 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const lerp=t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];
     const mid=row.labelAt==='START'?lerp(0):row.labelAt==='END'?lerp(1):[(p[0]+q[0])/2,(p[1]+q[1])/2];
     const others=(row.labelAt==='START'?[0.06,0.15,0.3]:row.labelAt==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
+    // ownership NEAREST (E32): the label stands where its own segment is the nearest one by a small margin (a side of a small triangle among its other sides); STRICT (default) keeps the old margin
+    if(row.ownership!==undefined&&!['STRICT','NEAREST'].includes(row.ownership))bad('SEGMENT_LABEL_OWNERSHIP_INVALID:'+row.id);
     objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:mid,lineOwned:true,
       alternateAt:others,gaps:[8,6,10,20,32,48],priority:1,
-      ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{})});
+      ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...(row.ownership==='NEAREST'?{ownership:'NEAREST'}:{})});
     factRolesByLabel[row.id]=role(row);
   }
 

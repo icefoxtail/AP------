@@ -158,6 +158,7 @@ def brace_expected(length,dist):
     return half+[(length-u,v) for u,v in reversed(half)][1:]
 
 EQUAL_PATH_CLEAR_PX=8.0   # the mark of a whole path stands at least this far (svg px) from every inner joint
+NEAREST_OWNER_MARGIN_PX=3.0   # ownership NEAREST: a segment label's own segment is nearer than every other one by at least this (svg px)
 EQUAL_PATH_MIDDLE_TOLERANCE_PX=0.6   # the centre of the marks of a whole path stands at its middle, this far at most (svg px)
 EQUAL_BRACKET_OFFSET_PX=12.0        # the bracket of a path: this far beside it, 8 px end caps (this observer's own copy of the rule)
 EQUAL_BRACKET_CAP_HALF_PX=4.0
@@ -309,7 +310,7 @@ def audit(p):
         oid=row['id'];nodes=by_mark.get(('angle',oid),[])
         arcs=sorted((n for n in nodes if tag(n)=='polyline'),key=lambda n:int(n.get('data-mark-index','0')))
         sectors=[n for n in nodes if tag(n)=='polygon']
-        style=row.get('style','SECTOR')
+        style=row.get('style','ARC' if row.get('over') else 'SECTOR')
         if style=='SECTOR' and len(sectors)!=1:errors.append('ANGLE_SECTOR_MISSING:'+oid)
         elif style!='SECTOR' and sectors:errors.append('ANGLE_SECTOR_UNEXPECTED:'+oid)
         a,v,c=[peer_point(r) for r in row['refs']];inner=angle_between(a,v,c)
@@ -406,6 +407,20 @@ def audit(p):
                 elif inside and not has_leader:
                     vx,vy=forward(v)   # the vertex in svg px; the distance to the label box's nearest point
                     if math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:errors.append('ANGLE_LABEL_TOO_FAR:'+oid)
+    # angles[].over (E32): the whole angle encloses each listed angle at the same vertex (rays inside its wedge, a smaller angle) and its outermost arc lies outside theirs
+    over_of={row['id']:set(row.get('over') or ()) for row in marks.get('angles',[]) if isinstance(row,dict) and row.get('over')}
+    for row in marks.get('angles',[]):
+        if not row.get('over') or row['id'] not in angle_geometry:continue
+        oid=row['id'];refs=row['refs'];va=peer_point(refs[1]);mine_first=direction_degrees(sub(peer_point(refs[0]),va))
+        mine_sweep=((direction_degrees(sub(peer_point(refs[2]),va))-mine_first+180.0)%360.0)-180.0
+        def offset_of(q):return ((direction_degrees(sub(q,va))-mine_first)*(1 if mine_sweep>0 else -1))%360.0
+        for child_id in row['over']:
+            child=next((r for r in marks.get('angles',[]) if r.get('id')==child_id),None)
+            if child is None or child['refs'][1]!=refs[1] or child_id not in angle_geometry:errors.append('ANGLE_OVER_NOT_ENCLOSED:'+oid+':'+str(child_id));continue
+            rays=[offset_of(peer_point(child['refs'][0])),offset_of(peer_point(child['refs'][2]))]
+            tol=ANGLE_TOLERANCE
+            if not all(r<=abs(mine_sweep)+tol or r>=360.0-tol for r in rays) or angle_between(peer_point(child['refs'][0]),va,peer_point(child['refs'][2]))>=angle_between(peer_point(refs[0]),va,peer_point(refs[2]))-1e-6:errors.append('ANGLE_OVER_NOT_ENCLOSED:'+oid+':'+child_id)
+            if angle_geometry[oid][3]*sx<=angle_geometry[child_id][3]*sx+2.0:errors.append('ANGLE_OVER_RING_MISMATCH:'+oid+':'+child_id)
     # a label never stands inside another angle mark's sector (the wedge up to that mark's outermost arc): it would read as that angle's value
     for row in marks.get('angles',[]):
         oid=row['id'];box=label_boxes.get(oid+'-label')
@@ -413,6 +428,7 @@ def audit(p):
         centre=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
         for other,(vo,first_o,sweep_o,radius_o) in angle_geometry.items():
             if other==oid:continue
+            if oid in over_of.get(other,()):continue       # an angle enclosed by that angle (a half under its whole) may stand inside it
             d=sub(centre,vo)
             if norm(d)*sx>radius_o*sx+2.0 or sweep_o==0:continue
             along=((direction_degrees(d)-first_o)*(1 if sweep_o>0 else -1))%360.0
@@ -556,7 +572,7 @@ def audit(p):
         def anchored(q):
             qm=inverse(*q);return point_segment_distance(qm,*own)*sx<=1.0
         if leader_ok(oid,box,anchored):pass
-        elif any(distance_to(sid)+1e-9<mine for sid in segment_lines if sid!=row['ownerSegment']):errors.append('SEGMENT_LABEL_AMBIGUOUS_OWNER:'+oid)
+        elif any(distance_to(sid)+1e-9<mine+(NEAREST_OWNER_MARGIN_PX/sx if row.get('ownership')=='NEAREST' else 0.0) for sid in segment_lines if sid!=row['ownerSegment']):errors.append('SEGMENT_LABEL_AMBIGUOUS_OWNER:'+oid)
         label_content(oid,row.get('labelKind','MATH'),row['text'],row.get('unit'))
         if row.get('labelAt') is not None:
             # labelAt START / END: the label stands nearer the first / second end of its segment than the other end (its projection on the segment, 0 = first end, 1 = second)

@@ -302,12 +302,16 @@ def box_segment_distance(box,a,b,samples=32):
 LINE_LABEL_OWN_MAX=10.0
 LINE_LABEL_OTHER_MARGIN=24.0
 
-def line_label_unambiguous(box,own,others):
+# ownership NEAREST (E32): a label in a crowded corner (the side of a small triangle among its other sides) names its line when that line is the nearest one by this much only
+RELAXED_LINE_LABEL_OWN_MAX=14.0
+RELAXED_LINE_LABEL_MARGIN=4.0
+
+def line_label_unambiguous(box,own,others,own_max=LINE_LABEL_OWN_MAX,margin=LINE_LABEL_OTHER_MARGIN):
     """A label box names its line without a leader only when its own drawn line is the nearest by a clear margin."""
     pairs=lambda o:list(zip(o["geometry"],o["geometry"][1:]))
     own_distance=min(box_segment_distance(box,c,d) for c,d in pairs(own))
-    if own_distance>LINE_LABEL_OWN_MAX:return False
-    return all(min(box_segment_distance(box,c,d) for c,d in pairs(o))>=own_distance+LINE_LABEL_OTHER_MARGIN for o in others)
+    if own_distance>own_max:return False
+    return all(min(box_segment_distance(box,c,d) for c,d in pairs(o))>=own_distance+margin for o in others)
 
 def segment_on_line(owner,c,d,tolerance=0.5):
     """True when the segment c-d lies on the (infinite) line through the drawn segment `owner`: a polygon edge or a segment drawn over the line it
@@ -647,13 +651,14 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         # collinearOwners: a polygon edge or segment drawn over the labelled line is that line, not a competitor, and a leader may start on it.
         collinear_owners=bool(label.get('collinearOwners'))
         other_lines=(competing_lines(line_owner,obstacles) if collinear_owners else [o for o in obstacles if o.get('kind')=='line' and o is not line_owner]) if line_owner is not None else []
+        owner_limits=(RELAXED_LINE_LABEL_OWN_MAX,RELAXED_LINE_LABEL_MARGIN) if label.get('ownership')=='NEAREST' else (LINE_LABEL_OWN_MAX,LINE_LABEL_OTHER_MARGIN)
         # leaderOwned: ids of the marks (angle arcs, highlighted arcs) a label names; beyond the near gaps a visible leader from its anchor ties it to them.
         leader_owned_ids=set(label.get('leaderOwned',()))
         other_sectors=label.get('wedgeSearch',{}).get('others',())
         def acceptable(box,owner_check=True):
             return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
                 and not (other_sectors and box_in_other_sectors(box,other_sectors))
-                and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines))
+                and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines,*owner_limits))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
         def tie_to_owner(end):
@@ -886,7 +891,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 fallback_others=competing_lines(fallback_owner,obstacles) if collinear_owners else [o for o in obstacles if o.get('kind')=='line' and o is not fallback_owner]
                 def acceptable_fallback(box,owner_check=True):
                     return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
-                        and (not owner_check or line_label_unambiguous(box,fallback_owner,fallback_others)))
+                        and (not owner_check or line_label_unambiguous(box,fallback_owner,fallback_others,*owner_limits)))
                 for alternate in label['alternateAt']:
                     for gap in LINE_FALLBACK_GAPS:
                         for direction in DIRECTIONS:

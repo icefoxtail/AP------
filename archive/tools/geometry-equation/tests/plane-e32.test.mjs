@@ -199,3 +199,37 @@ test('E32 equal marks: plan errors for paths and pathMark',async()=>{
   assert.equal(specError(triPlan([{id:'e1',count:1,segments:['sBC','sCD'],pathMark:'TICK'}]),model),'EQUAL_MARK_PATH_MARK_INVALID:e1');
   assert.equal(specError(triPlan([],{planeMarks:{parallels:[{id:'p1',count:1,segments:[{path:['sBE','sED']},'sBC']}]}}),model),'PARALLEL_MARK_PATH_UNSUPPORTED:p1');
 });
+
+// ---- angles over their halves and relaxed ownership (feature 5): the parallelogram of 25 연향중 q14 with the whole angle D = 72 over its two halves of 36
+const para=plane([source('B',0,0),source('C',8,0),node('D','POLAR_POINT',['C','B'],'POINT',{length:int(6),angleDeg:int(108),turn:'CW'}),node('A','TRANSLATE_POINT',['D'],'POINT',{dx:int(-8),dy:int(0)}),
+  node('P','POLAR_POINT',['D','A'],'POINT',{length:int(1),angleDeg:int(36),turn:'CCW'}),node('lDE','LINE_THROUGH',['D','P'],'LINE'),node('lAE','PERPENDICULAR_THROUGH',['A','lDE'],'LINE'),node('E','LINE_INTERSECTION',['lDE','lAE'],'POINT')]);
+const paraSegments=[['sAB','A','B'],['sBC','B','C'],['sCD','C','D'],['sDA','D','A'],['sAE','A','E'],['sED','E','D']].map(([id,a,b])=>({id,refs:[a,b]}));
+const paraAngles=whole=>[{id:'aADE',refs:['A','D','E'],value:36,label:'36',equalGroup:1,arcs:1},{id:'aEDC',refs:['E','D','C'],value:36,label:'36',equalGroup:1,arcs:1},{id:'aD',refs:['A','D','C'],value:72,label:'72',arcs:1,...whole}];
+const paraPlan=(angles,extra={})=>({capability:'construction-spike-v1',caption:'평행사변형 ABCD에서 DE는 ∠D의 이등분선이다.',mathPlan:para,displayPoints:['A','B','C','D','E'],displayLines:[],displayCircles:[],displaySegments:paraSegments,
+  coordinateCanvas:{width:620,height:400},planeMarks:{angles},...extra});
+
+test('E32 angles: a whole angle over its halves draws an outer ring and writes its label outside on a leader; the halves keep their labels inside; the observer reads all of it',async()=>{
+  const model=await modelOf(para),plan=paraPlan(paraAngles({over:['aADE','aEDC']})),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  assert.ok(tagOf(composed.svg,'aD-arc-1')&&!tagOf(composed.svg,'aD-sector'),'the whole angle is drawn with arcs only');
+  assert.ok(leaderTag(composed.svg,'aD-label'),'its label is tied to its outer ring by a leader');
+  const transform=await transformOf(plan,model),run=(svg,marks=plan.planeMarks)=>observe(svg,para,marks,plan.displaySegments,transform);
+  assert.deepEqual((await run(composed.svg)).errors,[]);
+  const wrong={angles:paraAngles({over:['aADE','aEDC']}).map(row=>row.id==='aD'?{...row,over:['aADE']}:row)};
+  assert.deepEqual(codes(await run(composed.svg,wrong)).filter(code=>code.startsWith('ANGLE_OVER')),[],'declaring fewer halves is a different, still true claim');
+  const notEnclosed={angles:paraAngles({over:['aADE','aEDC']}).map(row=>row.id==='aD'?{...row,refs:['A','D','E'],value:36}:row)};
+  assert.ok(codes(await run(composed.svg,notEnclosed)).includes('ANGLE_OVER_NOT_ENCLOSED'));
+});
+
+test('E32 angles: plan errors for over and a segment label with ownership NEAREST',async()=>{
+  const model=await modelOf(para);
+  const err=(whole,rows)=>specError(paraPlan(rows??paraAngles(whole)),model);
+  assert.equal(err({over:[]}),'ANGLE_OVER_INVALID:aD');
+  assert.equal(err({over:['aD']}),'ANGLE_OVER_INVALID:aD');
+  assert.equal(err({over:['nope']}),'ANGLE_OVER_INVALID:aD');
+  assert.equal(err({over:['aADE','aEDC'],style:'SECTOR'}),'ANGLE_OVER_STYLE_INVALID:aD');
+  assert.equal(err({over:['aADE','aEDC'],ring:1}),'ANGLE_OVER_RING_INVALID:aD');
+  assert.match(err({over:['aEDC']},[{id:'aADE',refs:['A','D','E'],value:36,label:'36'},{id:'aEDC',refs:['E','D','C'],value:36,label:'36'},{id:'aD',refs:['A','D','E'],value:36,label:'36',over:['aEDC']}]),/ANGLE_OVER_NOT_ENCLOSED:aD:aEDC/);
+  const label=extra=>paraPlan(paraAngles({}),{planeMarks:{expressionLabels:[{id:'t1',ownerSegment:'sBC',text:'8',unit:'cm',...extra}]}});
+  assert.equal(specError(label({ownership:'LOOSE'}),model),'SEGMENT_LABEL_OWNERSHIP_INVALID:t1');
+});
