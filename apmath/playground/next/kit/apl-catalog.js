@@ -683,6 +683,7 @@ window.APLab.catalog = {
     "외부점 접선 개수(1·2·3)"
    ],
    "legacy": "labs/미적분1/삼차함수 비율관계.html",
+   "next": "next/labs/calc1-cubic.html",
    "glyph": "<path d=\"M8 60 Q24 12 40 38 Q56 64 72 16\"/>"
   },
   {
@@ -704,6 +705,7 @@ window.APLab.catalog = {
     "|f(x)-k| 미분가능성"
    ],
    "legacy": "labs/미적분1/사차함수 비율관계.html",
+   "next": "next/labs/calc1-quartic.html",
    "glyph": "<path d=\"M8 50 Q18 8 28 38 Q40 68 52 30 Q62 8 72 48\"/>"
   },
   {
