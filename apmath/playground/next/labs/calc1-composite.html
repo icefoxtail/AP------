@@ -280,6 +280,8 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
   /* ---------- 3. 공통 부품 ---------- */
+  // 원본 안내문(examData.hint)은 그대로 두고, 화면 위치를 가리키던 말만 새 배치(탐구 탭·조절 막대)에 맞게 바꿔 보여 줍니다.
+  const hintOf = (n) => examData[n].hint.replace('좌측 상단 ', '탐구 탭의 ').replace('우측 슬라이더로', '조절 막대로');
   // 원본 snap의 p1·p2를 이 실험실의 값 이름으로 옮깁니다.
   const SNAP = {
     1: (d) => ({ m: d.p1, absType: 'in' }),
@@ -403,15 +405,20 @@ window.addEventListener('DOMContentLoaded', function () {
     };
     let px = x0;
     let pd = f(x0) - g(x0);
+    let last = pd === 0 ? 0 : pd > 0 ? 1 : -1; // 마지막으로 0이 아니었던 부호 (눈금에 0이 정확히 걸려도 놓치지 않게)
     add(px, pd);
     for (let i = 1; i <= N; i++) {
       const x = x0 + ((x1 - x0) * i) / N;
       const d = f(x) - g(x);
-      if (d * pd < 0) {
-        const xc = px + ((x - px) * Math.abs(pd)) / (Math.abs(pd) + Math.abs(d));
-        add(xc, 0);
-        flush();
-        add(xc, 0);
+      if (d !== 0) {
+        const sg = d > 0 ? 1 : -1;
+        if (last !== 0 && sg !== last) {
+          const xc = pd === 0 ? px : px + ((x - px) * Math.abs(pd)) / (Math.abs(pd) + Math.abs(d));
+          if (pd !== 0) add(xc, 0);
+          flush();
+          add(xc, 0);
+        }
+        last = sg;
       }
       add(x, d);
       px = x;
@@ -428,7 +435,7 @@ window.addEventListener('DOMContentLoaded', function () {
     c.font = `800 ${size}px ${b.font}`;
     const w = c.measureText(String(str)).width;
     c.restore();
-    const s = b.toS(p);
+    const s = b.toS(Array.isArray(p) ? { x: p[0], y: p[1] } : p);
     const al = o.align || 'center';
     const want = s.x + (o.dx || 0) - (al === 'right' ? w : al === 'left' ? 0 : w / 2);
     const left = clamp(want, 6, Math.max(6, b.W - 6 - w));
@@ -443,7 +450,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'abs', title: '4대 절댓값 변환', short: '절댓값 변환',
       question: '절댓값을 바깥에 씌울 때 |f(x)|와 안에 씌울 때 f(|x|)는 그래프를 어떻게 바꾸고, x = 0에서 언제 매끄러울까?',
-      guide: examData[1].hint + ' 점선 그래프의 <b>금색 점</b>을 좌우로 끌어도 평행이동 m이 바뀝니다.',
+      guide: hintOf(1) + ' 점선 그래프의 <b>금색 점</b>을 좌우로 끌어도 평행이동 m이 바뀝니다.',
       controls: ['m'],
       presets: [
         { label: '① y = |f(x)| (아래 접어올림)', color: 'amber', apply: (s) => { s.absType = 'out'; }, on: (s) => s.absType === 'out' },
@@ -506,7 +513,7 @@ window.addEventListener('DOMContentLoaded', function () {
             [m - Math.sqrt(3), m, m + Math.sqrt(3)].forEach((rx) => {
               if (!seen(vb, rx, 0)) return;
               b.point([rx, 0], { color: 'red', r: 6, ref: 'trans' });
-              tag(b, [rx, 0], `첨점 ${fmt(rx)}`, { color: 'red', dy: 22, ref: 'trans' });
+              tag(b, [rx, 0], `첨점 ${fmt(rx)}`, { color: 'red', dy: 36, ref: 'trans' });
             });
           } else if (seen(vb, 0, tf(0))) {
             b.point([0, tf(0)], { color: smooth ? 'green' : 'red', r: 7, ref: 'trans' });
@@ -524,7 +531,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'scan', title: '|f(x)-t|=k 교점 스캔', short: '교점 스캔',
       question: '접어 올린 그래프 |f(x) − t| 와 수평선 y = k 가 만나는 점은 t와 k에 따라 몇 개가 될까?',
-      guide: examData[2].hint + ' 점선 그래프의 <b>금색 점</b>(t)과 오른쪽 <b>하늘색 점</b>(k)을 위아래로 끌어 보세요.',
+      guide: hintOf(2) + ' 점선 그래프의 <b>금색 점</b>(t)과 오른쪽 <b>하늘색 점</b>(k)을 위아래로 끌어 보세요.',
       controls: ['t', 'k2'],
       actions: actionsOf(null, '수평선 스캔'),
       steps: examData[2].steps,
@@ -581,7 +588,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'heal', title: '|f(x)|·g(x) 첨점 힐링', short: '첨점 힐링',
       question: '|x − 2|의 뾰족한 점이 곱해서 매끄러워지려면, g(x) = x − r 의 r은 무엇이어야 할까?',
-      guide: examData[3].hint + ' 위 그림의 <b>금색 점</b>(r)을 좌우로 끌어도 됩니다.',
+      guide: hintOf(3) + ' 위 그림의 <b>금색 점</b>(r)을 좌우로 끌어도 됩니다.',
       controls: ['r'],
       actions: actionsOf('하단 곱함수 동기화 뷰', '영점 r 이동'),
       steps: examData[3].steps,
@@ -638,20 +645,20 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'extrema', title: '합성함수 f(g(x)) 극값', short: '합성 극값',
       question: '겉함수 f(u) = u³ − 3u 의 극값 높이(u = ±1)를 속함수 g(x)가 지나갈 때마다 f(g(x))에 무슨 일이 생길까?',
-      guide: examData[4].hint + ' 아래 그림의 <b>금색 점</b>(꼭짓점)을 위아래로 끌어 보세요.',
+      guide: hintOf(4) + ' 아래 그림의 <b>금색 점</b>(꼭짓점)을 위아래로 끌어 보세요.',
       controls: ['c4'],
       actions: actionsOf('상하 동기화 뷰', '꼭짓점 이동'),
       steps: examData[4].steps,
       problem: problemOf(4), solution: solutionOf(4), enter: enterOf(4),
-      focus: { x: [-2.8, 2.8], y: [-2.5, 2.5] },
-      panes: panesOf([-2.5, 2.5], [-2.8, 2.6]),
+      focus: { x: [-2.8, 2.8], y: [-2.5, 2.9] },
+      panes: panesOf([-2.5, 2.9], [-2.8, 2.6]),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'c4', 1.2, -2.2, 2.2, dt); return true; },
       view: (s, lab) => {
         const c = s.c4, n = extremaCount(c);
         return {
           ...topInfo(s, lab, [
-            { k: '겉함수·속함수', tex: `f(u) = u^3 - 3u, \\; g(x) = 0.5x^2 + (${num(c, 1)})`, color: 'ink' },
-            { k: '미분', tex: `h'(x) = f'(g(x))\\,g'(x) = 0 \\Rightarrow ${n}\\text{개}`, color: 'rose' }
+            { tex: `f(u) = u^3 - 3u, \\; g(x) = 0.5x^2 + (${num(c, 1)})`, color: 'ink' },
+            { tex: `h'(x) = 0 \\Rightarrow ${n}\\text{개}`, color: 'rose' }
           ], { tone: n === 5 ? 'ok' : 'info', text: `합성함수 극값 ${n}개 (속함수 극값 1개 + u = ±1 관통 ${n - 1}개)` }),
           readouts: [
             { label: '꼭짓점 높이 c', value: fmt(c), color: 'amber', ref: 'c' },
@@ -676,7 +683,9 @@ window.addEventListener('DOMContentLoaded', function () {
             if (val > 0.02) {
               const rx = Math.sqrt(val);
               [-rx, rx].forEach((xv) => {
-                b.point([xv, comp(xv)], { color: 'rose', r: 6, label: `극값(${fmt(xv)})`, dx: 0, dy: u > 0 ? 20 : -14, align: 'center', ref: 'h' });
+                b.point([xv, comp(xv)], { color: 'rose', r: 6, ref: 'h' });
+                if (u > 0) tag(b, [xv, comp(xv)], `극값(${fmt(xv)})`, { color: 'rose', dy: 22, ref: 'h' });
+                else tag(b, [xv, comp(xv)], `극값(${fmt(xv)})`, { color: 'rose', dx: xv < 0 ? -12 : 12, dy: 0, align: xv < 0 ? 'right' : 'left', ref: 'h' });
                 xs.push(xv);
               });
             }
@@ -700,8 +709,8 @@ window.addEventListener('DOMContentLoaded', function () {
               if (val > 0.02) [-1, 1].forEach((sg) => b.point([sg * Math.sqrt(val), u], { color: 'rose', r: 4.5, ref: 'lines' }));
             });
           }
-          b.handle('c', [0, c], { color: 'amber', ref: 'c', label: `속함수 꼭짓점 (0, ${fmt(c)})`, dx: 14, dy: -14,
-            drag: (w) => { s.c4 = clamp(round05(w.y), -2.5, 2.5); } });
+          b.handle('c', [0, c], { color: 'amber', ref: 'c', drag: (w) => { s.c4 = clamp(round05(w.y), -2.5, 2.5); } });
+          tag(b, [0, c], b.W < 640 ? `c = ${fmt(c)}` : `속함수 꼭짓점 (0, ${fmt(c)})`, { color: 'amber', dx: -16, dy: 0, align: 'right', ref: 'c' });
           paneEnd(b);
           subTitle(b, b.W < 640 ? '아래: 속함수 g(x)와 기준선 u = ±1' : '아래: 속함수 y = g(x) 와 겉함수 극값 기준선 (u = ±1)');
           if (s.step >= 1) xs.forEach((x) => linkX(b, x, 'rose'));
@@ -714,7 +723,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'solve', title: 'f(g(x))=k 2단계 치환', short: '2단계 치환',
       question: 'f(g(x)) = k 의 근은 어떤 순서로 찾을까? 먼저 u = g(x) 의 값을 정하고, 그다음 x의 개수를 센다면?',
-      guide: examData[5].hint + ' 위 그림의 <b>하늘색 점</b>(k)과 아래 그림의 <b>금색 점</b>(c)을 끌어 보세요.',
+      guide: hintOf(5) + ' 위 그림의 <b>하늘색 점</b>(k)과 아래 그림의 <b>금색 점</b>(c)을 끌어 보세요.',
       controls: ['c5', 'k5'],
       actions: actionsOf('상하 동기화 뷰', '꼭짓점 이동'),
       steps: examData[5].steps,
@@ -766,8 +775,8 @@ window.addEventListener('DOMContentLoaded', function () {
               b.point([rx, u], { color: col, r: 5.5, label: `x=${fmt(rx)}`, dx: 0, dy: -13, align: 'center', size: 12, ref: 'x' });
             });
           });
-          b.handle('c', [0, c], { color: 'amber', ref: 'c', label: `g의 꼭짓점 (0, ${fmt(c, 1)})`, dx: 14, dy: -14,
-            drag: (w) => { s.c5 = clamp(round05(w.y), -2.5, 2.5); } });
+          b.handle('c', [0, c], { color: 'amber', ref: 'c', drag: (w) => { s.c5 = clamp(round05(w.y), -2.5, 2.5); } });
+          tag(b, [0, c], b.W < 640 ? `c = ${fmt(c, 1)}` : `g의 꼭짓점 (0, ${fmt(c, 1)})`, { color: 'amber', dx: -16, dy: 0, align: 'right', ref: 'c' });
           paneEnd(b);
           subTitle(b, b.W < 640 ? '아래: g(x)와 수평선 y = uᵢ' : '2단계: 속함수 y = g(x) 와 수평선 y = uᵢ 교점 스캐너');
         }

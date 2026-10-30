@@ -225,6 +225,8 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
   /* ---------- 3. 공통 부품 ---------- */
+  // 원본 안내문(examData.hint)은 그대로 두고, 화면 위치를 가리키던 말만 새 배치(탐구 탭·조절 막대)에 맞게 바꿔 보여 줍니다.
+  const hintOf = (n) => examData[n].hint.replace('좌측 상단 ', '탐구 탭의 ').replace('우측 슬라이더로', '조절 막대로');
   // 원본 snap의 p1·p2를 이 실험실의 값 이름으로 옮깁니다.
   const SNAP = {
     1: (d) => ({ a1: d.p1, b1: d.p2 }),
@@ -348,15 +350,20 @@ window.addEventListener('DOMContentLoaded', function () {
     };
     let px = x0;
     let pd = f(x0) - g(x0);
+    let last = pd === 0 ? 0 : pd > 0 ? 1 : -1; // 마지막으로 0이 아니었던 부호 (눈금에 0이 정확히 걸려도 놓치지 않게)
     add(px, pd);
     for (let i = 1; i <= N; i++) {
       const x = x0 + ((x1 - x0) * i) / N;
       const d = f(x) - g(x);
-      if (d * pd < 0) {
-        const xc = px + ((x - px) * Math.abs(pd)) / (Math.abs(pd) + Math.abs(d));
-        add(xc, 0);
-        flush();
-        add(xc, 0);
+      if (d !== 0) {
+        const sg = d > 0 ? 1 : -1;
+        if (last !== 0 && sg !== last) {
+          const xc = pd === 0 ? px : px + ((x - px) * Math.abs(pd)) / (Math.abs(pd) + Math.abs(d));
+          if (pd !== 0) add(xc, 0);
+          flush();
+          add(xc, 0);
+        }
+        last = sg;
       }
       add(x, d);
       px = x;
@@ -372,7 +379,7 @@ window.addEventListener('DOMContentLoaded', function () {
     c.font = `800 ${size}px ${b.font}`;
     const w = c.measureText(String(str)).width;
     c.restore();
-    const s = b.toS(p);
+    const s = b.toS(Array.isArray(p) ? { x: p[0], y: p[1] } : p);
     const al = o.align || 'center';
     const want = s.x + (o.dx || 0) - (al === 'right' ? w : al === 'left' ? 0 : w / 2);
     const left = clamp(want, 6, Math.max(6, b.W - 6 - w));
@@ -386,7 +393,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'signed', title: '정적분 vs 넓이 분할', short: '정적분 vs 넓이',
       question: '같은 구간인데 정적분은 0이 될 수 있고 넓이는 0이 아닐 수 있는 이유는 무엇일까?',
-      guide: examData[1].hint + ' 그림의 <b>금색 점</b>(a)과 <b>하늘색 점</b>(b)을 직접 끌어도 됩니다.',
+      guide: hintOf(1) + ' 그림의 <b>금색 점</b>(a)과 <b>하늘색 점</b>(b)을 직접 끌어도 됩니다.',
       controls: ['a1', 'b1'],
       actions: actionsOf(null, '위끝 b 이동'),
       steps: examData[1].steps,
@@ -443,7 +450,7 @@ window.addEventListener('DOMContentLoaded', function () {
           tag(b, [s.a1, 0], `a = ${fmt(s.a1)}`, { color: 'amber', dy: 34 });
           tag(b, [s.b1, 0], `b = ${fmt(s.b1)}`, { color: 'sky', dy: 34 });
         } else {
-          tag(b, [s.a1, 0], `아래끝 a = ${fmt(s.a1)}`, { color: 'amber', dy: s.step >= 2 ? 52 : 34 });
+          tag(b, [s.a1, 0], `아래끝 a = ${fmt(s.a1)}`, { color: 'amber', dx: -14, dy: -14, align: 'right' });
           tag(b, [s.b1, 0], `위끝 b = ${fmt(s.b1)}`, { color: 'sky', dy: -18 });
         }
         paneEnd(b);
@@ -454,7 +461,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'sixth', title: '포물선 1/6 & 이등분', short: '1/6 & 이등분',
       question: '직선 y = mx 가 포물선과 x축 사이의 넓이를 반으로 나누려면 기울기 m은 얼마여야 할까?',
-      guide: examData[2].hint + ' 그림의 <b>금색 점</b>(교점)을 좌우로 끌어도 됩니다. 이등분 값 근처에서는 점이 자석처럼 붙습니다.',
+      guide: hintOf(2) + ' 그림의 <b>금색 점</b>(교점)을 좌우로 끌어도 됩니다. 이등분 값 근처에서는 점이 자석처럼 붙습니다.',
       controls: ['m2'],
       actions: actionsOf('차함수 h(x)=f(x)−g(x) 동기화 뷰', '기울기 m 이동'),
       steps: examData[2].steps,
@@ -518,7 +525,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'cubic', title: '삼차 넓이 S₁ = S₂', short: '삼차 S₁=S₂',
       question: '삼차함수와 x축으로 둘러싸인 두 부분의 넓이가 같아지려면 가운데 교점 β는 어디에 있어야 할까?',
-      guide: examData[3].hint + ' 같은 점은 그림의 <b>금색 점</b>입니다.',
+      guide: hintOf(3) + ' 같은 점은 그림의 <b>금색 점</b>입니다.',
       controls: ['beta3'],
       actions: actionsOf(null, '가운데 교점 이동'),
       steps: examData[3].steps,
@@ -576,7 +583,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'diff', title: '두 곡선 ↔ 차함수 동기화', short: '차함수 동기화',
       question: '두 곡선 사이의 넓이를 차함수 h(x) = f(x) − g(x) 와 x축 사이의 넓이로 바꿔 구할 수 있는 이유는 무엇일까?',
-      guide: examData[4].hint + ' 곡선 g 위의 <b>금색 점</b>을 위아래로 끌면 기울기 m이 바뀝니다(m = −0.5 가 문제 조건).',
+      guide: hintOf(4) + ' 곡선 g 위의 <b>금색 점</b>을 위아래로 끌면 기울기 m이 바뀝니다(m = −0.5 가 문제 조건).',
       controls: ['m4'],
       actions: actionsOf('차함수 h(x) 동기화 뷰', '기울기 m 이동'),
       steps: examData[4].steps,
@@ -642,7 +649,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'inverse', title: '역함수 정적분 퍼즐', short: '역함수 퍼즐',
       question: '원함수의 정적분과 역함수의 정적분을 더하면 왜 두 직사각형의 차 b·f(b) − a·f(a) 가 될까?',
-      guide: examData[5].hint + ' 점 A와 B는 곡선 위에서 직접 끌 수 있습니다.',
+      guide: hintOf(5) + ' 점 A와 B는 곡선 위에서 직접 끌 수 있습니다.',
       controls: ['a5', 'b5'],
       actions: actionsOf(null, '위끝 b 이동'),
       steps: examData[5].steps,
@@ -687,7 +694,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (s.step >= 3) {
           b.poly([[0, 0], [bb, 0], [bb, fb], [0, fb]], { color: 'amber', width: 2.2, dash: true, ref: 'rect' });
           b.poly([[0, 0], [a, 0], [a, fa], [0, fa]], { fill: 'halo', fillAlpha: 0.65, color: 'red', width: 2, ref: 'rect' });
-          tag(b, [a / 2, fa / 2], narrow(b) ? 'a·f(a)' : `제외: a·f(a) = ${fmt(a * fa)}`, { color: 'red', size: 12, ref: 'rect' });
+          tag(b, [a / 2, fa * 0.35], narrow(b) ? 'a·f(a)' : `제외: a·f(a) = ${fmt(a * fa)}`, { color: 'red', size: 12, ref: 'rect' });
           tag(b, [0, fb], narrow(b) ? 'b·f(b)' : `b·f(b) = ${fmt(bb * fb)}`, { color: 'amber', dx: 8, dy: -10, align: 'left', ref: 'rect' });
         }
         b.plot(F5, { color: 'ink', width: 3.2, glow: true });
