@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    대수 · 로그함수·역함수 도형 심화 (AP Math Lab 2.0 이식본) — 8개 탐구관 × 문제 A·B = 16개 장면
@@ -72,7 +72,7 @@ secretSteps: [
 },
 {
 chip: '문제 B (log₂(8x)의 세로 간격 3과 정삼각형)',
-source: '준킬러 · 로그함수의 세로 방향의 간격과 정삼각형',
+source: '모의고사 4점 준킬러',
 params: { multK: 8, xCut1: 1.5, xCut2: 4.5 },
 snapParams: { multK: 8, xCut1: 2.0, xCut2: 6.0 },
 problem: '두 곡선 $y = \\log_2 x$와 $y = \\log_2(8x)$가 직선 $x = t$와 만나는 두 점을 $A, B$라 할 때, 한 변이 $\\overline{AB}$인 정삼각형 $ABC$의 넓이를 구하시오.',
@@ -103,7 +103,7 @@ trapWarning: '주의: 방정식 $\\log_2 x^2 = k$의 해는 $1$개가 아니라 
 scenarios: [
 {
 chip: '문제 A (log₂(x²)의 그래프와 교점의 개수)',
-source: '진수 조건 함정 · 로그함수의 그래프',
+source: '내신·수능 합답형 최고 오답률 함정',
 params: { showLeftWing: 1, lineSlope: 0.25, lineYInt: 2.0 },
 snapParams: { showLeftWing: 1, lineSlope: 0.0, lineYInt: 2.0 },
 problem: '방정식 $\\log_2 x^2 = 2$의 모든 실근의 곱과, 함수 $y = \\log_2 x^2$의 그래프와 직선 $y = 2$의 교점 개수($2$개)를 $y = 2\\log_2 x$ ($1$개)와 비교하시오.',
@@ -116,7 +116,7 @@ textbookSteps: [
 secretTitle: '진수가 x의 짝수 거듭제곱이면 그래프는 y축에 대하여 대칭',
 secretSteps: [
 '$\\log_a(x^2) = 2\\log_a x$가 아니라 **$2\\log_a |x|$**입니다.',
-'아래의 조절 막대 「왼쪽 부분 x < 0 표시」를 $0$과 $1$로 바꾸어 가며 교점의 개수가 $1$개에서 $2$~$3$개로 달라지는 것을 확인해 보세요.'
+'조절 막대 「왼쪽 부분 x < 0 표시」를 $0$과 $1$로 바꾸어 가며 교점의 개수가 $1$개에서 $2$~$3$개로 달라지는 것을 확인해 보세요.'
 ]
 },
 {
@@ -207,7 +207,7 @@ problem: '두 곡선 $y = 2^x, y = \\log_2 x$가 직선 $y = -x + k$와 만나�
 textbookTitle: 'A(α, β), B(β, α)로 놓고 연립하여 풀기',
 textbookSteps: [
 '1) $\\overline{AB} = \\sqrt{2}(\\beta - \\alpha) = 2\\sqrt{2} \\implies \\beta - \\alpha = 2$.',
-'2) $\\beta = 2^\\alpha$이고 $\\beta = \\alpha + 2$이므로 $2^\\alpha = \\alpha + 2$이다. 이를 만족시키는 양수 $\\alpha$는 $\\alpha = 2$이고 $\\beta = 4$이다.',
+'2) $\\beta = 2^\\alpha$이고 $\\beta = \\alpha + 2$이므로 $2^\\alpha = \\alpha + 2$이다. $2^\\alpha = \\alpha + 2$를 만족시키는 양수 $\\alpha$는 $\\alpha = 2$이고 $\\beta = 4$이다.',
 '3) 따라서 $A(2, 4), B(4, 2)$이므로 $k = 2 + 4 = 6$이고, $\\triangle OAB = \\frac{1}{2}|2\\cdot 2 - 4 \\cdot 4| = 6$이다.'
 ],
 secretTitle: 'AB = d√2이면 Δx = d이고, 2^α − α = 2를 만족시키는 α = 2를 찾는다',
@@ -248,7 +248,7 @@ trapWarning: '주의: 밑이 같은 지수함수와 로그함수의 그래프는
 scenarios: [
 {
 chip: '문제 A (대칭축 y = x + C 구하기)',
-source: '킬러 · 평행이동한 지수함수와 로그함수의 대칭축',
+source: '수능·평가원 14번·15번 고난도 킬러',
 params: { expM: 1, expN: 2, logP: 4, logQ: -1, lineK: 6 },
 snapParams: { expM: 1, expN: 2, logP: 4, logQ: -1, lineK: 6 },
 problem: '두 곡선 $y = 2^{x-1} + 2$와 $y = \\log_2(x-4) - 1$은 직선 $y = x + C$에 대하여 대칭이다. 상수 $C$의 값과, 두 곡선이 직선 $y = -x + 6$과 만나는 두 점 $A, B$의 중점 $M$의 좌표를 구하시오.',
@@ -290,7 +290,7 @@ icon: 'fa-vector-square',
 stepLabels: ['기울기가 −1인 두 직선과 네 교점', '기울기가 +1인 직선', '사다리꼴의 넓이'],
 stepDescs: [
 '1단계: 기울기가 $-1$인 두 직선 $y = -x + k_1, y = -x + k_2$가 서로 역함수인 $y=2^x, y=\\log_2 x$의 그래프와 만나는 네 점을 찍습니다.',
-'2단계: 이 두 직선에 수직인 **기울기 $+1$인 직선**을 그으면, 두 직선 사이의 거리를 $\\frac{|k_2 - k_1|}{\\sqrt{2}}$로 구할 수 있습니다.',
+'2단계: 두 직선 $y = -x + k_1, y = -x + k_2$에 수직인 **기울기 $+1$인 직선**을 그으면, 두 직선 사이의 거리를 $\\frac{|k_2 - k_1|}{\\sqrt{2}}$로 구할 수 있습니다.',
 '3단계: 기울기가 $+1$인 직선과 $-1$인 직선은 서로 수직이므로, 높이의 $\\frac{1}{\\sqrt{2}}$와 윗변·아랫변에 곱해진 $\\sqrt{2}$가 약분되어 루트 계산 없이 넓이를 구할 수 있습니다.'
 ],
 trapWarning: '주의: 기울기가 $-1$인 두 직선 $y = -x + k_1$과 $y = -x + k_2$ 사이의 거리는 $|k_2 - k_1|$이 아니라 **$\\frac{|k_2 - k_1|}{\\sqrt{2}}$**입니다.',
