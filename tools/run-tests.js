@@ -128,6 +128,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-pages-release-gate.test.mjs']
   },
   {
+    label: 'tests/archive-pages-release-reg-commit.test.mjs',
+    args: ['--test', 'tests/archive-pages-release-reg-commit.test.mjs']
+  },
+  {
     label: 'tests/ci-signal-hygiene.test.mjs',
     args: ['--test', 'tests/ci-signal-hygiene.test.mjs']
   },
