@@ -4,13 +4,13 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.4.17",
-      "conceptCount": 284
+      "version": "1.4.18",
+      "conceptCount": 288
     },
     {
       "shardId": "FUNCTIONS",
-      "version": "1.5.8",
-      "conceptCount": 83
+      "version": "1.5.9",
+      "conceptCount": 105
     },
     {
       "shardId": "LOGIC_SET",
@@ -19,18 +19,18 @@
     },
     {
       "shardId": "COORDINATE_GEOMETRY",
-      "version": "1.1.7",
-      "conceptCount": 43
+      "version": "1.1.8",
+      "conceptCount": 44
     },
     {
       "shardId": "PLANE_GEOMETRY",
-      "version": "1.3.14",
-      "conceptCount": 87
+      "version": "1.3.15",
+      "conceptCount": 88
     },
     {
       "shardId": "COUNTING",
-      "version": "1.0.6",
-      "conceptCount": 44
+      "version": "1.0.7",
+      "conceptCount": 46
     },
     {
       "shardId": "NUMBER_THEORY",
@@ -63,7 +63,7 @@
       "conceptCount": 64
     }
   ],
-  "conceptCount": 695,
+  "conceptCount": 725,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -9391,6 +9391,146 @@
       "ownerConceptShard": "ALGEBRA"
     },
     {
+      "conceptKey": "CC_ALGEBRAIC_SUBSTITUTION",
+      "canonicalLabelKo": "대입을 통한 함수값 결정",
+      "definition": "이미 주어진 입력·함수값을 관계식에 대입하여 필요한 값을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_a2e9aac133cfb8ba1cdb52fa19ae3f3f689d36b8fb76b7a539710e82291898d3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_a2e9aac133cfb8ba1cdb52fa19ae3f3f689d36b8fb76b7a539710e82291898d3",
+          "sourceOrdinal": 9,
+          "classificationRationale": "META_PIPELINE_AUDIT record 9 binds CC_ALGEBRAIC_SUBSTITUTION for PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 9 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTIONAL_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SQUARE_DIFFERENCE_COMPARISON",
+      "canonicalLabelKo": "제곱 차를 이용한 제곱근 부등식",
+      "definition": "양수 조건에서 제곱 차 또는 제곱근의 차를 변형하여 두 식의 대소를 비교한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_SQUARE_DIFFERENCE_COMPARISON for PT_ABSOLUTE_INEQUALITY_PROOF/TPL_SQUARE_COMPARISON_PROOF at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 12 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ABSOLUTE_INEQUALITY_PROOF"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_INEQUALITY",
+      "canonicalLabelKo": "산술·기하 부등식의 하한",
+      "definition": "양수인 두 항의 합은 산술·기하평균 부등식으로 하한을 얻고 등호 조건을 확인한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_ABSOLUTE_INEQUALITY for PT_ABSOLUTE_INEQUALITY_PROOF/TPL_SQUARE_COMPARISON_PROOF at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 12 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ABSOLUTE_INEQUALITY_PROOF"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_AVERAGE_SPEED_MODEL",
+      "canonicalLabelKo": "전체 평균 속력 모델",
+      "definition": "전체 이동 거리와 전체 소요 시간을 합하여 평균 속력을 시간에 대한 유리함수로 만든다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_AVERAGE_SPEED_MODEL for PT_FUNCTION_EXTREMUM/TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT at H22-C2-08-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 21 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_EXTREMUM"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
       "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
       "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
@@ -12163,6 +12303,776 @@
       "ownerConceptShard": "FUNCTIONS"
     },
     {
+      "conceptKey": "CC_VERTICAL_LINE_TEST",
+      "canonicalLabelKo": "수직선 판정법",
+      "definition": "그래프가 함수인지 판별할 때 모든 수직선과 그래프가 한 점 이하에서 만나는지를 확인한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7e8fc96a12adc7c06edb04eb08eefbe019f231b886928d05b4c55e27b8fb08b0"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7e8fc96a12adc7c06edb04eb08eefbe019f231b886928d05b4c55e27b8fb08b0",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_VERTICAL_LINE_TEST for PT_FUNCTION_DEFINITION_JUDGMENT/TPL_FUNCTION_JUDGMENT_GRAPH at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 1 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_DEFINITION_JUDGMENT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_DEFINITION",
+      "canonicalLabelKo": "함수의 정의",
+      "definition": "정의역의 각 원소마다 공역의 원소가 정확히 하나씩 대응하는 관계이다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7e8fc96a12adc7c06edb04eb08eefbe019f231b886928d05b4c55e27b8fb08b0"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7e8fc96a12adc7c06edb04eb08eefbe019f231b886928d05b4c55e27b8fb08b0",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_FUNCTION_DEFINITION for PT_FUNCTION_DEFINITION_JUDGMENT/TPL_FUNCTION_JUDGMENT_GRAPH at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 1 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_DEFINITION_JUDGMENT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_COMPOSITE_FUNCTION",
+      "canonicalLabelKo": "합성함수의 계산",
+      "definition": "g(x)를 먼저 계산한 뒤 그 결과를 f의 입력으로 대입하여 (f∘g)(x)를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_dc6b77d19163ba2eacf184a48ef6eb3290cec51a6a68711d5df7c8c79c778621"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_dc6b77d19163ba2eacf184a48ef6eb3290cec51a6a68711d5df7c8c79c778621",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_COMPOSITE_FUNCTION for PT_COMPOSITION_EVALUATION/TPL_COMPOSITION_VALUE_MAPPING at H22-C2-07-FUNCTION_COMPOSITION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 2 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COMPOSITION_EVALUATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRANT_PASSAGE",
+      "canonicalLabelKo": "유리함수 그래프의 사분면",
+      "definition": "점근선과 분모·분자의 부호를 이용하여 유리함수 그래프가 지나는 좌표 사분면을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_61af016ec937c0049b6942a80e6a2df1b0ce4230da59a3c18533beee45acb4b6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_61af016ec937c0049b6942a80e6a2df1b0ce4230da59a3c18533beee45acb4b6",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_QUADRANT_PASSAGE for PT_FUNCTION_GRAPH_QUADRANT/TPL_FUNCTION_QUADRANT_DIRECT at H22-C2-08-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 4 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_QUADRANT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_MONOTONE_EXTREMA",
+      "canonicalLabelKo": "단조성을 이용한 구간 끝점 극값",
+      "definition": "함수가 구간에서 단조이면 최댓값과 최솟값은 해당 구간의 양 끝점에서 비교한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f198ca07a6b64efe0d09bf19a92bdfb7f33378e8b20bb1e45d280e29d0b9d442"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f198ca07a6b64efe0d09bf19a92bdfb7f33378e8b20bb1e45d280e29d0b9d442",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_MONOTONE_EXTREMA for PT_FUNCTION_EXTREMUM/TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT at H22-C2-08-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 7 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_EXTREMUM"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_FUNCTION_GRAPH",
+      "canonicalLabelKo": "유리함수 그래프의 성질",
+      "definition": "분모가 0이 되는 값과 점근선, 정의역에 따른 그래프의 위치를 분석한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f198ca07a6b64efe0d09bf19a92bdfb7f33378e8b20bb1e45d280e29d0b9d442"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f198ca07a6b64efe0d09bf19a92bdfb7f33378e8b20bb1e45d280e29d0b9d442",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_RATIONAL_FUNCTION_GRAPH for PT_FUNCTION_EXTREMUM/TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT at H22-C2-08-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 7 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_EXTREMUM"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_ITERATED_COMPOSITION",
+      "canonicalLabelKo": "함수의 반복 합성",
+      "definition": "재귀적으로 정의된 f의 반복 합성을 간단한 일반식 또는 반복 규칙으로 나타낸다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c9d5ebc705de0fd149b686c859a8c9f0078f853425ac590bc2902e6ad588253e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c9d5ebc705de0fd149b686c859a8c9f0078f853425ac590bc2902e6ad588253e",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_ITERATED_COMPOSITION for PT_ITERATED_COMPOSITION/TPL_ITERATION_RULE at H22-C2-07-FUNCTION_COMPOSITION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 8 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ITERATED_COMPOSITION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_ARITHMETIC_PROGRESSION_RULE",
+      "canonicalLabelKo": "반복 합성의 등차 증가",
+      "definition": "매 단계 입력값에 일정한 수를 더하는 함수의 반복 합성값은 등차적으로 증가한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c9d5ebc705de0fd149b686c859a8c9f0078f853425ac590bc2902e6ad588253e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c9d5ebc705de0fd149b686c859a8c9f0078f853425ac590bc2902e6ad588253e",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_ARITHMETIC_PROGRESSION_RULE for PT_ITERATED_COMPOSITION/TPL_ITERATION_RULE at H22-C2-07-FUNCTION_COMPOSITION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 8 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ITERATED_COMPOSITION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_CAUCHY_FUNCTIONAL_EQUATION",
+      "canonicalLabelKo": "가법 함수 방정식",
+      "definition": "f(x+y)=f(x)+f(y) 관계를 반복 적용하여 정수배 입력에서의 함수값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_a2e9aac133cfb8ba1cdb52fa19ae3f3f689d36b8fb76b7a539710e82291898d3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_a2e9aac133cfb8ba1cdb52fa19ae3f3f689d36b8fb76b7a539710e82291898d3",
+          "sourceOrdinal": 9,
+          "classificationRationale": "META_PIPELINE_AUDIT record 9 binds CC_CAUCHY_FUNCTIONAL_EQUATION for PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 9 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTIONAL_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_COMPOSITION_COMMUTATIVITY",
+      "canonicalLabelKo": "함수 합성의 교환 조건",
+      "definition": "f∘g와 g∘f의 식을 각각 계산한 뒤 항등식의 계수를 비교하여 교환 조건을 찾는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f0656cf418ef786bc3ecc16af6f758ba7988df917f627451e612c37b726b1004"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f0656cf418ef786bc3ecc16af6f758ba7988df917f627451e612c37b726b1004",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_COMPOSITION_COMMUTATIVITY for PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION at H22-C2-07-FUNCTION_COMPOSITION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 10 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COMPOSITION_PROPERTIES"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_FUNCTION_PROPERTIES",
+      "canonicalLabelKo": "유리함수의 역함수와 합성 성질",
+      "definition": "유리함수의 정의역·치역, 역함수 및 합성 결과를 이용하여 진술의 참·거짓을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_cbcbb1d3488286a391a8387d4d050f788da9339e9a91f7755b8fd50970080985"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_cbcbb1d3488286a391a8387d4d050f788da9339e9a91f7755b8fd50970080985",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_RATIONAL_FUNCTION_PROPERTIES for PT_FUNCTION_GRAPH_PROPERTIES/TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 14 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_PROPERTIES"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_INVERSE_IDENTITY_RELATION",
+      "canonicalLabelKo": "역함수 합성 항등식",
+      "definition": "역함수와 원함수의 합성은 정의되는 입력에서 항등함수가 된다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_cbcbb1d3488286a391a8387d4d050f788da9339e9a91f7755b8fd50970080985"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_cbcbb1d3488286a391a8387d4d050f788da9339e9a91f7755b8fd50970080985",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_INVERSE_IDENTITY_RELATION for PT_FUNCTION_GRAPH_PROPERTIES/TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 14 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_PROPERTIES"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_INVOLUTION_FUNCTION",
+      "canonicalLabelKo": "자기 역함수의 조건",
+      "definition": "f∘f가 항등함수이면 f의 대응은 역함수와 같은 자기역 대응이다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0a17b0647447adb5fae155e88e981c428430394d97480833530bcac5aafe34b5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0a17b0647447adb5fae155e88e981c428430394d97480833530bcac5aafe34b5",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_INVOLUTION_FUNCTION for PT_ITERATED_COMPOSITION/TPL_ITERATION_IDENTITY_ORDER at H22-C2-07-FUNCTION_COMPOSITION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 15 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ITERATED_COMPOSITION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_FUNCTION_INVERSE",
+      "canonicalLabelKo": "유리함수 역함수 계산",
+      "definition": "유리함수의 대응식을 뒤집어 역함수의 식 또는 특정 함수값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0a17b0647447adb5fae155e88e981c428430394d97480833530bcac5aafe34b5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0a17b0647447adb5fae155e88e981c428430394d97480833530bcac5aafe34b5",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_RATIONAL_FUNCTION_INVERSE for PT_ITERATED_COMPOSITION/TPL_ITERATION_IDENTITY_ORDER at H22-C2-07-FUNCTION_COMPOSITION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 15 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ITERATED_COMPOSITION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PIECEWISE_BIJECTION",
+      "canonicalLabelKo": "구간별 정의 함수의 일대일대응",
+      "definition": "각 정의 구간의 단조성과 경계에서의 대응을 확인하여 전체 함수가 일대일인지 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_PIECEWISE_BIJECTION for PT_ONE_TO_ONE_BIJECTION/TPL_PIECEWISE_RANGE_STITCH_BIJECTION at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 17 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ONE_TO_ONE_BIJECTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_CONTINUITY_AND_MONOTONICITY",
+      "canonicalLabelKo": "경계 연결과 단조성",
+      "definition": "구간별 함수가 경계에서 이어지고 각 구간에서 같은 방향으로 단조인지 확인한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_CONTINUITY_AND_MONOTONICITY for PT_ONE_TO_ONE_BIJECTION/TPL_PIECEWISE_RANGE_STITCH_BIJECTION at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 17 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ONE_TO_ONE_BIJECTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_COMPOSITE_EQUATION",
+      "canonicalLabelKo": "합성함수 방정식의 근",
+      "definition": "f(f(x))=c 꼴을 바깥 함수의 값으로 나누어 중간값 경우를 만들고 각 방정식의 실근을 모은다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_COMPOSITE_EQUATION for PT_COMPOSITION_EQUATION/TPL_COMPOSITION_EQUATION_SOLVE at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 19 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COMPOSITION_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_ONE_TO_ONE_CORRESPONDENCE",
+      "canonicalLabelKo": "제한된 정의역에서의 일대일대응",
+      "definition": "주어진 정의역의 구간에서 함수의 단조성과 치역 일치를 확인하여 일대일대응 여부를 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_ONE_TO_ONE_CORRESPONDENCE for PT_ONE_TO_ONE_BIJECTION/TPL_QUADRATIC_DOMAIN_BIJECTION at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ONE_TO_ONE_BIJECTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_MONOTONICITY",
+      "canonicalLabelKo": "이차함수의 단조 구간",
+      "definition": "대칭축을 기준으로 이차함수가 단조인 구간을 찾아 일대일 조건과 교점을 분석한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_QUADRATIC_MONOTONICITY for PT_ONE_TO_ONE_BIJECTION/TPL_QUADRATIC_DOMAIN_BIJECTION at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ONE_TO_ONE_BIJECTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_FUNCTION_EXTREMA",
+      "canonicalLabelKo": "유리함수의 구간 극값",
+      "definition": "유리함수의 단조성과 구간 끝점을 비교하여 최댓값 또는 최솟값을 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_RATIONAL_FUNCTION_EXTREMA for PT_FUNCTION_EXTREMUM/TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT at H22-C2-08-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 21 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_EXTREMUM"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_COMPOSITE_FUNCTION_RECOVERY",
+      "canonicalLabelKo": "역합성을 이용한 함수 복원",
+      "definition": "f^{-1}∘h=g에서 양변에 f를 합성하여 h=f∘g를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_d51c95367e8902c0e59fed185babb77c240f0355b387e934373e9f6151bff8eb"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d51c95367e8902c0e59fed185babb77c240f0355b387e934373e9f6151bff8eb",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_COMPOSITE_FUNCTION_RECOVERY for PT_FUNCTION_RECOVERY/TPL_RECOVER_FUNCTION_FROM_COMPOSITION at H22-C2-07-FUNCTION_COMPOSITION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 22 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_RECOVERY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_IRRATIONAL_LINE_INTERSECTION",
+      "canonicalLabelKo": "무리함수와 직선의 교점 범위",
+      "definition": "무리함수와 직선의 방정식을 연립하고 정의역 및 판별식·접점 조건으로 교점 개수를 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1bc7273944cc5f9767fc39ca7e0bea31015f0cd03198b58ca5cf1c951b07f981"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-09"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1bc7273944cc5f9767fc39ca7e0bea31015f0cd03198b58ca5cf1c951b07f981",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_IRRATIONAL_LINE_INTERSECTION for PT_FUNCTION_GRAPH_INTERSECTION/TPL_GRAPH_INTERSECTION_COUNT at H22-C2-09-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 23 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-09"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
       "conceptKey": "CC_COUNTEREXAMPLE",
       "canonicalLabelKo": "반례",
       "definition": "반례이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
@@ -14859,6 +15769,41 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_POLYGON_AREA_SHOELACE",
+      "canonicalLabelKo": "다각형의 좌표 넓이",
+      "definition": "다각형 꼭짓점 좌표를 순서대로 사용해 신발끈 공식 또는 분할로 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-09"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_POLYGON_AREA_SHOELACE for PT_FUNCTION_GRAPH_GEOMETRY/TPL_GRAPH_AREA_BY_SYMMETRY at H22-C2-09-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_GEOMETRY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-09"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     },
@@ -18269,6 +19214,41 @@
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
     {
+      "conceptKey": "CC_CURVE_TRANSLATION_CONGRUENCE",
+      "canonicalLabelKo": "곡선 평행이동과 넓이 보존",
+      "definition": "한 곡선을 평행이동한 도형에서 대응 경계와 넓이가 보존되는 부분을 찾아 넓이를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-09"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_CURVE_TRANSLATION_CONGRUENCE for PT_FUNCTION_GRAPH_GEOMETRY/TPL_GRAPH_AREA_BY_SYMMETRY at H22-C2-09-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_GEOMETRY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-09"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
       "canonicalLabelKo": "순열과 조합을 이용한 경우의 수",
       "definition": "집합의 원소 선택·배열·분할을 순열, 조합, 곱의 법칙 등으로 세는 개념.",
@@ -19569,6 +20549,76 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BIJECTION_COUNTING",
+      "canonicalLabelKo": "일대일대응과 순열 세기",
+      "definition": "정의역 원소가 서로 다른 공역 원소에 대응하는 조건을 만족하는 함수 개수를 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_BIJECTION_COUNTING for PT_FUNCTION_COUNTING/TPL_CONSTRAINED_FUNCTION_COUNT at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_COMBINATION_ORDER",
+      "canonicalLabelKo": "조합 선택 후 순서 배정",
+      "definition": "조건을 만족하는 원소 집합을 조합으로 선택한 뒤 남은 원소의 배치를 곱의 법칙으로 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_COMBINATION_ORDER for PT_FUNCTION_COUNTING/TPL_CONSTRAINED_FUNCTION_COUNT at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
       ],
       "ownerConceptShard": "COUNTING"
     },
