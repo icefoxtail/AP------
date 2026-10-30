@@ -2305,7 +2305,7 @@ window.addEventListener('DOMContentLoaded', function () {
         dVertex(B, 'B', C.white, { x: -10, y: -14, align: 'right' });
         dVertex(D, 'D', C.white, { x: -10, y: -12, align: 'right' });
         dVertex(Cpt, 'C', C.white, { x: 10, y: -12, align: 'left' });
-        dVertex(mB, moveRatio < 0.02 ? 'BD를 오른쪽으로 끌어 보세요' : '평행이동 [드래그]', C.gold, { x: 10, y: -15, align: 'left' }, true, (sPos) => {
+        dVertex(mB, moveRatio < 0.02 ? 'BD [우측 평행이동 드래그]' : '평행이동 [드래그]', C.gold, { x: 10, y: -15, align: 'left' }, true, (sPos) => {
           const m = toMath(sPos.x, sPos.y, cx, cy, sc);
           const nextT = Math.max(0, Math.min(1, (m.x - Bx) / a));
           onSliderInput(nextT);
