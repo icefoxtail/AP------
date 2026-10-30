@@ -181,6 +181,57 @@ window.addEventListener('DOMContentLoaded', function () {
     withAlpha(lensAlpha('pyth'), () => BOARD.right(v, p1, p2, { size, color: col }));
   }
 
+  /* [표시 보강] 같은 길이 눈금(atick)·각 표시(aang)·같은 반사각(areflect)·평행 표시(apar). 관찰 렌즈는 pline·pright 와 같은 규칙으로 따르고
+     (눈금=def, 각=pyth), 그 렌즈가 없는 장면에서는 다른 렌즈를 골라도 반쯤 보입니다. 좌표는 현재 점에서 매 프레임 다시 계산합니다. */
+  const markGroup = (g) => (lensList(state.mode, state.subType[state.mode]).includes(g) ? g : null);
+  function atick(a, b, count = 1, col = '#fbbf24') {
+    withAlpha(lensAlpha(markGroup('def')), () => BOARD.ticks(a, b, { count, color: col, size: 7 }));
+  }
+  /* 각 표시 도우미 angMark(b, 꼭짓점 v, 반직선 방향 p1·p2, {color, rings, r, label}): 꼭짓점에서 p1→p2 쪽 작은 각에 호(rings겹)를 긋고, 값·기호(label)를
+     호 바깥의 그 각 '부채꼴 안쪽'에 놓습니다. 화면 픽셀 기준이라 확대·축소에도 읽히고, 각이 좁으면 라벨을 꼭짓점에서 더 멀리 둡니다. */
+  function angMark(b, v, p1, p2, o = {}) {
+    const unit = (p) => { const dx = p.x - v.x, dy = p.y - v.y, l = Math.hypot(dx, dy) || 1; return { x: v.x + (dx / l) * 1e-3, y: v.y + (dy / l) * 1e-3 }; };
+    const q1 = unit(p1), q2 = unit(p2);
+    const s0 = b.toS(v), a = b.toS(q1), c = b.toS(q2);
+    const t1 = Math.atan2(a.y - s0.y, a.x - s0.x), t2 = Math.atan2(c.y - s0.y, c.x - s0.x);
+    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, w = Math.abs(d), m = t1 + d / 2;
+    let r = o.r || 28;
+    const lines = b.thumb || o.label == null || o.label === '' ? [] : [].concat(o.label).map(String);
+    const hw = (Math.max(0, ...lines.map((x) => x.length)) * 7.2) / 2 + 3, hh = lines.length * 7 + 1;
+    const half = Math.max(w / 2, 0.07);
+    let D = r + 11;
+    [-1, 1].forEach((sg) => { const ang = m + sg * half; D = Math.max(D, (hw * Math.abs(Math.sin(ang)) + hh * Math.abs(Math.cos(ang))) / Math.sin(half) + 2); });
+    D = Math.min(D, o.max || 130);
+    if (lines.length && D - 12 > r) r = Math.min(D - 12, o.rmax || 70);
+    b.angle(v, q1, q2, { color: o.color, r, rings: o.rings || 1 });
+    lines.forEach((x, i) => b._text(s0.x + Math.cos(m) * D, s0.y + Math.sin(m) * D + (i - (lines.length - 1) / 2) * 13.5, x, { color: o.color, size: o.size || 12.5, align: 'center', baseline: 'middle', weight: 800 }));
+  }
+  function aang(v, p1, p2, o = {}) {
+    withAlpha(lensAlpha(markGroup('pyth')), () => angMark(BOARD, v, p1, p2, o));
+  }
+  const degOf = (v, p1, p2) => { const a1 = Math.atan2(p1.y - v.y, p1.x - v.x), a2 = Math.atan2(p2.y - v.y, p2.x - v.x); let d = Math.abs(a1 - a2); if (d > Math.PI) d = 2 * Math.PI - d; return +((d * 180) / Math.PI).toFixed(1); };
+  // 거울(축 방향 u)에 반사되는 점 P: A쪽 각과 B쪽 각(입사각 = 반사각)을 같은 색·같은 값으로 표시
+  function areflect(pP, pA, pB, u, col = '#fbbf24') {
+    const sg = Math.sign((pA.x - pP.x) * u.x + (pA.y - pP.y) * u.y) || 1;
+    const r1 = { x: pP.x + u.x * sg, y: pP.y + u.y * sg }, r2 = { x: pP.x - u.x * sg, y: pP.y - u.y * sg };
+    aang(pP, r1, pA, { color: col, r: 30, label: `${degOf(pP, r1, pA)}°` });
+    aang(pP, r2, pB, { color: col, r: 30, label: `${degOf(pP, r2, pB)}°` });
+  }
+  // 평행 표시(≫): 선분 a→b의 가운데에 화살표 모양 눈금 count개
+  function apar(a, b, count = 1, col = '#f1f5f9') {
+    if (BOARD._bbox || BOARD.thumb) return;
+    const bb = BOARD._bbox; BOARD._bbox = null; const s0 = BOARD.toS(a.x, a.y), s1 = BOARD.toS(b.x, b.y); BOARD._bbox = bb;
+    const c = BOARD.ctx, dx = s1.x - s0.x, dy = s1.y - s0.y, l = Math.hypot(dx, dy) || 1, ux = dx / l, uy = dy / l, mx = (s0.x + s1.x) / 2, my = (s0.y + s1.y) / 2;
+    withAlpha(lensAlpha(markGroup('pyth')), () => {
+      c.save(); c.strokeStyle = BOARD.color(col); c.lineWidth = 2.2 * BOARD.lw; c.setLineDash([]); c.lineCap = 'round';
+      for (let i = 0; i < count; i++) {
+        const off = (i - (count - 1) / 2) * 8, px = mx + ux * off, py = my + uy * off;
+        c.beginPath(); c.moveTo(px - ux * 7 - uy * 5, py - uy * 7 + ux * 5); c.lineTo(px, py); c.lineTo(px - ux * 7 + uy * 5, py - uy * 7 - ux * 5); c.stroke();
+      }
+      c.restore();
+    });
+  }
+
   function ptag(x, y, msg, color = '#fef08a', size = 13) {
     if (BOARD.thumb) return;
     withAlpha(lensAlpha(labelLens(msg)), () => BOARD.text({ x, y }, cv(msg), { color, size, align: 'center', baseline: 'alphabetic', weight: 800 }));
@@ -590,11 +641,12 @@ window.addEventListener('DOMContentLoaded', function () {
         pcircle(C, Rpx, CCOL.gold, 'rgba(251, 191, 36, 0.12)', 3.0, [], 1);
         ppoly([A, P, B], 'rgba(244, 114, 182, 0.18)', CCOL.pink, 2.8, 2);
         pline(A, B, CCOL.cyan, 3.8, [], true, 0);
-        pright(P, A, B, 13, CCOL.pink);
+        pright(P, A, B, 16, CCOL.pink);
 
         pdot(A, 'A(-2, -1)', CCOL.cyan, { x: -65, y: 18 });
         pdot(B, 'B(4, 3)', CCOL.cyan, { x: 10, y: -8 });
         pdot(C, 'C(1, 1) [AB중점!]', CCOL.gold, { x: 10, y: 18 });
+        atick(A, C, 1, CCOL.gold); atick(C, B, 1, CCOL.gold); // [표시 보강] C는 지름 AB의 중점: AC = CB
         dragP(P, C, Math.PI * 1.4, 'P(∠APB=90°!)', CCOL.pink, { x: -35, y: -14 }); // [2.0 수정] 점 P를 직접 끌기
 
         drawBottomTapeBanner(rect, '지름의 양 끝점 A, B가 주어진 원: 중점 C(1, 1)이 중심, AC² = 13 이 반지름 제곱 r², 원주각 ∠APB = 90°!');
@@ -630,6 +682,12 @@ window.addEventListener('DOMContentLoaded', function () {
         pdot(B, 'B(0,2)', CCOL.cyan, { x: 10, y: -10 });
         pdot(C, 'C(2,0)', CCOL.cyan, { x: 12, y: 18 });
         pdot(O, '중심 O(0,0)', CCOL.gold, { x: 12, y: 18 });
+        { // [표시 보강] OA = OB = OC(반지름, 같은 눈금 1개), 두 현의 중점에서 수직이등분선과의 직각, 현의 절반끼리 같은 눈금 2개
+          const Mab = mid(A, B);
+          atick(O, A, 1, CCOL.gold); atick(O, C, 1, CCOL.gold); atick(O, B, 1, CCOL.gold);
+          atick(A, Mab, 2, CCOL.cyan); atick(Mab, B, 2, CCOL.cyan);
+          pright(O, C, B, 13, CCOL.pink); pright(Mab, B, O, 13, CCOL.cyan);
+        }
         drawBottomTapeBanner(rect, '탐구 예시: 현 AC·AB의 수직이등분선 교점 O(0,0), 세 점까지 거리 2 ➔ 외접원 x²+y²=4');
         return;
       }
@@ -771,6 +829,7 @@ window.addEventListener('DOMContentLoaded', function () {
         pline(A, P, 'rgba(255,255,255,0.55)', 2.6, [], false, 0);
         pdot(CM, '중점 자취 중심 (1,0)', CCOL.pink, { x: -65, y: 20 });
         pdot(M, 'M (AP의 중점)', CCOL.gold, { x: 12, y: -10 });
+        atick(A, M, 1, CCOL.gold); atick(M, P, 1, CCOL.gold); // [표시 보강] M은 AP의 중점: AM = MP
       } else if (sub === 'apolloMaxArea') {
         pline(P, C, CCOL.gold, 4.4, [], true, 2);
         pright(C, P, A, 12, CCOL.gold);
@@ -778,6 +837,7 @@ window.addEventListener('DOMContentLoaded', function () {
       } else if (sub === 'apolloMaxAngle') {
         pline(P, C, CCOL.gold, 3.6, [], true, 2);
         pright(P, A, C, 13, CCOL.gold);
+        aang(A, B, P, { color: CCOL.pink, rings: 1, r: 40, label: `${degOf(A, B, P)}°` }); // [표시 보강] 최대일 때의 ∠PAB
         ptag((A.x + P.x) / 2 - 20, (A.y + P.y) / 2 - 14, '접선일 때 ∠PAB 최대!', CCOL.gold, 13.5);
       } else {
         pline(P, M, CCOL.cyan, 2.2, [5, 4], false, 0);
@@ -848,6 +908,8 @@ window.addEventListener('DOMContentLoaded', function () {
           ppoly([A, B, apex], 'rgba(244, 114, 182, 0.18)', CCOL.pink, 3.0, 2);
           pline(H, apex, CCOL.pink, 2.0, [5, 4], true, 2);
           pdot(apex, '정삼각형의 꼭짓점', CCOL.pink, { x: 12, y: -10 });
+          atick(B, apex, 2, CCOL.pink); atick(apex, A, 2, CCOL.pink); // [표시 보강] 정삼각형: 세 변이 같고 세 각이 60°
+          aang(A, B, apex, { color: CCOL.pink, rings: 1, r: 30, label: '60°' }); aang(B, apex, A, { color: CCOL.pink, rings: 1, r: 30, label: '60°' }); aang(apex, A, B, { color: CCOL.pink, rings: 1, r: 30, label: '60°' });
         }
 
         pdot(A, 'A', CCOL.gold, { x: -20, y: -8 });
@@ -855,6 +917,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const hc = Math.sqrt(r * r - effD * effD).toFixed(2);
         ptag((C.x + A.x) / 2 - 24, (C.y + A.y) / 2 - 8, `r = ${r}`, CCOL.pink, 14);
         ptag((A.x + H.x) / 2 - 15, (A.y + H.y) / 2 - 14, `AH = √(${r}²-${effD}²)=${hc}`, CCOL.gold, 13);
+        atick(A, H, 1, CCOL.white); atick(H, B, 1, CCOL.white); // [표시 보강] 수선의 발 H는 현 AB의 중점: AH = HB
       }
 
       if (sub === 'maxMinDist' || (sub !== 'equilMaxMin' && state.fold > 0.3)) {
@@ -916,6 +979,7 @@ window.addEventListener('DOMContentLoaded', function () {
         pdot(C1, '원래 중심 C₁(0,0)', CCOL.cyan, { x: -95, y: -8 });
         pdot(C2, '복원한 원 중심 C₂(2,4)', CCOL.pink, { x: 12, y: -10 });
         pdot(touchPt, '접점 (2,0)', CCOL.gold, { x: -20, y: 22 });
+        atick(C1, midC, 1, CCOL.cyan); atick(midC, C2, 1, CCOL.cyan); pright(midC, C2, add(midC, mul(perpC, 50)), 13, CCOL.gold); // [표시 보강] 접는 선 AB는 C₁C₂의 수직이등분선
 
         drawBottomTapeBanner(rect, '종이접기 원의 비법: 접힌 호를 반지름이 똑같은 원 O₂로 복원한 뒤 O₁ - O₂ = 0 을 빼면 직선 AB 완성!');
         return;
@@ -948,6 +1012,7 @@ window.addEventListener('DOMContentLoaded', function () {
       pline(C1, C2, 'rgba(255,255,255,0.45)', 2.0, [4, 4]);
       pline(C1, A, CCOL.cyan, 3.0, [], false, undefined, 'def');
       pright(H, A, C1, 11, CCOL.gold);
+      atick(A, H, 1, CCOL.white); atick(H, B, 1, CCOL.white); // [표시 보강] 공통현의 중점 H: AH = HB
 
       pdot(C1, 'C₁', CCOL.cyan, { x: -24, y: 18 });
       pdot(C2, 'C₂', CCOL.green, { x: 10, y: 18 });
@@ -991,6 +1056,7 @@ window.addEventListener('DOMContentLoaded', function () {
         pdot(P, '외부 점 P(3, 4)', CCOL.gold, { x: 12, y: -8 });
         pdot(T1, 'T₁(3, 0) [수직 접점!]', CCOL.red, { x: 12, y: 18 });
         pdot(T2, 'T₂', CCOL.cyan, { x: -24, y: -8 });
+        atick(P, T1, 2, CCOL.red); atick(P, T2, 2, CCOL.cyan); atick(O, T1, 1, CCOL.gold); atick(O, T2, 1, CCOL.cyan); // [표시 보강] 접선의 길이 PT₁ = PT₂, 반지름 OT₁ = OT₂
 
         ptag(T1.x + 75, (P.y + T1.y) / 2, '⚠️ 숨은 수직 접선 x = 3!', CCOL.red, 14);
         drawMiniOverlayBox(rect, '⚠️ 왜 m이 1개만 나왔을까?', [
@@ -1021,7 +1087,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
         pright(A, O, P, 11, CCOL.gold);
         pright(B, O, P, 11, CCOL.gold);
-        pright(P, A, B, 13, CCOL.pink);
+        pright(P, A, B, 16, CCOL.pink);
+        atick(O, A, 1, CCOL.cyan); atick(O, B, 1, CCOL.cyan); atick(A, P, 2, CCOL.gold); atick(B, P, 2, CCOL.gold); // [표시 보강] OA = OB = r, PA = PB(정사각형)
 
         pdot(O, 'O(0,0)', CCOL.white, { x: -35, y: 18 });
         pdot(A, 'A', CCOL.cyan, { x: -20, y: -8 });
@@ -1047,6 +1114,8 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       pline(O, T1, CCOL.pink, 3.2, [], false, undefined, 'def');
       pright(T1, O, add(T1, mul(tDir, 60)), 12, CCOL.gold);
+      atick(O, T1, 1, CCOL.pink); // [표시 보강] 반지름 OT = r. 두 번째 접점 T₂에도 반지름과 직각 표시
+      if (subId === 'tanSlope') { pline(O, T2, CCOL.pink, 3.2, [], false, undefined, 'def'); pright(T2, O, add(T2, mul(tDir, 60)), 12, CCOL.cyan); atick(O, T2, 1, CCOL.pink); }
       pdot(O, 'O(0,0)', CCOL.white, { x: -35, y: 18 });
       pdot(T1, '접점 (x₁, y₁)', CCOL.gold, { x: 12, y: -8 });
 
@@ -1080,6 +1149,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         pright(A, O, P, 13, CCOL.gold);
         pright(H, A, P, 11, CCOL.pink);
+        atick(A, H, 1, CCOL.pink); atick(H, B, 1, CCOL.pink); atick(A, P, 2, CCOL.cyan); atick(P, B, 2, CCOL.cyan); // [표시 보강] AH = HB, 접선 PA = PB
 
         pdot(O, 'O (r=3)', CCOL.cyan, { x: -45, y: 18 });
         pdot(P, 'P (OP=5)', CCOL.gold, { x: 10, y: 18 });
@@ -1121,6 +1191,7 @@ window.addEventListener('DOMContentLoaded', function () {
       pline(C2, B, CCOL.pink, 3.2);
       pright(A, C1, B, 11, CCOL.white);
       pright(B, C2, A, 11, CCOL.white);
+      apar(C1, A, 1, CCOL.white); apar(isInt ? B : C2, isInt ? C2 : B, 1, CCOL.white); // [표시 보강] 접선에 수직인 두 반지름은 서로 평행(≫)
 
       // ★ 슬라이더(t)로 접선 AB를 작은 원 중심 C2 쪽으로 평행이동시켜 직각삼각형 △C₁KC₂ 완성! ★
       const shiftVec = mul(nVec, isInt ? r2 * t : -r2 * t);
@@ -1177,6 +1248,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         pdot(C1, '원 중심 C₁(-2, -1)', CCOL.cyan, { x: -45, y: 22 });
         pdot(C2, '대각선 교점 C₂(2, 3)', CCOL.pink, { x: -35, y: -14 });
+        [pt(C2.x - rw, C2.y - rh), pt(C2.x + rw, C2.y + rh), pt(C2.x - rw, C2.y + rh), pt(C2.x + rw, C2.y - rh)].forEach((q) => atick(q, C2, 1, CCOL.pink)); // [표시 보강] 대각선은 교점에서 서로 이등분
         drawBottomTapeBanner(rect, '원과 직사각형의 넓이를 동시에 이등분하는 직선 = 원의 중심 C₁과 직사각형 대각선 교점 C₂를 잇는 직선!');
         return;
       }
@@ -1186,13 +1258,20 @@ window.addEventListener('DOMContentLoaded', function () {
         const C = pt(ox + 3.0 * sc, oy - 3.0 * sc);
         const C_ref = pt(ox + 3.0 * sc, oy + 3.0 * sc);
         const Rpx = 1.8 * sc;
-        const R_pt = pt(ox - 0.2 * sc, oy); // x축 위 반사점
 
         pcircle(C, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.16)', 3.0, [], 0);
         pcircle(C_ref, Rpx, CCOL.pink, 'rgba(244, 114, 182, 0.14)', 2.8, [6, 4], 1);
 
-        const T = pt(C.x - Rpx * 0.6, C.y + Rpx * 0.8);
-        const T_ref = pt(C_ref.x - Rpx * 0.6, C_ref.y - Rpx * 0.8);
+        // [표시 보강] 접점 T′은 A에서 대칭원 C′에 그은 접선의 접점으로 정확히 구하고, 반사점 R은 직선 A–T′와 x축의 교점(x축 위), T는 T′의 x축 대칭점으로 둡니다.
+        // 원본은 R·T·T′를 눈대중 위치에 놓아 A–R–T′가 일직선이 아니었습니다 → 입사각 = 반사각이 그림에서도 정확히 성립하게 함
+        const T_hint = pt(C_ref.x - Rpx * 0.6, C_ref.y - Rpx * 0.8);
+        const T_ref = (() => {
+          const vx = A.x - C_ref.x, vy = A.y - C_ref.y, th = Math.atan2(vy, vx), ph = Math.acos(Math.min(1, Rpx / Math.hypot(vx, vy)));
+          const c1 = pt(C_ref.x + Rpx * Math.cos(th + ph), C_ref.y + Rpx * Math.sin(th + ph)), c2 = pt(C_ref.x + Rpx * Math.cos(th - ph), C_ref.y + Rpx * Math.sin(th - ph));
+          return dist(c1, T_hint) < dist(c2, T_hint) ? c1 : c2;
+        })();
+        const R_pt = pt(A.x + ((T_ref.x - A.x) * (oy - A.y)) / (T_ref.y - A.y), oy); // x축 위 반사점
+        const T = pt(T_ref.x, 2 * oy - T_ref.y);
 
         pline(A, R_pt, CCOL.gold, 4.0, [], true, 2);
         pline(R_pt, T, CCOL.gold, 4.0, [], true, 2);
@@ -1202,6 +1281,7 @@ window.addEventListener('DOMContentLoaded', function () {
         pdot(R_pt, '반사점 R', CCOL.white, { x: -20, y: 22 });
         pdot(C, '원 중심 C(3, 3)', CCOL.cyan, { x: 10, y: -8 });
         pdot(C_ref, "x축 대칭원 C'(3, -3)", CCOL.pink, { x: 10, y: 18 });
+        areflect(R_pt, A, T, { x: 1, y: 0 }, CCOL.gold); // [표시 보강] 반사점 R: 입사각 = 반사각
 
         drawBottomTapeBanner(rect, "x축 반사 접선: 원을 x축 아래로 대칭이동한 C'(3, -3)에 출발점 A에서 곧장 그은 일직선 접선과 일치합니다!");
         return;
@@ -1231,6 +1311,7 @@ window.addEventListener('DOMContentLoaded', function () {
       pdot(B, 'B', CCOL.white, { x: 10, y: 18 });
       pdot(M, 'M (AB의 중점!)', CCOL.cyan, { x: 12, y: 18 });
       pdot(P, state.fold > 0.8 ? 'P (PM = d-r 최소!)' : 'P(원 위의 점)', CCOL.gold, { x: -45, y: -14 });
+      atick(A, M, 1, CCOL.cyan); atick(M, B, 1, CCOL.cyan); // [표시 보강] M은 AB의 중점: AM = MB
 
       drawBottomTapeBanner(rect, '파푸스의 중선정리: PA² + PB² = 2(PM² + AM²) ➔ 중점 M에서 원까지 최단거리 PM = d - r 일 때 최소!');
     }
