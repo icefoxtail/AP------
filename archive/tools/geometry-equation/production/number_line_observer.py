@@ -285,6 +285,13 @@ def _end_value(raw, parameter):
 
 
 JAMO = re.compile('^[\u3131-\u314e]$')
+# E34: a point may be named by a Hangul word of 2 to 5 syllables as well (written as plain text above its dot); this observer's own copies of the span rules follow
+WORD_NAME = re.compile('^[\uac00-\ud7a3]{2,5}$')
+HANGUL = re.compile('[\uac00-\ud7a3]')
+SPAN_LABEL_TEXT = re.compile('^[\uac00-\ud7a3][\uac00-\ud7a3 ]{0,8}$')
+SPAN_LABEL_MATH = re.compile(r'^[A-Za-z0-9=+\-<>.,()]{1,12}$')
+SPAN_STYLES = ('BRACE', 'ARROW', 'DOUBLE_ARROW')
+SPAN_HALF_PX, SPAN_HEAD_PX, SPAN_HEAD_HALF_PX, SPAN_MIN_WIDTH_PX = 6.0, 9.0, 3.6, 24.0
 
 
 def _point_flags(point):
@@ -293,7 +300,134 @@ def _point_flags(point):
     name = point.get('name')
     if hidden or name is None and not JAMO.fullmatch(point['id']): jamo = None
     else: jamo = name if isinstance(name, str) else point['id']
-    return {'name_hidden': hidden, 'jamo': jamo, 'show_value': point.get('showValue') is not False, 'style': point.get('style')}
+    if jamo is not None and not (JAMO.fullmatch(jamo) or WORD_NAME.fullmatch(jamo)) and (isinstance(name, str) or JAMO.fullmatch(point['id'])): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+    side = point.get('valueSide')
+    if side not in (None, 'ABOVE', 'BELOW'): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+    return {'name_hidden': hidden, 'jamo': jamo, 'show_value': point.get('showValue') is not False, 'style': point.get('style'), 'value_above': side == 'ABOVE'}
+
+
+def _label_box(label):
+    """The box a typeset label occupies (translate + its inner svg size), or None when unreadable."""
+    inner, match = label.find(NS + 'svg'), TRANSLATE.fullmatch(label.get('transform') or '')
+    if inner is None or not match: return None
+    return float(match.group(1)), float(match.group(2)), _num(inner, 'width'), _num(inner, 'height')
+
+
+def _span_plan(row_spec, values):
+    """The spans a POINTS row asks for, read from the plan alone: [{from,to,style,side,label,kind}] (an invalid plan is the observer's error, not a figure's)."""
+    raw = row_spec.get('spans')
+    if raw is None: return None
+    if not isinstance(raw, list) or not 1 <= len(raw) <= 3: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+    out, seen = [], set()
+    for item in raw:
+        if not isinstance(item, dict) or set(item) - {'from', 'to', 'label', 'style', 'side'}: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        a, b = item.get('from'), item.get('to')
+        if a not in values or b not in values or a == b or frozenset((a, b)) in seen: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        seen.add(frozenset((a, b)))
+        style = item.get('style', 'BRACE')
+        if style not in SPAN_STYLES: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        side = item.get('side', 'BELOW' if style == 'BRACE' else 'ABOVE')
+        if side not in ('ABOVE', 'BELOW'): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+        label = item.get('label')
+        kind = None
+        if label is not None:
+            if not isinstance(label, str) or label != label.strip(): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+            if HANGUL.search(label):
+                if not SPAN_LABEL_TEXT.fullmatch(label) or '  ' in label: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+                kind = 'TEXT'
+            else:
+                if not SPAN_LABEL_MATH.fullmatch(label): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+                kind = 'MATH'
+        out.append({'from': a, 'to': b, 'style': style, 'side': side, 'label': label, 'kind': kind})
+    return out
+
+
+def _check_spans(index, spans, values, px, axis_y, root, by_id, owners, label_boxes):
+    """Every span of row `index`: the brace or arrow recomputed from the plan's two end values, on the plan's side of the axis, with its label centred on the outer side
+    and nothing else (label, dot, another span) touching it."""
+    errors = []
+    tag_of = {'BRACE': 'span-brace', 'ARROW': 'span-arrow', 'DOUBLE_ARROW': 'span-arrow'}
+    drawn = [e for e in root.iter() if e.get('data-row') == str(index) and e.get('data-role') in ('span-brace', 'span-arrow')]
+    if len(drawn) != len(spans): errors.append('NL_SPAN_COUNT:%d' % index)
+    boxes = []
+    for k, span in enumerate(spans, start=1):
+        sid = 'r%d-span-%d' % (index, k)
+        element = by_id.get(sid)
+        if element is None: errors.append('NL_SPAN_MISSING:' + sid); continue
+        if element.get('data-role') != tag_of[span['style']] or element.get('data-span-style') != span['style'] or element.get('data-from') != span['from'] or element.get('data-to') != span['to'] or element.get('data-side') != span['side']:
+            errors.append('NL_SPAN_ATTRIBUTES:' + sid); continue
+        xa, xb = px(values[span['from']]), px(values[span['to']])
+        if abs(xb - xa) < SPAN_MIN_WIDTH_PX: errors.append('NL_SPAN_TOO_SHORT:' + sid)
+        direction = 1 if span['side'] == 'BELOW' else -1
+        points, shape = [], None
+        if span['style'] == 'BRACE':
+            if element.tag != NS + 'path': errors.append('NL_SPAN_SHAPE:' + sid); continue
+            tokens = re.findall(r'[MLQ]|-?\d+(?:\.\d+)?(?:e-?\d+)?', element.get('d') or '')
+            # M x y, Q c c a a, L x y, Q c c a a, Q c c a a, L x y, Q c c a a: the anchors are the pairs after M, the second pair of each Q and each L
+            commands, current = [], None
+            for t in tokens:
+                if t in ('M', 'L', 'Q'): current = [t, []]; commands.append(current)
+                elif current is not None: current[1].append(float(t))
+            if [c[0] for c in commands] != list('MQLQQLQ') or [len(c[1]) for c in commands] != [2, 4, 2, 4, 4, 2, 4]: errors.append('NL_SPAN_SHAPE:' + sid); continue
+            anchors = [(c[1][0], c[1][1]) if c[0] in 'ML' else (c[1][2], c[1][3]) for c in commands]
+            lo, hi = min(xa, xb), max(xa, xb)
+            y0 = anchors[0][1]
+            h = SPAN_HALF_PX
+            want = [(lo, y0), (lo + h, y0 + direction * h), (( lo + hi) / 2 - h, y0 + direction * h), ((lo + hi) / 2, y0 + direction * 2 * h), ((lo + hi) / 2 + h, y0 + direction * h), (hi - h, y0 + direction * h), (hi, y0)]
+            if any(abs(a[0] - w[0]) > TOL or abs(a[1] - w[1]) > TOL for a, w in zip(anchors, want)): errors.append('NL_SPAN_SHAPE:' + sid); continue
+            ys = [y0, y0 + direction * 2 * h]
+            points = [(lo, min(ys)), (hi, max(ys))]
+            shape = (lo, min(ys), hi, max(ys))
+        else:
+            if element.tag != NS + 'line': errors.append('NL_SPAN_SHAPE:' + sid); continue
+            y = _num(element, 'y1')
+            sign = 1 if xb > xa else -1
+            double = span['style'] == 'DOUBLE_ARROW'
+            if abs(_num(element, 'y2') - y) > TOL: errors.append('NL_SPAN_SHAPE:' + sid); continue
+            x1, x2 = _num(element, 'x1'), _num(element, 'x2')
+            want1, want2 = (xa + sign * SPAN_HEAD_PX if double else xa), xb - sign * SPAN_HEAD_PX
+            if abs(x1 - want1) > TOL or abs(x2 - want2) > TOL: errors.append('NL_SPAN_ENDS:' + sid)
+            heads = [e for e in root.iter(NS + 'polygon') if e.get('data-role') == 'span-head' and e.get('data-of') == sid]
+            tips = [(xb, sign)] + ([(xa, -sign)] if double else [])
+            if len(heads) != len(tips): errors.append('NL_SPAN_HEAD_COUNT:' + sid)
+            for head, (tip, dx) in zip(sorted(heads, key=lambda e: e.get('id') or ''), tips):
+                try: pts = [tuple(float(v) for v in pair.split(',')) for pair in head.get('points').split()]
+                except Exception: errors.append('NL_SPAN_HEAD:' + sid); continue
+                if len(pts) != 3 or abs(pts[0][0] - tip) > TOL or abs(pts[0][1] - y) > TOL or any(abs(q[0] - (tip - dx * SPAN_HEAD_PX)) > TOL for q in pts[1:]) or sorted(round(q[1] - y, 2) for q in pts[1:]) != [-SPAN_HEAD_HALF_PX, SPAN_HEAD_HALF_PX]:
+                    errors.append('NL_SPAN_HEAD:' + sid)
+            shape = (min(xa, xb), y - SPAN_HEAD_HALF_PX, max(xa, xb), y + SPAN_HEAD_HALF_PX)
+        if shape is None: continue
+        # on the plan's side of the axis, clear of the dots
+        if direction > 0 and shape[1] <= axis_y + 8 or direction < 0 and shape[3] >= axis_y - 8: errors.append('NL_SPAN_WRONG_SIDE:' + sid)
+        boxes.append((sid, shape))
+        # its label
+        mine = [l for l in owners.get(sid, []) if l.get('data-label-role') == 'span-label']
+        if span['label'] is None:
+            if mine: errors.append('NL_SPAN_LABEL_UNEXPECTED:' + sid)
+        elif len(mine) != 1: errors.append('NL_SPAN_LABEL_COUNT:' + sid)
+        else:
+            label = mine[0]
+            text_ok = label.get('data-text') == span['label'] and label.get('data-tex') is None if span['kind'] == 'TEXT' else label.get('data-tex') == span['label'] and label.get('data-text') is None
+            if not text_ok or label.get('data-span') != span['from'] + ',' + span['to']: errors.append('NL_SPAN_LABEL_TEXT:' + sid)
+            box = _label_box(label)
+            if box is None: errors.append('NL_LABEL_GEOMETRY_UNREADABLE:' + str(label.get('id')))
+            else:
+                if abs(box[0] + box[2] / 2 - (xa + xb) / 2) > 0.5: errors.append('NL_SPAN_LABEL_NOT_CENTRED:' + sid)
+                if direction > 0 and box[1] < shape[3] + 0.5 or direction < 0 and box[1] + box[3] > shape[1] - 0.5: errors.append('NL_SPAN_LABEL_NOT_OUTSIDE:' + sid)
+    # nothing else touches a span: no other label, no dot of the row, no other span
+    for sid, shape in boxes:
+        grown = (shape[0] - 1, shape[1] - 1, shape[2] + 1, shape[3] + 1)
+        for label_id, box in label_boxes:
+            if label_id == sid + '-label': continue
+            if grown[0] < box[0] + box[2] and box[0] < grown[2] and grown[1] < box[1] + box[3] and box[1] < grown[3]: errors.append('NL_SPAN_OVERLAPS_LABEL:%s:%s' % (sid, label_id))
+        for circle in root.iter(NS + 'circle'):
+            if circle.get('data-row') != str(index): continue
+            cx, cy, r = _num(circle, 'cx'), _num(circle, 'cy'), _num(circle, 'r') + 0.8
+            if grown[0] < cx + r and cx - r < grown[2] and grown[1] < cy + r and cy - r < grown[3]: errors.append('NL_SPAN_ON_DOT:%s:%s' % (sid, circle.get('id')))
+    for i, (sid, a) in enumerate(boxes):
+        for other, b in boxes[i + 1:]:
+            if a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]: errors.append('NL_SPAN_OVERLAP:%s:%s' % (sid, other))
+    return errors
 
 
 def _scale_of(row_spec, values):
@@ -395,6 +529,9 @@ def audit_figure(numberLine, svg, pointNames=None):
     def read(label, symbols=None):
         return parse_tex_number(label.get('data-tex') or '', symbols)
     def at_value(expression): return S.simplify(S.sympify(expression).subs(at_sample))
+    # E34: the points whose value the plan writes above the dot (over the name), and every label's box (a span must keep clear of all of them)
+    value_above = {(str(i), point['id']) for i, r_ in enumerate(rows, start=1) if r_['kind'] == 'POINTS' for point in r_['spec']['points'] if _point_flags(point)['value_above']}
+    label_boxes = [(label.get('id'), box) for label, box in ((l, _label_box(l)) for l in labels) if box is not None]
     for index, row in enumerate(rows, start=1):
         axis = by_id.get('r%d-axis' % index)
         if axis is None: errors.append('NL_AXIS_MISSING:%d' % index); continue
@@ -532,6 +669,11 @@ def audit_figure(numberLine, svg, pointNames=None):
                     if want is None or any(sid not in values for sid in span): errors.append('NL_RATIO_SPAN:' + str(label.get('id'))); continue
                     if abs(centre - (px(values[span[0]]) + px(values[span[1]])) / 2) > 0.5: errors.append('NL_RATIO_NOT_CENTRED:' + str(label.get('id')))
                     if label.get('data-tex') != want: errors.append('NL_RATIO_VALUE:' + str(label.get('id')))
+            # spans (E34): a brace or arrow between two points of the row, recomputed from the plan's two end values
+            span_plan = _span_plan(row['spec'], values)
+            if span_plan is None:
+                if any(e.get('data-row') == str(index) and e.get('data-role') in ('span-brace', 'span-arrow') for e in root.iter()): errors.append('NL_SPAN_UNEXPECTED:%d' % index)
+            else: errors.extend(_check_spans(index, span_plan, values, px, axis_y, root, by_id, owners, label_boxes))
             continue
         # SET / RESULT rows
         pieces = row['pieces']
@@ -551,7 +693,9 @@ def audit_figure(numberLine, svg, pointNames=None):
             elif x2 < px_right: errors.append('NL_BAND_UPPER_EXTENT:%s' % band.get('id'))
             # the piece's own inequality label: reads back as the piece (ends and open/closed)
             mine = [l for l in owners.get(band.get('id'), []) if l.get('data-label-role') == 'set']
-            if len(mine) != 1: errors.append('NL_SET_LABEL_COUNT:%s' % band.get('id'))
+            hide_set = row['spec'].get('hideSetLabel')
+            if hide_set is not None and not isinstance(hide_set, bool): raise ValueError('NL_OBSERVER_PLAN_INVALID')
+            if len(mine) != (0 if hide_set else 1): errors.append('NL_SET_LABEL_COUNT:%s' % band.get('id'))
             for l in mine:
                 try: lower, lower_closed, upper, upper_closed = parse_header(l.get('data-tex') or '', variable, free)
                 except ValueError as error: errors.append(str(error) + ':' + str(l.get('id'))); continue
@@ -611,8 +755,12 @@ def audit_figure(numberLine, svg, pointNames=None):
                 except ValueError as error: errors.append(str(error) + ':' + str(l.get('id')))
     # the parameter note: "a=value" and the Korean tail
     notes = [l for l in labels if l.get('data-label-role') == 'note']
+    hide_note = None if parameter_spec is None else parameter_spec.get('hideNote')
+    if hide_note is not None and not isinstance(hide_note, bool): raise ValueError('NL_OBSERVER_PLAN_INVALID')
     if parameter_spec is None:
         if notes: errors.append('NL_NOTE_WITHOUT_PARAMETER')
+    elif hide_note:
+        if notes: errors.append('NL_NOTE_HIDDEN_BUT_DRAWN')     # hideNote: the sample value of the parameter (which may be the answer) is written nowhere
     else:
         values_ = [l for l in notes if l.get('data-tex')]
         texts = [l for l in notes if l.get('data-text')]
@@ -634,7 +782,7 @@ def audit_figure(numberLine, svg, pointNames=None):
         row_n = label.get('data-row')
         axis = by_id.get('r%s-axis' % row_n) if row_n else None
         axis_y = _num(axis, 'y1') if axis is not None else None
-        if role in ('note', 'ratio', 'row-label'): continue
+        if role in ('note', 'ratio', 'row-label', 'span-label'): continue
         if role == 'variable':
             if label.get('data-tex') != variable: errors.append('NL_VARIABLE_LABEL_MISMATCH:' + str(label_id))
             if axis is not None and box[0] < _num(axis, 'x2'): errors.append('NL_VARIABLE_LABEL_ON_AXIS:' + str(label_id))
@@ -644,7 +792,7 @@ def audit_figure(numberLine, svg, pointNames=None):
         at = (_num(target, 'x1') + _num(target, 'x2')) / 2 if role == 'set' else _num(target, 'x1') if role == 'tick' else _num(target, 'cx')
         if abs(centre - at) > 0.5: errors.append('NL_LABEL_NOT_CENTRED:' + str(label_id))
         # a point's value is written below the axis, or (on a graduated axis, whose ticks use the space below) stacked above its name
-        stacked = role == 'point-value' and any(t.get('data-scale') for t in ticks if t.get('data-row') == row_n)
+        stacked = role == 'point-value' and (any(t.get('data-scale') for t in ticks if t.get('data-row') == row_n) or (row_n, target.get('data-point-id')) in value_above)
         if stacked:
             if box[1] + box[3] > _num(target, 'cy') - _num(target, 'r'): errors.append('NL_LABEL_NOT_ABOVE_DOT:' + str(label_id))
             for other in owners.get(owner, []):
