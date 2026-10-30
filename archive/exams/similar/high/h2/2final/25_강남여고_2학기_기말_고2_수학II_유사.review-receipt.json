@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "25_강남여고_2학기_기말_고2_수학II_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사.meta-q01-q25.json",
+  "candidateGitBlobSha1": "44bd5a9e326f3be52820d4adc1db2918b17c1e9a",
+  "reviewTimestamp": "2026-10-29T00:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS_WITH_NOTES",
+  "blindFirstPass": {
+    "totalSolved": 25,
+    "answerMatches": 25,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rev1/blind_freeze.json",
+    "method": "Student-visible fields (content/choices/figures Q8,Q19 viewed) solved by hand with sympy-style checks before comparing stored answer; frozen then compared.",
+    "disclosure": "Q1 answer/solution and solutionImageAlt strings of Q3,5,8,10,12,15,19,22,24 were incidentally visible in the first extraction dump before solving; all items were nevertheless derived independently (Q1 trivial). Weakened independence noted for those items.",
+    "frozenAnswers": {
+      "1": "③",
+      "2": "⑤",
+      "3": "①",
+      "4": "④",
+      "5": "②",
+      "6": "⑤",
+      "7": "③",
+      "8": "①",
+      "9": "②",
+      "10": "④",
+      "11": "⑤",
+      "12": "②",
+      "13": "④",
+      "14": "①",
+      "15": "③",
+      "16": "⑤",
+      "17": "②",
+      "18": "④",
+      "19": "①",
+      "20": "③",
+      "21": "⑤",
+      "22": "65",
+      "23": "-32",
+      "24": "-18",
+      "25": "g(x)=2x^3-x^2-5x+3"
+    }
+  },
+  "originalComparison": {
+    "questionCount": "25 vs 25",
+    "pointsSum": "100 vs 100",
+    "perQuestionPoints": "all equal",
+    "questionTypes": "all equal",
+    "levels": "all equal",
+    "answerValueCollisionWithOriginal": "none noted",
+    "notes": [
+      "Q3 changed from v(t) given/a asked to x(t) given/v asked (same RPM record, derivative of motion; acceptable)",
+      "Q13 original used a drawn graph; similar states f>=g / f<=g intervals and four integrals in text (complete, no figure needed)",
+      "Q20 original had figure; similar states layout fully in text (verified unique answer r=5/3 -> 8)"
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 5,
+    "③": 4,
+    "④": 4,
+    "⑤": 4,
+    "note": "MC 1-21 only; 4-5 per slot"
+  },
+  "mathReview": "All 25 solutions re-derived; steps, case analysis (Q16 a=4,9; Q18 -7<=k<=11 with x1!=x2 strictness; Q21 existence f=-12x-12,a=30 verified) and curriculum (2015 Math II) OK. KaTeX: 696 formulas rendered with throwOnError, 0 errors; $ parity OK.",
+  "reviewerEdits": [
+    {
+      "qid": 18,
+      "file": "js+meta+registry",
+      "change": "removed redundant new key EXT-L4-AVERAGE-RATE-INEQUALITY-ALL-PAIRS; use canonical RPM-013 L4 '평균변화율·순간변화율' (TPL_AVERAGE_RATE_ANALYSIS already covers condition interpretation)"
+    },
+    {
+      "qid": 21,
+      "file": "js+meta+registry",
+      "change": "removed redundant new key EXT-L4-INTEGRAL-VARIABLE-FACTOR-DIFFERENTIATION; use canonical RPM-042 L4 '미분과 적분 관계' (TPL_DIFFERENTIATE_INTEGRAL_RELATION covers it)"
+    },
+    {
+      "qid": 23,
+      "file": "js+meta",
+      "change": "PT/TPL changed PT_DERIVATIVE_EXTREMA/TPL_EXTREMA_VALUE_PARAMETER -> PT_DERIVATIVE_FUNCTION_DETERMINATION/TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE (tangency to x-axis gives f(-1)=f'(-1)=0 determining a,b; matches original Q23 and template definition); RPM-024 kept"
+    },
+    {
+      "qid": "all",
+      "file": "meta",
+      "change": "expectedSourceBlobSha1 recomputed for final JS; registryChanges.generatedL4 synced with registry"
+    }
+  ],
+  "metaReview": {
+    "coverage": {
+      "items": 25,
+      "requiredFieldsFilled": "725/725 (29 fields x 25)",
+      "canonicalRpmL4Items": 22,
+      "extensionL4Items": 3,
+      "reusedExtensionKeys": 0,
+      "newExtensionKeys": 3,
+      "newExtensionKeysDetail": [
+        {
+          "key": "EXT-L4-MONOTONICITY-PARAMETER-ALL-REALS",
+          "qid": 9,
+          "parent": "H2-M2-RPM-023",
+          "parentExistsInCanonicalCrosswalk": true,
+          "verdict": "KEEP (canonical L4 '증감표' does not express the all-reals monotonic/one-to-one parameter condition)"
+        },
+        {
+          "key": "EXT-L4-DEFINITE-INTEGRAL-TRANSLATION-INVARIANCE",
+          "qid": 17,
+          "parent": "H2-M2-RPM-040",
+          "parentExistsInCanonicalCrosswalk": true,
+          "verdict": "KEEP (canonical L4 '대칭성'/'구간 분할' do not cover translation invariance of the integral)"
+        },
+        {
+          "key": "EXT-L4-ANTIDERIVATIVE-RELATION-POLYNOMIAL-DETERMINATION",
+          "qid": 25,
+          "parent": "H2-M2-RPM-036",
+          "parentExistsInCanonicalCrosswalk": true,
+          "verdict": "KEEP (g'+g=h polynomial determination is not an existing canonical L4)"
+        }
+      ],
+      "removedExtensionKeys": [
+        "EXT-L4-AVERAGE-RATE-INEQUALITY-ALL-PAIRS (-> canonical RPM-013)",
+        "EXT-L4-INTEGRAL-VARIABLE-FACTOR-DIFFERENTIATION (-> canonical RPM-042)"
+      ],
+      "distinctCrossConceptKeys": 16,
+      "distinctConditionKeys": 8,
+      "distinctProblemTypeKeys": 14,
+      "distinctTemplateKeys": 19,
+      "allCrossConceptKeysExistInCanonical": true,
+      "allConditionKeysExistInCanonical": true,
+      "allPtTplRegisteredInCanonicalPacksAndTemplateBelongsToPT": true,
+      "rpmRecordIdsExistAndL1toL3MatchCrosswalk": true,
+      "aliasProposals": 0,
+      "evidenceDebt": 0,
+      "newCrossConceptKeys": 0,
+      "newConditionKeys": 0
+    },
+    "crossWorktreeOverlap": "Compared with 25_매산여고, 25_순천고, 25_강남여고_확통 registries: no semantic duplicates; aliasProposals not needed.",
+    "levelDifficulty": "levels identical to original per qid; difficultyBucket 1-5 consistent with solution step counts.",
+    "notes": [
+      "Q9/Q13/Q15/Q18/Q24/Q25 use registered non-default TPL for their record (children of the correct PT); Q23 PT differs from RPM-024 default PT by design (see edits).",
+      "Q14 could alternatively use original's TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION; left as is (symmetry + system solution defensible)."
+    ]
+  },
+  "visualReview": {
+    "plans": "50 plan files (25 problem + 25 solution) valid JSON; 11 SVGs physically exist, all with role=img/title/desc, no raw LaTeX, glyph-path text; rendered via Chromium and viewed.",
+    "activeSvg": [
+      "q8 problem",
+      "q19 problem",
+      "q3,q5,q8,q10,q12,q15,q19,q22,q24 solution"
+    ],
+    "unsupported": {
+      "q07-solution": "cubic overview layout rejection",
+      "q11-solution": "same",
+      "q23-solution": "same",
+      "q16-solution": "quartic overview policy",
+      "q20-problem": "cone with two cylinders unsupported",
+      "q20-solution": "cross-section unsupported"
+    },
+    "unsupportedVerdict": "Fallback APPROVED by reviewer: every stem is self-contained in text (Q20 spatial layout fully described) and solutions are complete algebraically; no answer-leaking figure. Non-blocking improvement: a cross-section solution figure for Q20 would help.",
+    "figureNotes": [
+      "Q8/Q5 figures label axes x,y and 'v(x)' while text uses t,v (engine limitation; solutionImageAlt states x=t,y=v). Non-blocking.",
+      "Q19 problem figure shows one instance (P=(6,0), y=-1/2(x-3)^2+9/2) without 'P' label/arrow though P moves; does not leak the answer (p=3) but could confuse; non-blocking, recommend regenerating with generic labels if engine allows.",
+      "Q12 solution figure does not label which parabola is f/g except via legend; acceptable."
+    ]
+  },
+  "harness": {
+    "command": "node tools/harness/verify_similar_exam.mjs <js> --phase=draft",
+    "result": "GATE_FAIL 65 errors",
+    "classification": {
+      "toolLimit": "~50 'unregistered PT/TPL' errors because harness reads middle taxonomy; verified instead against canonical high packs directly (all registered); Q8/Q19 'symbol missing from SVG text labels' because engine SVG text is glyph paths and P is a moving point/velocity graph label; Q19 'P' unlabeled noted above",
+      "reviewerApproved": "6 UNSUPPORTED plan fallbacks (Q7,11,16,20x2,23)",
+      "fixed": "expectedSourceBlobSha1 mismatch (updated)",
+      "realContentDefects": "none blocking"
+    }
+  },
+  "structural": {
+    "nodeCheck": "PASS",
+    "questionCount": 25,
+    "pointsSum": 100,
+    "choicesPerMC": 5
+  },
+  "NOT_RUN": [
+    "actual browser/print render of the exam page",
+    "student engine.html runtime check",
+    "Chrome print preview"
+  ],
+  "defects": []
+}

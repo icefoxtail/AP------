@@ -1,0 +1,120 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "x^2-3x",
+    "domain": [
+      -0.6,
+      3.6
+    ],
+    "viewport": [
+      -1,
+      4,
+      -3,
+      8
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "9",
+          "-3"
+        ],
+        "intersectionX": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "S",
+        "upper": "g",
+        "lower": "f",
+        "from": "0",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1.5,
+        "y": -2.25
+      },
+      {
+        "id": "W",
+        "x": 1.5,
+        "y": 6.75
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "3/2",
+        "-9/4"
+      ],
+      "W": [
+        "3/2",
+        "27/4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "두 포물선 y=x²-3x와 y=-3x²+9x는 x=0, 3에서 만나고 그 사이 영역의 넓이가 18이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "x²-3x=-3x²+9x에서 4x(x-3)=0이므로 교점의 x좌표는 0, 3이다.",
+      "mappedTo": [
+        "graphPlan.referenceCurves",
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "0≤x≤3에서 위쪽은 y=-3x²+9x, 아래쪽은 y=x²-3x이다.",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선 사이에서 어느 곡선이 위쪽인지와 적분 구간 [0,3]을 보여 준다."
+  ],
+  "sourceQuote": "$0\\le x\\le3$에서 $-3x^2+9x\\ge x^2-3x$이다.",
+  "assetPath": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-solution.svg"
+  }
+}

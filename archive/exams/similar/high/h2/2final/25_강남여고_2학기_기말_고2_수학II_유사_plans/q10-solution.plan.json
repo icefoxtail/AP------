@@ -1,0 +1,91 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-9",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -3.2,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      -30,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -1,
+        "y": 5
+      },
+      {
+        "id": "N",
+        "x": 3,
+        "y": -27
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-1",
+        "5"
+      ],
+      "N": [
+        "3",
+        "-27"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "h1",
+          "slope": "0",
+          "intercept": "5"
+        },
+        {
+          "id": "h2",
+          "slope": "0",
+          "intercept": "-27"
+        }
+      ]
+    }
+  },
+  "caption": "곡선 y=g(x)와 직선 y=5, y=-27은 극대점 (-1, 5)와 극소점 (3, -27)에서 접하여 서로 다른 교점이 2개이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "g(x)=x³-3x²-9x는 x=-1에서 극댓값 5, x=3에서 극솟값 -27을 갖는다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "직선 y=-k가 y=5 또는 y=-27일 때 교점이 2개이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "직선이 극대점 또는 극소점을 지날 때 교점이 정확히 2개가 됨을 보여 준다."
+  ],
+  "sourceQuote": "$g'(x)=3x^2-6x-9=3(x+1)(x-3)$",
+  "assetPath": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q10-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q10-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q10-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q10-solution.svg"
+  }
+}

@@ -142,7 +142,7 @@
       <div>
         <div class="flex items-center gap-2 flex-wrap">
           <h1 class="text-sm md:text-base font-black tracking-tight text-emerald-50 chalk-text">중3 삼각비 · 사분원 · 길이와 넓이 마스터 실험실</h1>
-          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">8대 탐구관 · 41종 직접 해부</span>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">8대 탐구관 · 38종 직접 해부</span>
         </div>
         <p class="text-[10.5px] text-emerald-400/85 hidden 2xl:block">sin·cos·tan 기준각 역전 · 특수각(30°·45°·60°) 도형 절단 · 사분원 점 P 드래그 &amp; 대소 비교 · 시계추 높이 L(1-cosθ) · 특수각 보존 수선 · 높이 h = a/(tan x ± tan y) · 넓이 ½bc sin A &amp; 대각선 ½pq sin θ</p>
       </div>
@@ -336,7 +336,7 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- 중3 삼각비 8대 탐구관 × 41종 시나리오 마스터 엔진 스크립트 -->
+  <!-- 중3 삼각비 8대 탐구관 × 38종 시나리오 마스터 엔진 스크립트 -->
   <!-- ===================================================================== -->
   <script>
     function tex(latexStr) {
@@ -344,6 +344,11 @@
         return katex.renderToString(latexStr, { throwOnError: false, displayMode: false });
       }
       return latexStr;
+    }
+
+    // 해설 문자열(hint · formulaHTML · notes) 속 $...$ 구간을 위 tex()로 KaTeX 수식으로 바꿉니다.
+    function texInline(html) {
+      return html.replace(/\$([^$]+)\$/g, (m, src) => tex(src));
     }
 
     const TCOL = {
@@ -362,8 +367,14 @@
     function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
     function sub(a, b) { return { x: a.x - b.x, y: a.y - b.y }; }
     function add(a, b) { return { x: a.x + b.x, y: a.y + b.y }; }
+    function addPt(a, b) { return add(a, b); }
     function mul(v, k) { return { x: v.x * k, y: v.y * k }; }
     function norm(v) { const l = Math.hypot(v.x, v.y) || 1; return { x: v.x / l, y: v.y / l }; }
+    function projectOnLine(p, a, b) {
+      const d = sub(b, a), l2 = d.x * d.x + d.y * d.y || 1;
+      const t = ((p.x - a.x) * d.x + (p.y - a.y) * d.y) / l2;
+      return { x: a.x + d.x * t, y: a.y + d.y * t };
+    }
     function rot(p, center, rad) {
       const dx = p.x - center.x, dy = p.y - center.y;
       const c = Math.cos(rad), s = Math.sin(rad);
@@ -371,7 +382,7 @@
     }
 
     // -------------------------------------------------------------------------
-    // 1. 전역 상태 관리 (8대 탐구관 × 41종 시나리오)
+    // 1. 전역 상태 관리 (8대 탐구관 × 38종 시나리오)
     // -------------------------------------------------------------------------
     const state = {
       mode: 1, // 1~8
@@ -461,6 +472,11 @@
       ]
     };
 
+    // 장면별로 강조할 요소가 없어 효과가 없는 관찰 렌즈 — 그 장면에서는 해당 렌즈 버튼을 숨깁니다 (여기 적지 않은 렌즈는 모든 장면에서 씁니다)
+    const LENS_OFF = {
+      aux: ['defSCT', 'refAngleSwap', 'oneToOther', 'solid3DTrig', 'cut45', 'findFromHyp', 'findFromBase', 'treeEyeHeight', 'brokenTreeCone', 'regPolygonArea']
+    };
+
     // -------------------------------------------------------------------------
     // 2. 캔버스 초기화 & 시각적 기하 증거 드로잉 함수
     // -------------------------------------------------------------------------
@@ -503,15 +519,29 @@
       return state.activePartIdx !== -1 && state.activePartIdx === partIdx;
     }
 
-    function pline(a, b, color = '#fbbf24', width = 2.6, dash = [], glow = false, partIdx = undefined) {
+    // 관찰 렌즈(state.conceptSwitch): 그리는 요소마다 그룹('def' · 'ratio' · 'aux', 여럿이면 공백으로 구분)을 붙여 두고,
+    // 선택한 렌즈에 속한 요소는 굵게(hi) · 속하지 않은 요소는 흐리게(a) 그립니다. 그룹이 없는('') 바탕 요소는 항상 그대로입니다.
+    //   def   기준각·빗변·대변(높이): 각·직각 표시, 변 이름표, 핵심 선분
+    //   ratio sin·cos·tan 선분     : 핵심 선분, 삼각비 이름표, 하단 비율 띠·요약 상자
+    //   aux   수선의 발 H·외각 보조선: 점선 보조선, 수선의 발·직각, 외각, 바깥 보조 도형
+    function lensFx(group) {
+      const sw = state.conceptSwitch;
+      if (sw === 'all' || !group) return { a: 1, hi: false };
+      const on = group.split(' ').includes(sw);
+      return { a: on ? 1 : 0.2, hi: on };
+    }
+
+    function pline(a, b, color = '#fbbf24', width = 2.6, dash = [], glow = false, partIdx = undefined, lens = dash.length ? 'aux' : partIdx !== undefined ? 'def ratio' : '') {
       const dimmed = isPartDimmed(partIdx);
       const hi = isPartHighlighted(partIdx);
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.strokeStyle = dimmed ? 'rgba(148, 163, 184, 0.22)' : color;
-      ctx.lineWidth = hi ? width + 2.2 : dimmed ? 1.1 : width;
+      ctx.lineWidth = hi ? width + 2.2 : dimmed ? 1.1 : fx.hi ? width + 1.6 : width;
       ctx.lineCap = 'round';
       ctx.setLineDash(dash);
-      if (glow || hi) {
+      if (glow || hi || fx.hi) {
         ctx.shadowColor = color;
         ctx.shadowBlur = hi ? 16 : 10;
       }
@@ -522,10 +552,12 @@
       ctx.restore();
     }
 
-    function ppoly(pts, fill = 'rgba(52,211,153,0.20)', stroke = '#34d399', width = 2.8, partIdx = undefined) {
+    function ppoly(pts, fill = 'rgba(52,211,153,0.20)', stroke = '#34d399', width = 2.8, partIdx = undefined, lens = '') {
       const dimmed = isPartDimmed(partIdx);
       const hi = isPartHighlighted(partIdx);
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.beginPath();
       pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
       ctx.closePath();
@@ -535,8 +567,8 @@
       }
       if (stroke) {
         ctx.strokeStyle = dimmed ? 'rgba(148, 163, 184, 0.22)' : stroke;
-        ctx.lineWidth = hi ? width + 2.0 : dimmed ? 1.0 : width;
-        if (hi) {
+        ctx.lineWidth = hi ? width + 2.0 : dimmed ? 1.0 : fx.hi ? width + 1.4 : width;
+        if (hi || fx.hi) {
           ctx.shadowColor = stroke;
           ctx.shadowBlur = 15;
         }
@@ -545,13 +577,15 @@
       ctx.restore();
     }
 
-    function pdot(p, text = '', col = '#ffffff', refCenter = null, customOff = null) {
+    function pdot(p, text = '', col = '#ffffff', refCenter = null, customOff = null, lens = /^H|수선의 발|각이등분/.test(text) ? 'aux' : '') {
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 5.2, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, fx.hi ? 6.8 : 5.2, 0, Math.PI * 2);
       ctx.fillStyle = col;
       ctx.shadowColor = col;
-      ctx.shadowBlur = 8;
+      ctx.shadowBlur = fx.hi ? 16 : 8;
       ctx.fill();
       ctx.lineWidth = 1.8;
       ctx.strokeStyle = '#ffffff';
@@ -578,11 +612,13 @@
       ctx.restore();
     }
 
-    function pright(v, p1, p2, size = 12, col = '#fbbf24') {
+    function pright(v, p1, p2, size = 12, col = '#fbbf24', lens = 'def') {
       const d1 = norm(sub(p1, v)), d2 = norm(sub(p2, v));
       const u1 = mul(d1, size), u2 = mul(d2, size);
       const c1 = add(v, u1), c12 = add(c1, u2), c2 = add(v, u2);
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.beginPath();
       ctx.moveTo(v.x, v.y); ctx.lineTo(c1.x, c1.y); ctx.lineTo(c12.x, c12.y); ctx.lineTo(c2.x, c2.y);
       ctx.closePath();
@@ -591,19 +627,21 @@
       ctx.beginPath();
       ctx.moveTo(c1.x, c1.y); ctx.lineTo(c12.x, c12.y); ctx.lineTo(c2.x, c2.y);
       ctx.strokeStyle = col;
-      ctx.lineWidth = 2.0;
+      ctx.lineWidth = fx.hi ? 3.2 : 2.0;
       ctx.stroke();
       ctx.restore();
     }
 
-    function ptick(p1, p2, count = 1, col = '#fbbf24', size = 6.5) {
+    function ptick(p1, p2, count = 1, col = '#fbbf24', size = 6.5, lens = 'def') {
       const m = mid(p1, p2);
       const d = norm(sub(p2, p1));
       const n = { x: -d.y, y: d.x };
       const gap = 4.5;
+      const fx = lensFx(lens);
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.strokeStyle = col;
-      ctx.lineWidth = 2.2;
+      ctx.lineWidth = fx.hi ? 3.4 : 2.2;
       for (let i = 0; i < count; i++) {
         const off = (i - (count - 1) / 2) * gap;
         const c = add(m, mul(d, off));
@@ -615,12 +653,14 @@
       ctx.restore();
     }
 
-    function pangle(v, p1, p2, col = '#fbbf24', r = 26, rings = 1, label = '') {
+    function pangle(v, p1, p2, col = '#fbbf24', r = 26, rings = 1, label = '', lens = 'def') {
       const t1 = Math.atan2(p1.y - v.y, p1.x - v.x);
       const t2 = Math.atan2(p2.y - v.y, p2.x - v.x);
       const d = (t2 - t1 + Math.PI * 3) % (Math.PI * 2) - Math.PI;
+      const fx = lensFx(lens);
 
       ctx.save();
+      ctx.globalAlpha *= fx.a;
       ctx.beginPath();
       ctx.moveTo(v.x, v.y);
       ctx.arc(v.x, v.y, r, t1, t1 + d, d < 0);
@@ -629,7 +669,7 @@
       ctx.fill();
 
       ctx.strokeStyle = col;
-      ctx.lineWidth = 2.0;
+      ctx.lineWidth = fx.hi ? 3.4 : 2.0;
       for (let i = 0; i < rings; i++) {
         const rad = r - i * 4.5;
         if (rad > 4) {
@@ -654,9 +694,11 @@
       ctx.restore();
     }
 
-    function ptag(x, y, msg, color = '#fef08a', size = 13) {
+    function ptag(x, y, msg, color = '#fef08a', size = 13, lens = /sin|cos|tan/.test(msg) ? 'ratio' : /빗변|대변|밑변|높이/.test(msg) ? 'def' : '') {
+      const fx = lensFx(lens);
       ctx.save();
-      ctx.font = `800 ${size}px Pretendard, sans-serif`;
+      ctx.globalAlpha *= fx.a;
+      ctx.font = `800 ${fx.hi ? size + 1.5 : size}px Pretendard, sans-serif`;
       ctx.textAlign = 'center';
       ctx.lineWidth = 3.5;
       ctx.strokeStyle = 'rgba(5, 16, 12, 0.94)';
@@ -672,6 +714,7 @@
       const sx = (rect.width - bw) / 2;
 
       ctx.save();
+      ctx.globalAlpha *= lensFx(segments && segments.length ? 'ratio' : '').a;
       ctx.fillStyle = 'rgba(7, 20, 15, 0.94)';
       ctx.strokeStyle = 'rgba(52, 211, 153, 0.5)';
       ctx.lineWidth = 1.5;
@@ -716,6 +759,7 @@
       const by = 14;
 
       ctx.save();
+      ctx.globalAlpha *= lensFx('ratio').a;
       ctx.fillStyle = 'rgba(7, 20, 15, 0.94)';
       ctx.strokeStyle = '#fbbf24';
       ctx.lineWidth = 1.8;
@@ -738,7 +782,7 @@
     }
 
     // -------------------------------------------------------------------------
-    // 3. 8대 탐구관 × 41종 시나리오별 실시간 명세 생성기 (getSpec)
+    // 3. 8대 탐구관 × 38종 시나리오별 실시간 명세 생성기 (getSpec)
     // -------------------------------------------------------------------------
     function getSpec() {
       const m = state.mode;
@@ -946,7 +990,7 @@
               : `x = ${deg}° (> 45°): sin x > cos x 이므로 √(sin x - cos x)² = sin x - cos x`,
             rule: '45° 대소 경계 법칙: 0°~45°는 cos x > sin x | 45°에서 sin=cos=√2/2 < tan(1) | 45°~90°는 tan x > 1 > sin x > cos x!',
             formulaHTML: `• <strong>$0^\\circ < x < 45^\\circ$일 때</strong>: ${tex(`\\sin x < \\cos x \\implies \\sqrt{(\\sin x - \\cos x)^2} = \\mathbf{\\cos x - \\sin x}`)}<br/>• <strong>$45^\\circ < x < 90^\\circ$일 때</strong>: ${tex(`\\cos x < \\sin x < 1 < \\tan x \\implies \\sqrt{(\\sin x - \\tan x)^2} = \\mathbf{\\tan x - \\sin x}`)}`,
-            notes: `• 시험에서 “$45^\\circ < x < 90^\\circ$일 때”가 나오면 머릿속으로 <strong>$x = 60^\\circ$ ($\sin 60^\\circ = \\frac{\\sqrt{3}}{2}, \\cos 60^\\circ = \\frac{1}{2}, \\tan 60^\\circ = \\sqrt{3}$)를 대입</strong>해서 양수인지 음수인지 판별하면 절대 안 틀립니다!`
+            notes: `• 시험에서 “$45^\\circ < x < 90^\\circ$일 때”가 나오면 머릿속으로 <strong>$x = 60^\\circ$ ($\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}, \\cos 60^\\circ = \\frac{1}{2}, \\tan 60^\\circ = \\sqrt{3}$)를 대입</strong>해서 양수인지 음수인지 판별하면 절대 안 틀립니다!`
           };
         }
         return {
@@ -1216,6 +1260,7 @@
     // 4. 메인 렌더링 파이프라인 (모드 1 ~ 8)
     // -------------------------------------------------------------------------
     function render() {
+      syncLensBar();
       const rect = canvas.parentElement.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
       drawChalkGrid(rect);
@@ -1301,8 +1346,8 @@
         pline(A, H, TCOL.white, 2.6, [5, 4]);
 
         pright(A, B, C, 14, TCOL.gold);
-        pright(H, A, B, 12, TCOL.cyan);
-        pright(H, A, C, 12, TCOL.pink);
+        pright(H, A, B, 12, TCOL.cyan, 'aux');
+        pright(H, A, C, 12, TCOL.pink, 'aux');
 
         pangle(B, A, C, TCOL.pink, 28, 1, 'y(=∠B)');
         pangle(C, A, B, TCOL.cyan, 30, 2, 'x(=∠C)');
@@ -1415,10 +1460,10 @@
 
         ppoly([A, B, H], 'rgba(56, 189, 248, 0.24)', TCOL.cyan, 3.2, 0);
         ppoly([A, H, C], 'rgba(251, 191, 36, 0.22)', TCOL.gold, 3.2, 2);
-        pline(A, H, TCOL.green, 4.4, [], true, 1);
+        pline(A, H, TCOL.green, 4.4, [], true, 1, 'def ratio aux');
 
-        pright(H, A, B, 12, TCOL.cyan);
-        pright(H, A, C, 12, TCOL.gold);
+        pright(H, A, B, 12, TCOL.cyan, 'aux');
+        pright(H, A, C, 12, TCOL.gold, 'aux');
         pangle(B, A, H, TCOL.cyan, 28, 1, '45°');
         pangle(C, A, H, TCOL.gold, 34, 1, '30°');
 
@@ -1451,7 +1496,7 @@
         pline(O, H, TCOL.pink, 3.2, [5, 4], true, 2);
 
         pright(O, B, A, 13, TCOL.cyan);
-        pright(H, O, B, 11, TCOL.pink);
+        pright(H, O, B, 11, TCOL.pink, 'aux');
         pangle(A, B, O, TCOL.gold, 34, 1, 'θ=30°');
 
         pdot(O, 'O(0,0)', TCOL.white, null, { x: 10, y: 18 });
@@ -1474,11 +1519,11 @@
         const B = pt(D.x - 2 * u, C.y); // BD = AD = 2
 
         ppoly([A, D, C], 'rgba(56, 189, 248, 0.26)', TCOL.cyan, 3.2, 0);
-        ppoly([A, B, D], 'rgba(244, 114, 182, 0.24)', TCOL.pink, 3.2, 1);
+        ppoly([A, B, D], 'rgba(244, 114, 182, 0.24)', TCOL.pink, 3.2, 1, 'aux');
         pline(A, D, TCOL.gold, 3.8, [], true, 1);
 
         pright(C, A, D, 13, TCOL.cyan);
-        pangle(D, A, C, TCOL.cyan, 28, 1, '30°(외각)');
+        pangle(D, A, C, TCOL.cyan, 28, 1, '30°(외각)', 'aux');
         pangle(B, A, D, TCOL.pink, 36, 1, '15°');
         pangle(A, B, D, TCOL.pink, 32, 1, '15°');
         ptick(B, D, 2, TCOL.gold); ptick(A, D, 2, TCOL.gold);
@@ -1512,10 +1557,10 @@
       ppoly([A, M, C], `rgba(148, 163, 184, ${fadeAlpha})`, 'rgba(148, 163, 184, 0.4)', 1.8);
       ppoly([A, B, M], 'rgba(56, 189, 248, 0.28)', TCOL.cyan, 3.4);
       pline(B, M, TCOL.cyan, 4.4, [], false, 0);
-      pline(A, M, TCOL.green, 4.4, [], true, 1);
+      pline(A, M, TCOL.green, 4.4, [], true, 1, 'def ratio aux');
       pline(A, B, TCOL.gold, 4.6, [], true, 2);
 
-      pright(M, A, B, 14, TCOL.gold);
+      pright(M, A, B, 14, TCOL.gold, 'aux');
       pangle(B, A, M, TCOL.gold, 30, 1, '60°');
       pangle(A, B, M, TCOL.pink, 34, 1, '30°');
 
@@ -1561,7 +1606,7 @@
 
       // 45° 대소 역전 기준선 (점선)
       pline(O, pt(O.x + R * 0.9, O.y - R * 0.9), 'rgba(251, 191, 36, 0.3)', 1.6, [5, 5]);
-      ptag(O.x + R * 0.68, O.y - R * 0.68 - 8, '45° 경계선 (sin=cos)', 'rgba(251,191,36,0.75)', 11.5);
+      ptag(O.x + R * 0.68, O.y - R * 0.68 - 8, '45° 경계선 (sin=cos)', 'rgba(251,191,36,0.75)', 11.5, 'aux');
 
       const deg = Math.max(5, Math.min(82, state.angleDeg));
       const rad = (deg * Math.PI) / 180;
@@ -1589,7 +1634,7 @@
       pdot(C, 'C(1, 0)', TCOL.white, null, { x: -10, y: 20 });
       pdot(topY, '(0, 1)', TCOL.white, null, { x: -38, y: 4 });
       pdot(A, 'A(드래그!)', TCOL.pink, null, { x: -32, y: -12 });
-      if (D.y > cy - 220 * s) pdot(D, 'D', TCOL.gold, null, { x: 10, y: 4 });
+      if (D.y > cy - 220 * s) pdot(D, 'D', TCOL.gold, null, { x: 10, y: 4 }, 'aux');
 
       const sVal = Math.sin(rad).toFixed(3), cVal = Math.cos(rad).toFixed(3), tVal = Math.tan(rad).toFixed(3);
       ptag((O.x + B.x) / 2, B.y + 34, `cos ${deg}° = OB = ${cVal}`, TCOL.cyan, 13);
@@ -1623,7 +1668,7 @@
 
       if (sub === 'pendulumSwing') {
         const R = 175 * s;
-        const O = pt(cx - 20 * s, cy - 115 * s);
+        const O = pt(cx - 20 * s, cy - 62 * s);
         const B = pt(O.x, O.y + R);
         const curRad = rad * (state.fold === 0 ? 1 : state.fold);
         const A = pt(O.x + R * Math.sin(curRad), O.y + R * Math.cos(curRad));
@@ -1645,13 +1690,18 @@
         pline(A, H, TCOL.pink, 2.6, [5, 4]);
         pline(B, pt(A.x, B.y), 'rgba(251,191,36,0.5)', 2.0, [4, 4]);
 
-        pright(H, O, A, 12, TCOL.cyan);
+        pright(H, O, A, 12, TCOL.cyan, 'aux');
         pangle(O, B, A, TCOL.gold, 36, 1, `${deg}°`);
 
         pdot(O, 'O(매달린 점)', TCOL.white, null, { x: -30, y: -12 });
         pdot(B, 'B(최하점)', TCOL.gold, null, { x: -25, y: 20 });
         pdot(H, 'H(수선의 발)', TCOL.cyan, null, { x: -75, y: 4 });
-        pdot(A, `A(줄 길이 L=${L})`, TCOL.pink, null, { x: 14, y: 4 });
+        // 좁은 화면에서 각도가 커져 A가 오른쪽 끝에 가까워지면 이름표가 잘리므로, 그때만 이름표를 A 아래쪽으로 옮겨 화면 안에 둡니다
+        const aTxt = `A(줄 길이 L=${L})`;
+        ctx.save(); ctx.font = '800 12.5px Pretendard, sans-serif';
+        const aTxtW = ctx.measureText(aTxt).width;
+        ctx.restore();
+        pdot(A, aTxt, TCOL.pink, null, A.x + 14 + aTxtW > rect.width - 10 ? { x: rect.width - 10 - aTxtW - A.x, y: 22 } : { x: 14, y: 4 });
 
         const ohVal = (L * Math.cos(rad)).toFixed(2);
         const hVal = (L * (1 - Math.cos(rad))).toFixed(2);
@@ -1732,9 +1782,9 @@
         pline(B, H, TCOL.cyan, 3.8, [5, 4], true, 0);
         pline(A, C, TCOL.gold, 4.4, [], true, 2);
 
-        pright(H, A, C, 13, TCOL.cyan);
+        pright(H, A, C, 13, TCOL.cyan, 'aux');
         pangle(B, A, C, TCOL.pink, 28, 1, '120°');
-        pangle(B, A, H, TCOL.cyan, 30, 2, '60°(외각!)');
+        pangle(B, A, H, TCOL.cyan, 30, 2, '60°(외각!)', 'aux');
 
         pdot(A, 'A', TCOL.gold, null, { x: -12, y: -14 });
         pdot(B, 'B(120°)', TCOL.pink, null, { x: -15, y: 22 });
@@ -1762,9 +1812,9 @@
 
         ppoly([A, B, H], 'rgba(244, 114, 182, 0.22)', TCOL.pink, 3.2, 2);
         ppoly([A, H, C], 'rgba(56, 189, 248, 0.22)', TCOL.cyan, 3.2, 1);
-        pline(A, H, TCOL.gold, 4.2, [5, 4], true, 0);
+        pline(A, H, TCOL.gold, 4.2, [5, 4], true, 0, 'def ratio aux');
 
-        pright(H, A, B, 12, TCOL.gold);
+        pright(H, A, B, 12, TCOL.gold, 'aux');
         pangle(B, A, H, TCOL.pink, 30, 1, '45°');
         pangle(C, A, H, TCOL.cyan, 28, 1, '30°');
         pangle(A, B, H, TCOL.pink, 32, 1, '45°');
@@ -1773,7 +1823,7 @@
         if (sub === 'trapDontSplit60') {
           const badH = projectOnLine(C, A, B);
           pline(C, badH, TCOL.red, 2.8, [4, 4]);
-          ptag((C.x + badH.x) / 2, (C.y + badH.y) / 2, '❌ 60°를 쪼개면 망함!', TCOL.red, 12.5);
+          ptag((C.x + badH.x) / 2, (C.y + badH.y) / 2, '❌ 60°를 쪼개면 망함!', TCOL.red, 12.5, 'aux');
         }
 
         pdot(A, 'A(75° = 45°+30°!)', TCOL.gold, null, { x: -45, y: -14 });
@@ -1800,7 +1850,7 @@
       pline(H, C, TCOL.green, 4.2, [], false, 1);
       pline(A, C, TCOL.gold, 4.4, [], true, 2);
 
-      pright(H, A, C, 13, TCOL.gold);
+      pright(H, A, C, 13, TCOL.gold, 'aux');
       pangle(B, A, H, TCOL.cyan, 30, 1, '60°');
 
       pdot(A, 'A', TCOL.gold, null, { x: -8, y: -14 });
@@ -1836,9 +1886,9 @@
 
         ppoly([A, B, H], 'rgba(56, 189, 248, 0.22)', TCOL.cyan, 3.0, 0);
         ppoly([A, H, C], 'rgba(244, 114, 182, 0.22)', TCOL.pink, 3.0, 1);
-        pline(A, H, TCOL.gold, 4.6, [], true, 2);
+        pline(A, H, TCOL.gold, 4.6, [], true, 2, 'def ratio aux');
 
-        pright(H, A, B, 12, TCOL.gold);
+        pright(H, A, B, 12, TCOL.gold, 'aux');
         pangle(B, A, H, TCOL.cyan, 28, 1, '45°');
         pangle(C, A, H, TCOL.pink, 26, 1, '60°');
         pangle(A, B, H, TCOL.cyan, 32, 2, 'x=45°');
@@ -1872,11 +1922,11 @@
 
         ppoly([A, B, C], 'rgba(56, 189, 248, 0.24)', TCOL.cyan, 3.2, 0);
         ppoly([A, C, H], 'rgba(244, 114, 182, 0.22)', TCOL.pink, 2.8, 1);
-        pline(A, H, TCOL.gold, 4.6, [], true, 2);
+        pline(A, H, TCOL.gold, 4.6, [], true, 2, 'def ratio aux');
 
-        pright(H, A, B, 13, TCOL.gold);
+        pright(H, A, B, 13, TCOL.gold, 'aux');
         pangle(B, A, C, TCOL.cyan, 32, 1, '30°');
-        pangle(C, A, H, TCOL.pink, 28, 1, '60°');
+        pangle(C, A, H, TCOL.pink, 28, 1, '60°', 'aux');
         pangle(A, B, H, TCOL.cyan, 38, 2, '전체 x=60°');
         pangle(A, C, H, TCOL.pink, 28, 1, 'y=30°');
 
@@ -1924,7 +1974,7 @@
         const sep = state.fold * 18 * s;
         ppoly([ pt(A.x - sep, A.y), pt(B.x - sep, B.y), pt(D.x - sep, D.y) ], 'rgba(56, 189, 248, 0.26)', TCOL.cyan, 3.2, 1);
         ppoly([ pt(A.x + sep, A.y), pt(D.x + sep, D.y), pt(C.x + sep, C.y) ], 'rgba(244, 114, 182, 0.26)', TCOL.pink, 3.2, 2);
-        pline(A, D, TCOL.gold, 4.4, [], true, 0);
+        pline(A, D, TCOL.gold, 4.4, [], true, 0, 'def ratio aux');
 
         pangle(A, B, D, TCOL.cyan, 32, 1, '30°');
         pangle(A, D, C, TCOL.pink, 36, 1, '30°');
@@ -1955,12 +2005,58 @@
         }
         for (let i = 0; i < n; i++) {
           const v1 = verts[i], v2 = verts[(i + 1) % n];
-          ppoly([O, v1, v2], i === 0 ? 'rgba(251, 191, 36, 0.38)' : 'rgba(56, 189, 248, 0.16)', i === 0 ? TCOL.gold : TCOL.cyan, i === 0 ? 3.2 : 1.8, i === 0 ? 1 : 0);
+          ppoly([O, v1, v2], i === 0 ? 'rgba(251, 191, 36, 0.38)' : 'rgba(56, 189, 248, 0.16)', i === 0 ? TCOL.gold : TCOL.cyan, i === 0 ? 3.2 : 1.8, i === 0 ? 1 : 0, i === 0 ? 'def ratio' : '');
         }
         pangle(O, verts[0], verts[1], TCOL.gold, 34, 1, '45°');
         pdot(O, 'O(중심)', TCOL.gold, null, { x: -20, y: -12 });
         ptag(O.x + R / 2 + 12, O.y - 18, 'R = 6', TCOL.gold, 13.5);
         drawBottomTapeBanner(rect, '정팔각형 넓이 = 중심각(360°÷8 = 45°)인 이등변삼각형(½ × 6 × 6 × sin 45°) × 8개 = 72√2!');
+        return;
+      }
+
+      if (sub === 'equilFormula') {
+        // 정삼각형(AB = BC = CA = a)을 수선 AM으로 반 자르기: 30°-60°-90° 삼각형 (a/2 : h : a = 1 : √3 : 2)
+        const L = state.baseLen;
+        const h = 175 * s;
+        const a = (2 * h) / Math.sqrt(3);
+        const A = pt(cx, cy - 60 * s);
+        const B = pt(cx - a / 2, A.y + h), C = pt(cx + a / 2, A.y + h);
+        const M = mid(B, C);
+
+        const sep = state.fold * 22 * s; // 조각 분할: 두 직각삼각형을 양옆으로 벌림
+        const Al = pt(A.x - sep, A.y), Bl = pt(B.x - sep, B.y), Ml = pt(M.x - sep, M.y);
+        const Ar = pt(A.x + sep, A.y), Mr = pt(M.x + sep, M.y), Cr = pt(C.x + sep, C.y);
+
+        ppoly([Al, Bl, Ml], 'rgba(251, 191, 36, 0.22)', TCOL.gold, 3.4, 1);
+        ppoly([Ar, Mr, Cr], 'rgba(251, 191, 36, 0.22)', TCOL.gold, 3.4, 1);
+        pline(Al, Ml, TCOL.cyan, 4.6, [], true, 0, 'def ratio aux');
+        if (sep > 0) pline(Ar, Mr, TCOL.cyan, 4.6, [], true, 0, 'def ratio aux');
+
+        pright(Ml, Al, Bl, 14, TCOL.green, 'aux');
+        pright(Mr, Ar, Cr, 14, TCOL.green, 'aux');
+        pangle(Bl, Al, Ml, TCOL.gold, 30, 1, '60°');
+        pangle(Cr, Ar, Mr, TCOL.gold, 30, 1, '60°');
+        pangle(Al, Bl, Ml, TCOL.pink, 40, 1, '30°');
+        pangle(Ar, Mr, Cr, TCOL.pink, 40, 1, '30°');
+        ptick(Al, Bl, 1, TCOL.gold); ptick(Ar, Cr, 1, TCOL.gold);
+        ptick(Bl, Ml, 2, TCOL.cyan); ptick(Mr, Cr, 2, TCOL.cyan);
+
+        pdot(Al, 'A(60°)', TCOL.gold, null, { x: -22, y: -14 });
+        pdot(Bl, 'B(60°)', TCOL.gold, null, { x: -42, y: 18 });
+        pdot(Cr, 'C(60°)', TCOL.gold, null, { x: 10, y: 18 });
+        pdot(Ml, 'M(수선의 발)', TCOL.green, null, { x: -10, y: 22 });
+        if (sep > 0) { pdot(Ar, '', TCOL.gold); pdot(Mr, '', TCOL.green); }
+
+        ptag((Al.x + Bl.x) / 2 - 38, (Al.y + Bl.y) / 2, `a = ${L}`, TCOL.gold, 13.5, 'def');
+        ptag((Ar.x + Cr.x) / 2 + 38, (Ar.y + Cr.y) / 2, `a = ${L}`, TCOL.gold, 13.5, 'def');
+        ptag((Bl.x + Ml.x) / 2 + 8, B.y + 24, `밑변 a = ${L}`, TCOL.white, 13.5);
+        ptag(Al.x - 42 * s, A.y + 135 * s, `S = ${(L * L) / 4}√3`, TCOL.gold, 13.5);
+        ptag(Ar.x + 48 * s, A.y + 135 * s, `높이 h = ${L / 2}√3`, TCOL.cyan, 13.5);
+
+        drawBottomTapeBanner(rect, `수선이 밑변 a(②)를 ①+①로 반 가름 ➔ 높이 h = (√3/2)a`, [
+          { text: 'BM = a/2 (①)', weight: 0.5, color: TCOL.cyan },
+          { text: 'MC = a/2 (①)', weight: 0.5, color: TCOL.cyan }
+        ]);
         return;
       }
 
@@ -1972,9 +2068,9 @@
         pline(B, C, TCOL.cyan, 4.4, [], false, 0);
         pline(A, H, TCOL.pink, 4.2, [5, 4], true, 1);
         pline(B, H, 'rgba(255,255,255,0.45)', 2.0, [4, 4]);
-        pright(H, A, C, 12, TCOL.pink);
+        pright(H, A, C, 12, TCOL.pink, 'aux');
         pangle(B, A, C, TCOL.gold, 28, 1, '120°');
-        pangle(B, A, H, TCOL.pink, 30, 2, '60°');
+        pangle(B, A, H, TCOL.pink, 30, 2, '60°', 'aux');
 
         pdot(A, 'A', TCOL.gold, null, { x: -10, y: -14 });
         pdot(B, 'B(120°)', TCOL.gold, null, { x: -15, y: 22 });
@@ -1991,7 +2087,7 @@
         ppoly([A, B, C], 'rgba(52, 211, 153, 0.24)', TCOL.green, 3.4, 2);
         pline(B, C, TCOL.cyan, 4.4, [], false, 0);
         pline(A, H, TCOL.pink, 4.4, [5, 4], true, 1);
-        pright(H, A, C, 13, TCOL.pink);
+        pright(H, A, C, 13, TCOL.pink, 'aux');
         pangle(B, A, C, TCOL.gold, 32, 1, 'B=60°');
 
         pdot(A, 'A', TCOL.gold, null, { x: -8, y: -14 });
@@ -2010,11 +2106,11 @@
     // [탭 8 렌더링] 평행사변형(ab sin θ) & 일반 사각형 대각선 넓이(½ pq sin θ)
     // =========================================================================
     function renderMode8QuadArea(rect, cx, cy) {
-      const sub = state.subType[8];
+      const subId = state.subType[8];
       const s = state.scale * 1.02;
       const t = state.fold;
 
-      if (sub === 'paraArea' || sub === 'rhombusSquare') {
+      if (subId === 'paraArea' || subId === 'rhombusSquare') {
         const B = pt(cx - 145 * s, cy + 68 * s), C = pt(cx + 85 * s, cy + 68 * s);
         const A = pt(cx - 75 * s, cy - 68 * s), D = pt(cx + 155 * s, cy - 68 * s);
 
@@ -2048,14 +2144,14 @@
       const E = add(A, sub(B, O)), F = add(C, sub(B, O));
       const G = add(C, sub(D, O)), H = add(A, sub(D, O));
 
-      const showOuter = sub === 'quadUnfold2x' ? (t === 0 ? 1.0 : t) : t;
+      const showOuter = state.conceptSwitch === 'aux' ? 1.0 : subId === 'quadUnfold2x' ? (t === 0 ? 1.0 : t) : t;
       if (showOuter > 0.02) {
         ctx.save();
         ctx.globalAlpha = Math.min(1, showOuter);
-        ppoly([E, F, G, H], 'rgba(251, 191, 36, 0.14)', TCOL.gold, 2.6, 2);
-        ptag((E.x + F.x) / 2 - 15, (E.y + F.y) / 2 + 22, '바깥 가로 = 대각선 p(8)', TCOL.cyan, 12.5);
-        ptag((F.x + G.x) / 2 + 52, (F.y + G.y) / 2, '바깥 세로 = q(10)', TCOL.pink, 12.5);
-        [E, F, G, H].forEach((p, i) => pdot(p, 'EFGH'[i], TCOL.gold));
+        ppoly([E, F, G, H], 'rgba(251, 191, 36, 0.14)', TCOL.gold, 2.6, 2, 'aux');
+        ptag((E.x + F.x) / 2 - 15, (E.y + F.y) / 2 + 22, '바깥 가로 = 대각선 p(8)', TCOL.cyan, 12.5, 'aux');
+        ptag((F.x + G.x) / 2 + 52, (F.y + G.y) / 2, '바깥 세로 = q(10)', TCOL.pink, 12.5, 'aux');
+        [E, F, G, H].forEach((p, i) => pdot(p, 'EFGH'[i], TCOL.gold, null, null, 'aux'));
         ctx.restore();
       }
 
@@ -2120,9 +2216,18 @@
       document.getElementById('valP2').textContent = `${state.baseLen} cm`;
     }
 
+    // 해설 칸에 $...$ 수식을 넣습니다. 슬라이더·애니메이션이 매 프레임 render()를 부르므로 내용이 같으면 DOM을 다시 쓰지 않습니다.
+    function setRichHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el._html !== html) {
+        el._html = html;
+        el.innerHTML = texInline(html);
+      }
+    }
+
     function updateUI(spec) {
       document.getElementById('canvasModeBadge').textContent = spec.badge;
-      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      setRichHTML('canvasActionHint', spec.hint);
       document.getElementById('txtFoldToggle').textContent = spec.actionTxt;
       document.getElementById('dim1Label').textContent = spec.p1Title || '기준각 θ 선택';
       document.getElementById('dim2Label').textContent = spec.p2Title || '기준변 길이';
@@ -2156,8 +2261,8 @@
 
       document.getElementById('totalResultBadge').textContent = spec.totalRes;
       document.getElementById('ruleBadge').textContent = spec.rule;
-      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
-      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+      setRichHTML('formulaBox', spec.formulaHTML);
+      setRichHTML('intuitionNotes', spec.notes);
 
       renderPresetChips();
     }
@@ -2173,6 +2278,19 @@
         document.getElementById(`sw-${id}`).classList.toggle('active', id === sw);
       });
       render();
+    }
+
+    // 현재 장면에 효과가 없는 렌즈 버튼은 숨기고, 숨겨진 렌즈가 켜져 있었다면 '전체 구조'로 되돌립니다.
+    function syncLensBar() {
+      const sub = state.subType[state.mode];
+      ['def', 'ratio', 'aux'].forEach((id) => {
+        const off = (LENS_OFF[id] || []).includes(sub);
+        document.getElementById(`sw-${id}`).hidden = off;
+        if (off && state.conceptSwitch === id) state.conceptSwitch = 'all';
+      });
+      ['all', 'def', 'ratio', 'aux'].forEach((id) => {
+        document.getElementById(`sw-${id}`).classList.toggle('active', id === state.conceptSwitch);
+      });
     }
 
     function setMode(m) {

@@ -1364,13 +1364,13 @@
     // [탭 1 렌더링] 세 정사각형 넓이 (a²+b²=c²) & 격자 정사각형 & 연쇄 삼각형
     // =========================================================================
     function renderMode1ThreeSquares(rect, cx, cy) {
-      const sub = state.subType[1];
+      const subId = state.subType[1];
       const s = state.scale * 0.98;
       const fam = getActiveTriple();
       const k = state.multK;
       const a = fam.a * k, b = fam.b * k, c = fam.c * k;
 
-      if (sub === 'tiltedGrid') {
+      if (subId === 'tiltedGrid') {
         const u = 36 * s;
         const half = 2.5 * u;
         const ox = cx - half, oy = cy - half;
@@ -1414,7 +1414,7 @@
         return;
       }
 
-      if (sub === 'chainTri') {
+      if (subId === 'chainTri') {
         const u = 14.5 * s;
         const B = pt(cx - 85 * s, cy + 75 * s);
         const A = pt(B.x, B.y - 3 * u);
@@ -1444,7 +1444,7 @@
         return;
       }
 
-      if (sub === 'rotated') {
+      if (subId === 'rotated') {
         const rotAng = state.fold * (Math.PI * 0.25);
         const center = pt(cx, cy - 10 * s);
         const B0 = pt(cx - 82 * s, cy + 25 * s), C0 = pt(cx + 82 * s, cy + 25 * s);
@@ -1470,7 +1470,7 @@
       }
 
       // std345 & findLeg
-      const isFindLeg = sub === 'findLeg';
+      const isFindLeg = subId === 'findLeg';
       const maxDim = Math.max(fam.a, fam.b, fam.c);
       const u = (115 / maxDim) * s;
 

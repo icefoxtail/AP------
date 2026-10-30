@@ -1,0 +1,152 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "-9",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "x": "3",
+        "y": "-3"
+      },
+      {
+        "x": "4",
+        "y": "-1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "v",
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -1,
+      7,
+      -4,
+      4
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "3"
+      },
+      {
+        "id": "S2",
+        "upper": "axis",
+        "lower": "f",
+        "from": "2",
+        "to": "6",
+        "fill": "MEDIUM",
+        "label": "9/2"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "id": "Z",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": -3
+      },
+      {
+        "id": "C",
+        "x": 4,
+        "y": -1
+      },
+      {
+        "id": "D",
+        "x": 6,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "v(t)가 t=2에서 t축과 만나며 t축 위쪽 넓이는 3, 아래쪽 넓이는 9/2이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "0≤t≤2에서 v>0이고 넓이는 1/2·2·3=3이다.",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "2≤t≤6에서 v<0이고 넓이는 3/2+2+1=9/2이다.",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "속도의 부호가 t=2에서 바뀌며 위쪽 넓이 3과 아래쪽 넓이 9/2의 차가 a, 합이 b임을 보여 준다."
+  ],
+  "sourceQuote": "$\\dfrac12\\cdot2\\cdot3=3$",
+  "assetPath": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q8-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q08-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q08-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q08-solution.svg"
+  }
+}
