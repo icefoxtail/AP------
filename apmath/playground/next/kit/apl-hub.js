@@ -321,7 +321,7 @@
     const box = h('div', { class: 'hub-metro' },
       h('div', { class: 'legend', html: CAT.strands.map((s) => `<span style="--c:${hue(s.hue)}"><i></i>${esc(s.name)}</span>`).join('') + `<span><svg width="18" height="18"><circle cx="9" cy="9" r="6" fill="var(--m-ink)" stroke="var(--stage)" stroke-width="3"/></svg>환승역(두 노선이 만나는 개념)</span><span><svg width="18" height="18"><circle cx="9" cy="9" r="7" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/></svg>2.0 화면 적용</span>` }),
       h('div', { html: svg }),
-      h('div', { class: 'note', text: '왼쪽(중1)에서 오른쪽(고등)으로 갈수록 같은 개념이 깊어집니다. 역을 누르면 실험실이 열립니다. 검색하면 해당 역만 또렷하게 표시됩니다.' }));
+      h('div', { class: 'note', text: '중1에서 고등학교 과목으로 학년이 올라갈수록 같은 개념이 깊어집니다. 역을 누르면 실험실이 열립니다. 검색하면 해당 역만 또렷하게 표시됩니다.' }));
     box.querySelectorAll('a[data-id]').forEach((a) => a.addEventListener('click', () => remember(LAB[a.dataset.id])));
     content.append(box);
   }

@@ -655,7 +655,7 @@
       const s = this.s;
       // 안내
       const guide = v.guide != null ? v.guide : call(sc.guide, s);
-      APLab.setHTML(r.guide, guide || '그림의 <b>후광이 있는 점</b>을 끌거나 아래 조절 막대를 움직여 보세요.');
+      APLab.setHTML(r.guide, guide || '그림의 <b>후광이 있는 점</b>을 끌거나 조절 막대를 움직여 보세요.');
       // 조작부
       this._buildControls();
       for (const [id, c] of Object.entries(this._ctls || {})) {
