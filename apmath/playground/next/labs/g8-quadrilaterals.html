@@ -1605,7 +1605,7 @@ window.addEventListener('DOMContentLoaded', function () {
           qline(pA, pC, QCOL.gold, 2.8, [5, 4], false, 0);
           qline(pB, pD, QCOL.gold, 2.8, [5, 4], false, 0);
           qline(mAC, mBD, QCOL.red, 3.6, [], true, 1);
-          if (sub === 'counterDiagEqual') { qticks(pA, pC, 2, QCOL.gold, 8.5); qticks(pB, pD, 2, QCOL.gold, 8.5); } // [표시 보강] AC = BD (두 대각선의 길이가 같음)
+          if (sub === 'counterDiagEqual') { qticks(mAC, pC, 2, QCOL.gold, 8.5); qticks(mBD, pB, 2, QCOL.gold, 8.5); } // [표시 보강] AC = BD (두 대각선의 길이가 같음): 중점 M·N 점과 교점 O 에 가려지지 않게 M–C, N–B 의 중간(대각선의 3/4 지점)에
 
           qdot(pO, 'O(OA≠OC)', QCOL.white, null, { x: 0, y: -14 });
           // [2.0 수정] 원본 오프셋(M: -48, N: +48)은 두 이름표가 두 점 사이 가운데에서 겹쳐 어느 점의 이름인지 알기 어려웠습니다 → 각 이름표를 자기 점의 바깥 아래쪽으로

@@ -355,6 +355,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     c.restore();
   }
+  // [표시 보강] 선분 p→q 위 f 지점(0~1)에 눈금: 중점에 다른 선·이름표가 겹치는 장면에서 위치를 옮길 때 씀
+  function tickAt(p, q, f, n = 1, color = GCOL.gold, size = 7.5) { edgeTicks(p, lerp(p, q, 2 * f), n, color, size); }
   // 평행 표시(화살촉)
   function parallelArrows(p, q, n = 1, color = GCOL.gold) {
     if (PL.pass === 1) return;
@@ -1561,9 +1563,11 @@ window.addEventListener('DOMContentLoaded', function () {
         drawLine(O, C, GCOL.gold, 2.8, false, layer === 'p1');
 
         // [표시 보강] OA = OB = OC 눈금은 모든 렌즈·장면에서 그림(원본은 등거리 렌즈·직각 장면에서만 그려 표준 장면에는 반지름이 같다는 표시가 없었음)
-        edgeTicks(O, A, 2, GCOL.gold, 8);
-        edgeTicks(O, B, 2, GCOL.gold, 8);
-        edgeTicks(O, C, 2, GCOL.gold, 8);
+        // 직각삼각형 장면은 O 가 빗변 위라 중점에, 그 밖의 장면은 꼭짓점 쪽 0.7 지점에(중점 D·E·F 이름표가 O–꼭짓점 눈금에 가려지지 않게)
+        const tf = (sub === 'circumRight' || sub === 'circum3060') ? 0.5 : 0.7;
+        tickAt(O, A, tf, 2, GCOL.gold, 8);
+        tickAt(O, B, tf, 2, GCOL.gold, 8);
+        tickAt(O, C, tf, 2, GCOL.gold, 8);
 
         // [표시 보강] 직각삼각형의 외심: OA = OB 이므로 ∠OAB = ∠OBA, OB = OC 이므로 ∠OBC = ∠OCB (같은 색·같은 값), 30-60-90 은 ∠BOC 도 표시
         if ((sub === 'circumRight' || sub === 'circum3060') && layer !== 'p3') {
@@ -1571,7 +1575,7 @@ window.addEventListener('DOMContentLoaded', function () {
           curvedAngle(B, O, A, GCOL.cyan, 30, 1, `${angDeg(B, O, A)}°`);
           curvedAngle(B, C, O, GCOL.pink, 30, 1, `${angDeg(B, C, O)}°`);
           curvedAngle(C, O, B, GCOL.pink, 30, 1, `${angDeg(C, O, B)}°`);
-          if (sub === 'circum3060') curvedAngle(O, B, C, GCOL.pink, 34, 1, `${angDeg(O, B, C)}°`);
+          if (sub === 'circum3060') { const dA = Math.round(ang.degA); curvedAngle(O, B, C, GCOL.pink, 34, 1, `${dA <= 90 ? 2 * dA : 360 - 2 * dA}°`); } // 머리글(∠BOC = 2∠A)과 같은 값
         }
 
         if (layer === 'p3' || sub === 'circumAngle' || sub === 'circumObtuse') {
@@ -1702,7 +1706,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (Math.abs(ang.degB - 90) < 1.5) {
         drawQuadFilled(B, D, I, F, 'rgba(251, 191, 36, 0.35)', GCOL.gold, 0);
         drawRightAngleSign(B, A, C, 14, GCOL.gold); // [표시 보강] 직각 모퉁이 B 의 직각 표시(D·F 는 아래에서 이미 표시)
-        labelLine(lerp(B, I, 0.5), 'r×r 정사각형', GCOL.gold, 11.5);
+        labelLine(addPt(lerp(B, D, 0.5), { x: 4, y: 27 }), 'r×r 정사각형', GCOL.gold, 11.5); // [표시 보강] 정사각형 가운데는 네 변 눈금(휴대폰에서 글자가 눈금에 걸림) → 아랫변 바로 아래로
       }
 
       if (sub === 'incenterTangents' || sub === 'incenterRightSq' || layer === 'p1') {
@@ -1818,12 +1822,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
       // [표시 보강] 정삼각형은 세 변 같은 눈금·세 각 같은 표시, 이등변삼각형은 AB = AC 눈금과 같은 두 밑각(점을 끌어 모양이 바뀌면 조건이 맞을 때만 표시)
       if (sub === 'oigEquil' && Math.abs(ang.a - ang.b) < 2.5 && Math.abs(ang.b - ang.c) < 2.5) {
-        edgeTicks(A, B, 1, GCOL.gold, 8); edgeTicks(B, C, 1, GCOL.gold, 8); edgeTicks(C, A, 1, GCOL.gold, 8);
+        // 중점에는 중선·각이등분선·수직이등분선이 지나가 눈금이 가려지므로 꼭짓점에서 1/4 지점에
+        tickAt(A, B, 0.25, 1, GCOL.gold, 8); tickAt(B, C, 0.25, 1, GCOL.gold, 8); tickAt(C, A, 0.25, 1, GCOL.gold, 8);
         curvedAngle(A, B, C, GCOL.gold, 30, 1, `${Math.round(ang.degA)}°`);
         curvedAngle(B, C, A, GCOL.gold, 30, 1, `${Math.round(ang.degB)}°`);
         curvedAngle(C, A, B, GCOL.gold, 30, 1, `${Math.round(ang.degC)}°`);
       } else if (sub === 'oigIso' && Math.abs(ang.b - ang.c) < 2.5) {
-        edgeTicks(A, B, 2, GCOL.gold, 8); edgeTicks(A, C, 2, GCOL.gold, 8);
+        tickAt(A, B, 0.3, 2, GCOL.gold, 8); tickAt(A, C, 0.3, 2, GCOL.gold, 8);
         curvedAngle(B, C, A, GCOL.pink, 30, 1, `${Math.round(ang.degB)}°`);
         curvedAngle(C, A, B, GCOL.pink, 30, 1, `${Math.round(ang.degC)}°`);
       }
