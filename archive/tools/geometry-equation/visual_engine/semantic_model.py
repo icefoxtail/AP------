@@ -83,6 +83,8 @@ def validate(spec):
         if 'lineAt' in obj:
             wanted=obj['lineAt']
             if obj['kind']!='EQUATION_LABEL' or obj.get('lineOwned') is not True or isinstance(wanted,bool) or not (wanted in {'START','END'} or (isinstance(wanted,(int,float)) and 0<=wanted<=1)):raise ValueError('INVALID_LINE_LABEL_AT:'+str(obj.get('id')))
+        # dash on a LINE (E31, a dashed overlay line) is a flag; on a SEGMENT it keeps its own meaning.
+        if 'dash' in obj and obj['kind']=='LINE' and obj['dash'] is not True:raise ValueError('INVALID_LINE_DASH:'+str(obj.get('id')))
         # quadrant (E31): the coordinate quadrant 1..4 a QUADRANT object tints and names.
         if 'quadrant' in obj and (obj['kind']!='QUADRANT' or isinstance(obj['quadrant'],bool) or obj['quadrant'] not in {1,2,3,4}):raise ValueError('INVALID_QUADRANT:'+str(obj.get('id')))
         # ringLeader (E31): an unnamed point's coordinate label may take the nearest free sector on a leader from its point as the last resort.

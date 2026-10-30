@@ -309,7 +309,7 @@ function addGraphOverlays(plan,spec){
   const ownedLabels=p.displayWindow!==undefined||features.points.some(point=>point.coordinates||point.unnamed)||features.segments.some(segment=>segment.length)||!!features.latticePoints;
   for(const line of features.lines){
     const lineId='overlay-line-'+line.id,anchors=ownedLabels&&line.labelAlternates?.length?[...line.labelAlternates,line.labelAt]:null;
-    objects.push({id:lineId,kind:'LINE',coefficients:line.kind==='VERTICAL'?[1,0,-exactValue(line.x)]:[exactValue(line.slope),-1,exactValue(line.intercept)]});
+    objects.push({id:lineId,kind:'LINE',coefficients:line.kind==='VERTICAL'?[1,0,-exactValue(line.x)]:[exactValue(line.slope),-1,exactValue(line.intercept)],...(line.style==='DASHED'?{dash:true}:{})});
     objects.push({id:lineId+'-equation',kind:'EQUATION_LABEL',target:lineId,text:line.text,at:anchors?anchors[0]:line.labelAt,priority:0,
       ...(line.lineAt!==undefined?{lineOwned:true,alternateAt:[],gaps:[8,6,10,20,32,48],collinearOwners:true,lineAt:line.lineAt}
         :anchors?{lineOwned:true,alternateAt:anchors.slice(1),gaps:[8,6,10,20,32,48],collinearOwners:true}:line.labelAlternates?.length?{alternateAt:line.labelAlternates,lineFallback:true}:{})});

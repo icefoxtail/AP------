@@ -2530,6 +2530,9 @@ def _ov_line(entry):
     if at is not None and not (at in ('START','END') or (isinstance(at,(int,float)) and not isinstance(at,bool) and 0<=at<=1)):raise ValueError('OVERLAY_LINE_LABEL_AT_INVALID')
     extra={'lineAt':at} if at is not None else {}
     if entry.get('label') is not None:extra['label']=entry['label']
+    if 'style' in entry:
+        if entry['style'] not in ('SOLID','DASHED'):raise ValueError('OVERLAY_LINE_STYLE_INVALID')
+        extra['style']=entry['style']
     if entry.get('labelValues') is not None:extra['labelValues']=entry['labelValues']
     if 'x' in entry:
         if 'slope' in entry or 'intercept' in entry:raise ValueError('OVERLAY_LINE_INVALID')
@@ -2786,6 +2789,9 @@ def overlays_audit(plan,svg,transform):
             want=_ov_clip(_ov_final_window(plan['viewport']) if 'data-label-kind' in svg else plan['viewport'],line)
             if len(want)!=2:errors.append('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+str(line['id']));continue
             if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_LINE_MISMATCH:'+str(line['id']))
+            if 'data-label-kind' in svg:
+                # style (E31): a DASHED overlay line carries a stroke-dasharray, a SOLID one (the default) none
+                if (lines[obj_id].get('stroke-dasharray') is not None)!=(line.get('style')=='DASHED'):errors.append('OVERLAY_LINE_STYLE_MISMATCH:'+str(line['id']))
         for ident,(x,y) in expected['points'].items():
             claimed.add(ident);got=read_circle(ident)
             if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)

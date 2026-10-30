@@ -2684,7 +2684,7 @@ def _overlay_features(plan):
     lines=[]
     for entry in raw.get('lines',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_LINE_INVALID','line')
-        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
+        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues','style'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'line');claim('line:'+ident)
         if 'x' in entry:
             if 'slope' in entry or 'intercept' in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
@@ -2696,6 +2696,10 @@ def _overlay_features(plan):
             slope=_overlay_exact(entry['slope'],ident);intercept=_overlay_exact(entry['intercept'],ident)
             line={'id':ident,'kind':'LINE','slope':pp_surd_text(slope),'intercept':pp_surd_text(intercept),'slopeValue':_overlay_number(slope),'interceptValue':_overlay_number(intercept),'label':entry.get('label')}
         if 'labelValues' in entry:line['labelValues']=entry['labelValues']
+        # style (E31): SOLID (default) or DASHED, a thin dashed line (a line shifted from another, an auxiliary line).
+        if 'style' in entry:
+            if entry['style'] not in ('SOLID','DASHED'):_overlay_fail('OVERLAY_LINE_STYLE_INVALID',ident)
+            if entry['style']=='DASHED':line['style']='DASHED'
         line['text']=_overlay_line_text(line)
         if not _overlay_line_crosses_view(plan['viewport'],line):_overlay_fail('OVERLAY_LINE_OUTSIDE_VIEWPORT',ident)
         line['labelAt']=_overlay_label_anchor(plan['viewport'],line)

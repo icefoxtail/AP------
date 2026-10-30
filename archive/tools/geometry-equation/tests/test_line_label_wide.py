@@ -77,6 +77,16 @@ class WideLineSearchTests(unittest.TestCase):
         anchor=layout([top],[own,*walls],Box(0,0,400,400),measurements={top['id']:(40,14)})['labels'][0]['at']
         self.assertLessEqual(anchor[1],40+0.35*320+1e-6)
 
+class WallBesideTheEndTests(unittest.TestCase):
+    def test_a_wall_beside_the_top_end_does_not_stop_the_label(self):
+        # the label stands above the top end of its line on a leader; a wall just right of the line top (x=215) blocks the centred box, a box left of it clears
+        own=line('L0',(200,300),(200,100));wall=line('W',(215,0),(215,98));neighbours=[line('NL',(185,100),(185,400)),line('NR',(215,100),(215,400))]
+        item={**label('L0-equation',(200,104),'-10x+4y+3=0','EQUATION_LABEL',1,target='L0',lineOwned=True,alternateAt=[],gaps=[8,6,10,20,32,48]),'collinearOwners':True}
+        result=layout([item],[own,wall,*neighbours],Box(0,0,400,400),measurements={item['id']:(100,20)})
+        self.assertEqual(result['unresolved'],[],result)
+        box=Box(**result['labels'][0]['box'])
+        self.assertLess(box.right,215-5);self.assertTrue(result['labels'][0]['placement'].startswith('OWNER_LEADER_'))
+
 class NarrowRegionLengthLabelTests(unittest.TestCase):
     """E31 (3): the symbolic length of a side of a narrow triangle (6/a) has no room inside the triangle, and a box beside the side would stand nearer the other side
     than the margin allows: it goes outside on a leader that starts on its own side."""

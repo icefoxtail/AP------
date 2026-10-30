@@ -924,14 +924,19 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     for gap in WIDE_LINE_GAPS:
                         for anchor in wide_anchors:
                             for direction in DIRECTIONS:
-                                box=candidate(anchor,w,h,direction,gap)
-                                if gap<NEAR_RELOCATION_LEADER_MIN_GAP:
-                                    if near_start or not acceptable(box):continue
-                                    label={**label,'at':list(anchor)};chosen=box;method='AUTO_'+direction;break
-                                if not acceptable(box,owner_check=False):continue
-                                end=visible_owner_leader(anchor,box,occupied,owner_line_incident_ids(line_owner,anchor,occupied) if collinear_owners else {line_owner['id']},near_start=near_start)
-                                if end is None:continue
-                                label={**label,'at':list(anchor)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                                base=candidate(anchor,w,h,direction,gap)
+                                # the box straight out from the anchor, then slid sideways along its side (a box above a crowded end between two strokes is rarely centred on the anchor)
+                                slides=((0,0),)+(tuple((k*w/4,0) for k in (-1,1,-2,2)) if direction in ('N','S') else tuple((0,k*h/2) for k in (-1,1,-2,2)) if direction in ('E','W') else ())
+                                for dx,dy in slides:
+                                    box=base if not (dx or dy) else Box(base.x+dx,base.y+dy,w,h)
+                                    if gap<NEAR_RELOCATION_LEADER_MIN_GAP:
+                                        if near_start or not acceptable(box):continue
+                                        label={**label,'at':list(anchor)};chosen=box;method='AUTO_'+direction;break
+                                    if not acceptable(box,owner_check=False):continue
+                                    end=visible_owner_leader(anchor,box,occupied,owner_line_incident_ids(line_owner,anchor,occupied) if collinear_owners else {line_owner['id']},near_start=near_start)
+                                    if end is None:continue
+                                    label={**label,'at':list(anchor)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                                if chosen:break
                             if chosen:break
                         if chosen:break
                     if chosen:break
