@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const selector = require('../archive/mixer-selector.js');
 
 const mixerHtml = fs.readFileSync(require('node:path').join(__dirname, '..', 'archive', 'mixer.html'), 'utf8');
-assert.match(mixerHtml, /mixer-selector\.js\?v=20260825\.1/);
+assert.match(mixerHtml, /mixer-selector\.js\?v=20261009-meta1/);
 assert.match(mixerHtml, /evaluateHardConstraints\(pool/);
 assert.match(mixerHtml, /validateBlueprintSet/);
 assert.match(mixerHtml, /lastAutoGenValidation && !lastAutoGenValidation\.ok/);

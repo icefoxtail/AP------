@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>포물선 실전 킬러 랩 · AP Math 실험실</title>
+<meta name="description" content="기하 포물선: 정의(PF=PH)·정삼각형·최단 거리, 초점을 지나는 현의 두 부분의 길이 a, b 사이의 관계와 cosθ, 그 현을 지름으로 하는 원과 두 접선의 수직, 접선과 마름모, 초점에서 접선에 내린 수선의 발을 직접 조작하며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   기하 · 포물선 실전 킬러 랩 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 3개 시나리오 = 12장면
+   원본: labs/기하와벡터/포물선.html
+   이식 방식: 원본의 문제·풀이 데이터(examData)와 초점현 계산, 모드별 그리기 코드(renderMode1~4)를 글자 그대로 옮기고
+   분필 그리기 함수(drawChalkLine·drawChalkPoint·drawRightAngleMark…)의 이름만 아래 어댑터가 새 무대(APLab.Board)에 연결합니다.
+   - 바뀐 점: 셸·레이아웃은 공용 키트가 담당, 무대는 1:1 축척, 점 P·A·B·정점 A는 직접 끄는 손잡이,
+     하단 비율 줄자는 셸의 요약 띠로 이동, 관찰 렌즈는 조작 패널의 칩으로 이동.
+   - 단계: 원본의 단계별 눈 아이콘 → 정리 탭의 단계 플레이어(1단계는 처음부터 켜짐), 조각 발광 → '관찰 포인트'.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+  const clamp = APLab.clamp;
+
+  function fmtNum(val, digits = 2) {
+    const clean = Math.abs(val) < 1e-7 ? 0 : val;
+    return clean.toFixed(digits);
+  }
+
+  /* ===== 원본 그대로: 4대 모드 × 3종 세부 시나리오 기출·솔루션 데이터 (원본 535–869행) ===== */
+    const examData = {
+      1: {
+        badge: "장면 1 · 포물선의 정의, 정삼각형, 최단 거리",
+        hint: "노란 점 P를 위아래로 끌어 보며 <span class='text-pink-300 font-bold'>PF = PH = x₁ + p</span>가 항상 성립함과, PA + PF가 가장 작을 때 <span class='text-amber-300 font-bold'>점 P가 점 A에서 준선에 내린 수선 위에 놓임</span>을 확인하세요.",
+        subTitles: ["① 기본 정의 (PF=6)", "② 정삼각형 PFH", "③ 최솟값 PA+PF"],
+        subData: {
+          1: {
+            tag: "포물선의 정의",
+            targetTime: "목표 시간: 5초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 의 초점을 ${tex('F')}, 준선을 ${tex('l')}이라 하자. 포물선 위의 제1사분면의 점 ${tex('P(x_1, y_1)')}에서 준선 ${tex('l')}에 내린 수선의 발을 ${tex('H')}라 할 때, 선분 ${tex('\\overline{PF} = 6')} 이다. 이때 ${tex('x_1')}의 값과 삼각형 ${tex('PFH')}의 둘레의 길이를 구하시오.`,
+            answerBadge: () => `${tex('x_1 = 4')}, 둘레 ${tex('= 12 + 4\\sqrt{3}')}`,
+            snap: { p: 2.0, py: Math.sqrt(32), theta: Math.PI / 3 },
+            steps: [
+              "준선 x = -p, 수선의 발 H(-p, y₁), 포물선의 정의에 의해 PF = PH",
+              "가로 p, 세로 2p인 직사각형과, 초점을 지나고 축에 수직인 현(길이 4p)",
+              "삼각형 PFH의 둘레, 점 P에서의 접선이 PF, 축에 평행한 반직선과 이루는 두 각 α는 서로 같음"
+            ],
+            textbook: () => ({
+              steps: `① ${tex('y^2 = 8x = 4 \\cdot 2x')} 이므로 초점 ${tex('F(2, 0)')}, 준선 ${tex('x = -2')}<br/>
+② 두 점 사이의 거리 공식으로 ${tex('\\overline{PF} = \\sqrt{(x_1 - 2)^2 + y_1^2} = 6')}<br/>
+③ 양변을 제곱하고 ${tex('y_1^2 = 8x_1')} 대입:<br/>
+&nbsp;&nbsp;${tex('(x_1 - 2)^2 + 8x_1 = 36 \\implies x_1^2 + 4x_1 - 32 = 0 \\implies x_1 = 4, \\; y_1 = 4\\sqrt{2}')}<br/>
+④ ${tex('H(-2, 4\\sqrt{2})')} 와 ${tex('F(2, 0)')} 사이의 거리 ${tex('\\overline{FH} = \\sqrt{4^2 + (4\\sqrt{2})^2} = \\sqrt{48} = 4\\sqrt{3}')}<br/>
+⑤ ${tex('\\therefore \\triangle PFH')} 둘레 ${tex('= \\overline{PF} + \\overline{PH} + \\overline{FH} = 6 + 6 + 4\\sqrt{3} = 12 + 4\\sqrt{3}')}`,
+              warning: "주의: 초점까지의 거리를 두 점 사이의 거리 공식으로 구하면 이차방정식을 풀어야 해서 계산이 길어집니다. 포물선의 정의를 이용하면 더 간단합니다."
+            }),
+            shortcut: () => ({
+              steps: `① 포물선의 정의에 의해 점 P에서 초점까지의 거리와 준선까지의 거리가 같으므로 <strong class="text-pink-300">${tex('\\overline{PF} = \\overline{PH} = x_1 + p')}</strong>이다.<br/>
+② ${tex('p = 2')} 이고 ${tex('\\overline{PF} = x_1 + 2 = 6')} 이므로 <strong class="text-amber-300">${tex('x_1 = 4')}</strong> (${tex('y_1 = 4\\sqrt{2}')})이다.<br/>
+③ 가로 4, 세로 ${tex('4\\sqrt{2}')}인 직각삼각형에서 ${tex('\\overline{FH} = \\sqrt{4^2 + 32} = 4\\sqrt{3}')} 이므로 둘레는 <strong class="text-emerald-300">${tex('12 + 4\\sqrt{3}')}</strong>이다.`,
+              highlight: "포물선 y² = 4px 위의 점 P(x₁, y₁)에서 초점까지의 거리는 PF = x₁ + p 입니다."
+            })
+          },
+          2: {
+            tag: "포물선과 정삼각형 PFH",
+            targetTime: "목표 시간: 5초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 위의 제1사분면의 점 ${tex('P(x_1, y_1)')}와 초점 ${tex('F(2, 0)')}, 점 ${tex('P')}에서 준선 ${tex('x = -2')}에 내린 수선의 발 ${tex('H')}에 대하여 삼각형 ${tex('PFH')}가 정삼각형일 때, ${tex('x_1')}의 값과 정삼각형 ${tex('PFH')}의 한 변의 길이를 구하시오.`,
+            answerBadge: () => `${tex('x_1 = 6')}, 한 변 ${tex('= 8')}`,
+            snap: { p: 2.0, py: Math.sqrt(48), theta: Math.PI / 3 },
+            steps: [
+              "정삼각형 PFH의 세 변 PF = PH = FH 및 내각 60° 표시",
+              "초점 F에서 선분 PH에 내린 수선의 발 (내각이 30°, 60°, 90°인 직각삼각형)",
+              "엇각에 의해 PF가 x축과 이루는 각이 60° ⇒ x₁ = 3p = 6, 한 변 = 4p = 8"
+            ],
+            textbook: () => ({
+              steps: `① ${tex('\\overline{PF} = \\overline{PH} = x_1 + 2')} 이고 ${tex('H(-2, y_1), F(2, 0)')}<br/>
+② ${tex('\\overline{FH}^2 = (2 - (-2))^2 + y_1^2 = 16 + 8x_1')}<br/>
+③ ${tex('\\overline{PH}^2 = \\overline{FH}^2')} 에서 ${tex('(x_1 + 2)^2 = 16 + 8x_1 \\implies x_1^2 - 4x_1 - 12 = 0')}<br/>
+④ ${tex('(x_1 - 6)(x_1 + 2) = 0 \\implies x_1 = 6')}, 한 변의 길이 ${tex('x_1 + 2 = 8')} 도출.`,
+              warning: "주의: 정삼각형 조건을 변의 길이의 제곱으로 식을 세워 풀면 계산이 길어지고 실수하기 쉽습니다."
+            }),
+            shortcut: () => ({
+              steps: `① ${tex('PH \\parallel x')}축이므로 엇각에 의해 직선 ${tex('PF')}가 ${tex('x')}축과 이루는 각도 <strong class="text-amber-300">${tex('60^\\circ')}</strong>이다.<br/>
+② 점 ${tex('F')}에서 선분 ${tex('PH')}에 내린 수선의 발을 ${tex('F_1')}이라 하면 ${tex('\\overline{HF_1} = 2p = 4')}이고 ${tex('\\angle FHF_1 = 60^\\circ')}, ${tex('\\cos 60^\\circ = \\dfrac{1}{2}')}이므로 빗변 ${tex('FH')}의 길이는 ${tex('4 \\div \\dfrac{1}{2} = 8')}이다.<br/>
+③ 따라서 정삼각형의 한 변의 길이는 <strong class="text-pink-300">${tex('4p = 8')}</strong>이고, ${tex('\\overline{PF} = x_1 + p = 8')}에서 ${tex('x_1 = 3p = 6')}이다.`,
+              highlight: "삼각형 PFH가 정삼각형이면 x₁ = 3p, 한 변의 길이는 4p, 직선 PF가 x축과 이루는 각은 60°입니다."
+            })
+          },
+          3: {
+            tag: "최단거리 킬러",
+            targetTime: "목표 시간: 3초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 의 초점 ${tex('F(2, 0)')}과 포물선의 안쪽에 있는 점 ${tex('A(5, 4)')}, 포물선 위를 움직이는 점 ${tex('P')}에 대하여 ${tex('\\overline{PF} + \\overline{PA}')}의 최솟값과 그때의 점 ${tex('P')}의 좌표를 구하시오.`,
+            answerBadge: () => `최솟값 ${tex('= 7')}, ${tex('P(2, 4)')}`,
+            snap: { p: 2.0, py: 4.0, theta: Math.PI / 3 },
+            steps: [
+              "포물선의 정의로 PF를 PH로 바꾸기: PF + PA = PH + PA",
+              "점 A(5, 4)에서 준선 x = -2에 내린 수선의 발 H'(-2, 4)",
+              "PH + PA ≥ AH' = 5 - (-2) = 7 (점 P가 선분 AH' 위에 있을 때 등호 성립)"
+            ],
+            textbook: () => ({
+              steps: `① 점 ${tex('P\\left(\\dfrac{y^2}{8}, y\\right)')} 로 두고 두 거리의 합 ${tex('f(y) = \\overline{PF} + \\overline{PA}')}을 y에 대한 식으로 나타낸다:<br/>
+&nbsp;&nbsp;${tex('f(y) = \\left(\\dfrac{y^2}{8} + 2\\right) + \\sqrt{\\left(\\dfrac{y^2}{8} - 5\\right)^2 + (y - 4)^2}')}<br/>
+② 이 식의 최솟값을 직접 구하기는 복잡하므로 포물선의 정의 ${tex('\\overline{PF} = \\overline{PH}')}를 이용한다.<br/>
+③ ${tex('PH+PA\\ge AH')}이며, ${tex('A=(5,4), H=(-2,y_1)')}이므로 ${tex('AH=\\sqrt{49+(y_1-4)^2}\\ge7')}. 등호에는 ${tex('y_1=4')}가 필요하고, 이때 포물선 위의 점 ${tex('P=(2,4)')}가 H와 A 사이에 놓여 실제 등호가 성립합니다.`,
+              warning: "주의: 좌표로 식을 세우면 제곱근이 들어간 복잡한 식이 됩니다. 포물선의 정의로 PF를 PH(점 P에서 준선까지의 거리)로 바꾸면 꺾은선 H→P→A의 길이가 되어, 등호가 성립하는 조건까지 바로 확인할 수 있습니다."
+            }),
+            shortcut: () => ({
+              steps: `① 포물선의 정의 ${tex('\\overline{PF} = \\overline{PH}')}를 이용하면 구하는 값은 <strong class="text-pink-300">${tex('\\overline{PH} + \\overline{PA}')}</strong>의 최솟값이다.<br/>
+② 꺾인 선분 ${tex('A \\to P \\to H')}의 길이는 점 ${tex('P')}가 점 ${tex('A(5, 4)')}에서 준선 ${tex('x = -2')}에 내린 수선, 즉 <strong>수평선(${tex('y_1 = 4')}) 위에 있어 일직선이 될 때</strong> 가장 짧다.<br/>
+③ 따라서 최솟값은 ${tex('x_A - (-p) = 5 - (-2) =')} <strong class="text-amber-300">${tex('7')}</strong>이고, 그때의 점은 ${tex('P(2, 4)')}이다.`,
+              highlight: "포물선의 안쪽에 있는 점 A에 대하여, 포물선 위의 점 P에서 PF + PA의 최솟값은 점 A에서 준선까지의 거리 x_A + p 입니다."
+            })
+          }
+        }
+      },
+
+      2: {
+        badge: "장면 2 · 초점을 지나는 현의 두 부분의 길이 a, b: 1/a + 1/b = 1/p 와 cosθ",
+        hint: "초점을 지나는 현의 끝점 A 또는 B를 끌어 돌려 보며(a = AF, b = BF), <span class='text-sky-300 font-bold'>1/a + 1/b = 1/p</span>가 항상 성립함과 직각삼각형 ABE에서 <span class='text-amber-300 font-bold'>cosθ = (a-b)/(a+b)</span>임을 확인하세요.",
+        subTitles: ["① 길이비 3:1 (θ=60°)", "② 길이비 2:1 (cosθ=1/3)", "③ 축에 수직인 현 (θ=90°)"],
+        subData: {
+          1: {
+            tag: "초점을 지나는 현의 길이 사이의 관계 (킬러 공식)",
+            targetTime: "목표 시간: 5초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 의 초점 ${tex('F(2, 0)')}을 지나는 직선이 포물선과 만나는 두 점을 ${tex('A, B')}라 하자. ${tex('\\overline{AF} = a, \\; \\overline{BF} = b')}라 할 때, ${tex('a = 8')} 이면 선분 ${tex('\\overline{BF} = b')}의 길이와 직선 ${tex('AB')}의 양의 기울기 ${tex('m = \\tan\\theta')}를 구하시오.`,
+            answerBadge: () => `${tex('b = \\dfrac{8}{3}')}, 기울기 ${tex('m = \\sqrt{3}')}`,
+            snap: { p: 2.0, py: 4.0, theta: Math.PI / 3 },
+            steps: [
+              "준선 x = -p 및 수선의 발 A', B' 연결 (AA' = a, BB' = b)",
+              "점 B에서 AA'에 내린 수선의 발 E, 직각삼각형 ABE (한 변 a - b, 빗변 a + b)",
+              "1/a + 1/b = 1/p 와 cosθ = (a-b)/(a+b)"
+            ],
+            textbook: () => ({
+              steps: `① ${tex('\\overline{AF} = x_A + 2 = 8 \\implies x_A = 6, \\; y_A = \\sqrt{48} = 4\\sqrt{3}')}<br/>
+② 두 점 ${tex('F(2, 0), A(6, 4\\sqrt{3})')}을 지나는 직선의 기울기:<br/>
+&nbsp;&nbsp;${tex('m = \\dfrac{4\\sqrt{3}}{6 - 2} = \\sqrt{3} \\implies y = \\sqrt{3}(x - 2)')}<br/>
+③ 포물선 ${tex('y^2 = 8x')} 와 연립: ${tex('3(x - 2)^2 = 8x \\implies 3x^2 - 20x + 12 = 0')}<br/>
+④ ${tex('(x - 6)(3x - 2) = 0 \\implies x_B = \\dfrac{2}{3} \\implies b = x_B + 2 = \\dfrac{8}{3}')} 도출.`,
+              warning: "주의: 직선의 방정식을 세워 포물선의 방정식과 연립하고 이차방정식의 근을 구하면 계산이 매우 길어집니다."
+            }),
+            shortcut: () => ({
+              steps: `① 초점을 지나는 현의 두 부분의 길이 ${tex('a, b')} 사이에는 <strong class="text-sky-300">${tex('\\dfrac{1}{a} + \\dfrac{1}{b} = \\dfrac{1}{p}')}</strong>이 성립하므로 ${tex('p = 2, a = 8')}을 대입한다:<br/>
+&nbsp;&nbsp;${tex('\\dfrac{1}{8} + \\dfrac{1}{b} = \\dfrac{1}{2} \\implies \\dfrac{1}{b} = \\dfrac{3}{8} \\implies')} <strong class="text-amber-300">${tex('b = \\dfrac{8}{3}')}</strong><br/>
+② 길이비가 ${tex('a : b = 3 : 1')} 이므로 직각삼각형 ${tex('\\triangle ABE')}에서 <strong class="text-emerald-300">${tex('\\cos\\theta = \\dfrac{3-1}{3+1} = \\dfrac{1}{2} \\implies \\theta = 60^\\circ, \\; m = \\sqrt{3}')}</strong>이다.`,
+              highlight: "초점을 지나는 현에서 a = AF, b = BF라 하면 1/a + 1/b = 1/p 이고, 직각삼각형 ABE에서 cosθ = (a-b)/(a+b) 입니다. 두 관계 1/a + 1/b = 1/p 와 cosθ = (a-b)/(a+b)로 연립방정식 없이 b와 기울기를 구할 수 있습니다."
+            })
+          },
+          2: {
+            tag: "초점이 현을 2 : 1로 나누는 경우 (AF : BF = 2 : 1)",
+            targetTime: "목표 시간: 5초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 의 초점 ${tex('F(2, 0)')}을 지나는 직선이 포물선과 만나는 두 점 ${tex('A, B')}에 대하여 ${tex('\\overline{AF} : \\overline{BF} = 2 : 1')} 일 때, 두 선분의 길이 ${tex('a = \\overline{AF}, \\; b = \\overline{BF}')}와 직선이 ${tex('x')}축과 이루는 각 ${tex('\\theta')}에 대한 ${tex('\\cos\\theta')}의 값을 구하시오.`,
+            answerBadge: () => `${tex('a = 6, \\; b = 3, \\; \\cos\\theta = \\dfrac{1}{3}')}`,
+            snap: { p: 2.0, py: 4.0, theta: Math.acos(1 / 3) },
+            steps: [
+              "준선 x = -p 및 수선의 발 A', B' 연결 (a : b = 2 : 1)",
+              "직각삼각형 ABE: 빗변 AB = 3k, 한 변 AE = 2k - k = k",
+              "cosθ = (2-1)/(2+1) = 1/3 및 1/(2b) + 1/b = 1/2 ⇒ b=3, a=6"
+            ],
+            textbook: () => ({
+              steps: `① 직선의 방정식을 ${tex('x = my + 2')} 라 하고 ${tex('y^2 = 8x')} 에 대입:<br/>
+&nbsp;&nbsp;${tex('y^2 - 8my - 16 = 0')} 의 두 근을 ${tex('y_A = 2\\alpha, \\; y_B = -\\alpha \\; (\\alpha > 0)')} 라 설정<br/>
+② 근과 계수의 관계에서 ${tex('2\\alpha(-\\alpha) = -16 \\implies \\alpha^2 = 8 \\implies \\alpha = 2\\sqrt{2}')}<br/>
+③ ${tex('2\\alpha - \\alpha = 8m \\implies m = \\dfrac{\\sqrt{2}}{4} \\implies \\tan\\theta = 2\\sqrt{2} \\implies \\cos\\theta = \\dfrac{1}{3}')}이다.`,
+              warning: "주의: 근과 계수의 관계로 y좌표의 비를 세워 풀면 부호를 틀리기 쉽고 계산이 깁니다."
+            }),
+            shortcut: () => ({
+              steps: `① ${tex('a : b = 2 : 1')} 이므로 직각삼각형 ${tex('\\triangle ABE')}에서 <strong class="text-amber-300">${tex('\\cos\\theta = \\dfrac{2 - 1}{2 + 1} = \\dfrac{1}{3}')}</strong> (1초 컷)!<br/>
+② ${tex('a = 2b')}를 1/a + 1/b = 1/p 에 대입하면 ${tex('\\dfrac{1}{2b} + \\dfrac{1}{b} = \\dfrac{1}{2}')}에 대입하면 ${tex('\\dfrac{3}{2b} = \\dfrac{1}{2} \\implies')} <strong class="text-sky-300">${tex('b = 3, \\; a = 6')}</strong>이다.`,
+              highlight: "초점이 현을 m : n (m > n)으로 나누면 직각삼각형 ABE에서 cosθ = (m - n) / (m + n) 입니다."
+            })
+          },
+          3: {
+            tag: "초점을 지나고 축에 수직인 현",
+            targetTime: "목표 시간: 3초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 의 초점 ${tex('F(2, 0)')}을 지나고 ${tex('x')}축에 수직인 직선(${tex('\\theta = 90^\\circ')})이 포물선과 만나는 두 점을 ${tex('A, B')}라 할 때, 현 ${tex('\\overline{AB}')}의 길이와 사각형 ${tex("AA'B'B")}의 넓이를 구하시오.`,
+            answerBadge: () => `${tex('\\overline{AB} = 8')}, 넓이 ${tex('= 32')}`,
+            snap: { p: 2.0, py: 4.0, theta: Math.PI / 2 },
+            steps: [
+              "초점을 지나고 축에 수직인 직선 x = p 위의 두 점 A(p, 2p), B(p, -2p)와 준선",
+              "가로 2p, 세로 4p인 직사각형 AA'B'B",
+              "a = b = 2p = 4 ⇒ |AB| = 4p = 8, 넓이 8p² = 32"
+            ],
+            textbook: () => ({
+              steps: `① 초점 ${tex('F(2, 0)')}을 지나고 ${tex('x')}축에 수직인 직선의 방정식은 ${tex('x = 2')}<br/>
+② 포물선 ${tex('y^2 = 8x')}에 ${tex('x = 2')} 대입: ${tex('y^2 = 16 \\implies y = \\pm 4')}<br/>
+③ 따라서 ${tex('A(2, 4), B(2, -4)')} 이므로 ${tex('\\overline{AB} = 8')}, 가로 길이는 ${tex('2 - (-2) = 4')}<br/>
+④ 직사각형 넓이 ${tex('= 4 \\times 8 = 32')}.`,
+              warning: "참고: 초점을 지나고 축에 수직인 현의 길이 |AB| = 4p는, 초점을 지나는 모든 현 중에서 가장 짧습니다."
+            }),
+            shortcut: () => ({
+              steps: `① ${tex('\\theta = 90^\\circ')} 이면 ${tex('a = b = 2p = 4')} 이므로 현 ${tex('AB')}의 길이는 ${tex('a + b =')} <strong class="text-amber-300">${tex('4p = 8')}</strong>이다.<br/>
+② 사각형 ${tex("AA'B'B")}는 가로 ${tex('2p = 4')}, 세로 ${tex('4p = 8')}인 직사각형이므로 넓이는 ${tex('4 \\times 8 =')} <strong class="text-emerald-300">${tex('32')}</strong>이다.`,
+              highlight: "포물선 y² = 4px 에서 4p는 초점을 지나고 축에 수직인 현의 길이와 같습니다."
+            })
+          }
+        }
+      },
+
+      3: {
+        badge: "장면 3 · 초점을 지나는 현을 지름으로 하는 원과 준선, 두 접선의 수직",
+        hint: "원 C는 항상 준선에 접하고(<span class='text-amber-300 font-bold'>d = R</span>), 양 끝점 A, B에서 그은 <span class='text-purple-300 font-bold'>두 접선은 준선 위의 점 Q(=H_M)에서 90°로 만납니다</span>.",
+        subTitles: ["① 원과 준선 접함 (d=R)", "② 두 접선 직교 (∠AH_MB=90°)", "③ θ=45°일 때의 원"],
+        subData: {
+          1: {
+            tag: "원과 준선의 위치 관계",
+            targetTime: "목표 시간: 3초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 의 초점 ${tex('F(2, 0)')}를 지나는 직선이 포물선과 만나는 두 점 ${tex('A, B')}를 지름의 양 끝점으로 하는 원 ${tex('C')}가 있다. ${tex('\\overline{AF} = 8, \\; \\overline{BF} = \\dfrac{8}{3}')} 일 때, 원 ${tex('C')}의 반지름 ${tex('R')}과 원의 중심 ${tex('M')}에서 준선 ${tex('x = -2')}까지의 거리 ${tex('d')}를 비교하시오.`,
+            answerBadge: () => `${tex('d = R = \\dfrac{16}{3}')} (항상 접함)`,
+            snap: { p: 2.0, py: 4.0, theta: Math.PI / 3 },
+            steps: [
+              "준선 x = -p와, 초점을 지나는 현 AB를 지름으로 하는 원 C",
+              "사다리꼴 AA'B'B에서 평행하지 않은 두 변 AB, A'B'의 중점 M, H_M을 이은 선분 MH_M",
+              "d = (a+b)/2 = R (원은 준선에 접한다), 두 접선은 H_M에서 수직"
+            ],
+            textbook: () => ({
+              steps: `① 두 교점 ${tex('A(6, 4\\sqrt{3})')} 와 ${tex('B\\left(\\dfrac{2}{3}, -\\dfrac{4\\sqrt{3}}{3}\\right)')} 좌표 각각 계산<br/>
+② 중점 공식으로 원의 중심 ${tex('M\\left(\\dfrac{10}{3}, \\dfrac{4\\sqrt{3}}{3}\\right)')} 도출<br/>
+③ 지름 ${tex('\\overline{AB} = \\dfrac{32}{3}')} 에서 반지름 ${tex('R = \\dfrac{16}{3}')} 계산<br/>
+④ 중심 ${tex('M')}과 준선 ${tex('x = -2')} 사이 거리 ${tex('d = \\dfrac{10}{3} - (-2) = \\dfrac{16}{3} = R')} 비교.`,
+              warning: "주의: 교점의 좌표, 중점, 반지름을 일일이 계산하면 풀이가 매우 길어집니다. 포물선의 정의와 사다리꼴의 성질을 이용하면 간단히 확인할 수 있습니다."
+            }),
+            shortcut: () => ({
+              steps: `① 포물선의 정의에 의해 사다리꼴 ${tex("AA'B'B")}의 윗변은 ${tex("\\overline{AA'} = a")}, 아랫변은 ${tex("\\overline{BB'} = b")}이다.<br/>
+② 사다리꼴에서 평행하지 않은 두 변의 중점을 이은 선분의 길이는 (윗변 + 아랫변) ÷ 2 이므로, 중심 ${tex('M')}에서 준선까지의 거리는 <strong class="text-amber-300">${tex('d = \\dfrac{a + b}{2}')}</strong>.<br/>
+③ 현 ${tex('AB')}의 길이 ${tex('a + b')}가 원의 지름이므로 반지름은 <strong class="text-sky-300">${tex('R = \\dfrac{a + b}{2}')}</strong> ⇒ <strong class="text-emerald-300">${tex('d = R')}, 즉 원은 준선에 접한다.</strong>`,
+              highlight: "초점을 지나는 현을 지름으로 하는 원은 항상 준선에 접합니다 (d = R = (a+b)/2)."
+            })
+          },
+          2: {
+            tag: "킬러 심화: 준선 위의 점에서 그은 두 접선",
+            targetTime: "목표 시간: 5초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 의 초점을 지나는 현 ${tex('AB')} (${tex('\\theta = 60^\\circ')})의 양 끝점 ${tex('A, B')}에서 그은 두 접선이 만나는 교점을 ${tex('Q')}라 하자. 점 ${tex('Q')}의 좌표와 ${tex('\\angle AQB')}의 크기, 그리고 직선 ${tex('QF')}와 현 ${tex('AB')}가 이루는 각의 크기를 구하시오.`,
+            answerBadge: () => `${tex('Q\\left(-2, \\dfrac{4\\sqrt{3}}{3}\\right), \\; \\angle AQB = 90^\\circ, \\; QF \\perp AB')}`,
+            snap: { p: 2.0, py: 4.0, theta: Math.PI / 3 },
+            steps: [
+              "현 AB를 지름으로 하는 원 C와 준선 위의 점 Q(=H_M) 표시",
+              "점 A, B에서의 두 접선 QA, QB를 그리고 ∠AQB = 90° 확인",
+              "QF ⊥ AB 이고, Q가 AB를 지름으로 하는 원 위의 점이므로 원주각 ∠AQB = 90°"
+            ],
+            textbook: () => ({
+              steps: `① 점 ${tex('A(6, 4\\sqrt{3})')}에서의 접선: ${tex('4\\sqrt{3}y = 4(x + 6) \\implies y = \\dfrac{1}{\\sqrt{3}}(x + 6)')}<br/>
+② 점 ${tex('B\\left(\\dfrac{2}{3}, -\\dfrac{4\\sqrt{3}}{3}\\right)')}에서의 접선: ${tex('-\\dfrac{4\\sqrt{3}}{3}y = 4\\left(x + \\dfrac{2}{3}\\right) \\implies y = -\\sqrt{3}\\left(x + \\dfrac{2}{3}\\right)')}<br/>
+③ 두 접선의 기울기 곱 ${tex('\\dfrac{1}{\\sqrt{3}} \\times (-\\sqrt{3}) = -1 \\implies \\angle AQB = 90^\\circ')}<br/>
+④ 두 식을 연립하여 교점 ${tex('Q\\left(-2, \\dfrac{4\\sqrt{3}}{3}\\right)')} 도출.`,
+              warning: "주의: 두 접선의 방정식을 각각 구해 연립하면 분수 계산이 복잡해집니다."
+            }),
+            shortcut: () => ({
+              steps: `① 초점을 지나는 현 ${tex('AB')}의 양 끝점에서 그은 두 접선은 <strong>준선 ${tex('x = -p')} 위의 점 ${tex('Q(=H_M)')}에서 서로 수직(${tex('90^\\circ')})으로 만난다.</strong><br/>
+② ${tex('y_Q = \\dfrac{y_A + y_B}{2} = \\dfrac{4\\sqrt{3} - 4\\sqrt{3}/3}{2} = \\dfrac{4\\sqrt{3}}{3}')} 이므로 <strong class="text-amber-300">${tex('Q\\left(-2, \\dfrac{4\\sqrt{3}}{3}\\right)')}</strong>이다.<br/>
+③ 또한 선분 ${tex('QF')}는 현 ${tex('AB')}와 수직이다: <strong class="text-purple-300">${tex('QF \\perp AB \\; (90^\\circ)')}</strong>`,
+              highlight: "준선 위의 한 점에서 포물선에 그은 두 접선은 서로 수직이고, 두 접점을 잇는 현은 초점 F를 지납니다."
+            })
+          },
+          3: {
+            tag: "기울기가 1인 현(θ = 45°)과 원",
+            targetTime: "목표 시간: 5초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 의 초점 ${tex('F(2, 0)')}을 지나고 기울기가 ${tex('1')} (${tex('\\theta = 45^\\circ')})인 직선이 포물선과 만나는 두 점 ${tex('A, B')}를 지름으로 하는 원 ${tex('C')}의 반지름 ${tex('R')}의 값을 구하시오.`,
+            answerBadge: () => `${tex('R = d = 8')}`,
+            snap: { p: 2.0, py: 4.0, theta: Math.PI / 4 },
+            steps: [
+              "초점을 지나는 기울기 1(θ = 45°)인 현 AB를 지름으로 하는 원 C",
+              "중심 M에서 준선 x = -2에 내린 수선의 발 H_M 연결",
+              "AB = 4p / sin²45° = 8p = 16 ⇒ 반지름 R = d = 4p = 8"
+            ],
+            textbook: () => ({
+              steps: `① 직선 ${tex('y = x - 2')} 와 ${tex('y^2 = 8x')} 연립: ${tex('(x - 2)^2 = 8x \\implies x^2 - 12x + 4 = 0')}<br/>
+② 근과 계수의 관계에서 ${tex('x_A + x_B = 12')}<br/>
+③ 현의 길이 ${tex('\\overline{AB} = (x_A + 2) + (x_B + 2) = (x_A + x_B) + 4 = 16')}<br/>
+④ 따라서 원의 반지름 ${tex('R = \\dfrac{16}{2} = 8')}.`,
+              warning: "주의: 초점을 지나는 현이 x축과 이루는 각이 θ이면 |AB| = 4p / sin²θ 가 성립합니다. |AB| = 4p / sin²θ 를 쓰면 이차방정식을 세우지 않아도 됩니다."
+            }),
+            shortcut: () => ({
+              steps: `① 현 ${tex('AB')}의 길이는 <strong class="text-sky-300">${tex('\\overline{AB} = a + b = \\dfrac{4p}{\\sin^2\\theta}')}</strong>이다. ${tex('\\left(a = \\dfrac{2p}{1 - \\cos\\theta}, \\; b = \\dfrac{2p}{1 + \\cos\\theta}\\right)')}<br/>
+② ${tex('p = 2, \\; \\theta = 45^\\circ')} (${tex('\\sin^2 45^\\circ = \\dfrac{1}{2}')}) 을 대입하면 ${tex('\\overline{AB} = \\dfrac{8}{1/2} = 16')}이다.<br/>
+③ 따라서 반지름과 중심에서 준선까지의 거리는 <strong class="text-amber-300">${tex('R = d = \\dfrac{16}{2} = 8')}</strong>이다.`,
+              highlight: "초점을 지나는 현 AB가 x축과 이루는 각이 θ이면 |AB| = a + b = 4p / sin²θ 이고, AB를 지름으로 하는 원의 반지름은 R = 2p / sin²θ 입니다. 3초 컷!"
+            })
+          }
+        }
+      },
+
+      4: {
+        badge: "장면 4 · 포물선의 접선과 마름모 TFPH, 초점에서 접선에 내린 수선의 발",
+        hint: "접점 P를 옮겨도 <span class='text-purple-300 font-bold'>접선의 x절편은 -x₁</span>이고, 초점 F에서 접선에 내린 수선의 발 <span class='text-amber-300 font-bold'>K(0, y₁/2)는 항상 y축 위</span>에 놓입니다!",
+        subTitles: ["① 마름모 둘레 20 (x₁=3)", "② 정사각형 TFPH (x₁=p)", "③ 직각삼각형의 닮음"],
+        subData: {
+          1: {
+            tag: "접선과 마름모 킬러",
+            targetTime: "목표 시간: 5초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 위의 점 ${tex('P(3, 2\\sqrt{6})')}에서의 접선 ${tex('l')}이 ${tex('x')}축과 만나는 점을 ${tex('T')}, 점 ${tex('P')}에서 준선 ${tex('x = -2')}에 내린 수선의 발을 ${tex('H')}라 하자. 사각형 ${tex('TFPH')}의 둘레의 길이와 두 직선 ${tex('l, FH')}가 이루는 각의 크기를 구하시오.`,
+            answerBadge: () => `둘레 ${tex('= 20')}, 두 직선이 이루는 각 ${tex('= 90^\\circ')}`,
+            snap: { p: 2.0, py: Math.sqrt(24), theta: Math.PI / 3 },
+            steps: [
+              "접점 P(x₁, y₁)에서의 접선과 x절편 T(-x₁, 0) 및 수선의 발 H",
+              "네 변의 길이가 모두 (x₁ + p)로 같은 마름모 TFPH 완성",
+              "두 대각선 TP, FH는 서로 수직이등분하고 교점은 K(0, y₁/2), 직각삼각형 OFK"
+            ],
+            textbook: () => ({
+              steps: `① 접점 ${tex('P(3, 2\\sqrt{6})')}에서의 접선의 방정식 공식 대입:<br/>
+&nbsp;&nbsp;${tex('2\\sqrt{6}y = 4(x + 3) \\implies y = \\dfrac{2}{\\sqrt{6}}(x + 3)')}<br/>
+② ${tex('y = 0')} 대입하여 ${tex('x')}절편 ${tex('T(-3, 0)')} 도출 후 네 변의 길이 각각 계산:<br/>
+&nbsp;&nbsp;${tex('\\overline{TF} = 2 - (-3) = 5, \\; \\overline{PF} = 5, \\; \\overline{PH} = 5, \\; \\overline{TH} = 5 \\implies')} 둘레 ${tex('= 20')}<br/>
+③ 직선 ${tex('FH')}의 기울기 ${tex('-\\dfrac{\\sqrt{6}}{2}')}와 접선 기울기의 곱 ${tex('= -1 \\implies 90^\\circ')}.`,
+              warning: "주의: 접선의 방정식을 구하고 기울기의 곱이 -1임을 계산하면 풀이가 길어집니다."
+            }),
+            shortcut: () => ({
+              steps: `① 포물선 위의 점 ${tex('P(x_1, y_1)')}에서의 접선의 ${tex('x')}절편은 <strong class="text-purple-300">${tex('T(-x_1, 0)')}</strong>이다.<br/>
+② 따라서 ${tex('\\overline{TF} = x_1 + p = 3 + 2 = 5')} 이고, 포물선의 정의에 의해 ${tex('\\overline{PF} = \\overline{PH} = x_1 + p')} 이므로 <strong class="text-amber-300">사각형 TFPH는 한 변이 ${tex('x_1 + p = 5')} 인 마름모</strong>이다.<br/>
+③ 마름모 둘레 ${tex('= 4 \\times 5 = 20')}, 마름모의 두 대각선(${tex('TP')}와 ${tex('FH')})는 서로 <strong class="text-sky-300">${tex('90^\\circ')}로 만나며 서로를 이등분</strong>한다.`,
+              highlight: "포물선 위의 점 P에서의 접선의 x절편은 T(-x₁, 0)이고, 사각형 TFPH는 한 변의 길이가 x₁ + p 인 마름모입니다."
+            })
+          },
+          2: {
+            tag: "마름모가 정사각형이 되는 경우",
+            targetTime: "목표 시간: 3초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 위의 제1사분면의 점 ${tex('P(x_1, y_1)')}에서의 접선의 기울기가 ${tex('1')}일 때, 사각형 ${tex('TFPH')}가 정사각형임을 보이고 그 넓이를 구하시오.`,
+            answerBadge: () => `${tex('P(2, 4)')}, 정사각형 넓이 ${tex('= 16')}`,
+            snap: { p: 2.0, py: 4.0, theta: Math.PI / 2 },
+            steps: [
+              "x₁ = p = 2 일 때 접점 P(2, 4) 및 x절편 T(-2, 0) 연결",
+              "네 변의 길이 = 2p = 4 이고 ∠TFP = 90° 인 정사각형 TFPH",
+              "대각선 TP ⊥ FH (교점 K(0, 2)) 및 넓이 (2p)² = 16 확인"
+            ],
+            textbook: () => ({
+              steps: `① 기울기 ${tex('m = 1')}인 접선의 방정식: ${tex('y = x + \\dfrac{p}{m} = x + 2')}<br/>
+② ${tex('y^2 = 8x')} 와 연립: ${tex('(x + 2)^2 = 8x \\implies (x - 2)^2 = 0 \\implies P(2, 4)')}<br/>
+③ ${tex('T(-2, 0), F(2, 0), P(2, 4), H(-2, 4)')} 이므로 가로 ${tex('4')}, 세로 ${tex('4')}인 정사각형<br/>
+④ 넓이 ${tex('= 4 \\times 4 = 16')}.`,
+              warning: "참고: 기울기가 1인 접선의 접점은 초점을 지나고 축에 수직인 현의 끝점 P(p, 2p)입니다. 접점이 P(p, 2p)임을 알면 연립방정식이 필요 없습니다."
+            }),
+            shortcut: () => ({
+              steps: `① 접선의 기울기가 ${tex('1')} (${tex('45^\\circ')})이면 접선 위의 두 점 ${tex('T(-x_1, 0), P(x_1, y_1)')}에서 ${tex('y_1 = 2x_1')}이고, ${tex('y_1^2 = 4px_1')}과 연립하면 <strong class="text-amber-300">${tex('x_1 = p = 2')}</strong>이다.<br/>
+② 따라서 ${tex('P(2, 4)')}는 초점을 지나고 축에 수직인 현의 끝점이고, 마름모 ${tex('TFPH')}는 한 변이 ${tex('2p = 4')}인 <strong class="text-purple-300">정사각형</strong>이다.<br/>
+③ 넓이는 ${tex('4^2 =')} <strong class="text-emerald-300">${tex('16')}</strong>이다.`,
+              highlight: "점 P가 초점을 지나고 축에 수직인 현의 끝점 P(p, 2p)이면(x₁ = p) 접선의 기울기는 1이고, 마름모 TFPH는 한 변이 2p인 정사각형입니다."
+            })
+          },
+          3: {
+            tag: "최고난도 킬러: 초점에서 접선에 내린 수선의 발",
+            targetTime: "목표 시간: 5초",
+            question: () => `포물선 ${tex('y^2 = 8x')} 위의 점 ${tex('P(6, 4\\sqrt{3})')}에서의 접선 ${tex('l')}에 초점 ${tex('F(2, 0)')}에서 내린 수선의 발을 ${tex('K')}라 하자. 점 ${tex('K')}의 좌표와 선분 ${tex('\\overline{FK}')}의 길이, 그리고 ${tex('\\overline{FK}^2')}의 값을 구하시오.`,
+            answerBadge: () => `${tex('K(0, 2\\sqrt{3}), \\; \\overline{FK} = 4, \\; \\overline{FK}^2 = 16')}`,
+            snap: { p: 2.0, py: Math.sqrt(48), theta: Math.PI / 3 },
+            steps: [
+              "접선 위의 선분 TP의 중점 K(0, y₁/2)가 항상 y축(꼭짓점에서의 접선) 위에 있음을 확인",
+              "마름모의 두 대각선이 수직이므로 ∠FKP = 90° (K는 F에서 접선에 내린 수선의 발)",
+              "직각삼각형의 닮음 △OFK ∽ △KFP ⇒ FK² = FO · FP = p(x₁ + p)"
+            ],
+            textbook: () => ({
+              steps: `① 점 ${tex('P(6, 4\\sqrt{3})')}에서의 접선: ${tex('4\\sqrt{3}y = 4(x + 6) \\implies x - \\sqrt{3}y + 6 = 0')}<br/>
+② 초점 ${tex('F(2, 0)')}에서 직선 ${tex('x - \\sqrt{3}y + 6 = 0')} 까지의 점과 직선 사이 거리 공식:<br/>
+&nbsp;&nbsp;${tex('\\overline{FK} = \\dfrac{|2 - 0 + 6|}{\\sqrt{1^2 + (-\\sqrt{3})^2}} = \\dfrac{8}{2} = 4 \\implies \\overline{FK}^2 = 16')}<br/>
+③ 수선의 발 ${tex('K')}를 구하려면 ${tex('F')}를 지나고 접선에 수직인 직선의 방정식을 세워 접선의 방정식과 연립해야 한다.`,
+              warning: "주의: 수선의 발 K의 좌표를 구하려고 두 직선의 방정식을 연립하면 계산이 길어집니다."
+            }),
+            shortcut: () => ({
+              steps: `① 마름모 ${tex('TFPH')}에서 초점 ${tex('F')}에서 접선 ${tex('TP')}에 내린 수선의 발 ${tex('K')}는 선분 ${tex('TP')}의 중점이다.<br/>
+② ${tex('T(-x_1, 0), P(x_1, y_1)')}의 중점이므로 점 ${tex('K')}는 항상 <strong>${tex('y')}축 위의 점 <span class="text-amber-300">${tex('K\\left(0, \\dfrac{y_1}{2}\\right) = K(0, 2\\sqrt{3})')}</span></strong>이다.<br/>
+③ 직각삼각형의 닮음(${tex('\\triangle OFK \\sim \\triangle KFP')})에 의해 <strong class="text-sky-300">${tex('\\overline{FK}^2 = p(x_1 + p) = 2 \\times 8 = 16')}</strong>이다.`,
+              highlight: "초점 F에서 접선에 내린 수선의 발 K는 항상 y축 위의 점 (0, y₁/2)이며, FK² = p · PF 입니다."
+            })
+          }
+        }
+      }
+    };
+
+  /* ======================================================================
+     [2.0] 어댑터: 원본의 drawChalk* 그리기 함수 → 새 무대 엔진
+     - 원본 규칙 유지: 관찰 렌즈(lensGroup)에 안 맞는 층은 흐리게(0.22), 조각 번호(partIdx)는 무대의 강조 규칙으로 처리
+     - 좌표는 원본의 수학 좌표 그대로(무대가 y를 위로 둔 1:1 좌표계)
+     ====================================================================== */
+  let BOARD = null;
+  let CUR = null; // 지금 그리는 셸 상태(손잡이 끌기가 고칩니다)
+  const sink = {};
+  const state = {
+    mode: 1, subType: 1, conceptSwitch: 'all', activePartIdx: null,
+    p: 2, py: Math.sqrt(32), theta: Math.PI / 3, pointA0: { x: 5, y: 4 }, steps: { 1: true, 2: false, 3: false }
+  };
+  const partOf = (i) => (i == null ? undefined : i);
+  const lensAlpha = (g) => { const sw = state.conceptSwitch; return sw === 'all' || !g || g === 'all' || sw === g ? 1 : 0.22; };
+  const isPartHighlighted = (i) => state.activePartIdx !== null && state.activePartIdx === i;
+  const withAlpha = (a, fn) => { if (a >= 1) { fn(); return; } const c = BOARD.ctx; c.save(); c.globalAlpha = a; try { fn(); } finally { c.restore(); } };
+
+  function drawChalkLine(x1, y1, x2, y2, color = '#ffffff', width = 2, dashed = false, glow = false, partIdx = null, lensGroup = 'all') {
+    withAlpha(lensAlpha(lensGroup), () => BOARD.seg([x1, y1], [x2, y2], { color, width, dash: dashed ? [6, 6] : null, glow, part: partOf(partIdx) }));
+  }
+  function drawChalkArrow(x1, y1, x2, y2, color = '#fde047', width = 2.4, partIdx = null, lensGroup = 'all') {
+    drawChalkLine(x1, y1, x2, y2, color, width, false, true, partIdx, lensGroup);
+    withAlpha(lensAlpha(lensGroup), () => {
+      const p1 = BOARD.toS(x1, y1), p2 = BOARD.toS(x2, y2), c = BOARD.ctx;
+      const ang = Math.atan2(p2.y - p1.y, p2.x - p1.x), head = 10;
+      c.save();
+      c.fillStyle = BOARD.color(color);
+      c.beginPath();
+      c.moveTo(p2.x, p2.y);
+      c.lineTo(p2.x - head * Math.cos(ang - Math.PI / 6), p2.y - head * Math.sin(ang - Math.PI / 6));
+      c.lineTo(p2.x - head * Math.cos(ang + Math.PI / 6), p2.y - head * Math.sin(ang + Math.PI / 6));
+      c.closePath();
+      c.fill();
+      c.restore();
+    });
+  }
+  // 원본의 라벨 오프셋(화면 px, 왼쪽 기준 글자)을 무대 라벨 배치(정렬+오프셋)로 바꿉니다. 가장자리에서 넘치면 무대가 알아서 뒤집습니다.
+  function drawChalkPoint(x, y, radius = 5.5, color = '#fbbf24', label = '', labelOffset = { x: 10, y: -10 }, partIdx = null, lensGroup = 'all') {
+    const o = { color, r: radius, part: partOf(partIdx) };
+    if (label) {
+      o.label = label;
+      if (labelOffset.x < -12) { o.align = 'right'; o.dx = -10; } else { o.align = 'left'; o.dx = labelOffset.x; }
+      o.dy = labelOffset.y - 4;
+    }
+    withAlpha(lensAlpha(lensGroup), () => BOARD.point([x, y], o));
+  }
+  function drawRightAngleMark(foot, dirAlongLine, dirToPoint, sizePx = 11, color = '#38bdf8', partIdx = null, lensGroup = 'all') {
+    withAlpha(lensAlpha(lensGroup), () => BOARD.right([foot.x, foot.y], [foot.x + dirAlongLine.x, foot.y + dirAlongLine.y], [foot.x + dirToPoint.x, foot.y + dirToPoint.y], { size: sizePx, color }));
+  }
+  function drawEqualTickMarks(m1, m2, color = '#fbbf24', partIdx = null, lensGroup = 'all') {
+    withAlpha(lensAlpha(lensGroup), () => BOARD.ticks([m1.x, m1.y], [m2.x, m2.y], { count: 2, color }));
+  }
+  // [표시 보강] 각 호는 바로 그리되 각도 글자는 줄에 모았다가 포물선 곡선까지 그린 뒤 맨 위에 씁니다(곡선이 글자를 가리지 않게).
+  const LBLQ = [];
+  function angleWithLabel(v, p1, p2, o) {
+    BOARD.angle(v, p1, p2, { ...o, label: '' });
+    if (!o.label) return;
+    const a = BOARD.toS(v[0], v[1]), b = BOARD.toS(p1[0], p1[1]), c = BOARD.toS(p2[0], p2[1]);
+    const t1 = Math.atan2(b.y - a.y, b.x - a.x), t2 = Math.atan2(c.y - a.y, c.x - a.x);
+    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, m = t1 + d / 2, lr = (o.r || 26) + (o.labelGap || 14);
+    LBLQ.push({ x: a.x + Math.cos(m) * lr, y: a.y + Math.sin(m) * lr, text: o.label, color: o.color, size: o.size || 11, alpha: BOARD.ctx.globalAlpha });
+  }
+  // [표시 보강] 직각의 값('90°')을 각의 안쪽(이등분선 방향)에 씁니다. p1·p2는 꼭짓점 v에서 나가는 두 반직선 위의 수학 좌표 점.
+  function queueRightText(v, p1, p2, color = '#fde047', distPx = 34, lensGroup = 'all') {
+    const a = BOARD.toS(v.x, v.y), b = BOARD.toS(p1.x, p1.y), c = BOARD.toS(p2.x, p2.y);
+    const lb = Math.hypot(b.x - a.x, b.y - a.y) || 1, lc = Math.hypot(c.x - a.x, c.y - a.y) || 1;
+    let bx = (b.x - a.x) / lb + (c.x - a.x) / lc, by = (b.y - a.y) / lb + (c.y - a.y) / lc;
+    const bl = Math.hypot(bx, by) || 1; bx /= bl; by /= bl;
+    LBLQ.push({ x: a.x + bx * distPx, y: a.y + by * distPx, text: '90°', color, size: 11, alpha: BOARD.ctx.globalAlpha * lensAlpha(lensGroup) });
+  }
+  function flushAngleLabels() {
+    const c = BOARD.ctx;
+    for (const q of LBLQ) { c.save(); c.globalAlpha = q.alpha; BOARD._text(q.x, q.y, q.text, { color: q.color, size: q.size, align: 'center', baseline: 'middle', weight: 800 }); c.restore(); }
+    LBLQ.length = 0;
+  }
+  function drawAngleArc(center, dir1, dir2, radiusPx = 22, color = '#fde047', text = '', partIdx = null, lensGroup = 'all') {
+    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([center.x, center.y], [center.x + dir1.x, center.y + dir1.y], [center.x + dir2.x, center.y + dir2.y], { r: radiusPx, color, label: text, size: 11, part: partOf(partIdx) }));
+  }
+  // [표시 보강] 평행 표시(화살촉 ››): 선분 p–q의 가운데에 그립니다. 평행한 두 선분에 같은 개수를 그려 '평행'을 보입니다.
+  function drawParallelMark(p, q, color = '#fde047', count = 1, lensGroup = 'all') {
+    withAlpha(lensAlpha(lensGroup), () => {
+      const a = BOARD.toS(p.x, p.y), b = BOARD.toS(q.x, q.y), c = BOARD.ctx;
+      const l = Math.hypot(b.x - a.x, b.y - a.y) || 1, d = { x: (b.x - a.x) / l, y: (b.y - a.y) / l }, n = { x: -d.y, y: d.x };
+      const m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      c.save();
+      c.strokeStyle = BOARD.color(color);
+      c.lineWidth = 2;
+      c.setLineDash([]);
+      for (let i = 0; i < count; i++) {
+        const o = (i - (count - 1) / 2) * 7;
+        const t = { x: m.x + d.x * o, y: m.y + d.y * o };
+        c.beginPath();
+        c.moveTo(t.x - d.x * 4 + n.x * 5, t.y - d.y * 4 + n.y * 5);
+        c.lineTo(t.x + d.x * 3, t.y + d.y * 3);
+        c.lineTo(t.x - d.x * 4 - n.x * 5, t.y - d.y * 4 - n.y * 5);
+        c.stroke();
+      }
+      c.restore();
+    });
+  }
+  // [표시 보강] 같은 각 표시: 꼭짓점 v에서 두 반직선 사이 각에 호와 각도 값(°)을 같은 색·같은 기호로 그립니다.
+  function drawEqAngle(v, p1, p2, color = '#fde047', rings = 1, r = 24, text = null, lensGroup = 'all', labelGap = 14) {
+    const d1 = { x: p1.x - v.x, y: p1.y - v.y }, d2 = { x: p2.x - v.x, y: p2.y - v.y };
+    const cosv = (d1.x * d2.x + d1.y * d2.y) / ((Math.hypot(d1.x, d1.y) * Math.hypot(d2.x, d2.y)) || 1);
+    const deg = Math.acos(Math.max(-1, Math.min(1, cosv))) * 180 / Math.PI;
+    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([v.x, v.y], [p1.x, p1.y], [p2.x, p2.y], { r, rings, color, label: text == null ? `${deg.toFixed(1)}°` : text, size: 11, labelGap }));
+    return deg;
+  }
+  // 하단 비율 줄자 → 셸의 요약 띠(무대 아래). 비율 막대의 weight 합계 = 1.0
+  function drawBottomTapeBanner(rect, titleStr, tapeSegs, partIdx = 2) {
+    const total = tapeSegs.reduce((acc, s) => acc + Math.max(0.05, s.val), 0) || 1;
+    sink.tape = { title: titleStr, segments: tapeSegs.map((s) => ({ text: s.label, weight: Math.max(0.05, s.val) / total, color: s.color })) };
+  }
+  function drawDirectrix(p, h, partIdx = 0, lensGroup = 'def') {
+    withAlpha(lensAlpha(lensGroup), () => {
+      BOARD.vline(-p, { color: '#f87171', width: isPartHighlighted(partIdx) ? 3.2 : 2.3, dash: [7, 5], part: partOf(partIdx) });
+      BOARD.text([-p, -4.2], `준선 l : x = -${fmtNum(p, 1)}`, { color: '#fca5a5', size: 11.5, dy: 4, part: partOf(partIdx) });
+    });
+  }
+  function drawParabolaCurve(p) {
+    const vb = BOARD.viewBox();
+    const maxMathY = Math.max(Math.abs(vb.y0), Math.abs(vb.y1)) + 2;
+    const pts = [];
+    for (let y = -maxMathY; y <= maxMathY; y += 0.08) pts.push([(y * y) / (4 * p), y]);
+    BOARD.path(pts, { color: 'ink', width: 3, glow: true });
+  }
+
+  /* ===== 원본 그대로: 초점현(Focal Chord) 교점 A, B 정밀 계산 (원본 918–951행) ===== */
+    function getFocalChordPoints(p, theta) {
+      const minAng = (18 * Math.PI) / 180;
+      const maxAng = (162 * Math.PI) / 180;
+      const safeTheta = Math.max(minAng, Math.min(maxAng, theta));
+
+      const sinT = Math.sin(safeTheta);
+      const cosT = Math.cos(safeTheta);
+
+      // (t sinθ)^2 = 4p(p + t cosθ) => sin^2(θ) t^2 - 4p cos(θ) t - 4p^2 = 0
+      const A_q = sinT * sinT;
+      const B_q = -4 * p * cosT;
+      const C_q = -4 * p * p;
+
+      const D = B_q * B_q - 4 * A_q * C_q;
+      const sqrtD = Math.sqrt(Math.max(0, D));
+
+      const t1 = (-B_q + sqrtD) / (2 * A_q); // 양수 (점 A)
+      const t2 = (-B_q - sqrtD) / (2 * A_q); // 음수 (점 B)
+
+      const A = { x: p + t1 * cosT, y: t1 * sinT };
+      const B = { x: p + t2 * cosT, y: t2 * sinT };
+
+      // 독립적인 실제 유클리드 거리 측정 (역산 속임수 배제)
+      const realAF = Math.hypot(A.x - p, A.y);
+      const realBF = Math.hypot(B.x - p, B.y);
+
+      return {
+        A,
+        B,
+        a: realAF,
+        b: realBF,
+        safeTheta
+      };
+    }
+    function renderMode1(p, F, rect) {
+      const py = state.py;
+      const px = (py * py) / (4 * p);
+      const P = { x: px, y: py };
+      const H = { x: -p, y: py };
+
+      // 실제 유클리드 거리 독립 측정
+      const realPF = Math.hypot(P.x - F.x, P.y - F.y);
+      const realPH = Math.hypot(P.x - H.x, P.y - H.y);
+      const realFH = Math.hypot(F.x - H.x, F.y - H.y);
+
+      // Step 2 (partIdx = 1): 1:2 상·하단 대칭 작도 박스 & 통경(4p) 또는 최단거리 수평 기준선
+      if (state.steps[2]) {
+        if (state.subType === 3) {
+          // 최단거리 시나리오: 정점 A0(5, 4)에서 준선에 내린 수선의 발 H'(-p, 4)
+          const A0 = state.pointA0;
+          const Hp = { x: -p, y: A0.y };
+          const P_opt = { x: (A0.y * A0.y) / (4 * p), y: A0.y };
+          drawChalkLine(A0.x, A0.y, Hp.x, Hp.y, '#34d399', 2.2, true, true, 1, 'sim');
+          drawRightAngleMark(Hp, { x: 0, y: -1 }, { x: 1, y: 0 }, 10, '#34d399', 1, 'sim');
+          drawChalkPoint(Hp.x, Hp.y, 5, '#34d399', `H'(-${fmtNum(p, 1)}, ${fmtNum(A0.y, 1)})`, { x: -95, y: 18 }, 1, 'sim');
+          drawChalkPoint(P_opt.x, P_opt.y, 4.5, '#34d399', `최소점 P*(${fmtNum(P_opt.x, 1)}, ${fmtNum(P_opt.y, 1)})`, { x: 8, y: 18 }, 1, 'sim');
+        } else {
+          // 상·하단 전체 2p × 4p 그리드 및 통경(4p) 작도
+          // [2.0] 캔버스 직접 그리기 → 무대 호출: 1:2 작도 박스(노랑)와 2p × 4p 박스(하늘)
+          withAlpha(lensAlpha('sim'), () => {
+            BOARD.poly([[0, 2 * p], [p, 2 * p], [p, -2 * p], [0, -2 * p]], { fill: '#fbbf24', fillAlpha: 0.06, color: '#fbbf24', alpha: 0.6, width: isPartHighlighted(1) ? 2.4 : 1.5, dash: [5, 5], part: 1 });
+            BOARD.poly([[-p, 2 * p], [p, 2 * p], [p, -2 * p], [-p, -2 * p]], { color: '#38bdf8', alpha: 0.42, width: isPartHighlighted(1) ? 2.4 : 1.5, dash: [5, 5], part: 1 });
+            BOARD.text([-p, 2 * p], '가로 p, 세로 2p 직사각형 · 현의 길이 4p', { color: '#fde047', size: 11, align: 'left', dx: 6, dy: -7, part: 1 });
+          });
+
+          // 통경 수직현 (p, -2p) ~ (p, 2p)
+          drawChalkLine(p, -2 * p, p, 2 * p, 'rgba(56, 189, 248, 0.65)', 1.8, true, false, 1, 'sim');
+          drawChalkPoint(p, 2 * p, 4, '#38bdf8', `(${fmtNum(p, 1)}, ${fmtNum(2 * p, 1)})`, { x: 8, y: -6 }, 1, 'sim');
+          drawChalkPoint(p, -2 * p, 4, '#38bdf8', `(${fmtNum(p, 1)}, -${fmtNum(2 * p, 1)})`, { x: 8, y: 15 }, 1, 'sim');
+
+          // 정삼각형 PFH 시나리오일 때 점 F에서 PH에 내린 수선의 발 (30°-60°-90°)
+          if (state.subType === 2 && Math.abs(py) > 0.3) {
+            const F_foot = { x: p, y: py };
+            drawChalkLine(F.x, F.y, F_foot.x, F_foot.y, '#fde047', 1.8, true, false, 1, 'sim');
+            drawRightAngleMark(F_foot, { x: 1, y: 0 }, { x: 0, y: py >= 0 ? -1 : 1 }, 9, '#fde047', 1, 'sim');
+          }
+        }
+      }
+
+      // Step 1 (partIdx = 0): 준선 x = -p 및 수선의 발 H, 선분 PF, PH
+      if (state.steps[1]) {
+        drawDirectrix(p, rect.height, 0, 'def');
+        drawChalkLine(P.x, P.y, H.x, H.y, '#38bdf8', 2.6, false, true, 0, 'def');
+        drawChalkLine(P.x, P.y, F.x, F.y, '#f472b6', 2.6, false, true, 0, 'def');
+
+        drawRightAngleMark(H, { x: 0, y: py >= 0 ? -1 : 1 }, { x: 1, y: 0 }, 10, '#38bdf8', 0, 'def');
+        drawEqualTickMarks(P, H, '#38bdf8', 0, 'def');
+        drawEqualTickMarks(P, F, '#f472b6', 0, 'def');
+
+        drawChalkPoint(H.x, H.y, 5, '#38bdf8', `H(-${fmtNum(p, 1)}, ${fmtNum(py)})`, { x: -102, y: -8 }, 0, 'def');
+      }
+
+      // Step 3 (partIdx = 2): 삼각형 PFH, 광학 반사(접선·화살표·등각), 또는 최단거리 PA 연결
+      if (state.steps[3]) {
+        if (state.subType === 3) {
+          const A0 = state.pointA0;
+          const realPA = Math.hypot(P.x - A0.x, P.y - A0.y);
+          const sumDist = realPF + realPA;
+          const minDist = A0.x + p;
+
+          drawChalkLine(P.x, P.y, A0.x, A0.y, '#fde047', 2.8, false, true, 2, 'def');
+          // [2.0] 원본은 점 A0를 보이지 않는 영역으로도 끌 수 있었습니다 → 보이는 손잡이로 만들어 직접 끌게 함(범위는 원본 그대로)
+          withAlpha(lensAlpha('def'), () => BOARD.handle('A0', [A0.x, A0.y], {
+            color: '#a7f3d0', r: 6.5, part: 2, label: `점 A(${fmtNum(A0.x, 1)}, ${fmtNum(A0.y, 1)})`, dx: 10, dy: -14,
+            drag: (w) => {
+              CUR.a0y = Math.max(-6.0, Math.min(6.5, w.y));
+              CUR.a0x = Math.max((CUR.a0y * CUR.a0y) / (4 * CUR.p) + 0.8, Math.min(8.0, w.x));
+            }
+          }));
+
+          drawBottomTapeBanner(
+            rect,
+            `PF(${fmtNum(realPF)}) + PA(${fmtNum(realPA)}) = ${fmtNum(sumDist)} ≥ 최솟값 AH'(${fmtNum(minDist)})`,
+            [
+              { val: realPH, label: `PH=PF (${fmtNum(realPF)})`, color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.3)' },
+              { val: realPA, label: `PA (${fmtNum(realPA)})`, color: '#fde047', bg: 'rgba(250, 204, 21, 0.3)' }
+            ],
+            2
+          );
+        } else {
+          if (state.steps[1]) {
+            withAlpha(lensAlpha('def'), () => BOARD.poly([P, F, H], { fill: '#f472b6', fillAlpha: 0.09, stroke: false, part: 2 }));
+
+            drawChalkLine(F.x, F.y, H.x, H.y, '#fbbf24', 2.0, true, false, 2, 'def');
+            if (Math.abs(realPF - realFH) < 0.15) {
+              drawEqualTickMarks(F, H, '#fbbf24', 2, 'def');
+              drawAngleArc(F, { x: P.x - F.x, y: P.y - F.y }, { x: H.x - F.x, y: H.y - F.y }, 24, '#fde047', '60°', 2, 'sim');
+              // [표시 보강] 정삼각형의 세 내각을 모두 같은 표시(노랑 호 + 60°)로, PH ∥ x축에 의한 엇각 ∠PFx도 같은 60°로 표시
+              drawEqAngle(P, F, H, '#fde047', 1, 40, '60°', 'sim', 34);
+              drawEqAngle(H, P, F, '#fde047', 1, 24, '60°', 'sim');
+              drawEqAngle(F, { x: F.x + 1, y: F.y }, P, '#fde047', 2, 34, '60°', 'sim');
+              drawParallelMark(P, H, '#fde047', 1, 'sim');
+              drawParallelMark({ x: F.x + 1.5, y: 0 }, { x: F.x + 2.5, y: 0 }, '#fde047', 1, 'sim');
+            }
+          }
+
+          // 점 P에서의 접선 보조선 및 광학 반사 화살표 (F -> P -> 축 평행 우측 광선)
+          if (Math.abs(py) > 0.25) {
+            const T = { x: -px, y: 0 };
+            const tVec = { x: P.x - T.x, y: P.y - T.y };
+            const tLen = Math.hypot(tVec.x, tVec.y);
+            const ut = { x: tVec.x / tLen, y: tVec.y / tLen };
+
+            drawChalkLine(P.x - ut.x * 2.5, P.y - ut.y * 2.5, P.x + ut.x * 2.8, P.y + ut.y * 2.8, 'rgba(192, 132, 252, 0.75)', 1.6, true, false, 2, 'tan');
+            drawChalkArrow(P.x, P.y, P.x + 3.8, P.y, '#fde047', 2.4, 2, 'tan');
+
+            // 입사각 α = 반사각 α 호 표시
+            // [표시 보강] 같은 각 α는 같은 색(노랑)·같은 기호로 표시(이전: 분홍/노랑으로 달라 같은 각임이 안 보임)
+            drawAngleArc(P, { x: F.x - P.x, y: F.y - P.y }, { x: -ut.x, y: -ut.y }, 22, '#fde047', 'α', 2, 'tan');
+            drawAngleArc(P, { x: 1, y: 0 }, ut, 22, '#fde047', 'α', 2, 'tan');
+          }
+
+          // 하단 비율 줄자 배너: PF = x1 + p 분할 시각화
+          drawBottomTapeBanner(
+            rect,
+            `측정값 PF(${fmtNum(realPF)}) = PH(${fmtNum(realPH)}) = x₁(${fmtNum(px)}) + p(${fmtNum(p)}) | △PFH 둘레 = ${fmtNum(realPF + realPH + realFH)}`,
+            [
+              { val: Math.max(0.05, px), label: `x₁ = ${fmtNum(px)}`, color: '#f472b6', bg: 'rgba(244, 114, 182, 0.32)' },
+              { val: p, label: `p = ${fmtNum(p)}`, color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.32)' }
+            ],
+            2
+          );
+        }
+      }
+    }
+
+    // =========================================================================
+    // [모드 2 렌더링] 기출 1 - 초점현 역수합 (1/a + 1/b = 1/p) & 직각삼각형 cosθ
+    // =========================================================================
+    function renderMode2(p, F, rect) {
+      const chord = getFocalChordPoints(p, state.theta);
+      const { A, B, a, b, safeTheta } = chord;
+      const Ap = { x: -p, y: A.y };
+      const Bp = { x: -p, y: B.y };
+      const E = { x: B.x, y: A.y }; // 점 B에서 선분 AA'에 내린 수선의 발 E (AE = |a - b|)
+
+      // 초점현 AB 본체
+      drawChalkLine(A.x, A.y, B.x, B.y, '#f8fafc', 2.6, false, false, 0, 'all');
+
+      // Step 1 (partIdx = 0): 준선 및 수선의 발 A', B'
+      if (state.steps[1]) {
+        drawDirectrix(p, rect.height, 0, 'def');
+        drawChalkLine(A.x, A.y, Ap.x, Ap.y, '#f472b6', 2.3, false, true, 0, 'def');
+        drawChalkLine(B.x, B.y, Bp.x, Bp.y, '#38bdf8', 2.3, false, true, 0, 'def');
+
+        drawRightAngleMark(Ap, { x: 0, y: -1 }, { x: 1, y: 0 }, 10, '#f472b6', 0, 'def');
+        drawRightAngleMark(Bp, { x: 0, y: 1 }, { x: 1, y: 0 }, 10, '#38bdf8', 0, 'def');
+
+        drawEqualTickMarks(A, Ap, '#f472b6', 0, 'def');
+        drawEqualTickMarks(A, F, '#f472b6', 0, 'def');
+        drawEqualTickMarks(B, Bp, '#38bdf8', 0, 'def');
+        drawEqualTickMarks(B, F, '#38bdf8', 0, 'def');
+
+        drawChalkPoint(Ap.x, Ap.y, 4.5, '#f472b6', `A' (a=${fmtNum(a)})`, { x: -92, y: -8 }, 0, 'def');
+        drawChalkPoint(Bp.x, Bp.y, 4.5, '#38bdf8', `B' (b=${fmtNum(b)})`, { x: -92, y: 16 }, 0, 'def');
+      }
+
+      // Step 2 (partIdx = 1): 직각사다리꼴 AA'B'B 및 직각삼각형 ABE (밑변 a-b, 빗변 a+b)
+      if (state.steps[2]) {
+        withAlpha(lensAlpha('sim'), () => {
+          BOARD.poly([A, Ap, Bp, B], { fill: '#fbbf24', fillAlpha: 0.06, stroke: false, part: 1 });
+          // 직각삼각형 ABE 내부 강조
+          BOARD.poly([A, B, E], { fill: '#34d399', fillAlpha: 0.14, stroke: false, part: 1 });
+        });
+
+        // 수선 BE 및 직각 기호
+        if (Math.abs(a - b) > 0.15) {
+          drawChalkLine(B.x, B.y, E.x, E.y, '#34d399', 2.0, true, false, 1, 'sim');
+          drawRightAngleMark(E, { x: A.x >= E.x ? 1 : -1, y: 0 }, { x: 0, y: -1 }, 10, '#34d399', 1, 'sim');
+          drawChalkPoint(E.x, E.y, 4.0, '#34d399', `E (|a-b|=${fmtNum(Math.abs(a - b))})`, { x: -45, y: -12 }, 1, 'sim');
+          // [표시 보강] θ에 값(°)을 넣고, AE ∥ x축에 의한 엇각을 초점 F에도 같은 색·같은 표시로 그립니다(같은 각이 어디인지)
+          const eDir = E.x >= A.x ? 1 : -1;
+          const thTxt = (safeTheta <= Math.PI / 2 + 1e-6 ? 'θ=' : '') + fmtNum(Math.abs(Math.atan2(B.y - A.y, (B.x - A.x) * eDir)) * 180 / Math.PI, 1) + '°';
+          drawEqAngle(A, { x: A.x + eDir, y: A.y }, B, '#fde047', 1, 28, thTxt, 'sim');
+          drawEqAngle(F, { x: F.x - eDir, y: 0 }, A, '#fde047', 1, 28, thTxt, 'sim');
+        } else {
+          // [표시 보강] θ = 90° (통경): 초점 F에서 x축과 초점현이 직각
+          drawRightAngleMark(F, { x: 1, y: 0 }, { x: 0, y: A.y >= 0 ? 1 : -1 }, 12, '#fde047', 1, 'sim');
+          queueRightText(F, { x: F.x + 1, y: 0 }, { x: F.x, y: A.y >= 0 ? 1 : -1 }, '#fde047', 34, 'sim');
+        }
+
+        // 초점 분할선 (-p, 0) ~ (p, 0)
+        drawChalkLine(-p, 0, p, 0, '#fbbf24', 2.2, true, false, 1, 'sim');
+      }
+
+      // Step 3 (partIdx = 2): 역수합 1/a + 1/b = 1/p 및 cosθ = (a-b)/(a+b) 비율 줄자 배너
+      if (state.steps[3]) {
+        withAlpha(lensAlpha('all'), () => {
+          BOARD.text([(A.x + F.x) / 2, (A.y + F.y) / 2], `a = ${fmtNum(a)}`, { color: '#f9a8d4', size: 12, align: 'left', dx: 12, part: 2 });
+          BOARD.text([(B.x + F.x) / 2, (B.y + F.y) / 2], `b = ${fmtNum(b)}`, { color: '#7dd3fc', size: 12, align: 'left', dx: 12, dy: 12, part: 2 });
+        });
+
+        const invSum = 1 / a + 1 / b;
+        const cosVal = Math.cos(safeTheta);
+
+        drawBottomTapeBanner(
+          rect,
+          `1/a(1/${fmtNum(a)}) + 1/b(1/${fmtNum(b)}) = 1/p(${fmtNum(invSum, 3)}) | cosθ = (a-b)/(a+b) = ${fmtNum(cosVal, 3)}`,
+          [
+            { val: a, label: `AF = a = ${fmtNum(a)}`, color: '#f472b6', bg: 'rgba(244, 114, 182, 0.32)' },
+            { val: b, label: `BF = b = ${fmtNum(b)}`, color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.32)' }
+          ],
+          2
+        );
+      }
+    }
+
+    // =========================================================================
+    // [모드 3 렌더링] 기출 2 - 초점현 원 & 준선 접함(d=R) & 두 접선 직교(∠AH_MB = 90°)
+    // =========================================================================
+    function renderMode3(p, F, rect) {
+      const chord = getFocalChordPoints(p, state.theta);
+      const { A, B, a, b } = chord;
+
+      const M = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 };
+      const HM = { x: -p, y: M.y }; // 준선 위 접점 겸 두 접선의 교점 Q(=H_M)
+      const realR = 0.5 * Math.hypot(A.x - B.x, A.y - B.y);
+      const realD = Math.abs(M.x - (-p));
+
+      // Step 1 (partIdx = 0): 준선 및 초점현 AB를 지름으로 하는 원 C 작도
+      if (state.steps[1]) {
+        drawDirectrix(p, rect.height, 0, 'def');
+        drawChalkLine(A.x, A.y, B.x, B.y, '#e2e8f0', 2.2, false, false, 0, 'all');
+
+        withAlpha(lensAlpha('def'), () => BOARD.circle(M, realR, { color: '#38bdf8', fill: '#38bdf8', fillAlpha: 0.06, width: isPartHighlighted(0) ? 3.4 : 2.4, glow: true, part: 0 }));
+        // [표시 보강] 원의 반지름 MA = MB 같은 길이 표시(다음 단계에서 M~H_M도 같은 표시 → d = R)
+        drawEqualTickMarks(M, A, '#38bdf8', 0, 'def');
+        drawEqualTickMarks(M, B, '#38bdf8', 0, 'def');
+      }
+
+      // Step 2 (partIdx = 1): 중심 M에서 준선에 내린 수선의 발 H_M 및 두 접선 QA, QB 직교(90°)
+      if (state.steps[2]) {
+        drawChalkLine(M.x, M.y, HM.x, HM.y, '#fbbf24', 2.6, true, true, 1, 'sim');
+        drawRightAngleMark(HM, { x: 0, y: -1 }, { x: 1, y: 0 }, 10, '#fbbf24', 1, 'sim');
+        drawEqualTickMarks(M, HM, '#38bdf8', 1, 'sim'); // [표시 보강] d = MH_M 이 반지름 R(MA, MB)과 같다는 같은 길이 표시
+
+        // 양 끝점 A, B에서의 두 접선 QA, QB 연결 (항상 점 HM에서 90°로 직교!)
+        drawChalkLine(HM.x, HM.y, A.x, A.y, '#c084fc', 2.0, false, true, 1, 'tan');
+        drawChalkLine(HM.x, HM.y, B.x, B.y, '#c084fc', 2.0, false, true, 1, 'tan');
+
+        const vQA = { x: A.x - HM.x, y: A.y - HM.y };
+        const lQA = Math.hypot(vQA.x, vQA.y);
+        const uQA = { x: vQA.x / lQA, y: vQA.y / lQA };
+
+        const vQB = { x: B.x - HM.x, y: B.y - HM.y };
+        const lQB = Math.hypot(vQB.x, vQB.y);
+        const uQB = { x: vQB.x / lQB, y: vQB.y / lQB };
+
+        drawRightAngleMark(HM, uQA, uQB, 20, '#e879f9', 1, 'tan'); // [표시 보강] ∠AQB=90° 표시를 키워 준선 직각 표시와 겹치지 않게
+        queueRightText(HM, A, B, '#e879f9', 42, 'tan'); // [표시 보강] ∠AQB = 90° 값을 각 안쪽에
+
+        drawChalkPoint(M.x, M.y, 5.5, '#fbbf24', `중심 M(${fmtNum(M.x)}, ${fmtNum(M.y)})`, { x: 10, y: -10 }, 1, 'sim');
+        drawChalkPoint(HM.x, HM.y, 6.0, '#f43f5e', `접점 Q=H_M(-${fmtNum(p, 1)}, ${fmtNum(HM.y)})`, { x: -138, y: -8 }, 1, 'tan');
+      }
+
+      // Step 3 (partIdx = 2): 직선 QF ⊥ AB 직교 및 d = R = (a+b)/2 비율 줄자 배너
+      if (state.steps[3]) {
+        // QF 선분 및 초점 F에서의 직각 표시 (QF ⊥ AB)
+        drawChalkLine(HM.x, HM.y, F.x, F.y, 'rgba(250, 204, 21, 0.7)', 1.8, true, false, 2, 'tan');
+        const vFA = { x: A.x - F.x, y: A.y - F.y };
+        const lFA = Math.hypot(vFA.x, vFA.y);
+        const uFA = { x: vFA.x / lFA, y: vFA.y / lFA };
+
+        const vFQ = { x: HM.x - F.x, y: HM.y - F.y };
+        const lFQ = Math.hypot(vFQ.x, vFQ.y);
+        const uFQ = { x: vFQ.x / lFQ, y: vFQ.y / lFQ };
+        drawRightAngleMark(F, uFA, uFQ, 10, '#fde047', 2, 'tan');
+        queueRightText(F, { x: F.x + uFA.x, y: F.y + uFA.y }, { x: F.x + uFQ.x, y: F.y + uFQ.y }, '#fde047', 28, 'tan'); // [표시 보강] QF ⊥ AB 의 90° 값
+
+        withAlpha(lensAlpha('tan'), () => { // 접점 Q 둘레의 노란 고리(화면 반지름 11px)
+          const sHM = BOARD.toS(HM.x, HM.y), c = BOARD.ctx;
+          c.save();
+          c.beginPath();
+          c.arc(sHM.x, sHM.y, 11, 0, Math.PI * 2);
+          c.strokeStyle = BOARD.color('#fde047');
+          c.lineWidth = 2.2;
+          c.stroke();
+          c.restore();
+        });
+
+        drawBottomTapeBanner(
+          rect,
+          `중심~준선 거리 d(${fmtNum(realD)}) = 반지름 R(${fmtNum(realR)}) = (a+b)/2 | 두 접선 ∠AQB = 90° & QF ⊥ AB`,
+          [
+            { val: realR, label: `반지름 R = ${fmtNum(realR)}`, color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.32)' },
+            { val: realR, label: `반지름 R = ${fmtNum(realR)}`, color: '#fbbf24', bg: 'rgba(251, 191, 36, 0.32)' }
+          ],
+          2
+        );
+      }
+    }
+
+    // =========================================================================
+    // [모드 4 렌더링] 기출 3 - 접선 마름모 TFPH & 꼭짓점 접선 페달 삼각형 닮음
+    // =========================================================================
+    function renderMode4(p, F, rect) {
+      // 클램핑 없이 원본 state.py 그대로 사용하여 점 P와 마름모 꼭짓점 100% 일치 보장
+      const py = state.py;
+      const px = (py * py) / (4 * p);
+      const P = { x: px, y: py };
+      const H = { x: -p, y: py };
+      const T = { x: -px, y: 0 };
+      const K = { x: 0, y: py / 2 }; // 마름모 대각선 교점 겸 초점 F에서 내린 수선의 발 (항상 y축 위!)
+      const O = { x: 0, y: 0 };
+
+      const realTF = Math.hypot(T.x - F.x, T.y - F.y);
+      const realFP = Math.hypot(F.x - P.x, F.y - P.y);
+      const realFK = Math.hypot(F.x - K.x, F.y - K.y);
+
+      const dirX = P.x - T.x;
+      const dirY = P.y - T.y;
+      const len = Math.hypot(dirX, dirY);
+      const ux = len > 1e-6 ? dirX / len : 0;
+      const uy = len > 1e-6 ? dirY / len : 1;
+
+      // Step 1 (partIdx = 0): 준선, 접선 TP, x절편 T(-x1, 0), 수선의 발 H 및 직각 마크
+      if (state.steps[1]) {
+        drawDirectrix(p, rect.height, 0, 'def');
+
+        drawChalkLine(T.x - ux * 3, T.y - uy * 3, P.x + ux * 3, P.y + uy * 3, '#c084fc', 2.5, false, true, 0, 'tan');
+        drawRightAngleMark(H, { x: 0, y: py >= 0 ? -1 : 1 }, { x: 1, y: 0 }, 10, '#38bdf8', 0, 'def');
+
+        drawChalkPoint(T.x, T.y, 6, '#c084fc', `T(${fmtNum(T.x)}, 0)`, { x: -42, y: 20 }, 0, 'tan');
+        drawChalkPoint(H.x, H.y, 5, '#38bdf8', `H(-${fmtNum(p, 1)}, ${fmtNum(py)})`, { x: -102, y: -8 }, 0, 'def');
+      }
+
+      // Step 2 (partIdx = 1): 마름모 TFPH 네 변 하이라이트 및 등변 마크
+      if (state.steps[2]) {
+        withAlpha(lensAlpha('def'), () => BOARD.poly([T, F, P, H], { fill: '#c084fc', fillAlpha: 0.12, stroke: false, part: 1 }));
+
+        drawChalkLine(T.x, T.y, F.x, F.y, '#e879f9', 2.6, false, false, 1, 'def');
+        drawChalkLine(F.x, F.y, P.x, P.y, '#e879f9', 2.6, false, false, 1, 'def');
+        drawChalkLine(P.x, P.y, H.x, H.y, '#e879f9', 2.6, false, false, 1, 'def');
+        drawChalkLine(H.x, H.y, T.x, T.y, '#e879f9', 2.6, false, false, 1, 'def');
+
+        if (Math.abs(py) > 0.15) {
+          drawEqualTickMarks(T, F, '#fde047', 1, 'def');
+          drawEqualTickMarks(F, P, '#fde047', 1, 'def');
+          drawEqualTickMarks(P, H, '#fde047', 1, 'def');
+          drawEqualTickMarks(H, T, '#fde047', 1, 'def');
+        }
+
+        // 정사각형(x1 = p)일 때 ∠TFP = 90° 표시
+        if (Math.abs(px - p) < 0.08 && Math.abs(py) > 0.2) {
+          drawRightAngleMark(F, { x: -1, y: 0 }, { x: 0, y: py >= 0 ? 1 : -1 }, 11, '#fde047', 1, 'tan');
+        }
+      }
+
+      // Step 3 (partIdx = 2): 대각선 FH 수직이등분점 K(0, y1/2) & 페달 직각삼각형 △OFK ~ △KFP
+      if (state.steps[3]) {
+        // y축(꼭짓점 접선) 위 페달 직각삼각형 OFK 내부 강조
+        withAlpha(lensAlpha('sim'), () => BOARD.poly([O, F, K], { fill: '#fbbf24', fillAlpha: 0.16, stroke: false, part: 2 }));
+
+        drawChalkLine(O.x, O.y, K.x, K.y, '#fde047', 2.5, false, true, 2, 'sim');
+        drawChalkLine(F.x, F.y, H.x, H.y, '#fbbf24', 2.2, true, false, 2, 'tan');
+
+        if (Math.abs(py) > 0.15) {
+          const vKF = { x: F.x - K.x, y: F.y - K.y };
+          const lKF = Math.hypot(vKF.x, vKF.y);
+          const uKF = { x: vKF.x / lKF, y: vKF.y / lKF };
+
+          drawRightAngleMark(K, { x: ux, y: uy }, uKF, 14, '#fde047', 2, 'tan'); // [표시 보강] 직각 표시 확대(11→14)
+          drawRightAngleMark(O, { x: 1, y: 0 }, { x: 0, y: py >= 0 ? 1 : -1 }, 9, '#34d399', 2, 'sim');
+          // [표시 보강] △OFK ~ △KFP 의 같은 각: 초점 F에서 ∠OFK = ∠KFP (마름모 대각선 FH가 ∠TFP를 이등분) — 같은 색·같은 표시와 각도 값
+          drawEqAngle(F, T, K, '#34d399', 1, 28, null, 'sim');
+          drawEqAngle(F, K, P, '#34d399', 1, 28, null, 'sim');
+        }
+
+        drawChalkPoint(K.x, K.y, 5.0, '#fde047', `K(0, ${fmtNum(py / 2)}) [FK=${fmtNum(realFK)}]`, { x: 44, y: 40 }, 2, 'tan'); // [표시 보강] K의 직각 표시(우측)를 이름표가 가리지 않게 마름모 안쪽으로 이동
+
+        drawBottomTapeBanner(
+          rect,
+          `마름모 TFPH 한 변 = ${fmtNum(realFP)} | 둘레 = ${fmtNum(4 * realFP)} | TP ⊥ FH (90°) | FK² = p(x₁+p) = ${fmtNum(realFK * realFK)}`,
+          [
+            { val: Math.max(0.05, px), label: `OT = x₁ = ${fmtNum(px)}`, color: '#c084fc', bg: 'rgba(192, 132, 252, 0.32)' },
+            { val: p, label: `OF = p = ${fmtNum(p)}`, color: '#fde047', bg: 'rgba(250, 204, 21, 0.32)' }
+          ],
+          2
+        );
+      }
+    }
+
+
+  /* ======================================================================
+     [2.0] 셸 연결: 셸 상태 s → 원본 state, 실시간 값(원본 updateLiveMonitor), 그리기, 장면 정의
+     ====================================================================== */
+  const D2R = Math.PI / 180;
+  function sync(s, m, sub) {
+    state.mode = m;
+    state.subType = sub;
+    state.conceptSwitch = s.lens;
+    state.activePartIdx = s.part == null ? null : s.part;
+    state.p = s.p;
+    state.py = s.py;
+    state.theta = s.th * D2R;
+    state.pointA0 = { x: s.a0x, y: s.a0y };
+    state.steps = { 1: s.step >= 1, 2: s.step >= 2, 3: s.step >= 3 };
+  }
+
+  // 원본 updateLiveMonitor: 4개 실시간 값과 실측 오차
+  function statsOf(m) {
+    const p = state.p, py = state.py;
+    const px = (py * py) / (4 * p);
+    const F = { x: p, y: 0 }, P = { x: px, y: py }, H = { x: -p, y: py };
+    const realPF = Math.hypot(P.x - F.x, P.y - F.y);
+    const realPH = Math.hypot(P.x - H.x, P.y - H.y);
+    const realFH = Math.hypot(F.x - H.x, F.y - H.y);
+    const chord = getFocalChordPoints(p, state.theta);
+    const { A, B, a, b, safeTheta } = chord;
+    const sumInv = 1 / a + 1 / b;
+    const invP = 1 / p;
+    let relErr = 0;
+    let r;
+    if (m === 1) {
+      relErr = (Math.abs(realPF - realPH) / Math.max(1e-6, realPF)) * 100;
+      r = [['초점 F(p, 0) & 점 P 좌표', `F(${fmtNum(p, 1)},0) | P(${fmtNum(px)}, ${fmtNum(py)})`], ['측정한 거리 PF와 PH', `${fmtNum(realPF)} = ${fmtNum(realPH)} (일치)`]];
+      if (state.subType === 3) {
+        const A0 = state.pointA0;
+        const realPA = Math.hypot(P.x - A0.x, P.y - A0.y);
+        r.push(['현재 거리 합 PF + PA', `${fmtNum(realPF + realPA)} (PA=${fmtNum(realPA)})`], ["최솟값 AH' = x_A + p", `최솟값 = ${fmtNum(A0.x + p)} (P(2, 4))`]);
+      } else {
+        r.push(['선분 FH의 길이(측정값)', `|FH| = ${fmtNum(realFH)}`], ['삼각형 PFH의 둘레(측정값)', `둘레 = ${fmtNum(realPF + realPH + realFH)}`]);
+      }
+    } else if (m === 2) {
+      relErr = (Math.abs(sumInv - invP) / invP) * 100;
+      const cosVal = Math.cos(safeTheta);
+      const ratioCos = (a - b) / (a + b);
+      r = [['현의 두 부분의 길이 a(AF), b(BF)', `a = ${fmtNum(a)} | b = ${fmtNum(b)}`], ['현 AB의 길이 |AB| = a + b', `|AB| = ${fmtNum(a + b)}`],
+        ['1/a + 1/b 와 1/p', `${sumInv.toFixed(4)} = ${invP.toFixed(4)}`], ['직각삼각형 cosθ = (a-b)/(a+b)', `cosθ = ${fmtNum(cosVal, 3)} (${fmtNum(ratioCos, 3)})`]];
+    } else if (m === 3) {
+      const M = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 };
+      const realD = Math.abs(M.x - (-p));
+      const realR = 0.5 * Math.hypot(A.x - B.x, A.y - B.y);
+      relErr = (Math.abs(realD - realR) / realR) * 100;
+      r = [['현의 두 부분의 길이 a(AF), b(BF)', `a = ${fmtNum(a)} | b = ${fmtNum(b)}`], ['원의 중심 M(x_M, y_M) 좌표', `M(${fmtNum(M.x)}, ${fmtNum(M.y)})`],
+        ['중심~준선 거리 d와 반지름 R', `d=${fmtNum(realD)} | R=${fmtNum(realR)} (접함)`], ['두 접선이 이루는 각 ∠AQB, QF ⊥ AB', '∠AQB = 90.0° | QF ⊥ AB']];
+    } else {
+      const T = { x: -px, y: 0 };
+      const K = { x: 0, y: py / 2 };
+      const realTF = Math.hypot(T.x - F.x, T.y - F.y);
+      const realHT = Math.hypot(H.x - T.x, H.y - T.y);
+      const realFK = Math.hypot(F.x - K.x, F.y - K.y);
+      relErr = (Math.abs(realTF - realPF) / Math.max(1e-6, realPF)) * 100;
+      r = [['접점 P(x₁, y₁) & x절편 T(-x₁, 0)', `P(${fmtNum(px)}, ${fmtNum(py)}) | T(${fmtNum(T.x)}, 0)`], ['마름모의 네 변 TF=FP=PH=HT', `${fmtNum(realTF)} = ${fmtNum(realPF)} = ${fmtNum(realHT)}`],
+        ['마름모 TFPH의 둘레, 두 대각선이 이루는 각', `둘레 = ${fmtNum(4 * realPF)} | 수직 90.0°`], ['선분 FK의 제곱 FK² = p(x₁ + p)', `FK=${fmtNum(realFK)} | FK²=${fmtNum(realFK * realFK)}`]];
+    }
+    return { relErr, r };
+  }
+
+  const PART_COLORS = ['sky', 'amber', 'violet'];
+  function viewOf(m, sub) {
+    return (s) => {
+      // 원본 togglePartHighlight: 조각을 누르면 그 보조선이 켜집니다
+      if (s.part != null && s.step < s.part + 1) s.step = s.part + 1;
+      sync(s, m, sub);
+      const p = state.p;
+      const fourP = Number.isInteger(+(4 * p).toFixed(2)) ? (4 * p).toFixed(0) : (4 * p).toFixed(1);
+      const pStr = Number.isInteger(+p.toFixed(2)) ? p.toFixed(0) : p.toFixed(2);
+      const st = statsOf(m);
+      const colors = ['amber', 'rose', 'sky', 'violet'];
+      return {
+        chips: [{ k: '포물선', tex: `y^2 = ${fourP}x \\; (p = ${pStr})`, color: 'amber' }, { k: '준선', tex: `x = -${pStr}`, color: 'red' }],
+        status: { tone: 'ok', text: `측정 오차 ${st.relErr.toFixed(3)}%` },
+        readouts: st.r.map(([label, value], i) => ({ label, value, color: colors[i], wide: true })),
+        parts: examData[m].subData[sub].steps.map((t, i) => ({ id: i, name: t, desc: '', value: null, color: PART_COLORS[i] }))
+      };
+    };
+  }
+
+  const RENDER = { 1: renderMode1, 2: renderMode2, 3: renderMode3, 4: renderMode4 };
+  function drawOf(m, sub) {
+    return (b, s, v) => {
+      BOARD = b;
+      CUR = s;
+      sync(s, m, sub);
+      sink.tape = null;
+      if (s.grid) b.grid();
+      b.axes();
+      const p = state.p;
+      const F = { x: p, y: 0 };
+      const rect = { width: b.W, height: b.H };
+
+      LBLQ.length = 0;
+      RENDER[m](p, F, rect);
+      drawParabolaCurve(p);
+      drawChalkPoint(F.x, 0, 5.5, '#f43f5e', `F(${fmtNum(p, 1)}, 0)`, { x: 8, y: 18 });
+
+      if (m === 1 || m === 4) {
+        const py = state.py;
+        const px = (py * py) / (4 * p);
+        // [표시 보강] 모드 1의 3단계는 점 P 오른쪽 위에 반사각 α 표시가 오므로, P 이름표를 왼쪽 위로 옮겨 겹치지 않게 합니다.
+        const flipP = m === 1 && s.step >= 3 && sub !== 3;
+        b.handle('P', [px, py], { color: 'amber', r: 7.5, label: `P(${fmtNum(px)}, ${fmtNum(py)})`, align: flipP ? 'right' : 'left', dx: flipP ? -12 : 12, dy: py >= 0 ? -16 : 16, drag: (w) => { s.py = clamp(w.y, -8, 8); } });
+      } else {
+        const chord = getFocalChordPoints(p, state.theta);
+        // 원본 handlePointerMove: 초점 F를 중심으로 끝점을 돌려 θ를 정함(20°~160°)
+        const turn = (which) => (w) => {
+          const vx = which === 'A' ? w.x - s.p : s.p - w.x;
+          const vy = which === 'A' ? w.y : -w.y;
+          const lo = 20 * D2R, hi = 160 * D2R;
+          const ang = vy <= 0.01 ? (vx >= 0 ? lo : hi) : Math.atan2(vy, vx);
+          s.th = clamp(ang, lo, hi) / D2R;
+        };
+        b.handle('A', [chord.A.x, chord.A.y], { color: 'amber', r: 7.5, label: `A(${fmtNum(chord.A.x)}, ${fmtNum(chord.A.y)})`, dx: 12, dy: -14, drag: turn('A') });
+        b.handle('B', [chord.B.x, chord.B.y], { color: 'sky', r: 6.5, label: `B(${fmtNum(chord.B.x)}, ${fmtNum(chord.B.y)})`, dx: 12, dy: 14, drag: turn('B') });
+      }
+      flushAngleLabels(); // [표시 보강] 각도 글자는 곡선·손잡이 위에(가려지지 않게)
+      v.tape = sink.tape;
+    };
+  }
+
+  /* ---------- 장면 정의 ---------- */
+  const GROUP_SHORT = { 1: '정의·최단 거리', 2: '현의 길이 관계', 3: '현을 지름으로 하는 원', 4: '접선과 마름모' };
+  const QUESTION = {
+    '1-1': '포물선 위의 점 P에서 초점 F까지의 거리와 준선까지의 거리는 어떤 관계일까?',
+    '1-2': '삼각형 PFH가 정삼각형이 되려면 점 P는 어디에 있어야 할까?',
+    '1-3': '포물선 위의 점 P에서 점 A까지의 거리와 초점 F까지의 거리의 합 PA + PF가 가장 작아지는 점 P는 어디일까?',
+    '2-1': '초점을 지나는 현이 초점을 a : b로 나눌 때 1/a + 1/b 는 무엇과 같을까?',
+    '2-2': '현이 초점을 2 : 1로 나누려면 현의 기울기 각 θ의 cosθ 는 얼마여야 할까?',
+    '2-3': '초점을 지나 축에 수직인 현의 길이는 얼마일까?',
+    '3-1': '초점을 지나는 현 AB를 지름으로 하는 원은 준선과 어떤 위치 관계일까?',
+    '3-2': '준선 위의 점 Q에서 점 A, B에서의 접선을 그으면 두 접선은 어떤 각을 이룰까?',
+    '3-3': 'θ = 45°처럼 현이 기울어져도 그 현을 지름으로 하는 원은 준선에 접할까?',
+    '4-1': '접선의 x절편 T와 F, P, H를 이으면 어떤 사각형이 될까?',
+    '4-2': '사각형 TFPH가 정사각형이 되려면 점 P는 어디에 있어야 할까?',
+    '4-3': '초점 F에서 접선에 내린 수선의 발 K는 어디에 놓일까?'
+  };
+  const FOCUS = { x: [-4.4, 8.8], y: [-5.6, 7.8] };
+  const LENSES = [['all', '전체'], ['def', '정의(PF=PH)'], ['sim', '직각·닮음·직사각형'], ['tan', '접선·수직(90°)']];
+
+  function bounce(s, key, speed, lo, hi, dt) {
+    s[key] += speed * s.animDir * dt;
+    if (s[key] > hi) { s[key] = hi; s.animDir = -1; }
+    if (s[key] < lo) { s[key] = lo; s.animDir = 1; }
+  }
+  // 원본 animateLoop: 모드 1·4는 y₁을 ±7.2로 오가고, 모드 2·3은 θ를 0.55~2.55rad로 오갑니다(60프레임 기준 속도)
+  const tickOf = (m) => (s, dt) => {
+    if (!s.playing) return false;
+    if (m === 1 || m === 4) bounce(s, 'py', 0.055 * 60, -7.2, 7.2, dt);
+    else bounce(s, 'th', 0.008 * 60 / D2R, 0.55 / D2R, 2.55 / D2R, dt);
+    return true;
+  };
+
+  function sceneOf(m, sub) {
+    const d = examData[m];
+    const sd = d.subData[sub];
+    return {
+      id: `m${m}s${sub}`,
+      title: d.subTitles[sub - 1],
+      short: d.subTitles[sub - 1],
+      reviewTab: true,
+      question: QUESTION[`${m}-${sub}`],
+      guide: d.hint,
+      controls: m === 1 || m === 4 ? ['p', 'py'] : ['p', 'th'],
+      steps: sd.steps,
+      focus: FOCUS,
+      enter: (s) => {
+        const sn = sd.snap;
+        s.p = sn.p;
+        s.py = sn.py;
+        s.th = sn.theta / D2R;
+        s.a0x = 5;
+        s.a0y = 4;
+        s.animDir = 1;
+      },
+      presets: () => LENSES.map(([k, lbl]) => ({ group: '강조해서 볼 요소', label: lbl, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k })),
+      actions: [{ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '정지' : '자동으로 움직이기'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+      problem: {
+        tag: sd.tag,
+        time: sd.targetTime,
+        text: sd.question,
+        answer: sd.answerBadge,
+        snap: () => ({ p: sd.snap.p, py: sd.snap.py, th: sd.snap.theta / D2R })
+      },
+      solution: {
+        standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이',
+        quickTitle: '10초 컷 · 정의와 성질을 이용한 풀이', quickTag: '10초 컷',
+        standard: sd.textbook,
+        quick: sd.shortcut
+      },
+      tick: tickOf(m),
+      view: viewOf(m, sub),
+      draw: drawOf(m, sub)
+    };
+  }
+
+  const groups = [1, 2, 3, 4].map((m) => ({
+    id: 'm' + m,
+    title: examData[m].badge.replace(/^장면 \d+ · /, ''),
+    short: GROUP_SHORT[m],
+    scenes: [1, 2, 3].map((sub) => sceneOf(m, sub))
+  }));
+
+  APLab.createLab({
+    id: 'geom-parabola',
+    title: '포물선 실전 킬러 랩',
+    courseName: '기하',
+    unit: '이차곡선 · 포물선',
+    courseColor: 'var(--m-rose)',
+    home: '../index.html#geom',
+    legacy: '../../labs/기하와벡터/포물선.html',
+    board: { kind: 'cartesian', focus: FOCUS },
+    params: {
+      p: { value: 2, min: 1, max: 4, step: 0.05, color: 'amber', label: '포물선 $y^2=4px$의 $p$ (준선 $x=-p$)', format: (v) => `p = ${fmtNum(v)} (4p = ${fmtNum(4 * v)})` },
+      py: { value: Math.sqrt(32), min: -8, max: 8, step: 0.05, color: 'rose', label: '점 P의 $y$좌표 $y_1$', hint: '그림의 노란 점 P를 끌어도 같이 움직입니다', format: (v, s) => `y₁ = ${fmtNum(v)} (x₁ = ${fmtNum((v * v) / (4 * s.p))})` },
+      th: { value: 60, min: 20, max: 160, step: 0.5, color: 'sky', label: '초점을 지나는 현이 $x$축과 이루는 각 $\\theta$', hint: '그림의 점 A 또는 B를 끌어 초점 F를 중심으로 돌릴 수도 있습니다', format: (v) => `${v.toFixed(1)}°` }
+    },
+    state: { lens: 'all', a0x: 5, a0y: 4, animDir: 1 },
+    persist: ['lens'],
+    groups
+  });
+});
+</script>
+</body>
+</html>

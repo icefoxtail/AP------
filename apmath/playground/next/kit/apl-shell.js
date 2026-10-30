@@ -23,6 +23,7 @@
   const easeOut = (t) => 1 - Math.pow(1 - t, 3);
   const call = (v, ...a) => (typeof v === 'function' ? v(...a) : v);
   const NARROW = window.matchMedia('(max-width: 859px)'); // apl.css의 모바일 기준과 같은 값
+  const PEN_NAME = { amber: '노랑', rose: '분홍', sky: '하늘', ink: '기본' }; // 판서 펜 색 이름(화면 읽기 프로그램용)
 
   class Lab {
     constructor(def) {
@@ -100,7 +101,7 @@
           h('button', { class: 'apl-icon-btn', 'aria-label': '처음 화면으로 맞추기 (0)', title: '화면 맞춤 (0)', html: icon('fit'), onclick: () => this.fitView() }),
           h('hr'),
           ui.penBtn,
-          h('button', { class: 'apl-icon-btn apl-hide-sm', 'aria-label': '그림 저장 (PNG)', title: '판서 포함 그림 저장', html: icon('camera'), onclick: () => this.capture() }),
+          h('button', { class: 'apl-icon-btn apl-hide-sm', 'aria-label': '그림 저장', title: '판서 포함 그림을 파일로 저장', html: icon('camera'), onclick: () => this.capture() }),
           h('button', { class: 'apl-icon-btn apl-hide-sm', 'aria-label': '전체 화면 (F)', title: '전체 화면 (F)', html: icon('full'), onclick: () => this.fullscreen() }),
           ui.gridBtn));
       ui.gridBtn.classList.add('apl-hide-sm');
@@ -129,6 +130,7 @@
         kind: bd.kind || 'cartesian',
         focus: bd.focus,
         pad: bd.pad,
+        aspect: bd.aspect, // 'free' = 가로·세로 배율을 따로(시간 그래프). 생략하면 1:1
         labelLayer: ui.labels,
         minZoom: bd.minZoom,
         maxZoom: bd.maxZoom,
@@ -169,6 +171,7 @@
       if (this.def.enter) this.def.enter(this.s, sc, this);
       if (sc.enter) sc.enter(this.s, this);
       const bd = this.def.board || {};
+      this.board.aspect = (sc.aspect || bd.aspect) === 'free' ? 'free' : '1:1'; // 장면별 선택: 생략하면 board.aspect(기본 1:1)
       this.board.setPanes(call(sc.panes, this.s) || null);
       let focus = call(sc.focus, this.s) || call(bd.focus, this.s);
       if (!focus && (sc.autoFit || bd.autoFit)) focus = this._measureFocus(sc);
@@ -305,7 +308,7 @@
       pane.append(r.alert, r.readSec);
       // 관찰 포인트
       r.parts = h('div', { class: 'apl-parts' });
-      r.partSec = this._section('눌러서 확인하는 관찰 포인트', 'target', r.parts);
+      r.partSec = this._section('눌러서 그림에서 확인하기', 'target', r.parts);
       r.summary = h('div', { class: 'apl-summary', hidden: true });
       pane.append(r.partSec, r.summary);
     }
@@ -317,8 +320,8 @@
       const presets = call(sc.presets, this.s) || [];
       const actions = call(sc.actions, this.s) || [];
       const key = JSON.stringify([ids, presets.map((p) => p.label), actions.map((a) => a.id + (a.label || ''))]);
-      if (key === this._ctlKey) return false;
-      this._ctlKey = key;
+      if (key === box.__ctlKey) return false; // 캐시 키는 조작부 상자에 붙입니다 → 상자를 새로 만드는 어떤 경로든 자동으로 다시 짓습니다
+      box.__ctlKey = key;
       box.innerHTML = '';
       this._ctls = {};
       for (const id of ids) {
@@ -411,7 +414,7 @@
         };
         r.solution.append(
           h('h3', { class: 'apl-section-h', html: `<span>${icon('bulb')}두 가지 풀이 비교</span>` }),
-          mk('standard', sol.standardTitle || '정석 풀이', sol.standardTag || '정석', 'sky', false),
+          mk('standard', sol.standardTitle || '기본 풀이', sol.standardTag || '기본', 'sky', false),
           mk('quick', sol.quickTitle || '빠른 풀이 · 핵심 원리', sol.quickTag || '핵심', 'amber', false));
         pane.append(r.solution);
       }
@@ -652,7 +655,7 @@
       const s = this.s;
       // 안내
       const guide = v.guide != null ? v.guide : call(sc.guide, s);
-      APLab.setHTML(r.guide, guide || '그림의 <b>후광이 있는 점</b>을 끌거나 아래 조절 막대를 움직여 보세요.');
+      APLab.setHTML(r.guide, guide || '그림의 <b>후광이 있는 점</b>을 끌거나 조절 막대를 움직여 보세요.');
       // 조작부
       this._buildControls();
       for (const [id, c] of Object.entries(this._ctls || {})) {
@@ -910,7 +913,7 @@
       if (this.pen.on) {
         t.innerHTML = '';
         ['amber', 'rose', 'sky', 'ink'].forEach((c) => {
-          const b = h('button', { class: 'sw' + (!this.pen.erase && this.pen.color === c ? ' on' : ''), style: { '--c': `var(--m-${c})` }, 'aria-label': `펜 색 ${c}` });
+          const b = h('button', { class: 'sw' + (!this.pen.erase && this.pen.color === c ? ' on' : ''), style: { '--c': `var(--m-${c})` }, 'aria-label': `펜 색 ${PEN_NAME[c] || c}` });
           b.addEventListener('click', () => { this.pen.color = c; this.pen.erase = false; this.setPen(true); });
           t.append(b);
         });
@@ -938,7 +941,7 @@
       document.body.append(a);
       a.click();
       a.remove();
-      APLab.toast('그림을 PNG로 저장했습니다');
+      APLab.toast('그림을 파일로 저장했습니다');
     }
     _hashState() {
       const sc = this.scene;
@@ -1010,7 +1013,7 @@
         [['←', '→'], '단계 이동 (끝나면 다음 장면) — 발표용 리모컨도 동작'],
         [['[', ']'], '이전 / 다음 장면'],
         [['1', '…', '9'], '장면 바로 가기'],
-        [['T'], '수업 모드 (큰 글씨·굵은 선·발표 막대)'],
+        [['T'], '수업 모드 (큰 글씨·굵은 선·단계 안내 줄)'],
         [['D'], '판서 펜 켜기/끄기 · E 지우개 · X 모두 지우기'],
         [['H'], '설명 패널 접기 (무대를 크게)'],
         [['F'], '전체 화면'],
@@ -1018,17 +1021,21 @@
         [['0'], '화면 맞춤 (확대·이동 되돌리기)'],
         [['S'], '문제 조건으로 그림 맞추기'],
         [['A'], '정답 공개'],
-        [['Space'], '애니메이션 재생/정지'],
+        [['Space'], '움직임 재생/정지'],
         [['N', '화살표'], '무대를 누른 뒤: 점 고르기 / 점 움직이기']
       ];
       const grid = h('div', { class: 'apl-keys' });
       keys.forEach(([ks, d]) => grid.append(h('span', { html: ks.map((k) => `<span class="apl-kbd">${APLab.esc(k)}</span>`).join('') }), h('span', { text: d })));
+      // board.aspect:'free'(시간 그래프 등)인 실험실만 1:1 안내 대신 축척이 따로라는 안내를 보여 줍니다.
+      const aspectNote = ((this.scene && this.scene.aspect) || (this.def.board || {}).aspect) === 'free'
+        ? (this.scene && this.scene.aspectNote) || '이 실험실의 그래프는 가로(시간)와 세로(위치·속도)의 <b>단위가 달라 축척을 따로</b> 둡니다. 그래프가 무대를 가득 채우는 대신 기울기의 각도는 실제와 다르게 보여요.'
+        : '무대는 가로·세로 축척이 항상 같아서 <b>직각은 직각으로, 기울기 1은 45°로</b> 보입니다.';
       const legend = h('div', { class: 'apl-card soft', html: `
         <div class="apl-section-h" style="margin-bottom:8px"><span>${icon('spark')}색과 모양의 약속</span></div>
         <div class="apl-rich" style="font-size:var(--fs-xs)">
           <p><b>후광이 있는 점</b>은 손으로 끌 수 있습니다. 무대를 두 손가락으로 벌리면 확대, 빈 곳을 끌면 이동합니다.</p>
           <p><b>같은 대상은 같은 색</b>입니다. 조절 막대·실시간 값·그림의 선이 같은 색이면 같은 것을 가리킵니다. 실시간 값에 마우스를 올리면 그림에서 해당 부분이 강조됩니다.</p>
-          <p>무대는 가로·세로 축척이 항상 같아서 <b>직각은 직각으로, 기울기 1은 45°로</b> 보입니다.</p>
+          <p>${aspectNote}</p>
         </div>` });
       APLab.dialog({ title: '도움말 · 단축키', body: h('div', { style: { display: 'grid', gap: '14px' } }, legend, grid) });
     }
@@ -1055,7 +1062,7 @@
           if (sc.enter) sc.enter(st, this);
           if (sc.problem && sc.problem.snap && sc.thumbSnap !== false) Object.assign(st, call(sc.problem.snap, st));
           const focus = call(sc.focus, st) || call(bd.focus, st);
-          APLab.Board.renderThumb(cv, { kind: bd.kind || 'cartesian', focus, pad: bd.thumbPad }, (b) => {
+          APLab.Board.renderThumb(cv, { kind: bd.kind || 'cartesian', focus, pad: bd.thumbPad, aspect: sc.aspect || bd.aspect }, (b) => {
             if (sc.panes) b.setPanes(call(sc.panes, st));
             const v = (sc.view ? sc.view(st, this) : this.def.view ? this.def.view(st, sc, this) : {}) || {};
             (sc.draw || this.def.draw)(b, st, v, this);

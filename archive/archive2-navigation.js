@@ -29,6 +29,7 @@
     compose: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5z"/><path d="M15 4v5h5M8 14h8M12 10v8"/></svg>',
     recent: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V5h7l2 2"/></svg>',
     library: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h6.8c1 0 1.7.7 1.7 1.7v13.3c0-1-.7-1.7-1.7-1.7H4zM20 4.5h-6.8c-1 0-1.7.7-1.7 1.7v13.3c0-1 .7-1.7 1.7-1.7H20z"/></svg>',
+    quick: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7"/><path d="M12 13.5V9.5M9.5 3.5h5M12 6.5v0M18.2 6.8l1.2-1.2"/></svg>',
     saved: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h6.8c1 0 1.7.7 1.7 1.7v13.3c0-1-.7-1.7-1.7-1.7H4zM20 4.5h-6.8c-1 0-1.7.7-1.7 1.7v13.3c0-1 .7-1.7 1.7-1.7H20z"/></svg>',
   };
   const home = ["home", "홈", "workspace.html?view=home"];
@@ -36,14 +37,19 @@
     ["find", "기출·자료", "workspace.html?view=find"],
     ["unit", "단원별 기출", "unit-past-exams.html?ready=1"],
     ["compose", "문제지 만들기", "workspace.html?view=compose"],
+    ["quick", "빠른 평가", "workspace.html?view=five-minute"],
     ["saved", "저장한 시험지", "workspace.html?view=saved"],
     ["recent", "출제 내역", "workspace.html?view=recent"],
   ];
+
+  // 5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가 share one navigation tab.
+  const QUICK_VIEWS = ["five-minute", "subunit-test", "unit-test", "monthly-test"];
 
   function currentKey(mode) {
     if (mode === "unit") return "unit";
     const search = typeof location === "undefined" ? "" : location.search || "";
     const view = new URLSearchParams(search).get("view");
+    if (QUICK_VIEWS.includes(view)) return "quick";
     return ["home", "find", "compose", "saved", "recent", "health"].includes(view)
       ? view
       : "home";
@@ -55,7 +61,8 @@
       key === active ? ' aria-current="page" class="active"' : "";
     const body = `<span class="archive-nav-icon">${icons[key]}</span><span class="archive-nav-label">${label}</span>`;
     if (mode === "workspace" && key !== "unit") {
-      return `<button type="button" data-view="${key}"${current}${extraClass ? ` data-nav-role="${extraClass}"` : ""}>${body}</button>`;
+      const view = key === "quick" ? QUICK_VIEWS[0] : key;
+      return `<button type="button" data-view="${view}"${key === "quick" ? ' data-nav-key="quick"' : ""}${current}${extraClass ? ` data-nav-role="${extraClass}"` : ""}>${body}</button>`;
     }
     return `<a href="${url}"${current}${extraClass ? ` data-nav-role="${extraClass}"` : ""}>${body}</a>`;
   }

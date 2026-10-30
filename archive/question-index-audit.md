@@ -2,12 +2,12 @@
 
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated)
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(1040파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(1054파일).
   - 교과서 파일은 `textbooks/<book>/<title>.js` 경로와 db.js의 명시 등록이 모두 있을 때만 포함한다.
   - DB 미등록 교재 파일과 미추적 _pro 드래프트는 제외한다.
 - 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
-- 원본 문항 수: 25595
-- 최종 인덱스 문항 수: 25595
+- 원본 문항 수: 25943
+- 최종 인덱스 문항 수: 25943
 - 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -38,9 +38,9 @@
 
 > 공식 마스터(142) 에 없고 RAW- 규약도 아닌 키. 검색/자동출제에서 mixer 의 getStandardizedUnit 이 "미분류"로 처리한다.
 > 원문 standardUnitKey 값은 인덱스에 보존한다(별도 치환/보정 없음).
-> distinct 27종 / 540건
+> distinct 27종 / 590건
 
-- `H22-C3-01` — 350건 (예: textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-T1-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S1-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S2-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S3-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S4-R1)
+- `H22-C3-01` — 400건 (예: textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-T1-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S1-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S2-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S3-R1, textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js#BV-BAKBAL-H-COM2-HA-P54-Q01-S4-R1)
 - `M2-09` — 37건 (예: original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#18, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#19, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#20, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#22, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#24)
 - `M2-10` — 26건 (예: original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#17, original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js#21, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#11, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#12, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#13)
 - `M2-11` — 21건 (예: original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#15, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#16, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#17, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#18, original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js#19)
@@ -85,7 +85,7 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 25595건 기준)
+## 5. 필드 누락 (최종 인덱스 25943건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
@@ -103,10 +103,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 3830 |
-| content <img> | 1073 |
+| q.image 보유 | 3873 |
+| content <img> | 1076 |
 | content <svg> | 77 |
-| content <table> | 367 |
-| 시각요소 보유(hasImage=true) | 5162 |
+| content <table> | 373 |
+| 시각요소 보유(hasImage=true) | 5214 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>로그함수·역함수 도형 심화 · AP Math 실험실</title>
+<meta name="description" content="대수 로그함수·역함수 도형 심화: 로그함수의 세로 방향의 간격과 넓이, 진수 조건 함정, |log(x−p)|의 두 교점의 곱과 중점, 역함수의 그래프의 대칭과 직각이등변삼각형, 평행이동한 지수함수·로그함수의 대칭축, 기울기가 ±1인 직선과 사다리꼴, 지수함수·로그함수와 원, 로그함수 아래의 격자점을 조작하며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   대수 · 로그함수·역함수 도형 심화 (AP Math Lab 2.0 이식본) — 8개 탐구관 × 문제 A·B = 16개 장면
+   원본: labs/대수/part1b1.html
+   - 문제·단계·교과서 풀이/간단한 풀이 문구(KILLER_MODES), 조절 막대 정의, 수식 줄·실시간 값(HUD), 숫자를 바꾼 문제 생성기,
+     Newton 풀이(solveExpLine·solveExpCircle), 그리기 분기(renderType1~8)를 원본 글자 그대로 옮겼습니다.
+     그리기 함수 이름(drawMathSegment·drawFunctionCurve·drawMathPoint…)만 새 무대 엔진에 연결했습니다.
+     탭 = 탐구관(8), 장면 = 문제 A·B. 모드마다 조절값 이름표(접두어)를 붙여 같은 이름(lineK·baseA)의 조절값이 섞이지 않게 함.
+   - [2.0 수정] 원본 '점근선·정점 스캐너' 버튼은 눌러도 아무 효과가 없어 표시하지 않음.
+   - [2.0 수정] LOG 05(어긋난 역함수): 원본은 지수 평행이동 m과 로그 평행이동 p를 따로 움직여 '이동된 대칭축'이
+     실제 두 곡선의 대칭축이 아닌 그림이 나왔음 → 대칭이 성립하는 조건 p = m + n − q 로 p 가 m 을 따라 움직이게 함(p 막대는 숨김).
+     3단계(기울기 −1 중점 타겟팅)에 그려지는 것이 없던 점도 교점 A·B와 선분 AB를 그려 채움.
+   - [2.0 수정] LOG 06: 3단계(수직 교차 직사각형 넓이)에 그려지는 것이 없던 점을 넓이 판서로 채움.
+   - 원본 하단의 칠판 배지(drawCanvasBadge)·분수 판서(drawCanvasFraction)는 무대 카드·요약 띠로 옮겨 그림을 가리지 않게 함.
+   - 원본의 '문제 조건 스냅'은 문제 탭의 [문제 조건으로 그림 맞추기]로, '숫자를 바꾼 문제'는 탐구 탭 버튼으로 둠.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const { fmt, clamp } = APLab;
+
+  /* ===== 원본 그대로: 8개 킬러 모드 데이터 (원본 KILLER_MODES) ===== */
+  const KILLER_MODES = [
+{
+id: 'type1',
+code: '유형 1',
+shortTitle: '로그함수의 세로 방향의 간격과 넓이',
+icon: 'fa-arrows-up-down',
+stepLabels: ['진수에 곱한 수는 y축의 방향으로의 평행이동', '수직선이 자른 선분 AB = log₂k', '직사각형으로 바꾸어 넓이 구하기'],
+stepDescs: [
+'1단계: $y = \\log_2(kx) = \\log_2 x + \\log_2 k$이므로, 진수에 곱한 $k$는 그래프를 $y$축의 방향으로 $\\log_2 k$만큼 평행이동한 것과 같습니다.',
+'2단계: 따라서 수직선 $x = t$를 어디에 그어도 두 곡선 사이의 **세로 선분의 길이 $\\overline{AB} = \\log_2 k$는 $t$와 관계없이 일정**합니다.',
+'3단계: 두 수직선 $x = t_1, x = t_2$와 두 로그 곡선으로 둘러싸인 부분의 넓이는, 곡선 부분을 평행이동하여 겹치면 **직사각형의 넓이 $\\Delta x \\times \\log_2 k$**와 같습니다.'
+],
+trapWarning: '주의: 지수함수에서는 $k\\cdot a^x = a^{x + \\log_a k}$이므로 **가로 방향의 간격**이 일정하고, 로그함수에서는 $\\log_a(kx) = \\log_a x + \\log_a k$이므로 **세로 방향의 간격**이 일정합니다. 두 방향을 혼동하지 않아야 합니다.',
+scenarios: [
+{
+chip: '문제 A (진수에 곱한 수와 세로 선분의 길이)',
+source: '로그함수의 세로 방향의 간격',
+params: { multK: 4, xCut1: 2.0, xCut2: 5.0 },
+snapParams: { multK: 4, xCut1: 2.0, xCut2: 5.0 },
+problem: '두 함수 $f(x) = \\log_2 x$와 $g(x) = \\log_2(4x)$의 그래프가 두 직선 $x = 2, x = 5$와 만나는 네 점으로 둘러싸인 곡선 영역의 넓이 $S$와 수직 선분 $\\overline{AB}$의 길이를 구하시오.',
+textbookTitle: '네 교점의 좌표를 구하고 넓이 구하기',
+textbookSteps: [
+'1) $x=2$일 때 두 점은 $(2, 1), (2, 3)$이므로 세로 길이는 $2$이다.',
+'2) $x=5$일 때 두 점은 $(5, \\log_2 5), (5, \\log_2 20)$이므로 세로 길이는 $\\log_2 20 - \\log_2 5 = 2$이다.',
+'3) 곡선 부분을 평행이동하여 겹치면 둘러싸인 넓이는 밑변 $5-2=3$, 높이 $2$인 직사각형의 넓이와 같으므로 $3 \\times 2 = 6$.'
+],
+secretTitle: 'log₂(kx) = log₂x + log₂k이므로 세로 간격은 log₂k, 넓이 = (가로 간격) × (세로 간격)',
+secretSteps: [
+'$\\log_2(4x) = \\log_2 x + 2$이므로 어디를 세로로 잘라도 **세로 간격은 항상 $2$**입니다.',
+'$(\\text{가로 간격 } 5 - 2) \\times (\\text{세로 간격 } 2) = 3 \\times 2 = 6$입니다.'
+]
+},
+{
+chip: '문제 B (log₂(8x)의 세로 간격 3과 정삼각형)',
+source: '모의고사 4점 준킬러',
+params: { multK: 8, xCut1: 1.5, xCut2: 4.5 },
+snapParams: { multK: 8, xCut1: 2.0, xCut2: 6.0 },
+problem: '두 곡선 $y = \\log_2 x$와 $y = \\log_2(8x)$가 직선 $x = t$와 만나는 두 점을 $A, B$라 할 때, 한 변이 $\\overline{AB}$인 정삼각형 $ABC$의 넓이를 구하시오.',
+textbookTitle: 'AB=3을 구한 뒤 정삼각형의 넓이 구하기',
+textbookSteps: [
+'1) $\\overline{AB} = \\log_2(8t) - \\log_2 t = 3$으로 $t$와 무관하게 일정하다.',
+'2) 한 변이 $3$인 정삼각형의 넓이는 $\\frac{\\sqrt{3}}{4}\\times 3^2 = \\frac{9\\sqrt{3}}{4}$이다.'
+],
+secretTitle: 't를 구하지 않아도 AB = log₂8 = 3으로 일정',
+secretSteps: [
+'노란색 수직선 $x = t$를 좌우로 끌어 보아도 선분 $\\overline{AB}$의 길이가 $3.000$으로 일정함을 확인해 보세요.'
+]
+}
+]
+},
+{
+id: 'type2',
+code: '유형 2',
+shortTitle: '진수 조건 함정: log₂(x²)과 2log₂x의 비교',
+icon: 'fa-Code-fork',
+stepLabels: ['2log₂x의 그래프 (x>0인 오른쪽 부분만)', 'log₂(x²) = 2log₂|x|의 그래프 (양쪽)', '직선과의 교점의 개수 비교'],
+stepDescs: [
+'1단계: $y = 2\\log_2 x$는 진수 조건이 **$x > 0$**이므로 오른쪽(제1·4사분면)에만 그래프가 그려집니다.',
+'2단계: 반면 $y = \\log_2(x^2)$은 진수 조건이 **$x^2 > 0 \\iff x \\neq 0$**이고 $\\log_2(x^2) = 2\\log_2|x|$이므로, **$y$축에 대하여 대칭인 왼쪽 부분($x \\lt 0$)이 더해집니다.**',
+'3단계: 직선이나 원과의 교점의 개수를 구할 때 진수의 짝수 거듭제곱($x^2$)의 지수를 함부로 앞으로 내리면 $x$가 음수인 쪽의 실근을 놓치게 됨을 확인합니다.'
+],
+trapWarning: '주의: 방정식 $\\log_2 x^2 = k$의 해는 $1$개가 아니라 $x = \\pm 2^{k/2}$ **2개(합 $= 0$)**입니다. 지수 $2$를 앞으로 내릴 때에는 반드시 **절댓값 $2\\log_2|x|$**로 써야 합니다.',
+scenarios: [
+{
+chip: '문제 A (log₂(x²)의 그래프와 교점의 개수)',
+source: '내신·수능 합답형 최고 오답률 함정',
+params: { showLeftWing: 1, lineSlope: 0.25, lineYInt: 2.0 },
+snapParams: { showLeftWing: 1, lineSlope: 0.0, lineYInt: 2.0 },
+problem: '방정식 $\\log_2 x^2 = 2$의 모든 실근의 곱과, 함수 $y = \\log_2 x^2$의 그래프와 직선 $y = 2$의 교점 개수($2$개)를 $y = 2\\log_2 x$ ($1$개)와 비교하시오.',
+textbookTitle: '로그의 정의로 x² = 2² = 4 풀기',
+textbookSteps: [
+'1) $\\log_2 x^2 = 2 \\iff x^2 = 2^2 = 4 \\implies x = 2$ 또는 $x = -2$이다.',
+'2) 따라서 교점은 $(-2, 2), (2, 2)$ 두 개이고 모든 실근의 곱은 $-4$, 합은 $0$이다.',
+'3) 만약 $2\\log_2 x = 2$로 잘못 변형하면 $x = 2$ 하나만 나와 오답이 된다.'
+],
+secretTitle: '진수가 x의 짝수 거듭제곱이면 그래프는 y축에 대하여 대칭',
+secretSteps: [
+'$\\log_a(x^2) = 2\\log_a x$가 아니라 **$2\\log_a |x|$**입니다.',
+'조절 막대 「왼쪽 부분 x < 0 표시」를 $0$과 $1$로 바꾸어 가며 교점의 개수가 $1$개에서 $2$~$3$개로 달라지는 것을 확인해 보세요.'
+]
+},
+{
+chip: '문제 B (직선 y = mx + 2와의 교점 3개)',
+source: '진수 조건과 로그함수의 그래프',
+params: { showLeftWing: 1, lineSlope: 0.35, lineYInt: 2.0 },
+snapParams: { showLeftWing: 1, lineSlope: 0.4, lineYInt: 2.0 },
+problem: '함수 $y = \\log_2 x^2$의 그래프와 직선 $y = 0.4x + 2$가 만나는 서로 다른 교점의 개수를 구하시오.',
+textbookTitle: 'x<0일 때와 x>0일 때로 나누어 교점 구하기',
+textbookSteps: [
+'1) $x < 0$에서 $y = 2\\log_2(-x)$는 감소함수이고 직선은 증가함수이므로 정확히 $1$개의 교점을 갖는다.',
+'2) $x > 0$에서 $y = 2\\log_2 x$와 완만한 직선은 $2$개의 교점을 갖는다. 따라서 총 $3$개이다.'
+],
+secretTitle: '왼쪽 부분(감소)과 기울기가 양수인 직선은 반드시 한 번 만난다',
+secretSteps: [
+'$x>0$인 부분만 그려서 2개라고 답하면 틀립니다. $x<0$인 부분에서 생기는 교점 1개를 더해 모두 3개입니다. 그림에서 확인해 보세요.'
+]
+}
+]
+},
+{
+id: 'type3',
+code: '유형 3',
+shortTitle: '|logₐ(x−p)|의 그래프에서 두 교점의 곱과 중점',
+icon: 'fa-scale-unbalanced-flip',
+stepLabels: ['꺾인 부분 −log₂(x−p)', '교점의 곱 (x₁−p)(x₂−p) = 1', '두 교점의 중점 M > p+1'],
+stepDescs: [
+'1단계: $y = |\\log_2(x - p)|$의 그래프는 점근선 $x = p$의 오른쪽에서 점 $(p+1, 0)$을 경계로 꺾입니다.',
+'2단계: 수평선 $y = t$와의 두 교점 $x_1, x_2$에서 $-\\log_2(x_1-p) = \\log_2(x_2-p) = t$이므로 **$(x_1 - p)(x_2 - p) = 2^{-t}\\cdot 2^t = 1$**이 항상 성립합니다.',
+'3단계: 산술평균과 기하평균의 관계에 의하여 $(x_1-p)+(x_2-p) = 2^t + 2^{-t} > 2$ ($t>0$)이므로, **두 교점의 중점 $M = \\frac{x_1+x_2}{2}$은 항상 꺾인 점의 $x$좌표 $p+1$보다 오른쪽에 있고** $t$가 커질수록 더 오른쪽으로 이동합니다.'
+],
+trapWarning: '주의(단골 함정): $|\\log_2 x| = t$의 두 근 $x_1, x_2$는 $1$을 중심으로 대칭이 아니므로, 중점 $\\frac{x_1+x_2}{2}$는 $1$이 아니라 **항상 $1$보다 큽니다**($\\frac{x_1+x_2}{2} > 1$).',
+scenarios: [
+{
+chip: '문제 A (교점의 곱과 중점)',
+source: '절댓값을 포함한 로그함수의 그래프',
+params: { shiftP: 0, lineT: 1.5 },
+snapParams: { shiftP: 0, lineT: 2.0 },
+problem: '함수 $y = |\\log_2 x|$와 직선 $y = t$ ($t > 0$)가 만나는 두 점의 $x$좌표를 각각 $x_1, x_2$ ($x_1 \\lt x_2$)라 할 때, 다음 [ㄱ], [ㄴ], [ㄷ]의 참, 거짓을 판별하시오. [ㄱ] $x_1 x_2 = 1$ [ㄴ] $x_1 + x_2 \\gt 2$ [ㄷ] $t=2$일 때 두 점의 중점의 $x$좌표는 $\\frac{17}{8}$이다.',
+textbookTitle: 'x₁ = 2⁻ᵗ, x₂ = 2ᵗ을 대입하고 산술평균과 기하평균의 관계 이용하기',
+textbookSteps: [
+'1) [ㄱ] $x_1 = 2^{-t}, x_2 = 2^t$이므로 $x_1 x_2 = 1$ (참).',
+'2) [ㄴ] $t > 0$이므로 $x_1 \\neq x_2$이고 산술·기하평균에 의해 $x_1 + x_2 > 2\\sqrt{x_1 x_2} = 2$ (참).',
+'3) [ㄷ] $t=2$이면 $x_1 = \\frac{1}{4}, x_2 = 4$이므로 중점은 $\\frac{4 + 1/4}{2} = \\frac{17}{8}$ (참).'
+],
+secretTitle: '두 교점의 성질: ① x₁x₂ = 1 (서로 역수), ② 중점 > 1',
+secretSteps: [
+'왼쪽 교점은 점근선 $x=0$ 때문에 $0$과 $1$ 사이에 있으므로 꺾인 점 $(1, 0)$에서 $1$보다 멀리 떨어질 수 없지만, 오른쪽 교점은 $2^t$로 $1$에서 얼마든지 멀어질 수 있습니다. 따라서 **중점 $M$은 꺾인 점 $(1, 0)$의 오른쪽에 있습니다.**'
+]
+},
+{
+chip: '문제 B (평행이동한 |log₂(x−2)| = t)',
+source: '절댓값을 포함한 로그함수의 그래프',
+params: { shiftP: 2, lineT: 1.5 },
+snapParams: { shiftP: 2, lineT: 1.0 },
+problem: '함수 $y = |\\log_2(x - 2)|$와 직선 $y = 1$이 만나는 두 점의 $x$좌표 $x_1, x_2$에 대하여 $(x_1 - 2)(x_2 - 2)$의 값과 $x_1 + x_2$의 값을 구하시오.',
+textbookTitle: 'x−2=X로 놓고 풀기',
+textbookSteps: [
+'1) $(x_1 - 2)(x_2 - 2) = 2^{-1} \\times 2^1 = 1$이다.',
+'2) $x_1 - 2 = \\frac{1}{2} \\implies x_1 = 2.5$, $x_2 - 2 = 2 \\implies x_2 = 4$이므로 합은 $6.5 = \\frac{13}{2}$.'
+],
+secretTitle: '점근선 x=p에서 두 교점까지의 거리의 곱은 1 ((x₁−p)(x₂−p) = 1)',
+secretSteps: [
+'평행이동한 양이 $p=2$일 때, 점근선까지의 거리 $X_1 = x_1 - 2, X_2 = x_2 - 2$는 서로 역수입니다.'
+]
+}
+]
+},
+{
+id: 'type4',
+code: '유형 4',
+shortTitle: '역함수의 그래프의 대칭과 직각이등변삼각형',
+icon: 'fa-up-right-and-down-left-from-center',
+stepLabels: ['직선 y=x에 대한 대칭과 중점 M', '직각이등변삼각형 (1 : 1 : √2)', '삼각형 OAB의 넓이'],
+stepDescs: [
+'1단계: 서로 역함수 관계인 $y = 2^x$과 $y = \\log_2 x$는 직선 $y = x$에 대하여 대칭이며, 기울기가 $-1$인 직선 $y = -x + k$와의 교점 $A, B$의 중점은 항상 **$M\\left(\\frac{k}{2}, \\frac{k}{2}\\right)$**입니다.',
+'2단계: $\\overline{AB} = d\\sqrt{2}$이면 $\\overline{AB}$를 빗변으로 하는 직각이등변삼각형에서 **$x$좌표의 차 $\\Delta x = d$, $y$좌표의 차 $\\Delta y = d$**입니다.',
+'3단계: 삼각형의 넓이는 $\\overline{OM} \\perp \\overline{AB}$이므로 $\\triangle OAB = \\frac{1}{2}\\overline{OM}\\cdot\\overline{AB} = \\frac{k}{2}\\cdot d$로 구할 수 있습니다. 세 점의 좌표로 넓이를 구하는 식은 쓰지 않아도 됩니다.'
+],
+trapWarning: '주의: 기울기가 $-1$인 직선과 만나는 두 점이 **서로 역함수인 두 곡선 위의 대칭인 점**인지 먼저 확인합니다.',
+scenarios: [
+{
+chip: '문제 A (AB = 2√2일 때 A, B의 좌표)',
+source: '역함수의 그래프의 대칭',
+params: { lineK: 4.5, baseA: 2 },
+snapParams: { lineK: 6.0, baseA: 2 },
+problem: '두 곡선 $y = 2^x, y = \\log_2 x$가 직선 $y = -x + k$와 만나는 두 점 $A, B$가 모두 제1사분면에 있다. $\\overline{AB} = 2\\sqrt{2}$일 때, 상수 $k$의 값과 $\\triangle OAB$의 넓이를 구하시오.',
+textbookTitle: 'A(α, β), B(β, α)로 놓고 연립하여 풀기',
+textbookSteps: [
+'1) $\\overline{AB} = \\sqrt{2}(\\beta - \\alpha) = 2\\sqrt{2} \\implies \\beta - \\alpha = 2$.',
+'2) $\\beta = 2^\\alpha$이고 $\\beta = \\alpha + 2$이므로 $2^\\alpha = \\alpha + 2$이다. $2^\\alpha = \\alpha + 2$를 만족시키는 양수 $\\alpha$는 $\\alpha = 2$이고 $\\beta = 4$이다.',
+'3) 따라서 $A(2, 4), B(4, 2)$이므로 $k = 2 + 4 = 6$이고, $\\triangle OAB = \\frac{1}{2}|2\\cdot 2 - 4 \\cdot 4| = 6$이다.'
+],
+secretTitle: 'AB = d√2이면 Δx = d이고, 2^α − α = 2를 만족시키는 α = 2를 찾는다',
+secretSteps: [
+'기울기가 $-1$인 직선 위에서 $\\overline{AB} = 2\\sqrt{2}$이면 **$x$좌표의 차는 $2$**입니다. $2^\\alpha - \\alpha = 2$를 만족시키는 양수 $\\alpha = 2$에서 $A(2, 4)$, $B(4, 2)$이므로 $k = 6$, 넓이는 $\\frac{k}{2} \\times d = 3 \\times 2 = 6$입니다.'
+]
+},
+{
+chip: '문제 B (k = 6일 때 중점 M(3, 3))',
+source: '역함수의 그래프의 대칭',
+params: { lineK: 6.0, baseA: 2 },
+snapParams: { lineK: 6.0, baseA: 2 },
+problem: '직선 $y = -x + 6$이 $y = 2^x, y = \\log_2 x$와 만나는 두 점 $A, B$의 중점 $M$의 좌표와 $x_A + x_B$, $y_A + y_B$의 값을 구하시오.',
+textbookTitle: '대칭성을 이용하여 중점 구하기',
+textbookSteps: [
+'1) 두 곡선과 직선 모두 $y=x$에 대칭이므로 두 교점의 중점은 $y=x$와 $y=-x+6$의 교점인 $M(3, 3)$이다.',
+'2) 따라서 개별 교점 좌표를 구하지 못하더라도 $x_A + x_B = 6, y_A + y_B = 6$이다.'
+],
+secretTitle: '방정식 2ˣ = −x+6을 풀지 않아도 x_A + x_B = k',
+secretSteps: [
+'$2^x = -x + 6$의 해를 직접 구하기는 어렵지만, 두 곡선이 직선 $y=x$에 대하여 대칭이므로 **두 근의 합은 $k = 6$**입니다.'
+]
+}
+]
+},
+{
+id: 'type5',
+code: '유형 5',
+shortTitle: '평행이동한 지수함수·로그함수의 대칭축 킬러',
+icon: 'fa-arrows-Turn-to-dots',
+stepLabels: ['역함수의 그래프(점선)와 비교', '대칭축 y = x + C', '기울기가 −1인 직선과 중점 M'],
+stepDescs: [
+'1단계: $y = 2^{x-m} + n$의 역함수는 $y = \\log_2(x-n) + m$입니다. 그런데 문제에서는 $y = \\log_2(x-p) + q$처럼 **평행이동한 양이 역함수와 다른 로그함수**가 주어집니다.',
+'2단계: 두 곡선이 서로 대칭이 되도록 평행이동하면($p = m + n - q$), 대칭축은 기울기가 $1$인 직선이 되고 $y=x$에서 **$y = x + \\frac{(n-m) + (q-p)}{2}$로 평행이동**합니다.',
+'3단계: 지수함수 위의 점 $P_1(m, n+1)$과 로그함수 위의 점 $P_2(p+1, q)$의 중점이 이 대칭축 위에 있음을 이용하여 대칭축을 구합니다.'
+],
+trapWarning: '주의: 밑이 같은 지수함수와 로그함수의 그래프는 평행이동한 양이 알맞게 짝지어질 때에만($p = m + n - q$) 직선 $y = x + C$에 대하여 대칭입니다.',
+scenarios: [
+{
+chip: '문제 A (대칭축 y = x + C 구하기)',
+source: '수능·평가원 14번·15번 고난도 킬러',
+params: { expM: 1, expN: 2, logP: 4, logQ: -1, lineK: 6 },
+snapParams: { expM: 1, expN: 2, logP: 4, logQ: -1, lineK: 6 },
+problem: '두 곡선 $y = 2^{x-1} + 2$와 $y = \\log_2(x-4) - 1$은 직선 $y = x + C$에 대하여 대칭이다. 상수 $C$의 값과, 두 곡선이 직선 $y = -x + 6$과 만나는 두 점 $A, B$의 중점 $M$의 좌표를 구하시오.',
+textbookTitle: '대칭이동한 식을 구하여 C 구하기',
+textbookSteps: [
+'1) $y = 2^{x-1} + 2$의 역함수는 $y = \\log_2(x-2) + 1$이다.',
+'2) 주어진 로그함수 $y = \\log_2(x-4) - 1$은 역함수를 $x$축의 방향으로 $2$, $y$축의 방향으로 $-2$만큼 평행이동한 것이다.',
+'3) 기울기 $-1$ 방향으로 $(+2, -2)$ 이동했으므로 대칭축은 절반인 $(+1, -1)$ 이동한 $y = (x-1) - 1 = x - 2$ ($C = -2$)이고, $y=-x+6$과의 교점인 중점은 $M(4, 2)$이다.'
+],
+secretTitle: '두 점 (1, 3), (5, −1)의 중점 M₀(3, 1)을 y = x + C에 대입',
+secretSteps: [
+'$y = 2^{x-1} + 2$에서 지수가 $0$이 되는 $x=1$일 때의 점 **$P_1(1, 3)$**과, $y = \\log_2(x-4) - 1$에서 진수가 $1$이 되는 $x=5$일 때의 점 **$P_2(5, -1)$**은 서로 대칭인 점입니다.',
+'두 점의 중점 **$M_0\\left(\\frac{1+5}{2}, \\frac{3+(-1)}{2}\\right) = (3, 1)$**을 지나고 기울기가 $1$인 직선이 대칭축 **$y = x - 2$ ($C = -2$)**입니다. 따라서 $y=-x+6$과 연립하면 중점은 $M(4, 2)$입니다.'
+]
+},
+{
+chip: '문제 B (두 점의 중점으로 대칭축 구하기)',
+source: '평행이동한 지수함수와 로그함수의 대칭축',
+params: { expM: 0, expN: 3, logP: 1, logQ: 2, lineK: 7 },
+snapParams: { expM: 0, expN: 3, logP: 1, logQ: 2, lineK: 7 },
+problem: '두 곡선 $y = 2^x + 3$ (위의 점 $(0, 4)$)과 $y = \\log_2(x-1) + 2$ (위의 점 $(2, 2)$)의 대칭축 $y = x + C$를 두 점의 중점을 이용하여 구하시오.',
+textbookTitle: '두 점의 중점 구하기',
+textbookSteps: [
+'1) 두 점 $(0, 4)$와 $(2, 2)$의 중점은 $(1, 3)$이다.',
+'2) 점 $(1, 3)$을 지나고 기울기가 $1$인 대칭축은 $y = x + 2$ ($C = 2$)이다.'
+],
+secretTitle: '중점 (1, 3)에서 y − x = 3 − 1 = 2이므로 대칭축은 y = x + 2',
+secretSteps: [
+'그림에서 보라색 점선으로 그려진 대칭축 $y = x + 2$와 두 점의 대칭 관계를 확인해 보세요.'
+]
+}
+]
+},
+{
+id: 'type6',
+code: '유형 6',
+shortTitle: '기울기가 ±1인 직선과 사다리꼴 킬러',
+icon: 'fa-vector-square',
+stepLabels: ['기울기가 −1인 두 직선과 네 교점', '기울기가 +1인 직선', '사다리꼴의 넓이'],
+stepDescs: [
+'1단계: 기울기가 $-1$인 두 직선 $y = -x + k_1, y = -x + k_2$가 서로 역함수인 $y=2^x, y=\\log_2 x$의 그래프와 만나는 네 점을 찍습니다.',
+'2단계: 두 직선 $y = -x + k_1, y = -x + k_2$에 수직인 **기울기 $+1$인 직선**을 그으면, 두 직선 사이의 거리를 $\\frac{|k_2 - k_1|}{\\sqrt{2}}$로 구할 수 있습니다.',
+'3단계: 기울기가 $+1$인 직선과 $-1$인 직선은 서로 수직이므로, 높이의 $\\frac{1}{\\sqrt{2}}$와 윗변·아랫변에 곱해진 $\\sqrt{2}$가 약분되어 루트 계산 없이 넓이를 구할 수 있습니다.'
+],
+trapWarning: '주의: 기울기가 $-1$인 두 직선 $y = -x + k_1$과 $y = -x + k_2$ 사이의 거리는 $|k_2 - k_1|$이 아니라 **$\\frac{|k_2 - k_1|}{\\sqrt{2}}$**입니다.',
+scenarios: [
+{
+chip: '문제 A (등변사다리꼴의 넓이)',
+source: '서로 역함수인 두 곡선과 기울기가 −1인 직선',
+params: { k1: 4.0, k2: 6.0 },
+snapParams: { k1: 4.0, k2: 6.0 },
+problem: '두 곡선 $y = 2^x, y = \\log_2 x$가 직선 $y = -x + 4$와 만나는 두 점을 $A, B$라 하고, 직선 $y = -x + 6$과 만나는 두 점을 $C, D$라 할 때, 등변사다리꼴 $ABDC$의 높이 $h$와 넓이 공식을 확인하시오.',
+textbookTitle: '평행선 사이의 거리와 사다리꼴의 넓이 공식',
+textbookSteps: [
+'1) 두 평행선 $x + y - 4 = 0$과 $x + y - 6 = 0$ 사이의 거리(높이)는 $h = \\frac{|6 - 4|}{\\sqrt{1^2 + 1^2}} = \\sqrt{2}$이다.',
+'2) 윗변 $\\overline{AB} = \\Delta x_1 \\sqrt{2}$, 아랫변 $\\overline{CD} = \\Delta x_2 \\sqrt{2}$이다.',
+'3) 사다리꼴의 넓이는 $\\frac{1}{2}(\\Delta x_1\\sqrt{2} + \\Delta x_2\\sqrt{2})\\times \\sqrt{2} = \\Delta x_1 + \\Delta x_2$이다.'
+],
+secretTitle: '√2가 약분되어 사다리꼴의 넓이 = ½ × |k₂ − k₁| × (Δx₁ + Δx₂)',
+secretSteps: [
+'윗변과 아랫변에 곱해진 $\\sqrt{2}$와 높이의 분모 $\\sqrt{2}$가 약분됩니다.',
+'따라서 사다리꼴의 넓이는 **$\\frac{1}{2}|k_2 - k_1|(\\Delta x_1 + \\Delta x_2)$**입니다.'
+]
+},
+{
+chip: '문제 B (k₁=3.5, k₂=6.5일 때)',
+source: '서로 역함수인 두 곡선과 기울기가 −1인 직선',
+params: { k1: 3.5, k2: 6.5 },
+snapParams: { k1: 3.5, k2: 6.5 },
+problem: '두 직선 $y = -x + 3.5$와 $y = -x + 6.5$ 사이의 거리 $h$를 구하고, 대칭축 $y=x$가 사다리꼴의 두 밑변을 수직이등분함을 그림에서 확인하시오.',
+textbookTitle: '두 직선 사이의 거리 구하기',
+textbookSteps: [
+'1) $|k_2 - k_1| = 3$이므로 사다리꼴의 높이는 $h = \\frac{3}{\\sqrt{2}} = \\frac{3\\sqrt{2}}{2}$이다.'
+],
+secretTitle: '직선 y = x는 등변사다리꼴의 대칭축',
+secretSteps: [
+'그림에서 대칭축 $y=x$가 두 밑변 $\\overline{AB}, \\overline{CD}$를 수직이등분하는 직각 기호를 확인해 보세요.'
+]
+}
+]
+},
+{
+id: 'type7',
+code: '유형 7',
+shortTitle: '지수함수·로그함수와 원 x²+y²=r² 킬러',
+icon: 'fa-circle-dot',
+stepLabels: ['원 x²+y²=r²의 y=x에 대한 대칭', '교점 P, Q와 기울기가 −1인 현', 'x₁² + y₁² = r²'],
+stepDescs: [
+'1단계: 중심이 원점인 원 $x^2 + y^2 = r^2$도 **직선 $y = x$에 대하여 대칭**입니다.',
+'2단계: 따라서 원이 서로 역함수인 $y = a^x, y = \\log_a x$와 만나는 대칭인 두 교점 $P(x_1, y_1), Q(y_1, x_1)$을 이은 현 $\\overline{PQ}$의 기울기는 항상 **$-1$**입니다.',
+'3단계: $y_1 - x_1$의 값($\\overline{PQ}$의 길이 조건)과 $x_1^2 + y_1^2 = r^2$(원 위의 점의 조건)을 곱셈 공식 $(x_1+y_1)^2 = r^2 + 2x_1 y_1$ 등으로 결합하여 좌표를 구합니다.'
+],
+trapWarning: '주의: 원 $x^2 + y^2 = r^2$과 지수·로그함수의 교점이 주어질 때, 교점을 원의 방정식에 대입한 식($x_1^2 + y_1^2 = r^2$)을 빠뜨리면 식이 하나 부족하여 풀 수 없습니다.',
+scenarios: [
+{
+chip: '문제 A (원 x²+y²=10과 지수·로그함수의 교점 킬러)',
+source: '지수함수·로그함수와 원',
+params: { radiusR: Math.sqrt(10), baseA: 3 },
+snapParams: { radiusR: Math.sqrt(10), baseA: 3 },
+problem: '원 $x^2 + y^2 = 10$이 두 곡선 $y = a^x, y = \\log_a x$ ($a > 1$)와 제1사분면에서 만나는 점 중 $y = x$에 대칭인 두 점을 $P, Q$라 하자. $\\overline{PQ} = 2\\sqrt{2}$일 때, 점 $P$의 좌표와 상수 $a$의 값을 구하시오.',
+textbookTitle: 'P(α, β), Q(β, α)로 놓고 연립하여 풀기',
+textbookSteps: [
+'1) $P(\\alpha, \\beta), Q(\\beta, \\alpha)$ ($0 < \\alpha < \\beta$)라 하면 $\\overline{PQ} = \\sqrt{2}(\\beta - \\alpha) = 2\\sqrt{2} \\implies \\beta - \\alpha = 2$.',
+'2) 점 $P$가 원 $x^2 + y^2 = 10$ 위의 점이므로 $\\alpha^2 + \\beta^2 = 10$이다.',
+'3) $\\alpha^2 + (\\alpha+2)^2 = 10 \\implies 2\\alpha^2 + 4\\alpha - 6 = 0 \\implies \\alpha = 1, \\beta = 3$. 따라서 $P(1, 3)$을 $y = a^x$에 대입하면 $a^1 = 3 \\implies a = 3$이다.'
+],
+secretTitle: 'x² + y² = 10이고 y − x = 2인 양의 정수 찾기 (1² + 3² = 10, 3 − 1 = 2)',
+secretSteps: [
+'제곱의 합이 $10$이고 차가 $2$인 두 양수는 **$1$과 $3$ ($1^2 + 3^2 = 10$)**입니다.',
+'따라서 $P(1, 3), Q(3, 1)$이고, $P$가 $y = a^x$ 위의 점이므로 $a^1 = 3 \\implies a = 3$입니다.'
+]
+},
+{
+chip: '문제 B (원 x²+y²=17과 P(1, 4))',
+source: '지수함수·로그함수와 원',
+params: { radiusR: Math.sqrt(17), baseA: 4 },
+snapParams: { radiusR: Math.sqrt(17), baseA: 4 },
+problem: '원 $x^2 + y^2 = 17$과 $y = a^x, y = \\log_a x$의 대칭인 교점 $P, Q$ 사이의 거리가 $\\overline{PQ} = 3\\sqrt{2}$일 때, 상수 $a$의 값을 구하시오.',
+textbookTitle: 'β−α=3과 α²+β²=17을 연립하여 풀기',
+textbookSteps: [
+'1) $\\beta - \\alpha = 3$이고 $\\alpha^2 + \\beta^2 = 17 = 1^2 + 4^2$이므로 $P(1, 4)$이다.',
+'2) 따라서 $a^1 = 4 \\implies a = 4$이다.'
+],
+secretTitle: '17 = 1² + 4²이고 차가 4 − 1 = 3이므로 P(1, 4), a = 4',
+secretSteps: [
+'교점의 좌표가 정수일 때에는 $r^2$이 두 제곱수의 합입니다. 예를 들어 $r^2 = 5\\,(1^2+2^2),\\ 10\\,(1^2+3^2),\\ 13\\,(2^2+3^2),\\ 17\\,(1^2+4^2),\\ 20\\,(2^2+4^2)$ 등이 있습니다.'
+]
+}
+]
+},
+{
+id: 'type8',
+code: '유형 8',
+shortTitle: '로그함수 아래의 격자점 (가로줄로 세기)',
+icon: 'fa-table-cells',
+stepLabels: ['자연수 격자점 표시', '세로줄(x=n)마다 세어 더하기', '가로줄(y=m → x ≥ 2ᵐ)마다 세어 더하기'],
+stepDescs: [
+'1단계: 완만하게 증가하는 로그함수 $y = \\log_2 x$의 그래프 아래 영역($1 \\le x \\le K, 1 \\le y \\le \\log_2 x$)의 자연수 격자점 $(x, y)$를 표시합니다.',
+'2단계: 세로줄($x = 1, 2, \\dots, K$)마다 세면 항이 너무 많지만, **가로줄($y = 1, 2, 3$)마다 세면** $y \\le \\log_2 x \\iff x \\ge 2^y$이므로 3~4개의 덧셈으로 끝납니다.',
+'3단계: 세로줄로 센 합과 가로줄로 센 합이 같음을 그림에서 확인합니다.'
+],
+trapWarning: '주의: 지수함수의 그래프 아래의 격자점은 **세로줄($x=n$)**마다, 로그함수의 그래프 아래의 격자점은 **가로줄($y=m$, 즉 $x \\ge a^m$)**마다 세면 편리합니다.',
+scenarios: [
+{
+chip: '문제 A (로그함수 아래의 격자점을 가로줄로 세기)',
+source: '로그함수의 그래프와 격자점의 개수',
+params: { maxX: 9 },
+snapParams: { maxX: 9 },
+problem: '$1 \\le x \\le 9$이고 $1 \\le y \\le \\log_2 x$를 만족시키는 자연수 순서쌍 $(x, y)$의 총개수를 **가로줄($y = 1, 2, 3$)마다 세어** 구하시오.',
+textbookTitle: 'x=1부터 x=9까지 차례로 대입하여 세기',
+textbookSteps: [
+'1) $x=1$: $0$개 / $x=2, 3$: 각 $1$개 ($2$개).',
+'2) $x=4, 5, 6, 7$: 각 $2$개 ($8$개).',
+'3) $x=8, 9$: 각 $3$개 ($6$개). 총합은 $0 + 2 + 8 + 6 = 16$개.'
+],
+secretTitle: '가로줄 y=m마다 세기 (log₂x ≥ m ⟺ x ≥ 2ᵐ)',
+secretSteps: [
+'부등식 $y \\le \\log_2 x$를 **$x \\ge 2^y$**으로 바꾸어 가로줄마다 셉니다.',
+'$y=1$ 위($2 \\le x \\le 9$): **$8$개**, $y=2$ 위($4 \\le x \\le 9$): **$6$개**, $y=3$ 위($8 \\le x \\le 9$): **$2$개**이므로 $8 + 6 + 2 = 16$개입니다. $x$의 범위가 더 커져도 가로줄은 몇 개 되지 않아 쉽게 셀 수 있습니다.'
+]
+},
+{
+chip: '문제 B (x의 최댓값이 12일 때 가로줄 3개의 합)',
+source: '로그함수의 그래프와 격자점의 개수',
+params: { maxX: 11 },
+snapParams: { maxX: 12 },
+problem: '$1 \\le x \\le 12,\\; 1 \\le y \\le \\log_2 x$를 만족시키는 자연수 격자점의 개수를 가로줄 공식 $(12 - 2^1 + 1) + (12 - 2^2 + 1) + (12 - 2^3 + 1)$로 구하시오.',
+textbookTitle: '가로줄별 개수의 합',
+textbookSteps: [
+'1) $y=1$ 위: $12 - 2 + 1 = 11$개.',
+'2) $y=2$ 위: $12 - 4 + 1 = 9$개.',
+'3) $y=3$ 위: $12 - 8 + 1 = 5$개. 총합은 $11 + 9 + 5 = 25$개이다.'
+],
+secretTitle: '가로줄 y=m 위의 점의 개수 = K − 2ᵐ + 1',
+secretSteps: [
+'$11 + 9 + 5 = 25$개입니다. 그림의 분홍색 가로 막대를 확인해 보세요.'
+]
+}
+]
+}
+];
+
+  const rich = (t) => APLab.stripEmoji(String(t == null ? '' : t).replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>').replace(/➔/g, '→')).replace(/\[\s+/g, '[');
+  const SHORT = ['세로 간격과 넓이', '진수 조건 함정', '교점의 곱과 중점', '역함수의 대칭과 직각이등변삼각형', '평행이동한 함수의 대칭축', '기울기가 ±1인 사다리꼴', '지수·로그함수와 원', '로그함수 아래의 격자점'];
+  const Q = [
+    '진수에 k를 곱한 두 로그 곡선을 어디서 세로로 잘라도 선분의 길이가 같다면, 둘러싸인 넓이는 어떻게 구할까?',
+    'log₂(x²)과 2log₂x는 같은 그래프일까? 직선과 만나는 점의 개수는 어떻게 달라질까?',
+    '|log₂(x−p)| = t 의 두 교점은 어떤 관계이고, 중점은 꺾인 점의 어느 쪽에 놓일까?',
+    '역함수 관계인 y = 2ˣ, y = log₂x 를 기울기 −1인 직선으로 자르면 교점 A, B와 중점 M은 어떤 관계일까?',
+    '평행이동한 지수함수·로그함수의 그래프의 대칭축 y = x + C는 각 곡선 위의 점 두 개의 중점으로 어떻게 찾을까?',
+    '기울기 −1인 두 평행선이 역함수 쌍과 만나는 네 점이 만드는 사다리꼴의 넓이는 왜 루트 없이 나올까?',
+    '원 x² + y² = r² 과 지수·로그 곡선이 y = x 에 대칭인 두 점 P, Q에서 만나면 좌표는 어떻게 정해질까?',
+    '로그함수의 그래프 아래의 자연수 격자점을 세로줄 대신 가로줄(y = 1, 2, 3, …)로 세면 왜 빨라질까?'
+  ];
+  const GUIDE = [
+    '금색 점 B를 좌우로 끌어 왼쪽 수직선을, 분홍 점 D로 오른쪽 수직선을 옮겨 보세요. 세로 선분 AB는 길이가 변하지 않습니다.',
+    '금색 점으로 직선의 y절편 k를 움직이고, 조절 막대로 기울기와 ‘왼쪽 부분’ 표시를 바꿔 보세요. 교점의 개수가 달라집니다.',
+    '금색 점 x₂를 위아래로 끌어 수평선 높이 t를 바꿔 보세요. 두 교점의 거리의 곱은 늘 1입니다.',
+    '금색 점 M을 끌어 직선 y = −x + k 를 움직여 보세요. 교점 A, B의 중점 M은 항상 y = x 위에 있습니다.',
+    '금색 점 M을 끌어 직선 y = −x + k 를 움직이고, 조절 막대로 m을 바꿔 보세요. 두 점의 중점이 보라색 대칭축 위에 놓입니다.',
+    '금색 점 M₂를 끌어 둘째 직선의 절편 k₂를 바꿔 보세요. 두 평행선 사이의 높이와 사다리꼴의 넓이가 함께 변합니다.',
+    '금색 점 P를 끌어 원의 반지름 r을 바꿔 보세요. 교점 P와 Q는 직선 y = x 에 대칭입니다.',
+    '금색 점 K를 좌우로 끌어 x의 최댓값을 바꿔 보세요. 단계를 올리면 가로줄 막대가 나타납니다.'
+  ];
+  const FOCUS = [
+    { x: [-1.6, 9.8], y: [-3.4, 6.8] },
+    { x: [-9, 9], y: [-5, 6.5] },
+    { x: [-3, 10], y: [-3.5, 5] },
+    { x: [-2.5, 9], y: [-2.5, 9] },
+    { x: [-3, 10], y: [-3, 9] },
+    { x: [-2, 9], y: [-2.5, 9] },
+    { x: [-6.2, 7.5], y: [-6.2, 7.5] },
+    { x: [-1.5, 17], y: [-1.5, 5] }
+  ];
+
+  /* 모드마다 조절값 이름표(접두어): s['type4_lineK'] 로 저장하고, 그리기·수식 코드는 p.lineK 로 읽습니다(원본 state.params 와 같은 모양) */
+  const pv = (s, mo) => new Proxy({}, { get: (_, k) => s[mo.id + '_' + k], set: (_, k, v) => { s[mo.id + '_' + k] = v; return true; } });
+  const tie = (p) => { p.logP = p.expN + p.expM - p.logQ; }; // [2.0 수정] LOG 05: 대칭이 성립하는 조건 n − p = q − m
+
+  /* ===== 원본 그대로: 조절 막대 정의 (원본 buildSlidersForCurrentMode) ===== */
+  const SLIDERS = {};
+  (function () {
+    let defs = [];
+    SLIDERS.type1 = [
+{ key: 'multK', label: '진수에 곱한 수 k (log₂(kx) = log₂x + log₂k)', min: 2, max: 8, step: 0.5 },
+{ key: 'xCut1', label: '왼쪽 수직선 x = t₁', min: 1.0, max: 3.5, step: 0.25 },
+{ key: 'xCut2', label: '오른쪽 수직선 x = t₂', min: 3.5, max: 7.0, step: 0.25 }
+];
+    SLIDERS.type2 = [
+{ key: 'showLeftWing', label: '왼쪽 부분 x < 0 표시 (0: 2log₂x, 1: log₂x²)', min: 0, max: 1, step: 1 },
+{ key: 'lineSlope', label: '직선 기울기 m (y = mx + k)', min: -0.4, max: 0.5, step: 0.05 },
+{ key: 'lineYInt', label: '직선 y절편 k', min: 0.5, max: 3.5, step: 0.25 }
+];
+    SLIDERS.type3 = [
+{ key: 'shiftP', label: 'x축의 방향으로의 평행이동 p (점근선 x = p)', min: 0, max: 3, step: 0.5 },
+{ key: 'lineT', label: '수평선 높이 y = t', min: 0.4, max: 2.8, step: 0.1 }
+];
+    SLIDERS.type4 = [
+{ key: 'lineK', label: '직선 y = -x + k 절편 (k)', min: 3.0, max: 7.5, step: 0.25 },
+{ key: 'baseA', label: '지수함수·로그함수의 밑 a', min: 1.8, max: 3.5, step: 0.1 }
+];
+    SLIDERS.type5 = [
+{ key: 'expM', label: '지수함수의 x축 방향 평행이동 m', min: -1, max: 3, step: 0.5 },
+{ key: 'logP', label: '로그함수의 x축 방향 평행이동 p', min: 1, max: 5, step: 0.5 },
+{ key: 'lineK', label: '직선 y = −x + k', min: 4, max: 8, step: 0.5 }
+];
+    SLIDERS.type6 = [
+{ key: 'k1', label: '첫째 직선 y = -x + k₁', min: 3.0, max: 4.8, step: 0.25 },
+{ key: 'k2', label: '둘째 직선 y = -x + k₂', min: 5.0, max: 7.2, step: 0.25 }
+];
+    SLIDERS.type7 = [
+{ key: 'radiusR', label: '원의 반지름 r (x²+y²=r²)', min: 2.2, max: 5.0, step: 0.1 },
+{ key: 'baseA', label: '지수함수·로그함수의 밑 a', min: 2.0, max: 4.5, step: 0.25 }
+];
+    SLIDERS.type8 = [
+{ key: 'maxX', label: '자연수 x의 최댓값 K', min: 4, max: 13, step: 1 }
+];
+  })();
+
+  // Helper: Solve a^(x-m)+n = -x + k using Newton's method
+function solveExpLine(baseA, m, n, k) {
+let x = (k + m - n) / 2;
+for (let i = 0; i < 25; i++) {
+const f = Math.pow(baseA, x - m) + n + x - k;
+const df = Math.pow(baseA, x - m) * Math.log(baseA) + 1;
+x -= f / df;
+}
+return x;
+}
+
+// Helper: Solve a^x on circle x^2 + y^2 = r^2 in Quadrant 1 (x < y)
+function solveExpCircle(baseA, r) {
+let x = 1.0;
+for (let i = 0; i < 28; i++) {
+const y = Math.pow(baseA, x);
+const dy = y * Math.log(baseA);
+const f = x * x + y * y - r * r;
+const df = 2 * x + 2 * y * dy;
+if (Math.abs(df) < 1e-6) break;
+x -= f / df;
+}
+return x;
+}
+
+
+
+  /* ===== 원본 그대로: 수식 줄·실시간 값 (원본 updateLiveHUDAndInvariants) ===== */
+  function hudOf(mId, p) {
+    let cards = [];
+    let eq = '';
+    
+
+if (mId === 'type1') {
+const dy = Math.log2(p.multK);
+const dx = p.xCut2 - p.xCut1;
+const areaS = dx * dy;
+eq = (
+`$\\log_2(${p.multK.toFixed(1)}x) - \\log_2 x = \\log_2 ${p.multK.toFixed(1)} = ${dy.toFixed(3)}, \\quad S = ${dx.toFixed(2)}\\times ${dy.toFixed(2)} = ${areaS.toFixed(2)}$`
+);
+cards = [
+{ title: '세로 선분 길이 AB', val: dy.toFixed(3), sub: `log₂(${p.multK.toFixed(1)})로 일정` },
+{ title: '두 위치에서 세로 선분 길이의 차', val: '0.000', sub: `x=${p.xCut1}과 x=${p.xCut2}에서 같음` },
+{ title: '직사각형으로 바꾼 넓이 S', val: areaS.toFixed(3), sub: `가로(${dx.toFixed(2)}) × 세로(${dy.toFixed(2)})` },
+{ title: '평행이동으로 나타내기', val: `y축 +${dy.toFixed(2)}`, sub: '진수의 곱셈 → y축 방향의 덧셈' }
+];
+} else if (mId === 'type2') {
+const isBoth = Math.round(p.showLeftWing) === 1;
+eq = (
+isBoth
+? `$y = \\log_2(x^2) = 2\\log_2|x| \\;(x \\neq 0, \\text{ 양쪽 부분}) \\cap (y = ${p.lineSlope.toFixed(2)}x + ${p.lineYInt.toFixed(1)})$`
+: `$y = 2\\log_2 x \\;(x > 0, \\text{ 오른쪽 부분만}) \\cap (y = ${p.lineSlope.toFixed(2)}x + ${p.lineYInt.toFixed(1)})$`
+);
+cards = [
+{ title: '정의역 (진수 조건)', val: isBoth ? 'x ≠ 0 (양쪽 모두)' : 'x > 0 (오른쪽만)', sub: isBoth ? 'x² > 0이므로 x가 음수여도 됨' : 'x가 음수이면 안 됨' },
+{ title: '수평선 y=k와 교점 개수', val: isBoth ? '2개 (±대칭)' : '1개 (양수만)', sub: isBoth ? '두 실근의 합 = 0.000' : '음수인 실근을 놓치지 않도록 주의' },
+{ title: '수평선과의 두 교점의 x좌표의 합', val: isBoth ? '0.000' : `+${Math.pow(2, p.lineYInt/2).toFixed(2)}`, sub: '두 근이 y축에 대하여 대칭' },
+{ title: '수평선과의 두 교점의 x좌표의 곱', val: isBoth ? `-${Math.pow(2, p.lineYInt).toFixed(2)}` : '단일근', sub: `-2^k = -(2^(k/2))²` }
+];
+} else if (mId === 'type3') {
+const d1 = Math.pow(2, -p.lineT);
+const d2 = Math.pow(2, p.lineT);
+const x1 = p.shiftP + d1;
+const x2 = p.shiftP + d2;
+const midM = (x1 + x2) / 2;
+const vertexX = p.shiftP + 1;
+eq = (
+`$y = |\\log_2(x - ${p.shiftP})| \\cap (y = ${p.lineT.toFixed(1)}) \\implies (x_1-${p.shiftP})(x_2-${p.shiftP}) = 1.000, \\; M = ${midM.toFixed(3)} > ${vertexX}$`
+);
+cards = [
+{ title: '점근선까지의 거리의 곱 (x₁−p)(x₂−p)', val: (d1 * d2).toFixed(4), sub: '항상 1 (서로 역수)' },
+{ title: '두 교점의 중점 M', val: midM.toFixed(3), sub: `꺾인 점 ${vertexX}보다 ${(midM-vertexX).toFixed(3)} 오른쪽` },
+{ title: '왼쪽·오른쪽 교점 (x₁, x₂)', val: `${x1.toFixed(2)}, ${x2.toFixed(2)}`, sub: `차 x₂ - x₁ = ${(x2-x1).toFixed(2)}` },
+{ title: '산술평균과 기하평균의 관계', val: `${(d1+d2).toFixed(2)} > 2.00`, sub: 't > 0이면 항상 성립' }
+];
+} else if (mId === 'type4') {
+const xA = solveExpLine(p.baseA, 0, 0, p.lineK);
+const yA = p.lineK - xA;
+const xB = yA, yB = xA;
+const dx = Math.abs(xB - xA);
+const lenAB = Math.hypot(xB - xA, yB - yA);
+const areaOAB = 0.5 * p.lineK * dx;
+
+eq = (
+`$y = ${p.baseA.toFixed(1)}^x, \\; y = \\log_{${p.baseA.toFixed(1)}} x \\cap (y = -x + ${p.lineK.toFixed(2)}) \\implies M\\left(${(p.lineK/2).toFixed(2)}, ${(p.lineK/2).toFixed(2)}\\right)$`
+);
+cards = [
+{ title: '선분 길이 AB (= Δx·√2)', val: lenAB.toFixed(3), sub: `가로차 Δx = ${dx.toFixed(3)}` },
+{ title: '대칭 중점 M 좌표', val: `(${(p.lineK/2).toFixed(2)}, ${(p.lineK/2).toFixed(2)})`, sub: 'x_A + x_B = k' },
+{ title: '삼각형 OAB 넓이', val: areaOAB.toFixed(3), sub: '½ · k · Δx와 같음' },
+{ title: '비 AB ÷ (√2·Δx)', val: '1.0000', sub: '항상 1' }
+];
+} else if (mId === 'type5') {
+// Exp fixed point P1(m, n+1), Log fixed point P2(p+1, q)
+const P1 = { x: p.expM, y: p.expN + 1 };
+const P2 = { x: p.logP + 1, y: p.logQ };
+const mid0 = { x: 0.5 * (P1.x + P2.x), y: 0.5 * (P1.y + P2.y) };
+const shiftC = mid0.y - mid0.x; // Symmetry line y = x + shiftC
+// Intersection of y = x + shiftC and y = -x + lineK
+const Mx = 0.5 * (p.lineK - shiftC);
+const My = 0.5 * (p.lineK + shiftC);
+
+eq = (
+`$\\text{점 } P_1(${P1.x}, ${P1.y}), P_2(${P2.x}, ${P2.y}) \\implies \\text{대칭축 } y = x ${shiftC >= 0 ? '+ '+shiftC.toFixed(1) : '- '+Math.abs(shiftC).toFixed(1)}, \\; M(${Mx.toFixed(1)}, ${My.toFixed(1)})$`
+);
+cards = [
+{ title: '대칭축의 방정식', val: `y = x ${shiftC >= 0 ? '+' : ''}${shiftC.toFixed(2)}`, sub: `두 점의 중점 (${mid0.x.toFixed(1)}, ${mid0.y.toFixed(1)})을 지남` },
+{ title: '두 교점의 중점 M 좌표', val: `(${Mx.toFixed(2)}, ${My.toFixed(2)})`, sub: '대칭축과 직선 y = −x + k의 교점' },
+{ title: '중점 M이 대칭축 위에 있는지 (y_M − x_M − C)', val: '0.000', sub: 'y_M − x_M = C' },
+{ title: '두 교점 x좌표 합 (x_A+x_B)', val: (2 * Mx).toFixed(2), sub: 'x_A + x_B = k − C' }
+];
+} else if (mId === 'type6') {
+const xA1 = solveExpLine(2, 0, 0, p.k1);
+const xA2 = solveExpLine(2, 0, 0, p.k2);
+const dx1 = Math.abs(p.k1 - 2 * xA1);
+const dx2 = Math.abs(p.k2 - 2 * xA2);
+const hDist = Math.abs(p.k2 - p.k1) / Math.SQRT2;
+const areaTrap = 0.5 * Math.abs(p.k2 - p.k1) * (dx1 + dx2);
+
+eq = (
+`$y=-x+${p.k1.toFixed(1)}, \\; y=-x+${p.k2.toFixed(1)} \\implies h = \\frac{${Math.abs(p.k2-p.k1).toFixed(1)}}{\\sqrt{2}}, \\; S = ${areaTrap.toFixed(2)}$`
+);
+cards = [
+{ title: '등변사다리꼴 넓이 S', val: areaTrap.toFixed(3), sub: '½·|k₂-k₁|·(Δx₁+Δx₂)' },
+{ title: '두 평행선 사이 높이 h', val: hDist.toFixed(3), sub: `|k₂ - k₁| / √2` },
+{ title: '윗변 AB / 아랫변 CD', val: `${(dx1*Math.SQRT2).toFixed(2)}, ${(dx2*Math.SQRT2).toFixed(2)}`, sub: '√2가 약분되는 구조' },
+{ title: '두 직선이 이루는 각', val: '90.00°', sub: '기울기의 곱 (+1) × (−1) = −1' }
+];
+} else if (mId === 'type7') {
+const xP = solveExpCircle(p.baseA, p.radiusR);
+const yP = Math.pow(p.baseA, xP);
+const distPQ = Math.SQRT2 * Math.abs(yP - xP);
+const rSq = p.radiusR * p.radiusR;
+
+eq = (
+`$x^2 + y^2 = ${rSq.toFixed(1)} \\cap (y=${p.baseA.toFixed(1)}^x, y=\\log_{${p.baseA.toFixed(1)}} x) \\implies P(${xP.toFixed(2)}, ${yP.toFixed(2)}), \\; \\overline{PQ}=${distPQ.toFixed(2)}$`
+);
+cards = [
+{ title: '원 위의 교점 P(x₁, y₁)', val: `(${xP.toFixed(2)}, ${yP.toFixed(2)})`, sub: `대칭점 Q(${yP.toFixed(2)}, ${xP.toFixed(2)})` },
+{ title: 'x₁² + y₁²의 값', val: (xP*xP + yP*yP).toFixed(2), sub: `r² = ${rSq.toFixed(2)}` },
+{ title: '대칭 현의 길이 PQ', val: distPQ.toFixed(3), sub: `(y₁ - x₁)√2 = ${(yP-xP).toFixed(2)}√2` },
+{ title: '현 PQ의 기울기', val: '-1.000', sub: '원과 역함수 모두 y = x에 대하여 대칭' }
+];
+} else if (mId === 'type8') {
+const K = Math.round(p.maxX);
+let vertSum = 0;
+for (let x = 1; x <= K; x++) vertSum += Math.max(0, Math.floor(Math.log2(x) + 1e-9));
+let horizSum = 0;
+const layers = [];
+for (let y = 1; Math.pow(2, y) <= K; y++) {
+const cnt = K - Math.pow(2, y) + 1;
+horizSum += cnt;
+layers.push(`${cnt}`);
+}
+
+eq = (
+`$1 \\le x \\le ${K}, \\; 1 \\le y \\le \\log_2 x \\iff 2^y \\le x \\le ${K} \\implies \\text{가로 합 } ${layers.join('+')} = ${horizSum}\\text{개}$`
+);
+cards = [
+{ title: `총 자연수 격자점 (K=${K})`, val: `${horizSum}개`, sub: `가로줄별 개수의 합: ${layers.join(' + ')}` },
+{ title: '세로줄로 센 합과 가로줄로 센 합', val: '같음', sub: `${vertSum}개 = ${horizSum}개` },
+{ title: 'y의 최댓값', val: `${layers.length}`, sub: `log₂${K} 이하의 가장 큰 정수 = ${layers.length}` },
+{ title: 'y=1 위의 점의 개수 (K - 2¹ + 1)', val: `${K - 1}개`, sub: `x = 2 ~ ${K} 구간` }
+];
+}
+
+
+    return { eq, cards };
+  }
+
+  /* ===== 원본 그대로: 쌍둥이 변형 생성기 (원본 triggerTwinProblem) — scen.problem·snapParams 를 바꿉니다 ===== */
+  function runTwin(mId, scen, p) {
+    if (mId === 'type1') {
+const kVal = [2, 4, 8, 16][Math.floor(Math.random() * 4)];
+const x1 = [1, 2][Math.floor(Math.random() * 2)];
+const x2 = [4, 5, 6][Math.floor(Math.random() * 3)];
+const dy = Math.log2(kVal);
+p.multK = kVal;
+p.xCut1 = x1;
+p.xCut2 = x2;
+scen.snapParams = { ...p };
+scen.problem = `**[숫자를 바꾼 문제]** $y = \\log_2 x$와 $y = \\log_2(${kVal}x)$의 세로 간격은 일정하며 **$\\overline{AB} = \\log_2 ${kVal} = ${dy}$**이고, $x = ${x1}, x = ${x2}$로 둘러싸인 부분의 넓이는 직사각형의 넓이와 같아 **$(${x2}-${x1}) \\times ${dy} = ${(x2-x1)*dy}$**입니다.`;
+} else if (mId === 'type2') {
+const yInt = [1, 2, 3][Math.floor(Math.random() * 3)];
+p.showLeftWing = 1;
+p.lineSlope = 0;
+p.lineYInt = yInt;
+scen.snapParams = { ...p };
+const rx = Math.pow(2, yInt / 2).toFixed(2);
+scen.problem = `**[숫자를 바꾼 문제]** 방정식 $\\log_2 x^2 = ${yInt}$은 $y$축에 대하여 대칭이므로 $x = \\pm ${rx}$ **2개의 실근**을 가지며 합은 $0$, 곱은 $-${Math.pow(2, yInt)}$입니다.`;
+} else if (mId === 'type3') {
+const pVal = [0, 1, 2, 3][Math.floor(Math.random() * 4)];
+const tVal = [1, 2, 3][Math.floor(Math.random() * 3)];
+p.shiftP = pVal;
+p.lineT = tVal;
+scen.snapParams = { ...p };
+const x1 = pVal + Math.pow(2, -tVal);
+const x2 = pVal + Math.pow(2, tVal);
+scen.problem = `**[숫자를 바꾼 문제]** $y = |\\log_2(x - ${pVal})| = ${tVal}$의 두 교점 $x_1 = ${x1}, x_2 = ${x2}$에 대하여 **$(x_1 - ${pVal})(x_2 - ${pVal}) = 1$**이고, 중점의 $x$좌표는 $M = ${((x1+x2)/2).toFixed(2)} > ${pVal+1}$입니다.`;
+} else if (mId === 'type4') {
+const kVal = [4, 5, 6, 7][Math.floor(Math.random() * 4)];
+p.lineK = kVal;
+scen.snapParams = { ...p };
+scen.problem = `**[숫자를 바꾼 문제]** 직선 $y = -x + ${kVal}$과 $y=2^x, y=\\log_2 x$의 두 교점의 중점은 **$M(${kVal/2}, ${kVal/2})$**이고, 두 교점의 $x$좌표의 합과 $y$좌표의 합은 모두 **$${kVal}$**입니다.`;
+} else if (mId === 'type5') {
+const pairs = [
+{ m: 1, n: 2, p: 4, q: -1 },
+{ m: 0, n: 3, p: 1, q: 2 },
+{ m: 2, n: 1, p: 3, q: 0 }
+];
+const pick = pairs[Math.floor(Math.random() * pairs.length)];
+p.expM = pick.m;
+p.expN = pick.n;
+p.logP = pick.p;
+p.logQ = pick.q;
+scen.snapParams = { ...p };
+const cShift = ((pick.n - pick.m) + (pick.q - pick.p)) / 2;
+scen.problem = `**[숫자를 바꾼 문제]** 지수함수 위의 점 $(${pick.m}, ${pick.n+1})$과 로그함수 위의 점 $(${pick.p+1}, ${pick.q})$의 중점을 이용하여 두 곡선의 대칭축을 구하면 **$y = x ${cShift >= 0 ? '+ ' + cShift : '- ' + Math.abs(cShift)}$**입니다.`;
+} else if (mId === 'type6') {
+const k1 = [3.5, 4.0][Math.floor(Math.random() * 2)];
+const k2 = [5.5, 6.5][Math.floor(Math.random() * 2)];
+p.k1 = k1;
+p.k2 = k2;
+scen.snapParams = { ...p };
+scen.problem = `**[숫자를 바꾼 문제]** 두 평행선 $y = -x + ${k1},\\; y = -x + ${k2}$ 사이의 거리는 $h = \\frac{${(k2-k1).toFixed(1)}}{\\sqrt{2}}$이며, 사다리꼴의 넓이를 구할 때 $\\sqrt{2}$가 약분됩니다.`;
+} else if (mId === 'type7') {
+const bList = [2, 3, 4];
+const b = bList[Math.floor(Math.random() * bList.length)];
+const rSq = 1 + b * b;
+p.baseA = b;
+p.radiusR = Math.sqrt(rSq);
+scen.snapParams = { ...p };
+scen.problem = `**[숫자를 바꾼 문제]** 원 $x^2 + y^2 = ${rSq}$ ($= 1^2 + ${b}^2$)과 $y = a^x, y = \\log_a x$의 교점 사이의 거리가 $\\overline{PQ} = ${(b-1)}\\sqrt{2}$일 때, 제곱의 합이 ${rSq}이고 차가 ${b-1}인 두 양의 정수는 $1, ${b}$이므로 $P(1, ${b})$이고 **$a = ${b}$**입니다.`;
+} else if (mId === 'type8') {
+const mx = [7, 8, 9, 10, 12][Math.floor(Math.random() * 5)];
+p.maxX = mx;
+scen.snapParams = { ...p };
+let cnt = 0;
+for (let y = 1; Math.pow(2, y) <= mx; y++) cnt += (mx - Math.pow(2, y) + 1);
+scen.problem = `**[숫자를 바꾼 문제]** $1 \\le x \\le ${mx},\\; 1 \\le y \\le \\log_2 x$의 자연수 격자점의 개수는 가로줄마다 센 결과 총 **${cnt}개**입니다.`;
+}
+
+
+  }
+
+  /* ===== 원본 drawMathSegment / drawFunctionCurve / drawMathPoint 와 같은 이름·같은 인자 → 새 무대 엔진 ===== */
+  function shim(b, s, sink) {
+    let hid = 0;
+    return {
+      drawMathSegment: (x1, y1, x2, y2, col = '#fbbf24', dash = [], w = 2.2) => b.seg([x1, y1], [x2, y2], { color: col, width: w, dash: dash.length ? dash : null }),
+      drawFunctionCurve: (fn, col = '#34d399', w = 2.6, dash = [], x0 = -9, x1 = 14) =>
+        b.plot((x) => { let y = fn(x); if (s.abs && !isNaN(y)) y = Math.abs(y); return Number.isFinite(y) && Math.abs(y) <= 60 ? y : NaN; }, { color: col, width: w, dash: dash.length ? dash : null, from: x0, to: x1 }),
+      drawMathLine: (slope, icpt, col = '#fbbf24', dash = [], w = 2) => b.line([0, icpt], slope, { color: col, width: w, dash: dash.length ? dash : null }),
+      drawMathCircle: (cx, cy, r, col = '#38bdf8', dash = [], w = 2.2) => b.circle([cx, cy], r, { color: col, width: w, dash: dash.length ? dash : null }),
+      drawMathPoint: (x, y, lbl = '', col = '#fbbf24', rad = 6, drag = false, onDrag = null) => {
+        if (drag) b.handle('h' + (hid++), [x, y], { color: col, r: rad, label: lbl, drag: onDrag });
+        else b.point([x, y], { color: col, r: rad, label: lbl });
+      },
+      badge: (text, color = '#fbbf24') => sink.lines.push({ text, color })
+    };
+  }
+
+  function draw(mo, b, s, v) {
+    const p = pv(s, mo);
+    const sink = { lines: [], tape: null };
+    const { drawMathSegment, drawFunctionCurve, drawMathLine, drawMathCircle, drawMathPoint, badge } = shim(b, s, sink);
+    const st = (n) => s.step >= n; // 원본 state.steps[n] 에 해당 (셸의 단계는 누적)
+    if (s.grid) b.grid();
+    b.axes();
+    if (s.diag) drawMathLine(1, 0, 'rgba(251, 191, 36, 0.55)', [6, 5], 1.8);
+    const id = mo.id;
+
+    if (id === 'type1') {
+      const dy = Math.log2(p.multK);
+      const fn1 = (x) => Math.log2(x), fn2 = (x) => Math.log2(p.multK * x);
+      if (st(3)) {
+        const pts = [];
+        for (let x = p.xCut1; x <= p.xCut2 + 1e-9; x += 0.05) pts.push([x, fn1(x)]);
+        for (let x = p.xCut2; x >= p.xCut1 - 1e-9; x -= 0.05) pts.push([x, fn2(x)]);
+        b.poly(pts, { fill: 'amber', fillAlpha: 0.16, stroke: false });
+        badge(`직사각형으로 바꾼 넓이 S = Δx(${(p.xCut2 - p.xCut1).toFixed(1)}) × log₂k(${dy.toFixed(2)}) = ${((p.xCut2 - p.xCut1) * dy).toFixed(2)}`, '#fbbf24');
+      }
+      drawFunctionCurve(fn1, '#34d399', 2.8, [], 0.06, 9.5);
+      drawFunctionCurve(fn2, '#38bdf8', 2.8, [], 0.06, 9.5);
+      const y1A = fn1(p.xCut1), y1B = fn2(p.xCut1), y2A = fn1(p.xCut2), y2B = fn2(p.xCut2);
+      if (st(2)) {
+        drawMathSegment(p.xCut1, y1A, p.xCut1, y1B, '#fbbf24', [], 3.4);
+        drawMathSegment(p.xCut2, y2A, p.xCut2, y2B, '#fb7185', [], 3.4);
+      }
+      drawMathPoint(p.xCut1, y1A, `A(${p.xCut1.toFixed(1)}, ${y1A.toFixed(2)})`, '#34d399', 6);
+      drawMathPoint(p.xCut1, y1B, `B (AB=${dy.toFixed(2)})`, '#fbbf24', 8, true, (w) => { p.xCut1 = clamp(Math.round(w.x * 4) / 4, 1, Math.min(3.5, p.xCut2 - 0.5)); });
+      drawMathPoint(p.xCut2, y2B, `D(x₂=${p.xCut2.toFixed(1)})`, '#fb7185', 7.5, true, (w) => { p.xCut2 = clamp(Math.round(w.x * 4) / 4, Math.max(3.5, p.xCut1 + 0.5), 7); });
+    } else if (id === 'type2') {
+      const isBoth = Math.round(p.showLeftWing) === 1;
+      drawFunctionCurve((x) => 2 * Math.log2(x), '#34d399', 3.0, [], 0.05, 8.5);
+      if (isBoth) drawFunctionCurve((x) => 2 * Math.log2(-x), '#fb7185', 3.0, [], -8.5, -0.05);
+      else if (st(1)) drawFunctionCurve((x) => 2 * Math.log2(-x), 'rgba(251, 113, 133, 0.25)', 1.6, [5, 5], -8.5, -0.05);
+      drawMathLine(p.lineSlope, p.lineYInt, '#fbbf24', [], 2.3);
+      if (Math.abs(p.lineSlope) < 0.01) {
+        const rx = Math.pow(2, p.lineYInt / 2);
+        drawMathPoint(rx, p.lineYInt, `+2^(k/2) = ${rx.toFixed(2)}`, '#34d399', 6.5);
+        if (isBoth) drawMathPoint(-rx, p.lineYInt, `−2^(k/2) = −${rx.toFixed(2)} (음수인 실근)`, '#fb7185', 7);
+      }
+      if (st(3)) badge(isBoth ? 'y = log₂(x²) = 2log₂|x| : y축에 대하여 대칭 (음수인 실근도 있음)' : 'y = 2log₂x : 진수 조건 x > 0 (오른쪽 부분만 있음)', isBoth ? '#fb7185' : '#38bdf8');
+      drawMathPoint(0, p.lineYInt, `절편 k=${p.lineYInt.toFixed(1)}`, '#fbbf24', 8, true, (w) => { p.lineYInt = clamp(Math.round(w.y * 4) / 4, 0.5, 3.5); });
+    } else if (id === 'type3') {
+      const sp = p.shiftP;
+      drawMathSegment(sp, -4, sp, 5, 'rgba(192, 132, 252, 0.6)', [5, 4], 1.8);
+      drawFunctionCurve((x) => -Math.log2(x - sp), '#fb7185', 2.8, [], sp + 0.04, sp + 1);
+      drawFunctionCurve((x) => Math.log2(x - sp), '#34d399', 2.8, [], sp + 1, 9.5);
+      b.hline(p.lineT, { color: 'amber', width: 2.2 });
+      const x1 = sp + Math.pow(2, -p.lineT), x2 = sp + Math.pow(2, p.lineT), midM = (x1 + x2) / 2;
+      if (st(2)) {
+        drawMathSegment(x1, p.lineT, x1, 0, '#fb7185', [4, 3], 1.6);
+        drawMathSegment(x2, p.lineT, x2, 0, '#34d399', [4, 3], 1.6);
+      }
+      if (st(3)) {
+        drawMathSegment(midM, p.lineT, midM, 0, '#38bdf8', [4, 3], 2.0);
+        drawMathPoint(midM, 0, `중점 M=${midM.toFixed(2)} (> ${sp + 1})`, '#38bdf8', 6);
+        badge(`(x₁−${sp})(x₂−${sp}) = 1.000 | 두 교점의 x좌표의 평균 M(${midM.toFixed(2)}) > 꺾인 점(${sp + 1})`, '#fbbf24');
+      }
+      drawMathPoint(sp + 1, 0, `(${sp + 1}, 0)`, '#ecfdf5', 5.5);
+      drawMathPoint(x1, p.lineT, `x₁=${x1.toFixed(2)}`, '#fb7185', 6);
+      drawMathPoint(x2, p.lineT, `x₂=${x2.toFixed(2)}`, '#fbbf24', 8, true, (w) => { p.lineT = clamp(Math.round(w.y * 10) / 10, 0.4, 2.8); });
+    } else if (id === 'type4') {
+      const a = p.baseA;
+      drawFunctionCurve((x) => Math.pow(a, x), '#34d399', 2.8, [], -4, 4.5);
+      drawFunctionCurve((x) => Math.log(x) / Math.log(a), '#38bdf8', 2.8, [], 0.04, 9.0);
+      drawMathLine(1, 0, 'rgba(251, 191, 36, 0.55)', [6, 4], 1.8);
+      drawMathLine(-1, p.lineK, '#fbbf24', [], 2.3);
+      const xA = solveExpLine(a, 0, 0, p.lineK), yA = p.lineK - xA, xB = yA, yB = xA, mx = p.lineK / 2;
+      if (st(2)) {
+        b.poly([[xA, yA], [xA, yB], [xB, yB]], { fill: 'amber', fillAlpha: 0.18, stroke: false });
+        drawMathSegment(xA, yA, xA, yB, '#fbbf24', [4, 4], 2);
+        drawMathSegment(xA, yB, xB, yB, '#fbbf24', [4, 4], 2);
+      }
+      if (st(3)) {
+        const dx = Math.abs(xB - xA);
+        sink.tape = `대칭 중점 M = $\\dfrac{k\\ (${p.lineK.toFixed(1)})}{2}$ ⟹ 넓이 △OAB = ${(0.5 * p.lineK * dx).toFixed(2)}`;
+      }
+      drawMathPoint(xA, yA, `A(${fmt(xA)}, ${fmt(yA)})`, '#34d399', 6.5);
+      drawMathPoint(xB, yB, `B(${fmt(xB)}, ${fmt(yB)})`, '#38bdf8', 6.5);
+      drawMathPoint(mx, mx, `M (k=${p.lineK.toFixed(1)})`, '#fbbf24', 8, true, (w) => { p.lineK = clamp(Math.round((w.x + w.y) * 4) / 4, 3.0, 7.5); });
+    } else if (id === 'type5') {
+      tie(p); // [2.0 수정]
+      drawFunctionCurve((x) => Math.pow(2, x - p.expM) + p.expN, '#34d399', 2.8, [], -3, 5.5);
+      drawFunctionCurve((x) => Math.log2(x - p.logP) + p.logQ, '#38bdf8', 2.8, [], p.logP + 0.04, 10.5);
+      const P1 = { x: p.expM, y: p.expN + 1 }, P2 = { x: p.logP + 1, y: p.logQ };
+      const mid0 = { x: 0.5 * (P1.x + P2.x), y: 0.5 * (P1.y + P2.y) };
+      const shiftC = mid0.y - mid0.x;
+      if (st(1)) {
+        drawMathLine(1, 0, 'rgba(148, 163, 184, 0.3)', [4, 4], 1.4);
+        drawMathSegment(P1.x, P1.y, P2.x, P2.y, 'rgba(251, 113, 133, 0.7)', [4, 3], 2.0);
+        drawMathPoint(P1.x, P1.y, `지수함수의 점(${P1.x},${P1.y})`, '#34d399', 6);
+        drawMathPoint(P2.x, P2.y, `로그함수의 점(${P2.x},${P2.y})`, '#38bdf8', 6);
+        drawMathPoint(mid0.x, mid0.y, `두 점의 중점(${mid0.x.toFixed(1)},${mid0.y.toFixed(1)})`, '#fb7185', 6);
+      }
+      if (st(2)) {
+        drawMathLine(1, shiftC, '#c084fc', [7, 4], 2.6);
+        badge(`대칭축: y = x ${shiftC >= 0 ? '+ ' + shiftC.toFixed(1) : '− ' + Math.abs(shiftC).toFixed(1)}`, '#c084fc');
+      }
+      drawMathLine(-1, p.lineK, '#fbbf24', [], 2.2);
+      const Mx = 0.5 * (p.lineK - shiftC), My = 0.5 * (p.lineK + shiftC);
+      if (st(3)) { // [2.0 수정] 교점 A(지수)·B(대칭점)와 선분 AB — 중점이 M
+        const xA = solveExpLine(2, p.expM, p.expN, p.lineK), yA = p.lineK - xA;
+        const Bx = yA - shiftC, By = xA + shiftC;
+        drawMathSegment(xA, yA, Bx, By, '#fbbf24', [], 3);
+        drawMathPoint(xA, yA, `A(${fmt(xA)}, ${fmt(yA)})`, '#34d399', 5.5);
+        drawMathPoint(Bx, By, `B(${fmt(Bx)}, ${fmt(By)})`, '#38bdf8', 5.5);
+      }
+      drawMathPoint(Mx, My, `두 교점의 중점 M(${Mx.toFixed(1)}, ${My.toFixed(1)})`, '#fbbf24', 8, true, (w) => { p.lineK = clamp(Math.round((w.x + w.y) * 2) / 2, 4, 8); });
+    } else if (id === 'type6') {
+      drawFunctionCurve((x) => Math.pow(2, x), '#34d399', 2.8, [], -3, 4.5);
+      drawFunctionCurve((x) => Math.log2(x), '#38bdf8', 2.8, [], 0.04, 9.5);
+      drawMathLine(1, 0, 'rgba(251, 191, 36, 0.65)', [6, 4], 2.0);
+      drawMathLine(-1, p.k1, '#fbbf24', [], 2.2);
+      drawMathLine(-1, p.k2, '#fb7185', [], 2.2);
+      const xA = solveExpLine(2, 0, 0, p.k1), yA = p.k1 - xA, xB = yA, yB = xA;
+      const xC = solveExpLine(2, 0, 0, p.k2), yC = p.k2 - xC, xD = yC, yD = xC;
+      if (st(2)) {
+        b.poly([[xA, yA], [xB, yB], [xD, yD], [xC, yC]], { fill: 'amber', fillAlpha: 0.16, stroke: false });
+        drawMathSegment(xA, yA, xC, yC, '#ecfdf5', [4, 3], 2.0);
+        drawMathSegment(xB, yB, xD, yD, '#ecfdf5', [4, 3], 2.0);
+      }
+      if (st(3)) { // [2.0 수정] 3단계에 그려지는 것이 없던 점: 높이·넓이 판서
+        const dx1 = Math.abs(p.k1 - 2 * xA), dx2 = Math.abs(p.k2 - 2 * xC);
+        badge(`높이 h = |k₂−k₁|/√2 = ${(Math.abs(p.k2 - p.k1) / Math.SQRT2).toFixed(3)} (기울기 +1 ⟂ −1)`, '#ecfdf5');
+        badge(`사다리꼴 넓이 S = ½·|k₂−k₁|·(Δx₁+Δx₂) = ${(0.5 * Math.abs(p.k2 - p.k1) * (dx1 + dx2)).toFixed(3)} (√2 약분)`, '#fbbf24');
+      }
+      drawMathPoint(xA, yA, 'A', '#34d399', 6);
+      drawMathPoint(xB, yB, 'B', '#38bdf8', 6);
+      drawMathPoint(xC, yC, 'C', '#34d399', 6);
+      drawMathPoint(xD, yD, 'D', '#38bdf8', 6);
+      drawMathPoint(p.k2 / 2, p.k2 / 2, `M₂(k₂=${p.k2.toFixed(1)})`, '#fbbf24', 8, true, (w) => { p.k2 = clamp(Math.round((w.x + w.y) * 4) / 4, Math.max(5.0, p.k1 + 0.5), 7.2); });
+    } else if (id === 'type7') {
+      const r = p.radiusR, a = p.baseA;
+      drawMathCircle(0, 0, r, 'rgba(192, 132, 252, 0.7)', [], 2.6);
+      drawFunctionCurve((x) => Math.pow(a, x), '#34d399', 2.8, [], -4, 4.0);
+      drawFunctionCurve((x) => Math.log(x) / Math.log(a), '#38bdf8', 2.8, [], 0.03, 7.5);
+      drawMathLine(1, 0, 'rgba(251, 191, 36, 0.55)', [6, 4], 1.8);
+      const xP = solveExpCircle(a, r), yP = Math.pow(a, xP), xQ = yP, yQ = xP;
+      if (st(2)) {
+        drawMathSegment(xP, yP, xQ, yQ, '#fbbf24', [], 2.8);
+        drawMathSegment(0, 0, xP, yP, 'rgba(192, 132, 252, 0.55)', [4, 3], 1.8);
+        drawMathSegment(xP, yP, xP, 0, '#34d399', [4, 3], 1.8);
+      }
+      if (st(3)) badge(`원과 역함수의 교점: x₁² + y₁² = ${(r * r).toFixed(1)} & PQ = ${(Math.SQRT2 * (yP - xP)).toFixed(2)}`, '#fbbf24');
+      drawMathPoint(xQ, yQ, `Q(${xQ.toFixed(2)}, ${yQ.toFixed(2)})`, '#38bdf8', 6.5);
+      drawMathPoint(xP, yP, `P(${xP.toFixed(2)}, ${yP.toFixed(2)})`, '#fbbf24', 8, true, (w) => { p.radiusR = clamp(Math.round(Math.hypot(w.x, w.y) * 10) / 10, 2.2, 5.0); });
+    } else if (id === 'type8') {
+      const K = Math.round(p.maxX), fn = (x) => Math.log2(x);
+      drawFunctionCurve(fn, '#34d399', 2.8, [], 0.2, 14.5);
+      drawMathSegment(K, 0, K, fn(K) + 0.5, '#fbbf24', [5, 4], 2.2);
+      let totalCnt = 0;
+      for (let y = 1; Math.pow(2, y) <= K; y++) {
+        const startX = Math.pow(2, y), rowCnt = K - startX + 1;
+        totalCnt += rowCnt;
+        if (st(3)) {
+          drawMathSegment(startX, y, K, y, '#fb7185', [], 3.2);
+          badge(`y=${y} 위 (x≥${startX}): ${rowCnt}개`, '#fb7185');
+        }
+        if (st(1)) for (let x = startX; x <= K; x++) drawMathPoint(x, y, '', '#fbbf24', 5.0);
+      }
+      drawMathPoint(K, fn(K), `최댓값 K=${K} (총 ${totalCnt}개)`, '#fbbf24', 8, true, (w) => { p.maxX = clamp(Math.round(w.x), 4, 13); });
+    }
+
+    if (sink.lines.length) v.card = { title: '그림 설명', lines: sink.lines.map((q) => ({ text: q.text, color: q.color })) };
+    if (sink.tape) v.tape = { title: sink.tape };
+  }
+
+  const params = {};
+  KILLER_MODES.forEach((mo) => {
+    SLIDERS[mo.id].forEach((d) => {
+      if (mo.id === 'type5' && d.key === 'logP') return; // [2.0 수정] p 는 m 을 따라 움직임
+      params[mo.id + '_' + d.key] = {
+        value: mo.scenarios[0].params[d.key], min: d.min, max: d.max, step: d.step, color: 'amber', label: d.label,
+        hint: mo.id === 'type5' && d.key === 'expM' ? '로그 쪽 평행이동 p는 대칭이 성립하도록 m + n − q 로 함께 움직입니다' : undefined,
+        format: (val) => (d.key === 'showLeftWing' ? (Math.round(val) === 1 ? '켬 (log₂x²)' : '끔 (2log₂x)') : d.step < 1 ? val.toFixed(2) : String(val))
+      };
+    });
+  });
+
+  const actions = () => [
+    { id: 'twin', icon: 'spark', label: '숫자를 바꾼 문제', run: (s, lab) => twin(s, lab) },
+    { id: 'diag', icon: 'layers', label: (s) => (s.diag ? 'y = x 기준 대칭축 켜짐' : 'y = x 기준 대칭축'), on: (s) => s.diag, run: (s) => { s.diag = !s.diag; } },
+    { id: 'abs', icon: 'wand', label: (s) => (s.abs ? '|f(x)|의 그래프 켜짐' : '|f(x)|의 그래프 보기'), on: (s) => s.abs, run: (s) => { s.abs = !s.abs; } }
+  ];
+  // 지금 장면의 쌍둥이 변형: 원본 triggerTwinProblem 을 그대로 부르고 결과를 조절값에 되돌려 줍니다
+  let current = null; // { mo, scen }
+  function twin(s, lab) {
+    const { mo, scen } = current;
+    const p = {};
+    Object.keys(scen.params).forEach((k) => { p[k] = s[mo.id + '_' + k]; });
+    runTwin(mo.id, scen, p);
+    Object.keys(p).forEach((k) => { s[mo.id + '_' + k] = p[k]; });
+    s.step = Math.min(s.step, 2);
+    APLab.toast('숫자를 바꾼 새 문제가 만들어졌습니다');
+  }
+
+  const groups = KILLER_MODES.map((mo, mi) => ({
+    id: mo.id,
+    title: rich(mo.shortTitle),
+    short: SHORT[mi],
+    scenes: mo.scenarios.map((scen, si) => ({
+      id: mo.id + '-' + si,
+      title: rich(scen.chip),
+      short: scen.chip.split(' (')[0],
+      question: Q[mi],
+      guide: GUIDE[mi],
+      controls: SLIDERS[mo.id].filter((d) => params[mo.id + '_' + d.key]).map((d) => mo.id + '_' + d.key),
+      actions,
+      steps: mo.stepLabels.map((l, k) => `${k + 1}단계 · ${rich(l)}`),
+      startStep: 2,
+      notesTitle: '오답 함정 주의보',
+      focus: () => FOCUS[mi],
+      enter: (s) => {
+        current = { mo, scen };
+        Object.keys(scen.params).forEach((k) => { s[mo.id + '_' + k] = scen.params[k]; });
+      },
+      problem: {
+        tag: scen.source,
+        text: () => rich(scen.problem),
+        answer: () => '풀이와 결과는 정리 탭의 「두 가지 풀이 비교」에서 확인하세요.',
+        snap: () => { const o = {}; Object.keys(scen.snapParams).forEach((k) => { o[mo.id + '_' + k] = scen.snapParams[k]; }); return o; }
+      },
+      solution: {
+        standardTitle: rich(scen.textbookTitle), standardTag: '기본 풀이',
+        quickTitle: rich(scen.secretTitle), quickTag: '10초 컷',
+        standard: () => ({ steps: scen.textbookSteps.map((x) => `<div>${rich(x)}</div>`).join('') }),
+        quick: () => ({ steps: scen.secretSteps.map((x) => `<div>${rich(x)}</div>`).join('') })
+      },
+      view: (s) => {
+        current = { mo, scen };
+        const p = pv(s, mo);
+        if (mo.id === 'type5') tie(p);
+        const h = hudOf(mo.id, p);
+        return {
+          chips: [{ k: mo.code, html: rich(h.eq) }],
+          readouts: h.cards.map((c) => ({ label: rich(c.title), value: String(c.val), note: rich(c.sub), color: 'amber' })),
+          formula: s.step >= 1 ? rich(mo.stepDescs[Math.min(s.step, 3) - 1]) : '',
+          notes: rich(mo.trapWarning)
+        };
+      },
+      draw: (b, s, v) => draw(mo, b, s, v)
+    }))
+  }));
+
+  APLab.createLab({
+    id: 'alg-log-deep',
+    title: '로그함수·역함수 도형 심화',
+    courseName: '대수',
+    unit: '지수함수와 로그함수 · 로그 도형 8대 유형',
+    courseColor: 'var(--m-sky)',
+    home: '../index.html#algebra',
+    legacy: '../../labs/대수/part1b1.html',
+    board: { kind: 'cartesian', focus: FOCUS[0] },
+    params,
+    state: { diag: false, abs: false },
+    groups
+  });
+});
+</script>
+</body>
+</html>

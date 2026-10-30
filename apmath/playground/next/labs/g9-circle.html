@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>원의 성질 · AP Math 실험실</title>
+<meta name="description" content="중3 원의 성질: 현의 수직이등분·원 접기, 접선과 내접원, 원에 외접하는 사각형, 원주각과 중심각, 내접사각형, 접선과 현이 이루는 각과 두 원의 공통접선, 할선·접선의 길이 관계까지 6개 탐구관 30개 장면">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   중3 · 원의 성질 (AP Math Lab 2.0 이식본) — 6개 탐구관 × 30개 장면
+   원본: labs/g9/원.html
+   이식 방식: "호환 이식" — 원본의 내용(getSpec)과 그리기 코드(drawCircleMasterScene)를
+   글자 그대로 옮기고, 이 실험실이 쓰던 그리기 함수 이름(ccircle·carc·cpoly·cline·cdot·cticks·carrows·cright·cangle·cbadge)만
+   아래 어댑터가 새 무대 엔진(APLab.Board)에 연결합니다. (삼각비의 pline·ppoly 계열과 이름이 달라 이 파일 안에 둡니다.)
+   원본과 다른 점 (코드 안에는 모두 [2.0 수정] 주석이 있습니다)
+   - 캔버스를 직접 그리던 3곳(접힌 아치, 도넛 색칠, 족보 장면 글자)을 무대 호출로 교체
+   - 그림 오류 수정(원본 그림이 해설·수학과 어긋난 곳):
+       ① 원 접기: 접힌 아치(2차 곡선)가 중심 O에 닿지 않음 → 세 점을 지나는 원호로(100%에서 O 통과)
+       ② 삼각비 결합: 그림은 BC=R√3인데 해설은 BC=R(sin A=1/2) → 해설에 맞춰 중심각 60°
+       ③ 반원을 품은 직사각형: 원의 중심이 잘못돼 접선 DE가 원을 가로지름 → 반원(중심=AB의 중점)
+       ④ 내접사각형 두 대변 연장선: P, Q가 연장선 위에 있지 않음 → 호의 크기로 점을 잡고 교점을 계산(∠A=52°, ∠P=32°, ∠Q=44° 그대로 정확)
+       ⑤ 외부 할선·접선과 할선: A, C가 P에서 나가는 직선 위에 있지 않음 → 직선과 원의 교점으로 잡음
+       ⑥ 내접사각형 3장면·네 점이 한 원 위: θ 표시와 그려진 각이 달랐음 → 표시한 각이 그림에서도 같게 배치
+   - 해설 수식의 \overparen(호 기호, KaTeX 미지원)을 \overset{\frown}{..} 로, **굵게** 표기를 굵은 글씨로
+   - 관찰 렌즈(전체/각/현·접선 표시/지름·보조선)는 그대로 동작: 원본의 conceptSwitch 규칙을 어댑터가 그대로 적용하고
+     원본 LENS_OFF 표로 효과 없는 렌즈 버튼은 숨김
+   - 가독성: 이름표(점 이름·길이 상자·각 이름)가 서로·점과 겹치지 않게 원본 위치를 우선하되 겹치면 빈자리로 이동,
+     긴 점 이름은 두 줄로, ➔ ⭕ ❌ 는 → ○ × 로, 글자는 휴대폰에서도 92% 아래로 줄이지 않음. 모든 장면 미리보기는 글자 없이 그림만
+   - 효과가 없던 조작(해당 장면에서 쓰이지 않는 각·반지름·변환 버튼)은 표시하지 않음
+   - 미니 상자 없음, 하단 띠(tape)는 무대 아래 요약 띠로 이동
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+
+  /* ===== 원본 그대로: 숫자 서식, 색 상수, 벡터 도우미 (원본 341–367행) ===== */
+    function fmtNum(v) {
+      if (Math.abs(v - Math.round(v)) < 1e-6) return String(Math.round(v));
+      return Number(v.toFixed(1)).toString();
+    }
+
+    const CCOL = {
+      cyan: '#38bdf8',
+      pink: '#f472b6',
+      green: '#34d399',
+      gold: '#fbbf24',
+      white: '#f1f5f9',
+      red: '#fb7185'
+    };
+
+    const cpt = (x, y) => ({ x, y });
+    const cmid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+    const clerp = (a, b, t) => ({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+    const cdist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+    const csub = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
+    const cadd = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
+    const cmul = (v, k) => ({ x: v.x * k, y: v.y * k });
+    const cnorm = (v) => { const l = Math.hypot(v.x, v.y) || 1; return { x: v.x / l, y: v.y / l }; };
+    const cpolar = (center, r, deg) => {
+      const rad = (deg * Math.PI) / 180;
+      return { x: center.x + r * Math.cos(rad), y: center.y + r * Math.sin(rad) };
+    };
+
+
+
+  /* ===== 원본 상태 객체(이름 그대로) — 매 프레임 2.0 셸 상태에서 채웁니다 ===== */
+  const state = {
+    mode: 1,
+    subType: { 1: 'chordFoldArc', 2: 'tangentPerimTri', 3: 'inscribedAngle3Cases', 4: 'cyclicPentagon', 5: 'altSegmentThm', 6: 'trapArcVsChord' },
+    conceptSwitch: 'all', activePartIdx: -1, fold: 0.0, foldTarget: null,
+    angPreset: 45, radPreset: 10, scale: 1.0, panX: 0, panY: 0
+  };
+  const ANG_PRESETS = [30, 45, 60, 70];
+  const RAD_PRESETS = [6, 8, 10, 12];
+
+  /* ===== 원본 그대로: 세부 시나리오 목록 (원본 402–445행) ===== */
+    const SUB_MENUS = {
+      1: [
+        { id: 'chordFoldArc', label: '🥟 원을 접어 호가 중심 O를 지나게 하기 (OM=½R, 1:√3:2)' },
+        { id: 'chordBisect', label: '📏 현의 수직이등분 (OM⊥AB ⟺ AM=BM)' },
+        { id: 'chordEqualDist', label: '⚖️ 중심에서 같은 거리의 두 현 (OM=ON ⟺ AB=CD)' },
+        { id: 'chordArchRadius', label: '🌉 깨진 접시·아치의 반지름 R 구하기' },
+        { id: 'chordConcentric', label: '🍩 동심원에서 작은 원에 접하는 현과 두 원 사이의 넓이 (π·AM²)' }
+      ],
+      2: [
+        { id: 'tangentPerimTri', label: '🔺 [킬러] 접선 3개로 만든 △PCD의 둘레는 일정 (= 2·PA)' },
+        { id: 'tangentLen', label: '✂️ 원 밖의 점에서 그은 두 접선 (PA=PB, ∠O+∠P=180°)' },
+        { id: 'inscribedTri', label: '💠 삼각형의 내접원과 접선의 길이(x, y, z) & 직각삼각형의 내접원의 반지름 r' },
+        { id: 'pitotQuad', label: '💎 원에 외접하는 사각형에서는 두 쌍의 대변의 길이의 합이 같다 (AB + CD = AD + BC)' },
+        { id: 'pitotRectTrap', label: '🏛️ 반원이 접하는 직사각형과 접선의 길이 (피타고라스 정리, DE=x+y)' }
+      ],
+      3: [
+        { id: 'inscribedAngle3Cases', label: '🎯 원주각 = ½ 중심각 (지름 PQ를 그어 설명하기)' },
+        { id: 'inscribedMoveArc', label: '🌈 한 호에 대한 원주각은 모두 같다 (점 P를 움직여 보기)' },
+        { id: 'thalesSemiCircle', label: '📐 반원(지름 AB)에 대한 원주각 = 90°' },
+        { id: 'inscribedTrig', label: '📊 [삼각비와 원주각] 지름을 한 변으로 하는 직각삼각형으로 sin A 구하기' },
+        { id: 'fourPointsCircle', label: '⭕ 네 점 A,B,C,D가 한 원 위에 있을 조건 (∠BAC=∠BDC)' }
+      ],
+      4: [
+        { id: 'cyclicPentagon', label: '🌟 [킬러] 원에 내접하는 오각형에 보조선을 그어 나누기' },
+        { id: 'cyclicQuad180', label: '🔄 내접사각형에서 마주 보는 두 각의 합 = 180°' },
+        { id: 'cyclicExterior', label: '⚡ 내접사각형의 한 외각 = 이웃한 내각의 대각 (∠DCE=∠A)' },
+        { id: 'cyclicCrossExt', label: '🚀 내접사각형의 두 쌍의 대변을 연장한 교점 P, Q와 각의 크기' },
+        { id: 'cyclicConditions3', label: '🔍 사각형이 원에 내접하기 위한 조건' }
+      ],
+      5: [
+        { id: 'altSegmentThm', label: '📐 접선과 현이 이루는 각 (∠BAT = ∠BCA)' },
+        { id: 'altSegmentInscribed', label: '🔺 양쪽 접선과 현이 이루는 각과 내접삼각형의 각' },
+        { id: 'twoCirclesExTangent', label: '🎱 [심화] 외접하는 두 원의 공통접선 ➔ 엇각이 같아 평행(AB∥CD)' },
+        { id: 'twoCirclesInTangent', label: '🎯 내접하는 두 원의 공통접선 ➔ 동위각이 같아 평행(AB∥CD)' },
+        { id: 'tangentDiameterExt', label: '🧭 [킬러] 지름의 연장선 위의 점 P에서 그은 접선 PT와 각의 크기' }
+      ],
+      6: [
+        { id: 'trapArcVsChord', label: '🚫 [주의] 원주각이 2배 ➔ 호의 길이는 2배(⭕), 현의 길이는 2배가 아님(❌)' },
+        { id: 'powerInside', label: '✖️ 원 안에서 만나는 두 현의 길이 관계 (PA · PB = PC · PD)' },
+        { id: 'powerOutside', label: '🔭 원 밖의 점 P에서 그은 두 할선의 길이 관계 (PA · PB = PC · PD)' },
+        { id: 'powerTangentSecant', label: '⚡ 원 밖의 점 P에서 그은 접선과 할선의 길이 관계 (PT² = PA · PB)' },
+        { id: 'trapCyclicQuadFamily', label: '🚫 항상 원에 내접하는 사각형(⭕) vs 안 하는 사각형(❌)' }
+      ]
+    };
+
+
+  /* ======================================================================
+     [2.0] 어댑터: 원본의 c* 그리기 함수 → 새 무대 엔진
+     - 원본의 규칙을 그대로 따릅니다: partIdx(-1=없음) → 강조 조각, 관찰 렌즈(conceptSwitch)에 따라 표시/숨김
+     - 그림 안 글자는 화면 픽셀 크기로 그려져 확대·휴대폰에서도 읽히고, 자동 맞춤 계산에 글자 상자가 들어갑니다
+     - [가독성] 원본은 글자 위치를 고정 오프셋으로 찍어 화면이 작으면 이름표끼리·점과 겹쳤습니다.
+       장면을 두 번 훑어(1회: 점 위치 수집, 2회: 그리기) 점 이름·길이 상자·각 이름이 서로, 그리고 점과 겹치지 않도록
+       원본 위치를 우선하고 겹치면 가까운 빈자리로 옮깁니다. 긴 이름은 '(' 앞뒤 두 줄로 나눕니다.
+     ====================================================================== */
+  let BOARD = null;
+  const PL = { pass: 2, obst: [], placed: [], segs: [], arcs: [] }; // pass 1: 점 수집 / pass 2: 그리기. obst=점 상자, placed=이미 놓은 글자 상자(화면 좌표), segs=[표시 보강] 그려질 선분(각 값 글자가 선 위에 놓이지 않게)
+  const partOf = (p) => (p == null || p < 0 ? undefined : p);
+  const dashOf = (d) => (Array.isArray(d) && d.length ? d : null);
+  // 그림 안 글자: 원본의 ➔ ⭕ ❌ 는 글꼴에 따라 깨질 수 있어 → ○ × 로(국내 교과서 표기), 그 밖의 이모지는 뗍니다.
+  const cv = (s) => APLab.stripEmoji(String(s == null ? '' : s).replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×'));
+  const lensOK = (...names) => names.includes(state.conceptSwitch);
+  // 자동 맞춤 계산 중에는 원의 바깥 범위도 그림 범위로 기록합니다(Board.arc는 중심만 기록하므로 보완)
+  const regCircle = (c, r) => { if (BOARD._bbox) { BOARD.toS(c.x - r, c.y - r); BOARD.toS(c.x + r, c.y + r); } };
+
+  const twCache = new Map();
+  function tw(str, size, weight) { // 글자 폭(px)
+    const B = BOARD, key = `${weight}|${size.toFixed(2)}|${B.font}|${str}`;
+    let w = twCache.get(key);
+    if (w == null) {
+      const c = B.ctx;
+      c.save();
+      c.font = `${weight} ${size}px ${B.font}`;
+      w = c.measureText(str).width;
+      c.restore();
+      if (twCache.size > 4000) twCache.clear();
+      twCache.set(key, w);
+    }
+    return w;
+  }
+  // 글자 크기: 칸이 작으면 Board가 글자를 최대 22% 줄이지만, 휴대폰에서 읽기 어려워 92% 아래로는 줄이지 않습니다(lsz = Board._text 에 넘길 크기)
+  const ES = () => Math.max(BOARD._ts(), 0.92);
+  const tsz = (base) => base * BOARD.fs * (BOARD.thumb ? 0.78 : ES());
+  const lsz = (base) => base * (BOARD.thumb ? 1 : ES() / BOARD._ts());
+  const hit = (a, b) => a.x0 < b.x1 && a.x1 > b.x0 && a.y0 < b.y1 && a.y1 > b.y0;
+  const isFree = (r) => !PL.obst.some((q) => hit(r, q)) && !PL.placed.some((q) => hit(r, q));
+  const isInside = (r) => { const a = BOARD._area(); return r.x0 >= a.x + 3 && r.x1 <= a.x + a.w - 3 && r.y0 >= a.y + 3 && r.y1 <= a.y + a.h - 3; };
+  // 자동 맞춤을 재는 중에는 무대 경계를 따지지 않고(글자 상자가 맞춤 범위를 정하도록), 실제 그릴 때만 무대 안에 두려 합니다.
+  const okSpot = (r) => isFree(r) && (BOARD._bbox || BOARD.thumb || isInside(r));
+  const RADII = [1, 1.45, 2];
+  const TURNS = [0, 0.7, -0.7, 1.4, -1.4, 2.1, -2.1, Math.PI];
+
+  function ccircle(center, r, stroke = '#38bdf8', fill = 'rgba(56, 189, 248, 0.06)', width = 2.8, dash = [], partIdx = -1) {
+    if (PL.pass === 1) return;
+    regCircle(center, r);
+    BOARD.circle(center, r, { color: stroke || null, fill: fill || null, width, dash: dashOf(dash), part: partOf(partIdx) });
+  }
+  function carc(center, r, startDeg, endDeg, color = '#fbbf24', width = 5.0, ccw = false, partIdx = -1) {
+    if (PL.pass === 1) return;
+    regCircle(center, r);
+    BOARD.arc(center, r, (startDeg * Math.PI) / 180, (endDeg * Math.PI) / 180, { color, width, ccw, glow: true, part: partOf(partIdx) });
+  }
+  function cpoly(pts, fill = 'rgba(52,211,153,0.18)', stroke = '#34d399', width = 2.8, partIdx = -1) {
+    if (PL.pass === 1) { if (stroke) pts.forEach((p, i) => segNote(p, pts[(i + 1) % pts.length])); return; } // [표시 보강] 변도 기록
+    BOARD.poly(pts, { fill: fill || null, color: stroke || null, stroke: !!stroke, width, part: partOf(partIdx) });
+  }
+  function cline(a, b, color = '#fbbf24', width = 2.5, dash = [], glow = false, partIdx = -1) {
+    if (PL.pass === 1) { segNote(a, b); return; } // [표시 보강] 선분 기록
+    BOARD.seg(a, b, { color, width, dash: dashOf(dash), glow, part: partOf(partIdx) });
+  }
+  /** 점과 이름. 원본의 위치 규칙(중심 반대쪽 refCenter / 직접 오프셋 customOff)을 첫 후보로 삼고, 겹치면 빈자리로 옮깁니다. */
+  function cdot(p, text = '', col = '#ffffff', refCenter = null, customOff = null) {
+    const B = BOARD, s = B.toS(p);
+    if (PL.pass === 1) { PL.obst.push({ x0: s.x - 8, y0: s.y - 8, x1: s.x + 8, y1: s.y + 8 }); return; }
+    B.point(p, { color: col, r: 5 });
+    if (B.thumb) return; // 모든 장면 미리보기(작은 그림)에는 글자를 넣지 않습니다
+    const str = cv(text);
+    if (!str) return;
+    // 첫 후보: 점에서 글자 기준점까지의 화면 오프셋(원본 baseline 'alphabetic' → 가운데 기준으로 환산)
+    let vx, vy;
+    if (customOff) { vx = customOff.x; vy = customOff.y - 4; }
+    else if (refCenter) {
+      const dx = p.x - refCenter.x, dy = p.y - refCenter.y, l = Math.hypot(dx, dy) || 1, ux = dx / l, uy = dy / l;
+      if (Math.abs(ux) > 0.5) { vx = ux > 0 ? 11 : -11; vy = uy * 14; } else { vx = ux * 21; vy = uy * 21; }
+    } else { vx = 10; vy = -14; }
+    // 긴 이름은 '(' 앞뒤 두 줄로 (그림을 작게 만들지 않도록)
+    const size = tsz(12.5), lh = size * 1.15, a = B._area();
+    let lines = [str];
+    const k = str.indexOf('(');
+    if (k > 0 && tw(str, size, 800) > Math.max(100, a.w * 0.28)) lines = [str.slice(0, k), str.slice(k)];
+    const w = Math.max(...lines.map((l) => tw(l, size, 800))), h = lines.length * lh;
+    const r0 = Math.max(12, Math.hypot(vx, vy)), a0 = Math.atan2(vy, vx);
+    let first = null, pick = null;
+    search: for (const m of RADII) {
+      for (const dt of TURNS) {
+        const ux = Math.cos(a0 + dt), uy = Math.sin(a0 + dt), r = r0 * m;
+        let cx = ux * r, cy = uy * r, align;
+        if (Math.abs(ux) > 0.38) { align = ux > 0 ? 'left' : 'right'; cx = Math.sign(ux) * Math.max(Math.abs(cx), 10); }
+        else { align = 'center'; cy = (uy >= 0 ? 1 : -1) * Math.max(Math.abs(cy), 8 + h / 2); }
+        const x = s.x + cx, y = s.y + cy, x0 = align === 'left' ? x : align === 'right' ? x - w : x - w / 2;
+        const cand = { x, y, align, rect: { x0, x1: x0 + w, y0: y - h / 2, y1: y + h / 2 } };
+        if (!first) first = cand;
+        if (okSpot(cand.rect)) { pick = cand; break search; }
+      }
+    }
+    pick = pick || first;
+    lines.forEach((ln, i) => B._text(pick.x, pick.y + (i - (lines.length - 1) / 2) * lh, ln, { color: col, size: lsz(12.5), weight: 800, align: pick.align, baseline: 'middle' }));
+    PL.placed.push(pick.rect);
+  }
+  function cticks(a, b, n = 1, col = '#fbbf24', size = 7.5) {
+    if (PL.pass === 1 || !lensOK('all', 'sides')) return;
+    BOARD.ticks(a, b, { count: n, color: col, size });
+  }
+  function carrows(a, b, n = 1, col = '#38bdf8', size = 6.5) { // 평행 표시(화살촉)
+    if (PL.pass === 1 || !lensOK('all', 'angles')) return;
+    const B = BOARD, c = B.ctx, A = B.toS(a), Z = B.toS(b);
+    const mx = (A.x + Z.x) / 2, my = (A.y + Z.y) / 2, l = Math.hypot(Z.x - A.x, Z.y - A.y) || 1;
+    const ux = (Z.x - A.x) / l, uy = (Z.y - A.y) / l, vx = -uy, vy = ux;
+    c.save();
+    c.strokeStyle = B.color(col);
+    c.lineWidth = 2.2 * B.lw;
+    c.lineCap = 'round';
+    c.setLineDash([]);
+    c.shadowBlur = 0;
+    for (let i = 0; i < n; i++) {
+      const shift = (i - (n - 1) / 2) * 7.5;
+      const tx = mx + ux * (shift + 4), ty = my + uy * (shift + 4);
+      c.beginPath();
+      c.moveTo(tx - ux * size + vx * size * 0.85, ty - uy * size + vy * size * 0.85);
+      c.lineTo(tx, ty);
+      c.lineTo(tx - ux * size - vx * size * 0.85, ty - uy * size - vy * size * 0.85);
+      c.stroke();
+    }
+    c.restore();
+  }
+  function cright(v, p1, p2, size = 12, col = '#fbbf24') {
+    if (PL.pass === 1 || !lensOK('all', 'angles')) return;
+    BOARD.right(v, p1, p2, { size, color: col });
+  }
+  /* [표시 보강] 각 표시용 도우미 ------------------------------------------------ */
+  function segNote(a, b) { PL.segs.push({ a: BOARD.toS(a), b: BOARD.toS(b) }); } // 1회차에 그려질 선분(화면 좌표)을 모읍니다
+  const segHitsRect = (s, r) => { // 선분이 글자 상자(1px 여유)를 지나는가 (Liang–Barsky)
+    const x0 = r.x0 - 1, x1 = r.x1 + 1, y0 = r.y0 - 1, y1 = r.y1 + 1, dx = s.b.x - s.a.x, dy = s.b.y - s.a.y;
+    const p = [-dx, dx, -dy, dy], q = [s.a.x - x0, x1 - s.a.x, s.a.y - y0, y1 - s.a.y];
+    let u0 = 0, u1 = 1;
+    for (let i = 0; i < 4; i++) {
+      if (p[i] === 0) { if (q[i] < 0) return false; continue; }
+      const u = q[i] / p[i];
+      if (p[i] < 0) { if (u > u1) return false; if (u > u0) u0 = u; } else { if (u < u0) return false; if (u < u1) u1 = u; }
+    }
+    return true;
+  };
+  /** 선분 a→b 위 f 지점(0~1)에 같은 길이 눈금. 길이 이름표가 가운데를 덮을 때 비껴서 표시합니다. */
+  function cticksAt(a, b, f, n = 1, col = '#fbbf24', size = 7.5) {
+    if (PL.pass === 1 || !lensOK('all', 'sides')) return;
+    BOARD.ticks(f <= 0.5 ? a : clerp(a, b, 2 * f - 1), f <= 0.5 ? clerp(a, b, 2 * f) : b, { count: n, color: col, size });
+  }
+  /** 두 변 사이의 각도(°) — 현재 점에서 바로 계산(고정 숫자 대신) */
+  const cdeg = (v, p, q) => {
+    const a = Math.atan2(p.y - v.y, p.x - v.x), b = Math.atan2(q.y - v.y, q.x - v.x);
+    let d = Math.abs(a - b) % (Math.PI * 2);
+    if (d > Math.PI) d = Math.PI * 2 - d;
+    return (d * 180) / Math.PI;
+  };
+  /** 각 표시와 값.
+   *  [표시 보강] 값(label)은 호의 부채꼴 '안쪽'에 놓고(들어갈 만큼 호를 키움), 못 들어가면 호 바로 바깥에 둡니다.
+   *  '∠A=80°'·'x=52°'처럼 '='이 있거나 '45° 불변!'·'180°(지름)'처럼 값 뒤에 설명이 붙으면 값만 안쪽에, 나머지(이름·설명)는 바깥에 둡니다
+   *  (꼭짓점 이름 ∠A 는 점 이름표가 이미 있어 생략). note 를 주면 바깥 글자를 직접 정합니다. reflex=true 면 반대쪽(180° 넘는) 각.
+   *  선·점·다른 이름표를 피해 자리를 고릅니다. 같은 크기의 각은 같은 색·같은 호 개수로 불러 주세요. */
+  function cangle(v, p1, p2, col = '#fbbf24', r = 24, rings = 1, label = '', note = '', reflex = false) {
+    if (PL.pass === 1 || !lensOK('all', 'angles')) return;
+    const B = BOARD, TAU = Math.PI * 2;
+    const S = B.toS(v), P1 = B.toS(p1), P2 = B.toS(p2);
+    const t1 = Math.atan2(P1.y - S.y, P1.x - S.x), t2 = Math.atan2(P2.y - S.y, P2.x - S.x);
+    let d = ((t2 - t1 + Math.PI * 3) % TAU) - Math.PI;
+    if (reflex) d = d > 0 ? d - TAU : d + TAU;
+    const sg = d < 0 ? -1 : 1, ad = Math.abs(d), mid = t1 + d / 2;
+    const arcs = (rr) => {
+      if (!reflex) { B.angle(v, p1, p2, { color: col, r: rr, rings, size: 12 }); return; }
+      const c = B.ctx, k = B.thumb ? 0.7 : 1, q0 = rr * k;
+      c.save();
+      c.beginPath(); c.moveTo(S.x, S.y); c.arc(S.x, S.y, q0, t1, t1 + d, d < 0); c.closePath();
+      c.fillStyle = B.color(col, 0.15); c.fill();
+      c.strokeStyle = B.color(col); c.lineWidth = 2 * B.lw; c.setLineDash([]);
+      for (let i = 0; i < rings; i++) { const q = q0 - i * 4.5; if (q > 4) { c.beginPath(); c.arc(S.x, S.y, q, t1, t1 + d, d < 0); c.stroke(); } }
+      c.restore();
+    };
+    let str = cv(label), outer = cv(note);
+    if (B.thumb || (!str && !outer)) { arcs(r); return; }
+    const isSym = (t) => /^[•×○]$/.test(t), sym = isSym(str), fz = 1; // 기호(•×○)는 글자 대신 일정한 크기로 직접 그림
+    const size = tsz(12), h = sym ? 16 : size * 1.15, ringPad = 4.5 * (rings - 1);
+    const wOf = (t, sz) => (isSym(t) ? 16 : tw(t, sz, 800) + 3);
+    const drawSym = (ch, x, y) => {
+      const c = B.ctx, q = 4 * B.lw;
+      c.save();
+      c.setLineDash([]); c.shadowBlur = 0; c.lineCap = 'round'; c.lineWidth = 2.2 * B.lw;
+      c.fillStyle = B.colors.halo; c.beginPath(); c.arc(x, y, q + 3.5, 0, TAU); c.fill(); // 선 위에서도 보이도록 바탕 원
+      c.strokeStyle = B.color(col); c.fillStyle = B.color(col);
+      c.beginPath();
+      if (ch === '•') { c.arc(x, y, q * 0.95, 0, TAU); c.fill(); }
+      else if (ch === '○') { c.arc(x, y, q, 0, TAU); c.stroke(); }
+      else { c.moveTo(x - q, y - q); c.lineTo(x + q, y + q); c.moveTo(x + q, y - q); c.lineTo(x - q, y + q); c.stroke(); }
+      c.restore();
+    };
+    const put = (x, y, t, base) => (isSym(t) ? drawSym(t, x, y) : B._text(x, y, t, { color: col, size: lsz(base), weight: 800, align: 'center', baseline: 'middle' }));
+    const lenMin = Math.min(Math.hypot(P1.x - S.x, P1.y - S.y), Math.hypot(P2.x - S.x, P2.y - S.y));
+    const rCap = Math.max(r, Math.min(50, lenMin * 0.6)), tn = Math.tan(Math.min(ad / 2, 1.45));
+    const ownRay = (s) => { // 이 각의 두 변(꼭짓점을 지나는 같은 방향의 직선 포함)
+      const ex = s.b.x - s.a.x, ey = s.b.y - s.a.y, L = Math.hypot(ex, ey) || 1;
+      if (Math.abs((S.x - s.a.x) * ey - (S.y - s.a.y) * ex) / L > 2.5) return false;
+      const sn = (u) => Math.abs(Math.sin(Math.atan2(ey, ex) - u));
+      return sn(t1) < 0.05 || sn(t2) < 0.05;
+    };
+    const lineFree = (rc) => !PL.segs.some((s) => !ownRay(s) && segHitsRect(s, rc)); // 이 각의 변이 아닌 다른 선을 지나지 않는가
+    const okSpotA = (rc) => okSpot(rc) && !PL.arcs.some((q) => hit(rc, q)); // 다른 각의 호도 피함
+    const corners = (rc) => [[rc.x0, rc.y0], [rc.x1, rc.y0], [rc.x0, rc.y1], [rc.x1, rc.y1]];
+    const inWedge = (x, y) => { // 부채꼴(반지름 제한 없음) 안인가
+      const u = ((((Math.atan2(y - S.y, x - S.x) - t1) * sg) % TAU) + TAU) % TAU;
+      return u >= 0.02 && u <= ad - 0.02;
+    };
+    const inside = (txt) => { // 호 안쪽(필요하면 호를 키워서)
+      const w = wOf(txt, size), need = w + (h / 2) / tn + 7 + ringPad, rr = Math.max(r, need);
+      if (rr > rCap + 0.5) return null;
+      const hi = rr - ringPad - w / 2 - 3, lo = w / 2 + (h / 2) / tn + 1;
+      let loose = null;
+      for (const rho of [hi, (hi + lo) / 2, lo]) {
+        if (rho < lo - 0.5) continue;
+        for (const f of [0, 0.35, -0.35, 0.62, -0.62]) {
+          const a = mid + (f * d) / 2, x = S.x + Math.cos(a) * rho, y = S.y + Math.sin(a) * rho;
+          const rc = { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 };
+          if (!corners(rc).every(([px, py]) => inWedge(px, py) && Math.hypot(px - S.x, py - S.y) <= rr - ringPad - 2)) continue;
+          if (!okSpotA(rc)) continue;
+          if (lineFree(rc)) return { rr, x, y, rc };
+          loose = loose || { rr, x, y, rc };
+        }
+      }
+      return loose;
+    };
+    const beyond = (txt, far) => { // 좁은 각: 호는 그대로 두고, 호 너머 각의 '안쪽'(두 변 사이)에 값을 놓음(far: 아주 좁은 각은 폭이 충분한 더 먼 곳, 선을 안 지나는 자리만)
+      if (isSym(txt)) return null; // 기호(•×○)는 좁은 각 안에 들어가지 않으므로 호 바로 바깥에
+      const w = wOf(txt, size), lim = far ? Math.min(r + 110, lenMin * 0.75) : Math.min(r + 30, lenMin * 0.85);
+      let loose = null;
+      for (let rho = far ? r + 30 : r + 8; rho <= lim; rho += 4) {
+        for (const f of [0, 0.3, -0.3, 0.55, -0.55]) {
+          const a = mid + (f * d) / 2, x = S.x + Math.cos(a) * rho, y = S.y + Math.sin(a) * rho;
+          const rc = { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 };
+          const nx = Math.min(Math.max(S.x, rc.x0), rc.x1), ny = Math.min(Math.max(S.y, rc.y0), rc.y1);
+          if (Math.hypot(nx - S.x, ny - S.y) < r + 3) continue; // 호와 겹치지 않게
+          if (!corners(rc).every(([px, py]) => inWedge(px, py))) continue;
+          if (!okSpotA(rc)) continue;
+          if (lineFree(rc)) return { rr: r, x, y, rc };
+          if (!far) loose = loose || { rr: r, x, y, rc };
+        }
+      }
+      return loose;
+    };
+    const outside = (txt, rr, sz, tight) => { // 호 바로 바깥(이등분선 쪽)에, 글자 상자의 안쪽 끝이 호에 닿도록. 어떤 선도 안 지나는 자리를 먼저(기호 tight 는 이등분선 위, 각의 변은 지나도 됨)
+      const sy = isSym(txt), w = sy ? 16 : tw(txt, sz, 800), hh = sy ? 16 : sz * 1.15;
+      let first = null, own = null, loose = null;
+      for (const dr of tight ? [0, 6, 14, 24, 36, 50] : [0, 12, 24, 38]) {
+        for (const da of tight ? [0, 0.2, -0.2] : [0, 0.4, -0.4, 0.8, -0.8, 1.2, -1.2]) {
+          const a = mid + da, dist = rr + 6 + dr + Math.abs(Math.cos(a)) * w / 2 + Math.abs(Math.sin(a)) * hh / 2;
+          const x = S.x + Math.cos(a) * dist, y = S.y + Math.sin(a) * dist;
+          const rc = { x0: x - w / 2, x1: x + w / 2, y0: y - hh / 2, y1: y + hh / 2 };
+          const cand = { x, y, rc };
+          if (!first) first = cand;
+          if (!okSpotA(rc)) continue;
+          if (!lineFree(rc)) { loose = loose || cand; continue; }
+          if (tight || !PL.segs.some((s) => segHitsRect(s, rc))) return cand;
+          own = own || cand;
+        }
+      }
+      return own || loose || first;
+    };
+    // 값 후보: 전체 글자 → ('=' 앞은 이름, 뒤는 값) 또는 (값 + 뒤따르는 설명). 안쪽 → 호 너머 각 안쪽 순서로 시도
+    const cand = [[str, outer]];
+    if (str && !outer) {
+      const eq = str.indexOf('=');
+      if (eq > 0) {
+        const nm = str.slice(0, eq).trim();
+        let val = str.slice(eq + 1).trim(), bang = '';
+        if (val.endsWith('!')) { val = val.slice(0, -1); bang = '!'; }
+        cand.push([val, /^∠[A-Za-z'’]+$/.test(nm) ? '' : nm + bang]);
+      } else {
+        const m = str.match(/^(\S*?[°θ•×])\s*(.+)$/);
+        if (m) cand.push([m[1], m[2]]);
+      }
+    }
+    let res = null, txt = str, tail = outer;
+    search: for (const fn of [inside, beyond, (t) => beyond(t, true)]) {
+      for (const [t, tl] of cand) {
+        const q = t ? fn(t) : null;
+        if (q) { res = q; txt = t; tail = tl; break search; }
+      }
+    }
+    const regArc = (rr) => { // 그린 호도 '차지한 자리'로 기록: 이후의 이름표가 호 위에 겹쳐 놓이지 않게
+      const q = rr, n = Math.max(2, Math.ceil((q * ad) / 9));
+      for (let i = 0; i <= n; i++) { const a = t1 + (d * i) / n, x = S.x + Math.cos(a) * q, y = S.y + Math.sin(a) * q; PL.arcs.push({ x0: x - 3, x1: x + 3, y0: y - 3, y1: y + 3 }); }
+    };
+    if (res) {
+      arcs(res.rr);
+      put(res.x, res.y, txt, 12);
+      PL.placed.push(res.rc);
+      regArc(res.rr);
+    } else {
+      arcs(r);
+      regArc(r);
+      if (str) {
+        const o = outside(str, r, size, sym);
+        put(o.x, o.y, str, 12);
+        PL.placed.push(o.rc);
+      }
+      tail = outer;
+    }
+    if (tail) {
+      const o = outside(tail, res ? res.rr : r, tsz(11), isSym(tail));
+      put(o.x, o.y, tail, 11);
+      PL.placed.push(o.rc);
+    }
+  }
+  /** 길이 이름표(둥근 상자). 원본처럼 선분 중점에서 수직 방향으로 offsetNormal(px)만큼 떨어뜨려 놓되, 겹치면 선분을 따라/반대쪽으로 옮깁니다. */
+  function cbadge(a, b, text, col = '#fbbf24', offsetNormal = 15, pos = 0.5, partIdx = -1) {
+    if (PL.pass === 1) return;
+    if (BOARD.thumb || (state.conceptSwitch !== 'all' && state.conceptSwitch !== 'sides' && state.activePartIdx !== partIdx)) return;
+    const B = BOARD, c = B.ctx, A = B.toS(a), Z = B.toS(b);
+    const d = Math.hypot(Z.x - A.x, Z.y - A.y) || 1;
+    const nx = -(Z.y - A.y) / d, ny = (Z.x - A.x) / d;
+    const hi = state.activePartIdx !== -1 && state.activePartIdx === partIdx;
+    const str = cv(text);
+    const base = hi ? 12.5 : 11.5;
+    const size = tsz(base), weight = hi ? 900 : 800;
+    const w = tw(str, size, weight) + 12, h = size + 8, r = 5;
+    let first = null, pick = null;
+    search: for (const side of [1, -1]) {
+      for (const mult of [1, 1.7]) {
+        for (const sh of [0, 0.13, -0.13, 0.26, -0.26, 0.38, -0.38]) {
+          const q = Math.min(0.9, Math.max(0.1, pos + sh)), off = offsetNormal * side * mult;
+          const x = A.x + (Z.x - A.x) * q + nx * off, y = A.y + (Z.y - A.y) * q + ny * off;
+          const cand = { x, y, rect: { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 } };
+          if (!first) first = cand;
+          if (okSpot(cand.rect)) { pick = cand; break search; }
+        }
+      }
+    }
+    pick = pick || first;
+    const { x, y } = pick;
+    c.save();
+    c.fillStyle = B.colors.halo;
+    c.strokeStyle = B.color(col);
+    c.lineWidth = hi ? 2.4 : 1.3;
+    c.setLineDash([]);
+    if (hi && B.glowOn) { c.shadowColor = B.color(col, 0.75); c.shadowBlur = 12; }
+    c.beginPath();
+    c.moveTo(x - w / 2 + r, y - h / 2);
+    c.arcTo(x + w / 2, y - h / 2, x + w / 2, y + h / 2, r);
+    c.arcTo(x + w / 2, y + h / 2, x - w / 2, y + h / 2, r);
+    c.arcTo(x - w / 2, y + h / 2, x - w / 2, y - h / 2, r);
+    c.arcTo(x - w / 2, y - h / 2, x + w / 2, y - h / 2, r);
+    c.closePath();
+    c.fill();
+    c.stroke();
+    c.restore();
+    B._text(x, y + 0.5, str, { color: col, size: lsz(base), weight, align: 'center', baseline: 'middle', halo: false });
+    PL.placed.push(pick.rect);
+  }
+  /** 그림 아래 설명 글(여러 줄) — 족보 장면의 캔버스 직접 글자를 대신합니다. */
+  function cnote(p, lines, col) {
+    if (PL.pass === 1 || BOARD.thumb) return;
+    lines.forEach((ln, i) => BOARD.text(p, cv(ln), { color: col, size: lsz(12.5), weight: 800, align: 'center', baseline: 'alphabetic', dy: i * 17 }));
+  }
+  /** 반원·부채꼴(채움 + 윤곽, 중심으로 닫음) — 반원을 품은 직사각형 장면용 */
+  function csector(center, r, startDeg, endDeg, fill, stroke, width = 2.8, partIdx = -1) {
+    if (PL.pass === 1) return;
+    BOARD.arc(center, r, (startDeg * Math.PI) / 180, (endDeg * Math.PI) / 180, { sector: true, fill: fill || null, color: stroke || null, width, part: partOf(partIdx) });
+  }
+
+  /** 세 점 A, P, B를 지나는 원호의 점들(접힌 아치용). 세 점이 거의 한 직선이면 선분. */
+  function arcThrough(A, P, B, n = 40) {
+    const dd = 2 * (A.x * (P.y - B.y) + P.x * (B.y - A.y) + B.x * (A.y - P.y));
+    if (Math.abs(dd) < 1e-3) return [A, B];
+    const a2 = A.x * A.x + A.y * A.y, p2 = P.x * P.x + P.y * P.y, b2 = B.x * B.x + B.y * B.y;
+    const ux = (a2 * (P.y - B.y) + p2 * (B.y - A.y) + b2 * (A.y - P.y)) / dd;
+    const uy = (a2 * (B.x - P.x) + p2 * (A.x - B.x) + b2 * (P.x - A.x)) / dd;
+    const r = Math.hypot(A.x - ux, A.y - uy);
+    const TAU = Math.PI * 2, wrap = (x) => ((x % TAU) + TAU) % TAU;
+    const aA = Math.atan2(A.y - uy, A.x - ux), aP = Math.atan2(P.y - uy, P.x - ux), aB = Math.atan2(B.y - uy, B.x - ux);
+    const dAB = wrap(aB - aA), dAP = wrap(aP - aA);
+    const sweep = dAP <= dAB ? dAB : dAB - TAU; // A에서 B로, P를 지나는 쪽으로
+    const pts = [];
+    for (let i = 0; i <= n; i++) { const a = aA + (sweep * i) / n; pts.push({ x: ux + r * Math.cos(a), y: uy + r * Math.sin(a) }); }
+    return pts;
+  }
+
+  /* ===== 원본 그대로: 장면별 실시간 명세 getSpec (원본 780–1479행)
+     [2.0 수정] 단 한 가지: 수식의 \overparen{..}(호 기호) 5곳 → \overset{\frown}{..}. KaTeX가 \overparen을 지원하지 않아 원문이 빨갛게 그대로 보였습니다. ===== */
+    function getSpec() {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const ang = state.angPreset; // 30, 45, 60, 70
+      const R = state.radPreset;   // 6, 8, 10, 12
+
+      // ==================== [탭 1: 원과 현 · 원 접기 · 아치 복원] ====================
+      if (m === 1) {
+        if (sub === 'chordFoldArc') {
+          const om = R / 2;
+          return {
+            badge: `탐구 1-A · 🥟 원 모양 종이를 현 AB로 접어 호가 중심 O를 지날 때`,
+            hint: `원을 현 $AB$를 접는 선으로 하여 접었을 때 호가 중심 $O$를 지나면, 수선 $OM$과 접힌 $CM$이 같아져 <strong class="text-amber-300">OM = ½R (${om}cm)</strong>이 됩니다! 따라서 $\\triangle OAM$은 <strong class="text-sky-300">세 각이 $30^\\circ, 60^\\circ, 90^\\circ$이고 세 변의 길이의 비가 1 : √3 : 2인 직각삼각형</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 접힌 원 펼치기' : '🎬 현 AB로 접어 중심 O에 포개기!',
+            dim1Name: '각도 (∠AOM)', dim2Name: '반지름 R 스케일',
+            val1Txt: '60° (중심각 120°)', val2Txt: `R = ${R} cm`,
+            parts: [
+              { id: 0, name: `🩷 반토막 난 수선 OM = CM = ½R (${om} cm)`, desc: `반지름 OC(${R}cm)가 접혀서 정확히 반으로 나뉨!`, val: `OM = ${om} cm`, color: '#f472b6', ok: true },
+              { id: 1, name: `🟡 세 변의 길이의 비가 1 : √3 : 2인 직각삼각형 △OAM (60°·30°·90°)`, desc: `빗변 OA(${R}) : 밑변 OM(${om}) = 2 : 1 ⇒ AM = ${om}√3 cm!`, val: `AM = ${om}√3 cm`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🔵 현 AB의 전체 길이 (= 2 × AM = √3 R)`, desc: `AB = ${om}√3 × 2 = ${R}√3 cm, 중심각 ∠AOB = 120°!`, val: `AB = ${R}√3 cm`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `OM = ½R (${om}cm) ➔ △OAM은 30°·60°·90° 삼각형 ➔ 현 AB = ${R}√3 cm, ∠AOB = 120°`,
+            rule: '호가 중심 O를 지나도록 접으면 OM = ½R, ∠AOM = 60°, AB = √3 R 이다!',
+            formulaHTML: `• <strong>피타고라스 정리로 AM 구하기</strong>: ${tex(`\\overline{AM} = \\sqrt{R^2 - \\left(\\dfrac{R}{2}\\right)^2} = \\dfrac{\\sqrt{3}}{2}R = \\mathbf{${om}\\sqrt{3}\\text{ cm}}`)}<br/>• <strong>전체 현의 길이</strong>: ${tex(`\\overline{AB} = 2\\overline{AM} = \\mathbf{${R}\\sqrt{3}\\text{ cm}}`)}, 호 $AB$의 중심각 ${tex('\\angle AOB = 60^\\circ\\times 2 = \\mathbf{120^\\circ}')}!`,
+            notes: `• 더 나아가 <strong>접힌 활꼴 부분의 넓이</strong>를 물으면: <strong>(중심각 $120^\\circ$인 부채꼴 $OACB$ 넓이) $-$ (삼각형 $\\triangle OAB$ 넓이)</strong>로 구하면 됩니다!`,
+            tapeTitle: `현 AB(${R}√3 cm) 수직이등분: 왼쪽 AM(${om}√3 cm) = 오른쪽 BM(${om}√3 cm) [OM = ½R = ${om}cm]`,
+            tapeSegs: [
+              { text: `AM = ${om}√3 cm (비율 √3)`, weight: 0.5, color: '#fbbf24' },
+              { text: `BM = ${om}√3 cm (비율 √3)`, weight: 0.5, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'chordBisect') {
+          const d = Math.round(R * 0.6);
+          const am = Math.round(R * 0.8);
+          return {
+            badge: `탐구 1-B · 📏 원의 중심 O에서 현 AB에 내린 수선 — OM ⊥ AB ⟺ AM = BM (RHS 합동!)`,
+            hint: `원의 중심 $O$에서 현 $AB$에 수선의 발 $M$을 내리면, <strong>$\\triangle OAM \\equiv \\triangle OBM$ (RHS 합동: $90^\\circ$, 반지름 $OA=OB$, $OM$ 공통)</strong>이므로 현을 정확히 반으로 수직이등분합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 합쳐서 보기' : '🎬 좌·우 직각삼각형 RHS 합동 포개기!',
+            dim1Name: '피타고라스 비', dim2Name: '반지름 R 길이',
+            val1Txt: '3 : 4 : 5 직각삼각형', val2Txt: `R = ${R} cm`,
+            parts: [
+              { id: 0, name: `🟡 왼쪽 직각삼각형 △OAM ≡ 오른쪽 △OBM (RHS 합동)`, desc: `빗변 OA = OB = ${R}cm, 수선 OM = ${d}cm 공통`, val: `RHS 합동 ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 수직이등분된 현: AM = BM = √(${R}² - ${d}²) = ${am} cm`, desc: `따라서 현 전체 길이 AB = 2 × ${am} = ${am * 2} cm!`, val: `AB = ${am * 2} cm`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `OA = ${R}cm, OM = ${d}cm ➔ AM = BM = ${am}cm ➔ 현 AB 전체 = ${am * 2}cm`,
+            rule: '현의 길이는 직각삼각형 OAM에서 AM을 먼저 구한 뒤 2배(×2)를 하여 구한다!',
+            formulaHTML: `• ${tex(`\\overline{AM} = \\sqrt{\\overline{OA}^2 - \\overline{OM}^2} = \\sqrt{${R}^2 - ${d}^2} = \\mathbf{${am}\\text{ cm}}`)}<br/>• ${tex(`\\overline{AB} = 2\\overline{AM} = 2\\times ${am} = \\mathbf{${am * 2}\\text{ cm}}`)} (마지막에 $\\times 2$ 하는 것을 잊지 마세요!)`,
+            notes: `• 역으로 <strong>“현의 수직이등분선은 항상 원의 중심 $O$를 지난다”</strong>는 성질을 이용해 깨진 원의 중심을 작도할 수 있습니다!`,
+            tapeTitle: `현 AB(${am * 2}cm) = 왼쪽 AM(${am}cm) + 오른쪽 BM(${am}cm) [수직이등분 1 : 1]`,
+            tapeSegs: [
+              { text: `AM = ${am} cm`, weight: 0.5, color: '#fbbf24' },
+              { text: `BM = ${am} cm`, weight: 0.5, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'chordEqualDist') {
+          const d = Math.round(R * 0.6), ab = Math.round(R * 0.8) * 2;
+          return {
+            badge: `탐구 1-C · ⚖️ 원의 중심으로부터 같은 거리에 있는 두 현 — OM = ON ⟺ AB = CD`,
+            hint: `중심 $O$에서 두 현까지의 거리가 같으면(<strong class="text-pink-300">OM = ON = ${d}cm</strong>), 네 직각삼각형이 모두 합동이 되어 <strong class="text-amber-300">두 현의 길이도 같습니다(AB = CD = ${ab}cm)</strong>! 또한 삼각형 $\\triangle ABC$에서 $OM=ON$이면 <strong>$AB=AC$인 이등변삼각형</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 두 현 보기' : '🎬 현 CD를 회전시켜 현 AB에 포개기!',
+            dim1Name: '중심에서 거리 (OM=ON)', dim2Name: '반지름 R 길이',
+            val1Txt: `${d} cm 일치`, val2Txt: `R = ${R} cm`,
+            parts: [
+              { id: 0, name: `🩷 중심으로부터의 같은 수직거리 OM = ON = ${d} cm`, desc: `원의 중심에서 같은 거리에 있는 두 현의 길이는 같다!`, val: `OM = ON = ${d}`, color: '#f472b6', ok: true },
+              { id: 1, name: `🟡 현 AB (${ab} cm) = 🔵 현 CD (${ab} cm)`, desc: `현이 중심 O에 가까워질수록 길어지고, 중심을 지날 때 최대(지름 ${2 * R}cm)!`, val: `AB = CD = ${ab}`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `OM = ON (${d}cm) ⟺ 현 AB = 현 CD (${ab}cm)`,
+            rule: '원 안에 내접하는 △ABC에서 OM = ON 이면 ➔ AB = AC 인 이등변삼각형이다!',
+            formulaHTML: `• ${tex('\\overline{OM}=\\overline{ON}')} 이면 $\\triangle OAM \\equiv \\triangle OCN$ (RHS 합동) 이므로 ${tex('\\overline{AM}=\\overline{CN}')}<br/>• 양변에 2를 곱하면 ${tex('\\mathbf{\\overline{AB} = 2\\overline{AM} = 2\\overline{CN} = \\overline{CD}}')}!`,
+            notes: `• <strong>[응용]</strong>: 원에 내접하는 $\\triangle ABC$에서 중심 $O$에서 두 변 $AB, AC$에 내린 수선의 길이가 같고($OM=ON$) $\\angle A = 50^\\circ$일 때 $\\angle B$는? $\\implies AB=AC$인 이등변삼각형이므로 $(180^\\circ-50^\\circ)\\div 2 = \\mathbf{65^\\circ}$!`,
+            tapeTitle: `중심 거리 OM(${d}cm) = ON(${d}cm) ➔ 현 AB(${ab}cm) = 현 CD(${ab}cm)로 길이가 같음!`,
+            tapeSegs: [
+              { text: `현 AB = ${ab} cm`, weight: 0.5, color: '#fbbf24' },
+              { text: `현 CD = ${ab} cm`, weight: 0.5, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'chordArchRadius') {
+          return {
+            badge: `탐구 1-D · 🌉 깨진 접시 조각 / 아치형 다리(활꼴)의 원래 반지름 R 구하기`,
+            hint: `현의 길이 $AB = 16\\text{cm}$(반쪽 $AM=8\\text{cm}$)와 활꼴의 높이 $CM = 4\\text{cm}$만 주어졌을 때, 슬라이더로 <strong>숨어 있던 원래 원의 중심 $O$를 찾고</strong> 직각삼각형 세 변을 <strong class="text-amber-300">빗변 $R$, 밑변 $8$, 높이 $(R-4)$</strong>로 놓으면 반지름 $R=10\\text{cm}$가 복원됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 깨진 활꼴 조각만 보기' : '🎬 숨은 원 전체와 직각삼각형(R, R-4, 8) 복원!',
+            dim1Name: '식 세우기', dim2Name: '복원된 원래 반지름 R',
+            val1Txt: 'OM = R - 4', val2Txt: 'R = 10 cm!',
+            parts: [
+              { id: 0, name: `🟡 주어진 활꼴 조각: 현 AB = 16cm (AM = 8cm), 높이 CM = 4cm`, desc: `현의 수직이등분선 위에 원래 원의 중심 O가 존재함!`, val: `AM=8, CM=4`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 [핵심] 직각삼각형의 한 변 OM = (R - 4) cm!`, desc: `전체 반지름 OC(R)에서 활꼴 높이 CM(4)을 뺀 길이!`, val: `OM = R - 4`, color: '#f472b6', ok: true },
+              { id: 2, name: `🔵 피타고라스 방정식: R² = (R - 4)² + 8² ➔ R = 10 cm!`, desc: `R² = R² - 8R + 16 + 64 ⇒ 8R = 80 ⇒ R = 10 cm 복원!`, val: `R = 10 cm ⭕`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `R² = (R - 4)² + 8² ➔ 8R = 80 ➔ 원래 원의 반지름 R = 10 cm!`,
+            rule: '깨진 원(활꼴)의 반지름: 빗변 = R, 가로 = 현의 절반(a), 세로 = (R - h)로 놓고 피타고라스 정리를 쓴다!',
+            formulaHTML: `• ${tex('\\triangle OAM')}에서 ${tex('\\overline{OA}=R,\\; \\overline{AM}=8,\\; \\overline{OM}=R-4')}<br/>• ${tex('R^2 = (R-4)^2 + 8^2 \\implies \\cancel{R^2} = \\cancel{R^2} - 8R + 16 + 64 \\implies 8R = 80 \\implies \\mathbf{R = 10\\text{ cm}}')}!`,
+            notes: `• 이차방정식처럼 보이지만 양변의 $R^2$이 없어져서 <strong>일차방정식($2hR = h^2 + a^2$)</strong>이 됩니다!`,
+            tapeTitle: `반지름 OC(R=10cm) 분할: 중심에서 현까지 OM(R-4 = 6cm) + 활꼴 높이 CM(4cm) = 10cm`,
+            tapeSegs: [
+              { text: `OM = R - 4 = 6 cm`, weight: 0.6, color: '#f472b6' },
+              { text: `활꼴 높이 CM = 4 cm`, weight: 0.4, color: '#fbbf24' }
+            ]
+          };
+        }
+        // chordConcentric
+        const halfAB = R;
+        return {
+          badge: `탐구 1-E · 🍩 동심원에서 큰 원의 현 AB가 작은 원에 접할 때 — 두 원 사이의 고리 모양의 넓이`,
+          hint: `큰 원의 반지름 $R$과 작은 원의 반지름 $r$을 각각 몰라도, 접점 $M$에서 $OM \\perp AB$이므로 피타고라스 정리에 의해 <strong class="text-amber-300">$R^2 - r^2 = AM^2 = (${halfAB})^2 = ${halfAB * halfAB}$</strong>입니다! 따라서 색칠한 고리 넓이는 <strong class="text-emerald-300">$\\pi(R^2 - r^2) = ${halfAB * halfAB}\\pi$</strong>입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 동심원 보기' : '🎬 직각삼각형 △OAM (R² - r² = AM²) 강조',
+          dim1Name: '현 AB 전체 길이', dim2Name: '두 원 사이의 넓이',
+          val1Txt: `AB = ${halfAB * 2} cm (AM=${halfAB})`, val2Txt: `${halfAB * halfAB}π cm²!`,
+          parts: [
+            { id: 0, name: `🟡 작은 원의 접선이자 큰 원의 현 AB = ${halfAB * 2} cm`, desc: `접점 M은 현 AB를 수직이등분하므로 AM = BM = ${halfAB} cm!`, val: `AM = ${halfAB} cm`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🩷 직각삼각형 △OAM: R² - r² = AM² = ${halfAB * halfAB}`, desc: `R과 r을 따로 구할 필요 없이 (R² - r²) 통째로 구해짐!`, val: `R²-r² = ${halfAB * halfAB}`, color: '#f472b6', ok: true },
+            { id: 2, name: `🟢 두 원 사이의 넓이 = πR² - πr² = π(R² - r²) = ${halfAB * halfAB}π cm²!`, desc: `정리하면 π × (현의 절반 AM)² = ${halfAB * halfAB}π cm²!`, val: `${halfAB * halfAB}π cm²`, color: '#34d399', ok: true }
+          ],
+          totalRes: `현 AB = ${halfAB * 2}cm ➔ 반쪽 AM = ${halfAB}cm ➔ 고리 넓이 π(R²-r²) = π·AM² = ${halfAB * halfAB}π cm²`,
+          rule: '동심원 사이의 넓이 = π × (작은 원에 접하는 현의 길이의 절반)²',
+          formulaHTML: `• (고리의 넓이) $= \\pi R^2 - \\pi r^2 = \\pi(R^2 - r^2)$<br/>• 직각삼각형 $\\triangle OAM$에서 $R^2 - r^2 = \\overline{AM}^2 = ${halfAB}^2 = ${halfAB * halfAB}$ 이므로 정답은 $\\mathbf{${halfAB * halfAB}\\pi\\text{ cm}^2}$!`,
+          notes: `• $R$과 $r$의 값을 따로 구하지 않아도 됩니다! 현의 길이를 반으로 나눈 뒤 제곱하고 $\\pi$만 붙이면 1초 컷입니다.`,
+          tapeTitle: `현 AB(${halfAB * 2}cm)의 절반 AM(${halfAB}cm) 제곱 × π = 두 원 사이의 넓이(${halfAB * halfAB}π cm²)!`,
+          tapeSegs: []
+        };
+      }
+
+      // ==================== [탭 2: 원과 접선 · 내접원 · 피토 정리] ====================
+      if (m === 2) {
+        if (sub === 'tangentPerimTri') {
+          const pa = R + 2;
+          return {
+            badge: `탐구 2-A · 🔺 [킬러] 접선 3개로 둘러싸인 △PCD의 둘레 = 2 × PA (항상 일정!)`,
+            hint: `슬라이더를 당겨 안쪽 접선 $CD$의 양 날개(<strong class="text-sky-300">CA = CE</strong>, <strong class="text-pink-300">DB = DE</strong>)를 바깥쪽으로 펴보세요! 점 $E$의 위치와 상관없이 <strong>$\\triangle PCD$의 둘레는 언제나 $PA + PB = 2\\overline{PA} = ${pa * 2}\\text{cm}$</strong>로 똑같습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 다시 △PCD로 접기' : '🎬 접선 조각 CE→CA, DE→DB로 펴서 2·PA 확인',
+            dim1Name: '한 접선의 길이 PA', dim2Name: '△PCD 둘레의 길이',
+            val1Txt: `PA = PB = ${pa} cm`, val2Txt: `2 × ${pa} = ${pa * 2} cm!`,
+            parts: [
+              { id: 0, name: `🔵 위쪽 꺾인 날개: PC + CE = PC + CA = PA (${pa} cm)`, desc: `점 C에서 그은 두 접선 CA = CE 이므로 곧게 펴면 PA와 일치!`, val: `위쪽 합 = ${pa} cm`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🩷 아래쪽 꺾인 날개: PD + DE = PD + DB = PB (${pa} cm)`, desc: `점 D에서 그은 두 접선 DB = DE 이므로 곧게 펴면 PB와 일치!`, val: `아래 합 = ${pa} cm`, color: '#f472b6', ok: true },
+              { id: 2, name: `🟡 결론: △PCD의 둘레 = PA + PB = ${pa * 2} cm`, desc: `반대로 △PCD 둘레가 ${pa * 2}cm로 주어지면 PA = ${pa * 2}÷2 = ${pa}cm!`, val: `둘레 = ${pa * 2} cm`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `(△PCD의 둘레) = PC + CD + PD = (PC+CA) + (PD+DB) = PA + PB = ${pa * 2} cm`,
+            rule: '원 밖의 점 P에서 그은 접선 PA에 대하여 (△PCD의 둘레) = 2 × PA',
+            formulaHTML: `• ${tex('\\overline{CE}=\\overline{CA},\\; \\overline{DE}=\\overline{DB}')} 이므로:<br/>&nbsp;&nbsp;${tex('(\\triangle PCD\\text{ 둘레}) = \\overline{PC} + (\\overline{CE}+\\overline{DE}) + \\overline{PD} = (\\overline{PC}+\\overline{CA}) + (\\overline{PD}+\\overline{DB}) = \\overline{PA}+\\overline{PB} = \\mathbf{2\\overline{PA}}')}!`,
+            notes: `• 거꾸로 <strong>“$\\triangle PCD$의 둘레가 $24\\text{cm}$일 때 $\\overline{PA}$의 길이를 구하시오”</strong>로 물을 수도 있습니다. 둘레를 반으로 나누면 <strong>$24 \\div 2 = 12\\text{cm}$</strong>입니다!`,
+            tapeTitle: `△PCD 둘레(${pa * 2}cm) = 위쪽 날개(PC+CE = PA = ${pa}cm) + 아래쪽 날개(PD+DE = PB = ${pa}cm)`,
+            tapeSegs: [
+              { text: `PC + CE = PA (${pa} cm)`, weight: 0.5, color: '#38bdf8' },
+              { text: `PD + DE = PB (${pa} cm)`, weight: 0.5, color: '#f472b6' }
+            ]
+          };
+        }
+        if (sub === 'tangentLen') {
+          const angP = ang;
+          const angO = 180 - angP;
+          return {
+            badge: `탐구 2-B · ✂️ 원 밖의 한 점 P에서 그은 두 접선의 길이 (PA = PB, ∠AOB + ∠APB = 180°)`,
+            hint: `원 밖의 점 $P$에서 그은 두 접선의 길이는 <strong>$\\triangle PAO \\equiv \\triangle PBO$ (RHS 합동)</strong>에 의해 항상 같습니다(<strong class="text-amber-300">PA = PB</strong>)! 또한 두 접점의 각이 $90^\\circ$이므로 <strong class="text-sky-300">중심각 $\\angle AOB(${angO}^\\circ) + \\angle APB(${angP}^\\circ) = 180^\\circ$</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 접선 보기' : '🎬 선분 OP가 현 AB를 수직이등분하는 성질 보기',
+            dim1Name: '점 P의 각 (∠APB)', dim2Name: '중심각 (∠AOB)',
+            val1Txt: `${angP}°`, val2Txt: `180° - ${angP}° = ${angO}°`,
+            parts: [
+              { id: 0, name: `🟡 위·아래 직각삼각형 △PAO ≡ △PBO (RHS 합동!)`, desc: `∠OAP=∠OBP=90°(R), 빗변 OP 공통(H), 반지름 OA=OB(S) ⇒ PA = PB!`, val: `PA = PB ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 사각형 APBO 대각의 합 = 180° (원에 내접하는 사각형!)`, desc: `∠A + ∠B = 90° + 90° = 180° 이므로 ∠AOB + ∠APB = 180°!`, val: `${angO}°+${angP}°=180°`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 선분 OP는 현 AB를 수직이등분 (OP ⊥ AB, AH = BH)`, desc: `이등변삼각형 △PAB의 꼭지각 이등분선은 밑변 AB를 수직이등분!`, val: `OP ⊥ AB`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `PA = PB | ∠AOB(${angO}°) + ∠APB(${angP}°) = 180° | OP ⊥ AB (AH = BH)`,
+            rule: '접선이 나오면 중심 O에서 접점 A, B에 반지름을 그어 직각(90°)을 표시한다!',
+            formulaHTML: `• 사각형 $APBO$의 내각의 합은 $360^\\circ$이고 $\\angle OAP = \\angle OBP = 90^\\circ$이므로:<br/>&nbsp;&nbsp;${tex(`\\mathbf{\\angle AOB + \\angle APB = 180^\\circ}`)}<br/>• 나아가 호 $AB$에 대한 원주각 $\\angle ACB$까지 결합하면 ${tex(`\\angle ACB = \\dfrac{1}{2}\\angle AOB = \\mathbf{${angO / 2}^\\circ}`)}!`,
+            notes: `• $\\triangle PAO$에서 현의 수선 $AH$를 내리면 직각삼각형 $PAO$의 넓이를 두 가지로 나타낸 식(<strong>$OA \\cdot PA = OP \\cdot AH$</strong>)으로 $AH$를 구하면 현 $AB = 2AH$의 길이를 구할 수 있습니다!`,
+            tapeTitle: `사각형 APBO 마주 보는 각의 합: 중심각 ∠AOB(${angO}°) + 바깥각 ∠APB(${angP}°) = 180°`,
+            tapeSegs: [
+              { text: `중심각 ∠AOB = ${angO}°`, weight: angO / 180, color: '#38bdf8' },
+              { text: `바깥각 ∠APB = ${angP}°`, weight: angP / 180, color: '#fbbf24' }
+            ]
+          };
+        }
+        if (sub === 'inscribedTri') {
+          return {
+            badge: `탐구 2-C · 💠 삼각형의 내접원 — 세 꼭짓점에서 접점까지의 길이(x, y, z)와 직각삼각형의 내접원의 반지름 r`,
+            hint: `삼각형 세 변이 내접원과 만나는 접점까지의 길이는 꼭짓점마다 <strong>두 접선의 길이가 같아 $(x,x), (y,y), (z,z)$</strong>입니다! 특히 <strong>직각삼각형(6-8-10)에서는 직각 쪽 사각형이 한 변이 $r$인 정사각형</strong>이 되어 <strong class="text-amber-300">r = (6 + 8 - 10) ÷ 2 = 2cm</strong>로 구해집니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 내접원 보기' : '🎬 직각삼각형에서 한 변이 r인 정사각형 보기',
+            dim1Name: '세 변 (6, 8, 10)', dim2Name: '내접원 반지름 r',
+            val1Txt: '직각삼각형 6·8·10', val2Txt: 'r = (6+8-10)÷2 = 2cm',
+            parts: [
+              { id: 0, name: `🟢 직각 꼭짓점 쪽 정사각형 (한 변의 길이 = 내접원 반지름 r = 2)`, desc: `이웃한 두 각이 90°이고 이웃한 변이 반지름 r로 같으므로 정사각형!`, val: `정사각형 r = 2`, color: '#34d399', ok: true },
+              { id: 1, name: `🟡 위쪽 접선 쌍 (6 - r = 4cm) & 🔵 오른쪽 접선 쌍 (8 - r = 6cm)`, desc: `빗변 10cm = (6 - r) + (8 - r) ⇒ 10 = 14 - 2r ⇒ r = 2 cm!`, val: `4 + 6 = 10 cm`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🩷 넓이로 확인: S = ½ r (a + b + c) = ½ ab`, desc: `½ × 2 × (6+8+10) = 24 cm² = ½ × 6 × 8 (같음!)`, val: `넓이 24 cm²`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `직각삼각형(6,8,10) 내접원 반지름 r = (6 + 8 - 10) ÷ 2 = 2 cm | 넓이 = 24 cm²`,
+            rule: '삼각형의 접선의 길이: x = (세 변의 길이의 합의 절반) - (x의 맞은편 변)  |  직각삼각형의 내접원의 반지름: 2r = (직각을 낀 두 변의 합) - (빗변)',
+            formulaHTML: `• <strong>직각삼각형의 내접원의 반지름</strong>: ${tex('\\mathbf{r = \\dfrac{a + b - c}{2}}')}<br/>&nbsp;&nbsp;- $3:4:5$ 삼각형 $\\implies r = \\frac{3+4-5}{2} = \\mathbf{1}$<br/>&nbsp;&nbsp;- $6:8:10$ 삼각형 $\\implies r = \\frac{6+8-10}{2} = \\mathbf{2}$<br/>&nbsp;&nbsp;- $5:12:13$ 삼각형 $\\implies r = \\frac{5+12-13}{2} = \\mathbf{2}$`,
+            notes: `• 삼각형의 세 변이 $a, b, c$일 때 꼭짓점에서 접점까지의 길이 $x$를 구하는 방법: 세 변의 길이를 모두 더한 뒤 반으로 나누고($s = \\frac{a+b+c}{2}$), 그 꼭짓점의 맞은편 변 $a$를 빼면 됩니다(<strong>$x = s - a$</strong>)!`,
+            tapeTitle: `빗변(10cm) = 왼쪽 접선(6 - r = 4cm) + 오른쪽 접선(8 - r = 6cm) [r = 2cm]`,
+            tapeSegs: [
+              { text: `6 - r = 4 cm`, weight: 0.4, color: '#fbbf24' },
+              { text: `8 - r = 6 cm`, weight: 0.6, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'pitotQuad') {
+          const a = 3, b = 4, c = 6, d = 5;
+          const sum = a + b + c + d;
+          return {
+            badge: `탐구 2-D · 💎 원에 외접하는 사각형에서는 두 쌍의 대변의 길이의 합이 같다 (AB + CD = AD + BC)`,
+            hint: `원에 외접하는 사각형 $ABCD$의 네 꼭짓점에서 그은 접선 조각 <strong>$(a,a), (b,b), (c,c), (d,d)$</strong>를 색깔별로 확인하세요! <strong>윗변+아랫변도 $a+b+c+d$</strong>이고, <strong>왼변+오른변도 $a+b+c+d$</strong>이므로 마주 보는 대변의 길이의 합이 같습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 사각형 보기' : '🎬 네 접선의 길이(a, b, c, d)를 색깔별로 보기',
+            dim1Name: '윗변 AD + 아랫변 BC', dim2Name: '왼변 AB + 오른변 CD',
+            val1Txt: `8 + 10 = ${sum} cm`, val2Txt: `7 + 9 = ${sum} cm!`,
+            parts: [
+              { id: 0, name: `🟡 위·아래 대변의 합: AD(a+d = 8) + BC(b+c = 10) = ${sum} cm`, desc: `a(3) + d(5) + b(4) + c(6) = 18 cm`, val: `AD+BC = 18 cm`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 좌·우 대변의 합: AB(a+b = 7) + CD(c+d = 11) = ${sum} cm`, desc: `a(3) + b(4) + c(6) + d(5) = 18 cm (같음!)`, val: `AB+CD = 18 cm`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `AB(7) + CD(11) = AD(8) + BC(10) = 18 cm | 전체 둘레 = 18 × 2 = 36 cm`,
+            rule: '원에 외접하는 사각형: (왼쪽 변 + 오른쪽 변) = (윗변 + 아랫변) = (둘레의 길이의 절반)',
+            formulaHTML: `• ${tex('\\overline{AB} + \\overline{CD} = (a+b) + (c+d) = a+b+c+d')}<br/>• ${tex('\\overline{AD} + \\overline{BC} = (a+d) + (b+c) = a+b+c+d')}<br/>• 따라서 ${tex('\\mathbf{\\overline{AB} + \\overline{CD} = \\overline{AD} + \\overline{BC}}')}!`,
+            notes: `• <strong>[주의]</strong>: 원이 사각형 <strong>안에</strong> 들어 있는 경우(원에 외접하는 사각형)는 <strong>‘마주 보는 변의 길이의 합’</strong>이 같고, 사각형이 원 <strong>안에</strong> 들어있는 경우(내접사각형, 탐구 4)는 <strong>‘마주 보는 각의 크기의 합($180^\\circ$)’</strong>이 같습니다!`,
+            tapeTitle: `대변의 길이의 합이 같음: [AB(7) + CD(11) = 18cm] = [AD(8) + BC(10) = 18cm]`,
+            tapeSegs: [
+              { text: `a=3`, weight: 3 / 18, color: '#fbbf24' },
+              { text: `b=4`, weight: 4 / 18, color: '#38bdf8' },
+              { text: `c=6`, weight: 6 / 18, color: '#34d399' },
+              { text: `d=5`, weight: 5 / 18, color: '#f472b6' }
+            ]
+          };
+        }
+        // pitotRectTrap
+        // [2.0 수정] 원본 문장의 숫자(DP=DA=6, DE=6+x=10, BE=2 …)는 수학적으로 맞지 않고(6+x=10 이면 x=4 인데 EC=2 → 10² ≠ 2² + 12²) 그림·띠·공식(가로 9, DE=13, EC=5)과도 달랐습니다.
+        //            그림·띠·공식이 맞으므로 문장·수치를 그림에 맞춰 고쳤습니다: DP=DA=9, EP=EB=x=4, DE=9+x=13, EC=9-x=5 (반지름 6, AB=12).
+        return {
+          badge: `탐구 2-E · 🏛️ [심화 킬러] 반원이 접하는 직사각형 & 접선의 길이와 피타고라스 정리 (DE = DA + BE)`,
+          hint: `세로 $AB=12\\text{cm}$를 지름으로 하는 반원(반지름 $6\\text{cm}$)이 변 $AD$(점 $A$)와 $BC$(점 $B$)에 접하는 가로 $9\\text{cm}$ 직사각형에서 접선 $DE$를 그으면, <strong>위쪽 접선 $DP=DA=9\\text{cm}$</strong>이고 <strong>아래쪽 접선 $EP=EB=x$</strong>입니다! 오른쪽 직각삼각형 $\\triangle DEC$에서 피타고라스 정리를 쓰면 $x=4\\text{cm}$를 구할 수 있습니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 처음 그림으로' : '🎬 오른쪽 직각삼각형 △DEC (9+x, 9-x, 12) 보기',
+          dim1Name: '빗변 DE의 길이', dim2Name: '아래쪽 접선 EP = EB (= x)',
+          val1Txt: 'DE = 9 + x (13 cm)', val2Txt: 'x = 4 cm (EC = 5 cm)',
+          parts: [
+            { id: 0, name: `🟡 위쪽 접선 쌍: DP = DA = 가로 9 cm`, desc: `점 D에서 반원에 그은 두 접선(DA, DP)의 길이는 같다!`, val: `DP = DA = 9`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🩷 아래쪽 미지수 접선 쌍: EP = EB = x (4 cm)`, desc: `점 E에서 그은 두 접선(EB, EP)의 길이도 같으므로 빗변 DE = 9 + x!`, val: `EP = EB = x`, color: '#f472b6', ok: true },
+            { id: 2, name: `🔵 직각삼각형 △DEC 피타고라스: (9+x)² = (9-x)² + 12²`, desc: `81 + 18x + x² = 81 - 18x + x² + 144 ⇒ 36x = 144 ⇒ x = 4!`, val: `DE=13, EC=5`, color: '#38bdf8', ok: true }
+          ],
+          totalRes: `DE = DA + EB = 9 + x, EC = 9 - x ➔ (9+x)² = (9-x)² + 12² ➔ x = 4 cm (DE = 13, EC = 5)`,
+          rule: '반원이 접하는 직사각형: ① 접선의 길이가 같음(DE = a + x)을 이용해 변의 길이 나타내기  ② 오른쪽 △DEC에서 피타고라스 정리 쓰기',
+          formulaHTML: `• 직사각형 가로가 $9\\text{cm}$, 세로가 $12\\text{cm}$(반지름 $6$)일 때:<br/>&nbsp;&nbsp;$\\overline{DA} = \\overline{DP} = 9$, $\\overline{EB} = \\overline{EP} = x$ 로 놓으면 $\\triangle DEC$에서:<br/>&nbsp;&nbsp;${tex('\\overline{DE} = 9+x,\\; \\overline{DC}=12,\\; \\overline{EC}=9-x')} ${tex('\\implies (9+x)^2 = (9-x)^2 + 12^2 \\implies 36x = 144 \\implies \\mathbf{x = 4\\text{ cm}}')}!`,
+          notes: `• <strong>[함정]</strong> 반원의 지름 $AB$는 접선이 아닙니다. 그래서 사각형 $ABED$에 “원에 외접하는 사각형에서는 두 쌍의 대변의 길이의 합이 같다”는 성질($AB + DE = AD + BE$)을 쓰면 안 됩니다($12 + 13 \\neq 9 + 4$). 점 $D$, $E$에서 반원에 그은 <strong>접선의 길이가 서로 같다</strong>는 성질만 쓰세요!`,
+          tapeTitle: `빗변 접선 DE(13cm) = 위쪽 접선 DP(=DA=9cm) + 아래쪽 접선 EP(=EB=4cm)`,
+          tapeSegs: [
+            { text: `DP = DA = 9 cm`, weight: 9 / 13, color: '#fbbf24' },
+            { text: `EP = EB = 4 cm`, weight: 4 / 13, color: '#f472b6' }
+          ]
+        };
+      }
+
+      // ==================== [탭 3: 원주각=½중심각 · 반원 90° · 삼각비] ====================
+      if (m === 3) {
+        const cAng = ang * 2;
+        if (sub === 'inscribedAngle3Cases') {
+          return {
+            badge: `탐구 3-A · 🎯 왜 원주각은 항상 중심각의 절반(½)일까? — 지름 PQ와 이등변삼각형의 외각으로 설명하기`,
+            hint: `원주각 꼭짓점 $P$와 중심 $O$를 지나는 <strong class="text-pink-300">지름 보조선 $PQ$</strong>를 그어보세요! 반지름 $OP=OA=OB$이므로 양쪽에 <strong>이등변삼각형 2개</strong>가 생기고, 삼각형 외각 정리에 의해 중심각은 $(\\bullet+\\bullet) + (\\times+\\times) = 2(\\bullet+\\times)$가 되어 정확히 2배가 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 지름 보조선 숨기기' : '🎬 지름 보조선 PQ를 긋고 외각(2• + 2×) 확인',
+            dim1Name: '원주각 ∠APB (= •+×)', dim2Name: '중심각 ∠AOB (= 2•+2×)',
+            val1Txt: `${ang}°`, val2Txt: `2 × ${ang}° = ${cAng}°`,
+            parts: [
+              { id: 0, name: `🟡 왼쪽 이등변삼각형 △OPA (OP = OA = 반지름 R)`, desc: `두 밑각이 •로 같으므로 외각 ∠AOQ = • + • = 2•!`, val: `외각 = 2•`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 오른쪽 이등변삼각형 △OPB (OP = OB = 반지름 R)`, desc: `두 밑각이 ×로 같으므로 외각 ∠BOQ = × + × = 2×!`, val: `외각 = 2×`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 지름 보조선 PQ 합체: ∠AOB = 2(• + ×) = 2 ∠APB!`, desc: `따라서 원주각 ∠APB(${ang}°) = ½ ∠AOB(${cAng}°)!`, val: `${ang}° = ½(${cAng}°)`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `원주각 ∠APB = • + × = ${ang}° | 중심각 ∠AOB = 2• + 2× = ${cAng}° (정확히 2배!)`,
+            rule: '한 호에 대한 원주각의 크기는 그 호에 대한 중심각의 크기의 1/2 이다!',
+            formulaHTML: `• <strong>외각 정리 증명</strong>:<br/>&nbsp;&nbsp;① $\\triangle OPA$에서 $\\overline{OP}=\\overline{OA} \\implies \\angle AOQ = \\bullet + \\bullet = 2\\bullet$<br/>&nbsp;&nbsp;② $\\triangle OPB$에서 $\\overline{OP}=\\overline{OB} \\implies \\angle BOQ = \\times + \\times = 2\\times$<br/>&nbsp;&nbsp;③ $\\therefore \\angle AOB = 2(\\bullet + \\times) = \\mathbf{2\\angle APB}$!`,
+            notes: `• 둔각 원주각(중심각이 $180^\\circ$보다 큰 경우)일 때도 똑같이 <strong>반대쪽 큰 호의 중심각($360^\\circ - \\angle AOB$)의 절반</strong>으로 계산하면 실수하지 않습니다!`,
+            tapeTitle: `중심각 ∠AOB(${cAng}°) = 원주각 ∠APB(${ang}°) + 원주각 ∠APB(${ang}°) [정확히 2 : 1]`,
+            tapeSegs: [
+              { text: `원주각 θ = ${ang}° (½)`, weight: 0.5, color: '#fbbf24' },
+              { text: `원주각 θ = ${ang}° ➔ 합쳐서 중심각 2θ = ${cAng}°!`, weight: 0.5, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'inscribedMoveArc') {
+          return {
+            badge: `탐구 3-B · 🌈 한 호 AB에 대한 원주각 — 점 P가 원주 위 어디에 있어도 크기는 ${ang}°로 일정!`,
+            hint: `슬라이더를 움직여 원주 위의 점 $P$를 왼쪽 끝에서 오른쪽 끝까지 움직여 보세요! <strong>호 $AB$가 정해져 있으면 점 $P$가 어디에 있어도 원주각 $\\angle APB$는 모두 중심각(${cAng}°)의 절반인 <span class="text-amber-300">${ang}°로 모두 같습니다!</span></strong>`,
+            actionTxt: state.fold > 0.5 ? '🎬 처음 위치 P₁으로' : '🎬 원주 위에서 점 P를 움직여 보기',
+            dim1Name: '원주각 ∠AP₁B = ∠AP₂B', dim2Name: '호의 길이와 원주각 비례',
+            val1Txt: `모두 ${ang}°로 일정!`, val2Txt: '호의 길이에 정비례!',
+            parts: [
+              { id: 0, name: `🟡 기준 호 AB (중심각 = ${cAng}°)`, desc: `원주 전체 둘레의 (${cAng}/360) 만큼을 차지하는 호`, val: `중심각 ${cAng}°`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 움직이는 원주각 ∠APB = ∠AQB = ${ang}°`, desc: `선분이 교차해도 같은 호에 대한 원주각은 같다!`, val: `원주각 ${ang}° 불변`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `같은 호(또는 길이가 같은 호)에 대한 원주각의 크기는 모두 ${ang}°로 같다!`,
+            rule: '원 전체(한 바퀴 호)에 대한 중심각 합 = 360°  |  원 전체에 대한 원주각 합 = 180°!',
+            formulaHTML: `• <strong>[킬러] 호의 길이의 비가 주어질 때</strong>: 원주 위의 세 점 $A, B, C$가 호의 길이를 $\\overset{\\frown}{AB} : \\overset{\\frown}{BC} : \\overset{\\frown}{CA} = 3 : 4 : 5$로 나눌 때 $\\angle C$의 크기는?<br/>&nbsp;&nbsp;$\\implies$ 원 전체 원주각의 합은 **$180^\\circ$**이므로 ${tex('\\angle C = 180^\\circ \\times \\dfrac{3}{3+4+5} = \\mathbf{45^\\circ}')}!`,
+            notes: `• <strong>[참고]</strong>: 호의 길이가 원주의 $\\frac{1}{k}$이면 중심각($360^\\circ$)을 거치지 않고 바로 **$180^\\circ \\times \\frac{1}{k}$**로 원주각을 구할 수 있습니다!`,
+            tapeTitle: `원 전체 원주각의 합 = 180° | 현재 호 AB의 원주각(${ang}°)은 전체 원주의 ${fmtNum((ang / 180) * 100)}%`,
+            tapeSegs: [
+              { text: `현재 호 AB의 원주각 (${ang}°)`, weight: ang / 180, color: '#fbbf24' },
+              { text: `나머지 호의 원주각 (${180 - ang}°) ➔ 합 = 180°!`, weight: (180 - ang) / 180, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'thalesSemiCircle') {
+          return {
+            badge: `탐구 3-C · 📐 반원(지름 AB)에 대한 원주각 — 지름에 대한 원주각은 90°!`,
+            hint: `선분 $AB$가 원의 중심 $O$를 지나는 <strong>지름(중심각 $180^\\circ$)</strong>이면, 원주 위의 어떤 점 $P$와 연결해도 원주각은 $180^\\circ$의 절반인 <strong class="text-amber-300">90° 직각($\\angle APB = 90^\\circ$)</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 위치로' : '🎬 반원 위의 점 P를 움직이며 90° 확인',
+            dim1Name: '지름의 중심각', dim2Name: '반원의 원주각 (∠APB)',
+            val1Txt: '평각 180°', val2Txt: '항상 90° (직각)',
+            parts: [
+              { id: 0, name: `🟡 원의 중심 O를 지나는 지름 AB (중심각 = 180°)`, desc: `직각삼각형 △APB의 빗변이자 외접원의 지름 (외심 = O!)`, val: `중심각 180°`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 반원에 대한 원주각 ∠APB = ½ × 180° = 90°!`, desc: `점 P가 원주 위 어디에 있든 항상 90° 직각!`, val: `∠APB = 90° ⊥`, color: '#f472b6', ok: true },
+              { id: 2, name: `🔵 보조선 활용: 지름이 나오면 원주 위 점과 이어 90°를 만든다!`, desc: `90°를 만든 뒤 나머지 예각(90° - θ)을 구한다!`, val: `지름에 대한 원주각`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `AB가 지름(180°) ⟺ 원주각 ∠APB = 90° (점 O는 직각삼각형 △APB의 외심!)`,
+            rule: '"지름 AB"가 주어졌는데 90°인 각이 보이지 않으면 ➔ 원주 위의 점과 이어 90° 직각을 만든다!',
+            formulaHTML: `• 지름 $AB$에 의해 $\\angle APB = 90^\\circ$ 이므로, 만약 한 원주각이 $\\theta = ${ang}^\\circ$이면 나머지 각은 ${tex(`90^\\circ - ${ang}^\\circ = \\mathbf{${90 - ang}^\\circ}`)}가 됩니다!`,
+            notes: `• 중2에서 배운 <strong>“직각삼각형의 외심은 빗변의 중점이다”</strong>와 중3의 <strong>“반원에 대한 원주각은 $90^\\circ$이다”</strong>는 같은 내용을 서로 다르게 나타낸 것입니다!`,
+            tapeTitle: `직각삼각형 △APB 내각: 직각 ∠P(90°) + 두 예각의 합(∠A + ∠B = 90°) = 180°`,
+            tapeSegs: [
+              { text: `반원의 원주각 ∠APB = 90° (고정!)`, weight: 0.5, color: '#f472b6' },
+              { text: `나머지 두 예각의 합 = 90°`, weight: 0.5, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'inscribedTrig') {
+          return {
+            badge: `탐구 3-D · 📊 [삼각비와 원주각] 원주각 ∠A를 지름의 끝점 A'에서의 원주각으로 옮겨 sin A, cos A 구하기`,
+            hint: `직각삼각형이 아닌 $\\triangle ABC$에서 $\\sin A$를 구하려면 슬라이더를 당겨 꼭짓점 $A$를 원주를 따라 이동시켜 <strong>지름 $A'B(=2R=${2 * R}\\text{cm})$를 빗변으로 하는 직각삼각형 $\\triangle A'BC(\\angle C=90^\\circ)$</strong>를 만들면 <strong class="text-amber-300">$\\sin A = \\sin A' = \\frac{BC}{2R}$</strong>가 바로 보입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원래 △ABC로' : '🎬 점 A를 지름 끝 A\'으로 옮겨 직각삼각형 만들기!',
+            dim1Name: '외접원 지름 2R', dim2Name: '삼각비 (sin A)',
+            val1Txt: `A'B = ${2 * R} cm`, val2Txt: `sin A = BC / ${2 * R}`,
+            parts: [
+              { id: 0, name: `🔵 원래 삼각형 △ABC (직각삼각형이 아니어서 삼각비를 바로 쓸 수 없음)`, desc: `호 BC에 대한 원주각 ∠BAC = ∠A`, val: `원래 ∠A`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 지름을 지나도록 옮긴 직각삼각형 △A'BC (∠A'CB = 90°!)`, desc: `원주각 성질로 ∠A = ∠A' 이고, 빗변 A'B = 지름 ${2 * R} cm!`, val: `∠A' = ∠A, 90°!`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🩷 결론: sin A = sin A' = BC / A'B = ${R} / ${2 * R} = 1/2!`, desc: `피타고라스로 A'C도 구하면 cos A, tan A까지 전부 해결!`, val: `sin A = BC / 2R`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `원주각 이동 ∠A = ∠A' ➔ 직각삼각형 △A'BC (∠C=90°, 빗변 2R) ➔ sin A = a / 2R!`,
+            rule: '원 안의 삼각형에서 삼각비(sin, cos, tan)를 구할 때는 ➔ 원주각을 옮겨 지름을 빗변으로 하는 직각삼각형을 만든다!',
+            formulaHTML: `• ${tex('\\angle A = \\angle A\'')} 이고 지름에 대한 원주각 ${tex('\\angle A\'CB = 90^\\circ')} 이므로:<br/>&nbsp;&nbsp;${tex(`\\mathbf{\\sin A = \\sin A\' = \\dfrac{\\overline{BC}}{\\overline{A\'B}} = \\dfrac{\\overline{BC}}{2R}}`)}`,
+            notes: `• 이렇게 원주각을 지름의 끝점으로 옮기면 <strong>‘삼각비와 원주각을 함께 쓰는 문제’</strong>를 풀 수 있습니다!`,
+            tapeTitle: `직각삼각형 △A'BC 변환: 빗변 A'B = 지름 2R(${2 * R}cm) ➔ sin A = 맞은편 현 BC / 지름 2R`,
+            tapeSegs: []
+          };
+        }
+        // fourPointsCircle
+        return {
+          badge: `탐구 3-E · ⭕ 네 점 A, B, C, D가 한 원 위에 있을 조건 — 같은 쪽에서 바라본 두 각 일치 (∠BAC = ∠BDC)!`,
+          hint: `선분 $BC$에 대하여 같은 쪽에 있는 두 점 $A, D$에서 바라본 각이 같으면(<strong class="text-amber-300">$\\angle BAC = \\angle BDC = ${ang}^\\circ$</strong>), 네 점 $A, B, C, D$는 <strong>한 원 위에 있습니다(⭕)</strong>! 슬라이더로 점 $D$가 원 밖으로 벗어날 때 각도가 작아지는 반례를 비교하세요!`,
+          actionTxt: state.fold > 0.5 ? '🎬 네 점이 한 원 위에 있는 경우(⭕)' : '🎬 점 D를 원 밖으로 빼서 각도 불일치(❌) 실험!',
+          dim1Name: '판정 기준 선분', dim2Name: '네 점 한 원 조건',
+          val1Txt: '공통 현 BC', val2Txt: `∠BAC = ∠BDC = ${ang}°`,
+          parts: [
+            { id: 0, name: `🟡 고정된 기준 원주각 ∠BAC = ${ang}°`, desc: `선분 BC를 바라보는 첫 번째 각`, val: `∠BAC = ${ang}°`, color: '#fbbf24', ok: true },
+            { id: 1, name: state.fold > 0.3 ? `❌ 원 밖으로 벗어난 점 D' (∠BD'C < ${ang}° 불일치!)` : `🟢 한 원 위의 점 D (∠BDC = ${ang}°로 같음!)`, desc: state.fold > 0.3 ? `두 각이 다르면 네 점은 한 원 위에 있지 않음!` : `두 각이 같으므로 네 점 A,B,C,D는 한 원 위에 있음!`, val: state.fold > 0.3 ? `불일치 ❌` : `일치 ⭕`, color: state.fold > 0.3 ? '#f43f5e' : '#34d399', ok: state.fold <= 0.3 }
+          ],
+          totalRes: `∠BAC = ∠BDC (${ang}°) ⟺ 네 점 A, B, C, D는 한 원 위에 있다!`,
+          rule: '선분 BC에 대하여 같은 쪽에 있는 두 점 A, D에서 바라본 각이 같으면(∠A = ∠D) 네 점은 한 원 위에 있다!',
+          formulaHTML: `• <strong>[함정 주의]</strong>: 평행선 엇각처럼 엇갈린 두 각($\\angle BAC = \\angle ACD$)이 같은 것은 그냥 $AB \\parallel CD$(사다리꼴) 조건일 뿐, 네 점이 한 원 위에 있는 조건이 아닙니다! 반드시 <strong>같은 변 $BC$를 같은 쪽에서 바라보는 두 각(${tex('\\angle BAC = \\angle BDC')})</strong>이 같아야 합니다!`,
+          notes: `• 만약 $\\angle B = \\angle C = 90^\\circ$처럼 직각 두 개가 같은 변 $AD$를 바라보고 있다면, <strong>선분 $AD$를 지름으로 하는 한 원 위에 네 점</strong>이 있게 됩니다!`,
+          tapeTitle: `네 점이 한 원 위에 있을 조건: 같은 선분 BC를 바라보는 두 각 ∠BAC와 ∠BDC가 정확히 같아야 합니다!`,
+          tapeSegs: []
+        };
+      }
+
+      // ==================== [탭 4: 원에 내접하는 사각형 & 오각형 보조선] ====================
+      if (m === 4) {
+        const angA = ang + 35; // 65, 80, 95, 105
+        const angC = 180 - angA;
+        if (sub === 'cyclicPentagon') {
+          const centerAOB = ang * 2;
+          const totalSum = 180 + ang;
+          return {
+            badge: `탐구 4-A · 🌟 [킬러] 원에 내접하는 오각형 ABCDE — 보조선 BE를 그어 내접사각형과 원주각으로 나누기`,
+            hint: `오각형은 마주 보는 각의 합이 $180^\\circ$가 아닙니다! 슬라이더를 당겨 <strong class="text-pink-300">보조선 $BE$</strong>를 그으면, 오른쪽은 <strong>원에 내접하는 사각형 $BCDE$($\\angle C + \\angle BED = 180^\\circ$)</strong>가 되고 왼쪽은 <strong>중심각 $\\angle AOB(${centerAOB}^\\circ)$에 대한 원주각($\\angle AEB = ${ang}^\\circ$)</strong>이 되어 두 각의 합이 **${totalSum}°**로 풀립니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 보조선 BE 숨기기' : '🎬 보조선 BE 긋기 (내접사각형 + 원주각으로 나누기)',
+            dim1Name: '중심각 ∠AOB', dim2Name: '구하는 값 (∠C + ∠E)',
+            val1Txt: `${centerAOB}° (원주각 ${ang}°)`, val2Txt: `180° + ${ang}° = ${totalSum}°!`,
+            parts: [
+              { id: 0, name: `🩷 [보조선 BE] 오각형을 사각형 BCDE + 삼각형 ABE로 나누기!`, desc: `내접오각형에서는 보조선 BE(또는 BD)를 그어 나눈다!`, val: `보조선 BE ⭕`, color: '#f472b6', ok: true },
+              { id: 1, name: `🔵 오른쪽 내접사각형 BCDE: ∠C + ∠BED = 180°!`, desc: `원에 내접하는 사각형의 마주 보는 대각의 합 = 180°`, val: `합 = 180°`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🟡 왼쪽 호 AB의 원주각: ∠AEB = ½ ∠AOB = ${ang}°!`, desc: `따라서 ∠C + ∠AED = 180° + ${ang}° = ${totalSum}°!`, val: `+ ${ang}° = ${totalSum}°`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `보조선 BE 작도 ➔ ∠C + ∠AED = (∠C + ∠BED) + ∠AEB = 180° + ${ang}° = ${totalSum}°!`,
+            rule: '원에 내접하는 오각형·육각형은 ➔ 보조선(현)을 하나 그어 [내접사각형(마주 보는 두 각의 합 180°) + 원주각]으로 나눈다!',
+            formulaHTML: `• <strong>[3단계 풀이]</strong>:<br/>&nbsp;&nbsp;① 보조선 $\\overline{BE}$를 그으면 사각형 $BCDE$는 원에 내접하므로 ${tex('\\angle C + \\angle BED = \\mathbf{180^\\circ}')}<br/>&nbsp;&nbsp;② 호 $AB$에 대하여 ${tex(`\\angle AEB = \\dfrac{1}{2}\\angle AOB = \\dfrac{1}{2}\\times ${centerAOB}^\\circ = \\mathbf{${ang}^\\circ}`)}<br/>&nbsp;&nbsp;③ ${tex(`\\therefore \\angle C + \\angle AED = 180^\\circ + ${ang}^\\circ = \\mathbf{${totalSum}^\\circ}`)}!`,
+            notes: `• 반대로 $\\angle C + \\angle E = ${totalSum}^\\circ$를 먼저 알려주고 중심각 $\\angle AOB$를 구하라고 하면, **$(${totalSum}^\\circ - 180^\\circ) \\times 2 = ${centerAOB}^\\circ$**로 거꾸로 계산하면 됩니다!`,
+            tapeTitle: `∠C + ∠E(${totalSum}°) = 내접사각형 대각의 합(180°) + 남은 호 AB의 원주각(${ang}°)`,
+            tapeSegs: [
+              { text: `내접사각형 BCDE 대각의 합 (180°)`, weight: 180 / totalSum, color: '#38bdf8' },
+              { text: `원주각 ∠AEB (${ang}°)`, weight: ang / totalSum, color: '#fbbf24' }
+            ]
+          };
+        }
+        if (sub === 'cyclicQuad180') {
+          return {
+            badge: `탐구 4-B · 🔄 원에 내접하는 사각형의 성질 1 — 마주 보는 두 각의 크기의 합은 180°!`,
+            hint: `왜 원에 내접하는 사각형 $ABCD$는 마주 보는 두 각의 합이 $180^\\circ$일까요? 두 각이 바라보는 <strong>중심각의 합이 원 한 바퀴($360^\\circ$)</strong>이므로, 그 절반인 원주각의 합은 <strong class="text-amber-300">$\\angle A(${angA}^\\circ) + \\angle C(${angC}^\\circ) = \\frac{1}{2}\\times 360^\\circ = 180^\\circ$</strong>가 되기 때문입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 사각형 보기' : '🎬 중심각 360° 보조선 (OB, OD) 증명 보기!',
+            dim1Name: '위쪽 각 ∠A', dim2Name: '마주 보는 각 ∠C',
+            val1Txt: `${angA}° (중심각 ${angA * 2}°)`, val2Txt: `180° - ${angA}° = ${angC}°`,
+            parts: [
+              { id: 0, name: `🟡 위쪽 내각 ∠A = ${angA}° (호 BCD의 원주각 = ½ × ${angA * 2}°)`, desc: `아랫부분 호 BCD에 대한 원주각`, val: `∠A = ${angA}°`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 아래쪽 대각 ∠C = ${angC}° (호 BAD의 원주각 = ½ × ${angC * 2}°)`, desc: `윗부분 호 BAD에 대한 원주각`, val: `∠C = ${angC}°`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🟢 중심각 합 = ${angA * 2}° + ${angC * 2}° = 360° ➔ ∠A + ∠C = 180°!`, desc: `마찬가지로 ∠B + ∠D = 180° 도 항상 성립!`, val: `대각 합 = 180°`, color: '#34d399', ok: true }
+            ],
+            totalRes: `∠A(${angA}°) + ∠C(${angC}°) = 180° | ∠B + ∠D = 180°`,
+            rule: '원에 내접하는 사각형은 이웃한 각이 아니라 "마주 보는 두 각"의 합이 180°이다! (평행사변형과 혼동하지 않도록 주의)',
+            formulaHTML: `• ${tex('\\angle A + \\angle C = \\dfrac{1}{2}\\angle BOD_{\\text{아래}} + \\dfrac{1}{2}\\angle BOD_{\\text{위}} = \\dfrac{1}{2}\\times 360^\\circ = \\mathbf{180^\\circ}')}`,
+            notes: `• <strong>[평행사변형과 내접사각형 비교]</strong>: 평행사변형은 마주 보는 대각이 ‘같고’ 이웃한 각의 합이 $180^\\circ$이지만, 원에 내접하는 사각형은 <strong>마주 보는 대각의 합이 $180^\\circ$</strong>입니다! (둘 다 만족하면 직사각형!)`,
+            tapeTitle: `마주 보는 두 대각의 합: ∠A(${angA}°) + ∠C(${angC}°) = 180° (중심각 합 360°의 절반!)`,
+            tapeSegs: [
+              { text: `∠A = ${angA}°`, weight: angA / 180, color: '#fbbf24' },
+              { text: `∠C = ${angC}° ➔ 합 = 180°!`, weight: angC / 180, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'cyclicExterior') {
+          return {
+            badge: `탐구 4-C · ⚡ 원에 내접하는 사각형의 한 외각의 크기 = 그 외각에 이웃한 내각의 대각의 크기!`,
+            hint: `안쪽에서 $\\angle A + \\angle BCD = 180^\\circ$이고 일직선 평각에서 $\\angle DCE + \\angle BCD = 180^\\circ$이므로, <strong>바깥 외각 $\\angle DCE$와 이웃한 내각 $\\angle BCD$의 대각 $\\angle A$는 언제나 <span class="text-amber-300">${angA}°로 똑같습니다!</span></strong>`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 ∠A와 외각 ∠DCE가 같음을 보기',
+            dim1Name: '이웃한 내각의 대각 ∠A', dim2Name: '바깥 외각 ∠DCE',
+            val1Txt: `${angA}°`, val2Txt: `∠DCE = ∠A = ${angA}°!`,
+            parts: [
+              { id: 0, name: `🟡 이웃한 내각 ∠BCD의 대각 ∠A = ${angA}°`, desc: `∠BCD(${angC}°)와 더해서 180°가 되는 마주 보는 각`, val: `∠A = ${angA}°`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 바깥 외각 ∠DCE = 180° - ${angC}° = ${angA}°!`, desc: `180°에서 똑같은 ∠BCD를 뺀 값이므로 ∠DCE = ∠A!`, val: `∠DCE = ${angA}°`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `내접사각형의 외각: 바깥 외각 ∠DCE(${angA}°) = 이웃한 내각의 대각 ∠A(${angA}°)`,
+            rule: '외각의 크기는 180°에서 빼지 않고도, 이웃한 내각의 대각의 크기와 같다고 바로 쓸 수 있다!',
+            formulaHTML: `• ${tex('\\angle A + \\angle BCD = 180^\\circ')} 이고 ${tex('\\angle DCE + \\angle BCD = 180^\\circ')}<br/>• 따라서 ${tex('\\mathbf{\\angle DCE = \\angle A = ' + angA + '^\\circ}')}!`,
+            notes: `• 두 원이 교차하는 현 $PQ$가 있는 문제에서도 왼쪽 원에서 $\\angle A = \\text{외각}$, 오른쪽 원에서 $\\text{외각} = \\angle C$임을 차례로 이용하면 양끝 선분이 평행함을 증명할 수 있습니다!`,
+            tapeTitle: `평각 180° = 안쪽 이웃각 ∠BCD(${angC}°) + 바깥 외각 ∠DCE(= 이웃한 내각의 대각 ∠A = ${angA}°)`,
+            tapeSegs: [
+              { text: `이웃한 내각 ∠BCD (${angC}°)`, weight: angC / 180, color: '#38bdf8' },
+              { text: `바깥 외각 ∠DCE = 대각 ∠A (${angA}°)`, weight: angA / 180, color: '#f472b6' }
+            ]
+          };
+        }
+        if (sub === 'cyclicCrossExt') {
+          return {
+            badge: `탐구 4-D · 🚀 [킬러] 내접사각형의 두 쌍의 대변을 연장한 교점 P, Q와 각의 크기 구하기`,
+            hint: `내접사각형 $ABCD$의 변을 연장해 바깥에 두 삼각형 $\\triangle PBC, \\triangle QCD$가 생겼을 때, <strong>외각은 이웃한 내각의 대각과 같으므로 $\\angle A = x$일 때 두 바깥 삼각형의 밑각이 $\\angle DCP = x, \\angle CDQ = x$</strong>가 되고, 삼각형의 외각의 성질로 풀립니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 외각과 이웃한 내각의 대각이 같음 & 삼각형의 외각의 성질',
+            dim1Name: '교점의 각 ∠P, ∠Q', dim2Name: '구하는 내각 ∠A (= x)',
+            val1Txt: '∠P = 32°, ∠Q = 44°', val2Txt: '∠A = (180°-76°)÷2 = 52°!',
+            parts: [
+              { id: 0, name: `🟡 ∠A = x ➔ 외각 ∠DCP = x, ∠FDC = x`, desc: `내접사각형의 외각은 이웃한 내각의 대각과 같으므로 바깥 삼각형에도 x가 나타남!`, val: `외각 = x`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 삼각형 △PBC의 외각: ∠BCD(180°-x) 또는 ∠ABC = x + 32°`, desc: `△QDC에서 두 내각의 합으로 ∠B = x + 44°`, val: `삼각형 외각!`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 일직선/삼각형 내각의 합: x + (x + 32° + 44°) = 180°`, desc: `2x + 76° = 180° ⇒ 2x = 104° ⇒ x = 52°!`, val: `x = 52° ⭕`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `2∠A + ∠P(32°) + ∠Q(44°) = 180° ➔ 2∠A = 104° ➔ ∠A = 52°!`,
+            rule: '킬러 공식: 두 쌍의 대변을 연장했을 때 2 × ∠A + ∠P + ∠Q = 180°',
+            formulaHTML: `• $\\triangle PBC$와 $\\triangle QDC$에서 삼각형의 외각의 성질을 차례로 이용하면:<br/>&nbsp;&nbsp;${tex('\\mathbf{2\\angle A + \\angle P + \\angle Q = 180^\\circ}')} (또는 맞은편 둔각일 때 ${tex('2\\angle C - (\\angle P+\\angle Q) = 180^\\circ')})!`,
+            notes: `• 식을 외우지 않아도 <strong>① 구하는 각을 $x$로 놓고 ② 외각이 이웃한 내각의 대각과 같음을 이용해 $x$를 옮긴 뒤 ③ 큰 삼각형에서 외각의 성질($x + \\angle P$)</strong>을 쓰면 구할 수 있습니다!`,
+            tapeTitle: `180° 구성: ∠A(52°) + ∠A(52°) + ∠P(32°) + ∠Q(44°) = 180°`,
+            tapeSegs: [
+              { text: `x (52°)`, weight: 52 / 180, color: '#fbbf24' },
+              { text: `x (52°)`, weight: 52 / 180, color: '#fbbf24' },
+              { text: `∠P (32°)`, weight: 32 / 180, color: '#38bdf8' },
+              { text: `∠Q (44°)`, weight: 44 / 180, color: '#f472b6' }
+            ]
+          };
+        }
+        // cyclicConditions3
+        return {
+          badge: `탐구 4-E · 🔍 사각형 ABCD가 원에 내접하기 위한 세 가지 조건`,
+          hint: `어떤 사각형이 원에 내접하는지 확인하려면 <strong>① 같은 변을 바라보는 두 각이 같은지($\\angle BAC=\\angle BDC$)</strong>, <strong>② 마주 보는 대각의 합이 $180^\\circ$인지</strong>, <strong>③ 한 외각이 이웃한 내각의 대각과 같은지</strong> 셋 중 하나만 만족하면 됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 조건 1·2·3 순환 비교' : '🎬 세 조건을 한꺼번에 보기',
+          dim1Name: '대각의 합 조건', dim2Name: '외각 / 원주각 조건',
+          val1Txt: '∠A + ∠C = 180°', val2Txt: '∠DCE = ∠A / ∠BAC = ∠BDC',
+          parts: [
+            { id: 0, name: `① [원주각 판정] ∠BAC = ∠BDC (또는 ∠ABD = ∠ACD)`, desc: `한 선분을 같은 쪽에서 바라보는 두 각이 같으면 네 점 한 원 위!`, val: `판정 ① ⭕`, color: '#38bdf8', ok: true },
+            { id: 1, name: `② [대각의 합 판정] ∠A + ∠C = 180° (또는 ∠B + ∠D = 180°)`, desc: `마주 보는 한 쌍의 대각의 크기의 합이 180°이면 원에 내접!`, val: `판정 ② ⭕`, color: '#fbbf24', ok: true },
+            { id: 2, name: `③ [외각 판정] 바깥 외각 ∠DCE = 이웃한 내각의 대각 ∠A`, desc: `한 외각의 크기가 그 이웃한 내각의 대각과 같으면 원에 내접!`, val: `판정 ③ ⭕`, color: '#f472b6', ok: true }
+          ],
+          totalRes: `세 조건(원주각이 같음 / 마주 보는 두 각의 합 180° / 외각 = 이웃한 내각의 대각) 중 하나만 성립해도 원에 내접한다!`,
+          rule: '주의: "마주 보는 대각의 크기가 같다(∠A=∠C)"는 평행사변형 조건이지 내접사각형 조건이 아니다(90°일 때만 예외)!',
+          formulaHTML: `• <strong>[함정 구분]</strong>:<br/>&nbsp;&nbsp;❌ $\\overline{AB}\\parallel\\overline{CD}$ 에서 엇각 $\\angle BAC = \\angle ACD$ 가 같은 것 $\\implies$ 그냥 사다리꼴(내접 보장 안 됨!)<br/>&nbsp;&nbsp;⭕ 같은 변 $BC$를 바라보는 $\\angle BAC = \\angle BDC$ 가 같은 것 $\\implies$ 원에 내접함!`,
+          notes: `• 각의 크기가 주어지면 사각형을 그리고 <strong>마주 보는 각끼리 더해서 $180^\\circ$가 되는지</strong>만 확인하면 됩니다!`,
+          tapeTitle: `원에 내접할 조건(서로 같은 조건): ① 원주각이 같음  ⟺  ② 마주 보는 두 각의 합 180°  ⟺  ③ 외각 = 이웃한 내각의 대각`,
+          tapeSegs: []
+        };
+      }
+
+      // ==================== [탭 5: 접선과 현이 이루는 각(∠BAT=∠BCA) & 두 원의 공통접선] ====================
+      if (m === 5) {
+        if (sub === 'altSegmentThm') {
+          return {
+            badge: `탐구 5-A · 📐 접선과 현이 이루는 각 — 왜 ∠BAT = ∠BCA 일까?`,
+            hint: `접점 $A$를 지나는 <strong class="text-pink-300">지름 보조선 $AD$</strong>를 그어보세요! 접선과 지름은 수직($\\angle DAT = 90^\\circ$)이고 반원의 원주각도 직각($\\angle ABD = 90^\\circ$)이므로, $90^\\circ$에서 똑같은 각을 뺀 <strong class="text-amber-300">접선과 현이 이루는 각 $\\angle BAT(${ang}^\\circ)$와 원주각 $\\angle BCA(${ang}^\\circ)$는 같습니다!</strong>`,
+            actionTxt: state.fold > 0.5 ? '🎬 지름 보조선 숨기기' : '🎬 지름 AD(90°)를 그어 접선과 현이 이루는 각 설명하기',
+            dim1Name: '접선과 현이 이루는 각 ∠BAT', dim2Name: '호 AB의 원주각 ∠BCA',
+            val1Txt: `${ang}°`, val2Txt: `∠BCA = ${ang}° (같음!)`,
+            parts: [
+              { id: 0, name: `🟡 접선 AT와 현 AB가 이루는 각 (∠BAT = ${ang}°)`, desc: `접선 AT와 현 AB 사이의 각 (호 AB에 대한 각)`, val: `∠BAT = ${ang}°`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 현 AB가 품은 호 AB에 대한 원주각 (∠BCA = ${ang}°)`, desc: `호 AB의 반대편 꼭짓점 C에 생기는 원주각`, val: `∠BCA = ${ang}°`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 [설명] 지름 보조선 AD (∠DAT = 90°, ∠ABD = 90°)`, desc: `∠BAT = 90° - ∠DAB = ∠ADB = ∠BCA (원주각의 성질 이용!)`, val: `90° 이용`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `접선과 현이 이루는 각의 성질: ∠BAT(${ang}°) = 호 AB에 대한 원주각 ∠BCA(${ang}°) = ½ ∠AOB(${ang * 2}°)`,
+            rule: '접선과 현이 이루는 각 ∠BAT는 현 AB에 대한 원주각 ∠BCA(호 AB의 반대편 꼭짓점 C에서의 각)와 같다!',
+            formulaHTML: `• <strong>지름 보조선 증명</strong>:<br/>&nbsp;&nbsp;① 지름 $\\overline{AD} \\perp \\text{접선 }AT \\implies \\angle DAB + \\angle BAT = 90^\\circ$<br/>&nbsp;&nbsp;② 반원의 원주각 $\\angle ABD = 90^\\circ \\implies \\angle DAB + \\angle ADB = 90^\\circ$<br/>&nbsp;&nbsp;③ $\\therefore \\angle BAT = \\angle ADB = \\mathbf{\\angle BCA}$!`,
+            notes: `• <strong>[주의]</strong>: 오른쪽 접선과 현이 이루는 각 $\\angle BAT$와 크기가 같은 각은 바로 위쪽 각($\\angle ABC$)이 아니라, <strong>현 $AB$의 맞은편 각인 $\\angle BCA$</strong>입니다!`,
+            tapeTitle: `직각 90°를 나누기: 접선과 현이 이루는 각 ∠BAT(${ang}°) + 보조선 각 ∠DAB(${90 - ang}°) = 90° (원주각 ∠BCA = ${ang}°)`,
+            tapeSegs: [
+              { text: `접선과 현이 이루는 각 ∠BAT = 원주각 ∠BCA (${ang}°)`, weight: ang / 90, color: '#fbbf24' },
+              { text: `나머지 각 (${90 - ang}°) ➔ 합 = 90°!`, weight: (90 - ang) / 90, color: '#f472b6' }
+            ]
+          };
+        }
+        if (sub === 'altSegmentInscribed') {
+          const angB = 65;
+          const angC = ang;
+          const angA = 180 - angB - angC;
+          return {
+            badge: `탐구 5-B · 🔺 접점 A에서 양쪽 접선과 현이 이루는 각과 내접삼각형의 각 (오른쪽 각=•, 왼쪽 각=×)`,
+            hint: `접점 $A$의 일직선($180^\\circ$) 위에서 <strong>오른쪽 접선과 현이 이루는 각($\\angle BAT = ${angC}^\\circ$)은 왼쪽 위 원주각($\\angle C = ${angC}^\\circ$)</strong>과 같고, <strong>왼쪽 접선과 현이 이루는 각($\\angle CAS = ${angB}^\\circ$)은 오른쪽 위 원주각($\\angle B = ${angB}^\\circ$)</strong>과 같습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 양쪽 접선과 현이 이루는 각과 크기가 같은 각 찾기',
+            dim1Name: '오른쪽 접선과 현이 이루는 각 (∠BAT=∠C)', dim2Name: '왼쪽 접선과 현이 이루는 각 (∠CAS=∠B)',
+            val1Txt: `${angC}° (하늘색)`, val2Txt: `${angB}° (분홍색, ∠BAC=${angA}°)`,
+            parts: [
+              { id: 0, name: `🔵 오른쪽 접선과 현이 이루는 각 ∠BAT(${angC}°) = 왼쪽 위 원주각 ∠BCA(${angC}°)`, desc: `현 AB가 품은 호 AB에 대한 접선과 현이 이루는 각과 원주각`, val: `${angC}° 일치 ⭕`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🩷 왼쪽 접선과 현이 이루는 각 ∠CAS(${angB}°) = 오른쪽 위 원주각 ∠ABC(${angB}°)`, desc: `현 AC가 품은 호 AC에 대한 접선과 현이 이루는 각과 원주각`, val: `${angB}° 일치 ⭕`, color: '#f472b6', ok: true },
+              { id: 2, name: `🟡 가운데 꼭지각 ∠BAC = 180° - (${angC}° + ${angB}°) = ${angA}°`, desc: `평각 180°와 삼각형의 내각의 합 180°가 서로 맞음!`, val: `∠BAC = ${angA}°`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `오른쪽 ∠BAT = ∠C(${angC}°) | 왼쪽 ∠CAS = ∠B(${angB}°) | 가운데 ∠BAC = ${angA}°`,
+            rule: '접점 A에서 오른쪽 접선과 현이 이루는 각은 왼쪽 위의 원주각(∠C)과, 왼쪽 접선과 현이 이루는 각은 오른쪽 위의 원주각(∠B)과 각각 같다!',
+            formulaHTML: `• <strong>같은 각 찾기</strong>: 오른쪽 아래 각($\\angle BAT$) $=$ 왼쪽 위 각($\\angle C$), 왼쪽 아래 각($\\angle CAS$) $=$ 오른쪽 위 각($\\angle B$)!`,
+            notes: `• 만약 문제에서 현의 길이 $AB = AC$ (이등변삼각형) 조건까지 주어지면, $\\angle B = \\angle C = \\angle BAT = \\angle CAS$로 **4개의 각이 모두 같아집니다**!`,
+            tapeTitle: `접점 A의 평각 180° = 왼쪽 접선과 현이 이루는 각(${angB}°) + 가운데 ∠BAC(${angA}°) + 오른쪽 접선과 현이 이루는 각(${angC}°)`,
+            tapeSegs: [
+              { text: `왼쪽 ∠CAS = ∠B (${angB}°)`, weight: angB / 180, color: '#f472b6' },
+              { text: `가운데 ∠BAC (${angA}°)`, weight: angA / 180, color: '#fbbf24' },
+              { text: `오른쪽 ∠BAT = ∠C (${angC}°)`, weight: angC / 180, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'twoCirclesExTangent') {
+          return {
+            badge: `탐구 5-C · 🎱 [심화] 외접하는 두 원과 공통내접선 PQ — 엇각이 같아 두 현은 평행(AB ∥ CD)!`,
+            hint: `두 원이 점 $T$에서 외접할 때, 슬라이더로 <strong>점 $T$를 지나는 공통내접선 보조선 $PQ$</strong>를 그어보세요! 왼쪽 원의 접선과 현이 이루는 각($\\angle A$), 맞꼭지각, 오른쪽 원의 접선과 현이 이루는 각($\\angle D$)이 차례로 같아져 <strong class="text-emerald-300">엇각 일치로 $AB \\parallel CD$ 평행</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 보조선 숨기기' : '🎬 공통접선 PQ를 긋고 엇각 확인(AB∥CD)',
+            dim1Name: '보조선', dim2Name: '결론',
+            val1Txt: '점 T의 공통내접선 PQ', val2Txt: '∠A = ∠D (엇각) ➔ AB ∥ CD!',
+            parts: [
+              { id: 0, name: `🩷 [보조선] 접점 T를 지나는 공통내접선 PQ`, desc: `두 원에 동시에 접하는 직선 PQ를 그으면 접선과 현이 이루는 각을 쓸 수 있음!`, val: `공통접선 PQ`, color: '#f472b6', ok: true },
+              { id: 1, name: `🟡 왼쪽 접선과 현이 이루는 각 ∠BTP = ∠A (${ang}°) & 맞꼭지각 ∠BTP = ∠CTQ`, desc: `오른쪽 원에서도 접선과 현이 이루는 각 ∠CTQ = ∠D (${ang}°) ⇒ 결국 ∠A = ∠D!`, val: `∠A = ∠D = ${ang}°`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🟢 결론: 엇각의 크기가 같으므로 두 현 AB ∥ CD 평행!`, desc: `마찬가지로 ∠B = ∠C 도 성립하여 △TAB ∽ △TDC (AA 닮음)!`, val: `AB ∥ CD 평행 ⭕`, color: '#34d399', ok: true }
+            ],
+            totalRes: `∠A = ∠BTP(접선과 현이 이루는 각) = ∠CTQ(맞꼭지각) = ∠D(접선과 현이 이루는 각) ➔ 엇각 일치 ➔ AB ∥ CD!`,
+            rule: '외접하는 두 원에서 접점 T를 지나는 두 직선이 각 원과 만나는 점을 이으면 ➔ 두 현 AB, CD는 평행하다(AB ∥ CD)!',
+            formulaHTML: `• <strong>[3단계 설명]</strong>:<br/>&nbsp;&nbsp;① 접점 $T$에서 공통접선 $PQ$를 그으면 접선과 현이 이루는 각에 의해 ${tex('\\angle A = \\angle BTP,\\; \\angle D = \\angle CTQ')}<br/>&nbsp;&nbsp;② 맞꼭지각 ${tex('\\angle BTP = \\angle CTQ')} 이므로 ${tex('\\mathbf{\\angle A = \\angle D}')}<br/>&nbsp;&nbsp;③ 엇각의 크기가 같으므로 ${tex('\\mathbf{\\overline{AB} \\parallel \\overline{CD}}')}!`,
+            notes: `• 만약 공통내접선이 아니라 <strong>공통외접선</strong>이 주어지고 접점 $A, T, B$를 이으면 $\\triangle ATB$는 <strong>$\\angle ATB = 90^\\circ$인 직각삼각형</strong>이 됩니다!`,
+            tapeTitle: `각의 크기가 같은 것끼리 이어 보기: 왼쪽 원주각 ∠A(${ang}°) = 접선과 현이 이루는 각 ∠BTP = 맞꼭지각 ∠CTQ = 오른쪽 원주각 ∠D(${ang}°)`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'twoCirclesInTangent') {
+          return {
+            badge: `탐구 5-D · 🎯 내접하는 두 원과 공통접선 PQ — 동위각이 같아 두 현은 평행(AB ∥ CD)!`,
+            hint: `큰 원 안에 작은 원이 점 $T$에서 내접할 때, <strong>점 $T$에서의 공통접선 $PQ$</strong>를 그으면 작은 원의 접선과 현이 이루는 각($\\angle ABT = \\angle ATP$)과 큰 원의 접선과 현이 이루는 각($\\angle CDT = \\angle CTP$)이 똑같아져 <strong class="text-emerald-300">동위각 일치로 $AB \\parallel CD$ 평행</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 공통접선 PQ를 긋고 동위각 확인(AB∥CD)',
+            dim1Name: '공통접선과 현이 이루는 각 (∠ATP)', dim2Name: '결론',
+            val1Txt: `${ang}°`, val2Txt: '∠ABT = ∠CDT (동위각) ➔ AB ∥ CD!',
+            parts: [
+              { id: 0, name: `🩷 접점 T에서의 공통접선 PQ (공통접선과 현이 이루는 각 ∠ATP = ${ang}°)`, desc: `작은 원과 큰 원이 똑같은 접선과 현이 이루는 각 ∠ATP를 공유함!`, val: `공통접선과 현이 이루는 각 ${ang}°`, color: '#f472b6', ok: true },
+              { id: 1, name: `🟡 작은 원 원주각 ∠ABT(${ang}°) = 🔵 큰 원 원주각 ∠CDT(${ang}°)`, desc: `둘 다 접선과 현이 이루는 각 ∠ATP(${ang}°)와 같으므로 동위각의 크기가 같음!`, val: `동위각 ${ang}° 일치`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🟢 결론: 동위각이 같으므로 두 현 AB ∥ CD 평행!`, desc: `따라서 포개진 삼각형 △TAB ∽ △TCD (AA 닮음) 성립!`, val: `AB ∥ CD 평행 ⭕`, color: '#34d399', ok: true }
+            ],
+            totalRes: `작은 원의 원주각 ∠ABT(${ang}°) = ∠ATP(접선과 현이 이루는 각) = 큰 원의 원주각 ∠CDT(${ang}°) ➔ 동위각이 같음 ➔ AB ∥ CD!`,
+            rule: '외접하는 두 원은 "엇각"으로 평행(AB∥CD)하고, 내접하는 두 원은 "동위각"으로 평행(AB∥CD)하다!',
+            formulaHTML: `• 작은 원에서 ${tex('\\angle ABT = \\angle ATP')}, 큰 원에서 ${tex('\\angle CDT = \\angle CTP(\\angle ATP)')}<br/>• 따라서 동위각 ${tex('\\mathbf{\\angle ABT = \\angle CDT} \\implies \\mathbf{\\overline{AB}\\parallel\\overline{CD}}')}!`,
+            notes: `• 평행선 $AB \\parallel CD$가 증명되었으므로, 2학년에서 배운 <strong>삼각형의 닮음비($TA : TC = TB : TD = AB : CD$)</strong>를 이용하여 선분의 길이를 구할 수도 있습니다!`,
+            tapeTitle: `내접하는 두 원, 동위각이 같음: ∠ATP(공통접선과 현이 이루는 각 ${ang}°) = ∠ABT(작은 원) = ∠CDT(큰 원) ➔ AB ∥ CD!`,
+            tapeSegs: []
+          };
+        }
+        // tangentDiameterExt
+        const xAng = 90 - 2 * 28; // 예: ∠B=28° -> ∠x = 34°
+        return {
+          badge: `탐구 5-E · 🧭 [킬러] 지름의 연장선 위의 점 P에서 그은 접선 PT와 각의 크기 (반지름 OT⊥PT 이용 / 반원의 원주각 90° 이용)`,
+          hint: `지름 $AB$의 연장선 위 점 $P$에서 접선 $PT$를 그었을 때, <strong>방법 ①: 중심 $O$와 접점 $T$를 이어 직각($\\angle OTP=90^\\circ$)과 중심각($2\\bullet$)을 쓰는 법</strong>과 <strong>방법 ②: 현 $AT$를 이어 반원($\\angle ATB=90^\\circ$)과 접선과 현이 이루는 각($\\bullet$)을 쓰는 법</strong> 두 가지로 구해 보세요!`,
+          actionTxt: state.fold > 0.5 ? '🎬 방법 ①(반지름 OT⊥PT) 보기' : '🎬 방법 ②(반원 ∠ATB=90°) 비교!',
+          dim1Name: '원주각 ∠ABT (= •)', dim2Name: '바깥 각 ∠APT (= x)',
+          val1Txt: '• = 28° (중심각 56°)', val2Txt: 'x = 90° - 56° = 34°!',
+          parts: [
+            { id: 0, name: `🟡 [방법 ①] 반지름 보조선 OT (∠OTP = 90° 직각!)`, desc: `중심각 ∠AOT = 2 × 28° = 56° ⇒ 직각삼각형 △OTP에서 x = 90°-56° = 34°!`, val: `x = 34° (1초컷!)`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 [방법 ②] 현 보조선 AT (반원의 원주각 ∠ATB = 90°)`, desc: `접선과 현이 이루는 각 ∠PTA = 28° 이고 외각 ∠TAB = 28°+x ⇒ (28°+x)+28° = 90°!`, val: `2• + x = 90°`, color: '#38bdf8', ok: true }
+          ],
+          totalRes: `원주각 • = 28° ➔ 중심각 ∠AOT = 56° ➔ 직각삼각형 △OTP에서 ∠P = 90° - 56° = 34°!`,
+          rule: '지름의 연장선과 접선 PT가 만날 때: 2 × (원주각 ∠B) + (바깥쪽 각 ∠P) = 90°',
+          formulaHTML: `• 중심각 ${tex('\\angle AOT = 2\\angle B')} 이고, 직각삼각형 $\\triangle OTP$에서 ${tex('\\angle OTP = 90^\\circ')} 이므로:<br/>&nbsp;&nbsp;${tex('\\mathbf{2\\angle B + \\angle P = 90^\\circ} \\implies 2\\times 28^\\circ + x = 90^\\circ \\implies \\mathbf{x = 34^\\circ}')}!`,
+          notes: `• 이 그림이 나오면 현 $AT$보다 <strong>중심 $O$에서 접점 $T$로 반지름 보조선 $OT$를 긋는 것(방법 ①)</strong>이 훨씬 빠르고 실수가 없습니다!`,
+          tapeTitle: `직각삼각형 △OTP 예각의 합(90°) = 중심각 ∠AOT(2• = 56°) + 바깥각 ∠P(x = 34°)`,
+          tapeSegs: [
+            { text: `중심각 2• = 56°`, weight: 56 / 90, color: '#fbbf24' },
+            { text: `바깥각 x = 34° ➔ 합 = 90°!`, weight: 34 / 90, color: '#38bdf8' }
+          ]
+        };
+      }
+
+      // ==================== [탭 6: 원과 비례(할선·접선) & 시험장 착시 반례 연구소] ====================
+      if (sub === 'trapArcVsChord') {
+        return {
+          badge: `탐구 6-A · 🚫 [주의] 원주각이 2배이면 '호의 길이'는 2배(⭕)지만, '현의 길이'는 2배가 아니다(❌)!`,
+          hint: `원주각(또는 중심각)이 $2$배가 되면 <strong>호의 길이와 부채꼴의 넓이는 정확히 $2$배(정비례 ⭕)</strong>가 되지만, <strong>현의 길이와 삼각형의 넓이는 $2$배가 되지 않습니다(❌)</strong>! 슬라이더로 작은 현 2개($AC+CB$)와 큰 현 1개($AB$)를 비교해 보세요!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 호·현 비교' : '🎬 삼각형의 세 변의 길이 사이의 관계(AC + CB > AB) 보기',
+          dim1Name: '정비례하는 것 (⭕)', dim2Name: '정비례하지 않는 함정 (❌)',
+          val1Txt: '중심각 · 원주각 · 호의 길이 · 부채꼴 넓이', val2Txt: '현의 길이(❌) · 삼각형 넓이(❌)',
+          parts: [
+            { id: 0, name: `⭕ [정비례 ⭕] 호의 길이: ⌒AB = 2 × ⌒AC (원주각 1 : 2 비례!)`, desc: `원주각이 θ ➔ 2θ 로 2배가 되면 호의 길이와 부채꼴 넓이는 정확히 2배!`, val: `호의 길이 2배 ⭕`, color: '#34d399', ok: true },
+            { id: 1, name: `❌ [정비례 아님 ❌] 현의 길이: AB < 2 × AC (2배보다 항상 짧음!)`, desc: `삼각형 △ABC에서 두 변의 합(AC+CB = 2AC)은 나머지 한 변(AB)보다 길다!`, val: `AB < 2·AC ❌`, color: '#f43f5e', ok: false },
+            { id: 2, name: `❌ [정비례 아님 ❌] 삼각형 넓이: △OAB < 2 × △OAC`, desc: `활꼴·삼각형 넓이도 중심각/원주각에 정비례하지 않음!`, val: `삼각형 비례 ❌`, color: '#f43f5e', ok: false }
+          ],
+          totalRes: `원주각·중심각에 정비례(⭕): 호의 길이, 부채꼴 넓이 | 정비례 아님(❌): 현의 길이, 삼각형 넓이!`,
+          rule: '"현의 길이는 원주각의 크기에 정비례한다" ➔ 거짓(❌)! (AB < 2AC)',
+          formulaHTML: `• $\\overset{\\frown}{AC} = \\overset{\\frown}{CB}$ 일 때 현의 길이도 $\\overline{AC} = \\overline{CB}$ 로 같습니다.<br/>• 그러나 삼각형 $\\triangle ABC$의 세 변에서 <strong>(두 변의 길이의 합) $>$ (가장 긴 변)</strong> 이므로:<br/>&nbsp;&nbsp;${tex('\\overline{AC} + \\overline{CB} > \\overline{AB} \\implies \\mathbf{2\\overline{AC} > \\overline{AB}\\; (\\overline{AB} \\neq 2\\overline{AC})}')}!`,
+          notes: `• 단, 원주각의 크기가 **같을 때($1:1$)**는 호의 길이도 같고 **현의 길이도 같습니다($AB=CD$, ⭕)**! 하지만 **$2$배, $3$배로 커질 때는 호만 $2$배, $3$배가 되고 현은 $2$배보다 짧아진다**는 점을 정확히 구분하세요!`,
+          tapeTitle: `길이 비교: 작은 현 2개 합(AC + CB = 2·AC) > 큰 현 1개(AB) ➔ 현은 2배가 되지 않습니다!`,
+          tapeSegs: [
+            { text: `작은 현 2개 합 (AC + CB = 100%)`, weight: 0.56, color: '#34d399' },
+            { text: `큰 현 AB (약 86% < 2·AC!)`, weight: 0.44, color: '#f43f5e' }
+          ]
+        };
+      }
+      if (sub === 'powerInside') {
+        return {
+          badge: `탐구 6-B · ✖️ 원 안에서 만나는 두 현의 길이 관계 (△PAC ∽ △PDB ➔ PA · PB = PC · PD)`,
+          hint: `원 안에서 두 현 $AB, CD$가 점 $P$에서 만날 때, 보조선 $AC, BD$를 그으면 <strong>맞꼭지각과 원주각($\\angle A = \\angle D$)이 같아 AA 닮음</strong>이 됩니다! 따라서 <strong class="text-amber-300">한 현 위의 두 선분의 길이의 곱($PA \\cdot PB$)과 다른 현 위의 두 선분의 길이의 곱($PC \\cdot PD$)</strong>이 같습니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 현 보기' : '🎬 닮은 삼각형(△PAC ∽ △PDB) 보기',
+          dim1Name: '닮음 삼각형', dim2Name: '두 현의 길이의 곱',
+          val1Txt: '△PAC ∽ △PDB (AA)', val2Txt: 'PA · PB = PC · PD',
+          parts: [
+            { id: 0, name: `🟡 현 AB의 두 조각 곱: PA(3) × PB(8) = 24`, desc: `교점 P에서 현 AB가 나뉜 두 선분의 길이를 곱함!`, val: `3 × 8 = 24`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 현 CD의 두 조각 곱: PC(4) × PD(6) = 24`, desc: `PA : PD = PC : PB 비례식에서 외항·내항의 곱 일치!`, val: `4 × 6 = 24 ⭕`, color: '#38bdf8', ok: true }
+          ],
+          totalRes: `△PAC ∽ △PDB (원주각 AA 닮음) ➔ PA : PD = PC : PB ➔ PA(3) × PB(8) = PC(4) × PD(6) = 24`,
+          rule: '원 안의 점 P에서 만나는 두 현: (PA) × (PB) = (PC) × (PD)',
+          formulaHTML: `• 호 $BC$에 대한 원주각 ${tex('\\angle CAB = \\angle CDB')} 이고 맞꼭지각이 같으므로 ${tex('\\triangle PAC \\sim \\triangle PDB')} (AA 닮음)<br/>• ${tex('\\dfrac{\\overline{PA}}{\\overline{PD}} = \\dfrac{\\overline{PC}}{\\overline{PB}} \\implies \\mathbf{\\overline{PA}\\cdot\\overline{PB} = \\overline{PC}\\cdot\\overline{PD}}')}!`,
+          notes: `• 두 직선이 점 $P$에서 만나고 $PA \\cdot PB = PC \\cdot PD$가 성립하면 **네 점 $A, B, C, D$는 한 원 위에 있다**는 것도 알 수 있습니다!`,
+          tapeTitle: `양쪽 현 조각의 곱 불변: PA(3) × PB(8) = 24  ⟺  PC(4) × PD(6) = 24`,
+          tapeSegs: []
+        };
+      }
+      if (sub === 'powerOutside') {
+        return {
+          badge: `탐구 6-C · 🔭 원 밖의 점 P에서 그은 두 할선의 길이 관계 (△PAD ∽ △PCB ➔ PA · PB = PC · PD)`,
+          hint: `원 밖의 점 $P$에서 두 할선을 그으면, <strong>내접사각형의 한 외각은 이웃한 내각의 대각과 같다는 성질($\\angle PAD = \\angle C$)과 공통각 $\\angle P$</strong>에 의해 <strong>AA 닮음($\\triangle PAD \\sim \\triangle PCB$)</strong>이 되어 <strong class="text-amber-300">(점 P에서 가까운 교점까지의 길이 PA) × (먼 교점까지의 길이 PB) = PC × PD</strong>가 성립합니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 닮은 삼각형(△PAD ∽ △PCB) 보기',
+          dim1Name: '닮음 삼각형', dim2Name: '두 할선의 길이의 곱',
+          val1Txt: '△PAD ∽ △PCB (AA 닮음)', val2Txt: 'PA × PB = PC × PD (점 P에서 가까운 교점까지 × 먼 교점까지)',
+          parts: [
+            { id: 0, name: `🟡 위쪽 할선: 가까운 교점까지 PA(4) × 먼 교점까지 PB(4+5 = 9) = 36`, desc: `⚠️ 4 × 5 가 아니라 반드시 점 P에서 출발한 전체 길이 4 × 9!`, val: `4 × 9 = 36`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 아래쪽 할선: 가까운 교점까지 PC(3) × 먼 교점까지 PD(3+9 = 12) = 36`, desc: `점 P에서 가까운 점까지(3) × 먼 점까지(12) = 36!`, val: `3 × 12 = 36 ⭕`, color: '#38bdf8', ok: true }
+          ],
+          totalRes: `△PAD ∽ △PCB (AA 닮음) ➔ PA(4) × PB(9) = PC(3) × PD(12) = 36`,
+          rule: '함정 주의: PA × AB가 아니라 점 P에서 출발하는 (가까운 교점까지 PA) × (먼 교점까지 전체 PB)이다!',
+          formulaHTML: `• 사각형 $ABCD$가 원에 내접하므로 한 외각이 이웃한 내각의 대각과 같아 ${tex('\\angle PAD = \\angle PCB,\\; \\angle PDA = \\angle PBC')}<br/>• 따라서 ${tex('\\triangle PAD \\sim \\triangle PCB')} (AA 닮음) ${tex('\\implies \\dfrac{\\overline{PA}}{\\overline{PC}} = \\dfrac{\\overline{PD}}{\\overline{PB}} \\implies \\mathbf{\\overline{PA}\\cdot\\overline{PB} = \\overline{PC}\\cdot\\overline{PD}}')}!`,
+          notes: `• <strong>항상 바깥의 점 $P$에서 출발하는 두 선분의 길이(가까운 교점까지 $\\times$ 먼 교점까지)</strong>를 곱해서 식을 세우세요!`,
+          tapeTitle: `위쪽 전체 할선 PB(9cm) = 원 밖의 부분 PA(4cm) + 원 안의 현 AB(5cm) ➔ 곱은 4 × 9 = 36!`,
+          tapeSegs: [
+            { text: `원 밖의 부분 PA = 4cm`, weight: 4 / 9, color: '#fbbf24' },
+            { text: `안쪽 현 AB = 5cm ➔ 전체 PB = 9cm!`, weight: 5 / 9, color: '#38bdf8' }
+          ]
+        };
+      }
+      if (sub === 'powerTangentSecant') {
+        return {
+          badge: `탐구 6-D · ⚡ 원 밖의 점에서 그은 접선과 할선의 길이 관계 (△PAT ∽ △PTB ➔ PT² = PA · PB)`,
+          hint: `접선 $PT$와 할선 $PAB$를 그으면, <strong>공통각 $\\angle P$와 접선과 현이 이루는 각($\\angle PTA = \\angle PBT$)</strong>에 의해 작은 $\\triangle PAT$와 큰 $\\triangle PTB$가 <strong>AA 닮음</strong>이 되어 <strong class="text-amber-300">(접선 PT)² = (가까운 교점까지 PA) × (먼 교점까지 PB)</strong>가 성립합니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 AA 닮음(△PAT ∽ △PTB) 보기',
+          dim1Name: '접선의 제곱 (PT²)', dim2Name: '할선의 곱 (PA · PB)',
+          val1Txt: 'PT = 6 cm (PT² = 36)', val2Txt: 'PA(4) × PB(4+5=9) = 36!',
+          parts: [
+            { id: 0, name: `🟡 두 번 곱해지는 접선 PT = 6 cm (PT² = 36)`, desc: `작은 △PAT의 한 변이자 큰 △PTB의 대응변!`, val: `6² = 36`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🩷 짧은 할선 PA(4) × 전체 긴 할선 PB(4+5 = 9) = 36`, desc: `접선과 현이 이루는 각 ∠PTA = 원주각 ∠PBT 이므로 △PAT ∽ △PTB (AA 닮음)!`, val: `4 × 9 = 36 ⭕`, color: '#f472b6', ok: true }
+          ],
+          totalRes: `공통각 ∠P + 접선과 현이 이루는 각(∠PTA=∠PBT) ➔ △PAT ∽ △PTB ➔ PT²(6²) = PA(4) × PB(9) = 36`,
+          rule: '원 밖의 점 P에서 그은 접선과 할선: (접선 PT)² = (가까운 교점까지 PA) × (먼 교점까지 PB)',
+          formulaHTML: `• ${tex('\\angle P')}는 공통이고, 접선과 현이 이루는 각 성질로 ${tex('\\angle PTA = \\angle PBT')} 이므로 ${tex('\\triangle PAT \\sim \\triangle PTB')} (AA 닮음)<br/>• ${tex('\\dfrac{\\overline{PT}}{\\overline{PB}} = \\dfrac{\\overline{PA}}{\\overline{PT}} \\implies \\mathbf{\\overline{PT}^2 = \\overline{PA}\\cdot\\overline{PB}}')}!`,
+          notes: `• $PT^2 = PA\\cdot PB$는 앞에서 본 두 할선의 길이 관계($PA\\cdot PB = PC\\cdot PD$)에서 아래쪽 할선과 원의 두 교점 $C, D$가 점점 가까워져 **한 점 $T$(접점)가 된($PC=PD=PT$)** 경우입니다!`,
+          tapeTitle: `접선·할선 등식: PT²(6² = 36) = 가까운 PA(4cm) × 전체 PB(4+5 = 9cm)`,
+          tapeSegs: []
+        };
+      }
+      // trapCyclicQuadFamily
+      return {
+        badge: `탐구 6-E · 🚫 항상 원에 내접하는 사각형(⭕)과 원에 내접하지 않는 사각형(❌) 구별하기`,
+        hint: `마주 보는 대각의 합이 항상 $180^\\circ$인 사각형만 원에 내접합니다! 따라서 <strong>직사각형, 정사각형($90^\\circ+90^\\circ=180^\\circ$), 등변사다리꼴은 항상 원에 내접(⭕)</strong>하지만, <strong>평행사변형과 마름모는 마주 보는 각이 예각+예각(또는 둔각+둔각)이라 합이 $180^\\circ$가 아니므로 원에 내접하지 않습니다(❌)</strong>!`,
+        actionTxt: state.fold > 0.5 ? '🎬 전체 비교 보기' : '🎬 등변사다리꼴(⭕)과 평행사변형·마름모(❌)를 원에 내접시켜 보기',
+        dim1Name: '항상 원에 내접 (⭕)', dim2Name: '원에 내접 안 함 (❌)',
+        val1Txt: '직사각형 · 정사각형 · 등변사다리꼴', val2Txt: '평행사변형 · 마름모 · 등변이 아닌 사다리꼴',
+        parts: [
+          { id: 0, name: `⭕ [항상 내접 ⭕] 직사각형 · 정사각형 (대각의 합 = 90°+90° = 180°)`, desc: `대각선의 교점 O에서 네 꼭짓점까지의 거리가 모두 같음(OA=OB=OC=OD)!`, val: `항상 내접 ⭕`, color: '#34d399', ok: true },
+          { id: 1, name: `⭕ [항상 내접 ⭕] 등변사다리꼴 (∠A + ∠C = ∠A + ∠B = 180°!)`, desc: `AD∥BC로 ∠A+∠B=180°인데 ∠B=∠C이므로 대각의 합 ∠A+∠C=180°!`, val: `항상 내접 ⭕`, color: '#38bdf8', ok: true },
+          { id: 2, name: `❌ [내접 안 함 ❌] 평행사변형 · 마름모 (대각이 70°+70° = 140° ≠ 180°!)`, desc: `이웃한 각의 합이 180°일 뿐, 마주 보는 대각의 합은 180°가 아님!`, val: `내접 안 함 ❌`, color: '#f43f5e', ok: false }
+        ],
+        totalRes: `항상 원에 내접하는 사각형: 직사각형 · 정사각형 · 등변사다리꼴 (평행사변형·마름모는 ❌)`,
+        rule: '두 대각선의 길이가 같은(AC=BD) 사각형인 직사각형·정사각형·등변사다리꼴이 항상 원에 내접하는 사각형이다!',
+        formulaHTML: `• <strong>왜 등변사다리꼴은 항상 원에 내접할까?</strong><br/>&nbsp;&nbsp;① $\\overline{AD}\\parallel\\overline{BC}$ 이므로 동측내각 ${tex('\\angle A + \\angle B = 180^\\circ')}<br/>&nbsp;&nbsp;② 등변사다리꼴 정의에 의해 ${tex('\\angle B = \\angle C')}<br/>&nbsp;&nbsp;③ 따라서 마주 보는 대각의 합 ${tex('\\mathbf{\\angle A + \\angle C = 180^\\circ}')}가 항상 성립하여 원에 내접합니다!`,
+        notes: `• <strong>[참고: 원에 ‘외접’하는 사각형과 비교]</strong>:<br/>&nbsp;&nbsp;- 원이 바깥을 감싸는 <strong>내접사각형(대각 합 $180^\\circ$)</strong>: 직사각형, 정사각형, 등변사다리꼴(⭕)<br/>&nbsp;&nbsp;- 원이 안에 들어가는 <strong>원에 외접하는 사각형(대변의 길이의 합이 같음)</strong>: 마름모, 정사각형(⭕)`,
+        tapeTitle: `항상 원에 내접하는 사각형: [직사각형 · 정사각형 · 등변사다리꼴] (마름모·평행사변형은 ❌)`,
+        tapeSegs: []
+      };
+    }
+
+
+  /* ===== 원본 그대로: 장면별 그리기 (원본 1503–2315행). 캔버스를 직접 쓰던 3곳과 화면 배율 1줄만 [2.0 수정] ===== */
+    function drawCircleMasterScene(cx, cy, t, spec) {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const s = state.scale * 1.08; // [2.0 수정] 원본은 캔버스 너비로 0.82/1.08을 골랐으나, 무대가 도형 전체를 자동으로 맞추므로 고정
+      const Rpx = 132 * s;
+      const O = cpt(cx, cy);
+      const ang = state.angPreset; // 30, 45, 60, 70
+      const Rval = state.radPreset; // 6, 8, 10, 12
+
+      // =====================================================================
+      // [모드 1] 원과 현 · 원 접기(1:√3:2) · 아치 반지름 복원 · 동심원 도넛
+      // =====================================================================
+      if (m === 1) {
+        if (sub === 'chordFoldArc') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          const pA = cpolar(O, Rpx, 150), pB = cpolar(O, Rpx, 30);
+          const pC = cpolar(O, Rpx, 90);
+          const pM = cmid(pA, pB);
+
+          // 접힌 호 ACB 표현 (t에 따라 C가 O로 접혀 올라감)
+          cpoly([O, pA, pM], 'rgba(251, 191, 36, 0.28)', CCOL.gold, 2.8, 1);
+          cpoly([O, pB, pM], 'rgba(56, 189, 248, 0.20)', CCOL.cyan, 2.4, 1);
+          cline(pA, pB, CCOL.cyan, 3.8, [], true, 2);
+          cline(O, pC, CCOL.pink, 2.6, [5, 4], false, 0);
+          cline(O, pM, CCOL.pink, 3.6, [], true, 0);
+
+          // 접힌 아치 곡선
+          // [2.0 수정] 원본은 2차 곡선(꼭대기가 O에 닿지 않아 '호가 O를 통과'가 그림에서 안 보임)이었습니다.
+          //            세 점 A·꼭대기·B를 지나는 원호로 바꿔 t=100%에서 접힌 호가 정확히 중심 O를 지납니다(t=0%는 원래 호).
+          if (PL.pass === 2) BOARD.path(arcThrough(pA, cpt(cx, cy + Rpx * (1 - t)), pB), { color: CCOL.gold, fill: 'rgba(251, 191, 36, 0.16)', width: 3.2 });
+
+          cright(pM, O, pA, 12, CCOL.pink);
+          cticks(O, pM, 1, CCOL.pink, 7);
+          cticks(pM, pC, 1, CCOL.pink, 7);
+          cticks(pA, pM, 2, CCOL.gold, 8);
+          cticks(pM, pB, 2, CCOL.gold, 8);
+          cticksAt(O, pA, 0.35, 3, CCOL.white, 7); // [표시 보강] 반지름 OA = OB
+          cticksAt(O, pB, 0.35, 3, CCOL.white, 7);
+          cangle(O, pM, pA, CCOL.gold, 26, 1, '60°'); // [표시 보강] ∠AOM = ∠BOM = 60° (같은 각 = 같은 색·같은 호)
+          cangle(O, pM, pB, CCOL.gold, 26, 1, '60°');
+
+          cbadge(O, pA, `R = ${Rval}`, CCOL.gold, -16, 0.5, 1);
+          cbadge(O, pM, `½R=${Rval / 2}`, CCOL.pink, 26, 0.5, 0);
+          cbadge(pA, pM, `${Rval / 2}√3`, CCOL.cyan, 16, 0.5, 2);
+
+          cdot(O, 'O(호가 지나는 중심)', CCOL.gold, null, { x: 0, y: -16 });
+          cdot(pA, 'A', CCOL.white, O);
+          cdot(pB, 'B', CCOL.white, O);
+          cdot(pM, 'M', CCOL.pink, null, { x: 14, y: 14 });
+          cdot(pC, 'C', CCOL.white, O);
+        } else if (sub === 'chordBisect') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          const pA = cpolar(O, Rpx, 143), pB = cpolar(O, Rpx, 37);
+          const pM = cmid(pA, pB);
+
+          cpoly([O, pA, pM], 'rgba(251, 191, 36, 0.30)', CCOL.gold, 2.8, 0);
+          cpoly([O, pB, pM], 'rgba(56, 189, 248, 0.24)', CCOL.cyan, 2.6, 0);
+          cline(pA, pB, CCOL.cyan, 3.8, [], true, 1);
+          cline(O, pM, CCOL.pink, 3.2, [], false, 0);
+
+          cright(pM, O, pA, 12, CCOL.pink);
+          cticks(pA, pM, 2, CCOL.gold, 8);
+          cticks(pM, pB, 2, CCOL.gold, 8);
+          cticks(O, pA, 1, CCOL.white, 7.5);
+          cticks(O, pB, 1, CCOL.white, 7.5);
+          cright(pM, O, pB, 12, CCOL.pink); // [표시 보강] 두 직각삼각형 모두 직각(RHS 합동의 R)
+
+          const d = Math.round(Rval * 0.6), am = Math.round(Rval * 0.8);
+          cbadge(O, pA, `R = ${Rval}cm`, CCOL.gold, -16, 0.5, 0);
+          cbadge(O, pM, `d = ${d}cm`, CCOL.pink, 26, 0.5, 0);
+          cbadge(pA, pM, `AM = ${am}cm`, CCOL.cyan, 18, 0.5, 1);
+          cbadge(pM, pB, `BM = ${am}cm`, CCOL.cyan, 18, 0.5, 1);
+
+          cdot(O, 'O', CCOL.gold, null, { x: 0, y: -16 });
+          cdot(pA, 'A', CCOL.white, O);
+          cdot(pB, 'B', CCOL.white, O);
+          cdot(pM, 'M(수직이등분)', CCOL.pink, null, { x: 0, y: 22 });
+        } else if (sub === 'chordEqualDist') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          // [2.0 수정] 원본은 현의 반각이 35°(OM ≈ 0.82R)라 표시한 OM = 0.6R, AB = 1.6R 과 그림이 달랐습니다 → 반각 53.13°(3-4-5). 포개기는 180° 회전(C→B, D→A)으로 두 현이 완전히 겹칩니다.
+          const hA = (Math.acos(0.6) * 180) / Math.PI; // 53.13°
+          const pA = cpolar(O, Rpx, 180 - hA), pB = cpolar(O, Rpx, 180 + hA);
+          const rotAng = t * 180;
+          const pC = cpolar(O, Rpx, hA + rotAng), pD = cpolar(O, Rpx, -hA + rotAng);
+          const pM = cmid(pA, pB), pN = cmid(pC, pD);
+
+          cpoly([O, pA, pB], 'rgba(251, 191, 36, 0.22)', CCOL.gold, 3.0, 1);
+          cpoly([O, pC, pD], 'rgba(56, 189, 248, 0.22)', CCOL.cyan, 3.0, 1);
+          cline(O, pM, CCOL.pink, 3.4, [], true, 0);
+          cline(O, pN, CCOL.pink, 3.4, [], true, 0);
+
+          cright(pM, O, pA, 11, CCOL.pink);
+          cright(pN, O, pC, 11, CCOL.pink);
+          cticks(O, pM, 1, CCOL.pink, 7.5);
+          cticks(O, pN, 1, CCOL.pink, 7.5);
+          cticks(pA, pB, 2, CCOL.gold, 8.5);
+          cticks(pC, pD, 2, CCOL.cyan, 8.5);
+
+          cdot(O, 'O', CCOL.gold, null, { x: 0, y: -16 });
+          cdot(pA, 'A', CCOL.white, O); cdot(pB, 'B', CCOL.white, O);
+          cdot(pC, 'C', CCOL.white, O); cdot(pD, 'D', CCOL.white, O);
+          cdot(pM, 'M', CCOL.pink, O); cdot(pN, 'N(OM=ON)', CCOL.pink, O);
+        } else if (sub === 'chordArchRadius') {
+          // 깨진 접시 조각(활꼴) 반지름 복원: R=10, AM=8, CM=4, OM=R-4=6
+          const oArch = cpt(cx, cy + 35 * s);
+          const rArch = 145 * s;
+          if (t > 0.1 || state.conceptSwitch === 'aux' || state.activePartIdx !== -1) {
+            ccircle(oArch, rArch, 'rgba(56, 189, 248, 0.45)', 'rgba(56, 189, 248, 0.04)', 2.0, [6, 5], 2);
+          }
+          // 위쪽 깨진 활꼴 호 ACB (-143.13° ~ -36.87°)
+          const pA = cpolar(oArch, rArch, -143.13), pB = cpolar(oArch, rArch, -36.87);
+          const pC = cpolar(oArch, rArch, -90);
+          const pM = cmid(pA, pB);
+
+          carc(oArch, rArch, -143.13, -36.87, CCOL.gold, 4.5, false, 0);
+          cline(pA, pB, CCOL.gold, 3.6, [], false, 0);
+          cline(pC, pM, CCOL.cyan, 3.2, [], false, 0);
+
+          cpoly([oArch, pA, pM], 'rgba(244, 114, 182, 0.28)', CCOL.pink, 3.0, 1);
+          cright(pM, oArch, pA, 12, CCOL.pink);
+          cticksAt(pA, pM, 0.28, 2, CCOL.gold, 8); // [표시 보강] AM = BM (M 은 현 AB 의 중점)
+          cticksAt(pM, pB, 0.72, 2, CCOL.gold, 8);
+
+          cbadge(pA, pM, 'AM = 8 cm', CCOL.gold, -16, 0.5, 0);
+          cbadge(pC, pM, 'CM = 4 cm', CCOL.cyan, 28, 0.5, 0);
+          cbadge(oArch, pM, 'OM = R - 4 (6cm)', CCOL.pink, 42, 0.5, 1);
+          cbadge(oArch, pA, '빗변 OA = R (10cm!)', CCOL.cyan, -22, 0.5, 2);
+
+          cdot(pA, 'A', CCOL.white, oArch);
+          cdot(pB, 'B(AB=16cm)', CCOL.white, oArch);
+          cdot(pC, 'C(활꼴의 꼭대기)', CCOL.gold, null, { x: 0, y: -16 });
+          cdot(pM, 'M', CCOL.white, null, { x: -16, y: 16 });
+          cdot(oArch, 'O(찾은 중심)', CCOL.pink, null, { x: 0, y: 22 });
+        } else {
+          // chordConcentric (동심원 도넛 넓이 = π·AM²)
+          const rIn = Rpx * 0.56;
+          // 도넛 고리 색칠 (바깥 원 - 안쪽 원)
+          // [2.0 수정] 캔버스 직접 호출 → 무대의 좌표 변환·문맥으로 같은 도넛을 칠합니다
+          if (PL.pass === 2) {
+            const g = BOARD.ctx, so = BOARD.toS(O), kk = BOARD.k;
+            g.save();
+            g.beginPath();
+            g.arc(so.x, so.y, Rpx * kk, 0, Math.PI * 2, false);
+            g.arc(so.x, so.y, rIn * kk, 0, Math.PI * 2, true);
+            g.fillStyle = BOARD.color(state.activePartIdx === 2 ? 'rgba(52, 211, 153, 0.42)' : 'rgba(52, 211, 153, 0.20)');
+            g.fill();
+            g.restore();
+          }
+
+          ccircle(O, Rpx, CCOL.green, null, 3.0, [], 2);
+          ccircle(O, rIn, CCOL.cyan, 'rgba(7, 19, 14, 0.9)', 2.6);
+
+          const pM = cpt(O.x, O.y - rIn);
+          const halfLen = Math.sqrt(Rpx * Rpx - rIn * rIn);
+          const pA = cpt(O.x - halfLen, pM.y), pB = cpt(O.x + halfLen, pM.y);
+
+          cpoly([O, pA, pM], 'rgba(244, 114, 182, 0.34)', CCOL.pink, 3.0, 1);
+          cline(pA, pB, CCOL.gold, 4.0, [], true, 0);
+          cright(pM, O, pA, 12, CCOL.pink);
+          cticks(pA, pM, 2, CCOL.gold, 8);
+          cticks(pM, pB, 2, CCOL.gold, 8);
+
+          cbadge(pA, pM, `AM = ${Rval} cm`, CCOL.gold, -16, 0.5, 0);
+          cbadge(O, pA, `큰 반지름 R`, CCOL.pink, -16, 0.5, 1);
+          cbadge(O, pM, `r`, CCOL.cyan, 16, 0.5, 1);
+
+          cdot(O, 'O', CCOL.white, null, { x: 0, y: 20 });
+          cdot(pA, 'A', CCOL.white, O);
+          cdot(pB, `B(현 AB=${Rval * 2}cm)`, CCOL.white, O);
+          cdot(pM, 'M(접점 ⊥)', CCOL.gold, null, { x: 0, y: -16 });
+        }
+      }
+
+      // =====================================================================
+      // [모드 2] 원과 접선 · △PCD 둘레 불변 · 내접원 · 피토 정리
+      // =====================================================================
+      else if (m === 2) {
+        if (sub === 'tangentPerimTri') {
+          const cO = cpt(cx - 58 * s, cy);
+          const rC = 92 * s;
+          const pP = cpt(cx + 155 * s, cy);
+          const distOP = cdist(cO, pP);
+          const alpha = Math.acos(rC / distOP);
+          const pA = cpt(cO.x + rC * Math.cos(-alpha), cO.y + rC * Math.sin(-alpha));
+          const pB = cpt(cO.x + rC * Math.cos(alpha), cO.y + rC * Math.sin(alpha));
+          const pE = cpt(cO.x + rC, cO.y);
+
+          // 점 E에서의 접선(수직선 x = pE.x)과 PA, PB의 교점 C, D
+          const uTop = (pE.x - pA.x) / (pP.x - pA.x);
+          const pC = clerp(pA, pP, uTop);
+          const pD = clerp(pB, pP, uTop);
+
+          ccircle(cO, rC, CCOL.green, 'rgba(52, 211, 153, 0.08)', 2.8);
+          cline(pP, pA, 'rgba(148,163,184,0.45)', 2.2, [5, 4]);
+          cline(pP, pB, 'rgba(148,163,184,0.45)', 2.2, [5, 4]);
+
+          cpoly([pP, pC, pD], 'rgba(251, 191, 36, 0.18)', null, 0, 2);
+          cline(pP, pC, CCOL.cyan, 3.8, [], true, 0);
+          cline(pP, pD, CCOL.pink, 3.8, [], true, 1);
+
+          // 슬라이더 t에 따라 CE가 CA로, DE가 DB로 펼쳐지는 직관 애니메이션!
+          const curE_top = clerp(pE, pA, t);
+          const curE_bot = clerp(pE, pB, t);
+          cline(pC, curE_top, CCOL.cyan, 4.2, [], true, 0);
+          cline(pD, curE_bot, CCOL.pink, 4.2, [], true, 1);
+
+          cticks(pC, pA, 1, CCOL.cyan, 7.5);
+          cticks(pC, curE_top, 1, CCOL.cyan, 7.5);
+          cticks(pD, pB, 2, CCOL.pink, 7.5);
+          cticks(pD, curE_bot, 2, CCOL.pink, 7.5);
+
+          const pa = Rval + 2;
+          cbadge(pP, pA, `PA = ${pa} cm`, CCOL.cyan, -18, 0.5, 0);
+          cbadge(pP, pB, `PB = ${pa} cm`, CCOL.pink, 18, 0.5, 1);
+
+          cdot(cO, 'O', CCOL.green, null, { x: -16, y: 4 });
+          cdot(pP, `P(둘레=2PA=${pa * 2}cm!)`, CCOL.gold, null, { x: 0, y: -18 });
+          cdot(pA, 'A', CCOL.cyan, cO);
+          cdot(pB, 'B', CCOL.pink, cO);
+          cdot(pC, 'C', CCOL.cyan, null, { x: 0, y: -16 });
+          cdot(pD, 'D', CCOL.pink, null, { x: 0, y: 20 });
+          cdot(pE, 'E(접점)', CCOL.gold, null, { x: -24, y: 4 });
+        } else if (sub === 'tangentLen') {
+          const cO = cpt(cx - 52 * s, cy);
+          const rC = 96 * s;
+          // [2.0 수정] 원본은 P가 고정이라 θ 표시(30~70°)와 그려진 ∠APB(약 57°)가 달랐습니다 → ∠APB = θ 가 되도록 OP = r / sin(θ/2)
+          const pP = cpt(cO.x + rC / Math.sin((ang * Math.PI) / 360), cy);
+          const distOP = cdist(cO, pP);
+          const alpha = Math.acos(rC / distOP);
+          const pA = cpt(cO.x + rC * Math.cos(-alpha), cO.y + rC * Math.sin(-alpha));
+          const pB = cpt(cO.x + rC * Math.cos(alpha), cO.y + rC * Math.sin(alpha));
+          const pH = cmid(pA, pB);
+
+          ccircle(cO, rC, CCOL.cyan, 'rgba(56, 189, 248, 0.08)', 2.8);
+          cpoly([cO, pA, pP], 'rgba(251, 191, 36, 0.24)', CCOL.gold, 2.8, 0);
+          cpoly([cO, pB, pP], 'rgba(56, 189, 248, 0.22)', CCOL.cyan, 2.8, 0);
+          cline(cO, pP, CCOL.white, 2.6, [5, 4], false, 2);
+          cline(pA, pB, CCOL.pink, 3.2, [], true, 2);
+
+          cright(pA, cO, pP, 12, CCOL.gold);
+          cright(pB, cO, pP, 12, CCOL.cyan);
+          cright(pH, cO, pA, 11, CCOL.pink);
+          cticks(pP, pA, 2, CCOL.gold, 8.5);
+          cticks(pP, pB, 2, CCOL.gold, 8.5);
+          cticks(pA, pH, 1, CCOL.pink, 7);
+          cticks(pH, pB, 1, CCOL.pink, 7);
+          cticks(cO, pA, 3, CCOL.white, 7.5); // [표시 보강] 반지름 OA = OB (RHS 의 S)
+          cticks(cO, pB, 3, CCOL.white, 7.5);
+
+          cangle(cO, pA, pB, CCOL.cyan, 28, 1, `${180 - ang}°`);
+          cangle(pP, pB, pA, CCOL.gold, 34, 1, `${ang}°`);
+
+          cdot(cO, 'O', CCOL.white, null, { x: -16, y: 4 });
+          cdot(pP, 'P(PA=PB)', CCOL.gold, null, { x: 14, y: 4 });
+          cdot(pA, 'A(90°)', CCOL.white, cO);
+          cdot(pB, 'B(90°)', CCOL.white, cO);
+          cdot(pH, 'H(수직이등분)', CCOL.pink, null, { x: -28, y: 18 });
+        } else if (sub === 'inscribedTri') {
+          // 6-8-10 직각삼각형과 내접원 반지름 r = 2
+          const uPx = 30 * s;
+          const pB = cpt(cx - 4 * uPx, cy + 3 * uPx);
+          const pC = cpt(cx + 4 * uPx, cy + 3 * uPx);
+          const pA = cpt(cx - 4 * uPx, cy - 3 * uPx);
+          const rIn = 2 * uPx;
+          const pI = cpt(pB.x + rIn, pB.y - rIn);
+          const pD = cpt(pB.x, pB.y - rIn), pE = cpt(pB.x + rIn, pB.y);
+          const pF = clerp(pA, pC, 4 / 10);
+
+          cpoly([pA, pB, pC], 'rgba(56, 189, 248, 0.10)', CCOL.white, 2.8);
+          cpoly([pD, pB, pE, pI], 'rgba(52, 211, 153, 0.38)', CCOL.green, 3.2, 0);
+          ccircle(pI, rIn, CCOL.gold, 'rgba(251, 191, 36, 0.14)', 3.0, [], 2);
+
+          cline(pA, pD, CCOL.gold, 4.0, [], true, 1);
+          cline(pA, pF, CCOL.gold, 4.0, [], true, 1);
+          cline(pC, pE, CCOL.cyan, 4.0, [], true, 1);
+          cline(pC, pF, CCOL.cyan, 4.0, [], true, 1);
+          cline(pI, pF, CCOL.pink, 2.4, [4, 4]);
+
+          cright(pB, pA, pC, 12, CCOL.green);
+          cright(pD, pI, pB, 10, CCOL.green);
+          cright(pE, pI, pB, 10, CCOL.green);
+          cright(pF, pI, pC, 10, CCOL.pink);
+          cticksAt(pA, pD, 0.22, 1, CCOL.gold, 7.5); // [표시 보강] 한 점에서 그은 두 접선은 길이가 같다: AD = AF (금색 한 줄), CE = CF (하늘색 두 줄)
+          cticksAt(pA, pF, 0.22, 1, CCOL.gold, 7.5);
+          cticksAt(pC, pE, 0.25, 2, CCOL.cyan, 7.5);
+          cticksAt(pC, pF, 0.25, 2, CCOL.cyan, 7.5);
+
+          cbadge(pB, pE, 'r = 2', CCOL.green, 16, 0.5, 0);
+          cbadge(pA, pD, '6-r = 4', CCOL.gold, -20, 0.5, 1);
+          cbadge(pA, pF, '4 cm', CCOL.gold, -15, 0.5, 1);
+          cbadge(pF, pC, '8-r = 6 cm', CCOL.cyan, -15, 0.5, 1);
+          cbadge(pE, pC, '6 cm', CCOL.cyan, 16, 0.5, 1);
+
+          cdot(pA, 'A', CCOL.white, pI);
+          cdot(pB, 'B(한 변이 r인 정사각형)', CCOL.green, null, { x: -10, y: 22 });
+          cdot(pC, 'C', CCOL.white, pI);
+          cdot(pI, 'I(내심 r=2)', CCOL.gold, null, { x: 24, y: -6 });
+          cdot(pD, 'D', CCOL.green, null, { x: -16, y: 0 });
+          cdot(pE, 'E', CCOL.green, null, { x: 0, y: 18 });
+          cdot(pF, 'F', CCOL.pink, null, { x: 12, y: -10 });
+        } else if (sub === 'pitotQuad') {
+          // 원에 외접하는 사각형 (피토 정리: AB + CD = AD + BC)
+          const rIn = 86 * s;
+          ccircle(O, rIn, CCOL.green, 'rgba(52, 211, 153, 0.12)', 2.8);
+
+          // 4개 접점 T1(위), T2(왼), T3(아래), T4(오른)에서의 접선 교점으로 정확한 외접사각형 생성
+          const angs = [-102, 168, 82, -12];
+          const Tpts = angs.map(dg => cpolar(O, rIn, dg));
+          function tangentIntersect(T_a, T_b) {
+            const n1 = csub(T_a, O), n2 = csub(T_b, O);
+            const dir1 = cpt(-n1.y, n1.x), dir2 = cpt(-n2.y, n2.x);
+            const u = dir1, v = dir2;
+            const det = u.x * v.y - u.y * v.x || 1;
+            const w = csub(T_b, T_a);
+            const k = (w.x * v.y - w.y * v.x) / det;
+            return cadd(T_a, cmul(u, k));
+          }
+          const pA = tangentIntersect(Tpts[0], Tpts[1]);
+          const pB = tangentIntersect(Tpts[1], Tpts[2]);
+          const pC = tangentIntersect(Tpts[2], Tpts[3]);
+          const pD = tangentIntersect(Tpts[3], Tpts[0]);
+
+          cpoly([pA, pB, pC, pD], 'rgba(15, 38, 29, 0.35)', 'rgba(255,255,255,0.3)', 1.5);
+
+          // 4쌍의 접선 조각 컬러 매칭 (A: 골드, B: 시안, C: 그린, D: 핑크)
+          cline(pA, Tpts[0], CCOL.gold, 4.2, [], true, 0);
+          cline(pA, Tpts[1], CCOL.gold, 4.2, [], true, 1);
+          cline(pB, Tpts[1], CCOL.cyan, 4.2, [], true, 1);
+          cline(pB, Tpts[2], CCOL.cyan, 4.2, [], true, 0);
+          cline(pC, Tpts[2], CCOL.green, 4.2, [], true, 0);
+          cline(pC, Tpts[3], CCOL.green, 4.2, [], true, 1);
+          cline(pD, Tpts[3], CCOL.pink, 4.2, [], true, 1);
+          cline(pD, Tpts[0], CCOL.pink, 4.2, [], true, 0);
+
+          cticks(pA, Tpts[0], 1, CCOL.gold, 7); cticks(pA, Tpts[1], 1, CCOL.gold, 7);
+          cticks(pB, Tpts[1], 2, CCOL.cyan, 7); cticks(pB, Tpts[2], 2, CCOL.cyan, 7);
+          cticks(pC, Tpts[2], 3, CCOL.green, 7); cticks(pC, Tpts[3], 3, CCOL.green, 7);
+          cticks(pD, Tpts[3], 4, CCOL.pink, 7); cticks(pD, Tpts[0], 4, CCOL.pink, 7); // [표시 보강] d 쌍(분홍)에도 눈금(네 줄)
+
+          cbadge(pA, pD, 'AD = a+d (8cm)', CCOL.gold, -16, 0.5, 0);
+          cbadge(pB, pC, 'BC = b+c (10cm)', CCOL.green, 16, 0.5, 0);
+          cbadge(pA, pB, 'AB = a+b (7cm)', CCOL.cyan, -22, 0.5, 1);
+          cbadge(pD, pC, 'CD = c+d (11cm)', CCOL.pink, 22, 0.5, 1);
+
+          [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, O));
+          cdot(O, 'O(내접원)', CCOL.white, null, { x: 0, y: 4 });
+        } else {
+          // pitotRectTrap (원을 품은 직사각형 접선 피타고라스: 가로 9, 세로 12, 반지름 6)
+          const uPx = 19 * s;
+          const pB = cpt(cx - 4.5 * uPx, cy + 6 * uPx);
+          const pA = cpt(cx - 4.5 * uPx, cy - 6 * uPx);
+          const pD = cpt(cx + 4.5 * uPx, cy - 6 * uPx);
+          const pC = cpt(cx + 4.5 * uPx, cy + 6 * uPx);
+          const cO = cpt(pB.x, cy); // [2.0 수정] 원본은 pB.x + 6 * uPx(안쪽): 접선 DE가 원을 가로질렀습니다. 반원의 중심은 변 AB의 중점입니다.
+          const pE = cpt(pB.x + 4 * uPx, pB.y);
+          const pP = clerp(pD, pE, 9 / 13);
+
+          cpoly([pA, pB, pC, pD], 'rgba(56, 189, 248, 0.08)', CCOL.white, 2.4);
+          cpoly([pD, pE, pC], 'rgba(56, 189, 248, 0.28)', CCOL.cyan, 3.2, 2);
+          csector(cO, 6 * uPx, -90, 90, 'rgba(52, 211, 153, 0.14)', CCOL.green, 2.8); // [2.0 수정] 원 → 반원(제목 '반원을 품은 직사각형')
+
+          cline(pD, pA, CCOL.gold, 4.0, [], true, 0);
+          cline(pD, pP, CCOL.gold, 4.0, [], true, 0);
+          cline(pE, pB, CCOL.pink, 4.0, [], true, 1);
+          cline(pE, pP, CCOL.pink, 4.0, [], true, 1);
+          cright(pC, pD, pE, 12, CCOL.cyan);
+          cticksAt(pD, pA, 0.25, 1, CCOL.gold, 7.5); // [표시 보강] 접선 길이: DA = DP (금색 한 줄), EP = EB (분홍 두 줄)
+          cticksAt(pD, pP, 0.25, 1, CCOL.gold, 7.5);
+          cticksAt(pE, pP, 0.25, 2, CCOL.pink, 7.5);
+          cticksAt(pE, pB, 0.25, 2, CCOL.pink, 7.5);
+
+          cbadge(pA, pD, 'DA = 9 cm', CCOL.gold, -16, 0.5, 0);
+          cbadge(pD, pP, 'DP = 9', CCOL.gold, -16, 0.5, 0);
+          cbadge(pE, pP, 'EP = x (4)', CCOL.pink, -16, 0.5, 1);
+          cbadge(pB, pE, 'BE = x (4)', CCOL.pink, 16, 0.5, 1);
+          cbadge(pE, pC, 'EC = 9-x (5)', CCOL.cyan, 16, 0.5, 2);
+          cbadge(pD, pC, 'DC = 12 cm', CCOL.cyan, 24, 0.5, 2);
+
+          [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, cO));
+          cdot(pE, 'E', CCOL.pink, null, { x: 0, y: 20 });
+          cdot(pP, 'P(접점)', CCOL.gold, null, { x: -18, y: -8 });
+        }
+      }
+
+      // =====================================================================
+      // [모드 3] 원주각=½중심각 · 원주각 이동 · 반원의 90° · 삼각비 sin A · 네 점 한 원
+      // =====================================================================
+      else if (m === 3) {
+        if (sub === 'inscribedAngle3Cases') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          const pA = cpolar(O, Rpx, 90 + ang), pB = cpolar(O, Rpx, 90 - ang);
+          const pP = cpolar(O, Rpx, -95);
+          const pQ = cpolar(O, Rpx, 85);
+
+          carc(O, Rpx, 90 - ang, 90 + ang, CCOL.gold, 5.5, false, 2);
+          cpoly([O, pP, pA], 'rgba(251, 191, 36, 0.22)', CCOL.gold, 2.6, 0);
+          cpoly([O, pP, pB], 'rgba(56, 189, 248, 0.22)', CCOL.cyan, 2.6, 1);
+
+          cline(pP, pQ, CCOL.pink, 3.2, [6, 4], true, 2);
+          cticks(O, pP, 1, CCOL.white, 7.5); // [표시 보강] 반지름 OP = OA = OB: 같은 눈금(흰색 한 줄)
+          cticks(O, pA, 1, CCOL.white, 7.5);
+          cticks(O, pB, 1, CCOL.white, 7.5);
+
+          // [표시 보강] 본문의 •·× 를 그림에 표시: •(금색 한 호) = ∠APO = ∠PAO, ×(하늘색 한 호) = ∠BPO = ∠PBO (이등변삼각형 밑각)
+          //            외각 ∠AOQ = 2•(금색 두 호), ∠QOB = 2×(하늘색 두 호), 원주각 ∠APB = •+×, 중심각 ∠AOB = 2•+2×
+          cangle(pP, pA, O, CCOL.gold, 20, 1, '•');
+          cangle(pA, O, pP, CCOL.gold, 22, 1, '•');
+          cangle(pP, O, pB, CCOL.cyan, 20, 1, '×');
+          cangle(pB, pP, O, CCOL.cyan, 22, 1, '×');
+          cangle(O, pA, pQ, CCOL.gold, 40, 2, '2•');
+          cangle(O, pQ, pB, CCOL.cyan, 40, 2, '2×');
+          cangle(pP, pA, pB, CCOL.pink, 46, 1, `${ang}°`, '원주각(•+×)');
+          cangle(O, pA, pB, CCOL.pink, 64, 2, `${ang * 2}°`, '중심각(2•+2×)');
+
+          cdot(O, 'O', CCOL.white, null, { x: 18, y: -4 });
+          cdot(pP, 'P(•+×)', CCOL.gold, O);
+          cdot(pQ, 'Q(지름 보조선)', CCOL.pink, O);
+          cdot(pA, 'A(•)', CCOL.white, O);
+          cdot(pB, 'B(×)', CCOL.white, O);
+        } else if (sub === 'inscribedMoveArc') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          const pA = cpolar(O, Rpx, 90 + ang), pB = cpolar(O, Rpx, 90 - ang);
+          const pP1 = cpolar(O, Rpx, -130);
+          const pP_cur = cpolar(O, Rpx, -130 + t * 95);
+
+          carc(O, Rpx, 90 - ang, 90 + ang, CCOL.gold, 5.5, false, 0);
+          cline(O, pA, 'rgba(251, 191, 36, 0.45)', 2, [4, 4]);
+          cline(O, pB, 'rgba(251, 191, 36, 0.45)', 2, [4, 4]);
+          cline(pP1, pA, 'rgba(56, 189, 248, 0.4)', 2.0);
+          cline(pP1, pB, 'rgba(56, 189, 248, 0.4)', 2.0);
+
+          cpoly([pP_cur, pA, pB], 'rgba(56, 189, 248, 0.24)', CCOL.cyan, 3.2, 1);
+          cangle(pP1, pA, pB, CCOL.gold, 26, 1, `${ang}°`); // [표시 보강] 같은 호 AB 의 원주각은 같은 각 → 같은 색(금색)·같은 호 한 개
+          if (t > 0.04) cangle(pP_cur, pA, pB, CCOL.gold, 26, 1, `${ang}°`, '불변!');
+          cangle(O, pA, pB, CCOL.pink, 24, 2, `${ang * 2}°`);
+
+          cdot(O, 'O', CCOL.white, null, { x: 0, y: -14 });
+          cdot(pA, 'A', CCOL.gold, O);
+          cdot(pB, 'B', CCOL.gold, O);
+          cdot(pP1, 'P₁', CCOL.cyan, O);
+          cdot(pP_cur, 'P(어디에 있어도 같은 원주각)', CCOL.gold, O);
+        } else if (sub === 'thalesSemiCircle') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          const pA = cpt(cx - Rpx, cy), pB = cpt(cx + Rpx, cy);
+          const pP = cpolar(O, Rpx, -135 + t * 90);
+
+          cpoly([pP, pA, pB], 'rgba(244, 114, 182, 0.24)', CCOL.pink, 3.2, 1);
+          cline(pA, pB, CCOL.gold, 4.0, [], true, 0);
+          cright(pP, pA, pB, 14, CCOL.gold);
+          cangle(O, pB, pA, CCOL.gold, 22, 1, '180°(지름)');
+
+          cdot(O, 'O(외심)', CCOL.gold, null, { x: 0, y: 20 });
+          cdot(pA, 'A', CCOL.white, O);
+          cdot(pB, 'B(지름)', CCOL.white, O);
+          cdot(pP, 'P(항상 90°)', CCOL.pink, O);
+        } else if (sub === 'inscribedTrig') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          // [2.0 수정] 원본 그림은 BC가 중심각 120°(BC = R√3)인데 같은 장면의 해설은 'sin A = R / 2R = 1/2'(BC = R)이라 서로 어긋났습니다.
+          //            해설에 맞춰 BC의 중심각을 60°(BC = R, ∠A = 30°)로 그립니다. A를 지름 끝 A'으로 옮겨 ∠C = 90°가 되는 구성은 그대로입니다.
+          const pB = cpolar(O, Rpx, 120), pC = cpolar(O, Rpx, 60);
+          const pA_orig = cpolar(O, Rpx, -115);
+          const pA_diam = cpolar(O, Rpx, -60); // B와 정반대 지름 끝점!
+          const pA_cur = cpolar(O, Rpx, -115 + t * 55);
+
+          carc(O, Rpx, 60, 120, CCOL.gold, 5.0, false, 2);
+          cpoly([pA_orig, pB, pC], 'rgba(56, 189, 248, 0.14)', 'rgba(56, 189, 248, 0.5)', 2.0, 0);
+          cpoly([pA_cur, pB, pC], 'rgba(251, 191, 36, 0.28)', CCOL.gold, 3.4, 1);
+          cline(pB, pA_diam, CCOL.pink, 2.8, [5, 4], false, 1);
+
+          if (t > 0.85) {
+            cright(pC, pA_cur, pB, 13, CCOL.pink);
+          }
+          cangle(pA_orig, pB, pC, CCOL.gold, 26, 1, '30°', '∠A'); // [표시 보강] ∠A = ∠A' (호 BC = 중심각 60° 의 원주각 30°) → 같은 색·같은 호
+          if (t > 0.04) cangle(pA_cur, pB, pC, CCOL.gold, 26, 1, '30°', "∠A'=∠A");
+
+          cbadge(pB, pC, `BC = ${Rval}`, CCOL.gold, 16, 0.5, 2); // [2.0 수정] BC = R (위 그림 수정과 같은 이유)
+          cbadge(pB, pA_diam, `지름 2R = ${2 * Rval}cm`, CCOL.pink, -18, 0.45, 1);
+
+          cdot(O, 'O', CCOL.white, null, { x: -14, y: -10 });
+          cdot(pB, 'B', CCOL.white, O);
+          cdot(pC, 'C(90°!)', CCOL.pink, O);
+          cdot(pA_orig, 'A(처음)', CCOL.cyan, O);
+          cdot(pA_cur, "A'(지름의 끝점 ➔ 직각삼각형)", CCOL.gold, O);
+        } else {
+          // fourPointsCircle (네 점 A, B, C, D가 한 원 위에 있을 조건)
+          ccircle(O, Rpx, CCOL.green, 'rgba(52, 211, 153, 0.07)', 2.6, [6, 4]);
+          // [2.0 수정] 원본은 B, C가 고정(원주각 약 55°)이라 θ 표시(30~70°)와 그림의 각이 달랐습니다 → 호 BC의 중심각이 2θ가 되도록 배치
+          const pB = cpolar(O, Rpx, 90 + ang), pC = cpolar(O, Rpx, 90 - ang);
+          const pA = cpolar(O, Rpx, -125);
+          const pD_on = cpolar(O, Rpx, -55);
+          const pD_cur = cpolar(O, Rpx + t * 55 * s, -55);
+          const isOut = t > 0.15;
+
+          cline(pB, pC, CCOL.white, 3.6);
+          cpoly([pA, pB, pC], 'rgba(251, 191, 36, 0.22)', CCOL.gold, 2.8, 0);
+          cpoly([pD_cur, pB, pC], isOut ? 'rgba(244, 63, 94, 0.24)' : 'rgba(52, 211, 153, 0.24)', isOut ? CCOL.red : CCOL.green, 3.0, 1);
+
+          const curAngD = Math.round(ang / (1 + t * 0.35));
+          cangle(pA, pB, pC, CCOL.gold, 28, 1, `${ang}°`);
+          cangle(pD_cur, pB, pC, isOut ? CCOL.red : CCOL.gold, 28, 1, isOut ? `${curAngD}°` : `${ang}°`, isOut ? '(≠)' : '(일치!)'); // [표시 보강] 한 원 위(일치)일 때 ∠BAC 와 같은 색·같은 호
+
+          cdot(pA, 'A', CCOL.gold, O);
+          cdot(pB, 'B', CCOL.white, O);
+          cdot(pC, 'C', CCOL.white, O);
+          cdot(pD_cur, isOut ? "D'(원 밖의 점 ❌)" : 'D(한 원 위 ⭕)', isOut ? CCOL.red : CCOL.green, O);
+        }
+      }
+
+      // =====================================================================
+      // [모드 4] 원에 내접하는 사각형(180°) · 외각=내대각 · 오각형 보조선
+      // =====================================================================
+      else if (m === 4) {
+        const angA = ang + 35, angC = 180 - angA;
+        if (sub === 'cyclicPentagon') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          // [2.0 수정] 원본은 다섯 점이 고정이라 중심각 2θ 표시(60~140°)와 그려진 ∠AOB(75°)가 달랐습니다 → 호 AB = 2θ, 나머지 네 호는 같은 크기
+          const uArc = (360 - 2 * ang) / 4;
+          const pA = cpolar(O, Rpx, -155);
+          const pB = cpolar(O, Rpx, -155 - 2 * ang);
+          const pC = cpolar(O, Rpx, -155 - 2 * ang - uArc);
+          const pD = cpolar(O, Rpx, -155 - 2 * ang - 2 * uArc);
+          const pE = cpolar(O, Rpx, -155 - 2 * ang - 3 * uArc);
+
+          cpoly([pB, pC, pD, pE], 'rgba(56, 189, 248, 0.22)', CCOL.cyan, 3.0, 1);
+          cpoly([pA, pB, pE], 'rgba(251, 191, 36, 0.24)', CCOL.gold, 3.0, 2);
+          cline(O, pA, CCOL.pink, 2.4, [4, 4]);
+          cline(O, pB, CCOL.pink, 2.4, [4, 4]);
+
+          // 핵심 보조선 BE!
+          cline(pB, pE, CCOL.pink, 4.0, [], true, 0);
+
+          cangle(O, pB, pA, CCOL.pink, 24, 1, `${ang * 2}°`);
+          cangle(pE, pA, pB, CCOL.gold, 32, 1, `${ang}°`);
+          cangle(pC, pD, pB, CCOL.cyan, 26, 2, '∠C');
+          cangle(pE, pB, pD, CCOL.green, 26, 2, '180°-∠C'); // [표시 보강] ∠C 와 합이 180° 인 '다른' 각 → 다른 색
+
+          cdot(O, 'O', CCOL.white, null, { x: 14, y: 4 });
+          cdot(pA, 'A', CCOL.white, O);
+          cdot(pB, 'B(보조선 BE)', CCOL.pink, O);
+          cdot(pC, 'C', CCOL.cyan, O);
+          cdot(pD, 'D', CCOL.white, O);
+          cdot(pE, `E(합=${180 + ang}°!)`, CCOL.gold, O);
+        } else if (sub === 'cyclicQuad180' || sub === 'cyclicExterior' || sub === 'cyclicConditions3') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          // [2.0 수정] 원본은 네 점이 고정이라 ∠A 표시(65°~105°)와 그림의 ∠A(늘 90°)가 달랐습니다 → 호 BCD = 2∠A 가 되도록 배치(∠C = 180° - ∠A 는 저절로 성립)
+          const pB = cpolar(O, Rpx, 145);
+          const pC = cpolar(O, Rpx, 145 - angA);
+          const pD = cpolar(O, Rpx, 145 - 2 * angA);
+          const pA = cpolar(O, Rpx, -35 - angA);
+          const dirBC = cnorm(csub(pC, pB));
+          const pE_ext = cadd(pC, cmul(dirBC, 78 * s));
+
+          cpoly([pA, pB, pC, pD], 'rgba(52, 211, 153, 0.20)', CCOL.green, 3.2, 0);
+          cline(pC, pE_ext, CCOL.pink, 3.2, [7, 5], false, 1); // [표시 보강] 연장선은 점선
+
+          if (sub === 'cyclicQuad180' && (t > 0.1 || state.conceptSwitch === 'aux')) {
+            cline(O, pB, CCOL.gold, 2.4, [5, 4], false, 2);
+            cline(O, pD, CCOL.gold, 2.4, [5, 4], false, 2);
+            cdot(O, 'O(중심각 합 360°)', CCOL.gold, null, { x: -38, y: 4 });
+            // [표시 보강] 중심각: ∠A 가 보는 호 BCD = 2∠A(금색), ∠C 가 보는 호 BAD = 2∠C(하늘색) → 합 360°
+            cangle(O, pB, pD, CCOL.gold, 30, 1, `${angA * 2}°`, '', angA * 2 > 180);
+            cangle(O, pB, pD, CCOL.cyan, 30, 2, `${angC * 2}°`, '', angC * 2 > 180);
+          }
+          if (sub === 'cyclicConditions3') {
+            cline(pA, pC, CCOL.cyan, 2.2, [5, 4], false, 0);
+            cline(pB, pD, CCOL.cyan, 2.2, [5, 4], false, 0);
+          }
+
+          if (sub === 'cyclicConditions3') { // [표시 보강] 판정 ①: 호 BC 를 같은 쪽에서 본 ∠BAC = ∠BDC (분홍 한 호, 값은 호 너머 각 안쪽)
+            cangle(pA, pB, pC, CCOL.pink, 22, 1, `${fmtNum(angA / 2)}°`);
+            cangle(pD, pB, pC, CCOL.pink, 22, 1, `${fmtNum(angA / 2)}°`);
+          }
+          // [표시 보강] 내대각 ∠A 와 외각 ∠DCE 는 같은 각 → 같은 색(금색)·같은 호 한 개. ∠C 는 다른 각 → 하늘색 두 호. 값은 각 안쪽에.
+          cangle(pA, pB, pD, CCOL.gold, sub === 'cyclicConditions3' ? 64 : 28, 1, `${angA}°`);
+          cangle(pC, pD, pB, CCOL.cyan, 28, 2, `${angC}°`);
+          cangle(pC, pE_ext, pD, CCOL.gold, 28, 1, `${angA}°`, '외각');
+
+          [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, O));
+          cdot(pE_ext, 'E', CCOL.pink, null, { x: 10, y: 16 }); // [표시 보강] 연장선 끝점은 점 이름만
+        } else {
+          // cyclicCrossExt (내접사각형 두 대변 연장선 교점 P, Q 킬러)
+          const cO = cpt(cx - 42 * s, cy - 28 * s);
+          const rC = 92 * s;
+          ccircle(cO, rC, CCOL.cyan, 'rgba(56, 189, 248, 0.08)', 2.6);
+
+          // [2.0 수정] 원본의 P, Q는 임의의 점이라 변 AD·BC(P), AB·DC(Q)의 연장선 위에 있지 않았습니다(연장선이 꺾여 보임).
+          //            호 AB=128°, BC=40°, CD=64°, DA=128° 로 네 점을 잡고 두 직선의 교점을 계산하면 ∠A = 52°, ∠P = 32°, ∠Q = 44° 가 그림에서도 정확합니다.
+          const pA = cpolar(cO, rC, -145);
+          const pB = cpolar(cO, rC, 87);
+          const pC = cpolar(cO, rC, 47);
+          const pD = cpolar(cO, rC, -17);
+          const meet = (p1, p2, p3, p4) => { // 직선 p1p2 와 직선 p3p4 의 교점
+            const u = csub(p2, p1), v = csub(p4, p3), w = csub(p3, p1);
+            const det = u.x * v.y - u.y * v.x || 1;
+            return cadd(p1, cmul(u, (w.x * v.y - w.y * v.x) / det));
+          };
+          const pP = meet(pA, pD, pB, pC); // 변 AD 와 BC 의 연장선의 교점
+          const pQ = meet(pA, pB, pD, pC); // 변 AB 와 DC 의 연장선의 교점
+
+          cpoly([pA, pB, pC, pD], 'rgba(52, 211, 153, 0.22)', CCOL.green, 3.2, 0);
+          cpoly([pD, pC, pP], 'rgba(56, 189, 248, 0.18)', CCOL.cyan, 2.6, 1);
+          cpoly([pB, pC, pQ], 'rgba(244, 114, 182, 0.18)', CCOL.pink, 2.6, 2);
+
+          // [표시 보강] 내대각 ∠A = x 를 바깥으로 복사: 외각 ∠DCP = ∠BCQ = ∠A → 같은 색(금색)·같은 호 한 개 (좁은 각이라 먼저 자리를 잡음)
+          cangle(pC, pD, pP, CCOL.gold, 24, 1, 'x');
+          cangle(pC, pB, pQ, CCOL.gold, 24, 1, 'x');
+          cangle(pA, pB, pD, CCOL.gold, 24, 1, 'x=52°');
+          cangle(pP, pA, pB, CCOL.cyan, 30, 1, '32°');
+          cangle(pQ, pA, pD, CCOL.pink, 30, 2, '44°');
+
+          [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, cO));
+          cdot(pP, 'P(32°)', CCOL.cyan, null, { x: 14, y: 4 });
+          cdot(pQ, 'Q(44°)', CCOL.pink, null, { x: 14, y: 10 });
+        }
+      }
+
+      // =====================================================================
+      // [모드 5] 접선과 현이 이루는 각(접선과 현이 이루는 각) & 외접/내접 두 원의 공통접선
+      // =====================================================================
+      else if (m === 5) {
+        if (sub === 'altSegmentThm' || sub === 'altSegmentInscribed') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          const pA = cpt(cx, cy + Rpx); // 아래쪽 접점 A
+          const pS = cpt(cx - 175 * s, cy + Rpx), pT = cpt(cx + 175 * s, cy + Rpx);
+          const pB = cpolar(O, Rpx, 90 - ang * 2);
+          const pC = cpolar(O, Rpx, -140);
+          const pD = cpt(cx, cy - Rpx); // 위쪽 지름 끝점 D
+
+          carc(O, Rpx, 90 - ang * 2, 90, CCOL.gold, 5.0, false, 0);
+          cpoly([pA, pB, pC], 'rgba(52, 211, 153, 0.20)', CCOL.green, 3.2, 1);
+          cline(pS, pT, CCOL.gold, 3.8, [], true, 0);
+
+          if (sub === 'altSegmentThm' && (t > 0.1 || state.conceptSwitch === 'aux' || state.activePartIdx === 2)) {
+            cpoly([pA, pD, pB], 'rgba(244, 114, 182, 0.20)', CCOL.pink, 2.4, 2); // [표시 보강] 직각삼각형 ABD (지름 AD 의 원주각 ∠ABD = 90°)
+            cline(pA, pD, CCOL.pink, 3.2, [6, 4], true, 2);
+            cright(pA, pD, pT, 13, CCOL.pink);
+            cright(pB, pA, pD, 12, CCOL.pink);
+            cangle(pA, pD, pB, CCOL.pink, 22, 2, `${90 - ang}°`); // [표시 보강] ∠DAB = 90° - θ (접선과 현이 이루는 각과 더해 직각 ∠DAT)
+            cangle(pD, pA, pB, CCOL.gold, 30, 1, `${ang}°`); // [표시 보강] ∠ADB = θ: 접선과 현이 이루는 각 ∠BAT·원주각 ∠BCA 와 같은 각 → 같은 색(금색)·같은 호 한 개
+            cdot(pD, 'D(지름의 끝점)', CCOL.pink, null, { x: 0, y: -16 });
+          }
+
+          cangle(pA, pB, pT, CCOL.gold, 34, 1, `${ang}°`, '접선과 현이 이루는 각'); // [표시 보강] 접선과 현이 이루는 각 = 원주각: 같은 색·같은 호, 값은 각 안쪽
+          cangle(pC, pA, pB, CCOL.gold, 32, 1, `${ang}°`, '원주각');
+
+          if (sub === 'altSegmentInscribed') {
+            cangle(pA, pS, pC, CCOL.pink, 32, 2, '65°');
+            cangle(pB, pC, pA, CCOL.pink, 30, 2, '65°!');
+          }
+
+          cdot(O, 'O', CCOL.white, null, { x: -16, y: 0 });
+          cdot(pA, 'A(접점)', CCOL.gold, null, { x: 0, y: 22 });
+          cdot(pB, 'B', CCOL.white, O);
+          cdot(pC, 'C', CCOL.white, O);
+          cdot(pS, 'S', CCOL.gold, null, { x: -14, y: 0 });
+          cdot(pT, 'T(접선)', CCOL.gold, null, { x: 14, y: 0 });
+        } else if (sub === 'twoCirclesExTangent') {
+          const r1 = 92 * s, r2 = 68 * s;
+          const pT = cpt(cx + 12 * s, cy);
+          const O1 = cpt(pT.x - r1, cy), O2 = cpt(pT.x + r2, cy);
+
+          ccircle(O1, r1, CCOL.cyan, 'rgba(56, 189, 248, 0.08)', 2.8);
+          ccircle(O2, r2, CCOL.gold, 'rgba(251, 191, 36, 0.08)', 2.8);
+
+          const pA = cpolar(O1, r1, -135), pB = cpolar(O1, r1, 125);
+          const pD = cpolar(O2, r2, 45), pC = cpolar(O2, r2, -55);
+
+          cpoly([pT, pA, pB], 'rgba(56, 189, 248, 0.24)', CCOL.cyan, 3.0, 1);
+          cpoly([pT, pC, pD], 'rgba(251, 191, 36, 0.24)', CCOL.gold, 3.0, 1);
+          cline(pA, pB, CCOL.green, 3.8, [], true, 2);
+          cline(pC, pD, CCOL.green, 3.8, [], true, 2);
+          carrows(pA, pB, 1, CCOL.green, 7.5); // [표시 보강] 평행 표시는 두 선이 같은 방향(아래쪽)을 가리켜야 함
+          carrows(pC, pD, 1, CCOL.green, 7.5);
+
+          // 접점 T를 지나는 공통내접선 PQ!
+          const pP = cpt(pT.x, cy + 115 * s), pQ = cpt(pT.x, cy - 115 * s); // [표시 보강] 본문의 ∠BTP·∠CTQ 가 접선과 현이 이루는 각이 되도록 P 는 아래, Q 는 위
+          cline(pP, pQ, CCOL.pink, 3.4, [6, 4], true, 0);
+
+          // [표시 보강] ∠A = ∠BTP(접선과 현이 이루는 각) = ∠CTQ(맞꼭지각) = ∠D(접선과 현이 이루는 각): 모두 같은 색(금색)·같은 호 한 개·같은 기호 •
+          cangle(pA, pB, pT, CCOL.gold, 24, 1, '•');
+          cangle(pD, pC, pT, CCOL.gold, 22, 1, '•', '(엇각)');
+          cangle(pT, pB, pP, CCOL.gold, 24, 1, '•');
+          cangle(pT, pC, pQ, CCOL.gold, 24, 1, '•');
+
+          cdot(pT, 'T(외접점)', CCOL.pink, null, { x: 16, y: -6 });
+          cdot(pP, 'P(공통내접선)', CCOL.pink, null, { x: 0, y: 18 });
+          cdot(pQ, 'Q', CCOL.pink, null, { x: 0, y: -14 });
+          cdot(pA, 'A', CCOL.white, O1); cdot(pB, 'B', CCOL.white, O1);
+          cdot(pC, 'C', CCOL.white, O2); cdot(pD, 'D(AB∥CD!)', CCOL.white, O2);
+        } else if (sub === 'twoCirclesInTangent') {
+          const rBig = 128 * s, rSml = 78 * s;
+          const pT = cpt(cx, cy + rBig);
+          const O_big = cpt(cx, cy), O_sml = cpt(cx, pT.y - rSml);
+
+          ccircle(O_big, rBig, CCOL.cyan, 'rgba(56, 189, 248, 0.06)', 2.8);
+          ccircle(O_sml, rSml, CCOL.gold, 'rgba(251, 191, 36, 0.12)', 2.8);
+
+          // [2.0 수정] 원본은 C, D가 고정(밑각 67.5°)이라 세 각의 θ 표시와 그림이 달랐습니다 → 호 TD = 2θ 가 되도록 C, D를 배치(∠TCD = ∠TDC = θ)
+          const pC = cpolar(O_big, rBig, 90 + 2 * ang), pD = cpolar(O_big, rBig, 90 - 2 * ang);
+          const pA = clerp(pT, pC, rSml / rBig), pB = clerp(pT, pD, rSml / rBig);
+          const pP = cpt(cx - 165 * s, pT.y), pQ = cpt(cx + 165 * s, pT.y);
+
+          cpoly([pT, pC, pD], 'rgba(56, 189, 248, 0.16)', CCOL.cyan, 2.8, 1);
+          cpoly([pT, pA, pB], 'rgba(251, 191, 36, 0.28)', CCOL.gold, 3.0, 1);
+          cline(pA, pB, CCOL.green, 3.8, [], true, 2);
+          cline(pC, pD, CCOL.green, 3.8, [], true, 2);
+          cline(pP, pQ, CCOL.pink, 3.6, [], true, 0);
+
+          carrows(pA, pB, 1, CCOL.green, 7.5);
+          carrows(pC, pD, 1, CCOL.green, 7.5);
+          // [표시 보강] 본문대로 ∠ATP(공통접선과 현이 이루는 각) = ∠ABT = ∠CDT: 같은 색(금색)·같은 호 한 개 (A 는 TC 위의 점이라 ∠ATP = ∠CTP)
+          cangle(pT, pA, pP, CCOL.gold, 30, 1, `${ang}°`);
+          cangle(pB, pA, pT, CCOL.gold, 22, 1, `${ang}°`);
+          cangle(pD, pC, pT, CCOL.gold, 26, 1, `${ang}°`, '(동위각!)');
+
+          cdot(pT, 'T(내접점)', CCOL.pink, null, { x: 0, y: 22 });
+          cdot(pA, 'A', CCOL.gold, O_sml); cdot(pB, 'B', CCOL.gold, O_sml);
+          cdot(pC, 'C', CCOL.cyan, O_big); cdot(pD, 'D(AB∥CD!)', CCOL.cyan, O_big);
+        } else {
+          // tangentDiameterExt (지름 연장선 위 점 P에서 그은 접선 PT)
+          const cO = cpt(cx - 48 * s, cy + 15 * s);
+          const rC = 96 * s;
+          const pA = cpt(cO.x - rC, cO.y), pB = cpt(cO.x + rC, cO.y);
+          const pP = cpt(cO.x + rC * 1.8, cO.y);
+          const alpha = Math.acos(rC / (rC * 1.8));
+          const pT = cpt(cO.x + rC * Math.cos(-alpha), cO.y + rC * Math.sin(-alpha));
+
+          ccircle(cO, rC, CCOL.cyan, 'rgba(56, 189, 248, 0.08)', 2.8);
+          cline(pA, pP, CCOL.white, 2.8);
+          cpoly([cO, pT, pP], 'rgba(251, 191, 36, 0.28)', CCOL.gold, 3.2, 0);
+          if (t > 0.3 || state.activePartIdx === 1) {
+            cpoly([pA, pT, pB], 'rgba(56, 189, 248, 0.18)', CCOL.cyan, 2.4, 1);
+            cright(pT, pA, pB, 11, CCOL.cyan);
+          } else cline(pA, pT, 'rgba(56, 189, 248, 0.5)', 2, [5, 4]); // [표시 보강] 원주각 • 의 변 BT 를 보조로 표시
+          cline(pB, pT, CCOL.cyan, 2.8);
+          cright(pT, cO, pP, 13, CCOL.gold);
+
+          // [표시 보강] 본문 기준 점 이름: 지름의 양 끝은 A(P 에 가까운 쪽)·B(먼 쪽). 원주각 ∠ABT = 접선과 현이 이루는 각 ∠PTA = • (28°): 같은 색(하늘색)·같은 호 한 개
+          cangle(pA, pB, pT, CCOL.cyan, 28, 1, '28°', '•');
+          cangle(pT, pP, pB, CCOL.cyan, 28, 1, '28°', '•');
+          cangle(cO, pT, pP, CCOL.gold, 26, 2, '56°(2•)');
+          cangle(pP, pT, cO, CCOL.pink, 32, 1, 'x=34°!');
+
+          cdot(cO, 'O', CCOL.white, null, { x: 0, y: 20 });
+          cdot(pA, 'B', CCOL.white, null, { x: -14, y: 16 }); // [표시 보강] 본문과 같게 P 에 가까운 끝이 A, 먼 끝이 B
+          cdot(pB, 'A', CCOL.white, null, { x: 0, y: 20 });
+          cdot(pP, 'P(x=34°)', CCOL.pink, null, { x: 14, y: 16 });
+          cdot(pT, 'T(접점, 90°)', CCOL.gold, null, { x: 0, y: -16 });
+        }
+      }
+
+      // =====================================================================
+      // [모드 6] 원과 비례(할선·접선) & 시험장 착시 반례 연구소
+      // =====================================================================
+      else {
+        if (sub === 'trapArcVsChord') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          const pA = cpolar(O, Rpx, 150), pB = cpolar(O, Rpx, 30);
+          const pC = cpolar(O, Rpx, 90);
+          const pP = cpolar(O, Rpx, -90);
+
+          carc(O, Rpx, 30, 150, CCOL.green, 5.5, false, 0);
+          cpoly([pC, pA, pB], 'rgba(244, 63, 94, 0.28)', CCOL.red, 3.2, 1);
+          cline(pP, pA, 'rgba(255,255,255,0.45)', 2);
+          cline(pP, pB, 'rgba(255,255,255,0.45)', 2);
+          cline(pP, pC, 'rgba(255,255,255,0.45)', 2, [4, 4]);
+          cline(pA, pB, CCOL.red, 4.2, [], true, 1);
+          cline(pA, pC, CCOL.green, 3.6, [], true, 0);
+          cline(pC, pB, CCOL.green, 3.6, [], true, 0);
+
+          cticks(pA, pC, 2, CCOL.white, 8); // [표시 보강] 호 AC = 호 CB 이므로 현 AC = CB
+          cticks(pC, pB, 2, CCOL.white, 8);
+          cangle(pP, pA, pC, CCOL.green, 28, 1, '30°'); // [표시 보강] 같은 호의 원주각 → 같은 색·같은 호 한 개 (값은 따로 놓음)
+          cangle(pP, pC, pB, CCOL.green, 28, 1, '30°');
+          cbadge(pA, pB, '큰 현 AB < 2·AC (2배 아님 ❌!)', CCOL.red, -18, 0.5, 1);
+
+          cdot(O, 'O', CCOL.white, null, { x: 14, y: 0 });
+          cdot(pP, 'P(원주각 30°+30°=60°)', CCOL.white, O);
+          cdot(pA, 'A', CCOL.white, O);
+          cdot(pB, 'B', CCOL.white, O);
+          cdot(pC, 'C(호 이등분점: AC+CB > AB!)', CCOL.gold, null, { x: 0, y: 22 });
+        } else if (sub === 'powerInside') {
+          ccircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.07)', 2.8);
+          const pA = cpolar(O, Rpx, -145), pB = cpolar(O, Rpx, 25);
+          const pC = cpolar(O, Rpx, 140), pD = cpolar(O, Rpx, -45);
+          // 두 현의 교점 P
+          const u1 = csub(pB, pA), v1 = csub(pD, pC);
+          const det = u1.x * v1.y - u1.y * v1.x || 1;
+          const w1 = csub(pC, pA);
+          const k1 = (w1.x * v1.y - w1.y * v1.x) / det;
+          const pP = cadd(pA, cmul(u1, k1));
+
+          cpoly([pP, pA, pC], 'rgba(251, 191, 36, 0.28)', CCOL.gold, 2.8, 0);
+          cpoly([pP, pD, pB], 'rgba(56, 189, 248, 0.28)', CCOL.cyan, 2.8, 1);
+          cline(pA, pB, CCOL.gold, 3.8, [], true, 0);
+          cline(pC, pD, CCOL.cyan, 3.8, [], true, 1);
+
+          // [표시 보강] 맞꼭지각 ∠APC = ∠DPB(초록 한 호 •), 호 CB 의 원주각 ∠CAB = ∠CDB(분홍 두 호 ×) → △PAC ∽ △PDB
+          cangle(pP, pA, pC, CCOL.green, 26, 1, '•');
+          cangle(pP, pD, pB, CCOL.green, 26, 1, '•');
+          cangle(pA, pP, pC, CCOL.pink, 24, 2, '×');
+          cangle(pD, pB, pP, CCOL.pink, 24, 2, '×');
+          cbadge(pP, pA, 'PA = 3', CCOL.gold, -15, 0.5, 0);
+          cbadge(pP, pB, 'PB = 8', CCOL.gold, -15, 0.5, 0);
+          cbadge(pP, pC, 'PC = 4', CCOL.cyan, 15, 0.5, 1);
+          cbadge(pP, pD, 'PD = 6', CCOL.cyan, 15, 0.5, 1);
+
+          cdot(pP, 'P(3×8 = 4×6 = 24!)', CCOL.white, null, { x: 0, y: -16 });
+          [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, O));
+        } else if (sub === 'powerOutside' || sub === 'powerTangentSecant') {
+          const cO = cpt(cx - 52 * s, cy);
+          const rC = 96 * s;
+          ccircle(cO, rC, CCOL.cyan, 'rgba(56, 189, 248, 0.08)', 2.8);
+          const pP = cpt(cx + 158 * s, cy);
+          // [2.0 수정] 원본의 A, B(와 C, D)는 P에서 나가는 직선 위에 있지 않아 '할선'이 점 A를 지나지 않았습니다.
+          //            P에서 나가는 직선(위쪽 22°, 아래쪽 6°)이 원과 만나는 가까운 점·먼 점으로 잡습니다.
+          const secant = (deg) => {
+            const a = (deg * Math.PI) / 180, d = { x: Math.cos(a), y: Math.sin(a) };
+            const bq = d.x * (pP.x - cO.x) + d.y * (pP.y - cO.y), c2 = (pP.x - cO.x) ** 2 + (pP.y - cO.y) ** 2 - rC * rC;
+            const q = Math.sqrt(Math.max(0, bq * bq - c2));
+            return { near: cadd(pP, cmul(d, -bq - q)), far: cadd(pP, cmul(d, -bq + q)) };
+          };
+          const sUp = secant(202);
+          const pB = sUp.far, pA = sUp.near;
+
+          if (sub === 'powerOutside') {
+            const sLow = secant(174); // [2.0 수정] 아래쪽 할선 위의 C(가까운 점), D(먼 점)
+            const pD = sLow.far, pC = sLow.near;
+            cpoly([pA, pB, pD, pC], 'rgba(52, 211, 153, 0.18)', CCOL.green, 2.4);
+            cline(pP, pB, CCOL.gold, 3.6, [], true, 0);
+            cline(pP, pD, CCOL.cyan, 3.6, [], true, 1);
+            cline(pA, pD, 'rgba(255,255,255,0.5)', 2, [5, 4]); // [표시 보강] △PAD ∽ △PCB 의 변 AD, CB (닮음의 각을 표시하기 위한 보조선)
+            cline(pC, pB, 'rgba(255,255,255,0.5)', 2, [5, 4]);
+
+            // [2.0 수정] 긴 이름표 'AB = 5 (전체 PB=9!)'·'CD = 9 (전체 PD=12!)'가 휴대폰에서 원 속 할선을 거의 다 가렸습니다 → 이름표는 짧게, 전체 길이와 곱셈식은 그림 아래 글로 옮깁니다.
+            // [표시 보강] 공통각 ∠P(초록 •), ∠PAD = ∠PCB(분홍 ×), ∠PDA = ∠PBC(금색 두 호 ○) → △PAD ∽ △PCB
+            cangle(pP, pB, pD, CCOL.green, 30, 1, '•');
+            cangle(pA, pP, pD, CCOL.pink, 24, 1, '×');
+            cangle(pC, pP, pB, CCOL.pink, 24, 1, '×');
+            cangle(pD, pP, pA, CCOL.gold, 24, 2, '○');
+            cangle(pB, pP, pC, CCOL.gold, 24, 2, '○');
+            cbadge(pP, pA, 'PA = 4', CCOL.gold, -15, 0.5, 0);
+            cbadge(pA, pB, 'AB = 5', CCOL.gold, -16, 0.5, 0);
+            cbadge(pP, pC, 'PC = 3', CCOL.cyan, 15, 0.5, 1);
+            cbadge(pC, pD, 'CD = 9', CCOL.cyan, 16, 0.5, 1);
+
+            [pA, pB, pC, pD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.white, cO));
+            cdot(pP, 'P', CCOL.gold, null, { x: 0, y: -16 });
+            cnote(cpt(cO.x + 40 * s, cO.y + rC + 34 * s), ['전체 PB = 9, PD = 12', '4×9 = 3×12 = 36!'], '#fbbf24');
+          } else {
+            const alpha = Math.acos(rC / cdist(cO, pP));
+            const pT = cpt(cO.x + rC * Math.cos(alpha), cO.y + rC * Math.sin(alpha));
+            cpoly([pP, pB, pT], 'rgba(56, 189, 248, 0.18)', CCOL.cyan, 2.4, 1);
+            cpoly([pP, pA, pT], 'rgba(251, 191, 36, 0.30)', CCOL.gold, 3.0, 0);
+            cline(pP, pT, CCOL.gold, 4.0, [], true, 0);
+            cline(pP, pB, CCOL.pink, 3.6, [], true, 1);
+
+            // [2.0 수정] 위 장면과 같은 이유로 긴 이름표를 줄였습니다(전체 PB = 9 는 아래 풀이·띠에, 6² = 4×9 = 36 은 P의 이름표에 있음).
+            // [표시 보강] 공통각 ∠P(초록 •), 접선과 현이 이루는 각 ∠PTA = 원주각 ∠PBT(분홍 두 호 ×) → △PAT ∽ △PTB
+            cangle(pP, pT, pB, CCOL.green, 30, 1, '•');
+            cangle(pT, pP, pA, CCOL.pink, 24, 2, '×');
+            cangle(pB, pP, pT, CCOL.pink, 24, 2, '×');
+            cbadge(pP, pT, '접선 PT = 6', CCOL.gold, 18, 0.5, 0);
+            cbadge(pP, pA, 'PA = 4', CCOL.pink, -15, 0.5, 1);
+            cbadge(pA, pB, 'AB = 5', CCOL.pink, -16, 0.5, 1);
+
+            cdot(pA, 'A', CCOL.white, cO);
+            cdot(pB, 'B', CCOL.white, cO);
+            cdot(pT, 'T(접점)', CCOL.gold, cO);
+            cdot(pP, 'P(6² = 4×9 = 36!)', CCOL.gold, null, { x: 0, y: -16 });
+          }
+        } else {
+          // trapCyclicQuadFamily: 좌측 등변사다리꼴(항상 내접 ⭕) vs 우측 마름모/평행사변형(내접 안 함 ❌)
+          const O_left = cpt(cx - 145 * s, cy), O_right = cpt(cx + 145 * s, cy);
+          const rSmall = 88 * s;
+
+          // 좌측: 등변사다리꼴 (⭕)
+          ccircle(O_left, rSmall, CCOL.green, 'rgba(52, 211, 153, 0.08)', 2.6, [], 1);
+          const iA = cpolar(O_left, rSmall, -125), iD = cpolar(O_left, rSmall, -55);
+          const iB = cpolar(O_left, rSmall, 150), iC = cpolar(O_left, rSmall, 30);
+          cpoly([iA, iB, iC, iD], 'rgba(52, 211, 153, 0.26)', CCOL.green, 3.2, 1);
+          // [표시 보강] 꼭짓점 이름과 각(값은 현재 점에서 계산): 등변사다리꼴은 ∠A = ∠D(금색 한 호), ∠B = ∠C(하늘색 두 호), ∠A + ∠C = 180°
+          [iA, iB, iC, iD].forEach((p, i) => cdot(p, 'ABCD'[i], CCOL.green, O_left));
+          cangle(iA, iD, iB, CCOL.gold, 17, 1, `${fmtNum(cdeg(iA, iD, iB))}°`);
+          cangle(iD, iC, iA, CCOL.gold, 17, 1, `${fmtNum(cdeg(iD, iC, iA))}°`);
+          cangle(iB, iA, iC, CCOL.cyan, 17, 2, `${fmtNum(cdeg(iB, iA, iC))}°`);
+          cangle(iC, iB, iD, CCOL.cyan, 17, 2, `${fmtNum(cdeg(iC, iB, iD))}°`);
+
+          // 우측: 평행사변형/마름모 (❌ - 한 꼭짓점이 원 밖으로 삐져나감!)
+          ccircle(O_right, rSmall, CCOL.red, 'rgba(244, 63, 94, 0.06)', 2.4, [5, 4], 2);
+          const p1 = cpolar(O_right, rSmall, -130), p2 = cpolar(O_right, rSmall, 140), p3 = cpolar(O_right, rSmall, 40);
+          const p4 = cadd(p1, csub(p3, p2)); // 평행사변형의 네 번째 꼭짓점 (원 밖으로 벗어남!)
+          cpoly([p1, p2, p3, p4], 'rgba(244, 63, 94, 0.24)', CCOL.red, 3.2, 2);
+          // [표시 보강] 평행사변형: 마주 보는 각이 같다(∠A = ∠C 빨강 한 호, ∠B = ∠D 분홍 두 호). 값은 현재 점에서 계산
+          cangle(p1, p4, p2, CCOL.red, 17, 1, `${fmtNum(cdeg(p1, p4, p2))}°`);
+          cangle(p3, p2, p4, CCOL.red, 17, 1, `${fmtNum(cdeg(p3, p2, p4))}°`);
+          cangle(p2, p1, p3, CCOL.pink, 17, 2, `${fmtNum(cdeg(p2, p1, p3))}°`);
+          cangle(p4, p3, p1, CCOL.pink, 17, 2, `${fmtNum(cdeg(p4, p3, p1))}°`);
+          [p1, p2, p3].forEach((p, i) => cdot(p, 'ABC'[i], CCOL.white, O_right));
+          cdot(p4, '원 밖의 점!(∠A+∠C≠180°)', CCOL.red, null, { x: 0, y: -14 });
+
+          // [2.0 수정] 캔버스 직접 글자 → 무대 글자. 같은 문구를 두 줄로 나눠 좁은 화면에서도 두 설명이 겹치지 않게 합니다.
+          cnote(cpt(O_left.x, O_left.y + rSmall + 28 * s), ['⭕ 등변사다리꼴·직사각형·정사각형', '(대각 합 180°)'], '#34d399');
+          cnote(cpt(O_right.x, O_right.y + rSmall + 28 * s), ['❌ 평행사변형·마름모', '(대각 합 ≠ 180° ➔ 내접 불가!)'], '#fb7185');
+        }
+      }
+    }
+
+  /* ===== 원본 그대로: 효과 없는 렌즈 버튼 숨김 표 (원본 2415–2422행) ===== */
+    const LENS_OFF = {
+      tangentPerimTri: ['sides'], pitotQuad: ['sides'], inscribedMoveArc: ['angles'], thalesSemiCircle: ['angles'],
+      fourPointsCircle: ['angles'], cyclicPentagon: ['angles'], cyclicQuad180: ['angles'], cyclicExterior: ['angles'],
+      cyclicCrossExt: ['angles'], cyclicConditions3: ['angles'], altSegmentThm: ['angles'],
+      altSegmentInscribed: ['angles'], twoCirclesExTangent: ['angles'], twoCirclesInTangent: ['angles'],
+      tangentDiameterExt: ['angles'], powerInside: ['sides'], powerOutside: ['sides'], powerTangentSecant: ['sides'],
+      trapCyclicQuadFamily: ['angles', 'sides', 'aux']
+    };
+
+  /* ======================================================================
+     2.0 셸 연결 (새로 작성한 부분)
+     ====================================================================== */
+  const TABS = ['원과 현 · 원 접기 · 아치의 반지름', '원과 접선 · 내접원 · 원에 외접하는 사각형', '원주각=½중심각 · 반원90° · 삼각비', '내접사각형(180°) · 외각 · 오각형', '접선과 현이 이루는 각(∠BAT=∠BCA) & 두 원의 접선', '원과 비례(할선·접선) & 원에 내접하지 않는 사각형'];
+  const SHORT = ['원과 현', '원과 접선', '원주각', '내접사각형', '접선과 현', '원과 비례'];
+  const LENSES = [
+    ['all', '🔍 전체 보기'],
+    ['angles', '📐 원주각·중심각·접선과 현이 이루는 각'],
+    ['sides', '📏 현·접선·길이가 같은 선분 표시(|,||)'],
+    ['aux', '🪄 지름·보조선']
+  ];
+  // 이 장면에서 '변환(0→100%)'이 실제로 그림을 바꾸는 장면만 변환 조절을 보여 줍니다(원본 그리기 코드의 t 사용처).
+  const FOLD = new Set(['chordFoldArc', 'chordEqualDist', 'chordArchRadius', 'tangentPerimTri', 'inscribedMoveArc', 'thalesSemiCircle', 'inscribedTrig', 'fourPointsCircle', 'cyclicQuad180', 'altSegmentThm', 'tangentDiameterExt']);
+  // 기준각 θ(30·45·60·70°) / 반지름 R(6·8·10·12) 선택이 실제로 그림·수치를 바꾸는 장면과 그 이름(지름 반원 장면은 해설 속 예시 수치만 바뀌어 제외)
+  const ANG_NAME = {
+    tangentLen: '점 P의 각 ∠APB', inscribedAngle3Cases: '원주각 θ (중심각 2θ)', inscribedMoveArc: '원주각 θ', fourPointsCircle: '원주각 θ',
+    cyclicPentagon: '원주각 θ (중심각 2θ)', cyclicQuad180: '∠A = θ + 35°', cyclicExterior: '∠A = θ + 35°', cyclicConditions3: '∠A = θ + 35°',
+    altSegmentThm: '접선과 현이 이루는 각 θ', altSegmentInscribed: '접선과 현이 이루는 각 θ', twoCirclesExTangent: '기준각 θ', twoCirclesInTangent: '접선과 현이 이루는 각 θ'
+  };
+  const RAD_USED = new Set(['chordFoldArc', 'chordBisect', 'chordEqualDist', 'chordConcentric', 'tangentPerimTri', 'inscribedTrig']);
+  // [2.0 수정] 현의 두 장면은 OM = 0.6R, AM = 0.8R 을 반올림해 쓰므로 R이 5의 배수일 때만 피타고라스(3-4-5)가 정확합니다 → 그 값만 제공
+  const RAD_LIST = { chordBisect: [5, 10, 15, 20], chordEqualDist: [5, 10, 15, 20] };
+  const radList = (id) => RAD_LIST[id] || RAD_PRESETS;
+  // [2.0 수정] θ에 따라 그림의 가로 길이가 크게 달라지는 장면: θ를 바꿀 때마다 화면 맞춤을 다시 계산합니다.
+  const REFIT = new Set(['tangentLen']);
+  const THUMB_T = (id) => (FOLD.has(id) ? (id === 'fourPointsCircle' ? 0 : 1) : 0); // 원본: 장면에 들어가면 변환이 100%로 자동 재생(네 점 장면만 0%)
+
+  const lensList = (m, id) => {
+    const off = (LENS_OFF[m] || []).concat(LENS_OFF[id] || []);
+    const rest = ['angles', 'sides', 'aux'].filter((x) => !off.includes(x));
+    return rest.length ? ['all'].concat(rest) : []; // 원본 syncLensButtons: 효과 있는 렌즈가 하나도 없으면 렌즈 전체를 숨김
+  };
+  function sync(s, m, id) {
+    state.mode = m;
+    state.subType[m] = id;
+    state.fold = s.fold;
+    state.angPreset = Math.round(s.ang);
+    state.radPreset = Math.round(s.rad);
+    // [2.0 수정] 예전 공유 링크 등으로 R이 3-4-5 가 안 되는 값(6·8·12)으로 들어와도 가장 가까운 정확한 값으로 맞춥니다.
+    if (RAD_LIST[id] && !RAD_LIST[id].includes(state.radPreset)) state.radPreset = RAD_LIST[id].reduce((p, v) => (Math.abs(v - state.radPreset) < Math.abs(p - state.radPreset) ? v : p));
+    state.activePartIdx = s.part == null ? -1 : s.part;
+    state.conceptSwitch = lensList(m, id).includes(s.lens) ? s.lens : 'all';
+    state.scale = 1;
+  }
+  // 셸은 이모지(➔ ⭕ ❌ 포함)를 화면 표시에서 떼어 내므로, 문장 속 뜻이 사라지지 않게 → ○ × 로 미리 바꿔 넘깁니다(원문 getSpec은 그대로).
+  const arrow = (v) => (typeof v === 'string' ? v.replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×') : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
+  // 원본 해설 문장 일부가 **굵게** 마크다운을 썼는데 원본 화면은 별표가 그대로 보였습니다 → 굵은 글씨로
+  const md = (s) => String(s == null ? '' : s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  let booted = false;
+
+  function sceneOf(m, it) {
+    const id = it.id;
+    const label = arrow(it.label);
+    return {
+      id, title: label, short: label, reviewTab: true, autoFit: true,
+      notesTitle: '오답 함정과 풀이 요령',
+      enter: (s, lab) => {
+        // 원본 setSubType: 변환을 0%로 되돌린 뒤 100%로(네 점 장면은 0%) 자동 재생
+        s.fold = 0;
+        if (!radList(id).includes(Math.round(s.rad))) s.rad = 10; // [2.0 수정] 현 장면은 5·10·15·20 만 사용
+        if (!lensList(m, id).includes(s.lens)) s.lens = 'all';
+        const shared = !booted && /[#&]fold=/.test(location.hash); // 공유 링크의 값은 그대로 존중
+        booted = true;
+        if (lab && s === lab.s && FOLD.has(id) && id !== 'fourPointsCircle' && !shared) lab.tween({ fold: 1 }, 1300);
+      },
+      controls: () => (FOLD.has(id) ? ['fold'] : []),
+      presets: () => {
+        const out = [];
+        if (ANG_NAME[id]) ANG_PRESETS.forEach((v) => out.push({ group: ANG_NAME[id], label: `${v}°`, apply: (st) => { st.ang = v; }, on: (st) => Math.round(st.ang) === v }));
+        if (RAD_USED.has(id)) radList(id).forEach((v) => out.push({ group: '반지름 / 기준 길이 R (cm)', label: `R=${v}`, apply: (st) => { st.rad = v; }, on: (st) => Math.round(st.rad) === v }));
+        const lenses = lensList(m, id);
+        if (lenses.length) LENSES.filter(([k]) => lenses.includes(k)).forEach(([k, label]) => out.push({ group: '보기 선택', label, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
+        if (FOLD.has(id)) [0, 0.5, 1].forEach((v) => out.push({ group: '변환 단계', label: v === 0 ? '0% 시작' : v === 1 ? '100% 완성' : '50%', set: { fold: v }, ms: 700, on: (st) => Math.abs(st.fold - v) < 0.01 }));
+        return out;
+      },
+      actions: () => {
+        if (!FOLD.has(id)) return [];
+        return [{
+          id: 'act', play: true, primary: true, icon: 'wand',
+          label: (st) => { sync(st, m, id); return getSpec().actionTxt; },
+          run: (st, lab) => { lab.tween({ fold: st.fold > 0.5 ? 0 : 1 }, 1100); }
+        }];
+      },
+      view: (s) => {
+        sync(s, m, id);
+        const spec = arrow(getSpec());
+        const wide = (t) => String(t).length > 14;
+        return {
+          guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(APLab.stripEmoji(spec.badge))}</div>${md(spec.hint)}`,
+          readouts: [
+            { label: spec.dim1Name, value: spec.val1Txt, color: 'sky', wide: wide(spec.val1Txt) },
+            { label: spec.dim2Name, value: spec.val2Txt, color: 'rose', wide: wide(spec.val2Txt) }
+          ],
+          parts: spec.parts.map((p) => ({ id: p.id, name: p.name, desc: p.desc, value: p.val, color: p.ok === false ? 'red' : p.color, ok: p.ok })),
+          summary: spec.totalRes,
+          rule: spec.rule,
+          formula: md(spec.formulaHTML),
+          notes: md(spec.notes),
+          tape: { title: spec.tapeTitle, segments: spec.tapeSegs }
+        };
+      },
+      draw: (b, s, v, lab) => {
+        BOARD = b;
+        const paint = (st) => {
+          sync(st, m, id);
+          if (st.grid) b.grid({ step: 38 });
+          // 두 번 훑기: 1회 점 위치 수집 → 2회 그리기(이름표가 점·다른 이름표와 겹치지 않게 놓음)
+          PL.obst = [];
+          PL.placed = [];
+          PL.segs = []; PL.arcs = []; // [표시 보강]
+          PL.pass = 1;
+          drawCircleMasterScene(0, 0, state.fold, null);
+          PL.pass = 2;
+          PL.placed = [];
+          drawCircleMasterScene(0, 0, state.fold, null);
+        };
+        // 자동 맞춤을 재는 중: 변환 0%·100%와 모든 기준각 상태를 겹쳐 그려, 어느 상태에서도 그림·글자가 잘리지 않는 범위를 구합니다.
+        const paintAll = () => {
+          (FOLD.has(id) ? [0, 1] : [s.fold]).forEach((f) => (ANG_NAME[id] && !REFIT.has(id) ? ANG_PRESETS : [s.ang]).forEach((a) => paint({ ...s, fold: f, ang: a })));
+        };
+        if (b._bbox) { paintAll(); return; }
+        if (b.thumb) { // 모든 장면 미리보기: 장면 범위를 직접 재어 맞추고, 원본의 '완성' 상태로 그림
+          const bb = b.measure(paintAll);
+          if (bb) b.focus = b.fitBox(bb, { margin: 0.08, px: 5 });
+          paint({ ...s, fold: THUMB_T(id), part: null });
+          return;
+        }
+        if (REFIT.has(id) && lab) { // [2.0 수정] θ가 바뀌면(칩·공유 링크) 현재 θ에 맞춰 화면 맞춤을 다시 계산
+          const key = id + ':' + Math.round(s.ang);
+          if (b.__fitKey !== key) { b.__fitKey = key; const f = lab._measureFocus(lab.scene); if (f) b.setFocus(f, true); }
+        }
+        paint(s);
+      }
+    };
+  }
+
+  const groups = Object.keys(SUB_MENUS).map((k) => {
+    const m = +k;
+    return { id: 'm' + m, title: TABS[m - 1], short: SHORT[m - 1], scenes: SUB_MENUS[m].map((it) => sceneOf(m, it)) };
+  });
+
+  APLab.createLab({
+    id: 'g9-circle',
+    title: '원의 성질',
+    courseName: '중3',
+    unit: '원의 성질 · 원주각과 접선',
+    courseColor: 'var(--m-sky)',
+    home: '../index.html#g9',
+    legacy: '../../labs/g9/원.html',
+    board: { kind: 'figure', autoFit: true, minZoom: 0.4, maxZoom: 5 },
+    state: { lens: 'all' },
+    persist: ['lens'],
+    params: {
+      fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '변환 진행 (0% → 100%)', hint: '접기 · 점 이동 · 보조선 작도 · 접선 펼치기 같은 변환을 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
+      ang: { value: 45, min: 30, max: 70, step: 1, color: 'sky', label: '기준각 θ', format: (v) => `${Math.round(v)}°` },
+      rad: { value: 10, min: 5, max: 20, step: 1, /* [2.0 수정] 현 장면 R=5·15·20 허용 */ color: 'rose', label: '반지름 R', format: (v) => `${Math.round(v)}` }
+    },
+    groups
+  });
+});
+</script>
+</body>
+</html>

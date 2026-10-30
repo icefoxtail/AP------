@@ -1,9 +1,13 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isDeepStrictEqual } from 'node:util';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+// The compact mixed verification rows are decoded with the same function the browser and Worker loader use.
+const canonicalResolver = createRequire(import.meta.url)('../archive/archive2-canonical.js');
 const DEFAULT_ROOT = path.resolve(SCRIPT_DIR, '..');
 const DEFAULT_MANIFEST = path.join(SCRIPT_DIR, 'archive-pages-release-manifest.json');
 const SHA256_RE = /^[a-f0-9]{64}$/i;
@@ -121,11 +125,29 @@ function addTree(selection, root, tree) {
   walk(absolute);
 }
 
-function addCanonicalInputs(selection, root, config) {
+// Canonical inputs the shipped loaders (browser and Worker, archive2-canonical.js loadInputBundle) can actually fetch:
+// the fixed required inputs, the runtime packs the manifest lists, and the reviewed-registration proofs those packs
+// name. Every other manifest input is only a digest that binds the projection version; it is verified here, at build
+// time, against the manifest but is never requested by any page.
+function loaderFetchedCanonicalInputs(root, manifestFiles) {
+  const listed = manifestFiles.map((entry) => String(entry.path).replace(/\\/g, '/'));
+  const runtimePaths = canonicalResolver.runtimeInputPathsFromManifest(manifestFiles);
+  const packs = runtimePaths.map((runtimePath) => readJson(root, `archive/${runtimePath}`, 'runtime pack'));
+  const proofs = canonicalResolver.reviewedRegistrationProofPaths(packs);
+  const fetched = new Set([...canonicalResolver.REQUIRED_INPUT_PATHS, ...runtimePaths, ...proofs]);
+  for (const required of fetched)
+    if (!listed.includes(required)) fail(`canonical input manifest does not list a loader-fetched input: ${required}`);
+  return fetched;
+}
+
+function addCanonicalInputs(selection, root, config, buildOnlyOut) {
   if (!config) return;
   const manifest = readJson(root, config.manifest, 'canonical input manifest');
   if (manifest.schemaVersion !== 'archive2-canonical-input-manifest-v1' || !Array.isArray(manifest.files))
     fail('canonical input manifest has an unsupported schema');
+  if (config.ship !== undefined && config.ship !== 'loader-fetch-set')
+    fail(`unsupported canonicalInputs.ship: ${config.ship}`);
+  const fetched = config.ship === 'loader-fetch-set' ? loaderFetchedCanonicalInputs(root, manifest.files) : null;
   const seen = new Set();
   for (const entry of manifest.files) {
     if (!entry || typeof entry.path !== 'string' || !SHA256_RE.test(String(entry.sha256 || '')))
@@ -151,6 +173,10 @@ function addCanonicalInputs(selection, root, config) {
     const actualSha = normalizedTextSha256(absolute);
     if (actualSha !== entry.sha256.toLowerCase())
       fail(`canonical input digest mismatch: ${relative}`);
+    if (fetched && !fetched.has(raw)) {
+      buildOnlyOut.push({ path: relative, bytes: fs.statSync(absolute).size });
+      continue;
+    }
     addFile(selection, root, relative, `canonical input manifest (${config.manifest})`);
   }
 }
@@ -162,7 +188,9 @@ function addSourceVerificationShards(selection, root, config) {
     fail('source verification index has an unsupported schema');
   const seen = new Set();
   for (const row of index.files) {
-    const itemPath = String(row?.path || '').replace(/\\/g, '/');
+    // The shard path is derived from the source file; a row that still carries a path is used as is.
+    const itemPath = String(row?.path ?? (typeof row?.sourceFile === 'string' && row.sourceFile
+      ? `${config.pathPrefix}${sha256Text(row.sourceFile)}.json` : '')).replace(/\\/g, '/');
     const prefix = config.pathPrefix;
     const basename = itemPath.startsWith(prefix) ? itemPath.slice(prefix.length) : '';
     if (!/^[a-f0-9]{64}\.json$/i.test(basename) || !SHA256_RE.test(String(row?.sha256 || '')))
@@ -198,9 +226,20 @@ function readMixedReference(root, pathValue, expectedPrefix, reference, label) {
   return { relative, absolute, byteLength, value };
 }
 
-function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath) {
+// The builder emits schema v1 by default and v2 when archive/tools/archive2-mixed-verification-policy.json enables it;
+// the package accepts either and checks the rows of both layouts the same way (v2 through the shared decoder).
+const MIXED_LAYOUTS = new Map([['v1', 'records'], ['v2', 'rows']]);
+
+function decodeMixedRowsOrFail(resource, options, label) {
+  try { return canonicalResolver.decodeMixedRows(resource, options); }
+  catch (error) { fail(`mixed compact rows are invalid in ${label} (${error.message})`); }
+}
+
+export function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath) {
   const lookup = sourceIndex?.mixedLookup;
-  if (!lookup || lookup.schemaVersion !== 'archive2-mixed-source-verification-index-v1' ||
+  const layout = /^archive2-mixed-source-verification-index-(v[12])$/.exec(String(lookup?.schemaVersion || ''))?.[1] || '';
+  const rowsKey = MIXED_LAYOUTS.get(layout);
+  if (!lookup || !rowsKey ||
       lookup.resolverVersion !== sourceIndex.resolverVersion ||
       lookup.baseProjectionVersion !== sourceIndex.baseProjectionVersion ||
       !Array.isArray(sourceIndex.files) || !Array.isArray(lookup.files) ||
@@ -269,18 +308,21 @@ function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath
     if (mixedPaths.has(file.relative)) fail(`mixed source index repeats a file: ${file.relative}`);
     mixedPaths.add(file.relative);
     const shard = file.value;
-    if (shard?.schemaVersion !== 'archive2-mixed-source-verification-v1' ||
-        shard.sourceFile !== sourceFile || !Array.isArray(shard.records) ||
-        shard.records.length !== Number(row.recordCount))
+    if (shard?.schemaVersion !== `archive2-mixed-source-verification-${layout}` ||
+        shard.sourceFile !== sourceFile || !Array.isArray(shard[rowsKey]) ||
+        shard[rowsKey].length !== Number(row.recordCount))
       fail(`mixed source shard does not match its index: ${file.relative}`);
-    for (const record of shard.records) {
+    const shardRecords = layout === 'v2'
+      ? decodeMixedRowsOrFail(shard, { kind: 'source', sourceFile }, file.relative)
+      : shard.records;
+    for (const record of shardRecords) {
       const uid = String(record?.questionUid || '');
       if (!/^qid_v1_[a-f0-9]{64}$/.test(uid) || sourceUids.has(uid) ||
           record.sourceFile !== sourceFile || !Number.isInteger(Number(record.sourceOrdinal)) || Number(record.sourceOrdinal) < 1)
         fail(`mixed source shard contains an invalid or duplicate identity: ${file.relative}`);
       sourceUids.add(uid);
     }
-    sourceRecordCount += shard.records.length;
+    sourceRecordCount += shardRecords.length;
     addFile(selection, root, file.relative, `mixed source verification index (${indexPath})`);
   }
   if (indexedSourceFiles.size !== sourceIndex.files.length)
@@ -303,16 +345,23 @@ function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath
     if (mixedPaths.has(file.relative)) fail(`mixed lookup index repeats a file: ${file.relative}`);
     mixedPaths.add(file.relative);
     const bucket = file.value;
-    if (bucket?.schemaVersion !== 'archive2-mixed-source-verification-uid-bucket-v1' ||
-        bucket.prefix !== prefix || !Array.isArray(bucket.records) ||
-        bucket.records.length !== Number(row.recordCount))
+    if (bucket?.schemaVersion !== `archive2-mixed-source-verification-uid-bucket-${layout}` ||
+        bucket.prefix !== prefix || !Array.isArray(bucket[rowsKey]) ||
+        bucket[rowsKey].length !== Number(row.recordCount))
       fail(`mixed UID bucket does not match its index: ${file.relative}`);
+    const bucketRecords = layout === 'v2'
+      ? decodeMixedRowsOrFail(
+        bucket,
+        { kind: 'bucket', files: sourceIndex.files.map((baseRow) => String(baseRow?.sourceFile || '')) },
+        file.relative,
+      )
+      : bucket.records;
     const embedsContext = Object.prototype.hasOwnProperty.call(bucket, 'context');
     if (embedsContext !== inlineContextExpected)
       fail(`mixed UID bucket context marker mismatch: ${file.relative}`);
     if (inlineContextExpected && JSON.stringify(bucket.context) !== JSON.stringify(context))
       fail(`mixed UID bucket inline context differs from the shared context: ${file.relative}`);
-    for (const record of bucket.records) {
+    for (const record of bucketRecords) {
       const uid = String(record?.questionUid || '');
       if (!/^qid_v1_[a-f0-9]{64}$/.test(uid) || uid.slice('qid_v1_'.length, 'qid_v1_'.length + 1) !== prefix ||
           bucketUids.has(uid) || !indexedSourceFiles.has(String(record?.sourceFile || '')) ||
@@ -320,7 +369,7 @@ function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath
         fail(`mixed UID bucket contains an invalid or duplicate identity: ${file.relative}`);
       bucketUids.add(uid);
     }
-    bucketRecordCount += bucket.records.length;
+    bucketRecordCount += bucketRecords.length;
     addFile(selection, root, file.relative, `mixed source verification index (${indexPath})`);
   }
   if (prefixes.size !== 16 || sourceRecordCount !== bucketRecordCount || sourceUids.size !== bucketUids.size ||
@@ -351,7 +400,10 @@ function addReviewOverrides(selection, root, config) {
   }
 }
 
-function addReviewedExamMeta(selection, root, config) {
+// verifyOnly: the metadata only names this evidence by path and digest (problem-bank-meta.js checks the strings; no page
+// fetches the file), so the file must exist and have an approved path but is not copied. A file the canonical loader
+// fetches (registration proofs) is still shipped through addCanonicalInputs.
+function addReviewedExamMeta(selection, root, config, buildOnlyOut) {
   if (!config) return;
   const index = readJson(root, config.index, 'question metadata');
   if (!Array.isArray(index.records)) fail('question metadata has no records array');
@@ -364,11 +416,20 @@ function addReviewedExamMeta(selection, root, config) {
     const relative = normalizeRelative(reference, 'reviewed exam metadata path');
     paths.add(relative);
   }
-  for (const relative of [...paths].sort())
+  for (const relative of [...paths].sort()) {
+    if (config.verifyOnly === true) {
+      const absolute = resolveInside(root, relative, 'reviewed exam metadata path');
+      assertNoSymlinkComponents(root, absolute, 'reviewed exam metadata path');
+      if (!fs.statSync(absolute).isFile()) fail(`reviewed exam metadata is not a regular file: ${relative}`);
+      if (!selection.has(relative) && !buildOnlyOut.some((item) => item.path === relative))
+        buildOnlyOut.push({ path: relative, bytes: fs.statSync(absolute).size });
+      continue;
+    }
     addFile(selection, root, relative, `reviewed exam metadata referenced by ${config.index}`);
+  }
 }
 
-function collectSelection(root, manifest) {
+function collectSelection(root, manifest, buildOnlyOut = []) {
   if (manifest.schemaVersion !== 'ARCHIVE_PAGES_SITE_MANIFEST_V1')
     fail('site manifest has an unsupported schema');
   const selection = new Map();
@@ -379,14 +440,48 @@ function collectSelection(root, manifest) {
   for (const relative of manifest.archiveDataFiles || [])
     addFile(selection, root, `archive/data/${relative}`, 'explicit archive runtime data');
   const closure = manifest.runtimeClosure || {};
-  addCanonicalInputs(selection, root, closure.canonicalInputs);
+  addCanonicalInputs(selection, root, closure.canonicalInputs, buildOnlyOut);
   addSourceVerificationShards(selection, root, closure.sourceVerification);
   addReviewOverrides(selection, root, closure.reviewOverrides);
-  addReviewedExamMeta(selection, root, closure.reviewedExamMeta);
+  addReviewedExamMeta(selection, root, closure.reviewedExamMeta, buildOnlyOut);
   for (const relative of closure.extraFiles || []) addFile(selection, root, relative, 'explicit runtime data dependency');
   return [...selection.entries()]
     .map(([relative, value]) => ({ path: relative, ...value }))
     .sort((a, b) => a.path.localeCompare(b.path));
+}
+
+// Whitespace-only compaction of runtime JSON that is only fetched and parsed (never byte-digest-bound). The manifest
+// lists exact files or "dir/" trees; anything that a digest in the canonical/source-verification/mixed closure binds
+// to its bytes is refused, and the compacted text must parse to exactly the same value as the source text.
+const DIGEST_BOUND_REASONS = ['canonical input manifest', 'source verification index', 'mixed source verification index'];
+
+function minifyTargets(manifest) {
+  const targets = manifest.minifyJson;
+  if (targets === undefined) return [];
+  if (!Array.isArray(targets) || targets.some((item) => typeof item !== 'string'))
+    fail('minifyJson must be an array of relative paths');
+  return targets.map((item) => {
+    const tree = item.endsWith('/');
+    return { path: normalizeRelative(tree ? item.slice(0, -1) : item, 'minifyJson path'), tree, used: false };
+  });
+}
+
+function materializeEntry(entry, targets) {
+  const target = targets.find((item) => item.tree
+    ? entry.path.startsWith(`${item.path}/`)
+    : entry.path === item.path);
+  if (!target || !entry.path.endsWith('.json')) return { ...entry, content: null, sourceBytes: entry.bytes };
+  target.used = true;
+  const bound = entry.reasons.find((reason) => DIGEST_BOUND_REASONS.some((prefix) => reason.startsWith(prefix)));
+  if (bound) fail(`minifyJson refuses a digest-bound file: ${entry.path} (${bound})`);
+  const sourceText = fs.readFileSync(entry.absolute, 'utf8');
+  let parsed;
+  try { parsed = JSON.parse(sourceText); }
+  catch (error) { fail(`minifyJson target is not valid JSON: ${entry.path} (${error.message})`); }
+  const content = Buffer.from(`${JSON.stringify(parsed)}\n`, 'utf8');
+  if (!isDeepStrictEqual(JSON.parse(content.toString('utf8')), parsed))
+    fail(`minified JSON does not equal its source value: ${entry.path}`);
+  return { ...entry, content, bytes: content.length, sourceBytes: entry.bytes };
 }
 
 async function sha256File(absolute) {
@@ -400,9 +495,78 @@ async function sha256File(absolute) {
   return hash.digest('hex');
 }
 
+export const HEADROOM_WARNING_BYTES = 50 * 1_000_000;
+
+// Size accounting only: groups the selected files by their leading directories so the build log (and the failure
+// message when the Pages limit is exceeded) names what actually fills the site. It never changes the selection.
+export function summarizePackageSize(entries, maxBytes, { groupDepth = 3, topGroups = 12, topFiles = 8 } = {}) {
+  const totalBytes = entries.reduce((sum, entry) => sum + entry.bytes, 0);
+  const groups = new Map();
+  for (const entry of entries) {
+    const parts = entry.path.split('/');
+    const key = parts.length <= groupDepth ? parts.slice(0, -1).join('/') || '(root)' : parts.slice(0, groupDepth).join('/');
+    const group = groups.get(key) || { path: key, bytes: 0, files: 0 };
+    group.bytes += entry.bytes;
+    group.files += 1;
+    groups.set(key, group);
+  }
+  const bySize = (a, b) => b.bytes - a.bytes || a.path.localeCompare(b.path);
+  return {
+    totalBytes,
+    maxBytes,
+    headroomBytes: maxBytes - totalBytes,
+    topGroups: [...groups.values()].sort(bySize).slice(0, topGroups),
+    topFiles: entries.map(({ path: relative, bytes }) => ({ path: relative, bytes })).sort(bySize).slice(0, topFiles),
+  };
+}
+
+export function formatPackageSummary(summary) {
+  const mb = (bytes) => `${(bytes / 1_000_000).toFixed(1)} MB`;
+  const lines = [
+    `Pages package size: ${mb(summary.totalBytes)} of ${mb(summary.maxBytes)} (headroom ${mb(summary.headroomBytes)}).`,
+    'Largest directories:',
+    ...summary.topGroups.map((group) => `  ${mb(group.bytes).padStart(10)}  ${String(group.files).padStart(6)} files  ${group.path}`),
+    'Largest files:',
+    ...summary.topFiles.map((file) => `  ${mb(file.bytes).padStart(10)}  ${file.path}`),
+  ];
+  return lines.join('\n');
+}
+
 function isInside(parent, child) {
   const rel = path.relative(parent, child);
   return rel === '' || (!rel.startsWith(`..${path.sep}`) && rel !== '..' && !path.isAbsolute(rel));
+}
+
+// Selection only (no output written): which files ship, which verified inputs stay build-only, and the size accounting.
+export function planPagesSite({
+  sourceRoot = DEFAULT_ROOT,
+  manifestPath = DEFAULT_MANIFEST,
+  manifest: suppliedManifest = null,
+} = {}) {
+  const root = fs.realpathSync(path.resolve(sourceRoot));
+  const manifest = suppliedManifest || JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  const buildOnly = [];
+  const selected = collectSelection(root, manifest, buildOnly);
+  const selectedPaths = new Set(selected.map((item) => item.path));
+  const targets = minifyTargets(manifest);
+  const entries = selected.map(({ path: relative, absolute, reasons }) => {
+    const stat = fs.statSync(absolute);
+    return materializeEntry({ path: relative, absolute, bytes: stat.size, reasons }, targets);
+  });
+  const unusedTarget = targets.find((item) => !item.used);
+  if (unusedTarget) fail(`minifyJson entry matches no packaged JSON file: ${unusedTarget.path}${unusedTarget.tree ? '/' : ''}`);
+  const totalBytes = entries.reduce((sum, entry) => sum + entry.bytes, 0);
+  const maxBytes = Number(manifest.maxBytes);
+  if (!Number.isSafeInteger(maxBytes) || maxBytes <= 0) fail('manifest maxBytes must be a positive integer');
+  if (maxBytes > 1_000_000_000) fail('manifest maxBytes cannot exceed the fixed 1000000000-byte Pages limit');
+  return {
+    root,
+    entries,
+    totalBytes,
+    maxBytes,
+    buildOnly: buildOnly.filter((item) => !selectedPaths.has(item.path)).sort((a, b) => a.path.localeCompare(b.path)),
+    sizeSummary: summarizePackageSize(entries, maxBytes),
+  };
 }
 
 export async function buildPagesSite({
@@ -426,18 +590,14 @@ export async function buildPagesSite({
     if (error.code !== 'ENOENT') throw error;
   }
   if (reportPath && isInside(output, path.resolve(reportPath))) fail('package report must be outside _site');
-  const manifest = suppliedManifest || JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-  const selected = collectSelection(root, manifest);
-  const entries = selected.map(({ path: relative, absolute, reasons }) => {
-    const stat = fs.statSync(absolute);
-    return { path: relative, absolute, bytes: stat.size, reasons };
+  const { entries, totalBytes, maxBytes, buildOnly, sizeSummary } = planPagesSite({
+    sourceRoot: root, manifestPath, manifest: suppliedManifest,
   });
-  const totalBytes = entries.reduce((sum, entry) => sum + entry.bytes, 0);
-  const maxBytes = Number(manifest.maxBytes);
-  if (!Number.isSafeInteger(maxBytes) || maxBytes <= 0) fail('manifest maxBytes must be a positive integer');
-  if (maxBytes > 1_000_000_000) fail('manifest maxBytes cannot exceed the fixed 1000000000-byte Pages limit');
-  if (totalBytes >= maxBytes)
-    fail(`selected site is ${totalBytes} bytes; must be below the ${maxBytes}-byte Pages limit`);
+  if (totalBytes >= maxBytes) {
+    const error = new Error(`Archive Pages package: selected site is ${totalBytes} bytes; must be below the ${maxBytes}-byte Pages limit`);
+    error.sizeSummary = sizeSummary;
+    throw error;
+  }
 
   fs.rmSync(output, { recursive: true, force: true });
   fs.mkdirSync(output, { recursive: true });
@@ -445,12 +605,14 @@ export async function buildPagesSite({
   for (const entry of entries) {
     const destination = path.join(output, ...entry.path.split('/'));
     fs.mkdirSync(path.dirname(destination), { recursive: true });
-    fs.copyFileSync(entry.absolute, destination);
+    if (entry.content) fs.writeFileSync(destination, entry.content);
+    else fs.copyFileSync(entry.absolute, destination);
     inventory.push({
       path: entry.path,
       bytes: entry.bytes,
-      sha256: await sha256File(entry.absolute),
+      sha256: entry.content ? crypto.createHash('sha256').update(entry.content).digest('hex') : await sha256File(entry.absolute),
       reasons: entry.reasons,
+      ...(entry.content ? { transform: 'minify-json', sourceBytes: entry.sourceBytes } : {}),
     });
   }
   const report = {
@@ -461,6 +623,12 @@ export async function buildPagesSite({
     totalBytes,
     totalMiB: Number((totalBytes / (1024 * 1024)).toFixed(2)),
     maxBytes,
+    buildOnlyInputs: buildOnly,
+    minifiedFileCount: inventory.filter((item) => item.transform).length,
+    minifiedSavedBytes: inventory.reduce((sum, item) => sum + (item.transform ? item.sourceBytes - item.bytes : 0), 0),
+    headroomBytes: sizeSummary.headroomBytes,
+    topGroups: sizeSummary.topGroups,
+    topFiles: sizeSummary.topFiles,
     inventory,
   };
   if (reportPath) {
@@ -487,8 +655,17 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   try {
     const result = await buildPagesSite(parseArgs(process.argv.slice(2)));
     console.log(`Archive Pages site staged: ${result.fileCount} files, ${result.totalBytes} bytes (${result.totalMiB} MiB).`);
+    console.log(formatPackageSummary(result));
+    if (result.buildOnlyInputs.length)
+      console.log(`Digest-verified but not shipped (no page fetches them): ${result.buildOnlyInputs.length} files, ${(result.buildOnlyInputs.reduce((sum, item) => sum + item.bytes, 0) / 1_000_000).toFixed(1)} MB.`);
+    if (result.minifiedFileCount)
+      console.log(`Compacted ${result.minifiedFileCount} runtime JSON files (whitespace only), saving ${(result.minifiedSavedBytes / 1_000_000).toFixed(1)} MB.`);
+    // Early warning only (never a failure): the release is still valid, but the next large addition may not fit.
+    if (result.headroomBytes < HEADROOM_WARNING_BYTES)
+      console.log(`::warning title=Pages size headroom::Pages package has only ${(result.headroomBytes / 1_000_000).toFixed(1)} MB below the ${result.maxBytes}-byte limit (warning threshold ${HEADROOM_WARNING_BYTES / 1_000_000} MB). Reduce or externalize bulk data before the next large content batch.`);
   } catch (error) {
     console.error(error.message);
+    if (error.sizeSummary) console.error(formatPackageSummary(error.sizeSummary));
     process.exitCode = 1;
   }
 }

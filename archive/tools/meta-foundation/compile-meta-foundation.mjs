@@ -252,7 +252,7 @@ function approvedSourceBoundGeometryMetadata(metadata, actual, runtimePackVersio
       !sameGeometryMapping(metadata, actual)) return false;
 
   const evidence = Array.isArray(metadata.approvalEvidence) ? metadata.approvalEvidence : [];
-  const reviewPath = evidence.find((item) =>
+  const reviewPaths = evidence.filter((item) =>
     typeof item === "string" && item.startsWith("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/") &&
     item.endsWith(".json") && !item.endsWith(".source-parity.json") && !item.includes("ATOMIC_PACKAGE")
   );
@@ -260,9 +260,9 @@ function approvedSourceBoundGeometryMetadata(metadata, actual, runtimePackVersio
     typeof item === "string" && item.startsWith("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/") &&
     item.endsWith(".source-parity.json")
   );
-  if (!reviewPath || !parityPath || !fs.existsSync(abs(reviewPath)) || !fs.existsSync(abs(parityPath))) return false;
+  if (!reviewPaths.length || !parityPath || !fs.existsSync(abs(parityPath))) return false;
 
-  const reviewed = findQuestionUidRows(readJson(reviewPath), metadata.questionUid)
+  const reviewed = reviewPaths.flatMap((reviewPath) => findQuestionUidRows(readJson(reviewPath), metadata.questionUid))
     .find((row) => row.metadataRevision === metadata.metadataRevision && sameGeometryMapping(row, metadata));
   const parity = findQuestionUidRows(readJson(parityPath), metadata.questionUid)
     .find((row) => Number(row.sourceOrdinal) === Number(metadata.sourceOrdinal) && row.studentPayloadEqual === true);

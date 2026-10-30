@@ -354,6 +354,22 @@
     return archive2Core.highSemanticSubjectForCourseKey(courseKey);
   }
 
+  const IGNORED_IDENTITIES = Object.freeze({
+    'original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js#22': '공통수학 문항'
+  });
+
+  // True when the classification of this exact question is decided by its file#number identity
+  // (manual override or explicit ignore) instead of by its unit key and label alone. Callers that
+  // cache classifications by key/label must not reuse a cached result for such a question.
+  function hasIdentityRule(record, profileOrId = 'h1') {
+    const profile = getProfile(profileOrId);
+    const questionNo = getQuestionNo(record);
+    if (!questionNo) return false;
+    const identity = `${normalizePath(record && (record.sourceFile || record._sourceFile))}#${questionNo}`;
+    return Boolean(profile.overrides[identity]) ||
+      (isHighSemanticProfile(profile) && Boolean(IGNORED_IDENTITIES[identity]));
+  }
+
   function classifyRecord(record, profileOrId = 'h1') {
     const profile = getProfile(profileOrId);
     const sourceFile = normalizePath(record && (record.sourceFile || record._sourceFile));
@@ -368,10 +384,8 @@
     const sourceUnit = String(record && record.standardUnit || '').trim();
     const unitByKey = Object.fromEntries(profile.units.map(unit => [unit.key, unit]));
 
-    if (isHighSemanticProfile(profile)) {
-      if (identity === 'original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js#22') {
-        return { status: 'ignored', reason: '공통수학 문항' };
-      }
+    if (isHighSemanticProfile(profile) && IGNORED_IDENTITIES[identity]) {
+      return { status: 'ignored', reason: IGNORED_IDENTITIES[identity] };
     }
 
     if (unitByKey[sourceKey]) return { status: 'classified', unitKey: sourceKey, reason: 'h22-direct' };
@@ -491,9 +505,14 @@
     const fileDiff = compareText(normalizePath(a.sourceFile), normalizePath(b.sourceFile));
     return fileDiff || getQuestionNo(a) - getQuestionNo(b);
   }
+  // Recency order shared with 문제지 만들기 (Archive2Core.RECENCY_POLICY): the most recent complete
+  // school year first (2025, 2024, ...), then the current year, unknown years last.
+  function recencyRankOf(record) {
+    const year = getYear(record);
+    return isValidExamYear(year) ? archive2Core.recencyRank(year) : archive2Core.recencyRank(0);
+  }
   function compareNewestYear(a, b) {
-    const rank = record => isValidExamYear(getYear(record)) ? getYear(record) : 0;
-    return rank(b) - rank(a);
+    return recencyRankOf(a) - recencyRankOf(b);
   }
 
   function getCollectionUnitKey(record) {
@@ -559,6 +578,135 @@
     return normalizeDifficulty(value);
   }
 
+  // ---- 난이도 단계 (S13) ----------------------------------------------------------------------
+  // Numeric difficulty step 1..5 comes ONLY from a numeric difficultyBucket / difficultyStep. The legacy
+  // three-level label (하/중/상) is kept apart as display-only information and is never converted into,
+  // inferred as, or stored as a numeric step. Records without a numeric step are '단계 미지정'; they are
+  // never excluded.
+  const DIFFICULTY_STEPS = Object.freeze([1, 2, 3, 4, 5]);
+  const STEP_NONE = 'none';
+  const STEP_TOKENS = Object.freeze(['1', '2', '3', '4', '5', STEP_NONE]);
+  const LEGACY_LABELS = Object.freeze(['하', '중', '상']);
+  const LEGACY_NONE = '없음';
+  const LEGACY_RANK = Object.freeze({ '하': 0, '중': 1, '상': 2, [LEGACY_NONE]: 3 });
+  const STEP_LABEL_NONE = '단계 미지정';
+
+  function parseNumericStep(value) {
+    if (typeof value === 'number') return Number.isInteger(value) && value >= 1 && value <= 5 ? value : null;
+    const text = String(value ?? '').trim();
+    return /^[1-5]$/.test(text) ? Number(text) : null;
+  }
+
+  function getDifficultyStep(record) {
+    if (!record) return null;
+    const direct = parseNumericStep(record.difficultyStep);
+    if (direct) return direct;
+    return parseNumericStep(record.difficultyBucket);
+  }
+
+  function getLegacyDifficultyLabel(record) {
+    if (!record) return LEGACY_NONE;
+    const explicit = String(record.legacyDifficultyLabel ?? '').trim();
+    if (LEGACY_LABELS.includes(explicit)) return explicit;
+    for (const value of [record.difficultyBucket, record.level]) {
+      const text = String(value ?? '').trim().replace(/^\[|\]$/g, '').trim();
+      if (LEGACY_LABELS.includes(text)) return text;
+    }
+    return LEGACY_NONE;
+  }
+
+  function getStepToken(record) {
+    const step = getDifficultyStep(record);
+    return step ? String(step) : STEP_NONE;
+  }
+
+  function stepTokenLabel(token) {
+    return token === STEP_NONE ? STEP_LABEL_NONE : `${token}단계`;
+  }
+
+  function normalizeStepSelection(input) {
+    const list = Array.isArray(input) ? input : typeof input === 'string' ? input.split(',') : input instanceof Set ? [...input] : [];
+    const tokens = new Set(list.map(value => String(value ?? '').trim()).filter(value => STEP_TOKENS.includes(value)));
+    // Empty or complete selection == every step (the default; titles and snapshot keys stay unchanged).
+    if (!tokens.size || tokens.size === STEP_TOKENS.length) return [];
+    return STEP_TOKENS.filter(token => tokens.has(token));
+  }
+
+  function stepSelectionLabel(selection) {
+    const tokens = normalizeStepSelection(selection);
+    if (!tokens.length) return '';
+    const numeric = tokens.filter(token => token !== STEP_NONE);
+    const parts = [];
+    if (numeric.length) parts.push(`${numeric.join('·')}단계`);
+    if (tokens.includes(STEP_NONE)) parts.push(STEP_LABEL_NONE);
+    return parts.join(' · ');
+  }
+
+  // Sort keys are computed once per record: step 1..5 then 단계 미지정; inside 단계 미지정 the legacy
+  // label 하 -> 중 -> 상 -> 없음; then the existing recency order (2025 -> 2024 -> ... -> current year
+  // -> unknown), exam period, source file and question number.
+  const stepSortKeys = new WeakMap();
+  function getStepSortKey(record) {
+    let key = record && typeof record === 'object' ? stepSortKeys.get(record) : null;
+    if (key) return key;
+    const step = getDifficultyStep(record);
+    key = {
+      step: step || 6,
+      legacy: step ? 0 : LEGACY_RANK[getLegacyDifficultyLabel(record)],
+      recency: recencyRankOf(record),
+      period: ({ '1mid': 1, '1final': 2, '2mid': 3, '2final': 4 })[getPeriod(record.sourceFile)] || 99,
+      file: normalizePath(record.sourceFile),
+      no: getQuestionNo(record)
+    };
+    if (record && typeof record === 'object') stepSortKeys.set(record, key);
+    return key;
+  }
+
+  function compareStepRecords(a, b) {
+    const ka = getStepSortKey(a);
+    const kb = getStepSortKey(b);
+    return ka.step - kb.step || ka.legacy - kb.legacy || ka.recency - kb.recency || ka.period - kb.period ||
+      compareText(ka.file, kb.file) || ka.no - kb.no;
+  }
+
+  function summarizeSteps(records) {
+    const steps = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, [STEP_NONE]: 0 };
+    const legacy = { '하': 0, '중': 0, '상': 0, [LEGACY_NONE]: 0 };
+    for (const record of Array.isArray(records) ? records : []) {
+      const token = getStepToken(record);
+      steps[token] += 1;
+      if (token === STEP_NONE) legacy[getLegacyDifficultyLabel(record)] += 1;
+    }
+    return { steps, legacy, total: Object.values(steps).reduce((sum, value) => sum + value, 0) };
+  }
+
+  // Section headings for a step-ordered paper: one heading at the first question of every step; inside
+  // 단계 미지정 an extra sub-heading '기존 분류: 하/중/상/없음' at each legacy-label change. `at` is the
+  // 0-based question index, `uid` guards against a reordered paper (renderers ignore a stale heading).
+  function buildStepSections(records) {
+    const list = Array.isArray(records) ? records : [];
+    const sections = [];
+    let previousToken = null;
+    let previousLegacy = null;
+    list.forEach((record, index) => {
+      const token = getStepToken(record);
+      const uid = getQuestionUid(record);
+      if (token !== previousToken) {
+        sections.push({ at: index, uid, title: stepTokenLabel(token), level: 1 });
+        previousToken = token;
+        previousLegacy = null;
+      }
+      if (token === STEP_NONE) {
+        const legacy = getLegacyDifficultyLabel(record);
+        if (legacy !== previousLegacy) {
+          sections.push({ at: index, uid, title: `기존 분류: ${legacy}`, level: 2 });
+          previousLegacy = legacy;
+        }
+      }
+    });
+    return sections;
+  }
+
   function getQuestionUid(record) {
     return String(record && (record.questionUid || record.question_uid) || '').trim();
   }
@@ -591,17 +739,45 @@
     return String(record && (record.templateKey || record.template_key) || '').trim();
   }
 
+  // An explicit registry label (set from the recorded-meta facets) names the key; the legacy
+  // L3/L4 text remains the label for records that carry no explicit one.
   function getProblemTypeLabel(record) {
-    return String(record && (record.L3 || record.problemType || record.problemTypeLabel || '') || '').trim();
+    return String(record && (record.problemTypeLabel || record.L3 || record.problemType || '') || '').trim();
   }
 
   function getTemplateLabel(record) {
-    return String(record && (record.L4 || record.template || record.templateLabel || '') || '').trim();
+    return String(record && (record.templateLabel || record.L4 || record.template || '') || '').trim();
+  }
+
+  // S14 recorded concept (L3) / problem type (PT) / solution template (TPL) facets. The page joins
+  // them from the final catalog's content-bound usable-meta lane: conceptLabel, problemTypeKey,
+  // templateKey and metaFacetStatus {l3, pt, tpl} = 'approved' | 'pending'. Status is shown, never
+  // upgraded: only an approved field status counts as 승인.
+  function getConceptLabel(record) {
+    return String(record && record.conceptLabel || '').trim();
+  }
+
+  function getFacetStatus(record, facet) {
+    const status = record && record.metaFacetStatus && record.metaFacetStatus[facet];
+    return status === 'approved' ? 'approved' : status ? 'pending' : '';
+  }
+
+  function facetStatusText(option) {
+    const mix = option.pending === 0 ? '승인' : option.approved === 0 ? '검토 대기' : `승인 ${option.approved} · 검토 대기 ${option.pending}`;
+    return `${option.count}문항 · ${mix}`;
+  }
+
+  function addFacetCount(group, record, facet) {
+    group.count += 1;
+    if (getFacetStatus(record, facet) === 'approved') group.approved += 1; else group.pending += 1;
   }
 
   function getProblemTypeOptions(records, filters = {}) {
     const source = filterUnitRecords(records, {
       subUnitKeys: filters.subUnitKeys || [],
+      conceptLabels: filters.conceptLabels || [],
+      templateKeys: filters.templateKeys || [],
+      approvedOnly: filters.approvedOnly === true,
       difficultyBuckets: filters.difficultyBuckets || [],
       includeUnclassified: filters.includeUnclassified === true
     });
@@ -609,9 +785,9 @@
     for (const record of source) {
       const key = getProblemTypeKey(record);
       const label = getProblemTypeLabel(record);
-      if (!key || !label) continue;
-      const group = groups.get(key) || { key, label, count: 0 };
-      group.count += 1;
+      if (!key || !label || !isProblemTypeSelectable(record)) continue;
+      const group = groups.get(key) || { key, label, count: 0, approved: 0, pending: 0 };
+      addFacetCount(group, record, 'pt');
       groups.set(key, group);
     }
     return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
@@ -620,7 +796,9 @@
   function getTemplateOptions(records, filters = {}) {
     const source = filterUnitRecords(records, {
       subUnitKeys: filters.subUnitKeys || [],
+      conceptLabels: filters.conceptLabels || [],
       problemTypeKeys: filters.problemTypeKeys || [],
+      approvedOnly: filters.approvedOnly === true,
       difficultyBuckets: filters.difficultyBuckets || [],
       includeUnclassified: filters.includeUnclassified === true
     });
@@ -628,10 +806,30 @@
     for (const record of source) {
       const key = getTemplateKey(record);
       const label = getTemplateLabel(record);
-      if (!key || !label) continue;
-      const group = groups.get(key) || { key, label, count: 0, parentProblemTypeKey: getProblemTypeKey(record) };
-      group.count += 1;
+      if (!key || !label || !isProblemTypeSelectable(record)) continue;
+      const group = groups.get(key) || { key, label, count: 0, approved: 0, pending: 0, parentProblemTypeKey: getProblemTypeKey(record) };
+      addFacetCount(group, record, 'tpl');
       groups.set(key, group);
+    }
+    return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
+  }
+
+  function getConceptOptions(records, filters = {}) {
+    const source = filterUnitRecords(records, {
+      subUnitKeys: filters.subUnitKeys || [],
+      problemTypeKeys: filters.problemTypeKeys || [],
+      templateKeys: filters.templateKeys || [],
+      approvedOnly: filters.approvedOnly === true,
+      difficultyBuckets: filters.difficultyBuckets || [],
+      includeUnclassified: filters.includeUnclassified === true
+    });
+    const groups = new Map();
+    for (const record of source) {
+      const label = getConceptLabel(record);
+      if (!label) continue;
+      const group = groups.get(label) || { key: label, label, count: 0, approved: 0, pending: 0 };
+      addFacetCount(group, record, 'l3');
+      groups.set(label, group);
     }
     return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
   }
@@ -707,8 +905,32 @@
       String(record.metaFoundationTaxonomyValid || '').trim().toLowerCase() === 'true';
   }
 
-  function isAutomaticSelectable(record) {
+  // Approved metadata: the former automatic-selection gate (metadata approved as default-selectable
+  // and an intact Meta Foundation taxonomy chain). Since the 2026-10-29 user decision it is a
+  // PRIORITY tier, not a usage gate.
+  function isMetadataApproved(record) {
     return isDefaultSelectable(record) && isTaxonomySelectable(record);
+  }
+
+  // Usage gate = 문제지 만들기 generalUseEligibility (verified identity, intact source reference and
+  // fingerprint). The page joins the result as `generalUseEligible` from the final catalog; a record
+  // that was never joined (no catalog evidence) is not rejected here. Metadata approval, pending
+  // review, source-issue annotations and a broken L2/L3/L4 chain are not usage gates.
+  function isGeneralUseEligible(record) {
+    const value = record && record.generalUseEligible;
+    return !(value === false || value === 0 || String(value).trim().toLowerCase() === 'false');
+  }
+
+  function isAutomaticSelectable(record) {
+    return isGeneralUseEligible(record);
+  }
+
+  // A broken or missing L2/L3/L4 chain only disables L3/L4-based selection for that record.
+  // Records whose type/template come from the content-bound recorded-meta lane (metaFacetBound) are
+  // selectable by those facets: the lane already requires ACTIVE registry keys with a consistent
+  // PT -> TPL parent, and the status is shown instead of being a gate.
+  function isProblemTypeSelectable(record) {
+    return record && record.metaFacetBound === true ? true : isTaxonomySelectable(record);
   }
 
   function getSubUnitOptions(records) {
@@ -729,6 +951,8 @@
     const subUnitKeys = new Set((filters.subUnitKeys || []).map(value => String(value || '').trim()).filter(Boolean));
     const problemTypeKeys = new Set((filters.problemTypeKeys || []).map(value => String(value || '').trim()).filter(Boolean));
     const templateKeys = new Set((filters.templateKeys || []).map(value => String(value || '').trim()).filter(Boolean));
+    const conceptLabels = new Set((filters.conceptLabels || []).map(value => String(value || '').trim()).filter(Boolean));
+    const approvedOnly = filters.approvedOnly === true;
     const difficultyBuckets = new Set((filters.difficultyBuckets || []).map(normalizeDifficulty));
     return source.filter(record => {
       if (filters.includeNonSelectable !== true && !isAutomaticSelectable(record)) return false;
@@ -737,8 +961,18 @@
       const templateKey = getTemplateKey(record);
       const difficulty = getDifficultyBucket(record);
       if (subUnitKeys.size && !subUnitKeys.has(subUnitKey)) return false;
+      if ((problemTypeKeys.size || templateKeys.size || conceptLabels.size) && !isProblemTypeSelectable(record)) return false;
+      if (conceptLabels.size && !conceptLabels.has(getConceptLabel(record))) return false;
       if (problemTypeKeys.size && !problemTypeKeys.has(problemTypeKey)) return false;
       if (templateKeys.size && !templateKeys.has(templateKey)) return false;
+      if (approvedOnly) {
+        // Selected facets must be approved; with none selected, every recorded facet must be.
+        const required = [];
+        if (conceptLabels.size || (!problemTypeKeys.size && !templateKeys.size && getConceptLabel(record))) required.push('l3');
+        if (problemTypeKeys.size || (!conceptLabels.size && !templateKeys.size && problemTypeKey)) required.push('pt');
+        if (templateKeys.size || (!conceptLabels.size && !problemTypeKeys.size && templateKey)) required.push('tpl');
+        if (!required.length || required.some(facet => getFacetStatus(record, facet) !== 'approved')) return false;
+      }
       if (difficultyBuckets.size && !difficultyBuckets.has(difficulty)) return false;
       if (filters.includeUnclassified !== true && (subUnitKey === '__unclassified__' || difficulty === '미분류')) return false;
       return true;
@@ -903,7 +1137,7 @@
   function compareCollectionRecords(a, b) {
     const schoolDiff = compareText(getSchoolKey(a), getSchoolKey(b));
     if (schoolDiff) return schoolDiff;
-    const yearDiff = getExamYear(b) - getExamYear(a);
+    const yearDiff = compareNewestYear(a, b);
     if (yearDiff) return yearDiff;
     const periodOrder = { '1mid': 1, '1final': 2, '2mid': 3, '2final': 4 };
     const periodDiff = (periodOrder[getPeriod(a.sourceFile)] || 99) - (periodOrder[getPeriod(b.sourceFile)] || 99);
@@ -932,7 +1166,7 @@
         });
         return {
           schoolKey,
-          groups: [...byYear.entries()].sort((a, b) => b[0] - a[0]).map(([year, items]) => ({ year, items, index: 0 })),
+          groups: [...byYear.entries()].sort((a, b) => archive2Core.recencyRank(a[0]) - archive2Core.recencyRank(b[0])).map(([year, items]) => ({ year, items, index: 0 })),
           pointer: 0
         };
       });
@@ -1038,13 +1272,20 @@
     return fnv1a(`${String(seed || 'unitpast-default')}|${getRecordIdentity(record)}`);
   }
 
+  // Selection order: the most recent complete school year first (RECENCY_POLICY: 2025, 2024, ...,
+  // then the current year, unknown years last); inside a year approved-metadata items first; then a
+  // seed-stable random order. The sort keys are computed once per record, not once per comparison.
   function sortForSelection(records, seed) {
-    return [...records].sort((a, b) => {
-      const yearDiff = compareNewestYear(a, b);
-      if (yearDiff) return yearDiff;
-      const scoreDiff = compareText(stableSelectionScore(a, seed), stableSelectionScore(b, seed));
-      return scoreDiff || compareRecords(a, b);
-    });
+    const rows = records.map(record => ({
+      record,
+      recency: recencyRankOf(record),
+      approved: isMetadataApproved(record) ? 0 : 1,
+      score: stableSelectionScore(record, seed)
+    }));
+    rows.sort((a, b) =>
+      a.recency - b.recency || a.approved - b.approved ||
+      compareText(a.score, b.score) || compareRecords(a.record, b.record));
+    return rows.map(row => row.record);
   }
 
   function dedupeRecords(records) {
@@ -1102,8 +1343,10 @@
     const limit = selectionLimit(options);
     const pool = dedupeRecords(filterUnitRecords(records, {
       subUnitKeys: options.subUnitKeys || [],
+      conceptLabels: options.conceptLabels || [],
       problemTypeKeys: options.problemTypeKeys || [],
       templateKeys: options.templateKeys || [],
+      approvedOnly: options.approvedOnly === true,
       difficultyBuckets: options.allowAdjacentDifficulty ? [] : (options.difficultyBuckets || []),
       includeUnclassified: options.includeUnclassified === true
     }));
@@ -1113,6 +1356,7 @@
         rows: normalizedRows.map((row, index) => ({
           index,
           subUnitKey: String(row.subUnitKey || '').trim(),
+          conceptLabel: String(row.conceptLabel || '').trim(),
           problemTypeKey: String(row.problemTypeKey || '').trim(),
           templateKey: String(row.templateKey || '').trim(),
           difficultyBucket: row.difficultyBucket ? normalizeDifficulty(row.difficultyBucket) : '',
@@ -1130,6 +1374,7 @@
     normalizedRows.forEach((row, index) => {
       const requestedCount = Math.max(0, Number(row.count || 0));
       const rowSubUnitKeys = row.subUnitKeys || (row.subUnitKey ? [row.subUnitKey] : []);
+      const rowConceptLabels = row.conceptLabels || (row.conceptLabel ? [row.conceptLabel] : []);
       const rowProblemTypeKeys = row.problemTypeKeys || (row.problemTypeKey ? [row.problemTypeKey] : []);
       const rowTemplateKeys = row.templateKeys || (row.templateKey ? [row.templateKey] : []);
       const rowDifficultyBuckets = row.difficultyBuckets || (row.difficultyBucket ? [row.difficultyBucket] : []);
@@ -1137,6 +1382,7 @@
       const strictBuckets = hasRowDifficulty ? rowDifficultyBuckets : (options.difficultyBuckets || []);
       const rowCandidates = dedupeRecords(filterUnitRecords(pool, {
         subUnitKeys: rowSubUnitKeys,
+        conceptLabels: rowConceptLabels,
         problemTypeKeys: rowProblemTypeKeys,
         templateKeys: rowTemplateKeys,
         difficultyBuckets: strictBuckets,
@@ -1150,6 +1396,7 @@
           if (availableCandidates.length >= requestedCount) break;
           const fallback = dedupeRecords(filterUnitRecords(pool, {
             subUnitKeys: rowSubUnitKeys,
+            conceptLabels: rowConceptLabels,
             problemTypeKeys: rowProblemTypeKeys,
             templateKeys: rowTemplateKeys,
             difficultyBuckets: [bucket],
@@ -1167,6 +1414,7 @@
       reports.push({
         index,
         subUnitKey: String(row.subUnitKey || '').trim(),
+        conceptLabel: String(row.conceptLabel || '').trim(),
         problemTypeKey: String(row.problemTypeKey || '').trim(),
         templateKey: String(row.templateKey || '').trim(),
         difficultyBucket: row.difficultyBucket ? normalizeDifficulty(row.difficultyBucket) : '',
@@ -1205,11 +1453,14 @@
       subUnitKey: safeSubUnitKey,
        subUnit: safeSubUnitKey ? getSubUnitLabel(record) : '',
       difficultyBucket: getDifficultyBucket(record),
+      difficultyStep: getDifficultyStep(record),
+      legacyDifficultyLabel: getLegacyDifficultyLabel(record),
       problemTypeKey: getProblemTypeKey(record),
       templateKey: getTemplateKey(record),
       L3: getProblemTypeLabel(record),
       L4: getTemplateLabel(record),
       defaultSelectable: isDefaultSelectable(record),
+      generalUseEligible: isGeneralUseEligible(record),
       metaFoundationOwnedScope: record.metaFoundationOwnedScope === true,
       metaFoundationTaxonomyValid: record.metaFoundationTaxonomyValid === true,
       mappedUnitKey: unit.key,
@@ -1254,6 +1505,38 @@
     return papers;
   }
 
+  // Papers of one unit for a difficulty-step selection (default: every step). The selected records are
+  // ordered step 1 -> 5 -> 단계 미지정 (legacy 하 -> 중 -> 상 -> 없음 inside it), recency order inside every
+  // step, then split by the same paper size rule (target / hard max, one exam kept together) as before.
+  function buildStepPapers(unit, records, scope, options = {}) {
+    const tokens = normalizeStepSelection(options.difficultySteps);
+    const selected = tokens.length ? records.filter(record => tokens.includes(getStepToken(record))) : records;
+    const split = splitIntoPapers(selected, {
+      target: options.target || scope.targetQuestionsPerPaper,
+      max: options.max || scope.hardMaxQuestionsPerPaper,
+      compare: compareStepRecords
+    });
+    const label = stepSelectionLabel(tokens);
+    const base = label ? `${unit.name} · ${label}` : unit.name;
+    return split.map((paperRecords, index) => ({
+      index: index + 1,
+      title: split.length === 1 ? base : `${base} · 문제지 ${index + 1}`,
+      count: paperRecords.length,
+      sourceCount: new Set(paperRecords.map(record => record.sourceFile)).size,
+      records: paperRecords,
+      stepGrouped: true,
+      difficultySteps: tokens,
+      stepSummary: summarizeSteps(paperRecords),
+      sections: buildStepSections(paperRecords),
+      snapshotKey: buildSnapshotKey(unit.key, paperRecords, scope, { difficultySteps: tokens })
+    }));
+  }
+
+  function buildUnitPapers(unit, options = {}) {
+    if (!unit || !Array.isArray(unit.selectableRecords)) return [];
+    return buildStepPapers(unit, unit.selectableRecords, options.scope || unit.paperScope || COMMON_SCOPE, options);
+  }
+
   function fnv1a(text) {
     let hash = 0x811c9dc5;
     for (let i = 0; i < text.length; i += 1) {
@@ -1273,6 +1556,7 @@
       templateKeys: selection.templateKeys || [],
       difficultyPlan: selection.difficultyPlan || [],
       taxonomyPlan: selection.taxonomyPlan || [],
+      ...(normalizeStepSelection(selection.difficultySteps).length ? { difficultySteps: normalizeStepSelection(selection.difficultySteps) } : {}),
       seed: selection.seed || '',
       collection: selection.collection || null,
       paperKey: selection.paperKey || ''
@@ -1303,32 +1587,31 @@
     const units = profile.units.map(unit => {
       const unitRecords = byUnit[unit.key].sort(compareRecords);
       const selectableRecords = unitRecords.filter(isAutomaticSelectable);
-      const split = splitIntoPapers(selectableRecords, { ...options, target: options.target || scope.targetQuestionsPerPaper, max: options.max || scope.hardMaxQuestionsPerPaper });
-      const papers = split.map((paperRecords, index) => ({
-        index: index + 1,
-        title: split.length === 1 ? unit.name : `${unit.name} · 문제지 ${index + 1}`,
-        count: paperRecords.length,
-        sourceCount: new Set(paperRecords.map(record => record.sourceFile)).size,
-        records: paperRecords,
-        snapshotKey: buildSnapshotKey(unit.key, paperRecords, scope)
-      }));
+      const papers = buildStepPapers(unit, selectableRecords, scope, options);
       return {
         ...unit,
         count: unitRecords.length,
         selectableCount: selectableRecords.length,
+        approvedCount: selectableRecords.filter(isMetadataApproved).length,
         excludedFromAutomaticCount: unitRecords.length - selectableRecords.length,
         records: unitRecords,
+        // Shared with the paper rebuild for a chosen difficulty-step subset (buildUnitPapers).
+        selectableRecords,
+        paperScope: scope,
+        stepSummary: summarizeSteps(selectableRecords),
         papers
       };
     });
 
     const classifiedCount = units.reduce((sum, unit) => sum + unit.count, 0);
     const selectableCount = units.reduce((sum, unit) => sum + unit.selectableCount, 0);
+    const approvedCount = units.reduce((sum, unit) => sum + unit.approvedCount, 0);
     return {
       profile, scope, scannedCount: scanned.length,
       candidateCount: classifiedCount + review.length,
       classifiedCount,
       selectableCount,
+      approvedCount,
       excludedFromAutomaticCount: classifiedCount - selectableCount,
       review, invalid, ignored, units
     };
@@ -1362,14 +1645,31 @@
     getSourceExamKey,
     isInScope,
     classifyRecord,
+    hasIdentityRule,
     compareRecords,
     normalizeDifficulty,
     getDifficultyBucket,
+    DIFFICULTY_STEPS,
+    STEP_TOKENS,
+    getDifficultyStep,
+    getLegacyDifficultyLabel,
+    getStepToken,
+    stepTokenLabel,
+    normalizeStepSelection,
+    stepSelectionLabel,
+    compareStepRecords,
+    summarizeSteps,
+    buildStepSections,
+    buildUnitPapers,
     getSubUnitKey,
     getSubUnitParentKey,
     getSubUnitLabel,
     getProblemTypeKey,
     getProblemTypeLabel,
+    getConceptLabel,
+    getFacetStatus,
+    facetStatusText,
+    getConceptOptions,
     getProblemTypeOptions,
     getTemplateKey,
     getTemplateLabel,
@@ -1382,7 +1682,11 @@
     validateMetaFoundationSelection,
     isDefaultSelectable,
     isTaxonomySelectable,
+    isMetadataApproved,
+    isGeneralUseEligible,
+    isProblemTypeSelectable,
     isAutomaticSelectable,
+    recencyRankOf,
     getSubUnitOptions,
     filterUnitRecords,
     normalizeCollectionSemester,

@@ -14,7 +14,7 @@
   const state = {
     q: '',
     course: (location.hash.slice(1) && COURSE[location.hash.slice(1)]) ? location.hash.slice(1) : 'all',
-    view: store.get('hubView', 'list'),
+    view: store.get('hubViewV2', 'map') === 'list' ? 'list' : 'map', // 노선도가 첫 화면, 목록은 한 번 눌러 보기
     teach: store.get('hubTeach', false),
     pins: new Set(store.get('pins', []))
   };
@@ -46,11 +46,11 @@
 
   /* ---------- 상단 ---------- */
   const search = h('input', { type: 'search', placeholder: '단원·개념·장면 검색 (예: 접선, 사분원, 정사영)', 'aria-label': '실험실 검색', autocomplete: 'off' });
-  const teachSw = h('button', { class: 'hub-switch', 'aria-pressed': String(state.teach), title: '켜면 2.0 실험실이 수업 모드(큰 글씨·발표 막대)로 열립니다', html: `<span class="knob"></span><span class="txt">수업 모드로 열기</span>` });
+  const teachSw = h('button', { class: 'hub-switch', 'aria-pressed': String(state.teach), title: '켜면 2.0 실험실이 수업 모드(큰 글씨·굵은 선·단계 안내 줄)로 열립니다', html: `<span class="knob"></span><span class="txt">수업 모드로 열기</span>` });
   const themeBtn = h('button', { class: 'apl-icon-btn', 'aria-label': '테마 바꾸기' });
   const syncTheme = () => (themeBtn.innerHTML = icon(APLab.theme.current() === 'paper' ? 'moon' : 'sun'));
   syncTheme();
-  themeBtn.addEventListener('click', () => { APLab.theme.toggle(); syncTheme(); hero && hero.board.readTheme(); });
+  themeBtn.addEventListener('click', () => { APLab.theme.toggle(); syncTheme(); });
   teachSw.addEventListener('click', () => {
     state.teach = !state.teach;
     store.set('hubTeach', state.teach);
@@ -64,91 +64,51 @@
   // 3D 우주(처음 화면)와 이전 허브로 가는 얇은 링크 줄. 머리글 위에 놓여 스크롤하면 사라집니다.
   const trail = h('nav', { class: 'hub-trail', 'aria-label': '다른 화면' }, h('div', { class: 'hub-trail-in' },
     h('a', { href: '../index.html', html: `${icon('back')}<span>AP Math Universe</span>` }),
-    h('a', { href: '../teacher-hub.html', text: '이전 허브' })));
+    h('a', { href: '../teacher-hub.html', text: '이전 실험실 목록' })));
 
-  /* ---------- 히어로 ---------- */
+  /* ---------- 첫 안내(얇게): 노선도가 화면의 주인공입니다 ---------- */
   const total = CAT.labs.length;
   const sceneTotal = CAT.labs.reduce((n, l) => n + (l.sceneTotal || (l.scenes || []).length), 0);
   const v2count = CAT.labs.filter((l) => l.next).length;
-  const heroCanvas = h('canvas', { 'aria-hidden': 'true' });
-  const heroEl = h('section', { class: 'hub-hero' },
-    h('div', {},
-      h('h1', { html: '그림을 움직이면,<br><em>개념이 보입니다.</em>' }),
-      h('p', { html: `중1 기본 도형부터 미적분Ⅰ·기하까지. 점을 끌고, 풀이를 한 단계씩 그림에 드러내고, 수업에서는 크게 띄워 판서합니다. 같은 대상은 언제나 같은 색으로 연결됩니다.` }),
-      h('div', { class: 'hub-stats', html: `<span class="hub-stat"><b>${total}</b>실험실</span><span class="hub-stat"><b>${sceneTotal}</b>탐구 장면</span><span class="hub-stat"><b>${CAT.courses.length}</b>학년·과목</span><span class="hub-stat"><b>${v2count}</b>2.0 셸 적용</span>` }),
-      h('div', { class: 'hub-cta', id: 'hubCta' })),
-    h('div', { class: 'hub-hero-stage' }, heroCanvas, h('div', { class: 'cap', html: '<span>실험실 엔진으로 그린 실시간 그림</span><span>할선 → 접선</span>' })));
-  let hero = null;
-
-  function startHero() {
-    const b = new APLab.Board(heroCanvas, { kind: 'cartesian', focus: { x: [-2.6, 2.8], y: [-1.6, 3.1] }, interactive: false, pad: 0.04 });
-    b.resize();
-    const f = (x) => 0.38 * x * x * x - 1.15 * x + 0.9;
-    const fp = (x) => 1.14 * x * x - 1.15;
-    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let t0 = performance.now();
-    let visible = true;
-    const frame = (now) => {
-      const t = reduce ? 1.2 : (now - t0) / 1000;
-      b.resize();
-      b.begin();
-      b.grid();
-      b.axes({ ticks: false });
-      b.plot(f, { color: 'ink', width: 3, glow: true });
-      const a = Math.sin(t * 0.35) * 1.6;
-      const hh = 0.05 + 1.25 * (0.5 + 0.5 * Math.cos(t * 0.9));
-      const ya = f(a), yb = f(a + hh), m = fp(a), sec = (yb - ya) / hh;
-      b.line([a, ya], m, { extent: 1.6, color: 'rose', width: 2.6, glow: true });
-      b.line([a, ya], sec, { extent: 1.9, color: 'sky', width: 2.2, dash: true });
-      b.seg([a, ya], [a + hh, ya], { color: 'amber', width: 1.6, dash: [4, 4], alpha: 0.8 });
-      b.seg([a + hh, ya], [a + hh, yb], { color: 'sky', width: 1.6, dash: [4, 4], alpha: 0.8 });
-      b.point([a + hh, yb], { color: 'sky', r: 5 });
-      b.handle('P', [a, ya], { color: 'amber' });
-      b.stext(14, 26, `할선 기울기 ${APLab.fmt(sec)}  →  접선 기울기 ${APLab.fmt(m)}`, { color: 'ink', size: 13, align: 'left', weight: 750 });
-      b.end();
-      if (!reduce && visible) requestAnimationFrame(frame);
-    };
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver((es) => {
-        const was = visible;
-        visible = es[0].isIntersecting;
-        if (visible && !was) requestAnimationFrame(frame);
-      }).observe(heroCanvas);
-    }
-    requestAnimationFrame(frame);
-    window.addEventListener('apl:theme', () => b.readTheme());
-    return { board: b };
-  }
+  const introEl = h('section', { class: 'hub-intro' },
+    h('div', { class: 'hub-intro-text' },
+      h('h1', { html: '그림을 움직이면, <em>개념이 보입니다.</em>' }),
+      h('p', { text: '중1 기본 도형부터 미적분Ⅰ·기하까지. 점을 끌고, 풀이를 한 단계씩 그림에 드러내고, 수업에서는 크게 띄워 판서합니다. 같은 대상은 언제나 같은 색으로 연결됩니다.' }),
+      h('div', { class: 'hub-stats', html: `<span class="hub-stat"><b>${total}</b>실험실</span><span class="hub-stat"><b>${sceneTotal}</b>탐구 장면</span><span class="hub-stat"><b>${CAT.courses.length}</b>학년·과목</span><span class="hub-stat"><b>${v2count}</b>2.0 화면 적용</span>` })),
+    h('div', { class: 'hub-cta', id: 'hubCta' }));
 
   /* ---------- 과정 선택 ---------- */
   const courseBar = h('div', { class: 'hub-courses', role: 'toolbar', 'aria-label': '학년·과목' });
   const viewBtns = [
-    h('button', { 'aria-pressed': String(state.view === 'list'), 'aria-label': '목록 보기', title: '목록', html: icon('list') + '목록', onclick: () => setView('list') }),
-    h('button', { 'aria-pressed': String(state.view === 'map'), 'aria-label': '개념 노선도 보기', title: '개념 노선도', html: icon('map') + '개념 노선도', onclick: () => setView('map') })
+    h('button', { 'aria-pressed': String(state.view === 'map'), 'aria-label': '개념 노선도 보기', title: '개념 노선도', html: icon('map') + '노선도', onclick: () => setView('map') }),
+    h('button', { 'aria-pressed': String(state.view === 'list'), 'aria-label': '목록으로 보기', title: '실험실 목록으로 보기', html: icon('list') + '목록', onclick: () => setView('list') })
   ];
   const bar = h('div', { class: 'hub-bar' }, courseBar, h('div', { class: 'hub-view', role: 'group', 'aria-label': '보기 방식' }, ...viewBtns));
   function setView(v) {
     state.view = v;
-    store.set('hubView', v);
-    viewBtns[0].setAttribute('aria-pressed', String(v === 'list'));
-    viewBtns[1].setAttribute('aria-pressed', String(v === 'map'));
+    store.set('hubViewV2', v);
+    viewBtns[0].setAttribute('aria-pressed', String(v === 'map'));
+    viewBtns[1].setAttribute('aria-pressed', String(v === 'list'));
     render();
   }
   function setCourse(id) {
     state.course = id;
     try { history.replaceState(null, '', id === 'all' ? location.pathname + location.search : '#' + id); } catch (e) {}
+    pulseCourse = id;
     render();
-    if (id !== 'all') window.scrollTo({ top: bar.offsetTop - 70, behavior: 'smooth' });
+    if (state.view === 'map') jumpToCourse(id);
+    else if (id !== 'all') window.scrollTo({ top: bar.offsetTop - 70, behavior: 'smooth' });
   }
 
   const shelf = h('div', { class: 'hub-shelf' });
   const content = h('div', {});
-  const wrap = h('main', { class: 'hub-wrap' }, heroEl, bar, shelf, content,
-    h('footer', { class: 'hub-foot-note', html: `<span>AP Math 실험실 2.0 미리보기 · 카탈로그 ${esc(CAT.version)} · 실험실 ${total}개</span><span><a href="./compare.html">기존 ↔ 2.0 비교</a> · <a href="../teacher-hub.html">이전 허브</a> · <a href="../index.html">AP Math Universe</a> · <a href="./README.md">설계·이식 안내</a></span>` }));
+  const wrap = h('main', { class: 'hub-wrap' }, introEl, bar, shelf, content,
+    h('footer', { class: 'hub-foot-note', html: `<span>AP Math 실험실 2.0 미리보기 · 카탈로그 ${esc(CAT.version)} · 실험실 ${total}개</span><span><a href="./compare.html">기존 ↔ 2.0 비교</a> · <a href="../teacher-hub.html">이전 실험실 목록</a> · <a href="../index.html">AP Math Universe</a> · <a href="./README.md">설계·이식 안내</a></span>` }));
   document.body.append(h('div', { class: 'hub' }, trail, top, wrap));
 
   /* ---------- 렌더 ---------- */
   function renderCourses(list) {
+    const keep = courseBar.scrollLeft; // 칩 줄을 옆으로 밀어 둔 위치를 다시 그려도 유지
     courseBar.innerHTML = '';
     const counts = {};
     list.forEach((l) => (counts[l.course] = (counts[l.course] || 0) + 1));
@@ -159,6 +119,11 @@
     };
     courseBar.append(mk('all', '전체', list.length, 'var(--accent)'));
     CAT.courses.forEach((c) => courseBar.append(mk(c.id, c.name, counts[c.id] || 0, hue(c.hue))));
+    courseBar.scrollLeft = keep;
+    const on = courseBar.querySelector('[aria-pressed="true"]');
+    if (on && (on.offsetLeft < courseBar.scrollLeft || on.offsetLeft + on.offsetWidth > courseBar.scrollLeft + courseBar.clientWidth)) {
+      courseBar.scrollLeft = on.offsetLeft - (courseBar.clientWidth - on.offsetWidth) / 2;
+    }
   }
   function miniLink(entry, lab, sub) {
     const c = lab ? COURSE[lab.course] : null;
@@ -249,81 +214,239 @@
     if (!shown) content.append(h('div', { class: 'hub-empty', html: `<b>찾는 실험실이 없습니다</b>다른 낱말(예: 접선, 넓이, 벡터, 정다면체)로 검색해 보세요.` }));
   }
 
-  /* ---------- 개념 노선도 ---------- */
-  function renderMap(list) {
-    content.innerHTML = '';
-    const visible = new Set(list.map((l) => l.id));
-    const rows = ['shape', 'trig', 'circle', 'coord', 'space', 'func', 'calc', 'seq'];
-    const strandOf = Object.fromEntries(CAT.strands.map((s) => [s.id, s]));
-    const SP = 100, ROW = 74, LEFT = 124, TOPY = 84, GAP = 22;
-    // 열 너비: 과정별로 한 노선에 놓이는 역 수의 최댓값
-    const colW = {};
-    CAT.courses.forEach((c) => {
-      let mx = 1;
-      rows.forEach((r) => { mx = Math.max(mx, CAT.labs.filter((l) => l.course === c.id && l.strand === r).length); });
-      colW[c.id] = mx * SP;
-    });
-    const colX = {};
-    let x = LEFT;
-    CAT.courses.forEach((c) => { colX[c.id] = x; x += colW[c.id] + GAP; });
-    const W = x + 20, H = TOPY + rows.length * ROW + 30;
+  /* ---------- 개념 노선도 ----------
+     - 넓은 화면(≥1140px): 학년·과목이 가로 칸, 노선이 가로줄. 가로 스크롤 없이 한 화면에 담습니다.
+     - 좁은 화면: 위에서 아래로 학년이 올라가고 노선이 세로줄로 나란히 달립니다(아래로만 스크롤).
+     - 과정 칩은 노선도를 어둡게 하지 않고, 그 과정 칸(구역)으로 부드럽게 이동하며 잠깐 강조합니다.
+     - 검색은 맞는 역만 또렷하게, 나머지는 흐리게 보여 줍니다. */
+  // 노선 순서: 환승역이 늘 이웃 노선과 만나도록 좌표·벡터를 원·곡선과 공간 사이에 둡니다.
+  const LANE_ORDER = ['shape', 'trig', 'circle', 'coord', 'space', 'func', 'calc', 'seq'];
+  const STRAND = Object.fromEntries(CAT.strands.map((s) => [s.id, s]));
+  const LANES = LANE_ORDER.filter((id) => STRAND[id]).concat(CAT.strands.map((s) => s.id).filter((id) => !LANE_ORDER.includes(id)));
+  const LANE_AT = Object.fromEntries(LANES.map((id, i) => [id, i]));
+  const STRANDS_AT = {};
+  CAT.strands.forEach((s) => s.stations.forEach((id) => (STRANDS_AT[id] = STRANDS_AT[id] || []).push(s.id)));
+  const ALL_V2 = CAT.labs.every((l) => l.next);
+  const MAP_LABS = CAT.labs.filter((l) => Object.prototype.hasOwnProperty.call(LANE_AT, l.strand) && COURSE[l.course]);
+  const wideMQ = window.matchMedia('(min-width: 1140px)');
+  const shortLevel = (c) => c.level.replace('고등학교 ', '고').replace('중학교 ', '중').replace('학년', '');
+  const stripLine = (n) => n.replace(/\s*노선$/, '');
+  const labelOf = (l) => l.short || l.title;
+  const rnd = (v) => Math.round(v * 10) / 10;
+
+  // 글자 너비 어림값(한글은 1em, 가운뎃점·공백은 좁게)
+  function textW(s, fs) {
+    let w = 0;
+    for (const ch of s) w += /[가-힣]/.test(ch) ? 1 : ch === '·' ? 0.45 : ch === ' ' ? 0.35 : /[A-Za-z0-9]/.test(ch) ? 0.62 : 0.8;
+    return w * fs;
+  }
+  // 칸에 안 들어가는 이름은 가운뎃점·띄어쓰기에서 두 줄로 나눕니다.
+  function wrapLabel(s, maxW, fs) {
+    if (textW(s, fs) <= maxW) return [s];
+    const cands = [];
+    for (let i = 1; i < s.length; i++) {
+      if (s[i - 1] === '·') cands.push([s.slice(0, i), s.slice(i)]);
+      else if (s[i] === ' ') cands.push([s.slice(0, i), s.slice(i + 1)]);
+    }
+    if (!cands.length) { const m = Math.ceil(s.length / 2); cands.push([s.slice(0, m), s.slice(m)]); }
+    const cost = (p) => Math.max(textW(p[0], fs), textW(p[1], fs));
+    cands.sort((a, b) => cost(a) - cost(b));
+    return cands[0];
+  }
+  const labsAt = (cid, lane) => MAP_LABS.filter((l) => l.course === cid && l.strand === lane).sort((a, b) => a.order - b.order);
+  const lanesOf = (id) => STRANDS_AT[id] || [];
+
+  /* 넓은 화면: 과정 = 가로 칸, 노선 = 가로줄 */
+  function mapWide(visible, searching, pulse) {
+    const DW = 1200, NAMEW = 76, PADR = 6, CGAP = 12, ROW = 84, TOPY = 76, FS = 12, LH = 13.5;
+    const cs = CAT.courses;
+    const slots = cs.map((c) => Math.max(1, ...LANES.map((r) => labsAt(c.id, r).length)));
+    const SP = (DW - NAMEW - PADR - CGAP * (cs.length - 1)) / slots.reduce((a, b) => a + b, 0);
+    const colX = {}, colW = {};
+    let cx0 = NAMEW;
+    cs.forEach((c, i) => { colX[c.id] = cx0; colW[c.id] = slots[i] * SP; cx0 += colW[c.id] + CGAP; });
+    const H = TOPY + LANES.length * ROW + 14;
     const pos = {};
-    CAT.courses.forEach((c) => rows.forEach((r, ri) => {
-      const labs = CAT.labs.filter((l) => l.course === c.id && l.strand === r).sort((a, b) => a.order - b.order);
-      const w = colW[c.id];
-      const start = colX[c.id] + (w - labs.length * SP) / 2;
-      labs.forEach((l, i) => (pos[l.id] = { x: start + (i + 0.5) * SP, y: TOPY + ri * ROW + ROW / 2 }));
+    cs.forEach((c) => LANES.forEach((r, ri) => {
+      const labs = labsAt(c.id, r);
+      const n = labs.length;
+      if (!n) return;
+      const pitch = Math.min(colW[c.id] / n, 2 * SP);
+      const x0 = colX[c.id] + (colW[c.id] - pitch * n) / 2 + pitch / 2;
+      const stagger = n > 1 && pitch < 1.7 * SP;
+      labs.forEach((l, i) => {
+        pos[l.id] = { x: x0 + i * pitch, y: TOPY + ri * ROW + ROW / 2, row: ri, side: stagger && i % 2 ? 't' : 'b', w: (n > 1 ? (stagger ? 2 * pitch : pitch) : 2 * SP) - 6 };
+      });
     }));
-    const lineCount = {};
-    CAT.strands.forEach((s) => s.stations.forEach((id) => (lineCount[id] = (lineCount[id] || 0) + 1)));
-    let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="개념 노선도: 학년이 올라가며 개념이 이어지는 길">`;
-    // 열 머리
-    CAT.courses.forEach((c, i) => {
+    // 노선의 한 구간이 지나가는 점들(같은 줄이면 직선, 줄이 바뀌면 45° 안팎으로 꺾어 이웃 줄로)
+    function segPts(a, b, own) {
+      if (Math.abs(a.y - b.y) < 1) return [b];
+      const dy = Math.abs(b.y - a.y), dx = Math.abs(b.x - a.x), dir = Math.sign(b.x - a.x) || 1;
+      const step = Math.min(dy, dx * 0.6);
+      // 다른 노선의 환승역에서 내 줄로 들어올 때는 환승역에서 바로 꺾고, 내 줄을 달리다 환승역으로 갈 때는 끝에서 꺾습니다.
+      if (a.row !== own && b.row === own) return [{ x: a.x + dir * step, y: b.y }, b];
+      return [{ x: b.x - dir * step, y: a.y }, b];
+    }
+    const blocked = {};
+    const block = (id, st, other) => {
+      if (Math.abs(other.y - st.y) < 1) return;
+      (blocked[id] = blocked[id] || {})[other.y < st.y ? 't' : 'b'] = true;
+    };
+    let svg = `<svg viewBox="0 0 ${DW} ${H}" width="100%" role="group" aria-label="개념 노선도: 학년이 올라가며 개념이 이어지는 길" preserveAspectRatio="xMidYMin meet">`;
+    // 선택한 과정 칸 강조
+    if (state.course !== 'all' && colX[state.course] != null) {
+      const c = COURSE[state.course];
+      svg += `<rect class="band${pulse ? ' pulse' : ''}" x="${rnd(colX[c.id] - CGAP / 2)}" y="${TOPY - 40}" width="${rnd(colW[c.id] + CGAP)}" height="${H - TOPY + 30}" rx="12" fill="${hue(c.hue)}"/>`;
+    }
+    cs.forEach((c, i) => {
       const cx = colX[c.id] + colW[c.id] / 2;
-      if (i) svg += `<line x1="${colX[c.id] - GAP / 2}" y1="${TOPY - 14}" x2="${colX[c.id] - GAP / 2}" y2="${H - 16}" stroke="var(--line)" stroke-dasharray="3 5"/>`;
-      svg += `<text class="col-h" x="${cx}" y="40" text-anchor="middle" style="fill:${hue(c.hue)}">${esc(c.name)}</text><text class="col-s" x="${cx}" y="58" text-anchor="middle">${esc(c.level.replace('고등학교 ', '고').replace('중학교 ', '중').replace('학년', ''))}</text>`;
+      if (i) svg += `<line x1="${rnd(colX[c.id] - CGAP / 2)}" y1="${TOPY - 12}" x2="${rnd(colX[c.id] - CGAP / 2)}" y2="${H - 8}" stroke="var(--line)" stroke-dasharray="3 5"/>`;
+      svg += `<text class="col-h" x="${rnd(cx)}" y="34" text-anchor="middle" style="fill:${hue(c.hue)}">${esc(c.name)}</text><text class="col-s" x="${rnd(cx)}" y="52" text-anchor="middle">${esc(shortLevel(c))}</text>`;
     });
-    // 노선
-    rows.forEach((r, ri) => {
-      const s = strandOf[r];
-      const y = TOPY + ri * ROW + ROW / 2;
-      svg += `<text class="ln-name" x="16" y="${y + 4}" style="fill:${hue(s.hue)}">${esc(s.name)}</text>`;
+    LANES.forEach((r, ri) => {
+      const s = STRAND[r];
+      svg += `<text class="ln-name" x="6" y="${TOPY + ri * ROW + ROW / 2 + 4}" style="fill:${hue(s.hue)}">${esc(stripLine(s.name))}</text>`;
     });
-    CAT.strands.forEach((s) => {
+    // 노선(한 줄로 이어짐)
+    LANES.forEach((r) => {
+      const s = STRAND[r];
       const pts = s.stations.map((id) => pos[id]).filter(Boolean);
       if (pts.length < 2) return;
-      let d = `M${pts[0].x} ${pts[0].y}`;
+      let d = `M${rnd(pts[0].x)} ${rnd(pts[0].y)}`;
       for (let i = 1; i < pts.length; i++) {
         const a = pts[i - 1], b = pts[i];
-        if (Math.abs(a.y - b.y) < 1) d += ` L${b.x} ${b.y}`;
-        else {
-          const dy = Math.abs(b.y - a.y);
-          const mx = b.x - Math.sign(b.x - a.x || 1) * Math.min(dy, Math.abs(b.x - a.x) * 0.6);
-          d += ` L${mx} ${a.y} L${b.x} ${b.y}`;
-        }
+        const seg = segPts(a, b, LANE_AT[r]);
+        seg.forEach((p) => (d += ` L${rnd(p.x)} ${rnd(p.y)}`));
+        const before = seg.length > 1 ? seg[seg.length - 2] : a;
+        const after = seg[0];
+        const idA = s.stations[i - 1], idB = s.stations[i];
+        block(idA, a, after);
+        block(idB, b, before);
       }
-      svg += `<path d="${d}" fill="none" stroke="${hue(s.hue)}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="${list.length === CAT.labs.length ? 0.92 : 0.35}"/>`;
+      svg += `<path d="${d}" fill="none" stroke="${hue(s.hue)}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="${searching ? 0.3 : 0.92}"/>`;
     });
     // 역
-    CAT.labs.forEach((l) => {
+    MAP_LABS.forEach((l) => {
       const p = pos[l.id];
       if (!p) return;
-      const s = strandOf[l.strand];
-      const inter = lineCount[l.id] > 1;
+      const s = STRAND[l.strand];
+      const inter = lanesOf(l.id).length > 1;
       const on = visible.has(l.id);
-      const label = l.short || l.title;
-      svg += `<a href="${esc(hrefOf(l))}" data-id="${esc(l.id)}" aria-label="${esc(l.title)}" opacity="${on ? 1 : 0.28}">`;
-      svg += `<circle class="st" cx="${p.x}" cy="${p.y}" r="${inter ? 11 : 9}" fill="${inter ? 'var(--m-ink)' : 'var(--stage)'}" stroke="${inter ? 'var(--stage)' : hue(s.hue)}" stroke-width="${inter ? 4 : 4}"/>`;
-      if (l.next) svg += `<circle cx="${p.x}" cy="${p.y}" r="${inter ? 16 : 14}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>`;
-      svg += `<text class="st-name" x="${p.x}" y="${p.y + 30}" text-anchor="middle">${esc(label)}</text></a>`;
+      const R = inter ? 10 : 8;
+      const bl = blocked[l.id] || {};
+      let side = p.side;
+      if (bl[side]) side = side === 'b' ? 't' : 'b';
+      if (bl[side]) side = 'r';
+      const lines = wrapLabel(labelOf(l), side === 'r' ? 80 : p.w, FS);
+      let tx = p.x, anchor = 'middle', y0;
+      if (side === 'b') y0 = p.y + R + 14;
+      else if (side === 't') y0 = p.y - R - 8 - (lines.length - 1) * LH;
+      else { tx = p.x + R + 7; anchor = 'start'; y0 = p.y + 4 - (lines.length - 1) * LH / 2; }
+      svg += `<a href="${esc(hrefOf(l))}" data-id="${esc(l.id)}" data-hit="${on ? 1 : 0}" aria-label="${esc(l.title)}" opacity="${on ? 1 : 0.28}">`;
+      svg += `<circle class="hit" cx="${rnd(p.x)}" cy="${rnd(p.y)}" r="17"/>`;
+      svg += `<circle class="st" cx="${rnd(p.x)}" cy="${rnd(p.y)}" r="${R}" fill="${inter ? 'var(--m-ink)' : 'var(--stage)'}" stroke="${inter ? 'var(--stage)' : hue(s.hue)}" stroke-width="4"/>`;
+      if (l.next && !ALL_V2) svg += `<circle cx="${rnd(p.x)}" cy="${rnd(p.y)}" r="${R + 5}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>`;
+      svg += `<text class="st-name" text-anchor="${anchor}" x="${rnd(tx)}" y="${rnd(y0)}">${lines.map((t, i) => `<tspan x="${rnd(tx)}" dy="${i ? LH : 0}">${esc(t)}</tspan>`).join('')}</text></a>`;
     });
     svg += '</svg>';
-    const box = h('div', { class: 'hub-metro' },
-      h('div', { class: 'legend', html: CAT.strands.map((s) => `<span style="--c:${hue(s.hue)}"><i></i>${esc(s.name)}</span>`).join('') + `<span><svg width="18" height="18"><circle cx="9" cy="9" r="6" fill="var(--m-ink)" stroke="var(--stage)" stroke-width="3"/></svg>환승역(두 노선이 만나는 개념)</span><span><svg width="18" height="18"><circle cx="9" cy="9" r="7" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/></svg>2.0 셸 적용</span>` }),
-      h('div', { html: svg }),
-      h('div', { class: 'note', text: '왼쪽(중1)에서 오른쪽(고등)으로 갈수록 같은 개념이 깊어집니다. 역을 누르면 실험실이 열립니다. 검색하면 해당 역만 또렷하게 표시됩니다.' }));
+    return { svg, anchorOf: (cid) => ({ x: colX[cid], w: colW[cid] }) };
+  }
+
+  /* 좁은 화면: 과정 = 위→아래 구역, 노선 = 나란한 세로줄 */
+  function mapTall(visible, searching, pulse) {
+    const VW = 360, LX0 = 22, LS = 19, TX = 178, RH = 40, BH = 42, FS = 13.5;
+    const laneX = (lane) => LX0 + LANE_AT[lane] * LS;
+    const bands = [];
+    const pos = {};
+    let y = 4;
+    CAT.courses.forEach((c) => {
+      const labs = MAP_LABS.filter((l) => l.course === c.id).sort((a, b) => LANE_AT[a.strand] - LANE_AT[b.strand] || a.order - b.order);
+      if (!labs.length) return;
+      bands.push({ c, y, labs });
+      y += BH;
+      labs.forEach((l, i) => (pos[l.id] = { y: y + i * RH + RH / 2 }));
+      y += labs.length * RH + 6;
+    });
+    const H = y + 4;
+    let svg = `<svg viewBox="0 0 ${VW} ${H}" width="100%" role="group" aria-label="개념 노선도: 위에서 아래로 학년이 올라가며 개념이 이어지는 길" preserveAspectRatio="xMidYMin meet">`;
+    // 과정 구역 머리글 + 선택 강조
+    bands.forEach(({ c, y: by, labs }, i) => {
+      const bh = BH + labs.length * RH + 6;
+      if (state.course === c.id) svg += `<rect class="band${pulse ? ' pulse' : ''}" x="2" y="${by}" width="${VW - 4}" height="${bh}" rx="12" fill="${hue(c.hue)}"/>`;
+      if (i) svg += `<line x1="${TX - 8}" y1="${by + 1}" x2="${VW - 10}" y2="${by + 1}" stroke="var(--line)" stroke-dasharray="3 5"/>`;
+      svg += `<g data-course="${esc(c.id)}"><text class="col-h" x="${TX}" y="${by + 27}" style="fill:${hue(c.hue)}">${esc(c.name)}</text><text class="col-s" x="${TX + textW(c.name, 13) + 10}" y="${by + 27}">${esc(c.level)}</text></g>`;
+    });
+    // 노선: 역이 있는 첫 줄부터 마지막 줄까지 세로로 한 줄
+    LANES.forEach((r) => {
+      const s = STRAND[r];
+      const ys = s.stations.map((id) => pos[id] && pos[id].y).filter((v) => v != null);
+      if (ys.length < 2) return;
+      svg += `<line x1="${laneX(r)}" y1="${Math.min(...ys)}" x2="${laneX(r)}" y2="${Math.max(...ys)}" stroke="${hue(s.hue)}" stroke-width="6" stroke-linecap="round" opacity="${searching ? 0.3 : 0.92}"/>`;
+    });
+    // 역(한 줄 = 한 역, 줄 전체가 눌림 영역)
+    bands.forEach(({ labs }) => labs.forEach((l) => {
+      const p = pos[l.id];
+      const on = visible.has(l.id);
+      const own = lanesOf(l.id).length ? lanesOf(l.id) : [l.strand];
+      const xs = own.map(laneX);
+      const inter = own.length > 1;
+      svg += `<a href="${esc(hrefOf(l))}" data-id="${esc(l.id)}" data-hit="${on ? 1 : 0}" aria-label="${esc(l.title)}" opacity="${on ? 1 : 0.28}">`;
+      svg += `<rect class="hit" x="2" y="${p.y - RH / 2}" width="${VW - 4}" height="${RH}" rx="10"/>`;
+      if (inter) {
+        svg += `<rect x="${Math.min(...xs) - 10}" y="${p.y - 10}" width="${Math.max(...xs) - Math.min(...xs) + 20}" height="20" rx="10" fill="var(--stage)" stroke="var(--m-ink)" stroke-width="3"/>`;
+        own.forEach((sid) => (svg += `<circle cx="${laneX(sid)}" cy="${p.y}" r="4.5" fill="${hue(STRAND[sid].hue)}"/>`));
+      } else {
+        svg += `<circle class="st" cx="${laneX(l.strand)}" cy="${p.y}" r="7" fill="var(--stage)" stroke="${hue(STRAND[l.strand].hue)}" stroke-width="4"/>`;
+      }
+      if (l.next && !ALL_V2) svg += `<circle cx="${laneX(l.strand)}" cy="${p.y}" r="${inter ? 13 : 11}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>`;
+      svg += `<text class="st-name" x="${TX}" y="${p.y + 4.5}">${esc(labelOf(l))}</text></a>`;
+    }));
+    svg += '</svg>';
+    return { svg };
+  }
+
+  // 과정 칩을 누르면 노선도가 그 과정으로 이동합니다(좁은 화면: 해당 구역으로 스크롤, 넓은 화면: 한 화면에 모두 보이므로 노선도 맨 위로).
+  let pulseCourse = null;
+  function jumpToCourse(id) {
+    if (state.view !== 'map') return;
+    const box = content.querySelector('.hub-metro');
+    if (!box) return;
+    const target = id !== 'all' && !wideMQ.matches ? box.querySelector(`[data-course="${id}"]`) : null;
+    const ref = target || box;
+    const off = top.getBoundingClientRect().height + bar.offsetHeight + 10; // 위에 고정된 머리글·과정 칩 줄 아래로 맞춥니다.
+    const y = ref.getBoundingClientRect().top + window.scrollY - off - (target ? 6 : 0);
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+  }
+
+  function renderMap(list, q) {
+    content.innerHTML = '';
+    const visible = new Set(list.map((l) => l.id));
+    const wide = wideMQ.matches;
+    const pulse = pulseCourse === state.course && state.course !== 'all';
+    pulseCourse = null;
+    const { svg } = wide ? mapWide(visible, !!q, pulse) : mapTall(visible, !!q, pulse);
+    const lanes = wide ? '' : LANES.map((id) => `<span style="--c:${hue(STRAND[id].hue)}"><i></i>${esc(stripLine(STRAND[id].name))}</span>`).join('');
+    const xfer = wide
+      ? '<svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="var(--m-ink)" stroke="var(--stage)" stroke-width="3"/></svg>'
+      : '<svg width="30" height="18" aria-hidden="true"><rect x="2" y="3" width="26" height="12" rx="6" fill="var(--stage)" stroke="var(--m-ink)" stroke-width="2.5"/><circle cx="10" cy="9" r="2.8" fill="var(--h-teal)"/><circle cx="20" cy="9" r="2.8" fill="var(--h-gold)"/></svg>';
+    const qNote = q ? h('div', { class: 'q-note', html: list.length ? `‘${esc(q)}’에 맞는 <b>${list.length}개</b> 역이 또렷하게 표시됩니다.` : `‘${esc(q)}’에 맞는 실험실이 없습니다. 다른 낱말(예: 접선, 넓이, 벡터, 정다면체)로 검색해 보세요.` }) : null;
+    const box = h('div', { class: 'hub-metro ' + (wide ? 'is-wide' : 'is-tall') },
+      qNote,
+      h('div', { class: 'legend', html: lanes + `<span>${xfer}환승역(두 노선이 만나는 개념)</span>` + (ALL_V2 ? '' : '<span><svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/></svg>2.0 화면 적용</span>') }),
+      h('div', { class: 'metro-body', html: svg }),
+      h('div', { class: 'note', text: '중1에서 고등학교 과목으로 학년이 올라갈수록 같은 개념이 깊어집니다. 역을 누르면 실험실이 열립니다. 검색하면 해당 역만 또렷하게 표시됩니다.' }));
     box.querySelectorAll('a[data-id]').forEach((a) => a.addEventListener('click', () => remember(LAB[a.dataset.id])));
     content.append(box);
+    // 좁은 화면에서 검색하면 맞는 첫 역이 보이는 곳까지 내려 줍니다.
+    if (q && !wide) {
+      const first = box.querySelector('a[data-hit="1"]');
+      if (first) {
+        const r = first.getBoundingClientRect();
+        const topH = top.getBoundingClientRect().height + bar.offsetHeight + 8;
+        if (r.top < topH || r.bottom > window.innerHeight - 8) window.scrollTo({ top: Math.max(0, window.scrollY + r.top - topH - 90), behavior: 'smooth' });
+      }
+    }
   }
 
   function render() {
@@ -331,8 +454,8 @@
     const list = CAT.labs.filter((l) => matches(l, q));
     renderCourses(list);
     renderShelf();
-    if (state.view === 'map') renderMap(state.course === 'all' ? list : list.filter((l) => l.course === state.course));
-    else renderList(list);
+    // 노선도에서는 지도가 먼저, 내 수업·최근 실험실은 그 아래에 둡니다.
+    if (state.view === 'map') { content.after(shelf); renderMap(list, q); } else { content.before(shelf); renderList(list); }
   }
 
   let qt = 0;
@@ -346,6 +469,6 @@
   });
   window.addEventListener('hashchange', () => { const id = location.hash.slice(1); if (COURSE[id] || id === '') { state.course = id || 'all'; render(); } });
 
+  try { wideMQ.addEventListener('change', () => { if (state.view === 'map') render(); }); } catch (e) {}
   render();
-  hero = startHero();
 })();

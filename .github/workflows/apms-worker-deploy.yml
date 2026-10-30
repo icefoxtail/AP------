@@ -1,0 +1,116 @@
+name: APMS Worker Deploy
+
+# Automatic, test-gated deploy of the APMS Cloudflare Worker (ap-math-os-v2612, apmath/worker-backup/worker).
+# Owner decision 2026-10-30: the owner stored a Cloudflare API token as the repository secret
+# CLOUDFLARE_API_TOKEN so the formerly hand-deployed Worker ships from main.
+#
+# Triggers: manual dispatch (main only) and pushes to main that change the Worker or a shared module wrangler
+# bundles into it. The path list below must equal tools/ci/apms-worker-bundle-paths.txt plus this file;
+# tests/apms-worker-deploy.test.mjs recomputes the bundled modules from the Worker's real imports (esbuild) and
+# fails on drift.
+#
+# Gate order: credentials present -> npm ci -> node --check + Worker runtime/unit tests -> wrangler deploy
+# --dry-run -> wrangler deploy. A failing step stops the job, so a Worker that fails its tests is never uploaded.
+#
+# Account: the Worker config carries no account_id, so CLOUDFLARE_ACCOUNT_ID comes from the secret R2_ACCOUNT_ID.
+# ASSUMPTION (documented, not verified from here): the R2 account is the same Cloudflare account that owns the
+# Worker (wrangler.jsonc vars.CLOUDFLARE_ACCOUNT_ID names the same account).
+#
+# Scope: only `wrangler deploy`. No D1 migrations or SQL are ever run here (apply schema changes deliberately,
+# by hand), and nothing under workers/wangji-* is touched. `--keep-vars` keeps variables that were set in the
+# Cloudflare dashboard (for example ALLOWED_ORIGINS); secrets are never deleted by a deploy.
+#
+# Ordering with Pages: archive-pages-release.yml waits for a successful run of this workflow when its release
+# range changes a Worker-bundled file (tools/ci/apms-worker-deploy-gate.mjs, step worker_order).
+#
+# First real deploy - token permissions (account-scoped token; NOT verified until the first run on main):
+# Workers Scripts: Edit (deploy, cron triggers, Workflows registration), D1: Edit (DB binding), Workers R2
+# Storage: Edit (three bucket bindings), Browser Rendering: Edit (BROWSER binding), Account Settings: Read.
+# If the first run fails with an authentication/permission error (Cloudflare error 10000/9109 or similar), add
+# the permission named in the log to the token and re-run this workflow with "Run workflow" on main.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/apms-worker-deploy.yml"
+      - "apmath/worker-backup/**"
+      - "archive/archive2-canonical.js"
+      - "archive/archive2-core.js"
+      - "archive/archive2-history.js"
+      - "archive/archive2-output-contract.js"
+      - "archive/archive2-output.js"
+      - "archive/mixer-selector.js"
+
+permissions:
+  contents: read
+
+# One deploy at a time, never cancelled mid-flight (a cancelled `wrangler deploy` could leave the Worker half
+# updated). GitHub keeps at most one pending run and replaces older pending runs with the newer one, which
+# contains their changes; the Pages ordering gate accepts any successful run of a descendant SHA.
+concurrency:
+  group: apms-worker-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Test and deploy the APMS Worker
+    # Production deploys come from main only (a manual dispatch on another branch must not deploy).
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Require Cloudflare credentials (fail closed)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+        run: |
+          missing=()
+          [[ -n "${CLOUDFLARE_API_TOKEN:-}" ]] || missing+=("CLOUDFLARE_API_TOKEN")
+          [[ -n "${CLOUDFLARE_ACCOUNT_ID:-}" ]] || missing+=("R2_ACCOUNT_ID")
+          if ((${#missing[@]})); then
+            echo "::error title=APMS Worker deploy blocked::missing GitHub Actions secret(s): ${missing[*]}. Add them under Settings > Secrets and variables > Actions, then re-run this workflow. Nothing was deployed."
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apmath/worker-backup/worker/package-lock.json
+
+      - name: Install Worker dependencies
+        run: npm ci --prefix apmath/worker-backup/worker --no-audit --no-fund
+
+      - name: Worker test gate (syntax + miniflare/workerd runtime and unit tests)
+        timeout-minutes: 15
+        run: bash tools/ci/apms-worker-test-gate.sh
+
+      - name: Bundle check (wrangler deploy --dry-run)
+        working-directory: apmath/worker-backup/worker
+        run: npx wrangler deploy --dry-run
+
+      - name: Deploy the Worker (wrangler deploy)
+        id: wrangler_deploy
+        timeout-minutes: 10
+        working-directory: apmath/worker-backup/worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/wrangler-output.ndjson"
+          : > "$out"
+          WRANGLER_OUTPUT_FILE_PATH="$out" npx wrangler deploy --keep-vars \
+            --tag "${GITHUB_SHA::12}" --message "apms-worker-deploy ${GITHUB_SHA::12} run ${GITHUB_RUN_ID}" \
+            2>&1 | tee "$RUNNER_TEMP/wrangler-deploy.log"
+
+      - name: Record the deployed version in the job summary
+        if: success()
+        run: node tools/ci/apms-worker-deploy-summary.mjs "$RUNNER_TEMP/wrangler-output.ndjson" "$RUNNER_TEMP/wrangler-deploy.log" "$GITHUB_STEP_SUMMARY"

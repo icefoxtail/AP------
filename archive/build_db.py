@@ -11,6 +11,8 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", line_bufferin
 EXAMS_DIR = "exams"
 OUTPUT_FILE = "db.js"
 PRODUCTION_EXAM_ROOTS = {"original", "similar", "types"}
+TEXTBOOK_ROOT = "textbooks"
+TEXTBOOK_MANIFEST_RELPATH = "data/textbook-source-manifest-v1.json"
 
 
 # =========================================================
@@ -1575,6 +1577,105 @@ def normalize_meta_file_path(meta, rel_path):
 
 
 # =========================================================
+# 5b. 교과서(textbooks/) 등록
+# =========================================================
+# Textbook paths carry no grade segment, so registration is driven by a reviewed
+# manifest (archive/data/textbook-source-manifest-v1.json): folder -> publisher /
+# subject / grade / unit-key vocabulary. archive2-canonical.js embeds the same
+# folder -> grade table (tests/archive2-textbook-manifest.test.js keeps them equal).
+# Rows already in db.js are preserved verbatim; only unregistered files get a new,
+# deterministic row. Question content is never read for anything but the title,
+# the question count and the consistency checks below.
+def load_textbook_manifest(archive_dir):
+    path = Path(archive_dir) / TEXTBOOK_MANIFEST_RELPATH
+    manifest = json.loads(read_text_file(path))
+    if manifest.get("schemaVersion") != "archive-textbook-source-manifest-v1":
+        raise ValueError(f"unsupported textbook manifest schema: {manifest.get('schemaVersion')}")
+    for folder, cfg in manifest.get("folders", {}).items():
+        for field in ("publisher", "subject", "questionStandardCourse", "grade", "curriculum", "unitKeys"):
+            if not str(cfg.get(field, "")).strip():
+                raise ValueError(f"textbook manifest folder {folder} lacks {field}")
+        if cfg["unitKeys"] not in ("profile", "chapter"):
+            raise ValueError(f"textbook manifest folder {folder} has unknown unitKeys {cfg['unitKeys']}")
+    return manifest
+
+
+def collect_textbook_js_files(exams_path, manifest):
+    registered_folders = manifest.get("folders", {})
+    duplicate_folders = manifest.get("unregisteredDuplicateFolders", {})
+    files, unmanifested, duplicates = [], [], []
+    for path in sorted((Path(exams_path) / TEXTBOOK_ROOT).rglob("*.js")):
+        if not path.is_file():
+            continue
+        rel_path = normalize_slash(path.relative_to(exams_path))
+        folder = rel_path.split("/")[1] if rel_path.count("/") >= 2 else ""
+        if folder in duplicate_folders:
+            duplicates.append(rel_path)
+        elif folder in registered_folders:
+            files.append({"abs_path": path, "rel_path": rel_path, "folder": folder})
+        else:
+            unmanifested.append(rel_path)
+    return files, unmanifested, duplicates
+
+
+def read_js_window_string(text, name):
+    match = re.search(r"window\." + re.escape(name) + r'\s*=\s*("(?:[^"\\\n]|\\.)*")', text)
+    if not match:
+        return ""
+    try:
+        return str(json.loads(match.group(1))).strip()
+    except ValueError:
+        return ""
+
+
+def check_textbook_consistency(file_info, cfg, text):
+    """Reject a new textbook row whose own content disagrees with the reviewed folder entry."""
+    problems = []
+    stem = Path(file_info["rel_path"]).stem
+    suffix = re.search(r"_([중고][123])$", stem)
+    if suffix and suffix.group(1) != cfg["grade"]:
+        problems.append(f"file name grade {suffix.group(1)} != manifest grade {cfg['grade']}")
+    # `level` is a school grade in chapter-keyed sets; other sets use it for a difficulty label.
+    levels = {v for v in re.findall(r"[\"']level[\"']\s*:\s*[\"']([^\"']+)[\"']", text)
+              if re.fullmatch(r"[중고][123]", v)}
+    if levels and levels != {cfg["grade"]}:
+        problems.append(f"question level {sorted(levels)} != manifest grade {cfg['grade']}")
+    courses = set(re.findall(r"[\"']standardCourse[\"']\s*:\s*[\"']([^\"']+)[\"']", text))
+    if cfg["unitKeys"] == "chapter" and courses and courses != {cfg["questionStandardCourse"]}:
+        problems.append(f"question standardCourse {sorted(courses)} != manifest {cfg['questionStandardCourse']}")
+    return problems
+
+
+def build_textbook_row(file_info, cfg):
+    filepath = file_info["abs_path"]
+    text = read_text_file(filepath)
+    problems = check_textbook_consistency(file_info, cfg, text)
+    if problems:
+        raise ValueError(f"textbook registration refused for {file_info['rel_path']}: " + "; ".join(problems))
+    qcount = extract_qcount_from_js(filepath)
+    if qcount == 0:
+        raise ValueError(f"textbook qCount extraction failed: {file_info['rel_path']}")
+    topic = read_js_window_string(text, "examTitle") or Path(file_info["rel_path"]).stem.replace("_", " ")
+    row = {
+        "file": file_info["rel_path"],
+        "school": cfg["publisher"],
+        "topic": topic,
+        "grade": cfg["grade"],
+        "examType": "textbook",
+        "subject": cfg["subject"],
+        "contentType": "교과서",
+        "qCount": qcount,
+    }
+    # Chapter-numbered keys (H22-C1-0N ...) are not unit-profile keys, so no profile
+    # unit range can be derived from them; the row carries only the course.
+    if cfg["unitKeys"] == "profile":
+        range_meta = extract_range_meta_from_js(filepath, {"grade": cfg["grade"], "topic": topic})
+        row.update({k: v for k, v in range_meta.items() if not k.startswith("_") and k != "primaryStandardCourse"})
+    row["primaryStandardCourse"] = cfg["subject"]
+    return row
+
+
+# =========================================================
 # 6. 정렬/검증/빌드
 # =========================================================
 def sort_key(item):
@@ -1880,6 +1981,18 @@ def build_engine_db():
 
     merged_exams.extend(passthrough_previous)
     preserved_count += len(passthrough_previous)
+
+    textbook_manifest = load_textbook_manifest(archive_dir)
+    textbook_files, textbook_unmanifested, textbook_duplicates = collect_textbook_js_files(
+        exams_path, textbook_manifest
+    )
+    textbook_new = 0
+    for file_info in textbook_files:
+        if file_info["rel_path"] in previous_by_file:
+            continue
+        merged_exams.append(build_textbook_row(file_info, textbook_manifest["folders"][file_info["folder"]]))
+        textbook_new += 1
+    new_count += textbook_new
     exams_list = sorted(merged_exams, key=sort_key)
 
     db_content = {"exams": exams_list}
@@ -1912,6 +2025,14 @@ def build_engine_db():
     print("✅ 하위 폴더 스캔: original / similar / types 포함")
     print("✅ 유형 폴더 학년 구분 대응: types/high/h1~h3, types/middle/m1~m3")
     print("✅ 금지 구조 검사 통과: \"시험\", \"연도\", \"학교\", 2026년 패턴, file: exams/ 없음")
+
+    print(f"✅ 교과서 등록: 신규 {textbook_new}개 (매니페스트 {TEXTBOOK_MANIFEST_RELPATH})")
+    if textbook_duplicates:
+        print(f"ℹ️ 교과서 중복 폴더 미등록({len(textbook_duplicates)}개): 매니페스트 unregisteredDuplicateFolders")
+    if textbook_unmanifested:
+        print(f"⚠️ 교과서 매니페스트에 없는 폴더라 등록하지 않음({len(textbook_unmanifested)}개):")
+        for x in textbook_unmanifested:
+            print("  -", x)
 
     if skipped:
         print(f"⚠️ 파일명 규칙 미매칭으로 건너뜀({len(skipped)}개):")

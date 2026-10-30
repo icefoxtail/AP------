@@ -1,9 +1,20 @@
 name: CI
 
+# Signal hygiene (S16). Derived registration data is pushed to main by github-actions[bot] with GITHUB_TOKEN,
+# and GitHub never starts `push` workflows for GITHUB_TOKEN pushes (and the commits say [skip ci]). The tip of
+# main was therefore never tested, while the human commit before it - which carried the stale derived files the
+# bot then refreshed - went red (run 40866597301: runtime-bridge-receipt.json). A red CI that the next bot
+# commit silently fixes is noise, not signal. The `workflow_run` trigger below tests the untested tip right
+# after the Pages / register pipelines finish (tools/ci/ci-tip-plan.mjs decides; it skips any tip that already has
+# a CI run, so this cannot loop and normal pushes are not tested twice).
 on:
   push:
     branches: [main]
   pull_request:
+    branches: [main]
+  workflow_run:
+    workflows: [Archive Pages Release, Archive Reviewed Exam Meta Register]
+    types: [completed]
     branches: [main]
   workflow_dispatch:
     inputs:
@@ -12,14 +23,53 @@ on:
         required: true
         type: string
 
+# Only the workflow_run (tip re-test) runs share a group, and that group never cancels a running job: the planner
+# (tools/ci/ci-tip-plan.mjs) counts an in-progress run for the tip as "this tip is being tested", so cancelling it
+# for a second workflow_run of the same tip (Register finishes, then Pages finishes) could leave the tip untested -
+# the second plan sees the dying run as in progress and skips. Serialised instead: at most one re-test runs and one
+# waits (GitHub replaces an older waiting run with the newer one, which re-plans from the live main tip anyway).
+# Push, PR and manual runs get a unique group and are never cancelled.
+concurrency:
+  group: ${{ github.event_name == 'workflow_run' && 'ci-main-tip' || format('ci-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: false
+
 jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      run: ${{ steps.plan.outputs.run }}
+      checkout_ref: ${{ steps.plan.outputs.checkout_ref }}
+      base_sha: ${{ steps.plan.outputs.base_sha }}
+    steps:
+      - name: Checkout planner (trusted main)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && 'main' || '' }}
+          sparse-checkout: tools/ci
+          sparse-checkout-cone-mode: false
+      - name: Decide whether this event needs a CI run
+        id: plan
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          WORKFLOW_RUN_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: node tools/ci/ci-tip-plan.mjs
+
   test:
+    needs: plan
+    if: needs.plan.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # Empty for push / pull_request / dispatch (default ref); the exact main tip for a workflow_run re-test.
+          ref: ${{ needs.plan.outputs.checkout_ref }}
           fetch-depth: 0
 
       - name: Refresh upstream main ref
@@ -59,7 +109,21 @@ jobs:
           exit $fail
 
       - name: Verify Git-managed project skills
-        run: node tools/skills/verify-skills.mjs --json
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          # On push / re-test runs the commit under test is the reference: comparing it with a freshly fetched
+          # origin/main made the check fail whenever main advanced while the job ran ("main is not
+          # synchronized with origin/main (ahead=0, behind=2)", runs 40695834952 and 40660740398), i.e.
+          # it reported a race, not a defect of the tested commit. Pull requests still must contain the
+          # latest origin/main.
+          if [[ "$EVENT_NAME" == "push" || "$EVENT_NAME" == "workflow_run" || "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            node tools/skills/verify-skills.mjs --json --upstream HEAD
+          else
+            node tools/skills/verify-skills.mjs --json
+          fi
 
       - name: Git footprint regression
         run: node --test tests/git-growth.test.mjs
@@ -68,16 +132,32 @@ jobs:
         run: node --test tests/archive-cold-evidence.test.mjs tests/evidence-authority-v1.test.mjs tests/archive-analysis-recovery.test.mjs
 
       - name: Guard changed Git objects against footprint growth
-        if: github.event_name == 'pull_request' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'pull_request' || github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_run'
         shell: bash
         env:
           EVENT_NAME: ${{ github.event_name }}
           BEFORE_SHA: ${{ github.event.before }}
           MANUAL_BASE_SHA: ${{ github.event.inputs.base_sha }}
+          PLAN_BASE_SHA: ${{ needs.plan.outputs.base_sha }}
         run: |
           set -euo pipefail
           if [[ "$EVENT_NAME" == "pull_request" ]]; then
             base_ref=origin/main
+          elif [[ "$EVENT_NAME" == "workflow_run" ]]; then
+            # The planner chose the commit the finished pipeline ran on (or the tip's parent): audit only what
+            # the bot added on top of it.
+            base_ref="$PLAN_BASE_SHA"
+            if [[ ! "$base_ref" =~ ^[0-9a-fA-F]{40}$ ]] || ! git cat-file -e "$base_ref^{commit}" 2>/dev/null; then
+              # A transient planner API error (probe failed -> run=true with no base) or an unreachable planned base
+              # must not turn into a false red. The checked-out commit is the main tip: audit what it adds on top of
+              # its first parent (the bot commit itself). A root commit has no parent and stays fail-closed.
+              echo "::warning title=CI re-test footprint base::planned base '${base_ref}' is unusable; auditing the tip against its first parent"
+              base_ref="$(git rev-parse --verify --quiet HEAD^1 || true)"
+              if [[ ! "$base_ref" =~ ^[0-9a-fA-F]{40}$ ]]; then
+                echo "CI re-test has no usable footprint base SHA (no planned base, tip has no parent); refusing an incomplete audit." >&2
+                exit 2
+              fi
+            fi
           elif [[ "$EVENT_NAME" == "push" ]]; then
             base_ref="$BEFORE_SHA"
             if [[ -z "$base_ref" || "$base_ref" =~ ^0+$ ]]; then

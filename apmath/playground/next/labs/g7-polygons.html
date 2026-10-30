@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>평면도형 · 다각형 · 넓이 · AP Math 실험실</title>
+<meta name="description" content="중1 평면도형: 넓이 원리와 바깥 직사각형, 평행선 넓이·산책로·둘레, 다각형의 대각선·내각·외각 360°, 별 모양과 복잡한 외각까지 4개 탐구관 16개 장면">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<!-- 원본 해설·식 문자열이 쓰는 tag-blue/rose/emerald 와 3지선다 버튼만 이 실험실 안에서 의미색으로 연결합니다(키트 CSS는 그대로). -->
+<style>
+.apl .tag-blue, .apl .tag-rose, .apl .tag-emerald { display: inline-flex; align-items: center; padding: 0 6px; border-radius: 5px; font-weight: 800; margin: 0 1px; border: 1.5px solid var(--c); color: var(--c); background: color-mix(in srgb, var(--c) 13%, transparent); }
+.apl .tag-blue { --c: var(--m-sky); }
+.apl .tag-rose { --c: var(--m-rose); }
+.apl .tag-emerald { --c: var(--m-green); }
+.apl .g7-opts { display: grid; gap: 7px; margin: 12px 0 8px; }
+.apl .g7-opt { text-align: left; font: inherit; font-size: var(--fs-sm); line-height: 1.5; color: var(--text); background: var(--card-2); border: 1.5px solid var(--line-2); border-radius: var(--r-sm); padding: 9px 12px; cursor: pointer; min-height: 44px; }
+.apl .g7-opt:hover { border-color: var(--text-3); }
+.apl .g7-opt.ok { border-color: var(--m-green); background: color-mix(in srgb, var(--m-green) 14%, transparent); font-weight: 750; }
+.apl .g7-opt.bad { border-color: var(--m-red); background: color-mix(in srgb, var(--m-red) 12%, transparent); }
+.apl .g7-fb { font-size: var(--fs-sm); line-height: 1.65; padding: 9px 12px; border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--card-2); }
+.apl .g7-fb.ok { border-color: var(--m-green); }
+.apl .g7-fb.bad { border-color: var(--m-red); }
+</style>
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   중1 · 평면도형 · 다각형 · 넓이 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 4개 장면 = 16장면
+   원본: labs/g7/polygons-area.html
+   이식 방식: "호환 이식" — 원본의 내용(getSpec)과 그리기 코드(render 본문)를 글자 그대로 옮기고,
+   원본이 쓰던 캔버스 호출(beginPath·moveTo·lineTo·arc·fill·stroke·translate·rotate…)만
+   아래 'ctx 어댑터'가 새 무대 엔진(APLab.Board)에 연결합니다. 선 굵기·글자는 원본처럼 화면 픽셀 크기를 유지합니다.
+   원본과 다른 점 (코드 안에는 모두 [2.0 수정] 주석이 있습니다)
+   - 원본 도구 → 2.0 셸: 원클릭 버튼 ①·②는 조작부 칩, 이동·변형 슬라이더와 실행 버튼은 슬라이더·실행 버튼,
+     3지선다는 '문제' 탭 버튼, Step 1~3 켜고 끄기는 '정리' 탭 단계 플레이어, 식 배지는 무대 위 수식 칩,
+     둘레 줄자는 무대 아래 띠(v.tape), 꼭짓점·점 O 끌기는 후광 핸들로 바뀜
+   - 그림 안 문제 수정
+       ① 종이띠 접기: 접은 각 칩(63°·65°·70°·55°·60°) 중 70°·55°·60°를 눌러도 65°로 그려지던 문제 → 칩 값대로 그림
+       ② 외각 이동 ∠A=72° 칩: 50°로 그려지던 문제 → 72°
+       ③ 원본 칩 목록: 같은 값에 이름만 다른 칩은 하나로 합침. 값이 달라도 그림·식이 같아 동작이 없던 칩(평행사변형 보조선 보기,
+          한 점·내부 점·전체 대각선의 보기 옵션, 외각 수축 '둘레 줄자', 정오각형 교각의 '구하는 각 위치' 등)과
+          그림에 쓰이지 않던 이동·변형 슬라이더/실행 버튼(도미노·나비넥타이·이등분선 등)은 숨김
+       ④ 기출 스냅: 칩에 없는 값(예: 산책로 W=8m, m=8)으로 맞춰지던 문제 → 그 장면의 유효한 칩 값으로
+       ⑤ 점 O 끌기: 다각형 밖으로 나가 삼각형 n개 가정이 깨지던 문제 → 다각형 안쪽(안에 내접한 원의 85%)으로 제한
+       ⑥ 꼭짓점 A 끌기: 이동 진행도가 있으면 손가락과 점이 어긋나던 문제 → 포인터를 그대로 따라가도록
+       ⑦ 마법 보조선(외각 이동·부메랑)은 처음에 숨기고 '마법 보조선' 렌즈/이동 진행/정리 탭 2단계에서 나타남
+          (원본은 항상 보여 렌즈 버튼이 아무 효과가 없었음). 렌즈 칩은 보조선이 달라지는 3개 장면에만 둠
+       ⑧ 둘레 줄자: 칸 폭을 실제 변의 길이에 비례시키고 cm 값 표시(원본은 같은 폭)
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+  const { clamp } = APLab;
+
+  /* ===== 원본 그대로: 한글 수 이름 (원본 363행) ===== */
+    const KOR_N = { 3: '삼', 4: '사', 5: '오', 6: '육', 7: '칠', 8: '팔', 9: '구', 10: '십', 12: '십이' };
+
+  /* ===== 원본 상태 객체(이름 그대로) — 매 프레임 2.0 셸 상태에서 채웁니다 ===== */
+    const state = {
+      mode: 1,
+      sub: { 1: 'triAlt', 2: 'railWing', 3: 'oneDiag', 4: 'stepExt' },
+      lens: 'all', animProg: 0.0, showAntTape: false, p1: 8, p2: 1,
+      dragXRatio: 0.35, dragYRatio: 0.45, scale: 1.0, offsetX: 0, offsetY: 0,
+      steps: { 1: true, 2: true, 3: true }
+    };
+
+  /* ===== 원본 그대로: 4×4 시나리오 목록 (원본 390–415행) ===== */
+    const SUB_MENUS = {
+      1: [
+        { id: 'triAlt', label: '📐 둔각 바깥높이·직각삼각형 h' },
+        { id: 'paraMove', label: '✂️ 평행사변형 2가지 높이' },
+        { id: 'trapRot', label: '🔄 사다리꼴 붙이기·2분할' },
+        { id: 'boxFrame', label: '🖼️ 바깥 직사각형에서 빼기' }
+      ],
+      2: [
+        { id: 'railWing', label: '🦋 평행선 사이 꼭짓점·양옆 삼각형(S₁=S₂)' },
+        { id: 'baseRatio', label: '⚖️ 밑변의 비(m:n) = 넓이 비' },
+        { id: 'roadMerge', label: '🚜 산책로(십자·사선) 밀어 합치기' },
+        { id: 'stairFold', label: '🐜 계단 둘레·종이띠 접기' }
+      ],
+      3: [
+        { id: 'oneDiag', label: '🍕 한 점 대각선(n-3)·삼각형(n-2)' },
+        { id: 'inPointO', label: '🎯 내부 점 O (180°n-360°)' },
+        { id: 'allDiag', label: '🕸️ 대각선의 총개수·악수' },
+        { id: 'ext360', label: '🔭 외각의 합 360° (다각형을 줄여 보기)' }
+      ],
+      4: [
+        { id: 'stepExt', label: '🚀 외각 옮기기 & 이어 붙인 이등변삼각형(4x)' },
+        { id: 'boomBow', label: '🪃 오목사각형 & 🎀 X자 도형' },
+        { id: 'starMaster', label: '⭐ 별 모양(☆)의 각 : 두 가지 방법·변형' },
+        { id: 'bisect3', label: '📐 내·외각 이등분선 3종·대각선 교각' }
+      ]
+    };
+
+  // [2.0 수정] 종이띠 접기: 접은 각 칩의 이름(63°·65°·70°·55°·60°)과 그림이 어긋나던 것을 칩 값대로 (원본: p1<=10 ? 55+p1 : 65)
+  const PAPER_ANG = { 8: 63, 10: 65, 12: 70, 14: 55, 16: 60 };
+
+  /* ===== 원본 그대로: 16대 핵심 시나리오 명세 (원본 591–1112행) ===== */
+    function getSpec() {
+      const m = state.mode, sub = state.sub[m], p1 = state.p1, p2 = state.p2;
+
+      // [탭 1: 넓이 원리·바깥 직사각형 (초5~중1)]
+      if (m === 1) {
+        if (sub === 'triAlt') {
+          const isRightH = p2 === 2;
+          if (!isRightH) {
+            const h = 6, area = (p1 * h) / 2;
+            return {
+              badge: '1-A · 직각(∟) 찾기 & 둔각삼각형의 바깥 수직높이',
+              actionTxt: '🎬 꼭짓점 이동 시연',
+              g1Label: '밑변 BC 길이 (a)', g1Btns: [[6,'6cm'],[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm']],
+              g2Label: '유형 전환', g2Btns: [[1,'📐둔각 바깥높이'],[2,'📏직각삼각형 h'],[1,'끌어 보기'],[2,'넓이 2번 식']],
+              eqHTML: `<span class="tag-blue">밑변 BC(${p1})</span> × <span class="tag-emerald">수직높이 AH(6)</span> ÷ 2 = <span class="tag-rose">넓이 ${area}cm²</span>`,
+              q: `둔각삼각형 ABC에서 밑변 ${tex(`\\overline{BC}=${p1}\\text{cm}`)}, 비스듬한 옆변 ${tex('\\overline{AB}=10\\text{cm}')}, 연장선에 내린 수선 ${tex('\\overline{AH}=6\\text{cm}')}일 때 <strong>삼각형 ABC의 넓이</strong>는?`,
+              opts: [
+                { t: `① ${area} cm² (밑변×수직높이÷2)`, ok: true, msg: `정답! 비스듬한 옆변(10cm)은 함정입니다! 직각 기호(∟)가 만나는 밑변(${p1})과 수직높이(6)를 곱해 2로 나눕니다!` },
+                { t: `② ${p1 * 5} cm² (옆변 10cm 사용)`, ok: false, msg: `직각 기호(∟)가 없는 비스듬한 옆변은 높이가 아닙니다!` },
+                { t: `③ ${p1 * 6} cm² (÷2 누락)`, ok: false, msg: `삼각형 넓이는 반드시 2로 나누어야 합니다!` }
+              ],
+              ans: `직각(∟)을 낀 밑변(${p1})×높이(6)÷2 = <span class="tag-emerald">${area} cm²</span>`,
+              stats: [`밑변 BC = ${p1} cm`, `바깥 수직높이 AH = 6 cm`, `함정 옆변 = 10 cm (제외!)`, `넓이 = ${area} cm²`],
+              std: `• 둔각삼각형의 높이는 꼭짓점 A에서 밑변 BC의 연장선에 수직(90°)으로 내린 선분 AH의 길이입니다.`,
+              fast: `• <strong>높이를 찾는 방법</strong>: 밑변과 높이는 직각 기호(∟)가 만나는 두 선분입니다. 직각 기호와 만나지 않는 비스듬한 변의 길이는 넓이를 구할 때 쓰지 않습니다!`
+            };
+          } else {
+            // 세 변(3k, 4k, 5k)이 모두 정수로 주어진 직각삼각형에서 넓이 2번 구하기
+            const k = p1 <= 6 ? 1 : p1 <= 8 ? 2 : 3;
+            const a = 3 * k, b = 4 * k, c = 5 * k;
+            const area = (a * b) / 2, h = ((a * b) / c).toFixed(1);
+            return {
+              badge: '1-A · 세 변이 주어진 직각삼각형의 빗변 높이 h (넓이 2번 구하기)',
+              actionTxt: '🎬 직사각형 복제',
+              g1Label: '직각삼각형 세 변 세트', g1Btns: [[6,'(3,4,5)cm'],[8,'(6,8,10)cm'],[10,'(9,12,15)cm'],[8,'기본 세트'],[10,'확대 세트']],
+              g2Label: '유형 전환', g2Btns: [[1,'📐둔각 바깥높이'],[2,'📏직각삼각형 h'],[1,'둔각 보기'],[2,'직각 보기']],
+              eqHTML: `<span class="tag-blue">½ × ${a} × ${b} (넓이 ${area})</span> 🟰 <span class="tag-rose">½ × 빗변(${c}) × 높이(h)</span> ⟹ <span class="tag-emerald">h = ${h}cm</span>`,
+              q: `세 변의 길이가 각각 ${tex(`${a}\\text{cm}, ${b}\\text{cm}, ${c}\\text{cm}`)}인 직각삼각형 ABC에서 <strong>① 삼각형의 넓이</strong>와 <strong>② 빗변(${c}cm)에 내린 수선의 길이 ${tex('h')}</strong>는?`,
+              opts: [
+                { t: `① 넓이 ${area}cm², h = ${h}cm`, ok: true, msg: `정답! 직각을 낀 두 변으로 구한 넓이(${area})와 ½×${c}×h가 같으므로 ${a}×${b} = ${c}×h에서 h = ${h}cm입니다!` },
+                { t: `② 넓이 ${a*b}cm², h = ${h}cm`, ok: false, msg: `삼각형 넓이는 2로 나누어야 합니다!` },
+                { t: `③ 넓이 ${area}cm², h = ${a}cm`, ok: false, msg: `빗변(${c}cm)을 밑변으로 볼 때의 높이 h는 ${a}×${b}÷${c} = ${h}cm입니다!` }
+              ],
+              ans: `${tex(`\\dfrac{1}{2}\\times ${a}\\times ${b} = \\dfrac{1}{2}\\times ${c}\\times h \\implies`)} <span class="tag-emerald">넓이 ${area}cm², h = ${h}cm</span>`,
+              stats: [`직각 낀 두 변: ${a}cm, ${b}cm`, `빗변 길이: ${c}cm`, `삼각형 넓이 = ${area} cm²`, `빗변 위 높이 h = ${h} cm`],
+              std: `• 같은 삼각형의 넓이를 두 가지 밑변·높이 쌍으로 나타내면 ${tex(`\\dfrac{1}{2}\\times ${a}\\times ${b} = \\dfrac{1}{2}\\times ${c}\\times h`)}입니다.`,
+              fast: `• 하나의 삼각형 안에 <strong>직각 기호(∟)가 2개</strong> 보이면 같은 삼각형의 넓이를 두 가지로 나타낼 수 있으므로 <strong>『직각을 낀 두 변의 곱 = 빗변 × 높이 h』</strong>가 성립합니다!`
+            };
+          }
+        }
+        if (sub === 'paraMove') {
+          const a = p1, h1 = 6, b = 8, area = a * h1, h2 = (area / b).toFixed(1).replace('.0', '');
+          return {
+            badge: '1-B · 평행사변형 잘라서 옮기기 & 2가지 높이로 넓이 나타내기 (a×h₁ = b×h₂)',
+            actionTxt: '🎬 직사각형 변신',
+            g1Label: '아랫변 BC 길이 (a)', g1Btns: [[6,'6cm'],[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm']],
+            g2Label: '보조선 보기', g2Btns: [[1,'높이 h₁만'],[2,'두 번째 높이 h₂'],[3,'잘라서 옮기기'],[4,'전체 보기']],
+            eqHTML: `<span class="tag-blue">밑변(${a}) × 높이 h₁(6) = ${area}</span> 🟰 <span class="tag-rose">옆변(8) × 높이 h₂(${h2})</span>`,
+            q: `평행사변형 ABCD에서 밑변 ${tex(`\\overline{BC}=${a}\\text{cm}`)}에 대한 높이가 ${tex('6\\text{cm}')}이고, 옆변 ${tex('\\overline{CD}=8\\text{cm}')}일 때 <strong>변 CD를 밑변으로 할 때의 높이 ${tex('h_2')}</strong>는?`,
+            opts: [
+              { t: `① 넓이 ${area}cm², h₂ = ${h2}cm`, ok: true, msg: `정답! 어느 변을 밑변으로 잡든 넓이는 ${area}cm²로 같으므로 8 × h₂ = ${area}에서 h₂ = ${h2}cm입니다!` },
+              { t: `② 넓이 ${area/2}cm², h₂ = ${h2}cm`, ok: false, msg: `평행사변형 넓이는 2로 나누지 않습니다!` },
+              { t: `③ 넓이 ${area}cm², h₂ = 6cm`, ok: false, msg: `밑변이 ${a}cm에서 8cm로 바뀌었으므로 높이도 ${h2}cm로 달라집니다!` }
+            ],
+            ans: `${tex(`${a}\\times 6 = 8\\times h_2 = ${area} \\implies`)} <span class="tag-emerald">h₂ = ${h2} cm</span>`,
+            stats: [`밑변 a = ${a}cm, 높이 h₁ = 6cm`, `평행사변형 넓이 = ${area} cm²`, `옆변 b = 8 cm`, `두 번째 높이 h₂ = ${h2} cm`],
+            std: `• 왼쪽 직각삼각형을 잘라 오른쪽으로 옮기면 직사각형이 되므로 넓이는 (밑변)×(높이) = ${area}cm²입니다.`,
+            fast: `• 평행사변형 안에 수선(∟)이 2개 그려져 있으면 같은 평행사변형의 넓이를 두 가지로 나타낸 <strong>『밑변1 × 높이1 = 밑변2 × 높이2』</strong>를 세워 구합니다!`
+          };
+        }
+        if (sub === 'trapRot') {
+          const a = p1, b = Math.max(2, p1 - 4), h = 6;
+          const area = ((a + b) * h) / 2;
+          return {
+            badge: '1-C · 사다리꼴 180° 돌려 붙이기 vs 대각선으로 삼각형 2개로 나누기',
+            actionTxt: '🎬 180° 돌려 붙이기',
+            g1Label: '아랫변 a 길이', g1Btns: [[6,'a=6,b=2'],[8,'a=8,b=4'],[10,'a=10,b=6'],[12,'a=12,b=8'],[14,'a=14,b=10']],
+            g2Label: '나누기·붙이기 모드', g2Btns: [[1,'180° 돌려 붙이기'],[2,'대각선으로 나누기'],[3,'동시 표시'],[4,'원래대로']],
+            eqHTML: `( <span class="tag-rose">윗변 ${b}</span> + <span class="tag-blue">아랫변 ${a}</span> ) × <span class="tag-emerald">높이 6</span> ÷ 2 = <span class="tag-blue">${area} cm²</span>`,
+            q: `윗변 ${tex(`${b}\\text{cm}`)}, 아랫변 ${tex(`${a}\\text{cm}`)}, 높이 ${tex('6\\text{cm}')}인 사다리꼴 2개를 거꾸로 맞붙여 만든 <strong>평행사변형의 밑변 길이</strong>와 <strong>사다리꼴 1개의 넓이</strong>는?`,
+            opts: [
+              { t: `① 밑변 ${a+b}cm, 넓이 ${area}cm²`, ok: true, msg: `정답! 거꾸로 돌려 붙이면 밑변이 (${b}+${a}=${a+b}cm)인 평행사변형이 되고, 사다리꼴 1개 넓이는 그 절반인 ${area}cm²입니다!` },
+              { t: `② 밑변 ${a+b}cm, 넓이 ${area*2}cm²`, ok: false, msg: `${area*2}cm²는 사다리꼴 2개를 합친 넓이이므로 2로 나누어야 합니다!` },
+              { t: `③ 밑변 ${a}cm, 넓이 ${area}cm²`, ok: false, msg: `아랫변(${a}cm) 옆에 뒤집힌 윗변(${b}cm)이 붙어 밑변은 ${a+b}cm가 됩니다!` }
+            ],
+            ans: `합친 밑변 = <span class="tag-blue">${a+b}cm</span> ⟹ 사다리꼴 넓이 = <span class="tag-emerald">${area} cm²</span>`,
+            stats: [`윗변 b = ${b}cm, 아랫변 a = ${a}cm`, `합친 평행사변형 밑변 = ${a+b}cm`, `대각선 분할: ${a*3} + ${b*3} = ${area}`, `사다리꼴 넓이 = ${area} cm²`],
+            std: `• 합동인 사다리꼴 2개를 맞붙인 평행사변형 넓이 ${(a+b)*h}cm²의 절반이므로 ${area}cm²입니다.`,
+            fast: `• 대각선으로 쪼갠 두 삼각형의 넓이 비는 높이가 같으므로 항상 <strong>『윗변(${b}) : 아랫변(${a})』</strong>입니다!`
+          };
+        }
+        // boxFrame (마름모 액자 절반 & 모눈 격자 비뚤어진 삼각형 액자 빼기)
+        const isGridTri = p2 >= 3;
+        const W = p1, H = 6, boxA = W * H;
+        if (!isGridTri) {
+          const area = boxA / 2;
+          return {
+            badge: '1-D · 마름모를 둘러싼 직사각형 (네 귀퉁이를 안으로 접기)',
+            actionTxt: '🎬 귀퉁이 안으로 접기',
+            g1Label: '가로 대각선 d₁', g1Btns: [[6,'6cm'],[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm']],
+            g2Label: '도형 유형 선택', g2Btns: [[1,'💎마름모와 직사각형'],[2,'마름모 접기'],[3,'🖼️모눈 위의 삼각형'],[4,'귀퉁이 분리']],
+            eqHTML: `<span class="tag-blue">바깥 직사각형(${W}×${H}=${boxA})</span> ÷ 2 = <span class="tag-emerald">💎 마름모 넓이 ${area}cm²</span>`,
+            q: `두 대각선이 수직으로 만나고 길이가 각각 ${tex(`${W}\\text{cm}, ${H}\\text{cm}`)}인 마름모를 둘러싼 <strong>바깥 직사각형 넓이</strong>와 <strong>마름모 넓이</strong>는?`,
+            opts: [
+              { t: `① 바깥 직사각형 ${boxA}cm², 마름모 ${area}cm²`, ok: true, msg: `정답! 바깥 직사각형 넓이(${boxA}cm²)의 네 귀퉁이를 안으로 접으면 마름모와 정확히 겹치므로 절반인 ${area}cm²입니다!` },
+              { t: `② 바깥 직사각형 ${boxA}cm², 마름모 ${boxA}cm²`, ok: false, msg: `마름모는 바깥 직사각형 넓이의 절반(÷2)입니다!` },
+              { t: `③ 바깥 직사각형 ${2*(W+H)}cm², 마름모 ${W+H}cm²`, ok: false, msg: `두 대각선을 곱한 뒤 2로 나누어야 합니다!` }
+            ],
+            ans: `바깥 직사각형(${boxA}) ÷ 2 = <span class="tag-emerald">${area} cm²</span>`,
+            stats: [`가로 대각선 d₁ = ${W} cm`, `세로 대각선 d₂ = ${H} cm`, `바깥 직사각형 넓이 = ${boxA} cm²`, `마름모 넓이 = ${area} cm²`],
+            std: `• 마름모의 두 대각선은 직교하므로 바깥 직사각형 넓이(${W}×${H})의 절반입니다.`,
+            fast: `• 정사각형도 마름모입니다! 한 대각선 길이가 10cm인 정사각형 넓이는 <strong>10×10÷2 = 50cm²</strong>로 바로 구할 수 있습니다!`
+          };
+        } else {
+          const t1 = (W * 4) / 2, t2 = ((W - 3) * 6) / 2, t3 = (3 * 2) / 2;
+          const ans = boxA - (t1 + t2 + t3);
+          return {
+            badge: '1-D · 모눈종이(좌표평면) 위의 비스듬한 삼각형 — 바깥 직사각형에서 귀퉁이 3개 빼기!',
+            actionTxt: '🎬 귀퉁이 3개 분리',
+            g1Label: '바깥 직사각형 가로 W', g1Btns: [[6,'6칸'],[8,'8칸'],[10,'10칸'],[12,'12칸'],[8,'표준 8칸']],
+            g2Label: '도형 유형 선택', g2Btns: [[1,'💎마름모와 직사각형'],[2,'마름모 접기'],[3,'🖼️모눈 위의 삼각형'],[4,'귀퉁이 분리']],
+            eqHTML: `<span class="tag-blue">바깥 직사각형(${boxA})</span> ➖ <span class="tag-rose">귀퉁이 3개 합(${t1}+${t2}+${t3}=${t1+t2+t3})</span> = <span class="tag-emerald">${ans}</span>`,
+            q: `가로 ${tex(`${W}`)}칸, 세로 6칸인 직사각형 안에 비스듬한 ${tex('\\triangle ABC')}가 있다. 바깥 귀퉁이 직각삼각형 3개의 넓이가 ${tex(`${t1}, ${t2}, ${t3}`)}일 때 <strong>${tex('\\triangle ABC')}의 넓이</strong>는?`,
+            opts: [
+              { t: `① ${ans} (바깥 직사각형 ${boxA} - 귀퉁이 ${t1+t2+t3})`, ok: true, msg: `정답! 밑변·높이를 바로 알 수 없는 비스듬한 삼각형은 바깥 직사각형(${boxA})에서 직각삼각형 귀퉁이 3개 합(${t1+t2+t3})을 빼서 구합니다!` },
+              { t: `② ${boxA / 2} (바깥 직사각형의 절반)`, ok: false, msg: `세 꼭짓점이 각 변에 흩어져 있을 때는 절반이 아닙니다! 귀퉁이 3개를 각각 빼야 합니다!` },
+              { t: `③ ${t1 + t2 + t3}`, ok: false, msg: `③의 ${t1 + t2 + t3}은 빼내야 할 바깥 귀퉁이 3개의 넓이의 합입니다!` }
+            ],
+            ans: `바깥 직사각형(${boxA}) - 귀퉁이 합(${t1+t2+t3}) = <span class="tag-emerald">${ans}</span>`,
+            stats: [`바깥 직사각형 = ${boxA}`, `귀퉁이 ①=${t1}, ②=${t2}, ③=${t3}`, `귀퉁이 3개 합 = ${t1+t2+t3}`, `가운데 ΔABC 넓이 = ${ans}`],
+            std: `• 중1 좌표평면 위의 삼각형 넓이도 세 점을 감싸는 직사각형에서 바깥 직각삼각형 3개를 빼서 구합니다.`,
+            fast: `• <strong>도형을 둘러싼 직사각형을 이용하세요!</strong> 비스듬한 도형은 반듯한 직사각형 안에 넣은 뒤 남는 귀퉁이 부분의 넓이를 빼면 됩니다!`
+          };
+        }
+      }
+
+      // [탭 2: 평행선 넓이·산책로·둘레 (초5~중1)]
+      if (m === 2) {
+        if (sub === 'railWing') {
+          const isRail = p2 >= 3;
+          const triA = (p1 * 6) / 2, obA = triA * 0.75, wing = triA - obA;
+          return {
+            badge: isRail ? '2-A · 평행선 사이에서 꼭짓점 끌기 (넓이는 그대로 vs 🐜둘레는 변함)' : '2-A · 사다리꼴 대각선이 만든 양옆 삼각형 (S₁ = S₂, 공통부분 빼기)',
+            actionTxt: isRail ? '🎬 평행선 슬라이딩' : '🎬 공통 ΔOBC 분리',
+            g1Label: '아랫변 BC 길이', g1Btns: [[6,'6cm'],[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm']],
+            g2Label: '유형 전환', g2Btns: [[1,'🦋사다리꼴 양옆 삼각형'],[2,'공통부분 분리'],[3,'🛤️평행선 사이에서 끌기'],[4,'🐜둘레 비교']],
+            eqHTML: isRail
+              ? `<span class="tag-blue">평행선 거리 h=6 일정</span> ⟹ <span class="tag-emerald">넓이 ${triA}cm² 그대로! (단, 🐜둘레는 변함!)</span>`
+              : `<span class="tag-blue">ΔABC(${triA}) = ΔDBC(${triA})</span> ➖ <span class="tag-rose">공통 ΔOBC(${obA})</span> ⟹ <span class="tag-emerald">🦋 양옆 삼각형 S₁ = S₂ = ${wing}cm²</span>`,
+            q: isRail
+              ? `평행선 사이의 거리가 6cm이고 밑변 ${tex(`\\overline{BC}=${p1}\\text{cm}`)}일 때, 꼭짓점 A를 평행선 위에서 옆으로 옮기면 <strong>넓이와 둘레</strong>는 어떻게 되는가?`
+              : `사다리꼴 ABCD(${tex('\\overline{AD}\\parallel\\overline{BC}')})에서 ${tex(`\\triangle ABC = ${triA}\\text{cm}^2`)}이고 아래쪽 공통 ${tex(`\\triangle OBC = ${obA}\\text{cm}^2`)}일 때 <strong>양옆 삼각형 ${tex('S_1, S_2')}의 넓이</strong>는?`,
+            opts: [
+              { t: isRail ? `① 넓이는 ${triA}cm²로 일정, 둘레는 변함` : `① S₁ = S₂ = ${wing} cm² (항상 같다!)`, ok: true, msg: isRail ? `정답! 밑변과 높이가 같아 넓이는 ${triA}cm²로 일정하지만, 옆으로 기울어질수록 옆변이 길어져 둘레는 변합니다!` : `정답! 넓이가 같은 ΔABC와 ΔDBC에서 공통인 ΔOBC(${obA})를 빼면 양옆 삼각형는 둘 다 ${wing}cm²로 같습니다!` },
+              { t: isRail ? `② 넓이와 둘레 모두 일정하다` : `② S₁ = ${triA} cm², S₂ = ${obA} cm²`, ok: false, msg: isRail ? `꼭짓점을 옆으로 끌수록 옆변 길이가 늘어나 둘레는 커집니다!` : `전체 삼각형(${triA})에서 아래쪽 공통부분(${obA})을 빼야 합니다!` },
+              { t: `③ 알 수 없다`, ok: false, msg: `평행선의 성질로 즉시 구할 수 있습니다!` }
+            ],
+            ans: isRail ? `넓이 = <span class="tag-emerald">${triA}cm² 그대로</span>, 둘레는 좌우 대칭일 때 최소` : `양옆 삼각형 <span class="tag-emerald">S₁ = S₂ = ${wing} cm²</span>`,
+            stats: [`밑변 BC = ${p1}cm, 높이 = 6cm`, `ΔABC = ΔDBC = ${triA} cm²`, `공통 ΔOBC = ${obA} cm²`, `양옆 삼각형 S₁ = S₂ = ${wing} cm²`],
+            std: `• 평행선 사이의 거리는 일정하므로 밑변을 공유하는 ΔABC와 ΔDBC의 넓이는 같고, 공통부분 ΔOBC를 빼면 양옆 삼각형의 넓이가 같습니다.`,
+            fast: `• 사다리꼴 대각선이 보이면 <strong>양옆 삼각형 넓이는 같다(S₁ = S₂)</strong>는 것부터 쓰고 시작하세요!`
+          };
+        }
+        if (sub === 'baseRatio') {
+          const mL = p1, nL = p2 + 1, totS = (mL + nL) * 4, s1 = mL * 4, s2 = nL * 4;
+          return {
+            badge: `2-B · 높이가 같은 두 삼각형: 밑변의 길이 비(${mL}:${nL}) = 넓이의 비`,
+            actionTxt: '🎬 두 삼각형 분리',
+            g1Label: '왼쪽 밑변 m', g1Btns: [[1,'m=1'],[2,'m=2'],[3,'m=3'],[4,'m=4'],[5,'m=5']],
+            g2Label: '오른쪽 밑변 n', g2Btns: [[0,'n=1(중점)'],[1,'n=2'],[2,'n=3'],[4,'n=5']],
+            eqHTML: `<span class="tag-blue">높이 h 공통!</span> ⟹ <span class="tag-rose">밑변 비 ${mL} : ${nL}</span> 🟰 <span class="tag-emerald">넓이 비 S₁(${s1}) : S₂(${s2})</span>`,
+            q: `전체 넓이가 ${tex(`${totS}\\text{cm}^2`)}인 ${tex('\\triangle ABC')}에서 밑변 위 점 D가 ${tex(`\\overline{BD}:\\overline{DC} = ${mL}:${nL}`)}일 때, <strong>왼쪽 ${tex('\\triangle ABD(S_1)')}와 오른쪽 ${tex('\\triangle ADC(S_2)')}의 넓이</strong>는?`,
+            opts: [
+              { t: `① S₁ = ${s1}cm², S₂ = ${s2}cm²`, ok: true, msg: `정답! 꼭짓점 A를 공유하여 높이가 같으므로 넓이도 밑변의 비 ${mL}:${nL} 그대로 나뉩니다!` },
+              { t: `② S₁ = ${s2}cm², S₂ = ${s1}cm²`, ok: false, msg: `왼쪽(${mL})과 오른쪽(${nL}) 비율 순서에 맞게 배분해야 합니다!` },
+              { t: `③ 높이를 몰라서 못 구한다`, ok: false, msg: `높이가 같으므로 높이를 몰라도 전체 넓이를 ${mL}:${nL}로 비례배분하면 됩니다!` }
+            ],
+            ans: `밑변 비 ${mL}:${nL} 비례배분 ⟹ <span class="tag-blue">S₁ = ${s1}cm²</span>, <span class="tag-rose">S₂ = ${s2}cm²</span>`,
+            stats: [`밑변의 비 = ${mL} : ${nL}`, `전체 ΔABC 넓이 = ${totS} cm²`, `왼쪽 S₁ = ${s1} cm²`, `오른쪽 S₂ = ${s2} cm²`],
+            std: `• 꼭짓점 A를 공유하는 두 삼각형은 수직 높이가 같으므로 넓이의 비가 밑변의 길이 비(${mL}:${nL})와 같습니다.`,
+            fast: `• 특히 밑변의 <strong>중점(1 : 1)</strong>을 이은 선은 삼각형 넓이를 정확히 <strong>절반(½)</strong>으로 이등분합니다!`
+          };
+        }
+        if (sub === 'roadMerge') {
+          const W = p1, H = 8, x = p2, area = (W - x) * (H - x);
+          const isSlant = p2 % 2 === 0;
+          return {
+            badge: '2-C · 산책로(십자 길 & 비스듬한 길) 제외 잔디밭 밀어서 합치기',
+            actionTxt: '🎬 4조각을 밀어 붙이기',
+            g1Label: '밭 가로 길이 W', g1Btns: [[10,'10m'],[12,'12m'],[14,'14m'],[16,'16m'],[18,'18m']],
+            g2Label: '길의 폭 x & 모양', g2Btns: [[1,'➕폭 1m(직선)'],[2,'⚡폭 2m(사선)'],[3,'➕폭 3m(직선)'],[4,'⚡폭 4m(사선)']],
+            eqHTML: `<span class="tag-blue">새 가로(${W}-${x}=${W-x}m)</span> × <span class="tag-rose">새 세로(${H}-${x}=${H-x}m)</span> = <span class="tag-emerald">🚜 잔디밭 ${area}m²</span>`,
+            q: `가로 ${tex(`${W}\\text{m}`)}, 세로 ${tex(`${H}\\text{m}`)} 정원에 폭이 ${tex(`${x}\\text{m}`)}인 ${isSlant ? '비스듬한 ' : ''}십자 산책로를 냈을 때 <strong>산책로를 제외한 잔디밭 넓이</strong>는?`,
+            opts: [
+              { t: `① ${area} m² ((${W}-${x})×(${H}-${x}))`, ok: true, msg: `정답! 4조각을 왼쪽 위로 밀어 합치면 가로 ${W-x}m, 세로 ${H-x}m인 직사각형 1개가 되어 ${area}m²입니다!` },
+              { t: `② ${W*H - W*x - H*x} m² (교차로 중복 차감)`, ok: false, msg: `가운데 교차로(${x*x}m²)가 두 번 빠졌습니다! 조각을 밀어 합치는 방법이 실수가 없습니다!` },
+              { t: `③ 비스듬한 길은 넓이가 달라진다`, ok: false, msg: `평행사변형 길도 가로 밑변 폭이 ${x}m로 같으면 밀어 합쳤을 때 넓이가 똑같습니다!` }
+            ],
+            ans: `(${W} - ${x}) × (${H} - ${x}) = <span class="tag-emerald">${area} m²</span>`,
+            stats: [`원래 밭: ${W}m × ${H}m`, `산책로 폭 x = ${x}m`, `합친 가로×세로: ${W-x}m × ${H-x}m`, `잔디밭 넓이 = ${area} m²`],
+            std: `• 나뉜 잔디밭 조각들을 길의 폭(${x}m)만큼 평행이동시켜 합치면 가로 ${W-x}m, 세로 ${H-x}m인 직사각형이 됩니다.`,
+            fast: `• 길이 똑바르든 비스듬하든 꺾여 있든 식은 모두 <strong>『(가로 - 길 폭) × (세로 - 길 폭)』</strong> 하나로 나타낼 수 있습니다!`
+          };
+        }
+        // stairFold (계단형 ㄱ자 vs ㄷ자 둘레 & 평행선 종이띠 접기 각도)
+        const isPaper = p2 >= 3;
+        if (!isPaper) {
+          const W = p1, H = 8, perim = 2 * (W + H), uPerim = perim + 4;
+          return {
+            badge: '2-D · 계단형(ㄱ자) 도형 vs 움푹 파인(ㄷ자) 도형의 🐜둘레',
+            actionTxt: '🎬 안쪽 변 바깥 밀기',
+            g1Label: '전체 가로 길이 W', g1Btns: [[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm'],[16,'16cm']],
+            g2Label: '유형 전환', g2Btns: [[1,'🐜ㄱ자 vs ㄷ자 둘레'],[2,'변 밀어내기'],[3,'🎀평행선 종이띠 접기'],[4,'접은각=엇각']],
+            eqHTML: `<span class="tag-blue">ㄱ자 계단 둘레 = 2(${W}+8) = ${perim}cm</span> vs <span class="tag-rose">ㄷ자 파임 둘레 = ${perim}+벽2개(4) = ${uPerim}cm</span>`,
+            q: `가로 ${tex(`${W}\\text{cm}`)}, 세로 8cm 직사각형의 귀퉁이를 계단(ㄱ자)으로 잘라낸 둘레 ${tex('L_1')}과, 윗변을 깊이 2cm로 ㄷ자 파낸 둘레 ${tex('L_2')}는?`,
+            opts: [
+              { t: `① L₁ = ${perim}cm, L₂ = ${uPerim}cm`, ok: true, msg: `정답! ㄱ자 계단은 안쪽 변을 밀어내면 직사각형 둘레(${perim}cm)와 같고, ㄷ자 파임은 안쪽 세로벽 2개(+4cm)가 추가됩니다!` },
+              { t: `② L₁ = ${perim}cm, L₂ = ${perim}cm`, ok: false, msg: `ㄷ자로 움푹 파인 도형은 양옆 안쪽 세로벽 2개(2×2=4cm)가 남아서 둘레가 더 길어집니다!` },
+              { t: `③ 잘라냈으므로 둘 다 ${perim}cm보다 작다`, ok: false, msg: `귀퉁이를 잘라내면 넓이는 줄지만 둘레는 줄어들지 않습니다!` }
+            ],
+            ans: `ㄱ자 계단 = <span class="tag-blue">${perim}cm(그대로)</span>, ㄷ자 파임 = <span class="tag-rose">${uPerim}cm(+벽 2개)</span>`,
+            stats: [`직사각형 가로 ${W}cm, 세로 8cm`, `ㄱ자 계단 둘레 L₁ = ${perim}cm`, `ㄷ자 파인 깊이 = 2cm (벽 2개)`, `ㄷ자 도형 둘레 L₂ = ${uPerim}cm`],
+            std: `• 계단형 도형의 안쪽 가로 선분들의 합은 전체 가로와 같고, 세로 선분들의 합은 전체 세로와 같습니다.`,
+            fast: `• <strong>오목한 도형의 둘레</strong>: 오목한 모서리를 바깥으로 폈을 때 직사각형이 되면 둘레는 그 직사각형의 둘레와 같고, 안으로 들어간 부분의 세로 변(벽) 2개가 있으면 그 2개를 더하세요!`
+          };
+        } else {
+          const ang = PAPER_ANG[p1] || 65;
+          const vertA = 180 - 2 * ang;
+          return {
+            badge: '2-D · [중1 평행선] 직사각형 종이띠 접기 (접은 각 = 엇각!)',
+            actionTxt: '🎬 접은 각·엇각 표시',
+            g1Label: '접은 각의 크기 (●)', g1Btns: [[8,'63°'],[10,'65°'],[12,'70°'],[14,'55°'],[16,'60°']],
+            g2Label: '유형 전환', g2Btns: [[1,'🐜ㄱ자 vs ㄷ자 둘레'],[2,'변 밀어내기'],[3,'🎀평행선 종이띠 접기'],[4,'접은각=엇각']],
+            eqHTML: `<span class="tag-blue">① 접은 각 = ${ang}°</span> + <span class="tag-emerald">② 평행선 엇각 = ${ang}°</span> ⟹ <span class="tag-rose">꼭지각 ∠BAC = 180° - 2×${ang}° = ${vertA}°</span>`,
+            q: `양변이 평행한 직사각형 종이띠를 접었을 때 접힌 각의 크기가 ${tex(`${ang}^\\circ`)}이다. <strong>겹쳐진 삼각형 ABC에서 꼭지각 ${tex('\\angle BAC')}의 크기</strong>는?`,
+            opts: [
+              { t: `① ∠BAC = ${vertA}°`, ok: true, msg: `정답! 접은 각(${ang}°)과 평행선의 엇각(${ang}°)이 같으므로 ∠BAC = 180° - (${ang}°+${ang}°) = ${vertA}°입니다!` },
+              { t: `② ∠BAC = ${ang}°`, ok: false, msg: `${ang}°는 양쪽 밑각의 크기입니다! 꼭지각은 180°에서 두 밑각을 빼야 합니다!` },
+              { t: `③ ∠BAC = ${180 - ang}°`, ok: false, msg: `180°에서 ${ang}°를 한 번만 빼면 안 되고 두 밑각(2×${ang}°)을 모두 빼야 합니다!` }
+            ],
+            ans: `두 밑각이 모두 ${ang}° ⟹ <span class="tag-rose">∠BAC = 180° - ${2*ang}° = ${vertA}°</span>`,
+            stats: [`접은 각 ∠ABC = ${ang}°`, `평행선 엇각 ∠ACB = ${ang}°`, `두 밑각 크기 동일 (${ang}°)`, `꼭지각 ∠BAC = ${vertA}°`],
+            std: `• 접히기 전후의 각이 같고(접은 각), 평행선의 엇각이 같으므로 겹쳐진 삼각형의 두 밑각은 모두 ${ang}°입니다.`,
+            fast: `• <strong>종이띠 접기 = 같은 각(●) 3개 표시하기!</strong> (접은 선 양옆에 ●, ● 2개 + 엇각 자리에 ● 1개)`
+          };
+        }
+      }
+
+      // [탭 3: 다각형 대각선(n-3)·내각·외각 360° (중1-2 핵심)]
+      if (m === 3) {
+        const n = Math.max(4, Math.min(10, p1));
+        const kName = KOR_N[n] || n;
+        if (sub === 'oneDiag') {
+          const d1 = n - 3, tri = n - 2, sumA = 180 * tri;
+          return {
+            badge: `3-A · ${kName}각형(${n}각형) 한 꼭짓점 대각선(n-3) & 삼각형 분할(n-2)`,
+            actionTxt: '🎬 삼각형 조각 분리',
+            g1Label: '다각형 선택 (n)', g1Btns: [[4,'사각(4)'],[5,'오각(5)'],[6,'육각(6)'],[8,'팔각(8)'],[10,'십각(10)']],
+            g2Label: '보기 옵션', g2Btns: [[1,'연결할 수 없는 점 3곳(✕)'],[2,'삼각형 분리'],[3,'내각의 합'],[4,'삼각형은 1개 더 많다']],
+            eqHTML: `<span class="tag-rose">한 점 대각선 = ${n}-3 = ${d1}개</span> ⟹ <span class="tag-blue">삼각형 조각 = ${n}-2 = ${tri}개</span> ⟹ <span class="tag-emerald">내각 합 = 180°×${tri} = ${sumA}°</span>`,
+            q: `<strong>${kName}각형(${tex(`${n}`)}각형)</strong>의 한 꼭짓점에서 그을 수 있는 대각선 수(${tex('a')}), 나누어지는 삼각형 수(${tex('b')}), <strong>내각의 크기의 총합</strong>은?`,
+            opts: [
+              { t: `① a=${d1}, b=${tri}, 내각 합 ${sumA}°`, ok: true, msg: `정답! 나 자신(1)과 양옆 이웃(2) 총 3곳을 뺀 a=${d1}개, 조각은 1개 더 많은 b=${tri}개, 내각 합은 180°×${tri}=${sumA}°입니다!` },
+              { t: `② a=${tri}, b=${d1}, 내각 합 ${180*d1}°`, ok: false, msg: `대각선(n-3)과 삼각형(n-2)이 바뀌었습니다! 대각선을 1개 그으면 다각형이 2조각으로 나뉘듯, 삼각형이 대각선보다 1개 더 많습니다!` },
+              { t: `③ a=${n-2}, b=${n}, 내각 합 ${180*n}°`, ok: false, msg: `한 꼭짓점 대각선은 n-3 = ${d1}개입니다!` }
+            ],
+            ans: `대각선 <span class="tag-rose">${d1}개</span>, 삼각형 <span class="tag-blue">${tri}개</span>, 내각 합 <span class="tag-emerald">${sumA}°</span>`,
+            stats: [`${kName}각형 (n = ${n})`, `한 점 대각선 (n-3) = ${d1}개`, `삼각형 조각 (n-2) = ${tri}개`, `내각 총합 = ${sumA}°`],
+            std: `• 자기 자신과 양옆 이웃 2개를 제외한 ${tex('n-3')}개의 대각선을 그으면 ${tex('n-2')}개의 삼각형으로 나뉩니다.`,
+            fast: `• <strong>대각선과 삼각형의 개수</strong>: 한 꼭짓점에서 대각선을 ${d1}개 그으면 삼각형은 항상 1개 더 많은 ${tri}개로 나뉩니다!`
+          };
+        }
+        if (sub === 'inPointO') {
+          const sumN = 180 * n, sumA = 180 * (n - 2);
+          return {
+            badge: `3-B · ${kName}각형 내부의 점 O 연결 증명 (180°×n - 360° = 내각의 합)`,
+            actionTxt: '🎬 가운데 360° 차감',
+            g1Label: '다각형 선택 (n)', g1Btns: [[4,'사각(4)'],[5,'오각(5)'],[6,'육각(6)'],[8,'팔각(8)'],[10,'십각(10)']],
+            g2Label: '비교 항목', g2Btns: [[1,'삼각형 n개'],[2,'중심각 360° 빼기'],[3,'4-A와 비교'],[4,'점 O 이동']],
+            eqHTML: `<span class="tag-blue">삼각형 ${n}개(180°×${n}=${sumN}°)</span> ➖ <span class="tag-rose">가운데 점 O 주위 360°</span> = <span class="tag-emerald">내각 합 ${sumA}°</span>`,
+            q: `<strong>${kName}각형(${tex(`${n}`)}각형)</strong> 내부의 점 O에서 각 꼭짓점에 선을 그었을 때 생기는 <strong>삼각형의 개수</strong>와 내각의 합을 구할 때 <strong>빼야 하는 각도</strong>는?`,
+            opts: [
+              { t: `① 삼각형 ${n}개, 360°를 뺀다 (=${sumA}°)`, ok: true, msg: `정답! 변마다 삼각형이 생겨 총 ${n}개(180°×${n})이고, 가운데 점 O 주위에 모인 360°를 빼면 ${sumA}°가 됩니다!` },
+              { t: `② 삼각형 ${n-2}개, 180°를 뺀다`, ok: false, msg: `내부 점 O에서 각 꼭짓점으로 이으면 변의 수만큼 정확히 ${n}개의 삼각형이 생깁니다!` },
+              { t: `③ 삼각형 ${n}개, 빼지 않는다`, ok: false, msg: `점 O 주위의 360°는 다각형의 내각이 아니므로 반드시 빼야 합니다!` }
+            ],
+            ans: `삼각형 <span class="tag-blue">${n}개</span>(${sumN}°) - 중심각 <span class="tag-rose">360°</span> = <span class="tag-emerald">${sumA}°</span>`,
+            stats: [`${kName}각형 (n = ${n})`, `내부 점 O 삼각형 = ${n}개`, `전체 삼각형 각 합 = ${sumN}°`, `${sumN}° - 360° = ${sumA}°`],
+            std: `• ${tex(`180^\\circ\\times ${n} - 360^\\circ = 180^\\circ\\times ${n} - 180^\\circ\\times 2 = 180^\\circ(${n}-2) = ${sumA}^\\circ`)}.`,
+            fast: `• <strong>꼭짓점</strong>에서 그으면 삼각형 <strong>${n-2}개</strong> / <strong>내부 점 O</strong>에서 그으면 삼각형 <strong>${n}개 - 360°</strong>!`
+          };
+        }
+        if (sub === 'allDiag') {
+          const d1 = n - 3, dbl = n * d1, totD = dbl / 2, shake = (n * (n - 1)) / 2;
+          return {
+            badge: `3-C · ${kName}각형 전체 대각선 총개수 n(n-3)÷2 & 변의 수 거꾸로 구하기·악수하기`,
+            actionTxt: '🎬 대각선 그어 보기',
+            g1Label: '다각형·인원수 (n)', g1Btns: [[5,'오각(5)'],[6,'육각(6)'],[7,'칠각(7)'],[8,'팔각(8)'],[9,'구각(9)']],
+            g2Label: '응용 모드 선택', g2Btns: [[1,'🕸️전체 대각선'],[2,'🔍변의 수 구하기'],[3,'🤝원탁 악수'],[4,'전체 선분']],
+            eqHTML: `<span class="tag-blue">꼭짓점 ${n}개</span> × <span class="tag-rose">(${n}-3=${d1}개)</span> ÷ 2(같은 대각선을 2번 센 것) = <span class="tag-emerald">대각선 총 ${totD}개</span>`,
+            q: `<strong>${kName}각형(${tex(`${n}`)}각형)</strong>의 <strong>대각선의 총개수</strong>와, 원탁에 앉은 ${tex(`${n}`)}명이 양옆 이웃을 포함해 <strong>모두와 한 번씩 악수하는 총횟수</strong>는?`,
+            opts: [
+              { t: `① 대각선 ${totD}개, 전체 악수 ${shake}회`, ok: true, msg: `정답! 대각선은 ${n}×${d1}÷2 = ${totD}개이고, 전체 악수는 양옆 이웃(변 ${n}개)을 더한 ${totD}+${n} = ${shake}회(=${n}×${n-1}÷2)입니다!` },
+              { t: `② 대각선 ${dbl}개, 전체 악수 ${shake}회`, ok: false, msg: `한 대각선을 양 끝점에서 2번씩 중복 세었으므로 반드시 2로 나누어야 합니다!` },
+              { t: `③ 대각선 ${totD}개, 전체 악수 ${totD}회`, ok: false, msg: `${totD}회는 양옆 이웃과 악수하지 않을 때(건너편만)이고, 전원 악수는 변 ${n}개를 더한 ${shake}회입니다!` }
+            ],
+            ans: `대각선 총수 = <span class="tag-emerald">${totD}개</span> | 전원 악수(변+대각선) = <span class="tag-blue">${shake}회</span>`,
+            stats: [`한 점 대각선 = ${d1}개`, `단순 곱 n(n-3) = ${dbl} (2배 중복)`, `대각선 총개수 = ${totD}개`, `원탁 전원 악수 = ${shake}회`],
+            std: `• 대각선 총수가 ${totD}개일 때 변의 수 거꾸로 구하기: 양변에 2를 곱해 ${tex(`n(n-3)=${dbl}=${n}\\times ${d1}`)} (3 차이 나는 두 수의 곱)에서 큰 수 ${n}을 찾습니다.`,
+            fast: `• <strong>대각선의 개수로 변의 수 구하기</strong>: 대각선 개수에 2를 곱한 값은 n(n-3)입니다. 곱이 그 값이 되도록 <strong>3 차이 나는 두 수</strong> n과 n-3을 찾으세요!`
+          };
+        }
+        // ext360
+        const oneE = Math.round((360 / n) * 10) / 10, oneI = Math.round((180 - 360 / n) * 10) / 10;
+        return {
+          badge: `3-D · 정${kName}각형 외각의 합 360°(다각형을 줄여 보기) & 한 내각 바로 구하기`,
+          actionTxt: '🎬 360° 원으로 줄이기',
+          g1Label: '정다각형 선택 (n)', g1Btns: [[4,'정사각(4)'],[5,'정오각(5)'],[6,'정육각(6)'],[8,'정팔각(8)'],[10,'정십각(10)']],
+          g2Label: '줄이는 단계', g2Btns: [[1,'원래 다각형'],[2,'절반으로 줄이기'],[3,'🎯360° 원으로 모으기'],[4,'🐜둘레 줄자']],
+          eqHTML: `<span class="tag-emerald">외각 총합 = 360° (항상 일정)</span> ⟹ <span class="tag-blue">한 외각 = 360°÷${n} = ${oneE}°</span> ⟹ <span class="tag-rose">한 내각 = 180°-${oneE}° = ${oneI}°</span>`,
+          q: `<strong>정${kName}각형(${tex(`n=${n}`)})</strong>에서 <strong>① 외각의 크기의 총합</strong>, <strong>② 한 외각의 크기</strong>, <strong>③ 한 내각의 크기</strong>는?`,
+          opts: [
+            { t: `① 360°, 한 외각 ${oneE}°, 한 내각 ${oneI}°`, ok: true, msg: `정답! 외각 총합은 항상 360°이므로 한 외각(${oneE}°)을 먼저 구한 뒤 180°에서 빼면 한 내각(${oneI}°)이 바로 나옵니다!` },
+            { t: `② ${180*(n-2)}°, 한 외각 ${oneE}°, 한 내각 ${oneI}°`, ok: false, msg: `외각의 크기의 총합은 몇 각형이든 항상 360°입니다!` },
+            { t: `③ 360°, 한 외각 ${oneI}°, 한 내각 ${oneE}°`, ok: false, msg: `한 외각(${oneE}°)과 한 내각(${oneI}°)이 바뀌었습니다!` }
+          ],
+          ans: `외각 합 <span class="tag-emerald">360°</span> ⟹ 한 외각 <span class="tag-blue">${oneE}°</span> ⟹ 한 내각 <span class="tag-rose">${oneI}°</span>`,
+          stats: [`정${kName}각형 (n = ${n})`, `외각의 총합 = 360° (항상 일정)`, `한 외각 = 360°÷${n} = ${oneE}°`, `한 내각 = 180°-${oneE}° = ${oneI}°`],
+          std: `• 한 꼭짓점에서 (내각)+(외각)=180°이고, 모든 다각형의 외각의 합은 항상 360°입니다.`,
+          fast: `• 정다각형의 한 내각을 구할 때 복잡한 ${tex('180^\\circ(n-2)\\div n')}을 쓰지 말고, <strong>180° - (한 외각 360°÷n)</strong>으로 바로 계산하세요!`
+        };
+      }
+
+      // =====================================================================
+      // [탭 4: 별모양 & 복잡한 도형의 삼각형 외각 활용 마스터 (중1-2 심화)]
+      // =====================================================================
+      if (m === 4) {
+        if (sub === 'stepExt') {
+          const isStepDomino = p2 >= 2;
+          if (!isStepDomino) {
+            const A = p1 <= 12 ? p1 * 6 : 50 /* [2.0 수정] 칩 72°(p1=12)가 50°로 그려지던 것 */, B = 60, ext = A + B;
+            return {
+              badge: '4-A · 삼각형의 한 외각 = 이웃하지 않는 두 내각의 합 (색종이 이동)',
+              actionTxt: '🎬 두 내각을 외각으로 옮기기',
+              g1Label: '안쪽 각 ∠A 선택', g1Btns: [[6,'36°'],[8,'48°'],[9,'54°'],[10,'60°'],[12,'72°']],
+              g2Label: '외각 유형 전환', g2Btns: [[1,'✂️기본 외각 이동'],[2,'🚀이등변삼각형 이어 붙이기(3단)'],[3,'🚀이등변삼각형 이어 붙이기(4단)'],[4,'거꾸로 구하기 문제']],
+              eqHTML: `<span class="tag-blue">안쪽 ∠A(${A}°)</span> + <span class="tag-rose">안쪽 ∠B(${B}°)</span> 🟰 <span class="tag-emerald">바깥 외각 ∠ACD(${ext}°)</span>`,
+              q: `삼각형 ABC에서 ${tex(`\\angle A=${A}^\\circ, \\angle B=${B}^\\circ`)}일 때, 점 C에서의 <strong>바깥 외각 ${tex('\\angle ACD')}의 크기</strong>는?`,
+              opts: [
+                { t: `① ${ext}° (∠A + ∠B)`, ok: true, msg: `정답! 180°에서 뺄 필요 없이 안쪽 두 내각(${A}°+${B}°)을 바로 더하면 바깥 외각 ${ext}°가 됩니다!` },
+                { t: `② ${180 - ext}° (안쪽 내각 C)`, ok: false, msg: `②의 ${180 - ext}°는 안쪽 내각 ∠ACB의 크기입니다! 외각은 이웃하지 않는 두 내각의 합인 ${ext}°입니다!` },
+                { t: `③ ${180 - A}°`, ok: false, msg: `이웃하지 않는 두 내각 ∠A와 ∠B를 더해야 합니다!` }
+              ],
+              ans: `엇각(${A}°) + 동위각(${B}°) = <span class="tag-emerald">외각 ${ext}°</span>`,
+              stats: [`안쪽 내각 ∠A = ${A}°`, `안쪽 내각 ∠B = ${B}°`, `안쪽 내각 ∠C = ${180-ext}°`, `바깥 외각 ∠ACD = ${ext}°`],
+              std: `• 점 C를 지나고 변 AB에 평행한 선을 그으면 엇각(∠A)과 동위각(∠B)으로 나뉘므로 외각 = ∠A + ∠B입니다.`,
+              fast: `• <strong>삼각형의 외각의 성질</strong>: 한 외각의 크기는 이웃하지 않는 두 내각의 크기의 합과 같습니다. 안쪽 두 각을 더하면 바깥 외각이 됩니다!`
+            };
+          } else {
+            // 이등변삼각형 연속 징검다리 외각 도미노 (x -> 2x -> 3x -> 4x)
+            const x = p1 * 2 + 4; // 선택값 6·8·9·10·11 → x=16°·20°·22°·24°·26°
+            const stepsCnt = p2 === 2 ? 3 : 4;
+            const finalAng = stepsCnt * x;
+            return {
+              badge: `4-A · 이등변삼각형이 이어진 도형의 외각 (x → 2x → 3x${stepsCnt===4?' → 4x':''})`,
+              actionTxt: '🎬 외각을 차례로 표시',
+              g1Label: '첫 밑각 ∠x 선택', g1Btns: [[6,'x=16°'],[8,'x=20°'],[9,'x=22°'],[10,'x=24°'],[11,'x=26°']],
+              g2Label: '외각 유형 전환', g2Btns: [[1,'✂️기본 외각 이동'],[2,'🚀이어 붙이기 3단(3x)'],[3,'🚀이어 붙이기 4단(4x)'],[4,'거꾸로 구하기 문제']],
+              eqHTML: `<span class="tag-blue">1단: x(${x}°)</span> ➔ <span class="tag-emerald">2단 외각: 2x(${2*x}°)</span> ➔ <span class="tag-rose">3단 외각: 3x(${3*x}°)${stepsCnt===4?` ➔ 4단: 4x(${4*x}°)`:''}</span>`,
+              q: `그림에서 ${tex('\\overline{AB}=\\overline{BC}=\\overline{CD}' + (stepsCnt===4?'=\\overline{DE}':''))}이고 ${tex(`\\angle A = ${x}^\\circ`)}일 때, <strong>가장 오른쪽 바깥 외각의 크기</strong>는 몇 도인가? (큰 삼각형 전체의 외각 성질을 주목!)`,
+              opts: [
+                { t: `① ${finalAng}° (정확히 ${stepsCnt}배 = ${stepsCnt}x!)`, ok: true, msg: `정답! 이등변삼각형과 외각 성질을 연속 적용하면 x(${x}°) → 2x(${2*x}°) → 3x(${3*x}°)${stepsCnt===4?` → 4x(${4*x}°)`:''}가 되어 ${stepsCnt}배입니다!` },
+                { t: `② ${(stepsCnt-1)*x}° (${stepsCnt-1}배)`, ok: false, msg: `②의 ${(stepsCnt-1)*x}°는 마지막 삼각형의 안쪽 밑각의 크기입니다! 가장 바깥 외각은 첫 각 ∠A(${x}°)와 마지막 밑각(${(stepsCnt-1)*x}°)을 더한 ${finalAng}°입니다!` },
+                { t: `③ ${2**(stepsCnt-1)*x}° (2배씩 증가)`, ok: false, msg: `마지막 외각을 구할 때는 직전 삼각형이 아니라 '처음 점 A부터 이어진 가장 큰 삼각형'의 외각(x + ${stepsCnt-1}x = ${stepsCnt}x)으로 구해야 합니다!` }
+              ],
+              ans: `외각: ${tex(`x(${x}^\\circ) \\to 2x(${2*x}^\\circ) \\to`)} <span class="tag-rose">${stepsCnt}x = ${finalAng}° (${stepsCnt}배!)</span>`,
+              stats: [
+                `1단계: ΔABC 밑각 = x (${x}°)`,
+                `2단계: 외각 ∠CBD = x+x = 2x (${2*x}°)`,
+                `3단계: ΔACD 외각 = x+2x = 3x (${3*x}°)`,
+                stepsCnt === 4 ? `4단계: ΔADE 외각 = x+3x = 4x (${4*x}°)` : `최종 3단 외각 = ${3*x}°`
+              ],
+              std: `• <strong>가장 많이 틀리는 부분</strong>: 3번째 외각을 구할 때 ${tex('2x+2x=4x')}라고 하면 틀립니다! 반드시 처음 꼭짓점 A를 포함한 <strong>큰 삼각형 ΔACD의 외각</strong>으로 보아 ${tex('x + 2x = 3x')}로 구해야 합니다!`,
+              fast: `• <strong>[이어 붙인 이등변삼각형의 외각]</strong>: 길이가 같은 선분이 <strong>2개면 2x, 3개면 3x, 4개면 4x</strong>! 길이가 같은 선분의 개수만큼 배수가 늘어납니다!`
+            };
+          }
+        }
+
+        if (sub === 'boomBow') {
+          const isBow = p2 >= 3;
+          if (!isBow) {
+            const a = p1 * 4, b = 30, c = 25, x = a + b + c;
+            return {
+              badge: '4-B · 복잡한 도형 ①: 오목사각형 ∠x = ∠a + ∠b + ∠c',
+              actionTxt: '🎬 외각 2번 적용',
+              g1Label: '위쪽 각 ∠a 크기', g1Btns: [[8,'32°'],[10,'40°'],[12,'48°'],[14,'56°'],[15,'60°']],
+              g2Label: '보조선·도형 전환', g2Btns: [[1,'🪃오목사각형(연장선)'],[2,'🪃오목사각형(나누기)'],[3,'🎀X자 도형'],[4,'🎀보조선으로 X자 만들기']],
+              eqHTML: `<span class="tag-blue">∠a(${a}°)</span> + <span class="tag-rose">∠b(${b}°)</span> + <span class="tag-emerald">∠c(${c}°)</span> 🟰 <span class="tag-blue">🪃 오목각 ∠x = ${x}°</span>`,
+              q: `오목사각형에서 세 뾰족각이 ${tex(`\\angle a=${a}^\\circ, \\angle b=${b}^\\circ, \\angle c=${c}^\\circ`)}일 때, <strong>안쪽 오목각 ${tex('\\angle x')}의 크기</strong>는?`,
+              opts: [
+                { t: `① ∠x = ${x}° (세 각의 합!)`, ok: true, msg: `정답! 선분 BD를 연장하면 첫 번째 삼각형 외각(${a}°+${b}°=${a+b}°)에 오른쪽 ∠c(${c}°)가 한 번 더 더해져 ${x}°가 됩니다!` },
+                { t: `② ∠x = ${a+b}°`, ok: false, msg: `오른쪽 뾰족각 ∠c(${c}°)까지 더해야 합니다!` },
+                { t: `③ ∠x = ${180-x}°`, ok: false, msg: `이 오목사각형에서는 180°에서 빼지 않고 세 뾰족각을 그대로 더합니다!` }
+              ],
+              ans: `외각(${a+b}°) + ${c}° = <span class="tag-emerald">∠x = ${x}°</span>`,
+              stats: [`위쪽 꼭지각 ∠a = ${a}°`, `양옆 각 ∠b=${b}°, ∠c=${c}°`, `중간 외각 = ${a+b}°`, `오목각 ∠x = ${x}°`],
+              std: `• [방법1] BD를 연장해 삼각형 외각 성질을 2번 적용: ${tex(`\\angle x = (\\angle a+\\angle b)+\\angle c = ${x}^\\circ`)}.<br/>• [방법2] AD를 연결해 좌우 두 삼각형의 외각의 합으로 증명.`,
+              fast: `• <strong>오목사각형의 각</strong>: 뾰족한 세 각(${a}°, ${b}°, ${c}°)을 모두 더하면 안쪽 오목각 ∠x(${x}°)와 같습니다!`
+            };
+          } else {
+            const sumAB = p1 * 10, c = 42, d = sumAB - c, vert = 180 - sumAB;
+            return {
+              badge: '4-B · 복잡한 도형 ②: X자로 교차하는 도형의 각 (∠a+∠b = ∠c+∠d)',
+              actionTxt: '🎬 각의 합 비교하기',
+              g1Label: '왼쪽 두 각의 합(∠a+∠b)', g1Btns: [[8,'80°'],[9,'90°'],[10,'100°'],[11,'110°'],[12,'120°']],
+              g2Label: '보조선·도형 전환', g2Btns: [[1,'🪃오목사각형(연장선)'],[2,'🪃오목사각형(나누기)'],[3,'🎀X자 도형'],[4,'🎀보조선으로 X자 만들기']],
+              eqHTML: `<span class="tag-blue">왼쪽 두 각의 합(∠a+∠b = ${sumAB}°)</span> 🟰 <span class="tag-rose">오른쪽 두 각의 합(∠c ${c}° + ∠d ${d}°)</span>`,
+              q: `두 선분이 X자로 교차하는 도형에서 왼쪽 두 각의 합이 ${tex(`\\angle a+\\angle b = ${sumAB}^\\circ`)}이고 오른쪽 ${tex(`\\angle c = ${c}^\\circ`)}일 때, <strong>${tex('\\angle d')}의 크기</strong>는?`,
+              opts: [
+                { t: `① ∠d = ${d}° (${sumAB}° - ${c}°)`, ok: true, msg: `정답! 가운데 맞꼭지각(${vert}°)이 같으므로 양쪽 두 각의 합은 ${sumAB}°로 항상 같습니다! 따라서 ∠d = ${sumAB}°-${c}° = ${d}°입니다!` },
+                { t: `② ∠d = ${vert}°`, ok: false, msg: `${vert}°는 가운데 맞꼭지각의 크기입니다!` },
+                { t: `③ ∠a, ∠b를 각각 알아야 구한다`, ok: false, msg: `개별 각을 몰라도 두 각의 합(${sumAB}°)만 알면 반대쪽 두 각의 합도 ${sumAB}°로 같습니다!` }
+              ],
+              ans: `${tex(`\\angle a+\\angle b = \\angle c+\\angle d = ${sumAB}^\\circ \\implies`)} <span class="tag-rose">∠d = ${d}°</span>`,
+              stats: [`왼쪽 두 각의 합 = ${sumAB}°`, `가운데 맞꼭지각 = ${vert}°`, `오른쪽 주어진 ∠c = ${c}°`, `구하는 ∠d = ${d}°`],
+              std: `• 맞꼭지각이 ${vert}°로 같으므로 두 삼각형에서 나머지 두 내각의 합(외각)은 모두 ${sumAB}°로 같습니다.`,
+              fast: `• 복잡한 도형에서 <strong>선분이 X자로 교차하면 『왼쪽 두 끝각의 합 = 오른쪽 두 끝각의 합』</strong>이 성립하므로, 이 식을 이용해 구하는 각을 계산하세요!`
+            };
+          }
+        }
+
+        if (sub === 'starMaster') {
+          const modeType = p2; // 1: 외각 2개 이사법, 2: 나비넥타이 보조선법, 3: 찌그러진 별 숫자 계산, 4: 오각형 속 별
+          const a = p1 * 4, sumBD = 70, sumCE = 180 - a - sumBD;
+          return {
+            badge: modeType === 2
+              ? '4-C · 별 모양(☆) 방법 ②: 아래쪽 보조선을 긋고 X자 도형의 성질로 큰 삼각형 1개에 모으기!'
+              : '4-C · 별 모양(☆) 방법 ①: 두 큰 삼각형의 외각을 이용해 위쪽 작은 삼각형으로 모으기!',
+            actionTxt: '🎬 별 끝각 180°로 모으기',
+            g1Label: '위쪽 끝각 ∠a 크기', g1Btns: [[7,'28°'],[8,'32°'],[9,'36°(정오각별)'],[10,'40°'],[11,'44°']],
+            g2Label: '별 모양 방법·유형 선택', g2Btns: [[1,'⭐방법① 외각 2번 이용'],[2,'⭐방법② 보조선 긋기'],[3,'🌟비대칭 별 각 구하기'],[4,'✡육각별(360°) 비교']],
+            eqHTML: p2 === 4
+              ? `<span class="tag-blue">⭐ 오각별(☆) 5끝각 합 = 180°</span> vs <span class="tag-rose">✡ 육각별(삼각형 2개) 6끝각 합 = 360°!</span>`
+              : `<span class="tag-blue">∠a(${a}°)</span> + <span class="tag-emerald">왼쪽 외각(∠b+∠d=${sumBD}°)</span> + <span class="tag-rose">오른쪽 외각(∠c+∠e=${sumCE}°)</span> = <span class="tag-blue">180°!</span>`,
+            q: p2 === 4
+              ? `한 번에 이어 그린 <strong>오각별(☆)의 다섯 끝각의 합</strong>과, 삼각형 2개가 겹쳐진 <strong>육각별(✡)의 여섯 끝각의 합</strong>을 바르게 짝지은 것은?`
+              : `오각별(☆) 도형에서 위쪽 끝각 ${tex(`\\angle a=${a}^\\circ`)}이고 두 끝각의 합이 ${tex(`\\angle b+\\angle d=${sumBD}^\\circ`)}일 때, <strong>나머지 두 끝각의 합 ${tex('\\angle c+\\angle e')}</strong>는?`,
+            opts: [
+              {
+                t: p2 === 4 ? `① 오각별 180°, 육각별 360°` : `① ∠c+∠e = ${sumCE}° (5각 총합 180°)`,
+                ok: true,
+                msg: p2 === 4
+                  ? `정답! 오각별(☆)은 외각으로 모으면 삼각형 1개(180°)가 되고, 육각별(✡)은 큰 삼각형 2개(180°×2=360°)의 내각 합입니다!`
+                  : `정답! 다섯 끝각을 외각(또는 보조선)으로 한 삼각형에 모으면 총합이 항상 180°이므로 180°-(${a}°+${sumBD}°) = ${sumCE}°입니다!`
+              },
+              { t: p2 === 4 ? `② 오각별 360°, 육각별 540°` : `② ∠c+∠e = ${360 - a - sumBD}° (총합 360°)`, ok: false, msg: `오각별 다섯 끝각의 합은 360°가 아니라 언제나 삼각형 1개의 내각 합인 180°입니다!` },
+              { t: `③ 정오각별이 아니면 합이 변한다`, ok: false, msg: `별이 비대칭으로 찌그러져 있어도 외각 성질은 항상 성립하므로 합은 항상 180°입니다!` }
+            ],
+            ans: p2 === 4 ? `오각별(☆) = <span class="tag-blue">180°</span>, 육각별(✡) = <span class="tag-rose">360°</span>` : `5끝각 총합 = 180° ⟹ <span class="tag-rose">∠c+∠e = ${sumCE}°</span>`,
+            stats: [
+              `위쪽 끝각 ∠a = ${a}°`,
+              `왼쪽 외각 합 (∠b+∠d) = ${sumBD}°`,
+              `오른쪽 외각 합 (∠c+∠e) = ${sumCE}°`,
+              `다섯 끝각 총합 = ${a}+${sumBD}+${sumCE} = 180°`
+            ],
+            std: `• <strong>[방법 1: 삼각형 외각 2번 쓰기]</strong> 위쪽 작은 삼각형의 왼쪽 밑각(외각) = ${tex('\\angle b+\\angle d')}, 오른쪽 밑각(외각) = ${tex('\\angle c+\\angle e')}이므로 세 내각의 합 = 180°!<br/>• <strong>[방법 2: 보조선 긋기]</strong> 아래쪽 두 끝점 C, D를 선분으로 이으면 X자로 교차하는 도형의 성질(왼쪽 두 각의 합 = 오른쪽 두 각의 합)에 의해 위쪽 두 끝각 합 = 아래쪽 보조선 안쪽 두 각의 합이 되어 큰 삼각형 1개(180°)로 합쳐집니다!`,
+            fast: `• <strong>별 모양의 각을 구하는 두 가지 방법(외각의 성질 이용, 보조선으로 X자 도형 만들기)</strong>을 [방법① 외각 2번 이용] 버튼과 [방법② 보조선 긋기] 버튼으로 번갈아 눌러 비교해 보세요!`
+          };
+        }
+
+        // bisect3 (내·외각 이등분선 3종 & 정오각형 대각선 교각)
+        const angA = p1 * 8; // 예: 48, 64, 72, 80, 96
+        const halfA = angA / 2;
+        if (p2 <= 3) {
+          const ans1 = halfA, ans2 = 90 + halfA, ans3 = 90 - halfA;
+          const curAns = p2 === 1 ? ans1 : p2 === 2 ? ans2 : ans3;
+          const titles = { 1: '① 내각+외각 이등분선 (½∠A)', 2: '② 내각+내각 이등분선 (90°+½∠A)', 3: '③ 외각+외각 이등분선 (90°-½∠A)' };
+          return {
+            badge: `4-D · 삼각형 내각·외각 이등분선 교각 3종 (${titles[p2]})`,
+            actionTxt: '🎬 ●, × 절반 식 유도',
+            g1Label: '기준 꼭지각 ∠A 크기', g1Btns: [[6,'48°'],[8,'64°'],[9,'72°'],[10,'80°'],[12,'96°']],
+            g2Label: '3종류 & 대각선 교각 선택', g2Btns: [[1,'①내+외(½A)'],[2,'②내+내(90+½A)'],[3,'③외+외(90-½A)'],[4,'💠정오각 대각선교각']],
+            eqHTML: `<span class="tag-blue">① 내+외 = ${ans1}°</span> · <span class="tag-emerald">② 내+내 = 90°+${halfA}° = ${ans2}°</span> · <span class="tag-rose">③ 외+외 = 90°-${halfA}° = ${ans3}°</span>`,
+            q: `삼각형 ABC에서 ${tex(`\\angle A=${angA}^\\circ`)}일 때, 현재 선택된 <strong>[${titles[p2]}]</strong>에서 두 이등분선이 이루는 각 ${tex('\\angle x')}의 크기는?`,
+            opts: [
+              { t: `① ∠x = ${curAns}°`, ok: true, msg: `정답! ●과 × 기호로 식을 세워 양변을 2로 나누면 ${titles[p2]}에서 ∠x = ${curAns}°입니다!` },
+              { t: `② ∠x = ${p2===1?ans2:ans1}°`, ok: false, msg: `내+외(${ans1}°), 내+내(${ans2}°), 외+외(${ans3}°) 중 현재 선택된 유형(${p2}번)을 확인하세요!` },
+              { t: `③ ∠x = ${angA}°`, ok: false, msg: `각을 이등분했으므로 반드시 절반인 ½∠A = ${halfA}°가 들어갑니다!` }
+            ],
+            ans: `${titles[p2]} ⟹ <span class="tag-emerald">∠x = ${curAns}°</span>`,
+            stats: [
+              `꼭지각 ∠A = ${angA}° (½∠A = ${halfA}°)`,
+              `① 내각+외각 교각 = ${ans1}°`,
+              `② 내각+내각 교각 = ${ans2}°`,
+              `③ 외각+외각 교각 = ${ans3}°`
+            ],
+            std: `• [① 내+외] 큰 삼각형 외각 ${tex('2\\times = \\angle A + 2\\bullet \\implies \\times - \\bullet = \\dfrac{1}{2}\\angle A')}. 작은 삼각형 외각 ${tex('\\times = \\angle x + \\bullet \\implies \\angle x = \\dfrac{1}{2}\\angle A')}.`,
+            fast: `• <strong>이등분선이 이루는 각의 세 경우</strong>: 내각과 외각의 이등분선이 만나면(내+외) <strong>½∠A</strong> / 두 내각의 이등분선이 만나면(내+내, 둔각) <strong>90°+½∠A</strong> / 두 외각의 이등분선이 만나면(외+외, 예각) <strong>90°-½∠A</strong>!`
+          };
+        } else {
+          // 정오각형 대각선 교각 (이등변삼각형 + 삼각형의 외각 활용!)
+          return {
+            badge: '4-D · 정오각형 속 두 대각선이 이루는 교각 (이등변삼각형 + 외각 활용!)',
+            actionTxt: '🎬 이등변삼각형·외각 표시',
+            g1Label: '구하는 각 위치', g1Btns: [[6,'예각(72°)'],[8,'둔각(108°)'],[9,'밑각(36°)'],[10,'한 내각(108°)'],[12,'전체 보기']],
+            g2Label: '3종류 & 대각선 교각 선택', g2Btns: [[1,'①내+외(½A)'],[2,'②내+내(90+½A)'],[3,'③외+외(90-½A)'],[4,'💠정오각 대각선교각']],
+            eqHTML: `<span class="tag-blue">정오각형 한 내각 108°</span> ➔ <span class="tag-emerald">이등변 밑각 36°</span> ➔ <span class="tag-rose">대각선 교각(외각!) = 36°+36° = 72° (둔각 108°)</span>`,
+            q: `정오각형 ABCDE에서 두 대각선 AC와 BD의 교점을 P라 할 때, <strong>① ${tex('\\angle BAC')}의 크기</strong>와 <strong>② 두 대각선이 이루는 예각(${tex('\\angle APB')}) 및 둔각(${tex('\\angle BPC')})</strong>은?`,
+            opts: [
+              { t: `① ∠BAC=36°, 예각 72°, 둔각 108°`, ok: true, msg: `정답! 한 내각이 108°인 이등변삼각형 ΔABC의 두 밑각은 36°이고, 삼각형 외각 성질에 의해 교각은 36°+36°=72° (둔각 108°)입니다!` },
+              { t: `② ∠BAC=54°, 예각 72°, 둔각 108°`, ok: false, msg: `(180°-108°)÷2 = 36°이므로 밑각 ∠BAC는 36°입니다!` },
+              { t: `③ ∠BAC=36°, 예각 60°, 둔각 120°`, ok: false, msg: `정오각형에서는 36°, 72°, 108°(36°의 1배·2배·3배)만 등장합니다!` }
+            ],
+            ans: `밑각 <span class="tag-blue">36°</span>, 예각 교각 <span class="tag-emerald">72°</span>, 둔각 교각 <span class="tag-rose">108°</span>`,
+            stats: [`정오각형 한 내각 = 108°`, `ΔABC 양 밑각 = 36°, 36°`, `예각 교각 ∠APB = 72°`, `둔각 교각 ∠BPC = 108°`],
+            std: `• ${tex('\\overline{AB}=\\overline{BC}')}인 이등변삼각형에서 ${tex('\\angle BAC = \\angle BCA = (180^\\circ-108^\\circ)\\div 2 = 36^\\circ')}이고, 외각의 성질로 교각을 구합니다.`,
+            fast: `• <strong>정오각형의 두 대각선이 만드는 각(36° · 72° · 108°)</strong>: 가장 작은 각은 <strong>36°</strong>, 두 대각선이 이루는 예각은 <strong>72°</strong>, 둔각은 <strong>108°</strong>입니다!`
+          };
+        }
+      }
+      return {};
+    }
+
+  /* ======================================================================
+     [2.0] ctx 어댑터: 원본의 캔버스 호출 → 새 무대 엔진
+     - 좌표: 원본의 화면 좌표(cx, cy, px)를 그대로 '설계 좌표'로 씁니다. 무대 배율이 1일 때 설계 1 = 화면 1px(원본과 같음),
+       확대·축소하면 도형만 따라 커지고 선 굵기·글자는 화면 픽셀 그대로입니다.
+     - 색: 원본 헥사·rgba 색이 테마 의미색으로 자동 변환됩니다(칠판·종이 모두 대응).
+     - 지원하는 호출: save/restore · translate/rotate/scale · beginPath/moveTo/lineTo/arc/closePath/rect ·
+       fill/stroke/fillRect/strokeRect · setLineDash · fillStyle/strokeStyle/lineWidth/globalAlpha
+     ====================================================================== */
+  let BOARD = null; // 지금 그리는 무대
+  let CUR = null; // 지금 그리는 셸 상태(핸들 끌기가 고칩니다)
+  let ROOT = 1; // 원본 그림 전체의 확대 배율(원본의 px 고정값으로 그린 장면을 큰 무대에서 키울 때). 가상 화면 크기는 무대/ROOT
+  const sink = {};
+  const VW = 640, VH = 440; // 모든 장면 미리보기용 가상 화면 크기
+
+  const ctx = (function () {
+    let M = [1, 0, 0, 1, 0, 0];
+    let stack = [];
+    let path = [];
+    let cur = null;
+    const tp = (x, y) => ({ x: M[0] * x + M[2] * y + M[4], y: M[1] * x + M[3] * y + M[5] });
+    const FILL_STAGE = '#0d241b'; // 원본이 '칠판 배경색'으로 칠하던 어두운 초록 → 테마의 무대 배경색
+    const col = (c) => (String(c).toLowerCase() === FILL_STAGE ? BOARD.colors.stage : BOARD.color(c));
+    const api = {
+      fillStyle: '#000', strokeStyle: '#000', lineWidth: 1, globalAlpha: 1, lineDash: [],
+      bind(b, root) { BOARD = b; ROOT = root || 1; M = [ROOT, 0, 0, ROOT, 0, 0]; stack = []; path = []; cur = null; api.fillStyle = '#000'; api.strokeStyle = '#000'; api.lineWidth = 1; api.globalAlpha = 1; api.lineDash = []; },
+      save() { stack.push({ M: M.slice(), f: api.fillStyle, s: api.strokeStyle, w: api.lineWidth, g: api.globalAlpha, d: api.lineDash }); },
+      restore() { const q = stack.pop(); if (!q) return; M = q.M; api.fillStyle = q.f; api.strokeStyle = q.s; api.lineWidth = q.w; api.globalAlpha = q.g; api.lineDash = q.d; },
+      translate(x, y) { M = [M[0], M[1], M[2], M[3], M[0] * x + M[2] * y + M[4], M[1] * x + M[3] * y + M[5]]; },
+      rotate(a) { const c = Math.cos(a), s = Math.sin(a); M = [M[0] * c + M[2] * s, M[1] * c + M[3] * s, -M[0] * s + M[2] * c, -M[1] * s + M[3] * c, M[4], M[5]]; },
+      scale(x, y) { M = [M[0] * x, M[1] * x, M[2] * y, M[3] * y, M[4], M[5]]; },
+      setLineDash(a) { api.lineDash = a || []; },
+      clearRect() {},
+      beginPath() { path = []; cur = null; },
+      moveTo(x, y) { cur = { pts: [tp(x, y)], closed: false }; path.push(cur); },
+      lineTo(x, y) {
+        if (!cur) { api.moveTo(x, y); return; }
+        if (cur.closed) { cur = { pts: [cur.pts[0]], closed: false }; path.push(cur); }
+        cur.pts.push(tp(x, y));
+      },
+      closePath() { if (cur) cur.closed = true; },
+      arc(x, y, r, a0, a1, ccw) {
+        const T = Math.PI * 2;
+        let d = a1 - a0;
+        if (!ccw) d = d >= T ? T : ((d % T) + T) % T;
+        else d = d <= -T ? -T : -((((-d) % T) + T) % T);
+        const n = Math.max(6, Math.ceil(Math.abs(d) / (Math.PI / 36)));
+        for (let i = 0; i <= n; i++) {
+          const a = a0 + (d * i) / n;
+          const px = x + r * Math.cos(a), py = y + r * Math.sin(a);
+          if (i === 0 && !cur) api.moveTo(px, py); else api.lineTo(px, py);
+        }
+      },
+      rect(x, y, w, h) { path.push({ pts: [tp(x, y), tp(x + w, y), tp(x + w, y + h), tp(x, y + h)], closed: true }); cur = null; },
+      roundRect(x, y, w, h) { api.rect(x, y, w, h); },
+      _paint(subs, doFill, doStroke) {
+        const B = BOARD, c = B.ctx;
+        c.save();
+        c.globalAlpha *= api.globalAlpha;
+        c.beginPath();
+        for (const sp of subs) {
+          sp.pts.forEach((p, i) => { const s = B.toS(p.x, p.y); if (i) c.lineTo(s.x, s.y); else c.moveTo(s.x, s.y); });
+          if (sp.closed) c.closePath();
+        }
+        if (doFill) { c.fillStyle = col(api.fillStyle); c.fill(); }
+        if (doStroke) {
+          c.strokeStyle = col(api.strokeStyle);
+          c.lineWidth = Math.max(0.8, api.lineWidth * B.lw * (B.thumb ? 0.6 : 1));
+          c.lineJoin = 'round';
+          c.lineCap = 'round';
+          c.setLineDash(api.lineDash.map((v) => v * B.lw));
+          c.stroke();
+        }
+        c.restore();
+      },
+      fill() { api._paint(path, true, false); },
+      stroke() { api._paint(path, false, true); },
+      fillRect(x, y, w, h) { api._paint([{ pts: [tp(x, y), tp(x + w, y), tp(x + w, y + h), tp(x, y + h)], closed: true }], true, false); },
+      strokeRect(x, y, w, h) { api._paint([{ pts: [tp(x, y), tp(x + w, y), tp(x + w, y + h), tp(x, y + h)], closed: true }], false, true); }
+    };
+    return api;
+  })();
+
+  /* 화면 글자: 이모지는 글꼴에 따라 깨질 수 있어 뜻을 가진 것만 기호로 바꾸고 나머지는 뗍니다 */
+  const arrowOnly = (s) => String(s == null ? '' : s).replace(/\s*\([☆✡]\)/g, '').replace(/🟰/g, '=').replace(/➖/g, '−').replace(/➕/g, '+').replace(/➔/g, '→').replace(/⭕/g, '○').replace(/[❌✕]/g, '×');
+  const cv = (s) => APLab.stripEmoji(arrowOnly(s));
+  const arrow = (v) => (typeof v === 'string' ? cv(v) : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
+
+  /* ======================================================================
+     원본의 마크 그리기 함수(원본 447–578행). 그리기 호출은 그대로이고, 글자(상자·각 이름·핸들)는 화면 픽셀로 그립니다.
+     [2.0 수정] 마크는 정리 탭 1단계, 꼭짓점 이름·각 이름은 3단계에서 나타납니다(원본의 Step 1·3 켜기/끄기).
+     ====================================================================== */
+  function drawRightAngle(x, y, ang1, size = 12, color = '#38bdf8') {
+    if (!state.steps[1]) return;
+    const ang2 = ang1 + Math.PI / 2;
+    const p1 = { x: x + size * Math.cos(ang1), y: y + size * Math.sin(ang1) };
+    const p2 = { x: p1.x + size * Math.cos(ang2), y: p1.y + size * Math.sin(ang2) };
+    const p3 = { x: x + size * Math.cos(ang2), y: y + size * Math.sin(ang2) };
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.lineTo(p3.x, p3.y);
+    ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+    ctx.lineTo(x, y); ctx.closePath();
+    ctx.fillStyle = 'rgba(56, 189, 248, 0.14)'; ctx.fill();
+    ctx.restore();
+  }
+
+  function drawParallelArrows(x1, y1, x2, y2, count = 2, color = '#34d399') {
+    if (!state.steps[1]) return;
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2, ang = Math.atan2(y2 - y1, x2 - x1), sz = 7;
+    ctx.save();
+    ctx.strokeStyle = color; ctx.lineWidth = 2.2;
+    for (let i = 0; i < count; i++) {
+      const off = (i - (count - 1) / 2) * 7;
+      const px = mx + off * Math.cos(ang), py = my + off * Math.sin(ang);
+      ctx.beginPath();
+      ctx.moveTo(px - sz * Math.cos(ang - 0.6), py - sz * Math.sin(ang - 0.6));
+      ctx.lineTo(px, py);
+      ctx.lineTo(px - sz * Math.cos(ang + 0.6), py - sz * Math.sin(ang + 0.6));
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawTickMarks(x1, y1, x2, y2, count = 2, color = '#fb7185') {
+    if (!state.steps[1]) return;
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2, ang = Math.atan2(y2 - y1, x2 - x1), norm = ang + Math.PI / 2, len = 6.5;
+    ctx.save();
+    ctx.strokeStyle = color; ctx.lineWidth = 2.2;
+    for (let i = 0; i < count; i++) {
+      const off = (i - (count - 1) / 2) * 5;
+      const cx = mx + off * Math.cos(ang), cy = my + off * Math.sin(ang);
+      ctx.beginPath();
+      ctx.moveTo(cx - len * Math.cos(norm), cy - len * Math.sin(norm));
+      ctx.lineTo(cx + len * Math.cos(norm), cy + len * Math.sin(norm));
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawAngleArc(cx, cy, r, startAng, endAng, color, label = '') {
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, startAng, endAng, false);
+    ctx.closePath();
+    ctx.fillStyle = color + '33';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, startAng, endAng, false);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.4;
+    ctx.stroke();
+    ctx.restore();
+    if (label && state.steps[3] && !BOARD.thumb) {
+      const mid = (startAng + endAng) / 2;
+      const s = BOARD.toS((cx + (r + 16) * Math.cos(mid)) * ROOT, (cy + (r + 16) * Math.sin(mid)) * ROOT);
+      BOARD.stext(s.x, s.y, cv(label), { color: 'ink', size: 11.5, weight: 800, align: 'center', baseline: 'middle' });
+    }
+  }
+
+  /* [표시 보강] 각 표시 도우미 angMark(꼭짓점 v, 반직선 방향 p1·p2, {color, rings, r, label}) — 설계 좌표(ROOT 곱하기 전)로 받음.
+     꼭짓점에서 p1→p2 쪽 작은 각에 호(rings겹)를 긋고(정리 1단계 '마크'), 값·기호(label, 배열이면 여러 줄)는 호 바깥의 그 각 '부채꼴 안쪽'에
+     놓습니다(3단계 '이름'). 크기는 화면 픽셀 기준이라 현재 점에서 매 프레임 다시 계산되고, 각이 좁으면 라벨을 꼭짓점에서 더 멀리 둡니다. */
+  function angMark(v, p1, p2, o = {}) {
+    if (!state.steps[1] || !BOARD) return;
+    const b = BOARD, S = (p) => ({ x: p.x * ROOT, y: p.y * ROOT });
+    const V = S(v), unit = (p) => { const q = S(p), dx = q.x - V.x, dy = q.y - V.y, l = Math.hypot(dx, dy) || 1; return { x: V.x + (dx / l) * 1e-3, y: V.y + (dy / l) * 1e-3 }; };
+    const q1 = unit(p1), q2 = unit(p2);
+    const s0 = b.toS(V), a = b.toS(q1), c = b.toS(q2);
+    const t1 = Math.atan2(a.y - s0.y, a.x - s0.x), t2 = Math.atan2(c.y - s0.y, c.x - s0.x);
+    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, w = Math.abs(d), m = t1 + d / 2;
+    let r = o.r || 28;
+    const lines = !state.steps[3] || b.thumb || o.label == null || o.label === '' ? [] : [].concat(o.label).map(String);
+    const hw = (Math.max(0, ...lines.map((x) => x.length)) * 7.2) / 2 + 3, hh = lines.length * 7 + 1;
+    const half = Math.max(w / 2, 0.07);
+    let D = r + 11;
+    [-1, 1].forEach((sg) => { const ang = m + sg * half; D = Math.max(D, (hw * Math.abs(Math.sin(ang)) + hh * Math.abs(Math.cos(ang))) / Math.sin(half) + 2); });
+    D = Math.min(D, o.max || 130);
+    if (lines.length && D - 12 > r) r = Math.min(D - 12, o.rmax || 70);
+    if (o.out && lines.length) { r = o.r || 28; D = r + 16; } // o.out: 각이 너무 좁은 그림에서는 라벨을 꼭짓점 바깥쪽(반대 방향)에 둠
+    b.angle(V, q1, q2, { color: o.color, r, rings: o.rings || 1 });
+    const mL = o.out ? m + Math.PI : m;
+    lines.forEach((x, i) => b._text(s0.x + Math.cos(mL) * D, s0.y + Math.sin(mL) * D + (i - (lines.length - 1) / 2) * 13.5, x, { color: o.color, size: o.size || 12.5, align: 'center', baseline: 'middle', weight: 800 }));
+  }
+
+  // 긴 이름표는 무대 폭에 맞춰 줄바꿈(공백 기준, 공백이 없으면 글자 단위)
+  function wrapText(c, text, maxW) {
+    const out = [];
+    let line = '';
+    const push = (w) => { if (c.measureText(w).width <= maxW) return [w]; const parts = []; let a = ''; for (const ch of w) { if (c.measureText(a + ch).width > maxW && a) { parts.push(a); a = ch; } else a += ch; } parts.push(a); return parts; };
+    for (const word of String(text).split(/\s+/).filter(Boolean)) {
+      const cand = line ? line + ' ' + word : word;
+      if (c.measureText(cand).width <= maxW) { line = cand; continue; }
+      if (line) out.push(line);
+      const parts = push(word);
+      line = parts.pop();
+      out.push(...parts);
+    }
+    if (line) out.push(line);
+    return out;
+  }
+
+  function drawSmartLabel(px, py, centerX, centerY, text, color = '#e2e8f0', dist = 19) {
+    if (!state.steps[3] || BOARD.thumb) return;
+    const B = BOARD, c = B.ctx;
+    const S = B.toS(px * ROOT, py * ROOT), C = B.toS(centerX * ROOT, centerY * ROOT);
+    const dx = S.x - C.x, dy = S.y - C.y, len = Math.hypot(dx, dy) || 1;
+    const A = B._area();
+    const size = 12 * B.fs;
+    c.save();
+    c.font = `800 ${size}px ${B.font}`;
+    const lines = wrapText(c, cv(text), Math.min(240, Math.max(110, A.w - 20)));
+    const w = Math.max(...lines.map((l) => c.measureText(l).width)) + 10;
+    const lh = size + 3, h = lines.length * lh + 5;
+    const off = dist * 0.6 + (Math.abs(dx / len) * w) / 2 + (Math.abs(dy / len) * h) / 2;
+    let lx = S.x + (dx / len) * off, ly = S.y + (dy / len) * off;
+    lx = w + 6 >= A.w ? A.x + A.w / 2 : clamp(lx, A.x + 3 + w / 2, A.x + A.w - 3 - w / 2);
+    ly = h + 6 >= A.h ? A.y + A.h / 2 : clamp(ly, A.y + 3 + h / 2, A.y + A.h - 3 - h / 2);
+    c.beginPath();
+    if (c.roundRect) c.roundRect(lx - w / 2, ly - h / 2, w, h, 4); else c.rect(lx - w / 2, ly - h / 2, w, h);
+    c.fillStyle = APLab.rgba(B.colors.halo, 0.9);
+    c.fill();
+    c.strokeStyle = B.color('muted', 0.85);
+    c.lineWidth = 1;
+    c.stroke();
+    c.fillStyle = B.color(color);
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+    lines.forEach((l, i) => c.fillText(l, lx, ly - h / 2 + 2.5 + lh * (i + 0.5)));
+    c.restore();
+  }
+
+  function registerDragHandle(id, x, y, label, onDrag, extra = {}) {
+    BOARD.handle(id, { x: x * ROOT, y: y * ROOT }, {
+      color: 'sky', ...extra, label: BOARD.thumb ? '' : cv(label),
+      drag: (w) => { onDrag(w.x / ROOT, w.y / ROOT); CUR.dragX = state.dragXRatio; CUR.dragY = state.dragYRatio; }
+    });
+  }
+
+  // 원본은 캔버스 위에 띠를 덧그렸습니다 → 무대 아래 띠(v.tape)로 보냅니다. [2.0 수정] 칸 폭을 실제 변의 길이에 비례시킴
+  function drawAntTape(rect, polyPts, segLabels, segColors, titleNote) {
+    if (!state.showAntTape) return;
+    const px = Math.min(rect.width, rect.height) * 0.032 * state.scale;
+    const n = polyPts.length;
+    const cm = polyPts.map((p, i) => Math.hypot(p.x - polyPts[(i + 1) % n].x, p.y - polyPts[(i + 1) % n].y) / (px * 1.1));
+    sink.tape = {
+      title: cv(`[테두리 줄자 펼치기] ${titleNote} (둘레 ≈ ${cm.reduce((a, b) => a + b, 0).toFixed(1)}cm)`),
+      segments: segLabels.map((t, i) => ({ text: `${cv(t)} ${cm[i].toFixed(1)}`, weight: cm[i], color: segColors[i % segColors.length] }))
+    };
+  }
+
+  // [2.0 수정] 점 O 끌기: 다각형 안쪽(안에 내접한 원의 85%)으로 제한 — 밖으로 나가면 "삼각형 n개" 가정이 깨짐
+  const clampInPoly = (ox, oy, R, n) => { const lim = R * Math.cos(Math.PI / n) * 0.85, d = Math.hypot(ox, oy); return d > lim ? { x: (ox * lim) / d, y: (oy * lim) / d } : { x: ox, y: oy }; };
+
+  /* ======================================================================
+     원본 render() 본문 (원본 1123–1740행) — 화면 크기(rect)만 무대에서 받아 옴
+     ====================================================================== */
+  function renderScene(rect) {
+      const m = state.mode, sub = state.sub[m], t = state.animProg;
+      const p1 = state.p1, p2 = state.p2;
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.49 + state.offsetY;
+      const px = Math.min(rect.width, rect.height) * 0.032 * state.scale;
+
+      ctx.save();
+
+      // =======================================================================
+      // [탭 1 렌더링: 넓이 원리·바깥 직사각형]
+      // =======================================================================
+      if (m === 1) {
+        if (sub === 'triAlt') {
+          if (p2 !== 2) {
+            const aPx = p1 * px, hPx = 6 * px, yBot = cy + hPx / 2, yTop = cy - hPx / 2;
+            const pB = { x: cx - aPx * 0.6, y: yBot }, pC = { x: cx - aPx * 0.6 + aPx, y: yBot };
+            const ax = cx + (state.dragXRatio - 0.35) * aPx * 2.0 + t * aPx * 0.65;
+            const pA = { x: ax, y: yTop }, pH = { x: ax, y: yBot };
+
+            ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+            ctx.beginPath(); ctx.moveTo(cx - 230, yBot); ctx.lineTo(cx + 230, yBot); ctx.stroke(); ctx.setLineDash([]);
+
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5;
+            ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.stroke();
+
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 3; ctx.setLineDash([5, 4]);
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pH.x, pH.y); ctx.stroke(); ctx.setLineDash([]);
+            drawRightAngle(pH.x, pH.y, Math.PI, 13, '#34d399');
+
+            drawSmartLabel(pB.x, pB.y, cx, cy, 'B'); drawSmartLabel(pC.x, pC.y, cx, cy, 'C');
+            drawSmartLabel(pH.x, pH.y + 8, pH.x, pH.y - 20, 'H(수선의 발)', '#34d399', 16);
+            registerDragHandle('A', pA.x, pA.y, '꼭짓점 A 끌기', (nx) => {
+              state.dragXRatio = Math.max(0.05, Math.min(0.95, 0.35 + (nx - cx - t * aPx * 0.65) / (aPx * 2.0) /* [2.0 수정] 이동 진행도만큼 어긋나던 것 */));
+            });
+          } else {
+            const k = p1 <= 6 ? 1 : p1 <= 8 ? 2 : 3;
+            const a = 3 * k, b = 4 * k, c = 5 * k;
+            const aPx = a * px * 1.1, bPx = b * px * 1.1, cPx = c * px * 1.1, hPx = (aPx * bPx) / cPx;
+            const yBot = cy + hPx * 0.5, yTop = yBot - hPx;
+            const pB = { x: cx - cPx / 2, y: yBot }, pC = { x: cx + cPx / 2, y: yBot };
+            const xH = pB.x + (aPx * aPx) / cPx;
+            const pA = { x: xH, y: yTop }, pH = { x: xH, y: yBot };
+
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+
+            if (t > 0.02) {
+              const piv = { x: (pA.x + pC.x) / 2, y: (pA.y + pC.y) / 2 };
+              ctx.save(); ctx.translate(piv.x, piv.y); ctx.rotate(t * Math.PI); ctx.translate(-piv.x, -piv.y);
+              ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+              ctx.fillStyle = 'rgba(52, 211, 153, 0.18)'; ctx.fill();
+              ctx.strokeStyle = '#34d399'; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.restore();
+            }
+
+            drawRightAngle(pA.x, pA.y, Math.atan2(pB.y - pA.y, pB.x - pA.x), 12, '#38bdf8');
+            drawRightAngle(pH.x, pH.y, Math.PI, 12, '#fb7185');
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.5;
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pH.x, pH.y); ctx.stroke();
+
+            drawSmartLabel(pA.x, pA.y, cx, cy, 'A(90°)');
+            drawSmartLabel(pB.x, pB.y, cx, cy, `B`);
+            drawSmartLabel(pC.x, pC.y, cx, cy, `C`);
+            drawSmartLabel(pH.x, pH.y + 8, pH.x, pH.y - 20, `h=${((a*b)/c).toFixed(1)}cm`, '#fb7185', 16);
+          }
+        } else if (sub === 'paraMove') {
+          const aPx = p1 * px, hPx = 6 * px, cutW = aPx * 0.28;
+          const x0 = cx - aPx / 2, yBot = cy + hPx / 2, yTop = cy - hPx / 2;
+
+          ctx.beginPath();
+          ctx.moveTo(x0 + cutW, yBot); ctx.lineTo(x0 + aPx, yBot);
+          ctx.lineTo(x0 + aPx + cutW, yTop); ctx.lineTo(x0 + cutW, yTop); ctx.closePath();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+
+          const sh = t * aPx;
+          ctx.beginPath();
+          ctx.moveTo(x0 + sh, yBot); ctx.lineTo(x0 + cutW + sh, yBot); ctx.lineTo(x0 + cutW + sh, yTop); ctx.closePath();
+          ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill();
+          ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5; ctx.stroke();
+
+          drawRightAngle(x0 + cutW + sh, yBot, Math.PI, 12, '#fb7185');
+          drawParallelArrows(x0 + cutW, yTop, x0 + aPx + cutW, yTop, 2, '#34d399');
+          drawParallelArrows(x0, yBot, x0 + aPx, yBot, 2, '#34d399');
+        } else if (sub === 'trapRot') {
+          const b = Math.max(2, p1 - 4), aPx = p1 * px, bPx = b * px, hPx = 6 * px;
+          const offL = (aPx - bPx) * 0.35, x0 = cx - (aPx + bPx * t) / 2, yBot = cy + hPx / 2, yTop = cy - hPx / 2;
+          const trap = [{ x: x0, y: yBot }, { x: x0 + aPx, y: yBot }, { x: x0 + offL + bPx, y: yTop }, { x: x0 + offL, y: yTop }];
+
+          ctx.beginPath(); ctx.moveTo(trap[0].x, trap[0].y); trap.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+
+          if (p2 === 2 || p2 === 3 || state.lens === 'aux') {
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+            ctx.beginPath(); ctx.moveTo(trap[3].x, trap[3].y); ctx.lineTo(trap[1].x, trap[1].y); ctx.stroke(); ctx.setLineDash([]);
+          }
+
+          if (t > 0.02) {
+            const piv = { x: (trap[1].x + trap[2].x) / 2, y: (trap[1].y + trap[2].y) / 2 };
+            ctx.save(); ctx.translate(piv.x, piv.y); ctx.rotate(t * Math.PI); ctx.translate(-piv.x, -piv.y);
+            ctx.beginPath(); ctx.moveTo(trap[0].x, trap[0].y); trap.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#fb7185'; ctx.setLineDash([5, 4]); ctx.lineWidth = 2; ctx.stroke(); ctx.restore();
+          }
+          drawParallelArrows(trap[3].x, trap[3].y, trap[2].x, trap[2].y, 1);
+          drawParallelArrows(trap[0].x, trap[0].y, trap[1].x, trap[1].y, 1);
+        } else {
+          // boxFrame
+          const wPx = p1 * px * 1.1, hPx = 6 * px * 1.1, x0 = cx - wPx / 2, y0 = cy - hPx / 2;
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+          ctx.strokeRect(x0, y0, wPx, hPx); ctx.setLineDash([]);
+
+          if (p2 < 3) {
+            const pA = { x: cx, y: y0 }, pB = { x: x0, y: cy }, pC = { x: cx, y: y0 + hPx }, pD = { x: x0 + wPx, y: cy };
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+            if (state.steps[1]) { // [표시 보강] 직각 표시가 가리키는 두 대각선(점선) — 가운데 ∟가 어느 두 선의 직각인지 보이게
+              ctx.save(); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.8; ctx.setLineDash([5, 4]);
+              ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pC.x, pC.y); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pD.x, pD.y); ctx.stroke(); ctx.restore();
+            }
+            drawRightAngle(cx, cy, 0, 12);
+            if (t > 0.02) {
+              [
+                { c: { x: x0, y: y0 }, p1: pA, p2: pB },
+                { c: { x: x0 + wPx, y: y0 }, p1: pA, p2: pD },
+                { c: { x: x0, y: y0 + hPx }, p1: pC, p2: pB },
+                { c: { x: x0 + wPx, y: y0 + hPx }, p1: pC, p2: pD }
+              ].forEach((cn) => {
+                ctx.beginPath();
+                ctx.moveTo(cn.c.x + t * (cx - cn.c.x), cn.c.y + t * (cy - cn.c.y));
+                ctx.lineTo(cn.p1.x, cn.p1.y); ctx.lineTo(cn.p2.x, cn.p2.y); ctx.closePath();
+                ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill();
+                ctx.strokeStyle = '#fb7185'; ctx.stroke();
+              });
+            }
+          } else {
+            const pA = { x: x0, y: y0 + hPx * 0.33 }, pB = { x: x0 + wPx * 0.38, y: y0 + hPx }, pC = { x: x0 + wPx, y: y0 };
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.24)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+            const sep = t * 20;
+            [
+              { pts: [{ x: x0, y: y0 }, pA, pC], dx: -sep, dy: -sep, l: '①' },
+              { pts: [{ x: x0, y: y0 + hPx }, pA, pB], dx: -sep, dy: sep, l: '②' },
+              { pts: [{ x: x0 + wPx, y: y0 + hPx }, pB, pC], dx: sep, dy: sep, l: '③' }
+            ].forEach((cn) => {
+              ctx.save(); ctx.translate(cn.dx, cn.dy);
+              ctx.beginPath(); ctx.moveTo(cn.pts[0].x, cn.pts[0].y); ctx.lineTo(cn.pts[1].x, cn.pts[1].y); ctx.lineTo(cn.pts[2].x, cn.pts[2].y); ctx.closePath();
+              ctx.fillStyle = 'rgba(244, 63, 94, 0.20)'; ctx.fill();
+              ctx.strokeStyle = '#fb7185'; ctx.stroke();
+              ctx.restore();
+            });
+          }
+        }
+      }
+
+      // =======================================================================
+      // [탭 2 렌더링: 평행선 넓이·산책로·둘레]
+      // =======================================================================
+      else if (m === 2) {
+        if (sub === 'railWing') {
+          const aPx = p1 * px * 1.1, hPx = 6 * px * 1.1, yTop = cy - hPx / 2, yBot = cy + hPx / 2;
+          if (p2 >= 3) {
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2.2;
+            ctx.beginPath(); ctx.moveTo(cx - 240, yTop); ctx.lineTo(cx + 240, yTop); ctx.moveTo(cx - 240, yBot); ctx.lineTo(cx + 240, yBot); ctx.stroke();
+            drawParallelArrows(cx - 180, yTop, cx + 180, yTop, 2); drawParallelArrows(cx - 180, yBot, cx + 180, yBot, 2);
+
+            const pB = { x: cx - aPx / 2, y: yBot }, pC = { x: cx + aPx / 2, y: yBot };
+            const ax = cx + (state.dragXRatio - 0.5 + (t - 0.3) * 0.6) * 280;
+            const pA = { x: ax, y: yTop };
+
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.20)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+            registerDragHandle('A', pA.x, pA.y, '꼭짓점 A 끌기', (nx) => { state.dragXRatio = Math.max(0.1, Math.min(0.9, 0.5 + (nx - cx) / 280 - (t - 0.3) * 0.6 /* [2.0 수정] 이동 진행도만큼 어긋나던 것 */)); });
+            drawAntTape(rect, [pA, pB, pC], ['옆변 AB', `밑변 BC(${p1})`, '옆변 CA'], ['#fb7185', '#38bdf8', '#34d399'], `넓이는 ${(p1*6)/2}cm²로 그대로, 둘레는 변함!`);
+          } else {
+            const pB = { x: cx - aPx / 2, y: yBot }, pC = { x: cx + aPx / 2, y: yBot };
+            const pA = { x: cx - aPx / 6, y: yTop }, pD = { x: cx + aPx / 6, y: yTop };
+            const denom = (pA.x - pC.x) * (pB.y - pD.y) - (pA.y - pC.y) * (pB.x - pD.x) || 1;
+            const tI = ((pA.x - pB.x) * (pB.y - pD.y) - (pA.y - pB.y) * (pB.x - pD.x)) / denom;
+            const pO = { x: pA.x + tI * (pC.x - pA.x), y: pA.y + tI * (pC.y - pA.y) };
+
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
+            drawParallelArrows(pA.x, pA.y, pD.x, pD.y, 2); drawParallelArrows(pB.x, pB.y, pC.x, pC.y, 2);
+
+            [[pA, pB, pO], [pD, pC, pO]].forEach((tr) => {
+              ctx.beginPath(); ctx.moveTo(tr[0].x, tr[0].y); ctx.lineTo(tr[1].x, tr[1].y); ctx.lineTo(tr[2].x, tr[2].y); ctx.closePath();
+              ctx.fillStyle = 'rgba(56, 189, 248, 0.25)'; ctx.fill();
+              ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.8; ctx.stroke();
+            });
+
+            ctx.save(); ctx.translate(0, t * 42);
+            ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill();
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.restore();
+
+            drawSmartLabel(pA.x, pA.y, cx, cy, 'A'); drawSmartLabel(pB.x, pB.y, cx, cy, 'B');
+            drawSmartLabel(pC.x, pC.y, cx, cy, 'C'); drawSmartLabel(pD.x, pD.y, cx, cy, 'D');
+            if (state.steps[3] && !BOARD.thumb) { // [표시 보강] 대각선 교점 O와 같은 넓이의 두 날개 S₁(ΔAOB)·S₂(ΔDOC) 표시
+              drawSmartLabel(pO.x, pO.y, pO.x, pO.y + 20, 'O', '#e2e8f0', 10);
+              [[pA, pB, 'S₁'], [pD, pC, 'S₂']].forEach(([u, w2, nm]) => { const g = BOARD.toS(((u.x + w2.x + pO.x) / 3) * ROOT, ((u.y + w2.y + pO.y) / 3) * ROOT); BOARD.stext(g.x, g.y + 4, nm, { color: 'sky', size: 13, weight: 800, align: 'center', baseline: 'middle' }); });
+            }
+          }
+        } else if (sub === 'baseRatio') {
+          const mL = p1, nL = p2 + 1, totW = (mL + nL) * px * 1.15, hPx = 6 * px * 1.1;
+          const x0 = cx - totW / 2, yBot = cy + hPx / 2, yTop = cy - hPx / 2;
+          const pB = { x: x0, y: yBot }, pD = { x: x0 + (mL / (mL + nL)) * totW, y: yBot }, pC = { x: x0 + totW, y: yBot }, pA = { x: cx - 15, y: yTop };
+          const sep = t * 14;
+
+          ctx.save(); ctx.translate(-sep, 0);
+          ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.restore();
+
+          ctx.save(); ctx.translate(sep, 0);
+          ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+          ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.restore();
+
+          drawSmartLabel(pA.x, pA.y, cx, cy, 'A(높이 공유)');
+          drawSmartLabel(pB.x, pB.y, cx, cy, `B(${mL})`);
+          drawSmartLabel(pD.x, pD.y, cx, cy, 'D');
+          drawSmartLabel(pC.x, pC.y, cx, cy, `C(${nL})`);
+        } else if (sub === 'roadMerge') {
+          const W = p1, H = 8, x = p2, WPx = W * px * 0.85, HPx = H * px * 0.85, rPx = x * px * 0.85;
+          const x0 = cx - WPx / 2, y0 = cy - HPx / 2, gap = (1 - t) * rPx, sl = (p2 % 2 === 0 ? 1 : 0) * (1 - t) * 24;
+          const w1 = (WPx - rPx) * 0.45, w2 = (WPx - rPx) * 0.55, h1 = (HPx - rPx) * 0.45, h2 = (HPx - rPx) * 0.55;
+
+          ctx.strokeStyle = '#94A3B8'; ctx.setLineDash([5, 4]); ctx.strokeRect(x0, y0, WPx, HPx); ctx.setLineDash([]);
+          [
+            [{x:x0,y:y0},{x:x0+w1+sl,y:y0},{x:x0+w1,y:y0+h1},{x:x0,y:y0+h1}],
+            [{x:x0+w1+gap+sl,y:y0},{x:x0+w1+w2+gap,y:y0},{x:x0+w1+w2+gap,y:y0+h1},{x:x0+w1+gap,y:y0+h1}],
+            [{x:x0,y:y0+h1+gap},{x:x0+w1,y:y0+h1+gap},{x:x0+w1-sl,y:y0+h1+h2+gap},{x:x0,y:y0+h1+h2+gap}],
+            [{x:x0+w1+gap,y:y0+h1+gap},{x:x0+w1+w2+gap,y:y0+h1+gap},{x:x0+w1+w2+gap,y:y0+h1+h2+gap},{x:x0+w1+gap-sl,y:y0+h1+h2+gap}]
+          ].forEach((q) => {
+            ctx.beginPath(); ctx.moveTo(q[0].x, q[0].y); q.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.26)'; ctx.fill();
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2.5; ctx.stroke();
+          });
+        } else {
+          // stairFold
+          if (p2 < 3) {
+            const wPx = p1 * px * 0.78, hPx = 8 * px * 0.78, y0 = cy - hPx / 2, lx = cx - wPx - 20, cW = wPx * 0.4, cH = hPx * 0.4;
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.16)';
+            ctx.beginPath(); ctx.moveTo(lx, y0); ctx.lineTo(lx+wPx-cW, y0); ctx.lineTo(lx+wPx-cW, y0+cH); ctx.lineTo(lx+wPx, y0+cH); ctx.lineTo(lx+wPx, y0+hPx); ctx.lineTo(lx, y0+hPx); ctx.closePath();
+            ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(lx+wPx-cW, y0+(1-t)*cH); ctx.lineTo(lx+wPx, y0+(1-t)*cH);
+            ctx.moveTo(lx+wPx-(1-t)*cW, y0); ctx.lineTo(lx+wPx-(1-t)*cW, y0+cH);
+            ctx.stroke();
+
+            const rx = cx + 20, dW = wPx * 0.36, dH = 2 * px * 0.78, dx1 = rx + (wPx - dW) / 2, dx2 = dx1 + dW;
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.14)';
+            ctx.beginPath(); ctx.moveTo(rx, y0); ctx.lineTo(dx1, y0); ctx.lineTo(dx1, y0+dH); ctx.lineTo(dx2, y0+dH); ctx.lineTo(dx2, y0); ctx.lineTo(rx+wPx, y0); ctx.lineTo(rx+wPx, y0+hPx); ctx.lineTo(rx, y0+hPx); ctx.closePath();
+            ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
+
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.moveTo(dx1, y0+(1-t)*dH); ctx.lineTo(dx2, y0+(1-t)*dH); ctx.stroke();
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 4.5;
+            ctx.beginPath(); ctx.moveTo(dx1, y0); ctx.lineTo(dx1, y0+dH); ctx.moveTo(dx2, y0); ctx.lineTo(dx2, y0+dH); ctx.stroke();
+          } else {
+            const ang = PAPER_ANG[p1] || 65, wPx = 5 * px * 1.25, yTop = cy - wPx / 2, yBot = cy + wPx / 2;
+            ctx.fillStyle = 'rgba(148, 163, 184, 0.14)'; ctx.fillRect(cx - 200, yTop, 400, wPx);
+            ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.strokeRect(cx - 200, yTop, 400, wPx);
+            drawParallelArrows(cx - 160, yTop, cx - 80, yTop, 2); drawParallelArrows(cx - 160, yBot, cx - 80, yBot, 2);
+
+            const rad = (ang * Math.PI) / 180, halfB = wPx / Math.tan(rad);
+            const pA = { x: cx, y: yTop }, pB = { x: cx - halfB, y: yBot }, pC = { x: cx + halfB, y: yBot };
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.24)'; ctx.fill();
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
+            drawTickMarks(pA.x, pA.y, pB.x, pB.y, 2); drawTickMarks(pA.x, pA.y, pC.x, pC.y, 2);
+
+            drawSmartLabel(pA.x, pA.y, cx, cy, `A(${180 - 2*ang}°)`);
+            drawSmartLabel(pB.x, pB.y, cx, cy, `B(●${ang}°)`, '#38bdf8');
+            drawSmartLabel(pC.x, pC.y, cx, cy, `C(●${ang}°)`, '#fb7185');
+            // [표시 보강] 같은 각 ●(접은 각 B = 엇각 C)은 같은 하늘색 1겹 호, 꼭지각 A는 분홍 2겹 호 — 값은 각 안쪽
+            angMark(pB, pC, pA, { color: '#38bdf8', rings: 1, r: 30, label: `●${ang}°` });
+            angMark(pC, pB, pA, { color: '#38bdf8', rings: 1, r: 30, label: `●${ang}°` });
+            angMark(pA, pB, pC, { color: '#fb7185', rings: 2, r: 26, label: `${180 - 2 * ang}°` });
+          }
+        }
+      }
+
+      // =======================================================================
+      // [탭 3 렌더링: 다각형 대각선(n-3)·내각·외각 360°]
+      // =======================================================================
+      else if (m === 3) {
+        const n = Math.max(4, Math.min(10, p1));
+        const R = Math.min(rect.width, rect.height) * 0.28 * state.scale;
+        const verts = Array.from({ length: n }, (_, i) => {
+          const a = -Math.PI / 2 + (i * Math.PI * 2) / n;
+          return { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) };
+        });
+
+        if (sub === 'oneDiag') {
+          const cols = ['rgba(56,189,248,0.20)', 'rgba(52,211,153,0.20)', 'rgba(245,158,11,0.20)', 'rgba(244,63,94,0.20)'];
+          for (let i = 1; i < n - 1; i++) {
+            const mx = (verts[0].x + verts[i].x + verts[i + 1].x) / 3, my = (verts[0].y + verts[i].y + verts[i + 1].y) / 3;
+            ctx.save(); ctx.translate((mx - cx) * 0.14 * t, (my - cy) * 0.14 * t);
+            ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); ctx.lineTo(verts[i].x, verts[i].y); ctx.lineTo(verts[i + 1].x, verts[i + 1].y); ctx.closePath();
+            ctx.fillStyle = cols[(i - 1) % cols.length]; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.restore();
+          }
+          for (let i = 2; i < n - 1; i++) {
+            ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); ctx.lineTo(verts[i].x, verts[i].y);
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3.5; ctx.stroke();
+          }
+          verts.forEach((p, i) => {
+            const bad = i === 0 || i === 1 || i === n - 1;
+            drawSmartLabel(p.x, p.y, cx, cy, bad ? '금지(✕)' : `대각선!`, bad ? '#fb7185' : '#38bdf8', 20);
+          });
+        } else if (sub === 'inPointO') {
+          const pO = (() => { const q = clampInPoly((state.dragXRatio - 0.35) * 70, (state.dragYRatio - 0.45) * 70, R, n); return { x: cx + q.x, y: cy + q.y }; })(); // [2.0 수정] 점 O는 다각형 안쪽으로 제한
+          for (let i = 0; i < n; i++) {
+            const v1 = verts[i], v2 = verts[(i + 1) % n];
+            ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(v1.x, v1.y); ctx.lineTo(v2.x, v2.y); ctx.closePath();
+            ctx.fillStyle = i % 2 === 0 ? 'rgba(56,189,248,0.18)' : 'rgba(52,211,153,0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.stroke();
+          }
+          ctx.beginPath(); ctx.arc(pO.x, pO.y, 26 + t * 10, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(244, 63, 94, 0.32)'; ctx.fill();
+          ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.5; ctx.stroke();
+          { // [표시 보강] 점 O 둘레의 n개 각(합 360°) — 삼각형 색과 같은 색 호, 값은 각 안쪽(변이 많으면 호만)
+            const ringPx = (26 + t * 10 + 6) * ROOT * BOARD.k;
+            for (let i = 0; i < n; i++) {
+              const v1 = verts[i], v2 = verts[(i + 1) % n];
+              const ang = Math.round((((Math.atan2(v2.y - pO.y, v2.x - pO.x) - Math.atan2(v1.y - pO.y, v1.x - pO.x)) * 180) / Math.PI + 720) % 360);
+              angMark(pO, v1, v2, { color: i % 2 === 0 ? '#38bdf8' : '#34d399', rings: 1, r: ringPx, rmax: ringPx + 30, label: n <= 8 ? `${ang}°` : '', max: R * 0.8 * ROOT * BOARD.k });
+            }
+          }
+          registerDragHandle('O', pO.x, pO.y, '점 O (360° 빼기!)', (nx, ny) => { const q = clampInPoly(nx - cx, ny - cy, R, n); state.dragXRatio = 0.35 + q.x / 70; state.dragYRatio = 0.45 + q.y / 70; }, { dx: 0, dy: -((26 + t * 10 + 6) * ROOT * BOARD.k + 56), align: 'center', baseline: 'middle' }); // [표시 보강] 점 O 이름표는 각 값 라벨 위쪽으로 띄움
+        } else if (sub === 'allDiag') {
+          ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); verts.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.stroke();
+          const diags = [];
+          for (let i = 0; i < n; i++) {
+            for (let j = i + 2; j < n; j++) {
+              if (i === 0 && j === n - 1) continue;
+              diags.push([verts[i], verts[j]]);
+            }
+          }
+          const cnt = t > 0.04 ? Math.ceil(t * diags.length) : diags.length;
+          for (let k = 0; k < cnt; k++) {
+            ctx.beginPath(); ctx.moveTo(diags[k][0].x, diags[k][0].y); ctx.lineTo(diags[k][1].x, diags[k][1].y);
+            ctx.strokeStyle = k < n - 3 ? '#fb7185' : 'rgba(56,189,248,0.55)';
+            ctx.lineWidth = k < n - 3 ? 3.2 : 1.8; ctx.stroke();
+          }
+          verts.forEach((p, i) => drawSmartLabel(p.x, p.y, cx, cy, `P${i + 1}`));
+        } else {
+          // ext360
+          const curR = (1 - t) * R * 0.85, secR = 46 * state.scale;
+          const vCur = Array.from({ length: n }, (_, i) => {
+            const a = -Math.PI / 2 + (i * Math.PI * 2) / n;
+            return { x: cx + curR * Math.cos(a), y: cy + curR * Math.sin(a) };
+          });
+          const cols = ['#38bdf8', '#fb7185', '#34d399', '#fbbf24', '#7C3AED', '#DB2777', '#0891B2', '#4F46E5'];
+          for (let i = 0; i < n; i++) {
+            const aPrev = -Math.PI / 2 + ((i - 1) * Math.PI * 2) / n;
+            const aCurr = -Math.PI / 2 + (i * Math.PI * 2) / n;
+            const aNext = -Math.PI / 2 + ((i + 1) * Math.PI * 2) / n;
+            const sA = Math.atan2(Math.sin(aCurr) - Math.sin(aPrev), Math.cos(aCurr) - Math.cos(aPrev));
+            const eA = Math.atan2(Math.sin(aNext) - Math.sin(aCurr), Math.cos(aNext) - Math.cos(aCurr));
+
+            ctx.beginPath(); ctx.moveTo(vCur[i].x, vCur[i].y); ctx.arc(vCur[i].x, vCur[i].y, secR, sA, eA, false); ctx.closePath();
+            ctx.fillStyle = cols[i % cols.length] + '44'; ctx.fill();
+            ctx.strokeStyle = cols[i % cols.length]; ctx.lineWidth = 2; ctx.stroke();
+            { // [표시 보강] 한 외각 = 360°÷n 값을 각 부채꼴 안쪽에 표시
+              const dirP = { x: vCur[i].x + Math.cos(sA), y: vCur[i].y + Math.sin(sA) }, dirN = { x: vCur[i].x + Math.cos(eA), y: vCur[i].y + Math.sin(eA) };
+              const secPx = secR * ROOT * BOARD.k;
+              angMark(vCur[i], dirP, dirN, { color: cols[i % cols.length], rings: 1, r: secPx * 0.4, rmax: secPx * 0.5, label: `${+(360 / n).toFixed(1)}°`, max: secPx * 0.92, size: 11.5 });
+            }
+          }
+          if (curR > 2) {
+            ctx.beginPath(); ctx.moveTo(vCur[0].x, vCur[0].y); vCur.forEach((p) => ctx.lineTo(p.x, p.y)); ctx.closePath();
+            ctx.fillStyle = '#0d241b'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.stroke();
+            // [표시 보강] 한 내각 = 180° − 외각 : 맨 위 꼭짓점의 안쪽 각에 호와 값(수축하는 다각형을 그대로 따라감)
+            angMark(vCur[0], vCur[1], vCur[n - 1], { color: '#e2e8f0', rings: 2, r: Math.min(30, curR * ROOT * BOARD.k * 0.5), label: `내각 ${+(180 - 360 / n).toFixed(1)}°`, max: curR * ROOT * BOARD.k * 0.9 });
+          }
+        }
+      }
+
+      // =======================================================================
+      // [탭 4 렌더링: 별모양 & 복잡한 도형의 삼각형 외각 마스터!]
+      // =======================================================================
+      else if (m === 4) {
+        if (sub === 'stepExt') {
+          if (p2 === 1) {
+            // 기본 삼각형 외각 색종이 이동
+            const A = p1 <= 12 ? p1 * 6 : 50 /* [2.0 수정] 칩 72°(p1=12)가 50°로 그려지던 것 */, B = 60;
+            // [표시 보강] 삼각형을 ∠A·∠B 값에서 사인법칙으로 만들어 그림의 각이 표시한 값과 같게 합니다(원본은 어떤 ∠A에서도 같은 모양). 높이가 넘치면 전체를 줄임
+            const abU = Math.sin(((180 - A - B) * Math.PI) / 180) / Math.sin((A * Math.PI) / 180), bRad = (B * Math.PI) / 180;
+            const Lbc = Math.min(175, 160 / (abU * Math.sin(bRad)));
+            const yBot = cy + 70, pB = { x: cx - 145, y: yBot }, pC = { x: cx - 145 + Lbc, y: yBot }, pD = { x: cx - 145 + Lbc * 1.9, y: yBot }, pA = { x: cx - 145 + abU * Lbc * Math.cos(bRad), y: yBot - abU * Lbc * Math.sin(bRad) };
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.16)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.stroke();
+
+            const pE = { x: pC.x + (pA.x - pB.x), y: pC.y + (pA.y - pB.y) };
+            if (state.steps[2] || t > 0.05 || state.lens === 'aux') {
+              ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2.2; ctx.setLineDash([5, 4]);
+              ctx.beginPath(); ctx.moveTo(pC.x, pC.y); ctx.lineTo(pE.x, pE.y); ctx.stroke(); ctx.setLineDash([]);
+              drawParallelArrows(pB.x, pB.y, pA.x, pA.y, 2); drawParallelArrows(pC.x, pC.y, pE.x, pE.y, 2);
+            }
+            const angCA = Math.atan2(pA.y - pC.y, pA.x - pC.x), angCE = Math.atan2(pE.y - pC.y, pE.x - pC.x);
+            // [표시 보강] 안쪽 ∠A·∠B는 삼각형 안에 항상 표시(색종이 이동 전 위치), 이동 중·후의 호는 아래 원본 호가 C 쪽으로 옮겨 그립니다
+            angMark(pA, pB, pC, { color: '#38bdf8', rings: 1, r: 30, label: `∠A=${A}°` });
+            angMark(pB, pC, pA, { color: '#fb7185', rings: 1, r: 30, label: `∠B=${B}°` });
+            if (t > 0.05) {
+            drawAngleArc(pA.x + t*(pC.x - pA.x), pA.y + t*(pC.y - pA.y), 38, angCA, angCE, '#38bdf8', `${A}°`);
+            drawAngleArc(pB.x + t*(pC.x - pB.x), pB.y + t*(pC.y - pB.y), 38, angCE, 0, '#fb7185', `${B}°`);
+            }
+            angMark(pC, pD, pA, { color: '#34d399', rings: 2, r: 56, label: `${A + B}°` }); // [표시 보강] 바깥 외각 ∠ACD = ∠A+∠B
+            drawSmartLabel(pA.x, pA.y, cx, cy, 'A'); drawSmartLabel(pB.x, pB.y, cx, cy, 'B');
+            drawSmartLabel(pC.x, pC.y + 10, pC.x, pC.y - 20, `외각 = ${A+B}°`, '#34d399', 18);
+          } else {
+            // 등변 사슬 AB=BC=CD(=DE)로 x, 2x, 3x, 4x 외각이 실제로 성립하도록 구성
+            const stepsCnt = p2 === 2 ? 3 : 4;
+            const xDeg = p1 * 2 + 4;
+            const xRad = xDeg * Math.PI / 180;
+            const cosX = Math.cos(xRad), sinX = Math.sin(xRad);
+            const cos2X = Math.cos(2 * xRad), cos3X = Math.cos(3 * xRad);
+            const side = Math.min(118, (rect.width - 80) / (2 * cosX + (stepsCnt === 4 ? 2 * cos3X : 1.15)));
+            const baseY = cy + 55;
+            const baseSpan = 2 * side * cosX + (stepsCnt === 4 ? 2 * side * cos3X : side * 1.15);
+            const pA = { x: cx - baseSpan / 2, y: baseY };
+            const pB = { x: pA.x + side * cosX, y: baseY - side * sinX };
+            const pC = { x: pA.x + 2 * side * cosX, y: baseY };
+            const pD = {
+              x: pB.x + 2 * side * cos2X * cosX,
+              y: pB.y - 2 * side * cos2X * sinX
+            };
+            const pE = {
+              x: pC.x + (stepsCnt === 4 ? 2 * side * cos3X : side * 1.15),
+              y: baseY
+            };
+            const pBeyondD = { x: pD.x + side * 0.58 * cosX, y: pD.y - side * 0.58 * sinX };
+
+            // 세 등변삼각형: ABC, BCD, 그리고 4단에서 CDE
+            const tris = [
+              { pts: [pA, pB, pC], col: 'rgba(56, 189, 248, 0.18)' },
+              { pts: [pB, pC, pD], col: 'rgba(52, 211, 153, 0.18)' }
+            ];
+            if (stepsCnt === 4) tris.push({ pts: [pC, pD, pE], col: 'rgba(244, 63, 94, 0.18)' });
+            for (const tr of tris) {
+              ctx.beginPath(); ctx.moveTo(tr.pts[0].x, tr.pts[0].y); ctx.lineTo(tr.pts[1].x, tr.pts[1].y); ctx.lineTo(tr.pts[2].x, tr.pts[2].y); ctx.closePath();
+              ctx.fillStyle = tr.col; ctx.fill();
+            }
+
+            // 기준선 A-C-E, 연장선 A-B-D, 그리고 등변 사슬 B-C-D-E
+            ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.6; ctx.setLineDash([]);
+            ctx.beginPath();
+            ctx.moveTo(pA.x, pA.y); ctx.lineTo(pE.x, pE.y);
+            ctx.moveTo(pA.x, pA.y); ctx.lineTo(pD.x, pD.y);
+            ctx.moveTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y);
+            ctx.lineTo(pD.x, pD.y);
+            if (stepsCnt === 4) ctx.lineTo(pE.x, pE.y);
+            ctx.stroke();
+
+            // 4x 외각은 AD의 D 바깥 연장선에서 측정
+            if (stepsCnt === 4) {
+              ctx.strokeStyle = '#94A3B8'; ctx.lineWidth = 2.0; ctx.setLineDash([5, 4]);
+              ctx.beginPath(); ctx.moveTo(pD.x, pD.y); ctx.lineTo(pBeyondD.x, pBeyondD.y); ctx.stroke(); ctx.setLineDash([]);
+            }
+
+            // AB=BC=CD(=DE) 표식을 같은 한 개 틱으로 표시
+            drawTickMarks(pA.x, pA.y, pB.x, pB.y, 1, '#fb7185');
+            drawTickMarks(pB.x, pB.y, pC.x, pC.y, 1, '#fb7185');
+            drawTickMarks(pC.x, pC.y, pD.x, pD.y, 1, '#fb7185');
+            if (stepsCnt === 4) drawTickMarks(pD.x, pD.y, pE.x, pE.y, 1, '#fb7185');
+
+            const aAB = Math.atan2(pB.y - pA.y, pB.x - pA.x);
+            const aBD = Math.atan2(pD.y - pB.y, pD.x - pB.x);
+            const aBC = Math.atan2(pC.y - pB.y, pC.x - pB.x);
+            const aCD = Math.atan2(pD.y - pC.y, pD.x - pC.x);
+            const aCE = Math.atan2(pE.y - pC.y, pE.x - pC.x);
+            const aAD = Math.atan2(pD.y - pA.y, pD.x - pA.x);
+            const aDE = Math.atan2(pE.y - pD.y, pE.x - pD.x);
+            const arcR = Math.max(20, Math.min(29, side * 0.24));
+            drawAngleArc(pA.x, pA.y, arcR, aAB, 0, '#38bdf8', `x=${xDeg}°`);
+            drawAngleArc(pB.x, pB.y, arcR, aBD, aBC, '#34d399', `2x=${2 * xDeg}°`);
+            drawAngleArc(pC.x, pC.y, arcR, aCD, aCE, '#fb7185', `3x=${3 * xDeg}°`);
+            if (stepsCnt === 4) drawAngleArc(pD.x, pD.y, arcR, aAD, aDE, '#fda4af', `4x=${4 * xDeg}°`);
+
+            drawSmartLabel(pA.x, pA.y, pA.x + 18, pA.y, 'A');
+            drawSmartLabel(pB.x, pB.y, pB.x, pB.y + 18, 'B');
+            drawSmartLabel(pC.x, pC.y, pC.x - 18, pC.y, 'C');
+            drawSmartLabel(pD.x, pD.y, pD.x + 20, pD.y - 14, 'D', '#e2e8f0', 19);
+            if (stepsCnt === 4) drawSmartLabel(pE.x, pE.y, pE.x - 18, pE.y, 'E');
+          }
+        } else if (sub === 'boomBow') {
+          if (p2 < 3) {
+            const a = p1 * 4;
+            // [표시 보강] 점을 각도값에서 만듭니다(원본은 ∠a가 바뀌어도 같은 모양): A가 꼭대기, B·C는 A에서 ±a/2 로 벌어진 두 변 위,
+            // D는 B에서 ∠ABD=30°, C에서 ∠ACD=25° 로 그은 두 선의 교점 → 그림의 각 a·b·c·x(=a+55°)가 표시한 값과 같습니다.
+            const hf = (a * Math.PI) / 360, Lab = 200 / Math.cos(hf), dRad = Math.PI / 180;
+            const pA = { x: cx, y: cy - 110 }, pB = { x: cx - Lab * Math.sin(hf), y: cy + 90 }, pC = { x: cx + Lab * Math.sin(hf), y: cy + 90 };
+            const d1 = Math.atan2(pA.y - pB.y, pA.x - pB.x) + 30 * dRad, d2 = Math.atan2(pA.y - pC.y, pA.x - pC.x) - 25 * dRad;
+            const u1 = { x: Math.cos(d1), y: Math.sin(d1) }, u2 = { x: Math.cos(d2), y: Math.sin(d2) };
+            const crs = (u, w) => u.x * w.y - u.y * w.x;
+            const sB = crs({ x: pC.x - pB.x, y: pC.y - pB.y }, u2) / crs(u1, u2);
+            const pD = { x: pB.x + sB * u1.x, y: pB.y + sB * u1.y };
+            // 보조선 끝점 E: ①B→D 연장선과 AC의 교점, ②A→D 연장선과 BC의 교점
+            const tAC = crs({ x: pB.x - pA.x, y: pB.y - pA.y }, u1) / crs({ x: pC.x - pA.x, y: pC.y - pA.y }, u1);
+            const pE = p2 === 1 ? { x: pA.x + tAC * (pC.x - pA.x), y: pA.y + tAC * (pC.y - pA.y) } : { x: pA.x + (pD.x - pA.x) * ((pB.y - pA.y) / (pD.y - pA.y)), y: pB.y };
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
+
+            if (state.steps[2] || t > 0.05 || state.lens === 'aux') {
+              ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.4; ctx.setLineDash([5, 4]);
+              ctx.beginPath();
+              if (p2 === 1) {
+                // BD 연장선과 AC의 교점 E
+                ctx.moveTo(pB.x, pB.y); ctx.lineTo(pE.x, pE.y);
+              } else {
+                // AD 연장선 가르기
+                ctx.moveTo(pA.x, pA.y); ctx.lineTo(pE.x, pE.y);
+              }
+              ctx.stroke(); ctx.setLineDash([]);
+            }
+            drawSmartLabel(pA.x, pA.y, cx, cy, `A(∠a=${a}°)`, '#38bdf8');
+            drawSmartLabel(pB.x, pB.y, cx, cy, `B(∠b=30°)`, '#fb7185');
+            drawSmartLabel(pC.x, pC.y, cx, cy, `C(∠c=25°)`, '#34d399');
+            drawSmartLabel(pD.x, pD.y + 44, pD.x, pD.y - 20, `🪃 ∠x = ${a}+30+25 = ${a+55}°!`, '#fda4af', 20);
+            // [표시 보강] 각 a·b·c(꼭짓점의 안쪽 각)와 오목한 점 D의 ∠x(=∠BDC)에 호를 긋고 값을 각 안쪽에 표시
+            angMark(pA, pB, pC, { color: '#38bdf8', rings: 1, r: 30, label: `${a}°` });
+            angMark(pB, pA, pD, { color: '#fb7185', rings: 1, r: 30, label: '30°' });
+            angMark(pC, pA, pD, { color: '#34d399', rings: 1, r: 30, label: '25°' });
+            angMark(pD, pB, pC, { color: '#fda4af', rings: 2, r: 26, label: `${a + 55}°` });
+            if (state.steps[2] || t > 0.05 || state.lens === 'aux') drawSmartLabel(pE.x, pE.y, cx, cy, 'E', '#fb7185', 12); // 연장선 끝점
+          } else {
+            const sumAB = p1 * 10;
+            // [표시 보강] 점을 각도값에서 만듭니다(원본은 값이 바뀌어도 같은 모양): 맞꼭지각 ∠AOB=∠COD=180°−(∠a+∠b),
+            // 왼쪽 삼각형은 ∠a=0.6(a+b)·∠b=0.4(a+b)(합만 정해져 있으므로 임의로 나눔), 오른쪽은 ∠c=42°·∠d=(a+b)−42° — 사인법칙으로 변의 길이를 정함
+            const dg = Math.PI / 180, thO = (180 - sumAB) * dg, aDeg = sumAB * 0.6, bDeg2 = sumAB * 0.4, cDeg = 42, dDeg = sumAB - 42, sn = (v) => Math.sin(v * dg);
+            const k1 = 150 / Math.max(sn(aDeg), sn(bDeg2)), k2 = 150 / Math.max(sn(cDeg), sn(dDeg));
+            const ray = (ang, len) => ({ x: cx + len * Math.cos(ang), y: cy + len * Math.sin(ang) });
+            const pO = { x: cx, y: cy }, pA = ray(Math.PI + thO / 2, k1 * sn(bDeg2)), pB = ray(Math.PI - thO / 2, k1 * sn(aDeg)), pC = ray(-thO / 2, k2 * sn(dDeg)), pD = ray(thO / 2, k2 * sn(cDeg));
+            ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.22)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.8; ctx.stroke();
+
+            ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.22)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.8; ctx.stroke();
+
+            drawSmartLabel(pA.x, pA.y, cx, cy, 'A(∠a)', '#38bdf8');
+            drawSmartLabel(pB.x, pB.y, cx, cy, `B(∠a+∠b=${sumAB}°)`, '#38bdf8');
+            drawSmartLabel(pC.x, pC.y, cx, cy, 'C(∠c=42°)', '#fb7185');
+            drawSmartLabel(pD.x, pD.y, cx, cy, `D(∠d=${sumAB-42}°)`, '#34d399');
+            // [표시 보강] 맞꼭지각 ∠AOB = ∠COD(같은 노랑 2겹 호, 180°−(∠a+∠b)), 날개 끝각 a·b(하늘)·c·d(분홍)에도 호와 값을 표시
+            const rr = (v, q1, q2) => Math.max(12, Math.min(26, 0.3 * Math.min(Math.hypot(q1.x - v.x, q1.y - v.y), Math.hypot(q2.x - v.x, q2.y - v.y)) * ROOT * BOARD.k)); // 작은 화면·가는 삼각형에서는 호와 값 라벨을 꼭짓점 쪽으로 붙여 겹침을 줄임
+            angMark(pO, pA, pB, { color: '#fbbf24', rings: 2, r: rr(pO, pA, pB), label: `${180 - sumAB}°` });
+            angMark(pO, pC, pD, { color: '#fbbf24', rings: 2, r: rr(pO, pC, pD), label: `${180 - sumAB}°` });
+            angMark(pA, pO, pB, { color: '#38bdf8', rings: 1, r: rr(pA, pO, pB), label: 'a' });
+            angMark(pB, pO, pA, { color: '#38bdf8', rings: 1, r: rr(pB, pO, pA), label: 'b' });
+            angMark(pC, pO, pD, { color: '#fb7185', rings: 1, r: rr(pC, pO, pD), label: '42°' });
+            angMark(pD, pO, pC, { color: '#fb7185', rings: 1, r: rr(pD, pO, pC), label: `${sumAB - 42}°`, out: Math.hypot(pC.x - pD.x, pC.y - pD.y) * ROOT * BOARD.k < 90 });
+          }
+        } else if (sub === 'starMaster') {
+          const R = Math.min(rect.width, rect.height) * 0.30 * state.scale;
+          if (p2 === 4) {
+            // 육각별 (삼각형 2개 겹침 = 360°)
+            const t1 = [0, 2, 4].map((i) => ({ x: cx + R * Math.cos(-Math.PI/2 + i*Math.PI/3), y: cy + R * Math.sin(-Math.PI/2 + i*Math.PI/3) }));
+            const t2 = [1, 3, 5].map((i) => ({ x: cx + R * Math.cos(-Math.PI/2 + i*Math.PI/3), y: cy + R * Math.sin(-Math.PI/2 + i*Math.PI/3) }));
+            ctx.beginPath(); ctx.moveTo(t1[0].x, t1[0].y); t1.forEach((p)=>ctx.lineTo(p.x,p.y)); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(t2[0].x, t2[0].y); t2.forEach((p)=>ctx.lineTo(p.x,p.y)); ctx.closePath();
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.18)'; ctx.fill(); ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3; ctx.stroke();
+            drawSmartLabel(t1[0].x, t1[0].y, cx, cy, '✡ 육각별 = 삼각형 2개 (180°×2 = 360°!)', '#e2e8f0', 22);
+          } else {
+            // 오각별(☆) 해법 ①(외각 2개 이사) vs 해법 ②(아래쪽 나비넥타이 보조선 CD 연결!)
+            // [표시 보강] 별을 각도값에서 만듭니다(원본은 ∠a가 바뀌어도 늘 정오각별). 위쪽 작은 삼각형 AFG의 세 각을 ∠a, F=∠c+∠e=110°−∠a, G=∠b+∠d=70° 로 두고
+            // (식에 적힌 값과 같음), 가로선 EC 위에 E·C, 변 AF·AG 의 연장선 위에 B·D 를 정오각별과 비슷한 높이에 둡니다 → 그림의 각이 표시한 값과 같습니다.
+            const aS = p1 * 4, hS = 0.691 * R, dxF = hS / Math.tan(((110 - aS) * Math.PI) / 180), dxG = hS / Math.tan((70 * Math.PI) / 180);
+            const pA0 = { x: cx - (dxG - dxF) / 2, y: cy - R }, yE = cy - 0.309 * R, yBt = cy + 0.809 * R;
+            const pF = { x: pA0.x - dxF, y: yE }, pG = { x: pA0.x + dxG, y: yE };
+            const onLine = (q) => ({ x: pA0.x + ((q.x - pA0.x) * (yBt - pA0.y)) / (q.y - pA0.y), y: yBt });
+            const pts = [pA0, { x: cx + 0.951 * R, y: yE }, onLine(pG), onLine(pF), { x: cx - 0.951 * R, y: yE }];
+            // pts[0]=A(위), pts[1]=C(우상), pts[2]=D(우하), pts[3]=B(좌하), pts[4]=E(좌상)
+            const order = [0, 2, 4, 1, 3, 0];
+            ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); order.forEach((idx) => ctx.lineTo(pts[idx].x, pts[idx].y));
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.6; ctx.stroke();
+
+
+
+            if (p2 === 2) {
+              // 해법 ②: 아래쪽 두 끝점 B(pts[3])와 D(pts[2])를 잇는 나비넥타이 보조선!
+              ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); ctx.lineTo(pts[3].x, pts[3].y); ctx.lineTo(pts[2].x, pts[2].y); ctx.closePath();
+              ctx.fillStyle = 'rgba(52, 211, 153, 0.22)'; ctx.fill();
+              ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.5; ctx.setLineDash([6, 4]);
+              ctx.beginPath(); ctx.moveTo(pts[3].x, pts[3].y); ctx.lineTo(pts[2].x, pts[2].y); ctx.stroke(); ctx.setLineDash([]);
+              drawSmartLabel(cx, (pts[3].y + pts[2].y) / 2 + 18, cx, cy, '🎀 보조선 연결 ➔ 큰 삼각형 1개(180°) 완성!', '#fb7185', 10);
+            } else {
+              // 해법 ①: 위쪽 작은 삼각형 ΔAFG로 외각 2개 이사!
+              ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); ctx.lineTo(pF.x, pF.y); ctx.lineTo(pG.x, pG.y); ctx.closePath();
+              ctx.fillStyle = 'rgba(56, 189, 248, 0.24)'; ctx.fill();
+              ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
+
+              // [표시 보강] 각 b·d(파랑)는 ∠G(=∠b+∠d)로, c·e(분홍)는 ∠F(=∠c+∠e)로 모입니다 — 각 끝점이 자기 변을 따라 이동(E→G는 EC 위, D→G는 AD 위, C→F는 EC 위, B→F는 AB 위)
+              const bPt = { x: pts[4].x + t*(pG.x - pts[4].x), y: pts[4].y + t*(pG.y - pts[4].y) };
+              const dPt = { x: pts[2].x + t*(pG.x - pts[2].x), y: pts[2].y + t*(pG.y - pts[2].y) };
+              const cPt = { x: pts[1].x + t*(pF.x - pts[1].x), y: pts[1].y + t*(pF.y - pts[1].y) };
+              const ePt = { x: pts[3].x + t*(pF.x - pts[3].x), y: pts[3].y + t*(pF.y - pts[3].y) };
+              [
+                { p: pts[0], c: '#34d399' }, { p: bPt, c: '#38bdf8' }, { p: dPt, c: '#38bdf8' }, { p: cPt, c: '#fb7185' }, { p: ePt, c: '#fb7185' }
+              ].forEach((it) => {
+                ctx.beginPath(); ctx.arc(it.p.x, it.p.y, 7.5, 0, Math.PI * 2);
+                ctx.fillStyle = it.c; ctx.fill(); ctx.strokeStyle = '#FFF'; ctx.lineWidth = 2; ctx.stroke();
+              });
+            }
+            const a = p1 * 4;
+            drawSmartLabel(pts[0].x, pts[0].y, cx, cy, `A(∠a=${a}°)`, '#34d399', 20);
+            drawSmartLabel(pts[4].x, pts[4].y, cx, cy, 'E(∠b)', '#38bdf8', 20);
+            drawSmartLabel(pts[1].x, pts[1].y, cx, cy, 'C(∠c)', '#fb7185', 20);
+            drawSmartLabel(pts[2].x, pts[2].y, cx, cy, 'D(∠d)', '#38bdf8', 20);
+            drawSmartLabel(pts[3].x, pts[3].y, cx, cy, 'B(∠e)', '#fb7185', 20);
+            // [표시 보강] 다섯 끝각 a·b·c·d·e에 호와 이름(값을 아는 a는 값도) 표시 — 같은 색 = 해법에서 함께 옮겨지는 각
+            const tip = (i, u, w2, col, lb) => angMark(pts[i], pts[u], pts[w2], { color: col, rings: 1, r: 26, label: lb });
+            tip(0, 3, 2, '#34d399', `a=${a}°`); tip(4, 2, 1, '#38bdf8', 'b'); tip(1, 4, 3, '#fb7185', 'c'); tip(2, 0, 4, '#38bdf8', 'd'); tip(3, 1, 0, '#fb7185', 'e');
+          }
+        } else {
+          // bisect3 (내·외각 이등분선 3종 & 정오각형 대각선 교각)
+          if (p2 <= 3) {
+            const angA = p1 * 8, alpha = (angA * Math.PI) / 180;
+            const halfB = Math.min(62, rect.height * 0.13) * state.scale;
+            const beta = (Math.PI - alpha) / 2, tau = Math.tan(beta / 2), yBot = cy + 15;
+            const pB = { x: cx - halfB, y: yBot }, pC = { x: cx + halfB, y: yBot };
+            const pA = { x: cx, y: yBot - halfB / Math.tan(alpha / 2) };
+            let pP;
+            if (p2 === 1) {
+              const xx = (halfB * (1 + tau * tau)) / (1 - tau * tau);
+              pP = { x: cx + xx, y: yBot - tau * (xx + halfB) };
+            } else if (p2 === 2) {
+              pP = { x: cx, y: yBot - halfB * tau };
+            } else {
+              pP = { x: cx, y: yBot + halfB / tau };
+            }
+            ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.18)'; ctx.fill();
+            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
+
+            ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pP.x, pP.y); ctx.lineTo(pC.x, pC.y);
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 2.8; ctx.setLineDash([6, 4]); ctx.stroke(); ctx.setLineDash([]);
+
+            const ans = p2 === 1 ? angA / 2 : p2 === 2 ? 90 + angA / 2 : 90 - angA / 2;
+            drawSmartLabel(pA.x, pA.y, cx, cy, `A(${angA}°)`, '#38bdf8');
+            drawSmartLabel(pB.x, pB.y, cx, cy, 'B(●●)', '#34d399');
+            drawSmartLabel(pC.x, pC.y, cx, cy, 'C(××)', '#fb7185');
+            drawSmartLabel(pP.x, pP.y, cx, cy, `P(∠x=${ans}°)`, '#fda4af', 20);
+            { // [표시 보강] 이등분 표시: B의 ●=●(초록), C의 ×=×(분홍), P의 ∠x. 바깥 이등분선이 가르는 외각은 점선 연장선으로 보임
+              const ext = (a0, b0, k) => ({ x: a0.x + (a0.x - b0.x) * k, y: a0.y + (a0.y - b0.y) * k }); // b0→a0 방향으로 a0 바깥 연장
+              const pD1 = { x: pC.x + halfB * 0.9, y: pC.y }; // BC의 C 바깥 연장
+              const pE1 = ext(pB, pA, 0.5), pF1 = ext(pC, pA, 0.5); // AB의 B 바깥, AC의 C 바깥 연장
+              const dashed = (q, w2) => { if (!state.steps[1]) return; ctx.save(); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]); ctx.beginPath(); ctx.moveTo(q.x, q.y); ctx.lineTo(w2.x, w2.y); ctx.stroke(); ctx.restore(); };
+              if (p2 === 1) {
+                dashed(pC, pD1);
+                angMark(pB, pC, pP, { color: '#34d399', r: 34, label: '●' }); angMark(pB, pP, pA, { color: '#34d399', r: 34, label: '●' });
+                angMark(pC, pD1, pP, { color: '#fb7185', r: 26, label: '×' }); angMark(pC, pP, pA, { color: '#fb7185', r: 26, label: '×' });
+              } else if (p2 === 2) {
+                angMark(pB, pC, pP, { color: '#34d399', r: 34, label: '●' }); angMark(pB, pP, pA, { color: '#34d399', r: 34, label: '●' });
+                angMark(pC, pB, pP, { color: '#fb7185', r: 34, label: '×' }); angMark(pC, pP, pA, { color: '#fb7185', r: 34, label: '×' });
+              } else {
+                dashed(pB, pE1); dashed(pC, pF1);
+                angMark(pB, pC, pP, { color: '#34d399', r: 34, label: '●' }); angMark(pB, pP, pE1, { color: '#34d399', r: 34, label: '●' });
+                angMark(pC, pB, pP, { color: '#fb7185', r: 34, label: '×' }); angMark(pC, pP, pF1, { color: '#fb7185', r: 34, label: '×' });
+              }
+              angMark(pP, pB, pC, { color: '#fda4af', rings: 2, r: 28, label: `∠x=${ans}°` });
+            }
+          } else {
+            // 정오각형 속 두 대각선 교각 (36°, 72°, 108°)
+            const R = Math.min(rect.width, rect.height) * 0.28 * state.scale;
+            const verts = Array.from({ length: 5 }, (_, i) => {
+              const a = -Math.PI / 2 + (i * Math.PI * 2) / 5;
+              return { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) };
+            });
+            ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); verts.forEach((p)=>ctx.lineTo(p.x,p.y)); ctx.closePath();
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.14)'; ctx.fill(); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.8; ctx.stroke();
+
+            ctx.beginPath(); ctx.moveTo(verts[0].x, verts[0].y); ctx.lineTo(verts[1].x, verts[1].y); ctx.lineTo(verts[2].x, verts[2].y); ctx.closePath();
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.24)'; ctx.fill();
+
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.2;
+            ctx.beginPath();
+            ctx.moveTo(verts[0].x, verts[0].y); ctx.lineTo(verts[2].x, verts[2].y);
+            ctx.moveTo(verts[1].x, verts[1].y); ctx.lineTo(verts[3].x, verts[3].y);
+            ctx.stroke();
+
+            ['A(36°)', 'B(108°)', 'C(36°)', 'D', 'E'].forEach((l, i) => drawSmartLabel(verts[i].x, verts[i].y, cx, cy, l, '#e2e8f0', 20));
+            drawSmartLabel(cx + R * 0.2, cy - R * 0.08, cx, cy, '교점 P (예각 72° / 둔각 108°)', '#fb7185', 10);
+            { // [표시 보강] ∠BAC=∠BCA=36°(같은 초록 호), ∠ABC=108°, 두 대각선 교점 P의 예각 ∠APB=72°·둔각 ∠BPC=108°
+              const ln = (a0, b0, c0, d0) => { const den = (a0.x - b0.x) * (c0.y - d0.y) - (a0.y - b0.y) * (c0.x - d0.x) || 1, tt = ((a0.x - c0.x) * (c0.y - d0.y) - (a0.y - c0.y) * (c0.x - d0.x)) / den; return { x: a0.x + tt * (b0.x - a0.x), y: a0.y + tt * (b0.y - a0.y) }; };
+              const pP = ln(verts[0], verts[2], verts[1], verts[3]);
+              angMark(verts[0], verts[1], verts[2], { color: '#34d399', rings: 1, r: 30, label: '36°' });
+              angMark(verts[2], verts[1], verts[0], { color: '#34d399', rings: 1, r: 30, label: '36°' });
+              angMark(verts[1], verts[0], verts[2], { color: '#38bdf8', rings: 2, r: 26, label: '108°' });
+              angMark(pP, verts[0], verts[1], { color: '#fb7185', rings: 1, r: 22, label: '72°' });
+              angMark(pP, verts[1], verts[2], { color: '#fbbf24', rings: 2, r: 22, label: '108°' });
+            }
+          }
+        }
+      }
+
+      ctx.restore();
+  }
+
+  /* ======================================================================
+     2.0 셸 연결 (새로 작성한 부분)
+     ====================================================================== */
+  const TABS = ['넓이 원리·바깥 직사각형', '평행선 넓이·산책로·둘레', '대각선(n-3)·내각·외각 360°', '별 모양·복잡한 외각'];
+  const SHORT = ['넓이·바깥 직사각형', '평행선·산책로', '대각선·내각·외각', '별 모양·외각'];
+  const QUESTIONS = [
+    '삼각형·평행사변형·사다리꼴·마름모는 자르고 옮겨도 넓이가 그대로일까? 어떤 높이와 밑변을 잡아야 할까?',
+    '평행선 사이에서 꼭짓점을 옮기거나 길을 내도 넓이가 변하지 않는 까닭은? 그때 둘레는 어떻게 달라질까?',
+    'n각형의 한 꼭짓점·내부의 점에서 선을 그어 내각의 합과 외각의 합을 어떻게 구할까?',
+    '별 모양처럼 얽힌 도형의 각은 외각의 성질과 보조선으로 어떻게 풀 수 있을까?'
+  ];
+  const STEPS = [
+    '직각(∟)·평행(≫)·같은 길이(||) 기호를 찾아 표시합니다',
+    '보조선을 긋고 조각을 옮겨 봅니다',
+    '꼭짓점 이름과 공식을 붙여 식을 세웁니다'
+  ];
+  const ANIM_CHIPS = [[0, '원래대로 0%'], [0.5, '중간 50%'], [1, '완성 100%']];
+  const LABEL4 = ['조건 치수', '핵심 부분값', '보조선·외각 이동', '최종 넓이·각도'];
+  const COLOR4 = ['ink', 'sky', 'rose', 'green'];
+
+  // 원본 setMode 의 첫 p1: 탭 3(다각형)은 6, 나머지는 8
+  const LEGACY_P1 = (m) => (m === 3 ? 6 : 8);
+  const dedupe = (btns) => { const seen = new Set(); return btns.filter(([v]) => (seen.has(v) ? false : (seen.add(v), true))); };
+
+  // 이 장면·유형에서 이동·변형(animProg)이 그림을 실제로 바꾸는지 — 원본 render 에서 t 를 쓰는 곳 기준
+  const usesAnim = (m, id, p2) => {
+    if (m === 2 && id === 'stairFold') return p2 < 3;
+    if (m === 4 && id === 'stepExt') return p2 === 1;
+    if (m === 4 && id === 'boomBow') return p2 < 3;
+    if (m === 4 && id === 'starMaster') return p2 !== 2 && p2 !== 4;
+    if (m === 4 && id === 'bisect3') return false;
+    return true;
+  };
+  // 마법 보조선이 처음에는 숨겨져 있다가 렌즈·이동·2단계에서 나타나는 곳
+  const auxHidden = (m, id, p2) => m === 4 && ((id === 'stepExt' && p2 === 1) || (id === 'boomBow' && p2 < 3));
+  const hasLens = (m, id, p2) => (m === 1 && id === 'trapRot' && p2 !== 2 && p2 !== 3) || auxHidden(m, id, p2);
+  const hasTape = (m, id, p2) => m === 2 && id === 'railWing' && p2 >= 3;
+  // 이 장면·유형에서 g2 칩 중 그림/식이 실제로 달라지는 값만 (나머지는 이름만 다른 같은 그림)
+  const P2_SHOW = {
+    triAlt: [1, 2], paraMove: [], trapRot: [1, 2], boxFrame: [1, 3],
+    railWing: [1, 3], baseRatio: [0, 1, 2, 4], roadMerge: [1, 2, 3, 4], stairFold: [1, 3],
+    oneDiag: [], inPointO: [], allDiag: [], ext360: [1, 2, 3],
+    stepExt: [1, 2, 3], boomBow: [1, 3], starMaster: [1, 2, 4], bisect3: [1, 2, 3, 4]
+  };
+
+  // 원본이 px 고정값(cx±145 같은)으로 그린 장면은 무대 크기에 따라 그림 전체를 키우거나(큰 무대) 줄입니다(짧은 휴대폰 무대)
+  const ROOT_S = (m, id, p2, aw, ah) => {
+    const abs = m === 4 && (id === 'stepExt' || id === 'boomBow' || (id === 'bisect3' && p2 <= 3));
+    if (!abs) return 1;
+    if (aw < 700) return clamp(ah / 250, 0.62, 1);
+    if (id === 'stepExt') return p2 === 1 ? 1.5 : 1.35;
+    if (id === 'boomBow') return 1.5;
+    return 1.3;
+  };
+
+  /* 셸 상태 → 원본 state 로 옮기기 */
+  function sync(s, m, id, lab, thumb) {
+    const rv = !thumb && lab && lab.tab === 'review';
+    state.mode = m;
+    state.sub[m] = id;
+    state.p1 = s.p1;
+    state.p2 = s.p2;
+    state.animProg = s.anim;
+    state.lens = s.lens;
+    state.showAntTape = !!s.tape;
+    state.dragXRatio = s.dragX;
+    state.dragYRatio = s.dragY;
+    state.offsetX = 0;
+    state.offsetY = 0;
+    state.steps[1] = rv ? s.step >= 1 : true;
+    state.steps[2] = rv ? s.step >= 2 : !auxHidden(m, id, s.p2);
+    state.steps[3] = rv ? s.step >= 3 : true;
+  }
+  function specOf(s, m, id) {
+    sync(s, m, id, null, true);
+    const sp = getSpec();
+    const out = arrow({ ...sp, g1Btns: undefined, g2Btns: undefined });
+    // 정오각형 대각선 교각(bisect3 4번)은 p1 칩('구하는 각 위치')이 그림·식에 쓰이지 않아 숨김
+    out.g1Btns = id === 'bisect3' && s.p2 === 4 ? [] : dedupe(sp.g1Btns).map(([v, l]) => [v, APLab.stripEmoji(l)]);
+    out.g2Btns = dedupe(sp.g2Btns).filter(([v]) => (P2_SHOW[id] || []).includes(v)).map(([v, l]) => [v, APLab.stripEmoji(l)]);
+    return out;
+  }
+  const nearest = (vals, target) => vals.reduce((a, b) => (Math.abs(b - target) < Math.abs(a - target) ? b : a), vals[0]);
+  // 지금 유형의 p1 칩 값 중 target 에 가장 가까운 값
+  function validP1(s, m, id, target) {
+    const sp = specOf(s, m, id);
+    const vals = sp.g1Btns.map(([v]) => v);
+    return !vals.length || vals.includes(target) ? target : nearest(vals, target);
+  }
+  const DEFAULT_P1 = { baseRatio: 3 };
+
+  function problemHTML(s, m, id) {
+    const sp = specOf(s, m, id);
+    const sel = s.quiz;
+    const opts = sp.opts.map((o, i) => `<button type="button" class="g7-opt${sel === i ? (o.ok ? ' ok' : ' bad') : ''}" data-g7q="${i}">${o.t}</button>`).join('');
+    const fb = sel == null || !sp.opts[sel] ? '' : `<div class="g7-fb ${sp.opts[sel].ok ? 'ok' : 'bad'}">${sp.opts[sel].msg}</div>`;
+    return `<div>${sp.q}</div><div class="g7-opts">${opts}</div>${fb}`;
+  }
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('[data-g7q]');
+    const lab = window.lab;
+    if (!b || !lab || !lab.scene || lab.scene.m == null) return;
+    const i = +b.dataset.g7q;
+    lab.s.quiz = lab.s.quiz === i ? null : i;
+    const sp = specOf(lab.s, lab.scene.m, lab.scene.id);
+    if (lab.s.quiz != null && sp.opts[lab.s.quiz] && sp.opts[lab.s.quiz].ok && usesAnim(lab.scene.m, lab.scene.id, lab.s.p2)) lab.tween({ anim: 1 }, 900); // 원본: 정답을 고르면 완성(100%)으로
+    lab.invalidate(true);
+  });
+
+  function hintOf(s, m, id) {
+    const p2 = s.p2;
+    if ((id === 'triAlt' && p2 !== 2) || (id === 'railWing' && p2 >= 3)) return '빛나는 표시가 있는 <b>꼭짓점 A</b>를 좌우로 끌어 보세요. 밑변과 높이가 그대로이면 넓이도 그대로입니다.';
+    if (id === 'inPointO') return '빛나는 표시가 있는 <b>점 O</b>를 다각형 안에서 끌어 보세요. O를 어디에 두어도 삼각형은 변의 수만큼 생깁니다.';
+    if (usesAnim(m, id, p2)) return '조절 막대나 <b>실행 버튼</b>으로 조각을 옮기고 합쳐 보세요. 값 버튼과 유형 버튼으로 값과 유형을 바꿀 수 있습니다.';
+    return '값 버튼과 유형 버튼으로 값과 유형을 바꾸면서 그림과 식이 어떻게 달라지는지 비교해 보세요.';
+  }
+
+  function sceneOf(m, it) {
+    const id = it.id;
+    const label = arrow(it.label);
+    return {
+      id, m, title: label, short: label, reviewTab: true,
+      question: QUESTIONS[m - 1],
+      steps: STEPS,
+      notesTitle: '시험장 오답 함정 & 3초 직관 비법',
+      enter: (s) => {
+        // 원본 setMode / setSub 의 초기화 규칙: 이동·변형 0%, 유형 1, 퀴즈 비움
+        s.p2 = 1;
+        s.anim = 0;
+        s.lens = 'all';
+        s.tape = false;
+        s.quiz = null;
+        s.dragX = 0.35;
+        s.dragY = 0.45;
+        s.p1 = validP1({ ...s, p1: LEGACY_P1(m), p2: 1 }, m, id, DEFAULT_P1[id] || LEGACY_P1(m));
+      },
+      controls: (s) => (usesAnim(m, id, s.p2) ? ['anim'] : []),
+      presets: (s) => {
+        const sp = specOf(s, m, id);
+        const out = [];
+        const fixP1 = (st) => { st.p1 = validP1(st, m, id, st.p1); };
+        sp.g1Btns.forEach(([v, l]) => out.push({ group: sp.g1Label, label: l, apply: (st) => { st.p1 = v; st.quiz = null; }, on: (st) => st.p1 === v }));
+        if (sp.g2Btns.length > 1) {
+          sp.g2Btns.forEach(([v, l]) => out.push({
+            group: sp.g2Label, label: l,
+            apply: (st, lab) => {
+              st.p2 = v;
+              st.quiz = null;
+              fixP1(st);
+              if (id === 'ext360') lab.tween({ anim: v === 1 ? 0 : v === 2 ? 0.5 : 1 }, 700); // 원본 setP2: 수축 단계 스냅
+            },
+            on: (st) => st.p2 === v
+          }));
+        }
+        if (usesAnim(m, id, s.p2) && id !== 'ext360') ANIM_CHIPS.forEach(([v, l]) => out.push({ group: '조각 이동·변형', label: l, set: { anim: v }, ms: 600, on: (st) => Math.abs(st.anim - v) < 0.01 }));
+        if (hasLens(m, id, s.p2)) {
+          out.push({ group: '관찰 방식', label: '전체 보기', apply: (st) => { st.lens = 'all'; }, on: (st) => st.lens === 'all' });
+          out.push({ group: '관찰 방식', label: '보조선', apply: (st, lab) => { st.lens = 'aux'; lab.tween({ anim: 1 }, 700); }, on: (st) => st.lens === 'aux' });
+        }
+        if (hasTape(m, id, s.p2)) {
+          out.push({ group: '둘레 줄자', label: '켜기', apply: (st) => { st.tape = true; }, on: (st) => !!st.tape });
+          out.push({ group: '둘레 줄자', label: '끄기', apply: (st) => { st.tape = false; }, on: (st) => !st.tape });
+        }
+        return out;
+      },
+      actions: (s) => (usesAnim(m, id, s.p2) ? [{
+        id: 'act', play: true, primary: true, icon: 'wand',
+        label: (st) => specOf(st, m, id).actionTxt,
+        run: (st, lab) => { lab.tween({ anim: st.anim > 0.5 ? 0 : 1 }, 1100); }
+      }] : []),
+      view: (s, lab) => {
+        const sp = specOf(s, m, id);
+        return {
+          guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(sp.badge)}</div>${hintOf(s, m, id)}`,
+          chips: [{ html: sp.eqHTML }],
+          readouts: sp.stats.map((t, i) => ({ label: LABEL4[i], value: t, color: COLOR4[i], wide: true })),
+          formula: sp.eqHTML
+        };
+      },
+      problem: {
+        tag: '핵심 문제 유형',
+        text: (s) => problemHTML(s, m, id),
+        answer: (s) => specOf(s, m, id).ans,
+        // 원본 snapToProblem: p1 = 8 + 이동 100%. [2.0 수정] 8이 칩에 없는 장면은 가장 가까운 유효한 칩 값으로
+        snap: (s) => { s.p1 = validP1(s, m, id, 8); s.quiz = null; return { anim: usesAnim(m, id, s.p2) ? 1 : s.anim }; }
+      },
+      solution: {
+        standardTitle: '정석 유도 & 오답 함정 주의', standardTag: '교과서 풀이',
+        quickTitle: '보조선 · 외각 옮기기 · 간단한 계산', quickTag: '10초 컷 실전 비기',
+        standard: (s) => ({ steps: specOf(s, m, id).std }),
+        quick: (s) => ({ steps: specOf(s, m, id).fast })
+      },
+      draw: (b, s, v, lab) => {
+        BOARD = b;
+        CUR = s;
+        const thumb = b.thumb;
+        let aw = VW, ah = VH, S = 1;
+        if (!thumb) {
+          // 원본은 캔버스 전체 크기로 그렸습니다 → 무대 도형 영역(칩·도구 가장자리를 뺀 곳)을 화면 1px = 설계 1로 대응시킵니다.
+          const a = b._area();
+          aw = a.w;
+          ah = a.h;
+          b.focus = { x: [0, aw], y: [0, ah] };
+          S = ROOT_S(m, id, s.p2, aw, ah);
+        } else S = ROOT_S(m, id, s.p2, 1000, 800);
+        // 원본은 무대의 3%를 1cm로 잡아 도형이 작았습니다 → 2.0 무대는 그림을 크게 쓰므로 크기 단위(px)를 키웁니다(원본 state.scale 자리)
+        // 넓이 장면(탭 1·2)은 px 단위가 작아 도형이 작게 보이므로 무대 폭·높이에 맞춰 키웁니다. 다각형·별(R 기준)은 높이에 맞춘 1.3배.
+        state.scale = thumb ? (m <= 2 ? 2 : 1.45) : m <= 2 ? clamp(Math.min(0.036 * aw, 0.085 * ah) / (Math.min(aw, ah) * 0.032), 1.3, 2.4) : 1.3;
+        sync(s, m, id, lab, thumb);
+        ctx.bind(b, S);
+        sink.tape = null;
+        if (s.grid && !thumb) b.grid({ step: 40 });
+        renderScene({ width: aw / S, height: ah / S });
+        v.tape = sink.tape;
+      }
+    };
+  }
+
+  const groups = Object.keys(SUB_MENUS).map((k) => {
+    const m = +k;
+    return { id: 'm' + m, title: TABS[m - 1], short: SHORT[m - 1], scenes: SUB_MENUS[m].map((it) => sceneOf(m, it)) };
+  });
+
+  APLab.createLab({
+    id: 'g7-polygons',
+    title: '평면도형 · 다각형 · 넓이',
+    courseName: '중1',
+    unit: '평면도형',
+    courseColor: 'var(--m-green)',
+    home: '../index.html#g7',
+    legacy: '../../labs/g7/polygons-area.html',
+    board: { kind: 'figure', pad: 0, thumbPad: 0.04, focus: { x: [0, VW], y: [0, VH] }, minZoom: 0.5, maxZoom: 4 },
+    state: { p1: 8, p2: 1, anim: 0, lens: 'all', tape: false, quiz: null, dragX: 0.35, dragY: 0.45 },
+    params: {
+      anim: { value: 0, min: 0, max: 1, step: 0.01, color: 'amber', label: '조각 이동·변형 진행', hint: '0%(원래 도형)에서 100%(완성)까지 조각이 움직입니다', format: (v) => `${Math.round(v * 100)}%` }
+    },
+    groups
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>벡터로 나타낸 도형 · AP Math 실험실</title>
+<meta name="description" content="기하 벡터로 나타낸 도형: 선분 AB를 나누는 점(내분점)과 일직선 조건 OP=(1−t)OA+tOB, 계수 합 m+n=k일 때 점 P의 자취와 넓이, 방향벡터와 법선벡터로 나타낸 직선, 지름을 이용한 원의 벡터방정식을 직접 조작하며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   기하 · 벡터로 나타낸 도형 (AP Math Lab 2.0 이식본) — 4개 장면
+   원본: labs/기하와벡터/벡터로 나타낸 도형.html
+   - 문제·단계·정석/빠른 풀이 문구(examData), 장면 그리기(renderMode1~4), 분필 그리기 도우미,
+     실시간 값(updateLiveMonitor), 프리셋 값은 원본 코드를 그대로 옮겼습니다.
+   - 바뀐 점: 셸·레이아웃은 공용 키트가 담당, 동점 P는 후광이 있는 손잡이로 끌기,
+     원본의 떠 있는 안내 상자·프리셋 바·하단 줄자 배너는 수식 칩·조절부 칩·하단 띠로 이동,
+     글자는 무대 밖으로 잘리거나 서로 겹치지 않게 안으로 밀어 넣음.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const clamp = APLab.clamp;
+  const tex = (s) => APLab.tex(s);
+  const R2D = 180 / Math.PI, D2R = Math.PI / 180;
+  let BD = null;     // 지금 그리는 무대
+  let state = null;  // 지금 장면의 값(원본 state와 같은 이름·모양으로 셸 상태 s에서 만듭니다)
+  let TAPE = null;   // 원본의 하단 줄자 배너 → 셸의 하단 띠
+  const deg = (rad) => (((rad * R2D) % 360) + 360) % 360;
+  const mod360 = (x) => ((x % 360) + 360) % 360;
+
+  /* ===== 원본 그대로: 4대 기출 문제·풀이 데이터 (원본 633–765행) ===== */
+    const examData = {
+      1: {
+        badge: "장면 1 · 내분점의 위치벡터와 세 점 A, B, P가 한 직선 위에 있을 조건 (m + n = 1)",
+        hint: "슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요. <span class='text-emerald-300 font-bold'>0 ≤ t ≤ 1 이면 점 P는 선분 AB 위의 내분점</span>이고, 범위를 벗어나면 <span class='text-rose-300 font-bold'>선분 AB의 연장선 위의 점</span>이 됩니다.",
+        tag: "세 점이 한 직선 위에 있을 조건",
+        targetTime: "목표 시간: 5초",
+        question: () => `평면 위의 서로 다른 세 점 ${tex('O, \\; A(-2, 4), \\; B(4, 2)')} 에 대하여 점 ${tex('P')}가 ${tex('\\overrightarrow{OP} = \\dfrac{2}{5}\\overrightarrow{OA} + k\\overrightarrow{OB}')} 를 만족시킨다. 점 ${tex('P')}가 직선 ${tex('AB')} 위에 있을 때 상수 ${tex('k')}의 값과 선분 길이의 비 ${tex('\\overline{AP} : \\overline{PB}')}를 구하시오.`,
+        answerBadge: () => `${tex('k = \\dfrac{3}{5}, \\; \\overline{AP} : \\overline{PB} = 3 : 2')} (내분점)`,
+        snap: {
+          t1: 0.6 // k = 3/5 = 0.6
+        },
+        steps: [
+          "두 위치벡터 a = OA(-2, 4), b = OB(4, 2)와 직선 AB",
+          "직선 AB 위의 점: OP = (1-t)OA + t OB (계수의 합 = 1)",
+          "0≤t≤1 (선분 AB 위, 초록색)과 t<0 또는 t>1 (연장선 위, 분홍색)"
+        ],
+        textbook: () => ({
+          steps: `① 세 점 ${tex('A, B, P')}가 한 직선 위에 있으므로 실수배 조건 ${tex('\\overrightarrow{AP} = t\\overrightarrow{AB}')} 성립<br/>
+② 시점을 ${tex('O')}로 같게 하여 전개:<br/>
+&nbsp;&nbsp;${tex('\\overrightarrow{OP} - \\overrightarrow{OA} = t(\\overrightarrow{OB} - \\overrightarrow{OA}) \\implies \\overrightarrow{OP} = (1 - t)\\overrightarrow{OA} + t\\overrightarrow{OB}')}<br/>
+③ 문제의 식과 계수를 비교하면 ${tex('1 - t = \\dfrac{2}{5} \\implies t = k = \\dfrac{3}{5}')}<br/>
+④ 따라서 ${tex('\\overrightarrow{AP} = \\dfrac{3}{5}\\overrightarrow{AB}')} 이므로 ${tex('\\overline{AP} : \\overline{PB} = 3 : 2')}.`,
+          warning: "주의: 매번 AP = t AB를 시점 O로 바꾸어 식을 유도하면 풀이가 길어집니다. 세 점이 한 직선 위에 있을 조건(계수의 합 m + n = 1)을 알면 바로 구할 수 있습니다."
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[세 점 A, B, P가 한 직선 위에 있을 조건]</strong>: <strong class="text-amber-300">${tex('\\overrightarrow{OP} = m\\overrightarrow{OA} + n\\overrightarrow{OB}')} 에서 ${tex('m + n = 1')}</strong>이다.<br/>
+② 따라서 ${tex('\\dfrac{2}{5} + k = 1 \\implies')} <strong class="text-sky-300">${tex('k = \\dfrac{3}{5}')}</strong>이다.<br/>
+③ 내분하는 비는 계수가 <strong>서로 엇갈려</strong> 대응하므로:<br/>
+&nbsp;&nbsp;<strong class="text-emerald-300">${tex('\\overline{AP} : \\overline{PB} = (\\overrightarrow{OB}\\text{의 계수}) : (\\overrightarrow{OA}\\text{의 계수}) = \\dfrac{3}{5} : \\dfrac{2}{5} = 3 : 2')}</strong>이다.`,
+          highlight: "세 점 A, B, P가 한 직선 위에 있다 ⇔ 계수의 합 m + n = 1 입니다. 특히 m > 0, n > 0 이면 점 P는 선분 AB 위의 내분점입니다."
+        })
+      },
+
+      2: {
+        badge: "장면 2 · 계수 합 조건(OP = m OA + n OB)에 따른 자취와 넓이",
+        hint: "<span class='text-amber-300 font-bold'>[조건별 자취 버튼 5개]</span>를 눌러 보세요. <span class='text-pink-300 font-bold'>m + n = k</span>가 왜 평행한 선분과 사다리꼴을 만드는지 알 수 있습니다.",
+        tag: "자취의 넓이 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `넓이가 ${tex('S = 4')} 인 삼각형 ${tex('OAB')}에 대하여 점 ${tex('P')}가 다음 조건을 만족시킨다.<br/>
+<span class="text-amber-300 font-bold">${tex('\\overrightarrow{OP} = m\\overrightarrow{OA} + n\\overrightarrow{OB} \\quad (m \\ge 0, \\; n \\ge 0, \\; 1 \\le m + n \\le 2)')}</span><br/>
+이때 점 ${tex('P')}가 존재하는 영역의 넓이를 구하시오.`,
+        answerBadge: () => `${tex('3S = 3 \\times 4 = 12')} (사다리꼴)`,
+        snap: {
+          preset2: 'trap',
+          m2: 0.8,
+          n2: 0.7
+        },
+        steps: [
+          "기본 삼각형 ΔOAB (m+n ≤ 1 영역, 넓이 = S = 4.00)",
+          "계수 합 변형: m+n = 2 ⇔ (m/2)O(2A) + (n/2)O(2B) (선분 A'B')",
+          "1 ≤ m+n ≤ 2 사다리꼴 영역 = 큰 삼각형(4S) - 작은 삼각형(S) = 3S"
+        ],
+        textbook: () => ({
+          steps: `① 경계선 ${tex('m + n = 2')} 식의 양변을 나누어 계수 합이 ${tex('1')}이 되도록 변형:<br/>
+&nbsp;&nbsp;${tex('\\overrightarrow{OP} = \\dfrac{m}{2}(2\\overrightarrow{OA}) + \\dfrac{n}{2}(2\\overrightarrow{OB}) \\quad \\left(\\text{단, } \\dfrac{m}{2} + \\dfrac{n}{2} = 1\\right)')}<br/>
+② ${tex("2\\overrightarrow{OA} = \\overrightarrow{OA'}, \\; 2\\overrightarrow{OB} = \\overrightarrow{OB'}")} 라 하면 점 ${tex('P')}는 선분 ${tex("A'B'")} 위의 점이다.<br/>
+③ 계수 범위 ${tex('m,n\\ge0, m+n\\le2')}가 만드는 큰 영역은 꼭짓점 ${tex("O,A',B'")}의 삼각형 ${tex("OA'B'")}이고, 닮음비가 ${tex('1:2')}이므로 넓이는 ${tex('4S=16')}.<br/>
+④ 큰 삼각형에서 경계 ${tex('m+n=1')} 안쪽의 삼각형 넓이 ${tex('S=4')}를 빼면 띠 영역은 ${tex('4S-S=3S=12')}. 각 계수의 비음수 조건이 두 경계 사이의 사다리꼴 전체를 선택한다.`,
+          warning: "주의: 매번 양변을 k로 나누어 계수의 합을 1로 만들고 닮음비를 구하면 풀이가 길어집니다."
+        }),
+        shortcut: () => ({
+          steps: `① <strong class="text-sky-300">${tex('m + n = 1 \\;(m,n \\ge 0)')}</strong> 이면 점 ${tex('P')}는 <strong class="text-sky-300">선분 ${tex('AB')}</strong> 위에 있다.<br/>
+② ${tex('m+n=k')}를 고정하고 ${tex('k\\ne0')}라 하자. ${tex("A'=kA, B'=kB")}로 두면 ${tex('\\overrightarrow{OP}=(m/k)\\overrightarrow{OA\\prime}+(n/k)\\overrightarrow{OB\\prime}')}이며 계수 합은 1이다. 따라서 ${tex('m,n\\ge0')}이면 ${tex('P')}는 ${tex("A'B'")} 선분 위에 있다. 이 문항에서는 ${tex('k=1,2')} 경계가 된다.<br/>
+③ 따라서 ${tex('1 \\le m + n \\le 2')} 영역은 닮음비 ${tex('1 : 2')} 인 두 삼각형 사이의 사다리꼴이므로:<br/>
+&nbsp;&nbsp;<strong class="text-amber-300">넓이 ${tex('= (2^2 - 1^2)S = 3S = 3 \\times 4 = 12')}</strong>이다.`,
+          highlight: "m, n ≥ 0 일 때 영역의 넓이: ① m+n≤1 (삼각형 S) ② 0≤m,n≤1 (평행사변형 2S) ③ 1≤m+n≤2 (사다리꼴 3S) ④ m+n≤k (k²S)"
+        })
+      },
+
+      3: {
+        badge: "장면 3 · 직선의 벡터방정식 — 방향벡터(∥)와 법선벡터(⊥)",
+        hint: "직선을 나타내는 두 가지 방법을 비교해 보세요. <span class='text-sky-300 font-bold'>방향벡터 u와 평행(OP = OA + tu)</span>하거나 <span class='text-pink-300 font-bold'>법선벡터 n과 수직(AP · n = 0)</span>입니다.",
+        tag: "직선의 벡터방정식",
+        targetTime: "목표 시간: 5초",
+        question: () => `점 ${tex('A(1, 2)')}를 지나고 방향벡터가 ${tex('\\overrightarrow{u} = (3, 2)')} 인 직선 ${tex('l')}이 있다. 이 직선 ${tex('l')}의 법선벡터 ${tex('\\overrightarrow{n}')}을 구하고, 직선 ${tex('l')}이 점 ${tex('P(7, k)')}를 지날 때 상수 ${tex('k')}의 값을 구하시오.`,
+        answerBadge: () => `${tex('\\overrightarrow{n} = (2, -3), \\; k = 6')}`,
+        snap: {
+          t3: 2.0 // P = (1, 2) + 2*(3, 2) = (7, 6)
+        },
+        steps: [
+          "기준점 A(1, 2) 및 방향벡터 u = (3, 2) 표시",
+          "방향벡터를 이용한 방정식: OP = OA + t u (t는 실수)",
+          "u에 수직인 법선벡터 n = (2, -3)과 내적으로 나타낸 방정식: (OP - OA) · n = 0"
+        ],
+        textbook: () => ({
+          steps: `① 방향벡터 ${tex('\\overrightarrow{u} = (3, 2)')} 를 이용하여 직선의 방정식을 세운다:<br/>
+&nbsp;&nbsp;${tex('\\dfrac{x - 1}{3} = \\dfrac{y - 2}{2}')}<br/>
+② 양변에 ${tex('6')}을 곱해 일반형으로 정리:<br/>
+&nbsp;&nbsp;${tex('2(x - 1) = 3(y - 2) \\implies 2x - 3y + 4 = 0')}<br/>
+③ 따라서 법선벡터는 ${tex('\\overrightarrow{n} = (2, -3)')} 이고, ${tex('x = 7')} 대입 시 ${tex('14 - 3k + 4 = 0 \\implies k = 6')}.`,
+          warning: "주의: 분수 꼴의 방정식을 다시 통분하여 일반형으로 고치면 계산 단계가 늘어납니다."
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[방향벡터와 법선벡터]</strong>: ${tex('\\overrightarrow{u} = (a, b)')} 와 수직(내적=0)인 법선벡터는 성분의 자리를 바꾸고 한쪽 부호만 바꾼 <strong class="text-pink-300">${tex('\\overrightarrow{n} = (b, -a) = (2, -3)')}</strong>이다.<br/>
+② <strong>[직선 위의 점 P]</strong>: <strong class="text-sky-300">${tex('P = A + t\\overrightarrow{u} = (1 + 3t, \\; 2 + 2t)')}</strong>이다.<br/>
+③ ${tex('x')}좌표가 ${tex('1 + 3t = 7 \\implies t = 2')} 이므로 <strong class="text-amber-300">${tex('k = 2 + 2(2) = 6')}</strong>이다.`,
+          highlight: "점 A(x₁, y₁)을 지나고 방향벡터가 (a, b)인 직선 위의 점 P는 P(x₁ + at, y₁ + bt)로 나타낼 수 있습니다. 문자를 t 하나만 쓰게 되어 식이 간단해집니다."
+        })
+      },
+
+      4: {
+        badge: "장면 4 · 원의 벡터방정식 — 지름에 대한 원주각과 내적 (PA · PB = 0)",
+        hint: "<span class='text-amber-300 font-bold'>(OP - OA) · (OP - OB) = 0</span> 즉 <span class='text-sky-300 font-bold'>PA ⊥ PB (90°)</span>를 만족하는 점 P의 자취는 <span class='text-emerald-300 font-bold'>선분 AB를 지름으로 하는 원</span>입니다.",
+        tag: "원의 벡터방정식 킬러",
+        targetTime: "목표 시간: 3초",
+        question: () => `좌표평면 위의 두 점 ${tex('A(-3, -1), \\; B(3, 3)')} 에 대하여 벡터방정식<br/>
+<span class="text-amber-300 font-bold">${tex('(\\overrightarrow{OP} - \\overrightarrow{OA}) \\cdot (\\overrightarrow{OP} - \\overrightarrow{OB}) = 0')}</span><br/>
+을 만족시키는 점 ${tex('P')}가 나타내는 도형의 둘레의 길이와 넓이를 구하시오.`,
+        answerBadge: () => `둘레 ${tex('= 2\\sqrt{13}\\pi')}, 넓이 ${tex('= 13\\pi')}`,
+        snap: {
+          theta4: (65 * Math.PI) / 180
+        },
+        steps: [
+          "두 점 A(-3, -1), B(3, 3) 및 지름 선분 AB (길이 2√13)",
+          "시점을 바꾸어: (OP - OA) · (OP - OB) = AP · BP = 0 (∠APB = 90°)",
+          "지름에 대한 원주각은 90°: 선분 AB를 지름으로 하는 원 (중심 M(0,1), r=√13)"
+        ],
+        textbook: () => ({
+          steps: `① 시점이 모두 ${tex('O')}인 벡터 차를 점에서 점으로 향하는 벡터로 바꾸면 ${tex('OP-OA=AP')}, ${tex('OP-OB=BP')}이다. 따라서 조건은 ${tex('AP\\cdot BP=0')}, 즉 ${tex('AP\\perp BP')}이다.<br/>
+② ${tex('P=A')} 또는 ${tex('P=B')}이면 한 벡터가 영벡터라 내적이 0이므로 두 끝점도 자취에 포함된다. 그 밖에는 ${tex('\\angle APB=90^\\circ')}이다.<br/>
+③ 지름에 대한 원주각은 직각이므로 ${tex('AB')}를 지름으로 하는 원 위의 점은 모두 ${tex('\\angle APB=90^\\circ')}를 만들고, 반대로 ${tex('\\angle APB=90^\\circ')}인 점은 그 원 위에 있다. 그러므로 필요충분하게 자취는 지름 ${tex('AB')}인 원 전체이다.<br/>
+④ ${tex('AB=\\sqrt{6^2+4^2}=2\\sqrt{13}')}이므로 반지름은 ${tex('\\sqrt{13}')}이다. 따라서 둘레 ${tex('2\\pi\\sqrt{13}')}와 넓이 ${tex('13\\pi')}.`,
+          warning: "주의: P(x, y)를 대입해 식을 전개하고 완전제곱식으로 고치면 계산이 길어지고 도형의 의미를 놓치기 쉽습니다."
+        }),
+        shortcut: () => ({
+          steps: `① 시점을 바꾸면 <strong class="text-sky-300">${tex('(\\overrightarrow{OP} - \\overrightarrow{OA}) \\cdot (\\overrightarrow{OP} - \\overrightarrow{OB}) = \\overrightarrow{AP} \\cdot \\overrightarrow{BP} = 0')}</strong>이다.<br/>
+② 즉 <strong class="text-amber-300">${tex('\\overrightarrow{AP} \\perp \\overrightarrow{BP} \\iff \\angle APB = 90^\\circ')}</strong> (지름에 대한 원주각 = ${tex('90^\\circ')}).<br/>
+③ 따라서 점 ${tex('P')}의 자취는 <strong class="text-emerald-300">선분 ${tex('AB')}를 지름으로 하는 원</strong>이다.<br/>
+④ 지름 ${tex('\\overline{AB} = \\sqrt{6^2 + 4^2} = 2\\sqrt{13} \\implies')} 반지름 <strong class="text-amber-300">${tex('r = \\sqrt{13}')}</strong> (넓이 ${tex('= \\pi r^2 = 13\\pi')})이다.`,
+          highlight: "원의 벡터방정식: ① |OP - OC| = r (중심 C, 반지름 r) ② (OP-OA)·(OP-OB) = 0 (AB가 지름인 원) ③ (OP-OA)·(OB-OA) = 0 (②의 원의 점 A에서의 접선)"
+        })
+      }
+    };
+
+  /* ===== 셸 상태(s)에서 원본 state 모양 만들기 ===== */
+  function use(s) {
+    state = {
+      mode: +s.sid, conceptSwitch: s.lens, activePartIdx: s.part == null ? null : s.part, hoverPartIdx: null,
+      A1: { x: -2, y: 4 }, B1: { x: 4, y: 2 }, t1: s.t1,
+      A2: { x: 3.2, y: 0.4 }, B2: { x: 0.8, y: 2.6 }, m2: s.m2, n2: s.n2, preset2: s.preset2,
+      A3: { x: 1, y: 2 }, u3: { x: 3, y: 2 }, t3: s.t3,
+      A4: { x: -3, y: -1 }, B4: { x: 3, y: 3 }, theta4: s.th4 * D2R,
+      steps: { 1: s.step >= 1, 2: s.step >= 2, 3: s.step >= 3 },
+      scale: BD ? BD.k : 42
+    };
+    return state;
+  }
+
+  /* ===== 원본의 그리기 환경 → 새 무대 엔진 연결 ===== */
+  // 원본 코드가 쓰는 ctx 직접 그리기: 색은 테마 의미색으로 바꾸고(칠판·종이 모두 대응), 종이 테마에서는 번쩍임(그림자)을 끕니다.
+  const ctx = new Proxy({}, {
+    get(_, k) { const c = BD.ctx, v = c[k]; return typeof v === 'function' ? v.bind(c) : v; },
+    set(_, k, v) {
+      const c = BD.ctx;
+      if ((k === 'fillStyle' || k === 'strokeStyle' || k === 'shadowColor') && typeof v === 'string') v = BD.color(v);
+      else if (k === 'shadowBlur' && !BD.glowOn) v = 0;
+      c[k] = v;
+      return true;
+    }
+  });
+  const toScreen = (x, y) => BD.toS(x, y);
+  // [2.0 수정] 글자가 무대 가장자리나 위쪽 칩·아래쪽 도구에 가려지지 않게, 먼저 놓인 글자와 겹치지 않게 비켜 놓습니다.
+  const clampX = (x0, w) => clamp(x0, 4, Math.max(4, BD.W - (BD.insets.right || 0) - 4 - w));
+  const clampY = (y) => clamp(y, (BD.insets.top || 0) + 14, Math.max(30, BD.H - (BD.insets.bottom || 0) - 6));
+  const LBOX = [];
+  function placeLabel(x0, y, w) {
+    const hit = (yy) => LBOX.some((q) => x0 < q.x1 && x0 + w > q.x0 && yy - 12 < q.y1 && yy + 4 > q.y0);
+    let yy = clampY(y);
+    for (const d of [0, -16, 16, -32, 32]) { const t = clampY(y + d); if (!hit(t)) { yy = t; break; } }
+    LBOX.push({ x0, x1: x0 + w, y0: yy - 12, y1: yy + 4 });
+    return yy;
+  }
+  // 원본 drawBottomTapeBanner(rect, 제목, 비율 줄자 칸들, 테두리색): 캔버스 위 상자 → 셸의 하단 띠(그림을 가리지 않음)
+  function drawBottomTapeBanner(rect, titleText, tapeSegs) {
+    TAPE = { title: titleText, segments: tapeSegs.map((sg) => ({ text: sg.label, weight: sg.weight, color: sg.color })) };
+  }
+
+  /* ===== 원본 그대로: 조각 하이라이트·관찰 렌즈 계산기, 분필 그리기 도우미 (글자 안으로 밀어 넣기만 추가) ===== */
+    function getPartStyle(partIdx, lensGroup) {
+      const focused = state.hoverPartIdx !== null ? state.hoverPartIdx : state.activePartIdx;
+      let alpha = 1.0;
+      let extraGlow = 0;
+
+      // 관찰 렌즈 필터링
+      if (state.conceptSwitch !== 'all' && lensGroup && state.conceptSwitch !== lensGroup) {
+        alpha *= 0.22;
+      }
+
+      // 조각 해부 카드(partIdx) 발광 및 비선택 디밍
+      if (focused !== null && partIdx !== undefined && partIdx !== null) {
+        if (focused === partIdx) {
+          extraGlow = 18;
+          alpha = 1.0;
+        } else {
+          alpha *= 0.25;
+        }
+      }
+      return { alpha, extraGlow };
+    }
+    function drawChalkLine(x1, y1, x2, y2, color = '#ffffff', width = 2, dashed = false, glow = false, partIdx = null, lensGroup = null) {
+      const style = getPartStyle(partIdx, lensGroup);
+      const p1 = toScreen(x1, y1);
+      const p2 = toScreen(x2, y2);
+      ctx.save();
+      ctx.globalAlpha = style.alpha;
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([6, 6]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = style.extraGlow > 0 ? width + 1.2 : width;
+      ctx.lineCap = 'round';
+      if (glow || style.extraGlow > 0) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = Math.max(10, style.extraGlow);
+      }
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+    function drawVectorArrow(x1, y1, x2, y2, color = '#fbbf24', width = 3, label = '', dashed = false, labelOffset = { x: 0, y: -12 }, partIdx = null, lensGroup = null) {
+      const style = getPartStyle(partIdx, lensGroup);
+      const p1 = toScreen(x1, y1);
+      const p2 = toScreen(x2, y2);
+      const dx = p2.x - p1.x;
+      const dy = p2.y - p1.y;
+      const len = Math.hypot(dx, dy);
+      if (len < 2) return;
+
+      const angle = Math.atan2(dy, dx);
+      const effWidth = style.extraGlow > 0 ? width + 1.0 : width;
+      const headLen = Math.min(14, Math.max(9, effWidth * 4.2));
+
+      ctx.save();
+      ctx.globalAlpha = style.alpha;
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+      ctx.lineWidth = effWidth;
+      ctx.lineCap = 'round';
+      ctx.shadowColor = color;
+      ctx.shadowBlur = style.extraGlow > 0 ? style.extraGlow : (dashed ? 4 : 10);
+
+      if (dashed) ctx.setLineDash([6, 5]);
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x - Math.cos(angle) * (headLen * 0.5), p2.y - Math.sin(angle) * (headLen * 0.5));
+      ctx.stroke();
+
+      ctx.setLineDash([]);
+      ctx.beginPath();
+      ctx.moveTo(p2.x, p2.y);
+      ctx.lineTo(p2.x - headLen * Math.cos(angle - Math.PI / 6.5), p2.y - headLen * Math.sin(angle - Math.PI / 6.5));
+      ctx.lineTo(p2.x - headLen * 0.72 * Math.cos(angle), p2.y - headLen * 0.72 * Math.sin(angle));
+      ctx.lineTo(p2.x - headLen * Math.cos(angle + Math.PI / 6.5), p2.y - headLen * Math.sin(angle + Math.PI / 6.5));
+      ctx.closePath();
+      ctx.fill();
+
+      if (label) {
+        const mx = (p1.x + p2.x) / 2 + labelOffset.x;
+        const my = (p1.y + p2.y) / 2 + labelOffset.y;
+        ctx.shadowColor = 'rgba(0,0,0,0.95)';
+        ctx.shadowBlur = 6;
+        ctx.font = 'bold 13px Pretendard, monospace';
+        ctx.textAlign = 'center';
+        const lw = ctx.measureText(label).width, lx = clampX(mx - lw / 2, lw); ctx.fillText(label, lx + lw / 2, placeLabel(lx, my, lw)); // [2.0 수정] 글자를 무대 안으로·겹치지 않게
+      }
+      ctx.restore();
+    }
+    function getSafeLabelOffset(ptMath, avoidMathPoints, defaultOffset = { x: 10, y: -14 }) {
+      const sP = toScreen(ptMath.x, ptMath.y);
+      let safeOffset = { x: defaultOffset.x, y: defaultOffset.y };
+      for (const av of avoidMathPoints) {
+        const sA = toScreen(av.x, av.y);
+        const dist = Math.hypot(sP.x - sA.x, sP.y - sA.y);
+        if (dist < 42) {
+          safeOffset.y = defaultOffset.y < 0 ? 26 : -22;
+          safeOffset.x = sP.x >= sA.x ? Math.abs(defaultOffset.x) + 6 : -Math.abs(defaultOffset.x) - 36;
+          break;
+        }
+      }
+      return safeOffset;
+    }
+    function drawChalkPoint(x, y, radius = 5.5, color = '#fbbf24', label = '', labelOffset = { x: 10, y: -10 }, partIdx = null, lensGroup = null) {
+      const style = getPartStyle(partIdx, lensGroup);
+      const pt = toScreen(x, y);
+      ctx.save();
+      ctx.globalAlpha = style.alpha;
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, style.extraGlow > 0 ? radius + 1.5 : radius, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = Math.max(12, style.extraGlow);
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      if (label) {
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = 'rgba(0,0,0,0.95)';
+        ctx.font = 'bold 13px Pretendard, sans-serif';
+        ctx.fillStyle = color;
+        const lw = ctx.measureText(label).width, lx = clampX(pt.x + labelOffset.x, lw); ctx.fillText(label, lx, placeLabel(lx, pt.y + labelOffset.y, lw)); // [2.0 수정] 글자를 무대 안으로·겹치지 않게
+      }
+      ctx.restore();
+    }
+    // [표시 보강] 평행 표시(화살촉 ›, 개수로 짝 구분)와 같은 길이 눈금: 선분 p–q의 가운데에 그립니다.
+    function parallelMark(p, q, color = '#fde047', count = 1) {
+      const a = toScreen(p.x, p.y), b = toScreen(q.x, q.y), L = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+      if (L < 36) return;
+      const d = { x: (b.x - a.x) / L, y: (b.y - a.y) / L }, n = { x: -d.y, y: d.x }, t0 = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, c = BD.ctx;
+      c.save(); c.strokeStyle = BD.color(color); c.lineWidth = 2; c.setLineDash([]);
+      for (let i = 0; i < count; i++) {
+        const o = (i - (count - 1) / 2) * 7, t = { x: t0.x + d.x * o, y: t0.y + d.y * o };
+        c.beginPath(); c.moveTo(t.x - d.x * 4 + n.x * 5, t.y - d.y * 4 + n.y * 5); c.lineTo(t.x + d.x * 3, t.y + d.y * 3); c.lineTo(t.x - d.x * 4 - n.x * 5, t.y - d.y * 4 - n.y * 5); c.stroke();
+      }
+      c.restore();
+    }
+    function drawRightAngleMark(foot, dirAlongLine, dirToPoint, sizePx = 11, color = '#fbbf24', partIdx = null, lensGroup = 'aux') {
+      const style = getPartStyle(partIdx, lensGroup);
+      const pFoot = toScreen(foot.x, foot.y);
+      const u = { x: dirAlongLine.x, y: -dirAlongLine.y };
+      const v = { x: dirToPoint.x, y: -dirToPoint.y };
+
+      const p1 = { x: pFoot.x + u.x * sizePx, y: pFoot.y + u.y * sizePx };
+      const p2 = { x: p1.x + v.x * sizePx, y: p1.y + v.y * sizePx };
+      const p3 = { x: pFoot.x + v.x * sizePx, y: pFoot.y + v.y * sizePx };
+
+      ctx.save();
+      ctx.globalAlpha = style.alpha;
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.8;
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.lineTo(p3.x, p3.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+    function drawCanvasFraction(px, py, numStr, denStr, color = '#fef08a', fontSize = 12) {
+      ctx.save();
+      ctx.font = `bold ${fontSize}px Pretendard, monospace`;
+      ctx.fillStyle = color;
+      ctx.strokeStyle = color;
+      ctx.textAlign = 'center';
+      ctx.shadowColor = 'rgba(0,0,0,0.9)';
+      ctx.shadowBlur = 4;
+
+      const w = Math.max(ctx.measureText(numStr).width, ctx.measureText(denStr).width) + 8;
+      ctx.fillText(numStr, px, py - 4);
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(px - w / 2, py);
+      ctx.lineTo(px + w / 2, py);
+      ctx.stroke();
+      ctx.fillText(denStr, px, py + fontSize + 1);
+      ctx.restore();
+      return w;
+    }
+  /* ===== 원본 그대로: 장면 그리기 (원본 renderMode1~4) ===== */
+    function renderMode1(rect) {
+      const A = state.A1;
+      const B = state.B1;
+      const t = state.t1;
+      const m = 1 - t;
+      const n = t;
+      const P = { x: m * A.x + n * B.x, y: m * A.y + n * B.y };
+
+      const dx = B.x - A.x;
+      const dy = B.y - A.y;
+      const isInternal = t >= -0.001 && t <= 1.001;
+
+      // Step 3 (partIdx = 2, lens = 'locus'): 내분 구간(선분 AB 초록색) vs 외분 구간(연장선 분홍색 점선) 구분
+      if (state.steps[3]) {
+        drawChalkLine(A.x - dx * 1.8, A.y - dy * 1.8, A.x, A.y, '#f43f5e', 2.2, true, false, 2, 'locus');
+        drawChalkLine(B.x, B.y, B.x + dx * 1.8, B.y + dy * 1.8, '#f43f5e', 2.2, true, false, 2, 'locus');
+        drawChalkLine(A.x, A.y, B.x, B.y, '#34d399', 4.0, false, true, 2, 'locus');
+
+        const wA = Math.abs(n);
+        const wB = Math.abs(m);
+        const sumW = wA + wB || 1;
+        const statusStr = isInternal ? '선분 AB 위의 점 (0 ≤ t ≤ 1)' : '연장선 위의 점 (t < 0 또는 t > 1)';
+
+        drawBottomTapeBanner(
+          rect,
+          `OP = (${m.toFixed(2)})OA + (${n.toFixed(2)})OB | 계수 합 = 1.00 | ${statusStr}`,
+          [
+            {
+              weight: wA / sumW,
+              label: `AP 비 = |t| = ${wA.toFixed(2)}`,
+              bg: 'rgba(244, 114, 182, 0.28)',
+              color: '#f472b6'
+            },
+            {
+              weight: wB / sumW,
+              label: `PB 비 = |1-t| = ${wB.toFixed(2)}`,
+              bg: 'rgba(56, 189, 248, 0.28)',
+              color: '#38bdf8'
+            }
+          ],
+          isInternal ? 'rgba(52, 211, 153, 0.65)' : 'rgba(244, 63, 94, 0.65)'
+        );
+      } else if (state.steps[1]) {
+        drawChalkLine(A.x - dx * 1.8, A.y - dy * 1.8, B.x + dx * 1.8, B.y + dy * 1.8, 'rgba(255,255,255,0.4)', 1.8, true, false, 0, 'base');
+      }
+
+      // Step 1 (partIdx = 0, lens = 'base'): 기준 벡터 OA, OB
+      if (state.steps[1]) {
+        drawVectorArrow(0, 0, A.x, A.y, '#38bdf8', 3.0, 'OA', false, { x: -24, y: 0 }, 0, 'base');
+        drawVectorArrow(0, 0, B.x, B.y, '#f472b6', 3.0, 'OB', false, { x: 24, y: 14 }, 0, 'base');
+      }
+
+      // Step 2 (partIdx = 1, lens = 'aux'): 분해 벡터 (1-t)OA, t OB 및 최종 위치벡터 OP + 세로 분수 판서
+      if (state.steps[2]) {
+        const mA = { x: m * A.x, y: m * A.y };
+        const nB = { x: n * B.x, y: n * B.y };
+        drawChalkLine(mA.x, mA.y, P.x, P.y, 'rgba(244, 114, 182, 0.5)', 1.7, true, false, 1, 'aux');
+        drawChalkLine(nB.x, nB.y, P.x, P.y, 'rgba(56, 189, 248, 0.5)', 1.7, true, false, 1, 'aux');
+
+        const vecLabelOffset = Math.abs(t) < 0.15 ? { x: 28, y: 22 } : { x: 12, y: -14 };
+        drawVectorArrow(0, 0, P.x, P.y, '#fbbf24', 3.6, `OP (t=${t.toFixed(2)})`, false, vecLabelOffset, 1, 'aux');
+
+        // [BUG-09 수리] t = 0.6 근처일 때 캔버스 세로 분수(drawCanvasFraction)로 (2/5)OA + (3/5)OB 판서 표시
+        if (Math.abs(t - 0.6) < 0.06) {
+          const sP = toScreen(P.x, P.y);
+          const fx = Math.min(sP.x + 18, BD.W - (BD.insets.right || 0) - 165); // [2.0 수정] 글자를 무대 안으로
+          const fy = sP.y - 38;
+          ctx.save();
+          ctx.font = 'bold 12px Pretendard, monospace';
+          ctx.fillStyle = '#fef08a';
+          ctx.fillText('OP =', fx, fy + 4);
+          drawCanvasFraction(fx + 44, fy, '2', '5', '#38bdf8', 11);
+          ctx.fillStyle = '#38bdf8';
+          ctx.fillText('OA +', fx + 68, fy + 4);
+          drawCanvasFraction(fx + 110, fy, '3', '5', '#f472b6', 11);
+          ctx.fillStyle = '#f472b6';
+          ctx.fillText('OB', fx + 132, fy + 4);
+          ctx.restore();
+        }
+      }
+
+      const safeOffsetP = getSafeLabelOffset(P, [A, B], { x: 10, y: -14 });
+      drawChalkPoint(0, 0, 5, '#f8fafc', '', { x: 0, y: 0 }, 0, 'base');
+      drawChalkPoint(A.x, A.y, 7, '#38bdf8', `A(${A.x.toFixed(1)}, ${A.y.toFixed(1)})`, { x: -85, y: -10 }, 0, 'base');
+      drawChalkPoint(B.x, B.y, 7, '#f472b6', `B(${B.x.toFixed(1)}, ${B.y.toFixed(1)})`, { x: 12, y: -10 }, 0, 'base');
+      drawChalkPoint(P.x, P.y, 8, '#fbbf24', `P(${P.x.toFixed(2)}, ${P.y.toFixed(2)})`, safeOffsetP, 1, 'locus');
+    }
+
+    function renderMode2(rect) {
+      const A = state.A2; // (3.2, 0.4) -> S = 4.00
+      const B = state.B2; // (0.8, 2.6)
+      const A2p = { x: 2 * A.x, y: 2 * A.y };
+      const B2p = { x: 2 * B.x, y: 2 * B.y };
+      const AB = { x: A.x + B.x, y: A.y + B.y };
+
+      const m = state.m2;
+      const n = state.n2;
+      const P = { x: m * A.x + n * B.x, y: m * A.y + n * B.y };
+
+      const sO = toScreen(0, 0);
+      const sA = toScreen(A.x, A.y);
+      const sB = toScreen(B.x, B.y);
+      const sA2 = toScreen(A2p.x, A2p.y);
+      const sB2 = toScreen(B2p.x, B2p.y);
+      const sAB = toScreen(AB.x, AB.y);
+
+      // Step 3 (partIdx = 2, lens = 'locus'): 선택된 프리셋에 따른 자취 영역 하이라이트
+      if (state.steps[3]) {
+        const style3 = getPartStyle(2, 'locus');
+        ctx.save();
+        ctx.globalAlpha = style3.alpha;
+        if (state.preset2 === 'tri1') {
+          ctx.beginPath();
+          ctx.moveTo(sO.x, sO.y);
+          ctx.lineTo(sA.x, sA.y);
+          ctx.lineTo(sB.x, sB.y);
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.30)';
+          ctx.fill();
+        } else if (state.preset2 === 'trap') {
+          ctx.beginPath();
+          ctx.moveTo(sA.x, sA.y);
+          ctx.lineTo(sA2.x, sA2.y);
+          ctx.lineTo(sB2.x, sB2.y);
+          ctx.lineTo(sB.x, sB.y);
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(251, 191, 36, 0.28)';
+          ctx.fill();
+        } else if (state.preset2 === 'para') {
+          ctx.beginPath();
+          ctx.moveTo(sO.x, sO.y);
+          ctx.lineTo(sA.x, sA.y);
+          ctx.lineTo(sAB.x, sAB.y);
+          ctx.lineTo(sB.x, sB.y);
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.26)';
+          ctx.fill();
+          drawChalkLine(A.x, A.y, AB.x, AB.y, '#38bdf8', 2.2, true, false, 2, 'locus');
+          drawChalkLine(B.x, B.y, AB.x, AB.y, '#38bdf8', 2.2, true, false, 2, 'locus');
+          drawChalkPoint(AB.x, AB.y, 5, '#38bdf8', 'A+B (m=1, n=1)', { x: 10, y: -10 }, 2, 'locus');
+          // [표시 보강] 평행사변형 O–A–(A+B)–B 의 마주 보는 변: OA ∥ B(A+B) (›), OB ∥ A(A+B) (››)
+          parallelMark({ x: 0, y: 0 }, A, '#38bdf8', 1); parallelMark(B, AB, '#38bdf8', 1);
+          parallelMark({ x: 0, y: 0 }, B, '#f472b6', 2); parallelMark(A, AB, '#f472b6', 2);
+        }
+        ctx.restore();
+      }
+
+      // Step 2 (partIdx = 1, lens = 'aux'): 2배 확장 벡터 2OA(A'), 2OB(B') 및 선분 m+n = 2 + 세로 분수 판서
+      if (state.steps[2]) {
+        drawChalkLine(0, 0, A2p.x, A2p.y, 'rgba(56, 189, 248, 0.5)', 2.0, true, false, 1, 'aux');
+        drawChalkLine(0, 0, B2p.x, B2p.y, 'rgba(244, 114, 182, 0.5)', 2.0, true, false, 1, 'aux');
+        drawChalkLine(A2p.x, A2p.y, B2p.x, B2p.y, '#fbbf24', state.preset2 === 'seg2' ? 4.8 : 2.6, false, true, 1, 'locus');
+        // [표시 보강] 선분 AB ∥ A'B' (같은 평행 표시)
+        parallelMark(A, B, '#fde047', 1);
+        parallelMark(A2p, B2p, '#fde047', 1);
+
+        drawChalkPoint(A2p.x, A2p.y, 5.5, '#38bdf8', "A'(2OA)", { x: 8, y: 18 }, 1, 'aux');
+        drawChalkPoint(B2p.x, B2p.y, 5.5, '#f472b6', "B'(2OB)", { x: 12, y: -8 }, 1, 'aux');
+
+        // [BUG-09 수리] 선분 A'B' 위쪽 근처에 세로 분수 (m/2)(2OA) + (n/2)(2OB) 변환식 표시
+        const midA2B2 = toScreen((A2p.x + B2p.x) / 2, (A2p.y + B2p.y) / 2);
+        midA2B2.x = Math.min(midA2B2.x, BD.W - (BD.insets.right || 0) - 165); // [2.0 수정] 글자를 무대 안으로
+        ctx.save();
+        ctx.globalAlpha = getPartStyle(1, 'aux').alpha;
+        drawCanvasFraction(midA2B2.x + 28, midA2B2.y - 18, 'm', '2', '#fef08a', 11);
+        ctx.font = 'bold 11px Pretendard, monospace';
+        ctx.fillStyle = '#fef08a';
+        ctx.fillText("(2OA) +", midA2B2.x + 56, midA2B2.y - 14);
+        drawCanvasFraction(midA2B2.x + 104, midA2B2.y - 18, 'n', '2', '#fef08a', 11);
+        ctx.fillText("(2OB)", midA2B2.x + 130, midA2B2.y - 14);
+        ctx.restore();
+      }
+
+      // Step 1 (partIdx = 0, lens = 'base'): 기본 삼각형 ΔOAB 및 선분 AB (m+n = 1)
+      if (state.steps[1]) {
+        const style1 = getPartStyle(0, 'base');
+        ctx.save();
+        ctx.globalAlpha = style1.alpha;
+        ctx.beginPath();
+        ctx.moveTo(sO.x, sO.y);
+        ctx.lineTo(sA.x, sA.y);
+        ctx.lineTo(sB.x, sB.y);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.12)';
+        ctx.fill();
+        ctx.restore();
+
+        drawVectorArrow(0, 0, A.x, A.y, '#38bdf8', 3.2, 'OA', false, { x: 10, y: 18 }, 0, 'base');
+        drawVectorArrow(0, 0, B.x, B.y, '#f472b6', 3.2, 'OB', false, { x: -24, y: 0 }, 0, 'base');
+        drawChalkLine(A.x, A.y, B.x, B.y, '#34d399', state.preset2 === 'seg1' ? 4.8 : 2.8, false, true, 0, 'locus');
+      }
+
+      // 현재 동점 P(m OA + n OB) 및 평행사변형 분해선
+      drawChalkLine(m * A.x, m * A.y, P.x, P.y, 'rgba(251, 191, 36, 0.45)', 1.5, true, false, 1, 'aux');
+      drawChalkLine(n * B.x, n * B.y, P.x, P.y, 'rgba(251, 191, 36, 0.45)', 1.5, true, false, 1, 'aux');
+      drawVectorArrow(0, 0, P.x, P.y, '#fbbf24', 3.2, `OP (m+n=${(m + n).toFixed(2)})`, false, { x: 25, y: -10 }, 2, 'locus');
+
+      const safeOffsetP = getSafeLabelOffset(P, [A, B, A2p, B2p], { x: 12, y: -12 });
+      drawChalkPoint(0, 0, 5, '#f8fafc', '', { x: 0, y: 0 }, 0, 'base');
+      drawChalkPoint(A.x, A.y, 6.5, '#38bdf8', 'A(3.2, 0.4)', { x: 8, y: 20 }, 0, 'base');
+      drawChalkPoint(B.x, B.y, 6.5, '#f472b6', 'B(0.8, 2.6)', { x: -72, y: -6 }, 0, 'base');
+      drawChalkPoint(P.x, P.y, 8, '#fbbf24', `P(m=${m.toFixed(2)}, n=${n.toFixed(2)})`, safeOffsetP, 2, 'locus');
+
+      // [BUG-04 수리] 프리셋 5종에 맞춰 하단 줄자 배너 동적 분기 렌더링
+      if (state.steps[3]) {
+        let bannerTitle = '';
+        let tapeSegs = [];
+        const sumMN = Math.max(0.01, m + n);
+
+        if (state.preset2 === 'seg1') {
+          bannerTitle = `① m + n = 1 (m,n≥0) 자취 ⇔ 선분 AB (내분점 집합, 현재 합=${(m + n).toFixed(2)})`;
+          tapeSegs = [
+            { weight: m / sumMN, label: `m = ${m.toFixed(2)}`, bg: 'rgba(56, 189, 248, 0.28)', color: '#38bdf8' },
+            { weight: n / sumMN, label: `n = ${n.toFixed(2)}`, bg: 'rgba(244, 114, 182, 0.28)', color: '#f472b6' }
+          ];
+        } else if (state.preset2 === 'seg2') {
+          bannerTitle = `② m + n = 2 (m,n≥0) 자취 ⇔ 2배 확장 평행선분 A'B' (현재 합=${(m + n).toFixed(2)})`;
+          tapeSegs = [
+            { weight: (m / 2) / (sumMN / 2), label: `m/2 = ${(m / 2).toFixed(2)}`, bg: 'rgba(56, 189, 248, 0.28)', color: '#38bdf8' },
+            { weight: (n / 2) / (sumMN / 2), label: `n/2 = ${(n / 2).toFixed(2)}`, bg: 'rgba(244, 114, 182, 0.28)', color: '#f472b6' }
+          ];
+        } else if (state.preset2 === 'tri1') {
+          bannerTitle = `③ m + n ≤ 1 (m,n≥0) 영역 넓이 = ΔOAB 넓이 S = 4.00`;
+          tapeSegs = [
+            { weight: 1.0, label: `ΔOAB 내부 영역 넓이 = 1² × S = 4.00 (현재 m+n=${(m + n).toFixed(2)})`, bg: 'rgba(52, 211, 153, 0.28)', color: '#34d399' }
+          ];
+        } else if (state.preset2 === 'para') {
+          bannerTitle = `⑤ 0 ≤ m, n ≤ 1 평행사변형 넓이 = 2 × ΔOAB = 2S = 8.00`;
+          tapeSegs = [
+            { weight: 0.5, label: `ΔOAB (S = 4.00)`, bg: 'rgba(52, 211, 153, 0.25)', color: '#34d399' },
+            { weight: 0.5, label: `대칭 삼각형 (+S = 4.00) ➡ 총 2S = 8.00`, bg: 'rgba(56, 189, 248, 0.28)', color: '#38bdf8' }
+          ];
+        } else {
+          bannerTitle = `④ 1 ≤ m+n ≤ 2 사다리꼴 넓이 = (2² - 1²)S = 3S = 12.00`;
+          tapeSegs = [
+            { weight: 0.25, label: `제외 S=4`, bg: 'rgba(16, 185, 129, 0.18)', color: '#34d399' },
+            { weight: 0.75, label: `사다리꼴 ABB'A' 넓이 = 3S = 12.00`, bg: 'rgba(251, 191, 36, 0.30)', color: '#fbbf24' }
+          ];
+        }
+
+        drawBottomTapeBanner(rect, bannerTitle, tapeSegs);
+      }
+    }
+
+    function renderMode3(rect) {
+      const A = state.A3; // (1, 2)
+      const u = state.u3; // (3, 2)
+      const n = { x: u.y, y: -u.x }; // 법선벡터 (2, -3)
+      const t = state.t3;
+      const P = { x: A.x + t * u.x, y: A.y + t * u.y };
+
+      const uLen = Math.hypot(u.x, u.y);
+      const ux = u.x / uLen;
+      const uy = u.y / uLen;
+      const nx = n.x / uLen;
+      const ny = n.y / uLen;
+
+      // 직선 l 본체 렌더링
+      const span = 16;
+      drawChalkLine(A.x - ux * span, A.y - uy * span, A.x + ux * span, A.y + uy * span, '#e2e8f0', 2.6, false, false, 1, 'locus');
+
+      // Step 1 (partIdx = 0, lens = 'base'): 기준점 A 및 방향벡터 u 표시
+      if (state.steps[1]) {
+        drawVectorArrow(0, 0, A.x, A.y, '#38bdf8', 2.8, 'OA', false, { x: -24, y: 8 }, 0, 'base');
+        drawVectorArrow(
+          0,
+          0,
+          u.x,
+          u.y,
+          '#34d399',
+          2.8,
+          `방향벡터 u(${u.x.toFixed(0)}, ${u.y.toFixed(0)})`,
+          true,
+          { x: 35, y: 18 },
+          0,
+          'base'
+        );
+      }
+
+      // [표시 보강] 방향벡터 u ∥ 직선 l: 같은 평행 표시(u의 가운데, 직선 l 위 A에서 u만큼 떨어진 구간의 가운데)
+      if (state.steps[1]) {
+        parallelMark({ x: 0, y: 0 }, u, '#fde047', 1);
+        parallelMark(A, { x: A.x + u.x, y: A.y + u.y }, '#fde047', 1);
+      }
+
+      // Step 2 (partIdx = 1, lens = 'locus'): AP = t u 매개변수 이동 화살표 및 OP
+      if (state.steps[2]) {
+        const opLabelOffset = Math.abs(t) < 0.15 ? { x: 42, y: 24 } : { x: 35, y: 16 };
+        drawVectorArrow(0, 0, P.x, P.y, '#fbbf24', 3.2, 'OP = OA + t u', false, opLabelOffset, 1, 'locus');
+        if (Math.abs(t) > 0.05) {
+          drawVectorArrow(A.x, A.y, P.x, P.y, '#34d399', 3.6, `t u (t=${t.toFixed(2)})`, false, { x: -18, y: -16 }, 1, 'locus');
+        }
+      }
+
+      // Step 3 (partIdx = 2, lens = 'aux'): 점 A에서의 수직 법선벡터 n = (2, -3) 및 직각 마크
+      if (state.steps[3]) {
+        drawVectorArrow(
+          A.x,
+          A.y,
+          A.x + n.x,
+          A.y + n.y,
+          '#f472b6',
+          3.4,
+          `법선벡터 n(${n.x.toFixed(0)}, ${n.y.toFixed(0)})`,
+          false,
+          { x: 70, y: 26 },
+          2,
+          'aux'
+        );
+        drawRightAngleMark(A, { x: ux, y: uy }, { x: nx, y: ny }, 14, '#f472b6', 2, 'aux'); // [표시 보강] 직각 표시를 키움(작아서 안 보였음)
+
+        const wBase = 1 / (1 + Math.abs(t));
+        const wStep = 1 - wBase;
+        drawBottomTapeBanner(
+          rect,
+          `직선 l: (x-1)/3 = (y-2)/2 ⇔ AP · n = 2(x-1) - 3(y-2) = 0`,
+          [
+            { weight: wBase, label: `점 A(1, 2)`, bg: 'rgba(56, 189, 248, 0.26)', color: '#38bdf8' },
+            { weight: wStep, label: `+ t u (t=${t.toFixed(2)}) ➡ P(${P.x.toFixed(1)}, ${P.y.toFixed(1)})`, bg: 'rgba(52, 211, 153, 0.28)', color: '#34d399' }
+          ],
+          'rgba(52, 211, 153, 0.6)'
+        );
+      }
+
+      const safeOffsetP = getSafeLabelOffset(P, [A], { x: 12, y: -14 });
+      drawChalkPoint(0, 0, 5, '#f8fafc', '', { x: 0, y: 0 }, 0, 'base');
+      drawChalkPoint(A.x, A.y, 6.5, '#38bdf8', `점 A(${A.x.toFixed(0)}, ${A.y.toFixed(0)})`, { x: -95, y: -10 }, 0, 'base');
+      drawChalkPoint(P.x, P.y, 8, '#fbbf24', `점 P(${P.x.toFixed(1)}, ${P.y.toFixed(1)})`, safeOffsetP, 1, 'locus');
+    }
+
+    function renderMode4(rect) {
+      const A = state.A4; // (-3, -1)
+      const B = state.B4; // (3, 3)
+      const M = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 }; // 중심 (0, 1)
+      const r = Math.hypot(B.x - A.x, B.y - A.y) / 2; // 반지름 √13 ≈ 3.6055
+
+      const theta = state.theta4;
+      const P = { x: M.x + r * Math.cos(theta), y: M.y + r * Math.sin(theta) };
+
+      // Step 3 (partIdx = 2, lens = 'locus'): 선분 AB를 지름으로 하는 원 자취 렌더링
+      if (state.steps[3]) {
+        const style3 = getPartStyle(2, 'locus');
+        const sM = toScreen(M.x, M.y);
+        ctx.save();
+        ctx.globalAlpha = style3.alpha;
+        ctx.beginPath();
+        ctx.arc(sM.x, sM.y, r * state.scale, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(52, 211, 153, 0.08)';
+        ctx.fill();
+        ctx.strokeStyle = '#34d399';
+        ctx.lineWidth = style3.extraGlow > 0 ? 4.0 : 2.8;
+        ctx.shadowColor = '#34d399';
+        ctx.shadowBlur = Math.max(12, style3.extraGlow);
+        ctx.stroke();
+        ctx.restore();
+
+        drawChalkPoint(M.x, M.y, 5, '#34d399', `중심 M(${M.x.toFixed(0)}, ${M.y.toFixed(0)}) [r=√13]`, { x: 10, y: 18 }, 2, 'locus');
+        // [표시 보강] 지름 AB의 중심 M: MA = MB = MP(반지름) 같은 길이 눈금
+        drawChalkLine(M.x, M.y, P.x, P.y, 'rgba(52, 211, 153, 0.6)', 1.5, true, false, 2, 'locus');
+        BD.ticks([M.x, M.y], [A.x, A.y], { count: 1, color: '#34d399' });
+        BD.ticks([M.x, M.y], [B.x, B.y], { count: 1, color: '#34d399' });
+        BD.ticks([M.x, M.y], [P.x, P.y], { count: 1, color: '#34d399' });
+      }
+
+      // Step 1 (partIdx = 0, lens = 'base'): 지름 양 끝점 A, B 및 선분 AB
+      if (state.steps[1]) {
+        drawChalkLine(A.x, A.y, B.x, B.y, '#fbbf24', 2.6, true, false, 0, 'base');
+      }
+
+      // Step 2 (partIdx = 1, lens = 'aux'): 직각을 이루는 두 현 벡터 AP, BP 및 90° 직각 기호
+      const vPA = { x: A.x - P.x, y: A.y - P.y };
+      const lPA = Math.hypot(vPA.x, vPA.y);
+      const vPB = { x: B.x - P.x, y: B.y - P.y };
+      const lPB = Math.hypot(vPB.x, vPB.y);
+
+      if (state.steps[2]) {
+        const labelAP = lPA > 1.2 ? 'AP = OP - OA' : '';
+        const labelBP = lPB > 1.2 ? 'BP = OP - OB' : '';
+        drawVectorArrow(A.x, A.y, P.x, P.y, '#38bdf8', 3.2, labelAP, false, { x: -35, y: -10 }, 1, 'aux');
+        drawVectorArrow(B.x, B.y, P.x, P.y, '#f472b6', 3.2, labelBP, false, { x: 35, y: -10 }, 1, 'aux');
+
+        if (lPA > 0.25 && lPB > 0.25) {
+          drawRightAngleMark(
+            P,
+            { x: vPA.x / lPA, y: vPA.y / lPA },
+            { x: vPB.x / lPB, y: vPB.y / lPB },
+            16, // [표시 보강] 직각 표시를 키움(점 P·이름표에 가려 안 보였음)
+            '#fde047',
+            1,
+            'aux'
+          );
+        }
+      }
+
+      if (state.steps[3]) {
+        const wPA = (lPA * lPA) / 52;
+        const wPB = 1 - wPA;
+        drawBottomTapeBanner(
+          rect,
+          `(OP - OA)·(OP - OB) = AP·BP = 0 ⇔ ∠APB = 90° (피타고라스 |AP|²+|BP|²=|AB|²=52)`,
+          [
+            { weight: wPA, label: `|AP|² = ${(lPA * lPA).toFixed(1)}`, bg: 'rgba(56, 189, 248, 0.28)', color: '#38bdf8' },
+            { weight: wPB, label: `|BP|² = ${(lPB * lPB).toFixed(1)} (합=52.0)`, bg: 'rgba(244, 114, 182, 0.28)', color: '#f472b6' }
+          ],
+          'rgba(251, 191, 36, 0.6)'
+        );
+      }
+
+      const defaultOff = { x: -55, y: P.y >= M.y ? -16 : 24 };
+      const safeOffsetP = getSafeLabelOffset(P, [A, B], defaultOff);
+      drawChalkPoint(0, 0, 4.5, '#f8fafc', '', { x: 0, y: 0 }, 0, 'base');
+      drawChalkPoint(A.x, A.y, 7, '#38bdf8', `A(${A.x.toFixed(0)}, ${A.y.toFixed(0)})`, { x: -75, y: 20 }, 0, 'base');
+      drawChalkPoint(B.x, B.y, 7, '#f472b6', `B(${B.x.toFixed(0)}, ${B.y.toFixed(0)})`, { x: 10, y: -10 }, 0, 'base');
+      drawChalkPoint(P.x, P.y, 8, '#fbbf24', `점 P (∠APB=90°)`, safeOffsetP, 2, 'locus');
+    }
+  /* ===== 원본 그대로: 실시간 값 (원본 updateLiveMonitor — 화면에 쓰는 대신 값을 돌려줌) ===== */
+    function monitor() {
+      const out = { labels: [], vals: [], eq: '', sub: '' };
+      if (state.mode === 1) {
+        const A = state.A1;
+        const B = state.B1;
+        const t = state.t1;
+        const m = 1 - t;
+        const n = t;
+        const P = { x: m * A.x + n * B.x, y: m * A.y + n * B.y };
+        const isInternal = t >= -0.001 && t <= 1.001;
+
+        out.eq = (`\\overrightarrow{OP} = (${m.toFixed(2)})\\overrightarrow{OA} + (${n.toFixed(2)})\\overrightarrow{OB}`);
+        out.sub = (`m + n = 1.00`);
+
+        out.labels[0] = '계수 m = 1-t / n = t';
+        out.vals[0] = `m=${m.toFixed(2)} | n=${n.toFixed(2)}`;
+        out.labels[1] = '계수 합 m + n';
+        out.vals[1] = `1.000 (직선 AB 위에서 일정)`;
+        out.labels[2] = '점 P(x, y) 좌표';
+        out.vals[2] = `P(${P.x.toFixed(2)}, ${P.y.toFixed(2)})`;
+        out.labels[3] = '점 P의 위치';
+        out.vals[3] = isInternal
+          ? `선분 AB 위의 점 (${Math.abs(n).toFixed(2)} : ${Math.abs(m).toFixed(2)})`
+          : `연장선 위의 점 (${Math.abs(n).toFixed(2)} : ${Math.abs(m).toFixed(2)})`;
+
+      } else if (state.mode === 2) {
+        const m = state.m2;
+        const n = state.n2;
+        const sum = m + n;
+        const P = { x: m * state.A2.x + n * state.B2.x, y: m * state.A2.y + n * state.B2.y };
+        // 실제 외적 넓이 계산: 0.5 * |3.2*2.6 - 0.4*0.8| = 4.00
+        const baseAreaS = 0.5 * Math.abs(state.A2.x * state.B2.y - state.A2.y * state.B2.x);
+
+        out.eq = (`\\overrightarrow{OP} = ${m.toFixed(2)}\\overrightarrow{OA} + ${n.toFixed(2)}\\overrightarrow{OB}`);
+        out.sub = (`m + n = ${sum.toFixed(2)}`);
+
+        out.labels[0] = '계수 m, n (m, n ≥ 0)';
+        out.vals[0] = `m=${m.toFixed(2)} | n=${n.toFixed(2)}`;
+        out.labels[1] = '계수 합 k = m + n';
+        out.vals[1] = `m + n = ${sum.toFixed(2)}`;
+        out.labels[2] = '기준 ΔOAB 넓이 S';
+        out.vals[2] = `S = ${baseAreaS.toFixed(2)}`;
+
+        // [BUG-04 수리] 프리셋 5종에 따라 4번째 모니터 카드 동적 갱신
+        if (state.preset2 === 'seg1') {
+          out.labels[3] = '① m+n=1 자취 상태';
+          out.vals[3] = `선분 AB 위 (m+n=${sum.toFixed(2)})`;
+        } else if (state.preset2 === 'seg2') {
+          out.labels[3] = '② m+n=2 자취 상태';
+          out.vals[3] = `선분 A'B' 위 (m+n=${sum.toFixed(2)})`;
+        } else if (state.preset2 === 'tri1') {
+          out.labels[3] = '③ m+n≤1 영역 넓이 (S)';
+          out.vals[3] = `S = ${baseAreaS.toFixed(2)} (삼각형 OAB)`;
+        } else if (state.preset2 === 'para') {
+          out.labels[3] = '⑤ 0≤m,n≤1 넓이 (2S)';
+          out.vals[3] = `2S = ${(2 * baseAreaS).toFixed(2)} (평행사변형)`;
+        } else {
+          out.labels[3] = '④ 1≤m+n≤2 넓이 (3S)';
+          out.vals[3] = `3S = ${(3 * baseAreaS).toFixed(2)} (사다리꼴)`;
+        }
+
+      } else if (state.mode === 3) {
+        const A = state.A3;
+        const u = state.u3;
+        const t = state.t3;
+        const P = { x: A.x + t * u.x, y: A.y + t * u.y };
+
+        out.eq = (`\\overrightarrow{OP} = \\overrightarrow{OA} + t\\overrightarrow{u}`);
+        out.sub = (`2x - 3y + 4 = 0`);
+
+        out.labels[0] = '방향벡터 u (평행 ∥)';
+        out.vals[0] = `u = (${u.x.toFixed(0)}, ${u.y.toFixed(0)})`;
+        out.labels[1] = '법선벡터 n (수직 ⊥)';
+        out.vals[1] = `n = (${u.y.toFixed(0)}, ${(-u.x).toFixed(0)})`;
+        out.labels[2] = '점 P = A + t u';
+        out.vals[2] = `P(${P.x.toFixed(2)}, ${P.y.toFixed(2)})`;
+        out.labels[3] = '내적 AP · n';
+        out.vals[3] = `AP · n = 0.000 (항상 수직)`;
+
+      } else {
+        const M = { x: 0, y: 1 };
+        const r = Math.sqrt(13);
+        const deg = ((state.theta4 * 180) / Math.PI + 360) % 360;
+
+        out.eq = (`(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot(\\overrightarrow{OP}-\\overrightarrow{OB}) = 0`);
+        out.sub = (`x^2 + (y-1)^2 = 13`);
+
+        out.labels[0] = '지름 양 끝점 A, B';
+        out.vals[0] = `A(-3,-1), B(3,3) | M(0,1)`;
+        out.labels[1] = '원의 반지름 r = |AB|/2';
+        out.vals[1] = `r = √13 ≈ ${r.toFixed(3)}`;
+        out.labels[2] = '내적 AP · BP';
+        out.vals[2] = `AP · BP = 0.000 (∠APB=90°)`;
+        out.labels[3] = '원의 넓이 π r²';
+        out.vals[3] = `13π ≈ ${(13 * Math.PI).toFixed(2)}`;
+
+      }
+      return out;
+    }
+
+  /* ===== 프리셋: 원본 setMode2Preset 값 그대로 ===== */
+  const MODE2 = [
+    { key: 'seg1', label: '① m+n=1 (선분 AB)', m: 0.5, n: 0.5 },
+    { key: 'seg2', label: "② m+n=2 (선분 2A·2B)", m: 1.0, n: 1.0 },
+    { key: 'tri1', label: '③ m+n≤1 (ΔOAB 넓이 S)', m: 0.35, n: 0.35 },
+    { key: 'trap', label: '④ 1≤m+n≤2 (사다리꼴 3S)', m: 0.8, n: 0.7 },
+    { key: 'para', label: '⑤ 0≤m,n≤1 (평행사변형 2S)', m: 0.75, n: 0.85 }
+  ];
+  const LENS = [['all', '전체 보기'], ['base', '위치벡터 OA, OB'], ['locus', '자취·영역'], ['aux', '수직·내분 보조선']];
+  const presetChips = (m) => (m === 2 ? MODE2.map((p) => ({
+    group: '조건별 자취 버튼', label: p.label,
+    apply: (s) => { s.playing = false; s.preset2 = p.key; },
+    set: { m2: p.m, n2: p.n }, ms: 380,
+    on: (st) => st.preset2 === p.key
+  })) : []).concat(LENS.map(([k, label]) => ({ group: '강조해서 볼 요소', label, apply: (s) => { s.lens = k; }, on: (st) => st.lens === k })));
+  const SNAP = { 1: { t1: 0.6 }, 2: { m2: 0.8, n2: 0.7 }, 3: { t3: 2.0 }, 4: { th4: 65 } };
+  function snapPatch(m, s) { s.lens = 'all'; if (m === 2) s.preset2 = 'trap'; return { ...SNAP[m] }; } // 원본 snapToProblem: 값을 문제 조건으로 부드럽게 이동
+
+  /* ===== 끌 수 있는 점 P (원본 handlePointerDown / handlePointerMove 규칙 그대로) ===== */
+  function drawHandles(b, s, m) {
+    const st = state;
+    if (m === 1) {
+      const A = st.A1, B = st.B1, P = { x: (1 - s.t1) * A.x + s.t1 * B.x, y: (1 - s.t1) * A.y + s.t1 * B.y };
+      b.handle('P1', P, { color: 'amber', ariaLabel: '점 P', drag: (w) => {
+        const vx = B.x - A.x, vy = B.y - A.y;
+        s.t1 = clamp(((w.x - A.x) * vx + (w.y - A.y) * vy) / (vx * vx + vy * vy), -1, 2.4);
+      } });
+    } else if (m === 2) {
+      const A = st.A2, B = st.B2, P = { x: s.m2 * A.x + s.n2 * B.x, y: s.m2 * A.y + s.n2 * B.y };
+      b.handle('P2', P, { color: 'amber', ariaLabel: '점 P', drag: (w) => {
+        const det = A.x * B.y - A.y * B.x;
+        if (Math.abs(det) > 0.01) {
+          let mVal = clamp((w.x * B.y - w.y * B.x) / det, 0, 2), nVal = clamp((A.x * w.y - A.y * w.x) / det, 0, 2);
+          if (s.preset2 === 'seg1') { mVal = clamp(mVal, 0, 1); nVal = 1 - mVal; }
+          else if (s.preset2 === 'seg2') { mVal = clamp(mVal, 0, 2); nVal = 2 - mVal; }
+          s.m2 = mVal; s.n2 = nVal;
+        }
+      } });
+    } else if (m === 3) {
+      const A = st.A3, u = st.u3, P = { x: A.x + s.t3 * u.x, y: A.y + s.t3 * u.y };
+      b.handle('P3', P, { color: 'amber', ariaLabel: '점 P', drag: (w) => {
+        s.t3 = clamp(((w.x - A.x) * u.x + (w.y - A.y) * u.y) / (u.x * u.x + u.y * u.y), -1, 2.4); // 원본 BUG-02: 상한 2.4로 t=2.0 도달 보장
+      } });
+    } else {
+      const r = Math.sqrt(13);
+      b.handle('P4', { x: r * Math.cos(st.theta4), y: 1 + r * Math.sin(st.theta4) }, { color: 'amber', ariaLabel: '점 P', drag: (w) => { s.th4 = deg(Math.atan2(w.y - 1, w.x)); } });
+    }
+  }
+
+  /* ===== 장면 글: 탭 이름·탐구 질문 (새로 쓴 부분) ===== */
+  const TITLE = ['내분점과 일직선 조건 (1−t, t)', '계수 합(m+n=k)에 따른 자취와 넓이', '방향벡터와 법선벡터로 나타낸 직선', '원의 벡터방정식 (지름·접선)'];
+  const SHORT = ['내분점·일직선', '계수 합 자취', '방향·법선벡터', '원의 벡터방정식'];
+  const QUESTION = [
+    'OP = (1−t)OA + t·OB에서 t가 바뀌면 점 P는 어디를 지날까? 선분 AB 위의 점이 되는 t의 범위는 어디일까?',
+    'OP = m·OA + n·OB에서 m+n의 값이나 범위에 따라 점 P는 어떤 도형 위를 움직일까?',
+    '같은 직선을 방향벡터와 법선벡터로 각각 어떻게 나타낼 수 있을까?',
+    '(OP−OA)·(OP−OB) = 0이면 점 P는 어떤 도형 위를 움직일까?'
+  ];
+  const FOCUS = [
+    { x: [-5.5, 9], y: [-2.6, 6.8] }, { x: [-2, 8.4], y: [-2, 7] }, { x: [-4.4, 9.4], y: [-3.4, 8] }, { x: [-5.6, 5.6], y: [-4.2, 6.2] }
+  ];
+
+  function sceneOf(m) {
+    const d = examData[m];
+    const hint = d.hint; // [2.0 수정] 프리셋 바가 더 이상 좌측 상단에 없음
+    return {
+      id: 'm' + m, title: TITLE[m - 1], short: SHORT[m - 1],
+      question: QUESTION[m - 1], guide: hint,
+      controls: m === 1 ? ['t1'] : m === 2 ? ['m2', 'n2'] : m === 3 ? ['t3'] : ['th4'],
+      presets: () => presetChips(m),
+      actions: () => [{
+        id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '자동 이동'), on: (s) => s.playing,
+        run: (s) => { s.playing = !s.playing; }
+      }],
+      steps: d.steps,
+      enter: (s) => { s.sid = String(m); s.lens = 'all'; s.animDir = 1; if (m === 2) s.preset2 = 'trap'; Object.assign(s, SNAP[m]); },
+      focus: FOCUS[m - 1],
+      tick: (s, dt) => {
+        if (!s.playing) return false;
+        const f = dt * 60;
+        if (m === 1) {
+          s.t1 += 0.012 * s.animDir * f;
+          if (s.t1 > 1.5) s.animDir = -1;
+          if (s.t1 < -0.5) s.animDir = 1;
+        } else if (m === 2) {
+          const time = performance.now() * 0.0022;
+          const u = (Math.sin(time) + 1) / 2, v = (Math.cos(1.3 * time) + 1) / 2;
+          if (s.preset2 === 'seg1') { s.m2 = u; s.n2 = 1 - u; }
+          else if (s.preset2 === 'seg2') { s.m2 = 2 * u; s.n2 = 2 * (1 - u); }
+          else if (s.preset2 === 'tri1') { const k = 0.25 + 0.75 * v; s.m2 = k * u; s.n2 = k * (1 - u); }
+          else if (s.preset2 === 'para') { s.m2 = (Math.sin(time) + 1) / 2; s.n2 = (Math.cos(1.5 * time) + 1) / 2; }
+          else { const k = 1 + v; s.m2 = k * u; s.n2 = k * (1 - u); }
+        } else if (m === 3) {
+          s.t3 += 0.015 * s.animDir * f;
+          if (s.t3 > 2.2) s.animDir = -1;
+          if (s.t3 < -0.8) s.animDir = 1;
+        } else s.th4 = mod360(s.th4 + 0.016 * f * R2D);
+        return true;
+      },
+      view: (s) => {
+        s.sid = String(m);
+        use(s);
+        if (s.part != null && s.step < s.part + 1) s.step = s.part + 1; // 원본: 조각을 고르면 그 단계가 자동으로 켜짐
+        const o = monitor();
+        return {
+          guide: hint,
+          chips: [{ k: '벡터방정식', tex: o.eq, color: 'amber' }, { k: '', tex: o.sub, color: 'sky' }],
+          readouts: o.labels.map((label, i) => ({ label, value: o.vals[i], color: ['sky', 'amber', 'rose', 'green'][i], wide: String(o.vals[i]).length > 15 })),
+          parts: d.steps.map((name, i) => ({ id: i, name, color: ['sky', 'amber', 'rose'][i] })),
+          formula: '<div style="text-align:center">' + APLab.tex(o.eq, true) + '</div>'
+        };
+      },
+      draw: (b, s, v) => {
+        BD = b; s.sid = String(m); use(s);
+        TAPE = null; LBOX.length = 0;
+        if (s.grid) b.grid();
+        b.axes();
+        [null, renderMode1, renderMode2, renderMode3, renderMode4][m]({ width: b.W, height: b.H });
+        drawHandles(b, s, m);
+        v.tape = TAPE;
+      },
+      problem: {
+        tag: d.tag, time: d.targetTime,
+        text: (s) => { s.sid = String(m); use(s); return d.question(); },
+        answer: (s) => { s.sid = String(m); use(s); return d.answerBadge(); },
+        snap: (s) => snapPatch(m, s)
+      },
+      solution: {
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이',
+        quickTitle: '10초 컷 · 핵심 성질을 이용한 풀이', quickTag: '10초 컷',
+        standard: (s) => { s.sid = String(m); use(s); return d.textbook(); },
+        quick: (s) => { s.sid = String(m); use(s); return d.shortcut(); }
+      }
+    };
+  }
+
+  APLab.createLab({
+    id: 'geom-vector-figure',
+    title: '벡터로 나타낸 도형',
+    courseName: '기하',
+    unit: '벡터 · 벡터로 나타낸 도형',
+    courseColor: 'var(--m-rose)',
+    home: '../index.html#geom',
+    legacy: '../../labs/기하와벡터/벡터로 나타낸 도형.html',
+    board: { kind: 'cartesian', focus: FOCUS[0], minZoom: 0.3, maxZoom: 8 },
+    params: {
+      t1: { value: 0.6, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '실수 t (선분 AB 위: 0~1 / 연장선 위: −1.0~2.4)', format: (v) => `t = ${v.toFixed(2)} (${v >= -0.001 && v <= 1.001 ? '선분 AB 위' : '연장선 위'})` },
+      m2: { value: 0.8, min: 0, max: 2, step: 0.05, color: 'sky', label: 'OA 계수 m', format: (v, s) => `m=${v.toFixed(2)}, n=${s.n2.toFixed(2)} (합 m+n=${(v + s.n2).toFixed(2)})` },
+      n2: { value: 0.7, min: 0, max: 2, step: 0.05, color: 'rose', label: 'OB 계수 n', format: (v, s) => `m=${s.m2.toFixed(2)}, n=${v.toFixed(2)} (합 m+n=${(s.m2 + v).toFixed(2)})` },
+      t3: { value: 2, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '실수 t (P = A + t·u, −1.0~2.4)', format: (v) => { const x = 1 + 3 * v, y = 2 + 2 * v; return `t = ${v.toFixed(2)} (P(${x.toFixed(1)}, ${y.toFixed(1)}))`; } },
+      th4: { value: 65, min: 0, max: 360, step: 1, color: 'amber', label: '원 위의 점 P의 회전각 θ (어디에 있어도 ∠APB = 90°)', format: (v) => `${mod360(v).toFixed(1)}° (∠APB = 90.0° 고정)` }
+    },
+    state: { sid: '1', lens: 'all', preset2: 'trap', animDir: 1 },
+    persist: ['lens', 'preset2'],
+    scenes: [1, 2, 3, 4].map(sceneOf)
+  });
+});
+</script>
+</body>
+</html>

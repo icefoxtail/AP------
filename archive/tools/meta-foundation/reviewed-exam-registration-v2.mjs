@@ -1090,9 +1090,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const found = allRuntime.filter(r => r.questionUid === record.questionUid);
       if (found.length !== 1 || !eq(found[0], record)) fail(`registered runtime drift: ${record.questionUid}`);
     }
-    if (verifyProjection) verifyConsumer(root, previous.appliedRecords, previous.runtimeRecords, read);
+    const consumerLanes = verifyProjection ? verifyConsumer(root, previous.appliedRecords, previous.runtimeRecords, read) : null;
     return { status: "PASS", requestId: req.requestId, totalQuestions: rows.length, replay: true, plannedPaths: [],
-      consumerSearchStatus: verifyProjection ? "STATIC_VALUES_VERIFIED" : "NOT_RUN", browserStatus: "NOT_RUN" };
+      consumerSearchStatus: verifyProjection ? "STATIC_VALUES_VERIFIED" : "NOT_RUN", browserStatus: "NOT_RUN",
+      ...(consumerLanes ? { consumerLanes } : {}) };
   }
   if (verifyProjection) fail("registration receipt required before --verify-projection");
   const targetUids = new Set(rows.map(r => r.questionUid));
@@ -1406,9 +1407,34 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     ? catalog.records.map(r => Object.fromEntries(catalog.columns.map((k, i) => [k, decode(r[i])]))) : catalog.records;
   const byUid = unique(rows, "questionUid", "catalog UID");
   const runtimeByUid = unique(runtimeRecords, "questionUid", "runtime UID");
+  const lanes = { canonical: 0, usableMetaLane: 0 };
   for (const r of records) {
     const c = byUid.get(r.questionUid);
     if (!c || c.sourceFile !== r.sourceArchiveFile || c.sourceOrdinal !== r.sourceOrdinal) fail(`Consumer UID missing/mismatch: ${r.questionUid}`);
+    // A record the strict canonical resolver does not assign (assignment_missing: no reviewed
+    // parent link, a registration row whose source reviewStatus is not reviewed_pass, a native
+    // course outside the grade/course allowlist, ...) is deliberately NOT given canonical
+    // curriculumKey/PT/TPL by the Consumer, so the canonical columns are empty by design. The
+    // Consumer exposes the registered, content-bound values through the usable-meta lane
+    // (metaHint*) and the display projection instead. For such a record each empty canonical field
+    // is verified against that lane; every field the lane does not carry is verified against the
+    // exact active runtime pack row. A canonical value that exists must still equal the request.
+    const canonicalMissing = Array.isArray(c.canonicalAssignmentReasons) && c.canonicalAssignmentReasons.includes("assignment_missing");
+    const laneBound = canonicalMissing && ["exact", "content"].includes(c.metaBinding);
+    const projection = c.metaProjection && c.metaProjection.projectionStatus === "DISPLAY_ONLY_SOURCE_BOUND" ? c.metaProjection : null;
+    const lane = {
+      curriculumKey: () => c.metaHintCurriculum,
+      problemTypeKey: () => c.metaHintPT,
+      templateKey: () => c.metaHintTPL,
+      courseKey: () => projection?.courseKey,
+      L1: () => projection?.L1,
+      L2: () => projection?.L2,
+      standardUnitKey: () => projection?.standardUnitKey,
+      subUnitKey: () => projection?.subUnitKey,
+    };
+    const empty = value => value === undefined || value === null || value === "";
+    const courseCompact = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
+    let usedLane = false;
     for (const f of ["curriculumKey", "courseKey", "L1", "L2", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"]) {
       // Archive2 omits unknown fields instead of publishing a false NONE. Verify an omitted IntegrationPattern against its exact active runtime value.
       if (f === "integrationPattern" && !Object.hasOwn(c, f)) {
@@ -1417,17 +1443,50 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
         if (!eq(runtime[f], r[f])) fail("Consumer runtime metadata mismatch: " + r.questionUid + "." + f);
         continue;
       }
-      if (!eq(c[f], r[f])) fail("Consumer metadata mismatch: " + r.questionUid + "." + f);
+      if (laneBound && empty(c[f]) && !empty(r[f]) && Object.hasOwn(lane, f)) {
+        const exposed = lane[f]();
+        if (!empty(exposed)) {
+          // The display projection names the allowlisted course key; the registration may spell the
+          // same course with a space ("확률과 통계" vs "확률과통계").
+          const same = f === "courseKey" ? courseCompact(exposed) === courseCompact(r[f]) : eq(exposed, r[f]);
+          if (!same) fail("Consumer usable-meta lane mismatch: " + r.questionUid + "." + f);
+          usedLane = true;
+          continue;
+        }
+        const runtime = runtimeByUid.get(r.questionUid);
+        if (!runtime) fail("Consumer runtime UID missing: " + r.questionUid);
+        if (!eq(runtime[f], r[f])) fail("Consumer runtime metadata mismatch: " + r.questionUid + "." + f);
+        usedLane = true;
+        continue;
+      }
+      // The Consumer publishes an unrecorded difficulty as "UNKNOWN"; a registration that
+      // preserves the EVIDENCE_DEBT (null) must match it, a real 1-5 bucket must match exactly.
+      const consumerValue = f === "difficultyBucket" && c[f] === "UNKNOWN" && empty(r[f]) ? null : c[f];
+      // The registrar itself treats course names that differ only by whitespace as the same course.
+      const same = f === "courseKey" && typeof c[f] === "string" && typeof r[f] === "string"
+        ? courseCompact(c[f]) === courseCompact(r[f]) : eq(consumerValue, r[f]);
+      if (!same) fail("Consumer metadata mismatch: " + r.questionUid + "." + f);
     }
+    lanes[usedLane ? "usableMetaLane" : "canonical"]++;
     const runtime = runtimeByUid.get(r.questionUid);
     if (!runtime) fail(`Consumer runtime UID missing: ${r.questionUid}`);
     // Archive2's catalog exposes the verified basic path (L1/L2). The
     // Meta Foundation runtime owns the deeper canonical path (L3/L4).
     for (const f of ["L3", "L4"]) {
-      if (Object.hasOwn(c, f) && c[f] !== undefined && !eq(c[f], r[f])) fail(`Consumer metadata mismatch: ${r.questionUid}.${f}`);
+      // A lane-bound record has no canonical L3/L4 (they are blanked, not absent); its recorded
+      // L3 is exposed as metaHintL3 and L4 only exists in the runtime pack.
+      const canonicalBlank = laneBound && empty(c[f]);
+      if (canonicalBlank && f === "L3" && !empty(c.metaHintL3)) {
+        if (!eq(c.metaHintL3, r[f])) fail(`Consumer usable-meta lane mismatch: ${r.questionUid}.${f}`);
+      } else if (!canonicalBlank && Object.hasOwn(c, f) && c[f] !== undefined && !eq(c[f], r[f])) fail(`Consumer metadata mismatch: ${r.questionUid}.${f}`);
       if (!eq(runtime[f], r[f])) fail(`Consumer runtime metadata mismatch: ${r.questionUid}.${f}`);
     }
-    if (c.metadataConflicts?.length) fail(`Consumer metadata conflict: ${r.questionUid}`);
+    // The source question's own review annotation (e.g. SELF_CHECKED) is a historical source review
+    // state, kept separately from this receipt's metadata approval; it is not a metadata conflict
+    // for a record served through the usable-meta lane (the canonical resolver waives it the same
+    // way for FINAL_QA / REVIEW2 registrations). Any other conflict still blocks.
+    const blockingConflicts = (c.metadataConflicts || []).filter(field => !(laneBound && field === "reviewStatus"));
+    if (blockingConflicts.length) fail(`Consumer metadata conflict: ${r.questionUid}`);
   }
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx); vm.runInContext(fs.readFileSync(safePath(root, "archive/question-index.js"), "utf8"), ctx, { timeout: 10000 });
@@ -1456,4 +1515,5 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     if (found.course !== r.standardCourse) fail(`Search course mismatch: ${r.questionUid}`);
   }
   if (!runtimeRecords.length) fail("runtime records missing");
+  return lanes;
 }

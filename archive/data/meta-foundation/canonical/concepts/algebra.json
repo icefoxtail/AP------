@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.17",
+  "shardVersion": "1.4.18",
   "status": "ACTIVE",
-  "conceptCount": 284,
+  "conceptCount": 288,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -9327,6 +9327,146 @@
       ],
       "curriculumRefs": [
         "2015:수학(상):H15-SA-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ALGEBRAIC_SUBSTITUTION",
+      "canonicalLabelKo": "대입을 통한 함수값 결정",
+      "definition": "이미 주어진 입력·함수값을 관계식에 대입하여 필요한 값을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_a2e9aac133cfb8ba1cdb52fa19ae3f3f689d36b8fb76b7a539710e82291898d3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_a2e9aac133cfb8ba1cdb52fa19ae3f3f689d36b8fb76b7a539710e82291898d3",
+          "sourceOrdinal": 9,
+          "classificationRationale": "META_PIPELINE_AUDIT record 9 binds CC_ALGEBRAIC_SUBSTITUTION for PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 9 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTIONAL_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SQUARE_DIFFERENCE_COMPARISON",
+      "canonicalLabelKo": "제곱 차를 이용한 제곱근 부등식",
+      "definition": "양수 조건에서 제곱 차 또는 제곱근의 차를 변형하여 두 식의 대소를 비교한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_SQUARE_DIFFERENCE_COMPARISON for PT_ABSOLUTE_INEQUALITY_PROOF/TPL_SQUARE_COMPARISON_PROOF at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 12 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ABSOLUTE_INEQUALITY_PROOF"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_INEQUALITY",
+      "canonicalLabelKo": "산술·기하 부등식의 하한",
+      "definition": "양수인 두 항의 합은 산술·기하평균 부등식으로 하한을 얻고 등호 조건을 확인한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_ABSOLUTE_INEQUALITY for PT_ABSOLUTE_INEQUALITY_PROOF/TPL_SQUARE_COMPARISON_PROOF at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 12 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_ABSOLUTE_INEQUALITY_PROOF"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_AVERAGE_SPEED_MODEL",
+      "canonicalLabelKo": "전체 평균 속력 모델",
+      "definition": "전체 이동 거리와 전체 소요 시간을 합하여 평균 속력을 시간에 대한 유리함수로 만든다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_AVERAGE_SPEED_MODEL for PT_FUNCTION_EXTREMUM/TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT at H22-C2-08-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 21 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_EXTREMUM"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

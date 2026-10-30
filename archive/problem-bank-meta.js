@@ -101,7 +101,7 @@
   function createSourceBoundDisplayProjection({
     meta = null, identity = null, sourceFile = '', sourceOrdinal = 0, sourceGrade = '',
     sourceFingerprint = '', assignmentFingerprint = '', gradeCourseAllowlist = [],
-    scopeParents = [], canonicalParents = [],
+    scopeParents = [], canonicalParents = [], allowContentBoundRevision = false,
   } = {}) {
     const fail = reason => ({ projection: null, reason });
     const file = sourcePath(sourceFile), ordinal = Number(sourceOrdinal);
@@ -111,8 +111,15 @@
         sourcePath(identity.sourceArchiveFile) !== file || sourcePath(meta.sourceArchiveFile) !== file ||
         Number(identity.sourceOrdinal) !== ordinal || Number(meta.sourceOrdinal) !== ordinal)
       return fail('DISPLAY_PROJECTION_IDENTITY_MISMATCH');
-    if (!sourceFingerprint || meta.sourceFingerprint !== sourceFingerprint ||
-        !assignmentFingerprint || meta.contentFingerprint !== assignmentFingerprint)
+    // Default: the approved row must be bound to the exact current bytes. Opt-in (S14, catalog
+    // builder only): when ONLY the answer/solution bytes changed after approval, the content
+    // fingerprint (stem + choices + image, i.e. what the classification describes) still matches,
+    // so the row still describes this question. That case is projected and labelled
+    // CONTENT_BOUND_SOURCE_REVISED; a changed stem/choices/image stays a FINGERPRINT_MISMATCH.
+    const contentMatches = Boolean(assignmentFingerprint) && meta.contentFingerprint === assignmentFingerprint;
+    const sourceMatches = Boolean(sourceFingerprint) && meta.sourceFingerprint === sourceFingerprint;
+    const contentBoundRevision = allowContentBoundRevision === true && contentMatches && !sourceMatches && Boolean(sourceFingerprint);
+    if (!(sourceMatches && contentMatches) && !contentBoundRevision)
       return fail('DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
     const registrationReview = meta.registrationUpdateState;
     const registrationPending = meta.metadataStatus === 'registration_pending_semantic_review' &&
@@ -236,6 +243,8 @@
           sourceOrdinal: ordinal,
           sourceFingerprint,
           assignmentFingerprint,
+          bindingMode: contentBoundRevision ? 'CONTENT_BOUND_SOURCE_REVISED' : 'EXACT',
+          ...(contentBoundRevision ? { approvedSourceFingerprint: meta.sourceFingerprint } : {}),
           metadataRevision: String(meta.metadataRevision || ''),
           evidenceRefs: [...(Array.isArray(meta.approvalEvidence) ? meta.approvalEvidence : []),
             ...(reviewedH1 ? meta.reviewedOriginalMetaEvidence.reviewWitnesses.map(witness => witness.ref) : []),
@@ -378,6 +387,9 @@
       verification?.status === 'VERIFIED_CURRENT_SOURCE' && verification?.sourceBound === true &&
       verification?.reviewBytesBound === true && verificationBindingsCurrent && !completenessFields
         .some(field => ['UNKNOWN', 'STALE', 'INVALID', 'EVIDENCE_DEBT', 'HOLD', 'PENDING'].includes(view.metaStatus[field]));
+    // CONTENT_BOUND_SOURCE_REVISED: the approved row still describes this question's stem, choices
+    // and image, but its answer/solution bytes changed after approval (labelled, never EXACT).
+    view.metaBindingMode = displayProjection?.sourceBinding?.bindingMode || null;
     view.metaViewVersion = VERSION;
     return view;
   }

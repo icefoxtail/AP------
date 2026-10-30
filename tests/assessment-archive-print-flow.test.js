@@ -38,7 +38,14 @@ function assert(condition, message) {
 
 assert(!html.includes('>출력</button>'), 'assessment action button should not use the old 출력 label');
 assert(!html.includes('>출제하기</button>'), 'assessment action button should use the shorter 출제 label');
-assert(!html.includes('assessment-analysis.html'), 'analysis screen should not be added');
+// The analysis screen is a shipped page (assessment-analysis.html); it must be linked and published.
+assert(html.includes('assessment-analysis.html'), 'assessment-mvp.html should link the shipped analysis screen');
+assert(fs.existsSync(path.join(root, 'archive', 'assessment', 'assessment-analysis.html')), 'assessment-analysis.html should exist');
+const pagesManifest = JSON.parse(fs.readFileSync(path.join(root, 'tools', 'archive-pages-release-manifest.json'), 'utf8'));
+assert(
+  JSON.stringify(pagesManifest).includes('archive/assessment/assessment-analysis.html'),
+  'assessment-analysis.html should be listed in the Pages release manifest',
+);
 assert(!html.includes('성분표'), 'analysis button text should not be added');
 
 const generatedFiles = [

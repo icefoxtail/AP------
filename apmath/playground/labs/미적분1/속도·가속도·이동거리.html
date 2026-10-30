@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>속도·가속도·이동거리 킬러 랩 (Velocity & Distance Triple Sync Lab)</title>
   <!-- Pretendard Webfont -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -675,9 +675,9 @@
         }),
         shortcut: () => ({
           steps: `① 세로축이 <strong class="text-amber-300">【 위치 ${tex('x(t)')} 】</strong>일 때:<br/>
-&nbsp;&nbsp;• ${tex('t')}절편(${tex('x=0')}) $=$ <strong>원점 통과</strong> / 극대·극소(기울기 0) $=$ <strong>운동 방향 전환(유턴)</strong>!<br/>
+&nbsp;&nbsp;• ${tex('t')}절편(${tex('x=0')}) ${tex('=')} <strong>원점 통과</strong> / 극대·극소(기울기 0) ${tex('=')} <strong>운동 방향 전환(유턴)</strong>!<br/>
 ② 세로축이 <strong class="text-sky-300">【 속도 ${tex('v(t)')} 】</strong>일 때:<br/>
-&nbsp;&nbsp;• ${tex('t')}절편 관통(${tex('v=0')}) $=$ <strong>운동 방향 전환(유턴)</strong> / 극대·극소(기울기 0) $=$ <strong>가속도 0(최대 속력 후보)</strong>!`,
+&nbsp;&nbsp;• ${tex('t')}절편 관통(${tex('v=0')}) ${tex('=')} <strong>운동 방향 전환(유턴)</strong> / 극대·극소(기울기 0) ${tex('=')} <strong>가속도 0(최대 속력 후보)</strong>!`,
           highlight: "💡 『위치 그래프의 극점 = 속도 그래프의 영점(관통) = 운동 방향 전환(유턴)』 — 3단 동기화 화면을 머릿속에 통째로 캡처해 두세요!"
         })
       }

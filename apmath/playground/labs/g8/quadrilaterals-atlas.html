@@ -338,6 +338,11 @@
       return latexStr;
     }
 
+    // 해설 문자열(hint · formulaHTML · notes) 속 $...$ 구간을 위 tex()로 KaTeX 수식으로 바꿉니다.
+    function texInline(html) {
+      return html.replace(/\$([^$]+)\$/g, (m, src) => tex(src));
+    }
+
     function fmtNum(v) {
       if (Math.abs(v - Math.round(v)) < 1e-6) return String(Math.round(v));
       return Number(v.toFixed(2)).toString();
@@ -804,7 +809,7 @@
             totalRes: isBroken ? `중점 불일치(M ≠ N): 평행사변형 깨짐 ❌` : `OA=OC, OB=OD | 교점 O를 지나는 모든 직선은 넓이를 ½로 이등분!`,
             rule: '평행사변형의 넓이를 이등분하는 직선은 무조건 대각선의 교점 O를 지난다!',
             formulaHTML: `• <strong>대각선 4분할 넓이</strong>: 밑변이 $OA=OC, OB=OD$로 같으므로 ${tex('\\mathbf{S_{\\triangle OAB} = S_{\\triangle OBC} = S_{\\triangle OCD} = S_{\\triangle ODA} = \\dfrac{1}{4}\\square ABCD}')} (모양은 마주보는 것끼리만 합동, 넓이는 4개 모두 같음!)`,
-            notes: `• <strong>[단골 함정]</strong>: 대각선으로 나뉜 4개의 작은 삼각형이 모두 “합동”이라고 하면 틀립니다! 마주보는 2쌍만 합동이고, 4개 모두는 <strong>넓이만 같습니다($\frac{1}{4}S$)</strong>!`,
+            notes: `• <strong>[단골 함정]</strong>: 대각선으로 나뉜 4개의 작은 삼각형이 모두 “합동”이라고 하면 틀립니다! 마주보는 2쌍만 합동이고, 4개 모두는 <strong>넓이만 같습니다($\\frac{1}{4}S$)</strong>!`,
             tapeTitle: `평행사변형 대각선 4분할 넓이: △OAB(¼) = △OBC(¼) = △OCD(¼) = △ODA(¼)`,
             tapeSegs: [
               { text: `△OAB (¼S)`, weight: 0.25, color: '#fbbf24' },
@@ -2011,9 +2016,18 @@
       ).join('');
     }
 
+    // 해설 칸에 $...$ 수식을 넣습니다. 슬라이더·애니메이션이 매 프레임 render()를 부르므로 내용이 같으면 DOM을 다시 쓰지 않습니다.
+    function setRichHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el._html !== html) {
+        el._html = html;
+        el.innerHTML = texInline(html);
+      }
+    }
+
     function updateUI(spec) {
       document.getElementById('canvasModeBadge').textContent = spec.badge;
-      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      setRichHTML('canvasActionHint', spec.hint);
       document.getElementById('txtFoldToggle').textContent = spec.actionTxt;
 
       document.getElementById('dim1Label').textContent = spec.dim1Name;
@@ -2050,8 +2064,8 @@
 
       document.getElementById('totalResultBadge').textContent = spec.totalRes;
       document.getElementById('ruleBadge').textContent = spec.rule;
-      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
-      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+      setRichHTML('formulaBox', spec.formulaHTML);
+      setRichHTML('intuitionNotes', spec.notes);
 
       renderPresetChips();
     }
@@ -2076,6 +2090,29 @@
       render();
     }
 
+    // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
+    const LENS_OFF = {
+      paraDiag: ['sides'], quadToTri: ['angles'], equiSlide: ['angles'], butterflyWing: ['angles'],
+      insidePointP: ['angles', 'sides', 'aux'], paraHeightSplit: ['angles'], varignonGen: ['angles', 'sides', 'aux'],
+      varignonRectToRhomb: ['sides'], varignonIsoToRhomb: ['sides'], varignonRhombToRect: ['angles'],
+      squarePerpLines: ['angles'], squareInnerRot: ['angles']
+    };
+
+    function syncLensButtons() {
+      const ids = ['all', 'angles', 'sides', 'aux'];
+      const off = (LENS_OFF[state.mode] || []).concat(LENS_OFF[state.subType[state.mode]] || []);
+      const none = ids.every((id) => id === 'all' || off.includes(id));
+      if (none || off.includes(state.conceptSwitch)) state.conceptSwitch = 'all';
+      ids.forEach((id) => {
+        const btn = document.getElementById(`sw-${id}`);
+        btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
+        btn.classList.toggle('active', id === state.conceptSwitch);
+      });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
+      document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
+    }
+
     function setMode(m) {
       state.mode = m;
       state.activePartIdx = -1;
@@ -2085,6 +2122,7 @@
       }
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }
@@ -2095,6 +2133,7 @@
       state.customDOffset = null;
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }

@@ -413,6 +413,10 @@ function reportCenterBuildDifficultyChartHtml(stats) {
 // ─────────────────────────────────────────
 
 const REPORT_CENTER_ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
+// Exam image base URL setting (archive/archive-asset-base.js). Default = unchanged same-origin URL.
+function reportCenterExternalizeExamImage(url) {
+    return typeof window.resolveExamImageUrl === 'function' ? window.resolveExamImageUrl(url) : url;
+}
 const REPORT_CENTER_ARCHIVE_INDEX_URL = 'https://icefoxtail.github.io/AP------/archive/index';
 const REPORT_CENTER_ARCHIVE_MIXER_URL = 'https://icefoxtail.github.io/AP------/archive/mixer.html';
 
@@ -438,7 +442,7 @@ function reportCenterArchiveRender() {
                 const dir = this.normalizeArchiveFile(archiveFile).split('/').slice(0, -1).join('/');
                 path = (dir ? `${dir}/` : '') + path;
             }
-            return REPORT_CENTER_ARCHIVE_BASE_URL + path.split('/').map(part => encodeURIComponent(part)).join('/');
+            return reportCenterExternalizeExamImage(REPORT_CENTER_ARCHIVE_BASE_URL + path.split('/').map(part => encodeURIComponent(part)).join('/'));
         },
         rewriteImgSrcInHtml(html, archiveFile) {
             return String(html || '').replace(/(<img\b[^>]*?\bsrc\s*=\s*)(["'])([\s\S]*?)\2/gi, (match, pre, quote, src) => {
@@ -515,7 +519,7 @@ function reportCenterResolveArchiveImageUrl(archiveInfo, image) {
     // 실제 데이터는 image를 아카이브 루트 기준으로 저장한다(예: "assets/images/<학교>/q16.png").
     // assets/·data/·exams/ 로 시작하면 아카이브 루트 기준, 그 외(bare "images/…")만 시험 js 디렉터리 기준.
     if (/^(assets|data|exams)\//i.test(rel)) {
-        return REPORT_CENTER_ARCHIVE_BASE_URL + reportCenterEncodeArchivePath(rel);
+        return reportCenterExternalizeExamImage(REPORT_CENTER_ARCHIVE_BASE_URL + reportCenterEncodeArchivePath(rel));
     }
     const baseUrl = String(archiveInfo?.url || '').trim();
     if (!baseUrl) return '';

@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>원의 방정식 · AP Math 실험실</title>
+<meta name="description" content="공통수학 원의 방정식: 표준형·일반형, 축에 접하는 원, 두 점까지의 거리의 비가 일정한 점의 자취, 원과 직선, 두 원과 공통현, 접선, 공통접선, 킬러 응용까지 8개 탐구관 32개 장면">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-compat.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   공통수학 · 원의 방정식 (AP Math Lab 2.0 이식본) — 8개 탐구관 × 32개 장면
+   원본: labs/공통수학/원의 방정식.html
+   이식 방식: "호환층 이식" — 원본의 내용(getSpec)과 그리기 코드(renderMode1~8)를
+   글자 그대로 옮기고, 그리기 함수 이름(pline·pcircle·ppoly·pdot·pright·ptag)만 새 무대 엔진에 연결합니다.
+   원본과 다른 점
+   - 원 위의 점 P(탐구관 1·3)는 원본에서 화면 어디를 끌어도 각도가 바뀌었습니다 → 점 P 자체를 끄는 손잡이로 [2.0 수정]
+   - 효과가 없던 조작은 표시하지 않음: 그림이 변하지 않는 장면(축에 접하는 원 4개 등)의 진행 슬라이더·시연 버튼,
+     반지름 r·중심거리 d 프리셋(원의 탄생 '표준형'과 탐구관 4 밖에서는 쓰이지 않았음)
+   - 미니 상자·하단 띠는 그림 위가 아닌 무대 카드·요약 띠로 이동
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+
+  /* ===== 원본 그대로: 색 상수와 벡터 도우미 (원본 355–372행) ===== */
+    const CCOL = {
+      cyan: '#38bdf8',
+      pink: '#f472b6',
+      green: '#34d399',
+      gold: '#fbbf24',
+      white: '#f1f5f9',
+      red: '#f43f5e',
+      purple: '#c084fc'
+    };
+
+    function pt(x, y) { return { x, y }; }
+    function mid(a, b) { return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }; }
+    function lerp(a, b, t) { return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t }; }
+    function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+    function sub(a, b) { return { x: a.x - b.x, y: a.y - b.y }; }
+    function add(a, b) { return { x: a.x + b.x, y: a.y + b.y }; }
+    function mul(v, k) { return { x: v.x * k, y: v.y * k }; }
+    function norm(v) { const l = Math.hypot(v.x, v.y) || 1; return { x: v.x / l, y: v.y / l }; }
+
+  /* ===== 원본 상태 객체(이름 그대로) — 매 프레임 2.0 셸 상태에서 채웁니다 ===== */
+  const state = {
+    mode: 1,
+    subType: { 1: 'stdDef', 2: 'twoCircles21', 3: 'apolloCircle', 4: 'chordLength', 5: 'pencilK', 6: 'tanExtVertical', 7: 'extCommonTan', 8: 'pappusMinSq' },
+    conceptSwitch: 'all', activePartIdx: -1, fold: 0.0,
+    radR: 5, distD: 3, thetaP: 0.72
+  };
+
+  /* ===== 원본 그대로: 세부 시나리오 목록 (원본 409–458행) ===== */
+    const SUB_MENUS = {
+      1: [
+        { id: 'stdDef', label: '⭕ 원의 탄생과 표준형 ((x-a)²+(y-b)²=r²)' },
+        { id: 'generalForm', label: '🔍 일반형 완전제곱식 & 실원 조건 (R²>0)' },
+        { id: 'diamEnds', label: '📐 지름의 양 끝점 A, B가 주어진 원 (∠APB=90°)' },
+        { id: 'threePts', label: '🔺 세 점을 지나는 원 (외접원 중심 찾기)' }
+      ],
+      2: [
+        { id: 'twoCircles21', label: '🔥 [킬러] 점 (2,1)을 지나고 x축·y축에 동시에 접하는 두 원' },
+        { id: 'touchX', label: '📏 x축에 접하는 원 (반지름 r = |b| 주의!)' },
+        { id: 'touchY', label: '📐 y축에 접하는 원 (반지름 r = |a| 주의!)' },
+        { id: 'touchBothQuad', label: '🧭 x·y축에 동시에 접하는 원 (사분면별 중심의 부호 4가지)' }
+      ],
+      3: [
+        { id: 'apolloCircle', label: '🛰️ [핵심] 두 점까지의 거리의 비가 2:1인 점의 자취 (PA:PB = 2:1)' },
+        { id: 'apolloMaxArea', label: '⛰️ 거리의 비가 2:1인 점 P의 자취(원)에서 △PAB 넓이의 최댓값' },
+        { id: 'apolloMaxAngle', label: '🎯 각 ∠PAB의 크기가 최대가 되는 순간 (접선!)' },
+        { id: 'midpointLocus', label: '📍 원 위의 점 P와 정점 A의 중점 M이 그리는 자취' }
+      ],
+      4: [
+        { id: 'chordLength', label: '✂️ [필수] 현의 길이 L = 2√(r² - d²) 피타고라스!' },
+        { id: 'dVsR', label: '⚡ 판별식 D보다 10배 빠른 d vs r 위치 판정기' },
+        { id: 'maxMinDist', label: '↕️ 원둘레에서 직선까지 최대(d+r)·최소 max(d-r,0)' },
+        { id: 'equilMaxMin', label: '🔺 원 위의 점과 직선으로 만든 정삼각형 넓이 최대·최소' }
+      ],
+      5: [
+        { id: 'pencilK', label: '🎬 [핵심] 두 원의 교점을 지나는 원과 직선 (O₁+kO₂=0)' },
+        { id: 'commonChordLen', label: '📏 공통현의 방정식(k=-1)과 공통현의 길이' },
+        { id: 'twoPos5', label: '🔗 두 원의 위치관계 5단계 (중심거리 d vs r±r′)' },
+        { id: 'bisectCircum', label: '👑 큰 원이 작은 원의 둘레를 이등분할 조건 (지름 통과!)' },
+        { id: 'foldCircleArc', label: '📄 원 모양 종이를 접어 현이 축에 접할 때 (원 복원!)' }
+      ],
+      6: [
+        { id: 'tanExtVertical', label: '⚠️ [함정] 원 밖의 점에서 그은 접선 & y축에 평행한 접선(x=r)' },
+        { id: 'tanSlope', label: '📈 유형 1: 기울기 m이 주어진 두 접선 (y=mx±r√(m²+1))' },
+        { id: 'tanPointOn', label: '📌 유형 2: 원 위의 점 (x₁,y₁)에서의 접선 (x₁x+y₁y=r²)' },
+        { id: 'tanPerp90', label: '⬛ 두 접선이 서로 수직(90°)일 때 (정사각형 d=√2r 자취!)' }
+      ],
+      7: [
+        { id: 'extCommonTan', label: '🎬 공통외접선의 길이 L = √(d² - (r-r′)²) 평행이동!' },
+        { id: 'intCommonTan', label: '🎬 공통내접선의 길이 L = √(d² - (r+r′)²) 평행이동!' },
+        { id: 'polarChordCow', label: '🐮 원 밖의 점에서 그은 두 접선의 접점 A, B를 잇는 현 AB의 길이 (3초 컷!)' },
+        { id: 'concyclicOAPB', label: '⭕ 네 점 O, A, P, B를 지나는 외접원 (지름 = OP!)' }
+      ],
+      8: [
+        { id: 'pappusMinSq', label: '🔥 원 위의 점 P에 대해 PA² + PB²의 최솟값 (선분 AB의 중점 이용)' },
+        { id: 'bisectAreaBoth', label: '✂️ 원과 직사각형 넓이를 동시에 이등분하는 직선' },
+        { id: 'laserReflectTan', label: '🪞 x축에서 반사되어 원에 접하는 레이저 광선 (대칭원!)' }
+      ]
+    };
+
+  /* ======================================================================
+     [2.0] 어댑터: 원본의 그리기 함수 → 새 무대 엔진
+     - 원본은 화면 픽셀(원점 ox,oy · 한 칸 u)로 점을 만들어 그렸습니다. 장면 코드는 그대로 두고
+       원점 (0,0)·한 칸 u=24 로 호출하면 무대의 '도형 설계 좌표'가 됩니다(자동 맞춤이 그림 크기를 정합니다).
+     - 원본의 규칙을 그대로 따릅니다: partIdx → 강조 조각, 관찰 렌즈(lensAlpha)에 따라 선명/흐리게
+     ====================================================================== */
+  let BOARD = null;
+  let CUR = null; // 지금 그리는 셸 상태(손잡이 끌기가 고칩니다)
+  const sink = {};
+  const arrowOnly = (s) => String(s == null ? '' : s).replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×');
+  const cv = (s) => APLab.stripEmoji(arrowOnly(s));
+  // 해설 문자열 정리: **굵게** → <strong>(원본 texInline), $…$ 수식 안의 < > 는 \\lt \\gt 로(셸의 수식 변환이 < 를 태그로 오해하지 않게)
+  const fixText = (s) => String(s).replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>').replace(/\$([^$]+)\$/g, (m, src) => '$' + src.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
+  const arrow = (v) => (typeof v === 'string' ? fixText(arrowOnly(v)) : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
+  const partOf = (p) => (p == null || p < 0 ? undefined : p);
+  const dashOf = (d) => (Array.isArray(d) && d.length ? d : null);
+  const withAlpha = (a, fn) => { if (a >= 1) { fn(); return; } const c = BOARD.ctx; c.save(); c.globalAlpha = a; try { fn(); } finally { c.restore(); } };
+  // 자동 맞춤을 재는 중에는 원의 바깥 범위도 그림 범위로 기록합니다(Board.arc는 중심만 기록하므로 보완)
+  const regCircle = (c, r) => { if (BOARD._bbox) { BOARD.toS(c.x - r, c.y - r); BOARD.toS(c.x + r, c.y + r); } };
+
+  // 관찰 렌즈 (원본 lensAlpha)
+  function lensAlpha(group) {
+    const sw = state.conceptSwitch;
+    return sw === 'all' || group === sw ? 1 : group ? 0.14 : 0.4;
+  }
+
+    function labelLens(text) {
+      if (/자취|공통현|평행|이동|대칭|반사|k = |y = x/.test(text)) return 'aux';
+      if (/직각|∠|빗변|AH|√/.test(text)) return 'pyth';
+      if (/중심|반지름|거리|\br\b|\bd\b|R²|[CO][₁₂]?\(|^[CO][₁₂]?$/.test(text)) return 'def';
+      if (/\|/.test(text)) return 'pyth';
+      return null;
+    }
+
+
+  function pline(a, b, color = '#fbbf24', width = 2.6, dash = [], glow = false, partIdx = undefined, group = null) {
+    withAlpha(lensAlpha(group || (dash.length ? 'aux' : null)), () => BOARD.seg(a, b, { color, width, dash: dashOf(dash), glow, part: partOf(partIdx) }));
+  }
+
+  function pcircle(c, rPx, stroke = '#38bdf8', fill = 'rgba(56,189,248,0.10)', width = 2.8, dash = [], partIdx = undefined) {
+    withAlpha(lensAlpha(dash.length ? 'aux' : null), () => {
+      regCircle(c, Math.max(1, rPx));
+      BOARD.circle(c, Math.max(1, rPx), { color: stroke || null, fill: fill || null, width, dash: dashOf(dash), part: partOf(partIdx) });
+    });
+  }
+
+  function ppoly(pts, fill = 'rgba(52,211,153,0.20)', stroke = '#34d399', width = 2.6, partIdx = undefined) {
+    withAlpha(lensAlpha('pyth'), () => BOARD.poly(pts, { fill: fill || null, color: stroke || null, stroke: !!stroke, width, part: partOf(partIdx) }));
+  }
+
+  function pdot(p, text = '', col = '#ffffff', customOff = null) {
+    withAlpha(lensAlpha(labelLens(text)), () => BOARD.point(p, { color: col, r: 5.2, label: BOARD.thumb ? '' : cv(text), dx: customOff ? customOff.x : 10, dy: customOff ? customOff.y : -10, align: 'left', baseline: 'alphabetic' }));
+  }
+
+  // [2.0 수정] 원 위의 점 P: 원본은 무대 어디를 끌어도 각도가 바뀌었지만 2.0 에서는 점 P(후광이 있는 점)를 직접 끕니다.
+  function dragP(P, C, k, text, col, off, on = true) {
+    if (!on || BOARD.thumb) { pdot(P, text, col, off); return; }
+    withAlpha(lensAlpha(labelLens(text)), () => BOARD.handle('P', P, {
+      color: col, label: cv(text), dx: off.x, dy: off.y, align: 'left', baseline: 'alphabetic', ariaLabel: '원 위의 점 P',
+      drag: (w) => { CUR.theta = Math.atan2(C.y - w.y, w.x - C.x) - CUR.fold * k; }
+    }));
+  }
+
+  function pright(v, p1, p2, size = 12, col = '#fbbf24') {
+    withAlpha(lensAlpha('pyth'), () => BOARD.right(v, p1, p2, { size, color: col }));
+  }
+
+  /* [표시 보강] 같은 길이 눈금(atick)·각 표시(aang)·같은 반사각(areflect)·평행 표시(apar). 관찰 렌즈는 pline·pright 와 같은 규칙으로 따르고
+     (눈금=def, 각=pyth), 그 렌즈가 없는 장면에서는 다른 렌즈를 골라도 반쯤 보입니다. 좌표는 현재 점에서 매 프레임 다시 계산합니다. */
+  const markGroup = (g) => (lensList(state.mode, state.subType[state.mode]).includes(g) ? g : null);
+  function atick(a, b, count = 1, col = '#fbbf24') {
+    withAlpha(lensAlpha(markGroup('def')), () => BOARD.ticks(a, b, { count, color: col, size: 7 }));
+  }
+  /* 각 표시 도우미 angMark(b, 꼭짓점 v, 반직선 방향 p1·p2, {color, rings, r, label}): 꼭짓점에서 p1→p2 쪽 작은 각에 호(rings겹)를 긋고, 값·기호(label)를
+     호 바깥의 그 각 '부채꼴 안쪽'에 놓습니다. 화면 픽셀 기준이라 확대·축소에도 읽히고, 각이 좁으면 라벨을 꼭짓점에서 더 멀리 둡니다. */
+  function angMark(b, v, p1, p2, o = {}) {
+    const unit = (p) => { const dx = p.x - v.x, dy = p.y - v.y, l = Math.hypot(dx, dy) || 1; return { x: v.x + (dx / l) * 1e-3, y: v.y + (dy / l) * 1e-3 }; };
+    const q1 = unit(p1), q2 = unit(p2);
+    const s0 = b.toS(v), a = b.toS(q1), c = b.toS(q2);
+    const t1 = Math.atan2(a.y - s0.y, a.x - s0.x), t2 = Math.atan2(c.y - s0.y, c.x - s0.x);
+    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, w = Math.abs(d), m = t1 + d / 2;
+    let r = o.r || 28;
+    const lines = b.thumb || o.label == null || o.label === '' ? [] : [].concat(o.label).map(String);
+    const hw = (Math.max(0, ...lines.map((x) => x.length)) * 7.2) / 2 + 3, hh = lines.length * 7 + 1;
+    const half = Math.max(w / 2, 0.07);
+    let D = r + 11;
+    [-1, 1].forEach((sg) => { const ang = m + sg * half; D = Math.max(D, (hw * Math.abs(Math.sin(ang)) + hh * Math.abs(Math.cos(ang))) / Math.sin(half) + 2); });
+    D = Math.min(D, o.max || 130);
+    if (lines.length && D - 12 > r) r = Math.min(D - 12, o.rmax || 70);
+    b.angle(v, q1, q2, { color: o.color, r, rings: o.rings || 1 });
+    lines.forEach((x, i) => b._text(s0.x + Math.cos(m) * D, s0.y + Math.sin(m) * D + (i - (lines.length - 1) / 2) * 13.5, x, { color: o.color, size: o.size || 12.5, align: 'center', baseline: 'middle', weight: 800 }));
+  }
+  function aang(v, p1, p2, o = {}) {
+    withAlpha(lensAlpha(markGroup('pyth')), () => angMark(BOARD, v, p1, p2, o));
+  }
+  const degOf = (v, p1, p2) => { const a1 = Math.atan2(p1.y - v.y, p1.x - v.x), a2 = Math.atan2(p2.y - v.y, p2.x - v.x); let d = Math.abs(a1 - a2); if (d > Math.PI) d = 2 * Math.PI - d; return +((d * 180) / Math.PI).toFixed(1); };
+  // 거울(축 방향 u)에 반사되는 점 P: A쪽 각과 B쪽 각(입사각 = 반사각)을 같은 색·같은 값으로 표시
+  function areflect(pP, pA, pB, u, col = '#fbbf24') {
+    const sg = Math.sign((pA.x - pP.x) * u.x + (pA.y - pP.y) * u.y) || 1;
+    const r1 = { x: pP.x + u.x * sg, y: pP.y + u.y * sg }, r2 = { x: pP.x - u.x * sg, y: pP.y - u.y * sg };
+    aang(pP, r1, pA, { color: col, r: 30, label: `${degOf(pP, r1, pA)}°` });
+    aang(pP, r2, pB, { color: col, r: 30, label: `${degOf(pP, r2, pB)}°` });
+  }
+  // 평행 표시(≫): 선분 a→b의 가운데에 화살표 모양 눈금 count개
+  function apar(a, b, count = 1, col = '#f1f5f9') {
+    if (BOARD._bbox || BOARD.thumb) return;
+    const bb = BOARD._bbox; BOARD._bbox = null; const s0 = BOARD.toS(a.x, a.y), s1 = BOARD.toS(b.x, b.y); BOARD._bbox = bb;
+    const c = BOARD.ctx, dx = s1.x - s0.x, dy = s1.y - s0.y, l = Math.hypot(dx, dy) || 1, ux = dx / l, uy = dy / l, mx = (s0.x + s1.x) / 2, my = (s0.y + s1.y) / 2;
+    withAlpha(lensAlpha(markGroup('pyth')), () => {
+      c.save(); c.strokeStyle = BOARD.color(col); c.lineWidth = 2.2 * BOARD.lw; c.setLineDash([]); c.lineCap = 'round';
+      for (let i = 0; i < count; i++) {
+        const off = (i - (count - 1) / 2) * 8, px = mx + ux * off, py = my + uy * off;
+        c.beginPath(); c.moveTo(px - ux * 7 - uy * 5, py - uy * 7 + ux * 5); c.lineTo(px, py); c.lineTo(px - ux * 7 + uy * 5, py - uy * 7 - ux * 5); c.stroke();
+      }
+      c.restore();
+    });
+  }
+
+  function ptag(x, y, msg, color = '#fef08a', size = 13) {
+    if (BOARD.thumb) return;
+    withAlpha(lensAlpha(labelLens(msg)), () => BOARD.text({ x, y }, cv(msg), { color, size, align: 'center', baseline: 'alphabetic', weight: 800 }));
+  }
+
+  function drawBottomTapeBanner(rect, titleStr, segments) {
+    sink.tape = { title: cv(titleStr), segments: (segments || []).map((s) => ({ text: cv(s.text), weight: s.weight, color: s.color })) };
+  }
+
+  function drawMiniOverlayBox(rect, title, lines) {
+    sink.card = { title: cv(title), lines: (lines || []).map((l) => ({ text: cv(l.txt), color: l.col })) };
+  }
+
+  /* ===== 원본 그대로: 장면별 실시간 명세 getSpec (원본 714–1092행) ===== */
+    function getSpec() {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const r = state.radR;
+      const d = state.distD;
+
+      // ==================== [탭 1: 원의 탄생 · 표준형 · 지름의 양 끝] ====================
+      if (m === 1) {
+        if (sub === 'generalForm') {
+          return {
+            badge: `탐구 1-B · 일반형 x² + y² + Ax + By + C = 0 완전제곱식 변형 & 실원 존재 조건`,
+            hint: `일반형을 표준형 $(x-a)^2+(y-b)^2 = R^2$으로 묶었을 때, 우변 <strong class="text-amber-300">R² = (A² + B² - 4C) / 4 > 0 이어야만 진짜 원(실원)</strong>이 됩니다! $\\le 0$이면 원이 되지 않습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 실원(R²>0) 보기' : '🎬 R²>0(원) ➔ R²=0(점) ➔ R²<0(허원) 비교!',
+            p1Title: '우변 R² 값', p2Title: '중심 (a, b)',
+            parts: [
+              { id: 0, name: `🟦 일차항 계수(A, B)의 절반 부호 반전 ➔ 중심 C`, desc: `중심 C = (-A/2, -B/2) = (2, 1)`, val: `중심 (2, 1)`, color: CCOL.cyan, ok: true },
+              { id: 1, name: `🟨 우변 상수항 정리: R² = a² + b² - C > 0`, desc: `반지름의 제곱이 양수(+)여야 실원 존재!`, val: `R² > 0 필수!`, color: CCOL.gold, ok: true },
+              { id: 2, name: `🟥 함정 반례: R² ≤ 0 이면 원이 아니다!`, desc: `R² = 0 이면 한 점(점원), R² < 0 이면 허원(그려지지 않음!)`, val: `R² ≤ 0 탈락 ❌`, color: CCOL.red, ok: false }
+            ],
+            totalRes: `x² + y² - 4x - 2y + C = 0 이 원을 나타낼 조건: 2² + 1² - C > 0 ➔ C < 5`,
+            rule: '“방정식이 원을 나타내도록” 하는 문제는 완전제곱식으로 고친 뒤 우변(r²) > 0 인 부등식을 푼다!',
+            formulaHTML: `• ${tex(`x^2+y^2+Ax+By+C=0 \\iff \\left(x+\\dfrac{A}{2}\\right)^2 + \\left(y+\\dfrac{B}{2}\\right)^2 = \\mathbf{\\dfrac{A^2+B^2-4C}{4} > 0}`)}`,
+            notes: `• 우변이 $r$이 아니라 <strong>$r^2$(반지름의 제곱)</strong>이라는 것도 잊지 마세요! 우변이 $9$이면 반지름은 $9$가 아니라 $3$입니다.`
+          };
+        }
+        if (sub === 'diamEnds') {
+          return {
+            badge: `탐구 1-C · 지름의 양 끝점 A(-2, -1), B(4, 3)이 주어진 원의 방정식 & 원주각 90°`,
+            hint: `지름의 양 끝점 $A, B$가 주어지면 ① <strong class="text-sky-300">AB의 중점이 바로 원의 중심 C(1, 1)</strong>이고, ② <strong class="text-amber-300">AC의 길이가 반지름 r</strong>입니다! 또한 원 위의 임의의 점 $P$에서 항상 <strong class="text-pink-300">∠APB = 90°</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 원 위 점 P 회전 & ∠APB = 90° 직각 확인!',
+            p1Title: '반지름 r', p2Title: '점 P 위치',
+            parts: [
+              { id: 0, name: `🟦 1단계: 지름 AB의 중점 = 원의 중심 C(1, 1)`, desc: `C = ((-2+4)/2, (-1+3)/2) = (1, 1)`, val: `중심 C(1, 1)`, color: CCOL.cyan, ok: true },
+              { id: 1, name: `🟨 2단계: 반지름 제곱 r² = AC² = 3² + 2² = 13`, desc: `(x - 1)² + (y - 1)² = 13 완성!`, val: `r² = 13`, color: CCOL.gold, ok: true },
+              { id: 2, name: `🩷 기하적 성질: 지름에 대한 원주각 ∠APB = 90°!`, desc: `(PA 기울기)×(PB 기울기)=-1 ⟺ (x-x₁)(x-x₂)+(y-y₁)(y-y₂)=0`, val: `∠APB = 90° ⭕`, color: CCOL.pink, ok: true }
+            ],
+            totalRes: `중심 C = AB의 중점(1, 1), r² = 13  ➔  (x - 1)² + (y - 1)² = 13`,
+            rule: '지름의 양 끝점 A, B가 주어지면: ① 중점 = 중심 C   ② 중심~A 거리 = 반지름 r!',
+            formulaHTML: `• <strong>지름의 양 끝점 공식</strong>: ${tex(`(x-x_1)(x-x_2) + (y-y_1)(y-y_2) = 0`)}<br/>• 문제에서 “원 위의 점 $P$에 대해 $\\angle APB = 90^\\circ$”라고 주면 <strong>선분 $AB$가 곧 지름</strong>이라는 뜻입니다!`,
+            notes: `• 지름 전체 길이 $\\overline{AB}$를 구해서 제곱하는 실수를 조심하세요! 반지름은 지름의 절반($\\overline{AC}$)입니다.`
+          };
+        }
+        if (sub === 'threePts') {
+          return {
+            badge: `탐구 예시 1-D · 세 점 A(-2,0), B(0,2), C(2,0)을 지나는 원`,
+            hint: `세 점을 지나는 원의 중심은 두 현의 수직이등분선 위에 있습니다. 이 예시에서는 $AC$와 $AB$의 수직이등분선을 구해 교점을 찾습니다.`,
+            actionTxt: state.fold > 0.5 ? '🎬 외접원과 중심 보기' : '🎬 현 AC·AB의 수직이등분선 교점',
+            p1Title: '세 점 A, B, C', p2Title: '외접원 중심과 반지름',
+            parts: [
+              { id: 0, name: `🟦 1단계: 세 점으로 현 AC와 AB를 고른다`, desc: `A(-2,0), B(0,2), C(2,0)은 한 직선 위에 있지 않으므로 이 세 점을 지나는 원은 하나로 정해집니다.`, val: `현 AC, AB`, color: CCOL.cyan, ok: true },
+              { id: 1, name: `🟨 2단계: 두 현의 수직이등분선 교점이 중심`, desc: `AC의 수직이등분선은 x=0입니다. AB의 중점은 (-1,1), 기울기는 1이므로 수직이등분선은 y=-x입니다. 교점은 O(0,0)입니다.`, val: `중심 O(0,0)`, color: CCOL.gold, ok: true },
+              { id: 2, name: `🩷 3단계: 반지름과 원의 방정식 확인`, desc: `OA=OB=OC=2이므로 중심 O, 반지름 2인 원의 식은 x²+y²=4입니다.`, val: `r=2, x²+y²=4`, color: CCOL.pink, ok: true }
+            ],
+            totalRes: `탐구 예시 외접원: 중심 O(0,0), 반지름 2, x²+y²=4`,
+            rule: '세 점을 지나는 원의 중심은 두 현의 수직이등분선 교점이다. 세 점이 한 직선 위에 있으면 원을 하나로 정하지 못한다.',
+            formulaHTML: `• $AC$의 중점은 $(0,0)$이고 AC는 수평이므로 수직이등분선은 $x=0$입니다.<br/>• $AB$의 중점은 $(-1,1)$, 기울기는 $1$이므로 수직이등분선은 $y-1=-(x+1)$, 즉 $y=-x$입니다.<br/>• 두 직선의 교점 $O=(0,0)$에서 $OA=2$이므로 원의 방정식은 $\\mathbf{x^2+y^2=4}$입니다.`,
+            notes: `• 제시된 메뉴에는 별도의 고정 발문 수치가 없어, 이 카드는 세 점 외접원 원리를 설명하는 탐구 예시입니다.`
+          };
+        }
+        // stdDef & threePts
+        return {
+          badge: `탐구 1-A · 원의 정의와 표준형 — 왜 원의 방정식은 피타고라스 정리 (x - a)² + (y - b)² = r² 일까?`,
+          hint: `그림에서 <strong class="text-amber-300">원 위의 점 P(x, y)를 마우스로 잡고 한 바퀴 돌려 보세요!</strong> 정점 $C(a, b)$로부터 거리 $r(${r})$이 일정한 점 $P$는 언제나 <strong class="text-sky-300">가로 |x-a|, 세로 |y-b|, 빗변 r 인 피타고라스 직각삼각형</strong>을 만듭니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 점 P 정지' : '🎬 점 P 360° 회전 자취 시뮬레이션!',
+          p1Title: '반지름 r 선택', p2Title: '중심 좌표',
+          parts: [
+            { id: 0, name: `🟦 직각삼각형 가로 밑변: |x - a| = |x - 2|`, desc: `점 P의 x좌표와 중심 x좌표(2)의 차`, val: `(x - 2)²`, color: CCOL.cyan, ok: true },
+            { id: 1, name: `🟩 직각삼각형 세로 높이: |y - b| = |y - 1|`, desc: `점 P의 y좌표와 중심 y좌표(1)의 차`, val: `+(y - 1)²`, color: CCOL.green, ok: true },
+            { id: 2, name: `🟨 일정한 빗변(반지름): CP = r = ${r} (r² = ${r*r})`, desc: `피타고라스 정리에 의해 (x-2)² + (y-1)² = ${r*r}!`, val: `= ${r * r} (${r}²)`, color: CCOL.gold, ok: true }
+          ],
+          totalRes: `중심 C(2, 1), 반지름 r = ${r} 인 원의 표준형: (x - 2)² + (y - 1)² = ${r * r}`,
+          rule: '원의 방정식 = 사실은 원 위의 점 P(x, y)와 중심 C(a, b) 사이의 피타고라스 정리이다!',
+          formulaHTML: `• ${tex(`\\overline{CP} = r \\iff \\sqrt{(x-a)^2 + (y-b)^2} = r \\iff \\mathbf{(x-a)^2 + (y-b)^2 = r^2}`)}`,
+          notes: `• 괄호 안을 $0$으로 만드는 값 $(a, b)$가 중심 좌표이고, 우변 $r^2$의 양의 제곱근 $\\sqrt{r^2} = r$이 반지름입니다!`
+        };
+      }
+
+      // ==================== [탭 2: 좌표축에 접하는 원 & 부호 함정] ====================
+      if (m === 2) {
+        if (sub === 'twoCircles21') {
+          return {
+            badge: `탐구 2-A · 🔥 점 (2, 1)을 지나고 x축·y축에 동시에 접하는 원은 왜 2개일까?`,
+            hint: `점 $(2, 1)$이 제1사분면에 있으므로 중심을 <strong class="text-amber-300">(r, r)</strong>로 놓고 $(x-r)^2+(y-r)^2=r^2$에 $(2, 1)$을 대입하면 $r^2 - 6r + 5 = 0$이 되어 <strong class="text-sky-300">작은 원(r=1)</strong>과 <strong class="text-pink-300">큰 원(r=5)</strong> 두 개가 탄생합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 두 원 동시에 보기' : '🎬 직선 y=x 따라 중심 (1,1) ↔ (5,5) 스캔!',
+            p1Title: '지나는 점 (2,1)', p2Title: '사분면 (제1사분면)',
+            parts: [
+              { id: 0, name: `🟦 첫 번째 작은 원: 반지름 r₁ = 1, 중심 C₁(1, 1)`, desc: `(x - 1)² + (y - 1)² = 1 (점 (2,1)이 원의 오른쪽 끝에 위치!)`, val: `r₁ = 1`, color: CCOL.cyan, ok: true },
+              { id: 1, name: `🩷 두 번째 큰 원: 반지름 r₂ = 5, 중심 C₂(5, 5)`, desc: `(x - 5)² + (y - 5)² = 25 (점 (2,1)이 원의 왼쪽 아래에 위치!)`, val: `r₂ = 5`, color: CCOL.pink, ok: true },
+              { id: 2, name: `🟨 두 원의 중심 C₁(1,1)과 C₂(5,5) 사이의 거리`, desc: `둘 다 직선 y = x 위에 있으므로 4√2! (넓이 합 = 26π)`, val: `거리 = 4√2`, color: CCOL.gold, ok: true }
+            ],
+            totalRes: `점 (2, 1) 대입: r² - 6r + 5 = 0 ➔ r = 1 또는 r = 5  |  중심 거리 = √(4²+4²) = 4√2`,
+            rule: 'x축·y축 동시 접원 풀이 순서: ① 사분면 확인해 중심 부호 결정 ➔ ② 점 대입해 r 이차방정식 풀기!',
+            formulaHTML: `• 제1사분면 식 ${tex(`(x-r)^2 + (y-r)^2 = r^2`)}에 $(2, 1)$ 대입:<br/>&nbsp;&nbsp;${tex(`(2-r)^2 + (1-r)^2 = r^2 \\implies r^2 - 6r + 5 = (r-1)(r-5) = 0 \\implies \\mathbf{r = 1, 5}`)}`,
+            notes: `• 만약 지나는 점이 <strong>제2사분면 $(-2, 1)$</strong>이라면 중심을 $(r, r)$이 아니라 반드시 <strong>$(-r, r)$</strong>로 놓고 $(x+r)^2 + (y-r)^2 = r^2$에 대입해야 합니다!`
+          };
+        }
+        const isX = sub === 'touchX', isY = sub === 'touchY';
+        return {
+          badge: isX
+            ? `탐구 2-B · x축에 접하는 원 — 반지름 r은 중심의 x좌표가 아니라 『y좌표의 절댓값(|b|)!』`
+            : isY
+            ? `탐구 2-C · y축에 접하는 원 — 반지름 r은 중심의 y좌표가 아니라 『x좌표의 절댓값(|a|)!』`
+            : `탐구 2-D · x축과 y축에 동시에 접하는 원 — 사분면별 중심의 부호 4가지와 대칭직선 y = ±x`,
+          hint: isX
+            ? `원이 $x$축(가로축)에 접할 때 중심 $C(a, b)$에서 $x$축까지 수직으로 내린 반지름의 길이는 <strong class="text-amber-300">중심의 y좌표의 크기(|b|)</strong>입니다! ($a^2$으로 쓰면 오답!)`
+            : isY
+            ? `원이 $y$축(세로축)에 접할 때 중심 $C(a, b)$에서 $y$축까지 수평으로 그은 반지름의 길이는 <strong class="text-amber-300">중심의 x좌표의 크기(|a|)</strong>입니다!`
+            : `$x$축과 $y$축에 동시에 접하는 원의 중심은 언제나 <strong class="text-amber-300">직선 y = x (제1·3사분면) 또는 y = -x (제2·4사분면)</strong> 위에 놓입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 제1사분면 보기' : '🎬 1~4사분면 부호 전환 시연!',
+          p1Title: '반지름 크기 r', p2Title: '접하는 축',
+          parts: [
+            { id: 0, name: `🟦 x축에 접할 때: r = |중심의 y좌표| = |b|`, desc: `(x - a)² + (y - b)² = b²`, val: `우변 = b²`, color: CCOL.cyan, ok: true },
+            { id: 1, name: `🩷 y축에 접할 때: r = |중심의 x좌표| = |a|`, desc: `(x - a)² + (y - b)² = a²`, val: `우변 = a²`, color: CCOL.pink, ok: true },
+            { id: 2, name: `🟨 x·y축 동시 접할 때: 1사분면(r,r) · 2사분면(-r,r)`, desc: `3사분면(-r,-r) · 4사분면(r,-r)  [항상 r > 0 으로 둠!]`, val: `y = ±x 위 중심`, color: CCOL.gold, ok: true }
+          ],
+          totalRes: `x축 접원: r=|b|  |  y축 접원: r=|a|  |  동시 접원: 중심 (±r, ±r)은 직선 y = ±x 위에 존재!`,
+          rule: '외우지 말고 축에 접하는 원을 그려 보면 반지름이 |a|인지 |b|인지 알 수 있다!',
+          formulaHTML: `• <strong>$x$축 접원</strong>: ${tex(`(x-a)^2 + (y-b)^2 = \\mathbf{b^2}`)}<br/>• <strong>$y$축 접원</strong>: ${tex(`(x-a)^2 + (y-b)^2 = \\mathbf{a^2}`)}`,
+          notes: `• <strong>[예제]</strong>: “원 $x^2+y^2-6x+4y+k=0$이 $y$축에 접할 때 $k$의 값은?” $\\implies$ 중심이 $(3, -2)$이고 $y$축에 접하므로 반지름 $r = |3| = 3 \\implies r^2 = 9$입니다!`
+        };
+      }
+
+      // ==================== [탭 3: 아폴로니오스의 원 & 자취] ====================
+      if (m === 3) {
+        if (sub === 'midpointLocus') {
+          return {
+            badge: `탐구 3-D · 거리의 비가 2 : 1인 점 P의 자취(원) 위의 점 P와 정점 A를 잇는 선분의 중점 M의 자취`,
+            hint: `점 $P$는 중심 $C(5,0)$, 반지름 $4$인 원 위를 움직이고 $A(-3,0)$은 고정되어 있습니다. 중점 $M$을 구하려면 $P$와 $A$의 좌표를 각각 절반씩 평균 내세요.`,
+            actionTxt: state.fold > 0.5 ? '🎬 중점 M의 원 보기' : '🎬 P와 A의 중점 M 따라가기',
+            p1Title: '원 위의 점 P', p2Title: '중점 M의 자취',
+            parts: [
+              { id: 0, name: `🟦 1단계: P=(5+4cosθ, 4sinθ)로 둔다`, desc: `P가 중심 (5,0), 반지름 4인 원 위에 있으므로 한 매개변수 θ로 좌표를 나타냅니다.`, val: `(x_P,y_P)=(5+4cosθ,4sinθ)`, color: CCOL.cyan, ok: true },
+              { id: 1, name: `🟨 2단계: 고정점 A와의 중점 좌표를 구한다`, desc: `M=((x_P−3)/2,y_P/2)=(1+2cosθ,2sinθ)입니다. 중심을 평균하고 반지름은 절반이 됩니다.`, val: `M=(1+2cosθ,2sinθ)`, color: CCOL.gold, ok: true },
+              { id: 2, name: `🩷 3단계: 중점 M은 중심 (1,0), 반지름 2인 원을 그린다`, desc: `(x_M−1)²+y_M²=4cos²θ+4sin²θ=4이므로 자취의 방정식은 (x−1)²+y²=4입니다.`, val: `(x−1)²+y²=4`, color: CCOL.pink, ok: true }
+            ],
+            totalRes: `M은 중심 (1,0), 반지름 2인 원 위를 움직이며 자취는 (x−1)²+y²=4`,
+            rule: '고정점과 원 위 점의 중점 자취는 원의 중심을 고정점과 원 중심의 중점으로 옮기고 반지름을 절반으로 줄인 원이다.',
+            formulaHTML: `• $P=(5+4\\cos\\theta,4\\sin\\theta)$, $A=(-3,0)$이므로 $M=\\left(\\dfrac{x_P-3}{2},\\dfrac{y_P}{2}\\right)=(1+2\\cos\\theta,2\\sin\\theta)$.<br/>• 따라서 $(x_M-1)^2+y_M^2=4(\\cos^2\\theta+\\sin^2\\theta)=\\mathbf4$입니다.`,
+            notes: `• 중점 좌표에서 두 좌표를 모두 절반으로 나누므로 자취 원의 반지름도 원래 반지름의 절반입니다.`
+          };
+        }
+        return {
+          badge: `탐구 3 · 🛰️ [핵심 킬러] 두 점 A(-3,0), B(3,0)까지의 거리의 비가 PA : PB = 2 : 1 인 점 P의 자취`,
+          hint: `슬라이더로 점 $P$를 움직여 보세요! $PA : PB = 2 : 1$을 만족하는 점들을 모으면 직선이 아니라 <strong class="text-amber-300">선분 AB를 2:1로 내분하는 점 M(1,0)과, 직선 AB 위에서 AN : BN = 2 : 1이고 선분 AB의 바깥쪽에 있는 점 N(9,0)을 지름의 양 끝으로 하는 원(중심 (5,0), 반지름 r=4)</strong>이 됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 자취 완성 보기' : '🎬 PA : PB = 2 : 1 유지하며 점 P 360° 자취 그리기!',
+          p1Title: '비율 (2 : 1)', p2Title: '최대 넓이/각도',
+          parts: [
+            { id: 0, name: `🟦 지름의 왼쪽 끝 = 2 : 1 내분점 M(1, 0)`, desc: `선분 AB 안에서 2 : 1 인 점 (PM은 ∠APB의 내각 이등분선!)`, val: `내분점 M(1,0)`, color: CCOL.cyan, ok: true },
+            { id: 1, name: `🩷 지름의 오른쪽 끝 N(9, 0) (AN : BN = 2 : 1, 선분 AB의 바깥쪽)`, desc: `선분 AB 연장선에서 2 : 1 인 점 (PN은 외각 이등분선!)`, val: `선분 AB 바깥쪽의 점 N(9,0)`, color: CCOL.pink, ok: true },
+            { id: 2, name: sub === 'apolloMaxAngle' ? `🟨 ∠PAB가 최대일 때 = 직선 AP가 원에 접할 때!` : `🟨 △PAB 넓이의 최댓값 = 밑변 AB(6) × 최대높이(반지름 r=4) ÷ 2`, desc: sub === 'apolloMaxAngle' ? `접점 P에서 반지름 CP와 접선 AP가 수직(∠CPA=90°)인 직각삼각형으로 접선 위치와 각을 구합니다.` : `점 P가 원의 꼭대기(5, 4)에 올 때 높이가 반지름 r=4로 최대!`, val: sub === 'apolloMaxAngle' ? `접선일 때 최대!` : `최대넓이 = 12`, color: CCOL.gold, ok: true }
+          ],
+          totalRes: `2:1 내분점 M(1,0), 선분 AB 바깥쪽의 점 N(9,0) ➔ 중심 C(5,0), 반지름 r=4  |  △PAB 최대 넓이 = ½×6×4 = 12`,
+          rule: '거리의 비가 m : n (m≠n)인 점의 자취는 원이다: 선분 AB를 m : n으로 내분하는 점 M과, 직선 AB 위에서 AN : BN = m : n이고 선분 AB 바깥쪽에 있는 점 N을 지름의 양 끝으로 한다!',
+          formulaHTML: `• <strong>왜 원이 될까?</strong> 내각의 이등분선($PM$)과 외각의 이등분선($PN$)은 항상 수직(${tex(`\\angle MPN = 90^\\circ`)})이므로 점 $P$는 선분 $MN$을 지름으로 하는 원 위를 움직입니다!`,
+          notes: `• <strong>[두 가지 문제]</strong>:<br/>&nbsp;&nbsp;① “$\\triangle PAB$ 넓이의 최댓값은?” $\\implies \\dfrac{1}{2} \\times \\overline{AB} \\times (\\text{자취(원)의 반지름 } r)$!<br/>&nbsp;&nbsp;② “$\\angle PAB$의 크기가 최대일 때 $\\overline{AP}$의 길이는?” $\\implies AP$가 원의 <strong>접선</strong>일 때이므로 피타고라스 $\\sqrt{\\overline{AC}^2 - r^2}$!`
+        };
+      }
+
+      // ==================== [탭 4: 원과 직선의 위치관계 (d vs r) & 현의 길이] ====================
+      if (m === 4) {
+        const effD = Math.min(r + 2, d);
+        const halfChord = effD < r ? Math.sqrt(r * r - effD * effD).toFixed(2) : 0;
+        const fullChord = (2 * halfChord).toFixed(2);
+        if (sub === 'equilMaxMin') {
+          const exists = effD < r;
+          return {
+            badge: `탐구 예시 4-D · 원의 현 AB를 밑변으로 만든 정삼각형 넓이와 중심거리 d`,
+            hint: `이 탐구 예시에서는 직선이 원을 가르며 만든 현 AB를 정삼각형의 한 변으로 둡니다. 현의 길이 $L=2\\sqrt{r^2-d^2}$이므로 넓이는 $\\frac{\\sqrt3}{4}L^2=\\sqrt3(r^2-d^2)$입니다. 직선이 중심을 지나면 최대이고, 접할 때 퇴화해 넓이가 0이 됩니다.`,
+            actionTxt: state.fold > 0.5 ? '🎬 기준 현 보기' : '🎬 중심을 지나는 현에서 접선까지 넓이 변화',
+            p1Title: '원 반지름 r', p2Title: '중심에서 직선까지 거리 d',
+            parts: [
+              { id: 0, name: `🟦 1단계: 직선이 원과 만날 때 현 길이를 구한다`, desc: exists ? `수선의 발에서 현까지 반쪽 길이는 √(r²−d²)이므로 L=2√(r²−d²)입니다.` : `d≥r이면 서로 다른 두 점으로 이루어진 현이 없어 이 정삼각형을 만들 수 없습니다.`, val: exists ? `L=${fullChord}` : `현 없음 (d≥r)`, color: CCOL.cyan, ok: exists },
+              { id: 1, name: `🟨 2단계: 현 AB를 한 변으로 하는 정삼각형 넓이`, desc: exists ? `정삼각형 넓이는 (√3/4)L²이므로 √3(r²−d²)입니다.` : `먼저 직선이 원을 두 점에서 만나야 합니다 (d<r).`, val: exists ? `S=√3(${r}²−${effD}²)` : `정의되지 않음`, color: CCOL.gold, ok: exists },
+              { id: 2, name: `🩷 3단계: 경계에서 최대·최소를 확인한다`, desc: `0≤d<r에서 S=√3(r²−d²)는 d가 커질수록 감소합니다. 중심 통과 d=0에서 최대 √3r², 접선 경계 d=r에서는 퇴화 넓이 0입니다.`, val: `최대 √3r², 접선 경계 0`, color: CCOL.pink, ok: true }
+            ],
+            totalRes: exists ? `탐구 예시: 현 AB 위 정삼각형 넓이 S=√3(r²−d²). d=0에서 √3r², d=r 경계에서 0.` : `d=${effD}≥r이므로 현 AB와 정삼각형이 없습니다.`,
+            rule: '현을 밑변으로 하는 정삼각형은 현 길이의 제곱에 비례한다. 현 길이가 가장 긴 중심 통과 때 넓이가 최대다.',
+            formulaHTML: `• 현의 길이 $L=2\\sqrt{r^2-d^2}$이므로 $S=\\dfrac{\\sqrt3}{4}L^2=\\mathbf{\\sqrt3(r^2-d^2)}$ ($0\\le d<r$).<br/>• $d=0$이면 $L=2r$로 최대, $d\\to r$이면 $L\\to0$으로 퇴화합니다.`,
+            notes: `• 이 파일에는 별도의 발문 수치가 연결되어 있지 않아, 기존 반지름·거리 조작값을 이용한 탐구 예시로 표시합니다. 접선 상태의 넓이 0은 정삼각형이 아니라 퇴화 경계값입니다.`
+          };
+        }
+        return {
+          badge: `탐구 4 · 원(반지름 r=${r})과 직선의 위치관계 (d=${effD} vs r=${r}) & 현의 길이 L = 2√(r² - d²)`,
+          hint: `<strong class="text-sky-300">반지름 r 칩</strong>과 <strong class="text-pink-300">중심~직선 거리 d 칩</strong>을 눌러 보세요! 판별식 $D$를 전개하지 않고 <strong class="text-amber-300">점과 직선 사이의 거리 d 와 반지름 r</strong>을 비교하며, 현의 길이는 <strong class="text-emerald-300">피타고라스 2√(r² - d²)</strong>로 구합니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 최대거리(d+r) vs 최소거리 max(d-r,0) 스캔!',
+          p1Title: '원 반지름 r', p2Title: '중심~직선 거리 d',
+          parts: [
+            { id: 0, name: `🟦 원의 중심 C에서 직선에 내린 수선의 길이: d = ${effD}`, desc: `점과 직선 사이의 거리 공식 d = |ax₁+by₁+c| / √(a²+b²)`, val: `거리 d = ${effD}`, color: CCOL.cyan, ok: true },
+            { id: 1, name: effD < r ? `🟨 현의 절반 AH = √(r² - d²) ➔ 현 전체 AB = ${fullChord}` : effD === r ? `🟨 d = r (${r} = ${r}) ➔ 한 점에서 접한다 (접선!)` : `🟥 d > r (${effD} > ${r}) ➔ 만나지 않는다!`, desc: effD < r ? `피타고라스 √(${r}² - ${effD}²) = ${halfChord} 의 2배!` : `위치관계 판정 완료`, val: effD < r ? `현 L = ${fullChord}` : effD === r ? `접선 (d=r)` : `안 만남 (d>r)`, color: effD <= r ? CCOL.gold : CCOL.red, ok: effD <= r },
+            { id: 2, name: `🩷 원 위의 점에서 직선까지 최대(d+r) · 최소 max(d-r,0)`, desc: `최댓값 M = ${effD} + ${r} = ${effD + r}, 최솟값 m = max(${effD} - ${r}, 0) = ${Math.max(0, effD-r)}. d<r이면 직선이 원과 만나므로 최소거리는 0입니다.`, val: `M=${effD+r}, m=${Math.max(0,effD-r)}`, color: CCOL.pink, ok: true }
+          ],
+          totalRes: effD < r ? `d(${effD}) < r(${r}) 두 점 교차 | 현의 길이 L = 2√(${r}²-${effD}²) = ${fullChord} | 원둘레에서 직선까지 최대거리 d+r=${effD+r}, 최소거리 0` : `d(${effD}) vs r(${r}) 판정 | 최대거리 = d+r(${effD+r}), 최소거리 = max(d-r,0)=${Math.max(0,effD-r)}`,
+          rule: '원과 직선의 위치 관계는 이차방정식의 판별식(D) 대신 중심에서 직선까지의 거리(d)와 반지름(r)을 비교하면 간단하다!',
+          formulaHTML: `• <strong>현의 길이 공식</strong>: ${tex(`\\overline{AB} = 2\\overline{AH} = \\mathbf{2\\sqrt{r^2 - d^2}}`)} (두 점에서 만날 때 $d<r$)<br/>• <strong>원둘레에서 직선까지 최대·최소 거리</strong>: ${tex(`\\mathbf{M = d+r, \\qquad m = \\max(d-r,0)}`)}. $d<r$이면 직선과 원이 만나므로 최소거리는 $0$입니다.`,
+          notes: `• 현의 절반 $\\sqrt{r^2-d^2}$만 구해놓고 <strong>$2$배</strong>를 안 해서 틀리는 실수를 가장 조심하세요!`
+        };
+      }
+
+      // ==================== [탭 5: 두 원의 위치관계 & 공통현의 방정식 (O₁-O₂=0)] ====================
+      if (m === 5) {
+        if (sub === 'foldCircleArc') {
+          return {
+            badge: `탐구 5-E · 📄 [킬러] 원 모양 종이를 현 AB를 접는 선으로 접어 호가 x축 위 점에 접할 때!`,
+            hint: `슬라이더로 접힌 호를 확장해 보세요! 접힌 호의 일부는 <strong class="text-pink-300">원래 원과 반지름(r)이 완전히 똑같고 x축에 접하는 두 번째 원 O₂의 일부분</strong>입니다! 따라서 직선 $AB$는 두 원의 <strong class="text-amber-300">공통현(O₁ - O₂ = 0)</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 접힌 호만 보기' : '🎬 접힌 호를 두 번째 원 O₂로 완전 복원하기!',
+            p1Title: '원래 반지름 r=4', p2Title: '접점 위치 (2,0)',
+            parts: [
+              { id: 0, name: `🟦 원래 원 O₁: x² + y² = 4² = 16 (반지름 r = 4)`, desc: `중심 (0, 0), 반지름 4 인 기준 원`, val: `O₁: x²+y²=16`, color: CCOL.cyan, ok: true },
+              { id: 1, name: `🩷 복원한 두 번째 원 O₂: 점 (2, 0)에서 x축에 접함!`, desc: `반지름이 똑같이 4 이므로 중심은 (2, 4)! ➔ (x-2)²+(y-4)²=16`, val: `중심 C₂(2, 4)!`, color: CCOL.pink, ok: true },
+              { id: 2, name: `🟨 접는 선 AB의 정체 = 두 원의 공통현 (O₁ - O₂ = 0)!`, desc: `두 원의 식을 변끼리 빼면 직선의 방정식 x + 2y - 5 = 0 이 나옵니다!`, val: `x + 2y - 5 = 0`, color: CCOL.gold, ok: true }
+            ],
+            totalRes: `복원 원 O₂: (x-2)² + (y-4)² = 16  ➔  O₁ - O₂ = 0 빼면 직선 AB: x + 2y - 5 = 0!`,
+            rule: '종이접기 원: 접힌 호는 원래 원과 반지름이 같은 새로운 원의 일부이다!',
+            formulaHTML: `• ① $(2, 0)$에서 $x$축에 접하고 반지름이 $4$인 원: ${tex(`(x-2)^2 + (y-4)^2 = 16 \\iff x^2+y^2-4x-8y+4=0`)}<br/>• ② $x^2+y^2-16 = 0$에서 빼면 공통현 $AB$: ${tex(`\\mathbf{4x + 8y - 20 = 0 \\iff x + 2y - 5 = 0}`)}!`,
+            notes: `• 접힌 원의 중심을 구하지 않고 풀면 풀이가 한 페이지를 넘어가지만, <strong>“접힌 원 중심 찾기 + 두 식 빼기($O_1 - O_2 = 0$)”</strong>를 이용하면 짧게 풀 수 있습니다!`
+          };
+        }
+        return {
+          badge: `탐구 5 · 🎬 두 원의 교점을 지나는 원과 직선 (O₁ + k O₂ = 0) — 왜 k = -1을 넣으면 공통현 직선이 될까?`,
+          hint: `슬라이더를 오른쪽(100%)으로 밀어 보세요! $O_1 + k O_2 = 0$은 두 원의 교점 $A, B$를 지나는 새로운 원을 나타내는데, <strong class="text-amber-300">유일하게 k = -1일 때만 이차항(x², y²)이 완전히 소거되어 두 교점을 지나는 직선(공통현의 방정식)</strong>이 됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 교점 지나는 원(k≠-1) 보기' : '🎬 k ➔ -1 로 변하며 공통현 직선으로 펴지기!',
+          p1Title: '큰 원 반지름 r', p2Title: '중심거리 d',
+          parts: [
+            { id: 0, name: `🟦 첫 번째 원 O₁ = 0 과 두 번째 원 O₂ = 0`, desc: `두 원이 두 점 A, B에서 만날 조건: |r - r'| < d < r + r'`, val: `두 점 교차`, color: CCOL.cyan, ok: true },
+            { id: 1, name: `🩷 k ≠ -1 일 때: O₁ + k O₂ = 0 (교점 A,B를 지나는 원)`, desc: `이차항 (1+k)(x² + y²)이 살아있어 원을 나타냄!`, val: `k ≠ -1 : 원`, color: CCOL.pink, ok: true },
+            { id: 2, name: `🟨 k = -1 일 때: O₁ - O₂ = 0 (공통현의 직선 방정식!)`, desc: `x², y²이 지워지고 일차식 ax + by + c = 0 (직선!)만 남음!`, val: `k = -1 : 공통현!`, color: CCOL.gold, ok: true }
+          ],
+          totalRes: `공통현의 방정식: O₁ - O₂ = 0 (두 원의 일반형 식을 그냥 위아래로 빼면 끝!)`,
+          rule: 'k = -1 이면 공통현 직선(O₁ - O₂ = 0)  |  k ≠ -1 이면 두 교점과 제3의 점을 지나는 원!',
+          formulaHTML: `• <strong>큰 원이 작은 원의 둘레를 이등분할 조건</strong>:<br/>&nbsp;&nbsp;공통현 직선($O_1 - O_2 = 0$)을 구한 뒤, 그 직선이 <strong>작은 원의 중심(지름)</strong>을 지나도록 대입하면 끝!`,
+          notes: `• <strong>[주의]</strong>: 큰 원이 작은 원의 둘레를 이등분할 때, 공통현은 큰 원의 중심이 아니라 <strong>둘레가 잘리는 “작은 원의 중심”</strong>을 지납니다!`
+        };
+      }
+
+      // ==================== [탭 6: 원의 접선의 방정식 3대 유형] ====================
+      if (m === 6) {
+        if (sub === 'tanExtVertical') {
+          return {
+            badge: `탐구 6-A · ⚠️ [함정] 원 밖의 점 P(3, 4)에서 원 x²+y²=9에 그은 두 접선과 숨은 수직접선!`,
+            hint: `원 밖의 점에서는 <strong>접선이 항상 2개</strong> 그어집니다! 그런데 점 $(3, 4)$의 $x$좌표가 반지름 $r=3$과 같기 때문에 한 접선이 <strong class="text-rose-400">y축에 평행한 수직 직선 x = 3 (기울기 m이 존재하지 않음!)</strong>이 되어 방정식에서는 $m$이 1개만 나옵니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 두 접선 함께 보기' : '🎬 y축에 평행한 접선 x = 3 강조',
+            p1Title: '반지름 r = 3', p2Title: '외부 점 P(3, 4)',
+            parts: [
+              { id: 0, name: `🟦 기울기 공식(d = r)으로 구해지는 완만한 접선 ①`, desc: `y - 4 = m(x - 3) 에서 d = 3 풀면 m = 7/24 (1개만 나옴!)`, val: `7x-24y+75=0`, color: CCOL.cyan, ok: true },
+              { id: 1, name: `🟥 공식에서 누락되는 숨은 수직 접선 ②: x = 3!`, desc: `⚠️ 수직선은 기울기 m이 무한대라 m 방정식에서 증발함!`, val: `x = 3 (필수!)`, color: CCOL.red, ok: true },
+              { id: 2, name: `🟨 접선의 길이 PT = √(OP² - r²) = 4`, desc: `수직 접점 (3, 0)에서 점 P(3, 4)까지의 길이 = 4!`, val: `접선 길이 = 4`, color: CCOL.gold, ok: true }
+            ],
+            totalRes: `원 밖의 점 P(3, 4)에서 그은 두 접선: ① 7x - 24y + 75 = 0,  ② x = 3 (빠뜨리지 않도록 주의!)`,
+            rule: '원 밖의 점에서 그은 접선은 2개이다! 기울기 m이 1개만 나오면 그림을 그려 y축에 평행한 직선 x = x₁도 접선인지 확인한다!',
+            formulaHTML: `• 점 $(3, 4)$를 지나는 직선 $mx - y - 3m + 4 = 0$과 원점 사이 거리 $d = 3$:<br/>&nbsp;&nbsp;${tex(`\\dfrac{|-3m+4|}{\\sqrt{m^2+1}} = 3 \\implies 9m^2-24m+16 = 9m^2+9 \\implies \\mathbf{m = \\dfrac{7}{24}}`)} ($m^2$이 지워져 1개만 나옴 $\\implies \\mathbf{x=3}$ 추가!)`,
+            notes: `• $m = \\dfrac{7}{24}$ 하나만 답으로 적으면 틀립니다! <strong>“원 밖의 점에서 그은 접선은 2개!”</strong>임을 기억하세요.`
+          };
+        }
+        if (sub === 'tanPerp90') {
+          return {
+            badge: `탐구 6-D · 원 밖의 점 P에서 그은 두 접선이 서로 수직(90°)일 조건 — 정사각형 자취 d = √2 r!`,
+            hint: `슬라이더로 점 $P$를 돌려 보세요! 두 접선이 $90^\\circ$ 수직으로 만나면 중심 $O$, 두 접점 $A, B$, 점 $P$가 <strong class="text-amber-300">한 변이 반지름 r인 정사각형 □OAPB</strong>를 이룹니다! 따라서 <strong class="text-pink-300">OP = √2 r 인 동심원</strong> 위를 움직입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 정지 보기' : '🎬 정사각형 □OAPB 회전 & 반지름 √2r 자취 원 시연!',
+            p1Title: '원 반지름 r', p2Title: '자취 반지름 √2r',
+            parts: [
+              { id: 0, name: `🟦 원래 원: x² + y² = r² (반지름 r = ${r})`, desc: `OA = OB = r 이고 ∠OAP = ∠OBP = 90°`, val: `반지름 = ${r}`, color: CCOL.cyan, ok: true },
+              { id: 1, name: `🟨 정사각형 □OAPB (대각선 OP = √2 r!)`, desc: `∠APB = 90° 이므로 네 내각이 모두 90°이고 이웃변이 r로 같음!`, val: `OP = ${r}√2`, color: CCOL.gold, ok: true },
+              { id: 2, name: `🩷 점 P가 그리는 자취 원: x² + y² = 2r² (= ${2*r*r})`, desc: `중심 O에서 거리가 √2 r 로 일정한 큰 동심원!`, val: `x²+y² = ${2 * r * r}`, color: CCOL.pink, ok: true }
+            ],
+            totalRes: `두 접선이 수직인 점 P의 자취: 대각선 OP = √2 r  ➔  x² + y² = 2r² = ${2 * r * r}`,
+            rule: '원 밖의 점에서 그은 두 접선이 수직(90°) ⟺ 중심·접점·외부점이 정사각형 ⟺ d = √2 r!',
+            formulaHTML: `• ${tex(`\\square OAPB\\text{는 한 변이 } r\\text{인 정사각형} \\implies \\overline{OP} = \\sqrt{2}r \\implies \\mathbf{x^2 + y^2 = 2r^2}`)}`,
+            notes: `• 두 접선의 기울기 $m_1, m_2$가 $m_1 m_2 = -1$임을 이용해 풀 수도 있지만, <strong>“한 변이 $r$인 정사각형의 대각선 $d = \\sqrt{2}r$”</strong>를 이용하면 더 간단합니다!`
+          };
+        }
+        return {
+          badge: `탐구 6 · 원의 접선의 방정식 — 유형 1(기울기 m 공식) & 유형 2(원 위의 접점 x₁x + y₁y = r²)`,
+          hint: `기울기 $m$이 주어지면 위아래로 <strong class="text-sky-300">평행한 접선 2개(y = mx ± r√(m²+1))</strong>가 생기고, 원 위의 점 $(x_1, y_1)$이 주어지면 <strong class="text-amber-300">x² 대신 x₁x, y² 대신 y₁y를 대입한 1개</strong>의 접선이 생깁니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 중심 수선 d = r 직각삼각형 강조!',
+          p1Title: '반지름 r 선택', p2Title: '접선 유형',
+          parts: [
+            { id: 0, name: `🟦 유형 1 [기울기 m 주어질 때]: y = mx ± r√(m² + 1)`, desc: `기울기가 같은 접선은 원의 양쪽에 항상 2개 존재!`, val: `접선 2개 생성`, color: CCOL.cyan, ok: true },
+            { id: 1, name: `🟨 유형 2 [원 위의 점 (x₁, y₁)]: x₁x + y₁y = r²`, desc: `예: x²+y²=25 위의 점 (3, 4)에서의 접선 ➔ 3x + 4y = 25!`, val: `x₁x + y₁y = r²`, color: CCOL.gold, ok: true }
+          ],
+          totalRes: `기울기 m: y = mx ± r√(m²+1)  |  원 위의 점 (x₁, y₁): x₁x + y₁y = r²`,
+          rule: '중심이 (a, b)인 원 위의 점 (x₁, y₁)에서의 접선: (x₁-a)(x-a) + (y₁-b)(y-b) = r²!',
+          formulaHTML: `• 모든 접선 문제는 공식을 잊어버려도 <strong>(원의 중심에서 접선까지의 거리 $d$) = (반지름 $r$)</strong> 식 하나로 풀 수 있습니다!`,
+          notes: `• 문제에서 주어진 점이 <strong>“원 위의 점”</strong>인지 <strong>“원 밖의 점”</strong>인지 대입해서 먼저 확인하세요! 원 밖의 점에는 $x_1 x + y_1 y = r^2$을 접선의 방정식으로 쓰면 안 됩니다(이 식은 두 접점을 지나는 직선의 방정식이 됩니다).`
+        };
+      }
+
+      // ==================== [탭 7: 공통외접선 · 공통내접선 · 극선(소 공식)] ====================
+      if (m === 7) {
+        if (sub === 'polarChordCow' || sub === 'concyclicOAPB') {
+          return {
+            badge: `탐구 7-C · 🐮 원 밖의 점 P에서 그은 두 접선의 접점 A, B를 잇는 현 AB의 길이 — 직각삼각형의 넓이 이용`,
+            hint: `중심 $O$와 점 $P$를 잇는 선분 $OP(d=5)$는 현 $AB$를 수직이등분합니다! 직각삼각형 $\\triangle OAP(3\\text{-}4\\text{-}5)$에서 <strong class="text-amber-300">직각삼각형의 넓이를 두 가지로 나타낸 식 OA(3) × AP(4) = OP(5) × AH</strong>를 쓰면 <strong class="text-pink-300">AH = 12/5 ➔ 현 AB = 24/5</strong>를 구할 수 있습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 네 점 O,A,P,B 외접원 보기' : '🎬 직각삼각형 △OAP의 넓이를 두 가지로 나타내기',
+            p1Title: '반지름 r = 3', p2Title: '거리 OP = 5',
+            parts: [
+              { id: 0, name: `🟦 1단계: 피타고라스로 접선의 길이 AP 구하기`, desc: `OA = 3, OP = 5 이므로 접선 AP = √(5² - 3²) = 4!`, val: `접선 AP = 4`, color: CCOL.cyan, ok: true },
+              { id: 1, name: `🟨 2단계: 직각삼각형 △OAP의 넓이를 두 가지로 나타내기!`, desc: `OA(3) × AP(4) = OP(5) × AH  ➔  높이 AH = 12 / 5`, val: `AH = 2.4 (12/5)`, color: CCOL.gold, ok: true },
+              { id: 2, name: `🩷 3단계: 두 접점 사이 현 AB = 2 × AH = 24 / 5!`, desc: `보너스: ∠OAP=∠OBP=90° 이므로 □OAPB 외접원 지름 = OP(5)!`, val: `현 AB = 24/5`, color: CCOL.pink, ok: true }
+            ],
+            totalRes: `3-4-5 직각삼각형 △OAP의 넓이: 3 × 4 = 5 × AH  ➔  AH = 12/5  ➔  현 AB = 24/5`,
+            rule: '접점 A, B를 잇는 현 AB의 길이는 직선의 방정식을 구하지 않고 직각삼각형 △OAP의 넓이를 두 가지로 나타내어 구한다!',
+            formulaHTML: `• ${tex(`\\overline{OA}\\cdot\\overline{AP} = \\overline{OP}\\cdot\\overline{AH} \\implies 3\\times 4 = 5\\times\\overline{AH} \\implies \\overline{AH} = \\dfrac{12}{5} \\implies \\mathbf{\\overline{AB} = 2\\overline{AH} = \\dfrac{24}{5}}`)}`,
+            notes: `• 또한 $\\angle OAP = \\angle OBP = 90^\\circ$이므로 네 점 $O, A, P, B$를 지나는 원의 <strong>지름은 선분 $OP$</strong>입니다!`
+          };
+        }
+        const isInt = sub === 'intCommonTan';
+        return {
+          badge: isInt
+            ? `탐구 7-B · 🎬 공통내접선의 길이 L = √(d² - (r + r′)²) — 왜 반지름의 『합』이 될까?`
+            : `탐구 7-A · 🎬 공통외접선의 길이 L = √(d² - (r - r′)²) — 왜 반지름의 『차』가 될까?`,
+          hint: `슬라이더를 오른쪽으로 밀어 <strong class="text-amber-300">접선 AB를 작은 원의 중심 C₂를 지나도록 평행이동</strong>시켜 보세요! 직사각형이 만들어지면서 ${isInt ? '<strong class="text-pink-300">두 반지름이 한 줄로 더해져 직각변이 (r + r′)</strong>인' : '<strong class="text-sky-300">큰 반지름에서 작은 반지름이 빠져 직각변이 (r - r′)</strong>인'} 직각삼각형이 완성됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 접선 원래 위치로' : '🎬 접선 AB를 중심 C₂로 평행이동해 직각삼각형 완성!',
+          p1Title: '두 반지름 (4, 1)', p2Title: '중심거리 d = 6',
+          parts: [
+            { id: 0, name: `🟨 직각삼각형의 빗변 = 두 원의 중심거리 d (6)`, desc: `90° 직각이 접선 쪽에 있으므로 중심거리 C₁C₂가 빗변!`, val: `빗변 d = 6`, color: CCOL.gold, ok: true },
+            { id: 1, name: isInt ? `🩷 평행이동으로 합쳐진 직각변: r + r' = 3 + 1 = 4!` : `🟦 평행이동으로 남은 직각변: r - r' = 4 - 1 = 3!`, desc: isInt ? `안쪽 X자 접선은 평행이동하면 반지름끼리 더해짐(+)` : `바깥쪽 접선은 평행이동하면 반지름끼리 빼짐(-)`, val: isInt ? `r + r' = 4` : `r - r' = 3`, color: isInt ? CCOL.pink : CCOL.cyan, ok: true },
+            { id: 2, name: isInt ? `🟩 공통내접선 길이 L = √(6² - 4²) = √20 = 2√5` : `🟩 공통외접선 길이 L = √(6² - 3²) = √27 = 3√3`, desc: `피타고라스 정리로 구함!`, val: isInt ? `L = 2√5` : `L = 3√3`, color: CCOL.green, ok: true }
+          ],
+          totalRes: isInt
+            ? `공통내접선 길이: L = √(d² - (r + r')²) = √(6² - (3+1)²) = 2√5`
+            : `공통외접선 길이: L = √(d² - (r - r')²) = √(6² - (4-1)²) = 3√3`,
+          rule: '공통외접선은 반지름 차(r - r′), 공통내접선은 반지름 합(r + r′), 빗변은 언제나 중심거리 d!',
+          formulaHTML: `• <strong>공통외접선</strong>: ${tex(`L = \\mathbf{\\sqrt{d^2 - (r-r')^2}}`)}${isInt ? '' : ` $= \\sqrt{6^2-(4-1)^2} = \\mathbf{3\\sqrt{3}}$`}<br/>• <strong>공통내접선</strong>: ${tex(`L = \\mathbf{\\sqrt{d^2 - (r+r')^2}}`)}${isInt ? ` $= \\sqrt{6^2-(3+1)^2} = \\mathbf{2\\sqrt{5}}$` : ''}`,
+          notes: `• 누가 빗변인지 헷갈릴 때는 <strong>“접점 $A, B$가 $90^\\circ$ 직각이므로 $90^\\circ$ 맞은편인 중심거리 $d$가 빗변”</strong>임을 기억하세요!`
+        };
+      }
+
+      // ==================== [탭 8: 실전 킬러 응용 (중선정리 · 넓이 이등분 · 빛의 반사)] ====================
+      if (sub === 'bisectAreaBoth') {
+        return {
+          badge: `탐구 8-B · ✂️ 원과 직사각형(또는 마름모)의 넓이를 동시에 이등분하는 직선의 방정식`,
+          hint: `원의 넓이를 이등분하려면 <strong class="text-sky-300">원의 중심 C₁</strong>을 지나야 하고, 직사각형(평행사변형)의 넓이를 이등분하려면 <strong class="text-pink-300">두 대각선의 교점(중점) C₂</strong>를 지나야 합니다! 따라서 <strong class="text-amber-300">두 중심 C₁과 C₂를 곧장 잇는 직선</strong>이 정답입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 두 중심 C₁, C₂를 지나는 직선 강조',
+          p1Title: '원 중심 (-2,-1)', p2Title: '사각형 중심 (2,3)',
+          parts: [
+            { id: 0, name: `🟦 원의 넓이 이등분 조건: 원의 중심 C₁(-2, -1) 통과`, desc: `모든 지름은 원의 넓이를 정확히 반으로 나눔`, val: `C₁(-2, -1)`, color: CCOL.cyan, ok: true },
+            { id: 1, name: `🩷 직사각형 넓이 이등분 조건: 대각선 중점 C₂(2, 3) 통과`, desc: `양 끝 꼭짓점의 중점이 곧 대각선의 교점!`, val: `C₂(2, 3)`, color: CCOL.pink, ok: true },
+            { id: 2, name: `🟨 두 중심 C₁, C₂를 지나는 직선: y = x + 1`, desc: `기울기 = (3-(-1))/(2-(-2)) = 1 ➔ y = x + 1!`, val: `y = x + 1`, color: CCOL.gold, ok: true }
+          ],
+          totalRes: `원 중심 C₁(-2, -1)과 사각형 대각선 교점 C₂(2, 3)을 잇는 직선: y = x + 1`,
+          rule: '두 도형(원·직사각형·평행사변형·마름모)의 넓이를 동시에 이등분하는 직선 = 두 중심을 잇는 직선!',
+          formulaHTML: `• 기울기 ${tex(`m = \\dfrac{3 - (-1)}{2 - (-2)} = 1 \\implies y - 3 = 1(x - 2) \\implies \\mathbf{y = x + 1}`)}`,
+          notes: `• 두 원의 넓이를 동시에 이등분하는 직선 역시 <strong>두 원의 중심을 지나는 직선</strong>입니다! (공통현과 혼동하지 마세요!)`
+        };
+      }
+      if (sub === 'laserReflectTan') {
+        return {
+          badge: `탐구 8-C · 🪞 점 A(-4, 2)에서 쏜 레이저가 x축에서 반사되어 원 C(3, 3), r=2 에 접할 때!`,
+          hint: `슬라이더로 원을 $x$축 아래로 대칭이동시켜 보세요! 꺾인 반사 광선을 구하는 대신 <strong class="text-pink-300">원을 x축에 대칭이동한 원 C′(3, -3)</strong>을 그리면, 점 $A(-4, 2)$에서 대칭원 $C'$에 그은 <strong class="text-amber-300">일직선 접선</strong> 문제로 바뀝니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 반사 광선만 보기' : '🎬 원을 x축 아래 C′(3, -3)으로 대칭이동해 일직선화!',
+          p1Title: '출발점 A(-4,2)', p2Title: '원 중심 C(3,3)',
+          parts: [
+            { id: 0, name: `🟦 원래 원 C: (x - 3)² + (y - 3)² = 2²`, desc: `x축 위에서 반사된 광선이 접하는 목표 원`, val: `중심 (3, 3)`, color: CCOL.cyan, ok: true },
+            { id: 1, name: `🩷 x축 대칭이동한 거울 속 원 C′: (x - 3)² + (y + 3)² = 2²`, desc: `중심 (3, 3)을 x축 대칭 ➔ C'(3, -3), 반지름 r = 2 그대로!`, val: `대칭중심 (3,-3)`, color: CCOL.pink, ok: true },
+            { id: 2, name: `🟨 점 A(-4, 2)에서 대칭원 C′에 그은 일직선 접선!`, desc: `입사각 = 반사각 이므로 대칭원에 접하는 직선과 일치함!`, val: `d = r = 2 적용!`, color: CCOL.gold, ok: true }
+          ],
+          totalRes: `원을 x축 대칭시킨 C'(3, -3), r=2 에 점 A(-4, 2)에서 그은 접선으로 일직선 풀이!`,
+          rule: '빛의 반사 + 원의 접선/최단거리: 원을 반사하는 축에 대하여 대칭이동하여 일직선으로 만들어 푼다!',
+          formulaHTML: `• 빛이 날아간 총 거리(점 $A \\to x$축 $\\to$ 접점 $T$) 역시 대칭원 접점 $T'$까지의 접선 길이 ${tex(`\\mathbf{\\overline{AT'} = \\sqrt{\\overline{AC'}^2 - r^2}}`)}로 구해집니다!`,
+          notes: `• 점 $A$를 $x$축에 대칭이동시켜 $A'(-4, -2)$에서 원래 원 $C(3, 3)$에 접선을 그어도 결과가 같습니다!`
+        };
+      }
+      // pappusMinSq 기본
+      return {
+        badge: `탐구 8-A · 🔥 [킬러] 정점 A, B와 원 위의 점 P에 대하여 PA² + PB²의 최솟값 구하기!`,
+        hint: `점 $P$가 원을 따라 돌 때 $PA^2 + PB^2$이 언제 최소인지 따로따로 구하기는 어렵습니다! <strong class="text-amber-300">선분 AB의 중점 M에 대하여 PA² + PB² = 2(PM² + AM²)</strong>(두 점 사이의 거리 공식으로 확인할 수 있습니다)을 쓰면 $AM$은 고정이므로 <strong class="text-emerald-300">중점 M에서 원 위 점 P까지 거리 PM이 최소(d - r)일 때</strong>가 정답입니다!`,
+        actionTxt: state.fold > 0.5 ? '🎬 일반 위치 점 P 보기' : '🎬 점 P를 중점 M에서 가장 가까운 위치(PM = d - r)로 이동',
+        p1Title: '원 반지름 r = 2', p2Title: '중점 거리 d = 5',
+        parts: [
+          { id: 0, name: `🟦 1단계: 선분 AB의 중점 M 구하기 (고정점!)`, desc: `PA² + PB² = 2(PM² + AM²) 에서 AM=3 고정!`, val: `AM² = 9 고정`, color: CCOL.cyan, ok: true },
+          { id: 1, name: `🩷 2단계: 중점 M에서 원 위 점 P까지 최단거리 PM`, desc: `중심~M 거리 d(5) - 반지름 r(2) = 5 - 2 = 3 (최대=5+2=7)`, val: `PM 최소 = 3`, color: CCOL.pink, ok: true },
+          { id: 2, name: `🟨 3단계: PA² + PB²의 최솟값과 최댓값 완성!`, desc: `최솟값 = 2(3² + 3²) = 36  |  최댓값 = 2(7² + 3²) = 116!`, val: `최소=36, 최대=116`, color: CCOL.gold, ok: true }
+        ],
+        totalRes: `PA² + PB² = 2(PM² + AM²)  ➔  PM 최소 = d-r = 3 대입  ➔  최솟값 = 2(3² + 3²) = 36!`,
+        rule: '원 위의 점 P에 대해 (PA² + PB²)의 최댓값·최솟값은 PA² + PB² = 2(PM² + AM²) (M은 선분 AB의 중점)에서 PM이 최대·최소일 때 구한다!',
+        formulaHTML: `• ${tex(`\\overline{PA}^2 + \\overline{PB}^2 = 2(\\overline{PM}^2 + \\overline{AM}^2) \\ge 2\\{(d-r)^2 + \\overline{AM}^2\\} = 2(3^2 + 3^2) = \\mathbf{36}`)}`,
+        notes: `• 만약 제곱합이 아니라 그냥 **$\\triangle PAB$의 무게중심 $G$가 그리는 자취**를 물으면, $PG : PM = 2 : 1$이므로 원의 반지름을 $\\dfrac{1}{3}$배로 줄인 원(반지름 $\\dfrac{1}{3}r$)이 됩니다!`
+      };
+    }
+
+  /* ===== 원본 그대로: 장면 그리기 renderMode1~8 (원본 1125–1782행, [2.0 수정] 표시 부분만 다름) ===== */
+    function renderMode1CircleBirth(rect, ox, oy, u) {
+      const sub = state.subType[1];
+      const r = state.radR;
+
+      if (sub === 'diamEnds') {
+        const A = pt(ox - 2 * u, oy + 1 * u), B = pt(ox + 4 * u, oy - 3 * u);
+        const C = mid(A, B);
+        const Rpx = dist(A, C);
+        const angP = state.thetaP + state.fold * Math.PI * 1.4;
+        const P = pt(C.x + Rpx * Math.cos(angP), C.y - Rpx * Math.sin(angP));
+
+        pcircle(C, Rpx, CCOL.gold, 'rgba(251, 191, 36, 0.12)', 3.0, [], 1);
+        ppoly([A, P, B], 'rgba(244, 114, 182, 0.18)', CCOL.pink, 2.8, 2);
+        pline(A, B, CCOL.cyan, 3.8, [], true, 0);
+        pright(P, A, B, 16, CCOL.pink);
+
+        pdot(A, 'A(-2, -1)', CCOL.cyan, { x: -65, y: 18 });
+        pdot(B, 'B(4, 3)', CCOL.cyan, { x: 10, y: -8 });
+        pdot(C, 'C(1, 1) [AB중점!]', CCOL.gold, { x: 10, y: 18 });
+        atick(A, C, 1, CCOL.gold); atick(C, B, 1, CCOL.gold); // [표시 보강] C는 지름 AB의 중점: AC = CB
+        dragP(P, C, Math.PI * 1.4, 'P(∠APB=90°!)', CCOL.pink, { x: -35, y: -14 }); // [2.0 수정] 점 P를 직접 끌기
+
+        drawBottomTapeBanner(rect, '지름의 양 끝점 A, B가 주어진 원: 중점 C(1, 1)이 중심, AC² = 13 이 반지름 제곱 r², 원주각 ∠APB = 90°!');
+        return;
+      }
+
+      if (sub === 'generalForm') {
+        const C = pt(ox + 2 * u, oy - 1 * u);
+        const stage = state.fold < 0.35 ? 0 : state.fold < 0.7 ? 1 : 2;
+        if (stage === 0) {
+          pcircle(C, 3.6 * u, CCOL.gold, 'rgba(251, 191, 36, 0.15)', 3.2, [], 1);
+          ptag(C.x, C.y - 3.6 * u - 14, '① R² = 5 - C > 0 (C < 5) ➔ 실원 존재 ⭕', CCOL.gold, 13.5);
+        } else if (stage === 1) {
+          pdot(C, '② R² = 0 (C = 5) ➔ 반지름 0인 한 점(원 아님!)', CCOL.red, { x: -90, y: -18 });
+        } else {
+          pcircle(C, 2.5 * u, CCOL.red, 'rgba(244, 63, 94, 0.08)', 2.2, [5, 5], 2);
+          ptag(C.x, C.y - 2.5 * u - 14, '③ R² < 0 (C > 5) ➔ 좌표평면에 존재하지 않는 허원 ❌', CCOL.red, 13.5);
+        }
+        pdot(C, 'C(2, 1)', CCOL.cyan, { x: 10, y: 18 });
+        drawBottomTapeBanner(rect, '일반형 x² + y² + Ax + By + C = 0 이 원이 될 조건: 완전제곱식 우변 R² = (A²+B²-4C)/4 > 0!');
+        return;
+      }
+
+      if (sub === 'threePts') {
+        const O = pt(ox, oy), Rpx = 2 * u;
+        const A = pt(O.x - Rpx, O.y), B = pt(O.x, O.y - Rpx), C = pt(O.x + Rpx, O.y);
+        pcircle(O, Rpx, CCOL.gold, 'rgba(251, 191, 36, 0.10)', 3.0);
+        pline(A, B, CCOL.cyan, 2.8);
+        pline(A, C, CCOL.pink, 2.8);
+        pline(pt(O.x - 75, O.y - 75), pt(O.x + 75, O.y + 75), 'rgba(56, 189, 248, 0.65)', 2.0, [5, 4]);
+        pline(pt(O.x, O.y - 90), pt(O.x, O.y + 90), 'rgba(244, 114, 182, 0.65)', 2.0, [5, 4]);
+        pdot(A, 'A(-2,0)', CCOL.cyan, { x: -48, y: 18 });
+        pdot(B, 'B(0,2)', CCOL.cyan, { x: 10, y: -10 });
+        pdot(C, 'C(2,0)', CCOL.cyan, { x: 12, y: 18 });
+        pdot(O, '중심 O(0,0)', CCOL.gold, { x: 12, y: 18 });
+        { // [표시 보강] OA = OB = OC(반지름, 같은 눈금 1개), 두 현의 중점에서 수직이등분선과의 직각, 현의 절반끼리 같은 눈금 2개
+          const Mab = mid(A, B);
+          atick(O, A, 1, CCOL.gold); atick(O, C, 1, CCOL.gold); atick(O, B, 1, CCOL.gold);
+          atick(A, Mab, 2, CCOL.cyan); atick(Mab, B, 2, CCOL.cyan);
+          pright(O, C, B, 13, CCOL.pink); pright(Mab, B, O, 13, CCOL.cyan);
+        }
+        drawBottomTapeBanner(rect, '탐구 예시: 현 AC·AB의 수직이등분선 교점 O(0,0), 세 점까지 거리 2 ➔ 외접원 x²+y²=4');
+        return;
+      }
+
+      // stdDef
+      const C = pt(ox + 1.5 * u, oy - 1 * u);
+      const Rpx = r * 0.85 * u;
+      const ang = state.thetaP + state.fold * Math.PI * 2;
+      const P = pt(C.x + Rpx * Math.cos(ang), C.y - Rpx * Math.sin(ang));
+      const H = pt(P.x, C.y);
+
+      pcircle(C, Rpx, CCOL.gold, 'rgba(251, 191, 36, 0.10)', 3.0);
+      ppoly([C, H, P], 'rgba(56, 189, 248, 0.22)', 'rgba(255,255,255,0.4)', 1.8);
+      pline(C, H, CCOL.cyan, 4.2, [], true, 0, 'pyth');
+      pline(H, P, CCOL.green, 4.2, [], true, 1, 'pyth');
+      pline(C, P, CCOL.gold, 4.4, [], true, 2, 'def');
+      pright(H, C, P, 12, CCOL.gold);
+
+      pdot(C, 'C(a, b)', CCOL.gold, { x: -45, y: 20 });
+      pdot(H, 'H(x, b)', CCOL.cyan, { x: 8, y: 20 });
+      dragP(P, C, Math.PI * 2, 'P(x, y)', CCOL.pink, { x: 12, y: -10 }); // [2.0 수정] 점 P를 직접 끌기
+
+      ptag((C.x + H.x) / 2, C.y + 22, '|x - a|', CCOL.cyan, 13.5);
+      ptag(P.x + 36, (P.y + H.y) / 2, '|y - b|', CCOL.green, 13.5);
+      ptag((C.x + P.x) / 2 - 18, (C.y + P.y) / 2 - 10, `r = ${r}`, CCOL.gold, 14);
+
+      drawBottomTapeBanner(rect, `피타고라스 원의 방정식: 가로² (x-a)² + 세로² (y-b)² = 반지름² r²(${r*r})`, [
+        { text: '가로 제곱 (x - a)²', weight: Math.cos(ang) ** 2, color: CCOL.cyan },
+        { text: `세로 제곱 (y - b)²  [합 = r² = ${r * r}]`, weight: Math.sin(ang) ** 2, color: CCOL.green }
+      ]);
+    }
+
+    // =========================================================================
+    // [탭 2 렌더링] 좌표축에 접하는 원 & 점 (2,1)을 지나는 동시 접원 2개
+    // =========================================================================
+    function renderMode2AxisTouch(rect, ox, oy, u) {
+      const sub = state.subType[2];
+      const sc = 1.15 * u;
+
+      if (sub === 'twoCircles21') {
+        // y = x 대칭 직선
+        pline(pt(ox - 2 * sc, oy + 2 * sc), pt(ox + 7.5 * sc, oy - 7.5 * sc), 'rgba(251, 191, 36, 0.45)', 2.0, [5, 4]);
+        ptag(ox + 6.2 * sc, oy - 6.6 * sc, '중심 직선 y = x', CCOL.gold, 12.5);
+
+        const C1 = pt(ox + 1 * sc, oy - 1 * sc);
+        const C2 = pt(ox + 5 * sc, oy - 5 * sc);
+        const P21 = pt(ox + 2 * sc, oy - 1 * sc);
+
+        pcircle(C2, 5 * sc, CCOL.pink, 'rgba(244, 114, 182, 0.12)', 3.0, [], 1);
+        pcircle(C1, 1 * sc, CCOL.cyan, 'rgba(56, 189, 248, 0.24)', 3.2, [], 0);
+        pline(C1, C2, CCOL.gold, 3.6, [], true, 2, 'def');
+
+        pdot(C1, 'C₁(1, 1) [r₁=1]', CCOL.cyan, { x: -75, y: -12 });
+        pdot(C2, 'C₂(5, 5) [r₂=5]', CCOL.pink, { x: 12, y: -8 });
+        pdot(P21, '교점 P(2, 1)', CCOL.gold, { x: 10, y: 18 });
+
+        drawMiniOverlayBox(rect, '🔥 (2,1) 지나는 동시접원 2개', [
+          { txt: '식: (x-r)² + (y-r)² = r²', col: '#fef08a' },
+          { txt: '(2,1) 대입: r² - 6r + 5 = 0', col: '#e2e8f0' },
+          { txt: '① 작은 원: r₁ = 1, 중심 (1, 1)', col: '#38bdf8' },
+          { txt: '② 큰 원: r₂ = 5, 중심 (5, 5)', col: '#f472b6' }
+        ]);
+
+        drawBottomTapeBanner(rect, '점 (2, 1)을 지나고 x·y축에 동시에 접하는 원: 작은 원(r₁=1) + 큰 원(r₂=5) ➔ 중심 사이 거리 = 4√2!');
+        return;
+      }
+
+      if (sub === 'touchX') {
+        const C = pt(ox + 3.5 * u, oy - 3 * u);
+        pcircle(C, 3 * u, CCOL.cyan, 'rgba(56, 189, 248, 0.16)', 3.2, [], 0);
+        pline(C, pt(C.x, oy), CCOL.gold, 4.2, [], true, 0, 'def');
+        pright(pt(C.x, oy), C, pt(ox, oy), 12, CCOL.gold);
+        pdot(C, '중심 C(a, b) = (3.5, 3)', CCOL.cyan, { x: -45, y: -14 });
+        pdot(pt(C.x, oy), '접점 (a, 0)', CCOL.gold, { x: -20, y: 22 });
+        ptag(C.x + 62, oy - 1.5 * u, '반지름 r = |b| = 3!', CCOL.gold, 14);
+        drawBottomTapeBanner(rect, 'x축에 접하는 원: 반지름 r은 중심의 y좌표의 절댓값(|b|)입니다! ➔ (x - a)² + (y - b)² = b²');
+        return;
+      }
+
+      if (sub === 'touchY') {
+        const C = pt(ox + 3.5 * u, oy - 2.5 * u);
+        pcircle(C, 3.5 * u, CCOL.pink, 'rgba(244, 114, 182, 0.16)', 3.2, [], 1);
+        pline(C, pt(ox, C.y), CCOL.gold, 4.2, [], true, 1, 'def');
+        pright(pt(ox, C.y), C, pt(ox, oy), 12, CCOL.gold);
+        pdot(C, '중심 C(a, b) = (3.5, 2.5)', CCOL.pink, { x: -45, y: -14 });
+        pdot(pt(ox, C.y), '접점 (0, b)', CCOL.gold, { x: -65, y: 4 });
+        ptag(ox + 1.75 * u, C.y - 12, '반지름 r = |a| = 3.5!', CCOL.gold, 14);
+        drawBottomTapeBanner(rect, 'y축에 접하는 원: 반지름 r은 중심의 x좌표의 절댓값(|a|)입니다! ➔ (x - a)² + (y - b)² = a²');
+        return;
+      }
+
+      // touchBothQuad: 4개 사분면 동시 접원
+      const R = 2.6 * u;
+      const quads = [
+        { c: pt(ox + R, oy - R), lbl: '1사분면 (r, r)', col: CCOL.cyan },
+        { c: pt(ox - R, oy - R), lbl: '2사분면 (-r, r)', col: CCOL.pink },
+        { c: pt(ox - R, oy + R), lbl: '3사분면 (-r, -r)', col: CCOL.green },
+        { c: pt(ox + R, oy + R), lbl: '4사분면 (r, -r)', col: CCOL.gold }
+      ];
+      pline(pt(ox - 5.5 * u, oy + 5.5 * u), pt(ox + 5.5 * u, oy - 5.5 * u), 'rgba(255,255,255,0.35)', 1.8, [5, 5]);
+      pline(pt(ox - 5.5 * u, oy - 5.5 * u), pt(ox + 5.5 * u, oy + 5.5 * u), 'rgba(255,255,255,0.35)', 1.8, [5, 5]);
+      quads.forEach((q) => {
+        pcircle(q.c, R, q.col, q.col + '18', 2.6);
+        pdot(q.c, q.lbl, q.col, { x: -35, y: 4 });
+      });
+      drawBottomTapeBanner(rect, 'x·y축에 동시에 접하는 원: 중심이 직선 y = x (1·3사분면) 또는 y = -x (2·4사분면) 위에 놓입니다!');
+    }
+
+    // =========================================================================
+    // [탭 3 렌더링] 아폴로니오스의 원 (PA : PB = 2 : 1) & 최대 넓이·최대 각도
+    // =========================================================================
+    function renderMode3Apollonius(rect, ox, oy, u) {
+      const sub = state.subType[3];
+      const sc = 0.85 * u;
+      const shiftX = ox - 2 * sc;
+
+      const A = pt(shiftX - 3 * sc, oy);
+      const B = pt(shiftX + 3 * sc, oy);
+      const M = pt(shiftX + 1 * sc, oy); // 2:1 내분점 (1, 0)
+      const N = pt(shiftX + 9 * sc, oy); // 2:1 외분점 (9, 0)
+      const C = pt(shiftX + 5 * sc, oy); // 아폴로니오스 원 중심 (5, 0)
+      const Rpx = 4 * sc;               // 반지름 r = 4
+
+      pcircle(C, Rpx, CCOL.gold, 'rgba(251, 191, 36, 0.14)', 3.2, [], 2);
+
+      let ang = state.thetaP + state.fold * Math.PI * 1.6;
+      if (sub === 'apolloMaxArea') ang = Math.PI / 2;
+      else if (sub === 'apolloMaxAngle') ang = Math.PI - Math.acos(4 / 8); // AP가 접선일 때 CP와 CA 사이의 작은 각은 60°; 위 접점은 양의 x축에서 120°.
+
+      const P = pt(C.x + Rpx * Math.cos(ang), C.y - Rpx * Math.sin(ang));
+
+      ppoly([P, A, B], 'rgba(56, 189, 248, 0.20)', 'rgba(255,255,255,0.4)', 1.8);
+      pline(P, A, CCOL.cyan, 3.8, [], true);
+      pline(P, B, CCOL.pink, 3.8, [], true);
+
+      if (sub === 'midpointLocus') {
+        const M = mid(A, P), CM = pt(shiftX + sc, oy);
+        pcircle(CM, Rpx / 2, CCOL.pink, 'rgba(244, 114, 182, 0.08)', 2.6, [6, 4], 2);
+        pline(A, P, 'rgba(255,255,255,0.55)', 2.6, [], false, 0);
+        pdot(CM, '중점 자취 중심 (1,0)', CCOL.pink, { x: -65, y: 20 });
+        pdot(M, 'M (AP의 중점)', CCOL.gold, { x: 12, y: -10 });
+        atick(A, M, 1, CCOL.gold); atick(M, P, 1, CCOL.gold); // [표시 보강] M은 AP의 중점: AM = MP
+      } else if (sub === 'apolloMaxArea') {
+        pline(P, C, CCOL.gold, 4.4, [], true, 2);
+        pright(C, P, A, 12, CCOL.gold);
+        ptag(C.x + 54, (P.y + C.y) / 2, '최대 높이 = r = 4!', CCOL.gold, 14);
+      } else if (sub === 'apolloMaxAngle') {
+        pline(P, C, CCOL.gold, 3.6, [], true, 2);
+        pright(P, A, C, 13, CCOL.gold);
+        aang(A, B, P, { color: CCOL.pink, rings: 1, r: 40, label: `${degOf(A, B, P)}°` }); // [표시 보강] 최대일 때의 ∠PAB
+        ptag((A.x + P.x) / 2 - 20, (A.y + P.y) / 2 - 14, '접선일 때 ∠PAB 최대!', CCOL.gold, 13.5);
+      } else {
+        pline(P, M, CCOL.cyan, 2.2, [5, 4], false, 0);
+        pline(P, N, CCOL.pink, 2.2, [5, 4], false, 1);
+        pright(P, M, N, 12, CCOL.gold);
+      }
+
+      pdot(A, 'A(-3, 0)', CCOL.white, { x: -25, y: 20 });
+      pdot(B, 'B(3, 0)', CCOL.white, { x: -18, y: 20 });
+      pdot(M, 'M(1,0) [내분점]', CCOL.cyan, { x: -45, y: -14 });
+      pdot(N, 'N(9,0) [선분 AB 바깥쪽]', CCOL.pink, { x: -30, y: 20 });
+      pdot(C, 'C(5,0)', CCOL.gold, { x: -15, y: 20 });
+      dragP(P, C, Math.PI * 1.6, 'P (PA : PB = 2 : 1)', CCOL.gold, { x: -35, y: -14 }, sub !== 'apolloMaxArea' && sub !== 'apolloMaxAngle'); // [2.0 수정] 점 P를 직접 끌기(각도가 고정된 두 장면 제외)
+
+      if (sub === 'midpointLocus') {
+        drawMiniOverlayBox(rect, '📍 중점 M의 자취', [
+          { txt: 'P는 중심 (5,0), 반지름 4인 원 위', col: '#38bdf8' },
+          { txt: 'A=(-3,0), M=(P+A)/2', col: '#f472b6' },
+          { txt: '중심 (1,0), 반지름 2', col: '#fbbf24' },
+          { txt: '(x−1)²+y²=4', col: '#34d399' }
+        ]);
+        drawBottomTapeBanner(rect, '고정점 A와 원 위 점 P의 중점 M 자취: 중심은 (1,0), 반지름은 4의 절반인 2!');
+      } else {
+        drawMiniOverlayBox(rect, '🛰️ 거리의 비가 2 : 1인 점의 자취(원)', [
+          { txt: '① 2:1 내분점 M = (1, 0)', col: '#38bdf8' },
+          { txt: '② AN : BN = 2 : 1 (선분 AB 바깥쪽) N = (9, 0)', col: '#f472b6' },
+          { txt: '③ 중심 C = MN 중점 = (5, 0)', col: '#fbbf24' },
+          { txt: '④ 반지름 r = CM = 4', col: '#34d399' }
+        ]);
+        drawBottomTapeBanner(rect, '거리의 비가 PA:PB = 2:1인 점의 자취: 내분점 M(1,0)과 선분 AB 바깥쪽의 점 N(9,0)을 지름의 양 끝으로 하는 원 (중심 (5,0), r=4)');
+      }
+    }
+
+    // =========================================================================
+    // [탭 4 렌더링] 원과 직선의 위치관계 (d vs r) & 현의 길이 & 최대·최소 거리
+    // =========================================================================
+    function renderMode4LineAndChord(rect, ox, oy, u) {
+      const sub = state.subType[4];
+      const r = state.radR;
+      const effD = Math.min(r + 1.5, state.distD);
+      const Rpx = r * 0.9 * u;
+      const Dpx = effD * 0.9 * u;
+
+      const C = pt(ox, oy + 10);
+      pcircle(C, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.12)', 3.0);
+
+      // 직선 방향 (기울기 -3/4 인 직선: 법선 단위벡터 n = (0.6, -0.8), 직선 방향 v = (0.8, 0.6))
+      const nVec = { x: 0.6, y: -0.8 }, tVec = { x: 0.8, y: 0.6 };
+      const H = add(C, mul(nVec, Dpx));
+      const L1 = add(H, mul(tVec, -220)), L2 = add(H, mul(tVec, 220));
+      pline(L1, L2, CCOL.white, 3.0);
+
+      // 중심에서 직선에 내린 수선 CH (길이 d)
+      pline(C, H, CCOL.cyan, 4.2, [], true, 0, 'def');
+      pright(H, C, L2, 12, CCOL.cyan);
+
+      if (effD < r) {
+        const halfLenPx = Math.sqrt(Rpx * Rpx - Dpx * Dpx);
+        const A = add(H, mul(tVec, -halfLenPx));
+        const B = add(H, mul(tVec, halfLenPx));
+
+        ppoly([C, A, H], 'rgba(251, 191, 36, 0.26)', CCOL.gold, 2.8, 1);
+        pline(A, B, CCOL.gold, 5.0, [], true, 1);
+        pline(C, A, CCOL.pink, 3.8, [], true, undefined, 'def');
+
+        if (sub === 'equilMaxMin') {
+          const apex = add(H, mul(nVec, -Math.sqrt(3) * halfLenPx));
+          ppoly([A, B, apex], 'rgba(244, 114, 182, 0.18)', CCOL.pink, 3.0, 2);
+          pline(H, apex, CCOL.pink, 2.0, [5, 4], true, 2);
+          pdot(apex, '정삼각형의 꼭짓점', CCOL.pink, { x: 12, y: -10 });
+          atick(B, apex, 2, CCOL.pink); atick(apex, A, 2, CCOL.pink); // [표시 보강] 정삼각형: 세 변이 같고 세 각이 60°
+          aang(A, B, apex, { color: CCOL.pink, rings: 1, r: 30, label: '60°' }); aang(B, apex, A, { color: CCOL.pink, rings: 1, r: 30, label: '60°' }); aang(apex, A, B, { color: CCOL.pink, rings: 1, r: 30, label: '60°' });
+        }
+
+        pdot(A, 'A', CCOL.gold, { x: -20, y: -8 });
+        pdot(B, 'B', CCOL.gold, { x: 10, y: 12 });
+        const hc = Math.sqrt(r * r - effD * effD).toFixed(2);
+        ptag((C.x + A.x) / 2 - 24, (C.y + A.y) / 2 - 8, `r = ${r}`, CCOL.pink, 14);
+        ptag((A.x + H.x) / 2 - 15, (A.y + H.y) / 2 - 14, `AH = √(${r}²-${effD}²)=${hc}`, CCOL.gold, 13);
+        atick(A, H, 1, CCOL.white); atick(H, B, 1, CCOL.white); // [표시 보강] 수선의 발 H는 현 AB의 중점: AH = HB
+      }
+
+      if (sub === 'maxMinDist' || (sub !== 'equilMaxMin' && state.fold > 0.3)) {
+        const P_min = effD < r
+          ? add(H, mul(tVec, -Math.sqrt(Rpx * Rpx - Dpx * Dpx)))
+          : add(C, mul(nVec, Rpx));
+        const P_max = add(C, mul(nVec, -Rpx));
+        pline(P_max, H, 'rgba(244, 114, 182, 0.65)', 2.4, [5, 4], false, 2);
+        pdot(P_min, `최소점 (${effD < r ? '교점, 거리 0' : `거리 ${effD-r}`})`, CCOL.green, { x: 12, y: -8 });
+        pdot(P_max, `최대점 (d+r=${effD+r})`, CCOL.pink, { x: -95, y: 20 });
+      }
+
+      pdot(C, '중심 C', CCOL.cyan, { x: -45, y: 18 });
+      pdot(H, `H (거리 d=${effD})`, CCOL.cyan, { x: 12, y: -6 });
+
+      const halfSq = Math.max(0.1, r * r - effD * effD);
+      drawBottomTapeBanner(
+        rect,
+        sub === 'equilMaxMin'
+          ? effD < r
+            ? `현 AB를 밑변으로 한 정삼각형: L=2√(${r}²−${effD}²), 넓이 S=√3(${r}²−${effD}²)`
+            : `d(${effD})≥r(${r})이므로 현과 정삼각형이 없습니다.`
+          : effD < r
+          ? `현의 길이 피타고라스: r²(${r*r}) = d²(${effD*effD}) + (현의 절반 AH)²(${halfSq.toFixed(1)})  ➔  현 AB = 2√(${r}²-${effD}²)`
+          : `위치관계 판정: 중심거리 d(${effD}) ${effD === r ? '=' : '>'} 반지름 r(${r})  |  최대거리 = d+r(${effD+r}), 최소거리 = max(d-r,0)(${Math.max(0,effD-r)})`,
+        [
+          { text: `거리 제곱 d² (${effD * effD})`, weight: (effD * effD) / (r * r + 1), color: CCOL.cyan },
+          { text: `현 절반 제곱 r²-d²`, weight: Math.max(0.15, halfSq / (r * r + 1)), color: CCOL.gold }
+        ]
+      );
+    }
+
+    // =========================================================================
+    // [탭 5 렌더링] 두 원의 위치관계 & 공통현의 방정식 (O₁ + k O₂ = 0) & 종이접기 원 복원
+    // =========================================================================
+    function renderMode5TwoCirclesAndChord(rect, ox, oy, u) {
+      const subId = state.subType[5];
+
+      if (subId === 'foldCircleArc') {
+        const Rpx = 3.8 * u;
+        const C1 = pt(ox - 1 * u, oy + 0.5 * u);
+        // 접점이 C1 아래쪽 가로선에 접하도록 두 번째 원 C2 배치
+        const lineY = C1.y + Rpx;
+        pline(pt(ox - 7 * u, lineY), pt(ox + 7 * u, lineY), 'rgba(255,255,255,0.65)', 2.4);
+
+        const touchPt = pt(C1.x + 1.6 * u, lineY);
+        const C2 = pt(touchPt.x, lineY - Rpx); // 같은 반지름 R인 원이 접선 lineY에 접하도록 중심은 반지름만큼 떨어짐
+
+        pcircle(C1, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.12)', 3.0, [], 0);
+        // 슬라이더로 접힌 호의 원래 전체 원 C2를 점선으로 완전 복원!
+        pcircle(C2, Rpx, CCOL.pink, 'rgba(244, 114, 182, 0.14)', state.fold > 0.2 ? 2.8 : 1.5, [6, 4], 1);
+
+        // 공통현 직선 AB
+        const midC = mid(C1, C2);
+        const dirC = norm(sub(C2, C1));
+        const perpC = { x: -dirC.y, y: dirC.x };
+        pline(add(midC, mul(perpC, -135)), add(midC, mul(perpC, 135)), CCOL.gold, 4.4, [], true, 2);
+
+        pdot(C1, '원래 중심 C₁(0,0)', CCOL.cyan, { x: -95, y: -8 });
+        pdot(C2, '복원한 원 중심 C₂(2,4)', CCOL.pink, { x: 12, y: -10 });
+        pdot(touchPt, '접점 (2,0)', CCOL.gold, { x: -20, y: 22 });
+        atick(C1, midC, 1, CCOL.cyan); atick(midC, C2, 1, CCOL.cyan); pright(midC, C2, add(midC, mul(perpC, 50)), 13, CCOL.gold); // [표시 보강] 접는 선 AB는 C₁C₂의 수직이등분선
+
+        drawBottomTapeBanner(rect, '종이접기 원: 접힌 호를 반지름이 같은 원 O₂로 나타낸 뒤 O₁ - O₂ = 0 으로 하면 직선 AB의 방정식이 된다!');
+        return;
+      }
+
+      // pencilK, commonChordLen, twoPos5, bisectCircum
+      const C1 = pt(ox - 2.2 * u, oy);
+      const C2 = pt(ox + 2.2 * u, oy);
+      const R1 = 3.6 * u, R2 = 2.8 * u;
+
+      pcircle(C1, R1, CCOL.cyan, 'rgba(56, 189, 248, 0.10)', 2.8, [], 0);
+      pcircle(C2, R2, CCOL.green, 'rgba(52, 211, 153, 0.10)', 2.8, [], 0);
+
+      // 두 원의 교점 A, B 및 공통현 직선
+      const dPx = dist(C1, C2);
+      const xOff = (R1 * R1 - R2 * R2 + dPx * dPx) / (2 * dPx);
+      const yOff = Math.sqrt(Math.max(0, R1 * R1 - xOff * xOff));
+      const H = pt(C1.x + xOff, oy);
+      const A = pt(H.x, oy - yOff), B = pt(H.x, oy + yOff);
+
+      // 슬라이더(state.fold)가 1에 가까워질수록 O₁ + k O₂ = 0 원이 펴져서 k = -1 공통현 직선이 됨!
+      if (state.fold < 0.85) {
+        const shift = (1 - state.fold) * 2.5 * u + 0.6 * u;
+        const Ck = pt(H.x - shift, oy);
+        const Rk = Math.hypot(shift, yOff);
+        pcircle(Ck, Rk, CCOL.pink, 'rgba(244, 114, 182, 0.08)', 2.4, [5, 4], 1);
+      }
+
+      pline(pt(H.x, oy - 165), pt(H.x, oy + 165), CCOL.gold, 4.4, [], true, 2, 'aux');
+      pline(C1, C2, 'rgba(255,255,255,0.45)', 2.0, [4, 4]);
+      pline(C1, A, CCOL.cyan, 3.0, [], false, undefined, 'def');
+      pright(H, A, C1, 11, CCOL.gold);
+      atick(A, H, 1, CCOL.white); atick(H, B, 1, CCOL.white); // [표시 보강] 공통현의 중점 H: AH = HB
+
+      pdot(C1, 'C₁', CCOL.cyan, { x: -24, y: 18 });
+      pdot(C2, 'C₂', CCOL.green, { x: 10, y: 18 });
+      pdot(A, '교점 A', CCOL.gold, { x: 10, y: -8 });
+      pdot(B, '교점 B', CCOL.gold, { x: 10, y: 16 });
+      pdot(H, 'H', CCOL.gold, { x: -18, y: 18 });
+
+      ptag(H.x + 75, oy - 125, 'k = -1 : 공통현 직선 (O₁ - O₂ = 0)', CCOL.gold, 13);
+      drawBottomTapeBanner(rect, 'O₁ + k O₂ = 0 에서 k = -1 을 대입하면 x², y² 이 지워져 두 교점 A, B를 지나는 공통현 직선이 됩니다!');
+    }
+
+    // =========================================================================
+    // [탭 6 렌더링] 원의 접선의 방정식 3대 유형 & 숨은 수직접선(x=r) & 정사각형 자취
+    // =========================================================================
+    function renderMode6Tangents(rect, ox, oy, u) {
+      const subId = state.subType[6];
+      const sc = 1.15 * u;
+
+      if (subId === 'tanExtVertical') {
+        const Rpx = 3 * sc;
+        const O = pt(ox, oy + 20);
+        const P = pt(O.x + 3 * sc, O.y - 4 * sc); // 외부 점 P(3, 4), 반지름 r = 3!
+        const T1 = pt(O.x + 3 * sc, O.y);         // 수직 접점 T₁(3, 0)
+        // 두 번째 접점 T₂: 기울기 m = 7/24 인 접선
+        const T2 = pt(O.x - (21 / 25) * sc, O.y - (72 / 25) * sc);
+
+        pcircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.14)', 3.0);
+
+        // 접선 1 (완만한 접선 m = 7/24)
+        const dir2 = norm(sub(T2, P));
+        pline(add(P, mul(dir2, -40)), add(P, mul(dir2, 220)), CCOL.cyan, 3.6, [], true, 0);
+        pline(O, T2, CCOL.cyan, 2.4, [4, 4]);
+        pright(T2, O, P, 11, CCOL.cyan);
+
+        // ★ 접선 2 (공식에서 증발하는 숨은 수직 접선 x = 3!) ★
+        pline(pt(T1.x, O.y - 175), pt(T1.x, O.y + 115), CCOL.red, 4.8, [], true, 1);
+        pline(O, T1, CCOL.gold, 3.2, [], false, undefined, 'def');
+        pright(T1, O, P, 13, CCOL.red);
+
+        pdot(O, 'O(0, 0)', CCOL.white, { x: -45, y: 18 });
+        pdot(P, '외부 점 P(3, 4)', CCOL.gold, { x: 12, y: -8 });
+        pdot(T1, 'T₁(3, 0) [수직 접점!]', CCOL.red, { x: 12, y: 18 });
+        pdot(T2, 'T₂', CCOL.cyan, { x: -24, y: -8 });
+        atick(P, T1, 2, CCOL.red); atick(P, T2, 2, CCOL.cyan); atick(O, T1, 1, CCOL.gold); atick(O, T2, 1, CCOL.cyan); // [표시 보강] 접선의 길이 PT₁ = PT₂, 반지름 OT₁ = OT₂
+
+        ptag(T1.x + 75, (P.y + T1.y) / 2, '⚠️ 숨은 수직 접선 x = 3!', CCOL.red, 14);
+        drawMiniOverlayBox(rect, '⚠️ 왜 m이 1개만 나왔을까?', [
+          { txt: '점 P(3, 4)의 x좌표 = 반지름 3', col: '#fef08a' },
+          { txt: '① 7x - 24y + 75 = 0 (m=7/24)', col: '#38bdf8' },
+          { txt: '② x = 3 (기울기 무한대 수직선!)', col: '#f43f5e' },
+          { txt: '∴ 원 밖의 점에서 그은 접선은 2개!', col: '#34d399' }
+        ]);
+
+        drawBottomTapeBanner(rect, '원 밖의 점 P(3, 4)에서 x²+y²=3²에 그은 접선: x좌표가 반지름(3)과 같을 때는 y축에 평행한 접선 x = 3 도 빠뜨리지 마세요!');
+        return;
+      }
+
+      if (subId === 'tanPerp90') {
+        const Rpx = 3.0 * sc;
+        const R2px = Rpx * Math.sqrt(2);
+        const O = pt(ox, oy);
+        const ang = 0.55 + state.fold * Math.PI * 1.5;
+
+        const P = pt(O.x + R2px * Math.cos(ang), O.y - R2px * Math.sin(ang));
+        const A = pt(O.x + Rpx * Math.cos(ang + Math.PI / 4), O.y - Rpx * Math.sin(ang + Math.PI / 4));
+        const B = pt(O.x + Rpx * Math.cos(ang - Math.PI / 4), O.y - Rpx * Math.sin(ang - Math.PI / 4));
+
+        pcircle(O, R2px, CCOL.pink, 'rgba(244, 114, 182, 0.06)', 2.6, [6, 4], 2);
+        pcircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.16)', 3.0, [], 0);
+        ppoly([O, A, P, B], 'rgba(251, 191, 36, 0.28)', CCOL.gold, 3.2, 1);
+        pline(O, P, CCOL.pink, 4.0, [], true, 2);
+
+        pright(A, O, P, 11, CCOL.gold);
+        pright(B, O, P, 11, CCOL.gold);
+        pright(P, A, B, 16, CCOL.pink);
+        atick(O, A, 1, CCOL.cyan); atick(O, B, 1, CCOL.cyan); atick(A, P, 2, CCOL.gold); atick(B, P, 2, CCOL.gold); // [표시 보강] OA = OB = r, PA = PB(정사각형)
+
+        pdot(O, 'O(0,0)', CCOL.white, { x: -35, y: 18 });
+        pdot(A, 'A', CCOL.cyan, { x: -20, y: -8 });
+        pdot(B, 'B', CCOL.cyan, { x: 10, y: 14 });
+        pdot(P, 'P (OP = √2 r 정사각형 대각선!)', CCOL.gold, { x: 12, y: -10 });
+
+        drawBottomTapeBanner(rect, '두 접선이 수직(90°)일 조건: □OAPB가 한 변이 r인 정사각형을 이루므로 점 P는 반지름 √2 r 인 원을 그립니다!');
+        return;
+      }
+
+      // tanSlope & tanPointOn
+      const Rpx = 3.4 * sc, O = pt(ox, oy);
+      pcircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.14)', 3.0);
+      const ang = 0.65;
+      const T1 = pt(O.x + Rpx * Math.cos(ang), O.y - Rpx * Math.sin(ang));
+      const T2 = pt(O.x - Rpx * Math.cos(ang), O.y + Rpx * Math.sin(ang));
+      const tDir = { x: Math.sin(ang), y: Math.cos(ang) };
+
+      pline(add(T1, mul(tDir, -140)), add(T1, mul(tDir, 140)), CCOL.gold, 4.0, [], true, 1);
+      if (subId === 'tanSlope') {
+        pline(add(T2, mul(tDir, -140)), add(T2, mul(tDir, 140)), CCOL.cyan, 3.6, [], true, 0);
+        pdot(T2, '접점 2', CCOL.cyan, { x: -45, y: 16 });
+      }
+      pline(O, T1, CCOL.pink, 3.2, [], false, undefined, 'def');
+      pright(T1, O, add(T1, mul(tDir, 60)), 12, CCOL.gold);
+      atick(O, T1, 1, CCOL.pink); // [표시 보강] 반지름 OT = r. 두 번째 접점 T₂에도 반지름과 직각 표시
+      if (subId === 'tanSlope') { pline(O, T2, CCOL.pink, 3.2, [], false, undefined, 'def'); pright(T2, O, add(T2, mul(tDir, 60)), 12, CCOL.cyan); atick(O, T2, 1, CCOL.pink); }
+      pdot(O, 'O(0,0)', CCOL.white, { x: -35, y: 18 });
+      pdot(T1, '접점 (x₁, y₁)', CCOL.gold, { x: 12, y: -8 });
+
+      drawBottomTapeBanner(rect, '접선의 방정식: ① 기울기 m 공식 y = mx ± r√(m²+1) (2개)  |  ② 원 위의 점 (x₁, y₁) 공식 x₁x + y₁y = r² (1개)');
+    }
+
+    // =========================================================================
+    // [탭 7 렌더링] 공통외접선 · 공통내접선 평행이동 & 극선(소 공식)
+    // =========================================================================
+    function renderMode7CommonTangents(rect, ox, oy, u) {
+      const sub = state.subType[7];
+      const sc = 1.05 * u;
+      const t = state.fold;
+
+      if (sub === 'polarChordCow' || sub === 'concyclicOAPB') {
+        const O = pt(ox - 2.2 * sc, oy);
+        const P = pt(ox + 2.8 * sc, oy); // OP = 5
+        const Rpx = 3 * sc;              // OA = 3, AP = 4
+        const H = pt(O.x + (9 / 5) * sc, oy);
+        const hPx = (12 / 5) * sc;
+        const A = pt(H.x, oy - hPx), B = pt(H.x, oy + hPx);
+
+        if (sub === 'concyclicOAPB' || t > 0.5) {
+          pcircle(mid(O, P), 2.5 * sc, CCOL.gold, 'rgba(251, 191, 36, 0.08)', 2.4, [5, 4]);
+        }
+        pcircle(O, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.14)', 3.0);
+        ppoly([O, A, P], 'rgba(56, 189, 248, 0.22)', CCOL.cyan, 3.0, 0);
+        pline(O, P, CCOL.white, 3.4);
+        pline(A, B, CCOL.pink, 4.8, [], true, 2);
+        pline(P, B, CCOL.cyan, 2.8);
+
+        pright(A, O, P, 13, CCOL.gold);
+        pright(H, A, P, 11, CCOL.pink);
+        atick(A, H, 1, CCOL.pink); atick(H, B, 1, CCOL.pink); atick(A, P, 2, CCOL.cyan); atick(P, B, 2, CCOL.cyan); // [표시 보강] AH = HB, 접선 PA = PB
+
+        pdot(O, 'O (r=3)', CCOL.cyan, { x: -45, y: 18 });
+        pdot(P, 'P (OP=5)', CCOL.gold, { x: 10, y: 18 });
+        pdot(A, '접점 A', CCOL.pink, { x: -15, y: -14 });
+        pdot(B, '접점 B', CCOL.pink, { x: -15, y: 22 });
+        pdot(H, 'H', CCOL.gold, { x: 6, y: 18 });
+
+        ptag((O.x + A.x) / 2 - 18, (O.y + A.y) / 2 - 8, 'r = 3', CCOL.cyan, 13.5);
+        ptag((A.x + P.x) / 2 + 18, (A.y + P.y) / 2 - 8, '접선 AP = 4', CCOL.cyan, 13.5);
+        ptag(H.x - 42, (A.y + H.y) / 2, 'AH = 12/5', CCOL.pink, 13.5);
+
+        drawBottomTapeBanner(rect, '현 AB의 길이: 직각삼각형 △OAP(3-4-5)의 넓이 3 × 4 = 5 × AH ➔ AH = 12/5 ➔ 현 AB = 24/5');
+        return;
+      }
+
+      // extCommonTan & intCommonTan: 접선 평행이동 애니메이션!
+      const isInt = sub === 'intCommonTan';
+      const C1 = pt(ox - 3 * sc, oy + 10);
+      const C2 = pt(ox + 3 * sc, oy + 10); // 중심거리 d = 6
+      const r1 = (isInt ? 2.5 : 3.4) * sc;
+      const r2 = 1.1 * sc;
+
+      pcircle(C1, r1, CCOL.cyan, 'rgba(56, 189, 248, 0.12)', 2.8);
+      pcircle(C2, r2, CCOL.pink, 'rgba(244, 114, 182, 0.12)', 2.8);
+      pline(C1, C2, CCOL.gold, 4.0, [], true, 0, 'def');
+
+      const dPx = dist(C1, C2);
+      const effR = isInt ? r1 + r2 : r1 - r2;
+      const alpha = Math.acos(effR / dPx);
+      const nVec = { x: Math.cos(-alpha), y: Math.sin(-alpha) };
+
+      const A = add(C1, mul(nVec, r1));
+      const B = add(C2, mul(nVec, isInt ? -r2 : r2));
+      const K = add(C1, mul(nVec, effR)); // C2에서 반지름에 내린 수선의 발 K!
+
+      // 원래 공통접선 AB
+      pline(A, B, 'rgba(255, 255, 255, 0.5)', 2.4, [5, 4]);
+      pline(C1, isInt ? K : A, CCOL.cyan, 3.2, [], false, 1);
+      pline(C2, B, CCOL.pink, 3.2);
+      pright(A, C1, B, 11, CCOL.white);
+      pright(B, C2, A, 11, CCOL.white);
+      apar(C1, A, 1, CCOL.white); apar(isInt ? B : C2, isInt ? C2 : B, 1, CCOL.white); // [표시 보강] 접선에 수직인 두 반지름은 서로 평행(≫)
+
+      // ★ 슬라이더(t)로 접선 AB를 작은 원 중심 C2 쪽으로 평행이동시켜 직각삼각형 △C₁KC₂ 완성! ★
+      const shiftVec = mul(nVec, isInt ? r2 * t : -r2 * t);
+      const mA = add(A, shiftVec), mB = add(B, shiftVec);
+
+      if (t > 0.7) {
+        ppoly([C1, K, C2], 'rgba(52, 211, 153, 0.24)', CCOL.green, 3.0, 2);
+        pright(K, C1, C2, 13, CCOL.gold);
+      }
+      pline(mA, mB, CCOL.green, 4.6, [], true, 2);
+
+      pdot(C1, 'C₁', CCOL.cyan, { x: -24, y: 18 });
+      pdot(C2, 'C₂', CCOL.pink, { x: 10, y: 18 });
+      pdot(A, 'A', CCOL.white, { x: -18, y: -10 });
+      pdot(B, 'B', CCOL.white, { x: 8, y: isInt ? 18 : -10 });
+      if (t > 0.5) pdot(K, isInt ? 'K (r+r′!)' : 'K (r-r′!)', CCOL.gold, { x: -65, y: -8 });
+
+      ptag((C1.x + C2.x) / 2, C1.y + 24, '빗변 = 중심거리 d = 6', CCOL.gold, 14);
+      ptag((mA.x + mB.x) / 2 + 15, (mA.y + mB.y) / 2 - 14, isInt ? '내접선 L = √(d² - (r+r′)²)' : '외접선 L = √(d² - (r-r′)²)', CCOL.green, 14);
+
+      drawBottomTapeBanner(
+        rect,
+        isInt
+          ? '공통내접선 평행이동: 두 반지름이 더해져 직각변이 (r + r′)가 됩니다! ➔ L = √(d² - (r + r′)²)'
+          : '공통외접선 평행이동: 큰 반지름에서 작은 반지름이 빠져 직각변이 (r - r′)가 됩니다! ➔ L = √(d² - (r - r′)²)'
+      );
+    }
+
+    // =========================================================================
+    // [탭 8 렌더링] 실전 킬러 응용 (파푸스 중선정리 결합 · 넓이 동시 이등분 · 빛의 반사)
+    // =========================================================================
+    function renderMode8KillerApplied(rect, ox, oy, u) {
+      const subId = state.subType[8];
+      const sc = 1.05 * u;
+
+      if (subId === 'bisectAreaBoth') {
+        const C1 = pt(ox - 2.5 * sc, oy + 1.5 * sc);
+        const C2 = pt(ox + 2.5 * sc, oy - 2.0 * sc);
+        const rw = 2.2 * sc, rh = 1.4 * sc;
+
+        pcircle(C1, 2.0 * sc, CCOL.cyan, 'rgba(56, 189, 248, 0.16)', 3.0, [], 0);
+        ppoly(
+          [pt(C2.x - rw, C2.y - rh), pt(C2.x + rw, C2.y - rh), pt(C2.x + rw, C2.y + rh), pt(C2.x - rw, C2.y + rh)],
+          'rgba(244, 114, 182, 0.16)',
+          CCOL.pink,
+          3.0,
+          1
+        );
+        pline(pt(C2.x - rw, C2.y - rh), pt(C2.x + rw, C2.y + rh), 'rgba(255,255,255,0.35)', 1.5, [4, 4]);
+        pline(pt(C2.x - rw, C2.y + rh), pt(C2.x + rw, C2.y - rh), 'rgba(255,255,255,0.35)', 1.5, [4, 4]);
+
+        const dir = norm(sub(C2, C1));
+        pline(add(C1, mul(dir, -95)), add(C2, mul(dir, 95)), CCOL.gold, 4.4, [], true, 2);
+
+        pdot(C1, '원 중심 C₁(-2, -1)', CCOL.cyan, { x: -45, y: 22 });
+        pdot(C2, '대각선 교점 C₂(2, 3)', CCOL.pink, { x: -35, y: -14 });
+        [pt(C2.x - rw, C2.y - rh), pt(C2.x + rw, C2.y + rh), pt(C2.x - rw, C2.y + rh), pt(C2.x + rw, C2.y - rh)].forEach((q) => atick(q, C2, 1, CCOL.pink)); // [표시 보강] 대각선은 교점에서 서로 이등분
+        drawBottomTapeBanner(rect, '원과 직사각형의 넓이를 동시에 이등분하는 직선 = 원의 중심 C₁과 직사각형 대각선 교점 C₂를 잇는 직선!');
+        return;
+      }
+
+      if (subId === 'laserReflectTan') {
+        const A = pt(ox - 4.5 * sc, oy - 2.2 * sc);
+        const C = pt(ox + 3.0 * sc, oy - 3.0 * sc);
+        const C_ref = pt(ox + 3.0 * sc, oy + 3.0 * sc);
+        const Rpx = 1.8 * sc;
+
+        pcircle(C, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.16)', 3.0, [], 0);
+        pcircle(C_ref, Rpx, CCOL.pink, 'rgba(244, 114, 182, 0.14)', 2.8, [6, 4], 1);
+
+        // [표시 보강] 접점 T′은 A에서 대칭원 C′에 그은 접선의 접점으로 정확히 구하고, 반사점 R은 직선 A–T′와 x축의 교점(x축 위), T는 T′의 x축 대칭점으로 둡니다.
+        // 원본은 R·T·T′를 눈대중 위치에 놓아 A–R–T′가 일직선이 아니었습니다 → 입사각 = 반사각이 그림에서도 정확히 성립하게 함
+        const T_hint = pt(C_ref.x - Rpx * 0.6, C_ref.y - Rpx * 0.8);
+        const T_ref = (() => {
+          const vx = A.x - C_ref.x, vy = A.y - C_ref.y, th = Math.atan2(vy, vx), ph = Math.acos(Math.min(1, Rpx / Math.hypot(vx, vy)));
+          const c1 = pt(C_ref.x + Rpx * Math.cos(th + ph), C_ref.y + Rpx * Math.sin(th + ph)), c2 = pt(C_ref.x + Rpx * Math.cos(th - ph), C_ref.y + Rpx * Math.sin(th - ph));
+          return dist(c1, T_hint) < dist(c2, T_hint) ? c1 : c2;
+        })();
+        const R_pt = pt(A.x + ((T_ref.x - A.x) * (oy - A.y)) / (T_ref.y - A.y), oy); // x축 위 반사점
+        const T = pt(T_ref.x, 2 * oy - T_ref.y);
+
+        pline(A, R_pt, CCOL.gold, 4.0, [], true, 2);
+        pline(R_pt, T, CCOL.gold, 4.0, [], true, 2);
+        pline(R_pt, T_ref, CCOL.pink, 3.4, [5, 4], true, 1);
+
+        pdot(A, '출발점 A(-4, 2)', CCOL.gold, { x: -45, y: -12 });
+        pdot(R_pt, '반사점 R', CCOL.white, { x: -20, y: 22 });
+        pdot(C, '원 중심 C(3, 3)', CCOL.cyan, { x: 10, y: -8 });
+        pdot(C_ref, "x축 대칭원 C'(3, -3)", CCOL.pink, { x: 10, y: 18 });
+        areflect(R_pt, A, T, { x: 1, y: 0 }, CCOL.gold); // [표시 보강] 반사점 R: 입사각 = 반사각
+
+        drawBottomTapeBanner(rect, "x축 반사 접선: 원을 x축 아래로 대칭이동한 C'(3, -3)에 출발점 A에서 곧장 그은 일직선 접선과 일치합니다!");
+        return;
+      }
+
+      // pappusMinSq 기본: PA² + PB² = 2(PM² + AM²)
+      const C = pt(ox - 2.2 * sc, oy - 1.8 * sc);
+      const Rpx = 2.0 * sc;
+      const A = pt(ox + 0.5 * sc, oy + 2.8 * sc);
+      const B = pt(ox + 4.5 * sc, oy + 0.8 * sc);
+      const M = mid(A, B);
+
+      const dirCM = norm(sub(M, C));
+      const P_min = add(C, mul(dirCM, Rpx)); // 최단거리 점 P!
+      const ang = (1 - state.fold) * 1.6;
+      const dx = P_min.x - C.x, dy = P_min.y - C.y;
+      const P = pt(C.x + dx * Math.cos(ang) - dy * Math.sin(ang), C.y + dx * Math.sin(ang) + dy * Math.cos(ang));
+
+      pcircle(C, Rpx, CCOL.cyan, 'rgba(56, 189, 248, 0.14)', 3.0);
+      ppoly([P, A, B], 'rgba(251, 191, 36, 0.18)', CCOL.gold, 2.8);
+      pline(A, B, CCOL.cyan, 3.6, [], false, 0);
+      pline(C, M, 'rgba(255,255,255,0.4)', 1.8, [4, 4]);
+      pline(P, M, CCOL.pink, 4.4, [], true, 1);
+
+      pdot(C, '원 중심 C (r=2)', CCOL.cyan, { x: -55, y: -12 });
+      pdot(A, 'A', CCOL.white, { x: -20, y: 18 });
+      pdot(B, 'B', CCOL.white, { x: 10, y: 18 });
+      pdot(M, 'M (AB의 중점!)', CCOL.cyan, { x: 12, y: 18 });
+      pdot(P, state.fold > 0.8 ? 'P (PM = d-r 최소!)' : 'P(원 위의 점)', CCOL.gold, { x: -45, y: -14 });
+      atick(A, M, 1, CCOL.cyan); atick(M, B, 1, CCOL.cyan); // [표시 보강] M은 AB의 중점: AM = MB
+
+      drawBottomTapeBanner(rect, 'PA² + PB² = 2(PM² + AM²) (M은 선분 AB의 중점) ➔ PM이 가장 짧은 d - r 일 때 최소!');
+    }
+
+  /* ======================================================================
+     2.0 셸 연결 (새로 작성한 부분)
+     ====================================================================== */
+  const RENDER = { 1: renderMode1CircleBirth, 2: renderMode2AxisTouch, 3: renderMode3Apollonius, 4: renderMode4LineAndChord, 5: renderMode5TwoCirclesAndChord, 6: renderMode6Tangents, 7: renderMode7CommonTangents, 8: renderMode8KillerApplied };
+  const TABS = ['원의 탄생·표준형·지름', '축에 접하는 원·부호함정', '거리의 비가 일정한 점의 자취', '원과 직선 (d vs r·현)', '두 원 위치·공통현(O₁-O₂)', '접선의 방정식 3대 유형', '공통외접선·공통내접선·접점을 잇는 현', '킬러 응용 (중점·이등분·반사)'];
+  const SHORT = ['원의 탄생', '축에 접하는 원', '거리의 비 자취', '원과 직선', '두 원·공통현', '접선', '공통접선', '킬러 응용'];
+  const QUESTIONS = [
+    '원의 방정식 (x−a)² + (y−b)² = r² 은 어떤 피타고라스 관계에서 나올까?',
+    '좌표축에 접하는 원의 반지름은 중심의 좌표와 어떤 관계일까?',
+    '두 정점까지 거리의 비가 일정한 점들은 어떤 도형을 그릴까?',
+    '중심에서 직선까지의 거리 d 와 반지름 r 을 비교하면 무엇을 알 수 있을까?',
+    '두 원의 교점을 지나는 도형은 O₁ + kO₂ = 0 으로 어떻게 나타낼까?',
+    '원 밖의 한 점에서 접선을 그으면, 접선은 몇 개이고 어떻게 구할까?',
+    '두 원의 공통접선의 길이는 어떤 직각삼각형으로 구할 수 있을까?',
+    '원 위의 점과 두 정점 사이의 거리에 관한 문제를 중점·대칭이동으로 어떻게 간단히 풀까?'
+  ];
+  // 이 장면에서 진행(0→100%)이 실제로 그림을 바꾸는 장면만 슬라이더·시연 버튼을 보여 줍니다.
+  const FOLD = new Set(['stdDef', 'generalForm', 'diamEnds', 'apolloCircle', 'midpointLocus', 'chordLength', 'dVsR', 'pencilK', 'commonChordLen', 'twoPos5', 'bisectCircum', 'tanPerp90', 'extCommonTan', 'intCommonTan', 'polarChordCow', 'pappusMinSq']);
+  const RAD_VALS = [3, 4, 5, 6];
+  const DIST_VALS = [2, 3, 5, 6];
+  const LENSES = [
+    ['all', '🔍 전체 구조'],
+    ['def', '📌 중심 C·반지름 r·거리 d'],
+    ['pyth', '✨ 피타고라스 직각삼각형'],
+    ['aux', '🪡 평행이동·공통현·자취']
+  ];
+  // 현재 장면에서 효과가 없는 렌즈는 숨깁니다 (원본 LENS_OFF 그대로)
+  const LENS_OFF = {
+    stdDef: ['aux'], generalForm: ['pyth'], diamEnds: ['aux'], threePts: ['pyth'], twoCircles21: ['pyth'],
+    touchX: ['aux'], touchY: ['aux'], touchBothQuad: ['pyth'], apolloMaxArea: ['aux'], apolloMaxAngle: ['aux'],
+    foldCircleArc: ['pyth'], tanSlope: ['aux'], tanPointOn: ['aux'], laserReflectTan: ['pyth']
+  };
+  const lensList = (m, id) => {
+    const off = (LENS_OFF[m] || []).concat(LENS_OFF[id] || []);
+    const rest = ['def', 'pyth', 'aux'].filter((x) => !off.includes(x));
+    return rest.length ? ['all'].concat(rest) : []; // 원본 syncLensButtons: 효과 있는 렌즈가 하나도 없으면 렌즈 전체를 숨김
+  };
+
+  function sync(s, m, id) {
+    state.mode = m;
+    state.subType[m] = id;
+    state.fold = s.fold;
+    state.radR = s.r;
+    state.distD = s.d;
+    state.thetaP = s.theta;
+    state.activePartIdx = s.part == null ? -1 : s.part;
+    state.conceptSwitch = lensList(m, id).includes(s.lens) ? s.lens : 'all';
+  }
+  const tone = (p) => (p.ok === false ? 'red' : p.color);
+  const AXIS = { color: 'rgba(255, 255, 255, 0.35)', width: 1.8 };
+
+  function sceneOf(m, it) {
+    const id = it.id;
+    const label = arrow(it.label);
+    return {
+      id, title: label, short: label, reviewTab: true, autoFit: true,
+      question: QUESTIONS[m - 1],
+      notesTitle: '오답 함정과 풀이 요령',
+      enter: (s) => {
+        // 원본 setMode / setSubType 의 초기화 규칙 그대로(진행 0%, 렌즈가 없는 장면이면 전체 구조)
+        s.fold = 0;
+        if (!lensList(m, id).includes(s.lens)) s.lens = 'all';
+      },
+      controls: () => (FOLD.has(id) ? ['fold'] : []),
+      presets: (s) => {
+        const out = [];
+        if (FOLD.has(id)) [0, 0.5, 1].forEach((v) => out.push({ group: '진행 단계', label: v === 0 ? '0% 시작' : v === 1 ? '100% 완성' : '50%', set: { fold: v }, ms: 700, on: (st) => Math.abs(st.fold - v) < 0.01 }));
+        if (id === 'stdDef' || m === 4) RAD_VALS.forEach((v) => out.push({ group: '반지름 r', label: `r=${v}`, apply: (st) => { st.r = v; }, on: (st) => st.r === v }));
+        if (m === 4) DIST_VALS.forEach((v) => out.push({ group: '중심~직선 거리 d', label: `d=${v}`, apply: (st) => { st.d = v; }, on: (st) => st.d === v }));
+        const lenses = lensList(m, id);
+        if (lenses.length) LENSES.filter(([k]) => lenses.includes(k)).forEach(([k, lbl]) => out.push({ group: '보기 선택', label: lbl, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
+        return out;
+      },
+      actions: () => {
+        if (!FOLD.has(id)) return [];
+        return [{
+          id: 'act', play: true, primary: true, icon: 'wand',
+          label: (st) => { sync(st, m, id); return arrow(getSpec().actionTxt); },
+          run: (st, lab) => { lab.tween({ fold: st.fold > 0.5 ? 0 : 1 }, 1100); }
+        }];
+      },
+      view: (s) => {
+        sync(s, m, id);
+        const spec = arrow(getSpec());
+        return {
+          guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(APLab.stripEmoji(spec.badge))}</div>${spec.hint}`,
+          parts: spec.parts.map((p) => ({ id: p.id, name: p.name, desc: p.desc, value: p.val, color: tone(p), ok: p.ok })),
+          summary: spec.totalRes,
+          rule: spec.rule,
+          formula: spec.formulaHTML,
+          notes: spec.notes
+        };
+      },
+      draw: (b, s, v) => {
+        BOARD = b;
+        CUR = s;
+        const paint = (st) => {
+          sync(st, m, id);
+          if (st.grid) b.grid({ step: 24 });
+          if (!b._bbox) { b.hline(0, AXIS); b.vline(0, AXIS); }
+          RENDER[m]({ width: 1000, height: 700 }, 0, 0, 24);
+        };
+        // 자동 맞춤을 재는 중: 진행 단계 전체를 겹쳐 그려, 어느 단계에서도 그림·글자가 잘리지 않는 범위를 구합니다.
+        if (b._bbox) { (FOLD.has(id) ? [0, 0.5, 1] : [s.fold]).forEach((f) => paint({ ...s, fold: f })); return; }
+        sink.card = null;
+        sink.tape = null;
+        paint(s);
+        if (v) { v.card = sink.card; v.tape = sink.tape; }
+      }
+    };
+  }
+
+  const groups = Object.keys(SUB_MENUS).map((k) => {
+    const m = +k;
+    return { id: 'm' + m, title: TABS[m - 1], short: SHORT[m - 1], scenes: SUB_MENUS[m].map((it) => sceneOf(m, it)) };
+  });
+
+  APLab.createLab({
+    id: 'common-circle-eq',
+    title: '원의 방정식',
+    courseName: '공통수학',
+    unit: '도형의 방정식 · 원',
+    courseColor: 'var(--m-violet)',
+    home: '../index.html#common',
+    legacy: '../../labs/공통수학/원의 방정식.html',
+    board: { kind: 'figure', autoFit: true, minZoom: 0.4, maxZoom: 5 },
+    state: { lens: 'all', r: 5, d: 3, theta: 0.72 },
+    persist: ['lens'],
+    params: {
+      fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행 (0% → 100%)', hint: '점 P 회전 · 직선 이동 · 접선 평행이동 같은 변화를 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` }
+    },
+    groups
+  });
+});
+</script>
+</body>
+</html>

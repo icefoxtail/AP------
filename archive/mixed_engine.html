@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <script src="archive2-review.js"></script>
-    <script src="generated-mock-selection.js"></script>
+    <script src="generated-mock-selection.js?v=20261030-s9-1"></script>
     <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
     <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
     <script src="archive2-pdf-readiness.js?v=20261002-output-envelope-v3"></script>
@@ -55,16 +55,17 @@
     <!-- 페이지 전체 평탄화 인쇄용 로컬 번들. 외부 CDN 지연이 인쇄 준비를 막지 않도록 로컬 보관. -->
     <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="native_print.js?v=20260915.2"></script>
-    <script src="print_image_optimizer.js?v=20260811.3"></script>
+    <script src="archive-asset-base.js?v=20261030-s20-1"></script>
+    <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20260911.5"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
     <script src="data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="svg-accessibility.js?v=20261014.1"></script>
-    <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
+    <script src="print-contract.js?v=20261009.1" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="layout-authority.js?v=20260906.15" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
+    <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -201,6 +202,11 @@
         /* [Box] Question Style */
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
+        /* Optional section headings (meta.sections, e.g. difficulty step). Absent => no element, no change. */
+        .q-section { display: flex; align-items: baseline; gap: 8px; margin: 0 0 5px; padding: 1px 7px; border-left: 3px solid #1d4ed8; background: #eef2ff; color: #1e3a8a; font-size: 9pt; font-weight: 800; line-height: 1.35; break-after: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .q-section-sub { color: #475569; font-size: 8.5pt; font-weight: 600; }
+        .ans-cell.ans-cell-section { flex-wrap: wrap; align-content: center; }
+        .ans-sec { flex: 0 0 100%; display: flex; align-items: baseline; gap: 8px; margin: 0 0 3px; padding: 0 6px; border-left: 3px solid #1d4ed8; background: #eef2ff; color: #1e3a8a; font-size: 8.5pt; font-weight: 800; line-height: 1.35; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
         /* [v1.9] 발문 가독성 및 이미지 분리 렌더 보정 */
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
@@ -420,16 +426,16 @@
         }
     </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
-    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20260923.1">
-    <script src="render-state-normalizer.js?v=20260912.1"></script>
-    <script src="screen-runtime.js?v=20260913.1"></script>
-    <script src="question-image-readiness.js?v=20260915.2"></script>
+    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261011.2">
+    <script src="render-state-normalizer.js?v=20261009.1"></script>
+    <script src="screen-runtime.js?v=20260922.2"></script>
+    <script src="question-image-readiness.js?v=20261030-s11-1"></script>
     <script src="common-fast-runtime.js?v=20261010-q19-typeset-diagnostic-2"></script>
-    <script src="equal-slot-engine.js?v=20260915.1"></script>
+    <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
-    <script src="exam-render-executor.js?v=20261002-output-envelope-v3"></script>
-    <script src="solution-render-executor.js?v=20261010-qpp1-fullwidth-2"></script>
-    <script src="answer-render-executor.js?v=20260912.1"></script>
+    <script src="exam-render-executor.js?v=20261029-sections-1"></script>
+    <script src="solution-render-executor.js?v=20261029-sections-1"></script>
+    <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
     <script defer src="archive2-reader-controls.js?v=20261003-student-return-s4-1"></script>
 </head>
@@ -1132,6 +1138,40 @@ function getMixedQuestionSourceNo(q, fallbackNo) {
     const raw = q?._sourceQuestionNo || q?.source_question_no || q?.sourceQuestionNo || q?._originalIndex || q?.originalIndex || q?.id || fallbackNo;
     const n = parseInt(raw, 10);
     return Number.isFinite(n) && n > 0 ? n : fallbackNo;
+}
+
+// Optional section headings: meta.sections = [{ at, uid, title, level }] (at = 0-based question index,
+// level 1 = main heading, level 2 = sub heading). Papers without meta.sections render exactly as before.
+// A heading is ignored when the question at `at` is not the one it was written for (e.g. after a shuffle).
+const mixedSectionIndexCache = new WeakMap();
+function getMixedSectionHeadings(q, index) {
+    const raw = AppState.meta && AppState.meta.sections;
+    if (!Array.isArray(raw) || !raw.length) return [];
+    let byIndex = mixedSectionIndexCache.get(raw);
+    if (!byIndex) {
+        byIndex = new Map();
+        for (const entry of raw) {
+            const at = Number(entry && entry.at);
+            const title = String(entry && entry.title || '').trim().slice(0, 40);
+            if (!Number.isInteger(at) || at < 0 || !title) continue;
+            if (!byIndex.has(at)) byIndex.set(at, []);
+            byIndex.get(at).push({ uid: String(entry.uid || ''), title, level: Number(entry.level) === 2 ? 2 : 1 });
+        }
+        mixedSectionIndexCache.set(raw, byIndex);
+    }
+    const entries = byIndex.get(index);
+    if (!entries) return [];
+    const uid = String(getMixedQuestionIdentity(q) || '');
+    return entries.filter(entry => !entry.uid || !uid || entry.uid === uid);
+}
+
+function getMixedSectionHeadingHtml(q, index, kind) {
+    const headings = getMixedSectionHeadings(q, index);
+    if (!headings.length) return '';
+    const spans = headings.map(heading => `<span class="${heading.level === 2 ? 'q-section-sub' : 'q-section-title'}">${escapeArchiveHtmlAttribute(heading.title)}</span>`).join('');
+    return kind === 'cell'
+        ? `<div class="ans-sec" data-section-heading="1">${spans}</div>`
+        : `<div class="q-section" data-section-heading="1">${spans}</div>`;
 }
 
 function getMixedQuestionSourceRef(q, index) {
@@ -1995,13 +2035,15 @@ function renderQuestionImageHTML(q) {
 
 function withArchiveAssetCacheBuster(src) {
     const raw = String(src == null ? '' : src).trim();
+    // Exam images: the base URL setting lives in archive-asset-base.js (default = unchanged same-origin URL).
+    const external = value => (typeof resolveExamImageUrl === 'function' ? resolveExamImageUrl(value) : value);
     if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/(?:images|generated-lite)\//i.test(raw)) return raw;
     const hashIndex = raw.indexOf('#');
     const base = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
     const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
-    if (/(?:^|[?&])v=[^&#]*/i.test(base)) return raw;
+    if (/(?:^|[?&])v=[^&#]*/i.test(base)) return external(raw);
     const separator = base.includes('?') ? '&' : '?';
-    return `${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`;
+    return external(`${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`);
 }
 
 function escapeArchiveHtmlAttribute(value) {
@@ -2043,7 +2085,9 @@ function collectQuestionImages(root) {
 }
 
 function normalizeQuestionImageSources(root) {
-    return window.APQuestionImageReadiness.normalizeQuestionImageSources(root, withArchiveAssetCacheBuster);
+    const readiness = window.APQuestionImageReadiness;
+    return readiness.normalizeQuestionImageSources(root, (src, image) => withArchiveAssetCacheBuster(
+        readiness.resolveSourceRelativeImage(src, readiness.sourceFileOfImage(image))));
 }
 
 function validateQuestionImageReadiness(root) {
@@ -2331,7 +2375,7 @@ async function renderExam(area, data) {
         const imageHTML = renderQuestionImageHTML(q);
         const choicesHTML = renderChoicesHTML(q);
         
-        box.innerHTML = `<div class="q-num">${i + 1}.</div>
+        box.innerHTML = `${getMixedSectionHeadingHtml(q, i, 'box')}<div class="q-num">${i + 1}.</div>
                          <div class="q-content">${formattedContent}</div>
                          ${imageHTML}
                          ${choicesHTML}`;
@@ -2679,7 +2723,7 @@ async function renderSol(area, data) {
             const solutionImageHtml = renderSolutionImageHTML(q);
             const box = document.createElement('div'); box.className = 'q-box sol-box'; box.dataset.sourceRef = getMixedQuestionSourceRef(q, i);
             box.dataset.solutionHtml = solutionHtml;
-            box.innerHTML = `<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
+            box.innerHTML = `${getMixedSectionHeadingHtml(q, i, 'box')}<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
             normalizeQuestionImageSources(box);
             staging.appendChild(box);
             return box;
@@ -2798,7 +2842,9 @@ function renderAns(area, data, perPage = 40) {
                 const num = start + idx + 1;
                 if (num % 4 === 0) u.classList.add('group-end'); // 4문제마다 채점 구분선
                 u.dataset.sourceRef = getMixedQuestionSourceRef(chunk[idx], num - 1);
-                u.innerHTML = `<div class=\"ans-n\">${num}.</div><div class=\"ans-v\">${formatGridAnswer(chunk[idx].answer)}</div>`;
+                const sectionHtml = getMixedSectionHeadingHtml(chunk[idx], start + idx, 'cell');
+                if (sectionHtml) u.classList.add('ans-cell-section');
+                u.innerHTML = `${sectionHtml}<div class=\"ans-n\">${num}.</div><div class=\"ans-v\">${formatGridAnswer(chunk[idx].answer)}</div>`;
                 grid.appendChild(u);
             });
         }
@@ -3548,7 +3594,7 @@ function mixedExecutorDeps() {
         waitForQuestionImages, validateQuestionImageReadiness,
         SE_OVERHEAD_COL, SE_OVERHEAD_GRID, SE_PAGE_TOLERANCE, SE_BLOCK_GAP,
         makeSolutionHtmlChunks, makeLongSolutionShell, renderSolutionImageHTML,
-        formatSolutionHtml, waitForQuestionImage, formatGridAnswer,
+        formatSolutionHtml, waitForQuestionImage, formatGridAnswer, getSectionHeadingHtml: getMixedSectionHeadingHtml,
         measureSolutionOuterFootprint: node => {
             const style = getComputedStyle(node);
             return node.getBoundingClientRect().height + (parseFloat(style.marginTop) || 0) + (parseFloat(style.marginBottom) || 0);

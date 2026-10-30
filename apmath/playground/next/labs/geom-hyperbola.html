@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>쌍곡선 실전 킬러 랩 · AP Math 실험실</title>
+<meta name="description" content="기하 쌍곡선: 정의(|PF′−PF|=2a)와 두 초점을 꼭짓점으로 하는 삼각형, 점근선과 초점에서 점근선까지의 거리(=b), 두 점근선까지의 거리의 곱, 접선의 각의 이등분과 초점에서 접선까지의 거리의 곱(b²)을 직접 조작하며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<!-- 원본 해설 문자열이 쓰는 text-rose-400 한 가지만 이 실험실 안에서 의미색(빨강)으로 연결합니다(키트 CSS는 그대로). -->
+<style>.apl .text-rose-400 { color: var(--m-red); }</style>
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   기하 · 쌍곡선 실전 킬러 랩 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 3개 시나리오 = 12장면
+   원본: labs/기하와벡터/쌍곡선.html
+   이식 방식: 원본의 기하 계산(geometry), 12개 시나리오(scenarios)·정석/빠른 풀이 데이터(examData·solutionBank·dynamicSolution),
+   모드별 그리기 코드(plotMode1~4)를 글자 그대로 옮기고, 분필 그리기 함수(drawChalkLine·point·midLabel·drawRightAngleMark…)의
+   이름만 아래 어댑터가 새 무대(APLab.Board)에 연결합니다. 이름표는 원본의 '겹침 피하기 배치'를 그대로 따릅니다.
+   - 바뀐 점: 셸·레이아웃은 공용 키트가 담당, 무대는 1:1 축척, 점 P는 직접 끄는 손잡이, 하단 비율 줄자는 셸의 요약 띠로,
+     가지 전환(우측/좌측)·관찰 렌즈는 조작 패널의 칩으로 이동. 단계는 정리 탭의 단계 플레이어(1단계는 처음부터 켜짐).
+   - 원본의 쓰이지 않던 그리기 함수(drawOFHBox·drawRotatedCoordinates·drawOPDiameterCircle·drawVertexComparison·drawReflectionCircle)는 옮기지 않았습니다.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+
+
+  /* ===== 원본 그대로: 목표 PF 길이로부터 y1 역산 (원본 637–643행) ===== */
+    // 주어진 a, b와 목표 PF 길이로부터 y1 역산 (우측 가지: PF = e*x1 - a => x1 = (PF + a)*a / c)
+    function calcPyFromPF(a, b, targetPF) {
+      const c = Math.hypot(a, b);
+      const x1 = ((targetPF + a) * a) / c;
+      const ratio = Math.max(0, (x1 * x1) / (a * a) - 1);
+      return b * Math.sqrt(ratio);
+    }
+
+  /* ===== 원본 그대로: 4대 실전 기출 문제 & 3분 정석 vs 10초 컷 풀이 데이터 (원본 648–786행) ===== */
+    const examData = {
+      1: {
+        badge: "장면 1 · 쌍곡선의 정의와 거리의 차(|PF' - PF| = 2a) 킬러",
+        hint: "점 P를 끌어도 두 초점까지의 거리의 차 <span class='text-pink-300 font-bold'>|PF' - PF| = 2a = 6</span>이 변하지 않음을 확인하세요. <span class='text-amber-300 font-bold'>[문제 조건으로 그림 맞추기]</span>를 누르면 PF'=11, PF=5인 위치로 이동합니다.",
+        tag: "쌍곡선의 정의",
+        targetTime: "목표 시간: 5초",
+        question: () => `쌍곡선 ${tex('\\dfrac{x^2}{9} - \\dfrac{y^2}{16} = 1')} 의 두 초점을 ${tex("F(c, 0), \\; F'(-c, 0)")} ${tex('(c > 0)')}이라 하자. 제1사분면에 있는 쌍곡선 위의 점 ${tex('P')}에 대하여 ${tex("\\overline{PF'} = 11")} 일 때, 선분 ${tex('\\overline{PF}')}의 길이와 삼각형 ${tex("PF'F")}의 둘레의 길이를 구하시오.`,
+        answerBadge: () => `${tex('\\overline{PF} = 5')}, 둘레 ${tex('= 26')}`,
+        // a=3, b=4 => c=5. PF'=11 => PF = 11 - 2a = 5.
+        snap: {
+          a: 3.0,
+          b: 4.0,
+          py: calcPyFromPF(3.0, 4.0, 5.0) // x1 = (5+3)*3/5 = 4.8, y1 = 4*sqrt((4.8/3)^2 - 1) = 4*sqrt(1.56) ≈ 4.996
+        },
+        steps: [
+          "두 초점 F(5, 0), F'(-5, 0) 및 선분 PF', PF 연결",
+          "가로 2a, 세로 2b (6 × 8)인 직사각형과 점근선(그 직사각형의 두 대각선) 표시",
+          "|PF' - PF| = 2a (11 - 5 = 6)와 둘레 = 26"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('a^2 = 9, \\; b^2 = 16 \\implies c = \\sqrt{9 + 16} = 5')} 이므로 ${tex("F(5, 0), \\; F'(-5, 0)")}<br/>
+② 점 ${tex('P(x_1, y_1)')}에서 ${tex("\\overline{PF'} = \\sqrt{(x_1 + 5)^2 + y_1^2} = 11")}<br/>
+③ 쌍곡선 식 ${tex('y_1^2 = 16\\left(\\dfrac{x_1^2}{9} - 1\\right)')} 을 대입하여 정리:<br/>
+&nbsp;&nbsp;${tex('(x_1 + 5)^2 + \\dfrac{16}{9}x_1^2 - 16 = 121 \\implies \\dfrac{25}{9}x_1^2 + 10x_1 - 112 = 0')}<br/>
+④ 인수분해로 ${tex('x_1 = \\dfrac{24}{5} = 4.8')} 구한 뒤 다시 ${tex('\\overline{PF} = \\sqrt{(x_1 - 5)^2 + y_1^2} = 5')}를 계산한다.`,
+          warning: "주의: 점 P의 좌표를 구하려고 두 점 사이의 거리 공식에 대입해 이차방정식을 풀면 계산이 매우 길어집니다. 쌍곡선의 정의를 이용하면 PF를 바로 구할 수 있습니다."
+        }),
+        shortcut: () => ({
+          steps: `① 제1사분면의 점은 오른쪽 곡선 위에 있으므로 가까운 초점은 ${tex('F(5,0)')}, 먼 초점은 ${tex("F'(-5,0)")}입니다. 따라서 정의의 절댓값은 ${tex("PF'-PF")}로 풀립니다.<br/>
+② 주축의 길이는 ${tex('2a = 2 \\times 3 = 6')}이므로 ${tex("PF'-PF=2a=6")}입니다.<br/>
+③ ${tex("11 - \\overline{PF} = 6 \\implies")} 연립하지 않고도 <strong class="text-emerald-300">${tex('\\overline{PF} = 5')}</strong>이다.<br/>
+④ ${tex("\\triangle PF'F")} 둘레 ${tex("= \\overline{PF'} + \\overline{PF} + \\overline{F'F} = 11 + 5 + 10 =")} <strong class="text-amber-300">${tex('26')}</strong>이다.`,
+          highlight: "쌍곡선 위의 점 P에서 두 초점까지의 거리가 주어지면, 좌표를 구하지 않고 |PF' - PF| = 2a 를 먼저 이용합니다. (5초 컷!)"
+        })
+      },
+
+      2: {
+        badge: "장면 2 · 초점에서 점근선에 내린 수선의 길이 (= b)",
+        hint: "초점 <span class='text-rose-400 font-bold'>F(c, 0)에서 점근선에 내린 수선의 길이는 항상 b</span>이고, 원점에서 수선의 발 H까지의 거리는 <span class='text-amber-300 font-bold'>항상 a</span>임을 확인하세요.",
+        tag: "초점에서 점근선에 내린 수선",
+        targetTime: "목표 시간: 3초",
+        question: () => `쌍곡선 ${tex('\\dfrac{x^2}{9} - \\dfrac{y^2}{16} = 1')} 의 양의 초점 ${tex('F(5, 0)')}에서 양의 기울기를 갖는 점근선 ${tex('y = \\dfrac{4}{3}x')} 에 내린 수선의 발을 ${tex('H')}라 하자. 이때 선분 ${tex('\\overline{FH}')}의 길이와 선분 ${tex('\\overline{OH}')}의 길이, 그리고 직각삼각형 ${tex('OFH')}의 넓이를 구하시오.`,
+        answerBadge: () => `${tex('\\overline{FH} = b = 4, \\; \\overline{OH} = a = 3')}, 넓이 ${tex('= 6')}`,
+        snap: {
+          a: 3.0,
+          b: 4.0,
+          py: 3.2
+        },
+        steps: [
+          "점근선 y = ±(b/a)x와 2a × 2b 직사각형(점근선은 이 직사각형의 대각선)",
+          "초점 F(c, 0)에서 점근선에 내린 수선의 발 H (직각삼각형 OFH)",
+          "OH = a(3), FH = b(4), OF = c(5), 점 H는 원 x²+y²=a² 위의 점"
+        ],
+        textbook: () => ({
+          steps: `① 점근선의 방정식: ${tex('y = \\dfrac{4}{3}x \\iff 4x - 3y = 0')}<br/>
+② 초점 ${tex('F(5, 0)')}에서 직선 ${tex('4x - 3y = 0')} 까지 점과 직선 사이의 거리 공식 대입:<br/>
+&nbsp;&nbsp;${tex('\\overline{FH} = \\dfrac{|4 \\cdot 5 - 3 \\cdot 0|}{\\sqrt{4^2 + (-3)^2}} = \\dfrac{20}{5} = 4')}<br/>
+③ 수직인 직선 ${tex('FH : y = -\\dfrac{3}{4}(x - 5)')} 와 ${tex('y = \\dfrac{4}{3}x')} 를 연립하여<br/>
+&nbsp;&nbsp;교점 ${tex('H\\left(\\dfrac{9}{5}, \\dfrac{12}{5}\\right)')} 구한 뒤 ${tex('\\overline{OH} = \\sqrt{(9/5)^2 + (12/5)^2} = 3')}을 계산한다.`,
+          warning: "주의: 수선의 발 H의 좌표를 구하려고 두 직선의 방정식을 연립하면 계산이 길어집니다."
+        }),
+        shortcut: () => ({
+          steps: `① 초점 ${tex('F(c, 0)')}에서 점근선 ${tex('bx - ay = 0')} 까지의 거리는 점과 직선 사이의 거리 공식에 의해:<br/>
+&nbsp;&nbsp;<strong class="text-pink-300">${tex('\\overline{FH} = \\dfrac{bc}{\\sqrt{a^2 + b^2}} = \\dfrac{bc}{c} = b = 4')}</strong>이다.<br/>
+② 직각삼각형 ${tex('OFH')}에서 ${tex('\\overline{OF} = c, \\; \\overline{FH} = b')}이므로 피타고라스 정리(${tex('a^2 + b^2 = c^2')})에 의해 <strong class="text-amber-300">${tex('\\overline{OH} = a = 3')}</strong>이다.<br/>
+③ 따라서 ${tex('\\triangle OFH')}는 밑변 ${tex('a=3')}, 높이 ${tex('b=4')}, 빗변 ${tex('c=5')}인 직각삼각형 ⇒ 넓이 <strong class="text-emerald-300">${tex('= \\dfrac{1}{2}ab = 6')}</strong>이다.`,
+          highlight: "초점 F에서 점근선에 내린 수선의 길이는 FH = b, 원점에서 수선의 발까지의 거리는 OH = a 입니다."
+        })
+      },
+
+      3: {
+        badge: "장면 3 · 쌍곡선 위의 점에서 두 점근선에 내린 수선의 길이의 곱",
+        hint: "쌍곡선 위의 점 P를 어디로 끌어도 두 점근선에 내린 수선의 길이의 곱 <span class='text-sky-300 font-bold'>l₁ × l₂ = a²b² / c²</span>이 일정함을 확인하세요.",
+        tag: "두 점근선까지의 거리의 곱 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `쌍곡선 ${tex('\\dfrac{x^2}{9} - \\dfrac{y^2}{16} = 1')} 위의 임의의 점 ${tex('P')}에서 두 점근선 ${tex('y = \\dfrac{4}{3}x, \\; y = -\\dfrac{4}{3}x')} 에 내린 수선의 발을 각각 ${tex('Q_1, Q_2')}라 하자. 두 수선의 길이의 곱 ${tex('\\overline{PQ_1} \\times \\overline{PQ_2}')}의 값을 구하시오.`,
+        answerBadge: () => `${tex('\\dfrac{a^2 b^2}{c^2} = \\dfrac{144}{25} = 5.76')}`,
+        snap: {
+          a: 3.0,
+          b: 4.0,
+          py: 3.6
+        },
+        steps: [
+          "두 점근선 bx - ay = 0, bx + ay = 0 표시",
+          "점 P에서 두 점근선에 내린 수선의 발 Q₁, Q₂ 및 수선 l₁, l₂",
+          "l₁ × l₂ = (a²b²) / c² = 144 / 25 = 5.76 (일정)"
+        ],
+        textbook: () => ({
+          steps: `① 두 점근선 식: ${tex('4x - 3y = 0')}, ${tex('4x + 3y = 0')}<br/>
+② 쌍곡선 위의 점 ${tex('P(x_1, y_1)')}에서 각 점근선까지의 거리 ${tex('l_1, l_2')}:<br/>
+&nbsp;&nbsp;${tex('l_1 = \\dfrac{|4x_1 - 3y_1|}{\\sqrt{4^2 + (-3)^2}} = \\dfrac{|4x_1 - 3y_1|}{5}')}, &nbsp; ${tex('l_2 = \\dfrac{|4x_1 + 3y_1|}{5}')}<br/>
+③ 두 거리의 곱: ${tex('l_1 \\times l_2 = \\dfrac{|16x_1^2 - 9y_1^2|}{25}')}<br/>
+④ 쌍곡선 방정식 양변에 ${tex('144')}를 곱하면 ${tex('16x_1^2 - 9y_1^2 = 144')} 이므로 대입하면 ${tex('\\dfrac{144}{25}')}.`,
+          warning: "주의: 점과 직선 사이의 거리 공식을 두 번 쓰고 곱셈 공식으로 전개하면 계산이 길어집니다."
+        }),
+        shortcut: () => ({
+          steps: `① 쌍곡선 위의 임의의 점 ${tex('P')}에서 두 점근선에 내린 수선의 길이의 곱은 점 P의 위치와 관계없이 일정하다.<br/>
+② 그 값은 <strong class="text-sky-300">${tex('l_1 \\times l_2 = \\dfrac{a^2 b^2}{a^2 + b^2} = \\dfrac{a^2 b^2}{c^2}')}</strong><br/>
+③ 가장 간단한 점인 꼭짓점 ${tex('A(3, 0)')}에서 계산해도 같은 값이다.<br/>
+&nbsp;&nbsp;${tex('a^2 = 9, \\; b^2 = 16, \\; c^2 = 25')} 이므로 <strong class="text-amber-300">${tex('\\dfrac{9 \\times 16}{25} = \\dfrac{144}{25}')}</strong>이다.`,
+          highlight: "두 점근선에 내린 수선의 길이의 곱은 항상 a²b² / c² 입니다. 값이 일정하므로 점 P를 꼭짓점 (a, 0)에 두고 구해도 됩니다."
+        })
+      },
+
+      4: {
+        badge: "장면 4 · 쌍곡선의 접선(내각의 이등분선)과 초점에서 접선까지의 거리의 곱(b²)",
+        hint: "쌍곡선 위의 점 P에서의 <span class='text-sky-300 font-bold'>접선은 ∠F'PF를 이등분</span>하며, 두 초점에서 접선에 내린 수선의 길이의 곱은 <span class='text-purple-300 font-bold'>d₁ × d₂ = b²</span>으로 일정합니다.",
+        tag: "접선과 각의 이등분선 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `쌍곡선 ${tex('\\dfrac{x^2}{9} - \\dfrac{y^2}{16} = 1')} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}이 ${tex('x')}축과 만나는 점을 ${tex('T')}라 하자. ${tex("\\overline{PF'} = 12, \\; \\overline{PF} = 6")} 일 때, ${tex("\\overline{F'T} : \\overline{TF}")}의 비와 두 초점 ${tex("F, F'")}에서 접선 ${tex('l')}에 내린 수선의 길이의 곱 ${tex('d_1 \\times d_2')}를 구하시오.`,
+        answerBadge: () => `${tex("\\overline{F'T} : \\overline{TF} = 2 : 1")}, ${tex('d_1 d_2 = b^2 = 16')}`,
+        // a=3, b=4 => PF'=12, PF=6 (차=6=2a)
+        snap: {
+          a: 3.0,
+          b: 4.0,
+          py: calcPyFromPF(3.0, 4.0, 6.0) // x1 = (6+3)*3/5 = 5.4, y1 = 4*sqrt((5.4/3)^2 - 1) = 4*sqrt(2.24) ≈ 5.9866
+        },
+        steps: [
+          "접점 P에서의 접선 l 및 x절편 T(a²/x₁, 0) 표시",
+          "접선 PT가 ∠F'PF의 이등분선(α = α)이므로 F'T : TF = PF' : PF",
+          "두 초점에서 접선에 내린 수선의 발 H₁, H₂ 및 곱 d₁ × d₂ = b² = 16"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('\\overline{PF} = 6')} 조건으로부터 점 ${tex('P')}의 ${tex('x')}좌표 ${tex('x_1 = \\dfrac{27}{5}')} 계산<br/>
+② 접선의 방정식 ${tex('\\dfrac{x_1 x}{9} - \\dfrac{y_1 y}{16} = 1')} 에 ${tex('y = 0')} 대입하여 ${tex('x')}절편 ${tex('T')} 계산:<br/>
+&nbsp;&nbsp;${tex('x_T = \\dfrac{9}{x_1} = \\dfrac{9}{27/5} = \\dfrac{5}{3}')}<br/>
+③ ${tex("F'(-5, 0), \\; F(5, 0)")} 과의 거리비 계산:<br/>
+&nbsp;&nbsp;${tex("\\overline{F'T} = \\dfrac{5}{3} - (-5) = \\dfrac{20}{3}, \\; \\overline{TF} = 5 - \\dfrac{5}{3} = \\dfrac{10}{3} \\implies 2 : 1")}`,
+          warning: "주의: 타원에서는 법선이 내각을 이등분하지만, 쌍곡선에서는 접선이 내각을 이등분합니다. 좌표를 구해 풀면 계산이 길어집니다."
+        }),
+        shortcut: () => ({
+          steps: `① 쌍곡선 위의 점 P에서의 접선은 <strong class="text-sky-300">${tex("\\angle F'PF")}를 이등분</strong>한다.<br/>
+② 삼각형 ${tex("PF'F")}에서 내각 P의 이등분선이 변 ${tex("F'F")}와 만나는 점이 T이므로 <strong>[삼각형의 내각의 이등분선의 성질]</strong>에 의해:<br/>
+&nbsp;&nbsp;<strong class="text-amber-300">${tex("\\overline{F'T} : \\overline{TF} = \\overline{PF'} : \\overline{PF} = 12 : 6 = 2 : 1")}</strong> (1초 컷!)<br/>
+③ 또한 두 초점에서 접선에 내린 수선의 길이의 곱은 타원과 마찬가지로 <strong class="text-purple-300">${tex('d_1 \\times d_2 = b^2 = 16')}</strong>이다.`,
+          highlight: "타원에서는 법선이, 쌍곡선에서는 접선이 ∠F'PF를 이등분합니다. 두 초점에서 접선까지의 거리의 곱은 둘 다 b²입니다."
+        })
+      }
+    };
+
+  /* ===== 원본 그대로: 12개 시나리오 (원본 802–846행) ===== */
+    const scenarios = {
+      1: [
+        {name:'① 정의 · 거리의 차', short:'초점까지 거리의 차', steps:['두 초점과 선분 PF, PF′ 연결','2a×2b 직사각형과 점근선','거리의 차와 둘레 확인'], parts:['PF와 PF′의 거리 비교','중심 O·초점 F,F′·주축','거리의 차와 둘레가 일정'],
+         question:"쌍곡선 x²/9 − y²/16 = 1 위의 점 P가 오른쪽 곡선 위에 있고 PF′ = 11일 때 PF와 △PF′F의 둘레는?",
+         answer:'PF = 5, 둘레 = 26', proof:'|PF′−PF| = 2a = 6 → PF = 11−6 = 5. 둘레 = 11+5+2c = 26.', snap:{a:3,b:4,kind:'pf',value:5}},
+        {name:'② 직각삼각형 KF′F', short:'직각 · 원', steps:['지름이 F′F인 원 x²+y²=c²','직각의 교점 K와 △KF′F','K에서 넓이 b² 확인'], parts:['지름이 F′F인 원','교점 K와 직각삼각형','피타고라스 정리로 얻는 넓이 b²'],
+         question:'쌍곡선 위의 점 K에서 ∠F′KF = 90°일 때 △KF′F의 넓이를 구하시오. (a=3, b=4)',
+         answer:'S = b² = 16', proof:'KF′²+KF² = (2c)², (KF′−KF)²=(2a)². 따라서 2KF′·KF = 4(c²−a²)=4b², S=KF′·KF/2=b².',snap:{a:3,b:4,kind:'right'}},
+        {name:'③ 이등변삼각형 · 둘레', short:'이등변삼각형 PF′F', steps:['초점과 삼각형의 세 변의 길이','PF′ = F′F 길이 표시','둘레 확인(24)'], parts:['삼각형 PF′F','길이가 같은 두 변 표시','정의로 구한 나머지 변·둘레'],
+         question:'a=3, b=4인 쌍곡선에서 PF′ = F′F = 2c = 10이면 PF와 △PF′F의 둘레는?',
+         answer:'PF = 4, 둘레 = 24', proof:'PF′−PF=2a=6이므로 PF=4. 세 변은 10,10,4 → 둘레 24.',snap:{a:3,b:4,kind:'iso'}}
+      ],
+      2: [
+        {name:'① 초점에서 점근선에 내린 수선',short:'초점과 점근선',steps:['두 점근선과 직사각형','직각삼각형 △OFH','점 P에서 점근선에 내린 수선과 길이 비교'],parts:['초점 F에서 점근선까지','H의 직각·OH=a·FH=b','움직이는 P에서 점근선까지'],
+         question:'양의 초점 F에서 점근선 y=(b/a)x로 내린 수선의 발 H일 때, OH와 FH의 길이를 구하시오.',
+         answer:'OH = a = 3, FH = b = 4',proof:'OH = |proj(F,(a,b))|=a, FH=√(OF²−OH²)=b. P에서 같은 직선에 내린 수선도 직접 비교한다.',snap:{a:3,b:4,kind:'py',value:3.2}},
+        {name:'② a=b인 쌍곡선',short:'a=b / 점근선이 수직',steps:['a=b=3과 점근선 y=±x','직각이등변삼각형 △OFH','점 P의 이동과 두 점근선에 내린 수선'],parts:['서로 수직인 두 점근선','a:b:c = 1:1:√2','움직이는 점 P와 두 점근선'],
+         question:'a=b=3인 쌍곡선에서 두 점근선이 이루는 각과 이심률 e=c/a를 구하시오.',
+         answer:'90°, e=√2',proof:'점근선 방향 (a,b),(a,−b)의 내적 a²−b²=0. c=√(a²+b²)=a√2, e=√2.',snap:{a:3,b:3,kind:'py',value:2.3}},
+        {name:'③ 접선과 점근선이 만드는 삼각형',short:'접선 삼각형 · S=ab',steps:['점 P에서의 접선','접선과 두 점근선의 교점 M₁,M₂','P는 M₁M₂의 중점, 넓이 ab, OM₁·OM₂=c²'],parts:['접선·교점 M₁,M₂','선분 M₁M₂의 중점 P','삼각형의 넓이와 두 거리의 곱'],
+         question:'P에서의 접선이 두 점근선과 만나는 점을 M₁,M₂라 할 때 △OM₁M₂의 넓이와 OM₁·OM₂를 구하시오.',
+         answer:'넓이 ab=12, 거리의 곱 c²=25',proof:'M₁=P+v, M₂=P−v이므로 P는 중점. △OM₁M₂의 넓이는 ab, OM₁·OM₂=c².',snap:{a:3,b:4,kind:'py',value:3.2}}
+      ],
+      3: [
+        {name:'① 두 수선의 길이의 곱',short:'점근선까지 거리의 곱',steps:['점근선 y=±(b/a)x','수선의 발 Q₁,Q₂와 직각','l₁l₂ = a²b²/c² 확인'],parts:['점근선 두 개','P의 두 수선·직각','수선의 길이의 곱과 식'],
+         question:'P에서 두 점근선에 내린 수선의 길이가 l₁,l₂일 때 l₁·l₂의 값을 구하시오. (a=3,b=4)',
+         answer:'a²b²/c² = 144/25',proof:'l₁=|bx−ay|/c, l₂=|bx+ay|/c. 쌍곡선 관계 b²x²−a²y²=a²b²로부터 곱은 a²b²/c².',snap:{a:3,b:4,kind:'py',value:3.6}},
+        {name:'② 평행사변형의 넓이',short:'OR₁PR₂ / 넓이 ab/2',steps:['원점과 점근선의 두 방향','점 P를 지나는 두 평행선','OR₁PR₂ 넓이 ab/2 확인'],parts:['원점과 평행한 방향','평행사변형의 네 꼭짓점','넓이가 일정함'],
+         question:'P를 지나 두 점근선에 평행한 직선을 그어 만든 평행사변형 OR₁PR₂의 넓이를 구하시오.',
+         answer:'S = ab/2 = 6',proof:'P = α(a,b)+β(a,−b), αβ=1/4. 따라서 S=|det(αu,βv)|=ab/2.',snap:{a:3,b:4,kind:'py',value:4.6}},
+        {name:'③ 꼭짓점 A에서의 값',short:'P=A일 때 비교',steps:['꼭짓점 A=(a,0) 표시','두 수선의 발 Q₁,Q₂','l₁=l₂=ab/c 확인'],parts:['꼭짓점 A와 움직이는 P','두 수선의 길이가 같음','꼭짓점에서 바로 계산'],
+         question:'꼭짓점 A(a,0)에서 두 점근선까지의 거리와 곱을 구하시오. (a=3,b=4)',
+         answer:'l₁=l₂=ab/c=12/5, 곱=144/25',proof:'P=A일 때 거리 공식에서 l₁=l₂=ab/c. P를 움직여도 곱은 같다.',snap:{a:3,b:4,kind:'py',value:0}}
+      ],
+      4: [
+        {name:'① 접선과 각의 이등분',short:'각의 이등분 · 길이의 비',steps:['접선과 x축의 교점 T','내각을 이등분하는 두 각의 크기','F′T:TF = PF′:PF'],parts:['점 P에서의 접선과 T','내각의 이등분','F′T:TF와 PF′:PF 비교'],
+         question:'PF′=12, PF=6인 쌍곡선(a=3,b=4)에서 접선과 x축의 교점 T가 주어질 때 F′T:TF를 구하시오.',
+         answer:'F′T:TF = 2:1',proof:'접선은 ∠F′PF의 이등분선이므로 삼각형의 내각의 이등분선의 성질에서 F′T:TF = PF′:PF=12:6=2:1.',snap:{a:3,b:4,kind:'pf',value:6}},
+        {name:'② 초점의 대칭점 F*',short:'F* · 중점연결',steps:['접선에 대한 F의 대칭','F*와 선분 F′F*','중점 연결 OH₁=a'],parts:['F를 접선 대칭한 F*','FH₁=H₁F*와 F′F*=2a','중점연결선 OH₁=a'],
+         question:'초점 F를 P의 접선에 대칭이동한 점 F*와 F의 수선의 발 H₁에 대하여 OH₁의 길이를 증명하시오.',
+         answer:'F′F* = 2a, OH₁=a=3',proof:'PF*=PF이며 P,F′,F*는 일직선이다. F′F*=|PF′−PF|=2a. O와 H₁은 각각 F′F와 FF*의 중점이므로 OH₁=F′F*/2=a.',snap:{a:3,b:4,kind:'py',value:4.0}},
+        {name:'③ 두 초점에서 접선까지의 거리의 곱',short:'d₁d₂=b² · 원',steps:['접선과 원 x²+y²=a²','두 초점에서 내린 수선의 발 H₁,H₂','d₁d₂=b² 확인'], parts:['접선과 원 x²+y²=a²','두 초점에서 접선에 내린 수선과 직각 표시','거리의 곱과 오차'],
+         question:'두 초점 F,F′에서 접선에 내린 수선의 길이를 d₁,d₂라 할 때 d₁d₂를 구하시오.',
+         answer:'d₁d₂=b²=16',proof:'두 수선의 발을 접선에 내린 수선의 발로 직접 계산. d₁d₂=b²이며 H₁,H₂는 원 x²+y²=a² 위에 있다.',snap:{a:3,b:4,kind:'py',value:3.8}}
+      ]
+    };
+
+
+  /* ======================================================================
+     [2.0] 어댑터: 원본의 분필 그리기 함수 → 새 무대 엔진
+     - 좌표는 원본의 수학 좌표 그대로(무대가 y를 위로 둔 1:1 좌표계)
+     - 관찰 렌즈: 원본처럼 렌즈가 켜지면 장면의 보조선을 흐리게(0.32) 그리고, 렌즈 전용 겹침 그림만 선명하게 그립니다.
+     - 이름표(점 이름·길이 값)는 원본 drawSmartLabels 규칙 그대로: 후보 9곳 중 겹침이 가장 적은 곳을 골라 상자 안에 씁니다.
+     ====================================================================== */
+  let BOARD = null;
+  let CUR = null; // 지금 그리는 셸 상태(손잡이 끌기가 고칩니다)
+  const sink = {};
+  const palette = { pink: '#f472b6', teal: '#34d399', blue: '#38bdf8', gold: '#fbbf24', purple: '#c084fc', red: '#fb7185' };
+  const state = { mode: 1, subtype: 1, a: 3, b: 4, py: 5, branch: 1, steps: { 1: true, 2: false, 3: false }, lens: 'all', partIdx: -1, _labels: [], _blocks: [] };
+  const withAlpha = (a, fn) => { const c = BOARD.ctx; c.save(); c.globalAlpha *= a; try { fn(); } finally { c.restore(); } };
+
+  function drawChalkLine(x1, y1, x2, y2, color = '#fff', width = 2, dashed = false, glow = false) {
+    BOARD.seg([x1, y1], [x2, y2], { color, width, dash: dashed ? [5, 6] : null, glow });
+  }
+  function line(p, q, color, width = 2, dashed = false, glow = false) { drawChalkLine(p.x, p.y, q.x, q.y, color, width, dashed, glow); }
+  function drawPolygon(points, fill, stroke = '#fbbf24', lineWidth = 2) {
+    BOARD.poly(points.map((p) => [p.x, p.y]), { fill: fill || null, color: stroke || null, stroke: !!stroke, width: lineWidth });
+  }
+  function drawCircle(p, r, color = '#fbbf24', dashed = true) {
+    BOARD.circle([p.x, p.y], r, { color, width: 1.6, dash: dashed ? [5, 6] : null });
+  }
+  // 점은 무대에 그리고, 이름은 한 프레임이 끝날 때 drawSmartLabels가 겹침을 피해 놓습니다.
+  function drawChalkPoint(x, y, radius = 5.5, color = '#fbbf24', label = '', labelOffset = { x: 10, y: -10 }) {
+    BOARD.point([x, y], { color, r: radius });
+    if (label) state._labels.push({ s: BOARD.toS(x, y), text: label, color, offset: labelOffset });
+  }
+  function point(p, color, label = '', offset) { drawChalkPoint(p.x, p.y, 4.5, color, label, offset || { x: 9, y: -11 }); }
+  function midLabel(p, q, text, color, shift = { x: 7, y: -10 }) { const m = mul(0.5, add(p, q)); state._labels.push({ s: BOARD.toS(m.x, m.y), text, color, offset: shift }); }
+  function drawRightAngleMark(foot, dirAlongLine, dirToPoint, sizePx = 11, color = '#38bdf8') {
+    const L = Math.hypot(dirAlongLine.x, dirAlongLine.y), D = Math.hypot(dirToPoint.x, dirToPoint.y);
+    if (L < 1e-9 || D < 1e-9) return;
+    BOARD.right([foot.x, foot.y], [foot.x + dirAlongLine.x / L, foot.y + dirAlongLine.y / L], [foot.x + dirToPoint.x / D, foot.y + dirToPoint.y / D], { size: sizePx, color });
+  }
+  function rightMark(foot, along, to, color, sz = 10) { drawRightAngleMark(foot, along, to, sz, color); }
+  function drawTick(p, q, color = '#fbbf24', offset = 0.5) {
+    const m = add(p, mul(offset, sub(q, p))), d = sub(q, p), L = Math.hypot(d.x, d.y) || 1;
+    const perp = { x: -d.y / L * 0.19, y: d.x / L * 0.19 }; line(sub(m, perp), add(m, perp), color, 2.8);
+  }
+  function glowLine(p, q, col, part) { line(p, q, col, state.partIdx === part ? 5 : 2.3, false, state.partIdx === part); }
+  function drawHyperbolaCurves(a, b) {
+    const vb = BOARD.viewBox();
+    const maxY = Math.max(Math.abs(vb.y0), Math.abs(vb.y1)) + 2;
+    [-1, 1].forEach((dir) => {
+      const pts = [];
+      for (let i = 0; i <= 230; i++) { const y = -maxY + 2 * maxY * i / 230; pts.push([dir * a * Math.hypot(1, y / b), y]); }
+      BOARD.path(pts, { color: 'ink', width: 2.8, glow: true });
+    });
+  }
+  // 수학 각도(반시계)로 연 호 — 원본은 화면 각도를 썼습니다
+  function drawOpenArc(center, radius, angle, spread, color) {
+    BOARD.arc([center.x, center.y], radius, angle - spread / 2, angle + spread / 2, { color, width: 2, dash: [6, 6] });
+  }
+  // 하단 비율 줄자 → 셸의 요약 띠(무대 아래)
+  function drawBottomTapeBanner(title, left, right, nameL, nameR) {
+    const total = Math.max(1e-12, left + right);
+    sink.tape = { title, segments: [
+      { text: `${nameL}: ${fmt(left)}`, weight: Math.max(0.05, left / total), color: palette.pink },
+      { text: `${nameR}: ${fmt(right)}`, weight: Math.max(0.05, right / total), color: palette.teal }
+    ] };
+  }
+  /* [표시 보강] 각·평행 표시 도우미 — 같은 각은 같은 색·같은 호로, 값(°)이나 기호는 각의 안쪽(이등분선 방향)에 씁니다.
+     이름표 자동 배치(drawSmartLabels)가 각 표시를 덮지 않도록 각 부채꼴 영역을 '피할 자리'로 등록합니다. */
+  function degAt(v, p, q) {
+    const ax = p.x - v.x, ay = p.y - v.y, bx = q.x - v.x, by = q.y - v.y;
+    const k = (ax * bx + ay * by) / ((Math.hypot(ax, ay) * Math.hypot(bx, by)) || 1);
+    return Math.acos(Math.max(-1, Math.min(1, k))) * 180 / Math.PI;
+  }
+  function bisectorPx(v, p, q) {
+    const s0 = BOARD.toS(v.x, v.y), a = BOARD.toS(p.x, p.y), b = BOARD.toS(q.x, q.y);
+    const la = Math.hypot(a.x - s0.x, a.y - s0.y) || 1, lb = Math.hypot(b.x - s0.x, b.y - s0.y) || 1;
+    let bx = (a.x - s0.x) / la + (b.x - s0.x) / lb, by = (a.y - s0.y) / la + (b.y - s0.y) / lb;
+    const bl = Math.hypot(bx, by);
+    if (bl < 1e-6) { bx = -(a.y - s0.y) / la; by = (a.x - s0.x) / la; } else { bx /= bl; by /= bl; }
+    return { s0, bx, by };
+  }
+  function blockSector(v, p, q, rpx) {
+    const { s0, bx, by } = bisectorPx(v, p, q);
+    const a = BOARD.toS(p.x, p.y), b = BOARD.toS(q.x, q.y);
+    const u = (t) => { const l = Math.hypot(t.x - s0.x, t.y - s0.y) || 1; return { x: s0.x + (t.x - s0.x) / l * rpx, y: s0.y + (t.y - s0.y) / l * rpx }; };
+    const pts = [s0, u(a), u(b), { x: s0.x + bx * rpx, y: s0.y + by * rpx }];
+    const x0 = Math.min(...pts.map((q2) => q2.x)), x1 = Math.max(...pts.map((q2) => q2.x)), y0 = Math.min(...pts.map((q2) => q2.y)), y1 = Math.max(...pts.map((q2) => q2.y));
+    state._blocks.push({ x: x0 - 4, y: y0 - 4, w: x1 - x0 + 8, h: y1 - y0 + 8 });
+  }
+  function markAng(v, p, q, color, label, r = 26, rings = 1, gap = 14) {
+    if (![v.x, v.y, p.x, p.y, q.x, q.y].every(Number.isFinite)) return;
+    BOARD.angle([v.x, v.y], [p.x, p.y], [q.x, q.y], { r, rings, color, label, size: 11, labelGap: gap });
+    blockSector(v, p, q, r + gap + 26);
+  }
+  function angValue(v, p, q, text, color, distPx) {
+    const { s0, bx, by } = bisectorPx(v, p, q);
+    BOARD._text(s0.x + bx * distPx, s0.y + by * distPx, text, { color, size: 11.5, align: 'center', baseline: 'middle', weight: 800 });
+  }
+  function parMark(p, q, color, count = 1) {
+    const a = BOARD.toS(p.x, p.y), b = BOARD.toS(q.x, q.y), c = BOARD.ctx;
+    const l = Math.hypot(b.x - a.x, b.y - a.y) || 1, d = { x: (b.x - a.x) / l, y: (b.y - a.y) / l }, n = { x: -d.y, y: d.x };
+    const m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    c.save();
+    c.strokeStyle = BOARD.color(color);
+    c.lineWidth = 2;
+    c.setLineDash([]);
+    for (let i = 0; i < count; i++) {
+      const o = (i - (count - 1) / 2) * 7, t = { x: m.x + d.x * o, y: m.y + d.y * o };
+      c.beginPath();
+      c.moveTo(t.x - d.x * 4 + n.x * 5, t.y - d.y * 4 + n.y * 5);
+      c.lineTo(t.x + d.x * 3, t.y + d.y * 3);
+      c.lineTo(t.x - d.x * 4 - n.x * 5, t.y - d.y * 4 - n.y * 5);
+      c.stroke();
+    }
+    c.restore();
+  }
+  function drawSmartLabels() {
+    const B = BOARD;
+    if (B._bbox || B.thumb) { state._labels = []; state._blocks = []; return; }
+    const c = B.ctx, r = { width: B.W, height: B.H };
+    const cr = B.canvas.getBoundingClientRect();
+    const blocked = [];
+    document.querySelectorAll('.apl-formula-chip, .apl-status:not([hidden]), .apl-card-float:not([hidden]), .apl-tools').forEach((q) => {
+      const b = q.getBoundingClientRect();
+      if (b.width > 0 && b.height > 0) blocked.push({ x: b.left - cr.left - 7, y: b.top - cr.top - 7, w: b.width + 14, h: b.height + 14 });
+    });
+    const taken = [...blocked, ...state._blocks];
+    c.save();
+    c.globalAlpha = 1;
+    c.setLineDash([]);
+    c.shadowBlur = 0;
+    c.font = `700 ${12 * B.fs}px ${B.font}`;
+    for (const label of state._labels) {
+      const { s, text, color, offset } = label, w = c.measureText(text).width + 12, h = 21 * B.fs;
+      if (s.x < 0 || s.x > r.width || s.y < 0 || s.y > r.height) continue;
+      const cand = [offset, { x: 12, y: 23 }, { x: 12, y: -28 }, { x: -w - 12, y: 22 }, { x: -w - 12, y: -27 }, { x: -w / 2, y: 37 }, { x: -w / 2, y: -40 }, { x: 25, y: -6 }, { x: -w - 25, y: -6 }];
+      let best = null, sc = Infinity;
+      for (const p of cand) {
+        const x = clamp(s.x + p.x, 3, Math.max(3, r.width - w - 3)), y = clamp(s.y + p.y - h + 5, 3, Math.max(3, r.height - h - 3));
+        let penalty = (Math.abs(x - (s.x + p.x)) + Math.abs(y - (s.y + p.y))) * 0.45 + Math.hypot(x + w / 2 - s.x, y + h / 2 - s.y) * 0.03;
+        for (const q of taken) {
+          const ix = Math.max(0, Math.min(x + w, q.x + q.w) - Math.max(x, q.x)), iy = Math.max(0, Math.min(y + h, q.y + q.h) - Math.max(y, q.y));
+          penalty += ix * iy * 2.0;
+        }
+        if (penalty < sc) { sc = penalty; best = { x, y, w, h }; }
+      }
+      if (!best) continue;
+      c.beginPath();
+      c.roundRect(best.x, best.y, best.w, best.h, 6);
+      c.fillStyle = B.colors.halo;
+      c.fill();
+      c.strokeStyle = B.color('muted', 0.4);
+      c.lineWidth = 0.9;
+      c.stroke();
+      c.fillStyle = B.color(color);
+      c.textBaseline = 'middle';
+      c.textAlign = 'left';
+      c.fillText(text, best.x + 6, best.y + best.h / 2 + 0.6);
+      taken.push(best);
+    }
+    c.restore();
+    state._labels = [];
+    state._blocks = [];
+  }
+
+  /* ===== 원본 그대로: 보조 함수·기하 커널 (원본 849–891행) ===== */
+
+    const fmt = (n,d=2) => Number.isFinite(n)?n.toFixed(d):'—';
+    const dist=(p,q)=>Math.hypot(p.x-q.x,p.y-q.y);
+    const dot=(p,q)=>p.x*q.x+p.y*q.y;
+    const sub=(p,q)=>({x:p.x-q.x,y:p.y-q.y});
+    const add=(p,q)=>({x:p.x+q.x,y:p.y+q.y});
+    const mul=(k,p)=>({x:k*p.x,y:k*p.y});
+    const det=(p,q)=>p.x*q.y-p.y*q.x;
+    const clamp=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
+    function currentP(){return {x:state.branch*state.a*Math.hypot(1,state.py/state.b),y:state.py};}
+    function lineFoot(point, A, B, C) { const t=(A*point.x+B*point.y+C)/(A*A+B*B);return {x:point.x-t*A,y:point.y-t*B}; }
+    function geometry(a,b,P){
+      const c=Math.hypot(a,b), O={x:0,y:0},F={x:c,y:0},Fp={x:-c,y:0};
+      const n={x:P.x/(a*a),y:-P.y/(b*b)};
+      const L=Math.hypot(n.x,n.y), normal=mul(1/L,n), tangent={x:-normal.y,y:normal.x};
+      const T={x:a*a/P.x,y:0};
+      const H1=lineFoot(F,n.x,n.y,-1),H2=lineFoot(Fp,n.x,n.y,-1);
+      const H=lineFoot(F,b,-a,0), Q1=lineFoot(P,b,-a,0),Q2=lineFoot(P,b,a,0);
+      const alpha=(P.x/a+P.y/b)/2, beta=(P.x/a-P.y/b)/2;
+      const R1={x:a*alpha,y:b*alpha}, R2={x:a*beta,y:-b*beta};
+      const dPlus=P.x/a-P.y/b, dMinus=P.x/a+P.y/b;
+      const M1={x:a/dPlus,y:b/dPlus},M2={x:a/dMinus,y:-b/dMinus};
+      const Fstar=sub(mul(2,H1),F);
+      const K={x:state.branch*a*Math.sqrt(a*a+2*b*b)/c,y:(state.py<0?-1:1)*b*b/c};
+      const u={x:a/c,y:b/c},v={x:a/c,y:-b/c};
+      const focalP=dist(P,F),focalFp=dist(P,Fp);
+      const l1=dist(P,Q1),l2=dist(P,Q2),d1=dist(F,H1),d2=dist(Fp,H2);
+      return {a,b,c,O,F,Fp,P,T,H1,H2,H,Q1,Q2,R1,R2,M1,M2,Fstar,K,tangent,normal,u,v,
+        focalP,focalFp,l1,l2,d1,d2,
+        focusDiff:Math.abs(focalFp-focalP),asymProduct:l1*l2,tanProduct:d1*d2,
+        tanArea:Math.abs(det(M1,M2))/2,parArea:Math.abs(det(R1,R2)),
+        OMproduct:dist(O,M1)*dist(O,M2),baseRatio:dist(Fp,T)/dist(F,T),focalRatio:focalFp/focalP,
+        angle:Math.acos(clamp(Math.abs(a*a-b*b)/(c*c),-1,1))*180/Math.PI};
+    }
+    // 수치 불변량은 항상 좌표로 계산한 실측치와 독립 이론값을 대조한다.
+    function measuredErrors(g){
+      let theory=[2*g.a,g.a*g.a*g.b*g.b/(g.c*g.c),g.b*g.b,g.a*g.b,g.a*g.b/2,g.c*g.c];
+      let meas=[g.focusDiff,g.asymProduct,g.tanProduct,g.tanArea,g.parArea,g.OMproduct];
+      const ratioErr=Math.abs(g.baseRatio-g.focalRatio)/Math.max(1e-12,g.focalRatio);
+      const maxErr=Math.max(ratioErr,...meas.map((v,i)=>Math.abs(v-theory[i])/Math.max(1e-12,theory[i])));
+      return {maxErr,meas,theory,ratioErr};
+    }
+
+  /* ===== 원본 그대로: 점근선·박스, 렌즈 겹침, 접선, 초점 (원본 950–956, 982–996, 999행) ===== */
+    function drawAsymptotesAndBox(a,b,box=true,subtle=false){
+      const span=25,color=subtle?'rgba(56,189,248,.29)':'rgba(56,189,248,.58)';
+      drawChalkLine(-span,-b/a*span,span,b/a*span,color,1.9,true);
+      drawChalkLine(-span,b/a*span,span,-b/a*span,color,1.9,true);
+      if(box){drawPolygon([{x:-a,y:b},{x:a,y:b},{x:a,y:-b},{x:-a,y:-b}],'rgba(251,191,36,.04)','rgba(251,191,36,.38)',1.4);}
+      point({x:a,y:0},palette.blue,`A(${fmt(a,1)},0)`,{x:10,y:-17});point({x:-a,y:0},palette.blue,`A′(-${fmt(a,1)},0)`,{x:-20,y:-17});
+    }
+    function focus(part){return state.partIdx===part}
+    function renderLensOverlay(g){
+      if(state.lens==='all')return;
+      if(state.lens==='definition'){line(g.P,g.Fp,'rgba(244,114,182,.55)',2.1,true);line(g.P,g.F,'rgba(52,211,153,.55)',2.1,true);}
+      if(state.lens==='asymptote'){drawAsymptotesAndBox(g.a,g.b,false,true);line(g.P,g.Q1,palette.pink,1.9,true);line(g.P,g.Q2,palette.teal,1.9,true);}
+      if(state.lens==='tangent'){drawTangent(g,'rgba(192,132,252,.6)',2);drawCircle(g.O,g.a,'rgba(251,191,36,.23)');point(g.Fstar,palette.purple,'F*');}
+    }
+    function drawTangent(g,color=palette.blue,width=2.5){
+      const p=g.P,d=g.tangent;
+      const targets=[g.H1,g.H2,g.T,g.M1,g.M2];
+      const projections=targets.map(x=>dot(sub(x,p),d));
+      const lo=Math.min(-14,...projections)-1.5,hi=Math.max(14,...projections)+1.5;
+      drawChalkLine(p.x+d.x*lo,p.y+d.y*lo,p.x+d.x*hi,p.y+d.y*hi,color,width,false,focus(0));
+    }
+    function drawFoci(g){point(g.F,palette.red,`F(${fmt(g.c,1)},0)`,{x:9,y:23});point(g.Fp,palette.red,`F′(-${fmt(g.c,1)},0)`,{x:-15,y:23});}
+    function nearFar(g){return state.branch===1?{near:g.F,far:g.Fp}:{near:g.Fp,far:g.F};}
+
+  /* ===== 원본: 정의 차이 그림 (원본 1005–1014행, 호 방향만 수학 각도로) ===== */
+    function drawDefinitionDifference(g){
+      const {near,far}=nearFar(g),short=dist(g.P,near),long=dist(g.P,far);
+      if(long<1e-8)return;
+      const D=add(g.P,mul(short/long,sub(far,g.P)));
+      // P를 중심으로 짧은 초점거리만큼 그린 원이 먼 초점 선분과 만나는 지점 D
+      // [2.0] 화면 각도 대신 수학 각도(y 위쪽)로 호의 방향을 잡음
+      const theta=Math.atan2(far.y-g.P.y,far.x-g.P.x);
+      drawOpenArc(g.P,short,theta,.9,'rgba(251,191,36,.65)');
+      line(g.P,D,'rgba(110,231,183,.68)',3);line(D,far,palette.gold,5,false,true);
+      point(D,palette.gold,'D');midLabel(D,far,`남은 거리 = 2a = ${fmt(2*g.a)}`,palette.gold,{x:14,y:-20});
+    }
+
+  /* ===== 원본 그대로: 모드별 그리기 plotMode1~4 (원본 1054–1145, 1157–1194행; state.scale → 무대 배율 BOARD.k) ===== */
+    function plotMode1(g){
+      const s=state.subtype;
+      if(state.steps[2])drawAsymptotesAndBox(g.a,g.b,true);
+      if(state.steps[1]){
+        drawPolygon([g.Fp,g.P,g.F],'rgba(244,114,182,.06)',null);
+        glowLine(g.P,g.Fp,palette.pink,0);glowLine(g.P,g.F,palette.teal,0);line(g.Fp,g.F,palette.gold,2);
+        midLabel(g.P,g.Fp,`PF′ ${fmt(g.focalFp)}`,palette.pink);
+        midLabel(g.P,g.F,`PF ${fmt(g.focalP)}`,palette.teal);drawFoci(g);
+      }
+      if(s===2){
+        if(state.steps[1]||state.steps[2])drawCircle(g.O,g.c,'rgba(251,191,36,.56)');
+        if(state.steps[2]){
+          drawPolygon([g.Fp,g.K,g.F],'rgba(251,191,36,.12)',palette.gold,2.6);
+          rightMark(g.K,sub(g.F,g.K),sub(g.Fp,g.K),palette.pink,14);
+          blockSector(g.K,g.F,g.Fp,34); // [표시 보강] K의 직각 표시가 'K (직각 교점)' 이름표에 가려지지 않게 자리 확보
+          angValue(g.K,g.F,g.Fp,'90°',palette.pink,30);
+          line(g.O,g.K,'rgba(251,191,36,.75)',2.3,true);
+          midLabel(g.O,g.K,`OK=c=${fmt(g.c)}`,palette.gold,{x:9,y:-12});
+          point(g.K,palette.gold,'K (∠F′KF=90°)',{x:12,y:-20});
+        }
+        if(state.steps[3]){const sk1=dist(g.K,g.Fp),sk2=dist(g.K,g.F),area=Math.abs(det(sub(g.Fp,g.K),sub(g.F,g.K)))/2;
+          drawBottomTapeBanner(`∠F′KF=90°인 점 K: △KF′F 넓이 = ${fmt(area)} = b²(${fmt(g.b*g.b)}) · 점 P는 자유롭게 이동`,sk1,sk2,'KF′','KF');}
+      }else if(s===3){
+        if(state.steps[2]){
+          const far=state.branch===1?g.Fp:g.F;
+          if(Math.abs(dist(g.P,far)-2*g.c)<.025){
+            drawTick(g.P,far,palette.gold,.5);drawTick(g.Fp,g.F,palette.gold,.52);
+          } else {
+            midLabel(g.P,far,`현재 먼 초점까지의 거리 ${fmt(dist(g.P,far))} (이등변삼각형 조건 해제)`,palette.gold);
+          }
+        }
+        if(state.steps[3])drawBottomTapeBanner(`둘레 = ${fmt(g.focalFp+g.focalP+2*g.c)} · 문제의 조건에서는 24`,g.focalFp,g.focalP,'PF′','PF');
+      }else if(state.steps[3]){
+        drawDefinitionDifference(g);
+        drawBottomTapeBanner(`|PF′−PF| = ${fmt(g.focusDiff)} = 2a(${fmt(2*g.a)}) · 둘레 ${fmt(g.focalFp+g.focalP+2*g.c)}`,g.focalFp,g.focalP,'PF′','PF');
+      }
+    }
+    function plotMode2(g){
+      const s=state.subtype;
+      if(state.steps[1]||state.steps[2]||state.steps[3])drawAsymptotesAndBox(g.a,g.b,true,!state.steps[1]);
+      if(s===3){
+        if(state.steps[1]||state.steps[2])drawTangent(g);
+        if(state.steps[1]){point(g.M1,palette.blue,'M₁');point(g.M2,palette.pink,'M₂');}
+        if(state.steps[2]){
+          drawPolygon([g.O,g.M1,g.M2],'rgba(52,211,153,.13)',focus(1)?palette.gold:palette.teal,focus(1)?3.7:2.3);
+          glowLine(g.M1,g.P,palette.gold,1);glowLine(g.P,g.M2,palette.gold,1);
+          drawTick(g.M1,g.P,palette.gold);drawTick(g.P,g.M2,palette.gold);
+          point(g.M1,palette.blue,'M₁');point(g.M2,palette.pink,'M₂');
+          midLabel(g.O,g.M1,`OM₁ ${fmt(dist(g.O,g.M1))}`,palette.blue,{x:10,y:-8});
+          midLabel(g.O,g.M2,`OM₂ ${fmt(dist(g.O,g.M2))}`,palette.pink,{x:10,y:19});
+        }
+        if(state.steps[3])drawBottomTapeBanner(`△OM₁M₂ 넓이 ${fmt(g.tanArea)} = ab · OM₁·OM₂ ${fmt(g.OMproduct)} = c²`,dist(g.O,g.M1),dist(g.O,g.M2),'OM₁','OM₂');
+      } else {
+        if(state.steps[2]){
+          drawPolygon([g.O,g.H,g.F],'rgba(56,189,248,.13)',palette.blue,focus(1)?3.8:2.2);
+          glowLine(g.O,g.H,palette.gold,1);glowLine(g.H,g.F,palette.pink,1);line(g.O,g.F,palette.teal,2.4);
+          rightMark(g.H,sub(g.O,g.H),sub(g.F,g.H),palette.pink,10);point(g.H,palette.blue,'H', {x:-12,y:-19});drawFoci(g);
+          midLabel(g.O,g.H,`OH=${fmt(dist(g.O,g.H))}`,palette.gold);
+          midLabel(g.H,g.F,`FH=${fmt(dist(g.H,g.F))}`,palette.pink);
+        }
+        if(state.steps[3]){
+          line(g.P,g.Q1,palette.purple,focus(2)?4:2.1,true,focus(2));point(g.Q1,palette.purple,'Q (P에서 내린 수선의 발)',{x:10,y:-14});
+          const sz=Math.min(10,Math.max(4,g.l1*BOARD.k*.32));
+          rightMark(g.Q1,g.u,sub(g.P,g.Q1),palette.purple,sz);
+          drawCircle(g.O,g.a,'rgba(251,191,36,.35)');
+          drawCircle(g.O,g.c,'rgba(244,114,182,.32)');
+          drawBottomTapeBanner(s===2?`두 점근선이 이루는 각 = ${fmt(g.angle,1)}° · e=${fmt(g.c/g.a,3)} · 수직 조건 a=b`:`OH=${fmt(dist(g.O,g.H))}, FH=${fmt(dist(g.F,g.H))}, P에서 점근선까지 ${fmt(g.l1)}`,dist(g.O,g.H),dist(g.F,g.H),'OH','FH');
+        }
+        if(s===2&&state.steps[1]){
+          if(Math.abs(g.a-g.b)<.012){
+            rightMark(g.O,g.u,g.v,palette.gold,13);
+            // [표시 보강] a=b: 두 점근선이 직각(90°), 각 점근선은 x축과 45°(같은 색·같은 호)
+            angValue(g.O,g.u,g.v,'90°',palette.gold,30);
+            markAng(g.O,{x:1,y:0},g.u,palette.teal,'45°',44,1,13);
+            markAng(g.O,{x:1,y:0},g.v,palette.teal,'45°',44,1,13);
+          } else {
+            // [표시 보강] a≠b: 두 점근선 사이 예각을 호와 값으로 표시(아래 띠의 '점근선의 각'이 그림에도 보이게)
+            const wv={x:-g.v.x,y:-g.v.y};
+            const acuteUV=degAt(g.O,g.u,g.v)<=90;
+            markAng(g.O,g.u,acuteUV?g.v:wv,palette.gold,`${fmt(g.angle,1)}°`,34,1,14);
+          }
+        }
+      }
+    }
+    function plotMode3(g){
+      const s=state.subtype;
+      if(state.steps[1]||state.steps[2]||state.steps[3])drawAsymptotesAndBox(g.a,g.b,s===3,!state.steps[1]);
+      if(s===2){
+        if(state.steps[1]){line(g.O,g.R1,palette.blue,2.7);line(g.O,g.R2,palette.pink,2.7);}
+        if(state.steps[2]){drawPolygon([g.O,g.R1,g.P,g.R2],'rgba(56,189,248,.12)',focus(1)?palette.gold:palette.blue,focus(1)?4:2.4);
+          glowLine(g.R1,g.P,palette.teal,1);glowLine(g.R2,g.P,palette.teal,1);
+          point(g.R1,palette.blue,'R₁');point(g.R2,palette.pink,'R₂');
+          // [표시 보강] 평행사변형의 평행 표시(OR₁ ∥ R₂P: ›, OR₂ ∥ R₁P: ››)와 마주 보는 각 ∠O = ∠P(같은 색·같은 호·같은 값)
+          if(dist(g.O,g.R1)>.3&&dist(g.O,g.R2)>.3){
+            parMark(g.O,g.R1,palette.blue,1);parMark(g.R2,g.P,palette.blue,1);
+            parMark(g.O,g.R2,palette.pink,2);parMark(g.R1,g.P,palette.pink,2);
+            const thv=degAt(g.O,g.R1,g.R2);
+            if(thv>6&&thv<174){
+              markAng(g.O,g.R1,g.R2,palette.gold,`${fmt(thv,1)}°`,26,1,14);
+              markAng(g.P,g.R1,g.R2,palette.gold,`${fmt(thv,1)}°`,26,1,14);
+            }
+          }}
+        if(state.steps[3])drawBottomTapeBanner(`OR₁PR₂ 넓이 = ${fmt(g.parArea)} = ab/2(${fmt(g.a*g.b/2)})`,dist(g.O,g.R1),dist(g.O,g.R2),'OR₁','OR₂');
+      }else{
+        if(state.steps[2]){
+          glowLine(g.P,g.Q1,palette.pink,1);glowLine(g.P,g.Q2,palette.teal,1);
+          const sz1=Math.min(11,Math.max(3,g.l1*BOARD.k*.32));
+          const sz2=Math.min(11,Math.max(3,g.l2*BOARD.k*.32));
+          rightMark(g.Q1,g.u,sub(g.P,g.Q1),palette.pink,sz1);rightMark(g.Q2,g.v,sub(g.P,g.Q2),palette.teal,sz2);
+          point(g.Q1,palette.pink,`Q₁: l₁=${fmt(g.l1)}`,{x:14,y:24});point(g.Q2,palette.teal,`Q₂: l₂=${fmt(g.l2)}`,{x:-14,y:-20});
+          // [표시 보강] 꼭짓점 A(또는 l₁=l₂)에서는 두 수선의 길이가 같다는 같은 길이 표시
+          if(Math.abs(g.l1-g.l2)<.02*Math.max(g.l1,g.l2,1e-6)){BOARD.ticks([g.P.x,g.P.y],[g.Q1.x,g.Q1.y],{count:1,color:palette.gold});BOARD.ticks([g.P.x,g.P.y],[g.Q2.x,g.Q2.y],{count:1,color:palette.gold});}
+        }
+        if(s===3&&state.steps[1]){point({x:state.branch*g.a,y:0},palette.gold,state.branch===1?'꼭짓점 A':'꼭짓점 A′',{x:12,y:-19});}
+        if(state.steps[3])drawBottomTapeBanner(`l₁·l₂=${fmt(g.asymProduct,4)} = a²b²/c²(${fmt(g.a*g.a*g.b*g.b/g.c/g.c,4)})`,g.l1,g.l2,'l₁','l₂');
+      }
+    }
+    function plotMode4(g){
+      const s=state.subtype;
+      if(state.steps[1]||state.steps[2]||state.steps[3]){
+        drawTangent(g, palette.blue, state.steps[1]?2.9:1.25);
+      }
+      if(state.steps[1]){
+        glowLine(g.P,g.Fp,palette.pink,0);glowLine(g.P,g.F,palette.teal,0);
+        line(g.Fp,g.F,'rgba(251,191,36,.7)',2.2);drawFoci(g);
+        if(dist(g.T,g.P)*BOARD.k>11)point(g.T,palette.blue,`T=${fmt(g.T.x)}`,{x:12,y:23});
+      }
+      if(s===1){
+        if(state.steps[2]){arcBetween(g);midLabel(g.Fp,g.T,`F′T=${fmt(dist(g.Fp,g.T))}`,palette.pink,{x:10,y:20});midLabel(g.T,g.F,`TF=${fmt(dist(g.F,g.T))}`,palette.teal,{x:10,y:20});}
+        if(state.steps[3])drawBottomTapeBanner(`F′T/TF=${fmt(g.baseRatio,4)} · PF′/PF=${fmt(g.focalRatio,4)} · 오차 ${fmt(Math.abs(g.baseRatio-g.focalRatio),7)}`,dist(g.Fp,g.T),dist(g.T,g.F),'F′T','TF');
+      }else if(s===2){
+        if(state.steps[1]||state.steps[2]){
+          line(g.F,g.Fstar,palette.purple,2.4,true);
+          if(state.steps[2]){glowLine(g.Fp,g.Fstar,palette.gold,1);glowLine(g.P,g.Fstar,palette.pink,1);
+            drawTick(g.F,g.H1,palette.purple);drawTick(g.H1,g.Fstar,palette.purple);
+            rightMark(g.H1,g.tangent,sub(g.F,g.H1),palette.purple,9);
+            // [표시 보강] 접선에 대한 대칭: ∠FPH₁ = ∠F*PH₁ — 같은 색·같은 호·같은 값
+            if(dist(g.P,g.H1)>.3){const eq=fmt(degAt(g.P,g.F,g.H1),1)+'°';
+              markAng(g.P,g.F,g.H1,'#fde047',eq,30,1,14);markAng(g.P,g.Fstar,g.H1,'#fde047',eq,30,1,14);}
+            point(g.Fstar,palette.gold,'F*');point(g.H1,palette.purple,'H₁ (중점)',{x:10,y:-20});
+            point(g.O,palette.blue,'O');
+          }
+        }
+        if(state.steps[3]){
+          glowLine(g.O,g.H1,palette.gold,2);drawCircle(g.O,g.a,'rgba(251,191,36,.25)');
+          drawBottomTapeBanner(`F′F* = ${fmt(dist(g.Fp,g.Fstar))} = 2a · OH₁ = ${fmt(dist(g.O,g.H1))} = a`,dist(g.Fp,g.Fstar),dist(g.O,g.H1),'F′F*','OH₁');
+        }
+      }else{
+        if(state.steps[1])drawCircle(g.O,g.a,'rgba(251,191,36,.50)');
+        if(state.steps[2]){
+          glowLine(g.F,g.H1,palette.purple,1);glowLine(g.Fp,g.H2,palette.pink,1);
+          rightMark(g.H1,g.tangent,sub(g.F,g.H1),palette.purple,10);
+          rightMark(g.H2,g.tangent,sub(g.Fp,g.H2),palette.pink,10);
+          point(g.H1,palette.purple,`H₁=${fmt(g.d1)}`,{x:10,y:-19});point(g.H2,palette.pink,`H₂=${fmt(g.d2)}`,{x:-14,y:24});
+        }
+        if(state.steps[3])drawBottomTapeBanner(`d₁·d₂=${fmt(g.tanProduct,4)} = b²(${fmt(g.b*g.b,4)})`,g.d1,g.d2,'d₁','d₂');
+      }
+    }
+
+    // [2.0] 원본 arcBetween: 화면 각도 호 → 무대 호(반지름은 화면 32·41px 그대로, 수학 각도 사용)
+    function arcBetween(g){
+      if(Math.abs(g.P.y)<.11){return;} // 정점 근방 겹침 방지
+      const v1=sub(g.F,g.P),v2=sub(g.Fp,g.P);
+      const normalize=v=>mul(1/(Math.hypot(v.x,v.y)||1),v);
+      const bis=normalize(add(normalize(v1),normalize(v2)));
+      const a1=Math.atan2(v1.y,v1.x),a2=Math.atan2(v2.y,v2.x),ab=Math.atan2(bis.y,bis.x);
+      // [표시 보강] 접선이 이등분한 두 각 α를 같은 색·같은 반지름·같은 기호(α)로 그려 '같은 각'임을 보이고, 값은 이등분선(접선) 위 각 안쪽에 씁니다.
+      //   (이전: 청록/분홍·반지름 32/41px로 서로 달라 보였고, P 이름표 아래에 가려져 보이지 않았음)
+      const tpt={x:g.P.x+Math.cos(ab),y:g.P.y+Math.sin(ab)};
+      markAng(g.P,g.F,tpt,palette.gold,'α',34,1,14);
+      markAng(g.P,tpt,g.Fp,palette.gold,'α',34,1,14);
+      angValue(g.P,g.F,g.Fp,`α = ${fmt(degAt(g.P,g.F,g.Fp)/2,1)}°`,palette.gold,78);
+    }
+
+  /* ===== 원본 그대로: 조각 강조 (원본 1214–1235행) ===== */
+    function renderPartFocus(g){
+      if(state.partIdx<0)return;
+      const i=state.partIdx,m=state.mode,s=state.subtype;
+      const pair=(p,q)=>line(p,q,palette.gold,4.2,false,true);
+      let pairs=[];
+      if(m===1) pairs= i===0?[[g.P,g.F],[g.P,g.Fp]]:i===1?[[g.O,g.F],[g.O,g.Fp]]:[[g.Fp,g.P],[g.P,g.F]];
+      if(m===2){
+        if(s===3)pairs=i===0?[[g.M1,g.M2]]:i===1?[[g.M1,g.P],[g.P,g.M2]]:[[g.O,g.M1],[g.O,g.M2]];
+        else pairs=i===0?[[g.F,g.H]]:i===1?[[g.O,g.H],[g.H,g.F]]:[[g.P,g.Q1]];
+      }
+      if(m===3){
+        if(s===2)pairs=i===0?[[g.O,g.R1],[g.O,g.R2]]:i===1?[[g.R1,g.P],[g.R2,g.P]]:[[g.O,g.R1],[g.R1,g.P],[g.P,g.R2],[g.R2,g.O]];
+        else pairs=i===0?[[g.O,g.Q1],[g.O,g.Q2]]:i===1?[[g.P,g.Q1],[g.P,g.Q2]]:[[g.Q1,g.P],[g.P,g.Q2]];
+      }
+      if(m===4){
+        if(s===1)pairs=i===0?[[g.P,g.T]]:i===1?[[g.P,g.F],[g.P,g.Fp]]:[[g.Fp,g.T],[g.T,g.F]];
+        else if(s===2)pairs=i===0?[[g.F,g.Fstar]]:i===1?[[g.Fp,g.Fstar],[g.F,g.Fstar]]:[[g.O,g.H1]];
+        else pairs=i===0?[[g.P,g.H1],[g.P,g.H2]]:i===1?[[g.F,g.H1],[g.Fp,g.H2]]:[[g.F,g.H1],[g.Fp,g.H2]];
+      }
+      pairs.forEach(([p,q])=>pair(p,q));
+    }
+
+
+  /* ===== 원본 그대로: 12개 풀이 은행과 가지별 동적 풀이 (원본 1326–1467행) ===== */
+    // V3: 12개 각각 독립된 설명. 수학식은 신뢰된 정적 소스만 KaTeX 처리한다.
+    // 공통 예제(각 모드의 첫 유형)는 기존 examData의 자세한 해설을 보존·재사용한다.
+    const mtex=t=>tex(t);
+    const solutionBank={
+      '1-2':{
+        formal:[
+          `지름 ${mtex(String.raw`F'F=2c`)}인 원 위의 점 K이므로 ${mtex(String.raw`\angle F'KF=90^\circ`)}.`,
+          `${mtex(String.raw`KF'^2+KF^2=(2c)^2=4c^2`)}.`,
+          `쌍곡선의 정의에 따라 ${mtex(String.raw`|KF'-KF|=2a`)}이므로 ${mtex(String.raw`(KF'-KF)^2=4a^2`)}.`,
+          `두 식의 차를 이용하면 ${mtex(String.raw`2KF'\cdot KF=4(c^2-a^2)=4b^2`)}. 따라서 ${mtex(String.raw`S=\dfrac12 KF'\cdot KF=b^2=16`)}.`
+        ],
+        shortcut:[
+          `초점 사이 선분 ${mtex(String.raw`F'F`)}를 지름으로 한 원을 그린다. 지름에 대한 원주각은 직각이므로 원 위의 교점 K에서 직각삼각형 KF′F가 된다.`,
+          `빗변 ${mtex(String.raw`2c`)}와 두 직각변의 차 ${mtex(String.raw`2a`)}만 알면, ${mtex(String.raw`2uv=(u+v)^2-(u-v)^2`)}.`,
+          `${mtex(String.raw`u^2+v^2=4c^2`)}에서 ${mtex(String.raw`(u-v)^2=4a^2`)}를 빼면 ${mtex(String.raw`uv=2b^2`)}. 넓이는 ${mtex(String.raw`uv/2=b^2=16`)}.`
+        ],warning:'K는 ∠F′KF=90°인 고정된 점이며, 자유롭게 움직이는 점 P에서도 직각이라는 뜻은 아닙니다.',insight:'지름에 대한 원주각은 직각 → 두 거리의 차가 2a → 넓이 b². 점 P를 움직여도 점 K는 따로 표시됩니다.'
+      },
+      '1-3':{
+        formal:[
+          `초점 간 거리는 ${mtex(String.raw`F'F=2c=2\sqrt{3^2+4^2}=10`)}.`,
+          `이등변삼각형 조건 ${mtex(String.raw`PF'=F'F=10`)}이므로 거리차 ${mtex(String.raw`PF'-PF=2a=6`)}.`,
+          `${mtex(String.raw`PF=10-6=4`)}이고 둘레는 ${mtex(String.raw`10+10+4=24`)}.`
+        ],
+        shortcut:[
+          `먼 초점과 P 사이의 길이를 곧장 ${mtex(String.raw`2c=10`)}으로 표시한다. 같은 길이 표시는 이 조건에서만 나타난다.`,
+          `가까운 초점까지의 길이는 먼 초점거리보다 ${mtex(String.raw`2a=6`)} 짧다. 즉 ${mtex(String.raw`10-6=4`)}.`,
+          `도형의 세 변 ${mtex(String.raw`10,\;10,\;4`)}를 합해 둘레 ${mtex(String.raw`24`)}.`
+        ],warning:'P를 움직여 이등변삼각형 조건이 깨지면 같은 길이 표시는 사라집니다.',insight:'이등변삼각형 조건 2c와 정의 2a를 함께 쓰면 셋째 변은 2(c−a)입니다.'
+      },
+      '2-2':{
+        formal:[
+          `점근선은 ${mtex(String.raw`y=\pm\dfrac{b}{a}x`)}. 두 기울기의 곱이 ${mtex(String.raw`-\dfrac{b^2}{a^2}`)}이므로 서로 수직일 조건은 ${mtex(String.raw`a=b`)}.`,
+          `${mtex(String.raw`a=b=3`)}일 때 기울기는 각각 ${mtex(String.raw`1,-1`)}이고 두 점근선이 이루는 각은 ${mtex(String.raw`90^\circ`)}.`,
+          `${mtex(String.raw`c=\sqrt{a^2+b^2}=a\sqrt2,\quad e=\dfrac ca=\sqrt2`)}.`
+        ],
+        shortcut:[
+          `${mtex(String.raw`a=b`)}이면 점근선이 ${mtex(String.raw`y=\pm x`)}이므로 x축과 45°씩 기울어 서로 수직이다.`,
+          `${mtex(String.raw`a:b:c=1:1:\sqrt2`)}이므로 삼각형 OFH는 직각이등변삼각형이다.`,
+          `이심률은 ${mtex(String.raw`e=\dfrac ca=\sqrt2`)}.`
+        ],warning:'a≠b가 되면 두 점근선은 서로 수직이 아닙니다. 현재 두 점근선이 이루는 예각과 이심률은 현재 값으로 다시 계산됩니다.',insight:'a=b이면 두 점근선이 서로 수직이고 이심률은 √2입니다.'
+      },
+      '2-3':{
+        formal:[
+          `점 ${mtex(String.raw`P(x_1,y_1)`)}에서 접선은 ${mtex(String.raw`\dfrac{x_1x}{a^2}-\dfrac{y_1y}{b^2}=1`)}.`,
+          `점근선 ${mtex(String.raw`(x,y)=t(a,b),\;(x,y)=s(a,-b)`)}를 대입해 교점 ${mtex(String.raw`M_1=(a/d_+,b/d_+),\;M_2=(a/d_-,-b/d_-)`)}를 얻는다. 단 ${mtex(String.raw`d_+=x_1/a-y_1/b,\;d_-=x_1/a+y_1/b`)}.`,
+          `${mtex(String.raw`d_+d_-=x_1^2/a^2-y_1^2/b^2=1`)}이므로 ${mtex(String.raw`S=\dfrac12|x_{M_1}y_{M_2}-x_{M_2}y_{M_1}|=ab`)}.`,
+          `${mtex(String.raw`OM_1\cdot OM_2=c^2/|d_+d_-|=c^2`)}. 이 문제에서는 넓이 ${mtex(String.raw`12`)}, OM₁·OM₂ = ${mtex(String.raw`25`)}.`
+        ],
+        shortcut:[
+          `접선과 두 점근선이 만나는 M₁,M₂를 잇는다. P는 언제나 M₁M₂의 중점이다(같은 길이 표시 2개로 확인).`,
+          `두 교점은 서로 다른 점근선의 고정 방향 위에 있고, ${mtex(String.raw`OM_1\cdot OM_2=c^2`)}가 유지된다.`,
+          `두 점근선 방향의 끼인각 ${mtex(String.raw`\theta`)}는 고정, ${mtex(String.raw`\sin\theta=2ab/c^2`)}이므로 ${mtex(String.raw`S=\dfrac12c^2\sin\theta=ab`)}.`
+        ],warning:'접선 삼각형은 모양이 변해도 넓이 ab와 원점에서 두 교점까지의 거리의 곱 c²가 함께 유지됩니다.',insight:'M₁M₂의 중점 P + 고정된 끼인각 + 거리의 곱 c² → 넓이 ab.'
+      },
+      '3-2':{
+        formal:[
+          `두 점근선 방향벡터를 ${mtex(String.raw`u=(a,b),\;v=(a,-b)`)}라 한다.`,
+          `점 ${mtex(String.raw`P=\alpha u+\beta v`)}에서 ${mtex(String.raw`\alpha=(x/a+y/b)/2,\;\beta=(x/a-y/b)/2`)}.`,
+          `쌍곡선 식에서 ${mtex(String.raw`4\alpha\beta=x^2/a^2-y^2/b^2=1`)}.`,
+          `따라서 ${mtex(String.raw`S_{OR_1PR_2}=\alpha\beta\sqrt{|u|^2|v|^2-(u\cdot v)^2}=(1/4)(2ab)=ab/2=6`)}.`
+        ],
+        shortcut:[
+          `P를 지나는 두 점근선과 평행한 선을 그어 평행사변형 ${mtex(String.raw`OR_1PR_2`)}를 만든다.`,
+          `두 방향의 평행사변형 넓이는 ${mtex(String.raw`|OR_1|\,|OR_2|\sin\theta`)}. 각도 ${mtex(String.raw`\theta`)}는 변하지 않는다.`,
+          `두 방향 배율의 곱은 쌍곡선 위에서 ${mtex(String.raw`\alpha\beta=1/4`)}로 고정 ⇒ 면적 ${mtex(String.raw`ab/2`)}.`
+        ],warning:'평행사변형의 각·변 길이는 변하지만 방향 배율 곱은 1/4로 고정입니다.',insight:'점 P를 지나 두 점근선과 평행한 직선으로 만든 평행사변형의 넓이는 언제나 ab/2.'
+      },
+      '3-3':{
+        formal:[
+          `꼭짓점 ${mtex(String.raw`A=(a,0)`)}에서 점근선 ${mtex(String.raw`bx-ay=0`)}까지 거리 ${mtex(String.raw`l_1=\dfrac{|ba|}{\sqrt{a^2+b^2}}=ab/c`)}.`,
+          `다른 점근선에도 대칭이므로 ${mtex(String.raw`l_2=ab/c`)}.`,
+          `따라서 ${mtex(String.raw`l_1l_2=a^2b^2/c^2=144/25`)}.`,
+          `일반 P에서도 곱은 ${mtex(String.raw`|b^2x^2-a^2y^2|/c^2=a^2b^2/c^2`)}.`
+        ],
+        shortcut:[
+          `어느 P에서나 두 점근선까지 거리의 곱은 같다. 그래서 가장 간단한 꼭짓점 A에서 값을 구한다.`,
+          `A에서 두 점근선까지 내린 수선은 x축에 대하여 대칭이므로 두 길이가 모두 ${mtex(String.raw`ab/c`)}.`,
+          `하나의 길이를 제곱해 바로 ${mtex(String.raw`(ab/c)^2=144/25`)}. P가 이동하면 두 길이는 달라져도 곱은 유지된다.`
+        ],warning:'두 수선의 길이가 같다는 표시는 꼭짓점 A에서만 성립합니다. 일반적인 점 P에서는 두 길이가 다릅니다.',insight:'일정한 값은 가장 대칭적인 점(꼭짓점)에서 먼저 구하고, 다른 점 P에서도 성립하는지 식으로 확인합니다.'
+      },
+      '4-2':{
+        formal:[
+          `접선 ${mtex(String.raw`\ell:\dfrac{x_1x}{a^2}-\dfrac{y_1y}{b^2}=1`)}에 초점 F에서 내린 수선의 발 H₁을 구한다.`,
+          `F를 접선에 대하여 대칭이동한 점은 ${mtex(String.raw`F^*=2H_1-F`)}이므로 ${mtex(String.raw`FH_1=H_1F^*`)}.`,
+          `접선의 각이등분 성질로 ${mtex(String.raw`F',P,F^*`)}가 한 직선 위에 있고 ${mtex(String.raw`F'F^*=|PF'-PF|=2a`)}.`,
+          `O는 F′F의 중점, H₁은 FF*의 중점 ⇒ 중점연결정리로 ${mtex(String.raw`OH_1=F'F^*/2=a=3`)}.`
+        ],
+        shortcut:[
+          `접선을 접는 선으로 생각하고 F를 접선에 대하여 대칭이동한 점을 F*라 하면 ${mtex(String.raw`PF^*=PF`)}.`,
+          `대칭점 F*는 직선 F′P 위에 놓인다. 따라서 ${mtex(String.raw`F'F^*=2a`)}.`,
+          `삼각형 F′FF*에서 O와 H₁이 두 변의 중점이므로 ${mtex(String.raw`OH_1=F'F^*/2=a`)}. F*는 F′을 중심으로 하는 반지름 2a인 원 위를 움직인다.`
+        ],warning:'F*는 항상 양의 쪽 초점 F를 접선에 대하여 대칭이동한 점입니다. 왼쪽 곡선에서도 같은 정의를 씁니다.',insight:'접선에 대한 대칭이동 + 삼각형의 중점연결정리 → OH₁=a.'
+      },
+      '4-3':{
+        formal:[
+          `접선 ${mtex(String.raw`\ell:(x_1/a^2)x-(y_1/b^2)y-1=0`)}의 법선벡터 길이를 ${mtex(String.raw`L=\sqrt{x_1^2/a^4+y_1^2/b^4}`)}로 둔다.`,
+          `두 초점에서 접선까지의 거리 ${mtex(String.raw`d_1=|(cx_1/a^2)-1|/L,\;d_2=|-(cx_1/a^2)-1|/L`)}.`,
+          `${mtex(String.raw`d_1d_2=((c^2x_1^2/a^4)-1)/L^2`)}이며, 쌍곡선 식 ${mtex(String.raw`y_1^2/b^2=x_1^2/a^2-1`)}과 ${mtex(String.raw`c^2=a^2+b^2`)}를 대입하면 ${mtex(String.raw`d_1d_2=b^2=16`)}.`,
+          `수선의 발 H₁, H₂에 대해 ${mtex(String.raw`OH_1=OH_2=a`)}도 계산으로 확인한다.`
+        ],
+        shortcut:[
+          `접선 위의 H₁,H₂는 각각 F, F′에서 내린 수선의 발이다. 두 점 모두 원 ${mtex(String.raw`x^2+y^2=a^2`)} 위를 움직인다.`,
+          `접선에 대한 대칭점으로 보조선을 그으면 ${mtex(String.raw`OH_1=OH_2=a`)}가 중점연결정리로 확인된다(두 초점 각각에 적용).`,
+          `H₁, H₂가 원 위에 있다는 성질만으로는 거리의 곱을 구할 수 없다. 거리의 곱은 점과 접선 사이의 거리 공식 두 개를 곱하여 ${mtex(String.raw`d_1d_2=b^2`)}로 구한다.`
+        ],warning:'두 수선의 발이 원 x²+y²=a² 위에 있다는 사실과 거리의 곱이 b²라는 사실은 서로 다른 성질입니다.',insight:'수선의 발은 원 x²+y²=a² (반지름 a) 위에 있고, 두 초점에서 접선까지의 거리의 곱은 b²입니다.'
+      }
+    };
+    function dynamicSolution(g){
+      const m=state.mode,t=state.subtype,side=state.branch;
+      if(t===1 && (m!==1&&m!==2&&m!==3&&m!==4))return null;
+      if(m===1&&t===3&&side===-1)return {
+        formal:[`왼쪽 곡선에서는 먼 초점이 F, 가까운 초점이 F′이다.`,
+          `주어진 ${mtex(String.raw`PF=F'F=2c=10`)}과 정의 ${mtex(String.raw`PF-PF'=2a=6`)}에 의해 ${mtex(String.raw`PF'=4`)}.`,
+          `삼각형의 둘레는 ${mtex(String.raw`10+10+4=24`)}.`],
+        shortcut:[`먼 초점까지의 거리 ${mtex(String.raw`2c=10`)}에서 거리의 차 ${mtex(String.raw`2a=6`)}을 뺀다.`,
+          `가까운 초점까지의 거리 ${mtex(String.raw`PF'=4`)}, 둘레 ${mtex(String.raw`24`)}.`],
+        warning:'왼쪽 곡선에서는 PF=F′F가 이등변삼각형 조건입니다.',
+        insight:'가까운 초점이 어느 쪽인지 먼저 판별한 뒤 2c−2a를 계산하면 됩니다.'};
+      if(t===1 && (m===1||m===4) && side===-1){
+        if(m===1)return {
+          formal:[`왼쪽 곡선 위의 점 P는 ${mtex(String.raw`PF-PF'=2a=6`)}을 만족한다.`,
+                  `${mtex(String.raw`PF=11`)}을 주었으므로 ${mtex(String.raw`PF'=11-6=5`)}.`,
+                  `${mtex(String.raw`F'F=2c=10`)}이므로 둘레는 ${mtex(String.raw`11+5+10=26`)}.`],
+          shortcut:[`왼쪽 곡선에서는 가까운 초점이 F′이다. 먼 초점까지의 거리에서 ${mtex(String.raw`2a=6`)}만 뺀다.`,
+                    `${mtex(String.raw`PF'=11-6=5`)}이고 둘레는 ${mtex(String.raw`26`)}.`],
+          warning:'오른쪽 곡선과 달리 먼 초점은 F, 가까운 초점은 F′입니다.',insight:'어느 쪽 곡선에서나 (먼 초점까지의 거리) − (가까운 초점까지의 거리) = 2a.'};
+        return {
+          formal:[`왼쪽 곡선에서 ${mtex(String.raw`PF=12,\;PF'=6`)}이다.`,
+                  `접선과 x축 교점 ${mtex(String.raw`T=(a^2/x_1,0)`)}은 F′F 안에 놓인다.`,
+                  `삼각형의 내각의 이등분선의 성질에 의해 ${mtex(String.raw`F'T/TF=PF'/PF=6/12=1/2`)}.`,
+                  `두 초점에서 접선까지의 거리의 곱은 ${mtex(String.raw`d_1d_2=b^2=16`)}.`],
+          shortcut:[`T에서 두 초점 F′, F까지의 거리의 비는 P에서 F′, F까지의 거리의 비와 같다.`,
+                    `왼쪽 곡선에서는 ${mtex(String.raw`F'T:TF=PF':PF=6:12=1:2`)}.`,
+                    `두 초점에서 접선까지의 거리의 곱 ${mtex(String.raw`b^2=16`)}도 함께 확인한다.`],
+          warning:'왼쪽 곡선에서는 2:1이 아니라 1:2입니다. 같은 성질(내각의 이등분선)로 판정하세요.',insight:'접선이 삼각형 PF′F의 내각을 이등분하며, 점 P가 놓인 곡선에 따라 두 거리의 비의 순서가 바뀝니다.'};
+      }
+      if(t===1){
+        const old=examData[m],f=old.textbook(),q=old.shortcut();
+        return {formalHtml:f.steps,shortcutHtml:q.steps,warning:f.warning,insight:q.highlight};
+      }
+      return solutionBank[`${m}-${t}`];
+    }
+
+  /* ===== 원본 그대로: 예제 조건 판정과 탐구 한 줄 (원본 1478–1502행), 스냅 목표 (원본 1533–1540행) ===== */
+    function exampleConditions(g){
+      const {a,b}=snapTarget(),m=state.mode,t=state.subtype,nearfar=nearFar(g);
+      const ab=Math.abs(g.a-a)<.016&&Math.abs(g.b-b)<.016;
+      if(!ab)return false;
+      if(m===1&&t===1)return Math.abs(dist(g.P,nearfar.far)-11)<.035;
+      if(m===1&&t===3)return Math.abs(dist(g.P,nearfar.far)-2*g.c)<.035;
+      if(m===3&&t===3)return Math.abs(g.P.y)<.025;
+      if(m===4&&t===1)return Math.abs(dist(g.P,nearfar.near)-6)<.035;
+      return true;
+    }
+    function explorationLine(g){
+      const m=state.mode,t=state.subtype,nf=nearFar(g),near=dist(g.P,nf.near),far=dist(g.P,nf.far);
+      if(m===1&&t===1)return `먼 초점 ${fmt(far)} − 가까운 초점 ${fmt(near)} = 2a ${fmt(2*g.a)} · 둘레 ${fmt(far+near+2*g.c)}`;
+      if(m===1&&t===2)return `∠F′KF=90°인 점 K에서 넓이 = b² ${fmt(g.b*g.b)} · 점 P에서 ∠F′PF의 크기는 ${fmt(Math.acos(clamp(dot(sub(g.F,g.P),sub(g.Fp,g.P))/(g.focalP*g.focalFp),-1,1))*180/Math.PI,1)}°`;
+      if(m===1)return `먼 초점까지의 거리 ${fmt(far)} / 두 초점 사이의 거리 2c ${fmt(2*g.c)} · 둘레 ${fmt(g.focalP+g.focalFp+2*g.c)}`;
+      if(m===2&&t===1)return `OH=${fmt(dist(g.O,g.H))}, FH=${fmt(dist(g.F,g.H))}, OF=${fmt(g.c)}`;
+      if(m===2&&t===2)return `두 점근선이 이루는 예각 ${fmt(g.angle,2)}° · 이심률 e=${fmt(g.c/g.a,4)} · ${Math.abs(g.a-g.b)<.012?'수직 성립':'수직 조건 해제'}`;
+      if(m===2)return `△OM₁M₂ 넓이 ${fmt(g.tanArea)} (=ab ${fmt(g.a*g.b)}) · OM₁·OM₂ = ${fmt(g.OMproduct)} (=c² ${fmt(g.c*g.c)})`;
+      if(m===3&&t===2)return `평행사변형의 넓이 ${fmt(g.parArea,4)} / ab/2=${fmt(g.a*g.b/2,4)}`;
+      if(m===3&&t===3)return `현재 P의 l₁=${fmt(g.l1)}, l₂=${fmt(g.l2)} · 곱 ${fmt(g.asymProduct,4)} · ${Math.abs(g.P.y)<.025?'P=꼭짓점':'P≠꼭짓점'}`;
+      if(m===3)return `l₁=${fmt(g.l1)}, l₂=${fmt(g.l2)} · 곱 ${fmt(g.asymProduct,4)} / a²b²/c² = ${fmt(g.a*g.a*g.b*g.b/g.c/g.c,4)}`;
+      if(m===4&&t===1)return `F′T:TF=${fmt(g.baseRatio,3)}:1 · PF′:PF=${fmt(g.focalRatio,3)}:1 · d₁d₂=${fmt(g.tanProduct)}`;
+      if(m===4&&t===2)return `F′F*=${fmt(dist(g.Fp,g.Fstar))}=2a · OH₁=${fmt(dist(g.O,g.H1))}=a`;
+      return `d₁=${fmt(g.d1)}, d₂=${fmt(g.d2)}, d₁d₂=${fmt(g.tanProduct,4)} (=b² ${fmt(g.b*g.b)}) · OH₁=OH₂=a`;
+    }
+    function snapTarget(){
+      const snap=scenarios[state.mode][state.subtype-1].snap,{a,b,kind}=snap,c=Math.hypot(a,b);
+      let py=snap.value||0;
+      if(kind==='right')py=b*b/c;
+      if(kind==='iso')py=b*Math.sqrt(Math.max(0,Math.pow((2*c-a)/c,2)-1));
+      if(kind==='pf'){let px=a*(snap.value+a)/c;py=b*Math.sqrt(Math.max(0,(px/a)**2-1));}
+      return {a,b,py};
+    }
+
+  /* ======================================================================
+     [2.0] 셸 연결: 셸 상태 s → 원본 state, 가지별 문제(원본 updateBranchProblem), 풀이, 실시간 값, 그리기, 장면 정의
+     ====================================================================== */
+  function sync(s, m, sub) {
+    state.mode = m;
+    state.subtype = sub;
+    state.a = s.a;
+    state.b = s.b;
+    state.py = s.py;
+    state.branch = s.branch;
+    state.lens = s.lens;
+    state.partIdx = s.part == null ? -1 : s.part;
+    state.steps = { 1: s.step >= 1, 2: s.step >= 2, 3: s.step >= 3 };
+  }
+
+  // 원본 updateBranchProblem: 좌측 가지에서 문장·답이 달라지는 세 문제
+  function branchProblem(m, sub, branch) {
+    const orig = scenarios[m][sub - 1];
+    let question = orig.question, answer = orig.answer;
+    if (branch < 0) {
+      if (m === 1 && sub === 1) { question = '왼쪽 곡선 위의 점 P에서 PF=11일 때 PF′와 △PF′F의 둘레는? (a=3,b=4)'; answer = 'PF′ = 5, 둘레 = 26'; }
+      if (m === 1 && sub === 3) { question = '왼쪽 곡선 위의 점 P에서 PF=F′F=10인 이등변삼각형의 PF′와 둘레를 구하시오.'; answer = 'PF′ = 4, 둘레 = 24'; }
+      if (m === 4 && sub === 1) { question = '왼쪽 곡선 위의 점 P에서 PF=12, PF′=6일 때 접선과 x축의 교점 T에 대해 F′T:TF를 구하시오.'; answer = 'F′T:TF = 1:2'; }
+    }
+    return { question, answer };
+  }
+
+  // 원본 renderSolutions: 풀이의 수치는 예제 스냅 조건 기준
+  const CAPTION = '<div style="font-size:.9em;opacity:.8;margin-bottom:6px">※ 풀이의 수치는 문제의 조건(그림 맞추기)을 기준으로 합니다. 지금 끌어서 바꾼 값은 따로 표시됩니다.</div>';
+  const olist = (items) => '<ol style="padding-left:21px;margin:5px 0;display:grid;gap:9px;line-height:1.75">' + items.map((item) => `<li>${item}</li>`).join('') + '</ol>';
+  function solutionOf(m, sub) {
+    const get = (s) => { sync(s, m, sub); return dynamicSolution(null) || { formal: ['풀이 연결 오류'], shortcut: ['풀이 연결 오류'], warning: '', insight: '' }; };
+    return {
+      standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이',
+      quickTitle: '10초 컷 · 정의와 성질을 이용한 풀이', quickTag: '10초 컷',
+      standard: (s) => { const d = get(s); return { steps: CAPTION + (d.formalHtml || olist(d.formal)), warning: d.warning }; },
+      quick: (s) => { const d = get(s); return { steps: CAPTION + (d.shortcutHtml || olist(d.shortcut)), highlight: d.insight }; }
+    };
+  }
+
+  const PART_COLORS = ['sky', 'amber', 'violet'];
+  function viewOf(m, sb) {
+    return (s) => {
+      sync(s, m, sb);
+      const g = geometry(state.a, state.b, currentP());
+      const { a, b, c, P } = g;
+      const stable = (k) => Number(k).toFixed(2).replace(/\.00$/, '');
+      const ok = exampleConditions(g);
+      const err = measuredErrors(g).maxErr * 100;
+      // 원본 geomLive: 장면별 한 줄 실측 설명
+      let t = '';
+      if (m === 1 && sb === 2) {
+        const ang = Math.acos(clamp(dot(sub(g.F, g.P), sub(g.Fp, g.P)) / (g.focalP * g.focalFp), -1, 1)) * 180 / Math.PI;
+        t = `지름이 F′F인 원 위의 점 K: 넓이 = b² = ${fmt(b * b)}. 현재 ∠F′PF = ${fmt(ang, 2)}°${Math.abs(ang - 90) < 0.01 ? ' (직각)' : ' (자유 이동 중)'} · 점 K는 항상 따로 표시합니다.`;
+      } else if (m === 1) t = `현재 |PF′−PF|=${fmt(g.focusDiff)} / 2a=${fmt(2 * a)} · 삼각형 둘레 ${fmt(g.focalFp + g.focalP + 2 * c)}.`;
+      else if (m === 2 && sb === 3) t = `P는 M₁M₂의 중점 · 삼각형의 넓이 ${fmt(g.tanArea)} / ab=${fmt(a * b)} · OM₁·OM₂=${fmt(g.OMproduct)}.`;
+      else if (m === 2) t = `OH=${fmt(dist(g.O, g.H))}, FH=${fmt(dist(g.H, g.F))}; 점 P에서 점근선까지의 거리=${fmt(g.l1)} · 두 점근선이 이루는 각=${fmt(g.angle, 2)}°.`;
+      else if (m === 3 && sb === 2) t = `평행사변형의 넓이 ${fmt(g.parArea, 4)} / ab/2=${fmt(a * b / 2, 4)}.`;
+      else if (m === 3) t = `l₁=${fmt(g.l1)}, l₂=${fmt(g.l2)} · 곱=${fmt(g.asymProduct, 4)}, a²b²/c²=${fmt(a * a * b * b / c / c, 4)}.`;
+      else if (m === 4 && sb === 2) t = `F′F*=${fmt(dist(g.Fp, g.Fstar))}, OH₁=${fmt(dist(g.O, g.H1))} · F*는 F의 접선 대칭점.`;
+      else if (m === 4 && sb === 1) t = `F′T/TF=${fmt(g.baseRatio, 4)}, PF′/PF=${fmt(g.focalRatio, 4)} · 두 비가 같습니다.`;
+      else t = `d₁=${fmt(g.d1)}, d₂=${fmt(g.d2)}, d₁d₂=${fmt(g.tanProduct, 4)} / b²=${fmt(b * b, 4)}.`;
+      return {
+        chips: [
+          { k: '쌍곡선', tex: `\\dfrac{x^2}{${stable(a * a)}} - \\dfrac{y^2}{${stable(b * b)}} = 1`, color: 'amber' },
+          { k: '점근선', tex: `y=\\pm\\dfrac{${stable(b)}}{${stable(a)}}x`, color: 'sky' }
+        ],
+        status: ok ? { tone: 'ok', text: '문제의 조건과 일치' } : { tone: 'warn', text: '문제의 조건과 다름 · 정답은 원래 문제 기준' },
+        alert: { tone: 'info', text: t },
+        readouts: [
+          { label: '초점 c = √(a²+b²) / 점 P', value: `c=${fmt(c)} | (${fmt(P.x)}, ${fmt(P.y)})`, color: 'amber', wide: true },
+          { label: "거리의 차 |PF' - PF| = 2a", value: `|${fmt(g.focalFp)} − ${fmt(g.focalP)}| = ${fmt(g.focusDiff)}`, color: 'rose', wide: true },
+          { label: '점근선까지의 거리의 곱 l₁×l₂ = a²b²/c²', value: `${fmt(g.l1, 3)}×${fmt(g.l2, 3)} = ${fmt(g.asymProduct, 4)}`, color: 'sky', wide: true },
+          { label: '접선까지의 거리의 곱 d₁×d₂ = b²', value: `${fmt(g.d1, 3)}×${fmt(g.d2, 3)} = ${fmt(g.tanProduct, 4)}`, color: 'violet', wide: true },
+          { label: '측정 오차(최대)', value: `${err < 0.0005 ? err.toExponential(1) : fmt(err, 4)}%`, color: 'green', wide: true }
+        ],
+        parts: scenarios[m][sb - 1].parts.map((desc, i) => ({ id: i, name: desc, desc: '', value: null, color: PART_COLORS[i] })),
+        summary: explorationLine(g)
+      };
+    };
+  }
+
+  function plotOf(m, g) {
+    if (m === 1) plotMode1(g); else if (m === 2) plotMode2(g); else if (m === 3) plotMode3(g); else plotMode4(g);
+  }
+  function drawOf(m, sub) {
+    return (b, s, v) => {
+      BOARD = b;
+      CUR = s;
+      sync(s, m, sub);
+      state._labels = [];
+      sink.tape = null;
+      const g = geometry(state.a, state.b, currentP());
+      if (s.grid) b.grid();
+      b.axes();
+      if (state.lens !== 'all') withAlpha(0.32, () => plotOf(m, g)); else plotOf(m, g);
+      drawHyperbolaCurves(g.a, g.b);
+      renderLensOverlay(g);
+      renderPartFocus(g);
+      // 점 P: 선택된 가지 위에서만 움직입니다(원본 handlePointerMove). 가지 전환은 칩으로만.
+      b.handle('P', [g.P.x, g.P.y], { color: 'amber', r: 7.5, ariaLabel: '점 P', drag: (w) => { s.py = clamp(w.y, -7.5, 7.5); } });
+      state._labels.push({ s: b.toS(g.P.x, g.P.y), text: `P(${fmt(g.P.x)},${fmt(g.P.y)})`, color: palette.gold, offset: { x: 12, y: -18 } });
+      drawSmartLabels();
+      v.tape = sink.tape;
+    };
+  }
+
+  /* ---------- 장면 정의 ---------- */
+  const GROUPS = [
+    { title: "정의(|PF′−PF|=2a) 킬러", short: '정의·거리의 차' },
+    { title: '점근선과 초점에서 점근선까지의 거리(=b)', short: '점근선·초점에서의 거리' },
+    { title: '두 점근선까지의 거리의 곱', short: '점근선까지 거리의 곱' },
+    { title: '접선(각의 이등분선)과 접선까지의 거리의 곱', short: '접선·각의 이등분' }
+  ];
+  const QUESTION = {
+    '1-1': 'P가 쌍곡선 위를 움직이면 두 초점까지의 거리 PF′, PF는 어떻게 변하고, 그 차는 얼마로 유지될까?',
+    '1-2': '∠F′KF = 90°가 되는 점 K는 어디에 있고, 삼각형 KF′F의 넓이는 얼마일까?',
+    '1-3': 'PF′ = F′F 인 이등변삼각형이 되는 점 P에서 PF와 둘레는 얼마일까?',
+    '2-1': '초점 F에서 점근선에 내린 수선의 발 H에 대해 OH와 FH는 각각 얼마일까?',
+    '2-2': '두 점근선이 서로 수직이려면 a와 b는 어떤 관계여야 하고, 이때 이심률은 얼마일까?',
+    '2-3': 'P에서의 접선이 두 점근선과 만나는 점 M₁, M₂와 원점이 이루는 삼각형의 넓이는 P의 위치와 무관할까?',
+    '3-1': 'P에서 두 점근선에 내린 수선의 길이의 곱 l₁l₂ 는 P가 움직여도 변하지 않을까?',
+    '3-2': 'P를 지나 두 점근선에 평행한 직선이 만드는 평행사변형의 넓이는 일정할까?',
+    '3-3': '꼭짓점 A에서 두 점근선까지의 거리는 얼마이고, 그 곱은 일반 점 P에서의 값과 같을까?',
+    '4-1': 'P에서의 접선과 x축의 교점 T는 선분 F′F를 어떤 비로 나눌까?',
+    '4-2': '초점 F를 접선에 대해 대칭이동한 점 F*는 어디에 놓이고, OH₁은 얼마일까?',
+    '4-3': '두 초점에서 접선까지 거리의 곱 d₁d₂ 는 P가 움직여도 일정할까?'
+  };
+  const LENSES = [['all', '전체'], ['definition', '거리의 차'], ['asymptote', '점근선·직각'], ['tangent', '접선·대칭']];
+
+  // 원본 fitView 의 뜻: 초점과 점 P, 꼭짓점이 모두 보이도록 장면을 열 때 보기 창을 맞춥니다.
+  function focusOf(s) {
+    const c = Math.hypot(s.a, s.b);
+    const ext = Math.max(Math.abs(s.py), s.b, 4.5);
+    return { x: [-(c + 3.2), c + 3.2], y: [-(ext + 1.6), ext + 1.6] };
+  }
+  // 원본 animateLoop: 점 P가 ±7.4 사이를 오갑니다(60프레임 기준 속도)
+  const tick = (s, dt) => {
+    if (!s.playing) return false;
+    s.py += 0.042 * 60 * s.animDir * dt;
+    if (s.py >= 7.4) { s.py = 7.4; s.animDir = -1; }
+    if (s.py <= -7.4) { s.py = -7.4; s.animDir = 1; }
+    return true;
+  };
+
+  function sceneOf(m, sub) {
+    const sc = scenarios[m][sub - 1];
+    const snapOf = (s) => { sync(s, m, sub); const t = snapTarget(); return { a: t.a, b: t.b, py: (s.py < 0 ? -1 : 1) * Math.abs(t.py) }; };
+    return {
+      id: `m${m}s${sub}`,
+      title: sc.name,
+      short: sc.short,
+      reviewTab: true,
+      question: QUESTION[`${m}-${sub}`],
+      guide: `점 P를 끌거나 슬라이더·[문제 조건으로 그림 맞추기]를 조작하세요. <b class="text-amber-300">${sc.short}</b>를 실제 좌표로 확인합니다.`,
+      controls: ['a', 'b', 'py'],
+      steps: sc.steps,
+      focus: focusOf,
+      enter: (s) => { Object.assign(s, snapOf(s)); s.animDir = 1; },
+      presets: () => [
+        { group: '점 P가 놓이는 곡선', label: '오른쪽 곡선 (x > 0)', apply: (st, lab) => { if (st.branch !== 1) { st.branch = 1; if (lab._buildPanel) lab._buildPanel(); } }, on: (st) => st.branch === 1 },
+        { group: '점 P가 놓이는 곡선', label: '왼쪽 곡선 (x < 0)', apply: (st, lab) => { if (st.branch !== -1) { st.branch = -1; if (lab._buildPanel) lab._buildPanel(); } }, on: (st) => st.branch === -1 }
+      ].concat(LENSES.map(([k, lbl]) => ({ group: '강조해서 볼 요소', label: lbl, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }))),
+      actions: [{ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '자동 이동'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+      problem: {
+        tag: `${sc.short}`,
+        time: sub === 1 ? examData[m].targetTime : undefined,
+        text: (s) => APLab.esc(branchProblem(m, sub, s.branch).question),
+        answer: (s) => APLab.esc(branchProblem(m, sub, s.branch).answer),
+        snap: snapOf
+      },
+      solution: solutionOf(m, sub),
+      tick,
+      view: viewOf(m, sub),
+      draw: drawOf(m, sub)
+    };
+  }
+
+  const groups = [1, 2, 3, 4].map((m) => ({
+    id: 'm' + m,
+    title: GROUPS[m - 1].title,
+    short: GROUPS[m - 1].short,
+    scenes: [1, 2, 3].map((sub) => sceneOf(m, sub))
+  }));
+
+  APLab.createLab({
+    id: 'geom-hyperbola',
+    title: '쌍곡선 실전 킬러 랩',
+    courseName: '기하',
+    unit: '이차곡선 · 쌍곡선',
+    courseColor: 'var(--m-rose)',
+    home: '../index.html#geom',
+    legacy: '../../labs/기하와벡터/쌍곡선.html',
+    board: { kind: 'cartesian', focus: { x: [-8.2, 8.2], y: [-6.6, 6.6] } },
+    params: {
+      a: { value: 3, min: 2, max: 5, step: 0.05, color: 'amber', label: '주축의 길이의 절반 $a$', hint: '꼭짓점이 $(\\pm a,0)$ · 주축의 길이는 $2a$', format: (v) => `a = ${fmt(v)} (2a = ${fmt(2 * v)})` },
+      b: { value: 4, min: 1.5, max: 5, step: 0.05, color: 'sky', label: '$b$ (점근선 기울기 $b/a$)', hint: '초점은 $c=\\sqrt{a^2+b^2}$', format: (v) => `b = ${fmt(v)} (b² = ${fmt(v * v)})` },
+      py: { value: 5, min: -7.5, max: 7.5, step: 0.05, color: 'rose', label: '점 P의 $y$좌표 $y_1$', hint: '그림의 노란 점 P를 끌어도 같이 움직입니다', format: (v, s) => `y₁ = ${fmt(v)} (x₁ = ${fmt(s.branch * s.a * Math.hypot(1, v / s.b))})` }
+    },
+    state: { branch: 1, lens: 'all', animDir: 1 },
+    persist: ['lens', 'branch'],
+    groups
+  });
+});
+</script>
+</body>
+</html>

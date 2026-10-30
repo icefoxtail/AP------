@@ -348,6 +348,11 @@
       return latexStr;
     }
 
+    // 해설 문자열(hint · formulaHTML · notes) 속 $...$ 구간을 위 tex()로 KaTeX 수식으로 바꿉니다.
+    function texInline(html) {
+      return html.replace(/\$([^$]+)\$/g, (m, src) => tex(src));
+    }
+
     // -------------------------------------------------------------------------
     // 1. 전역 상태 (파일 1과 0% 중복, 측정·계산·복합입체 18종 특화)
     // -------------------------------------------------------------------------
@@ -1986,9 +1991,18 @@
         .join('');
     }
 
+    // 해설 칸에 $...$ 수식을 넣습니다. 슬라이더·애니메이션이 매 프레임 render()를 부르므로 내용이 같으면 DOM을 다시 쓰지 않습니다.
+    function setRichHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el._html !== html) {
+        el._html = html;
+        el.innerHTML = texInline(html);
+      }
+    }
+
     function updateUI(spec) {
       document.getElementById('canvasModeBadge').textContent = spec.badge;
-      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      setRichHTML('canvasActionHint', spec.hint);
       document.getElementById('txtMainAction').textContent = spec.actionTxt;
 
       document.getElementById('dim1Label').textContent = spec.dim1Name;
@@ -2025,9 +2039,9 @@
 
       document.getElementById('totalSurfaceBadge').textContent = spec.totalS;
       document.getElementById('volRuleBadge').textContent = spec.volRule;
-      document.getElementById('volumePartsBox').innerHTML = spec.volHTML;
+      setRichHTML('volumePartsBox', spec.volHTML);
       document.getElementById('totalVolumeBadge').textContent = spec.totalV;
-      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+      setRichHTML('intuitionNotes', spec.notes);
 
       renderPresetChips();
     }

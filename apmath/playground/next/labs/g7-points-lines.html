@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>점 · 직선 · 반직선 · 선분 · 각 · AP Math 실험실</title>
+<meta name="description" content="중1 기본 도형: 직선·반직선·선분과 공통부분, 중점·삼등분점, 선의 개수·맞꼭지각·시계 바늘, 종이 테이프 접기까지 4개 탐구관 17개 장면">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<style>.apl .text-rose-400, .apl .text-pink-400 { color: var(--m-red); }</style>
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   중1 · 점 · 직선 · 반직선 · 선분 · 각 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 17개 장면
+   원본: labs/g7/points-lines.html
+   이식 방식: 원본의 내용(getSpec·SUB_MENUS)과 그리기 코드(renderTab1~4)를 글자 그대로 옮기고,
+   원본이 캔버스에 직접 쓰던 ctx 호출(화면 픽셀 좌표)만 아래의 호환 도우미 ctx가 새 무대 엔진에 연결합니다.
+   원본과 다른 점
+   - [2.0 수정] 끌 수 있는 점(동점 C · 반직선 OC의 끝 C · 스캔 점 Q)은 끄는 위치와 그려지는 위치의 식이 달라
+     마우스를 따라오지 않았습니다 → 실제 핸들로 교체. 점 A·B도 같은 핸들(터치·키보드 지원)
+   - [2.0 수정] 효과가 없던 조작(진행도·실행 버튼: 7개 장면, 기준 길이 칩: 다수 장면, 일직선 점 수: 원형 배치 장면)은 표시하지 않음
+   - [2.0 수정] 점 개수·직선 개수 칩이 18·24에서 같은 값(7개·6개)이던 것을 개수 그대로 고르게, 접은 귀퉁이/시계 각도 칩은
+     실제 값(20~40°, 몇 분)으로 표기
+   - 하단 비율 막대는 무대 아래 띠로, 긴 캡션은 무대 너비에 맞춰 줄바꿈, 이름표가 겹치면 자동으로 비켜 놓음
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+
+  /* ===== 호환 도우미 (이 파일 안에서만 씁니다) =====
+     원본은 캔버스 문맥(ctx)에 화면 픽셀 좌표로 직접 그렸습니다. 아래 ctx는 같은 메서드 이름(beginPath·moveTo·lineTo·arc·fill·stroke·
+     fillText·translate·rotate…)을 그대로 받아 무대 엔진(APLab.Board)으로 그립니다.
+     - 점 좌표는 가상 캔버스 좌표 → 무대 좌표(board.toS): 확대·이동·자동 맞춤·판서가 그대로 동작합니다.
+     - 선 굵기·글자 크기·작은 점(반지름 12 이하)·translate/rotate 안쪽(화살촉 등)은 원본과 같은 화면 픽셀입니다.
+     - 긴 글은 무대 너비에 맞춰 줄을 나누고(위로 쌓음), 서로 겹치는 이름표는 아래로 비켜 놓습니다.
+     - 이모지는 떼고 ➔ ⭕ ❌ 는 → ○ × 로 바꿉니다(셸이 화면 글자에서 이모지를 떼므로 뜻이 사라지지 않게). */
+  let BOARD = null;
+  const arrowOnly = (s) => String(s == null ? '' : s).replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×');
+  const cvText = (s) => APLab.stripEmoji(arrowOnly(s));
+  const ctx = (function () {
+    const DEF = { fillStyle: '#ffffff', strokeStyle: '#ffffff', lineWidth: 1, font: '700 13px sans-serif', textAlign: 'start', textBaseline: 'alphabetic', shadowColor: 'transparent', shadowBlur: 0, lineCap: 'butt', lineJoin: 'miter', globalAlpha: 1, _dash: [] };
+    const F = { ...DEF };
+    const KEYS = Object.keys(DEF);
+    let path = [], stack = [], tr = null, placed = [];
+    const P = (x, y) => (tr ? { x: tr.ox + x * tr.c - y * tr.s, y: tr.oy + x * tr.s + y * tr.c } : BOARD.toS(x, y));
+    const rot = () => (tr ? Math.atan2(tr.s, tr.c) : 0);
+    F.reset = () => { path = []; stack = []; tr = null; placed = []; Object.assign(F, DEF, { _dash: [] }); };
+    F.save = () => { stack.push({ p: KEYS.map((k) => F[k]), tr: tr && { ...tr } }); };
+    F.restore = () => { const t = stack.pop(); if (!t) return; KEYS.forEach((k, i) => { F[k] = t.p[i]; }); tr = t.tr; };
+    F.translate = (x, y) => { const p = P(x, y); tr = { ox: p.x, oy: p.y, c: tr ? tr.c : 1, s: tr ? tr.s : 0 }; };
+    F.rotate = (a) => { if (!tr) return; const ca = Math.cos(a), sa = Math.sin(a); tr = { ox: tr.ox, oy: tr.oy, c: tr.c * ca - tr.s * sa, s: tr.s * ca + tr.c * sa }; };
+    F.setLineDash = (a) => { F._dash = a || []; };
+    F.beginPath = () => { path = []; };
+    F.closePath = () => { path.push({ t: 'Z' }); };
+    F.moveTo = (x, y) => { path.push({ t: 'M', ...P(x, y) }); };
+    F.lineTo = (x, y) => { path.push({ t: 'L', ...P(x, y) }); };
+    F.quadraticCurveTo = (cx, cy, x, y) => { const c = P(cx, cy), p = P(x, y); path.push({ t: 'Q', cx: c.x, cy: c.y, x: p.x, y: p.y }); };
+    F.arc = (x, y, r, a0, a1, ccw) => {
+      const p = P(x, y);
+      const px = !!tr || r <= 12; // 작은 점·화살촉은 화면 픽셀, 큰 원·호는 도형 크기(확대·축소를 따라감)
+      const bb = BOARD._bbox;
+      if (!px && bb) { // 자동 맞춤: 원의 바깥 범위도 그림 범위로 기록(Board.arc는 중심만 기록)
+        bb.x0 = Math.min(bb.x0, x - r); bb.x1 = Math.max(bb.x1, x + r); bb.y0 = Math.min(bb.y0, y - r); bb.y1 = Math.max(bb.y1, y + r);
+      }
+      path.push({ t: 'A', x: p.x, y: p.y, r: px ? r : r * BOARD.k, a0: a0 + rot(), a1: a1 + rot(), ccw: !!ccw });
+    };
+    const run = (c) => {
+      c.beginPath();
+      path.forEach((o) => {
+        if (o.t === 'M') c.moveTo(o.x, o.y);
+        else if (o.t === 'L') c.lineTo(o.x, o.y);
+        else if (o.t === 'Q') c.quadraticCurveTo(o.cx, o.cy, o.x, o.y);
+        else if (o.t === 'A') c.arc(o.x, o.y, o.r, o.a0, o.a1, o.ccw);
+        else c.closePath();
+      });
+    };
+    const glow = (c) => {
+      if (F.shadowBlur > 0 && BOARD.glowOn) { c.shadowColor = BOARD.color(F.shadowColor); c.shadowBlur = F.shadowBlur; } else c.shadowBlur = 0;
+    };
+    F.fill = () => {
+      const b = BOARD, c = b.ctx;
+      c.save(); c.setLineDash([]); c.globalAlpha = F.globalAlpha; c.fillStyle = b.color(F.fillStyle); glow(c); run(c); c.fill(); c.restore();
+    };
+    F.stroke = () => {
+      const b = BOARD, c = b.ctx;
+      c.save(); c.globalAlpha = F.globalAlpha; c.strokeStyle = b.color(F.strokeStyle); c.lineWidth = F.lineWidth * b.lw;
+      c.lineCap = F.lineCap === 'butt' ? 'round' : F.lineCap; c.lineJoin = 'round'; c.setLineDash(F._dash.map((v) => v * b.lw));
+      glow(c); run(c); c.stroke(); c.restore();
+    };
+    const rectPath = (x, y, w, h) => {
+      const keep = path; path = [];
+      F.moveTo(x, y); F.lineTo(x + w, y); F.lineTo(x + w, y + h); F.lineTo(x, y + h); F.closePath();
+      const r = path; path = keep; return r;
+    };
+    F.fillRect = (x, y, w, h) => { const keep = path; path = rectPath(x, y, w, h); F.fill(); path = keep; };
+    F.strokeRect = (x, y, w, h) => { const keep = path; path = rectPath(x, y, w, h); F.stroke(); path = keep; };
+    F.clearRect = () => {};
+    const wrap = (txt, maxW, wid) => {
+      if (wid(txt) <= maxW) return [txt];
+      const out = []; let cur = '';
+      for (const w of txt.split(' ')) {
+        const t = cur ? cur + ' ' + w : w;
+        if (!cur || wid(t) <= maxW) cur = t; else { out.push(cur); cur = w; }
+      }
+      if (cur) out.push(cur);
+      return out;
+    };
+    F.fillText = (str, x, y) => {
+      const b = BOARD, txt = cvText(str);
+      if (!txt) return;
+      const wm = /\b([1-9]00)\b/.exec(F.font), sm = /([\d.]+)px/.exec(F.font);
+      const size = sm ? parseFloat(sm[1]) : 13, weight = wm ? +wm[1] : 750;
+      const align = F.textAlign === 'start' ? 'left' : F.textAlign === 'end' ? 'right' : F.textAlign;
+      const base = F.textBaseline;
+      const p = P(x, y);
+      const eff = size * b.fs * b._ts();
+      const c = b.ctx;
+      c.save(); c.font = `${weight} ${eff}px ${b.font}`;
+      const wid = (t) => c.measureText(t).width;
+      const lines = wrap(txt, Math.max(150, b.W - b.insets.left - b.insets.right - 28), wid);
+      const ws = lines.map(wid);
+      c.restore();
+      const lh = eff * 1.28, n = lines.length;
+      const top0 = base === 'middle' ? -eff / 2 : base === 'top' || base === 'hanging' ? 0 : base === 'bottom' ? -eff : -eff * 0.8;
+      const boxes = (dy) => lines.map((_, i) => {
+        const x0 = p.x + (align === 'center' ? -ws[i] / 2 : align === 'right' ? -ws[i] : 0), y0 = p.y + dy - (n - 1 - i) * lh + top0;
+        return { x0: x0 - 2, x1: x0 + ws[i] + 2, y0: y0 - 1, y1: y0 + eff + 1 };
+      });
+      const hit = (bx) => { for (const q of bx) for (const r of placed) if (q.x0 < r.x1 && q.x1 > r.x0 && q.y0 < r.y1 && q.y1 > r.y0) return r; return null; };
+      // 겹치면 겹친 글자의 반대쪽(위에 있으면 위로, 아니면 아래로)으로 한 줄씩 비켜 놓습니다.
+      let dy = 0;
+      const first = hit(boxes(0));
+      if (first) {
+        const q0 = boxes(0)[0], dir = (q0.y0 + q0.y1) < (first.y0 + first.y1) ? -1 : 1;
+        for (let k = 1; k <= 4; k++) { if (!hit(boxes(dir * k * lh))) { dy = dir * k * lh; break; } }
+      }
+      boxes(dy).forEach((q) => placed.push(q));
+      lines.forEach((ln, i) => b._text(p.x, p.y + dy - (n - 1 - i) * lh, ln, { color: F.fillStyle, size, weight, align, baseline: base }));
+    };
+    return F;
+  })();
+
+  /* ===== 원본 그대로: 상태 (원본 340–364행, 화면 확대·이동·드래그 중 표시는 무대가 맡으므로 뺌) ===== */
+    const state = {
+      mode: 1, // 1: 직선·반직선·선분 & 공통부분, 2: 중점·삼등분·조건식 블록, 3: 선의 개수·맞꼭지각·시계, 4: 종이접기·이등분선·직교
+      sub: { 1: 'rayCompare', 2: 'midPoint', 3: 'collinear', 4: 'paperFold' },
+      layerMode: 'exploded', // 'exploded' | 'single' | 'intersect'
+      activePartIdx: -1,
+      L: 12,   // 기본 선분 길이 (6, 12, 18, 24 cm) 또는 점 개수 시드
+      deg: 55, // 기본 각도 또는 시계 분 시드
+      animProg: 1.0,
+      ptA: { x: -125, y: 12 },
+      ptB: { x: 120, y: -15 },
+      scale: 1.0,
+      offsetX: 0,
+      offsetY: 0
+    };
+
+  /* ===== 원본 그대로: 세부 시나리오 목록 (원본 366–392행) ===== */
+    const SUB_MENUS = {
+      1: [
+        { id: 'rayCompare', label: '⚡ 반직선 AB vs BA 비교' },
+        { id: 'lineTypes', label: '📏 직선(↔)·반직선(→)·선분(―)' },
+        { id: 'sameRay', label: '🔦 4점: 같은 반직선(BC=BD)' },
+        { id: 'intersect', label: '✨ 4점: 공통부분(반직선 BD와 CA → 선분 BC)' },
+        { id: 'shortest', label: '🏃 두 점 사이 최단거리=선분' }
+      ],
+      2: [
+        { id: 'midPoint', label: '⚖️ 두 중점 사이의 거리(MN=½AB)' },
+        { id: 'doubleMid', label: '🪜 중점의 중점(½·¼·¾ 칸 나누기)' },
+        { id: 'trisect', label: '🧱 삼등분점+중점(6칸으로 나누기)' },
+        { id: 'ratioBlock', label: '🎯 길이의 비를 칸 수로 바꾸기(AC=2CB)' }
+      ],
+      3: [
+        { id: 'collinear', label: '⚡ 한 직선 위의 점 m개(겹치는 직선 빼고 1개 더하기)' },
+        { id: 'circlePts', label: '⭕ 원형 배치 점 n개 선의 개수' },
+        { id: 'verticalAng', label: '✂️ 맞꼭지각 원리 & n(n-1)쌍' },
+        { id: 'clockAng', label: '🕒 시침(0.5°)·분침(6°) 각도 추격' }
+      ],
+      4: [
+        { id: 'paperFold', label: '🧻 직사각형 종이 테이프 접기(이등변!)' },
+        { id: 'paperFoldCorner', label: '📐 직사각형 귀퉁이 대각선 접기' },
+        { id: 'bisect90', label: '⚡ 평각의 두 이등분선이 이루는 각 = 90°' },
+        { id: 'perpDist', label: '📍 직교(⊥)·수선의 발(H) 최단거리' }
+      ]
+    };
+
+  /* ===== 원본 그대로: 장면별 실시간 명세 getSpec (원본 397–806행) ===== */
+    function getSpec() {
+      const m = state.mode;
+      const sub = state.sub[m];
+      const L = state.L;
+      const deg = state.deg;
+
+      // ==================== [탭 1: 직선·반직선·선분 & 공통부분] ====================
+      if (m === 1) {
+        if (sub === 'rayCompare') {
+          return {
+            badge: '탐구 1-A · 반직선 AB vs 반직선 BA 손전등 빛 비교',
+            hint: `칠판의 <strong class="text-sky-300">점 A, 점 B를 마우스로 끌어</strong> 보세요! 반직선은 <strong class="text-amber-300">출발점(손전등 위치)과 뻗어 나가는 방향</strong>이 정해져 있어서 <strong class="text-rose-400">반직선 AB와 반직선 BA는 서로 다른 도형</strong>입니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 빛 접기' : '🎬 손전등 빛 발사!',
+            dim1Name: '기준 길이 L', dim2Name: '비교 각도',
+            parts: [
+              { id: 0, name: '🔦 반직선 AB (A 출발 → B 방향 무한)', desc: '시작점 A 고정, B를 뚫고 끝없이 진행', val: '출발점 A', color: '#fbbf24', ok: true },
+              { id: 1, name: '🔦 반직선 BA (B 출발 → A 방향 무한)', desc: '시작점 B 고정, A를 뚫고 정반대로 진행', val: '출발점 B', color: '#f472b6', ok: true },
+              { id: 2, name: '✨ 두 반직선이 겹치는 공통부분', desc: 'A와 B 사이에 끼인 구간만 동시에 지남', val: '선분 AB', color: '#34d399', ok: true }
+            ],
+            totalRes: '반직선 AB ≠ 반직선 BA (공통부분 = 선분 AB)',
+            rule: '반직선 일치 조건: (출발점 일치) + (방향 일치)',
+            formulaHTML: `• <strong>직선</strong>: ${tex('\\overleftrightarrow{AB} = \\overleftrightarrow{BA}')} (순서 바꿔도 같음 ⭕)<br/>• <strong>선분</strong>: ${tex('\\overline{AB} = \\overline{BA}')} (순서 바꿔도 같음 ⭕)<br/>• <strong>반직선</strong>: ${tex('\\overrightarrow{AB} \\ne \\overrightarrow{BA}')} (순서 바꾸면 다름 ❌)`,
+            notes: `• <strong>[손전등 비유]</strong>: ${tex('\\overrightarrow{AB}')}는 <strong>A에 서서 B 쪽으로 손전등을 비추는 것</strong>이고, ${tex('\\overrightarrow{BA}')}는 <strong>B에 서서 A 쪽으로 비추는 것</strong>이라 완전히 반대입니다!`,
+            bars: [
+              { label: '← 반직선 BA 영역', weight: 0.33, color: '#f472b6' },
+              { label: '✨공통부분(선분 AB)', weight: 0.34, color: '#34d399' },
+              { label: '반직선 AB 영역 →', weight: 0.33, color: '#fbbf24' }
+            ]
+          };
+        }
+        if (sub === 'lineTypes') {
+          return {
+            badge: '탐구 1-B · 직선(↔) · 반직선(→) · 선분(―) 세 도형 비교',
+            hint: `세 도형 중 <strong class="text-emerald-300">유일하게 자로 길이를 잴 수 있는 도형은 양 끝점이 막혀 있는 『선분 AB(${L}cm)』</strong> 딱 하나뿐입니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 선분에서 다시 뻗어나가기' : '🎬 양쪽으로 무한 연장하기',
+            dim1Name: '선분 AB 길이 L', dim2Name: '비교 옵션',
+            parts: [
+              { id: 0, name: '↔️ 직선 AB (양방향 끝없이 뻗은 선)', desc: '끝점 0개 · 길이 측정 불가(무한)', val: 'AB = BA (같음)', color: '#38bdf8', ok: true },
+              { id: 1, name: '➡️ 반직선 AB (한쪽으로만 끝없이 뻗은 선)', desc: '시작점 1개(A) · 길이 측정 불가(무한)', val: 'AB ≠ BA (다름)', color: '#fbbf24', ok: true },
+              { id: 2, name: `📏 선분 AB (점 A에서 점 B까지 막힌 선)`, desc: `양 끝점 2개 · 유일하게 길이 측정 가능!`, val: `길이 ${L} cm`, color: '#34d399', ok: true }
+            ],
+            totalRes: `선분 AB만 유한 길이 (${L} cm)`,
+            rule: '서로 다른 두 점 A, B를 지나는 직선은 오직 1개!',
+            formulaHTML: `• 한 점 A를 지나는 직선은 <strong>무수히 많다</strong>.<br/>• 서로 다른 두 점 A, B를 지나는 직선은 <strong>오직 1개뿐</strong>이다.<br/>• 기호 위의 모자 모양(↔, →, ―)이 도형의 정체를 그대로 보여줍니다!`,
+            notes: `• <strong>[주의]</strong>: '직선 AB의 길이는 반직선 AB의 길이의 2배이다?' ➔ <strong>거짓(❌)</strong>! 둘 다 끝이 없으므로 길이를 잴 수도, 비교할 수도 없습니다.`,
+            bars: [
+              { label: '직선(양쪽 무한)', weight: 0.33, color: '#38bdf8' },
+              { label: '반직선(한쪽 무한)', weight: 0.33, color: '#fbbf24' },
+              { label: `선분(유일한 길이 ${L}cm!)`, weight: 0.34, color: '#34d399' }
+            ]
+          };
+        }
+        if (sub === 'sameRay') {
+          return {
+            badge: '탐구 1-C · [한 직선 위의 네 점 A-B-C-D] 같은 반직선 찾기',
+            hint: `점 B에서 오른쪽 C를 향해 쏜 빛(<strong class="text-amber-300">반직선 BC</strong>)는 어차피 C를 뚫고 D까지 계속 날아갑니다! 따라서 <strong class="text-sky-300">반직선 BD와 같은 반직선</strong>입니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 빛 초기화' : '🎬 두 반직선 동시 발사!',
+            dim1Name: '전체 구간 간격', dim2Name: '비교 옵션',
+            parts: [
+              { id: 0, name: '🔦 반직선 BC (점 B 출발 → 오른쪽)', desc: '점 C를 지나 오른쪽으로 끝없이 진행', val: '출발점 B, 방향 →', color: '#fbbf24', ok: true },
+              { id: 1, name: '🔦 반직선 BD (점 B 출발 → 오른쪽)', desc: '점 D를 지나 오른쪽으로 끝없이 진행', val: '반직선 BC와 일치!', color: '#38bdf8', ok: true },
+              { id: 2, name: '❌ 반직선 AC (점 A 출발 → 오른쪽)', desc: '방향은 같지만 출발점이 A라서 다름!', val: '출발점 불일치 ❌', color: '#f43f5e', ok: false }
+            ],
+            totalRes: '반직선 BC = 반직선 BD (일치!)',
+            rule: '맨 앞글자(출발점)가 다르면 다른 반직선입니다!',
+            formulaHTML: `• ${tex('\\overrightarrow{BC} = \\overrightarrow{BD}')} (출발점 B 동일 + 오른쪽 방향 동일 ⭕)<br/>• ${tex('\\overrightarrow{CB} = \\overrightarrow{CA}')} (출발점 C 동일 + 왼쪽 방향 동일 ⭕)<br/>• ${tex('\\overrightarrow{AB} = \\overrightarrow{AC} = \\overrightarrow{AD}')} (출발점 A 동일 + 오른쪽 방향 동일 ⭕)`,
+            notes: `• <strong>[같은 반직선을 찾는 방법]</strong>: 기호 ${tex('\\overrightarrow{BC}')}와 같은 반직선을 고를 때는 <strong>맨 앞글자가 똑같이 B로 시작하는지</strong>부터 확인하세요!`,
+            bars: [
+              { label: '❌ A~B 구간(반직선 AC만 있음)', weight: 0.28, color: '#f43f5e' },
+              { label: '⭕ 점 B부터 오른쪽 끝까지 (반직선 BC = 반직선 BD, 일치!)', weight: 0.72, color: '#fbbf24' }
+            ]
+          };
+        }
+        if (sub === 'intersect') {
+          return {
+            badge: '탐구 1-D · [한 직선 위의 네 점 A-B-C-D] 두 반직선의 공통부분 찾기',
+            hint: `점 B에서 오른쪽으로 가는 <strong class="text-amber-300">반직선 BD</strong>와 점 C에서 왼쪽으로 가는 <strong class="text-pink-300">반직선 CA</strong>가 서로 마주 보며 달릴 때, 위·아래 두 빛이 동시에 겹치는 구간은 <strong class="text-emerald-300">선분 BC</strong>입니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 다시 쏘기' : '🎬 양쪽 빛 교차 발사!',
+            dim1Name: '점 간격 스케일', dim2Name: '비교 옵션',
+            parts: [
+              { id: 0, name: '🔦 위층: 반직선 BD (B에서 오른쪽 →)', desc: 'B, C, D를 지나 오른쪽 끝까지', val: 'B → 오른쪽 무한', color: '#fbbf24', ok: true },
+              { id: 1, name: '🔦 아래층: 반직선 CA (C에서 왼쪽 ←)', desc: 'C, B, A를 지나 왼쪽 끝까지', val: 'C → 왼쪽 무한', color: '#f472b6', ok: true },
+              { id: 2, name: '✨ 겹치는 공통부분 (반직선 BD와 CA에 모두 포함된 부분)', desc: '위층과 아래층에 모두 칠해진 가운데 구간', val: '선분 BC!', color: '#34d399', ok: true }
+            ],
+            totalRes: '공통부분 = 선분 BC (합치면 직선 AD)',
+            rule: '마주 보는 두 반직선의 공통부분 = 두 출발점 사이의 선분',
+            formulaHTML: `• 공통부분: 반직선 ${tex('\\overrightarrow{BD}')}와 반직선 ${tex('\\overrightarrow{CA}')}에 모두 포함된 부분은 ${tex('\\overline{BC}')}입니다.<br/>• 합친 도형: 두 반직선을 합치면 ${tex('\\overleftrightarrow{AD}')} (직선 전체)가 됩니다.`,
+            notes: `• 한 줄 위에서 두 반직선을 겹쳐 그리면 어디가 공통부분인지 헷갈립니다. 칠판처럼 <strong>위층·아래층 2층으로 살짝 띄워서 그린 뒤 둘 다 있는 구간</strong>을 표시하면 공통부분을 정확히 찾을 수 있습니다!`,
+            bars: [
+              { label: '← 반직선 CA만', weight: 0.32, color: '#f472b6' },
+              { label: '✨공통부분 = 선분 BC!', weight: 0.36, color: '#34d399' },
+              { label: '반직선 BD만 →', weight: 0.32, color: '#fbbf24' }
+            ]
+          };
+        }
+        // shortest
+        return {
+          badge: `탐구 1-E · 두 점 A, B 사이의 거리(최단거리 = 선분)와 중점 M(|)`,
+          hint: `두 점 A, B를 잇는 수많은 길 중 가장 짧은 <strong class="text-emerald-300">선분 AB의 길이(${L}cm)</strong>를 수학에서 <strong>『두 점 A, B 사이의 거리』</strong>라고 부릅니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 경로 비교 처음으로' : '🎬 최단거리 비교!',
+          dim1Name: '선분 AB 길이 L', dim2Name: '곡선 굽힘 정도',
+          parts: [
+            { id: 0, name: `❌ 굽은 곡선 경로 / 꺾인 경로`, desc: `돌아가므로 최단거리가 아님`, val: `${(L * 1.28).toFixed(1)} cm`, color: '#f43f5e', ok: false },
+            { id: 1, name: `⭕ 두 점 A, B 사이의 거리 (선분 AB)`, desc: `가장 짧은 곧은 선분의 길이`, val: `${L} cm`, color: '#34d399', ok: true },
+            { id: 2, name: `⚖️ 선분 AB의 중점 M (등변 마크 |)`, desc: `AM = MB = ½AB 똑같이 2등분`, val: `각 ${L / 2} cm`, color: '#fbbf24', ok: true }
+          ],
+          totalRes: `거리 AB = ${L} cm, 중점 AM = MB = ${L / 2} cm`,
+          rule: '두 점 사이의 거리 = 두 점을 잇는 선 중 가장 짧은 선분 AB의 길이!',
+          formulaHTML: `• 두 점 A, B 사이의 거리 ${tex(`= \\overline{AB} = ${L}\\text{ cm}`)}<br/>• 중점 M: ${tex(`\\overline{AM} = \\overline{MB} = \\dfrac{1}{2}\\overline{AB} = ${L / 2}\\text{ cm}`)}`,
+          notes: `• <strong>[함정 주의]</strong>: '두 점 A, B를 잇는 선 중 가장 짧은 것은 직선 AB이다?' ➔ <strong>거짓(❌)</strong>! 직선은 끝이 없으므로 <strong>선분 AB</strong>라고 해야 맞습니다.`,
+          bars: [
+            { label: `AM = ½AB (${L / 2}cm)`, weight: 0.5, color: '#fbbf24' },
+            { label: `MB = ½AB (${L / 2}cm)`, weight: 0.5, color: '#34d399' }
+          ]
+        };
+      }
+
+      // ==================== [탭 2: 중점·삼등분·조건식 레고 블록] ====================
+      if (m === 2) {
+        if (sub === 'midPoint') {
+          const halfL = L / 2;
+          const cRatio = 0.2 + state.animProg * 0.6;
+          const lenAC = +(L * cRatio).toFixed(1), lenCB = +(L * (1 - cRatio)).toFixed(1);
+          const lenMC = +(lenAC / 2).toFixed(2), lenCN = +(lenCB / 2).toFixed(2);
+          return {
+            badge: `탐구 2-A · 움직이는 점 C가 어디에 있어도 두 중점 사이의 거리 MN = ½AB = ${halfL}cm 일정!`,
+            hint: `칠판의 <strong class="text-amber-300">노란 점 C를 마우스로 좌우로 끌어</strong> 보세요! 왼쪽이 2○, 오른쪽이 2△ 이므로 가운데 <strong class="text-amber-300">MN(= ○ + △)은 언제나 전체 AB(${L}cm)의 정확히 절반(${halfL}cm)</strong>입니다!`,
+            actionTxt: '🎬 점 C를 좌우로 움직여 MN의 길이 확인!',
+            dim1Name: '전체 선분 AB 길이', dim2Name: '비교 옵션',
+            parts: [
+              { id: 0, name: `🔵 왼쪽 조각의 절반 MC (= ○)`, desc: `AC(${lenAC}cm)의 중점 M ➔ ½AC`, val: `${lenMC} cm`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🩷 오른쪽 조각의 절반 CN (= △)`, desc: `CB(${lenCB}cm)의 중점 N ➔ ½CB`, val: `${lenCN} cm`, color: '#f472b6', ok: true },
+              { id: 2, name: `🟡 두 중점 사이 거리 MN (= ○ + △)`, desc: `½(AC + CB) = ½AB (점 C가 움직여도 변하지 않음)`, val: `${halfL} cm (일정)`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `MN = ○ + △ = ½AB = ${halfL} cm (항상 일정!)`,
+            rule: '○○ + △△ = L  ⟹  ○ + △ = ½L',
+            formulaHTML: `• ${tex(`\\overline{AB} = 2\\text{○} + 2\\text{△} = ${L}\\text{ cm}`)}<br/>• ${tex(`\\overline{MN} = \\overline{MC} + \\overline{CN} = \\text{○} + \\text{△} = \\dfrac{1}{2}\\overline{AB} = ${halfL}\\text{ cm}`)}`,
+            notes: `• <strong>[거꾸로 묻는 문제]</strong>: 만약 ${tex(`\\overline{MN} = ${halfL}\\text{ cm}`)}라고 알려주고 전체 ${tex('\\overline{AB}')}를 구하라고 하면, <strong>MN의 2배인 ${tex(`${L}\\text{ cm}`)}</strong>입니다!`,
+            bars: [
+              { label: `AM(○=${lenMC})`, weight: cRatio / 2, color: '#1e3a8a' },
+              { label: `✨MC(○=${lenMC})`, weight: cRatio / 2, color: '#38bdf8' },
+              { label: `✨CN(△=${lenCN})`, weight: (1 - cRatio) / 2, color: '#f472b6' },
+              { label: `NB(△=${lenCN})`, weight: (1 - cRatio) / 2, color: '#831843' }
+            ]
+          };
+        }
+        if (sub === 'doubleMid') {
+          const qtr = L / 4;
+          return {
+            badge: `탐구 2-B · 중점의 중점 단계별 쪼개기 (전체를 4칸으로 나누기: ½ ➔ ¼ ➔ ¾)`,
+            hint: `선분 AB의 중점을 M, 다시 오른쪽 MB의 중점을 N이라 하면, 전체를 <strong class="text-amber-300">똑같은 4칸(1칸 = ¼AB = ${qtr}cm)</strong>으로 쪼갠 것과 같습니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 단계별 쪼개기 처음으로' : '🎬 ½ ➔ ¼ 쪼개기 실행',
+            dim1Name: '전체 선분 AB 길이', dim2Name: '비교 옵션',
+            parts: [
+              { id: 0, name: `① 왼쪽 절반 AM (2칸 = ½AB)`, desc: `전체 4칸 중 왼쪽 2칸`, val: `${2 * qtr} cm`, color: '#38bdf8', ok: true },
+              { id: 1, name: `② 오른쪽을 다시 반 나눈 MN (1칸 = ¼AB)`, desc: `MB(2칸)의 절반 = 1칸`, val: `${qtr} cm`, color: '#fbbf24', ok: true },
+              { id: 2, name: `③ 구하는 선분 AN (= AM + MN = 3칸)`, desc: `2칸 + 1칸 = 전체의 ¾!`, val: `${3 * qtr} cm`, color: '#34d399', ok: true }
+            ],
+            totalRes: `MN = ¼AB (${qtr}cm), AN = ¾AB (${3 * qtr}cm)`,
+            rule: '중점을 두 번 잡으면 전체는 똑같은 4칸으로 나뉩니다!',
+            formulaHTML: `• 가장 작은 조각 ${tex(`\\overline{MN} = \\overline{NB} = 1\\text{칸} = \\dfrac{1}{4}\\overline{AB} = ${qtr}\\text{ cm}`)}<br/>• ${tex(`\\overline{AM} = 2\\text{칸}(${2 * qtr}\\text{cm}) \\implies \\overline{AN} = 3\\text{칸} = \\dfrac{3}{4}\\overline{AB} = ${3 * qtr}\\text{ cm}`)}`,
+            notes: `• 분수 식(${tex('\\frac{1}{2} + \\frac{1}{4}')})으로 계산하지 말고, 가장 작게 쪼개진 조각(${tex('MN, NB')})을 <strong>1칸</strong>으로 놓으면 전체가 <strong>4칸</strong>이 되어 쉽게 계산할 수 있습니다!`,
+            bars: [
+              { label: `AM = 2칸 (${2 * qtr}cm)`, weight: 0.5, color: '#38bdf8' },
+              { label: `MN = 1칸 (${qtr}cm)`, weight: 0.25, color: '#fbbf24' },
+              { label: `NB = 1칸 (${qtr}cm)`, weight: 0.25, color: '#64748b' }
+            ]
+          };
+        }
+        if (sub === 'trisect') {
+          const unit = L / 6;
+          return {
+            badge: `탐구 2-C · 삼등분점(P, Q)과 중점(M)이 함께 나올 때 — 전체를 6칸으로 나누어 생각하기`,
+            hint: `<strong class="text-sky-300">3등분(삼등분점 P, Q)</strong>과 <strong class="text-amber-300">2등분(중점 M)</strong>이 섞여 나오면, 2와 3의 최소공배수인 <strong class="text-emerald-300">『전체 AB = 6칸(1칸=${unit}cm)』</strong>으로 놓으세요!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 눈금 처음으로' : '🎬 6칸으로 나누어 보기',
+            dim1Name: '전체 선분 AB (6의 배수)', dim2Name: '비교 옵션',
+            parts: [
+              { id: 0, name: `🔵 삼등분점 P (2칸 지점) · Q (4칸 지점)`, desc: `6칸을 3등분 ➔ 2칸씩 (${2 * unit}cm)`, val: `P=2칸, Q=4칸`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 정가운데 중점 M (3칸 지점)`, desc: `6칸을 2등분 ➔ 3칸 (${3 * unit}cm)`, val: `M=3칸`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🎯 구하는 선분 PM (3칸 - 2칸 = 딱 1칸!)`, desc: `중점 M(3칸)과 P(2칸) 사이 = 1/6 AB`, val: `${unit} cm (1칸)`, color: '#34d399', ok: true }
+            ],
+            totalRes: `PM = MQ = 1칸(1/6 AB = ${unit}cm), PQ = 2칸(${2 * unit}cm)`,
+            rule: '2등분과 3등분이 함께 나오면 2와 3의 최소공배수 6칸으로 나누기!',
+            formulaHTML: `• 점 위치 번호: <strong>A(0칸) — P(2칸) — M(3칸) — Q(4칸) — B(6칸)</strong><br/>• ${tex(`\\overline{PM} = 3 - 2 = 1\\text{칸} = \\dfrac{1}{6}\\overline{AB} = ${unit}\\text{ cm}`)}`,
+            notes: `• 통분(${tex('\\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}')})을 하지 않고, 눈금 숫자 <strong>(3칸 - 2칸 = 1칸)</strong>만 빼도 어떤 구간이든 바로 구할 수 있습니다!`,
+            bars: [
+              { label: `AP (2칸=${2 * unit})`, weight: 2 / 6, color: '#38bdf8' },
+              { label: `✨PM (1칸=${unit})`, weight: 1 / 6, color: '#fbbf24' },
+              { label: `✨MQ (1칸=${unit})`, weight: 1 / 6, color: '#34d399' },
+              { label: `QB (2칸=${2 * unit})`, weight: 2 / 6, color: '#38bdf8' }
+            ]
+          };
+        }
+        // ratioBlock
+        const unit = L / 3;
+        return {
+          badge: `탐구 2-D · 길이의 비를 칸 수로 바꾸기 — 『AC = 2CB 이고 M이 AC의 중점일 때』`,
+          hint: `<strong class="text-amber-300">“AC = 2CB”</strong>라는 식을 보면 숫자가 곱해진 짧은 쪽 <strong class="text-pink-300">CB를 『1칸』</strong>으로 놓으세요! 그러면 <strong class="text-sky-300">AC는 『2칸』</strong>이고, 그 중점 M이 찍히면 <strong class="text-emerald-300">AM = MC = CB = 모두 1칸씩</strong> 똑같아집니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 칸 다시 세기' : '🎬 1칸씩 대응해 보기',
+          dim1Name: '전체 선분 AB 길이', dim2Name: '비교 옵션',
+          parts: [
+            { id: 0, name: `🩷 기준 짧은 조각 CB = 1칸`, desc: `AC = 2CB 에서 짧은 CB를 1칸으로 정함`, val: `${unit} cm (1칸)`, color: '#f472b6', ok: true },
+            { id: 1, name: `🔵 AC(2칸)의 중점 M ➔ AM = MC = 1칸`, desc: `2칸을 반으로 나누니 각각 1칸!`, val: `각 ${unit} cm`, color: '#38bdf8', ok: true },
+            { id: 2, name: `🎯 선분 MB의 길이 (= MC + CB = 2칸)`, desc: `전체 3칸 중 2칸 = 2/3 AB`, val: `${2 * unit} cm (2칸)`, color: '#fbbf24', ok: true }
+          ],
+          totalRes: `AM = MC = CB = 1칸(${unit}cm), MB = 2칸(${2 * unit}cm)`,
+          rule: 'AC = k·CB  ⟹  짧은 쪽 CB = 1칸, 긴 쪽 AC = k칸!',
+          formulaHTML: `• ${tex('\\overline{CB} = 1\\text{칸} \\implies \\overline{AC} = 2\\text{칸} \\implies \\text{전체 } \\overline{AB} = 3\\text{칸}')}<br/>• 결국 점 M과 점 C는 선분 AB를 똑같이 <strong>3등분하는 점</strong>이 됩니다!`,
+          notes: `• <strong>[응용]</strong>: 만약 문제에 <strong>“AB = 3BC”</strong>라고 나오면? 전체 AB가 3칸, BC가 1칸이니까 나머지 AC는 자동으로 <strong>2칸</strong>이 됩니다!`,
+          bars: [
+            { label: `AM = 1칸 (${unit}cm)`, weight: 0.33, color: '#38bdf8' },
+            { label: `MC = 1칸 (${unit}cm)`, weight: 0.33, color: '#fbbf24' },
+            { label: `CB = 1칸 (${unit}cm)`, weight: 0.34, color: '#f472b6' }
+          ]
+        };
+      }
+
+      // ==================== [탭 3: 선의 개수·맞꼭지각·시계 각도] ====================
+      if (m === 3) {
+        if (sub === 'collinear' || sub === 'circlePts') {
+          const nPts = Math.min(7, Math.max(4, Math.round(L / 4) + 2));
+          const mCol = Math.min(nPts - 1, Math.max(3, Math.round(deg / 25) + 1));
+          const isCol = sub === 'collinear';
+          const totalPairs = (nPts * (nPts - 1)) / 2;
+          const colPairs = (mCol * (mCol - 1)) / 2;
+          const numSeg = totalPairs;
+          const numLines = isCol ? totalPairs - colPairs + 1 : totalPairs;
+          const numRays = isCol ? 2 * totalPairs - 2 * colPairs + 2 * (mCol - 1) : 2 * totalPairs;
+          return {
+            badge: isCol
+              ? `탐구 3-A · 전체 점 ${nPts}개 중 한 직선 위에 ${mCol}개가 있을 때 (겹치는 직선 ${colPairs}개를 빼고 1개를 더하기)`
+              : `탐구 3-B · 어느 세 점도 한 직선 위에 없는 점 ${nPts}개로 만드는 선의 개수`,
+            hint: isCol
+              ? `슬라이더를 움직여 점 ${mCol}개를 바닥의 한 직선 위로 내려 보세요! 바닥의 점들끼리 만든 <strong class="text-rose-400">${colPairs}개의 직선은 모두 같은 직선 1개(+1)</strong>가 됩니다! (단, 선분은 줄어들지 않음!)`
+              : `점 ${nPts}개 중 2개를 뽑아 잇는 직선과 선분은 <strong class="text-amber-300">${nPts}×(${nPts}-1)÷2 = ${totalPairs}개</strong>이고, 반직선은 방향이 2가지씩이라 2배인 <strong class="text-sky-300">${numRays}개</strong>입니다!`,
+            actionTxt: isCol ? (state.animProg > 0.5 ? '🎬 원 위에 배치해 보기' : '🎬 한 직선 위로 모으기!') : '🎬 연결선 살펴보기',
+            dim1Name: '전체 점 개수', dim2Name: '한 직선 위의 점 개수',
+            parts: [
+              { id: 0, name: `📏 서로 다른 선분의 개수 (감소 없음!)`, desc: `끝점이 다르면 다른 선분 ➔ (${nPts}×${nPts - 1})÷2`, val: `${numSeg} 개`, color: '#34d399', ok: true },
+              { id: 1, name: `↔️ 서로 다른 직선의 개수 ${isCol ? '(겹치는 직선은 1개로 셈)' : ''}`, desc: isCol ? `전체(${totalPairs}) - 겹치는 직선(${colPairs}) + 한 직선(1)` : `선분 개수와 동일`, val: `${numLines} 개`, color: '#fbbf24', ok: true },
+              { id: 2, name: `➡️ 서로 다른 반직선의 개수`, desc: isCol ? `한 직선 위의 ${mCol}개 점에서는 2(${mCol}-1)=${2 * (mCol - 1)}개` : `직선 개수의 2배`, val: `${numRays} 개`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `선분 ${numSeg}개 | 직선 ${numLines}개 | 반직선 ${numRays}개`,
+            rule: isCol ? '직선 = 전체 - 한 직선 위의 점끼리 만든 직선 + 1' : '직선의 개수 = 선분의 개수 = n(n-1)/2, 반직선의 개수 = n(n-1)',
+            formulaHTML: isCol
+              ? `• <strong>선분</strong>: 한 직선 위에 있어도 끝점이 다르면 다른 선분 ➔ <strong>${numSeg}개 그대로!</strong><br/>• <strong>직선</strong>: ${tex(`${totalPairs} - ${colPairs}(\\text{겹치는 직선}) + 1(\\text{한 직선}) = \\mathbf{${numLines}\\text{개}}`)}`
+              : `• <strong>직선 = 선분</strong>: ${tex(`\\dfrac{${nPts}\\times(${nPts}-1)}{2} = \\mathbf{${totalPairs}\\text{개}}`)}<br/>• <strong>반직선</strong>: ${tex(`${nPts}\\times(${nPts}-1) = \\mathbf{${numRays}\\text{개}}`)}`,
+            notes: `• <strong>[자주 틀리는 부분]</strong>: 한 직선 위의 점 ${mCol}개로 만든 직선 ${colPairs}개를 뺀 뒤에 <strong>『+1』을 더하지 않아 1개 적게 쓰는 실수</strong>를 조심하세요!`,
+            bars: isCol
+              ? [
+                  { label: `개별 직선(${totalPairs - colPairs}개)`, weight: 0.72, color: '#38bdf8' },
+                  { label: `✨한 직선 위의 점끼리 만든 직선(+1개)`, weight: 0.28, color: '#fbbf24' }
+                ]
+              : [
+                  { label: `직선·선분(${totalPairs}개)`, weight: 0.5, color: '#fbbf24' },
+                  { label: `반직선(2배=${numRays}개)`, weight: 0.5, color: '#38bdf8' }
+                ]
+          };
+        }
+        if (sub === 'verticalAng') {
+          const nLines = Math.min(6, Math.max(2, Math.round(L / 4) + 1));
+          const pairs = nLines * (nLines - 1);
+          return {
+            badge: `탐구 3-C · 맞꼭지각의 성질 & 직선 ${nLines}개가 한 점에서 만날 때 맞꼭지각 쌍의 개수`,
+            hint: `직선 2개가 교차할 때마다 맞꼭지각은 위·아래, 좌·우로 <strong class="text-amber-300">2쌍씩</strong> 생깁니다! 따라서 직선 ${nLines}개가 만나면 작은 조각뿐만 아니라 합쳐진 큰 각까지 총 <strong class="text-emerald-300">${nLines}×(${nLines}-1) = ${pairs}쌍</strong>이 생깁니다!`,
+            actionTxt: '🎬 맞꼭지각 회전 비교',
+            dim1Name: '만나는 직선 개수 n', dim2Name: '교차 각도 θ',
+            parts: [
+              { id: 0, name: `🟡 마주 보는 맞꼭지각 (∠a = ∠c = ${deg}°)`, desc: `180° - ∠b 로 둘 다 크기가 항상 같음!`, val: `${deg}° = ${deg}°`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 직선 2개를 짝짓는 방법의 수`, desc: `(${nLines} × ${nLines - 1}) ÷ 2 가지`, val: `${pairs / 2} 가지`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🎯 전체 맞꼭지각 쌍 (짝짓는 방법의 수 × 2쌍)`, desc: `${nLines} × (${nLines} - 1) 쌍 (합쳐진 각 포함!)`, val: `총 ${pairs} 쌍`, color: '#34d399', ok: true }
+            ],
+            totalRes: `직선 ${nLines}개 교차 ➔ 맞꼭지각 총 ${pairs}쌍`,
+            rule: '직선 n개 맞꼭지각 쌍 = n(n - 1)쌍',
+            formulaHTML: `• <strong>왜 맞꼭지각은 항상 같을까?</strong><br/>&nbsp;&nbsp;${tex(`\\angle a + \\angle b = 180^\\circ,\\; \\angle c + \\angle b = 180^\\circ \\implies \\mathbf{\\angle a = \\angle c}`)}<br/>• <strong>직선 ${nLines}개 맞꼭지각 총 쌍수</strong>: ${tex(`2 \\times \\dfrac{${nLines}\\times ${nLines - 1}}{2} = \\mathbf{${pairs}\\text{쌍}}`)}`,
+            notes: `• 직선 3개가 만나면 3쌍이 아니라 <strong>3×2 = 6쌍</strong>, 직선 4개가 만나면 <strong>4×3 = 12쌍</strong>입니다! (반직선 개수 공식 $n(n-1)$과 똑같습니다!)`,
+            bars: [
+              { label: `단일 조각 맞꼭지각(${nLines}쌍)`, weight: 1 / Math.max(1, nLines - 1), color: '#fbbf24' },
+              { label: `이웃한 각이 합쳐진 큰 맞꼭지각(${pairs - nLines}쌍)`, weight: 1 - 1 / Math.max(1, nLines - 1), color: '#34d399' }
+            ]
+          };
+        }
+        // clockAng
+        const hour = 3;
+        const min = Math.min(55, Math.max(10, Math.round(deg * 0.7)));
+        const hAng = 30 * hour + 0.5 * min;
+        const mAng = 6 * min;
+        const diff = Math.abs(mAng - hAng);
+        const smallAng = diff > 180 ? 360 - diff : diff;
+        return {
+          badge: `탐구 3-D · 시침(1분에 0.5°)과 분침(1분에 6°)이 이루는 각도 추적기`,
+          hint: `분침이 돌아갈 때 <strong class="text-amber-300">시침도 숫자 3(90°)에 멈춰 있지 않고 1분에 0.5°씩 앞으로 움직입니다!</strong> 따라서 3시 ${min}분일 때 시침은 <strong class="text-amber-300">90° + ${0.5 * min}° = ${hAng}°</strong>에 있습니다!`,
+          actionTxt: '🎬 바늘 움직임 확인',
+          dim1Name: '기준 시각(3시)', dim2Name: '분 조절',
+          parts: [
+            { id: 0, name: `🔵 분침 회전 각도 (1분에 6°씩)`, desc: `6° × ${min}분`, val: `${mAng}°`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🟡 시침 회전 각도 (1시간 30° + 1분 0.5°)`, desc: `30°×3시 + 0.5°×${min}분 (시침도 조금씩 이동!)`, val: `${hAng}°`, color: '#fbbf24', ok: true },
+            { id: 2, name: `🎯 두 바늘이 이루는 작은 쪽 각`, desc: `|${mAng}° - ${hAng}°|`, val: `${smallAng}°`, color: '#34d399', ok: true }
+          ],
+          totalRes: `3시 ${min}분 사잇각 = ${smallAng}°`,
+          rule: '1분 동안 분침은 6°, 시침은 0.5° 이동 (5.5°씩 추격!)',
+          formulaHTML: `• <strong>시침 각도</strong>: ${tex(`30^\\circ \\times (\\text{시}) + 0.5^\\circ \\times (\\text{분}) = 90^\\circ + ${0.5 * min}^\\circ = ${hAng}^\\circ`)}<br/>• <strong>분침 각도</strong>: ${tex(`6^\\circ \\times (\\text{분}) = ${mAng}^\\circ`)}<br/>• <strong>두 바늘 사이의 각을 바로 구하는 식</strong>: ${tex(`|30^\\circ \\times \\text{시} - 5.5^\\circ \\times \\text{분}| = \\mathbf{${smallAng}^\\circ}`)}`,
+          notes: `• 분침(6°/분)이 시침(0.5°/분)을 <strong>1분에 5.5°씩 따라잡는다</strong>고 기억하면 어떤 시각이든 쉽게 풀 수 있습니다!`,
+          bars: [
+            { label: `시침 위치 (${hAng}°)`, weight: 0.45, color: '#fbbf24' },
+            { label: `✨두 바늘 차이 (${smallAng}°)`, weight: 0.55, color: '#38bdf8' }
+          ]
+        };
+      }
+
+      // ==================== [탭 4: 종이 테이프 접기·이등분선·직교] ====================
+      if (sub === 'paperFold') {
+        const foldDeg = Math.min(75, Math.max(40, deg));
+        const xDeg = 180 - 2 * foldDeg;
+        return {
+          badge: `탐구 4-A · [필수 킬러] 직사각형 종이 테이프 접기 — 『접은 각 = 엇각 ⟹ 이등변삼각형!』`,
+          hint: `슬라이더를 움직이거나 <strong class="text-amber-300">[🎬 종이 접기 실행]</strong>을 눌러 종이 테이프를 직접 접어보세요! <strong class="text-amber-300">① 접은 각(∠ABC=${foldDeg}°) = 원래 각(∠EBC=${foldDeg}°)</strong>이고, 위아래 변이 평행하므로 <strong class="text-emerald-300">② 엇각(∠ACB=${foldDeg}°)</strong>도 같아져 <strong class="text-rose-400">ΔABC는 AB = AC 인 이등변삼각형</strong>이 됩니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 종이 테이프 다시 펼치기' : '🎬 종이 테이프 접어 올리기!',
+          dim1Name: '테이프 폭 스케일', dim2Name: '접은 각도 ∠ABC',
+          parts: [
+            { id: 0, name: `🟡 ① 접은 각 ∠ABC = 원래 각 ∠EBC`, desc: `종이를 접어 포개었으므로 크기가 같음!`, val: `${foldDeg}° (●)`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🟢 ② 평행선의 엇각 ∠ACB = ∠EBC`, desc: `테이프 위·아래 변이 평행(>)하므로 엇각 동일!`, val: `${foldDeg}° (●)`, color: '#34d399', ok: true },
+            { id: 2, name: `🩷 ③ 이등변삼각형 ΔABC (AB = AC ||)`, desc: `두 밑각(∠B=∠C=${foldDeg}°)이 같으므로 꼭지각 ∠A = 180°-${2 * foldDeg}°`, val: `∠BAC = ${xDeg}°`, color: '#f43f5e', ok: true }
+          ],
+          totalRes: `∠ACB = ${foldDeg}°, ∠BAC = ${xDeg}°, AB = AC (이등변!)`,
+          rule: '접은 각(●) = 엇각(●)  ⟹  겹친 삼각형은 항상 이등변삼각형!',
+          formulaHTML: `• <strong>1단계(접은 각)</strong>: ${tex(`\\angle ABC = \\angle EBC = ${foldDeg}^\\circ`)}<br/>• <strong>2단계(엇각)</strong>: ${tex(`\\angle ACB = \\angle EBC = ${foldDeg}^\\circ`)}<br/>• <strong>3단계(이등변 결론)</strong>: 밑각 2개가 모두 ${tex(`${foldDeg}^\\circ`)}이므로 <strong>${tex(`\\overline{AB} = \\overline{AC}`)}</strong> 이고, 꼭지각 ${tex(`\\angle BAC = 180^\\circ - 2\\times ${foldDeg}^\\circ = \\mathbf{${xDeg}^\\circ}`)}!`,
+          notes: `• <strong>[변의 길이 함정 주의!]</strong>: 접는 선이 $BC$일 때 두 밑각이 $B$와 $C$이므로, 길이가 같은 두 변은 $BC$가 아니라 꼭짓점 $A$에서 양쪽으로 내려온 <strong>$AB = AC$ (빨간색으로 표시한 변 2개!)</strong>입니다!`,
+          bars: [
+            { label: `밑각 ∠B (${foldDeg}°)`, weight: foldDeg / 180, color: '#fbbf24' },
+            { label: `밑각 ∠C (${foldDeg}°)`, weight: foldDeg / 180, color: '#34d399' },
+            { label: `꼭지각 ∠A (${xDeg}°)`, weight: xDeg / 180, color: '#f43f5e' }
+          ]
+        };
+      }
+      if (sub === 'paperFoldCorner') {
+        const foldAngle = Math.min(40, Math.max(20, Math.round(deg * 0.45)));
+        const remain90 = 90 - 2 * foldAngle;
+        return {
+          badge: `탐구 4-B · 직사각형 종이 귀퉁이 접어 올리기 (직각 90°에서 접은 각 2개 빼기!)`,
+          hint: `직사각형의 오른쪽 아래 모서리($90^\\circ$)를 접어 올리면, <strong class="text-amber-300">접기 전 각(${foldAngle}°)과 접은 후 각(${foldAngle}°)이 똑같이 겹칩니다!</strong> 따라서 남은 각 $x$는 <strong class="text-sky-300">90° - (${foldAngle}° + ${foldAngle}°) = ${remain90}°</strong>입니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 귀퉁이 다시 펼치기' : '🎬 귀퉁이 접어 올리기!',
+          dim1Name: '종이 가로/세로 비', dim2Name: '접은 각도 조절',
+          parts: [
+            { id: 0, name: `🟡 접기 전 원래 각 = 접은 후 각 (● = ●)`, desc: `선분 BE를 기준으로 접었으므로 두 각이 합동!`, val: `${foldAngle}° × 2개`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 직사각형 한 모퉁이 전체 각 (90° 직각)`, desc: `2● + ∠x = 90°`, val: `90°`, color: '#38bdf8', ok: true },
+            { id: 2, name: `🎯 남은 각 ∠x 의 크기`, desc: `90° - 2 × ${foldAngle}°`, val: `∠x = ${remain90}°`, color: '#34d399', ok: true }
+          ],
+          totalRes: `2×(${foldAngle}°) + ∠x = 90°  ⟹  ∠x = ${remain90}°`,
+          rule: '종이를 접으면 접는 선 양옆의 두 각(●, ●)은 크기가 서로 같습니다!',
+          formulaHTML: `• 접기 전 자리(점선)와 접은 후 자리(실선)의 각은 똑같으므로 <strong>항상 2배(${tex('2\\bullet')})</strong>가 됩니다!<br/>• ${tex(`\\angle x = 90^\\circ - 2 \\times ${foldAngle}^\\circ = \\mathbf{${remain90}^\\circ}`)}`,
+          notes: `• 종이접기 문제는 어떤 모양이든 <strong>① 접기 전과 접은 후의 같은 각에 똑같은 동그라미(●) 표시하기</strong>가 출발점입니다!`,
+          bars: [
+            { label: `원래각 ●(${foldAngle}°)`, weight: foldAngle / 90, color: '#64748b' },
+            { label: `접은각 ●(${foldAngle}°)`, weight: foldAngle / 90, color: '#fbbf24' },
+            { label: `✨남은각 ∠x(${remain90}°)`, weight: remain90 / 90, color: '#34d399' }
+          ]
+        };
+      }
+      if (sub === 'bisect90') {
+        const ratioC = 0.22 + state.animProg * 0.56;
+        const angAOC = Math.round(180 * ratioC);
+        const angCOB = 180 - angAOC;
+        const half1 = +(angAOC / 2).toFixed(1), half2 = +(angCOB / 2).toFixed(1);
+        return {
+          badge: `탐구 4-C · 평각(180°)의 두 각의 이등분선이 이루는 각 = 언제나 90°(직각)!`,
+          hint: `칠판의 <strong class="text-amber-300">반직선 OC를 마우스로 좌우로 끌어</strong> 보세요! <strong class="text-sky-300">2● + 2× = 180°(평각)</strong>이므로 양변을 2로 나눈 <strong class="text-amber-300">∠MON = ● + × = 언제나 90°(직각 ∟)</strong>입니다!`,
+          actionTxt: '🎬 반직선 OC 좌우 회전 (항상 90°인지 확인!)',
+          dim1Name: '반지름 스케일', dim2Name: '비교 각도',
+          parts: [
+            { id: 0, name: `🔵 왼쪽 각의 절반 ∠MOC (= ●)`, desc: `∠AOC(${angAOC}°)의 이등분선 OM`, val: `${half1}°`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🩷 오른쪽 각의 절반 ∠CON (= ×)`, desc: `∠COB(${angCOB}°)의 이등분선 ON`, val: `${half2}°`, color: '#f472b6', ok: true },
+            { id: 2, name: `🟡 두 이등분선 사잇각 ∠MON (= ● + ×)`, desc: `½ × 180° = 90° (OM ⊥ ON 직교!)`, val: `90.0° (항상 일정)`, color: '#fbbf24', ok: true }
+          ],
+          totalRes: `∠MON = ● + × = ½ × 180° = 90° (항상 직각!)`,
+          rule: '2● + 2× = 180°  ⟹  ● + × = 90° (두 중점 사이의 거리 MN=½AB와 같은 원리)',
+          formulaHTML: `• ${tex(`2\\bullet + 2\\times = 180^\\circ \\implies \\bullet + \\times = 90^\\circ`)}<br/>• 만약 전체 각이 평각(${tex('180^\\circ')})이 아니라 ${tex('130^\\circ')}라면? 두 이등분선이 이루는 각은 절반인 <strong>${tex('65^\\circ')}</strong>입니다!`,
+          notes: `• <strong>[같은 원리]</strong>: 탐구 2-A의 <strong>『두 중점 사이 거리 = 전체 선분의 ½』</strong>과 탐구 4-C의 <strong>『두 각의 이등분선 사잇각 = 전체 각의 ½』</strong>은 완전히 같은 원리입니다!`,
+          bars: [
+            { label: `●(${half1}°)`, weight: ratioC / 2, color: '#1e3a8a' },
+            { label: `✨●(${half1}°)`, weight: ratioC / 2, color: '#38bdf8' },
+            { label: `✨×(${half2}°)`, weight: (1 - ratioC) / 2, color: '#f472b6' },
+            { label: `×(${half2}°)`, weight: (1 - ratioC) / 2, color: '#831843' }
+          ]
+        };
+      }
+      // perpDist
+      const distH = Math.round(L * 0.5);
+      const qOffset = Math.round((state.animProg - 0.5) * L * 1.2);
+      const oblLen = Math.hypot(distH, qOffset).toFixed(1);
+      return {
+        badge: `탐구 4-D · 직교(⊥)와 수선의 발(H), 그리고 점과 직선 사이의 최단거리`,
+        hint: `직선 $l$ 밖의 점 $P$에서 직선 $l$ 위의 점 $Q$를 잇는 선분 중 가장 짧은 것은 <strong class="text-amber-300">90°로 수직(⊥)이 되는 수선 PH(${distH}cm)</strong>이며, 교점 $H$를 <strong class="text-emerald-300">수선의 발</strong>이라고 부릅니다!`,
+        actionTxt: '🎬 직선 위의 점 Q를 좌우로 움직여 보기',
+        dim1Name: '수선 길이 비례 L', dim2Name: '비교 옵션',
+        parts: [
+          { id: 0, name: `🎯 수선 PH (l ⊥ PH, 90° 직각 ∟)`, desc: `점 P와 직선 l 사이의 거리 (최단거리!)`, val: `${distH}.0 cm`, color: '#fbbf24', ok: true },
+          { id: 1, name: `📍 교점 H = 수선의 발`, desc: `수선이 직선 l과 만나는 점`, val: `교점 H`, color: '#34d399', ok: true },
+          { id: 2, name: `🩷 비스듬한 사선 PQ 길이`, desc: `직각삼각형의 빗변이므로 항상 PH보다 김`, val: `${oblLen} cm`, color: '#f472b6', ok: false }
+        ],
+        totalRes: `점 P와 직선 l 사이의 거리 = 수선 PH = ${distH} cm`,
+        rule: '점과 직선 사이의 거리 = 수선의 발 H까지의 수선 길이!',
+        formulaHTML: `• <strong>직교(${tex('\\perp')})</strong>: 두 직선의 교각이 ${tex('90^\\circ')}(직각)일 때<br/>• <strong>수직이등분선</strong>: 선분 AB의 <strong>중점 M을 지나면서 수직(${tex('\\perp')})</strong>인 직선`,
+        notes: `• <strong>[기호의 모양]</strong>: 수직 기호 <strong>${tex('\\perp')}</strong>는 평평한 땅 위에 기둥이 $90^\\circ$로 똑바로 서 있는 모양 그대로입니다!`,
+        bars: [
+          { label: `🎯 최단거리 수선 PH (${distH}cm)`, weight: distH / (distH + parseFloat(oblLen)), color: '#fbbf24' },
+          { label: `비스듬한 선분 PQ (${oblLen}cm)`, weight: parseFloat(oblLen) / (distH + parseFloat(oblLen)), color: '#f472b6' }
+        ]
+      };
+    }
+
+  /* ===== 원본 그대로: 그리기 도우미 (원본 840–938행) ===== */
+    function drawArrowHead(x, y, angle, size = 14, color = '#fbbf24') {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-size, -size * 0.52);
+      ctx.lineTo(-size * 0.75, 0);
+      ctx.lineTo(-size, size * 0.52);
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 10;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawFlashlightOrigin(x, y, color = '#fbbf24', label = '출발점') {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(x, y, 9, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 15;
+      ctx.fill();
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+      if (label) {
+        ctx.font = '800 11.5px Pretendard, sans-serif';
+        ctx.fillStyle = color;
+        ctx.textAlign = 'center';
+        ctx.fillText(`🔦 ${label}`, x, y - 16);
+      }
+      ctx.restore();
+    }
+
+    function drawTickMarks2D(A, B, count = 1, color = '#fbbf24', size = 8) {
+      const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2;
+      const dx = B.x - A.x, dy = B.y - A.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const ux = dx / len, uy = dy / len;
+      const nx = -uy, ny = ux;
+      const gap = 5;
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.4;
+      for (let i = 0; i < count; i++) {
+        const off = (i - (count - 1) / 2) * gap;
+        const cx = mx + ux * off, cy = my + uy * off;
+        ctx.beginPath();
+        ctx.moveTo(cx - nx * size, cy - ny * size);
+        ctx.lineTo(cx + nx * size, cy + ny * size);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawParallelArrows2D(A, B, count = 1, color = '#38bdf8', size = 8) {
+      const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2;
+      const dx = B.x - A.x, dy = B.y - A.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const ux = dx / len, uy = dy / len;
+      const nx = -uy, ny = ux;
+      const gap = 7;
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.4;
+      for (let i = 0; i < count; i++) {
+        const off = (i - (count - 1) / 2) * gap;
+        const tx = mx + ux * off, ty = my + uy * off;
+        ctx.beginPath();
+        ctx.moveTo(tx - ux * size - nx * size * 0.7, ty - uy * size - ny * size * 0.7);
+        ctx.lineTo(tx, ty);
+        ctx.lineTo(tx - ux * size + nx * size * 0.7, ty - uy * size + ny * size * 0.7);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawRightAngle2D(P, A, B, size = 15, color = '#38bdf8') {
+      const v1x = A.x - P.x, v1y = A.y - P.y;
+      const v2x = B.x - P.x, v2y = B.y - P.y;
+      const l1 = Math.hypot(v1x, v1y) || 1, l2 = Math.hypot(v2x, v2y) || 1;
+      const u1x = (v1x / l1) * size, u1y = (v1y / l1) * size;
+      const u2x = (v2x / l2) * size, u2y = (v2y / l2) * size;
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(P.x + u1x, P.y + u1y);
+      ctx.lineTo(P.x + u1x + u2x, P.y + u1y + u2y);
+      ctx.lineTo(P.x + u2x, P.y + u2y);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.4;
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    /* [표시 보강] 각 표시 도우미 angMark(b, 꼭짓점 v, 반직선 방향 p1·p2, {color, rings, r, label}):
+       꼭짓점에서 p1→p2 쪽 작은 각에 호(rings겹)를 긋고, 값·기호(label, 배열이면 여러 줄)를 호 바깥의 그 각 '부채꼴 안쪽'에 놓습니다.
+       화면 픽셀 기준이라 확대·축소·끌기로 도형이 바뀌어도 현재 점에서 다시 계산되고, 각이 좁으면 글자가 걸치지 않도록 꼭짓점에서 더 멀리 둡니다. */
+    function angMark(b, v, p1, p2, o = {}) {
+      const unit = (p) => { const dx = p.x - v.x, dy = p.y - v.y, l = Math.hypot(dx, dy) || 1; return { x: v.x + (dx / l) * 1e-3, y: v.y + (dy / l) * 1e-3 }; };
+      const q1 = unit(p1), q2 = unit(p2);
+      const s0 = b.toS(v), a = b.toS(q1), c = b.toS(q2);
+      const t1 = Math.atan2(a.y - s0.y, a.x - s0.x), t2 = Math.atan2(c.y - s0.y, c.x - s0.x);
+      const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, w = Math.abs(d), m = t1 + d / 2;
+      let r = o.r || 28;
+      const lines = b.thumb || o.label == null || o.label === '' ? [] : [].concat(o.label).map(String);
+      const hw = (Math.max(0, ...lines.map((x) => x.length)) * 7.2) / 2 + 3, hh = lines.length * 7 + 1;
+      const half = Math.max(w / 2, 0.07);
+      let D = r + 11;
+      [-1, 1].forEach((sg) => { const ang = m + sg * half; D = Math.max(D, (hw * Math.abs(Math.sin(ang)) + hh * Math.abs(Math.cos(ang))) / Math.sin(half) + 2); });
+      D = Math.min(D, o.max || 130);
+      if (lines.length && D - 12 > r) r = Math.min(D - 12, o.rmax || 70); // 좁은 각은 호도 라벨 가까이까지 키워 어느 각의 값인지 잇습니다
+      b.angle(v, q1, q2, { color: o.color, r, rings: o.rings || 1 });
+      if (!lines.length) return;
+      lines.forEach((x, i) => b._text(s0.x + Math.cos(m) * D, s0.y + Math.sin(m) * D + (i - (lines.length - 1) / 2) * 13.5, x, { color: o.color, size: o.size || 12.5, align: 'center', baseline: 'middle', weight: 800 }));
+    }
+
+  /* ===== 원본 그대로: 탭별 그리기 (원본 1000–1645행; 점 끌기 4곳만 무대 핸들로 교체) ===== */
+    // ==================== [탭 1 렌더링: 직선·반직선·선분 & 공통부분] ====================
+    function renderTab1Rays(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.48 + state.offsetY;
+      const sub = state.sub[1];
+      const t = Math.max(0.15, state.animProg);
+
+      ctx.save();
+
+      if (sub === 'sameRay' || sub === 'intersect') {
+        const span = Math.min(rect.width * 0.33, 225) * state.scale;
+        const pts = {
+          A: { x: cx - span, y: cy },
+          B: { x: cx - span * 0.33, y: cy },
+          C: { x: cx + span * 0.33, y: cy },
+          D: { x: cx + span, y: cy }
+        };
+        const ext = 105 * state.scale;
+        const sep = state.layerMode === 'exploded' ? 38 : 0;
+
+        ctx.beginPath();
+        ctx.moveTo(pts.A.x - ext, cy);
+        ctx.lineTo(pts.D.x + ext, cy);
+        ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        const y1 = cy - sep, y2 = cy + sep;
+
+        if (sub === 'sameRay') {
+          const curEnd = pts.B.x + (pts.D.x + ext - pts.B.x) * t;
+          ctx.beginPath(); ctx.moveTo(pts.B.x, y1); ctx.lineTo(curEnd, y1);
+          ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5.5; ctx.stroke();
+          drawFlashlightOrigin(pts.B.x, y1, '#fbbf24', '반직선 BC (B 출발)');
+          drawArrowHead(curEnd, y1, 0, 15, '#fbbf24');
+
+          ctx.beginPath(); ctx.moveTo(pts.B.x, y2); ctx.lineTo(curEnd, y2);
+          ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5.5; ctx.stroke();
+          drawFlashlightOrigin(pts.B.x, y2, '#38bdf8', '반직선 BD (B 출발)');
+          drawArrowHead(curEnd, y2, 0, 15, '#38bdf8');
+
+          if (state.activePartIdx === 2) {
+            ctx.beginPath(); ctx.moveTo(pts.A.x, y1 - 36); ctx.lineTo(curEnd, y1 - 36);
+            ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 4; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]);
+            drawFlashlightOrigin(pts.A.x, y1 - 36, '#f43f5e', '반직선 AC (출발점 A라 다름!)');
+          }
+        } else {
+          // intersect: BD ∩ CA = 선분 BC
+          const endBD = pts.B.x + (pts.D.x + ext - pts.B.x) * t;
+          const endCA = pts.C.x - (pts.C.x - (pts.A.x - ext)) * t;
+
+          if (state.layerMode !== 'intersect') {
+            ctx.beginPath(); ctx.moveTo(pts.B.x, y1); ctx.lineTo(endBD, y1);
+            ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5; ctx.stroke();
+            drawFlashlightOrigin(pts.B.x, y1, '#fbbf24', '반직선 BD (B→오른쪽)');
+            drawArrowHead(endBD, y1, 0, 15, '#fbbf24');
+
+            ctx.beginPath(); ctx.moveTo(pts.C.x, y2); ctx.lineTo(endCA, y2);
+            ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 5; ctx.stroke();
+            drawFlashlightOrigin(pts.C.x, y2, '#f472b6', '반직선 CA (C→왼쪽)');
+            drawArrowHead(endCA, y2, Math.PI, 15, '#f472b6');
+          }
+
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.22)';
+          ctx.fillRect(pts.B.x, y1, pts.C.x - pts.B.x, y2 - y1);
+          ctx.beginPath(); ctx.moveTo(pts.B.x, cy); ctx.lineTo(pts.C.x, cy);
+          ctx.strokeStyle = '#34d399'; ctx.lineWidth = 8; ctx.stroke();
+          ctx.fillStyle = '#6ee7b7'; ctx.font = '800 13.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
+          ctx.fillText('✨ 공통부분 = 선분 BC!', (pts.B.x + pts.C.x) / 2, y1 - 28);
+        }
+
+        Object.keys(pts).forEach((k) => {
+          const p = pts[k];
+          ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2);
+          ctx.fillStyle = '#ffffff'; ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = '#06110d'; ctx.stroke();
+          ctx.font = '800 15px Pretendard, sans-serif'; ctx.fillStyle = '#fef08a'; ctx.textAlign = 'center';
+          ctx.fillText(k, p.x, p.y + 24);
+        });
+        ctx.restore();
+        return;
+      }
+
+      if (sub === 'shortest') {
+        const span = Math.min(rect.width * 0.34, 230) * state.scale;
+        const xA = cx - span, xB = cx + span, xM = cx;
+        const pTop = { x: cx, y: cy - 90 * state.scale };
+
+        ctx.beginPath(); ctx.moveTo(xA, cy); ctx.quadraticCurveTo(cx, cy + 120 * state.scale, xB, cy);
+        ctx.strokeStyle = 'rgba(244, 63, 94, 0.5)'; ctx.lineWidth = 3; ctx.setLineDash([6, 4]); ctx.stroke();
+
+        ctx.beginPath(); ctx.moveTo(xA, cy); ctx.lineTo(pTop.x, pTop.y); ctx.lineTo(xB, cy);
+        ctx.strokeStyle = 'rgba(244, 114, 182, 0.5)'; ctx.stroke(); ctx.setLineDash([]);
+
+        ctx.beginPath(); ctx.moveTo(xA, cy); ctx.lineTo(xB, cy);
+        ctx.strokeStyle = '#34d399'; ctx.lineWidth = 7; ctx.stroke();
+
+        drawTickMarks2D({ x: xA, y: cy }, { x: xM, y: cy }, 1, '#fbbf24', 9);
+        drawTickMarks2D({ x: xM, y: cy }, { x: xB, y: cy }, 1, '#fbbf24', 9);
+
+        [
+          { x: xA, l: '점 A', c: '#ffffff' },
+          { x: xM, l: `중점 M (AM=MB=${state.L / 2}cm)`, c: '#fbbf24' },
+          { x: xB, l: '점 B', c: '#ffffff' }
+        ].forEach((p) => {
+          ctx.beginPath(); ctx.arc(p.x, cy, 7, 0, Math.PI * 2);
+          ctx.fillStyle = p.c; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = '#06110d'; ctx.stroke();
+          ctx.font = '800 13px Pretendard, sans-serif'; ctx.fillStyle = p.c; ctx.textAlign = 'center';
+          ctx.fillText(p.l, p.x, cy + 25);
+        });
+        ctx.fillStyle = '#6ee7b7'; ctx.fillText(`⭕ 두 점 A, B 사이의 거리 = 곧은 선분 AB (${state.L}cm)`, cx, cy - 20);
+        ctx.restore();
+        return;
+      }
+
+      if (sub === 'lineTypes') {
+        // 직선, 반직선, 선분 3단 나란히 비교
+        const span = Math.min(rect.width * 0.26, 175) * state.scale;
+        const ext = 110 * state.scale * t;
+        const rows = [
+          { y: cy - 68, title: '① 직선 AB (양쪽 끝없이 연장)', col: '#38bdf8', leftExt: ext, rightExt: ext, leftArr: true, rightArr: true },
+          { y: cy, title: '② 반직선 AB (A 출발 → 오른쪽 끝없이 연장)', col: '#fbbf24', leftExt: 0, rightExt: ext, leftArr: false, rightArr: true },
+          { y: cy + 68, title: `③ 선분 AB (양 끝점 막힘 = 길이 ${state.L}cm 측정 가능!)`, col: '#34d399', leftExt: 0, rightExt: 0, leftArr: false, rightArr: false }
+        ];
+        rows.forEach((r, idx) => {
+          const x1 = cx - span - r.leftExt, x2 = cx + span + r.rightExt;
+          ctx.beginPath(); ctx.moveTo(x1, r.y); ctx.lineTo(x2, r.y);
+          ctx.strokeStyle = r.col; ctx.lineWidth = state.activePartIdx === idx ? 7.5 : 5; ctx.stroke();
+          if (r.leftArr) drawArrowHead(x1, r.y, Math.PI, 14, r.col);
+          if (r.rightArr) drawArrowHead(x2, r.y, 0, 14, r.col);
+
+          [cx - span, cx + span].forEach((px, pIdx) => {
+            ctx.beginPath(); ctx.arc(px, r.y, 6, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffffff'; ctx.fill(); ctx.strokeStyle = '#06110d'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.fillStyle = '#e2e8f0'; ctx.font = '800 12px Pretendard, sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText(pIdx === 0 ? 'A' : 'B', px, r.y + 20);
+          });
+          ctx.fillStyle = r.col; ctx.font = '800 12.5px Pretendard, sans-serif';
+          ctx.fillText(r.title, cx, r.y - 14);
+        });
+        ctx.restore();
+        return;
+      }
+
+      // rayCompare: 드래그 가능한 점 A, B 기준 반직선 AB vs BA 비교
+      const pA = { x: cx + state.ptA.x * state.scale, y: cy + state.ptA.y * state.scale };
+      const pB = { x: cx + state.ptB.x * state.scale, y: cy + state.ptB.y * state.scale };
+      const dx = pB.x - pA.x, dy = pB.y - pA.y;
+      const dist = Math.hypot(dx, dy) || 1;
+      const ux = dx / dist, uy = dy / dist;
+      const angAB = Math.atan2(dy, dx), angBA = angAB + Math.PI;
+      const nx = -uy, ny = ux;
+      const extLen = 200 * state.scale * t;
+      // [2.0 수정] 위·아래 분리 간격을 화면 픽셀 기준(최소 44px)으로: 원본은 축소하면 출발점 이름표가 점 A·B를 가렸음
+      const sep = state.layerMode === 'exploded' ? Math.max(28, 44 / BOARD.k) : 0;
+
+      ctx.beginPath();
+      ctx.moveTo(pA.x - ux * 210 * state.scale, pA.y - uy * 210 * state.scale);
+      ctx.lineTo(pB.x + ux * 210 * state.scale, pB.y + uy * 210 * state.scale);
+      ctx.setLineDash([6, 6]); ctx.strokeStyle = 'rgba(148, 163, 184, 0.3)'; ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
+
+      const aTop = { x: pA.x + nx * sep, y: pA.y + ny * sep };
+      const bTopEnd = { x: pA.x + ux * (dist + extLen) + nx * sep, y: pA.y + uy * (dist + extLen) + ny * sep };
+      const bBot = { x: pB.x - nx * sep, y: pB.y - ny * sep };
+      const aBotEnd = { x: pB.x - ux * (dist + extLen) - nx * sep, y: pB.y - uy * (dist + extLen) - ny * sep };
+
+      if (state.layerMode !== 'intersect') {
+        ctx.beginPath(); ctx.moveTo(aTop.x, aTop.y); ctx.lineTo(bTopEnd.x, bTopEnd.y);
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = state.activePartIdx === 0 ? 7.5 : 5; ctx.stroke();
+        drawFlashlightOrigin(aTop.x, aTop.y, '#fbbf24', '반직선 AB (A 출발)');
+        drawArrowHead(bTopEnd.x, bTopEnd.y, angAB, 14, '#fbbf24');
+
+        ctx.beginPath(); ctx.moveTo(bBot.x, bBot.y); ctx.lineTo(aBotEnd.x, aBotEnd.y);
+        ctx.strokeStyle = '#f472b6'; ctx.lineWidth = state.activePartIdx === 1 ? 7.5 : 5; ctx.stroke();
+        drawFlashlightOrigin(bBot.x, bBot.y, '#f472b6', '반직선 BA (B 출발)');
+        drawArrowHead(aBotEnd.x, aBotEnd.y, angBA, 14, '#f472b6');
+      }
+
+      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y);
+      ctx.strokeStyle = '#34d399'; ctx.lineWidth = state.activePartIdx === 2 ? 9 : 6.5; ctx.stroke();
+      ctx.fillStyle = '#6ee7b7'; ctx.font = '800 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('✨ 공통부분 = 선분 AB', (pA.x + pB.x) / 2, (pA.y + pB.y) / 2 + 4);
+
+      // 점 A·B: 원본의 마우스 드래그를 무대 핸들로(휴대폰 터치·키보드 화살표도 동작). 이름표는 원본처럼 글자로 그려 겹침 정리에 포함
+      BOARD.handle('A', pA, { color: 'sky', drag: (w) => { state.ptA.x = (w.x - cx) / state.scale; state.ptA.y = (w.y - cy) / state.scale; } });
+      BOARD.handle('B', pB, { color: 'red', drag: (w) => { state.ptB.x = (w.x - cx) / state.scale; state.ptB.y = (w.y - cy) / state.scale; } });
+      ctx.font = '800 13px Pretendard, sans-serif'; ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'right'; ctx.fillText('점 A (끌어 보세요)', pA.x - 16, pA.y + 4);
+      ctx.textAlign = 'left'; ctx.fillText('점 B (끌어 보세요)', pB.x + 16, pB.y + 4);
+      ctx.restore();
+    }
+
+    // ==================== [탭 2 렌더링: 중점·삼등분·조건식 레고 블록] ====================
+    function renderTab2Blocks(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.50 + state.offsetY;
+      const sub = state.sub[2];
+      const L = state.L;
+      const span = Math.min(rect.width * 0.36, 250) * state.scale;
+      const xA = cx - span, xB = cx + span;
+
+      ctx.save();
+
+      if (sub === 'midPoint') {
+        const cRatio = 0.2 + state.animProg * 0.6;
+        const xC = xA + (xB - xA) * cRatio;
+        const xM = (xA + xC) / 2, xN = (xC + xB) / 2;
+
+        ctx.beginPath(); ctx.moveTo(xA, cy); ctx.lineTo(xC, cy); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 6.5; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(xC, cy); ctx.lineTo(xB, cy); ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 6.5; ctx.stroke();
+
+        drawTickMarks2D({ x: xA, y: cy }, { x: xM, y: cy }, 1, '#7dd3fc', 8);
+        drawTickMarks2D({ x: xM, y: cy }, { x: xC, y: cy }, 1, '#7dd3fc', 8);
+        drawTickMarks2D({ x: xC, y: cy }, { x: xN, y: cy }, 2, '#f9a8d4', 8);
+        drawTickMarks2D({ x: xN, y: cy }, { x: xB, y: cy }, 2, '#f9a8d4', 8);
+
+        const yBr = cy - 48;
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.22)';
+        ctx.fillRect(xM, yBr, xN - xM, 48);
+        ctx.beginPath(); ctx.moveTo(xM, cy); ctx.lineTo(xM, yBr); ctx.lineTo(xN, yBr); ctx.lineTo(xN, cy);
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 4; ctx.stroke();
+        ctx.fillStyle = '#fef08a'; ctx.font = '800 14px Pretendard, monospace'; ctx.textAlign = 'center';
+        ctx.fillText(`MN의 길이 = ○ + △ = ½AB = ${L / 2} cm (점 C를 끌어도 항상 일정!)`, (xM + xN) / 2, yBr - 14);
+
+        [
+          { x: xA, l: 'A', c: '#ffffff', r: 6.5 },
+          { x: xM, l: '중점 M', c: '#38bdf8', r: 6 },
+          { x: xC, l: '움직이는 점 C (끌어 보세요)', c: '#fbbf24', r: 8.5 },
+          { x: xN, l: '중점 N', c: '#f472b6', r: 6 },
+          { x: xB, l: 'B', c: '#ffffff', r: 6.5 }
+        ].forEach((p) => {
+          if (p.r === 8.5) return; // 동점 C는 아래의 끌 수 있는 핸들로 그립니다
+          ctx.beginPath(); ctx.arc(p.x, cy, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.c; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = '#06110d'; ctx.stroke();
+          ctx.font = '800 12.5px Pretendard, sans-serif'; ctx.fillStyle = p.c; ctx.textAlign = 'center';
+          ctx.fillText(p.l, p.x, cy + 25);
+        });
+        // [2.0 수정] 동점 C: 원본은 끄는 위치와 점이 그려지는 위치의 식이 달라(점이 마우스를 따라오지 않음) 실제 핸들로 바꿈
+        BOARD.handle('C', { x: xC, y: cy }, { color: 'amber', r: 7.5, drag: (w) => { CUR.anim = clamp((((w.x - xA) / (xB - xA)) - 0.2) / 0.6, 0, 1); } });
+        ctx.font = '800 12.5px Pretendard, sans-serif'; ctx.fillStyle = '#fbbf24'; ctx.textAlign = 'center';
+        ctx.fillText('움직이는 점 C (끌어 보세요)', xC, cy + 25);
+      } else if (sub === 'doubleMid') {
+        const totalW = xB - xA, boxW = totalW / 4, qtr = L / 4;
+        for (let i = 0; i < 4; i++) {
+          const bx = xA + i * boxW;
+          ctx.fillStyle = i < 2 ? 'rgba(56, 189, 248, 0.28)' : i === 2 ? 'rgba(251, 191, 36, 0.4)' : 'rgba(148, 163, 184, 0.2)';
+          ctx.fillRect(bx + 2, cy - 28, boxW - 4, 28);
+          ctx.strokeStyle = i === 2 ? '#fbbf24' : '#38bdf8';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(bx + 2, cy - 28, boxW - 4, 28);
+          ctx.fillStyle = '#fff'; ctx.font = '800 11.5px Pretendard, monospace'; ctx.textAlign = 'center';
+          ctx.fillText(`1칸(${qtr}cm)`, bx + boxW / 2, cy - 10);
+        }
+        [
+          { k: 0, l: 'A (0칸)', c: '#fff' },
+          { k: 2, l: `AB의 중점 M (2칸=${2 * qtr}cm)`, c: '#38bdf8' },
+          { k: 3, l: `MB의 중점 N (3칸=${3 * qtr}cm)`, c: '#fbbf24' },
+          { k: 4, l: `B (4칸=${L}cm)`, c: '#fff' }
+        ].forEach((it) => {
+          const px = xA + it.k * boxW;
+          ctx.beginPath(); ctx.arc(px, cy, 7, 0, Math.PI * 2);
+          ctx.fillStyle = it.c; ctx.fill(); ctx.strokeStyle = '#06110d'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = it.c; ctx.font = '800 12.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
+          ctx.fillText(it.l, px, cy + 25);
+        });
+        ctx.fillStyle = '#6ee7b7'; ctx.font = '800 14px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(`🪜 중점의 중점 → 전체를 4칸으로 나눔 (MN = 1칸 = ¼AB = ${qtr}cm, AN = 3칸 = ¾AB = ${3 * qtr}cm)`, cx, cy - 48);
+      } else if (sub === 'trisect') {
+        const totalW = xB - xA, boxW = totalW / 6, unit = L / 6;
+        for (let i = 0; i < 6; i++) {
+          const bx = xA + i * boxW;
+          ctx.fillStyle = i === 2 ? 'rgba(251, 191, 36, 0.45)' : i % 2 === 0 ? 'rgba(56, 189, 248, 0.22)' : 'rgba(52, 211, 153, 0.22)';
+          ctx.fillRect(bx + 2, cy - 28, boxW - 4, 28);
+          ctx.strokeStyle = i === 2 ? '#fbbf24' : 'rgba(255,255,255,0.35)';
+          ctx.lineWidth = i === 2 ? 3 : 1.5;
+          ctx.strokeRect(bx + 2, cy - 28, boxW - 4, 28);
+          ctx.fillStyle = '#e2e8f0'; ctx.font = '800 11.5px Pretendard, monospace'; ctx.textAlign = 'center';
+          ctx.fillText(`1칸(${unit})`, bx + boxW / 2, cy - 10);
+        }
+        [
+          { k: 0, l: 'A (0칸)', c: '#ffffff' },
+          { k: 2, l: '삼등분 P (2칸)', c: '#38bdf8' },
+          { k: 3, l: '중점 M (3칸)', c: '#fbbf24' },
+          { k: 4, l: '삼등분 Q (4칸)', c: '#38bdf8' },
+          { k: 6, l: 'B (6칸)', c: '#ffffff' }
+        ].forEach((it) => {
+          const px = xA + it.k * boxW;
+          ctx.beginPath(); ctx.arc(px, cy, 7, 0, Math.PI * 2);
+          ctx.fillStyle = it.c; ctx.fill(); ctx.strokeStyle = '#06110d'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.font = '800 12.5px Pretendard, sans-serif'; ctx.fillStyle = it.c; ctx.textAlign = 'center';
+          ctx.fillText(it.l, px, cy + 25);
+        });
+        ctx.fillStyle = '#fef08a'; ctx.font = '800 14px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(`🧱 6칸으로 나누기: 선분 PM = (3칸 - 2칸) = 1칸 = 1/6 AB = ${unit} cm!`, cx, cy - 48);
+      } else {
+        // ratioBlock
+        const totalW = xB - xA, boxW = totalW / 3, unit = L / 3;
+        for (let i = 0; i < 3; i++) {
+          const bx = xA + i * boxW;
+          ctx.fillStyle = i < 2 ? 'rgba(56, 189, 248, 0.30)' : 'rgba(244, 114, 182, 0.35)';
+          ctx.fillRect(bx + 3, cy - 28, boxW - 6, 28);
+          ctx.strokeStyle = i < 2 ? '#38bdf8' : '#f472b6';
+          ctx.lineWidth = 2.5;
+          ctx.strokeRect(bx + 3, cy - 28, boxW - 6, 28);
+          drawTickMarks2D({ x: bx, y: cy }, { x: bx + boxW, y: cy }, 1, '#fbbf24', 8);
+          ctx.fillStyle = '#fef08a'; ctx.font = '800 12px Pretendard, monospace'; ctx.textAlign = 'center';
+          ctx.fillText(`1칸 (${unit}cm)`, bx + boxW / 2, cy - 10);
+        }
+        [
+          { k: 0, l: 'A', c: '#ffffff' },
+          { k: 1, l: '중점 M (1칸)', c: '#38bdf8' },
+          { k: 2, l: '점 C (AC=2칸)', c: '#fbbf24' },
+          { k: 3, l: 'B (전체 3칸)', c: '#f472b6' }
+        ].forEach((it) => {
+          const px = xA + it.k * boxW;
+          ctx.beginPath(); ctx.arc(px, cy, 7, 0, Math.PI * 2);
+          ctx.fillStyle = it.c; ctx.fill(); ctx.strokeStyle = '#06110d'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.font = '800 12.5px Pretendard, sans-serif'; ctx.fillStyle = it.c; ctx.textAlign = 'center';
+          ctx.fillText(it.l, px, cy + 25);
+        });
+        ctx.fillStyle = '#6ee7b7'; ctx.font = '800 14px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(`🎯 길이의 비를 칸 수로: CB = 1칸으로 놓으면 AC = 2칸, 중점 M에 의해 AM = MC = CB = 모두 1칸!`, cx, cy - 48);
+      }
+
+      ctx.restore();
+    }
+
+    // ==================== [탭 3 렌더링: 선의 개수·맞꼭지각·시계 각도] ====================
+    function renderTab3PointsAndClock(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.46 + state.offsetY;
+      const sub = state.sub[3];
+
+      ctx.save();
+
+      if (sub === 'collinear' || sub === 'circlePts') {
+        const nPts = Math.min(7, Math.max(4, Math.round(state.L / 4) + 2));
+        const mCol = Math.min(nPts - 1, Math.max(3, Math.round(state.deg / 25) + 1));
+        const isCol = sub === 'collinear';
+        const t = isCol ? state.animProg : 0.0;
+        const R = Math.min(rect.width, rect.height) * 0.25 * state.scale;
+        const pts = [];
+
+        for (let i = 0; i < nPts; i++) {
+          const ang = -Math.PI + ((i + 0.5) * Math.PI * 2) / nPts;
+          const circlePt = { x: cx + R * Math.cos(ang), y: cy + R * Math.sin(ang) };
+          if (i < mCol) {
+            const lineX = cx - R * 0.9 + (i / (mCol - 1)) * (R * 1.8);
+            const lineY = cy + R * 0.62;
+            pts.push({
+              x: (1 - t) * circlePt.x + t * lineX,
+              y: (1 - t) * circlePt.y + t * lineY,
+              isCol: true,
+              name: String.fromCharCode(65 + i)
+            });
+          } else {
+            const topIdx = i - mCol, topCount = nPts - mCol;
+            const topAng = -Math.PI * 0.8 + ((topIdx + 0.5) / Math.max(1, topCount)) * (Math.PI * 0.6);
+            const topPt = { x: cx + R * Math.cos(topAng), y: cy + R * Math.sin(topAng) - 20 };
+            pts.push({
+              x: (1 - t) * circlePt.x + t * topPt.x,
+              y: (1 - t) * circlePt.y + t * topPt.y,
+              isCol: false,
+              name: String.fromCharCode(65 + i)
+            });
+          }
+        }
+
+        for (let i = 0; i < nPts; i++) {
+          for (let j = i + 1; j < nPts; j++) {
+            const bothCol = pts[i].isCol && pts[j].isCol;
+            const dx = pts[j].x - pts[i].x, dy = pts[j].y - pts[i].y;
+            const len = Math.hypot(dx, dy) || 1;
+            const ux = dx / len, uy = dy / len;
+
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x - ux * 42, pts[i].y - uy * 42);
+            ctx.lineTo(pts[j].x + ux * 42, pts[j].y + uy * 42);
+            if (bothCol && isCol) {
+              ctx.strokeStyle = t > 0.85 ? '#fbbf24' : 'rgba(244, 63, 94, 0.7)';
+              ctx.lineWidth = t > 0.85 ? 5.5 : 2.5;
+            } else {
+              ctx.strokeStyle = 'rgba(56, 189, 248, 0.55)';
+              ctx.lineWidth = 2.0;
+            }
+            ctx.stroke();
+          }
+        }
+
+        pts.forEach((p) => {
+          ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2);
+          ctx.fillStyle = p.isCol && isCol ? '#fbbf24' : '#38bdf8';
+          ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = '#ffffff'; ctx.stroke();
+          ctx.font = '800 13px Pretendard, sans-serif'; ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center';
+          ctx.fillText(p.name, p.x, p.y - 14);
+        });
+      } else if (sub === 'verticalAng') {
+        const nLines = Math.min(6, Math.max(2, Math.round(state.L / 4) + 1));
+        const R = Math.min(rect.width, rect.height) * 0.28 * state.scale;
+        const ang0 = -0.15;
+        const ang1 = ang0 + (state.deg * Math.PI) / 180;
+
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, 55, ang0, ang1); ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.42)'; ctx.fill();
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, 55, ang0 + Math.PI, ang1 + Math.PI); ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.42)'; ctx.fill();
+
+        for (let i = 0; i < nLines; i++) {
+          const a = i === 0 ? ang0 : i === 1 ? ang1 : ang0 + (i * Math.PI) / nLines;
+          ctx.beginPath();
+          ctx.moveTo(cx - R * Math.cos(a), cy - R * Math.sin(a));
+          ctx.lineTo(cx + R * Math.cos(a), cy + R * Math.sin(a));
+          ctx.strokeStyle = i < 2 ? '#fbbf24' : '#38bdf8';
+          ctx.lineWidth = i < 2 ? 4.2 : 2.5;
+          ctx.stroke();
+        }
+        ctx.beginPath(); ctx.arc(cx, cy, 6.5, 0, Math.PI * 2); ctx.fillStyle = '#ffffff'; ctx.fill();
+        { // [표시 보강] 맞꼭지각 ∠a=∠c(노랑 2겹 호) · 이웃한 ∠b=∠d(분홍 1겹 호): 같은 각끼리 같은 표시, 값은 각 안쪽
+          const O = { x: cx, y: cy }, dr = (a) => ({ x: cx + 100 * Math.cos(a), y: cy + 100 * Math.sin(a) });
+          const sup = Math.round(180 - state.deg);
+          angMark(BOARD, O, dr(ang0), dr(ang1), { color: '#fbbf24', rings: 2, r: 30, label: `a=${state.deg}°` });
+          angMark(BOARD, O, dr(ang0 + Math.PI), dr(ang1 + Math.PI), { color: '#fbbf24', rings: 2, r: 30, label: `c=${state.deg}°` });
+          angMark(BOARD, O, dr(ang1), dr(ang0 + Math.PI), { color: '#f472b6', rings: 1, r: 54, label: `b=${sup}°` });
+          angMark(BOARD, O, dr(ang1 + Math.PI), dr(ang0 + 2 * Math.PI), { color: '#f472b6', rings: 1, r: 54, label: `d=${sup}°` });
+        }
+        ctx.fillStyle = '#fef08a'; ctx.font = '800 13.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(`마주 보는 맞꼭지각 ∠a = ∠c = ${state.deg}° | 총 ${nLines * (nLines - 1)}쌍`, cx, cy - R - 18);
+      } else {
+        // clockAng
+        const R = Math.min(rect.width, rect.height) * 0.26 * state.scale;
+        const min = Math.min(55, Math.max(10, Math.round(state.deg * 0.7)));
+        const hourAngDeg = 90 + 0.5 * min;
+        const minAngDeg = 6 * min;
+        const hRad = ((hourAngDeg - 90) * Math.PI) / 180;
+        const mRad = ((minAngDeg - 90) * Math.PI) / 180;
+
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(15, 35, 27, 0.88)'; ctx.fill();
+        ctx.strokeStyle = '#34d399'; ctx.lineWidth = 4; ctx.stroke();
+
+        for (let i = 1; i <= 12; i++) {
+          const a = ((i * 30 - 90) * Math.PI) / 180;
+          ctx.fillStyle = '#e2e8f0'; ctx.font = '800 13px Pretendard, sans-serif';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(`${i}`, cx + R * 0.83 * Math.cos(a), cy + R * 0.83 * Math.sin(a));
+        }
+
+        const directed = ((mRad - hRad) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+        const smallArc = Math.min(directed, 2 * Math.PI - directed);
+        const sA = directed <= Math.PI ? hRad : mRad;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R * 0.44, sA, sA + smallArc); ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.38)'; ctx.fill();
+
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * 0.54 * Math.cos(hRad), cy + R * 0.54 * Math.sin(hRad));
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 6; ctx.stroke();
+
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * 0.76 * Math.cos(mRad), cy + R * 0.76 * Math.sin(mRad));
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
+
+        ctx.beginPath(); ctx.arc(cx, cy, 6, 0, Math.PI * 2); ctx.fillStyle = '#ffffff'; ctx.fill();
+        { // [표시 보강] 시침·분침의 사잇각에 호와 값을 넣고, 바늘 끝에 이름·각을 붙입니다(현재 분에서 다시 계산)
+          const O = { x: cx, y: cy }, tip = (a, l) => ({ x: cx + l * Math.cos(a), y: cy + l * Math.sin(a) });
+          const between = (smallArc * 180 / Math.PI).toFixed(1);
+          const narrow = smallArc * 180 / Math.PI < 24; // 두 바늘이 거의 겹치면 값이 바늘 위에 얹히므로, 분침 바깥쪽 옆에 따로 적음
+          angMark(BOARD, O, tip(hRad, 100), tip(mRad, 100), { color: '#fbbf24', rings: 1, r: Math.max(26, R * 0.3 * BOARD.k), label: narrow ? '' : `${between}°`, max: R * 0.5 * BOARD.k });
+          if (narrow) {
+            const sg = Math.sin(hRad - mRad) > 0 ? -1 : 1;
+            BOARD.text(tip(mRad, R * 0.3), `${between}°`, { color: '#fbbf24', size: 12.5, dx: -Math.sin(mRad) * sg * 14, dy: Math.cos(mRad) * sg * 14, baseline: 'middle' });
+          }
+          const tag = (a, o, len, txt, col) => { // 바늘 이름·각: 다른 바늘의 반대쪽(바깥쪽) 옆에 붙임
+            const sg = Math.sin(o - a) > 0 ? -1 : 1, nx = -Math.sin(a) * sg, ny = Math.cos(a) * sg, hw = txt.length * 3.9 + 6;
+            BOARD.text(tip(a, len), txt, { color: col, size: 12, dx: nx * (Math.abs(nx) * hw + 8), dy: ny * (Math.abs(ny) * 14 + 6) * 0.9 + ny * Math.abs(nx) * 2, baseline: 'middle' });
+          };
+          tag(hRad, mRad, R * 0.36, `시침 ${hourAngDeg}°`, '#fbbf24');
+          tag(mRad, hRad, R * 0.62, `분침 ${minAngDeg}°`, '#38bdf8');
+        }
+        ctx.fillStyle = '#fef08a'; ctx.font = '800 13.5px Pretendard, sans-serif';
+        ctx.fillText(`🕒 3시 ${min}분 | 시침 ${hourAngDeg}° · 분침 ${minAngDeg}° · 사잇각 ${(smallArc * 180 / Math.PI).toFixed(1)}°`, cx, cy - R - 20);
+      }
+
+      ctx.restore();
+    }
+
+    // ==================== [탭 4 렌더링: 종이 테이프 접기(2종)·이등분선·직교] ====================
+    function renderTab4PaperAndAngles(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.46 + state.offsetY;
+      const sub = state.sub[4];
+      const t = state.animProg;
+
+      ctx.save();
+
+      if (sub === 'paperFold') {
+        // 🧻 직사각형 종이 테이프 접기 (접은 각 = 엇각 ⟹ 이등변삼각형 AB = AC!)
+        const foldDeg = Math.min(75, Math.max(40, state.deg));
+        const rad = (foldDeg * Math.PI) / 180;
+        const xDeg = 180 - 2 * foldDeg;
+
+        const stripH = 92 * state.scale;
+        const yTop = cy - stripH / 2, yBot = cy + stripH / 2;
+
+        const bx = cx - 20, by = yBot;
+        const cxPt = bx + stripH / Math.tan(rad), cyPt = yTop;
+        const lenAC = stripH / Math.sin(2 * rad);
+        const ax = cxPt - lenAC, ay = yTop;
+
+        // 1) 왼쪽 고정 테이프
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.20)';
+        ctx.fillRect(cx - 235, yTop, 470, stripH);
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(cx - 235, yTop); ctx.lineTo(cxPt, yTop);
+        ctx.moveTo(cx - 235, yBot); ctx.lineTo(bx, yBot);
+        ctx.stroke();
+
+        // 평행선 화살표(>)
+        drawParallelArrows2D({ x: cx - 180, y: yTop }, { x: cx - 100, y: yTop }, 1, '#38bdf8', 8);
+        drawParallelArrows2D({ x: cx - 180, y: yBot }, { x: cx - 100, y: yBot }, 1, '#38bdf8', 8);
+
+        // 접기 전 오른쪽 원래 테이프 (점선)
+        ctx.setLineDash([6, 5]); ctx.strokeStyle = 'rgba(148, 163, 184, 0.55)';
+        ctx.beginPath();
+        ctx.moveTo(cxPt, yTop); ctx.lineTo(cx + 225, yTop);
+        ctx.moveTo(bx, yBot); ctx.lineTo(cx + 225, yBot);
+        ctx.stroke(); ctx.setLineDash([]);
+
+        // 2) 슬라이더 t에 따라 회전하며 접히는 오른쪽 테이프 조각
+        // [2.0 수정] 접힌 조각의 회전각: 원본의 -180°+2θ 는 θ=45°에서만 맞고 나머지 각에서는 접힌 변이 A를 지나지 않았음 → 접는 선 BC에 대칭인 -2θ
+        const targetAngle = -2 * rad;
+        const curAngle = t * targetAngle;
+        const extL = 200 * state.scale;
+        const pD = { x: bx + extL * Math.cos(curAngle), y: by + extL * Math.sin(curAngle) };
+        const pE = { x: cxPt + extL * Math.cos(curAngle), y: cyPt + extL * Math.sin(curAngle) };
+
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(cxPt, cyPt); ctx.lineTo(pE.x, pE.y); ctx.lineTo(pD.x, pD.y);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.28)'; ctx.fill();
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 3; ctx.stroke();
+
+        // 3) 겹쳐진 이등변삼각형 ΔABC & 등변 틱 마크(||)
+        if (t > 0.65) {
+          ctx.beginPath();
+          ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.lineTo(cxPt, cyPt);
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.46)'; ctx.fill();
+          ctx.strokeStyle = '#34d399'; ctx.lineWidth = 3.5; ctx.stroke();
+
+          ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 5;
+          ctx.beginPath();
+          ctx.moveTo(ax, ay); ctx.lineTo(cxPt, cyPt);
+          ctx.moveTo(ax, ay); ctx.lineTo(bx, by);
+          ctx.stroke();
+
+          drawTickMarks2D({ x: ax, y: ay }, { x: cxPt, y: cyPt }, 2, '#fbbf24', 8);
+          drawTickMarks2D({ x: ax, y: ay }, { x: bx, y: by }, 2, '#fbbf24', 8);
+        }
+
+        ctx.font = '800 13px Pretendard, monospace'; ctx.textAlign = 'center';
+        { // [표시 보강] 같은 각 ●(원래각·접은각·엇각)은 같은 노랑 1겹 호, 꼭지각 ∠A는 분홍 2겹 호 — 값은 각 안쪽
+          const pB = { x: bx, y: by }, pC = { x: cxPt, y: cyPt }, pA = { x: ax, y: ay };
+          const small = BOARD.k < 1; // 작은 화면(휴대폰): 삼각형이 작아 라벨이 겹치므로 호만 그리고 값은 그림 아래 한 줄에 모아 적음
+          const nm = (n, v) => (small ? '' : [n, v]);
+          const rr = (l1, l2) => Math.max(9, Math.min(30, 0.28 * Math.min(l1, l2) * BOARD.k)); // 변이 짧으면 호도 작게
+          const sBC = Math.hypot(cxPt - bx, cyPt - by), sAB = Math.hypot(ax - bx, ay - by), sAC = Math.hypot(cxPt - ax, cyPt - ay);
+          angMark(BOARD, pB, { x: bx + 100, y: by }, pC, { color: '#fbbf24', rings: 1, r: small ? rr(sBC, sBC) : 30, label: nm('원래각', `●${foldDeg}°`) });
+          angMark(BOARD, pC, { x: cxPt - 100, y: cyPt }, pB, { color: '#fbbf24', rings: 1, r: small ? rr(sBC, sAC) : 30, label: nm('②엇각', `●${foldDeg}°`) });
+          if (small) {
+            BOARD.text(pB, `●=${foldDeg}°`, { color: '#fbbf24', size: 12.5, dx: t > 0.65 ? -36 : 0, dy: 48, baseline: 'middle' });
+            if (t > 0.65) BOARD.text(pB, `∠A=${xDeg}°`, { color: '#fda4af', size: 12.5, dx: 36, dy: 48, baseline: 'middle' });
+          }
+          if (t > 0.65) {
+            angMark(BOARD, pB, pC, pA, { color: '#fbbf24', rings: 1, r: small ? rr(sBC, sAB) : 30, label: nm('①접은각', `●${foldDeg}°`) });
+            angMark(BOARD, pA, pC, pB, { color: '#fda4af', rings: 2, r: small ? rr(sAB, sAC) : 28, label: nm('꼭지각', `∠A=${xDeg}°`) });
+          }
+        }
+
+        [
+          { x: ax, y: ay, l: 'A(꼭지각)', dy: -12 },
+          { x: bx, y: by, l: 'B(접는점)', dy: 22 },
+          { x: cxPt, y: cyPt, l: 'C(접는점)', dy: -12 }
+        ].forEach((p) => {
+          ctx.beginPath(); ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+          ctx.fillStyle = '#ffffff'; ctx.fill();
+          ctx.fillText(p.l, p.x, p.y + p.dy);
+        });
+      } else if (sub === 'paperFoldCorner') {
+        // 📐 직사각형 종이 귀퉁이 대각선 접어 올리기 (90°에서 2● 빼기)
+        const foldAngle = Math.min(40, Math.max(20, Math.round(state.deg * 0.45)));
+        const remain90 = 90 - 2 * foldAngle;
+        const w = 280 * state.scale, h = 160 * state.scale;
+        const x0 = cx - w / 2, y0 = cy - h / 2, x1 = cx + w / 2, y1 = cy + h / 2;
+
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.18)';
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5;
+        ctx.fillRect(x0, y0, w, h);
+        ctx.strokeRect(x0, y0, w, h);
+
+        const pB = { x: x0 + w * 0.35, y: y1 };
+        const rad = (foldAngle * Math.PI) / 180;
+        const baseLen = x1 - pB.x;
+        const sideH = baseLen * Math.tan(rad);
+        const pE = { x: x1, y: y1 - sideH };
+
+        // 접기 전 원래 귀퉁이 점선 표시
+        ctx.setLineDash([5, 4]); ctx.strokeStyle = '#94a3b8';
+        ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(x1, y1); ctx.lineTo(pE.x, pE.y); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // 접은 후 귀퉁이 삼각형 (각도 2*rad 회전)
+        const curFoldA = -2 * rad * t;
+        const pC_folded = {
+          x: pB.x + baseLen * Math.cos(curFoldA),
+          y: pB.y + baseLen * Math.sin(curFoldA)
+        };
+
+        ctx.beginPath();
+        ctx.moveTo(pB.x, pB.y); ctx.lineTo(pE.x, pE.y); ctx.lineTo(pC_folded.x, pC_folded.y);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.42)'; ctx.fill();
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 3; ctx.stroke();
+
+        { // [표시 보강] 접은 선 BE 양옆의 같은 각 ●(원래각·접은각)은 같은 노랑 호, 남은 각 ∠x는 초록 2겹 호. 90°는 점선 수직 보조선으로 보임
+          const down = { x: pB.x + 100, y: pB.y }, crease = pE, edge = pC_folded, up = { x: pB.x, y: pB.y - 100 };
+          const done = t > 0.97; // 접기가 끝난 뒤에만 접은 각·남은 각이 성립
+          if (done) {
+            ctx.save(); ctx.setLineDash([5, 4]); ctx.strokeStyle = 'rgba(148, 163, 184, 0.7)'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pB.x, y0 + h * 0.18); ctx.stroke(); ctx.restore();
+            BOARD.right(pB, { x: pB.x + 1e-3, y: pB.y }, { x: pB.x, y: pB.y - 1e-3 }, { size: 12, color: '#94a3b8' });
+          }
+          angMark(BOARD, pB, down, crease, { color: '#fbbf24', rings: 1, r: 34, label: `●${foldAngle}°` });
+          if (done) {
+            angMark(BOARD, pB, crease, edge, { color: '#fbbf24', rings: 1, r: 34, label: `●${foldAngle}°` });
+            angMark(BOARD, pB, edge, up, { color: '#34d399', rings: 2, r: 34, label: `∠x=${remain90}°` });
+          }
+        }
+        ctx.font = '800 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillStyle = '#fef08a';
+        ctx.fillText(`원래각 ●(${foldAngle}°) = 접은각 ●(${foldAngle}°) | 남은 각 ∠x = 90° - ${2 * foldAngle}° = ${remain90}°`, cx, y0 - 16);
+      } else if (sub === 'bisect90') {
+        const pO = { x: cx, y: cy + 50 };
+        const R = 155 * state.scale;
+        const ratioC = 0.22 + t * 0.56;
+        const angC = -Math.PI + ratioC * Math.PI;
+        const angM = (-Math.PI + angC) / 2;
+        const angN = angC / 2;
+
+        const pA = { x: pO.x - R, y: pO.y }, pB = { x: pO.x + R, y: pO.y };
+        const pC = { x: pO.x + R * Math.cos(angC), y: pO.y + R * Math.sin(angC) };
+        const pM = { x: pO.x + R * Math.cos(angM), y: pO.y + R * Math.sin(angM) };
+        const pN = { x: pO.x + R * Math.cos(angN), y: pO.y + R * Math.sin(angN) };
+
+        ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.arc(pO.x, pO.y, R * 0.55, angM, angN); ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.35)'; ctx.fill();
+
+        ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3.5; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pC.x, pC.y); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pM.x, pM.y); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pN.x, pN.y); ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 4.5; ctx.stroke();
+
+        drawRightAngle2D(pO, pM, pN, 18, '#fbbf24');
+        { // [표시 보강] 같은 각 ●(∠AOM=∠MOC)은 파랑 호, ×(∠CON=∠NOB)는 분홍 호 — 값은 각 안쪽, 점 A·O·B 이름 표시
+          const dA = Math.round(180 * ratioC), h1 = +(dA / 2).toFixed(1), h2 = +((180 - dA) / 2).toFixed(1);
+          angMark(BOARD, pO, pA, pM, { color: '#38bdf8', rings: 1, r: 46, max: R * BOARD.k * 0.68, label: `●${h1}°` });
+          angMark(BOARD, pO, pM, pC, { color: '#38bdf8', rings: 1, r: 46, max: R * BOARD.k * 0.68, label: `●${h1}°` });
+          angMark(BOARD, pO, pC, pN, { color: '#f472b6', rings: 1, r: 46, max: R * BOARD.k * 0.68, label: `×${h2}°` });
+          angMark(BOARD, pO, pN, pB, { color: '#f472b6', rings: 1, r: 46, max: R * BOARD.k * 0.68, label: `×${h2}°` });
+          [[pA, 'A', 0, 15], [pB, 'B', 0, 15], [pO, 'O', -15, 13]].forEach(([q, nm, ox, oy]) => BOARD.text(q, nm, { color: '#e2e8f0', size: 13, dx: ox, dy: oy, baseline: 'middle' }));
+        }
+
+        ctx.font = '800 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillStyle = '#38bdf8'; ctx.fillText('M (이등분선 ●)', pM.x, pM.y - 12);
+        ctx.fillStyle = '#f472b6'; ctx.fillText('N (이등분선 ×)', pN.x, pN.y - 12);
+        ctx.fillStyle = '#e2e8f0'; ctx.fillText('C (마우스로 좌우로 끌어 보세요)', pC.x, pC.y - 12);
+        // [2.0 수정] 반직선 OC 끝점 C: 원본은 드래그 위치 식이 달라 반직선이 마우스를 따라오지 않았습니다 → 각도를 직접 읽는 핸들
+        BOARD.handle('C', pC, { color: 'ink', drag: (w) => { const ang = Math.atan2(w.y - pO.y, w.x - pO.x); const r = ang > 0 ? (w.x < pO.x ? 0 : 1) : (ang + Math.PI) / Math.PI; CUR.anim = clamp((r - 0.22) / 0.56, 0, 1); } });
+        ctx.fillStyle = '#fef08a'; ctx.fillText('🎯 ∠MON = ● + × = 90° (언제나 직각 ∟!)', pO.x, pO.y + 30);
+      } else {
+        // perpDist
+        const yLine = cy + 50;
+        const pP = { x: cx, y: cy - 85 * state.scale };
+        const pH = { x: cx, y: yLine };
+        const qX = cx + (t - 0.5) * 320 * state.scale;
+        const pQ = { x: qX, y: yLine };
+
+        ctx.beginPath(); ctx.moveTo(cx - 240, yLine); ctx.lineTo(cx + 240, yLine);
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4; ctx.stroke();
+
+        ctx.beginPath(); ctx.moveTo(pP.x, pP.y); ctx.lineTo(pQ.x, pQ.y);
+        ctx.strokeStyle = 'rgba(244, 114, 182, 0.78)'; ctx.lineWidth = 3; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]);
+
+        ctx.beginPath(); ctx.moveTo(pP.x, pP.y); ctx.lineTo(pH.x, pH.y);
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5.5; ctx.stroke();
+
+        drawRightAngle2D(pH, pP, { x: cx + 50, y: yLine }, 15, '#34d399');
+
+        [
+          { p: pP, l: '점 P', dy: -16, c: '#fbbf24' },
+          { p: pH, l: '수선의 발 H (∟)', dy: 24, c: '#34d399' }
+        ].forEach((it) => {
+          ctx.beginPath(); ctx.arc(it.p.x, it.p.y, 7, 0, Math.PI * 2);
+          ctx.fillStyle = it.c; ctx.fill(); ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.font = '800 13px Pretendard, sans-serif'; ctx.fillStyle = it.c; ctx.textAlign = 'center';
+          ctx.fillText(it.l, it.p.x, it.p.y + it.dy);
+        });
+        // [2.0 수정] 스캔 점 Q: 원본은 직선 위 어디를 끌어도 위치가 맞지 않았음 → 점 Q를 실제 핸들로
+        BOARD.handle('Q', pQ, { color: 'rose', drag: (w) => { CUR.anim = clamp(0.5 + (w.x - cx) / (320 * state.scale), 0, 1); } });
+        ctx.font = '800 13px Pretendard, sans-serif'; ctx.fillStyle = '#f472b6'; ctx.textAlign = 'center';
+        ctx.fillText('움직이는 점 Q (끌어 보세요)', pQ.x, pQ.y + 24);
+      }
+
+      ctx.restore();
+    }
+
+  /* ===== 2.0 연결: 원본 state ↔ 셸 상태, 장면 목록, 조작부 ===== */
+  const clamp = APLab.clamp;
+  const RECT = { width: 1000, height: 700 }; // 원본 캔버스 대신 쓰는 가상 캔버스(무대가 화면 크기에 맞춰 줍니다)
+  let CUR = null; // 지금 그리는 셸 상태(핸들 끌기가 고칩니다)
+  const RENDER = { 1: renderTab1Rays, 2: renderTab2Blocks, 3: renderTab3PointsAndClock, 4: renderTab4PaperAndAngles };
+  const TABS = [
+    '직선·반직선·선분 & 공통부분 (5종)',
+    '중점·삼등분·길이의 비 (4종)',
+    '선의 개수·맞꼭지각·시계 (4종)',
+    '종이 테이프 접기·이등분선·직교 (4종)'
+  ];
+  const SHORT = ['직선·반직선·선분', '중점·삼등분·길이의 비', '선의 개수·맞꼭지각·시계', '종이 접기·이등분선·직교'];
+  const QUESTIONS = [
+    '반직선 AB와 BA, 선분 AB와 BA는 같은 도형일까? 어디까지가 공통부분일까?',
+    '선분이 중점·삼등분점으로 나뉘면 길이를 어떻게 한눈에 셀 수 있을까?',
+    '점과 직선이 늘어날 때 선·맞꼭지각의 개수와 시계 바늘 사이의 각은 어떻게 셀까?',
+    '종이 테이프를 접으면 어떤 각이 같아지고, 어떤 삼각형이 생길까?'
+  ];
+  // 슬라이더(진행도)가 실제로 그림을 바꾸는 장면만 보여 줍니다(원본: 나머지 장면의 0%~100% 버튼과 실행 버튼은 효과가 없었음).
+  const ANIM = new Set(['rayCompare', 'lineTypes', 'sameRay', 'intersect', 'midPoint', 'collinear', 'paperFold', 'paperFoldCorner', 'bisect90', 'perpDist']);
+  const LENS = {
+    rayCompare: [['exploded', '위·아래 분리 & 펼침 비교'], ['single', '한 줄 포개어 보기'], ['intersect', '공통부분·핵심 결론만 강조']],
+    sameRay: [['exploded', '위·아래 분리 & 펼침 비교'], ['single', '한 줄 포개어 보기']],
+    intersect: [['exploded', '위·아래 분리 & 펼침 비교'], ['single', '한 줄 포개어 보기'], ['intersect', '공통부분·핵심 결론만 강조']]
+  };
+  const L_CHIPS = new Set(['lineTypes', 'shortest', 'midPoint', 'doubleMid', 'trisect', 'ratioBlock', 'perpDist']);
+  const nPtsOf = (L) => Math.min(7, Math.max(4, Math.round(L / 4) + 2));
+  const mColOf = (L, deg) => Math.min(nPtsOf(L) - 1, Math.max(3, Math.round(deg / 25) + 1));
+  const nLinesOf = (L) => Math.min(6, Math.max(2, Math.round(L / 4) + 1));
+  const PT_L = { 4: 6, 5: 12, 6: 16, 7: 20 };      // 점 n개 ← 원본 식 round(L/4)+2 (원본 칩 18·24는 둘 다 7개였음)
+  const LINE_L = { 2: 4, 3: 6, 4: 12, 5: 16, 6: 20 }; // 직선 n개 ← 원본 식 round(L/4)+1 (원본 칩 18·24는 둘 다 6개였음)
+  const M_DEG = { 3: 40, 4: 65, 5: 90, 6: 115 };   // 일직선 위 점 m개 ← 원본 식 round(deg/25)+1
+  const tone = (p) => (p.ok === false ? 'red' : p.color);
+  const arrow = (v) => (typeof v === 'string' ? arrowOnly(v) : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
+
+  function sync(s, m, id) {
+    state.mode = m;
+    state.sub[m] = id;
+    state.layerMode = s.lens;
+    state.activePartIdx = s.part == null ? -1 : s.part;
+    state.L = Math.round(s.L);
+    // 원본의 각도 하나(deg)가 장면마다 다른 뜻으로 쓰였던 것을 장면별 조절값으로 나눠 받습니다.
+    state.deg = id === 'verticalAng' ? s.theta : id === 'paperFold' ? s.fold : id === 'paperFoldCorner' ? s.fa / 0.45 : id === 'clockAng' ? s.minute / 0.7 : s.deg;
+    state.animProg = s.anim;
+    state.ptA = s.ptA;
+    state.ptB = s.ptB;
+    state.scale = 1;
+    state.offsetX = 0;
+    state.offsetY = 0;
+  }
+
+  function sceneOf(m, it) {
+    const id = it.id;
+    const label = arrow(it.label);
+    return {
+      id, title: label, short: label, reviewTab: true, autoFit: true,
+      question: QUESTIONS[m - 1],
+      notesTitle: '헷갈리기 쉬운 점과 직관',
+      enter: (s) => { s.anim = m === 2 ? 0.35 : 1; }, // 원본 setMode/setSub: 진행도 초기화(탭 2는 35%)
+      controls: () => ((ANIM.has(id) ? ['anim'] : []).concat(id === 'verticalAng' ? ['theta'] : id === 'paperFold' ? ['fold'] : id === 'paperFoldCorner' ? ['fa'] : id === 'clockAng' ? ['minute'] : [])),
+      presets: (s) => {
+        sync(s, m, id);
+        const spec = getSpec();
+        const out = [];
+        (LENS[id] || []).forEach(([k, lbl]) => out.push({ group: '관찰 방식', label: lbl, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
+        if (ANIM.has(id)) [0, 0.5, 1].forEach((v) => out.push({ group: '진행도', label: v === 0 ? '0% 시작' : v === 1 ? '100% 완성' : '50%', set: { anim: v }, ms: 700, on: (st) => Math.abs(st.anim - v) < 0.01 }));
+        if (L_CHIPS.has(id)) [6, 12, 18, 24].forEach((v) => out.push({ group: arrowOnly(spec.dim1Name), label: `${v} cm`, apply: (st) => { st.L = v; }, on: (st) => Math.round(st.L) === v }));
+        if (id === 'collinear' || id === 'circlePts') [4, 5, 6, 7].forEach((n) => out.push({ group: '전체 점 개수', label: `${n}개`, apply: (st) => { st.L = PT_L[n]; }, on: (st) => nPtsOf(Math.round(st.L)) === n }));
+        if (id === 'collinear') [3, 4, 5, 6].filter((k) => k <= nPtsOf(Math.round(s.L)) - 1).forEach((k) => out.push({ group: '한 직선 위의 점 개수', label: `${k}개`, apply: (st) => { st.deg = M_DEG[k]; }, on: (st) => mColOf(Math.round(st.L), st.deg) === k }));
+        if (id === 'verticalAng') {
+          [2, 3, 4, 5, 6].forEach((n) => out.push({ group: '만나는 직선 개수 n', label: `${n}개`, apply: (st) => { st.L = LINE_L[n]; }, on: (st) => nLinesOf(Math.round(st.L)) === n }));
+          [40, 55, 65, 75].forEach((d) => out.push({ group: '교차 각도 θ', label: `${d}°`, set: { theta: d }, ms: 500, on: (st) => Math.round(st.theta) === d }));
+        }
+        if (id === 'paperFold') [40, 55, 65, 75].forEach((d) => out.push({ group: '접은 각도 ∠ABC', label: `${d}°`, set: { fold: d }, ms: 500, on: (st) => Math.round(st.fold) === d }));
+        if (id === 'paperFoldCorner') [20, 25, 30, 35, 40].forEach((d) => out.push({ group: '접은 각도(●)', label: `${d}°`, set: { fa: d }, ms: 500, on: (st) => Math.round(st.fa) === d }));
+        if (id === 'clockAng') [10, 20, 30, 40, 50].forEach((d) => out.push({ group: '분', label: `${d}분`, set: { minute: d }, ms: 500, on: (st) => Math.round(st.minute) === d }));
+        return out;
+      },
+      actions: () => {
+        const out = [];
+        if (ANIM.has(id)) out.push({ id: 'act', play: true, primary: true, icon: 'wand', label: (st) => { sync(st, m, id); return arrow(getSpec().actionTxt); }, run: (st, lab) => { lab.tween({ anim: st.anim > 0.5 ? 0.08 : 1 }, 1100); } });
+        if (id === 'rayCompare') out.push({ id: 'reset', icon: 'fit', label: '점 A·B 처음 위치로', run: (st) => { st.ptA.x = -125; st.ptA.y = 12; st.ptB.x = 120; st.ptB.y = -15; } });
+        return out;
+      },
+      view: (s) => {
+        sync(s, m, id);
+        const spec = arrow(getSpec());
+        return {
+          guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(APLab.stripEmoji(spec.badge))}</div>${spec.hint}`,
+          parts: spec.parts.map((p) => ({ id: p.id, name: p.name, desc: p.desc, value: p.val, color: tone(p), ok: p.ok })),
+          summary: spec.totalRes,
+          rule: spec.rule,
+          formula: spec.formulaHTML,
+          notes: spec.notes,
+          // 원본 하단 '실시간 길이·각도 블록 구조' 막대 → 무대 아래 띠(그림을 가리지 않음)
+          tape: { title: '길이·각도의 구성 · ' + spec.totalRes, segments: spec.bars.map((x) => ({ text: x.label, weight: x.weight, color: x.color })) }
+        };
+      },
+      draw: (b, s) => {
+        BOARD = b;
+        CUR = s;
+        const paint = (st) => {
+          sync(st, m, id);
+          ctx.reset();
+          if (st.grid) b.grid({ step: 36 });
+          RENDER[m](RECT);
+        };
+        // 자동 맞춤을 재는 중: 진행도를 바꿔 가며 겹쳐 그려, 어느 단계에서도 그림·글자가 잘리지 않는 범위를 구합니다.
+        const paintAll = () => (ANIM.has(id) ? [0.15, 0.55, 1] : [s.anim]).forEach((a) => paint({ ...s, anim: a }));
+        if (b._bbox) { paintAll(); return; }
+        if (b.thumb) { // 모든 장면 미리보기
+          const bb = b.measure(paintAll);
+          if (bb) b.focus = b.fitBox(bb, { margin: 0.08, px: 5 });
+          paint({ ...s, part: null });
+          return;
+        }
+        paint(s);
+      }
+    };
+  }
+
+  const groups = Object.keys(SUB_MENUS).map((k) => {
+    const m = +k;
+    return { id: 'm' + m, title: TABS[m - 1], short: SHORT[m - 1], scenes: SUB_MENUS[m].map((it) => sceneOf(m, it)) };
+  });
+
+  APLab.createLab({
+    id: 'g7-points-lines',
+    title: '점 · 직선 · 반직선 · 선분 · 각',
+    courseName: '중1',
+    unit: '기본 도형',
+    courseColor: 'var(--m-green)',
+    home: '../index.html#g7',
+    legacy: '../../labs/g7/points-lines.html',
+    board: { kind: 'figure', autoFit: true, minZoom: 0.4, maxZoom: 5 },
+    state: { lens: 'exploded', ptA: { x: -125, y: 12 }, ptB: { x: 120, y: -15 } },
+    persist: ['lens'],
+    params: {
+      anim: { value: 1, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행도 (0% → 100%)', hint: '빛 발사 · 점 이동 · 종이 접기를 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
+      L: { value: 12, min: 4, max: 24, step: 1, color: 'sky', label: '기준 길이 / 개수' },
+      deg: { value: 55, min: 20, max: 130, step: 1, color: 'rose', label: '각도' },
+      theta: { value: 55, min: 40, max: 75, step: 1, color: 'rose', label: '교차 각도 θ', hint: '마주 보는 맞꼭지각이 언제나 같은지 확인합니다', format: (v) => `${Math.round(v)}°` },
+      fold: { value: 55, min: 40, max: 75, step: 1, color: 'rose', label: '접은 각도 ∠ABC', hint: '접은 각 = 엇각 → 이등변삼각형', format: (v) => `${Math.round(v)}°` },
+      fa: { value: 25, min: 20, max: 40, step: 1, color: 'rose', label: '접은 각도(●)', hint: '남은 각 ∠x = 90° − 2●', format: (v) => `${Math.round(v)}°` },
+      minute: { value: 39, min: 10, max: 55, step: 1, color: 'sky', label: '3시 몇 분?', format: (v) => `3시 ${Math.round(v)}분` }
+    },
+    groups
+  });
+});
+</script>
+</body>
+</html>

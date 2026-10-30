@@ -506,7 +506,7 @@ test('CSS stays history-scoped, with compact 2-column desktop and 1-column mobil
   assert.doesNotMatch(css, /\.mobile-nav|bottom-nav|data-archive-navigation|position:\s*fixed/);
   const html = read('workspace.html');
   assert.ok(html.indexOf('archive2-history.js') < html.indexOf('archive2-workspace.js'));
-  assert.match(html, /archive2-navigation\.js\?v=20260929-saved-library-2/);
+  assert.match(html, /archive2-navigation\.js\?v=20261030-s8-1/);
 });
 test('history sends server filters after a debounce and never calls per-card status', async () => {
   const calls = []; let h;
