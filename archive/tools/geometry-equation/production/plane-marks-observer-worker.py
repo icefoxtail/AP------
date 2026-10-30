@@ -48,6 +48,7 @@ def math_label_codes(text):
         ch=text[i]
         if ch in '<>' and text[i+1:i+2]=='=':out.append({'2264' if ch=='<' else '2265'});i+=2;continue
         if ch=='-':out.append({'2212','2D'})
+        elif ch=='\u00b0':out.append({'2218'})
         elif 'a'<=ch<='z':out.append({format(ord(ch),'X'),format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X')})
         elif 'A'<=ch<='Z':out.append({format(ord(ch),'X'),format(0x1D434+ord(ch)-65,'X')})
         else:out.append({format(ord(ch),'X')})
@@ -248,7 +249,9 @@ def audit(p):
         elif style!='SECTOR' and sectors:errors.append('ANGLE_SECTOR_UNEXPECTED:'+oid)
         a,v,c=[peer_point(r) for r in row['refs']];inner=angle_between(a,v,c)
         if inner is None:errors.append('ANGLE_MARK_DEGENERATE:'+oid);continue
-        outer=row.get('side','INNER')=='OUTER';expected=360-inner if outer else inner
+        straight=row.get('straight') is True
+        if straight and abs(inner-180)>ANGLE_TOLERANCE:errors.append('ANGLE_STRAIGHT_NOT_STRAIGHT:'+oid);continue
+        outer=row.get('side','INNER')=='OUTER' and not straight;expected=180.0 if straight else 360-inner if outer else inner
         if len(arcs)!=row.get('arcs',1):errors.append('ANGLE_MARK_MISSING:'+oid);continue
         radii=[];sweeps=[];signed=0.0
         for n in arcs:
@@ -264,6 +267,13 @@ def audit(p):
         if not sweeps:continue
         drawn=sweeps[0]
         angle_geometry[oid]=(v,direction_degrees(sub(a,v)),signed,max(radii))
+        if straight:
+            # the semicircle faces the screen side the plan names: the middle of its first arc, seen from the vertex in svg px, points that way
+            want_side=DIM_SIDE_VECTORS.get(row.get('side'))
+            if want_side is None:errors.append('ANGLE_STRAIGHT_SIDE_REQUIRED:'+oid)
+            else:
+                first_arc=poly_model(arcs[0]);middle=forward(first_arc[len(first_arc)//2]);vertex_px=forward(v);toward=(middle[0]-vertex_px[0],middle[1]-vertex_px[1])
+                if norm(toward)<=1e-9 or (toward[0]*want_side[0]+toward[1]*want_side[1])/norm(toward)<DIM_SIDE_MIN_DOT:errors.append('ANGLE_STRAIGHT_SIDE_MISMATCH:'+oid)
         if any(abs(s-drawn)>1e-6 for s in sweeps):errors.append('ANGLE_ARC_SWEEPS_DIFFER:'+oid)
         if abs(drawn-expected)>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:points=%.3f'%(drawn,expected))
         if row.get('value') is not None and abs(drawn-float(row['value']))>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:declared=%s'%(drawn,row['value']))
@@ -412,8 +422,48 @@ def audit(p):
                 if (row['labelAt']=='START' and fraction>0.3) or (row['labelAt']=='END' and fraction<0.7):errors.append('SEGMENT_LABEL_NOT_AT_END:'+oid)
         observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx,**({'labelKind':row['labelKind']} if row.get('labelKind') else {}),**({'unit':row['unit']} if row.get('unit') else {})})
 
+    # ---- angle sums (E30): the equation of two angle marks at one vertex, re-derived here from the plan's own angle rows (values, vertex) and checked as a free math label
+    angle_rows={r['id']:r for r in marks.get('angles',[]) if isinstance(r,dict) and 'id' in r}
+    sum_rows=[]
+    for row in marks.get('angleSums',[]):
+        oid=row.get('id');ids=row.get('angles')
+        if not (isinstance(ids,list) and len(ids)==2 and ids[0]!=ids[1] and all(i in angle_rows for i in ids)):errors.append('ANGLE_SUM_ANGLES_INVALID:'+str(oid));continue
+        first,second=angle_rows[ids[0]],angle_rows[ids[1]]
+        if first['refs'][1]!=second['refs'][1]:errors.append('ANGLE_SUM_VERTEX_MISMATCH:'+oid);continue
+        if first.get('value') is None or second.get('value') is None:errors.append('ANGLE_SUM_NEEDS_VALUES:'+oid);continue
+        total=float(first['value'])+float(second['value'])
+        if row.get('label') is not None:
+            try:stated=float(str(row['label']).rstrip('\u00b0'))
+            except ValueError:stated=None
+            if stated is None or abs(stated-total)>ANGLE_TOLERANCE:errors.append('ANGLE_SUM_MISMATCH:'+oid);continue
+        number=lambda x:('%.6f'%x).rstrip('0').rstrip('.')
+        sum_rows.append({'id':oid,'at':row.get('at',first['refs'][1]),'text':number(float(first['value']))+'\u00b0+'+number(float(second['value']))+'\u00b0='+number(total)+'\u00b0','labelKind':'MATH','anchor':row.get('anchor')})
+    # ---- right angle expression labels (E30): beside the square mark inside the right angle, or on a leader from the square
+    for row in p.get('rightAngles') or []:
+        if row.get('label') is None:continue
+        oid=row['id'];lid=oid+'-label';box=label_clear(lid)
+        if box is None:continue
+        a,v,c=[peer_point(r) for r in row['refs']];node=elements.get(lid)
+        want=math_label_codes(str(row['label']));codes=glyph_codes(node) if node is not None else []
+        if node is not None and node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+lid)
+        elif len(codes)!=len(want) or any(code not in allowed for code,allowed in zip(codes,want)):errors.append('LABEL_TEXT_MISMATCH:'+lid)
+        centre=inverse(box[0]+box[2]/2,box[1]+box[3]/2);ray_a=direction_degrees(sub(a,v));ray_c=direction_degrees(sub(c,v))
+        spread=wrap180(ray_c-ray_a);offset=wrap180(direction_degrees(sub(centre,v))-ray_a)
+        inside=(0<offset<spread) if spread>0 else (spread<offset<0)
+        square=elements.get(oid)
+        if square is not None and tag(square)=='polyline':
+            raw=[float(x) for part in square.get('points','').split() for x in part.split(',')];outline=[(raw[i],raw[i+1]) for i in range(0,len(raw)-1,2)]
+        else:outline=[]
+        if lid in leaders:
+            leader_ok(lid,box,lambda q:bool(outline) and min(point_segment_distance(q,s0,s1) for s0,s1 in zip(outline,outline[1:]))<=1.5)
+        elif not inside:errors.append('RIGHT_ANGLE_LABEL_NOT_IN_ANGLE:'+oid)
+        else:
+            vx,vy=forward(v)
+            if math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:errors.append('RIGHT_ANGLE_LABEL_TOO_FAR:'+oid)
+        observations.append({'id':oid,'type':'RIGHT_ANGLE_LABEL','label':row['label']})
+
     # ---- free text labels (E30): a plain Korean or math label at a stated source coordinate, or beside a point on a stated side
-    for row in marks.get('textLabels',[]):
+    for row in [*marks.get('textLabels',[]),*sum_rows]:
         oid=row.get('id');box=label_clear(oid)
         if box is None:continue
         at=row.get('at');text=str(row.get('text',''))

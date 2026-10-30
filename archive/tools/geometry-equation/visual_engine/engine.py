@@ -66,6 +66,7 @@ def _sample_graph_boundary(rows,vp):
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 # A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
 SECTOR_FILL='#d9d9d9'
+STRAIGHT_SIDE_VECTORS={'ABOVE':(0,-1),'BELOW':(0,1),'LEFT':(-1,0),'RIGHT':(1,0)}   # screen directions (y points down) a straight angle's semicircle may face
 FREE_LABEL_RINGS=(6,12,18)   # px: how far a centred free text label may slide from its stated place (the observer's slack is the largest ring)
 FREE_LABEL_GAPS=(8,12,18,26) # px: the gaps a free text label beside a point or in a named direction tries
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT on a plane figure's segment (the same red as a solid figure's accent edge)
@@ -737,12 +738,22 @@ def prepare(spec):
         elif kind=='ANGLE_MARK':
             if not vp.equal:raise ValueError('ANGLE_REQUIRES_EQUAL_UNITS')
             a,v,b=(vp.screen(geometry[r]) for r in obj['refs']);start=math.atan2(a[1]-v[1],a[0]-v[0]);end=math.atan2(b[1]-v[1],b[0]-v[0]);delta=(end-start+math.pi)%(2*math.pi)-math.pi
+            if obj.get('straight') is True:
+                # a straight angle is a half turn either way round: the one whose middle direction points to the named screen side
+                want=STRAIGHT_SIDE_VECTORS[obj['straightSide']];turns=(math.pi,-math.pi)
+                scores=[math.cos(start+turn/2)*want[0]+math.sin(start+turn/2)*want[1] for turn in turns]
+                if max(scores)<0.2:raise ValueError('ANGLE_STRAIGHT_SIDE_AMBIGUOUS:'+oid)
+                delta=turns[scores.index(max(scores))]
             if obj.get('outer') is True:delta=delta-2*math.pi if delta>0 else delta+2*math.pi
             pts=[(v[0]+tokens['angleArcRadius']*math.cos(start+delta*i/32),v[1]+tokens['angleArcRadius']*math.sin(start+delta*i/32)) for i in range(33)]
             if oid in spec['displayFacts'].get('squareAngleIds',[]):
                 if abs(obj['value']-90)>1e-9:raise ValueError('SQUARE_REQUIRES_RIGHT_ANGLE')
                 size=tokens['rightAngleSize'];u=[(a[i]-v[i])/math.dist(a,v)*size for i in range(2)];w=[(b[i]-v[i])/math.dist(b,v)*size for i in range(2)]
                 pts=[(v[0]+u[0],v[1]+u[1]),(v[0]+u[0]+w[0],v[1]+u[1]+w[1]),(v[0]+w[0],v[1]+w[1])]
+                if obj.get('labelText') is not None:
+                    # an expression beside the right angle mark (3x, 3x=90°): inside the right angle next to the square, or on a leader from the square's far corner
+                    middle=start+delta/2;reach=size*math.sqrt(2);rays=min(math.dist(a,v),math.dist(b,v))
+                    labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),(v[0]+reach*math.cos(middle),v[1]+reach*math.sin(middle)),{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':reach+4.0,'rMax':max(reach+12.0,min(reach+44.0,.9*rays)),'rFar':max(reach+12.0,.92*rays),'arcRadius':reach,'farDistance':ANGLE_LABEL_FAR_DISTANCE_PX},'gaps':(24,32,48,64),'leaderOwned':[oid]}))
             elif obj.get('arcs') is not None:
                 # Textbook angle marks: 1-3 concentric arcs (equal angles share the count) around the vertex, from one ray to the other,
                 # with a small light sector filling the wedge up to the outermost arc (style SECTOR, the default); style ARC keeps strokes only.

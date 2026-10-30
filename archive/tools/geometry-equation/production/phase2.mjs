@@ -29,7 +29,7 @@ export {verifyConstructionConditionBindings} from './fact-display-map-v1.mjs';
 
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
-import {planeMarkSpec,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints} from './plane-marks.mjs';
+import {planeMarkSpec,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints,TEXT_LABEL_MATH,TEXT_LABEL_HANGUL,TEXT_LABEL_FUNCTIONS} from './plane-marks.mjs';
 import {regionExtentPoints} from './plane-regions.mjs';
 
 const GRAPH_OVERVIEW_CANVAS=Object.freeze({width:610,height:420,panel:140});
@@ -872,7 +872,12 @@ function specForFamily(plan,model,id){
     objects.push({id:label.id,kind:'EQUATION_LABEL',target:label.ownerSegment,text:label.variable,at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
     notationByLabel[label.id]=label.unit?{unit:label.unit}:{};factRolesByLabel[label.id]=label.factRole;
   }
-  for(const angle of plan.rightAngles||[])objects.push({id:angle.id,kind:'ANGLE_MARK',refs:angle.refs,value:90});
+  for(const angle of plan.rightAngles||[]){
+    // label (E30): an expression written beside the right angle mark (3x, x+20°, 3x=90°): letters, digits, spaces and ( ) , < > = + - . ° only
+    if(angle.label!==undefined&&(typeof angle.label!=='string'||!TEXT_LABEL_MATH.test(angle.label)||TEXT_LABEL_FUNCTIONS.test(angle.label)||TEXT_LABEL_HANGUL.test(angle.label)))throw Error('RIGHT_ANGLE_LABEL_INVALID:'+angle.id);
+    objects.push({id:angle.id,kind:'ANGLE_MARK',refs:angle.refs,value:90,...(angle.label!==undefined?{labelText:angle.label,labelKind:'MATH'}:{})});
+    if(angle.label!==undefined)factRolesByLabel[angle.id+'-label']=angle.factRole??'DERIVED_INTERMEDIATE';
+  }
   // planeMarks (plane-marks.mjs): angle arcs, equal ticks, parallel arrows, expression labels, highlighted arcs; each is checked against the model here.
   const planeMarkFacts=planeMarkSpec(plan,model,points,new Set((plan.displaySegments||[]).map(s=>s.id)));
   objects.push(...planeMarkFacts.objects);Object.assign(factRolesByLabel,planeMarkFacts.factRolesByLabel);

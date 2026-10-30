@@ -12,7 +12,7 @@ KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRC
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION','DIMENSION_LINE','PATH_LABEL'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
-FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor'}
+FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide'}
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'}}
 
 def parity(a,b):
@@ -71,6 +71,9 @@ def validate(spec):
             if obj.get('labelKind','DEGREE' if obj['kind']=='CIRCULAR_ARC' else 'MATH')!='MATH':raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+str(obj.get('id')))
         if 'labelKind' in obj and obj['kind'] in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:
             if obj['labelKind'] not in ({'MATH','TEXT'} if obj['kind']!='CIRCULAR_ARC' else {'DEGREE','NAME','MATH','TEXT'}):raise ValueError('MARK_LABEL_KIND_INVALID:'+str(obj.get('id')))
+        # A straight angle (angles[].straight) is the half turn between the two rays of a straight line; its semicircle faces one screen side.
+        if 'straight' in obj and (obj['kind']!='ANGLE_MARK' or obj['straight'] is not True or obj.get('straightSide') not in {'ABOVE','BELOW','LEFT','RIGHT'} or obj.get('outer')):raise ValueError('INVALID_STRAIGHT_ANGLE')
+        if 'straightSide' in obj and obj.get('straight') is not True:raise ValueError('INVALID_STRAIGHT_ANGLE')
         # A free text label (planeMarks.textLabels) is an EQUATION_LABEL that no line owns: freeLabel, and the side or centre `anchor` it stands at.
         if 'freeLabel' in obj and (obj['kind']!='EQUATION_LABEL' or obj['freeLabel'] is not True):raise ValueError('INVALID_FREE_LABEL')
         if 'anchor' in obj and ('freeLabel' not in obj or obj['anchor'] not in {'CENTER','N','NE','E','SE','S','SW','W','NW'}):raise ValueError('INVALID_FREE_LABEL_ANCHOR')
@@ -291,7 +294,7 @@ def validate(spec):
                 if math.hypot(*u)==0 or math.hypot(*w)==0: raise ValueError('DEGENERATE_ANGLE')
                 observed=math.degrees(math.acos(max(-1,min(1,(u[0]*w[0]+u[1]*w[1])/(math.hypot(*u)*math.hypot(*w))))))
                 if obj.get('outer') is True:observed=360-observed
-                ok=parity(observed,finite(obj['value']))
+                ok=(abs(observed-180)<=0.5 and parity(180.0,finite(obj['value']))) if obj.get('straight') is True else parity(observed,finite(obj['value']))
             elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
                 if len(refs)<2 or len(set(refs))!=len(refs) or any(objects[r]['kind']!='SEGMENT' for r in refs):raise ValueError('SEGMENT_REFS_REQUIRED')
                 if isinstance(obj.get('count'),bool) or not isinstance(obj.get('count'),int) or not 1<=obj['count']<=(3 if kind=='EQUAL_MARK' else 2):raise ValueError('MARK_COUNT_INVALID')

@@ -223,7 +223,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     // runPhase2 715: graphs also need the graph observer on the final SVG at the intrinsic scale.
     const graphAudit=graph?await call(pythonWorker,'graphAudit',{graphPlan:plan.graphPlan,svg,transform:{...observerFrame(witness.coordinateModel),displayScale:1}},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000}):null;
     // The plane-marks observer recomputes every stated angle, length, parallel and arc fact from the Cindy peer's points and the drawn primitives.
-    const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},segments:plan.displaySegments||[],transform:witness.coordinateModel},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
+    const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
     lineage.staticAuditSha256=digest(graph?{primitive:audit,graph:graphAudit}:planeAudit?{primitive:audit,planeMarks:planeAudit}:audit,'staticAudit','OUTPUT_NOT_CANONICAL');
     const auditErrors=Array.isArray(audit.errors)?[...audit.errors]:[];
     // The observer reports the bytes it parsed; they must be the bytes the render below receives.

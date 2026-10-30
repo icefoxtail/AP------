@@ -43,11 +43,11 @@ export function textNamesPoint(text,id){
 }
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels'],
-  textLabels:['id','at','text','labelKind','anchor','factRole'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums'],
+  textLabels:['id','at','text','labelKind','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],
   dimensions:['id','from','to','label','labelKind','unit','side','style','offset','value','factRole'],
   pathLabels:['id','points','label','labelKind','unit','value','factRole'],
-  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel'],
+  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','unit','labelAt'],
   arcs:['id','circle','center','from','to','side','label','labelKind','unit','highlight','factRole'],
@@ -80,13 +80,16 @@ const list=(value,where)=>{if(value===undefined)return [];if(!Array.isArray(valu
 // first free side without one). labelKind TEXT writes plain Korean text, MATH a formula; without labelKind a text with a Hangul syllable is TEXT, any other MATH.
 export const TEXT_LABEL_ANCHORS=['CENTER','N','NE','E','SE','S','SW','W','NW'];
 export const TEXT_LABEL_HANGUL=/[\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF]/u;
-export const TEXT_LABEL_MATH=/^[A-Za-z0-9 (),<>=+\-.]{1,40}$/;
+export const TEXT_LABEL_MATH=/^[A-Za-z0-9 (),<>=+\-.\u00B0]{1,40}$/;
 export const textLabelKind=row=>row?.labelKind??(TEXT_LABEL_HANGUL.test(String(row?.text??''))?'TEXT':'MATH');
-const TEXT_LABEL_FUNCTIONS=/(?<![A-Za-z])(?:sqrt|abs|log|logb|ln|exp|sin|cos|tan)(?![A-Za-z])/;
+export const TEXT_LABEL_FUNCTIONS=/(?<![A-Za-z])(?:sqrt|abs|log|logb|ln|exp|sin|cos|tan|pi)(?![A-Za-z])/;
+/** An angle value as the sum label writes it: 15, 37.5 (at most six decimals, no trailing zeros). */
+export const angleNumberText=value=>String(Number(Number(value).toFixed(6)));
+export const angleSumText=(a,b)=>angleNumberText(a)+'\u00B0+'+angleNumberText(b)+'\u00B0='+angleNumberText(a+b)+'\u00B0';
 const TEXT_LABEL_COORDINATE=/^[A-Za-z]?\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)$/;
 /** The model coordinates a textLabels row stands at, when `at` is a source coordinate pair (a point id adds no frame extent: the point is already in the frame). */
 export function textLabelExtentPoints(plan){
-  const rows=Array.isArray(plan?.planeMarks?.textLabels)?plan.planeMarks.textLabels:[],out=[];
+  const rows=[...(Array.isArray(plan?.planeMarks?.textLabels)?plan.planeMarks.textLabels:[]),...(Array.isArray(plan?.planeMarks?.angleSums)?plan.planeMarks.angleSums:[])],out=[];
   for(const row of rows)if(Array.isArray(row?.at)&&row.at.length===2&&row.at.every(v=>typeof v==='number'&&Number.isFinite(v)))out.push([row.at[0],row.at[1]]);
   return out;
 }
@@ -144,19 +147,29 @@ export function planeMarkSpec(plan,model,points,segmentIds){
   const plainTextOk=(text,where,id)=>{if(typeof text!=='string'||!text.trim()||text.length>40||/[\r\n\t\\$]/.test(text))bad('MARK_FIELD_INVALID:'+where+':'+id);};
 
   // --- angle arcs
-  const groups=new Map();
+  const groups=new Map(),angleInfo=new Map();
   for(const row of list(marks.angles,'angles')){
     if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:angles');
     keysOk(row,KEYS.angles,'angles');claim(row.id,'angles');
     if(!Array.isArray(row.refs)||row.refs.length!==3||row.refs.some(r=>typeof r!=='string'))bad('MARK_FIELD_INVALID:angles.refs:'+row.id);
     if(new Set(row.refs).size!==3)bad('ANGLE_MARK_DEGENERATE:'+row.id);
     const [a,v,c]=row.refs.map(at);
+    // straight:true (E30): the half turn from the ray VA to the ray VB on a straight line a-v-b; `side` then names the screen side (ABOVE, BELOW, LEFT, RIGHT) its semicircle faces
+    if(row.straight!==undefined&&typeof row.straight!=='boolean')bad('MARK_FIELD_INVALID:angles.straight:'+row.id);
+    const straight=row.straight===true;
     const inner=angleBetween(a,v,c);
-    if(inner===null||inner<1e-6||inner>180-1e-6)bad('ANGLE_MARK_DEGENERATE:'+row.id);
-    const side=row.side??'INNER';
-    if(!['INNER','OUTER'].includes(side))bad('MARK_FIELD_INVALID:angles.side:'+row.id);
-    const measured=side==='OUTER'?360-inner:inner;
-    if(inner<5)bad('ANGLE_ARC_TOO_SMALL:'+row.id);
+    if(inner===null||inner<1e-6||(!straight&&inner>180-1e-6))bad('ANGLE_MARK_DEGENERATE:'+row.id);
+    if(straight){
+      if(Math.abs(inner-180)>ANGLE_TOLERANCE_DEGREES)bad('ANGLE_STRAIGHT_NOT_STRAIGHT:'+row.id);
+      if(!DIMENSION_SIDES.includes(row.side))bad('ANGLE_STRAIGHT_SIDE_REQUIRED:'+row.id);
+      const length=norm(sub(c,a)),d=[(c[0]-a[0])/length,-(c[1]-a[1])/length],want=DIMENSION_SIDE_VECTORS[row.side];     // model y points up, the screen's down
+      const best=Math.max(...[[-d[1],d[0]],[d[1],-d[0]]].map(n=>n[0]*want[0]+n[1]*want[1]));
+      if(best<0.2)bad('ANGLE_STRAIGHT_SIDE_AMBIGUOUS:'+row.id);
+    }
+    const side=straight?row.side:(row.side??'INNER');
+    if(!straight&&!['INNER','OUTER'].includes(side))bad('MARK_FIELD_INVALID:angles.side:'+row.id);
+    const measured=straight?180:side==='OUTER'?360-inner:inner;
+    if(!straight&&inner<5)bad('ANGLE_ARC_TOO_SMALL:'+row.id);
     const declared=row.value===undefined?null:numberOf(row.value);
     if(row.value!==undefined&&(declared===null||declared<=0||declared>=360))bad('MARK_FIELD_INVALID:angles.value:'+row.id);
     if(declared!==null&&Math.abs(declared-measured)>ANGLE_TOLERANCE_DEGREES)bad('ANGLE_MARK_FACT_MISMATCH:'+row.id+':declared='+declared+':drawn='+measured.toFixed(3));
@@ -171,8 +184,9 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     // DEGREE writes the value with a degree sign, NAME writes the angle by its letters (ABC -> the angle ABC) and MATH writes a symbol such as theta.
     if(!['DEGREE','NAME','MATH'].includes(kind))bad('MARK_FIELD_INVALID:angles.labelKind:'+row.id);
     // A degree label names the declared value; a mark with neither a label nor `noLabel` states nothing a student can read.
-    const text=labelOf(row,declared!==null?String(row.value).replace(/\.0+$/,''):null,true);
+    const text=labelOf(row,declared!==null?String(row.value).replace(/\.0+$/,''):(straight?'180':null),true);
     if(text===null&&row.noLabel!==true)bad('ANGLE_MARK_LABEL_REQUIRED:'+row.id);
+    angleInfo.set(row.id,{vertex:row.refs[1],value:declared});
     if(row.emphasisGroup!==undefined&&(!Number.isInteger(row.emphasisGroup)||row.emphasisGroup<1||row.emphasisGroup>ANGLE_EMPHASIS_GROUPS))bad('ANGLE_EMPHASIS_GROUP_INVALID:'+row.id);
     // labelPlacement LEADER (E12b): the label stands outside its angle on a leader from its own arc even where the angle has room for it; AUTO (default) keeps the old search.
     if(row.labelPlacement!==undefined&&!ANGLE_LABEL_PLACEMENTS.includes(row.labelPlacement))bad('ANGLE_LABEL_PLACEMENT_INVALID:'+row.id);
@@ -185,7 +199,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(g.style!==style)bad('ANGLE_EQUAL_GROUP_STYLE_MISMATCH:'+row.id);
       g.ids.push(row.id);groups.set(row.equalGroup,g);
     }
-    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(row.labelPlacement==='LEADER'?{labelPlacement:'LEADER'}:{})};
+    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(straight?{straight:true,straightSide:side}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(row.labelPlacement==='LEADER'?{labelPlacement:'LEADER'}:{})};
     if(text!==null){object.labelText=text;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
@@ -257,6 +271,31 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(written&&(Math.abs(Number(written[1])-place[0])>1e-6||Math.abs(Number(written[2])-place[1])>1e-6))bad('TEXT_LABEL_COORDINATE_MISMATCH:'+row.id+':declared=('+written[1]+','+written[2]+'):point=('+Number(place[0].toFixed(6))+','+Number(place[1].toFixed(6))+')');
     objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.id,text:row.text,at:place,freeLabel:true,priority:1,...(anchor?{anchor}:{}),...(kind==='TEXT'?{labelKind:'TEXT'}:{})});
     factRolesByLabel[row.id]=role(row);
+  }
+
+  // --- angle sums (E30): the equation of two angle marks at one vertex written as a label, A°+B°=S°, built from their declared values (so it is true by construction);
+  // a stated `label` (the sum, with or without °) must equal it. `at` and `anchor` place it like a free text label (default: beside the shared vertex).
+  for(const row of list(marks.angleSums,'angleSums')){
+    if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:angleSums');
+    keysOk(row,KEYS.angleSums,'angleSums');claim(row.id,'angleSums');
+    if(!Array.isArray(row.angles)||row.angles.length!==2||row.angles.some(id=>typeof id!=='string')||row.angles[0]===row.angles[1])bad('ANGLE_SUM_ANGLES_INVALID:'+row.id);
+    const infos=row.angles.map(id=>angleInfo.get(id)??bad('ANGLE_SUM_ANGLES_INVALID:'+row.id+':'+id));
+    if(infos[0].vertex!==infos[1].vertex)bad('ANGLE_SUM_VERTEX_MISMATCH:'+row.id);
+    if(infos.some(info=>info.value===null))bad('ANGLE_SUM_NEEDS_VALUES:'+row.id);
+    const sum=infos[0].value+infos[1].value;
+    if(row.label!==undefined){
+      const stated=typeof row.label==='string'||typeof row.label==='number'?numberOf(String(row.label).replace(/\u00B0$/u,'')):null;
+      if(stated===null||Math.abs(stated-sum)>ANGLE_TOLERANCE_DEGREES)bad('ANGLE_SUM_MISMATCH:'+row.id+':declared='+row.label+':sum='+angleNumberText(sum));
+    }
+    const byPoint=typeof row.at==='string',target=row.at===undefined?infos[0].vertex:row.at;
+    let place;
+    if(typeof target==='string')place=at(target);
+    else if(Array.isArray(target)&&target.length===2&&target.every(v=>typeof v==='number'&&Number.isFinite(v)))place=[target[0],target[1]];
+    else bad('ANGLE_SUM_AT_INVALID:'+row.id);
+    if(row.anchor!==undefined&&!TEXT_LABEL_ANCHORS.includes(row.anchor))bad('ANGLE_SUM_ANCHOR_INVALID:'+row.id);
+    const anchor=row.anchor??(typeof target==='string'?undefined:'CENTER');
+    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.id,text:angleSumText(infos[0].value,infos[1].value),at:place,freeLabel:true,priority:1,...(anchor?{anchor}:{})});
+    factRolesByLabel[row.id]=role(row,'DERIVED_INTERMEDIATE');
   }
 
   // --- dimension lines: a length between two points on a parallel line, with a bar, arrow or brace style
@@ -430,6 +469,7 @@ export function planeMarkPointRefs(plan){
   for(const row of Array.isArray(marks.dimensions)?marks.dimensions:[])refs.push(row?.from,row?.to);
   for(const row of Array.isArray(marks.pathLabels)?marks.pathLabels:[])if(Array.isArray(row?.points))refs.push(...row.points);
   for(const row of Array.isArray(marks.textLabels)?marks.textLabels:[])if(typeof row?.at==='string')refs.push(row.at);
+  for(const row of Array.isArray(marks.angleSums)?marks.angleSums:[])if(typeof row?.at==='string')refs.push(row.at);
   for(const row of Array.isArray(marks.traces)?marks.traces:[]){refs.push(row?.center,row?.radius?.point,...(Array.isArray(row?.through)?row.through:[]));}
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
   return [...refs,...regionPointRefs(plan)].filter(id=>typeof id==='string');
