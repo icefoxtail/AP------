@@ -209,7 +209,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q003_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q003_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 내심 I가 각의 이등분선의 교점이어서 ∠B=50°, ∠A=72°, ∠C=58°, ∠AIB=119°이고, 오른쪽은 외심 O에서 OD=OE=OF이므로 ∠OED=25°, ∠DEF=51°, ∠DOF=102°, ∠OFD=39°임을 보인 두 삼각형 그림",
+    "solutionImageCaption": "내심과 외심의 성질로 두 삼각형의 각을 차례로 구한 모습이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -562,7 +566,11 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q008_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q008_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC의 외심 O와 내심 I에서 ∠BIC=108°, ∠A=36°, ∠B=∠C=72°, ∠OBC=54°, ∠IBC=36°를 표시하고 구하는 ∠OBI는 호로만 강조한 그림이다.",
+    "solutionImageCaption": "외심 O와 내심 I가 BC의 수직이등분선 위에 있고 ∠OBC와 ∠IBC의 차가 ∠OBI이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
