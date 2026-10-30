@@ -27,6 +27,7 @@ const files = [
   'tests/svg-accessibility-integration.test.cjs',
   'tests/render-authority-question.test.js',
   'tests/archive2-key-resolver.test.js',
+  'tests/archive2-quick-pools.test.js',
 ];
 
 console.log('Archive2 Runtime Guard — ARCHIVE2_RUNTIME_CONTRACT_V1_20261006');

@@ -513,44 +513,18 @@
     scopeNotice: "",
   };
   let finderFilterRenderTimer = null;
-  // The five-minute shelf uses the existing catalog and output engine without
-  // changing the compose draft or its selection controls.
-  const quickAssessmentConfigs = Object.freeze({
-    "five-minute": Object.freeze({ title: "5분 테스트", count: 4, order: ["basic", "standard", "application"], presets: Object.freeze({
-      basic: [[1, 2], [2, 2]], standard: [[2, 2], [3, 2]], application: [[2, 1], [3, 3]],
-    }) }),
-    "subunit-test": Object.freeze({ title: "소단원 평가", count: 12, order: ["basic", "standard", "application"], presets: Object.freeze({
-      basic: [[1, 6], [2, 6], [3, 0]], standard: [[1, 3], [2, 6], [3, 3]],
-      application: [[1, 1], [2, 5], [3, 6]],
-    }) }),
-    "unit-test": Object.freeze({ title: "중단원 평가", count: 20,
-      order: ["basic", "standard", "application", "advanced"], presets: Object.freeze({
-        basic: [[1, 8], [2, 10], [3, 2], [4, 0]],
-        standard: [[1, 4], [2, 10], [3, 6], [4, 0]],
-        application: [[1, 2], [2, 6], [3, 9], [4, 3]],
-        advanced: [[1, 0], [2, 4], [3, 10], [4, 6]],
-      }) }),
-    "monthly-test": Object.freeze({ title: "종합평가", count: 24,
-      order: ["basic", "standard", "application", "advanced"], presets: Object.freeze({
-        basic: [[1, 8], [2, 12], [3, 4], [4, 0]],
-        standard: [[1, 4], [2, 12], [3, 8], [4, 0]],
-        application: [[1, 2], [2, 8], [3, 10], [4, 4]],
-        advanced: [[1, 0], [2, 4], [3, 12], [4, 8]],
-      }) }),
-  });
-  const fiveMinutePresetLabels = { basic: "기초", standard: "기본", application: "응용", advanced: "심화" };
-  const fiveMinute = { grade: "", course: "", preset: "standard", units: null, busy: false };
-  const subunitTest = { grade: "", course: "", preset: "standard", units: null, busy: false };
-  const unitTest = { grade: "", course: "", preset: "standard", units: null, busy: false };
-  const monthlyTest = { grade: "", course: "", preset: "standard", units: null,
-    selectedUnits: new Set(), busy: false };
-  const quickAssessment = () => ({
-    config: quickAssessmentConfigs[state.view],
-    selection: state.view === "monthly-test" ? monthlyTest
-      : state.view === "unit-test" ? unitTest
-      : state.view === "subunit-test" ? subunitTest : fiveMinute,
-  });
-  const isQuickAssessmentView = () => Boolean(quickAssessmentConfigs[state.view]);
+  // Quick assessments (5분 테스트 / 소단원 / 중단원 / 종합평가) draw from pools built on the
+  // unified unit layer (archive2-quick-pools.js) and use the existing catalog and output engine
+  // without changing the compose draft or its selection controls.
+  const Quick = window.Archive2QuickPools;
+  const quickState = { grade: "", subject: "", busy: false, bundle: new Set(),
+    presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard" } };
+  const quickProduct = () => Quick?.PRODUCTS[state.view] || null;
+  const quickPreset = () => quickState.presets[state.view] || "standard";
+  const isQuickAssessmentView = () => Boolean(Quick?.isQuickView(state.view));
+  // One navigation tab ("빠른 평가") stays active on all four products.
+  const navViewActive = (el) => el.dataset.navKey === "quick"
+    ? isQuickAssessmentView() : el.dataset.view === state.view;
 
   function scheduleFinderFilterRender() {
     clearTimeout(finderFilterRenderTimer);
@@ -1986,87 +1960,88 @@
       throw new Error("팝업을 허용한 뒤 다시 열어 주세요.");
   }
 
-  function quickAssessmentUnits() {
-    const { selection } = quickAssessment();
-    const scope = state.view;
-    if (!selection.units) {
-      const units = new Map();
-      const metaByUid = scope === "subunit-test"
-        ? new Map((state.metaIndex || []).map(row => [row.questionUid || row.uid, row])) : null;
-      for (const record of state.catalog.records) {
-        if (!record.sourceGrade || !record.curriculumKey || !record.courseKey || !record.L1 || !record.L2 ||
-            ![1, 2, 3, ...(scope === "unit-test" || scope === "monthly-test" ? [4] : [])]
-              .includes(record.difficultyBucket) ||
-            !C.generalUseEligibility(record).ok) continue;
-        const meta = metaByUid?.get(record.questionUid);
-        if (scope === "subunit-test" && (!meta?.standardUnitKey || !meta?.subUnitKey || !meta?.subUnit)) continue;
-        const course = JSON.stringify([record.curriculumKey, record.courseKey]);
-        const path = scope === "monthly-test" ? [record.L1]
-          : scope === "subunit-test" ? [meta.standardUnitKey, meta.subUnitKey]
-          : [record.L1, record.L2];
-        const key = JSON.stringify([record.sourceGrade, course, ...path]);
-        if (!units.has(key)) units.set(key, {
-          key, grade: record.sourceGrade, course, curriculumKey: record.curriculumKey,
-          courseKey: record.courseKey,
-          L1: scope === "subunit-test" ? (meta.standardUnit || record.L1) : record.L1,
-          L2: scope === "monthly-test" ? "" : scope === "subunit-test" ? meta.subUnit : record.L2,
-          buckets: { 1: [], 2: [], 3: [], 4: [] },
-        });
-        units.get(key).buckets[record.difficultyBucket].push(record);
-      }
-      selection.units = [...units.values()].sort((a, b) =>
-        a.grade.localeCompare(b.grade, "ko") || a.course.localeCompare(b.course, "ko") ||
-        a.L1.localeCompare(b.L1, "ko") || a.L2.localeCompare(b.L2, "ko"));
+  let quickPoolCache = { index: null, meta: null, metaByUid: null, pools: null };
+  // Pools are built once per catalog load (and recorded-meta load) from the unified index; a
+  // click or a preset change only reads them.
+  function quickPools() {
+    const index = unifiedIndex();
+    if (!Quick || !index) return null;
+    if (quickPoolCache.index !== index || quickPoolCache.meta !== state.metaIndex) {
+      const metaByUid = new Map((state.metaIndex || []).map(row => [row.questionUid || row.uid, row]));
+      quickPoolCache = { index, meta: state.metaIndex, metaByUid, pools: Quick.buildPools(index, { metaByUid }) };
     }
-    return selection.units.filter(unit =>
-      (!selection.grade || unit.grade === selection.grade) &&
-      (!selection.course || unit.course === selection.course));
+    return quickPoolCache.pools;
   }
-  function renderFiveMinute() {
-    const { config, selection } = quickAssessment();
-    const all = quickAssessmentUnits();
-    const cachedUnits = selection.units;
-    const grades = ["중1", "중2", "중3", "고1", "고2", "고3"]
-      .filter(grade => cachedUnits.some(unit => unit.grade === grade));
-    const courses = [...new Map(cachedUnits.filter(unit => unit.grade === selection.grade)
-      .map(unit => [unit.course, {
-        value: unit.course,
-        label: `${/^M([123])-([12])$/.test(unit.courseKey)
-          ? unit.courseKey.replace(/^M([123])-([12])$/, "중$1 · $2학기 수학")
-          : unit.courseKey} · ${unit.curriculumKey}`,
-      }])).values()];
-    const units = selection.grade && selection.course ? all : [];
-    const mix = config.presets[selection.preset].filter(([, count]) => count)
-      .map(([bucket, count]) => `${bucket}단계 ${count}문항`).join(" · ");
-    const monthly = state.view === "monthly-test";
-    const cards = units.map((unit, index) => {
-      const label = `${esc(unit.L1)}${unit.L2 && unit.L2 !== unit.L1 ? ` · ${esc(unit.L2)}` : ""}`;
-      const counts = [1, 2, 3, ...(config.count >= 20 ? [4] : [])]
-        .map(bucket => `${bucket}단계 ${unit.buckets[bucket].length}`).join(" · ");
-      const open = button("five-minute-unit", `${label} <small>${counts}</small>`,
-        `type="button" data-unit-index="${index}" ${selection.busy ? "disabled" : ""}`);
-      return monthly ? `<div class="quick-bundle-entry">${open}<label><input type="checkbox" data-quick-bundle="${esc(unit.key)}"
-        ${selection.selectedUnits.has(unit.key) ? "checked" : ""}> 묶음에 추가</label></div>` : open;
-    }).join("");
-    return `<div class="intro"><div><h1>${config.title}</h1></div>${state.view === "subunit-test"
+  // The grade / subject choice is shared by the four products; the difficulty preset is per product.
+  function quickEnsureSelection(pools) {
+    if (!Unified.GRADES.includes(quickState.grade)) { quickState.grade = ""; quickState.subject = ""; return []; }
+    const subjects = Quick.subjectsFor(pools, quickState.grade);
+    if (!subjects.some(subject => subject.value === quickState.subject))
+      quickState.subject = (subjects.find(subject => subject.items > 0) || subjects[0] || {}).value || "";
+    return subjects;
+  }
+  function renderQuick() {
+    const product = quickProduct();
+    const tabs = `<div class="quick-tabs" role="group" aria-label="평가 종류">${Quick?.VIEWS.map(view =>
+      `<button type="button" class="quick-tab" data-view="${view}" aria-pressed="${view === state.view}">${esc(Quick.PRODUCTS[view].title)}</button>`).join("") || ""}</div>`;
+    const pools = quickPools();
+    if (!pools) return `${tabs}<section class="panel"><h1>${esc(product?.title || "빠른 평가")}</h1><p class="muted">단원 목록을 준비하지 못했습니다. 페이지를 새로 고쳐 주세요.</p></section>`;
+    const subjects = quickEnsureSelection(pools);
+    const preset = quickPreset();
+    const busy = quickState.busy;
+    const mix = Quick.presetMix(product, preset);
+    const units = quickState.grade && quickState.subject
+      ? Quick.unitsFor(pools, state.view, quickState.grade, quickState.subject) : [];
+    const gradeChips = Unified.GRADES.map(grade =>
+      `<button type="button" class="quick-chip" data-action="quick-grade" data-grade="${grade}" aria-pressed="${grade === quickState.grade}">${grade}</button>`).join("");
+    const subjectChips = subjects.length > 1 ? `<div class="quick-chips" role="group" aria-label="과목">${subjects.map(subject =>
+      `<button type="button" class="quick-chip" data-action="quick-subject" data-subject="${esc(subject.value)}" aria-pressed="${subject.value === quickState.subject}"${subject.items || subject.value === quickState.subject ? "" : " disabled"}>${esc(subject.label)} <small>${subject.items}</small></button>`).join("")}</div>` : "";
+    let body;
+    if (!quickState.grade) body = '<p class="muted">학년을 선택하세요.</p>';
+    else if (!units.length)
+      body = `<p class="muted">이 과목에는 ${esc(product.title)}에 쓸 수 있는 ${esc(product.unitLabel)}가 아직 없습니다.</p>`;
+    else if (product.combine) {
+      const selectedUnits = units.filter(unit => quickState.bundle.has(unit.key));
+      const verdictAll = Quick.evaluate(units, product, preset);
+      const verdictSel = Quick.evaluate(selectedUnits, product, preset);
+      const subjectLabel = subjects.find(subject => subject.value === quickState.subject)?.label || "";
+      const rows = units.map(unit => `<label class="quick-unit quick-unit-check"><input type="checkbox" data-quick-bundle="${esc(unit.key)}"
+        ${quickState.bundle.has(unit.key) ? "checked" : ""}><span><strong>${esc(unit.label)}</strong><small>${quickCountsText(unit, product)}</small></span></label>`).join("");
+      body = `<p class="muted">범위를 고르세요. 과목 전체에서 출제하거나, 원하는 단원만 골라 묶을 수 있습니다.</p>
+        <div class="quick-units">${rows}</div>
+        <div class="quick-actions">
+          ${button("quick-open-all", `${esc(subjectLabel)} 전체에서 ${product.count}문항 출력`,
+            `type="button" class="primary" ${verdictAll.ok && !busy ? "" : "disabled"}`)}
+          ${button("quick-open-selected", `선택한 단원 ${selectedUnits.length}개에서 ${product.count}문항 출력`,
+            `type="button" class="primary" ${selectedUnits.length && verdictSel.ok && !busy ? "" : "disabled"}`)}
+        </div>
+        ${!verdictAll.ok ? `<p class="muted quick-reason">과목 전체: ${esc(Quick.shortageText(verdictAll.shortages))}</p>` : ""}
+        ${selectedUnits.length && !verdictSel.ok ? `<p class="muted quick-reason">선택한 단원: ${esc(Quick.shortageText(verdictSel.shortages))}</p>` : ""}`;
+    } else {
+      const { ready, short } = Quick.partition(units, product, preset);
+      const itemsReady = ready.reduce((sum, row) => sum + row.unit.total, 0);
+      const parent = unit => product.unitKind === "subunit" ? `<span class="quick-unit-parent">${esc(unit.unitLabel)}</span>` : "";
+      const readyCards = ready.map(({ unit }) => `<button type="button" class="quick-unit" data-action="quick-unit"
+        data-unit-key="${esc(unit.key)}" ${busy ? "disabled" : ""}>${parent(unit)}<strong>${esc(unit.label)}</strong><small>${quickCountsText(unit, product)}</small></button>`).join("");
+      const shortCards = short.map(({ unit, verdict }) => `<button type="button" class="quick-unit is-short" disabled aria-disabled="true">
+        ${parent(unit)}<strong>${esc(unit.label)}</strong><small>${quickCountsText(unit, product)}</small><em class="quick-reason">${esc(Quick.shortageText(verdict.shortages))}</em></button>`).join("");
+      body = `<p class="muted" id="quick-ready-summary">이 난이도로 만들 수 있는 ${esc(product.unitLabel)} ${ready.length}개 (문항 ${itemsReady}개) · 전체 ${units.length}개</p>
+        ${ready.length ? `<div class="quick-units">${readyCards}</div>` : '<p class="callout">이 난이도로 만들 수 있는 단원이 없습니다. 난이도를 바꾸거나 다른 과목을 선택해 보세요.</p>'}
+        ${short.length ? `<details class="quick-short" open><summary>문항이 부족한 ${esc(product.unitLabel)} ${short.length}개</summary><div class="quick-units">${shortCards}</div></details>` : ""}`;
+    }
+    return `${tabs}<div class="intro"><div><h1>${esc(product.title)}</h1></div>${state.view === "subunit-test"
       ? '<a href="assessment/assessment-mvp.html?scope=subunit">기존 소단원 평가팩 45개 보기</a>' : ""}</div>
-      <section class="panel"><h2>학년 · 과목</h2><div class="inline">
-        <label>학년<select id="five-minute-grade">${options(grades, selection.grade, "학년 선택")}</select></label>
-        <label>과목<select id="five-minute-course" ${selection.grade ? "" : "disabled"}>${options(courses, selection.course, "과목 선택")}</select></label>
-      </div></section>
-      <section class="panel"><h2>난이도 · <span id="five-minute-level-current">${fiveMinutePresetLabels[selection.preset]}</span></h2>
-        <div class="five-minute-slider"><div class="five-minute-slider-labels">${config.order.map(key => `<span>${fiveMinutePresetLabels[key]}</span>`).join("")}</div>
-          <div class="five-minute-slider-rail">${config.order.map(() => "<span></span>").join("")}
-            <input id="five-minute-level" type="range" min="0" max="${config.order.length - 1}" step="1"
-              value="${config.order.indexOf(selection.preset)}" aria-label="${config.title} 난이도" aria-valuetext="${fiveMinutePresetLabels[selection.preset]}">
+      <section class="panel"><h2>학년 · 과목</h2>
+        <div class="quick-chips" role="group" aria-label="학년">${gradeChips}</div>${subjectChips}
+        <p class="muted">2015·2022 개정 문항은 2022 개정 단원 기준으로 함께 묶어 보여줍니다.</p></section>
+      <section class="panel"><h2>난이도 · <span id="five-minute-level-current">${Quick.PRESET_LABELS[preset]}</span></h2>
+        <div class="five-minute-slider"><div class="five-minute-slider-labels">${product.order.map(key => `<span>${Quick.PRESET_LABELS[key]}</span>`).join("")}</div>
+          <div class="five-minute-slider-rail">${product.order.map(() => "<span></span>").join("")}
+            <input id="five-minute-level" type="range" min="0" max="${product.order.length - 1}" step="1"
+              value="${product.order.indexOf(preset)}" aria-label="${esc(product.title)} 난이도" aria-valuetext="${Quick.PRESET_LABELS[preset]}">
           </div>
-        </div><p class="muted" id="quick-assessment-mix">${mix}</p><p class="muted">문항은 완결된 최근 연도(2025년, 2024년 순)부터 고르고, 올해 시험은 그다음입니다. 같은 연도에서는 무작위로 섞습니다.</p></section>
-      <section class="panel"><h2>${monthly ? "대단원" : state.view === "unit-test" ? "중단원" : state.view === "subunit-test" ? "소단원" : "단원"}</h2>
-        ${monthly ? '<p class="muted">단원명을 누르면 한 단원으로 바로 출제합니다. 여러 단원은 묶음에 추가하세요.</p>' : ""}${units.length
-        ? `<div class="archive-home-products">${cards}</div>${monthly ? button("quick-bundle-open",
-          `선택한 대단원 ${selection.selectedUnits.size}개 묶어 24문항 출력`,
-          `type="button" class="primary" ${selection.selectedUnits.size && !selection.busy ? "" : "disabled"}`) : ""}`
-        : '<p class="muted">학년과 과목을 선택하세요.</p>'}</section>`;
+        </div><p class="muted" id="quick-assessment-mix">${mix}</p><p class="muted">문항은 완결된 최근 연도(2025년, 2024년 순)부터 고르고, 올해 시험은 그다음입니다. 같은 연도에서는 무작위로 섞습니다. 난이도는 기록된 1~5단계만 쓰며 하·중·상 표시로 추정하지 않습니다.</p></section>
+      <section class="panel"><h2>${esc(product.unitLabel)}</h2>${body}</section>`;
   }
   function fiveMinuteShuffle(rows) {
     const result = rows.slice();
@@ -2090,17 +2065,23 @@
     const rank = C.recencyRank(C.sourceYear(record));
     return rank >= 1000000 ? 9 : rank >= 1000 ? 8 : Math.min(rank, 7);
   }
+  function quickCountsText(unit, product) {
+    return Quick.BUCKETS.filter(bucket => bucket < 4 || product.count >= 20)
+      .map(bucket => `${bucket}단계 ${unit.counts[bucket]}`).join(" · ");
+  }
+  // Selection inputs come from the cached pool records of the chosen units only (no catalog scan).
   function balancedQuickSelection(units, preset) {
     const pools = { 1: [], 2: [], 3: [], 4: [] }, scopeByUid = new Map();
-    for (const unit of units) for (const bucket of [1, 2, 3, 4])
+    for (const unit of units) for (const bucket of Quick.BUCKETS)
       for (const record of unit.buckets[bucket]) {
         pools[bucket].push(record);
         scopeByUid.set(record.questionUid, unit.key);
       }
     const typeByUid = new Map(), subunitByUid = new Map();
-    for (const row of state.metaIndex || []) {
-      const uid = row.questionUid || row.uid;
-      if (!scopeByUid.has(uid)) continue;
+    const metaByUid = quickPoolCache.metaByUid;
+    for (const uid of scopeByUid.keys()) {
+      const row = metaByUid?.get(uid);
+      if (!row) continue;
       const group = AssessmentRecipes?.representativeGroup?.(row);
       if (group?.concept || group?.type) typeByUid.set(uid, group.concept || group.type);
       if (row.subUnitKey) subunitByUid.set(uid, row.subUnitKey);
@@ -2136,47 +2117,61 @@
     }
     return selected;
   }
-  async function openFiveMinuteUnit(index) {
-    const { config, selection } = quickAssessment();
-    if (selection.busy) return;
-    const availableUnits = quickAssessmentUnits();
-    const units = state.view === "monthly-test" && index === -1
-      ? availableUnits.filter(unit => selection.selectedUnits.has(unit.key))
-      : [availableUnits[index]].filter(Boolean);
-    const preset = config?.presets[selection.preset];
-    if (!units.length || !selection.grade || !selection.course || !preset) return;
-    const label = units.map(unit => unit.L2 || unit.L1).join(" · ");
-    const pools = { 1: [], 2: [], 3: [], 4: [] };
-    for (const unit of units) for (const bucket of [1, 2, 3, 4])
-      pools[bucket].push(...unit.buckets[bucket]);
-    const shortages = preset.filter(([bucket, count]) =>
-      new Set(pools[bucket].map(record => record.questionUid)).size < count);
-    if (shortages.length) {
-      status(`${label}: ${shortages.map(([bucket, count]) =>
-        `${bucket}단계 ${count}문항 필요 / ${new Set(pools[bucket].map(record => record.questionUid)).size}문항 가능`).join(" · ")}`, true);
+  function quickUnitsLabel(units, subjectLabel, all) {
+    if (all) return `${subjectLabel} 전체`;
+    const names = units.map(unit => unit.kind === "subunit" ? unit.label : unit.label);
+    return names.length > 3 ? `${names.slice(0, 3).join(" · ")} 외 ${names.length - 3}개` : names.join(" · ");
+  }
+  // unitKeys: an array of unit keys, or "all" (every unit of the chosen subject, 종합평가).
+  async function openQuickAssessment(unitKeys) {
+    const product = quickProduct();
+    if (!product || quickState.busy) return;
+    const pools = quickPools();
+    if (!pools || !quickState.grade || !quickState.subject) return;
+    const preset = quickPreset();
+    const all = Quick.unitsFor(pools, state.view, quickState.grade, quickState.subject);
+    const everything = unitKeys === "all";
+    const units = everything ? all : all.filter(unit => unitKeys.includes(unit.key));
+    const subjectLabel = Unified.subjectByValue(quickState.grade, quickState.subject)?.label || "";
+    const label = quickUnitsLabel(units, subjectLabel, everything);
+    if (!units.length || (!product.combine && units.length !== 1)) return;
+    const verdict = Quick.evaluate(units, product, preset);
+    if (!verdict.ok) {
+      status(`${label}: ${Quick.shortageText(verdict.shortages)}`, true);
       return;
     }
-    const selected = state.view === "unit-test" || state.view === "monthly-test"
-      ? balancedQuickSelection(units, preset)
-      : preset.flatMap(([bucket, count]) =>
-        recencyShuffle([...new Map(pools[bucket].map(record => [record.questionUid, record])).values()]).slice(0, count));
-    if (new Set(selected.map(record => record.questionUid)).size !== config.count) {
+    const presetPairs = product.presets[preset];
+    const pick = () => product.combine || state.view === "unit-test"
+      ? balancedQuickSelection(units, presetPairs)
+      : presetPairs.flatMap(([bucket, count]) => recencyShuffle([...new Map(
+        units.flatMap(unit => unit.buckets[bucket]).map(record => [record.questionUid, record])).values()])
+        .slice(0, count));
+    const selected = pick();
+    if (new Set(selected.map(record => record.questionUid)).size !== product.count) {
       status("문항 UID가 중복되어 시험지를 열 수 없습니다.", true);
+      return;
+    }
+    // The pools are cached per catalog load; every chosen question is checked against the
+    // current usage and difficulty conditions before it is printed.
+    if (selected.some(record => Quick.usableBucket(record) !== record.difficultyBucket)) {
+      quickPoolCache = { index: null, meta: null, metaByUid: null, pools: null };
+      status("문항 상태가 바뀌어 목록을 다시 확인합니다. 다시 선택하세요.", true);
+      render();
       return;
     }
     const popup = window.open("about:blank", "_blank");
     if (!popup) { status("새 창을 열 수 없습니다. 팝업 설정을 확인하세요.", true); return; }
     popup.document.body.textContent = "시험지를 준비하고 있습니다.";
-    selection.busy = true;
+    quickState.busy = true;
     status("선택한 문항의 원본을 확인하고 있습니다.");
     render();
     try {
       const questions = await Source.restore(selected, state.catalog);
       const questionUids = selected.map(record => record.questionUid);
-      const title = `${config.title} · ${label}`;
+      const title = `${product.title} · ${label}`;
       const meta = {
-        title, customTitle: title, identityTitle: title, count: config.count,
-        grade: selection.grade, subject: units[0].courseKey, questionUids,
+        title, customTitle: title, identityTitle: title, count: product.count,
+        grade: quickState.grade, subject: subjectLabel, questionUids,
         scopeKeys: units.map(unit => unit.key),
         printHeaderOptions: { title, subtitle: "", metaRight: "AP수학",
           showNameLine: true, showScoreLine: true, applyToSolution: true, applyToAnswer: true },
@@ -2184,7 +2179,7 @@
       };
       const envelope = await O.publishOutputEnvelope({
         sourceKind: "archive2-compose", sourceId: crypto.randomUUID(), mode: "exam",
-        questionCount: config.count, questionUids, meta, questions,
+        questionCount: product.count, questionUids, meta, questions,
       });
       const url = O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, { studio: true });
       popup.location.replace(url.href);
@@ -2193,7 +2188,7 @@
       popup.close();
       status(error.message || "시험지를 준비하지 못했습니다.", true);
     } finally {
-      selection.busy = false;
+      quickState.busy = false;
       if (isQuickAssessmentView()) render();
     }
   }
@@ -3131,8 +3126,8 @@
     if (state.view === "saved") {
       document.body.dataset.archiveView = state.view;
       document.querySelectorAll("[data-view]").forEach((button) => {
-        button.classList.toggle("active", button.dataset.view === state.view);
-        button.setAttribute("aria-current", button.dataset.view === state.view ? "page" : "false");
+        button.classList.toggle("active", navViewActive(button));
+        button.setAttribute("aria-current", navViewActive(button) ? "page" : "false");
       });
       window.Archive2Library.render(
         $("content"),
@@ -3159,10 +3154,10 @@
       ? document.activeElement.dataset.action : null;
     const focusedGroupIndex = document.activeElement?.dataset?.groupIndex;
     document.querySelectorAll("[data-view]").forEach((b) => {
-      b.classList.toggle("active", b.dataset.view === state.view);
+      b.classList.toggle("active", navViewActive(b));
       b.setAttribute(
         "aria-current",
-        b.dataset.view === state.view ? "page" : "false",
+        navViewActive(b) ? "page" : "false",
       );
     });
     document.body.dataset.archiveView = state.view;
@@ -3170,7 +3165,7 @@
       state.view === "home"
         ? renderHome()
         : isQuickAssessmentView()
-          ? renderFiveMinute()
+          ? renderQuick()
         : state.view === "find"
           ? renderFind()
           : state.view === "recent"
@@ -3887,6 +3882,10 @@
     url.searchParams.set("view", state.view);
     if (state.view === "compose" && state.assessmentRecipe)
       url.searchParams.set("recipe", state.assessmentRecipe);
+    if (isQuickAssessmentView()) {
+      if (quickState.grade) url.searchParams.set("grade", quickState.grade);
+      if (quickState.subject) url.searchParams.set("subject", quickState.subject);
+    }
     if (state.view === "find") {
       for (const key of FINDER_URL_KEYS)
         if (state.find[key]) url.searchParams.set(key, state.find[key]);
@@ -4040,6 +4039,7 @@
       if (b.dataset.view) {
         if (b.dataset.view === state.view && !(state.view === "saved" && state.savedPaperId))
           return;
+        if (b.dataset.navKey === "quick" && isQuickAssessmentView()) return;
         state.assignmentStatusLoadVersion++;
         rememberCurrentHistoryEntry();
         if (b.dataset.view === "compose" && state.view !== "compose" && !state.selected.length)
@@ -4191,10 +4191,23 @@
           return;
         const target = product.routeResolver();
         if (target) location.href = String(target);
-      } else if (a === "five-minute-unit") {
-        await openFiveMinuteUnit(Number(b.dataset.unitIndex));
-      } else if (a === "quick-bundle-open") {
-        await openFiveMinuteUnit(-1);
+      } else if (a === "quick-unit") {
+        await openQuickAssessment([b.dataset.unitKey]);
+      } else if (a === "quick-open-all") {
+        await openQuickAssessment("all");
+      } else if (a === "quick-open-selected") {
+        await openQuickAssessment([...quickState.bundle]);
+      } else if (a === "quick-grade") {
+        quickState.grade = b.dataset.grade || "";
+        quickState.subject = "";
+        quickState.bundle.clear();
+        replaceUrlState();
+        render();
+      } else if (a === "quick-subject") {
+        quickState.subject = b.dataset.subject || "";
+        quickState.bundle.clear();
+        replaceUrlState();
+        render();
       } else if (a === "home-grade") {
         rememberCurrentHistoryEntry();
         state.sources = [];
@@ -4534,26 +4547,13 @@
     const el = event.target;
     try {
       if (isQuickAssessmentView() && el.id === "five-minute-level") {
-        quickAssessment().selection.preset = quickAssessment().config.order[Number(el.value)] || "standard";
+        quickState.presets[state.view] = quickProduct().order[Number(el.value)] || "standard";
         render();
         return;
       }
-      if (isQuickAssessmentView() && el.id === "five-minute-grade") {
-        quickAssessment().selection.grade = el.value;
-        quickAssessment().selection.course = "";
-        if (state.view === "monthly-test") monthlyTest.selectedUnits.clear();
-        render();
-        return;
-      }
-      if (isQuickAssessmentView() && el.id === "five-minute-course") {
-        quickAssessment().selection.course = el.value;
-        if (state.view === "monthly-test") monthlyTest.selectedUnits.clear();
-        render();
-        return;
-      }
-      if (state.view === "monthly-test" && el.dataset.quickBundle) {
-        if (el.checked) monthlyTest.selectedUnits.add(el.dataset.quickBundle);
-        else monthlyTest.selectedUnits.delete(el.dataset.quickBundle);
+      if (isQuickAssessmentView() && el.dataset.quickBundle) {
+        if (el.checked) quickState.bundle.add(el.dataset.quickBundle);
+        else quickState.bundle.delete(el.dataset.quickBundle);
         render();
         return;
       }
@@ -4735,14 +4735,13 @@
   });
   document.addEventListener("input", (event) => {
     if (!isQuickAssessmentView() || event.target.id !== "five-minute-level") return;
-    const preset = quickAssessment().config.order[Number(event.target.value)] || "standard";
-    const label = fiveMinutePresetLabels[preset] || "기본";
+    const preset = quickProduct().order[Number(event.target.value)] || "standard";
+    const label = Quick.PRESET_LABELS[preset] || "기본";
     event.target.setAttribute("aria-valuetext", label);
     const current = $("five-minute-level-current");
     if (current) current.textContent = label;
     const mix = $("quick-assessment-mix");
-    if (mix) mix.textContent = quickAssessment().config.presets[preset]
-      .filter(([, count]) => count).map(([bucket, count]) => `${bucket}단계 ${count}문항`).join(" · ");
+    if (mix) mix.textContent = Quick.presetMix(quickProduct(), preset);
   });
   document.addEventListener("input", (event) => {
     if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
@@ -4965,6 +4964,12 @@
     state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test"].includes(p.get("view"))
       ? p.get("view")
       : "home";
+    if (isQuickAssessmentView()) {
+      const grade = p.get("grade") || "";
+      quickState.grade = Unified?.GRADES.includes(grade) ? grade : "";
+      quickState.subject = quickState.grade ? p.get("subject") || "" : "";
+      quickState.bundle.clear();
+    }
     state.savedPaperId = p.get("paper_id") || "";
     state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(p.get("status"))
       ? p.get("status") : "ACTIVE";
