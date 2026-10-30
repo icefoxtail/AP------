@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>평면도형 · 다각형 · 넓이 · AP Math 실험실</title>
-<meta name="description" content="중1 평면도형: 넓이 원리와 바깥 액자, 평행선 넓이·산책로·둘레, 다각형의 대각선·내각·외각 360°, 별모양과 복잡한 외각까지 4개 탐구관 16개 장면">
+<meta name="description" content="중1 평면도형: 넓이 원리와 바깥 직사각형, 평행선 넓이·산책로·둘레, 다각형의 대각선·내각·외각 360°, 별 모양과 복잡한 외각까지 4개 탐구관 16개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -32,7 +32,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중1 · 평면도형 · 다각형 · 넓이 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 4개 장면 = 16장면
@@ -78,25 +78,25 @@ window.addEventListener('DOMContentLoaded', function () {
       1: [
         { id: 'triAlt', label: '📐 둔각 바깥높이·직각삼각형 h' },
         { id: 'paraMove', label: '✂️ 평행사변형 2가지 높이' },
-        { id: 'trapRot', label: '🔄 사다리꼴 합체·2분할' },
-        { id: 'boxFrame', label: '🖼️ 바깥 직사각형 액자 빼기' }
+        { id: 'trapRot', label: '🔄 사다리꼴 붙이기·2분할' },
+        { id: 'boxFrame', label: '🖼️ 바깥 직사각형에서 빼기' }
       ],
       2: [
-        { id: 'railWing', label: '🦋 평행선 레일·나비날개(S₁=S₂)' },
+        { id: 'railWing', label: '🦋 평행선 사이 꼭짓점·양옆 삼각형(S₁=S₂)' },
         { id: 'baseRatio', label: '⚖️ 밑변의 비(m:n) = 넓이 비' },
-        { id: 'roadMerge', label: '🚜 산책로(십자·사선) 합체' },
+        { id: 'roadMerge', label: '🚜 산책로(십자·사선) 밀어 합치기' },
         { id: 'stairFold', label: '🐜 계단 둘레·종이띠 접기' }
       ],
       3: [
         { id: 'oneDiag', label: '🍕 한 점 대각선(n-3)·삼각형(n-2)' },
         { id: 'inPointO', label: '🎯 내부 점 O (180°n-360°)' },
-        { id: 'allDiag', label: '🕸️ 전체 대각선·역추적·악수' },
-        { id: 'ext360', label: '🔭 외각의 합 360° 줌아웃 수축' }
+        { id: 'allDiag', label: '🕸️ 대각선의 총개수·악수' },
+        { id: 'ext360', label: '🔭 외각의 합 360° (다각형을 줄여 보기)' }
       ],
       4: [
-        { id: 'stepExt', label: '🚀 외각 이동 & 이등변 징검다리(4x)' },
-        { id: 'boomBow', label: '🪃 부메랑(오목) & 🎀 나비넥타이(8자)' },
-        { id: 'starMaster', label: '⭐ 별모양(☆) 외각 2대 해법·변형별' },
+        { id: 'stepExt', label: '🚀 외각 옮기기 & 이어 붙인 이등변삼각형(4x)' },
+        { id: 'boomBow', label: '🪃 오목사각형 & 🎀 X자 도형' },
+        { id: 'starMaster', label: '⭐ 별 모양(☆)의 각 : 두 가지 방법·변형' },
         { id: 'bisect3', label: '📐 내·외각 이등분선 3종·대각선 교각' }
       ]
     };
@@ -108,17 +108,17 @@ window.addEventListener('DOMContentLoaded', function () {
     function getSpec() {
       const m = state.mode, sub = state.sub[m], p1 = state.p1, p2 = state.p2;
 
-      // [탭 1: 넓이 원리·바깥 액자 (초5~중1)]
+      // [탭 1: 넓이 원리·바깥 직사각형 (초5~중1)]
       if (m === 1) {
         if (sub === 'triAlt') {
           const isRightH = p2 === 2;
           if (!isRightH) {
             const h = 6, area = (p1 * h) / 2;
             return {
-              badge: '1-A · 직각(∟) 레이더 & 둔각삼각형의 바깥 수직높이',
+              badge: '1-A · 직각(∟) 찾기 & 둔각삼각형의 바깥 수직높이',
               actionTxt: '🎬 꼭짓점 이동 시연',
               g1Label: '밑변 BC 길이 (a)', g1Btns: [[6,'6cm'],[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm']],
-              g2Label: '유형 전환', g2Btns: [[1,'📐둔각 바깥높이'],[2,'📏직각삼각형 h'],[1,'드래그 실험'],[2,'넓이 2번 식']],
+              g2Label: '유형 전환', g2Btns: [[1,'📐둔각 바깥높이'],[2,'📏직각삼각형 h'],[1,'끌어 보기'],[2,'넓이 2번 식']],
               eqHTML: `<span class="tag-blue">밑변 BC(${p1})</span> × <span class="tag-emerald">수직높이 AH(6)</span> ÷ 2 = <span class="tag-rose">넓이 ${area}cm²</span>`,
               q: `둔각삼각형 ABC에서 밑변 ${tex(`\\overline{BC}=${p1}\\text{cm}`)}, 비스듬한 옆변 ${tex('\\overline{AB}=10\\text{cm}')}, 연장선에 내린 수선 ${tex('\\overline{AH}=6\\text{cm}')}일 때 <strong>삼각형 ABC의 넓이</strong>는?`,
               opts: [
@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', function () {
               ans: `직각(∟)을 낀 밑변(${p1})×높이(6)÷2 = <span class="tag-emerald">${area} cm²</span>`,
               stats: [`밑변 BC = ${p1} cm`, `바깥 수직높이 AH = 6 cm`, `함정 옆변 = 10 cm (제외!)`, `넓이 = ${area} cm²`],
               std: `• 둔각삼각형의 높이는 꼭짓점 A에서 밑변 BC의 연장선에 수직(90°)으로 내린 선분 AH의 길이입니다.`,
-              fast: `• <strong>직각 네모(∟) 레이더 법칙</strong>: 직각 기호와 만나지 않는 비스듬한 변의 길이는 보자마자 지우세요!`
+              fast: `• <strong>높이를 찾는 방법</strong>: 밑변과 높이는 직각 기호(∟)가 만나는 두 선분입니다. 직각 기호와 만나지 않는 비스듬한 변의 길이는 넓이를 구할 때 쓰지 않습니다!`
             };
           } else {
             // 세 변(3k, 4k, 5k)이 모두 정수로 주어진 직각삼각형에서 넓이 2번 구하기
@@ -151,17 +151,17 @@ window.addEventListener('DOMContentLoaded', function () {
               ans: `${tex(`\\dfrac{1}{2}\\times ${a}\\times ${b} = \\dfrac{1}{2}\\times ${c}\\times h \\implies`)} <span class="tag-emerald">넓이 ${area}cm², h = ${h}cm</span>`,
               stats: [`직각 낀 두 변: ${a}cm, ${b}cm`, `빗변 길이: ${c}cm`, `삼각형 넓이 = ${area} cm²`, `빗변 위 높이 h = ${h} cm`],
               std: `• 같은 삼각형의 넓이를 두 가지 밑변·높이 쌍으로 나타내면 ${tex(`\\dfrac{1}{2}\\times ${a}\\times ${b} = \\dfrac{1}{2}\\times ${c}\\times h`)}입니다.`,
-              fast: `• 하나의 삼각형 안에 <strong>직각 기호(∟)가 2개</strong> 보이면 무조건 <strong>『직각변1 × 직각변2 = 빗변 × 높이 h』</strong>로 암산하세요!`
+              fast: `• 하나의 삼각형 안에 <strong>직각 기호(∟)가 2개</strong> 보이면 같은 삼각형의 넓이를 두 가지로 나타낼 수 있으므로 <strong>『직각을 낀 두 변의 곱 = 빗변 × 높이 h』</strong>가 성립합니다!`
             };
           }
         }
         if (sub === 'paraMove') {
           const a = p1, h1 = 6, b = 8, area = a * h1, h2 = (area / b).toFixed(1).replace('.0', '');
           return {
-            badge: '1-B · 평행사변형 가위질 이동 & 2가지 높이 공식 (a×h₁ = b×h₂)',
+            badge: '1-B · 평행사변형 잘라서 옮기기 & 2가지 높이로 넓이 나타내기 (a×h₁ = b×h₂)',
             actionTxt: '🎬 직사각형 변신',
             g1Label: '아랫변 BC 길이 (a)', g1Btns: [[6,'6cm'],[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm']],
-            g2Label: '보조선 보기', g2Btns: [[1,'높이 h₁만'],[2,'두 번째 높이 h₂'],[3,'가위질 이동'],[4,'전체 보기']],
+            g2Label: '보조선 보기', g2Btns: [[1,'높이 h₁만'],[2,'두 번째 높이 h₂'],[3,'잘라서 옮기기'],[4,'전체 보기']],
             eqHTML: `<span class="tag-blue">밑변(${a}) × 높이 h₁(6) = ${area}</span> 🟰 <span class="tag-rose">옆변(8) × 높이 h₂(${h2})</span>`,
             q: `평행사변형 ABCD에서 밑변 ${tex(`\\overline{BC}=${a}\\text{cm}`)}에 대한 높이가 ${tex('6\\text{cm}')}이고, 옆변 ${tex('\\overline{CD}=8\\text{cm}')}일 때 <strong>변 CD를 밑변으로 할 때의 높이 ${tex('h_2')}</strong>는?`,
             opts: [
@@ -172,21 +172,21 @@ window.addEventListener('DOMContentLoaded', function () {
             ans: `${tex(`${a}\\times 6 = 8\\times h_2 = ${area} \\implies`)} <span class="tag-emerald">h₂ = ${h2} cm</span>`,
             stats: [`밑변 a = ${a}cm, 높이 h₁ = 6cm`, `평행사변형 넓이 = ${area} cm²`, `옆변 b = 8 cm`, `두 번째 높이 h₂ = ${h2} cm`],
             std: `• 왼쪽 직각삼각형을 잘라 오른쪽으로 옮기면 직사각형이 되므로 넓이는 (밑변)×(높이) = ${area}cm²입니다.`,
-            fast: `• 평행사변형 안에 수선(∟)이 2개 그려져 있으면 100% <strong>『밑변1 × 높이1 = 밑변2 × 높이2』</strong> 방정식 문제입니다!`
+            fast: `• 평행사변형 안에 수선(∟)이 2개 그려져 있으면 같은 평행사변형의 넓이를 두 가지로 나타낸 <strong>『밑변1 × 높이1 = 밑변2 × 높이2』</strong>를 세워 구합니다!`
           };
         }
         if (sub === 'trapRot') {
           const a = p1, b = Math.max(2, p1 - 4), h = 6;
           const area = ((a + b) * h) / 2;
           return {
-            badge: '1-C · 사다리꼴 180° 회전 합체 vs 대각선 삼각형 2분할',
-            actionTxt: '🎬 180° 회전 합체',
+            badge: '1-C · 사다리꼴 180° 돌려 붙이기 vs 대각선으로 삼각형 2개로 나누기',
+            actionTxt: '🎬 180° 돌려 붙이기',
             g1Label: '아랫변 a 길이', g1Btns: [[6,'a=6,b=2'],[8,'a=8,b=4'],[10,'a=10,b=6'],[12,'a=12,b=8'],[14,'a=14,b=10']],
-            g2Label: '분할·합체 모드', g2Btns: [[1,'180° 회전 합체'],[2,'대각선 2분할'],[3,'동시 표시'],[4,'원래대로']],
+            g2Label: '나누기·붙이기 모드', g2Btns: [[1,'180° 돌려 붙이기'],[2,'대각선으로 나누기'],[3,'동시 표시'],[4,'원래대로']],
             eqHTML: `( <span class="tag-rose">윗변 ${b}</span> + <span class="tag-blue">아랫변 ${a}</span> ) × <span class="tag-emerald">높이 6</span> ÷ 2 = <span class="tag-blue">${area} cm²</span>`,
             q: `윗변 ${tex(`${b}\\text{cm}`)}, 아랫변 ${tex(`${a}\\text{cm}`)}, 높이 ${tex('6\\text{cm}')}인 사다리꼴 2개를 거꾸로 맞붙여 만든 <strong>평행사변형의 밑변 길이</strong>와 <strong>사다리꼴 1개의 넓이</strong>는?`,
             opts: [
-              { t: `① 밑변 ${a+b}cm, 넓이 ${area}cm²`, ok: true, msg: `정답! 거꾸로 붙이면 밑변이 (${b}+${a}=${a+b}cm)인 평행사변형이 되고, 사다리꼴 1개 넓이는 그 절반인 ${area}cm²입니다!` },
+              { t: `① 밑변 ${a+b}cm, 넓이 ${area}cm²`, ok: true, msg: `정답! 거꾸로 돌려 붙이면 밑변이 (${b}+${a}=${a+b}cm)인 평행사변형이 되고, 사다리꼴 1개 넓이는 그 절반인 ${area}cm²입니다!` },
               { t: `② 밑변 ${a+b}cm, 넓이 ${area*2}cm²`, ok: false, msg: `${area*2}cm²는 사다리꼴 2개를 합친 넓이이므로 2로 나누어야 합니다!` },
               { t: `③ 밑변 ${a}cm, 넓이 ${area}cm²`, ok: false, msg: `아랫변(${a}cm) 옆에 뒤집힌 윗변(${b}cm)이 붙어 밑변은 ${a+b}cm가 됩니다!` }
             ],
@@ -202,41 +202,41 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!isGridTri) {
           const area = boxA / 2;
           return {
-            badge: '1-D · 마름모 바깥 직사각형 액자 (네 귀퉁이 절반 접기)',
+            badge: '1-D · 마름모를 둘러싼 직사각형 (네 귀퉁이를 안으로 접기)',
             actionTxt: '🎬 귀퉁이 안으로 접기',
             g1Label: '가로 대각선 d₁', g1Btns: [[6,'6cm'],[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm']],
-            g2Label: '액자 유형 선택', g2Btns: [[1,'💎마름모 액자'],[2,'마름모 접기'],[3,'🖼️격자 삼각형 액자'],[4,'귀퉁이 분리']],
-            eqHTML: `<span class="tag-blue">바깥 액자(${W}×${H}=${boxA})</span> ÷ 2 = <span class="tag-emerald">💎 마름모 넓이 ${area}cm²</span>`,
-            q: `두 대각선이 수직으로 만나고 길이가 각각 ${tex(`${W}\\text{cm}, ${H}\\text{cm}`)}인 마름모를 둘러싼 <strong>바깥 직사각형 액자 넓이</strong>와 <strong>마름모 넓이</strong>는?`,
+            g2Label: '도형 유형 선택', g2Btns: [[1,'💎마름모와 직사각형'],[2,'마름모 접기'],[3,'🖼️모눈 위의 삼각형'],[4,'귀퉁이 분리']],
+            eqHTML: `<span class="tag-blue">바깥 직사각형(${W}×${H}=${boxA})</span> ÷ 2 = <span class="tag-emerald">💎 마름모 넓이 ${area}cm²</span>`,
+            q: `두 대각선이 수직으로 만나고 길이가 각각 ${tex(`${W}\\text{cm}, ${H}\\text{cm}`)}인 마름모를 둘러싼 <strong>바깥 직사각형 넓이</strong>와 <strong>마름모 넓이</strong>는?`,
             opts: [
-              { t: `① 액자 ${boxA}cm², 마름모 ${area}cm²`, ok: true, msg: `정답! 바깥 액자 넓이(${boxA}cm²)의 네 귀퉁이를 안으로 접으면 마름모와 정확히 겹치므로 절반인 ${area}cm²입니다!` },
-              { t: `② 액자 ${boxA}cm², 마름모 ${boxA}cm²`, ok: false, msg: `마름모는 바깥 액자 넓이의 절반(÷2)입니다!` },
-              { t: `③ 액자 ${2*(W+H)}cm², 마름모 ${W+H}cm²`, ok: false, msg: `두 대각선을 곱한 뒤 2로 나누어야 합니다!` }
+              { t: `① 바깥 직사각형 ${boxA}cm², 마름모 ${area}cm²`, ok: true, msg: `정답! 바깥 직사각형 넓이(${boxA}cm²)의 네 귀퉁이를 안으로 접으면 마름모와 정확히 겹치므로 절반인 ${area}cm²입니다!` },
+              { t: `② 바깥 직사각형 ${boxA}cm², 마름모 ${boxA}cm²`, ok: false, msg: `마름모는 바깥 직사각형 넓이의 절반(÷2)입니다!` },
+              { t: `③ 바깥 직사각형 ${2*(W+H)}cm², 마름모 ${W+H}cm²`, ok: false, msg: `두 대각선을 곱한 뒤 2로 나누어야 합니다!` }
             ],
-            ans: `바깥 액자(${boxA}) ÷ 2 = <span class="tag-emerald">${area} cm²</span>`,
-            stats: [`가로 대각선 d₁ = ${W} cm`, `세로 대각선 d₂ = ${H} cm`, `바깥 액자 넓이 = ${boxA} cm²`, `마름모 넓이 = ${area} cm²`],
+            ans: `바깥 직사각형(${boxA}) ÷ 2 = <span class="tag-emerald">${area} cm²</span>`,
+            stats: [`가로 대각선 d₁ = ${W} cm`, `세로 대각선 d₂ = ${H} cm`, `바깥 직사각형 넓이 = ${boxA} cm²`, `마름모 넓이 = ${area} cm²`],
             std: `• 마름모의 두 대각선은 직교하므로 바깥 직사각형 넓이(${W}×${H})의 절반입니다.`,
-            fast: `• 정사각형도 마름모입니다! 한 대각선 길이가 10cm인 정사각형 넓이는 <strong>10×10÷2 = 50cm²</strong>로 1초 암산!`
+            fast: `• 정사각형도 마름모입니다! 한 대각선 길이가 10cm인 정사각형 넓이는 <strong>10×10÷2 = 50cm²</strong>로 바로 구할 수 있습니다!`
           };
         } else {
           const t1 = (W * 4) / 2, t2 = ((W - 3) * 6) / 2, t3 = (3 * 2) / 2;
           const ans = boxA - (t1 + t2 + t3);
           return {
-            badge: '1-D · 모눈종이(좌표평면) 비뚤어진 삼각형 — 바깥 액자에서 귀퉁이 3개 빼기!',
+            badge: '1-D · 모눈종이(좌표평면) 위의 비스듬한 삼각형 — 바깥 직사각형에서 귀퉁이 3개 빼기!',
             actionTxt: '🎬 귀퉁이 3개 분리',
-            g1Label: '바깥 액자 가로 W', g1Btns: [[6,'6칸'],[8,'8칸'],[10,'10칸'],[12,'12칸'],[8,'표준 8칸']],
-            g2Label: '액자 유형 선택', g2Btns: [[1,'💎마름모 액자'],[2,'마름모 접기'],[3,'🖼️격자 삼각형 액자'],[4,'귀퉁이 분리']],
-            eqHTML: `<span class="tag-blue">바깥 액자(${boxA})</span> ➖ <span class="tag-rose">귀퉁이 3개 합(${t1}+${t2}+${t3}=${t1+t2+t3})</span> = <span class="tag-emerald">${ans}</span>`,
-            q: `가로 ${tex(`${W}`)}칸, 세로 6칸인 직사각형 액자 안에 비스듬한 ${tex('\\triangle ABC')}가 있다. 바깥 귀퉁이 직각삼각형 3개의 넓이가 ${tex(`${t1}, ${t2}, ${t3}`)}일 때 <strong>${tex('\\triangle ABC')}의 넓이</strong>는?`,
+            g1Label: '바깥 직사각형 가로 W', g1Btns: [[6,'6칸'],[8,'8칸'],[10,'10칸'],[12,'12칸'],[8,'표준 8칸']],
+            g2Label: '도형 유형 선택', g2Btns: [[1,'💎마름모와 직사각형'],[2,'마름모 접기'],[3,'🖼️모눈 위의 삼각형'],[4,'귀퉁이 분리']],
+            eqHTML: `<span class="tag-blue">바깥 직사각형(${boxA})</span> ➖ <span class="tag-rose">귀퉁이 3개 합(${t1}+${t2}+${t3}=${t1+t2+t3})</span> = <span class="tag-emerald">${ans}</span>`,
+            q: `가로 ${tex(`${W}`)}칸, 세로 6칸인 직사각형 안에 비스듬한 ${tex('\\triangle ABC')}가 있다. 바깥 귀퉁이 직각삼각형 3개의 넓이가 ${tex(`${t1}, ${t2}, ${t3}`)}일 때 <strong>${tex('\\triangle ABC')}의 넓이</strong>는?`,
             opts: [
-              { t: `① ${ans} (액자 ${boxA} - 귀퉁이 ${t1+t2+t3})`, ok: true, msg: `정답! 밑변·높이를 알 수 없는 비뚤어진 삼각형은 바깥 직사각형 액자(${boxA})에서 직각삼각형 귀퉁이 3개 합(${t1+t2+t3})을 빼서 구합니다!` },
-              { t: `② ${boxA / 2} (액자의 절반)`, ok: false, msg: `세 꼭짓점이 각 변에 흩어져 있을 때는 절반이 아닙니다! 귀퉁이 3개를 각각 빼야 합니다!` },
-              { t: `③ ${t1 + t2 + t3}`, ok: false, msg: `그 값은 빼내야 할 바깥 귀퉁이 3개의 넓이 합입니다!` }
+              { t: `① ${ans} (바깥 직사각형 ${boxA} - 귀퉁이 ${t1+t2+t3})`, ok: true, msg: `정답! 밑변·높이를 바로 알 수 없는 비스듬한 삼각형은 바깥 직사각형(${boxA})에서 직각삼각형 귀퉁이 3개 합(${t1+t2+t3})을 빼서 구합니다!` },
+              { t: `② ${boxA / 2} (바깥 직사각형의 절반)`, ok: false, msg: `세 꼭짓점이 각 변에 흩어져 있을 때는 절반이 아닙니다! 귀퉁이 3개를 각각 빼야 합니다!` },
+              { t: `③ ${t1 + t2 + t3}`, ok: false, msg: `③의 ${t1 + t2 + t3}은 빼내야 할 바깥 귀퉁이 3개의 넓이의 합입니다!` }
             ],
-            ans: `액자(${boxA}) - 귀퉁이 합(${t1+t2+t3}) = <span class="tag-emerald">${ans}</span>`,
-            stats: [`바깥 직사각형 액자 = ${boxA}`, `귀퉁이 ①=${t1}, ②=${t2}, ③=${t3}`, `귀퉁이 3개 합 = ${t1+t2+t3}`, `가운데 ΔABC 넓이 = ${ans}`],
+            ans: `바깥 직사각형(${boxA}) - 귀퉁이 합(${t1+t2+t3}) = <span class="tag-emerald">${ans}</span>`,
+            stats: [`바깥 직사각형 = ${boxA}`, `귀퉁이 ①=${t1}, ②=${t2}, ③=${t3}`, `귀퉁이 3개 합 = ${t1+t2+t3}`, `가운데 ΔABC 넓이 = ${ans}`],
             std: `• 중1 좌표평면 위의 삼각형 넓이도 세 점을 감싸는 직사각형에서 바깥 직각삼각형 3개를 빼서 구합니다.`,
-            fast: `• <strong>안 깎이면 바깥을 깎아라!</strong> 비스듬한 도형은 무조건 반듯한 직사각형 상자에 넣은 뒤 귀퉁이를 빼세요!`
+            fast: `• <strong>도형을 둘러싼 직사각형을 이용하세요!</strong> 비스듬한 도형은 반듯한 직사각형 안에 넣은 뒤 남는 귀퉁이 부분의 넓이를 빼면 됩니다!`
           };
         }
       }
@@ -247,25 +247,25 @@ window.addEventListener('DOMContentLoaded', function () {
           const isRail = p2 >= 3;
           const triA = (p1 * 6) / 2, obA = triA * 0.75, wing = triA - obA;
           return {
-            badge: isRail ? '2-A · 평행선 레일 위 꼭짓점 드래그 (넓이 불변 vs 🐜둘레 변화)' : '2-A · 사다리꼴 대각선 나비 날개 (S₁ = S₂ 공통부분 빼기!)',
+            badge: isRail ? '2-A · 평행선 사이에서 꼭짓점 끌기 (넓이는 그대로 vs 🐜둘레는 변함)' : '2-A · 사다리꼴 대각선이 만든 양옆 삼각형 (S₁ = S₂, 공통부분 빼기)',
             actionTxt: isRail ? '🎬 평행선 슬라이딩' : '🎬 공통 ΔOBC 분리',
             g1Label: '아랫변 BC 길이', g1Btns: [[6,'6cm'],[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm']],
-            g2Label: '유형 전환', g2Btns: [[1,'🦋사다리꼴 나비날개'],[2,'공통부분 분리'],[3,'🛤️평행선 레일 드래그'],[4,'🐜둘레 비교']],
+            g2Label: '유형 전환', g2Btns: [[1,'🦋사다리꼴 양옆 삼각형'],[2,'공통부분 분리'],[3,'🛤️평행선 사이에서 끌기'],[4,'🐜둘레 비교']],
             eqHTML: isRail
-              ? `<span class="tag-blue">평행선 거리 h=6 일정</span> ⟹ <span class="tag-emerald">넓이 ${triA}cm² 불변! (단, 🐜둘레는 변함!)</span>`
-              : `<span class="tag-blue">ΔABC(${triA}) = ΔDBC(${triA})</span> ➖ <span class="tag-rose">공통 ΔOBC(${obA})</span> ⟹ <span class="tag-emerald">🦋 날개 S₁ = S₂ = ${wing}cm²</span>`,
+              ? `<span class="tag-blue">평행선 거리 h=6 일정</span> ⟹ <span class="tag-emerald">넓이 ${triA}cm² 그대로! (단, 🐜둘레는 변함!)</span>`
+              : `<span class="tag-blue">ΔABC(${triA}) = ΔDBC(${triA})</span> ➖ <span class="tag-rose">공통 ΔOBC(${obA})</span> ⟹ <span class="tag-emerald">🦋 양옆 삼각형 S₁ = S₂ = ${wing}cm²</span>`,
             q: isRail
               ? `평행선 사이의 거리가 6cm이고 밑변 ${tex(`\\overline{BC}=${p1}\\text{cm}`)}일 때, 꼭짓점 A를 평행선 위에서 옆으로 옮기면 <strong>넓이와 둘레</strong>는 어떻게 되는가?`
-              : `사다리꼴 ABCD(${tex('\\overline{AD}\\parallel\\overline{BC}')})에서 ${tex(`\\triangle ABC = ${triA}\\text{cm}^2`)}이고 아래쪽 공통 ${tex(`\\triangle OBC = ${obA}\\text{cm}^2`)}일 때 <strong>양옆 나비 날개 ${tex('S_1, S_2')}의 넓이</strong>는?`,
+              : `사다리꼴 ABCD(${tex('\\overline{AD}\\parallel\\overline{BC}')})에서 ${tex(`\\triangle ABC = ${triA}\\text{cm}^2`)}이고 아래쪽 공통 ${tex(`\\triangle OBC = ${obA}\\text{cm}^2`)}일 때 <strong>양옆 삼각형 ${tex('S_1, S_2')}의 넓이</strong>는?`,
             opts: [
-              { t: isRail ? `① 넓이는 ${triA}cm²로 일정, 둘레는 변함` : `① S₁ = S₂ = ${wing} cm² (항상 같다!)`, ok: true, msg: isRail ? `정답! 밑변과 높이가 같아 넓이는 ${triA}cm²로 일정하지만, 옆으로 기울어질수록 옆변이 길어져 둘레는 변합니다!` : `정답! 넓이가 같은 ΔABC와 ΔDBC에서 공통인 ΔOBC(${obA})를 빼면 양옆 나비 날개는 둘 다 ${wing}cm²로 같습니다!` },
+              { t: isRail ? `① 넓이는 ${triA}cm²로 일정, 둘레는 변함` : `① S₁ = S₂ = ${wing} cm² (항상 같다!)`, ok: true, msg: isRail ? `정답! 밑변과 높이가 같아 넓이는 ${triA}cm²로 일정하지만, 옆으로 기울어질수록 옆변이 길어져 둘레는 변합니다!` : `정답! 넓이가 같은 ΔABC와 ΔDBC에서 공통인 ΔOBC(${obA})를 빼면 양옆 삼각형는 둘 다 ${wing}cm²로 같습니다!` },
               { t: isRail ? `② 넓이와 둘레 모두 일정하다` : `② S₁ = ${triA} cm², S₂ = ${obA} cm²`, ok: false, msg: isRail ? `꼭짓점을 옆으로 끌수록 옆변 길이가 늘어나 둘레는 커집니다!` : `전체 삼각형(${triA})에서 아래쪽 공통부분(${obA})을 빼야 합니다!` },
               { t: `③ 알 수 없다`, ok: false, msg: `평행선의 성질로 즉시 구할 수 있습니다!` }
             ],
-            ans: isRail ? `넓이 = <span class="tag-emerald">${triA}cm² 불변</span>, 둘레는 대칭일 때 최소` : `양옆 나비 날개 <span class="tag-emerald">S₁ = S₂ = ${wing} cm²</span>`,
-            stats: [`밑변 BC = ${p1}cm, 높이 = 6cm`, `ΔABC = ΔDBC = ${triA} cm²`, `공통 ΔOBC = ${obA} cm²`, `나비 날개 S₁ = S₂ = ${wing} cm²`],
-            std: `• 평행선 사이의 거리는 일정하므로 밑변을 공유하는 ΔABC와 ΔDBC의 넓이는 같고, 공통부분 ΔOBC를 빼면 양옆 날개 넓이가 같습니다.`,
-            fast: `• 사다리꼴 대각선이 보이면 <strong>양옆 나비 날개 넓이는 무조건 똑같다(S₁ = S₂)</strong>고 적어놓고 시작하세요!`
+            ans: isRail ? `넓이 = <span class="tag-emerald">${triA}cm² 그대로</span>, 둘레는 좌우 대칭일 때 최소` : `양옆 삼각형 <span class="tag-emerald">S₁ = S₂ = ${wing} cm²</span>`,
+            stats: [`밑변 BC = ${p1}cm, 높이 = 6cm`, `ΔABC = ΔDBC = ${triA} cm²`, `공통 ΔOBC = ${obA} cm²`, `양옆 삼각형 S₁ = S₂ = ${wing} cm²`],
+            std: `• 평행선 사이의 거리는 일정하므로 밑변을 공유하는 ΔABC와 ΔDBC의 넓이는 같고, 공통부분 ΔOBC를 빼면 양옆 삼각형의 넓이가 같습니다.`,
+            fast: `• 사다리꼴 대각선이 보이면 <strong>양옆 삼각형 넓이는 같다(S₁ = S₂)</strong>는 것부터 쓰고 시작하세요!`
           };
         }
         if (sub === 'baseRatio') {
@@ -274,7 +274,7 @@ window.addEventListener('DOMContentLoaded', function () {
             badge: `2-B · 높이가 같은 두 삼각형: 밑변의 길이 비(${mL}:${nL}) = 넓이의 비`,
             actionTxt: '🎬 두 삼각형 분리',
             g1Label: '왼쪽 밑변 m', g1Btns: [[1,'m=1'],[2,'m=2'],[3,'m=3'],[4,'m=4'],[5,'m=5']],
-            g2Label: '오른쪽 밑변 n', g2Btns: [[0,'n=1(중선)'],[1,'n=2'],[2,'n=3'],[4,'n=5']],
+            g2Label: '오른쪽 밑변 n', g2Btns: [[0,'n=1(중점)'],[1,'n=2'],[2,'n=3'],[4,'n=5']],
             eqHTML: `<span class="tag-blue">높이 h 공통!</span> ⟹ <span class="tag-rose">밑변 비 ${mL} : ${nL}</span> 🟰 <span class="tag-emerald">넓이 비 S₁(${s1}) : S₂(${s2})</span>`,
             q: `전체 넓이가 ${tex(`${totS}\\text{cm}^2`)}인 ${tex('\\triangle ABC')}에서 밑변 위 점 D가 ${tex(`\\overline{BD}:\\overline{DC} = ${mL}:${nL}`)}일 때, <strong>왼쪽 ${tex('\\triangle ABD(S_1)')}와 오른쪽 ${tex('\\triangle ADC(S_2)')}의 넓이</strong>는?`,
             opts: [
@@ -293,7 +293,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const isSlant = p2 % 2 === 0;
           return {
             badge: '2-C · 산책로(십자 길 & 비스듬한 길) 제외 잔디밭 밀어서 합치기',
-            actionTxt: '🎬 4조각 밀착 합체',
+            actionTxt: '🎬 4조각을 밀어 붙이기',
             g1Label: '밭 가로 길이 W', g1Btns: [[10,'10m'],[12,'12m'],[14,'14m'],[16,'16m'],[18,'18m']],
             g2Label: '길의 폭 x & 모양', g2Btns: [[1,'➕폭 1m(직선)'],[2,'⚡폭 2m(사선)'],[3,'➕폭 3m(직선)'],[4,'⚡폭 4m(사선)']],
             eqHTML: `<span class="tag-blue">새 가로(${W}-${x}=${W-x}m)</span> × <span class="tag-rose">새 세로(${H}-${x}=${H-x}m)</span> = <span class="tag-emerald">🚜 잔디밭 ${area}m²</span>`,
@@ -301,12 +301,12 @@ window.addEventListener('DOMContentLoaded', function () {
             opts: [
               { t: `① ${area} m² ((${W}-${x})×(${H}-${x}))`, ok: true, msg: `정답! 4조각을 왼쪽 위로 밀어 합치면 가로 ${W-x}m, 세로 ${H-x}m인 직사각형 1개가 되어 ${area}m²입니다!` },
               { t: `② ${W*H - W*x - H*x} m² (교차로 중복 차감)`, ok: false, msg: `가운데 교차로(${x*x}m²)가 두 번 빠졌습니다! 조각을 밀어 합치는 방법이 실수가 없습니다!` },
-              { t: `③ 비스듬한 길은 넓이가 달라진다`, ok: false, msg: `평행사변형 길도 가로 밑변 폭이 ${x}m로 같으면 밀어 합쳤을 때 넓이가 100% 똑같습니다!` }
+              { t: `③ 비스듬한 길은 넓이가 달라진다`, ok: false, msg: `평행사변형 길도 가로 밑변 폭이 ${x}m로 같으면 밀어 합쳤을 때 넓이가 똑같습니다!` }
             ],
             ans: `(${W} - ${x}) × (${H} - ${x}) = <span class="tag-emerald">${area} m²</span>`,
             stats: [`원래 밭: ${W}m × ${H}m`, `산책로 폭 x = ${x}m`, `합친 가로×세로: ${W-x}m × ${H-x}m`, `잔디밭 넓이 = ${area} m²`],
             std: `• 나뉜 잔디밭 조각들을 길의 폭(${x}m)만큼 평행이동시켜 합치면 가로 ${W-x}m, 세로 ${H-x}m인 직사각형이 됩니다.`,
-            fast: `• 길이 똑바르든 사선이든 지그재그든 식은 무조건 <strong>『(가로 - 길 폭) × (세로 - 길 폭)』</strong> 하나로 끝납니다!`
+            fast: `• 길이 똑바르든 비스듬하든 꺾여 있든 식은 모두 <strong>『(가로 - 길 폭) × (세로 - 길 폭)』</strong> 하나로 나타낼 수 있습니다!`
           };
         }
         // stairFold (계단형 ㄱ자 vs ㄷ자 둘레 & 평행선 종이띠 접기 각도)
@@ -314,7 +314,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!isPaper) {
           const W = p1, H = 8, perim = 2 * (W + H), uPerim = perim + 4;
           return {
-            badge: '2-D · 계단형(ㄱ자) 도형 vs 움푹 파인(ㄷ자) 도형의 🐜개미 둘레',
+            badge: '2-D · 계단형(ㄱ자) 도형 vs 움푹 파인(ㄷ자) 도형의 🐜둘레',
             actionTxt: '🎬 안쪽 변 바깥 밀기',
             g1Label: '전체 가로 길이 W', g1Btns: [[8,'8cm'],[10,'10cm'],[12,'12cm'],[14,'14cm'],[16,'16cm']],
             g2Label: '유형 전환', g2Btns: [[1,'🐜ㄱ자 vs ㄷ자 둘레'],[2,'변 밀어내기'],[3,'🎀평행선 종이띠 접기'],[4,'접은각=엇각']],
@@ -325,17 +325,17 @@ window.addEventListener('DOMContentLoaded', function () {
               { t: `② L₁ = ${perim}cm, L₂ = ${perim}cm`, ok: false, msg: `ㄷ자로 움푹 파인 도형은 양옆 안쪽 세로벽 2개(2×2=4cm)가 남아서 둘레가 더 길어집니다!` },
               { t: `③ 잘라냈으므로 둘 다 ${perim}cm보다 작다`, ok: false, msg: `귀퉁이를 잘라내면 넓이는 줄지만 둘레는 줄어들지 않습니다!` }
             ],
-            ans: `ㄱ자 계단 = <span class="tag-blue">${perim}cm(불변)</span>, ㄷ자 파임 = <span class="tag-rose">${uPerim}cm(+벽 2개)</span>`,
+            ans: `ㄱ자 계단 = <span class="tag-blue">${perim}cm(그대로)</span>, ㄷ자 파임 = <span class="tag-rose">${uPerim}cm(+벽 2개)</span>`,
             stats: [`직사각형 가로 ${W}cm, 세로 8cm`, `ㄱ자 계단 둘레 L₁ = ${perim}cm`, `ㄷ자 파인 깊이 = 2cm (벽 2개)`, `ㄷ자 도형 둘레 L₂ = ${uPerim}cm`],
             std: `• 계단형 도형의 안쪽 가로 선분들의 합은 전체 가로와 같고, 세로 선분들의 합은 전체 세로와 같습니다.`,
-            fast: `• <strong>풍선 불어 펴기 법칙</strong>: 오목한 모서리를 바깥으로 폈을 때 직사각형이 되면 둘레 그대로, 접혀 남는 벽이 있으면 그 벽 2개만 더하세요!`
+            fast: `• <strong>오목한 도형의 둘레</strong>: 오목한 모서리를 바깥으로 폈을 때 직사각형이 되면 둘레는 그 직사각형의 둘레와 같고, 안으로 들어간 부분의 세로 변(벽) 2개가 있으면 그 2개를 더하세요!`
           };
         } else {
           const ang = PAPER_ANG[p1] || 65;
           const vertA = 180 - 2 * ang;
           return {
-            badge: '2-D · [중1 평행선 필수] 직사각형 종이띠 접기 (접은 각 = 엇각!)',
-            actionTxt: '🎬 접은각·엇각 점등',
+            badge: '2-D · [중1 평행선] 직사각형 종이띠 접기 (접은 각 = 엇각!)',
+            actionTxt: '🎬 접은 각·엇각 표시',
             g1Label: '접은 각의 크기 (●)', g1Btns: [[8,'63°'],[10,'65°'],[12,'70°'],[14,'55°'],[16,'60°']],
             g2Label: '유형 전환', g2Btns: [[1,'🐜ㄱ자 vs ㄷ자 둘레'],[2,'변 밀어내기'],[3,'🎀평행선 종이띠 접기'],[4,'접은각=엇각']],
             eqHTML: `<span class="tag-blue">① 접은 각 = ${ang}°</span> + <span class="tag-emerald">② 평행선 엇각 = ${ang}°</span> ⟹ <span class="tag-rose">꼭지각 ∠BAC = 180° - 2×${ang}° = ${vertA}°</span>`,
@@ -348,7 +348,7 @@ window.addEventListener('DOMContentLoaded', function () {
             ans: `두 밑각이 모두 ${ang}° ⟹ <span class="tag-rose">∠BAC = 180° - ${2*ang}° = ${vertA}°</span>`,
             stats: [`접은 각 ∠ABC = ${ang}°`, `평행선 엇각 ∠ACB = ${ang}°`, `두 밑각 크기 동일 (${ang}°)`, `꼭지각 ∠BAC = ${vertA}°`],
             std: `• 접히기 전후의 각이 같고(접은 각), 평행선의 엇각이 같으므로 겹쳐진 삼각형의 두 밑각은 모두 ${ang}°입니다.`,
-            fast: `• <strong>종이띠 접기 = 무조건 점(●) 3개 찍기!</strong> (접은 선 양옆에 ●, ● 2개 + 엇각 자리에 ● 1개)`
+            fast: `• <strong>종이띠 접기 = 같은 각(●) 3개 표시하기!</strong> (접은 선 양옆에 ●, ● 2개 + 엇각 자리에 ● 1개)`
           };
         }
       }
@@ -363,18 +363,18 @@ window.addEventListener('DOMContentLoaded', function () {
             badge: `3-A · ${kName}각형(${n}각형) 한 꼭짓점 대각선(n-3) & 삼각형 분할(n-2)`,
             actionTxt: '🎬 삼각형 조각 분리',
             g1Label: '다각형 선택 (n)', g1Btns: [[4,'사각(4)'],[5,'오각(5)'],[6,'육각(6)'],[8,'팔각(8)'],[10,'십각(10)']],
-            g2Label: '보기 옵션', g2Btns: [[1,'금지점 3곳(✕)'],[2,'삼각형 분리'],[3,'내각의 합'],[4,'김밥 썰기']],
+            g2Label: '보기 옵션', g2Btns: [[1,'연결할 수 없는 점 3곳(✕)'],[2,'삼각형 분리'],[3,'내각의 합'],[4,'삼각형은 1개 더 많다']],
             eqHTML: `<span class="tag-rose">한 점 대각선 = ${n}-3 = ${d1}개</span> ⟹ <span class="tag-blue">삼각형 조각 = ${n}-2 = ${tri}개</span> ⟹ <span class="tag-emerald">내각 합 = 180°×${tri} = ${sumA}°</span>`,
             q: `<strong>${kName}각형(${tex(`${n}`)}각형)</strong>의 한 꼭짓점에서 그을 수 있는 대각선 수(${tex('a')}), 나누어지는 삼각형 수(${tex('b')}), <strong>내각의 크기의 총합</strong>은?`,
             opts: [
               { t: `① a=${d1}, b=${tri}, 내각 합 ${sumA}°`, ok: true, msg: `정답! 나 자신(1)과 양옆 이웃(2) 총 3곳을 뺀 a=${d1}개, 조각은 1개 더 많은 b=${tri}개, 내각 합은 180°×${tri}=${sumA}°입니다!` },
-              { t: `② a=${tri}, b=${d1}, 내각 합 ${180*d1}°`, ok: false, msg: `대각선(n-3)과 삼각형(n-2)이 바뀌었습니다! 김밥을 1번 썰면 2조각이 나오듯 삼각형이 1개 더 많습니다!` },
+              { t: `② a=${tri}, b=${d1}, 내각 합 ${180*d1}°`, ok: false, msg: `대각선(n-3)과 삼각형(n-2)이 바뀌었습니다! 대각선을 1개 그으면 다각형이 2조각으로 나뉘듯, 삼각형이 대각선보다 1개 더 많습니다!` },
               { t: `③ a=${n-2}, b=${n}, 내각 합 ${180*n}°`, ok: false, msg: `한 꼭짓점 대각선은 n-3 = ${d1}개입니다!` }
             ],
             ans: `대각선 <span class="tag-rose">${d1}개</span>, 삼각형 <span class="tag-blue">${tri}개</span>, 내각 합 <span class="tag-emerald">${sumA}°</span>`,
             stats: [`${kName}각형 (n = ${n})`, `한 점 대각선 (n-3) = ${d1}개`, `삼각형 조각 (n-2) = ${tri}개`, `내각 총합 = ${sumA}°`],
             std: `• 자기 자신과 양옆 이웃 2개를 제외한 ${tex('n-3')}개의 대각선을 그으면 ${tex('n-2')}개의 삼각형으로 나뉩니다.`,
-            fast: `• <strong>김밥 썰기 법칙</strong>: 칼질(대각선)을 ${d1}번 하면 김밥 조각(삼각형)은 무조건 1개 더 많은 ${tri}조각!`
+            fast: `• <strong>대각선과 삼각형의 개수</strong>: 한 꼭짓점에서 대각선을 ${d1}개 그으면 삼각형은 항상 1개 더 많은 ${tri}개로 나뉩니다!`
           };
         }
         if (sub === 'inPointO') {
@@ -383,7 +383,7 @@ window.addEventListener('DOMContentLoaded', function () {
             badge: `3-B · ${kName}각형 내부의 점 O 연결 증명 (180°×n - 360° = 내각의 합)`,
             actionTxt: '🎬 가운데 360° 차감',
             g1Label: '다각형 선택 (n)', g1Btns: [[4,'사각(4)'],[5,'오각(5)'],[6,'육각(6)'],[8,'팔각(8)'],[10,'십각(10)']],
-            g2Label: '비교 포인트', g2Btns: [[1,'삼각형 n개'],[2,'중심각 360° 빼기'],[3,'4-A와 비교'],[4,'점 O 이동']],
+            g2Label: '비교 항목', g2Btns: [[1,'삼각형 n개'],[2,'중심각 360° 빼기'],[3,'4-A와 비교'],[4,'점 O 이동']],
             eqHTML: `<span class="tag-blue">삼각형 ${n}개(180°×${n}=${sumN}°)</span> ➖ <span class="tag-rose">가운데 점 O 주위 360°</span> = <span class="tag-emerald">내각 합 ${sumA}°</span>`,
             q: `<strong>${kName}각형(${tex(`${n}`)}각형)</strong> 내부의 점 O에서 각 꼭짓점에 선을 그었을 때 생기는 <strong>삼각형의 개수</strong>와 내각의 합을 구할 때 <strong>빼야 하는 각도</strong>는?`,
             opts: [
@@ -400,11 +400,11 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'allDiag') {
           const d1 = n - 3, dbl = n * d1, totD = dbl / 2, shake = (n * (n - 1)) / 2;
           return {
-            badge: `3-C · ${kName}각형 전체 대각선 총개수 n(n-3)÷2 & 역추적·악수하기`,
-            actionTxt: '🎬 대각선 발사·소거',
+            badge: `3-C · ${kName}각형 전체 대각선 총개수 n(n-3)÷2 & 변의 수 거꾸로 구하기·악수하기`,
+            actionTxt: '🎬 대각선 그어 보기',
             g1Label: '다각형·인원수 (n)', g1Btns: [[5,'오각(5)'],[6,'육각(6)'],[7,'칠각(7)'],[8,'팔각(8)'],[9,'구각(9)']],
-            g2Label: '응용 모드 선택', g2Btns: [[1,'🕸️전체 대각선'],[2,'🔍개수 역추적'],[3,'🤝원탁 악수하기'],[4,'전체 선분']],
-            eqHTML: `<span class="tag-blue">꼭짓점 ${n}개</span> × <span class="tag-rose">(${n}-3=${d1}개)</span> ÷ 2(왕복중복) = <span class="tag-emerald">대각선 총 ${totD}개</span>`,
+            g2Label: '응용 모드 선택', g2Btns: [[1,'🕸️전체 대각선'],[2,'🔍변의 수 구하기'],[3,'🤝원탁 악수'],[4,'전체 선분']],
+            eqHTML: `<span class="tag-blue">꼭짓점 ${n}개</span> × <span class="tag-rose">(${n}-3=${d1}개)</span> ÷ 2(같은 대각선을 2번 센 것) = <span class="tag-emerald">대각선 총 ${totD}개</span>`,
             q: `<strong>${kName}각형(${tex(`${n}`)}각형)</strong>의 <strong>대각선의 총개수</strong>와, 원탁에 앉은 ${tex(`${n}`)}명이 양옆 이웃을 포함해 <strong>모두와 한 번씩 악수하는 총횟수</strong>는?`,
             opts: [
               { t: `① 대각선 ${totD}개, 전체 악수 ${shake}회`, ok: true, msg: `정답! 대각선은 ${n}×${d1}÷2 = ${totD}개이고, 전체 악수는 양옆 이웃(변 ${n}개)을 더한 ${totD}+${n} = ${shake}회(=${n}×${n-1}÷2)입니다!` },
@@ -413,28 +413,28 @@ window.addEventListener('DOMContentLoaded', function () {
             ],
             ans: `대각선 총수 = <span class="tag-emerald">${totD}개</span> | 전원 악수(변+대각선) = <span class="tag-blue">${shake}회</span>`,
             stats: [`한 점 대각선 = ${d1}개`, `단순 곱 n(n-3) = ${dbl} (2배 중복)`, `대각선 총개수 = ${totD}개`, `원탁 전원 악수 = ${shake}회`],
-            std: `• 대각선 총수가 ${totD}개일 때 역추적: 양변에 2를 곱해 ${tex(`n(n-3)=${dbl}=${n}\\times ${d1}`)} (3 차이 나는 두 수의 곱)에서 큰 수 ${n}을 찾습니다.`,
-            fast: `• <strong>역추적 3초 공식</strong>: 대각선 개수에 <strong>무조건 ×2</strong>를 한 뒤 구구단에서 <strong>3 차이 나는 두 수의 곱</strong>만 찾으세요!`
+            std: `• 대각선 총수가 ${totD}개일 때 변의 수 거꾸로 구하기: 양변에 2를 곱해 ${tex(`n(n-3)=${dbl}=${n}\\times ${d1}`)} (3 차이 나는 두 수의 곱)에서 큰 수 ${n}을 찾습니다.`,
+            fast: `• <strong>대각선의 개수로 변의 수 구하기</strong>: 대각선 개수에 2를 곱한 값은 n(n-3)입니다. 곱이 그 값이 되도록 <strong>3 차이 나는 두 수</strong> n과 n-3을 찾으세요!`
           };
         }
         // ext360
         const oneE = Math.round((360 / n) * 10) / 10, oneI = Math.round((180 - 360 / n) * 10) / 10;
         return {
-          badge: `3-D · 정${kName}각형 외각의 합 360° 줌아웃 수축 & 한 내각 2초 암산`,
-          actionTxt: '🎬 360° 원으로 수축',
+          badge: `3-D · 정${kName}각형 외각의 합 360°(다각형을 줄여 보기) & 한 내각 바로 구하기`,
+          actionTxt: '🎬 360° 원으로 줄이기',
           g1Label: '정다각형 선택 (n)', g1Btns: [[4,'정사각(4)'],[5,'정오각(5)'],[6,'정육각(6)'],[8,'정팔각(8)'],[10,'정십각(10)']],
-          g2Label: '수축 단계 스냅', g2Btns: [[1,'원래 다각형'],[2,'절반 수축'],[3,'🎯360° 원 합체!'],[4,'🐜둘레 줄자']],
-          eqHTML: `<span class="tag-emerald">외각 총합 = 360° 불변!</span> ⟹ <span class="tag-blue">한 외각 = 360°÷${n} = ${oneE}°</span> ⟹ <span class="tag-rose">한 내각 = 180°-${oneE}° = ${oneI}°</span>`,
+          g2Label: '줄이는 단계', g2Btns: [[1,'원래 다각형'],[2,'절반으로 줄이기'],[3,'🎯360° 원으로 모으기'],[4,'🐜둘레 줄자']],
+          eqHTML: `<span class="tag-emerald">외각 총합 = 360° (항상 일정)</span> ⟹ <span class="tag-blue">한 외각 = 360°÷${n} = ${oneE}°</span> ⟹ <span class="tag-rose">한 내각 = 180°-${oneE}° = ${oneI}°</span>`,
           q: `<strong>정${kName}각형(${tex(`n=${n}`)})</strong>에서 <strong>① 외각의 크기의 총합</strong>, <strong>② 한 외각의 크기</strong>, <strong>③ 한 내각의 크기</strong>는?`,
           opts: [
-            { t: `① 360°, 한 외각 ${oneE}°, 한 내각 ${oneI}°`, ok: true, msg: `정답! 외각 총합은 항상 360°이므로 한 외각(${oneE}°)을 먼저 구한 뒤 180°에서 빼면 한 내각(${oneI}°)이 2초 만에 나옵니다!` },
+            { t: `① 360°, 한 외각 ${oneE}°, 한 내각 ${oneI}°`, ok: true, msg: `정답! 외각 총합은 항상 360°이므로 한 외각(${oneE}°)을 먼저 구한 뒤 180°에서 빼면 한 내각(${oneI}°)이 바로 나옵니다!` },
             { t: `② ${180*(n-2)}°, 한 외각 ${oneE}°, 한 내각 ${oneI}°`, ok: false, msg: `외각의 크기의 총합은 몇 각형이든 항상 360°입니다!` },
             { t: `③ 360°, 한 외각 ${oneI}°, 한 내각 ${oneE}°`, ok: false, msg: `한 외각(${oneE}°)과 한 내각(${oneI}°)이 바뀌었습니다!` }
           ],
           ans: `외각 합 <span class="tag-emerald">360°</span> ⟹ 한 외각 <span class="tag-blue">${oneE}°</span> ⟹ 한 내각 <span class="tag-rose">${oneI}°</span>`,
           stats: [`정${kName}각형 (n = ${n})`, `외각의 총합 = 360° (항상 일정)`, `한 외각 = 360°÷${n} = ${oneE}°`, `한 내각 = 180°-${oneE}° = ${oneI}°`],
           std: `• 한 꼭짓점에서 (내각)+(외각)=180°이고, 모든 다각형의 외각의 합은 항상 360°입니다.`,
-          fast: `• 정다각형의 한 내각을 구할 때 복잡한 ${tex('180^\\circ(n-2)\\div n')}을 쓰지 말고, <strong>180° - (한 외각 360°÷n)</strong>으로 2초 만에 암산하세요!`
+          fast: `• 정다각형의 한 내각을 구할 때 복잡한 ${tex('180^\\circ(n-2)\\div n')}을 쓰지 말고, <strong>180° - (한 외각 360°÷n)</strong>으로 바로 계산하세요!`
         };
       }
 
@@ -448,20 +448,20 @@ window.addEventListener('DOMContentLoaded', function () {
             const A = p1 <= 12 ? p1 * 6 : 50 /* [2.0 수정] 칩 72°(p1=12)가 50°로 그려지던 것 */, B = 60, ext = A + B;
             return {
               badge: '4-A · 삼각형의 한 외각 = 이웃하지 않는 두 내각의 합 (색종이 이동)',
-              actionTxt: '🎬 두 내각 외각 이동',
+              actionTxt: '🎬 두 내각을 외각으로 옮기기',
               g1Label: '안쪽 각 ∠A 선택', g1Btns: [[6,'36°'],[8,'48°'],[9,'54°'],[10,'60°'],[12,'72°']],
-              g2Label: '외각 유형 전환 (핵심!)', g2Btns: [[1,'✂️기본 외각 이동'],[2,'🚀이등변 징검다리(3단)'],[3,'🚀이등변 징검다리(4단)'],[4,'역추적 문제']],
+              g2Label: '외각 유형 전환', g2Btns: [[1,'✂️기본 외각 이동'],[2,'🚀이등변삼각형 이어 붙이기(3단)'],[3,'🚀이등변삼각형 이어 붙이기(4단)'],[4,'거꾸로 구하기 문제']],
               eqHTML: `<span class="tag-blue">안쪽 ∠A(${A}°)</span> + <span class="tag-rose">안쪽 ∠B(${B}°)</span> 🟰 <span class="tag-emerald">바깥 외각 ∠ACD(${ext}°)</span>`,
               q: `삼각형 ABC에서 ${tex(`\\angle A=${A}^\\circ, \\angle B=${B}^\\circ`)}일 때, 점 C에서의 <strong>바깥 외각 ${tex('\\angle ACD')}의 크기</strong>는?`,
               opts: [
-                { t: `① ${ext}° (∠A + ∠B 직통 합!)`, ok: true, msg: `정답! 180°에서 뺄 필요 없이 안쪽 두 내각(${A}°+${B}°)을 바로 더하면 바깥 외각 ${ext}°가 됩니다!` },
-                { t: `② ${180 - ext}° (안쪽 내각 C)`, ok: false, msg: `그 값은 안쪽 내각 ∠ACB이고, 외각은 두 내각의 합인 ${ext}°입니다!` },
+                { t: `① ${ext}° (∠A + ∠B)`, ok: true, msg: `정답! 180°에서 뺄 필요 없이 안쪽 두 내각(${A}°+${B}°)을 바로 더하면 바깥 외각 ${ext}°가 됩니다!` },
+                { t: `② ${180 - ext}° (안쪽 내각 C)`, ok: false, msg: `②의 ${180 - ext}°는 안쪽 내각 ∠ACB의 크기입니다! 외각은 이웃하지 않는 두 내각의 합인 ${ext}°입니다!` },
                 { t: `③ ${180 - A}°`, ok: false, msg: `이웃하지 않는 두 내각 ∠A와 ∠B를 더해야 합니다!` }
               ],
               ans: `엇각(${A}°) + 동위각(${B}°) = <span class="tag-emerald">외각 ${ext}°</span>`,
               stats: [`안쪽 내각 ∠A = ${A}°`, `안쪽 내각 ∠B = ${B}°`, `안쪽 내각 ∠C = ${180-ext}°`, `바깥 외각 ∠ACD = ${ext}°`],
               std: `• 점 C를 지나고 변 AB에 평행한 선을 그으면 엇각(∠A)과 동위각(∠B)으로 나뉘므로 외각 = ∠A + ∠B입니다.`,
-              fast: `• <strong>새총(슬링샷) 법칙</strong>: 안쪽 두 각을 합쳐서 제3의 꼭짓점 바깥으로 뻥! 쏘세요!`
+              fast: `• <strong>삼각형의 외각의 성질</strong>: 한 외각의 크기는 이웃하지 않는 두 내각의 크기의 합과 같습니다. 안쪽 두 각을 더하면 바깥 외각이 됩니다!`
             };
           } else {
             // 이등변삼각형 연속 징검다리 외각 도미노 (x -> 2x -> 3x -> 4x)
@@ -469,26 +469,26 @@ window.addEventListener('DOMContentLoaded', function () {
             const stepsCnt = p2 === 2 ? 3 : 4;
             const finalAng = stepsCnt * x;
             return {
-              badge: `4-A · [빈출 1위] 이등변삼각형 연속 징검다리 외각 도미노 (x → 2x → 3x${stepsCnt===4?' → 4x':''})`,
-              actionTxt: '🎬 도미노 외각 점등',
+              badge: `4-A · 이등변삼각형이 이어진 도형의 외각 (x → 2x → 3x${stepsCnt===4?' → 4x':''})`,
+              actionTxt: '🎬 외각을 차례로 표시',
               g1Label: '첫 밑각 ∠x 선택', g1Btns: [[6,'x=16°'],[8,'x=20°'],[9,'x=22°'],[10,'x=24°'],[11,'x=26°']],
-              g2Label: '외각 유형 전환 (핵심!)', g2Btns: [[1,'✂️기본 외각 이동'],[2,'🚀징검다리 3단(3x)'],[3,'🚀징검다리 4단(4x)'],[4,'역추적 문제']],
+              g2Label: '외각 유형 전환', g2Btns: [[1,'✂️기본 외각 이동'],[2,'🚀이어 붙이기 3단(3x)'],[3,'🚀이어 붙이기 4단(4x)'],[4,'거꾸로 구하기 문제']],
               eqHTML: `<span class="tag-blue">1단: x(${x}°)</span> ➔ <span class="tag-emerald">2단 외각: 2x(${2*x}°)</span> ➔ <span class="tag-rose">3단 외각: 3x(${3*x}°)${stepsCnt===4?` ➔ 4단: 4x(${4*x}°)`:''}</span>`,
-              q: `오른쪽 그림에서 ${tex('\\overline{AB}=\\overline{BC}=\\overline{CD}' + (stepsCnt===4?'=\\overline{DE}':''))}이고 ${tex(`\\angle A = ${x}^\\circ`)}일 때, <strong>가장 오른쪽 바깥 외각의 크기</strong>는 몇 도인가? (큰 삼각형 전체의 외각 성질을 주목!)`,
+              q: `그림에서 ${tex('\\overline{AB}=\\overline{BC}=\\overline{CD}' + (stepsCnt===4?'=\\overline{DE}':''))}이고 ${tex(`\\angle A = ${x}^\\circ`)}일 때, <strong>가장 오른쪽 바깥 외각의 크기</strong>는 몇 도인가? (큰 삼각형 전체의 외각 성질을 주목!)`,
               opts: [
-                { t: `① ${finalAng}° (정확히 ${stepsCnt}배 = ${stepsCnt}x!)`, ok: true, msg: `정답! 이등변삼각형과 외각 성질을 연속 적용하면 x(${x}°) → 2x(${2*x}°) → 3x(${3*x}°)${stepsCnt===4?` → 4x(${4*x}°)`:''}가 되어 무조건 ${stepsCnt}배입니다!` },
-                { t: `② ${(stepsCnt-1)*x}° (${stepsCnt-1}배)`, ok: false, msg: `그 각은 마지막 삼각형의 안쪽 밑각입니다! 가장 바깥 외각은 첫 각 ∠A(${x}°)와 마지막 밑각(${(stepsCnt-1)*x}°)을 더한 ${finalAng}°입니다!` },
+                { t: `① ${finalAng}° (정확히 ${stepsCnt}배 = ${stepsCnt}x!)`, ok: true, msg: `정답! 이등변삼각형과 외각 성질을 연속 적용하면 x(${x}°) → 2x(${2*x}°) → 3x(${3*x}°)${stepsCnt===4?` → 4x(${4*x}°)`:''}가 되어 ${stepsCnt}배입니다!` },
+                { t: `② ${(stepsCnt-1)*x}° (${stepsCnt-1}배)`, ok: false, msg: `②의 ${(stepsCnt-1)*x}°는 마지막 삼각형의 안쪽 밑각의 크기입니다! 가장 바깥 외각은 첫 각 ∠A(${x}°)와 마지막 밑각(${(stepsCnt-1)*x}°)을 더한 ${finalAng}°입니다!` },
                 { t: `③ ${2**(stepsCnt-1)*x}° (2배씩 증가)`, ok: false, msg: `마지막 외각을 구할 때는 직전 삼각형이 아니라 '처음 점 A부터 이어진 가장 큰 삼각형'의 외각(x + ${stepsCnt-1}x = ${stepsCnt}x)으로 구해야 합니다!` }
               ],
-              ans: `도미노 외각: ${tex(`x(${x}^\\circ) \\to 2x(${2*x}^\\circ) \\to`)} <span class="tag-rose">${stepsCnt}x = ${finalAng}° (${stepsCnt}배!)</span>`,
+              ans: `외각: ${tex(`x(${x}^\\circ) \\to 2x(${2*x}^\\circ) \\to`)} <span class="tag-rose">${stepsCnt}x = ${finalAng}° (${stepsCnt}배!)</span>`,
               stats: [
                 `1단계: ΔABC 밑각 = x (${x}°)`,
                 `2단계: 외각 ∠CBD = x+x = 2x (${2*x}°)`,
                 `3단계: ΔACD 외각 = x+2x = 3x (${3*x}°)`,
                 stepsCnt === 4 ? `4단계: ΔADE 외각 = x+3x = 4x (${4*x}°)` : `최종 3단 외각 = ${3*x}°`
               ],
-              std: `• <strong>가장 많이 틀리는 포인트</strong>: 3번째 외각을 구할 때 ${tex('2x+2x=4x')}라고 하면 오답입니다! 반드시 처음 꼭짓점 A를 포함한 <strong>큰 삼각형 ΔACD의 외각</strong>으로 보아 ${tex('x + 2x = 3x')}로 구해야 합니다!`,
-              fast: `• <strong>[이등변 지그재그 계단 1초 공식]</strong>: 같은 길이 막대기(등변)가 <strong>2개면 2x, 3개면 3x, 4개면 4x</strong>! 막대기 개수만큼 배수가 늘어납니다!`
+              std: `• <strong>가장 많이 틀리는 부분</strong>: 3번째 외각을 구할 때 ${tex('2x+2x=4x')}라고 하면 틀립니다! 반드시 처음 꼭짓점 A를 포함한 <strong>큰 삼각형 ΔACD의 외각</strong>으로 보아 ${tex('x + 2x = 3x')}로 구해야 합니다!`,
+              fast: `• <strong>[이어 붙인 이등변삼각형의 외각]</strong>: 길이가 같은 선분이 <strong>2개면 2x, 3개면 3x, 4개면 4x</strong>! 길이가 같은 선분의 개수만큼 배수가 늘어납니다!`
             };
           }
         }
@@ -498,40 +498,40 @@ window.addEventListener('DOMContentLoaded', function () {
           if (!isBow) {
             const a = p1 * 4, b = 30, c = 25, x = a + b + c;
             return {
-              badge: '4-B · 복잡한 도형 ①: 부메랑(오목사각형) ∠x = ∠a + ∠b + ∠c',
-              actionTxt: '🎬 외각 2단 점프',
+              badge: '4-B · 복잡한 도형 ①: 오목사각형 ∠x = ∠a + ∠b + ∠c',
+              actionTxt: '🎬 외각 2번 적용',
               g1Label: '위쪽 각 ∠a 크기', g1Btns: [[8,'32°'],[10,'40°'],[12,'48°'],[14,'56°'],[15,'60°']],
-              g2Label: '보조선·도형 전환', g2Btns: [[1,'🪃부메랑(연장선)'],[2,'🪃부메랑(가르기)'],[3,'🎀나비넥타이(8자)'],[4,'🎀복합 나비 보조선']],
+              g2Label: '보조선·도형 전환', g2Btns: [[1,'🪃오목사각형(연장선)'],[2,'🪃오목사각형(나누기)'],[3,'🎀X자 도형'],[4,'🎀보조선으로 X자 만들기']],
               eqHTML: `<span class="tag-blue">∠a(${a}°)</span> + <span class="tag-rose">∠b(${b}°)</span> + <span class="tag-emerald">∠c(${c}°)</span> 🟰 <span class="tag-blue">🪃 오목각 ∠x = ${x}°</span>`,
-              q: `부메랑 모양 오목사각형에서 세 뾰족각이 ${tex(`\\angle a=${a}^\\circ, \\angle b=${b}^\\circ, \\angle c=${c}^\\circ`)}일 때, <strong>안쪽 오목각 ${tex('\\angle x')}의 크기</strong>는?`,
+              q: `오목사각형에서 세 뾰족각이 ${tex(`\\angle a=${a}^\\circ, \\angle b=${b}^\\circ, \\angle c=${c}^\\circ`)}일 때, <strong>안쪽 오목각 ${tex('\\angle x')}의 크기</strong>는?`,
               opts: [
                 { t: `① ∠x = ${x}° (세 각의 합!)`, ok: true, msg: `정답! 선분 BD를 연장하면 첫 번째 삼각형 외각(${a}°+${b}°=${a+b}°)에 오른쪽 ∠c(${c}°)가 한 번 더 더해져 ${x}°가 됩니다!` },
                 { t: `② ∠x = ${a+b}°`, ok: false, msg: `오른쪽 뾰족각 ∠c(${c}°)까지 더해야 합니다!` },
-                { t: `③ ∠x = ${180-x}°`, ok: false, msg: `부메랑 공식은 180°에서 빼지 않고 세 뾰족각을 그대로 더합니다!` }
+                { t: `③ ∠x = ${180-x}°`, ok: false, msg: `이 오목사각형에서는 180°에서 빼지 않고 세 뾰족각을 그대로 더합니다!` }
               ],
-              ans: `징검다리 외각(${a+b}°) + ${c}° = <span class="tag-emerald">∠x = ${x}°</span>`,
-              stats: [`위쪽 꼭지각 ∠a = ${a}°`, `양옆 귀 각 ∠b=${b}°, ∠c=${c}°`, `중간 징검다리 외각 = ${a+b}°`, `오목각 ∠x = ${x}°`],
+              ans: `외각(${a+b}°) + ${c}° = <span class="tag-emerald">∠x = ${x}°</span>`,
+              stats: [`위쪽 꼭지각 ∠a = ${a}°`, `양옆 각 ∠b=${b}°, ∠c=${c}°`, `중간 외각 = ${a+b}°`, `오목각 ∠x = ${x}°`],
               std: `• [방법1] BD를 연장해 삼각형 외각 성질을 2번 적용: ${tex(`\\angle x = (\\angle a+\\angle b)+\\angle c = ${x}^\\circ`)}.<br/>• [방법2] AD를 연결해 좌우 두 삼각형의 외각의 합으로 증명.`,
-              fast: `• <strong>여우 머리(부메랑) 공식</strong>: 두 귀(${b}°, ${c}°)와 정수리(${a}°)를 다 더하면 턱 밑 오목각(${x}°)으로 쏙 모입니다!`
+              fast: `• <strong>오목사각형의 각</strong>: 뾰족한 세 각(${a}°, ${b}°, ${c}°)을 모두 더하면 안쪽 오목각 ∠x(${x}°)와 같습니다!`
             };
           } else {
             const sumAB = p1 * 10, c = 42, d = sumAB - c, vert = 180 - sumAB;
             return {
-              badge: '4-B · 복잡한 도형 ②: 나비넥타이(8자 모래시계) 각 보존 (∠a+∠b = ∠c+∠d)',
-              actionTxt: '🎬 나비 각 포개기',
+              badge: '4-B · 복잡한 도형 ②: X자로 교차하는 도형의 각 (∠a+∠b = ∠c+∠d)',
+              actionTxt: '🎬 각의 합 비교하기',
               g1Label: '왼쪽 두 각의 합(∠a+∠b)', g1Btns: [[8,'80°'],[9,'90°'],[10,'100°'],[11,'110°'],[12,'120°']],
-              g2Label: '보조선·도형 전환', g2Btns: [[1,'🪃부메랑(연장선)'],[2,'🪃부메랑(가르기)'],[3,'🎀나비넥타이(8자)'],[4,'🎀복합 나비 보조선']],
-              eqHTML: `<span class="tag-blue">왼쪽 날개 합(∠a+∠b = ${sumAB}°)</span> 🟰 <span class="tag-rose">오른쪽 날개 합(∠c ${c}° + ∠d ${d}°)</span>`,
-              q: `8자 모양 나비넥타이 도형에서 왼쪽 두 각의 합이 ${tex(`\\angle a+\\angle b = ${sumAB}^\\circ`)}이고 오른쪽 ${tex(`\\angle c = ${c}^\\circ`)}일 때, <strong>${tex('\\angle d')}의 크기</strong>는?`,
+              g2Label: '보조선·도형 전환', g2Btns: [[1,'🪃오목사각형(연장선)'],[2,'🪃오목사각형(나누기)'],[3,'🎀X자 도형'],[4,'🎀보조선으로 X자 만들기']],
+              eqHTML: `<span class="tag-blue">왼쪽 두 각의 합(∠a+∠b = ${sumAB}°)</span> 🟰 <span class="tag-rose">오른쪽 두 각의 합(∠c ${c}° + ∠d ${d}°)</span>`,
+              q: `두 선분이 X자로 교차하는 도형에서 왼쪽 두 각의 합이 ${tex(`\\angle a+\\angle b = ${sumAB}^\\circ`)}이고 오른쪽 ${tex(`\\angle c = ${c}^\\circ`)}일 때, <strong>${tex('\\angle d')}의 크기</strong>는?`,
               opts: [
-                { t: `① ∠d = ${d}° (${sumAB}° - ${c}°)`, ok: true, msg: `정답! 가운데 맞꼭지각(${vert}°)이 같으므로 양쪽 날개 두 각의 합은 ${sumAB}°로 항상 같습니다! 따라서 ∠d = ${sumAB}°-${c}° = ${d}°입니다!` },
+                { t: `① ∠d = ${d}° (${sumAB}° - ${c}°)`, ok: true, msg: `정답! 가운데 맞꼭지각(${vert}°)이 같으므로 양쪽 두 각의 합은 ${sumAB}°로 항상 같습니다! 따라서 ∠d = ${sumAB}°-${c}° = ${d}°입니다!` },
                 { t: `② ∠d = ${vert}°`, ok: false, msg: `${vert}°는 가운데 맞꼭지각의 크기입니다!` },
                 { t: `③ ∠a, ∠b를 각각 알아야 구한다`, ok: false, msg: `개별 각을 몰라도 두 각의 합(${sumAB}°)만 알면 반대쪽 두 각의 합도 ${sumAB}°로 같습니다!` }
               ],
               ans: `${tex(`\\angle a+\\angle b = \\angle c+\\angle d = ${sumAB}^\\circ \\implies`)} <span class="tag-rose">∠d = ${d}°</span>`,
-              stats: [`왼쪽 날개 합 = ${sumAB}°`, `가운데 맞꼭지각 = ${vert}°`, `오른쪽 주어진 ∠c = ${c}°`, `구하는 ∠d = ${d}°`],
+              stats: [`왼쪽 두 각의 합 = ${sumAB}°`, `가운데 맞꼭지각 = ${vert}°`, `오른쪽 주어진 ∠c = ${c}°`, `구하는 ∠d = ${d}°`],
               std: `• 맞꼭지각이 ${vert}°로 같으므로 두 삼각형에서 나머지 두 내각의 합(외각)은 모두 ${sumAB}°로 같습니다.`,
-              fast: `• 복잡한 도형에서 <strong>선분이 X자로 교차하면 무조건 『왼쪽 두 끝각 합 = 오른쪽 두 끝각 합』</strong>으로 각을 통째로 이사시키세요!`
+              fast: `• 복잡한 도형에서 <strong>선분이 X자로 교차하면 『왼쪽 두 끝각의 합 = 오른쪽 두 끝각의 합』</strong>이 성립하므로, 이 식을 이용해 구하는 각을 계산하세요!`
             };
           }
         }
@@ -541,16 +541,16 @@ window.addEventListener('DOMContentLoaded', function () {
           const a = p1 * 4, sumBD = 70, sumCE = 180 - a - sumBD;
           return {
             badge: modeType === 2
-              ? '4-C · 별모양(☆) 해법 ②: 아래쪽 보조선 긋고 나비넥타이(8자)로 큰 삼각형 1개에 모으기!'
-              : '4-C · 별모양(☆) 해법 ①: 두 큰 삼각형의 외각을 타고 위쪽 작은 삼각형으로 모으기!',
-            actionTxt: '🎬 별 끝각 180° 이사',
+              ? '4-C · 별 모양(☆) 방법 ②: 아래쪽 보조선을 긋고 X자 도형의 성질로 큰 삼각형 1개에 모으기!'
+              : '4-C · 별 모양(☆) 방법 ①: 두 큰 삼각형의 외각을 이용해 위쪽 작은 삼각형으로 모으기!',
+            actionTxt: '🎬 별 끝각 180°로 모으기',
             g1Label: '위쪽 끝각 ∠a 크기', g1Btns: [[7,'28°'],[8,'32°'],[9,'36°(정오각별)'],[10,'40°'],[11,'44°']],
-            g2Label: '별모양 해법·유형 선택', g2Btns: [[1,'⭐해법① 외각2개 이사'],[2,'⭐해법② 나비 보조선'],[3,'🌟비대칭 별 각 구하기'],[4,'✡육각별(360°) 비교']],
+            g2Label: '별 모양 방법·유형 선택', g2Btns: [[1,'⭐방법① 외각 2번 이용'],[2,'⭐방법② 보조선 긋기'],[3,'🌟비대칭 별 각 구하기'],[4,'✡육각별(360°) 비교']],
             eqHTML: p2 === 4
               ? `<span class="tag-blue">⭐ 오각별(☆) 5끝각 합 = 180°</span> vs <span class="tag-rose">✡ 육각별(삼각형 2개) 6끝각 합 = 360°!</span>`
               : `<span class="tag-blue">∠a(${a}°)</span> + <span class="tag-emerald">왼쪽 외각(∠b+∠d=${sumBD}°)</span> + <span class="tag-rose">오른쪽 외각(∠c+∠e=${sumCE}°)</span> = <span class="tag-blue">180°!</span>`,
             q: p2 === 4
-              ? `한붓그리기 <strong>오각별(☆)의 다섯 끝각의 합</strong>과, 삼각형 2개가 겹쳐진 <strong>육각별(✡)의 여섯 끝각의 합</strong>을 바르게 짝지은 것은?`
+              ? `한 번에 이어 그린 <strong>오각별(☆)의 다섯 끝각의 합</strong>과, 삼각형 2개가 겹쳐진 <strong>육각별(✡)의 여섯 끝각의 합</strong>을 바르게 짝지은 것은?`
               : `오각별(☆) 도형에서 위쪽 끝각 ${tex(`\\angle a=${a}^\\circ`)}이고 두 끝각의 합이 ${tex(`\\angle b+\\angle d=${sumBD}^\\circ`)}일 때, <strong>나머지 두 끝각의 합 ${tex('\\angle c+\\angle e')}</strong>는?`,
             opts: [
               {
@@ -558,10 +558,10 @@ window.addEventListener('DOMContentLoaded', function () {
                 ok: true,
                 msg: p2 === 4
                   ? `정답! 오각별(☆)은 외각으로 모으면 삼각형 1개(180°)가 되고, 육각별(✡)은 큰 삼각형 2개(180°×2=360°)의 내각 합입니다!`
-                  : `정답! 다섯 끝각을 외각(또는 나비넥타이 보조선)으로 한 삼각형에 모으면 총합이 항상 180°이므로 180°-(${a}°+${sumBD}°) = ${sumCE}°입니다!`
+                  : `정답! 다섯 끝각을 외각(또는 보조선)으로 한 삼각형에 모으면 총합이 항상 180°이므로 180°-(${a}°+${sumBD}°) = ${sumCE}°입니다!`
               },
               { t: p2 === 4 ? `② 오각별 360°, 육각별 540°` : `② ∠c+∠e = ${360 - a - sumBD}° (총합 360°)`, ok: false, msg: `오각별 다섯 끝각의 합은 360°가 아니라 언제나 삼각형 1개의 내각 합인 180°입니다!` },
-              { t: `③ 정오각별이 아니면 합이 변한다`, ok: false, msg: `별이 비대칭으로 찌그러져 있어도 외각 성질은 항상 성립하므로 합은 무조건 180°입니다!` }
+              { t: `③ 정오각별이 아니면 합이 변한다`, ok: false, msg: `별이 비대칭으로 찌그러져 있어도 외각 성질은 항상 성립하므로 합은 항상 180°입니다!` }
             ],
             ans: p2 === 4 ? `오각별(☆) = <span class="tag-blue">180°</span>, 육각별(✡) = <span class="tag-rose">360°</span>` : `5끝각 총합 = 180° ⟹ <span class="tag-rose">∠c+∠e = ${sumCE}°</span>`,
             stats: [
@@ -570,8 +570,8 @@ window.addEventListener('DOMContentLoaded', function () {
               `오른쪽 외각 합 (∠c+∠e) = ${sumCE}°`,
               `다섯 끝각 총합 = ${a}+${sumBD}+${sumCE} = 180°`
             ],
-            std: `• <strong>[해법 1: 삼각형 외각 2번 쓰기]</strong> 위쪽 작은 삼각형의 왼쪽 밑각(외각) = ${tex('\\angle b+\\angle d')}, 오른쪽 밑각(외각) = ${tex('\\angle c+\\angle e')}이므로 세 내각의 합 = 180°!<br/>• <strong>[해법 2: 나비넥타이 보조선]</strong> 아래쪽 두 끝점 C, D를 선분으로 이으면 나비넥타이 공식에 의해 위쪽 두 끝각 합 = 아래쪽 보조선 안쪽 두 각의 합이 되어 큰 삼각형 1개(180°)로 합쳐집니다!`,
-            fast: `• <strong>별모양 시험 서술형 빈칸 2가지(외각 이사법 vs 나비 보조선법)</strong>를 우측 버튼 [해법①]과 [해법②]로 번갈아 눌러 완벽히 익히세요!`
+            std: `• <strong>[방법 1: 삼각형 외각 2번 쓰기]</strong> 위쪽 작은 삼각형의 왼쪽 밑각(외각) = ${tex('\\angle b+\\angle d')}, 오른쪽 밑각(외각) = ${tex('\\angle c+\\angle e')}이므로 세 내각의 합 = 180°!<br/>• <strong>[방법 2: 보조선 긋기]</strong> 아래쪽 두 끝점 C, D를 선분으로 이으면 X자로 교차하는 도형의 성질(왼쪽 두 각의 합 = 오른쪽 두 각의 합)에 의해 위쪽 두 끝각 합 = 아래쪽 보조선 안쪽 두 각의 합이 되어 큰 삼각형 1개(180°)로 합쳐집니다!`,
+            fast: `• <strong>별 모양의 각을 구하는 두 가지 방법(외각의 성질 이용, 보조선으로 X자 도형 만들기)</strong>을 [방법① 외각 2번 이용] 버튼과 [방법② 보조선 긋기] 버튼으로 번갈아 눌러 비교해 보세요!`
           };
         }
 
@@ -590,7 +590,7 @@ window.addEventListener('DOMContentLoaded', function () {
             eqHTML: `<span class="tag-blue">① 내+외 = ${ans1}°</span> · <span class="tag-emerald">② 내+내 = 90°+${halfA}° = ${ans2}°</span> · <span class="tag-rose">③ 외+외 = 90°-${halfA}° = ${ans3}°</span>`,
             q: `삼각형 ABC에서 ${tex(`\\angle A=${angA}^\\circ`)}일 때, 현재 선택된 <strong>[${titles[p2]}]</strong>에서 두 이등분선이 이루는 각 ${tex('\\angle x')}의 크기는?`,
             opts: [
-              { t: `① ∠x = ${curAns}°`, ok: true, msg: `정답! ●과 × 기호 방정식을 세워 양변을 2로 나누면 ${titles[p2]} 공식에 의해 ∠x = ${curAns}°입니다!` },
+              { t: `① ∠x = ${curAns}°`, ok: true, msg: `정답! ●과 × 기호로 식을 세워 양변을 2로 나누면 ${titles[p2]}에서 ∠x = ${curAns}°입니다!` },
               { t: `② ∠x = ${p2===1?ans2:ans1}°`, ok: false, msg: `내+외(${ans1}°), 내+내(${ans2}°), 외+외(${ans3}°) 중 현재 선택된 유형(${p2}번)을 확인하세요!` },
               { t: `③ ∠x = ${angA}°`, ok: false, msg: `각을 이등분했으므로 반드시 절반인 ½∠A = ${halfA}°가 들어갑니다!` }
             ],
@@ -602,13 +602,13 @@ window.addEventListener('DOMContentLoaded', function () {
               `③ 외각+외각 교각 = ${ans3}°`
             ],
             std: `• [① 내+외] 큰 삼각형 외각 ${tex('2\\times = \\angle A + 2\\bullet \\implies \\times - \\bullet = \\dfrac{1}{2}\\angle A')}. 작은 삼각형 외각 ${tex('\\times = \\angle x + \\bullet \\implies \\angle x = \\dfrac{1}{2}\\angle A')}.`,
-            fast: `• <strong>3형제 1초 구별</strong>: 옆으로 나란히(내+외) = <strong>½∠A</strong> / 안쪽에서 둔각(내+내) = <strong>90°+½∠A</strong> / 바깥 멀리 예각(외+외) = <strong>90°-½∠A</strong>!`
+            fast: `• <strong>이등분선이 이루는 각의 세 경우</strong>: 내각과 외각의 이등분선이 만나면(내+외) <strong>½∠A</strong> / 두 내각의 이등분선이 만나면(내+내, 둔각) <strong>90°+½∠A</strong> / 두 외각의 이등분선이 만나면(외+외, 예각) <strong>90°-½∠A</strong>!`
           };
         } else {
           // 정오각형 대각선 교각 (이등변삼각형 + 삼각형의 외각 활용!)
           return {
             badge: '4-D · 정오각형 속 두 대각선이 이루는 교각 (이등변삼각형 + 외각 활용!)',
-            actionTxt: '🎬 이등변·외각 점등',
+            actionTxt: '🎬 이등변삼각형·외각 표시',
             g1Label: '구하는 각 위치', g1Btns: [[6,'예각(72°)'],[8,'둔각(108°)'],[9,'밑각(36°)'],[10,'한 내각(108°)'],[12,'전체 보기']],
             g2Label: '3종류 & 대각선 교각 선택', g2Btns: [[1,'①내+외(½A)'],[2,'②내+내(90+½A)'],[3,'③외+외(90-½A)'],[4,'💠정오각 대각선교각']],
             eqHTML: `<span class="tag-blue">정오각형 한 내각 108°</span> ➔ <span class="tag-emerald">이등변 밑각 36°</span> ➔ <span class="tag-rose">대각선 교각(외각!) = 36°+36° = 72° (둔각 108°)</span>`,
@@ -620,8 +620,8 @@ window.addEventListener('DOMContentLoaded', function () {
             ],
             ans: `밑각 <span class="tag-blue">36°</span>, 예각 교각 <span class="tag-emerald">72°</span>, 둔각 교각 <span class="tag-rose">108°</span>`,
             stats: [`정오각형 한 내각 = 108°`, `ΔABC 양 밑각 = 36°, 36°`, `예각 교각 ∠APB = 72°`, `둔각 교각 ∠BPC = 108°`],
-            std: `• ${tex('\\overline{AB}=\\overline{BC}')}인 이등변삼각형에서 ${tex('\\angle BAC = \\angle BCA = (180^\\circ-108^\\circ)\\div 2 = 36^\\circ')}이고,外각 성질로 교각을 구합니다.`,
-            fast: `• <strong>정오각형 황금 각도 3형제(36° · 72° · 108°)</strong>: 뾰족한 각은 무조건 <strong>36°</strong>, 중간 예각은 <strong>72°</strong>, 넓은 둔각은 무조건 <strong>108°</strong>입니다!`
+            std: `• ${tex('\\overline{AB}=\\overline{BC}')}인 이등변삼각형에서 ${tex('\\angle BAC = \\angle BCA = (180^\\circ-108^\\circ)\\div 2 = 36^\\circ')}이고, 외각의 성질로 교각을 구합니다.`,
+            fast: `• <strong>정오각형의 두 대각선이 만드는 각(36° · 72° · 108°)</strong>: 가장 작은 각은 <strong>36°</strong>, 두 대각선이 이루는 예각은 <strong>72°</strong>, 둔각은 <strong>108°</strong>입니다!`
           };
         }
       }
@@ -895,7 +895,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ctx.save();
 
       // =======================================================================
-      // [탭 1 렌더링: 넓이 원리·바깥 액자]
+      // [탭 1 렌더링: 넓이 원리·바깥 직사각형]
       // =======================================================================
       if (m === 1) {
         if (sub === 'triAlt') {
@@ -921,7 +921,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
             drawSmartLabel(pB.x, pB.y, cx, cy, 'B'); drawSmartLabel(pC.x, pC.y, cx, cy, 'C');
             drawSmartLabel(pH.x, pH.y + 8, pH.x, pH.y - 20, 'H(수선의 발)', '#34d399', 16);
-            registerDragHandle('A', pA.x, pA.y, '꼭짓점 A 드래그', (nx) => {
+            registerDragHandle('A', pA.x, pA.y, '꼭짓점 A 끌기', (nx) => {
               state.dragXRatio = Math.max(0.05, Math.min(0.95, 0.35 + (nx - cx - t * aPx * 0.65) / (aPx * 2.0) /* [2.0 수정] 이동 진행도만큼 어긋나던 것 */));
             });
           } else {
@@ -1066,8 +1066,8 @@ window.addEventListener('DOMContentLoaded', function () {
             ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
             ctx.fillStyle = 'rgba(56, 189, 248, 0.20)'; ctx.fill();
             ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2.5; ctx.stroke();
-            registerDragHandle('A', pA.x, pA.y, '꼭짓점 A 드래그', (nx) => { state.dragXRatio = Math.max(0.1, Math.min(0.9, 0.5 + (nx - cx) / 280 - (t - 0.3) * 0.6 /* [2.0 수정] 이동 진행도만큼 어긋나던 것 */)); });
-            drawAntTape(rect, [pA, pB, pC], ['옆변 AB', `밑변 BC(${p1})`, '옆변 CA'], ['#fb7185', '#38bdf8', '#34d399'], `넓이는 ${(p1*6)/2}cm² 불변, 둘레는 변화!`);
+            registerDragHandle('A', pA.x, pA.y, '꼭짓점 A 끌기', (nx) => { state.dragXRatio = Math.max(0.1, Math.min(0.9, 0.5 + (nx - cx) / 280 - (t - 0.3) * 0.6 /* [2.0 수정] 이동 진행도만큼 어긋나던 것 */)); });
+            drawAntTape(rect, [pA, pB, pC], ['옆변 AB', `밑변 BC(${p1})`, '옆변 CA'], ['#fb7185', '#38bdf8', '#34d399'], `넓이는 ${(p1*6)/2}cm²로 그대로, 둘레는 변함!`);
           } else {
             const pB = { x: cx - aPx / 2, y: yBot }, pC = { x: cx + aPx / 2, y: yBot };
             const pA = { x: cx - aPx / 6, y: yTop }, pD = { x: cx + aPx / 6, y: yTop };
@@ -1491,7 +1491,7 @@ window.addEventListener('DOMContentLoaded', function () {
               ctx.fillStyle = 'rgba(52, 211, 153, 0.22)'; ctx.fill();
               ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.5; ctx.setLineDash([6, 4]);
               ctx.beginPath(); ctx.moveTo(pts[3].x, pts[3].y); ctx.lineTo(pts[2].x, pts[2].y); ctx.stroke(); ctx.setLineDash([]);
-              drawSmartLabel(cx, (pts[3].y + pts[2].y) / 2 + 18, cx, cy, '🎀 나비넥타이 보조선 연결 ➔ 큰 삼각형 1개(180°) 완성!', '#fb7185', 10);
+              drawSmartLabel(cx, (pts[3].y + pts[2].y) / 2 + 18, cx, cy, '🎀 보조선 연결 ➔ 큰 삼각형 1개(180°) 완성!', '#fb7185', 10);
             } else {
               // 해법 ①: 위쪽 작은 삼각형 ΔAFG로 외각 2개 이사!
               ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); ctx.lineTo(pF.x, pF.y); ctx.lineTo(pG.x, pG.y); ctx.closePath();
@@ -1608,17 +1608,17 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ======================================================================
      2.0 셸 연결 (새로 작성한 부분)
      ====================================================================== */
-  const TABS = ['넓이 원리·바깥 액자', '평행선 넓이·산책로·둘레', '대각선(n-3)·내각·외각 360°', '별모양·복잡한 외각 마스터'];
-  const SHORT = ['넓이·액자', '평행선·산책로', '대각선·내각·외각', '별모양·외각'];
+  const TABS = ['넓이 원리·바깥 직사각형', '평행선 넓이·산책로·둘레', '대각선(n-3)·내각·외각 360°', '별 모양·복잡한 외각'];
+  const SHORT = ['넓이·바깥 직사각형', '평행선·산책로', '대각선·내각·외각', '별 모양·외각'];
   const QUESTIONS = [
     '삼각형·평행사변형·사다리꼴·마름모는 자르고 옮겨도 넓이가 그대로일까? 어떤 높이와 밑변을 잡아야 할까?',
     '평행선 사이에서 꼭짓점을 옮기거나 길을 내도 넓이가 변하지 않는 까닭은? 그때 둘레는 어떻게 달라질까?',
     'n각형의 한 꼭짓점·내부의 점에서 선을 그어 내각의 합과 외각의 합을 어떻게 구할까?',
-    '별모양처럼 얽힌 도형의 각은 외각의 성질과 보조선으로 어떻게 풀 수 있을까?'
+    '별 모양처럼 얽힌 도형의 각은 외각의 성질과 보조선으로 어떻게 풀 수 있을까?'
   ];
   const STEPS = [
     '직각(∟)·평행(≫)·같은 길이(||) 기호를 찾아 표시합니다',
-    '마법 보조선을 긋고 조각을 옮겨 봅니다',
+    '보조선을 긋고 조각을 옮겨 봅니다',
     '꼭짓점 이름과 공식을 붙여 식을 세웁니다'
   ];
   const ANIM_CHIPS = [[0, '원래대로 0%'], [0.5, '중간 50%'], [1, '완성 100%']];
@@ -1716,10 +1716,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function hintOf(s, m, id) {
     const p2 = s.p2;
-    if ((id === 'triAlt' && p2 !== 2) || (id === 'railWing' && p2 >= 3)) return '후광이 있는 <b>꼭짓점 A</b>를 좌우로 끌어 보세요. 밑변과 높이가 그대로이면 넓이도 그대로입니다.';
-    if (id === 'inPointO') return '후광이 있는 <b>점 O</b>를 다각형 안에서 끌어 보세요. O를 어디에 두어도 삼각형은 변의 수만큼 생깁니다.';
-    if (usesAnim(m, id, p2)) return '조절 막대나 <b>실행 버튼</b>으로 조각을 옮기고 합쳐 보세요. 위의 버튼으로 값과 유형을 바꿀 수 있습니다.';
-    return '위의 버튼으로 값과 유형을 바꾸면서 그림과 식이 어떻게 달라지는지 비교해 보세요.';
+    if ((id === 'triAlt' && p2 !== 2) || (id === 'railWing' && p2 >= 3)) return '빛나는 표시가 있는 <b>꼭짓점 A</b>를 좌우로 끌어 보세요. 밑변과 높이가 그대로이면 넓이도 그대로입니다.';
+    if (id === 'inPointO') return '빛나는 표시가 있는 <b>점 O</b>를 다각형 안에서 끌어 보세요. O를 어디에 두어도 삼각형은 변의 수만큼 생깁니다.';
+    if (usesAnim(m, id, p2)) return '조절 막대나 <b>실행 버튼</b>으로 조각을 옮기고 합쳐 보세요. 값 버튼과 유형 버튼으로 값과 유형을 바꿀 수 있습니다.';
+    return '값 버튼과 유형 버튼으로 값과 유형을 바꾸면서 그림과 식이 어떻게 달라지는지 비교해 보세요.';
   }
 
   function sceneOf(m, it) {
@@ -1761,8 +1761,8 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         if (usesAnim(m, id, s.p2) && id !== 'ext360') ANIM_CHIPS.forEach(([v, l]) => out.push({ group: '조각 이동·변형', label: l, set: { anim: v }, ms: 600, on: (st) => Math.abs(st.anim - v) < 0.01 }));
         if (hasLens(m, id, s.p2)) {
-          out.push({ group: '관찰 렌즈', label: '전체 보기', apply: (st) => { st.lens = 'all'; }, on: (st) => st.lens === 'all' });
-          out.push({ group: '관찰 렌즈', label: '마법 보조선', apply: (st, lab) => { st.lens = 'aux'; lab.tween({ anim: 1 }, 700); }, on: (st) => st.lens === 'aux' });
+          out.push({ group: '관찰 방식', label: '전체 보기', apply: (st) => { st.lens = 'all'; }, on: (st) => st.lens === 'all' });
+          out.push({ group: '관찰 방식', label: '보조선', apply: (st, lab) => { st.lens = 'aux'; lab.tween({ anim: 1 }, 700); }, on: (st) => st.lens === 'aux' });
         }
         if (hasTape(m, id, s.p2)) {
           out.push({ group: '둘레 줄자', label: '켜기', apply: (st) => { st.tape = true; }, on: (st) => !!st.tape });
@@ -1785,15 +1785,15 @@ window.addEventListener('DOMContentLoaded', function () {
         };
       },
       problem: {
-        tag: '핵심 기출 유형',
+        tag: '핵심 문제 유형',
         text: (s) => problemHTML(s, m, id),
         answer: (s) => specOf(s, m, id).ans,
         // 원본 snapToProblem: p1 = 8 + 이동 100%. [2.0 수정] 8이 칩에 없는 장면은 가장 가까운 유효한 칩 값으로
         snap: (s) => { s.p1 = validP1(s, m, id, 8); s.quiz = null; return { anim: usesAnim(m, id, s.p2) ? 1 : s.anim }; }
       },
       solution: {
-        standardTitle: '정석 유도 & 오답 함정 주의', standardTag: '교과서 3분 정석',
-        quickTitle: '보조선 · 외각 이사 · 암산 공식', quickTag: '10초 컷 실전 비기',
+        standardTitle: '정석 유도 & 오답 함정 주의', standardTag: '교과서 풀이',
+        quickTitle: '보조선 · 외각 옮기기 · 간단한 계산', quickTag: '10초 컷 실전 비기',
         standard: (s) => ({ steps: specOf(s, m, id).std }),
         quick: (s) => ({ steps: specOf(s, m, id).fast })
       },
