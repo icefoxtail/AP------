@@ -769,7 +769,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "삼각형 밑면은 변이 6, 8, 10 cm인 직각삼각형이므로 넓이는 24 cm², 둘레는 24 cm이다.\n삼각기둥의 높이가 10 cm이므로 겉넓이는 2×24+24×10=288 cm²이다.\n이는 사각기둥 겉넓이의 절반이므로 사각기둥 겉넓이는 576 cm²이다.\n\n사다리꼴 밑면의 넓이는 (10+2)×6÷2=36 cm², 둘레는 10+2+6+10=28 cm이다.\n사각기둥의 높이를 h라 하면 2×36+28h=576이므로 h=18 cm이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q14-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q14-solution-v2.svg",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -785,7 +785,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImageAlt": "해설 그림: 밑면이 변 6, 8, 10 cm인 직각삼각형이고 높이 10 cm인 삼각기둥과, 평행한 변 10 cm·2 cm에 높이 6 cm, 빗변 10 cm인 사다리꼴을 밑면으로 하고 기둥의 높이가 h인 사각기둥을 나란히 보여 준다.",
+    "solutionImageCaption": "두 기둥의 밑면 변의 길이와 기둥의 높이를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,

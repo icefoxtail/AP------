@@ -561,9 +561,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "course": "중2 수학",
-    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 원뿔의 꼭짓점에서 밑면의 중심까지 점선 수선을 긋고 그 높이를 5x로 표시한 그림이다. 위에 높이 5x, 부피 15x²y²가 적혀 있고 밑면의 크기는 임의의 비율로 그렸다.",
-    "solutionImageCaption": "높이가 5x이고 부피가 15x²y²인 원뿔이며, 밑면의 크기는 임의의 비율로 그렸다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 높이가 5x인 원뿔을 그린 그림이다. 꼭짓점에서 밑면의 중심까지 점선으로 높이 5x를 나타내고 그 발에 직각 표시가 있으며, 밑면은 연하게 색칠하고 S라고 적었다. 위에 높이 5x, 부피 15x²y²가 적혀 있고 밑면의 크기는 임의의 비율로 그렸다.",
+    "solutionImageCaption": "높이가 5x이고 부피가 15x²y²인 원뿔이다. 색칠한 밑면의 넓이 S를 구한다. 밑면의 크기는 임의의 비율로 그렸다.",
     "solutionImageSize": "medium"
   },
   {

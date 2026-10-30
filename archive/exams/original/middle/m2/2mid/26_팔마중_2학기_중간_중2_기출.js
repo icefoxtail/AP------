@@ -1059,9 +1059,9 @@ window.questionBank = [
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q20.png",
     "imageStatus": "present",
     "sourceCorrection": "원본 인쇄 발문은 ‘물이 채워진 부분과 빈 부분의 비’를 묻지만 정답 보기는 역순(빈 부분:물이 채워진 부분)이다. 원본 위 손글씨가 순서 변경을 표시하고 있어 학생에게 제공하는 발문을 빈 부분:물이 채워진 부분으로 바로잡음.",
-    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 원뿔 모양 그릇의 세로 단면(이등변삼각형)을 그린 그림이다. 꼭짓점 T에서 모선 위 수면의 점 D까지 6 cm, D에서 밑 끝 B까지 4 cm로 따로 표시했고, 수면 아래 물이 채워진 부분은 색칠하고 '물'이라 적었으며 수면 위 빈 부분(작은 삼각형)은 색칠하지 않았다. 모선의 길이가 6, 6+4=10이므로 빈 부분과 전체 원뿔의 닮음비는 3 : 5이다.",
-    "solutionImageCaption": "원뿔 그릇의 세로 단면이다. 빈 부분(작은 원뿔)과 전체 원뿔은 닮음이고 모선의 길이가 6, 6+4=10이므로 닮음비는 3 : 5이다.",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원뿔 모양의 그릇에 물이 채워진 모습을 그린 그림이다. 꼭짓점 T에서 밑면의 중심 A까지 높이를 긋고, 수면 원의 중심 C에서 모선 위의 점 D까지, A에서 밑면의 끝 B까지 선분을 그었다. 모선의 꼭짓점에서 D까지는 6cm, D에서 B까지는 4cm로 표시했고 물이 채워진 아래 부분은 색칠했다.",
+    "solutionImageCaption": "원뿔 그릇의 물이 없는 위쪽 작은 원뿔은 전체 원뿔과 닮음이고, 모선의 길이는 TD=6cm, TB=TD+DB=6+4=10cm이다.",
     "solutionImageSize": "medium"
   },
   {
