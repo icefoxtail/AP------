@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>사차함수 비율관계 · AP Math 실험실</title>
-<meta name="description" content="미적분Ⅰ 사차함수 비율관계: 삼중근 3:1, 대칭 W형 1:√2, 넓이 1/20과 1/30, f(x)↔f'(x) 넓이 동기화, |f(x)-k| 미분가능성을 직접 조작하며 탐구합니다.">
+<meta name="description" content="미적분Ⅰ 사차함수 비율관계: 삼중근 3:1, 좌우 대칭인 사차함수의 1:√2, 접선과의 넓이 공식(1/20, 1/30), f(x)와 f′(x)의 넓이 비교, |f(x)−k|의 미분가능성을 직접 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -104,76 +104,76 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 2. 문제·풀이 데이터 (원본 examData 그대로) ---------- */
     const examData = {
       1: {
-        badge: "MODE 1 · 삼중근 사차함수의 3 : 1 비율과 변곡접선",
-        hint: "초록 점 <span class='text-emerald-300 font-bold'>극소 B(β)</span>를 드래그해 보세요! 슬라이더 <span class='text-amber-300 font-bold'>λ를 0보다 크게</span> 움직이면 삼중근 조건이 깨지며 3:1 박스가 자동 비활성화됩니다.",
+        badge: "장면 1 · 삼중근을 갖는 사차함수의 3 : 1 비율과 삼중근인 접점에서의 접선",
+        hint: "초록 점 <span class='text-emerald-300 font-bold'>극소 B(β)</span>를 끌어 보세요! 조절 막대의 <span class='text-amber-300 font-bold'>λ를 0보다 크게</span> 움직이면 삼중근 조건이 깨지며 3 : 1 비율을 보여 주는 직사각형이 사라집니다.",
         tag: "수능·평가원 22번 최빈출 1순위 킬러 비율",
         targetTime: "목표 시간: 5초",
-        question: () => `사차함수 ${tex('f(x) = \\dfrac{1}{4}x^3(x - 4) + 2')} 의 그래프가 직선 ${tex('y = 2')} 와 접하는 변곡접점을 ${tex('A(0, 2)')}, 다시 만나는 교점을 ${tex('Q(4, 2)')}라 하자. 함수 ${tex('f(x)')}가 극소가 되는 점 ${tex('B')}의 ${tex('x')}좌표 ${tex('\\beta')}와 극솟값 ${tex('f(\\beta)')}를 구하시오.`,
+        question: () => `사차함수 ${tex('f(x) = \\dfrac{1}{4}x^3(x - 4) + 2')} 의 그래프가 직선 ${tex('y = 2')} 와 ${tex('x = 0')} 에서 삼중근으로 접하는 점을 ${tex('A(0, 2)')}, 다시 만나는 교점을 ${tex('Q(4, 2)')}라 하자. 함수 ${tex('f(x)')}가 극소가 되는 점 ${tex('B')}의 ${tex('x')}좌표 ${tex('\\beta')}와 극솟값 ${tex('f(\\beta)')}를 구하시오.`,
         answerBadge: () => `${tex('\\beta = 3')}, 극솟값 ${tex('= -\\dfrac{19}{4} \\; (-4.75)')}`,
         snap: { a: 0.25, alpha: 0.0, spanL: 3.0, lambda: 0.0, y0: 2.0, kLine: 2.0, dualView: false },
         steps: [
-          "변곡접점 A(α) 수평 접선 및 다시 만나는 교점 Q(q) 작도",
-          "3 : 1 내분 비율 격자 박스 및 등간격 4분할 수직 가이드",
-          "극솟값 깊이 Δy = 27|a|h⁴ 및 제2변곡점 I₂(2:1 내분) 표시"
+          "1단계 · 삼중근인 접점 A(α)에서의 수평인 접선과, 곡선과 다시 만나는 교점 Q(q)를 그립니다.",
+          "2단계 · A, 극소점 B, Q의 x좌표 사이의 간격이 3 : 1임을 직사각형과 4등분한 세로선으로 확인합니다.",
+          "3단계 · 극솟값의 깊이 Δy = 27|a|h⁴ 와, 선분 AB를 2 : 1로 내분하는 점 I₂를 표시합니다."
         ],
         textbook: () => ({
           steps: `① 식을 전개하여 미분: ${tex('f(x) = \\dfrac{1}{4}x^4 - x^3 + 2')}<br/>
 ② 도함수 ${tex("f'(x) = x^3 - 3x^2 = x^2(x - 3) = 0")} 방정식 풀이<br/>
-③ ${tex('x = 0')} 에서 중근(변곡점), ${tex('x = 3')} 에서 부호가 ${tex('(-)\\to(+)')}로 바뀌므로 극소점 ${tex('\\beta = 3')}<br/>
+③ ${tex('x = 0')} 은 ${tex("f'(x)=0")} 의 중근, ${tex('x = 3')} 에서 부호가 ${tex('(-)\\to(+)')}로 바뀌므로 극소점 ${tex('\\beta = 3')}<br/>
 ④ ${tex('x=3')}을 대입하면 ${tex('f(3)=\\dfrac{27}{4}(3-4)+2=-\\dfrac{19}{4}')}이다. 도함수는 ${tex('x<3')}에서 ${tex('x=0')}을 제외하면 음수이고, ${tex('x>3')}에서 양수다. ${tex('x=0')}에서는 도함수가 0이지만 부호가 바뀌지 않으므로 극점이 아니며, ${tex('x=3')}이 극소점이다.`,
-          warning: "⚠️ 식이 (x-α)³(x-q) 꼴로 주어졌는데 이를 다시 전개해서 미분하고 인수분해하면 시간을 크게 낭비합니다!"
+          warning: "⚠️ 식이 (x−α)³(x−q) 꼴로 주어졌는데 이를 다시 전개하여 미분하고 인수분해하면 계산이 길어집니다. 아래 빠른 풀이를 함께 보세요."
         }),
         shortcut: () => ({
-          steps: `① 이 문항의 형태는 ${tex('f(x)=a(x-\\alpha)^3(x-q)+c')}이다. 미분하면 ${tex('f\'(x)=a(x-\\alpha)^2(4x-\\alpha-3q)')}이므로 변곡접점 이외의 극점은 ${tex('x=(\\alpha+3q)/4')}에 있다. 여기서는 ${tex('a>0')}라 극소점이다.<br/>
-② 따라서 미분 없이 1초 만에 극소점 <strong class="text-amber-300">${tex('\\beta = 3')}</strong>!<br/>
-③ 한 칸 간격 ${tex('h = 1')} 이므로 극솟값 깊이 <strong class="text-sky-300">${tex('\\Delta y = 27|a|h^4 = \\dfrac{27}{4} = 6.75')}</strong>!<br/>
-&nbsp;&nbsp;따라서 극솟값은 ${tex('2 - 6.75 = -4.75 \\; (-19/4)')} 즉시 도출!`,
-          highlight: "💡 삼중근 사차함수는 무조건 【 변곡접점 : 극소점 : 교점 = 3 : 1 】 (제2변곡점은 2 : 1) 비율 박스로 5초 컷 하세요!"
+          steps: `① 이 문항의 형태는 ${tex('f(x)=a(x-\\alpha)^3(x-q)+c')}이다. 미분하면 ${tex('f\'(x)=a(x-\\alpha)^2(4x-\\alpha-3q)')}이므로 삼중근인 접점 이외의 극점은 ${tex('x=(\\alpha+3q)/4')}에 있다. 여기서는 ${tex('a>0')}라 극소점이다.<br/>
+② 따라서 미분하지 않고도 극소점은 <strong class="text-amber-300">${tex('\\beta = \\dfrac{0 + 3 \\times 4}{4} = 3')}</strong> 이다.<br/>
+③ 한 칸 간격을 ${tex('h = 1')} 이라 하면 극소점과 접선 ${tex('y=2')} 사이의 높이 차는 <strong class="text-sky-300">${tex('\\Delta y = 27|a|h^4 = \\dfrac{27}{4} = 6.75')}</strong> 이다.<br/>
+&nbsp;&nbsp;따라서 극솟값은 ${tex('2 - 6.75 = -4.75 \\; (-19/4)')} 이다.`,
+          highlight: "💡 f(x) = a(x − α)³(x − q) + c 꼴에서 삼중근인 접점의 x좌표 α, 극소점의 x좌표 β, 교점 Q의 x좌표 q 사이에는 (β − α) : (q − β) = 3 : 1 이 성립합니다. 이 비율로 5초 컷 하세요!"
         })
       },
 
       2: {
-        badge: "MODE 2 · 대칭 사차함수(W형)의 1 : √2 비율과 극값 높이차",
-        hint: "대칭 W형(<span class='text-amber-300 font-bold'>λ = 0.5</span>)일 때만 극대 접선 교점이 <span class='text-pink-300 font-bold'>1 : √2 비율</span>을 이룹니다! 가운데 극대점 C를 좌우로 밀어 비대칭이 되면 어떻게 되는지 확인하세요.",
-        tag: "평가원 4점 우함수·대칭 사차함수 필수 공식",
+        badge: "장면 2 · 좌우 대칭인 사차함수의 1 : √2 비율과 극값의 높이 차",
+        hint: "좌우 대칭인 사차함수(<span class='text-amber-300 font-bold'>λ = 0.5</span>)일 때만 극대점의 수평인 접선이 곡선과 다시 만나는 점이 <span class='text-pink-300 font-bold'>1 : √2 비율</span>을 이룹니다! 가운데 극대점 C를 좌우로 밀어 비대칭이 되면 어떻게 되는지 확인하세요.",
+        tag: "좌우 대칭인 사차함수의 극대점·극소점",
         targetTime: "목표 시간: 5초",
         question: () => `최고차항의 계수가 ${tex('\\dfrac{1}{4}')}이고 직선 ${tex('x = 1')}에 대하여 대칭인 사차함수 ${tex('f(x)')}가 ${tex('x = -1, \\; 3')} 에서 극솟값을 갖는다. 극대점 ${tex('C(1, f(1))')}에서의 접선이 곡선과 다시 만나는 두 점의 ${tex('x')}좌표와, 극댓값과 극솟값의 차 ${tex('\\Delta y')}를 구하시오.`,
         answerBadge: () => `교점 ${tex('1 \\pm 2\\sqrt{2}')}, 극값 차 ${tex('\\Delta y = 4')}`,
         // alpha = -1, spanL = 4 => beta = 3, lambda = 0.5 => gamma = 1 (한 칸 h = 2)
         snap: { a: 0.25, alpha: -1.0, spanL: 4.0, lambda: 0.5, y0: -2.0, kLine: 0.0, dualView: false },
         steps: [
-          "대칭축 x = γ 및 두 극소점 A(α), B(β) 이중접선 작도",
-          "극대점 C(γ) 수평 접선 및 1 : √2 비율 격자 가이드",
-          "극댓값-극솟값 높이차 공식 Δy = |a|h⁴ (h = 극대~극소 거리)"
+          "1단계 · 대칭축 x = γ 와 두 극소점 A(α), B(β)에서 접하는 수평선을 그립니다.",
+          "2단계 · 극대점 C(γ)에서의 수평인 접선과 1 : √2 비율을 보여 주는 가이드를 표시합니다.",
+          "3단계 · 극댓값과 극솟값의 높이 차 Δy = |a|h⁴ (h = 극대점과 극소점 사이의 x좌표의 거리)를 확인합니다."
         ],
         textbook: () => ({
           steps: `① 극소점 ${tex('x = -1, 3')} 에서 접하므로 ${tex('f(x) - f(-1) = \\dfrac{1}{4}(x+1)^2(x-3)^2')}<br/>
 ② 대칭축 ${tex('x = 1')} 대입하여 극댓값과 극솟값의 차 계산:<br/>
 &nbsp;&nbsp;${tex('f(1) - f(-1) = \\dfrac{1}{4}(2)^2(-2)^2 = 4')}<br/>
 ③ ${tex('u=x-1')}로 두면 극댓값 접선과의 교점 방정식은 ${tex('\\dfrac14(u^2-4)^2=4')}이다. 이를 풀면 ${tex('u^2=0')} 또는 ${tex('u^2=8')}이다. ${tex('u=0')}은 접점 ${tex('x=1')}을 다시 얻는 중근이므로 제외하고, 새로 만나는 두 점은 ${tex('x=1\\pm2\\sqrt2')}이다.`,
-          warning: "⚠️ 대칭 사차함수에서 극대 접선과의 교점을 구할 때마다 사차방정식을 세워 인수분해하면 시간이 오래 걸립니다!"
+          warning: "⚠️ 극대점에서의 접선과 곡선의 교점을 구할 때마다 사차방정식을 세워 인수분해하면 오래 걸립니다."
         }),
         shortcut: () => ({
-          steps: `① 극대점 ${tex('x = 1')} 에서 극소점 ${tex('x = 3')} 까지의 거리가 <strong class="text-amber-300">${tex('h = 2')}</strong>!<br/>
-② 대칭 사차함수의 <strong>[1 : √2 비율 법칙]</strong>에 의해 극대 접선과 다시 만나는 점까지의 거리는 무조건 <strong class="text-pink-300">${tex('\\sqrt{2}h = 2\\sqrt{2}')}</strong>!<br/>
-&nbsp;&nbsp;따라서 두 교점은 즉시 <strong class="text-amber-300">${tex('1 \\pm 2\\sqrt{2}')}</strong>!<br/>
-③ 극댓값과 극솟값의 높이 차는 공식 <strong class="text-sky-300">${tex('\\Delta y = |a|h^4 = \\dfrac{1}{4} \\times 2^4 = 4')}</strong>!`,
-          highlight: "💡 삼차함수가 【 1 : √3 】이라면, 대칭 사차함수는 무조건 【 1 : √2 & 극값차 |a|h⁴ 】입니다!"
+          steps: `① 극대점 ${tex('x = 1')} 에서 극소점 ${tex('x = 3')} 까지의 거리가 <strong class="text-amber-300">${tex('h = 2')}</strong> 입니다.<br/>
+② 좌우 대칭인 사차함수에서 극대점의 수평인 접선과 곡선이 다시 만나는 점은 극대점에서 <strong class="text-pink-300">${tex('\\sqrt{2}h = 2\\sqrt{2}')}</strong> 만큼 떨어져 있습니다. (${tex('u = x - \\gamma')} 라 하면 ${tex('f(x) - f(\\alpha) = a(u^2-h^2)^2')} 이고, 이 값이 극대점의 높이 ${tex('ah^4')} 와 같아지는 ${tex('u')}는 ${tex('u^2 = 2h^2')} 이기 때문입니다.)<br/>
+&nbsp;&nbsp;따라서 두 교점은 <strong class="text-amber-300">${tex('1 \\pm 2\\sqrt{2}')}</strong> 입니다.<br/>
+③ 극댓값과 극솟값의 높이 차는 <strong class="text-sky-300">${tex('\\Delta y = |a|h^4 = \\dfrac{1}{4} \\times 2^4 = 4')}</strong> 입니다.`,
+          highlight: "💡 좌우 대칭인 사차함수에서 극대점의 수평인 접선이 곡선과 다시 만나는 점은 극대점에서 √2·h 만큼 떨어져 있고, 극댓값과 극솟값의 차는 |a|h⁴ 입니다. (h는 극대점과 극소점 사이의 x좌표의 거리)"
         })
       },
 
       3: {
-        badge: "MODE 3 · 사차함수 2대 넓이 공식 (삼중근 1/20 vs 이중접선 1/30)",
-        hint: "상단 프리셋에서 <span class='text-amber-300 font-bold'>① 삼중근(λ=0)</span>과 <span class='text-sky-300 font-bold'>② 대칭 W형(λ=0.5)</span>을 번갈아 눌러보세요! 1/20 공식과 1/30 공식이 자동 전환됩니다.",
+        badge: "장면 3 · 사차함수와 접선으로 둘러싸인 넓이 (삼중근인 접점에서의 접선 1/20, 두 점에서 접하는 직선 1/30)",
+        hint: "상단 개형 버튼에서 <span class='text-amber-300 font-bold'>① 삼중근(λ=0)</span>과 <span class='text-sky-300 font-bold'>② 좌우 대칭(λ=0.5)</span>을 번갈아 눌러 보세요! 1/20 공식과 1/30 공식이 바뀌어 나타납니다.",
         tag: "평가원 정적분 넓이 킬러 초스피드 공식",
         targetTime: "목표 시간: 5초",
-        question: () => `최고차항의 계수가 ${tex('\\dfrac{1}{4}')}인 대칭 사차함수 ${tex('f(x)')}가 두 극소점 ${tex('A(-1, -2), \\; B(3, -2)')}에서 직선 ${tex('y = -2')}에 동시에 접할 때, 곡선 ${tex('y = f(x)')}와 이중접선 ${tex('y = -2')}로 둘러싸인 부분의 넓이 ${tex('S')}를 구하시오.`,
+        question: () => `최고차항의 계수가 ${tex('\\dfrac{1}{4}')}인 대칭 사차함수 ${tex('f(x)')}가 두 극소점 ${tex('A(-1, -2), \\; B(3, -2)')}에서 직선 ${tex('y = -2')}에 동시에 접할 때, 곡선 ${tex('y = f(x)')}와 직선 ${tex('y = -2')}로 둘러싸인 부분의 넓이 ${tex('S')}를 구하시오.`,
         answerBadge: () => `${tex('S = \\dfrac{128}{15} \\approx 8.53')}`,
         snap: { a: 0.25, alpha: -1.0, spanL: 4.0, lambda: 0.5, y0: -2.0, kLine: 0.0, dualView: false },
         steps: [
-          "접선(삼중근 변곡접선 또는 두 극소점 이중접선) 및 둘러싸인 넓이 색칠",
-          "적분 구간 수평 거리 L = |β - α| 가이드",
-          "사차함수 넓이 공식 (1/20·|a|L⁵ vs 1/30·|a|L⁵) 세로 분수 칠판 판서"
+          "1단계 · 접선(삼중근인 접점에서의 접선, 또는 두 극소점에서 접하는 직선)과 곡선으로 둘러싸인 부분을 색칠합니다.",
+          "2단계 · 적분 구간의 길이 L = |β − α| 를 표시합니다.",
+          "3단계 · 넓이 공식 (|a|/20)·L⁵ (삼중근인 접점)과 (|a|/30)·L⁵ (두 점에서 접하는 직선)을 비교합니다."
         ],
         textbook: () => ({
           steps: `① 피적분함수 작성: ${tex('f(x) - (-2) = \\dfrac{1}{4}(x+1)^2(x-3)^2')}<br/>
@@ -182,70 +182,70 @@ window.addEventListener('DOMContentLoaded', function () {
 &nbsp;&nbsp;${tex('S = \\dfrac{1}{4}\\left[ \\dfrac{1}{5}x^5 - x^4 - \\dfrac{2}{3}x^3 + 6x^2 + 9x \\right]_{-1}^{3}')}<br/>
 ④ 더 간단히 ${tex('u=x-1')}로 치환하면 ${tex('f(x)+2=\\dfrac14(u^2-4)^2')}이고 적분 구간은 ${tex('[-2,2]')}이다.
 &nbsp;&nbsp;${tex('S=\\dfrac14\\int_{-2}^{2}(u^4-8u^2+16)du=\\dfrac14[2(32/5)-8(16/3)+64]=128/15')}이다.`,
-          warning: "⚠️ 사차함수를 전개해서 5차식 부정적분에 위끝·아래끝을 대입하면 계산 실수 확률이 90%에 달합니다!"
+          warning: "⚠️ 사차식을 전개하여 5차식인 부정적분에 위끝·아래끝을 대입하면 계산 실수가 생기기 쉽습니다."
         }),
         shortcut: () => ({
-          steps: `① 두 접점 ${tex('\\alpha = -1, \\; \\beta = 3')} 사이의 간격은 <strong class="text-amber-300">${tex('L = 3 - (-1) = 4')}</strong>!<br/>
-② 이중접선(제곱×제곱)으로 둘러싸인 넓이는 무조건 <strong class="text-pink-300">${tex('S = \\dfrac{|a|}{30}(\\beta - \\alpha)^5')}</strong>!<br/>
-③ ${tex('a = \\dfrac{1}{4}, \\; L = 4')} 대입: <strong class="text-amber-300">${tex('S = \\dfrac{1/4}{30} \\times 4^5 = \\dfrac{256}{30} = \\dfrac{128}{15} \\; (8.533)')}</strong>!<br/>
-&nbsp;&nbsp;(참고: 삼중근 변곡접선 넓이는 <strong class="text-sky-300">${tex('S = \\dfrac{|a|}{20}L^5')}</strong>!)`,
-          highlight: "💡 사차함수 넓이 공식 쌍두마차: 삼중근 접선은 【 |a|/20 · L⁵ 】, 이중접선은 【 |a|/30 · L⁵ 】!"
+          steps: `① 두 접점 ${tex('\\alpha = -1, \\; \\beta = 3')} 사이의 간격은 <strong class="text-amber-300">${tex('L = 3 - (-1) = 4')}</strong> 입니다.<br/>
+② 두 점에서 접하는 직선(곡선과의 차가 ${tex('a(x-\\alpha)^2(x-\\beta)^2')} 꼴)과 곡선으로 둘러싸인 넓이는 <strong class="text-pink-300">${tex('S = \\dfrac{|a|}{30}(\\beta - \\alpha)^5')}</strong> 입니다. (${tex('\\int_{\\alpha}^{\\beta} a(x-\\alpha)^2(x-\\beta)^2\\,dx')} 를 계산하여 얻습니다.)<br/>
+③ ${tex('a = \\dfrac{1}{4}, \\; L = 4')} 를 대입하면 <strong class="text-amber-300">${tex('S = \\dfrac{1/4}{30} \\times 4^5 = \\dfrac{256}{30} = \\dfrac{128}{15} \\; (8.533)')}</strong> 입니다.<br/>
+&nbsp;&nbsp;(참고: 삼중근인 접점에서의 접선과 곡선으로 둘러싸인 넓이는 <strong class="text-sky-300">${tex('S = \\dfrac{|a|}{20}L^5')}</strong> 입니다.)`,
+          highlight: "💡 사차함수와 접선으로 둘러싸인 넓이: 삼중근인 접점에서의 접선은 (|a|/20)·L⁵, 두 점에서 접하는 직선은 (|a|/30)·L⁵ 입니다."
         })
       },
 
       4: {
-        badge: "MODE 4 · 사차 원함수 f(x) ↔ 삼차 도함수 f'(x) 넓이 동기화 (S₁ vs S₂)",
-        hint: "가운데 <span class='text-pink-300 font-bold'>극대점 C(γ)</span>를 좌우로 드래그해 보세요! 하단 삼차 도함수의 두 영역 넓이 <span class='text-sky-300 font-bold'>S₁과 S₂ 중 어느 쪽이 큰지에 따라 두 극솟값의 높낮이</span>가 결정됩니다!",
-        tag: "수능 20번·22번 개형 추론 1순위 원리",
+        badge: "장면 4 · 사차함수 f(x)와 삼차 도함수 f′(x)의 그래프를 위아래로 놓고 넓이 비교하기 (S₁, S₂)",
+        hint: "가운데 <span class='text-pink-300 font-bold'>극대점 C(γ)</span>를 좌우로 끌어 보세요! 아래쪽 삼차 도함수의 두 부분의 넓이 <span class='text-sky-300 font-bold'>S₁과 S₂ 중 어느 쪽이 큰지에 따라 두 극솟값의 높낮이</span>가 결정됩니다!",
+        tag: "도함수의 그래프와 두 극솟값의 비교",
         targetTime: "목표 시간: 5초",
         question: () => `사차함수 ${tex('f(x)')}의 도함수 ${tex("f'(x) = (x+1)(x-0.2)(x-3)")} 에 대하여, ${tex("y = f'(x)")}와 ${tex('x')}축으로 둘러싸인 두 영역의 넓이를 각각 ${tex('S_1, S_2')}라 하자. ${tex('S_1 < S_2')} 일 때 두 극솟값 ${tex('f(-1)')}과 ${tex('f(3)')}의 대소를 비교하시오.`,
         answerBadge: () => `${tex('f(-1) - f(3) = S_2 - S_1 > 0 \\implies f(-1) > f(3)')}`,
         // alpha = -1, spanL = 4 => beta = 3, lambda = 0.3 => gamma = 0.2
         snap: { a: 0.25, alpha: -1.0, spanL: 4.0, lambda: 0.3, y0: 1.0, kLine: 0.0, dualView: true },
         steps: [
-          "상단 사차함수 f(x) 세 극값(α, γ, β) ↔ 하단 삼차 도함수 f'(x) 세 실근 수직 동기화선",
-          "하단 도함수 정적분 넓이 S₁(증가량) vs S₂(감소량) 색칠 비교",
-          "두 극솟값의 높이 차 |f(α) - f(β)| = |S₁ - S₂| 실시간 증명 바"
+          "1단계 · 위쪽 사차함수 f(x)의 세 극점(α, γ, β)과 아래쪽 삼차 도함수 f′(x)의 세 실근을 같은 x좌표에서 세로선으로 잇습니다.",
+          "2단계 · 아래쪽 도함수와 x축 사이의 넓이 S₁(f가 증가한 양)과 S₂(f가 감소한 양)을 색칠하여 비교합니다.",
+          "3단계 · 두 극솟값의 높이 차 |f(α) − f(β)| = |S₁ − S₂| 를 막대로 확인합니다."
         ],
         textbook: () => ({
           steps: `① 도함수 ${tex("f'(x) = (x+1)(x-0.2)(x-3)")} 을 전개:<br/>
 &nbsp;&nbsp;${tex("f'(x) = x^3 - 2.2x^2 - 2.6x + 0.6")}<br/>
-② 원시함수를 정확한 분수로 쓰면 ${tex('F(x)=x^4/4-11x^3/15-13x^2/10+3x/5+C')}이다.<br/>
+② 부정적분을 분수로 쓰면 ${tex('F(x)=x^4/4-11x^3/15-13x^2/10+3x/5+C')}이다.<br/>
 ③ ${tex("f(3)-f(-1)=\\int_{-1}^{1/5}f'(x)dx+\\int_{1/5}^{3}f'(x)dx=S_1-S_2<0")}이므로 <strong class="text-amber-300">${tex('f(-1)>f(3)')}</strong>이다.`,
-          warning: "⚠️ 도함수의 근이 주어졌을 때 부정적분을 구해 대입하면 시간 내에 절대 풀 수 없습니다!"
+          warning: "⚠️ 도함수의 근이 주어졌을 때 부정적분을 구해 대입하면 계산이 매우 길어집니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex('\\alpha = -1, \\; \\gamma = 0.2, \\; \\beta = 3')} 에서 왼쪽 간격은 ${tex('1.2')}, 오른쪽 간격은 ${tex('2.8')}!<br/>
-② 구간의 폭만으로 넓이를 비교할 수는 없다. 이 고정된 도함수의 원시함수로 계산하면 ${tex('S_1=612/625')}와 ${tex('S_2=17836/1875')}이어서 ${tex('S_1<S_2')}이다.<br/>
+          steps: `① ${tex('\\alpha = -1, \\; \\gamma = 0.2, \\; \\beta = 3')} 에서 왼쪽 간격은 ${tex('1.2')}, 오른쪽 간격은 ${tex('2.8')} 입니다.<br/>
+② 구간의 폭만으로 넓이를 비교할 수는 없다. 이 고정된 도함수의 부정적분으로 계산하면 ${tex('S_1=612/625')}와 ${tex('S_2=17836/1875')}이어서 ${tex('S_1<S_2')}이다.<br/>
 ③ ${tex("f(3)-f(-1)=\\int_{-1}^{1/5}f'(x)dx+\\int_{1/5}^{3}f'(x)dx=S_1-S_2<0")}이므로 <strong class="text-amber-300">${tex('f(-1)>f(3)')}</strong>이다.`,
-          highlight: "💡 『사차함수 두 극솟값의 높이 차 = 삼차 도함수 두 날개 넓이의 차 (|S₁ - S₂|)』 — γ가 중점(λ=0.5)일 때만 두 극솟값이 같습니다!"
+          highlight: "💡 사차함수의 두 극솟값의 높이 차 = 삼차 도함수의 그래프와 x축 사이의 두 부분의 넓이의 차 |S₁ − S₂| 입니다. γ가 α, β의 한가운데(λ=0.5)일 때만 두 극솟값이 같습니다."
         })
       },
 
       5: {
-        badge: "MODE 5 · 절댓값 함수 |f(x) - k| 의 미분가능성과 첨점 스캐너",
-        hint: "보라색 수평선 <span class='text-purple-300 font-bold'>y = k</span>를 위아래로 드래그해 보세요! 접어 올린 함수 <span class='text-amber-300 font-bold'>|f(x)-k|가 삼중근 변곡점 높이(k=2)를 지날 때만 첨점이 1개</span>가 됩니다!",
+        badge: "장면 5 · 함수 |f(x) − k| 의 미분가능성 (미분가능하지 않은 점의 개수)",
+        hint: "보라색 수평선 <span class='text-purple-300 font-bold'>y = k</span>를 위아래로 끌어 보세요! 접어 올린 함수 <span class='text-amber-300 font-bold'>|f(x)-k|는 y = k가 삼중근인 접점의 높이(k=2)에 있을 때만 미분가능하지 않은 점이 1개</span>가 됩니다!",
         tag: "수능 22번 최고난도 킬러 절대법칙",
         targetTime: "목표 시간: 3초",
-        question: () => `사차함수 ${tex('f(x) = \\dfrac{1}{4}x^3(x - 4) + 2')} 에 대하여 함수 ${tex('g(x) = |f(x) - k|')} 가 실수 전체의 집합에서 미분가능하지 않은 점의 개수가 오직 ${tex('1')}개가 되도록 하는 상수 ${tex('k')}의 값과 그 미분불가능한 점의 ${tex('x')}좌표를 구하시오.`,
-        answerBadge: () => `${tex('k = 2')}, 미분불가능 점 ${tex('x = 4')} (1개)`,
+        question: () => `사차함수 ${tex('f(x) = \\dfrac{1}{4}x^3(x - 4) + 2')} 에 대하여 함수 ${tex('g(x) = |f(x) - k|')} 가 실수 전체의 집합에서 미분가능하지 않은 점의 개수가 오직 ${tex('1')}개가 되도록 하는 상수 ${tex('k')}의 값과 그 미분가능하지 않은 점의 ${tex('x')}좌표를 구하시오.`,
+        answerBadge: () => `${tex('k = 2')}, 미분가능하지 않은 점 ${tex('x = 4')} (1개)`,
         snap: { a: 0.25, alpha: 0.0, spanL: 3.0, lambda: 0.0, y0: 2.0, kLine: 2.0, dualView: false },
         steps: [
-          "절댓값 접기 기준 수평선 y = k 및 f(x) = k 실근 교점 표시",
-          "접어 올린 그래프 y = |f(x) - k| + k (보라색 네온 곡선) 실시간 작도",
-          "미분가능 접점(기울기 0) vs 미분불가능 뾰족점(첨점, 기울기 ≠ 0) 자동 판별"
+          "1단계 · 접어 올리는 기준인 수평선 y = k 와, f(x) = k 의 실근에 해당하는 교점을 표시합니다.",
+          "2단계 · 접어 올린 그래프 y = |f(x) − k| + k (보라색 곡선)를 그립니다.",
+          "3단계 · 교점에서 기울기가 0이면 미분가능, 기울기가 0이 아니면 그래프가 꺾여 미분가능하지 않음을 판별합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('g(x) = |f(x) - k|')} 가 ${tex('f(x) = k')} 인 교점 ${tex('x = c')} 에서 미분가능하려면<br/>
 &nbsp;&nbsp;우미분계수 ${tex("|f'(c)|")} 와 좌미분계수 ${tex("-|f'(c)|")} 가 같아야 하므로 ${tex("f'(c) = 0")} 이어야 함<br/>
-② 주어진 함수는 ${tex('f(x)-2=\\dfrac14x^3(x-4)')}이다. ${tex('k=2')}에서는 ${tex('x=0')}이 삼중근이고 ${tex('x=4')}가 단순근이다. 삼중근에서는 ${tex('|f(x)-2|')}의 좌우 도함수가 모두 ${tex('0')}이어서 미분가능하지만, 단순근 ${tex('x=4')}에서는 기울기 부호가 뒤집혀 미분불가능하다.<br/>
-③ 극솟값은 ${tex('f(3)=-19/4')}이다. ${tex('k<-19/4')}에서는 교점이 없고, ${tex('k=-19/4')}에서는 극소점의 중근만 있어 첨점이 없으며, ${tex('-19/4<k<2')} 또는 ${tex('k>2')}에서는 서로 다른 두 단순근이 생겨 첨점이 두 개다. 따라서 조건을 만족하는 값은 ${tex('k=2')}뿐이다.`,
-          warning: "⚠️ 수능 22번에서 '|f(x)-k|가 오직 한 점에서만 미분불가능하다'는 조건이 나오면 3초 만에 개형을 특정해야 합니다!"
+② 주어진 함수는 ${tex('f(x)-2=\\dfrac14x^3(x-4)')}이다. ${tex('k=2')}에서는 ${tex('x=0')}이 삼중근이고 ${tex('x=4')}는 중근이 아닌 근이다. 삼중근에서는 ${tex('|f(x)-2|')}의 좌미분계수와 우미분계수가 모두 ${tex('0')}이어서 미분가능하지만, 중근이 아닌 근 ${tex('x=4')}에서는 기울기 부호가 뒤집혀 미분가능하지 않다.<br/>
+③ 극솟값은 ${tex('f(3)=-19/4')}이다. ${tex('k<-19/4')}에서는 교점이 없고, ${tex('k=-19/4')}에서는 극소점의 중근만 있어 미분가능하지 않은 점이 없으며, ${tex('-19/4<k<2')} 또는 ${tex('k>2')}에서는 중근이 아닌 서로 다른 두 근이 생겨 미분가능하지 않은 점이 두 개다. 따라서 조건을 만족하는 값은 ${tex('k=2')}뿐이다.`,
+          warning: "⚠️ '|f(x) − k|가 오직 한 점에서만 미분가능하지 않다'는 조건이 나오면, 수평선 y = k 와 곡선의 교점에서 f′의 값이 0인지를 먼저 확인하여 그래프의 개형을 정합니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex('|f(x) - k|')} 가 교점에서 꺾여 올라갈 때, <strong>단순 실근(${tex("f' \\ne 0")})이면 미분불가능(첨점)</strong>이고 <strong>삼중근(${tex("f' = 0")})이면 접혀 올라가도 미분가능</strong>!<br/>
-② 이 특정 함수에서는 ${tex('k=2')}일 때 ${tex('f(x)-k=\\dfrac14x^3(x-4)')}: 삼중근 ${tex('x=0')}의 절댓값은 미분가능하고 단순근 ${tex('x=4')}에서만 첨점이 생긴다.<br/>
-③ ${tex('f(3)=-19/4')}와 사차함수의 양끝이 위로 향하는 성질을 이용하면 다른 높이에서는 교점이 없거나 단순근이 2개(첨점 2개)다. 그러므로 유일한 값은 ${tex('k=2')}이다.`,
+          steps: `① ${tex('|f(x) - k|')} 에서 ${tex('f(x)=k')} 인 점의 기울기가 <strong>${tex("f' \\ne 0")} 이면(중근이 아닌 근) 접어 올린 그래프가 꺾여 미분가능하지 않고</strong>, <strong>삼중근처럼 ${tex("f' = 0")} 이면 접어 올려도 미분가능</strong>합니다.<br/>
+② 이 특정 함수에서는 ${tex('k=2')}일 때 ${tex('f(x)-k=\\dfrac14x^3(x-4)')}: 삼중근 ${tex('x=0')}의 절댓값은 미분가능하고 중근이 아닌 근 ${tex('x=4')}에서만 미분가능하지 않은 점이 생긴다.<br/>
+③ ${tex('f(3)=-19/4')}와 사차함수의 양끝이 위로 향하는 성질을 이용하면 다른 높이에서는 교점이 없거나 중근이 아닌 근이 2개(미분가능하지 않은 점 2개)다. 그러므로 유일한 값은 ${tex('k=2')}이다.`,
           highlight: "이 결론은 이 문항의 특정 사차함수에 대한 것이다. 일반 사차함수에서는 수평선과의 교점 및 각 근의 중복도를 따로 확인한다."
         })
       }
@@ -381,7 +381,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function solutionOf(m) {
     return {
       standardTitle: '교과서식 정석 풀이 (전개·미분·조립제법·정적분)', standardTag: '3분 소요',
-      quickTitle: '10초 컷 실전 비율·넓이 비기', quickTag: '10초 컷',
+      quickTitle: '10초 컷 · 비율과 넓이 공식', quickTag: '10초 컷',
       standard: examData[m].textbook,
       quick: examData[m].shortcut
     };
@@ -399,16 +399,16 @@ window.addEventListener('DOMContentLoaded', function () {
     if (s[key] > hi) { s[key] = hi; s.animDir = -1; }
   }
   const actionsCommon = () => [
-    { id: 'dual', icon: 'split', label: (s) => (s.dual ? "f(x)·f′(x) 동시 뷰 켜짐" : "f(x)·f′(x) 동시 뷰"), on: (s) => s.dual, run: (s) => { s.dual = !s.dual; } },
-    { id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '자동 실험'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }
+    { id: 'dual', icon: 'split', label: (s) => (s.dual ? "f(x)·f′(x) 함께 보기 켜짐" : "f(x)·f′(x) 함께 보기"), on: (s) => s.dual, run: (s) => { s.dual = !s.dual; } },
+    { id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '자동으로 움직이기'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }
   ];
   // 4대 개형 원클릭 프리셋 (원본 applyQuarticPreset: a와 기준선 k도 처음 값으로 돌려놓습니다)
   const shape = (alpha, spanL, lambda, y0) => ({ a: 0.25, alpha, spanL, lambda, y0, kLine: 2 });
   const presetsCommon = [
-    { group: '4대 개형 프리셋', label: '① 삼중근 3:1형 (λ=0)', color: 'amber', set: shape(0, 3, 0, 2), on: (s) => isLeft(s) },
-    { group: '4대 개형 프리셋', label: '② 대칭 W형 1:√2 (λ=0.5)', color: 'sky', set: shape(-1, 4, 0.5, -2), on: (s) => isSym(s) },
-    { group: '4대 개형 프리셋', label: '③ 비대칭 W형 (λ=0.3)', color: 'rose', set: shape(-1, 4, 0.3, 1), on: (s) => !isLeft(s) && !isRight(s) && !isSym(s) },
-    { group: '4대 개형 프리셋', label: '④ 우측 삼중근 1:3형 (λ=1)', color: 'green', set: shape(0, 3, 1, -4.75), on: (s) => isRight(s) }
+    { group: '그래프의 개형', label: '① 삼중근 3:1 (λ=0)', color: 'amber', set: shape(0, 3, 0, 2), on: (s) => isLeft(s) },
+    { group: '그래프의 개형', label: '② 좌우 대칭 1:√2 (λ=0.5)', color: 'sky', set: shape(-1, 4, 0.5, -2), on: (s) => isSym(s) },
+    { group: '그래프의 개형', label: '③ 좌우 비대칭 (λ=0.3)', color: 'rose', set: shape(-1, 4, 0.3, 1), on: (s) => !isLeft(s) && !isRight(s) && !isSym(s) },
+    { group: '그래프의 개형', label: '④ 오른쪽 삼중근 1:3 (λ=1)', color: 'green', set: shape(0, 3, 1, -4.75), on: (s) => isRight(s) }
   ];
   // 우측 가장자리(도구 막대 왼쪽)에 놓는 y=k 손잡이의 x좌표
   const kHandleX = (b) => b.toW(b.W - (b.panes ? 0 : b.insets.right) - 44, 0).x;
@@ -465,13 +465,13 @@ window.addEventListener('DOMContentLoaded', function () {
       // 모드별 특수 성립 조건 판별
       let status, alert = null;
       if (m === 1 && !left && !right) {
-        status = { tone: 'warn', text: `λ = ${lam} (삼중근 아님 · 3:1 비활성)` };
-        alert = { tone: 'bad', text: "현재 도함수 f′(x)=0이 중근을 갖지 않으므로(λ ≠ 0, 1) 3:1 비율 박스가 비활성화되었습니다!" };
+        status = { tone: 'warn', text: `λ = ${lam} (삼중근 아님 · 3:1 비율이 성립하지 않음)` };
+        alert = { tone: 'bad', text: "현재 f′(x)=0이 중근을 갖지 않으므로(λ ≠ 0, 1) 3 : 1 비율이 성립하지 않습니다!" };
       } else if (m === 2 && !sym) {
-        status = { tone: 'warn', text: `λ = ${lam} ≠ 0.5 (비대칭 · 1:√2 비활성)` };
-        alert = { tone: 'bad', text: '현재 비대칭 사차함수(λ ≠ 0.5)이므로 수평 극대 접선의 1:√2 대칭 비율이 비활성화되었습니다!' };
+        status = { tone: 'warn', text: `λ = ${lam} ≠ 0.5 (비대칭 · 1:√2 비율이 성립하지 않음)` };
+        alert = { tone: 'bad', text: '현재 좌우 비대칭인 사차함수(λ ≠ 0.5)이므로 극대점의 수평인 접선에서 1 : √2 비율이 성립하지 않습니다!' };
       } else {
-        status = { tone: 'ok', text: left || right ? '삼중근 개형 (3 : 1 비율 & 1/20 넓이 활성)' : sym ? '대칭 W형 개형 (1 : √2 비율 & 1/30 넓이 활성)' : "일반 비대칭 W형 (도함수 S₁ ≠ S₂ 비교 활성)" };
+        status = { tone: 'ok', text: left || right ? '삼중근 개형 (3 : 1 비율, 넓이 |a|/20·L⁵)' : sym ? '좌우 대칭 개형 (1 : √2 비율, 넓이 |a|/30·L⁵)' : "좌우 비대칭 개형 (도함수의 S₁, S₂ 비교)" };
       }
       let v2, v4;
       if (left || right) {
@@ -482,13 +482,13 @@ window.addEventListener('DOMContentLoaded', function () {
         v2 = `1 : √2 성립 (√2h=${fmt(Math.sqrt(2) * (s.spanL / 2))})`;
         v4 = `S = |a|/30·L⁵ = ${fmt((Math.abs(s.a) / 30) * Math.pow(s.spanL, 5))}`;
       } else {
-        v2 = `비대칭 W형 (λ=${lam})`;
+        v2 = `좌우 비대칭 (λ=${lam})`;
         v4 = `극솟값 차 = ${fmt(Math.abs(s1 - s2))}`;
       }
       if (m === 5) {
         const cr = findCrossings(s, s.kLine, -7, 9);
         const cusp = cr.filter((rx) => Math.abs(evalFp(s, rx)) >= 0.15).length;
-        v4 = `첨점(미분불가) ${cusp}개 · 미분가능 접점 ${cr.length - cusp}개`;
+        v4 = `미분가능하지 않은 점 ${cusp}개 · 미분가능한 접점 ${cr.length - cusp}개`;
       }
       // 하단 판서(원본 renderBottomChalkBanner)
       let tape = null;
@@ -498,37 +498,37 @@ window.addEventListener('DOMContentLoaded', function () {
           const hv = s.spanL / 3;
           title = left || right
             ? `삼중근 3 : 1 비율 성립! (한 칸 h=${fmt(hv)} | 극솟값 깊이 Δy = 27|a|h⁴ = ${fmt(27 * Math.abs(s.a) * Math.pow(hv, 4))})`
-            : `λ = ${lam} (도함수 중근 아님) → 3 : 1 비율 박스가 비활성화되었습니다!`;
+            : `λ = ${lam} (도함수가 중근을 갖지 않음) → 3 : 1 비율이 성립하지 않습니다!`;
         } else if (m === 2) {
           const hv = s.spanL / 2;
           title = sym
-            ? `대칭 W형 1 : √2 성립! (h=${fmt(hv)}, √2h=${fmt(Math.sqrt(2) * hv)} | 극값차 Δy = |a|h⁴ = ${fmt(Math.abs(s.a) * Math.pow(hv, 4))})`
-            : `λ = ${lam} ≠ 0.5 (비대칭 W형) → 수평 1 : √2 비율이 성립하지 않습니다!`;
+            ? `좌우 대칭 1 : √2 성립! (h=${fmt(hv)}, √2h=${fmt(Math.sqrt(2) * hv)} | 극값차 Δy = |a|h⁴ = ${fmt(Math.abs(s.a) * Math.pow(hv, 4))})`
+            : `λ = ${lam} ≠ 0.5 (좌우 비대칭) → 수평인 접선에서 1 : √2 비율이 성립하지 않습니다!`;
         } else if (m === 3) {
           if (left || right) {
-            title = `삼중근 변곡접선 넓이 $S=\\dfrac{|a|}{20}L^5=${fmt((Math.abs(s.a) / 20) * Math.pow((4 / 3) * s.spanL, 5))}$`;
+            title = `삼중근인 접점에서의 접선과의 넓이 $S=\\dfrac{|a|}{20}L^5=${fmt((Math.abs(s.a) / 20) * Math.pow((4 / 3) * s.spanL, 5))}$`;
           } else if (sym) {
-            title = `이중접선 둘러싸인 넓이 $S=\\dfrac{|a|}{30}(\\beta-\\alpha)^5=${fmt((Math.abs(s.a) / 30) * Math.pow(s.spanL, 5))}$`;
+            title = `두 점에서 접하는 직선과의 넓이 $S=\\dfrac{|a|}{30}(\\beta-\\alpha)^5=${fmt((Math.abs(s.a) / 30) * Math.pow(s.spanL, 5))}$`;
           } else {
-            title = `비대칭 W형(λ = ${lam})에서는 1/20, 1/30 공식이 성립하지 않습니다 (삼중근 λ = 0, 1 또는 대칭 λ = 0.5 에서 성립)`;
+            title = `좌우 비대칭(λ = ${lam})에서는 1/20, 1/30 넓이 공식이 성립하지 않습니다 (삼중근 λ = 0, 1 또는 좌우 대칭 λ = 0.5 에서 성립)`;
           }
         } else if (m === 4) {
           title = `도함수 넓이 S₁(${fmt(s1)}) vs S₂(${fmt(s2)})  ⇒  두 극솟값 차 f(α)-f(β) = ${fmt(evalF(s, alpha) - evalF(s, beta))}`;
         } else {
-          title = `절댓값 함수 g(x) = |f(x) - k| : 삼중근 변곡점 높이 k = ${fmt(evalF(s, alpha), 1)} 일 때만 미분불가 첨점이 1개!`;
+          title = `절댓값 함수 g(x) = |f(x) - k| : 삼중근인 접점의 높이 k = ${fmt(evalF(s, alpha), 1)} 일 때만 미분가능하지 않은 점이 1개!`;
         }
         tape = { title };
       }
       return {
         // 좁은 화면에서는 일반(비대칭) 개형의 긴 식 두 개가 두 줄로 쌓여 그림을 가리므로 도함수 식(세 근이 모두 들어 있음)만 보입니다.
-        chips: NARROW.matches && !left && !right ? [{ k: '도함수', tex: f.fpLatex, color: 'sky' }] : [{ k: '원함수', tex: f.fLatex, color: 'amber' }, { k: '도함수', tex: f.fpLatex, color: 'sky' }],
+        chips: NARROW.matches && !left && !right ? [{ k: '도함수', tex: f.fpLatex, color: 'sky' }] : [{ k: '함수', tex: f.fLatex, color: 'amber' }, { k: '도함수', tex: f.fpLatex, color: 'sky' }],
         status,
         alert,
         readouts: [
           { label: '도함수 세 실근 (α, γ, β)', value: `${fmt(alpha, 1)} : ${fmt(gamma)} : ${fmt(beta, 1)}`, color: 'amber', ref: 'roots', wide: true },
-          { label: '특수 비율 (3:1 / 1:√2)', value: v2, color: 'rose', ref: 'box', wide: true },
+          { label: '비율 (3:1 / 1:√2)', value: v2, color: 'rose', ref: 'box', wide: true },
           { label: '도함수 넓이 S₁ vs S₂', value: `S₁=${fmt(s1)} | S₂=${fmt(s2)}`, color: 'sky', ref: 'dy', wide: true },
-          { label: m === 5 ? '첨점 개수' : '정적분 넓이 / 극솟값 차', value: v4, color: 'violet', ref: m === 5 ? 'fold' : 'S', wide: true }
+          { label: m === 5 ? '미분가능하지 않은 점의 개수' : '정적분 넓이 / 극솟값 차', value: v4, color: 'violet', ref: m === 5 ? 'fold' : 'S', wide: true }
         ],
         tape
       };
@@ -568,11 +568,11 @@ window.addEventListener('DOMContentLoaded', function () {
     const dragA = (w) => { s.alpha = clamp(+w.x.toFixed(2), -2.0, 1.5); };
     const dragB = (w) => { s.spanL = clamp(+(w.x - s.alpha).toFixed(2), 1.5, 4.0); };
     if (isLeft(s)) {
-      b.handle('A', [alpha, yA], { color: 'amber', r: 7, ref: 'A', label: `변곡접점 A(${num(alpha)}, ${num(yA)})`, dx: -12, dy: -12, align: 'right', drag: dragA });
+      b.handle('A', [alpha, yA], { color: 'amber', r: 7, ref: 'A', label: `삼중근 접점 A(${num(alpha)}, ${num(yA)})`, dx: -12, dy: -12, align: 'right', drag: dragA });
       b.handle('B', [beta, yB], { color: 'green', r: 7, ref: 'B', label: `극소 B(${num(beta)}, ${num(yB)})`, dx: 12, dy: 20, drag: dragB });
     } else if (isRight(s)) {
       b.handle('A', [alpha, yA], { color: 'green', r: 7, ref: 'A', label: `극소 A(${num(alpha)}, ${num(yA)})`, dx: -12, dy: 20, align: 'right', drag: dragA });
-      b.handle('B', [beta, yB], { color: 'amber', r: 7, ref: 'B', label: `변곡접점 B(${num(beta)}, ${num(yB)})`, dx: 12, dy: -12, drag: dragB });
+      b.handle('B', [beta, yB], { color: 'amber', r: 7, ref: 'B', label: `삼중근 접점 B(${num(beta)}, ${num(yB)})`, dx: 12, dy: -12, drag: dragB });
     } else {
       const yC = evalF(s, gamma);
       b.handle('A', [alpha, yA], { color: 'amber', ref: 'A', label: `극소 A(${num(alpha)}, ${num(yA)})`, dx: -12, dy: 20, align: 'right', drag: dragA });
@@ -628,7 +628,7 @@ window.addEventListener('DOMContentLoaded', function () {
     c.lineTo(r.x + r.w, r.y + 0.5);
     c.stroke();
     c.restore();
-    const ttl = NARROW.matches ? '도함수 y = f′(x)' : '삼차 도함수 y = f′(x) · 넓이(S₁ vs S₂) 동기화';
+    const ttl = NARROW.matches ? '도함수 y = f′(x)' : '삼차 도함수 y = f′(x) · 넓이 S₁, S₂ 비교';
     b.stext(r.x + 14, r.y + 20, ttl, { color: 'sky', size: 12.5, align: 'left', weight: 800 });
     if (s.step >= 2) {
       // S₁·S₂ 값을 이름표 옆에 색으로 구분해 적습니다
@@ -696,7 +696,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // Step 3: 제2변곡점 I₂(2:1 내분) 및 높이차 Δy = 27|a|h⁴
     if (s.step >= 3) {
       const yInf2 = evalF(s, xInf2);
-      b.point([xInf2, yInf2], { color: 'violet', r: 5, ref: 'I2', label: `제2변곡점 I₂(${num(xInf2)}, ${num(yInf2)}) [2:1]`, dx: -12, dy: 22, align: 'right' });
+      b.point([xInf2, yInf2], { color: 'violet', r: 5, ref: 'I2', label: `점 I₂(${num(xInf2)}, ${num(yInf2)}) [2:1 내분]`, dx: -12, dy: 22, align: 'right' });
       const xr = offX(b, xRight, 26);
       b.seg([xr, yTriple], [xr, yMin], { color: 'sky', width: 2.5, ref: 'dy' });
       barLabel(b, xr, (yTriple + yMin) / 2, `Δy = ${num(Math.abs(yTriple - yMin))}`, 'sky', 'dy');
@@ -806,13 +806,13 @@ window.addEventListener('DOMContentLoaded', function () {
         if (slope < 0.15) {
           b.point([rx, k], { color: 'green', r: 6.5, ref: 'fold', label: `미분가능 (${num(rx, 1)}, f′=0)`, dx: -12, dy: 24, align: 'right' });
         } else {
-          b.point([rx, k], { color: 'red', r: 7, ref: 'fold', label: `첨점 (미분불가 x=${num(rx)})`, dx: 12, dy: 24, align: 'left' });
+          b.point([rx, k], { color: 'red', r: 7, ref: 'fold', label: `꺾이는 점 (미분가능하지 않음, x=${num(rx)})`, dx: 12, dy: 24, align: 'left' });
         }
       });
     }
     // 끌 수 있는 기준선 손잡이: 곡선 위에 그립니다
     return () => {
-      b.handle('k', [kHandleX(b), k], { color: 'violet', ref: 'fold', priority: 2, label: `접기 기준선 y = k (${num(k)})`, dx: -14, dy: -16, align: 'right',
+      b.handle('k', [kHandleX(b), k], { color: 'violet', ref: 'fold', priority: 2, label: `기준선 y = k (${num(k)})`, dx: -14, dy: -16, align: 'right',
         drag: (w) => { s.kLine = clamp(+w.y.toFixed(2), -6.0, 4.0); } });
     };
   }
@@ -844,7 +844,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneOf(m, def) {
     return {
-      guide: examData[m].hint.replace('상단 프리셋에서', '조작 패널의 4대 개형 프리셋(휴대폰에서는 그림 아래)에서'),
+      guide: examData[m].hint.replace('상단 개형 버튼에서', '조작 패널의 개형 버튼(휴대폰에서는 그림 아래)에서'),
       actions: actionsCommon(),
       presets: presetsCommon,
       steps: examData[m].steps,
@@ -860,27 +860,27 @@ window.addEventListener('DOMContentLoaded', function () {
   const scenes = [
     sceneOf(1, {
       id: 'triple', title: '삼중근 3 : 1 비율', short: '삼중근 3:1',
-      question: '변곡접점에서 그은 수평 접선이 곡선과 다시 만나는 점과 극소점은 변곡접점에서 어떤 비율로 놓일까?',
+      question: '삼중근인 접점에서 그은 수평인 접선이 곡선과 다시 만나는 점과 극소점은 그 접점에서 어떤 비율로 놓일까?',
       controls: ['lambda', 'spanL', 'a']
     }),
     sceneOf(2, {
-      id: 'sym', title: '대칭 W형 1 : √2 비율', short: '대칭 W 1:√2',
-      question: '대칭인 W형 사차함수에서 극대점의 수평 접선이 곡선과 다시 만나는 점은 극대점에서 얼마나 떨어져 있을까?',
+      id: 'sym', title: '좌우 대칭인 사차함수의 1 : √2 비율', short: '대칭 1:√2',
+      question: '좌우 대칭인 사차함수에서 극대점의 수평인 접선이 곡선과 다시 만나는 점은 극대점에서 얼마나 떨어져 있을까?',
       controls: ['lambda', 'spanL', 'a']
     }),
     sceneOf(3, {
-      id: 'area', title: '넓이 1/20 & 1/30 공식', short: '넓이 1/20·1/30',
-      question: '삼중근 변곡접선과 이중접선이 곡선과 둘러싸는 넓이는 구간의 길이 L로 어떻게 나타날까?',
+      id: 'area', title: '접선과의 넓이 공식 (1/20, 1/30)', short: '넓이 1/20·1/30',
+      question: '삼중근인 접점에서의 접선, 또는 두 점에서 접하는 직선이 곡선과 둘러싸는 넓이는 구간의 길이 L로 어떻게 나타날까?',
       controls: ['lambda', 'spanL', 'a']
     }),
     sceneOf(4, {
-      id: 'sync', title: 'f(x)↔f\'(x) 넓이 동기화', short: 'f↔f′ 넓이',
+      id: 'sync', title: 'f(x)와 f′(x)의 넓이 비교', short: 'f와 f′의 넓이',
       question: '삼차 도함수 그래프의 두 영역 넓이 S₁, S₂의 차는 사차함수의 두 극솟값 높이 차와 어떤 관계일까?',
       controls: ['lambda', 'spanL', 'a']
     }),
     sceneOf(5, {
-      id: 'fold', title: '|f(x)-k| 미분가능성', short: '|f(x)−k| 첨점',
-      question: '수평선 y = k 를 기준으로 그래프를 접어 올린 |f(x)−k| 는 k의 값에 따라 몇 군데에서 미분불가능해질까?',
+      id: 'fold', title: '|f(x)−k| 의 미분가능성', short: '|f(x)−k| 미분가능성',
+      question: '수평선 y = k 를 기준으로 그래프를 접어 올린 |f(x)−k| 는 k의 값에 따라 몇 군데에서 미분가능하지 않을까?',
       controls: ['lambda', 'spanL', 'a', 'kLine']
     })
   ];
@@ -896,11 +896,11 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/미적분1/사차함수 비율관계.html',
     board: { kind: 'cartesian', focus: focusFor(VIEW[1], false) },
     params: {
-      lambda: { value: 0, min: 0, max: 1, step: 0.02, color: 'amber', label: '가운데 극값 위치비 $\\lambda$', hint: '$\\lambda=\\dfrac{\\gamma-\\alpha}{\\beta-\\alpha}$ · 0 = 좌측 삼중근, 0.5 = 대칭 W형, 1 = 우측 삼중근 (극대 C를 끌어도 조절됩니다)',
-        format: (v, s) => `λ = ${fmt(v)} (${isLeft(s) ? '좌측 삼중근 3:1' : isRight(s) ? '우측 삼중근 1:3' : isSym(s) ? '대칭 W형 1:√2' : '비대칭 W형'})` },
+      lambda: { value: 0, min: 0, max: 1, step: 0.02, color: 'amber', label: '가운데 극값 위치비 $\\lambda$', hint: '$\\lambda=\\dfrac{\\gamma-\\alpha}{\\beta-\\alpha}$ · 0 = 왼쪽 삼중근, 0.5 = 좌우 대칭, 1 = 오른쪽 삼중근 (극대 C를 끌어도 조절됩니다)',
+        format: (v, s) => `λ = ${fmt(v)} (${isLeft(s) ? '왼쪽 삼중근 3:1' : isRight(s) ? '오른쪽 삼중근 1:3' : isSym(s) ? '좌우 대칭 1:√2' : '좌우 비대칭'})` },
       spanL: { value: 3, min: 1.5, max: 4, step: 0.1, color: 'sky', label: '극값 폭 $L=\\beta-\\alpha$', hint: '오른쪽 극소 B를 끌어도 조절됩니다', format: (v) => `L = ${fmt(v)}` },
       a: { value: 0.25, min: 0.1, max: 0.8, step: 0.05, color: 'green', label: '최고차항 계수 $a$', format: (v) => `a = ${fmt(v)}` },
-      kLine: { value: 2, min: -6, max: 4, step: 0.1, color: 'violet', label: '절댓값 접기 기준선 $y=k$', hint: '$|f(x)-k|$ 의 첨점을 찾습니다 · 그림의 보라색 점으로도 끌 수 있어요', format: (v) => `k = ${fmt(v)}` },
+      kLine: { value: 2, min: -6, max: 4, step: 0.1, color: 'violet', label: '기준선 $y=k$', hint: '$|f(x)-k|$ 가 미분가능하지 않은 점을 찾습니다 · 그림의 보라색 점으로도 끌 수 있어요', format: (v) => `k = ${fmt(v)}` },
       // 그림에서 끌어 바꾸는 값 (슬라이더 없음): 왼쪽 극점 x(α)와 기준 높이 f(α)
       alpha: { value: 0, min: -2, max: 1.5, step: 0.01 },
       y0: { value: 2, min: -8, max: 6, step: 0.01 }
