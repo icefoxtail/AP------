@@ -2720,12 +2720,12 @@ def _overlay_features(plan):
         xmin,xmax,ymin,ymax=plan['viewport'];xf,yf=_overlay_number(x),_overlay_number(y)
         if not (xmin<xf<xmax and ymin<yf<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT',ident)
         row={'id':ident,'x':xf,'y':yf,'xExact':pp_surd_text(x),'yExact':pp_surd_text(y)}
-        # coordinates:true writes the point's coordinates beside it (A(-6,-3), or (x,y) for an unnamed point): integers only, which the observer reads back.
+        # coordinates:true writes the point's coordinates beside it (A(-6,-3), or (x,y) for an unnamed point): integers or fractions (3/2, -1/3; E31), which the observer reads back.
         if 'coordinates' in entry:
             if not isinstance(entry['coordinates'],bool):_overlay_fail('OVERLAY_COORDINATES_INVALID',ident)
             if entry['coordinates']:
-                if not (x.is_integer and y.is_integer):_overlay_fail('OVERLAY_COORDINATES_REQUIRE_INTEGERS',ident)
-                row['coordinates']=[str(int(x)),str(int(y))]
+                if not (x.is_Rational and y.is_Rational):_overlay_fail('OVERLAY_COORDINATES_REQUIRE_RATIONALS',ident)
+                row['coordinates']=[str(int(v)) if v.is_Integer else str(int(v.p))+'/'+str(int(v.q)) for v in (x,y)]
         # unnamed:true: a dot with no name letter (an unlabelled intersection of the source figure); with coordinates:true it keeps (x,y) alone.
         if 'unnamed' in entry:
             if not isinstance(entry['unnamed'],bool):_overlay_fail('OVERLAY_POINT_UNNAMED_INVALID',ident)

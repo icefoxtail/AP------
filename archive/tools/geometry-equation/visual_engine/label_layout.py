@@ -999,8 +999,10 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 box=Box(panel.x,panel.y+row,pw,ph)
                 if panel.contains(box) and acceptable(box):
                     chosen=box;method='SIDE_PANEL';label={**label,'text':text,'markup':html.escape(label.get('panelPrefix',''))+label['markup'] if label.get('markup') else None};break
-        if (chosen is None and label['kind']=='POINT_NAME' and not label.get('directions') and not label.get('gaps')
-                and label.get('preferred') is None):
+        if (chosen is None and ((label['kind']=='POINT_NAME' and not label.get('directions') and not label.get('gaps') and label.get('preferred') is None)
+                or (label['kind']=='COORDINATE_LABEL' and owner_marker is not None and label.get('ringLeader')))):
+            # (E31) The same last resort for the coordinates of an unnamed point (ringLeader: an overlay point with unnamed+coordinates, a hidden construction point that writes its coordinates):
+            # a box in the nearest free sector, on a visible leader from the point.
             # A point where several strokes meet (the centre of a circle with its radii) leaves no free cardinal direction for its name: the name
             # goes into the nearest free sector around the point, closest to it first. When that sector is outside the point's Voronoi cell (a long
             # name, a narrow sector) a visible leader from the point ties the name back to it.

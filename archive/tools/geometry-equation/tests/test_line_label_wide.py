@@ -93,6 +93,23 @@ class NarrowRegionLengthLabelTests(unittest.TestCase):
         side_x=lambda y:160-(300-y)*25/240                                      # the labelled side at height y
         self.assertGreaterEqual(box.x,min(side_x(box.y),side_x(box.bottom))-1e-6)
 
+class JunctionCoordinateLabelTests(unittest.TestCase):
+    """E31 (4): the coordinates of an unnamed point where lines meet (an intersection) take the nearest free sector on a leader from the point when no box beside it is clear."""
+    def fixtures(self):
+        point={'id':'P','kind':'point','geometry':(200,200,3.2)}
+        strokes=[line('f',(150,100),(250,300)),line('g',(100,300),(300,100)),                  # y=2x-3/2 and y=-x+1 as drawn: they cross at P
+                 {'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(20,214),(380,214)]},      # and the x-axis passes 14 px below P
+                 {'id':'y-axis','kind':'axis','role':'axis','axis':'y','geometry':[(60,20),(60,380)]}]
+        item={'id':'P-coordinate','kind':'COORDINATE_LABEL','at':(200,200),'text':'(5/6,1/6)','font':13.25,'priority':2,'target':'P','measuredFragmentSha256':'sha256:'+'0'*64,'measuredFragmentOwner':'P','measuredFactRole':'DERIVED_INTERMEDIATE','ringLeader':True}
+        return item,[point,*strokes]
+    def test_a_junction_next_to_an_axis_gets_its_coordinates_in_a_free_sector_on_a_leader(self):
+        item,obstacles=self.fixtures()
+        result=layout([item],obstacles,Box(0,0,400,400),measurements={item['id']:(70,50)},require_measurements=True)
+        self.assertEqual(result['unresolved'],[],result)
+        placed=result['labels'][0];leader=result['leaders'][0]
+        self.assertEqual(leader['ownerId'],'P');self.assertEqual(leader['from'],[200,200])
+        self.assertFalse(any(collision(Box(**placed['box']),o) for o in obstacles))
+
 class TickFirstRetryTests(unittest.TestCase):
     def fixtures(self):
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(20,160),(300,160)]}

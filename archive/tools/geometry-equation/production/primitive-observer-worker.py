@@ -284,6 +284,41 @@ def audit(p):
                 along=((spot[0]-a[0])*d[0]+(spot[1]-a[1])*d[1])/max(1e-9,d[0]**2+d[1]**2)
                 if abs(along-{'START':.08,'END':.92}.get(at,at))>.4:errors.append('LINE_LABEL_NOT_AT:'+str(owner))
             observations.append({'id':lid,'type':'LINE_LABEL','owner':owner,'leader':leader is not None})
+    # ---- coordinates of a hidden point (E31): a point whose name the plan hides but whose coordinates it writes "(x,y)". Read back here from the peer's own point: the label exists, belongs
+    # to that point, is not a name, shows the rational coordinates glyph by glyph and stands nearer its own point than any other point.
+    hidden_rows=p.get('hiddenCoordinateLabels') or []
+    if not isinstance(hidden_rows,list):raise ValueError('INVALID_HIDDEN_COORDINATE_LABELS')
+    if hidden_rows:
+        from fractions import Fraction
+        def group_of(oid):
+            n=elements.get(oid);return n if n is not None and n.tag.split('}')[-1]=='g' else None
+        def rational_codes(value):
+            fraction=Fraction(value).limit_denominator(1000)
+            if abs(float(fraction)-value)>1e-9:return None
+            digits=lambda number:[format(0x30+int(d),'X') for d in str(number)]
+            return (['2212'] if fraction<0 else [])+digits(abs(fraction.numerator))+(digits(fraction.denominator) if fraction.denominator!=1 else [])
+        dots={n.get('id'):(float(n.get('cx')),float(n.get('cy'))) for n in root.iter() if n.tag.split('}')[-1]=='circle' and n.get('data-role')=='point'}
+        for pid in hidden_rows:
+            label=group_of(pid+'-coordinate')
+            if label is None or label.get('data-owner')!=pid or label.get('data-label-kind')!='COORDINATE_LABEL':errors.append('HIDDEN_POINT_COORDINATE_LABEL_MISSING:'+str(pid));continue
+            if any(n.get('data-owner')==pid and n.get('data-label-kind')=='POINT_NAME' for n in root.iter()):errors.append('HIDDEN_POINT_NAME_PRESENT:'+str(pid))
+            codes=[(c.get('data-c') or '').upper() for c in label.iter() if c.tag.split('}')[-1]=='path' and c.get('data-c')]
+            expected=(p.get('points') or {}).get(pid)
+            if expected is not None:
+                parts=[rational_codes(float(v)) for v in expected]
+                if all(part is not None for part in parts):
+                    want=['28',*parts[0],'2C',*parts[1],'29']
+                    if codes!=want:errors.append('HIDDEN_POINT_COORDINATE_LABEL_TEXT_MISMATCH:'+str(pid)+':got='+' '.join(codes)+':want='+' '.join(want))
+            m=re.fullmatch(r'translate\(([-\d.eE+]+)[ ,]([-\d.eE+]+)\)',label.get('transform') or '');inner=next((c for c in label if c.tag.split('}')[-1]=='svg'),None)
+            if m and inner is not None and pid in dots:
+                box=(float(m.group(1)),float(m.group(2)),float(inner.get('width')),float(inner.get('height')))
+                near=lambda dot:math.hypot(max(box[0]-dot[0],0,dot[0]-(box[0]+box[2])),max(box[1]-dot[1],0,dot[1]-(box[1]+box[3])))
+                corners=[(box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3])]
+                # the label belongs to its own point: tied to it by a leader that starts at its dot, or close to it with every corner of its box nearer to it than to any other point's dot
+                tie=next((n for n in root.iter() if n.tag.split('}')[-1]=='line' and n.get('data-role')=='leader' and n.get('data-owner-label')==pid+'-coordinate'),None)
+                tied=tie is not None and pid in dots and math.dist((float(tie.get('x1')),float(tie.get('y1'))),dots[pid])<=4.8
+                if not tied and (near(dots[pid])>60.0 or any(math.dist(c,dots[pid])>=math.dist(c,dot) for c in corners for other,dot in dots.items() if other!=pid)):errors.append('HIDDEN_POINT_COORDINATE_LABEL_AMBIGUOUS_OWNER:'+str(pid))
+            observations.append({'id':pid+'-coordinate','type':'HIDDEN_POINT_COORDINATE_LABEL','owner':pid})
     wrappers=[n for n in root.iter() if n.get('data-fragment-sha')]
     if set(n.get('id') for n in wrappers)!=set(p['fragments']):errors.append('FRAGMENT_INVENTORY_MISMATCH')
     for oid,f in p['fragments'].items():

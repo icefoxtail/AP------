@@ -264,7 +264,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       // Construction labels are <point>-coordinate; graph key point labels are required-point-<n>-coordinates (n counts from 1).
       const unresolvedIds=composed.detail?.unresolved||[];
       const stuck=(plan.graphPlan?unresolvedIds.map(id=>/^required-point-(\d+)-coordinates$/.exec(id)).filter(Boolean).map(m=>keyPoints[Number(m[1])-1]).filter(bandable).map(point=>point.id)
-        :unresolvedIds.filter(id=>id.endsWith('-coordinate')).map(id=>id.slice(0,-'-coordinate'.length))).filter(id=>!(plan.coordinatePanel||[]).includes(id));
+        :unresolvedIds.filter(id=>id.endsWith('-coordinate')).map(id=>id.slice(0,-'-coordinate'.length))).filter(id=>!(plan.coordinatePanel||[]).includes(id)&&!(plan.hiddenPointNames||[]).includes(id));
       if(stuck.length){
         row.fallback.push({from:clip(composed.detail),to:'COORDINATE_PANEL_PARTIAL',points:stuck});
         plan={...plan,coordinatePanel:[...(plan.coordinatePanel||[]),...stuck],labelDirections:Object.fromEntries(Object.entries(plan.labelDirections||{}).filter(([id])=>!stuck.includes(id)))};
