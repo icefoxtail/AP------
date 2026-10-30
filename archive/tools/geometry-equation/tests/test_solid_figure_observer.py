@@ -1195,3 +1195,71 @@ class StackedRoundSolids(unittest.TestCase):
         self.assertFalse(O.hits_round(dome, (-2 * away[0], -2 * away[1], 0.0)))
         self.assertTrue(O.hits_round(dome, (2 * math.cos(a) * away[0], 2 * math.cos(a) * away[1], 2 * math.sin(a))))
         self.assertFalse(O.hits_round(dome, (-2 * math.cos(a) * away[0], -2 * math.cos(a) * away[1], 2 * math.sin(a))))
+
+
+class BallsOffTheAxis(unittest.TestCase):
+    """E33: at:{x,y,z?} puts a ball of a cylinder off its axis (x along the screen's horizontal, y into the picture); stack.layers lays equal balls out in rows"""
+
+    @staticmethod
+    def specs(host):
+        return O.expanded_solid_specs({'solids': [{'kind': 'CYLINDER', 'radius': 12, 'height': 40, **host}]})
+
+    def test_rows_of_equal_balls_rest_on_the_row_below(self):
+        specs = self.specs({'stack': {'radius': 6, 'layers': [2, 2, 1]}})
+        balls = specs[1:]
+        self.assertEqual([b['id'] for b in balls], ['s1b1', 's1b2', 's1b3', 's1b4', 's1b5'])
+        self.assertEqual([(b['at']['x'], b['at']['y']) for b in balls], [(-6.0, 0.0), (6.0, 0.0), (-6.0, 0.0), (6.0, 0.0), (0.0, 0.0)])
+        self.assertEqual([b['centerZ'] for b in balls[:4]], [6.0, 6.0, 18.0, 18.0])
+        self.assertAlmostEqual(balls[4]['centerZ'], 18 + math.sqrt(108), places=5)   # between two balls 12 apart: 6 across, so 12^2 - 6^2 up
+        # a row of three or of one, and the plan's own old stacks and lists stay where they were
+        self.assertEqual([b['at']['x'] for b in self.specs({'stack': {'radius': 3, 'layers': [3]}})[1:]], [-6.0, 0.0, 6.0])
+        old = self.specs({'stack': {'count': 3, 'radius': 3}})
+        self.assertTrue(all('at' not in b for b in old[1:]))
+        self.assertEqual([b['centerZ'] for b in old[1:]], [3.0, 9.0, 15.0])
+
+    def test_a_ball_without_a_height_falls_onto_the_floor_or_the_balls_before_it(self):
+        specs = self.specs({'inside': [{'kind': 'SPHERE', 'radius': 3, 'at': {'x': 0, 'y': 0}}, {'kind': 'SPHERE', 'radius': 3, 'at': {'x': 3, 'y': 0}},
+                                       {'kind': 'SPHERE', 'radius': 2, 'at': {'x': -8, 'y': 0}}, {'kind': 'SPHERE', 'radius': 3, 'at': {'x': 6, 'y': -4, 'z': 20}}]})[1:]
+        self.assertEqual(specs[0]['centerZ'], 3.0)
+        self.assertAlmostEqual(specs[1]['centerZ'], 3 + math.sqrt(27), places=5)   # touching the first ball, 3 across
+        self.assertEqual(specs[2]['centerZ'], 2.0)                                  # nothing under it: on the floor
+        self.assertEqual(specs[3]['centerZ'], 20.0)                                 # told where
+        self.assertNotIn('z', specs[3]['at'])
+
+    def test_a_list_without_any_at_keeps_the_old_rule_one_on_the_other(self):
+        specs = self.specs({'inside': [{'kind': 'SPHERE', 'radius': 2}, {'kind': 'SPHERE', 'radius': 3}]})[1:]
+        self.assertEqual([b['centerZ'] for b in specs], [2.0, 7.0])
+
+    def test_what_the_grammar_does_not_allow_is_refused(self):
+        for host in ({'stack': {'radius': 6, 'layers': [2, 2, 1], 'count': 5}}, {'stack': {'radius': 6, 'layers': []}}, {'stack': {'radius': 6, 'layers': [1]}},
+                     {'stack': {'radius': 2, 'layers': [3, 3, 1]}}, {'stack': {'radius': 2, 'layers': [2, 1.5]}}, {'stack': {'radius': 2, 'layers': [2, True]}}, {'stack': {'radius': 2, 'layers': 'ab'}},
+                     {'inside': [{'kind': 'SPHERE', 'radius': 3, 'centerZ': 3, 'at': {'x': 0, 'y': 0, 'z': 3}}]}, {'inside': [{'kind': 'SPHERE', 'radius': 3, 'at': {'x': 0, 'w': 1}}]},
+                     {'inside': [{'kind': 'SPHERE', 'radius': 3, 'at': 5}]}):
+            self.assertRaises(ValueError, self.specs, host)
+
+    def test_the_centre_of_a_ball_carries_its_place_off_the_axis(self):
+        ball = O.build_solid({'kind': 'SPHERE', 'radius': 3, 'inside': 's1', 'centerZ': 7, 'at': {'x': 4, 'y': -2}, 'id': 's1b1'})
+        x, y, z = ball['points'][0][2]
+        self.assertAlmostEqual(x, 4 * math.cos(O.YAW) + (-2) * (-math.sin(O.YAW)), places=9)
+        self.assertAlmostEqual(y, 4 * math.sin(O.YAW) + (-2) * math.cos(O.YAW), places=9)
+        self.assertEqual(z, 7.0)
+        self.assertEqual(ball['at'], (4.0, -2.0))
+        # the screen shows x as the horizontal and y (into the picture) as a rise of y sin(pitch): the centre projects to (4, -2 sin(pitch) + 7 cos(pitch))
+        sx, sy = O.project((x, y, z))
+        self.assertAlmostEqual(sx, 4.0, places=9)
+        self.assertAlmostEqual(sy, -2 * math.sin(O.PITCH) + 7 * math.cos(O.PITCH), places=9)
+        # only a ball inside a cylinder stands off the axis
+        for spec in ({'kind': 'SPHERE', 'radius': 3, 'at': {'x': 1, 'y': 0}, 'id': 's1'}, {'kind': 'CONE', 'radius': 3, 'height': 2, 'inside': 's0', 'at': {'x': 1, 'y': 0}, 'id': 's2'}):
+            self.assertRaises(ValueError, O.build_solid, spec)
+
+    def test_the_depth_test_of_a_ball_uses_its_own_centre(self):
+        ball = O.build_solid({'kind': 'SPHERE', 'radius': 3, 'inside': 's1', 'centerZ': 3, 'at': {'x': 5, 'y': 0}, 'id': 's1b1'})
+        away = O.vunit((-O.VIEW[0], -O.VIEW[1], 0.0))
+        cx, cy = 5 * O.SCREEN_X[0], 5 * O.SCREEN_X[1]
+        far = (cx + 3 * away[0], cy + 3 * away[1], 3.0)    # the far side of the equator of this ball
+        near = (cx - 3 * away[0], cy - 3 * away[1], 3.0)
+        self.assertTrue(O.hits_round(ball, far))
+        self.assertFalse(O.hits_round(ball, near))
+        # the same points are not on a ball standing on the axis
+        axis_ball = O.build_solid({'kind': 'SPHERE', 'radius': 3, 'inside': 's1', 'centerZ': 3, 'id': 's1b2'})
+        self.assertFalse(O.hits_round(axis_ball, far))

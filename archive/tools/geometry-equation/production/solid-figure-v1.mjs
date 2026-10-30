@@ -41,6 +41,7 @@ const unit=a=>{const l=len(a);return l===0?a:mulv(a,1/l);};
 const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 const EX=[cY,sY,0];// world direction of the screen's horizontal
 const EY=[-sP*sY,sP*cY,cP];// world direction of the screen's vertical
+const DEPTH=[-sY,cY,0];// the horizontal direction into the picture (away from the viewer), perpendicular to the screen's horizontal
 const CUT_FRAME={view:VIEW,ex:EX,ey:EY};
 
 // --- the 3D model -----------------------------------------------------------------------------------------------------------------------------
@@ -474,7 +475,7 @@ function parseAxis(axis,kind,nested,standsOn){
 function buildRound(spec){
   const kind=spec.kind;
   const baseKeys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
-  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis','centerZ','on'],'SOLID_PARAM_INVALID');
+  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis','centerZ','on','at'],'SOLID_PARAM_INVALID');
   if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:'+kind);
   if(spec.cuts!==undefined)bad('SOLID_CUT_UNSUPPORTED:'+kind);
   // cut:{kind,facing?} cuts a SPHERE by planes through its centre (sphere-parts.mjs); no other round solid, and a cut sphere does not sit inside a cylinder
@@ -504,7 +505,15 @@ function buildRound(spec){
     if(typeof spec.centerZ!=='number'||!finite(spec.centerZ)||spec.centerZ<0||spec.centerZ>1000)bad('SOLID_PARAM_INVALID');
     centerZ=spec.centerZ;
   }
-  if(kind==='SPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,centerZ??r]});}
+  // at:{x,y}: where a ball inside a cylinder stands off the axis (x along the screen's horizontal, y into the picture, measured from the axis); its centre point carries it
+  let at=null;
+  if(spec.at!==undefined){
+    if(kind!=='SPHERE'||typeof spec.inside!=='string')bad('SOLID_NEST_INVALID');
+    if(!isPlain(spec.at)||Object.keys(spec.at).some(k=>k!=='x'&&k!=='y'))bad('SOLID_BALLS_INVALID');
+    for(const k of ['x','y'])if(spec.at[k]!==undefined&&(typeof spec.at[k]!=='number'||!finite(spec.at[k])||Math.abs(spec.at[k])>1000))bad('SOLID_BALLS_INVALID');
+    at={x:r6(spec.at.x??0),y:r6(spec.at.y??0)};
+  }
+  if(kind==='SPHERE'){points.push({name:names.center??null,id:'center',p:at?[r6(at.x*EX[0]+at.y*DEPTH[0]),r6(at.x*EX[1]+at.y*DEPTH[1]),centerZ??r]:[0,0,centerZ??r]});}
   else if(kind==='HEMISPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,orientation==='APEX_DOWN'?r:0]});}
   else{
     points.push({name:names.center??null,id:'center',p:[0,0,down&&kind==='CONE'?height:0]});
@@ -514,7 +523,7 @@ function buildRound(spec){
   if(spec.inside!==undefined&&(typeof spec.inside!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(spec.inside)))bad('SOLID_NEST_INVALID');
   const axis=spec.axis!==undefined?parseAxis(spec.axis,kind,spec.inside!==undefined,spec.on!==undefined):undefined;
   return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,...(spec.on!==undefined?{on:spec.on}:{}),
-    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{}),...(centerZ!==null?{centerZ}:{})};
+    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{}),...(centerZ!==null?{centerZ}:{}),...(at?{at}:{})};
 }
 
 const shiftSolid=(solid,s)=>{
@@ -775,8 +784,10 @@ function resolveStacks(solids){
 }
 const MAX_BALLS=6;
 /**
- * A cylinder may hold several balls: stack:{count,radius} (count equal balls one on the other from the bottom) or inside:[{kind:"SPHERE",radius,centerZ?}, ...] (each ball
- * at the height of its centre; without centerZ it rests on the ball before it, the first on the bottom). They become nested spheres s1b1, s1b2, ... of the cylinder s1
+ * A cylinder may hold several balls: stack:{count,radius} (count equal balls one on the other from the bottom), stack:{radius,layers:[2,2,1]} (equal balls in rows along the
+ * screen's horizontal, row by row from the bottom, each ball resting on the balls below it) or inside:[{kind:"SPHERE",radius,centerZ?,at?:{x,y,z?}}, ...] (each ball
+ * at the height of its centre; without centerZ it rests on the ball before it, the first on the bottom; with at:{x,y} the ball stands off the axis, and without a height
+ * it falls onto the balls below it). They become nested spheres s1b1, s1b2, ... of the cylinder s1
  * (so a ball can be named in dims by its id); the plan's own solids keep their ids by their place in the plan.
  */
 function expandBalls(specs){
@@ -790,20 +801,48 @@ function expandBalls(specs){
     let list;
     if(stack!==undefined){
       if(!isPlain(stack))bad('SOLID_BALLS_INVALID');
-      onlyKeys(stack,['count','radius'],'SOLID_BALLS_INVALID');
-      if(!Number.isInteger(stack.count)||stack.count<2||stack.count>MAX_BALLS)bad('SOLID_BALLS_INVALID');
-      list=Array.from({length:stack.count},()=>({kind:'SPHERE',radius:stack.radius}));
+      onlyKeys(stack,['count','radius','layers'],'SOLID_BALLS_INVALID');
+      if(stack.layers!==undefined){
+        // rows of equal balls along the screen's horizontal, centred on the axis, touching (a row of 2: x = -r and +r); the next row rests on this one
+        if(stack.count!==undefined||!Array.isArray(stack.layers)||stack.layers.length<1||stack.layers.length>MAX_BALLS||stack.layers.some(n=>!Number.isInteger(n)||n<1||n>MAX_BALLS))bad('SOLID_BALLS_INVALID');
+        const total=stack.layers.reduce((a,b)=>a+b,0);
+        if(total<2||total>MAX_BALLS)bad('SOLID_BALLS_INVALID');
+        const rr=pos(stack.radius,'SOLID_PARAM_INVALID');
+        list=stack.layers.flatMap(n=>Array.from({length:n},(_,i)=>({kind:'SPHERE',radius:rr,at:{x:r6((i-(n-1)/2)*2*rr),y:0}})));
+      }else{
+        if(!Number.isInteger(stack.count)||stack.count<2||stack.count>MAX_BALLS)bad('SOLID_BALLS_INVALID');
+        list=Array.from({length:stack.count},()=>({kind:'SPHERE',radius:stack.radius}));
+      }
     }else{
       if(inside.length<1||inside.length>MAX_BALLS)bad('SOLID_BALLS_INVALID');
       list=inside;
     }
     let top=0;
+    // a list with a ball off the axis puts every ball without a height where it falls: onto the floor or onto the balls placed before it
+    const falling=list.some(ball=>isPlain(ball)&&ball.at!==undefined),placed=[];
     list.forEach((ball,k)=>{
       if(!isPlain(ball))bad('SOLID_BALLS_INVALID');
-      onlyKeys(ball,['kind','radius','centerZ'],'SOLID_BALLS_INVALID');
+      onlyKeys(ball,['kind','radius','centerZ','at'],'SOLID_BALLS_INVALID');
       if(ball.kind!=='SPHERE')bad('SOLID_BALLS_INVALID');
-      const radius=pos(ball.radius,'SOLID_PARAM_INVALID'),centerZ=ball.centerZ!==undefined?ball.centerZ:r6(top+radius);
-      out.push({kind:'SPHERE',radius,centerZ,inside:hostId,id:hostId+'b'+(k+1)});
+      const radius=pos(ball.radius,'SOLID_PARAM_INVALID');
+      let at;
+      if(ball.at!==undefined){
+        if(!isPlain(ball.at)||Object.keys(ball.at).some(key=>!['x','y','z'].includes(key)))bad('SOLID_BALLS_INVALID');
+        for(const key of ['x','y','z'])if(ball.at[key]!==undefined&&(typeof ball.at[key]!=='number'||!finite(ball.at[key])||Math.abs(ball.at[key])>1000))bad('SOLID_BALLS_INVALID');
+        if(ball.at.z!==undefined&&ball.centerZ!==undefined)bad('SOLID_BALLS_INVALID');
+        at={x:r6(ball.at.x??0),y:r6(ball.at.y??0)};
+      }
+      const ax=at?.x??0,ay=at?.y??0;
+      let centerZ=ball.centerZ??ball.at?.z;
+      if(centerZ===undefined){
+        if(falling){
+          centerZ=radius;
+          for(const b of placed){const d=Math.hypot(ax-b.x,ay-b.y);if(d<radius+b.radius)centerZ=Math.max(centerZ,b.z+Math.sqrt((radius+b.radius)**2-d*d));}
+          centerZ=r6(centerZ);
+        }else centerZ=r6(top+radius);
+      }
+      placed.push({x:ax,y:ay,z:centerZ,radius});
+      out.push({kind:'SPHERE',radius,centerZ,inside:hostId,id:hostId+'b'+(k+1),...(at?{at}:{})});
       top=centerZ+radius;
     });
   });
@@ -827,7 +866,7 @@ function solveSolids(plan){
     if(!host||host===solid)bad('SOLID_NEST_UNKNOWN:'+solid.inside);
     if(host.inside)bad('SOLID_NEST_CHAIN');
     if(host.kind!=='CYLINDER')bad('SOLID_NEST_UNSUPPORTED:'+host.kind);
-    if(solid.kind==='SPHERE'){const cz=solid.centerZ??solid.radius;if(cz-solid.radius<-1e-9||cz+solid.radius>host.height+1e-9||solid.radius>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
+    if(solid.kind==='SPHERE'){const cz=solid.centerZ??solid.radius,away=solid.at?Math.hypot(solid.at.x,solid.at.y):0;if(cz-solid.radius<-1e-9||cz+solid.radius>host.height+1e-9||away+solid.radius>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
     else if(solid.kind==='CONE'||solid.kind==='CONE_FRUSTUM'){if(solid.height>host.height+1e-9||Math.max(solid.r0,solid.r1)>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
     else bad('SOLID_NEST_UNSUPPORTED:'+solid.kind);
   }
@@ -838,7 +877,10 @@ function solveSolids(plan){
     if(guests.some(s=>s.kind!=='SPHERE'))bad('SOLID_NEST_UNSUPPORTED:MIXED');
     for(let i=0;i<guests.length;i++)for(let j=i+1;j<guests.length;j++){
       const a=guests[i],b=guests[j];
-      if(Math.abs((a.centerZ??a.radius)-(b.centerZ??b.radius))<a.radius+b.radius-1e-9)bad('SOLID_NEST_OVERLAP:'+a.id+','+b.id);
+      const ca=[a.at?.x??0,a.at?.y??0,a.centerZ??a.radius],cb=[b.at?.x??0,b.at?.y??0,b.centerZ??b.radius];
+      if(len(sub(ca,cb))<a.radius+b.radius-1e-5)bad('SOLID_NEST_OVERLAP:'+a.id+','+b.id);// a ball that fell onto another touches it (the heights are kept to 6 decimals)
+      // the drawing keeps every ball whole, so two balls whose discs would hide a good part of each other on the screen cannot be drawn
+      if(Math.hypot(ca[0]-cb[0],(ca[1]-cb[1])*sP+(ca[2]-cb[2])*cP)<0.85*(a.radius+b.radius))bad('SOLID_BALLS_OVERLAP_ON_SCREEN:'+a.id+','+b.id);
     }
   }
   const stacks=resolveStacks(solids);
@@ -1055,7 +1097,9 @@ function solveSolids(plan){
   if(plan.dims!==undefined){
     if(!Array.isArray(plan.dims)||plan.dims.length>10)bad('SOLID_DIMS_INVALID');
     plan.dims.forEach((d,k)=>{
-      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label'],'SOLID_DIMS_INVALID');
+      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side'],'SOLID_DIMS_INVALID');
+      // side:"LEFT"|"RIGHT" of a round solid's height: the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis
+      if(d.side!==undefined&&(d.height===undefined||(d.side!=='LEFT'&&d.side!=='RIGHT')))bad('SOLID_DIM_SIDE_INVALID');
       if((d.from===undefined)!==(d.to===undefined))bad('SOLID_DIMS_INVALID');
       if([d.edge!==undefined,d.from!==undefined,d.radius!==undefined,d.height!==undefined,d.slant!==undefined,d.level!==undefined].filter(Boolean).length!==1)bad('SOLID_DIMS_INVALID');
       const code='d'+(k+1);
@@ -1108,7 +1152,8 @@ function solveSolids(plan){
           const h=solid.height;
           // a stack that has an axis writes the heights of its members along that axis, with no line of their own
           const st=stacks.find(x=>x.members.includes(solid.id)),onAxis=solid.category!=='POLY'&&!!st&&st.members.some(id=>solids.find(x=>x.id===id).axis);
-          dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...(onAxis?{onAxis:true}:{}),...dimLabel(d.label,h,unitName,code)});
+          if(d.side!==undefined&&(solid.category!=='REV'||st))bad('SOLID_DIM_SIDE_INVALID');
+          dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...(onAxis?{onAxis:true}:{}),...(d.side!==undefined?{side:d.side}:{}),...dimLabel(d.label,h,unitName,code)});
         }else{
           if(d.slant!==true||(solid.kind!=='CONE'&&solid.kind!=='CONE_FRUSTUM'))bad('SOLID_DIMS_INVALID');
           const l=Math.hypot(solid.radius-solid.topRadius,solid.height);
@@ -1196,7 +1241,7 @@ function solidScreenPoints(solid){
   if(solid.cut)return cutSphereScreenPoints(solid);
   const lz=liftOf(solid);
   const ell=(rad,z)=>{const c=project([0,0,z+lz]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+rad*Math.cos(u),c[1]+rad*sP*Math.sin(u)]);}};
-  if(solid.kind==='SPHERE'){const c=project([0,0,solid.centerZ??r]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}}
+  if(solid.kind==='SPHERE'){const c=project([0,0,solid.centerZ??r]);c[0]+=ox+(solid.at?.x??0);c[1]+=(solid.at?.y??0)*sP;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}}
   else if(solid.kind==='HEMISPHERE'){
     // the dome: the half of the outline circle above the flat disc (a bowl, APEX_DOWN: below it) and the ellipse of the disc
     const bowl=solid.orientation==='APEX_DOWN',zd=bowl?solid.height:0,c=project([0,0,zd+lz]);c[0]+=ox;
@@ -1527,7 +1572,7 @@ function solveNet(plan){
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
-const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70;
+const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70,SIDE_DIM_ROOM=64;
 // A solid panel of a composite grid (composite-panels-v1 with two columns) is narrower: two of them plus the 8 unit gap stay at 776 SVG units (the narrowest plane canvas pair: a Korean caption row still fits 44 units at the measured base font),
 // the width the Archive solution column keeps its 11 CSS px label floor at. The composite sets it (plan.panelWidth); an author never writes it.
 export const GRID_PANEL_WIDTH=384;
@@ -1549,9 +1594,11 @@ function figureExtent(model){
 export function figureFrame(model){
   const e=figureExtent(model),bw=e.x1-e.x0,bh=e.y1-e.y0;
   const grid=model.panelWidth!==undefined,W=grid?model.panelWidth:WIDTH,MX=grid?GRID_MARGIN_X:MARGIN_X;
-  const scale=r6(Math.min((W-2*MX)/bw,MAX_FIG_H/bh,MAX_SCALE));
+  // an outside height dimension (dims[].side) takes room beside the solid for its line and its label
+  const roomL=model.mode==='SOLIDS'&&model.dims.some(d=>d.side==='LEFT')?SIDE_DIM_ROOM:0,roomR=model.mode==='SOLIDS'&&model.dims.some(d=>d.side==='RIGHT')?SIDE_DIM_ROOM:0;
+  const scale=r6(Math.min((W-2*MX-roomL-roomR)/bw,MAX_FIG_H/bh,MAX_SCALE));
   const height=Math.ceil(bh*scale+2*MARGIN_Y);
-  return {scale,width:W,height,origin:[r6(W/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
+  return {scale,width:W,height,origin:[r6((W+roomL-roomR)/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
 }
 export const figurePanelSize=model=>{const f=figureFrame(model);return {width:f.width,height:f.height};};
 
@@ -1574,6 +1621,15 @@ export function solidFigureSpec(plan,model){
 function ellipseOf(S,solid,rad,z){
   const c=project([0,0,z+liftOf(solid)]);// the solid's axis is shifted along the screen horizontal by its offset
   return {cx:c[0]+(solid.offset??0),cy:c[1],a:rad,b:rad*sP};
+}
+/**
+ * The outside height dimension of a round solid (dims[].side LEFT|RIGHT), in px: the x of the dimension line (26 px beyond the widest side of the solid, kept inside the safe margin),
+ * and the two points on the solid's side that its extension lines end on (the base circle's and the top circle's extreme on that side; an apex stands on the axis).
+ */
+function sideHeightDim(d,solid,ctx){
+  const {X,Y,frame}=ctx,sgn=d.side==='LEFT'?-1:1,cx=(solid.offset??0),R=Math.max(solid.r0,solid.r1);
+  const xs=X(cx+sgn*R),x=d.side==='LEFT'?Math.max(SAFE+2,xs-26):Math.min(frame.width-SAFE-2,xs+26);
+  return {x:r6(x),bottom:[X(cx+sgn*solid.r0),Y(0)],top:[X(cx+sgn*solid.r1),Y(solid.height*cP)]};
 }
 const heightDimX=(solid,X)=>r6(Math.max(SAFE+2,Math.min(...solid.vertices.map(v=>X(project(v.p)[0])))-26));
 function spec3d(plan,model,ctx){
@@ -1694,6 +1750,7 @@ function spec3d(plan,model,ctx){
         continue;
       }
       const c=project([solid.offset?EX[0]*solid.offset:0,solid.offset?EX[1]*solid.offset:0,d.z]);
+      if(solid.at){c[0]+=solid.at.x;c[1]+=solid.at.y*sP;}// a ball off the axis: its radius starts at its own centre
       const rim=[c[0]+d.r,c[1]];// screen-horizontal radius: ends at the ellipse's right extreme
       line(d.id+'-line','dim-line',pt(c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
     }else if(d.type==='HEIGHT'){
@@ -1707,6 +1764,14 @@ function spec3d(plan,model,ctx){
         line(d.id+'-line','dim-line',[x,foot[1]],[x,top[1]],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
         line(d.id+'-ext-top','dim-ext',[x,top[1]],top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
         line(d.id+'-ext-bottom','dim-ext',[x,foot[1]],foot,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+      }
+      else if(d.side){
+        // outside the solid on its LEFT or RIGHT: a vertical dimension line from the base circle's level to the top circle's, with an extension line level with each circle
+        // running to the solid's side there (to the axis at an apex)
+        const g=sideHeightDim(d,solid,ctx),[bx,by]=g.bottom,[tx,ty]=g.top;
+        line(d.id+'-line','dim-line',[g.x,by],[g.x,ty],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        line(d.id+'-ext-bottom','dim-ext',[g.x,by],[bx,by],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        line(d.id+'-ext-top','dim-ext',[g.x,ty],[tx,ty],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
       }
       else{
         const bottom=[0,0,liftOf(solid)],top=[0,0,liftOf(solid)+solid.height];
@@ -1792,10 +1857,12 @@ function spec3d(plan,model,ctx){
         continue;
       }
       const c=project([EX[0]*(solid.offset??0),EX[1]*(solid.offset??0),d.z]);
+      if(solid.at){c[0]+=solid.at.x;c[1]+=solid.at.y*sP;}
       labels.push({...label,segment:[pt(c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
     }else if(d.type==='HEIGHT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.category==='POLY'){const top=pt(project(d.top)),foot=pt(project(d.foot)),x=heightDimX(solid,X);labels.push({...label,segment:[[x,foot[1]],[x,top[1]]],segmentOf:'height'});}
+      else if(d.side){const g=sideHeightDim(d,solid,ctx);labels.push({...label,segment:[[g.x,g.bottom[1]],[g.x,g.top[1]]],segmentOf:'height',preferredSide:d.side==='LEFT'?-1:1});}
       else{const sh=mulv(EX,solid.offset??0);labels.push({...label,segment:[pt(project(add([0,0,liftOf(solid)],sh))),pt(project(add([0,0,liftOf(solid)+solid.height],sh)))],segmentOf:'height'});}
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
@@ -1969,7 +2036,7 @@ function specSphere(solid,ctx,arcPrim){
   const {S,X,Y,prims}=ctx;
   const sid=solid.id,r=solid.radius,sh=solid.offset??0;
   if(solid.kind==='SPHERE'){
-    const c=project([0,0,solid.centerZ??r]),cx=c[0]+sh;
+    const c=project([0,0,solid.centerZ??r]),cx=c[0]+sh+(solid.at?.x??0);c[1]+=(solid.at?.y??0)*sP;
     const eq={cx,cy:c[1],a:r,b:r*sP};
     arcPrim(sid+'-outline-upper','sphere-outline',{cx,cy:c[1],a:r,b:r},0,Math.PI,'solid',{solid:sid,part:'UPPER'});
     arcPrim(sid+'-outline-lower','sphere-outline',{cx,cy:c[1],a:r,b:r},Math.PI,2*Math.PI,'solid',{solid:sid,part:'LOWER'});

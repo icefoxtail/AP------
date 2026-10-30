@@ -1,0 +1,55 @@
+{
+ "capability": "solid-figure-v1",
+ "unit": "cm",
+ "solids": [
+  {
+   "id": "s1",
+   "kind": "CYLINDER",
+   "radius": 12,
+   "height": 40,
+   "stack": {
+    "radius": 6,
+    "layers": [
+     2,
+     2,
+     1
+    ]
+   }
+  }
+ ],
+ "dims": [
+  {
+   "solid": "s1",
+   "radius": "top"
+  },
+  {
+   "solid": "s1",
+   "height": true,
+   "side": "LEFT"
+  }
+ ],
+ "solidCaption": {
+  "text": "물통과 쇠구슬 5개"
+ },
+ "caption": "밑면의 지름 24cm, 높이 40cm인 원기둥 모양의 물통에 지름 12cm인 쇠구슬 5개가 아래부터 2개, 2개, 1개씩 쌓여 있다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "쇠구슬의 지름은 12cm이다",
+   "mappedTo": "solids"
+  },
+  {
+   "id": "c2",
+   "condition": "물통은 지름 24cm, 높이 40cm인 원기둥 모양이다",
+   "mappedTo": "solids"
+  },
+  {
+   "id": "c3",
+   "condition": "쇠구슬 5개를 쌓았다",
+   "mappedTo": "solids"
+  }
+ ],
+ "newVisualInformation": [
+  "물통 안에 아래부터 2개, 2개, 1개로 쌓인 쇠구슬 5개와 물통의 반지름 12cm·높이 40cm"
+ ]
+}

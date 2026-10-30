@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {compositePanels,compositePanelLayout,compositeStackSize,composeCompositeCandidate,isGridPanel,COMPOSITE_MAX_SOLID_GRID_PANELS} from '../production/composite-candidate-svg-v1.mjs';
-import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL} from '../production/solid-figure-v1.mjs';
+import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,figureFrame,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL} from '../production/solid-figure-v1.mjs';
 import {typesetter} from '../production/typography.mjs';
 
 const observer=fileURLToPath(new URL('../production/solid_figure_observer_worker.py',import.meta.url));
@@ -1926,4 +1926,113 @@ test('E33: a bowl (a hemisphere standing on its dome) alone shows its flat disc 
   await failing(svg.replace(back,back.replace('stroke="#111"','stroke="#111" stroke-dasharray="5 4"').replace('data-vis="solid"','data-vis="hidden"')),'SOLID_EDGE_VISIBILITY_MISMATCH:s1-top-back');
   const lower=svg.match(/<path id="s1-outline-lower"[^>]*\/>/)[0];
   await failing(svg.replace(lower,lower.replace('id="s1-outline-lower"','id="s1-outline-upper"').replace('data-part="LOWER"','data-part="UPPER"')),'SOLID_HEMISPHERE_OUTLINE_PART:s1');
+});
+
+// --- E33: balls off the axis of a cylinder (at:{x,y,z?}, stack.layers) and an outside height dimension (dims[].side) ------------------------------------
+const EX_X=Math.cos(28*Math.PI/180);
+const ballsOff=(host,over={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CYLINDER',radius:12,height:40,...host}],dims:[{solid:'s1',radius:'top'},{solid:'s1',height:true,side:'LEFT'}],solidCaption:{text:'물통과 쇠구슬'},...over});
+test('E33: five balls of radius 6 in a cylinder of radius 12 are laid out 2 + 2 + 1 by layers: each row rests on the row below and the discs stay apart',()=>{
+  const m=solveSolidFigure(ballsOff({stack:{radius:6,layers:[2,2,1]}}));
+  const balls=m.solids.filter(s=>s.inside==='s1');
+  assert.deepEqual(balls.map(s=>s.id),['s1b1','s1b2','s1b3','s1b4','s1b5']);
+  assert.deepEqual(balls.map(s=>s.at.x),[-6,6,-6,6,0]);assert.ok(balls.every(s=>s.at.y===0));
+  assert.deepEqual(balls.slice(0,4).map(s=>s.centerZ),[6,6,18,18]);
+  assert.ok(Math.abs(balls[4].centerZ-(18+Math.sqrt(108)))<1e-5);// the top ball rests between the two below it: 6 across, 12 apart
+  assert.ok(balls[4].centerZ+6<40);// and the cylinder holds all of them
+  // the centre point of a ball carries its place off the axis (the host's shift along the screen is added to it)
+  const dx=balls[0].points[0].p[0]-m.solids[0].points[0].p[0];assert.ok(Math.abs(dx+6*EX_X)<1e-5,String(dx));
+  // an old stack and an old list are laid out as before (on the axis, one on the other)
+  const plain=solveSolidFigure(ballsIn({stack:{count:3,radius:3}}));
+  assert.deepEqual(plain.solids.filter(s=>s.inside).map(s=>[s.centerZ,s.at]),[[3,undefined],[9,undefined],[15,undefined]]);
+});
+test('E33: a ball with at:{x,y,z?} stands where it is told; one without a height falls onto the floor or the balls below it; refusals have codes',()=>{
+  const balls=inside=>solveSolidFigure(ballsOff({inside})).solids.filter(s=>s.inside);
+  const placed=balls([{kind:'SPHERE',radius:3,at:{x:-6,y:-4}},{kind:'SPHERE',radius:3,at:{x:6,y:4}},{kind:'SPHERE',radius:3,at:{x:-6,y:-4,z:20}}]);
+  assert.deepEqual(placed.map(s=>s.centerZ),[3,3,20]);// two fall to the floor, the third is told its height
+  assert.deepEqual(placed.map(s=>[s.at.x,s.at.y]),[[-6,-4],[6,4],[-6,-4]]);
+  const onTop=balls([{kind:'SPHERE',radius:3,at:{x:0,y:0}},{kind:'SPHERE',radius:3,at:{x:3,y:0}}]);
+  assert.ok(Math.abs(onTop[1].centerZ-(3+Math.sqrt(36-9)))<1e-5);// it falls onto the first ball, touching it
+  const refused=(inside,expected)=>assert.throws(()=>solveSolidFigure(ballsOff({inside})),code(expected),expected);
+  refused([{kind:'SPHERE',radius:3,at:{x:0,y:0}},{kind:'SPHERE',radius:3,at:{x:0,y:0,z:4}}],'SOLID_NEST_OVERLAP:s1b1,s1b2');// the second is inside the first
+  refused([{kind:'SPHERE',radius:3,at:{x:10,y:0}}],'SOLID_NEST_DOES_NOT_FIT:s1b1');// it sticks out of the cylinder
+  refused([{kind:'SPHERE',radius:3,at:{x:0,y:0,z:39}}],'SOLID_NEST_DOES_NOT_FIT:s1b1');// and through the lid
+  refused([{kind:'SPHERE',radius:3,at:{x:-3,y:0}},{kind:'SPHERE',radius:3,at:{x:3,y:0}},{kind:'SPHERE',radius:3,at:{x:0,y:5.2}}],'SOLID_BALLS_OVERLAP_ON_SCREEN');// one behind the others: its disc would be hidden
+  refused([{kind:'SPHERE',radius:3,centerZ:3,at:{x:0,y:0,z:3}}],'SOLID_BALLS_INVALID');// a height said twice
+  refused([{kind:'SPHERE',radius:3,at:{x:0,w:1}}],'SOLID_BALLS_INVALID');
+  refused([{kind:'SPHERE',radius:3,at:{x:'0'}}],'SOLID_BALLS_INVALID');
+  refused([{kind:'SPHERE',radius:3,at:5}],'SOLID_BALLS_INVALID');
+  const refusedStack=(stack,expected)=>assert.throws(()=>solveSolidFigure(ballsOff({stack})),code(expected),expected);
+  refusedStack({radius:6,layers:[2,2,1],count:5},'SOLID_BALLS_INVALID');
+  refusedStack({radius:6,layers:[]},'SOLID_BALLS_INVALID');
+  refusedStack({radius:6,layers:[1]},'SOLID_BALLS_INVALID');// one ball is no stack
+  refusedStack({radius:2,layers:[3,3,1]},'SOLID_BALLS_INVALID');// seven balls
+  refusedStack({radius:2,layers:[2,1.5]},'SOLID_BALLS_INVALID');
+  refusedStack({radius:6,layers:[3]},'SOLID_NEST_DOES_NOT_FIT:s1b1');// three side by side are 36 across
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:3,height:9},{kind:'CONE',radius:1,height:2,inside:'s1',at:{x:1,y:0}}],dims:[{height:true}]})),code('SOLID_NEST_INVALID'));// only a ball stands off the axis
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'SPHERE',radius:1,at:{x:1,y:0}}],dims:[{radius:'center'}]})),code('SOLID_NEST_INVALID'));
+});
+test('E33: dims[].side writes the height of a round solid on a dimension line outside it; refusals have codes',()=>{
+  const m=solveSolidFigure(ballsOff({stack:{radius:6,layers:[2,2,1]}}));
+  assert.equal(m.dims[1].side,'LEFT');
+  // the figure leaves room beside the solid for the line and its label, so a wide solid is drawn smaller
+  const wide=side=>figureFrame(solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:10,height:4}],dims:[{height:true,...(side?{side}:{})}]}))).scale;
+  assert.ok(wide('LEFT')<wide(undefined)&&wide('RIGHT')<wide(undefined));
+  assert.equal(wide('LEFT'),wide('RIGHT'));
+  const refused=(dims,expected,solids)=>assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:solids??[{id:'s1',kind:'CYLINDER',radius:3,height:9}],dims})),code(expected),expected);
+  refused([{height:true,side:'TOP'}],'SOLID_DIM_SIDE_INVALID');
+  refused([{radius:'top',side:'LEFT'}],'SOLID_DIM_SIDE_INVALID');// only a height says which side it stands on (for now)
+  refused([{height:true,side:'LEFT'}],'SOLID_DIM_SIDE_INVALID',[{kind:'PYRAMID',base:{kind:'RECT',width:3,depth:3},height:4}]);// a pyramid's height is outside already
+  refused([{solid:'s2',height:true,side:'LEFT'}],'SOLID_DIM_SIDE_INVALID',[{id:'s1',kind:'CYLINDER',radius:3,height:3},{id:'s2',kind:'CYLINDER',radius:3,height:3,on:'s1'}]);// a member of a stack
+  refused([{height:true,side:7}],'SOLID_DIM_SIDE_INVALID');
+});
+test('E33: five balls in a cylinder (2 + 2 + 1) with the height written outside are composed, read back, and each tamper is caught',async()=>{
+  const plan=ballsOff({stack:{radius:6,layers:[2,2,1]}});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.equal((svg.match(/data-role="sphere-outline"/g)??[]).length,10);// an upper and a lower half circle for each of the 5 balls
+  assert.match(svg,/id="dim-2-line"/);assert.match(svg,/id="dim-2-ext-top"/);assert.match(svg,/id="dim-2-ext-bottom"/);
+  assert.equal((svg.match(/id="dim-2-axis"/g)??[]).length,0);// no dashed line on the axis: the length is outside
+  const scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]),upper=id=>{const d=svg.match(new RegExp(`<path id="${id}-outline-upper"[^>]*d="M ([-\\d.]+) ([-\\d.]+) A ([-\\d.]+)`));return [Number(d[1])+scale*6,Number(d[2])];};
+  const [a,b,c,d,e]=['s1b1','s1b2','s1b3','s1b4','s1b5'].map(upper);
+  assert.ok(Math.abs(a[1]-b[1])<0.01&&Math.abs(c[1]-d[1])<0.01);// the balls of a row are level
+  assert.ok(Math.abs((b[0]-a[0])-scale*12)<0.05&&Math.abs(e[0]-(a[0]+b[0])/2)<0.05);// 12 apart (touching), the top one between them
+  assert.ok(Math.abs((a[1]-c[1])-scale*12*Math.cos(20*Math.PI/180))<0.05);// the rows are 12 apart in height
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(x=>x.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  // a ball drawn at the other side of its row: every arc of s1b2 moved 40 px to the left
+  const shift=(text,id,dx,dy=0)=>text.replace(new RegExp(`<path id="${id}-[^"]*"[^>]*/>`,'g'),all=>{const m=/ d="M ([-\d.]+) ([-\d.]+) A ([-\d.]+) ([-\d.]+) 0 (\d) (\d) ([-\d.]+) ([-\d.]+)"/.exec(all);return all.replace(m[0],` d="M ${Number(m[1])+dx} ${Number(m[2])+dy} A ${m[3]} ${m[4]} 0 ${m[5]} ${m[6]} ${Number(m[7])+dx} ${Number(m[8])+dy}"`);});
+  await failing(shift(svg,'s1b2',-40),'SOLID_NEST_AXIS_MISMATCH:s1b2');
+  await failing(shift(svg,'s1b5',0,-14),'SOLID_NEST_HEIGHT_MISMATCH:s1b5');// the top ball drawn higher than where it rests
+  // the outside dimension: the line moved, an extension line missing, a dashed line over the axis
+  const line=svg.match(/<line id="dim-2-line"[^>]*\/>/)[0];
+  await failing(svg.replace(line,line.replace(/ x1="([\d.]+)"/,(all,v)=>` x1="${Number(v)+9}"`).replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)+9}"`)),'SOLID_DIM_LINE_MISMATCH:dim-2');
+  const ext=svg.match(/<line id="dim-2-ext-top"[^>]*\/>/)[0];
+  await failing(svg.replace(ext,''),'SOLID_DIM_EXTENSION_MISMATCH:dim-2');
+  await failing(svg.replace(ext,ext.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)+7}"`)),'SOLID_DIM_EXTENSION_MISMATCH:dim-2');
+  // a sixth ball that the plan does not have
+  const fifth=svg.match(/<path id="s1b5-outline-upper"[^>]*\/>/)[0];
+  await failing(svg.replace(fifth,fifth+fifth.replace('s1b5-outline-upper','s1b6-outline-upper').replace('data-solid="s1b5"','data-solid="s1b6"')),'SOLID_SOLID_NOT_IN_PLAN:s1b6');
+});
+test('E33: a ball off the axis and toward the viewer (at.y) is composed and its radius line starts at the ball\'s own centre',async()=>{
+  const plan=ballsOff({height:30,inside:[{kind:'SPHERE',radius:8,at:{x:3,y:-2}}]},{dims:[{solid:'s1b1',radius:'center'},{solid:'s1',height:true,side:'RIGHT'}]});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg,scale=Number(svg.match(/data-scale="([\d.]+)"/)[1]);
+  const upper=svg.match(/<path id="s1b1-outline-upper"[^>]*d="M ([-\d.]+) ([-\d.]+) A/),radius=svg.match(/<line id="dim-1-line"[^>]*x1="([-\d.]+)" y1="([-\d.]+)" x2="([-\d.]+)" y2="([-\d.]+)"/);
+  // the upper outline arc starts at the ball's right extreme: the radius line runs from the centre (one radius to the left of it) to that point
+  assert.ok(Math.abs(Number(radius[1])-(Number(upper[1])-scale*8))<0.05&&Math.abs(Number(radius[2])-Number(upper[2]))<0.05);
+  assert.ok(Math.abs(Number(radius[3])-Number(upper[1]))<0.05);
+  // the ball is toward the viewer (y = -2): its centre sits 2 sin(pitch) lower on the screen than a ball of the same height on the axis, and 3 to the right
+  const onAxis=await panel(ballsOff({height:30,inside:[{kind:'SPHERE',radius:8}]},{dims:[{solid:'s1b1',radius:'center'},{solid:'s1',height:true,side:'RIGHT'}]}));
+  const base=onAxis.svg.match(/<path id="s1b1-outline-upper"[^>]*d="M ([-\d.]+) ([-\d.]+) A/);
+  assert.ok(Math.abs((Number(upper[1])-Number(base[1]))-scale*3)<0.05,'3 to the right');
+  assert.ok(Math.abs((Number(upper[2])-Number(base[2]))-scale*2*Math.sin(20*Math.PI/180))<0.05,'2 toward the viewer is lower by 2 sin(pitch)');
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(x=>x.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const rl=svg.match(/<line id="dim-1-line"[^>]*\/>/)[0];
+  await failing(svg.replace(rl,rl.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)+6}"`).replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)+6}"`)),'SOLID_DIM_LINE_MISMATCH:dim-1');
+  // the whole ball drawn where an on-axis ball would stand: the guest no longer sits where the plan puts it
+  const shift=(text,id,dx,dy)=>text.replace(new RegExp(`<path id="${id}-[^"]*"[^>]*/>`,'g'),all=>{const m=/ d="M ([-\d.]+) ([-\d.]+) A ([-\d.]+) ([-\d.]+) 0 (\d) (\d) ([-\d.]+) ([-\d.]+)"/.exec(all);return all.replace(m[0],` d="M ${Number(m[1])+dx} ${Number(m[2])+dy} A ${m[3]} ${m[4]} 0 ${m[5]} ${m[6]} ${Number(m[7])+dx} ${Number(m[8])+dy}"`);});
+  await failing(shift(svg,'s1b1',-scale*3,-scale*2*Math.sin(20*Math.PI/180)),'SOLID_NEST_');
 });
