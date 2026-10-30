@@ -2659,7 +2659,11 @@ def audit_labels(plan, ctx):
                 want, seg, symbolic = expected_dims[dim]
                 tex = g.get('data-tex') or ''
                 number = label_number(tex)
-                if symbolic:
+                word = plan_dim(plan, dim).get('label')
+                if isinstance(word, str) and WORD_LABEL.search(word):
+                    # a word that only names the length (모선, 높이): plain text, written as given, no value to check
+                    if g.get('data-text') != word or g.get('data-numeric') != '0' or g.get('data-tex') is not None or g.get('data-value') is None: errors.append('SOLID_DIM_WORD_MISMATCH:' + dim)
+                elif symbolic:
                     if number is not None and abs(number - want) > 1e-6 * max(1, want): errors.append('SOLID_DIM_VALUE_MISMATCH:' + dim)
                 else:
                     if g.get('data-numeric') != '1' or number is None: errors.append('SOLID_DIM_NOT_NUMERIC:' + dim)
@@ -3193,7 +3197,7 @@ def audit_polyhedron_net(plan, ctx, declared):
 
 
 # --- net layout re-derived from the plan, tinted faces and stressed edges ---------------------------------------------------------------------------------
-NET_FILL_STYLE = {'LIGHT': ('#7fa6e8', 0.32), 'MEDIUM': ('#7fa6e8', 0.55)}
+NET_FILL_STYLE = dict(BASE_FILL_STYLE)   # a net tints a face with any of the six fills a solid's highlights have
 NET_ACCENT_STROKE = '#c0392b'
 
 

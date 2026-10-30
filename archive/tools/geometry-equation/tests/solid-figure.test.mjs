@@ -2349,3 +2349,75 @@ test('E33: a cylinder top, an apex-down vessel opening and a frustum base are ti
     if(solid.baseFill.label==='밑면')assert.match(composed.svg.match(/<g id="text-tl1"[^>]*>/)[0],/data-text="밑면"/);
   }
 });
+
+// --- E33: small things (a) the solid caption with an exponent -------------------------------------------------------------------------------------------------------------------
+test('E33: solidCaption may be an expression with exponents ({math}) or an expression and a phrase ({math,text}); other shapes are refused',()=>{
+  const expand=cap=>expandSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG'}],solidCaption:cap}));
+  assert.deepEqual(expand({text:'직육면체'}).panels[0].caption,{text:'직육면체'});
+  assert.deepEqual(expand({math:'V=8a^5b^3'}).panels[0].caption,{math:'V=8a^5b^3'});
+  assert.deepEqual(expand({math:'V=8a^5b^3',text:'직육면체'}).panels[0].caption,{math:'V=8a^5b^3',text:'직육면체'});
+  assert.deepEqual(expand({math:'(2a^{2}b)^2'}).panels[0].caption,{math:'(2a^{2}b)^2'});
+  // the composite accepts the same caption (it is what typesets it)
+  assert.doesNotThrow(()=>compositePanels(expand({math:'V=8a^5b^3',text:'직육면체'})));
+  for(const bad of [{},{math:''},{math:'V=\\sqrt{2}'},{math:'x'.repeat(25)},{math:5},{math:'a b'},{text:'가'.repeat(25)},{text:'직육면체',color:'red'},{math:'a^2',text:''},'text',[]])
+    assert.throws(()=>expand(bad),code('SOLID_CAPTION_INVALID'),JSON.stringify(bad));
+  assert.equal(expand(undefined).panels[0].caption.text,'입체도형');// no caption: the default word
+});
+test('E33: the caption expression is set with its superscripts by MathJax and the figure stands on its caption alone',async()=>{
+  const plan=figure({solids:[cuboid()],highlights:[{face:'bottom'}],solidCaption:{math:'V=8a^5b^3',text:'직육면체'}});
+  const expanded=expandSolidFigure(plan),checked=compositePanels(expanded);
+  const composed=await composeCompositeCandidate({plan:{...expanded,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))},panels:checked.map(item=>({plan:item.plan,model:solveSolidFigure(item.plan)})),identity:assetIdentity('solid-caption-math|1','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify([composed.status,composed.detail]).slice(0,400));
+  // the expression is a MathJax fragment with two superscripts (a^5, b^3), the phrase a text fragment beside it
+  const math=composed.svg.match(/<g id="p1-p1-caption-math"[\s\S]*?<\/svg><\/g>/)[0];
+  assert.equal((math.match(/data-mml-node="msup"/g)??[]).length,2);
+  assert.match(composed.svg,/<g id="p1-p1-caption-text"/);
+});
+
+// --- E33: small things (b) Korean words as length labels, (c) the six tints on a net --------------------------------------------------------------------------------------------
+test('E33: a length of a solid may be labelled with a Korean word (모선, 높이, 밑변); it is plain text, no value is checked, and an observer reads it back',async()=>{
+  const plan=figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:3,height:4}],dims:[{solid:'s1',slant:true,label:'모선'},{solid:'s1',height:true,label:'높이'},{solid:'s1',radius:'bottom',label:'반지름'}]});
+  const model=solveSolidFigure(plan);
+  assert.deepEqual(model.dims.map(d=>[d.word,d.numeric,d.text]),[[true,false,'모선'],[true,false,'높이'],[true,false,'반지름']]);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  for(const [id,word] of [['dim-1','모선'],['dim-2','높이'],['dim-3','반지름']]){
+    const g=svg.match(new RegExp(`<g id="${id}-label"[^>]*>`))[0];
+    assert.match(g,new RegExp(`data-text="${word}"`));assert.match(g,/data-numeric="0"/);assert.doesNotMatch(g,/data-tex=/);
+  }
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  await failing(svg.replace('data-text="모선"','data-text="높이"'),'SOLID_DIM_WORD_MISMATCH:dim-1');
+  await failing(svg.replace(/(<g id="dim-2-label"[^>]*?) data-numeric="0"/,'$1 data-numeric="1"'),'SOLID_DIM_WORD_MISMATCH:dim-2');
+  // an edge of a polyhedron too; a word is not a number, so it does not have to equal the edge's length
+  const cube=figure({unit:'cm',solids:[cuboid()],dims:[{edge:'FG',label:'밑변'},{edge:'FE',label:'가로 길이'}]});
+  const cubeComposed=await panel(cube);
+  assert.equal(cubeComposed.status,'COMPOSED',JSON.stringify(cubeComposed.detail));
+  assert.equal(cubeComposed.staticAudit.status,'PASS',JSON.stringify(cubeComposed.staticAudit.errors));
+  const bad=(label,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label}]})),code(expected),expected);
+  bad('밑변!','SOLID_DIM_LABEL_INVALID:d1');
+  bad('아주 긴 낱말을 열두 자 넘게 쓴다','SOLID_DIM_LABEL_INVALID:d1');
+  bad('모선^2','SOLID_DIM_LABEL_INVALID:d1');
+  assert.doesNotThrow(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label:'4'}]})).dims);// a number still has to be right
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label:'7'}]})),code('SOLID_DIM_VALUE_MISMATCH'));
+});
+test('E33: a net tints a face with any of the six fills of a solid; the observer reads the colour and the opacity back',async()=>{
+  const plan=emphasisNet({highlights:[{face:'top',fill:'WARM'},{face:'bottom',fill:'GREEN'},{face:'side0',fill:'ROSE'},{face:'side1',fill:'VIOLET'},{face:'side2'},{face:'side3',fill:'MEDIUM'}]});
+  const model=solveSolidFigure(plan);
+  assert.deepEqual(model.highlights.map(h=>h.fill),['WARM','GREEN','ROSE','VIOLET','LIGHT','MEDIUM']);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/data-face="top" data-fill="WARM" fill="#f2a65a" fill-opacity="0.42"/);
+  assert.match(svg,/data-face="bottom" data-fill="GREEN" fill="#6fcf97" fill-opacity="0.42"/);
+  assert.match(svg,/data-face="side0" data-fill="ROSE" fill="#e98aa8" fill-opacity="0.42"/);
+  assert.match(svg,/data-face="side1" data-fill="VIOLET" fill="#a78bdb" fill-opacity="0.42"/);
+  assert.match(svg,/data-face="side2" data-fill="LIGHT" fill="#7fa6e8" fill-opacity="0.32"/);// the two old tints are written as before
+  assert.match(svg,/data-face="side3" data-fill="MEDIUM" fill="#7fa6e8" fill-opacity="0.55"/);
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  await failing(svg.replace('data-fill="WARM" fill="#f2a65a"','data-fill="WARM" fill="#6fcf97"'),'SOLID_NET_HIGHLIGHT_FILL_MISMATCH');
+  await failing(svg.replace('data-fill="VIOLET" fill="#a78bdb" fill-opacity="0.42"','data-fill="VIOLET" fill="#a78bdb" fill-opacity="0.55"'),'SOLID_NET_HIGHLIGHT_FILL_MISMATCH');
+  assert.throws(()=>solveSolidFigure(emphasisNet({highlights:[{face:'top',fill:'BLUE'}]})),code('SOLID_NET_HIGHLIGHT_INVALID'));
+});

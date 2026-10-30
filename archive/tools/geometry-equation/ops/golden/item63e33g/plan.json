@@ -1,0 +1,63 @@
+{
+ "capability": "solid-figure-v1",
+ "solids": [
+  {
+   "kind": "PRISM",
+   "base": {
+    "kind": "RECT",
+    "width": 4,
+    "depth": 4
+   },
+   "height": 6,
+   "names": "........"
+  }
+ ],
+ "dims": [
+  {
+   "edge": [
+    "#b0",
+    "#b1"
+   ],
+   "label": "2a^2b"
+  },
+  {
+   "edge": [
+    "#b1",
+    "#b2"
+   ],
+   "label": "2a^2b"
+  },
+  {
+   "edge": [
+    "#b0",
+    "#t0"
+   ],
+   "label": "h"
+  }
+ ],
+ "highlights": [
+  {
+   "face": "bottom"
+  }
+ ],
+ "solidCaption": {
+  "math": "V=8a^5b^3",
+  "text": "직육면체"
+ },
+ "caption": "밑면(색칠)이 한 변 2a²b인 정사각형이고 높이가 h, 부피가 8a⁵b³인 직육면체이다. 변의 비율은 모양만 나타낸 것이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "밑면은 한 변이 2a²b인 정사각형",
+   "mappedTo": "solids"
+  },
+  {
+   "id": "c2",
+   "condition": "직육면체의 부피가 8a⁵b³이고 높이를 h라 한다",
+   "mappedTo": "solidCaption"
+  }
+ ],
+ "newVisualInformation": [
+  "색칠한 밑면(정사각형)의 변 2a²b와 높이 h, 부피 8a⁵b³ = 밑넓이 × h의 관계"
+ ]
+}

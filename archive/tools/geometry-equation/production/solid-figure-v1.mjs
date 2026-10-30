@@ -638,8 +638,13 @@ const SYMBOLIC=/^[A-Za-z0-9_\\{}^+\-=.() ]{1,24}$/;
 // A face symbol of a net (net.faceLabels text), written as plain text: a circled number (\u2460-\u2473), a circled Hangul letter, a single Hangul syllable or jamo (\uac00, \u3134), or
 // a number, syllable or jamo in parentheses ((1), (\uac00)). It names or numbers a face: it is no area, so no value is checked.
 export const FACE_SYMBOL=/^(?:[\u2460-\u2473\u3260-\u327B\u3131-\u314E\uAC00-\uD7A3]|\((?:[1-9]\d?|[\u3131-\u314E\uAC00-\uD7A3])\))$/u;
-function dimLabel(raw,value,unit,code,{angle=false}={}){
+function dimLabel(raw,value,unit,code,{angle=false,words=false}={}){
   // raw: undefined (auto) or a TeX string. A numeric label must equal the value; anything else is a symbol and says so.
+  // With `words` (a length of a solid) a label with a Hangul syllable is a word that only names the length (모선, 높이): plain text, no value is checked.
+  if(words&&typeof raw==='string'&&WORD_LABEL.test(raw)){
+    if(!textLabelOk(raw))bad('SOLID_DIM_LABEL_INVALID:'+code);
+    return {tex:raw,text:raw,numeric:false,value:r6(value),word:true};
+  }
   let tex,numeric=true;
   if(raw===undefined){
     tex=lengthTex(value);
@@ -1148,7 +1153,7 @@ function solveSolids(plan){
           const pa=project(named.get(a).p),pb=project(named.get(b).p),dx=pb[0]-pa[0],dy=pb[1]-pa[1],l=Math.hypot(dx,dy),want=SIDE_DIRECTION[d.side];
           if(!(l>1e-9)||Math.abs((-dy*want[0]+dx*want[1])/l)<SIDE_FACING_MIN)bad('SOLID_DIM_SIDE_INVALID:'+code);
         }
-        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...(d.side!==undefined?{side:d.side}:{}),...dimLabel(d.label,value,unitName,code)});
+        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...(d.side!==undefined?{side:d.side}:{}),...dimLabel(d.label,value,unitName,code,{words:true})});
       }else{
         const solid=solids.find(s=>s.id===(d.solid??(d.level!==undefined?section?.solid:d.radius!==undefined||d.slant!==undefined?solids.find(s2=>s2.category==='REV'||s2.category==='SPHERE')?.id:solids.find(s2=>s2.category==='REV'||s2.kind==='PYRAMID'||s2.kind==='FRUSTUM')?.id)));
         if(!solid)bad('SOLID_DIMS_INVALID');
@@ -1180,7 +1185,7 @@ function solveSolids(plan){
             cutAxis=solid.cut.seenAxes.find(a=>a.axis===k&&a.sign===sg);
             if(!cutAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN:'+d.half);
           }
-          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z:liftOf(solid)?r6(z+liftOf(solid)):z,r:r6(rimR),...(solid.cut?{axis:cutAxis}:{}),...dimLabel(d.label,rimR,unitName,code)});
+          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z:liftOf(solid)?r6(z+liftOf(solid)):z,r:r6(rimR),...(solid.cut?{axis:cutAxis}:{}),...dimLabel(d.label,rimR,unitName,code,{words:true})});
         }else if(d.level!==undefined){
           if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id||solid.category!=='REV')bad('SOLID_DIMS_INVALID');
           // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
@@ -1188,7 +1193,7 @@ function solveSolids(plan){
           const f=Number(fm[1])/Number(fm[2]);
           const side=d.level==='top'?'TOP':'BOTTOM';
           const value=side==='TOP'?solid.height*(1-f):solid.height*f;
-          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...dimLabel(d.label,value,unitName,code)});
+          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...dimLabel(d.label,value,unitName,code,{words:true})});
         }else if(d.height!==undefined){
           if(d.height!==true)bad('SOLID_DIMS_INVALID');
           if(solid.category==='SPHERE'&&solid.kind==='SPHERE')bad('SOLID_DIMS_INVALID');
@@ -1221,11 +1226,11 @@ function solveSolids(plan){
               footMark={to:vertexKeys(solid,index)[0],index};
             }
           }
-          dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...(onAxis?{onAxis:true}:{}),...(d.side!==undefined?{side:d.side}:{}),...(d.direct===true&&solid.category==='POLY'?{direct:true}:{}),...(footMark?{footMark}:{}),...dimLabel(d.label,h,unitName,code)});
+          dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...(onAxis?{onAxis:true}:{}),...(d.side!==undefined?{side:d.side}:{}),...(d.direct===true&&solid.category==='POLY'?{direct:true}:{}),...(footMark?{footMark}:{}),...dimLabel(d.label,h,unitName,code,{words:true})});
         }else{
           if(d.slant!==true||(solid.kind!=='CONE'&&solid.kind!=='CONE_FRUSTUM'))bad('SOLID_DIMS_INVALID');
           const l=Math.hypot(solid.radius-solid.topRadius,solid.height);
-          dims.push({id:'dim-'+(k+1),type:'SLANT',solid:solid.id,...dimLabel(d.label,l,unitName,code)});
+          dims.push({id:'dim-'+(k+1),type:'SLANT',solid:solid.id,...dimLabel(d.label,l,unitName,code,{words:true})});
         }
       }
     });
@@ -1358,7 +1363,7 @@ function polyOverlap(a,b){
   const shrink=(p)=>{const c=cen(p);return p.map(q=>[c[0]+(q[0]-c[0])*0.9,c[1]+(q[1]-c[1])*0.9]);};
   return shrink(a).some(q=>inside2(b,q))||shrink(b).some(q=>inside2(a,q))||inside2(b,cen(a))||inside2(a,cen(b));
 }
-const NET_FILLS=['LIGHT','MEDIUM'],NET_ROLES=['ACCENT','REF'];
+const NET_FILLS=Object.keys(HIGHLIGHT_FILLS),NET_ROLES=['ACCENT','REF'];// a net tints a face with any of the six fills of a solid's highlights
 const sameNetSegment=(p,q)=>{
   const near=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1])<1e-3;
   return (near(p[0],q[0])&&near(p[1],q[1]))||(near(p[0],q[1])&&near(p[1],q[0]));
@@ -1933,7 +1938,7 @@ function spec3d(plan,model,ctx){
     }
   }
   for(const d of model.dims){
-    const label={id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id};
+    const label={id:d.id+'-label',role:'dim',owner:d.id,...(d.word?{kind:'TEXT',text:d.text}:{kind:'MATH',tex:d.tex}),plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id};
     if(d.type==='SEGMENT'){
       const a=pt(project(named.get(d.from))),b=pt(project(named.get(d.to)));
       // side: the same direction on the page (y down) for the label placer
@@ -2501,7 +2506,7 @@ function renderPrims(spec,model){
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-face'))body+=`<g data-layer="10"><polygon id="${p.id}" data-role="net-face" data-face="${p.face}" fill="#f4f6fa" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}"${p.excluded?' data-excluded="1"':''} fill="${p.excluded?'#fff':'#f4f6fa'}" stroke="${p.excluded?'#888':'#111'}" stroke-width="1.6"${p.excluded?' stroke-dasharray="5 4"':''} cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
-  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="#7fa6e8" fill-opacity="${p.fill==='MEDIUM'?0.55:0.32}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="${HIGHLIGHT_FILLS[p.fill][0]}" fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face')){
     const [color,opacity]=HIGHLIGHT_FILLS[p.fill??'LIGHT'];
     body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face"${p.polygon?` data-polygon="${p.polygon}"`:` data-solid="${p.solid}" data-face="${p.face}"`}${p.fill&&p.fill!=='LIGHT'?` data-fill="${p.fill}"`:''} fill="${color}" fill-opacity="${opacity}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
@@ -2593,15 +2598,17 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
 }
 
 // --- the author plan ----------------------------------------------------------------------------------------------------------------------------
-const CAPTION_TEXT=/^.{1,24}$/;
+const CAPTION_TEXT=/^.{1,24}$/,CAPTION_MATH_OK=/^[A-Za-z0-9=+\-<>.,()\/^{}]{1,24}$/;
 /**
- * {capability:'solid-figure-v1',solids|net,dims?,highlights?,segments?,section?,unit?,solidCaption?:{text},caption,sourceConditions,newVisualInformation}
+ * {capability:'solid-figure-v1',solids|net,dims?,highlights?,segments?,section?,unit?,solidCaption?:{text?,math?},caption,sourceConditions,newVisualInformation}
  * -> the one-panel composite-panels-v1 it stands for. The model is built here first, so a plan that cannot be drawn is refused before anything is.
  */
 export function expandSolidFigure(plan){
   const model=solveSolidFigure(plan);
   const cap=plan.solidCaption;
-  if(cap!==undefined&&(!isPlain(cap)||Object.keys(cap).some(k=>k!=='text')||typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))bad('SOLID_CAPTION_INVALID');
+  // solidCaption: {text} (a phrase), {math} (an expression with exponents such as V=8a^5b^3) or {math,text} (the expression, then the phrase)
+  if(cap!==undefined&&(!isPlain(cap)||Object.keys(cap).some(k=>k!=='text'&&k!=='math')||(cap.text===undefined&&cap.math===undefined)
+    ||(cap.text!==undefined&&(typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))||(cap.math!==undefined&&(typeof cap.math!=='string'||!CAPTION_MATH_OK.test(cap.math)))))bad('SOLID_CAPTION_INVALID');
   if(plan.panelWidth!==undefined)bad('SOLID_PLAN_INVALID');
   // the author's solidCaption stays in the panel's plan: it is what lets a figure with nothing written on it stand (the panel caption carries the text)
   const {caption,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;

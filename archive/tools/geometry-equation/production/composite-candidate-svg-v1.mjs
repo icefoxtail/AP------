@@ -46,7 +46,7 @@ const SHARED_ROWS_GAP=10;
 export const COMPOSITE_MAX_DISPLAY_HEIGHT_PX=640;
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
 // A caption's math part is plain ASCII math (k=-2, a=1, a=1/8, x<0): what an observer can transcribe back exactly.
-const CAPTION_MATH=/^[A-Za-z0-9=+\-<>.,()\/]{1,24}$/;
+const CAPTION_MATH=/^[A-Za-z0-9=+\-<>.,()\/^{}]{1,24}$/;// ^ and { } write an exponent (V=8a^5b^3): MathJax sets the superscript, the observer reads the TeX back
 
 class Stop extends Error{constructor(status,detail=null){super(status);this.status=status;this.detail=detail;}}
 const isDomainCode=error=>error?.constructor===Error&&/^[A-Z][A-Z0-9_]*(?::|$)/.test(error.message);
