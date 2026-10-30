@@ -559,7 +559,11 @@ window.questionBank=[
     "solutionStatus": "draft",
     "reviewStatus": "pending",
     "image": "assets/images/26_왕운중_1학기_중간_중2_기출/q13.png",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: AB를 축으로 회전시켜 생기는 원뿔(꼭짓점 A, 밑면 중심 B, 밑면 반지름 2x³y, 높이 4x³y)과 반지름이 2x³y인 구(중심 O)를 나란히 보여 준다.",
+    "solutionImageCaption": "원뿔의 밑면 반지름과 구의 반지름은 2x³y로 같고, 원뿔의 높이 4x³y는 구의 지름과 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -974,7 +978,11 @@ window.questionBank=[
     "solutionStatus": "draft",
     "reviewStatus": "pending",
     "image": "assets/images/26_왕운중_1학기_중간_중2_기출/q23.png",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 A(세로 5xy, 가로 2x+3y²)와 B(세로 3x²y², 가로 7x-4y²)를 이어 붙인 그림으로, 두 가로의 합이 전체 가로 L임을 보여 준다.",
+    "solutionImageCaption": "각 직사각형의 가로 길이는 넓이를 세로로 나눈 값이고 L은 두 가로의 합이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
