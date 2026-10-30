@@ -126,6 +126,7 @@ var AP_VENDOR_BASE=new URL('vendor/',document.baseURI).href;
 window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP_VENDOR_BASE+'mathjax-tex-font'},load:['[tex]/boldsymbol']},tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']],packages:{'[+]':['ams','boldsymbol']}},output:{font:'mathjax-tex',displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:.2}},options:{enableMenu:false},startup:{typeset:false}};
 </script>
 <script defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js"></script>
+<script src="archive-asset-base.js?v=20261030-s20-1"></script>
 <script src="problem-bank-meta.js?v=20261029-s14-1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
@@ -321,7 +322,7 @@ function figure(parent,q){
  if(!validProblemImagePath(q.image))throw Error("문제 이미지 경로 오류");
  const size=["small","half","medium","large","full","tall"].includes(q.imageSize)?q.imageSize:"";
  const wrap=document.createElement("div");wrap.className="q-image-wrap"+(size?" image-"+size:"");
- const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";wrap.appendChild(img);parent.appendChild(wrap);
+ const img=document.createElement("img");img.src=window.resolveExamImageUrl?resolveExamImageUrl(q.image):q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";wrap.appendChild(img);parent.appendChild(wrap);
 
 }
 function stemText(parent,raw){

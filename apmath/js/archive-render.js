@@ -14,6 +14,11 @@
         return `${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`;
     }
 
+    // Exam image base URL setting (archive/archive-asset-base.js). Default = unchanged same-origin URL.
+    function externalizeExamImage(url) {
+        return typeof window.resolveExamImageUrl === 'function' ? window.resolveExamImageUrl(url) : url;
+    }
+
     function normalizeArchiveFile(file) {
         const raw = String(file || '').trim();
         if (!raw) return '';
@@ -34,7 +39,7 @@
             path = (dir ? `${dir}/` : '') + path;
         }
         const encoded = path.split('/').map(part => encodeURIComponent(part)).join('/');
-        return withArchiveAssetCacheBuster(ARCHIVE_BASE_URL + encoded);
+        return externalizeExamImage(withArchiveAssetCacheBuster(ARCHIVE_BASE_URL + encoded));
     }
 
     function rewriteImgSrcInHtml(html, archiveFile) {

@@ -23,6 +23,7 @@
     <script src="../archive/vendor/qrious/qrious.min.js?v=4.0.2"></script>
     <script src="../archive/vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="../archive/native_print.js?v=20260915.2"></script>
+    <script src="../archive/archive-asset-base.js?v=20261030-s20-1"></script>
     <script src="../archive/data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="../archive/svg-accessibility.js?v=20261014.1"></script>
     <script src="../archive/print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
@@ -589,7 +590,9 @@ function resolveArchiveAssetUrl(src, archiveFile) {
         path = (dir ? dir + '/' : '') + path;
     }
     const encoded = path.split('/').map(part => encodeURIComponent(part)).join('/');
-    return withArchiveAssetCacheBuster(ARCHIVE_BASE_URL + encoded);
+    // Exam image base URL setting (archive/archive-asset-base.js). Default = unchanged same-origin URL.
+    const url = withArchiveAssetCacheBuster(ARCHIVE_BASE_URL + encoded);
+    return typeof resolveExamImageUrl === 'function' ? resolveExamImageUrl(url) : url;
 }
 
 function rewriteImgSrcInHtml(html, archiveFile) {

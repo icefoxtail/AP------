@@ -5,7 +5,6 @@
  */
 
 const CONFIG = {
-    R2_URL: 'https://r2.ap-math.com',
     API_BASE: 'https://ap-math-os-v2612.js-pdf.workers.dev/api'
 };
 

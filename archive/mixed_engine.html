@@ -55,7 +55,8 @@
     <!-- 페이지 전체 평탄화 인쇄용 로컬 번들. 외부 CDN 지연이 인쇄 준비를 막지 않도록 로컬 보관. -->
     <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="native_print.js?v=20260915.2"></script>
-    <script src="print_image_optimizer.js?v=20260811.3"></script>
+    <script src="archive-asset-base.js?v=20261030-s20-1"></script>
+    <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20260911.5"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
@@ -2034,13 +2035,15 @@ function renderQuestionImageHTML(q) {
 
 function withArchiveAssetCacheBuster(src) {
     const raw = String(src == null ? '' : src).trim();
+    // Exam images: the base URL setting lives in archive-asset-base.js (default = unchanged same-origin URL).
+    const external = value => (typeof resolveExamImageUrl === 'function' ? resolveExamImageUrl(value) : value);
     if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/(?:images|generated-lite)\//i.test(raw)) return raw;
     const hashIndex = raw.indexOf('#');
     const base = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
     const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
-    if (/(?:^|[?&])v=[^&#]*/i.test(base)) return raw;
+    if (/(?:^|[?&])v=[^&#]*/i.test(base)) return external(raw);
     const separator = base.includes('?') ? '&' : '?';
-    return `${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`;
+    return external(`${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`);
 }
 
 function escapeArchiveHtmlAttribute(value) {

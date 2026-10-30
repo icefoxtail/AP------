@@ -35,6 +35,16 @@
         return src.endsWith('.png') || src.endsWith('.webp') || src.startsWith('data:image/png') || src.startsWith('data:image/webp');
     }
 
+    // Reading pixels of a cross-origin image that was not loaded in CORS mode would taint the canvas, so such
+    // images (exam images served from the external image base) are printed as they are.
+    function isUnreadableCrossOrigin(img) {
+        if (img?.crossOrigin) return false;
+        try {
+            const url = new URL(String(img?.currentSrc || img?.src || ''), global.document?.baseURI);
+            return url.protocol !== 'data:' && url.protocol !== 'blob:' && url.origin !== global.location?.origin;
+        } catch (error) { return false; }
+    }
+
     function renderedSize(img) {
         const style = global.getComputedStyle ? global.getComputedStyle(img) : null;
         return {
@@ -81,7 +91,7 @@
         }
 
         for (const img of Array.from(root.querySelectorAll('img'))) {
-            if (!img.complete || !img.naturalWidth || !img.naturalHeight || !isFlattenableRasterImage(img)) continue;
+            if (!img.complete || !img.naturalWidth || !img.naturalHeight || !isFlattenableRasterImage(img) || isUnreadableCrossOrigin(img)) continue;
             summary.considered += 1;
 
             try {
