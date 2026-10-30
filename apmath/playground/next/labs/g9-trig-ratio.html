@@ -18,7 +18,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중3 · 삼각비 (AP Math Lab 2.0 이식본) — 8개 탐구관 × 38개 장면
@@ -142,6 +142,34 @@ window.addEventListener('DOMContentLoaded', function () {
   const sink = {};
   const { pline, ppoly, pdot, pright, ptick, pangle, ptag, parc, drawMiniOverlayBox, drawBottomTapeBanner } = APLab.compat.master(() => BOARD, sink);
 
+  /* [표시 보강] 각 값을 같은 각의 안(호 바로 바깥, 이등분선 위)에 놓는 도우미와 평행 표시.
+     pmark = pangle(호·고리 수·색)과 같은 호 + 값 글자 위치만 dx/dy로 비켜 이웃 각의 글자와 겹치지 않게 합니다.
+     ppar  = 선분 가운데의 '>' 표시(평행·같은 방향). 모두 현재 꼭짓점 좌표에서 계산하므로 그림이 변해도 따라옵니다. */
+  function pmark(v, p1, p2, col, r, rings, label, o = {}) {
+    BOARD.angle(v, p1, p2, { color: col, r, rings, size: 12 });
+    if (!label) return;
+    const s0 = BOARD.toS(v), s1 = BOARD.toS(p1), s2 = BOARD.toS(p2);
+    const t1 = Math.atan2(s1.y - s0.y, s1.x - s0.x), t2 = Math.atan2(s2.y - s0.y, s2.x - s0.x);
+    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
+    const m = t1 + d / 2, lr = r + (o.gap == null ? 13 : o.gap);
+    const bx = o.abs ? 0 : Math.cos(m) * lr, by = o.abs ? 0 : Math.sin(m) * lr; // abs: dx/dy를 꼭짓점 기준 화면 위치로 직접 지정
+    BOARD.text(v, label, { dx: bx + (o.dx || 0), dy: by + (o.dy || 0), color: col, size: o.size || 12.5, align: 'center', baseline: 'middle', weight: 800 });
+  }
+  function ppar(p, q, n = 1, col = TCOL.gold) {
+    const a = BOARD.toS(p), b = BOARD.toS(q), c = BOARD.ctx;
+    const m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, l = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+    const d = { x: (b.x - a.x) / l, y: (b.y - a.y) / l }, nn = { x: -d.y, y: d.x };
+    c.save();
+    c.strokeStyle = BOARD.color(col); c.lineWidth = 2 * BOARD.lw; c.setLineDash([]); c.lineCap = 'round'; c.lineJoin = 'round';
+    for (let i = 0; i < n; i++) {
+      const o = (i - (n - 1) / 2) * 8, x = m.x + d.x * o, y = m.y + d.y * o;
+      c.beginPath();
+      c.moveTo(x - d.x * 4 + nn.x * 5, y - d.y * 4 + nn.y * 5); c.lineTo(x + d.x * 3, y + d.y * 3); c.lineTo(x - d.x * 4 - nn.x * 5, y - d.y * 4 - nn.y * 5);
+      c.stroke();
+    }
+    c.restore();
+  }
+
   /* ===== 원본 그대로: 장면별 실시간 명세 getSpec (원본 743–1214행) ===== */
     function getSpec() {
       const m = state.mode;
@@ -172,7 +200,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'oneToOther') {
           return {
             badge: `탐구 1-C · 한 삼각비 값(예: sin A = 3/5)이 주어졌을 때 나머지 삼각비 구하기`,
-            hint: `$\\sin A = \\dfrac{3}{5}$이 주어지면 빗변을 $5$, 마주보는 높이를 $3$으로 놓은 뒤 <strong class="text-emerald-300">피타고라스 정리(5² - 3² = 4²)로 밑변 4를 먼저 구합니다!</strong>`,
+            hint: `$\\sin A = \\dfrac{3}{5}$이 주어지면 빗변을 $5$, 마주 보는 높이를 $3$으로 놓은 뒤 <strong class="text-emerald-300">피타고라스 정리(5² - 3² = 4²)로 밑변 4를 먼저 구합니다!</strong>`,
             actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 피타고라스 정리로 밑변 4 구하기',
             p1Title: '기준각 선택', p2Title: '확대 배수',
             parts: [
@@ -223,7 +251,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // defSCT 기본
         return {
           badge: `탐구 1-A · 삼각비의 뜻 (sin A, cos A, tan A를 필기체 s, c, t로 쓰며 변의 비 기억하기)`,
-          hint: `우측의 <strong class="text-amber-300">sin · cos · tan 조각 카드를 클릭</strong>하거나 슬라이더를 움직여 보세요! 직각삼각형에서 기준각 $A$가 정해지면 90° 맞은편이 <strong class="text-amber-300">빗변(c)</strong>, 각 $A$ 맞은편이 <strong class="text-pink-300">대변(높이 a)</strong>, 남은 변이 <strong class="text-sky-300">밑변(b)</strong>입니다!`,
+          hint: `<strong class="text-amber-300">sin · cos · tan 조각 카드를 클릭</strong>하거나 슬라이더를 움직여 보세요! 직각삼각형에서 기준각 $A$가 정해지면 90° 맞은편이 <strong class="text-amber-300">빗변(c)</strong>, 각 $A$ 맞은편이 <strong class="text-pink-300">대변(높이 a)</strong>, 남은 변이 <strong class="text-sky-300">밑변(b)</strong>입니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 기본 도형 보기' : '🎬 s(사인) · c(코사인) · t(탄젠트)를 쓰는 방향으로 변 보기',
           p1Title: '기준각 θ 선택', p2Title: '빗변 스케일',
           parts: [
@@ -354,7 +382,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         return {
           badge: `탐구 3 · 반지름이 1인 사분원 — sin ${deg}° = AB(${sVal}), cos ${deg}° = OB(${cVal}), tan ${deg}° = CD(${tVal})`,
-          hint: `캔버스 위 <strong class="text-amber-300">사분원의 점 A를 마우스로 직접 잡고 0°~85°로 움직여 보세요!</strong> 분모가 $1$이 되도록 맞추면 <strong class="text-pink-300">sin x = 안쪽 세로 AB</strong>, <strong class="text-sky-300">cos x = 안쪽 가로 OB</strong>, 그리고 <strong class="text-amber-300">tan x = 바깥쪽 접선 세로 CD</strong>의 길이와 정확히 같아집니다!`,
+          hint: `그림에서 <strong class="text-amber-300">사분원의 점 A를 마우스로 직접 잡고 0°~85°로 움직여 보세요!</strong> 분모가 $1$이 되도록 맞추면 <strong class="text-pink-300">sin x = 안쪽 세로 AB</strong>, <strong class="text-sky-300">cos x = 안쪽 가로 OB</strong>, 그리고 <strong class="text-amber-300">tan x = 바깥쪽 접선 세로 CD</strong>의 길이와 정확히 같아집니다!`,
           actionTxt: '🎬 0° ➔ 30° ➔ 45° ➔ 60°로 각도를 바꾸며 보기',
           p1Title: '각도 x 선택', p2Title: '반지름 r = 1',
           parts: [
@@ -573,7 +601,7 @@ window.addEventListener('DOMContentLoaded', function () {
             : `탐구 7-A · 🟩 예각삼각형(∠B = ${effDeg}°)의 넓이 공식 — S = ½ ac sin B`,
           hint: isObt
             ? `끼인각이 $120^\\circ$ 둔각일 때는 꼭짓점 $A$에서 내린 수선의 발 $H$가 밑변 바깥 연장선에 떨어집니다! 따라서 <strong class="text-pink-300">높이 h = c sin(180°-120°) = c sin 60°</strong>가 되어 <strong class="text-amber-300">S = ½ ac sin(180°-B)</strong>입니다!`
-            : `삼각형의 넓이는 $\\dfrac{1}{2}\\times(\\text{밑변 } a)\\times(\\text{높이 } h)$인데, 직각삼각형에서 <strong class="text-pink-300">높이 h = c sin B</strong>이므로 이를 대입하면 <strong class="text-amber-300">S = ½ ac sin B</strong>가 탄생합니다!`,
+            : `삼각형의 넓이는 $\\dfrac{1}{2}\\times(\\text{밑변 } a)\\times(\\text{높이 } h)$인데, 직각삼각형에서 <strong class="text-pink-300">높이 h = c sin B</strong>이므로 넓이 식의 $h$에 $c\\sin B$를 대입하면 <strong class="text-amber-300">S = ½ ac sin B</strong>가 탄생합니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 높이 h = c sin B 수선 강조!',
           p1Title: '끼인각 B 선택', p2Title: '두 변 (c=8, a=10)',
           parts: [
@@ -771,6 +799,9 @@ window.addEventListener('DOMContentLoaded', function () {
         pangle(A, B, C, TCOL.pink, 32, 1, '45°');
         pangle(C, A, B, TCOL.pink, 32, 1, '45°');
         ptick(A, B, 1, TCOL.cyan); ptick(B, C, 1, TCOL.cyan);
+        // [표시 보강] 정사각형의 나머지 반쪽: 같은 길이(AD=DC=AB=BC) 눈금과 직각 표시
+        ptick(A, D, 1, TCOL.cyan); ptick(D, C, 1, TCOL.cyan);
+        pright(D, A, C, 14, 'rgba(251,191,36,0.55)');
 
         pdot(A, 'A(45°)', TCOL.pink, null, { x: -24, y: 18 });
         pdot(B, 'B(90°)', TCOL.gold, null, { x: 10, y: 18 });
@@ -799,6 +830,10 @@ window.addEventListener('DOMContentLoaded', function () {
         pright(H, A, C, 12, TCOL.gold);
         pangle(B, A, H, TCOL.cyan, 28, 1, '45°');
         pangle(C, A, H, TCOL.gold, 34, 1, '30°');
+        // [표시 보강] 꼭대기 A의 두 각(∠BAH=45°는 ∠B와 같은 청색 호, ∠HAC=60°는 다른 색 두 겹 호)과 AH=BH 눈금
+        pmark(A, B, H, TCOL.cyan, 30, 1, '45°', { dx: -8 });
+        pmark(A, H, C, TCOL.pink, 26, 2, '60°', { dx: 10 });
+        ptick(A, H, 1, TCOL.cyan); ptick(B, H, 1, TCOL.cyan);
 
         pdot(A, 'A', TCOL.white, null, { x: -8, y: -14 });
         pdot(B, 'B(45°)', TCOL.cyan, null, { x: -24, y: 18 });
@@ -895,7 +930,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
       pright(M, A, B, 14, TCOL.gold);
       pangle(B, A, M, TCOL.gold, 30, 1, '60°');
-      pangle(A, B, M, TCOL.pink, 34, 1, '30°');
+      pmark(A, B, M, TCOL.pink, 34, 1, '30°', { dx: -10 });
+      // [표시 보강] 반쪽 삼각형의 같은 각(60°=60°, 30°=30°)은 같은 색·같은 호로, 같은 길이(BM=MC)는 같은 눈금으로
+      pmark(C, A, M, TCOL.gold, 30, 1, '60°');
+      pmark(A, M, C, TCOL.pink, 34, 1, '30°', { dx: 10 });
+      pright(M, A, C, 14, 'rgba(251,191,36,0.55)');
+      ptick(B, M, 1, TCOL.cyan); ptick(M, C, 1, TCOL.cyan);
 
       pdot(A, 'A(30°)', TCOL.pink, null, { x: -15, y: -14 });
       pdot(B, 'B(60°)', TCOL.gold, null, { x: -24, y: 18 });
@@ -949,7 +989,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
       pright(B, A, O, 11, TCOL.pink);
       pright(C, D, O, 12, TCOL.gold);
-      pangle(O, C, A, TCOL.gold, 34, 1, `${deg}°`);
+      pangle(O, C, A, TCOL.gold, 34, 1, `x=${deg}°`);
+      // [표시 보강] 반지름 OA = OC = 1 같은 길이 눈금(사분원의 반지름)
+      ptick(O, A, 1, TCOL.white); ptick(O, C, 1, TCOL.white);
 
       // 3대 핵심 선분 강조!
       pline(O, B, TCOL.cyan, 5.0, [], true, 1); // cos x = OB
@@ -1046,6 +1088,9 @@ window.addEventListener('DOMContentLoaded', function () {
         pline(C, D, TCOL.gold, 4.6, [], true, 1);
         pright(C, B, A, 13, TCOL.pink);
         pangle(A, B, C, TCOL.cyan, 34, 1, `${deg}°`);
+        // [표시 보강] 눈높이 AE = CD(= h₀) 같은 눈금, 지면과의 직각
+        ptick(A, E, 1, TCOL.gold); ptick(C, D, 1, TCOL.gold);
+        pright(D, C, E, 11, TCOL.gold); pright(E, A, D, 11, TCOL.gold);
 
         pdot(A, 'A(눈 위치)', TCOL.cyan, null, { x: -65, y: -6 });
         pdot(B, 'B(나무 꼭대기)', TCOL.pink, null, { x: 12, y: -6 });
@@ -1134,13 +1179,17 @@ window.addEventListener('DOMContentLoaded', function () {
 
         pright(H, A, B, 12, TCOL.gold);
         pangle(B, A, H, TCOL.pink, 30, 1, '45°');
-        pangle(C, A, H, TCOL.cyan, 28, 1, '30°');
-        pangle(A, B, H, TCOL.pink, 32, 1, '45°');
-        pangle(A, H, C, TCOL.cyan, 36, 2, '30°');
+        // [표시 보강] ∠C는 60°(원래 '30°'로 적혀 있었음) — ∠B=∠BAH=45°는 같은 분홍 호, ∠HAC=30°는 청색 두 겹 호, ∠C=60°는 녹색 호로 구분
+        pmark(C, A, H, TCOL.green, 28, 1, '60°');
+        pmark(A, B, H, TCOL.pink, 32, 1, '45°', { dx: -8 });
+        pmark(A, H, C, TCOL.cyan, 36, 2, '30°', { dx: 10 });
+        pright(H, A, C, 12, TCOL.gold);
 
         if (sub === 'trapDontSplit60') {
           const badH = projectOnLine(C, A, B);
           pline(C, badH, TCOL.red, 2.8, [4, 4]);
+          // [표시 보강] 잘못 내린 수선과 AB의 직각 표시
+          pright(badH, C, A, 11, TCOL.red);
           ptag((C.x + badH.x) / 2, (C.y + badH.y) / 2, '❌ 60°를 나누면 풀기 어려움', TCOL.red, 12.5);
         }
 
@@ -1170,6 +1219,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
       pright(H, A, C, 13, TCOL.gold);
       pangle(B, A, H, TCOL.cyan, 30, 1, '60°');
+      // [표시 보강] 수선 AH 양쪽 직각, 꼭대기 쪼개진 각 ∠BAH=30°
+      pright(H, A, B, 13, TCOL.gold);
+      pmark(A, B, H, TCOL.pink, 30, 1, '30°');
 
       pdot(A, 'A', TCOL.gold, null, { x: -8, y: -14 });
       pdot(B, 'B(60°)', TCOL.cyan, null, { x: -24, y: 18 });
@@ -1207,10 +1259,13 @@ window.addEventListener('DOMContentLoaded', function () {
         pline(A, H, TCOL.gold, 4.6, [], true, 2);
 
         pright(H, A, B, 12, TCOL.gold);
+        pright(H, A, C, 12, TCOL.gold);
         pangle(B, A, H, TCOL.cyan, 28, 1, '45°');
         pangle(C, A, H, TCOL.pink, 26, 1, '60°');
-        pangle(A, B, H, TCOL.cyan, 32, 2, 'x=45°');
-        pangle(A, H, C, TCOL.pink, 36, 2, 'y=30°');
+        // [표시 보강] 윗각 x(왼쪽)·y(오른쪽)의 값 글자가 서로 겹치지 않게 양옆으로 비켜 적음
+        pmark(A, B, H, TCOL.cyan, 32, 2, 'x=45°', { dx: -20 });
+        pmark(A, H, C, TCOL.pink, 36, 2, 'y=30°', { dx: 22 });
+        if (sub === 'std4560Height') { ptick(A, H, 1, TCOL.gold); ptick(B, H, 1, TCOL.gold); } // 45°이므로 BH = AH = h
 
         pdot(A, 'A(윗각 x, y!)', TCOL.gold, null, { x: -30, y: -14 });
         pdot(B, 'B(45°)', TCOL.cyan, null, { x: -24, y: 18 });
@@ -1245,12 +1300,16 @@ window.addEventListener('DOMContentLoaded', function () {
         pright(H, A, B, 13, TCOL.gold);
         pangle(B, A, C, TCOL.cyan, 32, 1, '30°');
         pangle(C, A, H, TCOL.pink, 28, 1, '60°');
-        pangle(A, B, H, TCOL.cyan, 38, 2, '전체 x=60°');
-        pangle(A, C, H, TCOL.pink, 28, 1, 'y=30°');
+        // [표시 보강] 윗각 x(전체, 청색 두 겹)·y(바깥, 분홍 두 겹) 글자가 겹치지 않게: x는 호 끝 왼쪽, y는 좁은 각 안쪽 아래
+        const kk = Math.max(0.55, Math.min(1, Math.abs(BOARD.toS(H).y - BOARD.toS(A).y) / 330)); // 휴대폰처럼 그림이 작을 때 호·글자 간격도 함께 줄임
+        pmark(A, B, H, TCOL.cyan, 46 * kk, 2, '전체 x=60°', { abs: true, dx: -78 * kk, dy: 26 * kk });
+        pmark(A, C, H, TCOL.pink, 30 * kk, 2, 'y=30°', { abs: true, dx: -22 * kk, dy: 78 * kk });
 
         if (sub === 'std3060Mountain') {
           ptick(B, C, 2, TCOL.gold);
           ptick(A, C, 2, TCOL.gold);
+          // 숨은 이등변: ∠BAC = ∠B = 30° (같은 청색 한 겹 호)
+          pmark(A, B, C, TCOL.cyan, 62 * kk, 1, '30°', { abs: true, dx: -56 * kk, dy: 62 * kk });
         }
 
         pdot(A, 'A(산 정상)', TCOL.gold, null, { x: -20, y: -14 });
@@ -1294,8 +1353,11 @@ window.addEventListener('DOMContentLoaded', function () {
         ppoly([ pt(A.x + sep, A.y), pt(D.x + sep, D.y), pt(C.x + sep, C.y) ], 'rgba(244, 114, 182, 0.26)', TCOL.pink, 3.2, 2);
         pline(A, D, TCOL.gold, 4.4, [], true, 0);
 
-        pangle(A, B, D, TCOL.cyan, 32, 1, '30°');
-        pangle(A, D, C, TCOL.pink, 36, 1, '30°');
+        // [표시 보강] 이등분된 두 각은 같은 값(30°=30°)이므로 같은 금색 호·같은 한 겹, 갈라진 삼각형(sep)을 따라 호도 이동. 전체 각 60°는 바깥 호
+        const As = (k) => pt(A.x + k * sep, A.y), Bs = (k) => pt(B.x + k * sep, B.y), Ds = (k) => pt(D.x + k * sep, D.y), Cs = (k) => pt(C.x + k * sep, C.y);
+        pmark(As(-1), Bs(-1), Ds(-1), TCOL.gold, 34, 1, '30°', { dx: -10 });
+        pmark(As(1), Ds(1), Cs(1), TCOL.gold, 34, 1, '30°', { dx: 10 });
+        if (state.fold < 0.1) pmark(A, B, C, 'rgba(255,255,255,0.75)', 62, 1, '60°', { gap: 12 });
 
         pdot(A, 'A(60° = 30°+30°)', TCOL.gold, null, { x: -42, y: -14 });
         pdot(B, 'B', TCOL.cyan, null, { x: -18, y: 18 });
@@ -1326,9 +1388,40 @@ window.addEventListener('DOMContentLoaded', function () {
           ppoly([O, v1, v2], i === 0 ? 'rgba(251, 191, 36, 0.38)' : 'rgba(56, 189, 248, 0.16)', i === 0 ? TCOL.gold : TCOL.cyan, i === 0 ? 3.2 : 1.8, i === 0 ? 1 : 0);
         }
         pangle(O, verts[0], verts[1], TCOL.gold, 34, 1, '45°');
+        // [표시 보강] 나머지 7개 중심각도 같은 45°(청색 한 겹 호), 두 반지름 OA = OB = R 같은 눈금
+        for (let i = 1; i < n; i++) pmark(O, verts[i], verts[(i + 1) % n], TCOL.cyan, 34, 1, '45°', { size: 11.5 });
+        ptick(O, verts[0], 2, TCOL.gold); ptick(O, verts[1], 2, TCOL.gold);
         pdot(O, 'O(중심)', TCOL.gold, null, { x: -20, y: -12 });
         ptag(O.x + R / 2 + 12, O.y - 18, 'R = 6', TCOL.gold, 13.5);
         drawBottomTapeBanner(rect, '정팔각형 넓이 = 중심각(360°÷8 = 45°)인 이등변삼각형(½ × 6 × 6 × sin 45°) × 8개 = 72√2!');
+        return;
+      }
+
+      // [표시 보강] 정삼각형 장면: 원래는 일반 삼각형(a=10, c=8, B=60°)이 그려졌음 → 설명대로 한 변 a인 정삼각형(세 각 60° 같은 호, 세 변 같은 눈금, 높이=수직이등분선)
+      if (sub === 'equilFormula') {
+        const a = 240 * s, h = (a * Math.sqrt(3)) / 2, aL = state.baseLen;
+        const B = pt(cx - a / 2, cy + 100 * s), C = pt(cx + a / 2, cy + 100 * s);
+        const H = pt(cx, B.y), A = pt(cx, B.y - h);
+        ppoly([A, B, C], 'rgba(52, 211, 153, 0.24)', TCOL.green, 3.4, 2);
+        pline(B, C, TCOL.cyan, 4.4, [], false, 0);
+        pline(A, H, TCOL.pink, 4.2, [5, 4], true, 1);
+        pright(H, A, C, 13, TCOL.pink); pright(H, A, B, 13, TCOL.pink);
+        pmark(A, B, C, TCOL.gold, 34, 1, '60°');
+        pmark(B, A, C, TCOL.gold, 34, 1, '60°');
+        pmark(C, B, A, TCOL.gold, 34, 1, '60°');
+        ptick(A, B, 1, TCOL.cyan); ptick(A, C, 1, TCOL.cyan); ptick(B, C, 1, TCOL.cyan);
+        ptick(B, H, 2, TCOL.pink); ptick(H, C, 2, TCOL.pink);
+
+        pdot(A, 'A', TCOL.gold, null, { x: -8, y: -14 });
+        pdot(B, 'B', TCOL.gold, null, { x: -18, y: 18 });
+        pdot(C, 'C', TCOL.cyan, null, { x: 10, y: 18 });
+        pdot(H, 'H(중점)', TCOL.pink, null, { x: -16, y: 22 });
+
+        ptag((A.x + B.x) / 2 - 26, (A.y + B.y) / 2 - 4, `a = ${aL}`, TCOL.cyan, 14);
+        ptag((A.x + C.x) / 2 + 26, (A.y + C.y) / 2 - 4, `a = ${aL}`, TCOL.cyan, 14);
+        ptag((B.x + C.x) / 2, C.y + 40, `밑변 a = ${aL}`, TCOL.cyan, 14);
+        ptag(H.x - 62, (A.y + H.y) / 2 + 34, 'h = (√3/2)a', TCOL.pink, 13.5);
+        drawBottomTapeBanner(rect, `한 변이 a(${aL})인 정삼각형: 높이 h = a sin 60° = (√3/2)a, 넓이 S = ½ a² sin 60° = (√3/4)a²!`);
         return;
       }
 
@@ -1390,6 +1483,12 @@ window.addEventListener('DOMContentLoaded', function () {
         ppoly([A, C, D], 'rgba(244, 114, 182, 0.24)', TCOL.pink, 3.2, 1);
         pline(A, C, TCOL.gold, 3.2, [5, 4]);
         pangle(B, A, C, TCOL.gold, 32, 1, 'θ=60°');
+        // [표시 보강] 마주 보는 각 ∠D = ∠B = θ(같은 금색 호), 마주 보는 변은 같은 눈금(AB=DC 한 줄, BC=AD 두 줄)과 평행 표시
+        pmark(D, A, C, TCOL.gold, 32, 1, 'θ');
+        ptick(A, B, 1, TCOL.gold); ptick(D, C, 1, TCOL.gold);
+        ptick(B, C, 2, TCOL.gold); ptick(A, D, 2, TCOL.gold);
+        ppar(lerp(A, B, 0.5), B, 1, TCOL.white); ppar(lerp(D, C, 0.5), C, 1, TCOL.white);
+        ppar(lerp(B, C, 0.5), C, 2, TCOL.white); ppar(lerp(A, D, 0.5), D, 2, TCOL.white);
 
         [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], TCOL.white, pt(cx, cy)));
         ptag((A.x + B.x) / 2 - 28, (A.y + B.y) / 2, 'a = 6', TCOL.cyan, 14);
@@ -1423,14 +1522,23 @@ window.addEventListener('DOMContentLoaded', function () {
         ppoly([E, F, G, H], 'rgba(251, 191, 36, 0.14)', TCOL.gold, 2.6, 2);
         ptag((E.x + F.x) / 2 - 15, (E.y + F.y) / 2 + 22, '바깥 가로 = 대각선 p(8)', TCOL.cyan, 12.5);
         ptag((F.x + G.x) / 2 + 52, (F.y + G.y) / 2, '바깥 세로 = q(10)', TCOL.pink, 12.5);
+        // [표시 보강] 바깥 평행사변형의 변은 대각선과 평행(AC∥EF∥HG 한 겹 '>', BD∥FG∥EH 두 겹 '>'), 꼭짓점 F·H의 각도 같은 θ
+        // (바깥 변의 가운데는 안쪽 꼭짓점 A·B·C·D 자리이므로 변의 3/4 지점에 표시)
+        ppar(lerp(E, F, 0.5), F, 1, TCOL.cyan); ppar(lerp(H, G, 0.5), G, 1, TCOL.cyan); ppar(lerp(F, G, 0.5), G, 2, TCOL.pink); ppar(lerp(E, H, 0.5), H, 2, TCOL.pink);
+        pmark(F, E, G, TCOL.gold, 26, 1, 'θ'); pmark(H, G, E, TCOL.gold, 26, 1, 'θ');
         [E, F, G, H].forEach((p, i) => pdot(p, 'EFGH'[i], TCOL.gold));
         ctx.restore();
+      } else {
+        [E, F, G, H].forEach((p) => BOARD.toS(p)); // [표시 보강] 접힌 상태에서도 바깥 평행사변형까지 화면에 담아, 변환을 켜도 도형·글자가 잘리지 않게(맞춤은 장면 입장 때 한 번만 계산)
       }
 
       ppoly([A, B, C, D], 'rgba(52, 211, 153, 0.28)', TCOL.green, 3.4, 2);
       pline(A, C, TCOL.cyan, 4.2, [], true, 0); // 대각선 p
       pline(B, D, TCOL.pink, 4.2, [], true, 1); // 대각선 q
       pangle(O, C, B, TCOL.gold, 28, 1, 'θ=60°');
+      // [표시 보강] 맞꼭지각 ∠AOD = θ 도 같은 금색 호, 대각선 평행 표시(바깥 변과 같은 '>' 겹 수)
+      pmark(O, A, D, TCOL.gold, 28, 1, 'θ');
+      ppar(A, O, 1, TCOL.cyan); ppar(O, D, 2, TCOL.pink);
 
       [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], TCOL.white, O));
       pdot(O, 'O', TCOL.gold, null, { x: 8, y: -10 });

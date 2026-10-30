@@ -18,7 +18,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    공통수학 · 이차함수 (AP Math Lab 2.0 이식본) — 6개 탐구관 × 30개 장면
@@ -268,7 +268,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'minDistMaxArea') {
           return {
             badge: `탐구 1-D · 📐 포물선 위의 점 P와 직선 사이의 최단거리 & 삼각형 △PAB의 최대 넓이!`,
-            hint: `이 탐구의 기준 직선은 포물선 아래에 있어 교점이 없습니다. 이를 평행이동해 포물선에 가까이 가져오면 두 곡선 사이 간격은 접할 때($D=0$) 가장 작아집니다. 직선이 포물선과 만나면 최단거리는 그 교점에서 $0$이므로, 접선 결론은 이처럼 만나지 않는 설정에서 적용합니다.`,
+            hint: `이 탐구의 기준 직선은 포물선 아래에 있어 교점이 없습니다. 이 직선을 평행이동해 포물선에 가까이 가져오면 두 곡선 사이 간격은 접할 때($D=0$) 가장 작아집니다. 직선이 포물선과 만나면 최단거리는 그 교점에서 $0$이므로, 접선 결론은 이처럼 만나지 않는 설정에서 적용합니다.`,
             actionTxt: state.fold > 0.5 ? '🎬 일반 점 P 보기' : '🎬 평행한 접선(D=0)을 긋고 접점 P에서 최대 넓이 확인',
             dim1Name: '핵심 전략', dim2Name: '최적점 P의 정체',
             val1Txt: '같은 기울기 m인 접선(D=0)', val2Txt: '접점 x = (m - b) / 2a!',
@@ -383,13 +383,13 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'substitution2Stage') {
           return {
             badge: `탐구 2-D · 🪤 [주의] 치환을 이용한 합성함수 y = (x²-2x)² - 4(x²-2x) + 3 의 두 단계 범위`,
-            hint: `$-1 \\le x \\le 2$ 일 때 $t = x^2 - 2x$ 로 치환하고 나서 **$t$의 범위를 구하지 않거나 $x$ 범위를 그대로 쓰면 틀립니다!** <strong>좌측 1단계 그래프에서 구한 $t$의 치역($-1 \\le t \\le 3$)이 우측 2단계 그래프 $y = t^2 - 4t + 3$ 의 새로운 정의역</strong>이 됩니다!`,
+            hint: `$-1 \\le x \\le 2$ 일 때 $t = x^2 - 2x$ 로 치환하고 나서 **$t$의 범위를 구하지 않거나 $x$ 범위를 그대로 쓰면 틀립니다!** <strong>1단계 그래프에서 구한 $t$의 치역($-1 \\le t \\le 3$)이 2단계 그래프 $y = t^2 - 4t + 3$ 의 새로운 정의역</strong>이 됩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 1단계(x➔t) 보기' : '🎬 1단계 치역(-1≤t≤3)이 2단계 정의역이 됨을 확인',
             dim1Name: '1단계: x 범위 ➔ t 범위 탄생', dim2Name: '2단계: t 범위 ➔ y 최대·최소',
             val1Txt: '-1 ≤ x ≤ 2 ➔ -1 ≤ t ≤ 3!', val2Txt: '최댓값 M=8(t=-1), 최솟값 m=-1(t=2)',
             parts: [
-              { id: 0, name: `🔵 [좌측 1단계 그래프] t = x² - 2x = (x - 1)² - 1 (-1 ≤ x ≤ 2)`, desc: `꼭짓점 x=1 일 때 최소 t = -1, 먼 끝점 x=-1 일 때 최대 t = 3!`, val: `-1 ≤ t ≤ 3 탄생!`, color: '#38bdf8', ok: true },
-              { id: 1, name: `🟡 [우측 2단계 그래프] y = t² - 4t + 3 = (t - 2)² - 1 (-1 ≤ t ≤ 3)`, desc: `대칭축 t = 2 가 [-1, 3] 안에 있으므로 t=2에서 최소 y=-1, t=-1에서 최대 y=8!`, val: `M = 8, m = -1 ⭕`, color: '#fbbf24', ok: true }
+              { id: 0, name: `🔵 [1단계 그래프] t = x² - 2x = (x - 1)² - 1 (-1 ≤ x ≤ 2)`, desc: `꼭짓점 x=1 일 때 최소 t = -1, 먼 끝점 x=-1 일 때 최대 t = 3!`, val: `-1 ≤ t ≤ 3 탄생!`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 [2단계 그래프] y = t² - 4t + 3 = (t - 2)² - 1 (-1 ≤ t ≤ 3)`, desc: `대칭축 t = 2 가 [-1, 3] 안에 있으므로 t=2에서 최소 y=-1, t=-1에서 최대 y=8!`, val: `M = 8, m = -1 ⭕`, color: '#fbbf24', ok: true }
             ],
             totalRes: `1단계: -1≤x≤2 에서 -1≤t≤3 구함 ➔ 2단계: -1≤t≤3 에서 최댓값 8 (t=-1, x=-1), 최솟값 -1 (t=2)`,
             rule: '치환하면 문자만 바뀌는 게 아니라 범위가 새로 태어난다! (1단계 y범위 = 2단계 가로 x축 범위!)',
@@ -426,7 +426,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const cnt = kVal < 0 ? 0 : kVal === 0 ? 2 : kVal < 4 ? 4 : kVal === 4 ? 3 : 2;
           return {
             badge: `탐구 3-A · 🥟 전체 절댓값 y = |x² - 2x - 3| (x축 아래를 접어 올리기) & 직선 y = k 와의 교점의 개수(0→2→4→3→2개)`,
-            hint: `슬라이더로 $x$축 아랫부분을 위로 접어 올려보세요! 원래 꼭짓점 $(1, -4)$가 **$(1, +4)$ 봉우리**로 올라오면서, 우측의 <strong class="text-pink-300">수평선 높이 $k$ 프리셋 칩</strong>에 따라 교점(실근) 개수가 **0개 $\\to$ 2개 $\\to$ 4개 $\\to$ 3개($k=4$!) $\\to$ 2개**로 바뀝니다!`,
+            hint: `슬라이더로 $x$축 아랫부분을 위로 접어 올려 보세요! 원래 꼭짓점 $(1, -4)$가 **$(1, +4)$ 봉우리**로 올라오면서, <strong class="text-pink-300">수평선 높이 $k$ 칩</strong>으로 $k$를 바꾸면 교점(실근) 개수가 **0개 $\\to$ 2개 $\\to$ 4개 $\\to$ 3개($k=4$!) $\\to$ 2개**로 바뀝니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 접기 전 원래 포물선 보기' : '🎬 x축 아래를 위로 접어 올리는 절댓값 오리가미!',
             dim1Name: `현재 수평선 높이 y = ${kVal}`, dim2Name: '방정식 |f(x)| = k 실근 개수',
             val1Txt: kVal === 4 ? 'k = 4 (접힌 꼭짓점!)' : `k = ${kVal}`, val2Txt: `서로 다른 ${cnt}개의 실근!`,
@@ -490,8 +490,8 @@ window.addEventListener('DOMContentLoaded', function () {
             dim1Name: '오른쪽 (x ≥ 1) 식', dim2Name: '왼쪽 (x < 1) 식',
             val1Txt: 'y = x² - 4x + 2 (꼭짓점 x=2)', val2Txt: 'y = x² - 2 (꼭짓점 x=0)',
             parts: [
-              { id: 0, name: `🔵 경계 오른쪽 (x ≥ 1): |x - 1| = +(x - 1) ➔ y = (x - 2)² - 2`, desc: `대칭축 x = 2 가 x ≥ 1 범위에 포함되므로 오른쪽 꼭짓점 (2, -2) 생존!`, val: `우측 꼭짓점(2,-2)`, color: '#38bdf8', ok: true },
-              { id: 1, name: `🩷 경계 왼쪽 (x < 1): |x - 1| = -(x - 1) ➔ y = x² - 2`, desc: `대칭축 x = 0 이 x < 1 범위에 포함되므로 왼쪽 꼭짓점 (0, -2)도 생존!`, val: `좌측 꼭짓점(0,-2)`, color: '#f472b6', ok: true },
+              { id: 0, name: `🔵 경계 오른쪽 (x ≥ 1): |x - 1| = +(x - 1) ➔ y = (x - 2)² - 2`, desc: `대칭축 x = 2 가 x ≥ 1 범위에 포함되므로 오른쪽 꼭짓점 (2, -2) 생존!`, val: `오른쪽 꼭짓점(2,-2)`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🩷 경계 왼쪽 (x < 1): |x - 1| = -(x - 1) ➔ y = x² - 2`, desc: `대칭축 x = 0 이 x < 1 범위에 포함되므로 왼쪽 꼭짓점 (0, -2)도 생존!`, val: `왼쪽 꼭짓점(0,-2)`, color: '#f472b6', ok: true },
               { id: 2, name: `🟡 경계점 x = 1 에서 두 조각이 점 (1, -1)에서 만나 W자 완성!`, desc: `최솟값은 -2 이고, y = -1 일 때 실근 3개, -2 < y < -1 일 때 실근 4개!`, val: `경계점 (1, -1)`, color: '#fbbf24', ok: true }
             ],
             totalRes: `경계 x = 1 기준 ➔ 왼쪽 y = x² - 2 (x<1) 와 오른쪽 y = (x-2)² - 2 (x≥1) 합체!`,
@@ -527,7 +527,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'sepBothGreater') {
           return {
             badge: `탐구 4-A · 🎯 근의 분리 유형 ①: 두 실근이 모두 p(예: p=1)보다 클 때 — 왜 [함 · 판 · 축] 3개가 다 필요할까?`,
-            hint: `아래로 볼록한 이차방정식 $f(x)=0$ 의 두 근이 모두 $p=1$ 보다 크려면 <strong>① 함숫값 $f(1) > 0$, ② 판별식 $D \\ge 0$, ③ 대칭축 $x_{\\text{축}} > 1$</strong> 세 가지 잠금장치를 모두 걸어야 합니다! 우측 조각 카드를 클릭해 하나라도 빠졌을 때 생기는 반례 포물선을 확인하세요!`,
+            hint: `아래로 볼록한 이차방정식 $f(x)=0$ 의 두 근이 모두 $p=1$ 보다 크려면 <strong>① 함숫값 $f(1) > 0$, ② 판별식 $D \\ge 0$, ③ 대칭축 $x_{\\text{축}} > 1$</strong> 세 가지 조건을 모두 만족해야 합니다! 조각 카드를 클릭해 하나라도 빠졌을 때 생기는 반례 포물선을 확인하세요!`,
             actionTxt: state.fold > 0.5 ? '🎬 올바른 곡선 보기' : '🎬 판별식 누락 반례 & 대칭축 누락 반례 곡선 비교!',
             dim1Name: '3중 잠금장치 (함·판·축)', dim2Name: '하나라도 빼먹으면?',
             val1Txt: '①f(p)>0 · ②D≥0 · ③축>p', val2Txt: '허근 또는 왼쪽 치우침 반례 발생!',
@@ -1004,8 +1004,8 @@ window.addEventListener('DOMContentLoaded', function () {
           }
 
           qdot(S(0, -3), '꺾인 점 (0, -3) [k=-3 에서 교점 3개!]', QCOL.gold, 14, -8);
-          qdot(S(1, -4), '우측 꼭짓점 (1, -4)', QCOL.cyan, 12, 18);
-          qdot(S(-1, -4), '좌측 대칭 꼭짓점 (-1, -4)', QCOL.pink, -110, 18);
+          qdot(S(1, -4), '오른쪽 꼭짓점 (1, -4)', QCOL.cyan, 12, 18);
+          qdot(S(-1, -4), '왼쪽 대칭 꼭짓점 (-1, -4)', QCOL.pink, -110, 18);
         } else if (sub === 'absLineRotTangent') {
           // y = |x^2 - 4| 와 정점 (-3, 0)을 지나는 직선 y = m(x + 3)
           drawFuncCurve((x) => x * x - 4, -4.2, -2, ox, oy, unit, QCOL.cyan, 3.5, [], 1);
