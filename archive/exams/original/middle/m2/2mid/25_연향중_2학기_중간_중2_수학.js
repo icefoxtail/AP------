@@ -61,7 +61,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 윗변과 아랫변이 평행한 사다리꼴에서 왼쪽 다리 양 끝의 두 내각이 호 한 개와 호 두 개로 표시되고 '두 각의 합 180°'가 적혀 있으며, 오른쪽 다리는 비스듬히 기울어 있다.",
+    "solutionImageCaption": "윗변과 아랫변이 평행한 사다리꼴에서 한 다리 양 끝의 두 내각의 합이 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -154,7 +158,11 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 음수이고 x절편과 y절편이 모두 음수인 직선 x+ay-b=0이 좌표평면에 그려져 있고, 두 절편이 축 위의 점으로 표시되어 있다.",
+    "solutionImageCaption": "a>0, b<0일 때 직선 x+ay-b=0은 기울기가 음수이고 x절편 b와 y절편 b/a가 모두 음수이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -185,7 +193,11 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선 x=0, x+y-4=0, 3x-y-4=0이 이루는 삼각형이 옅게 칠해져 있고, 꼭짓점 (0,4), (0,-4), (2,2)와 꼭짓점 (2,2)에서 직선 x=0까지의 높이 2를 나타내는 점선이 표시되어 있다.",
+    "solutionImageCaption": "세 직선으로 둘러싸인 삼각형의 꼭짓점은 (0,4), (0,-4), (2,2)이고 꼭짓점 (2,2)에서 직선 x=0까지의 거리는 2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -218,7 +230,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠XOY의 이등분선 OP 위의 점 P에서 변 OX, OY에 내린 수선의 발 A, B가 있고, 같은 호로 표시된 ∠POA와 ∠POB, 두 직각 표시, 같은 길이로 표시된 PA와 PB, 빨간 굵은 선으로 강조된 공통 변 OP가 그려져 있다.",
+    "solutionImageCaption": "각의 이등분선 위의 점 P에서 두 변에 내린 수선의 발 A, B에 대해 ∠POA=∠POB, OP는 공통, ∠OAP=∠OBP=90°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
