@@ -135,6 +135,7 @@ def _fit_cubic_quartic(plan,coefficients):
 def _fit_overview_family(plan):
     if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
+    if 'axisScale' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
     if plan.get('family')=='rational':return _fit_rational_overview(plan)
@@ -234,9 +235,34 @@ def squeeze_ratio(points,height_limit):
     fit=((height_limit-2*EQUAL_UNIT_EDGE_PX)/yspan)/((QUADRATIC_PLOT_WIDTH-2*EQUAL_UNIT_EDGE_PX)/xspan)
     return max(AXIS_SQUEEZE_MIN_RATIO,min(1.0,fit))
 
+# graphPlan.axisScale {x,y} (piecewise-polynomial only): the author's own scale for each axis, for a graph whose axes measure different things (minutes
+# against kilometres). Only the proportion counts: {x:1,y:12} draws one y unit twelve times as long as one x unit. Positive integers, decimals or
+# rational strings, and the proportion stays within 1:64 .. 64:1.
+AXIS_SCALE_MAX_RATIO=Fraction(64)
+
+def axis_scale_ratio(plan):
+    """The y/x scale proportion of an axisScale, or None when the plan has none."""
+    if 'axisScale' not in plan:return None
+    scale=plan['axisScale']
+    if not isinstance(scale,dict) or set(scale)!={'x','y'}:raise ValueError('INVALID_AXIS_SCALE')
+    parts=[]
+    for axis in ('x','y'):
+        value=scale[axis]
+        if isinstance(value,bool) or not (isinstance(value,int) or isinstance(value,str) and re.fullmatch(r'\d{1,6}(?:/\d{1,6}|\.\d{1,6})?',value)):raise ValueError('INVALID_AXIS_SCALE')
+        try:parts.append(Fraction(str(value)))
+        except (ValueError,ZeroDivisionError):raise ValueError('INVALID_AXIS_SCALE') from None
+        if parts[-1]<=0:raise ValueError('INVALID_AXIS_SCALE')
+    ratio=parts[1]/parts[0]
+    if not 1/AXIS_SCALE_MAX_RATIO<=ratio<=AXIS_SCALE_MAX_RATIO:raise ValueError('AXIS_SCALE_RATIO_OUT_OF_RANGE')
+    return float(ratio)
+
 def axis_ratios(plan,points,height_limit):
     """One scale first; a squeeze (y at most halved) only after a failure: axisSqueeze (set by the runner after a layout failure) asks for it
-    straight away, and a figure too narrow at one scale tries it next."""
+    straight away, and a figure too narrow at one scale tries it next. An author's axisScale is the one ratio, and no squeeze may follow it."""
+    declared=axis_scale_ratio(plan)
+    if declared is not None:
+        if plan.get('axisSqueeze') not in (None,False):raise ValueError('AXIS_SCALE_WITH_SQUEEZE')
+        return [declared]
     squeeze=plan.get('axisSqueeze',False)
     if squeeze not in (True,False):raise ValueError('INVALID_AXIS_SQUEEZE')
     ratio=squeeze_ratio(points,height_limit)
@@ -1372,7 +1398,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -2310,7 +2336,9 @@ def fit_piecewise_discontinuous(plan):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2}
+OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4}
+# overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
+OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
 OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve'}
 OVERLAY_LATTICE_MAX_POINTS=40
@@ -2550,6 +2578,44 @@ def _overlay_lattice(plan,entry,exact_points):
         if any(abs(point['x']-ex)<1e-9 and abs(point['y']-ey)<1e-9 for ex,ey in exact_points):_overlay_fail('OVERLAY_LATTICE_POINT_COINCIDES',str(point['x'])+','+str(point['y']))
     return {'region':region,'strict':strict,'counts':counts,'xRange':list(span),bound_key:bound,'points':points,'columns':columns}
 
+def _overlay_names(plan,rows,claim,lines,segments,by_point):
+    """overlays.names: {id,text,segment|line|curveX[,curve][,labelDirection]}. The text is a plain name (Korean, letters, digits, spaces, brackets) that
+    stands beside the segment or line it names, or beside the drawn curve at curveX. Each anchor is computed here exactly; nothing is dropped."""
+    names=[];by_segment={row['id']:row for row in segments};by_line={row['id']:row for row in lines}
+    for entry in rows:
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_NAME_INVALID','name')
+        if set(entry)-{'id','text','segment','line','curveX','curve','labelDirection'}:_overlay_fail('OVERLAY_NAME_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'name');claim('name:'+ident)
+        text=entry.get('text')
+        if not isinstance(text,str) or text!=text.strip() or not re.fullmatch(OVERLAY_NAME_PATTERN,text):_overlay_fail('OVERLAY_NAME_TEXT_INVALID',ident)
+        forms=[key for key in ('segment','line','curveX') if key in entry]
+        if len(forms)!=1 or ('curve' in entry and 'curveX' not in entry):_overlay_fail('OVERLAY_NAME_INVALID',ident)
+        row={'id':ident,'text':text}
+        if forms[0]=='segment':
+            target=by_segment.get(entry['segment'])
+            if target is None:_overlay_fail('OVERLAY_NAME_TARGET_UNKNOWN',ident)
+            (ax,ay),(bx,by)=[(by_point[target[end]]['x'],by_point[target[end]]['y']) for end in ('from','to')]
+            row.update({'kind':'SEGMENT','ref':target['id'],'at':[(ax+bx)/2,(ay+by)/2],'alternateAt':[[ax+(bx-ax)*s,ay+(by-ay)*s] for s in (.3,.7)]})
+        elif forms[0]=='line':
+            target=by_line.get(entry['line'])
+            if target is None:_overlay_fail('OVERLAY_NAME_TARGET_UNKNOWN',ident)
+            row.update({'kind':'LINE','ref':target['id'],'at':target['labelAt'],'alternateAt':target['labelAlternates']})
+        else:
+            x=_overlay_exact(entry['curveX'],ident);curve_id=entry.get('curve')
+            if plan.get('family')=='exp-log-pair' and curve_id is None:_overlay_fail('OVERLAY_CURVE_REQUIRED',ident)
+            if plan.get('family')!='exp-log-pair' and curve_id is not None:_overlay_fail('OVERLAY_CURVE_UNKNOWN',ident)
+            lo,hi=plan['domain']
+            if not lo<=float(S.N(x,30))<=hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',ident)
+            y=_overlay_curve_exact(plan,x,curve_id)
+            xmin,xmax,ymin,ymax=plan['viewport'];xf,yf=_overlay_number(x),_overlay_number(y)
+            if not (xmin<xf<xmax and ymin<yf<ymax):_overlay_fail('OVERLAY_NAME_OUTSIDE_VIEWPORT',ident)
+            row.update({'kind':'CURVE','at':[xf,yf]})
+        if 'labelDirection' in entry:
+            if entry['labelDirection'] not in ('N','NE','E','SE','S','SW','W','NW'):_overlay_fail('OVERLAY_LABEL_DIRECTION_INVALID',ident)
+            row['labelDirection']=entry['labelDirection']
+        names.append(row)
+    return names
+
 def _overlay_features(plan):
     raw=plan.get('overlays')
     if raw is None:return None
@@ -2693,6 +2759,7 @@ def _overlay_features(plan):
         polygons.append(row)
     for line in lines:line['labelAlternates']=_overlay_label_alternates(plan,line,lines,points)
     features={'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
+    if 'names' in raw:features['names']=_overlay_names(plan,raw.get('names'),claim,lines,segments,by_point)
     if raw.get('latticePoints') is not None:features['latticePoints']=_overlay_lattice(plan,raw['latticePoints'],[(point['x'],point['y']) for point in points])
     return features
 

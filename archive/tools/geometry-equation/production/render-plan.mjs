@@ -199,7 +199,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
         continue;
       }
       // Then that panel is re-framed with y squeezed (at most halved) for one more try.
-      if(gp.axisSqueeze===true)break;
+      if(gp.axisSqueeze===true||gp.axisScale!==undefined)break;
       (row.fallback??=[]).push({from:clip(composed.detail),to:'AXIS_SQUEEZE',panel:failed.panel});
       current={...current,panels:current.panels.map((panel,i)=>i===failed.panel?{...panel,plan:{...panel.plan,graphPlan:{...panel.plan.graphPlan,axisSqueeze:true}}}:panel)};
       }
@@ -268,7 +268,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       }
     }
     // Fallback 3 (quadratic graphs): still no room at one scale -> re-frame with y squeezed (at most halved) and compose once more.
-    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&authored.graphPlan&&authored.graphPlan.axisSqueeze!==true){
+    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&authored.graphPlan&&authored.graphPlan.axisSqueeze!==true&&authored.graphPlan.axisScale===undefined){
       const f=await pythonWorker({action:'frame_graph',graphPlan:{...authored.graphPlan,axisSqueeze:true}});
       if(f.status==='OK'&&f.result.graphPlan.axisRatio<1){
         const m2=await pythonWorker({action:'graph',graphPlan:f.result.graphPlan});

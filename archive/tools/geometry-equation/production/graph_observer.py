@@ -357,8 +357,32 @@ def denominator_lower(poly,a,b):
     bound=low if low>0 else -high if high<0 else S.Integer(0)
     return max(0,float(bound)*(1-1e-12))
 
+AXIS_SCALE_PROPORTION_LIMIT=64
+
+def axis_scale_proportion(scale):
+    """Independent read of a plan's axisScale {x,y}: the exact y/x proportion, or None when the field is malformed or outside 1:64 .. 64:1."""
+    if not isinstance(scale,dict) or set(scale)!={'x','y'}:return None
+    parts=[]
+    for axis in ('x','y'):
+        value=scale[axis]
+        if isinstance(value,bool) or not isinstance(value,(int,str)) or not re.fullmatch(r'\d+(?:/\d+|\.\d+)?',str(value)):return None
+        try:part=S.Rational(str(value))
+        except (TypeError,ValueError,S.SympifyError):return None
+        if not part>0:return None
+        parts.append(part)
+    proportion=parts[1]/parts[0]
+    return proportion if S.Rational(1,AXIS_SCALE_PROPORTION_LIMIT)<=proportion<=AXIS_SCALE_PROPORTION_LIMIT else None
+
 def axis_ratio_errors(plan,transform):
-    """One scale on both axes, or y at the recorded axisRatio (between 1/2 and 1, a squeeze after a failure at one scale) times the x scale."""
+    """One scale on both axes, or y at the recorded axisRatio (between 1/2 and 1, a squeeze after a failure at one scale) times the x scale.
+    With an author's axisScale {x,y} the ratio is y/x as the author wrote it (recomputed here), whatever the figure's proportions: the plan's
+    axisRatio must repeat it and the observed final-SVG scale must follow it."""
+    if 'axisScale' in plan:
+        proportion=axis_scale_proportion(plan['axisScale'])
+        if proportion is None or plan.get('overviewPolicy')!='PIECEWISE_POLYNOMIAL_OVERVIEW_v1' or plan.get('axisSqueeze') not in (None,False):return ['AXIS_SCALE_INVALID']
+        declared=float(proportion);recorded=plan.get('axisRatio')
+        if isinstance(recorded,bool) or not isinstance(recorded,(int,float)) or abs(recorded-declared)>1e-9*declared:return ['AXIS_SCALE_RATIO_MISMATCH']
+        return ['EQUAL_UNIT_SCALE_MISMATCH'] if abs(transform['sy']-declared*transform['sx'])>1e-6*transform['sx'] else []
     ratio=plan.get('axisRatio',1)
     if plan.get('applicationAxes') is True:
         # Application-problem axes (a count against a money amount): each axis has its own scale, so any positive ratio is the declared one.
@@ -2536,7 +2560,26 @@ def _ov_expected(plan):
             if label_kind not in ('MATH','TEXT'):raise ValueError('OVERLAY_POLYGON_LABEL_KIND_INVALID')
             if not isinstance(label,str) or not label.strip() or len(label)>40 or any(ord(char)<32 for char in label) or (label_kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',label)):raise ValueError('OVERLAY_POLYGON_LABEL_INVALID')
         polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT'),'label':label,'labelKind':label_kind})
-    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+    names=[];seen_names=set()
+    for entry in raw.get('names',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_NAME_INVALID')
+        ident=entry.get('id');text=entry.get('text')
+        if not isinstance(ident,str) or ident in seen_names or not isinstance(text,str) or text!=text.strip() or not re.fullmatch(OV_NAME_PATTERN,text):raise ValueError('OVERLAY_NAME_INVALID')
+        seen_names.add(ident);forms=[key for key in ('segment','line','curveX') if key in entry]
+        if len(forms)!=1:raise ValueError('OVERLAY_NAME_INVALID')
+        row={'id':ident,'text':text,'form':forms[0]}
+        if forms[0]=='segment':
+            if entry['segment'] not in [segment['id'] for segment in segments]:raise ValueError('OVERLAY_NAME_TARGET_UNKNOWN')
+            row['ref']=entry['segment']
+        elif forms[0]=='line':
+            if entry['line'] not in by_line:raise ValueError('OVERLAY_NAME_TARGET_UNKNOWN')
+            row['ref']=entry['line']
+        else:
+            x=_ov_reader(entry['curveX']);lo,hi=plan.get('domain',[None,None])
+            if lo is not None and not lo<=float(S.N(x,30))<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+            row['at']=(float(S.N(x,30)),float(S.N(_ov_curve_value(plan,x,entry.get('curve')),30)))
+        names.append(row)
+    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
 
 OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
 
@@ -2592,6 +2635,10 @@ OV_LABEL_LOOSE_MARGIN_PX=-8.0
 OV_COORDINATE_LABEL_OWN_MAX_PX=60.0
 OV_COORDINATE_LABEL_MARGIN_PX=4.0
 OV_LEADER_TOLERANCE_PX=1.5
+OV_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
+OV_NAME_CURVE_ANCHOR_MAX_PX=48.0
+OV_NAME_CURVE_OWN_MAX_PX=18.0
+OV_NAME_CURVE_MARGIN_PX=6.0
 
 def _ov_point_segment_distance(point,a,b):
     dx,dy=b[0]-a[0],b[1]-a[1];length2=dx*dx+dy*dy
@@ -2779,6 +2826,32 @@ def overlays_audit(plan,svg,transform):
                 others=[px for other in expected['segments'] if other is not segment for px in [px_segment('overlay-segment-'+str(other['id']))] if px is not None]
                 others+=[px for other in expected['lines'] for px in [px_segment('overlay-line-'+str(other['id']))] if px is not None]
                 label_belongs(label_id,'overlay-segment-'+str(segment['id']),'OVERLAY_SEGMENT_LENGTH',True,others)
+            # names: a plain-text label (its text on the group, no math glyphs) that belongs to the segment or line it names (strictly nearest, or a
+            # leader), or stands beside the drawn curve near its anchor point, nearer the curve than any overlay segment or line.
+            curve_segments=[]
+            for node in root.iter():
+                if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve' and not (node.get('id') or '').startswith('overlay-'):
+                    try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+                    except ValueError:values=[]
+                    curve_segments+=[((values[i],values[i+1]),(values[i+2],values[i+3])) for i in range(0,len(values)-3,2)]
+            for name in expected['names']:
+                label_id='overlay-name-'+str(name['id']);claimed.add(label_id);node=groups.get(label_id)
+                if node is None:errors.append('OVERLAY_NAME_LABEL_MISSING:'+str(name['id']));continue
+                if node.get('data-text')!=name['text'] or node.get('data-tex') is not None or _ov_glyph_codes(node) or not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_NAME_LABEL_TEXT_MISMATCH:'+str(name['id']));continue
+                overlay_px=[px for kind,rows in (('segment',expected['segments']),('line',expected['lines'])) for other in rows for px in [px_segment('overlay-'+kind+'-'+str(other['id']))] if px is not None]
+                if name['form']!='curveX':
+                    owner='overlay-'+name['form']+'-'+str(name['ref'])
+                    if node.get('data-owner')!=owner:errors.append('OVERLAY_NAME_LABEL_OWNER_MISMATCH:'+str(name['id']));continue
+                    others=[px for px in overlay_px if px!=px_segment(owner)]+curve_segments
+                    label_belongs(label_id,owner,'OVERLAY_NAME',True,others)
+                    continue
+                box=_region_label_box(groups,label_id)
+                if box is None or not curve_segments:errors.append('OVERLAY_NAME_LABEL_BOX_UNREADABLE:'+str(name['id']));continue
+                anchor=(ox+name['at'][0]*sx,oy-name['at'][1]*sy)
+                if _ov_point_box_distance(anchor,box)>OV_NAME_CURVE_ANCHOR_MAX_PX:errors.append('OVERLAY_NAME_LABEL_NOT_AT_CURVE:'+str(name['id']));continue
+                own_distance=min(_ov_box_segment_distance(box,*piece) for piece in curve_segments)
+                if own_distance>OV_NAME_CURVE_OWN_MAX_PX:errors.append('OVERLAY_NAME_LABEL_NOT_NEAR_CURVE:'+str(name['id']))
+                elif any(_ov_box_segment_distance(box,*other)<own_distance+OV_NAME_CURVE_MARGIN_PX for other in overlay_px):errors.append('OVERLAY_NAME_LABEL_AMBIGUOUS_OWNER:'+str(name['id']))
             # latticePoints counts:true: one label per column, its digits the column's count, owned by (nearest to) that column's dots.
             lattice=expected.get('lattice')
             if lattice is not None and lattice['counts']:
