@@ -471,7 +471,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 네 줄 그림. 첫 수직선에는 8의 양쪽으로 5씩 떨어진 3과 13이 점으로, 둘째 수직선에는 3<x<13이 빈 점 두 개와 굵은 선으로 나타나 있다. 아래 두 줄에는 가능한 값 5, 9, 11이 겹동그라미로, 불가능한 값 3, 15가 ×로 표시되어 있다.",
+    "solutionImageCaption": "두 변이 5 cm, 8 cm이면 나머지 한 변 x는 3<x<13이므로, 이 범위 안의 5, 9, 11은 가능하고 3, 15는 불가능하다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
