@@ -1,0 +1,56 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "NORMAL_CURVE",
+  "curves": [
+   {
+    "id": "X",
+    "mean": "50",
+    "sd": "2",
+    "label": "X"
+   }
+  ],
+  "ticks": [
+   "47",
+   "50",
+   "52"
+  ],
+  "zAxis": true,
+  "shades": [
+   {
+    "from": "47",
+    "to": "50"
+   },
+   {
+    "from": "50",
+    "to": "52"
+   }
+  ],
+  "areaLabels": [
+   {
+    "shade": 0,
+    "text": "0.4332"
+   },
+   {
+    "shade": 1,
+    "text": "0.3413"
+   }
+  ]
+ },
+ "caption": "정규분포 N(50, 4)의 곡선에서 47 이상 52 이하를 평균 50의 양쪽 두 부분으로 나눠 칠한 그림",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "확률변수 X가 정규분포 N(50, 4)를 따른다",
+   "mappedTo": "chart.curves"
+  },
+  {
+   "id": "c2",
+   "condition": "F(52)-F(47)=P(47≤X≤52)이고 표에서 P(0≤Z≤1.5)=0.4332, P(0≤Z≤1.0)=0.3413이다",
+   "mappedTo": "chart.shades"
+  }
+ ],
+ "newVisualInformation": [
+  "평균 50을 경계로 나뉜 두 구간의 넓이로 표의 값 0.4332와 0.3413이 쓰이고 표준화 눈금 z가 -1.5, 0, 1로 붙는다"
+ ]
+}

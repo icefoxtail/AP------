@@ -76,6 +76,7 @@ export function solveStatChart(chart){
     case 'DICE_TABLE':return solveDice(chart);
     case 'TREE':return solveTree(chart);
     case 'DOT_PLOT':return solveDot(chart);
+    case 'NORMAL_CURVE':return solveNormal(chart);
     default:return bad('STAT_KIND_UNSUPPORTED');
   }
 }
@@ -440,7 +441,7 @@ function solveBox(c){
     series:series.map(s=>({name:s.name,n:s.n,five:Object.fromEntries(Object.entries(s.five).map(([k,v])=>[k,qstr(v)]))}))};
 }
 function solveScatter(c){
-  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal','refLines','regions'],'STAT_CHART_PLAN_INVALID');
   if(!Array.isArray(c.points)||c.points.length<1||c.points.length>40)bad('STAT_SCATTER_POINTS_INVALID');
   const range=(r,code)=>{if(!Array.isArray(r)||r.length!==2)bad(code);const x=r.map(v=>parseQ(v,code));if(qcmp(x[0],ZERO)<0||qcmp(x[0],x[1])>=0)bad(code);return x;};
   const xr=range(c.xRange,'STAT_RANGE_INVALID'),yr=range(c.yRange,'STAT_RANGE_INVALID');
@@ -462,7 +463,51 @@ function solveScatter(c){
   });
   const every=c.labelEvery===undefined?1:intIn(c.labelEvery,1,10,'STAT_LABEL_EVERY_INVALID');
   for(const k of ['grid','diagonal'])if(c[k]!==undefined&&typeof c[k]!=='boolean')bad('STAT_CHART_PLAN_INVALID');
-  return {schemaVersion:MODEL_VERSION,kind:'SCATTER',xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
+  // reference lines and highlighted rectangles (E36); a plan without them is exactly the plan it always was
+  const extra={};
+  if(c.refLines!==undefined){
+    if(!Array.isArray(c.refLines)||c.refLines.length<1||c.refLines.length>4)bad('STAT_SCATTER_GUIDE_INVALID');
+    const seen=new Set();
+    extra.refLines=c.refLines.map(g=>{
+      onlyKeys(g,['type','value'],'STAT_SCATTER_GUIDE_INVALID');
+      if(!['x=k','y=k','y=x'].includes(g.type))bad('STAT_SCATTER_GUIDE_INVALID');
+      if(g.type==='y=x'){if(g.value!==undefined||c.diagonal===true)bad('STAT_SCATTER_GUIDE_INVALID');}
+      else if(g.value===undefined)bad('STAT_SCATTER_GUIDE_INVALID');
+      let value=null;
+      if(g.type!=='y=x'){
+        const r=g.type==='x=k'?xr:yr,st=g.type==='x=k'?xs:ys;
+        value=parseQ(g.value,'STAT_SCATTER_GUIDE_INVALID');
+        if(qcmp(value,r[0])<0||qcmp(value,r[1])>0)bad('STAT_SCATTER_GUIDE_OUT_OF_RANGE');
+        if(qcmp(qmul(Q(qfloor(qdiv(value,st))),st),value)!==0)bad('STAT_SCATTER_GUIDE_NOT_ON_STEP');
+      }
+      const key=g.type+(value===null?'':qstr(value));
+      if(seen.has(key))bad('STAT_SCATTER_GUIDE_INVALID');seen.add(key);
+      return {type:g.type,value:value===null?null:qstr(value)};
+    });
+  }
+  if(c.regions!==undefined){
+    if(!Array.isArray(c.regions)||c.regions.length<1||c.regions.length>3)bad('STAT_SCATTER_REGION_INVALID');
+    extra.regions=c.regions.map(g=>{
+      onlyKeys(g,['xMin','xMax','yMin','yMax','countLabel','countUnit','markPoints','tone'],'STAT_SCATTER_REGION_INVALID');
+      if(['xMin','xMax','yMin','yMax'].every(k=>g[k]===undefined))bad('STAT_SCATTER_REGION_INVALID');
+      for(const k of ['countLabel','markPoints'])if(g[k]!==undefined&&typeof g[k]!=='boolean')bad('STAT_SCATTER_REGION_INVALID');
+      if(g.tone!==undefined&&g.tone!==1&&g.tone!==2)bad('STAT_SCATTER_REGION_INVALID');
+      if(g.countUnit!==undefined&&(g.countLabel!==true||typeof g.countUnit!=='string'||!/^[가-힣]{1,3}$/.test(g.countUnit)))bad('STAT_SCATTER_REGION_INVALID');
+      const bound=(k,r,st,dflt)=>{
+        if(g[k]===undefined)return dflt;
+        const v=parseQ(g[k],'STAT_SCATTER_REGION_INVALID');
+        if(qcmp(v,r[0])<0||qcmp(v,r[1])>0)bad('STAT_SCATTER_GUIDE_OUT_OF_RANGE');
+        if(qcmp(qmul(Q(qfloor(qdiv(v,st))),st),v)!==0)bad('STAT_SCATTER_REGION_NOT_ON_STEP');
+        return v;
+      };
+      const x0=bound('xMin',xr,xs,xr[0]),x1=bound('xMax',xr,xs,xr[1]),y0=bound('yMin',yr,ys,yr[0]),y1=bound('yMax',yr,ys,yr[1]);
+      if(qcmp(x0,x1)>=0||qcmp(y0,y1)>=0)bad('STAT_SCATTER_REGION_INVALID');
+      const inside=points.map((p,i)=>qcmp(p.x,x0)>=0&&qcmp(p.x,x1)<=0&&qcmp(p.y,y0)>=0&&qcmp(p.y,y1)<=0?i:-1).filter(i=>i>=0);
+      if(!inside.length)bad('STAT_SCATTER_REGION_EMPTY');
+      return {xMin:qstr(x0),xMax:qstr(x1),yMin:qstr(y0),yMax:qstr(y1),countLabel:g.countLabel===true,countUnit:g.countUnit??null,markPoints:g.markPoints===true,tone:g.tone??1,inside,count:inside.length};
+    });
+  }
+  return {schemaVersion:MODEL_VERSION,kind:'SCATTER',...extra,xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
     xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',''),
     points:points.map(p=>({x:qstr(p.x),y:qstr(p.y),name:p.name,onDiagonal:qcmp(p.x,p.y)===0})),onDiagonal:points.filter(p=>qcmp(p.x,p.y)===0).length};
 }
@@ -517,6 +562,139 @@ function solveDot(c){
   const segments=dotSegments(points,br,step);
   return {schemaVersion:MODEL_VERSION,kind:'DOT_PLOT',step,xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),total,maxStack:Math.max(...points.map(p=>p.count)),
     points:points.map(p=>({value:String(p.v),count:p.count})),segments,...(br?{axisBreak:br}:{})};
+}
+// Normal curves (E36): the bell curve of N(mean, sd^2) drawn from the exact density, 1 to 3 curves on one x axis, with marked positions (ticks), shaded areas under a curve between two
+// of them (a tail when one end is null), the area labels the problem gives (a table value, a sum of table values, or a letter for equal areas) and pairs of positions that sit
+// symmetrically about a mean. mean and sd are exact numbers; one curve may instead be "framed" (a letter for mean and/or sd: m, σ): it is then drawn in units of σ and every position
+// is a z value (the figure shows the problem's own letters, never a number the problem does not give). A label that is a number is checked against the area the engine integrates.
+const NORM_MAX_CURVES=3,NORM_MAX_TICKS=10,NORM_MAX_SHADES=6,NORM_SD_RATIO=4,NORM_AREA_TOL=2e-4;
+const NORM_SYMBOL=/^[A-Za-zμσ]$/,NORM_TEXT=/^[A-Za-z0-9μσ+\-=.()^]{1,10}$/,NORM_NAME=/^(?:[A-Za-z0-9μσ+\-=.()^, ]{1,14}|[가-힣][가-힣A-Za-z0-9 ()]{0,9})$/,NORM_PLAIN=/^-?\d{1,6}(?:\.\d{1,4})?$/;
+const NORM_AREA_SUM=/^\d(?:\.\d{1,4})?(?:[+-]\d(?:\.\d{1,4})?){0,2}$/,NORM_AREA_SYMBOL=/^[A-Za-z?]$/;
+const normalTeX=text=>text.replaceAll('σ','\\sigma ').replaceAll('μ','\\mu ').trim();
+const tryQ=v=>{try{return parseQ(v,'STAT_NORMAL_NUMBER_INVALID');}catch(error){return null;}};
+const normalPdf=z=>Math.exp(-z*z/2)/Math.sqrt(2*Math.PI);
+function normalArea(za,zb){ // the area under the standard normal density between z values (null: no limit), by Simpson's rule
+  const lo=za===null?-9:Math.max(za,-9),hi=zb===null?9:Math.min(zb,9),n=2000,h=(hi-lo)/n;
+  let s=normalPdf(lo)+normalPdf(hi);for(let i=1;i<n;i++)s+=normalPdf(lo+i*h)*(i%2?4:2);
+  return s*h/3;
+}
+const normalSymText=(c,z)=>{ // the text of a position at z standard deviations from the mean of a framed curve: m, m+3σ, 20-1.5σ
+  if(z[0]===0n)return c.meanText;
+  const abs=z[0]<0n?Q(-z[0],z[1]):z,sign=z[0]<0n?'-':'+';
+  if(c.sdQ!==null){const off=decimalOf(qmul(abs,c.sdQ));if(off===null)bad('STAT_NORMAL_TICK_TEXT_UNREPRESENTABLE');return c.meanText+sign+off;}
+  const coef=qcmp(abs,ONE)===0?'':decimalOf(abs);
+  if(coef===null)bad('STAT_NORMAL_TICK_TEXT_UNREPRESENTABLE');
+  return c.meanText+sign+coef+c.sdText;
+};
+function solveNormal(c){
+  onlyKeys(c,['kind','curves','ticks','zAxis','shades','areaLabels','symmetry','xLabel','span'],'STAT_CHART_PLAN_INVALID');
+  if(!Array.isArray(c.curves)||c.curves.length<1||c.curves.length>NORM_MAX_CURVES)bad('STAT_NORMAL_CURVE_INVALID');
+  const ids=new Set();
+  const curves=c.curves.map(raw=>{
+    onlyKeys(raw,['id','mean','sd','label','meanLine'],'STAT_NORMAL_CURVE_INVALID');
+    if(typeof raw.id!=='string'||!/^[A-Za-z][A-Za-z0-9]{0,3}$/.test(raw.id)||ids.has(raw.id))bad('STAT_NORMAL_CURVE_INVALID');
+    ids.add(raw.id);
+    if(typeof raw.mean!=='string'&&typeof raw.mean!=='number'||typeof raw.sd!=='string'&&typeof raw.sd!=='number')bad('STAT_NORMAL_PARAM_INVALID');
+    const meanQ=tryQ(raw.mean),sdQ=tryQ(raw.sd);
+    if(meanQ===null&&!NORM_SYMBOL.test(raw.mean)||sdQ===null&&!NORM_SYMBOL.test(raw.sd))bad('STAT_NORMAL_PARAM_INVALID');
+    if(sdQ!==null&&qcmp(sdQ,ZERO)<=0)bad('STAT_NORMAL_SD_INVALID');
+    if(raw.label!==undefined&&(typeof raw.label!=='string'||!NORM_NAME.test(raw.label)))bad('STAT_NORMAL_LABEL_INVALID');
+    if(raw.meanLine!==undefined&&typeof raw.meanLine!=='boolean')bad('STAT_NORMAL_CURVE_INVALID');
+    const meanText=meanQ===null?raw.mean:decimalOf(meanQ);
+    if(meanText===null)bad('STAT_NORMAL_PARAM_INVALID');
+    return {id:raw.id,meanQ,sdQ,meanText,sdText:sdQ===null?raw.sd:decimalOf(sdQ)??qstr(sdQ),label:raw.label??null,meanLine:raw.meanLine??c.curves.length===1};
+  });
+  const framed=curves.some(k=>k.meanQ===null||k.sdQ===null),byId=new Map(curves.map(k=>[k.id,k]));
+  if(framed&&curves.length>1)bad('STAT_NORMAL_SYMBOLIC_MULTI');
+  let span=Q(4n);
+  if(c.span!==undefined){span=tryQ(c.span);if(span===null||qcmp(span,Q(5n,2n))<0||qcmp(span,Q(5n))>0)bad('STAT_NORMAL_SPAN_INVALID');}
+  let lo,hi;
+  if(framed){lo=qmul(span,Q(-1n));hi=span;}
+  else{
+    const sds=curves.map(k=>k.sdQ),sdMin=sds.reduce((a,b)=>qcmp(a,b)<=0?a:b),sdMax=sds.reduce((a,b)=>qcmp(a,b)>=0?a:b);
+    if(qcmp(sdMax,qmul(sdMin,Q(BigInt(NORM_SD_RATIO))))>0)bad('STAT_NORMAL_SD_RATIO');
+    const means=curves.map(k=>k.meanQ),mMin=means.reduce((a,b)=>qcmp(a,b)<=0?a:b),mMax=means.reduce((a,b)=>qcmp(a,b)>=0?a:b);
+    if(qcmp(qsub(mMax,mMin),qmul(sdMin,Q(6n)))>0)bad('STAT_NORMAL_WINDOW_TOO_WIDE');
+    lo=curves.map(k=>qsub(k.meanQ,qmul(span,k.sdQ))).reduce((a,b)=>qcmp(a,b)<=0?a:b);
+    hi=curves.map(k=>qadd(k.meanQ,qmul(span,k.sdQ))).reduce((a,b)=>qcmp(a,b)>=0?a:b);
+  }
+  // the marked positions
+  if(!Array.isArray(c.ticks)||c.ticks.length<1||c.ticks.length>NORM_MAX_TICKS)bad('STAT_NORMAL_TICK_INVALID');
+  const zOfX=(k,u)=>qdiv(qsub(u,k.meanQ),k.sdQ);
+  const planTicks=c.ticks.map((raw,planIndex)=>{
+    const t=typeof raw==='string'||typeof raw==='number'?{x:raw}:raw;
+    onlyKeys(t,['x','z','text','curve','hideZ'],'STAT_NORMAL_TICK_INVALID');
+    if((t.x===undefined)===(t.z===undefined))bad('STAT_NORMAL_TICK_INVALID');
+    const k=t.curve===undefined?curves[0]:byId.get(t.curve)??bad('STAT_NORMAL_TICK_INVALID');
+    if(t.hideZ!==undefined&&typeof t.hideZ!=='boolean')bad('STAT_NORMAL_TICK_INVALID');
+    let u,z;
+    if(framed){if(t.x!==undefined)bad('STAT_NORMAL_TICK_INVALID');u=z=parseQ(t.z,'STAT_NORMAL_TICK_INVALID');}
+    else if(t.x!==undefined){u=parseQ(t.x,'STAT_NORMAL_TICK_INVALID');z=zOfX(k,u);}
+    else{z=parseQ(t.z,'STAT_NORMAL_TICK_INVALID');u=qadd(k.meanQ,qmul(z,k.sdQ));}
+    if(qcmp(u,lo)<0||qcmp(u,hi)>0)bad('STAT_NORMAL_TICK_OUT_OF_WINDOW');
+    let text,tex;
+    if(t.text!==undefined){
+      if(typeof t.text!=='string'||!NORM_TEXT.test(t.text))bad('STAT_NORMAL_TICK_TEXT_INVALID');
+      if(!framed&&NORM_PLAIN.test(t.text)&&qcmp(P(t.text),u)!==0)bad('STAT_NORMAL_TICK_TEXT_MISMATCH');
+      text=t.text;tex=DISPLAY+normalTeX(text);
+    }else if(framed){text=normalSymText(k,u);tex=DISPLAY+normalTeX(text);}
+    else{text=decimalOf(u)??`${u[0]}/${u[1]}`;tex=DISPLAY+qtex(u);}
+    return {planIndex,u,z,text,tex,curve:k.id,hideZ:t.hideZ===true};
+  });
+  for(const [i,a] of planTicks.entries())for(const b of planTicks.slice(i+1))if(qcmp(a.u,b.u)===0||a.text===b.text)bad('STAT_NORMAL_TICK_DUPLICATE');
+  const ticks=[...planTicks].sort((a,b)=>qcmp(a.u,b.u));
+  const refTick=ref=>{
+    if(Number.isInteger(ref)&&ref>=0&&ref<planTicks.length)return planTicks[ref];
+    if(typeof ref==='string'){const f=planTicks.find(t=>t.text===ref);if(f)return f;}
+    return bad('STAT_NORMAL_BOUNDARY_NOT_TICKED');
+  };
+  for(const k of curves)if(k.meanLine&&!ticks.some(t=>qcmp(t.u,framed?ZERO:k.meanQ)===0))bad('STAT_NORMAL_MEAN_NOT_TICKED');
+  // shaded areas
+  const shadesRaw=c.shades===undefined?[]:c.shades;
+  if(!Array.isArray(shadesRaw)||shadesRaw.length>NORM_MAX_SHADES)bad('STAT_NORMAL_SHADE_INVALID');
+  const zOf=(k,u)=>framed?u:zOfX(k,u);
+  const shades=shadesRaw.map(raw=>{
+    onlyKeys(raw,['curve','from','to','tone'],'STAT_NORMAL_SHADE_INVALID');
+    const k=raw.curve===undefined?curves[0]:byId.get(raw.curve)??bad('STAT_NORMAL_SHADE_INVALID');
+    const from=raw.from??null,to=raw.to??null;
+    if(from===null&&to===null)bad('STAT_NORMAL_SHADE_INVALID');
+    if(raw.tone!==undefined&&raw.tone!==1&&raw.tone!==2)bad('STAT_NORMAL_SHADE_INVALID');
+    const a=from===null?null:refTick(from),b=to===null?null:refTick(to);
+    if(a&&b&&qcmp(a.u,b.u)>=0)bad('STAT_NORMAL_SHADE_RANGE');
+    const za=a?qnum(zOf(k,a.u)):null,zb=b?qnum(zOf(k,b.u)):null;
+    return {curve:k.id,from:a?qstr(a.u):null,to:b?qstr(b.u):null,tone:raw.tone??1,area:r6(normalArea(za,zb)),label:null};
+  });
+  const labelsRaw=c.areaLabels===undefined?[]:c.areaLabels;
+  if(!Array.isArray(labelsRaw)||labelsRaw.length>shades.length)bad('STAT_NORMAL_AREA_LABEL_INVALID');
+  for(const raw of labelsRaw){
+    onlyKeys(raw,['shade','text'],'STAT_NORMAL_AREA_LABEL_INVALID');
+    if(!Number.isInteger(raw.shade)||raw.shade<0||raw.shade>=shades.length||shades[raw.shade].label!==null||typeof raw.text!=='string')bad('STAT_NORMAL_AREA_LABEL_INVALID');
+    if(NORM_AREA_SUM.test(raw.text)){
+      let v=0;for(const [,sign,term] of raw.text.matchAll(/([+-]?)(\d(?:\.\d{1,4})?)/g))v+=(sign==='-'?-1:1)*qnum(P(term));
+      if(Math.abs(v-shades[raw.shade].area)>NORM_AREA_TOL)bad('STAT_NORMAL_AREA_LABEL_MISMATCH');
+    }else if(!NORM_AREA_SYMBOL.test(raw.text))bad('STAT_NORMAL_AREA_LABEL_INVALID');
+    shades[raw.shade].label=raw.text;
+  }
+  for(const [i,a] of shades.entries())for(const b of shades.slice(i+1))if(a.label!==null&&a.label===b.label&&/^[A-Za-z]$/.test(a.label)&&Math.abs(a.area-b.area)>1e-5)bad('STAT_NORMAL_AREA_SYMBOL_UNEQUAL');
+  // pairs symmetric about a mean
+  const symRaw=c.symmetry===undefined?[]:c.symmetry;
+  if(!Array.isArray(symRaw)||symRaw.length>2)bad('STAT_NORMAL_SYMMETRY_INVALID');
+  const symmetry=symRaw.map(raw=>{
+    onlyKeys(raw,['curve','pair'],'STAT_NORMAL_SYMMETRY_INVALID');
+    const k=raw.curve===undefined?curves[0]:byId.get(raw.curve)??bad('STAT_NORMAL_SYMMETRY_INVALID');
+    if(!Array.isArray(raw.pair)||raw.pair.length!==2)bad('STAT_NORMAL_SYMMETRY_INVALID');
+    const [a,b]=raw.pair.map(refTick);
+    if(a===b||qcmp(qadd(zOf(k,a.u),zOf(k,b.u)),ZERO)!==0)bad('STAT_NORMAL_SYMMETRY_MISMATCH');
+    const [first,second]=qcmp(a.u,b.u)<0?[a,b]:[b,a];
+    return {curve:k.id,pair:[qstr(first.u),qstr(second.u)]};
+  });
+  if(c.zAxis!==undefined&&typeof c.zAxis!=='boolean')bad('STAT_CHART_PLAN_INVALID');
+  if(c.zAxis===true){if(curves.length>1)bad('STAT_NORMAL_Z_AXIS_AMBIGUOUS');if(!ticks.some(t=>!t.hideZ))bad('STAT_NORMAL_Z_AXIS_EMPTY');}
+  if(c.xLabel!==undefined&&(typeof c.xLabel!=='string'||!/^[A-Za-z]$/.test(c.xLabel)))bad('STAT_NORMAL_LABEL_INVALID');
+  return {schemaVersion:MODEL_VERSION,kind:'NORMAL_CURVE',framed,span:qstr(span),window:{lo:qstr(lo),hi:qstr(hi)},xLabel:c.xLabel??'x',zAxis:c.zAxis===true,
+    curves:curves.map(k=>({id:k.id,mean:framed?k.meanText:qstr(k.meanQ),sd:framed?k.sdText:qstr(k.sdQ),label:k.label,meanLine:k.meanLine})),
+    ticks:ticks.map((t,i)=>({index:i,pos:qstr(t.u),z:framed||c.zAxis===true?qstr(t.z):null,text:t.text,tex:t.tex,curve:t.curve,hideZ:t.hideZ})),
+    shades,symmetry};
 }
 // The dice predicate: a small expression grammar (integers, the two die letters, + - *, parentheses) compared to numbers; any/all/not combine.
 function exprTokens(text){
@@ -691,7 +869,11 @@ const STYLE={
   barHi2:'fill="#8e8e8e" stroke="#111" stroke-width="1.2"',barR:'fill="#ececec" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',barHiR:'fill="#b5b5b5" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',
   barHi2R:'fill="#8e8e8e" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',markRing:'fill="none" stroke="#111" stroke-width="1.8"',markDisc:'fill="#111" stroke="none"',
   sum0:'stroke="#111" stroke-width="1.2" fill="none"',sum1:'stroke="#111" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
-  barU:'fill="none" stroke="#111" stroke-width="1.2" stroke-dasharray="1.5 3.5"'
+  barU:'fill="none" stroke="#111" stroke-width="1.2" stroke-dasharray="1.5 3.5"',
+  region1:'fill="#111" fill-opacity="0.12" stroke="none"',region2:'fill="#111" fill-opacity="0.26" stroke="none"',refline:'stroke="#333" stroke-width="1.8" fill="none"',
+  ncurve0:'stroke="#111" stroke-width="2" fill="none"',ncurve1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="8 4"',ncurve2:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="2 4"',
+  shade1:'fill="#111" fill-opacity="0.16" stroke="none"',shade2:'fill="#111" fill-opacity="0.34" stroke="none"',guide:'stroke="#444" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
+  leader:'stroke="#333" stroke-width="1" fill="none"'
 };
 const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6(x1),y1:r6(y1),x2:r6(x2),y2:r6(y2),data,layer});
 const rect=(id,role,cls,x,y,width,height,data={},layer=40)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
@@ -892,8 +1074,8 @@ function boxSpec(m){
   }
   return {size:{width:W,height:H},prims,labels};
 }
-function scatterSpec(m){
-  const xlo=N(m.xRange[0]),xhi=N(m.xRange[1]),ylo=N(m.yRange[0]),yhi=N(m.yRange[1]),xs=N(m.xStep),ys=N(m.yStep);
+function scatterSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,xlo=N(m.xRange[0]),xhi=N(m.xRange[1]),ylo=N(m.yRange[0]),yhi=N(m.yRange[1]),xs=N(m.xStep),ys=N(m.yStep);
   const dxLo=xlo>0?xlo-.8*xs:0,dxHi=xhi+.6*xs,dyLo=ylo>0?ylo-.8*ys:0,dyHi=yhi+.5*ys,PLOT_H=250,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=BASE+TICK+4+LABEL_BELOW+SAFE;
   const px=u=>r6(MAPL+(u-dxLo)/(dxHi-dxLo)*(MAPR-MAPL)),py=v=>r6(BASE-(v-dyLo)/(dyHi-dyLo)*PLOT_H),yAxisPx=px(dxLo);
   const prims=[],labels=[];
@@ -921,11 +1103,26 @@ function scatterSpec(m){
   if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
   if(m.yTitle)labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,AXIS_TOP-4));
   if(m.diagonal){const t0=Math.max(xlo,ylo),t1=Math.min(xhi,yhi);prims.push(L('diagonal','diagonal','diagonal',px(t0),py(t0),px(t1),py(t1),{},35));}
+  for(const [j,g] of (m.regions??[]).entries()){
+    const x0=px(N(g.xMin)),x1=px(N(g.xMax)),y0=py(N(g.yMax)),y1=py(N(g.yMin));
+    prims.push(rect(`region-${j}`,'scatter-region',`region${g.tone}`,x0,y0,x1-x0,y1-y0,{index:j,xmin:g.xMin,xmax:g.xMax,ymin:g.yMin,ymax:g.yMax,tone:g.tone},18));
+    if(g.markPoints)for(const i of g.inside)prims.push({t:'circle',id:`ring-${j}-${i}`,role:'point-ring',cls:'markRing',cx:px(N(m.points[i].x)),cy:py(N(m.points[i].y)),r:7.6,data:{region:j,point:i},layer:72});
+    if(g.countLabel){
+      const text=String(g.count)+(g.countUnit??''),at={x:x1-6,y:y0+6};
+      labels.push({...(g.countUnit?textLabel(`region-${j}-count`,'count-value',`region-${j}`,text,'end','top',at.x,at.y,{region:j,value:String(g.count)}):math(`region-${j}-count`,'count-value',`region-${j}`,DISPLAY+String(g.count),String(g.count),'end','top',at.x,at.y,{region:j,value:String(g.count)})),place:{x:at.x,y:at.y,gap:4}});
+    }
+  }
+  for(const [i,g] of (m.refLines??[]).entries()){
+    if(g.type==='x=k'){const x=px(N(g.value));prims.push(L(`ref-${i}`,'ref-line','refline',x,py(ylo),x,py(yhi),{type:g.type,value:g.value},36));}
+    else if(g.type==='y=k'){const y=py(N(g.value));prims.push(L(`ref-${i}`,'ref-line','refline',px(xlo),y,px(xhi),y,{type:g.type,value:g.value},36));}
+    else{const t0=Math.max(xlo,ylo),t1=Math.min(xhi,yhi);prims.push(L(`ref-${i}`,'ref-line','refline',px(t0),py(t0),px(t1),py(t1),{type:g.type},36));}
+  }
   m.points.forEach((p,i)=>{
     prims.push({t:'circle',id:`pt-${i}`,role:'point',cls:'dot',cx:px(N(p.x)),cy:py(N(p.y)),r:3.6,data:{index:i},layer:70});
     if(p.name)labels.push(math(`pt-${i}-name`,'point-name',`pt-${i}`,p.name,p.name,'start','middle',px(N(p.x))+9,py(N(p.y)),{index:i,value:p.name}));
   });
-  return {size:{width:W,height:H},prims,labels};
+  const extraWidth=m.xTitle?Math.max(0,Math.ceil(TITLE_X+textWidth(m.xTitle,fontPx)+SAFE)-W):0;   // an x title longer than the room right of the arrow widens the frame (E36); a title that fits leaves the figure as it was
+  return {size:{width:W+extraWidth,height:H},prims,labels};
 }
 function diceSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,CELL=m.cell==='PAIR'?54:40,n=m.faces;
@@ -1016,7 +1213,78 @@ function dotSpec(m,ctx){
   if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
   return {size:{width:W+extraWidth,height:H},prims,labels};
 }
-const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,DOT_PLOT:dotSpec};
+// Normal curves (E36): the x axis along the bottom, the window the curves' mean ± span·sd (a framed curve: ± span, in σ units), each curve a polyline of the exact density (the tallest, the one with the
+// smallest sd, NORM_PEAK high; the others in the ratio of their sds), a labelled tick at every marked position, the shaded areas as polygons that end in vertical edges at their two positions (a tail
+// runs to the window end), dotted guides at the means and at symmetric pairs. Area labels and curve names are placed after typesetting (resolveNormal): inside their area when it fits, else outside
+// with a leader line that ends in a dot inside the area.
+const LEADER_GAP=2,NAME_GAP=10,LABEL_APART=8; // a curve name keeps NAME_GAP px from the other labels so that it is not read as part of an area label
+const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_PEAK=140,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
+function normalSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,BASE=NORM_TOP+NORM_PEAK;
+  const lo=N(m.window.lo),hi=N(m.window.hi),scale=(NORM_XR-NORM_XL)/(hi-lo);
+  const px=u=>r6(NORM_XL+(u-lo)*scale);
+  const sdOf=c=>m.framed?1:N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf));
+  const byId=new Map(m.curves.map(c=>[c.id,c])),hOf=c=>NORM_PEAK*sdMin/sdOf(c);
+  const yOf=(c,u)=>r6(BASE-hOf(c)*Math.exp(-(((u-meanOf(c))/sdOf(c))**2)/2));
+  const prims=[],labels=[];
+  arrows(prims,{xStartPx:NORM_XL-20,yAxisPx:null,base:BASE,tipX:NORM_TIP});
+  // the curves
+  const pts=new Map();
+  for(const c of m.curves){
+    const dx=Math.min(NORM_STEP_MAX,Math.max(NORM_STEP_MIN,sdOf(c)*scale/10)),n=Math.ceil((NORM_XR-NORM_XL)/dx),list=[];
+    for(let k=0;k<=n;k++){const x=r6(NORM_XL+(NORM_XR-NORM_XL)*k/n);list.push([x,yOf(c,lo+(x-NORM_XL)/scale)]);}
+    pts.set(c.id,list);
+  }
+  const topOf=(id,x)=>{ // the curve's height at pixel x by its own vertices
+    const list=pts.get(id);let a=0,b=list.length-1;
+    while(b-a>1){const mid=(a+b)>>1;if(list[mid][0]<=x)a=mid;else b=mid;}
+    const [x0,y0]=list[a],[x1,y1]=list[b];return x1===x0?y0:y0+(y1-y0)*(x-x0)/(x1-x0);
+  };
+  // shaded areas first (under everything)
+  const regions=[];
+  for(const [j,s] of m.shades.entries()){
+    const c=byId.get(s.curve),ua=s.from===null?null:N(s.from),ub=s.to===null?null:N(s.to);
+    const xa=ua===null?NORM_XL:px(ua),xb=ub===null?NORM_XR:px(ub);
+    const ya=ua===null?null:yOf(c,ua),yb=ub===null?null:yOf(c,ub);
+    const inner=pts.get(c.id).filter(([x])=>x>xa&&x<xb),top=[];
+    if(ua===null)top.push(...pts.get(c.id).filter(([x])=>x<=xa));else top.push([xa,ya]);
+    top.push(...inner);
+    if(ub===null)top.push(...pts.get(c.id).filter(([x])=>x>=xb));else top.push([xb,yb]);
+    const poly=[[xa,BASE],...top,[xb,BASE]];
+    prims.push({t:'polygon',id:`shade-${j}`,role:'shade',cls:`shade${s.tone}`,points:poly,data:{curve:c.id,tone:s.tone},layer:24});
+    if(ua!==null)prims.push(L(`edge-${j}-from`,'shade-edge','rule',xa,BASE,xa,ya,{shade:j},32));
+    if(ub!==null)prims.push(L(`edge-${j}-to`,'shade-edge','rule',xb,BASE,xb,yb,{shade:j},32));
+    // the weighted middle of the area: where a label is most welcome
+    let wsum=0,xsum=0;for(const [x,y] of top){const h=BASE-y;wsum+=h;xsum+=x*h;}
+    regions.push({shade:j,curve:c.id,xa,xb,top,pref:r6(xsum/wsum)});
+  }
+  // guides: the means, the symmetric pairs
+  for(const c of m.curves)if(c.meanLine){const x=px(meanOf(c));prims.push(L(`mean-${c.id}`,'mean-line','guide',x,BASE,x,yOf(c,meanOf(c)),{curve:c.id},28));}
+  for(const [s,sy] of m.symmetry.entries()){
+    const c=byId.get(sy.curve),[ua,ub]=sy.pair.map(N),xa=px(ua),xb=px(ub),y=yOf(c,ua);
+    prims.push(L(`sym-${s}-a`,'symmetry','guide',xa,BASE,xa,y,{curve:c.id,side:'a'},28),L(`sym-${s}-b`,'symmetry','guide',xb,BASE,xb,yOf(c,ub),{curve:c.id,side:'b'},28),L(`sym-${s}-bar`,'symmetry','guide',xa,y,xb,y,{curve:c.id},28));
+  }
+  for(const [i,c] of m.curves.entries())prims.push({t:'polyline',id:`curve-${c.id}`,role:'curve',cls:`ncurve${i}`,points:pts.get(c.id),data:{curve:c.id,mean:c.mean,sd:c.sd},layer:45});
+  // ticks and their labels (and the z row)
+  const rowH=Math.ceil(fontPx*NORM_Z_ROW),zy=BASE+TICK+4+rowH;
+  for(const t of m.ticks){
+    const x=px(N(t.pos));
+    prims.push(L(`x-tick-${t.index}`,'x-tick','tick',x,BASE,x,BASE+TICK,{axis:'x',index:t.index}));
+    labels.push(math(`x-tick-${t.index}-label`,'x-tick',`x-tick-${t.index}`,t.tex,t.text,'center','top',x,BASE+TICK+4,{value:t.text}));
+    if(m.zAxis&&!t.hideZ)labels.push(math(`z-tick-${t.index}-label`,'z-tick',`x-tick-${t.index}`,DISPLAY+qtex(P(t.z)),t.z,'center','top',x,zy,{value:t.z}));
+  }
+  labels.push(math('x-label','axis-title','x-axis',m.xLabel,m.xLabel,'start','middle',NORM_TIP+8,BASE,{value:m.xLabel}));
+  if(m.zAxis)labels.push(math('z-label','axis-title','z-row','z','z','start','top',NORM_TIP+8,zy,{value:'z'}));
+  // labels placed after typesetting
+  for(const c of m.curves)if(c.label!==null){
+    const hangul=/[가-힣]/.test(c.label);
+    labels.push({...(hangul?textLabel(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,c.label,'start','top',0,0,{curve:c.id,value:c.label}):math(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,DISPLAY+normalTeX(c.label),c.label,'start','top',0,0,{curve:c.id,value:c.label})),placement:'curve'});
+  }
+  for(const [j,s] of m.shades.entries())if(s.label!==null)labels.push({...math(`area-${j}`,'area-value',`shade-${j}`,DISPLAY+normalTeX(s.label),s.label,'start','top',0,0,{shade:j,value:s.label}),placement:'area'});
+  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4)+rowH+SAFE);
+  return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
+}
+const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
 export const statChartSize=(model,ctx)=>({...SPEC_BY_KIND[model.kind](model,ctx).size});
 export function statChartSpec(plan,model,ctx){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.chart))bad('STAT_CHART_PLAN_INVALID');
@@ -1088,6 +1356,89 @@ function resolveValueLabels(spec,placed){
   }
 }
 
+// Normal curves (E36): the labels that need a free place. An area label goes inside its area (on the x axis side, as near the weighted middle of the area as it fits) when its box fits under the
+// curve with 3 px to spare; otherwise above the curves with a leader line that ends in a dot inside the area. A curve name goes beside its curve's peak or shoulder. Every label keeps 2.5 px from
+// every drawn line and from the other labels.
+function resolveNormal(spec,placed){
+  const {base:BASE,regions,curves}=spec.normal,{width,height}=spec.size,CLEAR=2.5;
+  const fixed=placed.filter(item=>item.label.placement===undefined).map(item=>item.box),done=[...fixed];
+  const lines=()=>obstacles(spec.prims);
+  // a leader may cross its own curve and its own area outline (it enters the area that way) and the dotted guides, but no other line
+  const crossing=(a,b,c,d)=>{const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);return o(a,b,c)*o(a,b,d)<0&&o(c,d,a)*o(c,d,b)<0;};
+  const leaderCrosses=(a,b,shade,curveId)=>spec.prims.some(prim=>{
+    if(prim.id===`curve-${curveId}`||prim.id===`shade-${shade}`||String(prim.id).startsWith(`edge-${shade}-`)||prim.cls==='guide'||prim.role==='grid')return false;
+    const segs=prim.t==='line'?[[[prim.x1,prim.y1],[prim.x2,prim.y2]]]:prim.t==='polyline'||prim.t==='polygon'?prim.points.map((q,i)=>[q,prim.points[(i+1)%prim.points.length]]).slice(0,prim.t==='polygon'?prim.points.length:prim.points.length-1):[];
+    return segs.some(([c,d])=>crossing(a,b,c,d));
+  });
+  const clearance=(box,obs,boxGap=CLEAR)=>{ // the smallest margin to a line (CLEAR needed) or to another label (boxGap needed), in units where CLEAR is the pass mark
+    if(box.x<SAFE||box.y<SAFE||box.x+box.width>width-SAFE||box.y+box.height>height-SAFE)return -1;
+    let s=Infinity;
+    for(const o of obs){
+      if(o.circle)s=Math.min(s,rectDist(o.circle[0],o.circle[1],box)-o.circle[2]-o.pad);
+      else for(const [a,c] of o.segs)s=Math.min(s,segRectDist(a,c,box)-o.pad);
+    }
+    for(const other of done)s=Math.min(s,(overlaps(box,other)?-1:rectGap(box,other))-(boxGap-CLEAR));
+    return s;
+  };
+  const topAt=(top,x)=>{let a=0,b=top.length-1;if(x<=top[0][0])return top[0][1];if(x>=top[b][0])return top[b][1];while(b-a>1){const mid=(a+b)>>1;if(top[mid][0]<=x)a=mid;else b=mid;}const [x0,y0]=top[a],[x1,y1]=top[b];return x1===x0?Math.min(y0,y1):y0+(y1-y0)*(x-x0)/(x1-x0);};
+  const curveMinY=(x0,x1)=>{let y=BASE;for(const prim of spec.prims)if(prim.role==='curve')for(const [x,yy] of prim.points)if(x>=x0&&x<=x1&&yy<y)y=yy;return y;};
+  for(const item of placed.filter(i=>i.label.placement==='area')){
+    const region=regions[item.label.extra.shade],{width:w,height:h}=item.box,obs=lines();
+    const inside=[];
+    for(let cx=region.xa+3+w/2;cx<=region.xb-3-w/2+1e-9;cx+=1.5)for(let row=0;row<4;row++){
+      const box={x:r6(cx-w/2),y:r6(BASE-7-h-row*10),width:w,height:h};
+      let fits=true;
+      for(let x=box.x;x<=box.x+w+1e-9;x+=2)if(topAt(region.top,x)>box.y-3){fits=false;break;}
+      if(fits&&topAt(region.top,box.x+w)>box.y-3)fits=false;
+      if(fits)inside.push({box,score:Math.abs(cx-region.pref)+row*30});
+    }
+    inside.sort((a,b)=>a.score-b.score);
+    const pick=inside.find(c=>clearance(c.box,obs)>=CLEAR);
+    if(pick){item.box=pick.box;done.push(pick.box);continue;}
+    // outside with a leader: the dot goes where the area is tall enough to hold it (first at the weighted middle, then at other places along the area)
+    const shade=item.label.extra.shade,peakX=curves.find(k=>k.id===region.curve).peak[0],list=spec.prims.find(prim=>prim.id===`curve-${region.curve}`).points;
+    const spots=[region.pref,...[.5,.3,.7,.15,.85].map(f=>region.xa+f*(region.xb-region.xa))].filter(x=>BASE-topAt(region.top,x)>=16);
+    let found=null,ax=0,ay=0;
+    for(const spot of spots){
+      ax=r6(spot);ay=r6((topAt(region.top,ax)+BASE)/2);
+      const accept=(box,sx,sy)=>{
+        if(clearance(box,obs,LABEL_APART)<CLEAR)return false;
+        if(done.some(o=>segHitsRect([sx,sy],[ax,ay],{x:o.x-2,y:o.y-2,width:o.width+4,height:o.height+4})))return false;
+        if(leaderCrosses([sx,sy],[ax,ay],shade,region.curve))return false;
+        found={box,sx,sy};return true;
+      };
+      // an area off to one side of its curve's peak puts its label beside the curve on that side (a level-ish leader); otherwise (and as a second choice) the label stands above the curves
+      const side=ax>peakX+8?1:ax<peakX-8?-1:0;
+      if(side){
+        let edge=side>0?Math.max(region.xb,ax):Math.min(region.xa,ax);
+        for(const [x,y] of side>0?list.filter(([x])=>x>ax):[...list].reverse().filter(([x])=>x<ax))if(y>=ay){edge=side>0?Math.max(edge,x):Math.min(edge,x);break;}
+        search:for(const shift of [0,-14,14,-28,28])for(const gap of [12,20,30]){
+          const box={x:r6(side>0?edge+gap:edge-gap-w),y:r6(ay+shift-h/2),width:w,height:h};
+          if(accept(box,r6(side>0?box.x-LEADER_GAP:box.x+w+LEADER_GAP),r6(box.y+h/2)))break search;
+        }
+      }
+      if(!found)search:for(const gap of [14,22,32,44])for(const k of [0,-.7,.7,-1.4,1.4,-2.1,2.1,-2.8,2.8]){
+        const cx=ax+k*w,x=cx-w/2,y=curveMinY(x-4,x+w+4)-gap-h,box={x:r6(x),y:r6(y),width:w,height:h};
+        if(accept(box,r6(Math.max(box.x+4,Math.min(box.x+w-4,ax))),r6(box.y+h+LEADER_GAP)))break search;
+      }
+      if(found)break;
+    }
+    if(!found)throw new Stop('STAT_NORMAL_AREA_LABEL_NO_ROOM',{shade});
+    item.box=found.box;done.push(found.box);
+    spec.prims.push(L(`area-${item.label.extra.shade}-leader`,'area-leader','leader',found.sx,found.sy,ax,ay,{shade:item.label.extra.shade},60),{t:'circle',id:`area-${item.label.extra.shade}-dot`,role:'area-dot',cls:'dot',cx:ax,cy:ay,r:2.4,data:{shade:item.label.extra.shade},layer:61});
+  }
+  for(const item of placed.filter(i=>i.label.placement==='curve')){
+    const c=curves.find(k=>k.id===item.label.extra.curve),{width:w,height:h}=item.box,obs=lines(),[px0,py0]=c.peak;
+    const anchors=[[px0,py0,'peak'],[c.right[0],c.right[1],'right'],[c.left[0],c.left[1],'left']];
+    let pick=null;
+    search:for(const [ax,ay,where] of anchors)for(const g of [6,12,20,30]){
+      const d=g*.72,boxes=where==='peak'?[{x:ax-w/2,y:ay-g-h},{x:ax+d,y:ay-d-h},{x:ax-d-w,y:ay-d-h},{x:ax+g,y:ay-h/2},{x:ax-g-w,y:ay-h/2}]:where==='right'?[{x:ax+d,y:ay-d-h},{x:ax+g,y:ay-h/2},{x:ax-w/2,y:ay-g-h}]:[{x:ax-d-w,y:ay-d-h},{x:ax-g-w,y:ay-h/2},{x:ax-w/2,y:ay-g-h}];
+      for(const b of boxes){const box={x:r6(b.x),y:r6(b.y),width:w,height:h};if(clearance(box,obs,NAME_GAP)>=CLEAR){pick=box;break search;}}
+    }
+    if(!pick)throw new Stop('STAT_NORMAL_CURVE_NAME_NO_ROOM',{curve:c.id});
+    item.box=pick;done.push(pick);
+  }
+}
 // --- composing ----------------------------------------------------------------------------------------------------------------------------
 const PLAIN_KEYS=['capability','chart','caption','sourceConditions','newVisualInformation'];
 export function checkStatChartPlan(plan){
@@ -1186,6 +1537,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
       placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
     }
     if(spec.tree)resolveTree(spec,placed);
+    if(spec.normal)resolveNormal(spec,placed);
     resolveValueLabels(spec,placed);
     cutGrid(spec,placed);
     const {width,height}=spec.size;

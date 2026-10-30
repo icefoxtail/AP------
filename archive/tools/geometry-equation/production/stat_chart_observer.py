@@ -924,6 +924,75 @@ def audit_box(chart, doc):
     return {'series': len(chart['series'])}
 
 
+SCATTER_REGION_OPACITY = {1: 0.12, 2: 0.26}      # this observer's own copy of how dark a highlighted rectangle is (tone 1 / 2, #111)
+SCATTER_RING_R = 7.6
+
+
+def scatter_marks(chart, doc, fx, fy, xr, yr):
+    """E36: reference lines (x=k, y=k, y=x), highlighted rectangles with the points they hold (rings, a count the plan asks for), re-derived from the plan's points with exact fractions."""
+    points = [(frac(p['x'], 'SC_PLAN_INVALID'), frac(p['y'], 'SC_PLAN_INVALID')) for p in chart['points']]
+    xs, ys = frac(chart.get('xStep', '1'), 'SC_PLAN_INVALID') if 'xStep' in chart else None, frac(chart.get('yStep', '1'), 'SC_PLAN_INVALID') if 'yStep' in chart else None
+    plan_refs = chart.get('refLines') or []
+    refs = {e.get('id'): e for e in doc.role('line', 'ref-line')}
+    if len(refs) != len(plan_refs): doc.err('SC_SCATTER_REF_COUNT')
+    for i, g in enumerate(plan_refs):
+        t = g.get('type')
+        if t == 'y=x' and chart.get('diagonal') is True: fail('STAT_SCATTER_GUIDE_INVALID')
+        e = refs.get('ref-%d' % i)
+        if e is None: doc.err('SC_SCATTER_REF_MISSING:%d' % i); continue
+        if t in ('x=k', 'y=k'):
+            v = frac(g.get('value'), 'STAT_SCATTER_GUIDE_INVALID')
+            r = xr if t == 'x=k' else yr
+            if not r[0] <= v <= r[1]: fail('STAT_SCATTER_GUIDE_OUT_OF_RANGE')
+            want = ((fx(v), fy(yr[0])), (fx(v), fy(yr[1]))) if t == 'x=k' else ((fx(xr[0]), fy(v)), (fx(xr[1]), fy(v)))
+        elif t == 'y=x':
+            t0, t1 = max(xr[0], yr[0]), min(xr[1], yr[1])
+            want = ((fx(t0), fy(t0)), (fx(t1), fy(t1)))
+        else: fail('STAT_SCATTER_GUIDE_INVALID')
+        got = ((num(e, 'x1'), num(e, 'y1')), (num(e, 'x2'), num(e, 'y2')))
+        if any(abs(a - b) > TOL for pa, pb in zip(got, want) for a, b in zip(pa, pb)): doc.err('SC_SCATTER_REF_PLACE:%d' % i)
+        if e.get('data-type') != t or (t != 'y=x' and frac(e.get('data-value'), 'SC_PLAN_INVALID') != frac(g['value'], 'SC_PLAN_INVALID')): doc.err('SC_SCATTER_REF_DATA:%d' % i)
+    plan_regions = chart.get('regions') or []
+    rects = {e.get('id'): e for e in doc.role('rect', 'scatter-region')}
+    if len(rects) != len(plan_regions): doc.err('SC_SCATTER_REGION_COUNT')
+    rings = {(e.get('data-region'), e.get('data-point')): e for e in doc.circles if e.get('data-role') == 'point-ring'}
+    want_rings, count_labels = set(), {}
+    dots = {int(c.get('data-index')): c for c in doc.circles if c.get('data-index') is not None}
+    for j, g in enumerate(plan_regions):
+        x0 = frac(g['xMin'], 'SC_PLAN_INVALID') if 'xMin' in g else xr[0]
+        x1 = frac(g['xMax'], 'SC_PLAN_INVALID') if 'xMax' in g else xr[1]
+        y0 = frac(g['yMin'], 'SC_PLAN_INVALID') if 'yMin' in g else yr[0]
+        y1 = frac(g['yMax'], 'SC_PLAN_INVALID') if 'yMax' in g else yr[1]
+        if not (xr[0] <= x0 < x1 <= xr[1] and yr[0] <= y0 < y1 <= yr[1]): fail('STAT_SCATTER_REGION_INVALID')
+        for v, step, lo in ((x0, xs, xr[0]), (x1, xs, xr[0]), (y0, ys, yr[0]), (y1, ys, yr[0])):
+            if step and (v - lo) % step: fail('STAT_SCATTER_REGION_NOT_ON_STEP')
+        inside = [i for i, (x, y) in enumerate(points) if x0 <= x <= x1 and y0 <= y <= y1]
+        if not inside: fail('STAT_SCATTER_REGION_EMPTY')
+        tone = g.get('tone', 1)
+        e = rects.get('region-%d' % j)
+        if e is None: doc.err('SC_SCATTER_REGION_MISSING:%d' % j)
+        else:
+            top, left = fy(y1), fx(x0)
+            if abs(num(e, 'x') - left) > TOL or abs(num(e, 'y') - top) > TOL or abs(num(e, 'width') - (fx(x1) - left)) > TOL or abs(num(e, 'height') - (fy(y0) - top)) > TOL: doc.err('SC_SCATTER_REGION_PLACE:%d' % j)
+            if e.get('fill') != '#111' or abs(float(e.get('fill-opacity') or 0) - SCATTER_REGION_OPACITY[tone]) > 1e-9: doc.err('SC_SCATTER_REGION_STYLE:%d' % j)
+        if g.get('markPoints') is True:
+            for i in inside: want_rings.add((str(j), str(i)))
+        label = [l for l in doc.label_role('count-value') if l.get('data-owner') == 'region-%d' % j]
+        if g.get('countLabel') is True:
+            text = str(len(inside)) + g.get('countUnit', '')
+            if len(label) != 1: doc.err('SC_SCATTER_COUNT_LABEL:%d' % j)
+            else:
+                l = label[0]
+                if (l.get('data-text') if g.get('countUnit') else l.get('data-tex')) != (text if g.get('countUnit') else NORM_DISPLAY + text): doc.err('SC_SCATTER_COUNT_MISMATCH:%d' % j)
+                if l.get('data-value') != str(len(inside)): doc.err('SC_SCATTER_COUNT_MISMATCH:%d' % j)
+                if clearance(box_of(l), drawn_obstacles(doc)) < 1.0: doc.err('SC_SCATTER_COUNT_LABEL_CLEARANCE:%d' % j)
+        elif label: doc.err('SC_SCATTER_COUNT_LABEL_UNEXPECTED:%d' % j)
+    if set(rings) != want_rings: doc.err('SC_SCATTER_RING_SET')
+    for (j, i), e in rings.items():
+        d = dots.get(int(i))
+        if d is None or abs(num(e, 'cx') - num(d, 'cx')) > TOL or abs(num(e, 'cy') - num(d, 'cy')) > TOL or abs(num(e, 'r') - SCATTER_RING_R) > TOL: doc.err('SC_SCATTER_RING_PLACE:%s:%s' % (j, i))
+
+
 def audit_scatter(chart, doc):
     fx, ix, xvals = doc.axis_map('x-tick', 'x')
     fy, iy, yvals = doc.axis_map('y-tick', 'y')
@@ -954,6 +1023,7 @@ def audit_scatter(chart, doc):
         if diagonal is None or abs(num(diagonal, 'x1') - fx(t0)) > TOL or abs(num(diagonal, 'y1') - fy(t0)) > TOL or abs(num(diagonal, 'x2') - fx(t1)) > TOL or abs(num(diagonal, 'y2') - fy(t1)) > TOL: doc.err('SC_DIAGONAL')
     elif diagonal is not None: doc.err('SC_DIAGONAL_UNEXPECTED')
     if not (xvals[0] >= xr[0] and xvals[-1] <= xr[1] and yvals[0] >= yr[0] and yvals[-1] <= yr[1]): doc.err('SC_TICK_OUTSIDE_RANGE')
+    scatter_marks(chart, doc, fx, fy, xr, yr)
     grids = doc.role('line', 'grid')
     if chart.get('grid') is not False:
         if not grids: doc.err('SC_GRID_MISSING')
@@ -1348,7 +1418,420 @@ def audit_dot(chart, doc):
     return {'dots': sum(c for _, c in points), 'values': {str(v): c for v, c in points}, 'step': step}
 
 
-AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'DOT_PLOT': audit_dot}
+# ---- NORMAL_CURVE (E36) ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+# This observer's own copies of the drawing rules: the tallest curve (the one with the smallest sd) is NORM_PEAK high, the others in the ratio of their sds; a tick is NORM_TICK long; a shade of
+# tone 1 / 2 is #111 at 0.16 / 0.34 opacity. The scale of the x axis is the window of the plan against the two ends of each polyline (never anything the producer states about its own scale).
+NORM_PEAK, NORM_TICK, NORM_STEP_MAX = 140.0, 5.0, 2.05
+NORM_OPACITY = {1: 0.16, 2: 0.34}
+NORM_SYMBOL = re.compile('^[A-Za-zμσ]$')
+NORM_TEXT = re.compile('^[A-Za-z0-9μσ+\\-=.()^]{1,10}$')
+NORM_NAME = re.compile('^(?:[A-Za-z0-9μσ+\\-=.()^, ]{1,14}|[가-힣][가-힣A-Za-z0-9 ()]{0,9})$')
+NORM_PLAIN = re.compile(r'^-?\d{1,6}(?:\.\d{1,4})?$')
+NORM_AREA_SUM = re.compile(r'^\d(?:\.\d{1,4})?(?:[+-]\d(?:\.\d{1,4})?){0,2}$')
+NORM_AREA_SYMBOL = re.compile(r'^[A-Za-z?]$')
+NORM_DISPLAY = '\\displaystyle '
+NORM_AREA_TOL, NORM_MEASURED_TOL = 2e-4, 6e-4
+
+
+def decimal_of(q):
+    """The finite decimal of a rational (None when it has none): integers plainly, 3/2 as 1.5, 1/2 as 0.5."""
+    d, twos, fives = q.denominator, 0, 0
+    while d % 2 == 0: d //= 2; twos += 1
+    while d % 5 == 0: d //= 5; fives += 1
+    if d != 1: return None
+    k = max(twos, fives)
+    n = q.numerator * 10 ** k // q.denominator
+    digits = str(abs(n)).rjust(k + 1, '0')
+    return ('-' if n < 0 else '') + (digits[:-k] + '.' + digits[-k:] if k else digits)
+
+
+def tex_num(q):
+    d = decimal_of(q)
+    return d if d is not None else ('-' if q < 0 else '') + '\\frac{%d}{%d}' % (abs(q.numerator), q.denominator)
+
+
+def normal_tex(text):
+    return text.replace('σ', '\\sigma ').replace('μ', '\\mu ').strip()
+
+
+def try_frac(raw):
+    try: return frac(raw, 'SC_PLAN_INVALID')
+    except ValueError: return None
+
+
+def phi(z): return 0.5 * (1 + math.erf(z / math.sqrt(2)))
+
+
+def normal_area(za, zb):
+    return phi(zb if zb is not None else 40.0) - phi(za if za is not None else -40.0)
+
+
+def normal_plan(chart):
+    """Everything a normal-curve figure shows, derived from the plan alone with exact fractions (this observer's own rules): curves, window, ticks (sorted, with the text each shows), shades with
+    their exact areas, area labels, symmetric pairs."""
+    keys = {'kind', 'curves', 'ticks', 'zAxis', 'shades', 'areaLabels', 'symmetry', 'xLabel', 'span'}
+    if set(chart) - keys: fail('STAT_CHART_PLAN_INVALID')
+    raw_curves = chart.get('curves')
+    if not isinstance(raw_curves, list) or not 1 <= len(raw_curves) <= 3: fail('STAT_NORMAL_CURVE_INVALID')
+    curves, ids = [], set()
+    for raw in raw_curves:
+        if not isinstance(raw, dict) or set(raw) - {'id', 'mean', 'sd', 'label', 'meanLine'}: fail('STAT_NORMAL_CURVE_INVALID')
+        if not isinstance(raw.get('id'), str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,3}', raw['id']) or raw['id'] in ids: fail('STAT_NORMAL_CURVE_INVALID')
+        ids.add(raw['id'])
+        mean, sd = try_frac(raw.get('mean')), try_frac(raw.get('sd'))
+        if mean is None and not (isinstance(raw.get('mean'), str) and NORM_SYMBOL.match(raw['mean'])): fail('STAT_NORMAL_PARAM_INVALID')
+        if sd is None and not (isinstance(raw.get('sd'), str) and NORM_SYMBOL.match(raw['sd'])): fail('STAT_NORMAL_PARAM_INVALID')
+        if sd is not None and sd <= 0: fail('STAT_NORMAL_SD_INVALID')
+        label = raw.get('label')
+        if label is not None and (not isinstance(label, str) or not NORM_NAME.match(label)): fail('STAT_NORMAL_LABEL_INVALID')
+        mean_text = raw['mean'] if mean is None else decimal_of(mean)
+        if mean_text is None: fail('STAT_NORMAL_PARAM_INVALID')
+        curves.append({'id': raw['id'], 'mean': mean, 'sd': sd, 'mean_text': mean_text, 'sd_text': raw['sd'] if sd is None else (decimal_of(sd) or str(sd)), 'label': label,
+                       'mean_line': raw['meanLine'] if 'meanLine' in raw else len(raw_curves) == 1})
+    framed = any(c['mean'] is None or c['sd'] is None for c in curves)
+    if framed and len(curves) > 1: fail('STAT_NORMAL_SYMBOLIC_MULTI')
+    by_id = {c['id']: c for c in curves}
+    span = Fraction(4)
+    if 'span' in chart:
+        span = try_frac(chart['span'])
+        if span is None or not Fraction(5, 2) <= span <= 5: fail('STAT_NORMAL_SPAN_INVALID')
+    if framed: lo, hi = -span, span
+    else:
+        sd_min, sd_max = min(c['sd'] for c in curves), max(c['sd'] for c in curves)
+        if sd_max > 4 * sd_min: fail('STAT_NORMAL_SD_RATIO')
+        if max(c['mean'] for c in curves) - min(c['mean'] for c in curves) > 6 * sd_min: fail('STAT_NORMAL_WINDOW_TOO_WIDE')
+        lo, hi = min(c['mean'] - span * c['sd'] for c in curves), max(c['mean'] + span * c['sd'] for c in curves)
+    raw_ticks = chart.get('ticks')
+    if not isinstance(raw_ticks, list) or not 1 <= len(raw_ticks) <= 10: fail('STAT_NORMAL_TICK_INVALID')
+
+    def sym_text(c, z):
+        if z == 0: return c['mean_text']
+        sign, a = ('-', -z) if z < 0 else ('+', z)
+        if c['sd'] is not None:
+            off = decimal_of(a * c['sd'])
+            if off is None: fail('STAT_NORMAL_TICK_TEXT_UNREPRESENTABLE')
+            return c['mean_text'] + sign + off
+        coef = '' if a == 1 else decimal_of(a)
+        if coef is None: fail('STAT_NORMAL_TICK_TEXT_UNREPRESENTABLE')
+        return c['mean_text'] + sign + coef + c['sd_text']
+    plan_ticks = []
+    for i, raw in enumerate(raw_ticks):
+        t = {'x': raw} if isinstance(raw, (str, int)) and not isinstance(raw, bool) else raw
+        if not isinstance(t, dict) or set(t) - {'x', 'z', 'text', 'curve', 'hideZ'} or ('x' in t) == ('z' in t): fail('STAT_NORMAL_TICK_INVALID')
+        c = by_id.get(t['curve']) if 'curve' in t else curves[0]
+        if c is None: fail('STAT_NORMAL_TICK_INVALID')
+        if framed:
+            if 'x' in t: fail('STAT_NORMAL_TICK_INVALID')
+            u = z = frac(t['z'], 'STAT_NORMAL_TICK_INVALID')
+        elif 'x' in t:
+            u = frac(t['x'], 'STAT_NORMAL_TICK_INVALID'); z = (u - c['mean']) / c['sd']
+        else:
+            z = frac(t['z'], 'STAT_NORMAL_TICK_INVALID'); u = c['mean'] + z * c['sd']
+        if not lo <= u <= hi: fail('STAT_NORMAL_TICK_OUT_OF_WINDOW')
+        if 'text' in t:
+            text = t['text']
+            if not isinstance(text, str) or not NORM_TEXT.match(text): fail('STAT_NORMAL_TICK_TEXT_INVALID')
+            if not framed and NORM_PLAIN.match(text) and frac(text, 'SC_PLAN_INVALID') != u: fail('STAT_NORMAL_TICK_TEXT_MISMATCH')
+            tex = NORM_DISPLAY + normal_tex(text)
+        elif framed:
+            text = sym_text(c, u); tex = NORM_DISPLAY + normal_tex(text)
+        else:
+            text = decimal_of(u) or '%d/%d' % (u.numerator, u.denominator); tex = NORM_DISPLAY + tex_num(u)
+        plan_ticks.append({'plan': i, 'u': u, 'z': z, 'text': text, 'tex': tex, 'curve': c['id'], 'hide_z': t.get('hideZ') is True})
+    for i, a in enumerate(plan_ticks):
+        for b in plan_ticks[i + 1:]:
+            if a['u'] == b['u'] or a['text'] == b['text']: fail('STAT_NORMAL_TICK_DUPLICATE')
+    ticks = sorted(plan_ticks, key=lambda t: t['u'])
+
+    def ref(r):
+        if isinstance(r, int) and not isinstance(r, bool) and 0 <= r < len(plan_ticks): return plan_ticks[r]
+        if isinstance(r, str):
+            for t in plan_ticks:
+                if t['text'] == r: return t
+        return fail('STAT_NORMAL_BOUNDARY_NOT_TICKED')
+    z_of = (lambda c, u: u) if framed else (lambda c, u: (u - c['mean']) / c['sd'])
+    shades = []
+    raw_shades = chart.get('shades', [])
+    if not isinstance(raw_shades, list) or len(raw_shades) > 6: fail('STAT_NORMAL_SHADE_INVALID')
+    for raw in raw_shades:
+        if not isinstance(raw, dict) or set(raw) - {'curve', 'from', 'to', 'tone'}: fail('STAT_NORMAL_SHADE_INVALID')
+        c = by_id.get(raw['curve']) if 'curve' in raw else curves[0]
+        if c is None: fail('STAT_NORMAL_SHADE_INVALID')
+        a_ref, b_ref = raw.get('from'), raw.get('to')
+        if a_ref is None and b_ref is None: fail('STAT_NORMAL_SHADE_INVALID')
+        if raw.get('tone', 1) not in (1, 2) or isinstance(raw.get('tone'), bool): fail('STAT_NORMAL_SHADE_INVALID')
+        a = None if a_ref is None else ref(a_ref)
+        b = None if b_ref is None else ref(b_ref)
+        if a and b and a['u'] >= b['u']: fail('STAT_NORMAL_SHADE_RANGE')
+        za = None if a is None else float(z_of(c, a['u']))
+        zb = None if b is None else float(z_of(c, b['u']))
+        shades.append({'curve': c['id'], 'from': None if a is None else a['u'], 'to': None if b is None else b['u'], 'tone': raw.get('tone', 1), 'za': za, 'zb': zb, 'area': normal_area(za, zb), 'label': None})
+    raw_labels = chart.get('areaLabels', [])
+    if not isinstance(raw_labels, list) or len(raw_labels) > len(shades): fail('STAT_NORMAL_AREA_LABEL_INVALID')
+    for raw in raw_labels:
+        if not isinstance(raw, dict) or set(raw) - {'shade', 'text'}: fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        j, text = raw.get('shade'), raw.get('text')
+        if isinstance(j, bool) or not isinstance(j, int) or not 0 <= j < len(shades) or shades[j]['label'] is not None or not isinstance(text, str): fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        if NORM_AREA_SUM.match(text):
+            if abs(float(label_value(text)) - shades[j]['area']) > NORM_AREA_TOL: fail('STAT_NORMAL_AREA_LABEL_MISMATCH')
+        elif not NORM_AREA_SYMBOL.match(text): fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        shades[j]['label'] = text
+    for i, a in enumerate(shades):
+        for b in shades[i + 1:]:
+            if a['label'] is not None and a['label'] == b['label'] and re.fullmatch(r'[A-Za-z]', a['label']) and abs(a['area'] - b['area']) > 1e-5: fail('STAT_NORMAL_AREA_SYMBOL_UNEQUAL')
+    raw_sym = chart.get('symmetry', [])
+    if not isinstance(raw_sym, list) or len(raw_sym) > 2: fail('STAT_NORMAL_SYMMETRY_INVALID')
+    symmetry = []
+    for raw in raw_sym:
+        if not isinstance(raw, dict) or set(raw) - {'curve', 'pair'}: fail('STAT_NORMAL_SYMMETRY_INVALID')
+        c = by_id.get(raw['curve']) if 'curve' in raw else curves[0]
+        if c is None or not isinstance(raw.get('pair'), list) or len(raw['pair']) != 2: fail('STAT_NORMAL_SYMMETRY_INVALID')
+        a, b = ref(raw['pair'][0]), ref(raw['pair'][1])
+        if a is b or z_of(c, a['u']) + z_of(c, b['u']) != 0: fail('STAT_NORMAL_SYMMETRY_MISMATCH')
+        symmetry.append({'curve': c['id'], 'pair': sorted([a['u'], b['u']])})
+    z_axis = chart.get('zAxis') is True
+    if 'zAxis' in chart and not isinstance(chart['zAxis'], bool): fail('STAT_CHART_PLAN_INVALID')
+    if z_axis and len(curves) > 1: fail('STAT_NORMAL_Z_AXIS_AMBIGUOUS')
+    if z_axis and all(t['hide_z'] for t in ticks): fail('STAT_NORMAL_Z_AXIS_EMPTY')
+    x_label = chart.get('xLabel', 'x')
+    if not isinstance(x_label, str) or not re.fullmatch(r'[A-Za-z]', x_label): fail('STAT_NORMAL_LABEL_INVALID')
+    for c in curves:
+        if c['mean_line'] and not any(t['u'] == (0 if framed else c['mean']) for t in ticks): fail('STAT_NORMAL_MEAN_NOT_TICKED')
+    return {'framed': framed, 'curves': curves, 'lo': lo, 'hi': hi, 'span': span, 'ticks': ticks, 'shades': shades, 'symmetry': symmetry, 'z_axis': z_axis, 'x_label': x_label}
+
+
+def label_value(text):
+    """The number an area label written as a sum or difference of decimals stands for (exact)."""
+    return sum((-1 if sign == '-' else 1) * Fraction(term) for sign, term in re.findall(r'([+-]?)(\d(?:\.\d{1,4})?)', text))
+
+
+def points_of(element):
+    try: return [tuple(float(v) for v in pair.split(',')) for pair in (element.get('points') or '').split()]
+    except ValueError: fail('SC_SVG_ATTRIBUTE_INVALID:points')
+
+
+def inside_polygon(point, poly):
+    """Ray casting: is the point inside the polygon."""
+    x, y = point
+    hit = False
+    for (x0, y0), (x1, y1) in zip(poly, poly[1:] + poly[:1]):
+        if (y0 > y) != (y1 > y) and x < x0 + (y - y0) * (x1 - x0) / (y1 - y0): hit = not hit
+    return hit
+
+
+def polygon_clearance(point, poly):
+    """The distance from a point to the nearest edge of the polygon."""
+    best = math.inf
+    for a, b in zip(poly, poly[1:] + poly[:1]):
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        length2 = dx * dx + dy * dy
+        t = max(0.0, min(1.0, ((point[0] - a[0]) * dx + (point[1] - a[1]) * dy) / length2)) if length2 else 0.0
+        best = min(best, math.hypot(point[0] - (a[0] + t * dx), point[1] - (a[1] + t * dy)))
+    return best
+
+
+def segments_cross(a, b, c, d):
+    """Do the segments a-b and c-d cross properly (not merely touch)?"""
+    def orient(p, q, r): return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+    return orient(a, b, c) * orient(a, b, d) < 0 and orient(c, d, a) * orient(c, d, b) < 0
+
+
+def shoelace(poly):
+    return abs(sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(poly, poly[1:] + poly[:1]))) / 2
+
+
+def audit_normal(chart, doc):
+    plan = normal_plan(chart)
+    framed, curves, ticks, shades = plan['framed'], plan['curves'], plan['ticks'], plan['shades']
+    x_axis = doc.by_id.get('x-axis')
+    if x_axis is None: fail('SC_AXIS_MISSING')
+    base = num(x_axis, 'y1')
+    lo, hi = plan['lo'], plan['hi']
+    sd_of = (lambda c: 1.0) if framed else (lambda c: float(c['sd']))
+    mean_of = (lambda c: 0.0) if framed else (lambda c: float(c['mean']))
+    sd_min = min(sd_of(c) for c in curves)
+    # the scale of the axis: the window of the plan against the two ends of the first curve's polyline
+    first = doc.by_id.get('curve-' + curves[0]['id'])
+    if first is None: fail('SC_NORMAL_CURVE_MISSING')
+    first_pts = points_of(first)
+    if len(first_pts) < 50: fail('SC_NORMAL_CURVE_SPARSE')
+    xl, xr = first_pts[0][0], first_pts[-1][0]
+    slope = (xr - xl) / float(hi - lo)
+    if slope <= 0: fail('SC_AXIS_DIRECTION:x')
+    px = lambda u: xl + (float(u) - float(lo)) * slope
+    ux = lambda x: float(lo) + (x - xl) / slope
+    height = lambda c: NORM_PEAK * sd_min / sd_of(c)
+    ycurve = lambda c, x: base - height(c) * math.exp(-(((ux(x) - mean_of(c)) / sd_of(c)) ** 2) / 2)
+    # the curves
+    polylines = list(doc.root.iter(NS + 'polyline'))
+    if len(polylines) != len(curves): doc.err('SC_NORMAL_CURVE_COUNT')
+    dashes = []
+    for c in curves:
+        e = doc.by_id.get('curve-' + c['id'])
+        if e is None: doc.err('SC_NORMAL_CURVE_MISSING:' + c['id']); continue
+        pts = points_of(e)
+        dashes.append(e.get('stroke-dasharray') or '')
+        if len(pts) < 50 or abs(pts[0][0] - xl) > 0.05 or abs(pts[-1][0] - xr) > 0.05: doc.err('SC_NORMAL_CURVE_RANGE:' + c['id']); continue
+        if any(not 0 < x1 - x0 <= NORM_STEP_MAX for (x0, _), (x1, _) in zip(pts, pts[1:])): doc.err('SC_NORMAL_CURVE_SPARSE:' + c['id'])
+        else:
+            bad = [i for i, (x, y) in enumerate(pts) if abs(y - ycurve(c, x)) > 0.05]
+            if bad: doc.err('SC_NORMAL_CURVE_SHAPE:%s:%d' % (c['id'], bad[0]))
+            if any(abs((y0 + y1) / 2 - ycurve(c, (x0 + x1) / 2)) > 0.25 for (x0, y0), (x1, y1) in zip(pts, pts[1:])): doc.err('SC_NORMAL_CURVE_CHORD:' + c['id'])
+            top = min(pts, key=lambda p: p[1])
+            if abs(top[0] - px(mean_of(c))) > 1.2 or not 0 <= height(c) - (base - top[1]) <= 0.2: doc.err('SC_NORMAL_PEAK:' + c['id'])
+        if e.get('stroke') != '#111' or e.get('fill') != 'none': doc.err('SC_NORMAL_CURVE_STYLE:' + c['id'])
+    if len(curves) > 1 and len(set(dashes)) != len(dashes): doc.err('SC_NORMAL_CURVE_STYLE_SAME')
+    # the ticks
+    expected_lines = {'x-axis'}
+    if len(doc.role('line', 'x-tick')) != len(ticks): doc.err('SC_NORMAL_TICK_COUNT')
+    labels_expected = {}
+    for i, t in enumerate(ticks):
+        e = doc.by_id.get('x-tick-%d' % i)
+        expected_lines.add('x-tick-%d' % i)
+        if e is None: doc.err('SC_NORMAL_TICK_MISSING:%d' % i); continue
+        x = num(e, 'x1')
+        if abs(x - px(t['u'])) > 0.05 or abs(num(e, 'x2') - x) > 0.02 or abs(num(e, 'y1') - base) > 0.02 or abs(num(e, 'y2') - (base + NORM_TICK)) > 0.02: doc.err('SC_NORMAL_TICK_PLACE:%d' % i)
+        labels_expected['x-tick-%d-label' % i] = ('x-tick', 'x-tick-%d' % i, t['tex'], x)
+        if plan['z_axis'] and not t['hide_z']: labels_expected['z-tick-%d-label' % i] = ('z-tick', 'x-tick-%d' % i, NORM_DISPLAY + tex_num(t['z']), x)
+    labels_expected['x-label'] = ('axis-title', 'x-axis', plan['x_label'], None)
+    if plan['z_axis']: labels_expected['z-label'] = ('axis-title', 'z-row', 'z', None)
+    for j, s in enumerate(shades):
+        if s['label'] is not None: labels_expected['area-%d' % j] = ('area-value', 'shade-%d' % j, NORM_DISPLAY + normal_tex(s['label']), None)
+    for c in curves:
+        if c['label'] is not None:
+            hangul = re.search('[가-힣]', c['label']) is not None
+            labels_expected['curve-%s-name' % c['id']] = ('curve-name', 'curve-' + c['id'], c['label'] if hangul else NORM_DISPLAY + normal_tex(c['label']), None)
+    got = {l.get('id'): l for l in doc.labels}
+    if set(got) != set(labels_expected): doc.err('SC_NORMAL_LABEL_SET')
+    for lid, (role, owner, tex, cx) in labels_expected.items():
+        l = got.get(lid)
+        if l is None: continue
+        if l.get('data-label-role') != role or l.get('data-owner') != owner: doc.err('SC_NORMAL_LABEL_ROLE:' + lid)
+        if l.get('data-tex') != tex and l.get('data-text') != tex: doc.err('SC_NORMAL_LABEL_TEXT:' + lid)
+        bx, by, bw, bh = box_of(l)
+        if cx is not None:
+            if abs(bx + bw / 2 - cx) > LABEL_TOL: doc.err('SC_NORMAL_LABEL_NOT_CENTRED:' + lid)
+            if lid.startswith('x-tick') and by < base + NORM_TICK: doc.err('SC_NORMAL_TICK_LABEL_ABOVE_AXIS:' + lid)
+    for i, t in enumerate(ticks):
+        xlab, zlab = got.get('x-tick-%d-label' % i), got.get('z-tick-%d-label' % i)
+        if xlab is not None and zlab is not None and box_of(zlab)[1] < box_of(xlab)[1] + box_of(xlab)[3]: doc.err('SC_NORMAL_Z_ROW_OVERLAP:%d' % i)
+    xlab = got.get('x-label')
+    if xlab is not None and not (box_of(xlab)[0] > xr and abs(centre(xlab)[1] - base) <= LABEL_TOL + 1): doc.err('SC_NORMAL_X_LABEL_PLACE')
+    # mean lines
+    for c in curves:
+        e = doc.by_id.get('mean-' + c['id'])
+        if c['mean_line']:
+            expected_lines.add('mean-' + c['id'])
+            x = px(mean_of(c))
+            if e is None or abs(num(e, 'x1') - x) > 0.05 or abs(num(e, 'x2') - x) > 0.05 or abs(num(e, 'y1') - base) > 0.05 or abs(num(e, 'y2') - (base - height(c))) > 0.05: doc.err('SC_NORMAL_MEAN_LINE:' + c['id'])
+        elif e is not None: doc.err('SC_NORMAL_MEAN_LINE_UNEXPECTED:' + c['id'])
+    # shaded areas
+    by_curve = {c['id']: c for c in curves}
+    if len(doc.role('polygon', 'shade')) != len(shades): doc.err('SC_NORMAL_SHADE_COUNT')
+    polys, drawn_area, exact_window = {}, {}, {}
+    whole_bell = lambda c: height(c) * sd_of(c) * slope * math.sqrt(2 * math.pi)
+    for j, s in enumerate(shades):
+        c = by_curve[s['curve']]
+        e = doc.by_id.get('shade-%d' % j)
+        if e is None: doc.err('SC_NORMAL_SHADE_MISSING:%d' % j); continue
+        pts = points_of(e)
+        polys[j] = pts
+        xa = xl if s['from'] is None else px(s['from'])
+        xb = xr if s['to'] is None else px(s['to'])
+        if len(pts) < 4 or abs(pts[0][0] - xa) > 0.05 or abs(pts[0][1] - base) > 0.05 or abs(pts[-1][0] - xb) > 0.05 or abs(pts[-1][1] - base) > 0.05: doc.err('SC_NORMAL_SHADE_BASE:%d' % j); continue
+        inner = pts[1:-1]
+        if abs(inner[0][0] - xa) > 0.05 or abs(inner[-1][0] - xb) > 0.05: doc.err('SC_NORMAL_SHADE_EDGE:%d' % j)
+        if any(abs(y - ycurve(c, x)) > 0.05 for x, y in inner) or any(not xa - 0.05 <= x <= xb + 0.05 for x, _ in inner) or any(b[0] < a[0] - 1e-9 for a, b in zip(inner, inner[1:])): doc.err('SC_NORMAL_SHADE_CURVE:%d' % j)
+        if e.get('fill') != '#111' or abs(float(e.get('fill-opacity') or 0) - NORM_OPACITY[s['tone']]) > 1e-9 or e.get('data-curve') != c['id']: doc.err('SC_NORMAL_SHADE_STYLE:%d' % j)
+        for side, u in (('from', s['from']), ('to', s['to'])):
+            edge = doc.by_id.get('edge-%d-%s' % (j, side))
+            if u is None:
+                if edge is not None: doc.err('SC_NORMAL_EDGE_UNEXPECTED:%d:%s' % (j, side))
+                continue
+            expected_lines.add('edge-%d-%s' % (j, side))
+            x = px(u)
+            if edge is None or abs(num(edge, 'x1') - x) > 0.05 or abs(num(edge, 'x2') - x) > 0.05 or abs(num(edge, 'y1') - base) > 0.05 or abs(num(edge, 'y2') - ycurve(c, x)) > 0.05: doc.err('SC_NORMAL_EDGE:%d:%s' % (j, side))
+        # the area as drawn: the polygon's area against the whole bell (height x sd in pixels x sqrt(2 pi)), compared with the exact area inside the window
+        z_lo = float(lo) if framed else float((lo - c['mean']) / c['sd'])
+        z_hi = float(hi) if framed else float((hi - c['mean']) / c['sd'])
+        exact = normal_area(max(z_lo, s['za']) if s['za'] is not None else z_lo, min(z_hi, s['zb']) if s['zb'] is not None else z_hi)
+        drawn = shoelace(pts) / whole_bell(c)
+        drawn_area[j], exact_window[j] = drawn, exact
+        if abs(drawn - exact) > NORM_MEASURED_TOL: doc.err('SC_NORMAL_SHADE_AREA:%d' % j)
+        if s['label'] is not None and NORM_AREA_SUM.match(s['label']):
+            value = float(label_value(s['label']))
+            if abs(value - s['area']) > NORM_AREA_TOL or abs(value - drawn) > NORM_AREA_TOL + NORM_MEASURED_TOL + (s['area'] - exact): doc.err('SC_NORMAL_AREA_LABEL_VALUE:%d' % j)
+    for i, a in enumerate(shades):
+        for k, b in enumerate(shades[i + 1:], i + 1):
+            if a['label'] is not None and a['label'] == b['label'] and re.fullmatch(r'[A-Za-z]', a['label']) and i in drawn_area and k in drawn_area:
+                if abs(drawn_area[i] + (a['area'] - exact_window[i]) - drawn_area[k] - (b['area'] - exact_window[k])) > NORM_MEASURED_TOL: doc.err('SC_NORMAL_EQUAL_AREAS:%d:%d' % (i, k))
+    # symmetric pairs: dotted lines at both positions up to the curve and a level line between their tops
+    for s, sy in enumerate(plan['symmetry']):
+        c = by_curve[sy['curve']]
+        xa, xb = px(sy['pair'][0]), px(sy['pair'][1])
+        for side, x in (('a', xa), ('b', xb)):
+            expected_lines.add('sym-%d-%s' % (s, side))
+            e = doc.by_id.get('sym-%d-%s' % (s, side))
+            if e is None or abs(num(e, 'x1') - x) > 0.05 or abs(num(e, 'x2') - x) > 0.05 or abs(num(e, 'y1') - base) > 0.05 or abs(num(e, 'y2') - ycurve(c, x)) > 0.05 or not e.get('stroke-dasharray'): doc.err('SC_NORMAL_SYMMETRY_LINE:%d:%s' % (s, side))
+        expected_lines.add('sym-%d-bar' % s)
+        e = doc.by_id.get('sym-%d-bar' % s)
+        y = ycurve(c, xa)
+        if e is None or abs(num(e, 'x1') - xa) > 0.05 or abs(num(e, 'x2') - xb) > 0.05 or abs(num(e, 'y1') - y) > 0.05 or abs(num(e, 'y2') - y) > 0.05 or abs(ycurve(c, xb) - y) > 0.05: doc.err('SC_NORMAL_SYMMETRY_BAR:%d' % s)
+    # area labels: inside their area, or outside with a leader that ends in a dot inside it
+    dots = {e.get('data-shade'): e for e in doc.circles if e.get('data-role') == 'area-dot'}
+    leaders = {e.get('data-shade'): e for e in doc.role('line', 'area-leader')}
+    for j, s in enumerate(shades):
+        label = got.get('area-%d' % j)
+        if s['label'] is None:
+            if str(j) in dots or str(j) in leaders: doc.err('SC_NORMAL_AREA_LEADER_UNEXPECTED:%d' % j)
+            continue
+        if label is None or j not in polys: continue
+        bx, by, bw, bh = box_of(label)
+        poly = polys[j]
+        nx, ny = int(bw // 2) + 1, int(bh // 2) + 1
+        samples = [(bx + k * 2.0, by) for k in range(nx)] + [(bx + bw, by)] + [(bx + k * 2.0, by + bh) for k in range(nx)] + [(bx + bw, by + bh)] + [(bx, by + k * 2.0) for k in range(ny)] + [(bx + bw, by + k * 2.0) for k in range(ny)]
+        whole = all(inside_polygon(p, poly) for p in samples)
+        dot, leader = dots.get(str(j)), leaders.get(str(j))
+        if whole:
+            if dot is not None or leader is not None: doc.err('SC_NORMAL_AREA_LEADER_UNEXPECTED:%d' % j)
+        else:
+            if dot is None or leader is None: doc.err('SC_NORMAL_AREA_LABEL_OUTSIDE:%d' % j); continue
+            expected_lines.add('area-%d-leader' % j)
+            d = (num(dot, 'cx'), num(dot, 'cy'))
+            if not inside_polygon(d, poly) or polygon_clearance(d, poly) < 4: doc.err('SC_NORMAL_AREA_DOT_OUTSIDE:%d' % j)
+            ends = [(num(leader, 'x1'), num(leader, 'y1')), (num(leader, 'x2'), num(leader, 'y2'))]
+            if math.hypot(ends[1][0] - d[0], ends[1][1] - d[1]) > 0.05 or abs(box_distance((bx, by, bw, bh), ends[0]) - 2.0) > 0.1: doc.err('SC_NORMAL_AREA_LEADER:%d' % j)
+            for other in list(doc.lines) + list(doc.root.iter(NS + 'polyline')) + list(doc.root.iter(NS + 'polygon')):
+                oid = other.get('id')
+                if oid in ('curve-' + shades[j]['curve'], 'shade-%d' % j, 'edge-%d-from' % j, 'edge-%d-to' % j, leader.get('id')) or other.get('data-role') in ('arrow', 'mean-line', 'symmetry'): continue
+                pts = [((num(other, 'x1'), num(other, 'y1')), (num(other, 'x2'), num(other, 'y2')))] if other.tag == NS + 'line' else None
+                if pts is None:
+                    ring = points_of(other)
+                    pts = list(zip(ring, ring[1:] + (ring[:1] if other.tag == NS + 'polygon' else [])))[: len(ring) - (0 if other.tag == NS + 'polygon' else 1)]
+                if any(segments_cross(ends[0], ends[1], c0, c1) for c0, c1 in pts): doc.err('SC_NORMAL_LEADER_CROSSES:%d:%s' % (j, oid))
+    # nothing else is drawn
+    if {e.get('id') for e in doc.lines} != expected_lines: doc.err('SC_NORMAL_LINE_SET')
+    # labels that had a free place keep clear of every drawn line (but their own leader and dot) and of every other label
+    for lid, l in got.items():
+        if not (lid.startswith('area-') or lid.endswith('-name')): continue
+        box = box_of(l)
+        own = {'area-%s-leader' % lid.split('-')[1], 'area-%s-dot' % lid.split('-')[1]} if lid.startswith('area-') else set()
+        view = type('View', (), {})()
+        view.lines = [e for e in doc.lines if e.get('id') not in own]
+        view.circles = [e for e in doc.circles if e.get('id') not in own]
+        view.root, view.role = doc.root, doc.role
+        if clearance(box, drawn_obstacles(view)) < 2.0: doc.err('SC_NORMAL_LABEL_CLEARANCE:' + lid)
+        for oid, o in got.items():
+            if oid == lid: continue
+            ob = box_of(o)
+            if not (box[0] + box[2] + 2 <= ob[0] or ob[0] + ob[2] + 2 <= box[0] or box[1] + box[3] + 2 <= ob[1] or ob[1] + ob[3] + 2 <= box[1]): doc.err('SC_NORMAL_LABELS_CLOSE:%s:%s' % (lid, oid))
+        if lid.endswith('-name'):
+            e = doc.by_id.get('curve-' + lid[len('curve-'):-len('-name')])
+            if e is not None and min(box_distance(box, p) for p in points_of(e)) > 40: doc.err('SC_NORMAL_NAME_FAR:' + lid)
+    return {'curves': len(curves), 'ticks': len(ticks), 'shades': [round(s['area'], 4) for s in shades], 'drawnAreas': {str(j): round(v, 4) for j, v in drawn_area.items()}}
+
+
+AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'DOT_PLOT': audit_dot, 'NORMAL_CURVE': audit_normal}
 
 
 def audit(chart, svg):
