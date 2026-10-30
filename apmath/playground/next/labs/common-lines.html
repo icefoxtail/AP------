@@ -222,6 +222,58 @@ window.addEventListener('DOMContentLoaded', function () {
     BOARD.right(v, p1, p2, { size, color: col });
   }
 
+  /* [표시 보강] 같은 길이 눈금(atick)·각 표시(aang)·같은 반사각(areflect)·평행 표시(apar). 관찰 렌즈는 abadge·aright 처럼 따르되,
+     해당 렌즈(sides=길이, angles=각)가 없는 장면에서는 렌즈 선택과 상관없이 보이고, 다른 렌즈를 고르면 흐려집니다. 좌표는 현재 점에서 매 프레임 다시 계산합니다. */
+  const markGroup = (g) => (lensList(state.subType[state.mode]).includes(g) ? g : null);
+  function atick(a, b, count = 1, col = '#fbbf24') {
+    withAlpha(lensAlpha(markGroup('sides')), () => BOARD.ticks(a, b, { count, color: col, size: 7 }));
+  }
+  /* 각 표시 도우미 angMark(b, 꼭짓점 v, 반직선 방향 p1·p2, {color, rings, r, label}): 꼭짓점에서 p1→p2 쪽 작은 각에 호(rings겹)를 긋고, 값·기호(label)를
+     호 바깥의 그 각 '부채꼴 안쪽'에 놓습니다. 화면 픽셀 기준이라 확대·축소에도 읽히고, 각이 좁으면 라벨을 꼭짓점에서 더 멀리 둡니다. */
+  function angMark(b, v, p1, p2, o = {}) {
+    const unit = (p) => { const dx = p.x - v.x, dy = p.y - v.y, l = Math.hypot(dx, dy) || 1; return { x: v.x + (dx / l) * 1e-3, y: v.y + (dy / l) * 1e-3 }; };
+    const q1 = unit(p1), q2 = unit(p2);
+    const s0 = b.toS(v), a = b.toS(q1), c = b.toS(q2);
+    const t1 = Math.atan2(a.y - s0.y, a.x - s0.x), t2 = Math.atan2(c.y - s0.y, c.x - s0.x);
+    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, w = Math.abs(d), m = t1 + d / 2;
+    let r = o.r || 28;
+    const lines = b.thumb || o.label == null || o.label === '' ? [] : [].concat(o.label).map(String);
+    const hw = (Math.max(0, ...lines.map((x) => x.length)) * 7.2) / 2 + 3, hh = lines.length * 7 + 1;
+    const half = Math.max(w / 2, 0.07);
+    let D = r + 11;
+    [-1, 1].forEach((sg) => { const ang = m + sg * half; D = Math.max(D, (hw * Math.abs(Math.sin(ang)) + hh * Math.abs(Math.cos(ang))) / Math.sin(half) + 2); });
+    D = Math.min(D, o.max || 130);
+    if (lines.length && D - 12 > r) r = Math.min(D - 12, o.rmax || 70);
+    b.angle(v, q1, q2, { color: o.color, r, rings: o.rings || 1 });
+    lines.forEach((x, i) => b._text(s0.x + Math.cos(m) * D, s0.y + Math.sin(m) * D + (i - (lines.length - 1) / 2) * 13.5, x, { color: o.color, size: o.size || 12.5, align: 'center', baseline: 'middle', weight: 800 }));
+  }
+  function aang(v, p1, p2, o = {}) {
+    withAlpha(lensAlpha(markGroup('angles')), () => angMark(BOARD, v, p1, p2, o));
+  }
+  // 거울(축 방향 u)에 반사되는 점 P: A쪽 각과 B쪽 각(입사각 = 반사각)을 같은 색·같은 값으로 표시
+  function areflect(pP, pA, pB, u, col = '#fbbf24') {
+    const sg = Math.sign((pA.x - pP.x) * u.x + (pA.y - pP.y) * u.y) || 1;
+    const r1 = { x: pP.x + u.x * sg, y: pP.y + u.y * sg }, r2 = { x: pP.x - u.x * sg, y: pP.y - u.y * sg };
+    const deg = (q) => { const ax = q.x - pP.x, ay = q.y - pP.y, ul = Math.hypot(u.x, u.y); return (Math.acos(Math.min(1, Math.abs(ax * u.x + ay * u.y) / (Math.hypot(ax, ay) * ul || 1))) * 180) / Math.PI; };
+    const fm = (x) => `${+x.toFixed(1)}°`;
+    aang(pP, r1, pA, { color: col, r: 30, label: fm(deg(pA)) });
+    aang(pP, r2, pB, { color: col, r: 30, label: fm(deg(pB)) });
+  }
+  // 평행 표시(≫): 선분 a→b의 가운데에 화살표 모양 눈금 count개
+  function apar(a, b, count = 2, col = '#38bdf8') {
+    if (BOARD._bbox || BOARD.thumb) return;
+    const s0 = scr(a.x, a.y), s1 = scr(b.x, b.y), c = BOARD.ctx;
+    const dx = s1.x - s0.x, dy = s1.y - s0.y, l = Math.hypot(dx, dy) || 1, ux = dx / l, uy = dy / l, mx = (s0.x + s1.x) / 2, my = (s0.y + s1.y) / 2;
+    withAlpha(lensAlpha(markGroup('angles')), () => {
+      c.save(); c.strokeStyle = BOARD.color(col); c.lineWidth = 2.2 * BOARD.lw; c.setLineDash([]); c.lineCap = 'round';
+      for (let i = 0; i < count; i++) {
+        const off = (i - (count - 1) / 2) * 8, px = mx + ux * off, py = my + uy * off;
+        c.beginPath(); c.moveTo(px - ux * 7 - uy * 5, py - uy * 7 + ux * 5); c.lineTo(px, py); c.lineTo(px - ux * 7 + uy * 5, py - uy * 7 - ux * 5); c.stroke();
+      }
+      c.restore();
+    });
+  }
+
   function abadge(a, b, text, col = '#fbbf24', offsetNormal = 16, pos = 0.5, partIdx = -1) {
     if (state.conceptSwitch !== 'all' && state.conceptSwitch !== 'sides' && state.activePartIdx !== partIdx) return;
     const B = BOARD, c = B.ctx;
@@ -1106,6 +1158,7 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pB, 'B(-3, 0)', ACOL.white, -20, 20);
           adot(pC, 'C(3, 0)', ACOL.white, 10, 20);
           adot(pA, 'A(1, 3)', ACOL.gold, 0, -16);
+          atick(pB, pM, 1, ACOL.gold); atick(pM, pC, 1, ACOL.gold); // [표시 보강] M은 BC의 중점: BM = MC
         } else if (sub === 'centroidParaCoord') {
           const pA = S(0, 4), pB = S(-3, -1), pC = S(6, 0);
           const pG = S(1, 1);
@@ -1122,6 +1175,7 @@ window.addEventListener('DOMContentLoaded', function () {
             aline(qA, qC, ACOL.white, 2, [4, 4]);
             aline(qB, qD, ACOL.white, 2, [4, 4]);
             adot(qD, 'D = A + C - B!', ACOL.pink, 0, -14);
+            { const qO = alerp(qA, qC, 0.5); atick(qA, qO, 1, ACOL.white); atick(qO, qC, 1, ACOL.white); atick(qB, qO, 2, ACOL.white); atick(qO, qD, 2, ACOL.white); } // [표시 보강] 두 대각선은 서로를 이등분(같은 눈금)
           }
 
           adot(pA, 'A(0,4)', ACOL.cyan, 0, -14);
@@ -1220,6 +1274,7 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pB, 'B(3, 3)', ACOL.gold, 12, -10);
           adot(pM, '중점 M(1, 1)', ACOL.white, 14, 14);
           adot(pP, 'P(PA = PB 이등변!)', ACOL.cyan, 14, -12);
+          atick(pA, pM, 1, ACOL.gold); atick(pM, pB, 1, ACOL.gold); atick(pP, pA, 2, ACOL.cyan); atick(pP, pB, 2, ACOL.cyan); // [표시 보강] AM = MB, PA = PB
         } else if (sub === 'areaBisectLines') {
           // 좌측: 삼각형 꼭짓점 A와 BC 중점 M 연결  |  우측: 직사각형 중심과 원 중심 연결
           const tA = S(-5, 3), tB = S(-7, -2), tC = S(-1, -2), tM = S(-4, -2);
@@ -1228,6 +1283,7 @@ window.addEventListener('DOMContentLoaded', function () {
           aline(tA, tM, ACOL.pink, 3.6, [], true, 0);
           adot(tA, 'A(꼭짓점)', ACOL.white, 0, -14);
           adot(tM, 'M(BC의 중점!)', ACOL.pink, 0, 20);
+          atick(tB, tM, 1, ACOL.pink); atick(tM, tC, 1, ACOL.pink); // [표시 보강] BM = MC
 
           // 우측: 직사각형 (중심 (2, -2)) + 원 (중심 (5, 2)) 동시 이등분 직선!
           const rPts = [S(0, -1), S(0, -3), S(4, -3), S(4, -1)];
@@ -1305,6 +1361,7 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pA, 'A(0, 5)', ACOL.white, -28, -8);
           adot(pB, 'B(0, -5)', ACOL.red, -32, 14);
           adot(pH, 'H(4, 3)', ACOL.gold, 14, 6);
+          apar(SP(-2.3, 0.4), SP(-1.5, 2), 2, ACOL.cyan); apar(SP(2.3, -0.4), SP(3.1, 1.2), 2, ACOL.cyan); // [표시 보강] 평행한 두 직선 ≫
         } else if (sub === 'angleBisectorLine') {
           // 두 직선 y = 2x 와 y = 0.5x 의 각의 이등분선: y = x (예각) & y = -x (둔각)
           aMathLine(2, 0, ox, oy, unit, ACOL.cyan, 2.8);
@@ -1322,6 +1379,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
           adot(pP, 'P(x, y): d₁ = d₂!', ACOL.gold, 14, -10);
           adot(S(0, 0), 'O(두 이등분선 90° 직교!)', ACOL.pink, -20, 24);
+          { // [표시 보강] 이등분선이 가르는 같은 각 ●=●(노랑), 두 이등분선의 직각, 같은 거리 d₁ = d₂ 눈금
+            const pO = S(0, 0);
+            aang(pO, S(2, 1), S(1, 1), { color: ACOL.gold, r: 44, label: '●' });
+            aang(pO, S(1, 1), S(1, 2), { color: ACOL.gold, r: 44, label: '●' });
+            aright(pO, S(1, 1), S(-1, 1), 16, ACOL.pink);
+            atick(pP, pH1, 2, ACOL.green); atick(pP, pH2, 2, ACOL.green);
+          }
         } else {
           // maxDistFromPt (정점 A(3, 4)를 지나는 직선과 원점 O 사이 최대 거리 = OA = 5!)
           const pO = S(0, 0), pA = S(3, 4), pMid = S(1.5, 2);
@@ -1410,6 +1474,7 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pP, 'P(3, 1)', ACOL.white, 12, 14);
           adot(pMid, '중점 M(1, 3) ∈ y=x+2', ACOL.cyan, 14, 6);
           adot(pP_line, "P'(-1, 5) [선대칭!]", ACOL.pink, -35, -14);
+          atick(pP, pMid, 1, ACOL.pink); atick(pMid, pP_line, 1, ACOL.pink); // [표시 보강] 중점 M: PM = MP'
         } else {
           // lineSlideSame: y = (b/a)x + 2 를 x축으로 +a 이동 = y축으로 -b 이동 일치!
           const a = A_val, b = B_val;
@@ -1453,6 +1518,7 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pA2, 'A₂(1, 3) [y=x 대칭]', ACOL.pink, -30, -14);
           adot(pP, 'P(x축 위)', ACOL.cyan, -10, 22);
           adot(pQ, 'Q(y=x 위)', ACOL.pink, -45, -6);
+          areflect(pP, pA, pQ, { x: 1, y: 0 }, ACOL.cyan); areflect(pQ, pP, pA, { x: 1, y: -1 }, ACOL.pink); // [표시 보강] 거울에서 입사각 = 반사각
         } else if (sub === 'reflectSingleAxis') {
           const pA = S(-2, 2), pB = S(4, 4), pB_sym = S(4, -4), pP = S(0, 0);
           aline(S(-8, 0), S(8, 0), ACOL.cyan, 3.4);
@@ -1466,6 +1532,7 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pB, 'B(4, 4)', ACOL.cyan, 10, -12);
           adot(pB_sym, "B'(4, -4) [x축 대칭!]", ACOL.pink, 12, 14);
           adot(pP, '반사점 P(0, 0) [최솟값 6√2!]', ACOL.gold, -30, 24);
+          areflect(pP, pA, pB, { x: 1, y: 0 }, ACOL.gold); // [표시 보강] 입사각 = 반사각
         } else if (sub === 'reflectDoubleAxes') {
           const pA = S(3, 1), pB = S(1, 3);
           const pA_sym = S(3, -1), pB_sym = S(-1, 3);
@@ -1482,6 +1549,7 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pB_sym, "B'(-1, 3) [y축 대칭]", ACOL.pink, -75, -10);
           adot(pP, 'P(2, 0)', ACOL.cyan, -10, 22);
           adot(pQ, 'Q(0, 2)', ACOL.pink, -45, 4);
+          areflect(pP, pA, pQ, { x: 1, y: 0 }, ACOL.cyan); areflect(pQ, pP, pB, { x: 0, y: 1 }, ACOL.pink); // [표시 보강] 두 거울에서 입사각 = 반사각
         } else if (sub === 'billiardMirrorRoom') {
           // 당구대 거울의 방: 원래 당구대 [0~4, 0~3] 을 오른쪽 [4~8], 위쪽 [3~6] 복사!
           const uB = unit * 0.78;
@@ -1560,6 +1628,7 @@ window.addEventListener('DOMContentLoaded', function () {
           aMathLine(0.2, -0.5, ox, oy, unit, ACOL.cyan, 3.2, [], 0);
           aMathLine(-5, 3, ox, oy, unit, ACOL.gold, 3.2, [], 0);
           adot(S(0.67, -0.36), '수직: aa\' + bb\' = 0 (분모 0 걱정 없음!)', ACOL.gold, 16, -12);
+          aright(S(0.67, -0.36), S(1.67, -0.16), S(0.47, 0.64), 14, ACOL.gold); // [표시 보강] 두 직선이 수직
         } else {
           // trapCoordFold: 직사각형 (0,0)-(8,0)-(8,4)-(0,4) 에서 C(8,4)를 O(0,0)에 접기! -> EF: y = -2x + 10
           const uF = unit * 0.78;
@@ -1578,6 +1647,7 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pM, '중점 M(4, 2)', ACOL.white, 14, 6);
           adot(pE, 'E(3, 4)', ACOL.pink, 0, -14);
           adot(pF, 'F(5, 0) [접는 선 y=-2x+10!]', ACOL.pink, 0, 22);
+          atick(pO, pM, 1, ACOL.cyan); atick(pM, pC, 1, ACOL.cyan); atick(pO, pE, 2, ACOL.gold); atick(pE, pC, 2, ACOL.gold); atick(pO, pF, 3, ACOL.gold); atick(pF, pC, 3, ACOL.gold); // [표시 보강] OM = MC, OE = CE, OF = CF
         }
       }
     }

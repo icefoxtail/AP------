@@ -324,8 +324,23 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   /** 각 표시: 부채꼴 + 호 + 기호(•, ×, 글자). 렌즈 '전체/대응각'에서만 보입니다(opts.force 는 항상). */
+  /** [표시 보강] 1회 훑기: 각도 값 글자 자리를 장애물로 등록해, 점 이름·길이 상자가 값 위에 겹쳐 놓이지 않고 빈자리로 비켜 가게 합니다. */
+  function angleObst(V, P1, P2, opts) {
+    const B = BOARD;
+    if (B.thumb || offView(V.x)) return;
+    const sc = rS(), radius = (opts.radius || 22) * sc, symbol = opts.symbol || '';
+    const S = B.toS(V), S1 = B.toS(P1), S2 = B.toS(P2);
+    const t1 = Math.atan2(S1.y - S.y, S1.x - S.x), t2 = Math.atan2(S2.y - S.y, S2.x - S.x);
+    const d = ((t2 - t1 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, mid = t1 + d / 2;
+    if (symbol && symbol !== 'dot' && symbol !== 'cross' && symbol !== 'ring') {
+      const sr = radius + (symbol.length > 2 ? 13 : 9) * sc, sx = S.x + Math.cos(mid) * sr, sy = S.y + Math.sin(mid) * sr;
+      const w = tw(symbol, tsz(11.5), 800) + 2;
+      PL.obst.push({ x0: sx - w / 2, x1: sx + w / 2, y0: sy - 8, y1: sy + 8 });
+    }
+  }
   function drawAngleArc(g, V, P1, P2, opts = {}) {
-    if (PL.pass === 1 || !(lensOK('all', 'angles') || opts.force)) return;
+    if (!(lensOK('all', 'angles') || opts.force)) return;
+    if (PL.pass === 1) { angleObst(V, P1, P2, opts); return; }
     const B = BOARD, sc = rS();
     const radius = (opts.radius || 22) * sc, color = opts.color || amber, arcs = opts.arcs || 1, symbol = opts.symbol || '';
     B.angle(V, P1, P2, { color, r: radius, rings: arcs, size: 12 });
@@ -337,6 +352,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const c = B.ctx, u = Math.max(0.85, sc);
     if (symbol === 'dot') {
       c.save(); c.setLineDash([]); c.beginPath(); c.arc(sx, sy, 3.2 * u, 0, Math.PI * 2); c.fillStyle = B.color(color); c.fill(); c.restore();
+    } else if (symbol === 'ring') { // [표시 보강] 호 3개짜리 각의 기호(속 빈 동그라미)
+      c.save(); c.setLineDash([]); c.beginPath(); c.arc(sx, sy, 3.6 * u, 0, Math.PI * 2); c.strokeStyle = B.color(color); c.lineWidth = 2; c.stroke(); c.restore();
     } else if (symbol === 'cross') {
       const cs = 3.5 * u;
       c.save(); c.setLineDash([]); c.strokeStyle = B.color(color); c.lineWidth = 2.1; c.lineCap = 'round';
@@ -366,10 +383,22 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     c.restore();
   }
-  function drawTickMarks(g, A, Bp, count = 1, color = '#fbbf24') { // 같은 길이 표시(|, ||)
+  function drawTickMarks(g, A, Bp, count = 1, color = '#fbbf24', pos = 0.5) { // 같은 길이 표시(|, ||)
     if (PL.pass === 1 || !lensOK('all', 'angles', 'sides')) return;
-    BOARD.ticks(A, Bp, { count, color, size: 6.5 });
+    // [표시 보강] pos(0~1)를 주면 선분 위 그 자리에 눈금을 그립니다(평행 표시·이름표와 겹치지 않게)
+    if (pos === 0.5) BOARD.ticks(A, Bp, { count, color, size: 6.5 });
+    else BOARD.ticks(lerp(A, Bp, pos - 0.02), lerp(A, Bp, pos + 0.02), { count, color, size: 6.5 });
   }
+  /** [표시 보강] 같은 각은 같은 표시(같은 색·같은 기호·같은 호 개수), 다른 각은 다른 표시: 1 = 분홍 • (호 1개), 2 = 하늘 × (호 2개), 3 = 초록 ○ (호 3개). symbol 을 주면 값(예: '53°')으로 바꿉니다. */
+  const KM = [null, { color: pink, arcs: 1, symbol: 'dot' }, { color: blue, arcs: 2, symbol: 'cross' }, { color: green, arcs: 3, symbol: 'ring' }];
+  const kmark = (V, P1, P2, k, radius = 20, symbol) => drawAngleArc(null, V, P1, P2, { ...KM[k], radius, ...(symbol ? { symbol } : {}) });
+  /** [표시 보강] 점에서 잰 각도(°) 글자 — 그림의 점으로 계산하므로 그림이 바뀌어도 값이 따라옵니다 */
+  const angDeg = (V, P1, P2) => {
+    const a = Math.atan2(P1.y - V.y, P1.x - V.x), b = Math.atan2(P2.y - V.y, P2.x - V.x);
+    let d = (Math.abs(a - b) * 180) / Math.PI;
+    if (d > 180) d = 360 - d;
+    return `${Math.round(d)}°`;
+  };
   /** 길이 이름표(둥근 상자). 원본처럼 선분 위 pos 지점에서 수직 방향으로 offsetNormal(px)만큼 떨어뜨려 놓되, 겹치면 선분을 따라/반대쪽으로 옮깁니다. */
   function drawSideBadge(g, A, Bp, text, col = '#fbbf24', offsetNormal = 15, pos = 0.5, partIdx = -1) {
     if (PL.pass === 1) return;
@@ -1348,6 +1377,10 @@ window.addEventListener('DOMContentLoaded', function () {
           label('A', A, green, -14, 12); label('B', B, green, 0, -16);
           label('C₁(둔각)', C1, pink, -10, 18); label('C₂(예각)', C2, blue, 10, 18);
           drawAngleArc(g, A, B, C2, { radius: 32, color: green, symbol: '30°' });
+          // [표시 보강] BC₁ = BC₂ = 5(컴퍼스 반지름) 같은 길이 눈금, 두 삼각형의 ∠C 값(둔각·예각)
+          drawTickMarks(g, B, C1, 2, pink); drawTickMarks(g, B, C2, 2, blue);
+          drawAngleArc(g, C1, A, B, { radius: 22, color: pink, symbol: angDeg(C1, A, B) });
+          drawAngleArc(g, C2, A, B, { radius: 22, color: blue, symbol: angDeg(C2, A, B) });
           drawSideBadge(g, A, B, 'AB = 8', green, -15, 0.5, 2);
           drawSideBadge(g, B, C1, 'BC₁ = 5', pink, -14, 0.5, 0);
           drawSideBadge(g, B, C2, 'BC₂ = 5', blue, 14, 0.5, 1);
@@ -1357,6 +1390,10 @@ window.addEventListener('DOMContentLoaded', function () {
           const t2 = computeAlignedTriangle([A, B, C2], [A, B, C2], pt(645, 325), 0.72, false, pProg);
           poly(t1, pink, 'rgba(244,114,182,0.22)', 2.5, 0);
           poly(t2, blue, 'rgba(56,189,248,0.20)', 2.5, 1);
+          drawAngleArc(g, t1[0], t1[1], t1[2], { radius: 22, color: green, symbol: '30°' }); // [표시 보강] 정렬한 그림에도 ∠A = 30°
+          drawAngleArc(g, t2[0], t2[1], t2[2], { radius: 22, color: green, symbol: '30°' });
+          drawAngleArc(g, t1[2], t1[0], t1[1], { radius: 16, color: pink, symbol: angDeg(C1, A, B) });
+          drawAngleArc(g, t2[2], t2[0], t2[1], { radius: 16, color: blue, symbol: angDeg(C2, A, B) });
           txt('① 둔각삼각형 △ABC₁', pt(645, 120), pink, 12);
           txt('② 예각삼각형 △ABC₂ (서로 닮음 아님!)', pt(645, 260), blue, 12);
         } else if (sub === 'nestedRotated') {
@@ -1374,10 +1411,10 @@ window.addEventListener('DOMContentLoaded', function () {
           label('A', A, green, 0, -18); label('B', B_pt, green, -14, 14); label('C', C_pt, green, 14, 14);
           label('D', D, amber, -14, 12); label('E', E, amber, 16, -6);
 
-          drawAngleArc(g, A, B_pt, C_pt, { radius: 28, color: green, symbol: 'dot' });
-          drawAngleArc(g, A, D, E, { radius: 22, color: amber, symbol: 'dot' });
-          drawAngleArc(g, B_pt, C_pt, A, { radius: 24, color: blue, arcs: 2 });
-          drawAngleArc(g, D, E, A, { radius: 20, color: blue, arcs: 2 });
+          // [표시 보강] 같은 각은 같은 표시: ∠BAC = ∠DAE (•), ∠B = ∠D (×), ∠C = ∠E (○)
+          kmark(A, B_pt, C_pt, 1, 28); kmark(A, D, E, 1, 20);
+          kmark(B_pt, C_pt, A, 2, 24); kmark(D, E, A, 2, 18);
+          kmark(C_pt, B_pt, A, 3, 22); kmark(E, D, A, 3, 16);
 
           drawSideBadge(g, A, B_pt, `${B} cm`, green, -15, 0.5, 1);
           drawSideBadge(g, A, D, `${fmtNum(B * K)} cm`, amber, 15, 0.5, 0);
@@ -1388,8 +1425,9 @@ window.addEventListener('DOMContentLoaded', function () {
             : computeAlignedTriangle([A, D, E], [A, B_pt, C_pt], pt(645, 245), 1.05, false, Math.max(0.15, t));
           poly(destTri, amber, 'rgba(251,191,36,0.24)', 3, 0);
           ['A\'', 'D\'(↔B)', 'E\'(↔C)'].forEach((lb, i) => label(lb, destTri[i], amber, i === 0 ? 0 : (i === 1 ? -18 : 18), i === 0 ? -16 : 16));
-          drawAngleArc(g, destTri[0], destTri[1], destTri[2], { radius: 22, color: amber, symbol: 'dot' });
-          drawAngleArc(g, destTri[1], destTri[2], destTri[0], { radius: 20, color: blue, arcs: 2 });
+          kmark(destTri[0], destTri[1], destTri[2], 1, 22);
+          kmark(destTri[1], destTri[2], destTri[0], 2, 20);
+          kmark(destTri[2], destTri[1], destTri[0], 3, 18);
           drawCorrespondenceBridges(g, [A, B_pt, C_pt], destTri);
         } else if (sub === 'nestedMulti') {
           // [2.0 수정] 원본은 점 B, C 를 지역 변수로 선언해 기준 길이 변수 B 를 가려 라벨이 "NaN cm"·"[object Object] cm" 로 보였습니다 → 점 이름을 B_pt, C_pt 로
@@ -1411,6 +1449,11 @@ window.addEventListener('DOMContentLoaded', function () {
           drawTickMarks(g, A, D, 1, amber);
           drawTickMarks(g, D, F, 1, amber);
           drawTickMarks(g, F, B_pt, 1, amber);
+          // [표시 보강] AC 위의 같은 간격(AE = EG = GC) 눈금 · 공통각 ∠A(•) · 동위각 ∠ADE = ∠AFG = ∠B (×), ∠AED = ∠AGF = ∠C (○)
+          drawTickMarks(g, A, E, 2, blue); drawTickMarks(g, E, Gp, 2, blue); drawTickMarks(g, Gp, C_pt, 2, blue);
+          kmark(A, B_pt, C_pt, 1, 18);
+          kmark(D, E, A, 2, 13); kmark(F, Gp, A, 2, 15); kmark(B_pt, C_pt, A, 2, 19);
+          kmark(E, D, A, 3, 13); kmark(Gp, F, A, 3, 15); kmark(C_pt, B_pt, A, 3, 19);
 
           const d1 = fmtNum(B / 3), d2 = fmtNum((2 * B) / 3);
           drawSideBadge(g, D, E, `${d1} cm`, amber, -12, 0.5, 0);
@@ -1446,9 +1489,10 @@ window.addEventListener('DOMContentLoaded', function () {
           label('D', D, amber, -15, -2);
           label('E', E, amber, 15, -2);
 
-          drawAngleArc(g, A, B_pt, C_pt, { radius: 24, color: pink, symbol: 'dot' });
-          drawAngleArc(g, D, A, E, { radius: 22, color: blue, arcs: 2, symbol: 'cross' });
-          drawAngleArc(g, C_pt, B_pt, A, { radius: 26, color: blue, arcs: 2, symbol: 'cross' });
+          // [표시 보강] 공통각 ∠A = 62° 값 표시, ∠ADE = ∠C (×), 닮음에서 따라오는 ∠AED = ∠B (○)
+          drawAngleArc(g, A, B_pt, C_pt, { radius: 26, color: pink, symbol: `${Math.round((angA * 180) / Math.PI)}°` });
+          kmark(D, A, E, 2, 22); kmark(C_pt, B_pt, A, 2, 26);
+          kmark(E, A, D, 3, 18); kmark(B_pt, A, C_pt, 3, 22);
           drawSideBadge(g, A, D, `${fmtNum(B * K)} cm`, amber, 15, 0.5, 0);
           drawSideBadge(g, A, B_pt, `10 cm`, blue, 15, 0.8, 1);
           drawSideBadge(g, A, E, `${fmtNum(10 * K)} cm`, amber, -15, 0.5, 0);
@@ -1470,8 +1514,9 @@ window.addEventListener('DOMContentLoaded', function () {
           poly(refGuide, 'rgba(52,211,153,0.45)', 'rgba(52,211,153,0.05)', 1.6, 1);
           poly(aligned, amber, 'rgba(251,191,36,0.24)', 3.0, 0);
           ['A', 'D(↔C)', 'E(↔B)'].forEach((lb, i) => label(lb, aligned[i], amber, i === 0 ? 0 : (i === 1 ? 20 : -20), i === 0 ? -16 : 16));
-          drawAngleArc(g, aligned[0], aligned[1], aligned[2], { radius: 20, color: pink, symbol: 'dot' });
-          drawAngleArc(g, aligned[1], aligned[2], aligned[0], { radius: 18, color: blue, arcs: 2 });
+          drawAngleArc(g, aligned[0], aligned[1], aligned[2], { radius: 22, color: pink, symbol: `${Math.round((angA * 180) / Math.PI)}°` });
+          kmark(aligned[1], aligned[2], aligned[0], 2, 18);
+          kmark(aligned[2], aligned[1], aligned[0], 3, 14);
           drawCorrespondenceBridges(g, [A, D, E], aligned);
         } else {
           // nestedParallel, sasShared  ([2.0] 거울 반전 nestedFlip 은 위의 별도 그림으로 분리)
@@ -1490,6 +1535,9 @@ window.addEventListener('DOMContentLoaded', function () {
           label('E', E, amber, 15, -2);
 
           drawAngleArc(g, A, B_pt, C_pt, { radius: 24, color: pink, symbol: 'dot' });
+          // [표시 보강] 같은 각은 같은 표시: ∠A 공통 (•), ∠ADE = ∠B (×), ∠AED = ∠C (○) — 동위각 2쌍
+          kmark(D, E, A, 2, 20); kmark(B_pt, C_pt, A, 2, 24);
+          kmark(E, D, A, 3, 18); kmark(C_pt, B_pt, A, 3, 22);
 
           if (isSAS) {
             drawSideBadge(g, A, D, `${fmtNum(6 * K)}`, amber, -15, 0.5, 1);
@@ -1501,8 +1549,6 @@ window.addEventListener('DOMContentLoaded', function () {
           } else {
             drawParallelMark(g, D, E, 1, amber);
             drawParallelMark(g, B_pt, C_pt, 1, green);
-            drawAngleArc(g, D, E, A, { radius: 20, color: blue, arcs: 2 });
-            drawAngleArc(g, B_pt, C_pt, A, { radius: 24, color: blue, arcs: 2 });
             drawSideBadge(g, A, D, `${fmtNum(B * K)} cm`, amber, -15, 0.5, 0);
             drawSideBadge(g, D, B_pt, `DB=${fmtNum(B * (1 - K))}`, red, -15, 0.5, 2);
             drawSideBadge(g, D, E, `${fmtNum(10 * K)} cm`, amber, -13, 0.5, 0);
@@ -1520,7 +1566,8 @@ window.addEventListener('DOMContentLoaded', function () {
           const lbs = ['A', 'D(↔B)', 'E(↔C)'];
           aligned.forEach((p, i) => label(lbs[i], p, amber, i === 0 ? 0 : (i === 1 ? -20 : 20), i === 0 ? -16 : 16));
           drawAngleArc(g, aligned[0], aligned[1], aligned[2], { radius: 20, color: pink, symbol: 'dot' });
-          drawAngleArc(g, aligned[1], aligned[2], aligned[0], { radius: 18, color: blue, arcs: 2 });
+          kmark(aligned[1], aligned[2], aligned[0], 2, 18);
+          kmark(aligned[2], aligned[1], aligned[0], 3, 14);
           drawCorrespondenceBridges(g, [A, D, E], aligned);
         }
       }
@@ -1549,10 +1596,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
           drawParallelMark(g, A, D, 1, amber);
           drawParallelMark(g, B_pt, C_pt, 1, blue);
-          drawAngleArc(g, O, A, D, { radius: 18, color: pink, symbol: 'dot' });
-          drawAngleArc(g, O, C_pt, B_pt, { radius: 18, color: pink, symbol: 'dot' });
-          drawAngleArc(g, A, D, O, { radius: 20, color: green, arcs: 2 });
-          drawAngleArc(g, C_pt, B_pt, O, { radius: 22, color: green, arcs: 2 });
+          // [표시 보강] 맞꼭지각 ∠AOD = ∠COB (•), 엇각 2쌍 ∠DAO = ∠BCO (×) · ∠ADO = ∠CBO (○)
+          kmark(O, A, D, 1, 18); kmark(O, C_pt, B_pt, 1, 18);
+          kmark(A, D, O, 2, 20); kmark(C_pt, B_pt, O, 2, 22);
+          kmark(D, A, O, 3, 20); kmark(B_pt, C_pt, O, 3, 22);
 
           if (sub === 'hourglassEF') {
             const u = M / (M + N);
@@ -1560,6 +1607,7 @@ window.addEventListener('DOMContentLoaded', function () {
             poly([A, E, O], pink, 'rgba(244,114,182,0.22)', 2.4, 1);
             line(E, F, pink, 3.8, [], 2);
             label('E', E, pink, -16, 0); label('F', F, pink, 16, 0);
+            drawParallelMark(g, E, F, 1, pink, 0.8); // [표시 보강] EF ∥ AD ∥ BC
             drawSideBadge(g, A, D, `${M * 2} cm`, amber, -14, 0.5, 0);
             drawSideBadge(g, B_pt, C_pt, `${N * 2} cm`, blue, 15, 0.5, 0);
             drawSideBadge(g, E, O, `OE=${fmtNum((M * 2 * N * 2) / (M * 2 + N * 2))}`, pink, 16, 0.5, 1);
@@ -1577,6 +1625,9 @@ window.addEventListener('DOMContentLoaded', function () {
           poly(refOCB, blue, 'rgba(56,189,248,0.14)', 2.0, 1);
           poly(rotOAD, amber, 'rgba(251,191,36,0.24)', 2.8, 0);
           ['O', 'A(↔C)', 'D(↔B)'].forEach((lb, i) => label(lb, rotOAD[i], amber, i === 0 ? 0 : (i === 1 ? -22 : 22), i === 0 ? -16 : 16));
+          // [표시 보강] 정렬한 그림에도 같은 각을 같은 표시로
+          kmark(rotOAD[0], rotOAD[1], rotOAD[2], 1, 16); kmark(rotOAD[1], rotOAD[2], rotOAD[0], 2, 16); kmark(rotOAD[2], rotOAD[1], rotOAD[0], 3, 16);
+          kmark(refOCB[0], refOCB[1], refOCB[2], 1, 16); kmark(refOCB[1], refOCB[2], refOCB[0], 2, 16); kmark(refOCB[2], refOCB[1], refOCB[0], 3, 16);
           drawCorrespondenceBridges(g, [O, A, D], rotOAD);
         } else if (sub === 'parallelProp') {
           const A = pt(245, 118), B_pt = pt(95, 382), C_pt = pt(405, 382);
@@ -1596,12 +1647,16 @@ window.addEventListener('DOMContentLoaded', function () {
             label('F', F, pink, 0, 16);
             drawParallelMark(g, A, B_pt, 2, pink, 0.55);
             drawParallelMark(g, E, F, 2, pink, 0.5);
+            // [표시 보강] 평행사변형 DBFE 의 같은 길이 DB = EF, 동위각 ∠FEC = ∠A (•) · ∠EFC = ∠B (×)
+            drawTickMarks(g, D, B_pt, 2, pink); drawTickMarks(g, E, F, 2, pink, 0.2);
+            kmark(E, F, C_pt, 1, 18); kmark(F, E, C_pt, 2, 16);
           }
 
           label('A', A, green, 0, -18); label('B', B_pt, green, -14, 14); label('C', C_pt, green, 14, 14);
           label('D', D, amber, -15, 0); label('E', E, amber, 15, 0);
           drawParallelMark(g, D, E, 1, amber);
           drawParallelMark(g, B_pt, C_pt, 1, green);
+          kmark(A, B_pt, C_pt, 1, 20); kmark(D, E, A, 2, 16); kmark(B_pt, C_pt, A, 2, 20); // [표시 보강] 공통각 ∠A (•), 동위각 ∠ADE = ∠B (×)
 
           drawSideBadge(g, A, D, `${M * 2} cm`, amber, -15, 0.5, 0);
           drawSideBadge(g, D, B_pt, `${N * 2} cm`, pink, -15, 0.5, 1);
@@ -1613,6 +1668,8 @@ window.addEventListener('DOMContentLoaded', function () {
           const tBot = computeAlignedTriangle([E, F, C_pt], [A, B_pt, C_pt], pt(645, 320), 0.95, false, pProg);
           poly(tTop, amber, 'rgba(251,191,36,0.22)', 2.6, 0);
           poly(tBot, pink, 'rgba(244,114,182,0.22)', 2.6, 1);
+          kmark(tTop[0], tTop[1], tTop[2], 1, 16); kmark(tTop[1], tTop[2], tTop[0], 2, 14); // [표시 보강] 정렬한 두 삼각형의 같은 각
+          kmark(tBot[0], tBot[1], tBot[2], 1, 16); kmark(tBot[1], tBot[2], tBot[0], 2, 14);
           txt(`△ADE (AD=${M * 2}, AE=${M * 3})`, pt(645, 130), amber, 12);
           txt(`△EFC (EF=DB=${N * 2}, EC=${N * 3})`, pt(645, 260), pink, 12);
         } else if (sub === 'trapezoidMid') {
@@ -1640,12 +1697,19 @@ window.addEventListener('DOMContentLoaded', function () {
           drawSideBadge(g, E, G, 'EG = 6', green, -13, 0.5, 0);
           drawSideBadge(g, G, F, `GF = ${gf}`, amber, -13, 0.5, 1);
           drawSideBadge(g, H, C_pt, `HC = ${B - 6}`, amber, 15, 0.5, 1);
+          // [표시 보강] 평행 표시 (AD ∥ EF ∥ BC · AB ∥ DH), 평행사변형의 같은 길이 AD = EG = BH, △DGF ∽ △DHC 의 같은 각(∠D 공통 •, 동위각 ×)
+          drawParallelMark(g, A, D, 1, green, 0.2); drawParallelMark(g, E, F, 1, pink, 0.12); drawParallelMark(g, B_pt, C_pt, 1, amber, 0.8);
+          drawParallelMark(g, A, B_pt, 2, green, 0.7); drawParallelMark(g, D, H, 2, white, 0.75);
+          drawTickMarks(g, A, D, 1, green); drawTickMarks(g, E, G, 1, green); drawTickMarks(g, B_pt, H, 1, green);
+          kmark(D, H, C_pt, 1, 20); kmark(G, D, F, 2, 16); kmark(H, D, C_pt, 2, 18);
 
           const pProg = Math.max(0.2, t);
           const tSml = computeAlignedTriangle([D, G, F], [D, H, C_pt], pt(645, 200), 1.1, false, pProg);
           const tBig = computeAlignedTriangle([D, H, C_pt], [D, H, C_pt], pt(645, 325), 0.85, false, 1.0);
           poly(tBig, amber, 'rgba(251,191,36,0.14)', 2.2, 1);
           poly(tSml, pink, 'rgba(244,114,182,0.24)', 2.8, 2);
+          kmark(tSml[0], tSml[1], tSml[2], 1, 16); kmark(tSml[1], tSml[2], tSml[0], 2, 14); // [표시 보강]
+          kmark(tBig[0], tBig[1], tBig[2], 1, 16); kmark(tBig[1], tBig[2], tBig[0], 2, 14);
           txt(`평행사변형 EG(6) + 삼각형 GF(${gf}) = EF(${ef}cm)`, pt(645, 130), pink, 12);
         } else if (sub === 'angleBisectIn') {
           // [2.0 수정] 원본은 A·B·C 를 고정(AB ≈ AC)하고 D 만 BD : CD = m : n 으로 옮겨, 이등분선 AD 가 각을 이등분하지 않았고(∠BAD ≠ ∠DAC 인데 같은 표시)
@@ -1673,11 +1737,12 @@ window.addEventListener('DOMContentLoaded', function () {
           label('C', C_pt, green, 14, 14); label('D', D, amber, 0, 18);
           if (showAux) label('E(연장)', E, pink, 18, -10);
 
-          drawAngleArc(g, A, B_pt, D, { radius: 26, color: amber, symbol: 'dot' });
-          drawAngleArc(g, A, D, C_pt, { radius: 26, color: amber, symbol: 'dot' });
+          // [표시 보강] ∠BAD = ∠DAC (•) 이고, 보조선을 그으면 동위각 ∠AEC 와 엇각 ∠ACE 도 모두 같은 각이므로 같은 표시(•)
+          kmark(A, B_pt, D, 1, 26);
+          kmark(A, D, C_pt, 1, 26);
           if (showAux) {
-            drawAngleArc(g, E, A, C_pt, { radius: 22, color: pink, symbol: 'dot' });
-            drawAngleArc(g, C_pt, A, E, { radius: 24, color: pink, symbol: 'dot' });
+            kmark(E, A, C_pt, 1, 22);
+            kmark(C_pt, A, E, 1, 24);
             drawParallelMark(g, D, A, 1, amber, 0.5);
             drawParallelMark(g, C_pt, E, 1, pink, 0.5);
             drawTickMarks(g, A, C_pt, 2, pink, 0.5);
@@ -1697,6 +1762,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const hA = hf(Au), hB = hf(Bu), hC = hf(Cu), hD = hf(Du);
           poly([hA, hB, hC], 'rgba(251,191,36,0.45)', 'rgba(251,191,36,0.08)', 2.4, 0);
           line(hA, hD, amber, 3.2);
+          kmark(hA, hB, hD, 1, 18); kmark(hA, hD, hC, 1, 18); // [표시 보강] 이등분선이 나눈 두 각은 같음(•)
           txt(`💖 하트 공식: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd})`, pt(645, 120), amber, 12);
           drawSideBadge(g, hA, hB, `왼날개 ${M}`, amber, -14, 0.5);
           drawSideBadge(g, hA, hC, `오른날개 ${N}`, blue, 14, 0.5);
@@ -1728,10 +1794,13 @@ window.addEventListener('DOMContentLoaded', function () {
           label('C', C_pt, green, 0, 18); label('D(외각교점)', D, amber, 0, 18);
           if (showAux) label('F', F, pink, -15, -4);
 
-          drawAngleArc(g, A, C_pt, D, { radius: 24, color: amber, symbol: 'dot' });
-          drawAngleArc(g, A, D, A_ext, { radius: 24, color: amber, symbol: 'dot' });
+          // [표시 보강] 외각의 이등분선: ∠CAD = ∠DAE', 보조선 FC ∥ DA 를 그으면 동위각 ∠AFC · 엇각 ∠ACF 도 같은 각(•)
+          kmark(A, C_pt, D, 1, 24);
+          kmark(A, D, A_ext, 1, 24);
           drawParallelMark(g, A, D, 1, amber);
           if (showAux) {
+            kmark(F, A, C_pt, 1, 20);
+            kmark(C_pt, A, F, 1, 20);
             drawParallelMark(g, F, C_pt, 1, pink);
             drawTickMarks(g, A, F, 2, pink);
             drawTickMarks(g, A, C_pt, 2, pink);
@@ -1779,6 +1848,7 @@ window.addEventListener('DOMContentLoaded', function () {
           line(A, M_mid, blue, 3.2, [], 1);
           label('M(외심·중점)', M_mid, blue, 18, 18);
           drawSideBadge(g, A, M_mid, `AM=${fmtNum(5 * scaleMul)}`, blue, 18, 0.5, 1);
+          drawTickMarks(g, A, M_mid, 3, blue, 0.25); drawTickMarks(g, B_pt, M_mid, 3, blue); drawTickMarks(g, M_mid, C_pt, 3, blue); // [표시 보강] 외심 M: MA = MB = MC
         }
 
         label('A(90°)', A, green, 0, -18);
@@ -1790,16 +1860,18 @@ window.addEventListener('DOMContentLoaded', function () {
         drawRightAngleSquare(g, H, B_pt, A, 11, amber);
         drawRightAngleSquare(g, H, C_pt, A, 11, blue);
 
-        drawAngleArc(g, B_pt, C_pt, A, { radius: 24, color: amber, symbol: 'dot' });
-        drawAngleArc(g, A, H, C_pt, { radius: 22, color: amber, symbol: 'dot' });
-        drawAngleArc(g, C_pt, A, B_pt, { radius: 26, color: blue, arcs: 2, symbol: 'cross' });
-        drawAngleArc(g, A, B_pt, H, { radius: 22, color: blue, arcs: 2, symbol: 'cross' });
+        // [표시 보강] 같은 각은 같은 표시·같은 값: ∠B = ∠HAC (•), ∠C = ∠BAH (×) — 그림에서 잰 각도(• + × = 90°)
+        const degB = angDeg(B_pt, C_pt, A), degC = angDeg(C_pt, A, B_pt);
+        drawAngleArc(g, B_pt, C_pt, A, { radius: 24, color: amber, symbol: `•${degB}` });
+        drawAngleArc(g, A, H, C_pt, { radius: 22, color: amber, symbol: `•${degB}` });
+        drawAngleArc(g, C_pt, A, B_pt, { radius: 26, color: blue, arcs: 2, symbol: `×${degC}` });
+        drawAngleArc(g, A, B_pt, H, { radius: 22, color: blue, arcs: 2, symbol: `×${degC}` });
 
         drawSideBadge(g, A, B_pt, `AB = ${ab}`, amber, -16, 0.5, 0);
         drawSideBadge(g, A, C_pt, `AC = ${ac}`, blue, 16, 0.5, 0);
         drawSideBadge(g, B_pt, H, `BH = ${bh}`, amber, 16, 0.5, 1);
         drawSideBadge(g, H, C_pt, `CH = ${ch}`, blue, 16, 0.5, 1);
-        drawSideBadge(g, A, H, `AH = ${ah}`, pink, -24, 0.55, 0);
+        drawSideBadge(g, A, H, `AH = ${ah}`, pink, -24, 0.64, 0); // [표시 보강] 꼭짓점 A 의 각도 값과 겹치지 않게 아래로
 
         // 소(牛)공식 강조 네온 궤적
         if (sub === 'rightLeft') {
@@ -1830,6 +1902,11 @@ window.addEventListener('DOMContentLoaded', function () {
         drawRightAngleSquare(g, alignedBig[0], alignedBig[1], alignedBig[2], 9, green);
         drawRightAngleSquare(g, alignedMid[0], alignedMid[1], alignedMid[2], 8, blue);
         drawRightAngleSquare(g, alignedSml[0], alignedSml[1], alignedSml[2], 7, amber);
+        // [표시 보강] 정렬한 세 닮은 삼각형에도 같은 각(•, ×)과 값
+        const dotB = { radius: 13, color: amber, symbol: `•${degB}` }, crsC = { radius: 13, color: blue, arcs: 2, symbol: `×${degC}` };
+        drawAngleArc(g, alignedBig[1], alignedBig[2], alignedBig[0], dotB); drawAngleArc(g, alignedBig[2], alignedBig[0], alignedBig[1], crsC);
+        drawAngleArc(g, alignedMid[1], alignedMid[0], alignedMid[2], dotB); drawAngleArc(g, alignedMid[2], alignedMid[0], alignedMid[1], crsC);
+        drawAngleArc(g, alignedSml[1], alignedSml[0], alignedSml[2], dotB); drawAngleArc(g, alignedSml[2], alignedSml[0], alignedSml[1], crsC);
 
         txt(`대: △ABC (빗변 ${bc})`, pt(750, 148), green, 11.5);
         txt(`중: △HAC (빗변 ${ac})`, pt(750, 250), blue, 11.5);
@@ -1865,6 +1942,9 @@ window.addEventListener('DOMContentLoaded', function () {
           drawParallelMark(g, F, Gp, 1, amber);
           drawParallelMark(g, E, F, 2, blue);
           drawParallelMark(g, H, Gp, 2, blue);
+          // [표시 보강] 평행사변형의 같은 길이: EH = FG (|), EF = HG (||)
+          drawTickMarks(g, E, H, 1, amber, 0.22); drawTickMarks(g, F, Gp, 1, amber, 0.22);
+          drawTickMarks(g, E, F, 2, blue, 0.22); drawTickMarks(g, H, Gp, 2, blue, 0.22);
 
           drawSideBadge(g, E, H, 'EH = ½BD (5)', amber, -14, 0.5, 0);
           drawSideBadge(g, E, F, `EF = ½AC (${B / 2})`, blue, -14, 0.5, 1);
@@ -1892,6 +1972,11 @@ window.addEventListener('DOMContentLoaded', function () {
             drawTickMarks(g, A, F_ab, 1, amber); drawTickMarks(g, F_ab, B_pt, 1, amber);
             drawTickMarks(g, A, E_ac, 2, blue); drawTickMarks(g, E_ac, C_pt, 2, blue);
             drawParallelMark(g, F_ab, E_ac, 1, amber); drawParallelMark(g, B_pt, C_pt, 1, green);
+            // [표시 보강] 공통각 ∠A (•), 동위각 ∠AMN = ∠B (×) · ∠ANM = ∠C (○), 보조선 ND ∥ AB (평행사변형 MBDN)
+            kmark(A, B_pt, C_pt, 1, 20);
+            kmark(F_ab, E_ac, A, 2, 18); kmark(B_pt, C_pt, A, 2, 22);
+            kmark(E_ac, F_ab, A, 3, 18); kmark(C_pt, B_pt, A, 3, 22);
+            drawParallelMark(g, E_ac, D_bc, 2, pink, 0.5); drawParallelMark(g, F_ab, B_pt, 2, pink, 0.2);
             drawSideBadge(g, F_ab, E_ac, `MN = ${fmtNum(B / 2)} cm`, amber, -14, 0.5, 0);
             drawSideBadge(g, B_pt, C_pt, `BC = ${B} cm`, green, 16, 0.5, 1);
             txt('넓이 1S', pt(245, 210), amber, 13);
@@ -1900,6 +1985,7 @@ window.addEventListener('DOMContentLoaded', function () {
             const pProg = Math.max(0.2, t);
             const aligned = computeAlignedTriangle([A, F_ab, E_ac], [A, B_pt, C_pt], pt(645, 235), 1.25, false, pProg);
             poly(aligned, amber, 'rgba(251,191,36,0.24)', 2.8, 0);
+            kmark(aligned[0], aligned[1], aligned[2], 1, 20); kmark(aligned[1], aligned[2], aligned[0], 2, 18); kmark(aligned[2], aligned[1], aligned[0], 3, 18); // [표시 보강]
             ['A', 'M', 'N'].forEach((lb, i) => label(lb, aligned[i], amber, i === 0 ? 0 : (i === 1 ? -16 : 16), i === 0 ? -16 : 16));
           } else if (sub === 'midpointFour') {
             poly([D_bc, E_ac, F_ab], amber, 'rgba(251,191,36,0.26)', 3.0, 0);
@@ -1907,6 +1993,8 @@ window.addEventListener('DOMContentLoaded', function () {
             drawTickMarks(g, A, F_ab, 1, green); drawTickMarks(g, F_ab, B_pt, 1, green);
             drawTickMarks(g, B_pt, D_bc, 2, blue); drawTickMarks(g, D_bc, C_pt, 2, blue);
             drawTickMarks(g, A, E_ac, 3, pink); drawTickMarks(g, E_ac, C_pt, 3, pink);
+            // [표시 보강] 가운데 삼각형의 세 변도 같은 눈금: DE = AF = FB (|), FE = BD = DC (||), DF = AE = EC (|||) → 네 삼각형이 SSS 합동
+            drawTickMarks(g, D_bc, E_ac, 1, green); drawTickMarks(g, F_ab, E_ac, 2, blue); drawTickMarks(g, D_bc, F_ab, 3, pink);
             txt('¼ S', pt(245, 195), green, 12.5);
             txt('¼ S', pt(175, 335), green, 12.5);
             txt('¼ S', pt(315, 335), green, 12.5);
@@ -1928,6 +2016,12 @@ window.addEventListener('DOMContentLoaded', function () {
             label('G(무게중심)', G, white, -22, -16);
             drawParallelMark(g, A, B_pt, 1, blue);
             drawParallelMark(g, E_ac, D_bc, 1, pink);
+            // [표시 보강] 중점 D, E 의 같은 길이 눈금, 모래시계의 같은 각: 맞꼭지각 ∠AGB = ∠DGE (•), 엇각 ∠GAB = ∠GDE (×) · ∠GBA = ∠GED (○)
+            drawTickMarks(g, B_pt, D_bc, 1, amber); drawTickMarks(g, D_bc, C_pt, 1, amber);
+            drawTickMarks(g, A, E_ac, 2, blue); drawTickMarks(g, E_ac, C_pt, 2, blue);
+            kmark(G, A, B_pt, 1, 16); kmark(G, D_bc, E_ac, 1, 16);
+            kmark(A, G, B_pt, 2, 20); kmark(D_bc, G, E_ac, 2, 16);
+            kmark(B_pt, G, A, 3, 20); kmark(E_ac, G, D_bc, 3, 16);
             drawSideBadge(g, A, G, `AG=${fmtNum((B * 2) / 3)}`, blue, -16, 0.5, 1);
             drawSideBadge(g, G, D_bc, `GD=${fmtNum(B / 3)}`, amber, -16, 0.5, 2);
 
@@ -1936,6 +2030,8 @@ window.addEventListener('DOMContentLoaded', function () {
             const refGAB = computeAlignedTriangle([G, A, B_pt], [G, A, B_pt], pt(645, 315), 0.9, false, 1.0);
             poly(refGAB, blue, 'rgba(56,189,248,0.18)', 2.4, 1);
             poly(rotGDE, amber, 'rgba(251,191,36,0.26)', 2.8, 2);
+            kmark(rotGDE[0], rotGDE[1], rotGDE[2], 1, 15); kmark(rotGDE[1], rotGDE[0], rotGDE[2], 2, 14); kmark(rotGDE[2], rotGDE[0], rotGDE[1], 3, 14); // [표시 보강]
+            kmark(refGAB[0], refGAB[1], refGAB[2], 1, 15); kmark(refGAB[1], refGAB[0], refGAB[2], 2, 14); kmark(refGAB[2], refGAB[0], refGAB[1], 3, 14);
             txt('모래시계 DE : AB = 1 : 2 ➔ GD : GA = 1 : 2!', pt(645, 120), pink, 12);
           } else {
             // centroidSix (세 중선 6등분 + 중점연결 24등분)
@@ -1949,6 +2045,10 @@ window.addEventListener('DOMContentLoaded', function () {
             line(B_pt, E_ac, blue, 2.6);
             line(C_pt, F_ab, green, 2.6);
             if (showFine) line(F_ab, E_ac, pink, 3.2, [], 2);
+            // [표시 보강] 세 변의 중점 F, E, D: 같은 길이 눈금 (AF = FB, AE = EC, BD = DC)
+            drawTickMarks(g, A, F_ab, 1, green); drawTickMarks(g, F_ab, B_pt, 1, green);
+            drawTickMarks(g, A, E_ac, 2, blue); drawTickMarks(g, E_ac, C_pt, 2, blue);
+            drawTickMarks(g, B_pt, D_bc, 3, amber); drawTickMarks(g, D_bc, C_pt, 3, amber);
 
             label('D', D_bc, amber, 0, 18); label('E', E_ac, blue, 16, 0);
             label('F', F_ab, green, -16, 0); label('G', G, white, 14, 10);
@@ -1998,10 +2098,15 @@ window.addEventListener('DOMContentLoaded', function () {
           drawRightAngleSquare(g, B_pt, A, F, 12, amber);
           drawRightAngleSquare(g, C_pt, F, E, 11, blue);
           drawRightAngleSquare(g, F, A, E, 12, pink);
-          drawAngleArc(g, A, B_pt, F, { radius: 24, color: amber, symbol: 'dot' });
-          drawAngleArc(g, F, C_pt, E, { radius: 22, color: amber, symbol: 'dot' });
-          drawAngleArc(g, F, A, B_pt, { radius: 24, color: blue, arcs: 2, symbol: 'cross' });
-          drawAngleArc(g, E, F, C_pt, { radius: 20, color: blue, arcs: 2, symbol: 'cross' });
+          // [표시 보강] 같은 각은 같은 표시·같은 값: ∠BAF = ∠CFE (•), ∠AFB = ∠FEC (×) — F 에서 • + × = 90°
+          const dotV = `•${angDeg(A, B_pt, F)}`, crsV = `×${angDeg(F, A, B_pt)}`;
+          drawAngleArc(g, A, B_pt, F, { radius: 24, color: amber, symbol: dotV });
+          drawAngleArc(g, F, C_pt, E, { radius: 22, color: amber, symbol: dotV });
+          drawAngleArc(g, F, A, B_pt, { radius: 24, color: blue, arcs: 2, symbol: crsV });
+          drawAngleArc(g, E, F, C_pt, { radius: 20, color: blue, arcs: 2, symbol: crsV });
+          // 접기: 접히기 전·후 같은 길이 AD = AF (||), DE = FE (|), 접히기 전 D 의 직각
+          drawRightAngleSquare(g, D, A, E, 12, pink);
+          drawTickMarks(g, A, D, 2, pink); drawTickMarks(g, A, F, 2, pink); drawTickMarks(g, D, E, 1, pink); drawTickMarks(g, F, E, 1, pink);
 
           drawSideBadge(g, A, B_pt, '8 cm', amber, -18, 0.5, 0);
           drawSideBadge(g, B_pt, F, '6 cm', amber, 16, 0.5, 0);
@@ -2016,6 +2121,9 @@ window.addEventListener('DOMContentLoaded', function () {
           poly(tri2, blue, 'rgba(56,189,248,0.26)', 2.8, 1);
           drawRightAngleSquare(g, tri1[0], tri1[1], tri1[2], 10, amber);
           drawRightAngleSquare(g, tri2[0], tri2[1], tri2[2], 9, blue);
+          const dotO = { radius: 14, color: amber, symbol: dotV }, crsO = { radius: 14, color: blue, arcs: 2, symbol: crsV }; // [표시 보강] 정렬한 두 삼각형의 같은 각
+          drawAngleArc(g, tri1[1], tri1[0], tri1[2], dotO); drawAngleArc(g, tri1[2], tri1[0], tri1[1], crsO);
+          drawAngleArc(g, tri2[1], tri2[0], tri2[2], dotO); drawAngleArc(g, tri2[2], tri2[0], tri2[1], crsO);
           txt('△ABF (8 : 6 : 10)', pt(645, 122), amber, 12);
           txt('△FCE (4 : 3 : 5) ➔ 정확히 2 : 1 AA 닮음!', pt(645, 255), blue, 12);
         } else if (sub === 'foldEqui') {
@@ -2035,14 +2143,20 @@ window.addEventListener('DOMContentLoaded', function () {
           poly([F, C_pt, E], blue, 'rgba(56,189,248,0.24)', 2.8, 1);
           poly([D, F, E], pink, 'rgba(244,114,182,0.18)', 2.6, 2);
 
-          label('A(60°접힘)', A, '#94a3b8', 0, -14);
-          label('B(60°)', B_pt, amber, -14, 14);
-          label('C(60°)', C_pt, blue, 14, 14);
+          // [표시 보강] 60° 값은 각 안에 적으므로 점 이름에서는 뺍니다(좁은 화면에서 이름과 각 표시가 겹침)
+          label('A(접힘)', A, '#94a3b8', 0, -14);
+          label('B', B_pt, amber, -14, 14);
+          label('C', C_pt, blue, 14, 14);
           label('D', D, amber, -16, -4);
-          label('F(60°)', F, pink, 0, 18);
+          label('F', F, pink, 0, 18);
           label('E', E, blue, 16, -4);
 
           drawAngleArc(g, F, E, D, { radius: 22, color: pink, symbol: '60°' });
+          // [표시 보강] 정삼각형의 60° 값: ∠B = ∠C = ∠A(접힘) = ∠DFE 는 모두 같은 각(분홍 60°), 접기: AD = DF (|), AE = EF (||)
+          drawAngleArc(g, B_pt, C_pt, A, { radius: 22, color: pink, symbol: '60°' });
+          drawAngleArc(g, C_pt, B_pt, A, { radius: 22, color: pink, symbol: '60°' });
+          drawAngleArc(g, A, D, E, { radius: 22, color: pink, symbol: '60°' });
+          drawTickMarks(g, A, D, 1, amber); drawTickMarks(g, D, F, 1, amber); drawTickMarks(g, A, E, 2, blue); drawTickMarks(g, F, E, 2, blue);
           drawAngleArc(g, D, B_pt, F, { radius: 18, color: amber, symbol: 'dot' });
           drawAngleArc(g, F, C_pt, E, { radius: 20, color: amber, symbol: 'dot' });
           drawAngleArc(g, F, D, B_pt, { radius: 18, color: blue, arcs: 2, symbol: 'cross' });
@@ -2059,6 +2173,9 @@ window.addEventListener('DOMContentLoaded', function () {
           const tR = computeAlignedTriangle([F, C_pt, E], refEq, pt(645, 325), 0.72, false, pProg);
           poly(tL, amber, 'rgba(251,191,36,0.24)', 2.8, 0);
           poly(tR, blue, 'rgba(56,189,248,0.24)', 2.8, 1);
+          // [표시 보강] 정렬한 두 삼각형: ∠B = ∠C = 60°, ∠BDF = ∠CFE (•), ∠DFB = ∠FEC (×)
+          drawAngleArc(g, tL[0], tL[1], tL[2], { radius: 15, color: amber, symbol: 'dot' }); drawAngleArc(g, tL[1], tL[2], tL[0], { radius: 18, color: pink, symbol: '60°' }); drawAngleArc(g, tL[2], tL[0], tL[1], { radius: 15, color: blue, arcs: 2, symbol: 'cross' });
+          drawAngleArc(g, tR[0], tR[1], tR[2], { radius: 15, color: amber, symbol: 'dot' }); drawAngleArc(g, tR[1], tR[0], tR[2], { radius: 18, color: pink, symbol: '60°' }); drawAngleArc(g, tR[2], tR[0], tR[1], { radius: 15, color: blue, arcs: 2, symbol: 'cross' });
           txt('△DBF (∠B=60°, •, ×)', pt(645, 122), amber, 12);
           txt('△FCE (∠C=60°, •, ×) ➔ AA 닮음!', pt(645, 255), blue, 12);
         } else if (sub === 'trapArea4') {
@@ -2078,6 +2195,7 @@ window.addEventListener('DOMContentLoaded', function () {
           label('B', B_pt, green, -12, 14); label('C', C_pt, green, 12, 14);
           label('O', O, white, 0, -18);
 
+          drawParallelMark(g, A, D, 1, amber); drawParallelMark(g, B_pt, C_pt, 1, blue); // [표시 보강] 사다리꼴 AD ∥ BC
           txt(`위: ${M}² = ${a2}S`, pt(O.x, O.y - 42), amber, 13);
           txt(`아래: ${N}² = ${b2}S`, pt(O.x, O.y + 68), blue, 13.5);
           txt(`왼: ${ab}S`, pt(O.x - 68, O.y + 8), pink, 12.5);
@@ -2121,6 +2239,12 @@ window.addEventListener('DOMContentLoaded', function () {
           drawSideBadge(g, B_pt, P, `BP=${seg}`, amber, -16, 0.5, 0);
           drawSideBadge(g, P, Q, `PQ=${seg}`, pink, 18, 0.5, 2);
           drawSideBadge(g, Q, D, `QD=${seg}`, blue, -16, 0.5, 1);
+          // [표시 보강] M, N 은 중점: BM = MC (|), CN = ND (||), 대각선 BP = PQ = QD (|||), 평행사변형의 평행 표시 (AD ∥ BC, AB ∥ DC)
+          drawTickMarks(g, B_pt, M_bc, 1, amber); drawTickMarks(g, M_bc, C_pt, 1, amber);
+          drawTickMarks(g, C_pt, N_cd, 2, blue); drawTickMarks(g, N_cd, D, 2, blue);
+          drawTickMarks(g, B_pt, P, 3, white); drawTickMarks(g, P, Q, 3, white); drawTickMarks(g, Q, D, 3, white);
+          drawParallelMark(g, A, D, 1, green); drawParallelMark(g, B_pt, C_pt, 1, green, 0.9);
+          drawParallelMark(g, A, B_pt, 2, green); drawParallelMark(g, D, C_pt, 2, green);
 
           // 우측: 대각선 BD의 2 : 1 : 1 : 2 (1:1:1) 확대 바
           const rB = pt(520, 240), rP = pt(600, 240), rO = pt(640, 240), rQ = pt(680, 240), rD = pt(760, 240);
@@ -2153,6 +2277,9 @@ window.addEventListener('DOMContentLoaded', function () {
           label('H', H, pink, 12, -14);
           drawRightAngleSquare(g, B_pt, C_pt, A, 13, green);
           drawRightAngleSquare(g, H, A, B_pt, 11, pink);
+          // [표시 보강] 닮은 삼각형의 같은 각: ∠BAC = ∠HBC (•), ∠ACB = ∠ABH (×)
+          kmark(A, B_pt, H, 1, 24); kmark(B_pt, H, C_pt, 1, 20);
+          kmark(C_pt, B_pt, H, 2, 22); kmark(B_pt, A, H, 2, 24);
 
           drawSideBadge(g, A, B_pt, `${fmtNum(6 * scaleMul)} cm`, amber, -16, 0.5, 0);
           drawSideBadge(g, B_pt, C_pt, `${fmtNum(8 * scaleMul)} cm`, blue, 16, 0.5, 1);
@@ -2167,6 +2294,8 @@ window.addEventListener('DOMContentLoaded', function () {
           poly(s2, green, 'rgba(52,211,153,0.18)', 2.6, 1);
           drawRightAngleSquare(g, s1[0], s1[1], s1[2], 9, amber);
           drawRightAngleSquare(g, s2[0], s2[1], s2[2], 9, green);
+          kmark(s1[1], s1[0], s1[2], 1, 14); kmark(s1[2], s1[0], s1[1], 2, 14); // [표시 보강] 정렬한 두 삼각형의 같은 각
+          kmark(s2[1], s2[0], s2[2], 1, 14); kmark(s2[2], s2[0], s2[1], 2, 14);
           txt('AB² = AH · AC (왼쪽 날개 제곱 공식 그대로 적용!)', pt(645, 122), amber, 12);
         }
       }
@@ -2269,6 +2398,13 @@ window.addEventListener('DOMContentLoaded', function () {
           poly([pt(215, 160), pt(215, 290), pt(345, 290)], green, 'rgba(52,211,153,0.22)', 2.6, 1);
           drawRightAngleSquare(g, pt(95, 290), pt(95, 210), pt(175, 290), 10, green);
           drawRightAngleSquare(g, pt(215, 290), pt(215, 160), pt(345, 290), 12, green);
+          // [표시 보강] 직각이등변삼각형: 직각을 낀 두 변은 같은 길이(눈금), 밑각은 모두 45° (같은 각이므로 같은 표시)
+          drawTickMarks(g, pt(95, 290), pt(95, 210), 1, green); drawTickMarks(g, pt(95, 290), pt(175, 290), 1, green);
+          drawTickMarks(g, pt(215, 290), pt(215, 160), 1, green); drawTickMarks(g, pt(215, 290), pt(345, 290), 1, green);
+          drawAngleArc(g, pt(95, 210), pt(95, 290), pt(175, 290), { radius: 22, color: pink, symbol: '45°' });
+          drawAngleArc(g, pt(175, 290), pt(95, 290), pt(95, 210), { radius: 22, color: pink, symbol: '45°' });
+          drawAngleArc(g, pt(215, 160), pt(215, 290), pt(345, 290), { radius: 26, color: pink, symbol: '45°' });
+          drawAngleArc(g, pt(345, 290), pt(215, 290), pt(215, 160), { radius: 26, color: pink, symbol: '45°' });
           txt('⭕ 두 직각이등변삼각형 (항상 45°·45°·90° AA닮음!)', pt(235, 325), green, 12);
 
           // 우측: 닮음이 아닌 두 직사각형 & 두 일반 이등변삼각형 (❌)
@@ -2278,11 +2414,18 @@ window.addEventListener('DOMContentLoaded', function () {
             line(pt(520, 215), pt(595, 145), amber, 2);
             line(pt(625, 215), pt(775, 145), red, 2);
           }
+          drawRightAngleSquare(g, pt(520, 215), pt(520, 145), pt(595, 215), 10, red); // [표시 보강] 직사각형의 직각
+          drawRightAngleSquare(g, pt(625, 215), pt(625, 145), pt(775, 215), 10, red);
           txt('❌ 두 직사각형 (가로·세로비 불일치)', pt(645, 240), red, 12);
 
           poly([pt(565, 270), pt(530, 365), pt(600, 365)], red, 'rgba(251,113,133,0.20)', 2.6, 2);
           // [2.0 수정] 해설의 "꼭지각 110°" 에 맞춰 꼭짓점을 (705, 312.5) 로(원본은 약 103°)
           poly([pt(705, 312.5), pt(630, 365), pt(780, 365)], red, 'rgba(251,113,133,0.20)', 2.6, 2);
+          // [표시 보강] 이등변삼각형: 같은 길이 눈금(두 변)과 꼭지각 값(40°, 110°)
+          drawTickMarks(g, pt(565, 270), pt(530, 365), 1, red); drawTickMarks(g, pt(565, 270), pt(600, 365), 1, red);
+          drawTickMarks(g, pt(705, 312.5), pt(630, 365), 1, red); drawTickMarks(g, pt(705, 312.5), pt(780, 365), 1, red);
+          drawAngleArc(g, pt(565, 270), pt(530, 365), pt(600, 365), { radius: 26, color: red, symbol: angDeg(pt(565, 270), pt(530, 365), pt(600, 365)) });
+          drawAngleArc(g, pt(705, 312.5), pt(630, 365), pt(780, 365), { radius: 22, color: red, symbol: angDeg(pt(705, 312.5), pt(630, 365), pt(780, 365)) });
           txt('❌ 두 이등변삼각형 (꼭지각 40° vs 110° 불일치!)', pt(645, 390), red, 12);
         }
       }
