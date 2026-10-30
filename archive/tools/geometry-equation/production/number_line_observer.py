@@ -271,6 +271,10 @@ def audit(numberLine, svg, pointNames=None):
 # Rows of solution sets on one shared scale (SET), the common part of the SET rows (RESULT) and marked points with an internal division (POINTS).
 # Everything is re-solved from the plan's own strings (SymPy); nothing of the engine's model is read.
 TRANSLATE = re.compile(r'translate\(([-\d.e]+) ([-\d.e]+)\)')
+# This observer's own copy of the point-style drawing rules (E30): the half-extent of a CROSS stroke pair and the radius of the ring round an emphasised point.
+CROSS_HALF_PX = 4.2
+RING_RADIUS_PX = 8.0
+POINT_STYLES = ('FILLED', 'HOLLOW', 'CROSS')
 
 
 def _end_value(raw, parameter):
@@ -289,7 +293,7 @@ def _point_flags(point):
     name = point.get('name')
     if hidden or name is None and not JAMO.fullmatch(point['id']): jamo = None
     else: jamo = name if isinstance(name, str) else point['id']
-    return {'name_hidden': hidden, 'jamo': jamo, 'show_value': point.get('showValue') is not False}
+    return {'name_hidden': hidden, 'jamo': jamo, 'show_value': point.get('showValue') is not False, 'style': point.get('style')}
 
 
 def _scale_of(row_spec, values):
@@ -399,6 +403,22 @@ def audit_figure(numberLine, svg, pointNames=None):
         in_row = lambda element: element.get('data-row') == str(index)
         row_circles = [element for element in circles if in_row(element)]
         row_labels = [element for element in labels if in_row(element)]
+        # the row's own label (E30): a plain Korean word left of the axis, centred on it; none when the plan gives none
+        row_label_plan = row['spec'].get('label')
+        row_label_nodes = [element for element in row_labels if element.get('data-label-role') == 'row-label']
+        if row_label_plan is None:
+            if row_label_nodes: errors.append('NL_ROW_LABEL_UNEXPECTED:%d' % index)
+        elif len(row_label_nodes) != 1: errors.append('NL_ROW_LABEL_COUNT:%d' % index)
+        else:
+            node = row_label_nodes[0]
+            if node.get('data-text') != row_label_plan or node.get('data-tex') is not None or node.get('data-owner') != 'r%d-axis' % index: errors.append('NL_ROW_LABEL_TEXT:%d' % index)
+            inner, match = node.find(NS + 'svg'), TRANSLATE.fullmatch(node.get('transform') or '')
+            if inner is None or not match: errors.append('NL_LABEL_GEOMETRY_UNREADABLE:' + str(node.get('id')))
+            else:
+                left, top, width, height = float(match.group(1)), float(match.group(2)), _num(inner, 'width'), _num(inner, 'height')
+                if left + width > axis_x1 - 4: errors.append('NL_ROW_LABEL_NOT_LEFT_OF_AXIS:%d' % index)
+                if abs(top + height / 2 - axis_y) > 2.0: errors.append('NL_ROW_LABEL_NOT_ON_AXIS:%d' % index)
+                if left < 0: errors.append('NL_ROW_LABEL_OUTSIDE_FIGURE:%d' % index)
         if len([l for l in row_labels if l.get('data-label-role') == 'variable']) != (0 if numberLine.get('axisVariable') is False else 1): errors.append('NL_VARIABLE_LABEL_COUNT:%d' % index)
         if row['kind'] == 'POINTS':
             values = row['values']
@@ -406,12 +426,43 @@ def audit_figure(numberLine, svg, pointNames=None):
             flags = {point['id']: _point_flags(point) for point in row['spec']['points']}
             scale = _scale_of(row['spec'], list(values.values()))
             if set(drawn) != set(values): errors.append('NL_POINT_SET_MISMATCH:%d' % index)
+            # within: every point is classified against the set of an earlier SET / RESULT row, solved here from the plan (inside: FILLED and ringed, outside: CROSS, unless the plan styles the point)
+            within = row['spec'].get('within')
+            within_pieces = None
+            if within is not None:
+                if isinstance(within, bool) or not isinstance(within, int) or not 1 <= within < index or 'pieces' not in rows[within - 1]: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+                within_pieces = rows[within - 1]['pieces']
             for point_id, value in values.items():
                 element = drawn.get(point_id)
                 if element is None: continue
                 flag = flags[point_id]
                 if abs(_num(element, 'cx') - px(value)) > TOL or abs(_num(element, 'cy') - axis_y) > TOL: errors.append('NL_POINT_POSITION:' + point_id)
-                if (element.get('fill') or '').lower() != '#111': errors.append('NL_POINT_NOT_FILLED:' + point_id)
+                inside = None if within_pieces is None else any(piece.contains(value) == S.true for piece in within_pieces)
+                style = flag['style'] if flag['style'] is not None else ('CROSS' if inside is False else 'FILLED')
+                if style not in POINT_STYLES: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+                fill = (element.get('fill') or '').lower()
+                if style == 'FILLED':
+                    if fill != '#111': errors.append('NL_POINT_NOT_FILLED:' + point_id)
+                    if element.get('data-point-style') is not None or element.get('data-state') != 'CLOSED': errors.append('NL_POINT_STYLE:' + point_id)
+                elif style == 'HOLLOW':
+                    if fill != '#fff' or element.get('data-point-style') != 'HOLLOW' or element.get('data-state') != 'OPEN': errors.append('NL_POINT_STYLE:' + point_id)
+                else:
+                    if fill != 'none' or element.get('stroke') != 'none' or element.get('data-point-style') != 'CROSS': errors.append('NL_POINT_STYLE:' + point_id)
+                    crosses = [l for l in lines if l.get('data-role') == 'cross' and l.get('data-of') == element.get('id')]
+                    cx, cy = _num(element, 'cx'), _num(element, 'cy')
+                    signs = []
+                    for l in crosses:
+                        half_x, half_y = (_num(l, 'x2') - _num(l, 'x1')) / 2, (_num(l, 'y2') - _num(l, 'y1')) / 2
+                        mid_x, mid_y = (_num(l, 'x2') + _num(l, 'x1')) / 2, (_num(l, 'y2') + _num(l, 'y1')) / 2
+                        if abs(mid_x - cx) > TOL or abs(mid_y - cy) > TOL or abs(abs(half_x) - CROSS_HALF_PX) > 0.05 or abs(abs(half_y) - CROSS_HALF_PX) > 0.05: errors.append('NL_POINT_CROSS_GEOMETRY:' + point_id)
+                        signs.append(1 if half_x * half_y > 0 else -1)
+                    if len(crosses) != 2 or sorted(signs) != [-1, 1]: errors.append('NL_POINT_CROSS_STROKES:' + point_id)
+                if style != 'CROSS' and any(l.get('data-role') == 'cross' and l.get('data-of') == element.get('id') for l in lines): errors.append('NL_POINT_CROSS_UNEXPECTED:' + point_id)
+                ring = by_id.get(element.get('id', '') + '-ring')
+                if inside:
+                    if ring is None or ring.get('data-dot') != 'ring' or ring.get('data-of') != element.get('id') or (ring.get('fill') or '').lower() != 'none' \
+                            or abs(_num(ring, 'cx') - _num(element, 'cx')) > TOL or abs(_num(ring, 'cy') - _num(element, 'cy')) > TOL or abs(_num(ring, 'r') - RING_RADIUS_PX) > 0.05: errors.append('NL_POINT_RING:' + point_id)
+                elif ring is not None: errors.append('NL_POINT_RING_UNEXPECTED:' + point_id)
                 text = element.get('data-value', '')
                 if not RATIONAL.fullmatch(text) or S.Rational(text) != value: errors.append('NL_POINT_VALUE:' + point_id)
                 if element.get('data-value-shown') != (None if flag['show_value'] else 'false'): errors.append('NL_POINT_VALUE_FLAG:' + point_id)
@@ -583,7 +634,7 @@ def audit_figure(numberLine, svg, pointNames=None):
         row_n = label.get('data-row')
         axis = by_id.get('r%s-axis' % row_n) if row_n else None
         axis_y = _num(axis, 'y1') if axis is not None else None
-        if role in ('note', 'ratio'): continue
+        if role in ('note', 'ratio', 'row-label'): continue
         if role == 'variable':
             if label.get('data-tex') != variable: errors.append('NL_VARIABLE_LABEL_MISMATCH:' + str(label_id))
             if axis is not None and box[0] < _num(axis, 'x2'): errors.append('NL_VARIABLE_LABEL_ON_AXIS:' + str(label_id))

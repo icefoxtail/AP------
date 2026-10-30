@@ -130,7 +130,14 @@ function pointFlags(raw){
   }else if(!hidden&&JAMO.test(raw.id))flags.jamoName=raw.id;
   if(hidden)flags.hideName=true;
   if(raw.showValue===false)flags.hideValue=true;
+  if(raw.style!==undefined&&!POINT_STYLES.includes(raw.style))bad('NUMBER_LINE_POINT_STYLE_INVALID');
   return flags;
+}
+/** A row label: one short line of at most ROW_LABEL_MAX_CHARS characters, plain text. */
+function rowLabelOf(raw){
+  if(raw.label===undefined)return {};
+  if(typeof raw.label!=='string'||!raw.label.trim()||raw.label!==raw.label.trim()||[...raw.label].length>ROW_LABEL_MAX_CHARS||/[\u0000-\u001f<>&"\\$]/.test(raw.label))bad('NUMBER_LINE_ROW_LABEL_INVALID');
+  return {label:raw.label};
 }
 const ceilR=r=>-floorR(sub(ZERO,r));
 /**
@@ -184,13 +191,13 @@ export function solveNumberLineFigure(numberLine){
     if(!isPlain(row))bad('NUMBER_LINE_ROWS_INVALID');
     if(row.kind!=='POINTS'&&row.subdivisions!==undefined)bad('NUMBER_LINE_SUBDIVISIONS_INVALID');
     if(row.kind==='SET'){
-      onlyKeys(row,['kind','pieces','integerPoints'],'NUMBER_LINE_ROWS_INVALID');
+      onlyKeys(row,['kind','pieces','integerPoints','label'],'NUMBER_LINE_ROWS_INVALID');
       if(!Array.isArray(row.pieces)||row.pieces.length<1||row.pieces.length>2)bad('NUMBER_LINE_PIECE_INVALID');
       const pieces=piecesOrdered(row.pieces.map(piece=>{onlyKeys(piece,['lo','hi'],'NUMBER_LINE_PIECE_INVALID');if(!Object.hasOwn(piece,'lo')||!Object.hasOwn(piece,'hi'))bad('NUMBER_LINE_PIECE_INVALID');return checkPiece({lo:endOf(piece.lo,parameter,used),hi:endOf(piece.hi,parameter,used)});}));
       checkDisjoint(pieces);sets.push(pieces);
-      solved.push({kind:'SET',pieces,request:row.integerPoints});
+      solved.push({kind:'SET',pieces,request:row.integerPoints,...rowLabelOf(row)});
     }else if(row.kind==='RESULT'){
-      onlyKeys(row,['kind','integerPoints'],'NUMBER_LINE_ROWS_INVALID');
+      onlyKeys(row,['kind','integerPoints','label'],'NUMBER_LINE_ROWS_INVALID');
       if(index!==rows.length-1&&rows.slice(index+1).some(next=>next?.kind==='SET'||next?.kind==='RESULT'))bad('NUMBER_LINE_RESULT_NOT_LAST');
       if(sets.length<2)bad('NUMBER_LINE_RESULT_NEEDS_TWO_SETS');
       let result=sets[0];
@@ -198,14 +205,16 @@ export function solveNumberLineFigure(numberLine){
       result=piecesOrdered(result);
       if(!result.length)bad('NUMBER_LINE_RESULT_EMPTY');
       if(result.length>2)bad('NUMBER_LINE_TOO_MANY_PIECES');
-      solved.push({kind:'RESULT',pieces:result,request:row.integerPoints});
+      solved.push({kind:'RESULT',pieces:result,request:row.integerPoints,...rowLabelOf(row)});
     }else if(row.kind==='POINTS'){
-      onlyKeys(row,['kind','points','subdivisions','band'],'NUMBER_LINE_ROWS_INVALID');
+      onlyKeys(row,['kind','points','subdivisions','band','label','within'],'NUMBER_LINE_ROWS_INVALID');
+      // within: the 1-based number of an earlier SET or RESULT row; each point of this row is then classified exactly against that row's set (inside: filled and ringed, outside: crossed).
+      if(row.within!==undefined&&(!Number.isInteger(row.within)||row.within<1||row.within>index||!['SET','RESULT'].includes(solved[row.within-1]?.kind)))bad('NUMBER_LINE_WITHIN_INVALID');
       if(row.band!==undefined&&typeof row.band!=='boolean')bad('NUMBER_LINE_ROWS_INVALID');
       if(!Array.isArray(row.points)||row.points.length<2||row.points.length>MAX_POINTS)bad('NUMBER_LINE_POINTS_INVALID');
       const byId=new Map(),points=[];
       for(const raw of row.points){
-        onlyKeys(raw,['id','value','divides','name','hideName','showValue'],'NUMBER_LINE_POINTS_INVALID');
+        onlyKeys(raw,['id','value','divides','name','hideName','showValue','style'],'NUMBER_LINE_POINTS_INVALID');
         if(typeof raw.id!=='string'||!(CAPITAL.test(raw.id)||JAMO.test(raw.id))||byId.has(raw.id))bad('NUMBER_LINE_POINTS_INVALID');
         if((raw.value===undefined)===(raw.divides===undefined))bad('NUMBER_LINE_POINTS_INVALID');
         const point={id:raw.id,raw,flags:pointFlags(raw)};byId.set(raw.id,point);points.push(point);
@@ -223,13 +232,18 @@ export function solveNumberLineFigure(numberLine){
       }
       const values=points.map(point=>point.v);
       if(values.some((x,i)=>values.slice(i+1).some(y=>cmpR(x,y)===0)))bad('NUMBER_LINE_POINTS_COINCIDE');
-      solved.push({kind:'POINTS',points:points.map(point=>({id:point.id,value:ratText(point.v),tex:valueTex(asReal(point.v)),text:valueText(asReal(point.v)),approx:num(point.v),...(point.division?{division:point.division}:{}),...point.flags})),
-        ...(row.band===false?{band:false}:{}),...(row.subdivisions!==undefined?{scale:solveScale(row.subdivisions,points.map(point=>point.v))}:{})});
+      const within=row.within===undefined?null:solved[row.within-1].pieces;
+      solved.push({kind:'POINTS',points:points.map(point=>{
+          // the style: the author's, else (with `within`) FILLED inside the set and CROSS outside it; a point inside the set is also ringed
+          const inside=within?within.some(piece=>containsPiece(piece,point.v)):null,style=point.raw.style??(inside===null||inside?'FILLED':'CROSS');
+          return {id:point.id,value:ratText(point.v),tex:valueTex(asReal(point.v)),text:valueText(asReal(point.v)),approx:num(point.v),...(point.division?{division:point.division}:{}),...point.flags,
+            ...(style!=='FILLED'?{style}:{}),...(inside?{ring:true}:{})};}),
+        ...(row.band===false?{band:false}:{}),...(row.subdivisions!==undefined?{scale:solveScale(row.subdivisions,points.map(point=>point.v))}:{}),...rowLabelOf(row),...(row.within!==undefined?{within:row.within}:{})});
     }else bad('NUMBER_LINE_ROWS_INVALID');
   }
   if(parameter&&!used.used)bad('NUMBER_LINE_PARAMETER_UNUSED');
   return {schemaVersion:FIGURE_MODEL_VERSION,variable,...(numberLine.axisVariable===false?{axisVariable:false}:{}),parameter:parameter&&{name:parameter.name,value:ratText(parameter.v)},
-    rows:solved.map(row=>row.kind==='POINTS'?row:{kind:row.kind,pieces:row.pieces.map(piece=>({lower:sideModel(piece.lo),upper:sideModel(piece.hi)})),integers:row.request===undefined?null:integersOf(row.pieces,row.request)})};
+    rows:solved.map(row=>row.kind==='POINTS'?row:{kind:row.kind,pieces:row.pieces.map(piece=>({lower:sideModel(piece.lo),upper:sideModel(piece.hi)})),integers:row.request===undefined?null:integersOf(row.pieces,row.request),...(row.label?{label:row.label}:{})})};
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
@@ -238,6 +252,11 @@ const WIDTH=512,SAFE=12,AXIS_LEFT=32,ARROW_TIP=WIDTH-32-20,MAP_LEFT=AXIS_LEFT+14
 const DISPLAY='\\displaystyle ',END_RADIUS=5,DOT_RADIUS=3.2,TICK_HALF=6,LABEL_GAP=5,ZERO_TICK_CLEARANCE=56,NOTE_ROW=36,ROW_GAP=8;
 const HEAD_TALL=52,HEAD_SHORT=38,BELOW_TALL=48,BELOW_SHORT=34,POINT_HEAD=36,INTEGER_ZONE=64,PLAIN_ZONE=24,INTEGER_LABEL_ROW=26;
 const NAME_ROW=30,NAME_ROW_JAMO=34,VALUE_STACK_GAP=2,MINOR_TICK_HALF=3.5;
+// Row labels (E30): a short Korean word at the left of a row's axis; with any label the axes start further right, by room for the longest (an estimate per character).
+const ROW_LABEL_CHAR_PX=22,ROW_LABEL_GAP=10,ROW_LABEL_MAX_CHARS=6,ROW_LABEL_ROW_HEIGHT=34;
+// Point styles (E30): FILLED (default), HOLLOW (open circle) and CROSS (two diagonal strokes, no disc); a point inside a `within` set also gets a ring.
+const POINT_STYLES=['FILLED','HOLLOW','CROSS'],CROSS_HALF=4.2,RING_RADIUS=END_RADIUS+3;
+const axisLeftOf=model=>{const longest=Math.max(0,...model.rows.map(row=>row.label?[...row.label].length:0));return longest?Math.max(AXIS_LEFT,SAFE+ROW_LABEL_CHAR_PX*longest+ROW_LABEL_GAP):AXIS_LEFT;};
 const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
 const frac=tex=>tex.includes('\\frac');
 const piecesOf=row=>row.pieces.map(piece=>({lo:piece.lower,hi:piece.upper}));
@@ -290,7 +309,8 @@ export function numberLineFigureSpec(plan,model){
   const span=hi-lo,pad=span===0?2:Math.max(.8,.12*span);
   lo-=pad;hi+=pad;
   if(intsAll.length){lo=Math.min(lo,Math.min(...intsAll)-.75);hi=Math.max(hi,Math.max(...intsAll)+.75);}
-  const px=u=>r6(MAP_LEFT+(u-lo)/(hi-lo)*(MAP_RIGHT-MAP_LEFT)),layout=figureLayout(model),v=model.variable;
+  const AXL=axisLeftOf(model),MAPL=AXL+(MAP_LEFT-AXIS_LEFT);     // a row label moves every axis start (and the map) right by the room it needs
+  const px=u=>r6(MAPL+(u-lo)/(hi-lo)*(MAP_RIGHT-MAPL)),layout=figureLayout(model),v=model.variable;
   const rows=[],labels=[];
   if(model.parameter){
     labels.push({id:'parameter-note-value',role:'note',owner:'note',kind:'MATH',tex:DISPLAY+model.parameter.name+'='+model.parameter.value.replace(/^(-?)(\d+)\/(\d+)$/,'$1\\frac{$2}{$3}'),plain:model.parameter.name+'='+model.parameter.value,anchor:{x:WIDTH/2-4,y:SAFE+NOTE_ROW/2,align:'left'},rowHeight:NOTE_ROW});
@@ -298,7 +318,8 @@ export function numberLineFigureSpec(plan,model){
   }
   for(const [r,row] of model.rows.entries()){
     const n=r+1,{axisY,head,top,belowRow}=layout.rows[r],dots=[],ticks=[],bands=[];
-    const spec={n,kind:row.kind,axis:{x1:AXIS_LEFT,x2:ARROW_TIP,y:axisY},bands,dots,ticks};
+    const spec={n,kind:row.kind,axis:{x1:AXL,x2:ARROW_TIP,y:axisY},bands,dots,ticks};
+    if(row.label)labels.push({id:`r${n}-row-label`,role:'row-label',owner:`r${n}-axis`,kind:'TEXT',text:row.label,plain:row.label,anchor:{x:AXL-ROW_LABEL_GAP,y:axisY,align:'left'},rowHeight:ROW_LABEL_ROW_HEIGHT,row:n});
     if(row.kind==='POINTS'){
       const placed=row.points.map(point=>({...point,x:px(point.approx)}));
       const sorted=[...placed].sort((a,b)=>a.x-b.x),{nameRow=NAME_ROW,valueRow=belowRow}=layout.rows[r],stacked=!!row.scale;
@@ -314,7 +335,7 @@ export function numberLineFigureSpec(plan,model){
       }
       for(const point of placed){
         const dotId=`r${n}-pt-${pointSlug(point.id)}`;
-        dots.push({id:dotId,role:'point',value:point.value,state:'CLOSED',x:point.x,y:axisY,r:END_RADIUS,pointId:point.id,...(point.hideValue?{valueHidden:true}:{})});
+        dots.push({id:dotId,role:'point',value:point.value,state:point.style==='HOLLOW'?'OPEN':'CLOSED',x:point.x,y:axisY,r:END_RADIUS,pointId:point.id,...(point.hideValue?{valueHidden:true}:{}),...(point.style?{style:point.style}:{}),...(point.ring?{ring:true}:{})});
         if(!point.hideName)labels.push(point.jamoName
           ?{id:`${dotId}-name`,role:'point-name',owner:dotId,kind:'TEXT',text:point.jamoName,plain:point.jamoName,value:point.id,anchor:{x:point.x,y:r6(axisY-END_RADIUS-4),align:'above'},rowHeight:nameRow,row:n}
           :{id:`${dotId}-name`,role:'point-name',owner:dotId,kind:'MATH',tex:names.tex(point.id),plain:names.text(point.id),value:point.id,anchor:{x:point.x,y:r6(axisY-END_RADIUS-4),align:'above'},rowHeight:customPoints(row)?nameRow:30,row:n});
@@ -329,7 +350,7 @@ export function numberLineFigureSpec(plan,model){
     }else{
       const result=row.kind==='RESULT';
       for(const [k,piece] of row.pieces.entries()){
-        const p=k+1,x1=piece.lower?px(piece.lower.approx):AXIS_LEFT,x2=piece.upper?px(piece.upper.approx):ARROW_TIP-2;
+        const p=k+1,x1=piece.lower?px(piece.lower.approx):AXL,x2=piece.upper?px(piece.upper.approx):ARROW_TIP-2;
         bands.push({id:`r${n}-band-${p}`,piece:p,x1,x2,y:axisY,from:piece.lower?.value??'-oo',to:piece.upper?.value??'+oo',result});
         for(const [side,end] of [['lo',piece.lower],['hi',piece.upper]]){
           if(!end)continue;
@@ -358,7 +379,7 @@ export function numberLineFigureSpec(plan,model){
     if(model.axisVariable!==false)labels.push({id:`r${n}-axis-variable`,role:'variable',owner:`r${n}-axis`,kind:'MATH',tex:v,plain:v,anchor:{x:ARROW_TIP+6,y:axisY,align:'right'},rowHeight:30,row:n});
     rows.push(spec);
   }
-  return {schemaVersion:FIGURE_SPEC_VERSION,size:figurePanelSize(model),map:{unitLeft:r6(lo),unitRight:r6(hi),pxLeft:MAP_LEFT,pxRight:MAP_RIGHT},rows,labels};
+  return {schemaVersion:FIGURE_SPEC_VERSION,size:figurePanelSize(model),map:{unitLeft:r6(lo),unitRight:r6(hi),pxLeft:MAPL,pxRight:MAP_RIGHT},rows,labels};
 }
 
 // --- composing --------------------------------------------------------------------------------------------------------------------------------
@@ -383,6 +404,7 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
       const {width,height}=fragment.intrinsic,{x,y,align}=label.anchor;
       if(height>label.rowHeight)throw new Stop('NUMBER_LINE_LABEL_TOO_LARGE',{labelId:label.id,height,rowHeight:label.rowHeight});
       const left=align==='right'||align==='left'?(align==='right'?x:x-width):x-width/2;
+      if(label.role==='row-label'&&left<SAFE-0.01)throw new Stop('NUMBER_LINE_ROW_LABEL_TOO_WIDE',{labelId:label.id,width});
       placed.push({label,fragment,box:{x:r6(left),y:r6(align==='below'?y:align==='above'?y-height:y-height/2),width,height}});
     }
     for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box)){
@@ -399,8 +421,10 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
       for(const tick of row.ticks){const minor=tick.role==='minor';body+=`<g data-layer="30"><line id="${tick.id}" data-role="${minor?'subtick':'tick'}" data-axis="x" data-row="${n}" data-value="${tick.value}"${tick.role?` data-scale="${tick.role}"`:''}${minor?` data-parts="${tick.parts}"`:''} stroke="#111" stroke-width="${minor?1:1.2}" fill="none" x1="${tick.x}" y1="${tick.y1}" x2="${tick.x}" y2="${tick.y2}"/></g>`;}
       for(const band of row.bands)body+=`<g data-layer="40"><line id="${band.id}" data-role="solution-band" data-row="${n}" data-piece="${band.piece}" data-from="${esc(band.from)}" data-to="${esc(band.to)}" stroke="#111" stroke-width="${band.result?4.8:3.2}" stroke-linecap="butt" fill="none" x1="${band.x1}" y1="${band.y}" x2="${band.x2}" y2="${band.y}"/></g>`;
       for(const dot of row.dots){
-        const open=dot.state==='OPEN';
-        body+=`<g data-layer="70"><circle id="${dot.id}" data-role="point" data-row="${n}" data-dot="${dot.role}" data-value="${esc(dot.value)}" data-state="${dot.state}"${dot.piece?` data-piece="${dot.piece}" data-end="${dot.side}"`:''}${dot.pointId?` data-point-id="${dot.pointId}"`:''}${dot.valueHidden?' data-value-shown="false"':''} stroke="#111" stroke-width="${open?1.6:.8}" fill="${open?'#fff':'#111'}" cx="${dot.x}" cy="${dot.y}" r="${dot.r}"/></g>`;
+        const open=dot.state==='OPEN',cross=dot.style==='CROSS';
+        if(dot.ring)body+=`<g data-layer="68"><circle id="${dot.id}-ring" data-role="point-ring" data-row="${n}" data-dot="ring" data-of="${dot.id}" stroke="#111" stroke-width="1.2" fill="none" cx="${dot.x}" cy="${dot.y}" r="${RING_RADIUS}"/></g>`;
+        body+=`<g data-layer="70"><circle id="${dot.id}" data-role="point" data-row="${n}" data-dot="${dot.role}" data-value="${esc(dot.value)}" data-state="${dot.state}"${dot.piece?` data-piece="${dot.piece}" data-end="${dot.side}"`:''}${dot.pointId?` data-point-id="${dot.pointId}"`:''}${dot.valueHidden?' data-value-shown="false"':''}${dot.style?` data-point-style="${dot.style}"`:''} stroke="${cross?'none':'#111'}" stroke-width="${open?1.6:.8}" fill="${cross?'none':open?'#fff':'#111'}" cx="${dot.x}" cy="${dot.y}" r="${dot.r}"/></g>`;
+        if(cross)for(const [k,[sx,sy]] of [[1,1],[1,-1]].entries())body+=`<g data-layer="71"><line id="${dot.id}-cross-${k+1}" data-role="cross" data-row="${n}" data-of="${dot.id}" stroke="#111" stroke-width="1.8" stroke-linecap="round" fill="none" x1="${r6(dot.x-sx*CROSS_HALF)}" y1="${r6(dot.y-sy*CROSS_HALF)}" x2="${r6(dot.x+sx*CROSS_HALF)}" y2="${r6(dot.y+sy*CROSS_HALF)}"/></g>`;
       }
     }
     for(const {label,fragment,box} of placed){
