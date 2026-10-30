@@ -1,0 +1,60 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "HISTOGRAM",
+  "boundaries": [
+   "130",
+   "140",
+   "150",
+   "160",
+   "170",
+   "180"
+  ],
+  "series": [
+   {
+    "frequencies": [
+     4,
+     null,
+     9,
+     null,
+     3
+    ]
+   }
+  ],
+  "total": 30,
+  "xTitle": "키(cm)",
+  "yTitle": "학생 수(명)",
+  "grid": true,
+  "showValues": true,
+  "unknownLabels": [
+   {
+    "class": 3,
+    "label": "?"
+   }
+  ],
+  "classSums": [
+   {
+    "from": 3,
+    "to": 4,
+    "label": "6명"
+   }
+  ]
+ },
+ "caption": "키가 160cm 이상인 학생은 전체 30명의 20%인 6명이므로, 160~170 계급(점선, ?)과 170~180 계급을 묶어 6명으로 나타낸 도수분포 히스토그램",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "키 130~180cm, 계급 크기 10cm, 도수 4, 9, 3과 합계 30명 (140~150, 160~170 계급의 도수는 비어 있음)",
+   "mappedTo": "chart"
+  },
+  {
+   "id": "c2",
+   "condition": "키가 160cm 이상인 학생이 전체 30명의 20%이므로 30×0.2=6명",
+   "mappedTo": "chart.classSums"
+  }
+ ],
+ "newVisualInformation": [
+  "160cm 이상인 두 계급(160~170, 170~180)을 한데 묶은 괄호와 그 합 6명",
+  "문제에서 비어 있던 160~170 계급(묻는 값)을 값 없는 점선 막대로 표시"
+ ]
+}

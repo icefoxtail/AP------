@@ -16,6 +16,11 @@ TOL = 0.02
 LABEL_TOL = 1.5
 CAPABILITY = 'stat-chart-figure-v1'
 FILL = {'bar': '#ececec', 'barHi': '#b5b5b5', 'barHi2': '#8e8e8e', 'cell': '#fff', 'cellHi': '#c9c9c9'}
+UNKNOWN_BAR_FRACTION = 0.4        # this observer's own copy of how high a dotted unknown-class outline stands: this fraction of the plot (axis start to axis top)
+SUM_FREE_TEXT = re.compile(r'^[0-9A-Za-z가-힣+=.%() -]{1,12}$')
+SUM_PLAIN_NUMBER = re.compile(r'^\d{1,6}(?:\.\d{1,4})?$')
+SUM_LEADING_NUMBER = re.compile(r'^(\d{1,6}(?:\.\d{1,4})?)(?=\D)')
+UNKNOWN_LABEL = re.compile(r'^[A-Za-z0-9+\-= ()?]{1,10}$')
 
 
 def fail(code):
@@ -217,16 +222,23 @@ def derive_marks(chart, series, polygon):
         known = sum((v for v in inside if v is not None), Fraction(0))
         label = e.get('label')
         if label is not None: label = str(label)
+        free = False
         if label == '?':
             if not hidden: fail('STAT_CLASS_SUM_LABEL_INVALID')
         elif label is not None:
-            total = known
+            # a plain number is the exact sum; any other text (6명, 합계) is a stated fact: checked only where the sum is derivable, and only through the number it starts with
+            free = SUM_PLAIN_NUMBER.fullmatch(label) is None
+            if free and (not SUM_FREE_TEXT.fullmatch(label) or label != label.strip() or e.get('unit') is not None): fail('STAT_CLASS_SUM_LABEL_INVALID')
+            total, derivable = known, True
             if hidden:
                 all_hidden = [k for k, v in enumerate(sr['values']) if v is None]
-                if sr['hidden_sum'] is None or any(k < lo or k > hi for k in all_hidden): fail('STAT_CLASS_SUM_UNKNOWN')
-                total = known + sr['hidden_sum']
-            if frac(label, 'STAT_CLASS_SUM_LABEL_INVALID') != total: fail('STAT_CLASS_SUM_LABEL_MISMATCH')
-        sums.append({'series': s, 'from': lo, 'to': hi, 'label': label, 'unit': e.get('unit', '')})
+                derivable = not (sr['hidden_sum'] is None or any(k < lo or k > hi for k in all_hidden))
+                if derivable: total = known + sr['hidden_sum']
+            if not free and not derivable: fail('STAT_CLASS_SUM_UNKNOWN')
+            lead = SUM_LEADING_NUMBER.match(label) if free else None
+            number = label if not free else (lead.group(1) if lead else None)
+            if number is not None and derivable and frac(number, 'STAT_CLASS_SUM_LABEL_INVALID') != total: fail('STAT_CLASS_SUM_LABEL_MISMATCH')
+        sums.append({'series': s, 'from': lo, 'to': hi, 'label': label, 'unit': e.get('unit', ''), **({'free': True} if free else {})})
     return tones, marks, restored, hide, sums
 
 
@@ -303,6 +315,17 @@ def audit_freq(chart, doc):
     tones, marks, restored, hide, sums = derive_marks(chart, series, polygon)
     n = len(b) - 1
     kind = chart['kind']
+    # unknownLabels: a hidden class of a histogram carries a symbol in a dotted outline (never a bar), re-read from the plan
+    unknown = {}
+    for e in chart.get('unknownLabels') or []:
+        k = e.get('class')
+        if kind != 'HISTOGRAM' or polygon: fail('STAT_UNKNOWN_LABEL_UNSUPPORTED')
+        if isinstance(k, bool) or not isinstance(k, int) or not 0 <= k < n or k in unknown: fail('STAT_UNKNOWN_LABEL_INVALID')
+        if series[0]['values'][k] is not None: fail('STAT_UNKNOWN_LABEL_CLASS_KNOWN')
+        if not isinstance(e.get('label'), str) or not UNKNOWN_LABEL.fullmatch(e['label']) or e['label'] != e['label'].strip(): fail('STAT_UNKNOWN_LABEL_INVALID')
+        unknown[k] = e['label']
+    show_ends = chart.get('showEndValues') is True
+    if show_ends and (not polygon or len(series) != 1): fail('STAT_SHOW_END_VALUES_UNSUPPORTED')
     fx, _, xvals = doc.axis_map('x-tick', 'x')
     fy, _, yvals = doc.axis_map('y-tick', 'y')
     if set(xvals) != set(b): doc.err('SC_X_TICKS_NOT_BOUNDARIES')
@@ -339,6 +362,29 @@ def audit_freq(chart, doc):
             dashed = bar.get('stroke-dasharray') is not None
             if dashed != (i in restored) or (bar.get('data-restored') == '1') != (i in restored): doc.err('SC_BAR_RESTORED:%d' % i)
         if {int(bar.get('data-class', -1)) for bar in bars} != shown_classes: doc.err('SC_BAR_CLASSES')
+    if kind == 'HISTOGRAM' or unknown:
+        # the dotted outlines: exactly the planned classes, on their own x range, standing on the axis, UNKNOWN_BAR_FRACTION of the plot high, dotted and unfilled, each with its symbol centred inside
+        outlines = {}
+        for r in doc.role('rect', 'bar-unknown'):
+            key = int(r.get('data-class', -1))
+            if key in outlines: doc.err('SC_UNKNOWN_DUPLICATE:%d' % key)
+            outlines[key] = r
+        if set(outlines) != set(unknown): doc.err('SC_UNKNOWN_SET_MISMATCH')
+        plot_height = base - fy(max(yvals))
+        for k, r in outlines.items():
+            if k not in unknown: continue
+            if abs(num(r, 'x') - fx(b[k])) > TOL or abs(num(r, 'x') + num(r, 'width') - fx(b[k + 1])) > TOL: doc.err('SC_UNKNOWN_X_RANGE:%d' % k)
+            if abs(num(r, 'y') + num(r, 'height') - base) > TOL or abs(num(r, 'height') - UNKNOWN_BAR_FRACTION * plot_height) > TOL: doc.err('SC_UNKNOWN_HEIGHT:%d' % k)
+            if r.get('stroke-dasharray') is None or (r.get('fill') or 'none') != 'none' or (r.get('stroke') or '') != '#111': doc.err('SC_UNKNOWN_STYLE:%d' % k)
+            mine = [l for l in doc.owners.get(r.get('id'), []) if l.get('data-label-role') == 'unknown-label']
+            if len(mine) != 1: doc.err('SC_UNKNOWN_LABEL_COUNT:%d' % k); continue
+            label = mine[0]
+            if re.sub(r'^\\displaystyle\s*', '', label.get('data-tex') or '').replace(' ', '') != unknown[k].replace(' ', '') or label.get('data-class') != str(k): doc.err('SC_UNKNOWN_LABEL_VALUE:%d' % k)
+            lx, ly = centre(label)
+            bx, by, bw, bh = box_of(label)
+            if abs(lx - (num(r, 'x') + num(r, 'width') / 2)) > LABEL_TOL or abs(ly - (num(r, 'y') + num(r, 'height') / 2)) > LABEL_TOL: doc.err('SC_UNKNOWN_LABEL_NOT_CENTRED:%d' % k)
+            if bx < num(r, 'x') or bx + bw > num(r, 'x') + num(r, 'width') or by < num(r, 'y') or by + bh > num(r, 'y') + num(r, 'height'): doc.err('SC_UNKNOWN_LABEL_OUTSIDE:%d' % k)
+        if len(doc.label_role('unknown-label')) != len(unknown): doc.err('SC_UNKNOWN_LABEL_COUNT')
     polylines = doc.role('polyline', 'polygon')
     vertices = [e for e in doc.circles if e.get('data-vertex') is not None]
     if not polygon:
@@ -424,6 +470,28 @@ def audit_freq(chart, doc):
             if box[0] < ox + ow and ox < box[0] + box[2] and box[1] < oy + oh and oy < box[1] + box[3]: doc.err('SC_VALUE_LABEL_OVERLAP:%d' % i)
     for key in shown:
         if key not in wanted: doc.err('SC_VALUE_LABELS_UNEXPECTED' if not wanted else 'SC_VALUE_LABEL_UNEXPECTED:%d' % key[1])
+    # showEndValues: the polygon's two zero end points write their 0, near the point, clear of every line and of every other label
+    ends = doc.label_role('end-value')
+    if show_ends:
+        end_obstacles = drawn_obstacles(doc)
+        if sorted(int(l.get('data-vertex', -1)) for l in ends) != [0, n + 1]: doc.err('SC_END_VALUE_SET_MISMATCH')
+        for label in ends:
+            k = int(label.get('data-vertex', -1))
+            if k not in (0, n + 1): continue
+            if label.get('data-owner') != 'vertex-s0-%d' % k: doc.err('SC_END_VALUE_OWNER:%d' % k)
+            try:
+                if tex_number(label.get('data-tex')) != 0: doc.err('SC_END_VALUE_VALUE:%d' % k)
+            except ValueError as e: doc.err(str(e)); continue
+            ax, ay = fx(series[0]['vertices'][k][0]), fy(series[0]['vertices'][k][1])
+            cx, cy = centre(label)
+            box = box_of(label)
+            if math.hypot(cx - ax, cy - ay) > 70 or box_distance(box, (ax, ay)) < 1: doc.err('SC_END_VALUE_FAR_FROM_POINT:%d' % k)
+            if clearance(box, end_obstacles) <= 0: doc.err('SC_END_VALUE_TOUCHES_LINE:%d' % k)
+            for other in doc.labels:
+                if other is label: continue
+                ox, oy, ow, oh = box_of(other)
+                if box[0] < ox + ow and ox < box[0] + box[2] and box[1] < oy + oh and oy < box[1] + box[3]: doc.err('SC_END_VALUE_OVERLAP:%d' % k)
+    elif ends: doc.err('SC_END_VALUES_UNEXPECTED')
     # class sums: a bracket under the x tick labels from the left edge of class `from` to the right edge of class `to`, its sum written beneath
     brackets = doc.role('polyline', 'class-sum')
     key_of = lambda e: (int(e.get('data-series', -1)), int(e.get('data-from', -1)), int(e.get('data-to', -1)))
@@ -450,8 +518,11 @@ def audit_freq(chart, doc):
         elif len(texts) != 1: doc.err('SC_CLASS_SUM_LABEL_COUNT:' + tag)
         else:
             text = texts[0].get('data-text') or ''
-            read = re.fullmatch(r'(\?|\d+(?:\.\d+)?)(.*)', text)
-            if read is None or read.group(2) != m['unit'] or read.group(1) != m['label'] and (read.group(1) == '?' or m['label'] == '?' or Fraction(read.group(1)) != Fraction(m['label'])): doc.err('SC_CLASS_SUM_LABEL_VALUE:' + tag)
+            if m.get('free'):
+                if text != m['label'] + m['unit']: doc.err('SC_CLASS_SUM_LABEL_VALUE:' + tag)       # a stated fact: written exactly as the plan gives it
+            else:
+                read = re.fullmatch(r'(\?|\d+(?:\.\d+)?)(.*)', text)
+                if read is None or read.group(2) != m['unit'] or read.group(1) != m['label'] and (read.group(1) == '?' or m['label'] == '?' or Fraction(read.group(1)) != Fraction(m['label'])): doc.err('SC_CLASS_SUM_LABEL_VALUE:' + tag)
             lx, _ = centre(texts[0])
             if abs(lx - (xl + xr) / 2) > LABEL_TOL: doc.err('SC_CLASS_SUM_LABEL_NOT_CENTRED:' + tag)
             if box_of(texts[0])[1] < yb: doc.err('SC_CLASS_SUM_LABEL_NOT_BELOW:' + tag)
@@ -473,6 +544,7 @@ def audit_freq(chart, doc):
     if any(None in s['values'] for s in series): observed['hidden'] = [[k for k, v in enumerate(s['values']) if v is None] for s in series]
     if marks: observed['marks'] = sorted([s, k, spec['tone']] for (s, k), spec in marks.items())
     if sums: observed['sums'] = [[m['series'], m['from'], m['to'], m['label']] for m in sums]
+    if unknown: observed['unknown'] = sorted([k, v] for k, v in unknown.items())
     return observed
 
 

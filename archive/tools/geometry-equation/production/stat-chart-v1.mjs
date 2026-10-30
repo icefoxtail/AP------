@@ -73,9 +73,11 @@ export function solveStatChart(chart){
 //  - a class frequency may be null (the problem tore or erased it: the bar and polygon vertex are simply not drawn there); `total` then fixes what the hidden classes add up to;
 //  - restoredClasses: a bar the figure rebuilds from the total (dashed outline; its value is not written unless showRestoredValues);
 //  - highlightClasses: bars of a histogram, or the points of every series of a polygon-only chart (an entry is a class or {class,tone:1|2});
-//  - highlightPoints: single polygon points {series,class,tone?,showValue?}; classSums: a bracket under the axis over classes from..to with their summed frequency.
+//  - highlightPoints: single polygon points {series,class,tone?,showValue?}; classSums: a bracket under the axis over classes from..to with their summed frequency;
+//  - unknownLabels: [{class,label}] a hidden class of a histogram drawn as a dotted outline carrying a symbol (2x); showEndValues: a polygon's two end points write their 0;
+//  - a classSums label that is not a plain number (6명, 합계) is a stated fact: it is written as given and checked only where the engine can sum the bracket exactly.
 function solveFreq(c){
-  onlyKeys(c,['kind','boundaries','series','yKind','polygon','xTitle','yTitle','grid','showValues','highlightClasses','total','highlightPoints','classSums','restoredClasses','showRestoredValues','hideValues'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','boundaries','series','yKind','polygon','xTitle','yTitle','grid','showValues','highlightClasses','total','highlightPoints','classSums','restoredClasses','showRestoredValues','hideValues','unknownLabels','showEndValues'],'STAT_CHART_PLAN_INVALID');
   const polygonKind=c.kind==='FREQUENCY_POLYGON';
   if(!Array.isArray(c.boundaries)||c.boundaries.length<3||c.boundaries.length>13)bad('STAT_BOUNDARIES_INVALID');
   const b=c.boundaries.map(x=>parseQ(x,'STAT_BOUNDARIES_INVALID'));
@@ -190,6 +192,22 @@ function solveFreq(c){
     if(restored.some(k=>series[0].values[k]===null))bad('STAT_RESTORED_INVALID'); // a restored class has its value (the figure draws it), a hidden one has none
     if(!series[0].hasTotal)bad('STAT_RESTORED_NEEDS_TOTAL'); // what is restored comes from a stated total, which the engine then checks
   }
+  // unknownLabels: a class the problem erased (null) of a histogram drawn as a dotted outline with a symbol in it (the value is not drawn: a symbol is not a number)
+  const unknown=[];
+  if(c.unknownLabels!==undefined){
+    if(c.kind!=='HISTOGRAM'||polygon)bad('STAT_UNKNOWN_LABEL_UNSUPPORTED');
+    if(!Array.isArray(c.unknownLabels)||c.unknownLabels.length<1||c.unknownLabels.length>n)bad('STAT_UNKNOWN_LABEL_INVALID');
+    for(const e of c.unknownLabels){
+      onlyKeys(e,['class','label'],'STAT_UNKNOWN_LABEL_INVALID');
+      const k=intIn(e.class,0,n-1,'STAT_UNKNOWN_LABEL_INVALID');
+      if(unknown.some(u=>u.class===k))bad('STAT_UNKNOWN_LABEL_INVALID');
+      if(series[0].values[k]!==null)bad('STAT_UNKNOWN_LABEL_CLASS_KNOWN'); // only a class whose bar the problem does not show can carry a symbol
+      if(typeof e.label!=='string'||!/^[A-Za-z0-9+\-= ()?]{1,10}$/.test(e.label)||e.label!==e.label.trim())bad('STAT_UNKNOWN_LABEL_INVALID');
+      unknown.push({class:k,label:e.label});
+    }
+    unknown.sort((x,y)=>x.class-y.class);
+  }
+  if(c.showEndValues!==undefined&&(typeof c.showEndValues!=='boolean'||(c.showEndValues&&(!polygon||series.length!==1))))bad('STAT_SHOW_END_VALUES_UNSUPPORTED');
   // class sums: the exact sum of the series' values over from..to; a numeric label must equal it (hidden classes count only when one bracket holds all of them and the total says what they add up to)
   const sums=[];
   if(c.classSums!==undefined){
@@ -202,23 +220,27 @@ function solveFreq(c){
       const unit=e.unit===undefined?'':(typeof e.unit==='string'&&/^[가-힣A-Za-z%]{1,3}$/.test(e.unit)?e.unit:bad('STAT_CLASS_SUM_UNIT_INVALID'));
       const label=e.label===undefined||e.label===null?null:typeof e.label==='number'?String(e.label):e.label;
       const sr=series[s],inside=sr.values.slice(from,to+1),hidden=inside.filter(v=>v===null).length,known=inside.filter(v=>v!==null).reduce(qadd,ZERO);
-      let text=null;
+      let text=null,free=false;
       if(label!==null){
         if(typeof label!=='string')bad('STAT_CLASS_SUM_LABEL_INVALID');
         if(label==='?'){if(!hidden)bad('STAT_CLASS_SUM_LABEL_INVALID');text='?';} // the sum of hidden classes, still to be found
         else{
-          if(!/^\d{1,6}(?:\.\d{1,4})?$/.test(label))bad('STAT_CLASS_SUM_LABEL_INVALID');
-          let want=known;
+          // a plain number is the exact sum; any other text (6명, 합계) is a stated fact written as given, checked only where the sum is derivable
+          free=!/^\d{1,6}(?:\.\d{1,4})?$/.test(label);
+          if(free&&(!/^[0-9A-Za-z가-힣+=.%() -]{1,12}$/.test(label)||label!==label.trim()||e.unit!==undefined))bad('STAT_CLASS_SUM_LABEL_INVALID');
+          let want=known,derivable=true;
           if(hidden){
             const allHidden=sr.values.flatMap((v,k)=>v===null?[k]:[]);
-            if(sr.hiddenSum===null||allHidden.some(k=>k<from||k>to))bad('STAT_CLASS_SUM_UNKNOWN');
-            want=qadd(known,sr.hiddenSum);
+            derivable=!(sr.hiddenSum===null||allHidden.some(k=>k<from||k>to));
+            if(derivable)want=qadd(known,sr.hiddenSum);
           }
-          if(qcmp(parseQ(label,'STAT_CLASS_SUM_LABEL_INVALID'),want)!==0)bad('STAT_CLASS_SUM_LABEL_MISMATCH');
-          text=label; // written as the author gave it (0.30 stays 0.30); it equals the exact sum
+          if(!free&&!derivable)bad('STAT_CLASS_SUM_UNKNOWN');
+          const number=free?/^(\d{1,6}(?:\.\d{1,4})?)(?=\D)/.exec(label)?.[1]??null:label;
+          if(number!==null&&derivable&&qcmp(parseQ(number,'STAT_CLASS_SUM_LABEL_INVALID'),want)!==0)bad('STAT_CLASS_SUM_LABEL_MISMATCH');
+          text=label; // written as the author gave it (0.30 stays 0.30); a number it starts with equals the exact sum whenever the engine can derive it
         }
       }
-      sums.push({series:s,from,to,label:text,unit});
+      sums.push({series:s,from,to,label:text,unit,...(free?{free:true}:{})});
     }
     sums.sort((x,y)=>x.series-y.series||x.from-y.from);
   }
@@ -229,7 +251,7 @@ function solveFreq(c){
   if(qcmp(top,maxV)===0)top=qadd(top,step);
   const ticks=[];for(let t=step;qcmp(t,top)<=0;t=qadd(t,step))ticks.push(qstr(t));
   return {schemaVersion:MODEL_VERSION,kind:c.kind,yKind,polygon,grid:c.grid===true,showValues:c.showValues===true,highlight,
-    ...(tone2.length?{highlightTone2:tone2}:{}),...(marks.length?{marks}:{}),...(restored.length?{restored,showRestoredValues:c.showRestoredValues===true}:{}),...(hidden.length?{hideValues:hidden}:{}),...(sums.length?{classSums:sums}:{}),
+    ...(tone2.length?{highlightTone2:tone2}:{}),...(marks.length?{marks}:{}),...(restored.length?{restored,showRestoredValues:c.showRestoredValues===true}:{}),...(hidden.length?{hideValues:hidden}:{}),...(sums.length?{classSums:sums}:{}),...(unknown.length?{unknown}:{}),...(c.showEndValues===true?{showEndValues:true}:{}),
     xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID','계급'),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',yKind==='FREQUENCY'?'도수(명)':'상대도수'),
     boundaries:b.map(qstr),width:qstr(width),classes:classes.map(k=>({lo:qstr(k.lo),hi:qstr(k.hi),mid:qstr(k.mid)})),
     series:series.map(s=>({name:s.name,frequencies:s.frequencies,total:s.total,values:s.values.map(v=>v===null?null:qstr(v)),
@@ -518,7 +540,8 @@ const STYLE={
   legend0:'stroke="#111" stroke-width="2" fill="none"',legend1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="7 4"',diagonal:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"',
   barHi2:'fill="#8e8e8e" stroke="#111" stroke-width="1.2"',barR:'fill="#ececec" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',barHiR:'fill="#b5b5b5" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',
   barHi2R:'fill="#8e8e8e" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',markRing:'fill="none" stroke="#111" stroke-width="1.8"',markDisc:'fill="#111" stroke="none"',
-  sum0:'stroke="#111" stroke-width="1.2" fill="none"',sum1:'stroke="#111" stroke-width="1.2" fill="none" stroke-dasharray="4 3"'
+  sum0:'stroke="#111" stroke-width="1.2" fill="none"',sum1:'stroke="#111" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
+  barU:'fill="none" stroke="#111" stroke-width="1.2" stroke-dasharray="1.5 3.5"'
 };
 const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6(x1),y1:r6(y1),x2:r6(x2),y2:r6(y2),data,layer});
 const rect=(id,role,cls,x,y,width,height,data={},layer=40)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
@@ -541,6 +564,7 @@ const breakMark=(prims,axis,x,y)=>{
 // --- the charts: spec = ordered primitives + labels at anchors (positions need no label widths; the tree's branch ends are placed when labels are typeset) --------
 // A class-sum bracket sits under the x tick labels: the first row's bottom line is SUM_Y0 below the axis, each further row (brackets that would overlap) SUM_PITCH lower; its text hangs beneath it.
 const SUM_Y0=36,SUM_PITCH=44,SUM_INSET=2.5,SUM_ARM=5,SUM_TEXT_H=33,SUM_TEXT_GAP=3;
+const UNKNOWN_BAR_FRACTION=0.4; // a hidden class drawn as a dotted outline this fraction of the plot high: a place-holder, not a value
 const MARK_R={1:8,2:6};
 function freqSpec(m){
   const n=m.classes.length,w=N(m.width),b0=N(m.boundaries[0]),bn=N(m.boundaries[n]),poly=m.kind==='FREQUENCY_POLYGON'||m.polygon;
@@ -564,6 +588,11 @@ function freqSpec(m){
     if(m.series[0].values[i]===null)continue; // a hidden class has no bar
     const v=N(m.series[0].values[i]),tone=m.highlight.includes(i)?(tone2.includes(i)?2:1):0,rebuilt=restored.includes(i);
     prims.push(rect(`bar-s0-${i}`,'bar',['bar','barHi','barHi2'][tone]+(rebuilt?'R':''),px(N(k.lo)),py(v),px(N(k.hi))-px(N(k.lo)),BASE-py(v),{series:0,class:i,highlight:tone,...(rebuilt?{restored:1}:{})},40));
+  }
+  for(const u of m.unknown??[]){ // a dotted outline in the hidden class's place with its symbol inside (never a bar: no value is drawn)
+    const k=m.classes[u.class],x0=px(N(k.lo)),x1=px(N(k.hi)),h=UNKNOWN_BAR_FRACTION*PLOT_H;
+    prims.push(rect(`unknown-s0-${u.class}`,'bar-unknown','barU',x0,BASE-h,x1-x0,h,{series:0,class:u.class},40));
+    labels.push(math(`unknown-${u.class}-label`,'unknown-label',`unknown-s0-${u.class}`,DISPLAY+u.label,u.label,'center','middle',(x0+x1)/2,BASE-h/2,{class:u.class}));
   }
   arrows(prims,{xStartPx:px(lowU),yAxisPx,base:BASE});
   if(breakU!==null)breakMark(prims,'x',px(breakU),BASE);
@@ -603,6 +632,10 @@ function freqSpec(m){
     if(restored.includes(i)&&!m.showRestoredValues||(m.hideValues??[]).includes(i))continue; // the value of a restored bar, or of a class the plan hides, is what the problem asks for
     valueLabel(`value-${i}`,m.kind==='HISTOGRAM'&&!poly?`bar-s0-${i}`:`vertex-s0-${i+1}`,0,i,{value:v,class:i});
   }
+  if(m.showEndValues)for(const k of [0,n+1]){ // the two zero-frequency end points of a polygon write their 0, placed like a value label
+    const [ax,ay]=at(0,k),gap=9;
+    labels.push({...math(`end-value-${k?'last':'first'}`,'end-value',`vertex-s0-${k}`,DISPLAY+'0','0','center','bottom',ax,ay-gap,{vertex:k}),place:{x:ax,y:ay,gap}});
+  }
   for(const mk of marks)if(mk.showValue)valueLabel(`value-s${mk.series}-c${mk.class}`,`vertex-s${mk.series}-${mk.class+1}`,mk.series,mk.class,{value:m.series[mk.series].values[mk.class],class:mk.class,series:mk.series});
   if(m.series.length>1)for(const [s,sr] of m.series.entries()){
     const y=PT+14+s*30;
@@ -614,7 +647,7 @@ function freqSpec(m){
     prims.push({t:'polyline',id,role:'class-sum',cls:'sum'+sm.series,points:[[xl,yb-SUM_ARM],[xl,yb],[xr,yb],[xr,yb-SUM_ARM]],data:{series:sm.series,from:sm.from,to:sm.to},layer:50});
     if(sm.label!==null)labels.push(textLabel(`${id}-label`,'class-sum',id,sm.label+sm.unit,'center','top',(xl+xr)/2,yb+SUM_TEXT_GAP,{series:sm.series,from:sm.from,to:sm.to}));
   });
-  const newer=marks.length||sums.length||restored.length||tone2.length||m.series.some(sr=>sr.vertices.includes(null)); // a plan using none of the newer fields keeps its figure exactly
+  const newer=marks.length||sums.length||restored.length||tone2.length||(m.unknown??[]).length||m.showEndValues||m.series.some(sr=>sr.vertices.includes(null)); // a plan using none of the newer fields keeps its figure exactly
   return {size:{width:W,height:H},prims,labels,valueClearance:newer?2.5:0};
 }
 function stemSpec(m){
