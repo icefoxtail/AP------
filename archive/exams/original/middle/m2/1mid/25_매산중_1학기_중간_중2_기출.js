@@ -859,7 +859,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/25_매산중_1학기_중간_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑면이 가로 24, 세로 36인 직사각형이고 밑면을 색칠한 사각뿔이다. 밑넓이 864, 부피 360a³b², 높이 h를 표시했고 높이는 임의의 비율로 그렸다.",
+    "solutionImageCaption": "밑면이 가로 24, 세로 36인 직사각형이고 부피가 360a³b²인 사각뿔이며, 높이 h는 임의의 비율로 그렸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

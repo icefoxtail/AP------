@@ -430,7 +430,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q10.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q10.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 내심 I를 가진 삼각형 ABC에서 CI가 ∠C를 이등분해 ∠ICB와 ∠ICA가 18°로 같고, AI가 ∠A를 이등분해 ∠x와 같은 호로 표시되며, ∠AIC=130°, ∠C=36°, ∠B=80°, ∠A=64°가 적혀 있다.",
+    "solutionImageCaption": "내심의 각 이등분선으로 ∠C, ∠B, ∠A를 차례로 구하는 과정을 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -712,7 +716,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q17.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q17.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 B, C, E가 한 직선 위에 있고 BC:CE=3:2일 때 색칠한 삼각형 ABC(15)와 ACE(10)를, 오른쪽 그림은 AC∥DE일 때 색칠한 삼각형 ABC(15)와 ACD(10)가 사각형 ABCD를 이루는 모양을 보여 준다. 넓이의 단위는 cm²이다.",
+    "solutionImageCaption": "밑변의 비와 평행선으로 △ACE, △ACD의 넓이를 구하는 과정을 보여 준다. (넓이의 단위: cm²)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -867,7 +875,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q21.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q21.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D는 AB 위의 점이다. ∠B와 ∠BCD가 33°로 같고 BD와 DC가 같으며, ∠ACD=48°, ∠ADC와 ∠DAC가 66°로 같고 AC도 같은 길이 표시를 가진다. BD=6 cm, BC=9 cm, ∠ACB=81°가 적혀 있다.",
+    "solutionImageCaption": "두 이등변삼각형 DBC와 ADC의 같은 각과 같은 변을 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -902,7 +914,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q22.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q22.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 BC의 중점 M에서 AB, AC에 내린 수선의 발이 D, E이다. MD=ME, BM=MC이고 직각삼각형 MDB와 MEC가 색칠되어 있으며 ∠B와 ∠C가 32°로 같게 표시된다.",
+    "solutionImageCaption": "색칠한 두 직각삼각형이 RHS 합동이어서 ∠C=∠B임을 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -937,7 +953,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q23.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q23.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC(AB=16 cm, AC=20 cm)를 꼭짓점 A가 BC 위의 점 F에 오도록 접은 그림이다. AD=DF, AE=EF이고 ∠BDF, ∠DFE, ∠A가 같은 호로 표시되며 직각삼각형 DBF가 색칠되어 있다.",
+    "solutionImageCaption": "접힌 선에서 생기는 같은 변과 같은 각을 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -972,6 +992,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q24.png"
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q24.png",
+    "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD에서 A에서 BC, CD에 내린 수선의 발 P, Q가 있다. 색칠한 직각삼각형 ABP와 ADQ는 합동이고 AB=AD, AP=AQ이며 ∠B=∠D=64°, ∠PAQ=64°가 표시된다.",
+    "solutionImageCaption": "색칠한 두 직각삼각형의 합동으로 AP=AQ와 ∠PAQ=64°를 보여 준다.",
+    "solutionImageSize": "medium"
   }
 ];
