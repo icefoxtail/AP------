@@ -472,10 +472,25 @@ function parseAxis(axis,kind,nested,standsOn){
   if(axis.label!==undefined&&!textLabelOk(axis.label))bad('SOLID_LABEL_TEXT_INVALID');
   return {label:axis.label??null};
 }
+/**
+ * baseFill (CYLINDER, CONE, CONE_FRUSTUM): true | "LIGHT" | {fill?,face?,label?}: the base circle (face BOTTOM, the default; or TOP, the wide opening of an apex-down vessel) is tinted
+ * with a highlight fill, and label (one letter such as S, or a short Korean word) names it inside the tint. A circle of radius 0 (the point of a cone) has nothing to tint.
+ */
+function parseBaseFill(raw,r0,rt){
+  const o=raw===true?{}:typeof raw==='string'?{fill:raw}:raw;
+  if(!isPlain(o)||Object.keys(o).some(k=>!['fill','face','label'].includes(k)))bad('SOLID_BASE_FILL_INVALID');
+  const fill=o.fill??'LIGHT',face=o.face??'BOTTOM';
+  if(typeof fill!=='string'||!Object.hasOwn(HIGHLIGHT_FILLS,fill))bad('SOLID_HIGHLIGHT_FILL_INVALID');
+  if(face!=='BOTTOM'&&face!=='TOP')bad('SOLID_BASE_FILL_INVALID');
+  if(!((face==='BOTTOM'?r0:rt)>0))bad('SOLID_BASE_FILL_INVALID');
+  if(o.label!==undefined&&(typeof o.label!=='string'||!textLabelOk(o.label)))bad('SOLID_LABEL_TEXT_INVALID');
+  return {face,fill,...(o.label!==undefined?{label:o.label}:{})};
+}
 function buildRound(spec){
   const kind=spec.kind;
   const baseKeys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
-  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis','centerZ','on','at'],'SOLID_PARAM_INVALID');
+  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis','centerZ','on','at','baseFill'],'SOLID_PARAM_INVALID');
+  if(spec.baseFill!==undefined&&kind!=='CYLINDER'&&kind!=='CONE'&&kind!=='CONE_FRUSTUM')bad('SOLID_BASE_FILL_UNSUPPORTED:'+kind);
   if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:'+kind);
   if(spec.cuts!==undefined)bad('SOLID_CUT_UNSUPPORTED:'+kind);
   // cut:{kind,facing?} cuts a SPHERE by planes through its centre (sphere-parts.mjs); no other round solid, and a cut sphere does not sit inside a cylinder
@@ -523,7 +538,8 @@ function buildRound(spec){
   if(spec.inside!==undefined&&(typeof spec.inside!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(spec.inside)))bad('SOLID_NEST_INVALID');
   const axis=spec.axis!==undefined?parseAxis(spec.axis,kind,spec.inside!==undefined,spec.on!==undefined):undefined;
   return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,...(spec.on!==undefined?{on:spec.on}:{}),
-    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{}),...(centerZ!==null?{centerZ}:{}),...(at?{at}:{})};
+    ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{}),...(centerZ!==null?{centerZ}:{}),...(at?{at}:{}),
+    ...(spec.baseFill!==undefined?{baseFill:parseBaseFill(spec.baseFill,r0,rt)}:{})};
 }
 
 const shiftSolid=(solid,s)=>{
@@ -740,7 +756,7 @@ export function solveSolidFigure(plan){
   // carries a caption: the author's solidCaption, or the panel caption of a composite grid (the grid sets panelWidth, and every composite panel has a caption).
   // Only a bare, uncaptioned figure is refused: there nothing tells the reader which part matters.
   const stressed=model.mode==='SOLIDS'
-    ?model.highlights.length+model.segments.length+(model.section?1:0)+model.marks.rightAngles.length+model.marks.equalLengths.length+model.marks.angles.length+(model.marks.equalSlant?.length??0)+model.solids.filter(s=>s.cuts||s.cut||s.axis).length
+    ?model.highlights.length+model.segments.length+(model.section?1:0)+model.marks.rightAngles.length+model.marks.equalLengths.length+model.marks.angles.length+(model.marks.equalSlant?.length??0)+model.solids.filter(s=>s.cuts||s.cut||s.axis||s.baseFill).length
     :(model.highlights?.length??0)+(model.segments?.length??0)+(model.rightAngles?.length??0)+(model.excluded?.length??0);
   if(names+model.dims.length+(model.faceLabels?.length??0)+(model.labels?.length??0)+stressed===0&&plan.solidCaption===undefined&&plan.panelWidth===undefined)bad('SOLID_FIGURE_NEEDS_A_LABEL');
   return plan.panelWidth===undefined?model:{...model,panelWidth:plan.panelWidth};
@@ -776,6 +792,8 @@ function resolveStacks(solids){
       lift+=host.height;guest.lift=r6(lift);host.covered=true;chain.push(guest);
     }
     for(const s of chain)for(const q of s.points)q.p=[q.p[0],q.p[1],r6(q.p[2]+liftOf(s))];
+    // a tint on a base that another solid stands on or hangs from would be a tint on the joint circle
+    for(const s of chain)if(s.baseFill&&((s.baseFill.face==='BOTTOM'&&s.on!==undefined)||(s.baseFill.face==='TOP'&&s!==chain.at(-1))))bad('SOLID_BASE_FILL_INVALID');
     const total=r6(lift+chain.at(-1).height),owners=chain.filter(s=>s.axis);
     if(owners.length>1)bad('SOLID_AXIS_STACK_DUPLICATE');
     if(owners.length)owners[0].axis={...owners[0].axis,span:total};
@@ -1241,6 +1259,8 @@ function textLabels(plan,solids,named,vref,drawnPair){
   const rev=solids.filter(s=>s.category==='REV'),polys=solids.filter(s=>s.category==='POLY');
   const pick=(list,id,code)=>{const owner=id!==undefined?list.find(s=>s.id===id):list.length===1?list[0]:undefined;if(!owner)bad(code);return owner;};
   for(const solid of solids)if(solid.axis&&solid.axis.label!==null)add(solid.axis.label,{kind:'AXIS',solid:solid.id},'axis:'+solid.id);
+  // the name written inside a tinted base (baseFill.label), after the axis words
+  for(const solid of solids)if(solid.baseFill?.label!==undefined)add(solid.baseFill.label,{kind:'BASE',solid:solid.id,face:solid.baseFill.face},'base:'+solid.id);
   if(plan.labels===undefined)return out;
   if(!Array.isArray(plan.labels)||plan.labels.length<1||plan.labels.length>MAX_TEXT_LABELS)bad('SOLID_LABELS_INVALID');
   for(const entry of plan.labels){
@@ -1959,6 +1979,11 @@ function spec3d(plan,model,ctx){
     }else if(at.kind==='EDGE'){
       const a=pt(project(named.get(at.from))),b=pt(project(named.get(at.to)));
       labels.push({...label,place:'SEGMENT',target:joinKeys([at.from,at.to]),segment:[a,b]});
+    }else if(at.kind==='BASE'){
+      // the name of a tinted base stands wholly inside its ellipse; one letter is a math symbol in italics, a word stays text
+      const solid=model.solids.find(s=>s.id===at.solid),top=at.face==='TOP',e=ellipseOf(S,solid,top?solid.r1:solid.r0,top?solid.height:0);
+      const region=[...Array(36).keys()].map(k=>{const u=2*Math.PI*k/36;return [X(e.cx+e.a*Math.cos(u)),Y(e.cy+e.b*Math.sin(u))];});
+      labels.push({...label,...(AXIS_LETTER.test(tl.text)?{kind:'MATH',tex:tl.text}:{}),place:'FACE',target:at.solid+'|base',region});
     }else if(at.kind==='AXIS'){
       const solid=model.solids.find(s=>s.id===at.solid),[a,b]=axisEnds(solid);
       // a single letter on the axis (the rotation axis l) is a math symbol in italics, written near the top end of the axis
@@ -2050,8 +2075,13 @@ function liquidRegion(S,solid,z,rl){
   return {points:[...near,...far],sides:[[bv.right,lv.right],[lv.left,bv.left]]};
 }
 function specRev(solid,ctx,arcPrim){
-  const {S,pt,prims,line}=ctx;
+  const {S,X,Y,pt,prims,line}=ctx;
   const sid=solid.id,h=solid.height;
+  if(solid.baseFill){
+    // the tinted base circle (an ellipse), painted beneath every stroke
+    const top=solid.baseFill.face==='TOP',e=ellipseOf(S,solid,top?solid.r1:solid.r0,top?h:0);
+    prims.push({t:'basefill',id:sid+'-base-fill',role:'base-fill',solid:sid,face:solid.baseFill.face,fill:solid.baseFill.fill,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b)});
+  }
   const cone=solid.kind==='CONE'||solid.kind==='CONE_FRUSTUM';
   if(!cone){
     // cylinder: the base ellipse's back half hidden, the top ellipse whole; verticals at x = +-r
@@ -2475,6 +2505,10 @@ function renderPrims(spec,model){
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face')){
     const [color,opacity]=HIGHLIGHT_FILLS[p.fill??'LIGHT'];
     body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face"${p.polygon?` data-polygon="${p.polygon}"`:` data-solid="${p.solid}" data-face="${p.face}"`}${p.fill&&p.fill!=='LIGHT'?` data-fill="${p.fill}"`:''} fill="${color}" fill-opacity="${opacity}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  }
+  for(const p of spec.prims.filter(p=>p.t==='basefill')){
+    const [color,opacity]=HIGHLIGHT_FILLS[p.fill];
+    body+=`<g data-layer="20"><ellipse id="${p.id}" data-role="base-fill" data-solid="${p.solid}" data-face="${p.face}" data-fill="${p.fill}" fill="${color}" fill-opacity="${opacity}" stroke="none" cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}"/></g>`;
   }
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='body-fill'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="body-fill" data-solid="${p.solid}" data-side="${p.side}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='liquid-region'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="liquid-region" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;

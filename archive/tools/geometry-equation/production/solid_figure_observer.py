@@ -16,6 +16,8 @@ YAW = math.radians(28.0)
 PITCH = math.radians(20.0)
 POS_TOL = 0.9        # px
 NAME = re.compile(r'^[A-Z]′?$')
+# the tints of a highlight fill (a colour and an opacity): written here again from the grammar, not read from the producer
+BASE_FILL_STYLE = {'LIGHT': ('#7fa6e8', 0.32), 'MEDIUM': ('#7fa6e8', 0.55), 'WARM': ('#f2a65a', 0.42), 'GREEN': ('#6fcf97', 0.42), 'ROSE': ('#e98aa8', 0.42), 'VIOLET': ('#a78bdb', 0.42)}
 NAME_MULTI = re.compile(r'^[A-Z]′?(?:,[A-Z]′?){1,3}$')   # one vertex, several names: "M,A,I" (an entry of a names list)
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 NAME_TOKEN = re.compile(r'[A-Z]′?|\.')
@@ -167,6 +169,18 @@ def build_solid(spec):
         if spec.get('cut') is not None:
             if kind != 'SPHERE': raise ValueError('SOLID_SPHERE_CUT_UNSUPPORTED')
             check_cut_spec(spec['cut'])
+        # baseFill (CYLINDER, CONE, CONE_FRUSTUM): the base circle is tinted, optionally named inside the tint
+        base_fill = None
+        if spec.get('baseFill') is not None:
+            if kind not in ('CYLINDER', 'CONE', 'CONE_FRUSTUM'): raise ValueError('SOLID_BASE_FILL_UNSUPPORTED:' + kind)
+            raw = spec['baseFill']
+            opts = {} if raw is True else {'fill': raw} if isinstance(raw, str) else raw
+            if not isinstance(opts, dict) or set(opts) - {'fill', 'face', 'label'}: raise ValueError('SOLID_BASE_FILL_INVALID')
+            fill, face = opts.get('fill', 'LIGHT'), opts.get('face', 'BOTTOM')
+            if not isinstance(fill, str) or fill not in BASE_FILL_STYLE: raise ValueError('SOLID_HIGHLIGHT_FILL_INVALID')
+            if face not in ('BOTTOM', 'TOP') or not (r0 if face == 'BOTTOM' else r1) > 0: raise ValueError('SOLID_BASE_FILL_INVALID')
+            if opts.get('label') is not None and (not isinstance(opts['label'], str) or not TEXT_LABEL.fullmatch(opts['label']) or opts['label'].strip() != opts['label']): raise ValueError('SOLID_LABEL_TEXT_INVALID')
+            base_fill = {'face': face, 'fill': fill, 'label': opts.get('label')}
         axis = spec.get('axis')
         if axis is not None:
             # a hemisphere carries an axis only when it stands on another solid (a stack's axis may be written on its top member)
@@ -174,7 +188,7 @@ def build_solid(spec):
             axis = {'label': axis.get('label') if isinstance(axis, dict) else None}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV',
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
-                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis, 'on': spec.get('on'), 'lift': 0.0, 'covered': False, 'at': at, 'hx': hx, 'hy': hy,
+                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis, 'on': spec.get('on'), 'lift': 0.0, 'covered': False, 'at': at, 'hx': hx, 'hy': hy, 'base_fill': base_fill,
                 'cz': (float(spec['centerZ']) if spec.get('centerZ') is not None else r) if kind == 'SPHERE' else (r if (kind == 'HEMISPHERE' and down) else 0.0)}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
 
@@ -650,6 +664,8 @@ def resolve_stacks(solids):
         for member in chain:
             member['points'] = [(n, i, (p[0], p[1], p[2] + member['lift'])) for n, i, p in member['points']]
             seen.add(member['id'])
+            bf = member.get('base_fill')
+            if bf and ((bf['face'] == 'BOTTOM' and member.get('on') is not None) or (bf['face'] == 'TOP' and member is not chain[-1])): raise ValueError('SOLID_BASE_FILL_INVALID')
         total = lift + chain[-1]['height']
         owners = [m for m in chain if m.get('axis') is not None]
         if len(owners) > 1: raise ValueError('SOLID_AXIS_STACK_DUPLICATE')
@@ -984,6 +1000,7 @@ def audit_solids(plan, ctx):
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
     check_dim_lines(plan, ctx)
     check_height_feet_and_poly_lines(plan, ctx)
+    check_base_fills(plan, ctx)
     check_axes_and_text_labels(plan, ctx)
     check_slant_marks(plan, ctx)
 
@@ -1683,6 +1700,35 @@ def poly_height_points(solid):
     return top, (top[0], top[1], 0.0)
 
 
+def check_base_fills(plan, ctx):
+    """baseFill: one ellipse per tinted base, exactly the base circle's projection (the centre from the frame, the axes r and r sin(pitch)), the tint of its fill, painted beneath every stroke of its solid"""
+    root, errors, frames, scale = ctx['root'], ctx['errors'], ctx.get('px') or {}, ctx.get('scale')
+    solids = ctx.get('solids') or []
+    drawn = {}
+    for e in root.iter(NS + 'ellipse'):
+        if e.get('data-role') == 'base-fill': drawn.setdefault(e.get('data-solid'), []).append(e)
+    planned = {x['id']: x['base_fill'] for x in solids if x.get('base_fill')}
+    if set(drawn) != set(planned) or any(len(v) != 1 for v in drawn.values()): errors.append('SOLID_BASE_FILL_SET_MISMATCH')
+    if scale is None: return
+    order = {id(e): k for k, e in enumerate(root.iter())}
+    for sid, bf in planned.items():
+        els = drawn.get(sid)
+        solid = next(x for x in solids if x['id'] == sid)
+        if not els or sid not in frames: continue
+        el = els[0]
+        top = bf['face'] == 'TOP'
+        rad = solid['r1'] if top else solid['r0']
+        Tx, Ty = frames[sid]
+        cx, cy = Tx, Ty - scale * (solid['lift'] + (solid['height'] if top else 0.0)) * math.cos(PITCH)
+        rx, ry = scale * rad, scale * rad * math.sin(PITCH)
+        if abs(_num(el, 'cx') - cx) > POS_TOL or abs(_num(el, 'cy') - cy) > POS_TOL or abs(_num(el, 'rx') - rx) > POS_TOL or abs(_num(el, 'ry') - ry) > POS_TOL: errors.append('SOLID_BASE_FILL_ELLIPSE_MISMATCH:' + sid)
+        if el.get('data-face') != bf['face'] or el.get('data-fill') != bf['fill']: errors.append('SOLID_BASE_FILL_ATTRIBUTE_MISMATCH:' + sid)
+        color, opacity = BASE_FILL_STYLE[bf['fill']]
+        if el.get('fill') != color or abs(float(el.get('fill-opacity') or 0) - opacity) > 1e-9 or el.get('stroke') != 'none': errors.append('SOLID_BASE_FILL_STYLE_MISMATCH:' + sid)
+        strokes = [order[id(e)] for e in root.iter() if e.get('data-solid') == sid and e.get('data-role') in ('ellipse-arc', 'silhouette', 'sphere-outline', 'edge')]
+        if strokes and order[id(el)] > min(strokes): errors.append('SOLID_BASE_FILL_NOT_BENEATH:' + sid)
+
+
 def check_height_feet_and_poly_lines(plan, ctx):
     """The height dimensions of a pyramid or frustum, and the right angle at the foot of a height (dims[].foot): derived from the plan's solids alone.
     A pyramid's height is the dashed line from its apex to the foot below it; with direct:true nothing else is drawn around it (no dimension line, no extension lines), otherwise a
@@ -1874,6 +1920,10 @@ def planned_text_labels(plan, solids, norm):
         if solid.get('axis') is not None:
             axes.add(solid['id'])
             if solid['axis'].get('label') is not None: out.append(('AXIS', solid['axis']['label'], solid['id'], {'solid': solid['id']}))
+    # the name written inside a tinted base, after the axis words
+    for solid in solids:
+        bf = solid.get('base_fill')
+        if bf and bf.get('label') is not None: out.append(('BASE', bf['label'], solid['id'] + '|base', {'solid': solid['id'], 'face': bf['face']}))
 
     def pick(pool, sid, code):
         found = next((x for x in pool if x['id'] == sid), None) if sid is not None else (pool[0] if len(pool) == 1 else None)
@@ -1962,7 +2012,7 @@ def check_axes_and_text_labels(plan, ctx):
     for lid, kind, text, target, extra in planned:
         g = drawn.get(lid)
         if g is None: continue
-        if kind == 'AXIS' and re.fullmatch(r'[A-Za-z]', text):
+        if kind in ('AXIS', 'BASE') and re.fullmatch(r'[A-Za-z]', text):
             # a single letter on the axis (the rotation axis l) is a math symbol, set in italics
             if g.get('data-tex') != text or g.get('data-value') != text or g.get('data-text') is not None: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)
         elif g.get('data-text') != text or g.get('data-value') != text: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)
@@ -1983,6 +2033,21 @@ def check_axes_and_text_labels(plan, ctx):
             d = _box_seg_dist(box, anchor, anchor)
             if d < 1.5: errors.append('SOLID_TEXT_LABEL_ON_TARGET:' + lid)
             if d > TEXT_NEAR_VERTEX: errors.append('SOLID_TEXT_LABEL_FAR_FROM_TARGET:' + lid)
+            continue
+        if kind == 'BASE':
+            # the name of a tinted base stands wholly inside the base's ellipse
+            solid = by_id.get(extra['solid'])
+            if solid is None or extra['solid'] not in frames or solid['cat'] != 'REV':
+                errors.append('SOLID_TEXT_LABEL_TARGET_UNKNOWN:' + lid)
+                continue
+            top = extra['face'] == 'TOP'
+            Tx, Ty = frames[extra['solid']]
+            rad = solid['r1'] if top else solid['r0']
+            cx, cy = Tx, Ty - scale * (solid['lift'] + (solid['height'] if top else 0.0)) * math.cos(PITCH)
+            rx, ry = scale * rad, scale * rad * math.sin(PITCH)
+            x, y, w, h = box
+            inside = lambda p: ((p[0] - cx) / max(rx - 1.0, 1e-6)) ** 2 + ((p[1] - cy) / max(ry - 1.0, 1e-6)) ** 2 <= 1.0
+            if not all(inside(c) for c in ((x, y), (x + w, y), (x, y + h), (x + w, y + h), (x + w / 2, y + h / 2))): errors.append('SOLID_TEXT_LABEL_OUTSIDE_BASE:' + lid)
             continue
         if kind == 'FACE':
             solid = by_id.get(extra['solid'])

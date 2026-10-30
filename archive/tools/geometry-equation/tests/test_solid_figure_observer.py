@@ -1414,3 +1414,43 @@ class DimSide(unittest.TestCase):
         errors = []
         O.check_dim_side({'dims': [{'edge': 'AB'}]}, 'dim-1', ((0.0, 0.0), (10.0, 0.0)), (0.0, 0.0, 1.0, 1.0), errors)
         self.assertEqual(errors, [])
+
+
+class TintedBase(unittest.TestCase):
+    """E33: baseFill tints the base circle of a cylinder, cone or frustum and may name it; the grammar is read here from the plan alone"""
+
+    def test_the_forms_of_baseFill_and_their_defaults(self):
+        def fill(value, **solid):
+            return O.build_solid({'kind': 'CONE', 'radius': 4, 'height': 6, 'id': 's1', 'baseFill': value, **solid})['base_fill']
+        self.assertEqual(fill(True), {'face': 'BOTTOM', 'fill': 'LIGHT', 'label': None})
+        self.assertEqual(fill('MEDIUM'), {'face': 'BOTTOM', 'fill': 'MEDIUM', 'label': None})
+        self.assertEqual(fill({'fill': 'WARM', 'label': 'S'}), {'face': 'BOTTOM', 'fill': 'WARM', 'label': 'S'})
+        self.assertEqual(fill({'face': 'TOP', 'label': '밑면'}, orientation='APEX_DOWN'), {'face': 'TOP', 'fill': 'LIGHT', 'label': '밑면'})
+        self.assertIsNone(O.build_solid({'kind': 'CONE', 'radius': 4, 'height': 6, 'id': 's1'})['base_fill'])
+
+    def test_what_has_no_base_circle_or_a_bad_form_is_refused(self):
+        cone = {'kind': 'CONE', 'radius': 4, 'height': 6, 'id': 's1'}
+        for value, extra in (({'fill': 'RED'}, {}), ({'face': 'SIDE'}, {}), ({'colour': 'LIGHT'}, {}), (5, {}), ({'label': 'S^2'}, {}), ({'label': ' S'}, {}), ({'label': ''}, {}),
+                             ({'face': 'TOP'}, {}), (True, {'orientation': 'APEX_DOWN'})):
+            with self.assertRaises(ValueError, msg=str((value, extra))): O.build_solid({**cone, 'baseFill': value, **extra})
+        for kind in ('SPHERE', 'HEMISPHERE'):
+            with self.assertRaises(ValueError) as caught: O.build_solid({'kind': kind, 'radius': 3, 'id': 's1', 'baseFill': True})
+            self.assertEqual(str(caught.exception), 'SOLID_BASE_FILL_UNSUPPORTED:' + kind)
+
+    def test_a_joint_circle_of_a_stack_is_no_base(self):
+        def stack(a, b):
+            solids = [O.build_solid({'kind': 'CYLINDER', 'radius': 3, 'height': 4, 'id': 's1', **a}), O.build_solid({'kind': 'CONE', 'radius': 3, 'height': 4, 'id': 's2', 'on': 's1', **b})]
+            return O.resolve_stacks(solids)
+        self.assertRaises(ValueError, stack, {'baseFill': {'face': 'TOP'}}, {})
+        self.assertRaises(ValueError, stack, {}, {'baseFill': True})
+        self.assertEqual(len(stack({'baseFill': True}, {})), 1)
+
+    def test_the_name_of_a_base_is_planned_after_the_axis_words_and_before_the_written_labels(self):
+        solids = [O.build_solid({'kind': 'CYLINDER', 'radius': 2, 'height': 4, 'axis': {'label': '회전축'}, 'baseFill': {'label': 'S'}, 'id': 's1'}),
+                  O.build_solid({'kind': 'CONE', 'radius': 3, 'height': 5, 'baseFill': {'face': 'BOTTOM', 'label': '밑면'}, 'id': 's2'})]
+        plan = {'labels': [{'text': '모선', 'at': {'slant': True, 'solid': 's2'}}]}
+        named = {}
+        planned, axes = O.planned_text_labels(plan, solids, O.make_norm(solids, named))
+        self.assertEqual([(i, k, t, g) for i, k, t, g, _ in planned],
+                         [('text-tl1', 'AXIS', '회전축', 's1'), ('text-tl2', 'BASE', 'S', 's1|base'), ('text-tl3', 'BASE', '밑면', 's2|base'), ('text-tl4', 'SLANT', '모선', 's2')])
+        self.assertEqual(axes, {'s1'})

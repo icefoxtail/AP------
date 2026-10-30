@@ -2271,3 +2271,81 @@ test('E33: a short top edge of a long prism in a grid panel: the label on side T
   assert.equal(withSide.status,'COMPOSED',JSON.stringify([withSide.status,withSide.detail]).slice(0,400));
   assert.ok(withSide.panels.every(item=>item.staticAudit.status==='PASS'),JSON.stringify(withSide.panels.map(item=>item.staticAudit)));
 });
+
+// --- E33: the base of a round solid tinted (baseFill) and named inside the tint ---------------------------------------------------------------------------------------------------
+test('E33: baseFill tints the base circle of a cylinder, cone or frustum and may name it; what has no base circle is refused with a code',()=>{
+  const fillOf=(solid,dims)=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:4,height:6,...solid}],dims:dims??[{height:true}]})).solids[0].baseFill;
+  assert.deepEqual(fillOf({baseFill:true}),{face:'BOTTOM',fill:'LIGHT'});
+  assert.deepEqual(fillOf({baseFill:'MEDIUM'}),{face:'BOTTOM',fill:'MEDIUM'});
+  assert.deepEqual(fillOf({baseFill:{fill:'WARM',label:'S'}}),{face:'BOTTOM',fill:'WARM',label:'S'});
+  assert.deepEqual(fillOf({baseFill:{label:'밑면'}}),{face:'BOTTOM',fill:'LIGHT',label:'밑면'});
+  assert.equal(fillOf({}),undefined);
+  // the wide opening of an apex-down vessel (its top circle) and the top of a cylinder
+  assert.deepEqual(fillOf({orientation:'APEX_DOWN',baseFill:{face:'TOP'}}),{face:'TOP',fill:'LIGHT'});
+  const cylinder=solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:5,baseFill:{face:'TOP',label:'S'}}],dims:[{height:true}]})).solids[0];
+  assert.equal(cylinder.baseFill.face,'TOP');
+  assert.equal(solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE_FRUSTUM',radius:5,topRadius:2,height:4,baseFill:true}],dims:[{height:true}]})).solids[0].baseFill.fill,'LIGHT');
+  // a tint is something to look at: a plan with nothing else written is a figure
+  assert.ok(solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:4,height:6,baseFill:true}]})).solids[0].baseFill);
+  const bad=(solid,expected,over)=>assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CONE',radius:4,height:6,...solid}],dims:[{height:true}],...over})),code(expected),expected);
+  bad({baseFill:{fill:'RED'}},'SOLID_HIGHLIGHT_FILL_INVALID');
+  bad({baseFill:{face:'SIDE'}},'SOLID_BASE_FILL_INVALID');
+  bad({baseFill:{colour:'LIGHT'}},'SOLID_BASE_FILL_INVALID');
+  bad({baseFill:5},'SOLID_BASE_FILL_INVALID');
+  bad({baseFill:{label:'S^2'}},'SOLID_LABEL_TEXT_INVALID');// plain letters and Korean words only
+  bad({baseFill:{label:''}},'SOLID_LABEL_TEXT_INVALID');
+  bad({baseFill:{label:' S'}},'SOLID_LABEL_TEXT_INVALID');
+  bad({baseFill:{face:'TOP'}},'SOLID_BASE_FILL_INVALID');// the top of an apex-up cone is its point
+  bad({orientation:'APEX_DOWN',baseFill:true},'SOLID_BASE_FILL_INVALID');// the bottom of an apex-down cone is its point
+  for(const kind of ['SPHERE','HEMISPHERE'])assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind,radius:3,baseFill:true}],dims:[{radius:'center'}]})),code('SOLID_BASE_FILL_UNSUPPORTED:'+kind));
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:3,names:'........',baseFill:true}],dims:[{edge:['#b0','#b1']}]})),code('SOLID_PARAM_INVALID'));// a face of a polyhedron is tinted by highlights
+  // on a stack a joint circle is no base
+  const stack=(a,b)=>solveSolidFigure(figure({unit:'cm',solids:[{id:'s1',kind:'CYLINDER',radius:3,height:4,...a},{id:'s2',kind:'CONE',radius:3,height:4,on:'s1',...b}],dims:[{solid:'s1',height:true}]}));
+  assert.throws(()=>stack({baseFill:{face:'TOP'}},{}),code('SOLID_BASE_FILL_INVALID'));
+  assert.throws(()=>stack({},{baseFill:true}),code('SOLID_BASE_FILL_INVALID'));
+  assert.equal(stack({baseFill:true},{}).solids[0].baseFill.face,'BOTTOM');// the bottom of the lower solid is a base
+});
+test('E33: a tinted base is composed, named inside its ellipse and read back; each tamper is caught',async()=>{
+  const plan=figure({unit:'cm',solids:[{kind:'CONE',radius:6,height:8,baseFill:{fill:'LIGHT',label:'S'}}],dims:[{height:true,label:'5x'}],solidCaption:{text:'원뿔의 밑면'}});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  const fill=svg.match(/<ellipse id="s1-base-fill"[^>]*\/>/)[0];
+  assert.match(fill,/data-role="base-fill"/);assert.match(fill,/data-face="BOTTOM"/);assert.match(fill,/fill="#7fa6e8" fill-opacity="0.32" stroke="none"/);
+  assert.ok(svg.indexOf(fill)<svg.indexOf('id="s1-base-front"'),'the tint is painted beneath the strokes');
+  const label=svg.match(/<g id="text-tl1"[^>]*>/)[0];
+  assert.match(label,/data-at-kind="BASE"/);assert.match(label,/data-target="s1\|base"/);assert.match(label,/data-tex="S"/);// one letter: an italic symbol
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  await failing(svg.replace(fill,fill.replace(/ cx="([\d.]+)"/,(all,v)=>` cx="${Number(v)+9}"`)),'SOLID_BASE_FILL_ELLIPSE_MISMATCH:s1');
+  await failing(svg.replace(fill,fill.replace(/ ry="([\d.]+)"/,(all,v)=>` ry="${Number(v)*1.5}"`)),'SOLID_BASE_FILL_ELLIPSE_MISMATCH:s1');
+  await failing(svg.replace(fill,fill.replace('data-fill="LIGHT"','data-fill="WARM"')),'SOLID_BASE_FILL_ATTRIBUTE_MISMATCH:s1');
+  await failing(svg.replace(fill,fill.replace('fill-opacity="0.32"','fill-opacity="0.9"')),'SOLID_BASE_FILL_STYLE_MISMATCH:s1');
+  await failing(svg.replace(fill,fill.replace('data-face="BOTTOM"','data-face="TOP"')),'SOLID_BASE_FILL_ATTRIBUTE_MISMATCH:s1');
+  await failing(svg.replace(fill,''),'SOLID_BASE_FILL_SET_MISMATCH');
+  await failing(svg.replace(fill,'').replace('</svg>',`<g data-layer="20">${fill}</g></svg>`),'SOLID_BASE_FILL_NOT_BENEATH:s1');
+  await failing(svg.replace(fill,fill+fill.replace('id="s1-base-fill"','id="s1-base-fill-2"')),'SOLID_BASE_FILL_SET_MISMATCH');
+  // the plan without baseFill does not draw one
+  const r=await audit(figure({unit:'cm',solids:[{kind:'CONE',radius:6,height:8}],dims:[{height:true,label:'5x'}],solidCaption:{text:'원뿔의 밑면'}}),svg);
+  assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_BASE_FILL_SET_MISMATCH')),JSON.stringify(r.errors));
+  // the name moved out of its base
+  const group=svg.match(/<g id="text-tl1"[^>]*transform="translate\([-\d.]+ [-\d.]+\)"/)[0];
+  await failing(svg.replace(group,group.replace(/translate\([^)]+\)/,'translate(40 40)')),'SOLID_TEXT_LABEL_OUTSIDE_BASE:text-tl1');
+  // the name written as another letter than the plan's
+  await failing(svg.replace('data-tex="S"','data-tex="T"'),'SOLID_TEXT_LABEL_TEXT_MISMATCH:text-tl1');
+});
+test('E33: a cylinder top, an apex-down vessel opening and a frustum base are tinted and named; a Korean word is written as text',async()=>{
+  for(const [solid,dims] of [
+    [{kind:'CYLINDER',radius:3,height:6,baseFill:{face:'TOP',fill:'WARM',label:'밑면'}},[{height:true,label:'h'}]],
+    [{kind:'CONE',radius:5,height:6,orientation:'APEX_DOWN',baseFill:{face:'TOP',fill:'MEDIUM',label:'S'}},[{height:true,label:'h'}]],
+    [{kind:'CONE_FRUSTUM',radius:6,topRadius:3,height:4,baseFill:{fill:'GREEN',label:'S'}},[{height:true,label:'h'}]],
+    [{kind:'CYLINDER',radius:3,height:6,baseFill:true},[{height:true,label:'h'},{radius:'top',label:'r'}]]
+  ]){
+    const plan=figure({unit:'cm',solids:[solid],dims,solidCaption:{text:'색칠한 밑면'}});
+    const composed=await panel(plan);
+    assert.equal(composed.status,'COMPOSED',JSON.stringify([solid.kind,composed.detail]));
+    assert.equal(composed.staticAudit.status,'PASS',JSON.stringify([solid.kind,composed.staticAudit.errors]));
+    assert.match(composed.svg,/data-role="base-fill"/);
+    if(solid.baseFill.label==='밑면')assert.match(composed.svg.match(/<g id="text-tl1"[^>]*>/)[0],/data-text="밑면"/);
+  }
+});
