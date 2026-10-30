@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>겉넓이 · 부피 (중1 입체도형) · AP Math 실험실</title>
-<meta name="description" content="중1 입체도형의 겉넓이와 부피: 단위큐브와 기둥, 뿔과 3:1 물붓기, 구와 아르키메데스 1:2:3, 쌍원뿔·구멍·모퉁이를 파낸 복합 입체까지 4개 탐구관 18개 장면">
+<meta name="description" content="중1 입체도형의 겉넓이와 부피: 1cm³인 정육면체와 기둥, 뿔과 3:1 물 붓기, 구와 부피의 비 1:2:3, 원뿔 두 개를 붙인 입체·구멍·모퉁이를 파낸 입체까지 4개 탐구관 18개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -21,7 +21,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중1 · 입체도형의 겉넓이와 부피 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 18개 장면
@@ -61,30 +61,30 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 장면 목록 ===== */
     const SUB_MENUS = {
       1: [
-        { id: 'unitCube', label: '🧱 1cm³ 단위큐브 쌓기 & 겉넓이' },
-        { id: 'layerElevator', label: '🥞 밑넓이 엘리베이터(V=Sh)' },
-        { id: 'cylinderFactor', label: '🛢️ 원기둥 3초 공식 2πr(r+h)' },
-        { id: 'sectorPillar', label: '🍰 부채꼴기둥(케이크조각!)' }
+        { id: 'unitCube', label: '🧱 1cm³ 정육면체 쌓기와 겉넓이' },
+        { id: 'layerElevator', label: '🥞 기둥의 부피(V=Sh)' },
+        { id: 'cylinderFactor', label: '🛢️ 원기둥의 겉넓이 2πr(r+h)' },
+        { id: 'sectorPillar', label: '🍰 부채꼴기둥의 겉넓이' }
       ],
       2: [
-        { id: 'pour3to1', label: '💧 기둥 vs 뿔 3:1 물붓기' },
-        { id: 'coneFactor', label: '⛺ 원뿔 3초 공식 πr(r+a)' },
-        { id: 'partyHat', label: '🎩 챙 달린 고깔모자(밑 구멍!)' },
-        { id: 'frustumCalc', label: '🪣 원뿔대 겉넓이·부피(큰-작은)' }
+        { id: 'pour3to1', label: '💧 기둥과 뿔의 부피의 비 3:1(물 붓기)' },
+        { id: 'coneFactor', label: '⛺ 원뿔의 겉넓이 πr(r+a)' },
+        { id: 'partyHat', label: '🎩 챙 달린 고깔모자(밑면이 뚫림)' },
+        { id: 'frustumCalc', label: '🪣 원뿔대의 겉넓이·부피(큰 원뿔 − 작은 원뿔)' }
       ],
       3: [
-        { id: 'archimedes', label: '⚖️ 아르키메데스 원뿔:구:기둥(1:2:3)' },
-        { id: 'sphereOrange', label: '🍊 구의 겉넓이(대원 4개=4πr²)' },
-        { id: 'hemisphere3', label: '🥣 반구의 겉넓이(2πr²+단면=3πr²!)' },
-        { id: 'sphereCut8', label: '🍉 1/8 잘라낸 구(단면 3개 노출!)' }
+        { id: 'archimedes', label: '⚖️ 원뿔 : 구 : 원기둥의 부피의 비(1:2:3)' },
+        { id: 'sphereOrange', label: '🍊 구의 겉넓이(원 4개의 넓이=4πr²)' },
+        { id: 'hemisphere3', label: '🥣 반구의 겉넓이(2πr²+πr²=3πr²)' },
+        { id: 'sphereCut8', label: '🍉 1/8을 잘라 낸 구(단면 3개가 드러남)' }
       ],
       4: [
-        { id: 'doubleCone', label: '💎 쌍원뿔(공유밑면 소멸!)' },
-        { id: 'nestedCone', label: '🎪 포개진 이중원뿔(부피-,겉넓이+)' },
-        { id: 'rocket', label: '🚀 로켓(원뿔+기둥+반구 합체)' },
-        { id: 'drilled', label: '🧻 구멍 뚫린 입체(안쪽벽면+)' },
-        { id: 'cornerCut', label: '🔪 모퉁이 파낸 큐브(겉넓이 불변!)' },
-        { id: 'troughCut', label: '🪵 관통 홈 파낸 큐브(겉넓이 변화)' }
+        { id: 'doubleCone', label: '💎 원뿔 두 개를 붙인 입체(맞닿은 밑면 제외)' },
+        { id: 'nestedCone', label: '🎪 원뿔 속을 원뿔 모양으로 판 입체(부피 −, 겉넓이 +)' },
+        { id: 'rocket', label: '🚀 원뿔 + 원기둥 + 반구를 붙인 입체' },
+        { id: 'drilled', label: '🧻 구멍을 뚫은 입체(안쪽 벽면 +)' },
+        { id: 'cornerCut', label: '🔪 모퉁이를 잘라 낸 정육면체(겉넓이 변화 없음)' },
+        { id: 'troughCut', label: '🪵 가운데에 홈을 판 정육면체(겉넓이 변화)' }
       ]
     };
 
@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: `탐구 1-A · 🧱 1cm³ 단위 정육면체 층별 쌓기 (현재 ${curCubes}개 / 총 ${totalV}개)`,
             hint: `슬라이더를 움직여 가로 ${A}cm, 세로 ${B}cm인 바닥에 <strong class="text-sky-300">1cm³ 단위 정육면체</strong>를 쌓아 올려보세요! 1층에 <strong class="text-amber-300">${A}×${B}=${baseArea}개</strong>씩 <strong class="text-pink-300">${H}층</strong>이 쌓여 부피는 <strong class="text-emerald-300">${totalV}cm³</strong>가 됩니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 1개부터 다시 쌓아 올리기' : '🎬 1cm³ 단위큐브 가득 채우기!',
+            actionTxt: state.animProg > 0.5 ? '🎬 1개부터 다시 쌓아 올리기' : '🎬 1cm³ 정육면체로 가득 채우기',
             dim1Name: '가로 a (세로 b = a-1)', dim2Name: '쌓는 층수(높이) h',
             surfaceParts: [
               { id: 0, name: `🟡 위·아래 두 밑면 넓이 합 (2 × 밑넓이)`, desc: `(${A} × ${B}) × 2개`, val: `+${2 * baseArea} cm²`, color: '#fbbf24', included: true },
@@ -118,9 +118,9 @@ window.addEventListener('DOMContentLoaded', function () {
             ],
             totalS: `${totalS} cm²`,
             volRule: `V = (1층 큐브 수 ${baseArea}개) × (${H}층) = ${totalV} cm³`,
-            volHTML: `• <strong>[기둥 옆넓이 한방 공식]</strong>: 옆면 4개를 따로 더하지 말고 <strong>(밑면 둘레 ${perim}) × (높이 ${H}) = ${latArea} cm²</strong>로 한 번에 구하세요!<br/>• <strong>겉넓이</strong>: ${tex(`2\\times ${baseArea} + ${perim}\\times ${H} = \\mathbf{${totalS}\\text{ cm}^2}`)}`,
+            volHTML: `• <strong>기둥의 옆넓이</strong>: 옆면 4개를 따로 더하지 말고 <strong>(밑면의 둘레 ${perim}) × (높이 ${H}) = ${latArea} cm²</strong>로 한 번에 구하세요!<br/>• <strong>겉넓이</strong>: ${tex(`2\\times ${baseArea} + ${perim}\\times ${H} = \\mathbf{${totalS}\\text{ cm}^2}`)}`,
             totalV: `${totalV} cm³ (${totalV}개)`,
-            notes: `• 부피의 단위 <strong>$1\\text{ cm}^3$</strong>는 가로·세로·높이가 모두 $1\\text{ cm}$인 주사위 모양 블록 1개의 크기입니다. 부피를 구한다는 것은 이 블록이 몇 개 들어가는지 세는 것입니다!`,
+            notes: `• 부피의 단위 <strong>$1\\text{ cm}^3$</strong>는 가로·세로·높이가 모두 $1\\text{ cm}$인 정육면체 1개의 크기입니다. 부피를 구한다는 것은 이 정육면체가 몇 개 들어가는지 세는 것입니다!`,
             bars: [
               { label: `두 밑면(${2 * baseArea})`, len: `${2 * baseArea}`, weight: (2 * baseArea) / totalS, color: '#fbbf24' },
               { label: `옆넓이 합 = 둘레(${perim})×높이(${H}) = ${latArea}`, len: `${latArea}`, weight: latArea / totalS, color: '#38bdf8' }
@@ -131,9 +131,9 @@ window.addEventListener('DOMContentLoaded', function () {
           const baseA = r * r, vol = baseA * h;
           const curH = +(h * state.animProg).toFixed(1);
           return {
-            badge: `탐구 1-B · 🥞 밑넓이 엘리베이터 — 모든 기둥의 부피는 『밑넓이(S) × 높이(h)』`,
-            hint: `밑면이 다각형이든 원이든, <strong class="text-amber-300">밑면 단면 종이(넓이 S)를 높이 h만큼 층층이 쌓아 올린 것</strong>이 기둥의 부피입니다! (현재 적층 높이: ${curH}cm)`,
-            actionTxt: state.animProg > 0.5 ? '🎬 바닥(0cm)에서 다시 올리기' : '🎬 단면 엘리베이터 끝까지 올리기!',
+            badge: `탐구 1-B · 🥞 기둥의 부피 — 모든 기둥의 부피는 『밑넓이(S) × 높이(h)』`,
+            hint: `밑면이 다각형이든 원이든, <strong class="text-amber-300">밑면과 같은 모양의 얇은 판(넓이 S)을 높이 h만큼 층층이 쌓아 올린 것</strong>이 기둥의 부피입니다! (현재 적층 높이: ${curH}cm)`,
+            actionTxt: state.animProg > 0.5 ? '🎬 바닥(0cm)에서 다시 쌓기' : '🎬 끝까지 쌓아 올리기',
             dim1Name: '밑변 / 반지름 r', dim2Name: '기둥 높이 h',
             surfaceParts: [
               { id: 0, name: `🔵 사각기둥 밑넓이 S = ${r}×${r}`, desc: `높이 ${h}cm 적층 ➔ 부피 ${vol} cm³`, val: `S = ${baseA} cm²`, color: '#38bdf8', included: true },
@@ -143,7 +143,7 @@ window.addEventListener('DOMContentLoaded', function () {
             volRule: '모든 기둥의 부피 V = 밑넓이(S) × 높이(h)',
             volHTML: `• <strong>사각기둥 부피</strong>: ${tex(`V = S \\times h = ${baseA} \\times ${h} = \\mathbf{${vol}\\text{ cm}^3}`)}<br/>• <strong>원기둥 부피</strong>: ${tex(`V = \\pi r^2 h = ${baseA}\\pi \\times ${h} = \\mathbf{${vol}\\pi\\text{ cm}^3}`)}`,
             totalV: `${vol} cm³ / ${vol}π cm³`,
-            notes: `• 모양이 삼각기둥이든 오각기둥이든 원기둥이든, <strong>위아래 단면이 끝까지 똑같이 유지되는 기둥</strong>은 무조건 <strong>(밑넓이) × (높이)</strong>입니다!`,
+            notes: `• 모양이 삼각기둥이든 오각기둥이든 원기둥이든, <strong>위아래 단면이 끝까지 똑같이 유지되는 기둥</strong>의 부피는 <strong>(밑넓이) × (높이)</strong>입니다!`,
             bars: [
               { label: `밑넓이 S (${baseA} 또는 ${baseA}π)`, len: `S`, weight: 0.4, color: '#38bdf8' },
               { label: `× 높이 h (${h}cm 적층)`, len: `V = Sh`, weight: 0.6, color: '#34d399' }
@@ -156,9 +156,9 @@ window.addEventListener('DOMContentLoaded', function () {
           const totalS = 2 * r * (r + h);
           const totalV = r * r * h;
           return {
-            badge: `탐구 1-C · 🛢️ 원기둥 겉넓이 3초 인수분해 암산법 — 『S = 2πr(r + h)』`,
-            hint: `밑넓이 2개(${base2}π)와 옆넓이(${lat}π)를 따로 계산해서 더하지 마세요! 둘 다 <strong class="text-amber-300">2πr(=${2 * r}π)</strong>이 들어 있으므로 묶어내면 <strong class="text-emerald-300">2π×${r}×(${r}+${h}) = ${totalS}π cm²</strong>로 3초 만에 암산됩니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 밑면과 옆면 분리해 보기' : '🎬 원기둥 합체하기',
+            badge: `탐구 1-C · 🛢️ 원기둥의 겉넓이 — 공통인 2πr로 묶어 『S = 2πr(r + h)』`,
+            hint: `밑넓이 2개(${base2}π)와 옆넓이(${lat}π)를 따로 구해서 더해도 되지만, 둘 다 <strong class="text-amber-300">2πr(=${2 * r}π)</strong>이 들어 있으므로 분배법칙으로 묶으면 <strong class="text-emerald-300">2π×${r}×(${r}+${h}) = ${totalS}π cm²</strong>로 한 번에 구할 수 있습니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 밑면과 옆면 분리해 보기' : '🎬 원기둥으로 합치기',
             dim1Name: '밑면 반지름 r', dim2Name: '원기둥 높이 h',
             surfaceParts: [
               { id: 0, name: `🟡 위·아래 두 밑면 넓이 (2πr²)`, desc: `2π × ${r} × ${r}`, val: `+${base2}π cm²`, color: '#fbbf24', included: true },
@@ -166,9 +166,9 @@ window.addEventListener('DOMContentLoaded', function () {
             ],
             totalS: `2π×${r}×(${r}+${h}) = ${totalS}π cm²`,
             volRule: 'S = 2πr(r + h)  |  V = πr²h',
-            volHTML: `• <strong>[3초 인수분해 공식]</strong>:<br/>&nbsp;&nbsp;${tex(`S = 2\\pi r^2 + 2\\pi r h = \\mathbf{2\\pi r(r + h)} = ${2 * r}\\pi \\times (${r} + ${h}) = \\mathbf{${totalS}\\pi\\text{ cm}^2}`)}<br/>• <strong>부피</strong>: ${tex(`V = \\pi r^2 h = \\pi \\times ${r}^2 \\times ${h} = \\mathbf{${totalV}\\pi\\text{ cm}^3}`)}`,
+            volHTML: `• <strong>겉넓이</strong>(공통인 $2\\pi r$로 묶기):<br/>&nbsp;&nbsp;${tex(`S = 2\\pi r^2 + 2\\pi r h = \\mathbf{2\\pi r(r + h)} = ${2 * r}\\pi \\times (${r} + ${h}) = \\mathbf{${totalS}\\pi\\text{ cm}^2}`)}<br/>• <strong>부피</strong>: ${tex(`V = \\pi r^2 h = \\pi \\times ${r}^2 \\times ${h} = \\mathbf{${totalV}\\pi\\text{ cm}^3}`)}`,
             totalV: `${totalV}π cm³`,
-            notes: `• 우측 상단 <strong>2D 넓이 블록 설계도</strong>를 보세요! 가로가 $2\\pi r$로 똑같은 직사각형 2개(세로 $r$과 세로 $h$)를 이어 붙이면 세로가 $(r+h)$인 하나의 직사각형이 됩니다!`,
+            notes: `• <strong>넓이 그림</strong>을 보세요! 가로가 $2\\pi r$로 똑같은 직사각형 2개(세로 $r$과 세로 $h$)를 이어 붙이면 세로가 $(r+h)$인 하나의 직사각형이 됩니다!`,
             bars: [
               { label: `2πr × r (${base2}π)`, len: `${base2}π`, weight: r / (r + h), color: '#fbbf24' },
               { label: `2πr × h (${lat}π) ➔ 합쳐서 2πr(r+h) = ${totalS}π!`, len: `${lat}π`, weight: h / (r + h), color: '#38bdf8' }
@@ -184,23 +184,23 @@ window.addEventListener('DOMContentLoaded', function () {
         const flatSides = 2 * r * H_cyl; // 칼로 자른 평평한 직사각형 단면 2개 (π가 안 붙음!)
         const vol = +(r * r * H_cyl * frac).toFixed(1);
         return {
-          badge: `탐구 1-D · 🍰 부채꼴기둥 (중심각 ${deg}° 케이크 조각) — 『새로 생긴 평평한 옆면 2개(2rh)』 주의!`,
-          hint: `원기둥을 케이크처럼 중심각 ${deg}°로 자르면 부피는 정확히 <strong class="text-sky-300">${deg}/360배</strong>가 되지만, 겉넓이는 둥근 면만 있는 게 아니라 <strong class="text-amber-300">칼로 자른 자리에 평평한 직사각형 옆면 2개(r×h×2 = ${flatSides}cm²)가 새로 노출</strong>됩니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 잘린 평평한 옆면 2개 강조!' : '🎬 케이크 조각 모아보기',
+          badge: `탐구 1-D · 🍰 부채꼴기둥 (중심각 ${deg}°) — 『자른 면인 직사각형 2개(2rh)』를 빠뜨리지 않기`,
+          hint: `원기둥을 중심각 ${deg}°인 부채꼴 모양으로 자르면 부피는 정확히 <strong class="text-sky-300">${deg}/360배</strong>가 되지만, 겉넓이는 둥근 면만 있는 것이 아니라 <strong class="text-amber-300">자른 자리에 평평한 직사각형 2개(r×h×2 = ${flatSides}cm²)가 새로 드러납니다</strong>!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 잘린 직사각형 2개 강조' : '🎬 부채꼴기둥 모아 보기',
           dim1Name: '반지름 r (높이 h=4 고정)', dim2Name: '중심각 (3:60°,4:90°,5:120°,6:180°)',
           surfaceParts: [
             { id: 0, name: `🟡 위·아래 부채꼴 밑면 2개`, desc: `2 × π×${r}² × (${deg}°/360°)`, val: `+${base2}π cm²`, color: '#fbbf24', included: true },
             { id: 1, name: `🔵 바깥쪽 둥근 곡면 옆넓이`, desc: `2π×${r}×${H_cyl} × (${deg}°/360°)`, val: `+${curvedLat}π cm²`, color: '#38bdf8', included: true },
-            { id: 2, name: `✨ 칼로 잘려 새로 드러난 평평한 직사각형 2개!`, desc: `(${r} × ${H_cyl}) × 2개 (⚠️ 여기는 π가 없음!)`, val: `+${flatSides} cm²`, color: '#f43f5e', included: true }
+            { id: 2, name: `✨ 잘려서 새로 드러난 직사각형 2개`, desc: `(${r} × ${H_cyl}) × 2개 (⚠️ 이 넓이에는 π가 없음)`, val: `+${flatSides} cm²`, color: '#f43f5e', included: true }
           ],
           totalS: `${+(base2 + curvedLat).toFixed(1)}π + ${flatSides} cm²`,
           volRule: `겉넓이 = (원기둥 겉넓이 × θ/360°) + 2rh`,
-          volHTML: `• <strong>[시험 1순위 함정]</strong>: $\\pi$가 붙는 넓이(${+(base2 + curvedLat).toFixed(1)}$\\pi$)와 $\\pi$가 안 붙는 평평한 직사각형 2개 넓이(<strong>$+${flatSides}$</strong>)는 동류항이 아니므로 그대로 나란히 적어야 합니다!<br/>• <strong>부피</strong>: ${tex(`V = \\pi \\times ${r}^2 \\times ${H_cyl} \\times \\dfrac{${deg}^\\circ}{360^\\circ} = \\mathbf{${vol}\\pi\\text{ cm}^3}`)}`,
+          volHTML: `• <strong>[함정]</strong>: $\\pi$가 붙는 넓이(${+(base2 + curvedLat).toFixed(1)}$\\pi$)와 $\\pi$가 붙지 않는 직사각형 2개의 넓이(<strong>$+${flatSides}$</strong>)는 동류항이 아니므로 더하지 않고 그대로 나란히 적습니다!<br/>• <strong>부피</strong>: ${tex(`V = \\pi \\times ${r}^2 \\times ${H_cyl} \\times \\dfrac{${deg}^\\circ}{360^\\circ} = \\mathbf{${vol}\\pi\\text{ cm}^3}`)}`,
           totalV: `${vol}π cm³`,
-          notes: `• 케이크 조각을 자르면 양옆에 하얀 생크림이 안 발린 <strong>노란 카스텔라 속살 직사각형 단면 2개($r \\times h \\times 2$)</strong>가 드러나는 것을 떠올리면 절대 잊어버리지 않습니다!`,
+          notes: `• 원기둥을 부채꼴 모양으로 잘라 내면 잘린 양옆에 <strong>직사각형 면 2개($r \\times h \\times 2$)</strong>가 새로 드러납니다. 겉넓이에 이 넓이를 빠뜨리지 마세요!`,
           bars: [
             { label: `밑면2개+곡면(${+(base2 + curvedLat).toFixed(1)}π)`, len: `${+(base2 + curvedLat).toFixed(1)}π`, weight: 0.62, color: '#38bdf8' },
-            { label: `✨평평한 단면 2개(+${flatSides})`, len: `+${flatSides}`, weight: 0.38, color: '#f43f5e' }
+            { label: `✨직사각형 2개(+${flatSides})`, len: `+${flatSides}`, weight: 0.38, color: '#f43f5e' }
           ]
         };
       }
@@ -211,24 +211,24 @@ window.addEventListener('DOMContentLoaded', function () {
           const baseA = r * r, cylV = baseA * h, coneV = +(cylV / 3).toFixed(1);
           const cups = Math.round(state.animProg * 3);
           return {
-            badge: `탐구 2-A · 💧 기둥 vs 뿔 3 : 1 물 붓기 실험 — 왜 모든 뿔의 부피에는 1/3을 곱할까?`,
-            hint: `하단 <strong class="text-amber-300">[💧 다음 1컵 붓기]</strong> 버튼을 눌러보세요! 밑면과 높이가 똑같은 뿔 그릇으로 물을 가득 담아 기둥에 부으면, <strong class="text-sky-300">정확히 3번 부어야 기둥이 가득 찹니다!</strong> (현재 ${cups}컵 = ${Math.round(state.animProg * 100)}%)`,
+            badge: `탐구 2-A · 💧 기둥과 뿔의 부피의 비 3 : 1 (물 붓기) — 왜 모든 뿔의 부피에는 1/3을 곱할까?`,
+            hint: `<strong class="text-amber-300">[💧 뿔 그릇으로 다음 1컵 더 붓기]</strong> 버튼을 눌러 보세요! 밑면과 높이가 똑같은 뿔 그릇으로 물을 가득 담아 기둥에 부으면, <strong class="text-sky-300">정확히 3번 부어야 기둥이 가득 찹니다!</strong> (현재 ${cups}컵 = ${Math.round(state.animProg * 100)}%)`,
             actionTxt: '💧 뿔 그릇으로 다음 1컵 더 붓기 (1/3 ➔ 2/3 ➔ 3/3)',
             dim1Name: '밑면 반지름 r', dim2Name: '기둥·뿔 높이 h',
             surfaceParts: [
-              { id: 0, name: `💧 1번째 뿔 그릇 부음 (1/3 수위 = 원뿔 부피!)`, desc: `1/3 × π×${r}²×${h}`, val: `${coneV}π cm³`, color: '#38bdf8', included: true },
-              { id: 1, name: `💧💧 2번째 뿔 그릇 부음 (2/3 수위 = 구의 부피!)`, desc: `2/3 × π×${r}²×${h}`, val: `${+(cylV * 2 / 3).toFixed(1)}π cm³`, color: '#34d399', included: true },
-              { id: 2, name: `💧💧💧 3번째 뿔 그릇 부음 (3/3 = 원기둥 가득!)`, desc: `π×${r}²×${h}`, val: `${cylV}π cm³`, color: '#fbbf24', included: true }
+              { id: 0, name: `💧 1번째 뿔 그릇 부음 (1/3 수위 = 뿔의 부피)`, desc: `1/3 × π×${r}²×${h}`, val: `${coneV}π cm³`, color: '#38bdf8', included: true },
+              { id: 1, name: `💧💧 2번째 뿔 그릇 부음 (2/3 수위)`, desc: `2/3 × π×${r}²×${h}`, val: `${+(cylV * 2 / 3).toFixed(1)}π cm³`, color: '#34d399', included: true },
+              { id: 2, name: `💧💧💧 3번째 뿔 그릇 부음 (3/3 = 기둥이 가득 참)`, desc: `π×${r}²×${h}`, val: `${cylV}π cm³`, color: '#fbbf24', included: true }
             ],
             totalS: `현재 기둥 수위: ${Math.round(state.animProg * 100)}% (${(state.animProg * 3).toFixed(1)}컵)`,
             volRule: '뿔의 부피 V = 1/3 × 밑넓이(S) × 높이(h)',
             volHTML: `• <strong>원기둥 부피</strong>: ${tex(`V_{\\text{기둥}} = \\pi r^2 h = ${cylV}\\pi\\text{ cm}^3`)}<br/>• <strong>원뿔 부피</strong>: ${tex(`V_{\\text{뿔}} = \\dfrac{1}{3}\\pi r^2 h = \\mathbf{${coneV}\\pi\\text{ cm}^3}`)} (정확히 $\\dfrac{1}{3}$!)`,
             totalV: `${coneV}π cm³ (기둥 ${cylV}π의 1/3)`,
-            notes: `• 위로 갈수록 뾰족하게 모이는 <strong>모든 뿔(삼각뿔·사각뿔·원뿔)</strong>은 밑면과 높이가 같은 기둥 부피의 <strong>무조건 $\\dfrac{1}{3}$</strong>입니다!`,
+            notes: `• <strong>모든 뿔(삼각뿔·사각뿔·원뿔)</strong>의 부피는 밑면과 높이가 같은 기둥 부피의 <strong>$\\dfrac{1}{3}$</strong>입니다!`,
             bars: [
               { label: `1컵 (뿔 부피=${coneV}π)`, len: `1/3`, weight: 0.33, color: '#38bdf8' },
               { label: `2컵 (2/3)`, len: `1/3`, weight: 0.33, color: '#34d399' },
-              { label: `3컵 (기둥 ${cylV}π 완성!)`, len: `1/3`, weight: 0.34, color: '#fbbf24' }
+              { label: `3컵 (기둥 ${cylV}π)`, len: `1/3`, weight: 0.34, color: '#fbbf24' }
             ]
           };
         }
@@ -239,19 +239,19 @@ window.addEventListener('DOMContentLoaded', function () {
           const totalS = +(baseA + latA).toFixed(1);
           const totalV = +((baseA * h) / 3).toFixed(1);
           return {
-            badge: `탐구 2-B · ⛺ 원뿔 겉넓이 3초 인수분해 암산법 — 『S = πr(r + a)』`,
-            hint: `원뿔 옆넓이를 구할 때 부채꼴 중심각을 구하지 마세요! <strong class="text-pink-300">옆넓이 = πra = ${latA}π</strong>이고, 밑넓이($\\pi r^2=${baseA}\\pi$)와 합치면 <strong class="text-amber-300">πr(r + a) = π×${r}×(${r}+${slant}) = ${totalS}π cm²</strong>로 한 번에 끝납니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 모선 a와 높이 h 비교' : '🎬 원뿔 완성 뷰',
+            badge: `탐구 2-B · ⛺ 원뿔의 겉넓이 — 공통인 πr로 묶어 『S = πr(r + a)』`,
+            hint: `원뿔의 옆넓이는 부채꼴의 중심각을 구하지 않아도 <strong class="text-pink-300">옆넓이 = πra = ${latA}π</strong>(a는 모선의 길이)로 구할 수 있고, 밑넓이($\\pi r^2=${baseA}\\pi$)와 합치면 <strong class="text-amber-300">πr(r + a) = π×${r}×(${r}+${slant}) = ${totalS}π cm²</strong>로 한 번에 구해집니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 모선 a와 높이 h 비교' : '🎬 원뿔 완성',
             dim1Name: '밑면 반지름 r', dim2Name: '원뿔 높이 h (모선 a 자동계산)',
             surfaceParts: [
               { id: 0, name: `🔵 밑면 원 1개 넓이 (πr²)`, desc: `π × ${r}²`, val: `+${baseA}π cm²`, color: '#38bdf8', included: true },
               { id: 1, name: `🩷 옆면 부채꼴 넓이 (1/2 × a × 2πr = πra)`, desc: `π × 반지름(${r}) × 모선(${slant})`, val: `+${latA}π cm²`, color: '#f472b6', included: true }
             ],
             totalS: `π×${r}×(${r}+${slant}) = ${totalS}π cm²`,
-            volRule: '겉넓이 S = πr(r + a) [모선 a 사용!] | 부피 V = 1/3 πr²h [높이 h 사용!]',
-            volHTML: `• <strong>[왜 옆넓이가 $\\pi r a$ 일까?]</strong> 부채꼴 넓이 공식 $\\dfrac{1}{2} r_{\\text{부채꼴}} l = \\dfrac{1}{2} \\times a \\times (2\\pi r) = \\mathbf{\\pi r a}$!<br/>• <strong>[3초 인수분해]</strong>: ${tex(`S = \\pi r^2 + \\pi r a = \\mathbf{\\pi r(r + a)} = ${r}\\pi(${r} + ${slant}) = \\mathbf{${totalS}\\pi\\text{ cm}^2}`)}`,
+            volRule: '겉넓이 S = πr(r + a) (모선 a 사용) | 부피 V = 1/3 πr²h (높이 h 사용)',
+            volHTML: `• <strong>왜 옆넓이가 $\\pi r a$ 일까?</strong> 부채꼴 넓이 공식 $\\dfrac{1}{2} r_{\\text{부채꼴}} l = \\dfrac{1}{2} \\times a \\times (2\\pi r) = \\mathbf{\\pi r a}$!<br/>• <strong>겉넓이</strong>(공통인 $\\pi r$로 묶기): ${tex(`S = \\pi r^2 + \\pi r a = \\mathbf{\\pi r(r + a)} = ${r}\\pi(${r} + ${slant}) = \\mathbf{${totalS}\\pi\\text{ cm}^2}`)}`,
             totalV: `${totalV}π cm³`,
-            notes: `• <strong>[절대 헷갈리지 말 것!]</strong>: <strong>겉넓이</strong>를 구할 때는 바깥 비스듬한 <strong>모선 $a(${slant})$</strong>를 쓰고, <strong>부피</strong>를 구할 때는 수직 <strong>높이 $h(${h})$</strong>를 씁니다!`,
+            notes: `• <strong>주의</strong>: <strong>겉넓이</strong>를 구할 때는 비스듬한 <strong>모선 $a(${slant})$</strong>를 쓰고, <strong>부피</strong>를 구할 때는 수직 <strong>높이 $h(${h})$</strong>를 씁니다!`,
             bars: [
               { label: `밑면 πr² (${baseA}π)`, len: `${baseA}π`, weight: r / (r + slant), color: '#38bdf8' },
               { label: `옆면 πra (${latA}π) ➔ 합쳐서 πr(r+a) = ${totalS}π!`, len: `${latA}π`, weight: slant / (r + slant), color: '#f472b6' }
@@ -267,23 +267,23 @@ window.addEventListener('DOMContentLoaded', function () {
           const brimArea = bigCircle - holeCircle;
           const totalS = coneLat + brimArea;
           return {
-            badge: `탐구 2-C · 🎩 챙 달린 고깔모자 (마술사 모자: 밑이 뚫린 원뿔 + 도넛 챙)`,
-            hint: `고깔모자는 머리가 들어가야 하므로 <strong class="text-rose-400">원뿔의 밑면(${holeCircle}π)이 뻥 뚫려 있어서 없습니다!</strong> 따라서 <strong class="text-pink-300">고깔 옆넓이(${coneLat}π)</strong>에 <strong class="text-sky-300">도넛 모양 챙 넓이(${bigCircle}π - ${holeCircle}π = ${brimArea}π)</strong>만 더합니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 고깔과 도넛 챙 분리해 보기' : '🎬 고깔모자 합체하기',
-            dim1Name: '머리구멍 반지름 r (챙 R=r+2)', dim2Name: '고깔 높이 h (모선 a=h+1)',
+            badge: `탐구 2-C · 🎩 챙 달린 고깔모자 (밑이 뚫린 원뿔 + 고리 모양의 챙)`,
+            hint: `고깔모자는 머리가 들어가야 하므로 <strong class="text-rose-400">원뿔의 밑면(${holeCircle}π)이 뚫려 있어서 없습니다.</strong> 따라서 <strong class="text-pink-300">고깔 옆넓이(${coneLat}π)</strong>에 <strong class="text-sky-300">고리 모양 챙의 넓이(${bigCircle}π - ${holeCircle}π = ${brimArea}π)</strong>만 더합니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 고깔과 챙을 따로 보기' : '🎬 고깔모자로 합치기',
+            dim1Name: '모자 구멍의 반지름 r (챙의 바깥 반지름 R=r+2)', dim2Name: '고깔 높이 h (모선 a=h+1)',
             surfaceParts: [
-              { id: 0, name: `🩷 ① 고깔 부분 (원뿔 옆넓이 πra)`, desc: `π × ${r} × ${slant} (밑면 없는 고깔!)`, val: `+${coneLat}π cm²`, color: '#f472b6', included: true },
+              { id: 0, name: `🩷 ① 고깔 부분 (원뿔 옆넓이 πra)`, desc: `π × ${r} × ${slant} (밑면이 없는 고깔)`, val: `+${coneLat}π cm²`, color: '#f472b6', included: true },
               { id: 1, name: `🔵 ② 챙 전체 큰 원 넓이 (πR², R=${R_brim})`, desc: `π × ${R_brim}²`, val: `+${bigCircle}π cm²`, color: '#38bdf8', included: true },
-              { id: 2, name: `❌ 뚫려 있는 가운데 머리 구멍 (-πr²)`, desc: `머리가 들어가는 빈 구멍은 천이 없음!`, val: `-${holeCircle}π cm²`, color: '#f43f5e', included: false }
+              { id: 2, name: `❌ 뚫려 있는 가운데 구멍 (-πr²)`, desc: `머리가 들어가는 구멍에는 면이 없음`, val: `-${holeCircle}π cm²`, color: '#f43f5e', included: false }
             ],
             totalS: `${coneLat}π + (${bigCircle}π - ${holeCircle}π) = ${totalS}π cm²`,
-            volRule: 'S = (고깔 옆넓이 πra) + (도넛 챙 넓이 πR² - πr²)',
-            volHTML: `• <strong>[고깔모자 겉넓이 식]</strong>:<br/>&nbsp;&nbsp;${tex(`S = \\underbrace{\\pi \\times ${r} \\times ${slant}}_{\\text{고깔 옆면 } ${coneLat}\\pi} + \\underbrace{(\\pi \\times ${R_brim}^2 - \\pi \\times ${r}^2)}_{\\text{도넛 챙 } ${brimArea}\\pi} = \\mathbf{${totalS}\\pi\\text{ cm}^2}`)}`,
+            volRule: 'S = (고깔 옆넓이 πra) + (고리 모양 챙의 넓이 πR² - πr²)',
+            volHTML: `• <strong>[고깔모자 겉넓이 식]</strong>:<br/>&nbsp;&nbsp;${tex(`S = \\underbrace{\\pi \\times ${r} \\times ${slant}}_{\\text{고깔 옆면 } ${coneLat}\\pi} + \\underbrace{(\\pi \\times ${R_brim}^2 - \\pi \\times ${r}^2)}_{\\text{고리 모양 챙 } ${brimArea}\\pi} = \\mathbf{${totalS}\\pi\\text{ cm}^2}`)}`,
             totalV: `내부 용적 ${((r * r * h) / 3).toFixed(1)}π cm³`,
-            notes: `• <strong>[가장 많이 틀리는 함정]</strong>: 습관적으로 원뿔 밑면($\\pi r^2$)을 더하면 오답입니다! 모자는 밑이 뚫려 있어서 원뿔 밑면도 없고, 챙에서도 구멍($\\pi r^2$)을 빼야 합니다!`,
+            notes: `• <strong>[가장 많이 틀리는 함정]</strong>: 원뿔의 밑면($\\pi r^2$)을 더하면 틀립니다. 모자는 밑이 뚫려 있어서 원뿔의 밑면이 없고, 챙에서도 구멍($\\pi r^2$)을 빼야 합니다!`,
             bars: [
               { label: `①고깔옆면(${coneLat}π)`, len: `${coneLat}π`, weight: coneLat / totalS, color: '#f472b6' },
-              { label: `②도넛챙(${bigCircle}π - 구멍${holeCircle}π = ${brimArea}π)`, len: `${brimArea}π`, weight: brimArea / totalS, color: '#38bdf8' }
+              { label: `②고리 모양 챙(${bigCircle}π - 구멍${holeCircle}π = ${brimArea}π)`, len: `${brimArea}π`, weight: brimArea / totalS, color: '#38bdf8' }
             ]
           };
         }
@@ -298,20 +298,20 @@ window.addEventListener('DOMContentLoaded', function () {
         const vBig = +((botA * h2) / 3).toFixed(1), vSmall = +((topA * h1) / 3).toFixed(1);
         const totalV = +(vBig - vSmall).toFixed(1);
         return {
-          badge: `탐구 2-D · 🪣 원뿔대의 겉넓이와 부피 — 무조건 『큰 원뿔 - 잘려나간 작은 원뿔』!`,
-          hint: `원뿔대는 윗밑면(${topA}π)과 아랫밑면(${botA}π)의 크기가 다르고, 옆넓이와 부피는 항상 <strong class="text-amber-300">[원래 큰 원뿔]에서 [잘려나간 위쪽 작은 원뿔]을 빼서</strong> 구합니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 잘려나간 작은 원뿔 들어올리기' : '🎬 큰 원뿔로 복원해 보기',
-          dim1Name: '비율 반지름 제어 (r₂ = 2r₁)', dim2Name: '단위 높이 h',
+          badge: `탐구 2-D · 🪣 원뿔대의 겉넓이와 부피 — 『큰 원뿔 - 잘려 나간 작은 원뿔』`,
+          hint: `원뿔대는 윗밑면(${topA}π)과 아랫밑면(${botA}π)의 크기가 다르고, 옆넓이와 부피는 항상 <strong class="text-amber-300">[원래 큰 원뿔]에서 [잘려 나간 위쪽 작은 원뿔]을 빼서</strong> 구합니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 잘려 나간 작은 원뿔 들어 올리기' : '🎬 큰 원뿔로 되돌려 보기',
+          dim1Name: '작은 원의 반지름 r₁ (큰 원의 반지름 r₂ = 2r₁)', dim2Name: '높이 h',
           surfaceParts: [
-            { id: 0, name: `🔵 윗밑면(${topA}π) + 아랫밑면(${botA}π)`, desc: `π×${r1}² + π×${r2}² (두 밑면 모두 노출!)`, val: `+${topA + botA}π cm²`, color: '#38bdf8', included: true },
+            { id: 0, name: `🔵 윗밑면(${topA}π) + 아랫밑면(${botA}π)`, desc: `π×${r1}² + π×${r2}² (두 밑면 모두 겉면)`, val: `+${topA + botA}π cm²`, color: '#38bdf8', included: true },
             { id: 1, name: `🟡 원래 큰 원뿔 옆넓이 (πr₂a₂)`, desc: `π × ${r2} × ${a2}`, val: `+${latBig}π cm²`, color: '#fbbf24', included: true },
-            { id: 2, name: `❌ 잘려나간 작은 원뿔 옆넓이 (-πr₁a₁)`, desc: `-π × ${r1} × ${a1} 제외`, val: `-${latSmall}π cm²`, color: '#f43f5e', included: false }
+            { id: 2, name: `❌ 잘려 나간 작은 원뿔 옆넓이 (-πr₁a₁)`, desc: `-π × ${r1} × ${a1} 제외`, val: `-${latSmall}π cm²`, color: '#f43f5e', included: false }
           ],
           totalS: `${topA + botA}π + (${latBig}π - ${latSmall}π) = ${totalS}π cm²`,
           volRule: 'V_원뿔대 = V_큰원뿔 - V_작은원뿔',
           volHTML: `• <strong>원뿔대 옆넓이</strong>: ${tex(`\\pi r_2 a_2 - \\pi r_1 a_1 = ${latBig}\\pi - ${latSmall}\\pi = \\mathbf{${latFrustum}\\pi\\text{ cm}^2}`)}<br/>• <strong>원뿔대 부피</strong>: ${tex(`\\dfrac{1}{3}\\pi r_2^2 (2h) - \\dfrac{1}{3}\\pi r_1^2 h = ${vBig}\\pi - ${vSmall}\\pi = \\mathbf{${totalV}\\pi\\text{ cm}^3}`)}`,
           totalV: `${vBig}π - ${vSmall}π = ${totalV}π cm³`,
-          notes: `• <strong>[실수 주의]</strong>: 작은 원뿔을 잘라내면 부피는 빠지지만, 잘린 단면에 <strong>작은 윗밑면 원($\\pi r_1^2 = ${topA}\\pi$)이 새로 생기므로</strong> 겉넓이에는 두 밑면을 모두 더해야 합니다!`,
+          notes: `• <strong>주의</strong>: 작은 원뿔을 잘라 내면 부피는 빠지지만, 잘린 단면에 <strong>작은 윗밑면 원($\\pi r_1^2 = ${topA}\\pi$)이 새로 생기므로</strong> 겉넓이에는 두 밑면을 모두 더해야 합니다!`,
           bars: [
             { label: `두 밑면 합(${topA + botA}π)`, len: `${topA + botA}π`, weight: (topA + botA) / totalS, color: '#38bdf8' },
             { label: `옆넓이(큰${latBig}π - 작은${latSmall}π = ${latFrustum}π)`, len: `${latFrustum}π`, weight: latFrustum / totalS, color: '#fbbf24' }
@@ -328,18 +328,18 @@ window.addEventListener('DOMContentLoaded', function () {
           const vCyl = +(2 * Math.pow(r, 3)).toFixed(1);
           const sSph = 4 * r * r, sCyl = 6 * r * r;
           return {
-            badge: `탐구 3-A · ⚖️ 아르키메데스의 묘비 — 원뿔 : 구 : 원기둥 부피비 = 언제나 『1 : 2 : 3』!`,
-            hint: `반지름이 $r=${r}$인 구가 꼭 맞게 들어가는 원기둥은 <strong class="text-amber-300">높이가 지름과 같은 $h = 2r = ${H}\\text{ cm}$</strong>입니다! 이때 <strong class="text-pink-300">원뿔(1) : 구(2) : 원기둥(3)</strong>의 부피비는 무조건 <strong class="text-sky-300">1 : 2 : 3</strong>입니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 원뿔·구·원기둥 나란히 분리 비교' : '🎬 한 원기둥 안에 겹쳐서 내접 투시!',
+            badge: `탐구 3-A · ⚖️ 원뿔 : 구 : 원기둥의 부피의 비 = 『1 : 2 : 3』`,
+            hint: `반지름이 $r=${r}$인 구가 꼭 맞게 들어가는 원기둥은 <strong class="text-amber-300">높이가 지름과 같은 $h = 2r = ${H}\\text{ cm}$</strong>입니다! 이때 (이 원기둥과 밑면, 높이가 같은 원뿔을 함께 놓으면) <strong class="text-pink-300">원뿔(1) : 구(2) : 원기둥(3)</strong>의 부피의 비는 <strong class="text-sky-300">1 : 2 : 3</strong>입니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 원뿔·구·원기둥 나란히 놓고 비교' : '🎬 한 원기둥 안에 겹쳐 보기',
             dim1Name: '구·원기둥 반지름 r (높이 2r)', dim2Name: '비교 옵션',
             surfaceParts: [
-              { id: 0, name: `🩷 ① 내접 원뿔 부피 (비율 1 = 기둥의 1/3)`, desc: `1/3 × πr² × (2r) = 2/3 πr³`, val: `${vCone}π cm³ (비 1)`, color: '#f472b6', included: true },
-              { id: 1, name: `🟡 ② 내접 구의 부피 (비율 2 = 기둥의 2/3)`, desc: `4/3 πr³ (겉넓이는 4πr² = ${sSph}π)`, val: `${vSph}π cm³ (비 2)`, color: '#fbbf24', included: true },
-              { id: 2, name: `🔵 ③ 외접 원기둥 부피 (비율 3 = 원뿔+구!)`, desc: `πr² × (2r) = 2πr³ (겉넓이는 6πr² = ${sCyl}π)`, val: `${vCyl}π cm³ (비 3)`, color: '#38bdf8', included: true }
+              { id: 0, name: `🩷 ① 원뿔의 부피 (비 1 = 원기둥의 1/3)`, desc: `1/3 × πr² × (2r) = 2/3 πr³`, val: `${vCone}π cm³ (비 1)`, color: '#f472b6', included: true },
+              { id: 1, name: `🟡 ② 구의 부피 (비 2 = 원기둥의 2/3)`, desc: `4/3 πr³ (겉넓이는 4πr² = ${sSph}π)`, val: `${vSph}π cm³ (비 2)`, color: '#fbbf24', included: true },
+              { id: 2, name: `🔵 ③ 원기둥의 부피 (비 3 = 원뿔 + 구)`, desc: `πr² × (2r) = 2πr³ (겉넓이는 6πr² = ${sCyl}π)`, val: `${vCyl}π cm³ (비 3)`, color: '#38bdf8', included: true }
             ],
-            totalS: `구의 겉넓이(${sSph}π) : 원기둥 총 겉넓이(${sCyl}π) = 2 : 3!`,
-            volRule: '원뿔(1) : 구(2) : 원기둥(3)  ⟹  원뿔 + 구 = 원기둥!',
-            volHTML: `• <strong>[1초 비례식 암산법]</strong>:<br/>&nbsp;&nbsp;만약 문제에서 “외접하는 원기둥의 부피가 $54\\pi$일 때 구의 부피는?” 하고 물으면 공식 쓸 필요 없이 $54\\pi \\times \\dfrac{2}{3} = \\mathbf{36\\pi}$로 1초 컷!<br/>• <strong>겉넓이 비도 2 : 3</strong>: 구($4\\pi r^2$) : 원기둥($2\\pi r^2 + 4\\pi r^2 = 6\\pi r^2$) = <strong>2 : 3</strong>!`,
+            totalS: `구의 겉넓이(${sSph}π) : 원기둥 전체의 겉넓이(${sCyl}π) = 2 : 3`,
+            volRule: '원뿔(1) : 구(2) : 원기둥(3)  ⟹  원뿔 + 구 = 원기둥',
+            volHTML: `• <strong>비를 이용한 계산</strong>:<br/>&nbsp;&nbsp;구가 꼭 맞게 들어가는 원기둥의 부피가 $54\\pi$일 때 구의 부피는 $54\\pi \\times \\dfrac{2}{3} = \\mathbf{36\\pi}$로 1초 컷!<br/>• <strong>겉넓이의 비도 2 : 3</strong>: 구($4\\pi r^2$) : 원기둥($2\\pi r^2 + 4\\pi r^2 = 6\\pi r^2$) = <strong>2 : 3</strong>!`,
             totalV: `${vCone}π : ${vSph}π : ${vCyl}π = 1 : 2 : 3`,
             notes: `• 물을 가득 채운 원기둥에 구를 넣었다 빼면? 구의 부피($\\dfrac{2}{3}$)만큼 물이 넘쳐나가고, 바닥에 <strong>남은 물의 부피는 정확히 $\\dfrac{1}{3}$(원뿔 부피)</strong>이 됩니다!`,
             bars: [
@@ -353,17 +353,17 @@ window.addEventListener('DOMContentLoaded', function () {
           const cArea = r * r, sphArea = 4 * cArea;
           const sphVol = +((4 / 3) * Math.pow(r, 3)).toFixed(1);
           return {
-            badge: `탐구 3-B · 🍊 구의 겉넓이 직관 — 오렌지 껍질은 자기 단면 원(πr²) 딱 4개를 채운다!`,
+            badge: `탐구 3-B · 🍊 구의 겉넓이 — 구의 겉면은 반지름이 r인 원(πr²) 4개의 넓이와 같습니다`,
             hint: `구는 평면 전개도가 없지만, 반지름 $r=${r}$인 구의 껍질을 잘게 쪼개어 반지름 $r$인 원판 위에 붙이면 <strong class="text-amber-300">정확히 원 4개($4 \\times \\pi r^2 = ${sphArea}\\pi\\text{ cm}^2$)</strong>를 빈틈없이 덮습니다!`,
             actionTxt: state.animProg > 0.5 ? '🎬 껍질을 벗겨 원 4개 판으로 옮기기' : '🎬 구 표면으로 다시 감싸기',
             dim1Name: '구의 반지름 r', dim2Name: '비교 옵션',
             surfaceParts: [
-              { id: 0, name: `🟡 북반구 껍질 = 단면 원 2개 (2πr²)`, desc: `2 × π × ${r}²`, val: `+${2 * cArea}π cm²`, color: '#fbbf24', included: true },
-              { id: 1, name: `🟠 남반구 껍질 = 단면 원 2개 (2πr²)`, desc: `2 × π × ${r}²`, val: `+${2 * cArea}π cm²`, color: '#f97316', included: true }
+              { id: 0, name: `🟡 윗반구의 겉면 = 원 2개의 넓이 (2πr²)`, desc: `2 × π × ${r}²`, val: `+${2 * cArea}π cm²`, color: '#fbbf24', included: true },
+              { id: 1, name: `🟠 아랫반구의 겉면 = 원 2개의 넓이 (2πr²)`, desc: `2 × π × ${r}²`, val: `+${2 * cArea}π cm²`, color: '#f97316', included: true }
             ],
             totalS: `4πr² = 4 × ${cArea}π = ${sphArea}π cm²`,
             volRule: 'S = 4πr² (제곱!)  |  V = 4/3 πr³ (세제곱!)',
-            volHTML: `• <strong>[겉넓이로 구의 부피 유도하기]</strong>:<br/>&nbsp;&nbsp;구를 중심을 꼭짓점으로 하는 수많은 작은 뿔들로 쪼개면 높이가 모두 반지름 $r$이므로:<br/>&nbsp;&nbsp;${tex(`V = \\dfrac{1}{3} \\times (\\text{밑넓이 합 } 4\\pi r^2) \\times r = \\dfrac{4}{3}\\pi r^3 = \\mathbf{${sphVol}\\pi\\text{ cm}^3}`)}`,
+            volHTML: `• <strong>구의 겉넓이로 구의 부피 구하기</strong>:<br/>&nbsp;&nbsp;구를 중심을 꼭짓점으로 하는 수많은 작은 뿔들로 쪼개면 높이가 모두 반지름 $r$이므로:<br/>&nbsp;&nbsp;${tex(`V = \\dfrac{1}{3} \\times (\\text{밑넓이 합 } 4\\pi r^2) \\times r = \\dfrac{4}{3}\\pi r^3 = \\mathbf{${sphVol}\\pi\\text{ cm}^3}`)}`,
             totalV: `${sphVol}π cm³`,
             notes: `• 넓이는 단위가 $\\text{cm}^2$이므로 반지름을 2번 곱한 <strong>$4\\pi r^2$</strong>이고, 부피는 단위가 $\\text{cm}^3$이고 뿔($\\frac{1}{3}$)들의 합이므로 반지름을 3번 곱한 <strong>$\\dfrac{4}{3}\\pi r^3$</strong>입니다!`,
             bars: [
@@ -381,21 +381,21 @@ window.addEventListener('DOMContentLoaded', function () {
           const hemiV = +((2 / 3) * Math.pow(r, 3)).toFixed(1);
           return {
             badge: `탐구 3-C · 🥣 반구의 겉넓이 킬러 함정 — 왜 2πr²이 아니라 『3πr²』일까?`,
-            hint: `수박(구)을 칼로 반으로 자르면 부피는 정확히 절반($\\frac{2}{3}\\pi r^3$)이 되지만, 겉넓이는 <strong class="text-amber-300">둥근 초록 껍질(2πr²=${domeA}π)</strong>뿐만 아니라 <strong class="text-rose-400">칼로 자른 빨간 속살 단면 원(πr²=${cArea}π)이 새로 생겨 3πr² = ${totalS}π cm²</strong>가 됩니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 반구 2개로 쪼개어 새 단면 보기!' : '🎬 온전한 구로 합체하기',
+            hint: `구를 반으로 자르면 부피는 정확히 절반($\\frac{2}{3}\\pi r^3$)이 되지만, 겉넓이는 <strong class="text-amber-300">둥근 곡면(2πr²=${domeA}π)</strong>뿐만 아니라 <strong class="text-rose-400">자른 면인 원(πr²=${cArea}π)이 새로 생겨 3πr² = ${totalS}π cm²</strong>가 됩니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 반구 2개로 나누어 새 단면 보기' : '🎬 구로 합치기',
             dim1Name: '반구의 반지름 r', dim2Name: '비교 옵션',
             surfaceParts: [
-              { id: 0, name: `🟡 둥근 반구 껍질 넓이 (구 겉넓이의 절반 = 2πr²)`, desc: `1/2 × 4πr² = 2π × ${r}²`, val: `+${domeA}π cm²`, color: '#fbbf24', included: true },
-              { id: 1, name: `✨ 칼로 잘라 새로 노출된 평평한 단면 원 (+πr²)`, desc: `반지름 ${r}인 원 바닥면 추가!`, val: `+${cArea}π cm²`, color: '#f43f5e', included: true }
+              { id: 0, name: `🟡 둥근 곡면의 넓이 (구의 겉넓이의 절반 = 2πr²)`, desc: `1/2 × 4πr² = 2π × ${r}²`, val: `+${domeA}π cm²`, color: '#fbbf24', included: true },
+              { id: 1, name: `✨ 잘라서 새로 드러난 평평한 면인 원 (+πr²)`, desc: `반지름 ${r}인 원 모양의 밑면이 더해짐`, val: `+${cArea}π cm²`, color: '#f43f5e', included: true }
             ],
             totalS: `2πr² + πr² = 3πr² = ${totalS}π cm²`,
             volRule: '반구 겉넓이 S = 3πr²  |  반구 부피 V = 2/3 πr³',
             volHTML: `• <strong>반구의 겉넓이</strong>: ${tex(`S = \\underbrace{2\\pi r^2}_{\\text{둥근 면}} + \\underbrace{\\pi r^2}_{\\text{평평한 밑면}} = \\mathbf{3\\pi r^2 = ${totalS}\\pi\\text{ cm}^2}`)}<br/>• <strong>반구의 부피</strong>: ${tex(`V = \\dfrac{1}{2} \\times \\dfrac{4}{3}\\pi r^3 = \\dfrac{2}{3}\\pi r^3 = \\mathbf{${hemiV}\\pi\\text{ cm}^3}`)}`,
             totalV: `${hemiV}π cm³`,
-            notes: `• <strong>[단골 오답 1위]</strong>: “반구의 겉넓이는 구의 겉넓이의 절반($2\\pi r^2$)이다?” ➔ <strong>무조건 거짓(❌)</strong>! 바닥 단면 원($\\pi r^2$)을 더해 <strong>$3\\pi r^2$</strong>이라고 외워두세요!`,
+            notes: `• “반구의 겉넓이는 구의 겉넓이의 절반($2\\pi r^2$)이다.”는 <strong>거짓(❌)</strong>입니다. 평평한 밑면인 원($\\pi r^2$)을 더해 <strong>$3\\pi r^2$</strong>입니다.`,
             bars: [
               { label: `둥근 껍질 2πr² (${domeA}π)`, len: `2πr²`, weight: 2 / 3, color: '#fbbf24' },
-              { label: `✨새로 생긴 단면 원 +πr² (${cArea}π) = 총 3πr²!`, len: `+πr²`, weight: 1 / 3, color: '#f43f5e' }
+              { label: `✨새로 생긴 원 +πr² (${cArea}π) = 모두 3πr²`, len: `+πr²`, weight: 1 / 3, color: '#f43f5e' }
             ]
           };
         }
@@ -406,23 +406,23 @@ window.addEventListener('DOMContentLoaded', function () {
         const totalS = +(curved78 + threeQuarters).toFixed(2);
         const vol78 = +((4 / 3) * Math.pow(r, 3) * (7 / 8)).toFixed(2);
         return {
-          badge: `탐구 3-D · 🍉 구의 1/8을 잘라낸 입체 — 파인 자리에 『사분원(1/4원) 단면 3개』 노출!`,
-          hint: `구를 서로 수직인 세 평면으로 잘라 <strong class="text-rose-400">1/8 조각을 빼내면</strong>, 둥근 껍질은 <strong class="text-amber-300">7/8</strong>만 남지만 파인 안쪽에 <strong class="text-sky-300">반지름 $r$인 사분원(1/4원) 단면 3개(= $\\frac{3}{4}\\pi r^2$)</strong>가 새로 드러납니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 1/8 조각 분리해 안쪽 단면 3개 보기' : '🎬 구 합체하기',
+          badge: `탐구 3-D · 🍉 구의 1/8을 잘라 낸 입체 — 파낸 자리에 『원의 1/4 모양의 면 3개』가 드러납니다`,
+          hint: `구를 서로 수직인 세 평면으로 잘라 <strong class="text-rose-400">1/8 조각을 빼내면</strong>, 둥근 곡면은 <strong class="text-amber-300">7/8</strong>만 남지만 파낸 안쪽에 <strong class="text-sky-300">반지름이 $r$이고 중심각이 $90^\\circ$인 부채꼴(원의 1/4) 모양의 면 3개(= $\\frac{3}{4}\\pi r^2$)</strong>가 새로 드러납니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 1/8 조각 분리해 안쪽 단면 3개 보기' : '🎬 구로 합치기',
           dim1Name: '구의 반지름 r', dim2Name: '비교 옵션',
           surfaceParts: [
             { id: 0, name: `🟡 남은 바깥 둥근 구면 (4πr² × 7/8)`, desc: `7/2 πr² = 3.5 × ${cArea}π`, val: `+${curved78}π cm²`, color: '#fbbf24', included: true },
-            { id: 1, name: `✨ 파인 자리에 드러난 사분원(1/4원) 단면 3개!`, desc: `(1/4 πr²) × 3개 = 3/4 πr²`, val: `+${threeQuarters}π cm²`, color: '#38bdf8', included: true },
-            { id: 2, name: `❌ 빠져나간 1/8 구 조각`, desc: `부피는 전체의 7/8만 남음`, val: `-1/8 부피`, color: '#f43f5e', included: false }
+            { id: 1, name: `✨ 파낸 자리에 드러난 부채꼴(원의 1/4) 모양의 면 3개`, desc: `(1/4 πr²) × 3개 = 3/4 πr²`, val: `+${threeQuarters}π cm²`, color: '#38bdf8', included: true },
+            { id: 2, name: `❌ 잘려 나간 1/8 구 조각`, desc: `부피는 전체의 7/8만 남음`, val: `-1/8 부피`, color: '#f43f5e', included: false }
           ],
           totalS: `${curved78}π + ${threeQuarters}π = ${totalS}π cm² (= 17/4 πr²)`,
           volRule: 'S = (4πr² × 7/8) + 3 × (1/4 πr²) = 17/4 πr²',
-          volHTML: `• <strong>겉넓이 공식</strong>: ${tex(`S = \\underbrace{4\\pi r^2 \\times \\dfrac{7}{8}}_{\\text{둥근 면 } \\frac{7}{2}\\pi r^2} + \\underbrace{\\left(\\dfrac{1}{4}\\pi r^2\\right) \\times 3}_{\\text{사분원 3개 } \\frac{3}{4}\\pi r^2} = \\dfrac{17}{4}\\pi r^2 = \\mathbf{${totalS}\\pi\\text{ cm}^2}`)}<br/>• <strong>부피 공식</strong>: ${tex(`V = \\dfrac{4}{3}\\pi r^3 \\times \\dfrac{7}{8} = \\mathbf{${vol78}\\pi\\text{ cm}^3}`)}`,
+          volHTML: `• <strong>겉넓이 공식</strong>: ${tex(`S = \\underbrace{4\\pi r^2 \\times \\dfrac{7}{8}}_{\\text{둥근 면 } \\frac{7}{2}\\pi r^2} + \\underbrace{\\left(\\dfrac{1}{4}\\pi r^2\\right) \\times 3}_{\\text{부채꼴 3개 } \\frac{3}{4}\\pi r^2} = \\dfrac{17}{4}\\pi r^2 = \\mathbf{${totalS}\\pi\\text{ cm}^2}`)}<br/>• <strong>부피 공식</strong>: ${tex(`V = \\dfrac{4}{3}\\pi r^3 \\times \\dfrac{7}{8} = \\mathbf{${vol78}\\pi\\text{ cm}^3}`)}`,
           totalV: `${vol78}π cm³`,
-          notes: `• <strong>[사분원 3개 핵심]</strong>: 파인 모서리를 보면 왼쪽 벽·오른쪽 벽·바닥에 중심각이 $90^\\circ$인 부채꼴(사분원 $\\dfrac{1}{4}\\pi r^2$)이 <strong>3개</strong> 들어앉아 있습니다!`,
+          notes: `• 파낸 모서리를 보면 바닥·뒷벽·왼쪽 벽에 중심각이 $90^\\circ$인 부채꼴(넓이 $\\dfrac{1}{4}\\pi r^2$)이 <strong>3개</strong> 있습니다!`,
           bars: [
             { label: `남은 구면 7/8 (${curved78}π)`, len: `7/2 πr²`, weight: 0.82, color: '#fbbf24' },
-            { label: `✨사분원 3개(+${threeQuarters}π)`, len: `+3/4 πr²`, weight: 0.18, color: '#38bdf8' }
+            { label: `✨부채꼴 3개(+${threeQuarters}π)`, len: `+3/4 πr²`, weight: 0.18, color: '#38bdf8' }
           ]
         };
       }
@@ -437,20 +437,20 @@ window.addEventListener('DOMContentLoaded', function () {
         const totalH = h1 + h2;
         const totalV = +((baseA * totalH) / 3).toFixed(1);
         return {
-          badge: `탐구 4-A · 💎 쌍원뿔 (원뿔 2개 합체 / 직각삼각형 빗변 회전) — 『공유 밑면 소멸!』`,
-          hint: `위 원뿔과 아래 원뿔이 밑면을 맞대고 붙으면 <strong class="text-rose-400">가운데 맞닿은 밑면 2개(2πr²)는 속으로 숨어 겉넓이에서 완전히 사라집니다!</strong> 부피는 <strong class="text-sky-300">1/3 πr²(h₁+h₂)</strong>로 한 번에 합쳐집니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 위·아래 원뿔 분리해 접합면 보기' : '🎬 쌍원뿔로 완전 합체하기',
+          badge: `탐구 4-A · 💎 원뿔 두 개를 밑면끼리 붙인 입체 — 『맞닿은 밑면은 겉넓이에서 제외』`,
+          hint: `위 원뿔과 아래 원뿔이 밑면을 맞대고 붙으면 <strong class="text-rose-400">가운데 맞닿은 밑면 2개(2πr²)는 안쪽에 있게 되어 겉넓이에 포함되지 않습니다.</strong> 부피는 <strong class="text-sky-300">1/3 πr²(h₁+h₂)</strong>로 한 번에 구할 수 있습니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 위·아래 원뿔을 나누어 맞닿는 면 보기' : '🎬 두 원뿔 붙이기',
           dim1Name: '공유 밑면 반지름 r', dim2Name: '위 높이 h₁ (아래 h₂ = h₁-1)',
           surfaceParts: [
             { id: 0, name: `🟡 ① 위쪽 원뿔 옆넓이 (πra₁)`, desc: `π × ${r} × ${a1}`, val: `+${lat1}π cm²`, color: '#fbbf24', included: true },
             { id: 1, name: `🔵 ② 아래쪽 원뿔 옆넓이 (πra₂)`, desc: `π × ${r} × ${a2}`, val: `+${lat2}π cm²`, color: '#38bdf8', included: true },
-            { id: 2, name: `❌ 맞닿아 사라진 공유 밑면 2개`, desc: `내부 단면(${baseA}π × 2)은 공기에 안 닿음!`, val: `겉넓이 제외`, color: '#f43f5e', included: false }
+            { id: 2, name: `❌ 맞닿아 안쪽이 된 밑면 2개`, desc: `안쪽에 있는 면(${baseA}π × 2)은 겉면이 아님`, val: `겉넓이 제외`, color: '#f43f5e', included: false }
           ],
           totalS: `${lat1}π + ${lat2}π = ${(lat1 + lat2).toFixed(1)}π cm²`,
           volRule: 'S = πr(a₁ + a₂)  |  V = 1/3 πr²(h₁ + h₂)',
-          volHTML: `• <strong>겉넓이</strong>: 밑면 없이 오직 <strong>(위 옆넓이) + (아래 옆넓이) = ${(lat1 + lat2).toFixed(1)}$\\pi\\text{ cm}^2$</strong>!<br/>• <strong>부피 묶어 계산하기</strong>: ${tex(`V = \\dfrac{1}{3}\\pi \\times ${r}^2 \\times (${h1} + ${h2}) = \\mathbf{${totalV}\\pi\\text{ cm}^3}`)}`,
+          volHTML: `• <strong>겉넓이</strong>: 밑면 없이 오직 <strong>(위 옆넓이) + (아래 옆넓이) = ${(lat1 + lat2).toFixed(1)}$\\pi\\text{ cm}^2$</strong>!<br/>• <strong>부피를 한 번에 구하기</strong>: ${tex(`V = \\dfrac{1}{3}\\pi \\times ${r}^2 \\times (${h1} + ${h2}) = \\mathbf{${totalV}\\pi\\text{ cm}^3}`)}`,
           totalV: `${totalV}π cm³`,
-          notes: `• 위 원뿔 부피와 아래 원뿔 부피를 따로 구해 분수 덧셈을 하지 마세요! $\\dfrac{1}{3}\\pi r^2$으로 묶어서 <strong>전체 길이 $(h_1 + h_2 = ${totalH})$를 한 번에 곱하면</strong> 약분이 훨씬 쉬워집니다!`,
+          notes: `• 위 원뿔 부피와 아래 원뿔 부피를 따로 구해 분수끼리 더하는 대신, $\\dfrac{1}{3}\\pi r^2$으로 묶어서 <strong>전체 높이 $(h_1 + h_2 = ${totalH})$를 한 번에 곱하면</strong> 계산이 쉬워집니다!`,
           bars: [
             { label: `①위 원뿔 옆면(${lat1}π)`, len: `${lat1}π`, weight: lat1 / (lat1 + lat2), color: '#fbbf24' },
             { label: `②아래 원뿔 옆면(${lat2}π)`, len: `${lat2}π`, weight: lat2 / (lat1 + lat2), color: '#38bdf8' }
@@ -464,20 +464,20 @@ window.addEventListener('DOMContentLoaded', function () {
         const latBig = +(r * aBig).toFixed(1), latSmall = +(r * aSmall).toFixed(1);
         const vBig = +((r * r * hBig) / 3).toFixed(1), vSmall = +((r * r * hSmall) / 3).toFixed(1);
         return {
-          badge: `탐구 4-B · 🎪 포개진 이중 원뿔 (큰 원뿔 속 작은 원뿔 파내기) — 『부피는 (-), 겉넓이는 (+)!』`,
-          hint: `큰 원뿔 밑면 안쪽으로 작은 원뿔을 파내면, <strong class="text-sky-300">부피는 (큰 원뿔 - 작은 원뿔)로 줄어들지만</strong>, <strong class="text-amber-300">겉넓이는 파인 안쪽에 작은 원뿔 옆면이 새로 생겨 (큰 옆넓이 + 작은 옆넓이)</strong>가 됩니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 파낸 작은 원뿔 빼내어 보기' : '🎬 안쪽으로 포개어 파내기',
+          badge: `탐구 4-B · 🎪 큰 원뿔 속을 작은 원뿔 모양으로 파낸 입체 — 『부피는 (-), 겉넓이는 (+)』`,
+          hint: `큰 원뿔의 밑면 쪽에서 작은 원뿔 모양을 파내면, <strong class="text-sky-300">부피는 (큰 원뿔 - 작은 원뿔)로 줄어들지만</strong>, <strong class="text-amber-300">겉넓이는 파낸 안쪽에 작은 원뿔의 옆면이 새로 생겨 (큰 옆넓이 + 작은 옆넓이)</strong>가 됩니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 파낸 작은 원뿔 빼내어 보기' : '🎬 안쪽을 원뿔 모양으로 파내기',
           dim1Name: '공통 밑면 반지름 r', dim2Name: '높이 스케일 h',
           surfaceParts: [
             { id: 0, name: `🔵 ① 바깥쪽 큰 원뿔 옆넓이 (πra₁)`, desc: `π × ${r} × ${aBig}`, val: `+${latBig}π cm²`, color: '#38bdf8', included: true },
-            { id: 1, name: `🟡 ② 파인 안쪽 오목한 작은 원뿔 옆넓이 (πra₂)`, desc: `손을 넣으면 만져지는 안쪽 벽면! (π×${r}×${aSmall})`, val: `+${latSmall}π cm²`, color: '#fbbf24', included: true },
-            { id: 2, name: `❌ 파내어 사라진 밑면 원`, desc: `밑면 전체가 파여서 빈 입구가 됨`, val: `제외 (0)`, color: '#f43f5e', included: false }
+            { id: 1, name: `🟡 ② 파낸 안쪽 작은 원뿔의 옆넓이 (πra₂)`, desc: `안쪽으로 들어간 벽면 (π×${r}×${aSmall})`, val: `+${latSmall}π cm²`, color: '#fbbf24', included: true },
+            { id: 2, name: `❌ 파내어 없어진 밑면의 원`, desc: `밑면 전체가 파여서 빈 입구가 됨`, val: `제외 (0)`, color: '#f43f5e', included: false }
           ],
           totalS: `${latBig}π + ${latSmall}π = ${(latBig + latSmall).toFixed(1)}π cm²`,
           volRule: '부피 V = 큰원뿔 - 작은원뿔 (-) | 겉넓이 S = 큰옆면 + 작은옆면 (+)',
           volHTML: `• <strong>부피는 빼기(-)</strong>: ${tex(`V = ${vBig}\\pi - ${vSmall}\\pi = \\mathbf{${(vBig - vSmall).toFixed(1)}\\pi\\text{ cm}^3}`)}<br/>• <strong>겉넓이는 더하기(+)</strong>: ${tex(`S = ${latBig}\\pi + ${latSmall}\\pi = \\mathbf{${(latBig + latSmall).toFixed(1)}\\pi\\text{ cm}^2}`)}`,
           totalV: `${(vBig - vSmall).toFixed(1)}π cm³`,
-          notes: `• <strong>[파낸 도형의 절대 원칙]</strong>: 도형을 파내면 <strong>부피는 무조건 빼지만(-), 겉넓이는 파인 안쪽 벽면에 페인트를 칠해야 하므로 더해야(+)</strong> 합니다!`,
+          notes: `• 도형을 파내면 <strong>부피는 파낸 부분만큼 빼지만(-), 겉넓이는 파낸 안쪽 벽면의 넓이를 더해야(+)</strong> 합니다!`,
           bars: [
             { label: `①바깥큰원뿔옆면(${latBig}π)`, len: `${latBig}π`, weight: latBig / (latBig + latSmall), color: '#38bdf8' },
             { label: `②안쪽작은원뿔벽면(+${latSmall}π)`, len: `+${latSmall}π`, weight: latSmall / (latBig + latSmall), color: '#fbbf24' }
@@ -493,25 +493,25 @@ window.addEventListener('DOMContentLoaded', function () {
         const totalS = +(coneLat + cylLat + hemiSurf).toFixed(1);
         const totalV = +((r * r * h) / 3 + r * r * h + (2 / 3) * Math.pow(r, 3)).toFixed(1);
         return {
-          badge: `탐구 4-C · 🚀 복합 입체 (원뿔 + 원기둥 + 반구 로켓 합체) — 『내부 접합면 4개 완전 소멸!』`,
-          hint: `세 도형을 따로 두면 평평한 원 밑면이 4개나 있지만, 하나로 합체하는 순간 <strong class="text-rose-400">맞닿는 접합면들은 전부 속으로 숨어 겉넓이에서 완전히 사라집니다!</strong> 오직 바깥 껍질 3종만 더하세요!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 3단 분리하여 숨은 접합면 보기' : '🎬 로켓 완전 합체하기',
+          badge: `탐구 4-C · 🚀 원뿔 + 원기둥 + 반구를 붙인 입체 — 『붙인 면 4개는 겉넓이에서 제외』`,
+          hint: `세 입체를 따로 두면 평평한 원이 4개 있지만, 하나로 붙이면 <strong class="text-rose-400">맞닿는 면들은 안쪽에 있게 되어 겉넓이에 포함되지 않습니다.</strong> 바깥쪽의 3가지 면(원뿔의 옆면, 원기둥의 옆면, 반구의 곡면)만 더하세요!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 세 입체를 나누어 맞닿는 면 보기' : '🎬 세 입체 붙이기',
           dim1Name: '공통 반지름 r', dim2Name: '기둥/원뿔 높이 h',
           surfaceParts: [
             { id: 0, name: `🩷 ① 맨 위 원뿔 옆넓이 (πra)`, desc: `π × ${r} × ${slant}`, val: `+${coneLat}π cm²`, color: '#f472b6', included: true },
             { id: 1, name: `🔵 ② 가운데 원기둥 옆넓이 (2πrh)`, desc: `2π × ${r} × ${h}`, val: `+${cylLat}π cm²`, color: '#38bdf8', included: true },
-            { id: 2, name: `🟡 ③ 맨 아래 반구 둥근 껍질 (2πr²)`, desc: `구 겉넓이(4πr²)의 절반`, val: `+${hemiSurf}π cm²`, color: '#fbbf24', included: true },
-            { id: 3, name: `❌ 합체되어 사라진 내부 접합면 4개`, desc: `붙는 순간 내부로 들어가 만질 수 없음!`, val: `-${hiddenDisks}π 소멸`, color: '#f43f5e', included: false }
+            { id: 2, name: `🟡 ③ 맨 아래 반구의 곡면 (2πr²)`, desc: `구 겉넓이(4πr²)의 절반`, val: `+${hemiSurf}π cm²`, color: '#fbbf24', included: true },
+            { id: 3, name: `❌ 붙이면서 안쪽이 된 면 4개`, desc: `붙이면 안쪽에 있게 되어 겉면이 아님`, val: `-${hiddenDisks}π 제외`, color: '#f43f5e', included: false }
           ],
           totalS: `${coneLat}π + ${cylLat}π + ${hemiSurf}π = ${totalS}π cm²`,
-          volRule: 'S = 원뿔옆면 + 기둥옆면 + 반구껍질 (밑면 원은 0개!)',
-          volHTML: `• <strong>겉넓이</strong>: 평평한 원($\\pi r^2$)은 단 한 개도 밖으로 드러나지 않습니다!<br/>• <strong>부피</strong>: ${tex(`V = V_{\\text{원뿔}} + V_{\\text{기둥}} + V_{\\text{반구}} = \\mathbf{${totalV}\\pi\\text{ cm}^3}`)}`,
+          volRule: 'S = 원뿔의 옆면 + 기둥의 옆면 + 반구의 곡면 (평평한 원은 포함하지 않음)',
+          volHTML: `• <strong>겉넓이</strong>: 겉면에는 평평한 원($\\pi r^2$)이 하나도 드러나지 않습니다.<br/>• <strong>부피</strong>: ${tex(`V = V_{\\text{원뿔}} + V_{\\text{기둥}} + V_{\\text{반구}} = \\mathbf{${totalV}\\pi\\text{ cm}^3}`)}`,
           totalV: `${totalV}π cm³`,
-          notes: `• <strong>[복합 입체 겉넓이 철칙]</strong>: 각 도형의 겉넓이를 구한 뒤 접합면을 빼지 말고, 처음부터 <strong>바깥 공기에 닿는 옆면 조각들만 골라서 더하는 것</strong>이 실수를 줄이는 지름길입니다!`,
+          notes: `• 붙여 만든 입체의 겉넓이는 각 입체의 겉넓이를 구한 뒤 맞닿은 면을 빼기보다, <strong>처음부터 바깥에 드러난 면만 골라서 더하는 방법</strong>이 실수가 적습니다!`,
           bars: [
             { label: `①원뿔옆면(${coneLat}π)`, len: `${coneLat}π`, weight: coneLat / totalS, color: '#f472b6' },
             { label: `②기둥옆면(${cylLat}π)`, len: `${cylLat}π`, weight: cylLat / totalS, color: '#38bdf8' },
-            { label: `③반구껍질(${hemiSurf}π)`, len: `${hemiSurf}π`, weight: hemiSurf / totalS, color: '#fbbf24' }
+            { label: `③반구의 곡면(${hemiSurf}π)`, len: `${hemiSurf}π`, weight: hemiSurf / totalS, color: '#fbbf24' }
           ]
         };
       }
@@ -521,20 +521,20 @@ window.addEventListener('DOMContentLoaded', function () {
         const holeCaps = 2 * holeR * holeR;
         const innerWall = 2 * holeR * L;
         return {
-          badge: `탐구 4-D · 🧻 구멍 뚫린 입체 (휴지/큐브) — 부피는 줄어드는데 왜 겉넓이는 늘어날까?`,
-          hint: `위아래로 원기둥 구멍(반지름 1)을 뚫으면 윗면·아랫면에서 구멍 2개(<strong class="text-rose-400">-${holeCaps}π</strong>)가 빠지지만, 구멍 속으로 손을 넣으면 만져지는 <strong class="text-amber-300">새로운 안쪽 기둥 벽면(+${innerWall}π)</strong>이 생겨서 겉넓이가 커집니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 파낸 원기둥 코어 위로 빼내기' : '🎬 구멍 안쪽 새 벽면 투시하기',
-          dim1Name: '정육면체 절반 r (한 변 2r)', dim2Name: '비교 옵션',
+          badge: `탐구 4-D · 🧻 구멍을 뚫은 정육면체 — 부피는 줄어드는데 왜 겉넓이는 늘어날까?`,
+          hint: `위아래로 원기둥 구멍(반지름 1)을 뚫으면 윗면·아랫면에서 구멍 2개(<strong class="text-rose-400">-${holeCaps}π</strong>)가 빠지지만, 구멍 속에 새로 생기는 <strong class="text-amber-300">안쪽 원기둥의 벽면(+${innerWall}π)</strong> 때문에 겉넓이가 커집니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 파낸 원기둥을 위로 빼내기' : '🎬 구멍 안쪽의 새 벽면 보기',
+          dim1Name: '정육면체의 한 변의 절반 r (한 변 2r)', dim2Name: '비교 옵션',
           surfaceParts: [
             { id: 0, name: `🔵 ① 원래 정육면체 6면 넓이`, desc: `(${L}×${L}) × 6면`, val: `+${origS} cm²`, color: '#38bdf8', included: true },
             { id: 1, name: `❌ ② 위·아래 뚫려서 사라진 구멍 입구 2개`, desc: `-2 × (π × 1²)`, val: `-${holeCaps}π cm²`, color: '#f43f5e', included: false },
-            { id: 2, name: `✨ ③ 구멍 속에 새로 생긴 안쪽 옆면 벽!`, desc: `+2π × 1 × ${L} (안쪽 터널 벽면 노출!)`, val: `+${innerWall}π cm²`, color: '#fbbf24', included: true }
+            { id: 2, name: `✨ ③ 구멍 속에 새로 생긴 안쪽 옆면`, desc: `+2π × 1 × ${L} (안쪽 벽면이 드러남)`, val: `+${innerWall}π cm²`, color: '#fbbf24', included: true }
           ],
-          totalS: `${origS} + ${innerWall - holeCaps}π cm² (오히려 증가!)`,
-          volRule: '두루마리 휴지 겉넓이 = (바깥 옆면) + (안쪽 구멍 옆면) + (도넛 밑면×2)',
+          totalS: `${origS} + ${innerWall - holeCaps}π cm² (오히려 늘어남)`,
+          volRule: '구멍을 뚫은 입체의 겉넓이 = (처음 겉넓이) − (구멍 입구 2개) + (안쪽 벽면)',
           volHTML: `• <strong>부피(감소)</strong>: ${tex(`V = ${origV} - \\pi \\times 1^2 \\times ${L} = \\mathbf{${origV} - ${L}\\pi\\text{ cm}^3}`)}<br/>• <strong>겉넓이(증가)</strong>: ${tex(`S = ${origS} - ${holeCaps}\\pi(\\text{구멍}) + ${innerWall}\\pi(\\text{안쪽벽}) = \\mathbf{${origS} + ${innerWall - holeCaps}\\pi\\text{ cm}^2}`)}`,
           totalV: `${origV} - ${L}π cm³`,
-          notes: `• <strong>[두루마리 휴지 원기둥 공식]</strong>: 바깥 반지름 $R$, 안쪽 구멍 반지름 $r$일 때 옆넓이는 빼는 게 아니라 <strong>(바깥 옆넓이 $2\\pi Rh$) + (안쪽 옆넓이 $2\\pi rh$)를 모두 더해야</strong> 합니다!`,
+          notes: `• 구멍이 뚫린 원기둥(바깥 반지름 $R$, 구멍의 반지름 $r$)에서는 옆넓이를 빼지 않고 <strong>(바깥 옆넓이 $2\\pi Rh$) + (안쪽 옆넓이 $2\\pi rh$)를 모두 더해야</strong> 합니다!`,
           bars: [
             { label: `①원래겉넓이(${origS})`, len: `${origS}`, weight: 0.68, color: '#38bdf8' },
             { label: `✨안쪽새벽면(+${innerWall}π) - 구멍입구(-${holeCaps}π)`, len: `+${innerWall - holeCaps}π 증가!`, weight: 0.32, color: '#fbbf24' }
@@ -546,23 +546,23 @@ window.addEventListener('DOMContentLoaded', function () {
         const origS = 6 * L * L, origV = L * L * L, cutV = cut * cut * cut;
         const threeFaces = 3 * cut * cut;
         return {
-          badge: `탐구 4-E · 🔪 모퉁이 파낸 정육면체 — 파냈는데도 겉넓이가 100% 똑같은 마법!`,
-          hint: `슬라이더를 움직이거나 <strong class="text-amber-300">[🎬 안쪽 3면 밀어내기]</strong>를 눌러보세요! 모퉁이에서 사라진 바깥 3개 면(-${threeFaces}cm²) 대신, <strong class="text-amber-300">파인 자리에 똑같은 크기의 안쪽 3개 면(+${threeFaces}cm²)이 새로 생겨</strong> 밖으로 밀어내면 원래 정육면체와 완벽히 같습니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 안쪽 3면을 바깥으로 밀어 원래 상자 복구!' : '🎬 모퉁이 파낸 상태 보기',
-          dim1Name: '큰 모서리 절반 r (한 변 2r)', dim2Name: '비교 옵션',
+          badge: `탐구 4-E · 🔪 모퉁이를 잘라 낸 정육면체 — 잘라 냈는데도 겉넓이는 그대로`,
+          hint: `슬라이더를 움직이거나 <strong class="text-amber-300">실행 버튼(🎬)</strong>을 눌러 보세요! 모퉁이에서 없어진 바깥 3개 면(-${threeFaces}cm²) 대신, <strong class="text-amber-300">파낸 자리에 똑같은 크기의 안쪽 3개 면(+${threeFaces}cm²)이 새로 생기므로</strong> 이 면을 바깥으로 밀어내면 원래 정육면체와 같아집니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 안쪽 3면을 바깥으로 밀어 원래 정육면체로 되돌리기' : '🎬 모퉁이를 잘라 낸 모양 보기',
+          dim1Name: '정육면체의 한 변의 절반 r (한 변 2r)', dim2Name: '비교 옵션',
           surfaceParts: [
             { id: 0, name: `🔵 ① 원래 정육면체 전체 겉넓이`, desc: `(${L}×${L}) × 6면`, val: `${origS} cm²`, color: '#38bdf8', included: true },
             { id: 1, name: `❌ ② 모퉁이에서 잘려 나간 바깥 3면`, desc: `위·앞·오른쪽에서 ${cut}×${cut}씩 3개 빠짐`, val: `-${threeFaces} cm²`, color: '#f43f5e', included: false },
             { id: 2, name: `✨ ③ 파인 자리에 새로 드러난 안쪽 3면!`, desc: `바닥·뒷벽·왼벽 ${cut}×${cut}씩 3개 생성!`, val: `+${threeFaces} cm²`, color: '#fbbf24', included: true }
           ],
-          totalS: `${origS} - ${threeFaces} + ${threeFaces} = ${origS} cm² (불변!)`,
-          volRule: '모퉁이(꼭짓점)를 파내면: 부피는 감소(-), 겉넓이는 불변(0)!',
-          volHTML: `• <strong>부피(감소)</strong>: ${tex(`V = ${origV} - ${cutV} = \\mathbf{${origV - cutV}\\text{ cm}^3}`)}<br/>• <strong>겉넓이(불변)</strong>: 오목하게 들어간 3개 면을 앞·위·오른쪽으로 툭 밀어내면 원래 정육면체가 되므로 <strong>계산할 필요 없이 원래 겉넓이 ${origS}$\\text{ cm}^2$ 그대로</strong>입니다!`,
+          totalS: `${origS} - ${threeFaces} + ${threeFaces} = ${origS} cm² (변함없음)`,
+          volRule: '모퉁이(꼭짓점 부분)를 잘라 내면: 부피는 감소(-), 겉넓이는 변함없음(0)',
+          volHTML: `• <strong>부피(감소)</strong>: ${tex(`V = ${origV} - ${cutV} = \\mathbf{${origV - cutV}\\text{ cm}^3}`)}<br/>• <strong>겉넓이(변함없음)</strong>: 오목하게 들어간 3개 면을 앞·위·오른쪽으로 밀어내면 원래 정육면체가 되므로 <strong>처음 겉넓이 ${origS}$\\text{ cm}^2$ 그대로</strong>입니다!`,
           totalV: `${origV - cutV} cm³`,
-          notes: `• 이 성질을 알면 복잡한 L자형 단면 넓이를 일일이 쪼개서 구할 필요가 없습니다! <strong>(파내기 전 원래 큰 직육면체의 겉넓이)</strong>만 구하면 5초 만에 끝납니다!`,
+          notes: `• 모퉁이를 잘라 내도 겉넓이가 변하지 않는다는 것을 알면 ㄱ자 모양인 면의 넓이를 일일이 나누어 구할 필요가 없습니다! <strong>(잘라 내기 전 직육면체의 겉넓이)</strong>만 구하면 됩니다!`,
           bars: [
             { label: `남은 바깥면(${origS - threeFaces})`, len: `${origS - threeFaces}`, weight: 0.72, color: '#38bdf8' },
-            { label: `✨새 안쪽 3면(+${threeFaces}) = 빠진 3면 ➔ 총 ${origS}cm² 그대로!`, len: `+${threeFaces}`, weight: 0.28, color: '#fbbf24' }
+            { label: `✨새 안쪽 3면(+${threeFaces}) = 없어진 3면 ➔ 모두 ${origS}cm² 그대로`, len: `+${threeFaces}`, weight: 0.28, color: '#fbbf24' }
           ]
         };
       }
@@ -577,23 +577,23 @@ window.addEventListener('DOMContentLoaded', function () {
       const finalS = origS + netDiff;
       const finalV = origV - cut * cut * L;
       return {
-        badge: `탐구 4-F · 🪵 윗면 중앙에 긴 홈(ㄷ자 수로)을 파낸 정육면체 — 『겉넓이 비교 종결판!』`,
-        hint: `꼭짓점 모퉁이가 아니라 <strong class="text-amber-300">윗면 한가운데를 앞뒤로 관통해 홈(${cut}×${cut}×${L})을 파내면</strong> 어떻게 될까요? 홈 바닥면은 빠진 뚜껑과 상쇄되지만, <strong class="text-emerald-300">홈 양옆 벽면 2개(+${gainedSideWalls})가 앞뒤 입구(-${lostFrontBack})보다 훨씬 커서 겉넓이가 +${netDiff}cm² 늘어납니다!</strong>`,
-        actionTxt: state.animProg > 0.5 ? '🎬 파낸 각목 들어올려 비교' : '🎬 홈 파낸 상태 보기',
-        dim1Name: '정육면체 절반 r (한 변 2r)', dim2Name: '비교 옵션',
+        badge: `탐구 4-F · 🪵 윗면 가운데에 긴 홈(ㄷ자 모양)을 판 정육면체 — 겉넓이 비교`,
+        hint: `모퉁이가 아니라 <strong class="text-amber-300">윗면 한가운데를 앞에서 뒤까지 이어지게 파서 홈(${cut}×${cut}×${L})을 만들면</strong> 어떻게 될까요? 홈 바닥면은 없어진 윗면 부분과 넓이가 같아 서로 상쇄되지만, <strong class="text-emerald-300">홈 양옆 벽면 2개(+${gainedSideWalls})가 앞뒤에서 없어진 부분(-${lostFrontBack})보다 커서 겉넓이가 +${netDiff}cm² 늘어납니다!</strong>`,
+        actionTxt: state.animProg > 0.5 ? '🎬 파낸 부분을 들어 올려 비교' : '🎬 홈을 판 모양 보기',
+        dim1Name: '정육면체의 한 변의 절반 r (한 변 2r)', dim2Name: '비교 옵션',
         surfaceParts: [
-          { id: 0, name: `🔵 ① 원래 정육면체 겉넓이 (윗면 뚜껑 = 홈 바닥 상쇄!)`, desc: `빠진 뚜껑(-${lostTop})과 새 홈 바닥(+${gainedBottom})은 똑같음!`, val: `${origS} cm²`, color: '#38bdf8', included: true },
-          { id: 1, name: `❌ ② 앞·뒤에서 뚫려 사라진 ㄷ자 입구 2개`, desc: `-2 × (${cut} × ${cut})`, val: `-${lostFrontBack} cm²`, color: '#f43f5e', included: false },
-          { id: 2, name: `✨ ③ 홈 양옆에 새로 생긴 긴 안쪽 벽면 2개!`, desc: `+2 × (${cut} × ${L}) 새로 노출!`, val: `+${gainedSideWalls} cm²`, color: '#fbbf24', included: true }
+          { id: 0, name: `🔵 ① 원래 정육면체 겉넓이 (없어진 윗면 부분 = 홈 바닥)`, desc: `없어진 윗면 부분(-${lostTop})과 새 홈 바닥(+${gainedBottom})은 넓이가 같음`, val: `${origS} cm²`, color: '#38bdf8', included: true },
+          { id: 1, name: `❌ ② 앞·뒤에서 없어진 ㄷ자 입구 2개`, desc: `-2 × (${cut} × ${cut})`, val: `-${lostFrontBack} cm²`, color: '#f43f5e', included: false },
+          { id: 2, name: `✨ ③ 홈 양옆에 새로 생긴 긴 안쪽 벽면 2개`, desc: `+2 × (${cut} × ${L}) 새로 드러남`, val: `+${gainedSideWalls} cm²`, color: '#fbbf24', included: true }
         ],
-        totalS: `${origS} - ${lostFrontBack} + ${gainedSideWalls} = ${finalS} cm² (+${netDiff} 증가!)`,
-        volRule: '파내는 위치별 겉넓이: ①모퉁이(불변) ②중앙 홈 관통(양옆 벽 때문에 증가!)',
-        volHTML: `• <strong>[파내는 위치에 따른 겉넓이 완벽 정리]</strong>:<br/>&nbsp;&nbsp;1) <strong>꼭짓점(모퉁이)</strong> 파내기: $-3\\text{면} + 3\\text{면} = \\mathbf{0}$ (겉넓이 <strong>불변</strong>)<br/>&nbsp;&nbsp;2) <strong>모서리 중앙 홈</strong> 파내기: 홈 바닥은 상쇄되고 <strong>양옆 벽면 2개(+${gainedSideWalls}) - 앞뒤 입구 2개(-${lostFrontBack}) = +${netDiff}$\\text{ cm}^2$ 증가!</strong>`,
+        totalS: `${origS} - ${lostFrontBack} + ${gainedSideWalls} = ${finalS} cm² (+${netDiff} 증가)`,
+        volRule: '파내는 위치에 따른 겉넓이: ① 모퉁이(변함없음) ② 가운데 홈(양옆 벽 때문에 증가)',
+        volHTML: `• <strong>파내는 위치에 따른 겉넓이</strong>:<br/>&nbsp;&nbsp;1) <strong>꼭짓점(모퉁이)</strong> 파내기: $-3\\text{면} + 3\\text{면} = \\mathbf{0}$ (겉넓이 <strong>변함없음</strong>)<br/>&nbsp;&nbsp;2) <strong>윗면 가운데 홈</strong> 파내기: 홈 바닥은 없어진 윗면 부분과 같아 상쇄되고 <strong>양옆 벽면 2개(+${gainedSideWalls}) - 앞뒤 입구 2개(-${lostFrontBack}) = +${netDiff}$\\text{ cm}^2$ 증가</strong>`,
         totalV: `${origV} - ${cut * cut * L} = ${finalV} cm³`,
-        notes: `• <strong>4-D(구멍), 4-E(모퉁이), 4-F(중앙 홈)</strong> 3가지를 비교하면 어떤 파낸 입체 문제가 나와도 사라진 면(-)과 새로 생긴 면(+)을 10초 만에 암산할 수 있습니다!`,
+        notes: `• <strong>4-D(구멍), 4-E(모퉁이), 4-F(가운데 홈)</strong> 세 경우를 비교하면 없어진 면(-)과 새로 생긴 면(+)을 따져 겉넓이의 변화를 구할 수 있습니다!`,
         bars: [
           { label: `원래겉넓이(${origS})`, len: `${origS}`, weight: 0.75, color: '#38bdf8' },
-          { label: `✨새 양옆벽(+${gainedSideWalls}) - 앞뒤입구(-${lostFrontBack}) = +${netDiff} 증가!`, len: `+${netDiff}`, weight: 0.25, color: '#fbbf24' }
+          { label: `✨새 양옆 벽(+${gainedSideWalls}) - 앞뒤 입구(-${lostFrontBack}) = +${netDiff} 증가`, len: `+${netDiff}`, weight: 0.25, color: '#fbbf24' }
         ]
       };
     }
@@ -663,7 +663,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   const isNarrow = () => !!(MAINB && MAINB._area().w < 640);
   // 해설이 '우측 상단 2D …'를 가리키는 문장은 좁은 화면에서 단추 안내를 덧붙입니다.
-  const phoneWords = (html) => (isNarrow() ? html.replace(/우측 상단 (<strong[^>]*>2D[^<]*<\/strong>)/g, '$1(휴대폰은 무대 오른쪽 위의 「2D 설계도 보기」 단추)') : html);
+  const phoneWords = (html) => (isNarrow() ? html.replace(/(<strong[^>]*>넓이 그림[^<]*<\/strong>)/g, '$1(휴대폰에서는 「넓이 그림 보기」 버튼을 누르세요)') : html);
   // [2.0 수정] 원본은 캔버스 크기로 고정 배율(약 46~52px)을 정해 넓은 화면에서 그림이 작았습니다.
   // 그림을 한 번 '재기만' 하여(진행도 0~100% 다섯 단계를 겹쳐) 도형을 감싸는 상자의 중심과 반경을 구하고, 무대 안쪽 영역에 맞춥니다.
   // 중심·반경은 카메라와 무관해 돌려도 크기가 변하지 않고(도형 중심을 축으로 회전), 치수(r·h·n)를 바꾸면 그에 맞게 다시 맞춰집니다.
@@ -880,7 +880,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ctx.font = '800 11px Pretendard, sans-serif';
       ctx.fillStyle = '#fbbf24';
       ctx.textAlign = 'center';
-      ctx.fillText('📊 2D 넓이 조립도 · 부피 비율 차트', cx, by + 18);
+      ctx.fillText('📊 넓이 그림 · 부피의 비', cx, by + 18);
 
       const m = state.mode, sub = state.sub[m], r = state.r, h = state.h;
 
@@ -904,7 +904,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
           ctx.fillStyle = '#6ee7b7';
           ctx.font = '800 10.5px Pretendard, sans-serif';
-          ctx.fillText(`합체: 가로 2πr(${2 * r}π) × 세로(r+h=${r + h})!`, cx, by + boxH - 10);
+          ctx.fillText(`합친 직사각형: 가로 2πr(${2 * r}π) × 세로(r+h=${r + h})`, cx, by + boxH - 10);
         } else if (sub === 'sectorPillar') {
           const deg = h === 3 ? 60 : h === 4 ? 90 : h === 5 ? 120 : 180;
           ctx.beginPath();
@@ -926,7 +926,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.lineWidth = 3.5;
           ctx.stroke();
           ctx.fillStyle = '#fda4af';
-          ctx.fillText('빨간 반지름 2개 ➔ 평평한 옆면 2rh 추가!', cx, by + boxH - 10);
+          ctx.fillText('빨간 반지름 2개 ➔ 직사각형 2rh 추가', cx, by + boxH - 10);
         } else {
           // 1층 바닥 격자
           const B = Math.max(2, r - 1), s = 22;
@@ -961,7 +961,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.fill();
           ctx.stroke();
           ctx.fillStyle = '#fda4af';
-          ctx.fillText('고깔 옆면(πra) + 도넛 챙(πR² - πr²)', cx, by + boxH - 10);
+          ctx.fillText('고깔 옆면(πra) + 고리 모양 챙(πR² - πr²)', cx, by + boxH - 10);
         } else if (sub === 'coneFactor') {
           const slant = Math.round(Math.hypot(r, h) * 10) / 10;
           const w = 130;
@@ -979,7 +979,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.fillStyle = '#fff';
           ctx.fillText(`옆면 = πr × a = ${(r * slant).toFixed(1)}π`, cx, cy + 20);
           ctx.fillStyle = '#fef08a';
-          ctx.fillText(`합체: πr(r + a) = ${r}π(${r}+${slant})!`, cx, by + boxH - 10);
+          ctx.fillText(`합친 식: πr(r + a) = ${r}π(${r}+${slant})`, cx, by + boxH - 10);
         } else {
           const heights = [26, 52, 78];
           const cols = ['#38bdf8', '#34d399', '#fbbf24'];
@@ -1010,7 +1010,7 @@ window.addEventListener('DOMContentLoaded', function () {
             ctx.fillText(`πr²`, cx + dx, cy + dy + 4);
           });
           ctx.fillStyle = '#fef08a';
-          ctx.fillText(`구 겉넓이 = 대원(πr²) × 4개 = ${4 * r * r}π`, cx, by + boxH - 10);
+          ctx.fillText(`구의 겉넓이 = 반지름이 r인 원(πr²) × 4개 = ${4 * r * r}π`, cx, by + boxH - 10);
         } else {
           const heights = [26, 52, 78];
           const cols = ['#f472b6', '#fbbf24', '#38bdf8'];
@@ -1025,7 +1025,7 @@ window.addEventListener('DOMContentLoaded', function () {
             ctx.fillText(names[i], x0 + 16, cy + 55);
           });
           ctx.fillStyle = '#fef08a';
-          ctx.fillText('원뿔(1) + 구(2) = 외접 원기둥(3)!', cx, by + boxH - 10);
+          ctx.fillText('원뿔(1) + 구(2) = 원기둥(3)', cx, by + boxH - 10);
         }
       } else {
         if (sub === 'doubleCone') {
@@ -1038,7 +1038,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.beginPath(); ctx.moveTo(cx - 42, cy); ctx.lineTo(cx + 42, cy); ctx.stroke();
           ctx.setLineDash([]);
           ctx.fillStyle = '#fda4af';
-          ctx.fillText('가운데 공유 밑면 2개는 속으로 사라짐!', cx, by + boxH - 10);
+          ctx.fillText('가운데 맞닿은 밑면 2개는 안쪽이 되어 제외', cx, by + boxH - 10);
         } else if (sub === 'nestedCone') {
           ctx.beginPath();
           ctx.moveTo(cx, cy - 48); ctx.lineTo(cx + 44, cy + 36); ctx.lineTo(cx, cy - 6); ctx.lineTo(cx - 44, cy + 36);
@@ -1046,14 +1046,14 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.fillStyle = 'rgba(251, 191, 36, 0.35)'; ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2;
           ctx.fill(); ctx.stroke();
           ctx.fillStyle = '#fef08a';
-          ctx.fillText('부피는 빼기(-), 겉넓이는 더하기(+)!', cx, by + boxH - 10);
+          ctx.fillText('부피는 빼기(-), 겉넓이는 더하기(+)', cx, by + boxH - 10);
         } else {
           ctx.strokeStyle = '#38bdf8';
           ctx.strokeRect(cx - 38, cy - 35, 76, 70);
           ctx.fillStyle = 'rgba(251, 191, 36, 0.42)';
           ctx.fillRect(cx - 12, cy - 35, 24, 70);
           ctx.fillStyle = '#fef08a';
-          ctx.fillText('파인 자리 새 벽면 노출 주의!', cx, by + boxH - 10);
+          ctx.fillText('잘라 낸 자리에 새 면이 드러남', cx, by + boxH - 10);
         }
       }
       ctx.restore();
@@ -1115,7 +1115,7 @@ window.addEventListener('DOMContentLoaded', function () {
         );
 
         renderSortedFaces(faces);
-        draw3DText({ x: 0, y: 0, z: z1 + 0.45 }, `1cm³ 단위큐브 ${visibleCubes}개 / 총 ${totalCubes}개`, '#fef08a', 13);
+        draw3DText({ x: 0, y: 0, z: z1 + 0.45 }, `1cm³ 정육면체 ${visibleCubes}개 / 총 ${totalCubes}개`, '#fef08a', 13);
       } else if (sub === 'layerElevator') {
         const k = 0.55;
         const W = r * k, H = h * k, curH = H * f;
@@ -1164,7 +1164,7 @@ window.addEventListener('DOMContentLoaded', function () {
         faces.push({ pts: botDisk, fillColor: 'rgba(251, 191, 36, 0.50)', strokeColor: '#fbbf24', partIdx: 0, label: `아랫밑면 (${r * r}π)` });
         renderSortedFaces(faces);
         draw3DLine({ x: 0, y: 0, z: H + lift }, { x: R, y: 0, z: H + lift }, '#ffffff', 3, false, true);
-        draw3DText({ x: 0, y: 0, z: H + lift + 0.45 }, `3초 공식: S = 2πr(r+h) = 2π×${r}×(${r}+${h}) = ${2 * r * (r + h)}π`, '#fef08a', 13);
+        draw3DText({ x: 0, y: 0, z: H + lift + 0.45 }, `S = 2πr(r+h) = 2π×${r}×(${r}+${h}) = ${2 * r * (r + h)}π`, '#fef08a', 13);
       } else {
         // sectorPillar: 부채꼴기둥 (케이크 조각 기둥 — 칼로 자른 평평한 옆면 2개 강조!)
         const deg = h === 3 ? 60 : h === 4 ? 90 : h === 5 ? 120 : 180;
@@ -1211,7 +1211,7 @@ window.addEventListener('DOMContentLoaded', function () {
             strokeColor: '#f43f5e',
             lineWidth: 2.8,
             partIdx: 2,
-            label: `✨평평한 단면 ① (${r}×4=${4 * r})`
+            label: `✨직사각형 ① (${r}×4=${4 * r})`
           },
           {
             pts: [
@@ -1224,7 +1224,7 @@ window.addEventListener('DOMContentLoaded', function () {
             strokeColor: '#f43f5e',
             lineWidth: 2.8,
             partIdx: 2,
-            label: `✨평평한 단면 ② (+${4 * r})`
+            label: `✨직사각형 ② (+${4 * r})`
           }
         );
         renderSortedFaces(faces);
@@ -1285,8 +1285,8 @@ window.addEventListener('DOMContentLoaded', function () {
         // 높이 h vs 모선 a 구분 보조선
         draw3DLine({ x: 0, y: 0, z: lift }, apex, '#34d399', 3, true, true);
         draw3DLine(apex, { x: R, y: 0, z: lift }, '#fbbf24', 3.5, false, true);
-        draw3DText({ x: R * 0.65, y: 0, z: H * 0.55 + lift }, `모선 a=${slant}(겉넓이용!)`, '#fbbf24', 12.5);
-        draw3DText({ x: -0.6, y: 0, z: H * 0.45 + lift }, `높이 h=${h}(부피용!)`, '#34d399', 12);
+        draw3DText({ x: R * 0.65, y: 0, z: H * 0.55 + lift }, `모선 a=${slant}(겉넓이에 사용)`, '#fbbf24', 12.5);
+        draw3DText({ x: -0.6, y: 0, z: H * 0.45 + lift }, `높이 h=${h}(부피에 사용)`, '#34d399', 12);
       } else if (sub === 'partyHat') {
         const k = 0.42;
         const rIn = r * k, rOut = (r + 2) * k;
@@ -1306,7 +1306,7 @@ window.addEventListener('DOMContentLoaded', function () {
             fillColor: 'rgba(56, 189, 248, 0.42)',
             strokeColor: '#38bdf8',
             partIdx: 1,
-            label: i === 0 ? `도넛 챙 (πR² - πr²)` : ''
+            label: i === 0 ? `고리 모양 챙 (πR² - πr²)` : ''
           });
         }
         const apex = { x: 0, y: 0, z: lift + coneH };
@@ -1325,7 +1325,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const a0 = (i / N) * Math.PI * 2, a1 = ((i + 1) / N) * Math.PI * 2;
           draw3DLine({ x: rIn * Math.cos(a0), y: rIn * Math.sin(a0), z: 0.02 }, { x: rIn * Math.cos(a1), y: rIn * Math.sin(a1), z: 0.02 }, '#f43f5e', 3.2, i % 2 === 0, true);
         }
-        draw3DText({ x: 0, y: 0, z: -0.35 }, `❌ 뚫린 머리 구멍 (-${r * r}π 면 없음!)`, '#fda4af', 12.5);
+        draw3DText({ x: 0, y: 0, z: -0.35 }, `❌ 뚫린 구멍 (-${r * r}π, 면 없음)`, '#fda4af', 12.5);
       } else {
         // frustumCalc
         const k = 0.46;
@@ -1430,7 +1430,7 @@ window.addEventListener('DOMContentLoaded', function () {
           strokeColor: '#f43f5e',
           lineWidth: 3,
           partIdx: 1,
-          label: `✨새 단면 원 (+πr² = ${r * r}π) ➔ 총 3πr²!`
+          label: `✨새로 생긴 원 (+πr² = ${r * r}π) ➔ 모두 3πr²`
         });
 
         renderSortedFaces(faces);
@@ -1476,9 +1476,9 @@ window.addEventListener('DOMContentLoaded', function () {
           q3.push({ x: 0, y: -R_sph * Math.cos(a), z: cz + R_sph * Math.sin(a) }); // 왼벽 사분원
         }
         faces.push(
-          { pts: q1, fillColor: 'rgba(56, 189, 248, 0.65)', strokeColor: '#38bdf8', lineWidth: 2.5, partIdx: 1, label: '사분원①' },
-          { pts: q2, fillColor: 'rgba(56, 189, 248, 0.65)', strokeColor: '#38bdf8', lineWidth: 2.5, partIdx: 1, label: '사분원②' },
-          { pts: q3, fillColor: 'rgba(56, 189, 248, 0.65)', strokeColor: '#38bdf8', lineWidth: 2.5, partIdx: 1, label: '사분원③' }
+          { pts: q1, fillColor: 'rgba(56, 189, 248, 0.65)', strokeColor: '#38bdf8', lineWidth: 2.5, partIdx: 1, label: '부채꼴①' },
+          { pts: q2, fillColor: 'rgba(56, 189, 248, 0.65)', strokeColor: '#38bdf8', lineWidth: 2.5, partIdx: 1, label: '부채꼴②' },
+          { pts: q3, fillColor: 'rgba(56, 189, 248, 0.65)', strokeColor: '#38bdf8', lineWidth: 2.5, partIdx: 1, label: '부채꼴③' }
         );
 
         renderSortedFaces(faces);
@@ -1522,7 +1522,7 @@ window.addEventListener('DOMContentLoaded', function () {
           strokeColor: '#f43f5e',
           isHiddenFace: true,
           partIdx: 2,
-          label: isMerged ? '❌ 공유 밑면 2개 소멸! (겉넓이 제외)' : '접합 밑면 (πr²)'
+          label: isMerged ? '❌ 맞닿은 밑면 2개 (겉넓이에서 제외)' : '맞닿는 밑면 (πr²)'
         });
         if (!isMerged) {
           faces.push({ pts: sharedDiskBot, fillColor: 'rgba(244, 63, 94, 0.45)', strokeColor: '#f43f5e', isHiddenFace: true, partIdx: 2 });
@@ -1548,11 +1548,11 @@ window.addEventListener('DOMContentLoaded', function () {
           const pSm1 = { x: R * Math.cos(a1), y: R * Math.sin(a1), z: baseZ };
 
           faces.push({ pts: [bigApex, pBig0, pBig1], fillColor: 'rgba(56, 189, 248, 0.26)', strokeColor: 'rgba(56, 189, 248, 0.65)', partIdx: 0, label: i === 6 ? `바깥 큰 원뿔 옆면 (+πra₁)` : '' });
-          faces.push({ pts: [smallApex, pSm0, pSm1], fillColor: 'rgba(251, 191, 36, 0.52)', strokeColor: '#fbbf24', partIdx: 1, label: i === 18 ? `안쪽 파인 벽면 (+πra₂ 노출!)` : '' });
+          faces.push({ pts: [smallApex, pSm0, pSm1], fillColor: 'rgba(251, 191, 36, 0.52)', strokeColor: '#fbbf24', partIdx: 1, label: i === 18 ? `안쪽 파낸 벽면 (+πra₂)` : '' });
         }
         renderSortedFaces(faces);
         draw3DPoint(bigApex, 5.5, '#38bdf8', `큰 꼭짓점 (H=${h + 2})`);
-        draw3DPoint(smallApex, 5.5, '#fbbf24', `파인 꼭짓점 (h=${Math.max(1, h - 1)})`);
+        draw3DPoint(smallApex, 5.5, '#fbbf24', `파낸 꼭짓점 (h=${Math.max(1, h - 1)})`);
       } else if (sub === 'rocket') {
         const k = 0.45;
         const R = r * k, H = h * k;
@@ -1570,7 +1570,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         renderSortedFaces(faces);
         if (f < 0.85) {
-          draw3DText({ x: R + 1.2, y: 0, z: zCyl1 + gap / 2 }, '❌ 합체 시 내부 접합면 소멸!', '#fda4af', 12.5);
+          draw3DText({ x: R + 1.2, y: 0, z: zCyl1 + gap / 2 }, '❌ 붙이면 맞닿은 면은 안쪽이 되어 제외', '#fda4af', 12.5);
         }
       } else if (sub === 'drilled') {
         const L = 3.0, hL = L / 2, rHole = 0.85;
@@ -1636,15 +1636,15 @@ window.addEventListener('DOMContentLoaded', function () {
           // 양쪽 윗뚜껑 + 홈 바닥 (서로 합쳐서 원래 윗면과 넓이 동일!)
           { pts: [{ x: -hL, y: -hL, z: zTop }, { x: -cw, y: -hL, z: zTop }, { x: -cw, y: hL, z: zTop }, { x: -hL, y: hL, z: zTop }], fillColor: 'rgba(56, 189, 248, 0.38)', strokeColor: '#38bdf8', partIdx: 0 },
           { pts: [{ x: cw, y: -hL, z: zTop }, { x: hL, y: -hL, z: zTop }, { x: hL, y: hL, z: zTop }, { x: cw, y: hL, z: zTop }], fillColor: 'rgba(56, 189, 248, 0.38)', strokeColor: '#38bdf8', partIdx: 0 },
-          { pts: [{ x: -cw, y: -hL, z: zGroove }, { x: cw, y: -hL, z: zGroove }, { x: cw, y: hL, z: zGroove }, { x: -cw, y: hL, z: zGroove }], fillColor: 'rgba(52, 211, 153, 0.45)', strokeColor: '#34d399', partIdx: 0, label: '홈 바닥 (=빠진 뚜껑과 상쇄!)' },
+          { pts: [{ x: -cw, y: -hL, z: zGroove }, { x: cw, y: -hL, z: zGroove }, { x: cw, y: hL, z: zGroove }, { x: -cw, y: hL, z: zGroove }], fillColor: 'rgba(52, 211, 153, 0.45)', strokeColor: '#34d399', partIdx: 0, label: '홈 바닥 (=없어진 윗면 부분과 넓이가 같음)' },
           // ✨ 새로 생긴 홈 양옆 긴 벽면 2개 (겉넓이 증가의 주역!)
           {
             pts: [{ x: -cw, y: -hL, z: zGroove }, { x: -cw, y: hL, z: zGroove }, { x: -cw, y: hL, z: zTop }, { x: -cw, y: -hL, z: zTop }],
-            fillColor: 'rgba(251, 191, 36, 0.65)', strokeColor: '#fbbf24', lineWidth: 2.8, partIdx: 2, label: '✨새 안쪽 벽면 ① (+증가!)'
+            fillColor: 'rgba(251, 191, 36, 0.65)', strokeColor: '#fbbf24', lineWidth: 2.8, partIdx: 2, label: '✨새 안쪽 벽면 ① (+)'
           },
           {
             pts: [{ x: cw, y: -hL, z: zGroove }, { x: cw, y: hL, z: zGroove }, { x: cw, y: hL, z: zTop }, { x: cw, y: -hL, z: zTop }],
-            fillColor: 'rgba(251, 191, 36, 0.65)', strokeColor: '#fbbf24', lineWidth: 2.8, partIdx: 2, label: '✨새 안쪽 벽면 ② (+증가!)'
+            fillColor: 'rgba(251, 191, 36, 0.65)', strokeColor: '#fbbf24', lineWidth: 2.8, partIdx: 2, label: '✨새 안쪽 벽면 ② (+)'
           }
         ];
         renderSortedFaces(faces);
@@ -1662,20 +1662,20 @@ window.addEventListener('DOMContentLoaded', function () {
   const arrow = (v) => (typeof v === 'string' ? phoneWords(arrowOnly(v)) : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
   const cv = (s) => APLab.stripEmoji(arrowOnly(s));
   const RENDER = { 1: renderTab1UnitCubeAndPillars, 2: renderTab2ConesAndPartyHat, 3: renderTab3SpheresAndArchimedes, 4: renderTab4CompositeAndCarved };
-  const TABS = ["단위큐브(1cm³) & 기둥 겉넓이·부피", "뿔·뿔대·고깔모자 & 3:1 물붓기", "구(4πr²)·반구(3πr²) & 아르키메데스 1:2:3", "쌍원뿔·이중원뿔·구멍·모퉁이 파낸 입체"];
-  const SHORT = ["기둥", "뿔·뿔대", "구·반구", "복합·파낸 입체"];
+  const TABS = ["1cm³ 정육면체와 기둥의 겉넓이·부피", "뿔·뿔대·고깔모자와 3:1 물 붓기", "구(4πr²)·반구(3πr²)와 부피의 비 1:2:3", "붙이거나 파낸 입체의 겉넓이·부피"];
+  const SHORT = ["기둥", "뿔·뿔대", "구·반구", "붙인·파낸 입체"];
   const QUESTIONS = [
-    "단위큐브를 쌓아 만든 기둥의 겉넓이와 부피는 어떻게 셀까? 원기둥의 겉넓이는 왜 2πr(r+h)로 묶일까?",
+    "1cm³ 정육면체를 쌓아 만든 기둥의 겉넓이와 부피는 어떻게 구할까? 원기둥의 겉넓이는 왜 2πr(r+h)로 나타낼 수 있을까?",
     "뿔의 부피에는 왜 1/3이 곱해질까? 겉넓이를 구할 때 높이 h와 모선 a는 어떻게 다를까?",
     "구의 겉넓이 4πr²와 부피는 원기둥·원뿔과 어떤 관계일까?",
     "두 입체를 합치거나 파내면 겉넓이와 부피는 각각 어떻게 달라질까?"
 ];
-  const LENSES = [["all", "전체"], ["vol", "부피·내부수위"], ["hidden", "소멸·제외된 면 강조"]];
+  const LENSES = [["all", "전체"], ["vol", "부피·물의 높이"], ["hidden", "겉넓이에서 제외된 면 강조"]];
   const ANIM_CHIPS = (m, id) => (id === 'pour3to1'
     ? [[1 / 3, '1컵 (1/3)'], [2 / 3, '2컵 (2/3)'], [1, '3컵 (가득)']]
-    : [[0, '0% (분리/비움)'], [0.5, '50%'], [1, '100% (합체/가득)']]);
+    : [[0, '0% (떼어 놓음/비움)'], [0.5, '50%'], [1, '100% (붙임/가득)']]);
   const CAMS = { iso: { yaw: -32, pitch: 28 }, top: { yaw: 0, pitch: 86 }, front: { yaw: 0, pitch: 6 } };
-  const CAM_LABELS = ["입체뷰", "위에서", "정면단면"];
+  const CAM_LABELS = ["입체로 보기", "위에서 보기", "앞에서 보기"];
 
   function sync(s, m, id) {
     state.mode = m;
@@ -1694,14 +1694,14 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(cv(spec.badge))}</div>${spec.hint}`,
       readouts: [
-        { label: '최종 겉넓이 합계 S', value: cv(spec.totalS), color: 'amber', wide: true },
-        { label: '최종 부피 V', value: cv(spec.totalV), color: 'sky', wide: true }
+        { label: '겉넓이 S', value: cv(spec.totalS), color: 'amber', wide: true },
+        { label: '부피 V', value: cv(spec.totalV), color: 'sky', wide: true }
       ],
       parts: spec.surfaceParts.map((p) => ({ id: p.id, name: p.name, desc: p.desc, value: p.val, color: p.color, ok: p.included })),
       rule: spec.volRule,
       formula: spec.volHTML,
       notes: spec.notes,
-      tape: spec.bars && spec.bars.length ? { title: '실시간 겉넓이/부피 조각 조립식 · ' + cv(spec.totalS), segments: spec.bars.map((sg) => ({ text: sg.label, weight: sg.weight, color: sg.color })) } : null
+      tape: spec.bars && spec.bars.length ? { title: '겉넓이·부피를 조각으로 나눈 식 · ' + cv(spec.totalS), segments: spec.bars.map((sg) => ({ text: sg.label, weight: sg.weight, color: sg.color })) } : null
     };
   }
 
@@ -1722,7 +1722,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id, title: label, short: label, reviewTab: true,
       question: QUESTIONS[m - 1],
-      notesTitle: '실수 제로! 겉넓이·부피 계산 비법 노트',
+      notesTitle: '겉넓이·부피를 구할 때 주의할 점',
       enter: (s) => {
         s.view2d = false;
         s.anim = id === 'pour3to1' ? 1 / 3 : 0.85;
@@ -1737,10 +1737,10 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!NO_ANIM.has(id)) ANIM_CHIPS(m, id).forEach(([v, lbl]) => out.push({ group: '진행 단계', label: lbl, set: { anim: v }, ms: 650, on: (st) => Math.abs(st.anim - v) < 0.02 }));
         if (!NO_D1.has(id)) [2, 3, 4, 5].forEach((v) => out.push({ group: cv(spec.dim1Name), label: String(v), color: 'sky', apply: (st) => { st.r = v; st.part = null; }, on: (st) => st.r === v }));
         if (!NO_D2.has(id)) [3, 4, 5, 6].forEach((v) => out.push({ group: cv(spec.dim2Name), label: String(v), color: 'rose', apply: (st) => { st.h = v; st.part = null; }, on: (st) => st.h === v }));
-        LENSES.filter(([k]) => !(LENS_OFF[id] || []).includes(k)).forEach(([k, lbl]) => out.push({ group: '관찰 렌즈', label: lbl, apply: (st) => { st.lens = k; st.part = null; }, on: (st) => st.lens === k }));
+        LENSES.filter(([k]) => !(LENS_OFF[id] || []).includes(k)).forEach(([k, lbl]) => out.push({ group: '표시할 내용', label: lbl, apply: (st) => { st.lens = k; st.part = null; }, on: (st) => st.lens === k }));
         if (!NO_BOX.has(id) && !isNarrow()) {
-          out.push({ group: '2D 넓이·부피 설계도', label: '켜기', apply: (st) => { st.dual = true; }, on: (st) => st.dual !== false });
-          out.push({ group: '2D 넓이·부피 설계도', label: '끄기', apply: (st) => { st.dual = false; }, on: (st) => st.dual === false });
+          out.push({ group: '넓이·부피 그림', label: '켜기', apply: (st) => { st.dual = true; }, on: (st) => st.dual !== false });
+          out.push({ group: '넓이·부피 그림', label: '끄기', apply: (st) => { st.dual = false; }, on: (st) => st.dual === false });
         }
         cams.forEach((k, i) => out.push({ group: '시점', label: CAM_LABELS[i], set: { yaw: CAMS[k].yaw, pitch: CAMS[k].pitch }, ms: 600, apply: (st) => { st.playing = false; }, on: (st) => Math.abs(st.yaw - CAMS[k].yaw) < 1 && Math.abs(st.pitch - CAMS[k].pitch) < 1 }));
         return out;
@@ -1755,7 +1755,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
       }]), {
         id: 'spin', play: true, icon: (st) => (st.playing ? 'pause' : 'play'),
-        label: (st) => (st.playing ? '일시 정지' : '3D 자동회전'),
+        label: (st) => (st.playing ? '일시 정지' : '입체 자동 회전'),
         on: (st) => st.playing,
         run: (st) => { st.playing = !st.playing; }
       }],
@@ -1771,7 +1771,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const narrow = !b.thumb && b._area().w < 640 && !NO_BOX.has(id);
         if (BTN && !b.thumb) {
           BTN.hidden = !narrow;
-          BTN.textContent = s.view2d ? '3D 그림으로 돌아가기' : '2D 설계도 보기';
+          BTN.textContent = s.view2d ? '입체 그림으로 돌아가기' : '넓이 그림 보기';
         }
         if (narrow && s.view2d) { draw2DDualOverlay(true); return; }
         // [2.0 수정] 개미 최단거리: 좁은 화면에서는 면 이름표(윗밑면·아랫밑면·가로=2πr)가 개미 이름표와 겹쳐 읽히지 않아 접어 둡니다(같은 내용은 아래 띠와 2D 설계도에 있음).
@@ -1808,7 +1808,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     },
     params: {
-      anim: { value: 0.85, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행도 (쌓기 · 물붓기 · 분해/합체)', hint: '슬라이더로 층 쌓기·물 채우기·파내기를 직접 실험해 보세요', format: (v) => `${Math.round(v * 100)}%` },
+      anim: { value: 0.85, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행도 (쌓기 · 물 붓기 · 떼기/붙이기)', hint: '슬라이더로 층 쌓기·물 채우기·파내기를 직접 실험해 보세요', format: (v) => `${Math.round(v * 100)}%` },
       r: { value: 3, min: 2, max: 5, step: 1, color: 'sky', label: '치수 1', format: (v) => `${Math.round(v)} cm` },
       h: { value: 4, min: 3, max: 6, step: 1, color: 'rose', label: '치수 2', format: (v) => `${Math.round(v)} cm` },
       yaw: { value: -32, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전', format: (v) => `${Math.round(v)}°` },

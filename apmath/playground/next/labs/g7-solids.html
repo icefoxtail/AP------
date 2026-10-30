@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>입체도형 종합 (중1 다면체·회전체) · AP Math 실험실</title>
-<meta name="description" content="중1 입체도형 종합: 기둥·뿔·뿔대와 정다면체, 정육면체 전개도 폴딩, 회전체 360° 생성과 단면, 회전체 전개도와 개미 최단거리까지 4개 탐구관 18개 장면">
+<meta name="description" content="중1 입체도형 종합: 기둥·뿔·뿔대와 정다면체, 정육면체 전개도 접기, 회전체 360° 생성과 단면, 회전체 전개도와 옆면을 한 바퀴 도는 최단 거리까지 4개 탐구관 18개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -21,7 +21,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중1 · 다면체·회전체 & 겨냥도·전개도 종합 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 18개 장면
@@ -65,30 +65,30 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 장면 목록 ===== */
     const SUB_MENUS = {
       1: [
-        { id: 'prismN', label: '📐 n각기둥 층별 분해' },
-        { id: 'pyramidN', label: '⛺ n각뿔 층별 분해' },
-        { id: 'frustumN', label: '🪣 n각뿔대(평행절단)' },
-        { id: 'platonic5', label: '💎 정다면체 5종 쇼케이스' },
-        { id: 'vertex360', label: '🌟 정다면체 360° 한계실험' }
+        { id: 'prismN', label: '📐 n각기둥의 면·모서리·꼭짓점' },
+        { id: 'pyramidN', label: '⛺ n각뿔의 면·모서리·꼭짓점' },
+        { id: 'frustumN', label: '🪣 n각뿔대(평행하게 자른 각뿔)' },
+        { id: 'platonic5', label: '💎 정다면체 5가지 비교' },
+        { id: 'vertex360', label: '🌟 한 꼭짓점에 모인 각의 합과 정다면체(360°)' }
       ],
       2: [
-        { id: 'cubeCross', label: '➕ 정육면체(1-4-1·지퍼)' },
-        { id: 'cubeStairs', label: '⚡ 계단형(2-2-2·2-3-1)' },
-        { id: 'badNet', label: '❌ 가짜 전개도(겹침충돌!)' },
-        { id: 'diceArrow', label: '🎲 주사위 눈7·화살표 방향' },
-        { id: 'octaNet', label: '✂️ 정팔면체·사각뿔 폴딩' }
+        { id: 'cubeCross', label: '➕ 정육면체 십자형 전개도(1-4-1)' },
+        { id: 'cubeStairs', label: '⚡ 계단형 전개도(2-2-2·2-3-1)' },
+        { id: 'badNet', label: '❌ 정육면체가 안 되는 전개도(면이 겹침)' },
+        { id: 'diceArrow', label: '🎲 주사위(마주 보는 눈의 합 7)와 화살표 방향' },
+        { id: 'octaNet', label: '✂️ 정팔면체·정사각뿔 전개도 접기' }
       ],
       3: [
-        { id: 'spin4', label: '🔄 회전체 4종 360° 스핀생성' },
-        { id: 'revSection', label: '🔪 회전체 축단면 vs 수직단면' },
-        { id: 'triAxis', label: '💎 직각삼각형 회전축 변경(쌍원뿔!)' },
-        { id: 'cubeCut', label: '🧊 정육면체 단면(삼각~정육각형!)' }
+        { id: 'spin4', label: '🔄 회전체 4가지: 평면도형을 360° 회전' },
+        { id: 'revSection', label: '🔪 회전체의 단면: 회전축을 포함 vs 회전축에 수직' },
+        { id: 'triAxis', label: '💎 회전축의 위치에 따라 달라지는 회전체' },
+        { id: 'cubeCut', label: '🧊 정육면체의 단면(삼각형~육각형)' }
       ],
       4: [
-        { id: 'cylRoll', label: '🛢️ 원기둥 롤링(가로=2πr)' },
-        { id: 'coneSector', label: '⛺ 원뿔 부채꼴(중심각 r/a)' },
-        { id: 'frustumBelt', label: '🪣 원뿔대(휘어진 부채꼴띠)' },
-        { id: 'antShortest', label: '🐜 기둥·원뿔 옆면 개미 최단거리' }
+        { id: 'cylRoll', label: '🛢️ 원기둥 전개도(가로=2πr)' },
+        { id: 'coneSector', label: '⛺ 원뿔 전개도(부채꼴의 중심각 r/a×360°)' },
+        { id: 'frustumBelt', label: '🪣 원뿔대 전개도(부채꼴 모양의 띠)' },
+        { id: 'antShortest', label: '📏 기둥·원뿔 옆면을 한 바퀴 도는 최단 거리' }
       ]
     };
 
@@ -136,23 +136,23 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'prismN') {
           const F = n + 2, E = 3 * n, V = 2 * n;
           return {
-            badge: `탐구 1-A · ${korN}각기둥 (${F}면체) — 면·모서리·꼭짓점 층별 분해`,
-            hint: `슬라이더를 움직여 위·아래 밑면을 분리해 보세요! ${korN}각기둥은 <strong class="text-amber-300">밑면 2개 + 옆면 ${n}개 = ${F}면체</strong>이며, 모서리는 위층(${n})·기둥(${n})·아래층(${n}) 총 <strong class="text-sky-300">3×${n} = ${E}개</strong>입니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 층별로 분해해 세어보기' : '🎬 기둥으로 합체하기',
-            dim1Name: '밑면 다각형 변 수 n', dim2Name: '기둥 높이 스케일',
+            badge: `탐구 1-A · ${korN}각기둥(${F}면체) — 면·모서리·꼭짓점의 수`,
+            hint: `슬라이더를 움직여 위·아래 밑면을 분리해 보세요! ${korN}각기둥은 <strong class="text-amber-300">밑면 2개 + 옆면 ${n}개 = ${F}면체</strong>이며, 모서리는 윗면의 모서리(${n})·옆 모서리(${n})·아랫면의 모서리(${n}) 모두 <strong class="text-sky-300">3×${n} = ${E}개</strong>입니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 떼어 놓고 세어 보기' : '🎬 기둥으로 합치기',
+            dim1Name: '밑면 다각형 변 수 n', dim2Name: '기둥의 높이',
             nPrefix: 'n = ', hPrefix: 'h = ',
             parts: [
               { id: 0, name: `🟡 면의 개수 F = n + 2 (${F}면체)`, desc: `윗밑면(1) + 아랫밑면(1) + 직사각형 옆면(${n})`, val: `면 ${F}개`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🔵 모서리의 개수 E = 3n`, desc: `위층(${n}개) + 세로기둥(${n}개) + 아래층(${n}개)`, val: `모서리 ${E}개`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🩷 꼭짓점의 개수 V = 2n`, desc: `위층 꼭짓점(${n}개) + 아래층 꼭짓점(${n}개)`, val: `꼭짓점 ${V}개`, color: '#f472b6', ok: true }
+              { id: 1, name: `🔵 모서리의 개수 E = 3n`, desc: `윗면의 모서리(${n}개) + 옆 모서리(${n}개) + 아랫면의 모서리(${n}개)`, val: `모서리 ${E}개`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 꼭짓점의 개수 V = 2n`, desc: `윗면의 꼭짓점(${n}개) + 아랫면의 꼭짓점(${n}개)`, val: `꼭짓점 ${V}개`, color: '#f472b6', ok: true }
             ],
             totalRes: `${korN}각기둥 = ${F}면체 (V-E+F = ${V}-${E}+${F} = 2)`,
             rule: `n각기둥: 면(n+2), 모서리(3n), 꼭짓점(2n)`,
-            formulaHTML: `• <strong>면(F)</strong>: ${tex(`n + 2 = ${n} + 2 = \\mathbf{${F}\\text{개}}`)} (그러므로 <strong>${F}면체</strong>!)<br/>• <strong>모서리(E)</strong>: ${tex(`3n = 3 \\times ${n} = \\mathbf{${E}\\text{개}}`)} &nbsp;|&nbsp; <strong>꼭짓점(V)</strong>: ${tex(`2n = 2 \\times ${n} = \\mathbf{${V}\\text{개}}`)}`,
-            notes: `• <strong>[함정 1위]</strong>: “칠각기둥은 칠면체이다?” ➔ <strong>거짓(❌)</strong>! 밑면 2개를 더해야 하므로 칠각기둥은 <strong>구면체($7+2=9$)</strong>입니다!`,
+            formulaHTML: `• <strong>면(F)</strong>: ${tex(`n + 2 = ${n} + 2 = \\mathbf{${F}\\text{개}}`)} (그러므로 <strong>${F}면체</strong>입니다)<br/>• <strong>모서리(E)</strong>: ${tex(`3n = 3 \\times ${n} = \\mathbf{${E}\\text{개}}`)} &nbsp;|&nbsp; <strong>꼭짓점(V)</strong>: ${tex(`2n = 2 \\times ${n} = \\mathbf{${V}\\text{개}}`)}`,
+            notes: `• <strong>[함정]</strong>: “칠각기둥은 칠면체이다.”는 <strong>거짓(❌)</strong>입니다. 옆면 7개에 밑면 2개를 더해야 하므로 칠각기둥은 <strong>9면체($7+2=9$)</strong>입니다.`,
             bars: [
               { label: `밑면 2개`, weight: 2 / F, color: '#fbbf24' },
-              { label: `직사각형 옆면 ${n}개 (합쳐서 ${F}면체!)`, weight: n / F, color: '#38bdf8' }
+              { label: `직사각형 옆면 ${n}개 (합쳐서 ${F}면체)`, weight: n / F, color: '#38bdf8' }
             ]
           };
         }
@@ -161,41 +161,41 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: `탐구 1-B · ${korN}각뿔 (${F}면체) — 꼭짓점 1개로 모이는 삼각형 옆면`,
             hint: `각뿔은 밑면이 <strong class="text-amber-300">단 1개</strong>뿐이고, 옆면 삼각형 ${n}개가 맨 위 <strong class="text-pink-300">각뿔의 꼭짓점 1개</strong>에서 만납니다! 따라서 면은 <strong class="text-emerald-300">${n}+1=${F}개</strong>, 모서리는 <strong class="text-sky-300">2×${n}=${E}개</strong>입니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 밑면과 옆면 분리하기' : '🎬 각뿔로 합체하기',
-            dim1Name: '밑면 다각형 변 수 n', dim2Name: '각뿔 높이 스케일',
+            actionTxt: state.animProg > 0.5 ? '🎬 밑면과 옆면 분리하기' : '🎬 각뿔로 합치기',
+            dim1Name: '밑면 다각형 변 수 n', dim2Name: '각뿔의 높이',
             nPrefix: 'n = ', hPrefix: 'h = ',
             parts: [
               { id: 0, name: `🟡 면의 개수 F = n + 1 (${F}면체)`, desc: `아랫밑면(1개) + 삼각형 옆면(${n}개)`, val: `면 ${F}개`, color: '#fbbf24', ok: true },
               { id: 1, name: `🔵 모서리의 개수 E = 2n`, desc: `밑면 모서리(${n}개) + 옆면 모서리(${n}개)`, val: `모서리 ${E}개`, color: '#38bdf8', ok: true },
               { id: 2, name: `🩷 꼭짓점의 개수 V = n + 1`, desc: `밑면 꼭짓점(${n}개) + 맨 위 각뿔 꼭짓점(1개)`, val: `꼭짓점 ${V}개`, color: '#f472b6', ok: true }
             ],
-            totalRes: `${korN}각뿔 = ${F}면체 (면 개수 = 꼭짓점 개수 = ${F}!)`,
+            totalRes: `${korN}각뿔 = ${F}면체 (면의 개수 = 꼭짓점의 개수 = ${F})`,
             rule: `n각뿔: 면(n+1) = 꼭짓점(n+1), 모서리(2n)`,
-            formulaHTML: `• <strong>면(F) = 꼭짓점(V)</strong>: ${tex(`n + 1 = ${n} + 1 = \\mathbf{${F}\\text{개}}`)} (유일하게 면과 꼭짓점 수가 같음!)<br/>• <strong>모서리(E)</strong>: ${tex(`2n = 2 \\times ${n} = \\mathbf{${E}\\text{개}}`)}`,
-            notes: `• <strong>[1초 판별법]</strong>: “면의 개수와 꼭짓점의 개수가 같은 다면체는?” ➔ 무조건 <strong>각뿔($n+1$개)</strong>입니다!`,
+            formulaHTML: `• <strong>면(F) = 꼭짓점(V)</strong>: ${tex(`n + 1 = ${n} + 1 = \\mathbf{${F}\\text{개}}`)} (각뿔은 면의 수와 꼭짓점의 수가 같음)<br/>• <strong>모서리(E)</strong>: ${tex(`2n = 2 \\times ${n} = \\mathbf{${E}\\text{개}}`)}`,
+            notes: `• “면의 개수와 꼭짓점의 개수가 같은 다면체는?” ➔ 대표적으로 <strong>각뿔</strong>(둘 다 $n+1$개)입니다.`,
             bars: [
               { label: `밑면 1개`, weight: 1 / F, color: '#fbbf24' },
-              { label: `삼각형 옆면 ${n}개 (합쳐서 ${F}면체!)`, weight: n / F, color: '#f472b6' }
+              { label: `삼각형 옆면 ${n}개 (합쳐서 ${F}면체)`, weight: n / F, color: '#f472b6' }
             ]
           };
         }
         if (sub === 'frustumN') {
           const F = n + 2, E = 3 * n, V = 2 * n;
           return {
-            badge: `탐구 1-C · ${korN}각뿔대 (${F}면체) — 각뿔을 평행하게 잘라낸 아랫부분!`,
-            hint: `슬라이더를 움직여 위쪽 작은 각뿔을 들어 올려보세요! 각뿔대는 옆면이 직사각형이 아니라 <strong class="text-amber-300">사다리꼴 ${n}개</strong>이며, 면·모서리·꼭짓점 개수는 <strong class="text-sky-300">${korN}각기둥(${F}, ${E}, ${V})과 100% 똑같습니다!</strong>`,
-            actionTxt: state.animProg > 0.5 ? '🎬 위쪽 작은 각뿔 잘라 들어올리기' : '🎬 원래 큰 각뿔로 붙여보기',
-            dim1Name: '밑면 다각형 변 수 n', dim2Name: '절단 높이 비율',
+            badge: `탐구 1-C · ${korN}각뿔대 (${F}면체) — 각뿔을 밑면에 평행하게 잘라 낸 아랫부분`,
+            hint: `슬라이더를 움직여 위쪽 작은 각뿔을 들어 올려 보세요! 각뿔대는 옆면이 직사각형이 아니라 <strong class="text-amber-300">사다리꼴 ${n}개</strong>이며, 면·모서리·꼭짓점 개수는 <strong class="text-sky-300">${korN}각기둥(${F}, ${E}, ${V})과 같습니다!</strong>`,
+            actionTxt: state.animProg > 0.5 ? '🎬 위쪽 작은 각뿔을 잘라 들어 올리기' : '🎬 원래 큰 각뿔로 붙여 보기',
+            dim1Name: '밑면 다각형 변 수 n', dim2Name: '자르는 높이',
             nPrefix: 'n = ', hPrefix: 'H = ',
             parts: [
-              { id: 0, name: `🟡 서로 평행하지만 합동이 아닌 두 밑면`, desc: `작은 윗밑면(1) + 큰 아랫밑면(1) ➔ 닮은 도형!`, val: `밑면 2개`, color: '#fbbf24', ok: true },
+              { id: 0, name: `🟡 서로 평행하지만 합동이 아닌 두 밑면`, desc: `작은 윗밑면(1) + 큰 아랫밑면(1) ➔ 모양은 같고 크기가 다름`, val: `밑면 2개`, color: '#fbbf24', ok: true },
               { id: 1, name: `🟢 사다리꼴 모양의 옆면 ${n}개`, desc: `직사각형이 아니라 위로 좁아지는 사다리꼴!`, val: `옆면 ${n}개`, color: '#34d399', ok: true },
-              { id: 2, name: `❌ 잘려 나간 위쪽 작은 ${korN}각뿔`, desc: `밑면에 평행한 평면으로 싹둑 잘라 제거`, val: `상단 분리`, color: '#f43f5e', ok: false }
+              { id: 2, name: `❌ 잘려 나간 위쪽 작은 ${korN}각뿔`, desc: `밑면에 평행한 평면으로 잘라 냄`, val: `위쪽 분리`, color: '#f43f5e', ok: false }
             ],
-            totalRes: `${korN}각뿔대: 면 ${F}개, 모서리 ${E}개, 꼭짓점 ${V}개 (=각기둥과 동일!)`,
+            totalRes: `${korN}각뿔대: 면 ${F}개, 모서리 ${E}개, 꼭짓점 ${V}개 (=각기둥과 같음)`,
             rule: `n각뿔대 개수 = n각기둥 개수 (단, 옆면은 사다리꼴!)`,
-            formulaHTML: `• <strong>각기둥 vs 각뿔대 차이점</strong>:<br/>&nbsp;&nbsp;1) <strong>각기둥</strong>: 두 밑면이 평행하고 <strong>합동(크기 같음)</strong>, 옆면은 <strong>직사각형</strong><br/>&nbsp;&nbsp;2) <strong>각뿔대</strong>: 두 밑면이 평행하지만 <strong>크기가 다름</strong>, 옆면은 <strong>사다리꼴</strong>`,
-            notes: `• <strong>[함정 주의]</strong>: “각뿔대의 두 밑면은 서로 합동이다?” ➔ <strong>거짓(❌)</strong>! 평행하기만 할 뿐 윗밑면이 아랫밑면보다 작습니다.`,
+            formulaHTML: `• <strong>각기둥과 각뿔대의 차이점</strong>:<br/>&nbsp;&nbsp;1) <strong>각기둥</strong>: 두 밑면이 평행하고 <strong>합동(크기 같음)</strong>, 옆면은 <strong>직사각형</strong><br/>&nbsp;&nbsp;2) <strong>각뿔대</strong>: 두 밑면이 평행하지만 <strong>크기가 다름</strong>, 옆면은 <strong>사다리꼴</strong>`,
+            notes: `• <strong>[함정 주의]</strong>: “각뿔대의 두 밑면은 서로 합동이다.”는 <strong>거짓(❌)</strong>입니다. 평행하기만 할 뿐 윗밑면이 아랫밑면보다 작습니다.`,
             bars: [
               { label: `크기가 다른 두 밑면(2개)`, weight: 2 / F, color: '#fbbf24' },
               { label: `사다리꼴 옆면 ${n}개 (총 ${F}면체)`, weight: n / F, color: '#34d399' }
@@ -208,25 +208,25 @@ window.addEventListener('DOMContentLoaded', function () {
           const pData = [
             { name: '정사면체 (4면체)', faceShape: '정삼각형', perV: 3, F: 4, E: 6, V: 4, note: '정삼각형 3개가 한 꼭짓점에 모임 (60°×3=180°)' },
             { name: '정육면체 (6면체)', faceShape: '정사각형', perV: 3, F: 6, E: 12, V: 8, note: '정사각형 3개가 한 꼭짓점에 모임 (90°×3=270°)' },
-            { name: '정팔면체 (8면체)', faceShape: '정삼각형', perV: 4, F: 8, E: 12, V: 6, note: '정삼각형 4개가 한 꼭짓점에 모임 (60°×4=240°) — 사각뿔 2개 합체!' },
+            { name: '정팔면체 (8면체)', faceShape: '정삼각형', perV: 4, F: 8, E: 12, V: 6, note: '정삼각형 4개가 한 꼭짓점에 모임 (60°×4=240°) — 사각뿔 2개를 밑면끼리 붙인 모양' },
             { name: '정십이면체 (12면체)', faceShape: '정오각형', perV: 3, F: 12, E: 30, V: 20, note: '정오각형 3개가 한 꼭짓점에 모임 (108°×3=324°)' },
             { name: '정이십면체 (20면체)', faceShape: '정삼각형', perV: 5, F: 20, E: 30, V: 12, note: '정삼각형 5개가 한 꼭짓점에 모임 (60°×5=300°)' }
           ][idx];
           return {
-            badge: `탐구 1-D · 정다면체 5종 완벽 비교 — 현재 선택: 『${pData.name}』`,
-            hint: `프리셋 버튼(3~6)을 눌러 5가지 정다면체를 바꿔보세요! <strong class="text-amber-300">${pData.name}</strong>는 모든 면이 합동인 <strong class="text-sky-300">${pData.faceShape}</strong>이고, 한 꼭짓점에 면이 <strong class="text-pink-300">${pData.perV}개씩</strong> 모입니다!`,
+            badge: `탐구 1-D · 정다면체 5가지 비교 — 현재 선택: 『${pData.name}』`,
+            hint: `선택 버튼(3~6)을 눌러 5가지 정다면체를 바꿔 보세요! <strong class="text-amber-300">${pData.name}</strong>는 모든 면이 합동인 <strong class="text-sky-300">${pData.faceShape}</strong>이고, 한 꼭짓점에 면이 <strong class="text-pink-300">${pData.perV}개씩</strong> 모입니다!`,
             actionTxt: '🎬 한 꼭짓점에 모인 면 강조',
-            dim1Name: '정다면체 종류 (3:사,4:육,5:팔,6:십이/이십)', dim2Name: '6번에서 3~4:십이 / 5~6:이십',
-            nPrefix: '종류 ', hPrefix: '타입 ',
+            dim1Name: '정다면체 종류 (3:정사면체, 4:정육면체, 5:정팔면체, 6:정십이면체·정이십면체)', dim2Name: '종류 6을 고른 뒤: 3~4=정십이면체, 5~6=정이십면체',
+            nPrefix: '종류 ', hPrefix: '유형 ',
             parts: [
               { id: 0, name: `🟡 면의 모양과 개수 (F = ${pData.F}개)`, desc: `모든 면이 합동인 ${pData.faceShape}`, val: `${pData.F}면 (${pData.faceShape})`, color: '#fbbf24', ok: true },
               { id: 1, name: `🩷 한 꼭짓점에 모인 면의 개수 (${pData.perV}개)`, desc: pData.note, val: `꼭짓점당 ${pData.perV}면`, color: '#f472b6', ok: true },
-              { id: 2, name: `🔵 꼭짓점(V=${pData.V}) · 모서리(E=${pData.E})`, desc: `오일러 공식 V - E + F = ${pData.V} - ${pData.E} + ${pData.F} = 2`, val: `V=${pData.V}, E=${pData.E}`, color: '#38bdf8', ok: true }
+              { id: 2, name: `🔵 꼭짓점(V=${pData.V}) · 모서리(E=${pData.E})`, desc: `(꼭짓점의 수) − (모서리의 수) + (면의 수): V − E + F = ${pData.V} − ${pData.E} + ${pData.F} = 2`, val: `V=${pData.V}, E=${pData.E}`, color: '#38bdf8', ok: true }
             ],
             totalRes: `${pData.name}: 면 ${pData.F}개 | 모서리 ${pData.E}개 | 꼭짓점 ${pData.V}개`,
             rule: `정다면체 조건: ① 모든 면이 합동인 정다각형 ② 꼭짓점에 모인 면 개수 동일`,
-            formulaHTML: `• <strong>면이 정삼각형인 정다면체 3형제</strong>: 정사면체(3개 모임), 정팔면체(4개 모임), 정이십면체(5개 모임)<br/>• <strong>짝꿍(쌍대) 관계</strong>: 정육면체(F=6, V=8) ↔ 정팔면체(F=8, V=6) / 정십이면체(F=12, V=20) ↔ 정이십면체(F=20, V=12)`,
-            notes: `• <strong>[단골 함정]</strong>: 삼각뿔 2개를 붙인 육면체는 모든 면이 정삼각형이어도 한 꼭짓점에 모인 면의 개수가 3개, 4개로 달라서 <strong>정다면체가 아닙니다!</strong>`,
+            formulaHTML: `• <strong>면이 정삼각형인 정다면체 3가지</strong>: 정사면체(3개 모임), 정팔면체(4개 모임), 정이십면체(5개 모임)<br/>• <strong>면의 수와 꼭짓점의 수가 서로 바뀌어 있는 정다면체</strong>: 정육면체(면 6개, 꼭짓점 8개) ↔ 정팔면체(면 8개, 꼭짓점 6개) / 정십이면체(면 12개, 꼭짓점 20개) ↔ 정이십면체(면 20개, 꼭짓점 12개)`,
+            notes: `• <strong>[함정]</strong>: 삼각뿔 2개를 붙인 육면체는 모든 면이 정삼각형이어도 한 꼭짓점에 모인 면의 개수가 3개, 4개로 달라서 <strong>정다면체가 아닙니다.</strong>`,
             bars: [
               { label: `면 F=${pData.F}`, weight: 0.33, color: '#fbbf24' },
               { label: `꼭짓점당 ${pData.perV}개 모임`, weight: 0.34, color: '#f472b6' },
@@ -238,29 +238,29 @@ window.addEventListener('DOMContentLoaded', function () {
         const kTri = n; // 한 꼭짓점에 모인 정삼각형 개수: 3, 4, 5, 6
         const sumDeg = kTri * 60;
         const canFold = sumDeg < 360;
-        const resultSolid = kTri === 3 ? '정사면체 완성!' : kTri === 4 ? '정팔면체 꼭짓점 완성!' : kTri === 5 ? '정이십면체 꼭짓점 완성!' : '❌ 360° 평면 타일 (입체 불가!)';
+        const resultSolid = kTri === 3 ? '정사면체가 만들어짐' : kTri === 4 ? '정팔면체가 만들어짐' : kTri === 5 ? '정이십면체가 만들어짐' : '❌ 360°가 되어 평평해짐 (입체 불가)';
         return {
-          badge: `탐구 1-E · 왜 정다면체는 우주에 딱 5개뿐일까? — 『꼭짓점 내각의 합 < 360°』 실험`,
-          hint: `밑면 버튼(3, 4, 5, 6)으로 한 꼭짓점에 모이는 정삼각형 개수를 바꾸고 접어보세요! <strong class="text-amber-300">${kTri}개가 모이면 ${sumDeg}°</strong>가 되어 ${canFold ? `<strong class="text-emerald-300">${360 - sumDeg}°의 빈틈이 오므라들며 뾰족한 입체 꼭짓점이 만들어집니다!</strong>` : `<strong class="text-rose-400">360°가 꽉 차버려 평평한 방바닥 타일이 되므로 절대 입체로 접어 올릴 수 없습니다!</strong>`}`,
-          actionTxt: canFold ? (state.animProg > 0.5 ? '🎬 평면으로 펼쳐 각도 합 보기' : '🎬 오므려서 입체 꼭짓점 만들기!') : '❌ 360° 꽉 참 (접기 불가능!)',
-          dim1Name: '꼭짓점에 모인 정삼각형 수', dim2Name: '비교 옵션',
+          badge: `탐구 1-E · 정다면체는 왜 5가지뿐일까? — 『한 꼭짓점에 모인 각의 합 < 360°』`,
+          hint: `버튼(3, 4, 5, 6)으로 한 꼭짓점에 모이는 정삼각형의 개수를 바꾸고 접어 보세요! <strong class="text-amber-300">${kTri}개가 모이면 ${sumDeg}°</strong>가 되어 ${canFold ? `<strong class="text-emerald-300">360°보다 ${360 - sumDeg}° 작으므로 빈틈이 오므라들며 뾰족한 입체의 꼭짓점이 만들어집니다!</strong>` : `<strong class="text-rose-400">360°가 되어 평평해지므로 입체로 접어 올릴 수 없습니다!</strong>`}`,
+          actionTxt: canFold ? (state.animProg > 0.5 ? '🎬 평면으로 펼쳐 각도 합 보기' : '🎬 오므려서 입체의 꼭짓점 만들기') : '❌ 360°가 됨 (접을 수 없음)',
+          dim1Name: '꼭짓점에 모인 정삼각형 수', dim2Name: '비교할 항목',
           nPrefix: '', hPrefix: '',
           parts: [
             { id: 0, name: `📐 정삼각형 1개의 내각 = 60°`, desc: `한 꼭짓점에 정삼각형 ${kTri}개가 모임`, val: `60° × ${kTri}개`, color: '#38bdf8', ok: true },
-            { id: 1, name: `🎯 모인 각의 총합 = ${sumDeg}°`, desc: canFold ? `360°보다 ${360 - sumDeg}° 작아서 입체로 접힘!` : `360°와 같아서 평면이 됨 (입체 불가!)`, val: `${sumDeg}° ${canFold ? '< 360° ⭕' : '= 360° ❌'}`, color: canFold ? '#34d399' : '#f43f5e', ok: canFold },
+            { id: 1, name: `🎯 모인 각의 총합 = ${sumDeg}°`, desc: canFold ? `360°보다 ${360 - sumDeg}° 작아서 입체로 접힘` : `360°와 같아서 평면이 됨 (입체 불가)`, val: `${sumDeg}° ${canFold ? '< 360° ⭕' : '= 360° ❌'}`, color: canFold ? '#34d399' : '#f43f5e', ok: canFold },
             { id: 2, name: `🏛️ 만들어지는 정다면체`, desc: resultSolid, val: resultSolid, color: '#fbbf24', ok: canFold }
           ],
           totalRes: `60° × ${kTri}개 = ${sumDeg}° ➔ ${resultSolid}`,
           rule: `입체 꼭짓점 생성 조건: (한 꼭짓점에 모인 다각형 내각의 합) < 360°`,
           formulaHTML: `• <strong>정삼각형(60°)</strong>: 3개(180° ⭕), 4개(240° ⭕), 5개(300° ⭕), <strong>6개(360° ❌ 불가능!)</strong><br/>• <strong>정사각형(90°)</strong>: 3개(270° ⭕ 정육면체), <strong>4개(360° ❌ 불가능!)</strong><br/>• <strong>정오각형(108°)</strong>: 3개(324° ⭕ 정십이면체), <strong>4개(432° ❌ 불가능!)</strong><br/>• <strong>정육각형(120°) 이상</strong>: 최소 3개만 모여도 $120^\\circ \\times 3 = 360^\\circ$라 정다면체를 아예 만들 수 없습니다!`,
-          notes: `• 이 하나의 실험으로 <strong>“왜 세상 모든 정다면체는 5개뿐인가?”</strong>가 완벽히 증명됩니다! (정삼각형에서 3종 + 정사각형에서 1종 + 정오각형에서 1종 = 총 5종!)`,
+          notes: `• 한 꼭짓점에 모인 각의 합이 360°보다 작아야 한다는 조건으로 <strong>“정다면체는 왜 5가지뿐인가?”</strong>를 설명할 수 있습니다. (정삼각형에서 3가지 + 정사각형에서 1가지 + 정오각형에서 1가지 = 모두 5가지)`,
           bars: canFold
             ? [
                 { label: `정삼각형 ${kTri}개 합 (${sumDeg}°)`, weight: sumDeg / 360, color: '#38bdf8' },
                 { label: `✨접히는 여유 각도 (${360 - sumDeg}°)`, weight: (360 - sumDeg) / 360, color: '#fbbf24' }
               ]
             : [
-                { label: `❌ 정삼각형 6개 = 360° 꽉 참 (빈틈 0° ➔ 절대 입체로 안 접힘!)`, weight: 1.0, color: '#f43f5e' }
+                { label: `❌ 정삼각형 6개 = 360° (남는 각 0° ➔ 입체로 접히지 않음)`, weight: 1.0, color: '#f43f5e' }
               ]
         };
       }
@@ -270,20 +270,20 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'cubeCross' || sub === 'cubeStairs') {
           const isCross = sub === 'cubeCross';
           return {
-            badge: isCross ? '탐구 2-A · 정육면체 (1-4-1 기본 전개도) & 지퍼 모서리 맞물림' : '탐구 2-B · 정육면체 (2-2-2 계단형 전개도) 평행면 & 꼭짓점 추적',
-            hint: `전개도에서 <strong class="text-amber-300">같은 색깔(한 칸 건너뛴 면)</strong>끼리 평행하게 마주보며, <strong class="text-sky-300">90°로 꺾인 오목 모퉁이에서 같은 칸수만큼 떨어진 모서리(ㄱ-ㄷ)</strong>끼리 지퍼처럼 합쳐집니다!`,
+            badge: isCross ? '탐구 2-A · 정육면체 (1-4-1 십자형 전개도) — 접으면 맞붙는 모서리' : '탐구 2-B · 정육면체 (2-2-2 계단형 전개도) — 평행한 면과 꼭짓점 찾기',
+            hint: `전개도에서 <strong class="text-amber-300">같은 색깔(한 칸 건너뛴 면)</strong>끼리는 평행하게 마주 보며, <strong class="text-sky-300">직각으로 오목하게 꺾인 곳에서 같은 칸 수만큼 떨어진 모서리(ㄱ-ㄷ)</strong>끼리는 접으면 서로 맞붙습니다!`,
             actionTxt: state.animProg > 0.5 ? '🎬 평면 전개도로 펼치기' : '🎬 정육면체로 접기',
-            dim1Name: '모서리 길이 스케일', dim2Name: '관찰 각도 프리셋',
-            nPrefix: 'a = ', hPrefix: '뷰 ',
+            dim1Name: '모서리의 길이', dim2Name: '보는 각도',
+            nPrefix: 'a = ', hPrefix: '시점 ',
             parts: [
-              { id: 0, name: '🟡 평행한 마주보는 면 쌍 ① (A ↔ F)', desc: '전개도에서 직선으로 한 칸 건너뛴 면', val: 'A ∥ F (마주봄)', color: '#fbbf24', ok: true },
-              { id: 1, name: '🔵 평행한 마주보는 면 쌍 ② (B ↔ D)', desc: '왼면(B)과 오른면(D) 평행', val: 'B ∥ D (마주봄)', color: '#38bdf8', ok: true },
-              { id: 2, name: '🩷 평행한 마주보는 면 쌍 ③ (C ↔ E)', desc: '바닥면(C)과 뚜껑면(E) 평행', val: 'C ∥ E (마주봄)', color: '#f472b6', ok: true }
+              { id: 0, name: '🟡 마주 보는 평행한 면 쌍 ① (A ↔ F)', desc: '전개도에서 직선으로 한 칸 건너뛴 면', val: 'A ∥ F (마주봄)', color: '#fbbf24', ok: true },
+              { id: 1, name: '🔵 마주 보는 평행한 면 쌍 ② (B ↔ D)', desc: '왼면(B)과 오른면(D) 평행', val: 'B ∥ D (마주봄)', color: '#38bdf8', ok: true },
+              { id: 2, name: '🩷 마주 보는 평행한 면 쌍 ③ (C ↔ E)', desc: '바닥면(C)과 뚜껑면(E) 평행', val: 'C ∥ E (마주봄)', color: '#f472b6', ok: true }
             ],
-            totalRes: '평행면 3쌍: (A↔F), (B↔D), (C↔E) | 지퍼 모서리 일치!',
-            rule: '한 칸 건너뛴 면 = 평행(마주봄), 90° 오목 모퉁이 = 지퍼 결합!',
-            formulaHTML: `• <strong>[평행한 면 1초 찾기]</strong>: 일직선에서 <strong>한 칸 건너뛴 면</strong>, 또는 'ㄱ'자 모양에서 대각선 끝 면끼리 마주봅니다.<br/>• <strong>[만나는 점·모서리 지퍼 법칙]</strong>: $90^\\circ$로 꺾인 모퉁이 점에서 출발해 한 칸씩 지퍼를 잠그듯 나아가면 겹치는 꼭짓점을 100% 찾습니다!`,
-            notes: `• 상단 관찰 렌즈에서 <strong>[📐 지퍼·최단거리선]</strong>을 켜고 접었다 펼쳐보세요! 노란색 모서리 두 개가 공중에서 만나 하나로 합쳐지는 궤적이 보입니다.`,
+            totalRes: '평행한 면 3쌍: (A↔F), (B↔D), (C↔E) | 접으면 맞붙는 모서리가 있음',
+            rule: '한 칸 건너뛴 면은 평행(마주 봄), 직각으로 오목하게 꺾인 곳의 모서리는 접으면 맞붙음',
+            formulaHTML: `• <strong>평행한 면 찾기</strong>: 일직선에서 <strong>한 칸 건너뛴 면</strong>, 또는 'ㄱ'자 모양에서 대각선 끝 면끼리 마주 봅니다.<br/>• <strong>겹치는 꼭짓점과 맞붙는 모서리 찾기</strong>: 직각으로 꺾인 곳의 꼭짓점에서 출발해 양쪽으로 한 칸씩 나아가면서 맞붙는 모서리를 따라가면 겹치는 꼭짓점을 찾을 수 있습니다.`,
+            notes: `• ‘표시할 내용’에서 <strong>[📐 맞붙는 모서리·최단 거리선]</strong>을 선택하고 접었다 펼쳐 보세요! 노란색 모서리 두 개가 만나 하나가 되는 모습이 보입니다.`,
             bars: [
               { label: '쌍① (A↔F)', weight: 0.33, color: '#fbbf24' },
               { label: '쌍② (B↔D)', weight: 0.33, color: '#38bdf8' },
@@ -293,33 +293,33 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         if (sub === 'badNet') {
           return {
-            badge: '탐구 2-C · ❌ 안 접히는 가짜 전개도 (면 겹침 충돌 실험!)',
-            hint: `정사각형 6개를 이어 붙였다고 다 정육면체가 될까요? 슬라이더를 당겨 접어보세요! <strong class="text-rose-400">위쪽 두 면이 똑같은 앞자리로 꺾이며 빨갛게 충돌(겹침)</strong>하고 뒷면은 뻥 뚫립니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 다시 펼쳐서 원인 분석' : '🎬 접어서 겹침 충돌 확인!',
-            dim1Name: '모서리 스케일', dim2Name: '충돌 각도 제어',
+            badge: '탐구 2-C · ❌ 정육면체가 안 되는 전개도 (면이 겹침)',
+            hint: `정사각형 6개를 이어 붙였다고 다 정육면체가 될까요? 슬라이더를 당겨 접어 보세요! <strong class="text-rose-400">위쪽 두 면이 같은 앞면 자리로 접혀 빨갛게 겹치고, 뒷면 자리는 비게 됩니다.</strong>`,
+            actionTxt: state.animProg > 0.5 ? '🎬 다시 펼쳐서 원인 찾기' : '🎬 접어서 겹치는 면 확인',
+            dim1Name: '모서리 스케일', dim2Name: '접는 각도',
             nPrefix: 'a = ', hPrefix: '단계 ',
             parts: [
-              { id: 0, name: '🔵 정상적으로 자리를 잡는 4개 면', desc: '바닥·왼·오른·뚜껑 4개 면은 정상 폴딩', val: '4개 면 정상', color: '#38bdf8', ok: true },
-              { id: 1, name: '⚠️ 같은 자리를 차지하며 충돌하는 2개 면!', desc: '나란히 붙은 두 면이 같은 앞면 위치에서 겹침!', val: '중복 충돌 ❌', color: '#f43f5e', ok: false },
-              { id: 2, name: '❌ 비어버린 뒷면 구멍', desc: '면 2개가 겹치는 바람에 뒷면이 뚫림', val: '정육면체 불가', color: '#94a3b8', ok: false }
+              { id: 0, name: '🔵 정상적으로 자리를 잡는 4개 면', desc: '바닥·왼쪽·오른쪽·뚜껑 4개 면은 정상적으로 접힘', val: '4개 면 정상', color: '#38bdf8', ok: true },
+              { id: 1, name: '⚠️ 같은 자리로 접혀 겹치는 2개 면', desc: '나란히 붙은 두 면이 같은 앞면 위치로 접혀 겹침', val: '겹침 ❌', color: '#f43f5e', ok: false },
+              { id: 2, name: '❌ 비어 있는 뒷면', desc: '면 2개가 겹쳐서 뒷면 자리가 빔', val: '정육면체 불가', color: '#94a3b8', ok: false }
             ],
-            totalRes: '정육면체 생성 불가능 ❌ (앞면 2개 중복 + 뒷면 결손)',
-            rule: '정육면체 전개도는 총 11가지만 가능! (2×2 네모나 같은 쪽 날개 2개는 불가)',
-            formulaHTML: `• <strong>[가짜 전개도 1초 감별법]</strong>:<br/>&nbsp;&nbsp;① 4칸 기둥 줄기에서 <strong>같은 쪽(위쪽에만 2개)에 뚜껑이 2개</strong> 붙어 있으면 100% 겹칩니다!<br/>&nbsp;&nbsp;② <strong>$2\\times2$ 바둑판 모양(4칸 뭉치)</strong>이나 <strong>5칸 일직선</strong>이 있으면 절대 안 접힙니다!`,
-            notes: `• 정육면체 전개도가 되는 족보는 <strong>① 1-4-1형(6가지) ② 2-3-1형(3가지) ③ 2-2-2 계단형(1가지) ④ 3-3형(1가지)</strong> 총 11가지뿐입니다!`,
+            totalRes: '정육면체를 만들 수 없음 ❌ (앞면 자리에 면 2개가 겹침 + 뒷면이 없음)',
+            rule: '정육면체의 전개도는 모두 11가지입니다. (2×2 정사각형 모양이 있거나, 4칸 한 줄의 같은 쪽에 2칸이 붙은 모양은 안 됨)',
+            formulaHTML: `• <strong>정육면체가 되지 않는 전개도를 가려내는 방법</strong>:<br/>&nbsp;&nbsp;① 4칸 한 줄의 같은 쪽(위쪽에만)에 2칸이 붙어 있으면 면이 겹칩니다!<br/>&nbsp;&nbsp;② <strong>$2\\times2$ 정사각형 모양(4칸 뭉치)</strong>이나 <strong>5칸 일직선</strong>이 있으면 정육면체로 접히지 않습니다!`,
+            notes: `• 정육면체의 전개도는 <strong>① 1-4-1형(6가지) ② 2-3-1형(3가지) ③ 2-2-2 계단형(1가지) ④ 3-3형(1가지)</strong> 모두 11가지입니다!`,
             bars: [
-              { label: '정상 폴딩 4면', weight: 0.67, color: '#38bdf8' },
-              { label: '⚠️ 앞면 자리 중복 충돌 (2면)', weight: 0.33, color: '#f43f5e' }
+              { label: '정상적으로 접히는 4면', weight: 0.67, color: '#38bdf8' },
+              { label: '⚠️ 앞면 자리에 겹치는 면 (2면)', weight: 0.33, color: '#f43f5e' }
             ]
           };
         }
         if (sub === 'diceArrow') {
           return {
-            badge: '탐구 2-D · 🎲 주사위 전개도 (마주보는 눈의 합 = 7) & 화살표 방향 추적',
+            badge: '탐구 2-D · 🎲 주사위 전개도 (마주 보는 눈의 합 = 7)와 화살표 방향',
             hint: `주사위는 <strong class="text-amber-300">마주보는 평행한 두 면의 눈의 합이 항상 7</strong>입니다! (1↔6, 2↔5, 3↔4). 접었을 때 각 면의 숫자와 화살표 무늬가 어느 방향을 가리키는지 확인하세요!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 주사위 전개도 펼치기' : '🎬 주사위 접어서 눈 합 7 확인!',
-            dim1Name: '주사위 크기', dim2Name: '비교 옵션',
-            nPrefix: '크기 ', hPrefix: '옵션 ',
+            actionTxt: state.animProg > 0.5 ? '🎬 주사위 전개도 펼치기' : '🎬 주사위로 접어서 눈의 합 7 확인',
+            dim1Name: '주사위 크기', dim2Name: '비교할 항목',
+            nPrefix: '크기 ', hPrefix: '항목 ',
             parts: [
               { id: 0, name: '🟡 바닥(1) ↔ 뚜껑(6) 마주봄', desc: '1 + 6 = 7 (한 칸 건너뛴 면)', val: '1 + 6 = 7 ⭕', color: '#fbbf24', ok: true },
               { id: 1, name: '🔵 왼면(2) ↔ 오른면(5) 마주봄', desc: '2 + 5 = 7 (한 칸 건너뛴 면)', val: '2 + 5 = 7 ⭕', color: '#38bdf8', ok: true },
@@ -327,8 +327,8 @@ window.addEventListener('DOMContentLoaded', function () {
             ],
             totalRes: '마주보는 눈의 합 = (1+6) = (2+5) = (3+4) = 모두 7!',
             rule: '주사위 법칙: 평행한 두 면(한 칸 건너뛴 면)의 숫자 합 = 7',
-            formulaHTML: `• 전개도에서 빈칸 $A, B, C$에 들어갈 주사위 눈을 구할 때는:<br/>&nbsp;&nbsp;1단계: 각 면에서 <strong>한 칸 건너뛴 평행짝</strong>을 찾는다.<br/>&nbsp;&nbsp;2단계: <strong>$7 - (\\text{맞은편 숫자})$</strong>를 빼면 즉시 답이 나옵니다!`,
-            notes: `• 우측 상단 <strong>2D 전개도 미니뷰</strong>에 표시된 주사위 숫자(1~6) 배치와 3D 주사위의 위·아래·양옆 숫자를 대조해 보세요!`,
+            formulaHTML: `• 전개도에서 빈칸 $A, B, C$에 들어갈 주사위 눈을 구할 때는:<br/>&nbsp;&nbsp;1단계: 각 면에서 <strong>한 칸 건너뛴 마주 보는 면</strong>을 찾는다.<br/>&nbsp;&nbsp;2단계: <strong>$7 - (\\text{마주 보는 면의 눈})$</strong>을 계산하면 구하는 눈의 수가 나옵니다!`,
+            notes: `• <strong>단면·전개도 그림</strong>에 표시된 주사위 눈(1~6)의 배치와 입체 주사위의 위·아래·양옆의 눈을 비교해 보세요!`,
             bars: [
               { label: '1 ↔ 6 (합 7)', weight: 0.33, color: '#fbbf24' },
               { label: '2 ↔ 5 (합 7)', weight: 0.33, color: '#38bdf8' },
@@ -339,36 +339,36 @@ window.addEventListener('DOMContentLoaded', function () {
         // octaNet: 정팔면체 & 정사각뿔 전개도 폴딩
         const isOcta = n >= 5;
         return {
-          badge: isOcta ? '탐구 2-E · 💎 정팔면체 전개도 폴딩 (정삼각형 8개 ➔ 다이아몬드 합체!)' : '탐구 2-E · ⛺ 정사각뿔 별 모양 전개도 폴딩 (밑면 1개 + 삼각형 4개)',
-          hint: `밑면 버튼에서 <strong class="text-sky-300">3~4를 누르면 정사각뿔</strong>, <strong class="text-amber-300">5~6을 누르면 정팔면체</strong> 폴딩으로 전환됩니다! 삼각형 옆면들이 접혀 올라와 꼭짓점에서 하나로 만나는 과정을 관찰하세요!`,
+          badge: isOcta ? '탐구 2-E · 💎 정팔면체 전개도 접기 (정삼각형 8개 ➔ 사각뿔 2개를 붙인 모양)' : '탐구 2-E · ⛺ 정사각뿔 전개도 접기 (밑면 1개 + 삼각형 4개)',
+          hint: `버튼에서 <strong class="text-sky-300">3~4를 누르면 정사각뿔</strong>, <strong class="text-amber-300">5~6을 누르면 정팔면체</strong> 전개도로 바뀝니다! 삼각형들이 접혀 올라와 꼭짓점에서 하나로 만나는 과정을 살펴보세요!`,
           actionTxt: state.animProg > 0.5 ? '🎬 평면 전개도로 펼치기' : '🎬 입체로 접어 올리기',
-          dim1Name: '도형 선택 (3~4:사각뿔 / 5~6:정팔면체)', dim2Name: '모선 길이 비율',
+          dim1Name: '도형 선택 (3~4:사각뿔 / 5~6:정팔면체)', dim2Name: '모선의 길이',
           nPrefix: '선택 ', hPrefix: '비율 ',
           parts: isOcta
             ? [
-                { id: 0, name: '🟡 위쪽 사각뿔을 이루는 정삼각형 4개', desc: '위 꼭짓점 V₁에서 4개 면이 만남', val: '상단 4면', color: '#fbbf24', ok: true },
-                { id: 1, name: '🔵 아래쪽 사각뿔을 이루는 정삼각형 4개', desc: '아래 꼭짓점 V₂에서 4개 면이 만남', val: '하단 4면', color: '#38bdf8', ok: true },
+                { id: 0, name: '🟡 위쪽 사각뿔을 이루는 정삼각형 4개', desc: '위 꼭짓점 V₁에서 4개 면이 만남', val: '위쪽 4면', color: '#fbbf24', ok: true },
+                { id: 1, name: '🔵 아래쪽 사각뿔을 이루는 정삼각형 4개', desc: '아래 꼭짓점 V₂에서 4개 면이 만남', val: '아래쪽 4면', color: '#38bdf8', ok: true },
                 { id: 2, name: '🎯 정팔면체 완성 (F=8, E=12, V=6)', desc: '한 꼭짓점에 정삼각형이 4개씩 모임!', val: '정팔면체!', color: '#34d399', ok: true }
               ]
             : [
                 { id: 0, name: '🔵 정사각형 밑면 (단 1개)', desc: '가운데 바닥을 이루는 정사각형', val: '밑면 1개', color: '#38bdf8', ok: true },
-                { id: 1, name: '🩷 이등변삼각형 옆면 4개', desc: '접어 올리면 꼭짓점 4개가 V 하나로 합체!', val: '옆면 4개', color: '#f472b6', ok: true },
-                { id: 2, name: '🎯 정사각뿔 완성 (5면체: F=5, E=8, V=5)', desc: '전개도의 바깥 꼭짓점 4개가 1개로 모임', val: '꼭짓점 합체!', color: '#fbbf24', ok: true }
+                { id: 1, name: '🩷 이등변삼각형 옆면 4개', desc: '접어 올리면 꼭짓점 4개가 V 하나로 모임', val: '옆면 4개', color: '#f472b6', ok: true },
+                { id: 2, name: '🎯 정사각뿔 완성 (5면체: F=5, E=8, V=5)', desc: '전개도의 바깥 꼭짓점 4개가 1개로 모임', val: '꼭짓점이 모임', color: '#fbbf24', ok: true }
               ],
           totalRes: isOcta ? '정팔면체 (F=8, E=12, V=6, 평행면 4쌍)' : '정사각뿔 (F=5, E=8, V=5)',
-          rule: isOcta ? '정팔면체 = 정사각뿔 2개를 밑면끼리 맞붙인 다이아몬드!' : '전개도의 옆면 삼각형 꼭짓점들은 접으면 1개의 각뿔 꼭짓점으로 모인다!',
+          rule: isOcta ? '정팔면체는 정사각뿔 2개를 밑면끼리 붙인 모양입니다.' : '전개도의 옆면 삼각형 꼭짓점들은 접으면 1개의 각뿔 꼭짓점으로 모인다!',
           formulaHTML: isOcta
             ? `• <strong>정팔면체 평행면 찾기</strong>: 띠 모양 전개도에서 <strong>두 칸 건너뛴 정삼각형</strong>끼리 평행하게 마주봅니다 (총 4쌍).`
-            : `• <strong>사각뿔 전개도 특징</strong>: 평면 전개도에서는 꼭짓점이 8개처럼 보이지만, 접으면 바깥쪽 삼각형 끝점 4개가 <strong>맨 위 꼭짓점 1개로 합쳐져 총 5개</strong>가 됩니다!`,
+            : `• <strong>사각뿔 전개도 특징</strong>: 평면 전개도에서는 꼭짓점이 8개처럼 보이지만, 접으면 바깥쪽 삼각형 끝점 4개가 <strong>맨 위 꼭짓점 1개로 모여 모두 5개</strong>가 됩니다!`,
           notes: `• 버튼 <strong>3·4(정사각뿔)</strong>와 <strong>5·6(정팔면체)</strong>을 번갈아 눌러 두 도형의 전개도와 입체 구조를 비교해 보세요!`,
           bars: isOcta
             ? [
-                { label: '상단 정삼각형 4개', weight: 0.5, color: '#fbbf24' },
-                { label: '하단 정삼각형 4개 (합체=정팔면체)', weight: 0.5, color: '#38bdf8' }
+                { label: '위쪽 정삼각형 4개', weight: 0.5, color: '#fbbf24' },
+                { label: '아래쪽 정삼각형 4개 (합치면 정팔면체)', weight: 0.5, color: '#38bdf8' }
               ]
             : [
                 { label: '정사각형 밑면 1개', weight: 0.35, color: '#38bdf8' },
-                { label: '삼각형 옆면 4개 (꼭짓점 1개로 합체)', weight: 0.65, color: '#f472b6' }
+                { label: '삼각형 옆면 4개 (꼭짓점 1개로 모임)', weight: 0.65, color: '#f472b6' }
               ]
         };
       }
@@ -379,27 +379,27 @@ window.addEventListener('DOMContentLoaded', function () {
           // n=3: 원뿔(직각삼각형), n=4: 원기둥(직사각형), n=5: 원뿔대(직각사다리꼴), n=6: 구(반원)
           const idx = n - 3;
           const info = [
-            { name: '원뿔 (Cone)', flat: '직각삼각형', secA: '이등변삼각형', secP: '원 (크기 다름)' },
-            { name: '원기둥 (Cylinder)', flat: '직사각형', secA: '직사각형', secP: '합동인 원 (크기 일정!)' },
-            { name: '원뿔대 (Frustum)', flat: '직각사다리꼴', secA: '등변사다리꼴', secP: '원 (크기 다름)' },
-            { name: '구 (Sphere)', flat: '반원', secA: '원 (가장 큰 대원)', secP: '원' }
+            { name: '원뿔', flat: '직각삼각형', secA: '이등변삼각형', secP: '원 (크기 다름)' },
+            { name: '원기둥', flat: '직사각형', secA: '직사각형', secP: '합동인 원 (크기가 일정)' },
+            { name: '원뿔대', flat: '사다리꼴', secA: '사다리꼴', secP: '원 (크기 다름)' },
+            { name: '구', flat: '반원', secA: '원 (가장 큰 원)', secP: '원' }
           ][idx];
           const deg = Math.round(state.animProg * 360);
           return {
-            badge: `탐구 3-A · 360° 회전체 스핀 생성기 — 『${info.flat}』 1바퀴 회전 ➔ 『${info.name}』 (현재 ${deg}°)`,
-            hint: `슬라이더를 움직이거나 <strong class="text-amber-300">[🎬 회전 실행]</strong>을 눌러보세요! 회전축 $l$에 붙은 노란색 <strong class="text-amber-300">${info.flat}</strong>이 $360^\\circ$ 돌면서 궤적을 남겨 <strong class="text-sky-300">${info.name}</strong>을 만들어냅니다! (버튼 3~6으로 도형 변경)`,
-            actionTxt: state.animProg > 0.5 ? '🎬 평면도형(0°)으로 되감기' : '🎬 360° 한 바퀴 회전 스핀!',
-            dim1Name: '회전체 선택 (3:원뿔,4:원기둥,5:원뿔대,6:구)', dim2Name: '도형 반지름/높이 비',
+            badge: `탐구 3-A · 평면도형을 360° 회전하여 회전체 만들기 — 『${info.flat}』 1바퀴 회전 ➔ 『${info.name}』 (현재 ${deg}°)`,
+            hint: `슬라이더를 움직이거나 <strong class="text-amber-300">실행 버튼(🎬)</strong>을 눌러 보세요! 회전축 $l$에 붙은 노란색 <strong class="text-amber-300">${info.flat}</strong>을 $360^\\circ$ 돌리면 만들어지는 회전체는 <strong class="text-sky-300">${info.name}</strong>입니다! (버튼 3~6으로 도형 변경)`,
+            actionTxt: state.animProg > 0.5 ? '🎬 평면도형(0°)으로 되감기' : '🎬 360° 한 바퀴 회전',
+            dim1Name: '회전체 선택 (3:원뿔,4:원기둥,5:원뿔대,6:구)', dim2Name: '도형의 반지름과 높이의 비',
             nPrefix: '도형 ', hPrefix: '크기 ',
             parts: [
               { id: 0, name: `🟡 회전시키는 원래 평면도형: ${info.flat}`, desc: `회전축 l에 한 변을 붙이고 360° 회전`, val: info.flat, color: '#fbbf24', ok: true },
-              { id: 1, name: `🔵 회전축을 품은 세로 단면: ${info.secA}`, desc: `원래 도형 2개가 좌우 대칭으로 붙은 모양!`, val: info.secA, color: '#38bdf8', ok: true },
-              { id: 2, name: `🟢 회전축에 수직인 가로 단면: ${info.secP}`, desc: `어느 높이를 수평으로 잘라도 무조건 원!`, val: '항상 원 ⭕', color: '#34d399', ok: true }
+              { id: 1, name: `🔵 회전축을 품은 세로 단면: ${info.secA}`, desc: `원래 도형과 그 선대칭 도형이 붙은 모양`, val: info.secA, color: '#38bdf8', ok: true },
+              { id: 2, name: `🟢 회전축에 수직인 가로 단면: ${info.secP}`, desc: `어느 높이를 수평으로 잘라도 항상 원`, val: '항상 원 ⭕', color: '#34d399', ok: true }
             ],
             totalRes: `${info.flat} 360° 회전 ➔ ${info.name} (현재 ${deg}° 회전)`,
             rule: `모든 회전체를 회전축에 수직으로 자른 단면은 항상 '원'이다!`,
-            formulaHTML: `• <strong>회전축을 포함하는 평면으로 자른 단면</strong> (좌우 선대칭 도형!):<br/>&nbsp;&nbsp;원기둥 ➔ <strong>직사각형</strong> &nbsp;|&nbsp; 원뿔 ➔ <strong>이등변삼각형</strong> &nbsp;|&nbsp; 원뿔대 ➔ <strong>등변사다리꼴</strong> &nbsp;|&nbsp; 구 ➔ <strong>원</strong>`,
-            notes: `• <strong>[구의 특이점]</strong>: 구는 어느 방향으로 잘라도 단면이 무조건 <strong>원</strong>이지만, 회전축은 <strong>무수히 많고</strong>, 곡면이 평면으로 안 펴져서 <strong>전개도를 그릴 수 없습니다!</strong>`,
+            formulaHTML: `• <strong>회전축을 포함하는 평면으로 자른 단면</strong> (좌우 선대칭 도형!):<br/>&nbsp;&nbsp;원기둥 ➔ <strong>직사각형</strong> &nbsp;|&nbsp; 원뿔 ➔ <strong>이등변삼각형</strong> &nbsp;|&nbsp; 원뿔대 ➔ <strong>사다리꼴</strong> &nbsp;|&nbsp; 구 ➔ <strong>원</strong>`,
+            notes: `• 구는 어느 방향으로 잘라도 단면이 항상 <strong>원</strong>이고, 회전축은 <strong>무수히 많으며</strong>, 곡면이 평면으로 펴지지 않아 <strong>전개도를 그릴 수 없습니다.</strong>`,
             bars: [
               { label: `현재 회전 각도 (${deg}° / 360°)`, weight: Math.max(0.08, state.animProg), color: '#fbbf24' },
               { label: `남은 각도 (${360 - deg}°)`, weight: Math.max(0.02, 1 - state.animProg), color: '#1e293b' }
@@ -409,25 +409,25 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'revSection') {
           const idx = n - 3;
           const names = ['원뿔', '원기둥', '원뿔대', '구'];
-          const axialNames = ['이등변삼각형 (밑변 2r, 높이 h)', '직사각형 (가로 2r, 세로 h)', '등변사다리꼴 (윗변 2r₁, 아랫변 2r₂)', '가장 큰 원 (반지름 r)'];
+          const axialNames = ['이등변삼각형 (밑변 2r, 높이 h)', '직사각형 (가로 2r, 세로 h)', '사다리꼴 (윗변 2r₁, 아랫변 2r₂)', '가장 큰 원 (반지름 r)'];
           return {
-            badge: `탐구 3-B · 🔪 회전체의 두 가지 단면 해부 — 『축을 품은 세로 단면』 vs 『수직 가로 단면』`,
-            hint: `슬라이더를 움직여 가로 절단면의 높이를 위아래로 이동해 보세요! <strong class="text-emerald-300">수직으로 자른 가로 단면은 언제나 원</strong>이고, <strong class="text-amber-300">회전축을 품은 세로 단면은 좌우 대칭인 ${axialNames[idx].split(' ')[0]}</strong>입니다!`,
-            actionTxt: '🎬 단면 슬라이서 위·아래 스캔',
-            dim1Name: '도형 선택 (3:원뿔,4:원기둥,5:원뿔대,6:구)', dim2Name: '치수 스케일',
+            badge: `탐구 3-B · 🔪 회전체의 두 가지 단면 — 『회전축을 포함한 세로 단면』과 『회전축에 수직인 가로 단면』`,
+            hint: `슬라이더를 움직여 가로 절단면의 높이를 위아래로 이동해 보세요! <strong class="text-emerald-300">수직으로 자른 가로 단면은 언제나 원</strong>이고, <strong class="text-amber-300">회전축을 포함한 세로 단면은 좌우 대칭인 ${axialNames[idx].split(' ')[0]}</strong>입니다!`,
+            actionTxt: '🎬 단면의 높이를 위아래로 움직이기',
+            dim1Name: '도형 선택 (3:원뿔,4:원기둥,5:원뿔대,6:구)', dim2Name: '치수',
             nPrefix: '도형 ', hPrefix: '치수 ',
             parts: [
               { id: 0, name: `🟡 회전축을 포함하는 세로 단면 (선대칭!)`, desc: axialNames[idx], val: axialNames[idx].split(' ')[0], color: '#fbbf24', ok: true },
-              { id: 1, name: `🟢 회전축에 수직인 가로 단면 (항상 원!)`, desc: idx === 1 ? '높이에 상관없이 항상 합동인 원!' : '자르는 높이에 따라 크기가 변하는 원!', val: '원 (Circle)', color: '#34d399', ok: true },
-              { id: 2, name: `📐 세로 단면 넓이 구하기 공식`, desc: `가로 길이가 반지름 r이 아니라 지름 2r임에 주의!`, val: `밑변 = 지름 2r!`, color: '#38bdf8', ok: true }
+              { id: 1, name: `🟢 회전축에 수직인 가로 단면 (항상 원!)`, desc: idx === 1 ? '높이에 상관없이 항상 합동인 원!' : '자르는 높이에 따라 크기가 변하는 원!', val: '원', color: '#34d399', ok: true },
+              { id: 2, name: `📐 세로 단면의 넓이를 구할 때`, desc: `가로 길이가 반지름 r이 아니라 지름 2r임에 주의!`, val: `밑변 = 지름 2r!`, color: '#38bdf8', ok: true }
             ],
             totalRes: `${names[idx]} 세로단면 = ${axialNames[idx].split(' ')[0]} | 가로단면 = 원`,
-            rule: `축 포함 단면의 가로 길이는 반지름(r)의 2배인 지름(2r)이다!`,
-            formulaHTML: `• <strong>[단면 넓이 계산 주의점]</strong>:<br/>&nbsp;&nbsp;반지름이 $r$, 높이가 $h$인 원뿔을 회전축을 품게 자르면, 단면인 이등변삼각형의 밑변은 $r$이 아니라 <strong>지름 $2r$</strong>입니다!<br/>&nbsp;&nbsp;$\\implies \\text{단면 넓이} = \\dfrac{1}{2} \\times (2r) \\times h = \\mathbf{rh}$`,
+            rule: `회전축을 포함한 단면의 가로 길이는 반지름(r)의 2배인 지름(2r)입니다.`,
+            formulaHTML: `• <strong>단면의 넓이를 구할 때 주의할 점</strong>:<br/>&nbsp;&nbsp;반지름이 $r$, 높이가 $h$인 원뿔을 회전축을 품게 자르면, 단면인 이등변삼각형의 밑변은 $r$이 아니라 <strong>지름 $2r$</strong>입니다!<br/>&nbsp;&nbsp;$\\implies \\text{단면 넓이} = \\dfrac{1}{2} \\times (2r) \\times h = \\mathbf{rh}$`,
             notes: `• “회전축에 수직인 평면으로 자를 때 단면이 <strong>모두 합동인 원</strong>이 나오는 회전체는?” ➔ 오직 <strong>원기둥</strong>뿐입니다!`,
             bars: [
               { label: `왼쪽 단면 (반지름 r)`, weight: 0.5, color: '#fbbf24' },
-              { label: `오른쪽 대칭 단면 (반지름 r ➔ 합쳐서 지름 2r!)`, weight: 0.5, color: '#38bdf8' }
+              { label: `오른쪽 대칭 단면 (반지름 r ➔ 합쳐서 지름 2r)`, weight: 0.5, color: '#38bdf8' }
             ]
           };
         }
@@ -436,55 +436,55 @@ window.addEventListener('DOMContentLoaded', function () {
           const modeIdx = n - 3;
           const titles = [
             '① 직각을 낀 변을 회전축으로 회전 ➔ 기본 원뿔',
-            '② 빗변을 회전축으로 회전 ➔ 위·아래 원뿔 2개가 붙은 『쌍원뿔(팽이)』!',
-            '③ 직사각형을 회전축에서 띄워서 회전 ➔ 『가운데 구멍 뚫린 두루마리 휴지』!',
-            '④ 직각삼각형 빗변이 안쪽을 향하게 회전 ➔ 『원뿔 모양이 파인 원기둥』!'
+            '② 빗변을 회전축으로 회전 ➔ 원뿔 2개를 밑면끼리 붙인 『팽이 모양』',
+            '③ 직사각형을 회전축에서 떨어뜨려 회전 ➔ 『가운데가 뚫린 입체(휴지심 모양)』',
+            '④ 직각삼각형 빗변이 안쪽을 향하게 회전 ➔ 『원뿔 모양이 파인 원기둥』'
           ];
-          const secShapes = ['이등변삼각형', '마름모/연 모양 (삼각형 2개 대칭)', '가운데가 빈 직사각형 2개', '안쪽이 V자로 파인 오목 육각형'];
+          const secShapes = ['이등변삼각형', '사각형 (두 삼각형이 선대칭으로 붙은 모양)', '가운데가 빈 직사각형 2개', '안쪽이 V자로 들어간 육각형'];
           return {
-            badge: `탐구 3-C · 💎 회전축 위치에 따라 완전히 달라지는 회전체 (${titles[modeIdx]})`,
-            hint: `밑면 버튼(3, 4, 5, 6)을 눌러 회전축의 위치를 바꿔보세요! 특히 <strong class="text-amber-300">버튼 4번(빗변을 축으로 회전)</strong>을 누르면 원뿔 1개가 아니라 <strong class="text-rose-400">위·아래 원뿔 2개가 밑면을 맞댄 쌍원뿔(팽이 모양)</strong>이 탄생합니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 회전 전 평면도형 보기' : '🎬 360° 돌려서 입체 확인!',
-            dim1Name: '회전 방식 (3:기본, 4:빗변축 쌍원뿔, 5:구멍, 6:오목)', dim2Name: '치수 스케일',
-            nPrefix: '케이스 ', hPrefix: '크기 ',
+            badge: `탐구 3-C · 💎 회전축의 위치에 따라 달라지는 회전체 (${titles[modeIdx]})`,
+            hint: `버튼(3, 4, 5, 6)을 눌러 회전축의 위치를 바꿔 보세요! 특히 <strong class="text-amber-300">4번(빗변을 축으로 회전)</strong>을 누르면 원뿔 1개가 아니라 <strong class="text-rose-400">위·아래 원뿔 2개가 밑면을 맞대고 붙은 입체(팽이 모양)</strong>가 만들어집니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 회전 전 평면도형 보기' : '🎬 360° 돌려서 입체 확인',
+            dim1Name: '회전 방식 (3:기본, 4:빗변을 축으로, 5:가운데가 뚫림, 6:안쪽이 들어감)', dim2Name: '치수',
+            nPrefix: '경우 ', hPrefix: '크기 ',
             parts: [
-              { id: 0, name: `🟡 회전 방식: ${titles[modeIdx].split('➔')[0]}`, desc: `회전축 l과의 위치 관계 확인`, val: `케이스 ${n - 2}`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🎯 생성되는 입체: ${titles[modeIdx].split('➔')[1]}`, desc: `360° 스핀 결과 만들어지는 3D 입체`, val: `입체 생성`, color: '#38bdf8', ok: true },
+              { id: 0, name: `🟡 회전 방식: ${titles[modeIdx].split('➔')[0]}`, desc: `회전축 l과의 위치 관계 확인`, val: `경우 ${n - 2}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🎯 생성되는 입체: ${titles[modeIdx].split('➔')[1]}`, desc: `360° 회전하여 만들어지는 입체`, val: `입체 생성`, color: '#38bdf8', ok: true },
               { id: 2, name: `🔪 회전축을 품은 세로 단면 모양`, desc: secShapes[modeIdx], val: secShapes[modeIdx].split(' ')[0], color: '#34d399', ok: true }
             ],
             totalRes: `${titles[modeIdx]}`,
-            rule: `회전축에서 떨어진 도형을 돌리면 가운데가 뻥 뚫린 입체가 된다!`,
-            formulaHTML: `• <strong>[빗변 회전 공식 (케이스 4)]</strong>: $3:4:5$ 직각삼각형을 빗변($5$)을 축으로 돌리면, 회전 반지름은 소공식($3\\times4 = 5\\times r$)에 의해 $r = \\dfrac{12}{5}$인 <strong>쌍원뿔</strong>이 됩니다!`,
-            notes: `• 우측 상단 <strong>2D 단면 설계도 미니뷰</strong>를 보세요! 회전축을 품은 단면은 언제나 <strong>원래 도형을 회전축 기준으로 데칼코마니(선대칭) 복사한 모양</strong>입니다.`,
+            rule: `회전축에서 떨어진 도형을 돌리면 가운데가 뚫린 입체가 됩니다.`,
+            formulaHTML: `• <strong>빗변을 축으로 회전할 때 (경우 4)</strong>: 변의 길이가 $3, 4, 5$인 직각삼각형을 빗변($5$)을 축으로 돌릴 때 회전 반지름 $r$은 삼각형의 넓이를 두 가지로 구한 $\\dfrac{1}{2}\\times3\\times4 = \\dfrac{1}{2}\\times5\\times r$에서 $r = \\dfrac{12}{5}$입니다. 이 원을 밑면으로 하는 <strong>원뿔 2개를 붙인 입체</strong>가 됩니다!`,
+            notes: `• <strong>단면·전개도 그림</strong>을 보세요! 회전축을 포함한 단면은 언제나 <strong>원래 도형과, 그것을 회전축에 대하여 선대칭으로 옮긴 도형을 붙인 모양</strong>입니다.`,
             bars: [
               { label: `원래 도형`, weight: 0.5, color: '#fbbf24' },
-              { label: `회전축 대칭 복사 ➔ ${secShapes[modeIdx].split(' ')[0]}`, weight: 0.5, color: '#38bdf8' }
+              { label: `선대칭 도형을 붙임 ➔ ${secShapes[modeIdx].split(' ')[0]}`, weight: 0.5, color: '#38bdf8' }
             ]
           };
         }
         // cubeCut: 정육면체 단면 슬라이서 (삼각형, 직사각형, 사다리꼴, 오각형, 정육각형!)
         const cutIdx = n - 3; // 0: 정삼각형(n=3), 1: 등변사다리꼴/직사각형(n=4), 2: 오각형(n=5), 3: 정육각형(n=6)
         const cutInfo = [
-          { shape: '정삼각형 (이등변·예각삼각형 가능)', edges: '이웃한 세 모서리의 중점을 지나는 평면', note: '⚠️ 직각삼각형이나 둔각삼각형은 절대 만들 수 없음!' },
-          { shape: '등변사다리꼴 / 직사각형 / 마름모', edges: '위·아래 면과 비스듬히 만나는 4개 면 절단', note: '마주보는 두 면이 평행하므로 마주보는 절단선도 평행!' },
-          { shape: '오각형 (5개 면을 동시에 지날 때)', edges: '정육면체의 6개 면 중 5개 면을 스치듯 절단', note: '⚠️ 모든 변의 길이가 같은 정오각형은 만들 수 없음!' },
-          { shape: '✨ 정육각형 (6개 면을 모두 지날 때!)', edges: '6개 모서리의 중점을 지나는 대각선 평면 절단', note: '정육면체의 6개 면을 모두 지나므로 최대 육각형까지 가능!' }
+          { shape: '정삼각형 (이등변·예각삼각형 가능)', edges: '이웃한 세 모서리의 중점을 지나는 평면', note: '⚠️ 직각삼각형이나 둔각삼각형은 만들 수 없음!' },
+          { shape: '사다리꼴 / 직사각형 / 마름모', edges: '위·아래 면과 비스듬히 만나는 4개 면을 지나게 자름', note: '마주보는 두 면이 평행하므로 마주보는 절단선도 평행!' },
+          { shape: '오각형 (5개 면을 동시에 지날 때)', edges: '정육면체의 6개 면 중 5개 면을 지나게 자름', note: '⚠️ 모든 변의 길이가 같은 정오각형은 만들 수 없음!' },
+          { shape: '정육각형 (6개 면을 모두 지날 때)', edges: '6개 모서리의 중점을 지나는 평면으로 자름', note: '정육면체의 6개 면을 모두 지나므로 최대 육각형까지 가능!' }
         ][cutIdx];
         return {
-          badge: `탐구 3-D · 🧊 정육면체 단면 슬라이서 — 현재 단면: 『${cutInfo.shape}』`,
-          hint: `밑면 버튼(3, 4, 5, 6)을 눌러 정육면체를 자르는 각도를 바꿔보세요! 정육면체는 면이 6개이므로 평면으로 자를 때 <strong class="text-amber-300">삼각형(3), 사각형(4), 오각형(5), 최대 정육각형(6)</strong>까지 단면이 만들어집니다!`,
-          actionTxt: '🎬 절단 평면 깊이 조절',
-          dim1Name: '단면 변의 수 선택 (3:삼각,4:사각,5:오각,6:정육각!)', dim2Name: '절단 깊이 미세조정',
+          badge: `탐구 3-D · 🧊 정육면체의 단면 — 현재 단면: 『${cutInfo.shape}』`,
+          hint: `버튼(3, 4, 5, 6)을 눌러 정육면체를 자르는 방법을 바꿔 보세요! 정육면체는 면이 6개이므로 평면으로 자를 때 <strong class="text-amber-300">삼각형(3), 사각형(4), 오각형(5), 최대 정육각형(6)</strong>까지 단면이 만들어집니다!`,
+          actionTxt: '🎬 자르는 평면의 깊이 바꾸기',
+          dim1Name: '단면의 변의 수 (3:삼각형, 4:사각형, 5:오각형, 6:육각형)', dim2Name: '자르는 깊이',
           nPrefix: '단면 ', hPrefix: '깊이 ',
           parts: [
             { id: 0, name: `🔪 만들어진 단면: ${cutInfo.shape}`, desc: cutInfo.edges, val: `${n}각형 단면`, color: '#fbbf24', ok: true },
             { id: 1, name: `🔵 평면이 지나간 정육면체의 면 개수`, desc: `정육면체의 면 ${n}개를 자르고 지나감 ➔ 변 ${n}개 생성!`, val: `${n}개 면 통과`, color: '#38bdf8', ok: true },
-            { id: 2, name: `❌ 정육면체 단면으로 절대 불가능한 도형`, desc: `직각·둔각삼각형, 정오각형, 칠각형 이상은 불가!`, val: `시험 1순위!`, color: '#f43f5e', ok: false }
+            { id: 2, name: `❌ 정육면체의 단면이 될 수 없는 도형`, desc: `직각·둔각삼각형, 정오각형, 칠각형 이상은 불가!`, val: `만들 수 없음`, color: '#f43f5e', ok: false }
           ],
           totalRes: `정육면체 절단 ➔ ${cutInfo.shape}`,
           rule: `면이 6개인 정육면체를 자르면 최대 6각형(정육각형)까지만 나온다!`,
-          formulaHTML: `• <strong>[정육면체 단면 O/X 총정리]</strong>:<br/>&nbsp;&nbsp;⭕ <strong>가능</strong>: 정삼각형, 이등변삼각형, 정사각형, 직사각형, 마름모, 사다리꼴, 오각형, <strong>정육각형</strong><br/>&nbsp;&nbsp;❌ <strong>불가능</strong>: <strong>직각삼각형, 둔각삼각형, 정오각형, 칠각형 이상</strong>`,
-          notes: `• 왜 <strong>정육각형</strong>이 될까요? 정육면체 6개 모서리의 중점을 이으면 각 변의 길이가 모두 같고 마주보는 변이 평행한 완벽한 정육각형이 됩니다!`,
+          formulaHTML: `• <strong>정육면체의 단면이 될 수 있는 도형과 없는 도형</strong>:<br/>&nbsp;&nbsp;⭕ <strong>가능</strong>: 정삼각형, 이등변삼각형, 정사각형, 직사각형, 마름모, 사다리꼴, 오각형, <strong>정육각형</strong><br/>&nbsp;&nbsp;❌ <strong>불가능</strong>: <strong>직각삼각형, 둔각삼각형, 정오각형, 칠각형 이상</strong>`,
+          notes: `• 왜 <strong>정육각형</strong>이 될까요? 정육면체 6개 모서리의 중점을 이으면 각 변의 길이가 모두 같고 마주 보는 변이 평행한 정육각형이 됩니다!`,
           bars: [
             { label: `통과한 면 ${n}개 = 단면 변 ${n}개`, weight: n / 6, color: '#fbbf24' },
             { label: `안 지나간 면 (${6 - n}개)`, weight: (6 - n) / 6, color: '#334155' }
@@ -498,9 +498,9 @@ window.addEventListener('DOMContentLoaded', function () {
       if (sub === 'cylRoll') {
         const circum = 2 * r;
         return {
-          badge: `탐구 4-A · 🛢️ 원기둥 롤링 전개도 — 『밑면 원의 둘레(2πr) = 옆면 직사각형의 가로!』`,
-          hint: `슬라이더를 움직여 원기둥을 펼쳐보세요! 밑면 원(반지름 $r=${r}$)의 테두리와 맞닿아 있던 옆면이 펼쳐지므로, <strong class="text-amber-300">옆면 직사각형의 가로 길이는 밑면 원주 $2\\pi r = ${circum}\\pi\\text{ cm}$</strong>와 100% 같습니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 바닥에 굴려서 전개도로 펼치기' : '🎬 원기둥으로 둥글게 말기',
+          badge: `탐구 4-A · 🛢️ 원기둥 전개도 — 『밑면 원의 둘레(2πr) = 옆면 직사각형의 가로』`,
+          hint: `슬라이더를 움직여 원기둥을 펼쳐보세요! 밑면 원(반지름 $r=${r}$)의 테두리와 맞닿아 있던 옆면이 펼쳐지므로, <strong class="text-amber-300">옆면 직사각형의 가로 길이는 밑면 원주 $2\\pi r = ${circum}\\pi\\text{ cm}$</strong>와 같습니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 옆면을 펼쳐 전개도로 만들기' : '🎬 원기둥으로 둥글게 말기',
           dim1Name: '밑면 반지름 r', dim2Name: '원기둥 높이 h',
           nPrefix: 'r = ', hPrefix: 'h = ',
           parts: [
@@ -510,11 +510,11 @@ window.addEventListener('DOMContentLoaded', function () {
           ],
           totalRes: `원기둥 전개도 옆면: 가로 = 2πr = ${circum}π cm, 세로 = h = ${h} cm`,
           rule: `(옆면 직사각형의 가로 길이) = (밑면 원의 둘레 2πr)`,
-          formulaHTML: `• 원기둥 전개도에서 가장 많이 묻는 치수 대응:<br/>&nbsp;&nbsp;1) 직사각형의 가로 $a = 2\\pi r = 2\\pi \\times ${r} = \\mathbf{${circum}\\pi\\text{ cm}}$<br/>&nbsp;&nbsp;2) 직사각형의 세로 $b = h = \\mathbf{${h}\\text{ cm}}$`,
+          formulaHTML: `• 원기둥 전개도에서 치수의 대응:<br/>&nbsp;&nbsp;1) 직사각형의 가로 $a = 2\\pi r = 2\\pi \\times ${r} = \\mathbf{${circum}\\pi\\text{ cm}}$<br/>&nbsp;&nbsp;2) 직사각형의 세로 $b = h = \\mathbf{${h}\\text{ cm}}$`,
           notes: `• 만약 문제에서 거꾸로 <strong>“옆면 직사각형의 가로가 $10\\pi\\text{ cm}$이다”</strong>라고 주면, $2\\pi r = 10\\pi$에서 <strong>밑면 반지름 $r = 5\\text{ cm}$</strong>를 즉시 알 수 있습니다!`,
           bars: [
             { label: `밑면 원주 2πr = ${circum}π`, weight: 0.5, color: '#fbbf24' },
-            { label: `= 옆면 직사각형 가로 ${circum}π (완벽 일치!)`, weight: 0.5, color: '#38bdf8' }
+            { label: `= 옆면 직사각형 가로 ${circum}π (같음)`, weight: 0.5, color: '#38bdf8' }
           ]
         };
       }
@@ -522,10 +522,10 @@ window.addEventListener('DOMContentLoaded', function () {
         const deg = Math.round((r / slant) * 360);
         const arcLen = 2 * r;
         return {
-          badge: `탐구 4-B · ⛺ 원뿔 부채꼴 전개도 — 중심각 1초 공식 『θ = 360° × (r / a)』`,
+          badge: `탐구 4-B · ⛺ 원뿔의 전개도 — 부채꼴의 중심각 『θ = 360° × (r / a)』`,
           hint: `원뿔(밑면 반지름 $r=${r}$, 모선 $a=${slant}$)을 펼치면 옆면은 <strong class="text-pink-300">큰 반지름이 모선 $a=${slant}$인 부채꼴</strong>이 됩니다! 호의 길이가 밑면 원주($2\\pi r=${arcLen}\\pi$)와 같으므로 중심각은 <strong class="text-amber-300">$360^\\circ \\times \\frac{${r}}{${slant}} \\approx ${deg}^\\circ$</strong>입니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 부채꼴 전개도로 펼치기' : '🎬 원뿔로 감아 올리기',
-          dim1Name: '밑면 반지름 r', dim2Name: '모선 길이 제어 (a = h+3)',
+          actionTxt: state.animProg > 0.5 ? '🎬 부채꼴 전개도로 펼치기' : '🎬 원뿔로 말기',
+          dim1Name: '밑면 반지름 r', dim2Name: '모선의 길이 (a = h+3)',
           nPrefix: 'r = ', hPrefix: 'h = ',
           parts: [
             { id: 0, name: `🩷 부채꼴의 반지름 = 원뿔의 모선 길이 a`, desc: `원뿔 높이가 아니라 비스듬한 모선 a = ${slant} cm!`, val: `모선 a = ${slant} cm`, color: '#f472b6', ok: true },
@@ -534,34 +534,34 @@ window.addEventListener('DOMContentLoaded', function () {
           ],
           totalRes: `모선 a=${slant}cm, 밑면 r=${r}cm ➔ 호=${arcLen}πcm, 중심각 θ=${deg}°`,
           rule: `(중심각 / 360°) = (밑면 반지름 r) / (모선 길이 a)`,
-          formulaHTML: `• <strong>[원뿔 부채꼴 중심각 1초 공식]</strong>:<br/>&nbsp;&nbsp;${tex(`2\\pi a \\times \\dfrac{\\theta}{360^\\circ} = 2\\pi r \\implies \\mathbf{\\theta = 360^\\circ \\times \\dfrac{r}{a}} = 360^\\circ \\times \\dfrac{${r}}{${slant}} \\approx \\mathbf{${deg}^\\circ}`)}`,
-          notes: `• <strong>[암기 비법]</strong>: 만약 모선 $a$가 밑면 반지름 $r$의 <strong>2배($r/a = 1/2$)</strong>이면 부채꼴 중심각은 무조건 <strong>$180^\\circ$(반원)</strong>이고, <strong>3배($r/a = 1/3$)</strong>이면 무조건 <strong>$120^\\circ$</strong>입니다!`,
+          formulaHTML: `• <strong>원뿔의 전개도에서 부채꼴의 중심각</strong>:<br/>&nbsp;&nbsp;${tex(`2\\pi a \\times \\dfrac{\\theta}{360^\\circ} = 2\\pi r \\implies \\mathbf{\\theta = 360^\\circ \\times \\dfrac{r}{a}} = 360^\\circ \\times \\dfrac{${r}}{${slant}} \\approx \\mathbf{${deg}^\\circ}`)}`,
+          notes: `• 모선 $a$가 밑면의 반지름 $r$의 <strong>2배($r/a = 1/2$)</strong>이면 부채꼴의 중심각은 <strong>$180^\\circ$(반원)</strong>이고, <strong>3배($r/a = 1/3$)</strong>이면 <strong>$120^\\circ$</strong>입니다!`,
           bars: [
             { label: `부채꼴 중심각 (${deg}°)`, weight: deg / 360, color: '#f472b6' },
-            { label: `빈 각도 (${360 - deg}°)`, weight: (360 - deg) / 360, color: '#1e293b' }
+            { label: `나머지 각도 (${360 - deg}°)`, weight: (360 - deg) / 360, color: '#1e293b' }
           ]
         };
       }
       if (sub === 'frustumBelt') {
         const r1 = Math.max(1, Math.floor(r / 2)), r2 = r1 * 2;
         return {
-          badge: `탐구 4-C · 🪣 원뿔대의 전개도 — 왜 옆면이 직사각형이 아니라 휘어진 부채꼴 띠일까?`,
-          hint: `원뿔대는 윗밑면 원주($2\\pi r_1=${2 * r1}\\pi$)와 아랫밑면 원주($2\\pi r_2=${2 * r2}\\pi$)의 길이가 다릅니다! 따라서 옆면을 펼치면 <strong class="text-amber-300">큰 부채꼴에서 위쪽 작은 부채꼴을 잘라낸 무지개(도넛 부채꼴) 모양</strong>이 됩니다!`,
-          actionTxt: state.animProg > 0.5 ? '🎬 잘려나간 작은 원뿔 유령 보기' : '🎬 원뿔대 완성 뷰',
-          dim1Name: '비율 반지름 제어', dim2Name: '높이 스케일',
+          badge: `탐구 4-C · 🪣 원뿔대의 전개도 — 왜 옆면이 직사각형이 아니라 휘어진 띠 모양일까?`,
+          hint: `원뿔대는 윗밑면 원주($2\\pi r_1=${2 * r1}\\pi$)와 아랫밑면 원주($2\\pi r_2=${2 * r2}\\pi$)의 길이가 다릅니다! 따라서 옆면을 펼치면 <strong class="text-amber-300">큰 부채꼴에서 위쪽의 작은 부채꼴을 잘라 낸, 휘어진 띠 모양</strong>이 됩니다!`,
+          actionTxt: state.animProg > 0.5 ? '🎬 잘려 나간 작은 원뿔 보기' : '🎬 원뿔대 완성',
+          dim1Name: '반지름 r (윗면 r₁ = r의 절반, 아랫면 r₂ = 2r₁)', dim2Name: '높이 스케일',
           nPrefix: 'r = ', hPrefix: 'h = ',
           parts: [
             { id: 0, name: `🔵 안쪽 짧은 호의 길이 = 윗밑면 원주`, desc: `반지름 r₁ = ${r1} cm ➔ 안쪽 호 = ${2 * r1}π cm`, val: `안쪽 호 ${2 * r1}π`, color: '#38bdf8', ok: true },
             { id: 1, name: `🟡 바깥쪽 긴 호의 길이 = 아랫밑면 원주`, desc: `반지름 r₂ = ${r2} cm ➔ 바깥 호 = ${2 * r2}π cm`, val: `바깥 호 ${2 * r2}π`, color: '#fbbf24', ok: true },
-            { id: 2, name: `❌ 잘려 나간 원래 작은 원뿔의 모선`, desc: `점선으로 표시된 상단 원뿔을 복원하여 계산!`, val: `큰원뿔 - 작은원뿔`, color: '#f43f5e', ok: false }
+            { id: 2, name: `❌ 잘려 나간 원래 작은 원뿔의 모선`, desc: `점선으로 표시된 위쪽 원뿔을 복원하여 계산!`, val: `큰원뿔 - 작은원뿔`, color: '#f43f5e', ok: false }
           ],
           totalRes: `안쪽 호 = ${2 * r1}π cm | 바깥쪽 호 = ${2 * r2}π cm (부채꼴 띠)`,
-          rule: `원뿔대는 항상 '원래 큰 원뿔'을 복원하여 비례식으로 푼다!`,
-          formulaHTML: `• 종이컵(원뿔대)을 책상 위에 눕혀 굴리면 일직선으로 가지 않고 <strong>원을 그리며 빙글빙글 돕니다</strong>.<br/>• 우측 상단 <strong>2D 전개도 미니뷰</strong>에서 무지개 모양의 옆면과 위·아래 크기가 다른 두 밑면 원을 확인하세요!`,
+          rule: `원뿔대는 '원래 큰 원뿔'을 되살려 비례식으로 풉니다.`,
+          formulaHTML: `• 종이컵(원뿔대)을 책상 위에 눕혀 굴리면 일직선으로 가지 않고 <strong>원을 그리며 빙글빙글 돕니다</strong>.<br/>• <strong>단면·전개도 그림</strong>에서 휘어진 띠 모양의 옆면과 위·아래 크기가 다른 두 밑면 원을 확인하세요!`,
           notes: `• <strong>[함정 주의]</strong>: 각뿔대의 옆면은 평평한 <strong>사다리꼴</strong>이지만, 원뿔대의 옆면을 펼치면 사다리꼴이 아니라 곡선으로 휘어진 <strong>부채꼴의 일부분</strong>입니다!`,
           bars: [
             { label: `윗밑면 호 (${2 * r1}π)`, weight: 0.34, color: '#38bdf8' },
-            { label: `아랫밑면 바깥 호 (${2 * r2}π = 2배!)`, weight: 0.66, color: '#fbbf24' }
+            { label: `아랫밑면 바깥 호 (${2 * r2}π, 윗밑면 호의 2배)`, weight: 0.66, color: '#fbbf24' }
           ]
         };
       }
@@ -570,38 +570,38 @@ window.addEventListener('DOMContentLoaded', function () {
       const aCone = 6;
       const rCone = n === 5 ? 2 : 3; // n=5 -> r=2, a=6 -> 120도! / n=6 -> r=3, a=6 -> 180도!
       const degCone = Math.round((rCone / aCone) * 360);
-      const distCone = degCone === 120 ? '6√3 ≈ 10.4 cm' : '2a = 12.0 cm (지름!)';
+      const distCone = degCone === 120 ? '6√3 ≈ 10.4 cm' : '2a = 12.0 cm (반원의 지름)';
       const perimPrism = 3 * n;
       const distPrism = Math.hypot(perimPrism, h).toFixed(1);
 
       return {
         badge: isConeAnt
-          ? `탐구 4-D · 🐜 원뿔 옆면 1바퀴 최단거리 — 전개도 부채꼴(중심각 ${degCone}°) 위의 곧은 현(직선)!`
-          : `탐구 4-D · 🐜 삼각기둥 옆면 1바퀴 최단거리 — 전개도 직사각형의 대각선 직선!`,
-        hint: `하단의 <strong class="text-rose-400">[🐜 최단거리 개미 주행]</strong>을 누르고 슬라이더로 도형을 접었다 펼쳐보세요! (버튼 3~4: 각기둥 대각선 / 버튼 5: 원뿔 120° / 버튼 6: 원뿔 180° 반원!) 입체 겉면에서는 휘어 보이지만 <strong class="text-amber-300">전개도를 펼치면 자로 그은 반듯한 직선(선분)</strong>입니다!`,
-        actionTxt: state.animProg > 0.5 ? '🎬 전개도로 펼쳐서 직선 확인!' : '🎬 입체로 말아서 감긴 실 보기!',
+          ? `탐구 4-D · 📏 원뿔 옆면을 한 바퀴 도는 최단 거리 — 전개도 부채꼴(중심각 ${degCone}°) 위의 현(선분)`
+          : `탐구 4-D · 📏 삼각기둥 옆면을 한 바퀴 도는 최단 거리 — 전개도 직사각형의 대각선`,
+        hint: `<strong class="text-rose-400">[최단 경로를 따라 움직이기]</strong>를 누르고 슬라이더로 도형을 접었다 펼쳐 보세요! (버튼 3~4: 각기둥의 대각선 / 버튼 5: 원뿔(중심각 120°) / 버튼 6: 원뿔(중심각 180°, 반원)) 입체의 겉면에서는 휘어 보이지만 <strong class="text-amber-300">전개도로 펼치면 곧은 선분</strong>입니다!`,
+        actionTxt: state.animProg > 0.5 ? '🎬 전개도로 펼쳐서 선분 확인' : '🎬 입체로 말아서 경로 보기',
         dim1Name: '모드 (3~4:각기둥 / 5:원뿔120° / 6:원뿔180°)', dim2Name: '기둥 높이 h',
-        nPrefix: '타입 ', hPrefix: 'h = ',
+        nPrefix: '유형 ', hPrefix: 'h = ',
         parts: isConeAnt
           ? [
               { id: 0, name: `🩷 펼친 부채꼴의 두 모선 (OA = OA' = ${aCone} cm)`, desc: `점 A와 한 바퀴 돌아온 점 A'는 부채꼴 양 끝점!`, val: `모선 a = ${aCone} cm`, color: '#f472b6', ok: true },
-              { id: 1, name: `🟡 부채꼴 중심각 θ = 360° × (${rCone}/${aCone}) = ${degCone}°`, desc: degCone === 120 ? `끼인각이 120°인 이등변삼각형 OAA'` : `중심각이 180°인 반원 (지름 통과!)`, val: `중심각 ${degCone}°`, color: '#fbbf24', ok: true },
-              { id: 2, name: `🐜 개미 최단거리 = 선분 AA' (곧은 직선!)`, desc: `전개도에서 점 A와 점 A'를 직선으로 연결`, val: distCone, color: '#f43f5e', ok: true }
+              { id: 1, name: `🟡 부채꼴 중심각 θ = 360° × (${rCone}/${aCone}) = ${degCone}°`, desc: degCone === 120 ? `끼인각이 120°인 이등변삼각형 OAA'` : `중심각이 180°인 반원 (지름을 지남)`, val: `중심각 ${degCone}°`, color: '#fbbf24', ok: true },
+              { id: 2, name: `📏 최단 거리 = 선분 AA'`, desc: `전개도에서 점 A와 점 A'를 직선으로 연결`, val: distCone, color: '#f43f5e', ok: true }
             ]
           : [
               { id: 0, name: `🟢 펼친 옆면 전체 가로 길이 (= 밑면 둘레)`, desc: `한 변이 ${n}cm인 정삼각형 둘레 = 3×${n} = ${perimPrism} cm`, val: `가로 ${perimPrism} cm`, color: '#34d399', ok: true },
               { id: 1, name: `🔵 펼친 옆면 세로 길이 (= 기둥 높이 h)`, desc: `기둥 높이 h = ${h} cm`, val: `세로 ${h} cm`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🐜 개미 최단거리 = 직사각형 대각선 AA'`, desc: `가로 ${perimPrism}, 세로 ${h}인 직사각형의 대각선`, val: `${distPrism} cm`, color: '#f43f5e', ok: true }
+              { id: 2, name: `📏 최단 거리 = 직사각형의 대각선 AA'`, desc: `가로 ${perimPrism}, 세로 ${h}인 직사각형의 대각선`, val: `${distPrism} cm`, color: '#f43f5e', ok: true }
             ],
         totalRes: isConeAnt ? `원뿔(중심각 ${degCone}°) 최단거리 AA' = ${distCone}` : `각기둥 옆면 1바퀴 최단거리 = 대각선 ${distPrism} cm`,
-        rule: `입체 겉면을 감는 최단거리 = 무조건 전개도를 펼쳐서 직선(선분)을 긋는다!`,
+        rule: `입체의 겉면을 한 바퀴 도는 최단 거리는 전개도를 펼쳐 두 점을 선분으로 이어 구합니다.`,
         formulaHTML: isConeAnt
-          ? `• <strong>[원뿔 최단거리 단계별 해법]</strong>:<br/>&nbsp;&nbsp;1단계: 중심각 $\\theta = 360^\\circ \\times \\dfrac{r}{a} = 360^\\circ \\times \\dfrac{${rCone}}{${aCone}} = \\mathbf{${degCone}^\\circ}$를 구한다.<br/>&nbsp;&nbsp;2단계: 부채꼴 양 끝점 $A$와 $A'$를 <strong>직선(현)</strong>으로 잇는다!`
-          : `• <strong>[기둥 최단거리 단계별 해법]</strong>:<br/>&nbsp;&nbsp;1단계: 옆면들을 모두 펼쳐 큰 직사각형 1개로 만든다 (가로 = 밑면 둘레 ${perimPrism}cm).<br/>&nbsp;&nbsp;2단계: 출발점과 도착점을 잇는 <strong>곧은 대각선</strong>을 긋는다!`,
-        notes: `• 우측 상단 <strong>2D 전개도 미니뷰</strong>를 보세요! 3D 입체에서는 나선처럼 휘어 감기지만, 2D 전개도 위에서는 개미(🐜)가 <strong>자로 대고 그은 빨간색 일직선</strong> 위를 달립니다!`,
+          ? `• <strong>원뿔에서 구하는 방법</strong>:<br/>&nbsp;&nbsp;1단계: 중심각 $\\theta = 360^\\circ \\times \\dfrac{r}{a} = 360^\\circ \\times \\dfrac{${rCone}}{${aCone}} = \\mathbf{${degCone}^\\circ}$를 구한다.<br/>&nbsp;&nbsp;2단계: 부채꼴 양 끝점 $A$와 $A'$를 <strong>직선(현)</strong>으로 잇는다!`
+          : `• <strong>기둥에서 구하는 방법</strong>:<br/>&nbsp;&nbsp;1단계: 옆면들을 모두 펼쳐 큰 직사각형 1개로 만든다 (가로 = 밑면 둘레 ${perimPrism}cm).<br/>&nbsp;&nbsp;2단계: 출발점과 도착점을 잇는 <strong>곧은 대각선</strong>을 긋는다!`,
+        notes: `• <strong>단면·전개도 그림</strong>을 보세요! 입체에서는 나선처럼 휘어 감기지만, 전개도 위에서는 점(🐜)이 <strong>빨간색 선분</strong> 위를 움직입니다!`,
         bars: [
-          { label: `🐜 현재 개미 주행 위치 (${Math.round(state.antProg * 100)}%)`, weight: Math.max(0.15, state.antProg), color: '#f43f5e' },
-          { label: `전개도 위에서는 100% 곧은 직선!`, weight: Math.max(0.1, 1 - state.antProg), color: '#fbbf24' }
+          { label: `🐜 현재 이동한 위치 (${Math.round(state.antProg * 100)}%)`, weight: Math.max(0.15, state.antProg), color: '#f43f5e' },
+          { label: `전개도 위에서는 곧은 선분`, weight: Math.max(0.1, 1 - state.antProg), color: '#fbbf24' }
         ]
       };
     }
@@ -671,7 +671,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   const isNarrow = () => !!(MAINB && MAINB._area().w < 640);
   // 해설이 '우측 상단 2D …'를 가리키는 문장은 좁은 화면에서 단추 안내를 덧붙입니다.
-  const phoneWords = (html) => (isNarrow() ? html.replace(/우측 상단 (<strong[^>]*>2D[^<]*<\/strong>)/g, '$1(휴대폰은 무대 오른쪽 위의 「2D 설계도 보기」 단추)') : html);
+  const phoneWords = (html) => (isNarrow() ? html.replace(/(<strong[^>]*>단면·전개도 그림[^<]*<\/strong>)/g, '$1(휴대폰에서는 「단면·전개도 그림 보기」 버튼을 누르세요)') : html);
   // [2.0 수정] 원본은 캔버스 크기로 고정 배율(약 46~52px)을 정해 넓은 화면에서 그림이 작았습니다.
   // 그림을 한 번 '재기만' 하여(진행도 0~100% 다섯 단계를 겹쳐) 도형을 감싸는 상자의 중심과 반경을 구하고, 무대 안쪽 영역에 맞춥니다.
   // 중심·반경은 카메라와 무관해 돌려도 크기가 변하지 않고(도형 중심을 축으로 회전), 치수(r·h·n)를 바꾸면 그에 맞게 다시 맞춰집니다.
@@ -888,7 +888,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ctx.font = '800 11px Pretendard, sans-serif';
       ctx.fillStyle = '#fbbf24';
       ctx.textAlign = 'center';
-      ctx.fillText('📄 2D 평면도 · 단면 · 전개도 미니뷰', cx, by + 18);
+      ctx.fillText('📄 단면 · 전개도 그림', cx, by + 18);
 
       const m = state.mode, sub = state.sub[m], n = state.n, h = state.h;
 
@@ -912,7 +912,7 @@ window.addEventListener('DOMContentLoaded', function () {
           }
           ctx.fillStyle = n === 6 ? '#fda4af' : '#6ee7b7';
           ctx.font = '800 10.5px Pretendard, sans-serif';
-          ctx.fillText(n === 6 ? '60°×6 = 360° (빈틈 0° ➔ 안 접힘!)' : `60°×${n} = ${60 * n}° (빈틈 ${360 - 60 * n}° 접힘!)`, cx, by + boxH - 12);
+          ctx.fillText(n === 6 ? '60°×6 = 360° (남는 각 0° ➔ 접히지 않음)' : `60°×${n} = ${60 * n}° (남는 각 ${360 - 60 * n}°, 접힘)`, cx, by + boxH - 12);
         } else {
           // 밑면 정n각형 평면도
           const R = 48;
@@ -964,8 +964,8 @@ window.addEventListener('DOMContentLoaded', function () {
             { x: 0, y: 0, c: '#38bdf8', t: 'C' },
             { x: 1, y: 0, c: '#38bdf8', t: 'D' },
             { x: 2, y: 0, c: '#38bdf8', t: 'E' },
-            { x: 0, y: -1, c: '#f43f5e', t: '충돌' },
-            { x: -1, y: -1, c: '#f43f5e', t: '충돌' }
+            { x: 0, y: -1, c: '#f43f5e', t: '겹침' },
+            { x: -1, y: -1, c: '#f43f5e', t: '겹침' }
           ];
           cells.forEach((p) => {
             ctx.fillStyle = p.c + '55';
@@ -974,7 +974,7 @@ window.addEventListener('DOMContentLoaded', function () {
             ctx.strokeRect(cx + p.x * s - s / 2, cy + p.y * s, s, s);
           });
           ctx.fillStyle = '#fda4af';
-          ctx.fillText('⚠️ 2×2 덩어리 = 접으면 같은 자리 충돌!', cx, by + boxH - 10);
+          ctx.fillText('⚠️ 2×2 모양 = 접으면 같은 자리에서 겹침', cx, by + boxH - 10);
         } else if (sub === 'cubeStairs') {
           // [2.0 수정] 원본은 이 장면의 2D 상자에 글자 한 줄만 있었습니다 → 계단형 2-2-2 전개도(정사각형 6칸)를 그려 채움
           [[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 2]].forEach(([i, j], n) => {
@@ -1007,7 +1007,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.fill();
           ctx.stroke();
           ctx.fillStyle = '#fef08a';
-          ctx.fillText(`절단면 정면 뷰: ${n === 3 ? '정삼각형' : n === 4 ? '사각형' : n === 5 ? '오각형' : '정육각형!'}`, cx, by + boxH - 10);
+          ctx.fillText(`단면의 모양: ${n === 3 ? '정삼각형' : n === 4 ? '사각형' : n === 5 ? '오각형' : '정육각형!'}`, cx, by + boxH - 10);
         } else {
           // 회전축 l 과 좌우 대칭 세로 단면 표시
           ctx.setLineDash([4, 3]);
@@ -1214,7 +1214,7 @@ window.addEventListener('DOMContentLoaded', function () {
         faces.push({ pts: topPoly, fillColor: 'rgba(251, 191, 36, 0.48)', strokeColor: '#fbbf24', partIdx: 0, label: '작은 윗밑면' });
         faces.push({ pts: botPoly, fillColor: 'rgba(251, 191, 36, 0.48)', strokeColor: '#fbbf24', partIdx: 0, label: '큰 아랫밑면' });
         renderSortedFaces(faces);
-        draw3DText({ x: 0, y: 0, z: H * 1.9 + liftSmall + 0.3 }, '✂️ 잘려나간 작은 각뿔', '#fda4af', 12);
+        draw3DText({ x: 0, y: 0, z: H * 1.9 + liftSmall + 0.3 }, '✂️ 잘려 나간 작은 각뿔', '#fda4af', 12);
       } else if (sub === 'platonic5') {
         const faces = [];
         const cz = 1.2;
@@ -1320,7 +1320,7 @@ window.addEventListener('DOMContentLoaded', function () {
           apex,
           7,
           canFold ? '#34d399' : '#f43f5e',
-          canFold ? `꼭짓점 각의 합 ${kTri * 60}° < 360° (입체 꼭짓점 생성 ⭕)` : `❌ 60°×6 = 360° 평면 타일 (빈틈이 없어 절대 입체로 안 접힘!)`
+          canFold ? `꼭짓점 각의 합 ${kTri * 60}° < 360° (입체 꼭짓점 생성 ⭕)` : `❌ 60°×6 = 360° (평평해져서 입체로 접히지 않음)`
         );
       }
     }
@@ -1371,7 +1371,7 @@ window.addEventListener('DOMContentLoaded', function () {
             const ptD = applyHingeChain({ x: -h - L, y: h, z: 0 }, [hWest]);
             draw3DLine(ptCorner, ptK, '#fbbf24', 4.2, false, true);
             draw3DLine(ptCorner, ptD, '#fbbf24', 4.2, false, true);
-            draw3DPoint(ptK, 5.5, '#fbbf24', f > 0.9 ? 'ㄱ=ㄷ 지퍼 결합!' : '점 ㄱ');
+            draw3DPoint(ptK, 5.5, '#fbbf24', f > 0.9 ? 'ㄱ=ㄷ (맞붙음)' : '점 ㄱ');
             if (f <= 0.9) draw3DPoint(ptD, 5.5, '#38bdf8', '점 ㄷ');
           }
         } else if (sub === 'cubeStairs') {
@@ -1403,11 +1403,11 @@ window.addEventListener('DOMContentLoaded', function () {
             { pts: rawB, label: '왼면', fillColor: cP2, strokeColor: sP2, partIdx: 0 },
             { pts: rawD, label: '오른면', fillColor: cP2, strokeColor: sP2, partIdx: 0 },
             { pts: rawE, label: '뚜껑', fillColor: cP2, strokeColor: sP2, partIdx: 0 },
-            { pts: rawConflict1, label: isColliding ? '⚠️겹침충돌!' : '날개면1', fillColor: 'rgba(244, 63, 94, 0.58)', strokeColor: '#f43f5e', partIdx: 1 },
-            { pts: rawConflict2, label: isColliding ? '⚠️겹침충돌!' : '날개면2', fillColor: 'rgba(251, 191, 36, 0.58)', strokeColor: '#fbbf24', partIdx: 1 }
+            { pts: rawConflict1, label: isColliding ? '⚠️겹침' : '붙은 면1', fillColor: 'rgba(244, 63, 94, 0.58)', strokeColor: '#f43f5e', partIdx: 1 },
+            { pts: rawConflict2, label: isColliding ? '⚠️겹침' : '붙은 면2', fillColor: 'rgba(251, 191, 36, 0.58)', strokeColor: '#fbbf24', partIdx: 1 }
           ]);
           if (f > 0.5) {
-            draw3DText({ x: 0, y: -h, z: h }, '❌ 이쪽 면이 비어서 뻥 뚫림!', '#fda4af', 13);
+            draw3DText({ x: 0, y: -h, z: h }, '❌ 이쪽 면이 없어서 비어 있음', '#fda4af', 13);
           }
         }
       } else {
@@ -1451,7 +1451,7 @@ window.addEventListener('DOMContentLoaded', function () {
           );
         }
         renderSortedFaces(faces);
-        draw3DPoint(triN[2], 6, '#34d399', f > 0.9 ? '꼭짓점 V 합체!' : '꼭짓점 이동중');
+        draw3DPoint(triN[2], 6, '#34d399', f > 0.9 ? '꼭짓점 V에서 만남' : '꼭짓점 이동 중');
       }
     }
 
@@ -1547,7 +1547,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const dz = zCut - 1.3;
           cutRadius = Math.sqrt(Math.max(0.1, R * R - dz * dz));
         }
-        faces.push({ pts: axialPts, fillColor: 'rgba(251, 191, 36, 0.55)', strokeColor: '#fbbf24', lineWidth: 3, isSection: true, partIdx: 0, label: '축 포함 세로단면' });
+        faces.push({ pts: axialPts, fillColor: 'rgba(251, 191, 36, 0.55)', strokeColor: '#fbbf24', lineWidth: 3, isSection: true, partIdx: 0, label: '회전축 포함 세로 단면' });
 
         // 2) 회전축에 수직인 에메랄드 가로 원 단면 (z = zCut 평면)
         const horizCircle = [];
@@ -1555,7 +1555,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const a = (i / 30) * Math.PI * 2;
           horizCircle.push({ x: cutRadius * Math.cos(a), y: cutRadius * Math.sin(a), z: zCut });
         }
-        faces.push({ pts: horizCircle, fillColor: 'rgba(52, 211, 153, 0.62)', strokeColor: '#34d399', lineWidth: 3, isSection: true, partIdx: 1, label: '수직 가로단면 = 항상 원!' });
+        faces.push({ pts: horizCircle, fillColor: 'rgba(52, 211, 153, 0.62)', strokeColor: '#34d399', lineWidth: 3, isSection: true, partIdx: 1, label: '회전축에 수직인 가로 단면 = 항상 원' });
 
         // 반투명 외곽 와이어프레임
         for (let i = 0; i < 16; i++) {
@@ -1627,7 +1627,7 @@ window.addEventListener('DOMContentLoaded', function () {
             lineWidth: 3.5,
             isSection: true,
             partIdx: 0,
-            label: n === 6 ? '✨ 정육각형 단면 (6개 면 통과!)' : `${n}각형 단면`
+            label: n === 6 ? '✨ 정육각형 단면 (6개 면을 지남)' : `${n}각형 단면`
           }
         ]);
         cutPts.forEach((p, idx) => draw3DPoint(p, 5, '#f43f5e', `${idx + 1}`));
@@ -1687,7 +1687,7 @@ window.addEventListener('DOMContentLoaded', function () {
           }
           const idxAnt = Math.min(N, Math.floor(state.antProg * N));
           const antPt = { x: botPts[idxAnt].x, y: -hh + H * state.antProg, z: botPts[idxAnt].z };
-          draw3DPoint(antPt, 7, '#fbbf24', '🐜 최단거리 직선!');
+          draw3DPoint(antPt, 7, '#fbbf24', '🐜 최단 경로');
         }
       } else if (sub === 'coneSector' || (sub === 'antShortest' && state.n >= 5)) {
         const k = 0.40;
@@ -1731,7 +1731,7 @@ window.addEventListener('DOMContentLoaded', function () {
             y: pStart.y + (pEnd.y - pStart.y) * u,
             z: pStart.z + (pEnd.z - pStart.z) * u
           };
-          draw3DPoint(antPt, 7, '#34d399', '🐜 현(직선) 주행!');
+          draw3DPoint(antPt, 7, '#34d399', '🐜 현을 따라 이동');
         }
       } else {
         // frustumBelt: 원뿔대 & 원래 작은 원뿔 모선 복원
@@ -1768,18 +1768,18 @@ window.addEventListener('DOMContentLoaded', function () {
   const arrow = (v) => (typeof v === 'string' ? phoneWords(arrowOnly(v)) : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
   const cv = (s) => APLab.stripEmoji(arrowOnly(s));
   const RENDER = { 1: renderTab1PolyhedraAndPlatonic, 2: renderTab2PolyhedraFolding, 3: renderTab3RevolutionAndSections, 4: renderTab4RevolutionNetsAndShortest };
-  const TABS = ["다면체(기둥·뿔·뿔대) & 정다면체", "정육면체·다면체 전개도 폴딩", "회전체 360° 생성 & 단면 슬라이서", "회전체 전개도 & 개미 최단거리"];
-  const SHORT = ["다면체", "전개도 폴딩", "회전체·단면", "회전체 전개도"];
+  const TABS = ["다면체(기둥·뿔·뿔대)와 정다면체", "정육면체·다면체의 전개도", "회전체 만들기와 단면", "회전체의 전개도와 최단 거리"];
+  const SHORT = ["다면체", "전개도", "회전체·단면", "회전체 전개도"];
   const QUESTIONS = [
     "기둥·뿔·뿔대의 면·모서리·꼭짓점 수는 n에 따라 어떻게 달라질까? 정다면체는 왜 5가지뿐일까?",
     "정육면체의 전개도는 어떤 모양이 되고, 어떤 배열은 접어도 입체가 되지 않을까?",
     "평면도형을 한 직선 둘레로 돌리면 어떤 회전체가 되고, 잘라 보면 단면은 어떤 모양일까?",
-    "회전체를 펼치면 어떤 모양이 되고, 옆면 위의 최단거리는 어떻게 구할까?"
+    "회전체를 펼치면 어떤 모양이 되고, 옆면 위의 최단 거리는 어떻게 구할까?"
 ];
-  const LENSES = [["all", "전체 입체"], ["wire", "모서리·꼭짓점 강조"], ["section", "단면·내부 투시"], ["aux", "지퍼·최단거리선"]];
-  const ANIM_CHIPS = (m, id) => [[0, '0% (펼침/평면)'], [0.5, '50%'], [1, '100% (입체완성)']];
+  const LENSES = [["all", "전체 입체"], ["wire", "모서리·꼭짓점 강조"], ["section", "단면·내부 보기"], ["aux", "맞붙는 모서리·최단 거리선"]];
+  const ANIM_CHIPS = (m, id) => [[0, '0% (펼침/평면)'], [0.5, '50%'], [1, '100% (입체 완성)']];
   const CAMS = { iso: { yaw: -32, pitch: 28 }, top: { yaw: 0, pitch: 86 }, front: { yaw: 0, pitch: 6 } };
-  const CAM_LABELS = ["겨냥도", "위에서(평면)", "정면단면"];
+  const CAM_LABELS = ["겨냥도", "위에서 보기", "앞에서 보기"];
 
   function sync(s, m, id) {
     state.mode = m;
@@ -1799,12 +1799,12 @@ window.addEventListener('DOMContentLoaded', function () {
   function specView(spec, s) {
     return {
       guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(cv(spec.badge))}</div>${spec.hint}`,
-      readouts: [{ label: '핵심 구조 불변량', value: cv(spec.totalRes), color: 'amber', wide: true }],
+      readouts: [{ label: '핵심 구조', value: cv(spec.totalRes), color: 'amber', wide: true }],
       parts: spec.parts.map((p) => ({ id: p.id, name: p.name, desc: p.desc, value: p.val, color: p.color, ok: p.ok })),
       rule: spec.rule,
       formula: spec.formulaHTML,
       notes: spec.notes,
-      tape: spec.bars && spec.bars.length ? { title: '실시간 도형 구조·각도 비율 모니터 · ' + cv(spec.totalRes), segments: spec.bars.map((sg) => ({ text: sg.label, weight: sg.weight, color: sg.color })) } : null
+      tape: spec.bars && spec.bars.length ? { title: '도형의 구조·각도 비율 · ' + cv(spec.totalRes), segments: spec.bars.map((sg) => ({ text: sg.label, weight: sg.weight, color: sg.color })) } : null
     };
   }
 
@@ -1829,7 +1829,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id, title: label, short: label, reviewTab: true,
       question: QUESTIONS[m - 1],
-      notesTitle: '절대 속지 않는 공간지각 킬러 포인트!',
+      notesTitle: '공간지각 킬러 포인트',
       enter: (s) => {
         s.view2d = false;
         s.anim = m === 2 || m === 4 ? 0.35 : 0.85;
@@ -1845,10 +1845,10 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!NO_ANIM.has(id)) ANIM_CHIPS(m, id).forEach(([v, lbl]) => out.push({ group: '진행 단계', label: lbl, set: { anim: v }, ms: 650, on: (st) => Math.abs(st.anim - v) < 0.02 }));
         if (!NO_D1.has(id)) [3, 4, 5, 6].forEach((v) => out.push({ group: cv(spec.dim1Name), label: `${spec.nPrefix || ''}${v}`, color: 'sky', apply: (st) => { st.n = v; st.part = null; }, on: (st) => st.n === v }));
         if (!NO_D2.has(id)) [3, 4, 5, 6].forEach((v) => out.push({ group: cv(spec.dim2Name), label: `${spec.hPrefix || ''}${v}`, color: 'rose', apply: (st) => { st.h = v; st.part = null; }, on: (st) => st.h === v }));
-        LENSES.filter(([k]) => !(LENS_OFF[id] || []).includes(k)).forEach(([k, lbl]) => out.push({ group: '관찰 렌즈', label: lbl, apply: (st) => { st.lens = k; st.part = null; }, on: (st) => st.lens === k }));
+        LENSES.filter(([k]) => !(LENS_OFF[id] || []).includes(k)).forEach(([k, lbl]) => out.push({ group: '표시할 내용', label: lbl, apply: (st) => { st.lens = k; st.part = null; }, on: (st) => st.lens === k }));
         if (!NO_BOX.has(id) && !isNarrow()) {
-          out.push({ group: '2D 단면·전개도 뷰', label: '켜기', apply: (st) => { st.dual = true; }, on: (st) => st.dual !== false });
-          out.push({ group: '2D 단면·전개도 뷰', label: '끄기', apply: (st) => { st.dual = false; }, on: (st) => st.dual === false });
+          out.push({ group: '단면·전개도 그림', label: '켜기', apply: (st) => { st.dual = true; }, on: (st) => st.dual !== false });
+          out.push({ group: '단면·전개도 그림', label: '끄기', apply: (st) => { st.dual = false; }, on: (st) => st.dual === false });
         }
         cams.forEach((k, i) => out.push({ group: '시점', label: CAM_LABELS[i], set: { yaw: CAMS[k].yaw, pitch: CAMS[k].pitch, ...(k === 'top' && (m === 2 || m === 4) ? { anim: 0 } : {}) }, ms: 600, apply: (st) => { st.playing = false; }, on: (st) => Math.abs(st.yaw - CAMS[k].yaw) < 1 && Math.abs(st.pitch - CAMS[k].pitch) < 1 }));
         return out;
@@ -1858,11 +1858,11 @@ window.addEventListener('DOMContentLoaded', function () {
         label: (st) => { sync(st, m, id); return arrow(getSpec().actionTxt); },
         run: (st, lab) => { lab.tween({ anim: st.anim > 0.5 ? 0 : 1 }, 1100); }
       }]), ...(id === 'antShortest' ? [{
-        id: 'ant', play: true, icon: 'play', label: '최단거리 개미 주행',
+        id: 'ant', play: true, icon: 'play', label: '최단 경로를 따라 움직이기',
         run: (st) => { st.antActive = true; st.antProg = 0; }
       }] : []), {
         id: 'spin', play: true, icon: (st) => (st.playing ? 'pause' : 'play'),
-        label: (st) => (st.playing ? '일시 정지' : '3D 자동회전'),
+        label: (st) => (st.playing ? '일시 정지' : '입체 자동 회전'),
         on: (st) => st.playing,
         run: (st) => { st.playing = !st.playing; }
       }],
@@ -1878,7 +1878,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const narrow = !b.thumb && b._area().w < 640 && !NO_BOX.has(id);
         if (BTN && !b.thumb) {
           BTN.hidden = !narrow;
-          BTN.textContent = s.view2d ? '3D 그림으로 돌아가기' : '2D 설계도 보기';
+          BTN.textContent = s.view2d ? '입체 그림으로 돌아가기' : '단면·전개도 그림 보기';
         }
         if (narrow && s.view2d) { draw2DDualOverlay(true); return; }
         // [2.0 수정] 개미 최단거리: 좁은 화면에서는 면 이름표(윗밑면·아랫밑면·가로=2πr)가 개미 이름표와 겹쳐 읽히지 않아 접어 둡니다(같은 내용은 아래 띠와 2D 설계도에 있음).
@@ -1915,7 +1915,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     },
     params: {
-      anim: { value: 0.85, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행도 (접기 · 분해 · 360° 회전)', hint: '슬라이더로 접기·분해·회전을 직접 조작해 보세요', format: (v) => `${Math.round(v * 100)}%` },
+      anim: { value: 0.85, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행도 (접기 · 떼기 · 360° 회전)', hint: '슬라이더로 접기·분해·회전을 직접 조작해 보세요', format: (v) => `${Math.round(v * 100)}%` },
       n: { value: 4, min: 3, max: 6, step: 1, color: 'sky', label: '치수 1', format: (v) => String(Math.round(v)) },
       h: { value: 5, min: 3, max: 6, step: 1, color: 'rose', label: '치수 2', format: (v) => String(Math.round(v)) },
       yaw: { value: -32, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전', format: (v) => `${Math.round(v)}°` },
