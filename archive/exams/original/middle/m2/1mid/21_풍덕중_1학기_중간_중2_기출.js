@@ -31,7 +31,7 @@ window.questionBank = [
       "$\\frac{1}{3}$"
     ],
     "answer": "②, ④",
-    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \ne 0$) 꼴로 나타낼 수 있는 수임.\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\n$\\therefore$ ②, ④",
+    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수임.\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\n$\\therefore$ ②, ④",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
