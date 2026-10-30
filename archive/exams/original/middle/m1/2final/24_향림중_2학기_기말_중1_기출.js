@@ -367,7 +367,11 @@ window.questionBank = [
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/24_향림중_2학기_기말_중1_기출/q11.png"
+    "image": "assets/images/24_향림중_2학기_기말_중1_기출/q11.png",
+    "solutionImage": "assets/images/24_향림중_2학기_기말_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 2, 모선 6인 원뿔의 전개도로, 모선 6을 반지름으로 하는 부채꼴 옆면(넓이 12π)과 그 호에 접한 반지름 2인 밑면 원이 그려져 있다.",
+    "solutionImageCaption": "원뿔의 전개도: 옆면은 부채꼴(넓이 12π), 밑면은 반지름 2 cm인 원이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,

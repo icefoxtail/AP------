@@ -825,14 +825,14 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
-      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q19-solution.svg",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q19-solution-v2.svg",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3ed3500e6a23a86d78ac44e69d1401f9f9113c0183bd50ca13ad2daaf3734cba",
       "difficultyEvidenceSha": "sha256:c258280068cac2119e51230b43955dcaf56b564429b913d25189640226de9453",
-      "solutionImageAlt": "관람차 높이가 주기적으로 변하고 10분, 30분, 50분에 최고 높이 30 m에 이르는 그래프",
-      "solutionImageCaption": "최고점 사이 간격은 20분이며 높이 20 m를 지나는 횟수를 60분 동안 읽는다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 0분부터 60분까지 관람차의 높이 그래프로, 10분·30분·50분에 높이 30m 선에 닿는 세 개의 최고점과 높이 20m 선과 만나는 여섯 개의 점을 보여 주는 그림.",
+      "solutionImageCaption": "최고점은 10분, 30분, 50분이고 높이 20m와 6번 만난다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 20,
