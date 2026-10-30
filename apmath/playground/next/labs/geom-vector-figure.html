@@ -344,6 +344,18 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       ctx.restore();
     }
+    // [표시 보강] 평행 표시(화살촉 ›, 개수로 짝 구분)와 같은 길이 눈금: 선분 p–q의 가운데에 그립니다.
+    function parallelMark(p, q, color = '#fde047', count = 1) {
+      const a = toScreen(p.x, p.y), b = toScreen(q.x, q.y), L = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+      if (L < 36) return;
+      const d = { x: (b.x - a.x) / L, y: (b.y - a.y) / L }, n = { x: -d.y, y: d.x }, t0 = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, c = BD.ctx;
+      c.save(); c.strokeStyle = BD.color(color); c.lineWidth = 2; c.setLineDash([]);
+      for (let i = 0; i < count; i++) {
+        const o = (i - (count - 1) / 2) * 7, t = { x: t0.x + d.x * o, y: t0.y + d.y * o };
+        c.beginPath(); c.moveTo(t.x - d.x * 4 + n.x * 5, t.y - d.y * 4 + n.y * 5); c.lineTo(t.x + d.x * 3, t.y + d.y * 3); c.lineTo(t.x - d.x * 4 - n.x * 5, t.y - d.y * 4 - n.y * 5); c.stroke();
+      }
+      c.restore();
+    }
     function drawRightAngleMark(foot, dirAlongLine, dirToPoint, sizePx = 11, color = '#fbbf24', partIdx = null, lensGroup = 'aux') {
       const style = getPartStyle(partIdx, lensGroup);
       const pFoot = toScreen(foot.x, foot.y);
@@ -526,6 +538,9 @@ window.addEventListener('DOMContentLoaded', function () {
           drawChalkLine(A.x, A.y, AB.x, AB.y, '#38bdf8', 2.2, true, false, 2, 'locus');
           drawChalkLine(B.x, B.y, AB.x, AB.y, '#38bdf8', 2.2, true, false, 2, 'locus');
           drawChalkPoint(AB.x, AB.y, 5, '#38bdf8', 'A+B (m=1, n=1)', { x: 10, y: -10 }, 2, 'locus');
+          // [표시 보강] 평행사변형 O–A–(A+B)–B 의 마주 보는 변: OA ∥ B(A+B) (›), OB ∥ A(A+B) (››)
+          parallelMark({ x: 0, y: 0 }, A, '#38bdf8', 1); parallelMark(B, AB, '#38bdf8', 1);
+          parallelMark({ x: 0, y: 0 }, B, '#f472b6', 2); parallelMark(A, AB, '#f472b6', 2);
         }
         ctx.restore();
       }
@@ -535,6 +550,9 @@ window.addEventListener('DOMContentLoaded', function () {
         drawChalkLine(0, 0, A2p.x, A2p.y, 'rgba(56, 189, 248, 0.5)', 2.0, true, false, 1, 'aux');
         drawChalkLine(0, 0, B2p.x, B2p.y, 'rgba(244, 114, 182, 0.5)', 2.0, true, false, 1, 'aux');
         drawChalkLine(A2p.x, A2p.y, B2p.x, B2p.y, '#fbbf24', state.preset2 === 'seg2' ? 4.8 : 2.6, false, true, 1, 'locus');
+        // [표시 보강] 선분 AB ∥ A'B' (같은 평행 표시)
+        parallelMark(A, B, '#fde047', 1);
+        parallelMark(A2p, B2p, '#fde047', 1);
 
         drawChalkPoint(A2p.x, A2p.y, 5.5, '#38bdf8', "A'(2OA)", { x: 8, y: 18 }, 1, 'aux');
         drawChalkPoint(B2p.x, B2p.y, 5.5, '#f472b6', "B'(2OB)", { x: 12, y: -8 }, 1, 'aux');
@@ -659,6 +677,12 @@ window.addEventListener('DOMContentLoaded', function () {
         );
       }
 
+      // [표시 보강] 방향벡터 u ∥ 직선 l: 같은 평행 표시(u의 가운데, 직선 l 위 A에서 u만큼 떨어진 구간의 가운데)
+      if (state.steps[1]) {
+        parallelMark({ x: 0, y: 0 }, u, '#fde047', 1);
+        parallelMark(A, { x: A.x + u.x, y: A.y + u.y }, '#fde047', 1);
+      }
+
       // Step 2 (partIdx = 1, lens = 'locus'): AP = t u 매개변수 이동 화살표 및 OP
       if (state.steps[2]) {
         const opLabelOffset = Math.abs(t) < 0.15 ? { x: 42, y: 24 } : { x: 35, y: 16 };
@@ -679,11 +703,11 @@ window.addEventListener('DOMContentLoaded', function () {
           3.4,
           `법선벡터 n(${n.x.toFixed(0)}, ${n.y.toFixed(0)})`,
           false,
-          { x: 55, y: 10 },
+          { x: 70, y: 26 },
           2,
           'aux'
         );
-        drawRightAngleMark(A, { x: ux, y: uy }, { x: nx, y: ny }, 12, '#f472b6', 2, 'aux');
+        drawRightAngleMark(A, { x: ux, y: uy }, { x: nx, y: ny }, 14, '#f472b6', 2, 'aux'); // [표시 보강] 직각 표시를 키움(작아서 안 보였음)
 
         const wBase = 1 / (1 + Math.abs(t));
         const wStep = 1 - wBase;
@@ -731,6 +755,11 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.restore();
 
         drawChalkPoint(M.x, M.y, 5, '#34d399', `중심 M(${M.x.toFixed(0)}, ${M.y.toFixed(0)}) [r=√13]`, { x: 10, y: 18 }, 2, 'locus');
+        // [표시 보강] 지름 AB의 중심 M: MA = MB = MP(반지름) 같은 길이 눈금
+        drawChalkLine(M.x, M.y, P.x, P.y, 'rgba(52, 211, 153, 0.6)', 1.5, true, false, 2, 'locus');
+        BD.ticks([M.x, M.y], [A.x, A.y], { count: 1, color: '#34d399' });
+        BD.ticks([M.x, M.y], [B.x, B.y], { count: 1, color: '#34d399' });
+        BD.ticks([M.x, M.y], [P.x, P.y], { count: 1, color: '#34d399' });
       }
 
       // Step 1 (partIdx = 0, lens = 'base'): 지름 양 끝점 A, B 및 선분 AB
@@ -755,7 +784,7 @@ window.addEventListener('DOMContentLoaded', function () {
             P,
             { x: vPA.x / lPA, y: vPA.y / lPA },
             { x: vPB.x / lPB, y: vPB.y / lPB },
-            12,
+            16, // [표시 보강] 직각 표시를 키움(점 P·이름표에 가려 안 보였음)
             '#fde047',
             1,
             'aux'

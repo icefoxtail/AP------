@@ -244,7 +244,7 @@ window.addEventListener('DOMContentLoaded', function () {
   let CUR = null; // 지금 그리는 셸 상태(손잡이 끌기가 고칩니다)
   const sink = {};
   const palette = { pink: '#f472b6', teal: '#34d399', blue: '#38bdf8', gold: '#fbbf24', purple: '#c084fc', red: '#fb7185' };
-  const state = { mode: 1, subtype: 1, a: 3, b: 4, py: 5, branch: 1, steps: { 1: true, 2: false, 3: false }, lens: 'all', partIdx: -1, _labels: [] };
+  const state = { mode: 1, subtype: 1, a: 3, b: 4, py: 5, branch: 1, steps: { 1: true, 2: false, 3: false }, lens: 'all', partIdx: -1, _labels: [], _blocks: [] };
   const withAlpha = (a, fn) => { const c = BOARD.ctx; c.save(); c.globalAlpha *= a; try { fn(); } finally { c.restore(); } };
 
   function drawChalkLine(x1, y1, x2, y2, color = '#fff', width = 2, dashed = false, glow = false) {
@@ -296,9 +296,59 @@ window.addEventListener('DOMContentLoaded', function () {
       { text: `${nameR}: ${fmt(right)}`, weight: Math.max(0.05, right / total), color: palette.teal }
     ] };
   }
+  /* [표시 보강] 각·평행 표시 도우미 — 같은 각은 같은 색·같은 호로, 값(°)이나 기호는 각의 안쪽(이등분선 방향)에 씁니다.
+     이름표 자동 배치(drawSmartLabels)가 각 표시를 덮지 않도록 각 부채꼴 영역을 '피할 자리'로 등록합니다. */
+  function degAt(v, p, q) {
+    const ax = p.x - v.x, ay = p.y - v.y, bx = q.x - v.x, by = q.y - v.y;
+    const k = (ax * bx + ay * by) / ((Math.hypot(ax, ay) * Math.hypot(bx, by)) || 1);
+    return Math.acos(Math.max(-1, Math.min(1, k))) * 180 / Math.PI;
+  }
+  function bisectorPx(v, p, q) {
+    const s0 = BOARD.toS(v.x, v.y), a = BOARD.toS(p.x, p.y), b = BOARD.toS(q.x, q.y);
+    const la = Math.hypot(a.x - s0.x, a.y - s0.y) || 1, lb = Math.hypot(b.x - s0.x, b.y - s0.y) || 1;
+    let bx = (a.x - s0.x) / la + (b.x - s0.x) / lb, by = (a.y - s0.y) / la + (b.y - s0.y) / lb;
+    const bl = Math.hypot(bx, by);
+    if (bl < 1e-6) { bx = -(a.y - s0.y) / la; by = (a.x - s0.x) / la; } else { bx /= bl; by /= bl; }
+    return { s0, bx, by };
+  }
+  function blockSector(v, p, q, rpx) {
+    const { s0, bx, by } = bisectorPx(v, p, q);
+    const a = BOARD.toS(p.x, p.y), b = BOARD.toS(q.x, q.y);
+    const u = (t) => { const l = Math.hypot(t.x - s0.x, t.y - s0.y) || 1; return { x: s0.x + (t.x - s0.x) / l * rpx, y: s0.y + (t.y - s0.y) / l * rpx }; };
+    const pts = [s0, u(a), u(b), { x: s0.x + bx * rpx, y: s0.y + by * rpx }];
+    const x0 = Math.min(...pts.map((q2) => q2.x)), x1 = Math.max(...pts.map((q2) => q2.x)), y0 = Math.min(...pts.map((q2) => q2.y)), y1 = Math.max(...pts.map((q2) => q2.y));
+    state._blocks.push({ x: x0 - 4, y: y0 - 4, w: x1 - x0 + 8, h: y1 - y0 + 8 });
+  }
+  function markAng(v, p, q, color, label, r = 26, rings = 1, gap = 14) {
+    if (![v.x, v.y, p.x, p.y, q.x, q.y].every(Number.isFinite)) return;
+    BOARD.angle([v.x, v.y], [p.x, p.y], [q.x, q.y], { r, rings, color, label, size: 11, labelGap: gap });
+    blockSector(v, p, q, r + gap + 26);
+  }
+  function angValue(v, p, q, text, color, distPx) {
+    const { s0, bx, by } = bisectorPx(v, p, q);
+    BOARD._text(s0.x + bx * distPx, s0.y + by * distPx, text, { color, size: 11.5, align: 'center', baseline: 'middle', weight: 800 });
+  }
+  function parMark(p, q, color, count = 1) {
+    const a = BOARD.toS(p.x, p.y), b = BOARD.toS(q.x, q.y), c = BOARD.ctx;
+    const l = Math.hypot(b.x - a.x, b.y - a.y) || 1, d = { x: (b.x - a.x) / l, y: (b.y - a.y) / l }, n = { x: -d.y, y: d.x };
+    const m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    c.save();
+    c.strokeStyle = BOARD.color(color);
+    c.lineWidth = 2;
+    c.setLineDash([]);
+    for (let i = 0; i < count; i++) {
+      const o = (i - (count - 1) / 2) * 7, t = { x: m.x + d.x * o, y: m.y + d.y * o };
+      c.beginPath();
+      c.moveTo(t.x - d.x * 4 + n.x * 5, t.y - d.y * 4 + n.y * 5);
+      c.lineTo(t.x + d.x * 3, t.y + d.y * 3);
+      c.lineTo(t.x - d.x * 4 - n.x * 5, t.y - d.y * 4 - n.y * 5);
+      c.stroke();
+    }
+    c.restore();
+  }
   function drawSmartLabels() {
     const B = BOARD;
-    if (B._bbox || B.thumb) { state._labels = []; return; }
+    if (B._bbox || B.thumb) { state._labels = []; state._blocks = []; return; }
     const c = B.ctx, r = { width: B.W, height: B.H };
     const cr = B.canvas.getBoundingClientRect();
     const blocked = [];
@@ -306,7 +356,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const b = q.getBoundingClientRect();
       if (b.width > 0 && b.height > 0) blocked.push({ x: b.left - cr.left - 7, y: b.top - cr.top - 7, w: b.width + 14, h: b.height + 14 });
     });
-    const taken = [...blocked];
+    const taken = [...blocked, ...state._blocks];
     c.save();
     c.globalAlpha = 1;
     c.setLineDash([]);
@@ -342,6 +392,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     c.restore();
     state._labels = [];
+    state._blocks = [];
   }
 
   /* ===== 원본 그대로: 보조 함수·기하 커널 (원본 849–891행) ===== */
@@ -440,7 +491,9 @@ window.addEventListener('DOMContentLoaded', function () {
         if(state.steps[1]||state.steps[2])drawCircle(g.O,g.c,'rgba(251,191,36,.56)');
         if(state.steps[2]){
           drawPolygon([g.Fp,g.K,g.F],'rgba(251,191,36,.12)',palette.gold,2.6);
-          rightMark(g.K,sub(g.F,g.K),sub(g.Fp,g.K),palette.pink,12);
+          rightMark(g.K,sub(g.F,g.K),sub(g.Fp,g.K),palette.pink,14);
+          blockSector(g.K,g.F,g.Fp,34); // [표시 보강] K의 직각 표시가 'K (직각 교점)' 이름표에 가려지지 않게 자리 확보
+          angValue(g.K,g.F,g.Fp,'90°',palette.pink,30);
           line(g.O,g.K,'rgba(251,191,36,.75)',2.3,true);
           midLabel(g.O,g.K,`OK=c=${fmt(g.c)}`,palette.gold,{x:9,y:-12});
           point(g.K,palette.gold,'K (∠F′KF=90°)',{x:12,y:-20});
@@ -494,7 +547,18 @@ window.addEventListener('DOMContentLoaded', function () {
           drawBottomTapeBanner(s===2?`두 점근선이 이루는 각 = ${fmt(g.angle,1)}° · e=${fmt(g.c/g.a,3)} · 수직 조건 a=b`:`OH=${fmt(dist(g.O,g.H))}, FH=${fmt(dist(g.F,g.H))}, P에서 점근선까지 ${fmt(g.l1)}`,dist(g.O,g.H),dist(g.F,g.H),'OH','FH');
         }
         if(s===2&&state.steps[1]){
-          if(Math.abs(g.a-g.b)<.012)rightMark(g.O,g.u,g.v,palette.gold,13);
+          if(Math.abs(g.a-g.b)<.012){
+            rightMark(g.O,g.u,g.v,palette.gold,13);
+            // [표시 보강] a=b: 두 점근선이 직각(90°), 각 점근선은 x축과 45°(같은 색·같은 호)
+            angValue(g.O,g.u,g.v,'90°',palette.gold,30);
+            markAng(g.O,{x:1,y:0},g.u,palette.teal,'45°',44,1,13);
+            markAng(g.O,{x:1,y:0},g.v,palette.teal,'45°',44,1,13);
+          } else {
+            // [표시 보강] a≠b: 두 점근선 사이 예각을 호와 값으로 표시(아래 띠의 '점근선의 각'이 그림에도 보이게)
+            const wv={x:-g.v.x,y:-g.v.y};
+            const acuteUV=degAt(g.O,g.u,g.v)<=90;
+            markAng(g.O,g.u,acuteUV?g.v:wv,palette.gold,`${fmt(g.angle,1)}°`,34,1,14);
+          }
         }
       }
     }
@@ -505,7 +569,17 @@ window.addEventListener('DOMContentLoaded', function () {
         if(state.steps[1]){line(g.O,g.R1,palette.blue,2.7);line(g.O,g.R2,palette.pink,2.7);}
         if(state.steps[2]){drawPolygon([g.O,g.R1,g.P,g.R2],'rgba(56,189,248,.12)',focus(1)?palette.gold:palette.blue,focus(1)?4:2.4);
           glowLine(g.R1,g.P,palette.teal,1);glowLine(g.R2,g.P,palette.teal,1);
-          point(g.R1,palette.blue,'R₁');point(g.R2,palette.pink,'R₂');}
+          point(g.R1,palette.blue,'R₁');point(g.R2,palette.pink,'R₂');
+          // [표시 보강] 평행사변형의 평행 표시(OR₁ ∥ R₂P: ›, OR₂ ∥ R₁P: ››)와 마주 보는 각 ∠O = ∠P(같은 색·같은 호·같은 값)
+          if(dist(g.O,g.R1)>.3&&dist(g.O,g.R2)>.3){
+            parMark(g.O,g.R1,palette.blue,1);parMark(g.R2,g.P,palette.blue,1);
+            parMark(g.O,g.R2,palette.pink,2);parMark(g.R1,g.P,palette.pink,2);
+            const thv=degAt(g.O,g.R1,g.R2);
+            if(thv>6&&thv<174){
+              markAng(g.O,g.R1,g.R2,palette.gold,`${fmt(thv,1)}°`,26,1,14);
+              markAng(g.P,g.R1,g.R2,palette.gold,`${fmt(thv,1)}°`,26,1,14);
+            }
+          }}
         if(state.steps[3])drawBottomTapeBanner(`OR₁PR₂ 넓이 = ${fmt(g.parArea)} = ab/2(${fmt(g.a*g.b/2)})`,dist(g.O,g.R1),dist(g.O,g.R2),'OR₁','OR₂');
       }else{
         if(state.steps[2]){
@@ -514,6 +588,8 @@ window.addEventListener('DOMContentLoaded', function () {
           const sz2=Math.min(11,Math.max(3,g.l2*BOARD.k*.32));
           rightMark(g.Q1,g.u,sub(g.P,g.Q1),palette.pink,sz1);rightMark(g.Q2,g.v,sub(g.P,g.Q2),palette.teal,sz2);
           point(g.Q1,palette.pink,`Q₁: l₁=${fmt(g.l1)}`,{x:14,y:24});point(g.Q2,palette.teal,`Q₂: l₂=${fmt(g.l2)}`,{x:-14,y:-20});
+          // [표시 보강] 꼭짓점 A(또는 l₁=l₂)에서는 두 수선의 길이가 같다는 같은 길이 표시
+          if(Math.abs(g.l1-g.l2)<.02*Math.max(g.l1,g.l2,1e-6)){BOARD.ticks([g.P.x,g.P.y],[g.Q1.x,g.Q1.y],{count:1,color:palette.gold});BOARD.ticks([g.P.x,g.P.y],[g.Q2.x,g.Q2.y],{count:1,color:palette.gold});}
         }
         if(s===3&&state.steps[1]){point({x:state.branch*g.a,y:0},palette.gold,state.branch===1?'꼭짓점 A':'꼭짓점 A′',{x:12,y:-19});}
         if(state.steps[3])drawBottomTapeBanner(`l₁·l₂=${fmt(g.asymProduct,4)} = a²b²/c²(${fmt(g.a*g.a*g.b*g.b/g.c/g.c,4)})`,g.l1,g.l2,'l₁','l₂');
@@ -538,6 +614,9 @@ window.addEventListener('DOMContentLoaded', function () {
           if(state.steps[2]){glowLine(g.Fp,g.Fstar,palette.gold,1);glowLine(g.P,g.Fstar,palette.pink,1);
             drawTick(g.F,g.H1,palette.purple);drawTick(g.H1,g.Fstar,palette.purple);
             rightMark(g.H1,g.tangent,sub(g.F,g.H1),palette.purple,9);
+            // [표시 보강] 접선에 대한 대칭: ∠FPH₁ = ∠F*PH₁ — 같은 색·같은 호·같은 값
+            if(dist(g.P,g.H1)>.3){const eq=fmt(degAt(g.P,g.F,g.H1),1)+'°';
+              markAng(g.P,g.F,g.H1,'#fde047',eq,30,1,14);markAng(g.P,g.Fstar,g.H1,'#fde047',eq,30,1,14);}
             point(g.Fstar,palette.gold,'F*');point(g.H1,palette.purple,'H₁ (중점)',{x:10,y:-20});
             point(g.O,palette.blue,'O');
           }
@@ -565,8 +644,12 @@ window.addEventListener('DOMContentLoaded', function () {
       const normalize=v=>mul(1/(Math.hypot(v.x,v.y)||1),v);
       const bis=normalize(add(normalize(v1),normalize(v2)));
       const a1=Math.atan2(v1.y,v1.x),a2=Math.atan2(v2.y,v2.x),ab=Math.atan2(bis.y,bis.x);
-      function shortArc(p,q,color,px){let delta=((q-p+3*Math.PI)%(2*Math.PI))-Math.PI;BOARD.arc([g.P.x,g.P.y],px/BOARD.k,p,p+delta,{color,width:2,cw:delta<0});}
-      shortArc(a1,ab,palette.teal,32);shortArc(ab,a2,palette.pink,41);
+      // [표시 보강] 접선이 이등분한 두 각 α를 같은 색·같은 반지름·같은 기호(α)로 그려 '같은 각'임을 보이고, 값은 이등분선(접선) 위 각 안쪽에 씁니다.
+      //   (이전: 청록/분홍·반지름 32/41px로 서로 달라 보였고, P 이름표 아래에 가려져 보이지 않았음)
+      const tpt={x:g.P.x+Math.cos(ab),y:g.P.y+Math.sin(ab)};
+      markAng(g.P,g.F,tpt,palette.gold,'α',34,1,14);
+      markAng(g.P,tpt,g.Fp,palette.gold,'α',34,1,14);
+      angValue(g.P,g.F,g.Fp,`α = ${fmt(degAt(g.P,g.F,g.Fp)/2,1)}°`,palette.gold,78);
     }
 
   /* ===== 원본 그대로: 조각 강조 (원본 1214–1235행) ===== */
