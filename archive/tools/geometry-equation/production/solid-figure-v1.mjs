@@ -433,10 +433,12 @@ export const circled=k=>String.fromCodePoint(CIRCLED_ONE+k-1);
 function parseCount(raw,vertices,edges){
   if(raw===undefined)return null;
   if(!isPlain(raw))bad('SOLID_COUNT_REQUEST_INVALID');
-  onlyKeys(raw,['vertices','edges','faces'],'SOLID_COUNT_REQUEST_INVALID');
-  for(const key of Object.keys(raw))if(typeof raw[key]!=='boolean')bad('SOLID_COUNT_REQUEST_INVALID');
+  onlyKeys(raw,['vertices','edges','faces','near'],'SOLID_COUNT_REQUEST_INVALID');
+  for(const key of Object.keys(raw))if(key!=='near'&&typeof raw[key]!=='boolean')bad('SOLID_COUNT_REQUEST_INVALID');
   if(raw.faces===true)bad('SOLID_COUNT_FACES_UNSUPPORTED');
-  const count={vertices:raw.vertices===true,edges:raw.edges===true};
+  // near:"EDGE": every edge number stands nearer to its own edge (the whole segment, not only its middle) than to any other numbered edge, by 6 px
+  if(raw.near!==undefined&&(raw.near!=='EDGE'||raw.edges!==true))bad('SOLID_COUNT_REQUEST_INVALID');
+  const count={vertices:raw.vertices===true,edges:raw.edges===true,...(raw.near!==undefined?{near:'EDGE'}:{})};
   if(!count.vertices&&!count.edges)bad('SOLID_COUNT_REQUEST_INVALID');
   if(count.vertices&&vertices.some(v=>v.name))bad('SOLID_COUNT_NAMES_CONFLICT');
   if(count.edges&&edges.length>COUNT_EDGES_MAX)bad('SOLID_COUNT_TOO_MANY:edges');
@@ -1970,7 +1972,8 @@ function spec3d(plan,model,ctx){
         const mids=ends.map(([a,b])=>[r6((a[0]+b[0])/2),r6((a[1]+b[1])/2)]);
         list.forEach((e,k)=>{
           const n=String(k+1),text=circled(k+1);
-          labels.push({id:`count-e-${solid.id}-${n}`,role:'count-edge',owner:`count-edge-${solid.id}-${n}`,kind:'TEXT',text,plain:text,value:n,countKind:'edge',countN:k+1,solid:solid.id,segment:ends[k],near:{own:mids[k],others:mids.filter((q,j)=>j!==k),margin:COUNT_MARGIN}});
+          labels.push({id:`count-e-${solid.id}-${n}`,role:'count-edge',owner:`count-edge-${solid.id}-${n}`,kind:'TEXT',text,plain:text,value:n,countKind:'edge',countN:k+1,solid:solid.id,segment:ends[k],near:{own:mids[k],others:mids.filter((q,j)=>j!==k),margin:COUNT_MARGIN,
+            ...(solid.count.near==='EDGE'?{ownSeg:ends[k],otherSegs:ends.filter((q,j)=>j!==k),segMargin:COUNT_EDGE_MARGIN}:{})}});
         });
       }
     }else{
@@ -2460,7 +2463,19 @@ function segmentHitsBox(a,b,box,pad){
   });
 }
 // a counting number's centre stays within COUNT_FAR px of its own vertex or edge midpoint (the observer's bound is 48; one half px less here, so a rounding never crosses it)
-const BOX_PAD=2.2,COUNT_MARGIN=4,COUNT_FAR=47.5;
+const BOX_PAD=2.2,COUNT_MARGIN=4,COUNT_FAR=47.5,COUNT_EDGE_MARGIN=6;
+/** The distance from a box {x,y,width,height} to a segment (0 where they touch). */
+function boxSegmentDistance(box,a,b){
+  const x0=box.x,y0=box.y,x1=box.x+box.width,y1=box.y+box.height;
+  const inside=p=>p[0]>=x0&&p[0]<=x1&&p[1]>=y0&&p[1]<=y1;
+  if(inside(a)||inside(b))return 0;
+  const corners=[[x0,y0],[x1,y0],[x1,y1],[x0,y1]];
+  const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);
+  for(let i=0;i<4;i++){const c=corners[i],d=corners[(i+1)%4];if(o(a,b,c)*o(a,b,d)<0&&o(c,d,a)*o(c,d,b)<0)return 0;}
+  const toSeg=(p,s,t)=>{const dx=t[0]-s[0],dy=t[1]-s[1],l2=dx*dx+dy*dy,u=l2===0?0:Math.max(0,Math.min(1,((p[0]-s[0])*dx+(p[1]-s[1])*dy)/l2));return Math.hypot(p[0]-(s[0]+u*dx),p[1]-(s[1]+u*dy));};
+  const edges=[[corners[0],corners[1]],[corners[1],corners[2]],[corners[2],corners[3]],[corners[3],corners[0]]];
+  return Math.min(...edges.map(([c,d])=>Math.min(toSeg(a,c,d),toSeg(b,c,d))),...corners.map(c=>toSeg(c,a,b)));
+}
 /**
  * Place every label near its anchor: names on the open side of their corner, lengths beside their segment, never over a stroke or another label.
  * A label that finds no place because the labels placed before it took the room around it goes first on the next try (a few tries); the fewest-failures try is kept.
@@ -2496,7 +2511,10 @@ function placeLabelsOnce(spec,fragments,order){
   const nearest=(label,box)=>{
     if(!label.near)return true;
     const cx=box.x+box.width/2,cy=box.y+box.height/2,own=Math.hypot(cx-label.near.own[0],cy-label.near.own[1]);
-    return own<=COUNT_FAR&&label.near.others.every(o=>own+label.near.margin<Math.hypot(cx-o[0],cy-o[1]));
+    if(!(own<=COUNT_FAR&&label.near.others.every(o=>own+label.near.margin<Math.hypot(cx-o[0],cy-o[1]))))return false;
+    // count.near "EDGE": the box is nearer to its own edge (the whole segment) than to every other numbered edge
+    if(label.near.ownSeg){const dOwn=boxSegmentDistance(box,label.near.ownSeg[0],label.near.ownSeg[1]);return label.near.otherSegs.every(s=>dOwn+label.near.segMargin<=boxSegmentDistance(box,s[0],s[1]));}
+    return true;
   };
   for(const label of order){
     const frag=fragments.get(label.id),{width:w,height:h}=frag.intrinsic;

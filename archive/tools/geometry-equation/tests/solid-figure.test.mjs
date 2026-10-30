@@ -457,6 +457,38 @@ test('only edges or only vertices can be counted, beside letters or other length
   assert.equal(c2.status,'COMPOSED',JSON.stringify(c2.detail));assert.equal(c2.staticAudit.status,'PASS',JSON.stringify(c2.staticAudit.errors));
   assert.equal((c2.svg.match(/data-label-role="count-vertex"/g)??[]).length,5);assert.doesNotMatch(c2.svg,/count-edge/);
 });
+// --- E33: count.near "EDGE" — an edge number stands nearer to its own whole edge than to any other numbered edge ---------------------------------
+const PENTAGON=[[3.095,2.234],[-0.903,2.96],[-3.563,-0.099],[-0.761,-2.994],[2.776,-1.4]];
+const countedPentagonPyramid=count=>figure({solids:[{kind:'PYRAMID',base:{kind:'POLYGON',points:PENTAGON},height:5.5,names:'......',count}],solidCaption:{text:'오각뿔'}});
+test('count.near "EDGE": parsed only with edges, refused otherwise, and a plan without it keeps the count request as it was',()=>{
+  const near=solveSolidFigure(countedPentagonPyramid({vertices:true,edges:true,near:'EDGE'}));
+  assert.deepEqual(near.solids[0].count,{vertices:true,edges:true,near:'EDGE'});
+  assert.deepEqual(solveSolidFigure(countedPentagonPyramid({vertices:true,edges:true})).solids[0].count,{vertices:true,edges:true});
+  const bad=count=>assert.throws(()=>solveSolidFigure(countedPentagonPyramid(count)),code('SOLID_COUNT_REQUEST_INVALID'),JSON.stringify(count));
+  bad({vertices:true,near:'EDGE'});          // near is about the edge numbers
+  bad({vertices:true,edges:false,near:'EDGE'});
+  bad({edges:true,near:'MIDPOINT'});         // the one value is "EDGE"
+  bad({edges:true,near:true});
+  bad({edges:true,near:null});
+});
+test('count.near "EDGE": the edge numbers of a rotated pentagonal pyramid stand beside their own edges, and the observer reads that back',async()=>{
+  const plan=countedPentagonPyramid({vertices:true,edges:true,near:'EDGE'});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  assert.equal((composed.svg.match(/data-label-role="count-edge"/g)??[]).length,10);
+  const r=await audit(plan,composed.svg);
+  assert.equal(r.status,'PASS',JSON.stringify(r.errors));
+  // the same figure placed without near (the number nearest to its own midpoint, wherever it falls) is not what near asked for:
+  // the pentagon's edges are many and slanted, so at least one number there is not clearly nearer to its own edge
+  const plain=await panel(countedPentagonPyramid({vertices:true,edges:true}));
+  assert.equal(plain.status,'COMPOSED',JSON.stringify(plain.detail));
+  const r2=await audit(plan,plain.svg);
+  const own=await audit(countedPentagonPyramid({vertices:true,edges:true}),plain.svg);
+  assert.equal(own.status,'PASS',JSON.stringify(own.errors));
+  assert.equal(r2.status,'FAIL');
+  assert.ok(r2.errors.every(e=>e.startsWith('SOLID_COUNT_LABEL_NEARER_TO_OTHER_EDGE')),JSON.stringify(r2.errors));
+});
 test('a counted figure with no room for its numbers is refused, and counting is refused with explicit codes',async()=>{
   const bad=(solid,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[solid]})),code(expected),expected);
   const base={kind:'PRISM',base:{kind:'RECT',width:4,depth:3},height:2};

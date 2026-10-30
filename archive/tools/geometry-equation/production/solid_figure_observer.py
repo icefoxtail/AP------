@@ -1120,6 +1120,7 @@ def solids_with_ids(plan):
 COUNT_ROLES = ('count-vertex', 'count-edge')
 COUNT_MARGIN = 2.0   # px: a counting number is nearer to its own target than to any other by at least this
 COUNT_FAR = 48.0     # px: a counting number's centre is never farther than this from its own target
+COUNT_EDGE_MARGIN = 4.0   # px: with count.near "EDGE" an edge number's box is nearer to its own edge (the whole segment) than to any other counted edge by at least this
 CIRCLED = [chr(0x2460 + k) for k in range(20)]
 
 
@@ -1173,6 +1174,10 @@ def audit_counts(solid, flags, px, ctx):
             if own > COUNT_FAR: errors.append('SOLID_COUNT_LABEL_FAR:' + lid)
             if any(own + COUNT_MARGIN >= math.hypot(cx - t[0], cy - t[1]) for k, t in enumerate(targets) if k != n - 1): errors.append('SOLID_COUNT_LABEL_CONFUSED:' + lid)
             if role == 'count-vertex' and _box_seg_dist(box, targets[n - 1], targets[n - 1]) < 1.5: errors.append('SOLID_COUNT_ON_VERTEX:' + lid)
+            if role == 'count-edge' and flags.get('near') == 'EDGE':
+                segs = [(px(solid['verts'][a][1]), px(solid['verts'][b][1])) for a, b in order]
+                d_own = _box_seg_dist(box, *segs[n - 1])
+                if any(d_own + COUNT_EDGE_MARGIN > _box_seg_dist(box, *s_) for k, s_ in enumerate(segs) if k != n - 1): errors.append('SOLID_COUNT_LABEL_NEARER_TO_OTHER_EDGE:' + lid)
 
 
 HIGHLIGHT_FILLS = ('LIGHT', 'MEDIUM', 'WARM', 'GREEN', 'ROSE', 'VIOLET')

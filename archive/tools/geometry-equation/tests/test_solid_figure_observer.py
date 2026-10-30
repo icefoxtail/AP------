@@ -387,6 +387,38 @@ class Counting(unittest.TestCase):
         O.audit_counts(solid, {'vertices': True, 'edges': True}, px, ctx)
         self.assertTrue(any(e.startswith('SOLID_COUNT_NUMBERS_NOT_COMPLETE') for e in ctx['errors']), ctx['errors'])
 
+    PYRAMID = {'kind': 'PYRAMID', 'base': {'kind': 'RECT', 'width': 4, 'depth': 4}, 'height': 5, 'names': '.' * 5, 'id': 's1'}
+
+    def audit_pyramid(self, flags, shift=None):
+        """edge numbers 6 px right of each midpoint (the pyramid is drawn small, 8 edges within 270 px); shift={n: (dx, dy)} moves edge number n from its midpoint"""
+        solid = O.build_solid(self.PYRAMID)
+        px = lambda p: (60 + 40 * O.project(p)[0], 300 - 40 * O.project(p)[1])
+        els, boxes = self.labels_for(solid, px)
+        els = [g for g in els if g.get('data-label-role') == 'count-edge']
+        mids = [px(O.vmul(O.vadd(solid['verts'][a][1], solid['verts'][b][1]), 0.5)) for a, b in O.count_order(solid)]
+        for n, (dx, dy) in (shift or {}).items():
+            boxes['count-e-%d' % n] = (mids[n - 1][0] + dx - 2.0, mids[n - 1][1] + dy - 2.0, 4.0, 4.0)
+        ctx = {'errors': [], 'boxes': boxes, 'labels': els}
+        O.audit_counts(solid, flags, px, ctx)
+        return ctx['errors']
+
+    def test_count_near_edge_wants_each_edge_number_nearer_to_its_own_whole_edge(self):
+        # numbers just beside their own midpoints: fine with and without near
+        self.assertEqual(self.audit_pyramid({'edges': True}), [])
+        self.assertEqual(self.audit_pyramid({'edges': True, 'near': 'EDGE'}), [])
+        # edge number 3 stands 32 px from its own midpoint (still nearer to it than to any other midpoint), but its box sits on another edge
+        far = {3: (-11, 30)}
+        self.assertEqual(self.audit_pyramid({'edges': True}, shift=far), [])
+        errors = self.audit_pyramid({'edges': True, 'near': 'EDGE'}, shift=far)
+        self.assertEqual(errors, ['SOLID_COUNT_LABEL_NEARER_TO_OTHER_EDGE:count-e-3'])
+
+    def test_count_near_edge_measures_to_the_whole_segment_not_only_the_midpoint(self):
+        # edge number 4 beside its own midpoint but 6 px off its edge: the box is 6.1 px from its own edge and 9.8 px from the nearest other one,
+        # so 6.1 + 4 is more than 9.8 and it is not clearly nearer; the margin is the observer's own 4 px
+        errors = self.audit_pyramid({'edges': True, 'near': 'EDGE'}, shift={4: (-7, -6)})
+        self.assertEqual(errors, ['SOLID_COUNT_LABEL_NEARER_TO_OTHER_EDGE:count-e-4'])
+        self.assertEqual(self.audit_pyramid({'edges': True, 'near': 'EDGE'}, shift={4: (-4, 0)}), [])
+
 
 class SeveralNames(unittest.TestCase):
     BASE = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 3, 'depth': 4}, 'height': 7, 'id': 's1'}
