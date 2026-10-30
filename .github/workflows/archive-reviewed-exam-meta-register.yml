@@ -18,7 +18,9 @@ concurrency:
 jobs:
   register:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Up to two registration rounds (per-request isolation, see tools/ci/reviewed-meta-register-pass.sh), each with a
+    # shared build_db that may need one re-run, and the push helper may regenerate on a lost race.
+    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@v4

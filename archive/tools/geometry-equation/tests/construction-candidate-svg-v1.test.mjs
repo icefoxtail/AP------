@@ -300,12 +300,13 @@ test('E4a INJECTED build witness with unresolved or suppressed labels is LAYOUT_
   }
 });
 
-test('E4r REAL input: the medium-class fixture policy (24.9px base font) leaves a tick label unresolved and the path stops at the layout',async()=>{
+// (E20: a tick label that has no centred box now slides along its axis; at this font the x=1 tick label is placed that way and the crowded M coordinate label is the one left over.)
+test('E4r REAL input: the medium-class fixture policy (24.9px base font) leaves a label unresolved and the path stops at the layout',async()=>{
   const medium=requestedProfileTypographyPolicy({requestedSizeClass:'medium',intrinsicSvg:{width:384,height:320},observation:FIXTURE_OBSERVATION});
   assert.equal(medium.baseFontPx,24.9);
   const s=spy(),result=await compose({typographyPolicy:medium,identity:idOf(5),worker:s.worker});
-  assertNotRun(result);assert.equal(result.status,'LAYOUT_INVENTORY_INCOMPLETE');assert.deepEqual(result.detail,{unresolved:['tick-x-1-label'],suppressed:[]});
-  assert.deepEqual(s.of('build')[0].response.result.witness.layout.unresolved,['tick-x-1-label'],'the worker itself reported it, nothing was injected');
+  assertNotRun(result);assert.equal(result.status,'LAYOUT_INVENTORY_INCOMPLETE');assert.deepEqual(result.detail,{unresolved:['M-coordinate'],suppressed:[]});
+  assert.deepEqual(s.of('build')[0].response.result.witness.layout.unresolved,['M-coordinate'],'the worker itself reported it, nothing was injected');
   assert.equal(result.staticAudit.status,'NOT_RUN');assert.equal(result.renderedLayout.status,'NOT_RUN');assert.equal(result.svg,null);assert.equal(result.lineage.staticAuditSha256,null);
 });
 

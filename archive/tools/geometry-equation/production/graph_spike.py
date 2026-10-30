@@ -132,6 +132,17 @@ def _produce(plan):
             radius=float(plan['rationalFeaturePolicy']['holeMarkerRadiusIntrinsicPx'])
             curves.append(f'<circle id="rational-removable-hole" data-role="hole" cx="{cx:.12g}" cy="{cy:.12g}" r="{radius:.12g}" fill="white" stroke="black" stroke-width="1"/>')
         else:raise ValueError('INVALID_RATIONAL_SINGULARITY_KIND')
+    if plan['family']=='rational' and plan.get('overviewPolicy')=='RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1':
+        # Inverse proportion: an asymptote that lies on a coordinate axis is the axis itself and gets no dashed line (the horizontal one always,
+        # the vertical one when the pole is x=0); the required points are dots on the curve.
+        if not isinstance(features,dict) or features.get('schemaVersion')!='RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1':raise ValueError('RATIONAL_FEATURE_INVENTORY_REQUIRED')
+        xmin,xmax,ymin,ymax=plan['viewport'];vertical=features['asymptotes']['vertical']
+        if vertical['drawn']:
+            singular_x=float(Fraction(vertical['x']));a,b=vp.screen((singular_x,ymin)),vp.screen((singular_x,ymax))
+            curves.append(f'<line id="rational-asymptote-vertical" data-role="asymptote" data-axis="vertical" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+        for index,point in enumerate(plan.get('requiredPoints',[]),1):
+            cx,cy=vp.screen((point['x'],point['y']))
+            curves.append(f'<circle id="required-point-{index}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
     if plan['family']=='sqrt-affine' and plan.get('overviewPolicy') in {'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','SQRT_AFFINE_GENERAL_OVERVIEW_v1'}:
         from graph_framing import pp_exact_float
         features=plan.get('sqrtFeatures');policy=plan.get('sqrtFeaturePolicy')
@@ -547,6 +558,12 @@ def _overlay_model_svg(plan,transform):
     for point in features['points']:
         x,y=screen(point['x'],point['y'])
         parts.append(f'<circle id="{point["id"]}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="3.2" fill="#111" stroke="black"/>')
+    lattice=features.get('latticePoints')
+    if lattice:
+        token=lambda value:'n'+str(-value) if value<0 else str(value)
+        for dot in lattice['points']:
+            x,y=screen(dot['x'],dot['y'])
+            parts.append(f'<circle id="overlay-lattice-x{token(dot["x"])}y{token(dot["y"])}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="2.4" fill="#111" stroke="black"/>')
     return ''.join(parts)
 
 def produce(plan):

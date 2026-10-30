@@ -92,6 +92,12 @@ def serialize(node,mode='tex'):
     def escape(v):return html.escape(v) if mode=='svg' else v
     k=node.kind; a=node.args
     if k=='number':return node.value
+    if k=='quantity':
+        # A plane-mark label with a unit (cm, m, mm): the unit follows the value; after a number it is attached (3cm), after a letter one space apart (x cm).
+        if len(a)!=1:raise ValueError('NOTATION_ARITY')
+        if not re.fullmatch(r'[A-Za-z]{1,8}',node.value):raise ValueError('INVALID_UNIT_NOTATION')
+        spaced=serialize(a[0],'plain')[-1:].isalpha()
+        return s(a[0])+((r'\,' if spaced else '')+r'\mathrm{'+node.value+'}' if mode=='tex' else (' ' if spaced else '')+escape(node.value))
     if k in {'entity','variable','constant','degree','unit'}:
         if k=='entity':
             if not re.fullmatch(r'[A-Za-z]{1,8}',node.value):raise ValueError('INVALID_ENTITY_NOTATION')

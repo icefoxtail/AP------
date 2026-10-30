@@ -331,7 +331,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_왕운중_1학기_중간_중1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 윗줄에 -3/2, -1, 3/2를, 아랫줄에 가장 왼쪽의 수 -5/3과 가장 오른쪽의 수 2를 같은 눈금으로 찍고 아랫줄은 두 점을 굵은 선분으로 이은 그림이다.",
+    "solutionImageCaption": "다섯 수 중 가장 왼쪽의 -5/3이 가장 작고 가장 오른쪽의 2가 가장 크다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -771,7 +775,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_왕운중_1학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 정수 3, 4, 5의 눈금 위에 4보다 1/3 작은 수(4의 왼쪽 3등분 눈금 한 칸)와 3보다 3/2 큰 수(4와 5의 한가운데)가 점으로 찍혀 있어, 두 점 사이의 정수 눈금을 셀 수 있다.",
+    "solutionImageCaption": "4보다 1/3 작은 수와 3보다 3/2 큰 수를 수직선에 찍고 두 점 사이의 정수를 센다. 3과 4 사이의 짧은 눈금은 3등분 눈금이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -857,7 +865,7 @@ window.questionBank = [
     "content": "[서술형 4] $5$로 나누면 $3$이 남고, $7$으로 나누면 $5$가 남고, $10$으로 나누면 $8$이 남는 자연수 중에서 가장 작은 수를 구하시오.",
     "choices": [],
     "answer": "$68$",
-    "solution": "$10$으로 나누어 $8$이 남으므로\n\n$x=10k+8$\n\n이 수는 자동으로 $5$로 나누면 $3$이 남는다.\n\n또 $7$로 나누어 $5$가 남아야 하므로\n\n$10k+8\\equiv5\\pmod7$\n\n$3k+1\\equiv5\\pmod7$\n\n$3k\\equiv4\\pmod7$\n\n가장 작은 $k$는 $6$이다.\n\n따라서\n\n$x=10\\times6+8=68$",
+    "solution": "$5$로 나누면 $3$이 남으므로 $2$를 더하면 $5$로 나누어떨어진다.\n$7$로 나누면 $5$가 남으므로 $2$를 더하면 $7$로 나누어떨어진다.\n$10$으로 나누면 $8$이 남으므로 $2$를 더하면 $10$으로 나누어떨어진다.\n\n구하는 수를 $x$라 하면\n\n$x+2$는 $5,\\ 7,\\ 10$의 공배수\n\n이다.\n\n$10=2\\times5$이므로 $5,\\ 7,\\ 10$의 최소공배수는\n\n$2\\times5\\times7=70$\n\n$x$가 가장 작으려면 $x+2$가 가장 작은 공배수여야 하므로\n\n$x+2=70$\n\n$x=68$\n\n(확인) $68=5\\times13+3=7\\times9+5=10\\times6+8$\n\n따라서 구하는 수는 $68$이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",

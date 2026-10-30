@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>피타고라스 정리 · AP Math 실험실</title>
+<meta name="description" content="중2 피타고라스 정리: 세 정사각형 넓이, 4대 증명, 피타고라스 수, 예각·직각·둔각 판별, 제곱합 공식, 정삼각형·반원·초승달, 빗변 수선과 소 공식, 종이접기·최단거리까지 8개 탐구관 40개 장면">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-compat.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<script>
+/* ==========================================================================
+   중2 · 피타고라스 정리 (AP Math Lab 2.0 이식본) — 8개 탐구관 × 40개 장면
+   원본: labs/g8/피타고라스.html
+   이식 방식: "호환층 이식" — 원본의 내용(getSpec)과 그리기 코드(renderMode1~8)를 글자 그대로 옮기고,
+   그리기 함수 이름(pline·ppoly·pdot…)은 apl-compat.js(APLab.compat.master)가 새 무대 엔진에 연결합니다.
+   원본의 관찰 렌즈(전체 구조 / 직각·빗변·꼭짓점 / 넓이·제곱합 블록 / 보조선·닮음·모눈)는 호환층 호출을 렌즈 규칙(lensFx)으로
+   감싸는 이 파일 안의 어댑터로 그대로 동작하고, 원본 LENS_OFF 표로 효과 없는 렌즈 버튼은 숨깁니다. 렌즈·족보·배수·경첩 각도는 프리셋 칩입니다.
+   원본과 다른 점 (코드 안에는 모두 [2.0] / [2.0 수정] 주석이 있습니다)
+   - 캔버스를 직접 그리던 곳(모눈 타일 2곳, 반원 3곳, 경첩 궤적 호)은 무대 호출로 교체. 접어 올린 큰 반원을 배경색으로 덧칠하던 초승달 장면은
+     '큰 반원 바깥만 그리기(clip)'로 바꿔 칠판·종이 어느 테마에서도 같은 모양
+   - 미니 상자·하단 띠는 그림 위가 아닌 무대 카드·요약 띠로 이동, 점 P·점 A는 끌 수 있는 점(후광)으로
+   - 그림이 자기 해설과 어긋나던 곳 수정 ([2.0 수정])
+       ① 탭 4 '세 변 (5, 6, 7)·(4, 5, 7)·(3, 4, x)' 장면: 원본은 모두 6·8 경첩(∠C 76°·106° 고정)으로 그려 제목·수치가 그림과 달랐음
+          → 장면마다 실제 변 길이로 그리고 변 길이(a, b)를 적음. 경첩 6·8과 예각 범위(6, 8, x)는 원본 그대로. 관계없던 수직선(3, 4, x용)은
+          둔각·예각 '범위' 장면에서만 보임. 동작 버튼 글의 각도(60°·120°, 실제 동작은 65°·90°·115°·130°)는 숫자를 뺌
+       ② 탭 2 '수선 닮음 증명': 해설은 AB=12·AC=16·BC=20인데 그림에는 15·20·25가 적혀 있었음(+이전 장면의 강조선이 새어 들어옴) → 12·16·20으로
+       ③ 탭 3 피타고라스 수: 세로에 32px를 더해 3:4:5가 거의 직각이등변삼각형으로 그려졌음 → 짧은 변 : 긴 변 = a : b 그대로
+       ④ 탭 3 (3, 4, x) 함정 경우 2: 직각변 x=√7(<3)·빗변 4인데 그림은 x가 3보다 길고 빗변이 4보다 훨씬 길었음 → 3 : √7 : 4 비율
+       ⑤ 탭 1 정사각형 모눈: ×k를 눌러도 기본 족보의 타일 수 그대로여서 'S₁=6²=36'인데 3×3 타일 → 이름표의 한 변(a·b·c)과 같은 타일 수
+          탭 1 '뒤집힌 삼각형'·탭 6 초승달·반원: 족보(5:12:13 등)를 골라도 그림은 늘 3:4:5 → 고른 족보 비율로 직각 꼭짓점을 놓음
+       ⑥ 탭 8 직사각형 접기: 0%에서 이미 접힌 모양이라 '0%→접기'가 처음에 튐 → 0%=접기 전, 100%=접은 뒤(원본 첫 화면=100%로 시작)
+          탭 8 빗변 수직이등분 접기: '꼭짓점 B를 A에 포개어 접기' 버튼·슬라이더가 있었지만 그림이 움직이지 않음 → 접는 선 DE를 축으로 B가 A에 포개짐
+          탭 8 직육면체 겉면: 안내글의 '슬라이더로 펼쳐보세요'가 가리키는 변환이 없어 '펼친 전개도입니다'로 고침
+   - 효과가 없던 조작(그림을 바꾸지 않는 변환·족보·배수·각도 버튼)은 장면마다 필요한 것만 표시. 탭 3 장면은 족보가 장면이므로
+     족보 칩 대신 장면 탭을 쓰고, 다른 탭의 족보·배수 값이 새어 들어오지 않게 함
+   - 변 위 이름표가 휴대폰에서 변과 겹치던 곳은 변 바깥쪽에 화면 픽셀 간격으로 배치(ptagAt)
+   - 해설 문장 속 ➔ ⭕ ❌ 는 셸이 이모지로 보고 떼어 내므로 → ○ × 로 바꿔 넘김(원문 getSpec은 그대로)
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+
+  /* ===== 원본 그대로: 색 상수와 벡터 도우미 (원본 354–376행) ===== */
+    const PCOL = {
+      cyan: '#38bdf8',
+      pink: '#f472b6',
+      green: '#34d399',
+      gold: '#fbbf24',
+      white: '#f1f5f9',
+      red: '#f43f5e',
+      purple: '#c084fc'
+    };
+
+    function pt(x, y) { return { x, y }; }
+    function mid(a, b) { return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }; }
+    function lerp(a, b, t) { return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t }; }
+    function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+    function sub(a, b) { return { x: a.x - b.x, y: a.y - b.y }; }
+    function add(a, b) { return { x: a.x + b.x, y: a.y + b.y }; }
+    function mul(v, k) { return { x: v.x * k, y: v.y * k }; }
+    function norm(v) { const l = Math.hypot(v.x, v.y) || 1; return { x: v.x / l, y: v.y / l }; }
+    function rot(p, center, rad) {
+      const dx = p.x - center.x, dy = p.y - center.y;
+      const c = Math.cos(rad), s = Math.sin(rad);
+      return { x: center.x + dx * c - dy * s, y: center.y + dx * s + dy * c };
+    }
+
+  /* ===== 원본 그대로: 직각삼각형 족보 (원본 381–386행) ===== */
+    const FAMILY_LIST = [
+      { id: 0, label: '3:4:5', a: 3, b: 4, c: 5 },
+      { id: 1, label: '5:12:13', a: 5, b: 12, c: 13 },
+      { id: 2, label: '8:15:17', a: 8, b: 15, c: 17 },
+      { id: 3, label: '7:24:25', a: 7, b: 24, c: 25 }
+    ];
+
+  /* ===== 원본 상태 객체(이름 그대로) — 매 프레임 2.0 셸 상태에서 채웁니다 (원본 388–420행) ===== */
+    const state = {
+      mode: 1, // 1~8
+      subType: {
+        1: 'std345',      // 'std345', 'findLeg', 'rotated', 'tiltedGrid', 'chainTri'
+        2: 'euclid',      // 'euclid', 'bhaskaraOut', 'bhaskaraIn', 'garfield', 'simProof'
+        3: 'fam345',      // 'fam345', 'fam51213', 'fam81517', 'fam72425', 'trap34x'
+        4: 'hinge',       // 'hinge', 'acuteEx', 'obtuseEx', 'obtuseRange', 'acuteRange'
+        5: 'rightCross',  // 'rightCross', 'orthoQuad', 'rectPointP', 'orthoSquares', 'orthoSemis'
+        6: 'hippoLune',   // 'equilateral', 'semicircles', 'hippoLune', 'isoLune', 'findHypSemi'
+        7: 'allFour',     // 'leftWing', 'rightWing', 'centerPillar', 'cowArea', 'allFour'
+        8: 'rectFold'     // 'rectFold', 'triFold', 'reflection', 'boxNet', 'cylinderNet'
+      },
+      conceptSwitch: 'all', // 'all' | 'def' | 'area' | 'aux'
+      activePartIdx: -1,
+
+      fold: 0.0,
+      foldTarget: null,
+
+      // 프리셋 파라미터
+      famIdx: 0,    // 0: 3:4:5, 1: 5:12:13, 2: 8:15:17, 3: 7:24:25
+      multK: 1,     // 1, 2, 3, 4
+      hingeDeg: 90, // 45~140
+
+      scale: 1.0,
+      panX: 0,
+      panY: 0,
+
+      // 직접 드래그 점의 위치(원본과 같은 값 · 이제는 무대의 끌 수 있는 점이 되돌려 씀)
+      draggingTarget: null,
+      lastMouse: { x: 0, y: 0 },
+      customPOffset: { dx: -26, dy: 18 },
+      reflectPx: 0.33 // 직선 위 점 P 위치 비율 (0.33일 때 일직선 최단거리!)
+    };
+
+  /* ===== 원본 그대로: 세부 시나리오 목록과 효과 없는 렌즈 표 (원본 422–485행) ===== */
+    const SUB_MENUS = {
+      1: [
+        { id: 'std345', label: '🟦 기본 세 정사각형 (a²+b²=c²)' },
+        { id: 'findLeg', label: '➖ 직각변 역산 (b²=c²-a²)' },
+        { id: 'rotated', label: '🔄 뒤집힌 삼각형 빗변 찾기' },
+        { id: 'tiltedGrid', label: '💠 모눈 위 기울어진 정사각형 넓이' },
+        { id: 'chainTri', label: '🪜 이어 붙인 연쇄 직각삼각형' }
+      ],
+      2: [
+        { id: 'euclid', label: '🌪️ 유클리드 풍차 증명 (연속 5단계!)' },
+        { id: 'bhaskaraOut', label: '🧩 조비산경 외접 정사각형 퍼즐' },
+        { id: 'bhaskaraIn', label: '🎯 바스카라 내접 정사각형 (b-a)²' },
+        { id: 'garfield', label: '📐 가필드 사다리꼴 증명 (½c²)' },
+        { id: 'simProof', label: '🔗 수선 닮음 증명 (c²=cx+cy)' }
+      ],
+      3: [
+        { id: 'fam345', label: '🥇 1순위 (3 : 4 : 5) × k배 족보' },
+        { id: 'fam51213', label: '🥈 2순위 (5 : 12 : 13) × k배 족보' },
+        { id: 'fam81517', label: '🥉 3순위 (8 : 15 : 17) × k배 족보' },
+        { id: 'fam72425', label: '🏅 4순위 (7 : 24 : 25) × k배 족보' },
+        { id: 'trap34x', label: '⚠️ [함정 1위] (3, 4, x)에서 4가 빗변일 때!' }
+      ],
+      4: [
+        { id: 'hinge', label: '🕹️ 경첩 각도(∠C) 마우스 직접 조작!' },
+        { id: 'acuteEx', label: '🔹 세 변 (5, 6, 7) 예각 판별' },
+        { id: 'obtuseEx', label: '🔸 세 변 (4, 5, 7) 둔각 판별' },
+        { id: 'obtuseRange', label: '📏 [필수] 둔각삼각형 자연수 x 범위 (5<x<7)' },
+        { id: 'acuteRange', label: '🔥 [심화] 가장 긴 변 미정일 때 예각 범위' }
+      ],
+      5: [
+        { id: 'rightCross', label: '❌ [공식1] 직각삼각형 속 X자 제곱합' },
+        { id: 'orthoQuad', label: '➕ [공식2] 대각선 직교 사각형 (AB²+CD²)' },
+        { id: 'rectPointP', label: '👆 [공식3] 직사각형 속 점 P 드래그!' },
+        { id: 'orthoSquares', label: '⬛ 직교 사각형 네 변 위 정사각형 합' },
+        { id: 'orthoSemis', label: '🌓 직교 사각형 네 변 위 반원 넓이 합' }
+      ],
+      6: [
+        { id: 'hippoLune', label: '🌙 [필수] 히포크라테스의 초승달 (반원 접기!)' },
+        { id: 'isoLune', label: '🌓 직각이등변삼각형 초승달 1개 넓이' },
+        { id: 'equilateral', label: '🔺 세 변 위 정삼각형 넓이 (S₁+S₂=S₃)' },
+        { id: 'semicircles', label: '🔵 세 변을 지름으로 하는 반원 넓이' },
+        { id: 'findHypSemi', label: '🔍 두 반원 넓이 합으로 빗변 역추적' }
+      ],
+      7: [
+        { id: 'allFour', label: '👑 수선 공식 4형제 & 닮음 분리 종합' },
+        { id: 'leftWing', label: '① 왼쪽 날개 (AB² = BH × BC)' },
+        { id: 'rightWing', label: '② 오른쪽 날개 (AC² = CH × CB)' },
+        { id: 'centerPillar', label: '③ 가운데 기둥 (AH² = BH × CH)' },
+        { id: 'cowArea', label: '④ 소(牛) 넓이 공식 (AB·AC = BC·AH)' }
+      ],
+      8: [
+        { id: 'rectFold', label: '📄 [빈출 1위] 직사각형 꼭짓점 D 접기' },
+        { id: 'triFold', label: '📐 직각삼각형 빗변 수직이등분 접기' },
+        { id: 'reflection', label: '🪞 직선 반사 최단거리 (점 P 드래그!)' },
+        { id: 'boxNet', label: '📦 직육면체 겉면 최단거리 (전개도 펼치기)' },
+        { id: 'cylinderNet', label: '🥫 원기둥 옆면 실 감기 최단거리' }
+      ]
+    };
+
+    // 장면별로 강조할 요소가 없어 효과가 없는 관찰 렌즈 — 그 장면에서는 해당 렌즈 버튼을 숨깁니다 (여기 적지 않은 렌즈는 모든 장면에서 씁니다)
+    const LENS_OFF = {
+      aux: ['chainTri', 'bhaskaraIn', 'garfield', 'fam345', 'fam51213', 'fam81517', 'fam72425', 'trap34x', 'equilateral', 'semicircles', 'findHypSemi', 'triFold']
+    };
+
+  /* ===== [2.0 수정] 탭 4 경첩 장면: 장면마다 실제 변의 길이 (원본은 모든 장면을 6·8 경첩으로 계산) =====
+     a = 아래 변 BC(긴 쪽), b = 변 AC(회전하는 쪽), 세 번째 변 c(=AB)는 ∠C로 정해집니다.
+       hinge       a=8, b=6, ∠C = 경첩 각도(끌어서 조절)     acuteEx     (5, 6, 7) → ∠C = cos⁻¹((25+36-49)/60) ≈ 78°
+       obtuseEx    (4, 5, 7) → ∠C ≈ 102°                      obtuseRange (3, 4, x), ∠C 90° → 128°
+       acuteRange  (6, 8, x), ∠C 88° → 60° (원본 범위 그대로) */
+  const HINGE_SIDES = { acuteEx: { a: 6, b: 5, c: 7 }, obtuseEx: { a: 5, b: 4, c: 7 }, obtuseRange: { a: 4, b: 3 }, acuteRange: { a: 8, b: 6 } };
+  function hingeCalc(sub) {
+    const sd = HINGE_SIDES[sub] || { a: 8, b: 6 };
+    let exact;
+    if (sd.c != null) exact = (Math.acos((sd.a * sd.a + sd.b * sd.b - sd.c * sd.c) / (2 * sd.a * sd.b)) * 180) / Math.PI;
+    else if (sub === 'obtuseRange') exact = Math.round(90 + state.fold * 38);
+    else if (sub === 'acuteRange') exact = Math.round(88 - state.fold * 28);
+    else exact = state.hingeDeg;
+    const base = sd.a * sd.a + sd.b * sd.b;
+    return { a: sd.a, b: sd.b, exact, deg: Math.round(exact), base, cSq: Math.round(base - 2 * sd.a * sd.b * Math.cos((exact * Math.PI) / 180)) };
+  }
+
+  /* ======================================================================
+     [2.0] 어댑터: 원본의 그리기 함수(pline·ppoly·pdot…) → 새 무대 엔진
+     - 그리기 함수 이름·인자·기본값은 원본 그대로이고, 실제 그리기는 apl-compat.js(APLab.compat.master)가 무대에 연결합니다.
+     - 원본의 '관찰 렌즈'(lensFx 규칙: 렌즈에 속한 요소는 굵게·속하지 않은 요소는 흐리게)는 그대로 지킵니다.
+       호환층은 렌즈를 모르므로, 같은 호출을 렌즈 규칙(투명도·굵기)으로 감싸 줍니다.
+     - 부분 강조(partIdx)는 무대가 맡습니다(카드를 누르면 해당 조각만 발광, 나머지는 흐림).
+     - 모든 장면 미리보기(thumb)에는 글자를 넣지 않습니다.
+     ====================================================================== */
+  let BOARD = null;
+  let S = null; // 지금 그리는 장면의 상태(드래그 점이 값을 되돌려 쓸 때 사용)
+  const sink = {};
+  const C = APLab.compat.master(() => BOARD, sink);
+  const { parc, drawMiniOverlayBox, drawBottomTapeBanner } = C;
+  const clampN = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  // 그림 안 글자: 원본의 ➔ ⭕ ❌ 는 글꼴에 따라 깨질 수 있어 → ○ × 로, 그 밖의 이모지는 뗍니다.
+  const cv = (s) => APLab.stripEmoji(String(s == null ? '' : s).replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×'));
+  const txt = (s) => (BOARD.thumb ? '' : cv(s));
+  // 셸은 이모지(➔ ⭕ ❌ 포함)를 화면 표시에서 떼어 내므로, 문장 속 뜻이 사라지지 않게 → ○ × 로 미리 바꿔 넘깁니다(원문 getSpec은 그대로).
+  const arrow = (v) => (typeof v === 'string' ? v.replace(/➔/g, '→').replace(/⭕/g, '○').replace(/❌/g, '×') : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
+
+  /* ===== 원본 그대로: 부분 강조·관찰 렌즈 판정 (원본 519–538행) ===== */
+    function isPartDimmed(partIdx) {
+      if (state.activePartIdx === -1 || partIdx === undefined) return false;
+      return state.activePartIdx !== partIdx;
+    }
+
+    function isPartHighlighted(partIdx) {
+      return state.activePartIdx !== -1 && state.activePartIdx === partIdx;
+    }
+
+    // 관찰 렌즈(state.conceptSwitch): 그리는 요소마다 그룹('def' · 'area' · 'aux', 여럿이면 공백으로 구분)을 붙여 두고,
+    // 선택한 렌즈에 속한 요소는 굵게(hi) · 속하지 않은 요소는 흐리게(a) 그립니다. 그룹이 없는('') 바탕 요소는 항상 그대로입니다.
+    //   def  직각(∟)·빗변·꼭짓점: 직각·각 표시, 꼭짓점 점, 빗변·변 길이 이름표, 핵심 선분
+    //   area 넓이·제곱합 블록   : 정사각형·반원·조각 도형, 제곱·넓이 이름표, 하단 비율 띠·요약 상자
+    //   aux  보조선·닮음·모눈   : 점선 보조선, 모눈 칸, 수선의 발 H 같은 보조점, 닮음 삼각형·전개도
+    function lensFx(group) {
+      const sw = state.conceptSwitch;
+      if (sw === 'all' || !group) return { a: 1, hi: false };
+      const on = group.split(' ').includes(sw);
+      return { a: on ? 1 : 0.2, hi: on };
+    }
+
+  /* ===== [2.0] 렌즈 규칙으로 감싸서 그리기 (원본의 ctx.globalAlpha *= fx.a 와 같은 효과) ===== */
+  function lensRun(group, draw) {
+    const fx = lensFx(group);
+    const c = BOARD.ctx;
+    c.save();
+    c.globalAlpha *= fx.a;
+    try { draw(fx); } finally { c.restore(); }
+  }
+
+  /* ===== 원본과 같은 이름·인자·기본값의 그리기 함수 (원본 540–716행) ===== */
+    function pline(a, b, color = '#fbbf24', width = 2.4, dash = [], glow = false, partIdx = undefined, lens = dash.length ? 'aux' : (partIdx !== undefined || glow) ? 'def' : '') {
+      lensRun(lens, (fx) => C.pline(a, b, color, fx.hi ? width + 1.6 : width, dash, glow || fx.hi, partIdx));
+    }
+
+    function ppoly(pts, fill = 'rgba(52,211,153,0.20)', stroke = '#34d399', width = 2.8, partIdx = undefined, lens = partIdx !== undefined ? 'area' : '') {
+      lensRun(lens, (fx) => C.ppoly(pts, fill, stroke, fx.hi ? width + 1.4 : width, partIdx));
+    }
+
+    function pdot(p, text = '', col = '#ffffff', refCenter = null, customOff = null, lens = /드래그/.test(text) ? '' : /^[HL]\b|수선의 발|대칭점/.test(text) ? 'aux' : /^[A-Z][₀']?(\(|$)/.test(text) ? 'def' : '') {
+      lensRun(lens, () => C.pdot(p, txt(text), col, refCenter, customOff));
+    }
+
+    function pright(v, p1, p2, size = 12, col = '#fbbf24', lens = 'def') {
+      lensRun(lens, () => C.pright(v, p1, p2, size, col));
+    }
+
+    function ptick(p1, p2, count = 1, col = '#fbbf24', size = 6.5, lens = 'def') {
+      lensRun(lens, () => C.ptick(p1, p2, count, col, size));
+    }
+
+    function pangle(v, p1, p2, col = '#fbbf24', r = 24, rings = 1, label = '', lens = 'def') {
+      lensRun(lens, () => C.pangle(v, p1, p2, col, r, rings, txt(label)));
+    }
+
+    function ptag(x, y, msg, color = '#fef08a', size = 13, lens = /²|넓이/.test(msg) ? 'area' : /변|높이|거리|^\d+$|^[A-Z]{2}\s?=|^[①②] /.test(msg) ? 'def' : '') {
+      if (BOARD.thumb) return;
+      lensRun(lens, (fx) => C.ptag(x, y, cv(msg), color, fx.hi ? size + 1.5 : size));
+    }
+
+  /** [2.0] ptag와 같은 글자인데, 기준점 p(설계 좌표)에서 화면 픽셀(dx, dy)만큼 떨어뜨리고 정렬(align)을 지정합니다.
+   *  원본은 설계 좌표 오프셋만 있어 화면이 작아 도형이 줄어들면 변 위 글자가 그 변과 겹쳤습니다 → 변 옆(바깥쪽)에 놓을 글자에만 씁니다. */
+  function ptagAt(p, msg, color = '#fef08a', size = 13, align = 'center', dx = 0, dy = 0, lens = /²|넓이/.test(msg) ? 'area' : /변|높이|거리|^\d+$|^[A-Z]{2}\s?=|^[①②] /.test(msg) ? 'def' : '') {
+    if (BOARD.thumb) return;
+    lensRun(lens, (fx) => BOARD.text(p, cv(msg), { color, size: fx.hi ? size + 1.5 : size, align, baseline: 'alphabetic', weight: 800, dx, dy }));
+  }
+
+  /* ===== [표시 보강] 평행 표시·선분 위 눈금 위치·각도 글자 ===== */
+  /** 평행 표시(화살촉): 선분 p1→p2 위 pos 지점에 count 개. 같은 방향으로 평행한 두 선분에 같은 개수를 붙입니다. */
+  function ppar(p1, p2, count = 1, col = '#fbbf24', pos = 0.5, lens = 'def') {
+    if (BOARD.thumb) return;
+    lensRun(lens, () => {
+      const B = BOARD, c = B.ctx, S1 = B.toS(p1), S2 = B.toS(p2);
+      const l = Math.hypot(S2.x - S1.x, S2.y - S1.y) || 1, ux = (S2.x - S1.x) / l, uy = (S2.y - S1.y) / l, nx = -uy, ny = ux, sz = 6.5;
+      c.save();
+      c.strokeStyle = B.color(col); c.lineWidth = 2.3 * B.lw; c.lineCap = 'round'; c.setLineDash([]); c.shadowBlur = 0;
+      for (let i = 0; i < count; i++) {
+        const off = (i - (count - 1) / 2) * 7, cx = S1.x + (S2.x - S1.x) * pos + ux * off, cy = S1.y + (S2.y - S1.y) * pos + uy * off;
+        c.beginPath();
+        c.moveTo(cx - ux * sz + nx * sz * 0.85, cy - uy * sz + ny * sz * 0.85);
+        c.lineTo(cx + ux * sz * 0.4, cy + uy * sz * 0.4);
+        c.lineTo(cx - ux * sz - nx * sz * 0.85, cy - uy * sz - ny * sz * 0.85);
+        c.stroke();
+      }
+      c.restore();
+    });
+  }
+  /** 같은 길이 눈금을 선분 위 pos 지점에(이름표·평행 표시와 겹치지 않게) */
+  const ptickAt = (p1, p2, pos, count = 1, col = '#fbbf24') => ptick(lerp(p1, p2, pos - 0.02), lerp(p1, p2, pos + 0.02), count, col);
+  /** 그림의 점으로 잰 각도 글자(그림이 바뀌어도 값이 따라옴) */
+  const angDeg = (V, P1, P2) => {
+    const a = Math.atan2(P1.y - V.y, P1.x - V.x), b = Math.atan2(P2.y - V.y, P2.x - V.x);
+    let d = (Math.abs(a - b) * 180) / Math.PI;
+    if (d > 180) d = 360 - d;
+    return `${Math.round(d)}°`;
+  };
+
+  /* ===== [2.0] 도우미: 원호를 꺾은선으로(반원 도형·접힌 반원), 직각 꼭짓점 위치 ===== */
+  /** 캔버스 arc(m, r, ang1, ang2, anticlockwise)와 같은 방향의 호 위의 점들(화면 각도 그대로) */
+  function arcPts(m, r, ang1, ang2, anticlockwise, n = 48) {
+    let d = ang2 - ang1;
+    const TAU = Math.PI * 2;
+    if (anticlockwise) { while (d > 1e-9) d -= TAU; while (d < -TAU) d += TAU; }
+    else { while (d < -1e-9) d += TAU; while (d > TAU) d -= TAU; }
+    const out = [];
+    for (let i = 0; i <= n; i++) {
+      const a = ang1 + (d * i) / n;
+      out.push({ x: m.x + r * Math.cos(a), y: m.y + r * Math.sin(a) });
+    }
+    return out;
+  }
+  /** 빗변 BC(가로)가 정해졌을 때, 직각 꼭짓점 A를 직각삼각형 족보 f(AB : AC : BC = a : b : c) 비율대로 놓습니다. */
+  function rightApex(B, C, f) {
+    const W = C.x - B.x;
+    return { x: B.x + W * (f.a / f.c) * (f.a / f.c), y: B.y - (W * f.a * f.b) / (f.c * f.c) };
+  }
+
+    // 선분 p1 -> p2 바깥쪽으로 정사각형(및 n×n 모눈 타일) 작도
+    function drawOutwardSquare(p1, p2, fillCol, strokeCol, gridN = 0, labelText = '', outSign = 1, partIdx = undefined, lens = 'area') {
+      const dx = p2.x - p1.x, dy = p2.y - p1.y;
+      const nx = outSign * dy, ny = -outSign * dx;
+      const p3 = { x: p2.x + nx, y: p2.y + ny };
+      const p4 = { x: p1.x + nx, y: p1.y + ny };
+
+      ppoly([p1, p2, p3, p4], fillCol, strokeCol, 2.8, partIdx, lens);
+
+      const showGrid = !isPartDimmed(partIdx);
+      if (showGrid && gridN > 0 && gridN <= 15) {
+        // [2.0] 원본의 ctx 직접 그리기 → 무대 호출(같은 색·굵기·'넓이 보조' 렌즈 규칙)
+        lensRun('area aux', (gfx) => {
+          for (let i = 1; i < gridN; i++) {
+            const r = i / gridN;
+            const a1 = lerp(p1, p2, r), a2 = lerp(p4, p3, r);
+            const b1 = lerp(p1, p4, r), b2 = lerp(p2, p3, r);
+            BOARD.seg(a1, a2, { color: strokeCol + '40', width: gfx.hi ? 1.8 : 1.0 });
+            BOARD.seg(b1, b2, { color: strokeCol + '40', width: gfx.hi ? 1.8 : 1.0 });
+          }
+        });
+      }
+
+      const center = mid(p1, p3);
+      if (labelText && !isPartDimmed(partIdx)) ptag(center.x, center.y + 4, labelText, strokeCol, 13.5, lens);
+      return { p1, p2, p3, p4, center };
+    }
+
+    function drawOutwardEquilateral(p1, p2, fillCol, strokeCol, labelText = '', outSign = 1, partIdx = undefined, lens = 'area') {
+      const m = mid(p1, p2);
+      const dx = p2.x - p1.x, dy = p2.y - p1.y;
+      const hFactor = (Math.sqrt(3) / 2) * outSign;
+      const apex = { x: m.x + dy * hFactor, y: m.y - dx * hFactor };
+      ppoly([p1, p2, apex], fillCol, strokeCol, 2.8, partIdx, lens);
+      const c = { x: (p1.x + p2.x + apex.x) / 3, y: (p1.y + p2.y + apex.y) / 3 };
+      if (labelText && !isPartDimmed(partIdx)) ptag(c.x, c.y + 4, labelText, strokeCol, 13, lens);
+      return apex;
+    }
+
+    function drawOutwardSemicircle(p1, p2, fillCol, strokeCol, labelText = '', anticlockwise = false, partIdx = undefined, lens = 'area') {
+      const dimmed = isPartDimmed(partIdx);
+      const m = mid(p1, p2);
+      const r = dist(p1, p2) / 2;
+      const ang1 = Math.atan2(p1.y - m.y, p1.x - m.x);
+      const ang2 = Math.atan2(p2.y - m.y, p2.x - m.x);
+
+      // [2.0] 원본의 ctx.arc + closePath → 같은 방향의 호 + 지름(꺾은선 도형). 강조·흐림은 무대가 partIdx로 처리합니다.
+      lensRun(lens, (f) => {
+        BOARD.poly(arcPts(m, r, ang1, ang2, anticlockwise), { fill: fillCol || null, color: strokeCol || null, stroke: !!strokeCol, width: f.hi ? 4.2 : 2.8, glow: f.hi, part: partIdx });
+      });
+
+      const midAng = ang1 + (anticlockwise ? -Math.PI / 2 : Math.PI / 2);
+      if (labelText && !dimmed) {
+        ptag(m.x + Math.cos(midAng) * r * 0.55, m.y + Math.sin(midAng) * r * 0.55 + 4, labelText, strokeCol, 13, lens);
+      }
+    }
+
+  /* ===== 원본 그대로: 장면별 실시간 명세 getSpec (원본 874–1380행, [2.0 수정] 표시한 곳만 다름) ===== */
+    // [2.0 수정] 직육면체 장면 안내글의 '슬라이더로 …펼쳐보세요'는 그 장면에 변환이 없어 '펼친 전개도입니다'로 고침
+    function getActiveTriple() {
+      const m = state.mode;
+      const sub = state.subType[m];
+      if (m === 3) {
+        if (sub === 'fam51213') return FAMILY_LIST[1];
+        if (sub === 'fam81517') return FAMILY_LIST[2];
+        if (sub === 'fam72425') return FAMILY_LIST[3];
+        return FAMILY_LIST[0];
+      }
+      return FAMILY_LIST[state.famIdx] || FAMILY_LIST[0];
+    }
+
+    function getSpec() {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const fam = getActiveTriple();
+      const k = state.multK;
+      const a = fam.a * k, b = fam.b * k, c = fam.c * k;
+
+      // ==================== [탭 1: 세 정사각형 넓이 (a²+b²=c²)] ====================
+      if (m === 1) {
+        if (sub === 'findLeg') {
+          return {
+            badge: `탐구 1-B · [직각변 역산] 빗변(${c})과 한 직각변(${a})으로 나머지 직각변 b 구하기`,
+            hint: `구하려는 변이 빗변이 아니라 <strong class="text-pink-300">직각변(b)</strong>일 때는 더하지 않고 <strong class="text-amber-300">빗변 정사각형 넓이(${c}²=${c*c})에서 작은 정사각형 넓이(${a}²=${a*a})를 빼야 합니다!</strong>`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 돌아가기' : '🎬 넓이 차(c² - a² = b²) 블록 비교!',
+            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            parts: [
+              { id: 0, name: `🟨 가장 큰 빗변 정사각형 S₃ (c² = ${c}²)`, desc: `90° 직각 맞은편의 전체 기준 넓이`, val: `${c * c}`, color: PCOL.gold, ok: true },
+              { id: 1, name: `🟦 빼야 할 작은 정사각형 S₁ (-a² = -${a}²)`, desc: `알고 있는 직각변의 정사각형 넓이 차감(-)`, val: `-${a * a}`, color: PCOL.cyan, ok: false },
+              { id: 2, name: `🩷 구하려는 직각변 정사각형 S₂ (b² = c² - a²)`, desc: `${c * c} - ${a * a} = ${b * b} = ${b}² ➔ 직각변 b = ${b}!`, val: `b²=${b * b} (b=${b})`, color: PCOL.pink, ok: true }
+            ],
+            totalRes: `S₂ = S₃(${c * c}) - S₁(${a * a}) = ${b * b}  ➔  b = ${b}`,
+            rule: '빗변(90° 맞은편)을 구할 땐 더하고(+), 직각변을 구할 땐 빗변²에서 뺀다(-)!',
+            formulaHTML: `• <strong>피타고라스 역산 공식</strong>: ${tex(`b^2 = c^2 - a^2 = ${c}^2 - ${a}^2 = ${c * c} - ${a * a} = ${b * b} \\implies \\mathbf{b = ${b}}`)}`,
+            notes: `• <strong>[단골 실수 방지]</strong>: 숫자가 2개 보인다고 무조건 제곱해서 더하면 안 됩니다! 먼저 $90^\\circ$ 직각 기호 맞은편의 <strong>빗변(가장 긴 변)</strong>에 동그라미를 치세요.`
+          };
+        }
+        if (sub === 'rotated') {
+          return {
+            badge: `탐구 1-C · 뒤집힌 직각삼각형에서 빗변(90° 맞은편 대변) 정확히 찾기`,
+            hint: `직각 꼭짓점 $A(90^\\circ)$가 위쪽에 있을 때는 <strong class="text-amber-300">바닥에 놓인 변 BC가 밑변이 아니라 빗변</strong>입니다! 슬라이더로 삼각형을 회전시켜 보세요.`,
+            actionTxt: state.fold > 0.5 ? '🎬 원래 방향으로 돌리기' : '🎬 삼각형 회전 시뮬레이션!',
+            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            parts: [
+              { id: 0, name: `🟦 왼쪽 직각변 정사각형 S₁ (AB² = ${a}²)`, desc: `직각 ∠A를 낀 첫 번째 변`, val: `${a * a}`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🟩 오른쪽 직각변 정사각형 S₂ (AC² = ${b}²)`, desc: `직각 ∠A를 낀 두 번째 변`, val: `+${b * b}`, color: PCOL.green, ok: true },
+              { id: 2, name: `🟨 바닥에 놓인 빗변 정사각형 S₃ (BC² = ${c}²)`, desc: `∠A=90° 맞은편 변이 무조건 대장(빗변)!`, val: `=${c * c} (BC=${c})`, color: PCOL.gold, ok: true }
+            ],
+            totalRes: `∠A = 90° 맞은편 빗변 BC = ${c} (BC² = ${a * a} + ${b * b} = ${c * c})`,
+            rule: '빗변 찾기 절대 법칙: 90° 직각 네모 모서리가 화살표처럼 가리키는 맞은편 변!',
+            formulaHTML: `• ${tex(`\\angle A = 90^\\circ \\implies \\overline{BC}^2 = \\overline{AB}^2 + \\overline{AC}^2 = ${a}^2 + ${b}^2 = ${c * c} \\implies \\mathbf{\\overline{BC} = ${c}}`)}`,
+            notes: `• 도형이 어떻게 돌아가 있든 눈에 보이는 위치(바닥/옆)에 속지 마세요! <strong>직각($90^\\circ$)과 마주보는 변 = 무조건 빗변</strong>입니다.`
+          };
+        }
+        if (sub === 'tiltedGrid') {
+          return {
+            badge: `탐구 1-D · 모눈종이 위 기울어진 정사각형 ABCD의 넓이 1초 암산법`,
+            hint: `모눈 칸을 비스듬히 가로지르는 선분 $AB$는 <strong class="text-sky-300">가로 3칸, 세로 2칸인 직각삼각형의 빗변</strong>입니다! 따라서 정사각형 넓이(${tex('AB^2')})는 <strong class="text-amber-300">3² + 2² = 13</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 바깥 5×5 정사각형과 함께 보기' : '🎬 귀퉁이 삼각형 4개 분리 시연!',
+            p1Title: '격자 구성(3칸·2칸)', p2Title: '비교 방식',
+            parts: [
+              { id: 0, name: `🟨 안쪽 기울어진 정사각형 ABCD (넓이 = 빗변²)`, desc: `가로 3칸² + 세로 2칸² = 9 + 4 = 13!`, val: `넓이 = 13`, color: PCOL.gold, ok: true },
+              { id: 1, name: `🟦 네 귀퉁이 합동 직각삼각형 4개 (밑변 3, 높이 2)`, desc: `(½ × 3 × 2) × 4개 = 3 × 4 = 12`, val: `귀퉁이 합 = 12`, color: PCOL.cyan, ok: true },
+              { id: 2, name: `⬜ 바깥쪽 전체 5×5 정사각형 ((3+2)² = 25)`, desc: `전체(25) - 귀퉁이 4개(12) = 13 (검산 일치!)`, val: `25 - 12 = 13`, color: PCOL.white, ok: true }
+            ],
+            totalRes: `기울어진 정사각형 넓이 S = 3² + 2² = 13 (또는 5² - 4×3 = 13)`,
+            rule: '모눈 위 비스듬한 정사각형 넓이 = (가로 칸수)² + (세로 칸수)²!',
+            formulaHTML: `• <strong>방법 1 (피타고라스 1초 컷)</strong>: ${tex(`S = \\overline{AB}^2 = 3^2 + 2^2 = 9 + 4 = \\mathbf{13}`)}<br/>• <strong>방법 2 (전체 - 귀퉁이)</strong>: ${tex(`S = (3+2)^2 - 4\\times\\left(\\dfrac{1}{2}\\times 3\\times 2\\right) = 25 - 12 = \\mathbf{13}`)}`,
+            notes: `• 중2에서는 아직 제곱근($\\sqrt{13}$)을 배우지 않으므로 시험에서는 항상 <strong>“정사각형의 넓이(=변의 제곱)”</strong>를 묻습니다!`
+          };
+        }
+        if (sub === 'chainTri') {
+          return {
+            badge: `탐구 1-E · 징검다리처럼 이어 붙인 두 직각삼각형 연쇄 풀이`,
+            hint: `첫 번째 직각삼각형 $\\triangle ABC(3\\text{-}4\\text{-}5)$에서 구한 빗변 <strong class="text-emerald-300">AC = 5</strong>가 두 번째 직각삼각형 $\\triangle ACD(5\\text{-}12\\text{-}13)$의 직각변이 되어 <strong class="text-amber-300">AD = 13</strong>이 도미노처럼 풀립니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 전체 도형 보기' : '🎬 1단계 ➔ 2단계 연쇄 강조!',
+            p1Title: '연쇄 비율', p2Title: '배수 스케일 ×k',
+            parts: [
+              { id: 0, name: `🟦 1단계 직각삼각형 △ABC (직각변 ${3*k}, ${4*k})`, desc: `AC² = ${3*k}² + ${4*k}² = ${(5*k)**2} ➔ 공통변 AC = ${5*k}`, val: `AC = ${5 * k}`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🟩 징검다리 공통변 AC = ${5*k}`, desc: `△ABC의 빗변이자 △ACD의 직각변 역할!`, val: `AC² = ${(5 * k) ** 2}`, color: PCOL.green, ok: true },
+              { id: 2, name: `🟨 2단계 직각삼각형 △ACD (직각변 ${5*k}, ${12*k})`, desc: `AD² = ${5*k}² + ${12*k}² = ${(13*k)**2} ➔ 최종 빗변 AD = ${13*k}!`, val: `AD = ${13 * k}`, color: PCOL.gold, ok: true }
+            ],
+            totalRes: `1단계 AC = ${5 * k}  ➔  2단계 최종 빗변 AD = ${13 * k}`,
+            rule: '연쇄 직각삼각형: AD² = AB² + BC² + CD² (한 번에 제곱합 가능!)',
+            formulaHTML: `• ${tex(`\\overline{AD}^2 = \\overline{AC}^2 + \\overline{CD}^2 = (\\overline{AB}^2 + \\overline{BC}^2) + \\overline{CD}^2 = ${3*k}^2 + ${4*k}^2 + ${12*k}^2 = ${(13*k)**2} \\implies \\mathbf{\\overline{AD} = ${13*k}}`)}`,
+            notes: `• 만약 중간 공통변 $AC$가 자연수로 딱 떨어지지 않더라도 당황하지 마세요! 2단계 식에 $AC$ 대신 <strong>$AC^2$ 값을 그대로 대입</strong>하면 됩니다.`
+          };
+        }
+        // std345 기본
+        return {
+          badge: `탐구 1-A · 직각삼각형 세 변 위 정사각형 넓이 법칙 (S₁ + S₂ = S₃ ⟺ a² + b² = c²)`,
+          hint: `우측의 <strong class="text-sky-300">직각삼각형 족보 칩</strong>과 <strong class="text-pink-300">배수 칩</strong>을 눌러보세요! 직각을 낀 두 변 위 정사각형 넓이 합(<strong class="text-sky-300">${a*a}</strong> + <strong class="text-emerald-300">${b*b}</strong>)은 언제나 빗변 위 큰 정사각형 넓이(<strong class="text-amber-300">${c*c}</strong>)와 일치합니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 보기' : '🎬 넓이 블록 합체 비교!',
+          p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+          parts: [
+            { id: 0, name: `🟦 작은 직각변 위 정사각형 S₁ (a² = ${a}²)`, desc: `한 변 a = ${a} 인 정사각형 모눈 타일 개수`, val: `S₁ = ${a * a}`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `🟩 긴 직각변 위 정사각형 S₂ (b² = ${b}²)`, desc: `한 변 b = ${b} 인 정사각형 모눈 타일 개수`, val: `+S₂ = ${b * b}`, color: PCOL.green, ok: true },
+            { id: 2, name: `🟨 빗변 위 큰 정사각형 S₃ (c² = ${c}²)`, desc: `S₁(${a*a}) + S₂(${b*b}) = ${c*c} = ${c}² 완벽 일치!`, val: `=S₃ (${c * c})`, color: PCOL.gold, ok: true }
+          ],
+          totalRes: `${a}²(${a * a}) + ${b}²(${b * b}) = ${c}²(${c * c})  [S₁ + S₂ = S₃]`,
+          rule: '피타고라스 정리: 직각삼각형에서 (직각변 a)² + (직각변 b)² = (빗변 c)²',
+          formulaHTML: `• <strong>넓이 해석</strong>: ${tex(`S_1 + S_2 = S_3 \\iff a^2 + b^2 = c^2`)}<br/>• <strong>현재 수치</strong>: ${tex(`${a}^2 + ${b}^2 = ${a * a} + ${b * b} = ${c * c} = ${c}^2`)}`,
+          notes: `• <strong>[가장 흔한 오개념]</strong>: 변의 길이를 그냥 더하면($a+b > c$) 절대 같지 않습니다! 반드시 각 변을 한 변으로 하는 <strong>정사각형의 넓이(제곱)</strong>를 더해야 같아집니다.`
+        };
+      }
+
+      // ==================== [탭 2: 4대 시각적 증명 (유클리드·바스카라·가필드)] ====================
+      if (m === 2) {
+        if (sub === 'euclid') {
+          const stage = state.fold < 0.34 ? '1구간: 평행선 등적변형 (△FAB = △FBC)' : state.fold < 0.67 ? '2구간: 점 B 중심 90° 회전 SAS 합동 (△FBC ≡ △ABD)' : '3구간: 평행선 등적변형 (△ABD = △HBD ➔ □ABFG = □BDLH!)';
+          return {
+            badge: `탐구 2-A · [서술형 1위] 유클리드의 풍차 증명 연속 시연 — ${stage}`,
+            hint: `슬라이더를 0%에서 100%까지 천천히 밀어보세요! <strong class="text-amber-300">① 등적변형(A→C) ➔ ② 점 B 중심 90° 회전 합동 ➔ ③ 등적변형(A→H)</strong>을 거쳐 위쪽 정사각형 넓이가 아래 직사각형으로 그대로 흘러 내려갑니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 처음(△FAB)으로 되감기' : '🎬 유클리드 3단 변신 연속 재생!',
+            p1Title: '유클리드 단계 퀵점프', p2Title: '관찰 포인트',
+            parts: [
+              { id: 0, name: `🟦 왼쪽 정사각형 □ABFG = 왼쪽 직사각형 □BDLH`, desc: `AB²(12²=144) = BH(7.2) × BD(20) = 144 일치!`, val: `넓이 = 144`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🟨 핵심 4총사 삼각형 (모두 넓이 = 72 로 동일!)`, desc: `△FAB = △FBC(등적) ≡ △ABD(SAS합동) = △HBD(등적)`, val: `절반 넓이 = 72`, color: PCOL.gold, ok: true },
+              { id: 2, name: `🟩 오른쪽 정사각형 □ACJI = 오른쪽 직사각형 □HCEL`, desc: `AC²(16²=256) = CH(12.8) × CE(20) = 256 일치!`, val: `넓이 = 256`, color: PCOL.green, ok: true }
+            ],
+            totalRes: `□ABFG(144) + □ACJI(256) = □BDLH(144) + □HCEL(256) = □BCED(400)`,
+            rule: '유클리드 증명 사슬: △FAB = △FBC(등적) ≡ △ABD(SAS합동) = △HBD(등적)',
+            formulaHTML: `• <strong>왜 △FBC ≡ △ABD (SAS 합동) 일까?</strong><br/>&nbsp;&nbsp;① ${tex('\\overline{FB} = \\overline{AB}')} (작은 정사각형 한 변), ② ${tex('\\overline{BC} = \\overline{BD}')} (큰 정사각형 한 변)<br/>&nbsp;&nbsp;③ 끼인각 ${tex('\\angle FBC = 90^\\circ + \\angle ABC = \\angle ABD')} $\\implies$ <strong>점 B 중심 90° 회전 SAS 합동!</strong>`,
+            notes: `• <strong>[시험 100% 출제 질문]</strong>: “다음 중 $\\triangle FAB$와 넓이가 같지 않은 것은?” $\\implies$ <strong>$\\triangle FAB, \\triangle FBC, \\triangle ABD, \\triangle HBD$ (4총사 = 정사각형 넓이의 절반!)</strong> 외의 삼각형을 고르세요!`
+          };
+        }
+        if (sub === 'bhaskaraOut') {
+          return {
+            badge: `탐구 2-B · 조비산경 · 바스카라 외접 정사각형 퍼즐 재배치 증명`,
+            hint: `슬라이더를 오른쪽으로 밀어보세요! 한 변이 $a+b=14$인 큰 정사각형 안의 <strong class="text-sky-300">합동 직각삼각형 4개(넓이 합 96)</strong>가 짝지어 이동하면, 빈 공간 <strong class="text-amber-300">c²(100)이 정확히 a²(36) + b²(64) 두 정사각형으로 나뉩니다!</strong>`,
+            actionTxt: state.fold > 0.5 ? '🎬 기울어진 정사각형 c²으로 복원' : '🎬 삼각형 4개 이동 ➔ a² + b² 분리!',
+            p1Title: '직각변 (a=6, b=8)', p2Title: '배치 상태',
+            parts: [
+              { id: 0, name: `🟨 빈 공간 넓이 불변: c²(100) ➔ a²(36) + b²(64)`, desc: `전체 정사각형(14²=196)에서 삼각형 4개(96)를 뺀 나머지!`, val: `c² = 36+64 = 100`, color: PCOL.gold, ok: true },
+              { id: 1, name: `🟦 합동인 네 귀퉁이 직각삼각형 4개 (6×8÷2 = 24씩)`, desc: `이동해도 4개 넓이 합(4 × 24 = 96)은 그대로 보존됨`, val: `4 × 24 = 96`, color: PCOL.cyan, ok: true },
+              { id: 2, name: `🩷 왜 가운데 사각형의 한 내각이 90°일까?`, desc: `● + × = 90° 이므로 180° - (● + ×) = 90° (정사각형!)`, val: `내각 = 90°`, color: PCOL.pink, ok: true }
+            ],
+            totalRes: `전체 (6+8)² = 196 = 삼각형 4개(96) + 가운데 정사각형 c²(100) ➔ c = 10`,
+            rule: '(a + b)² = c² + 4 × (½ab)  ⟺  a² + 2ab + b² = c² + 2ab  ⟺  a² + b² = c²',
+            formulaHTML: `• <strong>대수적 증명</strong>: ${tex(`(a+b)^2 - 4\\left(\\dfrac{1}{2}ab\\right) = (a^2 + 2ab + b^2) - 2ab = a^2 + b^2 = c^2`)}`,
+            notes: `• 가운데 사각형이 마름모가 아니라 <strong>정사각형</strong>인 이유: 네 변의 길이가 $c$로 같고, 한 내각이 $180^\\circ - (\\bullet + \\times) = 180^\\circ - 90^\\circ = 90^\\circ$이기 때문입니다!`
+          };
+        }
+        if (sub === 'bhaskaraIn') {
+          return {
+            badge: `탐구 2-C · 바스카라 내접 정사각형 증명 — 가운데 작은 구멍의 한 변은 (b - a)!`,
+            hint: `빗변 $c=10$인 정사각형 안쪽에 직각삼각형($a=6, b=8$) 4개를 바람개비처럼 넣으면, 한가운데 <strong class="text-amber-300">한 변의 길이가 b - a = 8 - 6 = 2 인 작은 정사각형(넓이 4)</strong>이 남습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 보기' : '🎬 가운데 구멍 (b-a)² 강조!',
+            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            parts: [
+              { id: 0, name: `🟦 바람개비 합동 직각삼각형 4개 (직각변 ${a}, ${b})`, desc: `4 × (½ × ${a} × ${b}) = ${2 * a * b}`, val: `넓이 합 = ${2 * a * b}`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🟨 한가운데 작은 정사각형 구멍 (한 변 = b - a = ${b - a})`, desc: `(${b} - ${a})² = ${b - a}² = ${(b - a) ** 2}`, val: `구멍 넓이 = ${(b - a) ** 2}`, color: PCOL.gold, ok: true },
+              { id: 2, name: `🟩 바깥 전체 정사각형 (한 변 c = ${c})`, desc: `${2 * a * b} + ${(b - a) ** 2} = ${c * c} = ${c}² 완벽 일치!`, val: `전체 c² = ${c * c}`, color: PCOL.green, ok: true }
+            ],
+            totalRes: `바깥 정사각형 c²(${c * c}) = 삼각형 4개(${2 * a * b}) + 가운데 구멍 (${b}-${a})²(${(b - a) ** 2})`,
+            rule: '바스카라 내접 공식: c² = 4 × (½ab) + (b - a)² = 2ab + (b² - 2ab + a²) = a² + b²',
+            formulaHTML: `• <strong>가운데 작은 정사각형 한 변의 길이</strong> = (긴 직각변 $b$) - (짧은 직각변 $a$) = <strong>${tex(`${b} - ${a} = ${b - a}`)}</strong>`,
+            notes: `• 시험에서 “가운데 작은 정사각형의 넓이는?”을 물을 때 그림 눈대중으로 찍지 말고 반드시 <strong>$(b - a)^2 = (${b} - ${a})^2 = ${(b - a) ** 2}$</strong>으로 계산하세요!`
+          };
+        }
+        if (sub === 'garfield') {
+          return {
+            badge: `탐구 2-D · 가필드(미 제20대 대통령)의 사다리꼴 넓이 증명`,
+            hint: `합동인 두 직각삼각형($a=6, b=8$)을 일직선 위에 세워 사다리꼴을 만들면, 가운데 끼인 $\\triangle ABE$는 <strong class="text-amber-300">∠AEB = 90°인 직각이등변삼각형(넓이 ½c² = 50)</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 사다리꼴 보기' : '🎬 가운데 ∠AEB = 90° 직각이등변 강조!',
+            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            parts: [
+              { id: 0, name: `🟦 양옆 합동 직각삼각형 2개 (△BCE + △EDA)`, desc: `(½ × ${a} × ${b}) × 2개 = ${a * b}`, val: `2개 합 = ${a * b}`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🟨 가운데 직각이등변삼각형 △ABE (∠AEB = 90°!)`, desc: `½ × c × c = ½ × ${c}² = ${(c * c) / 2}`, val: `½c² = ${(c * c) / 2}`, color: PCOL.gold, ok: true },
+              { id: 2, name: `🟩 사다리꼴 전체 넓이: ½ × (윗변+아랫변) × 높이`, desc: `½ × (${a}+${b}) × (${a}+${b}) = ${((a + b) ** 2) / 2}`, val: `전체 = ${((a + b) ** 2) / 2}`, color: PCOL.green, ok: true }
+            ],
+            totalRes: `사다리꼴 넓이(${((a + b) ** 2) / 2}) = 양옆 삼각형(${a * b}) + 가운데 ½c²(${(c * c) / 2}) ➔ c = ${c}`,
+            rule: '가필드 사다리꼴 = 조비산경 외접 정사각형을 대각선으로 딱 절반 자른 도형!',
+            formulaHTML: `• ${tex(`\\dfrac{1}{2}(a+b)^2 = 2\\left(\\dfrac{1}{2}ab\\right) + \\dfrac{1}{2}c^2 \\implies a^2 + 2ab + b^2 = 2ab + c^2 \\implies \\mathbf{a^2 + b^2 = c^2}`)}`,
+            notes: `• 평각 $180^\\circ$에서 $\\bullet + \\times = 90^\\circ$를 빼면 가운데 끼인각 $\\angle AEB = 90^\\circ$가 되어 $\\triangle ABE$는 항상 <strong>직각이등변삼각형</strong>입니다!`
+          };
+        }
+        // simProof
+        return {
+          badge: `탐구 2-E · 직각삼각형 빗변 수선과 닮음비(사영 정리)를 이용한 2줄 대수 증명`,
+          hint: `직각 꼭짓점 $A$에서 빗변 $BC$에 내린 수선 $AH$에 의해 <strong class="text-sky-300">AB² = BH·BC</strong>이고 <strong class="text-emerald-300">AC² = CH·BC</strong>입니다. 두 식을 더하면 분배법칙으로 단번에 증명됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 상태로 보기' : '🎬 왼쪽 + 오른쪽 합체 시연!',
+          p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+          parts: [
+            { id: 0, name: `🟦 왼쪽 닮음식: AB² = BH × BC`, desc: `△ABC ∽ △HBA (AA 닮음) 비례식 변형`, val: `AB² = 144`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `🟩 오른쪽 닮음식: AC² = CH × BC`, desc: `△ABC ∽ △HAC (AA 닮음) 비례식 변형`, val: `+AC² = 256`, color: PCOL.green, ok: true },
+            { id: 2, name: `🟨 두 식의 합: AB² + AC² = (BH + CH) × BC = BC²!`, desc: `BH(7.2) + CH(12.8) = BC(20) 이므로 20 × 20 = 400!`, val: `=BC² (400)`, color: PCOL.gold, ok: true }
+          ],
+          totalRes: `AB²(144) + AC²(256) = (BH + CH) × BC = BC × BC = BC²(400)`,
+          rule: '유클리드 풍차 증명의 기하학적 넓이 분할과 100% 동일한 대수적 표현!',
+          formulaHTML: `• ${tex(`\\overline{AB}^2 + \\overline{AC}^2 = \\overline{BH}\\cdot\\overline{BC} + \\overline{CH}\\cdot\\overline{BC} = (\\overline{BH}+\\overline{CH})\\overline{BC} = \\overline{BC}^2`)}`,
+          notes: `• 이 증명은 유클리드 풍차 증명에서 아래쪽 큰 정사각형 $BC^2$이 수선 $AH$의 연장선에 의해 두 직사각형($BH\\cdot BC$와 $CH\\cdot BC$)으로 나뉘는 것과 똑같은 원리입니다!`
+        };
+      }
+
+      // ==================== [탭 3: 피타고라스 수 & 배수 탐색] ====================
+      if (m === 3) {
+        if (sub === 'trap34x') {
+          return {
+            badge: `탐구 3-E · ⚠️ [시험 오답 1위 함정] 세 변이 (3, 4, x)인데 누가 빗변인지 안 알려줄 때!`,
+            hint: `문제에 $3$과 $4$가 보인다고 무조건 $x = 5$라고 쓰면 감점됩니다! <strong class="text-emerald-300">① x가 빗변일 때(x²=3²+4²=25)</strong>와 <strong class="text-rose-400">② 4가 가장 긴 빗변일 때(x²=4²-3²=7)</strong> 두 가지를 모두 구해야 합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 두 경우 나란히 비교' : '🎬 경우 2 (4가 빗변일 때) 집중 조명!',
+            p1Title: '비교 모드', p2Title: '배수 스케일',
+            parts: [
+              { id: 0, name: `🟩 [경우 1] x가 가장 긴 변(빗변)일 때`, desc: `x² = 3² + 4² = 9 + 16 = 25 (x = 5)`, val: `x² = 25 ⭕`, color: PCOL.green, ok: true },
+              { id: 1, name: `🟥 [경우 2] 4가 가장 긴 변(빗변)일 때! (누락 주의!)`, desc: `3² + x² = 4² ➔ x² = 16 - 9 = 7 (x ≠ 5!)`, val: `x² = 7 ⭕`, color: PCOL.red, ok: true }
+            ],
+            totalRes: `직각삼각형 세 변이 (3, 4, x)일 때 가능한 x²의 값: 25 또는 7 (총 2개!)`,
+            rule: '가장 긴 변(빗변)이 누구인지 지정되지 않으면 무조건 2가지 경우로 나누어 푼다!',
+            formulaHTML: `• <strong>경우 1 ($x > 4$가 빗변)</strong>: ${tex(`x^2 = 3^2 + 4^2 = \\mathbf{25}`)}<br/>• <strong>경우 2 ($4$가 빗변)</strong>: ${tex(`3^2 + x^2 = 4^2 \\implies x^2 = 16 - 9 = \\mathbf{7}`)}`,
+            notes: `• 시험 문제에서 <strong>“(단, $x > 4$)”</strong> 조건이 있는지 없는지 밑줄을 그으며 읽으세요! 조건이 없으면 정답은 2개입니다.`
+          };
+        }
+        return {
+          badge: `탐구 3 · [${fam.label} 가문] 기본 피타고라스 수와 ×${k}배 확대 삼각형 (${a}, ${b}, ${c})`,
+          hint: `우측의 <strong class="text-pink-300">[×1배 ~ ×4배] 프리셋 칩</strong>을 눌러보세요! 큰 숫자가 나와도 제곱하지 말고 <strong class="text-amber-300">최대공약수(${k})로 먼저 약분하여 기본비(${fam.a} : ${fam.b} : ${fam.c})</strong>를 찾으면 1초 만에 암산됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본비(×1배)와 겹쳐 비교' : '🎬 마디 눈금 & 약분 구조 보기!',
+          p1Title: '4대 기본 족보', p2Title: '자연수 배수 ×k',
+          parts: [
+            { id: 0, name: `🟦 짧은 직각변 a = ${fam.a} × ${k} = ${a}`, desc: `a² = ${a * a} (기본비 ${fam.a}의 ${k}배)`, val: `a = ${a}`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `🟩 긴 직각변 b = ${fam.b} × ${k} = ${b}`, desc: `b² = ${b * b} (기본비 ${fam.b}의 ${k}배)`, val: `b = ${b}`, color: PCOL.green, ok: true },
+            { id: 2, name: `🟨 빗변 c = ${fam.c} × ${k} = ${c} (1초 암산!)`, desc: `${a}²(${a * a}) + ${b}²(${b * b}) = ${c * c} = ${c}²`, val: `c = ${c}`, color: PCOL.gold, ok: true }
+          ],
+          totalRes: `기본비 (${fam.a} : ${fam.b} : ${fam.c}) × ${k}배  ➔  (${a}, ${b}, ${c})`,
+          rule: '중등 수학 4대 필수 피타고라스 가문: (3,4,5) · (5,12,13) · (8,15,17) · (7,24,25)',
+          formulaHTML: `• <strong>1초 약분 암산법</strong>: 두 직각변이 $${a}, ${b}$일 때 최대공약수 $${k}$로 나누면 <strong>$${fam.a} : ${fam.b}$</strong> $\\implies$ 빗변 비는 <strong>$${fam.c}$</strong> $\\implies$ 다시 $${k}$배 하여 <strong>$${fam.c}\\times ${k} = ${c}$</strong>!`,
+          notes: `• 특히 <strong>(3:4:5)의 배수인 (6,8,10), (9,12,15), (12,16,20), (15,20,25)</strong>와 <strong>(5:12:13)의 2배수인 (10,24,26)</strong>은 구구단처럼 외워두세요!`
+        };
+      }
+
+      // ==================== [탭 4: 예각·직각·둔각 판별기 & 수직선] ====================
+      if (m === 4) {
+        if (sub === 'obtuseRange') {
+          return {
+            badge: `탐구 4-D · [내신 1등급 필수] 세 변 (3, 4, x)가 둔각삼각형이 되기 위한 자연수 x의 범위`,
+            hint: `둔각 조건(<strong class="text-rose-400">x² > 3²+4² ➔ x > 5</strong>)만 쓰고 <strong class="text-amber-300">삼각형 결정 조건(x < 3+4 = 7)</strong>을 빼먹으면 100% 틀립니다! 아래 수직선에서 공통범위 <strong class="text-emerald-300">5 < x < 7 (자연수 x = 6)</strong>을 확인하세요!`,
+            actionTxt: state.fold > 0.5 ? '🎬 직각 기준(x=5) 보기' : '🎬 둔각(x=6) vs 일직선 붕괴(x=7) 시연!',
+            p1Title: '직각변 (3, 4)', p2Title: '각도 ∠C 실험',
+            parts: [
+              { id: 0, name: `🟥 조건 ① 둔각삼각형 조건: x² > 3² + 4² = 25`, desc: `90° 직각일 때의 빗변(5)보다 더 길어야 둔각!`, val: `x > 5`, color: PCOL.red, ok: true },
+              { id: 1, name: `🟨 조건 ② 삼각형 결정 조건: x < 3 + 4 = 7 (필수!)`, desc: `두 변(3,4)을 180°로 다 펴도 7이므로 7보다 짧아야 함!`, val: `x < 7`, color: PCOL.gold, ok: true },
+              { id: 2, name: `🟩 수직선 공통범위 교집합: 5 < x < 7`, desc: `범위 안의 자연수 x는 오직 6 하나뿐!`, val: `자연수 x = 6`, color: PCOL.green, ok: true }
+            ],
+            totalRes: `둔각삼각형 범위: √(a²+b²) < x < a + b  ➔  5 < x < 7 (자연수 x = 6)`,
+            rule: '둔각삼각형 범위 문제 = (피타고라스 기준) < x < (두 변의 합: 삼각형 결정 조건)!',
+            formulaHTML: `• <strong>1단계 (둔각 조건)</strong>: ${tex(`x^2 > 3^2 + 4^2 = 25 \\implies x > 5`)}<br/>• <strong>2단계 (삼각형 결정 조건)</strong>: ${tex(`x < 3 + 4 = 7`)}<br/>• <strong>결론</strong>: ${tex(`\\mathbf{5 < x < 7} \\implies \\text{자연수 } x = 6`)}`,
+            notes: `• 이 문제를 틀리는 학생의 99%는 2단계 삼각형 결정 조건($x < a+b$)을 안 써서 틀립니다! <strong>“둔각 범위 = 양쪽 샌드위치 부등식”</strong>을 꼭 기억하세요.`
+          };
+        }
+        if (sub === 'acuteRange') {
+          return {
+            badge: `탐구 4-E · [심화 킬러] 가장 긴 변이 안 정해진 세 변 (6, 8, x)가 예각삼각형이 될 조건`,
+            hint: `예각삼각형은 <strong>세 각이 모두 예각</strong>이어야 합니다! <strong class="text-sky-300">① x가 가장 긴 변일 때(x² < 6²+8²=100)</strong>와 <strong class="text-pink-300">② 8이 가장 긴 변일 때(8² < 6²+x² ➔ x² > 28)</strong>를 동시에 만족해야 합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 양쪽 예각 경계 확인!',
+            p1Title: '기준변 (6, 8)', p2Title: '각도 ∠C 실험',
+            parts: [
+              { id: 0, name: `🟦 조건 ① x가 가장 긴 변일 때 예각: x² < 6² + 8²`, desc: `x² < 36 + 64 = 100 (즉 x < 10)`, val: `x² < 100`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🩷 조건 ② 8이 가장 긴 변일 때 예각: 8² < 6² + x²`, desc: `64 < 36 + x² ➔ x² > 28 (안 쓰면 x=5에서 둔각 발생!)`, val: `x² > 28`, color: PCOL.pink, ok: true },
+              { id: 2, name: `🟩 공통범위: 28 < x² < 100 만족 자연수 x`, desc: `x = 6(36), 7(49), 8(64), 9(81) ➔ 총 4개!`, val: `6, 7, 8, 9 (4개)`, color: PCOL.green, ok: true }
+            ],
+            totalRes: `28 < x² < 100  ➔  예각삼각형이 되는 자연수 x = 6, 7, 8, 9 (총 4개)`,
+            rule: '가장 긴 변 미정 예각삼각형: (큰변² - 작은변²) < x² < (큰변² + 작은변²)!',
+            formulaHTML: `• ${tex(`8^2 - 6^2 < x^2 < 6^2 + 8^2 \\iff 28 < x^2 < 100 \\implies \\mathbf{x = 6, 7, 8, 9}`)}`,
+            notes: `• 만약 $x=5$라면 $5^2 + 6^2 = 61 < 8^2(64)$이 되어 변 $8$의 맞은편 각이 둔각인 <strong>둔각삼각형</strong>이 되어버립니다!`
+          };
+        }
+        // [2.0 수정] 원본은 모든 장면을 6·8 경첩(∠C 76°·106° 고정)으로 계산해 '세 변 (5, 6, 7)'·'(4, 5, 7)' 장면의 수치가 제목과 달랐습니다.
+        //            장면마다 실제 변의 길이로 계산합니다(hingeCalc): 경첩 6·8, (5, 6, 7), (4, 5, 7), (3, 4, x), (6, 8, x)
+        const hc = hingeCalc(sub);
+        const deg = hc.deg;
+        const cSq = hc.cSq;
+        const kind = deg < 89 ? '예각삼각형 (c² < a²+b²)' : deg > 91 ? '둔각삼각형 (c² > a²+b²)' : '직각삼각형 (c² = a²+b²)';
+        return {
+          badge: `탐구 4 · [예각·직각·둔각 경첩 판별기] 현재 ∠C = ${deg}° ➔ ${kind}`,
+          hint: `캔버스 위 <strong class="text-amber-300">꼭짓점 A를 마우스로 직접 잡고 좌우로 돌려보거나</strong> 우측 각도 프리셋을 눌러보세요! ∠C가 90°보다 좁아지면 <strong class="text-sky-300">c² < a²+b²(예각)</strong>, 넓어지면 <strong class="text-rose-400">c² > a²+b²(둔각)</strong>이 됩니다!`,
+          actionTxt: '🎬 예각 ➔ 직각 ➔ 둔각 차례로 돌려 보기!', // [2.0 수정] 원본 글의 각도(60°·120°)는 실제 동작(65°→90°→115°→130°)과 달라 각도 숫자를 뺌(칩에 각도가 있음)
+          p1Title: `기준변 (a=${hc.a}, b=${hc.b})`, p2Title: '경첩 각도 ∠C',
+          parts: [
+            { id: 0, name: `🟦 두 변의 제곱합 기준값: a² + b² = ${hc.b}² + ${hc.a}² = ${hc.base}`, desc: `∠C = 90°(직각)일 때의 불변 기준 넓이`, val: `a²+b² = ${hc.base}`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `🟨 현재 ∠C = ${deg}° 맞은편 변의 제곱: c² = ${cSq}`, desc: deg < 89 ? `${hc.base}보다 작으므로 예각!` : deg > 91 ? `${hc.base}보다 크므로 둔각!` : `${hc.base}과 정확히 같으므로 직각!`, val: `c² = ${cSq}`, color: deg < 89 ? PCOL.cyan : deg > 91 ? PCOL.red : PCOL.gold, ok: true }
+          ],
+          totalRes: `c²(${cSq}) ${deg < 89 ? '<' : deg > 91 ? '>' : '='} a² + b²(${hc.base})  ➔  ${kind}`,
+          rule: '항상 가장 긴 변 c²을 주인공(좌변)에 놓는다: c² < a²+b²(예각) · c² = a²+b²(직각) · c² > a²+b²(둔각)',
+          formulaHTML: `• <strong>예각삼각형</strong>: ${tex(`c^2 < a^2 + b^2`)} (예: $5,6,7 \\implies 7^2(49) < 5^2+6^2(61)$)<br/>• <strong>둔각삼각형</strong>: ${tex(`c^2 > a^2 + b^2`)} (예: $4,5,7 \\implies 7^2(49) > 4^2+5^2(41)$)`,
+          notes: `• 세 변의 길이가 주어지면 먼저 <strong>가장 긴 변이 나머지 두 변의 합보다 작은지($c < a+b$)</strong> 확인한 뒤 제곱을 비교하세요!`
+        };
+      }
+
+      // ==================== [탭 5: 겹친 도형 제곱의 합 3총사] ====================
+      if (m === 5) {
+        if (sub === 'rightCross') {
+          return {
+            badge: `탐구 5-A · [제곱합 공식 1] 직각삼각형 속 사다리꼴 X자 공식 (DE² + BC² = BE² + CD²)`,
+            hint: `∠A = 90°인 직각삼각형의 두 변 위에 점 D, E를 잡으면, <strong class="text-sky-300">가로 파란 두 선의 제곱합(DE² + BC²)</strong>과 <strong class="text-pink-300">대각선 분홍 X자 두 선의 제곱합(BE² + CD²)</strong>이 항상 똑같습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 전체 공식 보기' : '🎬 파란 짝꿍 vs 분홍 X자 성분 분해!',
+            p1Title: '직각변 스케일', p2Title: '점 D·E 위치',
+            parts: [
+              { id: 0, name: `🟦 파란 평행 방향 짝꿍: DE² + BC²`, desc: `(AD² + AE²) + (AB² + AC²) = 4개 직각변 제곱합!`, val: `16 + 100 = 116`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🩷 분홍 대각선 X자 짝꿍: BE² + CD²`, desc: `(AB² + AE²) + (AD² + AC²) = 위와 100% 동일한 구성!`, val: `64 + 52 = 116`, color: PCOL.pink, ok: true }
+            ],
+            totalRes: `DE²(16) + BC²(100) = BE²(64) + CD²(52) = 116 (항상 일치!)`,
+            rule: '직각 꼭짓점 A에서 뻗어나온 도형: (안쪽·바깥쪽 선분 제곱합) = (X자 대각선 제곱합)!',
+            formulaHTML: `• <strong>왜 AD, AE 길이를 몰라도 풀릴까?</strong><br/>&nbsp;&nbsp;${tex(`\\overline{DE}^2 + \\overline{BC}^2 = (\\overline{AD}^2+\\overline{AE}^2) + (\\overline{AB}^2+\\overline{AC}^2)`)}<br/>&nbsp;&nbsp;${tex(`\\overline{BE}^2 + \\overline{CD}^2 = (\\overline{AB}^2+\\overline{AE}^2) + (\\overline{AD}^2+\\overline{AC}^2)`)} (네 조각이 완전히 똑같음!)`,
+            notes: `• 시험에서 $\\overline{DE}=4, \\overline{BC}=10, \\overline{BE}=8$을 주고 $\\overline{CD}^2$을 물으면 $4^2 + 10^2 = 8^2 + \\overline{CD}^2 \\implies \\overline{CD}^2 = 52$로 3초 만에 푸세요!`
+          };
+        }
+        if (sub === 'rectPointP') {
+          return {
+            badge: `탐구 5-C · [제곱합 공식 3] 직사각형 내부/외부 점 P 마우스 드래그 실험 (PA² + PC² = PB² + PD²)`,
+            hint: `캔버스 위 <strong class="text-amber-300">점 P를 마우스로 잡고 직사각형 안팎 어디로든 드래그</strong>해 보세요! 마주보는 대각선 방향 꼭짓점끼리의 제곱합 <strong class="text-sky-300">PA² + PC²</strong>과 <strong class="text-pink-300">PB² + PD²</strong>는 소수점까지 완벽히 일치합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 점 P 원위치' : '🎬 점 P 이동 시뮬레이션!',
+            p1Title: '직사각형 비율', p2Title: '점 P 위치 프리셋',
+            parts: [
+              { id: 0, name: `🟦 대각선 A-C 방향 짝꿍: PA² + PC²`, desc: `(a² + c²) + (b² + d²) = a² + b² + c² + d²`, val: `PA² + PC²`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🩷 대각선 B-D 방향 짝꿍: PB² + PD²`, desc: `(a² + d²) + (b² + c²) = a² + b² + c² + d² (일치!)`, val: `= PB² + PD²`, color: PCOL.pink, ok: true }
+            ],
+            totalRes: `PA² + PC² = PB² + PD² (점 P가 직사각형 내부든 외부든 100% 성립!)`,
+            rule: '직사각형 속 점 P 공식: 원래 대각선 짝꿍인 (A와 C 제곱합) = (B와 D 제곱합)!',
+            formulaHTML: `• 점 $P$를 지나는 가로·세로 수선을 그어 직각삼각형 4개로 쪼개면:<br/>&nbsp;&nbsp;${tex(`\\overline{PA}^2 + \\overline{PC}^2 = (a^2+c^2) + (b^2+d^2) = (a^2+d^2) + (b^2+c^2) = \\overline{PB}^2 + \\overline{PD}^2`)}`,
+            notes: `• 이웃한 꼭짓점($PA^2+PB^2$)끼리 더하지 않도록 주의하세요! <strong>마주보는 꼭짓점($A\\leftrightarrow C$, $B\\leftrightarrow D$)끼리</strong> 짝지어야 합니다.`
+          };
+        }
+        // orthoQuad, orthoSquares, orthoSemis
+        const isSq = sub === 'orthoSquares', isSemi = sub === 'orthoSemis';
+        return {
+          badge: isSemi
+            ? `탐구 5-E · 대각선이 직교(AC⊥BD)하는 사각형 네 변 위 반원의 넓이 합 (P₁ + P₃ = P₂ + P₄)`
+            : isSq
+            ? `탐구 5-D · 대각선이 직교(AC⊥BD)하는 사각형 네 변 위 정사각형 넓이 합 (S₁ + S₃ = S₂ + S₄)`
+            : `탐구 5-B · [제곱합 공식 2] 두 대각선이 직교(AC⊥BD)하는 사각형의 마주보는 변 제곱합`,
+          hint: `두 대각선이 $90^\\circ$ 수직으로 만나는 사각형에서는 언제나 <strong class="text-sky-300">마주보는 파란 대변의 제곱합(AB² + CD²)</strong>과 <strong class="text-amber-300">마주보는 노란 대변의 제곱합(BC² + DA²)</strong>이 같습니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 전체 보기' : '🎬 마주보는 짝꿍 번갈아 강조!',
+          p1Title: '대각선 분할비', p2Title: '도형 확장',
+          parts: [
+            { id: 0, name: isSemi ? `🟦 마주보는 반원 넓이 합: P₁ + P₃` : `🟦 마주보는 파란 변 제곱합: AB² + CD² (S₁ + S₃)`, desc: `(OA² + OB²) + (OC² + OD²)`, val: isSemi ? `10π + 25π = 35π` : `25 + 64 = 89`, color: PCOL.cyan, ok: true },
+            { id: 1, name: isSemi ? `🟨 마주보는 반원 넓이 합: P₂ + P₄` : `🟨 마주보는 노란 변 제곱합: BC² + DA² (S₂ + S₄)`, desc: `(OB² + OC²) + (OD² + OA²) — 위와 100% 일치!`, val: isSemi ? `18π + 17π = 35π` : `49 + 40 = 89`, color: PCOL.gold, ok: true }
+          ],
+          totalRes: isSemi ? `P₁(10π) + P₃(25π) = P₂(18π) + P₄(17π) = 35π` : `AB²(25) + CD²(64) = BC²(49) + DA²(40) = 89`,
+          rule: 'AC ⊥ BD 직교 사각형: 마주보는 변의 제곱합 = 마주보는 정사각형 합 = 마주보는 반원 합!',
+          formulaHTML: `• ${tex(`\\overline{AC} \\perp \\overline{BD} \\implies \\overline{AB}^2 + \\overline{CD}^2 = \\overline{BC}^2 + \\overline{DA}^2 = \\overline{OA}^2 + \\overline{OB}^2 + \\overline{OC}^2 + \\overline{OD}^2`)}`,
+          notes: `• 네 변 위에 정사각형($S = d^2$)이나 반원($P = \\frac{\\pi}{8}d^2$)을 그려도 넓이는 변의 제곱에 비례하므로 <strong>마주보는 도형끼리 더한 값이 무조건 같습니다!</strong>`
+        };
+      }
+
+      // ==================== [탭 6: 정삼각형·반원·히포크라테스의 초승달 넓이] ====================
+      if (m === 6) {
+        if (sub === 'hippoLune' || sub === 'isoLune') {
+          const isIso = sub === 'isoLune';
+          const triArea = isIso ? 32 : (a * b) / 2;
+          return {
+            badge: isIso
+              ? `탐구 6-B · 직각이등변삼각형에서 한쪽 초승달 1개의 넓이 (= △ABC 넓이의 절반!)`
+              : `탐구 6-A · 🌙 [시험 100% 출제] 히포크라테스의 초승달 넓이의 합 (= 직각삼각형 ABC의 넓이!)`,
+            hint: `슬라이더를 오른쪽으로 밀어 <strong class="text-sky-300">빗변 아래쪽 큰 반원 S₃을 위로 접어 올려보세요!</strong> $S_1 + S_2 = S_3$이므로 원주율 $\\pi$가 들어간 반원들이 통째로 지워지고 <strong class="text-amber-300">초승달 넓이 합 = 직각삼각형 넓이(${triArea})</strong>만 남습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 반원 펼치기 (원리 비교)' : '🎬 큰 반원 S₃을 위로 접어 초승달 만들기!',
+            p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+            parts: [
+              { id: 0, name: `🟨 두 직각변 위 작은 반원 합 (S₁ + S₂)`, desc: `피타고라스 정리에 의해 빗변 큰 반원 S₃ 넓이와 똑같음!`, val: `S₁ + S₂ = S₃`, color: PCOL.gold, ok: true },
+              { id: 1, name: `❌ 위로 접어 올려 뺀 빗변 큰 반원 (-S₃ 소거!)`, desc: `(S₁ + S₂) - S₃ = 0 ➔ 원주율 π가 완전히 사라짐!`, val: `-S₃ (π 소멸!)`, color: PCOL.cyan, ok: false },
+              { id: 2, name: isIso ? `🟩 남은 초승달 1개 넓이 (= ½ × △ABC)` : `🟩 남은 양쪽 두 초승달 넓이 합 (= △ABC 넓이!)`, desc: isIso ? `좌우 대칭이므로 삼각형 넓이(32)의 절반 = 16!` : `½ × ${a} × ${b} = ${triArea} cm² (π 없음!)`, val: isIso ? `1개 = 16 cm²` : `합 = ${triArea} cm²`, color: PCOL.green, ok: true }
+            ],
+            totalRes: isIso
+              ? `직각이등변(8,8): 두 초승달 합 = 32  ➔  한쪽 초승달 1개 넓이 = 16 cm²`
+              : `두 초승달 넓이 합 = (S₁ + S₂ + △ABC) - S₃ = △ABC 넓이 = ${triArea} cm²`,
+            rule: '초승달 넓이 합 공식: 반원 계산은 1초도 하지 말고 그냥 직각삼각형 넓이(½ab)만 구한다!',
+            formulaHTML: `• ${tex(`(\\text{초승달 합}) = (S_1 + S_2 + \\triangle ABC) - S_3 = \\mathbf{\\triangle ABC = \\dfrac{1}{2}\\times ${isIso ? '8\\times 8' : `${a}\\times ${b}`} = ${triArea}}`)}`,
+            notes: `• <strong>[오답 함정 2가지]</strong>:<br/>&nbsp;&nbsp;① 곡선 도형이라고 답에 $\\pi$를 붙이면 <strong>오답(❌)</strong>! 반원끼리 상쇄되어 $\\pi$는 사라집니다.<br/>&nbsp;&nbsp;② 직각이등변삼각형에서 <strong>초승달 1개</strong>만 색칠되어 있으면 삼각형 넓이를 구한 뒤 꼭 <strong>$\\div 2$</strong>를 하세요!`
+          };
+        }
+        if (sub === 'findHypSemi') {
+          return {
+            badge: `탐구 6-E · 두 직각변 위 반원의 넓이 합(S₁+S₂=18π)으로 빗변의 길이 역추적하기`,
+            hint: `두 직각변의 길이를 각각 몰라도 <strong class="text-amber-300">S₁ + S₂ = S₃(빗변 반원의 넓이 = 18π)</strong>입니다! 빗변 반원의 반지름 $r$을 구한 뒤 <strong class="text-rose-400">2배(지름 = 2r)</strong>를 해야 빗변의 길이가 나옵니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 반지름 r=6 ➔ 지름(빗변)=12 강조!',
+            p1Title: '반원 넓이 합', p2Title: '역추적 단계',
+            parts: [
+              { id: 0, name: `🟦 두 직각변 반원 넓이 합: S₁ + S₂ = 18π`, desc: `빗변을 지름으로 하는 큰 반원 넓이 S₃ = 18π 와 같음`, val: `S₃ = 18π`, color: PCOL.cyan, ok: true },
+              { id: 1, name: `🟨 큰 반원의 반지름 r 구하기: ½πr² = 18π`, desc: `r² = 36 ➔ 반지름 r = 6 cm`, val: `반지름 r = 6`, color: PCOL.gold, ok: true },
+              { id: 2, name: `🩷 빗변의 길이 = 큰 반원의 지름 (2r = 12 cm!)`, desc: `⚠️ 반지름 6을 그대로 답으로 쓰면 안 됨! (×2 필수)`, val: `빗변 = 12 cm`, color: PCOL.pink, ok: true }
+            ],
+            totalRes: `S₁ + S₂ = S₃ = ½πr² = 18π  ➔  r = 6  ➔  빗변(지름 2r) = 12 cm!`,
+            rule: '반원 넓이 역추적 함정: ① 반원 공식은 ½πr² (½ 주의!)  ② 빗변의 길이는 지름 2r (×2 주의!)',
+            formulaHTML: `• ${tex(`S_3 = \\dfrac{1}{2}\\pi r^2 = 18\\pi \\implies r^2 = 36 \\implies r = 6 \\implies \\mathbf{\\text{빗변 } c = 2r = 12\\text{ cm}}`)}`,
+            notes: `• 시험에서 $r=6$까지 잘 구해놓고 마지막에 $2$배(지름)를 안 해서 $6$이라고 쓰는 오답이 가장 많습니다!`
+          };
+        }
+        const isEqui = sub === 'equilateral';
+        return {
+          badge: isEqui
+            ? `탐구 6-C · 직각삼각형 세 변 위에 그린 정삼각형의 넓이 법칙 (S₁ + S₂ = S₃)`
+            : `탐구 6-D · 직각삼각형 세 변을 지름으로 하는 세 반원의 넓이 법칙 (S₁ + S₂ = S₃)`,
+          hint: `직각삼각형 세 변 위에 <strong>정사각형 · 정삼각형 · 반원</strong> 중 어떤 닮은 도형을 그려도 넓이는 변의 제곱에 비례하므로 언제나 <strong class="text-amber-300">작은 두 도형 넓이의 합(S₁ + S₂) = 빗변 위 큰 도형 넓이(S₃)</strong>입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 S₁ + S₂ = S₃ 넓이 비교!',
+          p1Title: '직각삼각형 족보', p2Title: '배수 스케일 ×k',
+          parts: [
+            { id: 0, name: isEqui ? `🟦 작은 변 위 정삼각형 S₁` : `🟦 작은 변(지름 ${2*a}) 위 반원 S₁`, desc: isEqui ? `한 변의 제곱(${a}²)에 비례` : `½ × π × ${a}² = ${(a*a)/2}π`, val: isEqui ? `S₁ = 12` : `${(a * a) / 2}π`, color: PCOL.cyan, ok: true },
+            { id: 1, name: isEqui ? `🟩 중간 변 위 정삼각형 S₂` : `🟩 중간 변(지름 ${2*b}) 위 반원 S₂`, desc: isEqui ? `한 변의 제곱(${b}²)에 비례` : `½ × π × ${b}² = ${(b*b)/2}π`, val: isEqui ? `+S₂ = 20` : `+${(b * b) / 2}π`, color: PCOL.green, ok: true },
+            { id: 2, name: isEqui ? `🟨 빗변 위 큰 정삼각형 S₃ (= S₁ + S₂)` : `🟨 빗변(지름 ${2*c}) 위 큰 반원 S₃ (= S₁ + S₂)`, desc: isEqui ? `정삼각형 높이 공식 몰라도 12 + 20 = 32!` : `½ × π × ${c}² = ${(c*c)/2}π 일치!`, val: isEqui ? `=S₃ (32)` : `=${(c * c) / 2}π`, color: PCOL.gold, ok: true }
+          ],
+          totalRes: isEqui ? `정삼각형 넓이 합: S₃ = S₁(12) + S₂(20) = 32` : `반원 넓이 합: S₁(${(a*a)/2}π) + S₂(${(b*b)/2}π) = S₃(${(c*c)/2}π)`,
+          rule: '세 변 위에 그린 모든 닮은 도형(정사각형·정삼각형·반원)은 S₁ + S₂ = S₃가 100% 성립한다!',
+          formulaHTML: isEqui
+            ? `• 정삼각형 넓이는 $k\\cdot(\\text{한 변})^2$에 비례하므로 ${tex(`S_1 + S_2 = k(a^2+b^2) = kc^2 = S_3`)}!`
+            : `• 지름이 $2c$이면 반지름은 $c$이므로 ${tex(`S_1 + S_2 = S_3 = \\dfrac{1}{2}\\pi c^2 = \\mathbf{${(c * c) / 2}\\pi}`)}!`,
+          notes: `• 두 직각변의 길이를 알려주지 않고 <strong>$S_1 + S_2$</strong>를 구하라고 하면, 고민하지 말고 <strong>빗변 도형 $S_3$ 넓이 하나만 구하면 끝</strong>입니다!`
+        };
+      }
+
+      // ==================== [탭 7: 빗변 수선 & 소(牛) 공식 4형제] ====================
+      if (m === 7) {
+        // 황금 자연수 세트: 큰 삼각형 (15, 20, 25) * k => BH = 9k, CH = 16k, AH = 12k
+        const AB = 15 * k, AC = 20 * k, BC = 25 * k, BH = 9 * k, CH = 16 * k, AH = 12 * k;
+        return {
+          badge: `탐구 7 · 직각삼각형 빗변 수선 공식 4형제 & 3개 닮음 삼각형 해부 (AB=${AB}, AC=${AC}, BC=${BC})`,
+          hint: `우측의 <strong class="text-amber-300">4형제 공식 카드를 하나씩 클릭</strong>해 보세요! 칠판에서 어떤 선분끼리 제곱하고 곱하는지 화살표처럼 네온 발광하며, 우측 상단 창에서 <strong>왜 3개의 직각삼각형이 AA 닮음인지</strong> 한눈에 보입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 4형제 공식 차례대로 스캔!',
+          p1Title: '공식 퀵 선택', p2Title: '배수 스케일 ×k',
+          parts: [
+            { id: 0, name: `① [왼쪽 날개] AB² = BH × BC (짧은 조각 × 전체)`, desc: `${AB}²(${AB*AB}) = ${BH} × ${BC}(${BH*BC})  [△ABC ∽ △HBA]`, val: `${AB}² = ${BH}×${BC}`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `② [오른쪽 날개] AC² = CH × CB (짧은 조각 × 전체)`, desc: `${AC}²(${AC*AC}) = ${CH} × ${BC}(${CH*BC})  [△ABC ∽ △HAC]`, val: `${AC}² = ${CH}×${BC}`, color: PCOL.green, ok: true },
+            { id: 2, name: `③ [가운데 기둥] AH² = BH × CH (내려찍어 양옆으로!)`, desc: `${AH}²(${AH*AH}) = ${BH} × ${CH}(${BH*CH})  [△HBA ∽ △HAC]`, val: `${AH}² = ${BH}×${CH}`, color: PCOL.gold, ok: true },
+            { id: 3, name: `④ [소(牛) 넓이 공식] AB × AC = BC × AH`, desc: `직각변×직각변(${AB}×${AC}) = 빗변×높이(${BC}×${AH}) = ${AB*AC}`, val: `${AB}×${AC}=${BC}×${AH}`, color: PCOL.pink, ok: true }
+          ],
+          totalRes: `황금 세트: AB=${AB}, AC=${AC}, BC=${BC}  ➔  BH=${BH}, CH=${CH}, 높이 AH=${AH}`,
+          rule: '빗변 수선 4형제: ① AB²=BH·BC  ② AC²=CH·CB  ③ AH²=BH·CH  ④ AB·AC=BC·AH',
+          formulaHTML: `• <strong>왜 성립할까?</strong> $\\bullet + \\times = 90^\\circ$에 의해 <strong>큰 $\\triangle ABC \\sim$ 왼쪽 $\\triangle HBA \\sim$ 오른쪽 $\\triangle HAC$ (모두 $3:4:5$ 비!)</strong>이기 때문입니다.`,
+          notes: `• <strong>[단골 실수 2가지]</strong>:<br/>&nbsp;&nbsp;① $AB^2 = BH \\times CH$로 잘못 곱하기 (❌, $BH \\times \\text{전체 } BC$를 곱해야 함!)<br/>&nbsp;&nbsp;② 수선의 발 $H$를 빗변의 중점(외심 $M$)으로 착각하기 (❌, $BH=9, CH=16$으로 길이가 다름!)`
+        };
+      }
+
+      // ==================== [탭 8: 종이접기 & 최단거리 응용] ====================
+      if (sub === 'rectFold') {
+        return {
+          badge: `탐구 8-A · [내신 100% 출제] 직사각형 꼭짓점 D를 변 BC 위의 점 E에 접기 (2단계 도미노!)`,
+          hint: `슬라이더로 꼭짓점 $D$를 접어보세요! <strong class="text-amber-300">접힌 변 AE = AD = 10</strong>이므로 <strong class="text-sky-300">① 왼쪽 △ABE(6-8-10)에서 BE = 6 ➔ 남은 EC = 4!</strong> 이어서 <strong class="text-pink-300">② 오른쪽 △FCE에서 x² = (8-x)² + 4² ➔ EF(x) = 5!</strong>`,
+          actionTxt: state.fold > 0.5 ? '🎬 접기 전 직사각형 보기' : '🎬 꼭짓점 D를 점 E로 접어 내리기!',
+          p1Title: '직사각형 (10×8)', p2Title: '풀이 단계',
+          parts: [
+            { id: 0, name: `🟦 1단계: 왼쪽 직각삼각형 △ABE (6 - 8 - 10)`, desc: `AE = AD = 10, AB = 8 이므로 BE = 6 ➔ 남은 EC = 10-6 = 4!`, val: `BE=6, EC=4`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `🟨 접혀 내려온 합동 삼각형 △AFE ≡ △AFD`, desc: `AE = AD = 10, FE = FD = x (접기 전·후 길이 보존!)`, val: `FE = FD = x`, color: PCOL.gold, ok: true },
+            { id: 2, name: `🩷 2단계: 오른쪽 직각삼각형 △FCE (3 - 4 - 5!)`, desc: `x² = (8-x)² + 4² ➔ 16x = 80 ➔ EF(x) = 5, CF = 3!`, val: `EF(x) = 5`, color: PCOL.pink, ok: true }
+          ],
+          totalRes: `1단계 BE = 6 (EC = 4)  ➔  2단계 △FCE 방정식 해 EF(x) = 5, CF = 3`,
+          rule: '직사각형 꼭짓점 접기: ① AE=AD로 왼쪽 △ABE 풀기 ➔ ② x²=(세로-x)²+EC²으로 오른쪽 △FCE 풀기!',
+          formulaHTML: `• <strong>2단계 방정식</strong>: ${tex(`x^2 = (8-x)^2 + 4^2 \\implies x^2 = 64 - 16x + x^2 + 16 \\implies 16x = 80 \\implies \\mathbf{x = 5}`)}`,
+          notes: `• <strong>[3초 닮음 암산 비법]</strong>: $\\angle AEF = 90^\\circ$이므로 왼쪽 $\\triangle ABE(6\\text{-}8\\text{-}10)$와 오른쪽 $\\triangle ECF$는 둘 다 <strong>$3:4:5$ AA 닮음</strong>입니다! $EC=4$이므로 방정식 없이도 $CF=3, FE=5$가 1초 만에 나옵니다!`
+        };
+      }
+      if (sub === 'triFold') {
+        return {
+          badge: `탐구 8-B · 직각삼각형의 빗변 AB를 접어 꼭짓점 B가 A에 포개어질 때 (수직이등분선)`,
+          hint: `꼭짓점 $B$가 $A$에 겹치도록 접으면 <strong class="text-amber-300">AD = BD = x</strong>가 되고 남은 조각은 <strong class="text-pink-300">CD = 8 - x</strong>입니다! 직각이 살아있는 $\\triangle ACD$에서 <strong class="text-sky-300">x² = (8 - x)² + 6²</strong>을 세우면 끝납니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 펼치기' : '🎬 꼭짓점 B를 A에 포개어 접기!',
+          p1Title: '삼각형 (6-8-10)', p2Title: '풀이 단계',
+          parts: [
+            { id: 0, name: `🟨 접혀서 같아진 변: AD = BD = x`, desc: `빗변 AB의 중점 E(AE=BE=5)에서 수직으로 접힘`, val: `AD = BD = x`, color: PCOL.gold, ok: true },
+            { id: 1, name: `🩷 직각삼각형 △ACD에서 피타고라스 방정식`, desc: `AC = 6, CD = 8 - x, 빗변 AD = x`, val: `x = 25/4 (6.25)`, color: PCOL.pink, ok: true }
+          ],
+          totalRes: `x² = (8 - x)² + 6²  ➔  16x = 100  ➔  AD = BD = x = 25/4`,
+          rule: '종이접기 절대 법칙: 접혀서 같아진 길이를 x로 놓고, 남은 조각(전체-x)으로 직각삼각형 식을 세운다!',
+          formulaHTML: `• ${tex(`x^2 = (8-x)^2 + 6^2 \\implies x^2 = 64 - 16x + x^2 + 36 \\implies 16x = 100 \\implies \\mathbf{x = \\dfrac{25}{4}}`)}`,
+          notes: `• 점 $D$를 변 $BC$의 중점($x=4$)이라고 착각하면 절대 안 됩니다! $x = 25/4 = 6.25$입니다.`
+        };
+      }
+      if (sub === 'reflection') {
+        return {
+          badge: `탐구 8-C · 직선 위 점 P를 거쳐 가는 최단거리 (AP + PB = AB' 대칭이동 & 점 P 드래그!)`,
+          hint: `캔버스에서 <strong class="text-amber-300">직선 l 위의 점 P를 마우스로 좌우로 드래그</strong>해 보세요! 점 $B$를 직선 $l$에 대칭이동한 $B'$과 $A$를 곧장 이은 <strong class="text-emerald-300">일직선 AB' (직각삼각형 가로 12, 세로 3+6=9 ➔ 빗변 15)</strong>일 때가 최단거리입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 대칭선 접기' : '🎬 점 B를 직선 아래 B′으로 대칭이동!',
+          p1Title: '가로 거리(12)', p2Title: '점 P 위치',
+          parts: [
+            { id: 0, name: `🟦 대칭이동으로 펴진 선분: PB = PB'`, desc: `직선 l이 BB'의 수직이등분선이므로 항상 PB = PB'`, val: `AP+PB = AP+PB'`, color: PCOL.cyan, ok: true },
+            { id: 1, name: `🟨 큰 직각삼각형 △AKB' (가로 12, 세로 3+6 = 9)`, desc: `높이 3과 대칭 깊이 6이 더해져 세로 합 = 9!`, val: `9 - 12 - 15!`, color: PCOL.gold, ok: true },
+            { id: 2, name: `🟩 최단거리 일직선 빗변 AB' = 15 (제곱 = 225)`, desc: `12² + (3+6)² = 144 + 81 = 225 = 15²`, val: `최솟값 = 15`, color: PCOL.green, ok: true }
+          ],
+          totalRes: `(AP + PB)의 최솟값 = AB' = √(12² + (3+6)²) = √225 = 15 cm`,
+          rule: '직선 찍고 가는 최단거리: 한 점을 직선 반대편으로 대칭이동하여 큰 직각삼각형의 빗변을 구한다!',
+          formulaHTML: `• ${tex(`(\\overline{AP}+\\overline{PB})_{\\min}^2 = \\overline{AB'}^2 = (\\text{가로 } 12)^2 + (\\text{세로 합 } 3+6)^2 = 144 + 81 = 225 = \\mathbf{15^2}`)}`,
+          notes: `• 세로 높이를 $6 - 3 = 3$으로 빼는 실수를 조심하세요! 대칭이동을 하면 위쪽 $3$과 아래쪽 $6$이 더해져서 <strong>세로 합은 $3 + 6 = 9$</strong>가 됩니다.`
+        };
+      }
+      const isCyl = sub === 'cylinderNet';
+      return {
+        badge: isCyl
+          ? `탐구 8-E · 원기둥 옆면을 한 바퀴 감아 올라가는 실의 최단거리 (휴지심 펼치기!)`
+          : `탐구 8-D · 직육면체 겉면을 따라 꼭짓점 A에서 G까지 가는 최단거리 (전개도 펼치기!)`,
+        hint: isCyl
+          ? `원기둥 옆면을 펼치면 <strong class="text-sky-300">가로가 밑면 원주(2πr = 6)</strong>이고 <strong class="text-emerald-300">세로가 높이(h = 8)</strong>인 직사각형이 됩니다! 한 바퀴 감은 실의 최단거리는 대각선 <strong class="text-amber-300">10 cm</strong>입니다!`
+          : `접혀 있던 옆면을 펼친 전개도입니다! 실이 지나가는 앞면(5)과 옆면(7)을 나란히 펼치면 <strong class="text-sky-300">가로 합 5+7=12, 세로 5인 직각삼각형</strong>이 되어 최단거리(빗변)는 <strong class="text-amber-300">13</strong>입니다!`,
+        actionTxt: state.fold > 0.5 ? '🎬 입체 느낌으로 접기' : '🎬 평면 전개도로 활짝 펼쳐 일직선 확인!',
+        p1Title: isCyl ? '원주(6)·높이(8)' : '가로합(5+7)·높이(5)', p2Title: '전개 상태',
+        parts: [
+          { id: 0, name: isCyl ? `🟦 펼친 옆면의 가로 길이 (= 밑면 원주 2πr)` : `🟦 펼친 두 면의 가로 길이 합 (5 + 7 = 12)`, desc: isCyl ? `원기둥 한 바퀴 둘레 = 6 cm` : `앞면 가로(5) + 오른쪽 옆면 가로(7) = 12`, val: isCyl ? `가로 = 6` : `가로 합 = 12`, color: PCOL.cyan, ok: true },
+          { id: 1, name: isCyl ? `🟩 원기둥의 세로 높이 (h = 8 cm)` : `🟩 직육면체의 세로 높이 (h = 5 cm)`, desc: `직각을 이루는 세로 직각변`, val: isCyl ? `높이 = 8` : `높이 = 5`, color: PCOL.green, ok: true },
+          { id: 2, name: isCyl ? `🟨 최단거리 대각선 빗변 (6 - 8 - 10!)` : `🟨 최단거리 대각선 빗변 AG (5 - 12 - 13!)`, desc: isCyl ? `6² + 8² = 100 ➔ 최단거리 = 10 cm` : `12² + 5² = 169 ➔ 최단거리 = 13`, val: isCyl ? `최단거리 = 10` : `최단거리 = 13`, color: PCOL.gold, ok: true }
+        ],
+        totalRes: isCyl ? `원기둥 1바퀴 최단거리 = √(6² + 8²) = 10 cm` : `직육면체 겉면 최단거리 = √((5+7)² + 5²) = 13`,
+        rule: '모든 입체 겉면 최단거리 = 실이 지나가는 면들을 평면 전개도로 펼쳐 직각삼각형 빗변 구하기!',
+        formulaHTML: isCyl
+          ? `• ${tex(`(\\text{최단거리})^2 = (2\\pi r)^2 + h^2 = 6^2 + 8^2 = 100 = \\mathbf{10^2}`)}`
+          : `• ${tex(`\\overline{AG}^2 = (5+7)^2 + 5^2 = 12^2 + 5^2 = 169 = \\mathbf{13^2}`)}`,
+        notes: isCyl
+          ? `• 만약 원기둥 옆면을 <strong>두 바퀴</strong> 감아 올라갔다면, 가로 길이를 <strong>$2 \\times (\\text{밑면 원주}) = 12$</strong>로 놓고 피타고라스 정리를 쓰면 됩니다!`
+          : `• 어느 모서리를 넘어가는지에 따라 펼치는 방향이 달라집니다. 가장 짧은 최단거리는 <strong>가장 긴 변을 높이(제곱 밖)로 두거나 두 짧은 변을 합쳐 제곱</strong>할 때를 비교해 찾습니다.`
+      };
+    }
+
+  /* ===== 원본 그대로: 장면별 그리기 (원본 1407–2311행, [2.0] 표시한 곳만 다름) ===== */
+    // =========================================================================
+    // [탭 1 렌더링] 세 정사각형 넓이 (a²+b²=c²) & 격자 정사각형 & 연쇄 삼각형
+    // =========================================================================
+    function renderMode1ThreeSquares(rect, cx, cy) {
+      const subId = state.subType[1];
+      const s = state.scale * 0.98;
+      const fam = getActiveTriple();
+      const k = state.multK;
+      const a = fam.a * k, b = fam.b * k, c = fam.c * k;
+
+      if (subId === 'tiltedGrid') {
+        const u = 36 * s;
+        const half = 2.5 * u;
+        const ox = cx - half, oy = cy - half;
+
+        // [2.0] 원본의 ctx 직접 그리기 → 무대 호출(같은 색·굵기, '보조선·모눈' 렌즈 규칙)
+        lensRun('aux', (gfx) => {
+          for (let i = 0; i <= 5; i++) {
+            BOARD.seg(pt(ox + i * u, oy), pt(ox + i * u, oy + 5 * u), { color: 'rgba(255,255,255,0.22)', width: gfx.hi ? 2.2 : 1.2 });
+            BOARD.seg(pt(ox, oy + i * u), pt(ox + 5 * u, oy + i * u), { color: 'rgba(255,255,255,0.22)', width: gfx.hi ? 2.2 : 1.2 });
+          }
+        });
+
+        const A = pt(ox + 3 * u, oy), B = pt(ox, oy + 2 * u), C = pt(ox + 2 * u, oy + 5 * u), D = pt(ox + 5 * u, oy + 3 * u);
+        const c1 = pt(ox, oy), c2 = pt(ox, oy + 5 * u), c3 = pt(ox + 5 * u, oy + 5 * u), c4 = pt(ox + 5 * u, oy);
+
+        const pushOut = state.fold * 18 * s;
+        const shift = (pts, dx, dy) => pts.map((p) => ({ x: p.x + dx, y: p.y + dy }));
+
+        ppoly([c1, c2, c3, c4], 'rgba(255,255,255,0.03)', PCOL.white, 1.8, 2);
+        ppoly(shift([c1, B, A], -pushOut, -pushOut), 'rgba(56, 189, 248, 0.28)', PCOL.cyan, 2.2, 1);
+        ppoly(shift([c2, C, B], -pushOut, pushOut), 'rgba(56, 189, 248, 0.28)', PCOL.cyan, 2.2, 1);
+        ppoly(shift([c3, D, C], pushOut, pushOut), 'rgba(56, 189, 248, 0.28)', PCOL.cyan, 2.2, 1);
+        ppoly(shift([c4, A, D], pushOut, -pushOut), 'rgba(56, 189, 248, 0.28)', PCOL.cyan, 2.2, 1);
+        // [표시 보강] 귀퉁이 직각삼각형 4개는 합동: 직각 표시(옮겨진 삼각형을 따라감)와 같은 길이 눈금(3칸 |, 2칸 ||)
+        [[c1, B, A, -pushOut, -pushOut], [c2, C, B, -pushOut, pushOut], [c3, D, C, pushOut, pushOut], [c4, A, D, pushOut, -pushOut]].forEach(([k0, p0, q0, dx, dy]) => {
+          const K0 = pt(k0.x + dx, k0.y + dy), P0 = pt(p0.x + dx, p0.y + dy), Q0 = pt(q0.x + dx, q0.y + dy);
+          pright(K0, P0, Q0, 11, PCOL.cyan);
+          ptick(K0, P0, 2, PCOL.cyan);
+          ptick(K0, Q0, 1, PCOL.cyan);
+        });
+
+        ppoly([A, B, C, D], 'rgba(251, 191, 36, 0.38)', PCOL.gold, 3.6, 0);
+        pright(A, B, D, 12, PCOL.gold);
+        // [표시 보강] 기울어진 정사각형: 네 직각과 네 변의 같은 길이 눈금(|||)
+        pright(B, A, C, 12, PCOL.gold); pright(C, B, D, 12, PCOL.gold); pright(D, C, A, 12, PCOL.gold);
+        ptick(A, B, 3, PCOL.gold); ptick(B, C, 3, PCOL.gold); ptick(C, D, 3, PCOL.gold); ptick(D, A, 3, PCOL.gold);
+
+        ptag(cx, cy + 4, '넓이 S = 3² + 2² = 13', PCOL.gold, 14);
+        ptag(ox + 1.5 * u, oy - 12, '3칸', PCOL.cyan, 12, 'aux');
+        ptag(ox - 20, oy + 1 * u, '2칸', PCOL.cyan, 12, 'aux');
+        [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, pt(cx, cy)));
+
+        drawBottomTapeBanner(rect, '바깥 5×5 정사각형(25) = 기울어진 정사각형(3²+2²=13) + 귀퉁이 직각삼각형 4개(4×3=12)', [
+          { text: '기울어진 정사각형 넓이 = 13 (3²+2²)', weight: 13 / 25, color: PCOL.gold },
+          { text: '귀퉁이 삼각형 4개 = 12 (4×3)', weight: 12 / 25, color: PCOL.cyan }
+        ]);
+        return;
+      }
+
+      if (subId === 'chainTri') {
+        const u = 14.5 * s;
+        const B = pt(cx - 85 * s, cy + 75 * s);
+        const A = pt(B.x, B.y - 3 * u);
+        const C = pt(B.x + 4 * u, B.y);
+        const v = norm(sub(C, A));
+        const n = pt(v.y, -v.x);
+        const D = add(C, mul(n, 12 * u));
+
+        ppoly([A, B, C], 'rgba(56, 189, 248, 0.28)', PCOL.cyan, 3.2, 0);
+        ppoly([A, C, D], 'rgba(251, 191, 36, 0.28)', PCOL.gold, 3.2, 2);
+        pline(A, C, PCOL.green, 4.2, [], true, 1);
+        pright(B, A, C, 12, PCOL.cyan);
+        pright(C, A, D, 13, PCOL.gold);
+
+        ptag(B.x - 22, (A.y + B.y) / 2, `${3 * k}`, PCOL.cyan);
+        ptag((B.x + C.x) / 2, B.y + 20, `${4 * k}`, PCOL.cyan);
+        // [2.0] 변 위 글자는 변 바깥쪽에 화면 픽셀 간격으로(ptagAt) — 휴대폰에서 변과 겹치던 것을 피함
+        ptagAt(mid(A, C), `AC=${5 * k}`, PCOL.green, 13, 'left', 8, -8);
+        ptag((C.x + D.x) / 2 + 22, (C.y + D.y) / 2 + 8, `${12 * k}`, PCOL.gold);
+        ptagAt(mid(A, D), `빗변 AD = ${13 * k}`, PCOL.gold, 14, 'right', -6, -10);
+        [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, mid(A, C)));
+
+        drawBottomTapeBanner(rect, `연쇄 직각삼각형: AD²(${(13*k)**2}) = AB²(${(3*k)**2}) + BC²(${(4*k)**2}) + CD²(${(12*k)**2})`, [
+          { text: `AB²(${(3*k)**2})`, weight: 9 / 169, color: PCOL.cyan },
+          { text: `BC²(${(4*k)**2})`, weight: 16 / 169, color: PCOL.green },
+          { text: `CD²(${(12*k)**2}) ➔ 합 AD²=${(13*k)**2}`, weight: 144 / 169, color: PCOL.gold }
+        ]);
+        return;
+      }
+
+      if (subId === 'rotated') {
+        const rotAng = state.fold * (Math.PI * 0.25);
+        const center = pt(cx, cy - 10 * s);
+        const B0 = pt(cx - 82 * s, cy + 25 * s), C0 = pt(cx + 82 * s, cy + 25 * s);
+        // [2.0 수정] 원본은 족보(5:12:13 등)를 골라도 그림은 늘 3:4:5 모양이었습니다 → 고른 족보의 비율로 직각 꼭짓점 A를 놓습니다(3:4:5이면 원본과 같은 위치)
+        const A0 = rightApex(B0, C0, fam);
+        const A = rot(A0, center, rotAng), B = rot(B0, center, rotAng), C = rot(C0, center, rotAng);
+
+        drawOutwardSquare(B, A, 'rgba(56,189,248,0.22)', PCOL.cyan, a, `S₁ = ${a}² = ${a * a}`, 1, 0);
+        drawOutwardSquare(A, C, 'rgba(52,211,153,0.22)', PCOL.green, b, `S₂ = ${b}² = ${b * b}`, 1, 1);
+        drawOutwardSquare(C, B, 'rgba(251,191,36,0.26)', PCOL.gold, c, `빗변 S₃ = ${c}² = ${c * c}`, 1, 2);
+
+        ppoly([A, B, C], 'rgba(255,255,255,0.14)', PCOL.white, 3.2);
+        pline(B, C, PCOL.gold, 4.4, [], true, 2);
+        pright(A, B, C, 13, PCOL.gold);
+        pdot(A, 'A(90°)', PCOL.gold, center);
+        pdot(B, 'B', PCOL.cyan, center);
+        pdot(C, 'C', PCOL.green, center);
+
+        drawBottomTapeBanner(rect, `∠A = 90° 맞은편 대변 BC가 빗변! BC²(${c*c}) = AB²(${a*a}) + AC²(${b*b})`, [
+          { text: `AB² = ${a * a}`, weight: (a * a) / (c * c), color: PCOL.cyan },
+          { text: `AC² = ${b * b}`, weight: (b * b) / (c * c), color: PCOL.green }
+        ]);
+        return;
+      }
+
+      // std345 & findLeg
+      const isFindLeg = subId === 'findLeg';
+      const maxDim = Math.max(fam.a, fam.b, fam.c);
+      const u = (115 / maxDim) * s;
+
+      const C = pt(cx - 18 * s, cy + 28 * s);
+      const B = pt(C.x - fam.a * u, C.y);
+      const A = pt(C.x, C.y - fam.b * u);
+
+      // [2.0 수정] 모눈 타일 수를 이름표의 한 변(a·b·c = 족보 × k)과 같게(원본은 ×k를 눌러도 족보의 기본 타일 수 그대로였습니다)
+      drawOutwardSquare(B, C, 'rgba(56, 189, 248, 0.24)', PCOL.cyan, a, `S₁ = ${a}² = ${a * a}`, -1, isFindLeg ? 1 : 0);
+      drawOutwardSquare(C, A, isFindLeg ? 'rgba(244, 114, 182, 0.30)' : 'rgba(52, 211, 153, 0.24)', isFindLeg ? PCOL.pink : PCOL.green, b, `S₂ = ${b}² = ${b * b}`, -1, isFindLeg ? 2 : 1);
+      drawOutwardSquare(A, B, 'rgba(251, 191, 36, 0.26)', PCOL.gold, c, `S₃ = ${c}² = ${c * c}`, -1, isFindLeg ? 0 : 2);
+
+      ppoly([A, B, C], 'rgba(255, 255, 255, 0.15)', PCOL.white, 3.4);
+      if (state.conceptSwitch === 'def') pline(A, B, PCOL.gold, 4.8, [], true);
+      pright(C, A, B, 13, PCOL.gold);
+
+      pdot(A, 'A', PCOL.green, null, { x: 10, y: -6 });
+      pdot(B, 'B', PCOL.cyan, null, { x: -18, y: 16 });
+      pdot(C, 'C(90°)', PCOL.gold, null, { x: 10, y: 16 });
+
+      drawBottomTapeBanner(
+        rect,
+        isFindLeg
+          ? `직각변 역산: S₂(${b * b}) = 빗변 S₃(${c * c}) - 작은 S₁(${a * a})  ➔  b = ${b}`
+          : `피타고라스 넓이 조립: S₁(${a}²=${a * a}) + S₂(${b}²=${b * b}) = 빗변 S₃(${c}²=${c * c})`,
+        [
+          { text: `S₁ = ${a}² = ${a * a}`, weight: (a * a) / (c * c), color: PCOL.cyan },
+          { text: `S₂ = ${b}² = ${b * b}`, weight: (b * b) / (c * c), color: isFindLeg ? PCOL.pink : PCOL.green }
+        ]
+      );
+    }
+
+    // =========================================================================
+    // [탭 2 렌더링] 4대 시각적 증명 (유클리드 풍차 연속 시연 · 바스카라 · 가필드)
+    // =========================================================================
+    function renderMode2FourProofs(rect, cx, cy) {
+      const sub = state.subType[2];
+      const s = state.scale * 0.96;
+      const t = state.fold;
+
+      if (sub === 'euclid') {
+        const es = s * 0.72;
+        const oy = cy - 22 * es;
+        const B = pt(cx - 100 * es, oy + 15 * es);
+        const C = pt(cx + 100 * es, oy + 15 * es);
+        const H = pt(cx - 28 * es, oy + 15 * es);
+        const A = pt(cx - 28 * es, oy - 81 * es);
+        const G = pt(cx - 124 * es, oy - 153 * es);
+        const F = pt(cx - 196 * es, oy - 57 * es);
+        const I = pt(cx + 68 * es, oy - 209 * es);
+        const J = pt(cx + 196 * es, oy - 113 * es);
+        const D = pt(cx - 100 * es, oy + 215 * es);
+        const E = pt(cx + 100 * es, oy + 215 * es);
+        const L = pt(cx - 28 * es, oy + 215 * es);
+
+        ppoly([A, B, F, G], 'rgba(56, 189, 248, 0.18)', PCOL.cyan, 2.6, 0);
+        ppoly([B, H, L, D], 'rgba(56, 189, 248, 0.20)', PCOL.cyan, 2.6, 0);
+        ppoly([A, C, J, I], 'rgba(52, 211, 153, 0.18)', PCOL.green, 2.6, 2);
+        ppoly([H, C, E, L], 'rgba(52, 211, 153, 0.20)', PCOL.green, 2.6, 2);
+        ppoly([A, B, C], 'rgba(255, 255, 255, 0.15)', PCOL.white, 3.2);
+        pline(A, L, PCOL.gold, 2.2, [5, 4]);
+        pright(A, B, C, 11, PCOL.gold);
+        pright(H, A, C, 10, PCOL.gold);
+        // [표시 보강] 정사각형의 직각(점 B 에서 90° 회전하는 각 ∠ABF, ∠CBD)과 SAS 합동의 같은 길이 눈금: BF = BA (|), BD = BC (||)
+        pright(B, A, F, 11, PCOL.cyan);
+        pright(B, C, D, 11, PCOL.green);
+        ptick(B, F, 1, PCOL.cyan); ptick(A, B, 1, PCOL.cyan);
+        ptick(B, D, 2, PCOL.green); ptick(B, C, 2, PCOL.green);
+        // 끼인각 ∠FBC = ∠ABD (= 90° + ∠ABC, ●) — 합동 단계(②·③)에서 보임
+        if (t > 0.33) {
+          pangle(B, F, C, PCOL.pink, 36, 1, '●');
+          pangle(B, A, D, PCOL.pink, 26, 1, '●');
+        }
+
+        // ★ 연속 3구간 유클리드 변형 애니메이션 (t: 0 ~ 1) ★
+        let activeTri = [F, A, B];
+        let stepDesc = '① 출발: 정사각형 절반 △FAB (넓이 72)';
+        if (t <= 0.33) {
+          const u = t / 0.33;
+          pline(G, C, PCOL.pink, 2.0, [5, 4]);
+          ppar(G, C, 1, PCOL.pink, 0.3); ppar(F, B, 1, PCOL.pink, 0.5); // [표시 보강] GC ∥ FB
+          activeTri = [F, lerp(A, C, u), B];
+          stepDesc = '① 평행선(GC∥FB) 등적변형: △FAB = △FBC';
+        } else if (t <= 0.67) {
+          const u = (t - 0.33) / 0.34;
+          const rotAng = u * (Math.PI / 2);
+          activeTri = [rot(F, B, rotAng), B, rot(C, B, rotAng)];
+          stepDesc = '② 점 B 중심 90° 회전 SAS 합동: △FBC ≡ △ABD';
+          pdot(B, 'B(90° 회전축!)', PCOL.gold, null, { x: -42, y: 18 });
+        } else {
+          const u = (t - 0.67) / 0.33;
+          pline(A, L, PCOL.pink, 2.4, [5, 4]);
+          ppar(A, L, 1, PCOL.pink, 0.3); ppar(B, D, 1, PCOL.pink, 0.5); // [표시 보강] AL ∥ BD
+          activeTri = [lerp(A, H, u), B, D];
+          stepDesc = '③ 평행선(AL∥BD) 등적변형: △ABD = △HBD (완성!)';
+        }
+
+        ppoly(activeTri, 'rgba(251, 191, 36, 0.56)', PCOL.gold, 3.8, 1);
+
+        pdot(A, 'A', PCOL.white, null, { x: -4, y: -12 });
+        pdot(B, 'B', PCOL.white, null, { x: -18, y: 12 });
+        pdot(C, 'C', PCOL.white, null, { x: 10, y: 12 });
+        pdot(H, 'H', PCOL.gold, null, { x: 8, y: 16 });
+        pdot(F, 'F', PCOL.cyan, null, { x: -16, y: 4 });
+        pdot(G, 'G', PCOL.cyan, null, { x: -12, y: -10 });
+        pdot(D, 'D', PCOL.cyan, null, { x: -16, y: 14 });
+        pdot(E, 'E', PCOL.green, null, { x: 10, y: 14 });
+        pdot(L, 'L', PCOL.gold, null, { x: -4, y: 18 });
+
+        drawMiniOverlayBox(rect, '🌪️ 유클리드 넓이 불변 사슬', [
+          { txt: '① △FAB = ½ □ABFG (72)', col: '#38bdf8' },
+          { txt: '② = △FBC (GC∥FB 등적변형)', col: '#fbbf24' },
+          { txt: '③ ≡ △ABD (점 B 90° 회전 SAS)', col: '#f472b6' },
+          { txt: '④ = △HBD = ½ □BDLH (72)', col: '#34d399' }
+        ]);
+
+        drawBottomTapeBanner(rect, `${stepDesc}  |  □ABFG(144) + □ACJI(256) = □BCED(400)`, [
+          { text: '왼쪽 □ABFG = □BDLH (144)', weight: 144 / 400, color: PCOL.cyan },
+          { text: '오른쪽 □ACJI = □HCEL (256)', weight: 256 / 400, color: PCOL.green }
+        ]);
+        return;
+      }
+
+      if (sub === 'bhaskaraOut') {
+        const a = 74 * s, b = 98 * s, L = a + b;
+        const ox = cx - L / 2, oy = cy - L / 2 - 12 * s;
+        const p = (x, y) => pt(ox + x, oy + y);
+        const corners = [p(0, 0), p(0, L), p(L, L), p(L, 0)];
+        ppoly(corners, 'rgba(251,191,36,0.18)', PCOL.gold, 3.0, 0, 'area aux');
+
+        const parts = [
+          { o: p(0, 0), u: pt(0, a), v: pt(b, 0), dst: p(a, 0), theta: 0 },
+          { o: p(0, L), u: pt(a, 0), v: pt(0, -b), dst: p(0, L), theta: 0 },
+          { o: p(L, L), u: pt(0, -a), v: pt(-b, 0), dst: p(a, a), theta: -Math.PI / 2 },
+          { o: p(L, 0), u: pt(-a, 0), v: pt(0, b), dst: p(L, a), theta: Math.PI / 2 }
+        ];
+        parts.forEach((part, i) => {
+          const angle = part.theta * t, ca = Math.cos(angle), sa = Math.sin(angle);
+          const center = lerp(part.o, part.dst, t);
+          const apply = (v) => pt(center.x + v.x * ca - v.y * sa, center.y + v.x * sa + v.y * ca);
+          const tri = [center, apply(part.u), apply(part.v)];
+          ppoly(
+            tri,
+            ['rgba(56,189,248,0.44)', 'rgba(52,211,153,0.44)', 'rgba(244,114,182,0.42)', 'rgba(56,189,248,0.44)'][i],
+            [PCOL.cyan, PCOL.green, PCOL.pink, PCOL.cyan][i],
+            2.4,
+            1
+          );
+          // [표시 보강] 직각 표시는 모든 렌즈에서 보이게(원본은 '직각' 렌즈에서만), 합동 삼각형의 두 예각: ● (u쪽 끝) · × (v쪽 끝) — 해설의 '● + × = 90°'
+          pright(tri[0], tri[1], tri[2], 10, PCOL.gold);
+          pangle(tri[1], tri[0], tri[2], PCOL.cyan, 17, 1, '●');
+          pangle(tri[2], tri[0], tri[1], PCOL.pink, 17, 2, '×');
+        });
+        if (t < 0.15) { // 가운데 사각형의 네 각은 180° - (● + ×) = 90°
+          const qs = [p(0, a), p(b, 0), p(L, b), p(a, L)];
+          qs.forEach((q0, i) => pright(q0, qs[(i + 1) % 4], qs[(i + 3) % 4], 10, PCOL.gold));
+        }
+
+        if (t < 0.15) {
+          ptag(cx, oy + L / 2 + 4, '가운데 정사각형 c² = 100', PCOL.gold, 14);
+        } else if (t > 0.85) {
+          ptag(ox + a / 2, oy + a / 2 + 4, 'a² = 36', PCOL.gold, 13.5);
+          ptag(ox + a + b / 2, oy + a + b / 2 + 4, 'b² = 64', PCOL.gold, 14);
+        }
+
+        drawBottomTapeBanner(rect, '조비산경 외접 정사각형(14²=196) = 직각삼각형 4개(96) + 빈 공간(c² = a²+b² = 100)', [
+          { text: '삼각형 4개 합 (4×24 = 96)', weight: 96 / 196, color: PCOL.cyan },
+          { text: '빈 공간 c² = a²(36)+b²(64) = 100', weight: 100 / 196, color: PCOL.gold }
+        ]);
+        return;
+      }
+
+      if (sub === 'bhaskaraIn') {
+        const L = 162 * s;
+        const ox = cx - L / 2, oy = cy - L / 2 - 12 * s;
+        const A = pt(ox, oy), B = pt(ox, oy + L), C = pt(ox + L, oy + L), D = pt(ox + L, oy);
+        const P = pt(A.x + 0.6 * L * 0.8, A.y + 0.6 * L * 0.6);
+        const Q = pt(B.x + 0.6 * L * 0.6, B.y - 0.6 * L * 0.8);
+        const R = pt(C.x - 0.6 * L * 0.8, C.y - 0.6 * L * 0.6);
+        const S = pt(D.x - 0.6 * L * 0.6, D.y + 0.6 * L * 0.8);
+
+        ppoly([A, B, C, D], 'rgba(251, 191, 36, 0.45)', PCOL.gold, 3.4, 1);
+        ppoly([A, B, P], 'rgba(56, 189, 248, 0.36)', PCOL.cyan, 2.6, 0);
+        ppoly([B, C, Q], 'rgba(52, 211, 153, 0.36)', PCOL.green, 2.6, 0);
+        ppoly([C, D, R], 'rgba(56, 189, 248, 0.36)', PCOL.cyan, 2.6, 0);
+        ppoly([D, A, S], 'rgba(52, 211, 153, 0.36)', PCOL.green, 2.6, 0);
+        pright(P, A, B, 10, PCOL.gold);
+        pright(Q, B, C, 10, PCOL.gold);
+        pright(R, C, D, 10, PCOL.gold); pright(S, D, A, 10, PCOL.gold); // [표시 보강] 네 직각삼각형 모두의 직각
+
+        [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, pt(cx, oy + L / 2)));
+        ptag(cx, oy + L / 2 + 4, '(b-a)²=2²=4', PCOL.gold, 12.5);
+
+        drawBottomTapeBanner(rect, '바스카라 내접 정사각형 c²(100) = 직각삼각형 4개(96) + 가운데 구멍 (8-6)²(4)', [
+          { text: '직각삼각형 4개 합 (4×24 = 96)', weight: 92 / 100, color: PCOL.cyan },
+          { text: '(b-a)²=4', weight: 8 / 100, color: PCOL.gold }
+        ]);
+        return;
+      }
+
+      if (sub === 'garfield') {
+        const a = 74 * s, b = 98 * s;
+        const C = pt(cx - (a + b) / 2, cy + 55 * s);
+        const E = pt(C.x + b, C.y);
+        const D = pt(C.x + b + a, C.y);
+        const B = pt(C.x, C.y - a);
+        const A = pt(D.x, D.y - b);
+
+        ppoly([B, C, E], 'rgba(56, 189, 248, 0.32)', PCOL.cyan, 3.0, 0);
+        ppoly([E, D, A], 'rgba(52, 211, 153, 0.32)', PCOL.green, 3.0, 0);
+        ppoly([B, E, A], 'rgba(251, 191, 36, 0.40)', PCOL.gold, 3.4, 1);
+
+        pright(C, B, E, 12, PCOL.cyan);
+        pright(D, A, E, 12, PCOL.green);
+        pright(E, B, A, 14, PCOL.gold);
+
+        pangle(E, B, C, PCOL.cyan, 25, 1, '●');
+        pangle(E, A, D, PCOL.pink, 25, 2, '×');
+        // [표시 보강] 같은 각은 같은 표시: ∠BEC = ∠DAE (●), ∠AED = ∠CBE (×) — 합동인 두 직각삼각형, 그리고 같은 길이 눈금
+        pangle(A, D, E, PCOL.cyan, 25, 1, '●');
+        pangle(B, C, E, PCOL.pink, 25, 2, '×');
+        ptick(B, C, 1, PCOL.cyan); ptick(E, D, 1, PCOL.green);
+        ptick(C, E, 2, PCOL.cyan); ptick(D, A, 2, PCOL.green);
+        ptick(B, E, 3, PCOL.gold); ptick(E, A, 3, PCOL.gold);
+
+        pdot(A, 'A', PCOL.green, null, { x: 10, y: -8 });
+        pdot(B, 'B', PCOL.cyan, null, { x: -16, y: -8 });
+        pdot(C, 'C(90°)', PCOL.white, null, { x: -18, y: 18 });
+        pdot(E, 'E(∠AEB=90°)', PCOL.gold, null, { x: -20, y: 22 });
+        pdot(D, 'D(90°)', PCOL.white, null, { x: 8, y: 18 });
+
+        ptag((B.x + A.x + E.x) / 3, (B.y + A.y + E.y) / 3 + 6, '½c² = 50', PCOL.gold, 13.5);
+        drawBottomTapeBanner(rect, '가필드 사다리꼴 넓이(98) = 양옆 직각삼각형 2개(24+24=48) + 가운데 직각이등변(½c²=50)', [
+          { text: '△BCE (24)', weight: 24 / 98, color: PCOL.cyan },
+          { text: '△EDA (24)', weight: 24 / 98, color: PCOL.green },
+          { text: '가운데 직각이등변 ½c² = 50', weight: 50 / 98, color: PCOL.gold }
+        ]);
+        return;
+      }
+
+      // simProof — [2.0 수정] 해설은 AB=12, AC=16, BC=20(AB²=144, AC²=256)인데 원본 그림은 15·20·25로 적혀 있었습니다 → 해설 수치(12·16·20 = 15·20·25의 0.8배)로 그림
+      renderMode7CowFormulas(rect, cx, cy, true);
+    }
+
+    // =========================================================================
+    // [탭 3 렌더링] 피타고라스 수 4대 족보 & (3, 4, x) 함정 반례
+    // =========================================================================
+    function renderMode3Triples(rect, cx, cy) {
+      const sub = state.subType[3];
+      const s = state.scale * 1.02;
+
+      if (sub === 'trap34x') {
+        const L_C = pt(cx - 95 * s, cy + 48 * s), L_B = pt(cx - 205 * s, cy + 48 * s), L_A = pt(cx - 95 * s, cy - 36 * s);
+        ppoly([L_A, L_B, L_C], 'rgba(52, 211, 153, 0.28)', PCOL.green, 3.2, 0);
+        pright(L_C, L_A, L_B, 12, PCOL.green);
+        ptag((L_B.x + L_C.x) / 2, L_C.y + 20, '4', PCOL.white);
+        ptag(L_C.x + 14, (L_A.y + L_C.y) / 2, '3', PCOL.white);
+        ptagAt(mid(L_A, L_B), '빗변 x = 5 (x²=25)', PCOL.green, 13, 'right', -8, -8); // [2.0] 변 바깥쪽에
+        ptag(cx - 150 * s, cy - 68 * s, '[경우 1] x가 빗변일 때 (x² = 25)', PCOL.green, 13);
+
+        // [2.0 수정] 경우 2는 직각변 3과 x=√7(<3), 빗변 4 → 원본 그림은 x 쪽이 3보다 길고 빗변이 4보다 길어(100px) 해설과 어긋났습니다. 3:√7:4 비율로
+        const R_C = pt(cx + 95 * s, cy + 48 * s), R_B = pt(cx + 95 * s, cy - 36 * s), R_A = pt(cx + (95 + 84 * Math.sqrt(7) / 3) * s, cy + 48 * s);
+        ppoly([R_A, R_B, R_C], 'rgba(244, 63, 94, 0.28)', PCOL.red, 3.2, 1);
+        pline(R_A, R_B, PCOL.gold, 4.2, [], true, 1);
+        pright(R_C, R_B, R_A, 12, PCOL.red);
+        ptag(R_C.x - 16, (R_B.y + R_C.y) / 2, '3', PCOL.white);
+        ptag((R_C.x + R_A.x) / 2, R_C.y + 20, '직각변 x² = 4²-3² = 7!', PCOL.red, 13);
+        ptagAt(mid(R_A, R_B), '빗변 = 4', PCOL.gold, 13.5, 'left', 10, -6);
+        ptag(cx + 145 * s, cy - 68 * s, '[경우 2] 4가 빗변일 때! (x² = 7)', PCOL.red, 13);
+
+        drawBottomTapeBanner(rect, '⚠️ 세 변이 (3, 4, x)일 때: ① x가 빗변이면 x²=25  |  ② 4가 빗변이면 x²=4²-3²=7 (총 2가지!)');
+        return;
+      }
+
+      const fam = getActiveTriple();
+      const k = state.multK;
+      const a = fam.a * k, b = fam.b * k, c = fam.c * k;
+      const visScale = (0.76 + 0.07 * k) * s;
+      // [2.0 수정] 원본은 세로에 32px를 더해 3:4:5가 거의 직각이등변삼각형으로 보였습니다 → 짧은 변 : 긴 변 = a : b 그대로
+      const wPx = 190 * visScale, hPx = (fam.a / fam.b) * 190 * visScale;
+
+      const C = pt(cx + wPx / 2, cy + hPx / 2 - 12 * s);
+      const B = pt(cx - wPx / 2, cy + hPx / 2 - 12 * s);
+      const A = pt(cx + wPx / 2, cy - hPx / 2 - 12 * s);
+
+      ppoly([A, B, C], 'rgba(56, 189, 248, 0.24)', PCOL.cyan, 3.6);
+      pline(B, C, PCOL.green, 4.0, [], false, 1);
+      pline(C, A, PCOL.cyan, 4.0, [], false, 0);
+      pline(A, B, PCOL.gold, 4.4, [], true, 2);
+      pright(C, A, B, 14, PCOL.gold);
+
+      if (k > 1) {
+        for (let i = 1; i < k; i++) {
+          const r = i / k;
+          pdot(lerp(B, C, r), '', PCOL.green);
+          pdot(lerp(C, A, r), '', PCOL.cyan);
+          pdot(lerp(B, A, r), '', PCOL.gold);
+        }
+      }
+
+      pdot(A, 'A', PCOL.cyan, null, { x: 10, y: -8 });
+      pdot(B, 'B', PCOL.green, null, { x: -18, y: 16 });
+      pdot(C, 'C(90°)', PCOL.gold, null, { x: 10, y: 16 });
+
+      ptag((B.x + C.x) / 2, C.y + 24, `긴 직각변 b = ${fam.b} × ${k} = ${b}`, PCOL.green, 13.5);
+      // [2.0] 원본은 설계 좌표 오프셋(68·−35)이라 휴대폰에서 글자가 변과 겹침 → 변 바깥쪽에 화면 픽셀 간격으로
+      ptagAt(pt(C.x, (A.y + C.y) / 2), `짧은 변 a = ${fam.a} × ${k} = ${a}`, PCOL.cyan, 13.5, 'left', 12, 4);
+      ptagAt(mid(A, B), `빗변 c = ${fam.c} × ${k} = ${c}`, PCOL.gold, 14.5, 'right', -10, -8);
+
+      drawBottomTapeBanner(rect, `[${fam.label} 가문 × ${k}배] ${a}²(${a*a}) + ${b}²(${b*b}) = ${c}²(${c*c})`, [
+        { text: `a² = ${a * a}`, weight: (a * a) / (c * c), color: PCOL.cyan },
+        { text: `b² = ${b * b}`, weight: (b * b) / (c * c), color: PCOL.green }
+      ]);
+    }
+
+    // =========================================================================
+    // [탭 4 렌더링] 예각·직각·둔각 경첩 판별기 & 삼각형 결정 조건 수직선
+    // [2.0 수정] 원본은 5개 장면을 모두 6·8 경첩(∠C 76°·106° 고정)으로 그려서 '세 변 (5, 6, 7)'·'(4, 5, 7)'·'(3, 4, x)' 장면의
+    //            그림이 제목·해설과 달랐습니다. 장면마다 실제 변의 길이(hingeCalc)로 그리고, 변 길이를 그림에 적습니다.
+    //            (경첩 장면 6·8, 예각 범위 6·8·x 는 원본 그대로, 수직선은 둔각·예각 '범위' 장면에서만 보입니다)
+    // =========================================================================
+    function renderMode4AngleJudge(rect, cx, cy) {
+      const sub = state.subType[4];
+      const s = state.scale * 1.02;
+      const hc = hingeCalc(sub);
+      const degC = hc.deg;
+      const radC = (hc.exact * Math.PI) / 180;
+      const unit = (132 / hc.a) * s; // 아래 변 BC(a)가 132 가 되도록(원본과 같은 크기)
+      const lenB = hc.a * unit, lenA = hc.b * unit;
+      const C = pt(cx - 18 * s, cy + 12 * s);
+      const B = pt(C.x + lenB, C.y);
+      const A0 = pt(C.x, C.y - lenA);
+      const A = pt(C.x + lenA * Math.cos(radC), C.y - lenA * Math.sin(radC));
+      const isHinge = sub === 'hinge';
+      const showBar = sub === 'obtuseRange' || sub === 'acuteRange';
+      const c0 = Math.sqrt(hc.base);
+      const c0Txt = Number.isInteger(c0) ? `${c0}` : `√${hc.base}`;
+      const thirdName = showBar ? 'x' : 'c';
+
+      // 직각 기준선 & 회전 궤적 원호
+      pline(C, A0, 'rgba(255,255,255,0.32)', 1.8, [5, 4]);
+      pline(B, A0, 'rgba(251,191,36,0.45)', 2.0, [5, 4]);
+      // 직각에 가까우면 점 A가 A₀와 겹치므로 이름표는 생략합니다(두 이름이 겹쳐 읽을 수 없었음)
+      // 점 A가 A₀의 오른쪽(예각)이면 이름표를 왼쪽에, 왼쪽(둔각)이면 오른쪽에 놓아 점 A와 겹치지 않게 합니다
+      lensRun('def', () => {
+        BOARD.point(A0, { color: 'rgba(251,191,36,0.75)', r: 5.2 });
+        if (Math.abs(hc.deg - 90) >= 8 && !BOARD.thumb) BOARD.text(A0, `A₀(90° 기준 ${thirdName}=${c0Txt})`, { color: 'rgba(251,191,36,0.75)', size: 12.5, align: A.x > A0.x ? 'right' : 'left', baseline: 'alphabetic', weight: 800, dx: A.x > A0.x ? -10 : 10, dy: -12 });
+      });
+
+      // [2.0] 원본의 ctx.arc 블록 → 호환 함수 parc (같은 호·같은 점선, '보조선' 렌즈 규칙)
+      lensRun('aux', () => parc(C, lenA, -Math.PI * 0.85, -Math.PI * 0.15, 'rgba(255,255,255,0.22)', 1.6, [4, 4]));
+
+      const isRight = Math.abs(degC - 90) < 2;
+      const isAcute = degC < 90;
+      const triCol = isRight ? PCOL.gold : isAcute ? PCOL.cyan : PCOL.red;
+      const fillCol = isRight ? 'rgba(251,191,36,0.26)' : isAcute ? 'rgba(56,189,248,0.24)' : 'rgba(244,63,94,0.24)';
+
+      ppoly([A, B, C], fillCol, triCol, 3.6, 1);
+      if (isRight) pright(C, A, B, 14, PCOL.gold);
+      else pangle(C, B, A, triCol, 26, 1, `${degC}°`);
+
+      pdot(C, `C(${degC}°)`, triCol, null, { x: -20, y: 20 });
+      pdot(B, 'B', PCOL.white, null, { x: 10, y: 18 });
+      if (isHinge) {
+        // 점 A를 끌어 각도를 바꿉니다(원본: 점 A 근처를 마우스로 잡고 돌리기, 45°~140°)
+        BOARD.handle('A', A, {
+          color: isRight ? 'amber' : isAcute ? 'sky' : 'red', label: txt('A(드래그로 각도 조절!)'), dx: -15, dy: -12, align: 'left',
+          drag: (w) => { S.hinge = clampN(Math.round((Math.atan2(C.y - w.y, w.x - C.x) * 180) / Math.PI), 45, 140); }
+        });
+      } else {
+        pdot(A, 'A', triCol, null, { x: -15, y: -12 });
+      }
+
+      // [2.0 수정] 변 길이를 그림에 적습니다: a = BC, b = AC
+      ptag((B.x + C.x) / 2, C.y + 22, `a = ${hc.a}`, PCOL.white, 12.5);
+      {
+        const mx = (A.x + C.x) / 2, my = (A.y + C.y) / 2;
+        let nx = A.y - C.y, ny = C.x - A.x; // AC에 수직인 방향 중 B 반대쪽
+        if (nx * (B.x - C.x) + ny * (B.y - C.y) > 0) { nx = -nx; ny = -ny; }
+        const nl = Math.hypot(nx, ny) || 1;
+        ptag(mx + (nx / nl) * 18, my + (ny / nl) * 18 + 4, `b = ${hc.b}`, PCOL.white, 12.5);
+      }
+
+      const cSq = hc.cSq;
+      const signStr = isRight ? '=' : isAcute ? '<' : '>';
+      ptagAt({ x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 }, `${thirdName}² = ${cSq} ${signStr} ${hc.base}(${hc.b}²+${hc.a}²)`, triCol, 14, 'left', 10, -8);
+
+      // 수직선 범위 시각화 (둔각·예각 '범위' 장면에서만)
+      if (showBar) {
+        const barY = cy + 78 * s;
+        const xL = cx - 175 * s, xR = cx + 175 * s;
+        pline(pt(xL, barY), pt(xR, barY), PCOL.white, 2.5);
+
+        if (sub === 'acuteRange') {
+          const pMin = cx - 95 * s, pMax = cx + 95 * s;
+          ppoly([pt(pMin, barY - 18), pt(pMax, barY - 18), pt(pMax, barY), pt(pMin, barY)], 'rgba(52, 211, 153, 0.34)', PCOL.green, 2.4, 2);
+          pdot(pt(pMin, barY), '√28(≈5.3)', PCOL.pink, null, { x: -20, y: 20 });
+          pdot(pt(pMax, barY), '10(√100)', PCOL.cyan, null, { x: -15, y: 20 });
+          ptag(cx, barY - 26, '예각 공통범위: 28 < x² < 100  ➔  자연수 x = 6, 7, 8, 9 (4개)', PCOL.green, 13);
+        } else {
+          const p5 = cx - 40 * s, p7 = cx + 95 * s;
+          ppoly([pt(p5, barY - 18), pt(p7, barY - 18), pt(p7, barY), pt(p5, barY)], 'rgba(244, 63, 94, 0.35)', PCOL.red, 2.4, 2);
+          pdot(pt(cx - 125 * s, barY), '1(4-3)', PCOL.white, null, { x: -15, y: 20 });
+          pdot(pt(p5, barY), '5(직각 √25)', PCOL.gold, null, { x: -25, y: 20 });
+          pdot(pt((p5 + p7) / 2, barY), 'x=6(둔각 자연수!)', PCOL.green, null, { x: -35, y: -12 });
+          pdot(pt(p7, barY), '7(삼각형 한계 3+4)', PCOL.red, null, { x: -30, y: 20 });
+        }
+      }
+
+      drawBottomTapeBanner(rect, `현재 ∠C = ${degC}°: ${thirdName}²(${cSq}) ${signStr} a²+b²(${hc.base})  |  둔각 필수 범위: √(a²+b²) < ${thirdName} < a+b`);
+    }
+
+    // =========================================================================
+    // [탭 5 렌더링] 겹친 도형 제곱의 합 공식 3총사
+    // =========================================================================
+    function renderMode5SumOfSquares(rect, cx, cy) {
+      const sub = state.subType[5];
+      const s = state.scale * 1.04;
+
+      if (sub === 'rightCross') {
+        const A = pt(cx - 110 * s, cy - 82 * s);
+        const B = pt(cx - 110 * s, cy + 82 * s);
+        const C = pt(cx + 120 * s, cy - 82 * s);
+        const D = lerp(A, B, 0.45 + 0.15 * Math.sin(state.fold * Math.PI));
+        const E = lerp(A, C, 0.48);
+
+        ppoly([A, B, C], 'rgba(255, 255, 255, 0.06)', PCOL.white, 2.6);
+        pright(A, B, C, 14, PCOL.gold);
+
+        pline(D, E, PCOL.cyan, 4.4, [], true, 0, 'area aux');
+        pline(B, C, PCOL.cyan, 4.4, [], true, 0, 'area def');
+        pline(B, E, PCOL.pink, 4.0, [6, 4], true, 1, 'area aux');
+        pline(C, D, PCOL.pink, 4.0, [6, 4], true, 1, 'area aux');
+
+        pdot(A, 'A(90°)', PCOL.gold, null, { x: -22, y: -10 });
+        pdot(B, 'B', PCOL.cyan, null, { x: -18, y: 16 });
+        pdot(C, 'C', PCOL.cyan, null, { x: 10, y: -8 });
+        pdot(D, 'D', PCOL.pink, null, { x: -20, y: 4 });
+        pdot(E, 'E', PCOL.pink, null, { x: -6, y: -12 });
+
+        drawBottomTapeBanner(rect, '직각삼각형 X자 제곱합: DE²(16) + BC²(100) = BE²(64) + CD²(52) = 116', [
+          { text: 'DE²(16) + BC²(100) = 116', weight: 0.5, color: PCOL.cyan },
+          { text: 'BE²(64) + CD²(52) = 116', weight: 0.5, color: PCOL.pink }
+        ]);
+        return;
+      }
+
+      if (sub === 'rectPointP') {
+        const rw = 140 * s, rh = 86 * s;
+        const A = pt(cx - rw, cy - rh), B = pt(cx - rw, cy + rh), C = pt(cx + rw, cy + rh), D = pt(cx + rw, cy - rh);
+        const P = pt(cx + state.customPOffset.dx * s, cy + state.customPOffset.dy * s);
+
+        ppoly([A, B, C, D], 'rgba(52, 211, 153, 0.10)', PCOL.white, 3.0);
+        pright(A, B, D, 11, PCOL.white);
+        pright(B, C, A, 11, PCOL.white);
+        pright(C, D, B, 11, PCOL.white); pright(D, A, C, 11, PCOL.white); // [표시 보강] 직사각형의 네 직각
+
+        pline(pt(cx - rw, P.y), pt(cx + rw, P.y), 'rgba(255,255,255,0.35)', 1.8, [4, 4]);
+        pline(pt(P.x, cy - rh), pt(P.x, cy + rh), 'rgba(255,255,255,0.35)', 1.8, [4, 4]);
+
+        pline(P, A, PCOL.cyan, 4.2, [], true, 0, 'area');
+        pline(P, C, PCOL.cyan, 4.2, [], true, 0, 'area');
+        pline(P, B, PCOL.pink, 4.2, [], true, 1, 'area');
+        pline(P, D, PCOL.pink, 4.2, [], true, 1, 'area');
+
+        const unit = 10 * s;
+        const pa2 = Math.round((dist(P, A) / unit) ** 2);
+        const pb2 = Math.round((dist(P, B) / unit) ** 2);
+        const pc2 = Math.round((dist(P, C) / unit) ** 2);
+        const pd2 = pa2 + pc2 - pb2;
+
+        [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, pt(cx, cy)));
+        // [2.0] 점 P를 끌 수 있는 점(후광)으로: 보이는 화면 안 어디든(직사각형 안팎) 끌 수 있습니다
+        BOARD.handle('P', P, {
+          color: 'amber', label: txt('P(드래그!)'), dx: 12, dy: -10, align: 'left',
+          drag: (w) => {
+            const vb = BOARD.viewBox();
+            S.px = clampN(w.x, vb.x0 + 12, vb.x1 - 12) / s;
+            S.py = clampN(w.y, vb.y0 + 12, vb.y1 - 12) / s;
+          }
+        });
+
+        drawBottomTapeBanner(rect, `실시간 측정: PA²(${pa2}) + PC²(${pc2}) = PB²(${pb2}) + PD²(${pd2}) = ${pa2 + pc2}`, [
+          { text: `PA²(${pa2}) + PC²(${pc2}) = ${pa2 + pc2}`, weight: 0.5, color: PCOL.cyan },
+          { text: `PB²(${pb2}) + PD²(${pd2}) = ${pa2 + pc2}`, weight: 0.5, color: PCOL.pink }
+        ]);
+        return;
+      }
+
+      // orthoQuad, orthoSquares, orthoSemis
+      const isSq = sub === 'orthoSquares', isSemi = sub === 'orthoSemis';
+      const sc = (isSq || isSemi) ? s * 0.68 : s * 0.92;
+      const O = pt(cx, cy - 8 * sc);
+      const unit = (isSemi ? 12.5 : 18.5) * sc;
+      const A = pt(O.x, O.y - (isSemi ? 6 : 3) * unit);
+      const B = pt(O.x - (isSemi ? Math.sqrt(44) : 4) * unit, O.y);
+      const C = pt(O.x, O.y + (isSemi ? 10 : Math.sqrt(33)) * unit);
+      const D = pt(O.x + (isSemi ? 10 : Math.sqrt(31)) * unit, O.y);
+
+      if (isSq) {
+        drawOutwardSquare(A, B, 'rgba(56,189,248,0.26)', PCOL.cyan, 0, 'S₁(25)', -1, 0);
+        drawOutwardSquare(C, D, 'rgba(56,189,248,0.26)', PCOL.cyan, 0, 'S₃(64)', -1, 0);
+        drawOutwardSquare(B, C, 'rgba(251,191,36,0.26)', PCOL.gold, 0, 'S₂(49)', -1, 1);
+        drawOutwardSquare(D, A, 'rgba(251,191,36,0.26)', PCOL.gold, 0, 'S₄(40)', -1, 1);
+      } else if (isSemi) {
+        drawOutwardSemicircle(A, B, 'rgba(56,189,248,0.26)', PCOL.cyan, 'P₁(10π)', true, 0);
+        drawOutwardSemicircle(C, D, 'rgba(56,189,248,0.26)', PCOL.cyan, 'P₃(25π)', true, 0);
+        drawOutwardSemicircle(B, C, 'rgba(251,191,36,0.26)', PCOL.gold, 'P₂(18π)', true, 1);
+        drawOutwardSemicircle(D, A, 'rgba(251,191,36,0.26)', PCOL.gold, 'P₄(17π)', true, 1);
+      }
+
+      ppoly([A, B, C, D], 'rgba(255, 255, 255, 0.08)', PCOL.white, 2.4);
+      pline(A, C, PCOL.white, 2.2, [5, 4]);
+      pline(B, D, PCOL.white, 2.2, [5, 4]);
+      pright(O, A, D, 13, PCOL.gold);
+
+      pline(A, B, PCOL.cyan, 4.4, [], true, 0, 'area');
+      pline(C, D, PCOL.cyan, 4.4, [], true, 0, 'area');
+      pline(B, C, PCOL.gold, 4.4, [], true, 1, 'area');
+      pline(D, A, PCOL.gold, 4.4, [], true, 1, 'area');
+
+      pdot(O, 'O(90°)', PCOL.gold, null, { x: 10, y: 16 });
+      [A, B, C, D].forEach((p, i) => pdot(p, 'ABCD'[i], PCOL.white, O));
+
+      drawBottomTapeBanner(
+        rect,
+        isSemi
+          ? 'AC⊥BD 반원 넓이 합: P₁(10π) + P₃(25π) = P₂(18π) + P₄(17π) = 35π'
+          : 'AC⊥BD 마주보는 변 제곱합: AB²(25) + CD²(64) = BC²(49) + DA²(40) = 89',
+        [
+          { text: isSemi ? 'P₁ + P₃ = 35π' : 'AB²(25) + CD²(64) = 89', weight: 0.5, color: PCOL.cyan },
+          { text: isSemi ? 'P₂ + P₄ = 35π' : 'BC²(49) + DA²(40) = 89', weight: 0.5, color: PCOL.gold }
+        ]
+      );
+    }
+
+    // =========================================================================
+    // [탭 6 렌더링] 정삼각형 · 반원 · 히포크라테스의 초승달 넓이
+    // =========================================================================
+    function renderMode6LunesAndShapes(rect, cx, cy) {
+      const sub = state.subType[6];
+      const s = state.scale * 0.94;
+      const fam = getActiveTriple();
+      const k = state.multK;
+      const a = fam.a * k, b = fam.b * k, c = fam.c * k;
+
+      const isIso = sub === 'isoLune';
+      const B = pt(cx - 102 * s, cy + 32 * s), C = pt(cx + 102 * s, cy + 32 * s);
+      // [2.0 수정] 원본은 족보를 골라도 삼각형이 늘 3:4:5 모양 → 고른 족보 비율로 직각 꼭짓점 A를 놓습니다(3:4:5이면 원본과 같은 위치)
+      const A = isIso ? pt(cx, cy - 70 * s) : rightApex(B, C, fam);
+
+      if (sub === 'equilateral') {
+        drawOutwardEquilateral(B, A, 'rgba(56,189,248,0.28)', PCOL.cyan, 'S₁ = 12', 1, 0);
+        drawOutwardEquilateral(A, C, 'rgba(52,211,153,0.28)', PCOL.green, 'S₂ = 20', 1, 1);
+        drawOutwardEquilateral(C, B, 'rgba(251,191,36,0.28)', PCOL.gold, 'S₃ = S₁+S₂ = 32', 1, 2);
+      } else if (sub === 'semicircles' || sub === 'findHypSemi') {
+        drawOutwardSemicircle(B, A, 'rgba(56,189,248,0.28)', PCOL.cyan, sub === 'findHypSemi' ? 'S₁' : `S₁=${(a*a)/2}π`, false, 0);
+        drawOutwardSemicircle(A, C, 'rgba(52,211,153,0.28)', PCOL.green, sub === 'findHypSemi' ? 'S₂ (S₁+S₂=18π)' : `S₂=${(b*b)/2}π`, false, 1);
+        drawOutwardSemicircle(C, B, 'rgba(251,191,36,0.28)', PCOL.gold, sub === 'findHypSemi' ? 'S₃=18π ➔ r=6, 빗변 2r=12!' : `S₃=${(c*c)/2}π`, false, 2);
+      } else {
+        // hippoLune & isoLune
+        const mBC = mid(B, C), rBC = dist(B, C) / 2;
+        const folded = state.fold >= 0.35;
+        // [2.0 수정] 원본은 접어 올린 큰 반원을 배경색(#0c221b)으로 덧칠해 두 작은 반원의 겹친 부분을 지웠는데, 테마(칠판·종이)가 바뀌면 덧칠이 보입니다.
+        //            같은 모양을 '큰 반원 바깥만 그리기(clip)'로 만듭니다(초승달 두 개만 남음).
+        const c2 = BOARD.ctx;
+        c2.save();
+        if (folded) {
+          const bp = arcPts(mBC, rBC, Math.PI, 0, false).map((p) => BOARD.toS(p));
+          c2.beginPath();
+          c2.rect(0, 0, BOARD.W, BOARD.H);
+          bp.forEach((p, i) => (i ? c2.lineTo(p.x, p.y) : c2.moveTo(p.x, p.y)));
+          c2.closePath();
+          c2.clip('evenodd');
+        }
+        drawOutwardSemicircle(B, A, 'rgba(251, 191, 36, 0.62)', PCOL.gold, '', false, 0);
+        drawOutwardSemicircle(A, C, isIso && state.activePartIdx === 2 ? 'rgba(251, 191, 36, 0.18)' : 'rgba(251, 191, 36, 0.62)', PCOL.gold, '', false, 0);
+        c2.restore();
+
+        if (!folded) {
+          drawOutwardSemicircle(C, B, 'rgba(56, 189, 248, 0.28)', PCOL.cyan, '큰 반원 S₃ (= S₁+S₂)', false, 1, 'aux');
+        } else {
+          // 위로 접어 올린 큰 반원: 점선 테두리만(원본의 ctx.arc 블록 → 무대 호출)
+          lensRun('aux', (sfx) => BOARD.poly(arcPts(mBC, rBC, Math.PI, 0, false), { fill: null, color: PCOL.cyan, stroke: true, width: sfx.hi ? 4.2 : 2.6, dash: [5, 4], glow: sfx.hi, part: 1 }));
+        }
+
+        drawMiniOverlayBox(rect, '🌙 히포크라테스 초승달 소거식', [
+          { txt: '전체 = S₁ + S₂ + △ABC', col: '#fef08a' },
+          { txt: '빼기 = - S₃ (위로 접은 큰 반원)', col: '#38bdf8' },
+          { txt: 'S₁ + S₂ = S₃ 이므로 반원 소멸!', col: '#f43f5e' },
+          { txt: `∴ 초승달 합 = △ABC = ${isIso ? 32 : (a*b)/2}`, col: '#34d399' }
+        ]);
+      }
+
+      const isLune = sub === 'hippoLune' || sub === 'isoLune';
+      ppoly([A, B, C], isLune ? 'rgba(52, 211, 153, 0.44)' : 'rgba(255, 255, 255, 0.14)', PCOL.green, 3.4, 2);
+      pright(A, B, C, 13, PCOL.gold);
+      if (isIso) { // [표시 보강] 직각이등변삼각형: AB = AC (눈금), 두 밑각은 같은 45°
+        ptick(A, B, 2, PCOL.green); ptick(A, C, 2, PCOL.green);
+        pangle(B, C, A, PCOL.green, 26, 1, '45°');
+        pangle(C, B, A, PCOL.green, 26, 1, '45°');
+      }
+      if (isLune) {
+        ptag((A.x + B.x + C.x) / 3, (A.y + B.y + C.y) / 3 + 12, isIso ? '△ABC = 32 (1개=16)' : `△ABC 넓이 = ${(a * b) / 2}`, PCOL.green, 13.5, 'area');
+      }
+
+      pdot(A, 'A(90°)', PCOL.gold, null, { x: -12, y: -14 });
+      pdot(B, 'B', PCOL.cyan, null, { x: -18, y: 16 });
+      pdot(C, 'C', PCOL.green, null, { x: 10, y: 16 });
+
+      drawBottomTapeBanner(
+        rect,
+        isLune
+          ? `히포크라테스 초승달: (S₁ + S₂ + △ABC) - S₃ = △ABC 넓이(${isIso ? 32 : (a * b) / 2}) — 원주율 π가 완전히 사라집니다!`
+          : '직각삼각형 세 변 위의 모든 닮은 도형(정사각형·정삼각형·반원)은 S₁ + S₂ = S₃가 성립합니다!'
+      );
+    }
+
+    // =========================================================================
+    // [탭 7 렌더링] 직각삼각형 빗변 수선 & 소(牛) 공식 4형제
+    // =========================================================================
+    // [2.0 수정] simProof=true: 탭 2 '수선 닮음 증명' 장면용. 원본은 탭 7의 수치(15·20·25 × k)와 탭 7의 마지막 장면(subType[7])을 그대로 가져와
+    //            해설(AB²=144, AC²=256, BH=7.2, CH=12.8)과 다른 숫자가 적히고 이전 장면의 강조선이 새어 들어왔습니다.
+    function renderMode7CowFormulas(rect, cx, cy, simProof = false) {
+      const sub = simProof ? 'simProof' : state.subType[7];
+      const s = state.scale * 1.05;
+      const k = simProof ? 0.8 : state.multK;
+      const R2 = (v) => Math.round(v * 100) / 100;
+      const AB = R2(15 * k), AC = R2(20 * k), BC = R2(25 * k), BH = R2(9 * k), CH = R2(16 * k), AH = R2(12 * k);
+
+      const B = pt(cx - 145 * s, cy + 48 * s);
+      const C = pt(cx + 145 * s, cy + 48 * s);
+      const H = pt(cx - 145 * s + 104.4 * s, cy + 48 * s);
+      const A = pt(H.x, cy + 48 * s - 139.2 * s);
+
+      ppoly([A, B, H], 'rgba(56, 189, 248, 0.16)', PCOL.cyan, 2.4, 0, 'area aux');
+      ppoly([A, H, C], 'rgba(52, 211, 153, 0.16)', PCOL.green, 2.4, 1, 'area aux');
+      pline(A, B, PCOL.white, 3.2);
+      pline(A, C, PCOL.white, 3.2);
+      pline(B, C, PCOL.white, 3.2);
+      pline(A, H, PCOL.white, 2.8, [5, 4]);
+
+      pright(A, B, C, 14, PCOL.gold);
+      pright(H, A, B, 12, PCOL.cyan);
+      pright(H, A, C, 12, PCOL.green);
+
+      // [표시 보강] 같은 각은 같은 표시·같은 값: ∠B = ∠HAC (●), ∠C = ∠BAH (×) — 그림에서 잰 각도(● + × = 90°)
+      const degB = angDeg(B, A, C), degC = angDeg(C, A, B);
+      pangle(B, A, C, PCOL.cyan, 28, 1, `●${degB}`, 'def aux');
+      pangle(C, A, B, PCOL.pink, 30, 2, `×${degC}`, 'def aux');
+      pangle(A, B, H, PCOL.pink, 28, 2, `×${degC}`, 'def aux');
+      pangle(A, H, C, PCOL.cyan, 32, 1, `●${degB}`, 'def aux');
+
+      let focusIdx = state.activePartIdx;
+      if (focusIdx === -1) {
+        if (sub === 'leftWing') focusIdx = 0;
+        else if (sub === 'rightWing') focusIdx = 1;
+        else if (sub === 'centerPillar') focusIdx = 2;
+        else if (sub === 'cowArea') focusIdx = 3;
+      }
+
+      if (focusIdx === 0) {
+        pline(A, B, PCOL.gold, 5.2, [], true);
+        pline(B, H, PCOL.cyan, 4.8, [], true);
+        pline(pt(B.x, B.y + 18), pt(C.x, C.y + 18), PCOL.pink, 4.0, [], true);
+      } else if (focusIdx === 1) {
+        pline(A, C, PCOL.gold, 5.2, [], true);
+        pline(H, C, PCOL.green, 4.8, [], true);
+        pline(pt(B.x, B.y + 18), pt(C.x, C.y + 18), PCOL.pink, 4.0, [], true);
+      } else if (focusIdx === 2) {
+        pline(A, H, PCOL.gold, 5.2, [], true);
+        pline(B, H, PCOL.cyan, 4.8, [], true);
+        pline(H, C, PCOL.green, 4.8, [], true);
+      } else if (focusIdx === 3) {
+        pline(A, B, PCOL.cyan, 4.8, [], true);
+        pline(A, C, PCOL.cyan, 4.8, [], true);
+        pline(B, C, PCOL.gold, 4.8, [], true);
+        pline(A, H, PCOL.gold, 4.8, [], true);
+      }
+
+      pdot(A, 'A(90°)', PCOL.gold, null, { x: 0, y: -14 });
+      pdot(B, 'B', PCOL.cyan, null, { x: -18, y: 16 });
+      pdot(C, 'C', PCOL.green, null, { x: 10, y: 16 });
+      pdot(H, 'H(수선의 발)', PCOL.gold, null, { x: -20, y: 34 });
+
+      ptag((A.x + B.x) / 2 - 28, (A.y + B.y) / 2 - 8, `AB = ${AB}`, PCOL.cyan);
+      ptag((A.x + C.x) / 2 + 28, (A.y + C.y) / 2 - 8, `AC = ${AC}`, PCOL.green);
+      ptag(H.x + 34, (A.y + H.y) / 2, `AH = ${AH}`, PCOL.gold);
+      // [표시 보강] 밑변 B·C 의 각도 값(●53° · ×37°)과 겹치지 않게 BH·CH 이름표를 밑변 아래로
+      ptag((B.x + H.x) / 2, B.y + 36, `BH = ${BH}`, PCOL.cyan);
+      ptag((H.x + C.x) / 2, C.y + 36, `CH = ${CH}`, PCOL.green);
+
+      drawMiniOverlayBox(rect, '👑 3개 AA 닮음 삼각형 (3:4:5)', [
+        { txt: `큰 △ABC : (${AB}, ${AC}, ${BC})`, col: '#fef08a' },
+        { txt: `왼 △HBA : (${BH}, ${AH}, ${AB})`, col: '#38bdf8' },
+        { txt: `오 △HAC : (${AH}, ${CH}, ${AC})`, col: '#34d399' }
+      ], 'aux');
+
+      drawBottomTapeBanner(rect, `① AB²=BH·BC(${R2(AB*AB)}) | ② AC²=CH·CB(${R2(AC*AC)}) | ③ AH²=BH·CH(${R2(AH*AH)}) | ④ AB·AC=BC·AH(${R2(AB*AC)})`, [
+        { text: `BH = ${BH} (AB²=${BH}×${BC})`, weight: 9 / 25, color: PCOL.cyan },
+        { text: `CH = ${CH} (AC²=${CH}×${BC})`, weight: 16 / 25, color: PCOL.green }
+      ]);
+    }
+
+    // =========================================================================
+    // [탭 8 렌더링] 종이접기 & 최단거리 응용
+    // =========================================================================
+    function renderMode8Applied(rect, cx, cy) {
+      const sub = state.subType[8];
+      const s = state.scale * 1.02;
+
+      if (sub === 'rectFold') {
+        const u = 21 * s;
+        const A = pt(cx - 5 * u, cy - 4 * u - 10 * s), B = pt(cx - 5 * u, cy + 4 * u - 10 * s);
+        const C = pt(cx + 5 * u, cy + 4 * u - 10 * s), D = pt(cx + 5 * u, cy - 4 * u - 10 * s);
+        const E = pt(B.x + 6 * u, B.y);
+        const F = pt(C.x, C.y - 3 * u);
+
+        ppoly([A, B, C, D], 'rgba(255,255,255,0.05)', 'rgba(148,163,184,0.45)', 2.0);
+        ppoly([A, B, E], 'rgba(56, 189, 248, 0.28)', PCOL.cyan, 3.2, 0);
+        ppoly([F, C, E], 'rgba(244, 114, 182, 0.32)', PCOL.pink, 3.2, 2);
+
+        // [2.0 수정] 원본은 0%일 때 이미 접힌 모양(D=E)이라 '0%→접기'가 처음에 튀었습니다 → 0% = 접기 전(D), 100% = 접은 뒤(E). 장면은 접은 뒤(100%)로 시작(원본 첫 화면과 같음)
+        const curD = lerp(D, E, state.fold);
+        ppoly([A, curD, F], 'rgba(251, 191, 36, 0.30)', PCOL.gold, 3.4, 1);
+
+        pline(A, F, PCOL.gold, 3.2, [5, 4]);
+        pright(B, A, E, 12, PCOL.cyan);
+        pright(C, F, E, 12, PCOL.pink);
+        pright(E, A, F, 12, PCOL.gold);
+        ptick(F, D, 1, PCOL.gold);
+        ptick(F, E, 1, PCOL.gold);
+        // [표시 보강] 접기: AE = AD (눈금 ||), 같은 각 ∠BAE = ∠CEF (●), ∠AEB = ∠EFC (×) — E 에서 ● + 90° + × = 180°
+        ptick(A, D, 2, PCOL.gold); ptick(A, E, 2, PCOL.gold);
+        pangle(A, B, E, PCOL.cyan, 28, 1, `●${angDeg(A, B, E)}`);
+        pangle(E, C, F, PCOL.cyan, 26, 1, `●${angDeg(A, B, E)}`);
+        pangle(E, B, A, PCOL.pink, 24, 2, `×${angDeg(E, B, A)}`);
+        pangle(F, E, C, PCOL.pink, 24, 2, `×${angDeg(E, B, A)}`);
+
+        pdot(A, 'A', PCOL.white, null, { x: -16, y: -8 });
+        pdot(B, 'B(90°)', PCOL.cyan, null, { x: -22, y: 18 });
+        pdot(C, 'C(90°)', PCOL.pink, null, { x: 8, y: 18 });
+        pdot(D, 'D(접기 전)', PCOL.white, null, { x: 8, y: -8 });
+        pdot(E, 'E(접힌 D)', PCOL.gold, null, { x: -20, y: 40 }); // [2.0] 아래 'EC = 4' 이름표와 겹치지 않게 한 줄 아래로
+        pdot(F, 'F', PCOL.gold, null, { x: 10, y: 4 });
+
+        ptag(cx, A.y - 12, 'AD = 10', PCOL.white);
+        ptag(B.x - 28, (A.y + B.y) / 2, 'AB = 8', PCOL.cyan);
+        ptag((A.x + E.x) / 2 + 12, (A.y + E.y) / 2 - 8, 'AE = AD = 10', PCOL.gold);
+        ptag((B.x + E.x) / 2, B.y + 20, '① BE = 6', PCOL.cyan);
+        ptag((E.x + C.x) / 2, C.y + 20, 'EC = 4', PCOL.pink);
+        ptag(C.x + 38, (F.y + C.y) / 2, 'CF = 8-x(3)', PCOL.pink);
+        ptag((E.x + F.x) / 2 - 20, (E.y + F.y) / 2 - 8, '② EF = x(5)', PCOL.gold);
+
+        drawBottomTapeBanner(rect, '1단계 △ABE(6-8-10)에서 BE=6 ➔ EC=4  |  2단계 △FCE(3-4-5)에서 x²=(8-x)²+4² ➔ EF(x)=5!', [
+          { text: '① BE = 6 (△ABE: 6-8-10)', weight: 0.6, color: PCOL.cyan },
+          { text: '② EC = 4 (△FCE: 3-4-5)', weight: 0.4, color: PCOL.pink }
+        ]);
+        return;
+      }
+
+      if (sub === 'triFold') {
+        const u = 21 * s;
+        const C = pt(cx - 3 * u, cy + 3.2 * u - 10 * s);
+        const B = pt(C.x + 8 * u, C.y);
+        const A = pt(C.x, C.y - 6 * u);
+        const D = pt(C.x + (7 / 4) * u, C.y);
+        const E = mid(A, B);
+
+        ppoly([A, C, B], 'rgba(255,255,255,0.06)', 'rgba(148,163,184,0.45)', 2.2);
+        ppoly([A, C, D], 'rgba(244, 114, 182, 0.32)', PCOL.pink, 3.2, 1);
+        ppoly([A, D, E], 'rgba(251, 191, 36, 0.30)', PCOL.gold, 3.0, 0);
+        // [2.0 수정] 원본은 '꼭짓점 B를 A에 포개어 접기' 버튼과 슬라이더가 있었지만 그림이 움직이지 않았습니다 → 접는 선 DE를 축으로 B가 A에 포개지도록(0%: 접기 전 B, 100%: A에 포개짐)
+        const Bt = pt(E.x + (B.x - E.x) * Math.cos(Math.PI * state.fold), E.y + (B.y - E.y) * Math.cos(Math.PI * state.fold));
+        ppoly([Bt, D, E], 'rgba(56, 189, 248, 0.20)', PCOL.cyan, 2.4, 0);
+
+        pright(C, A, D, 12, PCOL.pink);
+        pright(E, D, B, 12, PCOL.gold);
+        ptick(A, D, 1, PCOL.gold);
+        ptick(Bt, D, 1, PCOL.gold);
+        ptick(A, E, 2, PCOL.gold); ptick(E, B, 2, PCOL.gold); // [표시 보강] E 는 빗변의 중점: AE = EB
+
+        pdot(A, 'A', PCOL.gold, null, { x: -16, y: -8 });
+        pdot(B, 'B(접기 전)', PCOL.cyan, null, { x: 10, y: 16 });
+        pdot(C, 'C(90°)', PCOL.pink, null, { x: -22, y: 18 });
+        pdot(D, 'D', PCOL.gold, null, { x: -6, y: 22 });
+        pdot(E, 'E(빗변 중점)', PCOL.gold, null, { x: 12, y: -8 });
+
+        ptagAt(mid(A, C), 'AC = 6', PCOL.pink, 13, 'right', -10, 4); // [2.0] 'AD = x'와 겹치지 않게 변 바깥쪽에
+        ptag((C.x + D.x) / 2 - 10, C.y + 38, 'CD = 8-x', PCOL.pink);
+        ptag((D.x + B.x) / 2 + 10, B.y + 20, 'BD = x (25/4)', PCOL.cyan);
+        ptagAt(mid(A, D), 'AD = x', PCOL.gold, 13, 'left', 12, 0);
+
+        drawBottomTapeBanner(rect, '빗변 수직이등분 접기: AD = BD = x ➔ △ACD에서 x² = (8-x)² + 6² ➔ x = 25/4 (6.25)');
+        return;
+      }
+
+      if (sub === 'reflection') {
+        const yLine = cy + 8 * s;
+        pline(pt(cx - 205 * s, yLine), pt(cx + 205 * s, yLine), PCOL.cyan, 2.8);
+        const H1 = pt(cx - 115 * s, yLine), H2 = pt(cx + 115 * s, yLine);
+        const A = pt(H1.x, yLine - 56 * s);
+        const B = pt(H2.x, yLine - 112 * s);
+        const B_ref = pt(H2.x, yLine + 112 * s);
+        const K_pt = pt(H1.x, B_ref.y);
+
+        const P = pt(lerp(H1, H2, state.reflectPx).x, yLine);
+
+        ppoly([A, K_pt, B_ref], 'rgba(251, 191, 36, 0.16)', PCOL.gold, 2.2, 1, 'area aux');
+        pright(K_pt, A, B_ref, 12, PCOL.gold);
+
+        pline(A, H1, PCOL.white, 2.0, [4, 4]);
+        pline(B, B_ref, PCOL.pink, 2.2, [5, 4]);
+        pright(H2, B, H1, 11, PCOL.pink);
+        pline(A, B_ref, 'rgba(52, 211, 153, 0.55)', 2.4, [5, 4], false, 2);
+
+        pline(A, P, PCOL.gold, 4.0, [], true, 0);
+        pline(P, B, PCOL.cyan, 3.6, [], false, 0);
+        pline(P, B_ref, PCOL.gold, 4.0, [], true, 0);
+        // [표시 보강] 대칭: BH = B'H (눈금 ||), PB = PB' (눈금 |), 점 A 에서 직선 l 에 내린 수선의 발 H₁ 의 직각
+        pright(H1, A, H2, 11, PCOL.white);
+        ptick(B, H2, 2, PCOL.pink); ptick(H2, B_ref, 2, PCOL.pink);
+        ptick(P, B, 1, PCOL.white); ptick(P, B_ref, 1, PCOL.white);
+
+        pdot(A, 'A(높이 3)', PCOL.white, null, { x: -20, y: -10 });
+        pdot(B, 'B(높이 6)', PCOL.cyan, null, { x: 10, y: -8 });
+        pdot(B_ref, "B'(대칭점, 깊이 6)", PCOL.gold, null, { x: 10, y: 14 });
+        // [2.0] 점 P를 끌 수 있는 점(후광)으로: 직선 l 위에서 좌우로
+        BOARD.handle('P', P, {
+          color: 'amber', label: txt('P(좌우 드래그!)'), dx: -10, dy: -14, align: 'left',
+          drag: (w) => { S.rp = clampN((w.x - H1.x) / (H2.x - H1.x), 0.05, 0.95); }
+        });
+        pdot(K_pt, 'K(90°)', PCOL.gold, null, { x: -25, y: 14 });
+
+        const curDist = (Math.hypot(12 * state.reflectPx, 3) + Math.hypot(12 * (1 - state.reflectPx), 6)).toFixed(2);
+        ptag((K_pt.x + B_ref.x) / 2, B_ref.y + 20, '가로 거리 = 12 cm', PCOL.gold, 13, 'aux');
+        ptag(K_pt.x - 48, (A.y + K_pt.y) / 2, '세로 합 = 3+6 = 9', PCOL.gold, 13, 'aux');
+
+        drawBottomTapeBanner(rect, `현재 AP + PB = ${curDist} cm  |  일직선 최솟값 AB' = √(12² + (3+6)²) = 15.00 cm!`, [
+          { text: '가로 = 12 (12²=144)', weight: 144 / 225, color: PCOL.cyan },
+          { text: '세로 합 = 3+6 = 9 (9²=81)', weight: 81 / 225, color: PCOL.gold }
+        ]);
+        return;
+      }
+
+      // boxNet & cylinderNet
+      const isCyl = sub === 'cylinderNet';
+      const u = (isCyl ? 17.5 : 16.5) * s;
+      const w1 = (isCyl ? 6 : 5) * u;
+      const w2 = isCyl ? 0 : 7 * u;
+      const totalW = w1 + w2;
+      const h = (isCyl ? 8 : 5) * u;
+      const ox = cx - totalW / 2, oy = cy - h / 2 - 12 * s;
+
+      const A = pt(ox, oy + h), B = pt(ox + totalW, oy + h), G = pt(ox + totalW, oy), D = pt(ox, oy);
+      ppoly([D, A, B, G], 'rgba(56, 189, 248, 0.18)', PCOL.cyan, 2.8, 0, 'area aux');
+      if (!isCyl) {
+        pline(pt(ox + w1, oy), pt(ox + w1, oy + h), PCOL.white, 2.2, [5, 4]);
+        // [2.0] 점 이름(A(출발)·C(90°))과 겹치지 않게 한 줄 아래로
+        ptag(ox + w1 / 2, oy + h + 40, '앞면 가로 5', PCOL.cyan);
+        ptag(ox + w1 + w2 / 2, oy + h + 40, '옆면 가로 7', PCOL.green);
+      } else {
+        ptag(ox + totalW / 2, oy + h + 40, '밑면 원주(2πr) = 6 cm', PCOL.cyan);
+      }
+      ppoly([A, B, G], 'rgba(251, 191, 36, 0.30)', PCOL.gold, 3.2, 2);
+      pline(A, G, PCOL.gold, 4.4, [], true, 2);
+      pright(B, A, G, 13, PCOL.gold);
+
+      pdot(A, 'A(출발)', PCOL.gold, null, { x: -20, y: 18 });
+      pdot(B, isCyl ? 'A₀(90°)' : 'C(90°)', PCOL.white, null, { x: 10, y: 18 });
+      pdot(G, isCyl ? "A'(도착)" : 'G(도착)', PCOL.gold, null, { x: 10, y: -8 });
+      ptag(ox + totalW + 38, oy + h / 2, isCyl ? '높이 = 8' : '높이 = 5', PCOL.green);
+      ptag(cx - 15, oy + h / 2 - 10, isCyl ? '최단거리 = 10 cm' : '최단거리 AG = 13!', PCOL.gold, 14);
+
+      drawBottomTapeBanner(
+        rect,
+        isCyl
+          ? '원기둥 옆면 전개도: 가로(원주 6)² + 세로(높이 8)² = 100 ➔ 최단거리 = 10 cm'
+          : '직육면체 겉면 전개도: 가로 합(5+7=12)² + 높이(5)² = 169 ➔ 최단거리 AG = 13!',
+        [
+          { text: isCyl ? '원주² (36)' : '가로 합 12² (144)', weight: isCyl ? 0.36 : 144 / 169, color: PCOL.cyan },
+          { text: isCyl ? '높이² (64)' : '높이 5² (25)', weight: isCyl ? 0.64 : 25 / 169, color: PCOL.green }
+        ]
+      );
+    }
+
+  /* ======================================================================
+     2.0 셸 연결 (새로 작성한 부분)
+     ====================================================================== */
+  const RENDER = { 1: renderMode1ThreeSquares, 2: renderMode2FourProofs, 3: renderMode3Triples, 4: renderMode4AngleJudge, 5: renderMode5SumOfSquares, 6: renderMode6LunesAndShapes, 7: renderMode7CowFormulas, 8: renderMode8Applied };
+  const RECT = { width: 1000, height: 700 }; // 원본의 캔버스 크기 자리(하단 띠·미니 상자는 셸의 카드·띠로 옮겨 가므로 값은 쓰이지 않음)
+  const TABS = ['세 정사각형 넓이 (a²+b²=c²)', '4대 증명 (유클리드·바스카라)', '피타고라스 수 & 배수 탐색', '예각·직각·둔각 판별기', '겹친 도형 제곱의 합 3총사', '정삼각형·반원·초승달 넓이', '빗변 수선 & 소(牛) 공식', '종이접기 & 최단거리 응용'];
+  const SHORT = ['세 정사각형', '4대 증명', '피타고라스 수', '예각·둔각', '제곱의 합', '초승달', '빗변 수선', '종이접기'];
+  const QUESTIONS = [
+    '직각삼각형의 세 변 위에 정사각형을 그리면, 넓이 사이에 어떤 관계가 생길까?',
+    '피타고라스 정리는 어떤 그림으로 눈에 보이게 증명할 수 있을까?',
+    '자연수 세 개가 직각삼각형의 세 변이 되는 경우에는 어떤 것들이 있을까?',
+    '삼각형이 예각·직각·둔각인지는 세 변의 길이만으로 어떻게 알 수 있을까?',
+    '직각이 숨어 있는 도형에서 변 위의 제곱의 합은 어떻게 짝지어질까?',
+    '정사각형이 아닌 정삼각형·반원을 그려도 S₁ + S₂ = S₃ 가 성립할까?',
+    '빗변에 수선을 그으면 생기는 세 직각삼각형에서 어떤 곱셈식이 성립할까?',
+    '접기와 대칭이동을 직각삼각형 하나로 바꾸면 길이는 어떻게 구할까?'
+  ];
+
+  // 이 장면에서 '변환(0→100%)'이 실제로 그림을 바꾸는 장면만 변환 조절을 보여 줍니다(원본 그리기 코드의 state.fold · t 사용처).
+  const FOLD = new Set(['tiltedGrid', 'rotated', 'euclid', 'bhaskaraOut', 'obtuseRange', 'acuteRange', 'rightCross', 'hippoLune', 'isoLune', 'rectFold', 'triFold']);
+  // 직각삼각형 족보(3:4:5 · 5:12:13 · 8:15:17 · 7:24:25) 선택이 그림·수치를 바꾸는 장면 / 배수 ×k 가 수치를 바꾸는 장면
+  const FAM_SCENES = new Set(['std345', 'findLeg', 'rotated', 'hippoLune', 'semicircles']);
+  const K_SCENES = new Set(['std345', 'findLeg', 'rotated', 'chainTri', 'fam345', 'fam51213', 'fam81517', 'fam72425', 'hippoLune', 'semicircles', 'allFour', 'leftWing', 'rightWing', 'centerPillar', 'cowArea']);
+  // 원본 setMode/setSubType: 초승달 장면은 변환 100%(반원을 접은 상태)로 시작. [2.0 수정] 직사각형 접기도 접은 상태(100%)로 시작(아래 rectFold 설명 참조)
+  const START_FOLD = new Set(['hippoLune', 'isoLune', 'rectFold']);
+  const HINGE_ORDER = [65, 90, 115, 130];
+  // 원본 관찰 렌즈 버튼 4개(원본 HTML 262–265행)
+  const LENSES = [
+    ['all', '🔍 전체 구조'],
+    ['def', '📌 직각(∟)·빗변·꼭짓점'],
+    ['area', '✨ 넓이·제곱합 블록'],
+    ['aux', '🪡 보조선·닮음·모눈']
+  ];
+  // 원본 syncLensBar: 이 장면에서 효과가 없는 렌즈는 숨깁니다(LENS_OFF)
+  const lensList = (id) => ['all'].concat(['def', 'area', 'aux'].filter((x) => !(LENS_OFF[x] || []).includes(id)));
+
+  function sync(s, m, id) {
+    state.mode = m;
+    state.subType[m] = id;
+    state.fold = s.fold;
+    // 족보·배수는 그것을 쓰는 장면에서만 반영(다른 장면 값이 새어 들어오지 않게)
+    state.famIdx = FAM_SCENES.has(id) ? Math.round(s.fam) : 0;
+    state.multK = K_SCENES.has(id) ? Math.round(s.mult) : 1;
+    state.hingeDeg = Math.round(s.hinge);
+    state.customPOffset = { dx: s.px, dy: s.py };
+    state.reflectPx = s.rp;
+    state.activePartIdx = s.part == null ? -1 : s.part;
+    state.conceptSwitch = lensList(id).includes(s.lens) ? s.lens : 'all';
+    state.scale = 1;
+  }
+
+  /** 자동 맞춤을 재는 동안 겹쳐 그릴 상태들: 어느 상태(변환·각도·족보·배수)에서도 그림·글자가 잘리지 않는 범위를 구합니다. */
+  function variants(id) {
+    let out = [{}];
+    if (FOLD.has(id)) out = [0, 0.5, 1].map((f) => ({ fold: f }));
+    if (id === 'hinge') out = [45, 90, 140].map((d) => ({ hinge: d }));
+    if (K_SCENES.has(id)) out = out.flatMap((o) => [1, 4].map((k) => ({ ...o, mult: k })));
+    if (FAM_SCENES.has(id)) out = out.flatMap((o) => [0, 1, 2, 3].map((f) => ({ ...o, fam: f })));
+    return out;
+  }
+
+  function paintScene(b, st, m, id, v) {
+    BOARD = b;
+    S = st;
+    sync(st, m, id);
+    sink.card = null;
+    sink.tape = null;
+    if (st.grid && !b._bbox) b.grid({ step: 38 });
+    RENDER[m](RECT, 0, 0);
+    if (v) {
+      v.card = arrow(sink.card);
+      v.tape = arrow(sink.tape);
+    }
+  }
+
+  function sceneOf(m, it) {
+    const id = it.id;
+    const label = arrow(it.label);
+    return {
+      id, title: label, short: label, reviewTab: true, autoFit: true,
+      question: QUESTIONS[m - 1],
+      notesTitle: '시험장 오답 함정 & 3초 직관',
+      enter: (s) => {
+        // 원본 setMode / setSubType 의 초기화 규칙 그대로
+        s.fold = START_FOLD.has(id) ? 1 : 0;
+        // (원본은 탭 3 장면에 들어갈 때 족보 칩 값을 장면의 족보로 바꿔, 다른 탭의 족보까지 따라 바뀌었습니다 → 2.0에서는 탭 3의 족보는 장면이 정하고 칩 값은 건드리지 않음)
+        if (!lensList(id).includes(s.lens)) s.lens = 'all';
+      },
+      controls: () => (FOLD.has(id) ? ['fold'] : id === 'hinge' ? ['hinge'] : []),
+      presets: () => {
+        const out = [];
+        if (FAM_SCENES.has(id)) FAMILY_LIST.forEach((f) => out.push({ group: '직각삼각형 족보', label: f.label, apply: (st) => { st.fam = f.id; }, on: (st) => Math.round(st.fam) === f.id }));
+        if (K_SCENES.has(id)) [1, 2, 3, 4].forEach((v) => out.push({ group: m === 3 ? '자연수 배수 ×k' : '배수 스케일 ×k', label: `×${v}배`, apply: (st) => { st.mult = v; }, on: (st) => Math.round(st.mult) === v }));
+        if (id === 'hinge') HINGE_ORDER.forEach((d) => out.push({ group: '경첩 각도 ∠C', label: `${d}°`, set: { hinge: d }, ms: 500, on: (st) => Math.round(st.hinge) === d }));
+        LENSES.filter(([k]) => lensList(id).includes(k)).forEach(([k, lb]) => out.push({ group: '관찰 렌즈', label: lb, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
+        if (FOLD.has(id)) [0, 0.5, 1].forEach((v) => out.push({ group: '변환 단계', label: v === 0 ? '0% 시작' : v === 1 ? '100% 완성' : '50%', set: { fold: v }, ms: 700, on: (st) => Math.abs(st.fold - v) < 0.01 }));
+        return out;
+      },
+      actions: () => {
+        if (!(FOLD.has(id) || id === 'hinge')) return [];
+        return [{
+          id: 'act', play: true, primary: true, icon: 'wand',
+          label: (st) => { sync(st, m, id); return arrow(getSpec().actionTxt); },
+          run: (st, lab) => {
+            if (id === 'hinge') { // 원본 toggleFoldAnim: 65° → 90° → 115° → 130° 순환
+              const cur = Math.round(st.hinge);
+              lab.tween({ hinge: HINGE_ORDER[(HINGE_ORDER.indexOf(cur) + 1) % HINGE_ORDER.length] }, 600);
+              return;
+            }
+            lab.tween({ fold: st.fold > 0.5 ? 0 : 1 }, 1100);
+          }
+        }];
+      },
+      view: (s) => {
+        sync(s, m, id);
+        const spec = arrow(getSpec());
+        return {
+          guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(APLab.stripEmoji(spec.badge))}</div>${spec.hint}`,
+          parts: spec.parts.map((p) => ({ id: p.id, name: p.name, desc: p.desc, value: p.val, color: p.ok === false ? 'red' : p.color, ok: p.ok })),
+          summary: spec.totalRes,
+          rule: spec.rule,
+          formula: spec.formulaHTML,
+          notes: spec.notes
+        };
+      },
+      draw: (b, s, v) => {
+        const paint = (st, vv) => paintScene(b, st, m, id, vv);
+        // 자동 맞춤을 재는 중: 변환·각도·족보·배수 상태를 겹쳐 그려 어느 상태에서도 잘리지 않는 범위를 구합니다.
+        const paintAll = () => variants(id).forEach((o) => paint({ ...s, ...o }));
+        if (b._bbox) { paintAll(); return; }
+        if (b.thumb) { // 모든 장면 미리보기: 장면 범위를 직접 재어 맞추고, '변환 완성' 상태로 그림
+          const bb = b.measure(paintAll);
+          if (bb) b.focus = b.fitBox(bb, { margin: 0.08, px: 5 });
+          paint({ ...s, fold: FOLD.has(id) ? 1 : 0, part: null, lens: 'all' });
+          return;
+        }
+        paint(s, v);
+      }
+    };
+  }
+
+  const groups = Object.keys(SUB_MENUS).map((k) => {
+    const m = +k;
+    return { id: 'm' + m, title: TABS[m - 1], short: SHORT[m - 1], scenes: SUB_MENUS[m].map((it) => sceneOf(m, it)) };
+  });
+
+  APLab.createLab({
+    id: 'g8-pythagoras',
+    title: '피타고라스 정리',
+    courseName: '중2',
+    unit: '피타고라스 정리 · 증명과 활용',
+    courseColor: 'var(--m-sky)',
+    home: '../index.html#g8',
+    legacy: '../../labs/g8/피타고라스.html',
+    board: { kind: 'figure', autoFit: true, minZoom: 0.4, maxZoom: 5 },
+    state: { lens: 'all' },
+    persist: ['lens'],
+    params: {
+      fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '변환 진행 (0% → 100%)', hint: '등적변형 · 회전 · 이동 · 접기 같은 변환을 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
+      hinge: { value: 90, min: 45, max: 140, step: 1, color: 'rose', label: '경첩 각도 ∠C', format: (v) => `${Math.round(v)}°` },
+      fam: { value: 0, min: 0, max: 3, step: 1, color: 'sky', label: '직각삼각형 족보' },
+      mult: { value: 1, min: 1, max: 4, step: 1, color: 'green', label: '배수 ×k' },
+      px: { value: -26, min: -700, max: 700, step: 1, color: 'amber', label: '점 P 가로' },
+      py: { value: 18, min: -700, max: 700, step: 1, color: 'amber', label: '점 P 세로' },
+      rp: { value: 0.33, min: 0.05, max: 0.95, step: 0.01, color: 'amber', label: '점 P 위치' }
+    },
+    groups
+  });
+});
+</script>
+</body>
+</html>

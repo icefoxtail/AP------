@@ -1,0 +1,1051 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "25_순천고_2학기_기말_고2_수학II_유사-candidate-v1",
+  "examUid": "25_순천고_2학기_기말_고2_수학II_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.js",
+  "expectedSourceBlobSha1": "2b1cf1a9043c7c03c58cf6197420e30befedc1dd",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "claude-similar-high-gen",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": [
+      {
+        "path": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.review-receipt.json",
+        "sha256": "182bde49c6785097e297d3b14295498a763f5318d979502837d1c9392b17bfe4"
+      }
+    ]
+  },
+  "registryChanges": [
+    {
+      "key": "EXT-CROSS-POLYNOMIAL-BOUNDED-LINEAR",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "모든 실수에서 유계인 다항식 차이는 상수 또는 일차 이하",
+      "definition": "모든 실수 t에 대해 f(mt)-f(mt-c)와 같은 다항식 차이가 일정한 범위에 갇히면 그 다항식의 차수가 1 이하라는 차수 판단을 이용해 함수를 일차식으로 한정하는 개념.",
+      "parentKey": "CC_DEGREE_DETERMINATION",
+      "parentLabelKo": "항등식에서 다항식의 차수 결정",
+      "standardUnitKey": "H15-M2-04",
+      "subUnitKey": "H15-M2-04-DERIVATIVE",
+      "standardCourse": "수학II",
+      "curriculum": "2015",
+      "basis": "f가 이차 이상이면 f(3t)-f(3t-6)이 t의 일차 이상 다항식이라 유계일 수 없어 f가 일차함수(Q22)",
+      "firstUsed": {
+        "stem": "25_순천고_2학기_기말_고2_수학II_유사",
+        "qid": 22
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js",
+        "generator": "GEN_HIGH_SIMILAR_v1",
+        "createdAt": "2026-10-29",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-029"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(3)",
+        "L3": "속도와 가속도",
+        "L4": "위치·속도·가속도",
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "속도 v=0 및 부호 변화로 방향 전환 시각을 찾고 가속도 계산",
+      "variationNote": "위치함수 x=t^3-6t^2-15t, 전환 시각 t=5, 가속도 18",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q1 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-045"
+        ],
+        "L1": "적분",
+        "L2": "정적분의 활용",
+        "L3": "속도와 거리",
+        "L4": "속도에서 이동거리",
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+        "crossConceptKeys": [
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "v=0인 시각까지의 정적분과 초기 높이 합산",
+      "variationNote": "옥상 18m, v=36-4t, 최고 높이 180m",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q2 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-07",
+        "standardUnit": "부정적분",
+        "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+        "subUnit": "부정적분",
+        "conceptClusterKey": "INDEFINITE_INTEGRAL",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-036"
+        ],
+        "L1": "적분",
+        "L2": "부정적분",
+        "L3": "조건을 이용한 함수 결정",
+        "L4": "도함수에서 원함수",
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+        "crossConceptKeys": [
+          "CC_INDEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "미분의 부정적분이 원함수+상수임을 이용해 f를 정하고 값을 계산",
+      "variationNote": "5x^3-8x^2, f(1)=4, f(2)=15",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q3 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-023"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(2)",
+        "L3": "증가·감소와 극값",
+        "L4": "증감표",
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "templateKey": "TPL_MONOTONICITY_CONDITION",
+        "crossConceptKeys": [
+          "CC_FUNCTION_MONOTONICITY",
+          "CC_RESTRICTED_DOMAIN_EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "닫힌구간에서 f'의 최솟값 부호로 매개변수 범위 결정",
+      "variationNote": "감소→증가 조건, 구간 [1,3], a<=9",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q4 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-044"
+        ],
+        "L1": "적분",
+        "L2": "정적분의 활용",
+        "L3": "넓이",
+        "L4": "두 곡선 사이",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [
+          "CC_DEFINITE_INTEGRAL",
+          "CC_QUADRATIC_LINE_INTERSECTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "교점과 위아래 관계를 정해 정적분으로 넓이 계산",
+      "variationNote": "y=-x^2+5x와 y=x, 넓이 32/3",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q5 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-029"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(3)",
+        "L3": "속도와 가속도",
+        "L4": "위치·속도·가속도",
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+        "crossConceptKeys": [
+          "CC_FUNCTION_EXTREMUM"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "v=0인 시각에서 최고 높이 계산",
+      "variationNote": "x=40t-5t^2, 최고 높이 80",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q6 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-023"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(2)",
+        "L3": "증가·감소와 극값",
+        "L4": "증감표",
+        "problemTypeKey": "PT_DERIVATIVE_GRAPH_ANALYSIS",
+        "templateKey": "TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS",
+        "crossConceptKeys": [
+          "CC_FUNCTION_MONOTONICITY",
+          "CC_FUNCTION_EXTREMUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "도함수 그래프의 부호 변화로 증감과 극값을 판정하여 보기 판별",
+      "variationNote": "근 -2,0,2, 옳은 보기 ㄴ,ㄷ",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q7 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "DEFINITE_INTEGRAL",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-038"
+        ],
+        "L1": "적분",
+        "L2": "정적분",
+        "L3": "정적분의 뜻",
+        "L4": "구간 분할",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_EVALUATION",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_FUNCTION",
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "부호가 바뀌는 점에서 구간을 나눈 절댓값 정적분 계산",
+      "variationNote": "f=3x^2-6x, 구간 [-1,2] 두 조각, 값 8",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q8 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "DEFINITE_INTEGRAL",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-042"
+        ],
+        "L1": "적분",
+        "L2": "정적분",
+        "L3": "정적분과 함수",
+        "L4": "미분과 적분 관계",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+        "crossConceptKeys": [
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "적분값을 상수로 두고 자기 일관 방정식으로 함수 결정",
+      "variationNote": "계수 4와 6x^2-x, f(2)=20",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q9 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-07",
+        "standardUnit": "부정적분",
+        "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+        "subUnit": "부정적분",
+        "conceptClusterKey": "INDEFINITE_INTEGRAL",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-036"
+        ],
+        "L1": "적분",
+        "L2": "부정적분",
+        "L3": "조건을 이용한 함수 결정",
+        "L4": "도함수에서 원함수",
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+        "crossConceptKeys": [
+          "CC_INDEFINITE_INTEGRAL",
+          "CC_DERIVATIVE_VALUE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "접선 기울기=도함수를 적분하고 지나는 점으로 상수 결정",
+      "variationNote": "(1,3), 3x^2-4x+5, f(2)=9",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q10 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-025"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(2)",
+        "L3": "최대·최소",
+        "L4": "구간 최대·최소",
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+        "crossConceptKeys": [
+          "CC_FUNCTION_EXTREMUM",
+          "CC_RESTRICTED_DOMAIN_EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "끝점과 극점 함숫값 비교로 M,m 결정 후 매개변수 방정식",
+      "variationNote": "구간 [-2,4], x^3-3x^2-9x+a, a=10",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q11 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-047"
+        ],
+        "L1": "적분",
+        "L2": "정적분의 활용",
+        "L3": "도형 활용",
+        "L4": "매개변수 넓이",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+        "crossConceptKeys": [
+          "CC_DEFINITE_INTEGRAL",
+          "CC_QUADRATIC_GRAPH_X_INTERCEPT",
+          "CC_QUADRATIC_VERTEX_FORM"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "완전제곱식과 근 d로 넓이를 식화하여 매개변수 결정",
+      "variationNote": "y=3x^2-6x+a, 넓이 32, a=-9",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q12 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-043"
+        ],
+        "L1": "적분",
+        "L2": "정적분의 활용",
+        "L3": "넓이",
+        "L4": "곡선과 x축",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [
+          "CC_PIECEWISE_FUNCTION",
+          "CC_DEFINITE_INTEGRAL",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_PIECEWISE_DOMAIN_PARTITION"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "구간함수의 식과 부호별로 나누어 넓이를 더함",
+      "variationNote": "[-4,3], x+3과 x^2-4x+3, 3k=23",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q13 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-044"
+        ],
+        "L1": "적분",
+        "L2": "정적분의 활용",
+        "L3": "넓이",
+        "L4": "두 곡선 사이",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [
+          "CC_REFLECTION",
+          "CC_TRANSLATION",
+          "CC_QUADRATIC_GRAPH_INTERSECTION",
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "대칭·평행이동한 식과 교점으로 두 곡선 사이 넓이 계산",
+      "variationNote": "y=2x^2 변환 (1,5), 넓이 16/3",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q14 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "DEFINITE_INTEGRAL",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-038"
+        ],
+        "L1": "적분",
+        "L2": "정적분",
+        "L3": "정적분의 뜻",
+        "L4": "구간 분할",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+        "crossConceptKeys": [
+          "CC_PERIODIC_FUNCTION",
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "주기성으로 적분 구간을 한 주기와 나머지로 분해하고 이동",
+      "variationNote": "주기 3, 구간 [1,4] 정의, ∫_0^20 = 88/3",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q15 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-026"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(2)",
+        "L3": "최대·최소",
+        "L4": "도형 활용",
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA",
+          "CC_FUNCTION_EXTREMUM"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "곡선 위 점으로 삼각형 넓이 함수를 세우고 미분해 최대",
+      "variationNote": "f=x^2(4-x), 삼각형 POH, p=3, M/p=9/2",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q16 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-024"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(2)",
+        "L3": "증가·감소와 극값",
+        "L4": "극대·극소",
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT",
+        "crossConceptKeys": [
+          "CC_FUNCTION_EXTREMUM",
+          "CC_ZERO_MULTIPLICITY"
+        ],
+        "conditionKeys": [
+          "COND_FUNCTION_TYPE_RESTRICTION"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "g'의 부호 변화/불변 위치를 구분해 f'의 근을 결정",
+      "variationNote": "g'=(x-1)f', 극값은 x=-2뿐, f'(0)=-6 (원본 H15-M2-04에서 06으로 재판정)",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q17 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "DEFINITE_INTEGRAL",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-042"
+        ],
+        "L1": "적분",
+        "L2": "정적분",
+        "L3": "정적분과 함수",
+        "L4": "미분과 적분 관계",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION",
+        "crossConceptKeys": [
+          "CC_FUNCTION_LIMIT",
+          "CC_DERIVATIVE_VALUE",
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [
+          "COND_FUNCTION_TYPE_RESTRICTION"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "적분함수의 미분과 극한 조건으로 적분 모멘트를 구하고 연립",
+      "variationNote": "x=3 극한 6, g=3(t-3)^2, 답 58",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q18 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-044"
+        ],
+        "L1": "적분",
+        "L2": "정적분의 활용",
+        "L3": "넓이",
+        "L4": "두 곡선 사이",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [
+          "CC_INVERSE_FUNCTION",
+          "CC_INVERSE_GRAPH_SYMMETRY",
+          "CC_AREA",
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "y=x 대칭성으로 역함수를 적분하지 않고 절반 넓이의 2배",
+      "variationNote": "f=2x^3-6x^2+7x-2, 직선 y=-x-2, 넓이 3",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q19 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-027"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(3)",
+        "L3": "방정식과 부등식",
+        "L4": "근의 개수",
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_FUNCTION",
+          "CC_GRAPH_INTERSECTION_COUNT",
+          "CC_QUADRATIC_VERTEX_FORM"
+        ],
+        "conditionKeys": [
+          "COND_FUNCTION_TYPE_RESTRICTION",
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "극값과 수평선 위치별 실근 개수 분류로 상수 결정",
+      "variationNote": "f' 꼭짓점 x=1, f'(3)=0, 실근 4개, f(2)=-4",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q20 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-045"
+        ],
+        "L1": "적분",
+        "L2": "정적분의 활용",
+        "L3": "속도와 거리",
+        "L4": "속도에서 이동거리",
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+        "crossConceptKeys": [
+          "CC_DEFINITE_INTEGRAL",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "방향 전환별 이동거리와 위치 변화량 구분",
+      "variationNote": "v=t^3-6t^2+8t, 위치 36 도달, 거리 44",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q21 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-023"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(2)",
+        "L3": "증가·감소와 극값",
+        "L4": "증감표",
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "templateKey": "TPL_MONOTONICITY_CONDITION",
+        "crossConceptKeys": [
+          "CC_DEFINITE_INTEGRAL",
+          "CC_ONE_TO_ONE_FUNCTION",
+          "EXT-CROSS-POLYNOMIAL-BOUNDED-LINEAR"
+        ],
+        "conditionKeys": [
+          "COND_FUNCTION_INJECTIVE",
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "유계 조건으로 f 일차 결정, 일대일 삼차로 g' 제곱꼴, 적분 조건 연립 후 최댓값",
+      "variationNote": "|6A|<=60, g'(-1)=0, g'(1) 최댓값 40/7 (원본 H15-M2-04에서 06으로 재판정)",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q22 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-024"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(2)",
+        "L3": "증가·감소와 극값",
+        "L4": "극대·극소",
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+        "crossConceptKeys": [
+          "CC_INDEFINITE_INTEGRAL",
+          "CC_FUNCTION_EXTREMUM"
+        ],
+        "conditionKeys": [
+          "COND_FUNCTION_TYPE_RESTRICTION"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "f'(-1)=f'(3)=0과 최고차항 계수로 f'를 결정해 적분하고 극솟값으로 상수 결정",
+      "variationNote": "f'(-1)=f'(3)=0, 극솟값 -10, f=x^3-3x^2-9x+17",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q23 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 24,
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M2-RPM-025"
+        ],
+        "L1": "미분",
+        "L2": "도함수의 활용(2)",
+        "L3": "최대·최소",
+        "L4": "구간 최대·최소",
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+        "crossConceptKeys": [
+          "CC_FUNCTION_EXTREMUM",
+          "CC_RESTRICTED_DOMAIN_EXTREMA",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 24,
+        "variationType": "STRICT_VARIANT"
+      },
+      "decisiveStep": "증감표 작성과 열린 반직선 구간 최솟값 판단",
+      "variationNote": "f=x^3-3x^2+4, x>1, k 최댓값 0",
+      "reason": "순천고 2학기 기말 고2 수학II 원본 Q24 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님). 독립 검수 대기.",
+      "evidenceRefs": []
+    }
+  ],
+  "evidenceRefs": []
+}

@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "-2x+10",
+    "functionName": "v",
+    "domain": [
+      0,
+      7
+    ],
+    "viewport": [
+      -1,
+      8,
+      -5,
+      11
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "5",
+        "fill": "LIGHT",
+        "label": "25"
+      },
+      {
+        "id": "S2",
+        "upper": "axis",
+        "lower": "f",
+        "from": "5",
+        "to": "7",
+        "fill": "MEDIUM",
+        "label": "4"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 10
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 7,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "v(t)=10-2t의 그래프에서 t축 위쪽 넓이 25와 아래쪽 넓이 4를 빼면 t=7일 때의 위치 21이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "v(t)=10-2t는 t=5에서 0이고 0≤t≤5에서 양수, 5≤t≤7에서 음수이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "0≤t≤5의 삼각형 넓이는 1/2·5·10=25, 5≤t≤7의 삼각형 넓이는 1/2·2·4=4이다.",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "속도의 부호가 t=5에서 바뀌며 위쪽 넓이 25와 아래쪽 넓이 4의 차가 위치 21임을 보여 준다."
+  ],
+  "sourceQuote": "$=\\left[10t-t^2\\right]_0^7$",
+  "assetPath": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q5-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q05-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q05-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q05-solution.svg"
+  }
+}

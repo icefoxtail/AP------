@@ -1,0 +1,122 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "3",
+      "-1/2"
+    ],
+    "domain": [
+      -0.8,
+      6.8
+    ],
+    "viewport": [
+      -1.5,
+      7.5,
+      -1.5,
+      5.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 6,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "2"
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "4"
+        },
+        {
+          "id": "C",
+          "curveX": "2"
+        },
+        {
+          "id": "D",
+          "curveX": "4"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "Q",
+          "points": [
+            "A",
+            "B",
+            "D",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "원점 O와 점 P를 지나는 이차함수의 그래프와 선분 OP를 삼등분하는 점 A, B 위의 직사각형 ABDC의 한 순간 모습이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "원점 O와 점 P를 지나고 이차항의 계수가 -1/2인 이차함수이다(그림은 OP=6인 한 순간).",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "A, B는 선분 OP의 삼등분점이고 C, D는 A, B를 지나 x축에 수직인 직선과 그래프의 교점이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "점 O, P, A, B, C, D의 위치 관계와 사각형 ABDC를 보인다(정답을 암시하는 정사각형 표시는 넣지 않는다)."
+  ],
+  "sourceQuote": "그림은 원점 $O$와 점 $P$를 지나고",
+  "assetPath": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q19.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q19-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q19-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q19-problem.svg"
+  }
+}

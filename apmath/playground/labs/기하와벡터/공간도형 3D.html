@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>공간도형 3D 실전 킬러 랩 (3D Space Geometry Master Lab)</title>
   <!-- Pretendard Webfont -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -13,6 +13,7 @@
   <!-- KaTeX CDN (수능 시험지 수식 렌더링 엔진) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="../../assets/geometry-relations.css" />
 
   <style>
     * {
@@ -1282,8 +1283,6 @@
     })();
   </script>
   <!-- Optional platform modules; standalone canvas remains operational if not present. -->
-  <script src="./board-relations.js" defer></script>
-  <script src="./geometry-relations.js" defer></script>
-  <script src="./student-guide.js" defer></script>
+  <script src="../../assets/geometry-relations.js" data-mode="cube" defer></script>
 </body>
 </html>

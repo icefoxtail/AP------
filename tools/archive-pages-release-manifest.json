@@ -1,6 +1,10 @@
 {
   "schemaVersion": "ARCHIVE_PAGES_SITE_MANIFEST_V1",
   "maxBytes": 1000000000,
+  "minifyJson": [
+    "archive/data/school-fingerprints.json",
+    "archive/data/generated-lite-consumer/"
+  ],
   "files": [
     ".nojekyll",
     "index.html",
@@ -43,6 +47,7 @@
     "archive2-canonical.js",
     "archive2-core.js",
     "archive2-entry.js",
+    "archive2-key-resolver.js",
     "archive2-history.css",
     "archive2-history.js",
     "archive2-library.js",
@@ -116,13 +121,13 @@
     "archive2-canonical-projection-policy.json",
     "archive2-catalog.json",
     "archive2-crosswalk-inventory.json",
+    "archive2-extension-keys.json",
     "archive2-item-review-overrides.json",
     "archive2-source-verification-index.json",
     "archive2-unified-unit-policy.json",
     "basic-scope-parent-groups.json",
     "basic-scope-parent-links.json",
     "basic-scope-source-links.json",
-    "question_identity_map.json",
     "question_metadata.json",
     "school-fingerprints.json",
     "svg-accessibility-index.js"
@@ -134,7 +139,8 @@
         "archive/data/",
         "archive/_generated/intelligence/",
         "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-      ]
+      ],
+      "ship": "loader-fetch-set"
     },
     "sourceVerification": {
       "index": "archive/data/archive2-source-verification-index.json",
@@ -145,6 +151,7 @@
       "pathPrefix": "data/meta-foundation/evidence/review-overrides/v1/"
     },
     "reviewedExamMeta": {
+      "verifyOnly": true,
       "index": "archive/data/question_metadata.json",
       "pathPrefix": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/"
     },
@@ -163,7 +170,16 @@
       "archive/data/meta-foundation/compiled/taxonomy_registry.json",
       "archive/data/meta-foundation/compiled/concept_registry.json",
       "archive/data/meta-foundation/compiled/condition_registry.json",
-      "archive/data/meta-foundation/compiled/curriculum_bindings.json"
+      "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
     ]
   }
 }

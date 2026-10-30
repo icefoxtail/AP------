@@ -1,0 +1,77 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-12",
+      "-3",
+      "2"
+    ],
+    "domain": [
+      -2.4,
+      3.4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -24,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -1,
+        "y": 7
+      },
+      {
+        "id": "N",
+        "x": 2,
+        "y": -20
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-1",
+        "7"
+      ],
+      "N": [
+        "2",
+        "-20"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=2x³-3x²-12x의 그래프는 x=-1에서 극대, x=2에서 극솟값 -20을 가진다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "f'(x)=6(x+1)(x-2)이므로 x=-1에서 극대, x=2에서 극소이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "a=2, b=f(2)=-20",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "극소점 (2,-20)에서 a=2, b=-20임을 그래프로 확인한다."
+  ],
+  "sourceQuote": "$f'(x)=6x^2-6x-12=6(x+1)(x-2)$",
+  "assetPath": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q24-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q24-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q24-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q24-solution.svg"
+  }
+}

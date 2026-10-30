@@ -21,7 +21,7 @@ function environment(){
  let last=null,stored={entries:{}},prArr=[{number:1,merged_at:at(1),merge_commit_sha:B,head:{sha:A},changed_files:1,html_url:link('pull',1)}];
  let regs=[],releases=[];
  const api=async route=>{
-  if(route.startsWith('/contents/'))return stored&&Object.keys(stored.entries||{}).length||stored?.observations?{sha:C,content:Buffer.from(JSON.stringify(stored)).toString('base64')}:null;
+  if(route.startsWith('/contents/'))return stored&&Object.keys(stored.entries||{}).length||stored?.observations?{sha:C,encoding:'base64',content:Buffer.from(JSON.stringify(stored)).toString('base64')}:null;
   if(route.startsWith('/pulls?'))return prArr;
   if(route.startsWith('/pulls/1/files'))return [{filename:'archive/exams/high/'+id+'.js'}];
   if(route.includes('/archive-registration-sync.yml/runs?'))return {workflow_runs:regs};

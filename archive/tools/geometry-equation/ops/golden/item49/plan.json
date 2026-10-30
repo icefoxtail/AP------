@@ -1,0 +1,33 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": ["6", "0"],
+  "denominator": ["0", "1"],
+  "sourceDomain": { "kind": "ALL_REALS" },
+  "domain": [-10, 10],
+  "viewport": [-10, 10, -10, 10],
+  "axisTickValues": { "x": [], "y": [] },
+  "formulaLabel": "y=b/x",
+  "overlays": {
+   "points": [
+    { "id": "P", "curveX": "3" },
+    { "id": "A", "axis": "x", "value": "3" },
+    { "id": "B", "axis": "y", "value": "2" },
+    { "id": "O", "x": "0", "y": "0" }
+   ],
+   "polygons": [
+    { "id": "R", "points": ["O", "A", "P", "B"], "fill": "LIGHT", "label": "b" }
+   ]
+  }
+ },
+ "caption": "반비례 그래프 y=b/x 위의 점 P에서 x축, y축에 내린 수선의 발 A, B와 원점 O로 만든 직사각형 OAPB의 넓이는 가로 x와 세로 b/x의 곱 b이다.",
+ "pointNames": { "P": "P", "A": "A", "B": "B", "O": "O" },
+ "sourceConditions": [
+  { "id": "c1", "condition": "반비례 관계 y=b/x (b>0)의 그래프 위의 점 P에서 x축, y축에 내린 수선의 발을 각각 A, B, 원점을 O라 할 때 사각형 OAPB의 넓이를 생각한다.", "mappedTo": ["graphPlan.numerator", "graphPlan.overlays"] },
+  { "id": "c2", "condition": "문제 본문·보기·정답·풀이는 변경하지 않는다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+ ],
+ "newVisualInformation": [
+  "반비례 그래프 위의 점 P에서 두 축에 내린 수선으로 직사각형 OAPB를 만들고, 그 넓이가 b임을 도형 안에 적어 보인다."
+ ]
+}

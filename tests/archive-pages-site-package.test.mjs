@@ -4,7 +4,9 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { buildPagesSite } from '../tools/build-archive-pages-site.mjs';
+import { spawnSync } from 'node:child_process';
+import { addMixedSourceVerificationFiles, buildPagesSite, formatPackageSummary, HEADROOM_WARNING_BYTES, planPagesSite, summarizePackageSize } from '../tools/build-archive-pages-site.mjs';
+import { buildMixedSourceShard, buildMixedUidBucket, mixedIndexSchemaVersion } from '../archive/tools/mixed-verification-codec.mjs';
 
 function digest(value) {
   return crypto.createHash('sha256').update(value.replace(/\r\n/g, '\n')).digest('hex');
@@ -229,4 +231,179 @@ test('rejects symlinked manifest and indexed source files before digesting or co
     );
     fs.rmSync(linkPath, { recursive: true, force: true });
   }
+});
+
+test('compacts only listed non-digest-bound JSON and keeps its value identical', async (t) => {
+  const { root, manifest } = fixture();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const pretty = JSON.stringify({ rows: [{ id: 1, name: '한글', nested: { a: [1, 2, 3] } }], big: 12345678901234567890 }, null, 2) + '\n';
+  put(root, 'archive/data/loose.json', pretty);
+  put(root, 'archive/data/loose-tree/a.json', pretty);
+  put(root, 'archive/data/other.json', pretty);
+  manifest.archiveDataFiles = ['loose.json', 'other.json'];
+  manifest.trees.push({ path: 'archive/data/loose-tree', reason: 'tree' });
+  manifest.minifyJson = ['archive/data/loose.json', 'archive/data/loose-tree/'];
+  const report = await buildPagesSite({ sourceRoot: root, outputDir: path.join(root, '_site'), manifest });
+  const byPath = new Map(report.inventory.map((item) => [item.path, item]));
+  for (const relative of ['archive/data/loose.json', 'archive/data/loose-tree/a.json']) {
+    const text = fs.readFileSync(path.join(root, '_site', ...relative.split('/')), 'utf8');
+    assert.deepEqual(JSON.parse(text), JSON.parse(pretty), relative);
+    assert.ok(text.length < pretty.length, relative);
+    assert.equal(byPath.get(relative).transform, 'minify-json');
+    assert.equal(byPath.get(relative).bytes, Buffer.byteLength(text));
+    assert.equal(byPath.get(relative).sourceBytes, Buffer.byteLength(pretty));
+    assert.equal(byPath.get(relative).sha256, crypto.createHash('sha256').update(text).digest('hex'));
+  }
+  assert.equal(fs.readFileSync(path.join(root, '_site', 'archive/data/other.json'), 'utf8'), pretty);
+  assert.equal(byPath.get('archive/data/other.json').transform, undefined);
+  assert.equal(report.minifiedFileCount, 2);
+  assert.equal(report.totalBytes, report.inventory.reduce((sum, item) => sum + item.bytes, 0));
+});
+
+test('refuses to compact digest-bound files and unmatched or malformed entries', async (t) => {
+  const { root, manifest } = fixture();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const attempt = (minifyJson) => buildPagesSite({
+    sourceRoot: root, outputDir: path.join(root, '_site'), manifest: { ...manifest, minifyJson },
+  });
+  // the canonical input manifest binds this file's bytes to a digest
+  await assert.rejects(attempt(['archive/data/fixture.json']), /minifyJson refuses a digest-bound file/);
+  await assert.rejects(attempt(['archive/data/archive2-source-verification/v1/']), /minifyJson refuses a digest-bound file/);
+  await assert.rejects(attempt(['archive/data/missing.json']), /matches no packaged JSON file/);
+  await assert.rejects(attempt('archive/data/fixture.json'), /minifyJson must be an array/);
+  put(root, 'archive/data/broken.json', '{not json');
+  manifest.archiveDataFiles = ['broken.json'];
+  await assert.rejects(attempt(['archive/data/broken.json']), /not valid JSON/);
+});
+
+test('reviewed evidence referenced only by path is verified but not shipped when verifyOnly is set', async (t) => {
+  const { root, manifest, reviewedMeta } = fixture();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  manifest.runtimeClosure.reviewedExamMeta.verifyOnly = true;
+  const plan = planPagesSite({ sourceRoot: root, manifest });
+  assert.equal(plan.entries.some((entry) => entry.path === reviewedMeta), false);
+  assert.deepEqual(plan.buildOnly.map((item) => item.path), [reviewedMeta]);
+  fs.rmSync(path.join(root, ...reviewedMeta.split('/')));
+  assert.throws(() => planPagesSite({ sourceRoot: root, manifest }), /ENOENT|does not exist/);
+});
+
+test('size summary names the largest contributors and the remaining headroom', () => {
+  const entries = [
+    { path: 'a/b/c/one.bin', bytes: 600 },
+    { path: 'a/b/c/two.bin', bytes: 300 },
+    { path: 'a/b/d/three.bin', bytes: 50 },
+    { path: 'top.html', bytes: 10 },
+  ];
+  const summary = summarizePackageSize(entries, 2000, { groupDepth: 3, topGroups: 2, topFiles: 2 });
+  assert.equal(summary.totalBytes, 960);
+  assert.equal(summary.headroomBytes, 1040);
+  assert.deepEqual(summary.topGroups.map((group) => [group.path, group.bytes, group.files]), [['a/b/c', 900, 2], ['a/b/d', 50, 1]]);
+  assert.deepEqual(summary.topFiles.map((file) => file.path), ['a/b/c/one.bin', 'a/b/c/two.bin']);
+  assert.match(formatPackageSummary(summary), /headroom 0\.0 MB/);
+});
+
+test('the command line reports headroom and warns, without failing, when it drops below the threshold', async (t) => {
+  const { root, manifest } = fixture();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const probe = planPagesSite({ sourceRoot: root, manifest });
+  const run = (maxBytes) => {
+    const manifestPath = path.join(root, `manifest-${maxBytes}.json`);
+    fs.writeFileSync(manifestPath, JSON.stringify({ ...manifest, maxBytes }));
+    return spawnSync(process.execPath, [
+      path.resolve('tools/build-archive-pages-site.mjs'), '--root', root, '--output', path.join(root, '_site'), '--manifest', manifestPath,
+    ], { encoding: 'utf8' });
+  };
+  const tight = run(probe.totalBytes + 1000);
+  assert.equal(tight.status, 0, tight.stderr);
+  assert.match(tight.stdout, /headroom 0\.0 MB/);
+  assert.match(tight.stdout, /::warning title=Pages size headroom::/);
+  assert.equal(HEADROOM_WARNING_BYTES, 50_000_000);
+
+  const over = run(probe.totalBytes);
+  assert.equal(over.status, 1);
+  assert.match(over.stderr, /must be below the/);
+  assert.match(over.stderr, /Largest directories:/);
+});
+
+// Mixed source verification data comes in schema v1 (default, readable by an already-deployed Worker) and v2 (opt-in).
+// The package must accept and verify either layout the same way and refuse anything else.
+function mixedFixture(schema) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-pages-mixed-'));
+  const sha = (text) => crypto.createHash('sha256').update(text).digest('hex');
+  const sourceFiles = ['original/a.js', 'original/b.js'];
+  const uids = ['qid_v1_a' + '1'.repeat(63), 'qid_v1_b' + '2'.repeat(63), 'qid_v1_f' + '3'.repeat(63)];
+  const rowFor = (uid, sourceFile, ordinal) => ({
+    questionUid: uid, sourceFile, sourceOrdinal: ordinal, registeredGrade: '고1',
+    identity: { questionUid: uid, sourceArchiveFile: sourceFile, sourceOrdinal: ordinal, status: 'VERIFIED' },
+    assignments: [], advancedAssignments: [],
+    record: { sourceFile, sourceOrdinal: ordinal, questionUid: uid, identityStatus: 'VERIFIED', courseFamilies: ['COMMON_1'] },
+  });
+  const rowsBySource = new Map([[sourceFiles[0], [rowFor(uids[0], sourceFiles[0], 1), rowFor(uids[2], sourceFiles[0], 2)]], [sourceFiles[1], [rowFor(uids[1], sourceFiles[1], 1)]]]);
+  const context = {
+    schemaVersion: 'archive2-mixed-source-verification-context-v1', resolverVersion: 'r', baseProjectionVersion: 'p',
+    authority: {
+      taxonomyVersion: 't', gradeCourses: [], canonicalParents: [], canonicalAdvancedPaths: [], projectionPolicy: {},
+      problemTypeKeys: [], templatesByKey: {}, bindingKeys: [],
+    },
+  };
+  const base = 'archive/data/archive2-source-verification/mixed-v1/';
+  const write = (relative, value) => {
+    const text = JSON.stringify(value) + '\n';
+    put(root, base + relative, text);
+    return { text, sha256: sha(text), byteLength: Buffer.byteLength(text) };
+  };
+  const contextRef = write('context.json', context);
+  const files = sourceFiles.map((sourceFile, index) => {
+    const rows = rowsBySource.get(sourceFile);
+    const ref = write('sources/' + sha(sourceFile) + '.json', buildMixedSourceShard({ schema, sourceFile, sourceSha256: '', qCount: rows.length, rows }));
+    return { sourceIndex: index, sha256: ref.sha256, byteLength: ref.byteLength, recordCount: rows.length };
+  });
+  const allRows = [...rowsBySource.values()].flat();
+  const uidBuckets = Array.from({ length: 16 }, (_, i) => i.toString(16)).map((prefix) => {
+    const rows = allRows.filter((row) => row.questionUid.slice('qid_v1_'.length, 'qid_v1_'.length + 1) === prefix);
+    const ref = write('uid-buckets/' + prefix + '.json', buildMixedUidBucket({ schema, prefix, context, rows, sourceFiles }));
+    return { prefix, path: 'data/archive2-source-verification/mixed-v1/uid-buckets/' + prefix + '.json', sha256: ref.sha256, byteLength: ref.byteLength, recordCount: rows.length, ...(prefix === 'f' ? { includesContext: true } : {}) };
+  });
+  const sourceIndex = {
+    resolverVersion: 'r', baseProjectionVersion: 'p',
+    mixedLookup: {
+      schemaVersion: mixedIndexSchemaVersion(schema), resolverVersion: 'r', baseProjectionVersion: 'p',
+      context: { path: 'data/archive2-source-verification/mixed-v1/context.json', sha256: contextRef.sha256, byteLength: contextRef.byteLength },
+      files, uidBuckets,
+    },
+    files: sourceFiles.map((sourceFile) => ({ sourceFile, qCount: rowsBySource.get(sourceFile).length })),
+  };
+  return { root, sourceIndex, base, sourceFiles };
+}
+
+for (const schema of ['v1', 'v2']) {
+  test(`the package verifies and ships mixed source verification data in schema ${schema}`, (t) => {
+    const { root, sourceIndex } = mixedFixture(schema);
+    t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+    const selection = new Map();
+    addMixedSourceVerificationFiles(selection, root, sourceIndex, 'fixture-index');
+    // context + one shard per source + 16 UID buckets
+    assert.equal(selection.size, 1 + 2 + 16);
+    assert.ok(selection.has('archive/data/archive2-source-verification/mixed-v1/context.json'));
+  });
+}
+
+test('the package refuses mixed data whose bytes, layout or rows do not match the index', (t) => {
+  const { root, sourceIndex, base, sourceFiles } = mixedFixture('v2');
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const shardPath = path.join(root, ...(base + 'sources/' + crypto.createHash('sha256').update(sourceFiles[0]).digest('hex') + '.json').split('/'));
+  const original = fs.readFileSync(shardPath, 'utf8');
+
+  fs.writeFileSync(shardPath, original.replace('"VERIFIED"', '"VERIFIEd"'));
+  assert.throws(() => addMixedSourceVerificationFiles(new Map(), root, sourceIndex, 'fixture-index'), /digest mismatch|byteLength mismatch/);
+  fs.writeFileSync(shardPath, original);
+
+  const unsupported = JSON.parse(JSON.stringify(sourceIndex));
+  unsupported.mixedLookup.schemaVersion = 'archive2-mixed-source-verification-index-v3';
+  assert.throws(() => addMixedSourceVerificationFiles(new Map(), root, unsupported, 'fixture-index'), /unsupported schema or coverage/);
+
+  // a v1 index over v2 resources (or the reverse) is a layout mismatch, never silently accepted
+  const crossed = JSON.parse(JSON.stringify(sourceIndex));
+  crossed.mixedLookup.schemaVersion = 'archive2-mixed-source-verification-index-v1';
+  assert.throws(() => addMixedSourceVerificationFiles(new Map(), root, crossed, 'fixture-index'), /does not match its index/);
 });

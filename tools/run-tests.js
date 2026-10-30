@@ -124,6 +124,46 @@ const requiredCommands = [
     args: ['--check', 'archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs']
   },
   {
+    label: 'tests/archive-pages-release-gate.test.mjs',
+    args: ['--test', 'tests/archive-pages-release-gate.test.mjs']
+  },
+  {
+    label: 'tests/apms-worker-deploy.test.mjs',
+    args: ['--test', 'tests/apms-worker-deploy.test.mjs']
+  },
+  {
+    label: 'tests/archive-pages-release-reg-commit.test.mjs',
+    args: ['--test', 'tests/archive-pages-release-reg-commit.test.mjs']
+  },
+  {
+    label: 'tests/ci-signal-hygiene.test.mjs',
+    args: ['--test', 'tests/ci-signal-hygiene.test.mjs']
+  },
+  {
+    label: 'tests/archive-progress-observer-bounded.test.mjs',
+    args: ['--test', 'tests/archive-progress-observer-bounded.test.mjs']
+  },
+  {
+    label: 'tests/archive-progress-observer.test.mjs',
+    args: ['--test', 'tests/archive-progress-observer.test.mjs']
+  },
+  {
+    label: 'tests/archive-progress-cache-targets.test.mjs',
+    args: ['--test', 'tests/archive-progress-cache-targets.test.mjs']
+  },
+  {
+    label: 'tests/archive-progress-realpaths.test.mjs',
+    args: ['--test', 'tests/archive-progress-realpaths.test.mjs']
+  },
+  {
+    label: 'tests/archive-progress-recovery.test.mjs',
+    args: ['--test', 'tests/archive-progress-recovery.test.mjs']
+  },
+  {
+    label: 'archive/tools/archive-progress-observer.test.mjs',
+    args: ['--test', 'archive/tools/archive-progress-observer.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-apply-bridge.test.mjs',
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
   },
@@ -223,6 +263,10 @@ const requiredCommands = [
   {
     label: 'tests/generated-source-svg-namespace.test.cjs',
     args: ['--test', 'tests/generated-source-svg-namespace.test.cjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/catalog.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/catalog.test.mjs']
   }
 ];
 

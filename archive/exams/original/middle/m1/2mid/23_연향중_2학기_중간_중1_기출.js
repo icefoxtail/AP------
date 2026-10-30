@@ -83,7 +83,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D에 대해, 선분 AB, 직선 AC와 BD(직선 l 전체), 반직선 AB(A에서 오른쪽), 반직선 BA(B에서 왼쪽)를 네 칸에 나누어 빨간색으로 강조한 그림.",
+    "solutionImageCaption": "선분 AB·BA, 반직선 AB·BA, 직선 AC·BD가 뻗는 모양",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -126,7 +130,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB 위에 점 A, N, M, B가 차례로 있고, AB는 16 cm, AM과 MB는 각각 8 cm이며 AN과 NM에는 같은 길이 눈금이 있는 그림.",
+    "solutionImageCaption": "M은 AB의 중점, N은 AM의 중점이므로 AN=NM이다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -209,7 +217,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체에서 모서리 AB와 BC를 빨간색으로 강조하고 꼭짓점 B의 직각 표시를 나타낸 그림",
+    "solutionImageCaption": "점 A에서 직선 BC에 내린 수선은 모서리 AB이고 B에서 직각을 이룬다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -292,7 +304,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각기둥에서 선분 AB와 만나는 모서리, 평행한 모서리 FG, 꼬인 위치의 모서리를 세 그림으로 나누어 빨간색으로 강조한 그림",
+    "solutionImageCaption": "AB와 만나는 모서리, 평행한 모서리, 꼬인 위치의 모서리를 구분해 보인다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -335,7 +351,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 평각 AOB 위의 반직선 OC, OD, OE가 만드는 네 각을 4t, t, u, 4u로 표시하고, 오른쪽 그림은 반직선 OC와 OE를 강조해 ∠COE를 t+u로 표시한 그림.",
+    "solutionImageCaption": "평각을 4t, t, u, 4u로 나누고 ∠COE는 t+u",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -406,7 +426,7 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "④",
-    "solution": "l과 m은 평행하므로 각 선분의 방향을 같은 수평선에 대하여 비교한다.\n왼쪽 선분의 35°와 130°인 꼭짓점의 방향 관계를 쓰면 가운데 하강 선분은 왼쪽 상승 선분보다 50° 방향이 작다.\n오른쪽 150° 조건으로 꼭짓점 각의 방향을 정리하면 x=β+100°, y=β+35°가 되어 x−y=65°이다.\n따라서 ④이다.",
+    "solution": "$l\\parallel m$이므로 각 꼭짓점에서 $l$, $m$에 평행한 보조선을 긋고 엇각과 평각을 이용한다.\n$y$인 꼭짓점에서 오른쪽으로 그은 보조선과, 그 꼭짓점에서 $130^\\circ$인 꼭짓점으로 향하는 선분이 이루는 각을 $\\beta$라 하자.\n$y$인 꼭짓점에서 아래 선분과 보조선(오른쪽)이 이루는 각은 $35^\\circ$의 엇각이므로 $35^\\circ$이다. 따라서 $y=\\beta+35^\\circ$이다.\n$130^\\circ$인 꼭짓점에서 보조선(왼쪽)과 왼쪽 선분이 이루는 각은 $\\beta$의 엇각이므로 $\\beta$이다. 오른쪽 아래로 내려가는 선분과 보조선(오른쪽)이 이루는 각을 $\\gamma$라 하면 평각에서 $\\beta+130^\\circ+\\gamma=180^\\circ$이므로 $\\gamma=50^\\circ-\\beta$이다.\n$150^\\circ$인 꼭짓점에서 $m$(오른쪽)과 아래 선분이 이루는 각이 $150^\\circ$이므로, 왼쪽으로 그은 보조선과 아래 선분이 이루는 각은 $180^\\circ-150^\\circ=30^\\circ$이다.\n$x$인 꼭짓점에서 왼쪽 위 선분과 보조선(왼쪽)이 이루는 각은 $\\gamma$의 엇각이므로 $\\gamma$이고, 오른쪽 위 선분과 보조선(오른쪽)이 이루는 각은 $30^\\circ$의 엇각이므로 $30^\\circ$이다. 평각에서 $\\gamma+x+30^\\circ=180^\\circ$이므로 $x=150^\\circ-\\gamma=150^\\circ-(50^\\circ-\\beta)=\\beta+100^\\circ$이다.\n따라서 $x-y=(\\beta+100^\\circ)-(\\beta+35^\\circ)=65^\\circ$이므로 정답은 ④이다.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -419,7 +439,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 선에 35°, 130°, 150°와 각 x, y가 표시되고, 각 꺾인 점에서 l과 평행한 점선 보조선을 그어 엇각 35°(빨간 호), β(파란 호), 50°−β(초록 호), 30°를 표시한 그림.",
+    "solutionImageCaption": "보조 평행선으로 엇각 35°, β, 50°−β, 30°를 옮겨 x와 y를 비교한다",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -458,7 +482,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 AOB 안에 O를 중심으로 한 호가 변 OA, OB와 C, D에서 만나고, O′X 위에 O′를 중심으로 같은 반지름의 호와 F, E를 잡아 반지름 OC=OD=O′E=O′F와 현 CD=FE를 같은 눈금으로 표시하며 두 각이 같음을 나타낸 그림.",
+    "solutionImageCaption": "같은 반지름과 같은 현의 길이로 각을 옮겨 ∠XO′E=∠AOB",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -528,7 +556,7 @@ window.questionBank = [
       "SAS"
     ],
     "answer": "⑤",
-    "solution": "A와 B가 O에서 일직선이고 C와 D도 O에서 일직선이므로 OB=OA+AB, OD=OC+CD이다.\nOA=OC, AB=CD에서 OB=OD를 얻는다.\n또 ∠AOD와 ∠COB는 맞꼭지각이고 OA=OC이므로 두 변과 그 끼인각이 각각 같아 SAS 합동이다.\n따라서 ⑤이다.",
+    "solution": "$O$, $A$, $B$가 한 직선 위에 있고 $O$, $C$, $D$도 한 직선 위에 있으므로 $OB=OA+AB$, $OD=OC+CD$이다.\n$OA=OC$, $AB=CD$에서 $OB=OD$를 얻는다.\n$\\triangle AOD$와 $\\triangle COB$에서 $\\angle AOD$와 $\\angle COB$는 모두 두 삼각형이 함께 가지는 공통인 각 $\\angle O$이므로 크기가 같다.\n즉 $OA=OC$, $OD=OB$이고 그 끼인각 $\\angle O$가 공통이므로 두 변과 그 끼인각이 각각 같아 SAS 합동이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -541,7 +569,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 O에서 뻗은 두 반직선 위에 A, B와 C, D가 있고, 왼쪽은 삼각형 AOD, 오른쪽은 삼각형 COB의 변을 빨갛게 강조하며 OA=OC는 눈금 두 개, AB=CD는 눈금 한 개, 공통각 ∠O를 표시한 그림.",
+    "solutionImageCaption": "OA=OC, AB=CD이고 ∠O가 공통인 두 삼각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -586,7 +618,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD 안에 BC를 한 변으로 하는 정삼각형 BCE가 있고, E에서 AB와 BC에 내린 점선 수선이 표시되며 E에서 AB까지의 거리 4 cm와 밑변 AB=8 cm, 삼각형 ABE가 색칠된 그림.",
+    "solutionImageCaption": "E에서 AB까지의 거리는 4 cm, 밑변 AB는 8 cm",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -630,7 +666,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 l 위에 D, A, E가 차례로 있고 B, C에서 내린 수선의 발이 D, E인 직각이등변삼각형 ABC가 있다. 직각삼각형 ABD와 CAE는 합동으로 색칠되고, 같은 길이와 같은 각이 눈금과 호로 표시되며 DE=28 cm, EC=7 cm가 적힌 그림.",
+    "solutionImageCaption": "△ABD≅△CAE이므로 AD=CE, BD=AE",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -673,7 +713,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 삼각형이 한 점에서 꼭짓점이 마주 보며 겹쳐 있고, 왼쪽 삼각형의 각 40°, 35°, 오른쪽 삼각형의 각 27°와 x가 표시되며 교점에서 맞꼭지각 105°와 105°가 같은 호로 표시된 그림.",
+    "solutionImageCaption": "교점의 맞꼭지각 105°와 105°",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -702,8 +746,8 @@ window.questionBank = [
       "$900^\\circ$",
       "$1080^\\circ$"
     ],
-    "answer": "③",
-    "solution": "그림의 선분을 따라 생기는 네 개의 삼각형으로 분할하여 각각의 내각의 합을 적용한다.\n각 삼각형의 내각 합은 180°이므로 a부터 k까지의 합은 4×180°=720°이다.\n따라서 ③이다.",
+    "answer": "②",
+    "solution": "선분이 서로 만나는 세 점으로 나누어 삼각형 3개와 8각형의 내각의 합을 이용한다.\n선분 $ac$와 $bd$, $eg$와 $fh$, $hj$와 $ik$가 만나는 점을 각각 $P$, $Q$, $R$라 하고 $\\angle bPc=x$, $\\angle gQf=y$, $\\angle jRi=z$라 하자.\n삼각형 $bPc$, $gQf$, $jRi$에서 $\\angle b+\\angle c=180^\\circ-x$, $\\angle g+\\angle f=180^\\circ-y$, $\\angle j+\\angle i=180^\\circ-z$이다.\n8각형 $aPdeQhRk$의 내각의 합은 $180^\\circ\\times(8-2)=1080^\\circ$이고, 맞꼭지각에 의해 $P$, $Q$, $R$에서의 내각은 각각 $360^\\circ-x$, $360^\\circ-y$, $360^\\circ-z$이므로 $\\angle a+\\angle d+\\angle e+\\angle h+\\angle k=x+y+z$이다.\n따라서 $\\angle a+\\cdots+\\angle k=(540^\\circ-x-y-z)+(x+y+z)=540^\\circ$이므로 정답은 ②이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -716,7 +760,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분이 세 곳에서 서로 만나는 도형에 각 a부터 k까지가 표시되어 있고, 세 교점마다 만들어지는 삼각형의 각이 빨강, 파랑, 초록 호로 구분되고 맞꼭지각이 같은 색의 호로 표시된 그림.",
+    "solutionImageCaption": "세 교점의 삼각형과 맞꼭지각",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -760,7 +808,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변을 공유하는 정팔각형과 정오각형이 있고, 두 도형의 변을 연장해 만든 사각형이 색칠되어 세 내각 45°, 72°, 117°와 구하는 각 x가 표시된 그림.",
+    "solutionImageCaption": "연장선이 만드는 사각형의 내각 45°, 72°, 117°와 x",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -839,7 +891,11 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 CD를 D 쪽으로 연장해 DG=BE인 점 G를 잡고, 합동인 삼각형 ABE와 ADG, 직각이등변삼각형 AEG를 점선으로 나타내며 ∠EAF=45°, ∠AFE=80°, ∠AGF=55°를 표시한 그림.",
+    "solutionImageCaption": "DG=BE로 △ABE≡△ADG, △AEG는 직각이등변삼각형",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -877,7 +933,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 BE 위에서 점 O에 모인 세 각 ∠BOA=(x+20)°, 직각 ∠AOF, ∠FOE=(3x+10)°가 이웃해 평각을 이루는 모습을 나타낸 그림",
+    "solutionImageCaption": "직선 BE 위의 세 각 (x+20)°, 90°, (3x+10)°의 합은 180°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -915,7 +975,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 선에서 꺾인 두 점마다 보조 평행선을 긋고 엇각 40°, 50°, 30°를 같은 색 호로 짝지어 보이며 x가 40°와 50°로 나뉘는 그림",
+    "solutionImageCaption": "보조 평행선을 그으면 엇각 40°, 50°, 30°가 생기고 x는 40°와 50°로 나뉜다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -991,6 +1055,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 세 내각 85-2x°, 75°, 140-4x°와 꼭짓점 C의 외각 4x+40°를 나타낸 그림",
+    "solutionImageCaption": "꼭짓점 C의 외각이 (4x+40)°이므로 내각은 (140-4x)°이다.",
+    "solutionImageSize": "medium"
   }
 ];

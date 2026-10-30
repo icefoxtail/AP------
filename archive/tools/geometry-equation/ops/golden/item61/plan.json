@@ -1,0 +1,69 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"text": "원뿔대와 회전축"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [{"kind": "CONE_FRUSTUM", "radius": 4, "topRadius": 2, "height": 5, "axis": {"label": "회전축"}}],
+        "section": {"kind": "AXIAL"}
+      }
+    },
+    {
+      "caption": {"text": "두 모선의 길이가 같다"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [{"kind": "CONE", "radius": 3, "height": 7}],
+        "section": {"kind": "AXIAL"},
+        "marks": {"equalSlant": true}
+      }
+    },
+    {
+      "caption": {"text": "세 꼭짓점을 지나는 평면"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [{"kind": "PRISM", "base": {"kind": "RECT", "width": 4, "depth": 3}, "height": 2, "names": "EFGHABCD", "cuts": [{"vertices": ["A", "C", "F"]}]}],
+        "highlights": [{"polygon": ["A", "C", "F"], "fill": "WARM"}]
+      }
+    },
+    {
+      "caption": {"text": "반구의 수평 단면"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [{"kind": "HEMISPHERE", "radius": 3}],
+        "section": {"kind": "LEVEL", "at": "1/2"}
+      }
+    },
+    {
+      "caption": {"text": "원기둥 속 공 3개"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [{"kind": "CYLINDER", "radius": 3, "height": 18, "stack": {"count": 3, "radius": 3}}]
+      }
+    },
+    {
+      "caption": {"text": "육각뿔의 전개도"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "net": {
+          "solid": {"kind": "PYRAMID", "base": {"kind": "REGULAR", "n": 6, "side": 4}, "height": 3, "names": "......."},
+          "root": "bottom",
+          "joins": [["bottom", "side0"], ["bottom", "side1"], ["bottom", "side2"], ["bottom", "side3"], ["bottom", "side4"], ["bottom", "side5"]],
+          "highlights": [{"face": "bottom", "fill": "MEDIUM"}],
+          "faceLabels": [
+            {"face": "side0", "text": "①"}, {"face": "side1", "text": "②"}, {"face": "side2", "text": "③"}, {"face": "side3", "text": "④"},
+            {"face": "side4", "text": "⑤"}, {"face": "side5", "text": "⑥"}, {"face": "bottom", "text": "⑦"}
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "E28c 정답지: 회전축 낱말, 같은 모선 눈금, 꼭짓점 세 개로 자른 입체, 반구의 수평 단면, 원기둥 속 공 3개, 면 번호가 있는 전개도를 한 격자(2열 3줄)에",
+  "sourceConditions": [
+    {"id": "c1", "condition": "회전체를 회전축을 포함하는 평면으로 자른 단면, 직육면체의 한 꼭짓점을 자른 입체, 공 3개가 꼭 맞게 든 원기둥, 육각뿔의 면의 개수", "mappedTo": "panels"}
+  ],
+  "newVisualInformation": [
+    "회전축·같은 모선 눈금·절단면·반구의 단면·쌓인 공 3개·면 번호가 한 그림에서 각각 맞는 자리에 놓인 것"
+  ]
+}

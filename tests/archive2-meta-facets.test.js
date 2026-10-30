@@ -87,10 +87,12 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
 test('the lane never changes the canonical resolution or the strict approval metric', async () => {
   const data = await catalog();
   const auth = { canonicalAuthority: data.canonicalAuthority };
-  assert.equal(data.records.filter(row => core.basicEligibility(row, auth).ok).length, 1496);
+  // 1496 before the 2026-10-30 release sync; main's f61861cb9 restored the figure of 25_왕의중 2학기 중간 중1 q14 (a changed
+  // stem), so that one question's recorded approval no longer matches its bytes and leaves the strict count.
+  assert.equal(data.records.filter(row => core.basicEligibility(row, auth).ok).length, 1495);
   assert.equal(data.records.filter(row => core.advancedEligible(row, auth)).length, 195);
   assert.equal(data.records.filter(row => row.problemTypeKey).length, 549);
-  assert.equal(data.records.filter(row => row.curriculumKey).length, 3207, 'canonical curriculumKey is untouched');
+  assert.equal(data.records.filter(row => row.curriculumKey).length, 3206, 'canonical curriculumKey is untouched (3207 before the same changed-stem question, see above)');
   // every canonically validated type/template is also in the lane with the same value and is 승인
   for (const row of data.records.filter(candidate => core.advancedEligible(candidate, auth))) {
     const facets = core.metaFacetsOf(row);
@@ -540,7 +542,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
     assert.match(workspace, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
   assert.match(workspace, /archive2-unified-units\.js\?v=20261030-s11-1/);
-  assert.match(workspace, /archive2-canonical\.js\?v=20261030-s11-1/);
+  assert.match(workspace, /archive2-canonical\.js\?v=20261030-release-sync-1/);
   // The workspace itself moved on with the quick assessments (S8).
   assert.match(workspace, /archive2-workspace\.js\?v=20261030-s9-1/);
   const unitPage = read('unit-past-exams.html');
@@ -551,5 +553,5 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');
   assert.match(clinic, new RegExp('archive2-core\\.js\\?v=' + version));
   assert.match(clinic, new RegExp('problem-bank-meta\\.js\\?v=' + version));
-  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=20261030-s11-1/);
+  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=20261030-release-sync-1/);
 });

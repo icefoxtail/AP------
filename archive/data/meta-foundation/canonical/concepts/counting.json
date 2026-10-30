@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COUNTING",
-  "shardVersion": "1.0.6",
+  "shardVersion": "1.0.7",
   "status": "ACTIVE",
-  "conceptCount": 44,
+  "conceptCount": 46,
   "concepts": [
     {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
@@ -1306,6 +1306,76 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BIJECTION_COUNTING",
+      "canonicalLabelKo": "일대일대응과 순열 세기",
+      "definition": "정의역 원소가 서로 다른 공역 원소에 대응하는 조건을 만족하는 함수 개수를 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_BIJECTION_COUNTING for PT_FUNCTION_COUNTING/TPL_CONSTRAINED_FUNCTION_COUNT at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_COMBINATION_ORDER",
+      "canonicalLabelKo": "조합 선택 후 순서 배정",
+      "definition": "조건을 만족하는 원소 집합을 조합으로 선택한 뒤 남은 원소의 배치를 곱의 법칙으로 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_COMBINATION_ORDER for PT_FUNCTION_COUNTING/TPL_CONSTRAINED_FUNCTION_COUNT at H22-C2-07-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.audit.json",
+            "sha256": "83d5ad5bae7cee674ebe63ea725f0651b7b839c88d7bb4a483a9c164e15a3b7c"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
       ],
       "ownerConceptShard": "COUNTING"
     }

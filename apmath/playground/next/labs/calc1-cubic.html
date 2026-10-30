@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>삼차함수 비율관계 · AP Math 실험실</title>
+<meta name="description" content="미적분Ⅰ 삼차함수 비율관계: 1:1:1 & 1:√3 박스, 사선 접선 2:1 불변, 넓이 1/12과 변곡할선, f(x)↔f'(x) 동기화, 외부점 접선 개수를 직접 조작하며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<script>
+/* ==========================================================================
+   미적분Ⅰ · 삼차함수 비율관계 (AP Math Lab 2.0 이식본)
+   원본: labs/미적분1/삼차함수 비율관계.html
+   - 문제·단계·정석/빠른 풀이 문구(examData)는 원본을 그대로 옮겼습니다.
+   - 수학 함수(삼차함수 f, 도함수, 변곡접선, 삼차방정식 실근 솔버, 외부점 접선 접점,
+     일반형 식 생성)는 원본과 같은 식입니다. 원본이 전역 state를 읽던 것을 상태 s를
+     첫 인자로 받도록만 바꿨습니다.
+   - 바뀐 점: 셸·레이아웃은 공용 키트가 담당, 무대는 1:1 축척, 점은 직접 끌 수 있는 손잡이
+     (극소 B·변곡점 I·접점 T·외부점 P·수평선 y=k), 의미색으로 색 통일.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const { tex, fmt, clamp } = APLab;
+
+  /* ---------- 1. 삼차함수 f(x) = a(x-m)³ - 3aδ(x-m) + ym 와 도함수 (원본 evalF / evalFp) ---------- */
+  function evalF(s, x) {
+    const u = x - s.m;
+    return s.a * u * u * u - 3 * s.a * s.delta * u + s.ym;
+  }
+
+  function evalFp(s, x) {
+    const u = x - s.m;
+    return 3 * s.a * (u * u - s.delta);
+  }
+
+  // 변곡점에서의 접선 식 y = g_inf(x)
+  function evalInflectionTangent(s, x) {
+    const slopeI = -3 * s.a * s.delta;
+    return s.ym + slopeI * (x - s.m);
+  }
+
+  // 삼차방정식 c3*u^3 + c2*u^2 + c1*u + c0 = 0 의 서로 다른 실근 배열 반환
+  function solveCubicRealRoots(c3, c2, c1, c0) {
+    if (Math.abs(c3) < 1e-9) return [];
+    const A = c2 / c3;
+    const B = c1 / c3;
+    const C = c0 / c3;
+
+    // u = y - A/3 치환 -> y^3 + p*y + q = 0
+    const p = B - (A * A) / 3;
+    const q = (2 * A * A * A) / 27 - (A * B) / 3 + C;
+    const disc = (q * q) / 4 + (p * p * p) / 27;
+    const shift = -A / 3;
+    const roots = [];
+
+    if (Math.abs(disc) < 1e-5) {
+      if (Math.abs(q) < 1e-6) {
+        roots.push(shift);
+      } else {
+        const u1 = Math.cbrt(-q / 2);
+        roots.push(2 * u1 + shift, -u1 + shift);
+      }
+    } else if (disc > 0) {
+      const sqrtD = Math.sqrt(disc);
+      const u = Math.cbrt(-q / 2 + sqrtD);
+      const v = Math.cbrt(-q / 2 - sqrtD);
+      roots.push(u + v + shift);
+    } else {
+      const r = Math.sqrt(Math.max(0, -p / 3));
+      const cosArg = Math.max(-1, Math.min(1, -q / (2 * r * r * r)));
+      const phi = Math.acos(cosArg);
+      roots.push(
+        2 * r * Math.cos(phi / 3) + shift,
+        2 * r * Math.cos((phi + 2 * Math.PI) / 3) + shift,
+        2 * r * Math.cos((phi + 4 * Math.PI) / 3) + shift
+      );
+    }
+    return roots.sort((x, y) => x - y);
+  }
+
+  // 외부 점 P(x0, y0)에서 곡선에 그은 접선의 접점 x좌표 t들을 구함
+  // y0 - f(t) = f'(t)(x0 - t)
+  // u = t - m, u0 = x0 - m, v0 = y0 - ym 치환 시:
+  // 2a*u^3 - 3a*u0*u^2 + (3a*delta*u0 + v0) = 0
+  function getTangentContactsFromPoint(s, x0, y0) {
+    const u0 = x0 - s.m;
+    const v0 = y0 - s.ym;
+    const a = s.a;
+    const c3 = 2 * a;
+    const c2 = -3 * a * u0;
+    const c1 = 0;
+    const c0 = 3 * a * s.delta * u0 + v0;
+
+    const uRoots = solveCubicRealRoots(c3, c2, c1, c0);
+    // 중복 제거 필터링
+    const uniqueT = [];
+    uRoots.forEach((u) => {
+      const tVal = u + s.m;
+      if (!uniqueT.some((existing) => Math.abs(existing - tVal) < 0.03)) {
+        uniqueT.push(tVal);
+      }
+    });
+    return uniqueT;
+  }
+
+  // 일반형 f(x) = ax³ + bx² + cx + d 수식 문자열 생성
+  function getExpandedFormulaLatex(s) {
+    const a = s.a;
+    const m = s.m;
+    const dlt = s.delta;
+    const ym = s.ym;
+
+    const A = a;
+    const B = -3 * a * m;
+    const C = 3 * a * (m * m - dlt);
+    const D = a * (-m * m * m + 3 * m * dlt) + ym;
+
+    const fmtNum = (v, isFirst = false) => {
+      if (Math.abs(v) < 1e-6) return null;
+      const sign = v > 0 ? (isFirst ? '' : ' + ') : (isFirst ? '-' : ' - ');
+      const absV = Math.abs(v);
+      const numStr = Number.isInteger(+absV.toFixed(2)) ? absV.toFixed(0) : absV.toFixed(2);
+      return { sign, absV, numStr };
+    };
+
+    let str = 'f(x) = ';
+    const t3 = fmtNum(A, true);
+    if (t3) str += `${t3.sign}${Math.abs(t3.absV - 1) < 1e-6 ? '' : t3.numStr}x^3`;
+
+    const t2 = fmtNum(B, false);
+    if (t2) str += `${t2.sign}${Math.abs(t2.absV - 1) < 1e-6 ? '' : t2.numStr}x^2`;
+
+    const t1 = fmtNum(C, false);
+    if (t1) str += `${t1.sign}${Math.abs(t1.absV - 1) < 1e-6 ? '' : t1.numStr}x`;
+
+    const t0 = fmtNum(D, false);
+    if (t0) str += `${t0.sign}${t0.numStr}`;
+
+    let ds = "f'(x) = ";
+    const d2 = fmtNum(3 * A, true);
+    if (d2) ds += `${d2.sign}${Math.abs(d2.absV - 1) < 1e-6 ? '' : d2.numStr}x^2`;
+    const d1 = fmtNum(2 * B, false);
+    if (d1) ds += `${d1.sign}${Math.abs(d1.absV - 1) < 1e-6 ? '' : d1.numStr}x`;
+    const d0 = fmtNum(C, false);
+    if (d0) ds += `${d0.sign}${d0.numStr}`;
+
+    return { fLatex: str, fpLatex: ds };
+  }
+
+  /* ---------- 2. 문제·풀이 데이터 (원본 examData 그대로) ---------- */
+    const examData = {
+      1: {
+        badge: "MODE 1 · 변곡점 대칭과 4×2 비율 격자 박스 (1:1:1 & 1:√3)",
+        hint: "초록 점 <span class='text-emerald-300 font-bold'>극소 B</span>나 보라색 <span class='text-purple-300 font-bold'>수평선 y=k</span>를 드래그해 보세요! 상단 개형 프리셋으로 극값 소멸 조건도 실험할 수 있습니다.",
+        tag: "평가원·수능 4점 최빈출 1순위 비율 정리",
+        targetTime: "목표 시간: 5초",
+        question: () => `삼차함수 ${tex('f(x) = x^3 - 3x^2 + 2')} 의 극대점을 ${tex('A')}, 극소점을 ${tex('B')}라 하자. 점 ${tex('A')}에서의 접선이 곡선과 다시 만나는 점을 ${tex('C')}, 점 ${tex('B')}에서의 접선이 곡선과 다시 만나는 점을 ${tex('D')}라 할 때, 두 점 ${tex('D, C')}의 ${tex('x')}좌표와 방정식 ${tex('f(x)=0')}의 세 실근을 구하시오.`,
+        answerBadge: () => `${tex('x_D=-1, x_C=3')} / 근 ${tex('1, 1\\pm\\sqrt{3}')}`,
+        snap: { a: 1.0, m: 1.0, ym: 0.0, delta: 1.0, t: 0.0, kLine: 0.0, px: 2.0, py: 2.0, dualView: false },
+        steps: [
+          "변곡점 I(m, f(m)) 대칭 중심 및 극대·극소 수평 접선 작도",
+          "4×2 비율 격자 박스 & 1 : 1 : 1 (2 : 1) 등간격 수직 분할선",
+          "변곡점 수평선 1 : √3 비율 & 수평선 y = k 실근 스캐너"
+        ],
+        textbook: () => ({
+          steps: `① 도함수 ${tex("f'(x) = 3x^2 - 6x = 3x(x - 2) = 0")} 에서 극대 ${tex('x = 0')}, 극소 ${tex('x = 2')}<br/>
+② 점 ${tex('C')}를 구하기 위해 방정식 ${tex('x^3 - 3x^2 + 2 = 2')} 연립: ${tex('x^2(x - 3) = 0 \\implies x_C = 3')}<br/>
+③ 점 ${tex('D')}를 구하기 위해 ${tex('x^3 - 3x^2 + 4 = (x + 1)(x - 2)^2 = 0 \\implies x_D = -1')}<br/>
+④ ${tex('f(x)=0')}의 실근을 구하기 위해 ${tex('x=1')} 대입 조립제법 후 근의 공식 적용:<br/>
+&nbsp;&nbsp;${tex('(x-1)(x^2 - 2x - 2) = 0 \\implies x = 1, \\; 1 \\pm \\sqrt{3}')}...`,
+          warning: "⚠️ 시험장에서 매번 접선과 연립해 조립제법과 근의 공식을 쓰면 계산 실수와 시간 낭비가 발생합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 변곡점 ${tex('x_I = 1')}, 극대 ${tex('x_A = 0')}, 극소 ${tex('x_B = 2')} 이므로 한 칸 간격 <strong class="text-amber-300">${tex('h = 1')}</strong>!<br/>
+② <strong>[1 : 1 : 1 비율 법칙]</strong>으로 방정식 없이 즉시 <strong class="text-amber-300">${tex('x_D = -1, \\; x_C = 3')}</strong>!<br/>
+③ 변곡점 높이(${tex('y=0')})와 만나는 세 실근은 <strong>[1 : √3 비율 법칙]</strong>에 의해 즉시 <strong class="text-purple-300">${tex('1 - \\sqrt{3}, \\; 1, \\; 1 + \\sqrt{3}')}</strong>!`,
+          highlight: "💡 삼차함수 개형은 【 수평 접선 1 : 1 : 1 】과 【 변곡점 수평선 1 : √3 】 두 개의 비율 자로 모든 교점이 암산됩니다!"
+        })
+      },
+
+      2: {
+        badge: "MODE 2 · 기울어진 사선 접선에서도 성립하는 2:1 내분 불변성",
+        hint: "노란 접점 <span class='text-amber-300 font-bold'>T(t, f(t))</span>를 곡선을 따라 드래그해 보세요! 접선이 기울어져도 <span class='text-pink-300 font-bold'>변곡점 기준 1 : 2 (전체 2 : 1)</span> 비율이 완벽히 유지됩니다.",
+        tag: "수능 14번·22번 사선 접선 킬러 해법",
+        targetTime: "목표 시간: 5초",
+        question: () => `삼차함수 ${tex('f(x) = x^3 - 3x^2 - 3x + 5')} 위의 점 ${tex('T(0, 5)')}에서의 접선 ${tex('l')}이 곡선 ${tex('y = f(x)')}와 다시 만나는 점을 ${tex('Q(q, f(q))')}라 할 때, 점 ${tex('Q')}의 ${tex('x')}좌표 ${tex('q')}와 접선 ${tex('l')}의 기울기를 구하시오.`,
+        answerBadge: () => `${tex('q = 3, \\; Q(3, -4)')}, 기울기 ${tex('= -3')}`,
+        snap: { a: 1.0, m: 1.0, ym: 0.0, delta: 2.0, t: 0.0, kLine: 0.0, px: 2.0, py: 2.0, dualView: false },
+        steps: [
+          "접점 T(t, f(t))에서의 사선 접선 l 및 다시 만나는 교점 Q(q, f(q))",
+          "접점 T · 변곡점 I · 교점 Q 수직 투영선 (x좌표 1 : 2 비율 자)",
+          "근과 계수의 관계 2t + q = 3m 불변식 판서"
+        ],
+        textbook: () => ({
+          steps: `① 도함수 ${tex("f'(x) = 3x^2 - 6x - 3")} 에 ${tex('x = 0')} 대입: ${tex("f'(0) = -3")}<br/>
+② 점 ${tex('T(0, 5)')}에서의 접선의 방정식 작성: ${tex('y = -3x + 5')}<br/>
+③ 원래 삼차함수와 연립하여 이항:<br/>
+&nbsp;&nbsp;${tex('x^3 - 3x^2 - 3x + 5 = -3x + 5 \\implies x^3 - 3x^2 = 0')}<br/>
+④ 인수분해 ${tex('x^2(x - 3) = 0')} 에서 중근 ${tex('x = 0')} 제외한 나머지 실근 ${tex('q = 3')} 계산...`,
+          warning: "⚠️ 접점이 미지수이거나 식이 복잡할 때 접선 식을 세워 연립하면 계산량이 폭증합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 삼차함수와 어떤 직선이 만나든 <strong>[세 실근의 합 = 3 × 변곡점 x좌표]</strong> 불변!<br/>
+② 접점 ${tex('t')}는 중근이므로 무조건 <strong class="text-pink-300">${tex('2t + q = 3m')}</strong> (변곡점 ${tex('m')}이 ${tex('T')}와 ${tex('Q')}를 <strong class="text-amber-300">${tex('1 : 2')} 내분</strong>)!<br/>
+③ 변곡점 ${tex('m = 1')}, 접점 ${tex('t = 0')} 대입: ${tex('2(0) + q = 3(1) \\implies')} 연립 없이 즉시 <strong class="text-amber-300">${tex('q = 3')}</strong>!`,
+          highlight: "💡 수평 접선이든 기울어진 사선 접선이든 무조건 【 2t + q = 3m (접점:변곡점:교점 = 1:2) 】 공식을 쓰세요!"
+        })
+      },
+
+      3: {
+        badge: "MODE 3 · 접선과 삼차함수의 넓이 (1/12 공식) & 변곡할선 이등분",
+        hint: "접점 <span class='text-amber-300 font-bold'>T</span>를 움직여 보세요! Step 3을 켜면 <span class='text-sky-300 font-bold'>변곡점을 지나는 직선은 항상 두 영역의 넓이를 정확히 이등분(S₁ = S₂)</span>함을 볼 수 있습니다.",
+        tag: "평가원 정적분 넓이 4점 초스피드 공식",
+        targetTime: "목표 시간: 5초",
+        question: () => `삼차함수 ${tex('f(x) = x^3 - 3x^2 + 2')} 위의 점 ${tex('A(0, 2)')}에서의 접선과 곡선으로 둘러싸인 넓이 ${tex('S')}와, 곡선과 ${tex('x')}축(변곡점 할선)으로 둘러싸인 두 영역의 넓이 합 ${tex('S_1 + S_2')}를 각각 구하시오.`,
+        answerBadge: () => `접선 넓이 ${tex('S = \\dfrac{27}{4}')}, 할선 넓이 ${tex('= \\dfrac{9}{2}')}`,
+        snap: { a: 1.0, m: 1.0, ym: 0.0, delta: 1.0, t: 0.0, kLine: 0.0, px: 2.0, py: 2.0, dualView: false },
+        steps: [
+          "접점 T(α)와 교점 Q(β) 사이의 접선 및 둘러싸인 색칠 영역 S",
+          "접점-교점 수평 거리 L = |β - α| = 3|t - m| 가이드",
+          "변곡점 대칭 할선 넓이 이등분 (S₁ = S₂ = |a|/4 · d⁴) 비교 표시"
+        ],
+        textbook: () => ({
+          steps: `① 점 ${tex('A(0, 2)')}에서의 접선 ${tex('y = 2')} 와 곡선의 교점 ${tex('x = 0, 3')} 확인<br/>
+② 곡선과 접선의 차는 ${tex('f(x)-2=x^2(x-3)')}이므로 ${tex('0\\le x\\le3')}에서 곡선이 접선 아래에 있다. 따라서<br/>
+&nbsp;&nbsp;${tex('S=\\int_0^3(2-f(x))\\,dx=\\int_0^3(-x^3+3x^2)\\,dx=[-x^4/4+x^3]_0^3=27/4')}이다.<br/>
+③ 변곡점 기준으로 ${tex('u=x-1')}이라 두면 ${tex('f(x)=u^3-3u')}. 영점은 ${tex('u=-\\sqrt3,0,\\sqrt3')}이고 좌우 영역은 대칭이다. 한쪽 넓이는 ${tex('\\int_{-\\sqrt3}^{0}(u^3-3u)\\,du=9/4')}이므로 ${tex('S_1+S_2=9/2')}이다.`,
+          warning: "무리수 경계도 치환과 정확한 원시함수로 계산할 수 있다. 이 문항에서는 변곡점 중심으로 좌우가 대칭임을 이용한다."
+        }),
+        shortcut: () => ({
+          steps: `① 삼차함수의 최고차항 계수가 ${tex('a')}이고 접점과 재교점의 x좌표가 ${tex('\\alpha,\\beta')}이면 접선과 함수의 차가 ${tex('a(x-\\alpha)^2(x-\\beta)')}로 인수분해된다. 이 조건에서 넓이는 <strong class="text-pink-300">${tex('S = \\dfrac{|a|}{12}(\\beta - \\alpha)^4 = \\dfrac{1}{12} \\times 3^4 = \\dfrac{27}{4}')}</strong>!<br/>
+② 이 문항은 변곡점 수평선과 교점이 대칭인 특수 경우다. 각 교점까지의 간격은 ${tex('d=\\sqrt3')}이고 한쪽 넓이는 ${tex('S_1=S_2=|a|d^4/4')}이다.<br/>
+③ 따라서 ${tex('S_1 + S_2 = 2 \\times \\dfrac{1}{4}(\\sqrt{3})^4 = \\dfrac{9}{2} = 4.5')} 암산 완료!`,
+          highlight: "접선 공식은 접점이 중근인 삼차함수와 직선의 차, 할선 넓이 공식은 변곡점 중심의 대칭 구간이라는 가정 아래 적용한다."
+        })
+      },
+
+      4: {
+        badge: "MODE 4 · 원함수 f(x) ↔ 도함수 f'(x) 상하 동기화 & 극값 차 공식",
+        hint: "상단 <span class='text-amber-300 font-bold'>원함수 f(x)</span>와 하단 <span class='text-sky-300 font-bold'>도함수 f'(x)</span>가 수직 정렬되었습니다! 도함수의 정적분 넓이가 곧 <span class='text-pink-300 font-bold'>극댓값-극솟값 높이 차 Δy</span>가 됨을 확인하세요.",
+        tag: "미적분Ⅰ 최고난도 개형 추론 핵심 원리",
+        targetTime: "목표 시간: 5초",
+        question: () => `삼차함수 ${tex('f(x) = x^3 - 3x^2 + 2')} 의 도함수 ${tex("y = f'(x)")}의 그래프가 ${tex('x')}축과 만나는 두 점을 ${tex('\\alpha, \\beta')}라 하자. 도함수 ${tex("y = f'(x)")}와 ${tex('x')}축으로 둘러싸인 부분의 넓이 ${tex('S_d')}와 함수 ${tex('f(x)')}의 극댓값과 극솟값의 차를 비교하시오.`,
+        answerBadge: () => `${tex('S_d = f(0) - f(2) = 4')} (완벽 일치)`,
+        snap: { a: 1.0, m: 1.0, ym: 0.0, delta: 1.0, t: 1.4, kLine: 0.0, px: 2.0, py: 2.0, dualView: true },
+        steps: [
+          "상단 원함수 f(x) 극대·극소·변곡점 ↔ 하단 도함수 f'(x) 영점·꼭짓점 수직 동기화선",
+          "하단 도함수 정적분 면적 S_d = ∫|f'(x)|dx 색칠 및 상단 극값 높이차 Δy 바",
+          "탐침점 P(t, f(t)) 접선 기울기 = 도함수 함숫값 f'(t) 실시간 매칭"
+        ],
+        textbook: () => ({
+          steps: `① ${tex("f'(x) = 3x^2 - 6x = 3x(x - 2)")} 이므로 ${tex('x')}절편은 ${tex('\\alpha = 0, \\; \\beta = 2')}<br/>
+② 도함수와 ${tex('x')}축 사이의 정적분 계산:<br/>
+&nbsp;&nbsp;${tex("S_d = \\displaystyle\\int_{0}^{2} (-3x^2 + 6x)\\,dx = \\left[ -x^3 + 3x^2 \\right]_{0}^{2} = -8 + 12 = 4")}<br/>
+③ 원함수의 극댓값 ${tex('f(0) = 2')}, 극솟값 ${tex('f(2) = -2')}를 따로 구해 빼면 ${tex('2 - (-2) = 4')}...`,
+          warning: "⚠️ 도함수의 정적분과 원함수의 함숫값 차이를 별개의 문제로 보고 두 번 계산하면 미적분Ⅰ 킬러 문제를 풀 수 없습니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 미적분학의 기본정리에 의해 <strong class="text-sky-300">【 도함수 ${tex("f'(x)")}의 정적분 넓이 = 원함수 ${tex('f(x)')}의 극댓값·극솟값 높이 차 ${tex('\\Delta y')} 】</strong>!<br/>
+② 이차함수 ${tex("f'(x) = 3a(x-\\alpha)(x-\\beta)")} 의 넓이 공식에 의해:<br/>
+&nbsp;&nbsp;<strong class="text-amber-300">${tex('S_d = \\Delta y = \\dfrac{|3a|}{6}(\\beta - \\alpha)^3 = \\dfrac{|a|}{2}(\\beta - \\alpha)^3 = 4|a|h^3')}</strong>!<br/>
+③ ${tex('a = 1, \\; \\beta - \\alpha = 2')} 대입 시 1초 만에 <strong class="text-emerald-300">${tex('S_d = \\Delta y = \\dfrac{1}{2} \\times 2^3 = 4')}</strong>!`,
+          highlight: "💡 『도함수의 정적분 넓이 = 원함수의 함숫값 변화량(극값 차) = |a|/2·(β-α)³』 — 미적분Ⅰ 전체를 관통하는 제1원리입니다!"
+        })
+      },
+
+      5: {
+        badge: "MODE 5 · 곡선 밖의 점 P(x₀, y₀)에서 그은 접선의 개수 (1·2·3개 영역)",
+        hint: "칠판 위의 <span class='text-amber-300 font-bold'>노란 점 P(x₀, y₀)</span>를 마우스로 아무 영역이나 드래그해 보세요! 점 P에서 곡선에 그어지는 <span class='text-pink-300 font-bold'>실제 접선들(1개~3개)</span>이 실시간으로 작도됩니다!",
+        tag: "수능·평가원 합답형(ㄱ,ㄴ,ㄷ) & 22번 킬러 주제",
+        targetTime: "목표 시간: 5초",
+        question: () => `좌표평면 위의 점 ${tex('P(2, 2)')}에서 삼차함수 ${tex('f(x) = x^3 - 3x^2 + 2')}의 그래프에 그을 수 있는 서로 다른 접선의 개수를 구하시오.`,
+        answerBadge: () => `점 ${tex('P(2, 2)')}에서 ${tex('1')}개`,
+        snap: { a: 1.0, m: 1.0, ym: 0.0, delta: 1.0, t: 0.0, kLine: 0.0, px: 2.0, py: 2.0, dualView: false },
+        steps: [
+          "변곡점 I(m, f(m))에서의 변곡접선 (y = f'(m)(x-m) + f(m)) 경계 작도",
+          "평면 4분할 컬러 맵 (3개 영역 = 초록 / 1개 영역 = 파랑 / 경계선 = 2개)",
+          "점 P(x₀, y₀)에서 그은 실제 접선 및 접점 T₁, T₂, T₃ 실시간 추적"
+        ],
+        textbook: () => ({
+          steps: `① 곡선 위의 접점을 ${tex('(t, t^3 - 3t^2 + 2)')} 로 설정<br/>
+② 접선의 방정식 ${tex('y - (t^3 - 3t^2 + 2) = (3t^2 - 6t)(x - t)')} 에 점 ${tex('P(2, 2)')} 대입:<br/>
+&nbsp;&nbsp;${tex('2 - t^3 + 3t^2 - 2 = (3t^2 - 6t)(2 - t) \\implies 2t^3 - 9t^2 + 12t = 0')}<br/>
+③ 정리하면 ${tex('t(2t^2 - 9t + 12)=0')}. 이차식의 판별식은 ${tex('(-9)^2-4\\cdot2\\cdot12=-15<0')}이므로 실수 접점은 ${tex('t=0')} 하나뿐이다. 따라서 서로 다른 접선도 <strong>${tex('1')}개</strong>이다.`,
+          warning: "접선의 개수는 점을 지나는 접점 방정식의 서로 다른 실근 수로 센다. 중근 접점이 생기면 접선은 한 개로 센다."
+        }),
+        shortcut: () => ({
+          steps: `① 접점을 ${tex('(t,f(t))')}라 하면 접선이 ${tex('P(2,2)')}를 지날 조건은 ${tex("f(t)+f\\'(t)(2-t)=2")}이다.<br/>
+② 정리하면 ${tex('t(2t^2-9t+12)=0')}. 이차식의 판별식이 ${tex('-15')}이므로 유일한 실수 접점은 ${tex('t=0')}이다.<br/>
+③ 따라서 접선의 개수는 <strong class="text-amber-300">${tex('1')}개</strong>. 점의 위치만으로 1·2·3개를 판단하는 규칙은 경계와 함수의 실제 개형을 확인한 뒤에만 적용한다.`,
+          highlight: "💡 외부 점에서 그은 접선의 개수는 무조건 【 원함수 곡선 + 변곡점 접선 】 두 경계선만 그려서 3·2·1 영역으로 판정하세요!"
+        })
+      }
+    };
+
+  /* ---------- 3. 보기 창 (원본 VIEW: 모드별로 꼭 보여야 할 세계 범위, 무대는 항상 1:1) ---------- */
+  // x: 가로, y: 주 그래프 세로, dy: 동시 보기에서 아래 칠판(도함수)의 세로
+  // dual: 동시 보기(위 f, 아래 f′)일 때의 위 칠판 세로 범위와 위 칠판이 차지하는 비율(frac)
+  const VIEW = {
+    1: { x: [-1.8, 3.8], y: [-3.8, 3.8], dy: [-3.6, 1.5] },
+    2: { x: [-1.4, 3.8], y: [-7.2, 6.4], dy: [-6.6, 1.2] },
+    3: { x: [-0.9, 3.9], y: [-3.8, 3.8], dy: [-3.5, 1.5] },
+    4: { x: [-1.0, 3.0], y: [-3.8, 3.8], dy: [-4.4, 2.2], dual: { y: [-3.3, 4.4], frac: 0.5 } },
+    5: { x: [-1.0, 3.0], y: [-3.8, 3.8], dy: [-3.5, 1.5] }
+  };
+  const dualOf = (v) => ({ y: v.y, frac: 0.58, ...(v.dual || {}) });
+  const focusFor = (v, dual) => ({ x: v.x, y: dual ? dualOf(v).y : v.y });
+  // 동시 보기를 켜고 끌 때(또는 공유 링크로 열 때) 보기 창을 그에 맞게 다시 맞춥니다.
+  function syncFocus(b, s, m) {
+    const key = m + '|' + (s.dual ? 1 : 0);
+    if (b.__focusKey !== key) {
+      b.__focusKey = key;
+      b.setFocus(focusFor(VIEW[m], s.dual));
+    }
+  }
+  const panesOf = (m) => (s) => {
+    if (!s.dual) return null;
+    const d = dualOf(VIEW[m]);
+    return [{ id: 'main', frac: d.frac, focusY: d.y }, { id: 'deriv', frac: 1 - d.frac, focusY: VIEW[m].dy }];
+  };
+
+  /* ---------- 4. 공통 부품 ---------- */
+  // 원본 render()의 a=0 방지 장치: 최고차항 계수가 0에 가까우면 ±0.1로 둡니다.
+  const fixA = (s) => { if (Math.abs(s.a) < 0.05) s.a = s.a >= 0 ? 0.1 : -0.1; };
+  const SUB = ['₁', '₂', '₃'];
+  // 그림 라벨용 짧은 수: 0.00 → 0, 2.40 → 2.4 (불필요한 0을 줄여 라벨이 겹치지 않게)
+  const num = (v, d = 2) => { const r = +v.toFixed(d); return String(Object.is(r, -0) ? 0 : r).replace('-', '−'); };
+  const secs = (m) => examData[m].targetTime;
+  function problemOf(m) {
+    const d = examData[m];
+    return {
+      tag: d.tag,
+      time: secs(m),
+      text: d.question,
+      answer: d.answerBadge,
+      snap: () => ({ a: d.snap.a, m: d.snap.m, ym: d.snap.ym, delta: d.snap.delta, t: d.snap.t, kLine: d.snap.kLine, px: d.snap.px, py: d.snap.py, dual: d.snap.dualView })
+    };
+  }
+  function solutionOf(m) {
+    return {
+      standardTitle: '교과서식 정석 풀이 (미분·연립방정식·정적분 계산)', standardTag: '3분 소요',
+      quickTitle: '10초 컷 실전 비율·넓이 비기', quickTag: '10초 컷',
+      standard: examData[m].textbook,
+      quick: examData[m].shortcut
+    };
+  }
+  function enterOf(m) {
+    return (s) => {
+      const sn = examData[m].snap;
+      s.a = sn.a; s.m = sn.m; s.ym = sn.ym; s.delta = sn.delta; s.t = sn.t; s.kLine = sn.kLine; s.px = sn.px; s.py = sn.py; s.dual = sn.dualView;
+    };
+  }
+  function bounce(s, key, speed, lo, hi, dt) {
+    s[key] += speed * s.animDir * dt;
+    if (s[key] < lo) { s[key] = lo; s.animDir = 1; }
+    if (s[key] > hi) { s[key] = hi; s.animDir = -1; }
+  }
+  const actionsCommon = () => [
+    { id: 'dual', icon: 'split', label: (s) => (s.dual ? "f(x)·f′(x) 동시 뷰 켜짐" : "f(x)·f′(x) 동시 뷰"), on: (s) => s.dual, run: (s) => { s.dual = !s.dual; } },
+    { id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '자동 실험'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }
+  ];
+  // 4대 개형 원클릭 프리셋 (원본 applyShapePreset: 변곡점·접점·수평선·외부점도 처음 자리로 돌려놓습니다)
+  const shape = (a, delta) => ({ a, m: 1, ym: 0, delta, t: 0, kLine: 0, px: 2, py: 2 });
+  const presetsCommon = [
+    { group: '개형 프리셋', label: '① Δ>0 극값 2개 (표준)', color: 'green', set: shape(1, 1), on: (s) => s.a > 0 && s.delta > 0.001 },
+    { group: '개형 프리셋', label: '② Δ=0 변곡 3중근 (뚫접)', color: 'amber', set: shape(1, 0), on: (s) => Math.abs(s.delta) <= 0.001 },
+    { group: '개형 프리셋', label: '③ Δ<0 단조증가 (무극값)', color: 'sky', set: shape(1, -0.5), on: (s) => s.delta < -0.001 },
+    { group: '개형 프리셋', label: '④ a<0 최고차 음수', color: 'rose', set: shape(-1, 1), on: (s) => s.a < 0 && s.delta > 0.001 }
+  ];
+  function derived(s) {
+    const ext = s.delta > 0.001;
+    const h = ext ? Math.sqrt(s.delta) : 0;
+    const q = 3 * s.m - 2 * s.t;
+    const L = Math.abs(q - s.t);
+    return { ext, h, q, L, areaS: (Math.abs(s.a) / 12) * Math.pow(L, 4), dy: ext ? 4 * Math.abs(s.a) * Math.pow(h, 3) : 0 };
+  }
+  // 막대 옆 라벨: 오른쪽에 놓되 무대 밖으로 나가면 막대 왼쪽에 놓습니다.
+  function barLabel(b, x, y, str, color, ref) {
+    const c = b.ctx;
+    c.save();
+    c.font = `800 ${12.5 * b.fs}px ${b.font}`;
+    const w = c.measureText(str).width;
+    c.restore();
+    const right = b.toS(x, y).x + 8 + w > b.W - (b.panes ? 0 : b.insets.right) - 6;
+    b.text([x, y], str, { color, dx: right ? -8 : 8, align: right ? 'right' : 'left', baseline: 'middle', size: 12.5, ref });
+  }
+  // 우측 가장자리(도구 막대 왼쪽)에 놓는 y=k 손잡이의 x좌표
+  const kHandleX = (b) => b.toW(b.W - (b.panes ? 0 : b.insets.right) - 44, 0).x;
+
+  // 실시간 값·상태·경고·하단 판서 (원본 updateLiveMonitor + renderBottomChalkBanner)
+  function viewFor(m) {
+    return (s) => {
+      fixA(s);
+      const d = derived(s);
+      const f = getExpandedFormulaLatex(s);
+      const cnt = m === 5 ? getTangentContactsFromPoint(s, s.px, s.py).length : 0;
+      let v1, v2, v3;
+      if (d.ext) {
+        v1 = `I(${fmt(s.m, 1)}, ${fmt(s.ym, 1)}) | h = ${fmt(d.h)}`;
+        if (m === 1) v2 = [s.m - 2 * d.h, s.m - d.h, s.m, s.m + d.h, s.m + 2 * d.h].map((x) => fmt(x, 1)).join(' : ');
+        else if (m === 5) v2 = `P(${fmt(s.px, 1)}, ${fmt(s.py, 1)}) → 접선 ${cnt}개`;
+        else if (m === 4) v2 = `P(${fmt(s.t)}, ${fmt(evalF(s, s.t))}) → 접선 기울기 f′(t) = ${fmt(evalFp(s, s.t))}`;
+        else v2 = `|t−m|:${fmt(Math.abs(s.t - s.m))} | |q−m|:${fmt(Math.abs(d.q - s.m))} (1:2)`;
+        v3 = `Δy = ${fmt(d.dy)} (∫|f′| = ${fmt(d.dy)})`;
+      } else {
+        v1 = `I(${fmt(s.m, 1)}, ${fmt(s.ym, 1)}) | 극값 없음`;
+        v2 = `2t+q = ${fmt(2 * s.t + d.q)} = 3m (2:1 성립)`;
+        v3 = 'Δ ≤ 0 (단조함수 개형)';
+      }
+      const v4 = `S = ${fmt(d.areaS)} (L = ${fmt(d.L)})`;
+      let tape = null;
+      if (s.step >= 3) {
+        let title;
+        if (m === 1) {
+          title = d.ext
+            ? `1:1:1 간격 h = ${fmt(d.h)} | 1:√3 간격 = ${fmt(Math.sqrt(3) * d.h)} | 극값차 Δy = 4|a|h³ = ${fmt(d.dy)}`
+            : `Δ ≤ 0 (δ=${fmt(s.delta)}) : 극값이 소멸하여 1:1:1 비율 박스가 비활성화됨`;
+        } else if (m === 2) {
+          title = `사선 접선 불변식: 2t(${fmt(2 * s.t)}) + q(${fmt(d.q)}) = 3m(${fmt(3 * s.m)})  ⇒  |T~I| : |I~Q| = 1 : 2`;
+        } else if (m === 3) {
+          title = `접선 넓이 $S=\\dfrac{|a|}{12}(\\beta-\\alpha)^4=${fmt(d.areaS, 3)}$`;
+        } else if (m === 4) {
+          title = d.ext
+            ? `도함수 넓이 $\\int|f^{\\prime}|\\,dx$ = 극값차 $\\Delta y=\\dfrac{|a|}{2}(\\beta-\\alpha)^3=${fmt(d.dy)}$`
+            : "δ ≤ 0 이므로 도함수 f′(x)의 부호가 바뀌지 않습니다 (단조함수)";
+        } else {
+          title = `외부 점 P(${fmt(s.px)}, ${fmt(s.py)}) 에서의 접선 개수 = ${cnt}개 (곡선 & 변곡접선 경계)`;
+        }
+        tape = { title };
+      }
+      return {
+        chips: [{ k: '원함수', tex: f.fLatex, color: 'amber' }, { k: '도함수', tex: f.fpLatex, color: 'sky' }],
+        status: d.ext ? { tone: 'ok', text: 'Δ > 0 (극값 존재 · 비율 활성)' } : { tone: 'warn', text: 'Δ ≤ 0 (극값 소멸 · 비율 비활성)' },
+        alert: d.ext ? null : { tone: 'bad', text: '도함수 판별식 Δ ≤ 0 이므로 극대·극소가 소멸하여 1:1:1 비율 박스가 비활성화되었습니다! (슬라이더 δ > 0 일 때 성립)' },
+        readouts: [
+          { label: '변곡점 I / 극값 간격 h', value: v1, color: 'violet', ref: 'I', wide: true },
+          { label: '비율 불변 / 접선 개수', value: v2, color: 'amber', ref: m === 1 ? 'box' : m === 5 ? 'P' : 'T', wide: true },
+          { label: "극값 높이차 Δy = ∫|f′|dx", value: v3, color: 'sky', ref: 'dy', wide: true },
+          { label: '접선 둘러싸인 넓이 S', value: v4, color: 'rose', ref: 'S', wide: true }
+        ],
+        tape
+      };
+    };
+  }
+
+  /* ---------- 5. 그리기 ---------- */
+  function mainBg(b, s) {
+    b.use('main');
+    b.ctx.save();
+    if (b.panes) b.clip();
+    if (s.grid) b.grid();
+    b.axes();
+  }
+  const done = (b) => b.ctx.restore();
+  const curve = (b, s) => b.plot((x) => evalF(s, x), { color: 'ink', width: 3.2, glow: true });
+  // 두 곡선 f, g 사이 영역 색칠 (x0→x1)
+  function region(b, f, g, x0, x1, o) {
+    const pts = [];
+    const n = 80;
+    for (let i = 0; i <= n; i++) { const x = x0 + ((x1 - x0) * i) / n; pts.push([x, f(x)]); }
+    for (let i = n; i >= 0; i--) { const x = x0 + ((x1 - x0) * i) / n; pts.push([x, g(x)]); }
+    b.poly(pts, { fill: o.fill, fillAlpha: o.alpha, stroke: false, ref: o.ref });
+  }
+  // 변곡점 I(끌기), 극대·극소 A·B(B는 끌어 δ 조절), 접점·탐침점 T(끌기) — 모든 모드 공통 (원본 renderMainPointsOverlay)
+  function overlay(b, s, m) {
+    const { m: mx, ym, delta, t } = s;
+    b.handle('I', [mx, ym], { color: 'violet', ref: 'I', label: `변곡점 I(${num(mx)}, ${num(ym)})`, dx: m === 3 || m === 4 ? -12 : 12, dy: m === 4 ? -14 : 20, align: m === 3 || m === 4 ? 'right' : 'left',
+      drag: (w) => { s.m = clamp(+w.x.toFixed(2), -1.5, 2.5); } });
+    if (delta > 0.001) {
+      const h = Math.sqrt(delta);
+      const xA = mx - h, xB = mx + h;
+      const lblA = s.a > 0 ? '극대 A' : '극소 A';
+      const lblB = s.a > 0 ? '극소 B' : '극대 B';
+      b.point([xA, evalF(s, xA)], { color: 'rose', r: 6, ref: 'A', label: `${lblA}(${num(xA)}, ${num(evalF(s, xA))})`, dx: -12, dy: -12, align: 'right' });
+      b.handle('B', [xB, evalF(s, xB)], { color: 'green', ref: 'B', label: `${lblB}(${num(xB)}, ${num(evalF(s, xB))})`, dx: 12, dy: m === 2 ? 30 : 20,
+        drag: (w) => { const dh = clamp(Math.abs(w.x - s.m), 0.2, 1.5); s.delta = +(dh * dh).toFixed(2); } });
+    }
+    if ((m >= 2 && m <= 4) || s.dual) {
+      const yt = evalF(s, t);
+      const slope = evalFp(s, t);
+      const lbl = m === 4 ? `P(${num(t)}, ${num(yt)})` : `접점 T(${num(t)}, ${num(yt)})`;
+      b.handle('T', [t, yt], { color: 'amber', ref: 'T', priority: 1, label: lbl, dx: m === 4 ? -14 : 12, dy: m === 4 ? 2 : -14, align: m === 4 ? 'right' : 'left',
+        drag: (w) => { s.t = clamp(w.x, -1.5, 3.2); } });
+    }
+  }
+  // 아래 칠판: 도함수 y = f′(x), 정적분 면적 S_d = Δy (원본 renderDerivativePane)
+  function derivPane(b, s, m) {
+    if (!s.dual) return;
+    b.use('deriv');
+    const r = b.paneRect('deriv');
+    const c = b.ctx;
+    c.save();
+    c.fillStyle = b.color('halo', 0.35);
+    c.fillRect(r.x, r.y, r.w, r.h);
+    c.restore();
+    c.save();
+    b.clip();
+    if (s.grid) b.grid();
+    b.axes({ yLabel: "y'" });
+    const { m: mx, delta, a } = s;
+    if (delta > 0.001 && s.step >= 2) {
+      const hv = Math.sqrt(delta);
+      const xA = mx - hv, xB = mx + hv;
+      const pts = [[xA, 0]];
+      for (let i = 0; i <= 60; i++) { const x = xA + ((xB - xA) * i) / 60; pts.push([x, evalFp(s, x)]); }
+      pts.push([xB, 0]);
+      b.poly(pts, { fill: 'sky', fillAlpha: 0.28, stroke: false, ref: 'dy' });
+      const areaSd = 4 * Math.abs(a) * Math.pow(hv, 3);
+      b.text([mx, 1.1], `∫|f′(x)|dx = ${num(areaSd)} (= Δy)`, { color: 'amber', size: 12.5, weight: 800, ref: 'dy' });
+    }
+    b.plot((x) => evalFp(s, x), { color: 'sky', width: 2.8, glow: true });
+    const vFp = evalFp(s, mx);
+    b.point([mx, vFp], { color: 'violet', r: 5, ref: 'I', label: `꼭짓점(${num(mx)}, ${num(vFp)})`, dx: 12, dy: 16 });
+    if (delta > 0.001) {
+      const hv = Math.sqrt(delta);
+      b.point([mx - hv, 0], { color: 'rose', r: 5, ref: 'A', label: `α=${num(mx - hv)}`, dx: -10, dy: -12, align: 'right' });
+      b.point([mx + hv, 0], { color: 'green', r: 5, ref: 'B', label: `β=${num(mx + hv)}`, dx: 10, dy: -12 });
+    }
+    const fpt = evalFp(s, s.t);
+    b.handle('Tp', [s.t, fpt], { color: 'amber', ref: 'T', priority: 1, label: `P′(${num(s.t)}, f′=${num(fpt)})`, dx: 12, dy: -12,
+      drag: (w) => { s.t = clamp(w.x, -1.5, 3.2); } });
+    c.restore();
+    // 나눔선 + 이름표
+    c.save();
+    c.strokeStyle = b.color('sky', 0.55);
+    c.lineWidth = 1.5;
+    c.beginPath();
+    c.moveTo(r.x, r.y + 0.5);
+    c.lineTo(r.x + r.w, r.y + 0.5);
+    c.stroke();
+    c.restore();
+    b.stext(r.x + 14, r.y + 20, "도함수 y = f′(x) · 수직 동기화", { color: 'sky', size: 12.5, align: 'left', weight: 800 });
+    // 위·아래를 잇는 수직 동기화선 (원본 renderVerticalSyncLines)
+    b.use('main');
+    const r1 = b.paneRect('main');
+    const line = (x, col, al, w) => {
+      const sx = b.toS(x, 0).x;
+      c.save();
+      c.setLineDash([5, 5]);
+      c.strokeStyle = b.color(col, al);
+      c.lineWidth = w;
+      c.beginPath();
+      c.moveTo(sx, r1.y + 6);
+      c.lineTo(sx, r.y + r.h - 6);
+      c.stroke();
+      c.restore();
+    };
+    if (s.step >= 1) {
+      line(mx, 'violet', 0.5, 1.5);
+      if (delta > 0.001) {
+        const hv = Math.sqrt(delta);
+        line(mx - hv, 'rose', 0.55, 1.6);
+        line(mx + hv, 'green', 0.55, 1.6);
+      }
+    }
+    if (s.step >= 3) line(s.t, 'amber', 0.8, 2);
+  }
+
+  // 모드 1: 변곡점 대칭 & 4×2 비율 격자 박스 + 수평선 y=k 스캐너
+  function drawBox(b, s) {
+    const { a, m, ym, delta, kLine } = s;
+    let after = null;
+    if (s.step >= 3 || s.playing) {
+      // 끌 수 있는 수평선 손잡이는 곡선 위에 그립니다
+      after = () => b.handle('k', [kHandleX(b), kLine], { color: 'violet', ref: 'k', priority: 2, label: `y = ${num(kLine)}`, dx: -14, dy: -14, align: 'right',
+        drag: (w) => { s.kLine = clamp(+w.y.toFixed(2), -3.5, 3.5); } });
+      b.hline(kLine, { color: 'violet', width: 2.2, glow: true, ref: 'k' });
+      // a*u^3 - 3a*delta*u + (ym - kLine) = 0
+      const uRoots = solveCubicRealRoots(a, 0, -3 * a * delta, ym - kLine);
+      uRoots.forEach((u, idx) => {
+        const rx = u + m;
+        b.point([rx, kLine], { color: 'violet', r: 5, ref: 'k', label: `x${SUB[idx] || idx + 1}=${num(rx)}`, dx: 0, dy: -14, align: 'center' });
+      });
+    }
+    if (delta <= 0.001) {
+      const slopeI = evalFp(s, m);
+      b.seg([m - 3, ym - slopeI * 3], [m + 3, ym + slopeI * 3], { color: 'rose', width: 2, dash: true });
+      return after;
+    }
+    const h = Math.sqrt(delta);
+    const xD = m - 2 * h, xA = m - h, xI = m, xB = m + h, xC = m + 2 * h;
+    const yA = evalF(s, xA), yB = evalF(s, xB);
+    const yTop = Math.max(yA, yB), yBot = Math.min(yA, yB);
+
+    // Step 2: 4×2 비율 격자 박스
+    if (s.step >= 2) {
+      b.poly([[xD, yTop], [xC, yTop], [xC, yBot], [xD, yBot]], { fill: 'amber', fillAlpha: 0.07, color: 'amber', alpha: 0.78, width: 2, ref: 'box' });
+      [xA, xI, xB].forEach((xv) => b.seg([xv, yTop], [xv, yBot], { color: 'amber', alpha: 0.5, width: 1.4, dash: true, ref: 'box' }));
+      b.seg([xD, ym], [xC, ym], { color: 'amber', alpha: 0.5, width: 1.4, dash: true, ref: 'box' });
+      const xs = [xD, xA, xI, xB, xC];
+      for (let i = 0; i < 4; i++) b.text([(xs[i] + xs[i + 1]) / 2, yBot], '1', { color: 'amber', dy: -9, size: 15, weight: 850, ref: 'box' });
+      b.text([xI, yTop], `한 칸 h = ${num(h)}`, { color: 'amber', dy: -28, size: 12.5, ref: 'box' });
+    }
+    // Step 1: 극대·극소 수평 접선 및 교점 D, C
+    if (s.step >= 1) {
+      b.seg([xD - 0.8, yA], [xC + 0.8, yA], { color: 'rose', width: 2, dash: true, ref: 'A' });
+      b.seg([xD - 0.8, yB], [xC + 0.8, yB], { color: 'sky', width: 2, dash: true, ref: 'B' });
+      b.point([xD, yB], { color: 'sky', r: 5, label: `D(${num(xD)}, ${num(yB)})`, dx: -12, dy: 20, align: 'right' });
+      b.point([xC, yA], { color: 'rose', r: 5, label: `C(${num(xC)}, ${num(yA)})`, dx: 12, dy: -12 });
+    }
+    return after;
+  }
+
+  // 모드 2: 사선 접선의 2:1 내분 불변성
+  function drawOblique(b, s) {
+    const { m, ym, t } = s;
+    const yt = evalF(s, t);
+    const slope = evalFp(s, t);
+    const q = 3 * m - 2 * t;
+    const yq = evalF(s, q);
+    if (s.step >= 1) {
+      const x0 = Math.min(t, q) - 1.5, x1 = Math.max(t, q) + 1.5;
+      b.seg([x0, yt + slope * (x0 - t)], [x1, yt + slope * (x1 - t)], { color: 'rose', width: 2.6, glow: true, ref: 'T' });
+      b.point([q, yq], { color: 'sky', r: 6.5, ref: 'Q', label: `교점 Q(${num(q)}, ${num(yq)})`, dx: 12, dy: 16 });
+    }
+    if (s.step >= 2) {
+      const rulerY = Math.min(yt, ym, yq) - 1.4;
+      b.seg([t, yt], [t, rulerY], { color: 'amber', alpha: 0.7, width: 1.6, dash: true });
+      b.seg([m, ym], [m, rulerY], { color: 'violet', alpha: 0.8, width: 1.6, dash: true });
+      b.seg([q, yq], [q, rulerY], { color: 'sky', alpha: 0.7, width: 1.6, dash: true });
+      b.seg([t, rulerY], [m, rulerY], { color: 'amber', width: 3.2, ref: 'T' });
+      b.seg([m, rulerY], [q, rulerY], { color: 'sky', width: 3.2, ref: 'Q' });
+      b.text([(t + m) / 2, rulerY], '1', { color: 'amber', dy: -9, size: 15, weight: 850 });
+      b.text([(m + q) / 2, rulerY], '2', { color: 'sky', dy: -9, size: 15, weight: 850 });
+      b.text([t, rulerY], `x_T=${num(t)}`, { color: 'amber', dy: 18, size: 12 });
+      b.text([m, rulerY], `x_I=${num(m)}`, { color: 'violet', dy: 35, size: 12 });
+      b.text([q, rulerY], `x_Q=${num(q)}`, { color: 'sky', dy: 18, dx: 2, align: 'left', size: 12 });
+    }
+    if (s.step >= 3) {
+      const yLineAtI = yt + slope * (m - t);
+      b.point([m, yLineAtI], { color: 'violet', r: 4.5, label: '내분점 (1:2)', dx: 10, dy: -10 });
+    }
+  }
+
+  // 모드 3: 접선 넓이 1/12 공식 & 변곡할선 넓이 이등분 (S₁ = S₂)
+  function drawArea(b, s) {
+    const { a, m, ym, delta, t } = s;
+    const yt = evalF(s, t);
+    const slope = evalFp(s, t);
+    const q = 3 * m - 2 * t;
+    const yq = evalF(s, q);
+    const alpha = Math.min(t, q);
+    const beta = Math.max(t, q);
+    const L = beta - alpha;
+    const areaS = (Math.abs(a) / 12) * Math.pow(L, 4);
+    const tanY = (x) => yt + slope * (x - t);
+
+    // Step 3: 변곡점 수평 할선에 의한 두 날개 영역 S1 = S2 (δ > 0 일 때)
+    if (s.step >= 3 && delta > 0.001) {
+      const d = Math.sqrt(3 * delta);
+      const xL = m - d, xR = m + d;
+      const wingArea = (Math.abs(a) / 4) * Math.pow(d, 4);
+      region(b, (x) => evalF(s, x), () => ym, xL, m, { fill: 'sky', alpha: 0.2, ref: 'wing' });
+      region(b, (x) => evalF(s, x), () => ym, m, xR, { fill: 'green', alpha: 0.2, ref: 'wing' });
+      b.seg([xL, ym], [xR, ym], { color: 'violet', width: 1.8, dash: true, ref: 'wing' });
+      b.text([m - d * 0.55, ym + a * Math.pow(d, 3) * 0.12], `S₁=${num(wingArea)}`, { color: 'sky', size: 12, weight: 800, ref: 'wing' });
+      b.text([m + d * 0.42, ym - a * Math.pow(d, 3) * 0.26], `S₂=${num(wingArea)}`, { color: 'green', size: 12, weight: 800, ref: 'wing' });
+    }
+    // Step 1: 접선과 곡선 사이 색칠 영역 S
+    if (s.step >= 1) {
+      if (L > 0.02) region(b, (x) => evalF(s, x), tanY, alpha, beta, { fill: 'rose', alpha: 0.26, ref: 'S' });
+      b.seg([alpha - 1.0, tanY(alpha - 1.0)], [beta + 1.0, tanY(beta + 1.0)], { color: 'rose', width: 2.5, glow: true, ref: 'T' });
+      b.point([q, yq], { color: 'sky', r: 6, ref: 'Q', label: `Q(${num(q)}, ${num(yq)})`, dx: 12, dy: -12 });
+    }
+    if (s.step >= 2 && L > 0.05) {
+      const midX = (alpha + beta) / 2;
+      // 접선 바로 아래(색칠 영역 위쪽)에 놓아 변곡점·날개 라벨과 겹치지 않게 합니다.
+      b.text([midX, tanY(midX)], `접선 넓이 S = ${num(areaS)}`, { color: 'amber', size: 14, weight: 850, dy: 20, ref: 'S' });
+    }
+  }
+
+  // 모드 4 (위 칠판): 극댓값-극솟값 높이차와 탐침점 접선
+  function drawSyncMain(b, s) {
+    const { m, delta, t } = s;
+    const yt = evalF(s, t);
+    const slope = evalFp(s, t);
+    if (s.step >= 3) {
+      b.seg([t - 1.1, yt - slope * 1.1], [t + 1.1, yt + slope * 1.1], { color: 'amber', width: 2.5, glow: true, ref: 'T' });
+    }
+    if (delta > 0.001 && s.step >= 2) {
+      const h = Math.sqrt(delta);
+      const xA = m - h, xB = m + h;
+      const yA = evalF(s, xA), yB = evalF(s, xB);
+      const xr = m + 2 * h + 0.45; // 곡선의 오른쪽 가지(C)보다 바깥에 놓아 곡선과 겹치지 않게
+      b.seg([xA, yA], [xr, yA], { color: 'rose', alpha: 0.65, width: 1.8, dash: true, ref: 'dy' });
+      b.seg([xB, yB], [xr, yB], { color: 'sky', alpha: 0.65, width: 1.8, dash: true, ref: 'dy' });
+      b.seg([xr, yA], [xr, yB], { color: 'rose', width: 3, ref: 'dy' });
+      barLabel(b, xr, (yA + yB) / 2, `극값 차 Δy = ${num(Math.abs(yA - yB))}`, 'rose', 'dy');
+    }
+  }
+
+  // 모드 5: 곡선 밖의 점 P(x₀, y₀)에서 그은 접선 개수 (1·2·3개 영역)
+  function drawExternal(b, s) {
+    const { m, ym, a } = s;
+    const vb = b.viewBox();
+    const minX = vb.x0 - 0.5;
+    const maxX = vb.x1 + 0.5;
+    const fx = (x) => evalF(s, x);
+    const gx = (x) => evalInflectionTangent(s, x);
+    // Step 2: 3개 영역(초록) vs 1개 영역(파랑) — 곡선과 변곡접선 사이가 '접선 3개' 영역
+    if (s.step >= 2) {
+      region(b, fx, gx, minX, maxX, { fill: 'green', alpha: 0.2, ref: 'region' });
+      const mid = (x) => (fx(x) + gx(x)) / 2;
+      // 곡선의 가지가 글자를 가로지르지 않도록 곡선에서 바깥쪽으로 정렬합니다.
+      b.text([m + 2.4, mid(m + 2.4)], '접선 3개 영역', { color: 'green', size: 12.5, weight: 800, align: 'left', ref: 'region' });
+      b.text([m - 2.4, mid(m - 2.4)], '접선 3개 영역', { color: 'green', size: 12.5, weight: 800, align: 'right', ref: 'region' });
+      b.text([m - 1.3, ym - a * 3.2], '접선 1개 영역 (오목 안쪽)', { color: 'sky', size: 12.5, weight: 800 });
+      b.text([m + 1.3, ym + a * 3.2], '접선 1개 영역 (볼록 안쪽)', { color: 'sky', size: 12.5, weight: 800 });
+    }
+    // Step 1: 변곡점 접선 경계선
+    if (s.step >= 1) b.seg([minX, gx(minX)], [maxX, gx(maxX)], { color: 'violet', width: 2.4, dash: true, glow: true, ref: 'infl' });
+    // Step 3: 외부 점 P에서 곡선에 그어지는 실제 접선들(1~3개)
+    const contacts = getTangentContactsFromPoint(s, s.px, s.py);
+    if (s.step >= 3) {
+      const colors = ['rose', 'sky', 'amber'];
+      contacts.forEach((tVal, idx) => {
+        const yt = fx(tVal);
+        const slope = evalFp(s, tVal);
+        const col = colors[idx % colors.length];
+        const xStart = Math.min(s.px, tVal) - 1.2;
+        const xEnd = Math.max(s.px, tVal) + 1.2;
+        b.seg([xStart, yt + slope * (xStart - tVal)], [xEnd, yt + slope * (xEnd - tVal)], { color: col, width: 2.2, glow: true, ref: 'tan' });
+        b.point([tVal, yt], { color: col, r: 5.5, ref: 'tan', label: `접점 T${SUB[idx] || idx + 1}(${num(tVal)})`, dx: 10, dy: idx === 1 ? 18 : -10 });
+      });
+    }
+    // 드래그 가능한 외부 점 P(x0, y0) — 가장 위에 그립니다
+    return () => {
+      b.handle('P', [s.px, s.py], { color: 'amber', r: 8, ref: 'P', priority: 3, label: `점 P(${num(s.px)}, ${num(s.py)}) [접선 ${contacts.length}개]`, dx: 14, dy: -12,
+        drag: (w) => { s.px = clamp(+w.x.toFixed(2), -2.5, 4.5); s.py = clamp(+w.y.toFixed(2), -4.5, 4.5); } });
+    };
+  }
+
+  function drawFor(m) {
+    return (b, s) => {
+      syncFocus(b, s, m);
+      fixA(s);
+      mainBg(b, s);
+      let after = null;
+      if (m === 1) after = drawBox(b, s);
+      else if (m === 2) drawOblique(b, s);
+      else if (m === 3) drawArea(b, s);
+      else if (m === 4) drawSyncMain(b, s);
+      else after = drawExternal(b, s);
+      curve(b, s);
+      overlay(b, s, m);
+      if (after) after();
+      done(b);
+      derivPane(b, s, m);
+    };
+  }
+
+  /* ---------- 6. 장면 정의 ---------- */
+  const TICK = {
+    1: (s, dt) => { if (!s.playing) return false; bounce(s, 'kLine', 2.1, -2.8, 2.8, dt); return true; },
+    5: (s, dt) => { if (!s.playing) return false; bounce(s, 'py', 2.4, -3.2, 3.2, dt); return true; }
+  };
+  const tickT = (s, dt) => { if (!s.playing) return false; bounce(s, 't', 1.32, -0.55, 2.35, dt); return true; };
+
+  function sceneOf(m, def) {
+    return {
+      guide: examData[m].hint.replace('상단 개형 프리셋으로', '조작 패널의 개형 프리셋(휴대폰에서는 그림 아래)으로'),
+      actions: actionsCommon(),
+      presets: presetsCommon,
+      steps: examData[m].steps,
+      problem: problemOf(m), solution: solutionOf(m), enter: enterOf(m),
+      focus: (s) => focusFor(VIEW[m], s.dual),
+      panes: panesOf(m),
+      tick: TICK[m] || tickT,
+      view: viewFor(m),
+      draw: drawFor(m),
+      ...def
+    };
+  }
+  const scenes = [
+    sceneOf(1, {
+      id: 'box', title: '1:1:1 & 1:√3 박스', short: '1:1:1 박스',
+      question: '극대점·극소점에서 그은 수평 접선이 곡선과 다시 만나는 점은 변곡점에서 얼마나 떨어져 있을까?',
+      controls: ['delta', 'a', 'kLine']
+    }),
+    sceneOf(2, {
+      id: 'oblique', title: '사선 접선 2:1 불변', short: '사선 접선 2:1',
+      question: '곡선 위의 점 T에서 접선을 그으면 곡선과 다시 만나는 점 Q는 변곡점을 기준으로 어디에 놓일까?',
+      controls: ['delta', 'a', 't']
+    }),
+    sceneOf(3, {
+      id: 'area', title: '넓이 1/12 & 변곡할선', short: '넓이 1/12',
+      question: '접선과 곡선이 둘러싸는 넓이는 접점과 교점 사이 거리로, 변곡점을 지나는 가로선이 나눈 두 영역의 넓이는 어떤 관계로 정해질까?',
+      controls: ['delta', 'a', 't']
+    }),
+    sceneOf(4, {
+      id: 'sync', title: 'f(x)↔f\'(x) 동기화', short: 'f↔f′ 동기화',
+      question: '원함수의 극댓값과 극솟값의 차는 도함수 그래프가 x축과 둘러싸는 넓이와 어떤 관계일까?',
+      controls: ['delta', 'a', 't']
+    }),
+    sceneOf(5, {
+      id: 'external', title: '외부점 접선 개수(1·2·3)', short: '외부점 접선',
+      question: '곡선 밖의 한 점 P에서 곡선에 그을 수 있는 접선은 몇 개일까? 점의 위치에 따라 어떻게 달라질까?',
+      controls: ['delta', 'a']
+    })
+  ];
+
+  /* ---------- 7. 실험실 등록 ---------- */
+  APLab.createLab({
+    id: 'calc1-cubic',
+    title: '삼차함수 비율관계',
+    courseName: '미적분Ⅰ',
+    unit: '미분 · 삼차함수 비율관계',
+    courseColor: 'var(--m-orange)',
+    home: '../index.html#calc1',
+    legacy: '../../labs/미적분1/삼차함수 비율관계.html',
+    board: { kind: 'cartesian', focus: focusFor(VIEW[1], false) },
+    params: {
+      delta: { value: 1, min: -0.8, max: 2.25, step: 0.05, color: 'amber', label: '극값 판별 계수 $\\delta$', hint: '$\\delta=\\dfrac{b^2-3ac}{9a^2}$ · δ > 0 이면 극대·극소가 생기고, 극소 B를 끌어도 조절됩니다',
+        format: (v) => (v > 0.001 ? `δ = ${fmt(v)} (h = ${fmt(Math.sqrt(v))})` : `δ = ${fmt(v)} (극값 소멸!)`) },
+      a: { value: 1, min: -1.5, max: 1.8, step: 0.1, color: 'green', label: '최고차항 계수 $a$', hint: '음수·양수 전환 가능 · 음수이면 그래프가 위아래로 뒤집힙니다', format: (v) => `a = ${fmt(v)}` },
+      t: { value: 0, min: -1.5, max: 3.2, step: 0.05, color: 'rose', label: '접점·탐침점 $x=t$', format: (v, s) => `t = ${fmt(v)} (교점 q = ${fmt(3 * s.m - 2 * v)})` },
+      kLine: { value: 0, min: -3.5, max: 3.5, step: 0.1, color: 'violet', label: '수평선 스캐너 $y=k$', hint: '$f(x)=k$ 의 실근 개수를 셉니다 · 풀이 3단계에서 수평선이 나타나고, 그림의 보라색 점으로도 끌 수 있어요',
+        format: (v, s) => `k = ${fmt(v)} (실근 ${solveCubicRealRoots(s.a, 0, -3 * s.a * s.delta, s.ym - v).length}개)` },
+      // 그림에서 끌어 바꾸는 값 (슬라이더 없음): 변곡점 x·y, 외부점 P
+      m: { value: 1, min: -1.5, max: 2.5, step: 0.01 },
+      ym: { value: 0, min: -4, max: 4, step: 0.01 },
+      px: { value: 2, min: -2.5, max: 4.5, step: 0.01 },
+      py: { value: 2, min: -4.5, max: 4.5, step: 0.01 }
+    },
+    state: { dual: false, animDir: 1 },
+    persist: ['dual'],
+    scenes
+  });
+});
+</script>
+</body>
+</html>

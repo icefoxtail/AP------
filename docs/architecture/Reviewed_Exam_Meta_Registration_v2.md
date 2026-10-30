@@ -135,6 +135,22 @@ Actions는 여러 inbox 요청을 순서대로 처리하고 정본/compiled/Runt
 DB/Catalog/Search 재생성 및 값 대조가 실패하면 commit/push하지 않는다.
 성공한 요청은 inbox에서 제거하고 영수증을 보존한다. 수동 재실행은 workflow_dispatch로 가능하다.
 
+### 요청별 격리 (2026-10-29)
+
+`tools/ci/register-reviewed-meta-requests.mjs`가 요청을 하나씩 독립 등록한다. 등록기가 거절한 요청
+(before 불일치, 근거 drift, registry before 불일치 등)은 그 요청만 fail-closed로 처리한다.
+등록기는 검증 후에 쓰므로 작업트리는 그대로이며, 스크립트가 등록 경로의 status 지문으로 이를 증명한다.
+거절된 요청은 `.archive-meta-register/inbox/`에서 `.archive-meta-register/rejected/<파일>.json`으로 이동하고
+`<파일>.rejection.json`(오류 한 줄, 요청 sha256; 실행마다 달라지는 값 없음)이 함께 커밋된다.
+workflow에는 `::error` 주석과 요약 표가 남는다. 거절은 run을 실패시키지 않는다. Pages release는
+성공한 register run의 completed 이벤트로만 재개되므로 거절 때문에 run을 실패시키면 release가 다시 교착된다.
+등록 뒤 소비자 projection 검증(`--verify-projection`)은 적용된 요청 전부를 끝까지 검사한다. 거절된 요청이 있으면
+작업트리를 HEAD로 되돌리고(`--reset-derived`) 그 요청만 `projection-verify` 단계로 거절한 뒤 나머지를 한 번 더
+처음부터 등록·재생성한다(최대 2라운드). 거절된 요청의 메타 소유자는 현재 메타·소비자 기준으로 요청을 다시 만들어
+새 inbox 요청으로 제출한다(`git mv`로 되돌리거나 새 파일; 같은 파일명으로 성공하면 이전 거절 기록은 자동 삭제).
+거절이 작업트리를 바꿔 격리를 증명할 수 없거나(exit 2), 2라운드째에도 검증이 거절하거나, 공용 재생성·정합 검증
+(build_db, parity, catalog)이 실패하면 pass 전체가 실패한다. `build_db.py`는 한 번 재실행해 고정점에 도달하는 것을 허용한다.
+
 새 정본이나 새 Runtime pack 파일을 만들었다는 사실만으로 학생 Consumer 지원이 완성되지는 않는다.
 기존 Consumer의 canonical 범위·Runtime 입력 목록이 새 분류를 지원하는지 별도 확인해야 한다.
 이 구현은 Consumer 엔진을 재설계하거나 Pages와의 기존 writer 구조를 변경하지 않는다.
