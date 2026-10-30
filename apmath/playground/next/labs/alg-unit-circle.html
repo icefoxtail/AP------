@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
-<title>단위원과 삼각함수 파형 · AP Math 실험실</title>
-<meta name="description" content="대수 삼각함수: 단위원 위 점의 좌표(cos·sin·tan)와 파형을 나란히 조작하며 특수각, 방정식 y=k, 부등식의 해를 단위원과 그래프에서 함께 확인합니다.">
+<title>단위원과 삼각함수의 그래프 · AP Math 실험실</title>
+<meta name="description" content="대수 삼각함수: 단위원 위 점의 좌표(cos·sin·tan)와 그래프를 나란히 조작하며 특수각, 방정식 y=k, 부등식의 해를 단위원과 그래프에서 함께 확인합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
 <style>
-/* 단위원·파형 두 그림 위의 수식 라벨(KaTeX)과 결과 카드 — 원본 스타일을 셸 테마 변수로 옮김 */
+/* 단위원·그래프 두 그림 위의 수식 라벨(KaTeX)과 결과 카드 — 원본 스타일을 셸 테마 변수로 옮김 */
 .ucl-root { position: absolute; pointer-events: none; overflow: hidden; }
 .ucl-root .math-label { position: absolute; white-space: nowrap; transform: translate(-50%, -50%); color: var(--text); background: var(--glass); border: 1px solid var(--line-2); border-radius: 6px; padding: 2px 5px; line-height: 1.25; }
 .ucl-root .math-label .katex { font-size: 14px; }
@@ -41,17 +41,17 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
-   대수 · 단위원과 삼각함수 파형 연동 (AP Math Lab 2.0 이식본) — 4개 장면
+   대수 · 단위원과 삼각함수의 그래프 연동 (AP Math Lab 2.0 이식본) — 4개 장면
    원본: labs/대수/단위원과그래프.html
-   이식 방식: 원본의 수학 함수(특수각·정확값·해·해 구간 계산)와 두 그림(단위원, 파형)의 그리기 코드·KaTeX 라벨을
-   글자 그대로 옮기고, 원본의 두 캔버스를 셸 무대 하나 안의 두 영역(왼쪽 단위원 | 오른쪽 파형)으로 얹었습니다.
+   이식 방식: 원본의 수학 함수(특수각·정확값·해·해 구간 계산)와 두 그림(단위원, 그래프)의 그리기 코드·KaTeX 라벨을
+   글자 그대로 옮기고, 원본의 두 캔버스를 셸 무대 하나 안의 두 영역(왼쪽 단위원 | 오른쪽 그래프)으로 얹었습니다.
    (캔버스 색은 테마에 맞는 의미색으로 자동 변환: sin=초록, cos=노랑, tan=빨강)
-   - 장면 4개 = 원본의 [단위원에서 좌표 읽기] [좌표가 파형으로 이어지기] [방정식 모드] [부등식 모드]
+   - 장면 4개 = 원본의 [단위원에서 좌표 읽기] [좌표가 그래프로 이어지기] [방정식 모드] [부등식 모드]
    - 원본의 조작부 → 조절 막대(θ·k)·칩(특수각·함수 고르기·k 값·정의역·부등호·표시 옵션)·단추(이전/다음·재생·그래프 확대)
-   - 원본의 포인터 조작(원 위의 점 P 끌기, 특수각 점 누르기, 파형의 θ 점선·k 수평선 끌기, 빈 곳 끌어 이동, 휠 확대)과
+   - 원본의 포인터 조작(원 위의 점 P 끌기, 특수각 점 누르기, 그래프의 θ 점선·k 수평선 끌기, 빈 곳 끌어 이동, 휠 확대)과
      키보드 조작(← → θ, ↑ ↓ k)은 그대로이며 이 파일이 무대의 포인터·키 입력을 직접 받습니다.
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
@@ -1051,7 +1051,7 @@ function htmlApprox(){
     return '<div class="exact-line full">현재 각도 (특수각 일치) <b>'+displayMath(e.angle,'math-value')+degStr+'</b></div><div class="exact-line">점의 좌표 P <b>'+displayMath('('+e.cos+', '+e.sin+')','math-value')+'</b></div><div class="exact-line">사인 · '+displayMath('sin θ','math-value')+'<b style="color:'+CV.sin+'">'+displayMath(e.sin,'math-value')+'</b></div><div class="exact-line">코사인 · '+displayMath('cos θ','math-value')+'<b style="color:'+CV.cos+'">'+displayMath(e.cos,'math-value')+'</b></div><div class="exact-line full">탄젠트 · '+displayMath('tan θ','math-value')+tan+'</div>';
   }
   if(!S.showApprox){
-    return '<div class="exact-line full">연속 각도 기호 모드 <b>'+displayMath('P = (cos θ, sin θ)')+'</b></div><div class="exact-line full"><span class="muted">상단의 [연속 근삿값 ON] 버튼을 켜거나 [특수각 탐구]로 전환하면 정확한 수치를 확인할 수 있습니다.</span></div>';
+    return '<div class="exact-line full">연속 탐구 (각도를 기호 θ로 표시) <b>'+displayMath('P = (cos θ, sin θ)')+'</b></div><div class="exact-line full"><span class="muted">[연속 근삿값] 칩을 켜거나 [특수각 탐구]로 전환하면 정확한 수치를 확인할 수 있습니다.</span></div>';
   }
   let s=Math.sin(S.theta),c=Math.cos(S.theta),tn=fval('tan',S.theta);
   let degStr=S.showDeg?' <span class="muted">('+degText(S.theta)+')</span>':'';
@@ -1182,7 +1182,7 @@ function htmlApprox(){
     let e = curExact();
     let pfRoot = S.revealedRoot !== null ? piFormatInfo(S.revealedRoot) : null;
     return S.revealedRoot !== null && S.activity === 'equation'
-      ? '선택한 해 ' + formatAngleWithDeg('θ ' + (pfRoot.exact ? '= ' : '≈ ') + pfRoot.text, S.revealedRoot) + '를 단위원과 파형 양쪽에서 동시에 강조합니다.'
+      ? '선택한 해 ' + formatAngleWithDeg('θ ' + (pfRoot.exact ? '= ' : '≈ ') + pfRoot.text, S.revealedRoot) + '를 단위원과 그래프 양쪽에서 동시에 강조합니다.'
       : S.mode === 'special'
         ? '특수각 ' + formatAngleWithDeg(e ? e.angle : '', e ? e.rad : S.theta) + '에서 읽은 정확한 무리수 값입니다.'
         : S.showApprox
@@ -1218,10 +1218,10 @@ function htmlApprox(){
     if (S.common && fs.length > 1) {
       if (S.activity === 'equation') {
         let r = roots(fs[0], S.k, lo, hi).filter(x => fs.slice(1).every(f => Math.abs(fval(f, x) - S.k) < 1e-6));
-        h += chip('공통해: ' + (r.length ? displayMath('θ = ' + r.map(piText).join(', '), 'root-angle') : '없음'), 'border-color:var(--m-amber)');
+        h += chip('공통인 해: ' + (r.length ? displayMath('θ = ' + r.map(piText).join(', '), 'root-angle') : '없음'), 'border-color:var(--m-amber)');
       } else {
         let cp = commonIntervals(fs, lo, hi);
-        h += chip('공통해 구간: ' + displayMath('θ ∈ ' + (cp.join(' ∪ ') || '∅'), 'root-interval'), 'border-color:var(--m-amber)');
+        h += chip('공통인 해 구간: ' + displayMath('θ ∈ ' + (cp.join(' ∪ ') || '∅'), 'root-interval'), 'border-color:var(--m-amber)');
       }
     }
     return h;
@@ -1263,10 +1263,10 @@ function htmlApprox(){
     if (S.common && fs.length > 1) {
       if (S.activity === 'equation') {
         let r = roots(fs[0], S.k, lo, hi).filter(x => fs.slice(1).every(f => Math.abs(fval(f, x) - S.k) < 1e-6));
-        out.push({ label: '공통해 (선택한 함수 모두)', value: r.length ? 'θ = ' + r.map(piText).join(', ') : '없음', color: 'amber', wide: true });
+        out.push({ label: '공통인 해 (선택한 함수 모두)', value: r.length ? 'θ = ' + r.map(piText).join(', ') : '없음', color: 'amber', wide: true });
       } else {
         let cp = commonIntervals(fs, lo, hi);
-        out.push({ label: '공통해 구간 (선택한 함수 모두)', value: 'θ ∈ ' + (cp.join(' ∪ ') || '∅'), color: 'amber', wide: true });
+        out.push({ label: '공통인 해 구간 (선택한 함수 모두)', value: 'θ ∈ ' + (cp.join(' ∪ ') || '∅'), color: 'amber', wide: true });
       }
     }
     return out;
@@ -1275,7 +1275,7 @@ function htmlApprox(){
     let e = curExact();
     if (S.revealedRoot !== null && S.activity === 'equation') {
       let pf = piFormatInfo(S.revealedRoot);
-      return '선택한 해 θ ' + (pf.exact ? '= ' : '≈ ') + pf.text + degOrNot(S.revealedRoot) + '를 단위원과 파형 양쪽에서 동시에 강조합니다.';
+      return '선택한 해 θ ' + (pf.exact ? '= ' : '≈ ') + pf.text + degOrNot(S.revealedRoot) + '를 단위원과 그래프 양쪽에서 동시에 강조합니다.';
     }
     if (S.activity === 'motion') {
       if (S.mode === 'special') return '특수각 ' + (e ? e.angle + degOrNot(e.rad) : '') + '에서 읽은 정확한 무리수 값입니다.';
@@ -1285,12 +1285,12 @@ function htmlApprox(){
   }
 
   /* ---------- 두 영역 배치와 그리기 ---------- */
-  // 왼쪽 = 단위원, 오른쪽 = 파형 (칩으로 '단위원 크게' / '파형 크게' 선택 가능)
+  // 왼쪽 = 단위원, 오른쪽 = 그래프 (칩으로 '단위원 크게' / '그래프 크게' 선택 가능)
   function regions(b) {
     const ins = b.insets || {};
     const area = { x: 0, y: ins.top || 0, w: Math.max(80, b.W - (ins.right || 0)), h: Math.max(80, b.H - (ins.top || 0) - (ins.bottom || 0)) };
     const v = S.view || 'both';
-    // 파형이 세로로 너무 길어지지 않게 높이를 제한하고(원본 캔버스는 가로:세로 = 1.5:1) 단위원의 중심과 높이를 맞춥니다
+    // 그래프가 세로로 너무 길어지지 않게 높이를 제한하고(원본 캔버스는 가로:세로 = 1.5:1) 단위원의 중심과 높이를 맞춥니다
     const fitH = (r) => { const gh = Math.min(r.h, Math.max(300, 61 + .8 * (r.w - 77))); return { x: r.x, y: r.y + (r.h - gh) / 2, w: r.w, h: gh }; };
     if (v === 'circle') return { circle: area, graph: null };
     if (v === 'graph') return { circle: null, graph: fitH(area) };
@@ -1411,7 +1411,7 @@ function htmlApprox(){
         d.rawTheta += delta;
         d.last = a;
         S.revealedRoot = null;
-        // 특수각 탐구 모드 + 특수각 자석 ON일 때는 17개 특수각을 따라 안정적으로 스냅
+        // 특수각 탐구 모드 + 특수각에 맞추기 ON일 때는 17개 특수각을 따라 안정적으로 스냅
         if (d.startMode === 'special' && S.snapSpecial) {
           let idx = nearestSpecialIndex(d.rawTheta);
           S.mode = 'special';
@@ -1476,7 +1476,7 @@ function htmlApprox(){
       setView(anchor - rel * w, anchor + (1 - rel) * w);
     }, { capture: true, passive: false });
 
-    // 키보드: ← → 각도(특수각 모드에서는 이전·다음 특수각), ↑ ↓ k (원본 파형 캔버스와 같음)
+    // 키보드: ← → 각도(특수각 모드에서는 이전·다음 특수각), ↑ ↓ k (원본 그래프 캔버스와 같음)
     wrap.addEventListener('keydown', (e) => {
       if (e.target !== cv) return;
       const step = (dir) => {
@@ -1501,22 +1501,22 @@ function htmlApprox(){
     {
       id: 'coords', title: '단위원에서 직각삼각형과 좌표 읽기', short: '단위원 좌표', activity: 'motion', mode: 'special', narrowView: 'circle',
       question: '단위원 위의 점 P(cos θ, sin θ)에서 특수각 θ의 좌표와 sin·cos·tan 값을 어떻게 읽을 수 있을까?',
-      guide: '원점부터 <b>가로 밑변이 cos θ(x좌표)</b>, <b>수직 높이가 sin θ(y좌표)</b>, <b>x=1 접선의 높이가 tan θ</b>를 보여줍니다.<br>점 P를 끌거나 원 둘레의 <b>특수각 점을 눌러</b> 보세요. 오른쪽 그림에서 같은 각의 파형 높이를 함께 볼 수 있습니다.'
+      guide: '원점부터 <b>가로 밑변이 cos θ(x좌표)</b>, <b>수직 높이가 sin θ(y좌표)</b>, <b>x=1 접선의 높이가 tan θ</b>를 보여줍니다.<br>점 P를 끌거나 원 둘레의 <b>특수각 점을 눌러</b> 보세요. 그래프에서 같은 각의 높이를 함께 볼 수 있습니다.'
     },
     {
-      id: 'wave', title: '좌표가 파형으로 이어지기', short: '파형 연동', activity: 'motion', mode: 'continuous', narrowView: 'graph',
-      question: '점 P가 원 위를 돌 때 cos θ, sin θ, tan θ의 값은 파형에서 어떤 높이로 이어질까?',
-      guide: '각도를 연속으로 움직이며 <b>원의 높이·밑변·접선 높이가 파형의 점으로 이어지는 모습</b>을 확인합니다.<br>파형의 <b>점선(θ)</b>을 끌어 각도를 조절하고, 빈 곳을 끌어 좌우로 이동하거나 휠·확대 단추로 확대해 보세요.'
+      id: 'wave', title: '좌표가 그래프로 이어지기', short: '그래프 연동', activity: 'motion', mode: 'continuous', narrowView: 'graph',
+      question: '점 P가 원 위를 돌 때 cos θ, sin θ, tan θ의 값은 그래프에서 어떤 높이로 이어질까?',
+      guide: '각도를 연속으로 움직이며 <b>원의 높이·밑변·접선 높이가 그래프의 점으로 이어지는 모습</b>을 확인합니다.<br>그래프의 <b>점선(θ)</b>을 끌어 각도를 조절하고, 빈 곳을 끌어 좌우로 이동하거나 휠·확대 단추로 확대해 보세요.'
     },
     {
       id: 'equation', title: '방정식 · y = k', short: '방정식', activity: 'equation', narrowView: 'graph',
       question: 'y = k와 사인·코사인·탄젠트 그래프의 교점은 단위원 위에서 어떤 점일까?',
-      guide: '각 파형과 y = k의 교점이 해입니다. 단위원에서는 sin은 <b>수평선(y=k)</b>, cos는 <b>수직선(x=k)</b>, tan은 <b>x = 1 접선 위의 점 T(1, k)</b>와 만나 확인합니다.<br>파형의 <b>수평선(k)</b>을 끌거나 k 값 칩을 눌러 보고, 아래 <b>해 확인</b> 칩을 누르면 단위원과 파형 양쪽에서 해의 위치를 동시에 가리킵니다.'
+      guide: '각 그래프와 y = k의 교점이 해입니다. 단위원에서는 sin은 <b>수평선(y=k)</b>, cos는 <b>수직선(x=k)</b>, tan은 <b>x = 1 접선 위의 점 T(1, k)</b>와 만나 확인합니다.<br>그래프의 <b>수평선(k)</b>을 끌거나 k 값 칩을 눌러 보고, <b>해 확인</b> 칩을 누르면 단위원과 그래프 양쪽에서 해의 위치를 동시에 가리킵니다.'
     },
     {
       id: 'inequality', title: '부등식 · 곡선과 해 구간', short: '부등식', activity: 'inequality', narrowView: 'graph',
       question: 'y = k보다 위(또는 아래)에 있는 곡선 구간은 단위원 위에서 어떤 호에 대응할까?',
-      guide: '부등호를 고르면 <b>y = k보다 위·아래의 곡선 구간</b>과 단위원의 대응 호를 같은 색으로 강조합니다. 경계는 <b>열린 점(빈 원)·닫힌 점(채운 원)</b>으로 구분합니다.<br>경계선 y = k는 <b>파형의 수평선</b>을 끌어 조절할 수 있습니다.'
+      guide: '부등호를 고르면 <b>y = k보다 위·아래의 곡선 구간</b>과 단위원의 대응 호를 같은 색으로 강조합니다. 경계는 <b>열린 점(빈 원)·닫힌 점(채운 원)</b>으로 구분합니다.<br>경계선 y = k는 <b>그래프의 수평선</b>을 끌어 조절할 수 있습니다.'
     }
   ];
 
@@ -1524,7 +1524,7 @@ function htmlApprox(){
     const act = sd.activity;
     return {
       id: sd.id, title: sd.title, short: sd.short, question: sd.question, guide: sd.guide,
-      reviewTab: true, notesTitle: '탐구 팁',
+      reviewTab: true, notesTitle: '탐구 참고',
       focus: { x: [-1, 1], y: [-1, 1] },
       enter: (s) => {
         s.activity = act; s.revealedRoot = null; s.drag = null; s.anim = null;
@@ -1542,14 +1542,14 @@ function htmlApprox(){
       presets: (s) => {
         const out = [];
         const add = (group, label, on, apply) => out.push({ group, label, on, apply });
-        const viewChips = () => [['both', '단위원 + 파형 나란히'], ['circle', '단위원 크게'], ['graph', '파형 크게']]
-          .forEach(([v, l]) => add('무대 보기', l, (st) => (st.view || 'both') === v, (st) => { st.view = v; }));
+        const viewChips = () => [['both', '단위원 + 그래프 나란히'], ['circle', '단위원 크게'], ['graph', '그래프 크게']]
+          .forEach(([v, l]) => add('화면 보기', l, (st) => (st.view || 'both') === v, (st) => { st.view = v; }));
         if (NARROW.matches) viewChips();
         add('각도 탐구 방식', '특수각 탐구', (st) => st.mode === 'special', () => setMode('special'));
         add('각도 탐구 방식', '연속 탐구', (st) => st.mode === 'continuous', () => setMode('continuous'));
         if (s.mode === 'special') SP.forEach((a, i) => add('특수각 (눌러서 이동)', a[0] + (s.showDeg ? ' · ' + a[2] + '°' : ''), (st) => st.mode === 'special' && st.si === i, () => selectSpecial(i)));
         if (act !== 'motion') {
-          K.forEach((kv, i) => add('k 값 (특수 비율)', kv[1], (st) => Math.abs(st.k - kv[0]) < 1e-6, () => setK(kv[0])));
+          K.forEach((kv, i) => add('k 값 (자주 쓰는 값)', kv[1], (st) => Math.abs(st.k - kv[0]) < 1e-6, () => setK(kv[0])));
           add('해의 정의역', '[0, 2π)', (st) => st.domain === 'one', () => { S.domain = 'one'; S.revealedRoot = null; redraw(); });
           add('해의 정의역', '현재 보이는 범위', (st) => st.domain === 'view', () => { S.domain = 'view'; S.revealedRoot = null; redraw(); });
           if (act === 'inequality') Object.keys(OPSYM).forEach((o) => add('부등호', OPSYM[o], (st) => st.op === o, () => { S.op = o; redraw(); }));
@@ -1557,16 +1557,16 @@ function htmlApprox(){
         add('그래프 함수 (각각 독립 선택)', 'sin 사인', (st) => st.fn.sin, () => toggleFn('sin'));
         add('그래프 함수 (각각 독립 선택)', 'cos 코사인', (st) => st.fn.cos, () => toggleFn('cos'));
         add('그래프 함수 (각각 독립 선택)', 'tan 탄젠트', (st) => st.fn.tan, () => toggleFn('tan'));
-        if (act !== 'motion') add('공통해', '공통해도 함께 표시', (st) => st.common, () => { S.common = !S.common; redraw(); });
+        if (act !== 'motion') add('공통인 해', '공통인 해도 함께 표시', (st) => st.common, () => { S.common = !S.common; redraw(); });
         if (act === 'equation') {
           const [lo, hi] = S.domain === 'one' ? [0, TAU] : [S.x0, S.x1];
           for (const f of active()) for (const r of roots(f, s.k, lo, hi)) {
-            add('해 확인 (누르면 단위원과 파형에 표시)', f + ' · ' + piFormatInfo(r).text + (s.showDeg ? ' (' + degText(r) + ')' : ''), (st) => st.revealedRoot !== null && Math.abs(st.revealedRoot - r) < 1e-6, () => selectRootAngle(r));
+            add('해 확인 (누르면 단위원과 그래프에 표시)', f + ' · ' + piFormatInfo(r).text + (s.showDeg ? ' (' + degText(r) + ')' : ''), (st) => st.revealedRoot !== null && Math.abs(st.revealedRoot - r) < 1e-6, () => selectRootAngle(r));
           }
         }
         add('표시 설정', '각도(°) 병기', (st) => st.showDeg, () => { S.showDeg = !S.showDeg; redraw(); });
         add('표시 설정', '연속 근삿값', (st) => st.showApprox, () => { S.showApprox = !S.showApprox; redraw(); });
-        add('표시 설정', '특수각 자석', (st) => st.snapSpecial, () => { S.snapSpecial = !S.snapSpecial; });
+        add('표시 설정', '특수각에 맞추기', (st) => st.snapSpecial, () => { S.snapSpecial = !S.snapSpecial; });
         if (!NARROW.matches) viewChips();
         return out;
       },
@@ -1618,8 +1618,8 @@ function htmlApprox(){
               (act === 'motion' ? '<div class="ucl-card">' + (s.mode === 'special' ? htmlExact() : htmlApprox()) + '</div>' : '') +
               '<div>' + rootsHtml() + '</div></div>',
             notes: act === 'equation'
-              ? '<b>탐구 팁</b> · 탐구 탭의 <b>해 확인</b> 칩을 누르면 단위원과 파형 양쪽에서 해당 해의 위치를 동시에 가리킵니다. 여러 함수를 켜도 해는 함수별 색으로 따로 표시되며, 자동으로 공통해라 가정하지 않습니다.'
-              : '<b>탐구 팁</b> · 여러 함수를 켜도 해는 함수별 색으로 따로 표시됩니다. 자동으로 공통해라 가정하지 않으며, <b>공통해도 함께 표시</b>를 켜면 선택한 함수를 모두 만족하는 각 θ를 따로 보여 줍니다.'
+              ? '<b>탐구 참고</b> · 탐구 탭의 <b>해 확인</b> 칩을 누르면 단위원과 그래프 양쪽에서 해당 해의 위치를 동시에 가리킵니다. 여러 함수를 켜도 해는 함수별 색으로 따로 표시되며, 자동으로 공통인 해라고 가정하지 않습니다.'
+              : '<b>탐구 참고</b> · 여러 함수를 켜도 해는 함수별 색으로 따로 표시됩니다. 자동으로 공통인 해라고 가정하지 않으며, <b>공통인 해도 함께 표시</b>를 켜면 선택한 함수를 모두 만족하는 각 θ를 따로 보여 줍니다.'
           };
         } finally { S = keep; }
       },
@@ -1629,7 +1629,7 @@ function htmlApprox(){
 
   APLab.createLab({
     id: 'alg-unit-circle',
-    title: '단위원과 삼각함수 파형',
+    title: '단위원과 삼각함수의 그래프',
     courseName: '대수',
     unit: 'Ⅱ. 삼각함수 · 단위원 연동',
     courseColor: 'var(--m-sky)',
@@ -1643,7 +1643,7 @@ function htmlApprox(){
         onInput: (s) => { stopPlayback(); cancelTween(); s.mode = 'continuous'; s.revealedRoot = null; followTheta(); }
       },
       k: {
-        value: .5, min: -2.5, max: 2.5, step: .001, color: 'amber', label: '수평선 높이 y = k', hint: '파형의 수평선을 끌어도 됩니다',
+        value: .5, min: -2.5, max: 2.5, step: .001, color: 'amber', label: '수평선 높이 y = k', hint: '그래프의 수평선을 끌어도 됩니다',
         format: (v) => 'k = ' + valText(v),
         onInput: (s) => { s.revealedRoot = null; }
       }
@@ -1655,7 +1655,7 @@ function htmlApprox(){
   lab = window.lab;
   S = lab.s;
   lab.ui.labels.append(overlays.circle.root, overlays.graph.root);
-  // 무대의 확대·맞춤 단추와 키(+ − 0)는 파형의 보기 범위를 바꿉니다
+  // 무대의 확대·맞춤 단추와 키(+ − 0)는 그래프의 보기 범위를 바꿉니다
   lab.zoom = (f) => zoom(1 / f);
   lab.fitView = () => resetView();
   setupInput();

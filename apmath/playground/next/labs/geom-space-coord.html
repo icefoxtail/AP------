@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>공간좌표 3D · AP Math 실험실</title>
-<meta name="description" content="기하: 공간좌표의 수선의 발·대칭이동 최단거리, 평면 교점의 내분비, 구와 평면의 교선원, 구 밖의 점의 최대·최소와 접선의 길이를 3D로 돌려 보며 탐구합니다.">
+<meta name="description" content="기하: 공간좌표에서 수선의 발과 대칭이동을 이용한 최단 거리, 선분이 좌표평면과 만나는 점의 내분비, 구와 평면이 만나서 생기는 원, 구 밖의 점에서 거리의 최대·최소와 접선의 길이를 입체로 돌려 보며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -18,7 +18,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 공간좌표 3D (AP Math Lab 2.0 이식본)
@@ -38,9 +38,9 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 4대 기출 문제 & 두 풀이 (원본 590–717행) ===== */
     const examData = {
       1: {
-        badge: "MODE 1 · 공간좌표 수선의 발·대칭이동 & 평면 경유 최단거리 (AB')",
-        hint: "하단 슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요! <span class='text-sky-300 font-bold'>xy평면 위의 점 P</span>가 대칭점 <span class='text-pink-300 font-bold'>B'(3, 4, -4)를 잇는 일직선</span>과 만날 때 최단거리 <span class='text-amber-300 font-bold'>7</span>이 됩니다!",
-        tag: "수능·평가원 3점·4점 필수 최단거리 유형",
+        badge: "장면 1 · 공간좌표에서 수선의 발·대칭이동과 평면을 지나는 최단 거리 (AB')",
+        hint: "슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요. <span class='text-sky-300 font-bold'>xy평면 위의 점 P</span>가 A와 대칭점 <span class='text-pink-300 font-bold'>B'(3, 4, -4)를 잇는 선분</span> 위에 놓일 때 AP + PB가 최소가 되어 최솟값은 <span class='text-amber-300 font-bold'>7</span>입니다.",
+        tag: "평면을 지나는 최단 경로",
         targetTime: "목표 시간: 5초",
         question: () => `좌표공간에서 두 점 ${tex('A(1, 1, 2), \\; B(3, 4, 4)')} 와 ${tex('xy')}평면 위를 움직이는 점 ${tex('P')}가 있다. ${tex('\\overline{AP} + \\overline{PB}')}의 최솟값과 그때의 점 ${tex('P')}가 선분 ${tex('AB')}의 정사영을 내분하는 비를 구하시오.`,
         answerBadge: () => `최솟값 ${tex('= \\overline{AB\'} = 7')}, 내분비 ${tex('= 2 : 4 = 1 : 2')}`,
@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function () {
         sectionCam: { yaw: Math.atan2(3, 2), pitch: 0 },
         steps: [
           "두 점 A(1, 1, 2), B(3, 4, 4) 및 xy평면 수선의 발 A₀(1,1,0), B₀(3,4,0)",
-          "xy평면 위의 동점 P 및 꺾인 경로 AP + PB 표시",
+          "xy평면 위를 움직이는 점 P와 꺾은선 경로 AP + PB 표시",
           "점 B의 xy평면 대칭점 B'(3, 4, -4) 연결 ⇒ 일직선 최단거리 AB' = 7"
         ],
         textbook: () => ({
@@ -59,22 +59,22 @@ window.addEventListener('DOMContentLoaded', function () {
 ③ 따라서 ${tex("\\overline{AP} + \\overline{PB} = \\overline{AP} + \\overline{PB'} \\ge \\overline{AB'}")}<br/>
 ④ 두 점 ${tex("A(1, 1, 2), B'(3, 4, -4)")} 사이의 거리 공식 적용:<br/>
 &nbsp;&nbsp;${tex("\\overline{AB'} = \\sqrt{(3-1)^2 + (4-1)^2 + (-4-2)^2} = \\sqrt{4 + 9 + 36} = 7")}.`,
-          warning: "⚠️ 수선의 발이나 대칭이동에서 어느 좌표의 부호가 바뀌는지 헷갈리면 부호 실수로 오답이 나옵니다!"
+          warning: "주의: 수선의 발이나 대칭이동에서 어느 좌표가 바뀌는지 헷갈리면 부호를 잘못 쓰기 쉽습니다."
         }),
         shortcut: () => ({
-          steps: `① <strong>[수선의 발 & 대칭이동 1초 암기법]</strong>:<br/>
+          steps: `① <strong>[수선의 발과 대칭이동]</strong>:<br/>
 &nbsp;&nbsp;• 『<strong>이름에 있는 문자만 살리고</strong> 나머지 0』 ⇒ ${tex('xy')}평면 수선의 발: <strong class="text-sky-300">${tex('(x, y, 0)')}</strong><br/>
 &nbsp;&nbsp;• 『<strong>이름에 없는 문자만 부호 반대</strong>』 ⇒ ${tex('xy')}평면 대칭이동: <strong class="text-pink-300">${tex("B'(3, 4, -4)")}</strong><br/>
-② 최단거리 ${tex("= \\overline{AB'} = \\sqrt{2^2 + 3^2 + (-6)^2} =")} <strong class="text-amber-300">${tex('\\sqrt{4 + 9 + 36} = 7')}</strong>!<br/>
-③ 최단점 ${tex('P')}는 높이가 ${tex('2 : 4')} 이므로 정사영 선분을 무조건 <strong class="text-emerald-300">${tex('1 : 2')}로 내분</strong>!`,
-          highlight: "💡 3차원 피타고라스 황금 조합 암기: ① (1, 2, 2) → 3  ② (2, 3, 6) → 7  ③ (1, 4, 8) → 9  ④ (3, 4, 12) → 13 !"
+② 최단거리 ${tex("= \\overline{AB'} = \\sqrt{2^2 + 3^2 + (-6)^2} =")} <strong class="text-amber-300">${tex('\\sqrt{4 + 9 + 36} = 7')}</strong>이다.<br/>
+③ 최단 경로의 점 ${tex('P')}는 A, B의 높이가 ${tex('2 : 4')} 이므로 선분 AB의 xy평면 위 정사영을 <strong class="text-emerald-300">${tex('1 : 2')}로 내분</strong>한다.`,
+          highlight: "공간에서 두 점 사이의 거리가 자연수가 되는 예 (세 성분의 제곱의 합의 제곱근): ① (1, 2, 2) → 3  ② (2, 3, 6) → 7  ③ (1, 4, 8) → 9  ④ (3, 4, 12) → 13"
         })
       },
 
       2: {
-        badge: "MODE 2 · 기출 1: 선분 AB가 좌표평면과 만나는 교점 & 내분비 (|z₁| : |z₂|)",
-        hint: "선분 AB가 <span class='text-sky-300 font-bold'>xy평면(z = 0)을 뚫고 지나가는 교점 P</span>는 무조건 두 점의 높이 절댓값 비인 <span class='text-amber-300 font-bold'>|z₁| : |z₂| 내분점</span>입니다!",
-        tag: "평가원·수능 4점 내분점 10초 컷 킬러",
+        badge: "장면 2 · 선분 AB가 좌표평면과 만나는 점과 내분하는 비 (|z₁| : |z₂|)",
+        hint: "선분 AB가 <span class='text-sky-300 font-bold'>xy평면(z = 0)과 만나는 점 P</span>는 두 점의 z좌표의 절댓값의 비 <span class='text-amber-300 font-bold'>|z₁| : |z₂|</span>로 선분 AB를 내분하는 점입니다.",
+        tag: "내분점 10초 컷 킬러",
         targetTime: "목표 시간: 5초",
         question: () => `좌표공간의 두 점 ${tex('A(-2, 1, 4), \\; B(4, -5, -2)')} 를 잇는 선분 ${tex('AB')}가 ${tex('xy')}평면과 만나는 점을 ${tex('P')}라 하자. 점 ${tex('P')}가 선분 ${tex('AB')}를 내분하는 비 ${tex('m : n')}과 점 ${tex('P')}의 좌표를 구하시오.`,
         answerBadge: () => `${tex('2 : 1')} 내분점, ${tex('P(2, -3, 0)')}`,
@@ -82,30 +82,30 @@ window.addEventListener('DOMContentLoaded', function () {
         cam: { yaw: (-32 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
         sectionCam: { yaw: (-45 * Math.PI) / 180, pitch: (2 * Math.PI) / 180 },
         steps: [
-          "xy평면 위쪽 점 A(-2, 1, 4)와 아래쪽 점 B(4, -5, -2) 연결",
+          "z좌표가 양수인 점 A(-2, 1, 4)와 음수인 점 B(4, -5, -2) 연결",
           "xy평면 수선의 발 A₀, B₀ 및 닮음인 두 직각삼각형 ΔAA₀P ∽ ΔBB₀P",
-          "높이 비 |z₁| : |z₂| = 4 : 2 = 2 : 1 내분점 ⇒ P(2, -3, 0) 즉시 도출!"
+          "z좌표의 절댓값의 비 |z₁| : |z₂| = 4 : 2 = 2 : 1 로 내분 ⇒ P(2, -3, 0)"
         ],
         textbook: () => ({
           steps: `① 선분 ${tex('AB')}를 ${tex('m : n')}으로 내분하는 점 ${tex('P')}의 좌표를 세 문자 모두 작성:<br/>
 &nbsp;&nbsp;${tex('P\\left(\\dfrac{4m - 2n}{m+n}, \\; \\dfrac{-5m + n}{m+n}, \\; \\dfrac{-2m + 4n}{m+n}\\right)')}<br/>
 ② ${tex('xy')}평면 위의 점이므로 ${tex('z')}좌표가 ${tex('0')}이어야 함:<br/>
 &nbsp;&nbsp;${tex('\\dfrac{-2m + 4n}{m+n} = 0 \\implies 2m = 4n \\implies m : n = 2 : 1')}<br/>
-③ 다시 ${tex('m = 2, n = 1')}을 ${tex('x, y')}좌표 식에 대입하여 ${tex('P(2, -3, 0)')} 계산...`,
-          warning: "⚠️ m, n 미지수로 내분점 공식을 세 번 다 적은 뒤에 비율을 구하면 식이 번거롭고 시간이 걸립니다!"
+③ 다시 ${tex('m = 2, n = 1')}을 ${tex('x, y')}좌표 식에 대입하여 ${tex('P(2, -3, 0)')}을 계산한다.`,
+          warning: "주의: m, n을 미지수로 놓고 세 좌표의 내분점 공식을 모두 쓴 뒤에 비를 구하면 식이 복잡해집니다."
         }),
         shortcut: () => ({
-          steps: `① 선분 ${tex('AB')}가 ${tex('xy')}평면(${tex('z=0')})을 뚫는다는 것은 <strong>높이(${tex('z')}좌표)가 ${tex('+4')}에서 ${tex('-2')}로 바뀌며 ${tex('0')}을 지난다</strong>는 뜻!<br/>
-② 따라서 내분비는 계산할 필요 없이 무조건 <strong class="text-amber-300">높이의 절댓값 비 ${tex('|z_1| : |z_2| = 4 : 2 = 2 : 1')}</strong>!<br/>
-③ ${tex('2 : 1')} 내분 공식으로 <strong class="text-emerald-300">${tex('x = \\dfrac{8 - 2}{3} = 2, \\; y = \\dfrac{-10 + 1}{3} = -3 \\implies P(2, -3, 0)')}</strong>!`,
-          highlight: "💡 평면 교점 내분비 1초 공식: ① xy평면 교점 = |z₁|:|z₂| ② yz평면 교점 = |x₁|:|x₂| ③ zx평면 교점 = |y₁|:|y₂| !"
+          steps: `① 선분 ${tex('AB')}가 ${tex('xy')}평면(${tex('z=0')})과 만난다는 것은 <strong>${tex('z')}좌표가 ${tex('+4')}에서 ${tex('-2')}로 바뀌며 ${tex('0')}을 지난다</strong>는 뜻이다.<br/>
+② 따라서 내분하는 비는 <strong class="text-amber-300">z좌표의 절댓값의 비 ${tex('|z_1| : |z_2| = 4 : 2 = 2 : 1')}</strong>이다.<br/>
+③ ${tex('2 : 1')} 내분 공식으로 <strong class="text-emerald-300">${tex('x = \\dfrac{8 - 2}{3} = 2, \\; y = \\dfrac{-10 + 1}{3} = -3 \\implies P(2, -3, 0)')}</strong>이다.`,
+          highlight: "선분 AB가 좌표평면과 만나는 점이 AB를 내분하는 비 (두 점이 평면의 서로 반대쪽에 있을 때): ① xy평면과 만날 때 |z₁| : |z₂|  ② yz평면과 만날 때 |x₁| : |x₂|  ③ zx평면과 만날 때 |y₁| : |y₂|"
         })
       },
 
       3: {
-        badge: "MODE 3 · 구와 평면: d ≤ R일 때 r = √(R² - d²)",
+        badge: "장면 3 · 구와 평면: d ≤ R일 때 r = √(R² - d²)",
         hint: "중심에서 평면까지의 거리 <span class='text-pink-300 font-bold'>d</span>와 반지름 <span class='text-amber-300 font-bold'>R</span>을 비교하세요. <span class='text-emerald-300'>d&lt;R</span>이면 원, <span class='text-sky-300'>d=R</span>이면 한 점에서 접하고, <span class='text-rose-300'>d&gt;R</span>이면 만나지 않습니다. 반지름 공식 <span class='text-amber-300'>r=√(R²−d²)</span>은 <span class='text-emerald-300'>d≤R</span>일 때만 적용합니다.",
-        tag: "수능 기하 4점 구의 방정식 최고 빈출",
+        tag: "구와 평면이 만나서 생기는 원",
         targetTime: "목표 시간: 5초",
         question: () => `구 ${tex('x^2 + y^2 + (z - 3)^2 = 25')} 가 ${tex('xy')}평면(${tex('z = 0')})과 만나서 생기는 도형(교선원)의 반지름의 길이 ${tex('r')}과 넓이를 구하시오.`,
         answerBadge: () => `교선원 반지름 ${tex('r = 4')}, 넓이 ${tex('= 16\\pi')}`,
@@ -113,7 +113,7 @@ window.addEventListener('DOMContentLoaded', function () {
         cam: { yaw: (-35 * Math.PI) / 180, pitch: (20 * Math.PI) / 180 },
         sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (0 * Math.PI) / 180 },
         steps: [
-          "구의 중심 C(0, 0, 3) 및 구의 반지름 R = 5 와이어프레임",
+          "중심 C(0, 0, 3), 반지름 R = 5인 구",
           "중심 C에서 xy평면에 내린 수선의 발 H(0, 0, 0) 및 거리 d = 3",
           "피타고라스 직각삼각형 ΔCHP: 교선원 반지름 r = √(5² - 3²) = 4"
         ],
@@ -122,45 +122,45 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 반지름 ${tex('CP=5')}이므로 ${tex('HP^2=CP^2-CH^2=25-9=16')}; 따라서 ${tex('r=HP=4')}. 구의 방정식에 ${tex('z=0')}을 대입해도 같은 결과가 나온다:<br/>
 &nbsp;&nbsp;${tex('x^2+y^2=16, \\; z=0')}. 그러므로 교선은 중심 ${tex('H')}인 반지름 ${tex('4')}의 원, 넓이는 ${tex('16\\pi')}이다.<br/>
 ③ 일반적으로 중심과 평면 사이 거리 ${tex('d')}에 대해 ${tex('d< R')}이면 원, ${tex('d=R')}이면 한 점(접함), ${tex('d>R')}이면 만나지 않는다.`,
-          warning: "⚠️ 평면이 좌표평면(z=0)이 아니라 비스듬한 평면으로 주어지는 4점 기출에서는 대입법 자체가 불가능합니다!"
+          warning: "주의: 평면이 좌표평면(z=0)이 아니라 비스듬한 평면이면 z = 0을 대입하는 방법을 쓸 수 없습니다. 이때는 중심에서 평면까지의 거리를 이용합니다."
         }),
         shortcut: () => ({
-          steps: `① <strong>[구는 무조건 중심 C에서 수선의 발 H를 내린다!]</strong><br/>
-② 구의 반지름(빗변) <strong class="text-sky-300">${tex('R = 5')}</strong>, 중심 ${tex('C(0,0,3)')}에서 평면까지 수직 거리 <strong class="text-pink-300">${tex('d = 3')}</strong>!<br/>
-③ 직각삼각형 피타고라스 정리에 의해 교선원 반지름은 언제나:<br/>
-&nbsp;&nbsp;<strong class="text-amber-300">${tex('r = \\sqrt{R^2 - d^2} = \\sqrt{5^2 - 3^2} = 4')}</strong> ⇒ 넓이 <strong class="text-emerald-300">${tex('= 16\\pi')}</strong>!`,
+          steps: `① <strong>[구의 중심 C에서 평면에 수선의 발 H를 내린다]</strong><br/>
+② 구의 반지름(빗변) <strong class="text-sky-300">${tex('R = 5')}</strong>, 중심 ${tex('C(0,0,3)')}에서 평면까지 수직 거리 <strong class="text-pink-300">${tex('d = 3')}</strong>이다.<br/>
+③ 직각삼각형 CHP에서 피타고라스 정리에 의해 교선원의 반지름은:<br/>
+&nbsp;&nbsp;<strong class="text-amber-300">${tex('r = \\sqrt{R^2 - d^2} = \\sqrt{5^2 - 3^2} = 4')}</strong> ⇒ 넓이 <strong class="text-emerald-300">${tex('= 16\\pi')}</strong>이다.`,
           highlight: "d < R이면 교선은 원, d = R이면 한 점에서 접하고, d > R이면 교점이 없습니다. 원이 생기는 경우에만 직각삼각형 CHP에서 R² = d² + r²를 적용합니다."
         })
       },
 
       4: {
-        badge: "MODE 4 · 기출 3: 구 밖의 점에서 최대·최소 거리(d±R) & 접선의 길이",
-        hint: "구 밖의 점 P에서 구 위의 동점 Q까지 거리는 중심을 관통할 때 <span class='text-emerald-300 font-bold'>최대(d+R)</span>·<span class='text-rose-400 font-bold'>최소(d-R)</span>가 되며, 접점 T까지는 <span class='text-amber-300 font-bold'>직각삼각형 ΔCTP (l = √(d²-R²))</span>를 이룹니다!",
-        tag: "수능·평가원 4점 구와 접선 킬러",
+        badge: "장면 4 · 구 밖의 점에서 거리의 최대·최소(d±R)와 접선의 길이",
+        hint: "구 밖의 점 P에서 구 위의 점 Q까지의 거리는 Q가 직선 PC 위에 있을 때 <span class='text-emerald-300 font-bold'>최대(d+R)</span>·<span class='text-rose-400 font-bold'>최소(d-R)</span>가 되며, 접점 T에 대해서는 <span class='text-amber-300 font-bold'>직각삼각형 ΔCTP (l = √(d²-R²))</span>가 만들어집니다.",
+        tag: "구 밖의 점과 접선 킬러",
         targetTime: "목표 시간: 5초",
         question: () => `원점 ${tex('C(0, 0, 0)')}을 중심으로 하고 반지름이 ${tex('R = 3')} 인 구 ${tex('x^2 + y^2 + z^2 = 9')} 와 구 밖의 점 ${tex('P(4, 0, 3)')} 이 있다. 구 위의 점 ${tex('Q')}에 대하여 ${tex('\\overline{PQ}')}의 최댓값 ${tex('M')}, 최솟값 ${tex('m')}, 그리고 점 ${tex('P')}에서 구에 그은 접선의 길이 ${tex('l = \\overline{PT}')}를 구하시오.`,
-        answerBadge: () => `${tex('M = 8, \\; m = 2, \\; \\text{접선장 } l = 4')}`,
+        answerBadge: () => `${tex('M = 8, \\; m = 2, \\; \\text{접선의 길이 } l = 4')}`,
         thetaSnap: Math.acos(3 / 5),
         cam: { yaw: (-28 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
         sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (0 * Math.PI) / 180 },
         steps: [
-          "구 중심 C(0,0,0), 반지름 R = 3 및 외부 점 P(4,0,3) 연결 (중심거리 d = 5)",
-          "중심 관통선 위의 최댓값 Q_max(d+R = 8) 및 최솟값 Q_min(d-R = 2)",
+          "구 중심 C(0,0,0), 반지름 R = 3 및 외부 점 P(4,0,3) 연결 (중심까지의 거리 d = 5)",
+          "직선 PC 위의 점에서 최댓값 Q_max(d+R = 8)와 최솟값 Q_min(d-R = 2)",
           "접점 T에서의 수직 반지름 CT ⊥ PT ⇒ 접선의 길이 l = √(5² - 3²) = 4"
         ],
         textbook: () => ({
           steps: `① 구의 중심 ${tex('C(0, 0, 0)')}에서 점 ${tex('P(4, 0, 3)')}까지의 거리 계산:<br/>
 &nbsp;&nbsp;${tex('d = \\overline{CP} = \\sqrt{4^2 + 0^2 + 3^2} = 5')}<br/>
-② 삼각부등식 ${tex('|\\overline{CP} - \\overline{CQ}| \\le \\overline{PQ} \\le \\overline{CP} + \\overline{CQ}')} 에 의해 ${tex('M = 8, \\; m = 2')}<br/>
+② 삼각형의 두 변의 길이의 합은 나머지 한 변의 길이 이상이므로 ${tex('|\\overline{CP} - \\overline{CQ}| \\le \\overline{PQ} \\le \\overline{CP} + \\overline{CQ}')} (세 점 P, C, Q가 한 직선 위에 있을 때 등호)이고, ${tex('M = 8, \\; m = 2')}<br/>
 ③ 접선 ${tex('PT')}는 접점 반지름 ${tex('CT')}와 수직(${tex('\\angle CTP = 90^\\circ')})이므로 피타고라스 정리로 ${tex('l = \\sqrt{5^2 - 3^2} = 4')}.`,
-          warning: "⚠️ 구에 그은 접점들이 모이면 '접점 원(고깔모자 밑면)'이 되는데, 3D로만 생각하면 반지름 r' = Rl / d (소공식)를 놓치기 쉽습니다!"
+          warning: "참고: 점 P에서 구에 그은 접선의 접점들은 하나의 원을 이룹니다. 이 원의 반지름은 r' = Rl / d 입니다 (직각삼각형 CTP의 넓이를 두 가지로 나타내어 구합니다)."
         }),
         shortcut: () => ({
-          steps: `① 중심거리 <strong class="text-sky-300">${tex('d = \\overline{CP} = \\sqrt{4^2 + 3^2} = 5')}</strong>, 구 반지름 <strong class="text-pink-300">${tex('R = 3')}</strong> 확인!<br/>
-② 중심 관통선에서 <strong class="text-emerald-300">최대 ${tex('M = d + R = 8')}</strong>, <strong class="text-rose-300">최소 ${tex('m = d - R = 2')}</strong> (1초 컷!)<br/>
-③ 접점 ${tex('T')}에서는 무조건 <strong class="text-amber-300">${tex('3 : 4 : 5')} 직각삼각형 ${tex('\\triangle CTP')}</strong>가 만들어지므로 접선장 <strong class="text-amber-300">${tex('l = \\sqrt{5^2 - 3^2} = 4')}</strong>!<br/>
-&nbsp;&nbsp;(보너스: 접점들이 이루는 원의 반지름은 소공식 ${tex("r' = \\dfrac{R \\times l}{d} = \\dfrac{12}{5}")}!)`,
-          highlight: "💡 구 밖의 점 P 문제 3종 세트: ① 최대/최소 = d ± R ② 접선 길이 l = √(d² - R²) ③ 접점 원 반지름 = (R × l) / d (직각삼각형 소공식)!"
+          steps: `① 중심거리 <strong class="text-sky-300">${tex('d = \\overline{CP} = \\sqrt{4^2 + 3^2} = 5')}</strong>, 구 반지름 <strong class="text-pink-300">${tex('R = 3')}</strong>이다.<br/>
+② 직선 PC 위에서 <strong class="text-emerald-300">최대 ${tex('M = d + R = 8')}</strong>, <strong class="text-rose-300">최소 ${tex('m = d - R = 2')}</strong> (1초 컷!)<br/>
+③ 접점 ${tex('T')}에서는 ${tex('\\angle CTP = 90^\\circ')}이고 ${tex('CT = 3, \\; CP = 5')}이므로 <strong class="text-amber-300">${tex('3 : 4 : 5')} 직각삼각형 ${tex('\\triangle CTP')}</strong>가 되어 접선의 길이는 <strong class="text-amber-300">${tex('l = \\sqrt{5^2 - 3^2} = 4')}</strong>이다.<br/>
+&nbsp;&nbsp;(참고: 접점들이 이루는 원의 반지름은 직각삼각형 CTP의 넓이로 구한 ${tex("r' = \\dfrac{R \\times l}{d} = \\dfrac{12}{5}")}이다.)`,
+          highlight: "구 밖의 점 P (구의 중심까지의 거리 d, 구의 반지름 R): ① 구 위의 점까지 거리의 최댓값·최솟값은 d ± R ② 접선의 길이는 l = √(d² - R²) ③ 접점들이 이루는 원의 반지름은 (R × l) / d"
         })
       }
     };
@@ -237,6 +237,14 @@ window.addEventListener('DOMContentLoaded', function () {
     const O0 = { x: 0, y: 0, z: 0 };
     BRD.path([at(uA, O0), at(uA, uB), at(O0, uB)], { color, width: 1.8 });
   }
+  /* [표시 보강] 3D 각의 호 + 각도 값: 실제 공간각을 따라 그리고(SP.arc), 값은 호 바깥 각의 안쪽 방향에 씁니다. */
+  function draw3DAngleArc(originPt, ptA, ptB, radius = 0.8, color = '#fde047', label = '') {
+    SP.arc(w(originPt), w(ptA), w(ptB), radius, { color, label });
+  }
+  /* [표시 보강] 같은 길이 눈금(3D 선분 p–q의 가운데에 같은 개수의 짧은 선) */
+  function draw3DTicks(p, q, count = 1, color = '#fde047') {
+    SP.ticks ? SP.ticks(w(p), w(q), { count, color }) : BRD.ticks(SP.P(w(p)), SP.P(w(q)), { count, color });
+  }
   /* 구: 대원 3개(점선) + 시선에 수직인 외곽 원(직교 투영에서는 반지름 R인 원) */
   function draw3DSphereWireframe(center, R, color = 'rgba(56, 189, 248, 0.35)') {
     const N = 44;
@@ -282,11 +290,11 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       // [2.0 수정] 원본의 draw3DPoint({x,y:0},…,'xy 수선의 발')은 z가 없어 좌표가 NaN이라 아무것도 그려지지 않았습니다.
       // 같은 점은 1단계의 A₀(1,1,0) 라벨로 이미 그려지므로 호출을 뺐습니다.
-      draw3DPoint({x, y:0,z:0},3.0,'#7dd3fc','x축 발',{x:8,y:-9});
-      draw3DPoint({x:0,y,z:0},3.0,'#7dd3fc','y축 발',{x:-51,y:-8});
-      draw3DPoint({x:0,y:0,z},3.0,'#7dd3fc','z축 발',{x:9,y:-7});
-      draw3DPoint({x,y:0,z},3,'#86efac','xz 수선',{x:6,y:16});
-      draw3DPoint({x:0,y,z},3,'#86efac','yz 수선',{x:5,y:14});
+      draw3DPoint({x, y:0,z:0},3.0,'#7dd3fc','x축 위의 수선의 발',{x:8,y:-9});
+      draw3DPoint({x:0,y,z:0},3.0,'#7dd3fc','y축 위의 수선의 발',{x:-51,y:-8});
+      draw3DPoint({x:0,y:0,z},3.0,'#7dd3fc','z축 위의 수선의 발',{x:9,y:-7});
+      draw3DPoint({x,y:0,z},3,'#86efac','xz평면 위의 수선의 발',{x:6,y:16});
+      draw3DPoint({x:0,y,z},3,'#86efac','yz평면 위의 수선의 발',{x:5,y:14});
     }
 
   /* ===== 원본 그대로: 모드별 장면 그리기 (원본 1079–1317행) ===== */
@@ -315,6 +323,9 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DLine(B, B0, 'rgba(244, 114, 182, 0.7)', 2.2, true);
         draw3DLine(A0, B0, 'rgba(255, 255, 255, 0.45)', 2.0, true);
 
+        // [표시 보강] 수선의 발: AA₀ ⊥ xy평면, BB₀ ⊥ xy평면 — 평면 위 선분 A₀B₀와 이루는 직각을 표시
+        draw3DRightAngle(A0, A, B0, 0.3, '#38bdf8');
+        draw3DRightAngle(B0, B, A0, 0.3, '#f472b6');
         draw3DPoint(A0, 4.5, '#38bdf8', 'A₀(1,1,0)', { x: -65, y: 16 });
         draw3DPoint(B0, 4.5, '#f472b6', 'B₀(3,4,0)', { x: 10, y: 16 });
       });
@@ -323,6 +334,9 @@ window.addEventListener('DOMContentLoaded', function () {
       if (state.steps[3]) inPart(2,()=>{
         draw3DLine(B0, Bp, 'rgba(244, 114, 182, 0.6)', 2.2, true);
         draw3DLine(P, Bp, '#f472b6', 2.4, true);
+        // [표시 보강] 대칭: BB₀ = B₀B′ (같은 길이 눈금)과 B₀에서의 직각(BB′ ⊥ xy평면)
+        draw3DTicks(B, B0, 2, '#fde047');
+        draw3DTicks(B0, Bp, 2, '#fde047');
         draw3DLine(A, Bp, '#fbbf24', 3.4, false, true); // 일직선 최단 경로 AB'
         draw3DPoint(Bp, 6.5, '#f43f5e', "대칭점 B'(3, 4, -4)", { x: 12, y: 14 });
 
@@ -402,7 +416,7 @@ window.addEventListener('DOMContentLoaded', function () {
       draw3DPoint(A, 7, '#38bdf8', 'A(-2, 1, 4)', { x: -85, y: -12 });
       draw3DPoint(B, 7, '#f472b6', 'B(4, -5, -2)', { x: 12, y: 16 });
       if (Math.abs(t - 2 / 3) > 0.02) {
-        draw3DPoint(P, 6.5, '#fbbf24', `동점 (t=${t.toFixed(2)})`, { x: 10, y: -10 });
+        draw3DPoint(P, 6.5, '#fbbf24', `점 P (t=${t.toFixed(2)})`, { x: 10, y: -10 });
       }
     }
 
@@ -515,6 +529,8 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DLine(P, T, '#fbbf24', 3.6, false, true); // 접선 l = 4
         draw3DLine(C, P, '#38bdf8', 2.8);              // 중심거리 d = 5
         draw3DRightAngle(T, C, P, 0.36, '#fbbf24');
+        // [표시 보강] 접점 원 반지름 공식 R·l/d 에 쓰이는 ∠TCP(cos = R/d = 3/5)를 C에서 호와 값으로 표시
+        draw3DAngleArc(C, T, P, 0.9, '#fde047', `${(Math.acos(3 / 5) * R2D).toFixed(1)}°`);
 
         draw3DPoint(T, 6.5, '#fbbf24', '접점 T (∠CTP=90°, PT=4)', { x: -65, y: -14 });
 
@@ -550,7 +566,7 @@ window.addEventListener('DOMContentLoaded', function () {
         return {caption:`R² = d² + r² · 25 ${marker} ${d.toFixed(1)}² + ${r.toFixed(2)}²  |  넓이 ${marker} ${(r*r).toFixed(2)}π`,blocks:[{label:`d ${d.toFixed(1)}`,value:d,color:'#f472b6'},{label:`r ${marker} ${r.toFixed(2)}`,value:r,color:'#fbbf24'}]};
       }
       const pq=Math.sqrt(34-30*Math.cos(state.theta4));
-      return {caption:`현재 PQ = ${pq.toFixed(2)}  ·  최소 2 / 최대 8  ·  접선 PT=4  ·  접점 원 r′=12/5`,blocks:[{label:`PQ ${pq.toFixed(2)}`,value:pq,color:'#38bdf8'},{label:'PT 4',value:4,color:'#fbbf24'}],fraction:['12','5']};
+      return {caption:`현재 PQ = ${pq.toFixed(2)}  ·  최소 2 / 최대 8  ·  접선 PT=4  ·  접점들이 이루는 원 r′=12/5`,blocks:[{label:`PQ ${pq.toFixed(2)}`,value:pq,color:'#38bdf8'},{label:'PT 4',value:4,color:'#fbbf24'}],fraction:['12','5']};
     }
 
   /* ======================================================================
@@ -636,11 +652,11 @@ window.addEventListener('DOMContentLoaded', function () {
     section: { yaw: examData[m].sectionCam.yaw * R2D, pitch: examData[m].sectionCam.pitch * R2D },
     xy: { yaw: 0, pitch: 85 }
   });
-  const TITLES = ['수선의 발 & 대칭 최단거리', '기출1: 내분점 & 평면 교점(|z₁|:|z₂|)', '기출2: 구와 평면의 교선원(R²-d²)', '기출3: 구 밖의 점 최대·최소 & 접선장'];
+  const TITLES = ['수선의 발과 대칭이동, 최단 거리', '내분점과 좌표평면과의 교점 (|z₁|:|z₂|)', '구와 평면이 만나서 생기는 원 (R²-d²)', '구 밖의 점: 거리의 최대·최소와 접선의 길이'];
   const SHORT = ['수선의 발·대칭', '내분점·교점', '구와 평면', '구 밖의 점'];
   const QUESTIONS = [
     'xy평면 위를 거쳐 가는 가장 짧은 경로는 한 점을 대칭이동하면 어떻게 구할까?',
-    '선분이 xy평면을 뚫는 점은 두 끝점의 높이 비로 바로 구할 수 있을까?',
+    '선분이 xy평면과 만나는 점은 두 끝점의 z좌표의 비로 구할 수 있을까?',
     '구와 평면이 만나는 교선원의 반지름은 중심까지의 거리 d로 어떻게 정해질까?',
     '구 밖의 한 점에서 구 위의 점까지 거리의 최대·최소와 접선의 길이는 얼마일까?'
   ];
@@ -652,7 +668,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const t = state.t12, px = 1 + t * 2, py = 1 + t * 3;
       return [
         { label: '두 점 A, B 공간좌표', value: 'A(1,1,2) | B(3,4,4)', color: 'sky' },
-        { label: "xy평면 대칭점 B'", value: "B'(3, 4, -4) [z부호 반대]", color: 'rose' },
+        { label: "xy평면 대칭점 B'", value: "B'(3, 4, -4) [z좌표의 부호만 반대]", color: 'rose' },
         { label: '현재 AP+PB vs 최단거리', value: `현재 ${dist1(t).toFixed(2)} | 최소 7.00`, color: 'amber' },
         { label: '경유점 P 좌표 (z = 0)', value: `P(${px.toFixed(2)}, ${py.toFixed(2)}, 0)`, color: 'green' }
       ];
@@ -663,7 +679,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { label: '두 점 A, B 높이 (z좌표)', value: 'z₁ = +4 | z₂ = -2', color: 'sky' },
         { label: 'xy평면(z=0) 교점 내분비', value: '|4| : |-2| = 2 : 1 내분', color: 'rose' },
         { label: '현재 내분점 좌표', value: `(${(-2 + t * 6).toFixed(1)}, ${(1 - t * 6).toFixed(1)}, ${(4 - t * 6).toFixed(1)})`, color: 'amber' },
-        { label: '평면 관통 교점 P', value: 'P(2, -3, 0)', color: 'green' }
+        { label: 'xy평면과의 교점 P', value: 'P(2, -3, 0)', color: 'green' }
       ];
     }
     if (m === 3) {
@@ -679,10 +695,10 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     const pq = Math.sqrt(34 - 30 * Math.cos(state.theta4));
     return [
-      { label: '중심거리 d = |CP| / 반지름 R', value: 'd = 5.00 | R = 3.00', color: 'sky' },
+      { label: '중심까지의 거리 d = |CP| / 반지름 R', value: 'd = 5.00 | R = 3.00', color: 'sky' },
       { label: '최댓값 M = d + R', value: 'M = 5 + 3 = 8.00', color: 'rose' },
       { label: '최솟값 m = d - R', value: 'm = 5 - 3 = 2.00', color: 'amber' },
-      { label: '현재 PQ / 고정 접선장 PT', value: `PQ = ${pq.toFixed(3)} | PT = 4.00`, color: 'green' }
+      { label: '현재 PQ / 접선의 길이 PT', value: `PQ = ${pq.toFixed(3)} | PT = 4.00`, color: 'green' }
     ];
   }
   function chips(m) {
@@ -718,30 +734,30 @@ window.addEventListener('DOMContentLoaded', function () {
         const c = CAMS(m);
         const near = (st, t) => Math.abs(st.yaw - t.yaw) < 1 && Math.abs(st.pitch - t.pitch) < 1;
         return [
-          { group: '시점', label: '제1팔분면 입체 뷰', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
-          { group: '시점', label: '2D 대원 단면 뷰 (필살기)', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
+          { group: '시점', label: '제1팔분면 입체로 보기', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
+          { group: '시점', label: '구의 중심을 지나는 단면 보기', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
           { group: '시점', label: 'xy평면 위에서 보기', set: c.xy, ms: 600, on: (st) => near(st, c.xy) },
-          { group: '관찰 렌즈', label: '전체', apply: (st) => { st.lens = 'all'; st.part = null; }, on: (st) => st.lens === 'all' },
-          { group: '관찰 렌즈', label: '작도', apply: (st) => { st.lens = 'construction'; }, on: (st) => st.lens === 'construction' },
-          { group: '관찰 렌즈', label: '길이·비율', apply: (st) => { st.lens = 'measure'; }, on: (st) => st.lens === 'measure' },
-          { group: '관찰 렌즈', label: '조각 확대', apply: (st) => { st.lens = 'focus'; if (st.part == null) st.part = 1; }, on: (st) => st.lens === 'focus' }
+          { group: '강조해서 볼 요소', label: '전체', apply: (st) => { st.lens = 'all'; st.part = null; }, on: (st) => st.lens === 'all' },
+          { group: '강조해서 볼 요소', label: '작도', apply: (st) => { st.lens = 'construction'; }, on: (st) => st.lens === 'construction' },
+          { group: '강조해서 볼 요소', label: '길이·비율', apply: (st) => { st.lens = 'measure'; }, on: (st) => st.lens === 'measure' },
+          { group: '강조해서 볼 요소', label: '선택한 단계 확대', apply: (st) => { st.lens = 'focus'; if (st.part == null) st.part = 1; }, on: (st) => st.lens === 'focus' }
         ];
       },
-      actions: [{ id: 'spin', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '3D 자동 회전'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+      actions: [{ id: 'spin', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '입체 자동 회전'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
       tick: (s, dt) => { if (!s.playing) return false; s.yaw += 34 * dt; if (s.yaw > 180) s.yaw -= 360; return true; },
       steps: d.steps,
       problem: {
         tag: d.tag, time: d.targetTime, text: d.question, answer: d.answerBadge,
         snap: () => ({ [tParam]: m === 1 ? 1 / 3 : m === 2 ? 2 / 3 : m === 3 ? 3 : TH4_TANGENT, ...iso() })
       },
-      solution: { standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
+      solution: { standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
       view: (s) => {
         sync(s, m);
         return {
           chips: chips(m),
           status: statusOf(s, m),
           readouts: readouts(m),
-          parts: d.steps.map((t, i) => ({ id: i + 1, name: `조각 ${i + 1}`, desc: t, color: PART_COLORS[i] }))
+          parts: d.steps.map((t, i) => ({ id: i + 1, name: `단계 ${i + 1}`, desc: t, color: PART_COLORS[i] }))
         };
       },
       draw: (b, s, v) => {
@@ -778,12 +794,12 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     },
     params: {
-      yaw: { value: 35, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전 (yaw)', format: (v) => `${Math.round(v)}°` },
-      pitch: { value: 22, min: -15, max: 85, step: 1, color: 'muted', label: '위아래 기울기 (pitch)', format: (v) => `${Math.round(v)}°` },
+      yaw: { value: 35, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전', format: (v) => `${Math.round(v)}°` },
+      pitch: { value: 22, min: -15, max: 85, step: 1, color: 'muted', label: '위아래 기울기', format: (v) => `${Math.round(v)}°` },
       t1: { value: 1 / 3, min: 0, max: 1, step: 0.01, color: 'amber', label: '경유점 위치 t (P는 xy평면 위)', hint: 'P가 A₀B₀ 위를 움직입니다. t = 1/3 에서 AP + PB 가 최소(일직선)', format: (v) => `t = ${v.toFixed(2)} (AP+PB = ${dist1(v).toFixed(2)})` },
-      t2: { value: 2 / 3, min: 0, max: 1, step: 0.01, color: 'amber', label: '내분 비율 t (A → B)', hint: 't = 2/3 에서 선분이 xy평면(z = 0)을 뚫습니다', format: (v) => `t = ${v.toFixed(2)} (z = ${(4 - 6 * v).toFixed(2)})` },
+      t2: { value: 2 / 3, min: 0, max: 1, step: 0.01, color: 'amber', label: '내분 비율 t (A → B)', hint: 't = 2/3 에서 선분이 xy평면(z = 0)과 만납니다', format: (v) => `t = ${v.toFixed(2)} (z = ${(4 - 6 * v).toFixed(2)})` },
       d: { value: 3, min: 0, max: 6, step: 0.1, color: 'rose', label: '구 중심 높이 d = |z_C|', hint: 'd ≤ R 일 때 교선원의 반지름 r = √(R²−d²)', format: (v) => { const r = Math.sqrt(Math.max(0, 25 - v * v)); const rel = v < 5 - 1e-9 ? '교선은 원' : Math.abs(v - 5) <= 1e-9 ? '한 점에서 접함' : '교점 없음'; return `d = ${v.toFixed(2)} (${rel}${v < 5 ? `, r≈${r.toFixed(2)}` : ''})`; } },
-      th: { value: 53.13, min: 0, max: 360, step: 0.5, color: 'amber', label: '구 위 동점 Q의 각도 θ', hint: '53° 근처에서 Q가 접점 T와 겹칩니다 (최대 d+R · 최소 d−R · 접선장 l)', format: (v) => { const t = th4Of(v); return `θ = ${Math.round(t * R2D)}° (PQ = ${Math.sqrt(34 - 30 * Math.cos(t)).toFixed(2)} / PT = 4.00)`; } }
+      th: { value: 53.13, min: 0, max: 360, step: 0.5, color: 'amber', label: '구 위의 점 Q의 각도 θ', hint: '53° 근처에서 Q가 접점 T와 겹칩니다 (최대 d+R · 최소 d−R · 접선의 길이 l)', format: (v) => { const t = th4Of(v); return `θ = ${Math.round(t * R2D)}° (PQ = ${Math.sqrt(34 - 30 * Math.cos(t)).toFixed(2)} / PT = 4.00)`; } }
     },
     state: { lens: 'all' },
     persist: ['lens'],
