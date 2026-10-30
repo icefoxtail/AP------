@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>접선과 미분계수 · AP Math 실험실</title>
-<meta name="description" content="미적분Ⅰ 접선과 미분계수: 할선→접선 극한, 평균값 정리, 좌·우미분과 첨점, 법선과 최단거리, 공통접선을 직접 조작하며 탐구합니다.">
+<meta name="description" content="미적분Ⅰ 접선과 미분계수: 할선에서 접선으로 가는 극한, 평균값 정리, 좌미분계수·우미분계수와 미분가능성, 법선과 최단거리, 공통접선을 직접 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    미적분Ⅰ · 접선과 미분계수 (AP Math Lab 2.0 이식본)
@@ -61,17 +61,17 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 2. 문제·풀이 데이터 (원본 examData 그대로) ---------- */
   const examData = {
       1: {
-        badge: "MODE 1 · 평균변화율(할선) → 순간변화율(접선) 극한 & 계수 차 공식",
-        hint: "하늘색 동점 <span class='text-sky-300 font-bold'>B(a+Δx)</span>를 드래그해 고정점 <span class='text-amber-300 font-bold'>A(a)</span>로 가까이 붙여보세요! Δx → 0 일 때 할선이 접선과 완벽히 포개집니다.",
-        tag: "수능·평가원 3점·4점 미분계수 극한 필수",
+        badge: "장면 1 · 평균변화율(할선)에서 미분계수(접선의 기울기)로 가는 극한과 h의 계수의 차",
+        hint: "하늘색 점 <span class='text-sky-300 font-bold'>B(a+Δx)</span>를 끌어서 고정된 점 <span class='text-amber-300 font-bold'>A(a)</span>에 가까이 가져가 보세요! Δx → 0 일 때 할선이 접선에 겹쳐집니다.",
+        tag: "미분계수의 정의를 이용한 극한값",
         targetTime: "목표 시간: 3초",
         question: () => `다항함수 ${tex('f(x) = \\dfrac{1}{2}x^3 - \\dfrac{3}{2}x + 1')} 에 대하여 ${tex('x')}의 값이 ${tex('1')}에서 ${tex('3')}까지 변할 때의 평균변화율과, 극한값 ${tex('\\lim_{h \\to 0} \\dfrac{f(2 + 3h) - f(2 - 2h)}{h}')} 의 값을 각각 구하시오.`,
         answerBadge: () => `평균변화율 ${tex('= 5')}, 극한값 ${tex('= 5f\'(2) = 22.5')}`,
         snap: { a: 1.0, dx: 2.0, slopeR: 2.0, gapH: 0.0, dualView: false },
         steps: [
-          "Step 1 · 점 A(1,f(1)), B(3,f(3))를 잇는 할선 AB의 기울기를 세웁니다.",
-          "Step 2 · B(2+3h)와 C(2−2h)가 x=2로 모일 때 분자 차이를 미분계수 정의와 연결합니다.",
-          "Step 3 · f′(2)를 접선 기울기로 읽고 입력 간격 계수 차를 반영해 극한을 구합니다."
+          "1단계 · 점 A(1, f(1)), B(3, f(3))를 잇는 할선 AB의 기울기, 즉 평균변화율을 구합니다.",
+          "2단계 · h가 0에 가까워지면 x=2+3h와 x=2−2h가 모두 x=2에 가까워집니다. 분자를 f(2+3h)−f(2)와 f(2−2h)−f(2)로 나누어 미분계수의 정의와 연결합니다.",
+          "3단계 · f′(2)의 값을 구한 뒤, h의 계수 3과 −2의 차 3−(−2)=5를 곱해 극한값을 구합니다."
         ],
         textbook: () => ({
           steps: `① 평균변화율: ${tex('\\dfrac{f(3) - f(1)}{3 - 1} = \\dfrac{10 - 0}{2} = 5')}<br/>
@@ -79,28 +79,28 @@ window.addEventListener('DOMContentLoaded', function () {
 &nbsp;&nbsp;${tex('\\lim_{h \\to 0} \\left\\{ \\dfrac{f(2+3h)-f(2)}{3h}\\cdot 3 + \\dfrac{f(2-2h)-f(2)}{-2h}\\cdot 2 \\right\\}')}<br/>
 ③ 미분계수의 정의에 의해 ${tex("3f'(2) + 2f'(2) = 5f'(2)")}<br/>
 ④ ${tex("f'(x)=\\frac32x^2-\\frac32")}이므로 ${tex("f'(2)=\\frac92")}; 따라서 극한값은 ${tex("5\\cdot\\frac92=\\frac{45}{2}")}입니다.`,
-          warning: "⚠️ 시험장에서 f(a)를 더하고 빼서 극한식을 두 개로 쪼개어 적으면 시간이 낭비됩니다!"
+          warning: "⚠️ f(2)를 더하고 빼서 극한식을 둘로 나누는 과정을 매번 쓰면 오래 걸립니다. 아래 빠른 풀이의 공식으로 줄일 수 있습니다."
         }),
         shortcut: () => ({
-          steps: `① 미분가능한 함수에서 ${tex('\\lim_{h \\to 0} \\dfrac{f(a + ph) - f(a + qh)}{h}')} 꼴은 무조건 <strong class="text-pink-300">【 ${tex('h')}의 계수의 차 ${tex('\\times f\'(a)')} 】</strong>!<br/>
-② 따라서 ${tex('(3 - (-2))f\'(2) = 5f\'(2)')} 로 1초 만에 직행!<br/>
-③ ${tex("f'(2) = 4.5")} 대입 시 암산으로 즉시 <strong class="text-amber-300">${tex('22.5 \\; (45/2)')}</strong> 완료!`,
-          highlight: "💡 미분계수 극한식은 무조건 【 (분자 h 계수의 차 / 분모 h 계수) × f'(a) 】 1초 공식으로 읽으세요!"
+          steps: `① 미분가능한 함수에서 ${tex('\\lim_{h \\to 0} \\dfrac{f(a + ph) - f(a + qh)}{h}')} 의 값은 <strong class="text-pink-300">【 ${tex('(p - q)\\times f\'(a)')} 】</strong>입니다. (분자에 ${tex('f(a)')}를 더하고 빼면 ${tex("p\\,f'(a) - q\\,f'(a)")}가 되기 때문입니다.)<br/>
+② 이 문제에서는 ${tex('p = 3, \\; q = -2')} 이므로 ${tex('(3 - (-2))f\'(2) = 5f\'(2)')} 입니다.<br/>
+③ ${tex("f'(2) = 4.5")} 를 대입하면 <strong class="text-amber-300">${tex('5 \\times 4.5 = 22.5 \\; (45/2)')}</strong> 입니다.`,
+          highlight: `💡 ${tex('f')}가 ${tex('x=a')}에서 미분가능하면 ${tex('\\lim_{h \\to 0} \\dfrac{f(a + ph) - f(a + qh)}{h} = (p - q)f\'(a)')} 입니다.`
         })
       },
 
       2: {
-        badge: "MODE 2 · 평균값 정리(MVT)와 롤의 정리 평행접선 탐색기",
-        hint: "양 끝점 <span class='text-amber-300 font-bold'>A</span>와 <span class='text-sky-300 font-bold'>B</span>를 드래그해 보세요! 할선 AB와 기울기가 정확히 같은 <span class='text-pink-300 font-bold'>평행 접선의 접점 c</span>가 실시간으로 자동 작도됩니다.",
-        tag: "평가원 4점 합답형 & 평균값 정리 단골",
+        badge: "장면 2 · 평균값 정리: 할선과 평행한 접선 찾기",
+        hint: "양 끝점 <span class='text-amber-300 font-bold'>A</span>와 <span class='text-sky-300 font-bold'>B</span>를 끌어 보세요! 할선 AB와 기울기가 같은 <span class='text-pink-300 font-bold'>할선 AB에 평행한 접선의 접점 c</span>가 바로 표시됩니다.",
+        tag: "평균값 정리를 만족시키는 c의 값",
         targetTime: "목표 시간: 5초",
         question: () => `함수 ${tex('f(x) = \\dfrac{1}{2}x^3 - \\dfrac{3}{2}x + 1')} 에 대하여 닫힌구간 ${tex('[-1, 2]')}에서 평균값 정리를 만족시키는 상수 ${tex('c \\; (-1 < c < 2)')}의 값을 구하시오.`,
         answerBadge: () => `${tex('c = \\pm 1')} 중 열린구간 내부인 ${tex('c = 1')}`,
         snap: { a: -1.0, dx: 3.0, slopeR: 2.0, gapH: 0.0, dualView: false },
         steps: [
-          "Step 1 · f(x)=½x³−3/2x+1이 [−1,2]에서 연속, (−1,2)에서 미분가능한지 확인합니다.",
-          "Step 2 · A(−1,f(−1)), B(2,f(2))의 할선 기울기와 f′(c)의 방정식을 연결합니다.",
-          "Step 3 · 도함수 방정식의 후보를 구간 (−1,2)에 대조해 정리의 c를 선택합니다."
+          "1단계 · f(x)=½x³−(3/2)x+1이 [−1, 2]에서 연속이고 (−1, 2)에서 미분가능한지 확인합니다.",
+          "2단계 · 두 점 A(−1, f(−1)), B(2, f(2))를 지나는 할선의 기울기(평균변화율)와 f′(c)가 같다는 방정식을 세웁니다.",
+          "3단계 · f′(c)=(평균변화율)을 풀어 얻은 c의 후보 중에서 열린구간 (−1, 2) 안에 있는 값을 고릅니다."
         ],
         textbook: () => ({
           steps: `① 구간 ${tex('[-1, 2]')}에서의 평균변화율 계산:<br/>
@@ -108,28 +108,28 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 도함수 ${tex("f'(c) = \\dfrac{3}{2}c^2 - \\dfrac{3}{2} = 0")} 방정식 풀이:<br/>
 &nbsp;&nbsp;${tex('c^2 = 1 \\implies c = -1')} 또는 ${tex('c = 1')}<br/>
 ③ 후보 ${tex('c=-1,1')} 중 ${tex('-1')}은 구간 끝점이라 제외합니다. 따라서 열린구간 ${tex('(-1,2)')} 안의 값은 ${tex('c=1')}뿐입니다.`,
-          warning: "⚠️ 삼차함수에서 한 끝점 A(-1, 2)가 극대점이고 f(-1)=f(2)=2 일 때는 삼차함수 2:1 비율관계로 c를 1초 만에 찾을 수 있습니다!"
+          warning: "⚠️ f(−1)=f(2)=2이면 할선 AB가 수평선이므로 평균변화율이 0이고, f′(c)=0만 풀면 됩니다. 단, 구한 c가 구간의 끝점이면 열린구간 (−1, 2)에 속하지 않으므로 제외합니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex('f(-1) = 2')} 이고 ${tex('f(2) = 2')} 이므로 할선 ${tex('AB')}는 기울기가 ${tex('0')}인 수평선(롤의 정리)!<br/>
-② 삼차함수 <strong>[2 : 1 비율 법칙]</strong>에 의해 극대점 ${tex('x = -1')} 과 교점 ${tex('x = 2')} (간격 ${tex('3')})를 <strong>2 : 1 내분</strong>하는 점이 극소점!<br/>
-③ 따라서 도함수 방정식의 후보 중 열린구간 내부의 평행 접선 접점은 <strong class="text-amber-300">${tex('c=1')}</strong>입니다. 이 값은 주어진 함수에 대한 미분계수 방정식으로 확인합니다.`,
+          steps: `① ${tex('f(-1) = 2')} 이고 ${tex('f(2) = 2')} 이므로 할선 ${tex('AB')}는 기울기가 ${tex('0')}인 수평선 ${tex('y=2')}입니다.<br/>
+② ${tex('f(x)-2=\\frac12(x+1)^2(x-2)')}로 인수분해되므로, 그래프는 ${tex('x=-1')}에서 직선 ${tex('y=2')}에 접하고 ${tex('x=2')}에서 이 직선과 만납니다.<br/>
+③ 접선의 기울기가 ${tex('0')}인 점의 ${tex('x')}좌표는 ${tex("f'(c)=\\frac32(c^2-1)=0")}에서 ${tex('c=\\pm1')}이고, 열린구간 ${tex('(-1,2)')} 안에 있는 값은 <strong class="text-amber-300">${tex('c=1')}</strong>입니다.`,
           highlight: `💡 이 문항의 ${tex('f(x)=\\frac12x^3-\\frac32x+1')}은 ${tex('x^2')}항이 없으므로 ${tex('f\\prime(c)=\\frac32(c^2-1)')}입니다. 양 끝값이 같아 평균 기울기가 0이므로 ${tex('c=\\pm1')}, 열린구간에서는 ${tex('c=1')}입니다.`
         })
       },
 
       3: {
-        badge: "MODE 3 · 미분가능성 판정 실험실 (불연속 vs 첨점 vs 스무스 접합)",
-        hint: "좌측 상단 <span class='text-amber-300 font-bold'>접합 상태 프리셋(①미분가능 / ②첨점 / ③불연속)</span>을 눌러보거나 우측 슬라이더로 기울기 <span class='text-pink-300 font-bold'>p</span>와 단차 <span class='text-sky-300 font-bold'>Δh</span>를 조절해 보세요!",
-        tag: "수능 3점·4점 미분가능성 필수 유형",
+        badge: "장면 3 · 미분가능성 판정: 불연속, 꺾인 점, 미분가능한 접합",
+        hint: "탐구 탭의 <span class='text-amber-300 font-bold'>접합 상태 버튼(① 미분가능 / ② 꺾인 점 / ③ 불연속)</span>을 눌러 보거나, 조절 막대로 오른쪽 직선의 기울기 <span class='text-pink-300 font-bold'>p</span>와 경계에서의 높이 차 <span class='text-sky-300 font-bold'>Δh</span>를 바꿔 보세요!",
+        tag: "구간별로 정의된 함수의 미분가능성",
         targetTime: "목표 시간: 5초",
         question: () => `실수 전체의 집합에서 정의된 함수 ${tex('f(x) = \\begin{cases} x^2 & (x < 1) \\\\ px + q & (x \\ge 1) \\end{cases}')} 이 ${tex('x = 1')} 에서 미분가능할 때, 상수 ${tex('p, q')}의 값을 구하시오.`,
         answerBadge: () => `${tex('p = 2, \\; q = -1 \\; (p + q = 1)')}`,
         snap: { a: 1.0, dx: 1.0, slopeR: 2.0, gapH: 0.0, dualView: true },
         steps: [
-          "Step 1 · x=1에서 왼쪽 x²과 오른쪽 px+q가 같은 점으로 이어지는 조건을 세웁니다.",
-          "Step 2 · 왼쪽 접선 기울기 2x와 오른쪽 직선 기울기 p를 경계 x=1에서 비교합니다.",
-          "Step 3 · 연속 조건과 좌우 기울기 조건을 함께 만족하는 p,q를 원래 식에 확인합니다."
+          "1단계 · x=1에서 왼쪽 식 x²과 오른쪽 식 px+q의 함숫값이 같아야(연속) 한다는 조건을 세웁니다.",
+          "2단계 · 왼쪽 식의 x=1에서의 미분계수 2와 오른쪽 직선의 기울기 p가 같아야 한다는 조건을 세웁니다.",
+          "3단계 · 연속 조건과 미분계수 조건을 함께 만족하는 p, q를 구하고 원래 식에서 확인합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('x = 1')} 에서 미분가능하면 연속이므로:<br/>
@@ -137,28 +137,28 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 미분계수의 정의를 이용해 좌미분계수와 우미분계수 각각 극한 계산:<br/>
 &nbsp;&nbsp;${tex('\\lim_{h \\to 0-} \\dfrac{(1+h)^2 - 1}{h} = 2')}, &nbsp;${tex('\\lim_{h \\to 0+} \\dfrac{p(1+h)+q - 1}{h} = p')}<br/>
 ③ 연속 조건 ${tex('p+q=1')}에 ${tex('p=2')}를 대입하면 ${tex('q=-1')}입니다. 그러면 두 식은 점 ${tex('(1,1)')}에서 만나고 양쪽 기울기도 2로 같습니다.`,
-          warning: "⚠️ 구간 다항함수에서 매번 h → 0-, 0+ 극한 정의식을 세우면 시간을 낭비합니다!"
+          warning: "⚠️ 구간별로 정의된 다항함수에서 매번 h → 0−, h → 0+ 의 극한으로 정의식을 세우면 오래 걸립니다. 아래 빠른 풀이를 함께 보세요."
         }),
         shortcut: () => ({
-          steps: `① <strong>[1단계: 함숫값 대입(연속)]</strong> 위·아래 식에 ${tex('x = 1')} 대입: <strong class="text-sky-300">${tex('1 = p + q')}</strong>!<br/>
-② <strong>[2단계: 각각 미분 후 대입(기울기 일치)]</strong> 위·아래를 각각 미분(${tex('2x')} 와 ${tex('p')})하여 ${tex('x = 1')} 대입: <strong class="text-pink-300">${tex('p = 2')}</strong>!<br/>
-③ 연립하면 3초 만에 <strong class="text-amber-300">${tex('p = 2, \\; q = -1')}</strong> 도출 완료!`,
-          highlight: "💡 구간별 다항함수의 미분가능 조건은 무조건 【 ① 경계값 대입 일치(연속) + ② 미분 후 경계값 대입 일치(기울기) 】 2연타로 끝내세요!"
+          steps: `① <strong>[1단계: 연속 조건]</strong> 두 식에 ${tex('x = 1')} 을 대입한 값이 같아야 하므로 <strong class="text-sky-300">${tex('1 = p + q')}</strong><br/>
+② <strong>[2단계: 미분계수가 같을 조건]</strong> 두 식을 각각 미분(${tex('2x')} 와 ${tex('p')})하여 ${tex('x = 1')} 을 대입한 값이 같아야 하므로 <strong class="text-pink-300">${tex('p = 2')}</strong><br/>
+③ 연립하면 <strong class="text-amber-300">${tex('p = 2, \\; q = -1')}</strong> 을 얻습니다.`,
+          highlight: "💡 구간별로 정의된 다항함수가 경계 x=a에서 미분가능하려면 ① 두 식의 x=a에서의 함숫값이 같고(연속), ② 두 식을 각각 미분한 식의 x=a에서의 값도 같아야 합니다."
         })
       },
 
       4: {
-        badge: "MODE 4 · 법선(Normal Line)의 방정식과 곡선-직선 최단거리",
-        hint: "곡선 위의 점 <span class='text-amber-300 font-bold'>T(a, f(a))</span>를 드래그해 보세요! 접선의 기울기가 <span class='text-pink-300 font-bold'>직선 y = x - 2의 기울기(1)와 같아지는 순간(a=1)</span> 법선이 직선과 수직으로 만나며 거리가 최소가 됩니다!",
-        tag: "내신·모의고사 4점 최단거리 & 넓이 최솟값",
+        badge: "장면 4 · 법선의 방정식과 곡선·직선 사이의 최단거리",
+        hint: "곡선 위의 점 <span class='text-amber-300 font-bold'>T(a, f(a))</span>를 끌어 보세요! 접선의 기울기가 <span class='text-pink-300 font-bold'>직선 y = x − 2의 기울기(1)와 같아지는 순간(a=1)</span> 접선이 직선과 평행해지고, 법선(접선에 수직인 직선)이 직선과 수직이 되며 거리가 최소가 됩니다!",
+        tag: "곡선 위의 점과 직선 사이의 최단거리",
         targetTime: "목표 시간: 5초",
         question: () => `곡선 ${tex('y = \\dfrac{1}{2}x^2 + \\dfrac{1}{2}')} 위의 점 ${tex('T(a, f(a))')}와 직선 ${tex('y = x - 2')} 사이의 거리가 최소가 될 때, 점 ${tex('T')}의 좌표와 최단거리 ${tex('d_{\\min}')}을 구하시오.`,
         answerBadge: () => `접점 ${tex('T(1, 1)')}, 최단거리 ${tex('d_{\\min} = \\sqrt{2}')}`,
         snap: { a: 1.0, dx: 1.0, slopeR: 2.0, gapH: 0.0, dualView: false },
         steps: [
-          "Step 1 · T(a,½a²+½)와 직선 x−y−2=0 사이의 수선 거리식을 씁니다.",
-          "Step 2 · 거리의 분자를 a에 대한 이차식으로 정리해 완전제곱과 등호 조건을 찾습니다.",
-          "Step 3 · T에서 직선까지 내린 수선과 접선 방향이 만드는 최단거리 조건을 확인합니다."
+          "1단계 · T(a, ½a²+½)와 직선 x−y−2=0 사이의 거리를 점과 직선 사이의 거리 공식으로 나타냅니다.",
+          "2단계 · 거리의 분자를 a에 대한 이차식으로 정리하고 완전제곱식으로 고쳐 최솟값과 등호가 성립하는 a를 찾습니다.",
+          "3단계 · 거리가 최소일 때 접선이 직선과 평행하고, T에서 직선에 내린 수선(법선)이 직선과 수직임을 확인합니다."
         ],
         textbook: () => ({
           steps: `① 곡선 위의 임의의 점을 ${tex('T\\left(a, \\dfrac{1}{2}a^2 + \\dfrac{1}{2}\\right)')} 로 설정<br/>
@@ -166,28 +166,28 @@ window.addEventListener('DOMContentLoaded', function () {
 &nbsp;&nbsp;${tex('d = \\dfrac{\\left| a - \\left(\\dfrac{1}{2}a^2 + \\dfrac{1}{2}\\right) - 2 \\right|}{\\sqrt{1^2 + (-1)^2}} = \\dfrac{\\left| -\\dfrac{1}{2}a^2 + a - \\dfrac{5}{2} \\right|}{\\sqrt{2}}')}<br/>
 ③ 분자의 이차식을 완전제곱식으로 묶어 최솟값 계산:<br/>
 &nbsp;&nbsp;${tex('\\dfrac{\\frac12(a-1)^2+2}{\\sqrt2} \\ge \\dfrac{2}{\\sqrt2}=\\sqrt2')}입니다. 등호는 ${tex('a=1')}일 때이고, 이때 ${tex('T=(1,1)')}입니다.`,
-          warning: "⚠️ 삼차함수나 초월함수에서는 점과 직선 사이의 거리 공식을 완전제곱식으로 묶을 수 없으므로 반드시 기하학적 접선 원리를 써야 합니다!"
+          warning: "⚠️ 삼차함수처럼 이차함수가 아닌 곡선에서는 거리식을 완전제곱식으로 묶기 어렵습니다. 이때는 접선의 기울기가 직선의 기울기와 같은 점을 찾는 방법을 씁니다."
         }),
         shortcut: () => ({
           steps: `① 곡선 위 점 ${tex('T(a,\\frac12a^2+\\frac12)')}와 직선 ${tex('x-y-2=0')}의 거리는 이 문항에서 ${tex('d(a)=\\frac{\\frac12(a-1)^2+2}{\\sqrt2}')}입니다.<br/>
 ② ${tex('(a-1)^2\\ge0')}이므로 거리는 ${tex('a=1')}에서 최소입니다. 이때 접선의 기울기는 ${tex("f'(1)=1")}로 직선의 기울기와 같음을 확인할 수 있습니다.<br/>
-③ ${tex('T=(1,1)')}에서 ${tex('d=|1-1-2|/\\sqrt2=\\sqrt2')}입니다. 이 결론은 주어진 곡선과 직선의 거리식을 완전제곱한 결과입니다.`,
+③ ${tex('T=(1,1)')}에서 ${tex('d=|1-1-2|/\\sqrt2=\\sqrt2')}입니다. 이 최솟값은 거리식 ${tex('d(a)=\\dfrac{\\frac12(a-1)^2+2}{\\sqrt2}')}을 완전제곱식으로 고쳐 얻은 값입니다.`,
           highlight: `💡 이 문항은 직선과 곡선의 거리식 ${tex('d(a)=\\frac{\\frac12(a-1)^2+2}{\\sqrt2}')}를 완전제곱해 최솟값과 등호 조건을 직접 확인합니다.`
         })
       },
 
       5: {
-        badge: "MODE 5 · 두 곡선 y=f(x), y=g(x)의 공통접선과 차함수 중근 원리",
-        hint: "접점 <span class='text-amber-300 font-bold'>T(a, f(a))</span>를 좌우로 드래그해 보세요! 두 곡선이 한 점에서 공통접선을 가질 조건 <span class='text-pink-300 font-bold'>f(a)=g(a) &amp; f'(a)=g'(a)</span>를 시각적으로 확인할 수 있습니다.",
-        tag: "평가원 4점 공통접선 & 인수 정리 핵심",
+        badge: "장면 5 · 두 곡선 y=f(x), y=g(x)의 공통접선과 f(x)−g(x)의 중근",
+        hint: "접점 <span class='text-amber-300 font-bold'>T(a, f(a))</span>를 좌우로 끌어 보세요! 두 곡선이 한 점에서 공통접선을 가질 조건 <span class='text-pink-300 font-bold'>f(a)=g(a), f′(a)=g′(a)</span>를 그림으로 확인할 수 있습니다.",
+        tag: "두 곡선의 공통접선의 방정식",
         targetTime: "목표 시간: 5초",
         question: () => `두 곡선 ${tex('f(x) = \\dfrac{1}{2}x^3 - \\dfrac{1}{2}x + 1')} 과 ${tex('g(x) = -\\dfrac{4}{5}x^2 + px + q')} 가 점 ${tex('x = 1')} 에서 서로 접할 때(공통접선을 가질 때), 공통접선의 방정식을 구하시오.`,
         answerBadge: () => `접점 ${tex('T(1, 1)')}, 공통접선 ${tex('y = x')}`,
         snap: { a: 1.0, dx: 1.0, slopeR: 2.0, gapH: 0.0, dualView: false },
         steps: [
-          "Step 1 · x=1에서 f(x)=½x³−½x+1과 g(x)=−4/5x²+px+q의 높이를 맞춥니다.",
-          "Step 2 · 같은 점의 f′(1), g′(1)을 같게 두어 공통접선 기울기 조건을 씁니다.",
-          "Step 3 · 구한 계수를 접점 T와 점기울기식 y−f(1)=f′(1)(x−1)에 대입합니다."
+          "1단계 · x=1에서 f(x)=½x³−½x+1과 g(x)=−(4/5)x²+px+q의 함숫값이 같다는 식을 세웁니다.",
+          "2단계 · f′(1)=g′(1)로 두어 두 곡선의 접선의 기울기가 같다는 식을 씁니다.",
+          "3단계 · 접점 T와 기울기 f′(1)을 접선의 방정식 y−f(1)=f′(1)(x−1)에 대입합니다."
         ],
         textbook: () => ({
           steps: `① 두 곡선이 ${tex('x = 1')} 에서 만나므로 함숫값 일치:<br/>
@@ -195,13 +195,13 @@ window.addEventListener('DOMContentLoaded', function () {
 ② ${tex('x = 1')} 에서의 접선의 기울기가 같으므로 미분계수 일치:<br/>
 &nbsp;&nbsp;${tex("f'(1) = g'(1) \\implies 1 = -\\dfrac{8}{5} + p")}<br/>
 ③ 앞 조건에서 ${tex('p=\\frac{13}{5}, q=-\\frac45')}입니다. 이제 ${tex("f(1)=1, f'(1)=1")}이므로 공통접선은 ${tex('y-1=x-1')}, 즉 ${tex('y=x')}입니다.`,
-          warning: "⚠️ 공통접선의 방정식 자체를 구할 때는 미정계수 p, q를 구할 필요 없이 이미 아는 함수 f(x)만으로 바로 구할 수 있습니다!"
+          warning: "⚠️ 공통접선의 방정식만 구할 때는 p, q를 구하지 않아도 됩니다. 식을 모두 아는 f(x)의 x=1에서의 접선을 구하면 됩니다."
         }),
         shortcut: () => ({
-          steps: `① 두 곡선이 ${tex('x = 1')} 에서 공통접선을 가지므로, 계수를 다 아는 ${tex('f(x)')}에서 바로 끝!<br/>
-② 접점 ${tex('f(1) = 1 \\implies T(1, 1)')}, 기울기 ${tex("f'(1) = \\dfrac{3}{2} - \\dfrac{1}{2} = 1")}!<br/>
-③ 따라서 공통접선은 즉시 <strong class="text-amber-300">${tex('y = x')}</strong>! 또한 차함수 <strong class="text-sky-300">${tex('f(x) - g(x)')}는 무조건 ${tex('(x - 1)^2')}을 인수로 가집니다!</strong>`,
-          highlight: "💡 『두 곡선 f(x), g(x)가 x=t에서 접한다 ⇔ f(t)=g(t), f'(t)=g'(t) ⇔ f(x)-g(x)는 (x-t)²을 인수로 갖는다!』"
+          steps: `① 두 곡선이 ${tex('x = 1')} 에서 공통접선을 가지므로, 식을 모두 아는 ${tex('f(x)')}의 접선을 구하면 됩니다.<br/>
+② 접점 ${tex('f(1) = 1 \\implies T(1, 1)')}, 기울기 ${tex("f'(1) = \\dfrac{3}{2} - \\dfrac{1}{2} = 1")} 입니다.<br/>
+③ 따라서 공통접선은 <strong class="text-amber-300">${tex('y = x')}</strong> 입니다. 또한 두 함수의 차 <strong class="text-sky-300">${tex('f(x) - g(x)')}는 ${tex('(x - 1)^2')}을 인수로 가집니다.</strong>`,
+          highlight: "💡 두 다항함수의 그래프 y=f(x), y=g(x)가 x=t에서 접한다 ⇔ f(t)=g(t), f′(t)=g′(t) ⇔ f(x)−g(x)가 (x−t)²을 인수로 갖는다."
         })
       }
   };
@@ -262,8 +262,8 @@ window.addEventListener('DOMContentLoaded', function () {
     if (m === 3) {
       b.plot((x) => 2 * x, { to: 1, color: 'ink', width: 2.8 });
       b.plot(() => s.slopeR, { from: 1, color: 'sky', width: 2.8 });
-      b.point([1, 2], { hollow: true, color: 'rose', label: `좌미분 f′₋(1)=2.0`, dx: -10, dy: -12, align: 'right' });
-      b.point([1, s.slopeR], { hollow: true, color: 'sky', label: `우미분 f′₊(1)=${fmt(s.slopeR, 1)}`, dx: 10, dy: 14 });
+      b.point([1, 2], { hollow: true, color: 'rose', label: `좌미분계수 f′₋(1)=2.0`, dx: -10, dy: -12, align: 'right' });
+      b.point([1, s.slopeR], { hollow: true, color: 'sky', label: `우미분계수 f′₊(1)=${fmt(s.slopeR, 1)}`, dx: 10, dy: 14 });
     } else {
       b.plot(FP[m], { color: 'sky', width: 2.8 });
       const fpa = FP[m](s.a);
@@ -314,11 +314,11 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 4. 장면 정의 ---------- */
   const scenes = [
     {
-      id: 'secant', title: '할선 → 접선 & 미분계수', short: '할선→접선',
+      id: 'secant', title: '할선에서 접선으로 · 미분계수', short: '할선→접선',
       question: '점 B를 A에 한없이 가까이 보내면, 할선 AB의 기울기는 어떤 값에 가까워질까?',
       guide: examData[1].hint,
       controls: ['a', 'dx'],
-      actions: actionsCommon('극한 애니메이션'),
+      actions: actionsCommon('자동으로 Δx 줄이기'),
       steps: examData[1].steps,
       problem: problemOf(1), solution: solutionOf(1), enter: enterOf(1),
       focus: { x: [-3, 4], y: [-2, 10.5] },
@@ -363,11 +363,11 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     },
     {
-      id: 'mvt', title: '평균값 정리 · 롤의 정리', short: '평균값 정리',
+      id: 'mvt', title: '평균값 정리', short: '평균값 정리',
       question: '구간 [a, b]의 할선과 평행한 접선은 어디에, 몇 개나 생길까?',
       guide: examData[2].hint,
       controls: ['a', 'dx'],
-      actions: actionsCommon('구간 애니메이션'),
+      actions: actionsCommon('자동으로 구간 바꾸기'),
       steps: examData[2].steps,
       problem: problemOf(2), solution: solutionOf(2), enter: enterOf(2),
       focus: { x: [-2.6, 3.2], y: [-1.6, 4.4] },
@@ -410,16 +410,16 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     },
     {
-      id: 'cusp', title: '좌·우미분 & 첨점 판별', short: '좌·우미분',
-      question: 'x = 1에서 두 식이 ‘부드럽게’ 이어지려면 무엇과 무엇이 같아야 할까?',
-      guide: examData[3].hint + ' 그림의 <b>보라색 점</b>(단차)과 <b>하늘색 점</b>(기울기)도 직접 끌 수 있습니다.',
+      id: 'cusp', title: '좌미분계수·우미분계수와 미분가능성', short: '좌·우미분계수',
+      question: 'x = 1에서 두 식이 꺾임 없이 이어지려면(미분가능하려면) 무엇과 무엇이 같아야 할까?',
+      guide: examData[3].hint + ' 그림의 <b>보라색 점</b>(높이 차)과 <b>하늘색 점</b>(기울기)도 직접 끌 수 있습니다.',
       controls: ['slopeR', 'gapH'],
       presets: [
-        { label: '① 미분가능 (연속 & 기울기 일치)', color: 'green', set: { a: 1, dx: 1, slopeR: 2.0, gapH: 0.0 }, on: (s) => Math.abs(s.gapH) <= 0.02 && Math.abs(s.slopeR - 2) < 0.05 },
-        { label: '② 첨점 (연속 & 좌·우미분 불일치)', color: 'amber', set: { a: 1, dx: 1, slopeR: -1.0, gapH: 0.0 }, on: (s) => Math.abs(s.gapH) <= 0.02 && Math.abs(s.slopeR - 2) >= 0.05 },
-        { label: '③ 불연속 (점프 단절)', color: 'red', set: { a: 1, dx: 1, slopeR: 2.0, gapH: 1.2 }, on: (s) => Math.abs(s.gapH) > 0.02 }
+        { label: '① 미분가능 (연속이고 기울기가 같음)', color: 'green', set: { a: 1, dx: 1, slopeR: 2.0, gapH: 0.0 }, on: (s) => Math.abs(s.gapH) <= 0.02 && Math.abs(s.slopeR - 2) < 0.05 },
+        { label: '② 꺾인 점 (연속이지만 좌미분계수 ≠ 우미분계수)', color: 'amber', set: { a: 1, dx: 1, slopeR: -1.0, gapH: 0.0 }, on: (s) => Math.abs(s.gapH) <= 0.02 && Math.abs(s.slopeR - 2) >= 0.05 },
+        { label: '③ 불연속 (함숫값이 갑자기 달라짐)', color: 'red', set: { a: 1, dx: 1, slopeR: 2.0, gapH: 1.2 }, on: (s) => Math.abs(s.gapH) > 0.02 }
       ],
-      actions: actionsCommon('기울기 애니메이션'),
+      actions: actionsCommon('자동으로 기울기 바꾸기'),
       steps: examData[3].steps,
       problem: problemOf(3), solution: solutionOf(3), enter: enterOf(3),
       focus: { x: [-1.6, 3.6], y: [-1.4, 5] },
@@ -430,17 +430,17 @@ window.addEventListener('DOMContentLoaded', function () {
         const disc = Math.abs(gap) > 0.02, cusp = !disc && Math.abs(p - 2.0) > 0.05;
         const q = 1 + gap - p;
         return {
-          chips: [{ k: '함수식', tex: `x<1: x^2 \\; | \\; x\\ge 1: ${fmt(p, 1).replace('−', '-')}(x-1)+${fmt(1 + gap, 1).replace('−', '-')}`, color: 'ink' }, { k: '좌·우미분', tex: `f'_{-}(1) = 2, \\; f'_{+}(1) = ${fmt(p, 1).replace('−', '-')}`, color: 'sky' }],
-          status: disc ? { tone: 'bad', text: '불연속 → 미분 불가능' } : cusp ? { tone: 'warn', text: '연속이지만 첨점 → 미분 불가능' } : { tone: 'ok', text: '연속 · 좌미분 = 우미분 → 미분가능' },
-          alert: disc ? { tone: 'bad', text: `x = 1 에서 좌극한(1)과 우극한(${fmt(1 + gap, 1)})이 달라 불연속이므로 미분불가능합니다!` }
-            : cusp ? { tone: 'warn', text: `x = 1 에서 연속이지만 좌미분계수(2.0) ≠ 우미분계수(${fmt(p, 1)})이므로 뾰족점(첨점)이 생겨 미분불가능합니다!` } : null,
+          chips: [{ k: '함수식', tex: `x<1: x^2 \\; | \\; x\\ge 1: ${fmt(p, 1).replace('−', '-')}(x-1)+${fmt(1 + gap, 1).replace('−', '-')}`, color: 'ink' }, { k: '좌·우미분계수', tex: `f'_{-}(1) = 2, \\; f'_{+}(1) = ${fmt(p, 1).replace('−', '-')}`, color: 'sky' }],
+          status: disc ? { tone: 'bad', text: '불연속 → 미분가능하지 않음' } : cusp ? { tone: 'warn', text: '연속이지만 꺾인 점 → 미분가능하지 않음' } : { tone: 'ok', text: '연속 · 좌미분계수 = 우미분계수 → 미분가능' },
+          alert: disc ? { tone: 'bad', text: `x = 1 에서 좌극한(1)과 우극한(${fmt(1 + gap, 1)})이 달라 불연속이므로 미분가능하지 않습니다!` }
+            : cusp ? { tone: 'warn', text: `x = 1 에서 연속이지만 좌미분계수(2.0) ≠ 우미분계수(${fmt(p, 1)})이므로 그래프가 꺾이고 미분가능하지 않습니다!` } : null,
           readouts: [
-            { label: '경계 x = 1 · 단차 Δh', value: fmt(gap, 1), color: 'violet', ref: 'gap', note: disc ? '끊어짐' : '이어짐' },
-            { label: "좌미분 f′₋(1)", value: '2.00', color: 'rose', ref: 'left' },
-            { label: "우미분 f′₊(1) = p", value: fmt(p), color: 'sky', ref: 'right' },
-            { label: '판정', value: disc ? '불연속' : cusp ? '첨점(미분불가)' : '미분가능', color: disc ? 'red' : cusp ? 'amber' : 'green', note: `q = ${fmt(q, 1)} (p + q = ${fmt(1 + gap, 1)})` }
+            { label: '경계 x = 1 · 높이 차 Δh', value: fmt(gap, 1), color: 'violet', ref: 'gap', note: disc ? '끊어짐' : '이어짐' },
+            { label: "좌미분계수 f′₋(1)", value: '2.00', color: 'rose', ref: 'left' },
+            { label: "우미분계수 f′₊(1) = p", value: fmt(p), color: 'sky', ref: 'right' },
+            { label: '판정', value: disc ? '불연속' : cusp ? '꺾인 점' : '미분가능', color: disc ? 'red' : cusp ? 'amber' : 'green', note: `q = ${fmt(q, 1)} (p + q = ${fmt(1 + gap, 1)})` }
           ],
-          tape: s.step >= 3 ? { title: disc ? `좌극한(1.0) ≠ 우극한(${fmt(1 + gap, 1)}) : x=1 에서 불연속이므로 미분불가능!` : cusp ? `연속이지만 좌미분(2.0) ≠ 우미분(${fmt(p, 1)}) : 뾰족점(첨점)이므로 미분불가능!` : '연속이고 좌미분(2.0) = 우미분(2.0) 일치 : x = 1 에서 스무스하게 미분가능!' } : null
+          tape: s.step >= 3 ? { title: disc ? `좌극한(1.0) ≠ 우극한(${fmt(1 + gap, 1)}) : x=1 에서 불연속이므로 미분가능하지 않음!` : cusp ? `연속이지만 좌미분계수(2.0) ≠ 우미분계수(${fmt(p, 1)}) : 그래프가 꺾이므로 미분가능하지 않음!` : '연속이고 좌미분계수(2.0) = 우미분계수(2.0) : x = 1 에서 미분가능!' } : null
         };
       },
       draw: (b, s) => {
@@ -458,7 +458,7 @@ window.addEventListener('DOMContentLoaded', function () {
           b.point([1, 1], { hollow: true, color: 'ink', r: 6.5, label: '좌극한(1, 1.0)', dx: -12, dy: -10, align: 'right' });
         } else {
           const smooth = Math.abs(2.0 - p) < 0.05;
-          b.point([1, 1], { color: smooth ? 'green' : 'red', r: 7, label: smooth ? '미분가능 접합점(1, 1) [기울기=2]' : `첨점(1, 1) [좌미분=2 ≠ 우미분=${fmt(p, 1)}]`, dx: 14, dy: 22 });
+          b.point([1, 1], { color: smooth ? 'green' : 'red', r: 7, label: smooth ? '미분가능한 접합점(1, 1) [기울기=2]' : `꺾인 점(1, 1) [좌미분계수=2 ≠ 우미분계수=${fmt(p, 1)}]`, dx: 14, dy: 22 });
         }
         // 직접 끄는 점: 단차 Δh (보라), 기울기 p (하늘) — 0과 2 근처에서 자석처럼 붙습니다.
         b.handle('gap', [1, 1 + gap], { color: 'violet', ref: 'gap', label: Math.abs(gap) > 0.02 ? `함숫값(1, ${fmt(1 + gap, 1)})` : '', dx: 14, dy: -14,
@@ -474,7 +474,7 @@ window.addEventListener('DOMContentLoaded', function () {
       question: '곡선 위의 점 T가 어디에 있을 때 직선 y = x − 2까지의 거리가 가장 짧을까?',
       guide: examData[4].hint,
       controls: ['a'],
-      actions: actionsCommon('접점 이동 애니메이션'),
+      actions: actionsCommon('자동으로 접점 옮기기'),
       steps: examData[4].steps,
       problem: problemOf(4), solution: solutionOf(4), enter: enterOf(4),
       focus: { x: [-2.6, 4.2], y: [-2.6, 4.6] },
@@ -485,11 +485,11 @@ window.addEventListener('DOMContentLoaded', function () {
         const nm = Math.abs(a) > 0.05 ? fmt(-1 / a) : '수직';
         return {
           chips: [{ k: '함수식', tex: 'f(x) = \\dfrac{1}{2}x^2 + \\dfrac{1}{2}, \\; l: y = x - 2', color: 'ink' }, { k: '접선', tex: `f'(a) = ${fmt(FP[4](a)).replace('−', '-')}`, color: 'rose' }],
-          status: isMin ? { tone: 'ok', text: '최단거리! 접선 ∥ 직선, 법선 ⟂ 직선' } : { tone: 'info', text: `거리 d = ${fmt(d, 3)}` },
+          status: isMin ? { tone: 'ok', text: '최단거리! 접선은 직선과 평행, 법선은 직선과 수직' } : { tone: 'info', text: `거리 d = ${fmt(d, 3)}` },
           readouts: [
             { label: '접점 T의 x = a', value: fmt(a), color: 'amber', ref: 'A' },
             { label: "접선 기울기 f′(a)", value: fmt(FP[4](a)), color: 'rose', ref: 'tangent', note: '직선 l의 기울기는 1' },
-            { label: '법선 기울기 −1/f′(a)', value: nm, color: 'violet', ref: 'normal' },
+            { label: '법선 기울기 −1/f′(a)', value: nm, color: 'violet', ref: 'normal', note: '접선에 수직인 직선의 기울기' },
             { label: '직선까지 거리 d', value: fmt(d, 3), color: isMin ? 'amber' : 'green', ref: 'dist', note: isMin ? '★ 최단거리 √2' : 'a = 1 에서 최소' }
           ],
           tape: s.step >= 3 ? { title: `점 T${p2(a, ya)} ~ 직선 y=x−2 거리 d = ${fmt(d, 3)} (a=1 일 때 최솟값 √2 ≈ 1.414)` } : null
@@ -515,7 +515,7 @@ window.addEventListener('DOMContentLoaded', function () {
           b.point([hx, hy], { color: 'sky', r: 5, label: `수선의 발 H${p2(hx, hy)}`, dx: 10, dy: 18 });
           b.text([(a + hx) / 2, (ya + hy) / 2], `거리 d = ${fmt(d, 3)}${isMin ? ' (★최단거리 √2)' : ''}`, { color: 'amber', dx: 12, align: 'left', size: 12.5, ref: 'dist' });
         }
-        b.handle('T', [a, ya], { color: 'amber', ref: 'A', label: `T${p2(a, ya)} [접선기울기=${fmt(m)}]`, dx: -14, dy: -14, align: 'right',
+        b.handle('T', [a, ya], { color: 'amber', ref: 'A', label: `T${p2(a, ya)} [접선의 기울기=${fmt(m)}]`, dx: -14, dy: -14, align: 'right',
           drag: (w) => { s.a = clamp(+w.x.toFixed(2), -2.0, 2.5); } });
         done(b);
         derivPane(b, s, 4);
@@ -526,7 +526,7 @@ window.addEventListener('DOMContentLoaded', function () {
       question: '두 곡선이 한 점에서 ‘접한다’는 것은 무엇과 무엇이 같다는 뜻일까?',
       guide: examData[5].hint,
       controls: ['a'],
-      actions: actionsCommon('접점 이동 애니메이션'),
+      actions: actionsCommon('자동으로 접점 옮기기'),
       steps: examData[5].steps,
       problem: problemOf(5), solution: solutionOf(5), enter: enterOf(5),
       focus: { x: [-2.2, 3.2], y: [-1.2, 4.2] },
@@ -542,7 +542,7 @@ window.addEventListener('DOMContentLoaded', function () {
             { label: '접점 x = t', value: fmt(t), color: 'amber', ref: 'A' },
             { label: 'f(t) = g(t)', value: fmt(yt), color: 'sky', ref: 'g' },
             { label: "f′(t) = g′(t)", value: fmt(m), color: 'rose', ref: 'tangent' },
-            { label: '차함수 f(x) − g(x)', value: '(x − t)² 인수', color: 'violet', note: '접점에서 중근' }
+            { label: '두 함수의 차 f(x) − g(x)', value: '(x − t)²을 인수로 가짐', color: 'violet', note: '접점에서 중근' }
           ],
           tape: s.step >= 3 ? { title: `공통접선 조건: f(${fmt(t, 1)})=g(${fmt(t, 1)})=${fmt(yt)} & f′(${fmt(t, 1)})=g′(${fmt(t, 1)})=${fmt(m)}` } : null
         };
@@ -576,9 +576,9 @@ window.addEventListener('DOMContentLoaded', function () {
     board: { kind: 'cartesian', focus: { x: [-3, 4], y: [-2, 10.5] } },
     params: {
       a: { value: 1, min: -2.0, max: 2.5, step: 0.05, color: 'amber', label: '기준점·접점 x = a', format: (v) => `a = ${fmt(v)}` },
-      dx: { value: 1.8, min: -2.2, max: 2.2, step: 0.02, color: 'amber', label: '증분 Δx = b − a', hint: '0으로 보내면 할선이 접선으로 수렴합니다', format: (v, s) => `Δx = ${fmt(v)}` },
+      dx: { value: 1.8, min: -2.2, max: 2.2, step: 0.02, color: 'amber', label: '증분 Δx = b − a', hint: '0에 가깝게 하면 할선이 접선에 가까워집니다', format: (v, s) => `Δx = ${fmt(v)}` },
       slopeR: { value: 2, min: -2.0, max: 4.0, step: 0.1, color: 'sky', label: '오른쪽 기울기 p = f′₊(1)', hint: '왼쪽 x²의 x = 1 기울기는 2입니다', format: (v) => `p = ${fmt(v)}` },
-      gapH: { value: 0, min: -2.0, max: 2.0, step: 0.1, color: 'violet', label: '경계점 높이 단차 Δh', hint: '연속 조건: Δh = 0', format: (v) => `Δh = ${fmt(v, 1)}${Math.abs(v) <= 0.02 ? ' (연속)' : ''}` }
+      gapH: { value: 0, min: -2.0, max: 2.0, step: 0.1, color: 'violet', label: '경계에서의 높이 차 Δh', hint: '연속 조건: Δh = 0', format: (v) => `Δh = ${fmt(v, 1)}${Math.abs(v) <= 0.02 ? ' (연속)' : ''}` }
     },
     state: { dual: false, animDir: -1 },
     persist: ['dual'],

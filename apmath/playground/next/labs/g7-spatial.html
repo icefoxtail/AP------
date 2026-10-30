@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
-<title>위치관계 · 반례 · AP Math 실험실</title>
-<meta name="description" content="중1 공간 위치관계: 다면체 꼬인 위치 소거 스캐너, 전개도 접어 위치관계 추적, 직선·평면의 수직과 평면 결정조건, 공간 명제 참·거짓 3D 반례까지 4개 탐구관 20개 장면">
+<title>위치 관계 · 반례 · AP Math 실험실</title>
+<meta name="description" content="중1 공간 위치 관계: 다면체에서 꼬인 위치 찾기, 전개도를 접어 위치 관계 알아보기, 직선·평면의 수직과 평면이 하나로 정해지는 조건, 공간에서의 설명 참·거짓과 반례까지 4개 탐구관 20개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -18,12 +18,12 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
-   중1 · 위치관계 · 반례 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 20개 장면
+   중1 · 위치 관계 · 반례 (AP Math Lab 2.0 이식본) — 4개 탐구관 × 20개 장면
    원본: labs/g7/spatial-relations.html
-   이식 방식: 원본의 내용(getSpec·SUB_MENUS), 3D 기하(buildPolyhedronData·경첩 회전·위치관계 판별)와
+   이식 방식: 원본의 내용(getSpec·SUB_MENUS), 3D 기하(buildPolyhedronData·경첩 회전·위치 관계 판별)와
    그리기 코드(renderTab1~4, project3D yaw/pitch 투영, draw3D…)를 글자 그대로 옮기고, 원본이 캔버스에 직접 쓰던
    ctx 호출(화면 픽셀 좌표)만 아래의 호환 도우미 ctx가 새 무대 엔진에 연결합니다.
    원본과 다른 점
@@ -151,7 +151,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ===== 원본 그대로: 상태 (원본 340–369행; 카메라·진행도·필터 값은 셸 상태에서 받아 옴, 화면 이동·드래그 표시는 무대가 맡음) ===== */
     const state = {
-      mode: 1, // 1: 다면체 꼬인 위치 스캐너(6종), 2: 전개도 접어 위치관계(4종), 3: 직선·평면 수직 & 평면 결정조건(4종), 4: 공간 명제 3D 반례기(6종)
+      mode: 1, // 1: 다면체 꼬인 위치 스캐너(6종), 2: 전개도 접어 위치 관계(4종), 3: 직선·평면 수직 & 평면 결정조건(4종), 4: 공간 명제 3D 반례기(6종)
       sub: {
         1: 'cuboidSkew',    // 'cuboidSkew', 'prism3Skew', 'trapSkew', 'hexSkew', 'pyr4Skew', 'tetraSkew'
         2: 'foldCubeSkew',  // 'foldCubeSkew', 'foldCubeFace', 'foldPrism3', 'foldPyr4'
@@ -182,16 +182,16 @@ window.addEventListener('DOMContentLoaded', function () {
         { id: 'tetraSkew', label: '🔺 정사면체 (삼각뿔 6모서리)' }
       ],
       2: [
-        { id: 'foldCubeSkew', label: '➕ 정육면체 폴딩: 꼬인 모서리 찾기' },
-        { id: 'foldCubeFace', label: '🧊 정육면체 폴딩: 평행면·수직면' },
-        { id: 'foldPrism3', label: '📐 삼각기둥 폴딩: 모서리 관계' },
-        { id: 'foldPyr4', label: '⛺ 정사각뿔 폴딩: 꼬인 위치 추적' }
+        { id: 'foldCubeSkew', label: '➕ 정육면체 접기: 꼬인 모서리 찾기' },
+        { id: 'foldCubeFace', label: '🧊 정육면체 접기: 평행한 면·수직인 면' },
+        { id: 'foldPrism3', label: '📐 삼각기둥 접기: 모서리 관계' },
+        { id: 'foldPyr4', label: '⛺ 정사각뿔 접기: 꼬인 위치 찾기' }
       ],
       3: [
         { id: 'linePerpPlane', label: '🚩 직선⊥평면 (국기게양대 & 반례)' },
         { id: 'doorHinge', label: '🚪 두 평면 수직 (문짝·경첩 원리)' },
         { id: 'threePlanes', label: '🔪 평행한 두 평면과 교선 (l ∥ m)' },
-        { id: 'planeDet', label: '✨ 한 평면 결정 조건 4가지 vs 꼬인위치' }
+        { id: 'planeDet', label: '✨ 평면이 정해지는 조건 4가지 vs 꼬인 위치' }
       ],
       4: [
         { id: 'prop1', label: '① l⊥m, l⊥n ⟹ m∥n? (❌거짓)' },
@@ -203,7 +203,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ]
     };
 
-  /* ===== 원본 그대로: 3D 벡터·경첩 회전·위치관계 판별 (원본 405–459행) ===== */
+  /* ===== 원본 그대로: 3D 벡터·경첩 회전·위치 관계 판별 (원본 405–459행) ===== */
     function vecAdd(a, b) { return { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z }; }
     function vecSub(a, b) { return { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z }; }
     function vecDot(a, b) { return a.x * b.x + a.y * b.y + a.z * b.z; }
@@ -234,7 +234,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return cur;
     }
 
-    // 실제 3D 좌표로 기준 모서리(ref)와 다른 모서리(edge)의 위치관계를 오차 없이 판별
+    // 실제 3D 좌표로 기준 모서리(ref)와 다른 모서리(edge)의 위치 관계를 오차 없이 판별
     function classifyEdges3D(vertices, ref, edge) {
       if ((edge.u === ref.u && edge.v === ref.v) || (edge.u === ref.v && edge.v === ref.u)) return 'ref';
       if (edge.u === ref.u || edge.u === ref.v || edge.v === ref.u || edge.v === ref.v) return 'meet';
@@ -381,49 +381,49 @@ window.addEventListener('DOMContentLoaded', function () {
         const skewStr = g.skew.map((e) => e.name).join(', ') || '없음';
 
         return {
-          badge: `탐구 1 · [${poly.shapeTitle}] 기준 모서리 ${poly.refName}와 꼬인 위치 3단계 소거 스캐너`,
-          hint: `꼬인 위치는 처음부터 눈으로 찾으면 무조건 실수합니다! 전체 <strong>${poly.totalE}개</strong> 모서리에서 <strong class="text-rose-400">① 끝점이 닿아 만나는 선(${g.meet.length}개)</strong>과 <strong class="text-sky-300">② 평행·같은평면 연장교차 선(${g.parallel.length + g.coplanar.length}개)</strong>을 지우고 남은 <strong class="text-emerald-300">${g.skew.length}개</strong>를 세세요!`,
-          actionTxt: '🎬 2D 착시 시점 ↔ 3D 실제 간격 비교!',
+          badge: `탐구 1 · [${poly.shapeTitle}] 기준 모서리 ${poly.refName}와 꼬인 위치를 3단계로 찾기`,
+          hint: `꼬인 위치는 처음부터 눈으로 찾으면 실수하기 쉽습니다! 전체 <strong>${poly.totalE}개</strong> 모서리에서 <strong class="text-rose-400">① 끝점이 닿아 만나는 선(${g.meet.length}개)</strong>과 <strong class="text-sky-300">② 평행하거나 연장하면 만나는 선(${g.parallel.length + g.coplanar.length}개)</strong>을 지우고 남은 <strong class="text-emerald-300">${g.skew.length}개</strong>를 세세요!`,
+          actionTxt: '🎬 평면 그림의 착시 ↔ 입체의 실제 간격 비교!',
           parts: [
-            { id: 0, name: `★ 기준 모서리 ${poly.refName} (자기 자신 1개)`, desc: `소거 기준이 되는 출발 모서리`, val: `1 개`, color: '#fbbf24', ok: true },
-            { id: 1, name: `❌ 1단계 소거: 양 끝점(${poly.refEdge.u}, ${poly.refEdge.v})에서 만나는 선`, desc: meetStr, val: `-${g.meet.length} 개`, color: '#f43f5e', ok: false },
-            { id: 2, name: `❌ 2단계 소거: 평행(${g.parallel.length}) + 같은평면 연장교차(${g.coplanar.length})`, desc: copStr ? `평행(${paraStr}) · 연장교차(${copStr} ⚠️)` : `평행(${paraStr})`, val: `-${g.parallel.length + g.coplanar.length} 개`, color: '#38bdf8', ok: false },
-            { id: 3, name: `🎉 3단계 생존: 꼬인 위치 모서리 (초록 번호 ①~)`, desc: skewStr, val: `${g.skew.length} 개!`, color: '#34d399', ok: true }
+            { id: 0, name: `★ 기준 모서리 ${poly.refName} (자기 자신 1개)`, desc: `지우기의 기준이 되는 모서리`, val: `1 개`, color: '#fbbf24', ok: true },
+            { id: 1, name: `❌ 1단계 지우기: 양 끝점(${poly.refEdge.u}, ${poly.refEdge.v})에서 만나는 선`, desc: meetStr, val: `-${g.meet.length} 개`, color: '#f43f5e', ok: false },
+            { id: 2, name: `❌ 2단계 지우기: 평행(${g.parallel.length}) + 연장하면 만남(${g.coplanar.length})`, desc: copStr ? `평행(${paraStr}) · 연장하면 만남(${copStr} ⚠️)` : `평행(${paraStr})`, val: `-${g.parallel.length + g.coplanar.length} 개`, color: '#38bdf8', ok: false },
+            { id: 3, name: `🎉 3단계 남은 모서리: 꼬인 위치 모서리 (초록 번호 ①~)`, desc: skewStr, val: `${g.skew.length} 개!`, color: '#34d399', ok: true }
           ],
           totalRes: `전체 ${poly.totalE} - (1 + ${g.meet.length} + ${g.parallel.length + g.coplanar.length}) = 꼬인 위치 ${g.skew.length}개!`,
           rule: '꼬인 위치 = 만나지도 않고 평행하지도 않은 두 직선 (한 평면 불가!)',
-          formulaHTML: `• <strong>3단계 지우개 소거식</strong>:<br/>&nbsp;&nbsp;${tex(`\\text{전체}(${poly.totalE}) - \\text{자신}(1) - \\text{만남}(${g.meet.length}) - \\text{평행·동일평면}(${g.parallel.length + g.coplanar.length}) = \\mathbf{${g.skew.length}\\text{개}}`)}<br/>• <strong>꼬인 위치 목록</strong>: <strong class="text-emerald-300">${skewStr}</strong>`,
+          formulaHTML: `• <strong>3단계로 지워 가는 식</strong>:<br/>&nbsp;&nbsp;${tex(`\\text{전체}(${poly.totalE}) - \\text{자신}(1) - \\text{만남}(${g.meet.length}) - \\text{평행·연장하면 만남}(${g.parallel.length + g.coplanar.length}) = \\mathbf{${g.skew.length}\\text{개}}`)}<br/>• <strong>꼬인 위치 목록</strong>: <strong class="text-emerald-300">${skewStr}</strong>`,
           notes: copStr
-            ? `• <strong>[⚠️ 최다 오답 함정 (${copStr})]</strong>: 모서리 <strong>${copStr}</strong>는 기준 모서리 <strong>${poly.refName}</strong>와 같은 평면 위에 있어서, 조작부의 <strong>[무한 연장선 레이저]</strong>를 켜 보면 연장선 위에서 한 점에서 만납니다! 따라서 꼬인 위치가 절대 아닙니다!`
+            ? `• <strong>[⚠️ 최다 오답 함정 (${copStr})]</strong>: 모서리 <strong>${copStr}</strong>는 기준 모서리 <strong>${poly.refName}</strong>와 같은 평면 위에 있어서, 조작부의 <strong>[무한 연장선]</strong>을 켜 보면 연장선 위에서 한 점에서 만납니다! 따라서 꼬인 위치가 아닙니다!`
             : `• 조작부의 <strong>[기준 모서리]</strong> 칩으로 밑면 모서리(${poly.refName})와 옆모서리를 바꿔가며 꼬인 위치 개수가 어떻게 달라지는지 비교해 보세요!`,
           bars: [
             { label: `기준(1)`, weight: Math.max(0.08, 1 / poly.totalE), color: '#fbbf24' },
             { label: `❌만남(${g.meet.length})`, weight: g.meet.length / poly.totalE, color: '#f43f5e' },
-            { label: `❌평행·연장(${g.parallel.length + g.coplanar.length})`, weight: Math.max(0.12, (g.parallel.length + g.coplanar.length) / poly.totalE), color: '#38bdf8' },
-            { label: `🎉꼬인위치(${g.skew.length}개!)`, weight: Math.max(0.22, g.skew.length / poly.totalE), color: '#34d399' }
+            { label: `❌평행·연장하면 만남(${g.parallel.length + g.coplanar.length})`, weight: Math.max(0.12, (g.parallel.length + g.coplanar.length) / poly.totalE), color: '#38bdf8' },
+            { label: `🎉꼬인 위치(${g.skew.length}개!)`, weight: Math.max(0.22, g.skew.length / poly.totalE), color: '#34d399' }
           ]
         };
       }
 
-      // ==================== [탭 2: 전개도 접어 위치관계 추적 (4종)] ====================
+      // ==================== [탭 2: 전개도 접어 위치 관계 추적 (4종)] ====================
       if (m === 2) {
         if (sub === 'foldCubeSkew') {
           return {
             badge: '탐구 2-A · 정육면체 전개도를 접었을 때 기준 모서리와 꼬인 위치 찾기',
-            hint: `슬라이더를 움직여 2D 전개도를 3D 정육면체로 접어보세요! 전개도에서 떨어져 있던 선분들이 접히면서 <strong class="text-rose-400">만나는 모서리</strong>, <strong class="text-sky-300">평행한 모서리</strong>, <strong class="text-emerald-300">꼬인 위치 모서리</strong>로 정체가 드러납니다!`,
-            actionTxt: state.animProg > 0.5 ? '🎬 2D 전개도로 펼치기' : '🎬 3D 정육면체로 접기!',
+            hint: `슬라이더를 움직여 전개도를 정육면체로 접어 보세요! 전개도에서 떨어져 있던 선분들이 접히면서 <strong class="text-rose-400">만나는 모서리</strong>, <strong class="text-sky-300">평행한 모서리</strong>, <strong class="text-emerald-300">꼬인 위치 모서리</strong>로 정체가 드러납니다!`,
+            actionTxt: state.animProg > 0.5 ? '🎬 전개도로 펼치기' : '🎬 정육면체로 접기!',
             parts: [
               { id: 0, name: '★ 기준 모서리 AB (앞면 윗모서리)', desc: '전개도 맨 아래 앞면 F의 끝 모서리', val: '기준 모서리', color: '#fbbf24', ok: true },
               { id: 1, name: '🟢 접었을 때 AB와 평행한 모서리 (3개)', desc: '같은 가로 방향으로 나란히 놓이는 모서리', val: '평행 3개', color: '#38bdf8', ok: true },
               { id: 2, name: '🎉 접었을 때 AB와 꼬인 위치인 모서리 (4개)', desc: '뒷면 세로 기둥 2개 + 아랫면 좌우 모서리 2개', val: '꼬인 위치 4개', color: '#34d399', ok: true }
             ],
-            totalRes: '전개도를 접어 꼭짓점 합체 후 3단계 소거법 적용!',
-            rule: '전개도 위치관계 = ① 3D 겨냥도 그린 뒤 ② 만나는 꼭짓점 알파벳 적기!',
-            formulaHTML: `• <strong>전개도 문제 100% 맞히는 순서</strong>:<br/>&nbsp;&nbsp;① 바닥면 C를 기준으로 옆면들을 $90^\\circ$ 세워 겨냥도를 그립니다.<br/>&nbsp;&nbsp;② $90^\\circ$ 오목 모퉁이에서 지퍼처럼 만나는 점들에 같은 알파벳을 적습니다.<br/>&nbsp;&nbsp;③ 완성된 3D 정육면체에서 꼬인 위치를 찾습니다!`,
-            notes: `• 전개도 상태(0%)에서만 눈으로 보고 평행이나 꼬인 위치를 판단하면 100% 속습니다! 반드시 슬라이더를 100%로 접어 3D에서의 위치를 확인하세요.`,
+            totalRes: '전개도를 접어 꼭짓점을 겹친 뒤 3단계 지우기를 적용!',
+            rule: '전개도의 위치 관계 = ① 겨냥도를 그린 뒤 ② 만나는 꼭짓점에 같은 문자 적기!',
+            formulaHTML: `• <strong>전개도 문제를 푸는 순서</strong>:<br/>&nbsp;&nbsp;① 바닥면 C를 기준으로 옆면들을 $90^\\circ$ 세워 겨냥도를 그립니다.<br/>&nbsp;&nbsp;② $90^\\circ$ 오목 모퉁이에서 맞붙는 점들에 같은 문자를 적습니다.<br/>&nbsp;&nbsp;③ 완성된 정육면체에서 꼬인 위치를 찾습니다!`,
+            notes: `• 전개도 상태(0%)에서만 눈으로 보고 평행이나 꼬인 위치를 판단하면 잘못 판단하기 쉽습니다! 반드시 슬라이더를 100%로 접어 입체에서의 위치를 확인하세요.`,
             bars: [
-              { label: '2D 전개도 상태', weight: 0.45, color: '#38bdf8' },
-              { label: '➔ 90° 경첩 폴딩 ➔ 3D 꼬인 위치 4개 확인!', weight: 0.55, color: '#34d399' }
+              { label: '펼친 전개도 상태', weight: 0.45, color: '#38bdf8' },
+              { label: '➔ 90°씩 접어 올리기 ➔ 입체에서 꼬인 위치 4개 확인!', weight: 0.55, color: '#34d399' }
             ]
           };
         }
@@ -437,9 +437,9 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 1, name: '🔵 기준면 C 와 90°로 만나는 수직면 (4개)', desc: '바닥면 둘레에 세워지는 옆면 A, B, D, F 전체!', val: '수직면 4개', color: '#38bdf8', ok: true }
             ],
             totalRes: '한 면 기준: 평행한 면 1개, 수직인 면 4개!',
-            rule: '전개도에서 한 칸 건너뛴 면 = 평행(∥), 나머지 4면 = 무조건 수직(⊥)!',
+            rule: '전개도에서 한 칸 건너뛴 면 = 평행(∥), 나머지 4면 = 수직(⊥)!',
             formulaHTML: `• <strong>평행한 면 쌍(3쌍)</strong>: ${tex('(A \\parallel F),\\; (B \\parallel D),\\; (C \\parallel E)')}<br/>• <strong>수직인 면</strong>: 자기 자신과 평행한 면 1개를 제외한 <strong>나머지 4개 면 전부</strong>!`,
-            notes: `• <strong>[초고속 비법]</strong>: 전개도에서 '면 A와 수직인 면을 모두 고르시오'라고 하면, 면 A와 <strong>평행한 면(한 칸 건너뛴 면 F) 딱 하나만 지우고 나머지 4개(B, C, D, E)를 전부 고르면</strong> 됩니다!`,
+            notes: `• <strong>[빠르게 고르는 방법]</strong>: 전개도에서 '면 A와 수직인 면을 모두 고르시오'라고 하면, 면 A와 <strong>평행한 면(한 칸 건너뛴 면 F) 딱 하나만 지우고 나머지 4개(B, C, D, E)를 전부 고르면</strong> 됩니다!`,
             bars: [
               { label: '기준면(1)', weight: 1 / 6, color: '#fbbf24' },
               { label: '평행면(1개: 한칸건너뜀)', weight: 1 / 6, color: '#f472b6' },
@@ -449,7 +449,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         if (sub === 'foldPrism3') {
           return {
-            badge: '탐구 2-C · 삼각기둥 전개도를 접었을 때 모서리와 면의 위치관계',
+            badge: '탐구 2-C · 삼각기둥 전개도를 접었을 때 모서리와 면의 위치 관계',
             hint: `삼각기둥 전개도를 접으면 위·아래 두 삼각형 밑면은 <strong class="text-amber-300">서로 평행</strong>하고, 3개의 직사각형 옆면은 두 밑면과 <strong class="text-sky-300">모두 90° 수직</strong>으로 만납니다!`,
             actionTxt: state.animProg > 0.5 ? '🎬 삼각기둥 펼치기' : '🎬 삼각기둥으로 접기!',
             parts: [
@@ -458,7 +458,7 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: '🎉 밑면 한 모서리와 꼬인 위치인 모서리', desc: '반대쪽 기둥 세로 모서리 1개 + 아랫밑면 2개', val: '꼬인 위치 3개', color: '#34d399', ok: true }
             ],
             totalRes: 'n각기둥에서 밑면과 수직인 면 = 옆면 n개 전부!',
-            rule: '모든 각기둥의 옆모서리와 옆면은 밑면과 무조건 90° 수직!',
+            rule: '모든 각기둥의 옆모서리와 옆면은 밑면과 수직(90°)입니다!',
             formulaHTML: `• ${tex('n')}각기둥에서 한 밑면과 <strong>평행한 면은 다른 밑면 1개</strong>뿐이고, 한 밑면과 <strong>수직인 면은 옆면 ${tex('n')}개</strong>입니다.`,
             notes: `• 삼각기둥의 옆면끼리는 $90^\\circ$가 아니라 삼각형의 내각(예: 정삼각형이면 $60^\\circ$)으로 만나므로, <strong>옆면과 옆면은 수직이 아닐 수 있음</strong>에 주의하세요!`,
             bars: [
@@ -469,18 +469,18 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         // foldPyr4
         return {
-          badge: '탐구 2-D · 정사각뿔 별 모양 전개도를 접었을 때 꼬인 위치 추적',
-          hint: `정사각뿔 전개도에서 4개의 삼각형 꼭짓점 $V_1, V_2, V_3, V_4$는 접히는 순간 <strong class="text-amber-300">맨 위 꼭짓점 $V$ 하나로 합체</strong>됩니다! 따라서 모든 옆모서리는 꼭짓점 $V$에서 만납니다!`,
+          badge: '탐구 2-D · 정사각뿔 별 모양 전개도를 접었을 때 꼬인 위치 찾기',
+          hint: `정사각뿔 전개도에서 4개의 삼각형 꼭짓점 $V_1, V_2, V_3, V_4$는 접히는 순간 <strong class="text-amber-300">맨 위 꼭짓점 $V$ 하나로 모입니다</strong>! 따라서 모든 옆모서리는 꼭짓점 $V$에서 만납니다!`,
           actionTxt: state.animProg > 0.5 ? '🎬 별 모양 전개도로 펼치기' : '🎬 꼭짓점 V로 모아 접기!',
           parts: [
-            { id: 0, name: '🟡 하나로 합체되는 각뿔의 꼭짓점 V', desc: '4개 삼각형의 뾰족한 끝점이 한 점 V에서 만남!', val: '꼭짓점 V 합체', color: '#fbbf24', ok: true },
+            { id: 0, name: '🟡 하나로 모이는 각뿔의 꼭짓점 V', desc: '4개 삼각형의 뾰족한 끝점이 한 점 V에서 만남!', val: '꼭짓점 V에 모임', color: '#fbbf24', ok: true },
             { id: 1, name: '❌ 옆모서리끼리는 꼬인 위치가 될 수 없음!', desc: 'VA, VB, VC, VD 모두 점 V에서 만나기 때문!', val: '모두 점 V 공유', color: '#f43f5e', ok: false },
             { id: 2, name: '🎉 밑면 모서리 AB와 꼬인 위치인 모서리', desc: '반대편에서 올라가는 옆모서리 VC, VD (2개)', val: '꼬인 위치 2개', color: '#34d399', ok: true }
           ],
           totalRes: '정사각뿔 모서리 AB와 꼬인 위치 = VC, VD (2개)',
           rule: '각뿔의 옆모서리들은 모두 꼭짓점 V에서 만나므로 서로 꼬인 위치 불가!',
-          formulaHTML: `• 2D 전개도에서는 옆면 삼각형들의 빗변이 멀리 떨어져 보여도, 3D로 접으면 <strong>모두 꼭짓점 V에서 한 점에서 만납니다!</strong>`,
-          notes: `• <strong>[핵심 함정]</strong>: 전개도에서 떨어져 있는 두 옆모서리를 보고 꼬인 위치라고 고르면 오답입니다! 둘 다 꼭짓점 $V$에서 만납니다.`,
+          formulaHTML: `• 전개도에서는 옆면 삼각형들의 빗변이 멀리 떨어져 보여도, 입체로 접으면 <strong>모두 꼭짓점 V에서 한 점에서 만납니다!</strong>`,
+          notes: `• <strong>[핵심 함정]</strong>: 전개도에서 떨어져 있는 두 옆모서리를 보고 꼬인 위치라고 고르면 틀립니다! 둘 다 꼭짓점 $V$에서 만납니다.`,
           bars: [
             { label: '밑면 모서리 AB', weight: 0.35, color: '#38bdf8' },
             { label: '🎉 반대편 옆모서리 VC, VD (꼬인 위치 2개!)', weight: 0.65, color: '#34d399' }
@@ -503,7 +503,7 @@ window.addEventListener('DOMContentLoaded', function () {
             ],
             totalRes: '교점 O를 지나는 서로 다른 2개 직선과 수직 ⟺ l ⊥ P',
             rule: 'l ⊥ m 이고 l ⊥ n (2개 이상 수직)  ⟹  평면 P 위의 모든 직선과 수직!',
-            formulaHTML: `• <strong>최소 조건</strong>: 점 O를 지나는 평면 P 위의 <strong>서로 다른 두 직선</strong>과 수직이어야 ${tex('l \\perp P')}!<br/>• <strong>결과</strong>: 일단 ${tex('l \\perp P')}이면, 정육면체 기둥 ${tex('AE')}는 바닥면 대각선 ${tex('EG, FH')}와도 무조건 <strong>$90^\\circ$ 수직</strong>입니다!`,
+            formulaHTML: `• <strong>최소 조건</strong>: 점 O를 지나는 평면 P 위의 <strong>서로 다른 두 직선</strong>과 수직이어야 ${tex('l \\perp P')}!<br/>• <strong>결과</strong>: 일단 ${tex('l \\perp P')}이면, 정육면체 기둥 ${tex('AE')}는 바닥면 대각선 ${tex('EG, FH')}와도 항상 <strong>$90^\\circ$ 수직</strong>입니다!`,
             notes: `• <strong>[단골 O/X 함정]</strong>: “직선 $l$이 평면 $P$ 위의 한 직선 $m$과 수직이면 $l \\perp P$이다?” ➔ <strong>거짓(❌)</strong>! 1개 직선만 수직이면 옆으로 쓰러질 수 있습니다.`,
             bars: [
               { label: '직선 m과 90°', weight: 0.35, color: '#38bdf8' },
@@ -520,33 +520,33 @@ window.addEventListener('DOMContentLoaded', function () {
             actionTxt: '🎬 문짝 평면 Q 여닫으며 수직 확인!',
             parts: [
               { id: 0, name: '🔵 바닥 평면 P에 수직인 경첩 기둥 직선 l', desc: 'l ⊥ P (바닥에 90°로 박힌 회전축)', val: 'l ⊥ P', color: '#38bdf8', ok: true },
-              { id: 1, name: `🟡 직선 l을 포함하는 문짝 평면 Q (회전 ${deg}°)`, desc: 'l ⊂ Q (수선을 품은 평면)', val: '항상 P ⊥ Q!', color: '#fbbf24', ok: true },
+              { id: 1, name: `🟡 직선 l을 포함하는 문짝 평면 Q (회전 ${deg}°)`, desc: '직선 l이 평면 Q에 포함됨 (수선을 품은 평면)', val: '항상 P ⊥ Q!', color: '#fbbf24', ok: true },
               { id: 2, name: '🩷 두 평면 P, Q가 만나는 교선', desc: '두 평면이 만나면 점이 아니라 직선(교선) 생성!', val: '교선 1개', color: '#f43f5e', ok: true }
             ],
             totalRes: '평면 P에 수직인 직선 l을 포함하는 모든 평면 Q는 P ⊥ Q!',
-            rule: 'l ⊥ P 이고 l ⊂ Q  ⟹  무조건 P ⊥ Q (문짝 원리)',
+            rule: 'l ⊥ P 이고 직선 l이 평면 Q에 포함되면  ⟹  P ⊥ Q (문짝의 원리)',
             formulaHTML: `• <strong>두 평면의 수직 조건</strong>: 평면 $Q$가 평면 $P$에 수직인 직선 $l$을 포함하면 두 평면은 서로 수직(${tex('P \\perp Q')})입니다.`,
             notes: `• 교실 문이 아무리 열리고 닫혀도 문짝(평면 $Q$)이 교실 바닥(평면 $P$)과 항상 $90^\\circ$ 수직인 이유가 바로 문짝 끝에 수직 경첩 기둥($l$)이 들어 있기 때문입니다!`,
             bars: [
               { label: '바닥 수선 l ⊥ P', weight: 0.45, color: '#38bdf8' },
-              { label: '문짝 평면 Q가 l을 포함 (l ⊂ Q) ⟹ 언제나 P ⊥ Q!', weight: 0.55, color: '#fbbf24' }
+              { label: '문짝 평면 Q가 직선 l을 포함 ⟹ 언제나 P ⊥ Q!', weight: 0.55, color: '#fbbf24' }
             ]
           };
         }
         if (sub === 'threePlanes') {
           return {
             badge: '탐구 3-C · 평행한 두 평면(P ∥ Q)을 제3의 평면 R이 자를 때 생기는 두 교선',
-            hint: `아파트 1층 바닥(<strong class="text-emerald-300">평면 P</strong>)과 2층 바닥(<strong class="text-sky-300">평면 Q</strong>)이 서로 평행할 때, 비스듬한 평면 $R$이 두 평면을 뚫고 지나가면 위·아래에 생기는 <strong class="text-amber-300">두 교선 l과 m은 무조건 서로 평행(l ∥ m)</strong>합니다!`,
+            hint: `아파트 1층 바닥(<strong class="text-emerald-300">평면 P</strong>)과 2층 바닥(<strong class="text-sky-300">평면 Q</strong>)이 서로 평행할 때, 비스듬한 평면 $R$이 두 평면을 뚫고 지나가면 위·아래에 생기는 <strong class="text-amber-300">두 교선 l과 m은 항상 서로 평행(l ∥ m)</strong>합니다!`,
             actionTxt: '🎬 자르는 평면 R 기울기 변경해보기!',
             parts: [
               { id: 0, name: '🟢 평행한 위·아래 두 평면 P ∥ Q', desc: '아무리 연장해도 절대 만나지 않는 두 평면', val: 'P ∥ Q', color: '#34d399', ok: true },
               { id: 1, name: '🟡 가로지르는 제3의 평면 R', desc: '두 평면 P, Q와 동시에 만나는 평면', val: '절단 평면 R', color: '#fbbf24', ok: true },
-              { id: 2, name: '🩷 위·아래 두 교선 l 과 m (무조건 평행!)', desc: '같은 평면 R 위에 있으면서 절대 안 만남 ➔ 평행!', val: 'l ∥ m (참!)', color: '#f43f5e', ok: true }
+              { id: 2, name: '🩷 위·아래 두 교선 l 과 m (항상 평행!)', desc: '같은 평면 R 위에 있으면서 절대 안 만남 ➔ 평행!', val: 'l ∥ m (참!)', color: '#f43f5e', ok: true }
             ],
             totalRes: 'P ∥ Q 일 때 제3의 평면 R과의 두 교선은 항상 l ∥ m!',
             rule: '왜 꼬인 위치가 아닐까? ➔ 두 교선 l, m이 모두 같은 평면 R 위에 있으니까!',
-            formulaHTML: `• ① 평면 $P$와 $Q$가 안 만나므로 두 교선 $l, m$도 절대 안 만납니다.<br/>• ② 그런데 두 교선 $l, m$은 모두 <strong>같은 평면 $R$ 위</strong>에 들어 있으므로 꼬인 위치가 아니라 <strong>100% 평행(${tex('l \\parallel m')})</strong>입니다!`,
-            notes: `• 이 원리는 고등학교 기하와 정육면체 단면 작도(마주보는 평행한 두 면을 자른 단면의 마주보는 변은 항상 평행!)에서도 그대로 쓰이는 핵심 원리입니다.`,
+            formulaHTML: `• ① 평면 $P$와 $Q$가 안 만나므로 두 교선 $l, m$도 절대 안 만납니다.<br/>• ② 그런데 두 교선 $l, m$은 모두 <strong>같은 평면 $R$ 위</strong>에 들어 있으므로 꼬인 위치가 아니라 <strong>반드시 평행(${tex('l \\parallel m')})</strong>입니다!`,
+            notes: `• 평행한 두 평면을 한 평면이 자르면 두 교선이 항상 평행하기 때문에, 정육면체를 한 평면으로 자를 때 마주 보는 평행한 두 면에 생기는 단면의 변은 항상 평행합니다.`,
             bars: [
               { label: '평행한 두 평면 P ∥ Q (교점 0)', weight: 0.5, color: '#34d399' },
               { label: '+ 같은 평면 R에 포함 ⟹ 두 교선 l ∥ m 평행!', weight: 0.5, color: '#f43f5e' }
@@ -563,16 +563,16 @@ window.addEventListener('DOMContentLoaded', function () {
         ];
         return {
           badge: '탐구 3-D · 단 하나의 평면을 결정하는 4가지 조건 vs 꼬인 위치(평면 불가!)',
-          hint: `슬라이더를 움직여 <strong>평면을 하나로 딱 고정시키는 4가지 조건</strong>을 확인하세요! 반면 <strong class="text-rose-400">꼬인 위치에 있는 두 직선</strong>은 높낮이와 방향이 어긋나 있어서 평평한 유리판을 얹을 수 없습니다!`,
-          actionTxt: '🎬 평면 결정 4가지 조건 차례대로 보기!',
+          hint: `슬라이더를 움직여 <strong>평면이 하나로 정해지는 4가지 조건</strong>을 확인하세요! 반면 <strong class="text-rose-400">꼬인 위치에 있는 두 직선</strong>은 높낮이와 방향이 어긋나 있어서 평평한 유리판을 얹을 수 없습니다!`,
+          actionTxt: '🎬 평면이 정해지는 4가지 조건 차례대로 보기!',
           parts: [
-            { id: 0, name: `⭕ 현재 조건: ${detNames[caseIdx]}`, desc: '흔들리지 않고 단 1개의 평면 유리판이 만들어짐!', val: '평면 1개 결정!', color: '#34d399', ok: true },
-            { id: 1, name: '❌ 함정 1: 한 직선 위에 나란히 있는 점 3개', desc: '꼬치처럼 평면이 빙글빙글 돌아가 무수히 많음!', val: '결정 불가 ❌', color: '#f43f5e', ok: false },
+            { id: 0, name: `⭕ 현재 조건: ${detNames[caseIdx]}`, desc: '흔들리지 않고 단 1개의 평면 유리판이 만들어짐!', val: '평면 1개가 정해짐!', color: '#34d399', ok: true },
+            { id: 1, name: '❌ 함정 1: 한 직선 위에 나란히 있는 점 3개', desc: '꼬치처럼 평면이 빙글빙글 돌아가 무수히 많음!', val: '평면이 정해지지 않음 ❌', color: '#f43f5e', ok: false },
             { id: 2, name: '❌ 함정 2: 꼬인 위치에 있는 두 직선', desc: '두 직선을 동시에 품는 평평한 면은 존재하지 않음!', val: '한 평면 불가 ❌', color: '#f43f5e', ok: false }
           ],
           totalRes: '만나는 두 직선(⭕) · 평행한 두 직선(⭕) vs 꼬인 두 직선(❌)',
           rule: '두 직선이 한 평면 위에 있을 조건 = (한 점에서 만남) 또는 (평행)!',
-          formulaHTML: `• <strong>한 평면 결정 4대 조건</strong>:<br/>&nbsp;&nbsp;① 한 직선 위에 있지 않은 <strong>세 점</strong><br/>&nbsp;&nbsp;② <strong>한 직선</strong>과 그 밖의 <strong>한 점</strong><br/>&nbsp;&nbsp;③ <strong>한 점에서 만나는</strong> 두 직선<br/>&nbsp;&nbsp;④ 서로 <strong>평행한</strong> 두 직선`,
+          formulaHTML: `• <strong>평면이 하나로 정해지는 4가지 조건</strong>:<br/>&nbsp;&nbsp;① 한 직선 위에 있지 않은 <strong>세 점</strong><br/>&nbsp;&nbsp;② <strong>한 직선</strong>과 그 밖의 <strong>한 점</strong><br/>&nbsp;&nbsp;③ <strong>한 점에서 만나는</strong> 두 직선<br/>&nbsp;&nbsp;④ 서로 <strong>평행한</strong> 두 직선`,
           notes: `• 다리가 3개인 삼발이 의자는 바닥이 울퉁불퉁해도 절대 덜컹거리지 않습니다(점 3개가 항상 1개의 평면을 결정하기 때문!).`,
           bars: [
             { label: '⭕ 점3개 · 직선+점 · 교차 · 평행 (평면 결정 O)', weight: 0.68, color: '#34d399' },
@@ -584,64 +584,64 @@ window.addEventListener('DOMContentLoaded', function () {
       // ==================== [탭 4: 공간 명제 참·거짓 3D 반례 시뮬레이터 (6종)] ====================
       const propSpecs = {
         prop1: {
-          badge: '탐구 4-1 · [명제 ①] “한 직선 l에 수직인 두 직선 m, n은 서로 평행하다?” ➔ ❌ 거짓!',
-          hint: `평면(종이 위)에서는 참이지만 <strong>3D 공간에서는 거짓(❌)</strong>입니다! 슬라이더를 움직여 노란 직선 $n$을 기둥 $l$ 둘레로 돌려보세요! 기둥 $l$과는 계속 $90^\\circ$ 수직이지만 <strong class="text-rose-400">직선 m과 한 점에서 만나거나 꼬인 위치</strong>가 됩니다!`,
+          badge: '탐구 4-1 · [설명 ①] “한 직선 l에 수직인 두 직선 m, n은 서로 평행하다?” ➔ ❌ 거짓!',
+          hint: `평면(종이 위)에서는 참이지만 <strong>공간에서는 거짓(❌)</strong>입니다! 슬라이더를 움직여 노란 직선 $n$을 기둥 $l$ 둘레로 돌려보세요! 기둥 $l$과는 계속 $90^\\circ$ 수직이지만 <strong class="text-rose-400">직선 m과 한 점에서 만나거나 꼬인 위치</strong>가 됩니다!`,
           verdict: '❌ 거짓! (평행 · 한 점 교차 · 꼬인 위치 모두 가능)',
           rule: 'l ⊥ m, l ⊥ n  ⇏  m ∥ n (기둥에 꽂힌 나뭇가지는 360° 회전 가능!)',
           p1: ['🔵 기준 기둥 직선 l 과 직선 m', 'l ⊥ m (90° 수직 고정)', '90° (∟)', '#38bdf8', true],
           p2: ['🟡 회전하는 직선 n (l ⊥ n 유지!)', '기둥 l과는 계속 90°이지만 옆으로 회전함', '90° (∟)', '#fbbf24', true],
-          p3: ['💥 3D 반례 발생: m과 n의 실제 관계', '평행하지 않고 교차하거나 꼬인 위치!', '거짓 (❌)', '#f43f5e', false],
+          p3: ['💥 반례 발생: m과 n의 실제 관계', '평행하지 않고 교차하거나 꼬인 위치!', '거짓 (❌)', '#f43f5e', false],
           formula: `• <strong>왜 틀릴까?</strong> 정육면체 기둥 모서리 $AE$에 수직인 윗면 모서리 $AB$와 $AD$는 서로 평행하지 않고 점 $A$에서 $90^\\circ$로 만납니다! 또한 $AB$와 아랫면 $EH$는 꼬인 위치입니다!`
         },
         prop2: {
-          badge: '탐구 4-2 · [명제 ②] “한 평면 P에 평행한 두 직선 l, m은 서로 평행하다?” ➔ ❌ 거짓!',
+          badge: '탐구 4-2 · [설명 ②] “한 평면 P에 평행한 두 직선 l, m은 서로 평행하다?” ➔ ❌ 거짓!',
           hint: `책상 바닥(평면 $P$)과 나란하게 공중에 연필 두 자루($l, m$)를 들고 한 자루를 삐딱하게 돌려보세요! 바닥과는 여전히 둘 다 평행하지만 <strong class="text-rose-400">두 연필은 공중에서 교차하거나 꼬인 위치</strong>가 됩니다!`,
           verdict: '❌ 거짓! (공중에서 회전하면 교차하거나 꼬인 위치)',
           rule: 'l ∥ P, m ∥ P  ⇏  l ∥ m (천장 위 직선들은 사방으로 회전 가능!)',
           p1: ['🔵 직선 l ∥ 바닥 평면 P', '일정한 높이에서 바닥과 나란함', 'l ∥ P', '#38bdf8', true],
           p2: ['🟡 직선 m ∥ 바닥 평면 P (수평 회전!)', '바닥과는 계속 평행한 채로 방향만 회전', 'm ∥ P', '#fbbf24', true],
-          p3: ['💥 3D 반례 발생: l과 m은 꼬인 위치!', '한 평면에 평행해도 두 직선은 어긋날 수 있음', '거짓 (❌)', '#f43f5e', false],
+          p3: ['💥 반례 발생: l과 m은 꼬인 위치!', '한 평면에 평행해도 두 직선은 어긋날 수 있음', '거짓 (❌)', '#f43f5e', false],
           formula: `• <strong>정육면체 반례</strong>: 바닥면 $EFGH$에 평행한 천장 모서리 $AB$와 $BC$는 평행하지 않고 점 $B$에서 만납니다!`
         },
         prop3: {
-          badge: '탐구 4-3 · [명제 ③] “한 평면 P에 수직인 두 직선 l, m은 서로 평행하다?” ➔ ⭕ 항상 참!',
-          hint: `평평한 바닥(평면 $P$)에 $90^\\circ$ 수직으로 똑바로 박아 세운 두 기둥($l, m$)은 옆으로 기울어지거나 돌아갈 수 없으므로 <strong class="text-emerald-300">어느 위치에 세워도 무조건 서로 나란한 평행선(l ∥ m)</strong>입니다!`,
-          verdict: '⭕ 항상 참! (바닥에 수직으로 세운 두 기둥은 무조건 평행)',
-          rule: 'l ⊥ P, m ⊥ P  ⟹  무조건 l ∥ m (회전 자유도 0!)',
+          badge: '탐구 4-3 · [설명 ③] “한 평면 P에 수직인 두 직선 l, m은 서로 평행하다?” ➔ ⭕ 항상 참!',
+          hint: `평평한 바닥(평면 $P$)에 $90^\\circ$ 수직으로 똑바로 박아 세운 두 기둥($l, m$)은 옆으로 기울어지거나 돌아갈 수 없으므로 <strong class="text-emerald-300">어느 위치에 세워도 반드시 서로 나란한 평행선(l ∥ m)</strong>입니다!`,
+          verdict: '⭕ 항상 참! (바닥에 수직으로 세운 두 기둥은 반드시 평행)',
+          rule: 'l ⊥ P, m ⊥ P  ⟹  l ∥ m (바닥에 수직이면 방향이 하나로 정해짐!)',
           p1: ['🔵 기둥 직선 l ⊥ 바닥 평면 P', '바닥에 90° 수직으로 고정', '90° (∟)', '#38bdf8', true],
           p2: ['🟡 기둥 직선 m ⊥ 바닥 평면 P', '위치를 옮겨도 바닥에 90° 수직 고정', '90° (∟)', '#fbbf24', true],
-          p3: ['⭕ 반례 없음: 언제나 l ∥ m 평행!', '방향 벡터가 100% 일치하여 항상 평행!', '항상 참 (⭕)', '#34d399', true],
+          p3: ['⭕ 반례 없음: 언제나 l ∥ m 평행!', '두 직선 모두 바닥에 수직이라 방향이 같으므로 항상 평행!', '항상 참 (⭕)', '#34d399', true],
           formula: `• 정육면체에서 바닥면 $EFGH$에 수직인 네 기둥 모서리 $AE, BF, CG, DH$가 모두 서로 평행한 것과 똑같습니다!`
         },
         prop4: {
-          badge: '탐구 4-4 · [명제 ④] “한 평면 P에 수직인 두 평면 Q, R은 서로 평행하다?” ➔ ❌ 거짓!',
+          badge: '탐구 4-4 · [설명 ④] “한 평면 P에 수직인 두 평면 Q, R은 서로 평행하다?” ➔ ❌ 거짓!',
           hint: `교실 바닥(평면 $P$)에 수직으로 서 있는 <strong>앞벽(평면 Q)과 옆벽(평면 R)</strong>을 떠올려 보세요! 둘 다 바닥에는 $90^\\circ$ 수직이지만, <strong class="text-rose-400">두 벽은 평행하지 않고 교실 구석 모서리(교선)에서 수직으로 만납니다!</strong>`,
           verdict: '❌ 거짓! (방바닥에 수직인 앞벽과 옆벽은 교선에서 만남)',
           rule: 'P ⊥ Q, P ⊥ R  ⇏  Q ∥ R (회전문처럼 바닥 위에서 돌아가며 만남!)',
           p1: ['🔵 뒷벽 평면 Q ⊥ 바닥 평면 P', '바닥에 90° 수직으로 세운 벽면', 'P ⊥ Q', '#38bdf8', true],
           p2: ['🟡 옆벽 평면 R ⊥ 바닥 평면 P (회전!)', '바닥과 90°를 유지하며 돌아가는 두 번째 벽', 'P ⊥ R', '#fbbf24', true],
-          p3: ['💥 3D 반례 발생: 두 벽면 Q, R이 교차!', '교선(기둥 모서리)에서 서로 만날 수 있음', '거짓 (❌)', '#f43f5e', false],
-          formula: `• <strong>핵심 구분</strong>: 바닥에 수직인 <strong>두 직선(기둥 2개)</strong>은 무조건 평행(⭕)하지만, 바닥에 수직인 <strong>두 평면(벽 2개)</strong>은 방향을 틀면 만날 수 있으므로 거짓(❌)입니다!`
+          p3: ['💥 반례 발생: 두 벽면 Q, R이 교차!', '교선(기둥 모서리)에서 서로 만날 수 있음', '거짓 (❌)', '#f43f5e', false],
+          formula: `• <strong>핵심 구분</strong>: 바닥에 수직인 <strong>두 직선(기둥 2개)</strong>은 반드시 평행(⭕)하지만, 바닥에 수직인 <strong>두 평면(벽 2개)</strong>은 방향을 틀면 만날 수 있으므로 거짓(❌)입니다!`
         },
         prop5: {
-          badge: '탐구 4-5 · [명제 ⑤] “한 직선 l에 수직인 두 평면 P, Q는 서로 평행하다?” ➔ ⭕ 항상 참!',
-          hint: `하나의 수직 기둥(엘리베이터 기둥 $l$)에 $90^\\circ$ 수직으로 꽂혀 있는 <strong>1층 바닥(평면 P)과 2층 바닥(평면 Q)</strong>은 기울어질 수 없으므로 <strong class="text-emerald-300">무조건 서로 평행(P ∥ Q)</strong>합니다!`,
-          verdict: '⭕ 항상 참! (한 꼬치 막대에 수직으로 꽂은 두 판은 무조건 평행)',
-          rule: 'l ⊥ P, l ⊥ Q  ⟹  무조건 P ∥ Q (기울어질 자유도 0!)',
+          badge: '탐구 4-5 · [설명 ⑤] “한 직선 l에 수직인 두 평면 P, Q는 서로 평행하다?” ➔ ⭕ 항상 참!',
+          hint: `하나의 수직 기둥(엘리베이터 기둥 $l$)에 $90^\\circ$ 수직으로 꽂혀 있는 <strong>1층 바닥(평면 P)과 2층 바닥(평면 Q)</strong>은 기울어질 수 없으므로 <strong class="text-emerald-300">반드시 서로 평행(P ∥ Q)</strong>합니다!`,
+          verdict: '⭕ 항상 참! (한 막대에 수직으로 꽂은 두 판은 반드시 평행)',
+          rule: 'l ⊥ P, l ⊥ Q  ⟹  P ∥ Q (한 직선에 수직이면 기울기가 하나로 정해짐!)',
           p1: ['🔵 1층 평면 P ⊥ 기둥 직선 l', '기둥 l과 90° 수직', 'l ⊥ P', '#34d399', true],
           p2: ['🟡 2층 평면 Q ⊥ 기둥 직선 l', '기둥 l을 따라 위아래로 이동해도 90° 수직', 'l ⊥ Q', '#38bdf8', true],
           p3: ['⭕ 반례 없음: 언제나 P ∥ Q 평행!', '두 평면은 절대 만나지 않고 나란함', '항상 참 (⭕)', '#fbbf24', true],
-          formula: `• <strong>쌍둥이 참(⭕) 명제</strong>:<br/>&nbsp;&nbsp;① 한 평면에 수직인 두 직선 ➔ 평행(${tex('l \\parallel m')})!<br/>&nbsp;&nbsp;② 한 직선에 수직인 두 평면 ➔ 평행(${tex('P \\parallel Q')})!`
+          formula: `• <strong>항상 참(⭕)인 설명 두 가지</strong>:<br/>&nbsp;&nbsp;① 한 평면에 수직인 두 직선 ➔ 평행(${tex('l \\parallel m')})!<br/>&nbsp;&nbsp;② 한 직선에 수직인 두 평면 ➔ 평행(${tex('P \\parallel Q')})!`
         },
         prop6: {
-          badge: '탐구 4-6 · [명제 ⑥ 고난도 함정] “l ⊥ P 이고 l ⊥ m 이면 항상 m ∥ P 이다?” ➔ ❌ 거짓!',
-          hint: `학생들이 제일 많이 속는 고난도 함정입니다! 기둥 $l$이 바닥 평면 $P$에 수직이고 직선 $m$이 기둥 $l$과 $90^\\circ$ 수직일 때, 직선 $m$을 슬라이더로 바닥까지 쓱 내려보세요! <strong class="text-rose-400">직선 m이 평면 P와 평행한 게 아니라 평면 P 바닥 안에 쏙 포함(m ⊂ P)될 수도 있습니다!</strong>`,
-          verdict: '❌ 거짓! (m ∥ P 일 수도 있지만, 평면 P에 포함 m ⊂ P 될 수도 있음!)',
-          rule: '“평면 P 밖에 있는 직선 m”이라는 조건이 없으면 m ⊂ P 반례 존재!',
+          badge: '탐구 4-6 · [설명 ⑥ 고난도 함정] “l ⊥ P 이고 l ⊥ m 이면 항상 m ∥ P 이다?” ➔ ❌ 거짓!',
+          hint: `학생들이 제일 많이 속는 고난도 함정입니다! 기둥 $l$이 바닥 평면 $P$에 수직이고 직선 $m$이 기둥 $l$과 $90^\\circ$ 수직일 때, 직선 $m$을 슬라이더로 바닥까지 쓱 내려보세요! <strong class="text-rose-400">직선 m이 평면 P와 평행한 게 아니라 평면 P 안에 포함될 수도 있습니다!</strong>`,
+          verdict: '❌ 거짓! (m ∥ P 일 수도 있지만, 평면 P에 포함될 수도 있음!)',
+          rule: '“평면 P 밖에 있는 직선 m”이라는 조건이 없으면 직선 m이 평면 P에 포함되는 반례가 있습니다!',
           p1: ['🟡 수직 기둥 직선 l ⊥ 평면 P', '바닥 평면과 90° 수직', 'l ⊥ P', '#fbbf24', true],
-          p2: ['🔵 기둥 l에 수직인 가로 직선 m (l ⊥ m)', '공중에 떠 있을 때는 m ∥ P 평행이지만...', 'l ⊥ m', '#38bdf8', true],
-          p3: ['💥 치명적 반례: 직선 m이 바닥에 착지 (m ⊂ P)!', '높이가 0이 되면 평행이 아니라 평면에 포함됨!', '거짓 (❌)', '#f43f5e', false],
-          formula: `• 만약 문제에서 <strong>“평면 $P$ 위에 있지 않은 직선 $m$에 대하여”</strong>라는 조건이 있다면 참(⭕)이지만, 그 말이 없다면 <strong>${tex('m \\subset P')}(포함)</strong> 때문에 거짓(❌)입니다!`
+          p2: ['🔵 기둥 l에 수직인 가로 직선 m (l ⊥ m)', '공중에 떠 있을 때는 m ∥ P (평행)입니다.', 'l ⊥ m', '#38bdf8', true],
+          p3: ['💥 반례: 직선 m이 바닥 평면 P에 포함됨!', '높이가 0이 되면 평행이 아니라 평면에 포함됨!', '거짓 (❌)', '#f43f5e', false],
+          formula: `• 만약 문제에서 <strong>“평면 $P$ 위에 있지 않은 직선 $m$에 대하여”</strong>라는 조건이 있다면 참(⭕)이지만, 그 말이 없다면 <strong>직선 m이 평면 P에 포함되는 경우</strong> 때문에 거짓(❌)입니다!`
         }
       };
 
@@ -649,7 +649,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return {
         badge: ps.badge,
         hint: ps.hint,
-        actionTxt: state.animProg > 0.5 ? '🎬 평행해 보이는 성립 사례 보기' : '🎬 3D 반례 / 검증 애니메이션 실행!',
+        actionTxt: state.animProg > 0.5 ? '🎬 평행해 보이는 성립 사례 보기' : '🎬 반례 확인하기!',
         parts: [
           { id: 0, name: ps.p1[0], desc: ps.p1[1], val: ps.p1[2], color: ps.p1[3], ok: ps.p1[4] },
           { id: 1, name: ps.p2[0], desc: ps.p2[1], val: ps.p2[2], color: ps.p2[3], ok: ps.p2[4] },
@@ -658,10 +658,10 @@ window.addEventListener('DOMContentLoaded', function () {
         totalRes: ps.verdict,
         rule: ps.rule,
         formulaHTML: ps.formula,
-        notes: `• <strong>[공간 명제 3초 판별 요약]</strong>:<br/>&nbsp;&nbsp;⭕ <strong>항상 참</strong>: 『바닥에 수직인 두 기둥(${tex('l\\perp P, m\\perp P')})』, 『기둥에 수직인 두 바닥(${tex('l\\perp P, l\\perp Q')})』, 『평행의 삼단논법(${tex('l\\parallel m, m\\parallel n \\implies l\\parallel n')})』<br/>&nbsp;&nbsp;❌ <strong>거짓(회전 반례)</strong>: 『기둥에 수직인 두 가지』, 『바닥에 평행한 두 연필』, 『바닥에 수직인 두 벽면』!`,
+        notes: `• <strong>[공간에서의 설명 정리]</strong>:<br/>&nbsp;&nbsp;⭕ <strong>항상 참</strong>: 『바닥에 수직인 두 기둥(${tex('l\\perp P, m\\perp P')})』, 『기둥에 수직인 두 바닥(${tex('l\\perp P, l\\perp Q')})』, 『평행이 이어지는 관계(${tex('l\\parallel m, m\\parallel n \\implies l\\parallel n')})』<br/>&nbsp;&nbsp;❌ <strong>거짓(회전 반례)</strong>: 『기둥에 수직인 두 가지』, 『바닥에 평행한 두 연필』, 『바닥에 수직인 두 벽면』!`,
         bars: [
           { label: '0% (나란한 평행 사례)', weight: 0.45, color: '#38bdf8' },
-          { label: `100% ➔ ${ps.verdict}`, weight: 0.55, color: ps.p3[4] ? '#34d399' : '#f43f5e' }
+          { label: `100% 진행 ➔ ${ps.verdict}`, weight: 0.55, color: ps.p3[4] ? '#34d399' : '#f43f5e' }
         ]
       };
     }
@@ -809,7 +809,7 @@ window.addEventListener('DOMContentLoaded', function () {
             draw3DLine(A, hitPt, '#c084fc', 2.4, true, true);
             draw3DLine(C, hitPt, '#c084fc', 2.4, true, true);
             // [2.0 수정] 좁은 화면(휴대폰)에서는 긴 설명 대신 짧은 이름표: 긴 이름표 두 개가 자동 맞춤을 밀어 입체가 아주 작아졌음(정육각기둥)
-            draw3DPoint(hitPt, 6.5, '#c084fc', BOARD.W < 640 ? `교점(${ce.name} ×)` : `⚡ 연장선 교점! (${ce.name}는 한 평면에서 만남 ➔ 꼬인위치 ❌)`, { x: 10, y: -10 });
+            draw3DPoint(hitPt, 6.5, '#c084fc', BOARD.W < 640 ? `교점(${ce.name} ×)` : `⚡ 연장선 교점! (${ce.name}는 한 평면에서 만남 ➔ 꼬인 위치 ❌)`, { x: 10, y: -10 });
           }
         });
       }
@@ -858,7 +858,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ctx.fillStyle = col;
           ctx.font = '800 13px Pretendard, sans-serif';
           ctx.textAlign = 'center';
-          ctx.fillText('❌소거', mx, my);
+          ctx.fillText('× 지움', mx, my);
           ctx.restore();
         }
 
@@ -891,7 +891,7 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // ==================== [탭 2 렌더링: 전개도 접어 위치관계 추적 (4종)] ====================
+    // ==================== [탭 2 렌더링: 전개도 접어 위치 관계 추적 (4종)] ====================
     function renderTab2FoldingRelations(rect) {
       const sub = state.sub[2];
       const f = state.animProg;
@@ -994,7 +994,7 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DLine(baseSq[0], baseSq[1], '#fbbf24', 6.5, false, true);
         draw3DLine(triN[0], triN[2], '#34d399', 5.5, false, true);
         draw3DLine(triN[1], triN[2], '#34d399', 5.5, false, true);
-        draw3DPoint(triN[2], 6, '#fbbf24', f > 0.85 ? '꼭짓점 V 합체!' : 'V₁');
+        draw3DPoint(triN[2], 6, '#fbbf24', f > 0.85 ? '꼭짓점 V에 모임!' : 'V₁');
       }
     }
 
@@ -1176,7 +1176,7 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DRightAngle({ x: 0, y: 0, z: zm }, { x: 1, y: 0, z: 0 }, { x: 0, y: 0, z: 1 }, 0.45, '#f43f5e');
         draw3DText(
           { x: 0, y: -1.4, z: zm + 0.35 },
-          t < 0.85 ? '공중에 떠 있을 때: m ∥ P (평행)' : '💥 반례 발생: 직선 m이 평면 P 안에 쏙 포함됨 (m ⊂ P, 평행 아님!)',
+          t < 0.85 ? '공중에 떠 있을 때: m ∥ P (평행)' : '💥 반례 발생: 직선 m이 평면 P 안에 포함됨 (평행 아님!)',
           '#fda4af', 13.5
         );
       }
@@ -1188,20 +1188,20 @@ window.addEventListener('DOMContentLoaded', function () {
   const RECT = { width: 1000, height: 700 }; // 원본 캔버스 대신 쓰는 가상 캔버스(무대가 화면 크기에 맞춰 줍니다)
   const RENDER = { 1: renderTab1PolyhedraSkew, 2: renderTab2FoldingRelations, 3: renderTab3LinesAndPlanes, 4: renderTab4SpacePropositions };
   const TABS = [
-    '다면체 꼬인 위치 소거 스캐너 (6종)',
-    '전개도 접어 위치관계 추적 (4종)',
-    '직선·평면 수직 & 평면 결정조건 (4종)',
-    '공간 명제 참·거짓 3D 반례기 (6종)'
+    '다면체에서 꼬인 위치 찾기 (6종)',
+    '전개도 접어 위치 관계 알아보기 (4종)',
+    '직선·평면의 수직과 평면이 정해지는 조건 (4종)',
+    '공간에서의 설명 참·거짓과 반례 (6종)'
   ];
-  const SHORT = ['꼬인 위치 소거', '전개도 접기', '수직·평면 결정', '명제 3D 반례'];
+  const SHORT = ['꼬인 위치 찾기', '전개도 접기', '수직·평면이 정해지는 조건', '설명의 참·거짓과 반례'];
   const QUESTIONS = [
     '모서리가 많은 입체에서 기준 모서리와 꼬인 위치인 모서리를 어떻게 빠짐없이 가려낼까?',
     '전개도를 접으면 어떤 모서리와 면이 평행·수직·꼬인 위치가 될까?',
     '직선과 평면이 수직이려면, 평면이 하나로 정해지려면 어떤 조건이 필요할까?',
-    '“그럴 것 같은” 공간 명제 중 어떤 것이 항상 참이고, 어떤 것은 반례가 있을까?'
+    '“그럴 것 같은” 공간에서의 설명 중 어떤 것이 항상 참이고, 어떤 것은 반례가 있을까?'
   ];
   const CAM = { iso: { yaw: -34, pitch: 30 }, illusion: { yaw: -48, pitch: 32 }, gap: { yaw: -90, pitch: 8 } };
-  const SKEW_FILTERS = [['all', '0. 전체'], ['meet', '1단계: 만나는 선 소거'], ['parallel', '2단계: 평행·같은평면 소거'], ['skewOnly', '3단계: 꼬인 위치만 남기기']];
+  const SKEW_FILTERS = [['all', '0. 전체'], ['meet', '1단계: 만나는 선 지우기'], ['parallel', '2단계: 평행하거나 연장하면 만나는 선 지우기'], ['skewOnly', '3단계: 꼬인 위치만 남기기']];
   const near = (st, c) => Math.abs(st.yaw - c.yaw) < 1 && Math.abs(st.pitch - c.pitch) < 1;
   const tone = (p) => (p.ok === false ? 'red' : p.color);
   const arrow = (v) => (typeof v === 'string' ? arrowOnly(v) : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
@@ -1225,7 +1225,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id, title: label, short: label, reviewTab: true,
       question: QUESTIONS[m - 1],
-      notesTitle: '헷갈리는 착시와 완벽 대비법',
+      notesTitle: '헷갈리는 착시와 주의할 점',
       enter: (s) => {
         s.anim = m === 2 ? 0.35 : 1; // 원본 setMode/setSub: 진행도 초기화(탭 2는 35%)
         if (s.lastMode !== m) { s.yaw = CAM.iso.yaw; s.pitch = CAM.iso.pitch; s.lastMode = m; } // 원본 setMode: 탐구관을 바꾸면 입체뷰로
@@ -1235,14 +1235,14 @@ window.addEventListener('DOMContentLoaded', function () {
       presets: () => {
         const out = [];
         if (m === 1) {
-          SKEW_FILTERS.forEach(([k, lbl]) => out.push({ group: '소거 필터', label: lbl, apply: (st) => { st.skewFilter = k; st.part = null; }, on: (st) => st.skewFilter === k }));
+          SKEW_FILTERS.forEach(([k, lbl]) => out.push({ group: '지우기 단계', label: lbl, apply: (st) => { st.skewFilter = k; st.part = null; }, on: (st) => st.skewFilter === k }));
           [['base', '밑면 모서리 (AB)'], ['side', '옆모서리 (AE / VA)']].forEach(([k, lbl]) => out.push({ group: '기준 모서리', label: lbl, apply: (st) => { st.refType = k; st.part = null; }, on: (st) => st.refType === k }));
-          [[true, 'ON'], [false, 'OFF']].forEach(([k, lbl]) => out.push({ group: '무한 연장선 레이저', label: lbl, apply: (st) => { st.laserExtend = k; }, on: (st) => !!st.laserExtend === k }));
-          [['iso', '3D 입체뷰'], ['illusion', '2D 착시 시점'], ['gap', '실제 간격 확인']].forEach(([k, lbl]) => out.push({ group: '시점', label: lbl, set: CAM[k], ms: 600, on: (st) => near(st, CAM[k]) }));
+          [[true, '켜기'], [false, '끄기']].forEach(([k, lbl]) => out.push({ group: '모서리의 무한 연장선', label: lbl, apply: (st) => { st.laserExtend = k; }, on: (st) => !!st.laserExtend === k }));
+          [['iso', '입체 보기'], ['illusion', '착시 시점'], ['gap', '실제 간격 확인']].forEach(([k, lbl]) => out.push({ group: '시점', label: lbl, set: CAM[k], ms: 600, on: (st) => near(st, CAM[k]) }));
         } else {
           [0, 0.5, 1].forEach((v) => out.push({ group: '진행도', label: v === 0 ? '0% 평면·성립' : v === 1 ? '100% 입체·반례' : '50%', set: { anim: v }, ms: 700, on: (st) => Math.abs(st.anim - v) < 0.01 }));
-          if (id === 'planeDet') ['① 점 3개', '② 직선+점', '③ 만나는 두 직선', '④ 평행한 두 직선'].forEach((lbl, i) => out.push({ group: '결정 조건', label: lbl, set: { anim: 0.1 + i * 0.25 }, ms: 300, on: (st) => Math.min(3, Math.floor(st.anim * 3.99)) === i }));
-          [['iso', '3D 입체뷰']].forEach(([k, lbl]) => out.push({ group: '시점', label: lbl, set: CAM[k], ms: 600, on: (st) => near(st, CAM[k]) }));
+          if (id === 'planeDet') ['① 점 3개', '② 직선+점', '③ 만나는 두 직선', '④ 평행한 두 직선'].forEach((lbl, i) => out.push({ group: '정해지는 조건', label: lbl, set: { anim: 0.1 + i * 0.25 }, ms: 300, on: (st) => Math.min(3, Math.floor(st.anim * 3.99)) === i }));
+          [['iso', '입체 보기']].forEach(([k, lbl]) => out.push({ group: '시점', label: lbl, set: CAM[k], ms: 600, on: (st) => near(st, CAM[k]) }));
         }
         return out;
       },
@@ -1253,7 +1253,7 @@ window.addEventListener('DOMContentLoaded', function () {
           // 탭 1: 원본 triggerAnim — 2D 착시 시점 ↔ 실제 간격 시점 / 그 밖: 진행도 0% ↔ 100%
           run: (st, lab) => { if (m === 1) lab.tween(Math.abs(st.yaw - CAM.illusion.yaw) < 9 ? CAM.gap : CAM.illusion, 700); else lab.tween({ anim: st.anim > 0.5 ? 0 : 1 }, 1100); }
         },
-        { id: 'spin', icon: (st) => (st.playing ? 'pause' : 'play'), label: (st) => (st.playing ? '자동 회전 멈춤' : '3D 자동 회전'), on: (st) => st.playing, run: (st) => { st.playing = !st.playing; } }
+        { id: 'spin', icon: (st) => (st.playing ? 'pause' : 'play'), label: (st) => (st.playing ? '자동 회전 멈춤' : '자동 회전'), on: (st) => st.playing, run: (st) => { st.playing = !st.playing; } }
       ],
       tick: (s, dt) => { if (!s.playing) return false; s.yaw += 34 * dt; if (s.yaw > 180) s.yaw -= 360; return true; },
       view: (s) => {
@@ -1267,8 +1267,8 @@ window.addEventListener('DOMContentLoaded', function () {
           rule: spec.rule,
           formula: spec.formulaHTML,
           notes: spec.notes,
-          // 원본 하단 '실시간 공간 위치관계·소거 구조' 막대 → 무대 아래 띠(그림을 가리지 않음)
-          tape: { title: '실시간 공간 위치관계·소거 구조 · ' + spec.totalRes, segments: spec.bars.map((x) => ({ text: x.label, weight: x.weight, color: x.color })) }
+          // 원본 하단 '실시간 공간 위치 관계·소거 구조' 막대 → 무대 아래 띠(그림을 가리지 않음)
+          tape: { title: '공간 위치 관계·지우기 구성 · ' + spec.totalRes, segments: spec.bars.map((x) => ({ text: x.label, weight: x.weight, color: x.color })) }
         };
       },
       draw: (b, s) => {
@@ -1291,7 +1291,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   APLab.createLab({
     id: 'g7-spatial',
-    title: '위치관계 · 반례',
+    title: '위치 관계 · 반례',
     courseName: '중1',
     unit: '기본 도형',
     courseColor: 'var(--m-green)',
@@ -1310,9 +1310,9 @@ window.addEventListener('DOMContentLoaded', function () {
     state: { skewFilter: 'skewOnly', refType: 'base', laserExtend: true },
     persist: ['skewFilter', 'refType', 'laserExtend'],
     params: {
-      anim: { value: 1, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행도 (0% → 100%)', hint: '전개도 폴딩 · 문짝 회전 · 3D 반례를 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
-      yaw: { value: -34, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전 (yaw)', format: (v) => `${Math.round(v)}°` },
-      pitch: { value: 30, min: -10, max: 85, step: 1, color: 'muted', label: '위아래 기울기 (pitch)', format: (v) => `${Math.round(v)}°` }
+      anim: { value: 1, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행도 (0% → 100%)', hint: '전개도 접기 · 문짝 회전 · 반례를 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` },
+      yaw: { value: -34, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전', format: (v) => `${Math.round(v)}°` },
+      pitch: { value: 30, min: -10, max: 85, step: 1, color: 'muted', label: '위아래 기울기', format: (v) => `${Math.round(v)}°` }
     },
     groups
   });

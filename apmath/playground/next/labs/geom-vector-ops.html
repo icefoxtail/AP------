@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>벡터의 덧셈과 뺄셈 · AP Math 실험실</title>
-<meta name="description" content="기하 벡터의 덧셈과 뺄셈: 평행사변형법·삼각형법, 시점 통일, 합·차가 같은 지름원 자취, 일차결합 영역, 원의 중심 경유 분해, 영벡터 합과 넓이비를 직접 조작하며 탐구합니다.">
+<meta name="description" content="기하 벡터의 덧셈과 뺄셈: 평행사변형법·삼각형법, 시점을 같게 하기, |PA+PB|=|PA−PB|인 점의 자취(지름이 AB인 원), OA·OB의 실수배의 합으로 나타낸 영역, 원의 중심을 지나는 벡터 분해, 영벡터 합과 넓이의 비를 직접 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    기하 · 벡터의 덧셈과 뺄셈 (AP Math Lab 2.0 이식본) — 4개 묶음 × 10개 장면
@@ -39,27 +39,27 @@ window.addEventListener('DOMContentLoaded', function () {
     const SUBS = {1:['1-A','1-B'],2:['2-A','2-B','2-C'],3:['3-A','3-B','3-C'],4:['4-A','4-B']};
     const PARTS = {
       '1-A':['위치벡터 OA·OB','삼각형법 평행이동','합벡터 a+b','중점벡터 OM'],
-      '1-B':['외접원과 세 반지름','현 AB의 중점·수선','무게중심 OG','수심 OH'],
+      '1-B':['외접원과 세 반지름','현 AB의 중점·수선','무게중심 OG','수선의 교점 OH'],
       '2-A':['위치벡터·끼인각','역벡터 -a','차벡터 AB','중점·합벡터'],
-      '2-B':['지름 AB·자취원','PA+PB = 2PM','PA-PB = BA','직각 APB'],
-      '2-C':['기저 OA·OB','계수별 위치벡터','등비선/영역 경계','점 P·영역 넓이'],
-      '3-A':['중심 C와 원','고정벡터 OC','회전벡터 CP','합벡터 OP·극값'],
-      '3-B':['원 C와 선분 AB','중점 M·PM','회전벡터 CP','거리 극값'],
-      '3-C':['원 C₁의 동점 P','원 C₂의 동점 Q','중심벡터 C₁C₂','합성벡터 PQ'],
-      '4-A':['가중 벡터 PA·PB·PC','내분점 D·직선 CD','분할 삼각형 실제 넓이','계수 합 영벡터'],
-      '4-B':['기저 AB·AC','선분 BC의 내분점 E','AP의 2단 내분','3분할 넓이 비']
+      '2-B':['지름이 AB인 원','PA+PB = 2PM','PA-PB = BA','직각 APB'],
+      '2-C':['두 벡터 OA, OB','α, β에 따른 OP','α+β=k인 직선과 영역의 경계','점 P와 영역의 넓이'],
+      '3-A':['중심 C와 원','OC (고정된 벡터)','CP (방향이 변하는 벡터)','OP = OC + CP, 최댓값·최솟값'],
+      '3-B':['원 C와 선분 AB','중점 M·PM','CP (방향이 변하는 벡터)','거리의 최댓값·최솟값'],
+      '3-C':['원 C₁ 위의 점 P','원 C₂ 위의 점 Q','C₁C₂','PQ = C₁C₂ + C₂Q − C₁P'],
+      '4-A':['αPA, βPB, γPC','AB의 내분점 D·직선 CD','세 삼각형의 넓이','αPA+βPB+γPC = 영벡터'],
+      '4-B':['두 벡터 AB, AC','선분 BC의 내분점 E','AP를 두 번에 나누어 구하기','세 삼각형의 넓이의 비']
     };
     const INFO = {
-      '1-A':{name:'덧셈·중점벡터 2배 치환',steps:['점 A, B와 벡터 OA, OB','평행사변형·삼각형법 평행이동','선분 AB 중점 M: a+b=2OM'],formula:'\\overrightarrow{OA}+\\overrightarrow{OB}=2\\overrightarrow{OM}',q:'A(4,2), B(2,4)이고 M이 AB의 중점일 때 |OA+OB| 및 |OM|을 구하시오.',a:'|OA+OB|=6√2, |OM|=3√2',shortcut:'중점 M을 먼저 찍으면 a+b=2OM. 평행이동 t는 b의 길이와 방향을 바꾸지 않습니다.'},
-      '1-B':{name:'외심·무게중심·수심',steps:['외심 O, 같은 반지름의 A,B,C','AB 중점 M, OM ⟂ AB 확인','3OG = OH = OA+OB+OC'],formula:'\\overrightarrow{OA}+\\overrightarrow{OB}+\\overrightarrow{OC}=3\\overrightarrow{OG}=\\overrightarrow{OH}',q:'삼각형 ABC의 외심을 O, 무게중심을 G, 수심을 H라 할 때 벡터 합 OA+OB+OC를 나타내시오.',a:'3OG = OH',shortcut:'현 AB의 중점 M에서는 OM ⟂ AB. CH=OA+OB=2OM으로 H가 수심임을 알 수 있습니다.'},
-      '2-A':{name:'뺄셈·시점 통일과 끼인각',steps:['OA, OB와 정확한 끼인각 θ','원점에서 -a와 b를 합성','OB−OA=AB 및 중점 비교'],formula:'\\overrightarrow{OB}-\\overrightarrow{OA}=\\overrightarrow{AB}',q:'한 변 4인 정삼각형 OAB에서 |OB−OA|와 |OA+OB|를 구하시오.',a:'4, 4√3',shortcut:'종점 B에서 시점 A를 빼면 화살표 AB. -a를 b에 더한 것도 평행이동하면 AB입니다.'},
-      '2-B':{name:'벡터 합·차가 같은 지름원 자취',steps:['선분 AB와 중점 M·지름원','PA+PB=2PM','PA−PB=BA 및 ∠APB=90°'],formula:'|\\overrightarrow{PA}+\\overrightarrow{PB}|=|\\overrightarrow{PA}-\\overrightarrow{PB}|',q:'|PA+PB|=|PA−PB|인 점 P의 자취를 구하시오.',a:'선분 AB를 지름으로 하는 원',shortcut:'|2PM|=|BA| ⇒ PM=AB/2. 지름 AB인 원 위의 P에서는 ∠APB=90° (A,B 제외).'},
-      '2-C':{name:'일차결합의 등비선·삼각형·평행사변형 영역',steps:['OA, OB 기저벡터','OP=αOA+βOB 실시간 합성','α+β=k 평행선과 영역 넓이'],formula:'\\overrightarrow{OP}=\\alpha\\overrightarrow{OA}+\\beta\\overrightarrow{OB}',q:'OP=αOA+βOB에서 α,β의 조건에 따른 P의 자취·영역을 관찰하시오.',a:'α+β=k: 평행한 직선 / α,β≥0, 합≤1: 삼각형 / 0≤α,β≤1: 평행사변형',shortcut:'계수의 범위가 바로 좌표계입니다. 삼각형의 면적 S=|OA×OB|/2, 평행사변형은 2S.'},
-      '3-A':{name:'원 중심 경유 벡터 분해',steps:['원의 중심 C·반지름 r','OP=OC+CP 분해','최대 d+r, 최소 |d−r|'],formula:'\\overrightarrow{OP}=\\overrightarrow{OC}+\\overrightarrow{CP}',q:'중심 C(4,3), 반지름 2인 원 위의 P에서 |OP|의 최댓값 M과 최솟값 m 및 Mm을 구하시오.',a:'M=7, m=3, Mm=21',shortcut:'최단거리는 |d−r|이며 d<r에서도 음수가 되지 않습니다. d=0이면 모두 |OP|=r입니다.'},
-      '3-B':{name:'동점 P와 두 정점의 중점·원중심 2단 분해',steps:['정점 A,B와 중점 M','PA+PB=2PM','중심 C를 거쳐 PM=CM−CP'],formula:'\\overrightarrow{PA}+\\overrightarrow{PB}=2\\overrightarrow{PM}',q:'P가 중심 C, 반지름 r인 원을 움직일 때 |PA+PB|의 범위를 중점 M으로 나타내시오.',a:'2|CM−r| ≤ |PA+PB| ≤ 2(CM+r)',shortcut:'먼저 2PM으로 바꾸고 CM=d를 재면 최댓값 2(d+r), 최솟값 2|d−r|.'},
-      '3-C':{name:'두 원 위 동점의 이중 중심 분해',steps:['두 원 C₁(r₁), C₂(r₂)','각 원 위 P,Q와 회전벡터','PQ=C₁C₂+C₂Q−C₁P'],formula:'\\overrightarrow{PQ}=\\overrightarrow{C_1C_2}+\\overrightarrow{C_2Q}-\\overrightarrow{C_1P}',q:'서로 다른 두 원 위 P,Q의 거리 |PQ|의 최댓값과 최솟값을 관찰하시오.',a:'최대 d+r₁+r₂, 최소 max(0, d−r₁−r₂, |r₁−r₂|−d)',shortcut:'두 원이 떨어져 있으면 최단 d−r₁−r₂; 완전히 포함되면 최단 |r₁−r₂|−d; 교차하면 0.'},
-      '4-A':{name:'영벡터 합과 실제 넓이비',steps:['αPA+βPB+γPC=0의 점 P','AB 내분점 D: AD:DB=β:α','CP:PD=(α+β):γ, 실제 외적 넓이'],formula:'\\alpha\\overrightarrow{PA}+\\beta\\overrightarrow{PB}+\\gamma\\overrightarrow{PC}=\\vec 0',q:'2PA+3PB+5PC=0인 P에 대하여 △PBC:△PCA:△PAB를 구하시오.',a:'2:3:5 (ABC가 퇴화하지 않을 때)',shortcut:'실제 꼭짓점 좌표로 세 분할 넓이를 외적 계산하며, 넓이의 비가 α:β:γ인지를 잔차로 검증합니다.'},
-      '4-B':{name:'꼭짓점 시점 방정식·2단 내분',steps:['kAP=mAB+nAC를 준비','BE:EC=n:m인 내분점 E','AP=(m+n)/k · AE, 넓이비 변환'],formula:'k\\overrightarrow{AP}=m\\overrightarrow{AB}+n\\overrightarrow{AC}',q:'10AP=3AB+5AC일 때 P와 E의 위치 및 분할 삼각형의 넓이비를 구하시오.',a:'AP=(4/5)AE, △PBC:△PCA:△PAB=2:3:5',shortcut:'E=(mB+nC)/(m+n), P=A+((m+n)/k)(E−A). k>m+n이면 P는 삼각형 내부.'}
+      '1-A':{name:'벡터의 덧셈과 중점 (a+b=2OM)',steps:['점 A, B와 벡터 OA, OB','b를 평행이동하여 삼각형법으로 합 구하기','선분 AB의 중점 M: a+b=2OM'],formula:'\\overrightarrow{OA}+\\overrightarrow{OB}=2\\overrightarrow{OM}',q:'A(4,2), B(2,4)이고 M이 AB의 중점일 때 |OA+OB| 및 |OM|을 구하시오.',a:'|OA+OB|=6√2, |OM|=3√2',shortcut:'중점 M을 먼저 잡으면 a+b=2OM입니다. 벡터를 평행이동해도 길이와 방향은 바뀌지 않습니다.'},
+      '1-B':{name:'외심·무게중심·세 수선의 교점',steps:['외심 O, 같은 반지름의 A,B,C','AB의 중점 M, OM ⟂ AB 확인','3OG = OH = OA+OB+OC (H: 세 수선의 교점)'],formula:'\\overrightarrow{OA}+\\overrightarrow{OB}+\\overrightarrow{OC}=3\\overrightarrow{OG}=\\overrightarrow{OH}',q:'삼각형 ABC의 외심을 O, 무게중심을 G, 세 꼭짓점에서 각각 대변에 내린 수선의 교점을 H라 할 때 벡터 합 OA+OB+OC를 나타내시오.',a:'3OG = OH',shortcut:'현 AB의 중점 M에서는 OM ⟂ AB입니다. OH=OA+OB+OC인 점 H에 대하여 CH=OA+OB=2OM이므로 CH ∥ OM, 즉 CH ⟂ AB가 되어 H는 C에서 AB에 내린 수선 위에 있습니다. 다른 두 꼭짓점에서도 같으므로 H는 세 수선의 교점입니다.'},
+      '2-A':{name:'벡터의 뺄셈, 시점을 같게 하기, 끼인각',steps:['OA, OB와 끼인각 θ','시점을 원점으로 하여 −a와 b를 합성','OB−OA=AB 및 중점 비교'],formula:'\\overrightarrow{OB}-\\overrightarrow{OA}=\\overrightarrow{AB}',q:'한 변 4인 정삼각형 OAB에서 |OB−OA|와 |OA+OB|를 구하시오.',a:'4, 4√3',shortcut:'OB−OA는 A에서 B로 향하는 벡터 AB입니다. −a를 b에 더한 것도 평행이동하면 AB와 같습니다.'},
+      '2-B':{name:'|PA+PB|=|PA−PB|인 점 P의 자취 (지름이 AB인 원)',steps:['선분 AB와 중점 M, 지름이 AB인 원','PA+PB=2PM','PA−PB=BA 및 ∠APB=90°'],formula:'|\\overrightarrow{PA}+\\overrightarrow{PB}|=|\\overrightarrow{PA}-\\overrightarrow{PB}|',q:'|PA+PB|=|PA−PB|인 점 P의 자취를 구하시오.',a:'선분 AB를 지름으로 하는 원',shortcut:'|2PM|=|BA| ⇒ PM=AB/2. 지름 AB인 원 위의 P에서는 ∠APB=90° (A,B 제외).'},
+      '2-C':{name:'OP=αOA+βOB의 직선·삼각형·평행사변형 영역',steps:['두 벡터 OA, OB','OP=αOA+βOB 합성','α+β=k인 직선(AB와 평행)과 영역의 넓이'],formula:'\\overrightarrow{OP}=\\alpha\\overrightarrow{OA}+\\beta\\overrightarrow{OB}',q:'OP=αOA+βOB에서 α,β의 조건에 따른 P의 자취·영역을 관찰하시오.',a:'α+β=k: 평행한 직선 / α,β≥0, 합≤1: 삼각형 / 0≤α,β≤1: 평행사변형',shortcut:'α, β의 범위가 점 P의 위치 범위를 정합니다. 삼각형 OAB의 넓이를 S라 하면 삼각형 영역의 넓이는 S, 평행사변형 영역의 넓이는 2S입니다.'},
+      '3-A':{name:'원의 중심을 지나는 벡터 분해 (OP=OC+CP)',steps:['원의 중심 C·반지름 r, d=|OC|','OP=OC+CP로 분해','최댓값 d+r, 최솟값 |d−r|'],formula:'\\overrightarrow{OP}=\\overrightarrow{OC}+\\overrightarrow{CP}',q:'중심 C(4,3), 반지름 2인 원 위의 P에서 |OP|의 최댓값 M과 최솟값 m 및 Mm을 구하시오.',a:'M=7, m=3, Mm=21',shortcut:'최솟값은 |d−r|이며 d<r일 때도 음수가 되지 않습니다. d=0이면 모든 점 P에서 |OP|=r입니다.'},
+      '3-B':{name:'원 위의 점 P와 두 점 A, B의 중점 M',steps:['두 점 A, B와 중점 M','PA+PB=2PM','중심 C를 지나 PM=CM−CP로 분해'],formula:'\\overrightarrow{PA}+\\overrightarrow{PB}=2\\overrightarrow{PM}',q:'P가 중심 C, 반지름 r인 원을 움직일 때 |PA+PB|의 범위를 중점 M으로 나타내시오.',a:'2|CM−r| ≤ |PA+PB| ≤ 2(CM+r)',shortcut:'먼저 2PM으로 바꾸고 CM=d를 재면 최댓값 2(d+r), 최솟값 2|d−r|.'},
+      '3-C':{name:'두 원 위의 점 P, Q 사이의 거리',steps:['두 원 C₁(r₁), C₂(r₂)','각 원 위의 점 P, Q와 C₁P, C₂Q','PQ=C₁C₂+C₂Q−C₁P'],formula:'\\overrightarrow{PQ}=\\overrightarrow{C_1C_2}+\\overrightarrow{C_2Q}-\\overrightarrow{C_1P}',q:'서로 다른 두 원 위 P,Q의 거리 |PQ|의 최댓값과 최솟값을 관찰하시오.',a:'최대 d+r₁+r₂, 최소 max(0, d−r₁−r₂, |r₁−r₂|−d)',shortcut:'두 원이 떨어져 있으면 최솟값 d−r₁−r₂; 한 원이 다른 원 안에 있으면 최솟값 |r₁−r₂|−d; 두 원이 만나면 0. (d는 두 중심 사이의 거리)'},
+      '4-A':{name:'영벡터 합과 넓이의 비',steps:['αPA+βPB+γPC=0인 점 P','AB의 내분점 D: AD:DB=β:α','CP:PD=(α+β):γ, 세 삼각형의 넓이'],formula:'\\alpha\\overrightarrow{PA}+\\beta\\overrightarrow{PB}+\\gamma\\overrightarrow{PC}=\\vec 0',q:'2PA+3PB+5PC=0인 P에 대하여 △PBC:△PCA:△PAB를 구하시오.',a:'2:3:5 (A, B, C가 한 직선 위에 있지 않을 때)',shortcut:'꼭짓점의 좌표로 세 삼각형의 넓이를 직접 계산하여, 넓이의 비가 α:β:γ와 같은지 확인합니다.'},
+      '4-B':{name:'kAP=mAB+nAC (꼭짓점 A를 시점으로 한 벡터 등식)',steps:['kAP=mAB+nAC를 준비','BE:EC=n:m인 내분점 E','AP=(m+n)/k · AE, 넓이의 비'],formula:'k\\overrightarrow{AP}=m\\overrightarrow{AB}+n\\overrightarrow{AC}',q:'10AP=3AB+5AC일 때 P와 E의 위치 및 분할 삼각형의 넓이비를 구하시오.',a:'AP=(4/5)AE, △PBC:△PCA:△PAB=2:3:5',shortcut:'E=(mB+nC)/(m+n), P=A+((m+n)/k)(E−A). k>m+n이면 P는 삼각형 내부.'}
     };
     const P = (x,y)=>({x,y});
     const add=(a,b)=>P(a.x+b.x,a.y+b.y), sub=(a,b)=>P(a.x-b.x,a.y-b.y);
@@ -164,6 +164,19 @@ window.addEventListener('DOMContentLoaded', function () {
     const d = Math.min(.45, lu * .14, lv * .14), uu = mul(u, d / lu), vv = mul(v, d / lv);
     seg(add(p, uu), add(add(p, uu), vv), col, 1.8, false, 3); seg(add(p, vv), add(add(p, uu), vv), col, 1.8, false, 3);
   }
+  // [표시 보강] 같은 길이(눈금)·평행(화살촉) 표시 — 선분 a–b의 가운데에 같은 색으로 그립니다.
+  function tickEq(a, b, count = 1, col = '#fbbf24', part = 0) { BD.ticks(a, b, { count, color: col, part }); }
+  function parMark(a, b, col = '#fbbf24', count = 1) {
+    const p = BD.toS(a), q = BD.toS(b), c = BD.ctx, L = Math.hypot(q.x - p.x, q.y - p.y) || 1;
+    if (L < 40) return;
+    const d = { x: (q.x - p.x) / L, y: (q.y - p.y) / L }, n = { x: -d.y, y: d.x }, m = { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 };
+    c.save(); c.strokeStyle = BD.color(col); c.lineWidth = 2; c.setLineDash([]);
+    for (let i = 0; i < count; i++) {
+      const o = (i - (count - 1) / 2) * 7, t = { x: m.x + d.x * o, y: m.y + d.y * o };
+      c.beginPath(); c.moveTo(t.x - d.x * 4 + n.x * 5, t.y - d.y * 4 + n.y * 5); c.lineTo(t.x + d.x * 3, t.y + d.y * 3); c.lineTo(t.x - d.x * 4 - n.x * 5, t.y - d.y * 4 - n.y * 5); c.stroke();
+    }
+    c.restore();
+  }
   // 원본 banner: 캔버스 위에 덮어 그리던 하단 상자 → 셸의 하단 띠(그림을 가리지 않음)
   function banner(line1, line2 = '') { BANNER[0] = line1; BANNER[1] = line2; }
 
@@ -193,20 +206,29 @@ window.addEventListener('DOMContentLoaded', function () {
         let S=add(A,B),M=mid(A,B),t=state.slideT;
         fillPoly([ZERO,A,S,B],'rgba(251,191,36,.08)',1);
         if(state.steps[1]){vec(ZERO,A,'#38bdf8','a',0);vec(ZERO,B,'#f472b6','b',0)}
-        if(state.steps[2]){seg(A,S,'#f472b6',1.5,true,1);seg(B,S,'#38bdf8',1.5,true,1);vec(mul(A,t),add(mul(A,t),B),'#f472b6',`b 평행이동 t=${t.toFixed(2)}`,1);vec(ZERO,S,'#fbbf24','a+b',2,.77);dot(S,'합 S','#fbbf24',2);}
-        if(state.steps[3]){seg(A,B,'#34d399',1.7,true,3);vec(ZERO,M,'#34d399','OM',3,.7);dot(M,'중점 M','#34d399',3,{x:-26,y:25});}
+        if(state.steps[2]){seg(A,S,'#f472b6',1.5,true,1);seg(B,S,'#38bdf8',1.5,true,1);vec(mul(A,t),add(mul(A,t),B),'#f472b6',`b 평행이동 t=${t.toFixed(2)}`,1);vec(ZERO,S,'#fbbf24','a+b',2,.77);dot(S,'합 S','#fbbf24',2);
+          // [표시 보강] 평행사변형의 마주 보는 변: OA=BS(눈금 1개·파랑), OB=AS(눈금 2개·분홍) 같은 길이 표시
+          if(t>.98){tickEq(ZERO,A,1,'#38bdf8',1);tickEq(B,S,1,'#38bdf8',1);tickEq(ZERO,B,2,'#f472b6',1);tickEq(A,S,2,'#f472b6',1);}
+        }
+        if(state.steps[3]){seg(A,B,'#34d399',1.7,true,3);vec(ZERO,M,'#34d399','OM',3,.7);dot(M,'중점 M','#34d399',3,{x:-26,y:25});
+          tickEq(A,M,3,'#34d399',3);tickEq(M,B,3,'#34d399',3); // [표시 보강] AM = MB (중점)
+        }
         dot(ZERO,'O','#f8fafc',0,{x:-30,y:27});dot(A,`A(${fmt(A.x)},${fmt(A.y)})`,'#38bdf8');dot(B,`B(${fmt(B.x)},${fmt(B.y)})`,'#f472b6');
-        banner(`OA + OB = 2OM  |  |a+b|=${fmt(norm(S))}`,`OM=(${fmt(M.x)},${fmt(M.y)}) · 동일 스케일 좌표 기반`);
+        banner(`OA + OB = 2OM  |  |a+b|=${fmt(norm(S))}`,`OM=(${fmt(M.x)},${fmt(M.y)})`);
       }
       else if(id==='1-B'){
         const [p,q,s]=state.angles1B.map(t=>pol(state.r1B,t)),M=mid(p,q),H=add(add(p,q),s),G=mul(H,1/3);
         circle(ZERO,state.r1B,'#38bdf8',0,true);fillPoly([p,q,s],'rgba(56,189,248,.08)',0);
         seg(p,q,'#f8fafc',2,false,0);seg(q,s,'#f8fafc',2,false,0);seg(s,p,'#f8fafc',2,false,0);
-        if(state.steps[1]){vec(ZERO,p,'#38bdf8','OA',0);vec(ZERO,q,'#38bdf8','OB',0);vec(ZERO,s,'#38bdf8','OC',0)}
-        if(state.steps[2]){vec(ZERO,M,'#34d399','OM',1);seg(M,s,'#34d399',1.8,true,1);if(norm(M)>.03)rightMark(M,ZERO,p,'#34d399');dot(M,'M', '#34d399',1);}
-        if(state.steps[3]){seg(s,H,'#fbbf24',2,true,3);vec(ZERO,G,'#f472b6','OG',2);vec(ZERO,H,'#fbbf24','OH=3OG',3,.72);dot(G,'G','#f472b6',2);dot(H,area(p,q,s)<1e-8?'H (퇴화: 수심 미정의)':norm(H)<.05?'O=G=H':'수심 H','#fbbf24',3);}
+        if(state.steps[1]){vec(ZERO,p,'#38bdf8','OA',0);vec(ZERO,q,'#38bdf8','OB',0);vec(ZERO,s,'#38bdf8','OC',0);
+          tickEq(ZERO,p,1,'#fde047',0);tickEq(ZERO,q,1,'#fde047',0);tickEq(ZERO,s,1,'#fde047',0); // [표시 보강] 외심 O: OA=OB=OC(반지름) 같은 길이
+        }
+        if(state.steps[2]){vec(ZERO,M,'#34d399','OM',1);seg(M,s,'#34d399',1.8,true,1);if(norm(M)>.03)rightMark(M,ZERO,p,'#34d399');dot(M,'M', '#34d399',1);
+          tickEq(p,M,2,'#34d399',1);tickEq(M,q,2,'#34d399',1); // [표시 보강] M은 AB의 중점: AM=MB
+        }
+        if(state.steps[3]){seg(s,H,'#fbbf24',2,true,3);vec(ZERO,G,'#f472b6','OG',2);vec(ZERO,H,'#fbbf24','OH=3OG',3,.72);dot(G,'G','#f472b6',2);dot(H,area(p,q,s)<1e-8?'H (정해지지 않음)':norm(H)<.05?'O=G=H':'수선의 교점 H','#fbbf24',3);}
         dot(ZERO,'외심 O','#ffffff',0);dot(p,'A','#38bdf8');dot(q,'B','#f472b6');dot(s,'C','#34d399');
-        banner(`|OA|=|OB|=|OC|=${fmt(state.r1B)}`,area(p,q,s)<1e-8?'퇴화 삼각형: 수심은 정의되지 않음':`OA+OB+OC = OH = 3OG  |  |OH|=${fmt(norm(H))}`);
+        banner(`|OA|=|OB|=|OC|=${fmt(state.r1B)}`,area(p,q,s)<1e-8?'세 점 A, B, C가 한 직선 위에 있어 점 H가 정해지지 않음':`OA+OB+OC = OH = 3OG  |  |OH|=${fmt(norm(H))}`);
       }
       else if(id==='2-A'){
         let M=mid(A,B),D=sub(B,A),t=state.slideT;
@@ -215,15 +237,15 @@ window.addEventListener('DOMContentLoaded', function () {
         if(state.steps[2]){vec(ZERO,mul(A,-1),'#fbbf24','−a',1);vec(mul(A,t),add(mul(A,t),D),'#34d399',t>.97?'b−a (AB)':'b−a 이동',1);vec(A,B,'#34d399','AB=b−a',2,.67);}
         if(state.steps[3]){seg(A,B,'#fbbf24',2,true,3);vec(ZERO,M,'#fbbf24','OM',3);dot(M,'M','#fbbf24',3);}
         dot(ZERO,'O','#fff');dot(A,'A','#38bdf8');dot(B,'B','#f472b6');
-        banner(`OB − OA = AB  |  |AB|=${fmt(dist(A,B))}`,`|OA+OB|=${fmt(norm(add(A,B)))} · 평행이동해도 크기는 불변`);
+        banner(`OB − OA = AB  |  |AB|=${fmt(dist(A,B))}`,`|OA+OB|=${fmt(norm(add(A,B)))} · 평행이동해도 크기는 변하지 않음`);
       }
       else if(id==='2-B'){
         const M=mid(A,B),radius=dist(A,B)/2,pp=add(M,pol(radius,state.theta2B));
         circle(M,radius,'#fbbf24',0,true);seg(A,B,'#e2e8f0',2,false,0);
-        if(state.steps[1]){dot(M,'중점 M','#fbbf24',0);}
-        if(state.steps[2]){vec(pp,A,'#38bdf8','PA',1);vec(pp,B,'#f472b6','PB',1);vec(pp,M,'#34d399','PM',1);}
-        if(state.steps[3]){vec(B,A,'#fbbf24','BA=PA−PB',2);if(dist(pp,A)>.04&&dist(pp,B)>.04){rightMark(pp,A,B);labelAt(pp,'∠APB=90°','#fde68a',{x:14,y:30});}else labelAt(pp,'끝점: 직각 미정의','#fda4af');}
-        dot(A,'A','#38bdf8');dot(B,'B','#f472b6');dot(pp,'동점 P','#fbbf24');
+        if(state.steps[1]){dot(M,'중점 M','#fbbf24',0);tickEq(M,A,1,'#fde047',0);tickEq(M,B,1,'#fde047',0);} // [표시 보강] 지름의 중점 M: MA=MB=MP(반지름)
+        if(state.steps[2]){vec(pp,A,'#38bdf8','PA',1);vec(pp,B,'#f472b6','PB',1);vec(pp,M,'#34d399','PM',1);if(dist(pp,M)>.2)tickEq(M,pp,1,'#fde047',1);}
+        if(state.steps[3]){vec(B,A,'#fbbf24','BA=PA−PB',2);if(dist(pp,A)>.04&&dist(pp,B)>.04){rightMark(pp,A,B);labelAt(pp,'∠APB=90°','#fde68a',{x:14,y:30});}else labelAt(pp,'끝점: ∠APB가 정해지지 않음','#fda4af');}
+        dot(A,'A','#38bdf8');dot(B,'B','#f472b6');dot(pp,'점 P','#fbbf24');
         banner(`|PA+PB|=2|PM|=${fmt(2*dist(pp,M))} = |BA|=${fmt(dist(A,B))}`,`P의 자취: 지름 AB인 원 · 반지름=${fmt(radius)}`);
       }
       else if(id==='2-C'){
@@ -233,19 +255,21 @@ window.addEventListener('DOMContentLoaded', function () {
         if(state.steps[1]){vec(ZERO,A,'#38bdf8','OA',0);vec(ZERO,B,'#f472b6','OB',0);}
         if(state.steps[2]){vec(ZERO,mul(A,l.a),'#38bdf8',`αOA (${fmt(l.a)})`,1);vec(mul(A,l.a),pp,'#f472b6',`βOB (${fmt(l.b)})`,1);}
         if(state.steps[3]){
-          if(l.region==='line'){const a0=mul(A,l.k),b0=mul(B,l.k),delta=sub(b0,a0);seg(sub(a0,mul(delta,12)),add(b0,mul(delta,12)),'#34d399',2.2,true,2);dot(a0,'kA','#34d399',2);dot(b0,'kB','#34d399',2);}
+          if(l.region==='line'){const a0=mul(A,l.k),b0=mul(B,l.k),delta=sub(b0,a0);seg(sub(a0,mul(delta,12)),add(b0,mul(delta,12)),'#34d399',2.2,true,2);dot(a0,'kA','#34d399',2);dot(b0,'kB','#34d399',2);
+            // [표시 보강] k≠1이면 직선 AB(연한 점선)를 함께 그리고, AB ∥ kA–kB 평행 표시(같은 화살촉)
+            if(Math.abs(l.k-1)>.04){seg(A,B,'rgba(148,163,184,.7)',1.4,true,2);parMark(A,B,'#34d399',1);parMark(a0,b0,'#34d399',1);}}
           else poly.forEach((p,i)=>seg(p,poly[(i+1)%poly.length],'#34d399',2,true,2));
           vec(ZERO,pp,'#fbbf24','OP',3);
         }
         dot(ZERO,'O','#fff');dot(A,'A','#38bdf8');dot(B,'B','#f472b6');dot(pp,`P (${fmt(pp.x)}, ${fmt(pp.y)})`,'#fbbf24',3);
-        banner(`OP = ${fmt(l.a)}OA + ${fmt(l.b)}OB  |  α+β=${fmt(l.a+l.b)}`,l.region==='line'?`α+β=k=${fmt(l.k)} : AB와 평행한 등비선`:`△OAB 넓이 S=${fmt(S)} · ${l.region==='square'?'평행사변형=2S='+fmt(2*S):'삼각형 영역=S'}`);
+        banner(`OP = ${fmt(l.a)}OA + ${fmt(l.b)}OB  |  α+β=${fmt(l.a+l.b)}`,l.region==='line'?`α+β=k=${fmt(l.k)} : AB와 평행한 직선`:`△OAB 넓이 S=${fmt(S)} · ${l.region==='square'?'평행사변형=2S='+fmt(2*S):'삼각형 영역=S'}`);
       }
       else if(id==='3-A'){
         const pp=center3point(),d=norm(C),u=d<1e-8?P(1,0):mul(C,1/d),far=add(C,mul(u,r)),near=sub(C,mul(u,r));
         if(state.steps[1]){circle(C,r,'#38bdf8',0,true);vec(ZERO,C,'#38bdf8','OC',1);}
         if(state.steps[2]){vec(C,pp,'#f472b6','CP',2);vec(ZERO,pp,'#fbbf24','OP',3);}
         if(state.steps[3]&&d>1e-8){seg(ZERO,add(far,mul(u,.5)),'#fbbf24',1.4,true,3);if(dist(pp,far)>.18)dot(far,'최대 위치','#34d399',3,{x:10,y:29});if(dist(pp,near)>.18)dot(near,'최소 위치','#fb7185',3,{x:-95,y:26});}
-        dot(ZERO,'O','#fff');dot(C,'중심 C','#38bdf8');dot(pp,d<1e-8?'P (거리는 항상 r)':dist(pp,far)<.18?'P = 최대 위치':dist(pp,near)<.18?'P = 최소 위치':'동점 P','#fbbf24',3);
+        dot(ZERO,'O','#fff');dot(C,'중심 C','#38bdf8');dot(pp,d<1e-8?'P (거리는 항상 r)':dist(pp,far)<.18?'P = 최대 위치':dist(pp,near)<.18?'P = 최소 위치':'점 P','#fbbf24',3);
         banner(`d=${fmt(d)}, r=${fmt(r)}  |  |OP|=${fmt(norm(pp))}`,d<1e-8?`d=0: 모든 P에서 |OP|=r=${fmt(r)} (일정)`:`최댓값 d+r=${fmt(d+r)} · 최솟값 |d−r|=${fmt(Math.abs(d-r))}`);
       }
       else if(id==='3-B'){
@@ -253,7 +277,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if(state.steps[1]){circle(C,r,'#38bdf8',0,true);seg(A,B,'#f8fafc',2,false,0);dot(M,'중점 M','#fbbf24',0);}
         if(state.steps[2]){vec(pp,A,'#38bdf8','PA',1);vec(pp,B,'#f472b6','PB',1);vec(pp,M,'#34d399','PM',1);}
         if(state.steps[3]){vec(C,M,'#38bdf8','CM',2);vec(C,pp,'#f472b6','CP',2);if(d>1e-8){if(dist(pp,far)>.18)dot(far,'최댓점','#34d399',3);if(dist(pp,near)>.18)dot(near,'최솟점','#fb7185',3);}}
-        dot(A,'A','#38bdf8');dot(B,'B','#f472b6');dot(C,'중심 C','#38bdf8');dot(pp,'동점 P','#fbbf24',3);
+        dot(A,'A','#38bdf8');dot(B,'B','#f472b6');dot(C,'중심 C','#38bdf8');dot(pp,'점 P','#fbbf24',3);
         banner(`|PA+PB|=2|PM|=${fmt(2*dist(pp,M))} · |CM|=${fmt(d)}`,`최댓값 2(d+r)=${fmt(2*(d+r))} · 최솟값 2|d−r|=${fmt(2*Math.abs(d-r))}`);
       }
       else if(id==='3-C'){
@@ -273,7 +297,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if(state.steps[2]){seg(c,D,'#fbbf24',2,true,1);dot(D,`D (AD:DB=${be}:${al})`,'#fbbf24',1);labelAt(mid(c,D),`CP:PD=${al+be}:${ga}`,'#fbbf24');}
         if(state.steps[3]&&s>1e-7){labelAt(bary(pp,b,c,1,1,1),`Sₐ=${fmt(sa)}`,'#7dd3fc');labelAt(bary(pp,c,a,1,1,1),`Sᵦ=${fmt(sb)}`,'#f9a8d4');labelAt(bary(pp,a,b,1,1,1),`Sᵧ=${fmt(sc)}`,'#6ee7b7');}
         dot(a,'A','#38bdf8');dot(b,'B','#f472b6');dot(c,'C','#34d399');dot(pp,'P','#fbbf24',3);
-        banner(s<1e-7?`퇴화 삼각형: S(ABC)=${fmt(s)}, 넓이비 정의 불가`:`실측 Sₐ:Sᵦ:Sᵧ=${fmt(sa)}:${fmt(sb)}:${fmt(sc)} (ABC=${fmt(s)})`,`α:β:γ=${al}:${be}:${ga}  ·  ${s<1e-7?'퇴화 상태 표시':`면적 잔차=${((Math.abs(sa/s-al/(al+be+ga))+Math.abs(sb/s-be/(al+be+ga))+Math.abs(sc/s-ga/(al+be+ga)))*100).toFixed(5)}%`}`);
+        banner(s<1e-7?`세 점이 한 직선 위: S(ABC)=${fmt(s)}, 넓이의 비를 구할 수 없음`:`Sₐ:Sᵦ:Sᵧ=${fmt(sa)}:${fmt(sb)}:${fmt(sc)} (ABC=${fmt(s)})`,`α:β:γ=${al}:${be}:${ga}  ·  ${s<1e-7?'삼각형이 되지 않음':`넓이의 차이=${((Math.abs(sa/s-al/(al+be+ga))+Math.abs(sb/s-be/(al+be+ga))+Math.abs(sc/s-ga/(al+be+ga)))*100).toFixed(5)}%`}`);
       }
       else if(id==='4-B'){
         const {A:a,B:b,C:c}=M4(),e=innerE(),pp=innerP(),q=state.coeff;
@@ -283,7 +307,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if(state.steps[2]){seg(b,c,'#fbbf24',3,false,1);dot(e,`E (BE:EC=${q.n}:${q.m})`,'#fbbf24',1);}
         if(state.steps[3]){vec(a,e,'#34d399','AE',2);vec(a,pp,'#fbbf24','AP',2);dot(pp,'P','#fbbf24',3);}
         dot(a,'A','#38bdf8');dot(b,'B','#f472b6');dot(c,'C','#34d399');
-        banner(`${q.k}AP = ${q.m}AB + ${q.n}AC  →  AP=${q.m+q.n}/${q.k} AE`,`실측 △PBC:△PCA:△PAB = ${fmt(area(pp,b,c))}:${fmt(area(pp,c,a))}:${fmt(area(pp,a,b))} · 계수 ${q.k-q.m-q.n}:${q.m}:${q.n}`);
+        banner(`${q.k}AP = ${q.m}AB + ${q.n}AC  →  AP=${q.m+q.n}/${q.k} AE`,`△PBC:△PCA:△PAB = ${fmt(area(pp,b,c))}:${fmt(area(pp,c,a))}:${fmt(area(pp,a,b))} · 계수 ${q.k-q.m-q.n}:${q.m}:${q.n}`);
       }
       if(geo){ // 도형 관찰 렌즈: 독립 좌표계와 면적/거리 확인 보조선
         let p=geomPoints();if(p.length){let anchor=p[p.length-1];let foot=P(anchor.x,0);seg(anchor,foot,'rgba(148,163,184,.55)',1.1,true,3);seg(ZERO,foot,'rgba(148,163,184,.45)',1.1,true,3);}
@@ -299,8 +323,8 @@ window.addEventListener('DOMContentLoaded', function () {
         answer=`|OA+OB|=${fmt(norm(add(A,B)))}, |OM|=${fmt(norm(M))}`;
       }else if(id==='1-B'){
         const [a,b,c]=state.angles1B.map(t=>pol(state.r1B,t)),H=add(add(a,b),c);
-        question=`외심 O를 기준으로 같은 반지름 R=${fmt(state.r1B)}인 원 위의 A,B,C를 관찰하시오. 무게중심 G와 수심 H 사이 관계를 구하시오.`;
-        answer=area(a,b,c)<1e-8?'삼각형 퇴화: 수심 미정의':`OH=3OG=OA+OB+OC, |OH|=${fmt(norm(H))}`;
+        question=`외심 O를 기준으로 같은 반지름 R=${fmt(state.r1B)}인 원 위의 A,B,C를 관찰하시오. 무게중심 G와 세 수선의 교점 H 사이의 관계를 구하시오.`;
+        answer=area(a,b,c)<1e-8?'삼각형이 되지 않아 점 H가 정해지지 않음':`OH=3OG=OA+OB+OC, |OH|=${fmt(norm(H))}`;
       }else if(id==='2-A'){
         question=`O(0,0), A${xy(A)}, B${xy(B)}인 삼각형에서 |OB−OA|, |OA+OB|를 계산하시오.`;
         answer=`|AB|=${fmt(dist(A,B))}, |OA+OB|=${fmt(norm(add(A,B)))}`;
@@ -324,11 +348,11 @@ window.addEventListener('DOMContentLoaded', function () {
       }else if(id==='4-A'){
         const {A:a,B:b,C:c}=M4(),pp=weighted(),s=area(a,b,c);
         question=`삼각형 ABC와 내부점 P에 대하여 ${state.alpha}PA+${state.beta}PB+${state.gamma}PC=0. 세 분할 삼각형의 넓이비와 △PAB 넓이를 구하시오.`;
-        answer=s<1e-8?'△ABC 퇴화: 넓이비 정의 불가':`비=${state.alpha}:${state.beta}:${state.gamma}, △PAB=${fmt(area(pp,a,b))}`;
+        answer=s<1e-8?'△ABC가 되지 않아 넓이의 비를 구할 수 없음':`비=${state.alpha}:${state.beta}:${state.gamma}, △PAB=${fmt(area(pp,a,b))}`;
       }else if(id==='4-B'){
         const {A:a,B:b,C:c}=M4(),q=state.coeff,pp=innerP();
         question=`삼각형 ABC에서 ${q.k}AP=${q.m}AB+${q.n}AC를 만족하는 P와 BC 위 E의 내분비 및 분할 넓이비를 구하시오.`;
-        answer=area(a,b,c)<1e-8?'△ABC 퇴화: 넓이비 정의 불가':`BE:EC=${q.n}:${q.m}, AP=${q.m+q.n}/${q.k} AE, 넓이비=${q.k-q.m-q.n}:${q.m}:${q.n}`;
+        answer=area(a,b,c)<1e-8?'△ABC가 되지 않아 넓이의 비를 구할 수 없음':`BE:EC=${q.n}:${q.m}, AP=${q.m+q.n}/${q.k} AE, 넓이비=${q.k-q.m-q.n}:${q.m}:${q.n}`;
       }
       return {question, answer};
     }
@@ -340,12 +364,12 @@ window.addEventListener('DOMContentLoaded', function () {
       if(id==='1-A'||id==='2-A'){
         labels=['벡터 OA 성분·크기','벡터 OB 성분·크기',id==='1-A'?'합벡터 OA+OB':'차벡터 OB−OA',id==='1-A'?'중점 OM':'끼인각 ∠AOB'];
         let theta=Math.atan2(Math.abs(cross(A,B)),A.x*B.x+A.y*B.y);
-        vals=[`(${fmt(A.x)},${fmt(A.y)}) |a|=${fmt(n(A))}`,`(${fmt(B.x)},${fmt(B.y)}) |b|=${fmt(n(B))}`,id==='1-A'?`|a+b|=${fmt(n(add(A,B)))}`:`|AB|=${fmt(L(A,B))}`,id==='1-A'?`|OM|=${fmt(n(mid(A,B)))}`:n(A)<1e-8||n(B)<1e-8?'θ=정의 불가':`θ=${(theta*180/Math.PI).toFixed(1)}°`];
+        vals=[`(${fmt(A.x)},${fmt(A.y)}) |a|=${fmt(n(A))}`,`(${fmt(B.x)},${fmt(B.y)}) |b|=${fmt(n(B))}`,id==='1-A'?`|a+b|=${fmt(n(add(A,B)))}`:`|AB|=${fmt(L(A,B))}`,id==='1-A'?`|OM|=${fmt(n(mid(A,B)))}`:n(A)<1e-8||n(B)<1e-8?'θ를 구할 수 없음':`θ=${(theta*180/Math.PI).toFixed(1)}°`];
         subtext=id==='1-A'?`|a+b|=${fmt(n(add(A,B)))}`:`|AB|=${fmt(L(A,B))}`;
       }
       if(id==='1-B'){
         let ps=state.angles1B.map(t=>pol(state.r1B,t)),H=add(add(ps[0],ps[1]),ps[2]);
-        labels=['세 반지름의 길이','무게중심 G','수심 H','벡터 합 잔차'];vals=[`R=${fmt(state.r1B)}`,`G=(${fmt(H.x/3)},${fmt(H.y/3)})`,`H=(${fmt(H.x)},${fmt(H.y)})`,`|OH−3OG|=${fmt(0)}`];subtext=`|OH|=${fmt(n(H))}`;
+        labels=['세 반지름의 길이','무게중심 G','수선의 교점 H','|OH−3OG|'];vals=[`R=${fmt(state.r1B)}`,`G=(${fmt(H.x/3)},${fmt(H.y/3)})`,`H=(${fmt(H.x)},${fmt(H.y)})`,`|OH−3OG|=${fmt(0)}`];subtext=`|OH|=${fmt(n(H))}`;
       }
       if(id==='2-B'){
         let M=mid(A,B),pp=add(M,pol(L(A,B)/2,state.theta2B)),sum=2*L(pp,M),dif=L(A,B);
@@ -353,17 +377,17 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       if(id==='2-C'){
         let l=state.lin,pp=add(mul(A,l.a),mul(B,l.b)),s=area(ZERO,A,B);
-        labels=['계수 α, β','현재 α+β','위치벡터 OP','영역 면적'];vals=[`${fmt(l.a)} : ${fmt(l.b)}`,fmt(l.a+l.b),`(${fmt(pp.x)},${fmt(pp.y)})`,l.region==='square'?`2S=${fmt(2*s)}`:l.region==='triangle'?`S=${fmt(s)}`:'직선 자취(면적 0)'];subtext=`α+β=${fmt(l.a+l.b)}`;
+        labels=['계수 α, β','현재 α+β','위치벡터 OP','영역의 넓이'];vals=[`${fmt(l.a)} : ${fmt(l.b)}`,fmt(l.a+l.b),`(${fmt(pp.x)},${fmt(pp.y)})`,l.region==='square'?`2S=${fmt(2*s)}`:l.region==='triangle'?`S=${fmt(s)}`:'직선(넓이 0)'];subtext=`α+β=${fmt(l.a+l.b)}`;
       }
       if(id==='3-A'||id==='3-B'){
         let pp=center3point(),M=id==='3-A'?ZERO:mid(A,B),d=L(M,C),value=id==='3-A'?L(ZERO,pp):2*L(M,pp),fac=id==='3-A'?1:2;
-        labels=['중심거리 d','반지름 r','현재 벡터 크기','이론적 범위 [최소, 최대]'];
+        labels=['중심까지의 거리 d','반지름 r','현재 벡터의 크기','값의 범위 [최솟값, 최댓값]'];
         vals=[fmt(d),fmt(r),fmt(value),`[${fmt(fac*Math.abs(d-r))}, ${fmt(fac*(d+r))}]`];
         subtext=`${fmt(fac*Math.abs(d-r))} ≤ 값 ≤ ${fmt(fac*(d+r))}`;
       }
       if(id==='3-C'){
         let {C1,C2,P:pp,Q}=double3(),s=state.circle2,d=L(C1,C2);
-        labels=['두 중심 거리 d','반지름 r₁, r₂','현재 |PQ|','최소 / 최대'];
+        labels=['두 중심 사이의 거리 d','반지름 r₁, r₂','현재 |PQ|','최솟값 / 최댓값'];
         vals=[fmt(d),`${fmt(s.r1)} / ${fmt(s.r2)}`,fmt(L(pp,Q)),`${fmt(circleMin(d,s.r1,s.r2))} / ${fmt(d+s.r1+s.r2)}`];subtext=`|PQ|=${fmt(L(pp,Q))}`;
       }
       if(id==='4-A'||id==='4-B'){
@@ -371,10 +395,10 @@ window.addEventListener('DOMContentLoaded', function () {
         let sa=area(pp,b,c),sb=area(pp,c,a),sc=area(pp,a,b);
         let weights=id==='4-A'?[state.alpha,state.beta,state.gamma]:[state.coeff.k-state.coeff.m-state.coeff.n,state.coeff.m,state.coeff.n];
         let total=weights.reduce((a,b)=>a+b,0);
-        labels=['실측 △PBC 넓이','실측 △PCA 넓이','실측 △PAB 넓이','ABC 넓이 및 실측오차'];
-        vals=[fmt(sa),fmt(sb),fmt(sc),s<1e-8?'퇴화: 넓이비 정의 불가':`ABC=${fmt(s)}, 오차=${((Math.abs(sa/s-weights[0]/total)+Math.abs(sb/s-weights[1]/total)+Math.abs(sc/s-weights[2]/total))*100).toFixed(5)}%`];
+        labels=['△PBC의 넓이','△PCA의 넓이','△PAB의 넓이','△ABC의 넓이와 오차'];
+        vals=[fmt(sa),fmt(sb),fmt(sc),s<1e-8?'삼각형이 되지 않음':`ABC=${fmt(s)}, 오차=${((Math.abs(sa/s-weights[0]/total)+Math.abs(sb/s-weights[1]/total)+Math.abs(sc/s-weights[2]/total))*100).toFixed(5)}%`];
         error=s<1e-8?NaN:Math.abs(sa/s-weights[0]/total)+Math.abs(sb/s-weights[1]/total)+Math.abs(sc/s-weights[2]/total);
-        subtext=s<1e-8?'퇴화 삼각형: 비율 불능':`넓이비 ${weights.join(':')}`;
+        subtext=s<1e-8?'삼각형이 되지 않아 비를 구할 수 없음':`넓이의 비 ${weights.join(':')}`;
         if(id==='4-B')eq=INFO[id].formula.replace('k',state.coeff.k).replace('m',state.coeff.m).replace('n',state.coeff.n);
       }
       return {labels, vals, eq, subtext, error};
@@ -385,7 +409,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const T360 = (rad) => ((rad * R2D) % 360 + 360) % 360;
   const PRESET_DEFS = {
     '1-A': [
-      { name: '기출 A(4,2), B(2,4)', patch: { Ax: 4, Ay: 2, Bx: 2, By: 4, slideT: 1 } },
+      { name: 'A(4,2), B(2,4)', patch: { Ax: 4, Ay: 2, Bx: 2, By: 4, slideT: 1 } },
       { name: '수직 벡터', patch: { Ax: 4, Ay: 0, Bx: 0, By: 3, slideT: 0 } },
       { name: '반대 방향', patch: { Ax: 4, Ay: 1, Bx: -3, By: -.75, slideT: .5 } }],
     '1-B': [
@@ -396,33 +420,33 @@ window.addEventListener('DOMContentLoaded', function () {
       { name: '정삼각형 OAB', patch: { Ax: 4, Ay: 0, Bx: 2, By: 2 * Math.sqrt(3), slideT: 1 } },
       { name: '직각이등변', patch: { Ax: 4, Ay: 0, Bx: 0, By: 4, slideT: .3 } }],
     '2-B': [
-      { name: '직각점 P 스냅', patch: { Ax: -4, Ay: 0, Bx: 4, By: 0, th2b: 90 } },
-      { name: '끝점 (퇴화)', patch: { Ax: -4, Ay: 0, Bx: 4, By: 0, th2b: 0 } },
-      { name: '임의 회전점', patch: { Ax: -3, Ay: -1, Bx: 4, By: 2, th2b: T360(Math.PI * .73) } }],
+      { name: '∠APB=90°인 점 P', patch: { Ax: -4, Ay: 0, Bx: 4, By: 0, th2b: 90 } },
+      { name: '끝점 (P가 A와 일치)', patch: { Ax: -4, Ay: 0, Bx: 4, By: 0, th2b: 0 } },
+      { name: '임의의 점 P', patch: { Ax: -3, Ay: -1, Bx: 4, By: 2, th2b: T360(Math.PI * .73) } }],
     '2-C': [
-      { name: 'α+β=1 내분선분', patch: { la: .4, lb: .6, lk: 1, region: 'line' } },
-      { name: 'α+β=1.5 확대선', patch: { la: .6, lb: .9, lk: 1.5, region: 'line' } },
-      { name: '삼각형 α+β≤1', patch: { la: .3, lb: .4, lk: 1, region: 'triangle' } },
+      { name: 'α+β=1 (선분 AB)', patch: { la: .4, lb: .6, lk: 1, region: 'line' } },
+      { name: 'α+β=1.5 (AB와 평행한 직선)', patch: { la: .6, lb: .9, lk: 1.5, region: 'line' } },
+      { name: '삼각형 영역 (α+β≤1)', patch: { la: .3, lb: .4, lk: 1, region: 'triangle' } },
       { name: '평행사변형', patch: { la: .65, lb: .75, lk: 1, region: 'square' } }],
     '3-A': [
       { name: '최대 d+r=7', patch: { C3x: 4, C3y: 3, r3: 2, th3: T360(Math.atan2(3, 4)) } },
       { name: '최소 |d−r|=3', patch: { C3x: 4, C3y: 3, r3: 2, th3: T360(Math.atan2(3, 4) + Math.PI) } },
-      { name: 'd<r 반례', patch: { C3x: 1, C3y: 0, r3: 2.5, th3: 180 } },
-      { name: 'd=0 특수', patch: { C3x: 0, C3y: 0, r3: 2, th3: 0 } }],
+      { name: 'd<r인 경우', patch: { C3x: 1, C3y: 0, r3: 2.5, th3: 180 } },
+      { name: 'd=0인 경우', patch: { C3x: 0, C3y: 0, r3: 2, th3: 0 } }],
     '3-B': [
       { name: '2|PM| 최대', patch: { Ax: -2, Ay: 1, Bx: 2, By: 1, C3x: 4, C3y: 0, r3: 2, th3: T360(Math.atan2(-1, 4)) } },
       { name: '2|PM| 최소', patch: { Ax: -2, Ay: 1, Bx: 2, By: 1, C3x: 4, C3y: 0, r3: 2, th3: T360(Math.atan2(1, -4)) } },
-      { name: '원 안의 M', patch: { Ax: -2, Ay: 0, Bx: 2, By: 0, C3x: 1, C3y: 0, r3: 2, th3: 180 } }],
+      { name: '점 M이 원 안에 있는 경우', patch: { Ax: -2, Ay: 0, Bx: 2, By: 0, C3x: 1, C3y: 0, r3: 2, th3: 180 } }],
     '3-C': [
-      { name: '두 원 최장 정렬', patch: { c1x: -3, c1y: 0, c2x: 3, c2y: 0, rr1: 1.5, rr2: 1.5, thP: 180, thQ: 0 } },
-      { name: '떨어진 두 원 최단', patch: { c1x: -3, c1y: 0, c2x: 3, c2y: 0, rr1: 1.5, rr2: 1.5, thP: 0, thQ: 180 } },
+      { name: '두 원 위의 점이 가장 먼 경우', patch: { c1x: -3, c1y: 0, c2x: 3, c2y: 0, rr1: 1.5, rr2: 1.5, thP: 180, thQ: 0 } },
+      { name: '떨어진 두 원에서 가장 가까운 경우', patch: { c1x: -3, c1y: 0, c2x: 3, c2y: 0, rr1: 1.5, rr2: 1.5, thP: 0, thQ: 180 } },
       { name: '교차 (최소 0)', patch: { c1x: -1.3, c1y: 0, c2x: 1.3, c2y: 0, rr1: 2, rr2: 2, thP: T360(Math.acos(1.3 / 2)), thQ: T360(Math.PI - Math.acos(1.3 / 2)) } },
       { name: '포함된 두 원', patch: { c1x: 0, c1y: 0, c2x: .5, c2y: 0, rr1: 3, rr2: 1, thP: 0, thQ: 0 } }],
     '4-A': [
-      { name: '기출 2:3:5', patch: { alpha: 2, beta: 3, gamma: 5, ...tri0 } },
+      { name: 'α:β:γ = 2:3:5', patch: { alpha: 2, beta: 3, gamma: 5, ...tri0 } },
       { name: '무게중심 1:1:1', patch: { alpha: 1, beta: 1, gamma: 1, ...tri0 } },
       { name: '계수 1:2:3', patch: { alpha: 1, beta: 2, gamma: 3, ...tri0 } },
-      { name: '퇴화 방어', patch: { TAx: 0, TAy: -3, TBx: -5.2, TBy: -3, TCx: 5.4, TCy: -3 } }],
+      { name: 'A, B, C가 한 직선 위', patch: { TAx: 0, TAy: -3, TBx: -5.2, TBy: -3, TCx: 5.4, TCy: -3 } }],
     '4-B': [
       { name: '10AP=3AB+5AC', patch: { ck: 10, cm: 3, cn: 5, ...tri0 } },
       { name: '6AP=2AB+3AC', patch: { ck: 6, cm: 2, cn: 3, ...tri0 } },
@@ -450,7 +474,7 @@ window.addEventListener('DOMContentLoaded', function () {
     '2-B': '|PA + PB| = |PA − PB|이면 점 P는 어떤 도형 위를 움직일까?',
     '2-C': 'OP = αOA + βOB에서 α, β의 조건을 바꾸면 점 P는 어떤 도형 위를 움직일까?',
     '3-A': '원 위의 점 P에서 |OP|가 가장 클 때와 가장 작을 때는 각각 어디일까?',
-    '3-B': '정점 A, B와 원 위의 점 P에 대해 |PA + PB|는 어디에서 최대·최소가 될까?',
+    '3-B': '두 점 A, B와 원 위의 점 P에 대해 |PA + PB|는 어디에서 최대·최소가 될까?',
     '3-C': '두 원 위의 점 P, Q 사이 거리 |PQ|의 최대·최소는 두 원의 위치에 따라 어떻게 달라질까?',
     '4-A': 'αPA + βPB + γPC = 0이면 세 삼각형의 넓이비는 계수의 비와 어떤 관계일까?',
     '4-B': 'kAP = mAB + nAC에서 점 P는 삼각형 안의 어디에 있고, 넓이는 어떻게 나뉠까?'
@@ -459,12 +483,12 @@ window.addEventListener('DOMContentLoaded', function () {
     '1-A': '<b>점 A, B</b>를 끌어 보세요. 막대 <b>t</b>를 움직이면 b가 a의 끝으로 평행이동하며 평행사변형법이 삼각형법으로 바뀝니다.',
     '1-B': '원 위의 <b>세 점 A, B, C</b>를 끌어 보세요. 모양이 바뀌어도 OA+OB+OC = OH = 3OG는 그대로입니다.',
     '2-A': '<b>점 A, B</b>를 끌고 막대 <b>t</b>로 −a를 b에 더해 보세요. 어느 쪽으로 해도 OB−OA는 화살표 AB입니다.',
-    '2-B': '<b>점 A, B</b>로 지름을, <b>동점 P</b>로 원 위의 위치를 바꿔 보세요. P가 어디에 있어도 |PA+PB| = |BA|입니다.',
-    '2-C': '<b>점 A, B</b>와 <b>점 P</b>를 끌고, 위의 프리셋으로 직선·삼각형·평행사변형 영역을 바꿔 보세요.',
-    '3-A': '원 위의 <b>동점 P</b>를 한 바퀴 돌려 보세요. 중심 C를 끌어 d를 바꾸면 최대 d+r, 최소 |d−r|이 따라 바뀝니다.',
-    '3-B': '<b>점 A, B</b>(중점 M), <b>중심 C</b>, <b>동점 P</b>를 끌어 보세요. |PA+PB| = 2|PM|의 범위가 실시간으로 나옵니다.',
-    '3-C': '<b>두 동점 P, Q</b>와 <b>두 중심 C₁, C₂</b>를 끌어 보세요. 원이 떨어졌을 때·교차할 때·포함될 때 최솟값이 달라집니다.',
-    '4-A': '<b>삼각형의 꼭짓점</b>을 끌거나 계수 막대 <b>α, β, γ</b>를 바꿔 보세요. 실측 넓이비가 α : β : γ와 같습니다.',
+    '2-B': '<b>점 A, B</b>로 지름을, <b>점 P</b>로 원 위의 위치를 바꿔 보세요. P가 어디에 있어도 |PA+PB| = |BA|입니다.',
+    '2-C': '<b>점 A, B</b>와 <b>점 P</b>를 끌고, ‘대표 조건’ 버튼으로 직선·삼각형·평행사변형 영역을 바꿔 보세요.',
+    '3-A': '원 위의 <b>점 P</b>를 한 바퀴 돌려 보세요. 중심 C를 끌어 d를 바꾸면 최대 d+r, 최소 |d−r|이 따라 바뀝니다.',
+    '3-B': '<b>점 A, B</b>(중점 M), <b>중심 C</b>, <b>점 P</b>를 끌어 보세요. |PA+PB| = 2|PM|의 범위가 실시간으로 나옵니다.',
+    '3-C': '<b>두 점 P, Q</b>와 <b>두 중심 C₁, C₂</b>를 끌어 보세요. 원이 떨어졌을 때·교차할 때·포함될 때 최솟값이 달라집니다.',
+    '4-A': '<b>삼각형의 꼭짓점</b>을 끌거나 계수 막대 <b>α, β, γ</b>를 바꿔 보세요. 측정한 넓이의 비가 α : β : γ와 같습니다.',
     '4-B': '<b>삼각형의 꼭짓점</b>을 끌거나 계수 막대 <b>m, n, k</b>를 바꿔 보세요. P는 AE를 (m+n)/k 로 줄인 점입니다.'
   };
   const PCOL = ['sky', 'rose', 'amber', 'green'];
@@ -476,7 +500,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const A = state.A, B = state.B, C = state.C3;
     const anchor = s.sid === '3-A' ? ZERO : mid(A, B), u = sub(anchor, C), ang = Math.atan2(u.y, u.x);
     const ad = Math.atan2(Math.sin(state.theta3 - ang), Math.cos(state.theta3 - ang));
-    return Math.abs(ad) < .035 ? ' (최소 정렬!)' : Math.abs(Math.abs(ad) - Math.PI) < .035 ? ' (최대 정렬!)' : '';
+    return Math.abs(ad) < .035 ? ' (최솟값 위치)' : Math.abs(Math.abs(ad) - Math.PI) < .035 ? ' (최댓값 위치)' : '';
   }
   const mod360 = (x) => ((x % 360) + 360) % 360;
 
@@ -488,13 +512,13 @@ window.addEventListener('DOMContentLoaded', function () {
     '4-A': ['alpha', 'beta', 'gamma'], '4-B': ['cm', 'cn', 'ck']
   };
   const LENS_CHIPS = [
-    { group: '관찰 렌즈', label: '벡터 관찰 렌즈', apply: (s) => { s.lens = 'vector'; }, on: (st) => st.lens === 'vector' },
-    { group: '관찰 렌즈', label: '도형 관찰 렌즈', apply: (s) => { s.lens = 'geometry'; }, on: (st) => st.lens === 'geometry' }
+    { group: '강조해서 볼 요소', label: '벡터 중심으로 보기', apply: (s) => { s.lens = 'vector'; }, on: (st) => st.lens === 'vector' },
+    { group: '강조해서 볼 요소', label: '도형 중심으로 보기', apply: (s) => { s.lens = 'geometry'; }, on: (st) => st.lens === 'geometry' }
   ];
   const presetChips = (id) => PRESET_DEFS[id].map((d, i) => {
     const { num, oth } = split(d.patch);
     return {
-      group: '기출 프리셋', label: d.name,
+      group: '대표 조건', label: d.name,
       apply: (s, lab) => { applyPatch(s, oth); s.pi = i; if (lab) lab.board.setFocus(focusOf({ ...s, ...d.patch }, id), true); },
       set: num,
       on: (st) => st.pi === i
@@ -539,7 +563,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const H = (key, p, color, drag, aria) => b.handle(key, p, { color, drag, ariaLabel: aria });
     if (['1-A', '2-A', '2-B', '2-C', '3-B'].includes(id)) { H('A', st.A, 'sky', pt('Ax', 'Ay'), '점 A'); H('B', st.B, 'rose', pt('Bx', 'By'), '점 B'); }
     if (id === '1-B') ['a1', 'a2', 'a3'].forEach((k, i) => H('ANG' + i, pol(st.r1B, st.angles1B[i]), ['sky', 'rose', 'green'][i], (w) => { s[k] = deg(Math.atan2(w.y, w.x)); }, '점 ' + 'ABC'[i]));
-    if (id === '2-B') H('P2B', add(mid(st.A, st.B), pol(dist(st.A, st.B) / 2, st.theta2B)), 'amber', (w) => { const M = mid(P(s.Ax, s.Ay), P(s.Bx, s.By)); s.th2b = deg(Math.atan2(w.y - M.y, w.x - M.x)); }, '동점 P');
+    if (id === '2-B') H('P2B', add(mid(st.A, st.B), pol(dist(st.A, st.B) / 2, st.theta2B)), 'amber', (w) => { const M = mid(P(s.Ax, s.Ay), P(s.Bx, s.By)); s.th2b = deg(Math.atan2(w.y - M.y, w.x - M.x)); }, '점 P');
     if (id === '2-C') H('P2C', add(mul(st.A, st.lin.a), mul(st.B, st.lin.b)), 'amber', (w) => {
       const A = P(s.Ax, s.Ay), B = P(s.Bx, s.By), det = cross(A, B), reg = s.region;
       if (Math.abs(det) > 1e-6) {
@@ -550,13 +574,13 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     }, '점 P');
     if (id === '3-A' || id === '3-B') {
-      H('P3', center3point(), 'amber', (w) => { s.th3 = deg(Math.atan2(w.y - s.C3y, w.x - s.C3x)); }, '동점 P');
+      H('P3', center3point(), 'amber', (w) => { s.th3 = deg(Math.atan2(w.y - s.C3y, w.x - s.C3x)); }, '점 P');
       H('C3', st.C3, 'sky', pt('C3x', 'C3y'), '원의 중심 C');
     }
     if (id === '3-C') {
       const d = double3();
-      H('P2', d.P, 'sky', (w) => { s.thP = deg(Math.atan2(w.y - s.c1y, w.x - s.c1x)); }, '동점 P');
-      H('Q2', d.Q, 'amber', (w) => { s.thQ = deg(Math.atan2(w.y - s.c2y, w.x - s.c2x)); }, '동점 Q');
+      H('P2', d.P, 'sky', (w) => { s.thP = deg(Math.atan2(w.y - s.c1y, w.x - s.c1x)); }, '점 P');
+      H('Q2', d.Q, 'amber', (w) => { s.thQ = deg(Math.atan2(w.y - s.c2y, w.x - s.c2x)); }, '점 Q');
       H('C1', d.C1, 'sky', pt('c1x', 'c1y'), '중심 C₁');
       H('C2', d.C2, 'rose', pt('c2x', 'c2y'), '중심 C₂');
     }
@@ -597,7 +621,7 @@ window.addEventListener('DOMContentLoaded', function () {
           parts: PARTS[id].map((name, i) => ({ id: i, name, color: PCOL[i] })),
           formula: '<div style="text-align:center">' + APLab.tex(m.eq, true) + '</div>'
         };
-        if (id === '2-B' || id === '4-A' || id === '4-B') v.status = Number.isFinite(m.error) ? { tone: 'ok', text: `실측 잔차 ${fmt(m.error)}` } : { tone: 'warn', text: '퇴화 — 비율 계산 불가' };
+        if (id === '2-B' || id === '4-A' || id === '4-B') v.status = Number.isFinite(m.error) ? { tone: 'ok', text: `오차 ${fmt(m.error)}` } : { tone: 'warn', text: '삼각형이 되지 않아 비를 계산할 수 없음' };
         return v;
       },
       draw: (b, s, v) => {
@@ -610,28 +634,28 @@ window.addEventListener('DOMContentLoaded', function () {
         v.tape = BANNER[0] ? { title: BANNER[0] + (BANNER[1] ? '  ·  ' + BANNER[1] : '') } : null;
       },
       problem: {
-        tag: '수능·평가원형 기출 유형 변형',
+        tag: '벡터의 덧셈과 뺄셈의 활용',
         text: (s) => { s.sid = id; use(s); return esc(dynExam().question); },
         answer: (s) => { s.sid = id; use(s); return esc(dynExam().answer); },
         snap: (s) => snapPatch(id, s)
       },
       solution: {
-        standardTitle: '교과서식 정석 풀이', standardTag: '3분 소요',
-        quickTitle: '10초 컷 실전 기하 비기', quickTag: '10초 컷',
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이',
+        quickTitle: '10초 컷 · 핵심 성질을 이용한 풀이', quickTag: '10초 컷',
         standard: () => ({
           steps: '<b>정의에 따른 풀이</b><br>' + inf.steps.map((t, i) => `${i + 1}. ${esc(t)}`).join('<br>'),
           warning: '벡터 성분 및 길이는 실제 점의 위치가 바뀌면 다시 계산해야 합니다. 발문·정답은 지금 그림의 값을 기준으로 합니다.'
         }),
-        quick: () => ({ steps: esc(inf.shortcut), highlight: `핵심: ${inf.name} · 탐구 탭의 ‘지금 보이는 값’에서 현재 작도의 값을 확인하세요.` })
+        quick: () => ({ steps: esc(inf.shortcut), highlight: `핵심: ${inf.name} · 탐구 탭의 ‘지금 보이는 값’에서 현재 그림의 값을 확인하세요.` })
       }
     };
   }
 
   const groups = [
     { id: 'g1', title: '덧셈 (평행사변형·삼각형·중점)', short: '덧셈', scenes: SUBS[1].map(sceneOf) },
-    { id: 'g2', title: '뺄셈 & 시점 통일 (종점-시점)', short: '뺄셈·시점통일', scenes: SUBS[2].map(sceneOf) },
-    { id: 'g3', title: '기출1: 원의 중심 경유 분해', short: '원의 중심 경유', scenes: SUBS[3].map(sceneOf) },
-    { id: 'g4', title: '기출2: 영벡터 합 & 넓이비(a:b:c)', short: '영벡터 합·넓이비', scenes: SUBS[4].map(sceneOf) }
+    { id: 'g2', title: '뺄셈과 시점을 같게 하기 (종점 − 시점)', short: '뺄셈·시점 같게', scenes: SUBS[2].map(sceneOf) },
+    { id: 'g3', title: '원의 중심을 지나는 벡터 분해', short: '원과 벡터 분해', scenes: SUBS[3].map(sceneOf) },
+    { id: 'g4', title: '영벡터 합과 넓이의 비(α:β:γ)', short: '영벡터 합·넓이의 비', scenes: SUBS[4].map(sceneOf) }
   ];
 
   APLab.createLab({
@@ -644,7 +668,7 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/기하와벡터/벡터의덧셈과뺄셈.html',
     board: { kind: 'cartesian', focus: { x: [-1, 7], y: [-1, 7] }, minZoom: 0.3, maxZoom: 8 },
     params: {
-      slideT: { value: 1, min: 0, max: 1, step: 0.02, color: 'amber', label: '삼각형법 평행이동 t (평행사변형 ↔ 삼각형법)', format: (v) => `t = ${v.toFixed(2)}${v > .98 ? ' (삼각형법 연결!)' : v < .02 ? ' (평행사변형 시점 일치!)' : ''}` },
+      slideT: { value: 1, min: 0, max: 1, step: 0.02, color: 'amber', label: '삼각형법 평행이동 t (평행사변형 ↔ 삼각형법)', format: (v) => `t = ${v.toFixed(2)}${v > .98 ? ' (삼각형법: b의 시점이 a의 종점)' : v < .02 ? ' (평행사변형법: a, b의 시점이 같음)' : ''}` },
       angB: {
         value: 63.4, min: 0, max: 360, step: 1, color: 'rose', label: '점 B 회전 각도 θ_B (점 B를 끌어도 됩니다)', format: (v) => `${v.toFixed(1)}°`,
         onInput: (s) => { const L = Math.hypot(s.Bx, s.By) || 4; s.Bx = L * Math.cos(s.angB * D2R); s.By = L * Math.sin(s.angB * D2R); }
@@ -664,7 +688,7 @@ window.addEventListener('DOMContentLoaded', function () {
         onInput: (s) => { if (s.region === 'triangle' && s.la + s.lb > 1) s.la = 1 - s.lb; }
       },
       lk: { value: 1, min: .2, max: 2, step: 0.05, color: 'amber', label: 'α + β = k', hint: 'k가 같은 점들은 AB와 평행한 한 직선 위에 있습니다', format: (v) => v.toFixed(2), onInput: (s) => { s.lb = s.lk - s.la; } },
-      th3: { value: 36.87, min: 0, max: 360, step: 0.5, color: 'amber', label: '원 위 동점 P 회전각 θ (360° 회전)', format: (v, s) => `${v.toFixed(1)}°${alignNote(s)}` },
+      th3: { value: 36.87, min: 0, max: 360, step: 0.5, color: 'amber', label: '원 위의 점 P의 회전각 θ', format: (v, s) => `${v.toFixed(1)}°${alignNote(s)}` },
       r3: { value: 2, min: 1, max: 3.5, step: 0.1, color: 'sky', label: '원의 반지름 r (|CP| = r)', format: (v) => `r = ${v.toFixed(2)}` },
       thP: { value: 180, min: 0, max: 360, step: 1, color: 'sky', label: 'P 회전각', format: (v) => `${Math.round(v)}°` },
       thQ: { value: 0, min: 0, max: 360, step: 1, color: 'amber', label: 'Q 회전각', format: (v) => `${Math.round(v)}°` },

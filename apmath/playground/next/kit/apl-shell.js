@@ -23,6 +23,7 @@
   const easeOut = (t) => 1 - Math.pow(1 - t, 3);
   const call = (v, ...a) => (typeof v === 'function' ? v(...a) : v);
   const NARROW = window.matchMedia('(max-width: 859px)'); // apl.css의 모바일 기준과 같은 값
+  const PEN_NAME = { amber: '노랑', rose: '분홍', sky: '하늘', ink: '기본' }; // 판서 펜 색 이름(화면 읽기 프로그램용)
 
   class Lab {
     constructor(def) {
@@ -100,7 +101,7 @@
           h('button', { class: 'apl-icon-btn', 'aria-label': '처음 화면으로 맞추기 (0)', title: '화면 맞춤 (0)', html: icon('fit'), onclick: () => this.fitView() }),
           h('hr'),
           ui.penBtn,
-          h('button', { class: 'apl-icon-btn apl-hide-sm', 'aria-label': '그림 저장 (PNG)', title: '판서 포함 그림 저장', html: icon('camera'), onclick: () => this.capture() }),
+          h('button', { class: 'apl-icon-btn apl-hide-sm', 'aria-label': '그림 저장', title: '판서 포함 그림을 파일로 저장', html: icon('camera'), onclick: () => this.capture() }),
           h('button', { class: 'apl-icon-btn apl-hide-sm', 'aria-label': '전체 화면 (F)', title: '전체 화면 (F)', html: icon('full'), onclick: () => this.fullscreen() }),
           ui.gridBtn));
       ui.gridBtn.classList.add('apl-hide-sm');
@@ -307,7 +308,7 @@
       pane.append(r.alert, r.readSec);
       // 관찰 포인트
       r.parts = h('div', { class: 'apl-parts' });
-      r.partSec = this._section('눌러서 확인하는 관찰 포인트', 'target', r.parts);
+      r.partSec = this._section('눌러서 그림에서 확인하기', 'target', r.parts);
       r.summary = h('div', { class: 'apl-summary', hidden: true });
       pane.append(r.partSec, r.summary);
     }
@@ -413,7 +414,7 @@
         };
         r.solution.append(
           h('h3', { class: 'apl-section-h', html: `<span>${icon('bulb')}두 가지 풀이 비교</span>` }),
-          mk('standard', sol.standardTitle || '정석 풀이', sol.standardTag || '정석', 'sky', false),
+          mk('standard', sol.standardTitle || '기본 풀이', sol.standardTag || '기본', 'sky', false),
           mk('quick', sol.quickTitle || '빠른 풀이 · 핵심 원리', sol.quickTag || '핵심', 'amber', false));
         pane.append(r.solution);
       }
@@ -654,7 +655,7 @@
       const s = this.s;
       // 안내
       const guide = v.guide != null ? v.guide : call(sc.guide, s);
-      APLab.setHTML(r.guide, guide || '그림의 <b>후광이 있는 점</b>을 끌거나 아래 조절 막대를 움직여 보세요.');
+      APLab.setHTML(r.guide, guide || '그림의 <b>후광이 있는 점</b>을 끌거나 조절 막대를 움직여 보세요.');
       // 조작부
       this._buildControls();
       for (const [id, c] of Object.entries(this._ctls || {})) {
@@ -912,7 +913,7 @@
       if (this.pen.on) {
         t.innerHTML = '';
         ['amber', 'rose', 'sky', 'ink'].forEach((c) => {
-          const b = h('button', { class: 'sw' + (!this.pen.erase && this.pen.color === c ? ' on' : ''), style: { '--c': `var(--m-${c})` }, 'aria-label': `펜 색 ${c}` });
+          const b = h('button', { class: 'sw' + (!this.pen.erase && this.pen.color === c ? ' on' : ''), style: { '--c': `var(--m-${c})` }, 'aria-label': `펜 색 ${PEN_NAME[c] || c}` });
           b.addEventListener('click', () => { this.pen.color = c; this.pen.erase = false; this.setPen(true); });
           t.append(b);
         });
@@ -940,7 +941,7 @@
       document.body.append(a);
       a.click();
       a.remove();
-      APLab.toast('그림을 PNG로 저장했습니다');
+      APLab.toast('그림을 파일로 저장했습니다');
     }
     _hashState() {
       const sc = this.scene;
@@ -1012,7 +1013,7 @@
         [['←', '→'], '단계 이동 (끝나면 다음 장면) — 발표용 리모컨도 동작'],
         [['[', ']'], '이전 / 다음 장면'],
         [['1', '…', '9'], '장면 바로 가기'],
-        [['T'], '수업 모드 (큰 글씨·굵은 선·발표 막대)'],
+        [['T'], '수업 모드 (큰 글씨·굵은 선·단계 안내 줄)'],
         [['D'], '판서 펜 켜기/끄기 · E 지우개 · X 모두 지우기'],
         [['H'], '설명 패널 접기 (무대를 크게)'],
         [['F'], '전체 화면'],
@@ -1020,7 +1021,7 @@
         [['0'], '화면 맞춤 (확대·이동 되돌리기)'],
         [['S'], '문제 조건으로 그림 맞추기'],
         [['A'], '정답 공개'],
-        [['Space'], '애니메이션 재생/정지'],
+        [['Space'], '움직임 재생/정지'],
         [['N', '화살표'], '무대를 누른 뒤: 점 고르기 / 점 움직이기']
       ];
       const grid = h('div', { class: 'apl-keys' });

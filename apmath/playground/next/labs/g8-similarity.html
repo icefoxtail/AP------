@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>닮음 경험도감 · AP Math 실험실</title>
-<meta name="description" content="중2 도형의 닮음: 포개진 삼각형·반전·SAS, 모래시계·평행선·각이등분선, 직각삼각형 수선 3총사, 중점연결과 무게중심, 종이접기와 사각형 닮음, 차원비와 원뿔 절단까지 6개 탐구관 31개 장면">
+<meta name="description" content="중2 도형의 닮음: 포개진 삼각형·뒤집기·SAS, X자형 닮음·평행선·각의 이등분선, 직각삼각형의 수선과 닮음, 중점을 연결한 선분과 무게중심, 종이접기와 사각형 닮음, 닮은 도형의 넓이·부피의 비와 원뿔 절단까지 6개 탐구관 31개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    중2 · 닮음 경험도감 (AP Math Lab 2.0 이식본) — 6개 탐구관 × 31개 장면
@@ -75,33 +75,33 @@ window.addEventListener('DOMContentLoaded', function () {
     const SUB_MENUS = {
       1: [
         { id: 'nestedParallel', label: '➕ 동위각 평행선 (AD:AB = DE:BC)' },
-        { id: 'nestedFlip', label: '🪞 뒤집힌 포개진형 (∠ADE=∠C 거울반전!)' },
+        { id: 'nestedFlip', label: '🪞 뒤집힌 포개진 삼각형 (∠ADE=∠C)' },
         { id: 'nestedRotated', label: '🔄 꼭짓점 공유 회전 닮음 (∠BAC=∠DAE)' },
         { id: 'sasShared', label: '📐 공통 끼인각 SAS 포개진형' },
-        { id: 'nestedMulti', label: '🪜 다중 평행선 3단 연쇄 (1:2:3)' },
-        { id: 'ssaTrap', label: '💥 [반례] SSA 함정 (컴퍼스 원호 2개 생성!)' }
+        { id: 'nestedMulti', label: '🪜 평행선 2개와 닮은 삼각형 3개 (1:2:3)' },
+        { id: 'ssaTrap', label: '💥 [반례] SSA 함정 (컴퍼스 원호와 두 교점)' }
       ],
       2: [
-        { id: 'hourglassStd', label: '⏳ 사다리꼴 모래시계 (엇각 Z · 180°회전)' },
-        { id: 'hourglassEF', label: '⚡ 교점 O 평행선 EF (모래시계➔포개진 콤보!)' },
-        { id: 'parallelProp', label: '📏 삼각형 평행선 선분비 (평행이동 보조선)' },
+        { id: 'hourglassStd', label: '⏳ 사다리꼴의 X자형 닮음 (엇각 Z · 180°회전)' },
+        { id: 'hourglassEF', label: '⚡ 교점 O를 지나는 평행선 EF (X자형➔포개진 삼각형)' },
+        { id: 'parallelProp', label: '📏 삼각형의 평행선과 선분의 길이의 비 (평행한 보조선)' },
         { id: 'trapezoidMid', label: '🏛️ 사다리꼴 중간 평행선 EF (평행사변형vs대각선)' },
-        { id: 'angleBisectIn', label: '💖 내각의 이등분선 (AB:AC=BD:CD 하트공식!)' },
-        { id: 'angleBisectEx', label: '👟 외각의 이등분선 (AB:AC=BD:CD 나이키공식!)' }
+        { id: 'angleBisectIn', label: '💖 삼각형 내각의 이등분선 (AB:AC=BD:CD)' },
+        { id: 'angleBisectEx', label: '👟 삼각형 외각의 이등분선 (AB:AC=BD:CD)' }
       ],
       3: [
-        { id: 'rightTrio', label: '🐄 수선 3총사 분리·반전·정렬 (△ABC∽△HBA∽△HAC)' },
-        { id: 'rightLeft', label: '👈 왼쪽 날개 제곱 (AB² = BH · BC)' },
-        { id: 'rightRight', label: '👉 오른쪽 날개 제곱 (AC² = CH · CB)' },
-        { id: 'rightCenter', label: '🗼 가운데 기둥 제곱 (AH² = BH · CH)' },
-        { id: 'rightSoArea', label: '🐂 소(牛) 넓이 (AB·AC=BC·AH) & 외심M 비교' }
+        { id: 'rightTrio', label: '🐄 수선이 만드는 세 직각삼각형 분리·뒤집기·정렬 (△ABC∽△HBA∽△HAC)' },
+        { id: 'rightLeft', label: '👈 직각변 AB의 제곱 (AB² = BH · BC)' },
+        { id: 'rightRight', label: '👉 직각변 AC의 제곱 (AC² = CH · CB)' },
+        { id: 'rightCenter', label: '🗼 수선 AH의 제곱 (AH² = BH · CH)' },
+        { id: 'rightSoArea', label: '🐂 직각삼각형의 넓이 (AB·AC=BC·AH) & 빗변의 중점 M 비교' }
       ],
       4: [
-        { id: 'midpointThm', label: '🔗 삼각형 중점연결정리 (길이 1/2 · 넓이 1:3)' },
-        { id: 'midpointFour', label: '💠 세 변 중점 연결 4합동 분할 (넓이 1/4)' },
-        { id: 'centroidProof', label: '⚖️ 무게중심 G 탄생 증명 (모래시계 1:2 ➔ 2:1)' },
-        { id: 'centroidSix', label: '🍕 세 중선 6등분 & 중점연결 24등분 넓이' },
-        { id: 'varignonQuad', label: '💎 사각형 중점 연결 (바리뇽 평행사변형!)' }
+        { id: 'midpointThm', label: '🔗 삼각형의 두 변의 중점을 연결한 선분 (길이 1/2 · 넓이 1:3)' },
+        { id: 'midpointFour', label: '💠 세 변의 중점을 모두 연결하면 합동인 삼각형 4개 (넓이 1/4)' },
+        { id: 'centroidProof', label: '⚖️ 무게중심 G가 중선을 2:1로 나누는 이유 (닮음비 1:2 ➔ 2:1)' },
+        { id: 'centroidSix', label: '🍕 세 중선 6등분 & 가장 작은 삼각형의 넓이 (1/24)' },
+        { id: 'varignonQuad', label: '💎 사각형의 네 변의 중점을 이으면 평행사변형' }
       ],
       5: [
         { id: 'foldRect', label: '📄 직사각형 종이접기 (•+×=90° AA닮음)' },
@@ -111,10 +111,10 @@ window.addEventListener('DOMContentLoaded', function () {
         { id: 'rectDiagPerp', label: '▭ 직사각형 대각선 수선 연쇄 닮음' }
       ],
       6: [
-        { id: 'dimConeCut', label: '🍦 [킬러] 원뿔 3단 평행절단 부피비 (1 : 7 : 19!)' },
+        { id: 'dimConeCut', label: '🍦 [킬러] 원뿔을 평행하게 3등분하여 자른 부피의 비 (1 : 7 : 19)' },
         { id: 'dimTile2D', label: '🧱 평면 타일 격자 (길이 1:n ➔ 넓이 1:n²)' },
         { id: 'dimCube3D', label: '🧊 정육면체 블록 (길이 1:n ➔ 부피 1:n³)' },
-        { id: 'alwaysSimilar', label: '🚫 항상 닮음인 도형(⭕) vs 단골 함정 반례(❌)' }
+        { id: 'alwaysSimilar', label: '🚫 항상 닮은 도형(⭕)과 닮음이 아닌 함정 반례(❌)' }
       ]
     };
 
@@ -524,21 +524,21 @@ window.addEventListener('DOMContentLoaded', function () {
           const de = fmtNum(10 * K);
           return {
             badge: `탐구 1-A · 동위각 평행선 포개진 닮음 (△ADE ∽ △ABC, 닮음비 ${M} : ${N})`,
-            hint: `밑변끼리 비교할 때는 아랫토막(${tex('\\overline{DB}')})이 아니라 반드시 <strong class="text-amber-300">작은 삼각형 옆변(${tex('\\overline{AD}')}) : 큰 삼각형 전체 옆변(${tex('\\overline{AB}')}) = ${M} : ${N}</strong>을 써야 합니다!`,
+            hint: `밑변끼리 비교할 때는 아래쪽 조각(${tex('\\overline{DB}')})이 아니라 반드시 <strong class="text-amber-300">작은 삼각형 옆변(${tex('\\overline{AD}')}) : 큰 삼각형 전체 옆변(${tex('\\overline{AB}')}) = ${M} : ${N}</strong>을 써야 합니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 작은 △ADE 분리·정렬!',
             dim1Name: '닮음비 (AD : AB)', dim2Name: '전체 변 AB 길이',
             val1Txt: `${M} : ${N}`, val2Txt: `${B} cm`,
             parts: [
               { id: 0, name: `🟡 작은 삼각형 △ADE (AD=${ad}, DE=${de})`, desc: `공통각 ∠A + 동위각 2쌍 일치 (AA 닮음)`, val: `비율 ${M}`, color: '#fbbf24', ok: true },
               { id: 1, name: `🟢 큰 전체 삼각형 △ABC (AB=${B}, BC=10)`, desc: `전체 옆변 AB = AD(${ad}) + DB(${db}) = ${B} cm`, val: `비율 ${N}`, color: '#34d399', ok: true },
-              { id: 2, name: `❌ [오답 함정] 아랫토막 DB = ${db} cm`, desc: `AD : DB = ${M} : ${N - M} 은 밑변비(DE : BC)와 다름!`, val: `밑변비 사용금지 ❌`, color: '#f43f5e', ok: false }
+              { id: 2, name: `❌ [오답 함정] 아래쪽 조각 DB = ${db} cm`, desc: `AD : DB = ${M} : ${N - M} 은 밑변비(DE : BC)와 다름!`, val: `밑변의 비에 쓰면 안 됨 ❌`, color: '#f43f5e', ok: false }
             ],
             totalRes: `AD : AB = ${M} : ${N} ⇒ DE : BC = ${de} : 10 cm`,
-            rule: '포개진 평행선 철칙: 가로 밑변비는 무조건 (작은 옆변 : 전체 옆변)!',
+            rule: '포개진 평행선에서 밑변의 비는 (작은 삼각형의 옆변 : 전체 삼각형의 옆변)과 같다!',
             formulaHTML: `• <strong>AA 닮음 증명</strong>: ${tex('\\angle A')} 공통, ${tex('\\overline{DE}\\parallel\\overline{BC}')} 이므로 동위각 ${tex('\\angle ADE=\\angle B')}<br/>• <strong>올바른 비례식</strong>: ${tex(`\\dfrac{\\overline{AD}}{\\overline{AB}} = \\dfrac{\\overline{DE}}{\\overline{BC}} \\implies \\dfrac{${ad}}{${B}} = \\dfrac{${de}}{10}`)}`,
-            notes: `• <strong>[최빈출 오답 함정]</strong>: 옆변 토막끼리 ${tex(`\\overline{AD}:\\overline{DB} = ${M}:${N - M}`)} 인 것을 보고 밑변도 ${tex(`\\overline{DE}:\\overline{BC} = ${M}:${N - M}`)} 로 세우면 100% 틀립니다! 사다리꼴 아랫부분은 삼각형이 아닙니다.`,
+            notes: `• <strong>[오답 함정]</strong>: 옆변 토막끼리 ${tex(`\\overline{AD}:\\overline{DB} = ${M}:${N - M}`)} 인 것을 보고 밑변도 ${tex(`\\overline{DE}:\\overline{BC} = ${M}:${N - M}`)} 로 세우면 틀립니다! 사다리꼴 아랫부분은 삼각형이 아닙니다.`,
             fracEq: [`AD (${ad})`, `AB (${B})`, `DE (${de})`, `BC (10)`],
-            tapeTitle: `전체 옆변 AB(${B}cm) = 위쪽 AD(${ad}cm, 비율 ${M}) + 아랫토막 DB(${db}cm, 비율 ${N - M})`,
+            tapeTitle: `전체 옆변 AB(${B}cm) = 위쪽 AD(${ad}cm, 비율 ${M}) + 아래쪽 조각 DB(${db}cm, 비율 ${N - M})`,
             tapeSegs: [
               { text: `AD = ${ad}cm (비율 ${M})`, weight: K, color: '#fbbf24' },
               { text: `DB = ${db}cm (비율 ${N - M})`, weight: 1 - K, color: '#34d399' }
@@ -550,22 +550,22 @@ window.addEventListener('DOMContentLoaded', function () {
           const ae = fmtNum(10 * K);
           const ab = fmtNum((B * B * K) / (10 * K));
           return {
-            badge: `탐구 1-B · [빈출 1위] 각이 엇갈린 포개진 삼각형 (∠ADE = ∠C 거울 뒤집기 AA 닮음!)`,
-            hint: `슬라이더를 당겨보세요! 작은 삼각형 $\\triangle ADE$를 그냥 떼어내면 각이 맞지 않고, <strong class="text-pink-300">좌우로 거울 뒤집기(Flip)</strong>를 해야만 큰 삼각형 $\\triangle ACB$와 포개집니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 원본으로 되돌리기' : '🎬 거울 뒤집기(Flip) 정렬!',
+            badge: `탐구 1-B · 각이 엇갈린 포개진 삼각형 (∠ADE = ∠C, 뒤집어 포개는 AA 닮음)`,
+            hint: `슬라이더를 당겨보세요! 작은 삼각형 $\\triangle ADE$를 그냥 떼어내면 각이 맞지 않고, <strong class="text-pink-300">좌우로 뒤집기</strong>를 해야만 큰 삼각형 $\\triangle ACB$와 포개집니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 되돌리기' : '🎬 좌우로 뒤집어 정렬!',
             dim1Name: '닮음비 (AD : AC)', dim2Name: '전체 변 AC 길이',
             val1Txt: `${M} : ${N}`, val2Txt: `${B} cm`,
             parts: [
-              { id: 0, name: `🟡 거울 반전될 작은 삼각형 △ADE`, desc: `공통각 ∠A + 엇갈린 같은 각 ∠ADE = ∠C`, val: `AD = ${ad} cm`, color: '#fbbf24', ok: true },
+              { id: 0, name: `🟡 뒤집어 포갤 작은 삼각형 △ADE`, desc: `공통각 ∠A + 엇갈린 같은 각 ∠ADE = ∠C`, val: `AD = ${ad} cm`, color: '#fbbf24', ok: true },
               { id: 1, name: `🔵 대응 순서가 뒤집힌 큰 삼각형 △ACB`, desc: `점 D ↔ 점 C, 점 E ↔ 점 B 로 X자 교차 대응!`, val: `AC = ${B} cm`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🪄 좌우 반전 대칭축 & X자 교차 대응변`, desc: `AD : AC = AE : AB = ${M} : ${N}`, val: `닮음비 ${M} : ${N}`, color: '#f472b6', ok: true }
+              { id: 2, name: `🪄 좌우로 뒤집는 대칭축 & X자 교차 대응변`, desc: `AD : AC = AE : AB = ${M} : ${N}`, val: `닮음비 ${M} : ${N}`, color: '#f472b6', ok: true }
             ],
-            totalRes: `△ADE ∽ △ACB (거울반전 AA) | AD(${ad}) : AC(${B}) = ${M} : ${N}`,
-            rule: '△ADE ∽ △ABC 가 아니라 알파벳 순서가 뒤집힌 △ADE ∽ △ACB!',
+            totalRes: `△ADE ∽ △ACB (뒤집은 AA 닮음) | AD(${ad}) : AC(${B}) = ${M} : ${N}`,
+            rule: '△ADE ∽ △ABC 가 아니라 꼭짓점의 순서가 뒤집힌 △ADE ∽ △ACB!',
             formulaHTML: `• ${tex('\\angle A')}는 공통각이고 조건에서 ${tex('\\angle ADE = \\angle C')} 이므로 <strong>AA 닮음</strong>!<br/>• <strong>X자 교차 비례식</strong>: ${tex(`\\dfrac{\\overline{AD}}{\\overline{AC}} = \\dfrac{\\overline{AE}}{\\overline{AB}} = \\dfrac{${M}}{${N}}`)}`,
-            notes: `• 시험지 그림에서 평행 표시(>>)가 없는데 각 표시(•)가 반대편 아랫각에 찍혀 있다면 100% <strong>거울 뒤집기(Flip) 닮음</strong>입니다! 작은 삼각형을 옆에 좌우 반전시켜 다시 그려 놓고 풀면 절대 안 틀립니다.`,
+            notes: `• 문제의 그림에서 평행 표시(>>)가 없는데 각 표시(•)가 반대편 아랫각에 찍혀 있다면 <strong>뒤집힌 닮음</strong>입니다! 작은 삼각형을 옆에 좌우로 뒤집어 다시 그려 놓고 풀면 대응변을 찾기 쉽습니다.`,
             fracEq: [`AD (${ad})`, `AC (${B})`, `AE (${ae})`, `AB (10)`],
-            tapeTitle: `거울 뒤집기 대응: 왼쪽 위 AD(${ad}) ↔ 오른쪽 전체 AC(${B}) = ${M} : ${N}`,
+            tapeTitle: `뒤집은 대응: 왼쪽 위 AD(${ad}) ↔ 오른쪽 전체 AC(${B}) = ${M} : ${N}`,
             tapeSegs: [
               { text: `작은변 AD (${M})`, weight: M / (M + N), color: '#fbbf24' },
               { text: `반대편 전체변 AC (${N})`, weight: N / (M + N), color: '#38bdf8' }
@@ -600,35 +600,35 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'sasShared') {
           const ad = fmtNum(6 * K), ae = fmtNum(8 * K), de = fmtNum(B * K);
           return {
-            badge: `탐구 1-D · 공통 끼인각 SAS 포개진 닮음 (평행선 조건 없이 두 날개비 일치!)`,
+            badge: `탐구 1-D · 공통 끼인각 SAS 포개진 닮음 (평행선 조건 없이 두 변의 비가 같음!)`,
             hint: `평행선 표시가 전혀 없어도 <strong class="text-pink-300">공통 끼인각 ∠A</strong> 양옆의 두 변의 비가 <strong class="text-amber-300">AD : AB = AE : AC = ${M} : ${N}</strong>로 같으면 <strong>SAS 닮음</strong>이 성립합니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 SAS 삼각형 분리·비교!',
-            dim1Name: '양 날개 닮음비', dim2Name: '밑변 BC 길이',
+            dim1Name: '두 변의 닮음비', dim2Name: '밑변 BC 길이',
             val1Txt: `${M} : ${N}`, val2Txt: `${B} cm`,
             parts: [
               { id: 0, name: `🩷 공통 끼인각 ∠A`, desc: `작은 삼각형과 큰 삼각형이 공유하는 끼인각`, val: `끼인각 일치 ⭕`, color: '#f472b6', ok: true },
-              { id: 1, name: `🟡 왼쪽 날개비 AD : AB = ${ad} : 6`, desc: `오른쪽 날개비 AE : AC = ${ae} : 8 과 정확히 일치!`, val: `비율 ${M} : ${N}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🟡 AD : AB = ${ad} : 6`, desc: `AE : AC = ${ae} : 8 과 정확히 일치!`, val: `비율 ${M} : ${N}`, color: '#fbbf24', ok: true },
               { id: 2, name: `🔵 결론: 밑변비 DE : BC = ${de} : ${B}`, desc: `SAS 닮음 성립 결과로 밑변도 ${M} : ${N}`, val: `DE = ${de} cm`, color: '#38bdf8', ok: true }
             ],
             totalRes: `AD:AB = AE:AC = ${M}:${N} + 끼인각 ∠A ⇒ △ADE ∽ △ABC (SAS 닮음)`,
-            rule: '각도 1개(공통각)와 주변 선분 길이 4개가 주어지면 100% SAS 닮음!',
+            rule: '공통각 하나와 그 양옆 두 변의 길이의 비가 같으면 SAS 닮음!',
             formulaHTML: `• ${tex(`\\dfrac{\\overline{AD}}{\\overline{AB}} = \\dfrac{${ad}}{6} = \\dfrac{${M}}{${N}},\\quad \\dfrac{\\overline{AE}}{\\overline{AC}} = \\dfrac{${ae}}{8} = \\dfrac{${M}}{${N}}`)}<br/>• 끼인각 ${tex('\\angle A')}가 공통이므로 <strong>SAS 닮음</strong> ${tex(`\\implies \\overline{DE} = ${B}\\times\\dfrac{${M}}{${N}} = ${de}\\text{ cm}`)}`,
-            notes: `• 만약 왼쪽 날개와 오른쪽 날개가 뒤바뀌어 ${tex('\\overline{AD}:\\overline{AC} = \\overline{AE}:\\overline{AB}')} 인 경우에는 좌우 거울반전 SAS 닮음(${tex('\\triangle ADE \\sim \\triangle ACB')})이 됩니다!`,
+            notes: `• 만약 두 변의 짝이 뒤바뀌어 ${tex('\\overline{AD}:\\overline{AC} = \\overline{AE}:\\overline{AB}')} 인 경우에는 좌우로 뒤집은 SAS 닮음(${tex('\\triangle ADE \\sim \\triangle ACB')})이 됩니다!`,
             fracEq: [`AD (${ad})`, `AB (6)`, `AE (${ae})`, `AC (8)`],
-            tapeTitle: `공통 끼인각 ∠A 양옆 날개비 일치 (${M} : ${N}) ➔ SAS 닮음 완성!`,
+            tapeTitle: `공통 끼인각 ∠A 양옆 변의 비가 같음 (${M} : ${N}) ➔ SAS 닮음 완성!`,
             tapeSegs: [
-              { text: `작은 날개 (${M})`, weight: M / (M + N), color: '#fbbf24' },
-              { text: `큰 날개 (${N})`, weight: N / (M + N), color: '#38bdf8' }
+              { text: `작은 삼각형의 변 (${M})`, weight: M / (M + N), color: '#fbbf24' },
+              { text: `큰 삼각형의 변 (${N})`, weight: N / (M + N), color: '#38bdf8' }
             ]
           };
         }
         if (sub === 'nestedMulti') {
           const d1 = fmtNum(B / 3), d2 = fmtNum((2 * B) / 3);
           return {
-            badge: `탐구 1-E · 평행선 2개와 3중 연쇄 닮음 (꼭짓점 A부터 누적 칸수 1 : 2 : 3!)`,
+            badge: `탐구 1-E · 평행선 2개와 닮은 삼각형 3개 (꼭짓점 A부터 센 칸수 1 : 2 : 3)`,
             hint: `변 $AB$를 3등분($1:1:1$)하는 점에서 평행선을 그으면, 세 삼각형 $\\triangle ADE \\sim \\triangle AFG \\sim \\triangle ABC$의 닮음비는 $1:1:1$이 아니라 <strong class="text-amber-300">꼭짓점 A부터 누적된 1칸 : 2칸 : 3칸 (1 : 2 : 3)</strong>입니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 3단 삼각형 계단식 분리!',
-            dim1Name: '3단 누적 닮음비', dim2Name: '맨 아래 BC 길이',
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 삼각형 3개를 단계별로 분리!',
+            dim1Name: '삼각형 3개의 닮음비', dim2Name: '맨 아래 BC 길이',
             val1Txt: '1 : 2 : 3', val2Txt: `${B} cm`,
             parts: [
               { id: 0, name: `🟡 1단 삼각형 △ADE (옆변 1칸)`, desc: `DE = BC × (1/3) = ${d1} cm`, val: `DE = ${d1} cm`, color: '#fbbf24', ok: true },
@@ -636,7 +636,7 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🟢 3단 전체 삼각형 △ABC (옆변 누적 3칸!)`, desc: `BC = ${B} cm (DE + FG + BC = ${fmtNum(B * 2)} cm)`, val: `BC = ${B} cm`, color: '#34d399', ok: true }
             ],
             totalRes: `닮음비 1 : 2 : 3 ⇒ DE = ${d1} cm, FG = ${d2} cm, BC = ${B} cm`,
-            rule: '다중 평행선 밑변비 = 꼭짓점 A에서부터 출발한 누적 옆변의 비(1 : 2 : 3)!',
+            rule: '평행선이 여러 개일 때 밑변의 비 = 꼭짓점 A에서부터 센 옆변의 비(1 : 2 : 3)!',
             formulaHTML: `• 옆변 토막비는 ${tex('\\overline{AD}:\\overline{DF}:\\overline{FB} = 1:1:1')} 이지만,<br/>• 삼각형 전체 옆변비는 ${tex('\\overline{AD}:\\overline{AF}:\\overline{AB} = 1:(1+1):(1+1+1) = \\mathbf{1:2:3}')}!`,
             notes: `• 또한 세 조각으로 나뉜 넓이의 비(위 삼각형 : 가운데 사다리꼴 : 아래 사다리꼴)는 제곱의 차인 ${tex('1^2 : (2^2-1^2) : (3^2-2^2) = \\mathbf{1 : 3 : 5}')} 가 됩니다!`,
             fracEq: [`AD (1칸)`, `AF (2칸)`, `DE (${d1})`, `FG (${d2})`],
@@ -650,7 +650,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         // ssaTrap
         return {
-          badge: `탐구 1-F · 💥 [최고난도 반례] 왜 끼인각이 아닌 각(SSA)이 같으면 닮음이 안 될까?`,
+          badge: `탐구 1-F · 💥 [반례] 왜 끼인각이 아닌 각(SSA)이 같으면 닮음이 안 될까?`,
           hint: `두 변의 길이(${tex('\\overline{AB}=8, \\overline{BC}=5')})와 <strong>끼인각이 아닌 각(${tex('\\angle A=30^\\circ')})</strong>만 주어지면, 점 $B$에서 그은 반지름 5인 컴퍼스 원호가 직선과 <strong>두 점 $C_1, C_2$에서 만나 모양이 전혀 다른 두 삼각형</strong>이 생깁니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 합쳐서 원호 보기' : '🎬 둔각 vs 예각 2개 분리 비교!',
           dim1Name: '반례 조건', dim2Name: '컴퍼스 반지름',
@@ -658,10 +658,10 @@ window.addEventListener('DOMContentLoaded', function () {
           parts: [
             { id: 0, name: `🩷 삼각형 ①: 둔각삼각형 △ABC₁ (BC₁ = 5)`, desc: `원호가 왼쪽에서 만날 때 생기는 둔각삼각형`, val: `둔각삼각형 ❌`, color: '#f472b6', ok: false },
             { id: 1, name: `🔵 삼각형 ②: 예각삼각형 △ABC₂ (BC₂ = 5)`, desc: `원호가 오른쪽에서 만날 때 생기는 예각삼각형`, val: `예각삼각형 ❌`, color: '#38bdf8', ok: false },
-            { id: 2, name: `🟡 점 B 중심 반지름 5 컴퍼스 원호 보조선`, desc: `AB=8, BC=5, ∠A=30°가 똑같아도 모양이 하나로 결정 안 됨!`, val: `비결정성 증명!`, color: '#fbbf24', ok: true }
+            { id: 2, name: `🟡 점 B 중심 반지름 5 컴퍼스 원호 보조선`, desc: `AB=8, BC=5, ∠A=30°가 똑같아도 모양이 하나로 결정 안 됨!`, val: `모양이 정해지지 않음!`, color: '#fbbf24', ok: true }
           ],
           totalRes: `SSA 반례: △ABC₁ ≁ △ABC₂ (반드시 '그 끼인각'이어야만 SAS 닮음 성립!)`,
-          rule: '시험 5지선다 함정: "두 변의 비가 같고 한 각이 같으면 닮음이다(❌)" ➔ 반드시 끼인각!',
+          rule: '함정: "두 변의 비가 같고 한 각이 같으면 닮음이다"는 거짓(❌) ➔ 그 각이 반드시 두 변의 끼인각이어야 한다!',
           formulaHTML: `• ${tex('\\triangle ABC_1')}과 ${tex('\\triangle ABC_2')}는 모두 ${tex('\\overline{AB}=8, \\overline{BC}=5, \\angle A=30^\\circ')}를 만족하지만 서로 닮음이 아닙니다!<br/>• <strong>SAS 닮음 조건</strong>의 S-<strong>A</strong>-S에서 A는 반드시 두 변 사이의 <strong>끼인각</strong>이어야 합니다.`,
           notes: `• 합동 조건에서 'SSA 합동'이 없는 이유와 닮음 조건에서 'SSA 닮음'이 없는 이유가 바로 이 <strong>컴퍼스 원호의 두 교점($C_1, C_2$)</strong> 때문입니다!`,
           fracEq: [`AB (8)`, `AB (8)`, `BC₁ (5)`, `BC₂ (5)`],
@@ -677,18 +677,18 @@ window.addEventListener('DOMContentLoaded', function () {
           const oa = fmtNum((10 * M) / (M + N));
           const oc = fmtNum((10 * N) / (M + N));
           return {
-            badge: `탐구 2-A · 모래시계(X형) 기본 닮음 — 엇각(Z) 2쌍 + 맞꼭지각 (180° 회전 정렬!)`,
-            hint: `윗변과 아랫변이 평행(${tex('\\overline{AD}\\parallel\\overline{BC}')})한 모래시계는 윗삼각형을 그대로 내리는 것이 아니라 <strong class="text-amber-300">교점 O를 중심으로 180° 회전</strong>시켜야 아랫삼각형과 포개집니다! 따라서 <strong>A ↔ C, D ↔ B</strong>가 대응점입니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 모래시계로 합치기' : '🎬 180° 회전시켜 나란히 정렬!',
+            badge: `탐구 2-A · X자형 기본 닮음 — 엇각(Z) 2쌍 + 맞꼭지각 (180° 회전 정렬!)`,
+            hint: `윗변과 아랫변이 평행(${tex('\\overline{AD}\\parallel\\overline{BC}')})한 X자형에서는 윗삼각형을 그대로 내리는 것이 아니라 <strong class="text-amber-300">교점 O를 중심으로 180° 회전</strong>시켜야 아랫삼각형과 포개집니다! 따라서 <strong>A ↔ C, D ↔ B</strong>가 대응점입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 X자형으로 합치기' : '🎬 180° 회전시켜 나란히 정렬!',
             dim1Name: '닮음비 (AD : BC)', dim2Name: '아랫변 BC 길이',
             val1Txt: `${M} : ${N}`, val2Txt: `${B} cm`,
             parts: [
               { id: 0, name: `🟡 위쪽 삼각형 △OAD (윗변 AD = ${topA} cm)`, desc: `180° 회전하면 아래쪽 △OCB와 방향 완벽 일치!`, val: `OA = ${oa} cm`, color: '#fbbf24', ok: true },
               { id: 1, name: `🔵 아래쪽 삼각형 △OCB (아랫변 BC = ${B} cm)`, desc: `대각선 AC(10cm)를 ${M} : ${N} 으로 내분!`, val: `OC = ${oc} cm`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🟢 엇각 Z궤적 보조선 (∠OAD = ∠OCB)`, desc: `평행선을 타고 대각선 건너편으로 각이 복사됨`, val: `AA 닮음 (${M}:${N})`, color: '#34d399', ok: true }
+              { id: 2, name: `🟢 엇각 (Z자) ∠OAD = ∠OCB`, desc: `평행선이므로 엇각이 같아 맞은편에 같은 크기의 각이 생김`, val: `AA 닮음 (${M}:${N})`, color: '#34d399', ok: true }
             ],
             totalRes: `△OAD ∽ △OCB (AA, ${M}:${N}) ⇒ OA : OC = OD : OB = ${M} : ${N}`,
-            rule: '모래시계는 대각선 줄기를 타고 건너편으로! (윗변 : 아랫변 = 위 대각선 : 아래 대각선)',
+            rule: 'X자형 닮음에서는 한 대각선 위의 맞은편 점이 대응한다 (A↔C, D↔B)! (윗변 : 아랫변 = 위쪽 대각선 : 아래쪽 대각선)',
             formulaHTML: `• 맞꼭지각 ${tex('\\angle AOD = \\angle COB')}, 엇각 ${tex('\\angle OAD = \\angle OCB')} 이므로 <strong>AA 닮음</strong>!<br/>• ${tex(`\\overline{OA} : \\overline{OC} = \\overline{AD} : \\overline{CB} = ${M} : ${N} \\implies \\overline{OA} = 10\\times\\dfrac{${M}}{${M}+${N}} = ${oa}\\text{ cm}`)}`,
             notes: `• <strong>[방향 주의]</strong>: 왼쪽 위 선분 $OA$의 짝꿍은 왼쪽 아래 $OB$가 아니라 <strong>같은 대각선 줄기 위의 오른쪽 아래 $OC$</strong>입니다!`,
             fracEq: [`AD (${topA})`, `CB (${B})`, `OA (${oa})`, `OC (${oc})`],
@@ -704,22 +704,22 @@ window.addEventListener('DOMContentLoaded', function () {
           const oe = fmtNum((a * b) / (a + b));
           const ef = fmtNum((2 * a * b) / (a + b));
           return {
-            badge: `탐구 2-B · [내신 1등급 킬러] 대각선 교점 O를 지나는 평행선 EF (모래시계 ➔ 포개진 2단 콤보!)`,
-            hint: `<strong>1단계(모래시계)</strong>로 $OA : OC = ${M} : ${N}$을 구한 뒤, <strong>2단계(포개진 삼각형 $\\triangle AEO \\sim \\triangle ABC$)</strong>에서는 닮음비가 ${M}:${N}이 아니라 <strong class="text-pink-300">${M} : (${M}+${N}) = ${M} : ${M + N}</strong>으로 바뀝니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 1단계 모래시계 보기' : '🎬 2단계 포개진 삼각형 분리!',
+            badge: `탐구 2-B · [킬러] 대각선 교점 O를 지나는 평행선 EF (X자형 닮음 ➔ 포개진 삼각형, 두 단계)`,
+            hint: `<strong>1단계(X자형 닮음)</strong>로 $OA : OC = ${M} : ${N}$을 구한 뒤, <strong>2단계(포개진 삼각형 $\\triangle AEO \\sim \\triangle ABC$)</strong>에서는 닮음비가 ${M}:${N}이 아니라 <strong class="text-pink-300">${M} : (${M}+${N}) = ${M} : ${M + N}</strong>으로 바뀝니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 1단계 X자형 닮음 보기' : '🎬 2단계 포개진 삼각형 분리!',
             dim1Name: '윗변:아랫변 비', dim2Name: '공식 결과',
             val1Txt: `${a} : ${b}`, val2Txt: `EF = ${ef}`,
             parts: [
-              { id: 0, name: `🟡 1단계 [모래시계]: △OAD ∽ △OCB (${M} : ${N})`, desc: `윗변(${a}) : 아랫변(${b}) ⇒ 대각선비 OA : OC = ${M} : ${N}`, val: `OA:OC = ${M}:${N}`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🩷 2단계 [포개진형]: △AEO ∽ △ABC (${M} : ${M + N}!)`, desc: `OA : AC = ${M} : (${M}+${N}) = ${M} : ${M + N} (분모 주의!)`, val: `OE = ${oe} cm`, color: '#f472b6', ok: true },
-              { id: 2, name: `🔵 결론: 양쪽 대칭이므로 OE = OF (EF = 2·OE)`, desc: `EF = 2ab / (a+b) = ${ef} cm (조화평균 공식!)`, val: `EF = ${ef} cm`, color: '#38bdf8', ok: true }
+              { id: 0, name: `🟡 1단계 [X자형]: △OAD ∽ △OCB (${M} : ${N})`, desc: `윗변(${a}) : 아랫변(${b}) ⇒ 대각선비 OA : OC = ${M} : ${N}`, val: `OA:OC = ${M}:${N}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 2단계 [포개진 삼각형]: △AEO ∽ △ABC (${M} : ${M + N}!)`, desc: `OA : AC = ${M} : (${M}+${N}) = ${M} : ${M + N} (분모 주의!)`, val: `OE = ${oe} cm`, color: '#f472b6', ok: true },
+              { id: 2, name: `🔵 결론: 양쪽 대칭이므로 OE = OF (EF = 2·OE)`, desc: `EF = 2ab / (a+b) = ${ef} cm`, val: `EF = ${ef} cm`, color: '#38bdf8', ok: true }
             ],
             totalRes: `OE = OF = ab/(a+b) = ${oe} cm | 전체 EF = 2ab/(a+b) = ${ef} cm`,
-            rule: '1단계 모래시계(a : b) ➔ 2단계 포개진 삼각형(a : a+b) ➔ OE = ab / (a+b)!',
+            rule: '1단계 X자형 닮음(a : b) ➔ 2단계 포개진 삼각형(a : a+b) ➔ OE = ab / (a+b)!',
             formulaHTML: `• <strong>1단계</strong>: ${tex(`\\overline{OA}:\\overline{OC} = a:b = ${M}:${N}`)}<br/>• <strong>2단계</strong>: ${tex(`\\triangle AEO \\sim \\triangle ABC`)} 에서 ${tex(`\\overline{OE}:b = a:(a+b) \\implies \\mathbf{\\overline{OE} = \\dfrac{ab}{a+b} = ${oe}}`)}`,
-            notes: `• <strong>[3초 암산 공식]</strong>: 교점 $O$를 지나는 평행선에서 한쪽 날개 ${tex('\\overline{OE} = \\overline{OF} = \\dfrac{\\text{윗변}\\times\\text{아랫변}}{\\text{윗변}+\\text{아랫변}}')}, 전체 ${tex('\\overline{EF} = \\dfrac{2\\times\\text{윗변}\\times\\text{아랫변}}{\\text{윗변}+\\text{아랫변}}')} 입니다!`,
+            notes: `• <strong>[기억할 식]</strong>: 교점 $O$를 지나는 평행선에서 한쪽 선분의 길이 ${tex('\\overline{OE} = \\overline{OF} = \\dfrac{\\text{윗변}\\times\\text{아랫변}}{\\text{윗변}+\\text{아랫변}}')}, 전체 ${tex('\\overline{EF} = \\dfrac{2\\times\\text{윗변}\\times\\text{아랫변}}{\\text{윗변}+\\text{아랫변}}')} 입니다!`,
             fracEq: [`OA (${M})`, `AC (${M + N})`, `OE (${oe})`, `BC (${b})`],
-            tapeTitle: `2단 콤보 비율 변환: 모래시계 OA:OC = ${M}:${N} ➔ 포개진 삼각형 OA:AC = ${M}:${M + N}!`,
+            tapeTitle: `두 단계 비율 변환: X자형 OA:OC = ${M}:${N} ➔ 포개진 삼각형 OA:AC = ${M}:${M + N}!`,
             tapeSegs: [
               { text: `OA (비율 ${M})`, weight: M / (M + N), color: '#fbbf24' },
               { text: `OC (비율 ${N}) ➔ 합쳐서 AC (${M + N})`, weight: N / (M + N), color: '#f472b6' }
@@ -730,20 +730,20 @@ window.addEventListener('DOMContentLoaded', function () {
           const ad = M * 2, db = N * 2;
           const ae = M * 3, ec = N * 3;
           return {
-            badge: `탐구 2-C · 평행선과 선분비 (AD : DB = AE : EC) — 평행이동 보조선 완벽 증명!`,
+            badge: `탐구 2-C · 평행선과 선분의 길이의 비 (AD : DB = AE : EC) — 평행한 보조선을 이용한 증명`,
             hint: `왜 아랫토막끼리도 ${tex('\\overline{AD}:\\overline{DB} = \\overline{AE}:\\overline{EC}')}가 성립할까요? 슬라이더를 당겨 <strong class="text-pink-300">점 E를 지나 변 AB에 평행한 보조선 EF</strong>를 그으면 왼쪽 아래는 <strong>평행사변형($DB=EF$)</strong>이 되고 오른쪽 아래에 닮음 삼각형이 생기기 때문입니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 보조선 숨기기' : '🎬 평행이동 보조선 EF 작도!',
-            dim1Name: '위 : 아래 토막비', dim2Name: '비례 상수',
-            val1Txt: `${M} : ${N}`, val2Txt: `우측 1.5배`,
+            actionTxt: state.fold > 0.5 ? '🎬 보조선 숨기기' : '🎬 평행한 보조선 EF 그리기!',
+            dim1Name: '위 : 아래 토막비', dim2Name: 'AE는 AD의 몇 배',
+            val1Txt: `${M} : ${N}`, val2Txt: `1.5배 (AE : AD = 3 : 2)`,
             parts: [
               { id: 0, name: `🟡 위쪽 작은 삼각형 △ADE (AD=${ad}, AE=${ae})`, desc: `오른쪽 아래 삼각형 △EFC와 동위각 AA 닮음!`, val: `윗구간 ${M}`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🩷 평행이동 보조선 EF & 삼각형 △EFC`, desc: `평행사변형 DBFE에 의해 DB(${db}) = EF(${db}) 로 복사됨!`, val: `아랫구간 ${N}`, color: '#f472b6', ok: true },
-              { id: 2, name: `🔵 결론: AD : DB = AE : EC (${ad}:${db} = ${ae}:${ec})`, desc: `옆변끼리는 위:아래 = 위:아래 비례식이 100% 성립!`, val: `${M} : ${N} 일치!`, color: '#38bdf8', ok: true }
+              { id: 1, name: `🩷 평행한 보조선 EF & 삼각형 △EFC`, desc: `평행사변형 DBFE에 의해 DB(${db}) = EF(${db}) 로 복사됨!`, val: `아랫구간 ${N}`, color: '#f472b6', ok: true },
+              { id: 2, name: `🔵 결론: AD : DB = AE : EC (${ad}:${db} = ${ae}:${ec})`, desc: `옆변끼리는 위:아래 = 위:아래 비례식이 성립!`, val: `${M} : ${N} 일치!`, color: '#38bdf8', ok: true }
             ],
             totalRes: `옆변 분할비: AD(${ad}) : DB(${db}) = AE(${ae}) : EC(${ec}) = ${M} : ${N}`,
             rule: '옆변끼리 비교할 때는 (위 : 아래 = 위 : 아래) OK! 단, 가로 밑변을 구할 때만 (위 : 전체)!',
             formulaHTML: `• 보조선 ${tex('\\overline{EF}\\parallel\\overline{AB}')} 를 그으면 사각형 $DBFE$는 평행사변형이므로 ${tex(`\\overline{DB}=\\overline{EF}=${db}`)}<br/>• ${tex('\\triangle ADE \\sim \\triangle EFC')} (AA 닮음) 이므로 ${tex(`\\overline{AD}:\\overline{EF} = \\overline{AE}:\\overline{EC} \\implies \\overline{AD}:\\overline{DB} = \\overline{AE}:\\overline{EC}`)}`,
-            notes: `• <strong>[상황별 공식 총정리]</strong>:<br/>&nbsp;&nbsp;① 옆변 토막만 물어볼 때: <strong>위 : 아래 = 위 : 아래</strong> (${tex(`${ad}:${db} = ${ae}:${ec}`)})<br/>&nbsp;&nbsp;② 가로선 $DE, BC$가 껴 있을 때: 무조건 <strong>위 : 전체 = DE : BC</strong> (${tex(`${M}:${M + N}`)})!`,
+            notes: `• <strong>[상황별 정리]</strong>:<br/>&nbsp;&nbsp;① 옆변 토막만 물어볼 때: <strong>위 : 아래 = 위 : 아래</strong> (${tex(`${ad}:${db} = ${ae}:${ec}`)})<br/>&nbsp;&nbsp;② 가로선 $DE, BC$를 비교할 때: <strong>위 : 전체 = DE : BC</strong> (${tex(`${M}:${M + N}`)})!`,
             fracEq: [`AD (${ad})`, `DB (${db})`, `AE (${ae})`, `EC (${ec})`],
             tapeTitle: `평행선 옆변 복사: 왼쪽 AD(${ad}) : DB(${db}) = 오른쪽 AE(${ae}) : EC(${ec}) = ${M} : ${N}`,
             tapeSegs: [
@@ -758,7 +758,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const gf = fmtNum(((b - a) * M) / (M + N));
           const ef = fmtNum((a * N + b * M) / (M + N));
           return {
-            badge: `탐구 2-D · 사다리꼴의 중간 평행선 EF 길이 구하기 (①평행사변형 분할법 vs ②대각선 침투법)`,
+            badge: `탐구 2-D · 사다리꼴의 중간 평행선 EF 길이 구하기 (①평행사변형으로 나누는 방법 vs ②대각선을 이용하는 방법)`,
             hint: `사다리꼴에서 옆변을 ${M} : ${N}으로 나누는 평행선 $EF$의 길이는 보조선 하나로 끝납니다! <strong class="text-amber-300">점 D에서 AB에 평행한 선 DH</strong>를 그어 <strong>평행사변형(${a}cm) + 삼각형(${gf}cm)</strong>으로 쪼개어 더하세요!`,
             actionTxt: state.fold > 0.5 ? '🎬 보조선 전환/초기화' : '🎬 평행사변형+삼각형 보조선 작도!',
             dim1Name: '옆변 분할비 (m : n)', dim2Name: '아랫변 BC 길이',
@@ -766,12 +766,12 @@ window.addEventListener('DOMContentLoaded', function () {
             parts: [
               { id: 0, name: `🟢 왼쪽 평행사변형 ABHD 조각 (EG = HC = 6 cm)`, desc: `윗변 AD(6cm)가 그대로 아래로 내려와 EG = 6 cm!`, val: `EG = 6 cm`, color: '#34d399', ok: true },
               { id: 1, name: `🟡 오른쪽 포개진 삼각형 △DGF ∽ △DHC (${M} : ${M + N})`, desc: `밑변 HC(${b - a}cm)의 ${M}/(${M}+${N})배 ⇒ GF = ${gf} cm!`, val: `GF = ${gf} cm`, color: '#fbbf24', ok: true },
-              { id: 2, name: `🩷 합체 공식: EF = EG + GF = (an + bm)/(m+n)`, desc: `6 + ${gf} = ${ef} cm (크로스 곱 공식과 100% 일치!)`, val: `EF = ${ef} cm`, color: '#f472b6', ok: true }
+              { id: 2, name: `🩷 EF = EG + GF = (an + bm)/(m+n)`, desc: `6 + ${gf} = ${ef} cm (공식 (an + bm)/(m+n)의 값과 같음!)`, val: `EF = ${ef} cm`, color: '#f472b6', ok: true }
             ],
             totalRes: `EF = 평행사변형(6) + 삼각형(${gf}) = ${ef} cm`,
-            rule: '사다리꼴 보조선 필살기: 한 꼭짓점에서 옆변에 평행선을 그어 [평행사변형 + 삼각형]으로 쪼갠다!',
-            formulaHTML: `• <strong>정석 보조선 해법</strong>: ${tex(`\\overline{EF} = \\overline{EG} + \\overline{GF} = 6 + (${b}-6)\\times\\dfrac{${M}}{${M}+${N}} = \\mathbf{${ef}\\text{ cm}}`)}<br/>• <strong>크로스 공식</strong>: ${tex(`\\overline{EF} = \\dfrac{a\\cdot n + b\\cdot m}{m+n} = \\dfrac{6\\times ${N} + ${b}\\times ${M}}{${M}+${N}} = \\mathbf{${ef}\\text{ cm}}`)}`,
-            notes: `• 삼각형 넓이나 비례식에서는 꼭짓점부터 누적된 <strong>${tex(`${M} : (${M}+${N})`)}</strong> 비율을 써야 한다는 점만 조심하면 백발백중입니다!`,
+            rule: '사다리꼴의 보조선: 한 꼭짓점에서 옆변에 평행선을 그어 [평행사변형 + 삼각형]으로 나눈다!',
+            formulaHTML: `• <strong>보조선을 그어 구하기</strong>: ${tex(`\\overline{EF} = \\overline{EG} + \\overline{GF} = 6 + (${b}-6)\\times\\dfrac{${M}}{${M}+${N}} = \\mathbf{${ef}\\text{ cm}}`)}<br/>• <strong>공식으로 구하기</strong>: ${tex(`\\overline{EF} = \\dfrac{a\\cdot n + b\\cdot m}{m+n} = \\dfrac{6\\times ${N} + ${b}\\times ${M}}{${M}+${N}} = \\mathbf{${ef}\\text{ cm}}`)}`,
+            notes: `• 삼각형 넓이나 비례식에서는 꼭짓점부터 누적된 <strong>${tex(`${M} : (${M}+${N})`)}</strong> 비율을 써야 한다는 점만 조심하면 됩니다!`,
             fracEq: [`DG (${M})`, `DH (${M + N})`, `GF (${gf})`, `HC (${b - a})`],
             tapeTitle: `중간 평행선 EF(${ef}cm) = 왼쪽 평행사변형 EG(6cm) + 오른쪽 삼각형 GF(${gf}cm)`,
             tapeSegs: [
@@ -784,22 +784,22 @@ window.addEventListener('DOMContentLoaded', function () {
           const k = bisectK(M, N, B), ab = M * k, ac = N * k; // [2.0 수정] 원본의 AB = 3M, AC = 3N 은 BC = B 와 함께 삼각형을 이룰 수 없는 경우가 있어(예: 3, 6, 12) k배로 바로잡음
           const bd = fmtNum((B * M) / (M + N)), cd = fmtNum((B * N) / (M + N));
           return {
-            badge: `탐구 2-E · 💖 삼각형 내각의 이등분선 정리 (AB : AC = BD : CD 하트 공식 & 보조선 증명!)`,
-            hint: `왜 내각 $\\angle A$를 이등분하면 <strong>왼쪽 날개(AB) : 오른쪽 날개(AC) = 왼쪽 바닥(BD) : 오른쪽 바닥(CD)</strong>가 될까요? 슬라이더를 당겨 <strong class="text-pink-300">점 C를 지나 AD에 평행한 보조선 CE</strong>를 그으면 <strong>이등변삼각형($AC=AE$)</strong>이 탄생하기 때문입니다!`,
+            badge: `탐구 2-E · 💖 삼각형 내각의 이등분선 (AB : AC = BD : CD) & 보조선을 이용한 증명`,
+            hint: `왜 내각 $\\angle A$를 이등분하면 <strong>AB : AC = BD : CD</strong>가 될까요? 슬라이더를 당겨 <strong class="text-pink-300">점 C를 지나 AD에 평행한 보조선 CE</strong>를 그으면 <strong>이등변삼각형($AC=AE$)</strong>이 생기기 때문입니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 보조선 접기' : '🎬 연장선+평행 보조선 CE로 이등변삼각형 증명!',
-            dim1Name: '양 날개비 (AB : AC)', dim2Name: '밑변 BC 전체 길이',
+            dim1Name: '두 변의 비 (AB : AC)', dim2Name: '밑변 BC 전체 길이',
             val1Txt: `${ab} : ${ac} (${M}:${N})`, val2Txt: `${B} cm`,
             parts: [
-              { id: 0, name: `💖 내각의 이등분선 AD (∠BAD = ∠CAD = •)`, desc: `꼭짓점 A에서 출발해 양 날개와 바닥으로 갈라지는 하트 모양!`, val: `AB:AC = ${M}:${N}`, color: '#fbbf24', ok: true },
+              { id: 0, name: `💖 내각의 이등분선 AD (∠BAD = ∠CAD = •)`, desc: `꼭짓점 A에서 시작해 밑변 BC를 BD와 CD로 나누는 선분 AD!`, val: `AB:AC = ${M}:${N}`, color: '#fbbf24', ok: true },
               { id: 1, name: `🩷 증명 보조선 CE (AD ∥ EC) & 이등변삼각형 △ACE!`, desc: `동위각(•) = 엇각(•) 이므로 △ACE는 AE = AC(${ac})인 이등변삼각형!`, val: `AE = AC = ${ac}`, color: '#f472b6', ok: true },
               { id: 2, name: `🔵 결론: BD : CD = AB : AE = AB : AC`, desc: `전체 밑변 ${B}cm를 ${M} : ${N} 으로 내분 ⇒ BD=${bd}, CD=${cd}`, val: `BD=${bd}, CD=${cd}`, color: '#38bdf8', ok: true }
             ],
-            totalRes: `하트 공식: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd}) = ${M} : ${N}`,
-            rule: '내각의 이등분선 = 거꾸로 뒤집은 하트(♡) 모양! (왼쪽 변 : 오른쪽 변 = 왼쪽 밑변 : 오른쪽 밑변)',
-            formulaHTML: `• <strong>보조선 증명 과정 (서술형 단골!)</strong>:<br/>&nbsp;&nbsp;① ${tex('\\overline{AD}\\parallel\\overline{EC}')} 이므로 동위각 ${tex('\\angle BAD = \\angle AEC')}, 엇각 ${tex('\\angle CAD = \\angle ACE')}<br/>&nbsp;&nbsp;② ${tex('\\angle AEC = \\angle ACE')} 이므로 ${tex('\\triangle ACE')}는 <strong>이등변삼각형(${tex('\\overline{AC}=\\overline{AE}')})</strong>!<br/>&nbsp;&nbsp;③ 평행선 선분비에 의해 ${tex('\\overline{BA}:\\overline{AE} = \\overline{BD}:\\overline{DC} \\implies \\mathbf{\\overline{AB}:\\overline{AC} = \\overline{BD}:\\overline{CD}}')}!`,
+            totalRes: `내각의 이등분선: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd}) = ${M} : ${N}`,
+            rule: '내각의 이등분선은 밑변을 나머지 두 변의 길이의 비로 나눈다! (AB : AC = BD : CD)',
+            formulaHTML: `• <strong>보조선을 이용한 증명 과정 (서술형 답안 예시)</strong>:<br/>&nbsp;&nbsp;① ${tex('\\overline{AD}\\parallel\\overline{EC}')} 이므로 동위각 ${tex('\\angle BAD = \\angle AEC')}, 엇각 ${tex('\\angle CAD = \\angle ACE')}<br/>&nbsp;&nbsp;② ${tex('\\angle AEC = \\angle ACE')} 이므로 ${tex('\\triangle ACE')}는 <strong>이등변삼각형(${tex('\\overline{AC}=\\overline{AE}')})</strong>!<br/>&nbsp;&nbsp;③ 평행선 선분비에 의해 ${tex('\\overline{BA}:\\overline{AE} = \\overline{BD}:\\overline{DC} \\implies \\mathbf{\\overline{AB}:\\overline{AC} = \\overline{BD}:\\overline{CD}}')}!`,
             notes: `• 또한 ${tex('\\triangle ABD')}와 ${tex('\\triangle ACD')}는 꼭짓점 $A$를 공유하여 높이가 같으므로, <strong>두 삼각형의 넓이비도 밑변비인 ${tex('BD : CD = AB : AC = ' + M + ' : ' + N)}</strong> 과 같습니다!`,
             fracEq: [`AB (${ab})`, `AC (${ac})`, `BD (${bd})`, `CD (${cd})`],
-            tapeTitle: `밑변 BC(${B}cm) 하트 내분: 왼쪽 BD(${bd}cm, 비율 ${M}) : 오른쪽 CD(${cd}cm, 비율 ${N})`,
+            tapeTitle: `밑변 BC(${B}cm)를 AB : AC로 내분: 왼쪽 BD(${bd}cm, 비율 ${M}) : 오른쪽 CD(${cd}cm, 비율 ${N})`,
             tapeSegs: [
               { text: `BD = ${bd}cm (${M})`, weight: M / (M + N), color: '#fbbf24' },
               { text: `CD = ${cd}cm (${N})`, weight: N / (M + N), color: '#38bdf8' }
@@ -813,22 +813,22 @@ window.addEventListener('DOMContentLoaded', function () {
         const cd = fmtNum((bc * smlN) / (bigM - smlN));
         const bd = fmtNum(bc + parseFloat(cd));
         return {
-          badge: `탐구 2-F · 👟 삼각형 외각의 이등분선 정리 (AB : AC = BD : CD 나이키 공식 & 보조선 증명!)`,
-          hint: `꼭짓점 $A$의 외각을 이등분한 선이 밑변 연장선과 점 $D$에서 만날 때, 슬라이더로 <strong class="text-pink-300">점 C를 지나 AD에 평행한 보조선 CF</strong>를 그으면 안쪽에 <strong>이등변삼각형($AF=AC$)</strong>이 생겨 나이키 공식이 증명됩니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 보조선 접기' : '🎬 평행 보조선 CF와 나이키 궤적 작동!',
-          dim1Name: '날개비 (AB : AC)', dim2Name: '원래 밑변 BC 길이',
+          badge: `탐구 2-F · 👟 삼각형 외각의 이등분선 (AB : AC = BD : CD) & 보조선을 이용한 증명`,
+          hint: `꼭짓점 $A$의 외각을 이등분한 선이 밑변 연장선과 점 $D$에서 만날 때, 슬라이더로 <strong class="text-pink-300">점 C를 지나 AD에 평행한 보조선 CF</strong>를 그으면 안쪽에 <strong>이등변삼각형($AF=AC$)</strong>이 생겨 AB : AC = BD : CD 가 증명됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 보조선 접기' : '🎬 평행 보조선 CF 그리기!',
+          dim1Name: '두 변의 비 (AB : AC)', dim2Name: '원래 밑변 BC 길이',
           val1Txt: `${ab} : ${ac} (${bigM}:${smlN})`, val2Txt: `${bc} cm`,
           parts: [
-            { id: 0, name: `👟 나이키(✓) 궤적: AB : AC = BD(전체!) : CD(바깥!)`, desc: `BC : CD 가 아니라 반드시 전체 바닥 BD(${bd}) : 바깥 CD(${cd})!`, val: `${bigM} : ${smlN}`, color: '#fbbf24', ok: true },
+            { id: 0, name: `👟 AB : AC = BD(전체) : CD(연장한 부분)`, desc: `BC : CD 가 아니라 반드시 BD(${bd}) : CD(${cd})!`, val: `${bigM} : ${smlN}`, color: '#fbbf24', ok: true },
             { id: 1, name: `🩷 평행 보조선 CF (FC ∥ DA) & 이등변삼각형 △AFC`, desc: `동위각 = 엇각이므로 AF = AC = ${ac} cm 인 이등변삼각형!`, val: `AF = AC = ${ac}`, color: '#f472b6', ok: true },
             { id: 2, name: `🔵 포개진 닮음 △BFC ∽ △BAD ⇒ BD=${bd}, CD=${cd}`, desc: `BC(${bc}) : CD(${cd}) = (${bigM}-${smlN}) : ${smlN}`, val: `CD = ${cd} cm`, color: '#38bdf8', ok: true }
           ],
-          totalRes: `나이키 공식: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd}) = ${bigM} : ${smlN}`,
-          rule: '외각의 이등분선 = 나이키(✓) 로고! (긴 변 AB : 짧은 변 AC = 멀리 간 바닥 BD : 돌아온 바닥 CD)',
+          totalRes: `외각의 이등분선: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd}) = ${bigM} : ${smlN}`,
+          rule: '외각의 이등분선에서도 AB : AC = BD : CD 가 성립한다! (BD는 점 B에서 점 D까지 전체, CD는 점 C에서 점 D까지)',
           formulaHTML: `• 보조선 ${tex('\\overline{CF}\\parallel\\overline{DA}')} 에 의해 ${tex('\\triangle AFC')}는 ${tex(`\\overline{AF}=\\overline{AC}=${ac}`)} 인 이등변삼각형!<br/>• ${tex(`\\overline{AB}:\\overline{AF} = \\overline{BD}:\\overline{CD} \\implies \\mathbf{\\overline{AB}:\\overline{AC} = \\overline{BD}:\\overline{CD} = ${bigM}:${smlN}}`)}`,
-          notes: `• <strong>[오답 주의보]</strong>: 오른쪽 항에 ${tex('\\overline{BC} : \\overline{CD}')} 를 쓰면 틀립니다! 점 $B$에서 점 $D$까지 <strong>끝까지 갔다(${tex('\\overline{BD}')})가 점 $C$로 돌아오는(${tex('\\overline{CD}')}) 나이키 스우시(✓) 궤적</strong>을 손가락으로 따라가세요!`,
+          notes: `• <strong>[주의]</strong>: 오른쪽 항에 ${tex('\\overline{BC} : \\overline{CD}')} 를 쓰면 틀립니다! 점 $B$에서 점 $D$까지 <strong>${tex('\\overline{BD}')}(점 $B$에서 점 $D$까지 전체)와 ${tex('\\overline{CD}')}(점 $C$에서 점 $D$까지)</strong>를 써야 합니다!`,
           fracEq: [`AB (${ab})`, `AC (${ac})`, `BD (${bd})`, `CD (${cd})`],
-          tapeTitle: `전체 바닥 BD(${bd}cm, 비율 ${bigM}) = 원래 밑변 BC(${bc}cm) + 연장선 CD(${cd}cm, 비율 ${smlN})`,
+          tapeTitle: `전체 BD(${bd}cm, 비율 ${bigM}) = 원래 밑변 BC(${bc}cm) + 연장선 CD(${cd}cm, 비율 ${smlN})`,
           tapeSegs: [
             { text: `BC = ${bc}cm (비율 ${bigM - smlN})`, weight: (bigM - smlN) / bigM, color: '#34d399' },
             { text: `CD = ${cd}cm (비율 ${smlN})`, weight: smlN / bigM, color: '#38bdf8' }
@@ -845,22 +845,22 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (sub === 'rightTrio') {
           return {
-            badge: `탐구 3-A · 직각삼각형 수선 3총사 실제 분리·거울반전·정렬 (△ABC ∽ △HBA ∽ △HAC)`,
-            hint: `직각 꼭짓점 $A$에서 빗변에 수선 $AH$를 내리면, $\\bullet + \\times = 90^\\circ$ 각도 돌리기에 의해 <strong class="text-amber-300">큰 삼각형(빗변 ${bc}) · 왼쪽 작은 삼각형(빗변 ${ab}) · 오른쪽 중간 삼각형(빗변 ${ac})</strong> 세 개가 모두 <strong>AA 닮음(5 : 3 : 4)</strong>이 됩니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 원본 직각삼각형으로 합치기' : '🎬 3총사 조각 분리·거울반전 정렬!',
-            dim1Name: '3총사 닮음비(빗변비)', dim2Name: '큰 빗변 BC 스케일',
+            badge: `탐구 3-A · 직각삼각형의 수선이 만드는 세 삼각형 분리·뒤집기·정렬 (△ABC ∽ △HBA ∽ △HAC)`,
+            hint: `직각 꼭짓점 $A$에서 빗변에 수선 $AH$를 내리면, $\\bullet + \\times = 90^\\circ$ 이므로 <strong class="text-amber-300">큰 삼각형(빗변 ${bc}) · 왼쪽 작은 삼각형(빗변 ${ab}) · 오른쪽 중간 삼각형(빗변 ${ac})</strong> 세 개가 모두 <strong>AA 닮음(5 : 3 : 4)</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본 직각삼각형으로 합치기' : '🎬 세 삼각형 분리·뒤집어 정렬!',
+            dim1Name: '세 삼각형의 닮음비(빗변의 비)', dim2Name: '큰 빗변 BC 길이',
             val1Txt: '5 : 3 : 4', val2Txt: `${bc} cm`,
             parts: [
-              { id: 0, name: `🟢 대(大) 직각삼각형 △ABC (빗변 BC = ${bc} cm)`, desc: `내각 (90°, •, ×) — 거울 뒤집어 정렬하면 기준형 완성`, val: `빗변 ${bc} (비율 5)`, color: '#34d399', ok: true },
-              { id: 1, name: `🟡 소(小) 직각삼각형 △HBA (빗변 AB = ${ab} cm)`, desc: `내각 (90°, •, ×) — BH=${bh}, AH=${ah}`, val: `빗변 ${ab} (비율 3)`, color: '#fbbf24', ok: true },
-              { id: 2, name: `🔵 중(中) 직각삼각형 △HAC (빗변 AC = ${ac} cm)`, desc: `내각 (90°, •, ×) — AH=${ah}, CH=${ch}`, val: `빗변 ${ac} (비율 4)`, color: '#38bdf8', ok: true }
+              { id: 0, name: `🟢 큰 직각삼각형 △ABC (빗변 BC = ${bc} cm)`, desc: `내각 (90°, •, ×) — 뒤집어 정렬하면 기준 삼각형과 같은 방향`, val: `빗변 ${bc} (비율 5)`, color: '#34d399', ok: true },
+              { id: 1, name: `🟡 작은 직각삼각형 △HBA (빗변 AB = ${ab} cm)`, desc: `내각 (90°, •, ×) — BH=${bh}, AH=${ah}`, val: `빗변 ${ab} (비율 3)`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🔵 중간 크기의 직각삼각형 △HAC (빗변 AC = ${ac} cm)`, desc: `내각 (90°, •, ×) — AH=${ah}, CH=${ch}`, val: `빗변 ${ac} (비율 4)`, color: '#38bdf8', ok: true }
             ],
             totalRes: `△ABC ∽ △HBA ∽ △HAC (AA 닮음) | 닮음비(빗변비) = ${bc} : ${ab} : ${ac} = 5 : 3 : 4`,
-            rule: '직각삼각형 안에 수선을 내리면 (90°, •, ×) 직각삼각형 3총사가 탄생한다!',
+            rule: '직각삼각형 안에 수선을 내리면 (90°, •, ×)인 서로 닮은 직각삼각형 세 개가 생긴다!',
             formulaHTML: `• ${tex('\\angle B = \\bullet, \\angle C = \\times')} 라 하면 ${tex('\\bullet + \\times = 90^\\circ')}<br/>• 왼쪽 ${tex('\\triangle HBA')}에서 ${tex('\\angle BAH = \\times')}, 오른쪽 ${tex('\\triangle HAC')}에서 ${tex('\\angle CAH = \\bullet')}<br/>• 세 삼각형 모두 내각이 ${tex('(90^\\circ, \\bullet, \\times)')}로 같으므로 <strong>AA 닮음</strong>!`,
             notes: `• 세 삼각형의 넓이비는 닮음비(빗변비 $5 : 3 : 4$)의 제곱인 <strong>$5^2 : 3^2 : 4^2 = 25 : 9 : 16$</strong> 입니다! 실제로 $9 + 16 = 25$ (피타고라스 정리!)가 성립합니다.`,
             fracEq: [`빗변BC (${bc})`, `빗변BA (${ab})`, `긴변AC (${ac})`, `긴변HA (${ah})`],
-            tapeTitle: `빗변 BC(${bc}cm) 분할: 왼쪽 발 BH(${bh}cm, 9/25) + 오른쪽 발 CH(${ch}cm, 16/25)`,
+            tapeTitle: `빗변 BC(${bc}cm) 분할: BH(${bh}cm, 9/25) + CH(${ch}cm, 16/25)`,
             tapeSegs: [
               { text: `BH = ${bh}cm (9/25)`, weight: 0.36, color: '#fbbf24' },
               { text: `CH = ${ch}cm (16/25)`, weight: 0.64, color: '#38bdf8' }
@@ -869,90 +869,90 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         if (sub === 'rightLeft') {
           return {
-            badge: `탐구 3-B · 👈 왼쪽 날개 제곱 공식 유도 — AB² = BH · BC (가까운 발 × 전체 바닥!)`,
-            hint: `전체 삼각형 $\\triangle ABC$와 왼쪽 작은 삼각형 $\\triangle HBA$의 닮음비(${tex('BC : BA = AB : HB')})에서 외항·내항을 곱하면 <strong class="text-amber-300">(왼쪽 날개 AB)² = (가까운 발 BH) × (전체 바닥 BC)</strong> 공식이 탄생합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 왼쪽 물방울 궤적 & 닮음 정렬!',
+            badge: `탐구 3-B · 👈 직각변 AB의 제곱 — AB² = BH · BC (수선의 발 H가 나눈 조각 BH × 빗변 BC)`,
+            hint: `전체 삼각형 $\\triangle ABC$와 왼쪽 작은 삼각형 $\\triangle HBA$의 닮음비(${tex('BC : BA = AB : HB')})에서 외항·내항을 곱하면 <strong class="text-amber-300">AB² = BH × BC (직각변의 제곱 = 그 변 쪽의 조각 BH × 빗변 전체 BC)</strong>가 성립합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 △ABC와 △HBA의 닮음 정렬!',
             dim1Name: '적용 공식', dim2Name: '빗변 BC 길이',
             val1Txt: 'AB² = BH·BC', val2Txt: `${bc} cm`,
             parts: [
               // [2.0 수정] 원본의 힌디 글자 'दो' 가 섞인 오탈자 → '두'
-              { id: 0, name: `🟡 두 번 곱해지는 왼쪽 날개 AB = ${ab} cm`, desc: `큰 △ABC의 짧은 직각변이자 작은 △HBA의 빗변!`, val: `AB² = ${fmtNum(ab * ab)}`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🩷 가까운 왼쪽 발 BH(${bh}) × 전체 바닥 BC(${bc})`, desc: `${bh} × ${bc} = ${fmtNum(bh * bc)} (오차 0 완벽 일치!)`, val: `${bh}×${bc}=${fmtNum(ab * ab)}`, color: '#f472b6', ok: true }
+              { id: 0, name: `🟡 제곱하는 직각변 AB = ${ab} cm`, desc: `큰 △ABC의 짧은 직각변이자 작은 △HBA의 빗변!`, val: `AB² = ${fmtNum(ab * ab)}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 조각 BH(${bh}) × 빗변 BC(${bc})`, desc: `${bh} × ${bc} = ${fmtNum(bh * bc)} (AB²과 같음!)`, val: `${bh}×${bc}=${fmtNum(ab * ab)}`, color: '#f472b6', ok: true }
             ],
             totalRes: `AB² = BH · BC ⇒ ${ab}² = ${bh} × ${bc} = ${fmtNum(ab * ab)}`,
-            rule: '왼쪽 꼭짓점 B로 모이는 물방울 공식: (왼쪽 날개)² = (짧은 발 BH) × (긴 전체 바닥 BC)',
+            rule: '꼭짓점 B에서 시작하는 두 선분으로: (직각변 AB)² = BH × BC',
             formulaHTML: `• ${tex('\\triangle ABC \\sim \\triangle HBA')} (공통각 ${tex('\\angle B')}와 직각 ${tex('90^\\circ')})<br/>• ${tex(`\\dfrac{\\overline{BC}}{\\overline{BA}} = \\dfrac{\\overline{AB}}{\\overline{HB}} \\implies \\mathbf{\\overline{AB}^2 = \\overline{BH}\\cdot\\overline{BC}} \\implies ${ab}^2 = ${bh}\\times ${bc}`)}`,
-            notes: `• <strong>[오답 방지]</strong>: ${tex('\\overline{AB}^2 = \\overline{BH}\\cdot\\overline{HC}')} 가 아닙니다! 반드시 왼쪽 끝점 $B$에서 출발하는 두 선분인 <strong>(가까운 $BH$) × (끝까지 간 $BC$)</strong>를 곱해야 합니다!`,
+            notes: `• <strong>[주의]</strong>: ${tex('\\overline{AB}^2 = \\overline{BH}\\cdot\\overline{HC}')} 가 아닙니다! 반드시 점 $B$에서 시작하는 두 선분인 <strong>$BH$ × $BC$</strong>를 곱해야 합니다!`,
             fracEq: [`BC (${bc})`, `BA (${ab})`, `AB (${ab})`, `HB (${bh})`],
-            tapeTitle: `왼쪽 제곱 공식: AB²(${fmtNum(ab * ab)}) = 가까운 발 BH(${bh}) × 전체 바닥 BC(${bc})`,
+            tapeTitle: `AB²(${fmtNum(ab * ab)}) = BH(${bh}) × BC(${bc})`,
             tapeSegs: [
-              { text: `가까운 발 BH (${bh}cm)`, weight: 0.36, color: '#fbbf24' },
+              { text: `BH (${bh}cm)`, weight: 0.36, color: '#fbbf24' },
               { text: `나머지 HC (${ch}cm) ➔ 전체 BC (${bc}cm)`, weight: 0.64, color: '#34d399' }
             ]
           };
         }
         if (sub === 'rightRight') {
           return {
-            badge: `탐구 3-C · 👉 오른쪽 날개 제곱 공식 유도 — AC² = CH · CB (오른쪽 발 × 전체 바닥!)`,
-            hint: `전체 삼각형 $\\triangle ABC$와 오른쪽 중간 삼각형 $\\triangle HAC$의 닮음비(${tex('CB : CA = AC : HC')})에서 <strong class="text-sky-300">(오른쪽 날개 AC)² = (오른쪽 발 CH) × (전체 바닥 CB)</strong> 공식이 유도됩니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 오른쪽 물방울 궤적 & 닮음 정렬!',
+            badge: `탐구 3-C · 👉 직각변 AC의 제곱 — AC² = CH · CB (수선의 발 H가 나눈 조각 CH × 빗변 CB)`,
+            hint: `전체 삼각형 $\\triangle ABC$와 오른쪽 중간 삼각형 $\\triangle HAC$의 닮음비(${tex('CB : CA = AC : HC')})에서 <strong class="text-sky-300">AC² = CH × CB (직각변의 제곱 = 그 변 쪽의 조각 CH × 빗변 전체 CB)</strong>가 성립합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 △ABC와 △HAC의 닮음 정렬!',
             dim1Name: '적용 공식', dim2Name: '빗변 BC 길이',
             val1Txt: 'AC² = CH·CB', val2Txt: `${bc} cm`,
             parts: [
-              { id: 0, name: `🔵 두 번 곱해지는 오른쪽 날개 AC = ${ac} cm`, desc: `큰 △ABC의 긴 직각변이자 중간 △HAC의 빗변!`, val: `AC² = ${fmtNum(ac * ac)}`, color: '#38bdf8', ok: true },
-              { id: 1, name: `🩷 가까운 오른쪽 발 CH(${ch}) × 전체 바닥 CB(${bc})`, desc: `${ch} × ${bc} = ${fmtNum(ch * bc)} (완벽 일치!)`, val: `${ch}×${bc}=${fmtNum(ac * ac)}`, color: '#f472b6', ok: true }
+              { id: 0, name: `🔵 제곱하는 직각변 AC = ${ac} cm`, desc: `큰 △ABC의 긴 직각변이자 중간 △HAC의 빗변!`, val: `AC² = ${fmtNum(ac * ac)}`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🩷 조각 CH(${ch}) × 빗변 CB(${bc})`, desc: `${ch} × ${bc} = ${fmtNum(ch * bc)} (AC²과 같음!)`, val: `${ch}×${bc}=${fmtNum(ac * ac)}`, color: '#f472b6', ok: true }
             ],
             totalRes: `AC² = CH · CB ⇒ ${ac}² = ${ch} × ${bc} = ${fmtNum(ac * ac)}`,
-            rule: '오른쪽 꼭짓점 C로 모이는 물방울 공식: (오른쪽 날개)² = (오른쪽 발 CH) × (전체 바닥 CB)',
+            rule: '꼭짓점 C에서 시작하는 두 선분으로: (직각변 AC)² = CH × CB',
             formulaHTML: `• ${tex('\\triangle ABC \\sim \\triangle HAC')} (공통각 ${tex('\\angle C')}와 직각 ${tex('90^\\circ')})<br/>• ${tex(`\\dfrac{\\overline{CB}}{\\overline{CA}} = \\dfrac{\\overline{AC}}{\\overline{HC}} \\implies \\mathbf{\\overline{AC}^2 = \\overline{CH}\\cdot\\overline{CB}} \\implies ${ac}^2 = ${ch}\\times ${bc}`)}`,
             notes: `• 왼쪽 공식(${tex('\\overline{AB}^2 = \\overline{BH}\\cdot\\overline{BC}')})과 오른쪽 공식(${tex('\\overline{AC}^2 = \\overline{CH}\\cdot\\overline{CB}')})을 변끼리 더하면 ${tex('\\overline{AB}^2 + \\overline{AC}^2 = (\\overline{BH}+\\overline{CH})\\cdot\\overline{BC} = \\overline{BC}^2')} 이 되어 <strong>피타고라스 정리</strong>가 증명됩니다!`,
             fracEq: [`CB (${bc})`, `CA (${ac})`, `AC (${ac})`, `HC (${ch})`],
-            tapeTitle: `오른쪽 제곱 공식: AC²(${fmtNum(ac * ac)}) = 오른쪽 발 CH(${ch}) × 전체 바닥 CB(${bc})`,
+            tapeTitle: `AC²(${fmtNum(ac * ac)}) = CH(${ch}) × CB(${bc})`,
             tapeSegs: [
               { text: `왼쪽 BH (${bh}cm)`, weight: 0.36, color: '#34d399' },
-              { text: `오른쪽 발 CH (${ch}cm)`, weight: 0.64, color: '#38bdf8' }
+              { text: `CH (${ch}cm)`, weight: 0.64, color: '#38bdf8' }
             ]
           };
         }
         if (sub === 'rightCenter') {
           return {
-            badge: `탐구 3-D · 🗼 가운데 기둥 제곱 공식 유도 — AH² = BH · CH (왼쪽 발 × 오른쪽 발!)`,
+            badge: `탐구 3-D · 🗼 수선 AH의 제곱 — AH² = BH · CH (수선의 발 H가 나눈 두 조각의 곱)`,
             hint: `수선 $AH$를 사이에 둔 <strong>왼쪽 삼각형 $\\triangle HBA$와 오른쪽 삼각형 $\\triangle HAC$의 AA 닮음</strong>에서 수선 $AH$가 한쪽에서는 긴 직각변, 다른 쪽에서는 짧은 직각변이 되어 <strong class="text-pink-300">AH² = BH · CH</strong>가 됩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 좌·우 두 직각삼각형 분리·비교!',
             dim1Name: '적용 공식', dim2Name: '빗변 BC 길이',
             val1Txt: 'AH² = BH·CH', val2Txt: `${bc} cm`,
             parts: [
-              { id: 0, name: `🩷 가운데 수선 기둥 AH = ${ah} cm`, desc: `왼쪽 △HBA의 긴 직각변 ↔ 오른쪽 △HAC의 짧은 직각변`, val: `AH² = ${fmtNum(ah * ah)}`, color: '#f472b6', ok: true },
-              { id: 1, name: `🟡 왼쪽 발 BH(${bh}) × 오른쪽 발 CH(${ch})`, desc: `${bh} × ${ch} = ${fmtNum(bh * ch)} (완벽 일치!)`, val: `${bh}×${ch}=${fmtNum(ah * ah)}`, color: '#fbbf24', ok: true }
+              { id: 0, name: `🩷 수선 AH = ${ah} cm`, desc: `왼쪽 △HBA의 긴 직각변 ↔ 오른쪽 △HAC의 짧은 직각변`, val: `AH² = ${fmtNum(ah * ah)}`, color: '#f472b6', ok: true },
+              { id: 1, name: `🟡 조각 BH(${bh}) × 조각 CH(${ch})`, desc: `${bh} × ${ch} = ${fmtNum(bh * ch)} (AH²과 같음!)`, val: `${bh}×${ch}=${fmtNum(ah * ah)}`, color: '#fbbf24', ok: true }
             ],
             totalRes: `AH² = BH · CH ⇒ ${ah}² = ${bh} × ${ch} = ${fmtNum(ah * ah)}`,
-            rule: '가운데 기둥을 두 번 내려찍고 양옆으로 벌려라! (가운데 기둥 AH)² = (왼쪽 발 BH) × (오른쪽 발 CH)',
+            rule: '수선 AH의 제곱은 수선의 발 H가 나눈 두 조각의 곱: AH² = BH × CH',
             formulaHTML: `• ${tex('\\triangle HBA \\sim \\triangle HAC')} (내각이 ${tex('90^\\circ, \\bullet, \\times')}로 같음)<br/>• ${tex(`\\dfrac{\\overline{BH}}{\\overline{AH}} = \\dfrac{\\overline{AH}}{\\overline{CH}} \\implies \\mathbf{\\overline{AH}^2 = \\overline{BH}\\cdot\\overline{CH}} \\implies ${ah}^2 = ${bh}\\times ${ch}`)}`,
-            notes: `• <strong>[초스피드 암산 비법]</strong>: 문제에서 $BH=4, CH=9$ 처럼 제곱수 두 조각이 주어지면 1초 만에 ${tex('\\overline{AH}^2 = 4\\times 9 = 36 \\implies \\overline{AH} = 6')} 으로 구할 수 있습니다!`,
+            notes: `• <strong>[계산 예]</strong>: 문제에서 $BH=4, CH=9$ 처럼 제곱수 두 조각이 주어지면 바로 ${tex('\\overline{AH}^2 = 4\\times 9 = 36 \\implies \\overline{AH} = 6')} 으로 구할 수 있습니다!`,
             fracEq: [`BH (${bh})`, `AH (${ah})`, `AH (${ah})`, `CH (${ch})`],
-            tapeTitle: `가운데 기둥 공식: AH²(${fmtNum(ah * ah)}) = 왼쪽 발 BH(${bh}) × 오른쪽 발 CH(${ch})`,
+            tapeTitle: `AH²(${fmtNum(ah * ah)}) = BH(${bh}) × CH(${ch})`,
             tapeSegs: [
-              { text: `왼쪽 발 BH (${bh}cm)`, weight: 0.36, color: '#fbbf24' },
-              { text: `오른쪽 발 CH (${ch}cm)`, weight: 0.64, color: '#38bdf8' }
+              { text: `BH (${bh}cm)`, weight: 0.36, color: '#fbbf24' },
+              { text: `CH (${ch}cm)`, weight: 0.64, color: '#38bdf8' }
             ]
           };
         }
         // rightSoArea
         const am = fmtNum(5 * scaleMul);
         return {
-          badge: `탐구 3-E · 🐂 한자 소(牛) 넓이 공식 (AB·AC = BC·AH) & 빗변의 중점(외심 M) 비교!`,
-          hint: `직각삼각형의 넓이를 두 가지 방법으로 구하면 <strong>½·AB·AC = ½·BC·AH ➔ AB·AC = BC·AH (소 牛 공식)</strong>가 됩니다! 또한 <strong>빗변의 중점(외심 M, AM=${am})</strong>과 <strong>수선의 발(H, AH=${ah})</strong>은 서로 다른 점입니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 기본 뷰로' : '🎬 소(牛) 궤적 & 외심 중선 AM 작도!',
-          dim1Name: '소(牛) 공식', dim2Name: '빗변 BC 길이',
+          badge: `탐구 3-E · 🐂 직각삼각형의 넓이 (AB·AC = BC·AH) & 빗변의 중점(외심 M) 비교!`,
+          hint: `직각삼각형의 넓이를 두 가지 방법으로 구하면 <strong>½·AB·AC = ½·BC·AH ➔ AB·AC = BC·AH</strong>가 됩니다! 또한 <strong>빗변의 중점(외심 M, AM=${am})</strong>과 <strong>수선의 발(H, AH=${ah})</strong>은 서로 다른 점입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 모습으로' : '🎬 빗변의 중점 M과 중선 AM 그리기!',
+          dim1Name: '넓이로 구한 식', dim2Name: '빗변 BC 길이',
           val1Txt: 'AB·AC = BC·AH', val2Txt: `${bc} cm`,
           parts: [
-            { id: 0, name: `🐂 소(牛) 공식: AB(${ab}) × AC(${ac}) = BC(${bc}) × AH(${ah})`, desc: `직각을 낀 두 변의 곱 = 빗변 × 수선 높이 = ${fmtNum(ab * ac)}`, val: `AH = ${ah} cm`, color: '#fbbf24', ok: true },
+            { id: 0, name: `🐂 넓이로 구한 식: AB(${ab}) × AC(${ac}) = BC(${bc}) × AH(${ah})`, desc: `직각을 낀 두 변의 곱 = 빗변 × 수선 높이 = ${fmtNum(ab * ac)}`, val: `AH = ${ah} cm`, color: '#fbbf24', ok: true },
             { id: 1, name: `🔵 빗변의 중점(외심 M)까지 거리 AM = ${am} cm`, desc: `외접원 반지름 AM = ½BC = ${am} cm (수선 AH=${ah}보다 긺!)`, val: `AM = ${am} cm`, color: '#38bdf8', ok: true },
-            { id: 2, name: `🩷 안쪽 직각삼각형 △AHM (HM = ${fmtNum(1.4 * scaleMul)} cm)`, desc: `외심 M과 수선의 발 H가 결합된 심화 단골 삼각형!`, val: `HM = ${fmtNum(1.4 * scaleMul)}`, color: '#f472b6', ok: true }
+            { id: 2, name: `🩷 안쪽 직각삼각형 △AHM (HM = ${fmtNum(1.4 * scaleMul)} cm)`, desc: `외심 M과 수선의 발 H를 함께 쓰는 삼각형!`, val: `HM = ${fmtNum(1.4 * scaleMul)}`, color: '#f472b6', ok: true }
           ],
-          totalRes: `소(牛) 공식 AH = ${ah} cm | 외심 중선 AM = ${am} cm | HM = ${fmtNum(1.4 * scaleMul)} cm`,
-          rule: '외심 M(빗변의 중점, AM = 1/2 BC)과 수선의 발 H(AH = AB·AC/BC)를 절대 혼동하지 마라!',
-          formulaHTML: `• <strong>소(牛) 공식</strong>: ${tex(`\\overline{AB}\\cdot\\overline{AC} = \\overline{BC}\\cdot\\overline{AH} \\implies \\overline{AH} = \\dfrac{${ab}\\times ${ac}}{${bc}} = \\mathbf{${ah}\\text{ cm}}`)}<br/>• <strong>외심 성질</strong>: ${tex(`\\overline{AM} = \\overline{BM} = \\overline{CM} = \\dfrac{1}{2}\\overline{BC} = \\mathbf{${am}\\text{ cm}}`)}`,
+          totalRes: `넓이로 구한 식으로 AH = ${ah} cm | 외심 중선 AM = ${am} cm | HM = ${fmtNum(1.4 * scaleMul)} cm`,
+          rule: '외심 M(빗변의 중점, AM = 1/2 BC)과 수선의 발 H(AH = AB·AC/BC)를 혼동하지 않는다!',
+          formulaHTML: `• <strong>직각삼각형의 넓이</strong>: ${tex(`\\overline{AB}\\cdot\\overline{AC} = \\overline{BC}\\cdot\\overline{AH} \\implies \\overline{AH} = \\dfrac{${ab}\\times ${ac}}{${bc}} = \\mathbf{${ah}\\text{ cm}}`)}<br/>• <strong>외심 성질</strong>: ${tex(`\\overline{AM} = \\overline{BM} = \\overline{CM} = \\dfrac{1}{2}\\overline{BC} = \\mathbf{${am}\\text{ cm}}`)}`,
           notes: `• 오직 <strong>직각이등변삼각형(${tex('\\overline{AB}=\\overline{AC}')})</strong>일 때만 수선의 발 $H$와 빗변의 중점(외심 $M$)이 일치합니다! 일반 직각삼각형에서는 언제나 ${tex('\\overline{AM} > \\overline{AH}')} 입니다.`,
           fracEq: [`BC (${bc})`, `AB (${ab})`, `AC (${ac})`, `AH (${ah})`],
           tapeTitle: `직각삼각형 넓이 2가지 표현: ½ × AB(${ab}) × AC(${ac}) = ½ × BC(${bc}) × AH(${ah})`,
@@ -969,10 +969,10 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'midpointThm') {
           const mn = fmtNum(B / 2);
           return {
-            badge: `탐구 4-A · 삼각형의 중점연결정리 — MN ∥ BC, MN = ½ BC (길이비 1:2 · 넓이비 1:3 분할!)`,
+            badge: `탐구 4-A · 삼각형의 두 변의 중점을 연결한 선분의 성질 — MN ∥ BC, MN = ½ BC (길이비 1:2 · 넓이비 1:3 분할!)`,
             hint: `두 변의 중점 $M, N$을 연결하면 SAS 닮음($1:2$)에 의해 밑변과 평행(${tex('\\overline{MN}\\parallel\\overline{BC}')})하고 길이는 절반(<strong class="text-amber-300">MN = ${mn}cm</strong>)이 됩니다! 넓이는 전체가 $2^2=4$배이므로 <strong class="text-sky-300">위 삼각형(1) : 아래 사다리꼴(3)</strong>로 나뉩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 중점 삼각형 분리 & 평행사변형 증명!',
-            dim1Name: '중점연결 닮음비', dim2Name: '밑변 BC 길이',
+            dim1Name: '중점을 연결한 선분의 닮음비', dim2Name: '밑변 BC 길이',
             val1Txt: '1 : 2 (고정)', val2Txt: `${B} cm`,
             parts: [
               { id: 0, name: `🟡 위쪽 작은 삼각형 △AMN (MN = ${mn} cm)`, desc: `전체 넓이를 4S라 할 때 위쪽 넓이 = 1S`, val: `MN=${mn}, 넓이 1S`, color: '#fbbf24', ok: true },
@@ -980,9 +980,9 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🩷 점 N에서 AB에 평행한 보조선 ND`, desc: `평행사변형 MBDN에 의해 MN = BD = DC = ½BC 증명!`, val: `MN = ½BC`, color: '#f472b6', ok: true }
             ],
             totalRes: `MN = ½BC = ${mn} cm | 넓이비 △AMN : 사다리꼴 MBCN = 1 : 3`,
-            rule: '중점연결선 2대 성질: ① 길이는 절반(1/2)  ② 위·아래 넓이비는 1 : 3 (전체는 4)!',
+            rule: '두 변의 중점을 연결한 선분의 두 가지 성질: ① 길이는 절반(1/2)  ② 위·아래 넓이비는 1 : 3 (전체는 4)!',
             formulaHTML: `• ${tex('\\overline{AM}:\\overline{AB} = \\overline{AN}:\\overline{AC} = 1:2')} 이고 ${tex('\\angle A')} 공통 ${tex('\\implies \\triangle AMN \\sim \\triangle ABC')} (SAS 닮음)<br/>• 넓이비 ${tex('\\triangle AMN : \\triangle ABC = 1^2 : 2^2 = 1 : 4 \\implies \\triangle AMN : \\square MBCN = \\mathbf{1 : 3}')}`,
-            notes: `• <strong>[중점연결정리의 역]</strong>: 한 변의 중점 $M$에서 밑변 $BC$에 평행하게 선을 그으면, 반대편 변 $AC$의 <strong>정확한 중점 $N$</strong>에 도착합니다!`,
+            notes: `• <strong>[두 변의 중점을 연결한 선분의 성질의 역]</strong>: 한 변의 중점 $M$에서 밑변 $BC$에 평행하게 선을 그으면, 반대편 변 $AC$의 <strong>정확한 중점 $N$</strong>에 도착합니다!`,
             fracEq: [`AM (1)`, `AB (2)`, `MN (${mn})`, `BC (${B})`],
             tapeTitle: `전체 넓이(4S) 분할: 위쪽 △AMN(1S, 25%) + 아래쪽 사다리꼴 MBCN(3S, 75%)`,
             tapeSegs: [
@@ -1008,7 +1008,7 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: `△DEF 둘레 = ½(전체 둘레) = ${pMid} cm | △DEF 넓이 = ¼(전체 넓이)`,
             rule: '세 변의 중점을 연결하면: 둘레는 1/2배 (길이비), 넓이는 1/4배 (제곱비)!',
             formulaHTML: `• ${tex('\\overline{EF}=\\frac{1}{2}\\overline{BC},\\; \\overline{FD}=\\frac{1}{2}\\overline{CA},\\; \\overline{DE}=\\frac{1}{2}\\overline{AB} \\implies \\triangle DEF \\sim \\triangle ABC')} (SSS 닮음, $1:2$)<br/>• 사각형 $AFDE, BDEF, CEFD$는 모두 <strong>평행사변형</strong>입니다!`,
-            notes: `• <strong>[단골 함정]</strong>: 둘레의 길이를 구할 때 넓이처럼 $\\div 4$를 하면 안 됩니다! <strong>둘레는 1차원 길이라서 $\\div 2$</strong>, <strong>넓이는 2차원이라서 $\\div 4$</strong> 입니다!`,
+            notes: `• <strong>[함정]</strong>: 둘레의 길이를 구할 때 넓이처럼 $\\div 4$를 하면 안 됩니다! <strong>둘레는 길이의 비를 따르므로 $\\div 2$</strong>, <strong>넓이는 길이의 비의 제곱이므로 $\\div 4$</strong> 입니다!`,
             fracEq: [`둘레DEF (${pMid})`, `둘레ABC (${pAll})`, `넓이DEF (1S)`, `넓이ABC (4S)`],
             tapeTitle: `전체 넓이 4등분: △DEF(¼) + △AFE(¼) + △FBD(¼) + △EDC(¼) = 모두 합동!`,
             tapeSegs: [
@@ -1023,19 +1023,19 @@ window.addEventListener('DOMContentLoaded', function () {
           const ag = fmtNum((B * 2) / 3), gd = fmtNum(B / 3);
           return {
             badge: `탐구 4-C · ⚖️ 무게중심 G의 탄생 증명 — 왜 중선은 꼭짓점으로부터 2 : 1 로 나뉠까?`,
-            hint: `두 중선 $AD, BE$의 교점 $G$가 왜 $2:1$을 만들까요? 슬라이더로 <strong class="text-pink-300">두 중점 D, E를 연결하는 보조선 DE</strong>를 그으면 중점연결정리로 ${tex('\\overline{DE}\\parallel\\overline{AB},\\; \\overline{DE}=\\frac{1}{2}\\overline{AB}')} 인 <strong>1 : 2 모래시계($\\triangle GDE \\sim \\triangle GAB$)</strong>가 나타나기 때문입니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 중점연결선 DE & 1:2 모래시계 분리!',
+            hint: `두 중선 $AD, BE$의 교점 $G$가 왜 $2:1$을 만들까요? 슬라이더로 <strong class="text-pink-300">두 중점 D, E를 연결하는 보조선 DE</strong>를 그으면 두 변의 중점을 연결한 선분의 성질에 의해 ${tex('\\overline{DE}\\parallel\\overline{AB},\\; \\overline{DE}=\\frac{1}{2}\\overline{AB}')} 이므로 <strong>1 : 2 닮음($\\triangle GDE \\sim \\triangle GAB$)</strong>이 되기 때문입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 선분 DE & 1:2 닮음 삼각형 분리!',
             dim1Name: '무게중심 내분비', dim2Name: '중선 AD 전체 길이',
             val1Txt: '2 : 1 (고정)', val2Txt: `${B} cm`,
             parts: [
-              { id: 0, name: `🩷 중점연결 보조선 DE (DE ∥ AB, DE = ½AB)`, desc: `BC의 중점 D와 AC의 중점 E를 연결한 핵심 보조선`, val: `DE : AB = 1 : 2`, color: '#f472b6', ok: true },
-              { id: 1, name: `🔵 모래시계 큰 쪽 △GAB (AG = ${ag} cm)`, desc: `꼭짓점 쪽 긴 중선 조각 AG = 전체(${B})의 2/3`, val: `AG = ${ag} cm`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🟡 모래시계 작은 쪽 △GDE (GD = ${gd} cm)`, desc: `밑변 중점 쪽 짧은 중선 조각 GD = 전체(${B})의 1/3`, val: `GD = ${gd} cm`, color: '#fbbf24', ok: true }
+              { id: 0, name: `🩷 중점을 연결한 보조선 DE (DE ∥ AB, DE = ½AB)`, desc: `BC의 중점 D와 AC의 중점 E를 연결한 핵심 보조선`, val: `DE : AB = 1 : 2`, color: '#f472b6', ok: true },
+              { id: 1, name: `🔵 큰 삼각형 △GAB (AG = ${ag} cm)`, desc: `꼭짓점 쪽 긴 중선 조각 AG = 전체(${B})의 2/3`, val: `AG = ${ag} cm`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🟡 작은 삼각형 △GDE (GD = ${gd} cm)`, desc: `밑변 중점 쪽 짧은 중선 조각 GD = 전체(${B})의 1/3`, val: `GD = ${gd} cm`, color: '#fbbf24', ok: true }
             ],
-            totalRes: `중점연결 DE : AB = 1 : 2 ⇒ 모래시계 △GDE ∽ △GAB ⇒ AG(${ag}) : GD(${gd}) = 2 : 1`,
-            rule: '무게중심 G가 2 : 1 인 이유 = 중점연결선 DE가 만드는 1 : 2 모래시계 닮음 때문!',
-            formulaHTML: `• 중점연결정리에 의해 ${tex('\\overline{DE}\\parallel\\overline{AB}')} 이고 ${tex('\\overline{DE}:\\overline{AB} = 1:2')}<br/>• 모래시계 ${tex('\\triangle GAB \\sim \\triangle GDE')} (AA 닮음) 이므로 ${tex(`\\mathbf{\\overline{AG}:\\overline{GD} = \\overline{BG}:\\overline{GE} = 2:1}`)}!`,
-            notes: `• 또한 위쪽 모래시계의 넓이비는 닮음비 $1:2$의 제곱이므로 ${tex('\\triangle GDE : \\triangle GAB = 1^2 : 2^2 = \\mathbf{1 : 4}')} 입니다!`,
+            totalRes: `DE : AB = 1 : 2 ⇒ 닮음 △GDE ∽ △GAB ⇒ AG(${ag}) : GD(${gd}) = 2 : 1`,
+            rule: '무게중심 G가 중선을 2 : 1 로 나누는 이유 = 중점을 연결한 선분 DE가 만드는 1 : 2 닮음(△GDE ∽ △GAB) 때문!',
+            formulaHTML: `• 두 변의 중점을 연결한 선분의 성질에 의해 ${tex('\\overline{DE}\\parallel\\overline{AB}')} 이고 ${tex('\\overline{DE}:\\overline{AB} = 1:2')}<br/>• 닮음 ${tex('\\triangle GAB \\sim \\triangle GDE')} (AA 닮음) 이므로 ${tex(`\\mathbf{\\overline{AG}:\\overline{GD} = \\overline{BG}:\\overline{GE} = 2:1}`)}!`,
+            notes: `• 또한 두 삼각형의 넓이비는 닮음비 $1:2$의 제곱이므로 ${tex('\\triangle GDE : \\triangle GAB = 1^2 : 2^2 = \\mathbf{1 : 4}')} 입니다!`,
             fracEq: [`AB (2)`, `DE (1)`, `AG (${ag})`, `GD (${gd})`],
             tapeTitle: `중선 AD(${B}cm) 내분: 꼭짓점 쪽 AG(${ag}cm, 2/3) : 밑변 중점 쪽 GD(${gd}cm, 1/3) = 2 : 1`,
             tapeSegs: [
@@ -1049,22 +1049,22 @@ window.addEventListener('DOMContentLoaded', function () {
           const sOne = B;
           const sTiny = fmtNum(B / 4);
           return {
-            badge: `탐구 4-D · 🍕 세 중선에 의한 넓이 6등분 & 중점연결선 위 초미니 조각(1/24 S) 해부!`,
-            hint: `세 중선 $AD, BE, CF$를 모두 그으면 전체 넓이(${sTotal})가 <strong>똑같이 6등분(한 조각 = ${sOne})</strong>됩니다! 여기에 중점연결선 $FE$를 추가하면 중심 $G$와 중선 교점 $M$ 사이의 <strong>초미니 삼각형 $\\triangle FGM$의 넓이는 전체의 $\\frac{1}{24}$</strong>이 됩니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 기본 6등분 보기' : '🎬 중점연결선 FE & 3:1:2 길이비 해부!',
+            badge: `탐구 4-D · 🍕 세 중선에 의한 넓이 6등분 & 가장 작은 삼각형의 넓이(1/24 S)`,
+            hint: `세 중선 $AD, BE, CF$를 모두 그으면 전체 넓이(${sTotal})가 <strong>똑같이 6등분(한 조각 = ${sOne})</strong>됩니다! 여기에 두 변의 중점을 연결한 선분 $FE$를 추가하면 중심 $G$와 중선 교점 $M$ 사이의 <strong>가장 작은 삼각형 $\\triangle FGM$의 넓이는 전체의 $\\frac{1}{24}$</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 6등분 보기' : '🎬 선분 FE & 중선의 길이비 3:1:2 확인!',
             dim1Name: '중선 분할비 (AG:GM:MD)', dim2Name: '1조각 넓이 (전체/6)',
             val1Txt: '3 : 1 : 2', val2Txt: `${sOne} cm² (전체 ${sTotal})`,
             parts: [
-              { id: 0, name: `🟡 기본 피자 1조각 △GBD 넓이 (= 1/6 S)`, desc: `전체 넓이(${sTotal}) ÷ 6 = ${sOne} cm² (6조각 모두 넓이 같음!)`, val: `${sOne} cm² (1/6)`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🔵 피자 2조각 합체 (△GBC 또는 사각형 GDCE = 1/3 S)`, desc: `${sOne} × 2 = ${sOne * 2} cm² (전체의 1/3)`, val: `${sOne * 2} cm² (1/3)`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🩷 [킬러] 중점연결선 FE와 중선 분할 (AM : MG : GD = 3 : 1 : 2!)`, desc: `초미니 △FGM 넓이 = (1/6 S) × (1/4) = 전체의 1/24 = ${sTiny} cm²!`, val: `${sTiny} cm² (1/24)`, color: '#f472b6', ok: true }
+              { id: 0, name: `🟡 6등분한 삼각형 하나 △GBD의 넓이 (= 1/6 S)`, desc: `전체 넓이(${sTotal}) ÷ 6 = ${sOne} cm² (6조각 모두 넓이 같음!)`, val: `${sOne} cm² (1/6)`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 삼각형 2개의 합 (△GBC 또는 사각형 GDCE = 1/3 S)`, desc: `${sOne} × 2 = ${sOne * 2} cm² (전체의 1/3)`, val: `${sOne * 2} cm² (1/3)`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 [킬러] 선분 FE와 중선의 분할 (AM : MG : GD = 3 : 1 : 2!)`, desc: `가장 작은 △FGM 넓이 = (1/6 S) × (1/4) = 전체의 1/24 = ${sTiny} cm²!`, val: `${sTiny} cm² (1/24)`, color: '#f472b6', ok: true }
             ],
-            totalRes: `전체(${sTotal}) ➔ 1조각(1/6)=${sOne} | 초미니 △FGM(1/24)=${sTiny} | AM:MG:GD = 3:1:2`,
-            rule: '초고난도 암기 코드: 중선 위에서 [꼭짓점 A ~ 중점연결선 M ~ 무게중심 G ~ 바닥 D] = 3 : 1 : 2!',
-            formulaHTML: `• 전체 중선 길이를 $6k$라 하면:<br/>&nbsp;&nbsp;① 중점연결선 $FE$는 중선을 반으로 나누므로 ${tex('\\overline{AM} = \\overline{MD} = 3k')}<br/>&nbsp;&nbsp;② 무게중심 $G$는 $2:1$로 나누므로 ${tex('\\overline{AG} = 4k,\\; \\overline{GD} = 2k')}<br/>&nbsp;&nbsp;③ 따라서 ${tex('\\overline{MG} = 4k - 3k = 1k \\implies \\mathbf{\\overline{AM} : \\overline{MG} : \\overline{GD} = 3 : 1 : 2}')}!`,
-            notes: `• 이 <strong>$3 : 1 : 2$ 비율</strong> 하나만 기억하면 내신 최고난도 무게중심 문제도 5초 만에 풀립니다!`,
+            totalRes: `전체(${sTotal}) ➔ 1조각(1/6)=${sOne} | 가장 작은 △FGM(1/24)=${sTiny} | AM:MG:GD = 3:1:2`,
+            rule: '중선 AD 위에서 AM : MG : GD = 3 : 1 : 2 (M은 선분 FE와 중선의 교점, G는 무게중심, D는 중점)!',
+            formulaHTML: `• 전체 중선 길이를 $6k$라 하면:<br/>&nbsp;&nbsp;① 선분 $FE$(두 변의 중점을 연결한 선분)는 중선 $AD$를 반으로 나누므로 ${tex('\\overline{AM} = \\overline{MD} = 3k')}<br/>&nbsp;&nbsp;② 무게중심 $G$는 $2:1$로 나누므로 ${tex('\\overline{AG} = 4k,\\; \\overline{GD} = 2k')}<br/>&nbsp;&nbsp;③ 따라서 ${tex('\\overline{MG} = 4k - 3k = 1k \\implies \\mathbf{\\overline{AM} : \\overline{MG} : \\overline{GD} = 3 : 1 : 2}')}!`,
+            notes: `• 이 <strong>$3 : 1 : 2$ 비율</strong> 하나만 기억하면 무게중심 문제를 풀 때 편리합니다!`,
             fracEq: [`AM (3k)`, `MG (1k)`, `GD (2k)`, `AG (4k)`],
-            tapeTitle: `중선 AD(6k) 황금 비율: 위쪽 AM(3k) : 가운데 MG(1k) : 아래쪽 GD(2k) = 3 : 1 : 2!`,
+            tapeTitle: `중선 AD(6k)의 길이의 비: 위쪽 AM(3k) : 가운데 MG(1k) : 아래쪽 GD(2k) = 3 : 1 : 2!`,
             tapeSegs: [
               { text: `AM (3k = 3/6)`, weight: 3 / 6, color: '#38bdf8' },
               { text: `MG (1k)`, weight: 1 / 6, color: '#f472b6' },
@@ -1076,20 +1076,20 @@ window.addEventListener('DOMContentLoaded', function () {
         const d1 = B, d2 = 10;
         const perim = d1 + d2;
         return {
-          badge: `탐구 4-E · 💎 사각형 네 변의 중점 연결 (바리뇽 정리) — 안쪽 사각형 EFGH는 무조건 평행사변형!`,
-          hint: `아무리 찌그러진 사각형이라도 네 변의 중점 $E, F, G, H$를 연결하면 <strong>대각선 $AC, BD$와 평행하고 길이가 절반</strong>인 선분들이 생겨 안쪽 사각형은 <strong>무조건 평행사변형</strong>이 되며, <strong class="text-amber-300">둘레의 길이는 두 대각선의 합(${d1}+${d2}=${perim}cm)</strong>과 같습니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 대각선 숨기기' : '🎬 두 대각선 AC, BD 보조선과 중점연결 비교!',
-          dim1Name: '안쪽 사각형 정체', dim2Name: '대각선 AC 길이',
-          val1Txt: '무조건 평행사변형', val2Txt: `${d1} cm (BD=10)`,
+          badge: `탐구 4-E · 💎 사각형 네 변의 중점을 이은 사각형 — 안쪽 사각형 EFGH는 평행사변형!`,
+          hint: `아무리 찌그러진 사각형이라도 네 변의 중점 $E, F, G, H$를 연결하면 <strong>대각선 $AC, BD$와 평행하고 길이가 절반</strong>인 선분들이 생겨 안쪽 사각형은 <strong>평행사변형</strong>이 되며, <strong class="text-amber-300">둘레의 길이는 두 대각선의 합(${d1}+${d2}=${perim}cm)</strong>과 같습니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 대각선 숨기기' : '🎬 두 대각선 AC, BD 보조선과 안쪽 사각형 비교!',
+          dim1Name: '안쪽 사각형의 모양', dim2Name: '대각선 AC 길이',
+          val1Txt: '평행사변형', val2Txt: `${d1} cm (BD=10)`,
           parts: [
-            { id: 0, name: `🟡 가로 중점연결선 EH = FG = ½ BD (5 cm)`, desc: `△ABD와 △CBD의 중점연결정리 ⇒ EH + FG = BD(10cm)!`, val: `합 = BD (10cm)`, color: '#fbbf24', ok: true },
-            { id: 1, name: `🔵 세로 중점연결선 EF = HG = ½ AC (${d1 / 2} cm)`, desc: `△ABC와 △ADC의 중점연결정리 ⇒ EF + HG = AC(${d1}cm)!`, val: `합 = AC (${d1}cm)`, color: '#38bdf8', ok: true },
+            { id: 0, name: `🟡 BD에 평행한 선분 EH = FG = ½ BD (5 cm)`, desc: `△ABD와 △CBD에서 두 변의 중점을 연결한 선분의 성질 ⇒ EH + FG = BD(10cm)!`, val: `합 = BD (10cm)`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 AC에 평행한 선분 EF = HG = ½ AC (${d1 / 2} cm)`, desc: `△ABC와 △ADC에서 두 변의 중점을 연결한 선분의 성질 ⇒ EF + HG = AC(${d1}cm)!`, val: `합 = AC (${d1}cm)`, color: '#38bdf8', ok: true },
             { id: 2, name: `🟢 평행사변형 EFGH 둘레 = AC + BD & 넓이 = ½ 전체`, desc: `둘레 = ${d1} + 10 = ${perim} cm, 넓이는 전체 사각형의 정확히 절반(½)!`, val: `둘레 ${perim} cm`, color: '#34d399', ok: true }
           ],
           totalRes: `□EFGH = 평행사변형 | 둘레 = AC(${d1}) + BD(10) = ${perim} cm | 넓이 = ½ 전체`,
-          rule: '사각형 중점 연결: ① 일반사각형➔평행사변형  ② 직사각형/등변사다리꼴➔마름모  ③ 마름모➔직사각형!',
+          rule: '사각형 네 변의 중점을 이으면: ① 일반 사각형➔평행사변형  ② 직사각형/등변사다리꼴➔마름모  ③ 마름모➔직사각형!',
           formulaHTML: `• ${tex('\\overline{EH}+\\overline{FG} = \\frac{1}{2}\\overline{BD}+\\frac{1}{2}\\overline{BD} = \\overline{BD}')}, ${tex('\\overline{EF}+\\overline{HG} = \\overline{AC}')}<br/>• 따라서 <strong>(${tex('\\square EFGH')}의 둘레) = (두 대각선의 길이의 합 ${tex('\\overline{AC}+\\overline{BD}')})</strong>!`,
-          notes: `• <strong>[시험 100% 출제 변환표]</strong>: 왜 직사각형의 중점을 이으면 <strong>마름모</strong>가 될까요? 직사각형은 두 대각선의 길이가 같아서(${tex('\\overline{AC}=\\overline{BD}')}) 중점 사각형의 네 변이 모두 같아지기 때문입니다! 반대로 마름모는 대각선이 직교(${tex('90^\\circ')})하므로 중점을 이으면 <strong>직사각형</strong>이 됩니다!`,
+          notes: `• <strong>[모양 정리]</strong>: 왜 직사각형의 중점을 이으면 <strong>마름모</strong>가 될까요? 직사각형은 두 대각선의 길이가 같아서(${tex('\\overline{AC}=\\overline{BD}')}) 안쪽 사각형의 네 변이 모두 같아지기 때문입니다! 반대로 마름모는 대각선이 수직(${tex('90^\\circ')})하므로 중점을 이으면 <strong>직사각형</strong>이 됩니다!`,
           fracEq: [`EH+FG (BD)`, `10 cm`, `EF+HG (AC)`, `${d1} cm`],
           tapeTitle: `□EFGH 둘레(${perim}cm) = 대각선 AC(${d1}cm) + 대각선 BD(10cm)`,
           tapeSegs: [
@@ -1103,7 +1103,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (m === 5) {
         if (sub === 'foldRect') {
           return {
-            badge: `탐구 5-A · 📄 직사각형 종이접기 킬러 — 직각(90°)이 바닥에 닿으면 양옆은 (•+×=90°) AA 닮음!`,
+            badge: `탐구 5-A · 📄 직사각형 종이접기 킬러 — 접은 직각(90°)이 변 BC 위에 놓이면 양옆 삼각형은 (•+×=90°) AA 닮음!`,
             hint: `직사각형의 꼭짓점 $D(90^\\circ)$를 변 $BC$ 위의 점 $F$에 접어 내리면, 일직선 $180^\\circ$에서 가운데 $90^\\circ$를 뺀 양옆 각의 합이 $\\bullet + \\times = 90^\\circ$가 되어 <strong class="text-amber-300">왼쪽 $\\triangle ABF(8:6:10)$와 오른쪽 $\\triangle FCE(4:3:5)$가 AA 닮음</strong>이 됩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 접힌 원위치로' : '🎬 양옆 두 직각삼각형 분리·정렬!',
             dim1Name: '△ABF : △FCE 닮음비', dim2Name: '직사각형 규격',
@@ -1114,9 +1114,9 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🩷 접힌 삼각형 △AFE ≡ 원래 △ADE (합동!)`, desc: `AD = AF = 10 cm, DE = FE = 8 - 3 = 5 cm`, val: `FE = DE = 5`, color: '#f472b6', ok: true }
             ],
             totalRes: `△ABF ∽ △FCE (AA 닮음, 2:1) ⇒ EC = 3 cm, DE = EF = 5 cm`,
-            rule: '종이접기 2대 무기: ① 접기 전·후 조각은 합동(AD=AF, DE=FE)  ② 바닥 양옆 삼각형은 AA 닮음!',
+            rule: '종이접기에서 이용하는 두 가지: ① 접기 전·후 조각은 합동(AD=AF, DE=FE)  ② 바닥 양옆 삼각형은 AA 닮음!',
             formulaHTML: `• 평각 $180^\\circ$에서 ${tex('\\angle AFB(\\times) + 90^\\circ + \\angle EFC(\\bullet) = 180^\\circ \\implies \\bullet + \\times = 90^\\circ')}<br/>• 따라서 ${tex('\\triangle ABF \\sim \\triangle FCE')} (AA 닮음) ${tex('\\implies \\dfrac{\\overline{AB}}{\\overline{FC}} = \\dfrac{\\overline{BF}}{\\overline{CE}} \\implies \\dfrac{8}{4} = \\dfrac{6}{\\overline{CE}} \\implies \\mathbf{\\overline{CE}=3\\text{ cm}}')}`,
-            notes: `• <strong>[헷갈림 주의]</strong>: 접힌 삼각형($\\triangle AFE$)과 바닥 삼각형($\\triangle ABF$)이 닮음인 것이 아니라, <strong>바닥 양쪽 구석에 있는 두 직각삼각형($\\triangle ABF \\sim \\triangle FCE$)</strong>끼리 닮음입니다!`,
+            notes: `• <strong>[주의]</strong>: 접힌 삼각형($\\triangle AFE$)과 바닥 삼각형($\\triangle ABF$)이 닮음인 것이 아니라, <strong>바닥 양쪽 구석에 있는 두 직각삼각형($\\triangle ABF \\sim \\triangle FCE$)</strong>끼리 닮음입니다!`,
             fracEq: [`AB (8)`, `FC (4)`, `BF (6)`, `CE (3)`],
             tapeTitle: `오른쪽 변 DC(8cm) 분할: 위쪽 접힌 변 DE(=FE=5cm) + 아래쪽 구한 변 EC(3cm) = 8cm`,
             tapeSegs: [
@@ -1127,7 +1127,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         if (sub === 'foldEqui') {
           return {
-            badge: `탐구 5-B · 🔺 [심화 킬러] 정삼각형 종이접기 — 60° 꼭짓점이 바닥에 닿으면 (•+×=120°) AA 닮음!`,
+            badge: `탐구 5-B · 🔺 [심화 킬러] 정삼각형 종이접기 — 접은 60° 꼭짓점이 변 BC 위에 놓이면 (•+×=120°) AA 닮음!`,
             hint: `한 변이 $15\\text{ cm}$인 정삼각형 $ABC$의 꼭짓점 $A(60^\\circ)$를 변 $BC$ 위의 점 $F(BF=3, FC=12)$에 접어 내리면, 양옆 삼각형 $\\triangle DBF$와 $\\triangle FCE$는 모두 한 각이 $60^\\circ$이고 나머지 두 각이 $\\bullet, \\times$로 같아 <strong>AA 닮음</strong>이 됩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 접힌 원위치로' : '🎬 양옆 60° 삼각형 분리·정렬!',
             dim1Name: '양옆 삼각형 관계', dim2Name: '정삼각형 한 변',
@@ -1141,7 +1141,7 @@ window.addEventListener('DOMContentLoaded', function () {
             totalRes: `∠B=∠C=60° & •+×=120° ⇒ △DBF ∽ △FCE (AA 닮음)`,
             rule: '직사각형 접기는 (•+×=90°) AA 닮음  |  정삼각형 접기는 (•+×=120°) AA 닮음!',
             formulaHTML: `• ${tex('\\triangle DBF')}에서 내각의 합 $180^\\circ$이므로 ${tex('60^\\circ + \\bullet + \\times = 180^\\circ \\implies \\bullet + \\times = 120^\\circ')}<br/>• 일직선 $BC$ 위에서도 ${tex('\\times + 60^\\circ + \\angle EFC = 180^\\circ \\implies \\angle EFC = \\bullet')}<br/>• 따라서 ${tex('\\mathbf{\\triangle DBF \\sim \\triangle FCE}')} (AA 닮음)!`,
-            notes: `• 대응 순서를 쓸 때 $60^\\circ$ 각인 점 $B$와 점 $C$를 가운데에 두고 <strong>$\\triangle D\\mathbf{B}F \\sim \\triangle F\\mathbf{C}E$</strong> 순서로 쓰면 대응변이 절대 안 헷갈립니다!`,
+            notes: `• 대응 순서를 쓸 때 $60^\\circ$ 각인 점 $B$와 점 $C$를 가운데에 두고 <strong>$\\triangle D\\mathbf{B}F \\sim \\triangle F\\mathbf{C}E$</strong> 순서로 쓰면 대응변을 찾기 쉽습니다!`,
             // [2.0 수정] 위와 같은 정정(BD=8, CE=9/2)
             fracEq: [`BD (8)`, `CF (12)`, `BF (3)`, `CE (9/2)`],
             tapeTitle: `밑변 BC(15cm) 분할: 왼쪽 BF(3cm) + 오른쪽 FC(12cm) = 15cm`,
@@ -1157,20 +1157,20 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: `탐구 5-C · ✖️ 사다리꼴 대각선 4분할 넓이비 (위 a² : 양옆 ab : 아래 b²)`,
             hint: `윗변:아랫변이 ${M}:${N}인 사다리꼴을 대각선으로 4등분하면, <strong>위와 아래는 닮음이라서 제곱비(${M}² : ${N}² = ${a2} : ${b2})</strong>이고, <strong>위와 옆은 높이가 같은 삼각형이라서 밑변 길이비(${M} : ${N} = ${a2} : ${ab})</strong>를 따릅니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 합쳐서 보기' : '🎬 닮음(제곱비) vs 등고(길이비) 비교!',
-            dim1Name: '윗변 : 아랫변 닮음비', dim2Name: '4조각 넓이비 공식',
+            actionTxt: state.fold > 0.5 ? '🎬 합쳐서 보기' : '🎬 닮음(제곱비) vs 높이가 같은 삼각형(길이비) 비교!',
+            dim1Name: '윗변 : 아랫변 닮음비', dim2Name: '네 삼각형의 넓이비',
             val1Txt: `${M} : ${N}`, val2Txt: `${a2} : ${ab} : ${ab} : ${b2}`,
             parts: [
               { id: 0, name: `🟡 위쪽 △OAD (a² = ${a2}S) ↔ 🔵 아래쪽 △OCB (b² = ${b2}S)`, desc: `서로 AA 닮음(${M}:${N})이므로 넓이비는 제곱비 ${a2} : ${b2}!`, val: `위:아래 = ${a2}:${b2}`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🩷 왼쪽 날개 △OAB = 오른쪽 날개 △ODC (ab = ${ab}S)`, desc: `△OAD와 꼭짓점 A를 공유(높이 같음)하므로 밑변비 OD:OB = ${M}:${N}!`, val: `양옆 = 각 ${ab}S`, color: '#f472b6', ok: true },
+              { id: 1, name: `🩷 왼쪽 △OAB = 오른쪽 △ODC (ab = ${ab}S)`, desc: `△OAD와 꼭짓점 A를 공유(높이 같음)하므로 밑변비 OD:OB = ${M}:${N}!`, val: `양옆 = 각 ${ab}S`, color: '#f472b6', ok: true },
               { id: 2, name: `🟢 사다리꼴 전체 넓이 = (a + b)² = ${tot}S`, desc: `${a2}S + ${ab}S + ${ab}S + ${b2}S = (${M}+${N})²S = ${tot}S!`, val: `전체 = ${tot}S`, color: '#34d399', ok: true }
             ],
             totalRes: `4분할 넓이비 = 위(${a2}) : 왼(${ab}) : 오른(${ab}) : 아래(${b2}) | 합계 = ${tot}`,
             rule: '닮음인 두 삼각형(위↔아래)은 제곱비(a²:b²), 꼭짓점을 공유한 옆 삼각형(위↔옆)은 길이비(a:b)!',
             formulaHTML: `• <strong>[닮음 제곱비]</strong>: ${tex(`\\triangle OAD \\sim \\triangle OCB (${M}:${N}) \\implies S_{\\text{위}}:S_{\\text{아래}} = ${M}^2:${N}^2 = \\mathbf{${a2}:${b2}}`)}<br/>• <strong>[밑변 길이비]</strong>: ${tex(`\\overline{OD}:\\overline{OB} = ${M}:${N} \\implies S_{\\text{위}}:S_{\\text{옆}} = ${M}:${N} = \\mathbf{${a2}:${ab}}`)}`,
-            notes: `• <strong>[등적변형 원리]</strong>: ${tex('\\triangle ABC = \\triangle DBC')} (밑변 $BC$ 공통, 높이 같음)에서 공통부분 ${tex('\\triangle OBC')}를 빼면 <strong>왼쪽 날개(${tex('\\triangle OAB')})와 오른쪽 날개(${tex('\\triangle ODC')})의 넓이는 언제나 똑같습니다($ab = ab$)!</strong>`,
+            notes: `• <strong>[넓이가 같은 삼각형]</strong>: ${tex('\\triangle ABC = \\triangle DBC')} (밑변 $BC$ 공통, 높이 같음)에서 공통부분 ${tex('\\triangle OBC')}를 빼면 <strong>양옆의 두 삼각형(${tex('\\triangle OAB')}와 ${tex('\\triangle ODC')})의 넓이는 언제나 똑같습니다($ab = ab$)!</strong>`,
             fracEq: [`위 (${a2}S)`, `옆 (${ab}S)`, `옆 (${ab}S)`, `아래 (${b2}S)`],
-            tapeTitle: `사다리꼴 전체 넓이(${tot}S) = 위(${a2}S) + 왼쪽날개(${ab}S) + 오른쪽날개(${ab}S) + 아래(${b2}S)`,
+            tapeTitle: `사다리꼴 전체 넓이(${tot}S) = 위(${a2}S) + 왼쪽(${ab}S) + 오른쪽(${ab}S) + 아래(${b2}S)`,
             tapeSegs: [
               { text: `위 (${a2}S)`, weight: a2 / tot, color: '#fbbf24' },
               { text: `왼 (${ab}S)`, weight: ab / tot, color: '#f472b6' },
@@ -1182,20 +1182,20 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'paraTrisect') {
           const seg = fmtNum(B / 3);
           return {
-            badge: `탐구 5-D · 🦋 평행사변형 두 변의 중점(M, N)과 대각선 3등분 정리 (BP = PQ = QD = 1:1:1!)`,
+            badge: `탐구 5-D · 🦋 평행사변형 두 변의 중점(M, N)과 대각선 3등분 (BP = PQ = QD = 1:1:1)`,
             hint: `평행사변형 꼭짓점 $A$에서 두 변의 중점 $M, N$에 선을 그으면, 대각선 $BD$와 만나는 두 점 $P, Q$는 각각 $\\triangle ABC$와 $\\triangle ACD$의 <strong>무게중심</strong>이 되어 대각선 $BD$를 정확히 <strong class="text-amber-300">1 : 1 : 1 로 3등분(각 ${seg}cm)</strong>합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 기본 뷰로' : '🎬 대각선 AC 보조선 & 1:2 모래시계 작동!',
+            actionTxt: state.fold > 0.5 ? '🎬 기본 모습으로' : '🎬 대각선 AC 보조선 & 1:2 닮음 확인!',
             dim1Name: '대각선 분할비 (BP:PQ:QD)', dim2Name: '대각선 BD 전체 길이',
             val1Txt: '1 : 1 : 1 (3등분!)', val2Txt: `${B} cm`,
             parts: [
-              { id: 0, name: `🟡 나비넥타이 모래시계 △PBM ∽ △PDA (1 : 2)`, desc: `BM = ½BC = ½AD 이므로 BP : PD = 1 : 2 ⇒ BP = ⅓BD (${seg}cm)`, val: `BP = ${seg} cm`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🔵 반대쪽 모래시계 △QDN ∽ △QBA (1 : 2)`, desc: `DN = ½CD = ½AB 이므로 QD : QB = 1 : 2 ⇒ QD = ⅓BD (${seg}cm)`, val: `QD = ${seg} cm`, color: '#38bdf8', ok: true },
+              { id: 0, name: `🟡 X자형 닮음 △PBM ∽ △PDA (1 : 2)`, desc: `BM = ½BC = ½AD 이므로 BP : PD = 1 : 2 ⇒ BP = ⅓BD (${seg}cm)`, val: `BP = ${seg} cm`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 반대쪽 X자형 닮음 △QDN ∽ △QBA (1 : 2)`, desc: `DN = ½CD = ½AB 이므로 QD : QB = 1 : 2 ⇒ QD = ⅓BD (${seg}cm)`, val: `QD = ${seg} cm`, color: '#38bdf8', ok: true },
               { id: 2, name: `🩷 가운데 조각 PQ = BD - (BP + QD) = ⅓BD!`, desc: `보조선 AC(교점 O)를 그으면 PO = OQ = ⅙BD 이므로 BP=PQ=QD!`, val: `PQ = ${seg} cm`, color: '#f472b6', ok: true }
             ],
             totalRes: `BP = PQ = QD = ⅓BD = ${seg} cm (1 : 1 : 1 완벽 3등분!)`,
-            rule: '평행사변형 중점 선분 2개는 대각선을 무조건 1 : 1 : 1 로 삼등분한다! (중심 O 기준 2:1:1:2)',
-            formulaHTML: `• <strong>모래시계 풀이</strong>: ${tex('\\triangle PBM \\sim \\triangle PDA (1:2) \\implies \\overline{BP} = \\frac{1}{3}\\overline{BD}')}, 마찬가지로 ${tex('\\overline{QD} = \\frac{1}{3}\\overline{BD}')}<br/>• <strong>무게중심 풀이</strong>: 대각선 교점 $O$를 그으면 $P, Q$는 각각 무게중심이므로 ${tex('\\overline{BP}:\\overline{PO}:\\overline{OQ}:\\overline{QD} = \\mathbf{2 : 1 : 1 : 2} \\implies 2 : 2 : 2 (1:1:1)')}!`,
-            notes: `• 대각선 교점 $O$까지 함께 물어볼 때는 <strong>$2 : 1 : 1 : 2$</strong> 비율을, 점 $P, Q$만 물어볼 때는 <strong>$1 : 1 : 1$</strong> 비율을 쓰면 3초 만에 해결됩니다!`,
+            rule: '평행사변형의 꼭짓점 A와 두 변의 중점 M, N을 잇는 선분은 대각선 BD를 1 : 1 : 1 로 삼등분한다! (교점 O 기준 2:1:1:2)',
+            formulaHTML: `• <strong>닮음으로 풀기</strong>: ${tex('\\triangle PBM \\sim \\triangle PDA (1:2) \\implies \\overline{BP} = \\frac{1}{3}\\overline{BD}')}, 마찬가지로 ${tex('\\overline{QD} = \\frac{1}{3}\\overline{BD}')}<br/>• <strong>무게중심 풀이</strong>: 대각선 교점 $O$를 그으면 $P, Q$는 각각 무게중심이므로 ${tex('\\overline{BP}:\\overline{PO}:\\overline{OQ}:\\overline{QD} = \\mathbf{2 : 1 : 1 : 2} \\implies 2 : 2 : 2 (1:1:1)')}!`,
+            notes: `• 대각선 교점 $O$까지 함께 물어볼 때는 <strong>$2 : 1 : 1 : 2$</strong> 비율을, 점 $P, Q$만 물어볼 때는 <strong>$1 : 1 : 1$</strong> 비율을 쓰면 쉽게 구할 수 있습니다!`,
             fracEq: [`BM (1)`, `AD (2)`, `BP (${seg})`, `PD (${fmtNum(seg * 2)})`],
             tapeTitle: `대각선 BD(${B}cm) 3등분: 왼쪽 BP(${seg}cm, ⅓) : 가운데 PQ(${seg}cm, ⅓) : 오른쪽 QD(${seg}cm, ⅓)`,
             tapeSegs: [
@@ -1210,18 +1210,18 @@ window.addEventListener('DOMContentLoaded', function () {
         const ab = fmtNum(6 * scaleMul), bc = fmtNum(8 * scaleMul), ac = fmtNum(10 * scaleMul);
         const ah = fmtNum(3.6 * scaleMul), hc = fmtNum(6.4 * scaleMul), bh = fmtNum(4.8 * scaleMul);
         return {
-          badge: `탐구 5-E · ▭ 직사각형 대각선에 내린 수선 (직각삼각형 소공식 3총사 연쇄 적용!)`,
-          hint: `직사각형 $ABCD$에서 대각선 $AC$에 수선 $BH$를 내리면, 위쪽 반을 가리고 보았을 때 <strong>탐구 3에서 배운 직각삼각형 수선 3총사($\\triangle ABC \\sim \\triangle AHB \\sim \\triangle BHC$)</strong>와 100% 똑같은 그림이 됩니다!`,
+          badge: `탐구 5-E · ▭ 직사각형 대각선에 내린 수선 (직각삼각형의 닮음과 넓이를 이용해 길이 구하기)`,
+          hint: `직사각형 $ABCD$에서 대각선 $AC$에 수선 $BH$를 내리면, 위쪽 반을 가리고 보았을 때 <strong>탐구 3에서 본 직각삼각형의 수선이 만드는 세 삼각형($\\triangle ABC \\sim \\triangle AHB \\sim \\triangle BHC$)</strong>와 똑같은 그림이 됩니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 직각삼각형 조각 분리·정렬!',
           dim1Name: '적용 공식', dim2Name: '대각선 AC 길이',
           val1Txt: 'AB² = AH · AC', val2Txt: `${ac} cm (${ab}×${bc})`,
           parts: [
             { id: 0, name: `🟡 왼쪽 작은 직각삼각형 △AHB (AH = ${ah} cm)`, desc: `AB² = AH · AC ⇒ ${ab}² = AH × ${ac} ⇒ AH = ${ah} cm`, val: `AH = ${ah} cm`, color: '#fbbf24', ok: true },
             { id: 1, name: `🔵 아래쪽 중간 직각삼각형 △BHC (HC = ${hc} cm)`, desc: `BC² = CH · CA ⇒ ${bc}² = HC × ${ac} ⇒ HC = ${hc} cm`, val: `HC = ${hc} cm`, color: '#38bdf8', ok: true },
-            { id: 2, name: `🩷 대각선 수선 BH (소공식 BH = ${bh} cm)`, desc: `AB · BC = AC · BH ⇒ ${ab} × ${bc} = ${ac} × BH ⇒ BH = ${bh} cm`, val: `BH = ${bh} cm`, color: '#f472b6', ok: true }
+            { id: 2, name: `🩷 대각선 수선 BH (넓이로 구한 BH = ${bh} cm)`, desc: `AB · BC = AC · BH ⇒ ${ab} × ${bc} = ${ac} × BH ⇒ BH = ${bh} cm`, val: `BH = ${bh} cm`, color: '#f472b6', ok: true }
           ],
           totalRes: `AC = ${ac} cm ⇒ AH = ${ah} cm, HC = ${hc} cm, 수선 BH = ${bh} cm`,
-          rule: '직사각형 대각선에 수선이 보이면 ➔ 반쪽 직각삼각형에서 소(牛)공식을 즉시 발동하라!',
+          rule: '직사각형 대각선에 수선이 보이면 ➔ 반쪽 직각삼각형에서 넓이로 구한 식 AB·BC = AC·BH 를 이용한다!',
           formulaHTML: `• ${tex(`\\overline{AB}^2 = \\overline{AH}\\cdot\\overline{AC} \\implies ${ab}^2 = \\overline{AH}\\times ${ac} \\implies \\mathbf{\\overline{AH}=${ah}\\text{ cm}}`)}<br/>• ${tex(`\\overline{AB}\\cdot\\overline{BC} = \\overline{AC}\\cdot\\overline{BH} \\implies ${ab}\\times ${bc} = ${ac}\\times\\overline{BH} \\implies \\mathbf{\\overline{BH}=${bh}\\text{ cm}}`)}`,
           notes: `• 반대쪽 꼭짓점 $D$에서도 대각선 $AC$에 수선 $DH'$을 내리면 합동에 의해 ${tex(`\\overline{AH} = \\overline{CH'} = ${ah}\\text{ cm}`)}가 되어 가운데 남은 선분 길이는 ${tex(`${ac} - 2\\times ${ah} = ${fmtNum((10 - 7.2) * scaleMul)}\\text{ cm}`)}가 됩니다!`,
           fracEq: [`AC (${ac})`, `AB (${ab})`, `AB (${ab})`, `AH (${ah})`],
@@ -1236,7 +1236,7 @@ window.addEventListener('DOMContentLoaded', function () {
       // ==================== [탭 6: 차원비 스캐너 & 원뿔 절단 킬러] ====================
       if (sub === 'dimConeCut') {
         return {
-          badge: `탐구 6-A · 🍦 [입체 닮음 오답 1위!] 원뿔을 높이가 1:1:1이 되도록 평행하게 자른 3조각 부피비!`,
+          badge: `탐구 6-A · 🍦 원뿔을 높이가 1:1:1이 되도록 평행하게 자른 3조각 부피비!`,
           hint: `원뿔 높이를 3등분하여 평행하게 자르면, 꼭짓점부터 <strong>전체 원뿔 3개의 닮음비가 $1 : 2 : 3$</strong>이므로 전체 부피비는 세제곱인 <strong class="text-sky-300">$1^3 : 2^3 : 3^3 = 1 : 8 : 27$</strong>이고, 잘린 <strong>각 층(원뿔대)의 부피비는 윗층을 뺀 $1 : (8-1) : (27-8) =$ <span class="text-amber-300">1 : 7 : 19</span></strong>입니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 원뿔 하나로 합치기' : '🎬 3단 조각(1 : 7 : 19) 분리 비교!',
           dim1Name: '누적 원뿔 닮음비', dim2Name: '각 층 실제 부피비',
@@ -1248,8 +1248,8 @@ window.addEventListener('DOMContentLoaded', function () {
           ],
           totalRes: `전체 원뿔 부피비 = 1 : 8 : 27 | 잘린 3조각(원뿔대) 부피비 = 1 : 7 : 19!`,
           rule: '원뿔대는 원뿔과 닮음이 아니다! 반드시 (큰 원뿔 부피 n³) - (작은 원뿔 부피 m³)로 빼서 구한다!',
-          formulaHTML: `• <strong>[물 채우기 단골 문제]</strong>: 원뿔 모양 그릇에 절반($\\frac{1}{2}$) 높이까지 물을 채우는 데 <strong>3분</strong>이 걸렸다면, 가득 채울 때까지 <strong>더 걸리는 시간</strong>은?<br/>&nbsp;&nbsp;$\\implies$ 높이비 $1:2 \\implies$ 부피비 $1^3:2^3 = 1:8 \\implies$ 남은 빈 공간은 $8-1 = \\mathbf{7\\text{배}}$ 이므로 $3\\text{분}\\times 7 = \\mathbf{21\\text{분}}$!`,
-          notes: `• <strong>[시험장 1순위 함정]</strong>: “절반 높이까지 채웠으니 남은 부분도 $1:8$이라서 8배 걸린다?” $\\implies$ <strong>거짓(❌)</strong>! 전체가 8배이므로 이미 채운 1배를 빼서 <strong>남은 부분은 7배($1 : 7$)</strong>입니다!`,
+          formulaHTML: `• <strong>[물 채우기 문제]</strong>: 원뿔 모양 그릇에 절반($\\frac{1}{2}$) 높이까지 물을 채우는 데 <strong>3분</strong>이 걸렸다면, 가득 채울 때까지 <strong>더 걸리는 시간</strong>은?<br/>&nbsp;&nbsp;$\\implies$ 높이비 $1:2 \\implies$ 부피비 $1^3:2^3 = 1:8 \\implies$ 남은 빈 공간은 $8-1 = \\mathbf{7\\text{배}}$ 이므로 $3\\text{분}\\times 7 = \\mathbf{21\\text{분}}$!`,
+          notes: `• <strong>[함정]</strong>: “절반 높이까지 채웠으니 남은 부분도 $1:8$이라서 8배 걸린다?” $\\implies$ <strong>거짓(❌)</strong>! 전체가 8배이므로 이미 채운 1배를 빼서 <strong>남은 부분은 7배($1 : 7$)</strong>입니다!`,
           fracEq: [`높이비 (1:2)`, `전체부피 (1:8)`, `채운양 (1V)`, `남은양 (7V!)`],
           tapeTitle: `3단 절단 부피 구성(총 27V): 1층 작은 원뿔(1V) + 2층 원뿔대(7V) + 3층 원뿔대(19V)`,
           tapeSegs: [
@@ -1263,14 +1263,14 @@ window.addEventListener('DOMContentLoaded', function () {
         const kMul = state.ratioIdx === 2 ? 3 : 2;
         const areaMul = kMul * kMul;
         return {
-          badge: `탐구 6-B · 🧱 2차원 평면 타일 격자 실험 — 길이비 1 : ${kMul} ➔ 넓이비는 제곱인 1 : ${areaMul}!`,
-          hint: `도형의 가로와 세로가 모두 ${kMul}배씩 커지면, 큰 도형 안에는 작은 도형 타일이 <strong class="text-amber-300">${kMul} × ${kMul} = ${areaMul}장</strong> 빈틈없이 들어갑니다! (둘레의 비는 1차원 길이라서 그대로 $1 : ${kMul}$!)`,
+          badge: `탐구 6-B · 🧱 평면 타일 격자 실험 — 길이비 1 : ${kMul} ➔ 넓이비는 제곱인 1 : ${areaMul}!`,
+          hint: `도형의 가로와 세로가 모두 ${kMul}배씩 커지면, 큰 도형 안에는 작은 도형 타일이 <strong class="text-amber-300">${kMul} × ${kMul} = ${areaMul}장</strong> 빈틈없이 들어갑니다! (둘레의 비는 길이의 비와 같아서 그대로 $1 : ${kMul}$!)`,
           actionTxt: state.fold > 0.5 ? '🎬 격자 숨기기' : `🎬 ${areaMul}조각 합동 타일 격자 분할!`,
           dim1Name: '닮음비(길이·둘레비)', dim2Name: '넓이의 비 (m² : n²)',
           val1Txt: `1 : ${kMul}`, val2Txt: `1² : ${kMul}² = 1 : ${areaMul}`,
           parts: [
-            { id: 0, name: `🔵 1차원 [변의 길이 · 높이 · 둘레의 비] = 1 : ${kMul}`, desc: `단위가 cm¹ 인 모든 길이는 닮음비 1 : ${kMul} 그대로!`, val: `1 : ${kMul}`, color: '#38bdf8', ok: true },
-            { id: 1, name: `🟡 2차원 [넓이의 비] = 1² : ${kMul}² = 1 : ${areaMul}!`, desc: `작은 타일 1장 넓이가 ${B}cm²이면 큰 도형은 ${B * areaMul}cm²!`, val: `1 : ${areaMul} (${areaMul}배)`, color: '#fbbf24', ok: true }
+            { id: 0, name: `🔵 [변의 길이 · 높이 · 둘레의 비] = 1 : ${kMul}`, desc: `모든 길이는 닮음비 1 : ${kMul} 그대로!`, val: `1 : ${kMul}`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🟡 [넓이의 비] = 1² : ${kMul}² = 1 : ${areaMul}!`, desc: `작은 타일 1장 넓이가 ${B}cm²이면 큰 도형은 ${B * areaMul}cm²!`, val: `1 : ${areaMul} (${areaMul}배)`, color: '#fbbf24', ok: true }
           ],
           totalRes: `길이·둘레비 = 1 : ${kMul} | 넓이비 = 1² : ${kMul}² = 1 : ${areaMul} (${B}cm² ➔ ${B * areaMul}cm²)`,
           rule: '둘레의 비 = 길이비(m : n) 그대로!  |  넓이·겉넓이의 비 = 제곱비(m² : n²)!',
@@ -1289,22 +1289,22 @@ window.addEventListener('DOMContentLoaded', function () {
         const areaMul = kMul * kMul;
         const volMul = kMul * kMul * kMul;
         return {
-          badge: `탐구 6-C · 🧊 3차원 입체 블록 실험 — 길이비 1 : ${kMul} ➔ 겉넓이비 1 : ${areaMul} ➔ 부피비 1 : ${volMul}!`,
+          badge: `탐구 6-C · 🧊 입체 블록 실험 — 길이비 1 : ${kMul} ➔ 겉넓이비 1 : ${areaMul} ➔ 부피비 1 : ${volMul}!`,
           hint: `모서리 길이가 ${kMul}배인 정육면체를 만들려면 가로 ${kMul}개 × 세로 ${kMul}개 × 높이 ${kMul}층 = 총 <strong class="text-pink-300">${kMul}³ = ${volMul}개의 블록</strong>이 필요합니다! 페인트 칠하는 양은 <strong>겉넓이비($1:${areaMul}$)</strong>, 물 채우는 양이나 쇠구슬 개수는 <strong>부피비($1:${volMul}$)</strong>를 따릅니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 외곽만 보기' : `🎬 ${kMul}×${kMul}×${kMul} = ${volMul}개 큐브 블록 해부!`,
-          dim1Name: '닮음비 ➔ 겉넓이비', dim2Name: '3차원 부피의 비 (m³ : n³)',
+          actionTxt: state.fold > 0.5 ? '🎬 바깥 모양만 보기' : `🎬 ${kMul}×${kMul}×${kMul} = ${volMul}개 정육면체 블록으로 나누기!`,
+          dim1Name: '닮음비 ➔ 겉넓이비', dim2Name: '부피의 비 (m³ : n³)',
           val1Txt: `1:${kMul} ➔ 1:${areaMul}`, val2Txt: `1³ : ${kMul}³ = 1 : ${volMul}`,
           parts: [
-            { id: 0, name: `🔵 1차원 [모서리 · 높이 · 둘레의 비] = 1 : ${kMul}`, desc: `선분의 길이는 1제곱 비례 (단위: cm¹)`, val: `1 : ${kMul}`, color: '#38bdf8', ok: true },
-            { id: 1, name: `🟡 2차원 [한 면 넓이 · 전체 겉넓이의 비] = 1 : ${areaMul}`, desc: `페인트·포장지 소요량은 제곱 비례 (단위: cm²)`, val: `1²:${kMul}² = 1:${areaMul}`, color: '#fbbf24', ok: true },
-            { id: 2, name: `🩷 3차원 [부피 · 들이 · 무게의 비] = 1 : ${volMul}!`, desc: `물 용량·녹여서 만드는 쇠구슬 개수는 세제곱 비례 (단위: cm³)`, val: `1³:${kMul}³ = 1:${volMul}`, color: '#f472b6', ok: true }
+            { id: 0, name: `🔵 [모서리 · 높이 · 둘레의 비] = 1 : ${kMul}`, desc: `길이는 닮음비에 비례 (단위: cm)`, val: `1 : ${kMul}`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🟡 [한 면의 넓이 · 전체 겉넓이의 비] = 1 : ${areaMul}`, desc: `페인트·포장지의 양은 제곱에 비례 (단위: cm²)`, val: `1²:${kMul}² = 1:${areaMul}`, color: '#fbbf24', ok: true },
+            { id: 2, name: `🩷 [부피 · 들이 · 무게의 비] = 1 : ${volMul}!`, desc: `물 용량·녹여서 만드는 쇠구슬 개수는 세제곱 비례 (단위: cm³)`, val: `1³:${kMul}³ = 1:${volMul}`, color: '#f472b6', ok: true }
           ],
           totalRes: `길이비 1:${kMul} ➔ 겉넓이비 1:${areaMul} ➔ 부피비 1:${volMul} (블록 ${volMul}개!)`,
           rule: '페인트·겉넓이 = 제곱비(m²:n²)  |  물 용량·쇠구슬 녹이기·무게 = 세제곱비(m³:n³)!',
           formulaHTML: `• 반지름이 $1\\text{ cm}$인 쇠구슬을 녹여서 반지름이 $${kMul}\\text{ cm}$인 큰 쇠구슬 1개를 만들려면 작은 쇠구슬이 몇 개 필요할까? $\\implies 1^3 : ${kMul}^3 = 1 : ${volMul} \\implies \\mathbf{${volMul}\\text{개}}$!`,
-          notes: `• <strong>[단위 힌트 비법]</strong>: 문제에서 단위가 $\\text{cm}$이면 1제곱, $\\text{cm}^2$이면 2제곱, $\\text{cm}^3$(또는 $\\text{mL, L, g}$)이면 3제곱을 쓰면 절대 안 헷갈립니다!`,
+          notes: `• <strong>[단위로 알아보는 방법]</strong>: 문제에서 단위가 $\\text{cm}$이면 1제곱, $\\text{cm}^2$이면 2제곱, $\\text{cm}^3$(또는 $\\text{mL, L, g}$)이면 3제곱을 쓰면 헷갈리지 않습니다!`,
           fracEq: [`길이 (1:${kMul})`, `겉넓이 (1:${areaMul})`, `부피1 (1³=1)`, `부피2 (${kMul}³=${volMul})`],
-          tapeTitle: `차원별 배율 급증: 길이(${kMul}배) ➔ 겉넓이(${kMul}²=${areaMul}배) ➔ 부피(${kMul}³=${volMul}배!)`,
+          tapeTitle: `길이·겉넓이·부피의 배율: 길이(${kMul}배) ➔ 겉넓이(${kMul}²=${areaMul}배) ➔ 부피(${kMul}³=${volMul}배!)`,
           tapeSegs: [
             { text: `길이 (${kMul})`, weight: kMul / (kMul + areaMul + volMul), color: '#38bdf8' },
             { text: `겉넓이 (${areaMul})`, weight: areaMul / (kMul + areaMul + volMul), color: '#fbbf24' },
@@ -1314,22 +1314,22 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       // alwaysSimilar
       return {
-        badge: `탐구 6-D · 🚫 [시험 100% 출제] 항상 닮음인 도형(⭕) vs 닮음이 아닌 단골 함정 반례(❌)`,
+        badge: `탐구 6-D · 🚫 항상 닮은 도형(⭕)과 닮음이 아닌 함정 반례(❌)`,
         hint: `모양이 하나로 고정된 도형(<strong>원, 정다각형, 직각이등변삼각형, 구, 정다면체</strong>)은 크기에 상관없이 <strong>항상 닮음(⭕)</strong>이지만, 가로·세로 비율이나 꼭지각이 변할 수 있는 도형(<strong>직사각형, 마름모, 이등변삼각형, 원기둥, 원뿔</strong>)은 <strong>항상 닮음이 아닙니다(❌)</strong>!`,
         actionTxt: state.fold > 0.5 ? '🎬 전체 비교 보기' : '🎬 반례 도형 겹쳐서 대각선/모선 불일치 확인!',
         dim1Name: '항상 닮음(⭕)', dim2Name: '닮음 아님 반례(❌)',
         val1Txt: '원·정다각형·구·직각이등변', val2Txt: '직사각형·마름모·원기둥·원뿔',
         parts: [
           { id: 0, name: `⭕ [항상 닮음] 두 원 · 두 부채꼴(중심각 같음) · 두 정n각형`, desc: `모든 내각이 같고 변의 비율이 1:1:...:1로 고정됨!`, val: `항상 닮음 ⭕`, color: '#34d399', ok: true },
-          { id: 1, name: `⭕ [항상 닮음] 두 직각이등변삼각형 · 두 구 · 두 정다면체`, desc: `직각이등변삼각형은 내각이 (90°,45°,45°)로 무조건 AA 닮음!`, val: `항상 닮음 ⭕`, color: '#38bdf8', ok: true },
+          { id: 1, name: `⭕ [항상 닮음] 두 직각이등변삼각형 · 두 구 · 두 정다면체`, desc: `직각이등변삼각형은 내각이 (90°,45°,45°)로 항상 AA 닮음!`, val: `항상 닮음 ⭕`, color: '#38bdf8', ok: true },
           { id: 2, name: `❌ [함정 반례] 두 직사각형 · 두 마름모 · 두 이등변삼각형 · 두 원뿔`, desc: `직사각형은 가로·세로비가 다르고, 마름모·이등변은 각도가 다를 수 있음!`, val: `닮음 아님 ❌`, color: '#f43f5e', ok: false }
         ],
         totalRes: `항상 닮음(⭕): 원·정다각형·직각이등변·구·정다면체 | 아님(❌): 이등변·직사각형·마름모·원뿔`,
         rule: '일반 이등변삼각형은 (❌)이지만, 직각이등변삼각형은 (⭕)이다!',
         formulaHTML: `• <strong>왜 두 직사각형은 닮음이 아닐까?</strong> 네 내각이 모두 $90^\\circ$로 같아도, 정사각형 모양($1\\times 1$)과 길쭉한 직사각형($4\\times 1$)은 가로·세로 대응변의 비가 달라 닮음이 아닙니다!<br/>• <strong>왜 두 마름모는 닮음이 아닐까?</strong> 네 변의 길이비가 모두 같아도 내각의 크기가 다를 수 있어 닮음이 아닙니다!`,
-        notes: `• <strong>[3초 판별 암기법]</strong>: 이름 앞에 <strong>‘정(正)’</strong> 자가 붙은 도형(정삼각형, 정사각형, 정오각형, 정육면체, 정사면체)과 <strong>원, 구, 직각이등변삼각형</strong>만 항상 닮음입니다!`,
+        notes: `• <strong>[판별 방법]</strong>: 이름 앞에 <strong>‘정(正)’</strong> 자가 붙은 도형(정삼각형, 정사각형, 정오각형, 정육면체, 정사면체)과 <strong>원, 구, 직각이등변삼각형</strong>만 항상 닮음입니다!`,
         fracEq: [`직각이등변 (⭕)`, `45°·45°·90°`, `일반이등변 (❌)`, `꼭지각 다름!`],
-        tapeTitle: `항상 닮음 판별: ‘정’다각형 · ‘정’다면체 · 원 · 구 · 직각이등변삼각형만 무조건 참(⭕)!`,
+        tapeTitle: `항상 닮음 판별: ‘정’다각형 · ‘정’다면체 · 원 · 구 · 직각이등변삼각형만 항상 참(⭕)!`,
         tapeSegs: []
       };
     }
@@ -1351,7 +1351,7 @@ window.addEventListener('DOMContentLoaded', function () {
       // 좌우 작업 영역 구분선
       line(pt(470, 70), pt(470, 435), 'rgba(148,163,184,0.25)', 1.5, [6, 6]);
       txt('원본 기하 구조 & 보조선 실험', pt(245, 76), '#a7f3d0', 12.5);
-      txt('추출·회전/반사 정렬 & 구조 분석', pt(650, 76), amber, 12.5);
+      txt('추출·회전/뒤집기 정렬 & 구조 분석', pt(650, 76), amber, 12.5);
 
       // =====================================================================
       // [모드 1 렌더링] 포개진 삼각형 · 반전 · SAS · SSA 반례
@@ -1501,7 +1501,7 @@ window.addEventListener('DOMContentLoaded', function () {
           if (state.conceptSwitch === 'all' || state.conceptSwitch === 'aux') {
             const foot = lerp(B_pt, C_pt, AB / (AB + AC)); // ∠A 의 이등분선이 BC 와 만나는 점
             line(A, foot, 'rgba(244,114,182,0.55)', 2, [6, 5], 2);
-            txt('거울 반전(Flip) 대칭축 = ∠A 의 이등분선', pt(foot.x, foot.y + 26), pink, 11.5);
+            txt('뒤집는 대칭축 = ∠A 의 이등분선', pt(foot.x, foot.y + 26), pink, 11.5);
           }
 
           const pProg = state.isSuperimposed ? 1.0 : Math.max(0.15, t);
@@ -1763,11 +1763,11 @@ window.addEventListener('DOMContentLoaded', function () {
           poly([hA, hB, hC], 'rgba(251,191,36,0.45)', 'rgba(251,191,36,0.08)', 2.4, 0);
           line(hA, hD, amber, 3.2);
           kmark(hA, hB, hD, 1, 18); kmark(hA, hD, hC, 1, 18); // [표시 보강] 이등분선이 나눈 두 각은 같음(•)
-          txt(`💖 하트 공식: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd})`, pt(645, 120), amber, 12);
-          drawSideBadge(g, hA, hB, `왼날개 ${M}`, amber, -14, 0.5);
-          drawSideBadge(g, hA, hC, `오른날개 ${N}`, blue, 14, 0.5);
-          drawSideBadge(g, hB, hD, `왼바닥 ${M}`, amber, 15, 0.5);
-          drawSideBadge(g, hD, hC, `오른바닥 ${N}`, blue, 15, 0.5);
+          txt(`💖 내각의 이등분선: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd})`, pt(645, 120), amber, 12);
+          drawSideBadge(g, hA, hB, `AB ${M}`, amber, -14, 0.5);
+          drawSideBadge(g, hA, hC, `AC ${N}`, blue, 14, 0.5);
+          drawSideBadge(g, hB, hD, `BD ${M}`, amber, 15, 0.5);
+          drawSideBadge(g, hD, hC, `CD ${N}`, blue, 15, 0.5);
         } else {
           // angleBisectEx (외각의 이등분선 나이키 공식)
           // [2.0 수정] 내각 장면과 같은 이유: A·B·C·D 를 고정해 두고 라벨만 바꿔(AB=6, AC=3, BC=12 는 삼각형이 아님) 외각 이등분선 AD 가 외각을 이등분하지 않았습니다.
@@ -1791,7 +1791,7 @@ window.addEventListener('DOMContentLoaded', function () {
           if (showAux) line(F, C_pt, pink, 3.2, [], 1);
 
           label('A', A, amber, -14, -10); label('B', B_pt, green, -12, 14);
-          label('C', C_pt, green, 0, 18); label('D(외각교점)', D, amber, 0, 18);
+          label('C', C_pt, green, 0, 18); label('D(교점)', D, amber, 0, 18);
           if (showAux) label('F', F, pink, -15, -4);
 
           // [표시 보강] 외각의 이등분선: ∠CAD = ∠DAE', 보조선 FC ∥ DA 를 그으면 동위각 ∠AFC · 엇각 ∠ACF 도 같은 각(•)
@@ -1821,7 +1821,7 @@ window.addEventListener('DOMContentLoaded', function () {
           line(nA, nD, amber, 3.0);
           // 나이키 곡선 화살표
           pathLine([pt(nB.x, nB.y + 26), pt(nD.x, nD.y + 26), pt(nC.x, nC.y + 42)], amber, 3.5);
-          txt(`👟 나이키 공식: AB(${ab}) : AC(${ac}) = 전체 BD(${bd}) : 돌아온 CD(${cd})`, pt(645, 125), amber, 11.5);
+          txt(`👟 외각의 이등분선: AB(${ab}) : AC(${ac}) = 전체 BD(${bd}) : CD(${cd})`, pt(645, 125), amber, 11.5);
         }
       }
 
@@ -1952,7 +1952,7 @@ window.addEventListener('DOMContentLoaded', function () {
           // 우측: 사각형 중점 연결 족보 요약 도표
           const rX = 520, rY = 120;
           poly([pt(rX, rY), pt(rX + 250, rY), pt(rX + 250, rY + 220), pt(rX, rY + 220)], green, 'rgba(6,17,13,0.85)', 2);
-          txt('💎 사각형 네 변의 중점 연결 족보', pt(rX + 125, rY + 28), amber, 13);
+          txt('💎 사각형 네 변의 중점을 이은 사각형', pt(rX + 125, rY + 28), amber, 13);
           txt('1. 일반 사각형 ➔ 평행사변형', pt(rX + 125, rY + 68), green, 12);
           txt('2. 직사각형 / 등변사다리꼴 ➔ 마름모!', pt(rX + 125, rY + 108), blue, 12);
           txt('3. 마름모 (대각선 90°) ➔ 직사각형!', pt(rX + 125, rY + 148), pink, 12);
@@ -2032,7 +2032,7 @@ window.addEventListener('DOMContentLoaded', function () {
             poly(rotGDE, amber, 'rgba(251,191,36,0.26)', 2.8, 2);
             kmark(rotGDE[0], rotGDE[1], rotGDE[2], 1, 15); kmark(rotGDE[1], rotGDE[0], rotGDE[2], 2, 14); kmark(rotGDE[2], rotGDE[0], rotGDE[1], 3, 14); // [표시 보강]
             kmark(refGAB[0], refGAB[1], refGAB[2], 1, 15); kmark(refGAB[1], refGAB[0], refGAB[2], 2, 14); kmark(refGAB[2], refGAB[0], refGAB[1], 3, 14);
-            txt('모래시계 DE : AB = 1 : 2 ➔ GD : GA = 1 : 2!', pt(645, 120), pink, 12);
+            txt('DE : AB = 1 : 2 ➔ GD : GA = 1 : 2!', pt(645, 120), pink, 12);
           } else {
             // centroidSix (세 중선 6등분 + 중점연결 24등분)
             const M_top = mid(F_ab, E_ac);
@@ -2063,7 +2063,7 @@ window.addEventListener('DOMContentLoaded', function () {
               line(pA, pD, white, 4);
               dot(pA, green, 5); dot(pM, pink, 5); dot(pG, amber, 6); dot(pD, blue, 5);
               txt('A (꼭짓점)', pt(580, pA.y), green, 12);
-              txt('M (중점연결선 교점)', pt(555, pM.y), pink, 12);
+              txt('M (선분 FE와 중선의 교점)', pt(555, pM.y), pink, 12);
               txt('G (무게중심 2:1)', pt(565, pG.y), amber, 12);
               txt('D (밑변 중점)', pt(575, pD.y), blue, 12);
               drawSideBadge(g, pA, pM, 'AM = 3k', blue, -45, 0.5, 2);
@@ -2296,7 +2296,7 @@ window.addEventListener('DOMContentLoaded', function () {
           drawRightAngleSquare(g, s2[0], s2[1], s2[2], 9, green);
           kmark(s1[1], s1[0], s1[2], 1, 14); kmark(s1[2], s1[0], s1[1], 2, 14); // [표시 보강] 정렬한 두 삼각형의 같은 각
           kmark(s2[1], s2[0], s2[2], 1, 14); kmark(s2[2], s2[0], s2[1], 2, 14);
-          txt('AB² = AH · AC (왼쪽 날개 제곱 공식 그대로 적용!)', pt(645, 122), amber, 12);
+          txt('AB² = AH · AC (직각변 AB의 제곱 식 그대로 적용!)', pt(645, 122), amber, 12);
         }
       }
 
@@ -2456,13 +2456,13 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ======================================================================
      2.0 셸 연결 (새로 작성한 부분)
      ====================================================================== */
-  const TABS = ['포개진 삼각형 · 반전 · SAS', '모래시계 · 평행선 · 각이등분선', '직각삼각형 수선 3총사 (소공식)', '중점연결 & 무게중심 (2:1)', '종이접기 & 사각형 닮음 킬러', '차원비 (길이·넓이·부피) & 원뿔절단'];
-  const SHORT = ['포개진 삼각형', '모래시계·평행선', '수선 3총사', '중점·무게중심', '종이접기', '차원비'];
+  const TABS = ['포개진 삼각형 · 뒤집기 · SAS', 'X자형 닮음 · 평행선 · 각의 이등분선', '직각삼각형의 수선과 닮음', '중점을 연결한 선분 & 무게중심 (2:1)', '종이접기 & 사각형 닮음 킬러', '닮은 도형의 길이·넓이·부피의 비 & 원뿔 자르기'];
+  const SHORT = ['포개진 삼각형', 'X자형·평행선', '수선과 닮음', '중점·무게중심', '종이접기', '넓이·부피의 비'];
   const LENSES = [
     ['all', '🔍 전체 구조'],
     ['angles', '📐 대응각·기호(•,×,∟)'],
-    ['sides', '📏 대응변·치수배지'],
-    ['aux', '🪄 보조선·연결브릿지']
+    ['sides', '📏 대응변·길이 표시'],
+    ['aux', '🪄 보조선·연결 선분']
   ];
   // 닮음비 칩이 그림·수치를 실제로 바꾸는 장면(원본 화면에서 장면마다 측정). 그 밖의 장면은 닮음비 칩을 숨깁니다.
   const RATIO_ON = new Set(['nestedParallel', 'nestedFlip', 'nestedRotated', 'sasShared', 'hourglassStd', 'hourglassEF', 'parallelProp', 'trapezoidMid', 'angleBisectIn', 'angleBisectEx', 'trapArea4']);
@@ -2517,7 +2517,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id, title: label, short: label, reviewTab: true, autoFit: true,
       focus: (s) => (s.view === 'left' || s.view === 'right' ? VIEW_BOX[s.view] : null),
-      notesTitle: '시험장 오답 함정 & 1초 직관 비법',
+      notesTitle: '오답 함정과 참고',
       enter: (s, lab) => {
         // 원본 setMode / setSubType: 변환을 0%로 되돌리고 꼭짓점 포개기를 끈 뒤 100%로 자동 재생
         s.fold = 0;
@@ -2537,8 +2537,8 @@ window.addEventListener('DOMContentLoaded', function () {
         ratioChips(id).forEach((i) => out.push({ group: spec.dim1Name, label: RATIO_PRESETS[i].label, apply: (st) => { st.ratio = i; }, on: (st) => Math.round(st.ratio) === i }));
         baseChips(id).forEach((v) => out.push({ group: spec.dim2Name, label: id === 'dimTile2D' ? `${v}cm²` : `${v}cm`, apply: (st) => { st.base = v; }, on: (st) => Math.round(st.base) === v || (NO15.has(id) && v === 12 && st.base > 12) }));
         const lenses = lensList(m, id);
-        if (lenses.length) LENSES.filter(([k]) => lenses.includes(k)).forEach(([k, lb]) => out.push({ group: '관찰 렌즈', label: lb, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
-        [0, 0.5, 1].forEach((v) => out.push({ group: '변환 단계', label: v === 0 ? '0% 원본 합체' : v === 1 ? '100% 분리·정렬 완료' : '50%', apply: (st) => { st.sup = false; }, set: { fold: v }, ms: 700, on: (st) => Math.abs(st.fold - v) < 0.01 }));
+        if (lenses.length) LENSES.filter(([k]) => lenses.includes(k)).forEach(([k, lb]) => out.push({ group: '강조해서 보기', label: lb, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
+        [0, 0.5, 1].forEach((v) => out.push({ group: '변환 단계', label: v === 0 ? '0% 원래 모양' : v === 1 ? '100% 분리·정렬 완료' : '50%', apply: (st) => { st.sup = false; }, set: { fold: v }, ms: 700, on: (st) => Math.abs(st.fold - v) < 0.01 }));
         return out;
       },
       actions: () => {
@@ -2616,7 +2616,7 @@ window.addEventListener('DOMContentLoaded', function () {
     id: 'g8-similarity',
     title: '닮음 경험도감',
     courseName: '중2',
-    unit: '도형의 닮음 · 보조선 · 차원비',
+    unit: '도형의 닮음 · 보조선 · 넓이와 부피의 비',
     courseColor: 'var(--m-green)',
     home: '../index.html#g8',
     legacy: '../../labs/g8/similarity-atlas.html',
@@ -2624,7 +2624,7 @@ window.addEventListener('DOMContentLoaded', function () {
     state: { lens: 'all', sup: false, view: null, viewAuto: true },
     persist: ['lens', 'sup'],
     params: {
-      fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '변환 진행 (0% → 100%)', hint: '숨은 삼각형을 분리·회전·반사해 정렬하거나 보조선을 그어 보는 과정을 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%`, onInput: (st) => { st.sup = false; } },
+      fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '변환 진행 (0% → 100%)', hint: '숨은 삼각형을 분리·회전·뒤집어 정렬하거나 보조선을 그어 보는 과정을 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%`, onInput: (st) => { st.sup = false; } },
       ratio: { value: 0, min: 0, max: 3, step: 1, color: 'sky', label: '닮음비·분할비 (m : n)' },
       base: { value: 12, min: 8, max: 15, step: 1, color: 'rose', label: '기준 길이' }
     },
