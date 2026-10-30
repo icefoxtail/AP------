@@ -420,7 +420,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d19c64599af11f6cc5cee999cc6129eb1b002420cda45a612285df68fc7fae1c",
-      "difficultyEvidenceSha": "sha256:724796f6e7231dbd8ca5e129f8cc1aa19cfea357b2223cbea204092d406ce68c"
+      "difficultyEvidenceSha": "sha256:724796f6e7231dbd8ca5e129f8cc1aa19cfea357b2223cbea204092d406ce68c",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 3cm인 구에서 1/4을 잘라 낸 입체를 그린 그림이다. 세로 반원과 가로 반원 모양의 절단면 두 개가 색칠되어 드러나 있고, 두 절단면은 서로 수직이어서 가운데 직각 표시가 있으며, 가로 반원의 반지름 3cm가 표시되어 있다.",
+      "solutionImageCaption": "구의 1/4을 잘라 낸 입체에는 반지름 3인 반원 모양의 절단면 두 개가 서로 수직으로 생긴다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 10,
@@ -464,7 +468,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:db3114a341841bbc1ae6d8c15a7c39d5c8dd6d5e7b56d885e38b2cab46665e75",
-      "difficultyEvidenceSha": "sha256:78d75363277b40a0c1b269649f1f8fe0efaca8f4796df25a4fbfde76627e0a1b"
+      "difficultyEvidenceSha": "sha256:78d75363277b40a0c1b269649f1f8fe0efaca8f4796df25a4fbfde76627e0a1b",
+      "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 밑면의 반지름 12cm, 높이 40cm인 원기둥 모양의 물통 안에 지름 12cm인 쇠구슬 5개가 아래에 2개, 그 위에 2개, 맨 위에 1개로 쌓여 있는 그림이다. 물통의 윗면 반지름 12cm와 높이 40cm가 표시되어 있다.",
+      "solutionImageCaption": "쇠구슬 5개가 물통 안에 2개, 2개, 1개씩 쌓여 있다. 구슬을 모두 꺼내면 구슬 5개의 부피만큼 물이 줄어든다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 11,
