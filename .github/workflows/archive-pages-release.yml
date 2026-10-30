@@ -307,6 +307,10 @@ jobs:
           SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event.before }}
         run: node tools/check-archive2-runtime.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive2-runtime.log"
 
+      # The builder prints the largest directories/files and the remaining headroom below the fixed 1,000,000,000-byte
+      # Pages limit, and emits a ::warning annotation (never a failure) when less than 50 MB remain. Size reductions
+      # (compact mixed verification rows, whitespace-only JSON compaction, digest-verified inputs that no page fetches)
+      # are declared in tools/archive-pages-release-manifest.json; maxBytes is never raised.
       - name: Build the explicit student Pages file set
         id: pages_build
         timeout-minutes: 10

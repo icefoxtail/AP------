@@ -7,6 +7,8 @@ const root = path.resolve(__dirname, '..');
 const files = [
   'tests/archive2-original-source-route.test.cjs',
   'tests/archive2-original-source-verification-shard.test.mjs',
+  'tests/archive2-mixed-verification-compact.test.mjs',
+  'tests/archive-pages-site-reach.test.mjs',
   'tests/archive2-compose-performance.test.cjs',
   'tests/archive2-preview-feedback.test.cjs',
   'tests/archive2-output-transport.test.cjs',

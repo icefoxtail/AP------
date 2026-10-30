@@ -56,6 +56,12 @@
   const MIXED_VERIFICATION_CONTEXT_PATH = "data/archive2-source-verification/mixed-v1/context.json";
   const MIXED_SOURCE_SHARD_PREFIX = "data/archive2-source-verification/mixed-v1/sources/";
   const MIXED_UID_BUCKET_PREFIX = "data/archive2-source-verification/mixed-v1/uid-buckets/";
+  // Index schema -> resource schema version suffix. v2 is the compact layout (see decodeMixedRows); v1 stays readable
+  // so a Worker deployed with this loader keeps working against a site that was built before the v2 layout.
+  const MIXED_INDEX_SCHEMAS = new Map([
+    ["archive2-mixed-source-verification-index-v1", "v1"],
+    ["archive2-mixed-source-verification-index-v2", "v2"],
+  ]);
   function canonicalPathsFromMaster(master = {}) {
     const parents = new Map();
     const advanced = [];
@@ -636,6 +642,69 @@
     return { projectionVersion, sourceIndex, shard };
   }
 
+  // Mixed verification resources come in two layouts that carry the same rows. Schema v1 stores every row as a
+  // self-contained object. Schema v2 stores a per-resource string dictionary, the record key lists ("shapes") and
+  // positional rows, and decodes back to exactly the v1 row objects, so every check below still runs on identical
+  // data. Strings are stored as "~<base36 dictionary index>"; a literal string that starts with "~" carries one
+  // extra "~". Source shards omit the file; UID buckets store an index into the source index. A row that does not
+  // follow the standard identity shape carries an explicit trailing object, so nothing is ever guessed. With
+  // options.only (a Set of UIDs) other rows are returned as { questionUid } stubs, which is all the loader needs
+  // from rows nobody requested.
+  function decodeMixedRows(resource, options = {}) {
+    const bad = (why) => makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed compact rows are invalid: " + why);
+    const { dict, shapes, rows } = resource || {};
+    if (!Array.isArray(dict) || !Array.isArray(shapes) || !Array.isArray(rows)) throw bad("tables");
+    if (dict.some((entry) => typeof entry !== "string")) throw bad("dictionary");
+    if (shapes.some((keys) => !Array.isArray(keys) || keys.some((key) => typeof key !== "string"))) throw bad("shapes");
+    const bucket = options.kind === "bucket", files = options.files;
+    if (bucket && !Array.isArray(files)) throw bad("file table");
+    const unstr = (value) => {
+      if (typeof value === "string") {
+        if (value.charCodeAt(0) !== 126) return value;
+        if (value.charCodeAt(1) === 126) return value.slice(1);
+        const ref = value.slice(1), index = parseInt(ref, 36);
+        if (!/^[0-9a-z]+$/.test(ref) || index.toString(36) !== ref || index >= dict.length) throw bad("reference");
+        return dict[index];
+      }
+      if (Array.isArray(value)) return value.map(unstr);
+      if (value && typeof value === "object")
+        return Object.fromEntries(Object.entries(value).map(([key, entry]) => [key, unstr(entry)]));
+      return value;
+    };
+    const width = bucket ? 8 : 7;
+    return rows.map((row) => {
+      if (!Array.isArray(row) || (row.length !== width && row.length !== width + 1)) throw bad("row");
+      let at = 0;
+      const questionUid = row[at++];
+      // Rows the caller did not ask for only need their UID for the coverage checks; skip decoding them.
+      if (options.only && typeof questionUid === "string" && !options.only.has(questionUid)) return { questionUid };
+      const sourceFile = bucket ? files[row[at++]] : options.sourceFile;
+      const sourceOrdinal = row[at++];
+      const registeredGrade = unstr(row[at++]);
+      const shape = shapes[row[at++]], values = row[at++];
+      const assignments = unstr(row[at++]), advancedAssignments = unstr(row[at++]);
+      const extra = row.length > width ? row[width] : null;
+      if (
+        typeof questionUid !== "string" || typeof sourceFile !== "string" ||
+        !Number.isInteger(sourceOrdinal) || typeof registeredGrade !== "string" ||
+        !shape || !Array.isArray(values) || values.length !== shape.length ||
+        (extra !== null && (!extra || typeof extra !== "object" || Array.isArray(extra)))
+      )
+        throw bad("row fields");
+      const identity = extra && Object.hasOwn(extra, "identity") ? extra.identity : {
+        questionUid, sourceArchiveFile: sourceFile, sourceOrdinal, status: "VERIFIED",
+      };
+      const recordIds = extra && Object.hasOwn(extra, "recordIds") ? extra.recordIds : {
+        sourceFile, sourceOrdinal, questionUid,
+      };
+      const record = {
+        ...recordIds,
+        ...Object.fromEntries(shape.map((key, index) => [key, unstr(values[index])])),
+      };
+      return { questionUid, sourceFile, sourceOrdinal, registeredGrade, identity, assignments, advancedAssignments, record };
+    });
+  }
+
   async function loadMixedVerificationRecords(
     fetcher,
     baseUrl,
@@ -724,7 +793,7 @@
     if (!mixedLookup)
       return { projectionVersion, sourceIndex, lookup: null, records: [], legacyManifest: true };
     if (
-      mixedLookup.schemaVersion !== "archive2-mixed-source-verification-index-v1" ||
+      !MIXED_INDEX_SCHEMAS.has(mixedLookup.schemaVersion) ||
       mixedLookup.resolverVersion !== RESOLVER_VERSION ||
       mixedLookup.baseProjectionVersion !== baseProjectionVersion ||
       !Array.isArray(mixedLookup.files) ||
@@ -864,26 +933,30 @@
     };
     if (context) validateContext(context);
 
-    const indexedSourceFiles = new Set(mixedFiles.keys()),
+    const resourceVersion = MIXED_INDEX_SCHEMAS.get(mixedLookup.schemaVersion),
+      sourceFileList = sourceIndex.files.map((row) => normalizeFile(row?.sourceFile)),
+      indexedSourceFiles = new Set(mixedFiles.keys()),
       requestedUidSet = new Set(validRequests.map((row) => row.questionUid)),
       resolvedByUid = new Map();
     const processResource = async (entry, resource) => {
       let rows;
       if (entry.kind === "source") {
         const file = normalizeFile(entry.sourceFile);
+        const stored = resourceVersion === "v2" ? resource?.rows : resource?.records;
         if (
-          resource?.schemaVersion !== "archive2-mixed-source-verification-v1" ||
+          resource?.schemaVersion !== "archive2-mixed-source-verification-" + resourceVersion ||
           normalizeFile(resource.sourceFile) !== file || resource.sourceFile !== file ||
-          !Array.isArray(resource.records) || resource.records.length !== Number(entry.recordCount)
+          !Array.isArray(stored) || stored.length !== Number(entry.recordCount)
         )
           throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed source shard does not match the index");
-        rows = resource.records;
+        rows = resourceVersion === "v2" ? decodeMixedRows(resource, { kind: "source", sourceFile: file, only: requestedUidSet }) : stored;
       } else {
-        const prefix = text(entry.prefix);
+        const prefix = text(entry.prefix),
+          stored = resourceVersion === "v2" ? resource?.rows : resource?.records;
         if (
-          resource?.schemaVersion !== "archive2-mixed-source-verification-uid-bucket-v1" ||
-          resource.prefix !== prefix || !Array.isArray(resource.records) ||
-          resource.records.length !== Number(entry.recordCount) ||
+          resource?.schemaVersion !== "archive2-mixed-source-verification-uid-bucket-" + resourceVersion ||
+          resource.prefix !== prefix || !Array.isArray(stored) ||
+          stored.length !== Number(entry.recordCount) ||
           (prefix === "f" ? !Object.hasOwn(resource, "context") : Object.hasOwn(resource, "context"))
         )
           throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed UID bucket does not match the index");
@@ -891,7 +964,9 @@
           context = await readInlineContext(resource.context);
           validateContext(context);
         }
-        rows = resource.records;
+        rows = resourceVersion === "v2"
+          ? decodeMixedRows(resource, { kind: "bucket", files: sourceFileList, only: requestedUidSet })
+          : stored;
       }
       const seenInResource = new Set();
       for (const row of rows) {
@@ -1520,6 +1595,7 @@
     loadInputBundle,
     loadSourceVerificationShard,
     loadMixedVerificationRecords,
+    decodeMixedRows,
     decodeCatalog,
     resolveSubjectProjection,
     resolveCatalog,
