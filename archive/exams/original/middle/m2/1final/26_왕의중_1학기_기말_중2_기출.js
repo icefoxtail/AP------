@@ -796,7 +796,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 시간(분), 세로축을 물의 양(L)으로 하여 A물통 y=18-x와 B물통 y=30-3x의 그래프를 그렸다. 처음 양 (0,18), (0,30)과 4분 후 (4,14), (4,18), 7분 후 (7,11), (7,9)를 점으로 표시했다.",
+    "solutionImageCaption": "마개를 연 지 x분 후 A물통은 y=18-x, B물통은 y=30-3x(L)가 남는다. 4분 후에는 A 14 L, B 18 L이고, 7분 후에는 A 11 L, B 9 L이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

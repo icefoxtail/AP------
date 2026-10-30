@@ -702,7 +702,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 x+y-4=0, 2x-3y+2=0이 점 (2,2)에서 만나고 x축과 (-1,0), (4,0)에서 만난다. 이 세 점을 꼭짓점으로 하는 삼각형을 색칠하고 높이 2를 점선으로 나타냈다.",
+    "solutionImageCaption": "두 직선과 x축으로 둘러싸인 삼각형의 꼭짓점 (-1,0), (4,0), (2,2)와 높이 2를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -730,7 +734,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=ax-6과 x축, y축으로 둘러싸인 직각삼각형을 색칠하고 넓이 18, 밑변 -6/a, 높이 6을 표시한 그림이다. 위치는 개형이다.",
+    "solutionImageCaption": "직선 y=ax-6(a<0)과 두 축으로 둘러싸인 직각삼각형의 밑변 -6/a, 높이 6, 넓이 18을 나타낸 그림이다(위치는 개형).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -786,7 +794,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평선 y=-8과 원점을 지나는 직선 y=-8x를 한 좌표평면에 그린 그림으로, 두 직선 모두 제1사분면을 지나지 않는다.",
+    "solutionImageCaption": "a=-1일 때의 수평선 y=-8과 a=7일 때의 직선 y=-8x는 모두 제1사분면을 지나지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -817,6 +829,10 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 직선 x-2=0, 2x+3=0, y+3=0, -3y+6=0이 둘러싸는 직사각형을 색칠하고 가로 7/2, 세로 5를 표시한 그림이다.",
+    "solutionImageCaption": "네 직선으로 둘러싸인 직사각형의 가로 7/2와 세로 5를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   }
 ];

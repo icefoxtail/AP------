@@ -971,7 +971,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 일차함수 y=-3/2x+6의 그래프가 y축 위의 점 (0,6)과 x축 위의 점 (4,0)을 지나고, 점선으로 x 방향 2와 y 방향 3의 변화량이 표시되어 있다. 기울기가 다른 직선 y=-x+6도 점 (0,6)을 지난다.",
+    "solutionImageCaption": "일차함수 y=-3/2x+6의 그래프와 두 절편, x가 2만큼 변할 때 y의 변화량, 비교용 직선 y=-x+6을 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -1248,7 +1252,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 y=x-6과 y=-1/2x+3이 점 (6,0)에서 만나고, 두 직선과 y축으로 둘러싸인 삼각형이 색칠되어 있다. y축 위의 꼭짓점은 (0,3)과 (0,-6)이며, y축 위의 밑변 길이 9와 교점에서 y축까지의 높이 6이 표시되어 있다.",
+    "solutionImageCaption": "두 직선 y=x-6, y=-1/2x+3과 y축으로 둘러싸인 삼각형을 색칠하고 밑변과 높이를 나타낸 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
