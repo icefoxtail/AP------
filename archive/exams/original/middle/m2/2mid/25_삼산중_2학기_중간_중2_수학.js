@@ -321,7 +321,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 ∠B=68°, ∠ACD=42°가 표시되고, AD∥BC의 엇각 ∠ACB와 ∠CAD가 70°로 같으며, 반직선 AE가 ∠CAD를 이등분하고 B, C, E가 한 직선 위에서 ∠ACE=110°가 표시된다.",
+    "solutionImageCaption": "AD∥BC의 엇각 70°와 AE의 이등분, ∠ACE=110°를 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
