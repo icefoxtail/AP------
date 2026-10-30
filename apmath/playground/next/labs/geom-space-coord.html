@@ -237,6 +237,14 @@ window.addEventListener('DOMContentLoaded', function () {
     const O0 = { x: 0, y: 0, z: 0 };
     BRD.path([at(uA, O0), at(uA, uB), at(O0, uB)], { color, width: 1.8 });
   }
+  /* [표시 보강] 3D 각의 호 + 각도 값: 실제 공간각을 따라 그리고(SP.arc), 값은 호 바깥 각의 안쪽 방향에 씁니다. */
+  function draw3DAngleArc(originPt, ptA, ptB, radius = 0.8, color = '#fde047', label = '') {
+    SP.arc(w(originPt), w(ptA), w(ptB), radius, { color, label });
+  }
+  /* [표시 보강] 같은 길이 눈금(3D 선분 p–q의 가운데에 같은 개수의 짧은 선) */
+  function draw3DTicks(p, q, count = 1, color = '#fde047') {
+    SP.ticks ? SP.ticks(w(p), w(q), { count, color }) : BRD.ticks(SP.P(w(p)), SP.P(w(q)), { count, color });
+  }
   /* 구: 대원 3개(점선) + 시선에 수직인 외곽 원(직교 투영에서는 반지름 R인 원) */
   function draw3DSphereWireframe(center, R, color = 'rgba(56, 189, 248, 0.35)') {
     const N = 44;
@@ -315,6 +323,9 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DLine(B, B0, 'rgba(244, 114, 182, 0.7)', 2.2, true);
         draw3DLine(A0, B0, 'rgba(255, 255, 255, 0.45)', 2.0, true);
 
+        // [표시 보강] 수선의 발: AA₀ ⊥ xy평면, BB₀ ⊥ xy평면 — 평면 위 선분 A₀B₀와 이루는 직각을 표시
+        draw3DRightAngle(A0, A, B0, 0.3, '#38bdf8');
+        draw3DRightAngle(B0, B, A0, 0.3, '#f472b6');
         draw3DPoint(A0, 4.5, '#38bdf8', 'A₀(1,1,0)', { x: -65, y: 16 });
         draw3DPoint(B0, 4.5, '#f472b6', 'B₀(3,4,0)', { x: 10, y: 16 });
       });
@@ -323,6 +334,9 @@ window.addEventListener('DOMContentLoaded', function () {
       if (state.steps[3]) inPart(2,()=>{
         draw3DLine(B0, Bp, 'rgba(244, 114, 182, 0.6)', 2.2, true);
         draw3DLine(P, Bp, '#f472b6', 2.4, true);
+        // [표시 보강] 대칭: BB₀ = B₀B′ (같은 길이 눈금)과 B₀에서의 직각(BB′ ⊥ xy평면)
+        draw3DTicks(B, B0, 2, '#fde047');
+        draw3DTicks(B0, Bp, 2, '#fde047');
         draw3DLine(A, Bp, '#fbbf24', 3.4, false, true); // 일직선 최단 경로 AB'
         draw3DPoint(Bp, 6.5, '#f43f5e', "대칭점 B'(3, 4, -4)", { x: 12, y: 14 });
 
@@ -515,6 +529,8 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DLine(P, T, '#fbbf24', 3.6, false, true); // 접선 l = 4
         draw3DLine(C, P, '#38bdf8', 2.8);              // 중심거리 d = 5
         draw3DRightAngle(T, C, P, 0.36, '#fbbf24');
+        // [표시 보강] 접점 원 반지름 공식 R·l/d 에 쓰이는 ∠TCP(cos = R/d = 3/5)를 C에서 호와 값으로 표시
+        draw3DAngleArc(C, T, P, 0.9, '#fde047', `${(Math.acos(3 / 5) * R2D).toFixed(1)}°`);
 
         draw3DPoint(T, 6.5, '#fbbf24', '접점 T (∠CTP=90°, PT=4)', { x: -65, y: -14 });
 
