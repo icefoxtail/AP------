@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    미적분Ⅰ · 삼차함수 비율관계 (AP Math Lab 2.0 이식본)
@@ -161,7 +161,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const examData = {
       1: {
         badge: "장면 1 · 삼차함수 그래프의 대칭의 중심과 극점·교점 사이의 간격의 비 (1 : 1 : 1, 1 : √3)",
-        hint: "초록 점 <span class='text-emerald-300 font-bold'>극소 B</span>나 보라색 <span class='text-purple-300 font-bold'>수평선 y=k</span>를 끌어 보세요! 상단 개형 버튼으로 극값이 없어지는 경우도 실험할 수 있습니다.",
+        hint: "초록 점 <span class='text-emerald-300 font-bold'>극소 B</span>나 보라색 <span class='text-purple-300 font-bold'>수평선 y=k</span>를 끌어 보세요! '그래프의 개형' 버튼으로 극값이 없어지는 경우도 실험할 수 있습니다.",
         tag: "삼차함수의 극점·접선과 그래프의 교점",
         targetTime: "목표 시간: 5초",
         question: () => `삼차함수 ${tex('f(x) = x^3 - 3x^2 + 2')} 의 극대점을 ${tex('A')}, 극소점을 ${tex('B')}라 하자. 점 ${tex('A')}에서의 접선이 곡선과 다시 만나는 점을 ${tex('C')}, 점 ${tex('B')}에서의 접선이 곡선과 다시 만나는 점을 ${tex('D')}라 할 때, 두 점 ${tex('D, C')}의 ${tex('x')}좌표와 방정식 ${tex('f(x)=0')}의 세 실근을 구하시오.`,
@@ -177,7 +177,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 점 ${tex('C')}를 구하기 위해 방정식 ${tex('x^3 - 3x^2 + 2 = 2')} 연립: ${tex('x^2(x - 3) = 0 \\implies x_C = 3')}<br/>
 ③ 점 ${tex('D')}를 구하기 위해 ${tex('x^3 - 3x^2 + 4 = (x + 1)(x - 2)^2 = 0 \\implies x_D = -1')}<br/>
 ④ ${tex('f(x)=0')}의 실근을 구하기 위해 ${tex('x=1')} 대입 조립제법 후 근의 공식 적용:<br/>
-&nbsp;&nbsp;${tex('(x-1)(x^2 - 2x - 2) = 0 \\implies x = 1, \\; 1 \\pm \\sqrt{3}')}...`,
+&nbsp;&nbsp;${tex('(x-1)(x^2 - 2x - 2) = 0 \\implies x = 1, \\; 1 \\pm \\sqrt{3}')} 입니다.`,
           warning: "⚠️ 접선과 연립하고 조립제법과 근의 공식을 매번 쓰면 계산이 길어져 실수하기 쉽습니다. 아래 빠른 풀이도 함께 보세요."
         }),
         shortcut: () => ({
@@ -206,7 +206,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 점 ${tex('T(0, 5)')}에서의 접선의 방정식 작성: ${tex('y = -3x + 5')}<br/>
 ③ 원래 삼차함수와 연립하여 이항:<br/>
 &nbsp;&nbsp;${tex('x^3 - 3x^2 - 3x + 5 = -3x + 5 \\implies x^3 - 3x^2 = 0')}<br/>
-④ 인수분해 ${tex('x^2(x - 3) = 0')} 에서 중근 ${tex('x = 0')} 제외한 나머지 실근 ${tex('q = 3')} 계산...`,
+④ 인수분해 ${tex('x^2(x - 3) = 0')} 에서 중근 ${tex('x = 0')} 을 제외한 나머지 실근 ${tex('q = 3')} 을 얻습니다.`,
           warning: "⚠️ 접점이 문자로 주어지거나 식이 복잡하면 접선의 방정식을 세워 연립하는 계산이 매우 길어집니다."
         }),
         shortcut: () => ({
@@ -247,22 +247,22 @@ window.addEventListener('DOMContentLoaded', function () {
 
       4: {
         badge: "장면 4 · 함수 f(x)와 도함수 f′(x)의 그래프를 위아래로 놓고 보기, 극댓값과 극솟값의 차",
-        hint: "위쪽 <span class='text-amber-300 font-bold'>함수 f(x)</span>와 아래쪽 <span class='text-sky-300 font-bold'>도함수 f′(x)</span>의 그래프가 x좌표를 맞추어 놓여 있습니다! 도함수와 x축 사이의 넓이가 곧 <span class='text-pink-300 font-bold'>극댓값과 극솟값의 차 Δy</span>가 됨을 확인하세요.",
+        hint: "<span class='text-amber-300 font-bold'>함수 f(x)</span>의 그래프와 <span class='text-sky-300 font-bold'>도함수 f′(x)</span>의 그래프가 같은 x좌표에 맞추어 놓여 있습니다! 도함수와 x축 사이의 넓이가 곧 <span class='text-pink-300 font-bold'>극댓값과 극솟값의 차 Δy</span>가 됨을 확인하세요.",
         tag: "함수와 도함수의 그래프의 관계",
         targetTime: "목표 시간: 5초",
         question: () => `삼차함수 ${tex('f(x) = x^3 - 3x^2 + 2')} 의 도함수 ${tex("y = f'(x)")}의 그래프가 ${tex('x')}축과 만나는 두 점을 ${tex('\\alpha, \\beta')}라 하자. 도함수 ${tex("y = f'(x)")}와 ${tex('x')}축으로 둘러싸인 부분의 넓이 ${tex('S_d')}와 함수 ${tex('f(x)')}의 극댓값과 극솟값의 차를 비교하시오.`,
         answerBadge: () => `${tex('S_d = f(0) - f(2) = 4')} (완벽 일치)`,
         snap: { a: 1.0, m: 1.0, ym: 0.0, delta: 1.0, t: 1.4, kLine: 0.0, px: 2.0, py: 2.0, dualView: true },
         steps: [
-          "1단계 · 위쪽 f(x)의 극대·극소·대칭의 중심과, 아래쪽 f′(x)의 x절편·꼭짓점을 같은 x좌표에서 세로선으로 잇습니다.",
-          "2단계 · 아래쪽 f′(x)와 x축 사이의 넓이 S_d = ∫|f′(x)|dx 를 색칠하고, 위쪽에 극값의 차 Δy를 막대로 표시합니다.",
+          "1단계 · f(x)의 극대·극소·대칭의 중심과 f′(x)의 x절편·꼭짓점을 같은 x좌표에서 세로선으로 잇습니다.",
+          "2단계 · f′(x)와 x축 사이의 넓이 S_d = ∫|f′(x)|dx 를 색칠하고, f(x)의 그래프에 극값의 차 Δy를 막대로 표시합니다.",
           "3단계 · 움직이는 점 P(t, f(t))에서의 접선의 기울기가 도함수의 값 f′(t)와 같음을 확인합니다."
         ],
         textbook: () => ({
           steps: `① ${tex("f'(x) = 3x^2 - 6x = 3x(x - 2)")} 이므로 ${tex('x')}절편은 ${tex('\\alpha = 0, \\; \\beta = 2')}<br/>
 ② 도함수와 ${tex('x')}축 사이의 정적분 계산:<br/>
 &nbsp;&nbsp;${tex("S_d = \\displaystyle\\int_{0}^{2} (-3x^2 + 6x)\\,dx = \\left[ -x^3 + 3x^2 \\right]_{0}^{2} = -8 + 12 = 4")}<br/>
-③ 함수 ${tex('f(x)')}의 극댓값 ${tex('f(0) = 2')}, 극솟값 ${tex('f(2) = -2')}를 따로 구해 빼면 ${tex('2 - (-2) = 4')}...`,
+③ 함수 ${tex('f(x)')}의 극댓값 ${tex('f(0) = 2')}, 극솟값 ${tex('f(2) = -2')}를 따로 구해 빼면 ${tex('2 - (-2) = 4')} 입니다.`,
           warning: "⚠️ 도함수의 정적분과 f(x)의 극값의 차를 따로따로 계산하면 두 번 계산해야 해서 미적분Ⅰ 킬러 문제를 제한 시간 안에 풀기 어렵습니다. 두 값이 같다는 관계를 이용하세요."
         }),
         shortcut: () => ({
@@ -276,7 +276,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       5: {
         badge: "장면 5 · 곡선 밖의 점 P(x₀, y₀)에서 그은 접선의 개수 (1개, 2개, 3개)",
-        hint: "그림 위의 <span class='text-amber-300 font-bold'>노란 점 P(x₀, y₀)</span>를 아무 영역으로나 끌어 보세요! 점 P에서 곡선에 그을 수 있는 <span class='text-pink-300 font-bold'>접선들(1개~3개)</span>이 바로 그려집니다!",
+        hint: "그림의 <span class='text-amber-300 font-bold'>노란 점 P(x₀, y₀)</span>를 아무 영역으로나 끌어 보세요! 점 P에서 곡선에 그을 수 있는 <span class='text-pink-300 font-bold'>접선들(1개~3개)</span>이 바로 그려집니다!",
         tag: "수능·평가원 합답형(ㄱ,ㄴ,ㄷ) & 22번 킬러 주제",
         targetTime: "목표 시간: 5초",
         question: () => `좌표평면 위의 점 ${tex('P(2, 2)')}에서 삼차함수 ${tex('f(x) = x^3 - 3x^2 + 2')}의 그래프에 그을 수 있는 서로 다른 접선의 개수를 구하시오.`,
@@ -539,7 +539,7 @@ window.addEventListener('DOMContentLoaded', function () {
     c.lineTo(r.x + r.w, r.y + 0.5);
     c.stroke();
     c.restore();
-    b.stext(r.x + 14, r.y + 20, "도함수 y = f′(x) (위 그래프와 x좌표를 맞춤)", { color: 'sky', size: 12.5, align: 'left', weight: 800 });
+    b.stext(r.x + 14, r.y + 20, "도함수 y = f′(x) (f(x)의 그래프와 x좌표를 맞춤)", { color: 'sky', size: 12.5, align: 'left', weight: 800 });
     // 위·아래를 잇는 수직 동기화선 (원본 renderVerticalSyncLines)
     b.use('main');
     const r1 = b.paneRect('main');
@@ -768,7 +768,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneOf(m, def) {
     return {
-      guide: examData[m].hint.replace('상단 개형 버튼으로', '조작 패널의 개형 버튼(휴대폰에서는 그림 아래)으로'),
+      guide: examData[m].hint,
       actions: actionsCommon(),
       presets: presetsCommon,
       steps: examData[m].steps,

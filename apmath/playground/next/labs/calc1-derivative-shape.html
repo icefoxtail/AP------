@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    미적분Ⅰ · 도함수 ↔ 원함수 개형 추론 (AP Math Lab 2.0 이식본)
@@ -122,7 +122,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const examData = {
       1: {
         badge: "장면 1 · 이차 도함수 f′(x)의 근(중근이 아닌 근, 중근)과 삼차함수 f(x)의 개형",
-        hint: "좌측 상단 개형 버튼에서 <span class='text-amber-300 font-bold'>① 중근이 아닌 근</span>과 <span class='text-pink-300 font-bold'>② 중근</span>을 비교해 보세요! 도함수가 0이어도 부호가 바뀌지 않으면 극값이 아닙니다.",
+        hint: "탐구 탭의 개형 버튼에서 <span class='text-amber-300 font-bold'>① 중근이 아닌 두 근</span>과 <span class='text-pink-300 font-bold'>② 중근</span>을 비교해 보세요! 도함수가 0이어도 부호가 바뀌지 않으면 극값이 아닙니다.",
         tag: "도함수의 근과 함수의 극값",
         targetTime: "목표 시간: 3초",
         question: () => `삼차함수 ${tex('f(x)')}의 도함수 ${tex("y = f'(x)")}가 ${tex("f'(x) = 3x(x - 2)")} 일 때와 ${tex("f'(x) = 3(x - 1)^2")} 일 때, 함수 ${tex('f(x)')}가 극값을 갖는지 여부를 판별하고 극댓값과 극솟값의 차를 구하시오.`,
@@ -136,7 +136,7 @@ window.addEventListener('DOMContentLoaded', function () {
         textbook: () => ({
           steps: `① ${tex("f'(x) = 3x(x - 2) = 0")} 에서 ${tex('x = 0, 2')} 구하기<br/>
 ② 증감표를 그리고 각 구간의 ${tex('x')}값을 대입해 ${tex("f'(x)")} 의 부호 ${tex('+, -, +')} 기입<br/>
-③ 부정적분 ${tex('f(x) = x^3 - 3x^2 + C')} 를 구한 뒤 ${tex('f(0) - f(2) = 4')} 계산...`,
+③ 부정적분 ${tex('f(x) = x^3 - 3x^2 + C')} 를 구한 뒤 ${tex('f(0) - f(2) = 4')} 를 계산합니다.`,
           warning: "⚠️ 매번 증감표를 손으로 그리면 시간이 오래 걸립니다. 도함수의 그래프에서 부호(+, −)를 읽어 곧바로 f(x)의 증가·감소를 파악하면 빠릅니다."
         }),
         shortcut: () => ({
@@ -149,7 +149,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       2: {
         badge: "장면 2 · 삼차 도함수 f′(x)의 근의 위치와 사차함수 f(x)의 개형",
-        hint: "아래쪽 삼차 도함수의 가운데 근 <span class='text-pink-300 font-bold'>γ</span>를 끌어서 왼쪽 근 <span class='text-amber-300 font-bold'>α=−1</span>에 포개 보세요! 중근이 되는 순간 사차함수의 <span class='text-purple-300 font-bold'>극대가 사라집니다</span>!",
+        hint: "삼차 도함수 f′(x)의 그래프에서 가운데 근 <span class='text-pink-300 font-bold'>γ</span>를 끌어서 왼쪽 근 <span class='text-amber-300 font-bold'>α=−1</span>에 포개 보세요! 중근이 되는 순간 사차함수의 <span class='text-purple-300 font-bold'>극대가 사라집니다</span>!",
         tag: "사차함수가 극댓값을 갖지 않을 조건",
         targetTime: "목표 시간: 5초",
         question: () => `사차함수 ${tex('f(x)')}의 도함수 ${tex("f'(x) = a(x+1)(x-\\gamma)(x-3) \\; (a>0)")} 에 대하여, 함수 ${tex('f(x)')}가 극댓값을 갖지 않도록 하는 상수 ${tex('\\gamma \\; (-1 \\le \\gamma \\le 3)')}의 값과 그때의 극소점의 ${tex('x')}좌표를 구하시오.`,
@@ -163,7 +163,7 @@ window.addEventListener('DOMContentLoaded', function () {
         textbook: () => ({
           steps: `① 사차함수(${tex('a > 0')})가 극댓값을 가지려면 도함수 ${tex("f'(x) = 0")} 이 서로 다른 세 실근을 가져야 함<br/>
 ② 따라서 극댓값을 갖지 않으려면 도함수 ${tex("f'(x) = 0")} 이 중근 또는 삼중근, 허근을 가져야 함<br/>
-③ ${tex('\\gamma = -1')} 일 때와 ${tex('\\gamma = 3')} 일 때 각각 증감표를 작성하여 부호 변화 조사...`,
+③ ${tex('\\gamma = -1')} 일 때와 ${tex('\\gamma = 3')} 일 때 각각 증감표를 작성하여 부호 변화를 조사합니다.`,
           warning: "⚠️ 사차함수가 극댓값을 갖지 않으려면 도함수가 중근(또는 허근)을 가져서 부호가 (+)에서 (−)로 바뀌는 곳이 없어야 합니다."
         }),
         shortcut: () => ({
@@ -176,7 +176,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       3: {
         badge: "장면 3 · 극댓값과 극솟값의 곱 f(α)·f(β) 과 방정식의 실근의 개수",
-        hint: "우측 슬라이더로 <span class='text-sky-300 font-bold'>적분상수 C(그래프를 위아래로 평행이동)</span>를 조절해 보세요! 극댓값과 극솟값의 부호가 서로 다를 때(<span class='text-amber-300 font-bold'>f(α)·f(β) &lt; 0</span>)만 실근이 3개가 됩니다.",
+        hint: "조절 막대로 <span class='text-sky-300 font-bold'>적분상수 C(그래프를 위아래로 평행이동)</span>를 조절해 보세요! 극댓값과 극솟값의 부호가 서로 다를 때(<span class='text-amber-300 font-bold'>f(α)·f(β) &lt; 0</span>)만 실근이 3개가 됩니다.",
         tag: "삼차방정식의 실근의 개수와 극값",
         targetTime: "목표 시간: 5초",
         question: () => `삼차방정식 ${tex('x^3 - 3x^2 + C = 0')} 이 서로 다른 세 실근을 갖도록 하는 상수 ${tex('C')}의 값의 범위와, 중근과 다른 한 실근(총 2개의 실근)을 갖도록 하는 ${tex('C')}의 값을 구하시오.`,
@@ -194,7 +194,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 극댓값 ${tex('f(0) = C')}, 극솟값 ${tex('f(2) = -4 + C')} 계산<br/>
 ③ 서로 다른 세 실근을 가질 조건 ${tex('f(0)f(2) < 0')} 부등식 풀이:<br/>
 &nbsp;&nbsp;${tex('C(C - 4) < 0 \\implies 0 < C < 4')}<br/>
-④ 중근을 가질 조건 ${tex('f(0)f(2) = 0 \\implies C = 0')} 또는 ${tex('C = 4')}...`,
+④ 중근을 가질 조건 ${tex('f(0)f(2) = 0 \\implies C = 0')} 또는 ${tex('C = 4')} 입니다.`,
           warning: "⚠️ 상수 C를 우변으로 넘겨 f(x) = −C 꼴로 보거나 극댓값과 극솟값의 차 Δy = 4 를 이용하면, 부등식을 세우지 않고도 풀 수 있습니다."
         }),
         shortcut: () => ({
@@ -207,7 +207,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       4: {
         badge: "장면 4 · 두 도함수 f′(x), g′(x)의 교점과 h(x) = f(x) − g(x) 의 개형",
-        hint: "아래쪽 도함수 그래프의 보라색 수평선 <span class='text-purple-300 font-bold'>y = g'(x) = k</span>를 위아래로 끌어 보세요! <span class='text-amber-300 font-bold'>f'(x)와 g'(x)가 접할 때(k=-3)</span> 위쪽 h(x) = f(x) − g(x) 는 (x−1)³ 꼴이 되어 극값이 없습니다!",
+        hint: "도함수 그래프의 보라색 수평선 <span class='text-purple-300 font-bold'>y = g'(x) = k</span>를 위아래로 끌어 보세요! <span class='text-amber-300 font-bold'>f'(x)와 g'(x)가 접할 때(k=-3)</span> h(x) = f(x) − g(x) 는 (x−1)³ 꼴이 되어 극값이 없습니다!",
         tag: "평가원 14번·20번 차함수 개형 추론 킬러",
         targetTime: "목표 시간: 5초",
         question: () => `삼차함수 ${tex('f(x)')}의 도함수 ${tex("f'(x) = 3(x-1)^2 - 3")} 과 일차함수 ${tex('g(x)')}의 도함수 ${tex("g'(x) = k")} 의 그래프가 오직 한 점에서 만나도록(접하도록) 하는 상수 ${tex('k')}의 값과, 그때 함수 ${tex('h(x) = f(x) - g(x)')} 의 극값의 개수를 구하시오.`,
@@ -221,11 +221,11 @@ window.addEventListener('DOMContentLoaded', function () {
         textbook: () => ({
           steps: `① ${tex('h(x) = f(x) - g(x)')} 로 두면 ${tex("h'(x) = f'(x) - g'(x) = 3(x-1)^2 - 3 - k")}<br/>
 ② 두 도함수의 그래프가 한 점에서 접하려면 판별식 ${tex('D = 0')} 이어야 하므로 ${tex('-3 - k = 0 \\implies k = -3')}<br/>
-③ 이때 ${tex("h'(x) = 3(x-1)^2 \\ge 0")} 이므로 모든 실수에서 증가하여 극값을 갖지 않음...`,
+③ 이때 ${tex("h'(x) = 3(x-1)^2 \\ge 0")} 이므로 모든 실수에서 증가하여 극값을 갖지 않습니다.`,
           warning: "⚠️ f′(x)와 g′(x)의 그래프가 함께 주어지면 식을 구하지 않아도, f′가 g′보다 위에 있는지 아래에 있는지로 h′(x) = f′(x) − g′(x) 의 부호를 읽어 h(x)의 증가·감소를 알 수 있습니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex("h'(x) = f'(x) - g'(x)")} 이므로, 아래쪽 그림에서 직선 ${tex("y = g'(x)")} 를 <strong class="text-purple-300">기준</strong>으로 ${tex("f'(x)")} 의 그래프를 봅니다.<br/>
+          steps: `① ${tex("h'(x) = f'(x) - g'(x)")} 이므로, 도함수의 그래프에서 직선 ${tex("y = g'(x)")} 를 <strong class="text-purple-300">기준</strong>으로 ${tex("f'(x)")} 의 그래프를 봅니다.<br/>
 ② ${tex("f'(x)")}가 ${tex("g'(x)")}보다 위에 있으면 ${tex("h'(x) > 0")} (증가↗), 아래에 있으면 ${tex("h'(x) < 0")} (감소↘)입니다.<br/>
 ③ 꼭짓점의 높이 <strong class="text-amber-300">${tex('k = -3')}</strong> 에서 접하면 ${tex("h'(x)")} 의 부호가 ${tex('(+) \\to 0 \\to (+)')} 로 바뀌지 않으므로 ${tex('h(x)')}는 <strong class="text-emerald-300">극값이 0개</strong>입니다.`,
           highlight: "💡 두 도함수 f′(x), g′(x)가 함께 나오면, f′의 그래프가 g′의 그래프와 만나서 위아래가 바뀔 때 h(x)의 극값이 생기고, 접하기만 하면 극값이 생기지 않습니다."
@@ -234,7 +234,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       5: {
         badge: "장면 5 · 정적분으로 정의된 함수 g(x) = ∫ₐˣ f(t)dt 의 개형",
-        hint: "아래쪽 그래프가 곧 도함수 <span class='text-sky-300 font-bold'>g'(x) = f(x)</span>입니다! 우측 슬라이더로 <span class='text-amber-300 font-bold'>적분 아래끝 a</span>를 바꾸면 <span class='text-pink-300 font-bold'>g(a) = 0</span> 이므로 위쪽 함수 g(x)가 x축과 만나는 점이 바뀝니다!",
+        hint: "피적분함수 f(x)의 그래프가 곧 도함수 <span class='text-sky-300 font-bold'>g'(x) = f(x)</span>의 그래프입니다! 조절 막대로 <span class='text-amber-300 font-bold'>적분 아래끝 a</span>를 바꾸면 <span class='text-pink-300 font-bold'>g(a) = 0</span> 이므로 함수 g(x)의 그래프가 x축과 만나는 점이 바뀝니다!",
         tag: "수능 15번·22번 정적분 함수 최고난도 킬러",
         targetTime: "목표 시간: 5초",
         question: () => `이차함수 ${tex('f(x) = 3x(x - 2)')} 에 대하여 함수 ${tex('g(x) = \\displaystyle\\int_{a}^{x} f(t)\\,dt')} 가 극솟값 ${tex('0')}을 갖도록(즉 ${tex('x')}축에 극소점이 접하도록) 하는 모든 상수 ${tex('a')}의 값을 구하시오.`,
@@ -252,12 +252,12 @@ window.addEventListener('DOMContentLoaded', function () {
 ② ${tex("g'(x) = 3x(x - 2) = 0")} 에서 ${tex('x = 2')} 일 때 극솟값을 가짐<br/>
 ③ 극솟값 ${tex('g(2) = 0')} 조건 대입:<br/>
 &nbsp;&nbsp;${tex('8 - 12 - (a^3 - 3a^2) = 0 \\implies a^3 - 3a^2 + 4 = 0')}<br/>
-④ 조립제법으로 인수분해: ${tex('(a + 1)(a - 2)^2 = 0 \\implies a = 2, \\; -1')}...`,
+④ 조립제법으로 인수분해: ${tex('(a + 1)(a - 2)^2 = 0 \\implies a = 2, \\; -1')} 입니다.`,
           warning: "⚠️ 정적분으로 정의된 함수 g(x) = ∫ₐˣ f(t)dt 에서는 ① g(a)=0, ② g′(x)=f(x) 두 가지를 이용하면 적분을 계산하지 않고도 그래프의 개형을 그릴 수 있습니다."
         }),
         shortcut: () => ({
           steps: `① <strong>[정적분으로 정의된 함수의 성질]</strong> <strong class="text-pink-300">① ${tex('g(a)=0')}이므로 점 ${tex('(a,0)')}는 그래프 위에 있음</strong> (통과인지 접하는지는 도함수 부호로 따로 판단), <strong class="text-sky-300">② ${tex("g'(x)=f(x)")}</strong><br/>
-② ${tex("g'(x) = 3x(x-2)")} 이므로 위쪽 ${tex('g(x)')}는 ${tex('x=0')} 에서 극대, ${tex('x=2')} 에서 극소인 삼차함수입니다.<br/>
+② ${tex("g'(x) = 3x(x-2)")} 이므로 ${tex('g(x)')}는 ${tex('x=0')} 에서 극대, ${tex('x=2')} 에서 극소인 삼차함수입니다.<br/>
 ③ 극솟값 ${tex('g(2) = 0')} 이란 <strong>극소점 ${tex('x=2')}에서 ${tex('x')}축에 접한다</strong>는 뜻입니다. 이때 ${tex('g(x) = x^3 - 3x^2 + 4 = (x+1)(x-2)^2')} 이므로 ${tex('x')}축과 만나는 점(${tex('g(a)=0')})은 <strong class="text-amber-300">${tex('a = 2')} 또는 ${tex('a = -1')}</strong> 입니다.`,
           highlight: "💡 g(x) = ∫ₐˣ f(t)dt 에서 아래끝 a를 바꾸면 그래프의 모양은 그대로이고, x=a에서 g(a)=0 이 되도록 그래프를 위아래로 평행이동한 것과 같습니다."
         })
@@ -266,7 +266,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- 3. 공통 부품 ---------- */
   // 원본 안내 문구의 위치 표현만 새 화면에 맞춥니다(프리셋·슬라이더는 이제 패널 안에 있음).
-  const guideOf = (m) => examData[m].hint.replace('좌측 상단 ', '아래 ').replace('우측 슬라이더', '조절 막대');
+  const guideOf = (m) => examData[m].hint;
   function problemOf(m, snap) {
     const d = examData[m];
     return { tag: d.tag, time: d.targetTime, text: d.question, answer: d.answerBadge, snap };
@@ -536,7 +536,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const p = b.toS(x, y), ay = b.toS(0, 0).y;
       return dy > 0 ? Math.max(dy, ay + 44 - p.y) : Math.min(dy, ay - 42 - p.y);
     };
-    mark(b, 'main', 1, f(1), { color: 'violet', r: 5.5, label: rootsShown ? '' : `x=1 인 점(1, ${fmt(f(1), 1)})`, dx: 12, dy: -12 });
+    mark(b, 'main', 1, f(1), { color: 'violet', r: 5.5, label: rootsShown ? '' : `${m === 4 ? 'h′' : m === 5 ? 'g′' : 'f′'}(x)가 극소인 점(1, ${fmt(f(1), 1)})`, dx: 12, dy: -12 });
     if (eff > 0.005) {
       const h = Math.sqrt(eff);
       mark(b, 'main', 1 - h, f(1 - h), { color: 'rose', r: 6.5, label: `극대(${fmt(1 - h)}, ${fmt(f(1 - h))})`, dx: 0, dy: extDy(1 - h, f(1 - h), -18), align: 'center', ref: 'root' });
@@ -717,7 +717,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'cubic', title: '삼차함수의 개형과 증감표', short: '삼차 개형',
       question: '도함수의 그래프가 x축과 만나서 위아래가 바뀔 때와 x축에 접할 때, 함수 f의 모양은 어떻게 달라질까?',
-      guide: guideOf(1) + ' 아래 그래프의 <b>노란 점</b>(도함수의 근)도 직접 끌 수 있습니다.',
+      guide: guideOf(1) + ' 도함수 그래프의 <b>노란 점</b>(도함수의 근)도 직접 끌 수 있습니다.',
       controls: ['delta', 'C'],
       presets: rootPresets,
       actions: [chartAction, playAction('자동으로 개형 바꾸기')],

@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    미적분Ⅰ · 접선과 미분계수 (AP Math Lab 2.0 이식본)
@@ -140,8 +140,8 @@ window.addEventListener('DOMContentLoaded', function () {
           warning: "⚠️ 구간별로 정의된 다항함수에서 매번 h → 0−, h → 0+ 의 극한으로 정의식을 세우면 오래 걸립니다. 아래 빠른 풀이를 함께 보세요."
         }),
         shortcut: () => ({
-          steps: `① <strong>[1단계: 연속 조건]</strong> 위·아래 식에 ${tex('x = 1')} 을 대입한 값이 같아야 하므로 <strong class="text-sky-300">${tex('1 = p + q')}</strong><br/>
-② <strong>[2단계: 미분계수가 같을 조건]</strong> 위·아래 식을 각각 미분(${tex('2x')} 와 ${tex('p')})하여 ${tex('x = 1')} 을 대입한 값이 같아야 하므로 <strong class="text-pink-300">${tex('p = 2')}</strong><br/>
+          steps: `① <strong>[1단계: 연속 조건]</strong> 두 식에 ${tex('x = 1')} 을 대입한 값이 같아야 하므로 <strong class="text-sky-300">${tex('1 = p + q')}</strong><br/>
+② <strong>[2단계: 미분계수가 같을 조건]</strong> 두 식을 각각 미분(${tex('2x')} 와 ${tex('p')})하여 ${tex('x = 1')} 을 대입한 값이 같아야 하므로 <strong class="text-pink-300">${tex('p = 2')}</strong><br/>
 ③ 연립하면 <strong class="text-amber-300">${tex('p = 2, \\; q = -1')}</strong> 을 얻습니다.`,
           highlight: "💡 구간별로 정의된 다항함수가 경계 x=a에서 미분가능하려면 ① 두 식의 x=a에서의 함숫값이 같고(연속), ② 두 식을 각각 미분한 식의 x=a에서의 값도 같아야 합니다."
         })
@@ -171,7 +171,7 @@ window.addEventListener('DOMContentLoaded', function () {
         shortcut: () => ({
           steps: `① 곡선 위 점 ${tex('T(a,\\frac12a^2+\\frac12)')}와 직선 ${tex('x-y-2=0')}의 거리는 이 문항에서 ${tex('d(a)=\\frac{\\frac12(a-1)^2+2}{\\sqrt2}')}입니다.<br/>
 ② ${tex('(a-1)^2\\ge0')}이므로 거리는 ${tex('a=1')}에서 최소입니다. 이때 접선의 기울기는 ${tex("f'(1)=1")}로 직선의 기울기와 같음을 확인할 수 있습니다.<br/>
-③ ${tex('T=(1,1)')}에서 ${tex('d=|1-1-2|/\\sqrt2=\\sqrt2')}입니다. 이 결론은 주어진 곡선과 직선의 거리식을 완전제곱한 결과입니다.`,
+③ ${tex('T=(1,1)')}에서 ${tex('d=|1-1-2|/\\sqrt2=\\sqrt2')}입니다. 이 최솟값은 거리식 ${tex('d(a)=\\dfrac{\\frac12(a-1)^2+2}{\\sqrt2}')}을 완전제곱식으로 고쳐 얻은 값입니다.`,
           highlight: `💡 이 문항은 직선과 곡선의 거리식 ${tex('d(a)=\\frac{\\frac12(a-1)^2+2}{\\sqrt2}')}를 완전제곱해 최솟값과 등호 조건을 직접 확인합니다.`
         })
       },
