@@ -738,8 +738,8 @@ window.questionBank=[
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 x+y-5=0, -3x+y+7=0과 교점을 표시하고, 세 번째 직선 ax+y+4=0이 첫째 직선과 평행한 경우, 둘째 직선과 평행한 경우, 두 직선의 교점을 지나는 경우의 세 위치를 그린 그림.",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 x+y-5=0, -3x+y+7=0과 두 직선의 교점 (3,2)를 표시하고, 세 번째 직선 ax+y+4=0이 첫째 직선과 평행한 경우, 둘째 직선과 평행한 경우, 두 직선의 교점을 지나는 경우의 세 위치를 한 좌표평면에 그린 그림. 서로 평행한 두 직선에는 같은 개수의 화살표가 표시되어 있다.",
     "solutionImageCaption": "세 번째 직선이 평행하거나 교점을 지나면 삼각형이 만들어지지 않는다",
     "solutionImageSize": "medium"
   },

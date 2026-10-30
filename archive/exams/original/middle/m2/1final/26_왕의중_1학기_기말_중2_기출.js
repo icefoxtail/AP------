@@ -872,9 +872,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 준서가 그린 직선(두 점 (1,0), (3,4))은 기울기 2를, 지우가 그린 직선 y=4x-6(두 점 (1,-2), (3,6))은 y절편 -6을 알려 준다. 두 값을 합친 실제 그래프 y=2x-6이 y축 위 점 (0,-6)에서 지우의 직선과 만나는 모습을 보인다.",
-    "solutionImageCaption": "준서가 그린 직선은 실제 기울기 2를, 지우가 그린 직선 y=4x-6은 실제 y절편 -6을 알려 주고, 실제 그래프는 y=2x-6이다.",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=2x-2와 직선 y=4x-6이 그려져 있다. 첫째 직선 위에 점 (1,0)과 (3,4)가, 둘째 직선 위에 점 (1,-2)와 (3,6)이 있고, 각 점 옆에 좌표가 각 직선 옆에 식이 적혀 있다.",
+    "solutionImageCaption": "준서가 그린 직선은 두 점 (1,0), (3,4)를 지나고, 지우가 그린 직선은 두 점 (1,-2), (3,6)을 지난다.",
     "solutionImageSize": "medium"
   },
   {

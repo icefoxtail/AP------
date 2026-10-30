@@ -504,9 +504,9 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 예시 수로 그린 좌표평면이다. 점선은 오른쪽 아래로 내려가며 y축과 양의 부분에서 만나는 y=bx-a의 그래프이고, 굵은 직선은 오른쪽 위로 올라가며 y축과 음의 부분에서 만나는 y=abx+(a+b)의 그래프로, 제3사분면에서 제4사분면을 거쳐 제1사분면으로 지난다.",
-    "solutionImageCaption": "예시 수로 그린 개략도에서 y=abx+(a+b)는 기울기가 양수, y절편이 음수인 직선이다.",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예시 값으로 그린 좌표평면 개략도이다. 직선 y=bx-a와 직선 y=abx+(a+b)가 그려져 있고, 각 직선 옆에 그 식이 적혀 있으며, 네 사분면에 제1사분면부터 제4사분면까지 이름이 적혀 있다.",
+    "solutionImageCaption": "직선 y=bx-a와 y=abx+(a+b)를 예시 값으로 좌표평면에 그린 개략도이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -804,7 +804,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q24-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 두 직선 y=x+4, y=-3x-4와 세 번째 직선 y=ax+3을 좌표평면에 그린 세 장의 그림이다. 첫째는 세 번째 직선이 y=x+4와 평행한 경우, 둘째는 y=-3x-4와 평행한 경우, 셋째는 세 번째 직선이 두 직선의 교점을 지나 세 직선이 한 점에서 만나는 경우이다.",
     "solutionImageCaption": "세 직선이 삼각형을 이루지 않는 세 경우를 y=ax+3의 위치로 비교한 그림이다.",
     "solutionImageSize": "medium"

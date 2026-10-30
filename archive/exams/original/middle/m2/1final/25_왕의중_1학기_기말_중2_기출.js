@@ -478,9 +478,9 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 일차함수 y=-3/4x-3의 그래프가 x절편 (-4,0), y절편 (0,-3), 점 (-8,3)을 지나고, 기울기가 같은 직선 y=-3/4x+3이 함께 그려진 그림이다.",
-    "solutionImageCaption": "일차함수 y=-3/4x-3의 그래프는 x절편이 -4, y절편이 -3이고 점 (-8, 3)을 지나며, y=-3/4x+3의 그래프와 기울기가 같다.",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 일차함수 y=-3/4x-3의 그래프와 기울기가 같은 직선 y=-3/4x+3이 점선으로 함께 그려진 좌표평면 그림이다. 점선 옆에 그 식이 지시선과 함께 적혀 있고, 실선 위의 세 점 옆에 좌표가 적혀 있다.",
+    "solutionImageCaption": "일차함수 y=-3/4x-3의 그래프와 y=-3/4x+3의 그래프를 함께 그린 그림이다.",
     "solutionImageSize": "medium"
   },
   {
