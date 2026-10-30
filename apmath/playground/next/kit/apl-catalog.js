@@ -499,6 +499,7 @@ window.APLab.catalog = {
     "역함수·원·도형 결합"
    ],
    "legacy": "labs/대수/part1b.html",
+   "next": "next/labs/alg-log.html",
    "glyph": "<path d=\"M8 68 H72 M12 8 V69\" stroke-opacity=\".45\"/><path d=\"M14 59 Q21 48 32 44 T69 39\" stroke-width=\"2.5\"/><path d=\"M20 66 L69 17\" stroke=\"#D8B77E\" stroke-width=\"1.3\" stroke-dasharray=\"4 4\"/><circle cx=\"32\" cy=\"44\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -523,6 +524,7 @@ window.APLab.catalog = {
     "역함수 축 전환 격자점"
    ],
    "legacy": "labs/대수/part1b1.html",
+   "next": "next/labs/alg-log-deep.html",
    "glyph": "<path d=\"M7 68 L72 5\" stroke=\"#D8B77E\" stroke-dasharray=\"4 4\" stroke-width=\"1.6\"/><rect x=\"26\" y=\"24\" width=\"29\" height=\"27\" stroke=\"#A78AC8\" stroke-width=\"1.4\"/><path d=\"M10 64 Q23 41 46 34 T69 26\" stroke-width=\"2.2\"/><path d=\"M17 61 Q28 57 35 44 T65 13\" stroke=\"#D8B77E\" stroke-width=\"1.9\"/>"
   },
   {
@@ -608,6 +610,7 @@ window.APLab.catalog = {
     "점화식 역추적 이진 트리"
    ],
    "legacy": "labs/대수/part3.html",
+   "next": "next/labs/alg-sequence.html",
    "glyph": "<path d=\"M7 68 H74 M12 8 V69\" stroke-opacity=\".4\"/><path d=\"M16 61 Q38 52 42 35 T70 13\" stroke=\"#D8B77E\" stroke-width=\"1.4\" stroke-dasharray=\"4 4\"/><path d=\"M16 61 L29 56 L42 35 L55 24 L69 13\" stroke-width=\"2.3\"/><circle cx=\"16\" cy=\"61\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"29\" cy=\"56\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"42\" cy=\"35\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"55\" cy=\"24\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"69\" cy=\"13\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
