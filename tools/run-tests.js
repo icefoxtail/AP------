@@ -128,6 +128,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-pages-release-gate.test.mjs']
   },
   {
+    label: 'tests/apms-worker-deploy.test.mjs',
+    args: ['--test', 'tests/apms-worker-deploy.test.mjs']
+  },
+  {
     label: 'tests/archive-pages-release-reg-commit.test.mjs',
     args: ['--test', 'tests/archive-pages-release-reg-commit.test.mjs']
   },
