@@ -374,8 +374,14 @@ async function main() {
 
     const yearOptions = await evaluate("[...document.querySelectorAll('#source-year option')].map(option=>option.value)");
     const schoolOptions2025 = await evaluate("[...document.querySelectorAll('#source-school option')].map(option=>option.value)");
-    assert(JSON.stringify(yearOptions) === JSON.stringify(['2025', '2026']) && JSON.stringify(schoolOptions2025) === JSON.stringify(['팔마고']),
-      'Source filters grouped another school into the 2025 Palma exam.', { yearOptions, schoolOptions2025 });
+    // Since S9 the mock source roster is the hash-bound exams plus the exams derived from the index, so the 2025 school
+    // list is every school that has a selectable 2025 source exam (not Palma alone). It must still be one option per
+    // school, derived from the page's own roster, and keep Palma available as the default exact tuple.
+    const rosterSchools2025 = await evaluate("[...new Set(SOURCE_EXAM_ROWS.filter(exam=>String(exam.year)==='2025').map(exam=>exam.school))].sort()");
+    assert(JSON.stringify(yearOptions) === JSON.stringify(['2025', '2026']) && schoolOptions2025.includes('팔마고') &&
+      new Set(schoolOptions2025).size === schoolOptions2025.length &&
+      JSON.stringify([...schoolOptions2025].sort()) === JSON.stringify(rosterSchools2025),
+      'Source filters grouped another school into the 2025 Palma exam.', { yearOptions, schoolOptions2025, rosterSchools2025 });
     await evaluate("(()=>{const field=document.getElementById('source-year');field.value='2026';field.dispatchEvent(new Event('change',{bubbles:true}));return true;})()");
     const changedYear = await evaluate(`(()=>({
       year:document.getElementById('source-year').value,school:document.getElementById('source-school').value,
