@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>합성함수 · 절댓값 그래프 · AP Math 실험실</title>
-<meta name="description" content="미적분Ⅰ 합성함수·절댓값 그래프: 4대 절댓값 변환, |f(x)−t|=k 교점 스캔, |f(x)|·g(x) 첨점 힐링, 합성함수 극값, f(g(x))=k 2단계 치환을 직접 조작하며 탐구합니다.">
+<meta name="description" content="미적분Ⅰ 합성함수·절댓값 그래프: 절댓값 기호를 포함한 함수의 그래프(|f(x)|, f(|x|)), |f(x)−t|=k 의 교점의 개수, |f(x)|·g(x)의 미분가능성, 합성함수의 극값, f(g(x))=k 를 두 단계로 풀기를 직접 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    미적분Ⅰ · 합성함수·절댓값 그래프 (AP Math Lab 2.0 이식본)
@@ -136,152 +136,152 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 2. 문제·풀이 데이터 (원본 examData 그대로) ---------- */
     const examData = {
       1: {
-        badge: "MODE 1 · 4대 절댓값 그래프 변환 (|f(x)|, f(|x|), |f(|x|)|)과 x=0 미분가능성",
-        hint: "좌측 상단 <span class='text-amber-300 font-bold'>절댓값 변환 버튼(①~③)</span>을 눌러보거나 우측 슬라이더로 그래프를 좌우 이동(<span class='text-sky-300 font-bold'>m=1</span>)시켜 <span class='text-pink-300 font-bold'>f(|x|)가 x=0에서 미분가능해지는 순간</span>을 확인하세요!",
-        tag: "내신·모의고사 절댓값 대칭 변환 필수",
+        badge: "장면 1 · 절댓값 기호를 포함한 함수 |f(x)|, f(|x|), |f(|x|)|의 그래프와 x=0에서의 미분가능성",
+        hint: "탐구 탭의 <span class='text-amber-300 font-bold'>절댓값 변환 버튼(①~③)</span>을 눌러 보거나 조절 막대로 그래프를 좌우로 평행이동(<span class='text-sky-300 font-bold'>m=1</span>)시켜 <span class='text-pink-300 font-bold'>f(|x|)가 x=0에서 미분가능해지는 순간</span>을 확인하세요!",
+        tag: "절댓값 기호를 포함한 함수의 그래프와 미분가능성",
         targetTime: "목표 시간: 5초",
         question: () => `삼차함수 ${tex('f(x) = (x - m)^3 - 3(x - m)')} 에 대하여 함수 ${tex('g(x) = f(|x|)')} 가 ${tex('x = 0')} 에서 미분가능하도록 하는 모든 양수 ${tex('m')}의 값과 그때 ${tex('g(0)')}의 값을 구하시오.`,
         answerBadge: () => `${tex("f'(0) = 0 \\implies m = 1, \\; g(0) = 2")}`,
         snap: { p1: 1.0, p2: 2.0, dualView: false },
         steps: [
-          "Step 1 · f(|x|)에서 x≥0의 f(x), x<0의 f(−x)를 나누어 오른쪽 그래프를 y축 대칭합니다.",
-          "Step 2 · x=0에서 우미분 f′(0)과 좌미분 −f′(0)을 계산해 맞춥니다.",
-          "Step 3 · f′(0)=3m²−3 조건과 m>0을 적용하고 g(0)=f(0)을 계산합니다."
+          "1단계 · f(|x|)를 x≥0일 때 f(x), x<0일 때 f(−x)로 나누어 쓰고, x≥0 부분의 그래프를 y축에 대하여 대칭이동한 그래프임을 확인합니다.",
+          "2단계 · x=0에서의 우미분계수 f′(0)과 좌미분계수 −f′(0)이 같아야 한다는 조건을 세웁니다.",
+          "3단계 · f′(0)=3m²−3=0과 m>0에서 m의 값을 구하고, g(0)=f(0)을 계산합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('g(x) = f(|x|) = \\begin{cases} f(x) & (x \\ge 0) \\\\ f(-x) & (x < 0) \\end{cases}')} 로 구간 분리<br/>
 ② ${tex('x = 0')} 에서 우미분계수 ${tex("g'_{+}(0) = f'(0)")}, 좌미분계수 ${tex("g'_{-}(0) = -f'(0)")}<br/>
 ③ 미분가능하려면 ${tex("f'(0) = -f'(0) \\implies f'(0) = 0")} 이어야 함<br/>
 ④ ${tex("f'(x)=3(x-m)^2-3")}이므로 ${tex("f'(0)=3m^2-3=0")}. 따라서 ${tex('m=\\pm1')}이고 양수 조건에서 ${tex('m=1')}입니다. 이때 ${tex('g(0)=f(0)=2')}입니다.`,
-          warning: "⚠️ y = f(|x|) 는 x ≥ 0 부분만 남겨서 y축에 데칼코마니로 찍어내는 그래프입니다!"
+          warning: "⚠️ y = f(|x|)의 그래프는 y = f(x)의 x ≥ 0 부분만 남기고, 그 부분을 y축에 대하여 대칭이동한 그래프를 함께 그린 것입니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex('y = f(|x|)')} 는 오른쪽(${tex('x \\ge 0')})을 ${tex('y')}축에 대칭 복사하므로, ${tex('x = 0')} 에서 뾰족하지 않으려면 <strong>출발점의 기울기가 0</strong>이어야 합니다!<br/>
-② 즉 계산 없이 무조건 <strong class="text-pink-300">${tex("f'(0) = 0")} (극대 또는 극소점이 y축 위에 위치)</strong>!<br/>
-③ 따라서 극대점이 ${tex('x = 0')} 이 되도록 평행이동한 <strong class="text-amber-300">${tex('m = 1')}</strong> 에서 스무스하게 미분가능!`,
-          highlight: "💡 『y = f(|x|) 가 x=0에서 미분가능할 필요충분조건 ⇔ f'(0) = 0 (y축과 수평으로 만난다)!』"
+          steps: `① ${tex('y = f(|x|)')} 의 그래프는 ${tex('x \\ge 0')} 부분을 ${tex('y')}축에 대하여 대칭이동하여 만든 것이므로, ${tex('x = 0')} 에서 꺾이지 않으려면 <strong>${tex('x=0')}에서의 접선의 기울기가 0</strong>이어야 합니다.<br/>
+② 즉 <strong class="text-pink-300">${tex("f'(0) = 0")} (${tex('x=0')}에서 극대 또는 극소)</strong>이어야 합니다.<br/>
+③ 따라서 극대점의 ${tex('x')}좌표가 ${tex('x = 0')} 이 되도록 평행이동한 <strong class="text-amber-300">${tex('m = 1')}</strong> 에서 미분가능합니다.`,
+          highlight: "💡 y = f(|x|)가 x=0에서 미분가능할 필요충분조건은 f′(0) = 0 입니다. (x=0에서의 접선이 x축과 평행)"
         })
       },
 
       2: {
-        badge: "MODE 2 · 접어 올린 함수 |f(x) - t| 와 수평선 y = k 의 교점 개수 스캐너",
-        hint: "접기 기준선 <span class='text-amber-300 font-bold'>t</span>와 탐색 수평선 <span class='text-sky-300 font-bold'>k</span>를 드래그해 보세요! <span class='text-pink-300 font-bold'>t=0, k=2 일 때 접혀 올라온 봉우리 두 개에 동시에 접하며 교점이 4개</span>가 됩니다!",
+        badge: "장면 2 · 함수 |f(x) − t| 의 그래프와 수평선 y = k 의 교점의 개수",
+        hint: "기준선 <span class='text-amber-300 font-bold'>y = t</span>와 수평선 <span class='text-sky-300 font-bold'>y = k</span>를 끌어 보세요! <span class='text-pink-300 font-bold'>t=0, k=2 일 때 y=k가 위로 접혀 올라온 두 봉우리의 꼭대기에 동시에 닿으며 교점이 4개</span>가 됩니다!",
         tag: "수능 15번·22번 실근의 개수 최고난도 킬러",
         targetTime: "목표 시간: 10초",
-        question: () => `함수 ${tex('f(x) = x^3 - 3x')} 에 대하여 방정식 ${tex('|f(x) - t| = k \\; (k > 0)')} 의 서로 다른 실근의 개수가 ${tex('4')}개가 되도록 하는 ${tex('t = 0')} 일 때의 양수 ${tex('k')}의 값과, 실근이 ${tex('6')}개가 되는 ${tex('k')}의 범위를 구하시오.`,
+        question: () => `함수 ${tex('f(x) = x^3 - 3x')} 에 대하여 ${tex('t = 0')} 일 때, 방정식 ${tex('|f(x) - t| = k \\; (k > 0)')} 의 서로 다른 실근의 개수가 ${tex('4')}개가 되는 양수 ${tex('k')}의 값과, 실근이 ${tex('6')}개가 되는 ${tex('k')}의 값의 범위를 구하시오.`,
         answerBadge: () => `4개: ${tex('k = 2')} / 6개: ${tex('0 < k < 2')}`,
         snap: { p1: 0.0, p2: 2.0, dualView: false },
         steps: [
-          "Step 1 · t=0에서 |x³−3x|=k를 x³−3x=k와 x³−3x=−k로 분리합니다.",
-          "Step 2 · f′=3(x²−1)의 극점과 두 극값을 이용해 k 높이의 교점 수를 셉니다.",
-          "Step 3 · k가 극값 높이에 닿을 때 중복해를 한 번만 세고 4개·6개 조건을 판정합니다."
+          "1단계 · t=0일 때 |x³−3x|=k를 x³−3x=k 또는 x³−3x=−k로 나누어 생각합니다.",
+          "2단계 · f′(x)=3(x²−1)=0에서 극대점과 극소점을 구하고, 극댓값 2와 극솟값 −2를 이용하여 높이 k인 수평선과 만나는 점의 개수를 셉니다.",
+          "3단계 · k가 극댓값 2와 같아져 수평선이 접할 때는 중근을 한 번만 세어, 실근이 4개 또는 6개가 되는 k의 조건을 판정합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('t = 0')} 일 때 방정식 ${tex('|x^3 - 3x| = k')} 는 ${tex('x^3 - 3x = k')} 또는 ${tex('x^3 - 3x = -k')}<br/>
-② 두 방정식의 실근의 개수의 합이 ${tex('4')}가 되려면 각 방정식이 중근 1개와 단근 1개씩(총 2개씩) 가져야 함<br/>
+② 두 방정식의 실근의 개수의 합이 ${tex('4')}가 되려면 각 방정식이 중근 1개와 다른 실근 1개씩, 서로 다른 실근을 2개씩 가져야 함<br/>
 ③ ${tex('0<k<2')}에서는 두 수평선 ${tex('y=k')}와 ${tex('y=-k')}가 각각 삼차곡선과 3점에서 만나 총 6개입니다. ${tex('k=2')}이면 한 수평선이 극값에서 접해 2점, 다른 수평선은 2점이므로 총 4개입니다. ${tex('k>2')}이면 합계가 4개보다 작아집니다.`,
-          warning: "⚠️ t가 변할 때마다 식을 ±k로 나누어 풀면 헷갈립니다! y=t를 새로운 바닥(0)으로 보고 접혀 올라온 봉우리 높이를 읽으세요!"
+          warning: "⚠️ t가 바뀔 때마다 식을 ±k로 나누어 풀면 복잡합니다. 직선 y=t를 기준으로 보고, 위로 접혀 올라온 봉우리의 높이를 그래프에서 읽으면 편리합니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex('t = 0')} 에서 접어 올리면 극소 ${tex('(1, -2)')} 가 위로 접혀 올라와 <strong>높이 ${tex('2')}짜리 쌍봉(W형) 그래프</strong> 완성!<br/>
-② 따라서 바닥과 봉우리 사이인 <strong class="text-sky-300">${tex('0 < k < 2')} 에서는 교점이 최대인 6개</strong>!<br/>
-③ 꼭대기 봉우리 두 개에 동시에 접하는 순간인 <strong class="text-amber-300">${tex('k = 2')} 에서 정확히 교점 4개</strong>!`,
-          highlight: "💡 |f(x) - t| 그래프의 봉우리 두 개의 높이는 무조건 【 |극댓값 - t| 】와 【 |극솟값 - t| 】입니다!"
+          steps: `① ${tex('t = 0')} 에서 ${tex('x')}축 아랫부분을 위로 접어 올리면 극소점 ${tex('(1, -2)')} 가 ${tex('(1, 2)')} 로 올라와 <strong>높이 ${tex('2')}인 봉우리가 두 개</strong> 생깁니다.<br/>
+② 따라서 수평선 ${tex('y=k')} 가 봉우리의 꼭대기보다 낮은 <strong class="text-sky-300">${tex('0 < k < 2')} 에서는 교점이 6개</strong>입니다.<br/>
+③ 수평선이 두 봉우리의 꼭대기에 동시에 닿는 <strong class="text-amber-300">${tex('k = 2')} 에서 교점은 정확히 4개</strong>입니다.`,
+          highlight: "💡 |f(x) − t| 의 그래프에서 f의 극점에 대응하는 봉우리의 높이는 |극댓값 − t| 와 |극솟값 − t| 입니다."
         })
       },
 
       3: {
-        badge: "MODE 3 · |f(x)| · g(x) 의 미분가능성 (첨점 힐링 법칙)",
-        hint: "상단에서 <span class='text-pink-300 font-bold'>|f(x)|는 x=2에서 뾰족한 첨점</span>을 갖습니다! 일차함수 <span class='text-sky-300 font-bold'>g(x) = x - r</span> 의 절편 <span class='text-amber-300 font-bold'>r을 2에 맞추는 순간</span> 하단 곱함수의 첨점이 스무스하게 펴집니다!",
-        tag: "평가원 4점 미분가능성 출제율 1순위 법칙",
+        badge: "장면 3 · |f(x)|·g(x) 의 미분가능성 (꺾이는 점이 사라질 조건)",
+        hint: "그림에서 <span class='text-pink-300 font-bold'>|f(x)|는 x=2에서 꺾입니다</span>! 일차함수 <span class='text-sky-300 font-bold'>g(x) = x − r</span> 의 x절편 <span class='text-amber-300 font-bold'>r을 2에 맞추는 순간</span> 곱함수 h(x)=|f(x)|g(x)의 그래프에서 꺾임이 사라지고 미분가능해집니다!",
+        tag: "절댓값 기호를 포함한 함수의 곱의 미분가능성",
         targetTime: "목표 시간: 3초",
         question: () => `함수 ${tex('f(x) = x - 2')} 와 일차함수 ${tex('g(x) = x - r')} 에 대하여, 곱함수 ${tex('h(x) = |f(x)|g(x)')} 가 ${tex('x = 2')} 에서 미분가능하도록 하는 상수 ${tex('r')}의 값과 그때 ${tex("h'(2)")}의 값을 구하시오.`,
         answerBadge: () => `${tex("g(2) = 0 \\implies r = 2, \\; h'(2) = 0")}`,
         snap: { p1: 2.0, p2: 0.0, dualView: true },
         steps: [
-          "Step 1 · x=2 기준으로 |x−2|의 부호를 나누고 h(x)=|x−2|(x−r)의 좌우식을 씁니다.",
-          "Step 2 · 양쪽에서 곱을 미분해 x=2의 좌우미분계수를 각각 계산합니다.",
-          "Step 3 · 두 미분계수를 같게 하는 r을 구하고 h′(2)가 일치하는지 확인합니다."
+          "1단계 · x≥2일 때와 x<2일 때로 나누어 |x−2|의 부호를 정하고, h(x)=|x−2|(x−r)을 각각의 식으로 씁니다.",
+          "2단계 · 두 식을 각각 미분하여 x=2에서의 우미분계수와 좌미분계수를 계산합니다.",
+          "3단계 · 두 미분계수를 같게 하는 r을 구하고, 이때 h′(2)의 값을 확인합니다."
         ],
         textbook: () => ({
           steps: `① ${tex('x \\ge 2')} 일 때 ${tex('h(x) = (x-2)(x-r) \\implies h\'_{+}(2) = 2 - r')}<br/>
 ② ${tex('x < 2')} 일 때 ${tex('h(x) = -(x-2)(x-r) \\implies h\'_{-}(2) = -(2 - r)')}<br/>
 ③ ${tex('x = 2')} 에서 미분가능하려면 좌미분계수 = 우미분계수여야 하므로:<br/>
 &nbsp;&nbsp;${tex('2 - r = -(2 - r) \\implies 2(2 - r) = 0 \\implies r = 2')}<br/>
-④ ${tex('r=2')}일 때 두 일측 미분계수는 모두 0이므로 ${tex("h'(2)=0")}입니다.`,
-          warning: "⚠️ 시험장에서 절댓값을 x ≥ a, x < a 로 나누어 곱의 미분법을 두 번 쓰면 시간이 낭비됩니다!"
+④ ${tex('r=2')}일 때 좌미분계수와 우미분계수가 모두 0이므로 ${tex("h'(2)=0")}입니다.`,
+          warning: "⚠️ 절댓값 기호를 x ≥ 2, x < 2 로 나누어 곱의 미분법을 두 번 쓰는 방법은 계산이 길어집니다. 아래 빠른 풀이를 함께 보세요."
         }),
         shortcut: () => ({
-          steps: `① ${tex('|f(x)|')} 의 뾰족점(첨점)에서는 좌미분계수와 우미분계수의 <strong>부호가 정반대(${tex('\\pm k')})</strong>!<br/>
-② 부호가 반대인 두 미분계수에 <strong class="text-sky-300">${tex('g(a)')}</strong> 를 곱해서 같게 만들려면 무조건 <strong class="text-amber-300">${tex('g(a) = 0')}</strong> 이어야 합니다!<br/>
-③ 따라서 1초 만에 <strong class="text-emerald-300">${tex('g(2) = 0 \\implies r = 2')}</strong> 이고, 그 점에서의 미분계수는 무조건 <strong class="text-pink-300">${tex("h'(2) = 0")}</strong>!`,
-          highlight: "💡 『불연속을 연속으로 만들 때도 g(a)=0, 뾰족한 첨점(|f(x)|)을 미분가능으로 만들 때도 g(a)=0 (인수 총 2개 효과)!』"
+          steps: `① ${tex('|f(x)| = |x-2|')} 는 ${tex('x=2')} 에서 꺾이며, 좌미분계수와 우미분계수는 크기가 같고 <strong>부호가 반대(${tex('-1, \\; 1')})</strong>입니다.<br/>
+② 여기에 ${tex('g(2)')} 를 곱하면 ${tex('h')}의 좌미분계수는 ${tex('-g(2)')}, 우미분계수는 ${tex('g(2)')} 이므로, 두 값이 같으려면 <strong class="text-amber-300">${tex('g(2) = 0')}</strong> 이어야 합니다.<br/>
+③ ${tex('g(2) = 2 - r = 0')} 에서 <strong class="text-emerald-300">${tex('r = 2')}</strong> 이고, 이때 좌미분계수와 우미분계수가 모두 0이므로 <strong class="text-pink-300">${tex("h'(2) = 0")}</strong> 입니다.`,
+          highlight: "💡 f(a)=0, f′(a)≠0 이면 |f(x)|·g(x)가 x=a에서 미분가능할 필요충분조건은 g(a)=0 입니다. (g는 x=a에서 미분가능)"
         })
       },
 
       4: {
-        badge: "MODE 4 · 합성함수 h(x) = f(g(x)) 의 극값 생성 원리 (f'(g(x))·g'(x) = 0)",
-        hint: "우측 슬라이더로 하단 속함수 <span class='text-sky-300 font-bold'>g(x) = 0.5x² + c</span> 의 꼭짓점 높이 <span class='text-amber-300 font-bold'>c</span>를 위아래로 바꿔보세요! 속함수가 <span class='text-pink-300 font-bold'>겉함수 극값 기준선(u = ±1)을 관통할 때마다</span> 상단 합성함수에 극값이 생깁니다!",
+        badge: "장면 4 · 합성함수 h(x) = f(g(x)) 의 극값 (h′(x) = f′(g(x))·g′(x) = 0)",
+        hint: "조절 막대로 안쪽함수 <span class='text-sky-300 font-bold'>g(x) = 0.5x² + c</span> 의 꼭짓점 높이 <span class='text-amber-300 font-bold'>c</span>를 위아래로 바꿔 보세요! 안쪽함수의 그래프가 <span class='text-pink-300 font-bold'>바깥함수의 극값이 생기는 높이(u = ±1)를 위아래로 가로지를 때마다</span> 합성함수 h(x)=f(g(x))에 극값이 생깁니다!",
         tag: "수능·평가원 합성함수 미분 킬러 핵심",
         targetTime: "목표 시간: 10초",
-        question: () => `삼차함수 ${tex('f(u) = u^3 - 3u')} (극대 ${tex('u=-1')}, 극소 ${tex('u=1')})와 이차함수 ${tex('g(x) = \\dfrac{1}{2}x^2 - 2')} 에 대하여, 합성함수 ${tex('h(x) = f(g(x))')} 가 극값을 갖는 모든 ${tex('x')}의 개수를 구하시오.`,
-        answerBadge: () => `${tex("g'(x)=0")} (1개) + ${tex('g(x)=\\pm 1')} 관통 (4개) = 총 ${tex('5')}개`,
+        question: () => `삼차함수 ${tex('f(u) = u^3 - 3u')} (${tex('u=-1')}에서 극대, ${tex('u=1')}에서 극소)와 이차함수 ${tex('g(x) = \\dfrac{1}{2}x^2 - 2')} 에 대하여, 합성함수 ${tex('h(x) = f(g(x))')} 가 극값을 갖는 모든 ${tex('x')}의 개수를 구하시오.`,
+        answerBadge: () => `${tex("g'(x)=0")} 인 ${tex('x')} (1개) + ${tex('g(x)=\\pm 1')} 인 ${tex('x')} (4개) = 총 ${tex('5')}개`,
         snap: { p1: -2.0, p2: 0.0, dualView: true },
         steps: [
-          "Step 1 · h(x)=f(g(x))에서 h′=f′(g(x))g′(x), g(x)=x²/2−2를 대입합니다.",
-          "Step 2 · g′=0과 겉함수 f′(u)=0인 u=±1의 원상 방정식을 각각 풉니다.",
-          "Step 3 · 후보 x마다 도함수 부호가 바뀌는지 보고 중복 없이 극값을 셉니다."
+          "1단계 · h′(x)=f′(g(x))·g′(x)이고 g(x)=x²/2−2를 대입하여, h′(x)=0이 되는 x를 찾는 방법을 세웁니다.",
+          "2단계 · g′(x)=0인 x와, 바깥함수의 f′(u)=0인 u=±1에 대하여 g(x)=1, g(x)=−1인 x를 각각 구합니다.",
+          "3단계 · 구한 x의 후보마다 h′(x)의 부호가 바뀌는지 확인하여, 서로 다른 극값의 개수를 셉니다."
         ],
         textbook: () => ({
           steps: `① 실제로 식을 대입하여 6차함수 전개:<br/>
 &nbsp;&nbsp;${tex('h(x) = \\left(\\dfrac{1}{2}x^2 - 2\\right)^3 - 3\\left(\\dfrac{1}{2}x^2 - 2\\right)')}<br/>
-② 연쇄법칙으로 미분: ${tex("h'(x) = 3(g(x)-1)(g(x)+1) \\cdot x = 0")}<br/>
+② ${tex('h(x)=\\{g(x)\\}^3-3g(x)')}를 미분하면: ${tex("h'(x) = 3\\{g(x)\\}^2g'(x) - 3g'(x) = 3\\{g(x)-1\\}\\{g(x)+1\\} \\cdot x = 0")}<br/>
 ③ 후보는 ${tex('x=0')} 및 ${tex('x=\\pm\\sqrt6,\\pm\\sqrt2')}입니다. 도함수 ${tex("h'(x)=3x(g(x)^2-1)")}의 인수는 각 후보에서 부호를 바꾸므로 모두 극값입니다. 서로 다른 후보는 총 5개입니다.`,
-          warning: "⚠️ 속함수가 삼차·사차함수일 때는 대입해서 전개할 수 없습니다! 하단 속함수에 겉함수 극값 수평선을 긋는 기하학적 해법을 써야 합니다!"
+          warning: "⚠️ 안쪽함수가 삼차함수·사차함수이면 대입하여 전개하기 어렵습니다. 이때는 아래 풀이처럼 안쪽함수의 그래프에 수평선 y=−1, y=1을 그어 x의 개수를 세는 방법을 씁니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex("h'(x) = f'(g(x)) \\cdot g'(x) = 0")} 에서 극값 후보는 두 종류!<br/>
-② <strong>[후보 1: ${tex("g'(x) = 0")}]</strong> 속함수 꼭짓점 <strong class="text-amber-300">${tex('x = 0')} (1개)</strong>!<br/>
-③ <strong>[후보 2: ${tex("f'(g(x)) = 0")}]</strong> 하단 속함수 ${tex('g(x)')} 그래프에 겉함수의 극값 위치인 <strong>수평선 ${tex('y = -1, \\; y = 1')}</strong> 을 그으면 꼭짓점(${tex('-2')})보다 위에 있으므로 각각 2번씩 <strong class="text-pink-300">총 4번 관통</strong>!<br/>
-④ 따라서 합치면 즉시 <strong class="text-emerald-300">극값 총 ${tex('1 + 4 = 5')}개</strong>! (단, 접하면 부호 불변이라 제외!)`,
-          highlight: "💡 합성함수 f(g(x))의 극값 개수 = 【 속함수 자체의 극값 개수 + 속함수 g(x)가 겉함수 극값 수평선(u=α, β)을 '관통'하는 교점 개수 】!"
+          steps: `① ${tex("h'(x) = f'(g(x)) \\cdot g'(x) = 0")} 에서 극값이 될 수 있는 ${tex('x')}는 두 종류입니다.<br/>
+② <strong>[경우 1: ${tex("g'(x) = 0")}]</strong> 안쪽함수의 꼭짓점 <strong class="text-amber-300">${tex('x = 0')} (1개)</strong><br/>
+③ <strong>[경우 2: ${tex("f'(g(x)) = 0")}, 즉 ${tex('g(x) = \\pm 1')}]</strong> 안쪽함수 ${tex('g(x)')} 의 그래프에 <strong>수평선 ${tex('y = -1, \\; y = 1')}</strong> 을 그으면, 두 수평선 모두 꼭짓점의 높이(${tex('-2')})보다 위에 있으므로 각각 2번씩 만나 <strong class="text-pink-300">모두 4개</strong><br/>
+④ 따라서 극값은 <strong class="text-emerald-300">${tex('1 + 4 = 5')}개</strong> 입니다. (단, 수평선에 접하는 점에서는 부호가 바뀌지 않으므로 제외합니다.)`,
+          highlight: "💡 합성함수 f(g(x))의 극값의 개수 = g′(x)=0 인 x의 개수 + g(x)가 f′(u)=0 의 근(u=α, β)과 같아지는 x의 개수 (단, 접하는 점은 제외)"
         })
       },
 
       5: {
-        badge: "MODE 5 · 합성방정식 f(g(x)) = k 의 실근의 개수 2단계 치환 역추적기",
-        hint: "우측 슬라이더로 상단 수평선 <span class='text-sky-300 font-bold'>y = k</span>를 조절해 보세요! 상단에서 <span class='text-amber-300 font-bold'>f(u)=k 의 근 u₁, u₂, u₃</span>를 찾으면 하단 <span class='text-pink-300 font-bold'>g(x) = uᵢ 수평선</span>이 자동으로 그어지며 실근 개수를 세어줍니다!",
-        tag: "수능·내신 출제율 100% 합성방정식 해법",
+        badge: "장면 5 · 방정식 f(g(x)) = k 의 실근의 개수 (두 단계로 풀기)",
+        hint: "조절 막대로 수평선 <span class='text-sky-300 font-bold'>y = k</span>를 바꿔 보세요! f(u)의 그래프에서 <span class='text-amber-300 font-bold'>f(u)=k 의 근 u₁, u₂, u₃</span>를 찾으면 g(x)의 그래프에 <span class='text-pink-300 font-bold'>수평선 y = uᵢ</span>가 그려지고, g(x) = uᵢ 의 실근(교점)의 개수를 세어 줍니다!",
+        tag: "합성함수가 포함된 방정식의 실근의 개수",
         targetTime: "목표 시간: 10초",
-        question: () => `삼차함수 ${tex('f(u) = u^3 - 3u')} 와 이차함수 ${tex('g(x) = \\dfrac{1}{2}x^2 - 1')} 에 대하여 합성방정식 ${tex('f(g(x)) = 0')} 의 서로 다른 실근의 개수를 구하시오.`,
+        question: () => `삼차함수 ${tex('f(u) = u^3 - 3u')} 와 이차함수 ${tex('g(x) = \\dfrac{1}{2}x^2 - 1')} 에 대하여 방정식 ${tex('f(g(x)) = 0')} 의 서로 다른 실근의 개수를 구하시오.`,
         answerBadge: () => `${tex('u = -\\sqrt{3}')}(0개) + ${tex('u = 0')}(2개) + ${tex('u = \\sqrt{3}')}(2개) = 총 ${tex('4')}개`,
         snap: { p1: -1.0, p2: 0.0, dualView: true },
         steps: [
-          "Step 1 · u=g(x)=x²/2−1로 놓고 바깥 방정식 u³−3u=0을 풉니다.",
-          "Step 2 · g의 치역 [−1,∞)와 각 수평선 u의 교점 개수를 비교합니다.",
-          "Step 3 · u=−√3,0,√3의 원상 개수를 더하고 서로 다른 해인지 확인합니다."
+          "1단계 · u=g(x)=x²/2−1로 놓고 바깥 방정식 u³−3u=0을 풉니다.",
+          "2단계 · g(x)의 치역 [−1, ∞)와 비교하여, 각 u의 값에 대하여 g(x)=u를 만족시키는 x의 개수를 구합니다.",
+          "3단계 · u=−√3, 0, √3 각각에 대한 x의 개수를 더하고, 서로 다른 해인지 확인합니다."
         ],
         textbook: () => ({
-          steps: `① 합성함수 ${tex('y = f(g(x))')} 의 그래프를 직접 그리려고 시도하면 6차함수가 되어 매우 복잡함<br/>
+          steps: `① 합성함수 ${tex('y = f(g(x))')} 의 식을 전개하면 6차식이 되어 풀기 복잡합니다.<br/>
 ② 대신 ${tex('u=g(x)')}로 놓으면 ${tex('u^3-3u=u(u-\\sqrt3)(u+\\sqrt3)=0')}이므로 ${tex('u=-\\sqrt3,0,\\sqrt3')}입니다.<br/>
-③ ${tex('g(x)=\\frac12x^2-1\\ge-1')}이므로 ${tex('u=-\\sqrt3')}은 불가능합니다. ${tex('g(x)=0')}에서 ${tex('x=\\pm\\sqrt2')}, ${tex('g(x)=\\sqrt3')}에서 ${tex('x=\\pm\\sqrt{2(1+\\sqrt3)}')}를 얻어 서로 다른 실근은 4개입니다.`,
-          warning: "⚠️ 합성방정식 f(g(x)) = k 가 나왔을 때 절대로 합성함수 그래프를 그리거나 식을 대입해서 풀지 마세요!"
+③ ${tex('g(x)=\\frac12x^2-1\\ge-1')}이므로 ${tex('u=-\\sqrt3')}은 g(x)의 값이 될 수 없습니다. ${tex('g(x)=0')}에서 ${tex('x=\\pm\\sqrt2')}, ${tex('g(x)=\\sqrt3')}에서 ${tex('x=\\pm\\sqrt{2(1+\\sqrt3)}')}를 얻어 서로 다른 실근은 4개입니다.`,
+          warning: "⚠️ 방정식 f(g(x)) = k 는 합성함수의 그래프를 그리거나 식을 전개하여 풀기 어렵습니다. u = g(x) 로 놓고 두 단계로 나누어 푸는 것이 편리합니다."
         }),
         shortcut: () => ({
-          steps: `① <strong>[1단계: 속함수 치환 ${tex('u = g(x)')}]</strong> 바깥 방정식 ${tex('f(u) = u^3 - 3u = 0')} 의 실근은 <strong class="text-amber-300">${tex('u = -\\sqrt{3}, \\; 0, \\; \\sqrt{3}')}</strong>!<br/>
-② <strong>[2단계: 하단 ${tex('g(x) = \\dfrac{1}{2}x^2 - 1')} (최솟값 ${tex('-1')})에 수평선 3줄 긋기]</strong><br/>
+          steps: `① <strong>[1단계: 치환 ${tex('u = g(x)')}]</strong> 바깥 방정식 ${tex('f(u) = u^3 - 3u = 0')} 의 실근은 <strong class="text-amber-300">${tex('u = -\\sqrt{3}, \\; 0, \\; \\sqrt{3}')}</strong><br/>
+② <strong>[2단계: ${tex('g(x) = \\dfrac{1}{2}x^2 - 1')} (최솟값 ${tex('-1')}) 의 그래프에 수평선 3개 긋기]</strong><br/>
 &nbsp;&nbsp;• ${tex('g(x) = -\\sqrt{3} \\; (\\approx -1.73 < -1)')} $\\implies$ 교점 <strong>0개</strong><br/>
 &nbsp;&nbsp;• ${tex('g(x) = 0 \\; (> -1)')} $\\implies$ 교점 <strong class="text-pink-300">2개</strong><br/>
 &nbsp;&nbsp;• ${tex('g(x) = \\sqrt{3} \\; (\\approx 1.73 > -1)')} $\\implies$ 교점 <strong class="text-sky-300">2개</strong><br/>
-③ 합치면 5초 만에 <strong class="text-emerald-300">총 ${tex('0 + 2 + 2 = 4')}개</strong>!`,
-          highlight: "💡 합성방정식 f(g(x)) = k 는 무조건 【 ① f(u) = k 의 근 u₁, u₂, u₃ 구하기 → ② g(x) = uᵢ 수평선 그어 교점 개수 더하기 】 2단계로 푸세요!"
+③ 모두 더하면 <strong class="text-emerald-300">총 ${tex('0 + 2 + 2 = 4')}개</strong> 입니다.`,
+          highlight: "💡 방정식 f(g(x)) = k 는 ① f(u) = k 의 근 u₁, u₂, u₃ 구하기 → ② 각각의 uᵢ 에 대하여 g(x) = uᵢ 의 실근(수평선 y = uᵢ 와의 교점)의 개수 더하기, 두 단계로 풉니다."
         })
       }
     };
 
   /* ---------- 3. 공통 부품 ---------- */
   // 원본 안내문(examData.hint)은 그대로 두고, 화면 위치를 가리키던 말만 새 배치(탐구 탭·조절 막대)에 맞게 바꿔 보여 줍니다.
-  const hintOf = (n) => examData[n].hint.replace('좌측 상단 ', '탐구 탭의 ').replace('우측 슬라이더로', '조절 막대로');
+  const hintOf = (n) => examData[n].hint;
   // 원본 snap의 p1·p2를 이 실험실의 값 이름으로 옮깁니다.
   const SNAP = {
     1: (d) => ({ m: d.p1, absType: 'in' }),
@@ -303,7 +303,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function solutionOf(mode) {
     return {
       standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분',
-      quickTitle: '10초 컷 · 대칭·치환 비기', quickTag: '10초 컷',
+      quickTitle: '10초 컷 · 대칭·치환 풀이', quickTag: '10초 컷',
       standard: examData[mode].textbook,
       quick: examData[mode].shortcut
     };
@@ -448,16 +448,16 @@ window.addEventListener('DOMContentLoaded', function () {
   const scenes = [
     /* ===== 장면 1 · 4대 절댓값 변환 ===== */
     {
-      id: 'abs', title: '4대 절댓값 변환', short: '절댓값 변환',
-      question: '절댓값을 바깥에 씌울 때 |f(x)|와 안에 씌울 때 f(|x|)는 그래프를 어떻게 바꾸고, x = 0에서 언제 매끄러울까?',
+      id: 'abs', title: '절댓값 기호를 포함한 함수의 그래프', short: '절댓값 변환',
+      question: '절댓값을 바깥에 씌울 때 |f(x)|와 안에 씌울 때 f(|x|)는 그래프를 어떻게 바꾸고, x = 0에서 언제 미분가능할까?',
       guide: hintOf(1) + ' 점선 그래프의 <b>금색 점</b>을 좌우로 끌어도 평행이동 m이 바뀝니다.',
       controls: ['m'],
       presets: [
-        { label: '① y = |f(x)| (아래 접어올림)', color: 'amber', apply: (s) => { s.absType = 'out'; }, on: (s) => s.absType === 'out' },
-        { label: '② y = f(|x|) (x≥0 데칼코마니)', color: 'rose', apply: (s) => { s.absType = 'in'; }, on: (s) => s.absType === 'in' },
-        { label: '③ y = |f(|x|)| (데칼+접어올림)', color: 'violet', apply: (s) => { s.absType = 'both'; }, on: (s) => s.absType === 'both' }
+        { label: '① y = |f(x)| (x축 아랫부분을 위로 접어 올림)', color: 'amber', apply: (s) => { s.absType = 'out'; }, on: (s) => s.absType === 'out' },
+        { label: '② y = f(|x|) (x≥0 부분을 y축에 대하여 대칭이동)', color: 'rose', apply: (s) => { s.absType = 'in'; }, on: (s) => s.absType === 'in' },
+        { label: '③ y = |f(|x|)| (②의 그래프를 ①처럼 접어 올림)', color: 'violet', apply: (s) => { s.absType = 'both'; }, on: (s) => s.absType === 'both' }
       ],
-      actions: actionsOf(null, '자동 실험'),
+      actions: actionsOf(null, '자동으로 m 바꾸기'),
       steps: examData[1].steps,
       problem: problemOf(1), solution: solutionOf(1), enter: enterOf(1),
       focus: { x: [-3.6, 3.6], y: [-2.5, 2.6] },
@@ -466,23 +466,23 @@ window.addEventListener('DOMContentLoaded', function () {
         const m = s.m, slope0 = 3 * m * m - 3, smooth = Math.abs(slope0) < 0.15, type = s.absType;
         const nm = typeName(type);
         let status;
-        if (type === 'out') status = { tone: 'info', text: `${nm}: x축 아랫부분을 접어 올림 · 첨점 3개` };
-        else status = smooth ? { tone: 'ok', text: `x = 0 에서 미분가능 (f′(0) = ${fmt(slope0)})` } : { tone: 'warn', text: `x = 0 에서 첨점 (f′(0) = ${fmt(slope0)} ≠ 0)` };
+        if (type === 'out') status = { tone: 'info', text: `${nm}: x축 아랫부분을 위로 접어 올림 · 미분가능하지 않은 점 3개` };
+        else status = smooth ? { tone: 'ok', text: `x = 0 에서 미분가능 (f′(0) = ${fmt(slope0)})` } : { tone: 'warn', text: `x = 0 에서 꺾여 미분가능하지 않음 (f′(0) = ${fmt(slope0)} ≠ 0)` };
         return {
           chips: [
-            { k: '원함수', tex: `f(x) = (${shiftStr(m)})^3 - 3(${shiftStr(m)})`, color: 'ink' },
+            { k: '함수', tex: `f(x) = (${shiftStr(m)})^3 - 3(${shiftStr(m)})`, color: 'ink' },
             { k: '변환', tex: `g(x) = ${nm}`, color: 'rose' }
           ],
           status,
           readouts: [
             { label: '평행이동 m', value: fmt(m), color: 'amber', ref: 'm' },
             { label: "f′(0) = 3m² − 3", value: fmt(slope0), color: 'sky', ref: 'slope' },
-            { label: '미분불가능 점(첨점)', value: type === 'out' ? '첨점 3개' : (smooth ? 'x=0 첨점 0개' : 'x=0 첨점 발생'), color: 'rose', ref: 'trans' },
-            { label: '판정', value: type === 'in' && smooth ? '전 구간 미분가능' : '첨점 존재', color: type === 'in' && smooth ? 'green' : 'red', wide: true }
+            { label: '미분가능하지 않은 점', value: type === 'out' ? '3개' : (smooth ? 'x=0 에서 0개' : 'x=0 에서 1개'), color: 'rose', ref: 'trans' },
+            { label: '판정', value: type === 'in' && smooth ? '전 구간 미분가능' : '미분가능하지 않은 점이 있음', color: type === 'in' && smooth ? 'green' : 'red', wide: true }
           ],
           tape: s.step >= 3 ? { title: type === 'out'
-            ? 'y = |f(x)| : x축 아랫부분을 접어 올림 (단순 실근에서 뾰족한 첨점 3개 발생)'
-            : `y = ${nm} : x≥0 데칼코마니  ⇒  ${smooth ? "f′(0)=0 이므로 x=0에서 미분가능!" : "f′(0)≠0 이므로 x=0에서 첨점 발생!"}` } : null
+            ? 'y = |f(x)| : x축 아랫부분을 위로 접어 올림 (f(x)=0 의 중근이 아닌 세 실근에서 그래프가 꺾임)'
+            : `y = ${nm} : x≥0 부분을 y축에 대하여 대칭이동  ⇒  ${smooth ? "f′(0)=0 이므로 x=0에서 미분가능!" : "f′(0)≠0 이므로 x=0에서 꺾여 미분가능하지 않음!"}` } : null
         };
       },
       draw: (b, s) => {
@@ -504,8 +504,8 @@ window.addEventListener('DOMContentLoaded', function () {
           const pR = [L / nR, y0 + (L * sR) / nR], pL = [-L / nL, y0 - (L * sL) / nL];
           b.seg([0, y0], pR, { color: 'sky', width: 2.4, dash: true, glow: true, ref: 'slope' });
           b.seg(pL, [0, y0], { color: 'violet', width: 2.4, dash: true, glow: true, ref: 'slope' });
-          if (seen(vb, pR[0], pR[1])) tag(b, pR, `우미분 ${fmt(sR, 1)}`, { color: 'sky', dx: 8, dy: sR > 0 ? -12 : 14, align: 'left', ref: 'slope' });
-          if (seen(vb, pL[0], pL[1])) tag(b, pL, `좌미분 ${fmt(sL, 1)}`, { color: 'violet', dx: -8, dy: sL < 0 ? -12 : 14, align: 'right', ref: 'slope' });
+          if (seen(vb, pR[0], pR[1])) tag(b, pR, `우미분계수 ${fmt(sR, 1)}`, { color: 'sky', dx: 8, dy: sR > 0 ? -12 : 14, align: 'left', ref: 'slope' });
+          if (seen(vb, pL[0], pL[1])) tag(b, pL, `좌미분계수 ${fmt(sL, 1)}`, { color: 'violet', dx: -8, dy: sL < 0 ? -12 : 14, align: 'right', ref: 'slope' });
         }
         // Step 3: 첨점·미분가능 표시
         if (s.step >= 3) {
@@ -513,11 +513,11 @@ window.addEventListener('DOMContentLoaded', function () {
             [m - Math.sqrt(3), m, m + Math.sqrt(3)].forEach((rx) => {
               if (!seen(vb, rx, 0)) return;
               b.point([rx, 0], { color: 'red', r: 6, ref: 'trans' });
-              tag(b, [rx, 0], `첨점 ${fmt(rx)}`, { color: 'red', dy: 36, ref: 'trans' });
+              tag(b, [rx, 0], `꺾이는 점 x=${fmt(rx)}`, { color: 'red', dy: 36, ref: 'trans' });
             });
           } else if (seen(vb, 0, tf(0))) {
             b.point([0, tf(0)], { color: smooth ? 'green' : 'red', r: 7, ref: 'trans' });
-            tag(b, [0, tf(0)], smooth ? "x=0 미분가능 (f′(0)=0)" : `x=0 첨점 (우미분=${fmt(slope0, 1)})`, { color: smooth ? 'green' : 'red', dx: 14, dy: -14, align: 'left', ref: 'trans' });
+            tag(b, [0, tf(0)], smooth ? "x=0 미분가능 (f′(0)=0)" : `x=0 에서 꺾임 (우미분계수=${fmt(slope0, 1)})`, { color: smooth ? 'green' : 'red', dx: 14, dy: -14, align: 'left', ref: 'trans' });
           }
         }
         // 직접 끄는 점: 점선 그래프의 극소점 → 좌우로 끌면 평행이동 m
@@ -529,11 +529,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
     /* ===== 장면 2 · |f(x)−t| = k 교점 스캔 ===== */
     {
-      id: 'scan', title: '|f(x)-t|=k 교점 스캔', short: '교점 스캔',
-      question: '접어 올린 그래프 |f(x) − t| 와 수평선 y = k 가 만나는 점은 t와 k에 따라 몇 개가 될까?',
+      id: 'scan', title: '|f(x)−t|=k 의 교점의 개수', short: '교점 개수',
+      question: 'y = |f(x) − t| 의 그래프와 수평선 y = k 가 만나는 점은 t와 k에 따라 몇 개가 될까?',
       guide: hintOf(2) + ' 점선 그래프의 <b>금색 점</b>(t)과 오른쪽 <b>하늘색 점</b>(k)을 위아래로 끌어 보세요.',
       controls: ['t', 'k2'],
-      actions: actionsOf(null, '수평선 스캔'),
+      actions: actionsOf(null, '수평선 y=k 움직이기'),
       steps: examData[2].steps,
       problem: problemOf(2), solution: solutionOf(2), enter: enterOf(2),
       focus: { x: [-2.9, 3.1], y: [-2.4, 4.1] },
@@ -545,14 +545,14 @@ window.addEventListener('DOMContentLoaded', function () {
         const cusp = Math.abs(t) < 1.98 ? 3 : 1;
         return {
           chips: [
-            { k: '원함수', tex: 'f(x) = x^3 - 3x', color: 'ink' },
+            { k: '함수', tex: 'f(x) = x^3 - 3x', color: 'ink' },
             { k: '방정식', tex: `|f(x) - (${num(t, 1)})| = ${num(k)} \\;\\Rightarrow\\; ${cnt}\\text{개}`, color: 'violet' }
           ],
           status: cnt === 4 ? { tone: 'ok', text: `서로 다른 실근 4개 (t = ${fmt(t)}, k = ${fmt(k)})` } : { tone: 'info', text: `서로 다른 실근 ${cnt}개` },
           readouts: [
-            { label: '접기선 t', value: fmt(t), color: 'amber', ref: 't' },
-            { label: '탐색 수평선 k', value: fmt(k), color: 'sky', ref: 'k' },
-            { label: '미분불가능 점(첨점)', value: `첨점 ${cusp}개`, color: 'violet', ref: 'fold' },
+            { label: '기준선 y = t', value: fmt(t), color: 'amber', ref: 't' },
+            { label: '수평선 y = k', value: fmt(k), color: 'sky', ref: 'k' },
+            { label: '미분가능하지 않은 점', value: `${cusp}개`, color: 'violet', ref: 'fold' },
             { label: '교점(실근)', value: `실근 ${cnt}개`, color: 'rose', ref: 'roots', note: roots.length ? `x = ${roots.map((x) => fmt(x)).join(', ')}` : '교점 없음' }
           ],
           tape: s.step >= 3 ? { title: `방정식 |f(x) - (${fmt(t, 1)})| = ${fmt(k)} 의 서로 다른 실근의 개수 = ${cnt}개!` } : null
@@ -586,11 +586,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
     /* ===== 장면 3 · |f(x)|·g(x) 첨점 힐링 ===== */
     {
-      id: 'heal', title: '|f(x)|·g(x) 첨점 힐링', short: '첨점 힐링',
-      question: '|x − 2|의 뾰족한 점이 곱해서 매끄러워지려면, g(x) = x − r 의 r은 무엇이어야 할까?',
-      guide: hintOf(3) + ' 위 그림의 <b>금색 점</b>(r)을 좌우로 끌어도 됩니다.',
+      id: 'heal', title: '|f(x)|·g(x)의 미분가능성', short: '곱의 미분가능성',
+      question: '|x − 2|의 그래프는 x = 2에서 꺾입니다. 여기에 g(x) = x − r 를 곱한 함수가 x = 2에서 미분가능하려면 r은 무엇이어야 할까?',
+      guide: hintOf(3) + ' 그림의 <b>금색 점</b>(r)을 좌우로 끌어도 됩니다.',
       controls: ['r'],
-      actions: actionsOf('하단 곱함수 동기화 뷰', '영점 r 이동'),
+      actions: actionsOf('곱함수 h(x)의 그래프 함께 보기', 'x절편 r 움직이기'),
       steps: examData[3].steps,
       problem: problemOf(3), solution: solutionOf(3), enter: enterOf(3),
       focus: { x: [-2.2, 4.6], y: [-2.2, 3.4] },
@@ -602,16 +602,16 @@ window.addEventListener('DOMContentLoaded', function () {
           ...topInfo(s, lab, [
             { k: '두 함수', tex: `|f(x)| = |x - 2|, \\; g(x) = x - ${num(r)}`, color: 'ink' },
             { k: '곱함수', tex: `h(x) = |x - 2|(x - ${num(r)})`, color: healed ? 'green' : 'amber' }
-          ], healed ? { tone: 'ok', text: "g(2) = 0 → 첨점이 펴졌습니다 (h′(2) = 0)" } : { tone: 'warn', text: 'g(2) ≠ 0 → x = 2 에서 첨점이 남아 미분불가능' }),
+          ], healed ? { tone: 'ok', text: "g(2) = 0 → x = 2 에서 미분가능합니다 (h′(2) = 0)" } : { tone: 'warn', text: 'g(2) ≠ 0 → x = 2 에서 꺾여 미분가능하지 않습니다' }),
           readouts: [
-            { label: '첨점 위치', value: 'x = 2.00', color: 'rose', ref: 'abs' },
-            { label: 'g(x) 영점 r', value: fmt(r), color: 'amber', ref: 'r' },
-            { label: '첨점 개수', value: healed ? '첨점 0개 (힐링 완료)' : '첨점 1개 (x=2)', color: healed ? 'green' : 'red', ref: 'h' },
-            { label: '판정', value: healed ? "미분가능 (h′(2)=0)" : '미분불가능', color: healed ? 'green' : 'red', ref: 'h', note: `좌미분 ${fmt(-(2 - r), 1)} · 우미분 ${fmt(2 - r, 1)}` }
+            { label: '꺾이는 점의 위치', value: 'x = 2.00', color: 'rose', ref: 'abs' },
+            { label: 'g(x)의 x절편 r', value: fmt(r), color: 'amber', ref: 'r' },
+            { label: 'x = 2 에서의 꺾임', value: healed ? '없음 (미분가능)' : '있음 (x=2)', color: healed ? 'green' : 'red', ref: 'h' },
+            { label: '판정', value: healed ? "미분가능 (h′(2)=0)" : '미분가능하지 않음', color: healed ? 'green' : 'red', ref: 'h', note: `좌미분계수 ${fmt(-(2 - r), 1)} · 우미분계수 ${fmt(2 - r, 1)}` }
           ],
           tape: s.step >= 3 ? { title: healed
-            ? 'g(2) = 0 첨점 힐링 성공! 뾰족점 x=2 에서 곱함수 |f(x)|g(x)가 미분가능해졌습니다!'
-            : 'g(2) ≠ 0 이므로 x = 2 에서 곱함수 |f(x)|g(x)의 뾰족한 첨점이 그대로 남아 있습니다!' } : null
+            ? 'g(2) = 0 이므로 x = 2 에서 곱함수 |f(x)|g(x)가 미분가능합니다!'
+            : 'g(2) ≠ 0 이므로 x = 2 에서 곱함수 |f(x)|g(x)는 꺾여 미분가능하지 않습니다!' } : null
         };
       },
       draw: (b, s) => {
@@ -619,8 +619,8 @@ window.addEventListener('DOMContentLoaded', function () {
         stage(b, s, 'main');
         b.plot((x) => Math.abs(x - 2.0), { color: 'rose', width: 3.2, glow: true, ref: 'abs' });
         b.plot((x) => x - r, { color: 'sky', width: 2.8, glow: true, ref: 'g' });
-        b.point([2, 0], { color: 'red', r: 6.5, label: '첨점 (2, 0)', dx: 12, dy: 22, ref: 'abs' });
-        b.handle('r', [r, 0], { color: 'amber', ref: 'r', label: `g의 영점 r = ${fmt(r)}`, dx: -12, dy: -16, align: 'right',
+        b.point([2, 0], { color: 'red', r: 6.5, label: '꺾이는 점 (2, 0)', dx: 12, dy: 22, ref: 'abs' });
+        b.handle('r', [r, 0], { color: 'amber', ref: 'r', label: `g의 x절편 r = ${fmt(r)}`, dx: -12, dy: -16, align: 'right',
           drag: (w) => { let v = w.x; if (Math.abs(v - 2.0) < 0.08) v = 2.0; s.r = clamp(R(v), -1.5, 2.5); } });
         paneEnd(b);
         if (s.dual) {
@@ -632,9 +632,9 @@ window.addEventListener('DOMContentLoaded', function () {
             b.seg([2.0 - 1.5, -(2.0 - r) * (-1.5)], [2.0, 0], { color: 'violet', width: 2.2, dash: true, ref: 'h' });
             b.seg([2.0, 0], [2.0 + 1.5, (2.0 - r) * 1.5], { color: 'sky', width: 2.2, dash: true, ref: 'h' });
           }
-          b.point([2, 0], { color: healed ? 'green' : 'red', r: 7, label: healed ? '첨점 해소: 좌=우미분=0' : `첨점 유지: 좌 ${fmt(-(2 - r), 1)} ≠ 우 ${fmt(2 - r, 1)}`, dx: -12, dy: -16, align: 'right', ref: 'h' });
+          b.point([2, 0], { color: healed ? 'green' : 'red', r: 7, label: healed ? '미분가능: 좌미분계수=우미분계수=0' : `꺾임: 좌미분계수 ${fmt(-(2 - r), 1)} ≠ 우미분계수 ${fmt(2 - r, 1)}`, dx: -12, dy: -16, align: 'right', ref: 'h' });
           paneEnd(b);
-          subTitle(b, b.W < 640 ? '아래: 곱함수 h(x) = |f(x)|·g(x)' : '아래: 곱함수 h(x) = |f(x)| · g(x), x = 2 근처를 보세요');
+          subTitle(b, b.W < 640 ? '곱함수 h(x) = |f(x)|·g(x)' : '곱함수 h(x) = |f(x)| · g(x), x = 2 근처를 보세요');
           linkX(b, 2.0, healed ? 'green' : 'red');
         }
         b.use('main');
@@ -644,10 +644,10 @@ window.addEventListener('DOMContentLoaded', function () {
     /* ===== 장면 4 · 합성함수 f(g(x)) 극값 ===== */
     {
       id: 'extrema', title: '합성함수 f(g(x)) 극값', short: '합성 극값',
-      question: '겉함수 f(u) = u³ − 3u 의 극값 높이(u = ±1)를 속함수 g(x)가 지나갈 때마다 f(g(x))에 무슨 일이 생길까?',
-      guide: hintOf(4) + ' 아래 그림의 <b>금색 점</b>(꼭짓점)을 위아래로 끌어 보세요.',
+      question: '바깥함수 f(u) = u³ − 3u 의 극값이 생기는 높이(u = ±1)를 안쪽함수 g(x)가 지나갈 때마다 f(g(x))의 극값은 어떻게 달라질까?',
+      guide: hintOf(4) + ' 그림의 <b>금색 점</b>(꼭짓점)을 위아래로 끌어 보세요.',
       controls: ['c4'],
-      actions: actionsOf('상하 동기화 뷰', '꼭짓점 이동'),
+      actions: actionsOf('g(x)의 그래프 함께 보기', '꼭짓점 움직이기'),
       steps: examData[4].steps,
       problem: problemOf(4), solution: solutionOf(4), enter: enterOf(4),
       focus: { x: [-2.8, 2.8], y: [-2.5, 2.9] },
@@ -659,14 +659,14 @@ window.addEventListener('DOMContentLoaded', function () {
           ...topInfo(s, lab, [
             { tex: `f(u) = u^3 - 3u, \\; g(x) = 0.5x^2 + (${num(c, 1)})`, color: 'ink' },
             { tex: `h'(x) = 0 \\Rightarrow ${n}\\text{개}`, color: 'rose' }
-          ], { tone: n === 5 ? 'ok' : 'info', text: `합성함수 극값 ${n}개 (속함수 극값 1개 + u = ±1 관통 ${n - 1}개)` }),
+          ], { tone: n === 5 ? 'ok' : 'info', text: `합성함수 극값 ${n}개 (g′(x)=0 인 x 1개 + g(x)=±1 인 x ${n - 1}개)` }),
           readouts: [
             { label: '꼭짓점 높이 c', value: fmt(c), color: 'amber', ref: 'c' },
-            { label: '겉함수 극값 높이', value: 'u = −1, 1', color: 'rose', ref: 'lines' },
-            { label: '속함수 극값', value: '1개 (x=0)', color: 'sky', ref: 'g' },
-            { label: '합성 극값', value: `총 ${n}개`, color: 'green', ref: 'h' }
+            { label: '바깥함수 극값이 생기는 u', value: 'u = −1, 1', color: 'rose', ref: 'lines' },
+            { label: '안쪽함수 극값', value: '1개 (x=0)', color: 'sky', ref: 'g' },
+            { label: '합성함수 극값', value: `총 ${n}개`, color: 'green', ref: 'h' }
           ],
-          tape: s.step >= 3 ? { title: `합성함수 f(g(x)) 극값 개수 = 속함수 극값(1개) + u=±1 관통(${n - 1}개) = 총 ${n}개!` } : null
+          tape: s.step >= 3 ? { title: `합성함수 f(g(x)) 극값의 개수 = g′(x)=0 인 x(1개) + g(x)=±1 인 x(${n - 1}개) = 총 ${n}개!` } : null
         };
       },
       draw: (b, s) => {
@@ -676,7 +676,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // 극값 위치 마커: x = 0 (g'=0) 및 g(x) = -1, g(x) = 1
         const xs = [];
         if (s.step >= 3) {
-          if (seen(b.viewBox(), 0, comp(0))) b.point([0, comp(0)], { color: 'amber', r: 6.5, label: 'x=0 (속함수 극값)', dx: 12, dy: -14, ref: 'h' });
+          if (seen(b.viewBox(), 0, comp(0))) b.point([0, comp(0)], { color: 'amber', r: 6.5, label: 'x=0 (안쪽함수 극값)', dx: 12, dy: -14, ref: 'h' });
           xs.push(0);
           [-1.0, 1.0].forEach((u) => {
             const val = 2.0 * (u - c);
@@ -699,8 +699,8 @@ window.addEventListener('DOMContentLoaded', function () {
           if (s.step >= 2) {
             b.seg([vb.x0 - 1, 1], [vb.x1 + 1, 1], { color: 'rose', width: 2, dash: true, ref: 'lines' });
             b.seg([vb.x0 - 1, -1], [vb.x1 + 1, -1], { color: 'rose', width: 2, dash: true, ref: 'lines' });
-            b.text([vb.x0, 1], b.W < 640 ? '극소 기준선 y = 1' : '겉함수 극소 기준선 y = 1', { color: 'rose', dx: 8, dy: -8, align: 'left', size: 12, ref: 'lines' });
-            b.text([vb.x0, -1], b.W < 640 ? '극대 기준선 y = -1' : '겉함수 극대 기준선 y = -1', { color: 'rose', dx: 8, dy: -8, align: 'left', size: 12, ref: 'lines' });
+            b.text([vb.x0, 1], b.W < 640 ? '극소 기준선 y = 1' : '바깥함수 극소 기준선 y = 1', { color: 'rose', dx: 8, dy: -8, align: 'left', size: 12, ref: 'lines' });
+            b.text([vb.x0, -1], b.W < 640 ? '극대 기준선 y = −1' : '바깥함수 극대 기준선 y = −1', { color: 'rose', dx: 8, dy: -8, align: 'left', size: 12, ref: 'lines' });
           }
           b.plot(g, { color: 'sky', width: 3, glow: true, ref: 'g' });
           if (s.step >= 3) {
@@ -710,9 +710,9 @@ window.addEventListener('DOMContentLoaded', function () {
             });
           }
           b.handle('c', [0, c], { color: 'amber', ref: 'c', drag: (w) => { s.c4 = clamp(round05(w.y), -2.5, 2.5); } });
-          tag(b, [0, c], b.W < 640 ? `c = ${fmt(c)}` : `속함수 꼭짓점 (0, ${fmt(c)})`, { color: 'amber', dx: -16, dy: 0, align: 'right', ref: 'c' });
+          tag(b, [0, c], b.W < 640 ? `c = ${fmt(c)}` : `안쪽함수 꼭짓점 (0, ${fmt(c)})`, { color: 'amber', dx: -16, dy: 0, align: 'right', ref: 'c' });
           paneEnd(b);
-          subTitle(b, b.W < 640 ? '아래: 속함수 g(x)와 기준선 u = ±1' : '아래: 속함수 y = g(x) 와 겉함수 극값 기준선 (u = ±1)');
+          subTitle(b, b.W < 640 ? '안쪽함수 g(x)와 기준선 u = ±1' : '안쪽함수 y = g(x) 와 바깥함수 극값의 기준선 (u = ±1)');
           if (s.step >= 1) xs.forEach((x) => linkX(b, x, 'rose'));
         }
         b.use('main');
@@ -721,11 +721,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
     /* ===== 장면 5 · f(g(x)) = k 2단계 치환 ===== */
     {
-      id: 'solve', title: 'f(g(x))=k 2단계 치환', short: '2단계 치환',
+      id: 'solve', title: 'f(g(x))=k 를 두 단계로 풀기', short: '두 단계 풀이',
       question: 'f(g(x)) = k 의 근은 어떤 순서로 찾을까? 먼저 u = g(x) 의 값을 정하고, 그다음 x의 개수를 센다면?',
-      guide: hintOf(5) + ' 위 그림의 <b>하늘색 점</b>(k)과 아래 그림의 <b>금색 점</b>(c)을 끌어 보세요.',
+      guide: hintOf(5) + ' 그림의 <b>하늘색 점</b>(k)과 <b>금색 점</b>(c)을 끌어 보세요.',
       controls: ['c5', 'k5'],
-      actions: actionsOf('상하 동기화 뷰', '꼭짓점 이동'),
+      actions: actionsOf('g(x)의 그래프 함께 보기', '꼭짓점 움직이기'),
       steps: examData[5].steps,
       problem: problemOf(5), solution: solutionOf(5), enter: enterOf(5),
       focus: { x: [-2.8, 2.8], y: [-2.6, 2.6] },
@@ -745,7 +745,7 @@ window.addEventListener('DOMContentLoaded', function () {
             { label: 'g(x) 최솟값 c', value: fmt(c), color: 'amber', ref: 'c' },
             { label: '최종 실근', value: `총 ${total}개`, color: 'green', ref: 'x' }
           ],
-          tape: s.step >= 3 ? { title: `2단계 치환 역추적: 1단계 근 u(${uRoots.length}개) → 2단계 g(x)=uᵢ 교점 합산 = 최종 실근 ${total}개!` } : null
+          tape: s.step >= 3 ? { title: `두 단계로 풀기: 1단계 근 u(${uRoots.length}개) → 2단계 g(x)=uᵢ 의 실근을 모두 더하면 최종 실근 ${total}개!` } : null
         };
       },
       draw: (b, s) => {
@@ -778,7 +778,7 @@ window.addEventListener('DOMContentLoaded', function () {
           b.handle('c', [0, c], { color: 'amber', ref: 'c', drag: (w) => { s.c5 = clamp(round05(w.y), -2.5, 2.5); } });
           tag(b, [0, c], b.W < 640 ? `c = ${fmt(c, 1)}` : `g의 꼭짓점 (0, ${fmt(c, 1)})`, { color: 'amber', dx: -16, dy: 0, align: 'right', ref: 'c' });
           paneEnd(b);
-          subTitle(b, b.W < 640 ? '아래: g(x)와 수평선 y = uᵢ' : '2단계: 속함수 y = g(x) 와 수평선 y = uᵢ 교점 스캐너');
+          subTitle(b, b.W < 640 ? 'g(x)와 수평선 y = uᵢ' : '2단계: 안쪽함수 y = g(x) 와 수평선 y = uᵢ 의 교점');
         }
         b.use('main');
       }
@@ -796,11 +796,11 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/미적분1/합성함수·절댓값 그래프.html',
     board: { kind: 'cartesian', focus: { x: [-3.6, 3.6], y: [-2.5, 2.6] }, pad: 0.04 },
     params: {
-      m: { value: 1, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '평행이동 m', hint: 'm = 1 에서 f(|x|)가 x = 0 에서 매끄러워집니다', format: (v) => `m = ${fmt(v)}` },
-      t: { value: 0, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '접기 기준선 t', hint: '점선 그래프 f(x) − t 의 x축 아랫부분이 접혀 올라옵니다', format: (v) => `t = ${fmt(v)}` },
-      k2: { value: 2, min: 0, max: 3.8, step: 0.05, color: 'sky', label: '탐색 수평선 y = k', hint: 't = 0, k = 2 일 때 교점이 정확히 4개', format: (v) => `k = ${fmt(v)}` },
-      r: { value: 2, min: -1.5, max: 2.5, step: 0.05, color: 'amber', label: 'g(x) = x − r 의 영점 r', hint: 'r = 2 에서 첨점이 펴집니다', format: (v) => `r = ${fmt(v)}` },
-      c4: { value: -2, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '속함수 꼭짓점 높이 c', hint: 'g(x) = 0.5x² + c', format: (v) => `c = ${fmt(v)}` },
+      m: { value: 1, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '평행이동 m', hint: 'm = 1 에서 f(|x|)가 x = 0 에서 미분가능합니다', format: (v) => `m = ${fmt(v)}` },
+      t: { value: 0, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '기준선 y = t', hint: '점선 그래프 y = f(x) − t 의 x축 아랫부분이 위로 접혀 올라옵니다', format: (v) => `t = ${fmt(v)}` },
+      k2: { value: 2, min: 0, max: 3.8, step: 0.05, color: 'sky', label: '수평선 y = k', hint: 't = 0, k = 2 일 때 교점이 정확히 4개', format: (v) => `k = ${fmt(v)}` },
+      r: { value: 2, min: -1.5, max: 2.5, step: 0.05, color: 'amber', label: 'g(x) = x − r 의 x절편 r', hint: 'r = 2 에서 x = 2 의 꺾임이 사라집니다', format: (v) => `r = ${fmt(v)}` },
+      c4: { value: -2, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '안쪽함수 꼭짓점 높이 c', hint: 'g(x) = 0.5x² + c', format: (v) => `c = ${fmt(v)}` },
       c5: { value: -1, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: 'g(x) 최솟값 c', hint: 'g(x) = 0.5x² + c', format: (v) => `c = ${fmt(v)}` },
       k5: { value: 0, min: -2.5, max: 2.5, step: 0.05, color: 'sky', label: '우변 상수 k', hint: 'f(u) = k 의 실근 u₁, u₂, u₃', format: (v) => `k = ${fmt(v)}` }
     },

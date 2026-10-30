@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>속도·가속도·이동거리 · AP Math 실험실</title>
-<meta name="description" content="미적분Ⅰ 속도·가속도·이동거리: 수직선 위의 점 · 위치 x(t) · 속도 v(t)를 한 화면에서 동기화해 변위와 이동거리, 운동 방향 전환, 원점 복귀와 최대 속력, 두 점의 추격전, 위치·속도 그래프의 함정을 직접 조작하며 탐구합니다.">
+<meta name="description" content="미적분Ⅰ 속도·가속도·이동거리: 수직선 위의 점 · 위치 x(t) · 속도 v(t)를 한 화면에서 함께 보며 변위와 이동거리, 운동 방향의 전환, 원점 복귀와 최대 속력, 두 점이 쫓아가는 운동, 위치·속도 그래프의 함정을 직접 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -17,7 +17,7 @@
 <script defer src="../kit/apl-shell.js"></script>
 </head>
 <body>
-<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
    미적분Ⅰ · 속도·가속도·이동거리 (AP Math Lab 2.0 이식본)
@@ -39,138 +39,138 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 1. 문제·풀이 데이터 (원본 examData 그대로) ---------- */
     const examData = {
       1: {
-        badge: "MODE 1 · 위치의 변화량(변위 Δx) vs 실제 움직인 거리(D) 3단 동기화",
-        hint: "하단 <span class='text-amber-300 font-bold'>[▶ 주행 재생]</span>을 눌러보세요! 점 P가 <span class='text-sky-300 font-bold'>t=2초까지 왼쪽(-4)으로 후진</span>했다가 유턴하여 <span class='text-pink-300 font-bold'>t=3초에 원점(0)으로 복귀</span>하므로 변위는 0이지만 이동거리는 8이 됩니다!",
-        tag: "수능·평가원 출제율 100% 필수 유형",
+        badge: "장면 1 · 위치의 변화량(변위 Δx)과 실제 움직인 거리(D)의 비교",
+        hint: "<span class='text-amber-300 font-bold'>[▶ 주행 재생]</span> 버튼을 눌러 보세요! 점 P가 <span class='text-sky-300 font-bold'>t=2초까지 왼쪽(-4)으로 후진</span>했다가 방향을 바꾸어 <span class='text-pink-300 font-bold'>t=3초에 원점(0)으로 복귀</span>하므로 변위는 0이지만 이동거리는 8이 됩니다!",
+        tag: "위치의 변화량과 실제 움직인 거리",
         targetTime: "목표 시간: 5초",
         question: () => `수직선 위를 움직이는 점 ${tex('P')}의 시각 ${tex('t \\; (t \\ge 0)')}에서의 속도가 ${tex('v(t) = 3t^2 - 6t')} 이고 ${tex('t = 0')} 일 때 원점에서 출발한다. ${tex('t = 0')} 에서 ${tex('t = 3')} 까지 점 ${tex('P')}의 위치의 변화량 ${tex('\\Delta x')}와 실제로 움직인 거리 ${tex('D')}를 각각 구하시오.`,
         answerBadge: () => `위치 변화량 ${tex('\\Delta x = 0')}, 움직인 거리 ${tex('D = 8')}`,
         snap: { t: 3.0, param: 1.0, dualView: true },
         steps: [
-          "최상단: 1차원 수직선 트랙 위의 점 P 실시간 주행 및 유턴 부메랑 궤적",
-          "중단/하단: 위치 x(t) 그래프와 속도 v(t)의 정적분 면적(-S₂ 후진 vs +S₁ 전진)",
-          "변위(Δx = S₁ - S₂ = 0) vs 이동거리(D = S₁ + S₂ = 8) 비교 칠판 판서"
+          "1단계 · 수직선 위에서 점 P가 왼쪽으로 갔다가 방향을 바꾸어 돌아오는 경로를 봅니다.",
+          "2단계 · 위치 x(t)의 그래프와, 속도 v(t)의 그래프와 t축 사이의 넓이(후진 −S₂, 전진 +S₁)를 표시합니다.",
+          "3단계 · 변위(Δx = S₁ − S₂ = 0)와 이동거리(D = S₁ + S₂ = 8)를 비교합니다."
         ],
         textbook: () => ({
           steps: `① 위치의 변화량: ${tex('\\Delta x = \\int_{0}^{3} (3t^2 - 6t)\\,dt = \\left[ t^3 - 3t^2 \\right]_{0}^{3} = 27 - 27 = 0')}<br/>
 ② 실제 움직인 거리는 ${tex('v(t) = 0')} 인 ${tex('t = 2')} 에서 구간을 쪼개어 절댓값 적분:<br/>
 &nbsp;&nbsp;${tex('D = \\int_{0}^{2} (-3t^2 + 6t)\\,dt + \\int_{2}^{3} (3t^2 - 6t)\\,dt')}<br/>
-③ 각각 부정적분 계산: ${tex('4 + 4 = 8')}...`,
-          warning: "⚠️ 이동거리를 구할 때마다 부정적분에 위끝·아래끝을 대입하지 마세요! 이차 속도함수는 1/6 넓이 공식과 2:1 비율로 암산됩니다!"
+③ 각각 부정적분을 계산하면 ${tex('4 + 4 = 8')} 입니다.`,
+          warning: "⚠️ 이동거리를 구할 때마다 부정적분에 위끝·아래끝을 대입하면 계산이 길어집니다. 아래 빠른 풀이처럼 포물선과 t축 사이의 넓이 공식을 이용할 수 있습니다."
         }),
         shortcut: () => ({
-          steps: `① ${tex('v(t) = 3t(t - 2)')} 에서 ${tex('0 \\sim 2')}초 후진 넓이는 <strong>[1/6 공식]</strong>으로 즉시 <strong class="text-sky-300">${tex('S_2 = \\dfrac{3}{6}(2 - 0)^3 = 4')}</strong>!<br/>
-② <strong>[2 : 1 정적분 상쇄 법칙]</strong>에 의해 ${tex('2 \\sim 3')}초 전진 넓이도 똑같이 <strong class="text-pink-300">${tex('S_1 = 4')}</strong>!<br/>
-③ 따라서 ${tex('t = 3')}초일 때 위치 변화량 <strong class="text-amber-300">${tex('\\Delta x = -4 + 4 = 0')}</strong>, 실제 움직인 거리 <strong class="text-emerald-300">${tex('D = 4 + 4 = 8')}</strong>!`,
-          highlight: "💡 『위치의 변화량 = 원함수 x(t)의 높이 차(S₁-S₂)』이고, 『움직인 거리 = 유턴 지점에서 꺾어 더한 총 발자국 길이(S₁+S₂)』입니다!"
+          steps: `① ${tex('v(t) = 3t(t - 2)')} 에서 ${tex('0 \\sim 2')}초 동안 후진한 거리는 포물선과 ${tex('t')}축으로 둘러싸인 넓이 공식 ${tex('S = \\dfrac{|a|}{6}(\\beta - \\alpha)^3')} 으로 <strong class="text-sky-300">${tex('S_2 = \\dfrac{3}{6}(2 - 0)^3 = 4')}</strong> 입니다.<br/>
+② ${tex('\\int_{0}^{3} v(t)\\,dt = \\left[ t^3 - 3t^2 \\right]_{0}^{3} = 0')} 이므로 ${tex('2 \\sim 3')}초 동안 전진한 거리도 똑같이 <strong class="text-pink-300">${tex('S_1 = 4')}</strong> 입니다.<br/>
+③ 따라서 ${tex('t = 3')}초일 때 위치 변화량 <strong class="text-amber-300">${tex('\\Delta x = -4 + 4 = 0')}</strong>, 실제 움직인 거리 <strong class="text-emerald-300">${tex('D = 4 + 4 = 8')}</strong> 입니다.`,
+          highlight: "💡 위치의 변화량 = x(t)의 값의 차 = S₁ − S₂ 이고, 움직인 거리 = 방향을 바꾸는 지점에서 구간을 나누어 더한 총 길이 S₁ + S₂ 입니다."
         })
       },
 
       2: {
-        badge: "MODE 2 · 운동 방향 전환 판별기 (v(t)=0 관통 유턴 vs 중근 접함 멈칫)",
-        hint: "우측 슬라이더로 <span class='text-sky-300 font-bold'>파라미터 p를 0으로</span> 맞춰보세요! <span class='text-amber-300 font-bold'>v(t) = 3(t-1)² 이 되어 t=1에서 속도가 0이 되지만</span> 부호가 바뀌지 않으므로 점 P는 유턴하지 않고 계속 앞으로 전진합니다!",
+        badge: "장면 2 · 운동 방향의 전환 판별 (v(t)가 0이 되며 부호가 바뀌는 경우, 중근이라 부호가 바뀌지 않는 경우)",
+        hint: "조절 막대로 <span class='text-sky-300 font-bold'>p를 0으로</span> 맞춰 보세요! <span class='text-amber-300 font-bold'>v(t) = 3(t-1)² 이 되어 t=1에서 속도가 0이 되지만</span> 부호가 바뀌지 않으므로 점 P는 방향을 바꾸지 않고 계속 앞으로 전진합니다!",
         tag: "평가원 합답형(ㄱ,ㄴ,ㄷ) 오답률 1위 함정",
         targetTime: "목표 시간: 3초",
         question: () => `수직선 위를 움직이는 점 ${tex('P')}의 속도가 ${tex('v_1(t) = 3(t-1)^2 - 3')} 일 때와 ${tex('v_2(t) = 3(t-1)^2')} 일 때, 출발 후(${tex('t > 0')}) 점 ${tex('P')}가 운동 방향을 바꾸는 횟수를 각각 구하시오.`,
         answerBadge: () => `${tex('v_1(t)')}는 ${tex('1')}번(${tex('t=2')}), ${tex('v_2(t)')}는 ${tex('0')}번 (방향 전환 없음!)`,
         snap: { t: 2.5, param: 0.0, dualView: true },
         steps: [
-          "상단 수직선 트랙: t = 1 에서 잠깐 멈췄다가(v=0) 계속 오른쪽으로 전진하는 궤적",
-          "중단 위치 x(t): 극값이 아닌 3중근 변곡점(기울기 0 후 계속 증가) 확인",
-          "하단 속도 v(t): t축 관통(부호 변화 = 유턴) vs t축 접함(부호 불변 = 직진) 비교"
+          "1단계 · 수직선 위에서 점 P가 t = 1 에서 잠깐 멈췄다가(v=0) 계속 오른쪽으로 전진하는 경로를 봅니다.",
+          "2단계 · 위치 x(t)의 그래프에서 t = 1 은 속도 v(t) = x′(t) 가 극솟값 0 을 갖는 점이므로, 기울기가 0이 된 뒤에도 x(t)가 계속 증가함(극값이 아님)을 확인합니다.",
+          "3단계 · 속도 v(t)의 그래프가 t축을 지나며 부호가 바뀌는 경우(방향 전환)와 t축에 접하는 경우(부호 불변, 계속 직진)를 비교합니다."
         ],
         textbook: () => ({
-          steps: `① 학생들의 흔한 실수: ${tex('v_2(t) = 3(t-1)^2 = 0')} 에서 ${tex('t = 1')} 이므로 ${tex('t = 1')} 에서 운동 방향을 바꾼다고 착각하여 오답 선택!<br/>
+          steps: `① 흔한 실수: ${tex('v_2(t) = 3(t-1)^2 = 0')} 에서 ${tex('t = 1')} 이므로 ${tex('t = 1')} 에서 운동 방향을 바꾼다고 생각하는 것입니다.<br/>
 ② ${tex('v_1(t)=3(t-1)^2-3=3t(t-2)')}은 ${tex('0<t<2')}에서 음수, ${tex('t>2')}에서 양수이므로 ${tex('t=2')}에서 한 번 방향을 바꾼다.<br/>③ ${tex('v_2(t)=3(t-1)^2')}은 ${tex('t=1')} 전후 모두 양수라 부호가 바뀌지 않는다. 따라서 방향 전환 횟수는 각각 ${tex('1,0')}회다.`,
-          warning: "⚠️ '운동 방향을 바꾼다'는 조건을 단순히 'v(t) = 0 이다'로 풀면 평가원 함정에 100% 걸려듭니다!"
+          warning: "⚠️ '운동 방향을 바꾼다'는 조건을 단순히 'v(t) = 0 이다'로 풀면 함정에 걸려들기 쉽습니다. v(t)의 부호가 바뀌는지 확인해야 합니다!"
         }),
         shortcut: () => ({
           steps: `① 방향 전환은 속도가 0인 순간 중 좌우 부호가 바뀌는 때에만 일어난다.<br/>
 ② ${tex('v_1(t)=3t(t-2)')}은 출발 후 ${tex('t=2')}에서 음수에서 양수로 바뀌므로 ${tex('1')}회 전환한다. ${tex('v_2(t)=3(t-1)^2')}은 ${tex('t=1')}에서 0이지만 양수에서 양수로 이어져 전환하지 않는다.<br/>
 ③ 따라서 전환 횟수는 각각 <strong class="text-amber-300">${tex('1')}회, ${tex('0')}회</strong>이다.`,
-          highlight: "💡 『점 P가 운동 방향을 바꾼다 ⇔ 속도 v(t)가 t축을 '관통'하여 부호가 바뀐다 (접하면 유턴 아님!)』"
+          highlight: "💡 점 P가 운동 방향을 바꾼다 ⇔ 속도 v(t)가 0이 되는 시각의 전후에서 부호가 바뀐다 (t축에 접하기만 하면 방향을 바꾸지 않음)"
         })
       },
 
       3: {
-        badge: "MODE 3 · 원점 복귀 시각(2:1 비율) & 최대 속력(|v(t)| 최대 ⇔ a(t)=0)",
-        hint: "시간 마커 <span class='text-amber-300 font-bold'>t</span>를 <span class='text-pink-300 font-bold'>t=1, t=2, t=3</span>에 차례로 맞춰보세요! <span class='text-sky-300 font-bold'>t=1(가속도 0)에서 속력이 최대(3)</span>, t=2에서 원점으로부터 최고 멀리(-4), <span class='text-emerald-300 font-bold'>t=3에서 원점 복귀</span>합니다!",
-        tag: "수능 4점 속도·가속도 종합 추론",
+        badge: "장면 3 · 원점으로 돌아오는 시각과 최대 속력 (|v(t)|가 최대 ⇔ a(t)=0)",
+        hint: "시각 <span class='text-amber-300 font-bold'>t</span>를 나타내는 점을 <span class='text-pink-300 font-bold'>t=1, t=2, t=3</span>에 차례로 맞춰 보세요! <span class='text-sky-300 font-bold'>t=1(가속도 0)에서 속력이 최대(3)</span>, t=2에서 원점으로부터 가장 멀리(−4), <span class='text-emerald-300 font-bold'>t=3에서 원점 복귀</span>합니다!",
+        tag: "속도·가속도와 위치의 종합",
         targetTime: "목표 시간: 5초",
         question: () => `원점에서 출발하여 수직선 위를 움직이는 점 ${tex('P')}의 속도가 ${tex('v(t) = 3t^2 - 6t')} 일 때, ① 닫힌구간 ${tex('[0, 2]')}에서 점 ${tex('P')}의 속력이 최대인 시각, ② 닫힌구간 ${tex('[0, 3]')}에서 원점으로부터 가장 멀리 떨어진 시각, ③ 출발 후 다시 원점을 지나는 시각을 각각 구하시오.`,
         answerBadge: () => `① 최대속력 ${tex('t=1')}, ② 최고점 ${tex('t=2')}, ③ 원점복귀 ${tex('t=3')}`,
         snap: { t: 1.0, param: 1.0, dualView: true },
         steps: [
-          "t = 1 : 가속도 a(1)=v'(1)=0 (위치 변곡점) ⇒ 구간 [0, 2] 최대 속력 |v(1)| = 3",
-          "t = 2 : 속도 v(2)=0 부호 변화 ⇒ 원점으로부터 최고 멀리 떨어진 유턴 지점(x = -4)",
-          "t = 3 : 2 : 1 정적분 넓이 상쇄(S₁ = S₂) ⇒ 출발 후 원점(x = 0) 복귀!"
+          "1단계 · t = 1 : 가속도 a(1)=v′(1)=0 ⇒ 구간 [0, 2]에서 최대 속력 |v(1)| = 3",
+          "2단계 · t = 2 : 속도 v(2)=0 이고 부호가 바뀜 ⇒ 원점으로부터 가장 멀리 떨어진 방향 전환 지점(x = −4)",
+          "3단계 · t = 3 : 전진한 거리와 후진한 거리가 같아짐(S₁ = S₂) ⇒ 출발 후 원점(x = 0)으로 복귀!"
         ],
         textbook: () => ({
           steps: `① 속력 ${tex('|v(t)| = |-3t^2 + 6t| = 3(t-1)^2 - 3')} 의 꼭짓점 ${tex('t = 1')} 에서 최댓값 ${tex('3')}<br/>
 ② ${tex('x(t)=\\int_0^t v(s)ds=t^3-3t^2')}이다. ${tex('x(0)=0, x(2)=-4, x(3)=0')}이고 ${tex('x(t)')}는 ${tex('[0,2]')}에서 감소, ${tex('[2,3]')}에서 증가하므로 이 구간에서 원점과 가장 먼 때는 ${tex('t=2')}이다.<br/>
 ③ ${tex('x(t)=t^2(t-3)=0')}의 양의 해는 ${tex('t=3')}이므로 그때 다시 원점을 지난다.`,
-          warning: "⚠️ 속도 그래프 하나로 ① 꼭짓점(가속도 0 = 최대 속력), ② 영점(유턴 최고점), ③ 2:1 비율(원점 복귀) 세 가지를 동시에 읽어야 합니다!"
+          warning: "⚠️ 속도 그래프 하나로 ① 꼭짓점(가속도 0 → 속력의 최대 후보), ② v=0 이고 부호가 바뀌는 점(방향 전환, 원점에서 가장 먼 지점), ③ 전진·후진한 넓이가 같아지는 시각(원점 복귀) 세 가지를 읽을 수 있습니다."
         }),
         shortcut: () => ({
           steps: `① <strong>[최대 속력]</strong> 이차 속도함수의 대칭축(가속도 ${tex('a(t)=0')})인 <strong class="text-sky-300">${tex('t = 1')}초</strong> (속력 ${tex('|-3|=3')})!<br/>
-② <strong>[원점 최원거리]</strong> 한쪽으로만 끝까지 간 유턴 시점 <strong class="text-pink-300">${tex('t = 2')}초</strong> (거리 ${tex('= \\dfrac{3}{6}\\cdot 2^3 = 4')})!<br/>
+② <strong>[원점에서 가장 먼 시각]</strong> 한쪽으로만 끝까지 가서 방향을 바꾸는 시각 <strong class="text-pink-300">${tex('t = 2')}초</strong> (거리 ${tex('= \\dfrac{3}{6}\\cdot 2^3 = 4')})!<br/>
 ③ ${tex('x(t)=t^3-3t^2=t^2(t-3)')}이므로 출발 이후의 원점 복귀 시각은 ${tex('t=3')}이다. 세 결과는 이 문항의 시간구간과 속도함수에서 나온다.`,
-          highlight: "[0, 2]에서 속력의 임계점과 양 끝점을 비교하고, 원점 복귀는 위치함수의 영점으로 판정한다."
+          highlight: "[0, 2]에서 속력의 최댓값은 |v(t)|의 극값이 생기는 점과 양 끝점의 값을 비교하여 구하고, 원점 복귀는 x(t) = 0 인 t로 판정한다."
         })
       },
 
       4: {
-        badge: "MODE 4 · 두 점 P, Q 의 실시간 추격전 (최대 거리 v_P=v_Q vs 추월 S₁=S₂)",
-        hint: "하단 <span class='text-amber-300 font-bold'>[▶ 주행 재생]</span>을 눌러 상단 트랙의 <span class='text-amber-300 font-bold'>점 P</span>와 <span class='text-sky-300 font-bold'>점 Q</span>의 경주를 관찰하세요! <span class='text-pink-300 font-bold'>t=1초(속도 일치)에 간격이 최대</span>로 벌어지고, <span class='text-emerald-300 font-bold'>t=1.5초에 다시 만납니다!</span>",
+        badge: "장면 4 · 두 점 P, Q 가 쫓아가는 운동 (거리가 최대 ⇔ v_P=v_Q, 다시 만남 ⇔ 속도 차의 넓이가 0)",
+        hint: "<span class='text-amber-300 font-bold'>[▶ 주행 재생]</span> 버튼을 눌러 수직선 위의 <span class='text-amber-300 font-bold'>점 P</span>와 <span class='text-sky-300 font-bold'>점 Q</span>가 움직이는 모습을 관찰하세요! <span class='text-pink-300 font-bold'>t=1초(속도 일치)에 간격이 최대</span>로 벌어지고, <span class='text-emerald-300 font-bold'>t=1.5초에 다시 만납니다!</span>",
         tag: "수능·평가원 두 점의 운동 킬러 유형",
         targetTime: "목표 시간: 5초",
         question: () => `원점에서 동시에 출발하여 수직선 위를 움직이는 두 점 ${tex('P, Q')}의 속도가 각각 ${tex('v_P(t) = -3t^2 + 6t')}, ${tex('v_Q(t) = 3t')} 이다. 출발 후 두 점 ${tex('P, Q')}가 다시 만날 때까지 두 점 사이의 거리가 최대가 되는 시각 ${tex('t_1')}과 다시 만나는 시각 ${tex('t_2')}를 구하시오.`,
         answerBadge: () => `최대 거리 시각 ${tex('t_1 = 1')}, 다시 만나는 시각 ${tex('t_2 = \\dfrac{3}{2} \\; (1.5)')}`,
         snap: { t: 1.5, param: 1.0, dualView: true },
         steps: [
-          "최상단 트랙: 두 점 P(노란색)와 Q(하늘색)의 실시간 추격전 및 간격 표시",
-          "중단 위치 그래프: x_P(t) 와 x_Q(t) 의 세로 간격 최대 지점 및 교점",
-          "하단 속도 그래프: 두 속도가 같은 교점(t=1) 및 넓이 상쇄 지점(t=1.5) 비교"
+          "1단계 · 수직선: 두 점 P(노란색)와 Q(하늘색)가 움직이는 모습과 두 점 사이의 간격을 표시합니다.",
+          "2단계 · 위치 그래프: x_P(t) 와 x_Q(t) 의 간격이 가장 큰 지점과 두 그래프의 교점을 확인합니다.",
+          "3단계 · 속도 그래프: 두 속도가 같아지는 교점(t=1)과 넓이가 같아지는 지점(t=1.5)을 비교합니다."
         ],
         textbook: () => ({
           steps: `① 각각 적분하여 위치 구하기: ${tex('x_P(t) = -t^3 + 3t^2')}, ${tex('x_Q(t) = \\dfrac{3}{2}t^2')}<br/>
 ② 거리 함수 ${tex('f(t) = x_P(t) - x_Q(t) = -t^3 + \\dfrac{3}{2}t^2')} 를 다시 미분하여 극댓값 조사<br/>
-③ 방정식 ${tex('-t^3 + \\dfrac{3}{2}t^2 = 0')} 을 풀어 만나는 시각 ${tex('t_2 = \\dfrac{3}{2}')} 도출...`,
+③ 방정식 ${tex('-t^3 + \\dfrac{3}{2}t^2 = 0')} 을 풀면 만나는 시각 ${tex('t_2 = \\dfrac{3}{2}')} 을 얻습니다.`,
           warning: "⚠️ 많은 학생들이 두 속도 그래프가 만나는 점(v_P = v_Q, t=1)에서 두 점이 만난다고 착각합니다! 속도가 같을 때는 거리가 최대가 되는 순간입니다!"
         }),
         shortcut: () => ({
           steps: `① <strong>[거리 최대 시각]</strong> 앞선 점 ${tex('P')}가 더 빠르다가 뒷점 ${tex('Q')}가 더 빨라지는 경계, 즉 <strong class="text-pink-300">두 속도가 같아지는 순간(${tex('v_P = v_Q')})</strong>에 거리가 최대!<br/>
-&nbsp;&nbsp;${tex('-3t^2 + 6t = 3t \\implies 3t(t - 1) = 0 \\implies')} 즉시 <strong class="text-amber-300">${tex('t_1 = 1')}초</strong>!<br/>
-② <strong>[다시 만나는 시각]</strong> 이차 차함수 ${tex('v_P - v_Q = -3t(t - 1)')} 의 <strong>[2 : 1 정적분 상쇄 법칙]</strong>에 의해 ${tex('1')}초의 ${tex('1.5')}배인 <strong class="text-emerald-300">${tex('t_2 = 1.5')}초</strong>에 즉시 추월!`,
-          highlight: "💡 『두 점 사이의 거리가 최대인 순간 ⇔ 두 속도가 같아지는 순간(v_P = v_Q)』이고, 『만나는 순간 ⇔ 속도 차의 넓이가 0이 되는 순간(2:1 비율)』입니다!"
+&nbsp;&nbsp;${tex('-3t^2 + 6t = 3t \\implies 3t(t - 1) = 0 \\implies')} <strong class="text-amber-300">${tex('t_1 = 1')}초</strong>!<br/>
+② <strong>[다시 만나는 시각]</strong> 속도의 차 ${tex('v_P - v_Q = -3t(t - 1)')} 을 ${tex('0')}부터 ${tex('t_2')}까지 정적분하면 ${tex('x_P(t_2) - x_Q(t_2) = -t_2^3 + \\dfrac{3}{2}t_2^2')} 이고, 이 값이 ${tex('0')}이 되는 <strong class="text-emerald-300">${tex('t_2 = 1.5')}초</strong>에 다시 만납니다.`,
+          highlight: "💡 이 문항에서 두 점 사이의 거리가 최대인 순간 ⇔ 두 속도가 같아지는 순간(v_P = v_Q) 이고, 다시 만나는 순간 ⇔ 속도의 차 v_P − v_Q 를 0부터 정적분한 값이 0이 되는 순간입니다."
         })
       },
 
       5: {
-        badge: "MODE 5 · 세로축 함정 정복: 주어진 그래프가 『위치 x(t)』인가 『속도 v(t)』인가?",
-        hint: "중단 <span class='text-amber-300 font-bold'>위치 x(t) 그래프</span>와 하단 <span class='text-sky-300 font-bold'>속도 v(t) 그래프</span>를 비교해 보세요! <span class='text-pink-300 font-bold'>위치 그래프에서는 '극점(꺾이는 꼭대기)'이 유턴</span>이고, <span class='text-emerald-300 font-bold'>속도 그래프에서는 't축 관통점'이 유턴</span>입니다!",
-        tag: "내신·수능 합답형 실수 방지 필수 훈련",
+        badge: "장면 5 · 세로축의 함정: 주어진 그래프가 위치 x(t)인가 속도 v(t)인가?",
+        hint: "<span class='text-amber-300 font-bold'>위치 x(t) 그래프</span>와 <span class='text-sky-300 font-bold'>속도 v(t) 그래프</span>를 비교해 보세요! <span class='text-pink-300 font-bold'>위치 그래프에서는 극대·극소인 점</span>이 방향 전환이고, <span class='text-emerald-300 font-bold'>속도 그래프에서는 t축과 만나 부호가 바뀌는 점</span>이 방향 전환입니다!",
+        tag: "위치 그래프와 속도 그래프의 구별",
         targetTime: "목표 시간: 3초",
-        question: () => `시각 ${tex('t')}에 대한 삼차 위치 그래프 ${tex('x(t) = t^3 - 3t^2')} 과 이차 속도 그래프 ${tex('v(t) = 3t^2 - 6t')} 를 비교할 때, ① 위치 그래프 ${tex('x(t)')}에서 운동 방향이 바뀌는 지점의 기하학적 특징과, ② 속도 그래프 ${tex('v(t)')}에서 운동 방향이 바뀌는 지점의 특징을 각각 말하시오.`,
-        answerBadge: () => `위치 ${tex('x(t)')}: 극솟값 ${tex('t=2')} / 속도 ${tex('v(t)')}: ${tex('t')}축 관통(${tex('t=2')})`,
+        question: () => `시각 ${tex('t')}에 대한 삼차 위치 그래프 ${tex('x(t) = t^3 - 3t^2')} 과 이차 속도 그래프 ${tex('v(t) = 3t^2 - 6t')} 를 비교할 때, ① 위치 그래프 ${tex('x(t)')}에서 운동 방향이 바뀌는 지점의 그래프상의 특징과, ② 속도 그래프 ${tex('v(t)')}에서 운동 방향이 바뀌는 지점의 특징을 각각 말하시오.`,
+        answerBadge: () => `위치 ${tex('x(t)')}: 극솟값 ${tex('t=2')} / 속도 ${tex('v(t)')}: ${tex('t')}축을 지나며 부호가 바뀜(${tex('t=2')})`,
         snap: { t: 2.0, param: 1.0, dualView: true },
         steps: [
-          "상단 수직선 트랙: t = 2초(x = -4)에서 실제 운동 방향이 왼쪽→오른쪽으로 바뀌는 순간",
-          "중단 위치 x(t) 그래프: 접선의 기울기가 0이 되는 '극소점'이 곧 방향 전환점!",
-          "하단 속도 v(t) 그래프: 함숫값이 0을 '관통'하여 부호가 바뀌는 점이 곧 방향 전환점!"
+          "1단계 · 수직선: t = 2초(x = −4)에서 실제 운동 방향이 왼쪽에서 오른쪽으로 바뀌는 순간을 봅니다.",
+          "2단계 · 위치 x(t) 그래프: 접선의 기울기가 0이 되는 극소점이 방향 전환점입니다.",
+          "3단계 · 속도 v(t) 그래프: 함숫값이 0이 되면서 부호가 바뀌는 점이 방향 전환점입니다."
         ],
         textbook: () => ({
           steps: `① 위치와 속도는 ${tex('v(t)=x\'(t)')}로 연결된다. 따라서 방향 전환은 위치 그래프의 극값 중에서도 실제로 감소에서 증가(또는 증가에서 감소)로 바뀌는 점이다.<br/>
 ② 여기서는 ${tex('v(t)=3t(t-2)')}이고 ${tex('0<t<2')}에서 음수, ${tex('t>2')}에서 양수다. 그러므로 위치는 ${tex('t=2')}에서 극소 ${tex('x(2)=-4')}를 갖고 방향을 바꾼다. ${tex('x(t)=0')}인 ${tex('t=3')}은 원점 통과일 뿐 방향 전환점이 아니다.<br/>
-③ 속도 그래프에서는 ${tex('t=2')}에서만(${tex('t>0')} 범위에서) ${tex('t')}축을 관통해 부호가 바뀐다. ${tex('t=0')}은 출발 경계다.`,
-          warning: "⚠️ 속도·거리 문제를 풀기 전 0.1초 만에 가장 먼저 해야 할 일은 세로축 이름(위치 x 인지 속도 v 인지)에 동그라미를 치는 것입니다!"
+③ 속도 그래프에서는 ${tex('t=2')}에서만(${tex('t>0')} 범위에서) ${tex('t')}축을 지나며 부호가 바뀐다. ${tex('t=0')}은 출발 경계다.`,
+          warning: "⚠️ 속도·거리 문제를 풀기 전에 가장 먼저 세로축 이름(위치 x 인지 속도 v 인지)을 확인해야 합니다!"
         }),
         shortcut: () => ({
           steps: `① 세로축이 <strong class="text-amber-300">【 위치 ${tex('x(t)')} 】</strong>일 때:<br/>
-&nbsp;&nbsp;• ${tex('t')}절편(${tex('x=0')}) $=$ <strong>원점 통과</strong> / 극대·극소(기울기 0) $=$ <strong>운동 방향 전환(유턴)</strong>!<br/>
+&nbsp;&nbsp;• ${tex('t')}절편(${tex('x=0')}) $=$ <strong>원점 통과</strong> / 극대·극소(기울기 0) $=$ <strong>운동 방향 전환</strong><br/>
 ② 세로축이 <strong class="text-sky-300">【 속도 ${tex('v(t)')} 】</strong>일 때:<br/>
-&nbsp;&nbsp;• ${tex('t')}절편 관통(${tex('v=0')}) $=$ <strong>운동 방향 전환(유턴)</strong> / 극대·극소(기울기 0) $=$ <strong>가속도 0(최대 속력 후보)</strong>!`,
-          highlight: "💡 『위치 그래프의 극점 = 속도 그래프의 영점(관통) = 운동 방향 전환(유턴)』 — 3단 동기화 화면을 머릿속에 통째로 캡처해 두세요!"
+&nbsp;&nbsp;• ${tex('t')}절편(${tex('v=0')})에서 부호가 바뀜 $=$ <strong>운동 방향 전환</strong> / 극대·극소(기울기 0) $=$ <strong>가속도 0(최대 속력 후보)</strong>`,
+          highlight: "💡 위치 그래프의 극대·극소인 점 = 속도 그래프에서 t축과 만나 부호가 바뀌는 점 = 운동 방향 전환 — 위치 그래프와 속도 그래프를 함께 떠올려 구별하세요."
         })
       }
     };
@@ -319,7 +319,7 @@ window.addEventListener('DOMContentLoaded', function () {
     b.vline(s.t, { color: 'amber', alpha: on ? 0.85 : 0.35, width: on ? 2.2 : 1.3, dash: true, ref: 't' });
   };
   // 끌 때는 1·1.5·2·3 근처에서 자석처럼 붙지만, 화살표 키(keydown)는 붙지 않아야 스냅 점에서 한 칸씩 벗어날 수 있습니다.
-  const timeHandle = (b, s, id, snaps) => b.handle(id, [s.t, 0], { color: 'amber', r: 7, ref: 't', ariaLabel: '시간 t 마커', priority: 1, drag: (w, e) => { s.t = e && e.type === 'keydown' ? +clamp(w.x, 0, T_MAX).toFixed(2) : snapT(w.x, snaps); } });
+  const timeHandle = (b, s, id, snaps) => b.handle(id, [s.t, 0], { color: 'amber', r: 7, ref: 't', ariaLabel: '시각 t 표시점', priority: 1, drag: (w, e) => { s.t = e && e.type === 'keydown' ? +clamp(w.x, 0, T_MAX).toFixed(2) : snapT(w.x, snaps); } });
   /**
    * b.point 래퍼(라벨 자리 찾기): 먼저 그린 라벨·점과 겹치거나 오른쪽 도구 막대(수업 모드에서는 더 큼) 밑으로 들어가면
    * 같은 점의 다른 쪽(아래·왼쪽)으로 옮깁니다. 중요한 라벨부터 먼저 부르세요. 썸네일에서는 라벨 없이 점만 그립니다.
@@ -478,10 +478,10 @@ window.addEventListener('DOMContentLoaded', function () {
     pt.block(tx);
     turns.forEach((tt) => {
       const xv = posX(tt, p), isMin = tt > 1;
-      if (vis(b, xv)) pt([tt, xv], { color: 'red', r: 5.5, ref: 'x', label: Math.abs(t - tt) < 0.05 || (nw && turns.length > 1) ? null : nw ? `유턴 ${isMin ? '극소' : '극대'} (${fmt(tt, 1)}, ${fmt(xv, 1)})` : `유턴 ${isMin ? '극소' : '극대'}(t=${fmt(tt, 1)}, x=${fmt(xv, 1)})`, dx: 10, dy: isMin ? 16 : -16 });
+      if (vis(b, xv)) pt([tt, xv], { color: 'red', r: 5.5, ref: 'x', label: Math.abs(t - tt) < 0.05 || (nw && turns.length > 1) ? null : nw ? `방향 전환 ${isMin ? '극소' : '극대'} (${fmt(tt, 1)}, ${fmt(xv, 1)})` : `방향 전환 ${isMin ? '극소' : '극대'}(t=${fmt(tt, 1)}, x=${fmt(xv, 1)})`, dx: 10, dy: isMin ? 16 : -16 });
     });
-    if (id === 'origin' || id === 'trap') pt([3, 0], { hollow: true, color: 'green', r: 5.5, ref: 'x', label: Math.abs(t - 3) < 0.05 ? null : id === 'origin' ? '원점 복귀 (t=3)' : nw ? '원점 통과 (유턴 아님)' : '원점 통과일 뿐 (유턴 아님)', dx: -10, dy: -16, align: 'right' });
-    if (id === 'turn' && Math.abs(p) < 1e-6) pt([1, posX(1, p)], { hollow: true, color: 'violet', r: 5.5, ref: 'x', label: nw ? '변곡점 (극값 아님)' : '변곡점 (기울기 0, 극값 아님)', dx: 10, dy: 16 });
+    if (id === 'origin' || id === 'trap') pt([3, 0], { hollow: true, color: 'green', r: 5.5, ref: 'x', label: Math.abs(t - 3) < 0.05 ? null : id === 'origin' ? '원점 복귀 (t=3)' : nw ? '원점 통과 (방향 전환 아님)' : '원점 통과일 뿐 (방향 전환 아님)', dx: -10, dy: -16, align: 'right' });
+    if (id === 'turn' && Math.abs(p) < 1e-6) pt([1, posX(1, p)], { hollow: true, color: 'violet', r: 5.5, ref: 'x', label: nw ? 'v(t) 극소 · x(t)는 극값 아님' : 'v(t)가 극소(0)인 점 · x(t)는 극값 아님', dx: 10, dy: 16 });
     pt.avoid([t, 0], 9);
     if (vis(b, x)) pt([t, x], { color: 'amber', r: 6.5, ref: 'x', label: nw ? `x(${fmt(t)}) = ${fmt(x)}` : `위치 x(${fmt(t)}) = ${fmt(x)}`, dx: 12, dy: -12 });
     timeHandle(b, s, 'T');
@@ -505,7 +505,7 @@ window.addEventListener('DOMContentLoaded', function () {
           pt.text([mid, velV(mid, p) / 2], `${leg.dir > 0 ? '전진 +' : '후진 −'}${fmt(len)}`, { color: leg.dir > 0 ? 'rose' : 'sky', size: 11.5, weight: 800, baseline: 'middle', ref: 'area' });
         });
       }
-      turns.forEach((tt) => pt([tt, 0], { hollow: true, color: 'red', r: 5.5, ref: 'v', label: Math.abs(t - tt) < 0.05 || (nw && turns.length > 1) ? null : turns.length > 1 ? 'v=0' : nw ? 'v=0 유턴' : 'v=0 · 부호 변화(유턴)', dx: turns.length > 1 ? -10 : 10, dy: turns.length > 1 ? -16 : 16, align: turns.length > 1 ? 'right' : 'left' }));
+      turns.forEach((tt) => pt([tt, 0], { hollow: true, color: 'red', r: 5.5, ref: 'v', label: Math.abs(t - tt) < 0.05 || (nw && turns.length > 1) ? null : turns.length > 1 ? 'v=0' : nw ? 'v=0 방향 전환' : 'v=0 · 부호 변화(방향 전환)', dx: turns.length > 1 ? -10 : 10, dy: turns.length > 1 ? -16 : 16, align: turns.length > 1 ? 'right' : 'left' }));
       const v1 = velV(1, p);
       const vertex = id === 'origin' ? (nw ? 'a(1)=0 속력 최대' : `a(1)=0 · 속력 최대 |v|=${fmt(Math.abs(v1), 0)}`) : id === 'turn' && Math.abs(p) < 1e-6 ? (nw ? 'v=0 접함 (직진)' : 't=1 : v=0 접함 (부호 불변)') : nw ? 'a(1)=0' : '가속도 a(1)=0 (꼭짓점)';
       if (vis(b, v1)) pt([1, v1], { color: 'violet', r: 5, ref: 'a', label: vertex, dx: -8, dy: 18, align: 'right' });
@@ -555,7 +555,7 @@ window.addEventListener('DOMContentLoaded', function () {
       c.restore();
       b.use('deriv');
       pt.block(tv);
-      if (t1 > 0.05 && t1 <= T_MAX) pt([t1, vQ4(t1, k)], { color: 'rose', r: 6, ref: 'gap', label: NARROW.matches ? 'v_P=v_Q 거리최대' : `v_P=v_Q (t=${+t1.toFixed(2)}, 거리 최대!)`, dx: -10, dy: -16, align: 'right' });
+      if (t1 > 0.05 && t1 <= T_MAX) pt([t1, vQ4(t1, k)], { color: 'rose', r: 6, ref: 'gap', label: NARROW.matches ? 'v_P=v_Q 거리 최대' : `v_P=v_Q (t=${+t1.toFixed(2)}, 거리 최대!)`, dx: -10, dy: -16, align: 'right' });
       if (vis(b, vP4(t))) pt([t, vP4(t)], { color: 'amber', r: 5, ref: 'P' });
       if (vis(b, vQ4(t, k))) pt([t, vQ4(t, k)], { color: 'sky', r: 5, ref: 'Q' });
       timeHandle(b, s, 'Tv', snaps);
@@ -571,7 +571,7 @@ window.addEventListener('DOMContentLoaded', function () {
   };
   const solutionOf = (m) => ({
     standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분',
-    quickTitle: '10초 컷 · 넓이와 비율 비기', quickTag: '10초 컷',
+    quickTitle: '10초 컷 · 넓이와 비율 공식', quickTag: '10초 컷',
     standard: examData[m].textbook,
     quick: examData[m].shortcut
   });
@@ -582,7 +582,7 @@ window.addEventListener('DOMContentLoaded', function () {
     s.dual = sn.dualView;
   };
   const actionsOf = () => [
-    { id: 'dual', icon: 'split', label: (s) => (s.dual ? 'x(t)·v(t) 동시 뷰 켜짐' : 'x(t)·v(t) 동시 뷰'), on: (s) => s.dual, run: (s) => { s.dual = !s.dual; } },
+    { id: 'dual', icon: 'split', label: (s) => (s.dual ? 'x(t)·v(t) 함께 보기 켜짐' : 'x(t)·v(t) 함께 보기'), on: (s) => s.dual, run: (s) => { s.dual = !s.dual; } },
     { id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '주행 재생'), on: (s) => s.playing, run: (s) => { if (!s.playing && s.t >= 3.3) s.t = 0; s.playing = !s.playing; } }
   ];
   const tick = (s, dt) => {
@@ -638,18 +638,18 @@ window.addEventListener('DOMContentLoaded', function () {
     const p = q.p;
     if (p > 1e-6) {
       const n = turnsOf(p, T_MAX).length;
-      return { tone: 'ok', text: `t축 관통 → 방향 전환 ${n}번 (t = ${turnsOf(p, T_MAX).map((x) => fmt(x, 2)).join(', ')})` };
+      return { tone: 'ok', text: `v의 부호가 바뀜 → 방향 전환 ${n}번 (t = ${turnsOf(p, T_MAX).map((x) => fmt(x, 2)).join(', ')})` };
     }
     return Math.abs(p) <= 1e-6
-      ? { tone: 'warn', text: 't = 1 : v = 0 이지만 부호 불변 → 유턴 아님' }
+      ? { tone: 'warn', text: 't = 1 : v = 0 이지만 부호 불변 → 방향 전환 아님' }
       : { tone: 'info', text: 'v(t) > 0 : 멈추지 않고 계속 전진' };
   };
   cfg3.status = (s, q) => (near(q.t, 1) ? { tone: 'ok', text: `t = 1 : a = 0 → [0, 2]에서 속력 최대 |v| = ${fmt(Math.abs(q.v), 0)}` }
     : near(q.t, 2) ? { tone: 'ok', text: `t = 2 : v = 0 (부호 변화) → 원점에서 가장 멀리 x = ${fmt(q.x, 0)}` }
     : near(q.t, 3) ? { tone: 'ok', text: 't = 3 : x = 0 → 출발 후 다시 원점 복귀' }
     : { tone: 'info', text: `속력 |v| = ${fmt(Math.abs(q.v))} · 위치 x = ${fmt(q.x)}` });
-  cfg5.status = (s, q) => (near(q.t, 2) ? { tone: 'ok', text: 't = 2 : x′ = v = 0 → x(t) 극소, v(t)는 t축 관통 (유턴)' }
-    : near(q.t, 3) ? { tone: 'warn', text: 't = 3 : x = 0 은 원점 통과일 뿐, 유턴이 아님' }
+  cfg5.status = (s, q) => (near(q.t, 2) ? { tone: 'ok', text: 't = 2 : x′ = v = 0 → x(t) 극소, v(t)는 t축을 지나며 부호가 바뀜 (방향 전환)' }
+    : near(q.t, 3) ? { tone: 'warn', text: 't = 3 : x = 0 은 원점 통과일 뿐, 방향 전환이 아님' }
     : { tone: 'info', text: `x(t) = ${fmt(q.x)} · v(t) = ${fmt(q.v)}` });
 
   function singleScene(m, cfg, o) {
@@ -676,28 +676,28 @@ window.addEventListener('DOMContentLoaded', function () {
 
   const scenes = [
     singleScene(1, cfg1, {
-      title: '변위 vs 이동거리', short: '변위·거리',
+      title: '변위와 이동거리', short: '변위·거리',
       question: '점이 원점으로 돌아오면 위치의 변화량(변위)은 0인데, 실제로 걸어간 거리도 0일까? 속도 그래프의 어느 넓이가 각각을 뜻할까?',
       controls: ['t'],
-      presets: [tPreset(2, '유턴 (x = −4)', 'sky'), tPreset(3, '원점 복귀', 'rose')],
+      presets: [tPreset(2, '방향 전환 (x = −4)', 'sky'), tPreset(3, '원점 복귀', 'rose')],
       fx: { w: [-5, 7], n: [-6.2, 7] }, fv: { w: [-5, 17.5], n: [-7.2, 17.5] }
     }),
     singleScene(2, cfg2, {
-      title: '운동 방향 전환(유턴)', short: '유턴 판별',
-      question: '속도가 0이 되는 순간마다 점은 방향을 바꿀까? v(t)=0 이어도 유턴하지 않는 경우는 그래프가 어떤 모양일 때일까?',
+      title: '운동 방향의 전환', short: '방향 전환 판별',
+      question: '속도가 0이 되는 순간마다 점은 방향을 바꿀까? v(t)=0 이어도 방향을 바꾸지 않는 경우는 그래프가 어떤 모양일 때일까?',
       controls: ['t', 'p'],
-      presets: [{ label: 'p = 1 · 관통 (유턴)', color: 'sky', set: { p: 1 }, on: (s) => Math.abs(s.p - 1) < 0.011 }, { label: 'p = 0 · 접함 (직진)', color: 'amber', set: { p: 0 }, on: (s) => Math.abs(s.p) < 0.011 }],
+      presets: [{ label: 'p = 1 · 부호가 바뀜 (방향 전환)', color: 'sky', set: { p: 1 }, on: (s) => Math.abs(s.p - 1) < 0.011 }, { label: 'p = 0 · 접함 (직진)', color: 'amber', set: { p: 0 }, on: (s) => Math.abs(s.p) < 0.011 }],
       fx: { w: [-6, 9], n: [-7.2, 8.2] }, fv: { w: [-7, 17], n: [-8, 17] }
     }),
     singleScene(3, cfg3, {
-      title: '원점 복귀 & 최대속력', short: '원점 복귀',
+      title: '원점 복귀와 최대 속력', short: '원점 복귀',
       question: '속도 그래프 하나만으로 최대 속력, 원점에서 가장 먼 순간, 원점으로 돌아오는 시각을 한꺼번에 읽을 수 있을까?',
       controls: ['t'],
-      presets: [tPreset(1, '가속도 0 · 최대 속력', 'violet'), tPreset(2, '유턴 · 최고점', 'sky'), tPreset(3, '원점 복귀', 'rose')],
+      presets: [tPreset(1, '가속도 0 · 최대 속력', 'violet'), tPreset(2, '방향 전환 · 가장 먼 지점', 'sky'), tPreset(3, '원점 복귀', 'rose')],
       fx: { w: [-5, 7], n: [-6.2, 7] }, fv: { w: [-5, 17.5], n: [-7.2, 17.5] }
     }),
     {
-      id: cfg4.id, title: '두 점 P·Q 추격전', short: 'P·Q 추격',
+      id: cfg4.id, title: '두 점 P, Q가 쫓아가는 운동', short: 'P·Q 운동',
       question: '두 점 사이의 거리가 가장 클 때와 다시 만날 때는 속도 그래프에서 각각 어떻게 나타날까?',
       guide: examData[4].hint,
       controls: ['t', 'k'],
@@ -725,7 +725,7 @@ window.addEventListener('DOMContentLoaded', function () {
             { tex: `x_P(t) = -t^3 + 3t^2,\\; x_Q(t) = ${k1 ? '1.5' : fmt(1.5 * k)}t^2`, color: 'ink' },
             { tex: `v_P(t) = -3t^2 + 6t,\\; v_Q(t) = ${k1 ? '3' : fmt(3 * k)}t`, color: 'sky' }
           ],
-          status: atMax ? { tone: 'ok', text: '★ 최대 간격 (v_P = v_Q)' } : atMeet ? { tone: 'ok', text: '★ 두 점 만남 (추월)' } : { tone: 'info', text: '추격 진행 중' },
+          status: atMax ? { tone: 'ok', text: '★ 최대 간격 (v_P = v_Q)' } : atMeet ? { tone: 'ok', text: '★ 두 점 만남 (추월)' } : { tone: 'info', text: '두 점이 움직이는 중' },
           readouts: [
             { label: '관찰 시각 t', value: `${fmt(t)} 초`, color: 'amber', ref: 't' },
             { label: '간격 |x_P − x_Q|', value: fmt(gap), color: 'rose', ref: 'gap', note: xp >= xq ? 'P가 앞' : 'Q가 앞' },
@@ -740,10 +740,10 @@ window.addEventListener('DOMContentLoaded', function () {
       draw: (b, s, v) => drawPair(b, s, v, cfg4)
     },
     singleScene(5, cfg5, {
-      title: '위치 x(t) vs 속도 v(t) 함정', short: '위치 vs 속도',
+      title: '위치 x(t)와 속도 v(t)의 함정', short: '위치와 속도',
       question: '그래프의 세로축이 위치인지 속도인지에 따라, ‘운동 방향이 바뀌는 점’의 모양은 어떻게 달라질까?',
       controls: ['t'],
-      presets: [tPreset(2, '유턴 (두 그래프 비교)', 'red'), tPreset(3, '원점 통과 (유턴 아님)', 'green')],
+      presets: [tPreset(2, '방향 전환 (두 그래프 비교)', 'red'), tPreset(3, '원점 통과 (방향 전환 아님)', 'green')],
       fx: { w: [-5, 7], n: [-6.2, 7] }, fv: { w: [-5, 17.5], n: [-7.2, 17.5] }
     })
   ];
@@ -761,7 +761,7 @@ window.addEventListener('DOMContentLoaded', function () {
     board: { kind: 'cartesian', aspect: 'free', pad: 0.02, focus: { x: X_FOCUS, y: [-5.2, 7.4] } },
     params: {
       t: { value: 3, min: 0, max: T_MAX, step: 0.02, color: 'amber', label: '관찰 시각 t (초)', hint: '0초 ~ 3.5초 · 두 그래프 축 위의 노란 점을 끌어도 됩니다', format: (v) => `t = ${fmt(v)} 초` },
-      p: { value: 1, min: -0.5, max: 2.0, step: 0.05, color: 'sky', label: '운동 제어 파라미터 p', hint: '$v(t)=3(t-1)^2-3p$ · p = 1 이면 $v=3t(t-2)$, p = 0 이면 $v=3(t-1)^2$', format: (v) => `p = ${fmt(v)}` },
+      p: { value: 1, min: -0.5, max: 2.0, step: 0.05, color: 'sky', label: '속도를 정하는 값 p', hint: '$v(t)=3(t-1)^2-3p$ · p = 1 이면 $v=3t(t-2)$, p = 0 이면 $v=3(t-1)^2$', format: (v) => `p = ${fmt(v)}` },
       k: { value: 1, min: -0.5, max: 2.0, step: 0.05, color: 'sky', label: '점 Q의 속도 계수 k', hint: '$v_Q(t)=3kt$ · 문제의 조건은 k = 1', format: (v) => `k = ${fmt(v)}` }
     },
     state: { dual: true },
