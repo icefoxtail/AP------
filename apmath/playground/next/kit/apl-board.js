@@ -23,7 +23,8 @@
     return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
   }
   function fmtTick(v, step) {
-    const d = step >= 1 ? 0 : step >= 0.1 ? 1 : 2;
+    let d = 0; // 눈금 간격(2.5, 0.25 등)이 필요로 하는 만큼만 소수 자리를 씁니다
+    while (d < 6 && Math.abs(step * Math.pow(10, d) - Math.round(step * Math.pow(10, d))) > 1e-9) d++;
     const s = (Math.abs(v) < 1e-9 ? 0 : v).toFixed(d);
     return s.replace('-', '−');
   }
