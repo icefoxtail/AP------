@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>로그함수와 역함수·도형 · AP Math 실험실</title>
+<meta name="description" content="대수 로그함수 고유 성질: 로그 세로 간격 불변량, 진수 조건 함정과 절댓값 곱, 어긋난 역함수 대칭축, 역함수 축 전환 격자점을 직접 조작하며 탐구합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실은 JavaScript가 필요합니다.</noscript>
+<script>
+/* ==========================================================================
+   대수 · 로그함수와 역함수·도형 (AP Math Lab 2.0 이식본) — 4개 장면
+   원본: labs/대수/part1b.html
+   - 문제·단계·정석/비기 문구(PART.modes)와 수식 줄(HUD)은 원본 글자 그대로입니다.
+   - 그리기는 원본 renderLoop의 log_* 4개 분기를 그대로 옮기고, drawSeg/drawCurve/drawPt 이름만
+     새 무대 엔진(b.seg/b.plot/b.point·b.handle)에 연결했습니다. 모드마다 조절값 이름표(접두어)만 붙였습니다.
+   - [2.0 수정] LOG 01: 원본은 오른쪽 절단선(x=t₂)과 '등적 직사각형' 영역을 그리지 않아 3단계 설명·HUD의 넓이와
+     그림이 어긋났음 → 2단계에서 두 절단선, 3단계에서 둘러싸인 영역을 그림(끌 수 있는 점 D 포함).
+   - [2.0 수정] LOG 02: 원본은 제목·1단계 설명의 log₂(x²) 양날개를 그리지 않았고 3단계 중점 M도 없었음 →
+     1단계에 양날개(점선), 2단계에 두 교점의 수선, 3단계에 중점 M과 x=p+1을 그림.
+   - [2.0 수정] LOG 03: 원본은 지수 평행이동 m과 로그 평행이동 p를 따로 움직여 '이동된 대칭축'이 실제 두 곡선의
+     대칭축이 아닌 그림이 나왔음 → 대칭이 성립하는 조건 p = m + n − q로 p가 m을 따라 움직이게 함(p 슬라이더는 숨김).
+     1·3단계(정점 P₁·P₂ / 교점 A·B·중점 M·원)가 그림에 없던 것도 함께 그림.
+   - 원본의 단계 버튼은 설명 글만 바꾸고 그림에는 영향이 없었음 → 셸의 단계(그림에 보조선이 나타남)로 바꿈.
+   - 원본 하단의 흩어진 칠판 배지(drawBadge)는 무대 카드로 옮겨 그림을 가리지 않게 함.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const { fmt, clamp } = APLab;
+
+  /* ===== 원본 그대로: PART (원본 118행) ===== */
+  const PART = {"id":"part1b","file":"part1b.html","badge":"Part 1-B","title":"로그함수 고유 성질 & 역함수·원·도형 결합 마스터","icon":"fa-clone","desc":"로그 세로 불변량, 진수 짝수차수 양날개 함정, 절댓값 곱 불변량, 어긋난 역함수 대칭축 및 원 결합 킬러","formulaTex":"\\log_a(kx) = \\log_a x + \\log_a k, \\quad |\\log_a x|=t \\implies x_1 x_2 = 1, \\quad y = x - \\frac{(m-n)+(q-p)}{2}","modes":[{"id":"log1","code":"LOG 01","shortTitle":"로그 세로 간격 불변량 & 넓이","icon":"fa-arrows-up-down","stepLabels":["진수 배수 ➔ 세로 평행이동","수직 선분 AB = log₂k","등적 직사각형 넓이"],"stepDescs":["Step 1: $\\log_2(kx) = \\log_2 x + \\log_2 k$이므로 위로 $\\log_2 k$만큼 평행이동한 그래프입니다.","Step 2: 수직선 $x = t$로 자른 세로 선분 길이 $\\overline{AB} = \\log_2 k$는 위치 $t$와 무관하게 일정합니다!","Step 3: 두 수직선과 두 곡선으로 둘러싸인 넓이는 $\\Delta x \\times \\log_2 k$입니다."],"trap":"로그 진수의 곱셈은 확대/축소가 아니라 $y$축 평행이동입니다!","problem":"두 함수 $y = \\log_2 x, y = \\log_2(4x)$와 두 직선 $x = 2, x = 5$로 둘러싸인 영역의 넓이 $S$를 구하시오.","textbook":["1) $\\log_2(4x) - \\log_2 x = 2$로 세로 간격이 일정하다.","2) 가로 간격이 $5 - 2 = 3$이므로 넓이는 $3 \\times 2 = 6$이다."],"secret":["⚡ 세로 불변량 $\\log_2 4 = 2 \\implies (5-2) \\times 2 = 6$ (3초 컷!)"],"params":{"multK":4,"xCut1":2,"xCut2":5},"snapParams":{"multK":4,"xCut1":2,"xCut2":5},"sliders":[{"key":"multK","label":"진수 배수 k (log₂(kx))","min":2,"max":8,"step":0.5},{"key":"xCut1","label":"왼쪽 절단선 x = t₁","min":1,"max":3.5,"step":0.25},{"key":"xCut2","label":"오른쪽 절단선 x = t₂","min":3.5,"max":7,"step":0.25}],"renderType":"log_vert"},{"id":"log2","code":"LOG 02","shortTitle":"진수 함정 log₂(x²) 양날개 & |log₂x| 곱","icon":"fa-code-fork","stepLabels":["log₂(x²)=2log₂|x| 양날개","|log₂x|=t 역수 곱 x₁x₂=1","산술기하 중점 M > 1"],"stepDescs":["Step 1: $y = \\log_2(x^2)$은 진수 조건이 $x \\neq 0$이므로 $y$축 대칭인 왼쪽 날개($x<0$)가 살아납니다!","Step 2: $y = |\\log_2 x|$와 $y = t$의 두 양수 교점 $x_1, x_2$는 서로 역수이므로 $x_1 x_2 = 1$입니다.","Step 3: 산술·기하평균에 의해 두 교점의 중점 $\\frac{x_1+x_2}{2}$은 항상 $1$보다 큽니다!"],"trap":"$\\log_2 x^2 = 2\\log_2 x$로 변형하면 음수 실근을 통째로 놓칩니다! 반드시 $2\\log_2|x|$로 쓰세요!","problem":"함수 $y = |\\log_2 x|$와 직선 $y = 2$가 만나는 두 점 $x_1, x_2$에 대하여 $x_1 x_2$의 값과 중점 $M = \\frac{x_1+x_2}{2}$의 좌표를 구하시오.","textbook":["1) $x_1 = 2^{-2} = \\frac{1}{4}, x_2 = 2^2 = 4$이다.","2) 곱은 $1$이고 중점은 $\\frac{17}{8} = 2.125 > 1$이다."],"secret":["⚡ **[로그 절댓값 불변량]** 높이에 상관없이 $x_1 x_2 = 1$ (역수), 중점 $M > 1$ (우측 이동)!"],"params":{"shiftP":0,"lineT":2},"snapParams":{"shiftP":0,"lineT":2},"sliders":[{"key":"shiftP","label":"점근선 평행이동 p","min":0,"max":3,"step":0.5},{"key":"lineT","label":"수평선 높이 y = t","min":0.5,"max":2.8,"step":0.1}],"renderType":"log_abs"},{"id":"log3","code":"LOG 03","shortTitle":"어긋난 역함수 대칭축 & 원 결합","icon":"fa-arrows-turn-to-dots","stepLabels":["지수·로그 정점 P₁, P₂","이동된 대칭축 y = x + C","원 x²+y²=r² 피타고라스"],"stepDescs":["Step 1: 평행이동이 어긋난 $y=2^{x-m}+n$과 $y=\\log_2(x-p)+q$의 정점 $P_1(m,n+1), P_2(p+1,q)$를 찍습니다.","Step 2: 두 정점의 중점 $M_0$을 지나고 기울기가 $1$인 직선 $y = x + C$가 두 곡선의 진짜 대칭축입니다!","Step 3: 원 $x^2+y^2=r^2$과 역함수가 만나면 $x_1^2+y_1^2=r^2$과 $y_1-x_1=d$로 좌표를 3초 만에 스캔합니다."],"trap":"밑이 같은 지수·로그가 등장하면 평행이동 숫자가 달라도 무조건 직선 $y = x + C$에 대칭입니다!","problem":"두 곡선 $y = 2^{x-1}+2$ (정점 $(1,3)$)와 $y = \\log_2(x-4)-1$ (정점 $(5,-1)$)의 대칭축 방정식 $y = x + C$와 직선 $y = -x + 6$과의 교점 중점 $M$을 구하시오.","textbook":["1) 두 정점 $(1,3), (5,-1)$의 중점은 $(3, 1)$이다.","2) 따라서 대칭축은 $y = x - 2$ ($C=-2$)이고 $y=-x+6$과 연립하면 $M(4, 2)$이다."],"secret":["⚡ **[정점 중점 비기]** 지수 정점과 로그 정점의 중점 $(3, 1)$을 $y = x + C$에 대입하면 $1 = 3 + C \\implies C = -2$ (3초 컷!)"],"params":{"expM":1,"expN":2,"logP":4,"logQ":-1,"lineK":6},"snapParams":{"expM":1,"expN":2,"logP":4,"logQ":-1,"lineK":6},"sliders":[{"key":"expM","label":"지수 x평행이동 m","min":-1,"max":3,"step":0.5},{"key":"logP","label":"로그 x평행이동 p","min":1,"max":5,"step":0.5},{"key":"lineK","label":"절단 직선 y = -x + k","min":4,"max":8,"step":0.5}],"renderType":"log_misinv"},{"id":"log4","code":"LOG 04","shortTitle":"역함수 축 전환 격자점 스캐너","icon":"fa-table-cells","stepLabels":["자연수 격자점 점등","세로줄 슬라이스","가로줄(y=m ➔ x≥2^m) 역산"],"stepDescs":["Step 1: $1 \\le x \\le K, 1 \\le y \\le \\log_2 x$ 영역의 자연수 격자점을 점등합니다.","Step 2: 완만한 로그함수는 세로줄($x$) 대신 **가로줄 층수($y = 1, 2, 3 \\iff x \\ge 2^y$)**로 세면 단 3줄에 끝납니다!","Step 3: 각 층의 점 개수 $(K - 2^y + 1)$을 합산하여 오차 0.000%로 검증합니다."],"trap":"지수함수는 세로선($x=n$) 기준, 로그함수는 가로선($y=m$ 역함수 지수화) 기준으로 세세요!","problem":"$1 \\le x \\le 9,\\; 1 \\le y \\le \\log_2 x$를 만족하는 자연수 순서쌍 $(x, y)$의 개수를 가로줄 역산으로 구하시오.","textbook":["1) $y=1$층($x=2\\sim 9$): $8$개, $y=2$층($x=4\\sim 9$): $6$개, $y=3$층($x=8\\sim 9$): $2$개.","2) 총합은 $8 + 6 + 2 = 16$개이다."],"secret":["⚡ 가로 층별 공식 $\\sum (K - 2^y + 1) = 8 + 6 + 2 = 16$개!"],"params":{"maxX":9},"snapParams":{"maxX":9},"sliders":[{"key":"maxX","label":"스캔 상한 자연수 K","min":4,"max":13,"step":1}],"renderType":"log_lattice"}]};
+
+  const rich = (t) => String(t == null ? '' : t).replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>').replace(/➔/g, '→');
+  const Q = [
+    '진수에 k를 곱하면 로그 그래프는 어떻게 달라지고, 세로로 잰 두 곡선 사이의 거리는 어디서나 같을까?',
+    'log₂(x²)의 그래프는 2log₂x와 어떻게 다르고, |log₂x| = t의 두 교점은 어떤 관계일까?',
+    '평행이동이 어긋난 지수함수와 로그함수는 어떤 직선에 대하여 대칭이고, 그 직선은 어떻게 찾을까?',
+    '로그 곡선 아래 격자점을 세로줄 대신 가로줄로 세면 왜 계산이 짧아질까?'
+  ];
+  const SHORT = ['세로 간격 불변량', '진수 함정·곱 불변', '어긋난 역함수 대칭축', '역함수 격자점'];
+  const GUIDE = [
+    '금색 점 B를 좌우로 끌어 절단선의 위치를 바꾸고, 분홍 점 D로 오른쪽 절단선도 움직여 보세요. 세로 선분 AB의 길이는 변하지 않습니다.',
+    '금색 점 x₂를 위아래로 끌어 수평선 높이 t를 바꿔 보세요. 두 교점의 곱 (x₁−p)(x₂−p)는 늘 1입니다.',
+    '금색 점 M을 끌어 직선 y = −x + k를 움직여 보세요. 중점 M은 늘 보라색 대칭축 위에 놓입니다.',
+    '금색 점 K를 좌우로 끌어 스캔 상한을 바꿔 보세요. 가로줄(y = 층수)마다 점의 개수를 세어 더합니다.'
+  ];
+
+  /* 모드마다 조절값 이름표(접두어)를 붙여 s['log1_multK'] 같은 이름으로 저장하고, 그리기 코드는 p.multK 로 읽습니다(원본 state.params 와 같은 모양) */
+  const pv = (s, mo) => new Proxy({}, { get: (_, k) => s[mo.id + '_' + k], set: (_, k, v) => { s[mo.id + '_' + k] = v; return true; } });
+  // [2.0 수정] LOG 03: 대칭이 성립하려면 n − p = q − m → p = m + n − q
+  const tie = (p) => { p.logP = p.expM + p.expN - p.logQ; };
+
+  /* 원본 updateHUD 의 log_* 수식 줄 (원본 그대로) */
+  function eqOf(m, p) {
+    let eq = '';
+    if (m.renderType === 'log_vert') eq = `$\\log_2(${p.multK}x) - \\log_2 x = ${Math.log2(p.multK).toFixed(2)}, \\quad S = ${((p.xCut2-p.xCut1)*Math.log2(p.multK)).toFixed(2)}$`;
+    if (m.renderType === 'log_abs') eq = `$|\\log_2(x-${p.shiftP})| = ${p.lineT} \\implies (x_1-${p.shiftP})(x_2-${p.shiftP}) = 1.000$`;
+    if (m.renderType === 'log_misinv') eq = `$\\text{정점 } (${p.expM},${p.expN+1}), (${p.logP+1},${p.logQ}) \\implies \\text{이동 대칭축 작도}$`;
+    if (m.renderType === 'log_lattice') eq = `$1 \\le x \\le ${p.maxX}, \\; 1 \\le y \\le \\log_2 x \\iff 2^y \\le x \\le ${p.maxX}$`;
+    return eq;
+  }
+
+  // 원본 Newton 풀이(part1b1 solveExpLine 과 같은 방법): 2^(x−m)+n = −x+k 의 해
+  function solveExpLine(baseA, m, n, k) {
+    let x = (k + m - n) / 2;
+    for (let i = 0; i < 25; i++) {
+      const f = Math.pow(baseA, x - m) + n + x - k;
+      const df = Math.pow(baseA, x - m) * Math.log(baseA) + 1;
+      x -= f / df;
+    }
+    return x;
+  }
+
+  /* ===== 원본 drawSeg / drawCurve / drawPt 와 같은 이름·같은 인자 → 새 무대 엔진 ===== */
+  function shim(b, sink) {
+    let hid = 0;
+    return {
+      drawSeg: (x1, y1, x2, y2, col = '#fbbf24', dash = [], w = 2.2) => b.seg([x1, y1], [x2, y2], { color: col, width: w, dash: dash.length ? dash : null }),
+      drawCurve: (fn, col = '#34d399', w = 2.6, dash = [], x0 = -5, x1 = 9) =>
+        b.plot((x) => { const y = fn(x); return Number.isFinite(y) && Math.abs(y) <= 40 ? y : NaN; }, { color: col, width: w, dash: dash.length ? dash : null, from: x0, to: x1 }),
+      drawPt: (x, y, lbl = '', col = '#fbbf24', rad = 6, drag = null) => {
+        if (drag) b.handle('h' + (hid++), [x, y], { color: col, r: rad, label: lbl, drag });
+        else b.point([x, y], { color: col, r: rad, label: lbl });
+      },
+      badge: (text, color = '#fbbf24') => sink.push({ text, color })
+    };
+  }
+
+  function draw(mo, b, s, v) {
+    const p = pv(s, mo);
+    const sink = [];
+    const { drawSeg, drawCurve, drawPt, badge } = shim(b, sink);
+    if (s.grid) b.grid();
+    b.axes();
+    const t = mo.renderType;
+
+    if (t === 'log_vert') {
+      const dy = Math.log2(p.multK);
+      const fn1 = (x) => Math.log2(x), fn2 = (x) => Math.log2(p.multK * x);
+      // 3단계: 두 절단선 사이에 둘러싸인 영역 (= 가로 × log₂k 직사각형과 넓이가 같음)
+      if (s.step >= 3) {
+        const pts = [];
+        for (let x = p.xCut1; x <= p.xCut2 + 1e-9; x += 0.05) pts.push([x, fn1(x)]);
+        for (let x = p.xCut2; x >= p.xCut1 - 1e-9; x -= 0.05) pts.push([x, fn2(x)]);
+        b.poly(pts, { fill: 'amber', fillAlpha: 0.16, stroke: false });
+        badge(`등적 직사각형 넓이 S = Δx(${(p.xCut2 - p.xCut1).toFixed(1)}) × log₂k(${dy.toFixed(2)}) = ${((p.xCut2 - p.xCut1) * dy).toFixed(2)}`, '#fbbf24');
+      }
+      drawCurve(fn1, '#34d399', 2.8, [], 0.06, 9.5);
+      drawCurve(fn2, '#38bdf8', 2.8, [], 0.06, 9.5);
+      const y1A = fn1(p.xCut1), y1B = fn2(p.xCut1), y2A = fn1(p.xCut2), y2B = fn2(p.xCut2);
+      if (s.step >= 2) {
+        drawSeg(p.xCut1, y1A, p.xCut1, y1B, '#fbbf24', [], 3.4);
+        drawSeg(p.xCut2, y2A, p.xCut2, y2B, '#fb7185', [], 3.4);
+      }
+      drawPt(p.xCut1, y1A, `A(${p.xCut1.toFixed(1)}, ${y1A.toFixed(2)})`, '#34d399', 6);
+      drawPt(p.xCut1, y1B, `B (AB=${dy.toFixed(2)})`, '#fbbf24', 8, (w) => { p.xCut1 = clamp(Math.round(w.x * 4) / 4, 1, Math.min(3.5, p.xCut2 - 0.5)); });
+      drawPt(p.xCut2, y2B, `D(x₂=${p.xCut2.toFixed(1)})`, '#fb7185', 7.5, (w) => { p.xCut2 = clamp(Math.round(w.x * 4) / 4, Math.max(3.5, p.xCut1 + 0.5), 7); });
+    } else if (t === 'log_abs') {
+      const x1 = p.shiftP + Math.pow(2, -p.lineT), x2 = p.shiftP + Math.pow(2, p.lineT), midM = (x1 + x2) / 2;
+      // [2.0 수정] 1단계: log₂(x²) = 2log₂|x| 양날개 (원본에는 없었음)
+      if (s.step >= 1) {
+        drawCurve((x) => 2 * Math.log2(x), 'rgba(192,132,252,0.7)', 1.8, [5, 4], 0.05, 9.5);
+        drawCurve((x) => 2 * Math.log2(-x), 'rgba(192,132,252,0.7)', 1.8, [5, 4], -9.5, -0.05);
+        badge('점선: y = log₂(x²) = 2log₂|x| (y축 대칭 양날개)', '#c084fc');
+      }
+      drawSeg(p.shiftP, -4, p.shiftP, 5, 'rgba(192,132,252,0.6)', [5, 4], 1.8);
+      drawCurve((x) => -Math.log2(x - p.shiftP), '#fb7185', 2.8, [], p.shiftP + 0.05, p.shiftP + 1);
+      drawCurve((x) => Math.log2(x - p.shiftP), '#34d399', 2.8, [], p.shiftP + 1, 9);
+      drawSeg(-2, p.lineT, 9, p.lineT, '#fbbf24', [], 2.2);
+      if (s.step >= 2) {
+        drawSeg(x1, p.lineT, x1, 0, '#fb7185', [4, 3], 1.6);
+        drawSeg(x2, p.lineT, x2, 0, '#34d399', [4, 3], 1.6);
+        badge(`교점 곱 (x₁−${p.shiftP})(x₂−${p.shiftP}) = ${(Math.pow(2, -p.lineT) * Math.pow(2, p.lineT)).toFixed(3)}`, '#fbbf24');
+      }
+      if (s.step >= 3) {
+        drawSeg(midM, p.lineT, midM, 0, '#38bdf8', [4, 3], 2.0);
+        drawPt(midM, 0, `중점 M=${midM.toFixed(2)}`, '#38bdf8', 6);
+        badge(`산술·기하 중점: M(${midM.toFixed(2)}) > 꺾인 점(${p.shiftP + 1})`, '#38bdf8');
+      }
+      drawPt(p.shiftP + 1, 0, `(${p.shiftP + 1}, 0)`, '#ecfdf5', 5.5);
+      drawPt(x1, p.lineT, `x₁=${x1.toFixed(2)}`, '#fb7185', 6);
+      drawPt(x2, p.lineT, `x₂=${x2.toFixed(2)}`, '#fbbf24', 8, (w) => { p.lineT = clamp(Math.round(w.y * 10) / 10, 0.5, 2.8); });
+    } else if (t === 'log_misinv') {
+      tie(p); // [2.0 수정] 대칭이 성립하도록 p 연동
+      drawCurve((x) => Math.pow(2, x - p.expM) + p.expN, '#34d399', 2.8, [], -3, 5);
+      drawCurve((x) => Math.log2(x - p.logP) + p.logQ, '#38bdf8', 2.8, [], p.logP + 0.05, 10);
+      const P1 = { x: p.expM, y: p.expN + 1 }, P2 = { x: p.logP + 1, y: p.logQ };
+      const cShift = 0.5 * ((p.expN - p.expM) + (p.logQ - p.logP));
+      const mid0 = { x: 0.5 * (P1.x + P2.x), y: 0.5 * (P1.y + P2.y) };
+      // 1단계: 두 정점 P₁(지수), P₂(로그)와 정점의 중점 (원본 설명에만 있고 그림에는 없었음)
+      if (s.step >= 1) {
+        drawSeg(P1.x, P1.y, P2.x, P2.y, 'rgba(251,113,133,0.7)', [4, 3], 2.0);
+        drawPt(P1.x, P1.y, `지수정점(${P1.x}, ${P1.y})`, '#34d399', 6);
+        drawPt(P2.x, P2.y, `로그정점(${P2.x}, ${P2.y})`, '#38bdf8', 6);
+        drawPt(mid0.x, mid0.y, `정점중점(${mid0.x.toFixed(1)}, ${mid0.y.toFixed(1)})`, '#fb7185', 5.5);
+      }
+      if (s.step >= 2) {
+        drawCurve((x) => x + cShift, '#c084fc', 2.4, [6, 4], -3, 8);
+        badge(`이동된 대칭축: y = x ${cShift >= 0 ? '+ ' + cShift.toFixed(1) : '− ' + Math.abs(cShift).toFixed(1)}`, '#c084fc');
+      }
+      drawCurve((x) => -x + p.lineK, '#fbbf24', 2.2, [], -2, 8);
+      const mx = 0.5 * (p.lineK - cShift), my = 0.5 * (p.lineK + cShift);
+      // 3단계: 직선과 곡선의 교점 A(지수)·B(대칭점)와 A를 지나는 원 x²+y²=r²
+      if (s.step >= 3) {
+        const xA = solveExpLine(2, p.expM, p.expN, p.lineK), yA = p.lineK - xA;
+        const B = { x: yA - cShift, y: xA + cShift }; // A 를 y = x + C 에 대칭이동한 점
+        b.circle([0, 0], Math.hypot(xA, yA), { color: 'violet', alpha: 0.55, width: 2, dash: [5, 4] });
+        drawPt(xA, yA, `A(${fmt(xA)}, ${fmt(yA)})`, '#34d399', 5.5);
+        drawPt(B.x, B.y, `B(${fmt(B.x)}, ${fmt(B.y)})`, '#38bdf8', 5.5);
+        badge(`원 x²+y² = r² 위의 A: x₁²+y₁² = ${(xA * xA + yA * yA).toFixed(2)}`, '#c084fc');
+      }
+      drawPt(mx, my, `교점중점 M(${mx.toFixed(1)}, ${my.toFixed(1)})`, '#fbbf24', 8, (w) => { p.lineK = clamp(Math.round((w.x + w.y) * 2) / 2, 4, 8); });
+    } else if (t === 'log_lattice') {
+      const K = Math.round(p.maxX);
+      drawCurve((x) => Math.log2(x), '#34d399', 2.8, [], 0.2, 14);
+      let total = 0;
+      for (let y = 1; Math.pow(2, y) <= K; y++) {
+        if (s.step >= 3) drawSeg(Math.pow(2, y), y, K, y, '#fb7185', [], 3);
+        if (s.step >= 1) for (let x = Math.pow(2, y); x <= K; x++) drawPt(x, y, '', '#fbbf24', 5);
+        total += K - Math.pow(2, y) + 1;
+      }
+      // 2단계: 세로줄 x = n 을 하나씩 잘라 센 점의 수
+      if (s.step >= 2) for (let x = 2; x <= K; x++) drawSeg(x, 0, x, Math.floor(Math.log2(x) + 1e-9), '#38bdf8', [3, 3], 1.2);
+      if (s.step >= 3) badge(`가로줄 층별 합 = ${total}개 (K = ${K})`, '#fb7185');
+      drawPt(K, Math.log2(K), `K=${K}`, '#fbbf24', 8, (w) => { p.maxX = clamp(Math.round(w.x), 4, 13); });
+    }
+
+    if (sink.length) v.card = { title: '칠판 판서', lines: sink.map((q) => ({ text: q.text, color: q.color })) };
+  }
+
+  /* 모드별 실시간 값 (원본 HUD 수식 줄에 쓰인 값들) */
+  function readoutsOf(mo, p) {
+    const t = mo.renderType;
+    if (t === 'log_vert') {
+      const dy = Math.log2(p.multK), dx = p.xCut2 - p.xCut1;
+      return [
+        { label: '세로 선분 AB = log₂k', value: dy.toFixed(3), color: 'amber', note: '절단선 위치와 무관한 불변량' },
+        { label: '둘러싸인 넓이 S = Δx × log₂k', value: (dx * dy).toFixed(3), color: 'rose', note: `가로 ${dx.toFixed(2)} × 세로 ${dy.toFixed(2)}` }
+      ];
+    }
+    if (t === 'log_abs') {
+      const d1 = Math.pow(2, -p.lineT), d2 = Math.pow(2, p.lineT), x1 = p.shiftP + d1, x2 = p.shiftP + d2;
+      return [
+        { label: '거리의 곱 (x₁−p)(x₂−p)', value: (d1 * d2).toFixed(3), color: 'amber', note: '언제나 1 (서로 역수)' },
+        { label: '교점의 중점 M', value: ((x1 + x2) / 2).toFixed(3), color: 'sky', note: `꺾인 점 ${p.shiftP + 1}보다 ${((x1 + x2) / 2 - p.shiftP - 1).toFixed(3)} 오른쪽` }
+      ];
+    }
+    if (t === 'log_misinv') {
+      const cShift = 0.5 * ((p.expN - p.expM) + (p.logQ - p.logP));
+      const mx = 0.5 * (p.lineK - cShift), my = 0.5 * (p.lineK + cShift);
+      return [
+        { label: '대칭축', value: `y = x ${cShift >= 0 ? '+' : '−'} ${Math.abs(cShift).toFixed(2)}`, color: 'violet', note: `로그의 평행이동 p = ${fmt(p.logP, 1)} (대칭 조건 p = m + n − q)` },
+        { label: '교점의 중점 M', value: `(${mx.toFixed(2)}, ${my.toFixed(2)})`, color: 'amber', note: '대칭축 ∩ (y = −x + k)' }
+      ];
+    }
+    const K = Math.round(p.maxX);
+    let total = 0;
+    for (let y = 1; Math.pow(2, y) <= K; y++) total += K - Math.pow(2, y) + 1;
+    return [{ label: `격자점의 총 개수 (K = ${K})`, value: `${total}개`, color: 'amber', note: '가로줄 층별 (K − 2ʸ + 1)의 합' }];
+  }
+
+  const FOCUS = {
+    log_vert: { x: [-1.6, 9.8], y: [-3.4, 6.6] },
+    log_abs: { x: [-5, 9.5], y: [-3.4, 5.4] },
+    log_misinv: { x: [-3, 10], y: [-3, 9] },
+    log_lattice: { x: [-1.5, 14.5], y: [-1.2, 5] }
+  };
+
+  const params = {};
+  PART.modes.forEach((mo) => {
+    mo.sliders.forEach((d) => {
+      if (mo.renderType === 'log_misinv' && d.key === 'logP') return; // [2.0 수정] p 는 m 을 따라 움직임
+      params[mo.id + '_' + d.key] = {
+        value: mo.params[d.key], min: d.min, max: d.max, step: d.step, color: 'amber', label: d.label,
+        hint: mo.renderType === 'log_misinv' && d.key === 'expM' ? '로그 쪽 평행이동 p는 대칭이 성립하도록 m + n − q 로 함께 움직입니다' : undefined,
+        format: (val) => (d.step < 1 ? val.toFixed(2) : String(val))
+      };
+    });
+  });
+
+  const scenes = PART.modes.map((mo, i) => ({
+    id: mo.id,
+    title: rich(mo.shortTitle),
+    short: SHORT[i],
+    question: Q[i],
+    guide: GUIDE[i],
+    controls: mo.sliders.filter((d) => params[mo.id + '_' + d.key]).map((d) => mo.id + '_' + d.key),
+    steps: mo.stepLabels.map((l, k) => `Step ${k + 1} · ${rich(l)}`),
+    startStep: 3,
+    notesTitle: '함정 주의보',
+    focus: () => FOCUS[mo.renderType],
+    enter: (s) => { Object.keys(mo.params).forEach((k) => { s[mo.id + '_' + k] = mo.params[k]; }); },
+    problem: {
+      tag: '조건과 그래프 탐구',
+      text: () => rich(mo.problem),
+      answer: () => '풀이와 결과는 정리 탭의 「두 가지 풀이 비교」에서 확인하세요.',
+      snap: () => { const o = {}; Object.keys(mo.snapParams).forEach((k) => { o[mo.id + '_' + k] = mo.snapParams[k]; }); return o; }
+    },
+    solution: {
+      standardTitle: '교과서 3분 정석 풀이', standardTag: '정석',
+      quickTitle: '10초 컷 실전 기하·구조 비기', quickTag: '10초 컷',
+      standard: () => ({ steps: mo.textbook.map((x) => `<div>${rich(x)}</div>`).join('') }),
+      quick: () => ({ steps: mo.secret.map((x) => `<div>${rich(x)}</div>`).join('') })
+    },
+    view: (s) => {
+      const p = pv(s, mo);
+      if (mo.renderType === 'log_misinv') tie(p);
+      return {
+        chips: [{ html: rich(eqOf(mo, p)) }],
+        readouts: readoutsOf(mo, p),
+        formula: s.step >= 1 ? rich(mo.stepDescs[Math.min(s.step, 3) - 1]) : `$${PART.formulaTex}$`,
+        notes: rich(mo.trap)
+      };
+    },
+    draw: (b, s, v) => draw(mo, b, s, v)
+  }));
+
+  APLab.createLab({
+    id: 'alg-log',
+    title: '로그함수와 역함수·도형',
+    courseName: '대수',
+    unit: '지수함수와 로그함수 · 로그함수 고유 성질',
+    courseColor: 'var(--m-sky)',
+    home: '../index.html#algebra',
+    legacy: '../../labs/대수/part1b.html',
+    board: { kind: 'cartesian', focus: FOCUS.log_vert },
+    params,
+    scenes
+  });
+});
+</script>
+</body>
+</html>

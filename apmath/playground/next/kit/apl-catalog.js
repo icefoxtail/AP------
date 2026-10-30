@@ -26,6 +26,7 @@ window.APLab.catalog = {
     "종이 테이프 접기·이등분선·직교 (4종)"
    ],
    "legacy": "labs/g7/points-lines.html",
+   "next": "next/labs/g7-points-lines.html",
    "glyph": "<path d=\"M10 52 L64 18\"/><circle cx=\"16\" cy=\"48\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"58\" cy=\"22\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M38 58 L70 58\"/>"
   },
   {
@@ -46,6 +47,7 @@ window.APLab.catalog = {
     "공간 명제 참·거짓 3D 반례기 (6종)"
    ],
    "legacy": "labs/g7/spatial-relations.html",
+   "next": "next/labs/g7-spatial.html",
    "glyph": "<path d=\"M14 48 L60 48 L74 28 L30 28 Z\"/><path d=\"M18 14 L18 62 M60 10 L60 54\"/><circle cx=\"18\" cy=\"48\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -165,6 +167,7 @@ window.APLab.catalog = {
     "쌍원뿔·이중원뿔·구멍·모퉁이 파낸 입체 (6종)"
    ],
    "legacy": "labs/g7/입체도형의 겉넓이와 부피.html",
+   "next": "next/labs/g7-surface-volume.html",
    "glyph": "<path d=\"M22 24 L48 14 L72 28 L72 58 L48 68 L22 54 Z\"/><path d=\"M22 24 L48 38 L72 28 M48 38 L48 68\"/>",
    "tags": [
     "3D"
@@ -188,6 +191,7 @@ window.APLab.catalog = {
     "회전체 전개도 & 개미 최단거리 (4종)"
    ],
    "legacy": "labs/g7/다면체·회전체&겨냥도·전개도.html",
+   "next": "next/labs/g7-solids.html",
    "glyph": "<ellipse cx=\"38\" cy=\"18\" rx=\"26\" ry=\"10\"/><path d=\"M12 18 V54 M64 18 V54\"/><path d=\"M12 54 A26 10 0 0 0 64 54 M12 54 A26 10 0 0 1 64 54\" stroke-dasharray=\"4 4\"/>"
   },
   {
@@ -457,6 +461,7 @@ window.APLab.catalog = {
     "치환 방부등식과 근의 분리"
    ],
    "legacy": "labs/대수/part1a.html",
+   "next": "next/labs/alg-explog.html",
    "glyph": "<path d=\"M8 68 H72 M14 8 V69\" stroke-opacity=\".45\"/><path d=\"M15 61 Q39 62 45 49 T67 10\" stroke-width=\"2.7\"/><path d=\"M22 67 Q28 32 42 25 T68 21\" stroke=\"#D8B77E\" stroke-width=\"1.7\"/><circle cx=\"45\" cy=\"49\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -481,6 +486,7 @@ window.APLab.catalog = {
     "|aˣ − k| = t 점근선 반사"
    ],
    "legacy": "labs/대수/part1a2.html",
+   "next": "next/labs/alg-exp-deep.html",
    "glyph": "<path d=\"M8 67 H74 M13 7 V68\" stroke-opacity=\".4\"/><path d=\"M15 59 Q41 58 47 45 T70 7\" stroke-width=\"2.8\"/><path d=\"M12 48 Q25 41 41 40 T70 37\" stroke=\"#D8B77E\" stroke-width=\"1.8\" stroke-dasharray=\"4 4\"/><circle cx=\"47\" cy=\"45\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -499,6 +505,7 @@ window.APLab.catalog = {
     "역함수·원·도형 결합"
    ],
    "legacy": "labs/대수/part1b.html",
+   "next": "next/labs/alg-log.html",
    "glyph": "<path d=\"M8 68 H72 M12 8 V69\" stroke-opacity=\".45\"/><path d=\"M14 59 Q21 48 32 44 T69 39\" stroke-width=\"2.5\"/><path d=\"M20 66 L69 17\" stroke=\"#D8B77E\" stroke-width=\"1.3\" stroke-dasharray=\"4 4\"/><circle cx=\"32\" cy=\"44\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -523,6 +530,7 @@ window.APLab.catalog = {
     "역함수 축 전환 격자점"
    ],
    "legacy": "labs/대수/part1b1.html",
+   "next": "next/labs/alg-log-deep.html",
    "glyph": "<path d=\"M7 68 L72 5\" stroke=\"#D8B77E\" stroke-dasharray=\"4 4\" stroke-width=\"1.6\"/><rect x=\"26\" y=\"24\" width=\"29\" height=\"27\" stroke=\"#A78AC8\" stroke-width=\"1.4\"/><path d=\"M10 64 Q23 41 46 34 T69 26\" stroke-width=\"2.2\"/><path d=\"M17 61 Q28 57 35 44 T65 13\" stroke=\"#D8B77E\" stroke-width=\"1.9\"/>"
   },
   {
@@ -564,6 +572,7 @@ window.APLab.catalog = {
     "|3 sin x − 1| 교점 개수"
    ],
    "legacy": "labs/대수/part2a.html",
+   "next": "next/labs/alg-trig-geometry.html",
    "glyph": "<path d=\"M6 40 H74 M15 8 V69\" stroke-opacity=\".4\"/><path d=\"M6 40 C14 8 22 8 30 40 S46 72 54 40 S70 8 75 27\" stroke-width=\"2.7\"/><path d=\"M6 40 C14 56 22 56 30 40 S46 24 54 40 S70 56 75 48\" stroke=\"#D8B77E\" stroke-width=\"1.8\"/>"
   },
   {
@@ -584,6 +593,7 @@ window.APLab.catalog = {
     "외접원 반지름 비와 사인값"
    ],
    "legacy": "labs/대수/part2b.html",
+   "next": "next/labs/alg-sine-cosine-law.html",
    "glyph": "<path d=\"M11 66 L33 10 L72 66 Z\" stroke-width=\"2.6\"/><path d=\"M33 10 V66\" stroke=\"#D8B77E\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><path d=\"M33 60 H39 V66\" stroke=\"#D8B77E\" stroke-width=\"1.5\"/><path d=\"M18 53 Q25 48 30 51\" stroke=\"#A78AC8\" stroke-width=\"1.8\"/><circle cx=\"33\" cy=\"10\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -608,6 +618,7 @@ window.APLab.catalog = {
     "점화식 역추적 이진 트리"
    ],
    "legacy": "labs/대수/part3.html",
+   "next": "next/labs/alg-sequence.html",
    "glyph": "<path d=\"M7 68 H74 M12 8 V69\" stroke-opacity=\".4\"/><path d=\"M16 61 Q38 52 42 35 T70 13\" stroke=\"#D8B77E\" stroke-width=\"1.4\" stroke-dasharray=\"4 4\"/><path d=\"M16 61 L29 56 L42 35 L55 24 L69 13\" stroke-width=\"2.3\"/><circle cx=\"16\" cy=\"61\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"29\" cy=\"56\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"42\" cy=\"35\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"55\" cy=\"24\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"69\" cy=\"13\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -939,6 +950,7 @@ window.APLab.catalog = {
     "기출2: 영벡터 합 & 넓이비(a:b:c)"
    ],
    "legacy": "labs/기하와벡터/벡터의덧셈과뺄셈.html",
+   "next": "next/labs/geom-vector-ops.html",
    "glyph": "<path d=\"M16 60 L48 20 L68 44\"/><path d=\"M16 60 L68 44\" stroke-dasharray=\"4 3\"/><path d=\"M48 20 L16 60\"/>"
   },
   {
@@ -959,6 +971,7 @@ window.APLab.catalog = {
     "기출2: 중점 제곱차 (PA·PB=PM²-L²)"
    ],
    "legacy": "labs/기하와벡터/벡터의 성분·내적.html",
+   "next": "next/labs/geom-vector-dot.html",
    "glyph": "<path d=\"M16 58 L56 22\"/><path d=\"M16 58 L64 50\"/><path d=\"M44 28 A22 22 0 0 1 58 46\"/>"
   },
   {
@@ -979,6 +992,7 @@ window.APLab.catalog = {
     "기출3: 원의 벡터방정식 (지름·접선)"
    ],
    "legacy": "labs/기하와벡터/벡터로 나타낸 도형.html",
+   "next": "next/labs/geom-vector-figure.html",
    "glyph": "<path d=\"M12 58 L48 18\" marker-end=\"url(#arr)\"/><path d=\"M32 62 L68 30\" stroke-dasharray=\"4 3\" marker-end=\"url(#arr2)\"/> <defs><marker id=\"arr\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 Z\" fill=\"currentColor\"/></marker> <marker id=\"arr2\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 Z\" fill=\"currentColor\"/></marker></defs>"
   }
  ],
