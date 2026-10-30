@@ -268,18 +268,97 @@ window.addEventListener('DOMContentLoaded', function () {
     const y = dualOf(v).y;
     return { x: v.x, y: NARROW.matches ? [y[0], y[1] + 0.3] : y };
   };
-  // 동시 보기를 켜고 끌 때(또는 공유 링크로 열 때) 보기 창을 그에 맞게 다시 맞춥니다.
-  function syncFocus(b, s, m) {
-    const key = m + '|' + (s.dual ? 1 : 0);
-    if (b.__focusKey !== key) {
-      b.__focusKey = key;
-      b.setFocus(focusFor(VIEW[m], s.dual));
+  const defaultPanes = (m) => {
+    const d = dualOf(VIEW[m]);
+    return [{ id: 'main', frac: d.frac, focusY: d.y }, { id: 'deriv', frac: 1 - d.frac, focusY: VIEW[m].dy }];
+  };
+
+  /* ---------- 3-1. 자동 보기: 실제 극값 위치에 맞춰 보기 창을 다시 맞춥니다 ----------
+     원본의 고정 창은 문제 조건(기본값)에서만 W 전체가 들어옵니다. λ·L·a 를 바꾸거나 끌거나 자동 실험이 돌 때
+     극소 B·극대 C 가 화면 밖으로 나가지 않도록, 그림에 꼭 들어와야 할 세계 범위(극점 α·γ·β, 모드별 교점)를 구해
+     그 범위가 라벨 여백까지 들어오는 가장 큰 1:1 창을 잡습니다. 내용이 창을 벗어나거나(또는 너무 작아지면) 다시 맞추고,
+     끌고 있는 동안에는 창이 움직이지 않습니다. */
+  const AUTO = { m: 0, win: null, panes: null };
+  function mainBox(s, m) {
+    const { alpha, gamma, beta } = getRoots(s);
+    const ys = [evalF(s, alpha), evalF(s, gamma), evalF(s, beta), 0];
+    const bx = { x0: alpha, x1: beta, y0: Math.min(...ys), y1: Math.max(...ys) };
+    const addX = (x) => { bx.x0 = Math.min(bx.x0, x); bx.x1 = Math.max(bx.x1, x); };
+    if ((m === 1 || m === 3) && (isLeft(s) || isRight(s))) addX(isLeft(s) ? alpha + (4 / 3) * s.spanL : beta - (4 / 3) * s.spanL);
+    if (m === 2 && isSym(s)) { addX(gamma - Math.SQRT2 * (s.spanL / 2)); addX(gamma + Math.SQRT2 * (s.spanL / 2)); }
+    if (m === 5) { bx.y0 = Math.min(bx.y0, -6); bx.y1 = Math.max(bx.y1, 4); } // 기준선 k 를 끌 수 있는 범위
+    return bx;
+  }
+  // 도함수가 두 극솟점 사이에서 오가는 값의 범위 (0 포함)
+  function derivBox(s) {
+    const { alpha, beta } = getRoots(s);
+    let lo = 0, hi = 0;
+    for (let i = 0; i <= 80; i++) {
+      const v = evalFp(s, alpha + ((beta - alpha) * i) / 80);
+      lo = Math.min(lo, v);
+      hi = Math.max(hi, v);
     }
+    return { y0: lo, y1: hi };
+  }
+  function computeFit(b, s, m) {
+    const a = b._area();
+    const pad = b.pad * Math.min(a.w, a.h);
+    const ex = s.playing ? 0.2 : 0; // 자동 실험 중에는 넉넉히 잡아 창이 자주 바뀌지 않게
+    const nb = mainBox(s, m);
+    const bw = Math.max(nb.x1 - nb.x0, 0.8) * (1 + ex);
+    const bh = Math.max(nb.y1 - nb.y0, 0.8) * (1 + ex);
+    const cx = (nb.x0 + nb.x1) / 2, cy = (nb.y0 + nb.y1) / 2;
+    const mx = 40;
+    if (!s.dual) {
+      const mt = 52, mb = 44;
+      const k = Math.max(1e-3, Math.min((a.w - 2 * mx) / bw, (a.h - mt - mb) / bh));
+      const cyw = cy + (mt - mb) / (2 * k);
+      const fw = (a.w - 2 * pad) / k, fh = (a.h - 2 * pad) / k;
+      return { nb, db: null, k, panes: null, focus: { x: [cx - fw / 2, cx + fw / 2], y: [cyw - fh / 2, cyw + fh / 2] } };
+    }
+    // 동시 보기: 위(f)·아래(f′) 칠판의 높이 비율을 두 그림이 같은 배율로 꼭 맞게 정합니다.
+    const db = derivBox(s);
+    const dh = Math.max(db.y1 - db.y0, 0.8) * (1 + ex);
+    const mt = (b.insets.top || 0) + 24, mb = 30; // 위 칠판은 위쪽 식 칩 아래부터
+    const mtd = 34, mbd = 30 + (b.insets.bottom || 0); // 아래 칠판은 이름표 아래부터, 휴대폰에서는 아래 상태 배지·도구 위까지
+    const A = a.h;
+    let f = (A / dh + (mt + mb) / bh - (mtd + mbd) / dh) / (A * (1 / bh + 1 / dh));
+    f = clamp(f, 0.36, 0.7);
+    const k = Math.max(1e-3, Math.min((a.w - 2 * mx) / bw, (f * A - mt - mb) / bh, ((1 - f) * A - mtd - mbd) / dh));
+    const cyw = cy + (mt - mb) / (2 * k);
+    const cyd = (db.y0 + db.y1) / 2 + (mtd - mbd) / (2 * k);
+    const fw = (a.w - 2 * pad) / k, fh = (f * A - 2 * pad) / k;
+    return {
+      nb, db, k,
+      panes: [{ id: 'main', frac: f, focusY: [cyw - 0.5, cyw + 0.5] }, { id: 'deriv', frac: 1 - f, focusY: [cyd - 0.5, cyd + 0.5] }],
+      focus: { x: [cx - fw / 2, cx + fw / 2], y: [cyw - fh / 2, cyw + fh / 2] }
+    };
+  }
+  function autoView(b, s, m) {
+    const lay = [m, s.dual ? 1 : 0, b.W, b.H, Math.round((b.insets.top || 0) / 8), Math.round((b.insets.right || 0) / 8), Math.round((b.insets.bottom || 0) / 8)].join('|');
+    const w = AUTO.win;
+    const same = !!w && w.lay === lay;
+    if (same && s.dragging) return; // 끄는 동안에는 손잡이 아래의 좌표계가 움직이지 않게
+    const cand = computeFit(b, s, m);
+    if (same) {
+      const o = w.nb, n = cand.nb;
+      const sx = 0.1 * (o.x1 - o.x0), sy = 0.1 * (o.y1 - o.y0);
+      let within = n.x0 >= o.x0 - sx && n.x1 <= o.x1 + sx && n.y0 >= o.y0 - sy && n.y1 <= o.y1 + sy;
+      if (within && cand.db) {
+        const od = w.db, nd = cand.db, sd = 0.1 * (od.y1 - od.y0);
+        within = nd.y0 >= od.y0 - sd && nd.y1 <= od.y1 + sd;
+      }
+      if (within && !(cand.k > 1.7 * w.k && !s.playing)) return;
+    }
+    AUTO.win = { lay, nb: cand.nb, db: cand.db, k: cand.k };
+    AUTO.m = m;
+    AUTO.panes = cand.panes;
+    b.setPanes(cand.panes);
+    b.setFocus(cand.focus, !same);
   }
   const panesOf = (m) => (s) => {
     if (!s.dual) return null;
-    const d = dualOf(VIEW[m]);
-    return [{ id: 'main', frac: d.frac, focusY: d.y }, { id: 'deriv', frac: 1 - d.frac, focusY: VIEW[m].dy }];
+    return AUTO.m === m && AUTO.panes ? AUTO.panes : defaultPanes(m);
   };
 
   /* ---------- 4. 공통 부품 ---------- */
@@ -309,6 +388,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function enterOf(m) {
     return (s) => {
+      AUTO.win = null; AUTO.panes = null; AUTO.m = 0; // 장면에 들어오면 보기 창을 새로 맞춥니다
       const sn = examData[m].snap;
       s.a = sn.a; s.alpha = sn.alpha; s.spanL = sn.spanL; s.lambda = sn.lambda; s.y0 = sn.y0; s.kLine = sn.kLine; s.dual = sn.dualView;
     };
@@ -739,7 +819,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function drawFor(m) {
     return (b, s) => {
-      syncFocus(b, s, m);
+      autoView(b, s, m);
       mainBg(b, s);
       let after = null;
       if (m === 1) drawTriple(b, s);
@@ -764,7 +844,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneOf(m, def) {
     return {
-      guide: examData[m].hint,
+      guide: examData[m].hint.replace('상단 프리셋에서', '조작 패널의 4대 개형 프리셋(휴대폰에서는 그림 아래)에서'),
       actions: actionsCommon(),
       presets: presetsCommon,
       steps: examData[m].steps,

@@ -474,7 +474,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // 변곡점 I(끌기), 극대·극소 A·B(B는 끌어 δ 조절), 접점·탐침점 T(끌기) — 모든 모드 공통 (원본 renderMainPointsOverlay)
   function overlay(b, s, m) {
     const { m: mx, ym, delta, t } = s;
-    b.handle('I', [mx, ym], { color: 'violet', ref: 'I', label: `변곡점 I(${num(mx)}, ${num(ym)})`, dx: m === 4 ? -12 : 12, dy: m === 4 ? -14 : 20, align: m === 4 ? 'right' : 'left',
+    b.handle('I', [mx, ym], { color: 'violet', ref: 'I', label: `변곡점 I(${num(mx)}, ${num(ym)})`, dx: m === 3 || m === 4 ? -12 : 12, dy: m === 4 ? -14 : 20, align: m === 3 || m === 4 ? 'right' : 'left',
       drag: (w) => { s.m = clamp(+w.x.toFixed(2), -1.5, 2.5); } });
     if (delta > 0.001) {
       const h = Math.sqrt(delta);
@@ -663,8 +663,8 @@ window.addEventListener('DOMContentLoaded', function () {
       region(b, (x) => evalF(s, x), () => ym, xL, m, { fill: 'sky', alpha: 0.2, ref: 'wing' });
       region(b, (x) => evalF(s, x), () => ym, m, xR, { fill: 'green', alpha: 0.2, ref: 'wing' });
       b.seg([xL, ym], [xR, ym], { color: 'violet', width: 1.8, dash: true, ref: 'wing' });
-      b.text([m - d * 0.55, ym + a * Math.pow(d, 3) * 0.1], `S₁=${num(wingArea)}`, { color: 'sky', size: 12, weight: 800, ref: 'wing' });
-      b.text([m + d * 0.55, ym - a * Math.pow(d, 3) * 0.1], `S₂=${num(wingArea)}`, { color: 'green', size: 12, weight: 800, ref: 'wing' });
+      b.text([m - d * 0.55, ym + a * Math.pow(d, 3) * 0.12], `S₁=${num(wingArea)}`, { color: 'sky', size: 12, weight: 800, ref: 'wing' });
+      b.text([m + d * 0.42, ym - a * Math.pow(d, 3) * 0.26], `S₂=${num(wingArea)}`, { color: 'green', size: 12, weight: 800, ref: 'wing' });
     }
     // Step 1: 접선과 곡선 사이 색칠 영역 S
     if (s.step >= 1) {
@@ -768,7 +768,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneOf(m, def) {
     return {
-      guide: examData[m].hint,
+      guide: examData[m].hint.replace('상단 개형 프리셋으로', '조작 패널의 개형 프리셋(휴대폰에서는 그림 아래)으로'),
       actions: actionsCommon(),
       presets: presetsCommon,
       steps: examData[m].steps,
