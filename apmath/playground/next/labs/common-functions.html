@@ -2021,7 +2021,9 @@ window.addEventListener('DOMContentLoaded', function () {
             dLine(toScr(xv, 0, ox, oy, sc), toScr(xv, 4, ox, oy, sc), 'rgba(52,211,153,0.45)', 1.8, [4, 4]);
           });
         }
-        const mT = (step >= 3 && anim < 1.0) ? anim : t;
+        // 합성 진행률은 조절 막대 t 하나로 정합니다. 단계가 3 이상으로 올라가면 막대가 함께 100%로 이동하므로(STEP_T),
+        // 애니메이션이 끝나도 원함수로 되돌아가지 않고, 이후에도 막대를 움직여 변환 과정을 다시 볼 수 있습니다.
+        const mT = t;
         if (mT > 0.01 || step >= 3) {
           const q0 = toScr(0, 0, ox, oy, sc);
           const q1 = toScr(1, 2 + 2 * mT, ox, oy, sc);
@@ -2486,11 +2488,21 @@ window.addEventListener('DOMContentLoaded', function () {
           return;
         }
         // 원본 setAuxStep: 보조선 단계를 바꾸면 도형이 0 → 1 로 자라나는 효과(animT)가 있습니다.
-        if (LAST.id !== p.id) { LAST.id = p.id; LAST.step = s.step; }
-        else if (LAST.step !== s.step) {
+        // 단계가 '완성' 단계(STEP_T.from) 이상이 되면 조절 막대도 완성 위치로 함께 보냅니다(되돌릴 때는 처음 위치로).
+        const sp = STEP_T[p.id];
+        if (LAST.id !== p.id) {
+          LAST.id = p.id; LAST.step = s.step;
+          if (sp && s.step >= sp.from && s.t < sp.t) { s.t = sp.t; if (lab) lab.invalidate(true); } // 이전 장면에서 마지막 단계로 바로 들어온 경우
+        } else if (LAST.step !== s.step) {
+          const prev = LAST.step;
           LAST.step = s.step;
           s.anim = 0;
-          if (lab && lab.tween) lab.tween({ anim: 1 }, 400);
+          const goal = { anim: 1 };
+          if (sp) {
+            if (s.step >= sp.from && s.t < sp.t) goal.t = sp.t;
+            else if (s.step < sp.from && prev >= sp.from && s.t > p.defaultT) goal.t = p.defaultT;
+          }
+          if (lab && lab.tween) lab.tween(goal, 400);
         }
         paint(s);
         v.status = LIVE.text ? { tone: 'info', text: arrowOnly(LIVE.text) } : null;
@@ -2498,6 +2510,8 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   }
   const LAST = { id: null, step: null };
+  // 조절 막대가 곧 '완성도'인 장면: 보조선 단계가 from 이상이면 막대를 t 로 맞춥니다. (기본 4: 합성함수 그래프 작도)
+  const STEP_T = { 'bas-4': { from: 3, t: 1.0 } };
 
   const UNITS = [
     { roman: 'Ⅰ', title: 'Ⅰ. 합성함수와 역함수', short: '합성·역함수' },
