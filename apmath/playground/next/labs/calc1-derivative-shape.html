@@ -299,6 +299,37 @@ window.addEventListener('DOMContentLoaded', function () {
     list.push({ id: 'deriv', frac: 1 - fm - fb, focusY: bot });
     return list;
   };
+  // aspect:'free' 장면(사차 개형)에서는 가로·세로 눈금 간격을 따로 정합니다(1:1 장면은 기본값 그대로).
+  const niceInt = (raw) => [1, 2, 5, 10, 20, 50, 100].find((c) => c >= raw) || 200;
+  function freeOpts(b) {
+    if (b.aspect !== 'free') return { grid: {}, axes: {} };
+    const ky = b.ky;
+    return { grid: { step: 1, stepY: niceInt(30 / ky) }, axes: { tickStep: 1, tickStepY: niceInt(44 / ky) } };
+  }
+  // 장면 2(사차 개형)의 세로 창: γ에 따라 극값의 높이가 크게 변하므로 극대·극소가 모두 들어오도록(x축 포함) 창을 맞춥니다.
+  function quarticWin(s) {
+    const ys = [evalTop(2, s, -1), evalTop(2, s, gammaOf(s)), evalTop(2, s, 3)];
+    const lo = Math.min(...ys, -1), hi = Math.max(...ys, 1), sp = hi - lo;
+    const mb = 0.3 * sp + 0.6;
+    // 휴대폰에서는 위쪽 수식 칩이 창의 윗부분을 가리므로 위 여유를 더 둡니다(극대 라벨이 칩 아래에 놓이도록).
+    const narrow = window.matchMedia && window.matchMedia('(max-width: 859px)').matches;
+    return [lo - mb, hi + (narrow ? 0.5 * (sp + mb) : 0.34 * sp + 0.6)];
+  }
+  function quarticDWin(s) {
+    let lo = 0, hi = 0;
+    for (let i = 0; i <= 40; i++) { const y = evalBottom(2, s, -1 + (4 * i) / 40); lo = Math.min(lo, y); hi = Math.max(hi, y); }
+    const sp = hi - lo;
+    // 휴대폰에서는 아래 오른쪽의 도구 막대가 창 아래쪽을 가리므로, 도함수 창 아래에 여유를 더 둡니다.
+    const narrow = window.matchMedia && window.matchMedia('(max-width: 859px)').matches;
+    return [lo - (narrow ? 0.7 : 0.22) * sp - 0.4, hi + 0.22 * sp + 0.4];
+  }
+  const panesQuartic = (s) => {
+    const fb = s.chart ? BAND : 0, fm = s.chart ? 0.5 : 0.55;
+    const list = [{ id: 'main', frac: fm, focusY: quarticWin(s) }];
+    if (s.chart) list.push({ id: 'band', frac: fb });
+    list.push({ id: 'deriv', frac: 1 - fm - fb, focusY: quarticDWin(s) });
+    return list;
+  };
   function inPane(b, id, fn) {
     b.use(id);
     b.ctx.save();
@@ -465,7 +496,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (chipBox && id === 'main' && p.y < chipBox.y1 + 2 && p.x > chipBox.x0 - 6 && p.x < chipBox.x1 + 6) return; // 수식 칩 밑에 가려진 점은 그리지 않음
     if (o.label && o.dy) {
       const ly = p.y + o.dy;
-      const underChip = chipBox && id === 'main' && ly < chipBox.y1 + 10 && p.x > chipBox.x0 - 70 && p.x < chipBox.x1 + 70;
+      const underChip = chipBox && id === 'main' && ly < chipBox.y1 + 4 && p.x > chipBox.x0 - 70 && p.x < chipBox.x1 + 70;
       if (o.dy < 0 && (ly < r.y + 8 || underChip)) o = { ...o, dy: -o.dy };
       else if (o.dy > 0 && ly > r.y + r.h - 8) o = { ...o, dy: -o.dy };
     }
@@ -486,8 +517,11 @@ window.addEventListener('DOMContentLoaded', function () {
         mark(b, 'main', -1, f(-1), { color: 'green', r: 6.5, label: `극소${L(-1)}`, dx: -10, dy: 18, align: 'right' });
         mark(b, 'main', 3, f(3), { color: 'violet', r: 6.5, label: `변곡접점${L(3)}`, dx: 10, dy: -14, align: 'left' });
       } else {
+        // 극대가 어느 한쪽 극소에 가까우면 극대 라벨을 반대쪽(안쪽)으로 비껴 두어 극소 라벨과 겹치지 않게 합니다.
+        const pxL = b.toS(-1, 0).x, pxG = b.toS(g, 0).x, pxR = b.toS(3, 0).x;
+        const nearL = pxG - pxL < 130, nearR = pxR - pxG < 130;
         mark(b, 'main', -1, f(-1), { color: 'green', r: 6, label: `극소${L(-1)}`, dx: -10, dy: 18, align: 'right' });
-        mark(b, 'main', g, f(g), { color: 'rose', r: 6.5, label: `극대(${fmt(g, 1)}, ${fmt(f(g), 1)})`, dx: 0, dy: -18, align: 'center' });
+        mark(b, 'main', g, f(g), { color: 'rose', r: 6.5, label: `극대(${fmt(g, 1)}, ${fmt(f(g), 1)})`, dx: nearL ? 12 : nearR ? -12 : 0, dy: -18, align: nearL ? 'left' : nearR ? 'right' : 'center' });
         mark(b, 'main', 3, f(3), { color: 'green', r: 6, label: `극소${L(3)}`, dx: 10, dy: 18, align: 'left' });
       }
       return;
@@ -519,7 +553,9 @@ window.addEventListener('DOMContentLoaded', function () {
       const g = gammaOf(s);
       mark(b, 'deriv', -1, 0, { color: 'green', r: 5.5, label: 'α=−1', dx: -8, dy: -12, align: 'right' });
       mark(b, 'deriv', 3, 0, { color: 'green', r: 5.5, label: 'β=3', dx: 8, dy: -12 });
-      b.handle('gamma', [g, 0], { color: 'amber', r: 7.5, ref: 'root', label: `γ=${fmt(g)}`, dx: 0, dy: 22, align: 'center', drag: dragGamma(s) });
+      // γ 라벨은 보통 점 위에 두되(휴대폰의 도구 막대가 아래 오른쪽을 가림), α 가까이에서는 α 라벨과 겹치지 않게 아래에 둡니다.
+      const gNearA = b.toS(g, 0).x - b.toS(-1, 0).x < 130, gNearB = b.toS(3, 0).x - b.toS(g, 0).x < 70;
+      b.handle('gamma', [g, 0], { color: 'amber', r: 7.5, ref: 'root', label: `γ=${fmt(g)}`, dx: gNearB ? -12 : 0, dy: gNearA ? 22 : -22, align: gNearB ? 'right' : 'center', drag: dragGamma(s) });
       return;
     }
     const eff = effDeltaOf(m, s);
@@ -545,8 +581,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const fd = (x) => evalBottom(m, s, x);
     // 1) 위: 원함수
     inPane(b, 'main', () => {
-      if (s.grid) b.grid();
-      b.axes({ yLabel: m === 5 ? 'g' : 'y' });
+      const fo = freeOpts(b);
+      if (s.grid) b.grid(fo.grid);
+      b.axes({ ...fo.axes, yLabel: m === 5 ? 'g' : 'y' });
       b.plot(f, { color: 'ink', width: 3.2, glow: true, ref: 'F' });
     });
     // 2) 아래: 도함수
@@ -558,8 +595,9 @@ window.addEventListener('DOMContentLoaded', function () {
     c.fillRect(r.x, r.y, r.w, r.h);
     c.restore();
     inPane(b, 'deriv', () => {
-      if (s.grid) b.grid();
-      b.axes({ yLabel: m === 5 ? 'f' : "y′" });
+      const fo = freeOpts(b);
+      if (s.grid) b.grid(fo.grid);
+      b.axes({ ...fo.axes, yLabel: m === 5 ? 'f' : "y′" });
       if (s.step >= 2) shadeSign(b, fd, m === 4 ? s.k : 0);
       if (m === 4) b.hline(s.k, { color: 'violet', width: 2.6, glow: true, ref: 'k' });
       b.plot(fd, { color: 'sky', width: 3, glow: true, ref: 'F' });
@@ -691,7 +729,7 @@ window.addEventListener('DOMContentLoaded', function () {
     {
       id: 'quartic', title: '사차 개형 조각가', short: '사차 개형',
       question: '삼차 도함수의 가운데 근 γ를 한쪽 끝 근에 포개면 사차함수의 극대는 어떻게 될까?',
-      guide: guideOf(2),
+      guide: guideOf(2) + ' (이 장면은 W 모양이 잘 보이도록 가로로 늘려 그렸습니다.)',
       controls: ['lam', 'C2'],
       presets: [
         { label: '① 서로 다른 세 실근 (W형)', color: 'green', set: { lam: 0.4, C2: 0 }, on: (s) => s.lam >= 0.02 && s.lam <= 0.98 },
@@ -703,9 +741,12 @@ window.addEventListener('DOMContentLoaded', function () {
       problem: problemOf(2, () => ({ lam: examData[2].snap.p1, C2: examData[2].snap.p2 })),
       solution: solutionOf(2),
       enter: (s) => { s.lam = examData[2].snap.p1; s.C2 = examData[2].snap.p2; },
-      focus: { x: [-1.6, 3.6], y: [-10.0, 13.0] },
-      // 양 끝 극소점의 높이 차가 γ에 따라 −17 ~ +17 로 변하므로 보이는 높이 범위(23)가 두 점의 가운데를 따라 움직입니다.
-      panes: panes3((s) => { const mid = (evalTop(2, s, -1) - s.C2 + evalTop(2, s, 3) - s.C2) / 2; return [mid - 10.0, mid + 13.0]; }, [-9.6, 2.2]),
+      // 사차함수의 W 모양이 보이도록 이 장면만 가로·세로 배율을 따로 둡니다(키트의 선택 옵션 aspect:'free', 나머지 장면은 1:1).
+      aspect: 'free',
+      aspectNote: '이 장면의 그래프는 사차함수의 모양(W형 · 3:1 변곡형)이 잘 보이도록 <b>가로로 늘려 그렸고 세로 눈금은 따로</b> 있습니다. 그래서 기울기의 각도는 실제와 다르게 보여요. 다른 장면은 가로·세로 축척이 같습니다.',
+      focus: { x: [-2.0, 4.0], y: [-10.0, 13.0] },
+      // γ에 따라 극값의 높이가 크게 바뀌므로 위·아래 창의 세로 범위가 극값에 맞춰 따라갑니다(창의 높이 비율은 고정).
+      panes: panesQuartic,
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'lam', 0.48, 0.0, 1.0, dt); return true; },
       view: viewOf(2),
       draw: (b, s, v, lab) => drawScene(b, s, 2, lab)
