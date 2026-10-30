@@ -157,6 +157,27 @@ def brace_expected(length,dist):
         a=-math.pi/2+math.pi/2*k/DIM_BRACE_SAMPLES;half.append((length/2-r+r*math.cos(a),start+2*r+r*math.sin(a)))
     return half+[(length-u,v) for u,v in reversed(half)][1:]
 
+EQUAL_PATH_CLEAR_PX=8.0   # the mark of a whole path stands at least this far (svg px) from every inner joint
+EQUAL_PATH_MIDDLE_TOLERANCE_PX=0.6   # the centre of the marks of a whole path stands at its middle, this far at most (svg px)
+EQUAL_BRACKET_OFFSET_PX=12.0        # the bracket of a path: this far beside it, 8 px end caps (this observer's own copy of the rule)
+EQUAL_BRACKET_CAP_HALF_PX=4.0
+EQUAL_BRACKET_STRAIGHT_PX=0.6
+EQUAL_BRACKET_POSITION_TOLERANCE_PX=0.05
+
+def path_chain(pieces):
+    """The polyline of drawn segments (model point pairs) joined end to end, or None when they do not chain: the first piece starts at the end the second does not share."""
+    def same(p,q):return norm(sub(p,q))<=1e-6
+    first,second=pieces[0],pieces[1]
+    shared=next((pt for pt in first if any(same(pt,other) for other in second)),None)
+    if shared is None:return None
+    chain=[first[1] if same(first[0],shared) else first[0],shared]
+    for piece in pieces[1:]:
+        tail=chain[-1]
+        if same(piece[0],tail):chain.append(piece[1])
+        elif same(piece[1],tail):chain.append(piece[0])
+        else:return None
+    return chain
+
 def box_polyline_distance(box,points):
     """Smallest distance from a label box (0 inside) to a polyline, sampled along every segment."""
     best=math.inf
@@ -404,11 +425,84 @@ def audit(p):
         if max(values)-min(values)>ANGLE_TOLERANCE:errors.append('ANGLE_EQUAL_MARK_MISMATCH:group'+str(group))
         if len({r.get('arcs',1) for r in rows})!=1:errors.append('ANGLE_EQUAL_MARK_ARC_COUNT:group'+str(group))
 
+    def audit_equal_bracket(oid,sid,chain,bracket_nodes,ticks):
+        """The bracket of a straight path (E32): a line beside the path, two perpendicular end caps, and the equal ticks centred on the bracket's middle; it crosses no stroke."""
+        px=[forward(point) for point in chain];a,b=px[0],px[-1];length=norm(sub(b,a))
+        if length<=1e-9:return
+        d=((b[0]-a[0])/length,(b[1]-a[1])/length)
+        if any(abs((q[0]-a[0])*d[1]-(q[1]-a[1])*d[0])>EQUAL_BRACKET_STRAIGHT_PX+0.05 for q in px):errors.append('EQUAL_MARK_BRACKET_NOT_STRAIGHT:'+oid+':'+sid);return
+        parts={}
+        for node in bracket_nodes:parts.setdefault(node.get('data-mark-part'),[]).append(node)
+        if sorted(parts)!=['cap-from','cap-to','line'] or any(len(v)!=1 for v in parts.values()):errors.append('EQUAL_MARK_BRACKET_PARTS:'+oid+':'+sid);return
+        def ends_of(node):return [(float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2')))]
+        def same(p,q):return norm(sub(p,q))<=EQUAL_BRACKET_POSITION_TOLERANCE_PX
+        line=ends_of(parts['line'][0]);found=None
+        for n in ((-d[1],d[0]),(d[1],-d[0])):
+            pa=(a[0]+n[0]*EQUAL_BRACKET_OFFSET_PX,a[1]+n[1]*EQUAL_BRACKET_OFFSET_PX);pb=(b[0]+n[0]*EQUAL_BRACKET_OFFSET_PX,b[1]+n[1]*EQUAL_BRACKET_OFFSET_PX)
+            if same(line[0],pa) and same(line[1],pb):found=(n,pa,pb);break
+        if found is None:errors.append('EQUAL_MARK_BRACKET_MISMATCH:'+oid+':'+sid+':line');return
+        n,pa,pb=found
+        for part,base_point in (('cap-from',pa),('cap-to',pb)):
+            cap=ends_of(parts[part][0]);want=[(base_point[0]-n[0]*EQUAL_BRACKET_CAP_HALF_PX,base_point[1]-n[1]*EQUAL_BRACKET_CAP_HALF_PX),(base_point[0]+n[0]*EQUAL_BRACKET_CAP_HALF_PX,base_point[1]+n[1]*EQUAL_BRACKET_CAP_HALF_PX)]
+            if not ((same(cap[0],want[0]) and same(cap[1],want[1])) or (same(cap[0],want[1]) and same(cap[1],want[0]))):errors.append('EQUAL_MARK_BRACKET_MISMATCH:'+oid+':'+sid+':'+part)
+        middle=((pa[0]+pb[0])/2,(pa[1]+pb[1])/2);centres=[]
+        for tick in ticks:
+            t0=(float(tick.get('x1')),float(tick.get('y1')));t1=(float(tick.get('x2')),float(tick.get('y2')));centre=((t0[0]+t1[0])/2,(t0[1]+t1[1])/2);vec=sub(t1,t0)
+            if abs(norm(vec)-TICK_LENGTH_PX)>0.05:errors.append('EQUAL_MARK_TICK_SIZE:'+oid+':'+sid)
+            if abs(abs(d[0]*vec[0]+d[1]*vec[1])/norm(vec))>math.sin(math.radians(PERP_TOLERANCE)):errors.append('EQUAL_MARK_NOT_PERPENDICULAR:'+oid+':'+sid)
+            if point_segment_distance(centre,pa,pb)>EQUAL_BRACKET_POSITION_TOLERANCE_PX:errors.append('EQUAL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid)
+            centres.append(centre)
+        if centres and norm(sub((sum(c[0] for c in centres)/len(centres),sum(c[1] for c in centres)/len(centres)),middle))>EQUAL_PATH_MIDDLE_TOLERANCE_PX:errors.append('EQUAL_MARK_PATH_NOT_AT_MIDDLE:'+oid+':'+sid)
+        mine_ids={node.get('id') for node in [*bracket_nodes,*ticks]}
+        for other_id,pts in strokes:
+            if other_id in mine_ids:continue
+            for c0,c1 in ((pa,pb),*[ends_of(parts[part][0]) for part in ('cap-from','cap-to')]):
+                if any(properly_cross(c0,c1,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('EQUAL_MARK_BRACKET_CROSSES:'+oid+':'+str(other_id));break
+
     # ---- equal-length ticks and parallel arrows
     for field,kind in (('equalLengths','equal'),('parallels','parallel')):
         for row in marks.get(field,[]):
-            oid=row['id'];items=by_mark.get((kind,oid),[]);drawn=[]
-            for sid in row['segments']:
+            oid=row['id'];items=by_mark.get((kind,oid),[]);drawn=[];path_lengths={}
+            for entry in row['segments']:
+                if isinstance(entry,dict):
+                    # E32: one mark for a whole path {"path":[ids]}: the pieces drawn end to end; the ticks stand on the path (on the piece they fall on), clear of its inner joints
+                    path_ids=entry.get('path') or [];sid=path_ids[0] if path_ids else '?'
+                    pieces=[drawn_segment(pid) for pid in path_ids]
+                    if not path_ids or any(piece is None for piece in pieces):continue
+                    chain=path_chain(pieces)
+                    if chain is None:errors.append('EQUAL_MARK_PATH_NOT_CONNECTED:'+oid+':'+sid);continue
+                    path_lengths[sid]=sum(norm(sub(b,a)) for a,b in zip(chain,chain[1:]))
+                    mine=[n for n in items if n.get('data-mark-segment')==sid]
+                    if len(mine)!=row['count']:errors.append('EQUAL_MARK_MISSING:'+oid+':'+sid);continue
+                    brackets=[n for n in by_mark.get(('equal-bracket',oid),[]) if n.get('data-mark-segment')==sid]
+                    path_mark=row.get('pathMark','AUTO')
+                    if path_mark not in ('AUTO','TICK','BRACKET'):errors.append('EQUAL_MARK_PATH_MARK_INVALID:'+oid);continue
+                    if brackets and path_mark=='TICK':errors.append('EQUAL_MARK_PATH_BRACKET_UNEXPECTED:'+oid+':'+sid);continue
+                    if not brackets and path_mark=='BRACKET':errors.append('EQUAL_MARK_PATH_NEEDS_BRACKET:'+oid+':'+sid);continue
+                    if brackets:
+                        # the middle of the path is near an inner joint, so the whole path wears a thin bracket (a straight path only) with the ticks at the bracket's middle
+                        audit_equal_bracket(oid,sid,chain,brackets,mine)
+                        continue
+                    positions=[]
+                    for n in mine:
+                        t0,t1=line_model(n);centre=((t0[0]+t1[0])/2,(t0[1]+t1[1])/2);vec=sub(t1,t0)
+                        if abs(norm(vec)*sx-TICK_LENGTH_PX)>0.05:errors.append('EQUAL_MARK_TICK_SIZE:'+oid+':'+sid)
+                        nearest=min(zip(chain,chain[1:]),key=lambda pair:point_segment_distance(centre,*pair))
+                        if point_segment_distance(centre,*nearest)*sx>0.01:errors.append('EQUAL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid);continue
+                        direction=sub(nearest[1],nearest[0])
+                        if abs(abs(direction[0]*vec[0]+direction[1]*vec[1])/(norm(direction)*norm(vec)))>math.sin(math.radians(PERP_TOLERANCE)):errors.append('EQUAL_MARK_NOT_PERPENDICULAR:'+oid+':'+sid)
+                        # clear of every inner joint (the point E of B-E-D) by the path-mark clearance
+                        along_path=0.0
+                        for a0,b0 in zip(chain,chain[1:]):
+                            if (a0,b0)==nearest:along_path+=norm(sub(centre,a0));break
+                            along_path+=norm(sub(b0,a0))
+                        positions.append(along_path)
+                        if not 0.15*path_lengths[sid]<=along_path<=0.85*path_lengths[sid]:errors.append('EQUAL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid)
+                        if any(norm(sub(centre,joint))*sx<EQUAL_PATH_CLEAR_PX-0.01 for joint in chain[1:-1]):errors.append('EQUAL_MARK_PATH_ON_JOINT:'+oid+':'+sid)
+                    # the marks of a whole path stand at its middle (by length): the group's centre is half way along
+                    if path_mark=='AUTO' and positions and abs(sum(positions)/len(positions)-0.5*path_lengths[sid])*sx>EQUAL_PATH_MIDDLE_TOLERANCE_PX:errors.append('EQUAL_MARK_PATH_NOT_AT_MIDDLE:'+oid+':'+sid)
+                    continue
+                sid=entry
                 seg=drawn_segment(sid)
                 if seg is None:continue
                 drawn.append(seg);a,b=seg;length=norm(sub(b,a))
@@ -430,11 +524,16 @@ def audit(p):
                         if across*sx>0.01 or not 0.15*length<=along<=0.85*length:errors.append('PARALLEL_MARK_NOT_ON_SEGMENT:'+oid+':'+sid)
                         if norm(axis)<=1e-12 or abs(axis[0]*unit[1]-axis[1]*unit[0])/norm(axis)>math.sin(math.radians(PERP_TOLERANCE)):errors.append('PARALLEL_MARK_ARROW_NOT_ALONG_SEGMENT:'+oid+':'+sid)
             if kind=='equal':
-                lengths=[norm(sub(b,a)) for a,b in drawn]
+                lengths=[norm(sub(b,a)) for a,b in drawn]+list(path_lengths.values())
                 peer_lengths=[]
-                for sid in row['segments']:
-                    seg=next((s for s in p.get('segments',[]) if s['id']==sid),None)
-                    if seg:peer_lengths.append(norm(sub(peer_point(seg['refs'][1]),peer_point(seg['refs'][0]))))
+                for entry in row['segments']:
+                    ids=entry.get('path') if isinstance(entry,dict) else [entry]
+                    total=0.0;complete=bool(ids)
+                    for sid in ids or []:
+                        seg=next((s for s in p.get('segments',[]) if s['id']==sid),None)
+                        if seg:total+=norm(sub(peer_point(seg['refs'][1]),peer_point(seg['refs'][0])))
+                        else:complete=False
+                    if complete:peer_lengths.append(total)
                 for group in (lengths,peer_lengths):
                     if group and any(abs(l-group[0])>LENGTH_RELATIVE*max(1.0,group[0]) for l in group):errors.append('EQUAL_MARK_LENGTH_MISMATCH:'+oid);break
                 observations.append({'id':oid,'type':'EQUAL','lengths':lengths})

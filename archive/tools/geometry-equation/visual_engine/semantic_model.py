@@ -311,7 +311,10 @@ def validate(spec):
                 if len(refs)<2 or len(set(refs))!=len(refs) or any(objects[r]['kind']!='SEGMENT' for r in refs):raise ValueError('SEGMENT_REFS_REQUIRED')
                 if isinstance(obj.get('count'),bool) or not isinstance(obj.get('count'),int) or not 1<=obj['count']<=(3 if kind=='EQUAL_MARK' else 2):raise ValueError('MARK_COUNT_INVALID')
                 if kind=='EQUAL_MARK':
-                    lengths=[math.dist(*geometry[r]) for r in refs];observed=lengths
+                    # E32: an entry may stand for a whole path of drawn segments (paths[ref] = the piece ids, first = ref): its length is the pieces' total
+                    paths=obj.get('paths',{})
+                    if not isinstance(paths,dict) or any(key not in refs or not isinstance(value,list) or len(value)<2 or value[0]!=key or len(set(value))!=len(value) or any(objects.get(s,{}).get('kind')!='SEGMENT' for s in value) for key,value in paths.items()):raise ValueError('EQUAL_MARK_PATH_INVALID:'+obj['id'])
+                    lengths=[sum(math.dist(*geometry[s]) for s in paths.get(r,[r])) for r in refs];observed=lengths
                     ok=all(abs(length-lengths[0])<=1e-6*max(1,lengths[0]) for length in lengths)
                     if not ok:raise ValueError('EQUAL_MARK_LENGTH_MISMATCH:'+obj['id'])
                 else:
@@ -321,7 +324,7 @@ def validate(spec):
                     ok=all(value<=math.sin(math.radians(0.5)) for value in observed)
                     if not ok:raise ValueError('PARALLEL_MARK_NOT_PARALLEL:'+obj['id'])
         except (KeyError,TypeError,ValueError) as exc:
-            if str(exc).startswith(('EQUAL_MARK_LENGTH_MISMATCH','PARALLEL_MARK_NOT_PARALLEL')):raise
+            if str(exc).startswith(('EQUAL_MARK_LENGTH_MISMATCH','PARALLEL_MARK_NOT_PARALLEL','EQUAL_MARK_PATH_INVALID')):raise
             raise ValueError('UNVERIFIED_SEMANTIC_MARK:'+obj['id']) from exc
         if not ok: raise ValueError('UNVERIFIED_SEMANTIC_MARK:'+obj['id'])
         relations.append({'id':obj['id'],'kind':kind,'status':'PASS','observed':observed})

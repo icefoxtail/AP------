@@ -991,15 +991,46 @@ def prepare(spec):
             labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchors[0],{'pathOwned':{'ids':list(obj['segments']),'anchors':[list(a) for a in anchors],'gaps':PATH_LABEL_GAPS}},obj.get('unit')))
         elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
             ends=[(vp.screen(geometry[r][0]),vp.screen(geometry[r][1])) for r in obj['refs']];count=obj['count']
-            reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1])
+            reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1]);paths=obj.get('paths',{})
             for ref,(p,q) in zip(obj['refs'],ends):
-                length=math.dist(p,q)
-                if length<30+6*count:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
-                d=((q[0]-p[0])/length,(q[1]-p[1])/length);n=(-d[1],d[0])
-                # The marks sit at the middle of the segment, or at the nearest of a few other places that keeps clear of any displayed point (a midpoint M, a foot H).
-                spots=[.5,.3,.7,.2,.8];room=lambda t:min([math.dist((p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t),at) for at in [*point_marks,*mark_spots] if math.dist(at,p)>1e-6 and math.dist(at,q)>1e-6]+[1e9])
-                spot=next((t for t in spots if room(t)>=10*count+12),max(spots,key=room))
-                mid=(p[0]+(q[0]-p[0])*spot,p[1]+(q[1]-p[1])*spot);mark_spots.append(mid)
+                if ref in paths:
+                    # E32: one mark for a whole path of pieces (B-E-D): at the path's middle (by length) or at the nearest of a few other places clear of every displayed point,
+                    # the inner joints (E) above all; on whichever piece that place falls
+                    chain=_segment_chain([geometry[s] for s in paths[ref]],vp);pieces=list(zip(chain,chain[1:]));piece_lengths=[math.dist(a,b) for a,b in pieces];total=sum(piece_lengths)
+                    if total<30+6*count:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
+                    def locate(t,pieces=pieces,piece_lengths=piece_lengths,total=total):
+                        distance=t*total
+                        for (a,b),piece in zip(pieces,piece_lengths):
+                            if distance<=piece+1e-9:
+                                f=distance/piece;return (a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f),((b[0]-a[0])/piece,(b[1]-a[1])/piece)
+                            distance-=piece
+                        a,b=pieces[-1];piece=piece_lengths[-1];return b,((b[0]-a[0])/piece,(b[1]-a[1])/piece)
+                    ends_of_path=(chain[0],chain[-1])
+                    room=lambda t,locate=locate,ends_of_path=ends_of_path:min([math.dist(locate(t)[0],at) for at in [*point_marks,*mark_spots] if math.dist(at,ends_of_path[0])>1e-6 and math.dist(at,ends_of_path[1])>1e-6]+[1e9])
+                    path_mark=obj.get('pathMark','AUTO')
+                    if path_mark=='TICK':
+                        # the nearest clear place on the path (the middle first); the author accepts that the ticks stand on one piece
+                        spots=[.5,.3,.7,.2,.8];spot=next((t for t in spots if room(t)>=10*count+12),max(spots,key=room))
+                        if room(spot)<EQUAL_PATH_CLEAR_PX:raise ValueError('EQUAL_MARK_PATH_NO_ROOM:'+ref)
+                        mid,d=locate(spot);n=(-d[1],d[0]);mark_spots.append(mid)
+                    elif path_mark=='AUTO' and room(0.5)>=10*count+12:
+                        mid,d=locate(0.5);n=(-d[1],d[0]);mark_spots.append(mid)
+                    else:
+                        # the middle of the path is too near an inner joint (E of B-E-D): a tick there would sit on one piece and read as that piece's length. The whole path gets a thin
+                        # bracket beside it instead, with the ticks at the bracket's middle (a straight path only)
+                        bracket=_equal_path_bracket(chain,[o for o in obstacles if o.get('id') not in paths[ref]])
+                        if bracket is None:raise ValueError('EQUAL_MARK_PATH_NO_ROOM:'+ref)
+                        n,pa,pb,caps=bracket;d=((pb[0]-pa[0])/math.dist(pa,pb),(pb[1]-pa[1])/math.dist(pa,pb));mid=((pa[0]+pb[0])/2,(pa[1]+pb[1])/2);mark_spots.append(mid)
+                        for part,(c0,c1) in (('line',(pa,pb)),('cap-from',caps[0]),('cap-to',caps[1])):
+                            primitive({'id':oid+'-'+ref+'-bracket-'+part,'kind':'line','from':c0,'to':c1,'token':'indicator','layer':55,'role':'indicator','mark':'equal-bracket','markId':oid,'markSegment':ref,'markPart':part},'curve')
+                else:
+                    length=math.dist(p,q)
+                    if length<30+6*count:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
+                    d=((q[0]-p[0])/length,(q[1]-p[1])/length);n=(-d[1],d[0])
+                    # The marks sit at the middle of the segment, or at the nearest of a few other places that keeps clear of any displayed point (a midpoint M, a foot H).
+                    spots=[.5,.3,.7,.2,.8];room=lambda t:min([math.dist((p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t),at) for at in [*point_marks,*mark_spots] if math.dist(at,p)>1e-6 and math.dist(at,q)>1e-6]+[1e9])
+                    spot=next((t for t in spots if room(t)>=10*count+12),max(spots,key=room))
+                    mid=(p[0]+(q[0]-p[0])*spot,p[1]+(q[1]-p[1])*spot);mark_spots.append(mid)
                 if kind=='PARALLEL_MARK' and d[0]*reference[0]+d[1]*reference[1]<0:d=(-d[0],-d[1]);n=(-d[1],d[0])
                 for i in range(count):
                     shift=(i-(count-1)/2)*(5 if kind=='EQUAL_MARK' else 6);c=(mid[0]+d[0]*shift,mid[1]+d[1]*shift)

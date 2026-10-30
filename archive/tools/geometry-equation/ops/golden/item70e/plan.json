@@ -1,0 +1,375 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "10"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "40"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P70",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "70"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lB70",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "B",
+     "P70"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lCD",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "C",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lB70",
+     "lCD"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "lBD",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "B",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "P150",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "C",
+     "B"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "30"
+     },
+     "turn": "CW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lC30",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "C",
+     "P150"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "E",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lBD",
+     "lC30"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sAD",
+   "refs": [
+    "A",
+    "D"
+   ]
+  },
+  {
+   "id": "sDC",
+   "refs": [
+    "D",
+    "C"
+   ]
+  },
+  {
+   "id": "sCE",
+   "refs": [
+    "C",
+    "E"
+   ]
+  },
+  {
+   "id": "sBE",
+   "refs": [
+    "B",
+    "E"
+   ]
+  },
+  {
+   "id": "sED",
+   "refs": [
+    "E",
+    "D"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     {
+      "path": [
+       "sBE",
+       "sED"
+      ]
+     },
+     "sBC"
+    ],
+    "pathMark": "TICK"
+   },
+   {
+    "id": "e2",
+    "count": 2,
+    "segments": [
+     "sDC",
+     "sCE"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "id": "aA",
+    "refs": [
+     "B",
+     "A",
+     "C"
+    ],
+    "value": 40,
+    "label": "40",
+    "arcs": 2,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aB",
+    "refs": [
+     "A",
+     "B",
+     "C"
+    ],
+    "value": 70,
+    "label": "70",
+    "arcs": 1,
+    "equalGroup": 1,
+    "factRole": "DERIVED_INTERMEDIATE",
+    "ring": 2,
+    "labelPlacement": "LEADER"
+   },
+   {
+    "id": "aC",
+    "refs": [
+     "A",
+     "C",
+     "B"
+    ],
+    "value": 70,
+    "label": "70",
+    "arcs": 1,
+    "equalGroup": 1,
+    "ring": 2,
+    "factRole": "DERIVED_INTERMEDIATE",
+    "labelPlacement": "LEADER"
+   },
+   {
+    "id": "aD",
+    "refs": [
+     "B",
+     "D",
+     "C"
+    ],
+    "value": 70,
+    "label": "70",
+    "arcs": 1,
+    "equalGroup": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aE",
+    "refs": [
+     "C",
+     "E",
+     "D"
+    ],
+    "value": 70,
+    "label": "70",
+    "arcs": 1,
+    "equalGroup": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aX",
+    "refs": [
+     "D",
+     "C",
+     "E"
+    ],
+    "value": 40,
+    "label": "x",
+    "labelKind": "MATH",
+    "arcs": 3,
+    "factRole": "CONCLUSION"
+   }
+  ]
+ },
+ "caption": "AB=AC이므로 밑각 ∠B=∠ACB=70°이고, BC=BD와 CD=CE인 두 이등변삼각형 BCD, CDE에서 ∠BDC=∠CDE=∠CED=70°이므로 삼각형 CDE의 내각의 합으로 x를 구한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AB=AC, ∠A=40°, D는 AC 위의 점, E는 BD 위의 점, BC=BD, CD=CE",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 이등변삼각형 BCD, CDE의 밑각이 모두 70°이고 BC=BD, CD=CE의 같은 눈금과 구하는 각 x=∠DCE의 위치가 한 그림에 드러난다"
+ ],
+ "sourceQuote": "$D$는 $AC$ 위의 점, $E$는 $BD$ 위의 점",
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 560
+ }
+}

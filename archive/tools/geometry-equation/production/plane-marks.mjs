@@ -267,11 +267,18 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     for(const row of list(marks[field],field)){
       if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:'+field);
       keysOk(row,KEYS[field],field);claim(row.id,field);
-      if(!Array.isArray(row.segments)||row.segments.length<2||new Set(row.segments).size!==row.segments.length)bad('MARK_FIELD_INVALID:'+field+'.segments:'+row.id);
+      if(!Array.isArray(row.segments)||row.segments.length<2)bad('MARK_FIELD_INVALID:'+field+'.segments:'+row.id);
+      // E32: an equalLengths entry may be a whole path, {"path":[segment ids]}: pieces joined end to end (B-E-D), whose total length is the length that is equal
+      const entries=row.segments.map(entry=>typeof entry==='string'?{rep:entry,ids:[entry]}:equalPathEntry(entry,row.id,kind,plan,segEnds));
+      const flat=entries.flatMap(entry=>entry.ids);
+      if(new Set(flat).size!==flat.length)bad('MARK_FIELD_INVALID:'+field+'.segments:'+row.id);
+      // pathMark (E32), for the path entries of an equalLengths row: AUTO (default) = ticks at the path's middle, or a bracket beside a straight path when the middle is too near an inner point;
+      // TICK = ticks at the nearest clear place on the path; BRACKET = always the bracket
+      if(row.pathMark!==undefined&&(kind!=='EQUAL_MARK'||!EQUAL_PATH_MARKS.includes(row.pathMark)||!entries.some(entry=>entry.ids.length>1)))bad('EQUAL_MARK_PATH_MARK_INVALID:'+row.id);
       if(!Number.isInteger(row.count)||row.count<1||row.count>max)bad('MARK_COUNT_INVALID:'+row.id);
-      const ends=row.segments.map(segEnds);
+      const ends=entries.map(entry=>segEnds(entry.rep));
       if(kind==='EQUAL_MARK'){
-        const lengths=ends.map(([p,q])=>norm(sub(q,p)));
+        const lengths=entries.map(entry=>entry.ids.reduce((sum,id)=>{const [p,q]=segEnds(id);return sum+norm(sub(q,p));},0));
         if(lengths.some(l=>Math.abs(l-lengths[0])>1e-6*Math.max(1,lengths[0])))bad(codeLength+':'+row.id);
       }else{
         const units=ends.map(([p,q])=>{const d=sub(q,p),n=norm(d);return [d[0]/n,d[1]/n];});
@@ -280,7 +287,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       // Two groups of one kind with the same tick count could not be told apart.
       if(counts.has(row.count))bad((kind==='EQUAL_MARK'?'EQUAL_MARK_GROUP_AMBIGUOUS:':'PARALLEL_MARK_GROUP_AMBIGUOUS:')+row.id+'&'+counts.get(row.count));
       counts.set(row.count,row.id);
-      objects.push({id:row.id,kind,refs:row.segments,count:row.count});
+      const paths=Object.fromEntries(entries.filter(entry=>entry.ids.length>1).map(entry=>[entry.rep,entry.ids]));
+      objects.push({id:row.id,kind,refs:entries.map(entry=>entry.rep),count:row.count,...(Object.keys(paths).length?{paths}:{}),...(row.pathMark!==undefined&&row.pathMark!=='AUTO'?{pathMark:row.pathMark}:{})});
     }
   }
 

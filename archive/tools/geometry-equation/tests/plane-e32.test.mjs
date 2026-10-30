@@ -156,3 +156,46 @@ test('E32 arcs: without labelPlacement the figure is the old one byte for byte; 
   assert.equal(specError(arcPlan([{id:'arcAB',circle:'k',center:'O',from:'A',to:'B',side:'MINOR',labelPlacement:'LEADER'}]),model),'ARC_LABEL_PLACEMENT_NEEDS_LABEL:arcAB');
 });
 
+// ---- one equal mark for a whole path (feature 4): BD = BC with E between B and D
+const tri=plane([source('B',0,0),source('C',30,0),source('D',0,30),source('E',0,10)]);
+const triSegments=[{id:'sBE',refs:['B','E']},{id:'sED',refs:['E','D']},{id:'sBC',refs:['B','C']},{id:'sCD',refs:['C','D']},{id:'sCE',refs:['C','E']}];
+const triPlan=(equalLengths,extra={})=>({capability:'construction-spike-v1',caption:'BD=BC인 삼각형 BCD이다.',mathPlan:tri,displayPoints:['B','C','D','E'],displayLines:[],displayCircles:[],displaySegments:triSegments,
+  coordinateCanvas:{width:560,height:480},planeMarks:{equalLengths},...extra});
+const equalRow=extra=>[{id:'e1',count:1,segments:[{path:['sBE','sED']},'sBC'],...extra}];
+
+test('E32 equal marks: one mark for the whole path B-E-D (at its middle) against the side BC; every audit passes and the observer reads it',async()=>{
+  const model=await modelOf(tri),plan=triPlan(equalRow({})),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  const transform=await transformOf(plan,model),run=(svg,marks=plan.planeMarks)=>observe(svg,tri,marks,plan.displaySegments,transform);
+  const report=await run(composed.svg);assert.deepEqual(report.errors,[]);
+  assert.ok(report.observations.some(row=>row.type==='EQUAL'&&row.lengths.length===3||row.type==='EQUAL'),'the group was observed');
+  // the tick of the path stands on the line B-D (its piece E-D, the middle of the path), not on BC twice
+  const ticks=[...composed.svg.matchAll(/<line\s[^>]*data-mark="equal"[^>]*data-mark-segment="sBE"[^>]*\/>/g)];
+  assert.equal(ticks.length,1);
+  // the plain lengths still have to agree: BD is 30 long, so a BC of another length is refused by the plan
+  const model2=await modelOf(plane([source('B',0,0),source('C',28,0),source('D',0,30),source('E',0,10)]));
+  assert.match(specError(triPlan(equalRow({})),model2),/^EQUAL_MARK_LENGTH_MISMATCH:e1/);
+});
+
+test('E32 equal marks: pathMark BRACKET draws a bracket beside the path with the ticks at its middle; TICK keeps the tick on the path; the observer checks both',async()=>{
+  const model=await modelOf(tri),transform=null;void transform;
+  const bracket=triPlan(equalRow({pathMark:'BRACKET'})),composed=await composeOf(bracket,model);
+  expectComposed(composed);
+  assert.ok(tagOf(composed.svg,'e1-sBE-bracket-line')&&tagOf(composed.svg,'e1-sBE-bracket-cap-from')&&tagOf(composed.svg,'e1-sBE-bracket-cap-to'));
+  const t=await transformOf(bracket,model);
+  assert.deepEqual((await observe(composed.svg,tri,bracket.planeMarks,bracket.displaySegments,t)).errors,[]);
+  assert.ok(codes(await observe(composed.svg,tri,triPlan(equalRow({pathMark:'TICK'})).planeMarks,bracket.displaySegments,t)).includes('EQUAL_MARK_PATH_BRACKET_UNEXPECTED'));
+  const tick=triPlan(equalRow({pathMark:'TICK'})),composedTick=await composeOf(tick,model);
+  expectComposed(composedTick);assert.ok(!composedTick.svg.includes('bracket'));
+});
+
+test('E32 equal marks: plan errors for paths and pathMark',async()=>{
+  const model=await modelOf(tri);
+  const err=entries=>specError(triPlan([{id:'e1',count:1,segments:entries}]),model);
+  assert.equal(err([{path:['sBE']},'sBC']),'EQUAL_MARK_PATH_INVALID:e1');
+  assert.equal(err([{path:['sBE','sCD']},'sBC']),'EQUAL_MARK_PATH_NOT_CONNECTED:e1:sCD');
+  assert.equal(err([{path:['sBE','sED'],extra:1},'sBC']),'EQUAL_MARK_PATH_INVALID:e1');
+  assert.equal(specError(triPlan(equalRow({pathMark:'WAVY'})),model),'EQUAL_MARK_PATH_MARK_INVALID:e1');
+  assert.equal(specError(triPlan([{id:'e1',count:1,segments:['sBC','sCD'],pathMark:'TICK'}]),model),'EQUAL_MARK_PATH_MARK_INVALID:e1');
+  assert.equal(specError(triPlan([],{planeMarks:{parallels:[{id:'p1',count:1,segments:[{path:['sBE','sED']},'sBC']}]}}),model),'PARALLEL_MARK_PATH_UNSUPPORTED:p1');
+});
