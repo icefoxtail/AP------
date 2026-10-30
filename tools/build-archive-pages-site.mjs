@@ -224,14 +224,20 @@ function readMixedReference(root, pathValue, expectedPrefix, reference, label) {
   return { relative, absolute, byteLength, value };
 }
 
+// The builder emits schema v1 by default and v2 when archive/tools/archive2-mixed-verification-policy.json enables it;
+// the package accepts either and checks the rows of both layouts the same way (v2 through the shared decoder).
+const MIXED_LAYOUTS = new Map([['v1', 'records'], ['v2', 'rows']]);
+
 function decodeMixedRowsOrFail(resource, options, label) {
   try { return canonicalResolver.decodeMixedRows(resource, options); }
   catch (error) { fail(`mixed compact rows are invalid in ${label} (${error.message})`); }
 }
 
-function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath) {
+export function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath) {
   const lookup = sourceIndex?.mixedLookup;
-  if (!lookup || lookup.schemaVersion !== 'archive2-mixed-source-verification-index-v2' ||
+  const layout = /^archive2-mixed-source-verification-index-(v[12])$/.exec(String(lookup?.schemaVersion || ''))?.[1] || '';
+  const rowsKey = MIXED_LAYOUTS.get(layout);
+  if (!lookup || !rowsKey ||
       lookup.resolverVersion !== sourceIndex.resolverVersion ||
       lookup.baseProjectionVersion !== sourceIndex.baseProjectionVersion ||
       !Array.isArray(sourceIndex.files) || !Array.isArray(lookup.files) ||
@@ -300,11 +306,13 @@ function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath
     if (mixedPaths.has(file.relative)) fail(`mixed source index repeats a file: ${file.relative}`);
     mixedPaths.add(file.relative);
     const shard = file.value;
-    if (shard?.schemaVersion !== 'archive2-mixed-source-verification-v2' ||
-        shard.sourceFile !== sourceFile || !Array.isArray(shard.rows) ||
-        shard.rows.length !== Number(row.recordCount))
+    if (shard?.schemaVersion !== `archive2-mixed-source-verification-${layout}` ||
+        shard.sourceFile !== sourceFile || !Array.isArray(shard[rowsKey]) ||
+        shard[rowsKey].length !== Number(row.recordCount))
       fail(`mixed source shard does not match its index: ${file.relative}`);
-    const shardRecords = decodeMixedRowsOrFail(shard, { kind: 'source', sourceFile }, file.relative);
+    const shardRecords = layout === 'v2'
+      ? decodeMixedRowsOrFail(shard, { kind: 'source', sourceFile }, file.relative)
+      : shard.records;
     for (const record of shardRecords) {
       const uid = String(record?.questionUid || '');
       if (!/^qid_v1_[a-f0-9]{64}$/.test(uid) || sourceUids.has(uid) ||
@@ -335,15 +343,17 @@ function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath
     if (mixedPaths.has(file.relative)) fail(`mixed lookup index repeats a file: ${file.relative}`);
     mixedPaths.add(file.relative);
     const bucket = file.value;
-    if (bucket?.schemaVersion !== 'archive2-mixed-source-verification-uid-bucket-v2' ||
-        bucket.prefix !== prefix || !Array.isArray(bucket.rows) ||
-        bucket.rows.length !== Number(row.recordCount))
+    if (bucket?.schemaVersion !== `archive2-mixed-source-verification-uid-bucket-${layout}` ||
+        bucket.prefix !== prefix || !Array.isArray(bucket[rowsKey]) ||
+        bucket[rowsKey].length !== Number(row.recordCount))
       fail(`mixed UID bucket does not match its index: ${file.relative}`);
-    const bucketRecords = decodeMixedRowsOrFail(
-      bucket,
-      { kind: 'bucket', files: sourceIndex.files.map((baseRow) => String(baseRow?.sourceFile || '')) },
-      file.relative,
-    );
+    const bucketRecords = layout === 'v2'
+      ? decodeMixedRowsOrFail(
+        bucket,
+        { kind: 'bucket', files: sourceIndex.files.map((baseRow) => String(baseRow?.sourceFile || '')) },
+        file.relative,
+      )
+      : bucket.records;
     const embedsContext = Object.prototype.hasOwnProperty.call(bucket, 'context');
     if (embedsContext !== inlineContextExpected)
       fail(`mixed UID bucket context marker mismatch: ${file.relative}`);

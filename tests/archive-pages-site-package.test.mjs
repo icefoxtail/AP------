@@ -5,7 +5,8 @@ import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { spawnSync } from 'node:child_process';
-import { buildPagesSite, formatPackageSummary, HEADROOM_WARNING_BYTES, planPagesSite, summarizePackageSize } from '../tools/build-archive-pages-site.mjs';
+import { addMixedSourceVerificationFiles, buildPagesSite, formatPackageSummary, HEADROOM_WARNING_BYTES, planPagesSite, summarizePackageSize } from '../tools/build-archive-pages-site.mjs';
+import { buildMixedSourceShard, buildMixedUidBucket, mixedIndexSchemaVersion } from '../archive/tools/mixed-verification-codec.mjs';
 
 function digest(value) {
   return crypto.createHash('sha256').update(value.replace(/\r\n/g, '\n')).digest('hex');
@@ -322,4 +323,87 @@ test('the command line reports headroom and warns, without failing, when it drop
   assert.equal(over.status, 1);
   assert.match(over.stderr, /must be below the/);
   assert.match(over.stderr, /Largest directories:/);
+});
+
+// Mixed source verification data comes in schema v1 (default, readable by an already-deployed Worker) and v2 (opt-in).
+// The package must accept and verify either layout the same way and refuse anything else.
+function mixedFixture(schema) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-pages-mixed-'));
+  const sha = (text) => crypto.createHash('sha256').update(text).digest('hex');
+  const sourceFiles = ['original/a.js', 'original/b.js'];
+  const uids = ['qid_v1_a' + '1'.repeat(63), 'qid_v1_b' + '2'.repeat(63), 'qid_v1_f' + '3'.repeat(63)];
+  const rowFor = (uid, sourceFile, ordinal) => ({
+    questionUid: uid, sourceFile, sourceOrdinal: ordinal, registeredGrade: '고1',
+    identity: { questionUid: uid, sourceArchiveFile: sourceFile, sourceOrdinal: ordinal, status: 'VERIFIED' },
+    assignments: [], advancedAssignments: [],
+    record: { sourceFile, sourceOrdinal: ordinal, questionUid: uid, identityStatus: 'VERIFIED', courseFamilies: ['COMMON_1'] },
+  });
+  const rowsBySource = new Map([[sourceFiles[0], [rowFor(uids[0], sourceFiles[0], 1), rowFor(uids[2], sourceFiles[0], 2)]], [sourceFiles[1], [rowFor(uids[1], sourceFiles[1], 1)]]]);
+  const context = {
+    schemaVersion: 'archive2-mixed-source-verification-context-v1', resolverVersion: 'r', baseProjectionVersion: 'p',
+    authority: {
+      taxonomyVersion: 't', gradeCourses: [], canonicalParents: [], canonicalAdvancedPaths: [], projectionPolicy: {},
+      problemTypeKeys: [], templatesByKey: {}, bindingKeys: [],
+    },
+  };
+  const base = 'archive/data/archive2-source-verification/mixed-v1/';
+  const write = (relative, value) => {
+    const text = JSON.stringify(value) + '\n';
+    put(root, base + relative, text);
+    return { text, sha256: sha(text), byteLength: Buffer.byteLength(text) };
+  };
+  const contextRef = write('context.json', context);
+  const files = sourceFiles.map((sourceFile, index) => {
+    const rows = rowsBySource.get(sourceFile);
+    const ref = write('sources/' + sha(sourceFile) + '.json', buildMixedSourceShard({ schema, sourceFile, sourceSha256: '', qCount: rows.length, rows }));
+    return { sourceIndex: index, sha256: ref.sha256, byteLength: ref.byteLength, recordCount: rows.length };
+  });
+  const allRows = [...rowsBySource.values()].flat();
+  const uidBuckets = Array.from({ length: 16 }, (_, i) => i.toString(16)).map((prefix) => {
+    const rows = allRows.filter((row) => row.questionUid.slice('qid_v1_'.length, 'qid_v1_'.length + 1) === prefix);
+    const ref = write('uid-buckets/' + prefix + '.json', buildMixedUidBucket({ schema, prefix, context, rows, sourceFiles }));
+    return { prefix, path: 'data/archive2-source-verification/mixed-v1/uid-buckets/' + prefix + '.json', sha256: ref.sha256, byteLength: ref.byteLength, recordCount: rows.length, ...(prefix === 'f' ? { includesContext: true } : {}) };
+  });
+  const sourceIndex = {
+    resolverVersion: 'r', baseProjectionVersion: 'p',
+    mixedLookup: {
+      schemaVersion: mixedIndexSchemaVersion(schema), resolverVersion: 'r', baseProjectionVersion: 'p',
+      context: { path: 'data/archive2-source-verification/mixed-v1/context.json', sha256: contextRef.sha256, byteLength: contextRef.byteLength },
+      files, uidBuckets,
+    },
+    files: sourceFiles.map((sourceFile) => ({ sourceFile, qCount: rowsBySource.get(sourceFile).length })),
+  };
+  return { root, sourceIndex, base, sourceFiles };
+}
+
+for (const schema of ['v1', 'v2']) {
+  test(`the package verifies and ships mixed source verification data in schema ${schema}`, (t) => {
+    const { root, sourceIndex } = mixedFixture(schema);
+    t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+    const selection = new Map();
+    addMixedSourceVerificationFiles(selection, root, sourceIndex, 'fixture-index');
+    // context + one shard per source + 16 UID buckets
+    assert.equal(selection.size, 1 + 2 + 16);
+    assert.ok(selection.has('archive/data/archive2-source-verification/mixed-v1/context.json'));
+  });
+}
+
+test('the package refuses mixed data whose bytes, layout or rows do not match the index', (t) => {
+  const { root, sourceIndex, base, sourceFiles } = mixedFixture('v2');
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const shardPath = path.join(root, ...(base + 'sources/' + crypto.createHash('sha256').update(sourceFiles[0]).digest('hex') + '.json').split('/'));
+  const original = fs.readFileSync(shardPath, 'utf8');
+
+  fs.writeFileSync(shardPath, original.replace('"VERIFIED"', '"VERIFIEd"'));
+  assert.throws(() => addMixedSourceVerificationFiles(new Map(), root, sourceIndex, 'fixture-index'), /digest mismatch|byteLength mismatch/);
+  fs.writeFileSync(shardPath, original);
+
+  const unsupported = JSON.parse(JSON.stringify(sourceIndex));
+  unsupported.mixedLookup.schemaVersion = 'archive2-mixed-source-verification-index-v3';
+  assert.throws(() => addMixedSourceVerificationFiles(new Map(), root, unsupported, 'fixture-index'), /unsupported schema or coverage/);
+
+  // a v1 index over v2 resources (or the reverse) is a layout mismatch, never silently accepted
+  const crossed = JSON.parse(JSON.stringify(sourceIndex));
+  crossed.mixedLookup.schemaVersion = 'archive2-mixed-source-verification-index-v1';
+  assert.throws(() => addMixedSourceVerificationFiles(new Map(), root, crossed, 'fixture-index'), /does not match its index/);
 });
