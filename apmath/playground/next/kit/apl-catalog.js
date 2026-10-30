@@ -939,6 +939,7 @@ window.APLab.catalog = {
     "기출2: 영벡터 합 & 넓이비(a:b:c)"
    ],
    "legacy": "labs/기하와벡터/벡터의덧셈과뺄셈.html",
+   "next": "next/labs/geom-vector-ops.html",
    "glyph": "<path d=\"M16 60 L48 20 L68 44\"/><path d=\"M16 60 L68 44\" stroke-dasharray=\"4 3\"/><path d=\"M48 20 L16 60\"/>"
   },
   {
@@ -959,6 +960,7 @@ window.APLab.catalog = {
     "기출2: 중점 제곱차 (PA·PB=PM²-L²)"
    ],
    "legacy": "labs/기하와벡터/벡터의 성분·내적.html",
+   "next": "next/labs/geom-vector-dot.html",
    "glyph": "<path d=\"M16 58 L56 22\"/><path d=\"M16 58 L64 50\"/><path d=\"M44 28 A22 22 0 0 1 58 46\"/>"
   },
   {
@@ -979,6 +981,7 @@ window.APLab.catalog = {
     "기출3: 원의 벡터방정식 (지름·접선)"
    ],
    "legacy": "labs/기하와벡터/벡터로 나타낸 도형.html",
+   "next": "next/labs/geom-vector-figure.html",
    "glyph": "<path d=\"M12 58 L48 18\" marker-end=\"url(#arr)\"/><path d=\"M32 62 L68 30\" stroke-dasharray=\"4 3\" marker-end=\"url(#arr2)\"/> <defs><marker id=\"arr\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 Z\" fill=\"currentColor\"/></marker> <marker id=\"arr2\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 Z\" fill=\"currentColor\"/></marker></defs>"
   }
  ],
