@@ -570,7 +570,11 @@ window.questionBank = [
     "reviewStatus": "create_pending",
     "sourcePage": "5-3",
     "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q11.png",
-    "imageStatus": "present"
+    "imageStatus": "present",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC, ∠A=40°인 삼각형에서 BC=BD는 지시선 라벨(BD=BC)로, CD=CE는 이중 눈금으로 나타내고, 두 이등변삼각형 BCD, CDE의 밑각 70°와 구하는 각 x=∠DCE의 위치를 표시했다. ∠B와 ∠ACB의 70°는 전체 각을 가리킨다.",
+    "solutionImageCaption": "BC=BD, CD=CE인 두 이등변삼각형의 밑각이 모두 70°",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
