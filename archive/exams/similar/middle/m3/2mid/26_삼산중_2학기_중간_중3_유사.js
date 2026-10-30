@@ -798,9 +798,7 @@ window.questionBank = [
     "points": 4.0,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
-    "crossConceptKeys": [
-      "CC_TRIG_AREA"
-    ],
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
@@ -897,7 +895,7 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [
-      "CC_SECTOR_AREA"
+      "CC_CIRCLE_SECTOR_AREA"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -1072,9 +1070,7 @@ window.questionBank = [
     "points": 4.0,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [
-      "CC_TRIG_AREA"
-    ],
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
