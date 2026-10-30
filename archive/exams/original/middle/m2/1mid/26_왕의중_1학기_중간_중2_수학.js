@@ -1289,14 +1289,17 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "solutionImage": "",
+    "solutionImage": "assets/images/26_왕의중_1학기_중간_중2_수학/q23-solution.svg",
     "tags": [
       "서술형",
       "수와 식",
       "다항식의 계산"
     ],
     "itemStatus": "READY_FOR_REVIEW",
-    "sourceMode": "EXTRACTED_JS_ASSETS"
+    "sourceMode": "EXTRACTED_JS_ASSETS",
+    "solutionImageAlt": "해설 그림: 밑면의 가로 2a, 세로 b, 높이 6a+3b인 직육면체 그릇과, 밑면의 가로 3a, 세로 4b인 사각뿔 그릇(꼭짓점 O)을 나란히 그린 그림이다. 사각뿔의 점선은 보이지 않는 모서리이다. 오른쪽에는 꼭짓점 O, 밑면의 중심 H, 길이 3a인 변의 중점 M을 이은 직각삼각형 OHM을 따로 그렸고, 수직인 변 OH 옆에 높이 h, 변 HM 옆에 2b가 적혀 있으며 H에 직각 표시가 있다.",
+    "solutionImageCaption": "H는 밑면(3a×4b)의 중심, M은 길이 3a인 변의 중점이므로 HM은 4b의 절반인 2b이고, 꼭짓점 O에서 밑면에 내린 수선 OH의 길이가 높이 h이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
