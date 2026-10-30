@@ -541,6 +541,7 @@ window.APLab.catalog = {
     "부등식 모드"
    ],
    "legacy": "labs/대수/단위원과그래프.html",
+   "next": "next/labs/alg-unit-circle.html",
    "glyph": "<circle cx=\"32\" cy=\"38\" r=\"27\" stroke-width=\"2.2\"/><path d=\"M5 38 H60 M32 8 V67\" stroke-opacity=\".4\"/><path d=\"M32 38 L52 19 L52 38\" stroke=\"#D8B77E\" stroke-width=\"2\"/><path d=\"M64 10 Q67 22 70 37 T76 68\" stroke=\"#D8B77E\" stroke-width=\"2.1\"/><circle cx=\"52\" cy=\"19\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
@@ -822,6 +823,7 @@ window.APLab.catalog = {
     "법선 이등분·몬쥬의 원"
    ],
    "legacy": "labs/기하와벡터/타원.html",
+   "next": "next/labs/geom-ellipse.html",
    "glyph": "<ellipse cx=\"40\" cy=\"38\" rx=\"32\" ry=\"20\"/><circle cx=\"22\" cy=\"38\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"58\" cy=\"38\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
