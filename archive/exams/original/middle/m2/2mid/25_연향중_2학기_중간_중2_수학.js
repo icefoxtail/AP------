@@ -740,7 +740,11 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 꼭지각 A의 56°, 같은 길이 표시(AB와 AC), 밑각 B와 C를 같은 빨간 겹호로 표시하고, CD가 이등분하는 ∠ACD와 ∠DCB를 같은 파란 호로, D에서 ∠BDC의 호를 보여 준다.",
+    "solutionImageCaption": "AB=AC인 이등변삼각형에서 두 밑각이 같고 CD가 ∠C를 이등분함을 표시한 그림이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
