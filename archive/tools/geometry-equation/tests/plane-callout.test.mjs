@@ -235,3 +235,10 @@ test('E37 path label: a plan without anchor and side is the old figure byte for 
   assert.equal(err({side:'UP'}),'PATH_LABEL_SIDE_INVALID:pCD');
   assert.equal(specError(pathPlan({closed:true,side:'LEFT'}),model),'PATH_LABEL_SIDE_INVALID:pCD');
 });
+
+test('E37 callouts with hidden points: a point drawn with no dot (hiddenPointStyle NONE) leaves the dots of the copies alone, and every audit passes',async()=>{
+  const model=await modelOf(triangle),plan=trianglePlan(calloutRow(),{hiddenPointNames:['B'],hiddenPointStyle:'NONE'}),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  assert.equal(tagOf(composed.svg,'B'),undefined,'the hidden point draws no dot');
+  for(const id of ['k1__D','k1__G','k1__C'])assert.ok(tagOf(composed.svg,id),'the copy '+id+' keeps its dot');
+});
