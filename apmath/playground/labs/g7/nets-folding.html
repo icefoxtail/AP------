@@ -2640,6 +2640,29 @@
       render();
     }
 
+    // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
+    const LENS_OFF = {
+      invalid: ['def', 'parallel'], cuboid: ['def'], prismTrap: ['def'], prism5: ['def'], prism6: ['def'],
+      frustum4: ['def'], octa: ['def'], dodeca: ['parallel'], icosa: ['parallel'], flat6: ['def'], halfCyl: ['def'],
+      cylinder: ['def'], sectorCyl: ['def'], hollowCyl: ['def'], coneSlice: ['def', 'parallel'],
+      revSlice: ['def', 'parallel'], cubeSlice: ['def'], frustumCone: ['def']
+    };
+
+    function syncLensButtons() {
+      const ids = ['all', 'def', 'parallel', 'zipper'];
+      const off = (LENS_OFF[state.mode] || []).concat(LENS_OFF[state.subType[state.mode]] || []);
+      const none = ids.every((id) => id === 'all' || off.includes(id));
+      if (none || off.includes(state.conceptSwitch)) state.conceptSwitch = 'all';
+      ids.forEach((id) => {
+        const btn = document.getElementById(`sw-${id}`);
+        btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
+        btn.classList.toggle('active', id === state.conceptSwitch);
+      });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
+      document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
+    }
+
     function setMode(m) {
       state.mode = m;
       state.activePartIdx = -1;
@@ -2648,6 +2671,7 @@
       }
       state.fold = m === 6 && state.subType[6].includes('Slice') ? 0.15 : 0;
       state.foldTarget = null;
+      syncLensButtons();
       renderSubBar();
       snapCamera(m === 6 && state.subType[6].includes('Slice') ? 'iso' : 'top');
     }
@@ -2657,6 +2681,7 @@
       state.activePartIdx = -1;
       state.fold = subId.includes('Slice') ? 0.15 : 0;
       state.foldTarget = null;
+      syncLensButtons();
       renderSubBar();
       snapCamera(subId.includes('Slice') ? 'iso' : 'top');
       render();

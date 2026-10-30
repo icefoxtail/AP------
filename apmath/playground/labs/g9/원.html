@@ -2411,6 +2411,31 @@
       render();
     }
 
+    // 현재 탭·시나리오에서 효과가 없는 렌즈 버튼은 숨긴다 (LENS_OFF: 탭 번호 또는 시나리오 id ➔ 숨길 렌즈)
+    const LENS_OFF = {
+      tangentPerimTri: ['sides'], pitotQuad: ['sides'], inscribedMoveArc: ['angles'], thalesSemiCircle: ['angles'],
+      fourPointsCircle: ['angles'], cyclicPentagon: ['angles'], cyclicQuad180: ['angles'], cyclicExterior: ['angles'],
+      cyclicCrossExt: ['angles'], cyclicConditions3: ['angles'], altSegmentThm: ['angles'],
+      altSegmentInscribed: ['angles'], twoCirclesExTangent: ['angles'], twoCirclesInTangent: ['angles'],
+      tangentDiameterExt: ['angles'], powerInside: ['sides'], powerOutside: ['sides'], powerTangentSecant: ['sides'],
+      trapCyclicQuadFamily: ['angles', 'sides', 'aux']
+    };
+
+    function syncLensButtons() {
+      const ids = ['all', 'angles', 'sides', 'aux'];
+      const off = (LENS_OFF[state.mode] || []).concat(LENS_OFF[state.subType[state.mode]] || []);
+      const none = ids.every((id) => id === 'all' || off.includes(id));
+      if (none || off.includes(state.conceptSwitch)) state.conceptSwitch = 'all';
+      ids.forEach((id) => {
+        const btn = document.getElementById(`sw-${id}`);
+        btn.style.display = (id === 'all' ? none : off.includes(id)) ? 'none' : '';
+        btn.classList.toggle('active', id === state.conceptSwitch);
+      });
+      // 렌즈가 하나도 없으면 라벨(관찰 렌즈:)과 구분선(|)도 함께 숨긴다
+      document.getElementById('sw-all').previousElementSibling.style.display = none ? 'none' : '';
+      document.getElementById(`sw-${ids[ids.length - 1]}`).nextElementSibling.style.display = none ? 'none' : '';
+    }
+
     function setMode(m) {
       state.mode = m;
       state.activePartIdx = -1;
@@ -2419,6 +2444,7 @@
       }
       state.fold = 0.0;
       state.foldTarget = 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }
@@ -2428,6 +2454,7 @@
       state.activePartIdx = -1;
       state.fold = 0.0;
       state.foldTarget = subId === 'fourPointsCircle' ? 0.0 : 1.0;
+      syncLensButtons();
       renderSubBar();
       render();
     }
