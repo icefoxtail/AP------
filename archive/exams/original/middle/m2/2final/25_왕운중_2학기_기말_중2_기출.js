@@ -191,7 +191,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC로, AB의 중점 D(AD=DB 눈금)와 무게중심 G가 중선 CD 위에 있고 치수선으로 AB=10cm와 BD=y=5cm가 적혀 있다. 오른쪽은 중선 CD만 따로 그려 C, G, D에 이름을 붙이고, 치수선을 쌓아 CG=10cm, GD=5cm와 전체 CD=x=15cm를 보인 그림이다.",
+    "solutionImageCaption": "중선 CD를 오른쪽에 따로 그려 CG, GD와 전체 CD의 길이를 단으로 쌓아 나타냈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
