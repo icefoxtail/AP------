@@ -94,6 +94,37 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
+      "file": "original/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분I",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "H22-M1-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-M1-05",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분I",
+          "courseCode": "H22-M1",
+          "rangeStartUnitKey": "H22-M1-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-M1-05",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분I"
+    },
+    {
       "file": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
       "school": "금당고",
       "topic": "",
@@ -249,6 +280,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "original/high/h2/2mid/26_매산고_2학기_중간_고2_미적분I.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분I",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-M1-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-M1-05",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분I",
+          "courseCode": "H22-M1",
+          "rangeStartUnitKey": "H22-M1-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-M1-05",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분I"
+    },
+    {
       "file": "original/high/h2/1final/26_순천고_1학기_기말_고2_대수.js",
       "school": "순천고",
       "topic": "",
@@ -309,6 +371,68 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "H22-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-PS-04",
+      "rangeEndUnit": "조건부확률",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H22-PS",
+          "rangeStartUnitKey": "H22-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-PS-04",
+          "rangeEndUnit": "조건부확률",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/2mid/26_순천여고_2학기_중간_고2_미적분I.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분I",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-M1-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-M1-05",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분I",
+          "courseCode": "H22-M1",
+          "rangeStartUnitKey": "H22-M1-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-M1-05",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분I"
     },
     {
       "file": "original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js",
@@ -445,6 +569,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분I"
     },
     {
+      "file": "original/high/h2/2mid/26_제일고_2학기_중간_고2_확률과통계.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-PS-04",
+      "rangeEndUnit": "조건부확률",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H22-PS",
+          "rangeStartUnitKey": "H22-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-PS-04",
+          "rangeEndUnit": "조건부확률",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
       "file": "original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js",
       "school": "팔마고",
       "topic": "",
@@ -474,6 +629,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "original/high/h2/2mid/26_팔마고_2학기_중간_고2_미적분I.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분I",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-M1-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-M1-05",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분I",
+          "courseCode": "H22-M1",
+          "rangeStartUnitKey": "H22-M1-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-M1-05",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분I"
     },
     {
       "file": "original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js",
@@ -536,6 +722,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "original/high/h2/2mid/26_효천고_2학기_중간_고2_미적분I.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분I",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-M1-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-M1-05",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분I",
+          "courseCode": "H22-M1",
+          "rangeStartUnitKey": "H22-M1-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-M1-05",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분I"
     },
     {
       "file": "original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
