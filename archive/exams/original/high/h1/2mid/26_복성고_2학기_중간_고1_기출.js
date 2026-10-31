@@ -501,7 +501,8 @@ window.questionBank = [
     "tags": [
       "기출",
       "직선의 그래프와 계수의 부호",
-      "시각자료"
+      "시각자료",
+      "그래프"
     ],
     "wide": false,
     "content": "세 상수 $a$, $b$, $c$에 대하여 직선 $ax+by+c=0$이 그림과 같다.<br>다음 중 옳은 것만을 보기에서 있는대로 고른 것은? (4.2점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $b(c-a)>0$이다.<br>ㄴ. 직선 $bx-cy-a=0$은 제4사분면을 지나지 않는다.<br>ㄷ. $3a=-7b$인 경우 직선 $ax+by+c=0$은 직선 $y=-\\dfrac{7}{3}x$와 수직이다.</div>",

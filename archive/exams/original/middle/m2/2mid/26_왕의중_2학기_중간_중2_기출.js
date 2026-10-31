@@ -14,7 +14,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $AB=AC$인 이등변삼각형 $ABC$에서 $BC=BD$이고 $\\angle DCB=75^\\circ$일 때, $\\angle x$의 크기는? (3점)",
@@ -59,7 +60,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $AB=AC$인 이등변삼각형에서 $\\angle A$의 이등분선과 밑변 $BC$의 교점을 $D$라 하자. $\\angle C=55^\\circ$일 때, $x+y$의 값은? (4점)",
@@ -104,7 +106,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같은 두 직각삼각형 $ABC$와 $DEF$가 서로 합동이 되는 조건이 아닌 것은? (3점)",
@@ -149,7 +152,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\angle A$의 이등분선이 $BC$와 만나는 점을 $D$라 하고, $AB\\perp DE$이다. $AB=10$, $BC=8$, $AC=6$일 때, $\\triangle BDE$의 넓이는? (5점)",
@@ -194,7 +198,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, 다음 보기에서 옳은 것만을 있는 대로 고른 것은? (3점)\nㄱ. $OA=OB=OC$\nㄴ. $OD=OE=OF$\nㄷ. $\\angle OBD=\\angle OBE$\nㄹ. $\\triangle OFA\\cong\\triangle OFC$",
@@ -239,7 +244,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "그림에서 점 $O$는 $\\triangle ABC$의 외심이고, $AO$, $BO$의 연장선이 각각 $BC$, $AC$와 만나는 점을 $D$, $E$라 한다. $\\angle C=64^\\circ$일 때, $\\angle ADB+\\angle BEA$의 크기는? (5점)",
@@ -404,7 +410,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이다. $\\angle AIC=130^\\circ$, $\\angle ICB=18^\\circ$일 때, $\\angle x$의 크기는? (4점)",
@@ -649,7 +656,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "도형의 닮음"
+      "도형의 닮음",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림의 두 삼각뿔이 서로 닮은 도형이고 $\\overline{AB}$에 대응하는 모서리가 $\\overline{A\\prime B\\prime}$일 때, $x+y-7z$의 값은? (4점)",
@@ -694,7 +702,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "도형의 닮음"
+      "도형의 닮음",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $AC\\parallel DE$이고 $BC:CE=3:2$이다. $\\triangle ABC$의 넓이가 $15\\text{ cm}^2$일 때, 사각형 $ABCD$의 넓이는? (4점)",
@@ -859,7 +868,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "서답형1. 다음 그림과 같은 $\\triangle ABC$에서 $\\angle B=33^\\circ$, $\\angle ACB=81^\\circ$이다. $\\angle ADC=66^\\circ$이다. $BD=6\\text{ cm}$, $BC=9\\text{ cm}$일 때, $AC$의 길이를 구하는 과정을 풀이과정과 함께 서술하시오. (5점)",
@@ -898,7 +908,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "서답형2. 다음 그림과 같은 $\\triangle ABC$에서 변 $BC$의 중점을 $M$이라 하고, 점 $M$에서 두 변 $AB$, $AC$에 내린 수선의 발을 각각 $D$, $E$라 하자. $MD=ME$이고 $\\angle B=32^\\circ$일 때, $\\angle A$의 크기를 구하는 과정을 풀이과정과 함께 서술하시오. (5점)",
@@ -937,7 +948,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "서답형3. 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 모양의 색종이 $\\triangle ABC$를 꼭짓점 $A$가 $BC$ 위에 오도록 접었다. $\\angle BDF=\\angle DFE$일 때, 다음 물음에 답하시오.\n(1) 위 그림에서 서로 닮음인 두 삼각형을 찾아 닮음기호를 사용하여 나타내고, 닮음 조건을 서술하시오. (2점)\n(2) $BD$의 길이를 구하는 과정을 풀이과정과 함께 서술하시오. (3점)",
@@ -976,7 +988,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "삼각형의 성질"
+      "삼각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "서답형4. 다음 그림과 같이 마름모 $ABCD$의 꼭짓점 $A$에서 $BC$, $CD$에 내린 수선의 발을 각각 $P$, $Q$라 하자. $\\angle B=64^\\circ$일 때, $\\angle x$의 크기를 구하는 과정을 풀이과정과 함께 서술하시오. (5점) (단, 풀이과정에 합동인 두 삼각형을 찾고, 합동조건을 포함하여 작성하기)",
