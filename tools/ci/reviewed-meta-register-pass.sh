@@ -89,7 +89,7 @@ for round in 1 2; do
   verify_failed=(); verify_errors=()
   for request in "${applied[@]}"; do
     schema="$(jq -r .schemaVersion "$request")"
-    if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
+    if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" || "$schema" == "archive-difficulty5-register-request-v1" ]]; then
       verify_rc=0
       out="$(node "$registrar" --request "$request" --verify-projection 2>&1)" || verify_rc=$?
       if [[ "$verify_rc" -ne 0 ]]; then
