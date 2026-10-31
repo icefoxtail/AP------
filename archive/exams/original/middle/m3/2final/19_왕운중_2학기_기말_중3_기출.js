@@ -416,9 +416,9 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|7",
     "decisiveStep": "정사면체의 높이는 밑면 정삼각형의 중심과 꼭짓점을 이은 직각삼각형에서 구한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q07.png",
-    "solutionImageAlt": "원문 7번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "정사면체 A-BCD에서 꼭짓점 A에서 밑면 BCD에 내린 수선의 발 H를 점으로 나타내고, 점선 AH와 DH, H에서의 직각 표시와 각 x(∠ADH)를 보인 그림",
+    "solutionImageCaption": "H는 밑면 BCD의 무게중심이므로 삼각형 ADH는 H에서 직각인 직각삼각형이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -1260,9 +1260,9 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|21",
     "decisiveStep": "이등변삼각형 VMN의 밑변 중점에 수선을 내려 sin, cos, tan을 직각삼각형 비로 구한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q21.png",
-    "solutionImageAlt": "원문 21번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "모서리의 길이가 모두 같은 정사각뿔 V-ABCD에서 AB, CD의 중점 M, N, 꼭짓점 V에서 MN에 내린 수선의 발 H를 점으로 나타내고, 점선 VH와 직각삼각형 VMH의 직각 표시, 각 x(∠VMH)를 보인 그림",
+    "solutionImageCaption": "V에서 MN에 내린 수선의 발 H를 잡으면 삼각형 VMH는 H에서 직각인 직각삼각형이다.",
     "solutionImageSize": "medium"
   },
   {
