@@ -30962,6 +30962,35 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학2"
     },
     {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P89-92_20261031_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2(하) 유리함수 89~92쪽 유사문항 50",
+      "grade": "고1",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-07",
+      "rangeStartUnit": "함수",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-C2-07",
+      "rangeEndUnit": "함수",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-07",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-C2-07",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
       "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P54-57_20261026_유사50.js",
       "school": "백발백중",
       "topic": "백발백중 공통수학2(하) 함수 54~57쪽 유사문항 50",
