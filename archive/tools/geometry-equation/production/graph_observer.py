@@ -2655,6 +2655,43 @@ def _ov_circle_line_root(line,ring,pick):
         chosen=(min if pick.startswith('MIN') else max)(roots,key=lambda point:point[index])
     return S.Float(chosen[0],30),S.Float(chosen[1],30)
 
+def _ov_curve_circle_root(plan,ring,curve_ref,pick):
+    """The observer's own curve x circle intersection (G6b): the drawn curve scanned at 500 samples of its drawn interval for sign changes of
+    (x-cx)^2+(y-cy)^2-r^2 (its own bisection, 80 steps, curve values from _ov_curve_value), then the root the plan's pick names."""
+    cx,cy,r2=[float(S.N(v,40)) for v in ring]
+    curve_id=curve_ref.split(':',1)[1] if ':' in curve_ref else None
+    lo,hi=plan['domain']
+    def residual(x):
+        try:y=float(S.N(_ov_curve_value(plan,S.Float(x,40),curve_id),40))
+        except (ValueError,TypeError,ZeroDivisionError):return None
+        return (x-cx)**2+(y-cy)**2-r2 if math.isfinite(y) else None
+    n=500;xs=[lo+(hi-lo)*i/n for i in range(n+1)];fs=[residual(x) for x in xs];roots=[]
+    for i in range(n):
+        a,b,fa,fb=xs[i],xs[i+1],fs[i],fs[i+1]
+        if fa is None or fb is None or fa*fb>0:continue
+        if fa==0:roots.append(a);continue
+        for _ in range(80):
+            m=(a+b)/2;fm=residual(m)
+            if fm is None:break
+            if fa*fm<=0:b=m
+            else:a,fa=m,fm
+        roots.append((a+b)/2)
+    if fs and fs[-1]==0:roots.append(xs[-1])
+    roots=sorted(roots);roots=[r for k,r in enumerate(roots) if k==0 or r-roots[k-1]>1e-7]
+    if not roots:raise ValueError('OVERLAY_CIRCLE_CURVE_NO_INTERSECTION')
+    if pick is None:
+        if len(roots)!=1:raise ValueError('OVERLAY_CIRCLE_PICK_REQUIRED')
+        x=roots[0]
+    else:
+        if pick not in ('MIN_X','MAX_X'):raise ValueError('OVERLAY_CIRCLE_PICK_INVALID')
+        x=roots[0] if pick=='MIN_X' else roots[-1]
+    y=float(S.N(_ov_curve_value(plan,S.Float(x,40),curve_id),40))
+    def snapped(value):
+        # a root that is a rational to 1e-9 is kept as that rational (the coordinate labels read rationals); anything else stays a 30-digit float
+        rational=S.nsimplify(value,rational=True,tolerance=1e-9)
+        return rational if abs(float(rational)-value)<1e-9 and rational.is_Rational else S.Float(value,30)
+    return snapped(x),snapped(y)
+
 def _ov_expected(plan):
     """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
     raw=plan.get('overlays')
@@ -2662,12 +2699,15 @@ def _ov_expected(plan):
     if not isinstance(raw,dict):raise ValueError('OVERLAY_PLAN_INVALID')
     lines=[_ov_line(entry) for entry in raw.get('lines',[])]
     by_line={line['id']:line for line in lines}
-    circles={}
+    circles={};circle_fills={}
     for entry in raw.get('circles',[]) or []:
         if not isinstance(entry,dict) or not isinstance(entry.get('id'),str) or entry['id'] in circles or not isinstance(entry.get('center'),list) or len(entry['center'])!=2:raise ValueError('OVERLAY_CIRCLE_INVALID')
         radius_squared=_ov_reader(entry.get('radiusSquared'))
         if not radius_squared>0:raise ValueError('OVERLAY_CIRCLE_INVALID')
         circles[entry['id']]=(_ov_reader(entry['center'][0]),_ov_reader(entry['center'][1]),radius_squared)
+        fill=entry.get('fill','NONE')
+        if fill not in ('NONE','LIGHT','MEDIUM'):raise ValueError('OVERLAY_CIRCLE_FILL_INVALID')
+        if fill!='NONE':circle_fills[entry['id']]=fill
     points={};coordinates={};unnamed=set()
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_POINT_INVALID')
@@ -2681,7 +2721,11 @@ def _ov_expected(plan):
             pair=entry.get('intersect')
             if not isinstance(pair,list) or len(pair)!=2:raise ValueError('OVERLAY_POINT_INVALID')
             first=by_line.get(pair[0]);second=by_line.get(pair[1])
-            if (first is None and pair[0] in circles) or (second is None and pair[1] in circles):
+            if isinstance(pair[0],str) and (pair[0]=='curve' or pair[0].startswith('curve:')) and first is None:
+                ring=circles.get(pair[1])
+                if ring is None:raise ValueError('OVERLAY_POINT_UNKNOWN')
+                x,y=_ov_curve_circle_root(plan,ring,pair[0],entry.get('pick'))
+            elif (first is None and pair[0] in circles) or (second is None and pair[1] in circles):
                 line=first if first is not None else second;ring=circles.get(pair[1] if first is not None else pair[0])
                 if line is None or ring is None:raise ValueError('OVERLAY_POINT_UNKNOWN')
                 x,y=_ov_circle_line_root(line,ring,entry.get('pick'))
@@ -2767,7 +2811,12 @@ def _ov_expected(plan):
         if label is not None and (not isinstance(label,str) or label!=label.strip() or not re.fullmatch(r'[가-힣A-Za-z0-9 ()]{1,12}',label)):raise ValueError('OVERLAY_QUADRANT_INVALID')
         if fill is not None and fill not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_QUADRANT_INVALID')
         seen_quadrants.add(number);quadrants.append({'id':entry['id'],'quadrant':number,'label':label,'fill':fill})
-    return {'circles':circles,'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+    circle_regions=[]
+    for entry in raw.get('circleRegions',[]) or []:
+        if not isinstance(entry,dict) or set(entry)-{'id','circle','from','to','side','fill'} or entry.get('circle') not in circles or entry.get('from') not in points or entry.get('to') not in points or entry.get('from')==entry.get('to'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
+        if entry.get('side') not in ('ABOVE','BELOW','LEFT','RIGHT') or entry.get('fill','LIGHT') not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
+        circle_regions.append({'id':entry['id'],'circle':entry['circle'],'from':entry['from'],'to':entry['to'],'side':entry['side'],'fill':entry.get('fill','LIGHT')})
+    return {'circleFills':circle_fills,'circleRegions':circle_regions,'circles':circles,'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
 
 OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
 
@@ -2938,6 +2987,44 @@ def overlays_audit(plan,svg,transform):
             if not near(centre,(float(S.N(cx,30)),float(S.N(cy,30)))):errors.append('OVERLAY_CIRCLE_CENTER_MISMATCH:'+str(ident))
             want=math.sqrt(float(S.N(r2,30)))
             if abs(radius-want)>max(.5/(sx*transform['displayScale']),1e-3*want):errors.append('OVERLAY_CIRCLE_RADIUS_MISMATCH:'+str(ident))
+        # circle fill (G6b): a shaded disk is a second circle element under the outline, same centre and radius, no stroke; an unshaded circle has none
+        palette={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+        for ident,(cx,cy,r2) in expected['circles'].items():
+            node=circles.get('overlay-circle-'+str(ident)+'-fill')
+            if ident not in expected['circleFills']:
+                if node is not None:errors.append('OVERLAY_CIRCLE_FILL_UNDECLARED:'+str(ident))
+                continue
+            if node is None:errors.append('OVERLAY_CIRCLE_FILL_MISSING:'+str(ident));continue
+            try:centre=to_data(float(node.get('cx')),float(node.get('cy')));radius=float(node.get('r'))/sx
+            except (TypeError,ValueError):errors.append('OVERLAY_CIRCLE_FILL_UNREADABLE:'+str(ident));continue
+            want=math.sqrt(float(S.N(r2,30)))
+            if not near(centre,(float(S.N(cx,30)),float(S.N(cy,30)))) or abs(radius-want)>max(.5/(sx*transform['displayScale']),1e-3*want):errors.append('OVERLAY_CIRCLE_FILL_MISMATCH:'+str(ident))
+            if node.get('fill')!=palette[expected['circleFills'][ident]]:errors.append('OVERLAY_CIRCLE_FILL_COLOR_MISMATCH:'+str(ident))
+            if node.get('stroke') not in (None,'none'):errors.append('OVERLAY_CIRCLE_FILL_STROKE_PRESENT:'+str(ident))
+        # circleRegions (G6b): the circular segment is one path M P A r r 0 large sweep Q L P Z; the arc's radius, both flags and the three corners are recomputed here
+        paths={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='path'}
+        for region in expected['circleRegions']:
+            ident='overlay-circle-region-'+str(region['id']);claimed.add(ident);node=paths.get(ident)
+            if node is None:errors.append('OVERLAY_CIRCLE_REGION_MISSING:'+str(region['id']));continue
+            cx,cy,r2=[float(S.N(v,30)) for v in expected['circles'][region['circle']]];radius=math.sqrt(r2)
+            first=[float(S.N(v,30)) for v in expected['points'][region['from']]];second=[float(S.N(v,30)) for v in expected['points'][region['to']]]
+            a0=math.atan2(first[1]-cy,first[0]-cx);ccw=(math.atan2(second[1]-cy,second[0]-cx)-a0)%(2*math.pi);mx,my=cx+radius*math.cos(a0+ccw/2),cy+radius*math.sin(a0+ccw/2)
+            if region['side'] in ('ABOVE','BELOW'):
+                offset=my-(first[1]+(second[1]-first[1])/(second[0]-first[0])*(mx-first[0]));wanted=offset>0 if region['side']=='ABOVE' else offset<0
+            else:
+                offset=mx-(first[0]+(second[0]-first[0])/(second[1]-first[1])*(my-first[1]));wanted=offset>0 if region['side']=='RIGHT' else offset<0
+            angle=ccw if wanted else 2*math.pi-ccw;want_large=1 if angle>math.pi+1e-9 else 0;want_sweep=0 if wanted else 1
+            tokens=re.findall(r'[MLAZ]|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('d') or '')
+            if len(tokens)!=15 or [tokens[i] for i in (0,3,11,14)]!=['M','A','L','Z']:errors.append('OVERLAY_CIRCLE_REGION_PATH_INVALID:'+str(region['id']));continue
+            try:
+                n=[float(v) for v in tokens[1:3]+tokens[4:11]+tokens[12:14]]
+                start=to_data(n[0],n[1]);end=to_data(n[7],n[8]);back=to_data(n[9],n[10]);rx,ry=n[2]/sx,n[3]/sx
+            except (TypeError,ValueError):errors.append('OVERLAY_CIRCLE_REGION_PATH_INVALID:'+str(region['id']));continue
+            if not (near(start,(first[0],first[1])) and near(end,(second[0],second[1])) and near(back,(first[0],first[1]))):errors.append('OVERLAY_CIRCLE_REGION_CORNER_MISMATCH:'+str(region['id']))
+            if abs(rx-radius)>max(.5/(sx*transform['displayScale']),1e-3*radius) or abs(ry-radius)>max(.5/(sx*transform['displayScale']),1e-3*radius) or n[4]!=0:errors.append('OVERLAY_CIRCLE_REGION_RADIUS_MISMATCH:'+str(region['id']))
+            if (int(n[5]),int(n[6]))!=(want_large,want_sweep):errors.append('OVERLAY_CIRCLE_REGION_ARC_SIDE_MISMATCH:'+str(region['id']))
+            if node.get('fill')!=palette[region['fill']]:errors.append('OVERLAY_CIRCLE_REGION_FILL_MISMATCH:'+str(region['id']))
+            if node.get('stroke') not in (None,'none'):errors.append('OVERLAY_CIRCLE_REGION_STROKE_PRESENT:'+str(region['id']))
         for segment in expected['segments']:
             ident='overlay-segment-'+str(segment['id']);claimed.add(ident);got=read_line(ident)
             if got is None:errors.append('OVERLAY_SEGMENT_MISSING:'+str(segment['id']));continue

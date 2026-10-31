@@ -722,6 +722,9 @@ def prepare(spec):
                     base=(tip[0]-ux*10,tip[1]-uy*10)
                     primitive({'id':oid+'-arrow-'+end.lower(),'kind':'polygon','points':[tip,(base[0]-uy*3.6,base[1]+ux*3.6),(base[0]+uy*3.6,base[1]-ux*3.6)],'token':'indicator','layer':62,'role':'indicator','fill':ACCENT_STROKE if emphasis=='ACCENT' else '#111','mark':'arrow','markId':oid,'markEnd':end,**({'stroke':ACCENT_STROKE} if emphasis=='ACCENT' else {})},'curve')
         elif kind=='CIRCLE':
+            if obj.get('fill') and obj['fill']!='NONE':
+                # graph overlay circle with fill (G6b): the whole disk shaded under every stroke, then the circle's own outline
+                primitive({'id':oid+'-fill','kind':'circle','at':vp.screen(value.center),'radius':value.radius*vp.sx,'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS.get(obj['fill'],REGION_FILLS['LIGHT']),'noStroke':True})
             primitive({'id':oid,'kind':'circle','at':vp.screen(value.center),'radius':value.radius*vp.sx,'token':'mainShape','layer':40,'role':'circle'},'circle')
         elif kind=='POLYGON':
             # A simple closed polygon of displayed points (graph overlays): a light fill under the strokes, then its own closed outline.

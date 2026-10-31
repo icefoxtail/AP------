@@ -1,0 +1,101 @@
+{
+ "capability": "logarithmic-affine-spike-v1",
+ "caption": "곡선과 원 C의 두 교점 P, Q가 원의 중심 M을 지나는 지름의 양 끝점인 상황을 보인다.",
+ "pointNames": {
+  "P": "P",
+  "Q": "Q",
+  "M": "M"
+ },
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "곡선 y=-log_a x (a>1)와 원 C: (x-5/3)^2+y^2=17/9가 두 점 P, Q에서 만나고 선분 PQ가 원 C의 지름이다.",
+   "mappedTo": [
+    "graphPlan.coefficients",
+    "graphPlan.overlays"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "문제 본문·보기·정답·풀이는 변경하지 않는다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "지름의 양 끝점 P, Q가 원점이 아닌 중심 M(5/3,0)에 대해 대칭이므로 Q=(10/3-u,-v)로 놓는 근거를 보여 준다."
+ ],
+ "graphPlan": {
+  "family": "logarithmic-affine",
+  "base": "27",
+  "coefficients": [
+   "-1",
+   "1",
+   "0",
+   "0"
+  ],
+  "sourceDomain": {
+   "kind": "NATURAL_LOG_AFFINE"
+  },
+  "domain": [
+   0.1,
+   3.4
+  ],
+  "viewport": [
+   -0.5,
+   3.5,
+   -2,
+   2
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "circles": [
+    {
+     "id": "C",
+     "center": [
+      "5/3",
+      "0"
+     ],
+     "radiusSquared": "17/9"
+    }
+   ],
+   "points": [
+    {
+     "id": "P",
+     "intersect": [
+      "curve",
+      "C"
+     ],
+     "pick": "MIN_X"
+    },
+    {
+     "id": "Q",
+     "intersect": [
+      "curve",
+      "C"
+     ],
+     "pick": "MAX_X"
+    },
+    {
+     "id": "M",
+     "x": "5/3",
+     "y": "0"
+    }
+   ],
+   "segments": [
+    {
+     "id": "PQ",
+     "from": "P",
+     "to": "Q"
+    }
+   ]
+  },
+  "hideLabels": [
+   "formula",
+   "reference",
+   "boundary"
+  ]
+ }
+}
