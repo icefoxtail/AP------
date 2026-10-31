@@ -33,20 +33,22 @@ if [[ ${#reqs[@]} -eq 0 && "$scoped" != "true" ]]; then
   exit 0
 fi
 if [[ ${#reqs[@]} -gt 0 ]]; then
-  only_meta_pipeline=true
+  has_legacy_finalqa=false
+  has_difficulty5=false
   for request in "${reqs[@]}"; do
     schema="$(jq -r '.schemaVersion // ""' "$request")"
-    approval="$(jq -r '.approval.type // ""' "$request")"
-    if [[ "$schema" != "archive-reviewed-exam-meta-register-request-v2" || "$approval" != "META_PIPELINE_AUDIT" ]]; then
-      only_meta_pipeline=false
+    if [[ "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
+      has_legacy_finalqa=true
+    fi
+    if [[ "$schema" == "archive-difficulty5-register-request-v1" ]]; then
+      has_difficulty5=true
     fi
   done
-  if [[ "$only_meta_pipeline" == "true" ]]; then
-    # This request family is covered by the v2 registrar suite. Legacy FINAL_QA
-    # fixtures exercise separate writers and must not gate a Gemini audit handoff.
-    node --test tests/archive-reviewed-exam-registration-v2.test.mjs
-  else
-    node --test tests/archive-reviewed-exam-registration-v2.test.mjs
+  node --test tests/archive-reviewed-exam-registration-v2.test.mjs
+  if [[ "$has_difficulty5" == "true" ]]; then
+    node --test tests/archive-difficulty5-register.test.mjs
+  fi
+  if [[ "$has_legacy_finalqa" == "true" ]]; then
     node --test tests/archive-finalqa-nonpt-register.test.mjs
     node --test tests/archive-finalqa-nonpt-real-geumdang.test.mjs
   fi
