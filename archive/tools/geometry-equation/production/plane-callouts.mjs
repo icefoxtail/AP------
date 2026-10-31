@@ -18,9 +18,12 @@ export const CALLOUT_LINKS={SEGMENT:['NONE','ENDS'],ANGLE:['NONE','VERTEX']};
 export const CALLOUT_MAX=3,CALLOUT_PATH_MAX=6,CALLOUT_RAYS_MAX=5;
 export const CALLOUT_RAY_MIN_DEGREES=0.5;   // two rays of one fan closer than this are one ray
 export const CALLOUT_SCALE_MIN=0.5,CALLOUT_SCALE_MAX=4;
+export const CALLOUT_ARC_SCALES=['PROPORTIONAL'];                // (G11) ANGLE only: the arcs of its angle marks follow the drawn ray length (the default keeps the fixed pixel size)
+export const CALLOUT_DIM_FACTOR_MIN=0.6,CALLOUT_DIM_FACTOR_MAX=1.5,CALLOUT_DIM_FACTOR_DEFAULT=1.15;   // (G11) angleDimension.radiusFactor: the dimension arc's radius as a multiple of the ray length
+export const CALLOUT_ANGLE_DIM_ID='angDim';
 export const CALLOUT_SEP='__';
 export const CALLOUT_ID=/^[A-Za-z][A-Za-z0-9]{0,7}$/;
-const KEYS={SEGMENT:['id','kind','path','at','scale','gap','orientation','link','dimensions','marks'],ANGLE:['id','kind','vertex','rays','at','radius','gap','link','angles','marks'],marks:['equalLengths','expressionLabels']};
+const KEYS={SEGMENT:['id','kind','path','at','scale','gap','orientation','link','dimensions','marks'],ANGLE:['id','kind','vertex','rays','at','radius','gap','link','angles','marks','arcScale','angleDimension'],marks:['equalLengths','expressionLabels']};
 const bad=code=>{throw Error(code);};
 const sub=(p,q)=>[p[0]-q[0],p[1]-q[1]];
 const norm=v=>Math.hypot(v[0],v[1]);
@@ -69,6 +72,9 @@ export function calloutEntries(plan,points,bounds,hidden=new Set(),model=undefin
     if(seen.has(cid)||[...taken].some(id=>id===cid||id.startsWith(prefix)))bad('CALLOUT_ID_DUPLICATE:'+cid);
     seen.add(cid);
     if(!CALLOUT_KINDS.includes(row.kind))bad('CALLOUT_KIND_INVALID:'+cid);
+    if(row.kind==='SEGMENT'&&row.arcScale!==undefined)bad('CALLOUT_ARC_SCALE_INVALID:'+cid);
+    if(row.kind==='SEGMENT'&&row.angleDimension!==undefined)bad('CALLOUT_ANGLE_DIMENSION_INVALID:'+cid);
+    if(row.arcScale!==undefined&&!CALLOUT_ARC_SCALES.includes(row.arcScale))bad('CALLOUT_ARC_SCALE_INVALID:'+cid);
     for(const key of Object.keys(row))if(!KEYS[row.kind].includes(key))bad('CALLOUT_FIELD_INVALID:'+cid+'.'+key);
     const at=row.at??'RIGHT';
     if(!CALLOUT_SIDES.includes(at))bad('CALLOUT_AT_INVALID:'+cid);
@@ -115,7 +121,18 @@ export function calloutEntries(plan,points,bounds,hidden=new Set(),model=undefin
       const radius=row.radius===undefined?0.7*Math.max(...lengths):numberOf(row.radius);
       if(radius===null||!(radius>0)||radius>20*span)bad('CALLOUT_RADIUS_INVALID:'+cid);
       const offsets=[[0,0],...units.map(u=>[u[0]*radius,u[1]*radius])];
-      const shift=place(offsets,at,gap,bounds);
+      // (G11) a dimension arc stands beyond the rays and its label beyond that: the box that is placed holds them too (the copies themselves stay where the rays are)
+      const placed=[...offsets];
+      if(isObject(row.angleDimension)){
+        const factor=numberOf(row.angleDimension.radiusFactor??CALLOUT_DIM_FACTOR_DEFAULT)??CALLOUT_DIM_FACTOR_DEFAULT,refs=Array.isArray(row.angleDimension.refs)&&row.angleDimension.refs.length===2?row.angleDimension.refs:rays.slice(0,2);
+        const ua=units[rays.indexOf(refs[0])],ub=units[rays.indexOf(refs[1])];
+        if(ua&&ub){
+          const ta=Math.atan2(ua[1],ua[0]),tb=Math.atan2(ub[1],ub[0]),sweep=((tb-ta+Math.PI)%(2*Math.PI)+2*Math.PI)%(2*Math.PI)-Math.PI,r=radius*Math.min(Math.max(factor,CALLOUT_DIM_FACTOR_MIN),CALLOUT_DIM_FACTOR_MAX);
+          for(let i=0;i<=8;i++)placed.push([r*Math.cos(ta+sweep*i/8),r*Math.sin(ta+sweep*i/8)]);
+          placed.push([1.3*r*Math.cos(ta+sweep/2),1.3*r*Math.sin(ta+sweep/2)]);
+        }
+      }
+      const shift=place(placed,at,gap,bounds);
       entry.local[vertex]=[shift[0],shift[1]];
       rays.forEach((id,i)=>{entry.local[id]=[offsets[i+1][0]+shift[0],offsets[i+1][1]+shift[1]];});
       entry.order=[vertex,...rays];entry.radius=radius;entry.vertex=vertex;entry.rays=[...rays];
@@ -155,10 +172,24 @@ export function calloutEntries(plan,points,bounds,hidden=new Set(),model=undefin
       object(a,'angles');
       if(!Array.isArray(a.refs)||a.refs.length!==3||a.refs[1]!==entry.vertex||a.refs[0]===a.refs[2])bad('CALLOUT_ANGLE_REFS_INVALID:'+cid+'.'+a.id);
       const refs=a.refs.map(id=>inside(id,'angles',a.id));
-      const out={...a,id:prefix+a.id,refs};
+      const out={...a,id:prefix+a.id,refs,...(row.arcScale!==undefined?{arcScale:row.arcScale}:{})};
       if(a.over!==undefined)out.over=Array.isArray(a.over)?a.over.map(id=>typeof id==='string'?prefix+id:id):a.over;
       return out;
     });
+    // (G11) angleDimension {text,radiusFactor?,refs?}: the angle between two rays written as a dimension arc (arrowheads at both ends) with its value or name beyond it
+    if(row.angleDimension!==undefined){
+      const d=row.angleDimension,badDim=()=>bad('CALLOUT_ANGLE_DIMENSION_INVALID:'+cid);
+      if(!isObject(d)||Object.keys(d).some(key=>!['text','radiusFactor','refs','factRole'].includes(key))||typeof d.text!=='string'||!d.text.trim()||d.text.length>24||/[\r\n$]/.test(d.text))badDim();
+      const factor=d.radiusFactor===undefined?CALLOUT_DIM_FACTOR_DEFAULT:numberOf(d.radiusFactor);
+      if(factor===null||factor<CALLOUT_DIM_FACTOR_MIN||factor>CALLOUT_DIM_FACTOR_MAX)badDim();
+      const pair=d.refs===undefined?(row.rays.length===2?row.rays:null):d.refs;
+      if(!Array.isArray(pair)||pair.length!==2||pair[0]===pair[1]||pair.some(id=>!row.rays.includes(id)))badDim();
+      if(angleRows.some(r=>r.id===prefix+CALLOUT_ANGLE_DIM_ID))badDim();
+      const degrees=/^\s*(\d+(?:\.\d+)?)\s*°\s*$/u.exec(d.text);
+      entry.angleDim={refs:pair,factor};
+      angleRows.push({id:prefix+CALLOUT_ANGLE_DIM_ID,refs:[prefix+pair[0],prefix+entry.vertex,prefix+pair[1]],style:'ARC',arcs:1,angleDimension:{radiusFactor:factor},
+        ...(degrees?{value:Number(degrees[1]),label:degrees[1],labelKind:'DEGREE'}:{label:d.text.trim(),labelKind:'MATH'}),...(d.factRole!==undefined?{factRole:d.factRole}:{})});
+    }
     if(angleRows.length)marks.angles=angleRows;
     const extra=row.marks===undefined?{}:object(row.marks,'marks');
     for(const key of Object.keys(extra))if(!KEYS.marks.includes(key))bad('CALLOUT_FIELD_INVALID:'+cid+'.marks.'+key);
@@ -182,7 +213,16 @@ export function calloutEntries(plan,points,bounds,hidden=new Set(),model=undefin
 }
 
 /** The model points the copies stand at, for the plane frame. */
-export const calloutExtentPoints=entries=>entries.flatMap(entry=>Object.values(entry.local).map(at=>[at[0],at[1]]));
+export const calloutExtentPoints=entries=>entries.flatMap(entry=>{
+  const out=Object.values(entry.local).map(at=>[at[0],at[1]]);
+  if(entry.angleDim){
+    // (G11) the dimension arc stands at `factor` times the rays, its label a little beyond: sample the arc and one point past its middle
+    const [v,a,b]=[entry.vertex,...entry.angleDim.refs].map(id=>entry.local[id]),ta=Math.atan2(a[1]-v[1],a[0]-v[0]),tb=Math.atan2(b[1]-v[1],b[0]-v[0]),sweep=((tb-ta+Math.PI)%(2*Math.PI)+2*Math.PI)%(2*Math.PI)-Math.PI,r=entry.radius*entry.angleDim.factor;
+    for(let i=0;i<=8;i++)out.push([v[0]+r*Math.cos(ta+sweep*i/8),v[1]+r*Math.sin(ta+sweep*i/8)]);
+    out.push([v[0]+1.3*r*Math.cos(ta+sweep/2),v[1]+1.3*r*Math.sin(ta+sweep/2)]);
+  }
+  return out;
+});
 
 /** The dimension sites of every callout's own dimension lines (the frame leaves room for them like for the main figure's). */
 export const calloutDimensionSites=entries=>entries.flatMap(entry=>dimensionSites(entry.subPlan,entry.subPoints));

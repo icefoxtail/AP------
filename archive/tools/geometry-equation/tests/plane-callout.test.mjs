@@ -273,3 +273,36 @@ test('G11 coordinate callout: a segment pulled out of a figure with axes stands 
   // plan errors
   assert.equal(specError(coordPlan(coordRow({scale:9})),model),'CALLOUT_SCALE_INVALID:k1');
 });
+
+// ---- (G11) angle callout: arcs that follow the drawn rays (arcScale PROPORTIONAL) and an angle dimension (angleDimension), on the fan of 26 왕운중 2학기 중간 q8
+test('G11 angle callout: proportional arcs and a dimension arc with arrowheads; every audit passes, the radii follow the drawn rays, and plan errors have explicit codes',async()=>{
+  const model=await modelOf(fanNodes),row=fanRow({radius:9,arcScale:'PROPORTIONAL',angleDimension:{text:'x',refs:['I','O']}}),plan=fanPlan(row),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  const transform=await transformOf(plan,model),report=await observe(composed.svg,fanNodes,plan.planeMarks,plan.displaySegments,transform);
+  assert.deepEqual(report.errors,[]);
+  // the radii in px: the first arc 0.30 of the ray (no 28 px cap), the dimension arc 1.15 of it
+  const vertex=scaled(composed.svg,'kB__B'),ray=Math.hypot(...scaled(composed.svg,'kB__C').map((v,i)=>v-vertex[i]));
+  const radius=id=>{const pts=attr(tagOf(composed.svg,id),'points').split(' ').map(p=>p.split(',').map(Number));return Math.hypot(pts[0][0]-vertex[0],pts[0][1]-vertex[1]);};
+  assert.ok(Math.abs(radius('kB__aIBC-arc-1')-Math.min(Math.max(0.3*ray,16),0.55*ray))<1e-3&&radius('kB__aIBC-arc-1')>28,'proportional first arc');
+  assert.ok(Math.abs(radius('kB__angDim-arc-1')-1.15*ray)<1e-3,'dimension arc');
+  assert.equal([...composed.svg.matchAll(/id="kB__angDim-arrow-(from|to)"/g)].length,2,'an arrowhead at each end');
+  // tamper: the observer holds the drawing to the declared fields
+  const check=async(change,code)=>assert.ok(codes(await observe(composed.svg,fanNodes,{callouts:[JSON.parse(JSON.stringify(fanRow({...row,...change})))]},plan.displaySegments,transform)).includes(code),code);
+  await check({angleDimension:{text:'x',refs:['I','O'],radiusFactor:1.4}},'CALLOUT_ANGLE_DIMENSION_GEOMETRY_MISMATCH');
+  await check({angleDimension:{text:'y',refs:['I','O']}},'CALLOUT_ANGLE_DIMENSION_LABEL_MISMATCH');
+  // without the new fields the callout is the old figure (arcs capped at 28 px)
+  const old=await composeOf(fanPlan(),model);expectComposed(old);
+  const oldVertex=scaled(old.svg,'kB__B'),oldPts=attr(tagOf(old.svg,'kB__aIBC-arc-1'),'points').split(' ').map(p=>p.split(',').map(Number));
+  assert.ok(Math.hypot(oldPts[0][0]-oldVertex[0],oldPts[0][1]-oldVertex[1])<=28+1e-6);
+  // the old drawing (arcs capped at 28 px) declared PROPORTIONAL is refused
+  assert.ok(codes(await observe(old.svg,fanNodes,{callouts:[fanRow({arcScale:'PROPORTIONAL'})]},plan.displaySegments,transform)).includes('CALLOUT_ARC_SCALE_MISMATCH'));
+  const err=extra=>specError(fanPlan(fanRow({radius:9,...extra})),model);
+  assert.equal(err({arcScale:'FIXED'}),'CALLOUT_ARC_SCALE_INVALID:kB');
+  assert.equal(err({angleDimension:{text:'',refs:['I','O']}}),'CALLOUT_ANGLE_DIMENSION_INVALID:kB');
+  assert.equal(err({angleDimension:{text:'x',refs:['I','O'],radiusFactor:2}}),'CALLOUT_ANGLE_DIMENSION_INVALID:kB');
+  assert.equal(err({angleDimension:{text:'x'}}),'CALLOUT_ANGLE_DIMENSION_INVALID:kB');          // four rays: the two of the angle must be named
+  assert.equal(err({angleDimension:{text:'x',refs:['I','M']}}),'CALLOUT_ANGLE_DIMENSION_INVALID:kB');
+  assert.equal(specError(trianglePlan(calloutRow({arcScale:'PROPORTIONAL'})),await modelOf(triangle)),'CALLOUT_ARC_SCALE_INVALID:k1');
+  assert.equal(specError(trianglePlan(calloutRow({angleDimension:{text:'x'}})),await modelOf(triangle)),'CALLOUT_ANGLE_DIMENSION_INVALID:k1');
+  assert.equal(err({angleDimension:{text:'36°',refs:['I','O']}}),'ANGLE_MARK_FACT_MISMATCH:kB__angDim:declared=36:drawn=18.000');       // a degree text is the drawn value
+});

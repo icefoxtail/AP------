@@ -66,7 +66,7 @@ const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','
   quadrants:['id','quadrant','label','fill','factRole'],textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed','anchor','side'],
-  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over'],
+  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over','arcScale','angleDimension'],
   equalLengths:['id','count','segments','pathMark','markStyle'],parallels:['id','count','segments','lines'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership'],
   arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole'],
@@ -328,7 +328,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(g.style!==style)bad('ANGLE_EQUAL_GROUP_STYLE_MISMATCH:'+row.id);
       g.ids.push(row.id);groups.set(row.equalGroup,g);
     }
-    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(straight?{straight:true,straightSide:side}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(placement==='LEADER'?{labelPlacement:'LEADER'}:{}),...(overRow?{over:[...row.over]}:{})};
+    // (G11) arcScale PROPORTIONAL: the arcs follow the drawn ray length; angleDimension {radiusFactor 0.6-1.5}: the angle written as a dimension arc with an arrowhead at each end (one arc, ARC style)
+    if(row.arcScale!==undefined&&row.arcScale!=='PROPORTIONAL')bad('CALLOUT_ARC_SCALE_INVALID:'+row.id);
+    if(row.angleDimension!==undefined){
+      const dim=row.angleDimension,plainObject=!!dim&&typeof dim==='object'&&!Array.isArray(dim),factor=plainObject?(dim.radiusFactor===undefined?1.15:numberOf(dim.radiusFactor)):null;
+      if(!plainObject||Object.keys(dim).some(key=>key!=='radiusFactor')||factor===null||factor<0.6||factor>1.5||straight||side==='OUTER'||arcs!==1||style!=='ARC')bad('CALLOUT_ANGLE_DIMENSION_INVALID:'+row.id);
+    }
+    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(straight?{straight:true,straightSide:side}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(placement==='LEADER'?{labelPlacement:'LEADER'}:{}),...(overRow?{over:[...row.over]}:{}),...(row.arcScale!==undefined?{arcScale:row.arcScale}:{}),...(row.angleDimension!==undefined?{angleDimension:{radiusFactor:numberOf(row.angleDimension.radiusFactor??1.15)}}:{})};
     if(text!==null){object.labelText=text;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }

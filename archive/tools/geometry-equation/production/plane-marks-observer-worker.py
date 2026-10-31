@@ -233,6 +233,8 @@ def expand_callouts(p,elements,inverse,errors,observations):
         if cid in taken:errors.append('CALLOUT_ID_DUPLICATE:'+cid);continue
         taken.add(cid)
         if kind not in ('SEGMENT','ANGLE'):errors.append('CALLOUT_KIND_INVALID:'+cid);continue
+        if kind=='SEGMENT' and row.get('arcScale') is not None:errors.append('CALLOUT_ARC_SCALE_INVALID:'+cid)
+        if kind=='SEGMENT' and row.get('angleDimension') is not None:errors.append('CALLOUT_ANGLE_DIMENSION_INVALID:'+cid)
         # the points the copies stand for, and the pieces drawn between them (a path's consecutive pairs, or the rays from the vertex)
         if kind=='SEGMENT':
             path=list(row.get('path') or []);piece_pairs=[(path[i],path[i+1]) for i in range(len(path)-1)];piece_prefix='s'
@@ -319,9 +321,24 @@ def expand_callouts(p,elements,inverse,errors,observations):
                 refs=angle.get('refs') or []
                 if len(refs)!=3 or refs[1]!=path[0] or refs[0] not in path[1:] or refs[2] not in path[1:] or refs[0]==refs[2]:errors.append('CALLOUT_ANGLE_REFS_INVALID:'+cid+':'+str(angle.get('id')));continue
                 out={**angle,'id':prefix+angle['id'],'refs':[prefix+r for r in refs]}
+                if row.get('arcScale') is not None:out['arcScale']=row['arcScale']     # (G11) the callout's arcs follow its drawn rays
                 if angle.get('equalGroup') is not None:out['equalGroup']=cid+':'+str(angle['equalGroup'])      # an equal group is the callout's own, never the main figure's
                 if angle.get('over'):out['over']=[prefix+r for r in angle['over']]
                 angles.append(out)
+            # (G11) arcScale / angleDimension: this observer's own reading of the two fields (they belong to an ANGLE callout only)
+            if row.get('arcScale') not in (None,'PROPORTIONAL'):errors.append('CALLOUT_ARC_SCALE_INVALID:'+cid)
+            dim=row.get('angleDimension')
+            if dim is not None:
+                bad_dim=not isinstance(dim,dict) or set(dim)-{'text','radiusFactor','refs','factRole'} or not isinstance(dim.get('text'),str) or not dim['text'].strip()
+                factor=dim.get('radiusFactor',1.15) if isinstance(dim,dict) else None
+                if bad_dim or isinstance(factor,bool) or not isinstance(factor,(int,float)) or not 0.6<=factor<=1.5:errors.append('CALLOUT_ANGLE_DIMENSION_INVALID:'+cid)
+                else:
+                    pair=dim.get('refs') if dim.get('refs') is not None else (path[1:] if len(path)==3 else None)
+                    if not isinstance(pair,list) or len(pair)!=2 or pair[0]==pair[1] or any(r not in path[1:] for r in pair):errors.append('CALLOUT_ANGLE_DIMENSION_INVALID:'+cid)
+                    else:
+                        degrees=re.fullmatch(r'\s*(\d+(?:\.\d+)?)\s*\u00b0\s*',dim['text'])
+                        angles.append({'id':prefix+'angDim','refs':[prefix+pair[0],prefix+path[0],prefix+pair[1]],'style':'ARC','arcs':1,'angleDimension':{'radiusFactor':float(factor)},
+                                       **({'value':float(degrees.group(1)),'label':degrees.group(1),'labelKind':'DEGREE'} if degrees else {'label':dim['text'].strip(),'labelKind':'MATH'})})
         def piece_of(pair,piece_pairs=piece_pairs,prefix=prefix,piece_prefix=piece_prefix):
             for i,(a,b) in enumerate(piece_pairs):
                 if [a,b]==list(pair) or [b,a]==list(pair):return prefix+piece_prefix+str(i+1)
@@ -367,6 +384,7 @@ def audit(p):
         if n.get('data-mark'):by_mark.setdefault((n.get('data-mark'),n.get('data-mark-id')),[]).append(n)
     declared={('angle',r['id']) for r in marks.get('angles',[])}|{('equal',r['id']) for r in marks.get('equalLengths',[])}|{('parallel',r['id']) for r in marks.get('parallels',[])}|{('arc',r['id']) for r in marks.get('arcs',[]) if r.get('highlight',True)}
     declared|={('trace',r['id']) for r in marks.get('traces',[])}
+    declared|={('angle-dimension',r['id']) for r in marks.get('angles',[]) if isinstance(r,dict) and r.get('angleDimension') is not None}      # (G11)
     declared|={('dimension',r['id']) for r in marks.get('dimensions',[])}
     declared|={('arrow',s['id']) for s in p.get('segments',[]) if s.get('arrow')}
     declared|={('region',r['id']) for r in marks.get('regions',[])}
@@ -535,6 +553,34 @@ def audit(p):
         if not sweeps:continue
         drawn=sweeps[0]
         angle_geometry[oid]=(v,direction_degrees(sub(a,v)),signed,max(radii))
+        # (G11) arcScale PROPORTIONAL: the arcs' radii (px) are those of the shorter drawn ray, with no 28 px cap
+        ray_px=min(norm(sub(a,v)),norm(sub(c,v)))*sx
+        if row.get('arcScale')=='PROPORTIONAL':
+            gap_px=max(4.5,0.04*ray_px);rings=[row['ring']] if isinstance(row.get('ring'),int) else [1,2,3]
+            def proportional_ok(ring):
+                first_px=min(max(0.30*ray_px,16.0),0.55*ray_px)+2*gap_px*(ring-1)
+                return all(abs(r*sx-(first_px+gap_px*k))<=0.5 for k,r in enumerate(radii))
+            if not any(proportional_ok(ring) for ring in rings):errors.append('CALLOUT_ARC_SCALE_MISMATCH:'+oid+':rayPx=%.2f:radiusPx=%.2f'%(ray_px,radii[0]*sx))
+        # (G11) angleDimension: one arc at radiusFactor times the shorter ray, an arrowhead at each end, the rays prolonged to the arc when it stands beyond them
+        if row.get('angleDimension') is not None:
+            factor=float(row['angleDimension'].get('radiusFactor',1.15));want_px=factor*ray_px
+            def dim_error(why):errors.append('CALLOUT_ANGLE_DIMENSION_GEOMETRY_MISMATCH:'+oid+':'+why)
+            if len(arcs)!=1 or sectors:dim_error('arc')
+            elif abs(radii[0]*sx-want_px)>0.5:dim_error('radius=%.2f:want=%.2f'%(radii[0]*sx,want_px))
+            heads={n.get('data-mark-part'):n for n in by_mark.get(('angle-dimension',oid),[]) if tag(n)=='polygon'}
+            if set(heads)!={'arrow-from','arrow-to'}:dim_error('arrowheads')
+            else:
+                arc_pts=poly_model(arcs[0])
+                for part,end in (('arrow-from',arc_pts[0]),('arrow-to',arc_pts[-1])):
+                    tip=poly_model(heads[part])[0]
+                    if norm(sub(tip,end))*sx>1.0:dim_error(part+' tip')
+            prolonged={n.get('data-mark-part'):n for n in by_mark.get(('angle-dimension',oid),[]) if tag(n)=='line'}
+            for part,ray_end in (('ext-from',a),('ext-to',c)):
+                need=want_px>norm(sub(ray_end,v))*sx+4.0+2.0
+                if need!=(part in prolonged):dim_error(part+(' missing' if need else ' unexpected'))
+                elif need:
+                    e0,e1=line_model(prolonged[part]);direction=sub(ray_end,v)
+                    if abs(wrap180(direction_degrees(sub(e1,e0))-direction_degrees(direction)))>0.5 or norm(sub(e0,v))<norm(direction)-1e-9:dim_error(part+' off the ray')
         if straight:
             # the semicircle faces the screen side the plan names: the middle of its first arc, seen from the vertex in svg px, points that way
             want_side=DIM_SIDE_VECTORS.get(row.get('side'))
@@ -586,6 +632,13 @@ def audit(p):
                     along=((direction_degrees(d)-direction_degrees(sub(a,v)))*(1 if signed>0 else -1))%360.0
                     if along>360.0-ANGLE_LEADER_END_TOLERANCE:along-=360.0
                     return -ANGLE_LEADER_END_TOLERANCE<=along<=abs(signed)+ANGLE_LEADER_END_TOLERANCE
+                if row.get('angleDimension') is not None:
+                    # (G11) the label says what the plan's text says (read back glyph by glyph)
+                    node=elements.get(oid+'-label');codes_here=glyph_codes(node) if node is not None else []
+                    label_text=str(row.get('label',''));expect=None
+                    if row.get('labelKind','DEGREE')=='DEGREE':expect=[{format(ord(ch),'X')} for ch in label_text]+[{'2218'}]
+                    elif re.fullmatch(r'[A-Za-z0-9 ()+=<>.-]+',label_text):expect=math_label_codes(label_text)
+                    if not codes_here or (expect is not None and (len(codes_here)!=len(expect) or any(code not in allowed for code,allowed in zip(codes_here,expect)))):errors.append('CALLOUT_ANGLE_DIMENSION_LABEL_MISMATCH:'+oid)
                 has_leader=oid+'-label' in leaders
                 if has_leader:
                     leader_ok(oid+'-label',box,on_arc)

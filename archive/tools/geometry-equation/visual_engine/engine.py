@@ -951,9 +951,26 @@ def prepare(spec):
                 if isinstance(count,bool) or not isinstance(count,int) or not 1<=count<=3:raise ValueError('ANGLE_ARC_COUNT_INVALID')
                 style=obj.get('style','SECTOR')
                 if style not in {'SECTOR','ARC'}:raise ValueError('ANGLE_MARK_STYLE_INVALID')
-                ring=obj.get('ring',1);first=min(28.0,max(16.0,.25*rays))+9.0*(ring-1)
-                if rays<first+4.5*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
-                steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+4.5*(count-1)
+                ring=obj.get('ring',1);first=min(28.0,max(16.0,.25*rays))+9.0*(ring-1);arc_gap=4.5
+                if obj.get('arcScale')=='PROPORTIONAL':
+                    # (G11) a pulled-out angle keeps its arcs in proportion to the drawn rays (the fixed 28 px cap does not apply): the first arc at 0.30 of the ray, clamped to [16 px, 0.55 of the ray]
+                    arc_gap=max(4.5,.04*rays);first=min(max(.30*rays,16.0),.55*rays)+2*arc_gap*(ring-1)
+                if rays<first+arc_gap*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
+                steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+arc_gap*(count-1)
+                if obj.get('angleDimension') is not None:
+                    # (G11) the angle as a dimension: one arc at radiusFactor times the shorter ray (1.15 by default), an arrowhead at each end, and the rays prolonged to the arc when it stands beyond them
+                    if count!=1 or style!='ARC':raise ValueError('ANGLE_DIMENSION_STYLE_INVALID:'+oid)
+                    radius=obj['angleDimension'].get('radiusFactor',1.15)*rays;outer_radius=radius
+                    if radius*abs(delta)<2*DIM_ARROW_LENGTH_PX+8:raise ValueError('ANGLE_DIMENSION_TOO_NARROW:'+oid)
+                    sign=1.0 if delta>0 else -1.0
+                    for part,theta,out_sign,end in (('arrow-from',start,-1.0,a),('arrow-to',start+delta,1.0,b)):
+                        tip=(v[0]+radius*math.cos(theta),v[1]+radius*math.sin(theta));out=(-math.sin(theta)*sign*out_sign,math.cos(theta)*sign*out_sign)
+                        base=(tip[0]-out[0]*DIM_ARROW_LENGTH_PX,tip[1]-out[1]*DIM_ARROW_LENGTH_PX)
+                        primitive({'id':oid+'-'+part,'kind':'polygon','points':[tip,(base[0]-out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]+out[0]*DIM_ARROW_HALF_WIDTH_PX),(base[0]+out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]-out[0]*DIM_ARROW_HALF_WIDTH_PX)],'token':'indicator','layer':60,'role':'indicator','fill':'#111','mark':'angle-dimension','markId':oid,'markPart':part},'curve')
+                        reach=math.dist(end,v)
+                        if radius>reach+DIM_EXT_GAP_PX+2:
+                            ray=((end[0]-v[0])/reach,(end[1]-v[1])/reach)
+                            primitive({'id':oid+'-'+('ext-from' if part=='arrow-from' else 'ext-to'),'kind':'line','from':(v[0]+ray[0]*(reach+DIM_EXT_GAP_PX),v[1]+ray[1]*(reach+DIM_EXT_GAP_PX)),'to':(v[0]+ray[0]*(radius+DIM_ARROW_OVERSHOOT_PX),v[1]+ray[1]*(radius+DIM_ARROW_OVERSHOOT_PX)),'token':'indicator','layer':52,'role':'indicator','mark':'angle-dimension','markId':oid,'markPart':'ext-from' if part=='arrow-from' else 'ext-to'},'curve')
                 angle_sectors[oid]=([v[0],v[1]],start,delta,outer_radius)
                 if obj.get('over'):angle_over[oid]=set(obj['over'])
                 if style=='SECTOR':
@@ -962,7 +979,7 @@ def prepare(spec):
                     primitive({'id':oid+'-sector','kind':'polygon','points':wedge,'token':'secondaryShape','layer':12,'role':'angleSector','mark':'angle','markId':oid,'markIndex':0,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER','fill':SECTOR_FILL,'noStroke':True,'ownerPoints':obj['refs']})
                 group_stroke=ANGLE_EMPHASIS_STROKES.get(obj.get('emphasisGroup'))
                 for k in range(count):
-                    radius=first+4.5*k
+                    radius=outer_radius if obj.get('angleDimension') is not None else first+arc_gap*k
                     primitive({'id':oid+'-arc-'+str(k+1),'kind':'polyline','points':[(v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)) for i in range(steps+1)],'token':'secondaryShape','layer':60,'role':'indicator','ownerPoints':obj['refs'],'mark':'angle','markId':oid,'markIndex':k+1,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER',**({'stroke':group_stroke} if group_stroke else {})},'curve')
                 if obj.get('labelText') is not None:
                     middle=start+delta/2;anchor=(v[0]+outer_radius*math.cos(middle),v[1]+outer_radius*math.sin(middle))

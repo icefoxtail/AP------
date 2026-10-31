@@ -223,5 +223,69 @@ class CoordinateCalloutTests(unittest.TestCase):
         svg=self.bounded.svg().replace('</svg>',extra+'</svg>')
         self.assertIn('CALLOUT_OVERLAPS_COORDINATE_BAND',[e.split(':')[0] for e in self.bounded.audit(svg=svg,axis_bounds=MAIN_FRAME)['errors']])
 
+# ---- (G11) angle callout with proportional arcs and an angle dimension: the fan of the angle callout above, its first angle marked with arcs that follow the rays, the whole fan C..A given a dimension arc
+def dim_objects(scale='PROPORTIONAL',factor=1.15,text='x',kind='MATH'):
+    out=[o for o in fan_objects() if o['id'] not in ('k2__a1','k2__a2','k2__a3')]
+    out.append({'id':'k2__a1','kind':'ANGLE_MARK','refs':['k2__C','k2__B','k2__P'],'value':degrees(FAN_COPY['C'],FAN_COPY['B'],FAN_COPY['P']),'arcs':1,'style':'ARC','labelText':'1','labelKind':'MATH',**({'arcScale':scale} if scale else {})})
+    out.append({'id':'k2__angDim','kind':'ANGLE_MARK','refs':['k2__C','k2__B','k2__A'],'value':degrees(FAN_COPY['C'],FAN_COPY['B'],FAN_COPY['A']),'arcs':1,'style':'ARC','angleDimension':{'radiusFactor':factor},'labelText':text,'labelKind':kind})
+    return out
+def dim_spec(**kw):
+    spec=fan_spec();spec['objects']=[o for o in spec['objects'] if o.get('kind')=='POINT']+dim_objects(**kw);return spec
+def dim_marks(scale='PROPORTIONAL',factor=1.15,text='x',refs=('C','A')):
+    row={'id':'k2','kind':'ANGLE','vertex':'B','rays':list(FAN_RAYS),'at':'RIGHT','radius':RADIUS,'angleDimension':{'text':text,'radiusFactor':factor,'refs':list(refs)},
+         'angles':[{'id':'a1','refs':['C','B','P'],'value':round(degrees(FAN_MAIN['C'],FAN_MAIN['B'],FAN_MAIN['P']),6),'label':'1','labelKind':'MATH','arcs':1,'style':'ARC'}]}
+    if scale:row['arcScale']=scale
+    return {'callouts':[row]}
+DIM_LABELS={'k2__a1-label':('1',''),'k2__angDim-label':('x',''),**{k+'-name':(k,'') for k in FAN_MAIN},**{'k2__'+k+'-name':(k,'') for k in FAN_COPY}}
+class DimFanFixture(FanFixture):
+    def __init__(self,**kw):
+        self.points=FAN_POINTS;self.labels=DIM_LABELS;self.result=build(dim_spec(**kw));self.transform=self.result['witness']['coordinateModel'];self.layout=self.result['witness']['layout']
+        self.boxes={row['id']:row['box'] for row in self.layout['labels']}
+        svg=self.result['svg']
+        for label_id in DIM_LABELS:svg=re.sub(r'<text\s[^>]*id="'+re.escape(label_id)+r'"[^>]*>.*?</text>','',svg,flags=re.S)
+        self.base_svg=svg
+    def audit(self,svg=None,marks=None,segments=None):
+        return OBSERVER.audit({'svg':svg or self.svg(),'points':{k:list(v) for k,v in FAN_MAIN.items()},'marks':marks if marks is not None else dim_marks(),
+                               'segments':segments if segments is not None else FAN_SEGMENTS,'transform':self.transform})
+
+class AngleDimensionTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.fan=DimFanFixture();cls.fixed=DimFanFixture(scale=None)
+    def radii_px(self,fixture,mark_id):
+        svg=fixture.result['svg'];node=tag(svg,mark_id+'-arc-1');pts=[tuple(map(float,p.split(','))) for p in attribute(node,'points').split()]
+        vertex=re.search(r'<circle\s[^>]*id="k2__B"[^>]*/>',svg).group(0)
+        cx,cy=float(attribute(vertex,'cx')),float(attribute(vertex,'cy'));return [math.hypot(x-cx,y-cy) for x,y in pts]
+    def test_the_proportional_arc_and_the_dimension_arc_pass_the_observer(self):
+        self.assertEqual(self.fan.layout['unresolved'],[])
+        report=self.fan.audit();self.assertEqual(report['errors'],[],report['errors'])
+        ray=math.hypot(*[a-b for a,b in zip(FAN_COPY['C'],FAN_COPY['B'])])*self.fan.transform['sx']
+        self.assertAlmostEqual(self.radii_px(self.fan,'k2__a1')[0],min(max(.30*ray,16.0),.55*ray),places=3)       # no 28 px cap
+        self.assertGreater(self.radii_px(self.fan,'k2__a1')[0],28.0)
+        self.assertAlmostEqual(self.radii_px(self.fan,'k2__angDim')[0],1.15*ray,places=3)
+    def test_the_default_arc_keeps_the_old_pixel_cap(self):
+        self.assertLessEqual(self.radii_px(self.fixed,'k2__a1')[0],28.0+1e-6)
+        self.assertIn('CALLOUT_ARC_SCALE_MISMATCH',self.fixed.codes(marks=dim_marks()))        # drawn at the old size, declared proportional
+        self.assertEqual(self.fixed.audit(marks=dim_marks(scale=None))['errors'],[])
+    def test_the_dimension_radius_arrowheads_and_prolonged_rays_are_held_to_the_drawing(self):
+        self.assertIn('CALLOUT_ANGLE_DIMENSION_GEOMETRY_MISMATCH',self.fan.codes(marks=dim_marks(factor=1.4)))
+        svg=self.fan.svg();head=re.search(r'<polygon\s[^>]*id="k2__angDim-arrow-to"[^>]*/>',svg).group(0)
+        self.assertIn('CALLOUT_ANGLE_DIMENSION_GEOMETRY_MISMATCH',self.fan.codes(svg=svg.replace(head,'')))
+        # the dimension arc at 0.8 of the rays stands inside them: nothing to prolong, and the drawn prolongation is then unexpected
+        self.assertIn('CALLOUT_ANGLE_DIMENSION_GEOMETRY_MISMATCH',self.fan.codes(marks=dim_marks(factor=0.8)))
+    def test_the_label_is_the_plans_text(self):
+        self.assertIn('CALLOUT_ANGLE_DIMENSION_LABEL_MISMATCH',self.fan.codes(marks=dim_marks(text='y')))
+    def test_refused_fields(self):
+        self.assertIn('CALLOUT_ANGLE_DIMENSION_INVALID',self.fan.codes(marks=dim_marks(factor=2.0)))
+        self.assertIn('CALLOUT_ANGLE_DIMENSION_INVALID',self.fan.codes(marks=dim_marks(refs=('C','C'))))
+        self.assertIn('CALLOUT_ANGLE_DIMENSION_INVALID',self.fan.codes(marks=dim_marks(refs=('C','Z'))))
+        self.assertIn('CALLOUT_ARC_SCALE_INVALID',self.fan.codes(marks=dim_marks(scale='FIXED')))
+        marks=dim_marks();marks['callouts'][0]['kind']='SEGMENT';marks['callouts'][0]['path']=['C','P']
+        self.assertTrue({'CALLOUT_ARC_SCALE_INVALID','CALLOUT_ANGLE_DIMENSION_INVALID'}<=set(self.fan.codes(marks=marks)))
+    def test_the_semantic_model_refuses_a_bad_dimension_or_scale(self):
+        for change in ({'angleDimension':{'radiusFactor':2.0}},{'angleDimension':{'size':1}},{'arcScale':'FIXED'}):
+            spec=dim_spec();spec['objects']=[{**o,**change} if o['id']=='k2__angDim' else o for o in spec['objects']]
+            with self.assertRaises(ValueError):build(spec)
+
 if __name__=='__main__':
     unittest.main()
