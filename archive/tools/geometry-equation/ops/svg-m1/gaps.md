@@ -128,3 +128,92 @@
 - S3 수직선 연속 컴퍼스 작도(수선을 세운 직각삼각형 빗변을 반지름으로 한 두 번째 호) (21_금당중 1학기 중간 중3 q9) — E35 확장.
 - E32 후속: pathLabels 위치·쪽 지정(anchor/side) — 좁은 꼭짓점(약 19°)에서 나온 중선 CD의 x=15cm 경로 라벨이 CG 구간에 닿아 오독, 바깥 치수선은 변을 가로질러 불가 (25_왕운중 2학기 기말 중2 q6).
 - (E33 이후, 26_왕의중 1학기 중간 q23) 입체 위 꼭짓점이 아닌 점(밑면 중심 H, 변의 중점 M)에 이름 달기와 라벨 없는 direct 수선(점선+직각 표시만, h는 끌어낸 패널에)이 없다. 고정 YAW 28°라 정사각뿔 앞 옆모서리가 높이선과 겹친다. 높이 바깥 치수선은 좁은 패널에서 밑 꼭짓점을 가로지른다. 지금은 끌어낸 직각삼각형 O–H–M 패널로 우회했다.
+
+## G1~G11 엔진 빈틈 조사 (2026-10-31, main E1~E37 기준)
+
+읽기 전용 조사. 크기: S=반나절 이하, M=엔진 묶음 1~2시간(관측기 포함), L=새 capability(여러 묶음). 빈도는 `archive/exams/original/**` 문제 그림 있는 문항 수.
+
+| ID | 이름 | 학년 | 크기 | 못 하는 것 | 대표 샘플(시험지 #ord) |
+|---|---|---|---|---|---|
+| G1 | 입체 위 보조점(밑면 중심 H·변의 중점 M·수선의 발)에 이름 달기 | 중3 | M | solid-figure-v1은 꼭짓점이 아닌 점(밑면 중심·무게중심 H, 변의 중점 M·N, 높이의 발 J)에 이름을 달거나 그 점을 끝으로 하는 선분·직각 표시… | 19_왕운중_2학기_기말_중3_기출 #21 |
+| G2 | 포물선·쌍곡선(및 원·타원 혼합) 이차곡선: 초점·준선·점근선·접선 | 고2 | L | 축에 나란한 타원(ellipse-figure-v1)만 된다. 포물선의 초점·준선·꼭짓점·수선의 발, 쌍곡선의 초점·점근선·주축, 타원+원·타원+포물선 같은 혼합 … | 26_제일고_1학기_중간_고2_기하 #2 |
+| G3 | 평면벡터 화살표(시점·종점, 합·차·실수배, 위치벡터) | 고2 | M | 방향 있는 선분(화살촉이 끝에 있는 벡터), 벡터 이름(→a)·성분 표시, 시점이 같은 두 벡터의 평행사변형 합성이 없다. 평면 그림의 선분에는 화살촉이 없고(치… | 15_강남여고_2학기_중간_고2_기하와벡터_기출 #10 |
+| G4 | 공간도형: 평면(α·β)·교선·직선의 위치·삼수선·이면각·정사영·좌표공간 | 고2 | L | 평면 자체(평행사변형으로 그린 α, β)와 평면 위의 점·직선·교선, 두 평면이 이루는 각(이면각), 평면에 내린 수선의 발과 정사영, x·y·z 좌표축 위의 점… | 22_매산고_1학기_기말_고2_기하_기출 #14 |
+| G5 | 삼차 이상 함수의 색칠 영역과 삼차+이차(직선) 두 곡선 사이 | 고2 | M | graphPlan.regions는 piecewise-polynomial-spike-v1(차수≤2)만 되고, referenceCurves도 이차·구간별 이차만 받는… | 22_효천고_2학기_기말_고2_수학II #19 |
+| G6 | 함수 그래프와 원을 한 그림에(원·이차함수 둘러싸인 넓이, 로그곡선+원) | 고2 | M | 원(x²+(y-2)²=4, x²+y²=2)은 좌표 작도(construction-spike-v1)에서만 되고, 함수 그래프 계열(polynomial·piecewis… | 19_순천여고_2학기_기말_고2_수학II #21 |
+| G7 | 불연속 함수 둘(f와 g, f(x+1)·f(-x), 합성)과 접근 방향 표시 | 고2 | M | piecewise-discontinuous-spike-v1은 함수 하나만 그린다. 둘째 불연속 곡선(referenceCurves), 세로선·점선 안내, 색칠, 그… | 22_효천고_2학기_중간_고2_수학II #21 |
+| G8 | 속 빈(구멍 뚫린) 원기둥과 원뿔대 전개도(고리 부채꼴) | 중1 | M | solids 표에 HOLLOW_CYLINDER가 없고(코드 grep 0), 전개도 net은 각기둥·각뿔·원기둥·원뿔만 된다. 구멍 뚫린 원기둥의 겉넓이(바깥·안 … | 24_연향중_2학기_기말_중1_기출 #13 |
+| G9 | 도로망·격자 최단 경로 개수(교차점별 경로 수, 금지·경유 구간) | 고1 | M | 격자 도로망을 그려 교차점마다 'A에서 그 점까지 가는 방법의 수'(1,2,3,6…)를 적고, 지나지 않는 구간(PQ 금지)·반드시 지나는 구간(CD)·방향 제한… | 22_효천고_2학기_기말_고1_기출 #17 |
+| G10 | 내접·혼합 입체: 원기둥 속 원뿔+구, 구 안의 정다면체 | 중1 | L | 원기둥 안에는 구·원뿔·원뿔대 하나, 또는 구 여러 개만 들어간다. 구와 원뿔의 혼합, 구 안의 정다면체·정육면체, 각뿔 안의 입체는 UNSUPPORTED(깊이 … | 24_왕운중_2학기_기말_중1_수학 #15 |
+| G11 | 평면 라벨 잔여: 좌표 그림 callout, 각 callout 치수선, 좁은 꼭짓점 경로 라벨 | 중2 | S | E37 한계: 축 있는 좌표 그림의 callout은 CALLOUT_REQUIRES_PLANE_FIGURE로 거절, ANGLE callout은 호 크기가 px 고정… | 25_왕운중_2학기_기말_중2_기출 #6 |
+
+## 샘플 상세
+
+### G1 입체 위 보조점(밑면 중심 H·변의 중점 M·수선의 발)에 이름 달기 (중3, M)
+- 근거: AUTHOR_GUIDE §3-입체 dims `direct`/`foot` 문단('밑면 꼭짓점이 아닌 점…에는 쓸 수 없다(SOLID_DIM_FOOT_INVALID)'), solid-figure-v1.mjs L1246~1268(foot는 PYRAMID/FRUSTUM+direct만), HANDOFF §4.3-2, .tmp/svg-m1/gaps.md S1·E33 이후 항목(26_왕의중 q23은 끌어낸 직각삼각형 패널로 우회)
+- 샘플: `archive/exams/original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js` #21 / 문제 그림 `assets/images/19_왕운중_2학기_기말_중3_기출/q21.png` (존재 True) — 정사각뿔 V-ABCD에서 AB·CD의 중점 M,N과 V에서 MN에 내린 수선의 발 H를 이름 붙여 직각삼각형 VMH와 ∠VMN=x를 보인다
+- 샘플: `archive/exams/original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js` #7 / 문제 그림 `assets/images/19_왕운중_2학기_기말_중3_기출/q07.png` (존재 True) — 정사면체 A-BCD에서 A의 수선의 발 H(밑면 무게중심)와 직각삼각형 ADH, ∠ADH=x를 보인다(고등: 26_금당고 2학기 중간 기하 q12의 O·H도 같은 유형)
+- 설계: solids[]에 `points:[{id:'H',at:{base:'centroid'|'center'},..},{id:'M',at:{edge:['A','B'],t:'1/2'}},{id:'J',at:{foot:{from:'B',plane:['A','F','C']}}}]`처럼 엔진이 3차원에서 위치를 계산하는 이름 붙은 보조점을 추가한다. segments/dims/marks/highlights가 이 점 id를 꼭짓점처럼 받게 하고, 관측기는 plan에서 3차원 위치와 직각을 다시 확인한다. 정다면체에 height dims를 열고 foot에 이름 라벨을 단다.
+
+### G2 포물선·쌍곡선(및 원·타원 혼합) 이차곡선: 초점·준선·점근선·접선 (고2, L)
+- 근거: AUTHOR_GUIDE §3-45 말미('원, 쌍곡선·포물선, 곡선 눈금, 벡터 화살표는 이 capability의 지원 범위가 아니다'), §3-40(Y_OF_X/X_OF_Y 이차 곡선만), HANDOFF §4.3-1. 기하 이차곡선·이차곡선의 접선 문항은 그림 있는 것만 42개(12개 시험지)
+- 샘플: `archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js` #2 / 문제 그림 `assets/images/26_제일고_1학기_중간_고2_기하/q2.png` (존재 True) — 포물선과 준선 l, 초점 F를 지나는 직선, A·B에서 준선에 내린 수선의 발 M·N, AF=AM·BF=BN 길이 표시
+- 샘플: `archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js` #13 / 문제 그림 `assets/images/26_매산고_1학기_중간_고2_기하/q13.png` (존재 True) — 쌍곡선 x²-y²=12, 점 (4,2)에서의 접선과 두 점근선 y=±x, 세 교점으로 이루어진 삼각형(넓이 12)
+- 설계: ellipse-figure-v1을 conic-figure-v1(PARABOLA·HYPERBOLA·ELLIPSE·CIRCLE, 축 나란히)로 확장한다. 식 계수 p 또는 (a²,b²)에서 초점·준선·점근선·꼭짓점을 엔진이 SymPy로 계산하고 점(kind FOCUS/FOOT/ON_CURVE)·선분·접선 판별식 검증·다각형 색칠은 기존 타원 규칙을 재사용한다. 관측기는 곡선의 정의(거리 합·차·초점-준선)로 점들을 다시 확인한다.
+
+### G3 평면벡터 화살표(시점·종점, 합·차·실수배, 위치벡터) (고2, M)
+- 근거: AUTHOR_GUIDE §3-1 ('두 점 사이 벡터… 지원하지 않는다'), §3-45 말미('벡터 화살표는 지원 범위가 아니다'), §3-8 dimensions style ARROW는 치수선 전용. 벡터 문항은 그림 있는 것만 16개(6개 시험지)
+- 샘플: `archive/exams/original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js` #10 / 문제 그림 `assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q10.png` (존재 True) — 삼각형 ABC, 중선 AM, AM의 중점 K와 벡터 AB=a·AC=b, BK=(-3a+b)/4를 화살표로 보인다
+- 샘플: `archive/exams/original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js` #9 / 문제 그림 `assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q09.png` (존재 True) — 정사각형 ABCD에서 시점 A의 세 벡터 a=AB, b=AD, c=AC=a+b와 a-b+2c를 화살표로 보인다
+- 설계: planeMarks.vectors:[{id,from,to,label:'a',labelKind:'VECTOR'|'MATH',style:'SOLID'|'DASHED',emphasis}] — 끝에 채운 화살촉을 단 선분(점 id는 기존 displayPoints). 엔진은 from→to의 방향과 길이를 모델에서 확인하고, `sum:[v1,v2]`로 평행사변형 보조선·합벡터를 그린다. 모눈 위 성분 표시와 좌표 그림에서의 위치벡터(원점에서 점으로)는 같은 필드를 SOURCE_COORDINATE_AXES에도 허용한다.
+
+### G4 공간도형: 평면(α·β)·교선·직선의 위치·삼수선·이면각·정사영·좌표공간 (고2, L)
+- 근거: AUTHOR_GUIDE에 '좌표공간'·'공간좌표'·'이면각'·'평면 α' 0건(grep, '정사영'은 투영 방식 설명 2회뿐), §3-입체 solids 표(PRISM…BIPYRAMID, 평면 없음), §3-입체 한계('한 투영(정사영)만'), HANDOFF §4.3-1. 공간도형·공간좌표 문항은 그림 있는 것 19개(6개 시험지)
+- 샘플: `archive/exams/original/high/h2/1final/22_매산고_1학기_기말_고2_기하_기출.js` #14 / 문제 그림 `assets/images/22_매산고_1학기_기말_고2_기하_기출/q14.png` (존재 True) — 서로 수직인 평면 α, β와 교선 l, l 위의 P, 각 평면 위의 A, B, PA·PB와 l이 이루는 60°·45°, 평면 PBA와 β의 이면각 θ, A의 정사영 A'
+- 샘플: `archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js` #19 / 문제 그림 `assets/images/26_매산고_1학기_중간_고2_기하/q19.png` (존재 True) — 평면 α, 평면 밖의 점 P, α 위의 점 O, 직선 l과 그 위의 H, 수선 PO·OH·PH를 그려 삼수선 정리의 반례를 보인다
+- 설계: space-figure-v1을 새로 둔다: 평면(`planes:[{id:'alpha',through:[점 3개]|normal+point,extent}]`), 점(3차원 좌표 또는 평면 위 좌표), 선분·직선·교선(두 평면의 교선을 엔진이 계산), 수선의 발·정사영(`PROJECT onto`), 이면각 표식과 x·y·z 축. 고정 정사영(방위 28°)을 solid-figure와 공유하고 가려짐은 평면을 반투명 면으로 보고 깊이 검사한다.
+
+### G5 삼차 이상 함수의 색칠 영역과 삼차+이차(직선) 두 곡선 사이 (고2, M)
+- 근거: AUTHOR_GUIDE §3-6-영역('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL'), §3-6 referenceCurves(삼차 이상은 참조 곡선 불가), §3-2 한계('곡선은 한 개… 색칠 영역·보조선은 같이 그릴 수 없다'), HANDOFF §4.3-1('삼차함수 영역')
+- 샘플: `archive/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js` #19 / 문제 그림 `assets/images/22_효천고_2학기_기말_고2_수학II/q19.png` (존재 True) — x축에 접하는 삼차함수 f와 이차(직선꼴) g, 교점 O·α·β의 세로 점선과 S1(0~α)·S2(α~β) 색칠
+- 설계: regions와 referenceCurves의 곡선 종류에 CUBIC/QUARTIC 다항(계수 문자열, 모든 실근 SymPy 정확 계산)을 허용한다. 곡선 표본화는 기존 cubic-quartic 계열 식을 그대로 쓰고, 경계 교점 x는 intersectionX와 같은 규칙으로 검증한다. 세로 점선은 overlays.lines {x}를 재사용한다.
+
+### G6 함수 그래프와 원을 한 그림에(원·이차함수 둘러싸인 넓이, 로그곡선+원) (고2, M)
+- 근거: AUTHOR_GUIDE §3-14 overlays(직선·세로선·점·선분·축 보조선·다각형, 원 없음), §3-40(비선형 곡선 3개 이상은 이차 곡선만), §3-1(원은 CIRCLE_CENTER_RADIUS 작도에서만)
+- 샘플: `archive/exams/original/high/h2/2final/19_순천여고_2학기_기말_고2_수학II.js` #21 / 문제 그림 `assets/images/19_순천여고_2학기_기말_고2_수학II/q21.png` (존재 True) — 원 x²+(y-2)²=4와 y=x²의 교점 O·P, 현 OP, 중심 C, 부채꼴·활꼴로 S1·S2를 나눈다
+- 샘플: `archive/exams/original/high/h2/2mid/26_팔마고_2학기_중간_고2_미적분I.js` #20 / 문제 그림 `assets/images/26_팔마고_2학기_중간_고2_미적분I/q20.png` (존재 True) — 원 x²+y²=2와 y=x²의 교점 A, 직선 y=tx와 원의 교점(그림에서 t의 위치)
+- 설계: graphPlan.overlays에 `circles:[{id,center:[x,y],radiusSquared:'2'}]`를 더한다(원과 곡선·직선의 교점은 `intersect:['c1','curve']`로 엔진이 계산). 원 안쪽 색칠 영역은 regions boundary에 'circleUpper'/'circleLower' 호를 허용한다. 관측기는 원의 중심·반지름·교점을 plan에서 다시 계산한다.
+
+### G7 불연속 함수 둘(f와 g, f(x+1)·f(-x), 합성)과 접근 방향 표시 (고2, M)
+- 근거: AUTHOR_GUIDE §3-15 한계('referenceCurves(둘째 불연속 곡선)… 받지 않는다. 두 함수가 모두 필요하면 그림을 포기하거나 EXEMPT/UNSUPPORTED', '수직선, 세로선, 색칠 영역… 지원하지 않는다'), HANDOFF §4.3-1. 함수의 극한·연속 문항은 그림 있는 것 71개(36개 시험지)
+- 샘플: `archive/exams/original/high/h2/2mid/22_효천고_2학기_중간_고2_수학II.js` #21 / 문제 그림 `assets/images/22_효천고_2학기_중간_고2_수학II/q21.png` (존재 True) — f와 g가 x=2에 대칭일 때 -2≤x≤6의 두 그래프(점프·빈 점)를 한 좌표에 그리고 a=-1~5에서 안쪽 함수의 접근 방향을 화살표로 보인다
+- 샘플: `archive/exams/original/high/h2/2mid/22_팔마고_2학기_중간_고2_수학II.js` #8 / 문제 그림 `assets/images/22_팔마고_2학기_중간_고2_수학II/q8.png` (존재 True) — f(x)와 g(x)를 각각 그리고 x→1+에서 f(x+1)이 2+로 접근하는 모양(x+1 평행이동)과 x→1-에서 g의 좌극한을 보인다
+- 설계: piecewise-discontinuous-spike-v1에 `referenceCurves`(최대 2, 같은 pieces 문법, id·이름)와 `shift:{dx,dy,reflectX}`(f(x+1), f(-x) 자동 변환)를 허용한다. `limitArrows:[{curve,at:'1',side:'RIGHT'|'LEFT',toY:'2'}]`로 접근 화살표와 점선 안내(x=a에서 y 값까지)를 그린다. 관측기는 각 조각의 열린·닫힌 끝과 접근 값을 다시 계산한다.
+
+### G8 속 빈(구멍 뚫린) 원기둥과 원뿔대 전개도(고리 부채꼴) (중1, M)
+- 근거: HANDOFF §4.3-3, .tmp/svg-m1/notes/DESIGN-hollow-cylinder-and-frustum-net.txt(설계만, 미구현), AUTHOR_GUIDE §3-입체('각기둥·각뿔·원기둥·원뿔의 전개도')
+- 샘플: `archive/exams/original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js` #13 / 문제 그림 `assets/images/24_연향중_2학기_기말_중1_기출/q13.png` (존재 True) — 구멍 뚫린 원기둥(안 반지름 5, 바깥 9, 높이 9)의 바깥·안 옆면과 위아래 고리를 보여 겉넓이 364π를 구한다
+- 샘플: `archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js` #20 / 문제 그림 `assets/images/24_왕운중_2학기_기말_중1_수학/q20-student.svg` (존재 True) — 원뿔대의 옆면 전개(부채꼴 고리: 큰 호 20π·작은 호 10π, 모선 13)와 두 밑면 원으로 겉넓이 320π를 보인다
+- 설계: DESIGN 메모 그대로: kind HOLLOW_CYLINDER(radius, innerRadius, height; 윗면은 두 타원 사이 색, 안벽은 먼 쪽만 보이게 깊이 검사)와 net kind CONE_FRUSTUM(고리 부채꼴 rOuter=L, rInner=L-l, 각 360R/L와 두 원). 반지름·두께·높이 dims, net.excluded, faceLabels는 기존 코드를 공유한다.
+
+### G9 도로망·격자 최단 경로 개수(교차점별 경로 수, 금지·경유 구간) (고1, M)
+- 근거: AUTHOR_GUIDE grep: '도로망' 0, '최단' 0, '경우의 수' 0. 도로망·최단·격자 경로 문항은 그림 있는 것 48개(45개 시험지), 해설 그림 있는 것은 19개뿐
+- 샘플: `archive/exams/original/high/h1/2final/22_효천고_2학기_기말_고1_기출.js` #17 / 문제 그림 `assets/images/22_효천고_2학기_기말_고1_기출/q17.png` (존재 True) — 5×2 정사각형 도로망에서 A→B 최단 경로, 선분 CD 위의 점을 적어도 한 번 지나는 경로의 수(교차점별 도달 방법 수와 CD 구간 강조)
+- 샘플: `archive/exams/original/high/h2/1mid/18_금당고_1학기_중간_고2_확률과통계.js` #12 / 문제 그림 `assets/images/18_금당고_1학기_중간_고2_확률과통계/q12.png` (존재 True) — 같은 간격 도로망에서 선분 PQ를 지나지 않는 A→B 최단 경로(PQ 금지 구간 점선과 교차점별 수)
+- 설계: lattice-path-figure-v1: `grid:{cols,rows,points:{A:[0,0],B:[5,2]}}`와 `forbidden:[segment…]`, `via:[segment…]`, `directions:'RIGHT_UP'`로 격자·점·구간을 정하면 엔진이 교차점별 경로 수를 DP로 계산해 숫자(`counts:true`)를 그린다. 그래프형 도로망(`edges`)은 점 좌표와 간선을 받아 같은 규칙으로 센다. 관측기는 경로 수를 자기 코드로 다시 센다.
+
+### G10 내접·혼합 입체: 원기둥 속 원뿔+구, 구 안의 정다면체 (중1, L)
+- 근거: AUTHOR_GUIDE §3-입체 한계('내접은 원기둥 안의 구·원뿔·원뿔대 하나, 또는 구 여러 개만… 구와 원뿔의 혼합은 UNSUPPORTED', '구 안의 정육면체·각뿔 안의 입체는 … 별도 설계다')
+- 샘플: `archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js` #15 / 문제 그림 `assets/images/24_왕운중_2학기_기말_중1_수학/q15-student.svg` (존재 True) — 원기둥(밑면 반지름 r, 높이 2r)에 꼭 맞는 원뿔과 구를 함께 그려 부피비 2:3:1을 보인다
+- 샘플: `archive/exams/original/middle/m1/2final/23_연향중_2학기_기말_중1_기출.js` #8 / 문제 그림 `assets/images/23_연향중_2학기_기말_중1_기출/q8.png` (존재 True) — 지름 12cm 구 안에 정팔면체가 꼭 맞게 들어가고 가운데 정사각형 대각선 12가 지름인 모양
+- 설계: inside 항목을 원기둥 밖으로 일반화한다: `inside:'s1'`에 구·원뿔 혼합과 정다면체(꼭짓점이 구 위)를 허용한다. 안쪽 입체의 모서리가 바깥 입체의 윤곽에 가려지는 깊이 검사를 solid-figure의 hidden-line 테스트(점-삼각형)로 확장한다. 외접 구 반지름은 엔진이 계산한다.
+
+### G11 평면 라벨 잔여: 좌표 그림 callout, 각 callout 치수선, 좁은 꼭짓점 경로 라벨 (중2, S)
+- 근거: HANDOFF §4.3-4, gaps.md E32 후속(25_왕운중 2학기 기말 중2 q6), AUTHOR_GUIDE §3-8 E37 문단·§3-10
+- 샘플: `archive/exams/original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js` #6 / 문제 그림 `assets/images/25_왕운중_2학기_기말_중2_기출/q6.png` (존재 True) — 삼각형 ABC의 무게중심 G, 중선 CD 위에서 CG=10·GD=5·CD=15와 BD=5를 좁은 꼭짓점(약 19°)에서도 겹치지 않게 보인다
+- 설계: callout을 SOURCE_COORDINATE_AXES에서도 허용하고(축·눈금을 피해 배치), ANGLE callout에 호 반지름 비례 옵션과 치수선(양 끝 보조선)을 더한다. pathLabels anchor 자리 탐색에 꼭짓점 근처 후보를 추가한다.
+
+## 참고
+- 원장 OPEN 시험지 14개 중 엔진 대기 사유(E19·E26c·E26d·E28d·E29·E30 등)는 현재 가이드에 해당 필드가 있어 대부분 해결로 본다(재 plan 대상). 진짜 남은 것은 G8(속 빈 원기둥·원뿔대 전개도)과 위 표의 항목이다.
+- 원장 OPEN 중 내용 문제(OPEN_CONTENT 25_왕의중 기말 q19)·원본 그림 없음(26_왕의중 2학기 중간 8문항 등)·#777 골든 SHA 고정(25_매산여고·25_효천고 고1)은 엔진 부족이 아니라 제외했다.
+- 이차함수 두 개(f·g)와 영역, 확률밀도함수 조각 일차 그래프+영역, 정규분포, 지수·로그 한 쌍은 이미 되므로 넣지 않았다.
