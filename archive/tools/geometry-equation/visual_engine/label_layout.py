@@ -8,6 +8,7 @@ import html
 from .geometry_model import finite
 
 DIRECTIONS=('N','NE','E','SE','S','SW','W','NW')
+PATH_LABEL_FALLBACK_SIDE_MIN_DOT=0.26   # (G11) the second round leans the side a little less: up to about 75 degrees either way
 PATH_LABEL_SIDE_MIN_DOT=0.5   # E37: a direction counts as on a path's side when its cosine with that side's normal is at least this (45 degrees either way is 0.707)
 OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
@@ -716,7 +717,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
         def tie_to_owner(end):
             leader_id=label['id']+'-owner-leader'
-            leaders.append({'schemaVersion':'OWNER_LABEL_LEADER_v1','id':leader_id,'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'ownerId':label['target']})
+            leaders.append({'schemaVersion':'OWNER_LABEL_LEADER_v1','id':leader_id,'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'ownerId':label['target'],**({'pathLabelFallback':True} if label.get('_pathFallback') else {})})
             occupied.append({'id':leader_id,'kind':'leader','geometry':[list(label['at']),end]})
         preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
         if tick_owner is not None:
@@ -809,6 +810,31 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                             label={**label,'at':list(anchor)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                         if chosen is not None:break
                     if chosen is not None:break
+                if chosen is None and site.get('fallback') and not site.get('leaderNever'):
+                    # (G11) the second round, after every place above failed (a narrow vertex crowds the path): the anchor slides farther along the path, the box stands farther
+                    # out on a longer leader, the side leans a little less, and last the box goes out beyond the figure on a long leader. The leader still touches only the path's own
+                    # segments and no other stroke (visible_owner_leader); the leader is marked data-path-label-fallback so the observer holds it to the wider tolerances.
+                    fb=site['fallback'];first=site['anchors']
+                    rounds=[(fb['anchors'],fb.get('sideNormals'),tuple(site['gaps']),PATH_LABEL_SIDE_MIN_DOT),
+                            (first+fb['anchors'],fb.get('allNormals'),tuple(site['gaps'])+tuple(fb['gaps']),PATH_LABEL_SIDE_MIN_DOT),
+                            (first+fb['anchors'],fb.get('allNormals'),tuple(site['gaps'])+tuple(fb['gaps']),PATH_LABEL_FALLBACK_SIDE_MIN_DOT),
+                            (first+fb['anchors'],fb.get('allNormals'),tuple(fb['farGaps']),PATH_LABEL_FALLBACK_SIDE_MIN_DOT)]
+                    for round_anchors,round_normals,round_gaps,min_dot in rounds:
+                        for anchor_index,anchor in enumerate(round_anchors):
+                            for gap in round_gaps:
+                                for direction in DIRECTIONS:
+                                    if round_normals:
+                                        dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
+                                        normal=round_normals[anchor_index]
+                                        if (dx*normal[0]+dy*normal[1])/math.hypot(dx,dy)<min_dot:continue
+                                    box=candidate(anchor,w,h,direction,gap)
+                                    if not acceptable(box,owner_check=False):continue
+                                    end=visible_owner_leader(tuple(anchor),box,occupied,owner_ids)
+                                    if end is None:continue
+                                    label={**label,'at':list(anchor),'_pathFallback':True};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                                if chosen is not None:break
+                            if chosen is not None:break
+                        if chosen is not None:break
             if 'dimensionPlacement' in label:
                 # A dimension line's length label (E7): the box stands on the outer side of the line (of the brace's tip), touching none of it, centred on the
                 # line or slid along it; no other place would read as that dimension's value, so there is no leader and no fallback search.

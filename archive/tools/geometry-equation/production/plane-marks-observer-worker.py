@@ -193,6 +193,8 @@ def box_polyline_distance(box,points):
 # ---- path label anchor and side (E37): this observer's own copy of the rules
 PATH_LABEL_ANCHORS={'START':0.15,'END':0.85}   # START / END: near the first / last point of the path (a fraction of its length)
 PATH_LABEL_ANCHOR_TOLERANCE=0.1                # the engine slides a named anchor at most 0.09 of the path along it
+PATH_LABEL_FALLBACK_ANCHOR_TOLERANCE=0.26      # (G11) the engine's second round slides the anchor at most 0.25 of the path from the plan's
+PATH_LABEL_FALLBACK_SIDE_MIN_COS=0.1           # (G11) and takes directions up to about 75 degrees off the side's normal (cosine 0.26): the box centre, seen from the leader's start, leans at least this far
 PATH_LABEL_SIDE_MIN_COS=0.3                    # the label box's centre, seen from the leader's start, leans at least this far to the declared side (cosine with that side's normal)
 def path_anchor_fraction(anchor):
     if isinstance(anchor,str):return PATH_LABEL_ANCHORS.get(anchor)
@@ -1091,22 +1093,28 @@ def audit(p):
             else:
                 leader_ok(oid+'-label',box,lambda q:min(point_segment_distance(q,c,d) for c,d in zip(path,path[1:]))<=1.0)
                 la=(float(node.get('x1')),float(node.get('y1')));lb=(float(node.get('x2')),float(node.get('y2')))
+                # (G11) a leader of the engine's second round (every place of the first round failed) says so: the anchor may lie up to 0.26 of the path from the plan's, the side leans less
+                fallback=node.get('data-path-label-fallback')=='1'
+                if node.get('data-path-label-fallback') not in (None,'1'):errors.append('PATH_LABEL_FALLBACK_INVALID:'+oid)
+                if fallback and (row.get('leader')=='NEVER' or closed):errors.append('PATH_LABEL_NO_ROOM:'+oid)
+                anchor_tolerance=PATH_LABEL_FALLBACK_ANCHOR_TOLERANCE if fallback else PATH_LABEL_ANCHOR_TOLERANCE
+                side_min_cos=PATH_LABEL_FALLBACK_SIDE_MIN_COS if fallback else PATH_LABEL_SIDE_MIN_COS
                 # anchor / side (E37): where along the path the leader starts, and on which side of the path (walking first point to last, as the page shows it: y down) the label stands
                 if row.get('anchor') is not None:
                     wanted=path_anchor_fraction(row['anchor'])
                     if wanted is None or closed:errors.append('PATH_LABEL_ANCHOR_INVALID:'+oid)
                     else:
                         drawn,_=nearest_on_path(la,path)
-                        if abs(drawn-wanted)>PATH_LABEL_ANCHOR_TOLERANCE:errors.append('PATH_LABEL_ANCHOR_MISMATCH:'+oid+':wanted=%.3f:drawn=%.3f'%(wanted,drawn))
+                        if abs(drawn-wanted)>anchor_tolerance:errors.append('PATH_LABEL_ANCHOR_MISMATCH:'+oid+':wanted=%.3f:drawn=%.3f'%(wanted,drawn))
                 if row.get('side') is not None:
                     if row['side'] not in ('LEFT','RIGHT') or closed:errors.append('PATH_LABEL_SIDE_INVALID:'+oid)
                     else:
                         _,(dx,dy)=nearest_on_path(la,path);normal=(dy,-dx) if row['side']=='LEFT' else (-dy,dx)
                         centre=(box[0]+box[2]/2-la[0],box[1]+box[3]/2-la[1])
-                        if norm(centre)<=1e-9 or (centre[0]*normal[0]+centre[1]*normal[1])/norm(centre)<PATH_LABEL_SIDE_MIN_COS:errors.append('PATH_LABEL_SIDE_MISMATCH:'+oid)
+                        if norm(centre)<=1e-9 or (centre[0]*normal[0]+centre[1]*normal[1])/norm(centre)<side_min_cos:errors.append('PATH_LABEL_SIDE_MISMATCH:'+oid)
                 for sid,pts in strokes:
                     if closed and sid in ids:continue      # a perimeter leader may leave from a corner: that corner's own dot is where it starts
-                    if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('PATH_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+                    if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append(('PATH_LABEL_LEADER_CROSSES_SEGMENT:' if fallback else 'PATH_LABEL_LEADER_CROSSES:')+oid+':'+str(sid))
                 if closed:
                     # a perimeter label stands outside the figure, its leader never enters it
                     ring=path[:-1]

@@ -185,6 +185,10 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     if(![unresolved,suppressed,repairs].every(Array.isArray))throw new Stop('WORKER_ERROR',{stage:'build',code:'BUILD_WITNESS_LAYOUT_INVALID'});
     // Opt-in diagnostic: keep the incomplete candidate beside the failure so a person can see what the layout could not place (never read by any gate).
     if(process.env.APMS_DRAFT_DIR&&(unresolved.length||suppressed.length))(await import('node:fs')).writeFileSync((process.env.APMS_DRAFT_DIR)+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-'+Date.now()+'.svg',svg);
+    // (G11) a path total-length label (pathLabels[].id) found no place even in the second round (or leader:NEVER forbids it): its own code with the label's id
+    const pathRowIds=new Set((Array.isArray(plan?.planeMarks?.pathLabels)?plan.planeMarks.pathLabels:[]).map(row=>row?.id));
+    const stuckIds=[...unresolved,...suppressed].map(id=>String(id?.id??id)),stuckPath=stuckIds.length&&stuckIds.every(id=>id.endsWith('-label')&&pathRowIds.has(id.slice(0,-'-label'.length)))?stuckIds[0]:null;
+    if(stuckPath)throw new Stop('PATH_LABEL_NO_ROOM',{id:stuckPath.slice(0,-'-label'.length),unresolved,suppressed});
     // (G11) the label of a callout's angle dimension (kX__angDim-label) found no room, not even on a leader: its own code, so the author moves it (radiusFactor, radius, at) instead of retrying elsewhere
     if([...unresolved,...suppressed].some(id=>/__angDim-label$/.test(String(id?.id??id))))throw new Stop('CALLOUT_ANGLE_DIMENSION_NO_ROOM',{unresolved,suppressed});
     if(unresolved.length||suppressed.length)throw new Stop('LAYOUT_INVENTORY_INCOMPLETE',{unresolved,suppressed});

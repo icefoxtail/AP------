@@ -65,7 +65,7 @@ export function segmentLabelSite(row,p,q){
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants','callouts'],
   quadrants:['id','quadrant','label','fill','factRole'],textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
-  pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed','anchor','side'],
+  pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed','anchor','side','leader'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over','arcScale','angleDimension'],
   equalLengths:['id','count','segments','pathMark','markStyle'],parallels:['id','count','segments','lines'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership'],
@@ -528,6 +528,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(row.closed!==undefined&&row.closed!==true)bad('PATH_LABEL_CLOSED_INVALID:'+row.id);
     if(row.anchor!==undefined&&(row.closed===true||pathLabelAnchorFraction(row.anchor)===null))bad('PATH_LABEL_ANCHOR_INVALID:'+row.id);
     if(row.side!==undefined&&(row.closed===true||!PATH_LABEL_SIDES.includes(row.side)))bad('PATH_LABEL_SIDE_INVALID:'+row.id);
+    if(row.leader!==undefined&&!['AUTO','NEVER'].includes(row.leader))bad('PATH_LABEL_LEADER_INVALID:'+row.id);   // (G11) AUTO (default): a second round of places when the first finds none; NEVER: none
     const closed=row.closed===true,ring=closed?[...row.points,row.points[0]]:row.points;   // closed: the label is for a whole perimeter, the last point joins back to the first
     const coords=ring.map(at),pathSegments=[];let total=0;
     for(let i=0;i+1<ring.length;i++){
@@ -548,7 +549,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(declared===null||declared<=0)bad('MARK_FIELD_INVALID:pathLabels.value:'+row.id);
       if(Math.abs(declared-total)>1e-6*Math.max(1,declared))bad('PATH_LABEL_FACT_MISMATCH:'+row.id+':declared='+declared+':drawn='+total.toFixed(6));
     }
-    objects.push({id:row.id,kind:'PATH_LABEL',refs:[...row.points],segments:pathSegments,...(closed?{closed:true}:{}),...(row.anchor!==undefined?{anchorAt:pathLabelAnchorFraction(row.anchor)}:{}),...(row.side!==undefined?{side:row.side}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...weightOf(row,kind,'pathLabels')});
+    objects.push({id:row.id,kind:'PATH_LABEL',refs:[...row.points],segments:pathSegments,...(closed?{closed:true}:{}),...(row.anchor!==undefined?{anchorAt:pathLabelAnchorFraction(row.anchor)}:{}),...(row.side!==undefined?{side:row.side}:{}),...(row.leader==='NEVER'?{leader:'NEVER'}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...weightOf(row,kind,'pathLabels')});
     factRolesByLabel[row.id+'-label']=role(row);
   }
 

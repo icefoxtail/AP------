@@ -306,3 +306,29 @@ test('G11 angle callout: proportional arcs and a dimension arc with arrowheads; 
   assert.equal(specError(trianglePlan(calloutRow({angleDimension:{text:'x'}})),await modelOf(triangle)),'CALLOUT_ANGLE_DIMENSION_INVALID:k1');
   assert.equal(err({angleDimension:{text:'36°',refs:['I','O']}}),'ANGLE_MARK_FACT_MISMATCH:kB__angDim:declared=36:drawn=18.000');       // a degree text is the drawn value
 });
+
+// ---- (G11) path label: a narrow vertex leaves the first round no place; the second round slides the anchor, goes farther out and marks its leader (25 왕운중 2학기 기말 q6)
+const narrow=plane([source('A',6,8),source('B',0,0),node('C','SOURCE_POINT',[],'POINT',{coordinates:[frac(219,13),frac(-23,13)]}),{...node('D','MIDPOINT',['A','B'],'POINT',{}),factRole:'GIVEN'},{...node('G','CENTROID',['A','B','C'],'POINT',{}),factRole:'GIVEN'}]);
+const narrowPlan=(row,extra={})=>({capability:'construction-spike-v1',caption:'중선 CD 위에서 CG=10 cm, GD=5 cm이고 전체 CD=x=15 cm이다.',mathPlan:narrow,displayPoints:['A','B','C','D','G'],
+  displaySegments:triangleSegments,coordinateCanvas:{width:640,height:440},planeMarks:{pathLabels:[{id:'pCD',points:['C','G','D'],label:'x=15',unit:'cm',factRole:'DERIVED_INTERMEDIATE',...row}]},...extra});
+
+test('G11 path label: where every first-round place fails (narrow vertex C) the second round finds one on a marked leader; leader NEVER stops with PATH_LABEL_NO_ROOM; every audit passes',async()=>{
+  const model=await modelOf(narrow),names=['C','G','D'];
+  const plan=narrowPlan({anchor:0.2,side:'LEFT'}),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  assert.equal([...composed.svg.matchAll(/data-path-label-fallback="1"/g)].length,1,'the second-round leader is marked');
+  const leader=leaderOf(composed.svg,'pCD-label'),drawn=fractionAlong(composed.svg,leader,names);
+  assert.ok(Math.abs(drawn-0.2)<=0.26,'the leader starts within 0.26 of the declared anchor: '+drawn);
+  const transform=await transformOf(plan,model);
+  assert.deepEqual((await observe(composed.svg,narrow,plan.planeMarks,plan.displaySegments,transform)).errors,[]);
+  // the marker is what widens the tolerance: without it the leader is held to the first round's 0.1 (when it lies farther than that)
+  if(Math.abs(drawn-0.2)>0.1)assert.ok(codes(await observe(composed.svg.replace(' data-path-label-fallback="1"',''),narrow,plan.planeMarks,plan.displaySegments,transform)).includes('PATH_LABEL_ANCHOR_MISMATCH'));
+  // leader NEVER: no second round
+  const never=await composeOf(narrowPlan({anchor:0.2,side:'LEFT',leader:'NEVER'}),model);
+  assert.equal(never.status,'PATH_LABEL_NO_ROOM');assert.equal(never.detail.id,'pCD');
+  assert.ok(codes(await observe(composed.svg,narrow,{pathLabels:[{...plan.planeMarks.pathLabels[0],leader:'NEVER'}]},plan.displaySegments,transform)).includes('PATH_LABEL_NO_ROOM'));
+  // a figure whose first round succeeds is the same with or without the field, and carries no marker
+  const first=await composeOf(narrowPlan({anchor:0.5,side:'RIGHT'}),model),firstNever=await composeOf(narrowPlan({anchor:0.5,side:'RIGHT',leader:'NEVER'}),model);
+  expectComposed(first);assert.equal(first.svg,firstNever.svg);assert.ok(!first.svg.includes('data-path-label-fallback'));
+  assert.equal(specError(narrowPlan({leader:'ALWAYS'}),model),'PATH_LABEL_LEADER_INVALID:pCD');
+});
