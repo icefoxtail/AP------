@@ -732,6 +732,7 @@ test('problem paper maker does not require difficulty evidence or source-bound m
     difficultyBucket: 3, sourceStatus: 'HOLD', metaBinding: '',
   });
   const { w, click } = harness({ ...catalog, records: [r2, r3], taxonomy: [] });
+  w.state.useMode = 'general';
   w.state.filters = { grade: '중3' };
   await click({ action: 'bucket', bucket: '2' });
   w.state.scopes = w.scopeOptions().map(scope => scope.key);
