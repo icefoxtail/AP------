@@ -150,3 +150,17 @@ test('the observer workflow is bounded: step and job timeouts, full-history chec
  // Evidence work is lost on cancel (status is stored at the end): superseded runs queue, they never cancel a running one.
  assert.match(workflow,/cancel-in-progress:\s*false/);
 });
+
+test('status save retries transient socket errors at most 3 attempts and never retries other errors',async()=>{
+ const {withTransientRetry}=await import('../archive/tools/archive-progress-observer.mjs');
+ const sleep=async()=>{};
+ let n=0;
+ assert.equal(await withTransientRetry(async()=>{if(++n<3)throw Object.assign(Error('fetch failed'),{cause:{code:'EPIPE'}});return 'ok';},{sleep}),'ok');
+ assert.equal(n,3);
+ n=0;
+ await assert.rejects(withTransientRetry(async()=>{n++;throw Object.assign(new Error('write EPIPE'),{code:'EPIPE'});},{sleep}),/EPIPE/);
+ assert.equal(n,3);
+ n=0;
+ await assert.rejects(withTransientRetry(async()=>{n++;throw Error('GitHub 409 /contents');},{sleep}),/409/);
+ assert.equal(n,1);
+});
