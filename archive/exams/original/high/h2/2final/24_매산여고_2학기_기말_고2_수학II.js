@@ -514,10 +514,10 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q17-solution.svg",
-    "solutionImageAlt": "f(x)=−x³+3x와 g(x)=−(x+1)²−2의 공통접점 −1, 교점 3, 둘러싸인 넓이",
-    "solutionImageCaption": "두 곡선 사이의 넓이",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q17-solution-v2.svg",
+    "solutionImageAlt": "삼차곡선 y=f(x)=−x³+3x와 이차곡선 y=g(x)=−x²−2x−3을 함께 그린 그래프이다. 두 곡선이 점 T(−1,−2)에서 접하고 x=3에서 다시 만나며, 그 사이의 영역 S가 색칠되어 있다.",
+    "solutionImageCaption": "곡선 y=f(x)와 y=g(x)는 x=−1에서 접하고 x=3에서 다시 만난다. 두 곡선 사이의 영역 S가 구하는 부분이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
