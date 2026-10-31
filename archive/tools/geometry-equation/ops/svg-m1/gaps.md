@@ -161,6 +161,8 @@
 - 샘플: `archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js` #13 / 문제 그림 `assets/images/26_매산고_1학기_중간_고2_기하/q13.png` (존재 True) — 쌍곡선 x²-y²=12, 점 (4,2)에서의 접선과 두 점근선 y=±x, 세 교점으로 이루어진 삼각형(넓이 12)
 - 설계: ellipse-figure-v1을 conic-figure-v1(PARABOLA·HYPERBOLA·ELLIPSE·CIRCLE, 축 나란히)로 확장한다. 식 계수 p 또는 (a²,b²)에서 초점·준선·점근선·꼭짓점을 엔진이 SymPy로 계산하고 점(kind FOCUS/FOOT/ON_CURVE)·선분·접선 판별식 검증·다각형 색칠은 기존 타원 규칙을 재사용한다. 관측기는 곡선의 정의(거리 합·차·초점-준선)로 점들을 다시 확인한다.
 
+- 구현됨(G2a, 2026-10-31): ellipse-figure-v1에 루트 `conic`(PARABOLA, 축 X·Y)을 추가했다. 곡선 `<path>`·초점·준선·꼭짓점, 일반 세로·가로선·두 점 직선(`hidden`), 직선 이름 라벨(자리 없으면 지시선), 점 kind `ON_CONIC`·`LINE_CONIC`(which 1·2)·`FOOT`(+직각 표시), 관측기 `conic_figure_observer.py`(정의 |PF|=준선 거리 포함). 정답지 item90g2a(제일고 q2)·item91g2a(매산고 q15). 남은 것: 쌍곡선·점근선(G2b), 접선·타원+원 같은 혼합(G2c), 그림 안 식 라벨·`p`의 값 표시.
+
 ### G3 평면벡터 화살표(시점·종점, 합·차·실수배, 위치벡터) (고2, M)
 - 근거(작성 당시): AUTHOR_GUIDE §3-1 ('두 점 사이 벡터… 지원하지 않는다': G3에서 3-8절 안내로 바뀜), §3-45 말미('벡터 화살표는 지원 범위가 아니다'), §3-8 dimensions style ARROW는 치수선 전용. 벡터 문항은 그림 있는 것만 16개(6개 시험지)
 - 샘플: `archive/exams/original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js` #10 / 문제 그림 `assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q10.png` (존재 True) — 삼각형 ABC, 중선 AM, AM의 중점 K와 벡터 AB=a·AC=b, BK=(-3a+b)/4를 화살표로 보인다
